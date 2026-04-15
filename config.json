@@ -1,0 +1,36 @@
+{
+  "slug": "vc-deal-flow-signal",
+  "created_at": "2026-04-13",
+  "ideabrowser_idea": "Lead gen tool that scans GitHub repos for buying signals (GitLeads)",
+  "chosen_angle": "VC Deal Flow Signal: Weekly report of startups showing engineering acceleration, sold to seed/Series A investors",
+  "triage": {
+    "rubric_answers": ["Y", "Y", "Y"],
+    "outcome": "GO"
+  },
+  "stack": {
+    "hosting": "Vercel",
+    "db": "Supabase (not day one)",
+    "repo": "GitHub",
+    "payments": "Stripe Payment Link",
+    "email": "Resend + Pocketbase",
+    "analytics": "PostHog",
+    "overrides": []
+  },
+  "sessions_completed": ["A", "B", "C", "D"],
+  "current_session": "D_COMPLETE",
+  "deploy_url": "https://gitdealflow.com",
+  "stripe_links": [
+    "https://buy.stripe.com/28E7sK48H04U8ou07u0x200",
+    "https://buy.stripe.com/4gM00ifRpcRG2069I40x202"
+  ],
+  "posthog_project_id": "143861",
+  "pseo_handoff_complete": true,
+  "pseo_stack": {
+    "scraping": "Firecrawl",
+    "content": "Claude",
+    "framework": "Next.js on Vercel",
+    "seo_monitoring": "Google Search Console",
+    "analytics": "PostHog",
+    "aeo_monitoring": "Otterly"
+  }
+}

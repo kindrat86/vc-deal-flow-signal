@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__b09f4626-5f92-49b8-84ec-292a6869ec9b__switch-project",
+      "mcp__b09f4626-5f92-49b8-84ec-292a6869ec9b__query-run",
+      "mcp__posthog__switch-project",
+      "mcp__posthog__query-run",
+      "mcp__mcp-registry__search_mcp_registry",
+      "Bash(curl -s http://127.0.0.1:3001/health)",
+      "Bash(curl -s -X POST https://api.resend.com/emails:*)"
+    ]
+  }
+}

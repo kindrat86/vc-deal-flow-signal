@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "VC Deal Flow Signal — GitHub Startup Signals",
+  "version": "0.1.0",
+  "description": "See GitHub engineering acceleration data on Crunchbase and Wellfound company profiles. Spot breakout startups before anyone else.",
+  "homepage_url": "https://gitdealflow.com",
+  "permissions": [],
+  "host_permissions": [
+    "https://signals.gitdealflow.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.crunchbase.com/organization/*",
+        "https://wellfound.com/company/*"
+      ],
+      "js": ["content.js"],
+      "css": ["styles.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon-16.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  }
+}

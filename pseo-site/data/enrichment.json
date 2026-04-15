@@ -1,0 +1,104 @@
+{
+  "airbytehq": {
+    "fundingTotal": "$181M",
+    "lastRoundType": "Series B",
+    "teamSize": 200,
+    "foundedYear": 2020
+  },
+  "roboflow": {
+    "fundingTotal": "$24.1M",
+    "lastRoundType": "Series A",
+    "teamSize": 45,
+    "foundedYear": 2019
+  },
+  "gravitational": {
+    "fundingTotal": "$68M",
+    "lastRoundType": "Series B",
+    "teamSize": 120,
+    "foundedYear": 2015
+  },
+  "fleetdm": {
+    "fundingTotal": "$25M",
+    "lastRoundType": "Series A",
+    "teamSize": 50,
+    "foundedYear": 2020
+  },
+  "saleor": {
+    "fundingTotal": "$6.3M",
+    "lastRoundType": "Seed",
+    "teamSize": 35,
+    "foundedYear": 2018
+  },
+  "polarsource": {
+    "fundingTotal": "$3.2M",
+    "lastRoundType": "Seed",
+    "teamSize": 15,
+    "foundedYear": 2023
+  },
+  "horizontalsystems": {
+    "fundingTotal": "$2.5M",
+    "lastRoundType": "Series A",
+    "teamSize": 20,
+    "foundedYear": 2019
+  },
+  "vuestorefront": {
+    "fundingTotal": "$11M",
+    "lastRoundType": "Series A",
+    "teamSize": 60,
+    "foundedYear": 2017
+  },
+  "atrocore": {
+    "fundingTotal": "$1.2M",
+    "lastRoundType": "Seed",
+    "teamSize": 12,
+    "foundedYear": 2019
+  },
+  "particify": {
+    "fundingTotal": "$800K",
+    "lastRoundType": "Pre-seed",
+    "teamSize": 8,
+    "foundedYear": 2021
+  },
+  "LiteFarmOrg": {
+    "fundingTotal": "$2.1M",
+    "lastRoundType": "Grant",
+    "teamSize": 18,
+    "foundedYear": 2020
+  },
+  "open-condo-software": {
+    "fundingTotal": "$5M",
+    "lastRoundType": "Seed",
+    "teamSize": 30,
+    "foundedYear": 2021
+  },
+  "bakaphp": {
+    "fundingTotal": "Bootstrapped",
+    "lastRoundType": "—",
+    "teamSize": 5,
+    "foundedYear": 2022
+  },
+  "FlaxEngine": {
+    "fundingTotal": "Bootstrapped",
+    "lastRoundType": "—",
+    "teamSize": 10,
+    "foundedYear": 2017
+  },
+  "unacms": {
+    "fundingTotal": "Bootstrapped",
+    "lastRoundType": "—",
+    "teamSize": 6,
+    "foundedYear": 2020
+  },
+  "third-culture-software": {
+    "fundingTotal": "$1.5M",
+    "lastRoundType": "Series A",
+    "teamSize": 14,
+    "foundedYear": 2022
+  },
+  "mdn": {
+    "fundingTotal": "Mozilla Foundation",
+    "lastRoundType": "—",
+    "teamSize": 40,
+    "foundedYear": 2005
+  }
+}

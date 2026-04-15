@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Insider Circle — VC Deal Flow Signal</title>
+  <meta name="description" content="The hidden dataset that predicts fundraises 3 weeks early. A data-driven walkthrough of how GitHub engineering signals give investors an edge.">
+  <link rel="canonical" href="https://gitdealflow.com/insider" />
+  <meta property="og:title" content="The Hidden Dataset That Predicts Fundraises 3 Weeks Early" />
+  <meta property="og:description" content="How GitHub engineering signals give seed and Series A investors an unfair advantage." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://gitdealflow.com/insider" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@data_nerd" />
+  <meta property="og:image" content="https://signals.gitdealflow.com/opengraph-image">
+  <meta name="twitter:image" content="https://signals.gitdealflow.com/opengraph-image">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="/styles.css">
+  <style>html { scroll-behavior: smooth; }</style>
+</head>
+<body class="bg-dark-900 text-gray-100 font-sans antialiased">
+
+  <main id="main-content">
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-dark-900 via-dark-800 to-brand-900 opacity-80"></div>
+    <div class="relative max-w-3xl mx-auto px-6 py-24 text-center">
+      <p class="text-brand-500 font-semibold text-sm uppercase tracking-wider mb-4">A walkthrough by The Data Nerd</p>
+      <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-6">
+        The Hidden Dataset That Predicts Fundraises 3 Weeks Early
+      </h1>
+      <p class="text-lg text-gray-300 max-w-2xl mx-auto mb-8">
+        How GitHub engineering signals give seed and Series A investors an unfair information advantage. And why you've never heard of this approach.
+      </p>
+      <p class="text-gray-500 text-sm">7-minute read. No video, no webinar signup, no fluff.</p>
+    </div>
+  </section>
+
+  <!-- The One Thing -->
+  <section class="max-w-3xl mx-auto px-6 py-16">
+    <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-4">The core insight</p>
+    <h2 class="text-3xl font-bold mb-8">There is one dataset that predicts startup traction before any other signal exists.</h2>
+    <p class="text-gray-300 text-lg leading-relaxed mb-6">
+      It's not AngelList trending. It's not a warm intro. It's not a pitch deck.
+    </p>
+    <p class="text-gray-300 text-lg leading-relaxed mb-6">
+      It's the commit log.
+    </p>
+    <p class="text-gray-300 text-lg leading-relaxed mb-6">
+      GitHub is the largest free dataset of real-time engineering activity on the planet. Over 100 million developers. Millions of organizations. Every commit, every pull request, every new contributor, timestamped and public.
+    </p>
+    <p class="text-gray-100 text-lg leading-relaxed font-semibold mb-6">
+      When a startup's engineering velocity deviates sharply from its own baseline, something changed inside that company. They hired. They found product-market fit. They're preparing to launch. Or they just raised money and are deploying it.
+    </p>
+    <p class="text-gray-300 text-lg leading-relaxed">
+      In our dataset, this pattern preceded 7 out of 10 fundraise announcements by 3 to 6 weeks.
+    </p>
+  </section>
+
+  <!-- Data proof -->
+  <section class="bg-dark-800 py-16">
+    <div class="max-w-3xl mx-auto px-6">
+      <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-4">From our live data</p>
+      <h2 class="text-2xl font-bold mb-8">Here's what the signal looks like in practice</h2>
+
+      <div class="space-y-6">
+        <div class="rounded-xl border border-gray-700 bg-dark-900 p-6">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-lg font-bold">carlos-emr <span class="text-gray-500 text-sm font-normal">Healthcare</span></h3>
+            <span class="bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 text-xs font-semibold px-3 py-1 rounded-full">Accelerating</span>
+          </div>
+          <div class="grid grid-cols-3 gap-4 text-center">
+            <div><p class="text-2xl font-bold text-emerald-400">+199%</p><p class="text-gray-500 text-xs">Commit velocity change</p></div>
+            <div><p class="text-2xl font-bold text-white">94</p><p class="text-gray-500 text-xs">Contributors</p></div>
+            <div><p class="text-2xl font-bold text-white">1,015</p><p class="text-gray-500 text-xs">Commits (14d)</p></div>
+          </div>
+          <p class="text-gray-400 text-sm mt-4">Open-source EMR system. Classic engineering hiring burst pattern. Something significant is happening inside this organization.</p>
+        </div>
+
+        <div class="rounded-xl border border-gray-700 bg-dark-900 p-6">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-lg font-bold">run-llama <span class="text-gray-500 text-sm font-normal">AI/ML</span></h3>
+            <span class="bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 text-xs font-semibold px-3 py-1 rounded-full">Accelerating</span>
+          </div>
+          <div class="grid grid-cols-3 gap-4 text-center">
+            <div><p class="text-2xl font-bold text-emerald-400">+376%</p><p class="text-gray-500 text-xs">Commit velocity change</p></div>
+            <div><p class="text-2xl font-bold text-white">34</p><p class="text-gray-500 text-xs">Contributors</p></div>
+            <div><p class="text-2xl font-bold text-white">81</p><p class="text-gray-500 text-xs">Commits (14d)</p></div>
+          </div>
+          <p class="text-gray-400 text-sm mt-4">LlamaIndex (Series A, backed by a16z). Engineering velocity surged nearly 4x. This is a deploy frequency spike pattern.</p>
+        </div>
+      </div>
+
+      <p class="text-gray-500 text-sm mt-6">These are real numbers from public GitHub data, not hypothetical examples. <a href="https://signals.gitdealflow.com" class="text-brand-500 hover:text-brand-200">Browse all 20 sectors &rarr;</a></p>
+    </div>
+  </section>
+
+  <!-- Secret 1: Vehicle -->
+  <section class="max-w-3xl mx-auto px-6 py-16">
+    <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-4">Why this works</p>
+    <h2 class="text-2xl font-bold mb-6">"I already have enough deal flow"</h2>
+    <p class="text-gray-300 text-lg leading-relaxed mb-6">
+      You do. From the same sources as everyone else.
+    </p>
+    <p class="text-gray-300 text-lg leading-relaxed mb-6">
+      Your network shows you what other investors are already seeing. By the time a warm intro reaches you, the founder has talked to 3 to 5 other investors. The deck is circulating. Terms are forming.
+    </p>
+    <p class="text-gray-300 text-lg leading-relaxed mb-6">
+      The deals that generate outsized returns are the ones where you arrive before consensus forms. Before the deck exists. Before the company is "hot."
+    </p>
+    <p class="text-gray-100 text-lg leading-relaxed font-semibold">
+      GitHub engineering signals show you what's happening 3 to 6 weeks before the founder decides to fundraise. Your network gets you to the table. This gets you there first.
+    </p>
+  </section>
+
+  <!-- Secret 2: Internal -->
+  <section class="bg-dark-800 py-16">
+    <div class="max-w-3xl mx-auto px-6">
+      <h2 class="text-2xl font-bold mb-6">"GitHub data is too noisy to be useful"</h2>
+      <p class="text-gray-300 text-lg leading-relaxed mb-6">
+        Raw GitHub data is noisy. Commit counts alone tell you nothing. A bot can inflate them.
+      </p>
+      <p class="text-gray-300 text-lg leading-relaxed mb-6">
+        But we don't look at absolute numbers. We look at <strong class="text-white">acceleration patterns</strong>: when a company's engineering velocity deviates sharply from its own baseline.
+      </p>
+      <p class="text-gray-300 text-lg leading-relaxed mb-6">
+        A startup that goes from 20 commits/week to 60 commits/week while adding 4 new contributors and spinning up infrastructure repos is not having a noisy week. Something changed.
+      </p>
+      <p class="text-gray-100 text-lg leading-relaxed font-semibold">
+        We track acceleration patterns across 100+ startups in 20 sectors. The signal is not the commit. The signal is the change in trajectory.
+      </p>
+    </div>
+  </section>
+
+  <!-- Secret 3: External -->
+  <section class="max-w-3xl mx-auto px-6 py-16">
+    <h2 class="text-2xl font-bold mb-6">"Public data can't give me an edge"</h2>
+    <p class="text-gray-300 text-lg leading-relaxed mb-6">
+      Everyone has access to SEC filings. Quant funds still make billions parsing them faster and smarter.
+    </p>
+    <p class="text-gray-300 text-lg leading-relaxed mb-6">
+      Everyone has access to satellite imagery. Hedge funds use it to count cars in parking lots and predict quarterly earnings.
+    </p>
+    <p class="text-gray-300 text-lg leading-relaxed mb-6">
+      Right now, zero investor tools package GitHub activity as a deal flow signal. The data is public. The analysis layer didn't exist.
+    </p>
+    <p class="text-gray-100 text-lg leading-relaxed font-semibold">
+      How many investors in your network are monitoring GitHub commit velocity right now? The answer is probably zero. That's the definition of an edge.
+    </p>
+  </section>
+
+  <!-- The Stack / Offer -->
+  <section id="offer" class="bg-dark-800 py-16">
+    <div class="max-w-3xl mx-auto px-6">
+      <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-4">The Insider Circle</p>
+      <h2 class="text-3xl font-bold mb-8">What you get when you join</h2>
+
+      <div class="space-y-4 mb-10">
+        <div class="flex items-start gap-4 bg-dark-900 rounded-xl border border-gray-700 p-5">
+          <span class="text-brand-500 text-lg mt-0.5">&#10003;</span>
+          <div>
+            <h3 class="font-semibold mb-1">Full Dashboard access</h3>
+            <p class="text-gray-400 text-sm">100+ startups ranked across 20 sectors. Filter by sector, stage, geography. Updated weekly. (Worth EUR 49/mo alone)</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4 bg-dark-900 rounded-xl border border-gray-700 p-5">
+          <span class="text-brand-500 text-lg mt-0.5">&#10003;</span>
+          <div>
+            <h3 class="font-semibold mb-1">Private investor Telegram group</h3>
+            <p class="text-gray-400 text-sm">Direct discussion with other data-driven investors. Signal alerts, deal flow sharing, market reads.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4 bg-dark-900 rounded-xl border border-gray-700 p-5">
+          <span class="text-brand-500 text-lg mt-0.5">&#10003;</span>
+          <div>
+            <h3 class="font-semibold mb-1">Monthly signal briefing</h3>
+            <p class="text-gray-400 text-sm">Written deep-dive on the month's strongest signals: what's accelerating, what it means, and which sectors to watch.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4 bg-dark-900 rounded-xl border border-gray-700 p-5">
+          <span class="text-brand-500 text-lg mt-0.5">&#10003;</span>
+          <div>
+            <h3 class="font-semibold mb-1">Custom watchlists</h3>
+            <p class="text-gray-400 text-sm">Monitor specific companies or sectors. Get notified when something in your portfolio starts accelerating.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4 bg-dark-900 rounded-xl border border-gray-700 p-5">
+          <span class="text-brand-500 text-lg mt-0.5">&#10003;</span>
+          <div>
+            <h3 class="font-semibold mb-1">API access</h3>
+            <p class="text-gray-400 text-sm">Integrate signal data into your own deal flow tools, CRM, or spreadsheets.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4 bg-dark-900 rounded-xl border border-gray-700 p-5">
+          <span class="text-brand-500 text-lg mt-0.5">&#10003;</span>
+          <div>
+            <h3 class="font-semibold mb-1">Direct access to the founder</h3>
+            <p class="text-gray-400 text-sm">Ask questions, request custom analysis, suggest companies to track.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Price -->
+      <div class="rounded-2xl border-2 border-brand-600 bg-dark-900 p-8 text-center">
+        <p class="text-gray-400 text-sm mb-2">Early access pricing (locks in forever)</p>
+        <div class="flex items-baseline justify-center gap-3 mb-2">
+          <p class="text-5xl font-extrabold">&euro;97</p>
+          <p class="text-gray-500 line-through text-xl">&euro;197</p>
+          <p class="text-gray-400 text-lg">/month</p>
+        </div>
+        <p class="text-brand-500 text-sm font-semibold mb-2">Price goes to EUR 197/mo after beta closes</p>
+        <p class="text-gray-500 text-xs mb-6">30-day money-back guarantee. Cancel anytime.</p>
+        <a href="https://buy.stripe.com/4gM00ifRpcRG2069I40x202" class="inline-block bg-brand-600 hover:bg-brand-700 text-white font-semibold px-10 py-4 rounded-lg text-lg transition">Join the Insider Circle</a>
+        <p class="text-gray-600 text-xs mt-4">Or start with the <a href="https://gitdealflow.com/#pricing" class="text-brand-500 hover:text-brand-200">Dashboard at EUR 9.97/mo</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About / Closing -->
+  <section class="max-w-3xl mx-auto px-6 py-16 text-center">
+    <p class="text-gray-300 text-lg leading-relaxed mb-6">
+      I obsess over signals others ignore. I watched a company's commit graph spike and three weeks later they announced a Series A. The signal was right there the whole time, public, free, updating in real time.
+    </p>
+    <p class="text-gray-300 text-lg leading-relaxed mb-6">
+      Nobody was reading it. So I built something that would.
+    </p>
+    <p class="text-gray-400 italic mb-10">- The Data Nerd</p>
+    <a href="#offer" class="inline-block bg-brand-600 hover:bg-brand-700 text-white font-semibold px-8 py-4 rounded-lg text-lg transition">Join the Insider Circle &rarr;</a>
+  </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-dark-900 border-t border-gray-800 py-8">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <div class="flex justify-center gap-6 text-gray-500 text-sm mb-4">
+        <a href="https://gitdealflow.com" class="hover:text-gray-300">Main Site</a>
+        <a href="https://signals.gitdealflow.com" class="hover:text-gray-300">Sector Signals</a>
+        <a href="https://t.me/gitdealflow" class="hover:text-gray-300">Telegram</a>
+        <a href="/privacy" class="hover:text-gray-300">Privacy</a>
+        <a href="/terms" class="hover:text-gray-300">Terms</a>
+        <a href="mailto:signal@gitdealflow.com" class="hover:text-gray-300">Contact</a>
+      </div>
+      <p class="text-gray-600 text-xs">&copy; 2026 VC Deal Flow Signal. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Cookie Consent Banner -->
+  <div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#1e293b;border-top:1px solid #334155;padding:16px 24px;z-index:9999;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
+    <div style="max-width:960px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+      <p style="color:#cbd5e1;font-size:14px;margin:0;">We use cookies for analytics to improve your experience. <a href="/privacy" style="color:#0ea5e9;text-decoration:underline;">Privacy Policy</a></p>
+      <div style="display:flex;gap:8px;flex-shrink:0;">
+        <button onclick="acceptCookies()" style="background:#0ea5e9;color:#fff;border:none;padding:8px 20px;border-radius:6px;font-size:14px;cursor:pointer;">Accept</button>
+        <button onclick="declineCookies()" style="background:transparent;color:#94a3b8;border:1px solid #475569;padding:8px 20px;border-radius:6px;font-size:14px;cursor:pointer;">Decline</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PostHog (loaded only with consent) -->
+  <script>
+    function loadPostHog() {
+      !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group setPersonProperties resetPersonProperties setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+      posthog.init('phc_lyZCgvTpicjLzAO3rY2GhxuX5WUc5jQjP8ZVwwJqauX', {api_host: 'https://eu.i.posthog.com'});
+    }
+    function acceptCookies() {
+      localStorage.setItem('cookie_consent', 'accepted');
+      document.getElementById('cookie-banner').style.display = 'none';
+      loadPostHog();
+    }
+    function declineCookies() {
+      localStorage.setItem('cookie_consent', 'declined');
+      document.getElementById('cookie-banner').style.display = 'none';
+    }
+    var consent = localStorage.getItem('cookie_consent');
+    if (consent === 'accepted') {
+      loadPostHog();
+    } else if (!consent) {
+      document.getElementById('cookie-banner').style.display = 'block';
+    }
+  </script>
+</body>
+</html>

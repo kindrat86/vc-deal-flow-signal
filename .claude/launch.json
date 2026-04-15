@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "landing-page",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8080", "-d", "/Users/sipi/launch-projects/vc-deal-flow-signal/landing"],
+      "port": 8080
+    }
+  ]
+}

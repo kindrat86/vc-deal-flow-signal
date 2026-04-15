@@ -1,0 +1,72 @@
+name: Discover Startups
+
+on:
+  schedule:
+    # Daily at 06:03 UTC (09:03 EEST)
+    - cron: "3 6 * * *"
+  workflow_dispatch: # Allow manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  fetch-data:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+          cache-dependency-path: pseo-site/package-lock.json
+
+      - name: Install dependencies
+        working-directory: pseo-site
+        run: npm ci
+
+      - name: Count startups before
+        id: before
+        working-directory: pseo-site
+        run: |
+          COUNT=$(node -e "const d=require('./data/startups.json');const s=new Set();d.sectors.forEach(x=>Object.values(x.periods).forEach(p=>p.startups.forEach(st=>s.add(st.name))));console.log(s.size)")
+          echo "count=$COUNT" >> "$GITHUB_OUTPUT"
+          echo "Startups before: $COUNT"
+
+      - name: Run GitHub data pipeline
+        working-directory: pseo-site
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npx tsx scripts/fetch-github-data.ts
+
+      - name: Count startups after
+        id: after
+        working-directory: pseo-site
+        run: |
+          COUNT=$(node -e "const d=require('./data/startups.json');const s=new Set();d.sectors.forEach(x=>Object.values(x.periods).forEach(p=>p.startups.forEach(st=>s.add(st.name))));console.log(s.size)")
+          echo "count=$COUNT" >> "$GITHUB_OUTPUT"
+          echo "Startups after: $COUNT"
+          BEFORE=${{ steps.before.outputs.count }}
+          NEW=$((COUNT - BEFORE))
+          echo "New startups discovered: $NEW"
+
+      - name: Commit and push if data changed
+        working-directory: pseo-site
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/startups.json
+          if git diff --cached --quiet; then
+            echo "No new startups found — nothing to commit."
+          else
+            BEFORE=${{ steps.before.outputs.count }}
+            AFTER=${{ steps.after.outputs.count }}
+            NEW=$((AFTER - BEFORE))
+            git commit -m "data: discover ${NEW} new startups (${BEFORE} → ${AFTER} total)
+
+            Automated daily pipeline run via GitHub Actions."
+            git push
+            echo "Committed and pushed: ${NEW} new startups"
+          fi

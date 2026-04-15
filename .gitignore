@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+
+# Environment & secrets
+.env
+.env.*
+
+# Logs
+*.log
+*.err
+
+# Databases
+*.db
+*.db-shm
+*.db-wal
+pocketbase/pb_data/
+pocketbase/backups/
+
+# Build artifacts
+.next/
+.vercel
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Sensitive data (PII)
+email-api/outreach-*.json
+CREDENTIAL-ROTATION.md
+
+# Build artifacts
+*.zip
+.claude/scheduled_tasks.lock
+.claude/settings.local.json

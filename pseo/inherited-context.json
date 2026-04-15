@@ -1,0 +1,54 @@
+{
+  "slug": "vc-deal-flow-signal",
+  "niche": "VC deal flow intelligence",
+  "geography": "Global (US, EU, APAC)",
+  "language": "English",
+  "target_customer": "Angel investor with a portfolio of 20+, actively sourcing deals, frustrated by seeing great startups too late. Also: seed/Series A VCs, micro-fund GPs.",
+  "product": "Micro-SaaS dashboard that monitors GitHub engineering activity across thousands of startups and surfaces the ones showing unusual acceleration (commit velocity spikes, contributor growth, new repo creation) as a leading indicator for investors.",
+  "hook": "Spot breakout startups 3 weeks before they hit your inbox. GitHub is the largest free dataset of real-time engineering activity. Nobody packages it for investors. Until now.",
+  "story": "I was tracking a small fintech startup. Nothing special on the surface. But their GitHub told a different story. In two weeks, their commit velocity tripled. Four new contributors joined. They spun up three new infrastructure repos. Three weeks later, they announced a $4M Series A. The signal was right there in the commit graph the whole time. Public, free, updating in real time. Nobody was reading it.",
+  "offer": "Free waitlist (early access + monthly signal highlights). Pro EUR 9.97/mo (full dashboard, 50+ startups, filters, enrichment). Insider Circle EUR 97/mo (custom watchlists, API access, Slack alerts, portfolio overlap detection, quarterly trend briefings, private Telegram group).",
+  "value_ladder_tiers": [
+    {
+      "name": "Free",
+      "price": "EUR 0",
+      "includes": "Early access to platform, monthly signal highlights email, no login required"
+    },
+    {
+      "name": "Pro",
+      "price": "EUR 9.97/mo",
+      "includes": "Full micro-SaaS dashboard, 50+ startups ranked by engineering acceleration, filter by sector/stage/geography, funding data and team size"
+    },
+    {
+      "name": "Insider Circle",
+      "price": "EUR 97/mo",
+      "includes": "Everything in Pro, custom watchlists, API access, Slack alerts, deeper enrichment, portfolio overlap detection, quarterly trend briefings, private Telegram group"
+    }
+  ],
+  "destination_url": "https://gitdealflow.com",
+  "stripe_links": {
+    "pro": "https://buy.stripe.com/28E7sK48H04U8ou07u0x200",
+    "insider": "https://buy.stripe.com/4gM00ifRpcRG2069I40x202"
+  },
+  "tone_voice": "The Data Nerd. Obsessive about signals others ignore. Leads with data or a surprising observation, never with hype. Uses specific numbers instead of vague claims. Admits uncertainty when the signal is ambiguous. Never pitches, always shows. Curious, precise, slightly contrarian.",
+  "opportunity_switch": "Old way: paying for intent data from vendors who sell the same list to everyone. New way: reading free, public GitHub data that nobody else packages for investors.",
+  "false_beliefs": [
+    "GitHub data is too noisy to be a real signal (Vehicle)",
+    "I already have enough deal flow from my network (Internal)",
+    "Public data can't give me an edge, everyone has access to it (External)"
+  ],
+  "keywords_from_ideabrowser": [
+    "b2b lead generation",
+    "lead generation agency",
+    "artificial intelligence for sales",
+    "demand generation agency",
+    "seo and lead generation"
+  ],
+  "adjacent_niches": [
+    "Competitive intelligence for VCs",
+    "Open-source ecosystem monitoring",
+    "Developer hiring intelligence",
+    "M&A due diligence on engineering teams",
+    "Startup scouting for corporate VCs"
+  ]
+}
