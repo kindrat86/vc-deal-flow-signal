@@ -67,8 +67,9 @@ const DESCRIPTION_REJECT_PATTERNS = [
 // Minimum thresholds for a viable startup signal
 const MIN_CONTRIBUTORS = 3;   // skip personal projects
 const MAX_ORG_AGE_YEARS = 12; // skip orgs created before 2014
-const SEARCH_PER_TOPIC = 40;  // results per topic search (up from 30)
-const MAX_ORGS_PER_SECTOR = 15; // orgs evaluated per sector (up from 10)
+const SEARCH_PER_TOPIC = 30;  // results per topic search
+const MAX_ORGS_PER_SECTOR = 10; // orgs evaluated per sector
+const SECTORS_PER_RUN = 7;     // rotate through sectors (20 / 7 ≈ 3 days for full sweep)
 
 function buildPeriods(): PeriodDef[] {
   const now = new Date();
@@ -118,13 +119,13 @@ async function ghApiFetch(endpoint: string): Promise<unknown> {
 
   // GitHub stats endpoints return 202 while computing — retry with backoff
   const isStats = url.includes("/stats/");
-  const maxAttempts = isStats ? 5 : 1;
+  const maxAttempts = isStats ? 3 : 1;
 
   for (let attempt = 0; attempt < maxAttempts; attempt++) {
     const res = await fetch(url, { headers });
     if (res.status === 200) return res.json();
     if (res.status === 202 && isStats && attempt < maxAttempts - 1) {
-      await sleep(5000 + attempt * 2000); // 5s, 7s, 9s, 11s backoff
+      await sleep(2000 + attempt * 1500); // 2s, 3.5s backoff (faster)
       continue;
     }
     if (!res.ok) throw new Error(`GitHub API ${res.status}: ${res.statusText} for ${endpoint}`);
@@ -291,11 +292,22 @@ async function main() {
   console.log(`${SECTORS.length} sectors x ${periods.length} periods`);
   console.log(`Periods: ${periods.map((p) => p.name).join(", ")}\n`);
 
+  // Sector rotation: process a subset each run for faster execution.
+  // The day-of-year determines which slice of sectors to process.
+  const dayOfYear = Math.floor((Date.now() - new Date(new Date().getFullYear(), 0, 0).getTime()) / 86400000);
+  const startIdx = (dayOfYear * SECTORS_PER_RUN) % SECTORS.length;
+  const sectorSlice: typeof SECTORS = [];
+  for (let i = 0; i < SECTORS_PER_RUN && i < SECTORS.length; i++) {
+    sectorSlice.push(SECTORS[(startIdx + i) % SECTORS.length]);
+  }
+  console.log(`Sector rotation: day ${dayOfYear}, processing ${sectorSlice.length}/${SECTORS.length} sectors`);
+  console.log(`  Sectors: ${sectorSlice.map((s) => s.slug).join(", ")}\n`);
+
   // Cross-sector dedup: each org can only appear in one sector (first match wins)
   const claimedOrgs = new Set<string>();
 
   const outputSectors: SectorOutput[] = [];
-  for (const [idx, sector] of SECTORS.entries()) {
+  for (const [idx, sector] of sectorSlice.entries()) {
     console.log(`[${idx + 1}/${SECTORS.length}] ${sector.name}`);
     const cutoff = new Date(); cutoff.setMonth(cutoff.getMonth() - 3);
     let items: GhRepo[] = [];
@@ -334,7 +346,7 @@ async function main() {
     }
     console.log(`  Periods: ${Object.keys(sp).join(", ")} (${orgs.length} orgs)`);
     outputSectors.push({ slug: sector.slug, name: sector.name, description: sector.description, relatedSlugs: sector.relatedSlugs, periods: sp });
-    await sleep(1000);
+    await sleep(500);
   }
 
   // Additive merge: combine new discoveries with existing data (preserves startups
@@ -365,6 +377,23 @@ async function main() {
       }
     }
   }
+
+  // Preserve sectors from previous runs that were not processed this time
+  if (existing) {
+    const processedSlugs = new Set(outputSectors.map((s) => s.slug));
+    for (const oldSector of existing.sectors) {
+      if (!processedSlugs.has(oldSector.slug)) {
+        outputSectors.push(oldSector);
+      }
+    }
+  }
+
+  // Sort sectors to maintain consistent order
+  outputSectors.sort((a, b) => {
+    const aIdx = SECTORS.findIndex((s) => s.slug === a.slug);
+    const bIdx = SECTORS.findIndex((s) => s.slug === b.slug);
+    return aIdx - bIdx;
+  });
 
   const out = { periods: periods.map(({ slug, name, current }) => ({ slug, name, current })), sectors: outputSectors };
   fs.writeFileSync(dataPath, JSON.stringify(out, null, 2), "utf8");
