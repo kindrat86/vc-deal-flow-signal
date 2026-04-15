@@ -38,7 +38,9 @@ jobs:
       - name: Run GitHub data pipeline
         working-directory: pseo-site
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Prefer a PAT (GH_PAT secret) for higher rate limits on search API.
+          # Falls back to the built-in GITHUB_TOKEN which works for public reads.
+          GITHUB_TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
         run: npx tsx scripts/fetch-github-data.ts
 
       - name: Count startups after
