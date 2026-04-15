@@ -67,8 +67,8 @@ const DESCRIPTION_REJECT_PATTERNS = [
 // Minimum thresholds for a viable startup signal
 const MIN_CONTRIBUTORS = 3;   // skip personal projects
 const MAX_ORG_AGE_YEARS = 12; // skip orgs created before 2014
-const SEARCH_PER_TOPIC = 60;  // results per topic search (up from 30)
-const MAX_ORGS_PER_SECTOR = 25; // orgs evaluated per sector (up from 10)
+const SEARCH_PER_TOPIC = 40;  // results per topic search (up from 30)
+const MAX_ORGS_PER_SECTOR = 15; // orgs evaluated per sector (up from 10)
 
 function buildPeriods(): PeriodDef[] {
   const now = new Date();
@@ -137,7 +137,7 @@ async function ghApiSearchMultiTopic(topics: string[], extra: string, perPage = 
   for (const topic of topics) {
     const q = encodeURIComponent(`topic:${topic} ${extra}`);
     try { const r = (await ghApiFetch(`search/repositories?q=${q}&sort=updated&per_page=${perPage}`)) as SearchResult; for (const repo of r.items || []) all.set(repo.id, repo); } catch (e: unknown) { console.warn(`    topic:${topic} failed: ${(e instanceof Error ? e.message : String(e)).slice(0, 120)}`); }
-    await sleep(800);
+    await sleep(400);
   }
   return [...all.values()];
 }
@@ -174,7 +174,7 @@ async function fetchOrgData(orgLogin: string, fallbackDesc: string, searchRepos:
   console.log(`    Processing: ${orgLogin}`);
   if (BLOCKLIST.has(orgLogin)) { console.log(`      Skipped (blocklist)`); return null; }
 
-  await sleep(500);
+  await sleep(300);
   let orgLoc: string | null = null, orgDesc = fallbackDesc, orgCreated: string | null = null;
   try {
     const d = (await ghApiFetch(`orgs/${orgLogin}`)) as { location?: string | null; description?: string | null; bio?: string | null; created_at?: string | null };
@@ -201,7 +201,7 @@ async function fetchOrgData(orgLogin: string, fallbackDesc: string, searchRepos:
     }
   }
 
-  await sleep(500);
+  await sleep(300);
   let repos: GhRepo[] = [];
   try { repos = (await ghApiFetch(`orgs/${orgLogin}/repos?sort=pushed&direction=desc&per_page=30&type=public`)) as GhRepo[]; if (!Array.isArray(repos)) repos = []; } catch { repos = []; }
   if (repos.length === 0) repos = searchRepos.filter((r) => r.owner.login === orgLogin);
@@ -218,11 +218,11 @@ async function fetchOrgData(orgLogin: string, fallbackDesc: string, searchRepos:
   const newRepos = repos.filter((r) => new Date(r.created_at).getTime() > thirtyDaysAgo).length;
   const top = repos[0];
 
-  await sleep(500);
+  await sleep(300);
   let ca: WeeklyCommit[] = [];
   try { ca = (await ghApiFetch(`repos/${orgLogin}/${top.name}/stats/commit_activity`)) as WeeklyCommit[]; if (!Array.isArray(ca)) ca = []; } catch { ca = []; }
 
-  await sleep(500);
+  await sleep(300);
   let contribs: Contributor[] = [];
   try { contribs = (await ghApiFetch(`repos/${orgLogin}/${top.name}/contributors?per_page=100`)) as Contributor[]; if (!Array.isArray(contribs)) contribs = []; } catch { contribs = []; }
 
