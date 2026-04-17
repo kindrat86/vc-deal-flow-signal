@@ -4,9 +4,11 @@
 **Social MP4:** `mcp-server/assets/mcp-demo.mp4` (72s, 1280-wide, 933KB, no audio, faststart)
 **README GIF:** `mcp-server/assets/mcp-demo.gif` (36s @ 12fps, 720-wide, 1.9MB)
 
-Raw URLs once pushed:
-- MP4: `https://raw.githubusercontent.com/kindrat86/vc-deal-flow-signal/main/mcp-server/assets/mcp-demo.mp4`
-- GIF: `https://raw.githubusercontent.com/kindrat86/vc-deal-flow-signal/main/mcp-server/assets/mcp-demo.gif`
+**Public URLs (served from landing site, Vercel):**
+- MP4: `https://gitdealflow.com/mcp-demo.mp4`
+- GIF: `https://gitdealflow.com/mcp-demo.gif`
+
+(Repo is private, so raw.githubusercontent.com URLs 404. Always use the gitdealflow.com URLs in external embeds.)
 
 ---
 

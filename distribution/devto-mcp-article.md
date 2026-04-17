@@ -7,13 +7,13 @@
 
 **Tags:** mcp, ai, typescript, opensource
 
-**Cover image:** Upload mcp-server/assets/mcp-demo.gif (1.9MB, 2x speed, 12fps) — this is the hook; people will watch the loop before they read.
+**Cover image:** Upload landing/mcp-demo.gif (1.9MB, 2x speed, 12fps) — this is the hook; people will watch the loop before they read.
 
-**Embed after first paragraph:**
+**Embed after first paragraph (inline markdown since dev.to's embed tag doesn't support raw MP4 hosts, but does auto-render animated images):**
 ```
-{% embed https://raw.githubusercontent.com/kindrat86/vc-deal-flow-signal/main/mcp-server/assets/mcp-demo.mp4 %}
+![MCP server demo inside Claude](https://gitdealflow.com/mcp-demo.gif)
 ```
-(dev.to's liquid `embed` tag auto-plays MP4s inline.)
+Alternative: upload the MP4 via dev.to's own uploader to get an inline video player.
 
 ---
 
