@@ -1,10 +1,11 @@
 # Twitter/X Thread: MCP Server Launch
 ## Post from @data_nerd
 ## Timing: post same week as launch posts
+## ATTACH mcp-server/assets/mcp-demo.mp4 TO TWEET 1 (72s, 933KB, Twitter accepts up to 2:20)
 
 ---
 
-TWEET 1:
+TWEET 1 [ATTACH VIDEO: mcp-demo.mp4]:
 I stopped building dashboards.
 
 AI assistants are the new UI.

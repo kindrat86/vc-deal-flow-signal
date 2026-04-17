@@ -1,5 +1,6 @@
 # LinkedIn Post — Launch
-<!-- STATUS: PENDING DECISION — User has not decided whether to use personal LinkedIn for this project. Do not post until confirmed. -->
+<!-- STATUS: Company page live — post from linkedin.com/company/gitdealflow -->
+<!-- ATTACH mcp-server/assets/mcp-demo.mp4 as native video (LinkedIn prioritizes native video in feed) -->
 
 GitHub is the largest free dataset of real-time engineering activity in the world.
 

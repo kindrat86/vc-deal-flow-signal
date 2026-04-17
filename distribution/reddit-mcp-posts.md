@@ -1,5 +1,6 @@
 # Reddit MCP Posts
 ## Post after launch week, one per day to avoid spam detection
+## ATTACH mcp-server/assets/mcp-demo.mp4 on subs that accept video (r/ClaudeAI, r/cursor, r/SideProject) — fall back to GIF link or imgur for r/LocalLLaMA and r/venturecapital
 
 ---
 

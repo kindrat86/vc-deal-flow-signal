@@ -1,6 +1,7 @@
 # Discord Posts: MCP Server Distribution
 ## Target servers: Claude/Anthropic community, MCP-related Discords, dev tool communities
 ## Timing: post within 48h of dev.to publish, stagger 1 server per day
+## ATTACH mcp-server/assets/mcp-demo.mp4 to every post (933KB — well under Discord's 10MB free-tier limit; fall back to mcp-demo.gif if needed)
 
 ---
 
@@ -32,7 +33,7 @@ I track GitHub engineering acceleration across 2,000+ startup orgs (commit veloc
 }
 ```
 
-Try: "Which startups are accelerating in fintech?" or "Show me the signal for roboflow"
+Try: "Which cybersecurity startups are accelerating right now?" or "Show me the signal for projectdiscovery"
 
 No API key, data updates weekly from public GitHub API.
 

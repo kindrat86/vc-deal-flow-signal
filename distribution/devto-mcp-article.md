@@ -7,7 +7,13 @@
 
 **Tags:** mcp, ai, typescript, opensource
 
-**Cover image idea:** Terminal screenshot showing Claude responding with startup data
+**Cover image:** Upload mcp-server/assets/mcp-demo.gif (1.9MB, 2x speed, 12fps) — this is the hook; people will watch the loop before they read.
+
+**Embed after first paragraph:**
+```
+{% embed https://raw.githubusercontent.com/kindrat86/vc-deal-flow-signal/main/mcp-server/assets/mcp-demo.mp4 %}
+```
+(dev.to's liquid `embed` tag auto-plays MP4s inline.)
 
 ---
 
