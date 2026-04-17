@@ -41,6 +41,7 @@ export default function Home() {
         sameAs: [
           "https://t.me/gitdealflow",
           "https://x.com/data_nerd",
+          "https://www.linkedin.com/company/gitdealflow",
         ],
       },
       {
@@ -281,17 +282,17 @@ export default function Home() {
       {/* Bottom CTA */}
       <div className="mt-12 rounded-xl border border-slate-800 bg-slate-900 p-6 sm:p-8 text-center">
         <h2 className="text-gray-100 font-semibold text-lg mb-2">
-          Get the weekly Signal Digest
+          Get this week's top breakout startups
         </h2>
         <p className="text-gray-400 text-sm mb-5 max-w-lg mx-auto">
-          Every week we send the top 10 breakout engineering signals across all
-          sectors, straight to your inbox. Free, no spam.
+          Every week we rank the top 10 breakout engineering signals across all
+          sectors. Get the report free, no spam.
         </p>
         <Link
           href="https://gitdealflow.com/#signup"
           className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-medium transition-colors"
         >
-          Join the Signal Digest
+          Get the Report
         </Link>
       </div>
     </div>

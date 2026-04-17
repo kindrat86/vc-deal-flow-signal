@@ -43,7 +43,7 @@ Build credible presence on IndieHackers over 10+ days before dropping a launch p
 
 ## Three-Phase Timeline
 
-### Phase 1: Pure Value (Days 1-5, April 15-19)
+### Phase 1: Pure Value (Days 1-7, April 15-21)
 - 3-5 comments per day on trending posts
 - ZERO product mentions
 - Focus on: congratulating milestones, sharing data insights, asking smart questions
@@ -51,14 +51,14 @@ Build credible presence on IndieHackers over 10+ days before dropping a launch p
 - Upvote generously (IH is reciprocal)
 - Goal: become a visible, helpful commenter
 
-### Phase 2: Soft Authority (Days 6-10, April 20-24)
+### Phase 2: Soft Authority (Days 8-11, April 22-25)
 - Continue commenting (2-4/day)
 - Post ONE "building in public" update: "Tracking engineering signals across 2,000 startups - here's what I'm learning"
 - If asked about the tool, share casually
 - Start engaging with frequent posters and IH "regulars"
 - Goal: get 2-3 people to follow your profile or ask for updates
 
-### Phase 3: Launch Post (Days 11+, April 25+)
+### Phase 3: Launch Post (Days 12+, April 26+)
 - Drop the launch post (adapt from existing marketing/launch-posts/indiehackers-launch.md)
 - Should feel like a natural extension of your comment history
 - Cross-reference insights you shared in comments
@@ -90,9 +90,22 @@ Build credible presence on IndieHackers over 10+ days before dropping a launch p
 
 Phase 1 response: "I'm building something in the alternative data space for startup tracking. Still early — mostly just crunching GitHub API data and seeing what patterns emerge. Will share more when it's ready!"
 
-Phase 2 response: "Yeah! I'm building GitDealFlow — it tracks engineering signals (commit velocity, contributor growth) across startup GitHub orgs to spot breakout companies early. Still in beta but happy to share if you're curious."
+Phase 2 response: "Yeah! I'm building GitDealFlow — it tracks engineering signals (commit velocity, contributor growth) across startup GitHub orgs to spot breakout companies early. Existing tools like Harmonic/Dealroom charge $10K+/year and require demo calls — I wanted something transparent and self-serve. Still in beta but happy to share if you're curious."
 
 Phase 3 response: Full launch post with link.
+
+## Competitive Positioning (weave into conversations when relevant)
+
+Use these angles when someone discusses deal flow tools, expensive platforms, or data access in VC:
+
+- **Price**: "Deal flow platforms like Harmonic and Dealroom charge $10K+/year. I wanted something affordable for solo angels, not just funds."
+- **Access**: "Every platform I looked at requires a demo call to even see the product. That felt backwards for 2026."
+- **Transparency**: "They use proprietary black-box data. I use public GitHub data — you can verify every number yourself."
+- **Signal type**: "Those platforms tell you about rounds after they're announced. Engineering signals show you the acceleration before the pitch deck exists."
+
+If someone asks "how is this different from Harmonic/Dealroom?": "They charge $10K+/year, gate behind demos, and use proprietary data. I'm self-serve at EUR 9.97/mo with fully transparent public GitHub data. And none of them track engineering momentum — they report lagging indicators."
+
+If someone mentions Forager: "Forager has a free trial but only searches people, not startups or engineering signals."
 
 ## Content Ideas for Own Posts (Phase 2+)
 
@@ -100,6 +113,7 @@ Phase 3 response: Full launch post with link.
 2. "Building in public: how I went from a script to a product tracking startup engineering signals"
 3. "What I learned analyzing 50M+ commits across 2,000 startups"
 4. "The GitHub signal that predicts fundraising 3 months early"
+5. "Deal flow tools cost $10K/year. I built a transparent alternative for EUR 9.97/mo."
 
 ## Daily Time Budget
 

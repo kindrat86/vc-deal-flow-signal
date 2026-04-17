@@ -9,13 +9,21 @@ export default function Footer() {
             VC Deal Flow Signal tracks GitHub engineering acceleration as a
             leading indicator of startup momentum. Data is updated weekly.
           </p>
-          <nav className="flex items-center gap-4 text-sm text-gray-500">
+          <nav className="flex flex-wrap items-center gap-4 text-sm text-gray-500">
             <Link
               href="https://gitdealflow.com"
               className="hover:text-gray-300 transition-colors"
             >
               Main Site
             </Link>
+            <a
+              href="https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn"
+              className="hover:text-gray-300 transition-colors"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Chrome Extension
+            </a>
             <a
               href="https://t.me/gitdealflow"
               className="hover:text-gray-300 transition-colors"
@@ -31,6 +39,14 @@ export default function Footer() {
               target="_blank"
             >
               Twitter/X
+            </a>
+            <a
+              href="https://www.linkedin.com/company/gitdealflow"
+              className="hover:text-gray-300 transition-colors"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              LinkedIn
             </a>
             <Link
               href="https://gitdealflow.com/privacy"

@@ -29,21 +29,21 @@ Build credible presence in target subreddits over 12 days before dropping launch
 
 ## Three-Phase Timeline
 
-### Phase 1: Pure Value (Days 1-5, April 15-19)
+### Phase 1: Pure Value (Days 1-7, April 15-21)
 - 5-7 comments per day across Tier 1 and Tier 2 subs
 - ZERO product mentions
 - Build visible comment history
 - Reply to every engagement on your comments
 - Goal: become a recognizable username in r/venturecapital
 
-### Phase 2: Soft Authority (Days 6-10, April 20-24)
+### Phase 2: Soft Authority (Days 8-11, April 22-25)
 - Continue commenting (3-5/day)
 - Post ONE original [OC] visualization to r/dataisbeautiful (GitHub startup data)
 - If asked "what tool?", share casually: "building something, will share when it's ready"
 - Start engaging with mods' content in Tier 1 subs
 - Goal: get 2-3 replies that say "that's interesting" or "where can I see this"
 
-### Phase 3: Launch Posts (Days 11-14, April 25-28)
+### Phase 3: Launch Posts (Days 12+, April 26+)
 - Drop r/SideProject launch post (repurpose existing draft)
 - Drop r/startups launch post (repurpose existing draft)
 - Drop r/venturecapital discussion post (repurpose existing draft, most important)
@@ -59,6 +59,8 @@ Build credible presence in target subreddits over 12 days before dropping launch
 3. "Weekend activity patterns signal deadlines" - unusual observation that sparks curiosity
 4. "Engineering data tells you what the team does, not what the founder says" - contrarian angle
 5. "Measuring rate of change, not absolute values" - applicable to many startup discussions
+6. "Deal flow platforms charge $10K+/year for black-box data behind a sales call — public GitHub data is free and more predictive" - use when someone discusses expensive tooling, deal sourcing platforms, or data access inequality in VC
+7. "Existing tools tell you about rounds after they're announced; engineering signals show you the acceleration before the pitch deck exists" - leading vs lagging indicator frame, works in any sourcing discussion
 
 **OC Post ideas for r/dataisbeautiful (Phase 2):**
 - "I tracked commit velocity across 2,000 startup GitHub orgs. Here's what engineering acceleration looks like by sector." (chart)
@@ -81,6 +83,8 @@ Build credible presence in target subreddits over 12 days before dropping launch
 Phase 1 response: "I've been putting something together for this but it's still early days. Mostly just scripts pulling from the GitHub API right now. Happy to share once it's more polished."
 
 Phase 2 response: "Yeah I've been building a dashboard for this. Still in beta. I can DM you the link if you want to take a look?"
+
+If someone mentions Harmonic/Dealroom/Forager: "I looked at all of those. $10K+/year, demo-gated, proprietary data you can't verify. Forager has a free trial but only searches people. None of them track engineering momentum. I wanted something transparent and self-serve so I'm building my own."
 
 Phase 3 response: Full link drop is fine after launch posts are live.
 

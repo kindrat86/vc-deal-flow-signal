@@ -1,0 +1,80 @@
+wing: vc_deal_flow_signal
+rooms:
+- name: landing
+  description: Files from landing/
+  keywords:
+  - landing
+  - landing
+- name: email_api
+  description: Files from email-api/
+  keywords:
+  - email_api
+  - email-api
+- name: brunson
+  description: Files from brunson/
+  keywords:
+  - brunson
+  - brunson
+- name: pseo
+  description: Files from pseo/
+  keywords:
+  - pseo
+  - pseo
+- name: emails
+  description: Files from emails/
+  keywords:
+  - emails
+  - emails
+- name: chrome_extension
+  description: Files from chrome-extension/
+  keywords:
+  - chrome_extension
+  - chrome-extension
+- name: mcp_server
+  description: Files from mcp-server/
+  keywords:
+  - mcp_server
+  - mcp-server
+- name: distribution
+  description: Files from distribution/
+  keywords:
+  - distribution
+  - distribution
+- name: pocketbase
+  description: Files from pocketbase/
+  keywords:
+  - pocketbase
+  - pocketbase
+- name: marketing
+  description: Files from marketing/
+  keywords:
+  - marketing
+  - marketing
+- name: pseo_site
+  description: Files from pseo-site/
+  keywords:
+  - pseo_site
+  - pseo-site
+- name: monitoring
+  description: Files from monitoring/
+  keywords:
+  - monitoring
+  - monitoring
+- name: stripe
+  description: Files from stripe/
+  keywords:
+  - stripe
+  - stripe
+- name: frontend
+  description: Files from components/
+  keywords:
+  - frontend
+  - components
+- name: scripts
+  description: Files from scripts/
+  keywords:
+  - scripts
+  - scripts
+- name: general
+  description: Files that don't fit other rooms
+  keywords: []

@@ -1,0 +1,188 @@
+# VC Deal Flow Signal — Full Reference for AI Agents
+
+> GitHub engineering momentum as a leading indicator for venture capital investors. We monitor public GitHub activity across thousands of startups and surface the ones showing unusual acceleration — weeks before they hit your inbox.
+
+## Product Overview
+
+VC Deal Flow Signal is an independent data product that tracks startup engineering acceleration using public GitHub data. It monitors commit velocity, contributor growth, and repository expansion across 20 startup sectors to surface breakout engineering teams before they appear through traditional deal sourcing channels.
+
+Engineering acceleration signals have historically preceded fundraise announcements by six to twelve weeks.
+
+## Key Pages
+
+- Homepage: https://gitdealflow.com/
+- Live Dashboard: https://signals.gitdealflow.com/
+- Insider Circle: https://gitdealflow.com/insider
+- Methodology: https://signals.gitdealflow.com/methodology
+- FAQ: https://signals.gitdealflow.com/faq
+- Glossary: https://signals.gitdealflow.com/glossary
+- About: https://signals.gitdealflow.com/about
+- Blog: https://signals.gitdealflow.com/blog
+- Privacy Policy: https://gitdealflow.com/privacy
+- Terms of Service: https://gitdealflow.com/terms
+
+## API Endpoints
+
+All endpoints are public, free with attribution, and require no authentication.
+
+### GET /api/signals.json
+Returns the current period's startup signals: trending top 20, sector-by-sector rankings with commit velocity, contributor growth, signal classification, and metadata.
+
+Example response structure:
+```json
+{
+  "meta": {
+    "name": "VC Deal Flow Signal",
+    "period": { "slug": "q2-2026", "name": "Q2 2026" },
+    "totalSectors": 20,
+    "totalStartups": 24,
+    "lastUpdated": "2026-04-14T00:00:00.000Z",
+    "citation": "Data: VC Deal Flow Signal (gitdealflow.com)"
+  },
+  "trending": [
+    {
+      "name": "orbiternassp",
+      "description": "Space tech startup",
+      "stage": "Seed",
+      "geography": "US",
+      "commitVelocity14d": 30,
+      "commitVelocityChange": "+329%",
+      "contributors": 37,
+      "contributorGrowth": "+12%",
+      "newRepos": 0,
+      "signalType": "Deploy frequency spike",
+      "githubUrl": "https://github.com/orbiternassp"
+    }
+  ],
+  "sectors": [
+    {
+      "name": "AI & Machine Learning",
+      "slug": "ai-ml",
+      "description": "Startups building AI/ML products...",
+      "url": "https://signals.gitdealflow.com/startups-to-watch/ai-ml-q2-2026",
+      "startupCount": 3,
+      "startups": [...]
+    }
+  ]
+}
+```
+
+### GET /api/signals.csv
+Same data as signals.json in CSV format for spreadsheet and data science consumption.
+
+### GET /api/openapi.json
+Full OpenAPI 3.1.0 specification for all API endpoints.
+
+### GET /api/changelog.json
+Data pipeline changelog: current period metadata, active sector count, startup count, and last data refresh timestamp.
+
+## Sector Signal Pages
+
+Each sector has a dedicated page with ranked startup tables, velocity charts, and signal distribution breakdowns:
+
+- AI & Machine Learning: https://signals.gitdealflow.com/startups-to-watch/ai-ml-q2-2026
+- Fintech: https://signals.gitdealflow.com/startups-to-watch/fintech-q2-2026
+- Climate Tech: https://signals.gitdealflow.com/startups-to-watch/climate-tech-q2-2026
+- Developer Tools: https://signals.gitdealflow.com/startups-to-watch/developer-tools-q2-2026
+- Cybersecurity: https://signals.gitdealflow.com/startups-to-watch/cybersecurity-q2-2026
+- Healthcare: https://signals.gitdealflow.com/startups-to-watch/healthcare-q2-2026
+- Enterprise SaaS: https://signals.gitdealflow.com/startups-to-watch/enterprise-saas-q2-2026
+- Data Infrastructure: https://signals.gitdealflow.com/startups-to-watch/data-infrastructure-q2-2026
+- Web3: https://signals.gitdealflow.com/startups-to-watch/web3-q2-2026
+- Robotics: https://signals.gitdealflow.com/startups-to-watch/robotics-q2-2026
+- HR Tech: https://signals.gitdealflow.com/startups-to-watch/hr-tech-q2-2026
+- PropTech: https://signals.gitdealflow.com/startups-to-watch/proptech-q2-2026
+- EdTech: https://signals.gitdealflow.com/startups-to-watch/edtech-q2-2026
+- E-commerce Infrastructure: https://signals.gitdealflow.com/startups-to-watch/ecommerce-infra-q2-2026
+- Social & Community: https://signals.gitdealflow.com/startups-to-watch/social-community-q2-2026
+- Space Tech: https://signals.gitdealflow.com/startups-to-watch/space-tech-q2-2026
+- Supply Chain & Logistics: https://signals.gitdealflow.com/startups-to-watch/supply-chain-q2-2026
+- Legal Tech: https://signals.gitdealflow.com/startups-to-watch/legal-tech-q2-2026
+- IoT & Edge: https://signals.gitdealflow.com/startups-to-watch/iot-edge-q2-2026
+- Gaming & Metaverse: https://signals.gitdealflow.com/startups-to-watch/gaming-metaverse-q2-2026
+
+## Methodology
+
+### Data Sources
+- GitHub API v3: search/repositories, stats/commit_activity, contributors endpoints
+- Queried weekly (Monday mornings) across 20 sector-specific topic clusters
+- Excludes large tech companies, major open-source foundations, and non-startup organizations
+
+### Core Metrics
+1. **Commit Velocity (14-day)**: Total commits to an organization's most active public repository over a rolling 14-day window.
+2. **Commit Velocity Change**: Percentage change vs. prior 14-day window. This is the primary ranking signal — it measures acceleration, not absolute volume.
+3. **Contributor Count & Growth**: Unique contributors and growth rate (6-week comparison). Rising contributor count signals team expansion.
+4. **New Repositories**: Public repos created in the last 30 days. Burst of new repos signals infrastructure buildout.
+
+### Signal Classification
+Each startup is assigned one of four signal types:
+- **Engineering hiring burst**: Contributor growth rate exceeds 50%.
+- **Infrastructure buildout**: 3+ new repositories in 30 days.
+- **Deploy frequency spike**: Commit velocity increased 150%+.
+- **Framework migration**: General acceleration not fitting above categories.
+
+### Stage Estimation
+Estimated from contributor count: Pre-seed (1-7), Seed (8-19), Series A/B (20-49), Growth (50+).
+
+### Known Limitations
+- Private repositories are invisible to this analysis.
+- Commit volume does not equal code quality.
+- Engineering acceleration is a leading indicator, not a guarantee.
+- This is not investment advice.
+
+## Pricing
+
+- **Signal Digest**: Free forever — this week's top 5 breakout startups with real GitHub acceleration data, delivered free after email confirmation then weekly.
+- **Dashboard Beta**: EUR 9.97/month (early access, normally EUR 49) — 100+ startups ranked across 20 sectors, filter by sector/stage/geography.
+- **Insider Circle**: EUR 97/month (normally EUR 197) — Private investor Telegram group, monthly live briefing, custom watchlists, API access.
+
+## MCP Server (Claude Integration)
+
+VC Deal Flow Signal is available as a Model Context Protocol server for Claude Desktop and Claude Code.
+
+- npm: https://www.npmjs.com/package/@gitdealflow/mcp-signal
+- Registry: io.github.kindrat86/vc-deal-flow-signal
+- No API key required
+
+### Installation
+```json
+{
+  "mcpServers": {
+    "vc-deal-flow-signal": {
+      "command": "npx",
+      "args": ["-y", "@gitdealflow/mcp-signal"]
+    }
+  }
+}
+```
+
+### Available Tools
+1. **get_trending_startups**: Returns the top 20 startups by engineering acceleration across all sectors.
+2. **search_startups_by_sector**: Search startups filtered by sector name.
+3. **get_startup_signal**: Get detailed signal data for a specific startup by name.
+4. **get_signals_summary**: Summary statistics: total startups, sectors, period, and last update.
+5. **get_methodology**: Full methodology text explaining data sources, metrics, and signal classification.
+
+## Glossary of Key Terms
+
+- **Commit Velocity**: Total commits to a startup's most active public GitHub repository over a rolling 14-day window.
+- **Commit Velocity Change**: Percentage change in commit velocity compared to the preceding 14-day window. The primary ranking signal.
+- **Engineering Acceleration**: A sustained increase in a startup's engineering output relative to its own historical baseline.
+- **Deal Flow Signal**: A data point or pattern that indicates a startup may be approaching a fundable milestone.
+- **Signal Type**: Classification of what is driving a startup's engineering acceleration.
+
+## Contact
+
+- Email: signal@gitdealflow.com
+- Telegram: https://t.me/gitdealflow
+- Twitter/X: https://x.com/data_nerd
+
+## Machine-Readable Formats
+
+- JSON API: https://signals.gitdealflow.com/api/signals.json
+- CSV Export: https://signals.gitdealflow.com/api/signals.csv
+- OpenAPI Spec: https://signals.gitdealflow.com/api/openapi.json
+- RSS Feed: https://signals.gitdealflow.com/feed.xml
+- Sitemap: https://gitdealflow.com/sitemap.xml
+- llms.txt: https://gitdealflow.com/llms.txt
+- ai-plugin.json: https://signals.gitdealflow.com/.well-known/ai-plugin.json

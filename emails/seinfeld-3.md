@@ -21,3 +21,7 @@ By the time AngelList shows "trending" or a TechCrunch article drops, you're alr
 The free digest gives you the top 5 each month. The Dashboard gives you 100+ startups across 20 sectors with filters: https://gitdealflow.com/#pricing
 
 The Data Nerd
+
+P.S. Power user? Our data works inside Claude. Install our MCP server and ask your AI assistant about startup signals directly: npx @gitdealflow/mcp-signal
+
+P.P.S. Do most of your deal research on Crunchbase? We shipped a free Chrome extension that injects the signal badge on Crunchbase, AngelList, and PitchBook profiles: https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn

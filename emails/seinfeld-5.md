@@ -21,3 +21,7 @@ I find it genuinely strange that this gap exists. But it does, and that's why I 
 Free monthly digest for the top 5. Full Dashboard (EUR 9.97/mo) for 100+ startups with sector filters: https://gitdealflow.com/#pricing
 
 The Data Nerd
+
+P.S. We just launched a Claude MCP server. Query our startup signals directly from your AI workflow, no login needed: npx @gitdealflow/mcp-signal
+
+P.P.S. Not using Claude? We also shipped a free Chrome extension that shows the signal directly on Crunchbase, AngelList, and PitchBook — no dashboard to switch to: https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn

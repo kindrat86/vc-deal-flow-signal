@@ -70,3 +70,17 @@ No spam. Just data.
 https://gitdealflow.com
 
 If you're a seed/Series A investor, this is the signal nobody else is reading.
+
+## Tweet 8 (embedded distribution)
+Prefer to stay in your existing workflow?
+
+Chrome extension: see the acceleration badge inside Crunchbase, AngelList, and PitchBook profiles you already browse.
+
+Install: https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn
+
+## Tweet 9 (AI-native distribution)
+Use Claude for research?
+
+MCP server: ask "which fintech startups are accelerating?" directly in your AI assistant. No dashboard, no API key.
+
+Install: npx @gitdealflow/mcp-signal

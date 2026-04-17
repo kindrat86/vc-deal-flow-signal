@@ -252,7 +252,7 @@ The result is a weekly-updated ranking of startups showing the strongest enginee
 
 ## How Do I Get Started with Deal Flow Signal?
 
-The simplest way to start using deal flow signal is to subscribe to our free Signal Digest — five breakout startups with real GitHub acceleration data, delivered monthly. For deeper access, our Dashboard gives you the full ranked list across all 20 sectors with filtering by stage, geography, and signal type. To learn the practical framework, read our guide on [how to read GitHub signals for startup investing](/blog/how-to-read-github-signals-for-startup-investing).`,
+The simplest way to start using deal flow signal is to get our free Signal Report — five breakout startups with real GitHub acceleration data, delivered weekly. For deeper access, our Dashboard gives you the full ranked list across all 20 sectors with filtering by stage, geography, and signal type. To learn the practical framework, read our guide on [how to read GitHub signals for startup investing](/blog/how-to-read-github-signals-for-startup-investing).`,
   },
   {
     slug: "github-due-diligence-for-vcs",
@@ -513,7 +513,7 @@ If you are an investor interested in adding alternative data to your sourcing pr
 
 The combination of engineering signals for timing and traditional data for due diligence gives you both a lead time advantage and a solid evaluation framework. For a practical walkthrough, see [how to source deals before Crunchbase](/blog/source-startup-deals-before-crunchbase).
 
-Browse our sector rankings to see which startups are showing engineering acceleration right now, or subscribe to the free Signal Digest for a monthly summary of the top breakout signals.`,
+Browse our sector rankings to see which startups are showing engineering acceleration right now, or get the free Signal Report for a weekly summary of the top breakout signals.`,
   },
   {
     slug: "source-startup-deals-before-crunchbase",

@@ -1,5 +1,14 @@
 # Launch Plan: VC Deal Flow Signal
-## Date: 2026-04-15 | Framework: Greg Isenberg (distribution-first launch)
+## Date: 2026-04-15 | Framework: Greg Isenberg (distribution-first launch) + Russell Brunson value ladder
+
+## Embedded distribution layers (Isenberg Strategy #1: piggyback on existing platforms)
+
+Two free entry rungs on the Brunson value ladder. Mention BOTH in every launch asset alongside the core site, not as afterthoughts. Each attracts a distinct persona:
+
+1. **Chrome extension** — injects a green "Accelerating" badge on Crunchbase, AngelList, and PitchBook startup profiles. Install: https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn. Audience: traditional VCs doing deal research in the browser.
+2. **Claude MCP server** — serves signals inside Claude Desktop, Claude Code, Cursor, and any MCP-compatible AI assistant. Install: `npx @gitdealflow/mcp-signal`. Audience: dev-investors and AI-native workflows.
+
+Both are free, both drive signups to the monthly digest, which feeds the EUR 9.97/mo dashboard and EUR 97/mo Insider Circle conversions.
 
 ## Launch Strategy: Staggered 3-wave launch over 7 days
 
@@ -89,6 +98,30 @@ Product Hunt gives you one shot at a clean launch. Use learnings from Wave 1 and
 - Respond to every comment within 30 min
 - Post a Twitter thread: "Today I launched [product] on Product Hunt. Here's the backstory..."
 - Send an email to your subscriber list: "We're live on Product Hunt, here's the link"
+
+---
+
+## Wave 2.5: MCP Distribution Blitz (Day 5-10, concurrent with Wave 2+3)
+
+### Why a dedicated MCP wave
+The MCP server is the product for developer-investors. It needs its own distribution push, not just a mention in the main launch.
+
+### Actions (see `distribution/mcp-distribution-strategy.md` for full details)
+
+- [ ] Post Twitter thread sharing dev.to article (`distribution/twitter-devto-article-thread.md`)
+- [ ] Cross-post to Hashnode (`distribution/hashnode-mcp-crosspost.md`)
+- [ ] Discord blitz: 5 servers in 5 days (`distribution/discord-mcp-posts.md`)
+- [ ] Record 30-second demo GIF of MCP server in Claude
+- [ ] Add demo GIF to: GitHub README, dev.to article, Twitter, Discord posts
+- [ ] Follow up on awesome-mcp-servers PR #4933
+- [ ] Check all directory listing statuses (Glama, mcp.so, MCP Market, Cline, PulseMCP)
+- [ ] Post MCP query screenshot on Twitter (standalone tweet, not part of thread)
+
+### Ongoing MCP noise (post-launch)
+- Weekly: 1 MCP screenshot tweet + 1 MCP ecosystem reply
+- Bi-weekly: Discord engagement in MCP communities
+- Monthly: New dev.to article with MCP angle
+- See `marketing/content-repurposing-pipeline.md` (Thursday MCP slot)
 
 ---
 

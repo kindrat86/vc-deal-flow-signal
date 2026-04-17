@@ -22,6 +22,8 @@ The core idea: when a startup's commit velocity spikes sharply compared to their
 
 4. **Not all GitHub activity is signal.** Docs sprints, CI/CD noise, and open-source maintenance inflate numbers without reflecting product work. Measuring change from baseline (not absolute numbers) filters most of this out.
 
+**How this is different from Harmonic, Dealroom, etc.:** Those platforms cost $10K+/year, require demo calls to get in, and use proprietary data you can't verify. This uses public GitHub data (fully transparent), is self-serve (no sales call), and starts at EUR 9.97/mo. None of them track engineering momentum — they tell you about rounds *after* they happen. This shows you the acceleration *before* the pitch deck exists.
+
 **Current state of the tool:**
 - 20 sectors tracked weekly (AI, Fintech, Healthcare, Cybersecurity, etc.)
 - 43 startups showing measurable engineering acceleration right now
@@ -30,5 +32,7 @@ The core idea: when a startup's commit velocity spikes sharply compared to their
 **Top signal this week:** carlos-emr (healthcare) — +199% commit velocity, 94 contributors. A burst like that in open-source health tech is unusual.
 
 If anyone's curious about the data or wants to see specific sectors, happy to share: https://signals.gitdealflow.com
+
+There's also a free Chrome extension if you want to see the engineering signal next to any startup on Crunchbase / AngelList / PitchBook: https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn — useful for competitive intelligence too.
 
 Building this solo. Would love feedback from founders on whether this kind of data would concern you (an investor watching your GitHub) or whether you'd find it useful for competitive intelligence.

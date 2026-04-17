@@ -40,13 +40,21 @@ From that one piece, create:
 | 6 | Twitter/X single tweet | @data_nerd | Pull one stat from the anchor: "carlos-emr: commit velocity +199% in 14 days. 94 contributors. Something is happening in healthtech." |
 | 7 | Quote tweet / reply | @data_nerd | Reply to a relevant VC tweet with your data point as context |
 
+### Thursday: MCP noise (15 min)
+
+| # | Format | Platform | Adaptation |
+|---|--------|----------|------------|
+| 8 | MCP query screenshot | Twitter @data_nerd | Screenshot of Claude answering a sector question via MCP: "Asked Claude which [sector] startups are accelerating → got live data in 3 seconds" |
+| 9 | MCP ecosystem engagement | Twitter @data_nerd | Reply to any MCP-related tweet from @AnthropicAI, @alexalbert__, @simonw, or Dream 100 targets |
+| 10 | Discord comment | Claude/MCP Discord | Answer a question or share a data point in an MCP community server |
+
 ### Friday: Community + outreach (30 min)
 
 | # | Format | Platform | Adaptation |
 |---|--------|----------|------------|
-| 8 | Indie Hackers update | Indie Hackers | Monthly build-in-public update with signal examples |
-| 9 | Email to Dream 100 contact | Email | Pitch a newsletter from the Dream 100 list: "Here's an interesting data point for your readers..." |
-| 10 | Hacker News comment | HN | Find a relevant thread (startup raises, GitHub discussion) and drop the signal as context |
+| 11 | Indie Hackers update | Indie Hackers | Monthly build-in-public update with signal examples |
+| 12 | Email to Dream 100 contact | Email | Pitch a newsletter from the Dream 100 list: "Here's an interesting data point for your readers..." |
+| 13 | Hacker News comment | HN | Find a relevant thread (startup raises, GitHub, MCP) and drop the signal as context |
 
 ---
 
@@ -115,3 +123,25 @@ I publish a free weekly signal and a monthly digest for investors who want to so
 | 4 | zapplyjobs | HR Tech | 400% contributor growth, pre-seed |
 
 After week 4, the weekly data refresh provides fresh material automatically.
+
+---
+
+## MCP-specific content (ongoing, in addition to weekly cycle)
+
+### Bi-weekly: MCP query screenshot tweet
+Post a screenshot of Claude answering a real question via the MCP server. Rotate sectors.
+Template: "Asked Claude: '[sector question]' → live data from 2,000+ startup GitHub orgs in 3 seconds. This is what MCP does."
+
+### Monthly: New dev.to article (MCP angle)
+Rotate between:
+1. "How to publish an MCP server to the ecosystem" (tutorial)
+2. "5 MCP servers every investor should install" (listicle)
+3. "MCP server usage patterns: what investors actually ask" (data story)
+4. "Building an AI-native data product" (founder story)
+
+### Ongoing: MCP ecosystem engagement
+- Reply to MCP tweets from Anthropic, Simon Willison, other builders
+- Comment in MCP Discord channels
+- Help other server builders (builds goodwill, gets reciprocal sharing)
+
+See `distribution/mcp-distribution-strategy.md` for full MCP playbook.

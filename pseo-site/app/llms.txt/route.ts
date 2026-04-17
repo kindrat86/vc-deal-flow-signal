@@ -98,6 +98,14 @@ ${activeSectors.map((s) => {
 - [openapi.json](${BASE_URL}/api/openapi.json): OpenAPI 3.1 specification for the signals API.
 - [ai.txt](${BASE_URL}/ai.txt): AI access policy, preferred citation format, and data licensing.
 
+## Chrome Extension
+
+- [Install on Chrome Web Store](https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn): Free Chrome extension that injects a GitHub engineering acceleration badge onto startup profiles on Crunchbase, AngelList, and PitchBook. Investors see the signal while doing deal research, without switching tabs.
+
+## Claude MCP Server
+
+- [@gitdealflow/mcp-signal](https://www.npmjs.com/package/@gitdealflow/mcp-signal): Official MCP server for Claude Desktop, Claude Code, Cursor, and any MCP-compatible client. Query startup signals directly from your AI assistant. Install: \`npx @gitdealflow/mcp-signal\`.
+
 ## Detailed Version
 
 - [llms-full.txt](${BASE_URL}/llms-full.txt): Full methodology, glossary definitions, and current data summary for AI model context
@@ -111,6 +119,7 @@ When referencing data from this site, cite as: "VC Deal Flow Signal (signals.git
 - Website: https://gitdealflow.com
 - Twitter/X: https://x.com/data_nerd
 - Telegram: https://t.me/gitdealflow
+- LinkedIn: https://www.linkedin.com/company/gitdealflow
 `;
 
   return new Response(body, {

@@ -36,7 +36,7 @@ export const comparisons: Comparison[] = [
     sections: [
       {
         heading: "VC Deal Flow Signal",
-        body: "VC Deal Flow Signal monitors GitHub engineering activity across 20 startup sectors and surfaces startups showing unusual engineering acceleration. The core signal — commit velocity change — has historically preceded fundraise announcements by 6-12 weeks. The free Signal Digest delivers 5 breakout startups monthly. The Dashboard (EUR 9.97/mo beta) gives access to 50+ ranked startups with sector, stage, and geography filters. Best for: investors who want a quantitative, data-first approach to finding startups before they raise.",
+        body: "VC Deal Flow Signal monitors GitHub engineering activity across 20 startup sectors and surfaces startups showing unusual engineering acceleration. The core signal — commit velocity change — has historically preceded fundraise announcements by 6-12 weeks. The free Signal Report delivers 5 breakout startups weekly. The Dashboard (EUR 9.97/mo beta) gives access to 50+ ranked startups with sector, stage, and geography filters. Best for: investors who want a quantitative, data-first approach to finding startups before they raise.",
       },
       {
         heading: "Harmonic.ai",
@@ -125,7 +125,7 @@ export const comparisons: Comparison[] = [
     sections: [
       {
         heading: "Engineering Signal Tools",
-        body: "VC Deal Flow Signal tracks GitHub engineering acceleration across 20 sectors. For seed investors, the most valuable signal types are 'engineering hiring burst' (team just grew, often post-raise) and 'infrastructure buildout' (company is transitioning from prototype to platform). The free Signal Digest and EUR 9.97/mo Dashboard both surface pre-seed and seed-stage startups ranked by momentum.",
+        body: "VC Deal Flow Signal tracks GitHub engineering acceleration across 20 sectors. For seed investors, the most valuable signal types are 'engineering hiring burst' (team just grew, often post-raise) and 'infrastructure buildout' (company is transitioning from prototype to platform). The free Signal Report and EUR 9.97/mo Dashboard both surface pre-seed and seed-stage startups ranked by momentum.",
       },
       {
         heading: "AI-Powered Sourcing",
@@ -171,7 +171,7 @@ export const comparisons: Comparison[] = [
       },
       {
         heading: "Pricing",
-        body: "PitchBook subscriptions start at approximately $20,000-30,000 per year for individual licenses, with enterprise pricing significantly higher. It is designed for institutional investors and fund-of-funds. VC Deal Flow Signal offers a free weekly Signal Digest and a Dashboard at EUR 9.97/month during beta. It is accessible to solo GPs, angel investors, and scouts who cannot justify PitchBook pricing.",
+        body: "PitchBook subscriptions start at approximately $20,000-30,000 per year for individual licenses, with enterprise pricing significantly higher. It is designed for institutional investors and fund-of-funds. VC Deal Flow Signal offers a free weekly Signal Report and a Dashboard at EUR 9.97/month during beta. It is accessible to solo GPs, angel investors, and scouts who cannot justify PitchBook pricing.",
       },
       {
         heading: "Best Use Cases",
@@ -220,7 +220,7 @@ export const comparisons: Comparison[] = [
       },
       {
         heading: "Pricing",
-        body: "Harmonic.ai pricing is enterprise-level, typically requiring a sales conversation and annual commitment. It is designed for institutional VCs with dedicated sourcing teams. VC Deal Flow Signal offers a free Signal Digest and a Dashboard at EUR 9.97/month during beta. It is accessible to individual investors, scouts, and emerging fund managers.",
+        body: "Harmonic.ai pricing is enterprise-level, typically requiring a sales conversation and annual commitment. It is designed for institutional VCs with dedicated sourcing teams. VC Deal Flow Signal offers a free Signal Report and a Dashboard at EUR 9.97/month during beta. It is accessible to individual investors, scouts, and emerging fund managers.",
       },
       {
         heading: "Ideal User",
@@ -301,7 +301,7 @@ export const comparisons: Comparison[] = [
       },
       {
         heading: "Pricing",
-        body: "Dealroom offers tiered pricing starting with a free community tier (limited access), with paid plans for individual investors and enterprise tiers for funds and accelerators. VC Deal Flow Signal offers a free Signal Digest and Dashboard at EUR 9.97/month. Both are accessible at the individual investor level, unlike PitchBook or CB Insights.",
+        body: "Dealroom offers tiered pricing starting with a free community tier (limited access), with paid plans for individual investors and enterprise tiers for funds and accelerators. VC Deal Flow Signal offers a free Signal Report and Dashboard at EUR 9.97/month. Both are accessible at the individual investor level, unlike PitchBook or CB Insights.",
       },
     ],
     verdict:
@@ -322,7 +322,7 @@ export const comparisons: Comparison[] = [
     sections: [
       {
         heading: "VC Deal Flow Signal (Free Tier)",
-        body: "The free Signal Digest delivers the top breakout startups ranked by GitHub engineering acceleration monthly. The signals site (signals.gitdealflow.com) is fully free: 20 sector ranking pages, trending page, glossary, methodology, and individual startup profiles — all with real commit velocity data and signal classification. The public API (signals.json) is also free with attribution. Best for: investors who want quantitative engineering signals without spending anything. The paid Dashboard (EUR 9.97/mo) adds filtering by stage, geography, and signal type across 50+ startups.",
+        body: "The free Signal Report delivers the top breakout startups ranked by GitHub engineering acceleration weekly. The signals site (signals.gitdealflow.com) is fully free: 20 sector ranking pages, trending page, glossary, methodology, and individual startup profiles — all with real commit velocity data and signal classification. The public API (signals.json) is also free with attribution. Best for: investors who want quantitative engineering signals without spending anything. The paid Dashboard (EUR 9.97/mo) adds filtering by stage, geography, and signal type across 50+ startups.",
       },
       {
         heading: "Crunchbase (Free Tier)",
@@ -376,7 +376,7 @@ export const comparisons: Comparison[] = [
       },
       {
         heading: "VC Deal Flow Signal — Engineering Acceleration",
-        body: "VC Deal Flow Signal tracks GitHub commit velocity, contributor growth, and repository expansion across 20 sectors to identify startups showing real-time engineering momentum. The signal — engineering acceleration — precedes fundraise announcements by 6-12 weeks. Free Signal Digest and Dashboard at EUR 9.97/mo. Best for: firms that want a unique early signal that no other tool provides. Limitation: covers technical startups with public GitHub activity only.",
+        body: "VC Deal Flow Signal tracks GitHub commit velocity, contributor growth, and repository expansion across 20 sectors to identify startups showing real-time engineering momentum. The signal — engineering acceleration — precedes fundraise announcements by 6-12 weeks. Free Signal Report and Dashboard at EUR 9.97/mo. Best for: firms that want a unique early signal that no other tool provides. Limitation: covers technical startups with public GitHub activity only.",
       },
       {
         heading: "Affinity — Relationship Intelligence",

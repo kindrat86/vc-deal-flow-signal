@@ -26,6 +26,10 @@ The data pipeline runs on a cron, rebuilds the site, and auto-submits to IndexNo
 
 Free tier: monthly Signal Digest of top 5 breakout startups by email. Everything on the site is free to browse.
 
+Two embedded distribution layers for people who want the data in their existing workflow instead of a dashboard:
+- MCP server (`npx @gitdealflow/mcp-signal`) — query signals directly from Claude Desktop, Claude Code, Cursor, or any MCP-compatible client
+- Chrome extension (Crunchbase / AngelList / PitchBook overlay) — adds a green "Accelerating" badge to startup profiles where the engineering signal is already interesting. Link: https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn
+
 I'd love feedback on:
 1. Is this signal actually useful for investors?
 2. What other engineering signals would you want to track?

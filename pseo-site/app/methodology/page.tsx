@@ -48,6 +48,45 @@ export default function MethodologyPage() {
           },
         ],
       },
+      {
+        "@type": "HowTo",
+        name: "How VC Deal Flow Signal Measures Startup Engineering Acceleration",
+        description:
+          "Step-by-step methodology for tracking startup engineering momentum using public GitHub data, from data collection through signal classification and weekly ranking.",
+        totalTime: "P7D",
+        step: [
+          {
+            "@type": "HowToStep",
+            position: 1,
+            name: "Query GitHub API for startup organizations",
+            text: "Every Monday, query the GitHub API v3 search/repositories endpoint to discover active startup organizations across 20 sector-specific topic clusters. Pull per-organization data from stats/commit_activity and contributors endpoints.",
+          },
+          {
+            "@type": "HowToStep",
+            position: 2,
+            name: "Calculate commit velocity and change",
+            text: "Sum two consecutive weeks of GitHub commit_activity data to produce a 14-day commit velocity figure. Calculate percentage change vs. the preceding 14-day window to determine acceleration.",
+          },
+          {
+            "@type": "HowToStep",
+            position: 3,
+            name: "Measure contributor growth",
+            text: "Count unique contributors to each organization's most active repository. Estimate growth by comparing recent 6-week commit volume to the prior 6-week period.",
+          },
+          {
+            "@type": "HowToStep",
+            position: 4,
+            name: "Classify signal type",
+            text: "Assign each startup one of four signal types: Engineering hiring burst (contributor growth >50%), Infrastructure buildout (3+ new repos in 30 days), Deploy frequency spike (commit velocity +150%+), or Framework migration (general acceleration).",
+          },
+          {
+            "@type": "HowToStep",
+            position: 5,
+            name: "Rank by acceleration and publish",
+            text: "Rank startups within each sector by commit velocity change. Enrich with funding stage estimation, team size, geography, and signal type. Regenerate sector ranking pages and publish updated data via the public API and dashboard.",
+          },
+        ],
+      },
     ],
   };
 

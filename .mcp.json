@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "vc-deal-flow-signal": {
+      "command": "node",
+      "args": ["mcp-server/dist/server.js"],
+      "description": "VC Deal Flow Signal — startup engineering acceleration data for investors"
+    }
+  }
+}

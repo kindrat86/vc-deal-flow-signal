@@ -22,6 +22,8 @@ Whatever the cause, the signal shows up in the commit graph **weeks before** it 
 
 **The stack**: Next.js pSEO site generating 100+ pages from structured data. GitHub API for the data pipeline. Pocketbase for subscriber management. Stripe for payments. Hosted on Vercel. The whole thing was built solo.
 
+**Why not just use Harmonic, Dealroom, or Forager?** I looked at every deal flow platform out there. They charge $10K+/year, require you to book a demo just to see the product, and run on proprietary black-box data. Forager has a free trial but only searches people, not startups. None of them track engineering momentum. I wanted something transparent, self-serve, and affordable enough for solo angels — not just funds with six-figure tooling budgets.
+
 **Current state**:
 - 20 sectors tracked (AI/ML, Fintech, Healthcare, Cybersecurity, Developer Tools, etc.)
 - 43 startups showing measurable acceleration signals right now
@@ -29,7 +31,11 @@ Whatever the cause, the signal shows up in the commit graph **weeks before** it 
 - Paid Dashboard at EUR 9.97/mo (50+ startups, filters by sector/stage/geography)
 - Free weekly signals on Telegram
 
-**What's next**: Chrome extension for Crunchbase/AngelList overlay (showing the engineering signal alongside the standard startup profile), and an API for investors who want to integrate signals into their own workflow.
+**NEW: Works inside Claude.** I just published an MCP server so you can query our data directly from Claude Desktop or Claude Code. Ask "which fintech startups are accelerating?" and get live data without leaving your AI workflow. Install: `npx @gitdealflow/mcp-signal`
+
+**NEW: Works inside Crunchbase.** I also shipped a free Chrome extension that injects a green "Accelerating" badge onto any startup profile on Crunchbase, AngelList, or PitchBook that's showing engineering momentum. Same workflow you already have, new layer of signal. Install: https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn
+
+**What's next**: Public API for investors who want to pipe signals into their own workflows, watchlists, or trading systems.
 
 **Ask**: Would you use something like this? If you're an angel investor or just curious about data-driven deal sourcing — what sectors would you want tracked?
 

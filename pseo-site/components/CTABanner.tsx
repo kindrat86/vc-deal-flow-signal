@@ -18,7 +18,7 @@ export default function CTABanner() {
               See the full ranked list of 50+ startups across all sectors
             </h3>
             <p className="text-gray-400 text-sm leading-relaxed">
-              Join the Signal Digest for free weekly engineering acceleration
+              Get the free weekly engineering acceleration
               rankings, or unlock the full Dashboard for real-time tracking,
               sector filters, and founder contact data. Beta pricing: EUR 9.97
               per month.
@@ -29,7 +29,7 @@ export default function CTABanner() {
               href="https://gitdealflow.com/#signup"
               className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-medium transition-colors"
             >
-              Get the Free Signal Digest
+              Get the Report
             </Link>
             <Link
               href="https://gitdealflow.com/#pricing"
@@ -39,6 +39,17 @@ export default function CTABanner() {
             </Link>
           </div>
         </div>
+        <p className="text-gray-500 text-xs mt-5 pt-5 border-t border-slate-800">
+          Want the signal while you browse Crunchbase?{" "}
+          <a
+            href="https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn"
+            className="text-emerald-400 hover:text-emerald-300 font-medium"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Install the free Chrome extension &rarr;
+          </a>
+        </p>
       </div>
     </div>
   );

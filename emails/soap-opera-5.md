@@ -35,3 +35,7 @@ If the free digest is enough for now, that's fine too. You'll keep getting it ev
 
 Talk soon,
 The Data Nerd
+
+P.S. Two free tools that make the data harder to ignore:
+- Chrome extension — drops an acceleration badge on every Crunchbase, AngelList, and PitchBook startup profile you view: https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn
+- Claude MCP server — query any startup signal directly from your AI workflow: npx @gitdealflow/mcp-signal

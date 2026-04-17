@@ -433,7 +433,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         {/* CTA */}
         <div className="mt-12 rounded-xl border border-slate-800 bg-slate-900 p-6 sm:p-8 text-center">
           <h2 className="text-gray-100 font-semibold text-lg mb-2">
-            Get the weekly Signal Digest
+            Get this week's top breakout startups
           </h2>
           <p className="text-gray-400 text-sm mb-5 max-w-lg mx-auto">
             Top breakout engineering signals across all sectors, straight to
@@ -443,7 +443,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             href="https://gitdealflow.com/#signup"
             className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-medium transition-colors"
           >
-            Join the Signal Digest
+            Get the Report
           </Link>
         </div>
       </div>

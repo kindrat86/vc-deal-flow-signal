@@ -10,7 +10,7 @@ All times in Athens (EEST, UTC+3). Post around 10:00 Athens = 09:00 CET = 07:00 
 
 ---
 
-### Thu Apr 16 — Data point
+### Thu Apr 16 — DONE
 
 This week's #1 startup by engineering acceleration:
 

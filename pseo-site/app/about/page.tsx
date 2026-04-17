@@ -34,6 +34,7 @@ export default function AboutPage() {
         sameAs: [
           "https://x.com/data_nerd",
           "https://t.me/gitdealflow",
+          "https://www.linkedin.com/company/gitdealflow",
           "https://signals.gitdealflow.com",
         ],
         contactPoint: {
@@ -80,6 +81,7 @@ export default function AboutPage() {
         sameAs: [
           "https://x.com/data_nerd",
           "https://t.me/gitdealflow",
+          "https://www.linkedin.com/company/gitdealflow",
         ],
       },
       {
@@ -274,8 +276,20 @@ export default function AboutPage() {
           </h2>
           <div className="rounded-lg border border-slate-800 bg-slate-900 p-6 text-gray-400 text-sm leading-relaxed space-y-4">
             <p>
-              Signal built by{" "}
-              <strong className="text-gray-200">The Data Nerd</strong>.
+              Built by{" "}
+              <strong className="text-gray-200">The Data Nerd</strong> — a
+              data engineer with a background in quantitative analysis and
+              large-scale data pipelines. After years of watching VCs rely on
+              word-of-mouth and warm intros for deal sourcing, he started
+              asking a simple question: what if you could see which startups
+              are accelerating before anyone talks about them?
+            </p>
+            <p>
+              VC Deal Flow Signal is the answer. It continuously monitors
+              public GitHub activity across thousands of startups, turning raw
+              commits, contributor growth, and release cadence into a single
+              acceleration score. No hype, no press releases — just
+              engineering momentum measured weekly.
             </p>
             <div className="flex gap-4 pt-2">
               <a
@@ -284,7 +298,7 @@ export default function AboutPage() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Twitter/X &nearr;
+                Twitter/X
               </a>
               <a
                 href="https://t.me/gitdealflow"
@@ -292,7 +306,15 @@ export default function AboutPage() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Telegram &nearr;
+                Telegram
+              </a>
+              <a
+                href="https://www.linkedin.com/company/gitdealflow"
+                className="text-sky-500 hover:text-sky-400 text-xs font-medium transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                LinkedIn
               </a>
               <a
                 href="mailto:signal@gitdealflow.com"
@@ -397,6 +419,17 @@ export default function AboutPage() {
                   t.me/gitdealflow
                 </a>
               </p>
+              <p>
+                <strong className="text-gray-200">LinkedIn:</strong>{" "}
+                <a
+                  href="https://www.linkedin.com/company/gitdealflow"
+                  className="text-sky-500 hover:text-sky-400 transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  linkedin.com/company/gitdealflow
+                </a>
+              </p>
             </div>
           </div>
         </section>
@@ -408,7 +441,7 @@ export default function AboutPage() {
           </h2>
           <p className="text-gray-400 text-sm mb-5 max-w-lg mx-auto">
             Browse startup rankings across {activeSectors.length} sectors, or
-            subscribe to the free Signal Digest for weekly highlights.
+            get this week's top 5 breakout startups free.
           </p>
           <div className="flex justify-center gap-3">
             <Link
@@ -421,7 +454,7 @@ export default function AboutPage() {
               href="https://gitdealflow.com/#signup"
               className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 hover:border-slate-500 text-gray-300 text-sm font-medium transition-colors"
             >
-              Get Free Digest
+              See This Week's Signals
             </Link>
           </div>
         </div>

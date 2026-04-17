@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Subscriber Dashboard — VC Deal Flow Signal</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  * { box-sizing: border-box; }
+  body { margin:0; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:#0b1220; color:#e2e8f0; }
+  .wrap { max-width:1200px; margin:0 auto; padding:32px 24px; }
+  h1 { font-size:24px; margin:0 0 4px; color:#f1f5f9; }
+  .sub { color:#64748b; font-size:13px; margin-bottom:24px; }
+  .grid { display:grid; gap:16px; }
+  .grid.cols-4 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+  .grid.cols-2 { grid-template-columns: repeat(auto-fit, minmax(480px, 1fr)); }
+  .card { background:#111a2e; border:1px solid #1e293b; border-radius:10px; padding:18px; }
+  .kpi .num { font-size:32px; font-weight:700; color:#f1f5f9; line-height:1; }
+  .kpi .lbl { font-size:11px; color:#64748b; text-transform:uppercase; letter-spacing:1px; margin-top:8px; }
+  .kpi .delta { font-size:12px; color:#22c55e; margin-top:4px; }
+  h3 { font-size:12px; text-transform:uppercase; letter-spacing:1.5px; color:#0ea5e9; margin:0 0 14px; }
+  table { width:100%; border-collapse:collapse; font-size:13px; }
+  th, td { text-align:left; padding:8px 12px 8px 0; border-bottom:1px solid #1e293b; }
+  th { font-size:11px; color:#64748b; text-transform:uppercase; letter-spacing:1px; }
+  td.num, th.num { text-align:right; }
+  .pill { display:inline-block; padding:2px 8px; font-size:11px; border-radius:99px; background:#1e293b; color:#cbd5e1; }
+  .pill.ok { background:#14532d; color:#86efac; }
+  .pill.warn { background:#422006; color:#fbbf24; }
+  .funnel-row { display:flex; align-items:center; margin-bottom:10px; gap:12px; }
+  .funnel-label { min-width:160px; font-size:13px; color:#cbd5e1; }
+  .funnel-bar-wrap { flex:1; height:28px; background:#1e293b; border-radius:6px; overflow:hidden; }
+  .funnel-bar { height:100%; background:linear-gradient(90deg,#0ea5e9,#38bdf8); display:flex; align-items:center; padding-left:12px; color:#fff; font-weight:600; font-size:13px; min-width:40px; }
+  .verdict { border-left:4px solid #0ea5e9; padding:16px 20px; background:#0f1b33; border-radius:8px; }
+  .verdict.above    { border-left-color:#22c55e; background:#062414; }
+  .verdict.on-track { border-left-color:#f59e0b; background:#2b1c04; }
+  .verdict.below    { border-left-color:#ef4444; background:#2a0d0d; }
+  .verdict.early    { border-left-color:#64748b; background:#111a2e; }
+  .verdict .hl { font-size:18px; font-weight:700; color:#f1f5f9; }
+  .verdict .dt { font-size:13px; color:#cbd5e1; margin-top:6px; line-height:1.5; }
+  tr.bench-active td { background:#0f1b33; color:#f1f5f9; font-weight:600; }
+  .pill.above { background:#14532d; color:#86efac; }
+  .pill.below { background:#450a0a; color:#fca5a5; }
+  .pill.on-track { background:#422006; color:#fbbf24; }
+  .pill.early { background:#1e293b; color:#94a3b8; }
+  canvas { max-height:280px; }
+  .mono { font-family:'SF Mono',Menlo,monospace; font-size:12px; }
+  .row-group { margin-bottom:28px; }
+  a { color:#38bdf8; }
+  .foot { margin-top:32px; padding-top:16px; border-top:1px solid #1e293b; color:#64748b; font-size:11px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>Subscriber Dashboard</h1>
+<div class="sub">
+  VC Deal Flow Signal · Window: last 30 days · Generated: <span id="gen"></span>
+  <div style="margin-top:4px;color:#475569;font-size:11px">
+    Excluded: <span id="exc-countries"></span> traffic · <span id="exc-testers"></span> tester emails
+  </div>
+</div>
+
+<div class="grid cols-4 row-group">
+  <div class="card kpi"><div class="num" id="k-visitors">—</div><div class="lbl">Visitors (30d)</div></div>
+  <div class="card kpi"><div class="num" id="k-signups">—</div><div class="lbl">Total signups</div></div>
+  <div class="card kpi"><div class="num" id="k-verified">—</div><div class="lbl">Verified (Resend)</div></div>
+  <div class="card kpi"><div class="num" id="k-conv">—</div><div class="lbl">Visitor → signup</div></div>
+</div>
+
+<div class="row-group">
+  <div class="verdict" id="verdict">
+    <div class="hl" id="v-headline"></div>
+    <div class="dt" id="v-detail"></div>
+  </div>
+</div>
+
+<div class="grid cols-2 row-group">
+  <div class="card">
+    <h3>Benchmark — Brunson/Isenberg rule of thumb</h3>
+    <table>
+      <thead>
+        <tr><th>Traffic</th><th class="num">Subs @3%</th><th class="num">Paid @1%</th></tr>
+      </thead>
+      <tbody id="bench-table"></tbody>
+    </table>
+    <div style="margin-top:10px;font-size:11px;color:#64748b">
+      Highlighted row = your current traffic band.
+    </div>
+  </div>
+  <div class="card">
+    <h3>How you're tracking</h3>
+    <div style="font-size:13px;line-height:1.9;color:#cbd5e1">
+      <div>Stage: <strong id="b-stage"></strong></div>
+      <div>Opt-in rate: <strong id="b-optin"></strong> (target 3%) <span id="b-optin-pill" class="pill"></span></div>
+      <div>Expected subs from <span id="b-visitors"></span> visitors: <strong id="b-expected-subs"></strong></div>
+      <div>Actual subs: <strong id="b-actual-subs"></strong></div>
+      <div style="margin-top:12px">Paid subs: <strong id="b-paid"></strong> · rate: <strong id="b-paid-rate"></strong> <span id="b-paid-pill" class="pill"></span></div>
+      <div>Expected paid range: <strong id="b-expected-paid"></strong></div>
+    </div>
+  </div>
+</div>
+
+<div class="grid cols-2 row-group">
+  <div class="card">
+    <h3>Funnel</h3>
+    <div id="funnel"></div>
+  </div>
+  <div class="card">
+    <h3>Signups & visitors — daily (last 30d)</h3>
+    <canvas id="dailyChart"></canvas>
+  </div>
+</div>
+
+<div class="grid cols-2 row-group">
+  <div class="card">
+    <h3>Source attribution (subscribers)</h3>
+    <table><thead><tr><th>Source</th><th class="num">Signups</th></tr></thead>
+      <tbody id="sub-sources"></tbody></table>
+  </div>
+  <div class="card">
+    <h3>Traffic sources (PostHog)</h3>
+    <table><thead><tr><th>Referrer</th><th class="num">Pageviews</th></tr></thead>
+      <tbody id="ph-sources"></tbody></table>
+  </div>
+</div>
+
+<div class="grid cols-2 row-group">
+  <div class="card">
+    <h3>Tier / status</h3>
+    <table><thead><tr><th>Tier</th><th class="num">Count</th></tr></thead>
+      <tbody id="tiers"></tbody></table>
+    <table style="margin-top:14px"><thead><tr><th>Status</th><th class="num">Count</th></tr></thead>
+      <tbody id="statuses"></tbody></table>
+  </div>
+  <div class="card">
+    <h3>Top pages</h3>
+    <table><thead><tr><th>Path</th><th class="num">Views</th></tr></thead>
+      <tbody id="ph-pages"></tbody></table>
+  </div>
+</div>
+
+<div class="grid cols-2 row-group">
+  <div class="card">
+    <h3>Traffic by country</h3>
+    <table><thead><tr><th>Country</th><th class="num">Pageviews</th></tr></thead>
+      <tbody id="ph-countries"></tbody></table>
+  </div>
+  <div class="card">
+    <h3>Country mix (top 5)</h3>
+    <canvas id="countryChart"></canvas>
+  </div>
+</div>
+
+<div class="grid cols-2 row-group">
+  <div class="card">
+    <h3>Email engagement</h3>
+    <div class="grid cols-4" style="margin-bottom:16px">
+      <div><div class="num" id="e-sent">—</div><div class="lbl">Sent</div></div>
+      <div><div class="num" id="e-open">—</div><div class="lbl">Open rate</div></div>
+      <div><div class="num" id="e-click">—</div><div class="lbl">Click rate</div></div>
+    </div>
+    <table><thead><tr><th>Status</th><th class="num">Count</th></tr></thead>
+      <tbody id="email-status"></tbody></table>
+    <div style="margin-top:10px;font-size:11px;color:#64748b">
+      Open/click rates depend on Resend webhooks populating <code>email_log.status</code>.
+      If rates look low, webhooks aren't wired up yet — status will stay at <code>sent</code>.
+    </div>
+  </div>
+  <div class="card">
+    <h3>Recent signups (latest 30)</h3>
+    <table><thead><tr><th>Date</th><th>Email</th><th>Source</th><th>Verified</th></tr></thead>
+      <tbody id="recent"></tbody></table>
+  </div>
+</div>
+
+<div class="foot">
+  Data sources: PocketBase (subscribers, email_log) · Resend (audience) · PostHog EU (visitors).
+  Regenerate: <code class="mono">python3 monitoring/build-dashboard.py</code>
+</div>
+
+</div>
+
+<script id="__data__" type="application/json">{"generated_at": "2026-04-17T18:06:10.495162+00:00", "window_days": 30, "kpis": {"visitors": 64, "pageviews": 66, "signups": 0, "verified": 0, "unverified": 0, "conversion_rate": 0.0, "emails_sent": 0, "open_rate": 0.0, "click_rate": 0.0}, "funnel": [{"label": "Visitors (30d)", "value": 64}, {"label": "Signups (all time)", "value": 0}, {"label": "Verified (Resend)", "value": 0}], "daily": [{"d": "2026-03-19", "signups": 0, "visitors": 0}, {"d": "2026-03-20", "signups": 0, "visitors": 0}, {"d": "2026-03-21", "signups": 0, "visitors": 0}, {"d": "2026-03-22", "signups": 0, "visitors": 0}, {"d": "2026-03-23", "signups": 0, "visitors": 0}, {"d": "2026-03-24", "signups": 0, "visitors": 0}, {"d": "2026-03-25", "signups": 0, "visitors": 0}, {"d": "2026-03-26", "signups": 0, "visitors": 0}, {"d": "2026-03-27", "signups": 0, "visitors": 0}, {"d": "2026-03-28", "signups": 0, "visitors": 0}, {"d": "2026-03-29", "signups": 0, "visitors": 0}, {"d": "2026-03-30", "signups": 0, "visitors": 0}, {"d": "2026-03-31", "signups": 0, "visitors": 0}, {"d": "2026-04-01", "signups": 0, "visitors": 0}, {"d": "2026-04-02", "signups": 0, "visitors": 0}, {"d": "2026-04-03", "signups": 0, "visitors": 0}, {"d": "2026-04-04", "signups": 0, "visitors": 0}, {"d": "2026-04-05", "signups": 0, "visitors": 0}, {"d": "2026-04-06", "signups": 0, "visitors": 0}, {"d": "2026-04-07", "signups": 0, "visitors": 0}, {"d": "2026-04-08", "signups": 0, "visitors": 0}, {"d": "2026-04-09", "signups": 0, "visitors": 0}, {"d": "2026-04-10", "signups": 0, "visitors": 0}, {"d": "2026-04-11", "signups": 0, "visitors": 0}, {"d": "2026-04-12", "signups": 0, "visitors": 0}, {"d": "2026-04-13", "signups": 0, "visitors": 0}, {"d": "2026-04-14", "signups": 0, "visitors": 2}, {"d": "2026-04-15", "signups": 0, "visitors": 26}, {"d": "2026-04-16", "signups": 0, "visitors": 17}, {"d": "2026-04-17", "signups": 0, "visitors": 19}], "sub_sources": [], "tiers": [], "statuses": [], "ph_sources": [{"src": "$direct", "n": 43}, {"src": "news.ycombinator.com", "n": 7}, {"src": "bing.com", "n": 5}, {"src": "www.google.com", "n": 5}, {"src": "www.reddit.com", "n": 3}, {"src": "webstore-prod.corp.google.com", "n": 1}, {"src": "www.npmjs.com", "n": 1}, {"src": "hacker-news.firebaseio.com", "n": 1}], "ph_pages": [{"p": "/", "n": 43}, {"p": "/trending", "n": 20}, {"p": "/privacy", "n": 2}, {"p": "/methodology", "n": 1}], "ph_countries": [{"code": "US", "name": "United States", "n": 35}, {"code": "IN", "name": "India", "n": 7}, {"code": "JP", "name": "Japan", "n": 4}, {"code": "NL", "name": "Netherlands", "n": 3}, {"code": "CN", "name": "China", "n": 3}, {"code": "IT", "name": "Italy", "n": 2}, {"code": "DE", "name": "Germany", "n": 2}, {"code": "CA", "name": "Canada", "n": 2}, {"code": "FR", "name": "France", "n": 1}, {"code": "KR", "name": "South Korea", "n": 1}, {"code": "TW", "name": "Taiwan", "n": 1}, {"code": "GB", "name": "United Kingdom", "n": 1}, {"code": "AU", "name": "Australia", "n": 1}, {"code": "SG", "name": "Singapore", "n": 1}, {"code": "IE", "name": "Ireland", "n": 1}], "excluded": {"countries": ["GR"], "testers": ["maryan.kondratyuk@quickstarter.ai", "mkondratyuk86@gmail.com", "sales@sipiteno.com", "test@example.com"]}, "benchmark": {"opt_in_target": 3.0, "paid_target_lo": 1.0, "paid_target_hi": 3.3, "rows": [{"traffic": 100, "subs": 3, "paid_lo": 0, "paid_hi": 0}, {"traffic": 1000, "subs": 30, "paid_lo": 0, "paid_hi": 1}, {"traffic": 10000, "subs": 300, "paid_lo": 3, "paid_hi": 10}, {"traffic": 100000, "subs": 3000, "paid_lo": 30, "paid_hi": 100}], "active_idx": -1, "stage": "too-early", "actual_opt_in": 0.0, "actual_paid_rate": 0.0, "paid_subs": 0, "expected_subs": 2, "expected_paid_lo": 0, "expected_paid_hi": 0, "opt_in_status": "below", "opt_in_delta": -100, "paid_status": "early", "paid_delta": 0, "verdict_headline": "Too early \u2014 keep driving traffic", "verdict_detail": "You have 64 visitors in the last 30d. Benchmarks assume at least 100 visitors before opt-in rate is meaningful. Focus on Dream 100 seeding, not on conversion."}, "email_status": [], "recent": []}</script>
+<script>
+const D = JSON.parse(document.getElementById('__data__').textContent);
+const fmt = n => new Intl.NumberFormat('en-US').format(n || 0);
+
+const athensFmt = new Intl.DateTimeFormat('en-GB', {
+  timeZone: 'Europe/Athens',
+  day: 'numeric', month: 'numeric', year: 'numeric',
+  hour: '2-digit', minute: '2-digit', hour12: false,
+});
+document.getElementById('gen').textContent = athensFmt.format(new Date(D.generated_at)) + ' (Athens time)';
+document.getElementById('exc-countries').textContent = (D.excluded.countries || []).join(', ') || '—';
+document.getElementById('exc-testers').textContent = (D.excluded.testers || []).length;
+
+// KPIs
+document.getElementById('k-visitors').textContent = fmt(D.kpis.visitors);
+document.getElementById('k-signups').textContent = fmt(D.kpis.signups);
+document.getElementById('k-verified').textContent = fmt(D.kpis.verified);
+document.getElementById('k-conv').textContent = D.kpis.conversion_rate + '%';
+document.getElementById('e-sent').textContent = fmt(D.kpis.emails_sent);
+document.getElementById('e-open').textContent = D.kpis.open_rate + '%';
+document.getElementById('e-click').textContent = D.kpis.click_rate + '%';
+
+// Verdict + benchmark
+const B = D.benchmark;
+const verdictEl = document.getElementById('verdict');
+verdictEl.classList.add(B.opt_in_status);
+document.getElementById('v-headline').textContent = B.verdict_headline;
+document.getElementById('v-detail').textContent = B.verdict_detail;
+
+document.getElementById('b-stage').textContent = B.stage;
+document.getElementById('b-optin').textContent = B.actual_opt_in + '%';
+document.getElementById('b-visitors').textContent = fmt(D.kpis.visitors);
+document.getElementById('b-expected-subs').textContent = fmt(B.expected_subs);
+document.getElementById('b-actual-subs').textContent = fmt(D.kpis.signups);
+document.getElementById('b-paid').textContent = fmt(B.paid_subs);
+document.getElementById('b-paid-rate').textContent = B.actual_paid_rate + '%';
+document.getElementById('b-expected-paid').textContent = B.expected_paid_lo + '–' + B.expected_paid_hi;
+
+const optinPill = document.getElementById('b-optin-pill');
+optinPill.classList.add(B.opt_in_status);
+optinPill.textContent = {above:'above', 'on-track':'on track', below:'below', early:'too early'}[B.opt_in_status];
+
+const paidPill = document.getElementById('b-paid-pill');
+paidPill.classList.add(B.paid_status);
+paidPill.textContent = {above:'above', 'on-track':'on track', below:'below', early:'too early'}[B.paid_status];
+
+const benchTbody = document.getElementById('bench-table');
+benchTbody.innerHTML = B.rows.map((r, i) => `
+  <tr class="${i === B.active_idx ? 'bench-active' : ''}">
+    <td>${fmt(r.traffic)}</td>
+    <td class="num">${fmt(r.subs)}</td>
+    <td class="num">${r.paid_lo === r.paid_hi ? r.paid_lo : r.paid_lo + '–' + r.paid_hi}</td>
+  </tr>`).join('');
+
+// Funnel
+const maxF = Math.max(1, ...D.funnel.map(f => f.value));
+document.getElementById('funnel').innerHTML = D.funnel.map(f => `
+  <div class="funnel-row">
+    <div class="funnel-label">${f.label}</div>
+    <div class="funnel-bar-wrap">
+      <div class="funnel-bar" style="width:${Math.max(5, 100*f.value/maxF)}%">${fmt(f.value)}</div>
+    </div>
+  </div>`).join('');
+
+// Chart
+const ctx = document.getElementById('dailyChart');
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: D.daily.map(x => x.d.slice(5)),
+    datasets: [
+      { label: 'Signups', data: D.daily.map(x => x.signups), borderColor: '#0ea5e9', backgroundColor:'rgba(14,165,233,0.2)', tension:0.3, yAxisID:'y' },
+      { label: 'Visitors', data: D.daily.map(x => x.visitors), borderColor: '#f59e0b', backgroundColor:'rgba(245,158,11,0.1)', tension:0.3, yAxisID:'y1' }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { labels: { color: '#cbd5e1' } } },
+    scales: {
+      x: { ticks:{ color:'#64748b' }, grid:{ color:'#1e293b' } },
+      y: { position:'left', ticks:{ color:'#0ea5e9' }, grid:{ color:'#1e293b' }, title:{ display:true, text:'Signups', color:'#0ea5e9'} },
+      y1:{ position:'right', ticks:{ color:'#f59e0b' }, grid:{ drawOnChartArea:false }, title:{ display:true, text:'Visitors', color:'#f59e0b'} }
+    }
+  }
+});
+
+// Tables
+const tbl = (id, rows, cellFns) => {
+  const el = document.getElementById(id);
+  if (!rows.length) { el.innerHTML = `<tr><td colspan="${cellFns.length}" style="color:#64748b">No data</td></tr>`; return; }
+  el.innerHTML = rows.map(r => '<tr>' + cellFns.map(fn => fn(r)).join('') + '</tr>').join('');
+};
+
+tbl('sub-sources', D.sub_sources, [r => `<td>${r.src}</td>`, r => `<td class="num">${fmt(r.n)}</td>`]);
+tbl('ph-sources', D.ph_sources, [r => `<td>${r.src}</td>`, r => `<td class="num">${fmt(r.n)}</td>`]);
+tbl('ph-pages',   D.ph_pages,   [r => `<td class="mono">${r.p}</td>`, r => `<td class="num">${fmt(r.n)}</td>`]);
+tbl('tiers',      D.tiers,      [r => `<td>${r.k}</td>`, r => `<td class="num">${fmt(r.n)}</td>`]);
+tbl('statuses',   D.statuses,   [r => `<td>${r.k}</td>`, r => `<td class="num">${fmt(r.n)}</td>`]);
+tbl('email-status', D.email_status, [r => `<td>${r.k}</td>`, r => `<td class="num">${fmt(r.n)}</td>`]);
+tbl('recent', D.recent, [
+  r => `<td class="mono">${r.created}</td>`,
+  r => `<td>${r.email}</td>`,
+  r => `<td>${r.source}</td>`,
+  r => `<td><span class="pill ${r.verified ? 'ok' : 'warn'}">${r.verified ? 'verified' : 'pending'}</span></td>`,
+]);
+
+tbl('ph-countries', D.ph_countries, [
+  r => `<td>${r.name} <span style="color:#64748b">(${r.code})</span></td>`,
+  r => `<td class="num">${fmt(r.n)}</td>`,
+]);
+
+// Country donut (top 5, rest bucketed)
+const topC = (D.ph_countries || []).slice(0, 5);
+const restC = (D.ph_countries || []).slice(5).reduce((s, r) => s + r.n, 0);
+const cLabels = topC.map(r => r.code);
+const cData = topC.map(r => r.n);
+if (restC > 0) { cLabels.push('Other'); cData.push(restC); }
+if (cData.length) {
+  new Chart(document.getElementById('countryChart'), {
+    type: 'doughnut',
+    data: {
+      labels: cLabels,
+      datasets: [{
+        data: cData,
+        backgroundColor: ['#0ea5e9','#22c55e','#f59e0b','#a855f7','#ef4444','#64748b'],
+        borderColor: '#0b1220', borderWidth: 2,
+      }],
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'right', labels: { color: '#cbd5e1' } } },
+    },
+  });
+}
+</script>
+</body>
+</html>

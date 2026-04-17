@@ -1,0 +1,68 @@
+# VC Deal Flow Signal
+
+> GitHub engineering momentum as a leading indicator for venture capital investors. We monitor public GitHub activity across thousands of startups and surface the ones showing unusual acceleration — weeks before they hit your inbox.
+
+## What We Do
+
+VC Deal Flow Signal tracks commit velocity, contributor growth, and repository expansion across startup GitHub organizations. We rank startups by engineering momentum — a leading indicator for seed and Series A investors. Our data shows acceleration patterns that have historically preceded fundraise announcements by 3-6 weeks.
+
+## Key Pages
+
+- [Homepage](https://gitdealflow.com/): Product overview, pricing, and free Signal Digest signup
+- [Live Dashboard](https://signals.gitdealflow.com/): Real-time startup rankings by engineering acceleration across 20 sectors
+- [Insider Circle](https://gitdealflow.com/insider): Premium tier with private Telegram group, live briefings, API access
+- [Privacy Policy](https://gitdealflow.com/privacy): Data handling and GDPR compliance
+- [Terms of Service](https://gitdealflow.com/terms): Service terms and conditions
+
+## Sector Signal Pages
+
+- [AI & Machine Learning](https://signals.gitdealflow.com/startups-to-watch/ai-ml-q2-2026)
+- [Fintech](https://signals.gitdealflow.com/startups-to-watch/fintech-q2-2026)
+- [Climate Tech](https://signals.gitdealflow.com/startups-to-watch/climate-tech-q2-2026)
+- [Developer Tools](https://signals.gitdealflow.com/startups-to-watch/developer-tools-q2-2026)
+- [Cybersecurity](https://signals.gitdealflow.com/startups-to-watch/cybersecurity-q2-2026)
+- [Healthcare](https://signals.gitdealflow.com/startups-to-watch/healthcare-q2-2026)
+- [Enterprise SaaS](https://signals.gitdealflow.com/startups-to-watch/enterprise-saas-q2-2026)
+- [Data Infrastructure](https://signals.gitdealflow.com/startups-to-watch/data-infrastructure-q2-2026)
+- [Web3](https://signals.gitdealflow.com/startups-to-watch/web3-q2-2026)
+- [Robotics](https://signals.gitdealflow.com/startups-to-watch/robotics-q2-2026)
+
+## Blog
+
+- [Blog Index](https://signals.gitdealflow.com/blog)
+
+## Pricing
+
+- Signal Digest: Free — this week's top 5 breakout startups with GitHub acceleration data, delivered free after email confirmation then weekly
+- Dashboard Beta: EUR 9.97/month — 100+ startups ranked, filter by sector/stage/geography
+- Insider Circle: EUR 97/month — Private Telegram group, live briefings, custom watchlists, API access
+
+## MCP Server (Claude Integration)
+
+VC Deal Flow Signal is available as a Model Context Protocol server for Claude Desktop and Claude Code. Install with:
+
+```json
+{
+  "mcpServers": {
+    "vc-deal-flow-signal": {
+      "command": "npx",
+      "args": ["-y", "@gitdealflow/mcp-signal"]
+    }
+  }
+}
+```
+
+- npm: https://www.npmjs.com/package/@gitdealflow/mcp-signal
+- Registry: io.github.kindrat86/vc-deal-flow-signal
+- Tools: get_trending_startups, search_startups_by_sector, get_startup_signal, get_signals_summary, get_methodology
+- No API key required. Data sourced live from signals.gitdealflow.com.
+
+## Contact
+
+- Email: signal@gitdealflow.com
+- Telegram: https://t.me/gitdealflow
+- Twitter/X: https://x.com/data_nerd
+
+## Extended Reference
+
+For full API documentation, data samples, methodology details, and machine-readable format links, see llms-full.txt: https://gitdealflow.com/llms-full.txt

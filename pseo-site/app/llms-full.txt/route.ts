@@ -105,6 +105,9 @@ Website: ${BASE_URL}
 Main site: https://gitdealflow.com
 Twitter/X: https://x.com/data_nerd
 Telegram: https://t.me/gitdealflow
+LinkedIn: https://www.linkedin.com/company/gitdealflow
+Chrome Extension: https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn (injects GitHub acceleration badges on Crunchbase, AngelList, and PitchBook startup profiles)
+Claude MCP Server: @gitdealflow/mcp-signal on npm (query signals directly from Claude Desktop, Claude Code, Cursor, or any MCP-compatible AI assistant)
 
 ## Methodology
 

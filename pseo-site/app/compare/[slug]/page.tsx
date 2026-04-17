@@ -301,14 +301,14 @@ export default async function ComparisonPage({ params }: PageProps) {
             Try the engineering signal approach
           </h2>
           <p className="text-gray-400 text-sm mb-5 max-w-lg mx-auto">
-            Get the weekly Signal Digest — 5 breakout startups ranked by
+            Get this week's top 5 breakout startups ranked by
             GitHub engineering acceleration. Free, no spam.
           </p>
           <Link
             href="https://gitdealflow.com/#signup"
             className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-medium transition-colors"
           >
-            Join the Signal Digest
+            Get the Report
           </Link>
         </div>
       </div>

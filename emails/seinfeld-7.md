@@ -17,3 +17,7 @@ It won't replace your network. It will show you things your network can't.
 Free monthly digest to try it. Full Dashboard (EUR 9.97/mo) for 100+ startups with sector filters: https://gitdealflow.com/#pricing
 
 The Data Nerd
+
+P.S. If you use Claude, our data now works inside it. Install our MCP server and ask "which startups are accelerating?" directly: npx @gitdealflow/mcp-signal
+
+P.P.S. Prefer to stay in your browser? Free Chrome extension puts the signal badge on every startup profile you view in Crunchbase, AngelList, and PitchBook: https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn
