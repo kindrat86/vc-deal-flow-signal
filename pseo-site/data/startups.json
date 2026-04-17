@@ -3434,8 +3434,8 @@
               "description": "",
               "stage": "Growth",
               "geography": "LATAM",
-              "commitVelocity14d": 37,
-              "commitVelocityChange": "-24%",
+              "commitVelocity14d": 46,
+              "commitVelocityChange": "-6%",
               "contributors": 51,
               "contributorGrowth": "+0%",
               "newRepos": 0,
@@ -3446,11 +3446,11 @@
           "faqs": [
             {
               "question": "What engineering signals are proptech startups showing in Q2 2026?",
-              "answer": "In Q2 2026, we are tracking 1 proptech startups with measurable GitHub engineering signals. 0 of 1 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 1 of the tracked companies. The average 14-day commit velocity across the sector is 37 commits, with open-condo-software leading at 37 commits (-24% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
+              "answer": "In Q2 2026, we are tracking 1 proptech startups with measurable GitHub engineering signals. 0 of 1 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 1 of the tracked companies. The average 14-day commit velocity across the sector is 46 commits, with open-condo-software leading at 46 commits (-6% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
             },
             {
               "question": "Which proptech startup has the highest engineering acceleration in Q2 2026?",
-              "answer": "open-condo-software leads the proptech sector in Q2 2026 with 37 commits over a 14-day window, representing a -24% change from the prior period. With 51 active contributors, open-condo-software is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
+              "answer": "open-condo-software leads the proptech sector in Q2 2026 with 46 commits over a 14-day window, representing a -6% change from the prior period. With 51 active contributors, open-condo-software is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
             },
             {
               "question": "Where are the most active proptech engineering teams located?",
@@ -3570,6 +3570,19 @@
           "intro": "AgTech is a small-sample sector, but signals are unusually clean this quarter.",
           "startups": [
             {
+              "name": "LiteFarmOrg",
+              "description": "",
+              "stage": "Growth",
+              "geography": "Canada",
+              "commitVelocity14d": 84,
+              "commitVelocityChange": "-41%",
+              "contributors": 65,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/LiteFarmOrg"
+            },
+            {
               "name": "betagouv",
               "description": "Communauté des incubateurs de Services Publics Numériques",
               "stage": "Growth",
@@ -3581,25 +3594,12 @@
               "newRepos": 1,
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/betagouv"
-            },
-            {
-              "name": "LiteFarmOrg",
-              "description": "",
-              "stage": "Growth",
-              "geography": "Canada",
-              "commitVelocity14d": 77,
-              "commitVelocityChange": "-46%",
-              "contributors": 65,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/LiteFarmOrg"
             }
           ],
           "faqs": [
             {
               "question": "What engineering signals are agtech startups showing in Q2 2026?",
-              "answer": "In Q2 2026, we are tracking 2 agtech startups with measurable GitHub engineering signals. 0 of 2 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 2 of the tracked companies. The average 14-day commit velocity across the sector is 47 commits, with betagouv leading at 16 commits (-24% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
+              "answer": "In Q2 2026, we are tracking 2 agtech startups with measurable GitHub engineering signals. 0 of 2 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 2 of the tracked companies. The average 14-day commit velocity across the sector is 50 commits, with betagouv leading at 16 commits (-24% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
             },
             {
               "question": "Which agtech startup has the highest engineering acceleration in Q2 2026?",
@@ -3607,26 +3607,13 @@
             },
             {
               "question": "Where are the most active agtech engineering teams located?",
-              "answer": "Among the 2 agtech startups we track, EU accounts for the highest concentration with 1 teams. Startups applying technology to agriculture and precision farming. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+              "answer": "Among the 2 agtech startups we track, Canada accounts for the highest concentration with 1 teams. Startups applying technology to agriculture and precision farming. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
             }
           ]
         },
         "q1-2026": {
           "intro": "AgTech is a small-sample sector, but signals are unusually clean this quarter.",
           "startups": [
-            {
-              "name": "betagouv",
-              "description": "Communauté des incubateurs de Services Publics Numériques",
-              "stage": "Growth",
-              "geography": "EU",
-              "commitVelocity14d": 12,
-              "commitVelocityChange": "+100%",
-              "contributors": 100,
-              "contributorGrowth": "+32%",
-              "newRepos": 1,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/betagouv"
-            },
             {
               "name": "LiteFarmOrg",
               "description": "",
@@ -3639,12 +3626,25 @@
               "newRepos": 0,
               "signalType": "Deploy frequency spike",
               "githubUrl": "https://github.com/LiteFarmOrg"
+            },
+            {
+              "name": "betagouv",
+              "description": "Communauté des incubateurs de Services Publics Numériques",
+              "stage": "Growth",
+              "geography": "EU",
+              "commitVelocity14d": 12,
+              "commitVelocityChange": "+100%",
+              "contributors": 100,
+              "contributorGrowth": "+32%",
+              "newRepos": 1,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/betagouv"
             }
           ],
           "faqs": [
             {
               "question": "What engineering signals are agtech startups showing in Q1 2026?",
-              "answer": "In Q1 2026, we are tracking 2 agtech startups with measurable GitHub engineering signals. 2 of 2 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 1 of the tracked companies. The average 14-day commit velocity across the sector is 48 commits, with LiteFarmOrg leading at 83 commits (+999% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
+              "answer": "In Q1 2026, we are tracking 2 agtech startups with measurable GitHub engineering signals. 2 of 2 show positive commit velocity growth. The most common signal type is \"Deploy frequency spike\", observed in 1 of the tracked companies. The average 14-day commit velocity across the sector is 48 commits, with LiteFarmOrg leading at 83 commits (+999% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
             },
             {
               "question": "Which agtech startup has the highest engineering acceleration in Q1 2026?",
@@ -3652,26 +3652,13 @@
             },
             {
               "question": "Where are the most active agtech engineering teams located?",
-              "answer": "Among the 2 agtech startups we track, EU accounts for the highest concentration with 1 teams. Startups applying technology to agriculture and precision farming. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+              "answer": "Among the 2 agtech startups we track, Canada accounts for the highest concentration with 1 teams. Startups applying technology to agriculture and precision farming. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
             }
           ]
         },
         "q4-2025": {
           "intro": "AgTech is a small-sample sector, but signals are unusually clean this quarter.",
           "startups": [
-            {
-              "name": "betagouv",
-              "description": "Communauté des incubateurs de Services Publics Numériques",
-              "stage": "Growth",
-              "geography": "EU",
-              "commitVelocity14d": 10,
-              "commitVelocityChange": "+43%",
-              "contributors": 100,
-              "contributorGrowth": "+32%",
-              "newRepos": 1,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/betagouv"
-            },
             {
               "name": "LiteFarmOrg",
               "description": "",
@@ -3684,6 +3671,19 @@
               "newRepos": 0,
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/LiteFarmOrg"
+            },
+            {
+              "name": "betagouv",
+              "description": "Communauté des incubateurs de Services Publics Numériques",
+              "stage": "Growth",
+              "geography": "EU",
+              "commitVelocity14d": 10,
+              "commitVelocityChange": "+43%",
+              "contributors": 100,
+              "contributorGrowth": "+32%",
+              "newRepos": 1,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/betagouv"
             }
           ],
           "faqs": [
@@ -3697,26 +3697,13 @@
             },
             {
               "question": "Where are the most active agtech engineering teams located?",
-              "answer": "Among the 2 agtech startups we track, EU accounts for the highest concentration with 1 teams. Startups applying technology to agriculture and precision farming. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+              "answer": "Among the 2 agtech startups we track, Canada accounts for the highest concentration with 1 teams. Startups applying technology to agriculture and precision farming. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
             }
           ]
         },
         "q3-2025": {
           "intro": "AgTech is a small-sample sector, but signals are unusually clean this quarter.",
           "startups": [
-            {
-              "name": "betagouv",
-              "description": "Communauté des incubateurs de Services Publics Numériques",
-              "stage": "Growth",
-              "geography": "EU",
-              "commitVelocity14d": 10,
-              "commitVelocityChange": "+100%",
-              "contributors": 100,
-              "contributorGrowth": "+32%",
-              "newRepos": 1,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/betagouv"
-            },
             {
               "name": "LiteFarmOrg",
               "description": "",
@@ -3729,6 +3716,19 @@
               "newRepos": 0,
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/LiteFarmOrg"
+            },
+            {
+              "name": "betagouv",
+              "description": "Communauté des incubateurs de Services Publics Numériques",
+              "stage": "Growth",
+              "geography": "EU",
+              "commitVelocity14d": 10,
+              "commitVelocityChange": "+100%",
+              "contributors": 100,
+              "contributorGrowth": "+32%",
+              "newRepos": 1,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/betagouv"
             }
           ],
           "faqs": [
@@ -3742,7 +3742,7 @@
             },
             {
               "question": "Where are the most active agtech engineering teams located?",
-              "answer": "Among the 2 agtech startups we track, EU accounts for the highest concentration with 1 teams. Startups applying technology to agriculture and precision farming. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+              "answer": "Among the 2 agtech startups we track, Canada accounts for the highest concentration with 1 teams. Startups applying technology to agriculture and precision farming. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
             }
           ]
         }
@@ -3762,6 +3762,32 @@
           "intro": "Gaming is one of the few sectors showing broad-based activity increases.",
           "startups": [
             {
+              "name": "FlaxEngine",
+              "description": "A true game changer",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 83,
+              "commitVelocityChange": "-55%",
+              "contributors": 89,
+              "contributorGrowth": "+30%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/FlaxEngine"
+            },
+            {
+              "name": "castle-engine",
+              "description": "Cross-platform (desktop, mobile, console, web) 3D and 2D game engine supporting many asset formats (glTF, X3D, Spine...)",
+              "stage": "Series A/B",
+              "geography": "Unknown",
+              "commitVelocity14d": 40,
+              "commitVelocityChange": "+344%",
+              "contributors": 24,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Deploy frequency spike",
+              "githubUrl": "https://github.com/castle-engine"
+            },
+            {
               "name": "ohrrpgce",
               "description": "",
               "stage": "Pre-seed",
@@ -3773,29 +3799,16 @@
               "newRepos": 0,
               "signalType": "Engineering hiring burst",
               "githubUrl": "https://github.com/ohrrpgce"
-            },
-            {
-              "name": "FlaxEngine",
-              "description": "A true game changer",
-              "stage": "Growth",
-              "geography": "Unknown",
-              "commitVelocity14d": 10,
-              "commitVelocityChange": "-92%",
-              "contributors": 89,
-              "contributorGrowth": "+52%",
-              "newRepos": 0,
-              "signalType": "Engineering hiring burst",
-              "githubUrl": "https://github.com/FlaxEngine"
             }
           ],
           "faqs": [
             {
               "question": "What engineering signals are gaming startups showing in Q2 2026?",
-              "answer": "In Q2 2026, we are tracking 2 gaming startups with measurable GitHub engineering signals. 0 of 2 show positive commit velocity growth. The most common signal type is \"Engineering hiring burst\", observed in 2 of the tracked companies. The average 14-day commit velocity across the sector is 6 commits, with FlaxEngine leading at 10 commits (-92% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
+              "answer": "In Q2 2026, we are tracking 3 gaming startups with measurable GitHub engineering signals. 1 of 3 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 1 of the tracked companies. The average 14-day commit velocity across the sector is 41 commits, with castle-engine leading at 40 commits (+344% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
             },
             {
               "question": "Which gaming startup has the highest engineering acceleration in Q2 2026?",
-              "answer": "FlaxEngine leads the gaming sector in Q2 2026 with 10 commits over a 14-day window, representing a -92% change from the prior period. With 89 active contributors, FlaxEngine is showing a \"Engineering hiring burst\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
+              "answer": "castle-engine leads the gaming sector in Q2 2026 with 40 commits over a 14-day window, representing a +344% change from the prior period. With 24 active contributors, castle-engine is showing a \"Deploy frequency spike\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
             },
             {
               "question": "Where are the most active gaming engineering teams located?",
@@ -3806,6 +3819,32 @@
         "q1-2026": {
           "intro": "Gaming is one of the few sectors showing broad-based activity increases.",
           "startups": [
+            {
+              "name": "FlaxEngine",
+              "description": "A true game changer",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 75,
+              "commitVelocityChange": "+88%",
+              "contributors": 89,
+              "contributorGrowth": "+30%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/FlaxEngine"
+            },
+            {
+              "name": "castle-engine",
+              "description": "Cross-platform (desktop, mobile, console, web) 3D and 2D game engine supporting many asset formats (glTF, X3D, Spine...)",
+              "stage": "Series A/B",
+              "geography": "Unknown",
+              "commitVelocity14d": 84,
+              "commitVelocityChange": "+282%",
+              "contributors": 24,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Deploy frequency spike",
+              "githubUrl": "https://github.com/castle-engine"
+            },
             {
               "name": "ohrrpgce",
               "description": "",
@@ -3818,29 +3857,16 @@
               "newRepos": 0,
               "signalType": "Engineering hiring burst",
               "githubUrl": "https://github.com/ohrrpgce"
-            },
-            {
-              "name": "FlaxEngine",
-              "description": "A true game changer",
-              "stage": "Growth",
-              "geography": "Unknown",
-              "commitVelocity14d": 39,
-              "commitVelocityChange": "-3%",
-              "contributors": 89,
-              "contributorGrowth": "+52%",
-              "newRepos": 0,
-              "signalType": "Engineering hiring burst",
-              "githubUrl": "https://github.com/FlaxEngine"
             }
           ],
           "faqs": [
             {
               "question": "What engineering signals are gaming startups showing in Q1 2026?",
-              "answer": "In Q1 2026, we are tracking 2 gaming startups with measurable GitHub engineering signals. 1 of 2 show positive commit velocity growth. The most common signal type is \"Engineering hiring burst\", observed in 2 of the tracked companies. The average 14-day commit velocity across the sector is 39 commits, with ohrrpgce leading at 38 commits (+280% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
+              "answer": "In Q1 2026, we are tracking 3 gaming startups with measurable GitHub engineering signals. 3 of 3 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 1 of the tracked companies. The average 14-day commit velocity across the sector is 66 commits, with castle-engine leading at 84 commits (+282% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
             },
             {
               "question": "Which gaming startup has the highest engineering acceleration in Q1 2026?",
-              "answer": "ohrrpgce leads the gaming sector in Q1 2026 with 38 commits over a 14-day window, representing a +280% change from the prior period. With 3 active contributors, ohrrpgce is showing a \"Engineering hiring burst\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
+              "answer": "castle-engine leads the gaming sector in Q1 2026 with 84 commits over a 14-day window, representing a +282% change from the prior period. With 24 active contributors, castle-engine is showing a \"Deploy frequency spike\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
             },
             {
               "question": "Where are the most active gaming engineering teams located?",
@@ -3851,6 +3877,32 @@
         "q4-2025": {
           "intro": "Gaming is one of the few sectors showing broad-based activity increases.",
           "startups": [
+            {
+              "name": "FlaxEngine",
+              "description": "A true game changer",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 91,
+              "commitVelocityChange": "+11%",
+              "contributors": 89,
+              "contributorGrowth": "+30%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/FlaxEngine"
+            },
+            {
+              "name": "castle-engine",
+              "description": "Cross-platform (desktop, mobile, console, web) 3D and 2D game engine supporting many asset formats (glTF, X3D, Spine...)",
+              "stage": "Series A/B",
+              "geography": "Unknown",
+              "commitVelocity14d": 37,
+              "commitVelocityChange": "+106%",
+              "contributors": 24,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/castle-engine"
+            },
             {
               "name": "ohrrpgce",
               "description": "",
@@ -3863,29 +3915,16 @@
               "newRepos": 0,
               "signalType": "Engineering hiring burst",
               "githubUrl": "https://github.com/ohrrpgce"
-            },
-            {
-              "name": "FlaxEngine",
-              "description": "A true game changer",
-              "stage": "Growth",
-              "geography": "Unknown",
-              "commitVelocity14d": 88,
-              "commitVelocityChange": "+7%",
-              "contributors": 89,
-              "contributorGrowth": "+52%",
-              "newRepos": 0,
-              "signalType": "Engineering hiring burst",
-              "githubUrl": "https://github.com/FlaxEngine"
             }
           ],
           "faqs": [
             {
               "question": "What engineering signals are gaming startups showing in Q4 2025?",
-              "answer": "In Q4 2025, we are tracking 2 gaming startups with measurable GitHub engineering signals. 1 of 2 show positive commit velocity growth. The most common signal type is \"Engineering hiring burst\", observed in 2 of the tracked companies. The average 14-day commit velocity across the sector is 53 commits, with FlaxEngine leading at 88 commits (+7% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
+              "answer": "In Q4 2025, we are tracking 3 gaming startups with measurable GitHub engineering signals. 2 of 3 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 2 of the tracked companies. The average 14-day commit velocity across the sector is 49 commits, with castle-engine leading at 37 commits (+106% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
             },
             {
               "question": "Which gaming startup has the highest engineering acceleration in Q4 2025?",
-              "answer": "FlaxEngine leads the gaming sector in Q4 2025 with 88 commits over a 14-day window, representing a +7% change from the prior period. With 89 active contributors, FlaxEngine is showing a \"Engineering hiring burst\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
+              "answer": "castle-engine leads the gaming sector in Q4 2025 with 37 commits over a 14-day window, representing a +106% change from the prior period. With 24 active contributors, castle-engine is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
             },
             {
               "question": "Where are the most active gaming engineering teams located?",
@@ -3896,6 +3935,32 @@
         "q3-2025": {
           "intro": "Gaming is one of the few sectors showing broad-based activity increases.",
           "startups": [
+            {
+              "name": "FlaxEngine",
+              "description": "A true game changer",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 39,
+              "commitVelocityChange": "-54%",
+              "contributors": 89,
+              "contributorGrowth": "+30%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/FlaxEngine"
+            },
+            {
+              "name": "castle-engine",
+              "description": "Cross-platform (desktop, mobile, console, web) 3D and 2D game engine supporting many asset formats (glTF, X3D, Spine...)",
+              "stage": "Series A/B",
+              "geography": "Unknown",
+              "commitVelocity14d": 96,
+              "commitVelocityChange": "+52%",
+              "contributors": 24,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/castle-engine"
+            },
             {
               "name": "ohrrpgce",
               "description": "",
@@ -3908,29 +3973,16 @@
               "newRepos": 0,
               "signalType": "Engineering hiring burst",
               "githubUrl": "https://github.com/ohrrpgce"
-            },
-            {
-              "name": "FlaxEngine",
-              "description": "A true game changer",
-              "stage": "Growth",
-              "geography": "Unknown",
-              "commitVelocity14d": 39,
-              "commitVelocityChange": "-43%",
-              "contributors": 89,
-              "contributorGrowth": "+52%",
-              "newRepos": 0,
-              "signalType": "Engineering hiring burst",
-              "githubUrl": "https://github.com/FlaxEngine"
             }
           ],
           "faqs": [
             {
               "question": "What engineering signals are gaming startups showing in Q3 2025?",
-              "answer": "In Q3 2025, we are tracking 2 gaming startups with measurable GitHub engineering signals. 0 of 2 show positive commit velocity growth. The most common signal type is \"Engineering hiring burst\", observed in 2 of the tracked companies. The average 14-day commit velocity across the sector is 31 commits, with FlaxEngine leading at 39 commits (-43% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
+              "answer": "In Q3 2025, we are tracking 3 gaming startups with measurable GitHub engineering signals. 1 of 3 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 2 of the tracked companies. The average 14-day commit velocity across the sector is 53 commits, with castle-engine leading at 96 commits (+52% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
             },
             {
               "question": "Which gaming startup has the highest engineering acceleration in Q3 2025?",
-              "answer": "FlaxEngine leads the gaming sector in Q3 2025 with 39 commits over a 14-day window, representing a -43% change from the prior period. With 89 active contributors, FlaxEngine is showing a \"Engineering hiring burst\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
+              "answer": "castle-engine leads the gaming sector in Q3 2025 with 96 commits over a 14-day window, representing a +52% change from the prior period. With 24 active contributors, castle-engine is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
             },
             {
               "question": "Where are the most active gaming engineering teams located?",
@@ -3954,6 +4006,19 @@
           "intro": "Space tech has a small but distinct engineering footprint on GitHub.",
           "startups": [
             {
+              "name": "naev",
+              "description": "Migrated to https://codeberg.org/naev .Naev is a 2D space trading and combat game that combines elements from the action",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 71,
+              "commitVelocityChange": "-58%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/naev"
+            },
+            {
               "name": "orbiternassp",
               "description": "",
               "stage": "Series A/B",
@@ -3965,19 +4030,6 @@
               "newRepos": 0,
               "signalType": "Deploy frequency spike",
               "githubUrl": "https://github.com/orbiternassp"
-            },
-            {
-              "name": "naev",
-              "description": "Migrated to https://codeberg.org/naev .Naev is a 2D space trading and combat game that combines elements from the action",
-              "stage": "Growth",
-              "geography": "Unknown",
-              "commitVelocity14d": 66,
-              "commitVelocityChange": "-61%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/naev"
             },
             {
               "name": "OpenC3",
@@ -3996,7 +4048,7 @@
           "faqs": [
             {
               "question": "What engineering signals are space tech startups showing in Q2 2026?",
-              "answer": "In Q2 2026, we are tracking 3 space tech startups with measurable GitHub engineering signals. 1 of 3 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 2 of the tracked companies. The average 14-day commit velocity across the sector is 61 commits, with orbiternassp leading at 30 commits (+329% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
+              "answer": "In Q2 2026, we are tracking 3 space tech startups with measurable GitHub engineering signals. 1 of 3 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 2 of the tracked companies. The average 14-day commit velocity across the sector is 63 commits, with orbiternassp leading at 30 commits (+329% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
             },
             {
               "question": "Which space tech startup has the highest engineering acceleration in Q2 2026?",
@@ -4012,19 +4064,6 @@
           "intro": "Space tech has a small but distinct engineering footprint on GitHub.",
           "startups": [
             {
-              "name": "orbiternassp",
-              "description": "",
-              "stage": "Series A/B",
-              "geography": "Unknown",
-              "commitVelocity14d": 46,
-              "commitVelocityChange": "+12%",
-              "contributors": 37,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/orbiternassp"
-            },
-            {
               "name": "naev",
               "description": "Migrated to https://codeberg.org/naev .Naev is a 2D space trading and combat game that combines elements from the action",
               "stage": "Growth",
@@ -4036,6 +4075,19 @@
               "newRepos": 0,
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/naev"
+            },
+            {
+              "name": "orbiternassp",
+              "description": "",
+              "stage": "Series A/B",
+              "geography": "Unknown",
+              "commitVelocity14d": 46,
+              "commitVelocityChange": "+12%",
+              "contributors": 37,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/orbiternassp"
             },
             {
               "name": "OpenC3",
@@ -4070,19 +4122,6 @@
           "intro": "Space tech has a small but distinct engineering footprint on GitHub.",
           "startups": [
             {
-              "name": "orbiternassp",
-              "description": "",
-              "stage": "Series A/B",
-              "geography": "Unknown",
-              "commitVelocity14d": 50,
-              "commitVelocityChange": "+138%",
-              "contributors": 37,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/orbiternassp"
-            },
-            {
               "name": "naev",
               "description": "Migrated to https://codeberg.org/naev .Naev is a 2D space trading and combat game that combines elements from the action",
               "stage": "Growth",
@@ -4094,6 +4133,19 @@
               "newRepos": 0,
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/naev"
+            },
+            {
+              "name": "orbiternassp",
+              "description": "",
+              "stage": "Series A/B",
+              "geography": "Unknown",
+              "commitVelocity14d": 50,
+              "commitVelocityChange": "+138%",
+              "contributors": 37,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/orbiternassp"
             },
             {
               "name": "OpenC3",
@@ -4128,19 +4180,6 @@
           "intro": "Space tech has a small but distinct engineering footprint on GitHub.",
           "startups": [
             {
-              "name": "orbiternassp",
-              "description": "",
-              "stage": "Series A/B",
-              "geography": "Unknown",
-              "commitVelocity14d": 30,
-              "commitVelocityChange": "-14%",
-              "contributors": 37,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/orbiternassp"
-            },
-            {
               "name": "naev",
               "description": "Migrated to https://codeberg.org/naev .Naev is a 2D space trading and combat game that combines elements from the action",
               "stage": "Growth",
@@ -4152,6 +4191,19 @@
               "newRepos": 0,
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/naev"
+            },
+            {
+              "name": "orbiternassp",
+              "description": "",
+              "stage": "Series A/B",
+              "geography": "Unknown",
+              "commitVelocity14d": 30,
+              "commitVelocityChange": "-14%",
+              "contributors": 37,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/orbiternassp"
             },
             {
               "name": "OpenC3",
@@ -4198,14 +4250,27 @@
           "intro": "Social and community platform engineering shows two distinct clusters this quarter.",
           "startups": [
             {
+              "name": "nextcloud",
+              "description": "📱☁️💻 A safe home for all your data – community-driven, free & open source 👏",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 57,
+              "commitVelocityChange": "-39%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/nextcloud"
+            },
+            {
               "name": "bakaphp",
               "description": "Baka: packages that look to make development simpler for everyone.",
               "stage": "Seed",
               "geography": "LATAM",
-              "commitVelocity14d": 504,
-              "commitVelocityChange": "+12%",
+              "commitVelocity14d": 598,
+              "commitVelocityChange": "+32%",
               "contributors": 14,
-              "contributorGrowth": "+2%",
+              "contributorGrowth": "+8%",
               "newRepos": 1,
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/bakaphp"
@@ -4215,8 +4280,8 @@
               "description": "Unified Networking Applications",
               "stage": "Seed",
               "geography": "Unknown",
-              "commitVelocity14d": 27,
-              "commitVelocityChange": "-41%",
+              "commitVelocity14d": 34,
+              "commitVelocityChange": "-26%",
               "contributors": 11,
               "contributorGrowth": "+0%",
               "newRepos": 0,
@@ -4227,21 +4292,34 @@
           "faqs": [
             {
               "question": "What engineering signals are social & community startups showing in Q2 2026?",
-              "answer": "In Q2 2026, we are tracking 2 social & community startups with measurable GitHub engineering signals. 1 of 2 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 2 of the tracked companies. The average 14-day commit velocity across the sector is 266 commits, with bakaphp leading at 504 commits (+12% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
+              "answer": "In Q2 2026, we are tracking 3 social & community startups with measurable GitHub engineering signals. 1 of 3 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 3 of the tracked companies. The average 14-day commit velocity across the sector is 230 commits, with bakaphp leading at 598 commits (+32% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
             },
             {
               "question": "Which social & community startup has the highest engineering acceleration in Q2 2026?",
-              "answer": "bakaphp leads the social & community sector in Q2 2026 with 504 commits over a 14-day window, representing a +12% change from the prior period. With 14 active contributors and 1 new repositories, bakaphp is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
+              "answer": "bakaphp leads the social & community sector in Q2 2026 with 598 commits over a 14-day window, representing a +32% change from the prior period. With 14 active contributors and 1 new repositories, bakaphp is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
             },
             {
               "question": "Where are the most active social & community engineering teams located?",
-              "answer": "Among the 2 social & community startups we track, LATAM accounts for the highest concentration with 1 teams. Startups building social networks, community platforms, and creator tools. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+              "answer": "Among the 3 social & community startups we track, LATAM accounts for the highest concentration with 1 teams. Startups building social networks, community platforms, and creator tools. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
             }
           ]
         },
         "q1-2026": {
           "intro": "Social and community platform engineering shows two distinct clusters this quarter.",
           "startups": [
+            {
+              "name": "nextcloud",
+              "description": "📱☁️💻 A safe home for all your data – community-driven, free & open source 👏",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 53,
+              "commitVelocityChange": "+430%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Deploy frequency spike",
+              "githubUrl": "https://github.com/nextcloud"
+            },
             {
               "name": "bakaphp",
               "description": "Baka: packages that look to make development simpler for everyone.",
@@ -4250,7 +4328,7 @@
               "commitVelocity14d": 440,
               "commitVelocityChange": "+19%",
               "contributors": 14,
-              "contributorGrowth": "+2%",
+              "contributorGrowth": "+8%",
               "newRepos": 1,
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/bakaphp"
@@ -4272,21 +4350,34 @@
           "faqs": [
             {
               "question": "What engineering signals are social & community startups showing in Q1 2026?",
-              "answer": "In Q1 2026, we are tracking 2 social & community startups with measurable GitHub engineering signals. 1 of 2 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 2 of the tracked companies. The average 14-day commit velocity across the sector is 237 commits, with bakaphp leading at 440 commits (+19% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
+              "answer": "In Q1 2026, we are tracking 3 social & community startups with measurable GitHub engineering signals. 2 of 3 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 2 of the tracked companies. The average 14-day commit velocity across the sector is 175 commits, with nextcloud leading at 53 commits (+430% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
             },
             {
               "question": "Which social & community startup has the highest engineering acceleration in Q1 2026?",
-              "answer": "bakaphp leads the social & community sector in Q1 2026 with 440 commits over a 14-day window, representing a +19% change from the prior period. With 14 active contributors and 1 new repositories, bakaphp is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
+              "answer": "nextcloud leads the social & community sector in Q1 2026 with 53 commits over a 14-day window, representing a +430% change from the prior period. With 100 active contributors, nextcloud is showing a \"Deploy frequency spike\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
             },
             {
               "question": "Where are the most active social & community engineering teams located?",
-              "answer": "Among the 2 social & community startups we track, LATAM accounts for the highest concentration with 1 teams. Startups building social networks, community platforms, and creator tools. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+              "answer": "Among the 3 social & community startups we track, LATAM accounts for the highest concentration with 1 teams. Startups building social networks, community platforms, and creator tools. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
             }
           ]
         },
         "q4-2025": {
           "intro": "Social and community platform engineering shows two distinct clusters this quarter.",
           "startups": [
+            {
+              "name": "nextcloud",
+              "description": "📱☁️💻 A safe home for all your data – community-driven, free & open source 👏",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 132,
+              "commitVelocityChange": "+6%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/nextcloud"
+            },
             {
               "name": "bakaphp",
               "description": "Baka: packages that look to make development simpler for everyone.",
@@ -4295,7 +4386,7 @@
               "commitVelocity14d": 502,
               "commitVelocityChange": "-13%",
               "contributors": 14,
-              "contributorGrowth": "+2%",
+              "contributorGrowth": "+8%",
               "newRepos": 1,
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/bakaphp"
@@ -4317,21 +4408,34 @@
           "faqs": [
             {
               "question": "What engineering signals are social & community startups showing in Q4 2025?",
-              "answer": "In Q4 2025, we are tracking 2 social & community startups with measurable GitHub engineering signals. 0 of 2 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 2 of the tracked companies. The average 14-day commit velocity across the sector is 278 commits, with bakaphp leading at 502 commits (-13% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
+              "answer": "In Q4 2025, we are tracking 3 social & community startups with measurable GitHub engineering signals. 1 of 3 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 3 of the tracked companies. The average 14-day commit velocity across the sector is 229 commits, with nextcloud leading at 132 commits (+6% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
             },
             {
               "question": "Which social & community startup has the highest engineering acceleration in Q4 2025?",
-              "answer": "bakaphp leads the social & community sector in Q4 2025 with 502 commits over a 14-day window, representing a -13% change from the prior period. With 14 active contributors and 1 new repositories, bakaphp is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
+              "answer": "nextcloud leads the social & community sector in Q4 2025 with 132 commits over a 14-day window, representing a +6% change from the prior period. With 100 active contributors, nextcloud is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
             },
             {
               "question": "Where are the most active social & community engineering teams located?",
-              "answer": "Among the 2 social & community startups we track, LATAM accounts for the highest concentration with 1 teams. Startups building social networks, community platforms, and creator tools. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+              "answer": "Among the 3 social & community startups we track, LATAM accounts for the highest concentration with 1 teams. Startups building social networks, community platforms, and creator tools. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
             }
           ]
         },
         "q3-2025": {
           "intro": "Social and community platform engineering shows two distinct clusters this quarter.",
           "startups": [
+            {
+              "name": "nextcloud",
+              "description": "📱☁️💻 A safe home for all your data – community-driven, free & open source 👏",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 98,
+              "commitVelocityChange": "+13%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/nextcloud"
+            },
             {
               "name": "bakaphp",
               "description": "Baka: packages that look to make development simpler for everyone.",
@@ -4340,7 +4444,7 @@
               "commitVelocity14d": 506,
               "commitVelocityChange": "+20%",
               "contributors": 14,
-              "contributorGrowth": "+2%",
+              "contributorGrowth": "+8%",
               "newRepos": 1,
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/bakaphp"
@@ -4362,7 +4466,7 @@
           "faqs": [
             {
               "question": "What engineering signals are social & community startups showing in Q3 2025?",
-              "answer": "In Q3 2025, we are tracking 2 social & community startups with measurable GitHub engineering signals. 2 of 2 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 2 of the tracked companies. The average 14-day commit velocity across the sector is 282 commits, with unacms leading at 57 commits (+138% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
+              "answer": "In Q3 2025, we are tracking 3 social & community startups with measurable GitHub engineering signals. 3 of 3 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 3 of the tracked companies. The average 14-day commit velocity across the sector is 220 commits, with unacms leading at 57 commits (+138% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
             },
             {
               "question": "Which social & community startup has the highest engineering acceleration in Q3 2025?",
@@ -4370,7 +4474,7 @@
             },
             {
               "question": "Where are the most active social & community engineering teams located?",
-              "answer": "Among the 2 social & community startups we track, LATAM accounts for the highest concentration with 1 teams. Startups building social networks, community platforms, and creator tools. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+              "answer": "Among the 3 social & community startups we track, LATAM accounts for the highest concentration with 1 teams. Startups building social networks, community platforms, and creator tools. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
             }
           ]
         }
