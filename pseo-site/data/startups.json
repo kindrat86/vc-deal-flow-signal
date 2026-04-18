@@ -41,6 +41,71 @@
           "intro": "AI and ML engineering teams are moving at an unusual pace this quarter. We are tracking model infrastructure startups with commit velocities that have tripled in under three weeks.",
           "startups": [
             {
+              "name": "roboflow",
+              "description": "",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 39,
+              "commitVelocityChange": "-35%",
+              "contributors": 90,
+              "contributorGrowth": "+5%",
+              "newRepos": 2,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/roboflow"
+            },
+            {
+              "name": "mlflow",
+              "description": "The open source AI engineering platform for agents, LLMs, and ML models.",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 358,
+              "commitVelocityChange": "-21%",
+              "contributors": 100,
+              "contributorGrowth": "+20%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/mlflow"
+            },
+            {
+              "name": "harvard-edge",
+              "description": "",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 532,
+              "commitVelocityChange": "+10%",
+              "contributors": 95,
+              "contributorGrowth": "+32%",
+              "newRepos": 1,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/harvard-edge"
+            },
+            {
+              "name": "photoprism",
+              "description": "AI-Powered Photos App for the Decentralized Web. We are on a mission to protect your freedom and privacy.",
+              "stage": "Growth",
+              "geography": "EU",
+              "commitVelocity14d": 34,
+              "commitVelocityChange": "+36%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/photoprism"
+            },
+            {
+              "name": "nautechsystems",
+              "description": "next-generation algorithmic trading technologies",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 178,
+              "commitVelocityChange": "-12%",
+              "contributors": 100,
+              "contributorGrowth": "+16%",
+              "newRepos": 1,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/nautechsystems"
+            },
+            {
               "name": "paperless-ngx",
               "description": "",
               "stage": "Growth",
@@ -52,52 +117,91 @@
               "newRepos": 0,
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/paperless-ngx"
-            },
-            {
-              "name": "harvard-edge",
-              "description": "",
-              "stage": "Growth",
-              "geography": "Unknown",
-              "commitVelocity14d": 337,
-              "commitVelocityChange": "-30%",
-              "contributors": 95,
-              "contributorGrowth": "+13%",
-              "newRepos": 1,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/harvard-edge"
-            },
-            {
-              "name": "roboflow",
-              "description": "",
-              "stage": "Growth",
-              "geography": "US",
-              "commitVelocity14d": 24,
-              "commitVelocityChange": "-60%",
-              "contributors": 90,
-              "contributorGrowth": "+0%",
-              "newRepos": 2,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/roboflow"
             }
           ],
           "faqs": [
             {
               "question": "What engineering signals are ai & machine learning startups showing in Q2 2026?",
-              "answer": "In Q2 2026, we are tracking 3 ai & machine learning startups with measurable GitHub engineering signals. 0 of 3 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 3 of the tracked companies. The average 14-day commit velocity across the sector is 138 commits, with paperless-ngx leading at 54 commits (-10% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
+              "answer": "In Q2 2026, we are tracking 6 ai & machine learning startups with measurable GitHub engineering signals. 2 of 6 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 6 of the tracked companies. The average 14-day commit velocity across the sector is 199 commits, with photoprism leading at 34 commits (+36% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
             },
             {
               "question": "Which ai & machine learning startup has the highest engineering acceleration in Q2 2026?",
-              "answer": "paperless-ngx leads the ai & machine learning sector in Q2 2026 with 54 commits over a 14-day window, representing a -10% change from the prior period. With 100 active contributors, paperless-ngx is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
+              "answer": "photoprism leads the ai & machine learning sector in Q2 2026 with 34 commits over a 14-day window, representing a +36% change from the prior period. With 100 active contributors, photoprism is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
             },
             {
               "question": "Where are the most active ai & machine learning engineering teams located?",
-              "answer": "Among the 3 ai & machine learning startups we track, US accounts for the highest concentration with 1 teams. Startups building AI/ML infrastructure, applications, and tools. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+              "answer": "Among the 6 ai & machine learning startups we track, US accounts for the highest concentration with 2 teams. Startups building AI/ML infrastructure, applications, and tools. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
             }
           ]
         },
         "q1-2026": {
           "intro": "AI and ML engineering teams are moving at an unusual pace this quarter. We are tracking model infrastructure startups with commit velocities that have tripled in under three weeks.",
           "startups": [
+            {
+              "name": "roboflow",
+              "description": "",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 127,
+              "commitVelocityChange": "-29%",
+              "contributors": 90,
+              "contributorGrowth": "+5%",
+              "newRepos": 2,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/roboflow"
+            },
+            {
+              "name": "mlflow",
+              "description": "The open source AI engineering platform for agents, LLMs, and ML models.",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 456,
+              "commitVelocityChange": "+380%",
+              "contributors": 100,
+              "contributorGrowth": "+20%",
+              "newRepos": 0,
+              "signalType": "Deploy frequency spike",
+              "githubUrl": "https://github.com/mlflow"
+            },
+            {
+              "name": "harvard-edge",
+              "description": "",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 367,
+              "commitVelocityChange": "+63%",
+              "contributors": 95,
+              "contributorGrowth": "+32%",
+              "newRepos": 1,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/harvard-edge"
+            },
+            {
+              "name": "photoprism",
+              "description": "AI-Powered Photos App for the Decentralized Web. We are on a mission to protect your freedom and privacy.",
+              "stage": "Growth",
+              "geography": "EU",
+              "commitVelocity14d": 15,
+              "commitVelocityChange": "+7%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/photoprism"
+            },
+            {
+              "name": "nautechsystems",
+              "description": "next-generation algorithmic trading technologies",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 161,
+              "commitVelocityChange": "+32%",
+              "contributors": 100,
+              "contributorGrowth": "+16%",
+              "newRepos": 1,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/nautechsystems"
+            },
             {
               "name": "paperless-ngx",
               "description": "",
@@ -110,52 +214,91 @@
               "newRepos": 0,
               "signalType": "Deploy frequency spike",
               "githubUrl": "https://github.com/paperless-ngx"
-            },
-            {
-              "name": "harvard-edge",
-              "description": "",
-              "stage": "Growth",
-              "geography": "Unknown",
-              "commitVelocity14d": 367,
-              "commitVelocityChange": "+63%",
-              "contributors": 95,
-              "contributorGrowth": "+13%",
-              "newRepos": 1,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/harvard-edge"
-            },
-            {
-              "name": "roboflow",
-              "description": "",
-              "stage": "Growth",
-              "geography": "US",
-              "commitVelocity14d": 127,
-              "commitVelocityChange": "-29%",
-              "contributors": 90,
-              "contributorGrowth": "+0%",
-              "newRepos": 2,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/roboflow"
             }
           ],
           "faqs": [
             {
               "question": "What engineering signals are ai & machine learning startups showing in Q1 2026?",
-              "answer": "In Q1 2026, we are tracking 3 ai & machine learning startups with measurable GitHub engineering signals. 2 of 3 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 2 of the tracked companies. The average 14-day commit velocity across the sector is 185 commits, with paperless-ngx leading at 61 commits (+336% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
+              "answer": "In Q1 2026, we are tracking 6 ai & machine learning startups with measurable GitHub engineering signals. 5 of 6 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 4 of the tracked companies. The average 14-day commit velocity across the sector is 198 commits, with mlflow leading at 456 commits (+380% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
             },
             {
               "question": "Which ai & machine learning startup has the highest engineering acceleration in Q1 2026?",
-              "answer": "paperless-ngx leads the ai & machine learning sector in Q1 2026 with 61 commits over a 14-day window, representing a +336% change from the prior period. With 100 active contributors, paperless-ngx is showing a \"Deploy frequency spike\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
+              "answer": "mlflow leads the ai & machine learning sector in Q1 2026 with 456 commits over a 14-day window, representing a +380% change from the prior period. With 100 active contributors, mlflow is showing a \"Deploy frequency spike\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
             },
             {
               "question": "Where are the most active ai & machine learning engineering teams located?",
-              "answer": "Among the 3 ai & machine learning startups we track, US accounts for the highest concentration with 1 teams. Startups building AI/ML infrastructure, applications, and tools. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+              "answer": "Among the 6 ai & machine learning startups we track, US accounts for the highest concentration with 2 teams. Startups building AI/ML infrastructure, applications, and tools. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
             }
           ]
         },
         "q4-2025": {
           "intro": "AI and ML engineering teams are moving at an unusual pace this quarter. We are tracking model infrastructure startups with commit velocities that have tripled in under three weeks.",
           "startups": [
+            {
+              "name": "roboflow",
+              "description": "",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 100,
+              "commitVelocityChange": "-61%",
+              "contributors": 90,
+              "contributorGrowth": "+5%",
+              "newRepos": 2,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/roboflow"
+            },
+            {
+              "name": "mlflow",
+              "description": "The open source AI engineering platform for agents, LLMs, and ML models.",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 302,
+              "commitVelocityChange": "+35%",
+              "contributors": 100,
+              "contributorGrowth": "+20%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/mlflow"
+            },
+            {
+              "name": "harvard-edge",
+              "description": "",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 191,
+              "commitVelocityChange": "-1%",
+              "contributors": 95,
+              "contributorGrowth": "+32%",
+              "newRepos": 1,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/harvard-edge"
+            },
+            {
+              "name": "photoprism",
+              "description": "AI-Powered Photos App for the Decentralized Web. We are on a mission to protect your freedom and privacy.",
+              "stage": "Growth",
+              "geography": "EU",
+              "commitVelocity14d": 202,
+              "commitVelocityChange": "+24%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/photoprism"
+            },
+            {
+              "name": "nautechsystems",
+              "description": "next-generation algorithmic trading technologies",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 200,
+              "commitVelocityChange": "+10%",
+              "contributors": 100,
+              "contributorGrowth": "+16%",
+              "newRepos": 1,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/nautechsystems"
+            },
             {
               "name": "paperless-ngx",
               "description": "",
@@ -168,52 +311,91 @@
               "newRepos": 0,
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/paperless-ngx"
-            },
-            {
-              "name": "harvard-edge",
-              "description": "",
-              "stage": "Growth",
-              "geography": "Unknown",
-              "commitVelocity14d": 191,
-              "commitVelocityChange": "-1%",
-              "contributors": 95,
-              "contributorGrowth": "+13%",
-              "newRepos": 1,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/harvard-edge"
-            },
-            {
-              "name": "roboflow",
-              "description": "",
-              "stage": "Growth",
-              "geography": "US",
-              "commitVelocity14d": 100,
-              "commitVelocityChange": "-61%",
-              "contributors": 90,
-              "contributorGrowth": "+0%",
-              "newRepos": 2,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/roboflow"
             }
           ],
           "faqs": [
             {
               "question": "What engineering signals are ai & machine learning startups showing in Q4 2025?",
-              "answer": "In Q4 2025, we are tracking 3 ai & machine learning startups with measurable GitHub engineering signals. 0 of 3 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 3 of the tracked companies. The average 14-day commit velocity across the sector is 103 commits, with harvard-edge leading at 191 commits (-1% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
+              "answer": "In Q4 2025, we are tracking 6 ai & machine learning startups with measurable GitHub engineering signals. 3 of 6 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 6 of the tracked companies. The average 14-day commit velocity across the sector is 169 commits, with mlflow leading at 302 commits (+35% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
             },
             {
               "question": "Which ai & machine learning startup has the highest engineering acceleration in Q4 2025?",
-              "answer": "harvard-edge leads the ai & machine learning sector in Q4 2025 with 191 commits over a 14-day window, representing a -1% change from the prior period. With 95 active contributors and 1 new repositories, harvard-edge is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
+              "answer": "mlflow leads the ai & machine learning sector in Q4 2025 with 302 commits over a 14-day window, representing a +35% change from the prior period. With 100 active contributors, mlflow is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
             },
             {
               "question": "Where are the most active ai & machine learning engineering teams located?",
-              "answer": "Among the 3 ai & machine learning startups we track, US accounts for the highest concentration with 1 teams. Startups building AI/ML infrastructure, applications, and tools. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+              "answer": "Among the 6 ai & machine learning startups we track, US accounts for the highest concentration with 2 teams. Startups building AI/ML infrastructure, applications, and tools. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
             }
           ]
         },
         "q3-2025": {
           "intro": "AI and ML engineering teams are moving at an unusual pace this quarter. We are tracking model infrastructure startups with commit velocities that have tripled in under three weeks.",
           "startups": [
+            {
+              "name": "roboflow",
+              "description": "",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 221,
+              "commitVelocityChange": "+83%",
+              "contributors": 90,
+              "contributorGrowth": "+5%",
+              "newRepos": 2,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/roboflow"
+            },
+            {
+              "name": "mlflow",
+              "description": "The open source AI engineering platform for agents, LLMs, and ML models.",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 107,
+              "commitVelocityChange": "-36%",
+              "contributors": 100,
+              "contributorGrowth": "+20%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/mlflow"
+            },
+            {
+              "name": "harvard-edge",
+              "description": "",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 92,
+              "commitVelocityChange": "-32%",
+              "contributors": 95,
+              "contributorGrowth": "+32%",
+              "newRepos": 1,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/harvard-edge"
+            },
+            {
+              "name": "photoprism",
+              "description": "AI-Powered Photos App for the Decentralized Web. We are on a mission to protect your freedom and privacy.",
+              "stage": "Growth",
+              "geography": "EU",
+              "commitVelocity14d": 74,
+              "commitVelocityChange": "+6%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/photoprism"
+            },
+            {
+              "name": "nautechsystems",
+              "description": "next-generation algorithmic trading technologies",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 141,
+              "commitVelocityChange": "+76%",
+              "contributors": 100,
+              "contributorGrowth": "+16%",
+              "newRepos": 1,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/nautechsystems"
+            },
             {
               "name": "paperless-ngx",
               "description": "",
@@ -226,38 +408,12 @@
               "newRepos": 0,
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/paperless-ngx"
-            },
-            {
-              "name": "harvard-edge",
-              "description": "",
-              "stage": "Growth",
-              "geography": "Unknown",
-              "commitVelocity14d": 92,
-              "commitVelocityChange": "-32%",
-              "contributors": 95,
-              "contributorGrowth": "+13%",
-              "newRepos": 1,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/harvard-edge"
-            },
-            {
-              "name": "roboflow",
-              "description": "",
-              "stage": "Growth",
-              "geography": "US",
-              "commitVelocity14d": 221,
-              "commitVelocityChange": "+83%",
-              "contributors": 90,
-              "contributorGrowth": "+0%",
-              "newRepos": 2,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/roboflow"
             }
           ],
           "faqs": [
             {
               "question": "What engineering signals are ai & machine learning startups showing in Q3 2025?",
-              "answer": "In Q3 2025, we are tracking 3 ai & machine learning startups with measurable GitHub engineering signals. 1 of 3 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 3 of the tracked companies. The average 14-day commit velocity across the sector is 109 commits, with roboflow leading at 221 commits (+83% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
+              "answer": "In Q3 2025, we are tracking 6 ai & machine learning startups with measurable GitHub engineering signals. 3 of 6 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 6 of the tracked companies. The average 14-day commit velocity across the sector is 108 commits, with roboflow leading at 221 commits (+83% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
             },
             {
               "question": "Which ai & machine learning startup has the highest engineering acceleration in Q3 2025?",
@@ -265,7 +421,7 @@
             },
             {
               "question": "Where are the most active ai & machine learning engineering teams located?",
-              "answer": "Among the 3 ai & machine learning startups we track, US accounts for the highest concentration with 1 teams. Startups building AI/ML infrastructure, applications, and tools. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+              "answer": "Among the 6 ai & machine learning startups we track, US accounts for the highest concentration with 2 teams. Startups building AI/ML infrastructure, applications, and tools. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
             }
           ]
         }
@@ -296,6 +452,32 @@
           "intro": "Climate tech engineering activity is concentrated in grid software and carbon accounting tooling.",
           "startups": [
             {
+              "name": "carbon-design-system",
+              "description": "An open-source design system built by IBM.",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 79,
+              "commitVelocityChange": "-1%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 1,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/carbon-design-system"
+            },
+            {
+              "name": "nco",
+              "description": "",
+              "stage": "Series A/B",
+              "geography": "Unknown",
+              "commitVelocity14d": 23,
+              "commitVelocityChange": "-18%",
+              "contributors": 24,
+              "contributorGrowth": "+220%",
+              "newRepos": 0,
+              "signalType": "Engineering hiring burst",
+              "githubUrl": "https://github.com/nco"
+            },
+            {
               "name": "opennem",
               "description": "Formerly OpenNEM, Open Electricity aims to make the wealth of public energy data more accessible",
               "stage": "Seed",
@@ -307,39 +489,52 @@
               "newRepos": 0,
               "signalType": "Engineering hiring burst",
               "githubUrl": "https://github.com/opennem"
-            },
-            {
-              "name": "nco",
-              "description": "",
-              "stage": "Series A/B",
-              "geography": "Unknown",
-              "commitVelocity14d": 20,
-              "commitVelocityChange": "-29%",
-              "contributors": 24,
-              "contributorGrowth": "+205%",
-              "newRepos": 0,
-              "signalType": "Engineering hiring burst",
-              "githubUrl": "https://github.com/nco"
             }
           ],
           "faqs": [
             {
               "question": "What engineering signals are climate tech startups showing in Q2 2026?",
-              "answer": "In Q2 2026, we are tracking 2 climate tech startups with measurable GitHub engineering signals. 0 of 2 show positive commit velocity growth. The most common signal type is \"Engineering hiring burst\", observed in 2 of the tracked companies. The average 14-day commit velocity across the sector is 25 commits, with nco leading at 20 commits (-29% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
+              "answer": "In Q2 2026, we are tracking 3 climate tech startups with measurable GitHub engineering signals. 0 of 3 show positive commit velocity growth. The most common signal type is \"Engineering hiring burst\", observed in 2 of the tracked companies. The average 14-day commit velocity across the sector is 44 commits, with carbon-design-system leading at 79 commits (-1% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
             },
             {
               "question": "Which climate tech startup has the highest engineering acceleration in Q2 2026?",
-              "answer": "nco leads the climate tech sector in Q2 2026 with 20 commits over a 14-day window, representing a -29% change from the prior period. With 24 active contributors, nco is showing a \"Engineering hiring burst\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
+              "answer": "carbon-design-system leads the climate tech sector in Q2 2026 with 79 commits over a 14-day window, representing a -1% change from the prior period. With 100 active contributors and 1 new repositories, carbon-design-system is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
             },
             {
               "question": "Where are the most active climate tech engineering teams located?",
-              "answer": "Among the 2 climate tech startups we track, APAC accounts for the highest concentration with 1 teams. Startups developing clean energy, carbon monitoring, and climate adaptation technologies. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+              "answer": "Among the 3 climate tech startups we track, US accounts for the highest concentration with 1 teams. Startups developing clean energy, carbon monitoring, and climate adaptation technologies. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
             }
           ]
         },
         "q1-2026": {
           "intro": "Climate tech engineering activity is concentrated in grid software and carbon accounting tooling.",
           "startups": [
+            {
+              "name": "carbon-design-system",
+              "description": "An open-source design system built by IBM.",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 62,
+              "commitVelocityChange": "+933%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 1,
+              "signalType": "Deploy frequency spike",
+              "githubUrl": "https://github.com/carbon-design-system"
+            },
+            {
+              "name": "nco",
+              "description": "",
+              "stage": "Series A/B",
+              "geography": "Unknown",
+              "commitVelocity14d": 2,
+              "commitVelocityChange": "+100%",
+              "contributors": 24,
+              "contributorGrowth": "+220%",
+              "newRepos": 0,
+              "signalType": "Engineering hiring burst",
+              "githubUrl": "https://github.com/nco"
+            },
             {
               "name": "opennem",
               "description": "Formerly OpenNEM, Open Electricity aims to make the wealth of public energy data more accessible",
@@ -352,25 +547,12 @@
               "newRepos": 0,
               "signalType": "Engineering hiring burst",
               "githubUrl": "https://github.com/opennem"
-            },
-            {
-              "name": "nco",
-              "description": "",
-              "stage": "Series A/B",
-              "geography": "Unknown",
-              "commitVelocity14d": 2,
-              "commitVelocityChange": "+100%",
-              "contributors": 24,
-              "contributorGrowth": "+205%",
-              "newRepos": 0,
-              "signalType": "Engineering hiring burst",
-              "githubUrl": "https://github.com/nco"
             }
           ],
           "faqs": [
             {
               "question": "What engineering signals are climate tech startups showing in Q1 2026?",
-              "answer": "In Q1 2026, we are tracking 2 climate tech startups with measurable GitHub engineering signals. 2 of 2 show positive commit velocity growth. The most common signal type is \"Engineering hiring burst\", observed in 2 of the tracked companies. The average 14-day commit velocity across the sector is 17 commits, with opennem leading at 31 commits (+999% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
+              "answer": "In Q1 2026, we are tracking 3 climate tech startups with measurable GitHub engineering signals. 3 of 3 show positive commit velocity growth. The most common signal type is \"Engineering hiring burst\", observed in 2 of the tracked companies. The average 14-day commit velocity across the sector is 32 commits, with opennem leading at 31 commits (+999% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
             },
             {
               "question": "Which climate tech startup has the highest engineering acceleration in Q1 2026?",
@@ -378,13 +560,39 @@
             },
             {
               "question": "Where are the most active climate tech engineering teams located?",
-              "answer": "Among the 2 climate tech startups we track, APAC accounts for the highest concentration with 1 teams. Startups developing clean energy, carbon monitoring, and climate adaptation technologies. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+              "answer": "Among the 3 climate tech startups we track, US accounts for the highest concentration with 1 teams. Startups developing clean energy, carbon monitoring, and climate adaptation technologies. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
             }
           ]
         },
         "q4-2025": {
           "intro": "Climate tech engineering activity is concentrated in grid software and carbon accounting tooling.",
           "startups": [
+            {
+              "name": "carbon-design-system",
+              "description": "An open-source design system built by IBM.",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 89,
+              "commitVelocityChange": "+27%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 1,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/carbon-design-system"
+            },
+            {
+              "name": "nco",
+              "description": "",
+              "stage": "Series A/B",
+              "geography": "Unknown",
+              "commitVelocity14d": 6,
+              "commitVelocityChange": "+0%",
+              "contributors": 24,
+              "contributorGrowth": "+220%",
+              "newRepos": 0,
+              "signalType": "Engineering hiring burst",
+              "githubUrl": "https://github.com/nco"
+            },
             {
               "name": "opennem",
               "description": "Formerly OpenNEM, Open Electricity aims to make the wealth of public energy data more accessible",
@@ -397,39 +605,52 @@
               "newRepos": 0,
               "signalType": "Engineering hiring burst",
               "githubUrl": "https://github.com/opennem"
-            },
-            {
-              "name": "nco",
-              "description": "",
-              "stage": "Series A/B",
-              "geography": "Unknown",
-              "commitVelocity14d": 6,
-              "commitVelocityChange": "+0%",
-              "contributors": 24,
-              "contributorGrowth": "+205%",
-              "newRepos": 0,
-              "signalType": "Engineering hiring burst",
-              "githubUrl": "https://github.com/nco"
             }
           ],
           "faqs": [
             {
               "question": "What engineering signals are climate tech startups showing in Q4 2025?",
-              "answer": "In Q4 2025, we are tracking 2 climate tech startups with measurable GitHub engineering signals. 1 of 2 show positive commit velocity growth. The most common signal type is \"Engineering hiring burst\", observed in 2 of the tracked companies. The average 14-day commit velocity across the sector is 14 commits, with opennem leading at 22 commits (+16% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
+              "answer": "In Q4 2025, we are tracking 3 climate tech startups with measurable GitHub engineering signals. 2 of 3 show positive commit velocity growth. The most common signal type is \"Engineering hiring burst\", observed in 2 of the tracked companies. The average 14-day commit velocity across the sector is 39 commits, with carbon-design-system leading at 89 commits (+27% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
             },
             {
               "question": "Which climate tech startup has the highest engineering acceleration in Q4 2025?",
-              "answer": "opennem leads the climate tech sector in Q4 2025 with 22 commits over a 14-day window, representing a +16% change from the prior period. With 9 active contributors, opennem is showing a \"Engineering hiring burst\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
+              "answer": "carbon-design-system leads the climate tech sector in Q4 2025 with 89 commits over a 14-day window, representing a +27% change from the prior period. With 100 active contributors and 1 new repositories, carbon-design-system is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
             },
             {
               "question": "Where are the most active climate tech engineering teams located?",
-              "answer": "Among the 2 climate tech startups we track, APAC accounts for the highest concentration with 1 teams. Startups developing clean energy, carbon monitoring, and climate adaptation technologies. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+              "answer": "Among the 3 climate tech startups we track, US accounts for the highest concentration with 1 teams. Startups developing clean energy, carbon monitoring, and climate adaptation technologies. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
             }
           ]
         },
         "q3-2025": {
           "intro": "Climate tech engineering activity is concentrated in grid software and carbon accounting tooling.",
           "startups": [
+            {
+              "name": "carbon-design-system",
+              "description": "An open-source design system built by IBM.",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 106,
+              "commitVelocityChange": "+43%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 1,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/carbon-design-system"
+            },
+            {
+              "name": "nco",
+              "description": "",
+              "stage": "Series A/B",
+              "geography": "Unknown",
+              "commitVelocity14d": 5,
+              "commitVelocityChange": "+150%",
+              "contributors": 24,
+              "contributorGrowth": "+220%",
+              "newRepos": 0,
+              "signalType": "Engineering hiring burst",
+              "githubUrl": "https://github.com/nco"
+            },
             {
               "name": "opennem",
               "description": "Formerly OpenNEM, Open Electricity aims to make the wealth of public energy data more accessible",
@@ -442,25 +663,12 @@
               "newRepos": 0,
               "signalType": "Engineering hiring burst",
               "githubUrl": "https://github.com/opennem"
-            },
-            {
-              "name": "nco",
-              "description": "",
-              "stage": "Series A/B",
-              "geography": "Unknown",
-              "commitVelocity14d": 5,
-              "commitVelocityChange": "+150%",
-              "contributors": 24,
-              "contributorGrowth": "+205%",
-              "newRepos": 0,
-              "signalType": "Engineering hiring burst",
-              "githubUrl": "https://github.com/nco"
             }
           ],
           "faqs": [
             {
               "question": "What engineering signals are climate tech startups showing in Q3 2025?",
-              "answer": "In Q3 2025, we are tracking 2 climate tech startups with measurable GitHub engineering signals. 1 of 2 show positive commit velocity growth. The most common signal type is \"Engineering hiring burst\", observed in 2 of the tracked companies. The average 14-day commit velocity across the sector is 4 commits, with nco leading at 5 commits (+150% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
+              "answer": "In Q3 2025, we are tracking 3 climate tech startups with measurable GitHub engineering signals. 2 of 3 show positive commit velocity growth. The most common signal type is \"Engineering hiring burst\", observed in 2 of the tracked companies. The average 14-day commit velocity across the sector is 38 commits, with nco leading at 5 commits (+150% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
             },
             {
               "question": "Which climate tech startup has the highest engineering acceleration in Q3 2025?",
@@ -468,7 +676,7 @@
             },
             {
               "question": "Where are the most active climate tech engineering teams located?",
-              "answer": "Among the 2 climate tech startups we track, APAC accounts for the highest concentration with 1 teams. Startups developing clean energy, carbon monitoring, and climate adaptation technologies. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+              "answer": "Among the 3 climate tech startups we track, US accounts for the highest concentration with 1 teams. Startups developing clean energy, carbon monitoring, and climate adaptation technologies. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
             }
           ]
         }
@@ -488,6 +696,19 @@
           "intro": "Developer tools is the sector with the most consistent engineering signal this quarter.",
           "startups": [
             {
+              "name": "OpenAPITools",
+              "description": "A collection of tools for OpenAPI specifications. (NOTE: This organization is not affiliated with OpenAPI Initiative (OA",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 55,
+              "commitVelocityChange": "-35%",
+              "contributors": 100,
+              "contributorGrowth": "+5%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/OpenAPITools"
+            },
+            {
               "name": "nocobase",
               "description": "",
               "stage": "Growth",
@@ -504,7 +725,7 @@
           "faqs": [
             {
               "question": "What engineering signals are developer tools startups showing in Q2 2026?",
-              "answer": "In Q2 2026, we are tracking 1 developer tools startups with measurable GitHub engineering signals. 0 of 1 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 1 of the tracked companies. The average 14-day commit velocity across the sector is 54 commits, with nocobase leading at 54 commits (-25% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
+              "answer": "In Q2 2026, we are tracking 2 developer tools startups with measurable GitHub engineering signals. 0 of 2 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 2 of the tracked companies. The average 14-day commit velocity across the sector is 55 commits, with nocobase leading at 54 commits (-25% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
             },
             {
               "question": "Which developer tools startup has the highest engineering acceleration in Q2 2026?",
@@ -519,6 +740,19 @@
         "q1-2026": {
           "intro": "Developer tools is the sector with the most consistent engineering signal this quarter.",
           "startups": [
+            {
+              "name": "OpenAPITools",
+              "description": "A collection of tools for OpenAPI specifications. (NOTE: This organization is not affiliated with OpenAPI Initiative (OA",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 50,
+              "commitVelocityChange": "+285%",
+              "contributors": 100,
+              "contributorGrowth": "+5%",
+              "newRepos": 0,
+              "signalType": "Deploy frequency spike",
+              "githubUrl": "https://github.com/OpenAPITools"
+            },
             {
               "name": "nocobase",
               "description": "",
@@ -536,11 +770,11 @@
           "faqs": [
             {
               "question": "What engineering signals are developer tools startups showing in Q1 2026?",
-              "answer": "In Q1 2026, we are tracking 1 developer tools startups with measurable GitHub engineering signals. 1 of 1 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 1 of the tracked companies. The average 14-day commit velocity across the sector is 267 commits, with nocobase leading at 267 commits (+37% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
+              "answer": "In Q1 2026, we are tracking 2 developer tools startups with measurable GitHub engineering signals. 2 of 2 show positive commit velocity growth. The most common signal type is \"Deploy frequency spike\", observed in 1 of the tracked companies. The average 14-day commit velocity across the sector is 159 commits, with OpenAPITools leading at 50 commits (+285% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
             },
             {
               "question": "Which developer tools startup has the highest engineering acceleration in Q1 2026?",
-              "answer": "nocobase leads the developer tools sector in Q1 2026 with 267 commits over a 14-day window, representing a +37% change from the prior period. With 98 active contributors and 1 new repositories, nocobase is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
+              "answer": "OpenAPITools leads the developer tools sector in Q1 2026 with 50 commits over a 14-day window, representing a +285% change from the prior period. With 100 active contributors, OpenAPITools is showing a \"Deploy frequency spike\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
             },
             {
               "question": "Where are the most active developer tools engineering teams located?",
@@ -551,6 +785,19 @@
         "q4-2025": {
           "intro": "Developer tools is the sector with the most consistent engineering signal this quarter.",
           "startups": [
+            {
+              "name": "OpenAPITools",
+              "description": "A collection of tools for OpenAPI specifications. (NOTE: This organization is not affiliated with OpenAPI Initiative (OA",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 57,
+              "commitVelocityChange": "+54%",
+              "contributors": 100,
+              "contributorGrowth": "+5%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/OpenAPITools"
+            },
             {
               "name": "nocobase",
               "description": "",
@@ -568,7 +815,7 @@
           "faqs": [
             {
               "question": "What engineering signals are developer tools startups showing in Q4 2025?",
-              "answer": "In Q4 2025, we are tracking 1 developer tools startups with measurable GitHub engineering signals. 1 of 1 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 1 of the tracked companies. The average 14-day commit velocity across the sector is 60 commits, with nocobase leading at 60 commits (+67% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
+              "answer": "In Q4 2025, we are tracking 2 developer tools startups with measurable GitHub engineering signals. 2 of 2 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 2 of the tracked companies. The average 14-day commit velocity across the sector is 59 commits, with nocobase leading at 60 commits (+67% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
             },
             {
               "question": "Which developer tools startup has the highest engineering acceleration in Q4 2025?",
@@ -583,6 +830,19 @@
         "q3-2025": {
           "intro": "Developer tools is the sector with the most consistent engineering signal this quarter.",
           "startups": [
+            {
+              "name": "OpenAPITools",
+              "description": "A collection of tools for OpenAPI specifications. (NOTE: This organization is not affiliated with OpenAPI Initiative (OA",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 37,
+              "commitVelocityChange": "+23%",
+              "contributors": 100,
+              "contributorGrowth": "+5%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/OpenAPITools"
+            },
             {
               "name": "nocobase",
               "description": "",
@@ -600,7 +860,7 @@
           "faqs": [
             {
               "question": "What engineering signals are developer tools startups showing in Q3 2025?",
-              "answer": "In Q3 2025, we are tracking 1 developer tools startups with measurable GitHub engineering signals. 1 of 1 show positive commit velocity growth. The most common signal type is \"Deploy frequency spike\", observed in 1 of the tracked companies. The average 14-day commit velocity across the sector is 239 commits, with nocobase leading at 239 commits (+152% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
+              "answer": "In Q3 2025, we are tracking 2 developer tools startups with measurable GitHub engineering signals. 2 of 2 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 1 of the tracked companies. The average 14-day commit velocity across the sector is 138 commits, with nocobase leading at 239 commits (+152% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
             },
             {
               "question": "Which developer tools startup has the highest engineering acceleration in Q3 2025?",
@@ -627,6 +887,32 @@
         "q2-2026": {
           "intro": "Cybersecurity engineering teams show a bifurcated pattern: vulnerability scanning sprints vs. identity teams with steady commits but growing contributor lists.",
           "startups": [
+            {
+              "name": "JanssenProject",
+              "description": "Cloud Native Identity and Access Management Platform",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 461,
+              "commitVelocityChange": "+77%",
+              "contributors": 100,
+              "contributorGrowth": "+44%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/JanssenProject"
+            },
+            {
+              "name": "Infisical",
+              "description": "Infisical is the open-source secrets management platform: Sync secrets across your team/infrastructure, prevent secret l",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 504,
+              "commitVelocityChange": "+5%",
+              "contributors": 100,
+              "contributorGrowth": "+40%",
+              "newRepos": 3,
+              "signalType": "Infrastructure buildout",
+              "githubUrl": "https://github.com/Infisical"
+            },
             {
               "name": "cilium",
               "description": "eBPF-based Networking, Security, and Observability",
@@ -722,21 +1008,47 @@
           "faqs": [
             {
               "question": "What engineering signals are cybersecurity startups showing in Q2 2026?",
-              "answer": "In Q2 2026, we are tracking 7 cybersecurity startups with measurable GitHub engineering signals. 2 of 7 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 7 of the tracked companies. The average 14-day commit velocity across the sector is 219 commits, with akto-api-security leading at 267 commits (+75% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
+              "answer": "In Q2 2026, we are tracking 9 cybersecurity startups with measurable GitHub engineering signals. 4 of 9 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 8 of the tracked companies. The average 14-day commit velocity across the sector is 277 commits, with JanssenProject leading at 461 commits (+77% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
             },
             {
               "question": "Which cybersecurity startup has the highest engineering acceleration in Q2 2026?",
-              "answer": "akto-api-security leads the cybersecurity sector in Q2 2026 with 267 commits over a 14-day window, representing a +75% change from the prior period. With 53 active contributors and 1 new repositories, akto-api-security is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
+              "answer": "JanssenProject leads the cybersecurity sector in Q2 2026 with 461 commits over a 14-day window, representing a +77% change from the prior period. With 100 active contributors, JanssenProject is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
             },
             {
               "question": "Where are the most active cybersecurity engineering teams located?",
-              "answer": "Among the 7 cybersecurity startups we track, US accounts for the highest concentration with 3 teams. Startups protecting systems, networks, and data from digital attacks. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+              "answer": "Among the 9 cybersecurity startups we track, US accounts for the highest concentration with 5 teams. Startups protecting systems, networks, and data from digital attacks. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
             }
           ]
         },
         "q1-2026": {
           "intro": "Cybersecurity engineering teams show a bifurcated pattern: vulnerability scanning sprints vs. identity teams with steady commits but growing contributor lists.",
           "startups": [
+            {
+              "name": "JanssenProject",
+              "description": "Cloud Native Identity and Access Management Platform",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 51,
+              "commitVelocityChange": "-56%",
+              "contributors": 100,
+              "contributorGrowth": "+44%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/JanssenProject"
+            },
+            {
+              "name": "Infisical",
+              "description": "Infisical is the open-source secrets management platform: Sync secrets across your team/infrastructure, prevent secret l",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 399,
+              "commitVelocityChange": "+1496%",
+              "contributors": 100,
+              "contributorGrowth": "+40%",
+              "newRepos": 3,
+              "signalType": "Infrastructure buildout",
+              "githubUrl": "https://github.com/Infisical"
+            },
             {
               "name": "cilium",
               "description": "eBPF-based Networking, Security, and Observability",
@@ -832,21 +1144,47 @@
           "faqs": [
             {
               "question": "What engineering signals are cybersecurity startups showing in Q1 2026?",
-              "answer": "In Q1 2026, we are tracking 7 cybersecurity startups with measurable GitHub engineering signals. 7 of 7 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 4 of the tracked companies. The average 14-day commit velocity across the sector is 344 commits, with OpenCTI-Platform leading at 158 commits (+285% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
+              "answer": "In Q1 2026, we are tracking 9 cybersecurity startups with measurable GitHub engineering signals. 8 of 9 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 5 of the tracked companies. The average 14-day commit velocity across the sector is 317 commits, with Infisical leading at 399 commits (+1496% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
             },
             {
               "question": "Which cybersecurity startup has the highest engineering acceleration in Q1 2026?",
-              "answer": "OpenCTI-Platform leads the cybersecurity sector in Q1 2026 with 158 commits over a 14-day window, representing a +285% change from the prior period. With 100 active contributors, OpenCTI-Platform is showing a \"Deploy frequency spike\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
+              "answer": "Infisical leads the cybersecurity sector in Q1 2026 with 399 commits over a 14-day window, representing a +1496% change from the prior period. With 100 active contributors and 3 new repositories, Infisical is showing a \"Infrastructure buildout\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
             },
             {
               "question": "Where are the most active cybersecurity engineering teams located?",
-              "answer": "Among the 7 cybersecurity startups we track, US accounts for the highest concentration with 3 teams. Startups protecting systems, networks, and data from digital attacks. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+              "answer": "Among the 9 cybersecurity startups we track, US accounts for the highest concentration with 5 teams. Startups protecting systems, networks, and data from digital attacks. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
             }
           ]
         },
         "q4-2025": {
           "intro": "Cybersecurity engineering teams show a bifurcated pattern: vulnerability scanning sprints vs. identity teams with steady commits but growing contributor lists.",
           "startups": [
+            {
+              "name": "JanssenProject",
+              "description": "Cloud Native Identity and Access Management Platform",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 105,
+              "commitVelocityChange": "-17%",
+              "contributors": 100,
+              "contributorGrowth": "+44%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/JanssenProject"
+            },
+            {
+              "name": "Infisical",
+              "description": "Infisical is the open-source secrets management platform: Sync secrets across your team/infrastructure, prevent secret l",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 285,
+              "commitVelocityChange": "+67%",
+              "contributors": 100,
+              "contributorGrowth": "+40%",
+              "newRepos": 3,
+              "signalType": "Infrastructure buildout",
+              "githubUrl": "https://github.com/Infisical"
+            },
             {
               "name": "cilium",
               "description": "eBPF-based Networking, Security, and Observability",
@@ -942,21 +1280,47 @@
           "faqs": [
             {
               "question": "What engineering signals are cybersecurity startups showing in Q4 2025?",
-              "answer": "In Q4 2025, we are tracking 7 cybersecurity startups with measurable GitHub engineering signals. 4 of 7 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 7 of the tracked companies. The average 14-day commit velocity across the sector is 276 commits, with projectdiscovery leading at 882 commits (+53% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
+              "answer": "In Q4 2025, we are tracking 9 cybersecurity startups with measurable GitHub engineering signals. 5 of 9 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 8 of the tracked companies. The average 14-day commit velocity across the sector is 258 commits, with Infisical leading at 285 commits (+67% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
             },
             {
               "question": "Which cybersecurity startup has the highest engineering acceleration in Q4 2025?",
-              "answer": "projectdiscovery leads the cybersecurity sector in Q4 2025 with 882 commits over a 14-day window, representing a +53% change from the prior period. With 100 active contributors, projectdiscovery is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
+              "answer": "Infisical leads the cybersecurity sector in Q4 2025 with 285 commits over a 14-day window, representing a +67% change from the prior period. With 100 active contributors and 3 new repositories, Infisical is showing a \"Infrastructure buildout\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
             },
             {
               "question": "Where are the most active cybersecurity engineering teams located?",
-              "answer": "Among the 7 cybersecurity startups we track, US accounts for the highest concentration with 3 teams. Startups protecting systems, networks, and data from digital attacks. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+              "answer": "Among the 9 cybersecurity startups we track, US accounts for the highest concentration with 5 teams. Startups protecting systems, networks, and data from digital attacks. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
             }
           ]
         },
         "q3-2025": {
           "intro": "Cybersecurity engineering teams show a bifurcated pattern: vulnerability scanning sprints vs. identity teams with steady commits but growing contributor lists.",
           "startups": [
+            {
+              "name": "JanssenProject",
+              "description": "Cloud Native Identity and Access Management Platform",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 128,
+              "commitVelocityChange": "-6%",
+              "contributors": 100,
+              "contributorGrowth": "+44%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/JanssenProject"
+            },
+            {
+              "name": "Infisical",
+              "description": "Infisical is the open-source secrets management platform: Sync secrets across your team/infrastructure, prevent secret l",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 287,
+              "commitVelocityChange": "-17%",
+              "contributors": 100,
+              "contributorGrowth": "+40%",
+              "newRepos": 3,
+              "signalType": "Infrastructure buildout",
+              "githubUrl": "https://github.com/Infisical"
+            },
             {
               "name": "cilium",
               "description": "eBPF-based Networking, Security, and Observability",
@@ -1052,7 +1416,7 @@
           "faqs": [
             {
               "question": "What engineering signals are cybersecurity startups showing in Q3 2025?",
-              "answer": "In Q3 2025, we are tracking 7 cybersecurity startups with measurable GitHub engineering signals. 3 of 7 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 7 of the tracked companies. The average 14-day commit velocity across the sector is 188 commits, with projectdiscovery leading at 469 commits (+31% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
+              "answer": "In Q3 2025, we are tracking 9 cybersecurity startups with measurable GitHub engineering signals. 3 of 9 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 8 of the tracked companies. The average 14-day commit velocity across the sector is 192 commits, with projectdiscovery leading at 469 commits (+31% change). These patterns have historically preceded fundraise announcements by six to twelve weeks."
             },
             {
               "question": "Which cybersecurity startup has the highest engineering acceleration in Q3 2025?",
@@ -1060,7 +1424,7 @@
             },
             {
               "question": "Where are the most active cybersecurity engineering teams located?",
-              "answer": "Among the 7 cybersecurity startups we track, US accounts for the highest concentration with 3 teams. Startups protecting systems, networks, and data from digital attacks. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+              "answer": "Among the 9 cybersecurity startups we track, US accounts for the highest concentration with 5 teams. Startups protecting systems, networks, and data from digital attacks. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
             }
           ]
         }
