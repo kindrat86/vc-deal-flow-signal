@@ -1,0 +1,16 @@
+period,signal_type,startup_count,share_of_total
+q2-2026,Framework migration,45,0.8333
+q2-2026,Engineering hiring burst,5,0.0926
+q2-2026,Infrastructure buildout,2,0.037
+q2-2026,Deploy frequency spike,2,0.037
+q1-2026,Deploy frequency spike,22,0.4
+q1-2026,Framework migration,26,0.4727
+q1-2026,Engineering hiring burst,5,0.0909
+q1-2026,Infrastructure buildout,2,0.0364
+q4-2025,Framework migration,48,0.8727
+q4-2025,Engineering hiring burst,5,0.0909
+q4-2025,Infrastructure buildout,2,0.0364
+q3-2025,Framework migration,46,0.8364
+q3-2025,Engineering hiring burst,5,0.0909
+q3-2025,Deploy frequency spike,2,0.0364
+q3-2025,Infrastructure buildout,2,0.0364

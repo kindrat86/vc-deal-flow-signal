@@ -1,0 +1,39 @@
+cff-version: 1.2.0
+title: "VC Deal Flow Signal — Startup Engineering Acceleration Dataset"
+message: "If you use this dataset, please cite it as below."
+type: dataset
+authors:
+  - name: "The Data Nerd"
+    affiliation: "VC Deal Flow Signal"
+    website: "https://gitdealflow.com"
+    email: "signal@gitdealflow.com"
+version: "1.0.0"
+date-released: "2026-04-19"
+url: "https://gitdealflow.com"
+repository-artifact: "https://signals.gitdealflow.com/api/signals.csv"
+doi: "10.5281/zenodo.19650920"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.19650920"
+    description: "Version DOI for v1.0.0"
+  - type: doi
+    value: "10.5281/zenodo.19650919"
+    description: "Concept DOI — resolves to the latest version"
+license: "CC-BY-4.0"
+keywords:
+  - venture-capital
+  - startups
+  - github
+  - engineering-velocity
+  - alternative-data
+  - panel-data
+  - deal-flow
+preferred-citation:
+  type: dataset
+  title: "A Longitudinal Panel of GitHub Engineering Velocity for Venture-Backed Startups: Dataset and Early Observations"
+  authors:
+    - name: "The Data Nerd"
+      affiliation: "VC Deal Flow Signal"
+  year: 2026
+  doi: "10.5281/zenodo.19650920"
+  url: "https://zenodo.org/records/19650920"

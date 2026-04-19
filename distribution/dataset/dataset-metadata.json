@@ -1,0 +1,36 @@
+{
+  "title": "Startup GitHub Engineering Velocity Panel",
+  "id": "thedatanerd2026/vc-deal-flow-signal",
+  "licenses": [
+    {
+      "name": "CC-BY-4.0"
+    }
+  ],
+  "subtitle": "GitHub commit velocity across 55 venture-backed startups, 5 quarters",
+  "description": "Quarterly panel of GitHub engineering-velocity signals across venture-backed startups. Covers 20 sectors and 5 quarters (Q2 2025 — Q3 2025 — Q4 2025 — Q1 2026 — Q2 2026).\n\nCollected by [VC Deal Flow Signal](https://gitdealflow.com) from the public GitHub REST API. Designed for venture-capital deal sourcing, academic research on open-source development patterns, and predictive modeling of startup funding events.\n\n**Files**\n- `startup_signals.csv` — one row per startup per period (primary observation table, 219 rows).\n- `sector_aggregates.csv` — sector-level aggregates per period.\n- `signal_type_timeseries.csv` — distribution of signal types over time.\n\n**Signal types**\n- Framework migration\n- Engineering hiring burst\n- Infrastructure buildout\n- Deploy frequency spike\n\n**Methodology**: https://signals.gitdealflow.com/methodology\n\n**Citation**\n> VC Deal Flow Signal. (2026). *Startup Engineering Acceleration Dataset* (v1.0.0) [Data set]. https://gitdealflow.com\n\nLicense: CC BY 4.0 — free to reuse with attribution.",
+  "keywords": [
+    "finance",
+    "venture-capital",
+    "github",
+    "startups",
+    "open-source",
+    "time-series",
+    "panel-data",
+    "alternative-data"
+  ],
+  "collaborators": [],
+  "data": [
+    {
+      "path": "startup_signals.csv",
+      "description": "One row per startup per quarterly period."
+    },
+    {
+      "path": "sector_aggregates.csv",
+      "description": "Sector-level aggregates per quarter."
+    },
+    {
+      "path": "signal_type_timeseries.csv",
+      "description": "Signal-type distribution over time."
+    }
+  ]
+}

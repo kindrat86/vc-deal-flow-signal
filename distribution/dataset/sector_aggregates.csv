@@ -1,0 +1,73 @@
+period,sector_slug,sector_name,startups_tracked,avg_commit_velocity_14d,median_commit_velocity_14d,total_commits_14d,avg_contributors,positive_velocity_count,top_mover_name,top_mover_change_pct,dominant_signal_type
+q2-2026,ai-ml,AI & Machine Learning,3,138.33,54,415,95,0,paperless-ngx,-10,Framework migration
+q1-2026,ai-ml,AI & Machine Learning,3,185,127,555,95,2,paperless-ngx,336,Framework migration
+q4-2025,ai-ml,AI & Machine Learning,3,103.33,100,310,95,0,harvard-edge,-1,Framework migration
+q3-2025,ai-ml,AI & Machine Learning,3,108.67,92,326,95,1,roboflow,83,Framework migration
+q2-2026,climate-tech,Climate Tech,2,24.5,24.5,49,16.5,0,nco,-29,Engineering hiring burst
+q1-2026,climate-tech,Climate Tech,2,16.5,16.5,33,16.5,2,opennem,999,Engineering hiring burst
+q4-2025,climate-tech,Climate Tech,2,14,14,28,16.5,1,opennem,16,Engineering hiring burst
+q3-2025,climate-tech,Climate Tech,2,4,4,8,16.5,1,nco,150,Engineering hiring burst
+q2-2026,developer-tools,Developer Tools,1,54,54,54,98,0,nocobase,-25,Framework migration
+q1-2026,developer-tools,Developer Tools,1,267,267,267,98,1,nocobase,37,Framework migration
+q4-2025,developer-tools,Developer Tools,1,60,60,60,98,1,nocobase,67,Framework migration
+q3-2025,developer-tools,Developer Tools,1,239,239,239,98,1,nocobase,152,Deploy frequency spike
+q2-2026,cybersecurity,Cybersecurity,7,218.57,169,1530,85.86,2,akto-api-security,75,Framework migration
+q1-2026,cybersecurity,Cybersecurity,7,343.71,220,2406,85.86,7,OpenCTI-Platform,285,Framework migration
+q4-2025,cybersecurity,Cybersecurity,7,276,178,1932,85.86,4,projectdiscovery,53,Framework migration
+q3-2025,cybersecurity,Cybersecurity,7,187.86,150,1315,85.86,3,projectdiscovery,31,Framework migration
+q2-2026,healthcare,Healthcare,4,38.25,17.5,153,48.75,1,third-culture-software,30,Framework migration
+q1-2026,healthcare,Healthcare,5,133.4,33,667,41.2,5,hapifhir,1550,Deploy frequency spike
+q4-2025,healthcare,Healthcare,5,146,11,730,41.2,0,ballerina-platform,-4,Framework migration
+q3-2025,healthcare,Healthcare,5,147.4,44,737,41.2,1,third-culture-software,19,Framework migration
+q2-2026,edtech,EdTech,5,75.8,42,379,51.8,0,NDLANO,-5,Framework migration
+q1-2026,edtech,EdTech,5,134.6,20,673,51.8,5,hpi-schul-cloud,999,Deploy frequency spike
+q4-2025,edtech,EdTech,5,164.6,24,823,51.8,1,mdn,68,Framework migration
+q3-2025,edtech,EdTech,5,74,15,370,53.8,2,particify,114,Framework migration
+q2-2026,ecommerce-infrastructure,E-commerce Infrastructure,2,29,29,58,100,2,bagisto,39,Framework migration
+q1-2026,ecommerce-infrastructure,E-commerce Infrastructure,2,62,62,124,100,2,bagisto,58,Framework migration
+q4-2025,ecommerce-infrastructure,E-commerce Infrastructure,2,33.5,33.5,67,100,1,bagisto,57,Framework migration
+q3-2025,ecommerce-infrastructure,E-commerce Infrastructure,3,16.33,16,49,100,1,vuestorefront,999,Framework migration
+q2-2026,web3,Web3,1,13,13,13,22,0,horizontalsystems,-72,Framework migration
+q1-2026,web3,Web3,1,98,98,98,22,1,horizontalsystems,180,Deploy frequency spike
+q4-2025,web3,Web3,1,36,36,36,22,0,horizontalsystems,-5,Framework migration
+q3-2025,web3,Web3,1,32,32,32,22,1,horizontalsystems,33,Framework migration
+q2-2026,enterprise-saas,Enterprise SaaS,5,106.2,70,531,69.4,0,langchain-ai,-5,Framework migration
+q1-2026,enterprise-saas,Enterprise SaaS,5,114,76,570,69.4,4,ParabolInc,999,Framework migration
+q4-2025,enterprise-saas,Enterprise SaaS,5,112.2,68,561,69.4,1,langchain-ai,42,Framework migration
+q3-2025,enterprise-saas,Enterprise SaaS,5,86.4,69,432,69.4,3,open-condo-software,100,Framework migration
+q2-2026,data-infrastructure,Data Infrastructure,8,400.13,142,3201,95.25,1,VictoriaMetrics,4,Framework migration
+q1-2026,data-infrastructure,Data Infrastructure,8,450.63,166,3605,95.25,7,airbytehq,1647,Deploy frequency spike
+q4-2025,data-infrastructure,Data Infrastructure,8,477.25,181,3818,95.25,5,dbt-labs,60,Framework migration
+q3-2025,data-infrastructure,Data Infrastructure,7,470.57,184,3294,100,2,PostHog,24,Framework migration
+q2-2026,robotics,Robotics,1,23,23,23,79,1,ihmcrobotics,44,Framework migration
+q1-2026,robotics,Robotics,1,45,45,45,79,1,ihmcrobotics,800,Deploy frequency spike
+q4-2025,robotics,Robotics,1,34,34,34,79,0,ihmcrobotics,-11,Framework migration
+q3-2025,robotics,Robotics,1,8,8,8,79,0,ihmcrobotics,-68,Framework migration
+q2-2026,legal-tech,Legal Tech,1,215,215,215,100,0,wazuh,-6,Framework migration
+q1-2026,legal-tech,Legal Tech,1,260,260,260,100,1,wazuh,65,Framework migration
+q4-2025,legal-tech,Legal Tech,1,245,245,245,100,0,wazuh,-8,Framework migration
+q3-2025,legal-tech,Legal Tech,1,184,184,184,100,0,wazuh,-19,Framework migration
+q2-2026,hr-tech,HR Tech,2,585.5,585.5,1171,43.5,0,ever-co,-50,Engineering hiring burst
+q1-2026,hr-tech,HR Tech,2,28,28,56,43.5,1,ever-co,79,Engineering hiring burst
+q4-2025,hr-tech,HR Tech,2,33,33,66,43.5,1,zapplyjobs,999,Engineering hiring burst
+q3-2025,hr-tech,HR Tech,2,59,59,118,43.5,1,zapplyjobs,1143,Engineering hiring burst
+q2-2026,proptech,PropTech,1,46,46,46,51,0,open-condo-software,-6,Framework migration
+q1-2026,proptech,PropTech,1,23,23,23,51,1,open-condo-software,15,Framework migration
+q4-2025,proptech,PropTech,1,68,68,68,51,0,open-condo-software,-3,Framework migration
+q3-2025,proptech,PropTech,1,64,64,64,51,1,open-condo-software,100,Framework migration
+q2-2026,agtech,AgTech,2,50,50,100,82.5,0,betagouv,-24,Framework migration
+q1-2026,agtech,AgTech,2,47.5,47.5,95,82.5,2,LiteFarmOrg,999,Deploy frequency spike
+q4-2025,agtech,AgTech,2,76.5,76.5,153,82.5,2,betagouv,43,Framework migration
+q3-2025,agtech,AgTech,2,37.5,37.5,75,82.5,2,betagouv,100,Framework migration
+q2-2026,gaming,Gaming,3,41.33,40,124,38.67,1,castle-engine,344,Framework migration
+q1-2026,gaming,Gaming,3,65.67,75,197,38.67,3,castle-engine,282,Framework migration
+q4-2025,gaming,Gaming,3,48.67,37,146,38.67,2,castle-engine,106,Framework migration
+q3-2025,gaming,Gaming,3,52.67,39,158,38.67,1,castle-engine,52,Framework migration
+q2-2026,space-tech,Space Tech,3,62.67,71,188,60.67,1,orbiternassp,329,Framework migration
+q1-2026,space-tech,Space Tech,3,130,159,390,60.67,2,orbiternassp,12,Framework migration
+q4-2025,space-tech,Space Tech,3,77.33,50,232,60.67,2,orbiternassp,138,Framework migration
+q3-2025,space-tech,Space Tech,3,130.67,57,392,60.67,2,OpenC3,39,Framework migration
+q2-2026,social-community,Social & Community,3,229.67,57,689,41.67,1,bakaphp,32,Framework migration
+q1-2026,social-community,Social & Community,3,175.33,53,526,41.67,2,nextcloud,430,Framework migration
+q4-2025,social-community,Social & Community,3,229.33,132,688,41.67,1,nextcloud,6,Framework migration
+q3-2025,social-community,Social & Community,3,220.33,98,661,41.67,3,unacms,138,Framework migration

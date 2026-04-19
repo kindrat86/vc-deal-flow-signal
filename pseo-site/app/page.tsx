@@ -42,6 +42,10 @@ export default function Home() {
           "https://t.me/gitdealflow",
           "https://x.com/data_nerd",
           "https://www.linkedin.com/company/gitdealflow",
+          "https://www.wikidata.org/wiki/Q139376302",
+          "https://www.crunchbase.com/organization/gitdealflow",
+          "https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn",
+          "https://www.sideprojectors.com/project/78284/vc-deal-flow-signal-engineering-momentum-for-vcs",
         ],
       },
       {
@@ -59,53 +63,180 @@ export default function Home() {
       },
       {
         "@type": "Dataset",
-        name: "VC Deal Flow Signal — Startup Engineering Acceleration Data",
+        name: "VC Deal Flow Signal — Startup Engineering Acceleration Dataset",
+        alternateName: "GitDealFlow Startup Engineering Velocity Panel",
         description:
-          "Weekly dataset of startup engineering acceleration metrics derived from public GitHub activity. Covers commit velocity, contributor growth, repository expansion, and signal classification across " +
+          "Quarterly longitudinal panel of GitHub engineering-velocity signals across venture-backed startups. Covers commit velocity, contributor growth, repository expansion, and acceleration-signal classification across " +
           sectors.length +
-          " startup sectors. Designed for venture capital deal sourcing and portfolio monitoring.",
+          " startup sectors and " +
+          allPeriods.length +
+          " quarterly periods. Designed for venture-capital deal sourcing, portfolio monitoring, and academic research on alternative data in venture capital.",
         url: "https://signals.gitdealflow.com",
-        license: "https://signals.gitdealflow.com/terms",
+        identifier: "https://signals.gitdealflow.com",
+        sameAs: "https://gitdealflow.com",
+        version: "1.0.0",
+        datePublished: "2026-04-19",
+        dateModified: new Date().toISOString().slice(0, 10),
+        isAccessibleForFree: true,
+        license: "https://creativecommons.org/licenses/by/4.0/",
+        keywords: [
+          "venture capital",
+          "startups",
+          "alternative data",
+          "GitHub",
+          "open source",
+          "engineering velocity",
+          "commit activity",
+          "deal flow",
+          "funding prediction",
+          "panel data",
+        ],
         creator: {
           "@type": "Organization",
           name: "VC Deal Flow Signal",
           url: "https://gitdealflow.com",
+          email: "signal@gitdealflow.com",
+          sameAs: [
+            "https://www.linkedin.com/company/gitdealflow",
+            "https://www.wikidata.org/wiki/Q139376302",
+            "https://www.crunchbase.com/organization/gitdealflow",
+          ],
         },
-        distribution: {
-          "@type": "DataDownload",
-          encodingFormat: "application/json",
-          contentUrl: "https://signals.gitdealflow.com/api/signals.json",
+        publisher: {
+          "@type": "Organization",
+          name: "VC Deal Flow Signal",
+          url: "https://gitdealflow.com",
         },
+        includedInDataCatalog: {
+          "@type": "DataCatalog",
+          name: "VC Deal Flow Signal Data Catalog",
+          url: "https://signals.gitdealflow.com",
+        },
+        distribution: [
+          {
+            "@type": "DataDownload",
+            name: "Startup signals — CSV",
+            encodingFormat: "text/csv",
+            contentUrl: "https://signals.gitdealflow.com/api/signals.csv",
+          },
+          {
+            "@type": "DataDownload",
+            name: "Startup signals — JSON",
+            encodingFormat: "application/json",
+            contentUrl: "https://signals.gitdealflow.com/api/signals.json",
+          },
+        ],
         temporalCoverage: allPeriods.map((p) => p.name).join("/"),
-        spatialCoverage: "Global",
+        spatialCoverage: {
+          "@type": "Place",
+          name: "Global — US, EU, APAC, LATAM, Canada",
+        },
         measurementTechnique:
-          "Automated collection from GitHub API v3: commit activity, contributor counts, and repository metadata for venture-backed startup organizations.",
+          "Automated collection from the GitHub REST API v3: commit activity, unique contributor counts, and repository-creation metadata for venture-backed startup organizations. Rolling 14-day observation windows with deterministic signal classification over commit patterns.",
         variableMeasured: [
           {
             "@type": "PropertyValue",
             name: "Commit Velocity (14-day)",
             description:
               "Total commits to an organization's most active public repository over a rolling 14-day window.",
+            unitText: "commits",
           },
           {
             "@type": "PropertyValue",
             name: "Commit Velocity Change",
             description:
               "Percentage change in commit velocity compared to the preceding 14-day window. Primary ranking signal.",
+            unitText: "percent",
           },
           {
             "@type": "PropertyValue",
             name: "Contributor Count",
             description:
               "Number of unique contributors to the organization's most active public repository.",
+            unitText: "contributors",
           },
           {
             "@type": "PropertyValue",
             name: "Signal Type",
             description:
-              "Classification of acceleration pattern: engineering hiring burst, infrastructure buildout, deploy frequency spike, or framework migration.",
+              "Classification of acceleration pattern: framework migration, engineering hiring burst, infrastructure buildout, or deploy frequency spike.",
           },
         ],
+        citation:
+          "VC Deal Flow Signal (2026). A Longitudinal Panel of GitHub Engineering Velocity for Venture-Backed Startups. https://gitdealflow.com",
+      },
+      {
+        "@type": "SoftwareApplication",
+        name: "VC Deal Flow Signal",
+        applicationCategory: "BusinessApplication",
+        applicationSubCategory: "Deal Flow & Sourcing",
+        operatingSystem: "Web, MCP, Email, RSS, Telegram",
+        url: "https://gitdealflow.com",
+        description:
+          "Engineering-acceleration signal engine for venture capital deal flow. Weekly report of breakout startups ranked by GitHub commit velocity, contributor growth, and infrastructure buildouts.",
+        offers: [
+          {
+            "@type": "Offer",
+            name: "Free Signal Report",
+            price: "0",
+            priceCurrency: "EUR",
+            availability: "https://schema.org/InStock",
+            description:
+              "Weekly email with 5 breakout startups ranked by GitHub engineering acceleration. No credit card required.",
+            url: "https://gitdealflow.com/#signup",
+          },
+          {
+            "@type": "Offer",
+            name: "Dashboard (Beta)",
+            price: "9.97",
+            priceCurrency: "EUR",
+            availability: "https://schema.org/InStock",
+            description:
+              "Full dashboard access: 50+ ranked startups per week, filters by sector, stage, and geography, MCP server access, CSV export.",
+            url: "https://signals.gitdealflow.com/dashboard",
+            priceSpecification: {
+              "@type": "UnitPriceSpecification",
+              price: "9.97",
+              priceCurrency: "EUR",
+              unitCode: "MON",
+              billingIncrement: 1,
+              referenceQuantity: {
+                "@type": "QuantitativeValue",
+                value: 1,
+                unitCode: "MON",
+              },
+            },
+          },
+        ],
+        featureList: [
+          "Weekly GitHub engineering acceleration signals",
+          "50+ startups ranked every Monday",
+          "20 technical sector clusters",
+          "MCP server for Claude, Cursor, Windsurf",
+          "JSON / CSV / RSS / Telegram / Email delivery",
+          "Chrome extension for Crunchbase, AngelList, PitchBook",
+        ],
+        interactionStatistic: [
+          {
+            "@type": "InteractionCounter",
+            interactionType: "https://schema.org/ViewAction",
+            name: "Startups tracked in current period",
+            userInteractionCount: sectors
+              .filter((s) => s.periods[period.slug])
+              .reduce((sum, s) => sum + s.periods[period.slug].startups.length, 0),
+          },
+          {
+            "@type": "InteractionCounter",
+            interactionType: "https://schema.org/FollowAction",
+            name: "Sectors tracked",
+            userInteractionCount: sectors.filter((s) => s.periods[period.slug]).length,
+          },
+        ],
+        provider: {
+          "@type": "Organization",
+          name: "VC Deal Flow Signal",
+          url: "https://gitdealflow.com",
+        },
       },
       {
         "@type": "Event",

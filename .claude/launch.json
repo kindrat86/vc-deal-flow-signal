@@ -6,6 +6,12 @@
       "runtimeExecutable": "python3",
       "runtimeArgs": ["-m", "http.server", "8080", "-d", "/Users/sipi/launch-projects/vc-deal-flow-signal/landing"],
       "port": 8080
+    },
+    {
+      "name": "pseo-site",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "/Users/sipi/launch-projects/vc-deal-flow-signal/pseo-site", "run", "dev", "--", "--port", "3100"],
+      "port": 3100
     }
   ]
 }

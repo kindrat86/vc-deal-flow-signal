@@ -1,0 +1,219 @@
+{
+  "name": "vc-deal-flow-signal-startup-engineering-acceleration",
+  "title": "VC Deal Flow Signal — Startup Engineering Acceleration Dataset",
+  "description": "Quarterly panel of GitHub engineering-velocity signals across venture-backed startups, covering 20 sectors and 5 quarters. Tracks commit velocity, contributor growth, repository expansion, and acceleration-signal classification. Designed for venture-capital deal sourcing, academic study of open-source development patterns, and predictive modeling of startup funding events.",
+  "homepage": "https://gitdealflow.com",
+  "version": "1.0.0",
+  "created": "2026-04-19",
+  "keywords": [
+    "venture-capital",
+    "startups",
+    "github",
+    "open-source",
+    "engineering-velocity",
+    "commit-activity",
+    "deal-flow",
+    "alternative-data",
+    "funding-prediction",
+    "repository-analytics"
+  ],
+  "licenses": [
+    {
+      "name": "CC-BY-4.0",
+      "title": "Creative Commons Attribution 4.0 International",
+      "path": "https://creativecommons.org/licenses/by/4.0/"
+    }
+  ],
+  "contributors": [
+    {
+      "title": "VC Deal Flow Signal",
+      "email": "signal@gitdealflow.com",
+      "role": "author"
+    }
+  ],
+  "sources": [
+    {
+      "title": "GitHub REST API v3 — public repository metadata",
+      "path": "https://docs.github.com/en/rest"
+    }
+  ],
+  "resources": [
+    {
+      "name": "startup_signals",
+      "path": "startup_signals.csv",
+      "profile": "tabular-data-resource",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "description": "One row per startup per quarterly period. Primary observation table.",
+      "schema": {
+        "fields": [
+          {
+            "name": "period",
+            "type": "string",
+            "description": "Quarterly period slug (e.g. q2-2026)."
+          },
+          {
+            "name": "sector_slug",
+            "type": "string"
+          },
+          {
+            "name": "sector_name",
+            "type": "string"
+          },
+          {
+            "name": "startup_name",
+            "type": "string",
+            "description": "GitHub organization slug."
+          },
+          {
+            "name": "stage",
+            "type": "string",
+            "description": "Self-reported funding stage."
+          },
+          {
+            "name": "geography",
+            "type": "string",
+            "description": "ISO region grouping (US, EU, APAC, LATAM, Canada, Unknown)."
+          },
+          {
+            "name": "commit_velocity_14d",
+            "type": "integer",
+            "description": "Total commits to the most active public repo over a rolling 14-day window."
+          },
+          {
+            "name": "commit_velocity_change_pct",
+            "type": "number",
+            "description": "Percent change in commit velocity vs. the preceding 14-day window."
+          },
+          {
+            "name": "contributors",
+            "type": "integer",
+            "description": "Unique contributors in the observation window."
+          },
+          {
+            "name": "contributor_growth_pct",
+            "type": "number"
+          },
+          {
+            "name": "new_repos",
+            "type": "integer",
+            "description": "New public repos created by the org in the window."
+          },
+          {
+            "name": "signal_type",
+            "type": "string",
+            "description": "One of: Framework migration, Engineering hiring burst, Infrastructure buildout, Deploy frequency spike."
+          },
+          {
+            "name": "github_url",
+            "type": "string",
+            "format": "uri"
+          }
+        ],
+        "primaryKey": [
+          "period",
+          "startup_name"
+        ]
+      }
+    },
+    {
+      "name": "sector_aggregates",
+      "path": "sector_aggregates.csv",
+      "profile": "tabular-data-resource",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "description": "Sector-level aggregates per quarter.",
+      "schema": {
+        "fields": [
+          {
+            "name": "period",
+            "type": "string"
+          },
+          {
+            "name": "sector_slug",
+            "type": "string"
+          },
+          {
+            "name": "sector_name",
+            "type": "string"
+          },
+          {
+            "name": "startups_tracked",
+            "type": "integer"
+          },
+          {
+            "name": "avg_commit_velocity_14d",
+            "type": "number"
+          },
+          {
+            "name": "median_commit_velocity_14d",
+            "type": "number"
+          },
+          {
+            "name": "total_commits_14d",
+            "type": "integer"
+          },
+          {
+            "name": "avg_contributors",
+            "type": "number"
+          },
+          {
+            "name": "positive_velocity_count",
+            "type": "integer",
+            "description": "Number of startups with positive velocity change this period."
+          },
+          {
+            "name": "top_mover_name",
+            "type": "string"
+          },
+          {
+            "name": "top_mover_change_pct",
+            "type": "number"
+          },
+          {
+            "name": "dominant_signal_type",
+            "type": "string"
+          }
+        ],
+        "primaryKey": [
+          "period",
+          "sector_slug"
+        ]
+      }
+    },
+    {
+      "name": "signal_type_timeseries",
+      "path": "signal_type_timeseries.csv",
+      "profile": "tabular-data-resource",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "description": "Distribution of signal types across startups each quarter.",
+      "schema": {
+        "fields": [
+          {
+            "name": "period",
+            "type": "string"
+          },
+          {
+            "name": "signal_type",
+            "type": "string"
+          },
+          {
+            "name": "startup_count",
+            "type": "integer"
+          },
+          {
+            "name": "share_of_total",
+            "type": "number",
+            "description": "Share of all observations in the period (0-1)."
+          }
+        ],
+        "primaryKey": [
+          "period",
+          "signal_type"
+        ]
+      }
+    }
+  ]
+}
