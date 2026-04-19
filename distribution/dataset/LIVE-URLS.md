@@ -7,7 +7,7 @@ Update as each destination goes live.
 | --- | --- | --- | --- | --- |
 | **Kaggle** | https://www.kaggle.com/datasets/thedatanerd2026/vc-deal-flow-signal | ✅ Public | 2026-04-19 | — |
 | **Data.world** | https://data.world/thedatanerd2026/vc-deal-flow-signal-startup-engineering-acceleration | ✅ Public | 2026-04-19 | — |
-| **Zenodo** | https://zenodo.org/records/19650920 | ✅ Published | 2026-04-19 | **10.5281/zenodo.19650920** (concept: 10.5281/zenodo.19650919) |
+| **Zenodo** | https://zenodo.org/records/19650920 | ✅ Published (SSRN URL added to related identifiers 2026-04-19) | 2026-04-19 | **10.5281/zenodo.19650920** (concept: 10.5281/zenodo.19650919) |
 | **SSRN** | https://ssrn.com/abstract=6606558 | ✅ Under review (expect public in 24-48h) | 2026-04-19 | — |
 | **arXiv** | _pending endorsement_ | ⏳ | — | — |
 | **Papers With Code** | _blocked on Zenodo DOI_ | ⏳ | — | — |
@@ -19,9 +19,10 @@ Update as each destination goes live.
 - Subtitle: *GitHub commit velocity across 55 venture-backed startups, 5 quarters* (68 chars)
 - Visibility: **Public** (cannot be reverted to Private on Kaggle)
 - License: Attribution 4.0 International (CC BY 4.0)
-- Files live: `startup_signals.csv`, `sector_aggregates.csv`, `signal_type_timeseries.csv`, `README.md`, `LICENSE.txt`, `CITATION.cff`, `datapackage.json`, `UPLOAD-GUIDE.md`, `build.mjs`
-- Usability score: 5.88 (improvable by adding file descriptions + cover image)
-- Tags applied: `Finance` (Kaggle CLI silently dropped the other 7 keywords; add manually via the Data Card → Edit if you want more surface area)
+- Files live (v3 pushed 2026-04-19): `startup_signals.csv`, `sector_aggregates.csv`, `signal_type_timeseries.csv`, `README.md`, `LICENSE.txt`, `CITATION.cff`, `datapackage.json`, `UPLOAD-GUIDE.md`, `build.mjs`, `LIVE-URLS.md`
+- Per-file descriptions: populated in v3 via `dataset-metadata.json` `data[]` field
+- Tags applied: `Finance` (Kaggle CLI silently rejects hyphenated tags — ignore the warning)
+- Usability score: 5.88 at v1 — should bump after v3 descriptions land; cover image still manual-UI-only
 
 ## Zenodo — notes
 
@@ -45,6 +46,7 @@ Update as each destination goes live.
 - Created via REST API (POST /datasets/{owner}) because the UI `/upload` and `/datasets/create` paths 404 in Data.world's current layout
 - Data.world API rejects tag strings with hyphens — use spaces instead (`venture capital`, not `venture-capital`)
 - `description` field is max 120 chars; put the long narrative in `summary`
+- **Autosync: Every Day** — refreshes signals.csv from the live endpoint daily (enabled 2026-04-19)
 
 ## Update flow for Kaggle
 

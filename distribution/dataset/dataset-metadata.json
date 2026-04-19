@@ -7,7 +7,7 @@
     }
   ],
   "subtitle": "GitHub commit velocity across 55 venture-backed startups, 5 quarters",
-  "description": "Quarterly panel of GitHub engineering-velocity signals across venture-backed startups. Covers 20 sectors and 5 quarters (Q2 2025 — Q3 2025 — Q4 2025 — Q1 2026 — Q2 2026).\n\nCollected by [VC Deal Flow Signal](https://gitdealflow.com) from the public GitHub REST API. Designed for venture-capital deal sourcing, academic research on open-source development patterns, and predictive modeling of startup funding events.\n\n**Files**\n- `startup_signals.csv` — one row per startup per period (primary observation table, 219 rows).\n- `sector_aggregates.csv` — sector-level aggregates per period.\n- `signal_type_timeseries.csv` — distribution of signal types over time.\n\n**Signal types**\n- Framework migration\n- Engineering hiring burst\n- Infrastructure buildout\n- Deploy frequency spike\n\n**Methodology**: https://signals.gitdealflow.com/methodology\n\n**Citation**\n> VC Deal Flow Signal. (2026). *Startup Engineering Acceleration Dataset* (v1.0.0) [Data set]. https://gitdealflow.com\n\nLicense: CC BY 4.0 — free to reuse with attribution.",
+  "description": "Quarterly panel of GitHub engineering-velocity signals across 55 venture-backed startups. Covers 20 sectors and 5 quarters (Q2 2025 — Q3 2025 — Q4 2025 — Q1 2026 — Q2 2026) with 219 startup-period observations.\n\nCollected by [VC Deal Flow Signal](https://gitdealflow.com) from the public GitHub REST API. Designed for venture-capital deal sourcing, academic research on open-source development patterns, and predictive modeling of startup funding events.\n\n**DOI**: [10.5281/zenodo.19650920](https://doi.org/10.5281/zenodo.19650920)\n**SSRN preprint**: https://ssrn.com/abstract=6606558\n**Mirrors**: [Zenodo](https://zenodo.org/records/19650920) · [Data.world](https://data.world/thedatanerd2026/vc-deal-flow-signal-startup-engineering-acceleration)\n\n**Files**\n- `startup_signals.csv` — one row per startup per period (primary observation table, 219 rows).\n- `sector_aggregates.csv` — sector-level aggregates per period.\n- `signal_type_timeseries.csv` — distribution of signal types over time.\n- `datapackage.json` — Frictionless Data schema (auto-parseable by downstream tools).\n- `CITATION.cff` — machine-readable citation metadata.\n- `README.md` / `LICENSE.txt` / `UPLOAD-GUIDE.md` / `LIVE-URLS.md` — documentation.\n- `build.mjs` — generator script that emits the CSVs from the raw source.\n\n**Signal types**\n- Framework migration\n- Engineering hiring burst\n- Infrastructure buildout\n- Deploy frequency spike\n\n**Methodology**: https://signals.gitdealflow.com/methodology\n\n**Citation**\n> The Data Nerd. (2026). *A Longitudinal Panel of GitHub Engineering Velocity for Venture-Backed Startups: Dataset and Early Observations* (v1.0.0) [Data set]. Zenodo. https://doi.org/10.5281/zenodo.19650920\n\nLicense: CC BY 4.0 — free to reuse with attribution.",
   "keywords": [
     "finance",
     "venture-capital",
@@ -22,15 +22,43 @@
   "data": [
     {
       "path": "startup_signals.csv",
-      "description": "One row per startup per quarterly period."
+      "description": "Primary observation table — one row per startup per quarterly period. Primary key: (period, startup_name). 219 rows across 55 startups, 20 sectors, 5 quarters. Columns: period, sector_slug, sector_name, startup_name, stage, geography, commit_velocity_14d, commit_velocity_change_pct, contributors, contributor_growth_pct, new_repos, signal_type, github_url."
     },
     {
       "path": "sector_aggregates.csv",
-      "description": "Sector-level aggregates per quarter."
+      "description": "Sector-level aggregates per quarter. Primary key: (period, sector_slug). Columns: period, sector_slug, sector_name, startups_tracked, avg/median commit velocity, total commits, avg contributors, positive velocity count, top mover name + change %, dominant signal type."
     },
     {
       "path": "signal_type_timeseries.csv",
-      "description": "Signal-type distribution over time."
+      "description": "Distribution of acceleration-signal types across observations, per quarterly period. Columns: period, signal_type, startup_count, share_of_total (0-1). Useful for time-series plots of sector-wide behavior."
+    },
+    {
+      "path": "datapackage.json",
+      "description": "Frictionless Data schema description — downstream tools (Data.world, CKAN) auto-parse this to understand the table structure and types."
+    },
+    {
+      "path": "CITATION.cff",
+      "description": "Citation File Format — machine-readable citation metadata. GitHub, Zenodo, and arXiv auto-parse this."
+    },
+    {
+      "path": "README.md",
+      "description": "Human-readable documentation covering data sources, schema, methodology, limitations, citation, and contact info."
+    },
+    {
+      "path": "LICENSE.txt",
+      "description": "CC BY 4.0 license — free to reuse with attribution."
+    },
+    {
+      "path": "UPLOAD-GUIDE.md",
+      "description": "Guide for re-uploading this dataset bundle to other archives (Kaggle, Data.world, Zenodo)."
+    },
+    {
+      "path": "LIVE-URLS.md",
+      "description": "Tracking table of all public mirrors (Kaggle, Data.world, Zenodo, SSRN) with their URLs and DOIs."
+    },
+    {
+      "path": "build.mjs",
+      "description": "Generator script — regenerates the three CSVs from the upstream JSON source. Node.js, no dependencies."
     }
   ]
 }
