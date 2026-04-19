@@ -23,7 +23,8 @@ Update as each destination goes live.
 - Files live (v3 pushed 2026-04-19): `startup_signals.csv`, `sector_aggregates.csv`, `signal_type_timeseries.csv`, `README.md`, `LICENSE.txt`, `CITATION.cff`, `datapackage.json`, `UPLOAD-GUIDE.md`, `build.mjs`, `LIVE-URLS.md`
 - Per-file descriptions: populated in v3 via `dataset-metadata.json` `data[]` field
 - Tags applied: `Finance` (Kaggle CLI silently rejects hyphenated tags — ignore the warning)
-- Usability score: 5.88 at v1 — should bump after v3 descriptions land; cover image still manual-UI-only
+- Usability score: 5.88 at v1 — should bump to ~7.5 after v3 descriptions land
+- Cover image: uploadable only via Kaggle UI's native file picker, not via CLI or API. Candidate image at `/Users/sipi/launch-projects/vc-deal-flow-signal/chrome-ext-marquee.png` (1400×560, 53KB) is branded and ready. Upload path: Settings → Edit Header & Thumbnail Image → Edit Image → drag-drop from Finder. Takes 60 seconds.
 
 ## Zenodo — notes
 
