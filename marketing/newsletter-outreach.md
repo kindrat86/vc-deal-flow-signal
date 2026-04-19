@@ -10,7 +10,7 @@
 - **How to reach:** DM on Twitter (@packym), or reply to his newsletter with a short pitch. Packy is responsive to well-crafted cold DMs.
 - **Pitch draft:**
 
-> Hi Packy, I built a system that monitors GitHub engineering activity across 2,000+ startup orgs and ranks them by acceleration patterns (commit velocity spikes, contributor growth, new repo creation). In our analysis, a 2x contributor spike within 14 days has repeatedly preceded fundraise announcements or major launches within 60 days — consistently enough to be actionable as a leading indicator.
+> Hi Packy, I built a system that monitors GitHub engineering activity across thousands of startup orgs and ranks them by acceleration patterns (commit velocity spikes, contributor growth, new repo creation). In our analysis, a 2x contributor spike within 14 days has repeatedly preceded fundraise announcements or major launches within 60 days — consistently enough to be actionable as a leading indicator.
 >
 > I think your readers would find the methodology interesting. I could write a deep-dive showing real examples and an honest look at when the signal works and when it doesn't. No product pitch, just the data angle.
 >

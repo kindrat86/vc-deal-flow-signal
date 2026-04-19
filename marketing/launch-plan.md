@@ -8,11 +8,11 @@ Two free entry rungs on the Brunson value ladder. Mention BOTH in every launch a
 1. **Chrome extension** — injects a green "Accelerating" badge on Crunchbase, AngelList, and PitchBook startup profiles. Install: https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn. Audience: traditional VCs doing deal research in the browser.
 2. **Claude MCP server** — serves signals inside Claude Desktop, Claude Code, Cursor, and any MCP-compatible AI assistant. Install: `npx @gitdealflow/mcp-signal`. Audience: dev-investors and AI-native workflows.
 
-Both are free, both drive signups to the monthly digest, which feeds the EUR 9.97/mo dashboard and EUR 97/mo Insider Circle conversions.
+Both are free, both drive signups to the weekly digest, which feeds the EUR 9.97/mo dashboard and EUR 97/mo Insider Circle conversions.
 
-## Launch Strategy: Staggered 3-wave launch over 7 days
+## Launch Strategy: Consolidated single-day launch (Sunday April 26)
 
-Don't launch everywhere at once. Each platform has its own culture and timing. Stagger to sustain momentum and learn from each wave.
+Original plan was staggered 3-wave over 7 days. Reality: PH slot is locked for Apr 26 (can't be moved without losing the reserved slot and re-submitting), and fragmenting IH + HN + Reddit across the preceding week diluted momentum in seeding data. New plan: **all three waves fire on Sunday April 26**, separated by hours (not days), so cross-channel traffic compounds in the same 24-hour window.
 
 ---
 
@@ -28,7 +28,7 @@ Don't launch everywhere at once. Each platform has its own culture and timing. S
 
 ---
 
-## Wave 1: Indie Hackers + Reddit (Day 1, Sunday April 19, 11:00 EEST)
+## Wave 1: Indie Hackers + Reddit (Sunday April 26, 10:01 EEST — consolidated launch day)
 
 ### Why first
 Lower stakes, forgiving audience, good for refining messaging before Product Hunt.
@@ -55,7 +55,7 @@ Don't pitch. Share the insight, share the data, let people come to the product. 
 
 ---
 
-## Wave 2: Hacker News "Show HN" (Day 3, Tuesday April 21)
+## Wave 2: Hacker News "Show HN" (Sunday April 26, 15:00 EEST / 8am ET — same launch day, US-morning slot)
 
 ### Why HN
 Technical audience that angel invests. HN respects novel data approaches. The GitHub angle is native to this audience.
@@ -68,7 +68,7 @@ Technical audience that angel invests. HN respects novel data approaches. The Gi
 
   The data pipeline scrapes GitHub activity weekly, enriches with funding stage and team size, and publishes sector-by-sector rankings.
 
-  Free monthly digest or a EUR 9.97/mo dashboard beta. Would love feedback on the methodology. Is commit velocity a real signal, or am I overfitting?"
+  Free weekly digest or a EUR 9.97/mo dashboard beta. Would love feedback on the methodology. Is commit velocity a real signal, or am I overfitting?"
 
 ### HN best practices
 - Post between 8am and 10am ET (highest traffic)
@@ -78,7 +78,7 @@ Technical audience that angel invests. HN respects novel data approaches. The Gi
 
 ---
 
-## Wave 3: Product Hunt (Day 8, Sunday April 26)
+## Wave 3: Product Hunt (Sunday April 26, 10:01 EEST / 12:01 AM PT — auto-publishes via `ph-launch-day-apr26` scheduled task)
 
 ### Why last
 Product Hunt gives you one shot at a clean launch. Use learnings from Wave 1 and 2 to refine the pitch.
@@ -87,7 +87,7 @@ Product Hunt gives you one shot at a clean launch. Use learnings from Wave 1 and
 - [ ] Create a Product Hunt maker profile
 - [ ] Prepare 5 images: hero screenshot, sector ranking table, sample signal card, pricing comparison, Data Nerd character intro
 - [ ] Write tagline (under 60 chars): "Spot breakout startups 3 weeks early via GitHub"
-- [ ] Write description (under 260 chars): "We monitor GitHub engineering activity across 2,000+ startup orgs and surface the ones showing unusual acceleration. Free monthly digest or a EUR 9.97/mo dashboard. Built for seed/Series A investors."
+- [ ] Write description (under 260 chars): "We monitor GitHub engineering activity across thousands of startup orgs and surface the ones showing unusual acceleration. Free weekly digest or a EUR 9.97/mo dashboard. Built for seed/Series A investors."
 - [ ] Prepare a "first comment" as maker (your story, what you learned from HN and IH)
 - [ ] Line up 5-10 supporters to comment and upvote in the first hour
 - [ ] DM Ryan Hoover (@rrhoover) with a heads-up if you've built any engagement with him
@@ -138,8 +138,8 @@ The MCP server is the product for developer-investors. It needs its own distribu
 
 | Wave | Platform | Best day | Why |
 |------|----------|----------|-----|
-| 1 | Indie Hackers + Reddit | Sunday April 19, 11:00 EEST | Lower competition on Sunday, user preference |
-| 2 | Show HN | Tuesday April 21 | Good HN traffic, lets you refine after IH feedback |
-| 3 | Product Hunt | Sunday April 26 | One week of momentum from Wave 1+2 |
+| 1 | Indie Hackers + Reddit | Sunday April 26, 10:01 EEST | Consolidated launch — same slot as PH going live |
+| 2 | Show HN | Sunday April 26, 15:00 EEST (8am ET) | US-morning HN peak traffic, same day as rest |
+| 3 | Product Hunt | Sunday April 26, 10:01 EEST (12:01 AM PT) | PH listing locked; auto-publishes via `ph-launch-day-apr26` scheduled task |
 
-**Timeline:** Wave 1 starts Sunday April 19 at 11:00 EEST. Twitter account should be active with posts by Saturday April 18.
+**Timeline:** Unified launch Sunday April 26 at 10:01 EEST (`ph-launch-day-apr26` auto-publishes PH + posts to IH, Reddit, Telegram, LinkedIn, Twitter). HN delayed to 15:00 EEST same day for US-morning peak traffic. Pre-launch Twitter/IH/Reddit seeding continues through Apr 25; supporter email fires Apr 25 18:00 EEST via `ph-supporter-email-apr25` task.

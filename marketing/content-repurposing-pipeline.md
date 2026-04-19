@@ -68,7 +68,7 @@ From that one piece, create:
 Something is happening in [sector]. Here's what the data shows:
 
 **Tweet 2 (context):**
-We track GitHub engineering activity across 2,000+ startup orgs.
+We track GitHub engineering activity across thousands of startup orgs.
 
 When a company's velocity deviates sharply from its own baseline, we flag it.
 
@@ -90,14 +90,14 @@ The signal doesn't tell you which. But it tells you something changed, weeks bef
 We track this across 20 sectors, weekly.
 
 Free community: [Telegram link]
-Free monthly digest: https://gitdealflow.com
-Pro dashboard (50+ startups): EUR 9.97/mo
+Free weekly digest: https://gitdealflow.com
+Pro dashboard (60+ startups): EUR 9.97/mo
 
 ---
 
 ## LinkedIn post template
 
-I've been tracking GitHub engineering activity across 2,000+ startup orgs.
+I've been tracking GitHub engineering activity across thousands of startup orgs.
 
 This week, one company stood out: [startup name] in [sector].
 
@@ -109,7 +109,7 @@ In our analysis, similar acceleration signatures preceded fundraise announcement
 
 The data is public. The analysis layer is what was missing.
 
-I publish a free weekly signal and a monthly digest for investors who want to source deals with data. Link in comments.
+I publish a free weekly signal and a weekly digest for investors who want to source deals with data. Link in comments.
 
 ---
 
@@ -130,7 +130,7 @@ After week 4, the weekly data refresh provides fresh material automatically.
 
 ### Bi-weekly: MCP query screenshot tweet
 Post a screenshot of Claude answering a real question via the MCP server. Rotate sectors.
-Template: "Asked Claude: '[sector question]' → live data from 2,000+ startup GitHub orgs in 3 seconds. This is what MCP does."
+Template: "Asked Claude: '[sector question]' → live data from thousands of startup GitHub orgs in 3 seconds. This is what MCP does."
 
 ### Monthly: New dev.to article (MCP angle)
 Rotate between:

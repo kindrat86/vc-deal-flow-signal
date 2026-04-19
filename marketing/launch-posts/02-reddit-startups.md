@@ -8,9 +8,9 @@ I'm building a deal flow tool for VCs using GitHub data. Here's what I've learne
 
 ### Body (copy-paste below)
 
-I've been building a tool that monitors GitHub engineering activity across 2,000+ startup orgs and ranks them by engineering acceleration for investors.
+I've been building a tool that monitors GitHub engineering activity across thousands of startup orgs and ranks them by engineering acceleration for investors.
 
-The core idea: when a startup's commit velocity spikes sharply compared to their own historical baseline, it often signals something meaningful — a fundraise in progress, a major product push, rapid team scaling. This pattern tends to show up 6-12 weeks before any public announcement.
+The core idea: when a startup's commit velocity spikes sharply compared to their own historical baseline, it often signals something meaningful — a fundraise in progress, a major product push, rapid team scaling. This pattern tends to show up 3-6 weeks before any public announcement.
 
 **What I learned building this:**
 
@@ -26,7 +26,7 @@ The core idea: when a startup's commit velocity spikes sharply compared to their
 
 **Current state of the tool:**
 - 20 sectors tracked weekly (AI, Fintech, Healthcare, Cybersecurity, etc.)
-- 43 startups showing measurable engineering acceleration right now
+- 60+ startups showing measurable engineering acceleration right now
 - Free Signal Digest and a paid Dashboard (EUR 9.97/mo beta)
 
 **Top signal this week:** carlos-emr (healthcare) — +199% commit velocity, 94 contributors. A burst like that in open-source health tech is unusual.

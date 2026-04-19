@@ -3,7 +3,7 @@
 ## Tweet 1 (hook)
 I built a tool that spots breakout startups 3 weeks before they hit your inbox.
 
-It monitors GitHub engineering activity across 2,000+ startups and surfaces the ones accelerating fastest.
+It monitors GitHub engineering activity across thousands of startup orgs and surfaces the ones accelerating fastest.
 
 Here's what I found (and how you can use it for free):
 
@@ -40,7 +40,7 @@ The 5 patterns I watch for:
 5. Velocity regime change (2x baseline for 6+ weeks)
 
 ## Tweet 5
-These patterns have preceded fundraise announcements by 6-12 weeks in our data.
+These patterns have preceded fundraise announcements by 3-6 weeks in our data.
 
 The timing window:
 
@@ -63,7 +63,7 @@ Right now the hottest sectors by average engineering velocity:
 Check the full cross-sector leaderboard: https://signals.gitdealflow.com/trending
 
 ## Tweet 7
-The free Signal Digest sends you the top breakout startups every month.
+The free Signal Digest sends you the top breakout startups every Sunday.
 
 No spam. Just data.
 
@@ -81,6 +81,6 @@ Install: https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmk
 ## Tweet 9 (AI-native distribution)
 Use Claude for research?
 
-MCP server: ask "which fintech startups are accelerating?" directly in your AI assistant. No dashboard, no API key.
+MCP server: ask "which cybersecurity startups are accelerating?" directly in your AI assistant. No dashboard, no API key.
 
 Install: npx @gitdealflow/mcp-signal

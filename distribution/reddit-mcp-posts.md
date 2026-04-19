@@ -52,7 +52,7 @@ Happy to answer questions about the build or the data methodology.
 
 Just published an MCP server that gives you live startup acceleration data inside Cursor.
 
-It tracks commit velocity, contributor growth, and repo expansion across 2,000+ startup GitHub orgs and ranks them by engineering momentum. Useful if you're into venture capital, angel investing, or just curious about which startups are building fast.
+It tracks commit velocity, contributor growth, and repo expansion across thousands of startup GitHub orgs and ranks them by engineering momentum. Useful if you're into venture capital, angel investing, or just curious about which startups are building fast.
 
 Install: `npx @gitdealflow/mcp-signal`
 
@@ -103,12 +103,12 @@ Because that's not how people work anymore. They ask their AI.
 
 So instead of trying to get people to visit a website, I published an MCP server. Now when an investor asks Claude "which startups are accelerating in healthcare?", they get live data from my engine. No login, no tab to remember.
 
-The data: I monitor 2,000+ startup GitHub orgs for engineering acceleration (commit velocity spikes, contributor growth, new repos). The patterns have historically preceded fundraise announcements by 6 to 12 weeks.
+The data: I monitor thousands of startup GitHub orgs for engineering acceleration (commit velocity spikes, contributor growth, new repos). The patterns have historically preceded fundraise announcements by 3 to 6 weeks.
 
 The product:
 - Free MCP server: `npx @gitdealflow/mcp-signal`
-- Free monthly email digest: 5 breakout startups
-- Paid dashboard (EUR 9.97/mo): 100+ startups ranked
+- Free weekly email digest: 5 breakout startups
+- Paid dashboard (EUR 9.97/mo): 60+ startups ranked
 
 Stack: TypeScript MCP server, Next.js pSEO site, GitHub API data pipeline, PocketBase for subscribers, Stripe for payments, Vercel hosting.
 
@@ -128,12 +128,12 @@ I've been tracking what GitHub repos look like before a startup announces a rais
 
 This acceleration window, usually 14 days, has been the most reliable leading indicator I've found. By the time AngelList shows "trending" or TechCrunch writes about it, you're already weeks late.
 
-I built a system that monitors 2,000+ startup GitHub orgs across 20 sectors and ranks them by engineering acceleration. The data updates weekly.
+I built a system that monitors thousands of startup GitHub orgs across 20 sectors and ranks them by engineering acceleration. The data updates weekly.
 
 Three ways to access it:
 
-1. **Free monthly digest**: 5 breakout startups with real data — sign up at https://gitdealflow.com
-2. **Dashboard** (EUR 9.97/mo): 100+ startups ranked by sector, stage, and geography
+1. **Free weekly digest**: 5 breakout startups with real data — sign up at https://gitdealflow.com
+2. **Dashboard** (EUR 9.97/mo): 60+ startups ranked by sector, stage, and geography
 3. **Claude AI plugin**: if you use Claude, you can query the data directly. Install: `npx @gitdealflow/mcp-signal`
 
 The methodology is fully transparent: https://signals.gitdealflow.com/methodology

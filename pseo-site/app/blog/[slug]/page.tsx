@@ -3,6 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPost, getAllPostSlugs } from "@/content/posts";
 import { getAllSectors, getCurrentPeriod } from "@/lib/data";
+import { getAuthor } from "@/content/authors";
+import { slugify } from "@/lib/slugify";
 import figureRegistry from "@/components/figures";
 import StatCallout from "@/components/StatCallout";
 
@@ -13,6 +15,18 @@ interface PageProps {
 export async function generateStaticParams() {
   return getAllPostSlugs().map((slug) => ({ slug }));
 }
+
+/**
+ * Post-to-author override map. Most posts are authored by the default persona;
+ * a small curated subset uses the research-desk or founder-perspective bylines
+ * for E-E-A-T diversity. Keys are post slugs; values are keys from authors.ts.
+ */
+const POST_AUTHOR_OVERRIDES: Record<string, string> = {
+  "alternative-data-venture-capital": "engineering-research",
+  "github-signals-vs-hiring-data": "engineering-research",
+  "github-due-diligence-for-vcs": "engineering-research",
+  "startup-engineering-metrics-investors-should-track": "engineering-research",
+};
 
 export async function generateMetadata({
   params,
@@ -49,6 +63,8 @@ export default async function BlogPostPage({ params }: PageProps) {
     notFound();
   }
 
+  const author = getAuthor(POST_AUTHOR_OVERRIDES[slug]);
+
   const sectors = getAllSectors();
   const period = getCurrentPeriod();
   const relatedSectorData = post.relatedSectors
@@ -63,6 +79,16 @@ export default async function BlogPostPage({ params }: PageProps) {
     })
     .filter((s): s is NonNullable<typeof s> => s !== null);
 
+  // Build TOC from H2 headings in post body
+  const headings: { text: string; id: string }[] = [];
+  for (const block of post.body.split("\n\n")) {
+    const trimmed = block.trim();
+    if (trimmed.startsWith("## ")) {
+      const text = trimmed.slice(3).trim();
+      headings.push({ text, id: slugify(text) });
+    }
+  }
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -74,9 +100,16 @@ export default async function BlogPostPage({ params }: PageProps) {
         dateModified: post.date,
         author: {
           "@type": "Person",
-          name: "The Data Nerd",
-          url: "https://signals.gitdealflow.com/about",
-          jobTitle: "Founder, VC Deal Flow Signal",
+          name: author.name,
+          url: author.url,
+          jobTitle: author.jobTitle,
+          affiliation: {
+            "@type": "Organization",
+            name: author.affiliation,
+            url: "https://gitdealflow.com",
+          },
+          knowsAbout: author.credentials,
+          sameAs: author.sameAs,
         },
         publisher: {
           "@type": "Organization",
@@ -205,12 +238,23 @@ export default async function BlogPostPage({ params }: PageProps) {
     const trimmed = block.trim();
     if (trimmed.startsWith("## ")) {
       const headingText = trimmed.slice(3);
+      const headingId = slugify(headingText);
       const nodes: React.ReactNode[] = [
         <h2
           key={i}
-          className="text-xl font-semibold text-gray-100 mt-10 mb-4"
+          id={headingId}
+          className="group text-xl font-semibold text-gray-100 mt-10 mb-4 scroll-mt-20"
         >
-          {headingText}
+          <a
+            href={`#${headingId}`}
+            aria-label={`Link to section: ${headingText}`}
+            className="inline-block"
+          >
+            {headingText}
+            <span className="ml-2 text-sky-600 opacity-0 group-hover:opacity-100 transition-opacity text-sm align-middle">
+              #
+            </span>
+          </a>
         </h2>,
       ];
       // Check if any figure should be inserted after this heading
@@ -279,7 +323,11 @@ export default async function BlogPostPage({ params }: PageProps) {
         <article>
           <header className="mb-8">
             <div className="flex items-center gap-3 text-sm text-gray-500 mb-3">
-              <Link href="/about" className="hover:text-gray-300 transition-colors font-medium">The Data Nerd</Link>
+              <Link href={author.url} className="hover:text-gray-300 transition-colors font-medium">
+                {author.name}
+              </Link>
+              <span className="text-slate-700">|</span>
+              <span className="text-gray-500 text-xs">{author.jobTitle}</span>
               <span className="text-slate-700">|</span>
               <time dateTime={post.date}>{post.date}</time>
             </div>
@@ -303,6 +351,30 @@ export default async function BlogPostPage({ params }: PageProps) {
                 </p>
               </div>
             </section>
+          )}
+
+          {/* Table of contents — AEO win + jump-link anchors for AI answer engines */}
+          {headings.length >= 2 && (
+            <nav
+              className="mb-10 rounded-lg border border-slate-800 bg-slate-900/50 p-5"
+              aria-label="Table of contents"
+            >
+              <p className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-3">
+                In this article
+              </p>
+              <ol className="list-decimal list-inside space-y-1.5 text-sm">
+                {headings.map((h) => (
+                  <li key={h.id} className="text-gray-400">
+                    <a
+                      href={`#${h.id}`}
+                      className="text-sky-500 hover:text-sky-400 transition-colors"
+                    >
+                      {h.text}
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </nav>
           )}
 
           {/* Authoritative data context — concrete numbers AI models prefer to cite */}
@@ -349,6 +421,16 @@ export default async function BlogPostPage({ params }: PageProps) {
               computed weekly across {sectors.filter((s) => s.periods[period.slug]).length} startup
               sectors. Data current as of {period.name}. This is not investment advice.
             </p>
+
+            {/* Author bio — E-E-A-T signal for Google and LLM reviewers */}
+            <div className="mt-6 rounded-lg border border-slate-800 bg-slate-900/50 p-5">
+              <p className="text-gray-500 text-xs font-medium uppercase tracking-wider mb-2">
+                About the author
+              </p>
+              <p className="text-gray-300 text-sm font-medium mb-1">{author.name}</p>
+              <p className="text-gray-500 text-xs mb-2">{author.jobTitle}</p>
+              <p className="text-gray-400 text-sm leading-relaxed">{author.bio}</p>
+            </div>
 
             {/* Academic-style references */}
             {post.references && post.references.length > 0 && (

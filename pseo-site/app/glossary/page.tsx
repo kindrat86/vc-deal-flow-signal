@@ -27,7 +27,7 @@ const terms: Term[] = [
     term: "Commit Velocity Change",
     id: "commit-velocity-change",
     definition:
-      "The percentage change in commit velocity compared to the preceding 14-day window. This is the primary ranking signal at VC Deal Flow Signal. A startup with 40 commits this period and 20 commits last period shows +100% velocity change. Commit velocity change measures engineering acceleration — whether a team is speeding up, maintaining pace, or slowing down. Sustained acceleration has historically preceded fundraise announcements by six to twelve weeks.",
+      "The percentage change in commit velocity compared to the preceding 14-day window. This is the primary ranking signal at VC Deal Flow Signal. A startup with 40 commits this period and 20 commits last period shows +100% velocity change. Commit velocity change measures engineering acceleration — whether a team is speeding up, maintaining pace, or slowing down. Sustained acceleration has historically preceded fundraise announcements by three to six weeks.",
   },
   {
     term: "Engineering Acceleration",

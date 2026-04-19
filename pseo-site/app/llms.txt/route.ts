@@ -38,7 +38,7 @@ export async function GET() {
 
   const body = `# VC Deal Flow Signal
 
-> VC Deal Flow Signal tracks startup engineering acceleration using public GitHub data. We monitor commit velocity, contributor growth, and repository expansion across ${activeSectors.length} startup sectors to surface breakout engineering teams before they appear on the funding radar. Engineering acceleration signals have historically preceded fundraise announcements by six to twelve weeks. Data is refreshed weekly.
+> VC Deal Flow Signal tracks startup engineering acceleration using public GitHub data. We monitor commit velocity, contributor growth, and repository expansion across ${activeSectors.length} startup sectors to surface breakout engineering teams before they appear on the funding radar. Engineering acceleration signals have historically preceded fundraise announcements by three to six weeks. Data is refreshed weekly.
 
 ## Key Pages
 

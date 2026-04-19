@@ -21,7 +21,7 @@ Alternative: upload the MP4 via dev.to's own uploader to get an inline video pla
 
 ## The dashboard nobody visited
 
-I built a startup signal dashboard. It tracked GitHub engineering acceleration across 2,000+ startup organizations and ranked them by commit velocity, contributor growth, and repo expansion. The data was solid. The UI was clean.
+I built a startup signal dashboard. It tracked GitHub engineering acceleration across thousands of startup organizations and ranked them by commit velocity, contributor growth, and repo expansion. The data was solid. The UI was clean.
 
 Nobody came back to it.
 
@@ -35,7 +35,7 @@ For investors using Claude, that means an MCP server.
 
 ## What I built
 
-[VC Deal Flow Signal](https://gitdealflow.com) monitors GitHub engineering activity across startup organizations and surfaces the ones showing unusual acceleration. The hypothesis: engineering acceleration (measured as the rate of change in commit velocity) is a leading indicator for fundraise announcements, usually by 6 to 12 weeks.
+[VC Deal Flow Signal](https://gitdealflow.com) monitors GitHub engineering activity across startup organizations and surfaces the ones showing unusual acceleration. The hypothesis: engineering acceleration (measured as the rate of change in commit velocity) is a leading indicator for fundraise announcements, usually by 3 to 6 weeks.
 
 The MCP server exposes 5 tools:
 

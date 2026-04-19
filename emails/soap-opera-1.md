@@ -29,6 +29,6 @@ Tomorrow, I want to challenge something you probably believe about your current 
 Talk soon,
 The Data Nerd
 
-P.S. If you want the full picture (100+ startups, filters by sector and stage), the Dashboard is EUR 9.97/mo early access pricing: https://gitdealflow.com/#pricing
+P.S. If you want the full picture (60+ startups, filters by sector and stage), the Dashboard is EUR 9.97/mo early access pricing: https://gitdealflow.com/#pricing
 
 P.P.S. Weekly signals on Telegram: https://t.me/gitdealflow

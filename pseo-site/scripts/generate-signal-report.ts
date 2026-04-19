@@ -23,6 +23,8 @@ interface Startup {
   newRepos: number;
   signalType: string;
   githubUrl: string;
+  websiteUrl?: string;
+  linkedinUrl?: string;
 }
 
 interface SectorSnapshot {
@@ -144,10 +146,16 @@ function main() {
 
   // Build the body
   const top10Section = globalTop10
-    .map(
-      (s, i) =>
-        `**#${i + 1} ${s.name}** (${s.sectorName}) — ${s.commitVelocityChange} commit velocity change, ${s.commitVelocity14d} commits over 14 days, ${s.contributors} contributors. Signal: ${s.signalType}. ${s.description}`
-    )
+    .map((s, i) => {
+      const outboundLinks = [
+        s.websiteUrl ? `[Website](${s.websiteUrl})` : null,
+        s.linkedinUrl ? `[LinkedIn](${s.linkedinUrl})` : null,
+      ]
+        .filter(Boolean)
+        .join(" · ");
+      const linkSuffix = outboundLinks ? ` ${outboundLinks}.` : "";
+      return `**#${i + 1} ${s.name}** (${s.sectorName}) — ${s.commitVelocityChange} commit velocity change, ${s.commitVelocity14d} commits over 14 days, ${s.contributors} contributors. Signal: ${s.signalType}. ${s.description}${linkSuffix}`;
+    })
     .join("\n\n");
 
   const sectorSection = hottestSectors
@@ -181,7 +189,7 @@ Top regions by startup count: ${geoBreakdown}.
 
 ## What This Means for Investors
 
-The startups at the top of this list are showing engineering momentum that has historically preceded fundraise announcements by six to twelve weeks. If you invest in any of the sectors covered here, these are the names to research this week.
+The startups at the top of this list are showing engineering momentum that has historically preceded fundraise announcements by three to six weeks. If you invest in any of the sectors covered here, these are the names to research this week.
 
 Browse the full sector rankings for detailed data on every tracked startup. Or subscribe to the Signal Digest to get this report in your inbox every week.`;
 

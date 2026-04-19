@@ -35,6 +35,10 @@ export default function AboutPage() {
           "https://x.com/data_nerd",
           "https://t.me/gitdealflow",
           "https://www.linkedin.com/company/gitdealflow",
+          "https://www.wikidata.org/wiki/Q139376302",
+          "https://www.crunchbase.com/organization/gitdealflow",
+          "https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn",
+          "https://www.sideprojectors.com/project/78284/vc-deal-flow-signal-engineering-momentum-for-vcs",
           "https://signals.gitdealflow.com",
         ],
         contactPoint: {
@@ -82,6 +86,21 @@ export default function AboutPage() {
           "https://x.com/data_nerd",
           "https://t.me/gitdealflow",
           "https://www.linkedin.com/company/gitdealflow",
+        ],
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://gitdealflow.com#organization",
+        name: "VC Deal Flow Signal",
+        url: "https://gitdealflow.com",
+        sameAs: [
+          "https://x.com/data_nerd",
+          "https://t.me/gitdealflow",
+          "https://www.linkedin.com/company/gitdealflow",
+          "https://www.wikidata.org/wiki/Q139376302",
+          "https://www.crunchbase.com/organization/gitdealflow",
+          "https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn",
+          "https://www.sideprojectors.com/project/78284/vc-deal-flow-signal-engineering-momentum-for-vcs",
         ],
       },
       {
@@ -209,8 +228,8 @@ export default function AboutPage() {
               The four signal types — engineering hiring burst, infrastructure
               buildout, deploy frequency spike, and framework migration — each
               indicate a different phase of startup development. In our data,
-              these patterns have preceded fundraise announcements by six to
-              twelve weeks.
+              these patterns have preceded fundraise announcements by three to
+              six weeks.
             </p>
           </div>
         </section>

@@ -14,7 +14,7 @@ VC Deal Flow Signal monitors GitHub engineering activity across 20 startup secto
 
 When a startup's commit velocity doubles in two weeks — when contributor count jumps 50% — when 3 new repos appear in a month — something has changed.
 
-In our data, these patterns precede fundraise announcements by 6-12 weeks.
+In our data, these patterns precede fundraise announcements by 3-6 weeks.
 
 That's the window where you reach out before consensus forms.
 

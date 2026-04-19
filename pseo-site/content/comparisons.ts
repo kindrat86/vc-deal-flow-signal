@@ -322,7 +322,7 @@ export const comparisons: Comparison[] = [
     sections: [
       {
         heading: "VC Deal Flow Signal (Free Tier)",
-        body: "The free Signal Report delivers the top breakout startups ranked by GitHub engineering acceleration weekly. The signals site (signals.gitdealflow.com) is fully free: 20 sector ranking pages, trending page, glossary, methodology, and individual startup profiles — all with real commit velocity data and signal classification. The public API (signals.json) is also free with attribution. Best for: investors who want quantitative engineering signals without spending anything. The paid Dashboard (EUR 9.97/mo) adds filtering by stage, geography, and signal type across 50+ startups.",
+        body: "The free Signal Report delivers the top breakout startups ranked by GitHub engineering acceleration weekly. The signals site (signals.gitdealflow.com) is fully free: 20 sector ranking pages, trending page, glossary, methodology, and individual startup profiles — all with real commit velocity data and signal classification. The public API (signals.json) is also free with attribution. Best for: investors who want quantitative engineering signals without spending anything. The paid Dashboard (EUR 9.97/mo) adds filtering by stage, geography, and signal type across 60+ startups.",
       },
       {
         heading: "Crunchbase (Free Tier)",

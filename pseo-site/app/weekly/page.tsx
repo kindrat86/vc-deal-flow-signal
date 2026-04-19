@@ -69,7 +69,7 @@ export default function WeeklyArchivePage() {
           Every week we publish the top 10 startups by engineering acceleration
           across all sectors. These reports capture a snapshot of which
           companies are shipping the fastest — a signal that has historically
-          preceded fundraise announcements by six to twelve weeks. Subscribe to
+          preceded fundraise announcements by three to six weeks. Subscribe to
           the weekly report to get each edition in your inbox.
         </p>
 

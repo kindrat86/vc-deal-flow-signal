@@ -12,7 +12,7 @@
 
 **Built an MCP server for VC deal flow signals — free, no API key**
 
-I track GitHub engineering acceleration across 2,000+ startup orgs (commit velocity, contributor growth, repo expansion) and rank them by sector. Published it as an MCP server so Claude can query the data directly.
+I track GitHub engineering acceleration across thousands of startup orgs (commit velocity, contributor growth, repo expansion) and rank them by sector. Published it as an MCP server so Claude can query the data directly.
 
 **5 tools:**
 - `get_trending_startups` — top 20 by engineering acceleration

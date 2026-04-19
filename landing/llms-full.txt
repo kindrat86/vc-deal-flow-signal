@@ -6,7 +6,7 @@
 
 VC Deal Flow Signal is an independent data product that tracks startup engineering acceleration using public GitHub data. It monitors commit velocity, contributor growth, and repository expansion across 20 startup sectors to surface breakout engineering teams before they appear through traditional deal sourcing channels.
 
-Engineering acceleration signals have historically preceded fundraise announcements by six to twelve weeks.
+Engineering acceleration signals have historically preceded fundraise announcements by three to six weeks.
 
 ## Key Pages
 
@@ -133,7 +133,7 @@ Estimated from contributor count: Pre-seed (1-7), Seed (8-19), Series A/B (20-49
 ## Pricing
 
 - **Signal Digest**: Free forever — this week's top 5 breakout startups with real GitHub acceleration data, delivered free after email confirmation then weekly.
-- **Dashboard Beta**: EUR 9.97/month (early access, normally EUR 49) — 100+ startups ranked across 20 sectors, filter by sector/stage/geography.
+- **Dashboard Beta**: EUR 9.97/month (early access, normally EUR 49) — 60+ startups ranked across 20 sectors, filter by sector/stage/geography.
 - **Insider Circle**: EUR 97/month (normally EUR 197) — Private investor Telegram group, monthly live briefing, custom watchlists, API access.
 
 ## MCP Server (Claude Integration)

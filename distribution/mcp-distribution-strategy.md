@@ -119,7 +119,7 @@ Both channels should be mentioned together in content. Avoid forcing a choice �
   - 1 tweet/week with a specific MCP query + result screenshot
   - 1 tweet/week engaging with MCP ecosystem tweets (retweet + comment)
   - 1 tweet/week about MCP ecosystem growth (new servers, new directories, adoption numbers)
-- **Template:** "Asked Claude: '[query]' → got live data from 2,000+ startup GitHub orgs in 3 seconds. This is what MCP does." + screenshot
+- **Template:** "Asked Claude: '[query]' → got live data from thousands of startup GitHub orgs in 3 seconds. This is what MCP does." + screenshot
 
 #### 11. Hacker News MCP threads
 - **Strategy:** Don't post your own server. Find existing HN threads about MCP and comment with your experience.

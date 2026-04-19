@@ -3,7 +3,7 @@
 ## Above the fold
 - **Headline:** Spot Breakout Startups 3 Weeks Before They Hit Your Inbox
 - **Subheadline:** GitHub is the largest free dataset of real-time engineering activity. Nobody packages it for investors. Until now.
-- **Primary CTA:** "Get the free monthly digest" -> ConvertKit form (email capture)
+- **Primary CTA:** "Get the free weekly digest" -> ConvertKit form (email capture)
 - **Secondary CTA:** "See pricing" -> scroll to pricing section
 
 ## Star Story Solution section
@@ -26,7 +26,7 @@
 ## Pricing section
 - **Free:** Monthly email digest with top 5 trending startups by GitHub momentum. No login required.
   - CTA: "Start free" -> ConvertKit form
-- **Pro (EUR 9.97/mo):** Full micro-SaaS dashboard. 50+ startups ranked by engineering acceleration. Filter by sector, stage, geography. Enriched with funding data and team size.
+- **Pro (EUR 9.97/mo):** Full micro-SaaS dashboard. 60+ startups ranked by engineering acceleration. Filter by sector, stage, geography. Enriched with funding data and team size.
   - CTA: Stripe Payment Link placeholder -> {{STRIPE_LINK_TIER_2}}
 - **Premium (EUR 49/mo):** Everything in Pro, plus custom watchlists, API access, Slack alerts, deeper enrichment, portfolio overlap detection, quarterly trend briefings.
   - CTA: Stripe Payment Link placeholder -> {{STRIPE_LINK_TIER_3}}

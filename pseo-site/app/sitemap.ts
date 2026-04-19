@@ -1,7 +1,10 @@
 import type { MetadataRoute } from "next";
-import { getAllPageSlugs, getAllGeoPageSlugs, getAllStartupSlugs, getDataLastModified, SIGNAL_TYPES, getAllBestSectorSlugs, getAllTrendSlugs } from "@/lib/data";
+import { getAllPageSlugs, getAllGeoPageSlugs, getAllStartupSlugs, getDataLastModified, SIGNAL_TYPES, getAllBestSectorSlugs, getAllTrendSlugs, getAllRegionPageSlugs, getAllStageSlugs } from "@/lib/data";
 import { getAllPostSlugs } from "@/content/posts";
 import { getAllComparisonSlugs } from "@/content/comparisons";
+import { getAllAlternativeSlugs } from "@/content/alternatives";
+import { getAllUseCaseSlugs } from "@/content/use-cases";
+import { getAllCompetitorVsSlugs } from "@/content/competitor-vs";
 
 const BASE_URL = "https://signals.gitdealflow.com";
 
@@ -77,6 +80,42 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly" as const,
       priority: 0.6,
     },
+    {
+      url: `${BASE_URL}/alternatives`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    },
+    {
+      url: `${BASE_URL}/use-cases`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    },
+    {
+      url: `${BASE_URL}/integrations`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    },
+    {
+      url: `${BASE_URL}/changelog`,
+      lastModified,
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    },
+    {
+      url: `${BASE_URL}/developers`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    },
+    {
+      url: `${BASE_URL}/data-sources`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    },
     ...sectorPages,
     ...blogPages,
     ...getAllComparisonSlugs().map((slug) => ({
@@ -114,6 +153,36 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: "monthly" as const,
       priority: 0.6,
+    })),
+    ...getAllAlternativeSlugs().map((slug) => ({
+      url: `${BASE_URL}/alternatives/${slug}`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    })),
+    ...getAllUseCaseSlugs().map((slug) => ({
+      url: `${BASE_URL}/use-cases/${slug}`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    })),
+    ...getAllRegionPageSlugs().map((slug) => ({
+      url: `${BASE_URL}/startups-to-watch/region/${slug}`,
+      lastModified,
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    })),
+    ...getAllStageSlugs().map((slug) => ({
+      url: `${BASE_URL}/stage/${slug}`,
+      lastModified,
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    })),
+    ...getAllCompetitorVsSlugs().map((slug) => ({
+      url: `${BASE_URL}/vs/${slug}`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
     })),
   ];
 }

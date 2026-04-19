@@ -21,12 +21,12 @@ interface GhRepo { id: number; full_name: string; name: string; owner: { login: 
 interface SearchResult { total_count: number; items: GhRepo[]; }
 interface WeeklyCommit { week: number; total: number; days: number[]; }
 interface Contributor { login: string; contributions: number; }
-interface StartupOutput { name: string; description: string; stage: string; geography: string; commitVelocity14d: number; commitVelocityChange: string; contributors: number; contributorGrowth: string; newRepos: number; signalType: string; githubUrl: string; }
+interface StartupOutput { name: string; description: string; stage: string; geography: string; commitVelocity14d: number; commitVelocityChange: string; contributors: number; contributorGrowth: string; newRepos: number; signalType: string; githubUrl: string; websiteUrl?: string; }
 interface FAQ { question: string; answer: string; }
 interface SectorSnapshot { intro: string; startups: StartupOutput[]; faqs: FAQ[]; }
 interface SectorOutput { slug: string; name: string; description: string; relatedSlugs: string[]; periods: Record<string, SectorSnapshot>; }
 interface PeriodDef { slug: string; name: string; current: boolean; weekOffset: number; }
-interface OrgData { orgLogin: string; description: string; geography: string; contributorCount: number; contributorGrowth: string; newRepos: number; commitActivity: WeeklyCommit[]; githubUrl: string; }
+interface OrgData { orgLogin: string; description: string; geography: string; contributorCount: number; contributorGrowth: string; newRepos: number; commitActivity: WeeklyCommit[]; githubUrl: string; websiteUrl?: string; }
 
 // --- Blocklist: big tech, established OSS foundations, nonprofits, government, game mods ---
 const BLOCKLIST = new Set([
@@ -145,6 +145,30 @@ async function ghApiSearchMultiTopic(topics: string[], extra: string, perPage = 
 
 function formatPct(ratio: number): string { const p = Math.round((ratio - 1) * 100); return p >= 0 ? `+${p}%` : `${p}%`; }
 
+/**
+ * Normalize the `blog` field from the GitHub org API. Returns undefined when
+ * the value is empty, obviously broken, or a github.io subdomain that just
+ * points back at the same org (which isn't an official site).
+ */
+function normalizeBlog(raw: string | null | undefined, orgLogin: string): string | undefined {
+  if (!raw) return undefined;
+  let v = raw.trim();
+  if (!v || v === "-") return undefined;
+  if (!/^https?:\/\//i.test(v)) v = `https://${v}`;
+  try {
+    const u = new URL(v);
+    // Reject orgLogin.github.io — not an independent company site
+    if (u.hostname.toLowerCase() === `${orgLogin.toLowerCase()}.github.io`) return undefined;
+    // Normalize: lowercase hostname, strip trailing slash from root
+    u.hostname = u.hostname.toLowerCase();
+    let out = u.toString();
+    if (u.pathname === "/" && !u.search && !u.hash) out = out.replace(/\/$/, "");
+    return out;
+  } catch {
+    return undefined;
+  }
+}
+
 function deriveGeography(loc: string | null): string {
   if (!loc) return "Unknown"; const l = loc.toLowerCase();
   if (/united states|usa|\b(ca|ny|tx|wa)\b|san francisco|new york|seattle|boston|austin|chicago/.test(l)) return "US";
@@ -177,11 +201,13 @@ async function fetchOrgData(orgLogin: string, fallbackDesc: string, searchRepos:
 
   await sleep(300);
   let orgLoc: string | null = null, orgDesc = fallbackDesc, orgCreated: string | null = null;
+  let orgBlog: string | undefined = undefined;
   try {
-    const d = (await ghApiFetch(`orgs/${orgLogin}`)) as { location?: string | null; description?: string | null; bio?: string | null; created_at?: string | null };
+    const d = (await ghApiFetch(`orgs/${orgLogin}`)) as { location?: string | null; description?: string | null; bio?: string | null; created_at?: string | null; blog?: string | null };
     orgLoc = d.location ?? null;
     orgDesc = ((d.description ?? d.bio ?? fallbackDesc) as string).slice(0, 120);
     orgCreated = d.created_at ?? null;
+    orgBlog = normalizeBlog(d.blog, orgLogin);
   } catch {}
 
   // Reject orgs whose description matches non-startup patterns
@@ -241,7 +267,7 @@ async function fetchOrgData(orgLogin: string, fallbackDesc: string, searchRepos:
   }
 
   const geography = GEO_OVERRIDES[orgLogin] || deriveGeography(orgLoc);
-  return { orgLogin, description: orgDesc.trim(), geography, contributorCount: Math.max(1, contribs.length), contributorGrowth, newRepos, commitActivity: ca, githubUrl: `https://github.com/${orgLogin}` };
+  return { orgLogin, description: orgDesc.trim(), geography, contributorCount: Math.max(1, contribs.length), contributorGrowth, newRepos, commitActivity: ca, githubUrl: `https://github.com/${orgLogin}`, websiteUrl: orgBlog };
 }
 
 function generateFaqs(name: string, desc: string, pName: string, startups: StartupOutput[]): FAQ[] {
@@ -256,7 +282,7 @@ function generateFaqs(name: string, desc: string, pName: string, startups: Start
   const pos = startups.filter((s) => s.commitVelocityChange.startsWith("+") && s.commitVelocityChange !== "+0%").length;
 
   return [
-    { question: `What engineering signals are ${name.toLowerCase()} startups showing in ${pName}?`, answer: `In ${pName}, we are tracking ${startups.length} ${name.toLowerCase()} startups with measurable GitHub engineering signals. ${pos} of ${startups.length} show positive commit velocity growth. The most common signal type is "${ts[0]}", observed in ${ts[1]} of the tracked companies. The average 14-day commit velocity across the sector is ${avg} commits, with ${top.name} leading at ${top.commitVelocity14d} commits (${top.commitVelocityChange} change). These patterns have historically preceded fundraise announcements by six to twelve weeks.` },
+    { question: `What engineering signals are ${name.toLowerCase()} startups showing in ${pName}?`, answer: `In ${pName}, we are tracking ${startups.length} ${name.toLowerCase()} startups with measurable GitHub engineering signals. ${pos} of ${startups.length} show positive commit velocity growth. The most common signal type is "${ts[0]}", observed in ${ts[1]} of the tracked companies. The average 14-day commit velocity across the sector is ${avg} commits, with ${top.name} leading at ${top.commitVelocity14d} commits (${top.commitVelocityChange} change). These patterns have historically preceded fundraise announcements by three to six weeks.` },
     { question: `Which ${name.toLowerCase()} startup has the highest engineering acceleration in ${pName}?`, answer: `${top.name} leads the ${name.toLowerCase()} sector in ${pName} with ${top.commitVelocity14d} commits over a 14-day window, representing a ${top.commitVelocityChange} change from the prior period. With ${top.contributors} active contributors${top.newRepos > 0 ? ` and ${top.newRepos} new repositories` : ""}, ${top.name} is showing a "${top.signalType}" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise.` },
     { question: `Where are the most active ${name.toLowerCase()} engineering teams located?`, answer: tg ? `Among the ${startups.length} ${name.toLowerCase()} startups we track, ${tg[0]} accounts for the highest concentration with ${tg[1]} teams. ${desc} Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers.` : `The ${name.toLowerCase()} startups we track are geographically distributed across multiple regions. ${desc} We derive geography from GitHub organization profiles.` },
   ];
@@ -339,7 +365,7 @@ async function main() {
       for (const org of orgs) {
         const m = computePeriodMetrics(org.commitActivity, period.weekOffset, parseFloat(org.contributorGrowth.replace(/[^0-9.-]/g, "")) / 100 + 1 || 1, org.newRepos);
         if (!m) continue;
-        startups.push({ name: org.orgLogin, description: org.description, stage: classifyStage(org.contributorCount), geography: org.geography, commitVelocity14d: m.commitVelocity14d, commitVelocityChange: m.commitVelocityChange, contributors: org.contributorCount, contributorGrowth: org.contributorGrowth, newRepos: org.newRepos, signalType: m.signalType, githubUrl: org.githubUrl });
+        startups.push({ name: org.orgLogin, description: org.description, stage: classifyStage(org.contributorCount), geography: org.geography, commitVelocity14d: m.commitVelocity14d, commitVelocityChange: m.commitVelocityChange, contributors: org.contributorCount, contributorGrowth: org.contributorGrowth, newRepos: org.newRepos, signalType: m.signalType, githubUrl: org.githubUrl, ...(org.websiteUrl ? { websiteUrl: org.websiteUrl } : {}) });
       }
       if (!startups.length) continue;
       sp[period.slug] = { intro: sector.intro, startups, faqs: generateFaqs(sector.name, sector.description, period.name, startups) };

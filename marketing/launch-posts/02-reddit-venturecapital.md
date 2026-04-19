@@ -10,7 +10,7 @@ Interesting pattern: startups showing 2x commit velocity spikes on GitHub tend t
 
 I've been tracking GitHub engineering activity across a few thousand startup orgs for the past few months, and a pattern keeps showing up that I wanted to get this community's take on.
 
-When a startup's commit velocity (total commits over a rolling 14-day window) suddenly doubles or more relative to their own baseline, and this is sustained for 3+ consecutive windows — it tends to precede a fundraise announcement by about 6-12 weeks.
+When a startup's commit velocity (total commits over a rolling 14-day window) suddenly doubles or more relative to their own baseline, and this is sustained for 3+ consecutive windows — it tends to precede a fundraise announcement by about 3-6 weeks.
 
 The logic makes sense: new funding → new engineers → more commits. Or: product-market fit → faster iteration → velocity spike → investors notice → fundraise. Either way, the engineering activity shows up before the announcement.
 

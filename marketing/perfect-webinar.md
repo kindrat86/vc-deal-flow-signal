@@ -26,7 +26,7 @@ By the end of this session, you'll know:
 3. Why this edge exists and how long it'll last
 
 **Credibility:**
-"We track 2,000+ startup GitHub orgs across 20 sectors. I'll show you the actual dashboard and walk through real data."
+"We track thousands of startup GitHub orgs across 20 sectors. I'll show you the actual dashboard and walk through real data."
 
 ---
 
@@ -73,7 +73,7 @@ This is where you deliver real value. Three "secrets," each breaking one false b
 
 | What you get | Value |
 |-------------|-------|
-| Full Pro dashboard (50+ startups, filters, enrichment) | EUR 9.97/mo |
+| Full Pro dashboard (60+ startups, filters, enrichment) | EUR 9.97/mo |
 | Private investor Telegram group | EUR 50/mo |
 | Monthly live signal briefing (this call, every month) | EUR 100/mo |
 | Custom watchlists (monitor your sectors) | EUR 50/mo |

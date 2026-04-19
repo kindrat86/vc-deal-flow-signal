@@ -8,9 +8,9 @@ https://signals.gitdealflow.com
 
 ## Text (for self-post, if preferred over URL)
 
-I built VC Deal Flow Signal — a tool that monitors GitHub engineering activity across 2,000+ startups in 20 sectors and ranks them by "engineering acceleration."
+I built VC Deal Flow Signal — a tool that monitors GitHub engineering activity across thousands of startups in 20 sectors and ranks them by "engineering acceleration."
 
-The core idea: when a startup's commit velocity spikes relative to its own baseline, something interesting is happening. Maybe they found PMF, maybe they just raised, maybe they hired a batch of engineers. Whatever it is, it shows up in the code 6-12 weeks before it shows up in a press release.
+The core idea: when a startup's commit velocity spikes relative to its own baseline, something interesting is happening. Maybe they found PMF, maybe they just raised, maybe they hired a batch of engineers. Whatever it is, it shows up in the code 3-6 weeks before it shows up in a press release.
 
 How it works:
 
@@ -24,7 +24,7 @@ Tech stack: Next.js 16 (SSG), Vercel, GitHub API, PostHog. The entire site is pr
 
 The data pipeline runs on a cron, rebuilds the site, and auto-submits to IndexNow for instant Bing indexing. Google Search Console is connected with a full sitemap.
 
-Free tier: monthly Signal Digest of top 5 breakout startups by email. Everything on the site is free to browse.
+Free tier: weekly Signal Digest of top 5 breakout startups by email. Everything on the site is free to browse.
 
 Two embedded distribution layers for people who want the data in their existing workflow instead of a dashboard:
 - MCP server (`npx @gitdealflow/mcp-signal`) — query signals directly from Claude Desktop, Claude Code, Cursor, or any MCP-compatible client

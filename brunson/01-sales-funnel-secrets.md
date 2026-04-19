@@ -1,12 +1,12 @@
 # Brunson Workbook 1: Sales Funnel Secrets (Speed Run)
-## vc-deal-flow-signal | 2026-04-13
+## vc-deal-flow-signal | 2026-04-13 | REVISED 2026-04-19 (Option A: Dream Customer pivot to Developer-Investor)
 
 ### Secret Formula Answers
 
-- **Q1 Dream Customer:** Angel investor with a portfolio of 20+, actively sourcing deals, frustrated by seeing great startups too late
-- **Q2 Where they congregate:** AngelList, Twitter/X investor circles, syndicate newsletters, angel Slack/Discord communities
-- **Q3 Bait/Hook:** Free monthly Signal Digest showing 5 startups with unusual GitHub engineering acceleration
-- **Q4 Unique Result:** Spot breakout startups 3 weeks before they hit your inbox
+- **Q1 Dream Customer:** Developer-Investor. A software engineer, ex-founder, or technical operator who now writes angel checks, runs a syndicate, scouts for a fund, or sits as the technical partner at a seed firm. Writes EUR 5k to 50k checks. Lives in Cursor/Claude/Terminal all day. Reads Pragmatic Engineer, Latent Space, and Hacker News before breakfast. Already believes code signals beat networks, they just did not have a packaged tool. Typical check: 10 to 40 per year.
+- **Q2 Where they congregate:** Hacker News front page and Show HN, Twitter AI/dev subculture (Swyx, Simon Willison, Levelsio, Arvid Kahl orbit), Cursor Discord #showcase, Anthropic/Claude Discord, MCP ecosystem registries (Glama, Smithery, mcp.so), r/ClaudeAI and r/cursor and r/LocalLLaMA, IndieHackers, Product Hunt, dev.to, Hashnode, AngelList syndicates led by technical angels (Avichal, Amjad, Lachy Groom, Elad Gil), Pragmatic Engineer Pulse subscribers.
+- **Q3 Bait/Hook:** TWO lead magnets running in parallel. (a) Free weekly Signal Digest: top 5 breakout startups by GitHub engineering acceleration, delivered every Sunday. (b) Free MCP server you install in Claude Desktop, Cursor, or Windsurf to ask "which fintechs are accelerating this week?" and get the answer inline, no context switch.
+- **Q4 Unique Result:** Spot breakout startups 3 weeks before they hit your inbox, read from inside the tools you already use (Claude, Cursor, Chrome, Terminal, email).
 
 ---
 

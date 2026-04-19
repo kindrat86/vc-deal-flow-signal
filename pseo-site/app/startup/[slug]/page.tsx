@@ -91,7 +91,7 @@ export default async function StartupPage({ params }: PageProps) {
     },
     {
       question: `Is ${profile.name} raising a funding round?`,
-      answer: `VC Deal Flow Signal does not predict specific funding rounds. However, ${profile.name}'s engineering acceleration pattern (${latest.commitVelocityChange} commit velocity change in ${latest.periodName}) is the type of signal that has historically preceded fundraise announcements by six to twelve weeks. Investors should cross-reference this signal with other sources (Crunchbase, hiring activity, community mentions) before drawing conclusions.`,
+      answer: `VC Deal Flow Signal does not predict specific funding rounds. However, ${profile.name}'s engineering acceleration pattern (${latest.commitVelocityChange} commit velocity change in ${latest.periodName}) is the type of signal that has historically preceded fundraise announcements by three to six weeks. Investors should cross-reference this signal with other sources (Crunchbase, hiring activity, community mentions) before drawing conclusions.`,
     },
     {
       question: `How does ${profile.name} compare to other ${latest.sectorName.toLowerCase()} startups?`,
@@ -194,15 +194,41 @@ export default async function StartupPage({ params }: PageProps) {
                 {profile.description}
               </p>
             </div>
-            <a
-              href={profile.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-slate-700 text-gray-400 text-xs hover:text-gray-100 hover:border-slate-500 transition-colors"
-            >
-              GitHub
-              <span aria-hidden="true">&nearr;</span>
-            </a>
+            <div className="shrink-0 flex items-center gap-2">
+              {profile.websiteUrl && (
+                <a
+                  href={profile.websiteUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={profile.websiteUrl}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-slate-700 text-gray-400 text-xs hover:text-gray-100 hover:border-slate-500 transition-colors"
+                >
+                  Website
+                  <span aria-hidden="true">↗</span>
+                </a>
+              )}
+              {profile.linkedinUrl && (
+                <a
+                  href={profile.linkedinUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="LinkedIn company page"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-slate-700 text-gray-400 text-xs hover:text-gray-100 hover:border-slate-500 transition-colors"
+                >
+                  LinkedIn
+                  <span aria-hidden="true">↗</span>
+                </a>
+              )}
+              <a
+                href={profile.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-slate-700 text-gray-400 text-xs hover:text-gray-100 hover:border-slate-500 transition-colors"
+              >
+                GitHub
+                <span aria-hidden="true">↗</span>
+              </a>
+            </div>
           </div>
 
           {/* Meta badges */}

@@ -4,6 +4,7 @@ import * as path from "path";
 import { slugify } from "@/lib/slugify";
 import startupsData from "@/data/startups.json";
 import enrichmentData from "@/data/enrichment.json";
+import linksData from "@/data/links.json";
 
 // ---------------------------------------------------------------------------
 // Types
@@ -21,6 +22,12 @@ export interface Startup {
   newRepos: number;
   signalType: string;
   githubUrl: string;
+  // Outbound links — websiteUrl comes from the GitHub crawler when the org
+  // exposes a `blog` field; linkedinUrl is populated by the Apollo gap-fill
+  // pass. Both sit in data/links.json (name-keyed) and get merged in via
+  // enrichLinks() below, mirroring the enrichment.json pattern.
+  websiteUrl?: string;
+  linkedinUrl?: string;
   // Enrichment fields (Insider-only)
   fundingTotal?: string;
   lastRoundType?: string;
@@ -35,11 +42,31 @@ const enrichment = enrichmentData as Record<string, {
   foundedYear?: number;
 }>;
 
+const links = linksData as Record<string, {
+  websiteUrl?: string;
+  linkedinUrl?: string;
+}>;
+
 /** Merge enrichment data into a startup record */
 export function enrichStartup(startup: Startup): Startup {
   const extra = enrichment[startup.name];
   if (!extra) return startup;
   return { ...startup, ...extra };
+}
+
+/**
+ * Merge outbound-link data into a startup record. Existing non-empty fields
+ * on the startup (e.g. websiteUrl harvested from GitHub's `blog` field) take
+ * precedence over the Apollo cache — the cache is a fallback, not an override.
+ */
+export function enrichLinks(startup: Startup): Startup {
+  const extra = links[startup.name];
+  if (!extra) return startup;
+  return {
+    ...startup,
+    websiteUrl: startup.websiteUrl || extra.websiteUrl,
+    linkedinUrl: startup.linkedinUrl || extra.linkedinUrl,
+  };
 }
 
 export interface FAQ {
@@ -73,6 +100,17 @@ interface StartupsData {
 }
 
 const data = startupsData as unknown as StartupsData;
+
+// Merge data/links.json into every startup record once at module load so any
+// consumer iterating `data.sectors[*].periods[*].startups` sees websiteUrl +
+// linkedinUrl without having to call enrichLinks() themselves. websiteUrl on
+// the raw record (harvested by the GitHub crawler) always wins over the Apollo
+// cache — see enrichLinks() above for the precedence rule.
+for (const sector of data.sectors) {
+  for (const snapshot of Object.values(sector.periods)) {
+    snapshot.startups = snapshot.startups.map(enrichLinks);
+  }
+}
 
 // ---------------------------------------------------------------------------
 // Sector + period queries
@@ -200,7 +238,7 @@ export function getKeyTakeaway(
     ([, a], [, b]) => b - a
   )[0][0];
 
-  return `In ${periodName}, ${positive} of ${startups.length} tracked ${sectorName.toLowerCase()} startups show positive engineering acceleration. ${top.name} leads with ${top.commitVelocity14d} commits over 14 days (${top.commitVelocityChange} change). The dominant signal pattern is "${topSignal}". Average sector commit velocity is ${avgVelocity} commits per 14-day window. These engineering momentum signals have historically preceded fundraise announcements by six to twelve weeks.`;
+  return `In ${periodName}, ${positive} of ${startups.length} tracked ${sectorName.toLowerCase()} startups show positive engineering acceleration. ${top.name} leads with ${top.commitVelocity14d} commits over 14 days (${top.commitVelocityChange} change). The dominant signal pattern is "${topSignal}". Average sector commit velocity is ${avgVelocity} commits per 14-day window. These engineering momentum signals have historically preceded fundraise announcements by three to six weeks.`;
 }
 
 // ---------------------------------------------------------------------------
@@ -227,7 +265,9 @@ export interface GeoPageData {
 
 /**
  * Returns all geo page slugs in format `{sector}-{geo}-{period}`.
- * Only generates pages where at least 2 startups match the geography.
+ * Generates pages where at least 1 startup matches the geography — single-startup
+ * pages still carry sector context, FAQs, related sectors, and breadcrumbs, so
+ * they're not thin-content.
  */
 export function getAllGeoPageSlugs(): string[] {
   const slugs: string[] = [];
@@ -237,13 +277,93 @@ export function getAllGeoPageSlugs(): string[] {
         const matching = snapshot.startups.filter(
           (s) => s.geography === geo.match
         );
-        if (matching.length >= 2) {
+        if (matching.length >= 1) {
           slugs.push(`${sector.slug}-${geo.slug}-${periodSlug}`);
         }
       }
     }
   }
   return slugs;
+}
+
+// ---------------------------------------------------------------------------
+// Region-only pages (all sectors rolled up by geography)
+// ---------------------------------------------------------------------------
+
+export interface RegionPageData {
+  geoSlug: string;
+  geoName: string;
+  period: Period;
+  startups: (Startup & { sectorName: string; sectorSlug: string })[];
+  sectorBreakdown: { name: string; slug: string; count: number }[];
+}
+
+/**
+ * Returns region-only page slugs in format `{geo}-{period}`.
+ * Rolls up all sectors in a geography — gives /startups-to-watch/region/us-q2-2026.
+ */
+export function getAllRegionPageSlugs(): string[] {
+  const slugs: string[] = [];
+  const periodSlugs = data.periods.map((p) => p.slug);
+
+  for (const periodSlug of periodSlugs) {
+    for (const geo of GEO_DEFINITIONS) {
+      let total = 0;
+      for (const sector of data.sectors) {
+        const snapshot = sector.periods[periodSlug];
+        if (!snapshot) continue;
+        total += snapshot.startups.filter((s) => s.geography === geo.match).length;
+      }
+      if (total >= 3) {
+        slugs.push(`${geo.slug}-${periodSlug}`);
+      }
+    }
+  }
+  return slugs;
+}
+
+export function parseRegionPageSlug(slug: string): RegionPageData | null {
+  for (const geo of GEO_DEFINITIONS) {
+    const prefix = `${geo.slug}-`;
+    if (!slug.startsWith(prefix)) continue;
+    const periodSlug = slug.slice(prefix.length);
+    const period = data.periods.find((p) => p.slug === periodSlug);
+    if (!period) continue;
+
+    const startups: RegionPageData["startups"] = [];
+    const sectorCounts: Record<string, { name: string; slug: string; count: number }> = {};
+
+    for (const sector of data.sectors) {
+      const snapshot = sector.periods[periodSlug];
+      if (!snapshot) continue;
+      const matching = snapshot.startups.filter((s) => s.geography === geo.match);
+      if (matching.length === 0) continue;
+
+      sectorCounts[sector.slug] = {
+        name: sector.name,
+        slug: `${sector.slug}-${periodSlug}`,
+        count: matching.length,
+      };
+      for (const s of matching) {
+        startups.push({ ...s, sectorName: sector.name, sectorSlug: sector.slug });
+      }
+    }
+
+    if (startups.length < 3) return null;
+
+    const sectorBreakdown = Object.values(sectorCounts).sort(
+      (a, b) => b.count - a.count
+    );
+
+    return {
+      geoSlug: geo.slug,
+      geoName: geo.name,
+      period,
+      startups,
+      sectorBreakdown,
+    };
+  }
+  return null;
 }
 
 /**
@@ -283,6 +403,108 @@ export function parseGeoPageSlug(slug: string): GeoPageData | null {
     }
   }
   return null;
+}
+
+// ---------------------------------------------------------------------------
+// Stage-axis pages (pre-seed, seed, series-a-b, growth)
+// ---------------------------------------------------------------------------
+
+const STAGE_DEFINITIONS = [
+  {
+    slug: "pre-seed",
+    name: "Pre-Seed",
+    match: ["Pre-Seed", "Pre-seed", "PreSeed"],
+    description:
+      "Earliest-stage technical startups — typically before any institutional round. Engineering activity at this stage is the clearest leading indicator because there is little press, no fundraise announcement, and few public breadcrumbs other than the code itself.",
+    investorInsight:
+      "At pre-seed, the GitHub commit graph is often the only public signal of product velocity. Founders are heads-down shipping. A pre-seed startup showing sustained engineering acceleration over a multi-week window is a high-conviction outbound target before the seed round is live.",
+  },
+  {
+    slug: "seed",
+    name: "Seed",
+    match: ["Seed"],
+    description:
+      "Seed-stage startups — typically post-angel/accelerator, pre-Series A. Engineering signals here often correlate with the first production build-out and the earliest customer-facing launches.",
+    investorInsight:
+      "Seed-stage acceleration is the sweet spot for scouts and solo GPs. Deploy-frequency spikes and infrastructure buildouts at this stage usually precede the Series A announcement by 6-12 weeks. The window to get in before the round is competitive is narrow but real.",
+  },
+  {
+    slug: "series-a-b",
+    name: "Series A / Series B",
+    match: ["Series A", "Series A/B", "Series B", "A/B"],
+    description:
+      "Growth-stage technical startups that have closed institutional rounds. Engineering signals at this stage are less about discovery and more about validation of trajectory.",
+    investorInsight:
+      "At Series A/B, engineering acceleration is a trajectory signal rather than a discovery signal. A hiring burst or platform buildout often precedes the next round. Institutional investors use these signals to prioritize outreach and refine conviction before a lead term sheet.",
+  },
+  {
+    slug: "growth",
+    name: "Growth",
+    match: ["Growth", "Late Stage", "Series C+", "Series C"],
+    description:
+      "Growth-stage startups at Series C and beyond. Engineering signals at this scale indicate platform expansion, new product line development, or preparation for an IPO or major strategic milestone.",
+    investorInsight:
+      "At growth stage, engineering signals indicate strategic direction — a major deploy-frequency spike often maps to a product launch; an infrastructure buildout often signals a new business line. Useful for secondary investors, growth funds, and corporate development teams benchmarking targets.",
+  },
+] as const;
+
+export type StageSlug = (typeof STAGE_DEFINITIONS)[number]["slug"];
+
+export interface StagePageData {
+  slug: string;
+  name: string;
+  description: string;
+  investorInsight: string;
+  startups: (Startup & { sectorName: string; sectorSlug: string })[];
+  sectorBreakdown: { name: string; slug: string; count: number }[];
+  period: Period;
+}
+
+export function getAllStageSlugs(): string[] {
+  return STAGE_DEFINITIONS.map((s) => s.slug);
+}
+
+export function getStagePageData(slug: string): StagePageData | null {
+  const stageDef = STAGE_DEFINITIONS.find((s) => s.slug === slug);
+  if (!stageDef) return null;
+
+  const period = getCurrentPeriod();
+  const startups: StagePageData["startups"] = [];
+  const sectorCounts: Record<string, { name: string; slug: string; count: number }> = {};
+
+  for (const sector of data.sectors) {
+    const snapshot = sector.periods[period.slug];
+    if (!snapshot) continue;
+    const matching = snapshot.startups.filter((s) =>
+      (stageDef.match as readonly string[]).some((m) => s.stage === m || s.stage.includes(m))
+    );
+    if (matching.length === 0) continue;
+
+    sectorCounts[sector.slug] = {
+      name: sector.name,
+      slug: `${sector.slug}-${period.slug}`,
+      count: matching.length,
+    };
+    for (const s of matching) {
+      startups.push({ ...s, sectorName: sector.name, sectorSlug: sector.slug });
+    }
+  }
+
+  if (startups.length === 0) return null;
+
+  const sectorBreakdown = Object.values(sectorCounts).sort(
+    (a, b) => b.count - a.count
+  );
+
+  return {
+    slug: stageDef.slug,
+    name: stageDef.name,
+    description: stageDef.description,
+    investorInsight: stageDef.investorInsight,
+    startups: getSortedStartups(startups) as StagePageData["startups"],
+    sectorBreakdown,
+    period,
+  };
 }
 
 // ---------------------------------------------------------------------------
@@ -503,6 +725,8 @@ export interface StartupProfile {
   name: string;
   description: string;
   githubUrl: string;
+  websiteUrl?: string;
+  linkedinUrl?: string;
   sectors: string[];
   latestStage: string;
   latestGeography: string;
@@ -526,17 +750,24 @@ function buildStartupIndex(): Map<string, StartupProfile> {
         let profile = index.get(slug);
 
         if (!profile) {
+          const withLinks = enrichLinks(s);
           profile = {
             slug,
             name: s.name,
             description: s.description,
             githubUrl: s.githubUrl,
+            websiteUrl: withLinks.websiteUrl,
+            linkedinUrl: withLinks.linkedinUrl,
             sectors: [],
             latestStage: s.stage,
             latestGeography: s.geography,
             history: [],
           };
           index.set(slug, profile);
+        } else if (!profile.websiteUrl || !profile.linkedinUrl) {
+          const withLinks = enrichLinks(s);
+          profile.websiteUrl = profile.websiteUrl || withLinks.websiteUrl;
+          profile.linkedinUrl = profile.linkedinUrl || withLinks.linkedinUrl;
         }
 
         if (!profile.sectors.includes(sector.name)) {

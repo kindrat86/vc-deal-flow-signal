@@ -14,7 +14,7 @@ VC Deal Flow Signal is an attempt to make that systematic. GitHub engineering da
 
 It won't replace your network. It will show you things your network can't.
 
-Free monthly digest to try it. Full Dashboard (EUR 9.97/mo) for 100+ startups with sector filters: https://gitdealflow.com/#pricing
+Free weekly digest to try it. Full Dashboard (EUR 9.97/mo) for 60+ startups with sector filters: https://gitdealflow.com/#pricing
 
 The Data Nerd
 

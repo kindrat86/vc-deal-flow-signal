@@ -7,7 +7,7 @@
 Spot breakout startups 3 weeks early via GitHub
 
 ### Description (under 260 chars)
-We monitor GitHub engineering activity across 2,000+ startup orgs and surface the ones showing unusual acceleration. Free monthly digest or EUR 9.97/mo dashboard. Built for seed and Series A investors.
+We monitor GitHub engineering activity across thousands of startup orgs and surface the ones showing unusual acceleration. Free weekly digest or EUR 9.97/mo dashboard. Built for seed and Series A investors.
 
 ### Topics
 - Venture Capital
@@ -35,15 +35,15 @@ The backstory: I watched a startup's GitHub commit graph spike 200% in two weeks
 
 So I built something that would.
 
-VC Deal Flow Signal monitors GitHub engineering activity across 2,000+ startup orgs and ranks them by engineering acceleration. When a company's commit velocity deviates sharply from its own baseline, we flag it and classify the signal type.
+VC Deal Flow Signal monitors GitHub engineering activity across thousands of startup orgs and ranks them by engineering acceleration. When a company's commit velocity deviates sharply from its own baseline, we flag it and classify the signal type.
 
-We launched on Indie Hackers and Hacker News last week and got great feedback on the methodology. The most common question was: "Does this actually predict fundraises?" The honest answer: engineering acceleration is a leading indicator, not a guarantee. But in our data, these patterns appear 6-12 weeks before announcements with enough regularity to be useful.
+We launched on Indie Hackers and Hacker News last week and got great feedback on the methodology. The most common question was: "Does this actually predict fundraises?" The honest answer: engineering acceleration is a leading indicator, not a guarantee. But in our data, these patterns appear 3-6 weeks before announcements with enough regularity to be useful.
 
 **How this is different from Harmonic, Dealroom, etc.:** Those platforms charge $10K+/year, require demo calls, and use proprietary black-box data. VC Deal Flow Signal uses transparent public GitHub data, is completely self-serve, and starts at EUR 9.97/mo. None of the incumbents track engineering momentum — they report rounds after they happen. We show you the acceleration before the pitch deck exists.
 
 **What you get:**
-- Free Signal Digest: 5 breakout startups with real data, monthly
-- Dashboard (EUR 9.97/mo): 50+ startups ranked by sector, stage, and geography
+- Free Signal Digest: 5 breakout startups with real data, weekly
+- Dashboard (EUR 9.97/mo): 60+ startups ranked by sector, stage, and geography
 - Insider Circle (EUR 97/mo): private investor community, live briefings, API access
 
 **NEW: Works inside Claude.** We just shipped an MCP server so you can query our startup signal data directly from Claude Desktop or Claude Code. Ask your AI assistant "which startups are accelerating in healthcare?" and get live data. No API key, no login. Install: `npx @gitdealflow/mcp-signal`
@@ -76,7 +76,7 @@ I'd love to hear from anyone who invests or is curious about data-driven deal so
 TWEET 1:
 Today I launched VC Deal Flow Signal on Product Hunt.
 
-It monitors GitHub engineering activity across 2,000+ startup orgs and surfaces the ones showing unusual acceleration for investors.
+It monitors GitHub engineering activity across thousands of startup orgs and surfaces the ones showing unusual acceleration for investors.
 
 Here's the backstory:
 
@@ -91,7 +91,7 @@ GitHub is the largest free dataset of real-time engineering activity. Every comm
 When a startup's velocity doubles in two weeks, something changed — and it shows up in the data weeks before the TechCrunch headline.
 
 TWEET 4:
-So I built a system that monitors 2,000+ startup GitHub orgs and ranks them by engineering acceleration across 20 sectors.
+So I built a system that monitors thousands of startup GitHub orgs and ranks them by engineering acceleration across 20 sectors.
 
 Free Signal Digest or EUR 9.97/mo full dashboard.
 

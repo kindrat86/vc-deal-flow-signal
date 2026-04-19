@@ -18,6 +18,6 @@ Here are 7 startups showing strong engineering acceleration patterns right now:
 
 All numbers from public GitHub data, updated weekly.
 
-The free digest shows you the highlights. The full Dashboard shows you 100+ startups across 20 sectors with filters: https://gitdealflow.com/#pricing
+The free digest shows you the highlights. The full Dashboard shows you 60+ startups across 20 sectors with filters: https://gitdealflow.com/#pricing
 
 The Data Nerd

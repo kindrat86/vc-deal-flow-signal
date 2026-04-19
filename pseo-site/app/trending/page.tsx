@@ -201,7 +201,7 @@ export default function TrendingPage() {
               with {top20[0]?.commitVelocityChange} commit velocity change. The
               most common signal type is &quot;{topSignal?.[0]}&quot; ({topSignal?.[1]}{" "}
               startups). Engineering acceleration at this scale has historically
-              preceded fundraise announcements by six to twelve weeks.
+              preceded fundraise announcements by three to six weeks.
             </p>
             <p className="mt-3 text-gray-600 text-xs">
               Data sourced from public GitHub activity.{" "}

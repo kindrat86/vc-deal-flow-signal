@@ -109,6 +109,50 @@ export default async function BestSectorPage({ params }: PageProps) {
         })),
       },
       {
+        "@type": "Dataset",
+        name: `Best ${sector.name} Startups ${year} — Engineering Acceleration Dataset`,
+        description: `Ranked dataset of ${sorted.length} ${sectorLower} startups in ${year}, scored by GitHub commit velocity change, contributor growth, new repository count, and signal classification. Sourced from public GitHub API data.`,
+        url: `https://signals.gitdealflow.com/best/${slug}`,
+        identifier: `gitdealflow:best:${slug}`,
+        keywords: [
+          sector.name,
+          "startup rankings",
+          "engineering acceleration",
+          "commit velocity",
+          "deal flow",
+          "venture capital",
+          "GitHub signals",
+          `${year} startups`,
+        ],
+        dateModified: lastModified.toISOString().slice(0, 10),
+        temporalCoverage: period.name,
+        isAccessibleForFree: true,
+        license: "https://creativecommons.org/licenses/by/4.0/",
+        creator: {
+          "@type": "Organization",
+          name: "VC Deal Flow Signal",
+          url: "https://gitdealflow.com",
+        },
+        publisher: {
+          "@type": "Organization",
+          name: "VC Deal Flow Signal",
+          url: "https://gitdealflow.com",
+        },
+        variableMeasured: [
+          { "@type": "PropertyValue", name: "Commit Velocity Change", description: "Percentage change in 14-day commit volume vs. prior period" },
+          { "@type": "PropertyValue", name: "Contributors", description: "Unique contributors to the most active public repository" },
+          { "@type": "PropertyValue", name: "New Repositories (30d)", description: "Public repositories created in the last 30 days" },
+          { "@type": "PropertyValue", name: "Signal Type", description: "Engineering hiring burst, infrastructure buildout, deploy frequency spike, or framework migration" },
+        ],
+        distribution: [
+          {
+            "@type": "DataDownload",
+            encodingFormat: "application/json",
+            contentUrl: "https://signals.gitdealflow.com/api/signals.json",
+          },
+        ],
+      },
+      {
         "@type": "FAQPage",
         mainEntity: [
           {
@@ -124,7 +168,7 @@ export default async function BestSectorPage({ params }: PageProps) {
             name: `How are the best ${sectorLower} startups ranked?`,
             acceptedAnswer: {
               "@type": "Answer",
-              text: `Startups are ranked by commit velocity change — the percentage change in 14-day commit counts versus the previous period. This measures engineering acceleration, which has historically preceded fundraise announcements by six to twelve weeks. Data sourced from public GitHub activity.`,
+              text: `Startups are ranked by commit velocity change — the percentage change in 14-day commit counts versus the previous period. This measures engineering acceleration, which has historically preceded fundraise announcements by three to six weeks. Data sourced from public GitHub activity.`,
             },
           },
         ],
@@ -161,7 +205,7 @@ export default async function BestSectorPage({ params }: PageProps) {
             The top {sectorLower} startups in {year}, ranked by GitHub
             engineering acceleration. These are the companies whose engineering
             teams are shipping the fastest — a signal that has historically
-            preceded fundraise announcements by six to twelve weeks.
+            preceded fundraise announcements by three to six weeks.
           </p>
         </header>
 

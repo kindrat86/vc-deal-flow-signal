@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getComparison, getAllComparisonSlugs, type ComparisonFAQ } from "@/content/comparisons";
-import { getAllSectors, getCurrentPeriod } from "@/lib/data";
+import { getAllSectors, getCurrentPeriod, getDataLastModified } from "@/lib/data";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -48,6 +48,8 @@ export default async function ComparisonPage({ params }: PageProps) {
 
   const sectors = getAllSectors();
   const period = getCurrentPeriod();
+  const lastModified = getDataLastModified();
+  const pageUrl = `https://signals.gitdealflow.com/compare/${slug}`;
   const relatedSectorData = comp.relatedSectors
     .map((rs) => {
       const sector = sectors.find((s) => s.slug === rs);
@@ -151,6 +153,27 @@ export default async function ComparisonPage({ params }: PageProps) {
             },
           ]
         : []),
+      {
+        "@type": "Claim",
+        text: comp.verdict,
+        about: comp.h1,
+        author: {
+          "@type": "Person",
+          name: "The Data Nerd",
+          url: "https://signals.gitdealflow.com/about",
+        },
+        firstAppearance: {
+          "@type": "CreativeWork",
+          url: pageUrl,
+        },
+        appearance: {
+          "@type": "CreativeWork",
+          url: pageUrl,
+          datePublished: lastModified.toISOString().slice(0, 10),
+        },
+        datePublished: lastModified.toISOString().slice(0, 10),
+        inLanguage: "en",
+      },
     ],
   };
 

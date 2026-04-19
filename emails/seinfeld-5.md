@@ -18,7 +18,7 @@ GitHub tells you what the team is actually building. Right now. Today.
 
 I find it genuinely strange that this gap exists. But it does, and that's why I built VC Deal Flow Signal.
 
-Free monthly digest for the top 5. Full Dashboard (EUR 9.97/mo) for 100+ startups with sector filters: https://gitdealflow.com/#pricing
+Free weekly digest for the top 5. Full Dashboard (EUR 9.97/mo) for 60+ startups with sector filters: https://gitdealflow.com/#pricing
 
 The Data Nerd
 

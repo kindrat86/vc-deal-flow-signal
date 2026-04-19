@@ -1,0 +1,20 @@
+{
+  "ssrn_approved": false,
+  "last_checked": "2026-04-19",
+  "ssrn_url": "https://ssrn.com/abstract=6606558",
+  "ssrn_status": "under_review",
+  "steps": {
+    "papers_with_code": "pending",
+    "zenodo_related_identifiers": "pending",
+    "twitter_thread": "pending",
+    "linkedin_post": "pending"
+  },
+  "needs_user_review": [
+    "newsletter_pitches_dream100",
+    "r_venturecapital_comment",
+    "indiehackers_post",
+    "arxiv_endorsement_campaign",
+    "devto_article"
+  ],
+  "notes": "First check run 2026-04-19. Paper still in SSRN review queue (page shows 'under review' message). No T+0 actions taken."
+}

@@ -22,6 +22,8 @@ export async function GET() {
     "New_Repos",
     "Signal_Type",
     "GitHub_URL",
+    "Website_URL",
+    "LinkedIn_URL",
   ];
 
   const rows: string[] = [headers.join(",")];
@@ -44,6 +46,8 @@ export async function GET() {
         String(s.newRepos),
         csvEscape(s.signalType),
         csvEscape(s.githubUrl),
+        csvEscape(s.websiteUrl ?? ""),
+        csvEscape(s.linkedinUrl ?? ""),
       ];
       rows.push(row.join(","));
     }

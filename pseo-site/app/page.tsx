@@ -192,7 +192,7 @@ export default function Home() {
             priceCurrency: "EUR",
             availability: "https://schema.org/InStock",
             description:
-              "Full dashboard access: 50+ ranked startups per week, filters by sector, stage, and geography, MCP server access, CSV export.",
+              "Full dashboard access: 60+ ranked startups per week, filters by sector, stage, and geography, MCP server access, CSV export.",
             url: "https://signals.gitdealflow.com/dashboard",
             priceSpecification: {
               "@type": "UnitPriceSpecification",
@@ -210,7 +210,7 @@ export default function Home() {
         ],
         featureList: [
           "Weekly GitHub engineering acceleration signals",
-          "50+ startups ranked every Monday",
+          "60+ startups ranked every Monday",
           "20 technical sector clusters",
           "MCP server for Claude, Cursor, Windsurf",
           "JSON / CSV / RSS / Telegram / Email delivery",
@@ -233,6 +233,21 @@ export default function Home() {
           },
         ],
         provider: {
+          "@type": "Organization",
+          name: "VC Deal Flow Signal",
+          url: "https://gitdealflow.com",
+        },
+      },
+      {
+        "@type": "VideoObject",
+        name: "VC Deal Flow Signal MCP Server — Claude Desktop Demo",
+        description:
+          "Live demo of the VC Deal Flow Signal MCP server running inside Claude Desktop. Shows trending startups, sector search, and individual startup signal lookups via natural-language prompts.",
+        thumbnailUrl: "https://gitdealflow.com/assets/mcp-demo-thumbnail.png",
+        contentUrl: "https://gitdealflow.com/assets/mcp-server-demo.mov",
+        uploadDate: "2026-04-17",
+        duration: "PT1M12S",
+        publisher: {
           "@type": "Organization",
           name: "VC Deal Flow Signal",
           url: "https://gitdealflow.com",
@@ -293,8 +308,8 @@ export default function Home() {
           expansion across {sectors.length} startup sectors to surface breakout
           engineering teams before they appear on the funding radar. These
           signals — commit acceleration, hiring bursts, infrastructure
-          buildouts — have historically preceded fundraise announcements by six
-          to twelve weeks. Each page ranks the top startups in a sector by
+          buildouts — have historically preceded fundraise announcements by
+          three to six weeks. Each page ranks the top startups in a sector by
           engineering acceleration, updated weekly.
         </p>
       </div>

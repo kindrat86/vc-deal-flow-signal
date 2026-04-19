@@ -66,7 +66,7 @@ export const posts: BlogPost[] = [
       { value: "4", label: "Signal types", context: "Hiring burst, buildout, spike, migration" },
     ],
     summary:
-      "GitHub commit velocity — measured as the rate of change in 14-day commit counts — is the earliest publicly available signal of startup momentum. When a startup's engineering acceleration doubles in a two-week window, it typically precedes a fundraise announcement by six to twelve weeks. This guide covers the four signal types (hiring burst, infrastructure buildout, deploy spike, framework migration), what to ignore, and a practical workflow for turning GitHub data into actionable deal flow.",
+      "GitHub commit velocity — measured as the rate of change in 14-day commit counts — is the earliest publicly available signal of startup momentum. When a startup's engineering acceleration doubles in a two-week window, it typically precedes a fundraise announcement by three to six weeks. This guide covers the four signal types (hiring burst, infrastructure buildout, deploy spike, framework migration), what to ignore, and a practical workflow for turning GitHub data into actionable deal flow.",
     date: "2026-03-28",
     relatedSectors: ["ai-ml", "developer-tools", "data-infrastructure"],
     figures: [
@@ -108,7 +108,7 @@ export const posts: BlogPost[] = [
       },
       {
         question: "How far in advance do GitHub signals predict fundraises?",
-        answer: "In VC Deal Flow Signal's data, engineering acceleration signals precede fundraise announcements by six to twelve weeks on average. The pattern starts with rising commit velocity in weeks 1-2, becomes obvious in weeks 3-4 with new repositories and classifiable signal types, and the fundraise announcement typically follows in weeks 8-12. Reaching out to founders in weeks 2-4 puts investors ahead of the crowd.",
+        answer: "In VC Deal Flow Signal's data, engineering acceleration signals precede fundraise announcements by three to six weeks on average. The pattern starts with rising commit velocity in weeks 1-2, becomes obvious in weeks 3-4 with new repositories and classifiable signal types, and the fundraise announcement typically follows in weeks 8-12. Reaching out to founders in weeks 2-4 puts investors ahead of the crowd.",
       },
       {
         question: "Can GitHub commit data be gamed or faked?",
@@ -153,7 +153,7 @@ We mitigate these by measuring change from baseline rather than absolute counts.
 
 ## When Do Engineering Signals Appear Before Fundraises?
 
-In our data, engineering acceleration signals precede fundraise announcements by six to twelve weeks on average. The pattern looks like this:
+In our data, engineering acceleration signals precede fundraise announcements by three to six weeks on average. The pattern looks like this:
 
 1. **Weeks 1-2**: Commit velocity starts climbing. Contributor count may tick up.
 2. **Weeks 3-4**: Acceleration becomes obvious. New repositories appear. Signal type becomes classifiable.
@@ -500,7 +500,7 @@ Quantitative investment firms have understood for years that public data, proces
 
 The same principle applies to venture capital. Every investor has access to GitHub. Almost none of them monitor it systematically. The investor who builds a workflow around engineering signals has a structural timing advantage: they see acceleration patterns 6-12 weeks before the fundraise announcement that fills everyone else's inbox.
 
-This is not theoretical. At VC Deal Flow Signal, we track 2,000+ startup GitHub orgs across 20 sectors and rank them by engineering acceleration. The patterns are consistent: commit velocity spikes, contributor growth bursts, and infrastructure buildouts appear weeks before TechCrunch writes about the company. We break down the [5 GitHub patterns that predict fundraises](/blog/5-github-patterns-that-predict-fundraises) in a separate deep dive.
+This is not theoretical. At VC Deal Flow Signal, we track thousands of startup GitHub orgs across 20 sectors and rank them by engineering acceleration. The patterns are consistent: commit velocity spikes, contributor growth bursts, and infrastructure buildouts appear weeks before TechCrunch writes about the company. We break down the [5 GitHub patterns that predict fundraises](/blog/5-github-patterns-that-predict-fundraises) in a separate deep dive.
 
 ## How Can Investors Start Using Alternative Data?
 
@@ -780,7 +780,7 @@ VC Deal Flow Signal automates checks 1-4 across 20 sectors weekly. Browse the se
     slug: "what-is-engineering-acceleration",
     title: "What Is Engineering Acceleration? The Metric VCs Are Starting to Track",
     description: "Engineering acceleration measures the rate of change in a startup's engineering output. Learn why this metric matters more than absolute commit counts and how investors use it to time fundraise signals.",
-    summary: "Engineering acceleration is the rate of change in a startup's commit velocity — not how much code they write, but how much faster they are writing it compared to their own baseline. A startup with 40 commits this period and 20 last period shows +100% acceleration. This metric has historically preceded fundraise announcements by six to twelve weeks because the underlying causes — post-raise hiring, product-market fit iteration, launch preparation — drive engineering output before they drive press coverage or Crunchbase entries.",
+    summary: "Engineering acceleration is the rate of change in a startup's commit velocity — not how much code they write, but how much faster they are writing it compared to their own baseline. A startup with 40 commits this period and 20 last period shows +100% acceleration. This metric has historically preceded fundraise announcements by three to six weeks because the underlying causes — post-raise hiring, product-market fit iteration, launch preparation — drive engineering output before they drive press coverage or Crunchbase entries.",
     date: "2026-04-14",
     relatedSectors: ["ai-ml", "developer-tools", "enterprise-saas"],
     references: [

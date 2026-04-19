@@ -132,6 +132,18 @@ export async function GET() {
               type: "string",
               format: "uri",
             },
+            websiteUrl: {
+              type: "string",
+              format: "uri",
+              description:
+                "Official company homepage, harvested from the GitHub org `blog` field when available.",
+            },
+            linkedinUrl: {
+              type: "string",
+              format: "uri",
+              description:
+                "LinkedIn company page URL, when known. May be absent for many records.",
+            },
           },
         },
         Sector: {

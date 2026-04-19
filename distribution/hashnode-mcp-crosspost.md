@@ -4,7 +4,7 @@
 
 ---
 
-**Canonical URL:** [your dev.to article URL — set this in Hashnode's import/canonical field]
+**Canonical URL:** https://dev.to/data_nerd/i-stopped-building-dashboards-ai-assistants-are-the-new-ui-c5h
 
 **Title:** I stopped building dashboards. AI assistants are the new UI.
 
@@ -28,7 +28,7 @@ Add this section at the bottom, before the Links section:
 
 ### Cross-posted
 
-This article was originally published on [dev.to](https://dev.to/thedatanerd). I'm cross-posting to Hashnode because the MCP developer community is active here and I want to hear from people building their own servers.
+This article was originally published on [dev.to](https://dev.to/data_nerd/i-stopped-building-dashboards-ai-assistants-are-the-new-ui-c5h). I'm cross-posting to Hashnode because the MCP developer community is active here and I want to hear from people building their own servers.
 
 If you've built an MCP server — what was your "aha" moment on distribution? Drop a comment.
 

@@ -24,7 +24,7 @@ const standaloneFaqs: FAQEntry[] = [
   {
     question: "What is VC Deal Flow Signal?",
     answer:
-      "VC Deal Flow Signal is a data product that tracks startup engineering acceleration using public GitHub data. It monitors commit velocity, contributor growth, and repository expansion across 20 startup sectors to surface breakout engineering teams before they appear on the funding radar. Engineering acceleration signals have historically preceded fundraise announcements by six to twelve weeks.",
+      "VC Deal Flow Signal is a data product that tracks startup engineering acceleration using public GitHub data. It monitors commit velocity, contributor growth, and repository expansion across 20 startup sectors to surface breakout engineering teams before they appear on the funding radar. Engineering acceleration signals have historically preceded fundraise announcements by three to six weeks.",
     source: "About",
     sourceHref: "/about",
   },

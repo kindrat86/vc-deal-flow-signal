@@ -100,6 +100,8 @@ export async function GET(request: NextRequest) {
           newRepos: enriched.newRepos,
           signalType: enriched.signalType,
           githubUrl: enriched.githubUrl,
+          ...(enriched.websiteUrl ? { websiteUrl: enriched.websiteUrl } : {}),
+          ...(enriched.linkedinUrl ? { linkedinUrl: enriched.linkedinUrl } : {}),
           profileUrl: `${BASE_URL}/startup/${slugify(enriched.name)}`,
           ...(isAuthenticated && enriched.fundingTotal ? {
             fundingTotal: enriched.fundingTotal,
@@ -134,6 +136,8 @@ export async function GET(request: NextRequest) {
       newRepos: st.newRepos,
       signalType: st.signalType,
       githubUrl: st.githubUrl,
+      ...(st.websiteUrl ? { websiteUrl: st.websiteUrl } : {}),
+      ...(st.linkedinUrl ? { linkedinUrl: st.linkedinUrl } : {}),
     }));
 
   const payload = {

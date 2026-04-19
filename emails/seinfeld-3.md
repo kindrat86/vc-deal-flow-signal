@@ -18,7 +18,7 @@ Either way, the 14-day acceleration window is the single best leading indicator 
 
 By the time AngelList shows "trending" or a TechCrunch article drops, you're already weeks late.
 
-The free digest gives you the top 5 each month. The Dashboard gives you 100+ startups across 20 sectors with filters: https://gitdealflow.com/#pricing
+The free digest gives you the top 5 each month. The Dashboard gives you 60+ startups across 20 sectors with filters: https://gitdealflow.com/#pricing
 
 The Data Nerd
 

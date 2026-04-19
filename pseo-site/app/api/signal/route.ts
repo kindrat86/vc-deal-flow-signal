@@ -72,6 +72,8 @@ export async function GET(request: Request) {
           signalType: startup.signalType,
           stage: startup.stage,
           geography: startup.geography,
+          ...(startup.websiteUrl ? { websiteUrl: startup.websiteUrl } : {}),
+          ...(startup.linkedinUrl ? { linkedinUrl: startup.linkedinUrl } : {}),
           sectorUrl: `https://signals.gitdealflow.com/startups-to-watch/${sector.slug}-${period.slug}`,
         }, {
           headers: corsHeaders(request),

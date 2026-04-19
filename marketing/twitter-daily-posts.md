@@ -41,7 +41,7 @@ I track this across 20 sectors. The pattern repeats.
 
 ### Sat Apr 18 — Build-in-public + teaser
 
-I monitor 2,000+ startup GitHub orgs every week. Here's what I learned building the pipeline:
+I monitor thousands of startup GitHub orgs every week. Here's what I learned building the pipeline:
 
 - Raw commit counts are useless. A docs sprint looks like a product sprint if you only count commits.
 - What matters is change from baseline. A startup going from 30 to 90 commits/14d is more interesting than one doing 500 consistently.
@@ -63,10 +63,10 @@ Shipped it.
 
 VC Deal Flow Signal: spot breakout startups 3 weeks before they hit your inbox.
 
-We track GitHub engineering acceleration across 2,000+ startups in 20 sectors. When a team's commit velocity spikes, something changed — PMF, new funding, or a pivot. You see it in the code weeks before the press release.
+We track GitHub engineering acceleration across thousands of startups in 20 sectors. When a team's commit velocity spikes, something changed — PMF, new funding, or a pivot. You see it in the code weeks before the press release.
 
 Free leaderboard (updated weekly): signals.gitdealflow.com
-Free monthly Signal Digest: gitdealflow.com
+Free weekly Signal Digest: gitdealflow.com
 
 Built this because I was tired of seeing deal flow that was already stale.
 

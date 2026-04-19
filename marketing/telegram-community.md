@@ -19,8 +19,8 @@ What happens here:
 - Every week I'll post the top startup showing unusual GitHub engineering acceleration (commit velocity spikes, contributor surges, new infrastructure repos)
 
 Want more?
-- Free monthly digest (5 startups): https://gitdealflow.com
-- Pro dashboard (50+ startups, filters, enrichment): EUR 9.97/mo at https://gitdealflow.com/#pricing
+- Free weekly digest (5 startups): https://gitdealflow.com
+- Pro dashboard (60+ startups, filters, enrichment): EUR 9.97/mo at https://gitdealflow.com/#pricing
 - Insider Circle (private group, live briefings, API): EUR 97/mo at https://gitdealflow.com/#pricing
 
 Want to discuss signals with other investors? Join the Insider Circle for the private group.

@@ -466,7 +466,7 @@ function generateFaqs(sectorName, periodName, startups) {
   return [
     {
       question: `What engineering signals are ${sectorName.toLowerCase()} startups showing in ${periodName}?`,
-      answer: `In ${periodName}, we are tracking ${startups.length} ${sectorName.toLowerCase()} startups with measurable GitHub engineering signals. ${positive} of ${startups.length} show positive commit velocity growth. The most common signal type is "${topSignal}". The average 14-day commit velocity across the sector is ${avgVelocity} commits. These patterns have historically preceded fundraise announcements by six to twelve weeks.`,
+      answer: `In ${periodName}, we are tracking ${startups.length} ${sectorName.toLowerCase()} startups with measurable GitHub engineering signals. ${positive} of ${startups.length} show positive commit velocity growth. The most common signal type is "${topSignal}". The average 14-day commit velocity across the sector is ${avgVelocity} commits. These patterns have historically preceded fundraise announcements by three to six weeks.`,
     },
     {
       question: `How does VC Deal Flow Signal track ${sectorName.toLowerCase()} startups?`,

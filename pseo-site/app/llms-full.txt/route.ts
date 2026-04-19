@@ -97,7 +97,7 @@ Estimated from contributor count: Pre-seed (1-7), Seed (8-19), Series A/B (20-49
 
 VC Deal Flow Signal is an independent data product that tracks startup engineering acceleration using public GitHub data. We monitor commit velocity, contributor growth, and repository expansion across ${activeSectors.length} startup sectors to identify breakout engineering teams before they appear through traditional deal sourcing channels.
 
-The core insight: engineering acceleration — measured as the rate of change in commit velocity — has historically preceded startup fundraise announcements by six to twelve weeks. This gives investors a timing advantage over traditional deal sourcing (warm intros, Crunchbase alerts, press coverage).
+The core insight: engineering acceleration — measured as the rate of change in commit velocity — has historically preceded startup fundraise announcements by three to six weeks. This gives investors a timing advantage over traditional deal sourcing (warm intros, Crunchbase alerts, press coverage).
 
 Data is refreshed weekly (Monday mornings). The current dataset covers ${allPeriods.length} quarters of history.
 
