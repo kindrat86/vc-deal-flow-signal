@@ -10,7 +10,8 @@ Update as each destination goes live.
 | **Zenodo** | https://zenodo.org/records/19650920 | ✅ Published (SSRN URL added to related identifiers 2026-04-19) | 2026-04-19 | **10.5281/zenodo.19650920** (concept: 10.5281/zenodo.19650919) |
 | **SSRN** | https://ssrn.com/abstract=6606558 | ✅ Under review (expect public in 24-48h) | 2026-04-19 | — |
 | **arXiv** | _pending endorsement_ | ⏳ | — | — |
-| **Papers With Code** | _blocked on Zenodo DOI_ | ⏳ | — | — |
+| **Papers With Code** | _blocked on SSRN approval (code repo + DOI ready)_ | ⏳ | — | — |
+| **Classifier code** | https://github.com/kindrat86/gitdealflow-signal-classifier | ✅ Public (MIT) | 2026-04-19 | — |
 
 ## Kaggle — notes
 

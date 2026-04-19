@@ -7,9 +7,7 @@ arrives (expected 2026-04-21 or earlier). All URLs below are already live.
 
 - ✅ SSRN preprint URL (pending staff approval, typically 24–48 h)
 - ✅ Zenodo DOI: `10.5281/zenodo.19650920`
-- ⏳ Public GitHub repo for the signal classifier (staged at
-  `/tmp/signal-classifier/`; needs manual `gh repo create` approval —
-  public repos are indexed-forever so explicit user action required)
+- ✅ Public GitHub repo: https://github.com/kindrat86/gitdealflow-signal-classifier
 
 ## Submission fields
 
@@ -41,9 +39,8 @@ https://arxiv.org/abs/[pending]
 
 **Code URL:**
 ```
-https://github.com/<username>/gitdealflow-signal-classifier
+https://github.com/kindrat86/gitdealflow-signal-classifier
 ```
-(The staged repo at `/tmp/signal-classifier/` is ready to push.)
 
 **Dataset URL:**
 ```
