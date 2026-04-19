@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  /* Sparkline bars for the proof wall */
+  .spark { display:inline-flex; align-items:flex-end; gap:2px; height:32px; }
+  .spark > span { width:6px; background:#10b981; border-radius:1px; opacity:0.85; }
+  /* Lead-magnet email preview mock */
+  .digest-mock { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+}
