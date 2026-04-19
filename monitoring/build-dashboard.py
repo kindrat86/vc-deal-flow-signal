@@ -44,6 +44,199 @@ BENCHMARK_ROWS = [
     {"traffic": 100000, "subs": 3000, "paid_lo": 30, "paid_hi": 100},
 ]
 
+# Marketing & distribution channels — manually curated.
+# Stats as of `as_of`; update here when meaningful changes happen.
+CHANNELS = {
+    "social": [
+        {"name": "Twitter / X", "handle": "@data_nerd",
+         "url": "https://twitter.com/data_nerd",
+         "stat": "0 followers · 27 posts · 45 following",
+         "note": "Daily Dream 100 blitz + own posts (not Premium)",
+         "status": "active", "as_of": "2026-04-17"},
+        {"name": "Reddit", "handle": "u/Worth_Wealth_6811",
+         "url": "https://www.reddit.com/user/Worth_Wealth_6811",
+         "stat": "718 karma · 957 contribs · 17 followers",
+         "note": "Top 5% Poster; 5y account age; user-managed",
+         "status": "active", "as_of": "2026-04-19"},
+        {"name": "LinkedIn", "handle": "company/gitdealflow",
+         "url": "https://www.linkedin.com/company/gitdealflow",
+         "stat": "Company page only",
+         "note": "User-managed manually (anonymity)",
+         "status": "active", "as_of": "2026-04-17"},
+        {"name": "Product Hunt", "handle": "data_nerd",
+         "url": "https://www.producthunt.com/@data_nerd",
+         "stat": "0 followers · 3-day streak",
+         "note": "Launch: Apr 26 · 6 seeding comments/day",
+         "status": "pre-launch", "as_of": "2026-04-17"},
+        {"name": "IndieHackers", "handle": "@The_Data_Nerd",
+         "url": "https://www.indiehackers.com/The_Data_Nerd",
+         "stat": "0 followers · 13 points",
+         "note": "Products listing live; launch ~Apr 25+",
+         "status": "active", "as_of": "2026-04-19"},
+        {"name": "Hacker News", "handle": "",
+         "url": "https://news.ycombinator.com",
+         "stat": "1 comment posted (Show HN Stage)",
+         "note": "Show HN planned for launch week",
+         "status": "active", "as_of": "2026-04-17"},
+        {"name": "Telegram", "handle": "@gitdealflow",
+         "url": "https://t.me/gitdealflow",
+         "stat": "Public broadcast channel",
+         "note": "Free tier; Insider Circle = separate private group",
+         "status": "active", "as_of": "2026-04-19"},
+        {"name": "Discord", "handle": "the_data_nerd",
+         "url": "",
+         "stat": "Cursor + TS joined",
+         "note": "Blitz: Cursor #showcase Apr 18; TS lurk only",
+         "status": "active", "as_of": "2026-04-17"},
+    ],
+    "content": [
+        {"name": "Company Blog", "handle": "signals.gitdealflow.com/blog",
+         "url": "https://signals.gitdealflow.com/blog",
+         "stat": "8 posts live",
+         "note": "Canonical URL for all cross-posts",
+         "status": "active", "as_of": "2026-04-19"},
+        {"name": "Medium", "handle": "@signal_41476",
+         "url": "https://medium.com/@signal_41476",
+         "stat": "1 post published",
+         "note": "Canonical → signals.gitdealflow.com; Import Story tool",
+         "status": "active", "as_of": "2026-04-19"},
+        {"name": "Substack", "handle": "The Data Nerd",
+         "url": "",
+         "stat": "3 Notes posted · 12 scheduled",
+         "note": "Notes channel only (no split-list newsletter)",
+         "status": "active", "as_of": "2026-04-19"},
+        {"name": "HackerNoon", "handle": "@TheData_7cdit42c",
+         "url": "https://hackernoon.com",
+         "stat": "1 story in editorial queue",
+         "note": "'Alternative Data for VC' · check Apr 22",
+         "status": "pending-review", "as_of": "2026-04-19"},
+        {"name": "dev.to", "handle": "data_nerd",
+         "url": "https://dev.to/data_nerd/i-stopped-building-dashboards-ai-assistants-are-the-new-ui-c5h",
+         "stat": "1 MCP article published",
+         "note": "Canonical URL for Hashnode cross-post",
+         "status": "active", "as_of": "2026-04-18"},
+        {"name": "Hashnode", "handle": "gitdealflow.hashnode.dev",
+         "url": "https://gitdealflow.hashnode.dev/i-stopped-building-dashboards-ai-assistants-are-the-new-ui",
+         "stat": "1 cross-post live",
+         "note": "Canonical → dev.to -c5h",
+         "status": "active", "as_of": "2026-04-19"},
+        {"name": "Quora", "handle": "The Data Nerd",
+         "url": "https://www.quora.com/profile/The-Data-Nerd",
+         "stat": "2 answers posted · 13 scheduled",
+         "note": "2/day pace Apr 20-26",
+         "status": "active", "as_of": "2026-04-19"},
+    ],
+    "directories": [
+        {"name": "Crunchbase", "category": "Business", "status": "live",
+         "as_of": "2026-04-16", "url": "",
+         "note": "High-DA backlink + VC discoverability"},
+        {"name": "G2", "category": "Software", "status": "live",
+         "as_of": "2026-04-16", "url": "",
+         "note": "Free listing; category assignment pending"},
+        {"name": "SaaSHub", "category": "Software", "status": "live",
+         "as_of": "2026-04-16", "url": "",
+         "note": "Pending: verify badge + embed on landing"},
+        {"name": "IH Products", "category": "Startup", "status": "live",
+         "as_of": "2026-04-18",
+         "url": "https://indiehackers.com/product/vc-deal-flow-signal",
+         "note": "Links are nofollow — brand value only"},
+        {"name": "Wikidata", "category": "Knowledge graph", "status": "live",
+         "as_of": "2026-04-16",
+         "url": "https://www.wikidata.org/wiki/Q139376302",
+         "note": "Fully enriched: refs, P154 logo, P1813 short name"},
+        {"name": "StackShare", "category": "Tech stack", "status": "live",
+         "as_of": "2026-04-19",
+         "url": "https://stackshare.io/vc-deal-flow-signal-spot-breakout-startups-before-anyone-else",
+         "note": "Passive brand listing"},
+        {"name": "FutureTools", "category": "AI", "status": "live",
+         "as_of": "2026-04-19", "url": "", "note": ""},
+        {"name": "AItoolslist.io", "category": "AI", "status": "live",
+         "as_of": "2026-04-19", "url": "", "note": ""},
+        {"name": "StartupRanking", "category": "Startup", "status": "submitted",
+         "as_of": "2026-04-19", "url": "",
+         "note": "Claimed + HTML-verified; 80-day free queue"},
+        {"name": "SideProjectors", "category": "Indie", "status": "pending-review",
+         "as_of": "2026-04-18",
+         "url": "https://sideprojectors.com/project/78284",
+         "note": "In mod queue; public URL ≠ approval"},
+        {"name": "AlternativeTo", "category": "Software", "status": "queued",
+         "as_of": "2026-04-16", "url": "",
+         "note": "Account created; 7-day wait; submit after Apr 22"},
+        {"name": "VentureRadar", "category": "Startup", "status": "submitted",
+         "as_of": "2026-04-19", "url": "",
+         "note": "~21-day free review; HQ: Cyprus"},
+        {"name": "10words", "category": "SaaS", "status": "submitted",
+         "as_of": "2026-04-19", "url": "",
+         "note": "Queue: 1,866 days (~5y); passive only"},
+        {"name": "OpenVC", "category": "VC", "status": "signed-up",
+         "as_of": "2026-04-19", "url": "",
+         "note": "For future outbound; not a passive directory"},
+        {"name": "Dealroom for Builders", "category": "VC", "status": "applied",
+         "as_of": "2026-04-19", "url": "",
+         "note": "5-biz-day review; follow up ~May 1"},
+        {"name": "CB Insights", "category": "VC", "status": "applied",
+         "as_of": "2026-04-19", "url": "",
+         "note": "Trial-signup lead-gen (no public form)"},
+        {"name": "FinTech Report", "category": "Award", "status": "submitted",
+         "as_of": "2026-04-19", "url": "",
+         "note": "WealthTech nomination; editorial only"},
+        {"name": "Letterlist", "category": "Newsletter", "status": "submitted",
+         "as_of": "2026-04-19", "url": "", "note": "≤24h review"},
+        {"name": "InboxReads", "category": "Newsletter", "status": "submitted",
+         "as_of": "2026-04-19", "url": "", "note": "≤24h review"},
+        {"name": "daily.dev", "category": "Dev", "status": "deferred",
+         "as_of": "2026-04-19", "url": "",
+         "note": "Post-launch (~May 3+): one Squad submission"},
+    ],
+    "dev_search": [
+        {"name": "npm — mcp-signal", "stat": "@gitdealflow/mcp-signal v1.2.0",
+         "status": "live", "as_of": "2026-04-18",
+         "url": "https://www.npmjs.com/package/@gitdealflow/mcp-signal",
+         "note": ""},
+        {"name": "Glama MCP", "stat": "Full A-tier (5 tools, 4.8-4.9/5.0)",
+         "status": "live", "as_of": "2026-04-18",
+         "url": "https://glama.ai", "note": ""},
+        {"name": "MCP Registry", "stat": "Listed",
+         "status": "live", "as_of": "2026-04-17",
+         "url": "", "note": ""},
+        {"name": "awesome-mcp-servers", "stat": "PR #4933",
+         "status": "pending-merge", "as_of": "2026-04-18",
+         "url": "https://github.com/punkpeye/awesome-mcp-servers/pull/4933",
+         "note": "In merge queue"},
+        {"name": "Chrome Web Store", "stat": "Extension live",
+         "status": "live", "as_of": "2026-04-17",
+         "url": "", "note": "Badge on Crunchbase/AngelList/PitchBook"},
+        {"name": "awesome-quant", "stat": "PR #360 merged",
+         "status": "live", "as_of": "2026-04-19",
+         "url": "", "note": "Tier 5 link building"},
+        {"name": "Kaggle / Data.world / Zenodo", "stat": "Dataset mirrors",
+         "status": "live", "as_of": "2026-04-19",
+         "url": "", "note": "High-DA backlink bundle"},
+        {"name": "SSRN / arXiv", "stat": "Paper submitted",
+         "status": "pending-review", "as_of": "2026-04-19",
+         "url": "", "note": ""},
+        {"name": "Papers With Code", "stat": "Dataset listed",
+         "status": "live", "as_of": "2026-04-19", "url": "", "note": ""},
+        {"name": "Google Search Console", "stat": "Configured",
+         "status": "live", "as_of": "2026-04-15", "url": "", "note": ""},
+        {"name": "Bing / IndexNow", "stat": "272 URLs submitted",
+         "status": "live", "as_of": "2026-04-18",
+         "url": "", "note": "Propagates to Yandex + Seznam"},
+        {"name": "Yandex Webmaster", "stat": "19 URLs reindexed · 12 tracked",
+         "status": "live", "as_of": "2026-04-18",
+         "url": "", "note": "Both properties verified"},
+        {"name": "Brave Search", "stat": "apex + signals submitted",
+         "status": "submitted", "as_of": "2026-04-18",
+         "url": "", "note": ""},
+        {"name": "llms.txt registry", "stat": "Finance category",
+         "status": "submitted", "as_of": "2026-04-18",
+         "url": "https://directory.llmstxt.cloud", "note": ""},
+        {"name": "Perplexity Publishers", "stat": "Intake form submitted",
+         "status": "applied", "as_of": "2026-04-18",
+         "url": "", "note": "Follow up ~May 9"},
+    ],
+}
+
 COUNTRY_NAMES = {
     "US": "United States", "GB": "United Kingdom", "DE": "Germany",
     "FR": "France", "JP": "Japan", "IN": "India", "CN": "China",
@@ -464,6 +657,7 @@ payload = {
     },
     "email_status": [{"k": k, "n": v} for k, v in email_status.most_common()],
     "recent": recent_rows,
+    "channels": CHANNELS,
 }
 
 
@@ -644,8 +838,52 @@ HTML = """<!DOCTYPE html>
   </div>
 </div>
 
+<h1 style="margin-top:40px;font-size:20px">Marketing & Distribution Channels</h1>
+<div class="sub">All accounts, content platforms, directories, and search/AEO surfaces we're publishing on or monitoring.</div>
+
+<div class="grid cols-4 row-group">
+  <div class="card kpi"><div class="num" id="ch-total">—</div><div class="lbl">Total channels</div></div>
+  <div class="card kpi"><div class="num" id="ch-live">—</div><div class="lbl">Live / active</div></div>
+  <div class="card kpi"><div class="num" id="ch-pending">—</div><div class="lbl">Submitted / pending</div></div>
+  <div class="card kpi"><div class="num" id="ch-prelaunch">—</div><div class="lbl">Pre-launch / queued</div></div>
+</div>
+
+<div class="grid cols-2 row-group">
+  <div class="card">
+    <h3>Social & Community</h3>
+    <table>
+      <thead><tr><th>Channel</th><th>Stats</th><th>Status</th></tr></thead>
+      <tbody id="ch-social"></tbody>
+    </table>
+  </div>
+  <div class="card">
+    <h3>Content & Publishing</h3>
+    <table>
+      <thead><tr><th>Platform</th><th>Activity</th><th>Status</th></tr></thead>
+      <tbody id="ch-content"></tbody>
+    </table>
+  </div>
+</div>
+
+<div class="grid cols-2 row-group">
+  <div class="card">
+    <h3>Directories & Listings</h3>
+    <table>
+      <thead><tr><th>Directory</th><th>Category</th><th>Status</th><th>As of</th></tr></thead>
+      <tbody id="ch-directories"></tbody>
+    </table>
+  </div>
+  <div class="card">
+    <h3>Dev Ecosystem & Search / AEO</h3>
+    <table>
+      <thead><tr><th>Platform</th><th>Info</th><th>Status</th></tr></thead>
+      <tbody id="ch-devsearch"></tbody>
+    </table>
+  </div>
+</div>
+
 <div class="foot">
-  Data sources: PocketBase (subscribers, email_log) · Resend (audience) · PostHog EU (visitors).
+  Data sources: PocketBase (subscribers, email_log) · Resend (audience) · PostHog EU (visitors) · manual curation (channels).
   Regenerate: <code class="mono">python3 monitoring/build-dashboard.py</code>
 </div>
 
@@ -761,6 +999,53 @@ tbl('recent', D.recent, [
 tbl('ph-countries', D.ph_countries, [
   r => `<td>${r.name} <span style="color:#64748b">(${r.code})</span></td>`,
   r => `<td class="num">${fmt(r.n)}</td>`,
+]);
+
+// ---- Marketing & distribution channels ----
+const CH = D.channels || {social:[], content:[], directories:[], dev_search:[]};
+const allCh = [...CH.social, ...CH.content, ...CH.directories, ...CH.dev_search];
+const liveStatuses = new Set(['live','active']);
+const pendingStatuses = new Set(['submitted','pending-review','applied','pending-merge']);
+const prelaunchStatuses = new Set(['pre-launch','queued','signed-up','deferred']);
+
+document.getElementById('ch-total').textContent = fmt(allCh.length);
+document.getElementById('ch-live').textContent = fmt(allCh.filter(c => liveStatuses.has(c.status)).length);
+document.getElementById('ch-pending').textContent = fmt(allCh.filter(c => pendingStatuses.has(c.status)).length);
+document.getElementById('ch-prelaunch').textContent = fmt(allCh.filter(c => prelaunchStatuses.has(c.status)).length);
+
+const pillClass = s => {
+  if (liveStatuses.has(s)) return 'above';
+  if (pendingStatuses.has(s)) return 'on-track';
+  if (prelaunchStatuses.has(s)) return 'early';
+  return '';
+};
+const statusPill = s => `<span class="pill ${pillClass(s)}">${s}</span>`;
+const link = (name, url) => url ? `<a href="${url}" target="_blank" rel="noopener">${name}</a>` : name;
+const muted = t => t ? `<div style="color:#64748b;font-size:11px;margin-top:2px">${t}</div>` : '';
+
+tbl('ch-social', CH.social, [
+  r => `<td>${link(r.name, r.url)}${muted(r.handle)}</td>`,
+  r => `<td>${r.stat}${muted(r.note)}</td>`,
+  r => `<td>${statusPill(r.status)}${muted(r.as_of)}</td>`,
+]);
+
+tbl('ch-content', CH.content, [
+  r => `<td>${link(r.name, r.url)}${muted(r.handle)}</td>`,
+  r => `<td>${r.stat}${muted(r.note)}</td>`,
+  r => `<td>${statusPill(r.status)}${muted(r.as_of)}</td>`,
+]);
+
+tbl('ch-directories', CH.directories, [
+  r => `<td>${link(r.name, r.url)}${muted(r.note)}</td>`,
+  r => `<td>${r.category}</td>`,
+  r => `<td>${statusPill(r.status)}</td>`,
+  r => `<td class="mono">${r.as_of}</td>`,
+]);
+
+tbl('ch-devsearch', CH.dev_search, [
+  r => `<td>${link(r.name, r.url)}</td>`,
+  r => `<td>${r.stat}${muted(r.note)}</td>`,
+  r => `<td>${statusPill(r.status)}${muted(r.as_of)}</td>`,
 ]);
 
 // Country donut (top 5, rest bucketed)

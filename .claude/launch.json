@@ -12,6 +12,12 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["--prefix", "/Users/sipi/launch-projects/vc-deal-flow-signal/pseo-site", "run", "dev", "--", "--port", "3100"],
       "port": 3100
+    },
+    {
+      "name": "monitoring",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8091", "-d", "/Users/sipi/launch-projects/vc-deal-flow-signal/monitoring"],
+      "port": 8091
     }
   ]
 }
