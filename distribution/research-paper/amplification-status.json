@@ -1,13 +1,24 @@
 {
-  "ssrn_approved": false,
-  "last_checked": "2026-04-19",
+  "ssrn_approved": true,
+  "approved_on": "2026-04-20",
+  "last_checked": "2026-04-20",
   "ssrn_url": "https://ssrn.com/abstract=6606558",
-  "ssrn_status": "under_review",
+  "ssrn_author_url": "https://ssrn.com/author=11219548",
+  "ssrn_status": "approved",
   "steps": {
-    "papers_with_code": "pending",
-    "zenodo_related_identifiers": "pending",
-    "twitter_thread": "pending",
-    "linkedin_post": "pending"
+    "papers_with_code": "obsolete_merged_into_hf_papers",
+    "zenodo_related_identifiers": "done_2026-04-19",
+    "twitter_thread": "done_2026-04-20",
+    "twitter_thread_urls": {
+      "tweet1": "https://x.com/data_nerd/status/2046303402746138809",
+      "tweet2": "https://x.com/data_nerd/status/2046303613564383360",
+      "tweet3": "https://x.com/data_nerd/status/2046303830896427088",
+      "tweet4": "https://x.com/data_nerd/status/2046304049335849029"
+    },
+    "linkedin_post": "done_2026-04-20",
+    "linkedin_post_url": "https://www.linkedin.com/feed/update/urn:li:activity:7451573161189400576/",
+    "hf_dataset_card": "staged_user_upload_required",
+    "hf_papers_submission": "blocked_on_arxiv"
   },
   "needs_user_review": [
     "newsletter_pitches_dream100",
@@ -16,5 +27,328 @@
     "arxiv_endorsement_campaign",
     "devto_article"
   ],
-  "notes": "First check run 2026-04-19. Paper still in SSRN review queue (page shows 'under review' message). No T+0 actions taken."
+  "submission_bundle": {
+    "created": "2026-04-20",
+    "readme": "distribution/research-paper/submissions/README.md",
+    "runner": "distribution/research-paper/submissions/scripts/run-all.mjs",
+    "venues_total": 22
+  },
+  "venues": {
+    "papers_with_code": {
+      "draft": "submissions/01-papers-with-code.md (archival — site sunset)",
+      "script": "submissions/scripts/submit-papers-with-code.mjs (archival)",
+      "status": "sunset_skip",
+      "note": "paperswithcode.com 301-redirects to huggingface.co/papers/trending; route via HF instead",
+      "priority": "P3"
+    },
+    "huggingface_dataset": {
+      "draft": "submissions/23-huggingface.md (+ distribution/dataset/huggingface-dataset-card.md)",
+      "script": "huggingface-cli upload (user logs in once)",
+      "status": "draft_ready",
+      "blocker": "needs user to run `huggingface-cli login` once",
+      "priority": "P0"
+    },
+    "huggingface_papers": {
+      "draft": "submissions/23-huggingface.md",
+      "script": "manual (https://huggingface.co/papers/submit) after arXiv ID lands",
+      "status": "blocked_on_arxiv",
+      "priority": "P1"
+    },
+    "osf_socarxiv": {
+      "draft": "submissions/02-osf-socarxiv.md",
+      "script": "submissions/scripts/submit-osf.mjs (Steel template)",
+      "status": "draft_ready",
+      "blocker": "needs OSF account creation",
+      "priority": "P0"
+    },
+    "researchgate": {
+      "draft": "submissions/03-researchgate.md",
+      "script": "submissions/scripts/submit-researchgate.mjs (Steel template)",
+      "status": "draft_ready",
+      "blocker": "needs ResearchGate account creation",
+      "priority": "P0"
+    },
+    "orcid": {
+      "draft": "submissions/04-orcid.md",
+      "script": "submissions/scripts/submit-orcid.mjs (ready, needs ORCID_ID + ORCID_ACCESS_TOKEN)",
+      "status": "draft_ready",
+      "blocker": "needs ORCID registration + 3-legged OAuth token",
+      "priority": "P0"
+    },
+    "semantic_scholar": {
+      "draft": "submissions/05-semantic-scholar.md",
+      "script": "submissions/scripts/check-indexing.mjs (auto-polls)",
+      "status": "auto_indexing_pending",
+      "blocker": "waits 1-4 weeks for corpus ingest",
+      "priority": "P0"
+    },
+    "repec_mpra": {
+      "draft": "submissions/06-repec.md",
+      "script": "submissions/scripts/submit-mpra.mjs (Steel template)",
+      "status": "draft_ready",
+      "blocker": "needs MPRA account",
+      "priority": "P1"
+    },
+    "figshare": {
+      "draft": "submissions/07-figshare.md",
+      "script": "submissions/scripts/submit-figshare.mjs (ready, needs FIGSHARE_TOKEN)",
+      "status": "draft_ready",
+      "blocker": "needs Figshare account + personal token",
+      "priority": "P1"
+    },
+    "harvard_dataverse": {
+      "draft": "submissions/08-harvard-dataverse.md",
+      "script": "submissions/scripts/submit-harvard-dataverse.mjs (ready, needs HARVARD_DATAVERSE_TOKEN)",
+      "status": "draft_ready",
+      "blocker": "needs Harvard Dataverse account + API token + create dataverse collection",
+      "priority": "P1"
+    },
+    "mendeley_data": {
+      "draft": "submissions/09-mendeley-data.md",
+      "script": "submissions/scripts/submit-mendeley-data.mjs (stub)",
+      "status": "draft_ready",
+      "blocker": "needs Elsevier/Mendeley OAuth token",
+      "priority": "P1"
+    },
+    "humanities_commons": {
+      "draft": "submissions/10-humanities-commons.md",
+      "script": "submissions/scripts/submit-humanities-commons.mjs (Steel template)",
+      "status": "draft_ready",
+      "blocker": "needs HC account",
+      "priority": "P2"
+    },
+    "wikidata_enhancements": {
+      "draft": "submissions/11-wikidata-enhancements.md",
+      "script": "QuickStatements batch (paste directly while logged in as TheDataNerd)",
+      "status": "batch_ready",
+      "priority": "P1"
+    },
+    "devto_article": {
+      "draft": "submissions/12-devto-article.md",
+      "script": "submissions/scripts/submit-devto.mjs (ready, needs DEV_TO_API_KEY)",
+      "status": "draft_ready",
+      "blocker": "needs DEV_TO_API_KEY env var",
+      "priority": "P1"
+    },
+    "hashnode_article": {
+      "draft": "submissions/13-hashnode-article.md",
+      "script": "submissions/scripts/submit-hashnode.mjs (ready, needs HASHNODE_PAT + HASHNODE_PUBLICATION_ID)",
+      "status": "draft_ready",
+      "blocker": "needs HASHNODE_PAT + HASHNODE_PUBLICATION_ID",
+      "priority": "P2"
+    },
+    "medium_article": {
+      "draft": "submissions/14-medium-article.md",
+      "script": "via medium-daily-publisher scheduled task (Chrome MCP)",
+      "status": "draft_ready",
+      "blocker": "runs via existing scheduled task once queue entry added",
+      "priority": "P2"
+    },
+    "substack_post": {
+      "draft": "submissions/15-substack-post.md",
+      "script": "Chrome MCP / Steel template",
+      "status": "draft_ready",
+      "blocker": "needs Chrome MCP or Steel session",
+      "priority": "P2"
+    },
+    "hackernoon_article": {
+      "draft": "submissions/16-hackernoon-article.md",
+      "script": "manual submission (has account @TheData_7cdit42c)",
+      "status": "draft_ready",
+      "blocker": "manual paste into HN editor",
+      "priority": "P2"
+    },
+    "wayback_machine": {
+      "draft": "submissions/17-wayback-machine.md",
+      "script": "submissions/scripts/submit-wayback-machine.mjs (fully autonomous, no auth)",
+      "status": "executed_2026-04-20",
+      "succeeded": "7/11 (SSRN + Kaggle + secondary Wikidata item blocked by CloudFlare 520 / Kaggle 404)",
+      "priority": "P1"
+    },
+    "openalex_auto": {
+      "draft": "submissions/18-openalex-dimensions-lens.md",
+      "script": "submissions/scripts/check-indexing.mjs (polling)",
+      "status": "already_indexed",
+      "openalex_id": "https://openalex.org/W7154916891",
+      "note": "Zenodo dataset is indexed; separate paper entity pending Semantic Scholar ingest",
+      "priority": "P1"
+    },
+    "academia_edu": {
+      "draft": "submissions/19-academia-edu.md",
+      "script": "submissions/scripts/submit-academia-edu.mjs (Steel template)",
+      "status": "draft_ready",
+      "blocker": "needs Academia.edu account",
+      "priority": "P3"
+    },
+    "quora": {
+      "draft": "submissions/20-quora-post.md",
+      "script": "Chrome MCP / Steel template (has account The-Data-Nerd)",
+      "status": "draft_ready",
+      "blocker": "Chrome MCP needed",
+      "priority": "P2"
+    },
+    "linkedin": {
+      "draft": "submissions/21-linkedin-post.md",
+      "script": "manual only (automation banned per memory)",
+      "status": "done_2026-04-20",
+      "post_url": "https://www.linkedin.com/feed/update/urn:li:activity:7451573161189400576/",
+      "priority": "P2"
+    },
+    "openalex_enhancement": {
+      "draft": "submissions/22-openalex-enhancement.md",
+      "script": "manual correction form on openalex.org/W7154916891",
+      "status": "pending_user_action",
+      "blocker": "ORCID registration first",
+      "priority": "P2"
+    }
+  },
+  "indexing_status": {
+    "last_checked": "2026-04-20T19:02:55Z",
+    "elapsed_ms": 3687,
+    "semantic_scholar": {
+      "indexed": false,
+      "status": 429,
+      "paperId": null,
+      "url": null
+    },
+    "openalex": {
+      "indexed": "https://openalex.org/W7154916891",
+      "status": 200,
+      "oaId": "https://openalex.org/W7154916891",
+      "url": "https://openalex.org/W7154916891"
+    },
+    "crossref": {
+      "indexed": false,
+      "status": 404
+    },
+    "datacite": {
+      "indexed": true,
+      "status": 200,
+      "attrs": {
+        "registered": "2026-04-19T11:15:45.000Z",
+        "state": "findable",
+        "views": 0,
+        "downloads": 0,
+        "citations": 0
+      }
+    },
+    "unpaywall": {
+      "indexed": false,
+      "status": 404,
+      "isOA": false,
+      "bestUrl": null
+    },
+    "openaire": {
+      "indexed": false,
+      "status": 200,
+      "total": "0"
+    },
+    "zenodo": {
+      "indexed": true,
+      "status": 200,
+      "views": 7,
+      "downloads": 0,
+      "unique_views": 5
+    },
+    "google_scholar": {
+      "indexed": false,
+      "status": 200,
+      "blocked": false,
+      "zeroResults": true
+    }
+  },
+  "notes": "2026-04-20 autonomous pass built a 22-venue submission bundle at distribution/research-paper/submissions/. All drafts are ready-to-paste; login-walled venues have Steel.dev templates awaiting user account creation. Autonomous scripts: check-indexing.mjs (polls 8 academic surfaces, passes) + submit-wayback-machine.mjs (retrying after 302-redirect fix) + submit-orcid.mjs / submit-figshare.mjs / submit-harvard-dataverse.mjs / submit-devto.mjs / submit-hashnode.mjs (all ready, awaiting API tokens). OpenAlex already indexed the Zenodo dataset as W7154916891 — high-value baseline.",
+  "wayback_machine": {
+    "last_run": "2026-04-20T19:09:51Z",
+    "total": 11,
+    "succeeded": 7,
+    "archives": [
+      {
+        "url": "https://ssrn.com/abstract=6606558",
+        "ok": false,
+        "status": 520,
+        "finalUrl": "https://web.archive.org/save/https://ssrn.com/abstract=6606558",
+        "archivedUrl": null,
+        "throttled": false
+      },
+      {
+        "url": "https://ssrn.com/author=11219548",
+        "ok": false,
+        "status": 520,
+        "finalUrl": "https://web.archive.org/save/https://ssrn.com/author=11219548",
+        "archivedUrl": null,
+        "throttled": false
+      },
+      {
+        "url": "https://zenodo.org/records/19650920",
+        "ok": true,
+        "status": 200,
+        "finalUrl": "https://web.archive.org/web/20260420185953/https://zenodo.org/records/19650920",
+        "archivedUrl": "https://web.archive.org/web/20260420185953/https://zenodo.org/records/19650920",
+        "throttled": false
+      },
+      {
+        "url": "https://doi.org/10.5281/zenodo.19650920",
+        "ok": true,
+        "status": 200,
+        "finalUrl": "https://web.archive.org/web/20260420185953/https://zenodo.org/records/19650920",
+        "archivedUrl": "https://web.archive.org/web/20260420185953/https://zenodo.org/records/19650920",
+        "throttled": false
+      },
+      {
+        "url": "https://www.kaggle.com/datasets/thedatanerd2026/vc-deal-flow-signal",
+        "ok": false,
+        "status": 404,
+        "reason": "source_unreachable"
+      },
+      {
+        "url": "https://data.world/thedatanerd2026/vc-deal-flow-signal-startup-engineering-acceleration",
+        "ok": true,
+        "status": 200,
+        "finalUrl": "https://web.archive.org/web/20260420190215/https://data.world/thedatanerd2026/vc-deal-flow-signal-startup-engineering-acceleration",
+        "archivedUrl": "https://web.archive.org/web/20260420190215/https://data.world/thedatanerd2026/vc-deal-flow-signal-startup-engineering-acceleration",
+        "throttled": false
+      },
+      {
+        "url": "https://github.com/kindrat86/gitdealflow-signal-classifier",
+        "ok": true,
+        "status": 200,
+        "finalUrl": "https://web.archive.org/web/20260420190311/https://github.com/kindrat86/gitdealflow-signal-classifier",
+        "archivedUrl": "https://web.archive.org/web/20260420190311/https://github.com/kindrat86/gitdealflow-signal-classifier",
+        "throttled": false
+      },
+      {
+        "url": "https://signals.gitdealflow.com/api/signals.csv",
+        "ok": true,
+        "status": 200,
+        "finalUrl": "https://web.archive.org/web/20260420190335/https://signals.gitdealflow.com/api/signals.csv",
+        "archivedUrl": "https://web.archive.org/web/20260420190335/https://signals.gitdealflow.com/api/signals.csv",
+        "throttled": false
+      },
+      {
+        "url": "https://gitdealflow.com/",
+        "ok": true,
+        "status": 200,
+        "finalUrl": "https://web.archive.org/web/20260420190512/https://gitdealflow.com/",
+        "archivedUrl": "https://web.archive.org/web/20260420190512/https://gitdealflow.com/",
+        "throttled": false
+      },
+      {
+        "url": "https://www.wikidata.org/wiki/Q139493250",
+        "ok": true,
+        "status": 200,
+        "finalUrl": "https://web.archive.org/web/20260420190607/https://www.wikidata.org/wiki/Q139493250",
+        "archivedUrl": "https://web.archive.org/web/20260420190607/https://www.wikidata.org/wiki/Q139493250",
+        "throttled": false
+      },
+      {
+        "url": "https://www.wikidata.org/wiki/Q139376302",
+        "ok": false,
+        "status": 520,
+        "finalUrl": "https://web.archive.org/save/https://www.wikidata.org/wiki/Q139376302",
+        "archivedUrl": null,
+        "throttled": false
+      }
+    ]
+  }
 }

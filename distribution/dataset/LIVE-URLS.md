@@ -8,10 +8,41 @@ Update as each destination goes live.
 | **Kaggle** | https://www.kaggle.com/datasets/thedatanerd2026/vc-deal-flow-signal | ✅ Public | 2026-04-19 | — |
 | **Data.world** | https://data.world/thedatanerd2026/vc-deal-flow-signal-startup-engineering-acceleration | ✅ Public | 2026-04-19 | — |
 | **Zenodo** | https://zenodo.org/records/19650920 | ✅ Published (SSRN URL added to related identifiers 2026-04-19) | 2026-04-19 | **10.5281/zenodo.19650920** (concept: 10.5281/zenodo.19650919) |
-| **SSRN** | https://ssrn.com/abstract=6606558 | ✅ Under review (expect public in 24-48h) | 2026-04-19 | — |
+| **SSRN** | https://ssrn.com/abstract=6606558 | ✅ **Live** (approved 2026-04-20; author page https://ssrn.com/author=11219548) | 2026-04-20 | — |
 | **arXiv** | _pending endorsement_ | ⏳ | — | — |
-| **Papers With Code** | _blocked on SSRN approval (code repo + DOI ready)_ | ⏳ | — | — |
+| **Papers With Code** | _stub script ready; may be merged into HF Papers_ | ⏳ | — | — |
 | **Classifier code** | https://github.com/kindrat86/gitdealflow-signal-classifier | ✅ Public (MIT) | 2026-04-19 | — |
+| **Wikidata (paper)** | https://www.wikidata.org/wiki/Q139493250 | ✅ Live (11 claims) | 2026-04-20 | — |
+| **Wikidata (product)** | https://www.wikidata.org/wiki/Q139376302 | ✅ Enriched + P973 SSRN/Zenodo + P1343 Q139493250 | 2026-04-20 | — |
+| **OpenAlex (dataset)** | https://openalex.org/W7154916891 | ✅ Auto-indexed (via Zenodo → DataCite → OpenAlex) | 2026-04-20 | — |
+| **DataCite (dataset)** | https://api.datacite.org/dois/10.5281/zenodo.19650920 | ✅ Findable (registered 2026-04-19) | 2026-04-19 | 10.5281/zenodo.19650920 |
+| **Wayback Machine** | https://web.archive.org/web/20260420*/gitdealflow.com | ✅ 7/11 archived (SSRN + Kaggle blocked by CloudFlare/404) | 2026-04-20 | — |
+| **OSF Preprints / SocArXiv** | _draft ready, needs OSF account_ | ⏳ | — | — |
+| **ResearchGate** | _draft ready, needs RG account_ | ⏳ | — | — |
+| **ORCID** | _draft ready, needs registration_ | ⏳ | — | — |
+| **Semantic Scholar** | _auto-indexing pending 1-4 weeks_ | ⏳ | — | — |
+| **RePEc / MPRA** | _draft ready, needs MPRA account_ | ⏳ | — | — |
+| **Figshare** | _draft + script ready, needs FIGSHARE_TOKEN_ | ⏳ | — | — |
+| **Harvard Dataverse** | _draft + script ready, needs HARVARD_DATAVERSE_TOKEN_ | ⏳ | — | — |
+| **Mendeley Data** | _draft ready, needs Elsevier OAuth_ | ⏳ | — | — |
+| **Humanities Commons** | _draft ready, needs HC account_ | ⏳ | — | — |
+| **Academia.edu** | _draft ready (low priority)_ | ⏳ | — | — |
+| **dev.to article** | _draft ready, needs DEV_TO_API_KEY_ | ⏳ | — | — |
+| **Hashnode article** | _draft ready, needs HASHNODE_PAT_ | ⏳ | — | — |
+| **Medium article** | _draft ready, via medium-daily-publisher task_ | ⏳ | — | — |
+| **Substack Note + post** | _draft ready, Chrome MCP needed_ | ⏳ | — | — |
+| **HackerNoon article** | _draft ready, manual paste via @TheData_7cdit42c_ | ⏳ | — | — |
+
+## Submission bundle
+
+Full cross-venue submission matrix + ready-to-paste drafts + Steel.dev
+automation scripts are at:
+**`distribution/research-paper/submissions/`**
+
+Run `node distribution/research-paper/submissions/scripts/run-all.mjs`
+to fire the fully-autonomous jobs (Wayback Machine re-archive, indexing
+poll). Pass `--session=<STEEL_SESSION_ID>` to also fire login-walled
+scripts after bootstrapping a Steel session.
 
 ## Kaggle — notes
 
