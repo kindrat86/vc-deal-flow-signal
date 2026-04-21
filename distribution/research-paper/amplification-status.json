@@ -1,7 +1,7 @@
 {
   "ssrn_approved": true,
   "approved_on": "2026-04-20",
-  "last_checked": "2026-04-20",
+  "last_checked": "2026-04-21",
   "ssrn_url": "https://ssrn.com/abstract=6606558",
   "ssrn_author_url": "https://ssrn.com/author=11219548",
   "ssrn_status": "approved",
@@ -70,9 +70,13 @@
     },
     "orcid": {
       "draft": "submissions/04-orcid.md",
-      "script": "submissions/scripts/submit-orcid.mjs (ready, needs ORCID_ID + ORCID_ACCESS_TOKEN)",
-      "status": "draft_ready",
-      "blocker": "needs ORCID registration + 3-legged OAuth token",
+      "script": "submissions/scripts/submit-orcid.mjs (ready, needs ORCID_ACCESS_TOKEN — iD captured)",
+      "status": "account_created",
+      "orcid_id": "0009-0002-2222-4112",
+      "profile_url": "https://orcid.org/0009-0002-2222-4112",
+      "created_on": "2026-04-21",
+      "name_on_record": "The Data Nerd",
+      "next_action": "Add works via Works → Add works → Search & link → DataCite (pulls Zenodo auto) + manual SSRN entry",
       "priority": "P0"
     },
     "semantic_scholar": {
@@ -203,8 +207,8 @@
     }
   },
   "indexing_status": {
-    "last_checked": "2026-04-20T19:02:55Z",
-    "elapsed_ms": 3687,
+    "last_checked": "2026-04-21T15:00:45Z",
+    "elapsed_ms": 4052,
     "semantic_scholar": {
       "indexed": false,
       "status": 429,
@@ -246,9 +250,9 @@
     "zenodo": {
       "indexed": true,
       "status": 200,
-      "views": 7,
+      "views": 25,
       "downloads": 0,
-      "unique_views": 5
+      "unique_views": 20
     },
     "google_scholar": {
       "indexed": false,
@@ -259,7 +263,7 @@
   },
   "notes": "2026-04-20 autonomous pass built a 22-venue submission bundle at distribution/research-paper/submissions/. All drafts are ready-to-paste; login-walled venues have Steel.dev templates awaiting user account creation. Autonomous scripts: check-indexing.mjs (polls 8 academic surfaces, passes) + submit-wayback-machine.mjs (retrying after 302-redirect fix) + submit-orcid.mjs / submit-figshare.mjs / submit-harvard-dataverse.mjs / submit-devto.mjs / submit-hashnode.mjs (all ready, awaiting API tokens). OpenAlex already indexed the Zenodo dataset as W7154916891 — high-value baseline.",
   "wayback_machine": {
-    "last_run": "2026-04-20T19:09:51Z",
+    "last_run": "2026-04-21T15:06:33Z",
     "total": 11,
     "succeeded": 7,
     "archives": [
@@ -283,16 +287,16 @@
         "url": "https://zenodo.org/records/19650920",
         "ok": true,
         "status": 200,
-        "finalUrl": "https://web.archive.org/web/20260420185953/https://zenodo.org/records/19650920",
-        "archivedUrl": "https://web.archive.org/web/20260420185953/https://zenodo.org/records/19650920",
+        "finalUrl": "https://web.archive.org/web/20260421150045/https://zenodo.org/records/19650920",
+        "archivedUrl": "https://web.archive.org/web/20260421150045/https://zenodo.org/records/19650920",
         "throttled": false
       },
       {
         "url": "https://doi.org/10.5281/zenodo.19650920",
         "ok": true,
         "status": 200,
-        "finalUrl": "https://web.archive.org/web/20260420185953/https://zenodo.org/records/19650920",
-        "archivedUrl": "https://web.archive.org/web/20260420185953/https://zenodo.org/records/19650920",
+        "finalUrl": "https://web.archive.org/web/20260421150045/https://zenodo.org/records/19650920",
+        "archivedUrl": "https://web.archive.org/web/20260421150045/https://zenodo.org/records/19650920",
         "throttled": false
       },
       {
@@ -305,40 +309,40 @@
         "url": "https://data.world/thedatanerd2026/vc-deal-flow-signal-startup-engineering-acceleration",
         "ok": true,
         "status": 200,
-        "finalUrl": "https://web.archive.org/web/20260420190215/https://data.world/thedatanerd2026/vc-deal-flow-signal-startup-engineering-acceleration",
-        "archivedUrl": "https://web.archive.org/web/20260420190215/https://data.world/thedatanerd2026/vc-deal-flow-signal-startup-engineering-acceleration",
+        "finalUrl": "https://web.archive.org/web/20260421150328/https://data.world/thedatanerd2026/vc-deal-flow-signal-startup-engineering-acceleration",
+        "archivedUrl": "https://web.archive.org/web/20260421150328/https://data.world/thedatanerd2026/vc-deal-flow-signal-startup-engineering-acceleration",
         "throttled": false
       },
       {
         "url": "https://github.com/kindrat86/gitdealflow-signal-classifier",
         "ok": true,
         "status": 200,
-        "finalUrl": "https://web.archive.org/web/20260420190311/https://github.com/kindrat86/gitdealflow-signal-classifier",
-        "archivedUrl": "https://web.archive.org/web/20260420190311/https://github.com/kindrat86/gitdealflow-signal-classifier",
+        "finalUrl": "https://web.archive.org/web/20260421150421/https://github.com/kindrat86/gitdealflow-signal-classifier",
+        "archivedUrl": "https://web.archive.org/web/20260421150421/https://github.com/kindrat86/gitdealflow-signal-classifier",
         "throttled": false
       },
       {
         "url": "https://signals.gitdealflow.com/api/signals.csv",
         "ok": true,
         "status": 200,
-        "finalUrl": "https://web.archive.org/web/20260420190335/https://signals.gitdealflow.com/api/signals.csv",
-        "archivedUrl": "https://web.archive.org/web/20260420190335/https://signals.gitdealflow.com/api/signals.csv",
+        "finalUrl": "https://web.archive.org/web/20260421150452/https://signals.gitdealflow.com/api/signals.csv",
+        "archivedUrl": "https://web.archive.org/web/20260421150452/https://signals.gitdealflow.com/api/signals.csv",
         "throttled": false
       },
       {
         "url": "https://gitdealflow.com/",
         "ok": true,
         "status": 200,
-        "finalUrl": "https://web.archive.org/web/20260420190512/https://gitdealflow.com/",
-        "archivedUrl": "https://web.archive.org/web/20260420190512/https://gitdealflow.com/",
+        "finalUrl": "https://web.archive.org/web/20260421150519/https://gitdealflow.com/",
+        "archivedUrl": "https://web.archive.org/web/20260421150519/https://gitdealflow.com/",
         "throttled": false
       },
       {
         "url": "https://www.wikidata.org/wiki/Q139493250",
         "ok": true,
         "status": 200,
-        "finalUrl": "https://web.archive.org/web/20260420190607/https://www.wikidata.org/wiki/Q139493250",
-        "archivedUrl": "https://web.archive.org/web/20260420190607/https://www.wikidata.org/wiki/Q139493250",
+        "finalUrl": "https://web.archive.org/web/20260421150604/https://www.wikidata.org/wiki/Q139493250",
+        "archivedUrl": "https://web.archive.org/web/20260421150604/https://www.wikidata.org/wiki/Q139493250",
         "throttled": false
       },
       {
