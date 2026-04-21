@@ -85,6 +85,7 @@ export async function GET(
           >
             <div
               style={{
+                display: "flex",
                 fontSize: 20,
                 fontWeight: 700,
                 color: "#0ea5e9",
@@ -113,77 +114,80 @@ export async function GET(
             ) : null}
           </div>
 
-        <div
-          style={{
-            fontSize: 92,
-            fontWeight: 800,
-            lineHeight: 1.0,
-            marginBottom: 12,
-            letterSpacing: -2,
-          }}
-        >
-          @{scout.handle}
-        </div>
-
-        <div
-          style={{
-            fontSize: 36,
-            fontWeight: 700,
-            color: rankColor,
-            letterSpacing: 4,
-            marginBottom: 48,
-          }}
-        >
-          {rankLabel} RANK
-        </div>
-
-        <div style={{ display: "flex", gap: 40, marginBottom: 32 }}>
-          <StatBlock label="POINTS" value={Math.round(scout.points).toString()} />
-          <StatBlock
-            label="ACCURACY"
-            value={accuracy !== null ? `${accuracy}%` : "—"}
-          />
-          <StatBlock
-            label="RESOLVED"
-            value={String(scout.correct_count + scout.wrong_count)}
-          />
-          <StatBlock label="PENDING" value={String(scout.pending_count)} />
-        </div>
-
-        <div style={{ flex: 1 }} />
-
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            paddingTop: 24,
-            borderTop: "1px solid rgba(255, 255, 255, 0.08)",
-          }}
-        >
-          <div style={{ fontSize: 20, color: "#94a3b8" }}>
-            Spot the next Series A before any VC can.
-          </div>
           <div
             style={{
-              fontSize: 22,
-              fontWeight: 700,
-              color: "#f1f5f9",
+              display: "flex",
+              fontSize: 92,
+              fontWeight: 800,
+              lineHeight: 1.0,
+              marginBottom: 12,
+              letterSpacing: -2,
             }}
           >
-            signals.gitdealflow.com/predict
+            @{scout.handle}
+          </div>
+
+          <div
+            style={{
+              display: "flex",
+              fontSize: 36,
+              fontWeight: 700,
+              color: rankColor,
+              letterSpacing: 4,
+              marginBottom: 48,
+            }}
+          >
+            {rankLabel} RANK
+          </div>
+
+          <div style={{ display: "flex", gap: 40, marginBottom: 32 }}>
+            <StatBlock label="POINTS" value={Math.round(scout.points).toString()} />
+            <StatBlock
+              label="ACCURACY"
+              value={accuracy !== null ? `${accuracy}%` : "—"}
+            />
+            <StatBlock
+              label="RESOLVED"
+              value={String(scout.correct_count + scout.wrong_count)}
+            />
+            <StatBlock label="PENDING" value={String(scout.pending_count)} />
+          </div>
+
+          <div style={{ display: "flex", flex: 1 }} />
+
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              paddingTop: 24,
+              borderTop: "1px solid rgba(255, 255, 255, 0.08)",
+            }}
+          >
+            <div style={{ display: "flex", fontSize: 20, color: "#94a3b8" }}>
+              Spot the next Series A before any VC can.
+            </div>
+            <div
+              style={{
+                display: "flex",
+                fontSize: 22,
+                fontWeight: 700,
+                color: "#f1f5f9",
+              }}
+            >
+              signals.gitdealflow.com/predict
+            </div>
           </div>
         </div>
-      </div>
-    ),
-    {
-      width: 1200,
-      height: 630,
-      headers: {
-        "Cache-Control": "public, max-age=300, s-maxage=600",
+      ),
+      {
+        width: 1200,
+        height: 630,
+        headers: {
+          "Cache-Control": "public, max-age=300, s-maxage=600",
+        },
       },
-    },
-  );
+    );
   } catch (error) {
     console.error("[og/scout] render failed:", error);
     return new ImageResponse(
@@ -222,6 +226,7 @@ function StatBlock({ label, value }: { label: string; value: string }) {
     <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
       <div
         style={{
+          display: "flex",
           fontSize: 14,
           color: "#64748b",
           letterSpacing: 2,
@@ -230,7 +235,7 @@ function StatBlock({ label, value }: { label: string; value: string }) {
       >
         {label}
       </div>
-      <div style={{ fontSize: 52, fontWeight: 800, color: "#f1f5f9" }}>
+      <div style={{ display: "flex", fontSize: 52, fontWeight: 800, color: "#f1f5f9" }}>
         {value}
       </div>
     </div>
