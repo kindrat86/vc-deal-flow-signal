@@ -207,11 +207,11 @@
     }
   },
   "indexing_status": {
-    "last_checked": "2026-04-21T15:00:45Z",
-    "elapsed_ms": 4052,
+    "last_checked": "2026-04-21T16:02:35Z",
+    "elapsed_ms": 4328,
     "semantic_scholar": {
       "indexed": false,
-      "status": 429,
+      "status": 404,
       "paperId": null,
       "url": null
     },
@@ -261,9 +261,9 @@
       "zeroResults": true
     }
   },
-  "notes": "2026-04-20 autonomous pass built a 22-venue submission bundle at distribution/research-paper/submissions/. All drafts are ready-to-paste; login-walled venues have Steel.dev templates awaiting user account creation. Autonomous scripts: check-indexing.mjs (polls 8 academic surfaces, passes) + submit-wayback-machine.mjs (retrying after 302-redirect fix) + submit-orcid.mjs / submit-figshare.mjs / submit-harvard-dataverse.mjs / submit-devto.mjs / submit-hashnode.mjs (all ready, awaiting API tokens). OpenAlex already indexed the Zenodo dataset as W7154916891 — high-value baseline.",
+  "notes": "2026-04-21 evening: wayback retry=7/11 (SSRN+Wikidata Q139376302 permanently CF520; Kaggle 404=not uploaded). Indexing=3/8 unchanged. Semantic Scholar 404=not indexed yet; skip claim. P0 user actions pending: ORCID 2 works, HF Dataset upload, OSF/SocArXiv account, ResearchGate account. 2026-04-20 original: 22-venue bundle built; all drafts ready; OpenAlex indexed Zenodo as W7154916891.",
   "wayback_machine": {
-    "last_run": "2026-04-21T15:06:33Z",
+    "last_run": "2026-04-21T16:02:56Z",
     "total": 11,
     "succeeded": 7,
     "archives": [
