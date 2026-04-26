@@ -61,6 +61,15 @@ VC Deal Flow Signal is available as a Model Context Protocol server for Claude D
 - Prompts: weekly_digest, sector_deep_dive, find_dark_horse, compare_startups, acceleration_memo
 - No API key required. Data sourced live from signals.gitdealflow.com.
 
+## NLWeb Endpoint (Bing Copilot / Conversational Web)
+
+`POST https://signals.gitdealflow.com/api/nlweb` accepts natural-language queries and returns schema.org-typed JSON-LD answers. Compatible with Microsoft NLWeb-aware crawlers and conversational web agents.
+
+- Request: `{ "query": "<natural-language question>" }`
+- Response types: ItemList (trending / sector), Organization (startup), Article (methodology), Dataset (summary), WebPage (fallback)
+- Example queries: "trending startups this week", "ai-ml startups", "tell me about Roboflow", "how is this calculated"
+- Discovery: `GET /api/nlweb` returns the descriptor with the request schema and example queries.
+
 ## Chrome Extension
 
 VC Deal Flow Signal also ships as a free Chrome extension (works on Chrome, Brave, Edge, Arc, any Chromium browser). It injects a green "Accelerating" badge on company profile pages — but only on two domains:

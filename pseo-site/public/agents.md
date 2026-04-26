@@ -16,6 +16,7 @@ Pick the surface that matches your runtime. All five are free, public, no authen
 |---|---|---|
 | **MCP server (stdio)** | `npx -y @gitdealflow/mcp-signal` | Claude Desktop, Claude Code, Cursor, any MCP host |
 | **A2A endpoint (JSON-RPC 2.0)** | `POST https://signals.gitdealflow.com/api/a2a` | Google A2A agents and orchestrators |
+| **NLWeb endpoint** | `POST https://signals.gitdealflow.com/api/nlweb` | Microsoft NLWeb-aware crawlers (Bing Copilot), conversational web agents |
 | **JSON API** | `GET https://signals.gitdealflow.com/api/signals.json` | Direct HTTP, AI SDK, OpenAI/Anthropic function calls |
 | **CSV export** | `GET https://signals.gitdealflow.com/api/signals.csv` | Spreadsheets, dataframes, BI tools |
 | **OpenAPI 3.1 spec** | `GET https://signals.gitdealflow.com/api/openapi.json` | Code generation, tool registries |
@@ -50,6 +51,18 @@ Distribution:
 ### A2A AgentCard
 
 Live AgentCard at `https://signals.gitdealflow.com/.well-known/agent-card.json` (protocolVersion 0.3.0). Five skills mirror the MCP tools. JSON-RPC stub at `/api/a2a` accepts `message/send`; other A2A methods return -32004 (not implemented) for now.
+
+### NLWeb endpoint
+
+Microsoft NLWeb-compatible conversational endpoint. Accepts natural-language queries, returns schema.org-typed JSON-LD answers (`ItemList`, `Organization`, `Article`, `Dataset`, `WebPage`).
+
+```bash
+curl -X POST https://signals.gitdealflow.com/api/nlweb \
+  -H "Content-Type: application/json" \
+  -d '{"query": "trending fintech startups this week"}'
+```
+
+Supported query intents: `trending`, `<sector> startups`, `tell me about <startup>`, `how is this calculated`, `what is this dataset`. `GET /api/nlweb` returns the descriptor with example queries and the request schema.
 
 ### Direct HTTP
 

@@ -103,6 +103,7 @@
     "openapi": "https://signals.gitdealflow.com/api/openapi.json",
     "aiPlugin": "https://signals.gitdealflow.com/.well-known/ai-plugin.json",
     "agentsMd": "https://signals.gitdealflow.com/.well-known/agents.md",
+    "nlweb": "https://signals.gitdealflow.com/api/nlweb",
     "llmsTxt": "https://gitdealflow.com/llms.txt",
     "llmsFullTxt": "https://gitdealflow.com/llms-full.txt"
   },

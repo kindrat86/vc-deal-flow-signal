@@ -74,6 +74,23 @@ Same data as signals.json in CSV format for spreadsheet and data science consump
 ### GET /api/openapi.json
 Full OpenAPI 3.1.0 specification for all API endpoints.
 
+### POST /api/nlweb
+Microsoft NLWeb-compatible conversational endpoint. Accepts natural-language queries and returns schema.org-typed JSON-LD answers.
+
+Request body:
+```json
+{ "query": "trending fintech startups this week" }
+```
+
+Response: schema.org JSON-LD. Top-level `@type` is one of:
+- `ItemList` (trending or sector results, with `Organization` items)
+- `Organization` (single startup profile)
+- `Article` (methodology)
+- `Dataset` (summary)
+- `WebPage` (unknown intent fallback)
+
+Supported query intents: trending, `<sector>` startups, `tell me about <startup>`, methodology / how is this calculated, summary / what is this dataset. A `GET` request returns the descriptor with the request schema and example queries.
+
 ### GET /api/changelog.json
 Data pipeline changelog: current period metadata, active sector count, startup count, and last data refresh timestamp.
 
