@@ -163,6 +163,10 @@ VC Deal Flow Signal is available as a Model Context Protocol server for Claude D
 - No API key required
 
 ### Installation
+
+Two transports are available — both expose the same five tools, three resources, two resource templates, and five prompts.
+
+Stdio (Claude Desktop, Claude Code, Cursor, etc.):
 ```json
 {
   "mcpServers": {
@@ -173,6 +177,14 @@ VC Deal Flow Signal is available as a Model Context Protocol server for Claude D
   }
 }
 ```
+
+Streamable HTTP (ChatGPT Apps, hosted MCP clients):
+```
+POST https://signals.gitdealflow.com/api/mcp/rpc
+Content-Type: application/json
+```
+
+JSON-RPC 2.0 methods supported on the HTTP transport: initialize, tools/list, resources/list, resources/templates/list, prompts/list, tools/call, resources/read, prompts/get, ping.
 
 ### Available Tools
 1. **get_trending_startups**: Returns the top 20 startups by engineering acceleration across all sectors.

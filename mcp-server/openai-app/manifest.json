@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.0",
+  "name": "VC Deal Flow Signal",
+  "short_description": "Track startup engineering acceleration from public GitHub data.",
+  "description": "Surface breakout startups before they hit the news. VC Deal Flow Signal tracks commit velocity, contributor growth, and repository expansion across ~400 startup GitHub orgs in 20 sectors. Engineering acceleration has historically preceded fundraise announcements by 3-6 weeks. Free, no auth — backed by an open MCP server with five tools, three resources, and five reusable prompts.",
+  "publisher": {
+    "name": "GitDealFlow",
+    "url": "https://gitdealflow.com",
+    "contact_email": "signal@gitdealflow.com"
+  },
+  "logo": {
+    "url": "https://signals.gitdealflow.com/icon.png"
+  },
+  "category": "research",
+  "tags": [
+    "venture-capital",
+    "deal-flow",
+    "startup-signals",
+    "github-analytics",
+    "engineering-acceleration",
+    "research"
+  ],
+  "connector": {
+    "type": "mcp",
+    "transport": "streamable_http",
+    "url": "https://signals.gitdealflow.com/api/mcp/rpc",
+    "auth": { "type": "none" },
+    "discovery": "https://signals.gitdealflow.com/.well-known/mcp.json"
+  },
+  "capabilities": {
+    "tools": true,
+    "resources": true,
+    "prompts": true
+  },
+  "tool_descriptors": [
+    {
+      "name": "get_trending_startups",
+      "summary": "Top 20 startups across all sectors by engineering acceleration."
+    },
+    {
+      "name": "search_startups_by_sector",
+      "summary": "Sector-filtered ranking. Sector slug from 20 enumerated values."
+    },
+    {
+      "name": "get_startup_signal",
+      "summary": "Full signal profile for a named startup."
+    },
+    {
+      "name": "get_signals_summary",
+      "summary": "Period, sector and startup counts, last refresh, format URLs."
+    },
+    {
+      "name": "get_methodology",
+      "summary": "Methodology document covering data, metrics, classification, limitations."
+    }
+  ],
+  "example_prompts": [
+    "Show me trending startups this week",
+    "Who's moving in fintech right now",
+    "Tell me about Roboflow",
+    "Find a dark horse in cybersecurity",
+    "Compare SkyPilot to Modular",
+    "Draft a one-page deal memo for Roboflow"
+  ],
+  "privacy_policy_url": "https://gitdealflow.com/privacy",
+  "terms_of_service_url": "https://gitdealflow.com/terms",
+  "support_url": "https://signals.gitdealflow.com/developers",
+  "documentation_url": "https://signals.gitdealflow.com/agents.md",
+  "discoverability": {
+    "agentCard": "https://signals.gitdealflow.com/.well-known/agent-card.json",
+    "mcpManifest": "https://signals.gitdealflow.com/.well-known/mcp.json",
+    "agentsMd": "https://signals.gitdealflow.com/.well-known/agents.md",
+    "llmsTxt": "https://gitdealflow.com/llms.txt",
+    "llmsFullTxt": "https://gitdealflow.com/llms-full.txt",
+    "openapi": "https://signals.gitdealflow.com/api/openapi.json",
+    "ai_plugin": "https://signals.gitdealflow.com/.well-known/ai-plugin.json",
+    "nlweb": "https://signals.gitdealflow.com/api/nlweb"
+  },
+  "data_handling": {
+    "stores_user_data": false,
+    "shares_user_data_with_third_parties": false,
+    "encryption_in_transit": "TLS 1.3 via Vercel",
+    "data_residency": "EU + US edge"
+  },
+  "pricing": {
+    "model": "free",
+    "rate_limit": "no enforced limit on the connector; CDN-fronted",
+    "paid_upgrade_url": "https://gitdealflow.com/insider"
+  }
+}

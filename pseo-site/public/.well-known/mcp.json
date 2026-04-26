@@ -30,6 +30,11 @@
       "type": "stdio",
       "command": "npx",
       "args": ["-y", "@gitdealflow/mcp-signal"]
+    },
+    {
+      "type": "streamable_http",
+      "url": "https://signals.gitdealflow.com/api/mcp/rpc",
+      "protocolVersion": "2025-06-18"
     }
   ],
   "auth": {
