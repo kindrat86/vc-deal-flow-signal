@@ -1,7 +1,7 @@
 {
   "name": "vc-deal-flow-signal",
   "displayName": "VC Deal Flow Signal",
-  "version": "1.3.2",
+  "version": "1.4.0",
   "description": "Track startup engineering acceleration from public GitHub data. Returns trending startups, sector signals, and per-company velocity profiles across 20 sectors. Updated weekly. Free, no auth.",
   "vendor": {
     "name": "GitDealFlow",
@@ -37,11 +37,27 @@
   },
   "capabilities": {
     "tools": true,
-    "resources": false,
-    "prompts": false,
+    "resources": true,
+    "prompts": true,
     "logging": false,
     "completion": false
   },
+  "resources": [
+    { "uri": "signal://trending", "name": "Trending Startups (current week)", "mimeType": "application/json" },
+    { "uri": "signal://summary", "name": "Dataset Summary", "mimeType": "application/json" },
+    { "uri": "signal://methodology", "name": "Signal Methodology", "mimeType": "text/markdown" }
+  ],
+  "resourceTemplates": [
+    { "uriTemplate": "signal://startup/{name}", "name": "Startup Signal Profile", "mimeType": "application/json" },
+    { "uriTemplate": "signal://sector/{slug}", "name": "Sector Signal Snapshot", "mimeType": "application/json" }
+  ],
+  "prompts": [
+    { "name": "weekly_digest", "description": "Monday-morning Signal Digest from current top-20 trending." },
+    { "name": "sector_deep_dive", "description": "Sector intelligence brief — top movers + dark horses + thesis follow-ups." },
+    { "name": "find_dark_horse", "description": "Surface one under-the-radar startup with sustained acceleration below the median visibility threshold." },
+    { "name": "compare_startups", "description": "Head-to-head investor comparison of two named startups." },
+    { "name": "acceleration_memo", "description": "One-page deal memo grounded in the live signal profile." }
+  ],
   "tools": [
     {
       "name": "get_trending_startups",

@@ -11,6 +11,7 @@ VC Deal Flow Signal tracks commit velocity, contributor growth, and repository e
 - [Homepage](https://gitdealflow.com/): Product overview, pricing, and free Signal Digest signup
 - [Live Dashboard](https://signals.gitdealflow.com/): Real-time startup rankings by engineering acceleration across 20 sectors
 - [Insider Circle](https://gitdealflow.com/insider): Premium tier with private Telegram group, live briefings, API access
+- [Chrome Extension](https://gitdealflow.com/chrome): Free Chrome/Brave/Edge extension that adds a GitHub momentum badge to Crunchbase and Wellfound startup profiles. No account, no tracking, ~30 KB.
 - [Privacy Policy](https://gitdealflow.com/privacy): Data handling and GDPR compliance
 - [Terms of Service](https://gitdealflow.com/terms): Service terms and conditions
 
@@ -54,8 +55,23 @@ VC Deal Flow Signal is available as a Model Context Protocol server for Claude D
 
 - npm: https://www.npmjs.com/package/@gitdealflow/mcp-signal
 - Registry: io.github.kindrat86/vc-deal-flow-signal
+- Discovery: https://signals.gitdealflow.com/.well-known/mcp.json
 - Tools: get_trending_startups, search_startups_by_sector, get_startup_signal, get_signals_summary, get_methodology
+- Resources: signal://trending, signal://summary, signal://methodology, signal://startup/{name}, signal://sector/{slug}
+- Prompts: weekly_digest, sector_deep_dive, find_dark_horse, compare_startups, acceleration_memo
 - No API key required. Data sourced live from signals.gitdealflow.com.
+
+## Chrome Extension
+
+VC Deal Flow Signal also ships as a free Chrome extension (works on Chrome, Brave, Edge, Arc, any Chromium browser). It injects a green "Accelerating" badge on company profile pages — but only on two domains:
+
+- Crunchbase (`crunchbase.com/organization/*`)
+- Wellfound (`wellfound.com/company/*`, formerly AngelList)
+
+It does NOT run on PitchBook (their pages are paywall-gated and DOM is unstable for non-subscribers). The extension reads only the company slug from the URL, makes one API call to signals.gitdealflow.com, and renders a small badge node. No analytics SDK, no account required, no host-page content collection. Manifest V3, ~30 KB total.
+
+- Install: https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn
+- Landing page: https://gitdealflow.com/chrome
 
 ## Contact
 
