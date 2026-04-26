@@ -107,7 +107,23 @@ function inferIntent(query: string): Intent {
   if (/method|how.*calcul|breakout.*mean|how.*work|signal.*mean|trust|interpret/.test(t)) {
     return { kind: "methodology" };
   }
-  if (/^(what|tell me about|describe|summary|how many|fresh|cite|citation|csv)\b/.test(t) && !/(startup|company|fintech|ai|crypto)/.test(t)) {
+  // Summary intent: dataset-level questions only. Skip if the query contains a
+  // proper noun (capitalized word other than the first word) — that's almost
+  // always a startup name like "tell me about Roboflow".
+  const hasProperNoun = /\s[A-Z][a-zA-Z]+/.test(query);
+  if (
+    !hasProperNoun &&
+    /^(summary|fresh|cite|citation|csv|how do i cite|where (?:can|do) i (?:download|find))\b/i.test(t)
+  ) {
+    return { kind: "summary" };
+  }
+  if (
+    !hasProperNoun &&
+    /^(what|describe|tell me about) (?:this|the) (?:dataset|data|service|product|api|tool|signal)\b/i.test(t)
+  ) {
+    return { kind: "summary" };
+  }
+  if (!hasProperNoun && /^(what is this|how many startups|how many sectors)\b/i.test(t)) {
     return { kind: "summary" };
   }
 
