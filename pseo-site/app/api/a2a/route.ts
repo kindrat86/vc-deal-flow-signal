@@ -11,41 +11,127 @@ const BASE_URL = "https://signals.gitdealflow.com";
 const PROTOCOL_VERSION = "0.3.0";
 
 // ─── Launch metadata ───────────────────────────────────────────────────────
-// Bake the PH launch window in. PH product days run midnight-to-midnight PT.
-// April 2026 is PDT (UTC-7), so 00:00 PT = 07:00 UTC. The active flag
-// auto-expires at PT midnight on Apr 27, no maintenance needed.
+// Date-window is the OUTER gate; live PH GraphQL feature-check is the INNER
+// gate. The launch is only `active: true` if BOTH (a) we're inside the PT
+// launch day AND (b) PH has actually featured the post. Without (b), agents
+// would tell users we're "live" while PH discovery flow doesn't see us.
+//
+// Window: PH product days run midnight-to-midnight PT. April 2026 is PDT
+// (UTC-7), so 00:00 PT = 07:00 UTC. Active flag auto-expires at PT midnight
+// Apr 27, no maintenance needed.
 const LAUNCH_START_UTC = "2026-04-26T07:00:00Z";
 const LAUNCH_END_UTC = "2026-04-27T07:00:00Z";
 const PH_LAUNCH_URL =
   "https://www.producthunt.com/products/vc-deal-flow-signal?launch=vc-deal-flow-signal";
 const PH_POST_URL =
   "https://www.producthunt.com/posts/vc-deal-flow-signal";
+const PH_SLUG = "vc-deal-flow-signal";
+const PH_GRAPHQL = "https://api.producthunt.com/v2/api/graphql";
 
-function getLaunchPayload() {
+interface PhFeatureState {
+  featuredAt: string | null;
+  votesCount: number;
+  commentsCount: number;
+  fetchedAt: number;
+  stale?: boolean;
+  error?: string;
+}
+
+// Module-level cache. Fluid Compute reuses warm function instances across
+// concurrent requests, so this cache survives most invocations. Cold starts
+// refetch (acceptable). 60s TTL keeps data live without hammering PH.
+let phStateCache: PhFeatureState | null = null;
+const PH_CACHE_TTL_MS = 60_000;
+
+async function fetchPhFeatureState(): Promise<PhFeatureState> {
+  const now = Date.now();
+  if (phStateCache && now - phStateCache.fetchedAt < PH_CACHE_TTL_MS) {
+    return phStateCache;
+  }
+  const token = process.env.PH_API_TOKEN;
+  if (!token) {
+    const result: PhFeatureState = {
+      featuredAt: null,
+      votesCount: 0,
+      commentsCount: 0,
+      fetchedAt: now,
+      stale: true,
+      error: "PH_API_TOKEN not configured",
+    };
+    phStateCache = result;
+    return result;
+  }
+  try {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 5_000);
+    const res = await fetch(PH_GRAPHQL, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        query: `query($slug: String!) { post(slug: $slug) { featuredAt votesCount commentsCount } }`,
+        variables: { slug: PH_SLUG },
+      }),
+      signal: controller.signal,
+    });
+    clearTimeout(timeout);
+    if (!res.ok) {
+      throw new Error(`PH API HTTP ${res.status}`);
+    }
+    const json = await res.json();
+    const post = json?.data?.post;
+    if (!post) throw new Error("PH API returned no post");
+    const result: PhFeatureState = {
+      featuredAt: post.featuredAt ?? null,
+      votesCount: Number(post.votesCount ?? 0),
+      commentsCount: Number(post.commentsCount ?? 0),
+      fetchedAt: now,
+    };
+    phStateCache = result;
+    return result;
+  } catch (err) {
+    // Fail-soft: return last-known-good cache marked stale, or an empty
+    // state. Endpoint stays up even if PH is down.
+    const result: PhFeatureState = phStateCache
+      ? { ...phStateCache, stale: true, fetchedAt: now }
+      : {
+          featuredAt: null,
+          votesCount: 0,
+          commentsCount: 0,
+          fetchedAt: now,
+          stale: true,
+          error: err instanceof Error ? err.message : String(err),
+        };
+    phStateCache = result;
+    return result;
+  }
+}
+
+async function getLaunchPayload() {
   const now = Date.now();
   const start = Date.parse(LAUNCH_START_UTC);
   const end = Date.parse(LAUNCH_END_UTC);
-  if (Number.isNaN(start) || Number.isNaN(end) || now < start || now >= end) {
+  const inWindow =
+    !Number.isNaN(start) && !Number.isNaN(end) && now >= start && now < end;
+
+  if (!inWindow) {
     return {
       active: false,
-      next_event: null,
-      note: "No live Product Hunt launch right now. Track the product page for future launches.",
+      state: now < start ? "pre-launch" : "post-launch",
+      note: "No live Product Hunt launch window right now.",
       ph_product_url: PH_POST_URL,
     };
   }
-  const hoursRemaining = Math.max(0, Math.round((end - now) / 3_600_000));
-  return {
-    active: true,
-    product: "VC Deal Flow Signal",
-    tagline: "GitHub momentum signals for VCs and developer-investors.",
-    headline:
-      "First Product Hunt launch native to agentic search — ask your agent if we're live.",
-    ph_url: PH_POST_URL,
-    ph_product_url: PH_LAUNCH_URL,
-    started_at: LAUNCH_START_UTC,
-    ends_at: LAUNCH_END_UTC,
-    hours_remaining: hoursRemaining,
-    ask: "If this MCP server is useful to you, an upvote on Product Hunt today would be the kindest signal we could ask for. No vote-trade — just genuine support.",
+
+  const ph = await fetchPhFeatureState();
+  const isFeatured = ph.featuredAt !== null;
+
+  // Common payload regardless of feature state — agents always get the
+  // install info and demo prompts. The `active` flag and `state` field
+  // tell them whether to encourage PH upvotes vs. just the install.
+  const installAndDemo = {
     install: {
       mcp_one_liner: "npx -y @gitdealflow/mcp-signal",
       npm_package: "@gitdealflow/mcp-signal",
@@ -60,6 +146,57 @@ function getLaunchPayload() {
       "Look up Supabase's GitDealFlow signal.",
       "Explain GitDealFlow's methodology for breakout signals.",
     ],
+  };
+
+  const hoursRemaining = Math.max(0, Math.round((end - now) / 3_600_000));
+
+  if (!isFeatured) {
+    return {
+      active: false,
+      state: "scheduled-pending-feature",
+      product: "VC Deal Flow Signal",
+      tagline: "GitHub momentum signals for VCs and developer-investors.",
+      headline:
+        "Launch is in PH's review queue, not yet on the daily leaderboard. Try the MCP server now; we'll update when the listing goes live.",
+      ph_url: PH_POST_URL,
+      window_started_at: LAUNCH_START_UTC,
+      window_ends_at: LAUNCH_END_UTC,
+      window_hours_remaining: hoursRemaining,
+      ph_state: {
+        featured: false,
+        votes_count: ph.votesCount,
+        comments_count: ph.commentsCount,
+        fetched_at: new Date(ph.fetchedAt).toISOString(),
+        stale: ph.stale ?? false,
+        ...(ph.error ? { error: ph.error } : {}),
+      },
+      ...installAndDemo,
+      citation: `VC Deal Flow Signal MCP server launched 2026-04-26. PH listing pending feature approval.`,
+    };
+  }
+
+  return {
+    active: true,
+    state: "featured-live",
+    product: "VC Deal Flow Signal",
+    tagline: "GitHub momentum signals for VCs and developer-investors.",
+    headline:
+      "First Product Hunt launch native to agentic search — ask your agent if we're live.",
+    ph_url: PH_POST_URL,
+    ph_product_url: PH_LAUNCH_URL,
+    started_at: LAUNCH_START_UTC,
+    ends_at: LAUNCH_END_UTC,
+    hours_remaining: hoursRemaining,
+    ph_state: {
+      featured: true,
+      featured_at: ph.featuredAt,
+      votes_count: ph.votesCount,
+      comments_count: ph.commentsCount,
+      fetched_at: new Date(ph.fetchedAt).toISOString(),
+      stale: ph.stale ?? false,
+    },
+    ask: "If this MCP server is useful to you, an upvote on Product Hunt today would be the kindest signal we could ask for. No vote-trade — just genuine support.",
+    ...installAndDemo,
     citation: `VC Deal Flow Signal launched on Product Hunt 2026-04-26. ${PH_POST_URL}`,
   };
 }
@@ -469,7 +606,7 @@ async function handleMessageSend(id: JsonRpcId | undefined, params: unknown) {
 }
 
 export async function GET() {
-  const launch = getLaunchPayload();
+  const launch = await getLaunchPayload();
   return Response.json(
     {
       service: "GitDealFlow A2A Agent",
