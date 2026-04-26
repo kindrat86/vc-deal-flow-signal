@@ -83,6 +83,7 @@ export const postPillars: Record<string, string> = {
   "open-source-startups-investor-guide": "alternative-data",
   "github-signals-vs-hiring-data": "alternative-data",
 
+  "how-vcs-track-engineering-acceleration-2026-playbook": "github-signals-methodology",
   "what-is-deal-flow-signal": "github-signals-methodology",
   "how-to-read-github-signals-for-startup-investing": "github-signals-methodology",
   "github-due-diligence-for-vcs": "github-signals-methodology",
