@@ -1,12 +1,14 @@
 # Untapped Venue Drafts — Launch Day Apr 26, 2026
 
-**Purpose:** Three dev-aligned venues that the standard launch playbook (PH/Twitter/IH/Reddit/Discord) does NOT cover. Each is a 50–150 word hand-postable draft for the user. Not auto-posted (consistent with the no-LinkedIn/no-Reddit-automation discipline applied to all third-party platforms).
+> ⚠️ **REVISED 2026-04-26 T+8h.** PH listing is created but NOT featured (`featuredAt: null`). PH-state-safe drafts below lead with "shipped a free MCP server" (which is true) and DROP all PH-launch references. If PH features the listing later, you can append a "btw also live on PH today: [URL]" line — but the drafts STAND on their own without it. The Bluesky variant previously called us "first PH launch agents can call" — that line is removed since it's not yet true.
+
+**Purpose:** Three dev-aligned venues. Each is a 50–150 word hand-postable draft for the user. Not auto-posted (consistent with the no-LinkedIn/no-Reddit-automation discipline applied to all third-party platforms).
 
 **Common rules:**
-- Lead with the technical hook, not the launch
-- Mention PH in passing, not as the ask
+- Lead with the technical hook (MCP server shipped today)
+- DROP PH framing — re-add only if PH features the listing
 - No emojis (per Brunson voice)
-- Each post links to `/api/a2a` or the npm package — NOT the PH URL directly (let the agent endpoint be the destination, since that's the actual differentiator)
+- Each post links to `/api/a2a` or the npm package — NOT the PH URL
 
 ---
 
@@ -50,9 +52,9 @@ Happy to answer questions on the methodology or signal classification.
 Shipped a free MCP server for GitHub momentum signals today. 4,200 startup orgs, weekly refresh, 5 tools your agent can call directly. `npx -y @gitdealflow/mcp-signal` and Claude or Cursor has it in 30 seconds. No proprietary data, no sign-up.
 ```
 
-**Post 2 (reply, 264 chars):**
+**Post 2 (reply, 270 chars — REVISED to drop PH claim):**
 ```
-The differentiator isn't the UI. It's the A2A endpoint. Our launch payload is queryable: ask your agent "is GitDealFlow live on Product Hunt right now?" — it pings /api/a2a and tells you. First PH launch I know of that's natively agent-discoverable.
+The differentiator isn't the UI. It's the A2A endpoint. We exposed get_launch_status as a callable skill — ask your agent about our shipping state and it gives a calibrated, honest answer (featured / pending review / off-cycle). Endpoint's at signals.gitdealflow.com/api/a2a.
 ```
 
 **Post 3 (reply, 240 chars):**
