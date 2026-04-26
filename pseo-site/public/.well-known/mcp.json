@@ -109,6 +109,9 @@
     "aiPlugin": "https://signals.gitdealflow.com/.well-known/ai-plugin.json",
     "agentsMd": "https://signals.gitdealflow.com/.well-known/agents.md",
     "nlweb": "https://signals.gitdealflow.com/api/nlweb",
+    "agentTools": "https://signals.gitdealflow.com/api/agent/tools",
+    "agentCall": "https://signals.gitdealflow.com/api/agent/call",
+    "mcpHttp": "https://signals.gitdealflow.com/api/mcp/rpc",
     "llmsTxt": "https://gitdealflow.com/llms.txt",
     "llmsFullTxt": "https://gitdealflow.com/llms-full.txt"
   },

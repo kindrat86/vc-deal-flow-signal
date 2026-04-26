@@ -57,6 +57,7 @@ VC Deal Flow Signal is available as a Model Context Protocol server for Claude D
 - Registry: io.github.kindrat86/vc-deal-flow-signal
 - Discovery: https://signals.gitdealflow.com/.well-known/mcp.json
 - HTTP transport: POST https://signals.gitdealflow.com/api/mcp/rpc (Streamable HTTP, MCP 2025-06-18 protocol)
+- Function-calling API (no MCP needed): GET https://signals.gitdealflow.com/api/agent/tools (OpenAI/Anthropic/Gemini formats) + POST /api/agent/call
 - Tools: get_trending_startups, search_startups_by_sector, get_startup_signal, get_signals_summary, get_methodology
 - Resources: signal://trending, signal://summary, signal://methodology, signal://startup/{name}, signal://sector/{slug}
 - Prompts: weekly_digest, sector_deep_dive, find_dark_horse, compare_startups, acceleration_memo

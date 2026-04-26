@@ -74,6 +74,16 @@ Same data as signals.json in CSV format for spreadsheet and data science consump
 ### GET /api/openapi.json
 Full OpenAPI 3.1.0 specification for all API endpoints.
 
+### GET /api/agent/tools and POST /api/agent/call
+Provider-native function-calling tool definitions. Drop directly into OpenAI / Anthropic / Google Gemini SDKs without needing an MCP client.
+
+`GET /api/agent/tools?format=openai` returns OpenAI function-calling schema array.
+`GET /api/agent/tools?format=anthropic` returns Anthropic Claude tools array.
+`GET /api/agent/tools?format=gemini` returns Google Gemini function declarations.
+`GET /api/agent/tools` (no query) returns all formats keyed by provider plus the `invoke` URL.
+
+`POST /api/agent/call` accepts `{ "name": "<tool_name>", "arguments": { ... } }` and invokes the tool, returning the structured payload. Same five tools as the MCP server.
+
 ### POST /api/nlweb
 Microsoft NLWeb-compatible conversational endpoint. Accepts natural-language queries and returns schema.org-typed JSON-LD answers.
 
