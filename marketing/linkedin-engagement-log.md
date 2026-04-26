@@ -9,3 +9,8 @@
 - Own-post reply reminder: Thursday Apr 23 was a scheduled post day — schedule file still missing, check linkedin.com/company/gitdealflow/posts manually and reply within 2h
 - Targets: Beezer Clarkson, Will Larson, Lenny Rachitsky
 - Drafts saved above for copy-paste
+
+## 2026-04-26
+- Own-post reply reminder: none (Saturday Apr 25 is not a scheduled post day)
+- Targets: Lenny Rachitsky, Nick Moran, Jason Calacanis
+- Drafts saved above for copy-paste
