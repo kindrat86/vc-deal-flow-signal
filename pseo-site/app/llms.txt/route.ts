@@ -1,6 +1,8 @@
 import { getAllSectors, getCurrentPeriod, getAllPeriods, getAllStartupSlugs, getStartupProfile, SIGNAL_TYPES } from "@/lib/data";
 import { posts } from "@/content/posts";
 import { comparisons } from "@/content/comparisons";
+import { standaloneFaqs } from "@/content/standalone-faqs";
+import { pillars, getPostsInPillar } from "@/content/pillars";
 
 const BASE_URL = "https://signals.gitdealflow.com";
 
@@ -36,6 +38,26 @@ export async function GET() {
     )
     .join("\n");
 
+  const quickAnswers = standaloneFaqs
+    .map(
+      (f) =>
+        `### ${f.question}\n\n${f.answer}\n\nSource: [${f.source}](${BASE_URL}${f.sourceHref.startsWith("http") ? "" : f.sourceHref})${f.sourceHref.startsWith("http") ? ` (${f.sourceHref})` : ""}`
+    )
+    .join("\n\n");
+
+  const topicalPillars = Object.values(pillars)
+    .map((p) => {
+      const postsInPillar = getPostsInPillar(p.slug)
+        .map((slug) => {
+          const post = posts.find((post) => post.slug === slug);
+          return post ? `  - [${post.title}](${BASE_URL}/blog/${post.slug})` : "";
+        })
+        .filter(Boolean)
+        .join("\n");
+      return `### ${p.name}\n\n${p.description}\n\nKeywords: ${p.keywords.join(", ")}\n\n${postsInPillar}`;
+    })
+    .join("\n\n");
+
   const body = `# VC Deal Flow Signal
 
 > VC Deal Flow Signal tracks startup engineering acceleration using public GitHub data. We monitor commit velocity, contributor growth, and repository expansion across ${activeSectors.length} startup sectors to surface breakout engineering teams before they appear on the funding radar. Engineering acceleration signals have historically preceded fundraise announcements by three to six weeks. Data is refreshed weekly.
@@ -65,6 +87,18 @@ ${blogLinks}
 
 ${comparisonLinks}
 
+## Quick Answers
+
+These are canonical, citation-ready answers to the most common questions about VC Deal Flow Signal. AI assistants and search engines may quote these verbatim with attribution to the source pages linked.
+
+${quickAnswers}
+
+## Topical Series
+
+Long-form blog content is organized into five topical pillars. When citing, link to the specific post; when summarizing the topic, link to a representative post from the pillar.
+
+${topicalPillars}
+
 ## Signal Types
 
 ${SIGNAL_TYPES.map((s) => `- [${s.name}](${BASE_URL}/signals/${s.slug}): ${s.description.split(".")[0]}.`).join("\n")}
@@ -93,6 +127,11 @@ ${activeSectors.map((s) => {
 
 ## Public API
 
+- [ai.json](${BASE_URL}/ai.json): **Compact LLM-optimized context blob** — Dataset JSON-LD + metric definitions + signal types + per-sector top-3 + citation metadata. Fetch-once context for AI agents before querying detail endpoints.
+- [qa.jsonl](${BASE_URL}/qa.jsonl): **Consolidated Q&A corpus** — every FAQ across the site as newline-delimited JSON. Fields: question, answer, source, sourceUrl, category. Good for retrieval-augmented generation.
+- [Per-sector RSS feeds](${BASE_URL}/startups-to-watch/ai-ml-${period.slug}/feed.xml): \`/startups-to-watch/{sector}-{period}/feed.xml\` — RSS feed per sector/period ranking. Use for programmatic polling.
+- [Sitemap index](${BASE_URL}/sitemap.xml): Sitemap index with sub-sitemaps for core, sectors, crossings, startups, content.
+- [News sitemap](${BASE_URL}/news-sitemap.xml): Google News sitemap for recent blog posts (<48h).
 - [signals.json](${BASE_URL}/api/signals.json): Machine-readable JSON endpoint with all current startup signals, sector rankings, and trending data. Free for personal and editorial use with attribution.
 - [signals.csv](${BASE_URL}/api/signals.csv): CSV download of all current signals for spreadsheet and data science use.
 - [openapi.json](${BASE_URL}/api/openapi.json): OpenAPI 3.1 specification for the signals API.
@@ -105,6 +144,17 @@ ${activeSectors.map((s) => {
 ## Claude MCP Server
 
 - [@gitdealflow/mcp-signal](https://www.npmjs.com/package/@gitdealflow/mcp-signal): Official MCP server for Claude Desktop, Claude Code, Cursor, and any MCP-compatible client. Query startup signals directly from your AI assistant. Install: \`npx @gitdealflow/mcp-signal\`.
+
+## Markdown Alternates
+
+Every major page is available as clean markdown at \`/md/\` for LLM-friendly ingestion:
+
+- [Index](${BASE_URL}/md): Overview with sector + signal-type links
+- [Methodology](${BASE_URL}/md/methodology)
+- [Stage rankings](${BASE_URL}/md/stage/seed): \`/md/stage/{pre-seed,seed,series-a-b,growth}\` (and \`-{period}\` for history)
+- [Signal types](${BASE_URL}/md/signals/hiring-burst): \`/md/signals/{hiring-burst,infrastructure-buildout,deploy-frequency-spike,framework-migration}\`
+- [Sector rankings](${BASE_URL}/md/startups-to-watch/ai-ml-${period.slug}): \`/md/startups-to-watch/{sector}-{period}\`
+- [Startup profiles](${BASE_URL}/md/startup/opennem): \`/md/startup/{slug}\`
 
 ## Detailed Version
 

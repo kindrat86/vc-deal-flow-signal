@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getPost, getAllPostSlugs } from "@/content/posts";
+import { getPost, getAllPostSlugs, posts } from "@/content/posts";
 import { getAllSectors, getCurrentPeriod } from "@/lib/data";
 import { getAuthor } from "@/content/authors";
 import { slugify } from "@/lib/slugify";
+import { getPillarForPost, getPostsInPillar } from "@/content/pillars";
 import figureRegistry from "@/components/figures";
 import StatCallout from "@/components/StatCallout";
 
@@ -63,7 +64,24 @@ export default async function BlogPostPage({ params }: PageProps) {
     notFound();
   }
 
+  const today = new Date().toISOString().slice(0, 10);
+  if (post.date > today) {
+    notFound();
+  }
+
   const author = getAuthor(POST_AUTHOR_OVERRIDES[slug]);
+
+  const pillar = getPillarForPost(slug);
+  const relatedPostSlugs = pillar
+    ? getPostsInPillar(pillar.slug).filter((s) => s !== slug)
+    : [];
+  const relatedPosts = relatedPostSlugs
+    .map((s) => {
+      const p = posts.find((post) => post.slug === s);
+      return p ? { slug: p.slug, title: p.title, description: p.description } : null;
+    })
+    .filter((p): p is { slug: string; title: string; description: string } => p !== null)
+    .slice(0, 4);
 
   const sectors = getAllSectors();
   const period = getCurrentPeriod();
@@ -121,6 +139,22 @@ export default async function BlogPostPage({ params }: PageProps) {
           "@type": "SpeakableSpecification",
           cssSelector: ["[aria-label='Summary']", "h1"],
         },
+        ...(pillar
+          ? {
+              articleSection: pillar.name,
+              keywords: pillar.keywords.join(", "),
+              about: {
+                "@type": "Thing",
+                name: pillar.name,
+                description: pillar.description,
+              },
+              isPartOf: {
+                "@type": "CreativeWorkSeries",
+                name: pillar.name,
+                description: pillar.description,
+              },
+            }
+          : {}),
       },
       {
         "@type": "BreadcrumbList",
@@ -205,7 +239,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           </Link>
         );
       } else if (match[3] && refLabels.has(match[3])) {
-        // Citation marker — link to references section
+        // Citation marker – link to references section
         parts.push(
           <sup key={match.index}>
             <a
@@ -217,7 +251,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           </sup>
         );
       } else {
-        // Unknown bracket content — keep as-is
+        // Unknown bracket content – keep as-is
         parts.push(match[0]);
       }
       last = match.index + match[0].length;
@@ -339,7 +373,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             </p>
           </header>
 
-          {/* Summary block — self-contained for AI extraction */}
+          {/* Summary block – self-contained for AI extraction */}
           {post.summary && (
             <section className="mb-10" aria-label="Summary">
               <div className="rounded-lg border border-sky-900/50 bg-sky-950/30 p-5">
@@ -353,7 +387,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             </section>
           )}
 
-          {/* Table of contents — AEO win + jump-link anchors for AI answer engines */}
+          {/* Table of contents – AEO win + jump-link anchors for AI answer engines */}
           {headings.length >= 2 && (
             <nav
               className="mb-10 rounded-lg border border-slate-800 bg-slate-900/50 p-5"
@@ -377,7 +411,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             </nav>
           )}
 
-          {/* Authoritative data context — concrete numbers AI models prefer to cite */}
+          {/* Authoritative data context – concrete numbers AI models prefer to cite */}
           <div className="mb-8 flex flex-wrap gap-4 text-xs text-gray-500">
             <span>{sectors.filter((s) => s.periods[period.slug]).length} sectors tracked</span>
             <span className="text-slate-700">|</span>
@@ -388,7 +422,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             <span>Updated weekly</span>
           </div>
 
-          {/* Key statistics — GEO-optimized quotable stat block */}
+          {/* Key statistics – GEO-optimized quotable stat block */}
           {post.keyStats && post.keyStats.length > 0 && (
             <StatCallout
               stats={post.keyStats}
@@ -399,7 +433,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 
           <div className="prose-invert">{sections}</div>
 
-          {/* Sources footer — boosts AI citation confidence */}
+          {/* Sources footer – boosts AI citation confidence */}
           <footer className="mt-10 pt-6 border-t border-slate-800">
             <p className="text-gray-600 text-xs leading-relaxed">
               <strong className="text-gray-500">Sources &amp; methodology:</strong> According
@@ -422,7 +456,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               sectors. Data current as of {period.name}. This is not investment advice.
             </p>
 
-            {/* Author bio — E-E-A-T signal for Google and LLM reviewers */}
+            {/* Author bio – E-E-A-T signal for Google and LLM reviewers */}
             <div className="mt-6 rounded-lg border border-slate-800 bg-slate-900/50 p-5">
               <p className="text-gray-500 text-xs font-medium uppercase tracking-wider mb-2">
                 About the author
@@ -450,7 +484,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                       >
                         {ref.title}
                       </a>
-                      {" — "}
+                      {" – "}
                       <span className="text-gray-700">{ref.source}</span>
                     </li>
                   ))}
@@ -482,6 +516,35 @@ export default async function BlogPostPage({ params }: PageProps) {
                     {faq.answer}
                   </p>
                 </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Related articles in the same pillar — TSO topical authority signal */}
+        {relatedPosts.length > 0 && pillar && (
+          <section className="mt-12" aria-label={`More on ${pillar.name}`}>
+            <p className="text-xs font-medium text-sky-500 uppercase tracking-wider mb-2">
+              Series: {pillar.name}
+            </p>
+            <h2 className="text-lg font-semibold text-gray-100 mb-2">
+              More articles in this series
+            </h2>
+            <p className="text-gray-500 text-sm mb-5">{pillar.description}</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {relatedPosts.map((rp) => (
+                <Link
+                  key={rp.slug}
+                  href={`/blog/${rp.slug}`}
+                  className="group block rounded-lg border border-slate-800 bg-slate-900 p-4 hover:border-slate-600 hover:bg-slate-800/60 transition-all"
+                >
+                  <h3 className="text-gray-100 font-medium text-sm group-hover:text-sky-400 transition-colors mb-1.5 leading-snug">
+                    {rp.title}
+                  </h3>
+                  <p className="text-gray-500 text-xs leading-relaxed line-clamp-2">
+                    {rp.description}
+                  </p>
+                </Link>
               ))}
             </div>
           </section>
