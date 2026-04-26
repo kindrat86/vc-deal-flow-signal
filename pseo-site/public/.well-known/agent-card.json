@@ -1,0 +1,99 @@
+{
+  "name": "GitDealFlow Signal Agent",
+  "description": "Track startup engineering acceleration from public GitHub data. Returns trending startups, sector signals, and per-company velocity profiles across 20 sectors. Updated weekly. Free, no auth required.",
+  "url": "https://signals.gitdealflow.com/api/a2a",
+  "preferredTransport": "JSONRPC",
+  "iconUrl": "https://signals.gitdealflow.com/icon.png",
+  "documentationUrl": "https://signals.gitdealflow.com/developers",
+  "provider": {
+    "organization": "GitDealFlow",
+    "url": "https://gitdealflow.com"
+  },
+  "version": "1.0.0",
+  "protocolVersion": "0.3.0",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false,
+    "stateTransitionHistory": false
+  },
+  "defaultInputModes": ["text/plain", "application/json"],
+  "defaultOutputModes": ["text/plain", "application/json"],
+  "skills": [
+    {
+      "id": "get_trending_startups",
+      "name": "Get Trending Startups",
+      "description": "Return the top 20 startups ranked by engineering acceleration across all 20 sectors for the current weekly period. Each row includes commit velocity, contributor count, signal classification, and GitHub URL.",
+      "tags": ["startups", "trending", "vc", "deal-flow", "github", "weekly"],
+      "examples": [
+        "Show me trending startups this week",
+        "Who's hot in deal flow right now",
+        "Top breakout companies",
+        "What startups should I look at"
+      ]
+    },
+    {
+      "id": "search_startups_by_sector",
+      "name": "Search Startups by Sector",
+      "description": "Return every tracked startup within a sector, ranked by engineering acceleration for the current weekly period. Common slugs: ai-ml, cybersecurity, developer-tools, healthcare, climate-tech, enterprise-saas, data-infrastructure, web3, robotics, edtech, ecommerce-infrastructure, supply-chain, legal-tech, hr-tech, proptech, agtech, gaming, space-tech, social-community. The active list rotates weekly — call get_signals_summary first for the canonical set, or pass an unknown slug to receive `availableSectors` in the error payload.",
+      "tags": ["startups", "sector", "filter", "vc", "deal-flow"],
+      "examples": [
+        "Show me AI/ML startups",
+        "Who's moving in fintech",
+        "Cybersecurity deal flow",
+        "Climate-tech picks"
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    },
+    {
+      "id": "get_startup_signal",
+      "name": "Get Startup Signal Profile",
+      "description": "Return the full engineering-acceleration profile for a single tracked startup: commit velocity, velocity change, contributor count and growth, new-repo count, signal classification, sector, stage, geography, and GitHub URL. Matching is case-insensitive and accepts display name or GitHub org slug.",
+      "tags": ["startup", "lookup", "profile", "due-diligence"],
+      "examples": [
+        "Tell me about Roboflow",
+        "What's Supabase's signal",
+        "Is Modular trending",
+        "Lookup SkyPilot"
+      ]
+    },
+    {
+      "id": "get_signals_summary",
+      "name": "Get Dataset Summary",
+      "description": "Return a high-level snapshot of the dataset: current reporting period, active sectors, total startups tracked, last-refresh timestamp, update frequency, citation string, and direct URLs to every data format (JSON, CSV, RSS, OpenAPI, llms.txt).",
+      "tags": ["meta", "freshness", "citation", "formats"],
+      "examples": [
+        "What is this service",
+        "How fresh is the data",
+        "How do I cite the data",
+        "Where can I download the CSV"
+      ]
+    },
+    {
+      "id": "get_methodology",
+      "name": "Get Signal Methodology",
+      "description": "Return the methodology behind the signal: how startup engineering activity is sourced from public GitHub, how commit velocity and contributor-growth metrics are computed, how signal types ('breakout' | 'acceleration' | 'steady' | 'cooling') are classified, refresh cadence, and known limitations.",
+      "tags": ["methodology", "trust", "interpretability", "citation"],
+      "examples": [
+        "How is this calculated",
+        "What does breakout mean",
+        "Can I trust this number",
+        "Explain the methodology"
+      ]
+    },
+    {
+      "id": "get_launch_status",
+      "name": "Get Launch Status",
+      "description": "Return the current Product Hunt launch state for GitDealFlow: whether a launch is live right now, the PH URL, hours remaining in the launch window, install instructions for Claude Desktop and Cursor (the @gitdealflow/mcp-signal MCP package), and demo prompts agents can suggest. The active flag auto-expires at PT midnight on the day after launch — outside that window, returns active:false. Use this skill whenever a user asks 'are you on Product Hunt?', 'are you launching?', or 'where can I support you?'.",
+      "tags": ["launch", "product-hunt", "mcp", "install", "agentic-discovery"],
+      "examples": [
+        "Are you live on Product Hunt right now",
+        "Are you launching today",
+        "Where can I upvote you",
+        "How do I install the MCP server",
+        "How do I plug GitDealFlow into Claude or Cursor"
+      ]
+    }
+  ],
+  "supportsAuthenticatedExtendedCard": false
+}
