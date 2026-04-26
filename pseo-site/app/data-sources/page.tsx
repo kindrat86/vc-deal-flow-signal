@@ -195,6 +195,67 @@ export default function DataSourcesPage() {
           },
         ],
       },
+      {
+        "@type": "FAQPage",
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: "What data sources does VC Deal Flow Signal use?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "The primary source is the public GitHub REST API v3 — search/repositories, stats/commit_activity, contributors, and repos endpoints. Cross-validation sources include the GitHub Innovation Graph for sector benchmarks, npm and PyPI download statistics for package adoption signals, and SEC EDGAR Form D filings for fundraise validation. All sources are public, all access is via documented APIs, and no terms-of-service violations are involved.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "How is the data refreshed?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "The full panel refreshes every Monday morning. The pipeline pulls the latest 14-day GitHub activity for approximately 4,200 startup organizations, normalizes for bot accounts and trivial commits, computes acceleration metrics, classifies signal patterns, and republishes the sector rankings, the API endpoints, the dashboard, the dataset mirrors on Zenodo and Kaggle, and the weekly Signal Report email — all in the same publishing window.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Is the dataset publicly downloadable?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Yes. The full dataset is mirrored on Zenodo with a CC-BY-4.0 license and a citable DOI, on Kaggle for the data science community, and on Data.world via a daily auto-sync from the public CSV endpoint. The MCP server (npm package @gitdealflow/mcp-signal) provides programmatic access for AI agents. Investors and researchers can audit the underlying data and replicate any computed metric.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "How are private repositories handled?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "VC Deal Flow Signal does not access, scrape, or infer signals from private repositories. The framework only reads what GitHub itself makes public. Startups whose entire engineering footprint is in private repositories are therefore not covered by this signal — alternative data sources (hiring data, web telemetry, social signals) are required for those companies.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "What is the licensing on the published dataset?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "The published dataset is released under CC-BY-4.0, which permits commercial and non-commercial use with attribution. The methodology is published openly on SSRN. The MCP server is open source. Researchers, journalists, and other commercial users are welcome to use the data with citation back to ssrn.com/abstract=6606558 or the Zenodo DOI.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Are bot commits and automated activity filtered out?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Yes. Commits authored by accounts whose name or type matches known bot patterns (Dependabot, Renovate, GitHub Actions, common formatters) are excluded before any aggregation. A second filter removes commits with file counts below a small threshold to suppress automated dependency-update and formatting commits. The combination removes the loudest noise sources without overfitting.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Does the data feed integrate with our internal data warehouse?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Yes. The API returns ranked signals as JSON and many funds pipe weekly snapshots into Snowflake, BigQuery, or PostgreSQL for cross-referencing with internal CRM, portfolio analytics, and partnership data. The MCP server makes the same data available to AI agents in Claude Desktop, Claude Code, and Cursor. The CSV endpoint feeds Data.world auto-sync. Email signal@gitdealflow.com for custom integration help.",
+            },
+          },
+        ],
+      },
     ],
   };
 
