@@ -822,3 +822,282 @@ export function getAllStartupSlugs(): string[] {
 export function getStartupProfile(slug: string): StartupProfile | undefined {
   return getStartupIndex().get(slug);
 }
+
+// ---------------------------------------------------------------------------
+// Startup × period pages (/startup/{slug}/{period})
+// ---------------------------------------------------------------------------
+
+export interface StartupPeriodData {
+  profile: StartupProfile;
+  entry: StartupPeriodEntry;
+  prevEntry?: StartupPeriodEntry;
+  nextEntry?: StartupPeriodEntry;
+  sectorRank: number;
+  sectorTotal: number;
+}
+
+export function getStartupPeriodData(
+  startupSlug: string,
+  periodSlug: string
+): StartupPeriodData | null {
+  const profile = getStartupProfile(startupSlug);
+  if (!profile) return null;
+
+  const idx = profile.history.findIndex((h) => h.periodSlug === periodSlug);
+  if (idx === -1) return null;
+  const entry = profile.history[idx];
+  const prevEntry = profile.history[idx + 1];
+  const nextEntry = idx > 0 ? profile.history[idx - 1] : undefined;
+
+  const sector = data.sectors.find((s) => s.slug === entry.sectorSlug);
+  const snapshot = sector?.periods[periodSlug];
+  let sectorRank = 0;
+  let sectorTotal = 0;
+  if (snapshot) {
+    const sorted = getSortedStartups(snapshot.startups);
+    sectorTotal = sorted.length;
+    sectorRank = sorted.findIndex((s) => toSlug(s.name) === startupSlug) + 1;
+  }
+
+  return { profile, entry, prevEntry, nextEntry, sectorRank, sectorTotal };
+}
+
+export function getAllStartupPeriodPairs(): { slug: string; period: string }[] {
+  const pairs: { slug: string; period: string }[] = [];
+  for (const profile of getStartupIndex().values()) {
+    for (const h of profile.history) {
+      pairs.push({ slug: profile.slug, period: h.periodSlug });
+    }
+  }
+  return pairs;
+}
+
+// ---------------------------------------------------------------------------
+// Stage × sector pages (/stage/{stage}/{sector})
+// ---------------------------------------------------------------------------
+
+export interface StageSectorPageData {
+  stageSlug: string;
+  stageName: string;
+  stageDescription: string;
+  stageInvestorInsight: string;
+  sector: Sector;
+  period: Period;
+  startups: Startup[];
+}
+
+export function getStageSectorData(
+  stageSlug: string,
+  sectorSlug: string
+): StageSectorPageData | null {
+  const stageDef = STAGE_DEFINITIONS.find((s) => s.slug === stageSlug);
+  if (!stageDef) return null;
+  const sector = data.sectors.find((s) => s.slug === sectorSlug);
+  if (!sector) return null;
+  const period = getCurrentPeriod();
+  const snapshot = sector.periods[period.slug];
+  if (!snapshot) return null;
+
+  const matching = snapshot.startups.filter((s) =>
+    (stageDef.match as readonly string[]).some(
+      (m) => s.stage === m || s.stage.includes(m)
+    )
+  );
+  if (matching.length === 0) return null;
+
+  return {
+    stageSlug: stageDef.slug,
+    stageName: stageDef.name,
+    stageDescription: stageDef.description,
+    stageInvestorInsight: stageDef.investorInsight,
+    sector,
+    period,
+    startups: getSortedStartups(matching),
+  };
+}
+
+export function getAllStageSectorPairs(): { stage: string; sector: string }[] {
+  const pairs: { stage: string; sector: string }[] = [];
+  const period = getCurrentPeriod();
+  for (const stageDef of STAGE_DEFINITIONS) {
+    for (const sector of data.sectors) {
+      const snapshot = sector.periods[period.slug];
+      if (!snapshot) continue;
+      const has = snapshot.startups.some((s) =>
+        (stageDef.match as readonly string[]).some(
+          (m) => s.stage === m || s.stage.includes(m)
+        )
+      );
+      if (has) pairs.push({ stage: stageDef.slug, sector: sector.slug });
+    }
+  }
+  return pairs;
+}
+
+// ---------------------------------------------------------------------------
+// Signal × sector pages (/signals/{signal}/{sector})
+// ---------------------------------------------------------------------------
+
+export interface SignalSectorPageData {
+  signalSlug: string;
+  signalName: string;
+  signalDescription: string;
+  signalInvestorInsight: string;
+  sector: Sector;
+  period: Period;
+  startups: Startup[];
+}
+
+export function getSignalSectorData(
+  signalSlug: string,
+  sectorSlug: string
+): SignalSectorPageData | null {
+  const signalDef = SIGNAL_TYPES.find((s) => s.slug === signalSlug);
+  if (!signalDef) return null;
+  const sector = data.sectors.find((s) => s.slug === sectorSlug);
+  if (!sector) return null;
+  const period = getCurrentPeriod();
+  const snapshot = sector.periods[period.slug];
+  if (!snapshot) return null;
+
+  const matching = snapshot.startups.filter(
+    (s) => s.signalType === signalDef.match
+  );
+  if (matching.length === 0) return null;
+
+  return {
+    signalSlug: signalDef.slug,
+    signalName: signalDef.name,
+    signalDescription: signalDef.description,
+    signalInvestorInsight: signalDef.investorInsight,
+    sector,
+    period,
+    startups: getSortedStartups(matching),
+  };
+}
+
+export function getAllSignalSectorPairs(): { signal: string; sector: string }[] {
+  const pairs: { signal: string; sector: string }[] = [];
+  const period = getCurrentPeriod();
+  for (const signalDef of SIGNAL_TYPES) {
+    for (const sector of data.sectors) {
+      const snapshot = sector.periods[period.slug];
+      if (!snapshot) continue;
+      const has = snapshot.startups.some((s) => s.signalType === signalDef.match);
+      if (has) pairs.push({ signal: signalDef.slug, sector: sector.slug });
+    }
+  }
+  return pairs;
+}
+
+// ---------------------------------------------------------------------------
+// Stage × signal pages (/stage/{stage}/signal/{signal})
+// ---------------------------------------------------------------------------
+
+export interface StageSignalPageData {
+  stageSlug: string;
+  stageName: string;
+  stageDescription: string;
+  stageInvestorInsight: string;
+  signalSlug: string;
+  signalName: string;
+  signalDescription: string;
+  signalInvestorInsight: string;
+  period: Period;
+  startups: (Startup & { sectorName: string; sectorSlug: string })[];
+  sectorBreakdown: { name: string; slug: string; count: number }[];
+}
+
+export function getStageSignalData(
+  stageSlug: string,
+  signalSlug: string
+): StageSignalPageData | null {
+  const stageDef = STAGE_DEFINITIONS.find((s) => s.slug === stageSlug);
+  if (!stageDef) return null;
+  const signalDef = SIGNAL_TYPES.find((s) => s.slug === signalSlug);
+  if (!signalDef) return null;
+
+  const period = getCurrentPeriod();
+  const startups: StageSignalPageData["startups"] = [];
+  const sectorCounts: Record<string, { name: string; slug: string; count: number }> = {};
+
+  for (const sector of data.sectors) {
+    const snapshot = sector.periods[period.slug];
+    if (!snapshot) continue;
+    const matching = snapshot.startups.filter(
+      (s) =>
+        s.signalType === signalDef.match &&
+        (stageDef.match as readonly string[]).some(
+          (m) => s.stage === m || s.stage.includes(m)
+        )
+    );
+    if (matching.length === 0) continue;
+
+    sectorCounts[sector.slug] = {
+      name: sector.name,
+      slug: `${sector.slug}-${period.slug}`,
+      count: matching.length,
+    };
+    for (const s of matching) {
+      startups.push({ ...s, sectorName: sector.name, sectorSlug: sector.slug });
+    }
+  }
+
+  if (startups.length === 0) return null;
+
+  return {
+    stageSlug: stageDef.slug,
+    stageName: stageDef.name,
+    stageDescription: stageDef.description,
+    stageInvestorInsight: stageDef.investorInsight,
+    signalSlug: signalDef.slug,
+    signalName: signalDef.name,
+    signalDescription: signalDef.description,
+    signalInvestorInsight: signalDef.investorInsight,
+    period,
+    startups: getSortedStartups(startups) as StageSignalPageData["startups"],
+    sectorBreakdown: Object.values(sectorCounts).sort((a, b) => b.count - a.count),
+  };
+}
+
+export function getAllStageSignalPairs(): { stage: string; signal: string }[] {
+  const pairs: { stage: string; signal: string }[] = [];
+  for (const stageDef of STAGE_DEFINITIONS) {
+    for (const signalDef of SIGNAL_TYPES) {
+      const d = getStageSignalData(stageDef.slug, signalDef.slug);
+      if (d && d.startups.length > 0) {
+        pairs.push({ stage: stageDef.slug, signal: signalDef.slug });
+      }
+    }
+  }
+  return pairs;
+}
+
+// ---------------------------------------------------------------------------
+// Stage × period sitemap entries (/stage/{stage}-{period})
+// ---------------------------------------------------------------------------
+
+export function getAllStagePageSlugs(): string[] {
+  const slugs: string[] = [];
+  for (const stageDef of STAGE_DEFINITIONS) {
+    for (const period of data.periods) {
+      let has = false;
+      for (const sector of data.sectors) {
+        const snapshot = sector.periods[period.slug];
+        if (!snapshot) continue;
+        if (
+          snapshot.startups.some((s) =>
+            (stageDef.match as readonly string[]).some(
+              (m) => s.stage === m || s.stage.includes(m)
+            )
+          )
+        ) {
+          has = true;
+          break;
+        }
+      }
+      if (has) slugs.push(`${stageDef.slug}-${period.slug}`);
+    }
+  }
+  return slugs;
+}

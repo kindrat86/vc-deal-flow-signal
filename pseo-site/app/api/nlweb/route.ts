@@ -78,6 +78,29 @@ type Intent =
   | { kind: "summary" }
   | { kind: "unknown" };
 
+const SECTOR_SLUG_SET = new Set([
+  "ai-ml",
+  "fintech",
+  "cybersecurity",
+  "developer-tools",
+  "healthcare",
+  "climate-tech",
+  "enterprise-saas",
+  "data-infrastructure",
+  "web3",
+  "robotics",
+  "edtech",
+  "ecommerce-infrastructure",
+  "supply-chain",
+  "legal-tech",
+  "hr-tech",
+  "proptech",
+  "agtech",
+  "gaming",
+  "space-tech",
+  "social-community",
+]);
+
 function inferIntent(query: string): Intent {
   const t = query.toLowerCase();
 
@@ -88,21 +111,31 @@ function inferIntent(query: string): Intent {
     return { kind: "summary" };
   }
 
+  // Trending check runs BEFORE sector/startup regexes so "trending fintech startups"
+  // resolves to a constrained-sector trending query, and "trending startups" doesn't
+  // get misclassified as a sector lookup for "trending".
+  const trendingHit = /\b(trending|hot|breakout|top|right now|this week|accelerat|who.*watch|who.*hot)\b/.test(t);
+
   const sectorMatch =
-    /(?:in|for|about|inside)\s+([a-z][a-z\- ]{2,40})|^([a-z][a-z\- ]{2,40})\s+(?:startups|companies|deal flow|movers|picks)/i.exec(query);
+    /(?:in|for|about|inside)\s+([a-z][a-z\- ]{2,40})|\b([a-z][a-z\- ]{2,40})\s+(?:startups|companies|deal flow|movers|picks)/i.exec(query);
   if (sectorMatch) {
     const raw = (sectorMatch[1] ?? sectorMatch[2] ?? "").trim();
-    if (raw) return { kind: "sector", slug: normalizeSector(raw), raw };
+    const slug = normalizeSector(raw);
+    // Only claim sector intent if the normalized slug is a real, supported sector.
+    // Otherwise fall through to trending or unknown.
+    if (raw && SECTOR_SLUG_SET.has(slug)) {
+      return { kind: "sector", slug, raw };
+    }
+  }
+
+  if (trendingHit) {
+    return { kind: "trending" };
   }
 
   const lookupPattern =
     /(?:about|tell me about|profile|signal for|lookup|look up|how is|what's)\s+([A-Za-z][\w \-.]{1,80})/i.exec(query);
   if (lookupPattern) {
     return { kind: "startup", name: lookupPattern[1].trim() };
-  }
-
-  if (/trending|top|hot|breakout|who.*watch|who.*hot|right now|this week|accelerat/.test(t)) {
-    return { kind: "trending" };
   }
 
   return { kind: "unknown" };
