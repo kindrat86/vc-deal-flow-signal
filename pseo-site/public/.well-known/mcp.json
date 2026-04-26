@@ -1,7 +1,7 @@
 {
   "name": "vc-deal-flow-signal",
   "displayName": "VC Deal Flow Signal",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Track startup engineering acceleration from public GitHub data. Returns trending startups, sector signals, and per-company velocity profiles across 20 sectors. Updated weekly. Free, no auth.",
   "vendor": {
     "name": "GitDealFlow",
@@ -85,6 +85,12 @@
     {
       "name": "get_signals_summary",
       "description": "High-level snapshot of the dataset: period, sector and startup counts, last refresh, citation, and direct URLs to JSON/CSV/RSS/OpenAPI/llms.txt.",
+      "readOnly": true,
+      "idempotent": true
+    },
+    {
+      "name": "get_scout_receipts",
+      "description": "Compute a Scout Score (0-100) for a GitHub user from public starring history. Cross-references against ~75 validated unicorns and grades how many were starred before the validation event. Returns score, rank, top early calls, and a shareable card URL.",
       "readOnly": true,
       "idempotent": true
     },

@@ -241,6 +241,42 @@ export async function POST(request: NextRequest) {
         headers: { ...CORS_HEADERS, "Cache-Control": "no-store" },
       });
 
+    case "get_scout_receipts": {
+      const username = String(args.github_username ?? "").trim();
+      if (
+        !username ||
+        !/^[a-zA-Z0-9](?:[a-zA-Z0-9]|-(?=[a-zA-Z0-9])){0,38}$/.test(username)
+      ) {
+        return Response.json(
+          {
+            error:
+              "Invalid github_username. Must be 1-39 chars, alphanumeric + single hyphens.",
+          },
+          { status: 400, headers: CORS_HEADERS }
+        );
+      }
+      const url = `${BASE_URL}/api/receipts/${encodeURIComponent(username)}`;
+      const res = await fetch(url, {
+        headers: { "User-Agent": "gitdealflow-agent/1.5.0" },
+      });
+      if (!res.ok) {
+        const body = await res.text().catch(() => "");
+        return Response.json(
+          { error: `HTTP ${res.status} from /api/receipts/${username}`, detail: body.slice(0, 500) },
+          { status: res.status, headers: CORS_HEADERS }
+        );
+      }
+      const data = await res.json();
+      const enriched = {
+        ...data,
+        share_url: `${BASE_URL}/receipts/${encodeURIComponent(username)}`,
+        og_image_url: `${BASE_URL}/api/og/receipts/${encodeURIComponent(username)}`,
+      };
+      return Response.json(enriched, {
+        headers: { ...CORS_HEADERS, "Cache-Control": "no-store" },
+      });
+    }
+
     case "get_methodology":
       return Response.json(await methodologyPayload(), {
         headers: { ...CORS_HEADERS, "Cache-Control": "no-store" },
@@ -255,6 +291,7 @@ export async function POST(request: NextRequest) {
             "search_startups_by_sector",
             "get_startup_signal",
             "get_signals_summary",
+            "get_scout_receipts",
             "get_methodology",
           ],
         },

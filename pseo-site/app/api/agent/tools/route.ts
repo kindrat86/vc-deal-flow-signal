@@ -84,6 +84,25 @@ const TOOL_DEFINITIONS = [
     },
   },
   {
+    name: "get_scout_receipts",
+    description:
+      "Compute a Scout Score (0-100) for a GitHub user from their public starring history. Cross-references the user's starred repos against ~75 validated unicorns (Series A+, $1B+ valuations, acquisitions) and grades how many they starred *before* the validation event. Returns score, rank (curious/scout/sharp/elite/oracle), top early calls, personality summary, and a shareable card URL. Use when the user wants to evaluate a developer's investment taste retroactively, vet a potential angel/scout, or generate proof-of-taste content.",
+    parameters: {
+      type: "object" as const,
+      properties: {
+        github_username: {
+          type: "string",
+          minLength: 1,
+          maxLength: 39,
+          pattern: "^[a-zA-Z0-9](?:[a-zA-Z0-9]|-(?=[a-zA-Z0-9])){0,38}$",
+          description: "GitHub username, 1-39 chars, alphanumeric + single hyphens.",
+        },
+      },
+      required: ["github_username"],
+      additionalProperties: false,
+    },
+  },
+  {
     name: "get_methodology",
     description:
       "Full methodology document covering data sources, metric computation, signal classification thresholds, refresh cadence, and known limitations. Use when the user asks 'how is this calculated' or wants a citation footnote.",

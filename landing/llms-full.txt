@@ -14,6 +14,8 @@ Engineering acceleration signals have historically preceded fundraise announceme
 - Live Dashboard: https://signals.gitdealflow.com/
 - Insider Circle: https://gitdealflow.com/insider
 - Chrome Extension: https://gitdealflow.com/chrome
+- Receipts (free, no login): https://signals.gitdealflow.com/receipts — paste any GitHub username, get a Scout Score (0-100) computed from how many validated unicorns the user starred *before* the funding/acquisition/$1B-valuation event. Top wins surfaced with months-early. Shareable 1200x630 OG card per username at /api/og/receipts/[username]. Backwards-looking proof of taste.
+- Predict (Scout Game): https://signals.gitdealflow.com/predict — free forward-looking prediction game. Pick a GitHub org, call whether they raise a Series A in 6 months. Auto-resolved at the 6-month window. Public profile at /s/[handle], leaderboard at /leaderboard, rank ladder Curious → Scout → Sharp → Elite → Oracle.
 - Methodology: https://signals.gitdealflow.com/methodology
 - FAQ: https://signals.gitdealflow.com/faq
 - Glossary: https://signals.gitdealflow.com/glossary
@@ -103,6 +105,43 @@ Supported query intents: trending, `<sector>` startups, `tell me about <startup>
 
 ### GET /api/changelog.json
 Data pipeline changelog: current period metadata, active sector count, startup count, and last data refresh timestamp.
+
+### GET /api/receipts/{username}
+Returns a Scout Score (0-100) and ranked early-call list for any GitHub user. Computed from the user's public starring history cross-referenced against ~75 validated unicorns.
+
+Example response structure:
+```json
+{
+  "username": "sindresorhus",
+  "score": 36,
+  "rank": "scout",
+  "total_stars": 500,
+  "matched_count": 5,
+  "early_count": 4,
+  "top_wins": [
+    {
+      "org": "openai",
+      "name": "OpenAI",
+      "repo": "openai/whisper",
+      "event": "$157B valuation (Series), 2024-10",
+      "event_date": "2024-10-02",
+      "starred_at": "2022-09-21T17:33:58Z",
+      "months_early": 24.4,
+      "weight": 100,
+      "points": 100
+    }
+  ],
+  "personality": "Sharp-tier taste. You called 4 winners early, and you have a clear bias for AI/ML infrastructure...",
+  "from_cache": false,
+  "generated_at": "2026-04-26T08:30:00.000Z"
+}
+```
+
+Rank values: `curious` (0-19), `scout` (20-39), `sharp` (40-59), `elite` (60-79), `oracle` (80-100).
+24-hour CDN cache. No authentication. GitHub API rate limit shared across all callers (5,000/hour with our PAT).
+
+### GET /api/og/receipts/{username}
+Returns a 1200x630 PNG share card for a Scout Score. Same rank colors as /api/og/scout: emerald (curious), sky (scout), purple (sharp), amber (elite), rose (oracle). 24-hour CDN cache.
 
 ## Sector Signal Pages
 
@@ -201,7 +240,8 @@ JSON-RPC 2.0 methods supported on the HTTP transport: initialize, tools/list, re
 2. **search_startups_by_sector**: Search startups filtered by sector name.
 3. **get_startup_signal**: Get detailed signal data for a specific startup by name.
 4. **get_signals_summary**: Summary statistics: total startups, sectors, period, and last update.
-5. **get_methodology**: Full methodology text explaining data sources, metrics, and signal classification.
+5. **get_scout_receipts**: Compute a Scout Score (0-100) for a GitHub user from their starring history vs. ~75 validated unicorns. Returns score, rank (curious/scout/sharp/elite/oracle), top early calls, personality summary, and shareable card URL. Wraps `/api/receipts/{username}`.
+6. **get_methodology**: Full methodology text explaining data sources, metrics, and signal classification.
 
 ### Available Resources (URI-addressable signals)
 

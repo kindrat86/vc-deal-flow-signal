@@ -527,6 +527,94 @@ const TOOLS = [
     },
   },
   {
+    name: "get_scout_receipts",
+    title: "Get GitHub Scout Receipts",
+    description: [
+      "Compute a Scout Score (0-100) for a GitHub user from their public starring history. Cross-references the user's starred repos against a curated database of ~75 validated unicorns (Series A+, $1B+ valuations, acquisitions, 25K+ stars in last 5 years) and grades how many they starred *before* the validation event.",
+      "",
+      "WHEN TO USE:",
+      "- The user wants to evaluate a developer's investment taste retroactively (e.g. 'how good is @sindresorhus at spotting unicorns?').",
+      "- Vetting a potential angel investor or scout based on their public OSS taste.",
+      "- Comparing two developers' early-call track records.",
+      "- Generating shareable proof-of-taste content for a developer profile.",
+      "",
+      "DO NOT USE FOR:",
+      "- Fetching live trending startups — use `get_trending_startups`.",
+      "- Forward-looking predictions on whether a startup will raise — direct the user to https://signals.gitdealflow.com/predict (browser-only, not yet a tool).",
+      "- Looking up a startup's signal score — use `get_startup_signal`.",
+      "",
+      "BEHAVIOR:",
+      "- Read-only, idempotent within a 24h window.",
+      "- Hits `/api/receipts/{username}` which fetches public starring data from GitHub then scores against the validated-wins database.",
+      "- 24-hour CDN cache; same username re-queried within 24h is served from cache.",
+      "- No authentication required from the MCP client. Server-side uses a fine-grained PAT for elevated GitHub rate limits.",
+      "- On user not found: returns `isError: true` with HTTP 404.",
+      "- On GitHub rate limit: returns `isError: true` with HTTP 503.",
+      "",
+      "PARAMETERS: `github_username` (required) — GitHub username, 1-39 chars, alphanumeric + hyphens.",
+      "",
+      "RETURNS: `{ username, score, rank ('curious'|'scout'|'sharp'|'elite'|'oracle'), total_stars, matched_count, early_count, top_wins[], personality, share_url, og_image_url }`. `top_wins` lists up to 8 entries with org, name, event, starred_at, months_early, weight, points. `personality` is a one-paragraph templated commentary on the user's taste pattern.",
+      "",
+      "TYPICAL WORKFLOW: User asks 'is @X a good scout?' → `get_scout_receipts({ github_username: 'X' })` → quote the score, top wins, and personality, link the share_url for them to post.",
+      "",
+      "LIMITATIONS: The validated-wins database is biased toward developer-tools, AI, and data/ops companies with public GitHub presence. Closed-source unicorns are not represented — false negatives possible. Score reflects backwards-looking taste only; not a predictor of future calls.",
+    ].join("\n"),
+    inputSchema: {
+      type: "object" as const,
+      properties: {
+        github_username: {
+          type: "string",
+          description:
+            "GitHub username to compute Receipts for. Must match the public GitHub username format: 1-39 chars, alphanumeric + single hyphens, no leading/trailing hyphen.",
+          minLength: 1,
+          maxLength: 39,
+          pattern: "^[a-zA-Z0-9](?:[a-zA-Z0-9]|-(?=[a-zA-Z0-9])){0,38}$",
+        },
+      },
+      required: ["github_username"],
+      additionalProperties: false,
+    },
+    outputSchema: {
+      type: "object" as const,
+      properties: {
+        username: { type: "string" },
+        score: { type: "integer", minimum: 0, maximum: 100 },
+        rank: { type: "string", enum: ["curious", "scout", "sharp", "elite", "oracle"] },
+        total_stars: { type: "integer" },
+        matched_count: { type: "integer" },
+        early_count: { type: "integer" },
+        top_wins: {
+          type: "array",
+          items: {
+            type: "object",
+            properties: {
+              org: { type: "string" },
+              name: { type: "string" },
+              repo: { type: "string" },
+              event: { type: "string" },
+              event_date: { type: "string" },
+              starred_at: { type: "string" },
+              months_early: { type: "number" },
+              weight: { type: "number" },
+              points: { type: "number" },
+            },
+          },
+        },
+        personality: { type: "string" },
+        share_url: { type: "string", format: "uri" },
+        og_image_url: { type: "string", format: "uri" },
+      },
+      required: ["username", "score", "rank", "matched_count", "early_count", "top_wins", "share_url"],
+    },
+    annotations: {
+      title: "Get GitHub Scout Receipts",
+      readOnlyHint: true,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: true,
+    },
+  },
+  {
     name: "get_methodology",
     title: "Get Signal Methodology",
     description: [
@@ -981,6 +1069,82 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
             website: "https://gitdealflow.com",
             dashboard: BASE_URL,
             citation: `VC Deal Flow Signal (signals.gitdealflow.com), ${cp.name} data.`,
+          },
+        };
+      }
+
+      case "get_scout_receipts": {
+        const username = String(
+          (request.params.arguments as Record<string, unknown> | undefined)
+            ?.github_username ?? ""
+        ).trim();
+        if (
+          !username ||
+          !/^[a-zA-Z0-9](?:[a-zA-Z0-9]|-(?=[a-zA-Z0-9])){0,38}$/.test(username)
+        ) {
+          throw new Error(
+            "Invalid github_username. Must be 1-39 chars, alphanumeric + single hyphens."
+          );
+        }
+        const result = (await fetchJSON(
+          `/api/receipts/${encodeURIComponent(username)}`
+        )) as unknown as {
+          username: string;
+          score: number;
+          rank: string;
+          total_stars: number;
+          matched_count: number;
+          early_count: number;
+          top_wins: Array<{
+            org: string;
+            name: string;
+            repo: string;
+            event: string;
+            event_date: string;
+            starred_at: string;
+            months_early: number;
+            weight: number;
+            points: number;
+          }>;
+          personality?: string;
+        };
+        const shareUrl = `${BASE_URL}/receipts/${encodeURIComponent(username)}`;
+        const ogImageUrl = `${BASE_URL}/api/og/receipts/${encodeURIComponent(username)}`;
+        const topWinsText = result.top_wins
+          .slice(0, 5)
+          .map(
+            (w, i) =>
+              `${i + 1}. ${w.name} — starred ${w.months_early.toFixed(0)}mo before ${w.event} (+${Math.round(w.points)} pts)`
+          )
+          .join("\n");
+        return {
+          content: [
+            {
+              type: "text" as const,
+              text: [
+                `GitHub Scout Receipts for @${result.username}`,
+                ``,
+                `Scout Score: ${result.score} / 100  (rank: ${result.rank.toUpperCase()})`,
+                `Validated wins matched: ${result.matched_count}  ·  Called early: ${result.early_count}  ·  Stars analyzed: ${result.total_stars}`,
+                ``,
+                `Top early calls:`,
+                topWinsText || "(no early calls in our database)",
+                ``,
+                result.personality ? `Taste: ${result.personality}` : "",
+                ``,
+                `Shareable card: ${shareUrl}`,
+                `OG image: ${ogImageUrl}`,
+                ``,
+                FOOTER,
+              ]
+                .filter(Boolean)
+                .join("\n"),
+            },
+          ],
+          structuredContent: {
+            ...result,
+            share_url: shareUrl,
+            og_image_url: ogImageUrl,
           },
         };
       }

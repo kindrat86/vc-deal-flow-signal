@@ -9,7 +9,7 @@ import { slugify } from "@/lib/slugify";
 
 const BASE_URL = "https://signals.gitdealflow.com";
 const SERVER_NAME = "vc-deal-flow-signal";
-const SERVER_VERSION = "1.4.0";
+const SERVER_VERSION = "1.5.0";
 const PROTOCOL_VERSION = "2025-06-18";
 
 type JsonRpcId = string | number | null;
@@ -86,6 +86,25 @@ const TOOLS = [
     description:
       "Period, sector and startup counts, last refresh, citation, and direct URLs to every machine-readable format.",
     inputSchema: { type: "object", properties: {}, additionalProperties: false },
+  },
+  {
+    name: "get_scout_receipts",
+    description:
+      "Compute a Scout Score (0-100) for a GitHub user from their public starring history. Cross-references starred repos against ~75 validated unicorns and grades how many they starred *before* the validation event. Returns score, rank (curious/scout/sharp/elite/oracle), top early calls, personality summary, and a shareable card URL.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        github_username: {
+          type: "string",
+          minLength: 1,
+          maxLength: 39,
+          pattern: "^[a-zA-Z0-9](?:[a-zA-Z0-9]|-(?=[a-zA-Z0-9])){0,38}$",
+          description: "GitHub username, 1-39 chars, alphanumeric + single hyphens.",
+        },
+      },
+      required: ["github_username"],
+      additionalProperties: false,
+    },
   },
   {
     name: "get_methodology",
@@ -444,6 +463,81 @@ async function handleToolsCall(id: JsonRpcId | undefined, params: unknown) {
       return rpcResult(id, {
         content: [{ type: "text", text }],
         structuredContent: structured,
+      });
+    }
+    case "get_scout_receipts": {
+      const username = String(args.github_username ?? "").trim();
+      if (
+        !username ||
+        !/^[a-zA-Z0-9](?:[a-zA-Z0-9]|-(?=[a-zA-Z0-9])){0,38}$/.test(username)
+      ) {
+        return rpcError(
+          id,
+          -32602,
+          "Invalid github_username. Must be 1-39 chars, alphanumeric + single hyphens."
+        );
+      }
+      const url = `${BASE_URL}/api/receipts/${encodeURIComponent(username)}`;
+      const res = await fetch(url, {
+        headers: { "User-Agent": `gitdealflow-mcp-http/${SERVER_VERSION}` },
+      });
+      if (!res.ok) {
+        const body = await res.text().catch(() => "");
+        return rpcResult(id, {
+          content: [{ type: "text", text: `HTTP ${res.status} from /api/receipts/${username}\n\n${body.slice(0, 500)}` }],
+          isError: true,
+        });
+      }
+      const result = (await res.json()) as {
+        username: string;
+        score: number;
+        rank: string;
+        total_stars: number;
+        matched_count: number;
+        early_count: number;
+        top_wins: Array<{
+          org: string;
+          name: string;
+          repo: string;
+          event: string;
+          event_date: string;
+          starred_at: string;
+          months_early: number;
+          weight: number;
+          points: number;
+        }>;
+        personality?: string;
+      };
+      const shareUrl = `${BASE_URL}/receipts/${encodeURIComponent(username)}`;
+      const ogImageUrl = `${BASE_URL}/api/og/receipts/${encodeURIComponent(username)}`;
+      const topWinsText = result.top_wins
+        .slice(0, 5)
+        .map(
+          (w, i) =>
+            `${i + 1}. ${w.name} — starred ${w.months_early.toFixed(0)}mo before ${w.event} (+${Math.round(w.points)} pts)`
+        )
+        .join("\n");
+      const text = [
+        `GitHub Scout Receipts for @${result.username}`,
+        ``,
+        `Scout Score: ${result.score} / 100  (rank: ${result.rank.toUpperCase()})`,
+        `Validated wins matched: ${result.matched_count}  ·  Called early: ${result.early_count}  ·  Stars analyzed: ${result.total_stars}`,
+        ``,
+        `Top early calls:`,
+        topWinsText || "(no early calls in our database)",
+        ``,
+        result.personality ? `Taste: ${result.personality}` : "",
+        ``,
+        `Shareable card: ${shareUrl}`,
+        `OG image: ${ogImageUrl}`,
+        ``,
+        FOOTER,
+      ]
+        .filter(Boolean)
+        .join("\n");
+      return rpcResult(id, {
+        content: [{ type: "text", text }],
+        structuredContent: { ...result, share_url: shareUrl, og_image_url: ogImageUrl },
       });
     }
     case "get_methodology": {

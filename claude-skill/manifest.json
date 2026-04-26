@@ -1,7 +1,7 @@
 {
   "name": "gitdealflow-vc-signals",
   "displayName": "GitDealFlow — VC Engineering Signals",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Live VC deal flow signals from public GitHub data — trending startups, sector rankings, single-startup profiles, methodology, and reusable investor prompts. Free, no auth.",
   "license": "MIT",
   "author": {
@@ -30,7 +30,7 @@
       {
         "name": "vc-deal-flow-signal",
         "package": "@gitdealflow/mcp-signal",
-        "minVersion": "1.4.0",
+        "minVersion": "1.5.0",
         "transport": "stdio",
         "alternativeTransport": {
           "type": "streamable_http",

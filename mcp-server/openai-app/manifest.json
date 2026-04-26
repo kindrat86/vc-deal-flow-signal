@@ -50,6 +50,10 @@
       "summary": "Period, sector and startup counts, last refresh, format URLs."
     },
     {
+      "name": "get_scout_receipts",
+      "summary": "Compute a Scout Score (0-100) for a GitHub user from their starring history vs. ~75 validated unicorns. Backwards-looking proof of taste."
+    },
+    {
       "name": "get_methodology",
       "summary": "Methodology document covering data, metrics, classification, limitations."
     }
@@ -60,7 +64,8 @@
     "Tell me about Roboflow",
     "Find a dark horse in cybersecurity",
     "Compare SkyPilot to Modular",
-    "Draft a one-page deal memo for Roboflow"
+    "Draft a one-page deal memo for Roboflow",
+    "What's the Scout Score for @sindresorhus"
   ],
   "privacy_policy_url": "https://gitdealflow.com/privacy",
   "terms_of_service_url": "https://gitdealflow.com/terms",

@@ -37,13 +37,14 @@ curl -X POST https://signals.gitdealflow.com/api/nlweb \
 
 ### MCP server tools
 
-Five tools, all read-only, idempotent, no parameters validation needed beyond what's in the input schema:
+Six tools, all read-only, idempotent, no parameter validation needed beyond what's in the input schema:
 
 1. `get_trending_startups` — top 20 across all sectors
 2. `search_startups_by_sector(sector)` — sector slug ∈ 20 enumerated values
 3. `get_startup_signal(name)` — case-insensitive, normalization-tolerant
 4. `get_signals_summary` — period, freshness, format URLs
-5. `get_methodology` — full methodology text + canonical URL
+5. `get_scout_receipts(github_username)` — compute Scout Score (0–100) for a GitHub user from their starring history vs. ~75 validated unicorns
+6. `get_methodology` — full methodology text + canonical URL
 
 Distribution:
 - npm: https://www.npmjs.com/package/@gitdealflow/mcp-signal

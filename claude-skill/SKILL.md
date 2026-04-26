@@ -24,7 +24,7 @@ Skip when:
 
 ## Tool inventory
 
-The MCP server `@gitdealflow/mcp-signal` exposes five tools. They are all read-only, idempotent, and require no parameters validation beyond what's in the input schema.
+The MCP server `@gitdealflow/mcp-signal` exposes six tools. They are all read-only, idempotent, and require no parameter validation beyond what's in the input schema.
 
 | Tool | Use when | Returns |
 |---|---|---|
@@ -32,6 +32,7 @@ The MCP server `@gitdealflow/mcp-signal` exposes five tools. They are all read-o
 | `search_startups_by_sector` | Sector-specific question | Every tracked startup in that sector, ranked |
 | `get_startup_signal` | Named-company lookup | Full signal profile or `found: false` |
 | `get_signals_summary` | Freshness, citation, format URLs | Period, counts, citation, downloads |
+| `get_scout_receipts(github_username)` | Vetting a developer's investment taste retroactively | Scout Score 0–100, rank, top early calls, shareable card URL |
 | `get_methodology` | Trust / interpretability question | Plain-text methodology + canonical URL |
 
 Five reusable prompts are available via `prompts/get`:
