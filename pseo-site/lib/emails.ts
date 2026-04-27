@@ -3,6 +3,67 @@
  * Each entry has: subject, html, delayMs (from verification time).
  */
 
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+export interface TriggeredAlert {
+  startup_name: string;
+  reason: string;
+  current_signal_type: string;
+  current_velocity_change: string;
+}
+
+export function alertDigestEmail(params: {
+  email: string;
+  triggered: TriggeredAlert[];
+}): { subject: string; html: string } {
+  const { email, triggered } = params;
+  const rows = triggered
+    .map(
+      (a) =>
+        `<tr style="border-bottom:1px solid #e2e8f0;">
+          <td style="padding:10px 12px;font-weight:600;">${escapeHtml(a.startup_name)}</td>
+          <td style="padding:10px 12px;color:#64748b;">${escapeHtml(a.reason)}</td>
+          <td style="padding:10px 12px;font-family:monospace;color:#0ea5e9;">${escapeHtml(a.current_velocity_change)}</td>
+          <td style="padding:10px 12px;">
+            <span style="background:#f1f5f9;padding:2px 8px;border-radius:4px;font-size:12px;">${escapeHtml(a.current_signal_type)}</span>
+          </td>
+        </tr>`
+    )
+    .join("");
+
+  return {
+    subject: `Signal alert: ${triggered.length} watchlist ${triggered.length === 1 ? "update" : "updates"} this week`,
+    html: wrap(`
+<p>Your weekly watchlist signal digest is ready.</p>
+<p>${triggered.length} of your tracked ${triggered.length === 1 ? "company has" : "companies have"} crossed an alert threshold this week.</p>
+<table style="width:100%;border-collapse:collapse;font-size:14px;margin:16px 0;">
+  <thead>
+    <tr style="background:#f8fafc;border-bottom:2px solid #e2e8f0;">
+      <th style="padding:10px 12px;text-align:left;font-weight:600;color:#475569;">Company</th>
+      <th style="padding:10px 12px;text-align:left;font-weight:600;color:#475569;">Alert reason</th>
+      <th style="padding:10px 12px;text-align:left;font-weight:600;color:#475569;">Velocity Δ</th>
+      <th style="padding:10px 12px;text-align:left;font-weight:600;color:#475569;">Signal</th>
+    </tr>
+  </thead>
+  <tbody>${rows}</tbody>
+</table>
+<p style="margin-top:24px;">
+  <a href="${SIGNALS}/dashboard/watchlist" style="display:inline-block;background:#0284c7;color:#fff;padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:600;font-size:14px;">
+    View Full Dashboard →
+  </a>
+</p>
+<p style="color:#94a3b8;font-size:13px;">Sent to ${escapeHtml(email)} · Reply to unsubscribe from alerts.</p>
+`),
+  };
+}
+
 const FROM_NAME = "The Data Nerd";
 const SITE = "https://gitdealflow.com";
 const SIGNALS = "https://signals.gitdealflow.com";
