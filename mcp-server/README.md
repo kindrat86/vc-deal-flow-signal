@@ -48,9 +48,35 @@ All tools are read-only, idempotent, and fetch live data from the public API (no
 
 **Supported sectors:** `ai-ml`, `fintech`, `cybersecurity`, `developer-tools`, `healthcare`, `climate-tech`, `enterprise-saas`, `data-infrastructure`, `web3`, `robotics`, `edtech`, `ecommerce-infrastructure`, `supply-chain`, `legal-tech`, `hr-tech`, `proptech`, `agtech`, `gaming`, `space-tech`, `social-community`.
 
+## Paid tools — require API key
+
+Three additional tools are available to Dashboard and Insider subscribers. They require `GITDEALFLOW_API_KEY` to be set in the MCP server environment. Get your key at [signals.gitdealflow.com/dashboard/api-keys](https://signals.gitdealflow.com/dashboard/api-keys).
+
+| Tool | Input | Returns |
+|---|---|---|
+| `create_watchlist_item` | `startup_name`, `alert_on_accelerating?`, `alert_on_new_peak?` | Upserts the startup into your persistent watchlist; weekly email alerts fire automatically. |
+| `list_watchlist` | — | All startups on your watchlist with latest signal data. |
+| `remove_watchlist_item` | `startup_name` | Removes the startup from your watchlist. |
+
+To enable paid tools, add `GITDEALFLOW_API_KEY` to your MCP config:
+
+```json
+{
+  "mcpServers": {
+    "vc-deal-flow-signal": {
+      "command": "npx",
+      "args": ["-y", "@gitdealflow/mcp-signal"],
+      "env": {
+        "GITDEALFLOW_API_KEY": "gdf_your_key_here"
+      }
+    }
+  }
+}
+```
+
 ## Data
 
-All data is sourced live from [signals.gitdealflow.com](https://signals.gitdealflow.com) public API. No API key required. Updated weekly on Mondays.
+All data is sourced live from [signals.gitdealflow.com](https://signals.gitdealflow.com) public API. Free tools require no API key. Updated weekly on Mondays.
 
 ## Links
 

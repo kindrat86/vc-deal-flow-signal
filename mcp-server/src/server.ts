@@ -513,12 +513,139 @@ const TOOLS = [
   },
 ];
 
+const DASHBOARD_URL = "https://signals.gitdealflow.com";
+const API_KEY_UPGRADE_MSG =
+  `GITDEALFLOW_API_KEY is not set. This tool requires a paid API key.\n` +
+  `Get yours at ${DASHBOARD_URL}/dashboard/api-keys (Dashboard or Insider plan).`;
+
+const PAID_TOOLS = [
+  {
+    name: "create_watchlist_item",
+    title: "Add Startup to Watchlist",
+    description: [
+      "Add a startup to your persistent server-side watchlist and opt in to weekly email alerts.",
+      "",
+      "REQUIRES A PAID API KEY: Set GITDEALFLOW_API_KEY in your environment.",
+      `Get your key at ${DASHBOARD_URL}/dashboard/api-keys (Dashboard or Insider plan).`,
+      "",
+      "WHEN TO USE:",
+      "- The user says 'watch this startup', 'add to my watchlist', or 'alert me when X changes signal'.",
+      "- After discovering a promising company via get_trending_startups or get_startup_signal.",
+      "",
+      "PARAMETERS:",
+      "- startup_name (required, string) — exact display name as returned by signal tools.",
+      "- alert_on_accelerating (optional, boolean, default true) — alert when signal flips to acceleration/breakout or velocity crosses 50%.",
+      "- alert_on_new_peak (optional, boolean, default true) — alert when velocity reaches a new weekly high.",
+      "",
+      "RETURNS: The created watchlist item row.",
+    ].join("\n"),
+    inputSchema: {
+      type: "object" as const,
+      properties: {
+        startup_name: {
+          type: "string",
+          description: "Startup display name (as returned by signal tools).",
+          minLength: 1,
+          maxLength: 200,
+        },
+        alert_on_accelerating: {
+          type: "boolean",
+          description: "Alert when signal flips to acceleration/breakout or velocity ≥ 50%.",
+          default: true,
+        },
+        alert_on_new_peak: {
+          type: "boolean",
+          description: "Alert when velocity reaches a new weekly high.",
+          default: true,
+        },
+      },
+      required: ["startup_name"],
+      additionalProperties: false,
+    },
+    annotations: {
+      title: "Add Startup to Watchlist",
+      readOnlyHint: false,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: false,
+    },
+  },
+  {
+    name: "list_watchlist",
+    title: "List Watchlist",
+    description: [
+      "Return all startups currently on your server-side watchlist, including their live signal data.",
+      "",
+      "REQUIRES A PAID API KEY: Set GITDEALFLOW_API_KEY in your environment.",
+      `Get your key at ${DASHBOARD_URL}/dashboard/api-keys (Dashboard or Insider plan).`,
+      "",
+      "WHEN TO USE:",
+      "- The user asks 'what's on my watchlist', 'show my tracked startups', or 'what am I monitoring'.",
+      "- Before adding a startup to check if it's already tracked.",
+      "",
+      "PARAMETERS: None.",
+      "",
+      "RETURNS: Array of { startup_name, current_signal_type, current_velocity_change, added_at }.",
+    ].join("\n"),
+    inputSchema: {
+      type: "object" as const,
+      properties: {},
+      additionalProperties: false,
+    },
+    annotations: {
+      title: "List Watchlist",
+      readOnlyHint: true,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: false,
+    },
+  },
+  {
+    name: "remove_watchlist_item",
+    title: "Remove Startup from Watchlist",
+    description: [
+      "Remove a startup from your persistent server-side watchlist.",
+      "",
+      "REQUIRES A PAID API KEY: Set GITDEALFLOW_API_KEY in your environment.",
+      `Get your key at ${DASHBOARD_URL}/dashboard/api-keys (Dashboard or Insider plan).`,
+      "",
+      "WHEN TO USE:",
+      "- The user says 'stop watching X', 'remove from watchlist', or 'untrack this startup'.",
+      "",
+      "PARAMETERS:",
+      "- startup_name (required, string) — exact display name to remove.",
+      "",
+      "RETURNS: { ok: true } on success.",
+    ].join("\n"),
+    inputSchema: {
+      type: "object" as const,
+      properties: {
+        startup_name: {
+          type: "string",
+          description: "Startup display name to remove from watchlist.",
+          minLength: 1,
+          maxLength: 200,
+        },
+      },
+      required: ["startup_name"],
+      additionalProperties: false,
+    },
+    annotations: {
+      title: "Remove Startup from Watchlist",
+      readOnlyHint: false,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: false,
+    },
+  },
+];
+
 const server = new Server(
-  { name: "vc-deal-flow-signal", version: "1.2.0" },
+  { name: "vc-deal-flow-signal", version: "1.2.1" },
   { capabilities: { tools: {} } }
 );
 
-server.setRequestHandler(ListToolsRequestSchema, async () => ({ tools: TOOLS }));
+server.setRequestHandler(ListToolsRequestSchema, async () => ({ tools: [...TOOLS, ...PAID_TOOLS] }));
 
 server.setRequestHandler(CallToolRequestSchema, async (request) => {
   const { name, arguments: args } = request.params;
@@ -810,6 +937,127 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
             },
           ],
           structuredContent: { methodology, url },
+        };
+      }
+
+      case "create_watchlist_item": {
+        const apiKey = process.env.GITDEALFLOW_API_KEY;
+        if (!apiKey) {
+          return {
+            content: [{ type: "text" as const, text: API_KEY_UPGRADE_MSG }],
+            isError: true,
+          };
+        }
+        const { startup_name, alert_on_accelerating, alert_on_new_peak } =
+          args as { startup_name: string; alert_on_accelerating?: boolean; alert_on_new_peak?: boolean };
+        const res = await fetch(`${DASHBOARD_URL}/api/watchlist`, {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${apiKey}`,
+            "Content-Type": "application/json",
+            "User-Agent": UA,
+          },
+          body: JSON.stringify({ startup_name, alert_on_accelerating, alert_on_new_peak }),
+        });
+        if (!res.ok) {
+          const text = await res.text();
+          return {
+            content: [{ type: "text" as const, text: `API error ${res.status}: ${text}` }],
+            isError: true,
+          };
+        }
+        const data = (await res.json()) as { item: Record<string, unknown> };
+        return {
+          content: [
+            {
+              type: "text" as const,
+              text: `Added "${startup_name}" to watchlist. Weekly alerts enabled.\n\n${FOOTER}`,
+            },
+          ],
+          structuredContent: data.item,
+        };
+      }
+
+      case "list_watchlist": {
+        const apiKey = process.env.GITDEALFLOW_API_KEY;
+        if (!apiKey) {
+          return {
+            content: [{ type: "text" as const, text: API_KEY_UPGRADE_MSG }],
+            isError: true,
+          };
+        }
+        const res = await fetch(`${DASHBOARD_URL}/api/watchlist`, {
+          headers: { Authorization: `Bearer ${apiKey}`, "User-Agent": UA },
+        });
+        if (!res.ok) {
+          return {
+            content: [{ type: "text" as const, text: `API error ${res.status}` }],
+            isError: true,
+          };
+        }
+        const data = (await res.json()) as {
+          items: {
+            startup_name: string;
+            last_signal_type: string | null;
+            last_velocity_change: number | null;
+            added_at: string;
+          }[];
+        };
+        const items = data.items ?? [];
+        const lines = items.map(
+          (i) =>
+            `• ${i.startup_name} — signal: ${i.last_signal_type ?? "unknown"}, velocity Δ: ${i.last_velocity_change !== null ? `${i.last_velocity_change}%` : "unknown"} (added ${i.added_at.slice(0, 10)})`
+        );
+        const structured = items.map((i) => ({
+          startup_name: i.startup_name,
+          current_signal_type: i.last_signal_type,
+          current_velocity_change: i.last_velocity_change !== null ? `${i.last_velocity_change}%` : null,
+          added_at: i.added_at,
+        }));
+        return {
+          content: [
+            {
+              type: "text" as const,
+              text:
+                items.length === 0
+                  ? `Your watchlist is empty. Use create_watchlist_item to start tracking startups.\n\n${FOOTER}`
+                  : `Your Watchlist (${items.length} startups)\n\n${lines.join("\n")}\n\n${FOOTER}`,
+            },
+          ],
+          structuredContent: structured,
+        };
+      }
+
+      case "remove_watchlist_item": {
+        const apiKey = process.env.GITDEALFLOW_API_KEY;
+        if (!apiKey) {
+          return {
+            content: [{ type: "text" as const, text: API_KEY_UPGRADE_MSG }],
+            isError: true,
+          };
+        }
+        const { startup_name } = args as { startup_name: string };
+        const res = await fetch(
+          `${DASHBOARD_URL}/api/watchlist/${encodeURIComponent(startup_name)}`,
+          {
+            method: "DELETE",
+            headers: { Authorization: `Bearer ${apiKey}`, "User-Agent": UA },
+          }
+        );
+        if (!res.ok) {
+          return {
+            content: [{ type: "text" as const, text: `API error ${res.status}` }],
+            isError: true,
+          };
+        }
+        return {
+          content: [
+            {
+              type: "text" as const,
+              text: `Removed "${startup_name}" from watchlist.\n\n${FOOTER}`,
+            },
+          ],
+          structuredContent: { ok: true },
         };
       }
 
