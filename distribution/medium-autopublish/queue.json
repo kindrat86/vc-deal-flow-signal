@@ -1,0 +1,183 @@
+{
+  "$schema": "local",
+  "description": "Medium autopublish queue. Ordered by priority. One post shipped per day via tools/medium/publish-next.mjs.",
+  "cadence": "daily, 11:00 EEST, skip Sundays",
+  "persona": {
+    "account": "signal@gitdealflow.com",
+    "handle": "@signal_41476",
+    "displayName": "The Data Nerd",
+    "voice": "brunson-humanized — first-person war stories, specific numbers, confessional, em-dashes allowed, sentence fragments, contractions, no 'That said' / 'It is worth noting' / bullet parallelism"
+  },
+  "canonicalBase": "https://signals.gitdealflow.com/blog/",
+  "posts": [
+    {
+      "order": 2,
+      "status": "published",
+      "slug": "alternative-data-venture-capital",
+      "mediumTitle": "The alternative data story VCs are six years late to",
+      "draftPath": "distribution/medium-autopublish/drafts/02-alternative-data-venture-capital.md",
+      "tags": ["Venture Capital", "Alternative Data", "Startups", "GitHub", "Investing"],
+      "scheduledFor": "2026-04-21",
+      "mediumUrl": "https://medium.com/p/dbbc64d54c54",
+      "publishedAt": "2026-04-21T11:00:00+03:00"
+    },
+    {
+      "order": 3,
+      "status": "published",
+      "slug": "5-github-patterns-that-predict-fundraises",
+      "mediumTitle": "Five GitHub patterns that keep predicting fundraises three weeks early",
+      "draftPath": "distribution/medium-autopublish/drafts/03-5-github-patterns-that-predict-fundraises.md",
+      "tags": ["Venture Capital", "Startups", "GitHub", "Investing", "Open Source"],
+      "scheduledFor": "2026-04-22",
+      "mediumUrl": "https://medium.com/p/064c758e0e9d",
+      "publishedAt": "2026-04-22T11:00:00+03:00"
+    },
+    {
+      "order": 4,
+      "status": "published",
+      "slug": "i-tracked-4200-startup-github-orgs-six-months",
+      "mediumTitle": "I tracked 4,200 startup GitHub orgs for six months and here's what actually predicts a fundraise",
+      "draftPath": "distribution/medium-autopublish/drafts/04-i-tracked-4200-startup-github-orgs-six-months.md",
+      "tags": ["Venture Capital", "Data Science", "Startups", "GitHub", "Alternative Data"],
+      "scheduledFor": "2026-04-23",
+      "mediumUrl": "https://medium.com/@signal_41476/i-tracked-4-200-startup-github-orgs-for-six-months-heres-what-actually-predicts-a-fundraise-b34a4058a856",
+      "publishedAt": "2026-04-23T15:37:20+03:00"
+    },
+    {
+      "order": 5,
+      "status": "published",
+      "slug": "source-startup-deals-before-crunchbase",
+      "mediumTitle": "The 15-minute weekly loop that finds startups before Crunchbase does",
+      "draftPath": "distribution/medium-autopublish/drafts/05-source-startup-deals-before-crunchbase.md",
+      "tags": ["Venture Capital", "Startups", "Deal Flow", "Investing", "Angel Investing"],
+      "scheduledFor": "2026-04-24",
+      "mediumUrl": "https://medium.com/p/67c2775fcedb",
+      "publishedAt": "2026-04-24T11:00:00+03:00"
+    },
+    {
+      "order": 6,
+      "status": "published",
+      "slug": "commit-velocity-explained",
+      "mediumTitle": "Commit velocity is not commit count — and the difference cost me a deal",
+      "draftPath": "distribution/medium-autopublish/drafts/06-commit-velocity-explained.md",
+      "tags": ["Venture Capital", "GitHub", "Startups", "Data", "Investing"],
+      "scheduledFor": "2026-04-25",
+      "mediumUrl": "https://medium.com/@signal_41476/commit-velocity-is-not-commit-count-and-the-difference-cost-me-a-deal-56dab68c47c8",
+      "publishedAt": "2026-04-25T11:00:00+03:00"
+    },
+    {
+      "order": 7,
+      "status": "draft-ready",
+      "slug": "what-is-engineering-acceleration",
+      "mediumTitle": "What engineering acceleration actually looks like (from someone who mis-read it three times)",
+      "draftPath": "distribution/medium-autopublish/drafts/07-what-is-engineering-acceleration.md",
+      "tags": ["Startups", "Engineering", "Venture Capital", "GitHub", "Investing"],
+      "scheduledFor": "2026-04-27"
+    },
+    {
+      "order": 8,
+      "status": "draft-ready",
+      "slug": "github-due-diligence-for-vcs",
+      "mediumTitle": "The 20-minute GitHub due-diligence pass I wish I'd done on my first three angel checks",
+      "draftPath": "distribution/medium-autopublish/drafts/08-github-due-diligence-for-vcs.md",
+      "tags": ["Venture Capital", "Due Diligence", "GitHub", "Angel Investing", "Startups"],
+      "scheduledFor": "2026-04-28"
+    },
+    {
+      "order": 9,
+      "status": "pending",
+      "slug": "startup-engineering-metrics-investors-should-track",
+      "mediumTitle": "The four engineering metrics I check before every angel check",
+      "tags": ["Venture Capital", "Startups", "Metrics", "Investing", "Engineering"],
+      "scheduledFor": "2026-04-29"
+    },
+    {
+      "order": 10,
+      "status": "pending",
+      "slug": "what-is-deal-flow-signal",
+      "mediumTitle": "The uncomfortable truth about deal flow when everyone reads the same newsletters",
+      "tags": ["Venture Capital", "Deal Flow", "Startups", "Angel Investing", "Investing"],
+      "scheduledFor": "2026-04-30"
+    },
+    {
+      "order": 11,
+      "status": "pending",
+      "slug": "pre-seed-deal-sourcing-github",
+      "mediumTitle": "How to source pre-seed deals on GitHub without sounding like a creep in the DMs",
+      "tags": ["Venture Capital", "Pre Seed", "GitHub", "Startups", "Deal Sourcing"],
+      "scheduledFor": "2026-05-01"
+    },
+    {
+      "order": 12,
+      "status": "pending",
+      "slug": "series-a-signals-github-data",
+      "mediumTitle": "What a Series A looks like on GitHub three months before the announcement",
+      "tags": ["Venture Capital", "Series A", "GitHub", "Startups", "Investing"],
+      "scheduledFor": "2026-05-02"
+    },
+    {
+      "order": 13,
+      "status": "pending",
+      "slug": "open-source-startups-investor-guide",
+      "mediumTitle": "Investing in open-source startups: the three signals that separate OSS hobby from OSS business",
+      "tags": ["Open Source", "Venture Capital", "Startups", "Investing", "Developer Tools"],
+      "scheduledFor": "2026-05-04"
+    },
+    {
+      "order": 14,
+      "status": "pending",
+      "slug": "github-signals-vs-hiring-data",
+      "mediumTitle": "GitHub signals vs hiring signals: which one actually beats Crunchbase",
+      "tags": ["Venture Capital", "Alternative Data", "GitHub", "Hiring", "Startups"],
+      "scheduledFor": "2026-05-05"
+    },
+    {
+      "order": 15,
+      "status": "pending",
+      "slug": "fintech-startup-engineering-signals",
+      "mediumTitle": "Fintech startups and the engineering signal most investors miss",
+      "tags": ["Fintech", "Venture Capital", "Startups", "GitHub", "Investing"],
+      "scheduledFor": "2026-05-06"
+    },
+    {
+      "order": 16,
+      "status": "pending",
+      "slug": "ai-startup-signals-2026",
+      "mediumTitle": "Reading AI startup signals in 2026 without getting fooled by the hype",
+      "tags": ["Artificial Intelligence", "Venture Capital", "Startups", "AI", "Investing"],
+      "scheduledFor": "2026-05-07"
+    },
+    {
+      "order": 17,
+      "status": "pending",
+      "slug": "deal-sourcing-workflow-weekly",
+      "mediumTitle": "My weekly deal-sourcing workflow (unedited, including the parts that don't work)",
+      "tags": ["Venture Capital", "Deal Flow", "Startups", "Investing", "Productivity"],
+      "scheduledFor": "2026-05-08"
+    },
+    {
+      "order": 18,
+      "status": "pending",
+      "slug": "cybersecurity-startup-signals",
+      "mediumTitle": "Cybersecurity startups and the weird way GitHub signals behave for security tooling",
+      "tags": ["Cybersecurity", "Venture Capital", "Startups", "GitHub", "Investing"],
+      "scheduledFor": "2026-05-09"
+    },
+    {
+      "order": 19,
+      "status": "pending",
+      "slug": "climate-tech-engineering-signals",
+      "mediumTitle": "Why climate tech is the hardest sector to read on GitHub (and how I do it anyway)",
+      "tags": ["Climate Tech", "Venture Capital", "Startups", "GitHub", "Investing"],
+      "scheduledFor": "2026-05-11"
+    },
+    {
+      "order": 20,
+      "status": "pending",
+      "slug": "investor-mistakes-github-signals",
+      "mediumTitle": "Four mistakes I made reading GitHub signals (so you can skip straight to the real ones)",
+      "tags": ["Venture Capital", "Investing", "GitHub", "Startups", "Lessons Learned"],
+      "scheduledFor": "2026-05-12"
+    }
+  ]
+}
