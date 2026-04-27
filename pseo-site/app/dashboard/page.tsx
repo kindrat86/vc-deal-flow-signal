@@ -117,9 +117,8 @@ export default async function DashboardPage() {
           Startup Signal Dashboard
         </h1>
         <p className="text-gray-400 text-base leading-relaxed">
-          {sorted.length} startups across {sectorNames.length} sectors ranked by
-          GitHub engineering acceleration. Filter by sector, stage, geography, or
-          signal type. Data refreshed weekly from the GitHub API.
+          Track any of the {sorted.length} startups on your watchlist and get a weekly email when their signal crosses thresholds.
+          Filter by sector, stage, geography, or signal type. Data refreshed weekly from the GitHub API.
         </p>
         <p className="text-gray-600 text-xs mt-3">
           Last updated: {lastModified.toISOString().slice(0, 10)}
