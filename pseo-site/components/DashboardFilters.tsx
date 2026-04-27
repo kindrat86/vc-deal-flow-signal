@@ -22,18 +22,28 @@ function useWatchlist() {
   const [watched, setWatched] = useState<Set<string>>(new Set());
 
   useEffect(() => {
-    try {
-      const saved = localStorage.getItem("gdf_watchlist");
-      if (saved) setWatched(new Set(JSON.parse(saved)));
-    } catch {}
+    fetch("/api/watchlist")
+      .then((r) => (r.ok ? r.json() : { items: [] }))
+      .then((data: { items: { startup_name: string }[] }) => {
+        setWatched(new Set((data.items ?? []).map((i) => i.startup_name)));
+      })
+      .catch(() => {});
   }, []);
 
   const toggle = useCallback((name: string) => {
     setWatched((prev) => {
       const next = new Set(prev);
-      if (next.has(name)) next.delete(name);
-      else next.add(name);
-      localStorage.setItem("gdf_watchlist", JSON.stringify([...next]));
+      if (next.has(name)) {
+        next.delete(name);
+        fetch(`/api/watchlist/${encodeURIComponent(name)}`, { method: "DELETE" }).catch(() => {});
+      } else {
+        next.add(name);
+        fetch("/api/watchlist", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ startup_name: name }),
+        }).catch(() => {});
+      }
       return next;
     });
   }, []);
@@ -88,6 +98,7 @@ export default function DashboardFilters({
   tier,
 }: Props) {
   const isInsider = tier === "insider";
+  const hasWatchlist = tier === "dashboard" || tier === "insider";
   const [search, setSearch] = useState("");
   const [sector, setSector] = useState("");
   const [stage, setStage] = useState("");
@@ -241,7 +252,7 @@ export default function DashboardFilters({
             Showing {filtered.length} of {startups.length} startups
             {sector || stage || geo || signal || search || watchedOnly ? " (filtered)" : ""}
           </p>
-          {isInsider && (
+          {hasWatchlist && (
             <button
               onClick={() => setWatchedOnly(!watchedOnly)}
               className={`text-xs px-3 py-1 rounded-full border transition ${
@@ -274,7 +285,7 @@ export default function DashboardFilters({
         <table className="w-full text-sm">
           <thead>
             <tr className="border-b border-slate-800 bg-slate-900/60">
-              {isInsider && (
+              {hasWatchlist && (
                 <th className="text-center text-gray-400 font-medium px-2 py-3 w-8" title="Watchlist">
                   <svg className="w-3.5 h-3.5 mx-auto text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
@@ -341,7 +352,7 @@ export default function DashboardFilters({
                   key={`${startup.name}-${startup.sectorSlug}`}
                   className={`border-b border-slate-800/60 last:border-0 ${rowBase} hover:bg-slate-800/40 transition-colors`}
                 >
-                  {isInsider && (
+                  {hasWatchlist && (
                     <td className="px-2 py-3 text-center">
                       <button
                         onClick={() => toggle(startup.name)}

@@ -82,15 +82,13 @@ export default async function DashboardPage() {
           </span>
         </div>
         <div className="flex items-center gap-4">
+          <Link href="/dashboard/watchlist" className="text-gray-500 hover:text-gray-300 text-xs transition">
+            Watchlist
+          </Link>
           {isInsider && (
-            <>
-              <Link href="/dashboard/watchlist" className="text-gray-500 hover:text-gray-300 text-xs transition">
-                Watchlist
-              </Link>
-              <Link href="/dashboard/api-keys" className="text-gray-500 hover:text-gray-300 text-xs transition">
-                API Keys
-              </Link>
-            </>
+            <Link href="/dashboard/api-keys" className="text-gray-500 hover:text-gray-300 text-xs transition">
+              API Keys
+            </Link>
           )}
           <LogoutButton />
         </div>

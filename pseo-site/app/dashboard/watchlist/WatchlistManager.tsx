@@ -4,47 +4,42 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { slugify } from "@/lib/slugify";
 
+interface WatchlistItem {
+  id: number;
+  startup_name: string;
+  added_at: string;
+  alert_on_accelerating: boolean;
+  alert_on_new_peak: boolean;
+}
+
 export default function WatchlistManager({ email }: { email: string }) {
-  const [watchlist, setWatchlist] = useState<string[]>([]);
-  const [alertsEnabled, setAlertsEnabled] = useState(false);
-  const [alertStatus, setAlertStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [items, setItems] = useState<WatchlistItem[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    try {
-      const saved = localStorage.getItem("gdf_watchlist");
-      if (saved) setWatchlist(JSON.parse(saved));
-      const alerts = localStorage.getItem("gdf_alerts_enabled");
-      if (alerts === "true") setAlertsEnabled(true);
-    } catch {}
+    fetch("/api/watchlist")
+      .then((r) => (r.ok ? r.json() : { items: [] }))
+      .then((data: { items: WatchlistItem[] }) => {
+        setItems(data.items ?? []);
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
   }, []);
 
   function removeFromWatchlist(name: string) {
-    const next = watchlist.filter((n) => n !== name);
-    setWatchlist(next);
-    localStorage.setItem("gdf_watchlist", JSON.stringify(next));
+    setItems((prev) => prev.filter((i) => i.startup_name !== name));
+    fetch(`/api/watchlist/${encodeURIComponent(name)}`, { method: "DELETE" }).catch(() => {});
   }
 
-  async function requestAlerts() {
-    setAlertStatus("sending");
-    try {
-      const res = await fetch("/api/watchlist/alerts", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, watchlist }),
-      });
-      if (res.ok) {
-        setAlertsEnabled(true);
-        localStorage.setItem("gdf_alerts_enabled", "true");
-        setAlertStatus("sent");
-      } else {
-        setAlertStatus("error");
-      }
-    } catch {
-      setAlertStatus("error");
-    }
+  if (loading) {
+    return (
+      <div className="rounded-xl border border-slate-700 bg-slate-900 p-8 text-center">
+        <p className="text-gray-500 text-sm">Loading watchlist…</p>
+      </div>
+    );
   }
 
-  if (watchlist.length === 0) {
+  if (items.length === 0) {
     return (
       <div className="rounded-xl border border-slate-700 bg-slate-900 p-8 text-center">
         <svg className="w-12 h-12 text-gray-700 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -73,19 +68,19 @@ export default function WatchlistManager({ email }: { email: string }) {
             </tr>
           </thead>
           <tbody>
-            {watchlist.map((name) => (
-              <tr key={name} className="border-b border-slate-800/60 last:border-0 hover:bg-slate-800/40 transition-colors">
+            {items.map((item) => (
+              <tr key={item.startup_name} className="border-b border-slate-800/60 last:border-0 hover:bg-slate-800/40 transition-colors">
                 <td className="px-4 py-3">
                   <Link
-                    href={`/startup/${slugify(name)}`}
+                    href={`/startup/${slugify(item.startup_name)}`}
                     className="text-gray-200 hover:text-sky-400 font-medium transition-colors"
                   >
-                    {name}
+                    {item.startup_name}
                   </Link>
                 </td>
                 <td className="px-4 py-3 text-right">
                   <button
-                    onClick={() => removeFromWatchlist(name)}
+                    onClick={() => removeFromWatchlist(item.startup_name)}
                     className="text-gray-600 hover:text-red-400 text-xs transition"
                   >
                     Remove
@@ -97,32 +92,21 @@ export default function WatchlistManager({ email }: { email: string }) {
         </table>
       </div>
 
-      {/* Email alerts */}
+      {/* Email alerts — automatic, no button needed */}
       <div className="rounded-xl border border-slate-700 bg-slate-900 p-6">
         <h2 className="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-3">
           Email Alerts
         </h2>
         <p className="text-gray-400 text-sm mb-4">
-          Get notified at <span className="text-gray-200">{email}</span> when
-          any of your watched startups show a significant signal change.
+          Weekly digest sent to <span className="text-gray-200">{email}</span> every Monday when
+          any of your watched startups cross a signal threshold.
         </p>
-
-        {alertsEnabled || alertStatus === "sent" ? (
-          <div className="flex items-center gap-2 text-emerald-400 text-sm">
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-            </svg>
-            Alerts enabled for {watchlist.length} {watchlist.length === 1 ? "company" : "companies"}
-          </div>
-        ) : (
-          <button
-            onClick={requestAlerts}
-            disabled={alertStatus === "sending"}
-            className="bg-amber-600 hover:bg-amber-700 disabled:opacity-50 text-white font-medium text-sm px-5 py-2.5 rounded-lg transition"
-          >
-            {alertStatus === "sending" ? "Enabling..." : alertStatus === "error" ? "Retry" : "Enable Email Alerts"}
-          </button>
-        )}
+        <div className="flex items-center gap-2 text-emerald-400 text-sm">
+          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+          </svg>
+          Alerts active for {items.length} {items.length === 1 ? "company" : "companies"}
+        </div>
       </div>
     </div>
   );

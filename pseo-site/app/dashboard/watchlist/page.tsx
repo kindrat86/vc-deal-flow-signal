@@ -13,7 +13,7 @@ export default async function WatchlistPage() {
   const session = await getSession();
 
   if (!session) redirect("/login");
-  if (session.tier !== "insider") redirect("/dashboard");
+  if (session.tier !== "insider" && session.tier !== "dashboard") redirect("/dashboard");
 
   return (
     <div className="max-w-3xl mx-auto px-6 py-10">
