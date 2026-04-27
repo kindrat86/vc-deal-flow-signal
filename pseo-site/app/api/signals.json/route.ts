@@ -7,68 +7,19 @@ import {
   getDataLastModified,
   enrichStartup,
 } from "@/lib/data";
-import { generateApiKey, verifyApiKeyFormat } from "@/lib/api-key";
-import { stripe } from "@/lib/stripe";
+import { verifyApiKey } from "@/lib/api-key";
 import { slugify } from "@/lib/slugify";
 
 const BASE_URL = "https://signals.gitdealflow.com";
 
-// Cache API key -> customer mapping to avoid O(n) Stripe calls per request
-let _apiKeyCache: Map<string, string> | null = null;
-let _apiKeyCacheExpiry = 0;
-const API_KEY_CACHE_TTL = 5 * 60 * 1000; // 5 minutes
-
-async function buildApiKeyCache(): Promise<Map<string, string>> {
-  const cache = new Map<string, string>();
-  try {
-    let hasMore = true;
-    let startingAfter: string | undefined;
-    while (hasMore) {
-      const params: { limit: number; starting_after?: string } = { limit: 100 };
-      if (startingAfter) params.starting_after = startingAfter;
-      const customers = await stripe.customers.list(params);
-      for (const customer of customers.data) {
-        cache.set(generateApiKey(customer.id), customer.id);
-      }
-      hasMore = customers.has_more;
-      if (customers.data.length > 0) {
-        startingAfter = customers.data[customers.data.length - 1].id;
-      }
-    }
-  } catch {
-    // If Stripe isn't configured, return empty cache
-  }
-  return cache;
-}
-
-async function authenticateApiKey(key: string): Promise<boolean> {
-  if (!verifyApiKeyFormat(key)) return false;
-  try {
-    // Use cached mapping — rebuild if expired
-    if (!_apiKeyCache || Date.now() > _apiKeyCacheExpiry) {
-      _apiKeyCache = await buildApiKeyCache();
-      _apiKeyCacheExpiry = Date.now() + API_KEY_CACHE_TTL;
-    }
-    const customerId = _apiKeyCache.get(key);
-    if (!customerId) return false;
-
-    // Verify active subscription (single Stripe call)
-    const subs = await stripe.subscriptions.list({
-      customer: customerId,
-      status: "active",
-      limit: 1,
-    });
-    return subs.data.length > 0;
-  } catch {
-    // If Stripe isn't configured, fall through to public access
-  }
-  return false;
+function authenticateApiKey(key: string): boolean {
+  return verifyApiKey(key) !== null;
 }
 
 export async function GET(request: NextRequest) {
   const authHeader = request.headers.get("authorization");
   const apiKey = authHeader?.startsWith("Bearer ") ? authHeader.slice(7) : null;
-  const isAuthenticated = apiKey ? await authenticateApiKey(apiKey) : false;
+  const isAuthenticated = apiKey ? authenticateApiKey(apiKey) : false;
   const sectors = getAllSectors();
   const period = getCurrentPeriod();
   const allPeriods = getAllPeriods();

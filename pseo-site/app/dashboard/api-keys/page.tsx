@@ -16,7 +16,7 @@ export default async function ApiKeysPage() {
   if (!session) redirect("/login");
   if (session.tier !== "insider") redirect("/dashboard");
 
-  const apiKey = generateApiKey(session.customerId);
+  const apiKey = generateApiKey(session.customerId, session.email);
 
   return (
     <div className="max-w-3xl mx-auto px-6 py-10">

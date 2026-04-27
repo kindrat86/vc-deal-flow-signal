@@ -1,6 +1,8 @@
 import "server-only";
 import { SignJWT, jwtVerify } from "jose";
 import { cookies } from "next/headers";
+import type { NextRequest } from "next/server";
+import { verifyApiKey } from "@/lib/api-key";
 
 const COOKIE_NAME = "gdf_session";
 
@@ -72,6 +74,24 @@ export async function getSession(): Promise<SessionPayload | null> {
 }
 
 export const SESSION_COOKIE_NAME = COOKIE_NAME;
+
+/**
+ * Resolve the authenticated user from a request.
+ * Tries the session cookie first, then falls back to Bearer API key.
+ */
+export async function getEmailFromRequest(
+  req: NextRequest
+): Promise<{ email: string; tier: "dashboard" | "insider" } | null> {
+  const session = await getSession();
+  if (session) return { email: session.email, tier: session.tier };
+
+  const authHeader = req.headers.get("Authorization");
+  if (!authHeader?.startsWith("Bearer ")) return null;
+  const token = authHeader.slice(7);
+  const verified = verifyApiKey(token);
+  if (!verified) return null;
+  return { email: verified.email, tier: "insider" };
+}
 
 export function sessionCookieOptions(token: string) {
   return {
