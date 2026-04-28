@@ -4484,10 +4484,10 @@
               "description": "AtroCore develops, implements and supports AtroCore and AtroPIM.",
               "stage": "Seed",
               "geography": "EU",
-              "commitVelocity14d": 89,
-              "commitVelocityChange": "-20%",
+              "commitVelocity14d": 70,
+              "commitVelocityChange": "-17%",
               "contributors": 18,
-              "contributorGrowth": "+3%",
+              "contributorGrowth": "+0%",
               "newRepos": 0,
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/atrocore",
@@ -4498,8 +4498,8 @@
               "description": "Turn your software into a business",
               "stage": "Growth",
               "geography": "Unknown",
-              "commitVelocity14d": 344,
-              "commitVelocityChange": "+1%",
+              "commitVelocity14d": 227,
+              "commitVelocityChange": "-33%",
               "contributors": 100,
               "contributorGrowth": "+0%",
               "newRepos": 0,
@@ -4512,41 +4512,41 @@
               "description": "",
               "stage": "Growth",
               "geography": "LATAM",
-              "commitVelocity14d": 62,
-              "commitVelocityChange": "+35%",
+              "commitVelocity14d": 37,
+              "commitVelocityChange": "-29%",
               "contributors": 51,
-              "contributorGrowth": "+7%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/open-condo-software"
-            },
-            {
-              "name": "ParabolInc",
-              "description": "Tools for building better teams",
-              "stage": "Growth",
-              "geography": "US",
-              "commitVelocity14d": 17,
-              "commitVelocityChange": "-43%",
-              "contributors": 78,
               "contributorGrowth": "+0%",
               "newRepos": 0,
               "signalType": "Framework migration",
-              "githubUrl": "https://github.com/ParabolInc",
-              "websiteUrl": "https://www.parabol.co"
+              "githubUrl": "https://github.com/open-condo-software"
             },
             {
               "name": "Lonero-Team",
               "description": "Lonero utilizes Cryptonote’s protocols and our HashBolt masternode consensus, taking security, transaction speeds, and m",
               "stage": "Seed",
               "geography": "Unknown",
-              "commitVelocity14d": 2,
-              "commitVelocityChange": "-96%",
-              "contributors": 13,
+              "commitVelocity14d": 13,
+              "commitVelocityChange": "-28%",
+              "contributors": 14,
               "contributorGrowth": "+0%",
               "newRepos": 0,
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/Lonero-Team",
               "websiteUrl": "http://lonero.org"
+            },
+            {
+              "name": "ParabolInc",
+              "description": "Tools for building better teams",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 10,
+              "commitVelocityChange": "-57%",
+              "contributors": 78,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/ParabolInc",
+              "websiteUrl": "https://www.parabol.co"
             },
             {
               "name": "CollaboraOnline",
@@ -4579,11 +4579,11 @@
           "faqs": [
             {
               "question": "What engineering signals are enterprise saas startups showing in Q2 2026?",
-              "answer": "In Q2 2026, we are tracking 7 enterprise saas startups with measurable GitHub engineering signals. 2 of 7 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 7 of the tracked companies. The average 14-day commit velocity across the sector is 96 commits, with open-condo-software leading at 62 commits (+35% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q2 2026, we are tracking 7 enterprise saas startups with measurable GitHub engineering signals. 0 of 7 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 7 of the tracked companies. The average 14-day commit velocity across the sector is 74 commits, with langchain-ai leading at 105 commits (-5% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which enterprise saas startup has the highest engineering acceleration in Q2 2026?",
-              "answer": "open-condo-software leads the enterprise saas sector in Q2 2026 with 62 commits over a 14-day window, representing a +35% change from the prior period. With 51 active contributors, open-condo-software is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
+              "answer": "langchain-ai leads the enterprise saas sector in Q2 2026 with 105 commits over a 14-day window, representing a -5% change from the prior period. With 100 active contributors and 1 new repositories, langchain-ai is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
             },
             {
               "question": "Where are the most active enterprise saas engineering teams located?",
@@ -4599,12 +4599,12 @@
               "description": "AtroCore develops, implements and supports AtroCore and AtroPIM.",
               "stage": "Seed",
               "geography": "EU",
-              "commitVelocity14d": 123,
-              "commitVelocityChange": "+58%",
+              "commitVelocity14d": 208,
+              "commitVelocityChange": "+174%",
               "contributors": 18,
-              "contributorGrowth": "+3%",
+              "contributorGrowth": "+0%",
               "newRepos": 0,
-              "signalType": "Framework migration",
+              "signalType": "Deploy frequency spike",
               "githubUrl": "https://github.com/atrocore",
               "websiteUrl": "https://www.atrocore.com"
             },
@@ -4613,8 +4613,8 @@
               "description": "Turn your software into a business",
               "stage": "Growth",
               "geography": "Unknown",
-              "commitVelocity14d": 265,
-              "commitVelocityChange": "+67%",
+              "commitVelocity14d": 279,
+              "commitVelocityChange": "-3%",
               "contributors": 100,
               "contributorGrowth": "+0%",
               "newRepos": 0,
@@ -4627,41 +4627,41 @@
               "description": "",
               "stage": "Growth",
               "geography": "LATAM",
-              "commitVelocity14d": 39,
-              "commitVelocityChange": "+290%",
+              "commitVelocity14d": 34,
+              "commitVelocityChange": "+48%",
               "contributors": 51,
-              "contributorGrowth": "+7%",
-              "newRepos": 0,
-              "signalType": "Deploy frequency spike",
-              "githubUrl": "https://github.com/open-condo-software"
-            },
-            {
-              "name": "ParabolInc",
-              "description": "Tools for building better teams",
-              "stage": "Growth",
-              "geography": "US",
-              "commitVelocity14d": 22,
-              "commitVelocityChange": "+120%",
-              "contributors": 78,
               "contributorGrowth": "+0%",
               "newRepos": 0,
               "signalType": "Framework migration",
-              "githubUrl": "https://github.com/ParabolInc",
-              "websiteUrl": "https://www.parabol.co"
+              "githubUrl": "https://github.com/open-condo-software"
             },
             {
               "name": "Lonero-Team",
               "description": "Lonero utilizes Cryptonote’s protocols and our HashBolt masternode consensus, taking security, transaction speeds, and m",
               "stage": "Seed",
               "geography": "Unknown",
-              "commitVelocity14d": 111,
-              "commitVelocityChange": "+91%",
-              "contributors": 13,
+              "commitVelocity14d": 94,
+              "commitVelocityChange": "+59%",
+              "contributors": 14,
               "contributorGrowth": "+0%",
               "newRepos": 0,
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/Lonero-Team",
               "websiteUrl": "http://lonero.org"
+            },
+            {
+              "name": "ParabolInc",
+              "description": "Tools for building better teams",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 11,
+              "commitVelocityChange": "-52%",
+              "contributors": 78,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/ParabolInc",
+              "websiteUrl": "https://www.parabol.co"
             },
             {
               "name": "CollaboraOnline",
@@ -4694,11 +4694,11 @@
           "faqs": [
             {
               "question": "What engineering signals are enterprise saas startups showing in Q1 2026?",
-              "answer": "In Q1 2026, we are tracking 7 enterprise saas startups with measurable GitHub engineering signals. 7 of 7 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 6 of the tracked companies. The average 14-day commit velocity across the sector is 135 commits, with open-condo-software leading at 39 commits (+290% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q1 2026, we are tracking 7 enterprise saas startups with measurable GitHub engineering signals. 5 of 7 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 6 of the tracked companies. The average 14-day commit velocity across the sector is 145 commits, with atrocore leading at 208 commits (+174% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which enterprise saas startup has the highest engineering acceleration in Q1 2026?",
-              "answer": "open-condo-software leads the enterprise saas sector in Q1 2026 with 39 commits over a 14-day window, representing a +290% change from the prior period. With 51 active contributors, open-condo-software is showing a \"Deploy frequency spike\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
+              "answer": "atrocore leads the enterprise saas sector in Q1 2026 with 208 commits over a 14-day window, representing a +174% change from the prior period. With 18 active contributors, atrocore is showing a \"Deploy frequency spike\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
             },
             {
               "question": "Where are the most active enterprise saas engineering teams located?",
@@ -4714,10 +4714,10 @@
               "description": "AtroCore develops, implements and supports AtroCore and AtroPIM.",
               "stage": "Seed",
               "geography": "EU",
-              "commitVelocity14d": 67,
-              "commitVelocityChange": "+8%",
+              "commitVelocity14d": 59,
+              "commitVelocityChange": "-11%",
               "contributors": 18,
-              "contributorGrowth": "+3%",
+              "contributorGrowth": "+0%",
               "newRepos": 0,
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/atrocore",
@@ -4728,8 +4728,8 @@
               "description": "Turn your software into a business",
               "stage": "Growth",
               "geography": "Unknown",
-              "commitVelocity14d": 266,
-              "commitVelocityChange": "+52%",
+              "commitVelocity14d": 326,
+              "commitVelocityChange": "+99%",
               "contributors": 100,
               "contributorGrowth": "+0%",
               "newRepos": 0,
@@ -4742,41 +4742,41 @@
               "description": "",
               "stage": "Growth",
               "geography": "LATAM",
-              "commitVelocity14d": 47,
+              "commitVelocity14d": 43,
               "commitVelocityChange": "-37%",
               "contributors": 51,
-              "contributorGrowth": "+7%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/open-condo-software"
-            },
-            {
-              "name": "ParabolInc",
-              "description": "Tools for building better teams",
-              "stage": "Growth",
-              "geography": "US",
-              "commitVelocity14d": 41,
-              "commitVelocityChange": "+0%",
-              "contributors": 78,
               "contributorGrowth": "+0%",
               "newRepos": 0,
               "signalType": "Framework migration",
-              "githubUrl": "https://github.com/ParabolInc",
-              "websiteUrl": "https://www.parabol.co"
+              "githubUrl": "https://github.com/open-condo-software"
             },
             {
               "name": "Lonero-Team",
               "description": "Lonero utilizes Cryptonote’s protocols and our HashBolt masternode consensus, taking security, transaction speeds, and m",
               "stage": "Seed",
               "geography": "Unknown",
-              "commitVelocity14d": 66,
-              "commitVelocityChange": "+18%",
-              "contributors": 13,
+              "commitVelocity14d": 47,
+              "commitVelocityChange": "-28%",
+              "contributors": 14,
               "contributorGrowth": "+0%",
               "newRepos": 0,
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/Lonero-Team",
               "websiteUrl": "http://lonero.org"
+            },
+            {
+              "name": "ParabolInc",
+              "description": "Tools for building better teams",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 44,
+              "commitVelocityChange": "+19%",
+              "contributors": 78,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/ParabolInc",
+              "websiteUrl": "https://www.parabol.co"
             },
             {
               "name": "CollaboraOnline",
@@ -4809,11 +4809,11 @@
           "faqs": [
             {
               "question": "What engineering signals are enterprise saas startups showing in Q4 2025?",
-              "answer": "In Q4 2025, we are tracking 7 enterprise saas startups with measurable GitHub engineering signals. 5 of 7 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 7 of the tracked companies. The average 14-day commit velocity across the sector is 137 commits, with polarsource leading at 266 commits (+52% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q4 2025, we are tracking 7 enterprise saas startups with measurable GitHub engineering signals. 4 of 7 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 7 of the tracked companies. The average 14-day commit velocity across the sector is 142 commits, with polarsource leading at 326 commits (+99% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which enterprise saas startup has the highest engineering acceleration in Q4 2025?",
-              "answer": "polarsource leads the enterprise saas sector in Q4 2025 with 266 commits over a 14-day window, representing a +52% change from the prior period. With 100 active contributors, polarsource is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
+              "answer": "polarsource leads the enterprise saas sector in Q4 2025 with 326 commits over a 14-day window, representing a +99% change from the prior period. With 100 active contributors, polarsource is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
             },
             {
               "question": "Where are the most active enterprise saas engineering teams located?",
@@ -4829,10 +4829,10 @@
               "description": "AtroCore develops, implements and supports AtroCore and AtroPIM.",
               "stage": "Seed",
               "geography": "EU",
-              "commitVelocity14d": 66,
-              "commitVelocityChange": "+16%",
+              "commitVelocity14d": 98,
+              "commitVelocityChange": "+42%",
               "contributors": 18,
-              "contributorGrowth": "+3%",
+              "contributorGrowth": "+0%",
               "newRepos": 0,
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/atrocore",
@@ -4843,8 +4843,8 @@
               "description": "Turn your software into a business",
               "stage": "Growth",
               "geography": "Unknown",
-              "commitVelocity14d": 166,
-              "commitVelocityChange": "+68%",
+              "commitVelocity14d": 105,
+              "commitVelocityChange": "-12%",
               "contributors": 100,
               "contributorGrowth": "+0%",
               "newRepos": 0,
@@ -4857,41 +4857,41 @@
               "description": "",
               "stage": "Growth",
               "geography": "LATAM",
-              "commitVelocity14d": 56,
-              "commitVelocityChange": "+2%",
+              "commitVelocity14d": 58,
+              "commitVelocityChange": "-9%",
               "contributors": 51,
-              "contributorGrowth": "+7%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/open-condo-software"
-            },
-            {
-              "name": "ParabolInc",
-              "description": "Tools for building better teams",
-              "stage": "Growth",
-              "geography": "US",
-              "commitVelocity14d": 12,
-              "commitVelocityChange": "-48%",
-              "contributors": 78,
               "contributorGrowth": "+0%",
               "newRepos": 0,
               "signalType": "Framework migration",
-              "githubUrl": "https://github.com/ParabolInc",
-              "websiteUrl": "https://www.parabol.co"
+              "githubUrl": "https://github.com/open-condo-software"
             },
             {
               "name": "Lonero-Team",
               "description": "Lonero utilizes Cryptonote’s protocols and our HashBolt masternode consensus, taking security, transaction speeds, and m",
               "stage": "Seed",
               "geography": "Unknown",
-              "commitVelocity14d": 70,
-              "commitVelocityChange": "+27%",
-              "contributors": 13,
+              "commitVelocity14d": 74,
+              "commitVelocityChange": "+19%",
+              "contributors": 14,
               "contributorGrowth": "+0%",
               "newRepos": 0,
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/Lonero-Team",
               "websiteUrl": "http://lonero.org"
+            },
+            {
+              "name": "ParabolInc",
+              "description": "Tools for building better teams",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 40,
+              "commitVelocityChange": "+122%",
+              "contributors": 78,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/ParabolInc",
+              "websiteUrl": "https://www.parabol.co"
             },
             {
               "name": "CollaboraOnline",
@@ -4924,11 +4924,11 @@
           "faqs": [
             {
               "question": "What engineering signals are enterprise saas startups showing in Q3 2025?",
-              "answer": "In Q3 2025, we are tracking 7 enterprise saas startups with measurable GitHub engineering signals. 5 of 7 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 7 of the tracked companies. The average 14-day commit velocity across the sector is 92 commits, with polarsource leading at 166 commits (+68% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q3 2025, we are tracking 7 enterprise saas startups with measurable GitHub engineering signals. 4 of 7 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 7 of the tracked companies. The average 14-day commit velocity across the sector is 93 commits, with ParabolInc leading at 40 commits (+122% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which enterprise saas startup has the highest engineering acceleration in Q3 2025?",
-              "answer": "polarsource leads the enterprise saas sector in Q3 2025 with 166 commits over a 14-day window, representing a +68% change from the prior period. With 100 active contributors, polarsource is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
+              "answer": "ParabolInc leads the enterprise saas sector in Q3 2025 with 40 commits over a 14-day window, representing a +122% change from the prior period. With 78 active contributors, ParabolInc is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
             },
             {
               "question": "Where are the most active enterprise saas engineering teams located?",
@@ -4952,6 +4952,34 @@
           "intro": "Data infrastructure is the most active engineering sector by raw commit volume this quarter.",
           "startups": [
             {
+              "name": "PostHog",
+              "description": "The single platform to analyze, test, observe, and deploy new features",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 1223,
+              "commitVelocityChange": "-24%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 3,
+              "signalType": "Infrastructure buildout",
+              "githubUrl": "https://github.com/PostHog",
+              "websiteUrl": "https://posthog.com"
+            },
+            {
+              "name": "airbytehq",
+              "description": "Simple & extensible open-source data integration",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 1567,
+              "commitVelocityChange": "+708%",
+              "contributors": 100,
+              "contributorGrowth": "+33%",
+              "newRepos": 0,
+              "signalType": "Deploy frequency spike",
+              "githubUrl": "https://github.com/airbytehq",
+              "websiteUrl": "https://airbyte.io"
+            },
+            {
               "name": "dagster-io",
               "description": "An orchestration platform for the development, production, and observation of data assets.",
               "stage": "Growth",
@@ -4964,20 +4992,6 @@
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/dagster-io",
               "websiteUrl": "https://dagster.io"
-            },
-            {
-              "name": "PostHog",
-              "description": "The single platform to analyze, test, observe, and deploy new features",
-              "stage": "Growth",
-              "geography": "US",
-              "commitVelocity14d": 1726,
-              "commitVelocityChange": "+14%",
-              "contributors": 100,
-              "contributorGrowth": "+4%",
-              "newRepos": 3,
-              "signalType": "Infrastructure buildout",
-              "githubUrl": "https://github.com/PostHog",
-              "websiteUrl": "https://posthog.com"
             },
             {
               "name": "debezium",
@@ -5035,20 +5049,6 @@
               "websiteUrl": "https://opensearch.org"
             },
             {
-              "name": "airbytehq",
-              "description": "Simple & extensible open-source data integration",
-              "stage": "Growth",
-              "geography": "US",
-              "commitVelocity14d": 113,
-              "commitVelocityChange": "-78%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/airbytehq",
-              "websiteUrl": "https://airbyte.io"
-            },
-            {
               "name": "ClickHouse",
               "description": "",
               "stage": "Growth",
@@ -5094,11 +5094,11 @@
           "faqs": [
             {
               "question": "What engineering signals are data infrastructure startups showing in Q2 2026?",
-              "answer": "In Q2 2026, we are tracking 10 data infrastructure startups with measurable GitHub engineering signals. 4 of 10 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 7 of the tracked companies. The average 14-day commit velocity across the sector is 471 commits, with dagster-io leading at 159 commits (+34% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q2 2026, we are tracking 10 data infrastructure startups with measurable GitHub engineering signals. 4 of 10 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 6 of the tracked companies. The average 14-day commit velocity across the sector is 566 commits, with airbytehq leading at 1567 commits (+708% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which data infrastructure startup has the highest engineering acceleration in Q2 2026?",
-              "answer": "dagster-io leads the data infrastructure sector in Q2 2026 with 159 commits over a 14-day window, representing a +34% change from the prior period. With 100 active contributors, dagster-io is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
+              "answer": "airbytehq leads the data infrastructure sector in Q2 2026 with 1567 commits over a 14-day window, representing a +708% change from the prior period. With 100 active contributors, airbytehq is showing a \"Deploy frequency spike\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
             },
             {
               "question": "Where are the most active data infrastructure engineering teams located?",
@@ -5109,6 +5109,34 @@
         "q1-2026": {
           "intro": "Data infrastructure is the most active engineering sector by raw commit volume this quarter.",
           "startups": [
+            {
+              "name": "PostHog",
+              "description": "The single platform to analyze, test, observe, and deploy new features",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 1147,
+              "commitVelocityChange": "+20%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 3,
+              "signalType": "Infrastructure buildout",
+              "githubUrl": "https://github.com/PostHog",
+              "websiteUrl": "https://posthog.com"
+            },
+            {
+              "name": "airbytehq",
+              "description": "Simple & extensible open-source data integration",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 549,
+              "commitVelocityChange": "-2%",
+              "contributors": 100,
+              "contributorGrowth": "+33%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/airbytehq",
+              "websiteUrl": "https://airbyte.io"
+            },
             {
               "name": "dagster-io",
               "description": "An orchestration platform for the development, production, and observation of data assets.",
@@ -5122,20 +5150,6 @@
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/dagster-io",
               "websiteUrl": "https://dagster.io"
-            },
-            {
-              "name": "PostHog",
-              "description": "The single platform to analyze, test, observe, and deploy new features",
-              "stage": "Growth",
-              "geography": "US",
-              "commitVelocity14d": 1033,
-              "commitVelocityChange": "+66%",
-              "contributors": 100,
-              "contributorGrowth": "+4%",
-              "newRepos": 3,
-              "signalType": "Infrastructure buildout",
-              "githubUrl": "https://github.com/PostHog",
-              "websiteUrl": "https://posthog.com"
             },
             {
               "name": "debezium",
@@ -5193,20 +5207,6 @@
               "websiteUrl": "https://opensearch.org"
             },
             {
-              "name": "airbytehq",
-              "description": "Simple & extensible open-source data integration",
-              "stage": "Growth",
-              "geography": "US",
-              "commitVelocity14d": 875,
-              "commitVelocityChange": "+543%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Deploy frequency spike",
-              "githubUrl": "https://github.com/airbytehq",
-              "websiteUrl": "https://airbyte.io"
-            },
-            {
               "name": "ClickHouse",
               "description": "",
               "stage": "Growth",
@@ -5252,11 +5252,11 @@
           "faqs": [
             {
               "question": "What engineering signals are data infrastructure startups showing in Q1 2026?",
-              "answer": "In Q1 2026, we are tracking 10 data infrastructure startups with measurable GitHub engineering signals. 8 of 10 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 6 of the tracked companies. The average 14-day commit velocity across the sector is 481 commits, with airbytehq leading at 875 commits (+543% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q1 2026, we are tracking 10 data infrastructure startups with measurable GitHub engineering signals. 7 of 10 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 7 of the tracked companies. The average 14-day commit velocity across the sector is 460 commits, with dbt-labs leading at 510 commits (+117% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which data infrastructure startup has the highest engineering acceleration in Q1 2026?",
-              "answer": "airbytehq leads the data infrastructure sector in Q1 2026 with 875 commits over a 14-day window, representing a +543% change from the prior period. With 100 active contributors, airbytehq is showing a \"Deploy frequency spike\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
+              "answer": "dbt-labs leads the data infrastructure sector in Q1 2026 with 510 commits over a 14-day window, representing a +117% change from the prior period. With 100 active contributors and 2 new repositories, dbt-labs is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
             },
             {
               "question": "Where are the most active data infrastructure engineering teams located?",
@@ -5267,6 +5267,34 @@
         "q4-2025": {
           "intro": "Data infrastructure is the most active engineering sector by raw commit volume this quarter.",
           "startups": [
+            {
+              "name": "PostHog",
+              "description": "The single platform to analyze, test, observe, and deploy new features",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 723,
+              "commitVelocityChange": "-3%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 3,
+              "signalType": "Infrastructure buildout",
+              "githubUrl": "https://github.com/PostHog",
+              "websiteUrl": "https://posthog.com"
+            },
+            {
+              "name": "airbytehq",
+              "description": "Simple & extensible open-source data integration",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 869,
+              "commitVelocityChange": "-3%",
+              "contributors": 100,
+              "contributorGrowth": "+33%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/airbytehq",
+              "websiteUrl": "https://airbyte.io"
+            },
             {
               "name": "dagster-io",
               "description": "An orchestration platform for the development, production, and observation of data assets.",
@@ -5280,20 +5308,6 @@
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/dagster-io",
               "websiteUrl": "https://dagster.io"
-            },
-            {
-              "name": "PostHog",
-              "description": "The single platform to analyze, test, observe, and deploy new features",
-              "stage": "Growth",
-              "geography": "US",
-              "commitVelocity14d": 739,
-              "commitVelocityChange": "+4%",
-              "contributors": 100,
-              "contributorGrowth": "+4%",
-              "newRepos": 3,
-              "signalType": "Infrastructure buildout",
-              "githubUrl": "https://github.com/PostHog",
-              "websiteUrl": "https://posthog.com"
             },
             {
               "name": "debezium",
@@ -5351,20 +5365,6 @@
               "websiteUrl": "https://opensearch.org"
             },
             {
-              "name": "airbytehq",
-              "description": "Simple & extensible open-source data integration",
-              "stage": "Growth",
-              "geography": "US",
-              "commitVelocity14d": 878,
-              "commitVelocityChange": "-5%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/airbytehq",
-              "websiteUrl": "https://airbyte.io"
-            },
-            {
               "name": "ClickHouse",
               "description": "",
               "stage": "Growth",
@@ -5410,7 +5410,7 @@
           "faqs": [
             {
               "question": "What engineering signals are data infrastructure startups showing in Q4 2025?",
-              "answer": "In Q4 2025, we are tracking 10 data infrastructure startups with measurable GitHub engineering signals. 5 of 10 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 7 of the tracked companies. The average 14-day commit velocity across the sector is 437 commits, with ClickHouse leading at 1805 commits (+11% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q4 2025, we are tracking 10 data infrastructure startups with measurable GitHub engineering signals. 4 of 10 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 7 of the tracked companies. The average 14-day commit velocity across the sector is 434 commits, with ClickHouse leading at 1805 commits (+11% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which data infrastructure startup has the highest engineering acceleration in Q4 2025?",
@@ -5426,6 +5426,34 @@
           "intro": "Data infrastructure is the most active engineering sector by raw commit volume this quarter.",
           "startups": [
             {
+              "name": "PostHog",
+              "description": "The single platform to analyze, test, observe, and deploy new features",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 726,
+              "commitVelocityChange": "+8%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 3,
+              "signalType": "Infrastructure buildout",
+              "githubUrl": "https://github.com/PostHog",
+              "websiteUrl": "https://posthog.com"
+            },
+            {
+              "name": "airbytehq",
+              "description": "Simple & extensible open-source data integration",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 751,
+              "commitVelocityChange": "+4%",
+              "contributors": 100,
+              "contributorGrowth": "+33%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/airbytehq",
+              "websiteUrl": "https://airbyte.io"
+            },
+            {
               "name": "dagster-io",
               "description": "An orchestration platform for the development, production, and observation of data assets.",
               "stage": "Growth",
@@ -5438,20 +5466,6 @@
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/dagster-io",
               "websiteUrl": "https://dagster.io"
-            },
-            {
-              "name": "PostHog",
-              "description": "The single platform to analyze, test, observe, and deploy new features",
-              "stage": "Growth",
-              "geography": "US",
-              "commitVelocity14d": 694,
-              "commitVelocityChange": "+20%",
-              "contributors": 100,
-              "contributorGrowth": "+4%",
-              "newRepos": 3,
-              "signalType": "Infrastructure buildout",
-              "githubUrl": "https://github.com/PostHog",
-              "websiteUrl": "https://posthog.com"
             },
             {
               "name": "debezium",
@@ -5509,20 +5523,6 @@
               "websiteUrl": "https://opensearch.org"
             },
             {
-              "name": "airbytehq",
-              "description": "Simple & extensible open-source data integration",
-              "stage": "Growth",
-              "geography": "US",
-              "commitVelocity14d": 713,
-              "commitVelocityChange": "-13%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/airbytehq",
-              "websiteUrl": "https://airbyte.io"
-            },
-            {
               "name": "ClickHouse",
               "description": "",
               "stage": "Growth",
@@ -5554,7 +5554,7 @@
           "faqs": [
             {
               "question": "What engineering signals are data infrastructure startups showing in Q3 2025?",
-              "answer": "In Q3 2025, we are tracking 9 data infrastructure startups with measurable GitHub engineering signals. 5 of 9 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 5 of the tracked companies. The average 14-day commit velocity across the sector is 442 commits, with opensearch-project leading at 51 commits (+364% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q3 2025, we are tracking 9 data infrastructure startups with measurable GitHub engineering signals. 6 of 9 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 5 of the tracked companies. The average 14-day commit velocity across the sector is 450 commits, with opensearch-project leading at 51 commits (+364% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which data infrastructure startup has the highest engineering acceleration in Q3 2025?",
@@ -5586,8 +5586,8 @@
               "description": "Free job boards and career resources for students & new grads",
               "stage": "Pre-seed",
               "geography": "US",
-              "commitVelocity14d": 1132,
-              "commitVelocityChange": "+77%",
+              "commitVelocity14d": 1148,
+              "commitVelocityChange": "+24%",
               "contributors": 3,
               "contributorGrowth": "+400%",
               "newRepos": 0,
@@ -5668,11 +5668,11 @@
           "faqs": [
             {
               "question": "What engineering signals are robotics startups showing in Q2 2026?",
-              "answer": "In Q2 2026, we are tracking 6 robotics startups with measurable GitHub engineering signals. 4 of 6 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 5 of the tracked companies. The average 14-day commit velocity across the sector is 220 commits, with zapplyjobs leading at 1132 commits (+77% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q2 2026, we are tracking 6 robotics startups with measurable GitHub engineering signals. 4 of 6 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 5 of the tracked companies. The average 14-day commit velocity across the sector is 223 commits, with commaai leading at 67 commits (+76% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which robotics startup has the highest engineering acceleration in Q2 2026?",
-              "answer": "zapplyjobs leads the robotics sector in Q2 2026 with 1132 commits over a 14-day window, representing a +77% change from the prior period. With 3 active contributors, zapplyjobs is showing a \"Engineering hiring burst\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
+              "answer": "commaai leads the robotics sector in Q2 2026 with 67 commits over a 14-day window, representing a +76% change from the prior period. With 100 active contributors and 1 new repositories, commaai is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
             },
             {
               "question": "Where are the most active robotics engineering teams located?",
@@ -5932,6 +5932,34 @@
           "intro": "Legal tech is quieter than most sectors, but active teams show strong signals.",
           "startups": [
             {
+              "name": "betagouv",
+              "description": "Communauté des incubateurs de Services Publics Numériques",
+              "stage": "Pre-seed",
+              "geography": "EU",
+              "commitVelocity14d": 74,
+              "commitVelocityChange": "+23%",
+              "contributors": 7,
+              "contributorGrowth": "+18%",
+              "newRepos": 2,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/betagouv",
+              "websiteUrl": "https://beta.gouv.fr"
+            },
+            {
+              "name": "nervosnetwork",
+              "description": "",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 9,
+              "commitVelocityChange": "+80%",
+              "contributors": 65,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/nervosnetwork",
+              "websiteUrl": "https://www.nervos.org"
+            },
+            {
               "name": "bridgecrewio",
               "description": "Secure cloud native applications and infrastructure",
               "stage": "Growth",
@@ -5963,21 +5991,49 @@
           "faqs": [
             {
               "question": "What engineering signals are legal tech startups showing in Q2 2026?",
-              "answer": "In Q2 2026, we are tracking 2 legal tech startups with measurable GitHub engineering signals. 1 of 2 show positive commit velocity growth. The most common signal type is \"Engineering hiring burst\", observed in 1 of the tracked companies. The average 14-day commit velocity across the sector is 54 commits, with bridgecrewio leading at 19 commits (+73% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q2 2026, we are tracking 4 legal tech startups with measurable GitHub engineering signals. 3 of 4 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 3 of the tracked companies. The average 14-day commit velocity across the sector is 48 commits, with nervosnetwork leading at 9 commits (+80% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which legal tech startup has the highest engineering acceleration in Q2 2026?",
-              "answer": "bridgecrewio leads the legal tech sector in Q2 2026 with 19 commits over a 14-day window, representing a +73% change from the prior period. With 100 active contributors, bridgecrewio is showing a \"Engineering hiring burst\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
+              "answer": "nervosnetwork leads the legal tech sector in Q2 2026 with 9 commits over a 14-day window, representing a +80% change from the prior period. With 65 active contributors, nervosnetwork is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
             },
             {
               "question": "Where are the most active legal tech engineering teams located?",
-              "answer": "Among the 2 legal tech startups we track, US accounts for the highest concentration with 2 teams. Startups automating legal workflows and compliance management. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+              "answer": "Among the 4 legal tech startups we track, US accounts for the highest concentration with 2 teams. Startups automating legal workflows and compliance management. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
             }
           ]
         },
         "q1-2026": {
           "intro": "Legal tech is quieter than most sectors, but active teams show strong signals.",
           "startups": [
+            {
+              "name": "betagouv",
+              "description": "Communauté des incubateurs de Services Publics Numériques",
+              "stage": "Pre-seed",
+              "geography": "EU",
+              "commitVelocity14d": 19,
+              "commitVelocityChange": "-77%",
+              "contributors": 7,
+              "contributorGrowth": "+18%",
+              "newRepos": 2,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/betagouv",
+              "websiteUrl": "https://beta.gouv.fr"
+            },
+            {
+              "name": "nervosnetwork",
+              "description": "",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 1,
+              "commitVelocityChange": "-90%",
+              "contributors": 65,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/nervosnetwork",
+              "websiteUrl": "https://www.nervos.org"
+            },
             {
               "name": "wazuh",
               "description": "The Open Source Security Platform. Unified XDR and SIEM protection for endpoints and cloud workloads.",
@@ -5996,7 +6052,7 @@
           "faqs": [
             {
               "question": "What engineering signals are legal tech startups showing in Q1 2026?",
-              "answer": "In Q1 2026, we are tracking 1 legal tech startups with measurable GitHub engineering signals. 1 of 1 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 1 of the tracked companies. The average 14-day commit velocity across the sector is 254 commits, with wazuh leading at 254 commits (+62% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q1 2026, we are tracking 3 legal tech startups with measurable GitHub engineering signals. 1 of 3 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 3 of the tracked companies. The average 14-day commit velocity across the sector is 91 commits, with wazuh leading at 254 commits (+62% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which legal tech startup has the highest engineering acceleration in Q1 2026?",
@@ -6004,13 +6060,41 @@
             },
             {
               "question": "Where are the most active legal tech engineering teams located?",
-              "answer": "Among the 1 legal tech startups we track, US accounts for the highest concentration with 1 teams. Startups automating legal workflows and compliance management. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+              "answer": "Among the 3 legal tech startups we track, EU accounts for the highest concentration with 1 teams. Startups automating legal workflows and compliance management. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
             }
           ]
         },
         "q4-2025": {
           "intro": "Legal tech is quieter than most sectors, but active teams show strong signals.",
           "startups": [
+            {
+              "name": "betagouv",
+              "description": "Communauté des incubateurs de Services Publics Numériques",
+              "stage": "Pre-seed",
+              "geography": "EU",
+              "commitVelocity14d": 40,
+              "commitVelocityChange": "-17%",
+              "contributors": 7,
+              "contributorGrowth": "+18%",
+              "newRepos": 2,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/betagouv",
+              "websiteUrl": "https://beta.gouv.fr"
+            },
+            {
+              "name": "nervosnetwork",
+              "description": "",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 23,
+              "commitVelocityChange": "-30%",
+              "contributors": 65,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/nervosnetwork",
+              "websiteUrl": "https://www.nervos.org"
+            },
             {
               "name": "bridgecrewio",
               "description": "Secure cloud native applications and infrastructure",
@@ -6043,7 +6127,7 @@
           "faqs": [
             {
               "question": "What engineering signals are legal tech startups showing in Q4 2025?",
-              "answer": "In Q4 2025, we are tracking 2 legal tech startups with measurable GitHub engineering signals. 0 of 2 show positive commit velocity growth. The most common signal type is \"Engineering hiring burst\", observed in 1 of the tracked companies. The average 14-day commit velocity across the sector is 124 commits, with wazuh leading at 225 commits (-15% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q4 2025, we are tracking 4 legal tech startups with measurable GitHub engineering signals. 0 of 4 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 3 of the tracked companies. The average 14-day commit velocity across the sector is 78 commits, with wazuh leading at 225 commits (-15% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which legal tech startup has the highest engineering acceleration in Q4 2025?",
@@ -6051,13 +6135,41 @@
             },
             {
               "question": "Where are the most active legal tech engineering teams located?",
-              "answer": "Among the 2 legal tech startups we track, US accounts for the highest concentration with 2 teams. Startups automating legal workflows and compliance management. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+              "answer": "Among the 4 legal tech startups we track, US accounts for the highest concentration with 2 teams. Startups automating legal workflows and compliance management. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
             }
           ]
         },
         "q3-2025": {
           "intro": "Legal tech is quieter than most sectors, but active teams show strong signals.",
           "startups": [
+            {
+              "name": "betagouv",
+              "description": "Communauté des incubateurs de Services Publics Numériques",
+              "stage": "Pre-seed",
+              "geography": "EU",
+              "commitVelocity14d": 37,
+              "commitVelocityChange": "+61%",
+              "contributors": 7,
+              "contributorGrowth": "+18%",
+              "newRepos": 2,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/betagouv",
+              "websiteUrl": "https://beta.gouv.fr"
+            },
+            {
+              "name": "nervosnetwork",
+              "description": "",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 6,
+              "commitVelocityChange": "-25%",
+              "contributors": 65,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/nervosnetwork",
+              "websiteUrl": "https://www.nervos.org"
+            },
             {
               "name": "bridgecrewio",
               "description": "Secure cloud native applications and infrastructure",
@@ -6090,15 +6202,15 @@
           "faqs": [
             {
               "question": "What engineering signals are legal tech startups showing in Q3 2025?",
-              "answer": "In Q3 2025, we are tracking 2 legal tech startups with measurable GitHub engineering signals. 2 of 2 show positive commit velocity growth. The most common signal type is \"Engineering hiring burst\", observed in 1 of the tracked companies. The average 14-day commit velocity across the sector is 123 commits, with wazuh leading at 234 commits (+26% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q3 2025, we are tracking 4 legal tech startups with measurable GitHub engineering signals. 3 of 4 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 3 of the tracked companies. The average 14-day commit velocity across the sector is 72 commits, with betagouv leading at 37 commits (+61% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which legal tech startup has the highest engineering acceleration in Q3 2025?",
-              "answer": "wazuh leads the legal tech sector in Q3 2025 with 234 commits over a 14-day window, representing a +26% change from the prior period. With 100 active contributors and 1 new repositories, wazuh is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
+              "answer": "betagouv leads the legal tech sector in Q3 2025 with 37 commits over a 14-day window, representing a +61% change from the prior period. With 7 active contributors and 2 new repositories, betagouv is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
             },
             {
               "question": "Where are the most active legal tech engineering teams located?",
-              "answer": "Among the 2 legal tech startups we track, US accounts for the highest concentration with 2 teams. Startups automating legal workflows and compliance management. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+              "answer": "Among the 4 legal tech startups we track, US accounts for the highest concentration with 2 teams. Startups automating legal workflows and compliance management. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
             }
           ]
         }
@@ -6122,11 +6234,11 @@
               "description": "The Everything Platform for Businesses™",
               "stage": "Growth",
               "geography": "US",
-              "commitVelocity14d": 3,
-              "commitVelocityChange": "-86%",
+              "commitVelocity14d": 2,
+              "commitVelocityChange": "-85%",
               "contributors": 79,
               "contributorGrowth": "+0%",
-              "newRepos": 1,
+              "newRepos": 0,
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/ever-co",
               "websiteUrl": "https://ever.co"
@@ -6183,12 +6295,12 @@
               "description": "The Everything Platform for Businesses™",
               "stage": "Growth",
               "geography": "US",
-              "commitVelocity14d": 77,
-              "commitVelocityChange": "+88%",
+              "commitVelocity14d": 141,
+              "commitVelocityChange": "+182%",
               "contributors": 79,
               "contributorGrowth": "+0%",
-              "newRepos": 1,
-              "signalType": "Framework migration",
+              "newRepos": 0,
+              "signalType": "Deploy frequency spike",
               "githubUrl": "https://github.com/ever-co",
               "websiteUrl": "https://ever.co"
             },
@@ -6224,11 +6336,11 @@
           "faqs": [
             {
               "question": "What engineering signals are hr tech startups showing in Q1 2026?",
-              "answer": "In Q1 2026, we are tracking 3 hr tech startups with measurable GitHub engineering signals. 2 of 3 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 1 of the tracked companies. The average 14-day commit velocity across the sector is 372 commits, with ever-co leading at 77 commits (+88% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q1 2026, we are tracking 3 hr tech startups with measurable GitHub engineering signals. 2 of 3 show positive commit velocity growth. The most common signal type is \"Deploy frequency spike\", observed in 1 of the tracked companies. The average 14-day commit velocity across the sector is 393 commits, with ever-co leading at 141 commits (+182% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which hr tech startup has the highest engineering acceleration in Q1 2026?",
-              "answer": "ever-co leads the hr tech sector in Q1 2026 with 77 commits over a 14-day window, representing a +88% change from the prior period. With 79 active contributors and 1 new repositories, ever-co is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
+              "answer": "ever-co leads the hr tech sector in Q1 2026 with 141 commits over a 14-day window, representing a +182% change from the prior period. With 79 active contributors, ever-co is showing a \"Deploy frequency spike\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
             },
             {
               "question": "Where are the most active hr tech engineering teams located?",
@@ -6244,11 +6356,11 @@
               "description": "The Everything Platform for Businesses™",
               "stage": "Growth",
               "geography": "US",
-              "commitVelocity14d": 29,
-              "commitVelocityChange": "+7%",
+              "commitVelocity14d": 33,
+              "commitVelocityChange": "+43%",
               "contributors": 79,
               "contributorGrowth": "+0%",
-              "newRepos": 1,
+              "newRepos": 0,
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/ever-co",
               "websiteUrl": "https://ever.co"
@@ -6285,7 +6397,7 @@
           "faqs": [
             {
               "question": "What engineering signals are hr tech startups showing in Q4 2025?",
-              "answer": "In Q4 2025, we are tracking 3 hr tech startups with measurable GitHub engineering signals. 3 of 3 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 1 of the tracked companies. The average 14-day commit velocity across the sector is 270 commits, with zapplyjobs leading at 43 commits (+999% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q4 2025, we are tracking 3 hr tech startups with measurable GitHub engineering signals. 3 of 3 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 1 of the tracked companies. The average 14-day commit velocity across the sector is 272 commits, with zapplyjobs leading at 43 commits (+999% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which hr tech startup has the highest engineering acceleration in Q4 2025?",
@@ -6305,11 +6417,11 @@
               "description": "The Everything Platform for Businesses™",
               "stage": "Growth",
               "geography": "US",
-              "commitVelocity14d": 29,
-              "commitVelocityChange": "-59%",
+              "commitVelocity14d": 40,
+              "commitVelocityChange": "+29%",
               "contributors": 79,
               "contributorGrowth": "+0%",
-              "newRepos": 1,
+              "newRepos": 0,
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/ever-co",
               "websiteUrl": "https://ever.co"
@@ -6346,7 +6458,7 @@
           "faqs": [
             {
               "question": "What engineering signals are hr tech startups showing in Q3 2025?",
-              "answer": "In Q3 2025, we are tracking 3 hr tech startups with measurable GitHub engineering signals. 2 of 3 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 1 of the tracked companies. The average 14-day commit velocity across the sector is 270 commits, with zapplyjobs leading at 87 commits (+1143% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q3 2025, we are tracking 3 hr tech startups with measurable GitHub engineering signals. 3 of 3 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 1 of the tracked companies. The average 14-day commit velocity across the sector is 274 commits, with zapplyjobs leading at 87 commits (+1143% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which hr tech startup has the highest engineering acceleration in Q3 2025?",
