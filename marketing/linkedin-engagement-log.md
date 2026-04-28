@@ -14,3 +14,8 @@
 - Own-post reply reminder: Launch Sunday (Apr 26) was a scheduled post — check linkedin.com/company/gitdealflow/posts and reply within 2h
 - Targets: Nick Moran, Jason Calacanis, Mario Gabriele
 - Drafts saved above for copy-paste
+
+## 2026-04-28
+- Own-post reply reminder: none (Monday Apr 27 is not a scheduled post day)
+- Targets: Jason Calacanis, Mario Gabriele, Elizabeth Yin
+- Drafts saved above for copy-paste
