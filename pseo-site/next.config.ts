@@ -11,6 +11,10 @@ const nextConfig: NextConfig = {
         source: "/.well-known/ai.txt",
         destination: "/ai.txt",
       },
+      {
+        source: "/AGENTS.md",
+        destination: "/agents.md",
+      },
     ];
   },
 
@@ -43,11 +47,11 @@ const nextConfig: NextConfig = {
             key: "Content-Security-Policy",
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' https://eu.i.posthog.com",
+              "script-src 'self' 'unsafe-inline' https://eu.i.posthog.com https://eu-assets.i.posthog.com",
               "style-src 'self' 'unsafe-inline'",
               "img-src 'self' data: https:",
               "font-src 'self'",
-              "connect-src 'self' https://eu.i.posthog.com https://eu.posthog.com https://api.resend.com",
+              "connect-src 'self' https://eu.i.posthog.com https://eu.posthog.com https://eu-assets.i.posthog.com https://api.resend.com",
               "frame-ancestors 'none'",
             ].join("; "),
           },
