@@ -1327,7 +1327,7 @@ For the full screening framework, see the [7 engineering metrics every investor 
 ];
 
 // Merge in the auto-generated signal report if it exists, then sort newest-first
-let allPosts = [...posts];
+const allPosts = [...posts];
 try {
   // eslint-disable-next-line @typescript-eslint/no-require-imports
   const { signalReport } = require("./signal-report-latest");

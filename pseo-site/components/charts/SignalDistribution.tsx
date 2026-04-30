@@ -33,34 +33,38 @@ export default function SignalDistribution({
   const r = 45;
   const innerR = 28;
 
-  // Build arcs
-  let cumAngle = -Math.PI / 2;
-  const arcs = entries.map(([type, count]) => {
-    const angle = (count / total) * 2 * Math.PI;
-    const startAngle = cumAngle;
-    const endAngle = cumAngle + angle;
-    cumAngle = endAngle;
-
-    const x1 = cx + r * Math.cos(startAngle);
-    const y1 = cy + r * Math.sin(startAngle);
-    const x2 = cx + r * Math.cos(endAngle);
-    const y2 = cy + r * Math.sin(endAngle);
-    const ix1 = cx + innerR * Math.cos(endAngle);
-    const iy1 = cy + innerR * Math.sin(endAngle);
-    const ix2 = cx + innerR * Math.cos(startAngle);
-    const iy2 = cy + innerR * Math.sin(startAngle);
-    const largeArc = angle > Math.PI ? 1 : 0;
-
-    const d = [
-      `M ${x1} ${y1}`,
-      `A ${r} ${r} 0 ${largeArc} 1 ${x2} ${y2}`,
-      `L ${ix1} ${iy1}`,
-      `A ${innerR} ${innerR} 0 ${largeArc} 0 ${ix2} ${iy2}`,
-      "Z",
-    ].join(" ");
-
-    return { type, count, d, color: SIGNAL_COLORS[type] ?? "#64748b" };
-  });
+  // Build arcs using reduce to avoid external mutation
+  const { arcs } = entries.reduce<{
+    cumAngle: number;
+    arcs: { type: string; count: number; d: string; color: string }[];
+  }>(
+    ({ cumAngle, arcs }, [type, count]) => {
+      const angle = (count / total) * 2 * Math.PI;
+      const startAngle = cumAngle;
+      const endAngle = cumAngle + angle;
+      const x1 = cx + r * Math.cos(startAngle);
+      const y1 = cy + r * Math.sin(startAngle);
+      const x2 = cx + r * Math.cos(endAngle);
+      const y2 = cy + r * Math.sin(endAngle);
+      const ix1 = cx + innerR * Math.cos(endAngle);
+      const iy1 = cy + innerR * Math.sin(endAngle);
+      const ix2 = cx + innerR * Math.cos(startAngle);
+      const iy2 = cy + innerR * Math.sin(startAngle);
+      const largeArc = angle > Math.PI ? 1 : 0;
+      const d = [
+        `M ${x1} ${y1}`,
+        `A ${r} ${r} 0 ${largeArc} 1 ${x2} ${y2}`,
+        `L ${ix1} ${iy1}`,
+        `A ${innerR} ${innerR} 0 ${largeArc} 0 ${ix2} ${iy2}`,
+        "Z",
+      ].join(" ");
+      return {
+        cumAngle: endAngle,
+        arcs: [...arcs, { type, count, d, color: SIGNAL_COLORS[type] ?? "#64748b" }],
+      };
+    },
+    { cumAngle: -Math.PI / 2, arcs: [] },
+  );
 
   const altText = `Signal distribution for ${sectorName}: ${entries.map(([t, c]) => `${t} (${c})`).join(", ")}. ${total} startups total.`;
 

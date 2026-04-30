@@ -460,7 +460,7 @@ export default function AboutPage() {
           </h2>
           <p className="text-gray-400 text-sm mb-5 max-w-lg mx-auto">
             Browse startup rankings across {activeSectors.length} sectors, or
-            get this week's top 5 breakout startups free.
+            get this week&apos;s top 5 breakout startups free.
           </p>
           <div className="flex justify-center gap-3">
             <Link
@@ -473,7 +473,7 @@ export default function AboutPage() {
               href="https://gitdealflow.com/#signup"
               className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 hover:border-slate-500 text-gray-300 text-sm font-medium transition-colors"
             >
-              See This Week's Signals
+              See This Week&apos;s Signals
             </Link>
           </div>
         </div>

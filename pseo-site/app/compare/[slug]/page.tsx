@@ -324,7 +324,7 @@ export default async function ComparisonPage({ params }: PageProps) {
             Try the engineering signal approach
           </h2>
           <p className="text-gray-400 text-sm mb-5 max-w-lg mx-auto">
-            Get this week's top 5 breakout startups ranked by
+            Get this week&apos;s top 5 breakout startups ranked by
             GitHub engineering acceleration. Free, no spam.
           </p>
           <Link

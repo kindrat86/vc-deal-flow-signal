@@ -55,7 +55,7 @@ export default function Header() {
             href="https://gitdealflow.com/#signup"
             className="text-sm bg-sky-600 hover:bg-sky-500 text-white px-3 py-1.5 rounded-md transition-colors font-medium"
           >
-            See This Week's Signals
+            See This Week&apos;s Signals
           </Link>
         </nav>
       </div>
@@ -86,7 +86,7 @@ export default function Header() {
             onClick={() => setOpen(false)}
             className="text-sm bg-sky-600 hover:bg-sky-500 text-white px-3 py-2.5 rounded-md transition-colors font-medium text-center mt-2"
           >
-            See This Week's Signals
+            See This Week&apos;s Signals
           </Link>
         </nav>
       )}

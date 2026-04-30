@@ -515,7 +515,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         {/* CTA */}
         <div className="mt-12 rounded-xl border border-slate-800 bg-slate-900 p-6 sm:p-8 text-center">
           <h2 className="text-gray-100 font-semibold text-lg mb-2">
-            Get this week's top breakout startups
+            Get this week&apos;s top breakout startups
           </h2>
           <p className="text-gray-400 text-sm mb-5 max-w-lg mx-auto">
             Top breakout engineering signals across all sectors, straight to
