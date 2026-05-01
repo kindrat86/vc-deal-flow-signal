@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getAlternative, getAllAlternativeSlugs, type AlternativeFAQ } from "@/content/alternatives";
+import { alternatives, getAlternative, getAllAlternativeSlugs, type AlternativeFAQ } from "@/content/alternatives";
+import { useCases } from "@/content/use-cases";
 import { getAllSectors, getCurrentPeriod, getDataLastModified } from "@/lib/data";
 
 interface PageProps {
@@ -121,7 +122,7 @@ export default async function AlternativePage({ params }: PageProps) {
             price: "0",
             priceCurrency: "EUR",
             availability: "https://schema.org/InStock",
-            description: "Weekly email with 5 breakout startups ranked by GitHub engineering acceleration.",
+            description: "Weekly email with 5 breakout startups ranked by GitHub commit-velocity acceleration.",
           },
           {
             "@type": "Offer",
@@ -215,7 +216,7 @@ export default async function AlternativePage({ params }: PageProps) {
       />
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <nav className="mb-6 text-sm text-gray-500" aria-label="Breadcrumb">
+        <nav className="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300 transition-colors">
             All Sectors
           </Link>
@@ -316,7 +317,7 @@ export default async function AlternativePage({ params }: PageProps) {
               >
                 <summary className="cursor-pointer p-5 text-gray-100 font-medium flex items-center justify-between">
                   {faq.question}
-                  <span className="text-gray-600 group-open:rotate-180 transition-transform ml-2">
+                  <span className="text-gray-400 group-open:rotate-180 transition-transform ml-2">
                     &#9662;
                   </span>
                 </summary>
@@ -345,7 +346,7 @@ export default async function AlternativePage({ params }: PageProps) {
                   <h3 className="text-gray-200 font-medium text-sm group-hover:text-sky-400 transition-colors mb-1">
                     {s.name}
                   </h3>
-                  <p className="text-gray-500 text-xs">
+                  <p className="text-gray-400 text-xs">
                     {s.count} startups tracked &rarr;
                   </p>
                 </Link>
@@ -353,6 +354,59 @@ export default async function AlternativePage({ params }: PageProps) {
             </div>
           </section>
         )}
+
+        <section className="mb-12" aria-label="Other alternatives">
+          <h2 className="text-lg font-semibold text-gray-100 mb-4">
+            Other Alternatives to Compare
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {alternatives
+              .filter((a) => a.slug !== slug)
+              .slice(0, 6)
+              .map((a) => (
+                <Link
+                  key={a.slug}
+                  href={`/alternatives/${a.slug}`}
+                  className="group block rounded-lg border border-slate-800 bg-slate-900 p-4 hover:border-slate-600 transition-all"
+                >
+                  <h3 className="text-gray-200 font-medium text-sm group-hover:text-sky-400 transition-colors mb-1">
+                    {a.h1}
+                  </h3>
+                  <p className="text-gray-400 text-xs">
+                    {a.tagline}
+                  </p>
+                </Link>
+              ))}
+          </div>
+        </section>
+
+        <section className="mb-12" aria-label="Related use cases">
+          <h2 className="text-lg font-semibold text-gray-100 mb-4">
+            Related Use Cases
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {useCases
+              .filter((u) =>
+                u.relatedAlternatives?.includes(slug) ||
+                u.relatedSectors?.some((rs) => alt.relatedSectors.includes(rs))
+              )
+              .slice(0, 6)
+              .map((u) => (
+                <Link
+                  key={u.slug}
+                  href={`/use-cases/${u.slug}`}
+                  className="group block rounded-lg border border-slate-800 bg-slate-900 p-4 hover:border-slate-600 transition-all"
+                >
+                  <h3 className="text-gray-200 font-medium text-sm group-hover:text-sky-400 transition-colors mb-1">
+                    {u.persona}
+                  </h3>
+                  <p className="text-gray-400 text-xs">
+                    {u.tagline}
+                  </p>
+                </Link>
+              ))}
+          </div>
+        </section>
 
         <div className="rounded-xl border border-slate-800 bg-slate-900 p-6 sm:p-8 text-center">
           <h2 className="text-gray-100 font-semibold text-lg mb-2">
@@ -364,7 +418,7 @@ export default async function AlternativePage({ params }: PageProps) {
           </p>
           <Link
             href="https://gitdealflow.com/#signup"
-            className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-medium transition-colors"
+            className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-sky-700 hover:bg-sky-600 text-white text-sm font-medium transition-colors"
           >
             Get the Report
           </Link>

@@ -30,7 +30,7 @@ export async function generateMetadata({
   const { sector, year } = parsed;
   const sectorLower = sector.name.toLowerCase();
   const title = `Best ${sector.name} Startups ${year} — Top Engineering Momentum`;
-  const description = `The best ${sectorLower} startups in ${year} ranked by GitHub engineering acceleration. Commit velocity, contributor growth, and breakout signals for investors looking at ${sectorLower}.`;
+  const description = `The best ${sectorLower} startups in ${year} ranked by GitHub commit-velocity acceleration. Commit velocity, contributor growth, and breakout signals for investors looking at ${sectorLower}.`;
 
   return {
     title,
@@ -184,7 +184,7 @@ export default async function BestSectorPage({ params }: PageProps) {
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        <nav className="mb-6 text-sm text-gray-500" aria-label="Breadcrumb">
+        <nav className="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300 transition-colors">
             All Sectors
           </Link>
@@ -224,7 +224,7 @@ export default async function BestSectorPage({ params }: PageProps) {
 
         <section className="mb-10" aria-label="Startup rankings">
           <StartupTable startups={sorted} tableName={`Best ${sector.name} Startups ${year}`} />
-          <p className="mt-3 text-gray-600 text-xs">
+          <p className="mt-3 text-gray-400 text-xs">
             Ranked by commit velocity change (14-day window). Data: {period.name}.
           </p>
         </section>
@@ -264,7 +264,7 @@ export default async function BestSectorPage({ params }: PageProps) {
                 measures engineering acceleration, not absolute size.{" "}
                 <Link
                   href="/methodology"
-                  className="text-sky-500 hover:text-sky-400 transition-colors"
+                  className="text-sky-500 hover:text-sky-400 underline transition-colors"
                 >
                   Read the full methodology
                 </Link>
@@ -302,7 +302,7 @@ export default async function BestSectorPage({ params }: PageProps) {
                     <h3 className="text-gray-200 font-medium text-sm group-hover:text-sky-400 transition-colors mb-1">
                       Best {r.name} Startups {relYear}
                     </h3>
-                    <p className="text-gray-500 text-xs">
+                    <p className="text-gray-400 text-xs">
                       {r.startupCount} startups ranked &rarr;
                     </p>
                   </Link>

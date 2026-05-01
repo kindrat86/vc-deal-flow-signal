@@ -4,17 +4,28 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import LaunchBanner from "@/components/LaunchBanner";
 import PixelManager from "@/components/PixelManager";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
   title: {
-    default: "VC Deal Flow Signal — Startup Engineering Acceleration Tracker",
+    default: "VC Deal Flow Signal — GitHub Momentum Tracking for Investors",
     template: "%s | VC Deal Flow Signal",
   },
   description:
-    "Track startup engineering acceleration by sector. GitHub commit velocity, contributor growth, and breakout signals for investors.",
+    "GitHub commit-velocity tracking across 20 startup sectors. Quantifies code-side momentum (not startup accelerator programs) — contributor growth, repository expansion, breakout signals — to surface venture-backed startups 3–6 weeks before fundraise.",
+  keywords: [
+    "GitHub commit velocity",
+    "venture capital alternative data",
+    "startup deal flow",
+    "GitHub momentum tracking",
+    "code-side momentum signals",
+    "engineering velocity",
+    "contributor growth",
+    "VC sourcing",
+  ],
   metadataBase: new URL("https://signals.gitdealflow.com"),
   openGraph: {
     type: "website",
@@ -28,12 +39,32 @@ export const metadata: Metadata = {
       ],
     },
   },
+  icons: {
+    other: [
+      {
+        rel: "api-catalog",
+        url: "https://signals.gitdealflow.com/.well-known/api-catalog",
+      },
+      {
+        rel: "alternate",
+        url: "https://signals.gitdealflow.com/.well-known/mcp.json",
+      },
+      {
+        rel: "alternate",
+        url: "https://signals.gitdealflow.com/.well-known/agent-card.json",
+      },
+      {
+        rel: "alternate",
+        url: "https://signals.gitdealflow.com/api/openapi.json",
+      },
+    ],
+  },
   twitter: {
     card: "summary_large_image",
     site: "@data_nerd",
-    title: "VC Deal Flow Signal — Startup Engineering Acceleration Tracker",
+    title: "VC Deal Flow Signal — GitHub Momentum Tracking for Investors",
     description:
-      "Track startup engineering acceleration by sector. GitHub commit velocity, contributor growth, and breakout signals for investors.",
+      "GitHub commit-velocity tracking across 20 startup sectors. Code-side momentum (not accelerator programs) — surface venture-backed startups 3–6 weeks before fundraise.",
   },
   verification: {
     google: "s-WDDQiO4arDn993LDiErqQeGIhlIgRZq67kg-NC5k8",
@@ -49,6 +80,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full">
       <body className={`${inter.className} min-h-full flex flex-col bg-slate-950 text-gray-100`}>
+        <LaunchBanner />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

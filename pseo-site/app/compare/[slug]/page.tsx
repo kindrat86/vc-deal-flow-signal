@@ -186,7 +186,7 @@ export default async function ComparisonPage({ params }: PageProps) {
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Breadcrumb */}
-        <nav className="mb-6 text-sm text-gray-500" aria-label="Breadcrumb">
+        <nav className="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300 transition-colors">
             All Sectors
           </Link>
@@ -278,7 +278,7 @@ export default async function ComparisonPage({ params }: PageProps) {
                 >
                   <summary className="cursor-pointer p-5 text-gray-100 font-medium flex items-center justify-between">
                     {faq.question}
-                    <span className="text-gray-600 group-open:rotate-180 transition-transform ml-2">
+                    <span className="text-gray-400 group-open:rotate-180 transition-transform ml-2">
                       &#9662;
                     </span>
                   </summary>
@@ -309,7 +309,7 @@ export default async function ComparisonPage({ params }: PageProps) {
                   <h3 className="text-gray-200 font-medium text-sm group-hover:text-sky-400 transition-colors mb-1">
                     {s.name}
                   </h3>
-                  <p className="text-gray-500 text-xs">
+                  <p className="text-gray-400 text-xs">
                     {s.count} startups tracked &rarr;
                   </p>
                 </Link>
@@ -325,11 +325,11 @@ export default async function ComparisonPage({ params }: PageProps) {
           </h2>
           <p className="text-gray-400 text-sm mb-5 max-w-lg mx-auto">
             Get this week's top 5 breakout startups ranked by
-            GitHub engineering acceleration. Free, no spam.
+            GitHub commit-velocity acceleration. Free, no spam.
           </p>
           <Link
             href="https://gitdealflow.com/#signup"
-            className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-medium transition-colors"
+            className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-sky-700 hover:bg-sky-600 text-white text-sm font-medium transition-colors"
           >
             Get the Report
           </Link>
