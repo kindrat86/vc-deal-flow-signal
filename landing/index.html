@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- HOOK_TEST_VARIANT: B (calibrated honesty) | active 2026-05-01..2026-05-03 | per brunson/hook-test-2026-04-26.md -->
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VC Deal Flow Signal — GitHub Momentum Tracking for Investors</title>
-  <meta name="description" content="GitHub engineering acceleration for investors — open-source traction signals 6-12 weeks before the round. Top 5 breakout startups every Sunday. Free digest.">
-  <meta name="keywords" content="GitHub momentum tracking, open-source traction signals, pre-seed developer signal, engineering acceleration, founder discovery, alternative data venture capital, GitHub due diligence, commit velocity">
+  <meta name="description" content="GitHub commit-velocity tracking for venture investors — code-side momentum signals (not startup accelerator programs) on 4,200+ startup orgs, surfacing breakout teams 6–12 weeks before the round. Top 5 every Sunday. Free digest.">
+  <meta name="keywords" content="GitHub commit velocity, GitHub momentum tracking, code-side momentum signals, open-source traction signals, pre-seed developer signal, engineering acceleration (GitHub signal), founder discovery, alternative data venture capital, GitHub due diligence, contributor growth">
+  <meta name="author" content="The Data Nerd" />
+  <link rel="author" href="https://orcid.org/0009-0002-2222-4112" />
   <meta name="yandex-verification" content="f3f5891cbff0b50f" />
   <link rel="canonical" href="https://gitdealflow.com/" />
 
@@ -13,14 +16,14 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="VC Deal Flow Signal" />
   <meta property="og:title" content="VC Deal Flow Signal — GitHub Momentum Tracking for Investors" />
-  <meta property="og:description" content="Open-source traction signals 6-12 weeks before the round. GitHub engineering acceleration on 4,200+ startup orgs. Top 5 every Sunday. Free." />
+  <meta property="og:description" content="GitHub commit-velocity tracking on 4,200+ startup orgs — code-side momentum (not accelerator programs) 6–12 weeks before the round. Top 5 every Sunday. Free." />
   <meta property="og:url" content="https://gitdealflow.com/" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@data_nerd" />
   <meta name="twitter:title" content="VC Deal Flow Signal — GitHub Momentum Tracking for Investors" />
-  <meta name="twitter:description" content="Open-source traction signals 6-12 weeks before the round. GitHub engineering acceleration on 4,200+ startup orgs. Top 5 every Sunday." />
+  <meta name="twitter:description" content="GitHub commit-velocity tracking on 4,200+ startup orgs — code-side momentum (not accelerator programs) 6–12 weeks before the round. Top 5 every Sunday." />
   <meta property="og:image" content="https://signals.gitdealflow.com/opengraph-image">
   <meta name="twitter:image" content="https://signals.gitdealflow.com/opengraph-image">
 
@@ -31,23 +34,61 @@
     "@graph": [
       {
         "@type": "Organization",
+        "@id": "https://gitdealflow.com/#organization",
         "name": "VC Deal Flow Signal",
+        "alternateName": ["GitDealFlow", "VC Deal Flow Signal (GitDealFlow)"],
         "url": "https://gitdealflow.com",
-        "description": "We monitor GitHub engineering activity across thousands of startups and surface the ones showing unusual acceleration for investors.",
+        "description": "Venture-capital alternative-data product. We monitor GitHub commit velocity, contributor growth, and repository expansion across thousands of startups to surface code-side momentum — distinct from startup accelerator programs.",
         "email": "signal@gitdealflow.com",
+        "knowsAbout": [
+          "GitHub commit velocity",
+          "venture capital alternative data",
+          "code-side momentum signals",
+          "startup engineering acceleration (quantitative GitHub signal, distinct from accelerator programs)",
+          "open-source contributor-growth analytics",
+          "repository-expansion signals"
+        ],
+        "founder": {
+          "@type": "Person",
+          "@id": "https://signals.gitdealflow.com/about#person",
+          "name": "The Data Nerd",
+          "alternateName": "Data Nerd",
+          "jobTitle": "Founder, VC Deal Flow Signal",
+          "url": "https://signals.gitdealflow.com/about",
+          "sameAs": [
+            "https://orcid.org/0009-0002-2222-4112",
+            "https://x.com/data_nerd",
+            "https://github.com/kindrat86",
+            "https://news.ycombinator.com/user?id=the_data_nerd",
+            "https://www.indiehackers.com/The_Data_Nerd",
+            "https://dev.to/the_data_nerd",
+            "https://hashnode.com/@TheData_7cdit42c",
+            "https://hackernoon.com/u/TheData_7cdit42c"
+          ]
+        },
         "sameAs": [
           "https://x.com/data_nerd",
           "https://t.me/gitdealflow",
           "https://www.linkedin.com/company/gitdealflow",
           "https://www.wikidata.org/wiki/Q139376302",
           "https://www.crunchbase.com/organization/gitdealflow",
+          "https://www.producthunt.com/posts/vc-deal-flow-signal",
           "https://www.g2.com/products/gitdealflow/reviews",
           "https://www.saashub.com/git-deal-flow-alternatives",
           "https://stackshare.io/vc-deal-flow-signal-spot-breakout-startups-before-anyone-else",
           "https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn",
           "https://www.indiehackers.com/product/vc-deal-flow-signal",
           "https://inboxreads.co/n/gitdealflow-signal",
-          "https://alternativeto.net/software/vc-deal-flow-signal/"
+          "https://alternativeto.net/software/vc-deal-flow-signal/",
+          "https://www.npmjs.com/package/@gitdealflow/mcp-signal",
+          "https://github.com/kindrat86/gitdealflow-signal-classifier",
+          "https://ssrn.com/abstract=6606558",
+          "https://openalex.org/works/W7154916891",
+          "https://zenodo.org/records/19650920",
+          "https://api.crossref.org/works/10.2139/ssrn.6606558",
+          "https://www.semanticscholar.org/paper/A-Longitudinal-Panel-of-GitHub-Engineering-Velocity",
+          "https://kaggle.com/datasets/thedatanerd/vc-deal-flow-signal",
+          "https://signals.gitdealflow.com/citations"
         ]
       },
       {
@@ -217,16 +258,29 @@
   <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="stylesheet" href="/styles.css">
-  <style>html { scroll-behavior: smooth; }</style>
+  <link rel="preconnect" href="https://signals.gitdealflow.com" crossorigin>
+  <link rel="dns-prefetch" href="https://signals.gitdealflow.com">
+  <link rel="dns-prefetch" href="https://eu.i.posthog.com">
+  <style>
+    html { scroll-padding-top: 6rem; }
+    @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+  </style>
 </head>
 <body class="bg-dark-900 text-gray-100 font-sans antialiased">
-  <a href="#main-content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;" onfocus="this.style.position='static';this.style.width='auto';this.style.height='auto';" onblur="this.style.position='absolute';this.style.left='-9999px';this.style.width='1px';this.style.height='1px';" class="bg-brand-500 text-white px-4 py-2 rounded z-50">Skip to main content</a>
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:bg-brand-500 focus:text-white focus:px-4 focus:py-2 focus:rounded focus:shadow-lg">Skip to main content</a>
+  <div id="launch-banner" role="region" aria-label="Launch promotion" style="display:none;position:relative;background:linear-gradient(90deg,#0c4a6e 0%,#075985 100%);color:#e0f2fe;padding:10px 36px 10px 16px;font-size:14px;text-align:center;border-bottom:1px solid #0369a1;">
+    <a href="#pricing" id="launch-banner-link" style="color:#fef3c7;text-decoration:none;font-weight:600;">Launch week: 50% off 3 months — code <code style="background:rgba(254,243,199,0.15);padding:1px 6px;border-radius:4px;">PH50OFF</code></a>
+    <span style="opacity:0.85;margin-left:6px;">ends in <span id="launch-banner-countdown">…</span></span>
+    <button type="button" id="launch-banner-close" aria-label="Dismiss" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);background:transparent;color:#bae6fd;border:0;cursor:pointer;font-size:16px;line-height:1;padding:6px;">×</button>
+  </div>
+  <script>(function(){var b=document.getElementById('launch-banner');if(!b)return;try{if(localStorage.getItem('gd_banner_dismissed_v1')==='1')return;}catch(e){}b.style.display='block';var d=new Date('2026-06-25T23:59:00Z').getTime();var c=document.getElementById('launch-banner-countdown');function t(){var l=d-Date.now();if(l<=0){b.style.display='none';return;}var dd=Math.floor(l/86400000),hh=Math.floor((l%86400000)/3600000),mm=Math.floor((l%3600000)/60000);if(c)c.textContent=dd+'d '+hh+'h '+mm+'m';}t();var iv=setInterval(t,30000);document.getElementById('launch-banner-close').addEventListener('click',function(){b.style.display='none';try{localStorage.setItem('gd_banner_dismissed_v1','1');}catch(e){}clearInterval(iv);});document.getElementById('launch-banner-link').addEventListener('click',function(){if(window.posthog){try{window.posthog.capture('launch_banner_clicked');}catch(e){}}});})();</script>
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[60] focus:bg-brand-500 focus:text-white focus:px-4 focus:py-2 focus:rounded">Skip to main content</a>
 
   <header class="border-b border-gray-800 bg-dark-900/80 backdrop-blur-sm sticky top-0 z-50">
     <div class="max-w-4xl mx-auto px-6 h-14 flex items-center justify-between">
       <a href="/" class="text-gray-100 font-semibold text-base tracking-tight hover:text-brand-500 transition">VC Deal Flow Signal</a>
-      <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="md:hidden text-gray-300" aria-label="Toggle menu">
-        <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      <button type="button" id="mobile-menu-btn" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle menu" onclick="var m=document.getElementById('mobile-menu'),t=this;m.classList.toggle('hidden');t.setAttribute('aria-expanded',m.classList.contains('hidden')?'false':'true');" class="md:hidden text-gray-300">
+        <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
       </button>
       <nav class="hidden md:flex items-center gap-6">
         <a href="#method" class="text-gray-400 text-sm hover:text-gray-100 transition">The Method</a>
@@ -253,22 +307,39 @@
   <section class="relative overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-br from-dark-900 via-dark-800 to-brand-900 opacity-80"></div>
     <div class="relative max-w-4xl mx-auto px-6 py-24 md:py-36 text-center">
-      <p class="text-brand-500 font-semibold text-sm uppercase tracking-wider mb-4">For developers writing angel checks — who refuse to pay $10K/yr for last quarter's intel</p>
+      <p class="text-brand-500 font-semibold text-sm uppercase tracking-wider mb-4">For developers who already know the algorithm is buying — and want the receipts</p>
       <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
-        Bet on the repo.<br>Not the deck.
+        The 3-6 week head start your fund doesn't have.
       </h1>
       <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10">
-        <strong class="text-white">5 breakout startups</strong> in your inbox every Sunday — <strong class="text-white">3 weeks before TechCrunch</strong> picks them up. Pulled from 4,200 GitHub orgs. Free forever, no card.
+        We rank 4,200 GitHub orgs by commit velocity every Sunday. The pattern has preceded fundraise announcements by <strong class="text-white">3-6 weeks across 219 confirmed rounds</strong> — all replicable from the public dataset on Zenodo. <strong class="text-white">5 names, every Sunday. Free forever, no card.</strong>
       </p>
-      <div class="flex flex-col items-center gap-3">
-        <a href="#signup" onclick="if(window.posthog)posthog.capture('hero_cta_clicked')" class="group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-xl bg-gradient-to-br from-brand-500 via-brand-600 to-brand-700 px-12 py-5 text-lg font-bold tracking-tight text-white shadow-xl shadow-brand-600/40 ring-1 ring-white/10 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-2xl hover:shadow-brand-500/50 hover:ring-white/20">
-          <span aria-hidden="true" class="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent"></span>
-          <span class="relative">Show Me This Week's 5</span>
-          <span aria-hidden="true" class="relative transition-transform duration-200 group-hover:translate-x-1">&rarr;</span>
-        </a>
-        <p class="text-gray-500 text-sm">SSRN-published methodology &middot; cited in awesome-quant &middot; Glama A-Tier MCP &middot; unsubscribe in one click</p>
+      <div class="flex flex-col items-center gap-4">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-signal-500">&#9660; This Sunday's 5 &#9660;</p>
+        <div class="relative">
+          <div aria-hidden="true" class="pointer-events-none absolute inset-0 -mx-20 -my-10 rounded-full bg-signal-500/25 blur-3xl"></div>
+          <a href="#signup" onclick="if(window.posthog)posthog.capture('hero_cta_clicked',{variant:'B',target:'signup'})" class="group relative inline-flex items-center justify-center gap-3 whitespace-nowrap rounded-xl bg-signal-500 hover:bg-signal-400 active:bg-signal-600 px-8 md:px-12 py-4 md:py-5 text-base md:text-lg font-bold tracking-tight text-white shadow-[0_12px_32px_rgba(255,107,26,0.35)] hover:shadow-[0_18px_44px_rgba(255,107,26,0.55)] ring-1 ring-white/20 hover:ring-white/30 transition-all duration-150 ease-out hover:-translate-y-0.5 active:translate-y-0 animate-cta-pulse">
+            <span>Send Me This Sunday's 5</span>
+            <span aria-hidden="true" class="transition-transform duration-150 group-hover:translate-x-1">&rarr;</span>
+          </a>
+        </div>
+        <p class="text-gray-500 text-sm"><a href="https://ssrn.com/abstract=6606558" target="_blank" rel="noopener noreferrer" class="hover:text-gray-300 underline decoration-dotted">SSRN-published methodology</a> on 219 startups &middot; cited in awesome-quant &middot; Glama A-Tier MCP &middot; unsubscribe in one click</p>
       </div>
     </div>
+  </section>
+
+  <!-- §1.5 Hero Demo — silent screen-only walkthrough (anonymity-respecting VSL substitute) -->
+  <section aria-label="Product walkthrough" class="max-w-4xl mx-auto px-6 pt-10 pb-4">
+    <p class="text-center text-xs uppercase tracking-[0.2em] text-gray-500 mb-3">Watch the dashboard live &middot; 24 seconds &middot; captions on</p>
+    <div class="rounded-2xl border border-gray-700 bg-dark-900 overflow-hidden shadow-2xl shadow-brand-900/20 ring-1 ring-white/5 aspect-[1044/914]">
+      <video autoplay loop muted playsinline preload="metadata" poster="/mcp-demo.gif"
+             aria-label="GitDealFlow MCP server returning a ranked list of trending startups inside Claude"
+             width="1044" height="914" class="block w-full h-full object-cover">
+        <source src="/mcp-demo.mp4" type="video/mp4">
+        <img src="/mcp-demo.gif" alt="GitDealFlow returning a ranked list of trending startups" loading="lazy" decoding="async" width="1044" height="914" class="block w-full h-full object-cover">
+      </video>
+    </div>
+    <p class="text-center text-gray-500 text-xs mt-3">This is the same data the Sunday email pulls from. Ask Claude or open the dashboard &mdash; either way, you get the list.</p>
   </section>
 
   <!-- §12 Trust Strip — external credibility bridge (until user testimonials exist) -->
@@ -277,21 +348,23 @@
       <p class="text-gray-500 text-xs uppercase tracking-wider text-center mb-3">Dataset cited &middot; Registry-listed &middot; Public &amp; reproducible</p>
       <div class="flex flex-wrap justify-center items-center gap-x-6 gap-y-2 text-sm text-gray-400">
         <a href="https://doi.org/10.5281/zenodo.19650920" target="_blank" rel="noopener noreferrer" class="hover:text-gray-200 transition">Zenodo DOI</a>
-        <span class="text-gray-700">&middot;</span>
+        <span class="text-gray-700" aria-hidden="true">&middot;</span>
         <a href="https://www.kaggle.com/datasets/thedatanerd2026/vc-deal-flow-signal" target="_blank" rel="noopener noreferrer" class="hover:text-gray-200 transition">Kaggle Dataset</a>
-        <span class="text-gray-700">&middot;</span>
+        <span class="text-gray-700" aria-hidden="true">&middot;</span>
         <a href="https://ssrn.com/abstract=6606558" target="_blank" rel="noopener noreferrer" class="hover:text-gray-200 transition">SSRN Preprint</a>
-        <span class="text-gray-700">&middot;</span>
+        <span class="text-gray-700" aria-hidden="true">&middot;</span>
         <a href="https://glama.ai/mcp/servers/kindrat86/mcp-deal-flow-signal" target="_blank" rel="noopener noreferrer" class="hover:text-gray-200 transition">Glama A-Tier MCP</a>
-        <span class="text-gray-700">&middot;</span>
+        <span class="text-gray-700" aria-hidden="true">&middot;</span>
         <a href="https://www.crunchbase.com/organization/gitdealflow" target="_blank" rel="noopener noreferrer" class="hover:text-gray-200 transition">Crunchbase</a>
-        <span class="text-gray-700">&middot;</span>
+        <span class="text-gray-700" aria-hidden="true">&middot;</span>
+        <a href="https://www.producthunt.com/posts/vc-deal-flow-signal?utm_source=gitdealflow&amp;utm_medium=trust-strip&amp;utm_campaign=launch-2026-04-26" target="_blank" rel="noopener noreferrer" class="hover:text-gray-200 transition">Launched on Product Hunt</a>
+        <span class="text-gray-700" aria-hidden="true">&middot;</span>
         <a href="https://www.saashub.com/git-deal-flow?utm_source=badge&amp;utm_campaign=badge&amp;utm_content=git-deal-flow" target="_blank" rel="noopener noreferrer" class="hover:text-gray-200 transition">SaaSHub <span class="text-brand-500">&#10003;</span></a>
-        <span class="text-gray-700">&middot;</span>
+        <span class="text-gray-700" aria-hidden="true">&middot;</span>
         <a href="/g2" target="_blank" rel="noopener noreferrer" class="hover:text-gray-200 transition">Review us on G2 &rarr;</a>
-        <span class="text-gray-700">&middot;</span>
+        <span class="text-gray-700" aria-hidden="true">&middot;</span>
         <a href="https://www.wikidata.org/wiki/Q139376302" target="_blank" rel="noopener noreferrer" class="hover:text-gray-200 transition">Wikidata Q139376302</a>
-        <span class="text-gray-700">&middot;</span>
+        <span class="text-gray-700" aria-hidden="true">&middot;</span>
         <a href="https://stackshare.io/vc-deal-flow-signal-spot-breakout-startups-before-anyone-else" target="_blank" rel="noopener noreferrer" class="hover:text-gray-200 transition">StackShare</a>
       </div>
     </div>
@@ -322,9 +395,38 @@
           I went through hundreds of startups that had raised in the past year. The pattern held. Engineering acceleration leads the announcement by 3 to 6 weeks — sometimes more.
         </p>
         <p class="text-gray-100 text-lg leading-relaxed font-semibold">
-          So I built the lens. That's all GitDealFlow is. A lens on the one signal that's public, free, updating in real time — and read by exactly zero of your competitors.
+          So I built the lens. <strong class="text-white">A weekly window, opened 3-6 weeks before Crunchbase even knows the round is happening.</strong> That's all GitDealFlow is. Public data, real-time, read by exactly zero of your competitors.
         </p>
       </div>
+    </div>
+  </section>
+
+  <!-- §2.5 Real Social Proof Band — VERIFIED numbers (no invented testimonials per anonymity rule) -->
+  <section aria-label="Real usage signals" class="bg-dark-900/60 border-y border-gray-800 py-10">
+    <div class="max-w-5xl mx-auto px-6">
+      <p class="text-center text-xs uppercase tracking-[0.2em] text-gray-500 mb-6">What's actually happening &middot; live numbers, not testimonials</p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div>
+          <p class="text-3xl font-extrabold text-white">800+</p>
+          <p class="text-gray-500 text-xs mt-1 leading-relaxed">npm pulls<br>last 30 days</p>
+        </div>
+        <div>
+          <p class="text-3xl font-extrabold text-white">A-Tier</p>
+          <p class="text-gray-500 text-xs mt-1 leading-relaxed">Glama TDQS<br>4.9 / 5.0 across 5 tools</p>
+        </div>
+        <div>
+          <p class="text-3xl font-extrabold text-white">5</p>
+          <p class="text-gray-500 text-xs mt-1 leading-relaxed">free MCP tools<br>never gated</p>
+        </div>
+        <div>
+          <p class="text-3xl font-extrabold text-white">219</p>
+          <p class="text-gray-500 text-xs mt-1 leading-relaxed">startups in the<br>SSRN-published panel</p>
+        </div>
+      </div>
+      <!-- TESTIMONIALS:slot — populate from real subscriber wins; current state intentionally empty (anonymity + no fabrication rule) -->
+      <p class="text-center text-gray-400 text-sm mt-8 max-w-2xl mx-auto">
+        <strong class="text-white">Got a win from a Sunday email?</strong> Reply <code class="bg-brand-900/40 text-brand-300 px-1.5 py-0.5 rounded text-xs">WIN</code> to any digest with the startup name and outcome. With your OK, I'll add an anonymized line here. <span class="text-gray-500">First five wins lock in lifetime Insider Circle pricing.</span>
+      </p>
     </div>
   </section>
 
@@ -422,19 +524,22 @@
         <div class="bg-dark-900 rounded-xl p-8 border border-gray-700">
           <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-2">Reason #1 — The Vehicle Objection</p>
           <h3 class="text-xl font-semibold mb-3 text-white">"GitHub data is too noisy to be useful."</h3>
-          <p class="text-gray-300">We don't show raw commits. We show <strong class="text-white">acceleration patterns</strong> — when a company's engineering velocity deviates sharply from its own baseline. That's not noise, that's a regime change. And regime changes in engineering activity have historically preceded fundraise announcements by three to six weeks.</p>
+          <p class="text-gray-400 italic mb-3"><strong class="text-gray-300 not-italic">The Old Way:</strong> You hear "GitHub" and think 100M repos, 99% noise — bots, side projects, abandoned forks. You'd need a quant team and a year just to filter it. So you don't even start.</p>
+          <p class="text-gray-300"><strong class="text-white">The Truth:</strong> We don't show raw commits. We show <strong class="text-white">acceleration patterns</strong> — when a company's engineering velocity deviates sharply from its own baseline. That's not noise, that's a regime change. And regime changes in engineering activity have historically preceded fundraise announcements by three to six weeks.</p>
         </div>
 
         <div class="bg-dark-900 rounded-xl p-8 border border-gray-700">
           <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-2">Reason #2 — The External Objection</p>
           <h3 class="text-xl font-semibold mb-3 text-white">"I already have enough deal flow."</h3>
-          <p class="text-gray-300">Your network shows you what other investors already see. We show you what nobody else is watching. <strong class="text-white">The deals that generate outsized returns are the ones where you arrive before consensus forms.</strong> If you're sourcing from Twitter + warm intros, you're sourcing the same pipeline as every other partner at the fund down the street.</p>
+          <p class="text-gray-400 italic mb-3"><strong class="text-gray-300 not-italic">The Old Way:</strong> Your deal flow comes from Twitter, AngelList, and three group chats. By the time a name shows up, three other partners have already pinged the founder. You're not sourcing — you're racing.</p>
+          <p class="text-gray-300"><strong class="text-white">The Truth:</strong> Your network shows you what other investors already see. We show you what nobody else is watching. <strong class="text-white">The deals that generate outsized returns are the ones where you arrive before consensus forms.</strong> If you're sourcing from Twitter + warm intros, you're sourcing the same pipeline as every other partner at the fund down the street.</p>
         </div>
 
         <div class="bg-dark-900 rounded-xl p-8 border border-gray-700">
           <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-2">Reason #3 — The Internal Objection</p>
           <h3 class="text-xl font-semibold mb-3 text-white">"I'm not a quant — I wouldn't know what to do with raw engineering data."</h3>
-          <p class="text-gray-300">You won't see raw data. You'll see: <em class="text-gray-200">"Company X. Healthcare. Seed. +180% commit acceleration. 94 new contributors. Flagged 6 weeks ago. Still accelerating."</em> Then you reach out. <strong class="text-white">If you've ever sent a cold intro email to a founder, you already have every skill this requires.</strong> The analysis is finished before the report hits your inbox.</p>
+          <p class="text-gray-400 italic mb-3"><strong class="text-gray-300 not-italic">The Old Way:</strong> You opened a few founders' GitHubs once. Saw a wall of green squares. Closed the tab. "I'm not technical enough for this." So you went back to bios on LinkedIn — like everyone else.</p>
+          <p class="text-gray-300"><strong class="text-white">The Truth:</strong> You won't see raw data. You'll see: <em class="text-gray-200">"Company X. Healthcare. Seed. +180% commit acceleration. 94 new contributors. Flagged 6 weeks ago. Still accelerating."</em> Then you reach out. <strong class="text-white">If you've ever sent a cold intro email to a founder, you already have every skill this requires.</strong> The analysis is finished before the report hits your inbox.</p>
         </div>
 
       </div>
@@ -445,11 +550,11 @@
   <section class="max-w-4xl mx-auto px-6 py-20">
     <h2 class="text-3xl font-bold text-center mb-4">The Old Way vs. The New Way</h2>
     <p class="text-gray-400 text-center mb-14 max-w-2xl mx-auto">Harmonic, Dealroom, PitchBook — they all sell the same expensive mirror. GitDealFlow sells the window.</p>
-    <div class="overflow-hidden rounded-xl border border-gray-700">
-      <table class="w-full">
+    <div class="overflow-x-auto rounded-xl border border-gray-700">
+      <table class="w-full min-w-[640px]">
         <thead>
           <tr class="bg-dark-800">
-            <th class="px-4 py-3 text-left text-xs uppercase tracking-wider text-gray-500"></th>
+            <th class="px-4 py-3 text-left text-xs uppercase tracking-wider text-gray-500"><span class="sr-only">Category</span></th>
             <th class="px-4 py-3 text-left text-xs uppercase tracking-wider text-gray-500">The Old Way<br><span class="text-gray-600 normal-case text-xs">Harmonic · Dealroom · PitchBook</span></th>
             <th class="px-4 py-3 text-left text-xs uppercase tracking-wider text-brand-500">The New Way<br><span class="text-gray-300 normal-case text-xs">GitDealFlow</span></th>
           </tr>
@@ -472,6 +577,56 @@
       "The next generation of great investments will be found in data, not networks. The best startups leave footprints in their code long before they leave footprints in the press. My mission: make engineering momentum visible to every investor — not just the ones with the right connections."
     </blockquote>
     <p class="text-gray-500 mt-4 text-sm">— The Data Nerd</p>
+  </section>
+
+  <!-- §8 Named Guarantee — "Signal or It's Free" (moved above pricing per Brunson: kill objections before the price) -->
+  <section class="max-w-3xl mx-auto px-6 pt-16 pb-12">
+    <div class="rounded-2xl border-2 border-emerald-500/40 bg-emerald-500/5 p-8 md:p-10">
+      <div class="flex flex-col md:flex-row items-start gap-6">
+        <div class="flex-shrink-0 mx-auto md:mx-0">
+          <div class="w-20 h-20 rounded-full bg-emerald-500/20 border-2 border-emerald-500/50 flex items-center justify-center">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+          </div>
+        </div>
+        <div class="flex-1">
+          <p class="text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-2">The guarantee</p>
+          <h2 class="text-2xl md:text-3xl font-bold mb-4">The "Signal or It's Free" Promise — <span class="text-emerald-400">60 days</span></h2>
+          <p class="text-gray-300 leading-relaxed mb-4">
+            Try the Dashboard for <strong class="text-white">60 full days</strong>. That's eight Sunday digests. If across all of them you don't see at least one startup you would have missed without us — or if you're just not feeling it — reply to any email and I refund every euro. <strong class="text-white">No forms. No call. No questions.</strong> You even keep the reports.
+          </p>
+          <p class="text-gray-500 text-sm">— Signed, The Data Nerd</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- §7.0 Tripwire — First Look Pass — €7 one-time (Brunson buyer-threshold breaker; waitlist until Stripe link is live) -->
+  <section id="firstlook" class="max-w-3xl mx-auto px-6 pb-12">
+    <div class="rounded-2xl border border-signal-500/40 bg-signal-500/5 p-6 md:p-8">
+      <div class="flex flex-col md:flex-row items-start gap-5">
+        <div class="flex-shrink-0">
+          <div class="w-16 h-16 rounded-full bg-signal-500/20 border-2 border-signal-500/50 flex items-center justify-center text-3xl font-bold text-signal-500">€7</div>
+        </div>
+        <div class="flex-1">
+          <p class="text-signal-500 text-xs font-semibold uppercase tracking-wider mb-2">Optional &middot; one-time &middot; before you subscribe</p>
+          <h3 class="text-2xl md:text-3xl font-bold mb-3">First Look Pass</h3>
+          <p class="text-gray-300 leading-relaxed mb-4">
+            Not ready for a subscription? Pay <strong class="text-white">€7 once</strong> and get the <strong class="text-white">Sector Deep Dive</strong> on whichever sector you pick — full GitHub momentum table, 14-day acceleration deltas, contributor maps, and the top 3 names that haven't shown up on Crunchbase yet. <span class="text-gray-500">Delivered to your inbox within 24 hours.</span>
+          </p>
+          <ul class="space-y-1.5 text-sm text-gray-300 mb-5">
+            <li class="flex items-start gap-2"><span class="text-signal-500 mt-1">&#10003;</span> Pick any of our 20 tracked sectors at checkout</li>
+            <li class="flex items-start gap-2"><span class="text-signal-500 mt-1">&#10003;</span> Includes raw CSV + ranked PDF</li>
+            <li class="flex items-start gap-2"><span class="text-signal-500 mt-1">&#10003;</span> If you upgrade to Dashboard within 14 days, the €7 is credited</li>
+          </ul>
+          <form id="firstlook-form" class="flex flex-col sm:flex-row gap-2" onsubmit="if(window.posthog)posthog.capture('firstlook_checkout_clicked',{cta:'get_pass'});return GDFsignup(event,'firstlook');">
+            <label for="firstlook-email" class="sr-only">Email address for First Look Pass</label>
+            <input type="email" required id="firstlook-email" name="email" placeholder="you@yourfund.com" class="flex-1 px-4 py-3 rounded-lg bg-dark-900 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-signal-500" aria-label="Your email for First Look Pass checkout">
+            <button type="submit" class="bg-signal-500 hover:bg-signal-400 text-white font-semibold px-6 py-3 rounded-lg transition whitespace-nowrap">Get The Pass &mdash; €7 &rarr;</button>
+          </form>
+          <p class="text-gray-500 text-xs mt-3">Secure checkout via Stripe. First 50 passes lock the €7 price &mdash; goes to €19 after launch. Sector picked at checkout, deep dive shipped within 24 hours. <a href="/firstlook/sample" class="text-signal-500 hover:text-signal-400 underline decoration-dotted">See a sample first &rarr;</a></p>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- §7 Stacked Offer + Pricing — with value anchors -->
@@ -501,14 +656,15 @@
 
         <!-- Pro: Dashboard (Brunson stack with value anchors) -->
         <div class="bg-dark-900 rounded-2xl p-8 border-2 border-brand-600 relative md:transform md:scale-105 shadow-xl shadow-brand-900/30">
-          <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand-600 text-white text-xs font-bold px-3 py-1 rounded-full">FOUNDING MEMBER · 30 SEATS</span>
+          <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand-600 text-white text-xs font-bold px-3 py-1 rounded-full">FOUNDING MEMBER <span aria-hidden="true">·</span> 30 SEATS</span>
           <h3 class="text-xl font-bold mb-2">Dashboard <span class="text-sm text-brand-500 font-normal">Early Access</span></h3>
           <div class="flex items-baseline gap-2 mb-1">
             <p class="text-4xl font-extrabold">€9.97</p>
             <p class="text-gray-500 line-through text-lg">€49</p>
           </div>
           <p class="text-gray-400 text-sm mb-2">per month — locked forever</p>
-          <p class="text-brand-500 text-xs font-semibold mb-6">Goes to €49/mo after May 15 or 30 signups.</p>
+          <p class="text-brand-500 text-xs font-semibold mb-3">Goes to €49/mo after May 15 or 30 signups.</p>
+          <p class="text-gray-400 text-xs mb-6 italic">€9.97 isn't cheap. It's independent. No enterprise sales team to fund, no markup. The price is the math.</p>
 
           <p class="text-xs text-gray-500 uppercase tracking-wider mb-3">The stack</p>
           <ul class="space-y-3 text-gray-300 mb-6 text-sm">
@@ -529,12 +685,12 @@
           </div>
 
           <a href="https://buy.stripe.com/28E7sK48H04U8ou07u0x200" onclick="if(window.posthog)posthog.capture('dashboard_checkout_clicked')" class="block text-center bg-brand-600 hover:bg-brand-700 text-white font-semibold py-3 rounded-lg transition">Lock In Founding Price &rarr;</a>
-          <p class="text-gray-500 text-xs text-center mt-3">Covered by the "Signal or It's Free" guarantee &darr;</p>
+          <p class="text-gray-500 text-xs text-center mt-3">Covered by the "Signal or It's Free" guarantee &uarr;</p>
         </div>
 
         <!-- Premium: Insider Circle -->
         <div class="bg-dark-900 rounded-2xl p-8 border border-gray-700 relative">
-          <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gray-600 text-white text-xs font-bold px-3 py-1 rounded-full">INSIDER CIRCLE · LIMITED</span>
+          <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gray-600 text-white text-xs font-bold px-3 py-1 rounded-full">INSIDER CIRCLE <span aria-hidden="true">·</span> LIMITED</span>
           <h3 class="text-xl font-bold mb-2">Insider Circle <span class="text-sm text-brand-500 font-normal">Beta</span></h3>
           <div class="flex items-baseline gap-2 mb-1">
             <p class="text-4xl font-extrabold">€97</p>
@@ -560,43 +716,71 @@
             <p class="text-emerald-400 font-semibold mt-1">You save €7,419 in year one.</p>
           </div>
 
-          <a href="https://buy.stripe.com/4gM00ifRpcRG2069I40x202" onclick="if(window.posthog)posthog.capture('insider_checkout_clicked')" class="block text-center bg-gray-700 hover:bg-gray-600 text-white font-semibold py-3 rounded-lg transition mb-2">Join the Insider Circle</a>
-          <a href="/insider" class="block text-center text-brand-500 hover:text-brand-200 text-xs transition">Read the full breakdown &rarr;</a>
+          <p class="text-gray-500 text-xs mb-3">Best for active investors syndicating 6+ deals/year.</p>
+          <a href="https://buy.stripe.com/4gM00ifRpcRG2069I40x202" onclick="if(window.posthog)posthog.capture('insider_checkout_clicked')" class="block text-center bg-gray-700 hover:bg-gray-600 text-white font-semibold py-3 rounded-lg transition">Join the Insider Circle</a>
         </div>
 
       </div>
-    </div>
-  </section>
 
-  <!-- §8 Named Guarantee — "Signal or It's Free" -->
-  <section class="max-w-3xl mx-auto px-6 py-20">
-    <div class="rounded-2xl border-2 border-emerald-500/40 bg-emerald-500/5 p-8 md:p-10">
-      <div class="flex flex-col md:flex-row items-start gap-6">
-        <div class="flex-shrink-0 mx-auto md:mx-0">
-          <div class="w-20 h-20 rounded-full bg-emerald-500/20 border-2 border-emerald-500/50 flex items-center justify-center">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+      <!-- §7.5 Sharp Tier — high-ticket application-gated for funds + active syndicates -->
+      <div class="mt-16 max-w-4xl mx-auto">
+        <div class="rounded-2xl border border-yellow-500/30 bg-gradient-to-br from-yellow-500/[0.04] via-dark-900 to-dark-900 p-8 md:p-10">
+          <div class="flex flex-col md:flex-row items-start gap-6">
+            <div class="flex-shrink-0">
+              <span class="inline-block bg-yellow-500/15 text-yellow-300 text-[10px] font-bold uppercase tracking-[0.2em] px-3 py-1.5 rounded-full border border-yellow-500/30">Application required</span>
+            </div>
+            <div class="flex-1">
+              <h3 class="text-2xl md:text-3xl font-bold mb-3">Sharp Tier <span class="text-yellow-300 text-base font-normal">— for funds &amp; active syndicates</span></h3>
+              <p class="text-gray-300 leading-relaxed mb-5">
+                Everything in Insider Circle, plus the parts of the work that don't scale: <strong class="text-white">a quarterly portfolio review call where we map your existing holdings against the live signal, a custom watchlist co-built around your thesis, your own slug under <code class="text-yellow-200 bg-yellow-500/10 px-1.5 py-0.5 rounded text-xs">/api/v1/sharp/&lt;your-fund&gt;</code> for white-label dashboards, and direct access to the methodology source code.</strong>
+              </p>
+              <div class="grid md:grid-cols-2 gap-3 text-sm text-gray-300 mb-6">
+                <div class="flex items-start gap-2"><span class="text-yellow-300 mt-1">&#10003;</span> Quarterly 60-min portfolio review call</div>
+                <div class="flex items-start gap-2"><span class="text-yellow-300 mt-1">&#10003;</span> Custom thesis-aligned watchlist (built with you)</div>
+                <div class="flex items-start gap-2"><span class="text-yellow-300 mt-1">&#10003;</span> White-labeled API endpoint &amp; data feed</div>
+                <div class="flex items-start gap-2"><span class="text-yellow-300 mt-1">&#10003;</span> Same-day signal questions answered</div>
+                <div class="flex items-start gap-2"><span class="text-yellow-300 mt-1">&#10003;</span> Data-room exports for LP updates</div>
+                <div class="flex items-start gap-2"><span class="text-yellow-300 mt-1">&#10003;</span> All future paid MCP tools, no per-tool upcharge</div>
+              </div>
+              <div class="flex flex-col md:flex-row md:items-baseline gap-3 mb-5">
+                <p class="text-3xl md:text-4xl font-extrabold text-white">€497<span class="text-base font-normal text-gray-400">/mo</span></p>
+                <p class="text-gray-500 text-sm">or €4,970/yr — annual saves two months</p>
+              </div>
+              <a href="mailto:signal@gitdealflow.com?subject=Sharp%20Tier%20Application%20%E2%80%94%20%5BYour%20Fund%5D&amp;body=Hi%20%E2%80%94%0A%0AFund%2Fsyndicate%20name%3A%20%0AAUM%20or%20deals%2Fyear%3A%20%0AThesis%20focus%3A%20%0AHow%20you%20heard%20about%20us%3A%20%0A%0AOne%20thing%20you%27d%20want%20the%20quarterly%20review%20call%20to%20cover%3A%20%0A%0AThanks%2C%0A" onclick="if(window.posthog)posthog.capture('sharp_tier_apply_clicked')" class="inline-block bg-yellow-500 hover:bg-yellow-400 text-dark-900 font-bold px-6 py-3 rounded-lg transition">Apply for Sharp Tier &rarr;</a>
+              <p class="text-gray-500 text-xs mt-3">Capped at 8 funds in 2026. We reply within 48 hours with a 20-min intro call &mdash; if there's a fit, we onboard the same week.</p>
+            </div>
           </div>
         </div>
-        <div class="flex-1">
-          <p class="text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-2">The guarantee</p>
-          <h2 class="text-2xl md:text-3xl font-bold mb-4">The "Signal or It's Free" Promise</h2>
-          <p class="text-gray-300 leading-relaxed mb-4">
-            Try the Dashboard for 30 days. If you don't see at least one startup you would have missed without us — or if you're just not feeling it — reply to any email and I refund every euro. <strong class="text-white">No forms. No call. No questions.</strong> You even keep the reports.
-          </p>
-          <p class="text-gray-500 text-sm">— Signed, The Data Nerd</p>
-        </div>
       </div>
     </div>
   </section>
 
-  <!-- §9 Urgency Bar — concrete scarcity -->
+  <!-- §9 Urgency Bar — live countdown to founding-price close -->
   <section class="max-w-4xl mx-auto px-6 pb-10">
     <div class="rounded-xl border border-brand-600/40 bg-brand-900/20 p-6 text-center">
-      <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-2">Founding-member window</p>
-      <p class="text-white text-lg leading-relaxed">
-        <strong>Closes May 15, 2026</strong> or at <strong>30 Dashboard signups</strong> — whichever comes first. After that, the €9.97/mo price is gone forever and Dashboard becomes €49/mo. Lock it in now and your price stays €9.97/mo permanently.
+      <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-3">Founding-member window closes in</p>
+      <div id="countdown-urgency" class="flex justify-center items-center gap-3 md:gap-6 mb-4 font-extrabold text-white" data-deadline="2026-05-15T23:59:59Z" aria-live="polite">
+        <div class="flex flex-col"><span class="text-3xl md:text-5xl tabular-nums" data-cd="d">--</span><span class="text-[10px] md:text-xs uppercase tracking-wider text-gray-500 font-semibold">days</span></div>
+        <span class="text-gray-700 text-2xl md:text-4xl">:</span>
+        <div class="flex flex-col"><span class="text-3xl md:text-5xl tabular-nums" data-cd="h">--</span><span class="text-[10px] md:text-xs uppercase tracking-wider text-gray-500 font-semibold">hrs</span></div>
+        <span class="text-gray-700 text-2xl md:text-4xl">:</span>
+        <div class="flex flex-col"><span class="text-3xl md:text-5xl tabular-nums" data-cd="m">--</span><span class="text-[10px] md:text-xs uppercase tracking-wider text-gray-500 font-semibold">min</span></div>
+        <span class="text-gray-700 text-2xl md:text-4xl">:</span>
+        <div class="flex flex-col"><span class="text-3xl md:text-5xl tabular-nums text-signal-500" data-cd="s">--</span><span class="text-[10px] md:text-xs uppercase tracking-wider text-gray-500 font-semibold">sec</span></div>
+      </div>
+      <p class="text-white text-base md:text-lg leading-relaxed">
+        <strong>Closes May 15, 2026</strong> or at <strong>30 Dashboard signups</strong> — whichever comes first. After that, Dashboard becomes €49/mo permanently. Lock it in now and your price stays €9.97/mo forever.
       </p>
     </div>
+  </section>
+
+  <!-- Future Pace — 90-day mental movie before final CTA (Brunson close) -->
+  <section class="max-w-3xl mx-auto px-6 pt-12 pb-6">
+    <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider text-center mb-3">Three months from now</p>
+    <p class="text-gray-300 text-lg leading-relaxed text-center">
+      A founder you tracked six weeks ago announces an $8M seed. You email them: <em class="text-white">"Saw your repo activity in March. I've been watching since. Can we talk?"</em> They reply: <em class="text-white">"How did you find me?"</em>
+      <span class="block mt-3 text-gray-500 text-sm">That's the GitDealFlow advantage. Sunday at 9am, in your inbox.</span>
+    </p>
   </section>
 
   <!-- §10 Primary Email Signup — with lead-magnet preview -->
@@ -627,6 +811,7 @@
     </div>
 
     <form id="signup-form" class="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto">
+      <label for="signup-email" class="sr-only">Email address</label>
       <input type="email" id="signup-email" placeholder="you@example.com" required aria-label="Email address" class="flex-1 px-5 py-4 rounded-lg bg-dark-800 border border-gray-600 text-gray-100 placeholder-gray-500 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 text-lg">
       <button type="submit" id="signup-btn" class="px-8 py-4 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-lg text-lg transition whitespace-nowrap">Send Me The 5 &rarr;</button>
     </form>
@@ -651,33 +836,58 @@
     </div>
   </section>
 
+  <!-- §10b Free bonus: Scout Score README badge (autonomous viral compounder, 2026-04-26) -->
+  <section class="max-w-4xl mx-auto px-6 py-8">
+    <div class="rounded-xl border border-sky-500/30 bg-sky-500/10 p-6 md:p-8">
+      <div class="flex flex-col sm:flex-row items-start items-center gap-6">
+        <div class="flex-1">
+          <p class="text-sky-400 text-xs font-semibold uppercase tracking-wider mb-2">Free bonus &middot; Scout Score badge</p>
+          <h3 class="text-2xl font-bold text-white mb-2">Drop a live Scout Score in your GitHub README</h3>
+          <p class="text-gray-300 leading-relaxed mb-4">
+            Free shields.io-style SVG badge for any GitHub profile. Auto-updates from your starring history vs. ~75 validated unicorns. Same look as Codecov or WakaTime &mdash; no signup, no telemetry, zero tracking pixel. <a href="https://signals.gitdealflow.com/badge-builder" class="text-sky-400 hover:text-sky-300 underline">Open the builder &rarr;</a>
+          </p>
+          <div class="inline-flex items-center gap-2 mt-1">
+            <img src="https://signals.gitdealflow.com/api/badge/scout/kindrat86/svg" alt="Sample Scout Score badge" width="160" height="20" loading="lazy" decoding="async" class="h-5 block">
+            <img src="https://signals.gitdealflow.com/api/badge/momentum/mlflow/mlflow/svg" alt="Sample Commit Momentum badge" width="160" height="20" loading="lazy" decoding="async" class="h-5 block">
+          </div>
+        </div>
+        <a href="https://signals.gitdealflow.com/badge-builder" rel="noopener" class="inline-block bg-sky-600 hover:bg-sky-500 text-white font-semibold px-6 py-3 rounded-lg transition whitespace-nowrap">Get your badge &rarr;</a>
+      </div>
+    </div>
+  </section>
+
   <!-- §11 Ascension: MCP (reframed — single CTA to main signup, no duplicate email form) -->
   <section id="mcp" class="max-w-4xl mx-auto px-6 py-16">
     <div class="rounded-2xl border border-gray-700 bg-dark-800 overflow-hidden">
 
-      <video autoplay loop muted playsinline preload="metadata" poster="/mcp-demo.gif"
-             aria-label="Claude querying VC Deal Flow Signal MCP server for trending startups"
-             style="width:100%;display:block;background:#0f172a">
-        <source src="/mcp-demo.mp4" type="video/mp4">
-        <img src="/mcp-demo.gif" alt="Claude querying VC Deal Flow Signal MCP server" style="width:100%;display:block">
-      </video>
+      <div class="aspect-[1044/914] bg-dark-900">
+        <video autoplay loop muted playsinline preload="metadata" poster="/mcp-demo.gif"
+               aria-label="Claude querying VC Deal Flow Signal MCP server for trending startups"
+               width="1044" height="914" class="block w-full h-full object-cover">
+          <source src="/mcp-demo.mp4" type="video/mp4">
+          <img src="/mcp-demo.gif" alt="Claude querying VC Deal Flow Signal MCP server" loading="lazy" decoding="async" width="1044" height="914" class="block w-full h-full object-cover">
+        </video>
+      </div>
 
       <div class="p-8">
-        <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:1.25rem">
-          <span style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;background:rgba(14,165,233,0.1);border:1px solid rgba(14,165,233,0.2);font-size:18px">&#x1F916;</span>
-          <span class="text-xs text-gray-500 font-semibold uppercase tracking-wider">Free bonus · Claude MCP Integration</span>
+        <div class="flex items-center gap-2.5 mb-5">
+          <span class="inline-flex items-center justify-center w-9 h-9 rounded-[10px] bg-brand-500/10 border border-brand-500/20 text-lg" aria-hidden="true">&#x1F916;</span>
+          <span class="text-xs text-gray-500 font-semibold uppercase tracking-wider">Free bonus <span aria-hidden="true">·</span> Claude MCP Integration</span>
         </div>
 
         <h2 class="text-3xl font-bold mb-3">Ask Claude About Your Deal Flow</h2>
-        <p class="text-gray-300 text-lg leading-relaxed mb-6" style="max-width:38rem">
+        <p class="text-emerald-400 text-sm font-semibold mb-3 max-w-[38rem]">
+          5 tools — <code class="text-emerald-300 bg-emerald-500/10 px-1.5 py-0.5 rounded text-xs">get_trending_startups</code>, <code class="text-emerald-300 bg-emerald-500/10 px-1.5 py-0.5 rounded text-xs">search_startups_by_sector</code>, <code class="text-emerald-300 bg-emerald-500/10 px-1.5 py-0.5 rounded text-xs">get_startup_signal</code>, <code class="text-emerald-300 bg-emerald-500/10 px-1.5 py-0.5 rounded text-xs">get_signals_summary</code>, <code class="text-emerald-300 bg-emerald-500/10 px-1.5 py-0.5 rounded text-xs">get_scout_receipts</code> — free forever in Claude, Cursor, and any MCP client. We will never gate them. New paid tools come on top.
+        </p>
+        <p class="text-gray-300 text-lg leading-relaxed mb-6 max-w-[38rem]">
           Install the MCP server once, and Claude becomes your deal-flow analyst. Ask <em>"which fintech startups are accelerating?"</em> and get live signal data — no dashboard needed.
         </p>
 
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem 1.5rem;margin-bottom:2rem;max-width:34rem">
-          <div class="flex items-start gap-2 text-sm text-gray-300"><span class="text-brand-500" style="margin-top:2px">&#10003;</span> Trending startups weekly</div>
-          <div class="flex items-start gap-2 text-sm text-gray-300"><span class="text-brand-500" style="margin-top:2px">&#10003;</span> Search 20 sectors live</div>
-          <div class="flex items-start gap-2 text-sm text-gray-300"><span class="text-brand-500" style="margin-top:2px">&#10003;</span> Deep startup profiles</div>
-          <div class="flex items-start gap-2 text-sm text-gray-300"><span class="text-brand-500" style="margin-top:2px">&#10003;</span> Works in Claude Desktop &amp; CLI</div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 mb-8 max-w-[34rem]">
+          <div class="flex items-start gap-2 text-sm text-gray-300"><span class="text-brand-500 mt-0.5">&#10003;</span> Trending startups weekly</div>
+          <div class="flex items-start gap-2 text-sm text-gray-300"><span class="text-brand-500 mt-0.5">&#10003;</span> Search 20 sectors live</div>
+          <div class="flex items-start gap-2 text-sm text-gray-300"><span class="text-brand-500 mt-0.5">&#10003;</span> Deep startup profiles</div>
+          <div class="flex items-start gap-2 text-sm text-gray-300"><span class="text-brand-500 mt-0.5">&#10003;</span> Works in Claude Desktop &amp; CLI</div>
         </div>
 
         <a href="#signup" class="inline-block bg-brand-600 hover:bg-brand-700 text-white font-semibold px-6 py-3 rounded-lg transition">Get the setup guide (comes with the digest) &rarr;</a>
@@ -797,7 +1007,109 @@
       if (guaranteeBlock) { guaranteeBlock.setAttribute('data-ev', 'trust_strip_viewed'); obs.observe(guaranteeBlock); }
       const gSection = document.querySelector('section .border-emerald-500\\/40');
       if (gSection) { gSection.setAttribute('data-ev', 'guarantee_viewed'); obs.observe(gSection); }
+      const firstlookEl = document.getElementById('firstlook');
+      if (firstlookEl) { firstlookEl.setAttribute('data-ev', 'firstlook_viewed'); obs.observe(firstlookEl); }
     }
+
+    // Brunson improvement — live countdown ticker on #countdown-urgency (data-deadline ISO)
+    (function(){
+      const root = document.getElementById('countdown-urgency');
+      if (!root) return;
+      const deadline = new Date(root.getAttribute('data-deadline')).getTime();
+      if (isNaN(deadline)) return;
+      const f = { d: root.querySelector('[data-cd="d"]'), h: root.querySelector('[data-cd="h"]'), m: root.querySelector('[data-cd="m"]'), s: root.querySelector('[data-cd="s"]') };
+      const pad = (n) => (n < 10 ? '0' : '') + n;
+      function tick(){
+        const left = deadline - Date.now();
+        if (left <= 0) {
+          if (f.d) f.d.textContent = '00';
+          if (f.h) f.h.textContent = '00';
+          if (f.m) f.m.textContent = '00';
+          if (f.s) f.s.textContent = '00';
+          return;
+        }
+        if (f.d) f.d.textContent = Math.floor(left/86400000);
+        if (f.h) f.h.textContent = pad(Math.floor((left%86400000)/3600000));
+        if (f.m) f.m.textContent = pad(Math.floor((left%3600000)/60000));
+        if (f.s) f.s.textContent = pad(Math.floor((left%60000)/1000));
+      }
+      tick();
+      setInterval(tick, 1000);
+    })();
+
+    // Brunson improvement — hero CTA variant rotator (sticky per-visitor via localStorage; tags PostHog)
+    (function(){
+      const cta = document.querySelector('a[href="#signup"][onclick*="hero_cta_clicked"]');
+      if (!cta) return;
+      const variants = [
+        "Send Me This Sunday's 5",
+        "Show Me The Sharps",
+        "Get The Pre-Consensus List",
+        "I Want The Sunday Five"
+      ];
+      let idx;
+      try {
+        const stored = localStorage.getItem('gd_cta_variant');
+        idx = stored !== null ? parseInt(stored, 10) : Math.floor(Math.random() * variants.length);
+        if (isNaN(idx) || idx < 0 || idx >= variants.length) idx = Math.floor(Math.random() * variants.length);
+        localStorage.setItem('gd_cta_variant', String(idx));
+      } catch(e) { idx = Math.floor(Math.random() * variants.length); }
+      const labelSpan = cta.querySelector('span:not([aria-hidden])');
+      if (labelSpan) labelSpan.textContent = variants[idx];
+      cta.setAttribute('data-variant', String(idx));
+      cta.setAttribute('onclick', "if(window.posthog)posthog.capture('hero_cta_clicked',{variant:'" + variants[idx].replace(/'/g, "\\'") + "',variant_idx:" + idx + "})");
+      if (window.posthog) { try { window.posthog.capture('cta_variant_exposed', { variant: variants[idx], variant_idx: idx }); } catch(e){} }
+    })();
+
+    // Brunson improvement — First Look Pass: live €7 Stripe checkout
+    // Captures email server-side (fire-and-forget recovery email with checkout link)
+    // then immediately redirects user to Stripe with email pre-filled.
+    window.FIRSTLOOK_STRIPE_URL = 'https://buy.stripe.com/28E6oGdJh18YgV04nK0x203';
+    window.GDFsignup = function(event, source) {
+      event.preventDefault();
+      const form = event.target;
+      const btn = form.querySelector('button[type="submit"]');
+      const emailEl = form.querySelector('input[type="email"]');
+      const email = emailEl ? emailEl.value.trim() : '';
+      if (!email) return false;
+      btn.disabled = true;
+      btn.textContent = 'Loading checkout…';
+
+      // 1) Fire-and-forget: tag email + send tailored "finish your checkout" email as a recovery net
+      try {
+        fetch('https://signals.gitdealflow.com/api/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: email, source: source || 'firstlook' }),
+          keepalive: true
+        }).catch(function(){});
+      } catch(e){}
+
+      if (window.posthog) {
+        try { posthog.capture('firstlook_checkout_redirect', { source: source, email_domain: email.split('@')[1] || '' }); } catch(e){}
+      }
+
+      // 2) Hard redirect to Stripe Payment Link with email pre-filled
+      var checkoutUrl = window.FIRSTLOOK_STRIPE_URL + '?prefilled_email=' + encodeURIComponent(email);
+      window.location.href = checkoutUrl;
+      return false;
+    };
+
+    // Show a discreet "thanks" toast if user just returned from a successful Stripe checkout
+    (function(){
+      try {
+        var p = new URLSearchParams(window.location.search);
+        if (p.get('firstlook') === 'thanks') {
+          var bar = document.createElement('div');
+          bar.style.cssText = 'position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#10b981;color:#fff;padding:12px 20px;border-radius:10px;font-weight:600;font-size:14px;box-shadow:0 12px 32px rgba(16,185,129,0.35);z-index:9999;';
+          bar.innerHTML = '✓ Pass purchased — your sector deep dive ships within 24 hours.';
+          document.body.appendChild(bar);
+          setTimeout(function(){ bar.style.opacity = '0'; bar.style.transition = 'opacity 1s'; }, 6000);
+          setTimeout(function(){ if (bar.parentNode) bar.parentNode.removeChild(bar); }, 7500);
+          if (window.posthog) { try { posthog.capture('firstlook_checkout_completed'); } catch(e){} }
+        }
+      } catch(e){}
+    })();
   </script>
 
   <!-- PostHog (cookieless — no consent banner needed) -->
