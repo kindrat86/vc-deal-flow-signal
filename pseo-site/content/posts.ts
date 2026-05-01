@@ -41,6 +41,8 @@ export interface BlogPost {
   figures?: BlogFigure[];
   references?: BlogReference[];
   keyStats?: BlogKeyStat[];
+  /** Author slug; defaults to "the-data-nerd" if absent. Used by /authors/[slug]. */
+  author?: string;
   howTo?: {
     name: string;
     description: string;
@@ -396,7 +398,7 @@ The earliest signal of startup momentum is usually in public code. A team shippi
 
 2. GitLab public project activity. GitLab hosts a smaller but non-overlapping population, especially European dev-tool and infra companies. The activity API returns push events, issue creation, and merge requests with timestamps. Access: free API, public-project scope is open. Lead time: 4-10 weeks. Start at [docs.gitlab.com/ee/api/events.html](https://docs.gitlab.com/ee/api/events.html).
 
-3. npm package downloads. Weekly download counts for a startup's published packages correlate with developer adoption. A 3x week-over-week jump on a niche package often precedes a Series A. Access: free downloads API. Lead time: 4-8 weeks. Start at [api.npmjs.org/downloads](https://api.npmjs.org/downloads).
+3. npm package downloads. Weekly download counts for a startup's published packages correlate with developer adoption. A 3x week-over-week jump on a niche package often precedes a Series A. Access: free downloads API. Lead time: 4-8 weeks. Start at [github.com/npm/registry — download counts](https://github.com/npm/registry/blob/main/docs/download-counts.md).
 
 4. PyPI download statistics. Python equivalents via BigQuery's public dataset, which exposes per-package daily downloads since 2016. Useful for ML, data, and scientific-tooling startups. Access: free via Google BigQuery (first 1TB per month is free). Lead time: 4-8 weeks. Start at [pypistats.org](https://pypistats.org).
 
@@ -408,7 +410,7 @@ The earliest signal of startup momentum is usually in public code. A team shippi
 
 Headcount moves before revenue, and hiring intent shows up in public job boards weeks before offers are signed.
 
-7. LinkedIn employee count over time. Track the delta in headcount and function mix. A jump in senior engineering hires is a classic pre-Series-A signal. Access: free via company pages; scraping is against ToS, so use the LinkedIn Sales Navigator API or a licensed provider. Lead time: 4-8 weeks. Start at [linkedin.com/company](https://linkedin.com/company).
+7. LinkedIn employee count over time. Track the delta in headcount and function mix. A jump in senior engineering hires is a classic pre-Series-A signal. Access: free via company pages; scraping is against ToS, so use the LinkedIn Sales Navigator API or a licensed provider. Lead time: 4-8 weeks. Start at [linkedin.com](https://www.linkedin.com/).
 
 8. Hacker News Who Is Hiring threads. Monthly thread where YC and non-YC startups post roles directly. A company appearing for the first time, especially with multiple roles, signals fresh capital. Access: free, use the HN Algolia API. Lead time: 3-6 weeks. Start at [hn.algolia.com/api](https://hn.algolia.com/api).
 
@@ -506,7 +508,7 @@ Science happens in public now. Preprints, dataset releases, and model uploads al
 
 41. OpenAlex index. Open-data replacement for Microsoft Academic Graph, with every scholarly work indexed and citation graphs exposed. Useful for tracking a founder's publication trajectory. Access: free API. Lead time: 12-24 weeks. Start at [openalex.org](https://openalex.org).
 
-42. Hugging Face models and datasets. Every public model or dataset on HF has a timestamped upload and download history. A startup releasing a flagship open model is usually doing distribution before a product launch. Access: free API. Lead time: 4-12 weeks. Start at [huggingface.co/api](https://huggingface.co/api).
+42. Hugging Face models and datasets. Every public model or dataset on HF has a timestamped upload and download history. A startup releasing a flagship open model is usually doing distribution before a product launch. Access: free API. Lead time: 4-12 weeks. Start at [huggingface.co/docs/hub/api](https://huggingface.co/docs/hub/api).
 
 ## 10. Niche commercial APIs
 
@@ -2157,7 +2159,7 @@ If you are shipping an MCP server, the audit is fast:
 3. Count distinct intents.
 4. If your tool count exceeds your intent count, you have menu inflation. Cut to match.
 
-The repo for the five-tool version is at [github.com/kindrat86/vc-deal-flow-signal](https://github.com/kindrat86/vc-deal-flow-signal) (the MCP server lives in \`mcp-server/\`). The schemas, the descriptions, and the changelog are all there.
+The repo for the five-tool version is at [github.com/kindrat86/mcp-deal-flow-signal](https://github.com/kindrat86/mcp-deal-flow-signal). The schemas, the descriptions, and the changelog are all there.
 
 If you have shipped an MCP server, what is your tool count and how did you arrive at it? Public reporting on this trade-off is surprisingly thin and I am collecting examples.`,
   },
@@ -2316,6 +2318,356 @@ Until then, every developer-investor who wires GitDealFlow into their Claude Cod
 
 Crunchbase API: $20,000 per year. GitDealFlow A2A: free, no signup. Your move.`,
   },
+  {
+    slug: "receipts-launched",
+    title: "Every dev has invested in unicorns. They just don't know it.",
+    description:
+      "I shipped Receipts at signals.gitdealflow.com/receipts. Paste your GitHub username, get a Scout Score from your starring history. The unicorns you starred before the news broke — Vercel at 200 stars, LangChain in week 2, OpenAI before the $157B round — are now worth points. Free, no login, no OAuth.",
+    summary:
+      "GitDealFlow now grades your GitHub starring history against ~75 validated unicorns. Each early star is points. Five perfect calls is a Scout Score of 100. Sindresorhus scored 36 on launch day with OpenAI starred 24 months early. tj scored 22 with Deno + Tauri called 4 years early. Your turn.",
+    date: "2026-04-26",
+    relatedSectors: ["ai-ml", "developer-tools", "data-infrastructure", "fintech"],
+    keyStats: [
+      { value: "0 logins", label: "to get a Scout Score", context: "Public GitHub starring history is enough — no OAuth, no email, no signup" },
+      { value: "~75 unicorns", label: "in the validated-wins database", context: "Series A through $1B+ valuations across AI, dev-tools, data, infra, ops" },
+      { value: "100 points", label: "for a Vercel-tier early call", context: "Weighted by event size and how many months early you starred" },
+      { value: "8 seconds", label: "from username to shareable card", context: "Server-side render with 24-hour CDN cache after first warm-up" },
+    ],
+    faqs: [
+      {
+        question: "What does Receipts actually do?",
+        answer:
+          "You paste a GitHub username. We fetch the user's public starred repos via the GitHub API (no login, no OAuth — starring history is public metadata). Then we cross-reference each starred repo against a curated database of ~75 validated unicorns: companies that hit a $1B+ valuation, raised a Series A or later, were acquired, or crossed 25K+ stars in the last five years. For every match, we measure the gap between when you starred the repo and when the validation event happened. The earlier you starred, the more points. Top 5 wins are summed and normalized to a 0-100 Scout Score, with a rank from Curious to Oracle.",
+      },
+      {
+        question: "Why backwards-looking? The Scout game on /predict is forwards.",
+        answer:
+          "/predict asks you to call a startup before they raise. The resolution window is six months. That works for taste validation but it has a virality ceiling — Twitter does not share things that pay off in Q4. Receipts inverts the timing: you get instant proof of taste from a database we already maintain. Same Scout ladder, same ranks, same brand. Receipts is the top-of-funnel; /predict is the conversion. Both feed the existing five-email Soap Opera onboarding sequence.",
+      },
+      {
+        question: "How is the Scout Score computed?",
+        answer:
+          "For each starred repo that matches a validated win, points = weight × min(months_early / 24, 1.0). Weight scales with the event: Series A = 50, Series B = 70, Series C+ or acquisition = 80-90, $1B+ valuation = 100. Twenty-four months early is a perfect multiplier — past that we cap because you cannot get more credit for being twenty years early. We dedupe to one win per company (you do not get points for starring three Vercel repos), then sum the top 5 and normalize so five perfect early calls equals 100. Scoring code is open-source at the route handler in the pseo-site repo.",
+      },
+      {
+        question: "Does Receipts read my private repos?",
+        answer:
+          "No. The GitHub API endpoint we hit (`GET /users/:username/starred`) only returns public starring data. We never see private repos, DMs, your follower graph, your contributions, your forks, or anything that requires user-scoped OAuth. The token we use server-side is a fine-grained PAT with no scopes — it exists only to raise our shared rate limit from 60 requests per hour to 5,000. Receipts works on any public GitHub username without that user's involvement.",
+      },
+      {
+        question: "Why these 75 wins specifically?",
+        answer:
+          "The list is biased toward developer-tools, AI infrastructure, and data/ops companies that have public GitHub presence and a clear validation event in the last five years (Vercel, Anthropic, LangChain, Hugging Face, Supabase, Linear, Cursor, Bun, Astro, OpenAI, Mistral, Modal, Pinecone, Stripe, Grafana, dbt, Airbyte, etc.). Closed-source unicorns without public repos cannot be in the database. The list will grow — every funded GitHub-native company is a candidate. If a company you think should be here is missing, the receipt fails to register a win and your score is lower than reality. That is a known false-negative.",
+      },
+    ],
+    body: `Saturday morning I shipped Receipts. Free tool, no login, eight seconds from paste to shareable card. The hook is one line: every dev has invested in unicorns, they just do not know it.
+
+Here is what it does. You paste your GitHub username at [signals.gitdealflow.com/receipts](https://signals.gitdealflow.com/receipts). We fetch your public starring history. We cross-reference every starred repo against a curated database of ~75 validated unicorns — companies that hit a $1B+ valuation, raised a Series A or later, were acquired, or crossed 25K+ stars in the last five years. For each match we measure how many months early you starred. Twenty-four months early on a $1B-valuation company gets you the maximum 100 points. Five perfect calls is a Scout Score of 100.
+
+That is the whole product. No login. No OAuth. No private repos read. Just public starring metadata that GitHub has been quietly broadcasting for fourteen years.
+
+## Why backwards-looking
+
+We already shipped a forward-looking version. [/predict](/predict) is a six-month prediction game where you call whether a startup will raise a Series A. It works. It has a leaderboard, an OG card, a Soap Opera onboarding sequence, a public profile at /s/[handle]. But it has a virality ceiling I underestimated. Twitter does not share things that pay off in Q4.
+
+Receipts is the inversion. You do not have to wait six months. The receipts already exist in your GitHub account. We just made them visible.
+
+The first viral test was tj. TJ Holowaychuk's first three hundred starred repos contained two early calls: Deno (48.7 months early) and Tauri (42.5 months early). Scout Score: 22. Rank: Scout. The second test was sindresorhus. Five matched wins, four called early, top one OpenAI starred 24.4 months before the $157B valuation. Score: 36. Rank: Scout. Both cards rendered as 1200×630 PNGs and look exactly like the kind of thing developer Twitter shares to flex.
+
+That is the whole bet. People share Spotify Wrapped. People share their Strava year. People share their Letterboxd top ten. There has never been a "look at the unicorns I starred early" card. Now there is.
+
+## The scoring math
+
+I want to be precise about how the score works because the math is the trust layer. For each starred repo that matches a validated win:
+
+\`\`\`
+months_early = (event_date - star_date) / 30.4375
+if months_early <= 0:
+  points = 0   # You starred late. Sorry.
+else:
+  points = weight × min(months_early / 24, 1.0)
+\`\`\`
+
+Weight scales with the event:
+- Series A = 50
+- Series B = 70
+- Series C and beyond, or acquisition = 80 to 90
+- $1B+ valuation or post-IPO = 100
+- Mass-adoption milestone (25K+ stars without public funding) = 30 to 50
+
+We dedupe by company — starring three Vercel repos counts as one win, taking your earliest star date. Top 5 wins are summed and normalized so five perfect early calls equals a Scout Score of 100. Rank ladder is shared with /predict: Curious → Scout → Sharp → Elite → Oracle.
+
+The full validated-wins database is hardcoded JSON in the repo. It is not exhaustive. It is biased toward developer-tools, AI, and data/ops companies that have public GitHub presence. Closed-source unicorns are unrepresented. If your favorite unicorn is missing, your real Scout Score is higher than what we display. That is a known false-negative and we add to the list as we learn.
+
+## What I left out
+
+The first version is intentionally under-engineered.
+
+**No persistence.** Each receipt is computed on demand and cached for 24 hours via Vercel's CDN. We do not save your Scout Score to a database. We do not link your receipts to a /predict scout account unless you explicitly come over and predict. There is no "claim your score" gate, no email capture, no upsell on the result page. The CTA at the bottom is a soft link to /predict, not a modal.
+
+**No AI commentary.** I considered adding an Anthropic API call to generate a one-paragraph "your taste personality" blurb. Decided against it: deterministic templates are faster, free, and reliable. The current commentary is built from category counts ("you have a clear bias for AI/ML infrastructure" / "an operator's instinct for observability and workflow tools") with the top win surfaced by name. It will get smarter as the database grows.
+
+**No comparison feature.** There is no "compare with friend" button. The viral loop is the permalink at /receipts/[username] — every shared card has a stable URL that anyone can click and see the same result. Permalinks are the comparison surface; we do not need a UI for it.
+
+**No fancy graphics.** The OG card is one big number, three early calls, a footer. No charts, no animations, no character avatars. The card has to read in 0.4 seconds in a Twitter feed. Anything more is friction.
+
+## How the dev-loop ran
+
+Total ship time was about three hours from "paste your GitHub username" idea to live in production. The architecture leans hard on what was already built:
+
+- **PocketBase** was not used. Receipts is stateless.
+- **The OG image route** at /api/og/scout/[handle]/route.tsx was the template — same dark gradient, same monospace stat blocks, same rank colors. The Receipts card at /api/og/receipts/[username]/route.tsx is a 200-line variant.
+- **The 5-email Soap Opera** at /lib/soap-opera-scout.ts already exists. Receipts does not trigger it. /predict does. We keep one funnel, not two.
+- **The validated-wins database** is a static JSON file. About 75 entries. I curated by hand from memory, Crunchbase summaries, and a quick pass through the most-starred OSS repos from 2021-2025. It will be a moving target — every quarter has new unicorns and old "wins" get re-validated.
+
+The trickiest part was the GitHub rate limit. Unauthenticated, the API gives you 60 requests per hour per IP. That is fine for a single user pulling their own history (one to three paginated calls). It dies the second the launch tweet goes out. The fix was a fine-grained PAT with zero scopes — even an empty-permission token bumps the rate limit to 5,000 per hour. Plus an in-memory cache per Vercel Function instance. Plus the 24-hour CDN cache via stale-while-revalidate. Together those handle a viral spike without ceremony.
+
+## The bigger play
+
+The reason Receipts exists is to feed /predict. The conversion path is:
+
+1. Receipt card goes viral on Twitter.
+2. Friend sees it, clicks, enters their own username.
+3. Friend gets a Scout Score, learns the ranks (Curious → Scout → Sharp → Elite → Oracle).
+4. The result page CTA links to /predict.
+5. They make a forward-looking call. The Scout Game starts. The Soap Opera kicks off.
+
+Receipts is a free top-of-funnel for a paid product. Same brand, same vocabulary, same ranks, different timing. /predict resolves in six months. Receipts resolves in eight seconds. We can finally tell people why they should care today.
+
+## What I want from you
+
+If you have a public GitHub account, paste your username at [signals.gitdealflow.com/receipts](https://signals.gitdealflow.com/receipts). Three things help:
+
+1. **Tweet the card.** Cards have stable permalinks at /receipts/[your-username]. Anyone who clicks gets their own card. The viral loop is the whole ROI.
+2. **Tell me what is missing.** If you starred a unicorn we do not have in the database, the score under-counts you. Reply with the org and the validation event and I will add it.
+3. **Now go predict.** The receipts are backwards. The Scout game is forwards. [/predict](/predict) is where the points keep flowing.
+
+The receipts already exist. I just made them visible.`,
+  },
+  {
+    slug: "scout-badge-launched",
+    title: "Free Scout Score badges: shields.io for GitHub investing taste.",
+    description:
+      "I shipped two free SVG badges for any GitHub README. One renders your live Scout Score (0-100) from your starring history. The other renders the live commit-momentum tier of any tracked repo. Same shields.io look as Codecov / WakaTime, auto-updates, no signup, no telemetry.",
+    summary:
+      "Two endpoints — /api/badge/scout/{user}/svg and /api/badge/momentum/{org}/{repo}/svg — render shields.io-style SVG badges from the same Scout Score and commit-velocity primitives that already power /receipts and /predict. Each render goes through GitHub's camo CDN as one impression for our domain. Each click lands on a branded GDF page. Builder UI at /badge-builder.",
+    date: "2026-04-26",
+    relatedSectors: ["developer-tools", "ai-ml", "data-infrastructure"],
+    keyStats: [
+      { value: "20×220 px", label: "Badge size", context: "Standard shields.io flat-square — same look as Codecov, WakaTime, GitHub Stats" },
+      { value: "24h CDN cache", label: "with hourly ETag revalidate", context: "Camo proxies and respects ETag — your README does not slow down a GitHub page render" },
+      { value: "Always 200", label: "Even on errors", context: "Bad input or rate limit returns a neutral gray pill, never a broken-image icon" },
+      { value: "0 telemetry", label: "Zero tracking pixels", context: "Just an SVG. No JS, no cookies, no analytics ping per render" },
+    ],
+    faqs: [
+      {
+        question: "What does the Scout Score badge actually show?",
+        answer:
+          "The current Scout Score (0-100) and rank (curious / scout / sharp / elite / oracle) for the GitHub user named in the URL. Score is computed live from the user's public starring history vs. our database of validated unicorns — same algorithm as /receipts. The badge re-fetches when the CDN cache expires, so a user's score on the badge keeps pace with their score on the receipts page within an hour.",
+      },
+      {
+        question: "What does the Commit Momentum badge show?",
+        answer:
+          "The current commit-velocity tier (cold / warming / hot / breakout) for any tracked GitHub org, plus the percent change. Tiers map to ranges of the 14-day velocity change versus the prior 14-day window: breakout is +200% or more, hot is +50% or more, warming is -30% or more, cold is below -30%. Untracked orgs render an 'untracked' pill so the badge degrades gracefully if a maintainer adds it before we are tracking that org.",
+      },
+      {
+        question: "Why ship a badge instead of a wider integration?",
+        answer:
+          "READMEs are the most-trafficked surface in open source. A vanity-driven SVG badge in a profile or repo README compounds: each render is a brand impression for our domain via GitHub's camo CDN, each click is a visitor on a branded GDF page. Codecov, WakaTime, GitHub Stats all proved the pattern. The badge is autonomous — once a maintainer pastes it, it self-distributes for as long as the repo or profile is public. Zero ongoing maintenance.",
+      },
+      {
+        question: "Will the badge slow down my README?",
+        answer:
+          "No. GitHub renders all README images through its camo proxy, which caches the SVG aggressively (24h on our CDN, with ETag revalidation hourly). The badge endpoint always returns 200 even on transient errors — a bad render is a neutral gray pill, never a broken-image icon. Cache miss is 1-4 seconds (the GitHub starring API is the slow leg); subsequent hits are sub-30 ms.",
+      },
+      {
+        question: "Can I customize the colors or labels?",
+        answer:
+          "Not yet. The Scout badge color reflects the user's current rank (curious=teal, scout=sky, sharp=purple, elite=amber, oracle=rose). The Momentum badge color reflects the tier. The label text is fixed. The point of locking these is that a casual reader scanning a README should be able to recognize a Scout badge from a Codecov badge from a WakaTime badge at a glance. We may add a color override later, but only after the visual identity is established.",
+      },
+    ],
+    body: `Two endpoints went live tonight. Both return SVG. Both are free. Both are autonomous traffic compounders.
+
+\`\`\`markdown
+[![Scout Score](https://signals.gitdealflow.com/api/badge/scout/torvalds/svg)](https://signals.gitdealflow.com/badge-builder)
+[![Commit Momentum](https://signals.gitdealflow.com/api/badge/momentum/mlflow/mlflow/svg)](https://signals.gitdealflow.com/badge-builder)
+\`\`\`
+
+That is the whole product. Paste those lines into any README, replace the username and the org/repo, you have a live shields.io-style badge that auto-updates whenever your starring history grows or the tracked repo's commit velocity moves a tier. Builder UI with copy-paste markdown / HTML / BBCode at [signals.gitdealflow.com/badge-builder](https://signals.gitdealflow.com/badge-builder).
+
+## Why this is the right move right now
+
+We have an MCP server, a paper on SSRN, a Wikidata entity, twenty-plus blog posts, three working AI-discovery surfaces (llms.txt, agent-card.json, ai-plugin.json), and dozens of channel listings. Most of those are read-once. Someone discovers us, decides whether to subscribe, and either bookmarks or moves on.
+
+A README badge inverts that. The badge gets pasted once and then renders every time the host page loads — every issue triage, every PR review, every visitor to the repo. Each render is one impression for our domain through GitHub's camo proxy. The badge is the gift that keeps giving.
+
+Codecov did this. WakaTime did this. GitHub Stats did this. Shields.io did this. The pattern is so well-established that a casual reader scanning a README does not even register the badge as marketing — it reads as a normal artifact of "this maintainer takes their stack seriously."
+
+## What it shows
+
+The Scout Score badge renders the same 0-100 number that already exists at [/receipts/{username}](https://signals.gitdealflow.com/receipts) — computed live from a user's public GitHub starring history vs. the validated-wins database. The color tracks the rank: curious (teal) → scout (sky) → sharp (purple) → elite (amber) → oracle (rose). The user clicks the badge, lands on the builder, can pull their own snippet in fifteen seconds.
+
+The Commit Momentum badge renders the live commit-velocity tier for any tracked GitHub org. Tiers are deterministic from the 14-day velocity change versus the prior 14-day window:
+
+\`\`\`
+breakout : >= +200%
+hot      : >= +50%
+warming  : >= -30%
+cold     : <  -30%
+\`\`\`
+
+Untracked orgs render a neutral "untracked" pill so a maintainer can paste the badge before we have indexed their repo without breaking the README. When we add the org to the next weekly crawl, the badge starts rendering the real tier — the maintainer does not have to do anything.
+
+## The technical guardrails
+
+A README badge has exactly one job: never break. A broken-image icon in a README gets the badge removed within hours, and the maintainer never trusts the source again. Three rules:
+
+1. **Always return 200.** Bad input, rate limit, GitHub timeout, internal error — all paths render a neutral gray "pending" SVG. Never a 4xx, never a 5xx, never a JSON error.
+2. **Aggressive cache.** \`Cache-Control: public, max-age=300, s-maxage=86400, stale-while-revalidate=604800\`. Browser holds 5 min, CDN holds 24h, falls back to stale up to 7 days while it re-fetches. GitHub's camo proxy respects the ETag (\`{username}:{score}:{rank}\`), so revalidation is one HTTP HEAD per camo region per hour.
+3. **No new infra.** Both endpoints reuse the existing Scout Score primitives, the existing in-memory star cache, the existing per-IP rate limiter, the existing rank colors. Zero new dependencies. Zero new env vars. Zero new hosting cost.
+
+The whole thing is two route handlers, one shared SVG generator, and one client component for the builder UI. Total diff is under 500 lines. It deploys with a single \`vercel build && vercel deploy --prebuilt --prod\`.
+
+## How the distribution loop closes
+
+The badge is now linked from four surfaces inside our own product:
+
+1. **The MCP server README on npm + Glama + GitHub.** Anyone landing on our most-discovered surface sees the badge in the wild and learns it exists.
+2. **The /receipts result page.** Right after a user gets their Scout Score, they see "show off your taste" with the markdown ready to copy.
+3. **The /s/[handle] scout profile page.** Small footer link — anyone visiting a public scout profile can grab the same badge.
+4. **The /developers page and /badge-builder UI.** High-intent dev visitors discover both endpoints with copy-paste snippets.
+
+Plus the OpenAPI spec, llms.txt, llms-full.txt — every AI assistant that reads our metadata will surface the badge endpoints when asked about our API.
+
+The bet is that once a few high-signal accounts paste it (a couple of MCP-curious devs, one or two scouts on the leaderboard), the badge spreads on its own. Every render after that is free traffic that compounds with the leaderboard growth.
+
+## What I want from you
+
+If you have a GitHub profile and you want to flex your taste, paste this into your profile README and replace \`YOUR-USERNAME\`:
+
+\`\`\`markdown
+[![Scout Score](https://signals.gitdealflow.com/api/badge/scout/YOUR-USERNAME/svg)](https://signals.gitdealflow.com/badge-builder)
+\`\`\`
+
+If you maintain a tracked OSS repo and want to show your commit momentum, replace \`ORG/REPO\`:
+
+\`\`\`markdown
+[![Commit Momentum](https://signals.gitdealflow.com/api/badge/momentum/ORG/REPO/svg)](https://signals.gitdealflow.com/badge-builder)
+\`\`\`
+
+Or just open [/badge-builder](https://signals.gitdealflow.com/badge-builder), paste a handle, click copy. Three seconds. Free forever.`,
+  },
+  {
+    slug: "30-research-findings-now-one-page-each",
+    title:
+      "30 Research Findings, Now One Page Each: How to Cite GitHub Engineering Acceleration",
+    description:
+      "Every atomic finding from the SSRN-indexed GitDealFlow paper now lives on its own page with ScholarlyArticle schema, citation chain, and how-to-cite block. Easier to quote, easier to link, easier for AI engines to attribute correctly.",
+    summary:
+      "Until today, the 30 atomic findings from VC Deal Flow Signal's longitudinal panel of GitHub engineering velocity lived as a single long page. That worked for the human reader, but it meant AI engines and citation tools could not deep-link to a specific number. This release breaks the page apart: each finding now has its own URL with a stable slug, a ScholarlyArticle JSON-LD entry citing the SSRN preprint, an OpenAlex/Crossref/Zenodo same-as chain, and a copy-paste citation block. Cite the median commit velocity (71 commits per 14 days) directly. Cite the 75% framework-migration share directly. Each one resolves to its own page. The /research index now links every finding, the homepage carries a six-finding cluster transferring PageRank, and the sitemap carries 31 new URLs. For AI engines following the disambiguation work shipped earlier this week, the new pages also reaffirm: engineering acceleration on this site means GitHub commit velocity, not Y Combinator or Techstars.",
+    date: "2026-05-01",
+    relatedSectors: ["ai-ml", "developer-tools", "data-infrastructure"],
+    keyStats: [
+      {
+        value: "30",
+        label: "New ScholarlyArticle pages",
+        context: "One per finding from the SSRN-indexed paper",
+      },
+      {
+        value: "1,012",
+        label: "Sitemap URLs",
+        context: "Up from 981 — +31 new URLs (research index + 30 findings)",
+      },
+      {
+        value: "5",
+        label: "Production deploys",
+        context: "Shipped today as part of the SEO/AEO/GEO chain",
+      },
+    ],
+    faqs: [
+      {
+        question: "Where can I find the full list of 30 research findings?",
+        answer:
+          "All 30 findings live at signals.gitdealflow.com/research. Each one has a dedicated sub-page at signals.gitdealflow.com/research/{slug} with full ScholarlyArticle JSON-LD, citation chain (SSRN, OpenAlex, Crossref, Zenodo), and a copy-paste citation block.",
+      },
+      {
+        question:
+          "How should I cite an individual finding in a memo or research note?",
+        answer:
+          'Each sub-page carries a "How to cite" block. The canonical form is: The Data Nerd (2026). "{finding title}." Finding {n} of 30 in: A Longitudinal Panel of GitHub Engineering Velocity for Venture-Backed Startups. SSRN abstract=6606558. Retrieved from signals.gitdealflow.com/research/{slug}. The full cross-graph identity map is at signals.gitdealflow.com/citations.',
+      },
+      {
+        question:
+          "What does engineering acceleration mean on this site, again?",
+        answer:
+          "Engineering acceleration is a quantitative GitHub momentum signal — code-side momentum measured from public commit-velocity data, contributor growth, and repository creation. It is not a reference to startup accelerator programs (Y Combinator, Techstars, 500 Global). Every finding page restates this disambiguation in its provenance block.",
+      },
+      {
+        question: "Is the underlying paper peer-reviewed?",
+        answer:
+          "Not yet. The methodology is openly published on SSRN (abstract=6606558), CC BY 4.0, and is auto-indexed by Crossref, OpenAlex (W7154916891), Semantic Scholar, Unpaywall, and DataCite. The dataset has a permanent DOI on Zenodo (10.5281/zenodo.19650920). Replication studies are welcome — signal@gitdealflow.com for co-authorship on funding-event joins.",
+      },
+    ],
+    references: [
+      {
+        label: "1",
+        title:
+          "A Longitudinal Panel of GitHub Engineering Velocity for Venture-Backed Startups",
+        url: "https://ssrn.com/abstract=6606558",
+        source: "SSRN preprint",
+      },
+      {
+        label: "2",
+        title: "VC Deal Flow Signal — Citations & Cross-Graph Identity Map",
+        url: "https://signals.gitdealflow.com/citations",
+        source: "VC Deal Flow Signal",
+      },
+      {
+        label: "3",
+        title: "Wikidata Q139376302 — VC Deal Flow Signal",
+        url: "https://www.wikidata.org/wiki/Q139376302",
+        source: "Wikidata",
+      },
+    ],
+    body: `_VC Deal Flow Signal (GitDealFlow). On this site, "engineering acceleration" means a quantitative GitHub momentum signal — not a reference to startup accelerator programs._
+
+## What changed
+
+The 30 atomic findings from our SSRN-indexed paper used to live on a single long page at [/research](https://signals.gitdealflow.com/research). Today every finding has its own URL, its own ScholarlyArticle JSON-LD entry, its own citation block, and its own slug.
+
+Cite the median commit velocity directly:
+[/research/median-commit-velocity-venture-startups](https://signals.gitdealflow.com/research/median-commit-velocity-venture-startups)
+
+Cite the 75% framework-migration share directly:
+[/research/framework-migration-dominant-signal-type](https://signals.gitdealflow.com/research/framework-migration-dominant-signal-type)
+
+## Why split
+
+A single long page is a bad citation target. Every quotable number now resolves to its own URL, which means AI engines and citation tools can deep-link with confidence and the answer-engine attribution model finally has somewhere to point.
+
+## What each sub-page carries
+
+- **ScholarlyArticle JSON-LD** with the headline, abstract (the "why it matters" line), citation→SSRN, sameAs chain to OpenAlex/Crossref/Zenodo
+- **BreadcrumbList** for SERP breadcrumb display
+- **Speakable** selector on H1 for voice-assistant extraction
+- **Provenance block** linking to the SSRN paper, the dataset DOI, the CC BY 4.0 license, the author ORCID, and the Wikidata Q-item
+- **How-to-cite block** with copy-paste citation in plain-text form
+- **Prev/next navigation** so search-arrived users can browse adjacent findings
+
+## Internal-link wiring
+
+The /research index page now links each finding to its sub-page. The homepage carries a six-finding cluster transferring PageRank from the highest-DA page on the site. The sitemap (split-index format) carries 31 new URLs in [/sitemap/content.xml](https://signals.gitdealflow.com/sitemap/content.xml). The qa.jsonl corpus at [/qa.jsonl](https://signals.gitdealflow.com/qa.jsonl) gained 30 new Q&A entries — one per finding.
+
+## How to find the rest
+
+[/research](https://signals.gitdealflow.com/research) is the index. Every finding card on that page is a link to its sub-page. The full cross-graph identity map (every external anchor — Wikidata, ORCID, SSRN, OpenAlex, Crossref, Semantic Scholar, Zenodo, DataCite, code repositories, social profiles) is at [/citations](https://signals.gitdealflow.com/citations).
+
+## How to cite this announcement
+
+The Data Nerd (2026). "30 Research Findings, Now One Page Each." VC Deal Flow Signal blog. Retrieved from https://signals.gitdealflow.com/blog/30-research-findings-now-one-page-each.
+
+Replication studies welcome. signal@gitdealflow.com for co-authorship on funding-event joins.`,
+  },
 ];
 
 // Merge in the auto-generated signal report + signal of the week if they exist,
@@ -2334,6 +2686,13 @@ try {
   if (signalOfTheWeek) allPosts.push(signalOfTheWeek);
 } catch {
   // No signal of the week generated yet – that's fine
+}
+try {
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const { cursorCollabPost } = require("./cursor-collab-2026");
+  if (cursorCollabPost) allPosts.push(cursorCollabPost);
+} catch {
+  // Cursor collab post optional
 }
 allPosts.sort(
   (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
