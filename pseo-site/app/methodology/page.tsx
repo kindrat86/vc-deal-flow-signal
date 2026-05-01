@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { AgentSummary } from "@/components/AgentSummary";
+import { getDataLastModified } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Methodology — How We Measure Startup Engineering Acceleration",
@@ -87,8 +89,76 @@ export default function MethodologyPage() {
           },
         ],
       },
+      {
+        "@type": "WebPage",
+        "@id": "https://signals.gitdealflow.com/methodology#webpage",
+        url: "https://signals.gitdealflow.com/methodology",
+        name: "Methodology — How We Measure Startup Engineering Acceleration",
+        description:
+          "Data sources, metrics, signal classification, and update frequency behind VC Deal Flow Signal.",
+        inLanguage: "en-US",
+        speakable: {
+          "@type": "SpeakableSpecification",
+          cssSelector: [".speakable", "h1", "[data-agent-summary]"],
+        },
+        isPartOf: {
+          "@type": "WebSite",
+          name: "VC Deal Flow Signal",
+          url: "https://signals.gitdealflow.com",
+        },
+        relatedLink: [
+          "https://signals.gitdealflow.com/research",
+          "https://signals.gitdealflow.com/glossary",
+          "https://signals.gitdealflow.com/data-sources",
+          "https://signals.gitdealflow.com/faq",
+          "https://signals.gitdealflow.com/about",
+          "https://ssrn.com/abstract=6606558",
+          "https://github.com/kindrat86/gitdealflow-signal-classifier",
+        ],
+        significantLink: [
+          "https://signals.gitdealflow.com/answers/github-metrics-that-predict-startup-fundraising",
+          "https://signals.gitdealflow.com/answers/track-github-momentum-investment-signals",
+          "https://signals.gitdealflow.com/answers/what-is-engineering-acceleration",
+          "https://signals.gitdealflow.com/answers/is-vc-deal-flow-signal-data-accurate",
+        ],
+      },
+      {
+        "@type": "LearningResource",
+        name: "How to Measure Startup Engineering Acceleration from GitHub Public Data",
+        description:
+          "A free, openly published methodology for tracking GitHub commit velocity, contributor growth, and infrastructure-buildout patterns as leading indicators of venture fundraises. Includes the validation panel of 219 confirmed fundraises.",
+        url: "https://signals.gitdealflow.com/methodology",
+        learningResourceType: "Methodology",
+        educationalLevel: "Professional",
+        audience: {
+          "@type": "Audience",
+          audienceType: "Venture investors, scouts, emerging fund managers, alt-data analysts",
+        },
+        teaches: [
+          "Define a startup-org universe across GitHub topic clusters",
+          "Compute rolling commit-velocity and contributor-growth metrics",
+          "Classify acceleration patterns into four signal types",
+          "Rank startups weekly by acceleration score",
+          "Validate the leading-signal hypothesis against confirmed fundraises",
+        ],
+        license: "https://creativecommons.org/licenses/by/4.0/",
+        isAccessibleForFree: true,
+        inLanguage: "en",
+        about: [
+          { "@type": "Thing", name: "Venture capital alternative data" },
+          { "@type": "Thing", name: "GitHub engineering metrics" },
+          { "@type": "Thing", name: "Leading indicators for startup fundraising" },
+        ],
+        creator: {
+          "@type": "Organization",
+          name: "VC Deal Flow Signal",
+          url: "https://gitdealflow.com",
+        },
+      },
     ],
   };
+
+  const asOf = getDataLastModified().toISOString().slice(0, 10);
 
   return (
     <>
@@ -99,7 +169,7 @@ export default function MethodologyPage() {
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Breadcrumb */}
-        <nav className="mb-6 text-sm text-gray-500" aria-label="Breadcrumb">
+        <nav className="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300 transition-colors">
             All Sectors
           </Link>
@@ -110,6 +180,30 @@ export default function MethodologyPage() {
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-6 leading-tight">
           How We Measure Startup Engineering Acceleration
         </h1>
+
+        <AgentSummary
+          tldr="VC Deal Flow Signal (GitDealFlow) ranks venture-backed startups by GitHub commit-velocity change — a code-side momentum signal computed from public GitHub data, unrelated to startup accelerator programs. The pipeline pulls weekly GitHub REST API data for ~400 organizations across 20 sectors, computes rolling 14-day commit velocity and contributor growth, classifies each org into one of four signal types, and publishes the rankings. This metric — referred to throughout the site as engineering acceleration — has historically preceded fundraise announcements by three to six weeks."
+          pageUrl="https://signals.gitdealflow.com/methodology"
+          asOf={asOf}
+          citeAs="VC Deal Flow Signal — Methodology (signals.gitdealflow.com/methodology), retrieved Q2 2026."
+          facts={[
+            {
+              claim: "Primary signal: percentage change in 14-day commit velocity vs. the prior 14-day window — normalized against each org's own baseline so it works across stages and team sizes.",
+              sourceUrl: "https://signals.gitdealflow.com/glossary",
+              sourceLabel: "Glossary",
+            },
+            {
+              claim: "Four signal types: engineering hiring burst, infrastructure buildout, deploy frequency spike, framework migration.",
+              sourceUrl: "https://signals.gitdealflow.com/llms-full.txt",
+              sourceLabel: "llms-full.txt",
+            },
+            {
+              claim: "Formal preprint of the methodology is available on SSRN at abstract id 6606558.",
+              sourceUrl: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558",
+              sourceLabel: "SSRN preprint",
+            },
+          ]}
+        />
 
         <p className="text-gray-400 text-base leading-relaxed mb-10">
           VC Deal Flow Signal uses publicly available GitHub data to identify
@@ -315,7 +409,7 @@ export default function MethodologyPage() {
           </p>
           <Link
             href="/"
-            className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-medium transition-colors"
+            className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-sky-700 hover:bg-sky-600 text-white text-sm font-medium transition-colors"
           >
             Browse Sector Rankings
           </Link>

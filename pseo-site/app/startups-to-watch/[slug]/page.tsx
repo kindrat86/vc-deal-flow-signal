@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const { sector, period } = parsed;
   const title = `${sector.name} Startups to Watch, ${period.name}`;
-  const description = `Ranked list of ${sector.name} startups showing the highest GitHub engineering acceleration in ${period.name}. Commit velocity, contributor growth, and breakout signals for investors.`;
+  const description = `Ranked list of ${sector.name} startups showing the highest GitHub commit-velocity acceleration in ${period.name}. Commit velocity, contributor growth, and breakout signals for investors.`;
 
   return {
     title,
@@ -193,7 +193,7 @@ export default async function SectorPage({ params }: PageProps) {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         {/* Breadcrumb */}
-        <nav className="mb-6 text-sm text-gray-500" aria-label="Breadcrumb">
+        <nav className="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300 transition-colors">
             All Sectors
           </Link>
@@ -234,11 +234,11 @@ export default async function SectorPage({ params }: PageProps) {
               <p className="text-gray-300 text-sm leading-relaxed">
                 {keyTakeaway}
               </p>
-              <p className="mt-3 text-gray-600 text-xs">
+              <p className="mt-3 text-gray-400 text-xs">
                 Data sourced from public GitHub activity.{" "}
                 <Link
                   href="/methodology"
-                  className="text-sky-500 hover:text-sky-400 transition-colors"
+                  className="text-sky-500 hover:text-sky-400 underline transition-colors"
                 >
                   Read our methodology
                 </Link>
@@ -262,7 +262,7 @@ export default async function SectorPage({ params }: PageProps) {
         {/* Table */}
         <section className="mb-10" aria-label="Startup rankings">
           <StartupTable startups={sortedStartups} tableName={`${sector.name} Startups Ranked by Engineering Acceleration, ${period.name}`} />
-          <p className="mt-3 text-gray-600 text-xs">
+          <p className="mt-3 text-gray-400 text-xs">
             Sorted by commit velocity change (14-day window, descending). Top 3
             highlighted. Data last updated {period.name}.
           </p>
@@ -372,7 +372,7 @@ export default async function SectorPage({ params }: PageProps) {
                   <h3 className="text-gray-200 font-medium text-sm group-hover:text-sky-400 transition-colors mb-1">
                     {related.name}
                   </h3>
-                  <p className="text-gray-500 text-xs">
+                  <p className="text-gray-400 text-xs">
                     {related.startupCount} startups tracked &rarr;
                   </p>
                 </Link>

@@ -25,7 +25,7 @@ export async function generateMetadata({
 
   const { sector, periodA, periodB } = parsed;
   const title = `${sector.name} Trend: ${periodA.name} vs ${periodB.name}`;
-  const description = `Compare ${sector.name.toLowerCase()} startup engineering acceleration between ${periodA.name} and ${periodB.name}. Period-over-period commit velocity, contributor growth, and signal trends.`;
+  const description = `Compare ${sector.name.toLowerCase()} startup GitHub commit-velocity acceleration between ${periodA.name} and ${periodB.name}. Period-over-period commit velocity, contributor growth, and signal trends — code-side momentum metrics, not accelerator-program data.`;
 
   return {
     title,
@@ -106,7 +106,7 @@ export default async function TrendPage({ params }: PageProps) {
       />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        <nav className="mb-6 text-sm text-gray-500" aria-label="Breadcrumb">
+        <nav className="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300 transition-colors">
             All Sectors
           </Link>
@@ -132,7 +132,7 @@ export default async function TrendPage({ params }: PageProps) {
         <section className="mb-10" aria-label="Trend summary">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             <div className="rounded-lg border border-slate-800 bg-slate-900 p-4">
-              <p className="text-gray-500 text-xs mb-1">
+              <p className="text-gray-400 text-xs mb-1">
                 Startups ({periodA.name})
               </p>
               <p className="text-gray-100 text-xl font-bold">
@@ -140,7 +140,7 @@ export default async function TrendPage({ params }: PageProps) {
               </p>
             </div>
             <div className="rounded-lg border border-slate-800 bg-slate-900 p-4">
-              <p className="text-gray-500 text-xs mb-1">
+              <p className="text-gray-400 text-xs mb-1">
                 Startups ({periodB.name})
               </p>
               <p className="text-gray-100 text-xl font-bold">
@@ -148,11 +148,11 @@ export default async function TrendPage({ params }: PageProps) {
               </p>
             </div>
             <div className="rounded-lg border border-slate-800 bg-slate-900 p-4">
-              <p className="text-gray-500 text-xs mb-1">Avg Velocity (now)</p>
+              <p className="text-gray-400 text-xs mb-1">Avg Velocity (now)</p>
               <p className="text-gray-100 text-xl font-bold">{avgVelA}</p>
             </div>
             <div className="rounded-lg border border-slate-800 bg-slate-900 p-4">
-              <p className="text-gray-500 text-xs mb-1">Velocity Trend</p>
+              <p className="text-gray-400 text-xs mb-1">Velocity Trend</p>
               <p
                 className={`text-xl font-bold ${
                   velChange > 0
@@ -186,7 +186,7 @@ export default async function TrendPage({ params }: PageProps) {
                     className="flex items-center justify-between rounded-md border border-slate-800 bg-slate-900 px-3 py-2"
                   >
                     <span className="text-gray-300 text-sm">
-                      <span className="text-gray-500 font-mono mr-2">
+                      <span className="text-gray-400 font-mono mr-2">
                         {i + 1}.
                       </span>
                       {s.name}
@@ -199,7 +199,7 @@ export default async function TrendPage({ params }: PageProps) {
               </div>
             </div>
             <div>
-              <h3 className="text-sm font-medium text-gray-500 mb-3">
+              <h3 className="text-sm font-medium text-gray-400 mb-3">
                 {periodB.name}
               </h3>
               <div className="space-y-2">
@@ -209,12 +209,12 @@ export default async function TrendPage({ params }: PageProps) {
                     className="flex items-center justify-between rounded-md border border-slate-800 bg-slate-900 px-3 py-2"
                   >
                     <span className="text-gray-400 text-sm">
-                      <span className="text-gray-600 font-mono mr-2">
+                      <span className="text-gray-400 font-mono mr-2">
                         {i + 1}.
                       </span>
                       {s.name}
                     </span>
-                    <span className="text-gray-500 text-xs font-mono">
+                    <span className="text-gray-400 text-xs font-mono">
                       {s.commitVelocityChange}
                     </span>
                   </div>
@@ -232,7 +232,7 @@ export default async function TrendPage({ params }: PageProps) {
           <div className="flex flex-wrap gap-3">
             <Link
               href={`/startups-to-watch/${sector.slug}-${periodA.slug}`}
-              className="inline-flex items-center px-4 py-2 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-medium transition-colors"
+              className="inline-flex items-center px-4 py-2 rounded-lg bg-sky-700 hover:bg-sky-600 text-white text-sm font-medium transition-colors"
             >
               {sector.name} — {periodA.name} &rarr;
             </Link>
