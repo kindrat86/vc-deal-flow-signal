@@ -24,3 +24,8 @@
 - Own-post reply reminder: Wed Apr 29 was a scheduled post day (Tue/Wed/Thu/Fri cadence) — schedule file still missing, check linkedin.com/company/gitdealflow/posts manually and reply within 2h
 - Targets: Elizabeth Yin, Hunter Walk, Gergely Orosz
 - Drafts saved above for copy-paste
+
+## 2026-05-01
+- Own-post reply reminder: Thu Apr 30 was a scheduled post day (Tue/Wed/Thu/Fri cadence) — schedule file still missing, check linkedin.com/company/gitdealflow/posts manually and reply within 2h
+- Targets: Hunter Walk, Gergely Orosz, Avichal Garg
+- Drafts saved above for copy-paste
