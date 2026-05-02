@@ -51,6 +51,83 @@ export default function MethodologyPage() {
         ],
       },
       {
+        "@type": "FAQPage",
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: "How does VC Deal Flow Signal measure engineering acceleration?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Engineering acceleration is computed weekly from public GitHub data. The pipeline pulls 14-day commit velocity, contributor count, and repository creation events for approximately 4,200 startup organizations across 20 sectors via the GitHub REST API, then expresses each metric as a percentage change versus the prior 14-day window. A startup whose 14-day commit velocity doubles relative to its own baseline is recorded as +100% acceleration. The metric is computed per organization against its own historical baseline, not across the population.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "What data sources are used in the methodology?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "The primary source is the public GitHub REST API v3 — search/repositories, stats/commit_activity, contributors, and repos endpoints. No private repositories, no scraping, no terms-of-service violations. The methodology excludes commits authored by accounts matching common bot patterns (Dependabot, Renovate, GitHub Actions) and applies file-count filtering to remove trivial commits. The full data sources page lists every endpoint and refresh cadence.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Why use a 14-day rolling window?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Investor signal pipelines tend to use either 14-day or 28-day rolling windows. The 14-day window is more responsive — it surfaces breakouts faster — at the cost of higher volatility. To filter the resulting noise, the methodology requires a breakout to persist into a second 14-day window before it is treated as actionable. This two-period confirmation rule removes most one-period spikes caused by hackathons, launch sprints, or single contributors onboarding.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "How are bot commits filtered out?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Commits authored by accounts whose name or type matches known bot patterns (bot, github-actions, dependabot, renovate) are excluded before any aggregation. A second filter removes commits with diffs below a small file-count threshold to suppress automated formatting and dependency-update commits. The combination removes the loudest noise sources without overfitting; further normalization can be added but is rarely worth the engineering cost.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "What are the four signal types?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Acceleration patterns sort into four operational types. The hiring burst is rising velocity plus rising contributor count — the strongest fundraise predictor. The shipping sprint is velocity rising while contributor count holds flat — typical of launch preparation. The infrastructure buildout is repository creation accelerating versus baseline — strategic technical investment. The platform migration is language mix shifting between primary languages over a quarter — slower-moving but strategically significant. Each pattern implies a different diligence question.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "How is funding stage estimated?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Funding stage is estimated heuristically from contributor count, repository age, language mix maturity, and any cross-referenced public funding history. Pre-seed teams typically have 1 to 3 contributors and codebases under six months old; seed teams have 3 to 8 contributors with sustained activity over several quarters; Series A teams have 8 to 20 contributors with multiple repositories and mature language mixes. The estimate is heuristic and is intended as a screening filter, not a definitive label.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Is the methodology peer-reviewed?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "The methodology write-up is published on SSRN at ssrn.com/abstract=6606558 and mirrored on Zenodo with a DOI. The dataset is auto-indexed by OpenAlex (W7154916891) and DataCite. The work is not formally peer reviewed in a journal but is openly published and reproducible. Investors evaluating the signal can audit the full methodology and replicate the metrics from the same public GitHub data described in the paper.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "How often is the data refreshed?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "The full panel refreshes weekly. Each Monday the pipeline pulls the latest 14-day GitHub activity, recomputes acceleration metrics, classifies signal patterns, and republishes the sector rankings, the API endpoints, and the dashboard. The free Signal Report email is sent the same morning. Intraday changes do not affect rankings — the cadence is intentionally weekly to match how investors review pipelines.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Is engineering acceleration the same as a startup accelerator program?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "No. They are unrelated concepts that share a word. A startup accelerator (Y Combinator, Techstars, 500 Global) is a fixed-term program founders join. Engineering acceleration is a quantitative signal computed from public GitHub activity. Throughout this site the term refers exclusively to code-side momentum: commit velocity, contributor growth, repository creation. It has nothing to do with program participation.",
+            },
+          },
+        ],
+      },
+      {
         "@type": "HowTo",
         name: "How VC Deal Flow Signal Measures Startup Engineering Acceleration",
         description:

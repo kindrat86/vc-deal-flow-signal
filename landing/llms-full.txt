@@ -15,6 +15,9 @@ This GitHub-derived engineering-acceleration signal has historically preceded fu
 - Homepage: https://gitdealflow.com/
 - Live Dashboard: https://signals.gitdealflow.com/
 - Insider Circle: https://gitdealflow.com/insider
+- Chrome Extension: https://gitdealflow.com/chrome
+- Receipts (free, no login): https://signals.gitdealflow.com/receipts — paste any GitHub username, get a Scout Score (0-100) computed from how many validated unicorns the user starred *before* the funding/acquisition/$1B-valuation event. Top wins surfaced with months-early. Shareable 1200x630 OG card per username at /api/og/receipts/[username]. Backwards-looking proof of taste.
+- Predict (Scout Game): https://signals.gitdealflow.com/predict — free forward-looking prediction game. Pick a GitHub org, call whether they raise a Series A in 6 months. Auto-resolved at the 6-month window. Public profile at /s/[handle], leaderboard at /leaderboard, rank ladder Curious → Scout → Sharp → Elite → Oracle.
 - Methodology: https://signals.gitdealflow.com/methodology
 - FAQ: https://signals.gitdealflow.com/faq
 - Glossary: https://signals.gitdealflow.com/glossary
@@ -75,8 +78,72 @@ Same data as signals.json in CSV format for spreadsheet and data science consump
 ### GET /api/openapi.json
 Full OpenAPI 3.1.0 specification for all API endpoints.
 
+### GET /api/agent/tools and POST /api/agent/call
+Provider-native function-calling tool definitions. Drop directly into OpenAI / Anthropic / Google Gemini SDKs without needing an MCP client.
+
+`GET /api/agent/tools?format=openai` returns OpenAI function-calling schema array.
+`GET /api/agent/tools?format=anthropic` returns Anthropic Claude tools array.
+`GET /api/agent/tools?format=gemini` returns Google Gemini function declarations.
+`GET /api/agent/tools` (no query) returns all formats keyed by provider plus the `invoke` URL.
+
+`POST /api/agent/call` accepts `{ "name": "<tool_name>", "arguments": { ... } }` and invokes the tool, returning the structured payload. Same five tools as the MCP server.
+
+### POST /api/nlweb
+Microsoft NLWeb-compatible conversational endpoint. Accepts natural-language queries and returns schema.org-typed JSON-LD answers.
+
+Request body:
+```json
+{ "query": "trending fintech startups this week" }
+```
+
+Response: schema.org JSON-LD. Top-level `@type` is one of:
+- `ItemList` (trending or sector results, with `Organization` items)
+- `Organization` (single startup profile)
+- `Article` (methodology)
+- `Dataset` (summary)
+- `WebPage` (unknown intent fallback)
+
+Supported query intents: trending, `<sector>` startups, `tell me about <startup>`, methodology / how is this calculated, summary / what is this dataset. A `GET` request returns the descriptor with the request schema and example queries.
+
 ### GET /api/changelog.json
 Data pipeline changelog: current period metadata, active sector count, startup count, and last data refresh timestamp.
+
+### GET /api/receipts/{username}
+Returns a Scout Score (0-100) and ranked early-call list for any GitHub user. Computed from the user's public starring history cross-referenced against ~75 validated unicorns.
+
+Example response structure:
+```json
+{
+  "username": "sindresorhus",
+  "score": 36,
+  "rank": "scout",
+  "total_stars": 500,
+  "matched_count": 5,
+  "early_count": 4,
+  "top_wins": [
+    {
+      "org": "openai",
+      "name": "OpenAI",
+      "repo": "openai/whisper",
+      "event": "$157B valuation (Series), 2024-10",
+      "event_date": "2024-10-02",
+      "starred_at": "2022-09-21T17:33:58Z",
+      "months_early": 24.4,
+      "weight": 100,
+      "points": 100
+    }
+  ],
+  "personality": "Sharp-tier taste. You called 4 winners early, and you have a clear bias for AI/ML infrastructure...",
+  "from_cache": false,
+  "generated_at": "2026-04-26T08:30:00.000Z"
+}
+```
+
+Rank values: `curious` (0-19), `scout` (20-39), `sharp` (40-59), `elite` (60-79), `oracle` (80-100).
+24-hour CDN cache. No authentication. GitHub API rate limit shared across all callers (5,000/hour with our PAT).
+
+### GET /api/og/receipts/{username}
+Returns a 1200x630 PNG share card for a Scout Score. Same rank colors as /api/og/scout: emerald (curious), sky (scout), purple (sharp), amber (elite), rose (oracle). 24-hour CDN cache.
 
 ## Sector Signal Pages
 
@@ -147,6 +214,10 @@ VC Deal Flow Signal is available as a Model Context Protocol server for Claude D
 - No API key required
 
 ### Installation
+
+Two transports are available — both expose the same five tools, three resources, two resource templates, and five prompts.
+
+Stdio (Claude Desktop, Claude Code, Cursor, etc.):
 ```json
 {
   "mcpServers": {
@@ -158,12 +229,84 @@ VC Deal Flow Signal is available as a Model Context Protocol server for Claude D
 }
 ```
 
+Streamable HTTP (ChatGPT Apps, hosted MCP clients):
+```
+POST https://signals.gitdealflow.com/api/mcp/rpc
+Content-Type: application/json
+```
+
+JSON-RPC 2.0 methods supported on the HTTP transport: initialize, tools/list, resources/list, resources/templates/list, prompts/list, tools/call, resources/read, prompts/get, ping.
+
 ### Available Tools
 1. **get_trending_startups**: Returns the top 20 startups by engineering acceleration across all sectors.
 2. **search_startups_by_sector**: Search startups filtered by sector name.
 3. **get_startup_signal**: Get detailed signal data for a specific startup by name.
 4. **get_signals_summary**: Summary statistics: total startups, sectors, period, and last update.
-5. **get_methodology**: Full methodology text explaining data sources, metrics, and signal classification.
+5. **get_scout_receipts**: Compute a Scout Score (0-100) for a GitHub user from their starring history vs. ~75 validated unicorns. Returns score, rank (curious/scout/sharp/elite/oracle), top early calls, personality summary, and shareable card URL. Wraps `/api/receipts/{username}`.
+6. **get_methodology**: Full methodology text explaining data sources, metrics, and signal classification.
+
+### Available Resources (URI-addressable signals)
+
+The MCP server also exposes resources — URI-addressable views of the data that embedding agents can subscribe to or pin into context without invoking a tool call.
+
+Static resources:
+1. **signal://trending** (application/json): Top 20 startups across all sectors for the current weekly period.
+2. **signal://summary** (application/json): Period, sector and startup counts, last refresh, format URLs.
+3. **signal://methodology** (text/markdown): Full methodology document.
+
+Resource templates (substitute the variables):
+1. **signal://startup/{name}** (application/json): Single startup profile by display name or GitHub org slug. Case-insensitive.
+2. **signal://sector/{slug}** (application/json): All tracked startups within a sector.
+
+### Available Prompts (reusable agent templates)
+
+The MCP server ships five investor-grade prompt templates that any MCP host can surface in its slash-command UI:
+
+1. **weekly_digest**: Generate a Monday-morning Signal Digest from the current top-20.
+2. **sector_deep_dive(sector)**: Sector intelligence brief — top movers, dark horses, thesis follow-ups.
+3. **find_dark_horse(sector?)**: Surface one under-the-radar startup with sustained acceleration below the median visibility threshold.
+4. **compare_startups(name_a, name_b)**: Head-to-head investor comparison.
+5. **acceleration_memo(name)**: One-page deal memo grounded in the live signal profile.
+
+### Discovery
+
+- MCP discovery manifest: https://signals.gitdealflow.com/.well-known/mcp.json
+- A2A AgentCard: https://signals.gitdealflow.com/.well-known/agent-card.json
+- Agent reference (HTML/Markdown): https://signals.gitdealflow.com/agents.md
+
+## Chrome Extension
+
+VC Deal Flow Signal ships a free Chrome extension that injects a GitHub engineering momentum badge on startup company profile pages.
+
+### Where it runs
+- **Crunchbase**: every page matching `https://www.crunchbase.com/organization/*`
+- **Wellfound**: every page matching `https://wellfound.com/company/*` (formerly AngelList)
+
+### Where it does NOT run
+- **PitchBook**: profile pages are gated behind their paid login and the public-facing DOM is intentionally unstable for non-subscribers. We deliberately do not target it. If you see copy claiming PitchBook coverage anywhere, that copy is out of date.
+- Any other domain. The manifest declares only the two host matches above.
+
+### What it does
+1. Reads the company slug from the current URL.
+2. Sends one anonymous request to signals.gitdealflow.com asking if we have a signal for that company.
+3. Renders a small badge node into the page DOM if the answer is yes (green "Accelerating" with a hover tooltip showing commit velocity, contributor count, and signal type).
+
+### What it does not do
+- No analytics SDK, no PostHog, no Google Analytics, no Sentry.
+- No reading of host page content, forms, cookies, or DOM beyond the URL.
+- No account, no login, no email collection.
+- No background script, no `tabs` permission, no `storage` permission.
+
+### Technical
+- Manifest V3, runs at `document_idle`.
+- Total payload under 30 KB.
+- Permissions: `host_permissions` for `signals.gitdealflow.com` only.
+- Compatible with Chrome, Brave, Edge, Arc, and any Chromium-based browser.
+
+### Links
+- Install: https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn
+- Landing page: https://gitdealflow.com/chrome
+- Source: included in the project repository under `chrome-extension/`
 
 ## Glossary of Key Terms
 
@@ -187,4 +330,5 @@ VC Deal Flow Signal is available as a Model Context Protocol server for Claude D
 - RSS Feed: https://signals.gitdealflow.com/feed.xml
 - Sitemap: https://gitdealflow.com/sitemap.xml
 - llms.txt: https://gitdealflow.com/llms.txt
+- Chrome extension landing: https://gitdealflow.com/chrome
 - ai-plugin.json: https://signals.gitdealflow.com/.well-known/ai-plugin.json

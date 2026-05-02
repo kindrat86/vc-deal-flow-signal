@@ -62,6 +62,7 @@ export async function GET(_req: Request, ctx: RouteContext) {
       { url: `${BASE_URL}/citations`, lastmod, changefreq: "monthly", priority: 0.85 },
       { url: `${BASE_URL}/predict`, lastmod, changefreq: "weekly", priority: 0.95 },
       { url: `${BASE_URL}/receipts`, lastmod, changefreq: "weekly", priority: 0.9 },
+      { url: `${BASE_URL}/install`, lastmod, changefreq: "monthly", priority: 0.85 },
       { url: `${BASE_URL}/leaderboard`, lastmod, changefreq: "hourly", priority: 0.85 },
       { url: `${BASE_URL}/agents`, lastmod, changefreq: "weekly", priority: 0.9 },
       { url: `${BASE_URL}/a2a`, lastmod, changefreq: "monthly", priority: 0.85 },

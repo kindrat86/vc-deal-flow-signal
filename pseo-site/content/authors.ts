@@ -34,6 +34,8 @@ export const authors: Record<string, Author> = {
       "https://x.com/data_nerd",
       "https://www.linkedin.com/company/gitdealflow",
       "https://github.com/gitdealflow",
+      "https://orcid.org/0009-0002-2222-4112",
+      "https://ssrn.com/abstract=6606558",
     ],
     url: "https://signals.gitdealflow.com/about",
   },

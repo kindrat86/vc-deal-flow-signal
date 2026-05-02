@@ -64,6 +64,75 @@ export default function DevelopersPage() {
           },
         ],
       },
+      {
+        "@type": "FAQPage",
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: "How do I access the VC Deal Flow Signal API?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "The basic JSON endpoints are publicly accessible at signals.gitdealflow.com — for example signals.json returns the current weekly ranked signals, weekly returns a summary, and methodology returns the data dictionary. No authentication is required for the basic tier. For higher-volume commercial access, the Insider Circle tier (EUR 97/month) provides elevated rate limits and webhook delivery.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "What rate limits apply?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "The free tier supports approximately 60 requests per minute per IP, sufficient for individual investors and small fund automation. The Insider Circle tier supports several thousand requests per minute and is appropriate for commercial pipelines feeding into data warehouses or AI agent systems. Rate limit headers are returned on every response so client code can self-throttle correctly.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Is there a Model Context Protocol (MCP) server?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Yes. The MCP server is published on npm as @gitdealflow/mcp-signal and provides five tools: get_trending_startups, get_signals_summary, get_startup_signal, get_methodology, and get_weekly_summary. It works in Claude Desktop, Claude Code, Cursor, and any other MCP-compatible client. Installation takes one command: npx -y @gitdealflow/mcp-signal. The server is open source.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "What data formats does the API return?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "The API returns JSON for programmatic consumption, CSV for spreadsheet workflows and Data.world auto-sync, and a structured Markdown variant via the /md endpoint specifically optimized for AI agent ingestion. RSS and Atom feeds are available for the blog and Signal Report. The dataset mirrors on Zenodo and Kaggle provide bulk-download Parquet and CSV files for offline analysis.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Is the MCP server open source?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Yes. The MCP server source code is available on GitHub under an MIT license. Contributions are welcome. The server has been verified A-tier by Glama and is listed in the official MCP Registry plus the awesome-mcp-servers community list. The npm package has had over 690 downloads in the first 10 days post-launch.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Does the API support webhooks?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Webhook delivery is available on the Insider Circle tier. Subscribers configure webhook URLs and acceleration thresholds, and the webhook fires whenever a watched startup crosses the threshold, a new breakout enters a watched sector, or the weekly Signal Report publishes. Webhook payloads are signed with HMAC-SHA256 for verification. Most subscribers route webhooks into Slack, Discord, or internal alerting infrastructure.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Can I use the data in commercial products?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Yes. The published dataset is released under CC-BY-4.0, which permits commercial use with attribution. The API is intended for both individual investors and commercial pipelines feeding into fund infrastructure. Larger commercial customers should contact signal@gitdealflow.com to discuss volume pricing and SLA terms beyond the standard Insider Circle tier.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Is there an A2A endpoint for agent-to-agent communication?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Yes. An Agent Card is published at /.well-known/agent-card.json and the JSON-RPC stub endpoint is /api/a2a. Worked examples are provided for Claude Code, Cursor, OpenAI Agents SDK, LangChain, and Vercel AI SDK at /a2a/<framework>. The A2A surface is intentionally thin and stable — see /a2a for the full specification.",
+            },
+          },
+        ],
+      },
     ],
   };
 

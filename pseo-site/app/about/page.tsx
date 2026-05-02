@@ -140,6 +140,67 @@ export default function AboutPage() {
           },
         ],
       },
+      {
+        "@type": "FAQPage",
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: "What is VC Deal Flow Signal?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "VC Deal Flow Signal is an independent data product that tracks startup engineering acceleration using public GitHub data. It monitors commit velocity, contributor growth, and repository expansion across 4,200 startup organizations in 20 sectors to surface breakout engineering teams before they appear in traditional deal sourcing channels like Crunchbase or PitchBook. Engineering acceleration signals have historically preceded fundraise announcements by three to six weeks.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Who built VC Deal Flow Signal?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "VC Deal Flow Signal was built by The Data Nerd, a data engineer with a background in venture data and quantitative analysis. The project is operated independently and is not affiliated with any VC firm, accelerator program, or investment platform. The methodology is openly published on SSRN, the dataset is mirrored on Zenodo with a DOI, and the source code and MCP server are publicly available.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Why was VC Deal Flow Signal built?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "The product was built because the existing investor data stack — Crunchbase, PitchBook, Affinity, and similar — surfaces startup activity after public events. By the time a startup appears in those sources, the round is often allocated and competitive. Public GitHub data is the earliest publicly observable signal of startup momentum, and no commercial product was tracking it longitudinally at scale until VC Deal Flow Signal launched.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Is VC Deal Flow Signal affiliated with any VC firm?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "No. VC Deal Flow Signal is operated independently. The product is not owned, sponsored, or operated by any venture capital firm, accelerator, family office, or investment platform. The data is provided to all subscribers at the same price and on the same terms regardless of the subscriber's affiliation or fund size.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "What sectors does VC Deal Flow Signal cover?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "The product tracks 20 startup sectors including AI and Machine Learning, Fintech, Climate Tech, Developer Tools, Cybersecurity, Healthcare, Enterprise SaaS, Data Infrastructure, Web3, Robotics, HR Tech, PropTech, EdTech, Marketing Tech, Sales Tech, Legal Tech, Vertical SaaS, Open Source Infrastructure, Hardware, and Consumer Apps with public engineering footprints. Each sector is ranked weekly using the same engineering acceleration methodology.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "How can I contact VC Deal Flow Signal?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Email signal@gitdealflow.com for product questions, methodology questions, partnership inquiries, or press requests. Response time is typically under 48 hours. The product team is small and intentionally direct — emails go to the founder, not a support queue.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Is the product open source?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "The MCP server (npm package @gitdealflow/mcp-signal) is open source and available on GitHub. The methodology is openly published on SSRN. The underlying dataset is mirrored on Zenodo with a CC-BY-4.0 license. The production data pipeline and dashboard application are proprietary, but the metrics and signal definitions are fully reproducible from the published methodology.",
+            },
+          },
+        ],
+      },
     ],
   };
 
