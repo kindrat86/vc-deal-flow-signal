@@ -2,6 +2,10 @@
 
 Search startup engineering acceleration signals directly from your AI assistant.
 
+[![smithery badge](https://smithery.ai/badge/kindrat86/vc-deal-flow-signal)](https://smithery.ai/server/kindrat86/vc-deal-flow-signal)
+
+> One-click install for Claude Desktop / Cursor / Cline / Continue via Smithery — verified, 98/100 quality score.
+
 ![Claude querying VC Deal Flow Signal MCP server](https://gitdealflow.com/mcp-demo.gif)
 
 Tracks commit velocity, contributor growth, and repository expansion across 20 sectors. Built for seed/Series A investors looking for traction signals before they show up in traditional deal flow.
