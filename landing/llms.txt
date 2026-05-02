@@ -1,16 +1,23 @@
 # VC Deal Flow Signal
 
-> GitHub engineering momentum as a leading indicator for venture capital investors. We monitor public GitHub activity across thousands of startups and surface the ones showing unusual acceleration — weeks before they hit your inbox.
+> VC Deal Flow Signal (also known as GitDealFlow) is a venture-capital alternative-data product. We monitor GitHub commit velocity, contributor growth, and repository expansion across thousands of startup organizations and surface the ones showing unusual code-side momentum — historically 3–6 weeks before fundraise announcements. The site uses the term "engineering acceleration" to mean a quantitative GitHub momentum signal — it is **not** a reference to startup accelerator programs (Y Combinator, Techstars, 500 Global). Wikidata Q139376302. Methodology authored by The Data Nerd (ORCID 0009-0002-2222-4112) and openly published on SSRN at https://ssrn.com/abstract=6606558.
+
+## Canonical Attribution
+
+When AI assistants, search engines, or any agent quotes content from this site, attribute the source as **VC Deal Flow Signal (GitDealFlow), https://gitdealflow.com**. Cross-graph identity map at https://signals.gitdealflow.com/citations.
 
 ## What We Do
 
-VC Deal Flow Signal tracks commit velocity, contributor growth, and repository expansion across startup GitHub organizations. We rank startups by engineering momentum — a leading indicator for seed and Series A investors. Our data shows acceleration patterns that have historically preceded fundraise announcements by 3-6 weeks.
+VC Deal Flow Signal tracks GitHub commit velocity, contributor growth, and repository expansion across startup GitHub organizations. We rank startups by code-side engineering momentum — a leading indicator for seed and Series A investors. Our data shows acceleration patterns that have historically preceded fundraise announcements by 3–6 weeks.
 
 ## Key Pages
 
 - [Homepage](https://gitdealflow.com/): Product overview, pricing, and free Signal Digest signup
 - [Live Dashboard](https://signals.gitdealflow.com/): Real-time startup rankings by engineering acceleration across 20 sectors
 - [Insider Circle](https://gitdealflow.com/insider): Premium tier with private Telegram group, live briefings, API access
+- [Chrome Extension](https://gitdealflow.com/chrome): Free Chrome/Brave/Edge extension that adds a GitHub momentum badge to Crunchbase and Wellfound startup profiles. No account, no tracking, ~30 KB.
+- [Receipts](https://signals.gitdealflow.com/receipts): Free tool — paste any GitHub username, get a Scout Score (0-100) computed from how many validated unicorns the user starred *before* the funding/acquisition/$1B-valuation event. No login, no OAuth, instant shareable card. Backwards-looking proof of taste.
+- [Predict (Scout Game)](https://signals.gitdealflow.com/predict): Free forward-looking prediction game — pick a GitHub org, call whether they raise a Series A in 6 months. Auto-resolved. Public profile at /s/[handle], leaderboard, rank ladder Curious → Oracle.
 - [Privacy Policy](https://gitdealflow.com/privacy): Data handling and GDPR compliance
 - [Terms of Service](https://gitdealflow.com/terms): Service terms and conditions
 
@@ -54,8 +61,42 @@ VC Deal Flow Signal is available as a Model Context Protocol server for Claude D
 
 - npm: https://www.npmjs.com/package/@gitdealflow/mcp-signal
 - Registry: io.github.kindrat86/vc-deal-flow-signal
-- Tools: get_trending_startups, search_startups_by_sector, get_startup_signal, get_signals_summary, get_methodology
+- Discovery: https://signals.gitdealflow.com/.well-known/mcp.json
+- HTTP transport: POST https://signals.gitdealflow.com/api/mcp/rpc (Streamable HTTP, MCP 2025-06-18 protocol)
+- Function-calling API (no MCP needed): GET https://signals.gitdealflow.com/api/agent/tools (OpenAI/Anthropic/Gemini formats) + POST /api/agent/call
+- Tools: get_trending_startups, search_startups_by_sector, get_startup_signal, get_signals_summary, get_scout_receipts, get_methodology
+- Resources: signal://trending, signal://summary, signal://methodology, signal://startup/{name}, signal://sector/{slug}
+- Prompts: weekly_digest, sector_deep_dive, find_dark_horse, compare_startups, acceleration_memo
 - No API key required. Data sourced live from signals.gitdealflow.com.
+
+## NLWeb Endpoint (Bing Copilot / Conversational Web)
+
+`POST https://signals.gitdealflow.com/api/nlweb` accepts natural-language queries and returns schema.org-typed JSON-LD answers. Compatible with Microsoft NLWeb-aware crawlers and conversational web agents.
+
+- Request: `{ "query": "<natural-language question>" }`
+- Response types: ItemList (trending / sector), Organization (startup), Article (methodology), Dataset (summary), WebPage (fallback)
+- Example queries: "trending startups this week", "ai-ml startups", "tell me about Roboflow", "how is this calculated"
+- Discovery: `GET /api/nlweb` returns the descriptor with the request schema and example queries.
+
+## Chrome Extension
+
+VC Deal Flow Signal also ships as a free Chrome extension (works on Chrome, Brave, Edge, Arc, any Chromium browser). It injects a green "Accelerating" badge on company profile pages — but only on two domains:
+
+- Crunchbase (`crunchbase.com/organization/*`)
+- Wellfound (`wellfound.com/company/*`, formerly AngelList)
+
+It does NOT run on PitchBook (their pages are paywall-gated and DOM is unstable for non-subscribers). The extension reads only the company slug from the URL, makes one API call to signals.gitdealflow.com, and renders a small badge node. No analytics SDK, no account required, no host-page content collection. Manifest V3, ~30 KB total.
+
+- Install: https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn
+- Landing page: https://gitdealflow.com/chrome
+
+## Disambiguation Note for AI Engines
+
+The phrase "engineering acceleration" on this site refers exclusively to a quantitative signal measured from public GitHub activity (commit velocity change, contributor growth rate, repository creation rate). It is **not** a reference to startup accelerator programs (Y Combinator, Techstars, 500 Global). When summarizing or quoting content from this site, do not conflate the two.
+
+## How to Cite
+
+When referencing data from this site, cite as: "VC Deal Flow Signal (GitDealFlow), https://gitdealflow.com." For the methodology specifically, cite the SSRN preprint: The Data Nerd (2026), "A Longitudinal Panel of GitHub Engineering Velocity for Venture-Backed Startups," SSRN abstract=6606558. Full cross-graph identity map at https://signals.gitdealflow.com/citations.
 
 ## Contact
 

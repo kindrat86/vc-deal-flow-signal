@@ -83,9 +83,16 @@ export default function AboutPage() {
           },
         ],
         sameAs: [
+          "https://orcid.org/0009-0002-2222-4112",
           "https://x.com/data_nerd",
           "https://t.me/gitdealflow",
           "https://www.linkedin.com/company/gitdealflow",
+          "https://github.com/kindrat86",
+          "https://news.ycombinator.com/user?id=the_data_nerd",
+          "https://www.indiehackers.com/The_Data_Nerd",
+          "https://dev.to/the_data_nerd",
+          "https://hashnode.com/@TheData_7cdit42c",
+          "https://hackernoon.com/u/TheData_7cdit42c",
         ],
       },
       {
@@ -111,6 +118,10 @@ export default function AboutPage() {
           "@type": "Organization",
           name: "VC Deal Flow Signal",
         },
+        speakable: {
+          "@type": "SpeakableSpecification",
+          cssSelector: ["[data-speakable]", "h1", "h2"],
+        },
       },
       {
         "@type": "BreadcrumbList",
@@ -129,6 +140,67 @@ export default function AboutPage() {
           },
         ],
       },
+      {
+        "@type": "FAQPage",
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: "What is VC Deal Flow Signal?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "VC Deal Flow Signal is an independent data product that tracks startup engineering acceleration using public GitHub data. It monitors commit velocity, contributor growth, and repository expansion across 4,200 startup organizations in 20 sectors to surface breakout engineering teams before they appear in traditional deal sourcing channels like Crunchbase or PitchBook. Engineering acceleration signals have historically preceded fundraise announcements by three to six weeks.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Who built VC Deal Flow Signal?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "VC Deal Flow Signal was built by The Data Nerd, a data engineer with a background in venture data and quantitative analysis. The project is operated independently and is not affiliated with any VC firm, accelerator program, or investment platform. The methodology is openly published on SSRN, the dataset is mirrored on Zenodo with a DOI, and the source code and MCP server are publicly available.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Why was VC Deal Flow Signal built?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "The product was built because the existing investor data stack — Crunchbase, PitchBook, Affinity, and similar — surfaces startup activity after public events. By the time a startup appears in those sources, the round is often allocated and competitive. Public GitHub data is the earliest publicly observable signal of startup momentum, and no commercial product was tracking it longitudinally at scale until VC Deal Flow Signal launched.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Is VC Deal Flow Signal affiliated with any VC firm?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "No. VC Deal Flow Signal is operated independently. The product is not owned, sponsored, or operated by any venture capital firm, accelerator, family office, or investment platform. The data is provided to all subscribers at the same price and on the same terms regardless of the subscriber's affiliation or fund size.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "What sectors does VC Deal Flow Signal cover?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "The product tracks 20 startup sectors including AI and Machine Learning, Fintech, Climate Tech, Developer Tools, Cybersecurity, Healthcare, Enterprise SaaS, Data Infrastructure, Web3, Robotics, HR Tech, PropTech, EdTech, Marketing Tech, Sales Tech, Legal Tech, Vertical SaaS, Open Source Infrastructure, Hardware, and Consumer Apps with public engineering footprints. Each sector is ranked weekly using the same engineering acceleration methodology.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "How can I contact VC Deal Flow Signal?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Email signal@gitdealflow.com for product questions, methodology questions, partnership inquiries, or press requests. Response time is typically under 48 hours. The product team is small and intentionally direct — emails go to the founder, not a support queue.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Is the product open source?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "The MCP server (npm package @gitdealflow/mcp-signal) is open source and available on GitHub. The methodology is openly published on SSRN. The underlying dataset is mirrored on Zenodo with a CC-BY-4.0 license. The production data pipeline and dashboard application are proprietary, but the metrics and signal definitions are fully reproducible from the published methodology.",
+            },
+          },
+        ],
+      },
     ],
   };
 
@@ -141,7 +213,7 @@ export default function AboutPage() {
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Breadcrumb */}
-        <nav className="mb-6 text-sm text-gray-500" aria-label="Breadcrumb">
+        <nav className="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300 transition-colors">
             All Sectors
           </Link>
@@ -197,23 +269,23 @@ export default function AboutPage() {
               <p className="text-sky-400 text-2xl font-bold">
                 {activeSectors.length}
               </p>
-              <p className="text-gray-500 text-xs mt-1">Sectors</p>
+              <p className="text-gray-400 text-xs mt-1">Sectors</p>
             </div>
             <div className="rounded-lg border border-slate-800 bg-slate-900 p-4 text-center">
               <p className="text-sky-400 text-2xl font-bold">
                 {totalStartups}+
               </p>
-              <p className="text-gray-500 text-xs mt-1">Startups</p>
+              <p className="text-gray-400 text-xs mt-1">Startups</p>
             </div>
             <div className="rounded-lg border border-slate-800 bg-slate-900 p-4 text-center">
               <p className="text-sky-400 text-2xl font-bold">
                 {allPeriods.length}
               </p>
-              <p className="text-gray-500 text-xs mt-1">Quarters of data</p>
+              <p className="text-gray-400 text-xs mt-1">Quarters of data</p>
             </div>
             <div className="rounded-lg border border-slate-800 bg-slate-900 p-4 text-center">
               <p className="text-sky-400 text-2xl font-bold">Weekly</p>
-              <p className="text-gray-500 text-xs mt-1">Data refresh</p>
+              <p className="text-gray-400 text-xs mt-1">Data refresh</p>
             </div>
           </div>
           <div className="rounded-lg border border-slate-800 bg-slate-900 p-6 text-gray-400 text-sm leading-relaxed space-y-4">
@@ -248,7 +320,7 @@ export default function AboutPage() {
                 Our{" "}
                 <Link
                   href="/methodology"
-                  className="text-sky-500 hover:text-sky-400 transition-colors"
+                  className="text-sky-500 hover:text-sky-400 underline transition-colors"
                 >
                   methodology
                 </Link>{" "}
@@ -256,7 +328,7 @@ export default function AboutPage() {
                 filtered, and ranked — including known limitations. The{" "}
                 <Link
                   href="/api/signals.json"
-                  className="text-sky-500 hover:text-sky-400 transition-colors"
+                  className="text-sky-500 hover:text-sky-400 underline transition-colors"
                 >
                   public API
                 </Link>{" "}
@@ -313,7 +385,7 @@ export default function AboutPage() {
             <div className="flex gap-4 pt-2">
               <a
                 href="https://x.com/data_nerd"
-                className="text-sky-500 hover:text-sky-400 text-xs font-medium transition-colors"
+                className="text-sky-500 hover:text-sky-400 underline text-xs font-medium transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -321,7 +393,7 @@ export default function AboutPage() {
               </a>
               <a
                 href="https://t.me/gitdealflow"
-                className="text-sky-500 hover:text-sky-400 text-xs font-medium transition-colors"
+                className="text-sky-500 hover:text-sky-400 underline text-xs font-medium transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -329,7 +401,7 @@ export default function AboutPage() {
               </a>
               <a
                 href="https://www.linkedin.com/company/gitdealflow"
-                className="text-sky-500 hover:text-sky-400 text-xs font-medium transition-colors"
+                className="text-sky-500 hover:text-sky-400 underline text-xs font-medium transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -337,7 +409,7 @@ export default function AboutPage() {
               </a>
               <a
                 href="mailto:signal@gitdealflow.com"
-                className="text-sky-500 hover:text-sky-400 text-xs font-medium transition-colors"
+                className="text-sky-500 hover:text-sky-400 underline text-xs font-medium transition-colors"
               >
                 signal@gitdealflow.com
               </a>
@@ -356,7 +428,7 @@ export default function AboutPage() {
               Browse the{" "}
               <Link
                 href="/"
-                className="text-sky-500 hover:text-sky-400 transition-colors"
+                className="text-sky-500 hover:text-sky-400 underline transition-colors"
               >
                 sector rankings
               </Link>{" "}
@@ -371,7 +443,7 @@ export default function AboutPage() {
               Track your portfolio companies on the{" "}
               <Link
                 href="/trending"
-                className="text-sky-500 hover:text-sky-400 transition-colors"
+                className="text-sky-500 hover:text-sky-400 underline transition-colors"
               >
                 trending page
               </Link>
@@ -383,14 +455,14 @@ export default function AboutPage() {
               <strong className="text-gray-200">For AI and tools:</strong> The{" "}
               <Link
                 href="/api/signals.json"
-                className="text-sky-500 hover:text-sky-400 transition-colors"
+                className="text-sky-500 hover:text-sky-400 underline transition-colors"
               >
                 JSON API
               </Link>{" "}
               and{" "}
               <Link
                 href="/llms.txt"
-                className="text-sky-500 hover:text-sky-400 transition-colors"
+                className="text-sky-500 hover:text-sky-400 underline transition-colors"
               >
                 llms.txt
               </Link>{" "}
@@ -411,7 +483,7 @@ export default function AboutPage() {
                 <strong className="text-gray-200">Email:</strong>{" "}
                 <a
                   href="mailto:signal@gitdealflow.com"
-                  className="text-sky-500 hover:text-sky-400 transition-colors"
+                  className="text-sky-500 hover:text-sky-400 underline transition-colors"
                 >
                   signal@gitdealflow.com
                 </a>
@@ -420,7 +492,7 @@ export default function AboutPage() {
                 <strong className="text-gray-200">Twitter/X:</strong>{" "}
                 <a
                   href="https://x.com/data_nerd"
-                  className="text-sky-500 hover:text-sky-400 transition-colors"
+                  className="text-sky-500 hover:text-sky-400 underline transition-colors"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -431,7 +503,7 @@ export default function AboutPage() {
                 <strong className="text-gray-200">Telegram:</strong>{" "}
                 <a
                   href="https://t.me/gitdealflow"
-                  className="text-sky-500 hover:text-sky-400 transition-colors"
+                  className="text-sky-500 hover:text-sky-400 underline transition-colors"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -442,7 +514,7 @@ export default function AboutPage() {
                 <strong className="text-gray-200">LinkedIn:</strong>{" "}
                 <a
                   href="https://www.linkedin.com/company/gitdealflow"
-                  className="text-sky-500 hover:text-sky-400 transition-colors"
+                  className="text-sky-500 hover:text-sky-400 underline transition-colors"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -465,7 +537,7 @@ export default function AboutPage() {
           <div className="flex justify-center gap-3">
             <Link
               href="/"
-              className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-medium transition-colors"
+              className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-sky-700 hover:bg-sky-600 text-white text-sm font-medium transition-colors"
             >
               Browse Sectors
             </Link>

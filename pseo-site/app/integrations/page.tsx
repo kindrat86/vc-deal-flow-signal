@@ -183,6 +183,67 @@ export default function IntegrationsPage() {
           },
         ],
       },
+      {
+        "@type": "FAQPage",
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: "What integrations does VC Deal Flow Signal support?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "The product integrates with Claude Desktop, Claude Code, and Cursor via the Model Context Protocol (MCP) server, with Slack via webhooks for alert routing, with Zapier and n8n for automation pipelines, with email via the weekly Signal Report and the API, and with Data.world for direct dataset auto-sync. The JSON API allows direct integration with any internal CRM (Affinity, HubSpot, Salesforce) or data warehouse (Snowflake, BigQuery, PostgreSQL).",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "How do I install the MCP server?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Run npx -y @gitdealflow/mcp-signal in your terminal, or add the configuration to your Claude Desktop or Claude Code mcpServers config: command npx, args [-y, @gitdealflow/mcp-signal]. The server provides five tools: trending startups, sector signals, startup lookup, methodology, and weekly summaries. Installation typically takes under two minutes.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Is the API free?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "The basic JSON endpoints (signals.json, weekly summary, methodology) are free with reasonable rate limits suitable for individual investors and small funds. Higher-volume API access for commercial pipelines is available with the Insider Circle tier (EUR 97/month) which includes elevated rate limits and webhook delivery. No enterprise contract is required.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Can I pipe signals into Affinity, HubSpot, or Salesforce?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Yes. The JSON API is designed to be wired into any CRM through Zapier, n8n, or direct API calls. Most funds use a weekly cron that pulls the latest signals, dedupes against existing CRM records, and creates new opportunities or enrichment events for matched companies. Email signal@gitdealflow.com if you want a worked example for your specific CRM.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Does the product support webhooks?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Webhook delivery is available on the Insider Circle tier. Subscribed webhooks fire when a watched startup crosses a configurable acceleration threshold, when a new breakout enters a watched sector, or when the weekly Signal Report publishes. Most subscribers route webhooks into Slack, Discord, or internal Slack-bot infrastructure for real-time alerting.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "How do I integrate with Slack?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Two integration patterns work well. The simpler pattern uses Zapier or n8n to consume the weekly RSS or JSON endpoint and post a digest to a Slack channel every Monday morning. The more advanced pattern uses the Insider Circle webhook delivery, configured to POST to a Slack incoming webhook URL whenever a watched signal fires. Many funds run both — the digest for top-of-funnel review and the webhook for real-time alerts on portfolio companies.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Is there a Chrome extension?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Yes. The free Chrome/Brave/Edge extension adds a GitHub momentum badge to Crunchbase and Wellfound startup profile pages. When you visit a startup's Crunchbase page, the extension surfaces the engineering acceleration data inline so you can see the signal without leaving the source you were already using. The extension is approximately 30 KB and requires no account or login.",
+            },
+          },
+        ],
+      },
     ],
   };
 

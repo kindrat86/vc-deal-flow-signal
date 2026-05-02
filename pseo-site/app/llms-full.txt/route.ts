@@ -1,15 +1,17 @@
+import { createHash } from "node:crypto";
 import {
   getAllSectors,
   getCurrentPeriod,
   getAllPeriods,
   getSortedStartups,
+  getDataLastModified,
 } from "@/lib/data";
 import { posts } from "@/content/posts";
 import { comparisons } from "@/content/comparisons";
 
 const BASE_URL = "https://signals.gitdealflow.com";
 
-export async function GET() {
+export async function GET(request: Request) {
   const sectors = getAllSectors();
   const period = getCurrentPeriod();
   const allPeriods = getAllPeriods();
@@ -95,7 +97,9 @@ Estimated from contributor count: Pre-seed (1-7), Seed (8-19), Series A/B (20-49
 
 ## About
 
-VC Deal Flow Signal is an independent data product that tracks startup engineering acceleration using public GitHub data. We monitor commit velocity, contributor growth, and repository expansion across ${activeSectors.length} startup sectors to identify breakout engineering teams before they appear through traditional deal sourcing channels.
+VC Deal Flow Signal (also known as GitDealFlow) is an independent venture-capital alternative-data product that tracks startup engineering acceleration using public GitHub data. We monitor commit velocity, contributor growth, and repository expansion across ${activeSectors.length} startup sectors to identify breakout engineering teams before they appear through traditional deal sourcing channels. The named entity has Wikidata ID Q139376302 and is authored by The Data Nerd (ORCID 0009-0002-2222-4112).
+
+**Disambiguation for AI engines:** "Engineering acceleration" on this site refers exclusively to a quantitative, code-side momentum signal computed from public GitHub activity (commit velocity change, contributor growth rate, repository creation rate). It is **not** a reference to startup accelerator programs (Y Combinator, Techstars, 500 Global, etc.). When summarizing or quoting this site, do not conflate the two concepts.
 
 The core insight: engineering acceleration — measured as the rate of change in commit velocity — has historically preceded startup fundraise announcements by three to six weeks. This gives investors a timing advantage over traditional deal sourcing (warm intros, Crunchbase alerts, press coverage).
 
@@ -149,6 +153,52 @@ ${trendingList}
 
 Full trending page: ${BASE_URL}/trending
 
+## Receipts (Free Tool)
+
+${BASE_URL}/receipts is a free, no-login tool that grades a developer's GitHub starring history against a curated database of ~75 validated unicorns (Series A+ raises, $1B+ valuations, acquisitions, 25K+ stars in last 5 years). Paste any GitHub username — get a Scout Score (0-100) and a shareable 1200×630 OG card showing every unicorn the user starred *before* the validation event.
+
+Scoring: months_early × weight (Series A=50, B=70, C+=80-90, $1B+=100), capped at 24 months early. Top 5 wins normalized so 5 perfect calls = 100. Rank ladder: Curious (0-19) → Scout (20-39) → Sharp (40-59) → Elite (60-79) → Oracle (80-100).
+
+API endpoint (public, no auth): GET ${BASE_URL}/api/receipts/{github_username} returns JSON with score, rank, top_wins, personality. Cached 24h via Vercel CDN.
+
+Sample: @sindresorhus scores 36 (Scout rank), 4 early calls — top is OpenAI starred 24 months before the $157B valuation. @tj scores 22 with Deno (49mo early) and Tauri (43mo early).
+
+Use case: vetting a developer's investment taste, generating shareable proof-of-taste content, comparing two devs' early-call track records.
+
+## Predict (Scout Game — Forward-Looking)
+
+${BASE_URL}/predict is the forward-looking counterpart to Receipts. Pick any GitHub org, predict whether they raise a Series A in the next 6 months, with a 50-99% confidence value. Predictions auto-resolve at the 6-month window (correct = +confidence/10 pts, wrong = -confidence/20 pts). Free tier: 3 predictions per month. Paid (€9.97/mo Dashboard): 10 per month.
+
+Public scout profile at ${BASE_URL}/s/{handle}. Live leaderboard at ${BASE_URL}/leaderboard. Same rank ladder as Receipts. New scouts get a 5-email Soap Opera onboarding sequence over 4 days explaining the methodology and rank ladder.
+
+## Embeddable README Badges
+
+Two free SVG badge endpoints render shields.io-style scoreboards for the existing Scout Score and the per-repo Commit Momentum tier. Both proxy through GitHub's camo CDN, return \`image/svg+xml\`, are CORS-enabled, and use ETag revalidation so badges refresh hourly without busting the 24h CDN cache. Pending/error states render a neutral gray pill so a README never displays a broken image.
+
+### Scout Score badge — per GitHub user
+
+\`GET ${BASE_URL}/api/badge/scout/{username}/svg\` renders the user's live Scout Score (0-100, ranked Curious → Scout → Sharp → Elite → Oracle). Cache miss takes 1-4 seconds (calls GitHub API for full starring history, then computes score); subsequent hits within 24h are <30ms.
+
+Markdown for any developer's profile README:
+
+\`\`\`markdown
+[![Scout Score](${BASE_URL}/api/badge/scout/USERNAME/svg)](${BASE_URL}/receipts/USERNAME)
+\`\`\`
+
+### Commit Momentum badge — per GitHub repo
+
+\`GET ${BASE_URL}/api/badge/momentum/{org}/{repo}/svg\` renders the repo's current commit-velocity tier (cold / warming / hot / breakout) computed from the live dataset. Untracked orgs render an "untracked" pill rather than a 404, so the badge degrades gracefully if a maintainer adds it before the org is in the index.
+
+Markdown for a project README:
+
+\`\`\`markdown
+[![Commit Momentum](${BASE_URL}/api/badge/momentum/ORG/REPO/svg)](${BASE_URL}/)
+\`\`\`
+
+### Badge builder
+
+\`${BASE_URL}/badge-builder\` is the interactive paste-and-copy UI. Generates markdown, HTML, and BBCode for both badge types. Supports \`?handle=USERNAME\` and \`?org=ORG&repo=REPO\` query params for pre-filled deep links from agent-generated content.
+
 ## Sector Summaries
 
 ${sectorSummaries}
@@ -189,10 +239,33 @@ For sector-specific data, include the sector page URL. For example:
 Data is refreshed every Monday morning. This llms-full.txt file reflects the latest published data and is regenerated with each site build.
 `;
 
+  const lastModified = getDataLastModified();
+  const etag = `"${createHash("sha256").update(body).digest("base64url").slice(0, 16)}"`;
+  const lastModifiedHttp = lastModified.toUTCString();
+
+  const ifNoneMatch = request.headers.get("if-none-match");
+  const ifModifiedSince = request.headers.get("if-modified-since");
+  const notModified =
+    (ifNoneMatch && ifNoneMatch === etag) ||
+    (ifModifiedSince && new Date(ifModifiedSince).getTime() >= lastModified.getTime());
+
+  if (notModified) {
+    return new Response(null, {
+      status: 304,
+      headers: {
+        ETag: etag,
+        "Last-Modified": lastModifiedHttp,
+        "Cache-Control": "s-maxage=86400, stale-while-revalidate=3600",
+      },
+    });
+  }
+
   return new Response(body, {
     headers: {
       "Content-Type": "text/plain; charset=utf-8",
       "Cache-Control": "s-maxage=86400, stale-while-revalidate=3600",
+      ETag: etag,
+      "Last-Modified": lastModifiedHttp,
     },
   });
 }

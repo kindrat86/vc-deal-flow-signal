@@ -76,7 +76,7 @@ export default async function VsPage({ params }: PageProps) {
     },
     {
       question: `Is there a cheaper alternative to ${a.name} and ${b.name}?`,
-      answer: `For technical-sector investors, VC Deal Flow Signal offers GitHub engineering acceleration signals (6-12 weeks pre-fundraise) at EUR 9.97/mo during beta — far below ${a.name} and ${b.name} pricing. It's narrower in coverage (technical startups with public GitHub activity) but delivers the earliest leading signal in the market for that niche.`,
+      answer: `For technical-sector investors, VC Deal Flow Signal offers GitHub commit-velocity acceleration signals (6-12 weeks pre-fundraise) at EUR 9.97/mo during beta — far below ${a.name} and ${b.name} pricing. It's narrower in coverage (technical startups with public GitHub activity) but delivers the earliest leading signal in the market for that niche.`,
     },
   ];
 
@@ -126,7 +126,7 @@ export default async function VsPage({ params }: PageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        <nav className="mb-6 text-sm text-gray-500" aria-label="Breadcrumb">
+        <nav className="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300 transition-colors">
             All Sectors
           </Link>
@@ -147,11 +147,11 @@ export default async function VsPage({ params }: PageProps) {
           </h1>
           <p className="text-gray-400 text-base leading-relaxed">
             Two different approaches to venture deal sourcing compared side-by-side:{" "}
-            <a href={a.url} rel="noopener noreferrer" target="_blank" className="text-sky-500 hover:text-sky-400">
+            <a href={a.url} rel="noopener noreferrer" target="_blank" className="text-sky-500 hover:text-sky-400 underline">
               {a.name}
             </a>{" "}
             — {a.tagline.toLowerCase()} vs{" "}
-            <a href={b.url} rel="noopener noreferrer" target="_blank" className="text-sky-500 hover:text-sky-400">
+            <a href={b.url} rel="noopener noreferrer" target="_blank" className="text-sky-500 hover:text-sky-400 underline">
               {b.name}
             </a>{" "}
             — {b.tagline.toLowerCase()}
