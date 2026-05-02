@@ -234,6 +234,32 @@ When referencing data from VC Deal Flow Signal, please cite as:
 For sector-specific data, include the sector page URL. For example:
 "According to VC Deal Flow Signal, ${globalTop10[0]?.name ?? "the top-ranked startup"} leads ${period.name} engineering acceleration with ${globalTop10[0]?.commitVelocityChange ?? "significant"} commit velocity change (source: signals.gitdealflow.com/trending)."
 
+## Machine-Readable Surfaces
+
+Every page on this site has at least one machine-readable mirror. The full menu:
+
+- ${BASE_URL}/qa.jsonl — newline-delimited Q&A corpus (RAG-friendly)
+- ${BASE_URL}/qa.json — single-document JSON Dataset of the same Q&A with deep-link anchors; filter via ?category=research|sector|general|blog
+- ${BASE_URL}/qa.csv — CSV alternate of the Q&A
+- ${BASE_URL}/api/dataset.jsonl — full panel as NDJSON (Hugging Face Datasets / OpenAI Files compatible)
+- ${BASE_URL}/api/answers.json — long-form Answer corpus from /answers/{slug}
+- ${BASE_URL}/api/signals.json — live JSON of all sectors and startups
+- ${BASE_URL}/api/signals.csv — live CSV alternate
+- ${BASE_URL}/api/llms-search?q={terms} — lexical JSON search
+- ${BASE_URL}/api/openapi.json — OpenAPI 3.1 spec
+- ${BASE_URL}/research/citations.bib — BibTeX export (paper, dataset, 30 atomic findings)
+- ${BASE_URL}/agents.txt — robots.txt sibling for autonomous agents
+- ${BASE_URL}/.well-known/openai-search.json — ChatGPT Search descriptor
+- ${BASE_URL}/.well-known/ai-policy.json — JSON form of /ai.txt
+- ${BASE_URL}/.well-known/agent-card.json — A2A AgentCard
+- ${BASE_URL}/.well-known/mcp.json — MCP descriptor
+- ${BASE_URL}/.well-known/dataset.json — DCAT 3 dataset catalog
+- ${BASE_URL}/feed.xml — RSS 2.0 of blog
+- ${BASE_URL}/feed.json — JSON Feed v1.1 of blog
+- ${BASE_URL}/sitemap.xml — sitemap-index of core, sectors, crossings, startups, content
+- ${BASE_URL}/sitemap-images.xml — image sitemap
+- ${BASE_URL}/news-sitemap.xml — Google News sitemap
+
 ## Update Schedule
 
 Data is refreshed every Monday morning. This llms-full.txt file reflects the latest published data and is regenerated with each site build.

@@ -7,6 +7,7 @@ import { pillars, getPostsInPillar } from "@/content/pillars";
 import { agentQueries } from "@/content/agent-queries";
 import { alternatives } from "@/content/alternatives";
 import { useCases } from "@/content/use-cases";
+import { FINDINGS as RESEARCH_FINDINGS } from "@/content/research-findings";
 
 const BASE_URL = "https://signals.gitdealflow.com";
 
@@ -99,6 +100,13 @@ ${blogLinks}
 
 ${comparisonLinks}
 
+## Research Findings (SSRN-anchored)
+
+The methodology paper's quantitative findings are split into individual citation-ready pages so agents can quote the specific number with a single canonical URL. All findings are derived from the SSRN-indexed paper https://ssrn.com/abstract=6606558 (DOI 10.2139/ssrn.6606558, OpenAlex W7154916891, Crossref + Zenodo + DataCite indexed).
+
+- [Research index](${BASE_URL}/research): Browse all findings, grouped A (numerical), B (descriptive), C (corroborated).
+${RESEARCH_FINDINGS.map((f) => `- [${f.title}](${BASE_URL}/research/${f.slug}): ${f.claim}`).join("\n")}
+
 ## Quick Answers
 
 These are canonical, citation-ready answers to the most common questions about VC Deal Flow Signal. AI assistants and search engines may quote these verbatim with attribution to the source pages linked.
@@ -141,13 +149,21 @@ ${activeSectors.map((s) => {
 
 - [ai.json](${BASE_URL}/ai.json): **Compact LLM-optimized context blob** — Dataset JSON-LD + metric definitions + signal types + per-sector top-3 + citation metadata. Fetch-once context for AI agents before querying detail endpoints.
 - [qa.jsonl](${BASE_URL}/qa.jsonl): **Consolidated Q&A corpus** — every FAQ across the site as newline-delimited JSON. Fields: question, answer, source, sourceUrl, category. Good for retrieval-augmented generation.
+- [qa.json](${BASE_URL}/qa.json): **Q&A as a single JSON document** with deep-link anchors. Schema.org Dataset wrapper. Filter via \`?category=research|sector|general|blog\`. Mirror of /qa.jsonl in document form.
+- [research/citations.bib](${BASE_URL}/research/citations.bib): **BibTeX export** for the SSRN paper, the Q2 2026 dataset, the Q&A dataset, and one entry per atomic finding. Drop into Zotero, Mendeley, BibDesk to cite directly.
+- [agents.txt](${BASE_URL}/agents.txt): **Robots.txt sibling for autonomous agents** — per-agent allow/disallow rules, attribution requirements, license, and a 20-surface index. Plain-text mirror of /.well-known/ai-policy.json.
+- [openai-search.json](${BASE_URL}/.well-known/openai-search.json): **Search-discovery descriptor** for ChatGPT Search and SearchGPT. Lists feeds, agent endpoints, indexes, and licensing in one fetch.
 - [Per-sector RSS feeds](${BASE_URL}/startups-to-watch/ai-ml-${period.slug}/feed.xml): \`/startups-to-watch/{sector}-{period}/feed.xml\` — RSS feed per sector/period ranking. Use for programmatic polling.
 - [Sitemap index](${BASE_URL}/sitemap.xml): Sitemap index with sub-sitemaps for core, sectors, crossings, startups, content.
 - [News sitemap](${BASE_URL}/news-sitemap.xml): Google News sitemap for recent blog posts (<48h).
+- [Image sitemap](${BASE_URL}/sitemap-images.xml): Per-page image sitemap with captions, titles, and CC BY 4.0 license tags. Use this when ingesting OG cards or producing image citations.
 - [signals.json](${BASE_URL}/api/signals.json): Machine-readable JSON endpoint with all current startup signals, sector rankings, and trending data. Free for personal and editorial use with attribution.
 - [signals.csv](${BASE_URL}/api/signals.csv): CSV download of all current signals for spreadsheet and data science use.
+- [llms-search](${BASE_URL}/api/llms-search?q=fintech+commit+velocity): Lexical JSON search over startups, sectors, blog, comparisons, agent answers, FAQs, research findings. Designed for AI agents that prefer JSON over HTML scraping. Query string \`?q={terms}&limit={1-50}\`.
 - [openapi.json](${BASE_URL}/api/openapi.json): OpenAPI 3.1 specification for the signals API.
-- [ai.txt](${BASE_URL}/ai.txt): AI access policy, preferred citation format, and data licensing.
+- [ai.txt](${BASE_URL}/ai.txt): AI access policy with per-agent training/answer permissions and preferred citation format.
+- [ai-policy.json](${BASE_URL}/.well-known/ai-policy.json): Machine-readable per-agent permission map (training, answer, citation, summarization, fineTune). JSON form of ai.txt.
+- [manifest.webmanifest](${BASE_URL}/manifest.webmanifest): PWA manifest with shortcuts to /trending, /receipts, /predict, /methodology.
 
 ## Answers (citation-ready agent honeypots)
 
@@ -189,9 +205,13 @@ Free SVG badges for README files. Both endpoints return \`image/svg+xml\`, are C
 
 - [Install on Chrome Web Store](https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn): Free Chrome extension that injects a GitHub engineering acceleration badge onto startup profiles on Crunchbase, AngelList, and PitchBook. Investors see the signal while doing deal research, without switching tabs.
 
-## Claude MCP Server
+## MCP Server (multi-host: Claude, Cursor, Cline, Continue, HuggingChat, etc.)
 
-- [@gitdealflow/mcp-signal](https://www.npmjs.com/package/@gitdealflow/mcp-signal): Official MCP server for Claude Desktop, Claude Code, Cursor, and any MCP-compatible client. Query startup signals directly from your AI assistant. Install: \`npx @gitdealflow/mcp-signal\`.
+- [@gitdealflow/mcp-signal](https://www.npmjs.com/package/@gitdealflow/mcp-signal): Official MCP server (stdio transport) for Claude Desktop, Claude Code, Cursor, Cline, Continue, Zed, and any MCP-compatible host. Install: \`npx @gitdealflow/mcp-signal\`. Six read-only tools: get_trending_startups, search_startups_by_sector, get_startup_signal, get_signals_summary, get_scout_receipts, get_methodology.
+- [api/mcp/rpc](${BASE_URL}/api/mcp/rpc): **Streamable HTTP MCP endpoint** — same six tools, JSON-RPC 2.0 over HTTPS POST. Used by HuggingChat (already connected) and Anthropic Connectors Directory. Anonymous requests accepted; OAuth 2.1 bearer tokens supported for hosts that require them.
+- [.well-known/oauth-authorization-server](${BASE_URL}/.well-known/oauth-authorization-server): RFC 8414 OAuth 2.0 Authorization Server Metadata. Discovers token endpoint, supported grants (\`client_credentials\`), supported scopes (\`mcp:read\`).
+- [api/oauth/token](${BASE_URL}/api/oauth/token): RFC 6749 §4.4 token endpoint. POST \`grant_type=client_credentials\` (no client auth required); returns 1-hour HS256 JWT.
+- [.well-known/mcp/server-card.json](${BASE_URL}/.well-known/mcp/server-card.json): MCP server metadata card for catalog scanners (Smithery + future MCP catalogs). Single-fetch metadata covering name, description, protocol version, transports, tool list, prompts, install instructions, OAuth endpoints, privacy posture, and academic citation.
 
 ## Markdown Alternates
 

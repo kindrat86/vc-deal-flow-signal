@@ -1,0 +1,126 @@
+/**
+ * /agents.txt — robots.txt sibling for autonomous agents.
+ *
+ * Mirrors the policy expressed in /.well-known/ai-policy.json in a format
+ * agents that don't speak JSON-LD can still parse. Lists allowed agents,
+ * disallowed paths, attribution requirements, contact, and pointers to
+ * machine-readable surfaces.
+ */
+
+export const dynamic = "force-static";
+
+const AGENTS = [
+  "GPTBot",
+  "ChatGPT-User",
+  "OAI-SearchBot",
+  "ClaudeBot",
+  "Claude-Web",
+  "Claude-User",
+  "Claude-SearchBot",
+  "anthropic-ai",
+  "PerplexityBot",
+  "Perplexity-User",
+  "Google-Extended",
+  "GoogleOther",
+  "Applebot",
+  "Applebot-Extended",
+  "CCBot",
+  "Amazonbot",
+  "cohere-ai",
+  "Meta-ExternalAgent",
+  "MistralAI-User",
+  "DuckAssistBot",
+  "YouBot",
+  "Diffbot",
+  "Kagibot",
+  "ai2bot",
+];
+
+const DISALLOW = [
+  "/api/auth/",
+  "/api/oauth/",
+  "/api/webhook/",
+  "/api/cron/",
+  "/api/verify/",
+  "/dashboard/",
+  "/login/",
+  "/welcome/",
+  "/share/",
+  "/predicted/",
+  "/api/share/",
+];
+
+const SURFACES = [
+  ["llms-index", "https://signals.gitdealflow.com/llms.txt"],
+  ["llms-full", "https://signals.gitdealflow.com/llms-full.txt"],
+  ["qa-jsonl", "https://signals.gitdealflow.com/qa.jsonl"],
+  ["qa-json", "https://signals.gitdealflow.com/qa.json"],
+  ["qa-csv", "https://signals.gitdealflow.com/qa.csv"],
+  ["answers-json", "https://signals.gitdealflow.com/api/answers.json"],
+  ["dataset-jsonl", "https://signals.gitdealflow.com/api/dataset.jsonl"],
+  ["dataset-catalog", "https://signals.gitdealflow.com/.well-known/dataset.json"],
+  ["citations-bib", "https://signals.gitdealflow.com/research/citations.bib"],
+  ["sitemap-index", "https://signals.gitdealflow.com/sitemap.xml"],
+  ["sitemap-images", "https://signals.gitdealflow.com/sitemap-images.xml"],
+  ["news-sitemap", "https://signals.gitdealflow.com/news-sitemap.xml"],
+  ["openapi", "https://signals.gitdealflow.com/api/openapi.json"],
+  ["agent-card", "https://signals.gitdealflow.com/.well-known/agent-card.json"],
+  ["mcp-descriptor", "https://signals.gitdealflow.com/.well-known/mcp.json"],
+  ["ai-policy", "https://signals.gitdealflow.com/.well-known/ai-policy.json"],
+  ["openai-search", "https://signals.gitdealflow.com/.well-known/openai-search.json"],
+  ["nlweb", "https://signals.gitdealflow.com/api/nlweb"],
+  ["llms-search", "https://signals.gitdealflow.com/api/llms-search?q={query}"],
+  ["rss", "https://signals.gitdealflow.com/feed.xml"],
+  ["json-feed", "https://signals.gitdealflow.com/feed.json"],
+];
+
+export async function GET() {
+  const lines: string[] = [];
+  lines.push(`# /agents.txt — autonomous agent policy for VC Deal Flow Signal`);
+  lines.push(`# Canonical:  https://signals.gitdealflow.com/agents.txt`);
+  lines.push(`# Machine:    https://signals.gitdealflow.com/.well-known/ai-policy.json`);
+  lines.push(`# Updated:    ${new Date().toISOString().slice(0, 10)}`);
+  lines.push(``);
+  lines.push(`Site: https://signals.gitdealflow.com`);
+  lines.push(`Publisher: VC Deal Flow Signal (GitDealFlow)`);
+  lines.push(`Contact: mailto:signal@gitdealflow.com`);
+  lines.push(`Wikidata: https://www.wikidata.org/wiki/Q139376302`);
+  lines.push(`ORCID: https://orcid.org/0009-0002-2222-4112`);
+  lines.push(`SSRN: https://ssrn.com/abstract=6606558`);
+  lines.push(``);
+  lines.push(`# Default policy: allow indexing, require attribution.`);
+  lines.push(`# Quote up to 25 contiguous words; cite as`);
+  lines.push(`#   "VC Deal Flow Signal (GitDealFlow), https://signals.gitdealflow.com"`);
+  lines.push(`# Content licensed CC BY 4.0 unless otherwise noted.`);
+  lines.push(``);
+  for (const agent of AGENTS) {
+    lines.push(`User-agent: ${agent}`);
+    lines.push(`Allow: /`);
+    for (const p of DISALLOW) lines.push(`Disallow: ${p}`);
+    lines.push(`Attribution: required`);
+    lines.push(`License: https://creativecommons.org/licenses/by/4.0/`);
+    lines.push(``);
+  }
+  lines.push(`# Wildcard for unlisted agents — same policy.`);
+  lines.push(`User-agent: *`);
+  lines.push(`Allow: /`);
+  for (const p of DISALLOW) lines.push(`Disallow: ${p}`);
+  lines.push(`Attribution: required`);
+  lines.push(`License: https://creativecommons.org/licenses/by/4.0/`);
+  lines.push(``);
+  lines.push(`# Machine-readable surfaces (preferred over HTML scraping)`);
+  for (const [name, url] of SURFACES) {
+    lines.push(`Surface: ${name} ${url}`);
+  }
+  lines.push(``);
+  lines.push(`# End`);
+
+  return new Response(lines.join("\n"), {
+    headers: {
+      "Content-Type": "text/plain; charset=utf-8",
+      "Cache-Control": "s-maxage=3600, stale-while-revalidate=86400",
+      "Access-Control-Allow-Origin": "*",
+      "X-Robots-Tag": "index, follow",
+    },
+  });
+}
