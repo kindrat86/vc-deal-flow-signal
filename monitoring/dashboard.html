@@ -111,6 +111,123 @@
   </div>
 </div>
 
+<h1 style="margin-top:40px;font-size:20px">Organic traffic forecast — next 16 weeks</h1>
+<div class="sub">
+  Channel-decomposed weekly visitor estimate. Baseline = current PostHog rate. Bands = scenario range (low / mid / high).
+  <span style="color:#475569">Recalibrate when actuals diverge ≥30% from mid for 2 consecutive weeks.</span>
+</div>
+
+<div class="grid cols-4 row-group">
+  <div class="card kpi"><div class="num" id="f-baseline">—</div><div class="lbl">Baseline / week (now)</div></div>
+  <div class="card kpi"><div class="num" id="f-w4">—</div><div class="lbl">Week 4 mid</div></div>
+  <div class="card kpi"><div class="num" id="f-w12">—</div><div class="lbl">Week 12 mid</div></div>
+  <div class="card kpi"><div class="num" id="f-w16">—</div><div class="lbl">Week 16 (low–high)</div></div>
+</div>
+
+<div class="grid cols-2 row-group">
+  <div class="card" style="grid-column: 1 / -1">
+    <h3>Weekly visitors by channel (stacked) + scenario bands</h3>
+    <canvas id="forecastChart" style="max-height:340px"></canvas>
+    <div style="margin-top:10px;font-size:11px;color:#64748b">
+      Stacked bars = mid scenario by channel. Dashed lines = low (50%) and high (170%) totals.
+      Baseline persists across all weeks.
+    </div>
+  </div>
+</div>
+
+<div class="grid cols-2 row-group">
+  <div class="card">
+    <h3>Week-by-week table (mid scenario)</h3>
+    <div style="max-height:340px;overflow-y:auto">
+      <table>
+        <thead>
+          <tr>
+            <th>Wk</th><th>Starts</th>
+            <th class="num">Low</th><th class="num">Mid</th><th class="num">High</th>
+            <th class="num">Cum.</th>
+          </tr>
+        </thead>
+        <tbody id="forecast-table"></tbody>
+      </table>
+    </div>
+  </div>
+  <div class="card">
+    <h3>Model assumptions</h3>
+    <ul id="forecast-notes" style="font-size:13px;line-height:1.7;color:#cbd5e1;padding-left:20px;margin:0"></ul>
+    <div style="margin-top:14px;font-size:11px;color:#64748b">
+      Channel mix at week 16 (mid):
+    </div>
+    <table style="margin-top:6px">
+      <thead><tr><th>Channel</th><th class="num">/ week</th><th class="num">Share</th></tr></thead>
+      <tbody id="forecast-mix"></tbody>
+    </table>
+  </div>
+</div>
+
+<h1 style="margin-top:40px;font-size:20px">Projected vs reality — daily</h1>
+<div class="sub">
+  Pick any date range. Projected = weekly mid distributed across 7 days. Reality = PostHog daily uniques.
+  <span style="color:#475569">Today is excluded from the Δ stat (partial day). Dates before the forecast generation date have no projection.</span>
+</div>
+
+<div class="grid cols-4 row-group" style="align-items:end">
+  <div class="card" style="padding:14px">
+    <div class="lbl" style="margin-bottom:6px">From</div>
+    <input id="pvr-from" type="date" class="mono"
+      style="background:#0f1729;color:#e2e8f0;border:1px solid #1e293b;border-radius:6px;padding:6px 8px;width:100%;font-size:14px;font-family:inherit">
+  </div>
+  <div class="card" style="padding:14px">
+    <div class="lbl" style="margin-bottom:6px">To</div>
+    <input id="pvr-to" type="date" class="mono"
+      style="background:#0f1729;color:#e2e8f0;border:1px solid #1e293b;border-radius:6px;padding:6px 8px;width:100%;font-size:14px;font-family:inherit">
+  </div>
+  <div class="card kpi"><div class="num" id="pvr-actual">—</div><div class="lbl" id="pvr-actual-lbl">Actual visitors (range)</div></div>
+  <div class="card kpi"><div class="num" id="pvr-variance">—</div><div class="lbl" id="pvr-variance-lbl">Δ vs projected (overlap days)</div></div>
+</div>
+
+<div class="grid cols-2 row-group" style="margin-top:8px;gap:8px">
+  <div style="display:flex;flex-wrap:wrap;gap:8px;grid-column:1 / -1">
+    <button class="pvr-preset" data-preset="last7">Last 7 days</button>
+    <button class="pvr-preset" data-preset="last30">Last 30 days</button>
+    <button class="pvr-preset" data-preset="next14">Next 14 days</button>
+    <button class="pvr-preset" data-preset="next30">Next 30 days</button>
+    <button class="pvr-preset" data-preset="window">±14 days around today</button>
+    <button class="pvr-preset" data-preset="all">Max range</button>
+  </div>
+</div>
+
+<div class="grid cols-2 row-group">
+  <div class="card" style="grid-column: 1 / -1">
+    <h3>Daily actual vs projected</h3>
+    <canvas id="pvrChart" style="max-height:340px"></canvas>
+    <div style="margin-top:10px;font-size:11px;color:#64748b">
+      Solid blue = actual (PostHog). Dashed yellow = projected mid. Faint red/green = projected low/high band.
+    </div>
+  </div>
+</div>
+
+<div class="grid cols-2 row-group">
+  <div class="card" style="grid-column: 1 / -1">
+    <h3>Day-by-day breakdown</h3>
+    <div style="max-height:340px;overflow-y:auto">
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th class="num">Actual</th>
+            <th class="num">Proj. low</th>
+            <th class="num">Proj. mid</th>
+            <th class="num">Proj. high</th>
+            <th class="num">Δ (act − mid)</th>
+            <th class="num">Δ%</th>
+          </tr>
+        </thead>
+        <tbody id="pvr-table"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
 <div class="grid cols-2 row-group">
   <div class="card">
     <h3>Source attribution (subscribers)</h3>
@@ -224,7 +341,7 @@
 
 </div>
 
-<script id="__data__" type="application/json">{"generated_at": "2026-04-19T12:31:12.347987+00:00", "window_days": 30, "kpis": {"visitors": 82, "pageviews": 84, "signups": 0, "verified": 0, "unverified": 0, "conversion_rate": 0.0, "emails_sent": 0, "open_rate": 0.0, "click_rate": 0.0}, "funnel": [{"label": "Visitors (30d)", "value": 82}, {"label": "Signups (all time)", "value": 0}, {"label": "Verified (Resend)", "value": 0}], "daily": [{"d": "2026-03-21", "signups": 0, "visitors": 0}, {"d": "2026-03-22", "signups": 0, "visitors": 0}, {"d": "2026-03-23", "signups": 0, "visitors": 0}, {"d": "2026-03-24", "signups": 0, "visitors": 0}, {"d": "2026-03-25", "signups": 0, "visitors": 0}, {"d": "2026-03-26", "signups": 0, "visitors": 0}, {"d": "2026-03-27", "signups": 0, "visitors": 0}, {"d": "2026-03-28", "signups": 0, "visitors": 0}, {"d": "2026-03-29", "signups": 0, "visitors": 0}, {"d": "2026-03-30", "signups": 0, "visitors": 0}, {"d": "2026-03-31", "signups": 0, "visitors": 0}, {"d": "2026-04-01", "signups": 0, "visitors": 0}, {"d": "2026-04-02", "signups": 0, "visitors": 0}, {"d": "2026-04-03", "signups": 0, "visitors": 0}, {"d": "2026-04-04", "signups": 0, "visitors": 0}, {"d": "2026-04-05", "signups": 0, "visitors": 0}, {"d": "2026-04-06", "signups": 0, "visitors": 0}, {"d": "2026-04-07", "signups": 0, "visitors": 0}, {"d": "2026-04-08", "signups": 0, "visitors": 0}, {"d": "2026-04-09", "signups": 0, "visitors": 0}, {"d": "2026-04-10", "signups": 0, "visitors": 0}, {"d": "2026-04-11", "signups": 0, "visitors": 0}, {"d": "2026-04-12", "signups": 0, "visitors": 0}, {"d": "2026-04-13", "signups": 0, "visitors": 0}, {"d": "2026-04-14", "signups": 0, "visitors": 2}, {"d": "2026-04-15", "signups": 0, "visitors": 26}, {"d": "2026-04-16", "signups": 0, "visitors": 17}, {"d": "2026-04-17", "signups": 0, "visitors": 19}, {"d": "2026-04-18", "signups": 0, "visitors": 9}, {"d": "2026-04-19", "signups": 0, "visitors": 9}], "sub_sources": [], "tiers": [], "statuses": [], "ph_sources": [{"src": "$direct", "n": 60}, {"src": "news.ycombinator.com", "n": 7}, {"src": "bing.com", "n": 5}, {"src": "www.google.com", "n": 5}, {"src": "www.reddit.com", "n": 3}, {"src": "com.linkedin.android", "n": 1}, {"src": "webstore-prod.corp.google.com", "n": 1}, {"src": "www.npmjs.com", "n": 1}, {"src": "hacker-news.firebaseio.com", "n": 1}], "ph_pages": [{"p": "/", "n": 61}, {"p": "/trending", "n": 20}, {"p": "/privacy", "n": 2}, {"p": "/methodology", "n": 1}], "ph_countries": [{"code": "US", "name": "United States", "n": 48}, {"code": "IN", "name": "India", "n": 8}, {"code": "CA", "name": "Canada", "n": 4}, {"code": "JP", "name": "Japan", "n": 4}, {"code": "IT", "name": "Italy", "n": 3}, {"code": "NL", "name": "Netherlands", "n": 3}, {"code": "CN", "name": "China", "n": 3}, {"code": "DE", "name": "Germany", "n": 2}, {"code": "KR", "name": "South Korea", "n": 2}, {"code": "FR", "name": "France", "n": 1}, {"code": "IE", "name": "Ireland", "n": 1}, {"code": "TW", "name": "Taiwan", "n": 1}, {"code": "GB", "name": "United Kingdom", "n": 1}, {"code": "AU", "name": "Australia", "n": 1}, {"code": "SG", "name": "Singapore", "n": 1}], "excluded": {"countries": ["GR"], "testers": ["maryan.kondratyuk@quickstarter.ai", "mkondratyuk86@gmail.com", "sales@sipiteno.com", "test@example.com"]}, "benchmark": {"opt_in_target": 3.0, "paid_target_lo": 1.0, "paid_target_hi": 3.3, "rows": [{"traffic": 100, "subs": 3, "paid_lo": 0, "paid_hi": 0}, {"traffic": 1000, "subs": 30, "paid_lo": 0, "paid_hi": 1}, {"traffic": 10000, "subs": 300, "paid_lo": 3, "paid_hi": 10}, {"traffic": 100000, "subs": 3000, "paid_lo": 30, "paid_hi": 100}], "active_idx": -1, "stage": "too-early", "actual_opt_in": 0.0, "actual_paid_rate": 0.0, "paid_subs": 0, "expected_subs": 2, "expected_paid_lo": 0, "expected_paid_hi": 0, "opt_in_status": "below", "opt_in_delta": -100, "paid_status": "early", "paid_delta": 0, "verdict_headline": "Too early \u2014 keep driving traffic", "verdict_detail": "You have 82 visitors in the last 30d. Benchmarks assume at least 100 visitors before opt-in rate is meaningful. Focus on Dream 100 seeding, not on conversion."}, "email_status": [], "recent": [], "channels": {"social": [{"name": "Twitter / X", "handle": "@data_nerd", "url": "https://twitter.com/data_nerd", "stat": "0 followers \u00b7 27 posts \u00b7 45 following", "note": "Daily Dream 100 blitz + own posts (not Premium)", "status": "active", "as_of": "2026-04-17"}, {"name": "Reddit", "handle": "u/Worth_Wealth_6811", "url": "https://www.reddit.com/user/Worth_Wealth_6811", "stat": "718 karma \u00b7 957 contribs \u00b7 17 followers", "note": "Top 5% Poster; 5y account age; user-managed", "status": "active", "as_of": "2026-04-19"}, {"name": "LinkedIn", "handle": "company/gitdealflow", "url": "https://www.linkedin.com/company/gitdealflow", "stat": "Company page only", "note": "User-managed manually (anonymity)", "status": "active", "as_of": "2026-04-17"}, {"name": "Product Hunt", "handle": "data_nerd", "url": "https://www.producthunt.com/@data_nerd", "stat": "0 followers \u00b7 3-day streak", "note": "Launch: Apr 26 \u00b7 6 seeding comments/day", "status": "pre-launch", "as_of": "2026-04-17"}, {"name": "IndieHackers", "handle": "@The_Data_Nerd", "url": "https://www.indiehackers.com/The_Data_Nerd", "stat": "0 followers \u00b7 13 points", "note": "Products listing live; launch ~Apr 25+", "status": "active", "as_of": "2026-04-19"}, {"name": "Hacker News", "handle": "", "url": "https://news.ycombinator.com", "stat": "1 comment posted (Show HN Stage)", "note": "Show HN planned for launch week", "status": "active", "as_of": "2026-04-17"}, {"name": "Telegram", "handle": "@gitdealflow", "url": "https://t.me/gitdealflow", "stat": "Public broadcast channel", "note": "Free tier; Insider Circle = separate private group", "status": "active", "as_of": "2026-04-19"}, {"name": "Discord", "handle": "the_data_nerd", "url": "", "stat": "Cursor + TS joined", "note": "Blitz: Cursor #showcase Apr 18; TS lurk only", "status": "active", "as_of": "2026-04-17"}], "content": [{"name": "Company Blog", "handle": "signals.gitdealflow.com/blog", "url": "https://signals.gitdealflow.com/blog", "stat": "8 posts live", "note": "Canonical URL for all cross-posts", "status": "active", "as_of": "2026-04-19"}, {"name": "Medium", "handle": "@signal_41476", "url": "https://medium.com/@signal_41476", "stat": "1 post published", "note": "Canonical \u2192 signals.gitdealflow.com; Import Story tool", "status": "active", "as_of": "2026-04-19"}, {"name": "Substack", "handle": "The Data Nerd", "url": "", "stat": "3 Notes posted \u00b7 12 scheduled", "note": "Notes channel only (no split-list newsletter)", "status": "active", "as_of": "2026-04-19"}, {"name": "HackerNoon", "handle": "@TheData_7cdit42c", "url": "https://hackernoon.com", "stat": "1 story in editorial queue", "note": "'Alternative Data for VC' \u00b7 check Apr 22", "status": "pending-review", "as_of": "2026-04-19"}, {"name": "dev.to", "handle": "data_nerd", "url": "https://dev.to/data_nerd/i-stopped-building-dashboards-ai-assistants-are-the-new-ui-c5h", "stat": "1 MCP article published", "note": "Canonical URL for Hashnode cross-post", "status": "active", "as_of": "2026-04-18"}, {"name": "Hashnode", "handle": "gitdealflow.hashnode.dev", "url": "https://gitdealflow.hashnode.dev/i-stopped-building-dashboards-ai-assistants-are-the-new-ui", "stat": "1 cross-post live", "note": "Canonical \u2192 dev.to -c5h", "status": "active", "as_of": "2026-04-19"}, {"name": "Quora", "handle": "The Data Nerd", "url": "https://www.quora.com/profile/The-Data-Nerd", "stat": "2 answers posted \u00b7 13 scheduled", "note": "2/day pace Apr 20-26", "status": "active", "as_of": "2026-04-19"}], "directories": [{"name": "Crunchbase", "category": "Business", "status": "live", "as_of": "2026-04-16", "url": "", "note": "High-DA backlink + VC discoverability"}, {"name": "G2", "category": "Software", "status": "live", "as_of": "2026-04-16", "url": "", "note": "Free listing; category assignment pending"}, {"name": "SaaSHub", "category": "Software", "status": "live", "as_of": "2026-04-16", "url": "", "note": "Pending: verify badge + embed on landing"}, {"name": "IH Products", "category": "Startup", "status": "live", "as_of": "2026-04-18", "url": "https://indiehackers.com/product/vc-deal-flow-signal", "note": "Links are nofollow \u2014 brand value only"}, {"name": "Wikidata", "category": "Knowledge graph", "status": "live", "as_of": "2026-04-16", "url": "https://www.wikidata.org/wiki/Q139376302", "note": "Fully enriched: refs, P154 logo, P1813 short name"}, {"name": "StackShare", "category": "Tech stack", "status": "live", "as_of": "2026-04-19", "url": "https://stackshare.io/vc-deal-flow-signal-spot-breakout-startups-before-anyone-else", "note": "Passive brand listing"}, {"name": "FutureTools", "category": "AI", "status": "live", "as_of": "2026-04-19", "url": "", "note": ""}, {"name": "AItoolslist.io", "category": "AI", "status": "live", "as_of": "2026-04-19", "url": "", "note": ""}, {"name": "StartupRanking", "category": "Startup", "status": "submitted", "as_of": "2026-04-19", "url": "", "note": "Claimed + HTML-verified; 80-day free queue"}, {"name": "SideProjectors", "category": "Indie", "status": "pending-review", "as_of": "2026-04-18", "url": "https://sideprojectors.com/project/78284", "note": "In mod queue; public URL \u2260 approval"}, {"name": "AlternativeTo", "category": "Software", "status": "queued", "as_of": "2026-04-16", "url": "", "note": "Account created; 7-day wait; submit after Apr 22"}, {"name": "VentureRadar", "category": "Startup", "status": "submitted", "as_of": "2026-04-19", "url": "", "note": "~21-day free review; HQ: Cyprus"}, {"name": "10words", "category": "SaaS", "status": "submitted", "as_of": "2026-04-19", "url": "", "note": "Queue: 1,866 days (~5y); passive only"}, {"name": "OpenVC", "category": "VC", "status": "signed-up", "as_of": "2026-04-19", "url": "", "note": "For future outbound; not a passive directory"}, {"name": "Dealroom for Builders", "category": "VC", "status": "applied", "as_of": "2026-04-19", "url": "", "note": "5-biz-day review; follow up ~May 1"}, {"name": "CB Insights", "category": "VC", "status": "applied", "as_of": "2026-04-19", "url": "", "note": "Trial-signup lead-gen (no public form)"}, {"name": "FinTech Report", "category": "Award", "status": "submitted", "as_of": "2026-04-19", "url": "", "note": "WealthTech nomination; editorial only"}, {"name": "Letterlist", "category": "Newsletter", "status": "submitted", "as_of": "2026-04-19", "url": "", "note": "\u226424h review"}, {"name": "InboxReads", "category": "Newsletter", "status": "submitted", "as_of": "2026-04-19", "url": "", "note": "\u226424h review"}, {"name": "daily.dev", "category": "Dev", "status": "deferred", "as_of": "2026-04-19", "url": "", "note": "Post-launch (~May 3+): one Squad submission"}], "dev_search": [{"name": "npm \u2014 mcp-signal", "stat": "@gitdealflow/mcp-signal v1.2.0", "status": "live", "as_of": "2026-04-18", "url": "https://www.npmjs.com/package/@gitdealflow/mcp-signal", "note": ""}, {"name": "Glama MCP", "stat": "Full A-tier (5 tools, 4.8-4.9/5.0)", "status": "live", "as_of": "2026-04-18", "url": "https://glama.ai", "note": ""}, {"name": "MCP Registry", "stat": "Listed", "status": "live", "as_of": "2026-04-17", "url": "", "note": ""}, {"name": "awesome-mcp-servers", "stat": "PR #4933", "status": "pending-merge", "as_of": "2026-04-18", "url": "https://github.com/punkpeye/awesome-mcp-servers/pull/4933", "note": "In merge queue"}, {"name": "Chrome Web Store", "stat": "Extension live", "status": "live", "as_of": "2026-04-17", "url": "", "note": "Badge on Crunchbase/AngelList/PitchBook"}, {"name": "awesome-quant", "stat": "PR #360 merged", "status": "live", "as_of": "2026-04-19", "url": "", "note": "Tier 5 link building"}, {"name": "Kaggle / Data.world / Zenodo", "stat": "Dataset mirrors", "status": "live", "as_of": "2026-04-19", "url": "", "note": "High-DA backlink bundle"}, {"name": "SSRN / arXiv", "stat": "Paper submitted", "status": "pending-review", "as_of": "2026-04-19", "url": "", "note": ""}, {"name": "Papers With Code", "stat": "Dataset listed", "status": "live", "as_of": "2026-04-19", "url": "", "note": ""}, {"name": "Google Search Console", "stat": "Configured", "status": "live", "as_of": "2026-04-15", "url": "", "note": ""}, {"name": "Bing / IndexNow", "stat": "272 URLs submitted", "status": "live", "as_of": "2026-04-18", "url": "", "note": "Propagates to Yandex + Seznam"}, {"name": "Yandex Webmaster", "stat": "19 URLs reindexed \u00b7 12 tracked", "status": "live", "as_of": "2026-04-18", "url": "", "note": "Both properties verified"}, {"name": "Brave Search", "stat": "apex + signals submitted", "status": "submitted", "as_of": "2026-04-18", "url": "", "note": ""}, {"name": "llms.txt registry", "stat": "Finance category", "status": "submitted", "as_of": "2026-04-18", "url": "https://directory.llmstxt.cloud", "note": ""}, {"name": "Perplexity Publishers", "stat": "Intake form submitted", "status": "applied", "as_of": "2026-04-18", "url": "", "note": "Follow up ~May 9"}]}}</script>
+<script id="__data__" type="application/json">{"generated_at": "2026-05-03T15:23:41.260050+00:00", "window_days": 30, "kpis": {"visitors": 330, "pageviews": 335, "signups": 0, "verified": 0, "unverified": 0, "conversion_rate": 0.0, "emails_sent": 0, "open_rate": 0.0, "click_rate": 0.0}, "funnel": [{"label": "Visitors (30d)", "value": 330}, {"label": "Signups (all time)", "value": 0}, {"label": "Verified (Resend)", "value": 0}], "daily": [{"d": "2026-04-04", "signups": 0, "visitors": 0}, {"d": "2026-04-05", "signups": 0, "visitors": 0}, {"d": "2026-04-06", "signups": 0, "visitors": 0}, {"d": "2026-04-07", "signups": 0, "visitors": 0}, {"d": "2026-04-08", "signups": 0, "visitors": 0}, {"d": "2026-04-09", "signups": 0, "visitors": 0}, {"d": "2026-04-10", "signups": 0, "visitors": 0}, {"d": "2026-04-11", "signups": 0, "visitors": 0}, {"d": "2026-04-12", "signups": 0, "visitors": 0}, {"d": "2026-04-13", "signups": 0, "visitors": 0}, {"d": "2026-04-14", "signups": 0, "visitors": 2}, {"d": "2026-04-15", "signups": 0, "visitors": 26}, {"d": "2026-04-16", "signups": 0, "visitors": 17}, {"d": "2026-04-17", "signups": 0, "visitors": 19}, {"d": "2026-04-18", "signups": 0, "visitors": 9}, {"d": "2026-04-19", "signups": 0, "visitors": 12}, {"d": "2026-04-20", "signups": 0, "visitors": 14}, {"d": "2026-04-21", "signups": 0, "visitors": 10}, {"d": "2026-04-22", "signups": 0, "visitors": 2}, {"d": "2026-04-23", "signups": 0, "visitors": 6}, {"d": "2026-04-24", "signups": 0, "visitors": 5}, {"d": "2026-04-25", "signups": 0, "visitors": 11}, {"d": "2026-04-26", "signups": 0, "visitors": 43}, {"d": "2026-04-27", "signups": 0, "visitors": 60}, {"d": "2026-04-28", "signups": 0, "visitors": 9}, {"d": "2026-04-29", "signups": 0, "visitors": 17}, {"d": "2026-04-30", "signups": 0, "visitors": 9}, {"d": "2026-05-01", "signups": 0, "visitors": 4}, {"d": "2026-05-02", "signups": 0, "visitors": 31}, {"d": "2026-05-03", "signups": 0, "visitors": 26}], "sub_sources": [], "tiers": [], "statuses": [], "ph_sources": [{"src": "$direct", "n": 229}, {"src": "www.google.com", "n": 17}, {"src": "www.reddit.com", "n": 15}, {"src": "signals.gitdealflow.com", "n": 15}, {"src": "gitdealflow.com", "n": 12}, {"src": "bing.com", "n": 9}, {"src": "www.indiehackers.com", "n": 8}, {"src": "news.ycombinator.com", "n": 7}, {"src": "inboxreads.co", "n": 5}, {"src": "github.com", "n": 4}], "ph_pages": [{"p": "/", "n": 231}, {"p": "/trending", "n": 23}, {"p": "/methodology", "n": 8}, {"p": "/data", "n": 6}, {"p": "/report", "n": 6}, {"p": "/privacy", "n": 5}, {"p": "/predicted", "n": 4}, {"p": "/blog/alternative-data-venture-capital", "n": 4}, {"p": "/data-sources", "n": 4}, {"p": "/blog/47-alternative-data-sources-angel-investors-2026", "n": 4}], "ph_countries": [{"code": "US", "name": "United States", "n": 223}, {"code": "IN", "name": "India", "n": 20}, {"code": "ES", "name": "Spain", "n": 6}, {"code": "NL", "name": "Netherlands", "n": 6}, {"code": "FR", "name": "France", "n": 6}, {"code": "JP", "name": "Japan", "n": 6}, {"code": "GB", "name": "United Kingdom", "n": 5}, {"code": "CN", "name": "China", "n": 5}, {"code": "AU", "name": "Australia", "n": 5}, {"code": "IL", "name": "Israel", "n": 4}, {"code": "DE", "name": "Germany", "n": 4}, {"code": "PL", "name": "Poland", "n": 4}, {"code": "CA", "name": "Canada", "n": 4}, {"code": "IT", "name": "Italy", "n": 3}, {"code": "SE", "name": "Sweden", "n": 3}], "excluded": {"countries": ["GR"], "testers": ["escape@invisibleexit.com", "maryan.kondratyuk@quickstarter.ai", "mkondratyuk86@gmail.com", "sales@sipiteno.com", "signal@gitdealflow.com", "test@example.com"], "bots": ["jakub@mailinator.com", "probe1777473122350@deltajohnsons.com", "shannon-pool-1777015174929-94zulc@deltajohnsons.com"]}, "benchmark": {"opt_in_target": 3.0, "paid_target_lo": 1.0, "paid_target_hi": 3.3, "rows": [{"traffic": 100, "subs": 3, "paid_lo": 0, "paid_hi": 0}, {"traffic": 1000, "subs": 30, "paid_lo": 0, "paid_hi": 1}, {"traffic": 10000, "subs": 300, "paid_lo": 3, "paid_hi": 10}, {"traffic": 100000, "subs": 3000, "paid_lo": 30, "paid_hi": 100}], "active_idx": 0, "stage": "100\u20131K traffic", "actual_opt_in": 0.0, "actual_paid_rate": 0.0, "paid_subs": 0, "expected_subs": 10, "expected_paid_lo": 0, "expected_paid_hi": 0, "opt_in_status": "below", "opt_in_delta": -100, "paid_status": "early", "paid_delta": 0, "verdict_headline": "Opt-in is below benchmark (0.0% vs 3% target)", "verdict_detail": "Expected 10 subs from 330 visitors; got 0. The leak is in the hook, not the traffic. Revisit headline + email-gate offer."}, "email_status": [], "recent": [], "channels": {"social": [{"name": "Twitter / X", "handle": "@data_nerd", "url": "https://twitter.com/data_nerd", "stat": "2 followers \u00b7 124 posts \u00b7 100 following", "note": "May 3 burst: 7-tweet IH-leverage thread + 4 ICP reply-jacks (rauchg 199K, lennysan 48K, gregisenberg 39K, ivanburazin 4.5K) + 1 search-SEO own-post", "status": "active", "as_of": "2026-05-03"}, {"name": "Reddit", "handle": "u/Worth_Wealth_6811", "url": "https://www.reddit.com/user/Worth_Wealth_6811", "stat": "778 karma \u00b7 1,147 contribs \u00b7 18 followers", "note": "Top 5% Poster; 5y account age; user-managed", "status": "active", "as_of": "2026-05-02"}, {"name": "LinkedIn", "handle": "company/gitdealflow", "url": "https://www.linkedin.com/company/gitdealflow", "stat": "636 impr \u00b7 11 comments \u00b7 4 reactions \u00b7 0 reposts (Apr)", "note": "Peak Apr 21: 115 impr/day \u00b7 14 clicks \u00b7 19 reached; user-managed (anonymity)", "status": "active", "as_of": "2026-05-02"}, {"name": "Product Hunt", "handle": "data_nerd", "url": "https://www.producthunt.com/@data_nerd", "stat": "1 follower \u00b7 0 KP \u00b7 launch unfeatured Apr 26", "note": "Streak restored May 2 (3 day-15 comments); Tier 1 daily 3-in-DevTools/AI; T+6d support follow-up drafted", "status": "active", "as_of": "2026-05-02"}, {"name": "IndieHackers", "handle": "@The_Data_Nerd", "url": "https://www.indiehackers.com/The_Data_Nerd", "stat": "Product listing live \u00b7 30 active threads \u00b7 depth 3.4 avg", "note": "Day 18: 2 new external replies on PH-failure post (txdesk depth 11, Raquel50 depth 9); 3 new drafts pending paste (2 rejoinders + 1 fresh top-level on ReleaseLog 12-day plan)", "status": "active", "as_of": "2026-05-03"}, {"name": "Hacker News", "handle": "the_data_nerd", "url": "https://news.ycombinator.com/user?id=the_data_nerd", "stat": "karma 25 \u00b7 17 submissions \u00b7 4 dead comments", "note": "BLOCKED 2026-05-02 \u2014 4th dead comment today (47984445); dang email drafted; no more posts until dang confirms unflag OR karma > 50 organically. Show HN take 2 deferred to ~May 16+. Account is auto-flagged.", "status": "blocked", "as_of": "2026-05-02"}, {"name": "Telegram", "handle": "@gitdealflow", "url": "https://t.me/gitdealflow", "stat": "1 subscriber \u00b7 public broadcast channel", "note": "Free tier; Insider Circle = separate private group; teasers gated until \u226510 subs", "status": "active", "as_of": "2026-05-02"}, {"name": "Discord", "handle": "the_data_nerd", "url": "", "stat": "5 servers joined \u00b7 last post Apr 25 \u00b7 1 \ud83d\udd25 / 0 comments", "note": "RETIRED 2026-05-02 \u2014 embedding plan never executed past Day 1; phone-verify gates Glama/Windsurf; reactive-only on Cursor #mcp going forward", "status": "retired", "as_of": "2026-05-02"}], "content": [{"name": "Company Blog", "handle": "signals.gitdealflow.com/blog", "url": "https://signals.gitdealflow.com/blog", "stat": "34 posts live \u00b7 30 SSRN-cited research sub-pages", "note": "Canonical URL for all cross-posts; latest: Weekly Signal Report Q2 2026 (May 2)", "status": "active", "as_of": "2026-05-02"}, {"name": "Medium", "handle": "@signal_41476", "url": "https://medium.com/@signal_41476", "stat": "6 posts \u00b7 0 followers \u00b7 60 impr \u00b7 4 views \u00b7 1 read (lifetime) \u00b7 0 referrals", "note": "RETIRED 2026-05-02. Auto-publisher disabled. Publication-pivot rejected after live verification of all three Ali Mese sister pubs: Start it up rejects already-published+pivoted away from data/VC; Curious rejects money/finance+work topics; Geek Culture wants pure tech (investor frame is wrong-side-of-table). 6 published posts stay as passive SEO/AI-retrieval surface (canonicals point at gitdealflow). Full audit trail in distribution/medium-autopublish/the-startup-submission-package.md. Resume only if (a) we hire creator-economy ghostwriter, (b) we rewrite content to drop investor angle for Geek Culture, or (c) we launch our own Medium publication.", "status": "retired", "as_of": "2026-05-02"}, {"name": "Substack", "handle": "@thedatanerd2026", "url": "https://substack.com/@thedatanerd2026", "stat": "17 Notes posted \u00b7 19 draft-ready (frozen) \u00b7 1 follower \u00b7 0 subs \u00b7 0 likes/restacks/replies \u00b7 0 PostHog referrals", "note": "NOTES RUNNER DISABLED 2026-05-02 (Russell+Greg self-audit kill #3: 17 Notes \u2192 0 referrals, channel paid no rent). 19 draft-ready entries frozen in queue. NEWSLETTER MIRROR test still live (passive RSS from signals.gitdealflow.com/blog, free-only, canonical \u2192 apex) \u2014 60-day window 2026-04-28 \u2192 2026-06-27 with checkpoints May 4 / May 25 / Jun 27 (binary keep/modify/kill decision). USER ACTION pending: 30-min publication setup per distribution/substack-autopublish/SETUP-PUBLICATION-RUNBOOK.md (autonomous setup blocked by Steel free-tier silent magic-link drop). Cover image at distribution/substack-cover-1500x500.png awaits manual upload.", "status": "audit-killed", "as_of": "2026-05-02"}, {"name": "HackerNoon", "handle": "@TheData_7cdit42c", "url": "https://hackernoon.com/can-github-activity-predict-the-next-startup-fundraise", "stat": "1 published (Apr 27, 171 reads/5 reacts) \u00b7 1 in editorial (May 2) \u00b7 0 PostHog referrals", "note": "Submission #1 rejected (Apr 19). Submission #2 published Apr 27 (HN claims own canonical \u2192 brand-citation only, 0 referrals in 5d). Submission #3 'Which Five GitHub Patterns Show Up Before a Startup Fundraise?' submitted autonomously May 2 11:40 EEST via Chrome MCP, canonical /blog/5-github-patterns-that-predict-fundraises, green 'submitted' badge confirmed. Strategy: keep posting 1/wk, do NOT amplify HN posts, do NOT chase referrals. Kill switch: if 30-day total at 2026-05-27 still shows 0 PostHog referrals AND no AI-engine citations, drop to monthly cadence.", "status": "active", "as_of": "2026-05-02"}, {"name": "dev.to", "handle": "data_nerd", "url": "https://dev.to/data_nerd", "stat": "3 articles \u00b7 47 views \u00b7 2 reactions \u00b7 1 comment \u00b7 0 followers (lifetime)", "note": "AUTOPILOT-LITE: weekly Mon 11:30 EEST anchor via devto-weekly-anchor cron + Forem API (zero-effort, canonical\u2192apex). 7 drafts ready through Jun 1, 7 pending titles through Jul 20. Dream 10 daily comments DEAD since Apr 24 (Comet auth fails in unattended cron). 90-day kill switch: if <500 lifetime views AND <5 apex referrals by 2026-08-02, retire publisher. Frame as SEO/backlink play, not direct-traffic channel.", "status": "active", "as_of": "2026-05-02"}, {"name": "Hashnode", "handle": "gitdealflow.hashnode.dev", "url": "https://gitdealflow.hashnode.dev", "stat": "4 posts \u00b7 0 followers \u00b7 6 views \u00b7 4 responses \u00b7 0 PostHog referrals", "note": "RETIRED 2026-05-02 \u2014 auto-mirror killed (tools/devto/publish-next.mjs:104-107) after 14 days w/ 0 follower growth, 0 apex referrals; same self-audit kill as Discord. 4 existing posts (Apr 18 \u2192 Apr 28) remain as apex-canonical backlinks; toolkit (follow-tags / dream10-find / launchd plist) preserved but dormant, re-arm gated on organic follower signal. Newest: PH-failure post auto-mirrored Apr 28.", "status": "retired", "as_of": "2026-05-02"}, {"name": "Quora", "handle": "The Data Nerd", "url": "https://www.quora.com/profile/The-Data-Nerd", "stat": "14 answers posted (Q1-Q14) \u00b7 Q15 never shipped \u00b7 0 PostHog referrals", "note": "RETIRED 2026-05-02 \u2014 Russell+Greg self-audit kill #2: 14/15 answers \u2192 0 referrals over 6d posting window (Apr 19-25). Root cause: account-age sandbox + 8 self-created ghost questions (Q5-Q8, Q10, Q11-Q14) never Google-indexed; only Q1-Q4 + Q9 sit on real existing questions. Credential + 10 Spaces fixes applied 2026-04-25, no lift. quora-daily-runner cron disabled. Re-arm trigger: 1 answer hits Google page-1 for a real query OR explicit user OK. 60-day mute through 2026-07-01.", "status": "retired", "as_of": "2026-05-02"}], "directories": [{"name": "Crunchbase", "category": "Business", "status": "live", "as_of": "2026-05-02", "url": "https://www.crunchbase.com/organization/gitdealflow", "note": "Tier B passive co-citation (verified via Wikidata P2088 claim 2026-05-02); 5 profile edits applied 2026-04-25; 0 PostHog referrals lifetime; HTTP 403 to crawlers (Cloudflare)"}, {"name": "G2", "category": "Software", "status": "live", "as_of": "2026-05-02", "url": "", "note": "Tier B; footer badge + JSON-LD shipped 2026-04-25; bot-walled to crawlers; 0 referrals; category assignment still pending"}, {"name": "SaaSHub", "category": "Software", "status": "live", "as_of": "2026-05-02", "url": "", "note": "Tier B passive; HTTP 404 on slug probes 2026-05-02 (listing may have been rejected); 0 referrals; manual re-check needed"}, {"name": "IH Products", "category": "Startup", "status": "live", "as_of": "2026-05-02", "url": "https://www.indiehackers.com/product/vc-deal-flow-signal", "note": "Tier C dead \u2014 HTTP 301\u2192200 verified 2026-05-02; nofollow links + IH redesign killed Products visibility; brand-only"}, {"name": "Wikidata", "category": "Knowledge graph", "status": "live", "as_of": "2026-05-02", "url": "https://www.wikidata.org/wiki/Q139376302", "note": "Tier B knowledge-graph; HTTP 200 verified 2026-05-02; 21 P-claims incl. P2088 (Crunchbase) + P973 backlinks; 27 entity views/30d"}, {"name": "StackShare", "category": "Tech stack", "status": "live", "as_of": "2026-05-02", "url": "https://stackshare.io/vc-deal-flow-signal-spot-breakout-startups-before-anyone-else", "note": "Tier C audience-mismatch (devs \u2260 VCs); HTTP 429 rate-limited on probe 2026-05-02; 0 referrals"}, {"name": "FutureTools", "category": "AI", "status": "silent-reject", "as_of": "2026-05-02", "url": "", "note": "Tier C \u2014 silent-rejected since 2026-04-25 audit; manual editorial gate rejects B2B-VC focus; 0 referrals; ship-and-forget"}, {"name": "AItoolslist.io", "category": "AI", "status": "ghost-site", "as_of": "2026-05-02", "url": "", "note": "Tier C \u2014 abandoned WordPress directory dead since Jul 2023; confirmed unchanged 2026-05-02; 0 referrals"}, {"name": "StartupRanking", "category": "Startup", "status": "queued", "as_of": "2026-05-02", "url": "", "note": "Tier C \u2014 80-day free queue, submitted 2026-04-19; ~67d remaining; 0 referrals expected"}, {"name": "SideProjectors", "category": "Indie", "status": "pending-review", "as_of": "2026-05-02", "url": "https://www.sideprojectors.com/project/78284", "note": "Tier C \u2014 14d no movement in mod queue (submitted 2026-04-18); HTTP 301\u2192200 verified 2026-05-02; audience = side-project buyers"}, {"name": "AlternativeTo", "category": "Software", "status": "live", "as_of": "2026-05-02", "url": "", "note": "Tier A \u2014 2 visitors lifetime (PostHog 2026-04-24); HTTP 403 (Cloudflare blocks bot crawl); only software-comparison directory driving traffic"}, {"name": "VentureRadar", "category": "Startup", "status": "queued", "as_of": "2026-05-02", "url": "", "note": "Tier C \u2014 21d review queue (submitted 2026-04-19); T+13d 2026-05-02 ~8d remaining; HQ Cyprus"}, {"name": "10words", "category": "SaaS", "status": "queued", "as_of": "2026-05-02", "url": "", "note": "Tier C \u2014 1,866-day queue (~5y); submitted 2026-04-19; effectively dead, ship-and-forget"}, {"name": "OpenVC", "category": "VC", "status": "signed-up", "as_of": "2026-05-02", "url": "", "note": "Tier E \u2014 NOT a directory; private deck-submission tool; signed up 2026-04-19; activate on fundraise event"}, {"name": "Dealroom for Builders", "category": "VC", "status": "no-reply", "as_of": "2026-05-02", "url": "", "note": "Tier D \u2014 applied 2026-04-19 (5-biz-day promised); T+9BD 2026-05-02 no reply; ship-and-forget"}, {"name": "CB Insights", "category": "VC", "status": "applied", "as_of": "2026-05-02", "url": "", "note": "Tier D \u2014 trial-signup lead-gen, applied 2026-04-19; no public form, no proactive contact expected; 0 referrals"}, {"name": "FinTech Report", "category": "Award", "status": "submitted", "as_of": "2026-05-02", "url": "", "note": "Tier D \u2014 WealthTech nomination submitted 2026-04-19; editorial-only; T+13d no contact"}, {"name": "Letterlist", "category": "Newsletter", "status": "abandoned", "as_of": "2026-05-02", "url": "", "note": "Tier C \u2014 directory abandoned by operator (RSS feed last update Jun 2023); confirmed unchanged 2026-05-02; no listing pipeline"}, {"name": "InboxReads", "category": "Newsletter", "status": "live", "as_of": "2026-05-02", "url": "https://inboxreads.co", "note": "Tier A \u2014 4 visitors lifetime (PostHog 2026-04-20\u219204-25); HTTP 200 verified 2026-05-02; only newsletter directory driving traffic"}, {"name": "daily.dev", "category": "Dev", "status": "deferred", "as_of": "2026-05-02", "url": "", "note": "Post-launch deferral; one Squad submission planned ~May 3+; held 14d since 2026-04-19"}], "dev_search": [{"name": "npm \u2014 mcp-signal", "stat": "@gitdealflow/mcp-signal v1.5.2", "status": "live", "as_of": "2026-05-02", "url": "https://www.npmjs.com/package/@gitdealflow/mcp-signal", "note": "Verified 2026-05-02 npm registry"}, {"name": "Glama MCP", "stat": "kindrat86/mcp-deal-flow-signal", "status": "live", "as_of": "2026-05-02", "url": "https://glama.ai/mcp/servers/kindrat86/mcp-deal-flow-signal", "note": "HTTP 200 verified 2026-05-02; A-tier (5 tools)"}, {"name": "MCP Registry", "stat": "io.github.kindrat86/vc-deal-flow-signal v1.5.2 (6 versions)", "status": "live", "as_of": "2026-05-02", "url": "https://registry.modelcontextprotocol.io/v0/servers?search=vc-deal-flow", "note": "Verified 2026-05-02 via search API; JWT re-auth ~every 8d for new publishes"}, {"name": "awesome-mcp-servers", "stat": "PR #4933 merged 2026-04-23", "status": "live", "as_of": "2026-05-02", "url": "https://github.com/punkpeye/awesome-mcp-servers/pull/4933", "note": "Verified 2026-05-02 in main README as kindrat86/mcp-deal-flow-signal w/ Glama score badge"}, {"name": "Chrome Web Store", "stat": "Extension live (id hehkgipi\u2026oogmknn)", "status": "live", "as_of": "2026-05-02", "url": "https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn", "note": "HTTP 302 verified 2026-05-02; badges on Crunchbase/AngelList/PitchBook"}, {"name": "awesome-quant", "stat": "PR #360 merged", "status": "live", "as_of": "2026-05-02", "url": "https://github.com/wilsonfreitas/awesome-quant", "note": "Verified 2026-05-02 in master README; Tier 5 link building"}, {"name": "awesome-public-datasets", "stat": "apd-core PR #396 (Finance)", "status": "pending", "as_of": "2026-05-03", "url": "https://github.com/awesomedata/apd-core/pull/396", "note": "VC-Deal-Flow-Signal.yml under core/Finance; validation passes; awesomedata maintainer review pending. After merge, verify entry survives autogen in awesome-public-datasets/README.rst (silent-drop rule)."}, {"name": "Wolfram Data Repository", "stat": "Submission package staged (CC BY 4.0)", "status": "pending", "as_of": "2026-05-03", "url": "", "note": "submit.wl + metadata.json + runbook at distribution/dataset/wolfram/. Blocked on user Wolfram ID + Publisher ID + interactive ResourceSubmit (no wolframscript on machine; account creation prohibited)."}, {"name": "Kaggle / Data.world / Zenodo", "stat": "Dataset mirrors (Zenodo DOI 10.5281/zenodo.19650920)", "status": "live", "as_of": "2026-05-02", "url": "https://zenodo.org/records/19650920", "note": "Kaggle 200 + Zenodo 200 verified 2026-05-02; Data.world per Wikipedia article draft"}, {"name": "SSRN", "stat": "abstract=6606558 approved + 6/8 indexed", "status": "live", "as_of": "2026-05-02", "url": "https://ssrn.com/abstract=6606558", "note": "HTTP 301\u2192canonical verified 2026-05-02; Crossref/SemScholar/OpenAlex/Unpaywall/DataCite/Zenodo indexed"}, {"name": "arXiv", "stat": "Endorsement pending (blocked since 2026-04-25)", "status": "blocked", "as_of": "2026-05-02", "url": "", "note": "Dalle OOO 2026-04-25 \u2192 no reply; Zhu fallback rearm 2026-05-04 (T+5BD); 7d in blocked state"}, {"name": "Papers With Code", "stat": "Pending submission \u00b7 SSRN-unblocked", "status": "queued", "as_of": "2026-05-02", "url": "https://paperswithcode.com/submit", "note": "Was blocked on SSRN approval; now cleared (DOI 10.2139/ssrn.6606558 live since 2026-04-25). Prep: distribution/research-paper/papers-with-code-submission.md. PwC review: 3-7d after submit"}, {"name": "Google Search Console", "stat": "OAuth dashboard live (hourly tile)", "status": "live", "as_of": "2026-05-02", "url": "https://search.google.com/search-console", "note": "Hourly tile pulls clicks/impr/queries; baseline 1 click / 43 imp / pos 2.8 (since 2026-04-26)"}, {"name": "Bing / IndexNow", "stat": "1080 URLs submitted", "status": "live", "as_of": "2026-05-02", "url": "", "note": "SEO chain expansion 2026-05-02; propagates to Yandex + Seznam"}, {"name": "Yandex Webmaster", "stat": "Apex clean \u00b7 signals 7 'low-value' pages", "status": "live", "as_of": "2026-05-02", "url": "https://webmaster.yandex.com", "note": "T+14d recheck 2026-05-02: apex 'no errors'; signals subdomain has 1 favicon-SVG warn + /feed.xml fetch fail + 7 'low-value classifier' pages (need backlink graph + internal links)"}, {"name": "Brave Search", "stat": "Indexed \u00b7 4 results for site:gitdealflow.com", "status": "live", "as_of": "2026-05-02", "url": "https://search.brave.com/search?q=site%3Agitdealflow.com", "note": "Verified 2026-05-02 via site: query (apex + signals subdomain pages)"}, {"name": "llms.txt registry", "stat": "Finance category (14d in queue)", "status": "submitted", "as_of": "2026-05-02", "url": "https://directory.llmstxt.cloud", "note": "Submitted 2026-04-18; re-verified 2026-05-02 not yet listed; ship-and-forget"}, {"name": "Perplexity Publishers", "stat": "Intake form submitted (14d wait)", "status": "applied", "as_of": "2026-05-02", "url": "https://www.perplexity.ai/hub/legal/publishers-program", "note": "Submitted 2026-04-18; follow-up window 2026-05-09 (T+7d); no proactive reply as of 2026-05-02"}, {"name": "OAuth 2.1 endpoint", "stat": "client_credentials, RFC 8414", "status": "live", "as_of": "2026-05-02", "url": "https://signals.gitdealflow.com/.well-known/oauth-authorization-server", "note": "Bearer wired into /api/mcp/rpc; anonymous backward-compat preserved"}, {"name": "Poe SSE adapter", "stat": "Server Bot v1 protocol", "status": "live", "as_of": "2026-05-02", "url": "https://signals.gitdealflow.com/api/poe", "note": "User must sign up at creator.poe.com to publish"}, {"name": "MCP server-card", "stat": "/.well-known/mcp/server-card.json", "status": "live", "as_of": "2026-05-02", "url": "https://signals.gitdealflow.com/.well-known/mcp/server-card.json", "note": "Universal metadata for Smithery + future catalog scanners"}, {"name": "AGENTS.md", "stat": "/agents.md", "status": "live", "as_of": "2026-05-02", "url": "https://signals.gitdealflow.com/agents.md", "note": "HTTP 200 verified"}, {"name": "ai.txt", "stat": "/ai.txt", "status": "live", "as_of": "2026-05-02", "url": "https://signals.gitdealflow.com/ai.txt", "note": "HTTP 200 verified"}, {"name": "llms.txt", "stat": "/llms.txt", "status": "live", "as_of": "2026-05-02", "url": "https://signals.gitdealflow.com/llms.txt", "note": "HTTP 200 verified"}, {"name": "Q&A JSONL", "stat": "/qa.jsonl (30 SSRN-cited)", "status": "live", "as_of": "2026-05-02", "url": "https://signals.gitdealflow.com/qa.jsonl", "note": "HTTP 200; ?category= filter API"}, {"name": "Cline MCP Marketplace", "stat": "Issue #1491 OPEN", "status": "in-review", "as_of": "2026-05-02", "url": "https://github.com/cline/mcp-marketplace/issues/1491", "note": "Submitted 2026-05-02; ~1-3d review (watcher polling 2x/day)"}, {"name": "mcp.so directory", "stat": "Issue #2201 OPEN", "status": "in-review", "as_of": "2026-05-02", "url": "https://github.com/chatmcp/mcpso/issues/2201", "note": "20k+ servers in directory; ~1-3d review"}, {"name": "Block Goose extensions", "stat": "PR #8974 OPEN (mergeable)", "status": "in-review", "as_of": "2026-05-03", "url": "https://github.com/aaif-goose/goose/pull/8974", "note": "Submitted 2026-05-03; appends to documentation/static/servers.json (60\u219261). Goose has 43.7k stars."}, {"name": "Raycast MCP Registry", "stat": "PR #27618 OPEN (greptile-bot reviewed)", "status": "in-review", "as_of": "2026-05-03", "url": "https://github.com/raycast/extensions/pull/27618", "note": "Submitted 2026-05-03; appends to extensions/model-context-protocol-registry/.../entries.ts. Surfaces in MCP Registry browser on every Mac running Raycast v1.98+."}, {"name": "CrewAI Tools", "stat": "PR #5682 OPEN", "status": "in-review", "as_of": "2026-05-02", "url": "https://github.com/crewAIInc/crewAI/pull/5682", "note": "Submitted 2026-05-02; awaiting maintainer review"}, {"name": "Anthropic Connectors Directory", "stat": "Submission package ready", "status": "user-action", "as_of": "2026-05-02", "url": "https://claude.com/docs/connectors/building/submission", "note": "OAuth + manifest deployed; user 5-min form submit pending"}, {"name": "Anthropic Desktop Extensions", "stat": "Google Form submitted", "status": "submitted", "as_of": "2026-05-02", "url": "", "note": "Submitted 2026-05-02 ~12:00 EEST; anthropic-extension-watcher monitoring"}, {"name": "HuggingChat MCP", "stat": "Custom Server (personal config)", "status": "live", "as_of": "2026-05-02", "url": "https://huggingface.co/chat/conversation/69f5a4dbe8a1d19b3daba541", "note": "Personal config only \u2014 public Base Servers list is partnership-only"}, {"name": "HF Space \u2014 DeepSeek demo", "stat": "Scaffolded local", "status": "user-action", "as_of": "2026-05-02", "url": "", "note": "distribution/hf-space-deepseek/; user HF write token + push pending"}, {"name": "Anthropic Cookbook PR", "stat": "Scheduled 2026-05-04", "status": "scheduled", "as_of": "2026-05-02", "url": "", "note": "Task framework-pr-anthropic-cookbook"}, {"name": "LlamaHub Tool PR", "stat": "Scheduled 2026-05-06", "status": "scheduled", "as_of": "2026-05-02", "url": "", "note": "Task framework-pr-llamahub-tool"}, {"name": "Vercel AI SDK PR", "stat": "Scheduled 2026-05-08", "status": "scheduled", "as_of": "2026-05-02", "url": "", "note": "Task framework-pr-vercel-ai-sdk"}, {"name": "n8n community node", "stat": "n8n-nodes-gitdealflow@0.1.0", "status": "live", "as_of": "2026-05-03", "url": "https://www.npmjs.com/package/n8n-nodes-gitdealflow", "note": "Published to npm 2026-05-03; auto-indexed at n8n.io/integrations within 24h. 5 ops: getTrending / searchBySector / findStartup / getSignals / getSummary. No auth, weekly refresh."}, {"name": "Zapier", "stat": "App 240628 v1.0.3 (private)", "status": "user-action", "as_of": "2026-05-03", "url": "https://developer.zapier.com/app/240628/version/1.0.3/dashboard", "note": "Schema 43/43 passed; 2 triggers + 2 searches; needs 3 users w/ live Zaps before Public review eligible (S001/S002 publishing tasks). User invites testers + clicks Promote in dev portal."}, {"name": "Pipedream", "stat": "PR #20774 OPEN", "status": "in-review", "as_of": "2026-05-03", "url": "https://github.com/PipedreamHQ/pipedream/pull/20774", "note": "4 actions + 2 sources for @pipedream/gitdealflow opened against PipedreamHQ/pipedream:master via fork kindrat86/pipedream branch add-gitdealflow. Awaiting maintainer review (Pipedream review SLA ~3-7d)."}, {"name": "Make.com", "stat": "Custom App spec staged", "status": "user-action", "as_of": "2026-05-03", "url": "https://www.make.com/en/help/apps/about-the-development-of-custom-apps", "note": "4 modules at make-app/ (3 search + 1 polling trigger); Make has no CLI/API for app creation, user pastes IML JSON in dev portal."}]}, "forecast": {"weeks": 16, "generated": "2026-05-03", "baseline": 77, "channels": [{"key": "direct", "name": "Direct & registries (Smithery 98 / Cursor / Poe / GitHub)", "short": "Direct & registries", "color": "#0ea5e9"}, {"key": "reddit", "name": "Reddit AEO (May 2 wave + organic comments)", "short": "Reddit AEO", "color": "#f97316"}, {"key": "g_brand", "name": "Google \u2014 branded queries", "short": "Google \u2014 branded", "color": "#22c55e"}, {"key": "g_long", "name": "Google \u2014 long-tail pSEO (alternatives, glossary, vs)", "short": "Google \u2014 long-tail pSEO", "color": "#a855f7"}, {"key": "g_head", "name": "Google \u2014 competitive head terms", "short": "Google \u2014 head terms", "color": "#ec4899"}, {"key": "ai", "name": "AI engines (Perplexity / ChatGPT / Claude / Poe)", "short": "AI engines", "color": "#eab308"}, {"key": "academic", "name": "Academic / SSRN / OpenAlex propagation", "short": "Academic / SSRN", "color": "#06b6d4"}, {"key": "social", "name": "Social (Twitter / LinkedIn / IH / HN)", "short": "Social", "color": "#94a3b8"}], "rows": [{"w": 1, "start": "2026-05-03", "by": {"direct": 8, "reddit": 90, "g_brand": 0, "g_long": 0, "g_head": 0, "ai": 0, "academic": 0, "social": 2}, "low": 88, "mid": 177, "high": 301}, {"w": 2, "start": "2026-05-10", "by": {"direct": 15, "reddit": 80, "g_brand": 1, "g_long": 0, "g_head": 0, "ai": 3, "academic": 0, "social": 4}, "low": 90, "mid": 180, "high": 306}, {"w": 3, "start": "2026-05-17", "by": {"direct": 22, "reddit": 70, "g_brand": 5, "g_long": 0, "g_head": 0, "ai": 5, "academic": 0, "social": 6}, "low": 92, "mid": 185, "high": 314}, {"w": 4, "start": "2026-05-24", "by": {"direct": 30, "reddit": 60, "g_brand": 12, "g_long": 0, "g_head": 0, "ai": 8, "academic": 1, "social": 8}, "low": 98, "mid": 196, "high": 333}, {"w": 5, "start": "2026-05-31", "by": {"direct": 38, "reddit": 50, "g_brand": 20, "g_long": 0, "g_head": 0, "ai": 13, "academic": 1, "social": 9}, "low": 104, "mid": 208, "high": 354}, {"w": 6, "start": "2026-06-07", "by": {"direct": 45, "reddit": 40, "g_brand": 24, "g_long": 10, "g_head": 0, "ai": 19, "academic": 2, "social": 11}, "low": 114, "mid": 228, "high": 388}, {"w": 7, "start": "2026-06-14", "by": {"direct": 52, "reddit": 30, "g_brand": 25, "g_long": 16, "g_head": 0, "ai": 28, "academic": 3, "social": 13}, "low": 122, "mid": 244, "high": 415}, {"w": 8, "start": "2026-06-21", "by": {"direct": 60, "reddit": 30, "g_brand": 25, "g_long": 23, "g_head": 0, "ai": 36, "academic": 5, "social": 15}, "low": 136, "mid": 271, "high": 461}, {"w": 9, "start": "2026-06-28", "by": {"direct": 60, "reddit": 30, "g_brand": 25, "g_long": 34, "g_head": 0, "ai": 42, "academic": 8, "social": 17}, "low": 146, "mid": 293, "high": 498}, {"w": 10, "start": "2026-07-05", "by": {"direct": 60, "reddit": 30, "g_brand": 25, "g_long": 48, "g_head": 0, "ai": 47, "academic": 10, "social": 19}, "low": 158, "mid": 316, "high": 537}, {"w": 11, "start": "2026-07-12", "by": {"direct": 60, "reddit": 30, "g_brand": 25, "g_long": 66, "g_head": 0, "ai": 50, "academic": 12, "social": 21}, "low": 170, "mid": 341, "high": 580}, {"w": 12, "start": "2026-07-19", "by": {"direct": 60, "reddit": 30, "g_brand": 25, "g_long": 87, "g_head": 4, "ai": 52, "academic": 13, "social": 22}, "low": 185, "mid": 370, "high": 629}, {"w": 13, "start": "2026-07-26", "by": {"direct": 60, "reddit": 30, "g_brand": 25, "g_long": 110, "g_head": 5, "ai": 54, "academic": 14, "social": 24}, "low": 200, "mid": 399, "high": 678}, {"w": 14, "start": "2026-08-02", "by": {"direct": 60, "reddit": 30, "g_brand": 25, "g_long": 133, "g_head": 8, "ai": 54, "academic": 14, "social": 26}, "low": 214, "mid": 427, "high": 726}, {"w": 15, "start": "2026-08-09", "by": {"direct": 60, "reddit": 30, "g_brand": 25, "g_long": 154, "g_head": 11, "ai": 55, "academic": 15, "social": 28}, "low": 228, "mid": 455, "high": 774}, {"w": 16, "start": "2026-08-16", "by": {"direct": 60, "reddit": 30, "g_brand": 25, "g_long": 172, "g_head": 15, "ai": 55, "academic": 15, "social": 30}, "low": 240, "mid": 479, "high": 814}], "daily": [{"d": "2026-05-03", "w": 1, "low": 12.57, "mid": 25.29, "high": 43.0}, {"d": "2026-05-04", "w": 1, "low": 12.57, "mid": 25.29, "high": 43.0}, {"d": "2026-05-05", "w": 1, "low": 12.57, "mid": 25.29, "high": 43.0}, {"d": "2026-05-06", "w": 1, "low": 12.57, "mid": 25.29, "high": 43.0}, {"d": "2026-05-07", "w": 1, "low": 12.57, "mid": 25.29, "high": 43.0}, {"d": "2026-05-08", "w": 1, "low": 12.57, "mid": 25.29, "high": 43.0}, {"d": "2026-05-09", "w": 1, "low": 12.57, "mid": 25.29, "high": 43.0}, {"d": "2026-05-10", "w": 2, "low": 12.86, "mid": 25.71, "high": 43.71}, {"d": "2026-05-11", "w": 2, "low": 12.86, "mid": 25.71, "high": 43.71}, {"d": "2026-05-12", "w": 2, "low": 12.86, "mid": 25.71, "high": 43.71}, {"d": "2026-05-13", "w": 2, "low": 12.86, "mid": 25.71, "high": 43.71}, {"d": "2026-05-14", "w": 2, "low": 12.86, "mid": 25.71, "high": 43.71}, {"d": "2026-05-15", "w": 2, "low": 12.86, "mid": 25.71, "high": 43.71}, {"d": "2026-05-16", "w": 2, "low": 12.86, "mid": 25.71, "high": 43.71}, {"d": "2026-05-17", "w": 3, "low": 13.14, "mid": 26.43, "high": 44.86}, {"d": "2026-05-18", "w": 3, "low": 13.14, "mid": 26.43, "high": 44.86}, {"d": "2026-05-19", "w": 3, "low": 13.14, "mid": 26.43, "high": 44.86}, {"d": "2026-05-20", "w": 3, "low": 13.14, "mid": 26.43, "high": 44.86}, {"d": "2026-05-21", "w": 3, "low": 13.14, "mid": 26.43, "high": 44.86}, {"d": "2026-05-22", "w": 3, "low": 13.14, "mid": 26.43, "high": 44.86}, {"d": "2026-05-23", "w": 3, "low": 13.14, "mid": 26.43, "high": 44.86}, {"d": "2026-05-24", "w": 4, "low": 14.0, "mid": 28.0, "high": 47.57}, {"d": "2026-05-25", "w": 4, "low": 14.0, "mid": 28.0, "high": 47.57}, {"d": "2026-05-26", "w": 4, "low": 14.0, "mid": 28.0, "high": 47.57}, {"d": "2026-05-27", "w": 4, "low": 14.0, "mid": 28.0, "high": 47.57}, {"d": "2026-05-28", "w": 4, "low": 14.0, "mid": 28.0, "high": 47.57}, {"d": "2026-05-29", "w": 4, "low": 14.0, "mid": 28.0, "high": 47.57}, {"d": "2026-05-30", "w": 4, "low": 14.0, "mid": 28.0, "high": 47.57}, {"d": "2026-05-31", "w": 5, "low": 14.86, "mid": 29.71, "high": 50.57}, {"d": "2026-06-01", "w": 5, "low": 14.86, "mid": 29.71, "high": 50.57}, {"d": "2026-06-02", "w": 5, "low": 14.86, "mid": 29.71, "high": 50.57}, {"d": "2026-06-03", "w": 5, "low": 14.86, "mid": 29.71, "high": 50.57}, {"d": "2026-06-04", "w": 5, "low": 14.86, "mid": 29.71, "high": 50.57}, {"d": "2026-06-05", "w": 5, "low": 14.86, "mid": 29.71, "high": 50.57}, {"d": "2026-06-06", "w": 5, "low": 14.86, "mid": 29.71, "high": 50.57}, {"d": "2026-06-07", "w": 6, "low": 16.29, "mid": 32.57, "high": 55.43}, {"d": "2026-06-08", "w": 6, "low": 16.29, "mid": 32.57, "high": 55.43}, {"d": "2026-06-09", "w": 6, "low": 16.29, "mid": 32.57, "high": 55.43}, {"d": "2026-06-10", "w": 6, "low": 16.29, "mid": 32.57, "high": 55.43}, {"d": "2026-06-11", "w": 6, "low": 16.29, "mid": 32.57, "high": 55.43}, {"d": "2026-06-12", "w": 6, "low": 16.29, "mid": 32.57, "high": 55.43}, {"d": "2026-06-13", "w": 6, "low": 16.29, "mid": 32.57, "high": 55.43}, {"d": "2026-06-14", "w": 7, "low": 17.43, "mid": 34.86, "high": 59.29}, {"d": "2026-06-15", "w": 7, "low": 17.43, "mid": 34.86, "high": 59.29}, {"d": "2026-06-16", "w": 7, "low": 17.43, "mid": 34.86, "high": 59.29}, {"d": "2026-06-17", "w": 7, "low": 17.43, "mid": 34.86, "high": 59.29}, {"d": "2026-06-18", "w": 7, "low": 17.43, "mid": 34.86, "high": 59.29}, {"d": "2026-06-19", "w": 7, "low": 17.43, "mid": 34.86, "high": 59.29}, {"d": "2026-06-20", "w": 7, "low": 17.43, "mid": 34.86, "high": 59.29}, {"d": "2026-06-21", "w": 8, "low": 19.43, "mid": 38.71, "high": 65.86}, {"d": "2026-06-22", "w": 8, "low": 19.43, "mid": 38.71, "high": 65.86}, {"d": "2026-06-23", "w": 8, "low": 19.43, "mid": 38.71, "high": 65.86}, {"d": "2026-06-24", "w": 8, "low": 19.43, "mid": 38.71, "high": 65.86}, {"d": "2026-06-25", "w": 8, "low": 19.43, "mid": 38.71, "high": 65.86}, {"d": "2026-06-26", "w": 8, "low": 19.43, "mid": 38.71, "high": 65.86}, {"d": "2026-06-27", "w": 8, "low": 19.43, "mid": 38.71, "high": 65.86}, {"d": "2026-06-28", "w": 9, "low": 20.86, "mid": 41.86, "high": 71.14}, {"d": "2026-06-29", "w": 9, "low": 20.86, "mid": 41.86, "high": 71.14}, {"d": "2026-06-30", "w": 9, "low": 20.86, "mid": 41.86, "high": 71.14}, {"d": "2026-07-01", "w": 9, "low": 20.86, "mid": 41.86, "high": 71.14}, {"d": "2026-07-02", "w": 9, "low": 20.86, "mid": 41.86, "high": 71.14}, {"d": "2026-07-03", "w": 9, "low": 20.86, "mid": 41.86, "high": 71.14}, {"d": "2026-07-04", "w": 9, "low": 20.86, "mid": 41.86, "high": 71.14}, {"d": "2026-07-05", "w": 10, "low": 22.57, "mid": 45.14, "high": 76.71}, {"d": "2026-07-06", "w": 10, "low": 22.57, "mid": 45.14, "high": 76.71}, {"d": "2026-07-07", "w": 10, "low": 22.57, "mid": 45.14, "high": 76.71}, {"d": "2026-07-08", "w": 10, "low": 22.57, "mid": 45.14, "high": 76.71}, {"d": "2026-07-09", "w": 10, "low": 22.57, "mid": 45.14, "high": 76.71}, {"d": "2026-07-10", "w": 10, "low": 22.57, "mid": 45.14, "high": 76.71}, {"d": "2026-07-11", "w": 10, "low": 22.57, "mid": 45.14, "high": 76.71}, {"d": "2026-07-12", "w": 11, "low": 24.29, "mid": 48.71, "high": 82.86}, {"d": "2026-07-13", "w": 11, "low": 24.29, "mid": 48.71, "high": 82.86}, {"d": "2026-07-14", "w": 11, "low": 24.29, "mid": 48.71, "high": 82.86}, {"d": "2026-07-15", "w": 11, "low": 24.29, "mid": 48.71, "high": 82.86}, {"d": "2026-07-16", "w": 11, "low": 24.29, "mid": 48.71, "high": 82.86}, {"d": "2026-07-17", "w": 11, "low": 24.29, "mid": 48.71, "high": 82.86}, {"d": "2026-07-18", "w": 11, "low": 24.29, "mid": 48.71, "high": 82.86}, {"d": "2026-07-19", "w": 12, "low": 26.43, "mid": 52.86, "high": 89.86}, {"d": "2026-07-20", "w": 12, "low": 26.43, "mid": 52.86, "high": 89.86}, {"d": "2026-07-21", "w": 12, "low": 26.43, "mid": 52.86, "high": 89.86}, {"d": "2026-07-22", "w": 12, "low": 26.43, "mid": 52.86, "high": 89.86}, {"d": "2026-07-23", "w": 12, "low": 26.43, "mid": 52.86, "high": 89.86}, {"d": "2026-07-24", "w": 12, "low": 26.43, "mid": 52.86, "high": 89.86}, {"d": "2026-07-25", "w": 12, "low": 26.43, "mid": 52.86, "high": 89.86}, {"d": "2026-07-26", "w": 13, "low": 28.57, "mid": 57.0, "high": 96.86}, {"d": "2026-07-27", "w": 13, "low": 28.57, "mid": 57.0, "high": 96.86}, {"d": "2026-07-28", "w": 13, "low": 28.57, "mid": 57.0, "high": 96.86}, {"d": "2026-07-29", "w": 13, "low": 28.57, "mid": 57.0, "high": 96.86}, {"d": "2026-07-30", "w": 13, "low": 28.57, "mid": 57.0, "high": 96.86}, {"d": "2026-07-31", "w": 13, "low": 28.57, "mid": 57.0, "high": 96.86}, {"d": "2026-08-01", "w": 13, "low": 28.57, "mid": 57.0, "high": 96.86}, {"d": "2026-08-02", "w": 14, "low": 30.57, "mid": 61.0, "high": 103.71}, {"d": "2026-08-03", "w": 14, "low": 30.57, "mid": 61.0, "high": 103.71}, {"d": "2026-08-04", "w": 14, "low": 30.57, "mid": 61.0, "high": 103.71}, {"d": "2026-08-05", "w": 14, "low": 30.57, "mid": 61.0, "high": 103.71}, {"d": "2026-08-06", "w": 14, "low": 30.57, "mid": 61.0, "high": 103.71}, {"d": "2026-08-07", "w": 14, "low": 30.57, "mid": 61.0, "high": 103.71}, {"d": "2026-08-08", "w": 14, "low": 30.57, "mid": 61.0, "high": 103.71}, {"d": "2026-08-09", "w": 15, "low": 32.57, "mid": 65.0, "high": 110.57}, {"d": "2026-08-10", "w": 15, "low": 32.57, "mid": 65.0, "high": 110.57}, {"d": "2026-08-11", "w": 15, "low": 32.57, "mid": 65.0, "high": 110.57}, {"d": "2026-08-12", "w": 15, "low": 32.57, "mid": 65.0, "high": 110.57}, {"d": "2026-08-13", "w": 15, "low": 32.57, "mid": 65.0, "high": 110.57}, {"d": "2026-08-14", "w": 15, "low": 32.57, "mid": 65.0, "high": 110.57}, {"d": "2026-08-15", "w": 15, "low": 32.57, "mid": 65.0, "high": 110.57}, {"d": "2026-08-16", "w": 16, "low": 34.29, "mid": 68.43, "high": 116.29}, {"d": "2026-08-17", "w": 16, "low": 34.29, "mid": 68.43, "high": 116.29}, {"d": "2026-08-18", "w": 16, "low": 34.29, "mid": 68.43, "high": 116.29}, {"d": "2026-08-19", "w": 16, "low": 34.29, "mid": 68.43, "high": 116.29}, {"d": "2026-08-20", "w": 16, "low": 34.29, "mid": 68.43, "high": 116.29}, {"d": "2026-08-21", "w": 16, "low": 34.29, "mid": 68.43, "high": 116.29}, {"d": "2026-08-22", "w": 16, "low": 34.29, "mid": 68.43, "high": 116.29}], "cumulative": [177, 357, 542, 738, 946, 1174, 1418, 1689, 1982, 2298, 2639, 3009, 3408, 3835, 4290, 4769], "milestones": {"baseline_weekly": 77, "w4_mid": 196, "w8_mid": 271, "w12_mid": 370, "w16_mid": 479, "w16_low": 240, "w16_high": 814, "cum_16w_mid": 4769}, "notes": ["Baseline = current PostHog weekly visitor rate (last 30d). Persists alongside ramps.", "Reddit wave shipped 2026-05-02 \u2014 spike weeks 1\u20133, decays to plateau by week 6.", "Google sandbox: branded queries from w2\u20134, long-tail pSEO from w6, head terms w12+.", "AI engines (Perplexity/ChatGPT search/Claude/Poe) cite from w2, compound through w12.", "Bands: low = 50% mid (sandbox-extended), high = 170% mid (Tier-1 citation lands early).", "Calibrated to developer-investor niche \u2014 small TAM, long-tail-heavy, Reddit/AEO-skewed."]}}</script>
 <script>
 const D = JSON.parse(document.getElementById('__data__').textContent);
 const fmt = n => new Intl.NumberFormat('en-US').format(n || 0);
@@ -340,8 +457,9 @@ tbl('ph-countries', D.ph_countries, [
 const CH = D.channels || {social:[], content:[], directories:[], dev_search:[]};
 const allCh = [...CH.social, ...CH.content, ...CH.directories, ...CH.dev_search];
 const liveStatuses = new Set(['live','active']);
-const pendingStatuses = new Set(['submitted','pending-review','applied','pending-merge']);
-const prelaunchStatuses = new Set(['pre-launch','queued','signed-up','deferred']);
+const pendingStatuses = new Set(['submitted','pending-review','applied','pending-merge','in-review','user-action']);
+const prelaunchStatuses = new Set(['pre-launch','queued','signed-up','deferred','scheduled']);
+const deadStatuses = new Set(['retired','audit-killed','abandoned','ghost-site','silent-reject','blocked','no-reply']);
 
 document.getElementById('ch-total').textContent = fmt(allCh.length);
 document.getElementById('ch-live').textContent = fmt(allCh.filter(c => liveStatuses.has(c.status)).length);
@@ -352,6 +470,7 @@ const pillClass = s => {
   if (liveStatuses.has(s)) return 'above';
   if (pendingStatuses.has(s)) return 'on-track';
   if (prelaunchStatuses.has(s)) return 'early';
+  if (deadStatuses.has(s)) return 'below';
   return '';
 };
 const statusPill = s => `<span class="pill ${pillClass(s)}">${s}</span>`;
@@ -382,6 +501,306 @@ tbl('ch-devsearch', CH.dev_search, [
   r => `<td>${r.stat}${muted(r.note)}</td>`,
   r => `<td>${statusPill(r.status)}${muted(r.as_of)}</td>`,
 ]);
+
+// ---- Organic traffic forecast ----
+const F = D.forecast;
+if (F && F.rows && F.rows.length) {
+  const M = F.milestones;
+  document.getElementById('f-baseline').textContent = fmt(M.baseline_weekly);
+  document.getElementById('f-w4').textContent = fmt(M.w4_mid);
+  document.getElementById('f-w12').textContent = fmt(M.w12_mid);
+  document.getElementById('f-w16').textContent = fmt(M.w16_low) + '–' + fmt(M.w16_high);
+
+  // Notes
+  document.getElementById('forecast-notes').innerHTML =
+    F.notes.map(n => `<li>${n}</li>`).join('');
+
+  // Week-by-week table
+  let cum = 0;
+  document.getElementById('forecast-table').innerHTML = F.rows.map(r => {
+    cum += r.mid;
+    return `<tr>
+      <td>${r.w}</td>
+      <td class="mono" style="color:#64748b">${r.start.slice(5)}</td>
+      <td class="num" style="color:#94a3b8">${fmt(r.low)}</td>
+      <td class="num" style="color:#f1f5f9;font-weight:600">${fmt(r.mid)}</td>
+      <td class="num" style="color:#94a3b8">${fmt(r.high)}</td>
+      <td class="num" style="color:#64748b">${fmt(cum)}</td>
+    </tr>`;
+  }).join('');
+
+  // Channel mix at final week
+  const lastRow = F.rows[F.rows.length - 1];
+  const lastTotal = lastRow.mid - F.baseline;
+  const mixRows = F.channels.map(ch => ({
+    name: ch.name, color: ch.color,
+    n: lastRow.by[ch.key] || 0,
+    pct: lastTotal > 0 ? Math.round(100 * (lastRow.by[ch.key] || 0) / lastTotal) : 0,
+  })).filter(r => r.n > 0).sort((a, b) => b.n - a.n);
+  if (F.baseline > 0) {
+    mixRows.push({name: 'Baseline (sticky)', color: '#475569',
+                  n: F.baseline, pct: Math.round(100 * F.baseline / lastRow.mid)});
+  }
+  document.getElementById('forecast-mix').innerHTML = mixRows.map(r => `
+    <tr>
+      <td><span style="display:inline-block;width:10px;height:10px;background:${r.color};border-radius:2px;margin-right:6px;vertical-align:middle"></span>${r.name}</td>
+      <td class="num">${fmt(r.n)}</td>
+      <td class="num" style="color:#64748b">${r.pct}%</td>
+    </tr>`).join('');
+
+  // Stacked bar chart with low/high overlay lines
+  const labels = F.rows.map(r => 'W' + r.w);
+  const datasets = F.channels.map(ch => ({
+    label: ch.short || ch.name,
+    data: F.rows.map(r => r.by[ch.key] || 0),
+    backgroundColor: ch.color,
+    borderColor: ch.color,
+    borderWidth: 0,
+    stack: 'channels',
+    type: 'bar',
+  }));
+  if (F.baseline > 0) {
+    datasets.push({
+      label: 'Baseline',
+      data: F.rows.map(() => F.baseline),
+      backgroundColor: '#475569',
+      borderColor: '#475569',
+      borderWidth: 0,
+      stack: 'channels',
+      type: 'bar',
+    });
+  }
+  // Scenario bands
+  datasets.push({
+    label: 'Low (50%)',
+    data: F.rows.map(r => r.low),
+    type: 'line',
+    borderColor: '#fca5a5',
+    backgroundColor: 'transparent',
+    borderDash: [4, 4],
+    borderWidth: 2,
+    pointRadius: 0,
+    tension: 0.3,
+  });
+  datasets.push({
+    label: 'High (170%)',
+    data: F.rows.map(r => r.high),
+    type: 'line',
+    borderColor: '#86efac',
+    backgroundColor: 'transparent',
+    borderDash: [4, 4],
+    borderWidth: 2,
+    pointRadius: 0,
+    tension: 0.3,
+  });
+
+  new Chart(document.getElementById('forecastChart'), {
+    data: { labels, datasets },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { labels: { color: '#cbd5e1', boxWidth: 12, font: { size: 11 } } },
+        tooltip: { mode: 'index', intersect: false },
+      },
+      scales: {
+        x: { stacked: true, ticks: { color: '#64748b' }, grid: { color: '#1e293b' } },
+        y: { stacked: true, ticks: { color: '#64748b' }, grid: { color: '#1e293b' },
+             title: { display: true, text: 'Visitors / week', color: '#64748b' } },
+      },
+      interaction: { mode: 'index', intersect: false },
+    },
+  });
+}
+
+// ---- Projected vs Reality (daily, range-selectable) ----
+(function() {
+  const FD = (D.forecast && D.forecast.daily) || [];
+  if (!FD.length) return;
+
+  const fromInput = document.getElementById('pvr-from');
+  const toInput   = document.getElementById('pvr-to');
+  if (!fromInput || !toInput) return;
+
+  const actualByDay = {};
+  (D.daily || []).forEach(x => { actualByDay[x.d] = x.visitors; });
+  const projByDay = {};
+  FD.forEach(x => { projByDay[x.d] = x; });
+
+  const today = (D.forecast && D.forecast.generated) || new Date().toISOString().slice(0, 10);
+  const allDays = Array.from(new Set([
+    ...Object.keys(actualByDay),
+    ...Object.keys(projByDay),
+  ])).sort();
+  if (!allDays.length) return;
+
+  const minDay = allDays[0];
+  const maxDay = allDays[allDays.length - 1];
+  fromInput.min = minDay; fromInput.max = maxDay;
+  toInput.min   = minDay; toInput.max   = maxDay;
+
+  const addDays = (iso, n) => {
+    const dt = new Date(iso + 'T00:00:00Z');
+    dt.setUTCDate(dt.getUTCDate() + n);
+    return dt.toISOString().slice(0, 10);
+  };
+  const clamp = (iso) => iso < minDay ? minDay : (iso > maxDay ? maxDay : iso);
+
+  const PRESETS = {
+    last7:   () => [clamp(addDays(today, -6)),  clamp(today)],
+    last30:  () => [clamp(addDays(today, -29)), clamp(today)],
+    next14:  () => [clamp(today),               clamp(addDays(today,  13))],
+    next30:  () => [clamp(today),               clamp(addDays(today,  29))],
+    window:  () => [clamp(addDays(today, -14)), clamp(addDays(today,  14))],
+    all:     () => [minDay, maxDay],
+  };
+
+  // Style preset buttons (use existing palette)
+  document.querySelectorAll('.pvr-preset').forEach(b => {
+    b.style.cssText =
+      'background:#0f1729;color:#cbd5e1;border:1px solid #1e293b;' +
+      'border-radius:6px;padding:6px 12px;font-size:12px;cursor:pointer;font-family:inherit';
+    b.onmouseover = () => b.style.borderColor = '#0ea5e9';
+    b.onmouseout  = () => b.style.borderColor = '#1e293b';
+    b.addEventListener('click', () => {
+      const r = PRESETS[b.dataset.preset];
+      if (!r) return;
+      const [f, t] = r();
+      fromInput.value = f; toInput.value = t;
+      render();
+    });
+  });
+
+  // Default range: ±14 days around today (clamped)
+  const def = PRESETS.window();
+  fromInput.value = def[0];
+  toInput.value   = def[1];
+
+  let chart = null;
+
+  function render() {
+    let f = fromInput.value, t = toInput.value;
+    if (!f || !t) return;
+    if (f > t) { const tmp = f; f = t; t = tmp; fromInput.value = f; toInput.value = t; }
+
+    // Build day list inclusive
+    const days = [];
+    let d = f;
+    while (d <= t) { days.push(d); d = addDays(d, 1); }
+
+    const actual   = days.map(x => (actualByDay[x] !== undefined) ? actualByDay[x] : null);
+    const projMid  = days.map(x => projByDay[x] ? projByDay[x].mid  : null);
+    const projLow  = days.map(x => projByDay[x] ? projByDay[x].low  : null);
+    const projHigh = days.map(x => projByDay[x] ? projByDay[x].high : null);
+
+    // Stats: sum across range, plus overlap-only variance.
+    // Exclude today from variance (the day isn't closed yet — partial actuals
+    // would skew the comparison heavily negative until day's end).
+    let totalActual = 0, hasActualDays = 0;
+    let overlapActual = 0, overlapProjMid = 0, overlapDays = 0;
+    days.forEach(x => {
+      const a = actualByDay[x];
+      const p = projByDay[x];
+      if (a !== undefined) { totalActual += a; hasActualDays += 1; }
+      if (a !== undefined && p && x !== today) {
+        overlapActual += a;
+        overlapProjMid += p.mid;
+        overlapDays += 1;
+      }
+    });
+
+    document.getElementById('pvr-actual').textContent = fmt(Math.round(totalActual));
+    document.getElementById('pvr-actual-lbl').textContent =
+      'Actual visitors · ' + hasActualDays + ' day' + (hasActualDays === 1 ? '' : 's') + ' w/ data';
+
+    const v = document.getElementById('pvr-variance');
+    const vLbl = document.getElementById('pvr-variance-lbl');
+    if (overlapDays > 0 && overlapProjMid > 0) {
+      const pct = Math.round(100 * (overlapActual - overlapProjMid) / overlapProjMid);
+      v.textContent = (pct >= 0 ? '+' : '') + pct + '%';
+      v.style.color = pct >= 0 ? '#86efac' : '#fca5a5';
+      vLbl.textContent = 'Δ vs projected · ' + overlapDays + ' closed day' + (overlapDays === 1 ? '' : 's');
+    } else {
+      v.textContent = '—';
+      v.style.color = '#94a3b8';
+      vLbl.textContent = 'Δ vs projected · no closed overlap days';
+    }
+
+    // Day-by-day table
+    document.getElementById('pvr-table').innerHTML = days.map(x => {
+      const a = actualByDay[x];
+      const p = projByDay[x];
+      const aTxt = (a !== undefined) ? fmt(a) : '<span style="color:#475569">—</span>';
+      const pLow  = p ? p.low.toFixed(1)  : '<span style="color:#475569">—</span>';
+      const pMid  = p ? p.mid.toFixed(1)  : '<span style="color:#475569">—</span>';
+      const pHigh = p ? p.high.toFixed(1) : '<span style="color:#475569">—</span>';
+      const isToday = (x === today);
+      let dTxt = '<span style="color:#475569">—</span>';
+      let pctTxt = '<span style="color:#475569">—</span>';
+      if (a !== undefined && p) {
+        const delta = a - p.mid;
+        const pct = p.mid > 0 ? Math.round(100 * delta / p.mid) : 0;
+        // Today is in-progress — neutral color so partial actuals don't read as a "miss".
+        const col = isToday
+          ? '#94a3b8'
+          : (delta >= 0 ? '#86efac' : '#fca5a5');
+        dTxt   = '<span style="color:' + col + '">' + (delta >= 0 ? '+' : '') + delta.toFixed(1) + '</span>';
+        pctTxt = '<span style="color:' + col + '">' + (pct   >= 0 ? '+' : '') + pct + '%</span>';
+      }
+      const rowStyle = isToday ? 'background:rgba(14,165,233,0.06)' : '';
+      const dCol = isToday ? '#0ea5e9' : '#94a3b8';
+      const dayLabel = isToday ? ' · today (partial)' : '';
+      return '<tr style="' + rowStyle + '">' +
+        '<td class="mono" style="color:' + dCol + '">' + x + dayLabel + '</td>' +
+        '<td class="num" style="color:#f1f5f9;font-weight:600">' + aTxt + '</td>' +
+        '<td class="num" style="color:#94a3b8">' + pLow  + '</td>' +
+        '<td class="num" style="color:#cbd5e1;font-weight:600">' + pMid  + '</td>' +
+        '<td class="num" style="color:#94a3b8">' + pHigh + '</td>' +
+        '<td class="num">' + dTxt   + '</td>' +
+        '<td class="num">' + pctTxt + '</td>' +
+      '</tr>';
+    }).join('');
+
+    // Chart
+    const labels = days.map(x => x.slice(5));
+    const datasets = [
+      { label: 'Actual',           data: actual,
+        borderColor: '#0ea5e9', backgroundColor: 'rgba(14,165,233,0.18)',
+        tension: 0.3, spanGaps: false, pointRadius: 3, fill: false, borderWidth: 2 },
+      { label: 'Projected (mid)',  data: projMid,
+        borderColor: '#eab308', backgroundColor: 'transparent',
+        borderDash: [6, 4], tension: 0.3, spanGaps: false, pointRadius: 0, borderWidth: 2 },
+      { label: 'Projected (low)',  data: projLow,
+        borderColor: '#fca5a5', backgroundColor: 'transparent',
+        borderDash: [2, 4], tension: 0.3, spanGaps: false, pointRadius: 0, borderWidth: 1 },
+      { label: 'Projected (high)', data: projHigh,
+        borderColor: '#86efac', backgroundColor: 'transparent',
+        borderDash: [2, 4], tension: 0.3, spanGaps: false, pointRadius: 0, borderWidth: 1 },
+    ];
+    if (chart) chart.destroy();
+    chart = new Chart(document.getElementById('pvrChart'), {
+      type: 'line',
+      data: { labels, datasets },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { labels: { color: '#cbd5e1', boxWidth: 12, font: { size: 11 } } },
+          tooltip: { mode: 'index', intersect: false },
+        },
+        scales: {
+          x: { ticks: { color: '#64748b', maxRotation: 0, autoSkip: true, maxTicksLimit: 16 },
+               grid: { color: '#1e293b' } },
+          y: { beginAtZero: true, ticks: { color: '#64748b' }, grid: { color: '#1e293b' },
+               title: { display: true, text: 'Visitors / day', color: '#64748b' } },
+        },
+        interaction: { mode: 'index', intersect: false },
+      },
+    });
+  }
+
+  fromInput.addEventListener('change', render);
+  toInput.addEventListener('change', render);
+  render();
+})();
 
 // Country donut (top 5, rest bucketed)
 const topC = (D.ph_countries || []).slice(0, 5);

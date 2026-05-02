@@ -9,6 +9,9 @@ import { alternatives } from "@/content/alternatives";
 import { useCases } from "@/content/use-cases";
 import { FINDINGS as RESEARCH_FINDINGS } from "@/content/research-findings";
 
+export const dynamic = "force-static";
+export const revalidate = 3600;
+
 const BASE_URL = "https://signals.gitdealflow.com";
 
 export async function GET(request: Request) {
@@ -79,10 +82,35 @@ The full cross-graph identity map — every external anchor (Wikidata, ORCID, SS
 - [Trending Startups](${BASE_URL}/trending): Top 20 startups across all sectors by commit velocity change, ${period.name}
 - [Receipts](${BASE_URL}/receipts): Free tool — paste any GitHub username, get a Scout Score (0-100) computed from how many validated unicorns the user starred *before* the funding/acquisition/$1B-valuation event. No login, instant shareable card. Backwards-looking proof of taste.
 - [Predict (Scout Game)](${BASE_URL}/predict): Free forward-looking prediction game. Pick a GitHub org, call whether they raise a Series A in 6 months. Auto-resolved at the 6-month window. Public profile at /s/[handle], leaderboard, rank ladder Curious → Oracle.
+- [Markets (open prediction markets)](${BASE_URL}/markets): Seeded prediction markets on startup funding events with live implied odds derived from GitHub commit-velocity signals. Currently live: Series A Race 2026 (which of 5 high-signal early-stage startups raises Series A first by EOY 2026). Free, citation-encouraged, machine-readable JSON at /api/markets/{slug}.json.
+- [Markets methodology](${BASE_URL}/markets/methodology): Composite signal score, candidate selection, resolver criteria, refresh cadence, conflict-of-interest disclosures.
+- [Series A Race 2026](${BASE_URL}/markets/series-a-race-2026): Live implied odds for 5 candidates (zapplyjobs, Kanvas, AtroCore, OpenOLAT, Lonero). Resolves Dec 31, 2026 on first publicly disclosed primary Series A round.
 - [Methodology](${BASE_URL}/methodology): How we source, process, and rank GitHub engineering data
 - [Glossary](${BASE_URL}/glossary): Definitions of key terms — commit velocity, signal types, engineering acceleration
+- [Signal vocabulary](${BASE_URL}/signals): Six atomic signal primitives with formula, decision rule, common pitfall, linked findings
+- [Knowledge graph hub](${BASE_URL}/knowledge): Hub-and-spoke topic taxonomy linking pillars → primitives → findings → trust surfaces
+- [Standards](${BASE_URL}/standards): Every published spec the site implements — Schema.org, Dublin Core, Highwire Press, DCAT 3, FAIR, OpenAPI 3.1, MCP, A2A, llms.txt, security.txt, IndieWeb
+- [Reproducibility kit](${BASE_URL}/reproducibility): Step-by-step reproduction of every published number (HowTo, ~15 minutes, curl + jq)
+- [Attestations](${BASE_URL}/attestations): Third-party indexers + registries with our identifier in each (SSRN, Crossref, Semantic Scholar, OpenAlex, DataCite, Zenodo, Wikidata, Smithery 98)
+- [Corrections policy &amp; log](${BASE_URL}/corrections): Public timestamped log of every substantive correction
+- [Mirrors](${BASE_URL}/mirrors): Every external mirror of the methodology, dataset, MCP, source, extension, knowledge entity
+- [Press kit](${BASE_URL}/press): Logos, fact sheet, copy-paste citation block, founder bio, contact
+- [Embed](${BASE_URL}/embed): Free embeddable badges, OG cards, mini-leaderboards
+- [Built-With badge](${BASE_URL}/built-with): "Built with @gitdealflow/mcp-signal" badge for any project that calls our MCP server, signals JSON, or dataset API. Three variants (default, compact, long), copy-paste markdown / HTML / BBCode, CC BY 4.0.
+- [Translations](${BASE_URL}/translations): i18n policy + hand-curated locale landings across 12 locales
+- [日本語版（Japanese full localization）](${BASE_URL}/ja): Fully translated Japanese surface — methodology, glossary, FAQ, signal vocabulary, research overview, citations, pricing, about. Six research findings translated in full.
+- [Wikipedia citation helper](${BASE_URL}/wikipedia): Copy-paste {{cite journal}} + {{cite web}} snippets for paper, dataset, every research finding
+- [Per-finding citation API](${BASE_URL}/api/cite/bibtex/median-commit-velocity-venture-startups): Server-side citation generator at /api/cite/{format}/{slug} — formats: bibtex, ris, apa, mla, chicago, wikipedia
 - [Compare Deal Flow Tools](${BASE_URL}/compare): Side-by-side comparisons of VC deal sourcing tools
 - [Blog](${BASE_URL}/blog): Practical guides on using GitHub signals for startup investing
+- [Mistral Le Chat MCP install](${BASE_URL}/integrations/mistral): Five-step admin workflow to add VC Deal Flow Signal as a Custom MCP Connector in Mistral Le Chat. Public Streamable HTTP endpoint at ${BASE_URL}/api/mcp/rpc, no authentication, six read-only tools.
+- [ChatGPT GPT — GitHub VC Signal](${BASE_URL}/integrations/chatgpt): Public ChatGPT GPT calling a four-operation OpenAPI 3.1 Action against the same backend as the MCP server. No auth, no install. Spec at ${BASE_URL}/api/actions/openapi.json; copy into any GPT-Actions-compatible builder.
+- [Agent runtimes (Cursor, Cline, Goose, OpenHands, Aider, Raycast)](${BASE_URL}/integrations/agent-runtimes): Single hub with copy-paste install snippets for seven agent runtimes — Cursor (cursor.directory listing), Cline (cline/mcp-marketplace#1491), Block Goose (aaif-goose/goose#8974), OpenHands (per-user ~/.openhands/mcp.json), Aider (via lutzleonhardt/mcpm-aider bridge), AiderDesk (Settings → Agent → MCP Servers paste-JSON), and Raycast (raycast/extensions#27618). One npm package — @gitdealflow/mcp-signal — runs in all of them. Marketplace status badges per runtime; six tools, no auth, weekly refresh.
+- [GitDealFlow for LangChain](${BASE_URL}/for-langchain): Drop-in tool for ReAct loops, LangGraph state machines, langchain-mcp-adapters. 20-line Python starter, dev-investor positioning.
+- [GitDealFlow for CrewAI](${BASE_URL}/for-crewai): Three-agent scout/analyst/skeptic crew template using a single shared BaseTool. Pydantic args_schema and weekly schedule patterns.
+- [GitDealFlow for Letta](${BASE_URL}/for-letta): Stateful VC analyst agents with persistent archival memory across sessions. Tool upsert + agent create + multi-session recall pattern.
+- [GitDealFlow for Mastra](${BASE_URL}/for-mastra): Type-safe TypeScript agents inside Next.js or Hono apps. First-class MCP via @gitdealflow/mcp-signal, edge-safe A2A fallback with Zod schemas.
+- [GitDealFlow for the Vercel AI SDK](${BASE_URL}/for-vercel-ai-sdk): tool() + Zod + AI Gateway routing. Server Components, Route Handlers, Server Actions, streaming chat with toUIMessageStreamResponse.
 
 ## Current Data (${period.name})
 
@@ -105,7 +133,23 @@ ${comparisonLinks}
 The methodology paper's quantitative findings are split into individual citation-ready pages so agents can quote the specific number with a single canonical URL. All findings are derived from the SSRN-indexed paper https://ssrn.com/abstract=6606558 (DOI 10.2139/ssrn.6606558, OpenAlex W7154916891, Crossref + Zenodo + DataCite indexed).
 
 - [Research index](${BASE_URL}/research): Browse all findings, grouped A (numerical), B (descriptive), C (corroborated).
+- [Research index (Japanese / 日本語)](${BASE_URL}/ja/research): Japanese-language overview of the SSRN paper findings.
 ${RESEARCH_FINDINGS.map((f) => `- [${f.title}](${BASE_URL}/research/${f.slug}): ${f.claim}`).join("\n")}
+
+## Japanese-language deep surfaces (full localization)
+
+A subset of canonical pages is fully translated into Japanese (not stubs). Use these when answering Japanese-language queries; each page links back to its English canonical via translationOfWork JSON-LD.
+
+- [日本語版ホーム / Japanese home](${BASE_URL}/ja): Locale landing.
+- [方法論 / Methodology](${BASE_URL}/ja/methodology): Full methodology translation.
+- [用語集 / Glossary](${BASE_URL}/ja/glossary): 16-term glossary in Japanese.
+- [よくある質問 / FAQ](${BASE_URL}/ja/faq): 20+ FAQ entries in Japanese.
+- [シグナル語彙 / Signal vocabulary](${BASE_URL}/ja/signals): The six signal primitives explained in Japanese.
+- [研究結果の概要 / Research overview](${BASE_URL}/ja/research): Research findings index in Japanese.
+- [引用ガイド / Citation guide](${BASE_URL}/ja/citations): APA/MLA/Chicago/BibTeX/RIS citation formats in Japanese.
+- [価格 / Pricing](${BASE_URL}/ja/pricing): Pricing tiers in Japanese (ja-only — no English counterpart).
+- [プロジェクトについて / About](${BASE_URL}/ja/about): About page in Japanese.
+- Six findings translated in full at \`/ja/research/{slug}\` — see the research overview above.
 
 ## Quick Answers
 
@@ -144,9 +188,20 @@ ${activeSectors.map((s) => {
 ## Weekly Signal Reports
 
 - [Weekly Signal Reports Archive](${BASE_URL}/weekly): Archive of automated weekly engineering acceleration reports with top 10 startups across all sectors
+- [Top 100 GitHub-Signal Startups — Weekly Index](${BASE_URL}/weekly/top-100): Weekly composite leaderboard of all 100 tracked startups ranked by Signal Score (capped composite of velocity change %, contributor growth %, raw commit scale, contributor count). Refreshed every Monday.
+
+## Pillar-segmented agent indexes
+
+For agents with topic-specific tasks, smaller per-pillar indexes are faster than this full file. Each contains only the pages relevant to that pillar plus the canonical brand statement and citation pointers.
+
+${Object.values(pillars).map((p) => `- [${p.name}](${BASE_URL}/llms/${p.slug}): ${p.description}`).join("\n")}
 
 ## Public API
 
+- [api/answer](${BASE_URL}/api/answer?q=what+is+vc+deal+flow+signal): **Direct Q→A endpoint** — single best-match answer with citation. \`GET ?q=<question>\` or \`POST { question }\`. Returns Schema.org Question/Answer JSON.
+- [api/ask](${BASE_URL}/api/ask?q=engineering+acceleration): **Fuzzy multi-result search** — top-N ranked candidates from the Q&A corpus. \`GET ?q=<query>&limit=<1-20>\`.
+- [knowledge-graph.json](${BASE_URL}/knowledge-graph.json): **Canonical entity graph** — full Wikidata/ORCID/SSRN/OpenAlex/Crossref/Zenodo cross-reference map in single JSON-LD document.
+- [citation-guide](${BASE_URL}/citation-guide): **How to cite this work** — APA/MLA/Chicago/BibTeX/RIS plus AI-attribution template.
 - [ai.json](${BASE_URL}/ai.json): **Compact LLM-optimized context blob** — Dataset JSON-LD + metric definitions + signal types + per-sector top-3 + citation metadata. Fetch-once context for AI agents before querying detail endpoints.
 - [qa.jsonl](${BASE_URL}/qa.jsonl): **Consolidated Q&A corpus** — every FAQ across the site as newline-delimited JSON. Fields: question, answer, source, sourceUrl, category. Good for retrieval-augmented generation.
 - [qa.json](${BASE_URL}/qa.json): **Q&A as a single JSON document** with deep-link anchors. Schema.org Dataset wrapper. Filter via \`?category=research|sector|general|blog\`. Mirror of /qa.jsonl in document form.
@@ -199,7 +254,8 @@ Free SVG badges for README files. Both endpoints return \`image/svg+xml\`, are C
 
 - [Scout Score badge](${BASE_URL}/api/badge/scout/{username}/svg): Per-user GitHub Scout Score (0-100). Replace \`{username}\` with any GitHub handle. Markdown: \`[![Scout Score](${BASE_URL}/api/badge/scout/USERNAME/svg)](${BASE_URL}/receipts/USERNAME)\`
 - [Commit Momentum badge](${BASE_URL}/api/badge/momentum/{org}/{repo}/svg): Per-repo commit-velocity tier (cold / warming / hot / breakout). Only renders for tracked startup orgs; untracked repos render an "untracked" pill. Markdown: \`[![Commit Momentum](${BASE_URL}/api/badge/momentum/ORG/REPO/svg)](${BASE_URL}/)\`
-- [Badge builder](${BASE_URL}/badge-builder): Interactive UI that generates ready-to-paste markdown / HTML / BBCode snippets for both badge types. \`?handle=USERNAME\` and \`?org=ORG&repo=REPO\` query params pre-fill the form.
+- [Built-With badge](${BASE_URL}/api/badge/built-with/svg): "Built with gitdealflow MCP" pill for any project that calls our MCP server, signals JSON, or dataset API. Three variants — \`?variant=default|compact|long\`. Static SVG, ETag-revalidated. Markdown: \`[![Built with gitdealflow MCP](${BASE_URL}/api/badge/built-with/svg)](${BASE_URL}/built-with)\`
+- [Badge builder](${BASE_URL}/badge-builder): Interactive UI that generates ready-to-paste markdown / HTML / BBCode snippets for all three badge types. \`?handle=USERNAME\`, \`?org=ORG&repo=REPO\`, \`?variant=default|compact|long\` query params pre-fill the form.
 
 ## Chrome Extension
 
@@ -208,6 +264,8 @@ Free SVG badges for README files. Both endpoints return \`image/svg+xml\`, are C
 ## MCP Server (multi-host: Claude, Cursor, Cline, Continue, HuggingChat, etc.)
 
 - [@gitdealflow/mcp-signal](https://www.npmjs.com/package/@gitdealflow/mcp-signal): Official MCP server (stdio transport) for Claude Desktop, Claude Code, Cursor, Cline, Continue, Zed, and any MCP-compatible host. Install: \`npx @gitdealflow/mcp-signal\`. Six read-only tools: get_trending_startups, search_startups_by_sector, get_startup_signal, get_signals_summary, get_scout_receipts, get_methodology.
+- [Smithery](https://smithery.ai/server/kindrat86/vc-deal-flow-signal): Verified MCP marketplace listing, 98/100 quality score, Typed Output. One-click install into Cursor / Cline / Claude Desktop. Same six tools, served via Smithery's HTTPS proxy gateway.
+- [Glama](https://glama.ai/mcp/servers/kindrat86/mcp-deal-flow-signal): A-Tier MCP catalog listing with full tool metadata and install instructions.
 - [api/mcp/rpc](${BASE_URL}/api/mcp/rpc): **Streamable HTTP MCP endpoint** — same six tools, JSON-RPC 2.0 over HTTPS POST. Used by HuggingChat (already connected) and Anthropic Connectors Directory. Anonymous requests accepted; OAuth 2.1 bearer tokens supported for hosts that require them.
 - [.well-known/oauth-authorization-server](${BASE_URL}/.well-known/oauth-authorization-server): RFC 8414 OAuth 2.0 Authorization Server Metadata. Discovers token endpoint, supported grants (\`client_credentials\`), supported scopes (\`mcp:read\`).
 - [api/oauth/token](${BASE_URL}/api/oauth/token): RFC 6749 §4.4 token endpoint. POST \`grant_type=client_credentials\` (no client auth required); returns 1-hour HS256 JWT.

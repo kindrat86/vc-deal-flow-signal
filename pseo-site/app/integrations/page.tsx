@@ -28,12 +28,36 @@ const integrations: Integration[] = [
     name: "MCP Server",
     tagline: "Claude, Cursor, Windsurf, and any MCP-compatible assistant",
     description:
-      "Query VC Deal Flow Signal directly from Claude, Cursor, Windsurf, or any MCP-compatible client. Five tools expose trending startups, sector signals, individual startup lookups, methodology, and weekly summaries. Published on npm as @gitdealflow/mcp-signal and listed in the MCP Registry and Glama.",
+      "Query VC Deal Flow Signal directly from Claude, Cursor, Windsurf, or any MCP-compatible client. Six tools expose trending startups, sector signals, individual startup lookups, Scout receipts, methodology, and weekly summaries. Published on npm as @gitdealflow/mcp-signal, on Smithery (verified, 98/100), and live as a Streamable HTTP endpoint at signals.gitdealflow.com/api/mcp/rpc.",
     status: "live",
     href: "https://www.npmjs.com/package/@gitdealflow/mcp-signal",
     docsHref: "https://gitdealflow.com/#mcp",
     category: "AI",
     setup: "npx @gitdealflow/mcp-signal@latest",
+  },
+  {
+    slug: "mistral",
+    name: "Mistral Le Chat",
+    tagline: "Add as Custom MCP Connector — six read-only tools, no auth",
+    description:
+      "Workspace admins can plug VC Deal Flow Signal into Mistral Le Chat as a Custom MCP Connector in under two minutes. The public Streamable HTTP endpoint exposes the same six tools (trending startups, sector signals, startup lookup, Scout receipts, methodology, dataset snapshot) to every teammate once installed once.",
+    status: "live",
+    href: "/integrations/mistral",
+    docsHref: "https://docs.mistral.ai/le-chat/knowledge-integrations/connectors/mcp-connectors",
+    category: "AI",
+    setup: "Settings → Connectors → + Add Connector → Custom MCP",
+  },
+  {
+    slug: "chatgpt",
+    name: "ChatGPT GPT",
+    tagline: "GitHub VC Signal — public OpenAPI Action, four tools, no setup",
+    description:
+      "Use the GitHub VC Signal GPT directly inside ChatGPT (Plus, Team, Enterprise, Edu). The Action calls signals.gitdealflow.com under the hood — same dataset, same classifications, same weekly refresh as the MCP server. Four read-only Actions: getAllSignals, getStartupSignal, getSignalsSummary, getMethodology. No install, no auth, no setup. OpenAPI 3.1 spec at signals.gitdealflow.com/api/actions/openapi.json for anyone building their own GPT or agent.",
+    status: "beta",
+    href: "/integrations/chatgpt",
+    docsHref: "https://signals.gitdealflow.com/api/actions/openapi.json",
+    category: "AI",
+    setup: "chatgpt.com → Browse GPTs → search \"GitHub VC Signal\"",
   },
   {
     slug: "telegram",
@@ -113,6 +137,78 @@ const integrations: Integration[] = [
     docsHref: "https://signals.gitdealflow.com/llms-full.txt",
     category: "AI",
     setup: "Automatic — AI assistants discover and use these files",
+  },
+  {
+    slug: "agent-runtimes",
+    name: "Agent runtimes (Cursor, Cline, Goose, OpenHands, Aider, Raycast)",
+    tagline: "One npm package, seven runtimes — cross-listed in every agent-runtime marketplace",
+    description:
+      "Single hub page with copy-paste install snippets for Cursor, Cline (VS Code), Block Goose, OpenHands, Aider (via mcpm-aider), AiderDesk, and Raycast. Marketplace submissions live at cursor.directory, cline/mcp-marketplace#1491, aaif-goose/goose#8974, raycast/extensions#27618. OpenHands / Aider / AiderDesk have no marketplace surface — config-only via per-user JSON.",
+    status: "live",
+    href: "/integrations/agent-runtimes",
+    docsHref: "https://www.npmjs.com/package/@gitdealflow/mcp-signal",
+    category: "AI",
+    setup: "npx -y @gitdealflow/mcp-signal — same command, every runtime",
+  },
+  {
+    slug: "for-langchain",
+    name: "GitDealFlow for LangChain",
+    tagline: "Drop into ReAct loops, LangGraph state machines, langchain-mcp-adapters",
+    description:
+      "Programmatic landing for LangChain builders. Includes a 20-line @tool starter, a LangGraph two-node deal-memo pipeline, FAQ, and gotchas. Works with any LangChain chat model — OpenAI, Anthropic, Mistral, Bedrock, Vertex, Cohere.",
+    status: "live",
+    href: "/for-langchain",
+    docsHref: "https://signals.gitdealflow.com/api/a2a",
+    category: "AI",
+    setup: "@tool gitdealflow(skill, args) → POST /api/a2a",
+  },
+  {
+    slug: "for-crewai",
+    name: "GitDealFlow for CrewAI",
+    tagline: "Three-agent scout / analyst / skeptic crew template",
+    description:
+      "Multi-agent orchestration shipped as one BaseTool that every Agent on the crew can call. Includes a Pydantic args_schema variant for typed args and a Monday-cron weekly digest pattern. Works on CrewAI Studio (no-code) too.",
+    status: "live",
+    href: "/for-crewai",
+    docsHref: "https://docs.crewai.com/concepts/tools",
+    category: "AI",
+    setup: "class GitDealFlowTool(BaseTool) → tools=[tool] on every Agent",
+  },
+  {
+    slug: "for-letta",
+    name: "GitDealFlow for Letta",
+    tagline: "Stateful VC analyst agents with persistent archival memory",
+    description:
+      "Letta agents (formerly MemGPT) keep a watchlist memory of every startup they've scouted. Includes a tool upsert + agent create + cross-session recall pattern. Best fit for personal scouting assistants that compound knowledge.",
+    status: "live",
+    href: "/for-letta",
+    docsHref: "https://docs.letta.com",
+    category: "AI",
+    setup: "client.tools.upsert_from_function(func=gitdealflow_query)",
+  },
+  {
+    slug: "for-mastra",
+    name: "GitDealFlow for Mastra",
+    tagline: "Type-safe TypeScript agents inside Next.js or Hono",
+    description:
+      "Mastra ships first-class MCP via @gitdealflow/mcp-signal plus an edge-safe A2A fallback. Best fit when your portfolio dashboard and your deal-flow agent live in the same codebase. AI Gateway routing via plain string model IDs.",
+    status: "live",
+    href: "/for-mastra",
+    docsHref: "https://mastra.ai/docs",
+    category: "AI",
+    setup: 'new MCPClient({ servers: { gitdealflow: { command: "npx", args: ["@gitdealflow/mcp-signal@latest"] }}})',
+  },
+  {
+    slug: "for-vercel-ai-sdk",
+    name: "GitDealFlow for the Vercel AI SDK",
+    tagline: "tool() + Zod + AI Gateway for Server Components and chat routes",
+    description:
+      "The cleanest path inside a Next.js app: tool() with a Zod schema, plain string model IDs that route through the AI Gateway, toUIMessageStreamResponse() for streaming chat, unstable_cache for Server Component fetches.",
+    status: "live",
+    href: "/for-vercel-ai-sdk",
+    docsHref: "https://ai-sdk.dev",
+    category: "AI",
+    setup: "tool({ inputSchema: z.object({ skill, args }), execute })",
   },
 ];
 
@@ -268,7 +364,7 @@ export default function IntegrationsPage() {
           Integrations
         </h1>
         <p className="text-gray-400 text-base leading-relaxed mb-10 max-w-2xl">
-          Plug VC Deal Flow Signal into your existing workflow. Eight ways to
+          Plug VC Deal Flow Signal into your existing workflow. Nine ways to
           get engineering acceleration signals where you already work — AI
           assistants, messaging, email, raw data, and automation.
         </p>

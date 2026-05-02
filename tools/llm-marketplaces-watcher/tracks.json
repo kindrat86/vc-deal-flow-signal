@@ -1,0 +1,203 @@
+{
+  "version": 1,
+  "lastUpdated": "2026-05-02T22:48:00+03:00",
+  "_doc": "Each track is a submission to a third-party LLM marketplace or framework registry. The watcher polls each one (via email or GitHub) twice daily and updates 'status' when state changes. Add new tracks by appending to the 'tracks' array; the watcher picks them up on next run.",
+  "tracks": [
+    {
+      "id": "cline-mcp-marketplace",
+      "name": "Cline MCP Marketplace",
+      "type": "github_issue",
+      "status": "submitted",
+      "submittedAt": "2026-05-02T09:30:00+03:00",
+      "repo": "cline/mcp-marketplace",
+      "issueNumber": 1491,
+      "url": "https://github.com/cline/mcp-marketplace/issues/1491",
+      "acceptedSignals": [
+        {"type": "issue_state", "value": "closed"},
+        {"type": "label", "value": "accepted"},
+        {"type": "label", "value": "merged"},
+        {"type": "comment_contains", "value": "live in the marketplace"},
+        {"type": "comment_contains", "value": "approved"}
+      ],
+      "rejectedSignals": [
+        {"type": "label", "value": "wontfix"},
+        {"type": "label", "value": "rejected"},
+        {"type": "comment_contains", "value": "unable to review"},
+        {"type": "comment_contains", "value": "does not meet"}
+      ]
+    },
+    {
+      "id": "crewai-tools-gitdealflow",
+      "name": "CrewAI Tools — GitDealFlowSignalTool",
+      "type": "github_issue",
+      "status": "submitted",
+      "submittedAt": "2026-05-02T10:00:00+03:00",
+      "repo": "crewAIInc/crewAI",
+      "issueNumber": 5682,
+      "url": "https://github.com/crewAIInc/crewAI/pull/5682",
+      "acceptedSignals": [
+        {"type": "issue_state", "value": "merged"},
+        {"type": "label", "value": "merged"},
+        {"type": "comment_contains", "value": "merging"},
+        {"type": "comment_contains", "value": "approved"}
+      ],
+      "rejectedSignals": [
+        {"type": "label", "value": "wontfix"},
+        {"type": "label", "value": "rejected"},
+        {"type": "comment_contains", "value": "closing this"},
+        {"type": "comment_contains", "value": "does not meet"}
+      ]
+    },
+    {
+      "id": "mcpso-submission",
+      "name": "mcp.so directory submission",
+      "type": "github_issue",
+      "status": "submitted",
+      "submittedAt": "2026-05-02T10:30:00+03:00",
+      "repo": "chatmcp/mcpso",
+      "issueNumber": 2201,
+      "url": "https://github.com/chatmcp/mcpso/issues/2201",
+      "acceptedSignals": [
+        {"type": "issue_state", "value": "closed"},
+        {"type": "label", "value": "added"},
+        {"type": "label", "value": "live"},
+        {"type": "comment_contains", "value": "added to mcp.so"},
+        {"type": "comment_contains", "value": "live on mcp.so"},
+        {"type": "comment_contains", "value": "https://mcp.so/server/"}
+      ],
+      "rejectedSignals": [
+        {"type": "label", "value": "wontfix"},
+        {"type": "label", "value": "duplicate"},
+        {"type": "comment_contains", "value": "does not meet"}
+      ]
+    },
+    {
+      "id": "hf-space-deepseek",
+      "name": "HF Space — VC Deal Flow Scout (DeepSeek)",
+      "type": "url_health",
+      "status": "live",
+      "submittedAt": "2026-05-02T14:55:00+03:00",
+      "url": "https://huggingface.co/spaces/the-data-nerd/vc-deal-flow-deepseek",
+      "healthCheckUrl": "https://huggingface.co/api/spaces/the-data-nerd/vc-deal-flow-deepseek/runtime",
+      "expectedRuntimeStage": "RUNNING",
+      "_note": "url_health track type not yet implemented in watcher; for now this entry is documentation-only. Add support next time the watcher is touched."
+    },
+    {
+      "id": "smithery-vc-deal-flow-signal",
+      "name": "Smithery — vc-deal-flow-signal",
+      "type": "email",
+      "status": "live",
+      "submittedAt": "2026-05-02T20:57:00+03:00",
+      "listingUrl": "https://smithery.ai/server/mkondratyuk86/vc-deal-flow-signal",
+      "gatewayUrl": "https://vc-deal-flow-signal--mkondratyuk86.run.tools",
+      "fromRegex": "@smithery\\.ai$",
+      "subjectRegex": "(featured|approved|trending|published|review)",
+      "acceptanceKeywords": ["featured", "trending", "approved", "published", "live"],
+      "rejectionKeywords": ["delisted", "removed", "violation", "rejected"],
+      "_note": "Inspect crawler returned SUCCESS in 10s — discovered 6 tools / 5 prompts / 3 resources from /.well-known/mcp/server-card.json. Listing requires user to click 'Change visibility' → Public to be discoverable in search. Watcher tracks future Smithery email about featuring/trending status."
+    },
+    {
+      "id": "poe-vcdealflowscout",
+      "name": "Poe — VCDealFlowScout (Server bot)",
+      "type": "email",
+      "status": "live",
+      "submittedAt": "2026-05-02T22:48:00+03:00",
+      "listingUrl": "https://poe.com/VCDealFlowScout",
+      "creatorHandle": "@mkih6",
+      "serverUrl": "https://signals.gitdealflow.com/api/poe",
+      "fromRegex": "@(poe|quora)\\.com$",
+      "subjectRegex": "(featured|approved|trending|published|review|VCDealFlowScout|monetization)",
+      "acceptanceKeywords": ["featured", "trending", "approved", "published", "live", "monetization unlocked"],
+      "rejectionKeywords": ["delisted", "removed", "violation", "rejected", "suspended"],
+      "_note": "Smoke test passed: 'trending startups in AI/ML' renders Top 5 with bold names + commit-velocity %, signal type, contributor count, and citation footer. Reachability check passed after fix: settings request returns plain JSON; query returns SSE. Watcher tracks future Poe email about featuring/trending status or any moderation action."
+    },
+    {
+      "id": "youcom-vc-deal-flow-scout",
+      "name": "You.com — VC Deal Flow Scout (Custom Agent)",
+      "type": "email",
+      "status": "live",
+      "submittedAt": "2026-05-02T23:05:00+03:00",
+      "listingUrl": "https://you.com/agents/user_mode_8dde2556-8bcc-45d9-8e5c-2ab7b56d8ae5",
+      "ownerEmail": "signal@gitdealflow.com",
+      "fromRegex": "@you\\.com$",
+      "subjectRegex": "(featured|approved|trending|published|review|VC Deal Flow|usage limit)",
+      "acceptanceKeywords": ["featured", "trending", "approved", "published", "live"],
+      "rejectionKeywords": ["delisted", "removed", "violation", "rejected", "suspended"],
+      "_note": "Smoke test in 'advanced' mode showed planned step 'Fetch the live startup signals dataset from https://signals.gitdealflow.com/api/signals.json' — wiring confirmed. Visibility = 'Anyone with the link / Can chat'. Web search ON. Free trial account (25/25 query quota). Watcher tracks any You.com email about agent featuring/quota/moderation."
+    },
+    {
+      "id": "mistral-vc-deal-flow-scout",
+      "name": "Mistral Le Chat — VC Deal Flow Scout (PRIVATE on free tier)",
+      "type": "email",
+      "status": "private",
+      "submittedAt": "2026-05-02T23:25:00+03:00",
+      "listingUrl": "https://chat.mistral.ai/agents/0e7213f8-3214-4474-8318-148e1db9b0d7",
+      "ownerAccount": "The Data Nerd / Le Chat Free",
+      "fromRegex": "@mistral\\.ai$",
+      "subjectRegex": "(featured|approved|trending|published|review|VC Deal Flow|upgrade|pro)",
+      "acceptanceKeywords": ["featured", "trending", "approved", "published", "live"],
+      "rejectionKeywords": ["delisted", "removed", "violation", "rejected", "suspended"],
+      "_note": "Agent is created and works (smoke test passed: returned harvard-edge +55%, photoprism +36%, etc. with proper formatting). However Le Chat Free tier does NOT support public sharing — Access dialog only offers Collaborators/Viewers/'Entire organization'. Public listing requires Le Chat Pro upgrade. Agent URL 404s for non-creators. Status 'private' until user upgrades. Watcher monitors any Mistral email about featuring or Pro upgrade."
+    },
+    {
+      "id": "goose-extensions-vc-deal-flow-signal",
+      "name": "Block Goose extensions — vc-deal-flow-signal",
+      "type": "github_issue",
+      "status": "submitted",
+      "submittedAt": "2026-05-03T12:30:00+03:00",
+      "repo": "aaif-goose/goose",
+      "issueNumber": 8974,
+      "url": "https://github.com/aaif-goose/goose/pull/8974",
+      "acceptedSignals": [
+        {"type": "issue_state", "value": "merged"},
+        {"type": "issue_state", "value": "closed"},
+        {"type": "label", "value": "merged"},
+        {"type": "comment_contains", "value": "merging"},
+        {"type": "comment_contains", "value": "approved"},
+        {"type": "comment_contains", "value": "lgtm"}
+      ],
+      "rejectedSignals": [
+        {"type": "label", "value": "wontfix"},
+        {"type": "label", "value": "rejected"},
+        {"type": "comment_contains", "value": "closing this"},
+        {"type": "comment_contains", "value": "does not meet"}
+      ],
+      "_note": "Adds entry to documentation/static/servers.json mirroring AgentQL/Tavily npx-stdio pattern. block/goose was renamed to aaif-goose/goose (43.7k stars). Watcher polls PR state — flips to 'accepted' on merge. Once merged, listing renders at goose-docs.ai/extensions."
+    },
+    {
+      "id": "raycast-mcp-registry-vc-deal-flow-signal",
+      "name": "Raycast MCP Registry — vc-deal-flow-signal",
+      "type": "github_issue",
+      "status": "submitted",
+      "submittedAt": "2026-05-03T12:35:00+03:00",
+      "repo": "raycast/extensions",
+      "issueNumber": 27618,
+      "url": "https://github.com/raycast/extensions/pull/27618",
+      "acceptedSignals": [
+        {"type": "issue_state", "value": "merged"},
+        {"type": "issue_state", "value": "closed"},
+        {"type": "label", "value": "merged"},
+        {"type": "comment_contains", "value": "merging"},
+        {"type": "comment_contains", "value": "approved"}
+      ],
+      "rejectedSignals": [
+        {"type": "label", "value": "wontfix"},
+        {"type": "label", "value": "rejected"},
+        {"type": "comment_contains", "value": "closing"},
+        {"type": "comment_contains", "value": "does not meet"}
+      ],
+      "_note": "PR appends entry to extensions/model-context-protocol-registry/src/registries/builtin/entries.ts mirroring brave-search/circleback npx pattern. Once merged, the entry surfaces in the Raycast MCP Registry browser extension on every Mac running v1.98+."
+    }
+  ],
+  "_emailTrackTemplate": {
+    "id": "TBD-after-submission",
+    "name": "TBD",
+    "type": "email",
+    "status": "pending",
+    "submittedAt": null,
+    "fromRegex": "@<provider>\\.com$",
+    "subjectRegex": "(approved|rejected|live|published)",
+    "acceptanceKeywords": ["approved", "live", "published"],
+    "rejectionKeywords": ["rejected", "unable", "decline"]
+  }
+}
