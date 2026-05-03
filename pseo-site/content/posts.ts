@@ -2668,6 +2668,413 @@ The Data Nerd (2026). "30 Research Findings, Now One Page Each." VC Deal Flow Si
 
 Replication studies welcome. signal@gitdealflow.com for co-authorship on funding-event joins.`,
   },
+  {
+    slug: "series-a-race-2026-launched",
+    title: "An open prediction market on which 5 GitHub-flagged startups raises Series A first.",
+    description:
+      "I shipped Series A Race 2026 at signals.gitdealflow.com/markets/series-a-race-2026. Live implied odds for 5 high-signal early-stage startups, derived from GitHub commit-velocity data. Resolves Dec 31, 2026. Public methodology, public resolver, machine-readable JSON, CC BY 4.0. No real money — we don't operate an exchange.",
+    summary:
+      "Polymarket and Kalshi don't list seed-stage startup markets. Too granular for real-money exchanges. So we built our own seeded version on top of the GitHub commit-velocity dataset we already maintain. Five candidates (Zapply Jobs 46% / Kanvas 22% / AtroCore 16% / OpenOLAT 10% / Lonero 6%), one binary question, one resolver date, full math public. The market lives on the methodology page itself — the artifact is the press hook.",
+    date: "2026-05-03",
+    relatedSectors: ["ai-ml", "developer-tools", "enterprise-saas"],
+    keyStats: [
+      {
+        value: "5",
+        label: "candidates locked at market open",
+        context: "Pre-seed and Seed startups with ≥30 commits over the last 14 days, ranked by composite signal score",
+      },
+      {
+        value: "46%",
+        label: "top implied probability",
+        context: "Zapply Jobs — 1,694 commits over 14 days, contributor count up 400% (3 → 15)",
+      },
+      {
+        value: "Dec 31, 2026",
+        label: "resolution date",
+        context: "First publicly disclosed primary Series A round wins; bridges, SAFEs, and seed extensions excluded",
+      },
+      {
+        value: "CC BY 4.0",
+        label: "licensed JSON",
+        context: "/api/markets/series-a-race-2026.json — full candidate set, odds, resolver, source-of-truth dataset reference",
+      },
+    ],
+    faqs: [
+      {
+        question: "Is this a real-money market?",
+        answer:
+          "No. We publish the question, the candidates, the implied odds (model output), and the resolver criteria. We don't operate an exchange and we don't take positions. A play-money mirror is staged for Manifold Markets (no KYC, no real money). Polymarket and Kalshi listings are deliberately out of scope: we hold the source-of-truth dataset, so listing a real-money market we resolve would create a structural conflict of interest. Documented in full at /markets/methodology.",
+      },
+      {
+        question: "How are the implied odds computed?",
+        answer:
+          "Composite signal score = 0.40 × normalized 14-day commit velocity + 0.30 × velocity change percent + 0.20 × contributor growth percent + 0.10 × new-repo count. Scores are softmax-normalized so the five candidate probabilities plus a residual NO bucket sum to 1.0. Weights reflect empirical signal strength observed in our historical receipts dataset of validated unicorns. Refresh on each quarterly dataset release; logged at /changelog.",
+      },
+      {
+        question: "How does the market resolve?",
+        answer:
+          "Resolves YES on the first publicly disclosed primary Series A round closing on or before 2026-12-31, 23:59 UTC. Acceptable sources, in priority order: SEC Form D (US) or equivalent filing, Crunchbase or PitchBook, controlled-domain company press release, corroborated coverage in TechCrunch / Sifted / The Information / FinSMEs. Bridge rounds, SAFEs, convertible notes, secondaries, and seed-extension rounds (even >$5M) are excluded. Resolves to 'None' if no candidate qualifies by deadline.",
+      },
+      {
+        question: "Why these 5 startups?",
+        answer:
+          "Filtered to Pre-seed and Seed stage candidates from the Q2-2026 dataset of ~4,200 tracked startup GitHub orgs, requiring at least 30 commits in the trailing 14-day window (filters abandoned repos and tiny projects). Ranked by composite engineering-acceleration score. Top 5 become the candidate set. Post-Series-A, Growth, Public, and Mature companies are excluded by definition. Selection is locked at market open.",
+      },
+      {
+        question: "What's the play here?",
+        answer:
+          "Press hook plus durable ranking page. Polymarket and Kalshi don't list seed-stage markets — too granular for real-money exchanges, too niche for the curators. VCs running this analysis internally treat it as proprietary. Public methodology + public JSON + public resolver = a citable artifact that journalists, newsletters, and AI search engines can reference without us paywalling the data. Long-term: durable inbound traffic; short-term: a binary outcome page that's worth quoting.",
+      },
+    ],
+    references: [
+      {
+        label: "1",
+        title: "Series A Race 2026 — live implied odds and resolver criteria",
+        url: "https://signals.gitdealflow.com/markets/series-a-race-2026",
+        source: "VC Deal Flow Signal",
+      },
+      {
+        label: "2",
+        title: "Markets methodology — composite score, candidate selection, conflict-of-interest disclosure",
+        url: "https://signals.gitdealflow.com/markets/methodology",
+        source: "VC Deal Flow Signal",
+      },
+      {
+        label: "3",
+        title: "Machine-readable market JSON (CC BY 4.0)",
+        url: "https://signals.gitdealflow.com/api/markets/series-a-race-2026.json",
+        source: "VC Deal Flow Signal API",
+      },
+      {
+        label: "4",
+        title: "A Longitudinal Panel of GitHub Engineering Velocity for Venture-Backed Startups",
+        url: "https://ssrn.com/abstract=6606558",
+        source: "SSRN preprint",
+      },
+    ],
+    body: `Sunday morning I shipped Series A Race 2026. Five high-signal early-stage startups, one binary question, one resolver date, full math public.
+
+The question: which of these 5 GitHub-flagged startups raises Series A first by Dec 31, 2026? Live odds at [signals.gitdealflow.com/markets/series-a-race-2026](https://signals.gitdealflow.com/markets/series-a-race-2026).
+
+Top of the leaderboard right now: Zapply Jobs at 46%, Kanvas at 22%, AtroCore at 16%, OpenOLAT at 10%, Lonero at 6%. The math behind the numbers and the resolver criteria are at [/markets/methodology](/markets/methodology).
+
+## Why I built it
+
+Polymarket and Kalshi do not list seed-stage startup markets. Too granular for real-money exchanges, too niche for the curators. Manifold has a few "next unicorn" markets but no one mirrors a structured engineering-signal dataset into them. Every fund I know runs a "who's about to raise" shortlist from GitHub data. None of them publish.
+
+We do publish. The dataset is CC BY 4.0. The methodology paper is on [SSRN](https://ssrn.com/abstract=6606558). The market is the natural extension: take the same composite score we use to rank ~4,200 startups, lock five Pre-seed/Seed candidates with positive signal, expose the implied probabilities, and put a hard resolver date on the page.
+
+The artifact is the press hook. The methodology page itself is the venue.
+
+## The candidate selection
+
+Filter the Q2-2026 dataset to Pre-seed and Seed only (post-Series-A, Growth, Public, Mature excluded by definition). Require at least 30 commits in the trailing 14-day window — filters abandoned repos and tiny projects. Sort by composite engineering-acceleration score. Top five become the candidate set, locked at market open.
+
+That gave me five names with very different stories:
+
+- **Zapply Jobs** is the obvious frontrunner. 1,694 commits over 14 days. Contributor count went from 3 to 15 — a 400% expansion. Engineering hiring burst is the strongest single signal we track. Pre-seed, AI/ML.
+- **Kanvas (BakaPHP)** is a Seed-stage developer-platform play with 14 contributors and a framework-migration signature. 598 commits/14d at +32%. Sustained activity, not a one-week spike.
+- **AtroCore** is the longest contributor base in the cohort: 18 active devs, +38% velocity change. Enterprise PIM/MDM. Framework migration plus stable team.
+- **OpenOLAT** is the Swiss commercial OSS LMS. Velocity dipped this window (-33%) but contributor count is rising. Classic post-burn restructuring pattern.
+- **Lonero** is the long shot. 32 commits/14d, 14 contributors, +28% change. Distributed-systems thesis. Smallest velocity, but the team is intact and the trajectory is positive.
+
+## The composite score
+
+\`\`\`
+composite =
+    0.40 × normalize(commit_velocity_14d, max=600)
+  + 0.30 × clip(commit_velocity_change_pct, -50, 200)
+  + 0.20 × clip(contributor_growth_pct, -50, 300)
+  + 0.10 × (new_repos × 5)
+\`\`\`
+
+Softmax-normalized across the five so probabilities plus a residual NO bucket sum to 1.0. The weights came from looking at our historical receipts dataset — commit velocity is the strongest single predictor, then velocity change, then contributor growth, then new repos. Each weight is documented at [/markets/methodology](/markets/methodology) and is locked for the duration of this market.
+
+The residual NO bucket reads 0% in the candidate-relative model. In reality, base-rate timing risk is high: most seed-stage startups don't close a Series A in any given seven-month window. The honest read is closer to 40-50% NO. We render the candidate-relative number on the page because it's the apples-to-apples comparison; the methodology page explains the base-rate caveat.
+
+## The resolver
+
+YES resolves on the first publicly disclosed primary Series A round closing on or before 2026-12-31, 23:59 UTC. Sources in priority order: SEC Form D, Crunchbase or PitchBook, company press release on a controlled domain, corroborated coverage in TechCrunch / Sifted / The Information / FinSMEs.
+
+What's excluded: bridge rounds, SAFEs, convertible notes, secondary transactions, and seed extensions even if larger than $5M. The reason for the strict exclusion list is that "Series A" has been getting muddier in the last 18 months — bridge-into-extension structures sometimes get reported as A rounds when they're really not. The resolver is version-locked.
+
+If multiple candidates close on the same day, the higher disclosed round size wins; ties broken by earlier UTC time. Resolves to "None" if no candidate qualifies by deadline.
+
+## Why not Polymarket or Kalshi
+
+Two reasons.
+
+First, **resolver conflict.** We hold the source-of-truth dataset (the GitHub commit-velocity signals that populate the implied odds). Listing a real-money market that we also resolve is structurally inappropriate. The conflict is bounded if it's a play-money venue (Manifold), so a play-money mirror is staged separately. But Polymarket and Kalshi listings on questions where we own the dataset are out of scope by policy. This is documented at [/markets/methodology](/markets/methodology).
+
+Second, **listings aren't user-proposable** on Kalshi at this stage anyway — Kalshi markets are exchange-curated, not crowdsourced. Polymarket allows user proposals via UMA bond, but the bond plus the 24-hour dispute window plus the resolver-conflict point above made it not the right venue.
+
+The cleaner play is: market lives here, methodology lives here, JSON lives here, anyone is free to mirror.
+
+## What the page does
+
+The page itself does five things:
+
+1. **Renders live odds** for the five candidates with bar charts.
+2. **Locks the resolver criteria** in plain English plus a structured FAQ block.
+3. **Exposes the candidate set as Schema.org Dataset + ItemList** so search engines and AI retrieval pipelines can ingest the structured data.
+4. **Mirrors to JSON** at [/api/markets/series-a-race-2026.json](https://signals.gitdealflow.com/api/markets/series-a-race-2026.json) — same data, machine-readable, CC BY 4.0.
+5. **Discloses conflict of interest** on the methodology page (we hold no equity, advisory, or consulting positions in any candidate).
+
+The last one is the trust layer. We're not handicapping companies we're trying to invest in or get paid by; we're documenting a public model output on a public dataset. Any journalist or LLM agent that asks "are they neutral on these companies" has a checkable answer.
+
+## What's pending
+
+The on-site build is complete. The Manifold play-money mirror is drafted (verbatim ready) but I have to post it manually — same anonymity rule that keeps me off podcasts and video. Press pitches are drafted and waiting on the Mailreach pacing window. HN, Twitter, and Reddit drafts are staged and need a human pass before they go out — HN posts especially get flagged when they read like LLM output.
+
+Drafts are all in the public repo's distribution/markets/ folder if anyone wants to inspect the staging.
+
+## How to cite
+
+The Data Nerd (2026). "Series A Race 2026 — live implied odds derived from GitHub commit-velocity signals." VC Deal Flow Signal. Retrieved from https://signals.gitdealflow.com/markets/series-a-race-2026.
+
+JSON: https://signals.gitdealflow.com/api/markets/series-a-race-2026.json (CC BY 4.0).
+
+Replication welcome — the methodology and the candidate-selection query are both public. If a candidate later becomes a paying GitDealFlow customer, we disclose the relationship on the market page and offer the user an opt-out from the candidate set at the next quarterly refresh.
+
+Resolves [Dec 31, 2026](https://signals.gitdealflow.com/markets/series-a-race-2026#resolution). I'll write the resolution post then.`,
+  },
+  {
+    slug: "install-vc-deal-flow-signal-mcp-in-any-agent-runtime",
+    title:
+      "Install VC Deal Flow Signal MCP in Any Agent Runtime: Cursor, Cline, Goose, OpenHands, Aider, Raycast",
+    description:
+      "Copy-paste install snippets for the VC Deal Flow Signal MCP server in seven popular agent runtimes — Cursor, Cline, Block Goose, OpenHands, Aider (via mcpm-aider), AiderDesk, and Raycast. One npm package, six free read-only tools, no auth required.",
+    summary:
+      "The same npm package — @gitdealflow/mcp-signal — runs in seven agent runtimes today: Cursor (cursor.directory listing), Cline (mcp-marketplace#1491), Block Goose (PR #8974 in flight), OpenHands (per-user JSON config), Aider via the mcpm-aider bridge, AiderDesk (Settings → Agent → MCP Servers), and Raycast (PR #27618 in the MCP Registry). This post is the install matrix — verbatim JSON or CLI snippets per runtime, plus a one-paragraph note on each runtime's marketplace status. No tutorial fluff, no theory, just paste-and-go. Continue.dev is intentionally absent: their public hub registry was deprecated in May 2026.",
+    date: "2026-05-03",
+    relatedSectors: ["developer-tools", "ai-ml"],
+    keyStats: [
+      {
+        value: "7",
+        label: "Agent runtimes supported today",
+        context: "Cursor, Cline, Goose, OpenHands, Aider, AiderDesk, Raycast",
+      },
+      {
+        value: "1",
+        label: "npm package",
+        context: "@gitdealflow/mcp-signal — runs in every runtime above",
+      },
+      {
+        value: "0",
+        label: "API keys required",
+        context: "All six MCP tools are read-only and unauthenticated",
+      },
+    ],
+    references: [
+      {
+        label: "1",
+        title: "VC Deal Flow Signal — Agent runtimes hub",
+        url: "https://signals.gitdealflow.com/integrations/agent-runtimes",
+        source: "VC Deal Flow Signal",
+      },
+      {
+        label: "2",
+        title: "Block Goose extensions PR #8974",
+        url: "https://github.com/aaif-goose/goose/pull/8974",
+        source: "GitHub",
+      },
+      {
+        label: "3",
+        title: "Raycast MCP Registry PR #27618",
+        url: "https://github.com/raycast/extensions/pull/27618",
+        source: "GitHub",
+      },
+      {
+        label: "4",
+        title: "Cline MCP Marketplace issue #1491",
+        url: "https://github.com/cline/mcp-marketplace/issues/1491",
+        source: "GitHub",
+      },
+      {
+        label: "5",
+        title: "@gitdealflow/mcp-signal on npm",
+        url: "https://www.npmjs.com/package/@gitdealflow/mcp-signal",
+        source: "npm",
+      },
+    ],
+    faqs: [
+      {
+        question: "Which runtimes have one-click install today?",
+        answer:
+          "None of the seven have one-click install yet — all four marketplace submissions (Cursor cursor.directory, Cline mcp-marketplace#1491, Block Goose aaif-goose/goose#8974, Raycast raycast/extensions#27618) are in review as of 2026-05-03. Three runtimes (OpenHands, Aider, AiderDesk) have no marketplace at all and are JSON-paste-only. The fastest path on every runtime today is the snippet in this post (10 seconds per runtime).",
+      },
+      {
+        question: "Do I need an API key?",
+        answer:
+          "No. All six tools — get_trending_startups, search_startups_by_sector, get_startup_signal, get_signals_summary, get_scout_receipts, get_methodology — are read-only and unauthenticated across every runtime. The HTTP variant at signals.gitdealflow.com/api/mcp/rpc supports OAuth 2.1 for runtimes that demand it (Anthropic Connectors Directory), but anonymous calls remain supported indefinitely.",
+      },
+      {
+        question: "Is the underlying data the same in every runtime?",
+        answer:
+          "Yes. Every runtime runs the same npm package (v1.5.2 today) which calls the same backend at signals.gitdealflow.com. Classifications (breakout / acceleration / steady / cooling), thresholds, refresh cadence (Mondays ~09:00 UTC), and the ~400 tracked startups across 20 sectors are identical regardless of which agent runtime makes the call.",
+      },
+      {
+        question: "Why is Continue.dev not on the list?",
+        answer:
+          "The Continue Hub registry (hub.continue.dev) was deprecated in May 2026 — the public MCP/prompt registry returns HTTP 500 after the project's pivot to Continuous AI. Once a public registry comes back online, this post will get an update.",
+      },
+      {
+        question: "How do I report a runtime that broke?",
+        answer:
+          "Open an issue at github.com/kindrat86/mcp-deal-flow-signal/issues with the runtime name, version, and the verbatim error. The MCP server runs the same Node.js code in every host, so runtime-specific failures are usually transport or config issues — typically resolvable in a release within 24 hours.",
+      },
+    ],
+    body: `_VC Deal Flow Signal (GitDealFlow). On this site, "engineering acceleration" means a quantitative GitHub momentum signal — not a reference to startup accelerator programs._
+
+## What this post is
+
+A copy-paste install matrix for the VC Deal Flow Signal MCP server in **seven** agent runtimes. One npm package — \`@gitdealflow/mcp-signal\` — installs in every one of them, exposing the same six read-only tools against the same weekly-refreshed dataset. No tutorial fluff, no theory, just snippets you paste into the right config.
+
+The full hub with status badges and per-runtime marketplace links lives at [/integrations/agent-runtimes](https://signals.gitdealflow.com/integrations/agent-runtimes). This post is the writeup.
+
+## The one-line install (works in every runtime)
+
+\`\`\`bash
+npx -y @gitdealflow/mcp-signal
+\`\`\`
+
+That's the entire MCP server — a single npm package, no env vars, no API key, no setup. Every runtime below wires \`npx -y @gitdealflow/mcp-signal\` into its own MCP host the same way Claude Desktop does.
+
+## Cursor
+
+Cursor has had native MCP support since v0.45. Open **Settings → MCP → +Add new MCP server** and paste:
+
+\`\`\`json
+{
+  "mcpServers": {
+    "vc-deal-flow-signal": {
+      "command": "npx",
+      "args": ["-y", "@gitdealflow/mcp-signal"]
+    }
+  }
+}
+\`\`\`
+
+Marketplace listing under review at [cursor.directory/plugins/vc-deal-flow-signal-mcp-1](https://cursor.directory/plugins/vc-deal-flow-signal-mcp-1).
+
+## Cline (VS Code)
+
+Open the **Cline panel → ⚙ → Edit Config** and paste:
+
+\`\`\`json
+{
+  "mcpServers": {
+    "vc-deal-flow-signal": {
+      "command": "npx",
+      "args": ["-y", "@gitdealflow/mcp-signal"],
+      "disabled": false,
+      "autoApprove": []
+    }
+  }
+}
+\`\`\`
+
+Restart Cline. The server appears in the MCP Servers list and the six tools become available immediately. Marketplace submission tracking at [cline/mcp-marketplace#1491](https://github.com/cline/mcp-marketplace/issues/1491).
+
+## Block Goose
+
+Goose is Block's open-source AI agent (43.7k stars on GitHub). The fastest install today — works without waiting for the marketplace PR to merge:
+
+\`\`\`bash
+goose session --with-extension "npx -y @gitdealflow/mcp-signal"
+\`\`\`
+
+Once [aaif-goose/goose#8974](https://github.com/aaif-goose/goose/pull/8974) merges, the entry also surfaces in [goose-docs.ai/extensions](https://goose-docs.ai/extensions) with a one-click install button.
+
+## OpenHands
+
+OpenHands has no MCP marketplace — every server is added per-user. Drop this at \`~/.openhands/mcp.json\`:
+
+\`\`\`json
+{
+  "mcpServers": {
+    "vc-deal-flow-signal": {
+      "command": "npx",
+      "args": ["-y", "@gitdealflow/mcp-signal"]
+    }
+  }
+}
+\`\`\`
+
+Or via the GUI: **Settings → MCP → Add Server**. CLI shortcut:
+
+\`\`\`bash
+openhands mcp add vc-deal-flow-signal --transport stdio npx -- -y @gitdealflow/mcp-signal
+\`\`\`
+
+## Aider (via mcpm-aider)
+
+Aider doesn't natively run MCP servers ([issue #2525](https://github.com/paul-gauthier/aider/issues/2525) is still open). The community bridge [lutzleonhardt/mcpm-aider](https://github.com/lutzleonhardt/mcpm-aider) wires them in via shell-out:
+
+\`\`\`bash
+npx -y mcpm-aider add vc-deal-flow-signal \\
+  --command "npx -y @gitdealflow/mcp-signal"
+\`\`\`
+
+This is the practical path until Aider merges native MCP support.
+
+## AiderDesk
+
+AiderDesk is the Electron wrapper around Aider with first-class MCP in Agent Mode. Open **Settings → Agent → MCP Servers → +Add** and paste:
+
+\`\`\`json
+{
+  "mcpServers": {
+    "vc-deal-flow-signal": {
+      "command": "npx",
+      "args": ["-y", "@gitdealflow/mcp-signal"]
+    }
+  }
+}
+\`\`\`
+
+The six tools become available in any Agent Mode task immediately.
+
+## Raycast
+
+Raycast has had a native MCP runtime since v1.98 (May 2025). Open **Manage MCP Servers → +Add Server** and paste:
+
+\`\`\`json
+{
+  "mcpServers": {
+    "vc-deal-flow-signal": {
+      "command": "npx",
+      "args": ["-y", "@gitdealflow/mcp-signal"]
+    }
+  }
+}
+\`\`\`
+
+Once [raycast/extensions#27618](https://github.com/raycast/extensions/pull/27618) merges, the server also installs via the in-Raycast MCP Registry browser without leaving the launcher.
+
+## What you can ask once it's installed
+
+Any agent runtime above can now answer:
+
+- "Who's trending in AI/ML this week?"
+- "Show me fintech startups by engineering velocity."
+- "Is Supabase accelerating?"
+- "How do you compute the breakout signal?"
+
+Each call returns a ranked list with commit-velocity changes, contributor counts, signal classification, GitHub URLs, and a citation block linking [signals.gitdealflow.com](https://signals.gitdealflow.com) and the SSRN preprint (abstract=6606558).
+
+## What's missing
+
+Continue.dev — their public hub registry was deprecated in May 2026 (HTTP 500 after the project's pivot to Continuous AI). Once a public registry comes back online, this post gets an update.
+
+## Where it goes next
+
+When the four pending marketplaces (Cursor, Cline, Goose, Raycast) flip from "in review" to "live," each runtime gains one-click install. Until then, the snippets above are the canonical install paths. Status of every submission is live at [/integrations/agent-runtimes](https://signals.gitdealflow.com/integrations/agent-runtimes).
+
+## How to cite
+
+The Data Nerd (2026). "Install VC Deal Flow Signal MCP in Any Agent Runtime." VC Deal Flow Signal blog. Retrieved from https://signals.gitdealflow.com/blog/install-vc-deal-flow-signal-mcp-in-any-agent-runtime.`,
+  },
 ];
 
 // Merge in the auto-generated signal report + signal of the week if they exist,
