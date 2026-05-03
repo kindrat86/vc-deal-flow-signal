@@ -1,0 +1,127 @@
+{
+  "markets": [
+    {
+      "slug": "series-a-race-2026",
+      "question": "Which of these 5 GitHub-flagged startups raises Series A first by Dec 31, 2026?",
+      "shortName": "Series A Race 2026",
+      "category": "Venture funding",
+      "openedOn": "2026-05-03",
+      "resolvesOn": "2026-12-31",
+      "resolverNote": "Resolves YES on the first publicly disclosed primary Series A round (Crunchbase, PitchBook, SEC Form D, or company press release) closing on or before 2026-12-31, 23:59 UTC. Bridge rounds, SAFEs, and convertible notes do not count. If multiple candidates close on the same day, the higher publicly disclosed round size wins; ties broken by earlier UTC time. NO if none qualify by deadline.",
+      "methodologyUrl": "/markets/methodology",
+      "sourceOfTruth": "GitHub commit velocity, contributor growth, and signal classification from VC Deal Flow Signal's Q2-2026 dataset (4,200+ tracked startups). Implied odds are model output, not investment advice.",
+      "candidates": [
+        {
+          "name": "zapplyjobs",
+          "displayName": "Zapply Jobs",
+          "websiteUrl": "https://zapply.jobs",
+          "githubUrl": "https://github.com/zapplyjobs",
+          "stage": "Pre-seed",
+          "sector": "AI & Machine Learning",
+          "sectorSlug": "ai-ml",
+          "signalType": "Engineering hiring burst",
+          "commitVelocity14d": 1694,
+          "commitVelocityChange": "+82%",
+          "contributors": 15,
+          "contributorGrowth": "+400%",
+          "newRepos": 0,
+          "impliedProbability": 0.46,
+          "rationale": "Highest composite signal in the early-stage cohort. Engineering hiring burst with contributor count rising from 3 → 15 (+400%) and commit velocity nearly tripled vs prior 14-day window. Strong primary-round candidate."
+        },
+        {
+          "name": "bakaphp",
+          "displayName": "Kanvas (BakaPHP)",
+          "websiteUrl": "https://kanvas.dev",
+          "githubUrl": "https://github.com/bakaphp",
+          "stage": "Seed",
+          "sector": "Social & Community",
+          "sectorSlug": "social-community",
+          "signalType": "Framework migration",
+          "commitVelocity14d": 598,
+          "commitVelocityChange": "+32%",
+          "contributors": 14,
+          "contributorGrowth": "+8%",
+          "newRepos": 0,
+          "impliedProbability": 0.22,
+          "rationale": "Sustained 14-contributor team with a framework-migration signature consistent with platform repositioning ahead of a priced round. Velocity above 500 commits/14d is unusual for the seed-stage class."
+        },
+        {
+          "name": "atrocore",
+          "displayName": "AtroCore",
+          "websiteUrl": "https://www.atrocore.com",
+          "githubUrl": "https://github.com/atrocore",
+          "stage": "Seed",
+          "sector": "Enterprise SaaS",
+          "sectorSlug": "enterprise-saas",
+          "signalType": "Framework migration",
+          "commitVelocity14d": 116,
+          "commitVelocityChange": "+38%",
+          "contributors": 18,
+          "contributorGrowth": "+4%",
+          "newRepos": 0,
+          "impliedProbability": 0.16,
+          "rationale": "PIM/MDM enterprise tool with the largest contributor base in the cohort (18). Framework migration plus +38% velocity change suggests preparation for an enterprise GTM push that often coincides with Series A timing."
+        },
+        {
+          "name": "OpenOLAT",
+          "displayName": "OpenOLAT",
+          "websiteUrl": "https://www.openolat.org",
+          "githubUrl": "https://github.com/OpenOLAT",
+          "stage": "Seed",
+          "sector": "EdTech",
+          "sectorSlug": "edtech",
+          "signalType": "Framework migration",
+          "commitVelocity14d": 102,
+          "commitVelocityChange": "-33%",
+          "contributors": 15,
+          "contributorGrowth": "+25%",
+          "newRepos": 0,
+          "impliedProbability": 0.10,
+          "rationale": "Velocity dipped this window but contributor count is rising (+25%) — classic post-burn restructuring pattern. Swiss commercial OSS LMS market is consolidating; raise plausible but not imminent."
+        },
+        {
+          "name": "Lonero-Team",
+          "displayName": "Lonero",
+          "websiteUrl": "https://lonero.org",
+          "githubUrl": "https://github.com/Lonero-Team",
+          "stage": "Seed",
+          "sector": "Enterprise SaaS",
+          "sectorSlug": "enterprise-saas",
+          "signalType": "Framework migration",
+          "commitVelocity14d": 32,
+          "commitVelocityChange": "+28%",
+          "contributors": 14,
+          "contributorGrowth": "+0%",
+          "newRepos": 0,
+          "impliedProbability": 0.06,
+          "rationale": "Smallest velocity in the cohort but positive change with stable 14-contributor team. Distributed-systems thesis remains a Series A magnet; included as the cohort's long-shot."
+        }
+      ],
+      "noResolution": {
+        "label": "None of the five raises by Dec 31, 2026",
+        "impliedProbability": 0.00
+      },
+      "externalMirrors": [
+        {
+          "platform": "Manifold Markets",
+          "status": "draft",
+          "playMoneyOnly": true,
+          "url": null,
+          "note": "Free play-money mirror, no KYC. Draft staged in distribution/markets/manifold-series-a-race-2026.md; user posts manually under @data_nerd handle."
+        },
+        {
+          "platform": "Polymarket",
+          "status": "not-applicable",
+          "url": null,
+          "note": "Real-money market creation requires UMA bond + 24h dispute window. Out of scope until a venue adopts the question; we do not propose markets where we hold the source-of-truth dataset (resolver conflict)."
+        },
+        {
+          "platform": "Kalshi",
+          "status": "submitted-as-suggestion",
+          "url": null,
+          "note": "Kalshi listings are exchange-curated. Suggestion form lives at kalshi.com/help; we do not list ourselves."
+        }
+      ]
+    }
+  ]
+}
