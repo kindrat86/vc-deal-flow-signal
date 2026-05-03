@@ -67,7 +67,7 @@ Same `npx -y @gitdealflow/mcp-signal` runs in every stdio runtime below. Per-run
 | Raycast | stdio | Manage MCP Servers → +Add Server → paste JSON; [raycast/extensions#27618](https://github.com/raycast/extensions/pull/27618) (PR open) |
 | Smithery one-click | streamable-http or stdio | [smithery.ai/server/kindrat86/vc-deal-flow-signal](https://smithery.ai/server/kindrat86/vc-deal-flow-signal) (Verified, 98/100) |
 | Mistral Le Chat | Streamable HTTP | Custom Connector at `https://signals.gitdealflow.com/api/mcp/rpc` |
-| ChatGPT GPT | OpenAPI Action | Search the **GitHub VC Signal** GPT in the GPT Store |
+| ChatGPT GPT | OpenAPI Action | [GitHub VC Signal GPT](https://chatgpt.com/g/g-69f76b9b3b308191b6948bff20c0fbf8-github-vc-signal) — no install, paid ChatGPT plan required |
 | Any other Streamable HTTP client | Streamable HTTP | `https://signals.gitdealflow.com/api/mcp/rpc` |
 | Any other stdio client | stdio | `npx -y @gitdealflow/mcp-signal` |
 
