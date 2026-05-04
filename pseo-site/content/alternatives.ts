@@ -269,6 +269,188 @@ export const alternatives: Alternative[] = [
     ],
     relatedSectors: ["ai-ml", "enterprise-saas", "dev-tools"],
   },
+  {
+    slug: "angellist",
+    competitor: "AngelList",
+    competitorUrl: "https://www.angellist.com",
+    title: "AngelList Alternative — VC Deal Flow Signal (2026)",
+    description:
+      "Looking for an AngelList alternative for sourcing pre-seed and seed startups? VC Deal Flow Signal surfaces breakout startups via GitHub engineering acceleration — 6-12 weeks before fundraise announcements.",
+    h1: "VC Deal Flow Signal vs AngelList",
+    tagline:
+      "An AngelList alternative for investors who want quantitative engineering signals, not founder-broadcast pitch decks.",
+    intro:
+      "AngelList (now Wellfound for talent, AngelList Venture for the syndicate side) became the canonical platform for early-stage US startup investing — founder profiles, syndicate deals, rolling funds, and a marketplace for pre-seed and seed allocations. It is built around founder-driven broadcast: companies opt into being discoverable, post pitch materials, and route allocations through the platform. VC Deal Flow Signal works in the opposite direction. Rather than waiting for founders to broadcast, we watch for engineering acceleration in public GitHub activity — commit velocity surges, contributor growth, infrastructure scaling — and surface technical startups while they are still heads-down building, weeks before any round is publicly listed.",
+    sections: [
+      {
+        heading: "Who lists vs who is found",
+        body: "AngelList is opt-in: founders create profiles, post fundraising milestones, and pitch syndicates. Discoverability favors companies that actively work the platform. VC Deal Flow Signal is observation-based: every technical startup with public GitHub activity is in the candidate pool whether they have a fundraising profile or not. You see the heads-down builders, not just the founders who have already started broadcasting.",
+      },
+      {
+        heading: "Signal lead time",
+        body: "AngelList signals fire when a founder lists a round — typically once they are actively raising and pitching syndicates. VC Deal Flow Signal fires on engineering acceleration, which historically precedes fundraise announcements by 6-12 weeks. The earliest signals on AngelList are still later than the earliest signals from public commit data.",
+      },
+      {
+        heading: "Geography and stage",
+        body: "AngelList Venture is strongest for US pre-seed and seed deals, with deep syndicate infrastructure in the Bay Area and NYC. VC Deal Flow Signal is geography-agnostic — any startup with public GitHub activity is in scope, including US, UK, EU, APAC, Canada, LATAM, and MENA. Stage skews seed-to-Series A based on engineering team size, but bootstrapped and pre-revenue companies are equally visible if their commit data shows acceleration.",
+      },
+      {
+        heading: "Allocation vs sourcing",
+        body: "AngelList Venture is also a transaction layer — you can actually allocate into syndicate deals on the platform. VC Deal Flow Signal is purely a sourcing and signal layer. You take the names we surface, do your own outreach, and allocate however you normally allocate. The two compose: source on Signal, transact on AngelList for the syndicates that fit your strategy.",
+      },
+      {
+        heading: "Pricing",
+        body: "AngelList is free for individual investors who join syndicates, with carry shared on allocations. Rolling funds and dedicated platforms have their own fee structures. VC Deal Flow Signal is EUR 9.97/month for the full Dashboard plus a free weekly Signal Report — flat-rate, no carry, no per-deal fees.",
+      },
+    ],
+    featureTable: {
+      tools: ["VC Deal Flow Signal", "AngelList"],
+      features: [
+        { feature: "Signal source", values: { "VC Deal Flow Signal": "GitHub engineering acceleration", "AngelList": "Founder-listed fundraising profiles" } },
+        { feature: "Lead time", values: { "VC Deal Flow Signal": "6-12 weeks pre-fundraise", "AngelList": "At fundraise (or later)" } },
+        { feature: "Coverage", values: { "VC Deal Flow Signal": "Technical startups globally", "AngelList": "US pre-seed/seed (strongest)" } },
+        { feature: "Discovery model", values: { "VC Deal Flow Signal": "Observation-based (always-on)", "AngelList": "Opt-in (founders list themselves)" } },
+        { feature: "Allocation infra", values: { "VC Deal Flow Signal": "Sourcing only", "AngelList": "Yes (syndicates, rolling funds)" } },
+        { feature: "Free tier", values: { "VC Deal Flow Signal": "Weekly Signal Report + sector pages", "AngelList": "Free for syndicate participation" } },
+        { feature: "Paid pricing", values: { "VC Deal Flow Signal": "EUR 9.97/mo (beta)", "AngelList": "Carry on allocations" } },
+        { feature: "Best for", values: { "VC Deal Flow Signal": "Pre-fundraise discovery on technical startups", "AngelList": "Allocating into seed-stage syndicates" } },
+      ],
+    },
+    verdict:
+      "AngelList and VC Deal Flow Signal are not direct substitutes — they sit at different points in the deal lifecycle. AngelList is a transaction and broadcast platform that activates when founders are ready to raise. VC Deal Flow Signal is a leading-signal source that activates 6-12 weeks earlier, before founders have started broadcasting. The natural workflow is to discover names on Signal, do outreach in your own channel, and use AngelList for syndicate transactions when the timing fits. They compose well at low combined cost.",
+    whenToPick: {
+      us: "You want to source technical startups early — before they show up on AngelList with an active raise. Your outreach is direct and your edge depends on lead time over a competitive process.",
+      them: "You participate in syndicates, allocate into rolling funds, or rely on the AngelList transaction stack. You are happy to find deals after founders have started actively raising.",
+    },
+    faqs: [
+      { question: "Is VC Deal Flow Signal an alternative to AngelList?", answer: "It is a complementary alternative for the sourcing layer, not the transaction layer. AngelList becomes useful once a founder is actively raising and listing on the platform. VC Deal Flow Signal surfaces technical startups via GitHub engineering signals 6-12 weeks before that point. Many investors use both: Signal for early discovery, AngelList for syndicate participation." },
+      { question: "How does VC Deal Flow Signal compare to AngelList for pre-seed sourcing?", answer: "AngelList shows you pre-seed companies that have opted into broadcasting. VC Deal Flow Signal shows you pre-seed companies with engineering acceleration whether they have started broadcasting or not — including bootstrapped builders, stealth teams, and companies still 6-12 weeks from announcing a round." },
+      { question: "Can I allocate into deals through VC Deal Flow Signal?", answer: "No. VC Deal Flow Signal is purely a sourcing and signal layer — we surface the names, you do your own outreach and allocate however you normally do. AngelList Venture is the right tool if you want a syndicate transaction stack." },
+      { question: "Which is better for global sourcing, AngelList or VC Deal Flow Signal?", answer: "VC Deal Flow Signal. AngelList is strongest for US pre-seed and seed deals. VC Deal Flow Signal is geography-agnostic — any startup with public GitHub activity is in scope, including US, UK, EU, APAC, and emerging markets." },
+    ],
+    relatedSectors: ["ai-ml", "developer-tools", "enterprise-saas"],
+  },
+  {
+    slug: "apollo-io",
+    competitor: "Apollo.io",
+    competitorUrl: "https://www.apollo.io",
+    title: "Apollo.io Alternative for Investor Outreach (2026)",
+    description:
+      "Looking for an Apollo.io alternative built for investor sourcing? VC Deal Flow Signal surfaces accelerating startups via GitHub engineering signals — not contact data, but the upstream signal that tells you who to enrich.",
+    h1: "VC Deal Flow Signal vs Apollo.io",
+    tagline:
+      "An upstream alternative to Apollo.io for investors. Find the right startups first; then enrich contacts with whatever data tool you already use.",
+    intro:
+      "Apollo.io is a sales engagement and contact-data platform — 270M+ contacts, company filters, email sequences, and a CRM. Investors and BD teams use it to enrich leads, build outbound lists, and run campaigns. It is excellent at the enrichment and engagement layer, but it does not tell you which companies are worth targeting in the first place. VC Deal Flow Signal addresses the layer above: which technical startups are accelerating right now, before any of the standard sales-data tools have categorized them as breakout. The two are complements, not direct substitutes.",
+    sections: [
+      {
+        heading: "Sourcing vs enrichment",
+        body: "Apollo's strength is contact data — emails, phones, LinkedIn URLs, headcount, technographics. Once you know which company you want to talk to, Apollo helps you reach the right person fast. VC Deal Flow Signal answers a different question: of the thousands of technical startups out there, which ones are accelerating engineering work right now, with the kind of momentum that historically precedes fundraise announcements by 6-12 weeks? The natural workflow is Signal first (which company), Apollo second (which person at that company).",
+      },
+      {
+        heading: "Signal type and lead time",
+        body: "Apollo's signals are funding events, headcount changes, technology stack changes, and news triggers — useful for outbound but generally lagging or coincident. VC Deal Flow Signal's signal is GitHub commit velocity acceleration, which is leading by 6-12 weeks on average. If your edge is timing — being one of the first investors in the room — Signal sits causally upstream of Apollo.",
+      },
+      {
+        heading: "Use case fit",
+        body: "Apollo is built for sales teams running thousands of touches per quarter. The interface, sequencing, and CRM features assume volume outbound. VC Deal Flow Signal is built for investors who place a small number of high-conviction bets each quarter and want quantitative signals to inform which companies even enter the funnel. Different tools for different volumes and different decisions.",
+      },
+      {
+        heading: "Pricing",
+        body: "Apollo offers a free tier with limited credits and paid plans starting at $49/user/month for Basic, scaling up to enterprise tiers. VC Deal Flow Signal is EUR 9.97/month for the full Dashboard with a free weekly Signal Report. Investors who want both run them stacked: Signal for sourcing decisions, Apollo for outbound when sourcing identifies a name worth enriching.",
+      },
+      {
+        heading: "Coverage",
+        body: "Apollo covers virtually every B2B company globally with contact data, regardless of stage or sector. VC Deal Flow Signal focuses on technical startups with public GitHub activity across about 20 sector clusters. For non-technical sectors, Apollo is the only relevant tool of the two; for technical-startup sourcing, Signal is the leading edge that Apollo cannot provide.",
+      },
+    ],
+    featureTable: {
+      tools: ["VC Deal Flow Signal", "Apollo.io"],
+      features: [
+        { feature: "Primary use case", values: { "VC Deal Flow Signal": "Investor sourcing (which company)", "Apollo.io": "Sales enrichment + outbound (which person)" } },
+        { feature: "Signal type", values: { "VC Deal Flow Signal": "GitHub engineering acceleration", "Apollo.io": "Funding, headcount, tech stack changes" } },
+        { feature: "Lead time", values: { "VC Deal Flow Signal": "6-12 weeks pre-fundraise", "Apollo.io": "Typically lagging or coincident" } },
+        { feature: "Contact data", values: { "VC Deal Flow Signal": "No (sourcing layer only)", "Apollo.io": "270M+ contacts" } },
+        { feature: "Sequencing/CRM", values: { "VC Deal Flow Signal": "No", "Apollo.io": "Yes (full sales engagement stack)" } },
+        { feature: "Free tier", values: { "VC Deal Flow Signal": "Weekly Signal Report + sector pages", "Apollo.io": "Limited credits" } },
+        { feature: "Paid pricing", values: { "VC Deal Flow Signal": "EUR 9.97/mo (beta)", "Apollo.io": "From $49/user/mo" } },
+        { feature: "Sector coverage", values: { "VC Deal Flow Signal": "Technical startups, 20 clusters", "Apollo.io": "All B2B sectors globally" } },
+      ],
+    },
+    verdict:
+      "Apollo.io and VC Deal Flow Signal solve different parts of the investor workflow. Apollo is the strongest tool for finding the right contact at a known company and running outbound at scale. VC Deal Flow Signal answers the upstream question — which technical startups are accelerating right now, before they even appear on most investors' lists. Most teams that use both run Signal as the sourcing input that feeds Apollo's enrichment and outreach pipeline.",
+    whenToPick: {
+      us: "Your bottleneck is figuring out which technical startups deserve outbound effort in the first place. You want a leading signal — engineering acceleration — that points at the right names before they trend.",
+      them: "You already know which companies you want to talk to and need a high-coverage contact-data and sequencing platform to reach them at scale. Or you cover non-technical sectors where GitHub signals do not apply.",
+    },
+    faqs: [
+      { question: "Is VC Deal Flow Signal a direct alternative to Apollo.io?", answer: "Not directly. Apollo is a sales engagement and contact-data platform; VC Deal Flow Signal is an investor sourcing-signal engine. They sit at different layers — Signal answers which company to target, Apollo answers which person to email. Many investors run both in sequence." },
+      { question: "Can I use VC Deal Flow Signal to enrich contacts the way Apollo does?", answer: "No. VC Deal Flow Signal does not provide contact data. It identifies technical startups showing engineering acceleration; you take those names and enrich them in whatever contact-data tool you already use, including Apollo, Clearbit, or LinkedIn Sales Navigator." },
+      { question: "Which is cheaper, Apollo.io or VC Deal Flow Signal?", answer: "VC Deal Flow Signal Dashboard is EUR 9.97/month vs Apollo Basic at $49/user/month. They solve different problems though, so cost comparison is not apples-to-apples — most investors use both stacked, with Signal as the sourcing layer and Apollo as the enrichment and outbound layer." },
+      { question: "What is the workflow for using VC Deal Flow Signal and Apollo.io together?", answer: "Use VC Deal Flow Signal weekly to identify accelerating technical startups (the sourcing decision). Push the company names into Apollo to enrich founder contact data, build sequences, and run outreach at scale. Signal feeds Apollo; Apollo turns Signal output into measurable outbound activity." },
+    ],
+    relatedSectors: ["enterprise-saas", "ai-ml", "developer-tools"],
+  },
+  {
+    slug: "tracxn",
+    competitor: "Tracxn",
+    competitorUrl: "https://tracxn.com",
+    title: "Tracxn Alternative for Early-Stage Deal Flow (2026)",
+    description:
+      "A Tracxn alternative for investors who want leading engineering signals instead of post-funding sector reports. VC Deal Flow Signal surfaces breakout startups 6-12 weeks before fundraise announcements.",
+    h1: "VC Deal Flow Signal vs Tracxn",
+    tagline:
+      "A leading-signal alternative to Tracxn. Engineering acceleration first; sector report context second.",
+    intro:
+      "Tracxn is a global startup database and sector-research platform with deep coverage across 350+ feeds — funding rounds, founder backgrounds, geographic clusters, and curated sector reports. It is widely used for market mapping, competitive landscape analysis, and post-funding due diligence. The signal model is fundamentally lagging: Tracxn excels at telling you what already happened in a market, organized for analysts. VC Deal Flow Signal sits ahead of that lag — weekly leading signals on engineering acceleration that historically precede fundraise announcements by 6-12 weeks.",
+    sections: [
+      {
+        heading: "Database depth vs signal lead time",
+        body: "Tracxn's strength is depth: comprehensive profiles, sector taxonomies, structured competitive analysis, and exportable lists. The trade-off is lead time — Tracxn updates after rounds close, news drops, or analyst revisions. VC Deal Flow Signal is the opposite stack: less depth per company, but a real-time leading signal you cannot get from any post-funding database.",
+      },
+      {
+        heading: "Sector reports vs sector rankings",
+        body: "Tracxn ships analyst-curated sector reports with market maps, competitive landscapes, and funding totals. VC Deal Flow Signal ships sector ranking pages — for each of about 20 sectors, the live ranking of startups by engineering acceleration with commit velocity data. Different research artifacts: Tracxn for the static state of the market, Signal for the dynamic state of engineering work in that market.",
+      },
+      {
+        heading: "Geography",
+        body: "Tracxn has strong coverage in India, Southeast Asia, MENA, and emerging markets where their team has built dedicated coverage feeds. VC Deal Flow Signal is geography-agnostic but biased toward markets with high public-GitHub usage — strongest in US, UK, EU, with growing coverage in APAC, Canada, LATAM, and MENA. For India and SEA specifically, Tracxn's analyst-curated coverage is broader; Signal complements it with the engineering-velocity layer Tracxn does not measure.",
+      },
+      {
+        heading: "Pricing",
+        body: "Tracxn is enterprise-priced — annual contracts in the low five figures depending on seats and coverage. VC Deal Flow Signal is EUR 9.97/month for the full Dashboard with a free weekly Signal Report. Investors using both run Signal as a low-cost weekly sourcing input that points at the names worth pulling Tracxn profiles for.",
+      },
+      {
+        heading: "Coverage type",
+        body: "Tracxn covers all sectors with analyst-curated depth. VC Deal Flow Signal covers technical startups with public GitHub activity across about 20 sector clusters. For non-technical or services-heavy sectors, Tracxn is the only relevant tool of the two; for technical startup sourcing, Signal is a leading edge Tracxn cannot match.",
+      },
+    ],
+    featureTable: {
+      tools: ["VC Deal Flow Signal", "Tracxn"],
+      features: [
+        { feature: "Signal type", values: { "VC Deal Flow Signal": "Engineering acceleration (leading)", "Tracxn": "Database + sector reports (lagging)" } },
+        { feature: "Lead time", values: { "VC Deal Flow Signal": "6-12 weeks pre-fundraise", "Tracxn": "Post-event (analyst-curated)" } },
+        { feature: "Coverage", values: { "VC Deal Flow Signal": "Technical startups globally, 20 clusters", "Tracxn": "All sectors, strong in IN/SEA/MENA" } },
+        { feature: "Research artifacts", values: { "VC Deal Flow Signal": "Sector rankings, weekly Signal Report", "Tracxn": "Sector reports, market maps" } },
+        { feature: "Free tier", values: { "VC Deal Flow Signal": "Weekly report + sector pages + API", "Tracxn": "Limited" } },
+        { feature: "Paid pricing", values: { "VC Deal Flow Signal": "EUR 9.97/mo (beta)", "Tracxn": "Enterprise (annual)" } },
+        { feature: "Best for", values: { "VC Deal Flow Signal": "Early sourcing, technical startups", "Tracxn": "Market mapping, due diligence depth" } },
+      ],
+    },
+    verdict:
+      "Tracxn is a deep, analyst-curated startup database — the right tool when you need market maps, competitive landscapes, and post-funding context across all sectors and emerging markets. VC Deal Flow Signal sits at a different layer: weekly leading signals on engineering acceleration in technical startups, 6-12 weeks before fundraise announcements. Investors who can afford both run them in sequence: Signal as the early sourcing input, Tracxn as the depth and context layer once a name is worth investigating.",
+    whenToPick: {
+      us: "You source technical startups and your edge is timing. You want a quantitative leading signal — engineering acceleration — at a price that does not require an annual enterprise contract.",
+      them: "You need analyst-curated sector reports, broad geographic coverage including India and SEA, and exportable competitive landscape data. Your workflow is research-heavy and post-funding context-rich.",
+    },
+    faqs: [
+      { question: "Is VC Deal Flow Signal a Tracxn alternative?", answer: "It is a leading-signal complement to Tracxn rather than a depth-database replacement. Tracxn shines at sector reports, market maps, and post-funding due diligence depth. VC Deal Flow Signal shines at the upstream signal — engineering acceleration that precedes fundraise announcements by 6-12 weeks. Many investors use both: Signal for sourcing, Tracxn for context." },
+      { question: "How is VC Deal Flow Signal different from Tracxn for market research?", answer: "Tracxn produces analyst-curated sector reports — comprehensive snapshots of who is in a market and what they raised. VC Deal Flow Signal produces live sector rankings — for each of about 20 sectors, the current state of engineering acceleration across the startups in that market. Tracxn answers what is in the market; Signal answers which startups in that market are accelerating right now." },
+      { question: "Is VC Deal Flow Signal cheaper than Tracxn?", answer: "Yes — significantly. Tracxn is enterprise-priced with annual contracts in the low five figures. VC Deal Flow Signal Dashboard is EUR 9.97/month during beta, with a free weekly Signal Report and free sector ranking pages. Solo investors and small funds can use Signal at near-zero cost as a weekly sourcing input." },
+      { question: "Which is better for India and SEA deal flow?", answer: "Tracxn has stronger analyst-curated coverage of India, Southeast Asia, and MENA — it was founded in Bangalore and has dedicated coverage feeds for those regions. VC Deal Flow Signal complements that with engineering-velocity data on technical startups in the same regions, but if you need broad sector coverage in IN/SEA, Tracxn's database is the better starting point." },
+    ],
+    relatedSectors: ["enterprise-saas", "ai-ml", "fintech"],
+  },
 ];
 
 export function getAlternative(slug: string): Alternative | undefined {

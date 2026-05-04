@@ -391,6 +391,114 @@ export const comparisons: Comparison[] = [
       { question: "What is the best deal flow tool stack for a VC firm?", answer: "The optimal stack combines PitchBook (financial data, due diligence), VC Deal Flow Signal (real-time engineering acceleration, earliest signal), Harmonic.ai (AI team pattern matching), and Affinity (relationship CRM). For firms on a budget, VC Deal Flow Signal + Crunchbase free + Affinity provides strong coverage at a fraction of the cost." },
     ],
   },
+  {
+    slug: "best-deal-flow-tools-emerging-managers-2026",
+    title: "Best Deal Flow Tools for Emerging Managers (2026)",
+    description:
+      "Comparison of deal flow tools for emerging managers and solo GPs running their first or second fund: VC Deal Flow Signal, Crunchbase, Affinity, Dealroom. Pricing, lead time, and the lean stack that wins.",
+    h1: "Best Deal Flow Tools for Emerging Managers",
+    intro:
+      "Emerging managers — solo GPs, first-time funds, scout managers, and roll-out vehicles — face a structural disadvantage on sourcing: large funds use $20K+/year platforms (PitchBook, CB Insights, Harmonic) that emerging managers cannot afford. The good news in 2026 is that a small set of tools, combined intentionally, can match large-fund sourcing capability for under $200/month total. Here is the lean stack and why each piece earns its slot.",
+    sections: [
+      {
+        heading: "The constraint that defines the stack",
+        body: "An emerging manager has a fixed budget and a fixed amount of time. Tools that require analyst staffing or six-figure annual commits are ruled out. The right stack is high-leverage, low-touch, and biased toward signals that compress decision time — because the manager has fewer hours to do diligence than a fund with associates and analysts. Every tool should answer 'why am I paying for this seat versus learning the same thing for free?'",
+      },
+      {
+        heading: "VC Deal Flow Signal — the leading-signal layer",
+        body: "VC Deal Flow Signal sits at the front of the funnel: weekly GitHub engineering acceleration signals across about 20 technical sectors. The signal precedes fundraise announcements by 6-12 weeks on average, which is critical for emerging managers competing with large funds for allocation. Free Signal Report (top breakouts weekly) and EUR 9.97/month Dashboard (full ranking, sector filters, geo filters). At that price point, it is functionally a free addition to any sourcing workflow.",
+      },
+      {
+        heading: "Crunchbase Pro — the verification layer",
+        body: "Crunchbase Pro at $49/month gives emerging managers what they actually need from Crunchbase: company verification, basic funding history, advanced search, and unlimited profile views. Pro skips the enterprise pricing tier that most large funds pay for and still covers 95% of what an emerging manager actually does on Crunchbase day-to-day. Use it as the verification layer downstream of Signal — once a name is interesting, pull the funding context.",
+      },
+      {
+        heading: "Affinity Free or HubSpot Free — the CRM layer",
+        body: "Affinity is the relationship-intelligence CRM most VCs use, but its pricing is per-seat and not aimed at solo GPs. Emerging managers typically run on Affinity's free trial during a fund's first six months and then either convert to a paid seat once the AUM justifies it, or run on HubSpot Free / Notion / Airtable / Pipedrive's lowest tier. The CRM is critical (you cannot run deal flow without it) but the choice is not particularly fund-defining at the emerging-manager scale.",
+      },
+      {
+        heading: "Dealroom Community Tier — the European coverage layer",
+        body: "Dealroom's free community tier gives meaningful European coverage for free. For emerging managers who write checks into European startups, this is a no-brainer add-on. The free tier is limited (no exports, limited search) but covers individual lookups and casual sector browsing, which is what an emerging manager actually does on Dealroom.",
+      },
+      {
+        heading: "What emerging managers should NOT pay for",
+        body: "PitchBook ($20K+/year), CB Insights ($35K+/year), and Harmonic.ai (enterprise annual) are designed for funds with analyst staffing and AUM that justifies the cost. For an emerging manager, the seat cost rarely pays back relative to running Signal + Crunchbase Pro + free Dealroom. Wait until fund 2 or 3 to add the enterprise tools, and only when a specific use case (LP reporting, fundraising market mapping) genuinely requires their depth.",
+      },
+    ],
+    featureTable: {
+      tools: ["VC Deal Flow Signal", "Crunchbase Pro", "Dealroom Free", "Affinity Trial"],
+      features: [
+        { feature: "Layer", values: { "VC Deal Flow Signal": "Leading signals", "Crunchbase Pro": "Verification + history", "Dealroom Free": "European coverage", "Affinity Trial": "CRM + relationships" } },
+        { feature: "Lead time", values: { "VC Deal Flow Signal": "6-12 weeks pre-fundraise", "Crunchbase Pro": "Post-fundraise", "Dealroom Free": "Post-fundraise", "Affinity Trial": "Network-driven" } },
+        { feature: "Pricing", values: { "VC Deal Flow Signal": "EUR 9.97/mo", "Crunchbase Pro": "$49/mo", "Dealroom Free": "Free", "Affinity Trial": "Trial then per-seat" } },
+        { feature: "Coverage", values: { "VC Deal Flow Signal": "Technical startups, 20 sectors", "Crunchbase Pro": "1M+ companies global", "Dealroom Free": "European startups", "Affinity Trial": "Your network" } },
+        { feature: "Best for", values: { "VC Deal Flow Signal": "Pre-fundraise sourcing", "Crunchbase Pro": "Verification + due diligence", "Dealroom Free": "European deals", "Affinity Trial": "Pipeline management" } },
+      ],
+    },
+    verdict:
+      "The lean emerging-manager stack in 2026 is VC Deal Flow Signal (leading sourcing signal, EUR 9.97/mo) + Crunchbase Pro (verification, $49/mo) + Dealroom free tier (European coverage, free) + Affinity trial or HubSpot Free (CRM). Total monthly cost is under $80 for tools that genuinely match large-fund sourcing capability for the workflows emerging managers actually run. Add enterprise tools only when fund AUM and analyst staffing justify them — typically fund 2 or 3, not fund 1.",
+    relatedSectors: ["ai-ml", "developer-tools", "enterprise-saas"],
+    faqs: [
+      { question: "What is the best deal flow tool stack for emerging managers in 2026?", answer: "VC Deal Flow Signal (EUR 9.97/mo) for leading engineering signals + Crunchbase Pro ($49/mo) for verification + Dealroom free tier for European coverage + Affinity trial or HubSpot Free for CRM. Total under $80/month with capability that matches what large funds get from $20K+/year platforms for the workflows emerging managers actually run." },
+      { question: "Should an emerging manager pay for PitchBook?", answer: "Usually no. PitchBook starts at $20,000+/year and is designed for funds with analyst staffing. Emerging managers can match the sourcing capability that matters with VC Deal Flow Signal + Crunchbase Pro + free Dealroom for under $80/month. Wait for fund 2 or 3 before adding PitchBook, and only when LP reporting or fundraising market-mapping genuinely requires its depth." },
+      { question: "How does VC Deal Flow Signal help emerging managers compete with large funds?", answer: "Lead time. VC Deal Flow Signal surfaces engineering acceleration 6-12 weeks before fundraise announcements. Emerging managers cannot outspend large funds on enterprise tools, but they can be faster — Signal compresses the time between 'startup is interesting' and 'I am in the room before the round is competitive.' That is the structural advantage Signal provides." },
+      { question: "Do emerging managers need Affinity?", answer: "A CRM is essential; Affinity specifically is not. Affinity is the default for established VCs but its per-seat pricing is built for funds with associates. Emerging managers can run on Affinity's free trial through fund 1, then convert when AUM justifies it. Free alternatives like HubSpot Free, Notion, or Airtable cover the same workflow at lower cost during fund 1." },
+    ],
+  },
+  {
+    slug: "vc-tech-stack-essentials-2026",
+    title: "VC Tech Stack Essentials (2026): Sourcing, CRM, Diligence, Reporting",
+    description:
+      "The complete VC tech stack for 2026 across sourcing (VC Deal Flow Signal, Harmonic), CRM (Affinity), data (PitchBook, Crunchbase), portfolio reporting, and LP comms. What every VC needs at each stage.",
+    h1: "The 2026 VC Tech Stack",
+    intro:
+      "The 2026 VC stack has consolidated into a small number of dominant tools per layer, with one or two emerging insurgents reshaping each layer. This is the pragmatic stack: which tools matter, which layers are insurgent, and which combinations actually work. Built for solo GPs through institutional funds.",
+    sections: [
+      {
+        heading: "Sourcing layer (top of funnel)",
+        body: "The 2026 sourcing layer has stratified by signal type. PitchBook and Crunchbase remain the lagging-but-comprehensive databases — necessary for verification, not sufficient for early signal. Harmonic.ai and AI team-matching tools occupy the team-pattern niche at enterprise pricing. The insurgent layer is signal-driven: VC Deal Flow Signal for GitHub engineering acceleration (6-12 weeks pre-fundraise lead time), Forager.ai for web/social signals, Specter for product-momentum scraping. Every modern fund runs at least one signal-driven tool alongside the databases.",
+      },
+      {
+        heading: "CRM and pipeline (middle of funnel)",
+        body: "Affinity dominates VC CRM with relationship intelligence and email/calendar parsing. Salesforce remains common at larger funds with internal sales-ops support. Notion, Airtable, and HubSpot Free fill the gap for emerging managers and seed funds before AUM justifies Affinity. The choice here is less fund-defining than the sourcing or diligence layers — pick the one your team actually uses, then standardize.",
+      },
+      {
+        heading: "Data and verification layer",
+        body: "PitchBook is the institutional default for funding history, valuations, cap tables, and LP reporting data. CB Insights adds Mosaic Score and analyst-curated market intelligence at a higher tier. Crunchbase Pro at $49/month covers 95% of what emerging managers need from this layer. Tracxn adds depth in India, SEA, and MENA where Western databases under-cover. Most funds run one comprehensive database plus one regional specialist if they invest globally.",
+      },
+      {
+        heading: "Diligence and portfolio reporting",
+        body: "DocSend and Dropbox dominate due-diligence document workflow. Carta is the cap-table standard for portfolio companies. Visible.vc and Tactyc cover portfolio reporting and LP comms. For technical-startup diligence specifically, VC Deal Flow Signal serves a second use case post-investment — tracking engineering velocity of portfolio companies as a leading indicator of execution health.",
+      },
+      {
+        heading: "Communications and LP relations",
+        body: "Front, Superhuman, and increasingly Notion AI dominate inbound and team comms. AngelList Venture handles syndicate and rolling fund infrastructure. Carta LP and Aduro cover LP onboarding and reporting at the institutional layer. None of these are fund-defining — choose what your team adopts, optimize for inbox handling speed.",
+      },
+      {
+        heading: "The minimum viable stack (under $200/month)",
+        body: "For an emerging manager: VC Deal Flow Signal (EUR 9.97/mo) + Crunchbase Pro ($49/mo) + HubSpot Free (CRM) + Notion (diligence + LP comms) + Carta Free (cap tables for portfolio). Total under $80/month for everything except PE-grade depth. Adds: Affinity once fund 2 closes, PitchBook once analyst staffing exists, CB Insights only if market-mapping is core to LP-pitch.",
+      },
+    ],
+    featureTable: {
+      tools: ["Sourcing", "CRM", "Data", "Diligence"],
+      features: [
+        { feature: "Institutional default", values: { "Sourcing": "Harmonic + PitchBook + VC Deal Flow Signal", "CRM": "Affinity", "Data": "PitchBook + CB Insights", "Diligence": "DocSend + Carta" } },
+        { feature: "Emerging manager", values: { "Sourcing": "VC Deal Flow Signal + Crunchbase Pro", "CRM": "HubSpot Free or Affinity Trial", "Data": "Crunchbase Pro + Dealroom Free", "Diligence": "Notion + Dropbox" } },
+        { feature: "Insurgent 2026", values: { "Sourcing": "VC Deal Flow Signal (engineering signals)", "CRM": "Notion AI for VC", "Data": "Tracxn (regional depth)", "Diligence": "AI diligence agents" } },
+        { feature: "Cost (institutional)", values: { "Sourcing": "$50K+/yr combined", "CRM": "Per-seat enterprise", "Data": "$20K-$50K+/yr", "Diligence": "$2K-$10K/yr" } },
+        { feature: "Cost (emerging manager)", values: { "Sourcing": "<$60/mo", "CRM": "Free or <$50/mo", "Data": "<$50/mo", "Diligence": "Free or <$30/mo" } },
+      ],
+    },
+    verdict:
+      "The 2026 VC stack is no longer dominated by a single platform. Sourcing has bifurcated into databases (PitchBook, Crunchbase) and signal engines (VC Deal Flow Signal, Harmonic, Forager). CRM remains Affinity-dominant but emerging managers run lean alternatives. The stack-defining choice in 2026 is which signal engine sits at the front of your funnel — that decision compounds over a fund's life because lead time on sourcing is the single hardest metric to backfill once you commit to a workflow.",
+    relatedSectors: ["enterprise-saas", "ai-ml", "developer-tools"],
+    faqs: [
+      { question: "What is the modern VC tech stack in 2026?", answer: "Sourcing layer (signal engines like VC Deal Flow Signal + databases like PitchBook), CRM (Affinity for institutional, HubSpot Free for emerging), data and verification (PitchBook, Crunchbase, Tracxn), diligence (DocSend, Notion, Carta), and LP comms (Visible.vc, Carta LP). The stack has stratified by tool layer rather than consolidated into one platform." },
+      { question: "What is the cheapest functional VC tech stack?", answer: "Under $80/month: VC Deal Flow Signal (EUR 9.97/mo) for sourcing signals + Crunchbase Pro ($49/mo) for verification + Dealroom free tier for European coverage + HubSpot Free or Notion for CRM and diligence + Carta Free for cap tables. Sufficient for fund 1 emerging managers; expand the stack only when fund 2 AUM justifies enterprise tools." },
+      { question: "Which sourcing tool gives the earliest signal?", answer: "VC Deal Flow Signal historically precedes fundraise announcements by 6-12 weeks via GitHub engineering acceleration data. Harmonic.ai catches teams at incorporation but with high uncertainty. Crunchbase and PitchBook are lagging by definition. The earliest reliable signal in the 2026 stack is engineering acceleration, with team-pattern matching as a complementary earlier-but-noisier source." },
+      { question: "Do small funds need PitchBook?", answer: "Usually no, especially in fund 1. PitchBook starts at $20,000+/year and is built for institutional workflows with analyst staffing. Crunchbase Pro at $49/month covers most emerging-manager workflows. Add PitchBook in fund 2 or 3 when LP reporting depth or detailed market-mapping genuinely requires it." },
+    ],
+  },
 ];
 
 // ---------------------------------------------------------------------------
