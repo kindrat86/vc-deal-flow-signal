@@ -433,6 +433,41 @@ export const competitorVsPairs: CompetitorVs[] = [
     verdict:
       "CB Insights is enterprise research and analyst-led market mapping with proprietary Mosaic scoring. Forager.ai is leading public-traction signals (web, social, hiring) at individual-investor pricing. Different categories, different buyers, different freshness profiles. Forager is a strict sourcing tool; CB Insights is a strategy and market-research tool. They rarely substitute for each other; they compose at firms with both research and proactive-sourcing functions.",
   },
+  {
+    slug: "affinity-vs-dealroom",
+    a: "affinity",
+    b: "dealroom",
+    verdict:
+      "Affinity is a relationship-intelligence CRM for the deals already on your team's radar. Dealroom is a curated European startup database with deep sector taxonomy. They are complementary not substitutable: Affinity is workflow infrastructure, Dealroom is research infrastructure. Most European-focused funds run both. Neither is a leading signal on individual companies — both lag the engineering acceleration that precedes a fundraise.",
+  },
+  {
+    slug: "affinity-vs-specter",
+    a: "affinity",
+    b: "specter",
+    verdict:
+      "Affinity is a relationship-CRM that surfaces deals where your team already has a network thread. Specter is a leading public-traction tool that surfaces deals before any thread exists. Different positions in the funnel — Specter at the top (sourcing layer), Affinity at the middle (workflow layer). Best paired: Specter to put new candidates on the radar, Affinity to manage the relationship and outreach. Different buying centers and pricing tiers too.",
+  },
+  {
+    slug: "cb-insights-vs-dealroom",
+    a: "cb-insights",
+    b: "dealroom",
+    verdict:
+      "CB Insights is enterprise research with analyst reports, market maps, and Mosaic scoring across all sectors globally. Dealroom is a curated startup database with deep European coverage and granular sector taxonomy. Different strengths: CB Insights for thesis-building and corporate-strategy work, Dealroom for European portfolio and sector mapping. Many large institutional funds run both at significant combined annual cost; smaller funds usually pick one.",
+  },
+  {
+    slug: "harmonic-ai-vs-cb-insights",
+    a: "harmonic-ai",
+    b: "cb-insights",
+    verdict:
+      "Harmonic.ai is a leading-signal proactive-sourcing engine using AI team-pattern matching at incorporation. CB Insights is a research-led platform built around analyst reports, market maps, and Mosaic scoring. Both enterprise-priced. Most institutional firms layer them: Harmonic for proactive discovery of accelerating teams, CB Insights for thesis-building and sector context. They answer different questions and overlap minimally.",
+  },
+  {
+    slug: "dealroom-vs-specter",
+    a: "dealroom",
+    b: "specter",
+    verdict:
+      "Dealroom is a curated post-event startup database with strong European and sector-taxonomy depth. Specter is a leading public-traction signal tool tracking web, hiring, and product growth across all sectors. They sit at opposite ends of the deal-flow timeline: Specter surfaces candidates before the round, Dealroom records them after. Compose well for European-focused funds wanting both leading and reference layers.",
+  },
 ];
 
 export function getCompetitorVsPair(slug: string): CompetitorVs | undefined {
