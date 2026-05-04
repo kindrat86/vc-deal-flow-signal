@@ -47,13 +47,21 @@ Free in perpetuity. Manifest V3, ~30 KB.
 ### Website (Store listing → Website)
 
 ```
-https://gitdealflow.com/chrome
+https://gitdealflow.com
 ```
+*Use the apex homepage — CWS validator wants a domain root, not a deep path. `/chrome`, `/integrations`, etc. trigger "link is not reachable" even when HTTP 200.*
 
-### Support URL
+### Support link
 
 ```
-https://signals.gitdealflow.com/integrations
+mailto:signal@gitdealflow.com
+```
+*`mailto:` always passes CWS validation — there's no reachability check possible. Avoid HTTP support URLs unless they're a dedicated `/support` or `/contact` page that CWS recognizes.*
+
+### Privacy policy
+
+```
+https://gitdealflow.com/privacy
 ```
 
 ---
@@ -100,13 +108,21 @@ Free in perpetuity. Manifest V3, ~16 KB.
 ### Website (Store listing → Website)
 
 ```
-https://gitdealflow.com/chrome
+https://gitdealflow.com
 ```
+*Use the apex homepage — CWS validator wants a domain root, not a deep path. `/chrome`, `/integrations`, etc. trigger "link is not reachable" even when HTTP 200.*
 
-### Support URL
+### Support link
 
 ```
-https://signals.gitdealflow.com/integrations
+mailto:signal@gitdealflow.com
+```
+*`mailto:` always passes CWS validation — there's no reachability check possible. Avoid HTTP support URLs unless they're a dedicated `/support` or `/contact` page that CWS recognizes.*
+
+### Privacy policy
+
+```
+https://gitdealflow.com/privacy
 ```
 
 ---
