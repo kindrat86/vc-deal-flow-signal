@@ -53,6 +53,15 @@ export const metadata: Metadata = {
       "ar_SA",
       "hi_IN",
     ],
+    images: [
+      {
+        url: "https://signals.gitdealflow.com/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "VC Deal Flow Signal — Startup Engineering Acceleration Tracker",
+        type: "image/png",
+      },
+    ],
   },
   // hreflang languages are emitted via <HreflangLinks/> JSX per page (Next 16
   // silently drops metadata.alternates.languages here). See lib/hreflang.ts +
@@ -91,6 +100,7 @@ export const metadata: Metadata = {
     title: "VC Deal Flow Signal — GitHub Momentum Tracking for Investors",
     description:
       "GitHub commit-velocity tracking across 20 startup sectors. Code-side momentum (not accelerator programs) — surface venture-backed startups 3–6 weeks before fundraise.",
+    images: ["https://signals.gitdealflow.com/opengraph-image"],
   },
   verification: {
     google: "s-WDDQiO4arDn993LDiErqQeGIhlIgRZq67kg-NC5k8",
