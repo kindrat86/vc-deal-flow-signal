@@ -37,11 +37,13 @@ export async function generateMetadata({
       title,
       description,
       type: "article",
+      images: ["/opengraph-image"],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
+      images: ["/opengraph-image"],
     },
     alternates: {
       canonical: `/startups-to-watch/geo/${slug}`,
