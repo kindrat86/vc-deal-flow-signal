@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { alternatives, getAlternative, getAllAlternativeSlugs, type AlternativeFAQ } from "@/content/alternatives";
 import { useCases } from "@/content/use-cases";
+import { competitorVsPairs, competitors } from "@/content/competitor-vs";
 import { getAllSectors, getCurrentPeriod, getDataLastModified } from "@/lib/data";
 
 interface PageProps {
@@ -354,6 +355,44 @@ export default async function AlternativePage({ params }: PageProps) {
             </div>
           </section>
         )}
+
+        {(() => {
+          const headToHeadPairs = competitorVsPairs
+            .filter((p) => p.a === slug || p.b === slug)
+            .slice(0, 6);
+          if (headToHeadPairs.length === 0) return null;
+          return (
+            <section className="mb-12" aria-label="Head-to-head comparisons">
+              <h2 className="text-lg font-semibold text-gray-100 mb-4">
+                {alt.competitor} compared head-to-head
+              </h2>
+              <p className="text-gray-400 text-sm leading-relaxed mb-4">
+                See how {alt.competitor} stacks up against the rest of the deal-flow stack.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {headToHeadPairs.map((p) => {
+                  const a = competitors[p.a];
+                  const b = competitors[p.b];
+                  if (!a || !b) return null;
+                  return (
+                    <Link
+                      key={p.slug}
+                      href={`/vs/${p.slug}`}
+                      className="group block rounded-lg border border-slate-800 bg-slate-900 p-4 hover:border-slate-600 transition-all"
+                    >
+                      <h3 className="text-gray-200 font-medium text-sm group-hover:text-sky-400 transition-colors mb-1">
+                        {a.name} vs {b.name}
+                      </h3>
+                      <p className="text-gray-400 text-xs line-clamp-2">
+                        {p.verdict}
+                      </p>
+                    </Link>
+                  );
+                })}
+              </div>
+            </section>
+          );
+        })()}
 
         <section className="mb-12" aria-label="Other alternatives">
           <h2 className="text-lg font-semibold text-gray-100 mb-4">

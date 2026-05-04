@@ -64,6 +64,55 @@ const standaloneFaqs: FAQEntry[] = [
     source: "Comparison",
     sourceHref: "/compare/github-signals-vs-crunchbase-alerts",
   },
+  {
+    question: "How do VCs find startups before they raise?",
+    answer:
+      "Most VCs use a stack of three layers: a relationship-CRM layer (Affinity for the deals already on the radar), a research-database layer (PitchBook or Crunchbase for confirmed funding context), and a leading-signal layer for proactive sourcing. The leading layer is where alternative data products fit. For technical startups, the cleanest leading signal is GitHub commit velocity, contributor delta, and repository expansion — measured directly on public GitHub APIs and historically preceding fundraise announcements by 21 to 47 days across 219 confirmed rounds in our published panel.",
+    source: "Methodology",
+    sourceHref: "/methodology",
+  },
+  {
+    question: "What is alternative data in venture capital?",
+    answer:
+      "Alternative data is any signal investors use to evaluate or source startups outside of the curated funding databases (PitchBook, CB Insights, Crunchbase). Common categories include web traffic (Specter, Forager), hiring growth (LinkedIn-based tools), and engineering activity (GitHub-derived signals like ours). The shared logic is that public traction signals appear before fundraise announcements, giving investors a lead-time edge over reference databases. The trade-off is more noise per signal, requiring sector-aware interpretation.",
+    source: "Methodology",
+    sourceHref: "/methodology",
+  },
+  {
+    question: "Can I see GitHub commit velocity for free?",
+    answer:
+      "Yes. The free weekly Signal Report at gitdealflow.com delivers the top 5 startups ranked by GitHub commit-velocity acceleration each Sunday. The full open dataset of all 4,200 startup organizations and their weekly velocity scores is also published openly on Zenodo under CC BY 4.0. Methodology is documented in a peer-style paper on SSRN. No paywall, no signup required to read the dataset or paper.",
+    source: "Pricing",
+    sourceHref: "https://gitdealflow.com/#signup",
+  },
+  {
+    question: "How accurate are GitHub signals for predicting fundraises?",
+    answer:
+      "Across 219 confirmed fundraise rounds in our public panel, the engineering acceleration signal preceded the announcement by 21 to 47 days, with a median of 47 days. The cleanest predictor is contributor delta: 78 percent of those rounds showed a 30 percent or higher contributor jump in the 60 days before announcement. The signal is most reliable for technical startups with public GitHub activity (AI/ML, dev tools, infrastructure, enterprise SaaS) and weakest for pre-MVP teams (private repos) and non-technical sectors.",
+    source: "Methodology",
+    sourceHref: "/methodology",
+  },
+  {
+    question: "What kinds of startups does GitHub-velocity tracking miss?",
+    answer:
+      "Three categories are systematically invisible: pre-MVP teams that work entirely in private repositories (most companies in their first 18 months), companies that ship through forks of public repos rather than under their own org account, and non-technical founders whose engineering work is fully outsourced. For consumer brands, healthtech services, fintech services, and most pre-MVP companies, broader alternative-data tools (Specter for web traffic, Forager for hiring) or curated databases (Crunchbase, Dealroom) cover ground that GitHub signals cannot.",
+    source: "Methodology",
+    sourceHref: "/methodology",
+  },
+  {
+    question: "Is using public GitHub data for VC deal flow legal?",
+    answer:
+      "Yes. GitHub's public API explicitly allows reading public repository metadata, commit activity, contributor lists, and organization information. The data we use is the same data any developer browsing github.com can see. We rate-limit our queries within GitHub's published guidelines, do not scrape private content, and publish our methodology and dataset openly under CC BY 4.0. Investors using our data signals are reading public information through structured APIs, which is the same legal posture as quant funds reading public SEC filings or sell-side research.",
+    source: "Methodology",
+    sourceHref: "/methodology",
+  },
+  {
+    question: "Why does the GitHub signal lead the fundraise announcement?",
+    answer:
+      "Engineering acceleration is causally upstream of every public-facing event in a startup's growth. Companies hire engineers before they launch products. They ship code before they put up press releases. They scale infrastructure before they announce funding. Each of those events generates a downstream signal (web traffic, news mentions, fundraise announcements), but all of them trace back to engineering activity that is already visible on public GitHub. The 47-day median lead time is the natural delay between observable engineering acceleration and the eventual public announcement of the round.",
+    source: "Methodology",
+    sourceHref: "/methodology",
+  },
 ];
 
 export default function FAQPage() {
