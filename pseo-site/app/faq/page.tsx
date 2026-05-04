@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { posts } from "@/content/posts";
 import { getAllSectors, getCurrentPeriod } from "@/lib/data";
+import PSEOFooterNav from "@/components/PSEOFooterNav";
 
 export const metadata: Metadata = {
   title: "Frequently Asked Questions — VC Deal Flow Signal",
@@ -219,6 +220,8 @@ export default function FAQPage() {
             ))}
           </div>
         </section>
+
+        <PSEOFooterNav excludeHrefs={["/faq"]} />
 
         {/* CTA */}
         <div className="mt-12 rounded-xl border border-slate-800 bg-slate-900 p-6 sm:p-8 text-center">

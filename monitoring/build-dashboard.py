@@ -548,6 +548,127 @@ if ph_countries and ph_countries.get("results"):
             "n": row[1],
         })
 
+# ---------------- Google Search Console (OAuth) ----------------
+# Fetches clicks/impressions/CTR/position + top queries + top pages over the
+# rolling WINDOW_DAYS window. Token at secrets/gsc-oauth-token.json (created
+# by tools/gsc-oauth/login.py). Soft-fails if missing/expired.
+gsc_data = None
+
+def fetch_gsc():
+    """Pull GSC search-analytics for the rolling window. Returns dict or None."""
+    token_path = os.path.join(PROJECT_DIR, "secrets", "gsc-oauth-token.json")
+    if not os.path.exists(token_path):
+        return None
+    try:
+        from google.oauth2.credentials import Credentials
+        from google.auth.transport.requests import Request as GoogleAuthRequest
+        from googleapiclient.discovery import build as gbuild
+    except Exception as e:
+        return {"error": f"google libs missing: {e}"}
+
+    properties = (env.get("GSC_PROPERTIES") or "sc-domain:gitdealflow.com").split(",")
+    properties = [p.strip() for p in properties if p.strip()]
+
+    try:
+        creds = Credentials.from_authorized_user_file(
+            token_path,
+            scopes=["https://www.googleapis.com/auth/webmasters.readonly"],
+        )
+        if creds.expired and creds.refresh_token:
+            creds.refresh(GoogleAuthRequest())
+        sc = gbuild("searchconsole", "v1", credentials=creds, cache_discovery=False)
+    except Exception as e:
+        return {"error": f"auth failed: {e}"}
+
+    end = date.today()
+    start = end - timedelta(days=WINDOW_DAYS)
+    out = {
+        "properties": properties,
+        "window_start": start.isoformat(),
+        "window_end": end.isoformat(),
+        "totals": {"clicks": 0, "impressions": 0, "ctr": 0.0, "position": 0.0},
+        "top_queries": [],
+        "top_pages": [],
+    }
+    pos_weighted_sum = 0.0
+    pos_weight = 0
+
+    def _query(prop, dimension):
+        return sc.searchanalytics().query(
+            siteUrl=prop,
+            body={
+                "startDate": start.isoformat(),
+                "endDate": end.isoformat(),
+                "dimensions": [dimension] if dimension else [],
+                "rowLimit": 25 if dimension else 1,
+            },
+        ).execute()
+
+    queries_agg = {}
+    pages_agg = {}
+    for prop in properties:
+        try:
+            tot = _query(prop, None)
+            for r in tot.get("rows", []):
+                out["totals"]["clicks"] += int(r.get("clicks", 0))
+                out["totals"]["impressions"] += int(r.get("impressions", 0))
+                if r.get("impressions"):
+                    pos_weighted_sum += float(r.get("position", 0)) * int(r["impressions"])
+                    pos_weight += int(r["impressions"])
+
+            for r in _query(prop, "query").get("rows", []):
+                k = r["keys"][0]
+                rec = queries_agg.setdefault(k, {"q": k, "clicks": 0, "impressions": 0, "position_w": 0.0, "_w": 0})
+                rec["clicks"] += int(r.get("clicks", 0))
+                rec["impressions"] += int(r.get("impressions", 0))
+                if r.get("impressions"):
+                    rec["position_w"] += float(r.get("position", 0)) * int(r["impressions"])
+                    rec["_w"] += int(r["impressions"])
+
+            for r in _query(prop, "page").get("rows", []):
+                k = r["keys"][0]
+                rec = pages_agg.setdefault(k, {"p": k, "clicks": 0, "impressions": 0})
+                rec["clicks"] += int(r.get("clicks", 0))
+                rec["impressions"] += int(r.get("impressions", 0))
+        except Exception as e:
+            out.setdefault("warnings", []).append(f"{prop}: {e}")
+
+    if out["totals"]["impressions"]:
+        out["totals"]["ctr"] = round(100 * out["totals"]["clicks"] / out["totals"]["impressions"], 2)
+    if pos_weight:
+        out["totals"]["position"] = round(pos_weighted_sum / pos_weight, 1)
+
+    def _finalize(rec):
+        if rec.get("_w"):
+            rec["position"] = round(rec["position_w"] / rec["_w"], 1)
+        for k in ("position_w", "_w"):
+            rec.pop(k, None)
+        if rec.get("impressions"):
+            rec["ctr"] = round(100 * rec["clicks"] / rec["impressions"], 2)
+        else:
+            rec["ctr"] = 0.0
+        return rec
+
+    out["top_queries"] = sorted(
+        (_finalize(q) for q in queries_agg.values()),
+        key=lambda x: (-x["clicks"], -x["impressions"]),
+    )[:15]
+    out["top_pages"] = sorted(
+        pages_agg.values(),
+        key=lambda x: (-x["clicks"], -x["impressions"]),
+    )[:10]
+    for p in out["top_pages"]:
+        p["ctr"] = round(100 * p["clicks"] / p["impressions"], 2) if p["impressions"] else 0.0
+    return out
+
+try:
+    gsc_data = fetch_gsc()
+    if gsc_data and not gsc_data.get("error"):
+        print(f"  GSC: {gsc_data['totals']['clicks']} clicks / {gsc_data['totals']['impressions']} impressions / pos {gsc_data['totals']['position']}")
+except Exception as e:
+    gsc_data = {"error": str(e)}
+    print(f"  GSC: skipped ({e})")
+
 conversion_rate = round(100 * len(subscribers) / total_uv, 2) if total_uv else 0.0
 
 # Paid subs (Dashboard or Insider tier, active status)
@@ -631,6 +752,7 @@ payload = {
     "ph_sources": ph_sources_data,
     "ph_pages": ph_pages_data,
     "ph_countries": ph_countries_data,
+    "gsc": gsc_data,
     "excluded": {
         "countries": sorted(EXCLUDE_COUNTRIES),
         "testers": sorted(TESTER_EMAILS),
@@ -813,6 +935,29 @@ HTML = """<!DOCTYPE html>
   <div class="card">
     <h3>Country mix (top 5)</h3>
     <canvas id="countryChart"></canvas>
+  </div>
+</div>
+
+<h1 style="margin-top:40px;font-size:20px">Google Search Console — last __WINDOW_DAYS__ days</h1>
+<div class="sub" id="gsc-status">—</div>
+
+<div class="grid cols-4 row-group">
+  <div class="card kpi"><div class="num" id="gsc-clicks">—</div><div class="lbl">Clicks</div></div>
+  <div class="card kpi"><div class="num" id="gsc-impressions">—</div><div class="lbl">Impressions</div></div>
+  <div class="card kpi"><div class="num" id="gsc-ctr">—</div><div class="lbl">CTR</div></div>
+  <div class="card kpi"><div class="num" id="gsc-position">—</div><div class="lbl">Avg position</div></div>
+</div>
+
+<div class="grid cols-2 row-group">
+  <div class="card">
+    <h3>Top queries (by clicks)</h3>
+    <table><thead><tr><th>Query</th><th class="num">Clicks</th><th class="num">Impr.</th><th class="num">CTR</th><th class="num">Pos</th></tr></thead>
+      <tbody id="gsc-queries"></tbody></table>
+  </div>
+  <div class="card">
+    <h3>Top pages (by clicks)</h3>
+    <table><thead><tr><th>Page</th><th class="num">Clicks</th><th class="num">Impr.</th><th class="num">CTR</th></tr></thead>
+      <tbody id="gsc-pages"></tbody></table>
   </div>
 </div>
 
@@ -1047,6 +1192,85 @@ tbl('ch-devsearch', CH.dev_search, [
   r => `<td>${r.stat}${muted(r.note)}</td>`,
   r => `<td>${statusPill(r.status)}${muted(r.as_of)}</td>`,
 ]);
+
+// ---- Substack Notes autopublish ----
+const SB = D.substack || {published:0, scheduled:0, drafts:0, history:[], next_scheduled:null, last_published:null, followers:null};
+document.getElementById('sb-profile').href = SB.profile_url || 'https://substack.com/@thedatanerd2026';
+document.getElementById('sb-profile').textContent = SB.handle || '@thedatanerd2026';
+
+const sbKpisEl = document.getElementById('sb-kpis');
+sbKpisEl.innerHTML = [
+  {lbl:'Followers',       val: SB.followers != null ? fmt(SB.followers) : '—', sub:'from profile', tier: SB.followers ? 'good' : ''},
+  {lbl:'Notes published', val: fmt(SB.published), sub:'since Apr 19', tier: SB.published > 0 ? 'good' : 'warn'},
+  {lbl:'Scheduled',       val: fmt(SB.scheduled), sub:'draft-ready',  tier: SB.scheduled > 0 ? 'good' : 'warn'},
+  {lbl:'Draft depth',     val: fmt(SB.drafts),    sub:'queue.json',   tier: SB.drafts >= 14 ? 'good' : 'warn'},
+].map(k => `
+  <div class="kpi-tile ${k.tier}">
+    <div class="lbl">${k.lbl}</div>
+    <div class="val">${k.val}</div>
+    <div class="sub">${k.sub}</div>
+  </div>`).join('');
+
+const sbLast = SB.last_published;
+document.getElementById('sb-last').innerHTML = sbLast
+  ? `<div style="color:#cbd5e1">${sbLast.title || ''}</div><div style="color:#64748b;font-size:11px;margin-top:2px">${sbLast.postedAt || ''} · ${sbLast.url ? `<a href="${sbLast.url}" target="_blank" style="color:#0ea5e9">view</a>` : ''}</div>`
+  : '<span style="color:#64748b">No published Notes yet</span>';
+
+const sbNext = SB.next_scheduled;
+document.getElementById('sb-next').innerHTML = sbNext
+  ? `<div style="color:#cbd5e1">${sbNext.title || ''}</div><div style="color:#64748b;font-size:11px;margin-top:2px">${sbNext.scheduledFor || ''} · ${sbNext.type || 'idea'}</div>`
+  : '<span style="color:#64748b">No Notes scheduled</span>';
+
+const sbHist = (SB.history || []).slice().reverse();
+const sbHistEl = document.getElementById('sb-history');
+if (!sbHist.length) {
+  sbHistEl.innerHTML = '<tr><td colspan="4" style="color:#64748b">No stats history yet — run <code class="mono">node tools/substack/fetch-stats.mjs</code></td></tr>';
+} else {
+  sbHistEl.innerHTML = sbHist.map(h => `
+    <tr>
+      <td class="mono">${h.date}</td>
+      <td class="num">${h.followers != null ? fmt(h.followers) : '—'}</td>
+      <td class="num">${h.notesPosted != null ? fmt(h.notesPosted) : '—'}</td>
+      <td>${h.latestNoteUrl ? `<a href="${h.latestNoteUrl}" target="_blank" style="color:#0ea5e9;font-size:11px">view</a>` : '—'}</td>
+    </tr>`).join('');
+}
+
+// GSC tile
+(function renderGsc() {
+  const g = D.gsc;
+  const statusEl = document.getElementById('gsc-status');
+  if (!g) {
+    statusEl.innerHTML = 'GSC not configured. Run <code class="mono">python3 tools/gsc-oauth/login.py</code> then rebuild.';
+    return;
+  }
+  if (g.error) {
+    statusEl.innerHTML = `<span style="color:#ef4444">GSC fetch failed:</span> ${g.error}. Re-auth via <code class="mono">python3 tools/gsc-oauth/login.py</code>.`;
+    return;
+  }
+  const t = g.totals || {};
+  document.getElementById('gsc-clicks').textContent = fmt(t.clicks || 0);
+  document.getElementById('gsc-impressions').textContent = fmt(t.impressions || 0);
+  document.getElementById('gsc-ctr').textContent = (t.ctr || 0) + '%';
+  document.getElementById('gsc-position').textContent = (t.position || 0).toFixed(1);
+  const props = (g.properties || []).join(', ');
+  statusEl.textContent = `${props} · ${g.window_start} → ${g.window_end}`;
+  const qBody = document.getElementById('gsc-queries');
+  qBody.innerHTML = (g.top_queries || []).map(q => `
+    <tr><td class="mono" style="max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${q.q}</td>
+        <td class="num">${fmt(q.clicks)}</td>
+        <td class="num">${fmt(q.impressions)}</td>
+        <td class="num">${(q.ctr || 0)}%</td>
+        <td class="num">${(q.position || 0).toFixed(1)}</td></tr>
+  `).join('') || '<tr><td colspan="5" style="color:#64748b">No queries with impressions yet.</td></tr>';
+  const pBody = document.getElementById('gsc-pages');
+  pBody.innerHTML = (g.top_pages || []).map(p => {
+    const path = (p.p || '').replace(/^https?:\/\/[^/]+/, '');
+    return `<tr><td class="mono" style="max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${path || '/'}</td>
+        <td class="num">${fmt(p.clicks)}</td>
+        <td class="num">${fmt(p.impressions)}</td>
+        <td class="num">${(p.ctr || 0)}%</td></tr>`;
+  }).join('') || '<tr><td colspan="4" style="color:#64748b">No pages with impressions yet.</td></tr>';
+})();
 
 // Country donut (top 5, rest bucketed)
 const topC = (D.ph_countries || []).slice(0, 5);
