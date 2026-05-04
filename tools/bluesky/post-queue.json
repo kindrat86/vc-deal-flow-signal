@@ -54,7 +54,7 @@
     },
     {
       "id": "005-build-in-public",
-      "text": "Building gitdealflow in public.\n\nCurrent stack: Next.js on Vercel, PocketBase on Fly, Resend for mail, MCP server published on Smithery (98/100 verified).\n\nNo VC, no team, no podcast.\n\nJust GitHub data and a research thesis.",
+      "text": "Building gitdealflow in public.\n\nCurrent stack: Next.js on Vercel, PocketBase on Fly, Resend for mail, MCP server catalogued on Glama (A-Tier, 4.9/5.0 across 6 tools).\n\nNo VC, no team, no podcast.\n\nJust GitHub data and a research thesis.",
       "tags": [
         "buildinpublic",
         "stack"
@@ -63,7 +63,7 @@
     },
     {
       "id": "006-mcp-server-stats",
-      "text": "MCP server scoring update on Smithery.\n\nQuality 98/100. Verified badge live.\n\nFive tools that let any LLM query VC-grade GitHub signals.\n\nNo paywall on the free tools, ever.\n\nsmithery.ai/server/kindrat86/vc-deal-flow-signal",
+      "text": "MCP server catalogued on Glama.\n\nA-Tier, 4.9/5.0 across 6 tools.\n\nSix tools that let any LLM query VC-grade GitHub signals.\n\nNo paywall on the free tools, ever.\n\nglama.ai/mcp/servers/kindrat86/mcp-deal-flow-signal",
       "tags": [
         "mcp",
         "credibility"
@@ -126,7 +126,7 @@
     },
     {
       "id": "013-tools-free",
-      "text": "Five tools at signals.gitdealflow.com/mcp will never be paywalled.\n\nGet trending startups, sector signal sweeps, methodology docs, per-startup risk scores, summary stats.\n\nWe charge for new tools, not the existing ones.",
+      "text": "Six tools at signals.gitdealflow.com/mcp will never be paywalled.\n\nGet trending startups, sector sweeps, single-startup lookup, dataset summary, GitHub Scout Score, methodology.\n\nWe charge for new tools, not the existing six.",
       "tags": [
         "mcp",
         "pricing"
@@ -148,6 +148,84 @@
       "tags": [
         "mcp",
         "agent-runtimes",
+        "shipped"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "016-buyer-guides-2026-05-04",
+      "text": "Most VC tooling reviews are written by the firms selling the tooling.\n\nShipped 5 independent buyer guides today: best AI deal sourcing tools, best stack for emerging managers, best for solo GPs, GitHub-based deal flow, European VCs.\n\nsignals.gitdealflow.com/compare",
+      "tags": [
+        "buyer-guides",
+        "shipped"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "017-emerging-mgr-stack-2026-05-04",
+      "text": "TL;DR for emerging fund managers in 2026:\n\nLeading signal: VC Deal Flow Signal EUR 9.97/mo\nCross-channel: Specter or Forager.ai\nVerification: Crunchbase Pro\nCRM: Notion templated, not Affinity\n\nUnder $200/mo. Beats institutional setups on lead time.",
+      "tags": [
+        "emerging-managers",
+        "stack"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "018-vs-hub-2026-05-04",
+      "text": "Every Harmonic / PitchBook / Crunchbase / Dealroom / Tracxn matchup, head-to-head, on one page.\n\nIndependent. SSRN-anchored. Free.\n\nsignals.gitdealflow.com/vs",
+      "tags": [
+        "vs-hub",
+        "shipped"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "019-developer-investor-stack-2026-05-04",
+      "text": "Developer-investor 2026 stack: MCP server in your IDE, Copilot for due diligence, Notion for pipeline, Crunchbase free.\n\nUnder EUR 30/mo. Traditional VCs structurally cannot match without hiring engineering analysts.\n\nFull guide: signals.gitdealflow.com/compare",
+      "tags": [
+        "developer-investor",
+        "stack",
+        "shipped"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "020-vs-tribe-magnify-2026-05-04",
+      "text": "Tribe Capital won't license Magnify externally.\n\nFor outside investors who want a Tribe-style data edge in 2026: external GitHub commit-velocity signals, 6-12 weeks pre-fundraise, EUR 9.97/mo.\n\nsignals.gitdealflow.com/compare",
+      "tags": [
+        "tribe-capital",
+        "vs",
+        "shipped"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "021-vs-signalfire-beacon-2026-05-04",
+      "text": "SignalFire's Beacon is the gold standard internal sourcing platform. Internal being the operative word.\n\nFor investors not at SignalFire: single-signal sharpness on engineering velocity, externally accessible, EUR 9.97/mo.\n\nsignals.gitdealflow.com/compare/vc-deal-flow-signal-vs-signalfire-beacon",
+      "tags": [
+        "signalfire",
+        "beacon",
+        "vs",
+        "shipped"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "022-vs-affinity-2026-05-04",
+      "text": "Affinity tells you who you know.\n\nVC Deal Flow Signal tells you who you should know.\n\nNot competitors. Combined workflow: signal fires, Affinity finds the warm intro, you're in the meeting six weeks before the round closes.\n\nsignals.gitdealflow.com/compare",
+      "tags": [
+        "affinity",
+        "vs",
+        "shipped"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "023-ai-deal-sourcing-2026-05-04",
+      "text": "Most VC tools that market themselves as AI in 2026 are dashboards with a chatbot bolted on.\n\nFour 2026 tools that genuinely use ML for sourcing: VC Deal Flow Signal, Harmonic.ai, Tracxn ScoutAI, SignalRank. Compared head-to-head.\n\nsignals.gitdealflow.com/compare/best-ai-deal-sourcing-tools-2026",
+      "tags": [
+        "ai-sourcing",
+        "comparison",
         "shipped"
       ],
       "use_count": 0
