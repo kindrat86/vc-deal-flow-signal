@@ -1,0 +1,176 @@
+{
+  "_doc": "Pre-approved post queue for Mastodon. Char limit 500 (more generous than Bluesky 300). Style: Brunson-tight, statements > questions, no em-dashes, SSRN abstract=6606558 anchor.",
+  "_updated": "2026-05-03",
+  "_rules": {
+    "max_per_day": 2,
+    "min_gap_minutes": 240,
+    "char_limit": 500
+  },
+  "posts": [
+    {
+      "id": "001-ssrn-anchor",
+      "text": "Open-sourced 30 findings on which GitHub signals predict $1M+ VC rounds.\n\nStar velocity, contributor diversity, dependent count, README freshness, issue-resolution time.\n\nFree dataset, free MCP server, paper on SSRN.\n\nssrn.com/abstract=6606558\n\n#VC #GitHub #buildinpublic #OpenSource",
+      "tags": [
+        "ssrn",
+        "research",
+        "evergreen"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "002-mcp-dev-investor",
+      "text": "Built an MCP server for VC deal flow.\n\n5 free tools: trending-startups, sector-search, signal-summary, methodology, startup-signal.\n\nDevs who angel invest can ask Claude or Cursor live questions about GitHub momentum without scraping.\n\nsignals.gitdealflow.com/mcp\n\n#MCP #AI #buildinpublic",
+      "tags": [
+        "mcp",
+        "product",
+        "evergreen"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "003-signal-of-week",
+      "text": "Signal of the week: contributor-diversity gini coefficient.\n\nStartups in our dataset that raised >$1M had 0.34 gini at month -3 vs 0.61 for non-raisers.\n\nFewer single-bus-factor projects close rounds.\n\nFull data: signals.gitdealflow.com/research\n\n#VC #OpenSource #DataScience",
+      "tags": [
+        "data",
+        "weekly"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "004-anti-vanity",
+      "text": "Star count alone is a vanity signal.\n\nWhat actually correlates with funded rounds: stars-to-issues ratio, contributor retention at 90d, README-update cadence.\n\nWe ran the regression on 12k repos.\n\nDataset: signals.gitdealflow.com/data\n\n#VC #GitHub #data",
+      "tags": [
+        "contrarian",
+        "data"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "005-build-in-public",
+      "text": "Building gitdealflow in public.\n\nStack: Next.js on Vercel, PocketBase on Fly, Resend for mail, MCP server catalogued on Glama (A-Tier 4.9/5.0 across 6 tools).\n\nNo VC, no team, no podcast.\n\nJust GitHub data and a research thesis.\n\n#buildinpublic #indiehacker",
+      "tags": [
+        "buildinpublic",
+        "stack"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "006-mcp-server-stats",
+      "text": "MCP server catalogued on Glama: A-Tier, 4.9/5.0 across 6 tools.\n\nSix tools that let any LLM query VC-grade GitHub signals.\n\nNo paywall on the free tools, ever.\n\nglama.ai/mcp/servers/kindrat86/mcp-deal-flow-signal\n\n#MCP #AI",
+      "tags": [
+        "mcp",
+        "credibility"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "007-tech-thesis",
+      "text": "Thesis: pre-Series-A traction lives in GitHub graphs, not LinkedIn announcements.\n\nForks, dependents, issue resolution time, contributor first-commit-to-PR delta.\n\nTechnical investors who learn to read these will scoop the ones who wait for press releases.\n\n#VC #OpenSource",
+      "tags": [
+        "thesis",
+        "evergreen"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "008-aeo-meta",
+      "text": "Quietly tested: ChatGPT, Claude, Perplexity all cite our research page when asked 'how to predict VC rounds from GitHub data'.\n\nThe path was 30 evidence-rich Q&A pairs in qa.jsonl + Speakable JSON-LD + the SSRN paper as anchor.\n\nNo backlinks needed. #AEO #SEO #AI",
+      "tags": [
+        "aeo",
+        "seo"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "009-newsletter",
+      "text": "Weekly digest of the top 5 startups gaining momentum on GitHub.\n\nFree tier: ranked list + signal scores. No VC names, no LinkedIn profiles, no fluff.\n\nPure GitHub graph telemetry.\n\nsignals.gitdealflow.com/weekly\n\n#VC #OpenSource",
+      "tags": [
+        "product",
+        "newsletter"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "010-data-tease",
+      "text": "Top 3 sectors with the steepest GitHub momentum curves this week:\n\n1. Inference infra (vLLM forks +14%)\n2. Agent frameworks (CrewAI dependents +9%)\n3. Vector search (Qdrant stars-to-PR ratio rebound)\n\nFull breakdown: signals.gitdealflow.com/trending\n\n#VC #AI",
+      "tags": [
+        "data",
+        "weekly"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "011-saas-saturday",
+      "text": "Indie SaaS founders: your GitHub graph is a fundraising deck.\n\nReadme freshness, dependency graph, issue response time, contributor mix.\n\nTen minutes of cleanup outranks a polished pitch deck for technical-fund partners.\n\n#indiehackers #buildinpublic",
+      "tags": [
+        "indiehackers",
+        "founders"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "012-research-link",
+      "text": "Released the underlying paper: 'GitHub Repository Signals as Leading Indicators of Venture Capital Funding'.\n\nSSRN abstract 6606558. Open access. Reproducible dataset linked.\n\nNo paywall, no enterprise sales call required.\n\n#VC #research #opendata",
+      "tags": [
+        "ssrn",
+        "paper"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "013-tools-free",
+      "text": "Six tools at signals.gitdealflow.com/mcp will never be paywalled.\n\nGet trending startups, sector signal sweeps, single-startup lookups, dataset summary, GitHub Scout Score, methodology docs.\n\nNew tools may be paid. Existing six stay free forever.\n\n#MCP #AI #VC",
+      "tags": [
+        "mcp",
+        "pricing"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "014-contributor-cohorts",
+      "text": "New cohort analysis: repos that retain 60%+ of contributors at 90 days are 3.2x more likely to close >$1M than repos that don't.\n\nRetention beats velocity.\n\nFull table: signals.gitdealflow.com/research\n\n#VC #OpenSource #data",
+      "tags": [
+        "data",
+        "research"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "015-agent-runtimes-hub-2026-05-03",
+      "text": "Cross-listed our MCP server in 7 agent runtimes today.\n\nOne npm package \u2014 `@gitdealflow/mcp-signal` \u2014 same install everywhere: Cursor, Cline, Block Goose, OpenHands, Aider (via mcpm-aider), AiderDesk, Raycast.\n\nFree, no auth required, weekly refresh from public GitHub data. Six read-only tools for VC deal flow sourcing.\n\nHub with copy-paste snippets per runtime: https://signals.gitdealflow.com/integrations/agent-runtimes\n\n#MCP #ModelContextProtocol #AIagents #VC #buildinpublic #OpenSource",
+      "tags": [
+        "mcp",
+        "agent-runtimes",
+        "shipped"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "016-buyer-guides-2026-05-04",
+      "text": "Most VC tooling reviews are written by the firms selling the tooling.\n\nShipped 5 independent buyer guides today: best AI deal sourcing tools, best stack for emerging managers, best for solo GPs, GitHub-based deal flow, European VCs.\n\nEvery claim cites the SSRN paper (abstract=6606558). Every comparison is on equal footing.\n\nsignals.gitdealflow.com/compare\n\n#VC #DealFlow #SSRN",
+      "tags": [
+        "buyer-guides",
+        "shipped"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "017-emerging-mgr-stack-2026-05-04",
+      "text": "TL;DR for emerging fund managers in 2026:\n\nLeading signal (technical): VC Deal Flow Signal EUR 9.97/mo\nCross-channel growth: Specter or Forager.ai\nVerification: Crunchbase Pro\nCRM: Notion templated, not Affinity\n\nUnder $200/mo. Beats most institutional setups on lead time.\n\nFull stack analysis: signals.gitdealflow.com/compare/best-deal-flow-tools-emerging-managers-2026\n\n#VC #EmergingManagers",
+      "tags": [
+        "emerging-managers",
+        "stack"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "018-vs-hub-2026-05-04",
+      "text": "Every Harmonic / PitchBook / Crunchbase / Dealroom / Tracxn matchup, head-to-head, on one page.\n\nIndependent. SSRN-anchored. Free.\n\nsignals.gitdealflow.com/vs\n\n#VC #DealFlow",
+      "tags": [
+        "vs-hub",
+        "shipped"
+      ],
+      "use_count": 0
+    }
+  ]
+}
