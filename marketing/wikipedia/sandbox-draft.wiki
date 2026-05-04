@@ -1,0 +1,142 @@
+<!--
+================================================================
+  HOLD — USERSPACE SANDBOX DRAFT — DO NOT MOVE TO MAINSPACE
+================================================================
+
+This draft must NOT be published to Wikipedia mainspace until ALL
+of the following are true:
+
+  1. AT LEAST TWO independent Tier-1 secondary sources exist:
+       TechCrunch / The Information / Forbes / FT / Bloomberg /
+       NYT / WSJ / Wired / Ars Technica / IEEE Spectrum.
+     SSRN preprint alone WILL NOT pass WP:NCORP. Directories,
+     own-domain blog posts, Reddit/HN, and self-published
+     newsletters do NOT count as reliable sources.
+
+  2. WP:COI / WP:PAID disclosure has been posted on the
+     contributing editor's user-talk page BEFORE any submission.
+     If the editor is the founder / has financial interest /
+     was paid to write this, that must be declared up front.
+     See https://en.wikipedia.org/wiki/WP:DISCLOSE
+
+  3. The article is routed through Wikipedia:Articles for Creation
+     (https://en.wikipedia.org/wiki/WP:AFC), NOT direct mainspace
+     creation. AfC reviewers move it to mainspace if it passes;
+     direct creation by a COI editor is a fast path to deletion.
+
+  4. The "The Data Nerd" pseudonym question is decided:
+     Wikipedia editors will dig into the founder's identity.
+     Either remove the founder field entirely, or accept that
+     the pseudonym will be challenged.
+
+  5. The "Reception" section is filled with at least two real
+     paragraphs cited to independent sources. An empty Reception
+     section is the #1 reason new-company articles get tagged
+     {{notability}} or sent to AfD.
+
+PUBLISHING WORKFLOW WHEN READY:
+  a. Strip this entire HOLD comment block.
+  b. Strip the {{Empty section}} template in Reception (replace
+     with real prose + citations) or remove the section.
+  c. Replace every <ref>{{TODO ...}}</ref> with a real citation.
+  d. Remove the leading colons from category links at the bottom
+     (turn [[:Category:X]] into [[Category:X]]).
+  e. Paste the result into  User:YOURNAME/sandbox  on en.wikipedia.org.
+  f. Submit via WP:AFC for reviewer feedback. Wait for the AfC
+     reviewer to move it. Do not move it yourself.
+
+================================================================
+  END HOLD BLOCK — actual draft begins below this comment
+================================================================
+-->
+
+{{Short description|GitHub-derived venture capital deal-flow analytics service}}
+
+{{Infobox software
+| name              = GitDealFlow
+| logo              =
+| screenshot        =
+| developer         = The Data Nerd (pseudonym)
+| released          = {{Start date and age|2026|04|17}}
+| operating system  = Web (SaaS)
+| genre             = [[Alternative data]]; financial signals
+| license           = Proprietary; free [[Model Context Protocol|MCP]] server tier
+| website           = {{URL|signals.gitdealflow.com}}
+}}
+
+'''GitDealFlow''' is a [[software as a service]] platform that derives [[venture capital]] [[deal flow]] signals from public [[GitHub]] activity.<ref>{{TODO: Tier-1 launch coverage citation}}</ref> The service combines an open-source [[Model Context Protocol]] (MCP) server with a paid web dashboard for tracking developer-engagement metrics on early-stage software projects.<ref>{{TODO: Tier-1 product description citation}}</ref>
+
+The service is targeted at "developer-investors" — software engineers who allocate personal capital to early-stage [[startup company|startups]] — and is operated under the pseudonym "The Data Nerd."<ref>{{TODO: Tier-1 founder/positioning citation}}</ref>
+
+== History ==
+GitDealFlow launched on 17 April 2026.<ref>{{TODO: launch citation}}</ref> The free MCP server was published to the [[npm (software)|npm registry]] under the package name {{mono|@gitdealflow/mcp-signal}} and to the Vercel MCP marketplace.<ref>{{TODO: registry citation}}</ref> A paid dashboard tier offering sector-level signal aggregation, [[watchlist]] tracking, and email alerts followed shortly after launch.<ref>{{TODO: Tier-1 source}}</ref>
+
+The methodology underlying the service was published as a working paper on the [[Social Science Research Network]] (SSRN) in 2026.<ref name="ssrn">{{cite web |url=https://ssrn.com/abstract=6606558 |title=A Longitudinal Panel of GitHub Engineering Velocity for Venture-Backed Startups: Dataset and Early Observations |author=The Data Nerd |website=SSRN |date=2026 |access-date={{TODO}} }}</ref>
+
+== Methodology ==
+GitDealFlow aggregates public [[GitHub]] event streams — including [[Star (GitHub)|stars]], [[Fork (software development)|forks]], contributor velocity, dependent-package adoption, and release cadence — and applies a scoring model to identify repositories whose growth patterns historically precede [[Series A]]–stage venture financing.<ref name="ssrn"/>
+
+The dataset draws exclusively on public GitHub event streams; no private or proprietary data sources are used.<ref name="ssrn"/>
+
+== Products ==
+GitDealFlow is offered as a two-tier service:
+* '''MCP server''' (free): An open implementation of the [[Model Context Protocol]] distributed via [[npm (software)|npm]], providing six tools for querying signal metadata.<ref>{{TODO: independent registry / coverage citation}}</ref>
+* '''Dashboard''' (paid): A web dashboard at signals.gitdealflow.com offering sector signals, watchlist tracking, and email alerts.<ref>{{TODO: Tier-1 product coverage}}</ref>
+
+== Reception ==
+<!--
+HOLD: This section is the gating blocker for mainspace publication.
+Wikipedia editors will tag the article {{notability|date=...}} or
+nominate it for deletion (AfD) without independent reception coverage.
+
+Do NOT publish until at least TWO of the following exist and are
+cited here as full paragraphs:
+
+  - Named-author article in TechCrunch / The Information / Forbes /
+    FT / Bloomberg / NYT / WSJ / Wired / IEEE Spectrum
+  - Industry analyst note (Gartner / CB Insights editorial /
+    Forrester) — analyst databases do not count, only published prose
+  - Academic citation by an INDEPENDENT author (not the founder)
+    in a peer-reviewed venue
+  - Substantial coverage in an established trade newsletter with
+    named editorial control (e.g., Sifted, PitchBook News, Axios Pro
+    Rata) — Substack/personal-blog mentions do NOT count
+
+Until then: leave the section commented out, or omit it entirely.
+-->
+{{Empty section|date={{TODO: month year of publication attempt}}}}
+
+== See also ==
+* [[Alternative data]]
+* [[Deal flow]]
+* [[Open-source intelligence]]
+* [[Model Context Protocol]]
+* [[Venture capital financing]]
+
+== References ==
+{{Reflist}}
+
+== External links ==
+* {{Official website|https://signals.gitdealflow.com}}
+* [https://ssrn.com/abstract=6606558 GitDealFlow methodology preprint] on SSRN
+* [https://www.wikidata.org/wiki/Q139376302 Wikidata: Q139376302]
+
+<!--
+Categories below are deactivated with leading colons so this draft
+does not pollute live category listings while in userspace.
+Remove the colon from each line before mainspace move.
+-->
+[[:Category:2026 software]]
+[[:Category:Alternative data]]
+[[:Category:Financial data vendors]]
+[[:Category:Software as a service]]
+[[:Category:Venture capital]]
+
+<!--
+=== AFC SUBMISSION TEMPLATE ===
+Uncomment the line below ONLY when ready to submit through
+Articles for Creation. Replace ts and u with the real timestamp
+and your username.
+
+{{AFC submission|||ts=YYYYMMDDHHMMSS|u=YOURUSERNAME|ns=2}}
+-->

@@ -24,7 +24,7 @@ Built this as a side project over the past few months. The idea: use public GitH
 
 **Monetization:**
 - Free: weekly Signal Digest (5 breakout startups)
-- EUR 9.97/mo: full dashboard with 60+ startups, sector/stage/geography filters
+- EUR 9.97/mo: full dashboard with 85+ startups, sector/stage/geography filters
 - EUR 97/mo: private investor community + API access
 
 Still early — launched the site this month. Getting signal on whether investors actually find this useful.

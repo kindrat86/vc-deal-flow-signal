@@ -73,7 +73,7 @@ This is where you deliver real value. Three "secrets," each breaking one false b
 
 | What you get | Value |
 |-------------|-------|
-| Full Pro dashboard (60+ startups, filters, enrichment) | EUR 9.97/mo |
+| Full Pro dashboard (85+ startups, filters, enrichment) | EUR 9.97/mo |
 | Private investor Telegram group | EUR 50/mo |
 | Monthly live signal briefing (this call, every month) | EUR 100/mo |
 | Custom watchlists (monitor your sectors) | EUR 50/mo |

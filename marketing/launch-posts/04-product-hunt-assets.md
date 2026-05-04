@@ -52,7 +52,7 @@ Hey Ryan — quick heads up, not asking for a hunt.
 
 I'm launching VC Deal Flow Signal on Product Hunt this Sunday Apr 26. It's a tool that ranks startup GitHub orgs by engineering acceleration so investors can spot breakouts 3 weeks before they hit pitch deck stage.
 
-Already shipped: 60+ startups across 20 sectors live, MCP server on npm so Claude can query the data, free weekly digest + EUR 9.97/mo dashboard.
+Already shipped: 85+ startups across 20 sectors live, MCP server on npm so Claude can query the data, free weekly digest + EUR 9.97/mo dashboard.
 
 If it's interesting enough to feature in your weekly roundup, the listing goes live 12:01 AM PT Sunday: {PH-link}
 

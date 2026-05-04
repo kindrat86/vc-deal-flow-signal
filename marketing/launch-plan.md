@@ -109,7 +109,7 @@ The MCP server is the product for developer-investors. It needs its own distribu
 ### Actions (see `distribution/mcp-distribution-strategy.md` for full details)
 
 - [ ] Post Twitter thread sharing dev.to article (`distribution/twitter-devto-article-thread.md`)
-- [ ] Cross-post to Hashnode (`distribution/hashnode-mcp-crosspost.md`)
+- [~] ~~Cross-post to Hashnode~~ — Hashnode RETIRED 2026-05-02. Substack mirror at https://gitdealflow.substack.com replaces it.
 - [ ] Discord blitz: 5 servers in 5 days (`distribution/discord-mcp-posts.md`)
 - [ ] Record 30-second demo GIF of MCP server in Claude
 - [ ] Add demo GIF to: GitHub README, dev.to article, Twitter, Discord posts

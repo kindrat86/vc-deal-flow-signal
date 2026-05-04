@@ -26,9 +26,9 @@ Whatever the cause, the signal shows up in the commit graph **weeks before** it 
 
 **Current state**:
 - 20 sectors tracked (AI/ML, Fintech, Healthcare, Cybersecurity, Developer Tools, etc.)
-- 60+ startups showing measurable acceleration signals right now
+- 85+ startups showing measurable acceleration signals right now
 - Free weekly Signal Digest (5 breakout startups with real data)
-- Paid Dashboard at EUR 9.97/mo (60+ startups, filters by sector/stage/geography)
+- Paid Dashboard at EUR 9.97/mo (85+ startups, filters by sector/stage/geography)
 - Free weekly signals on Telegram
 
 **NEW: Works inside Claude.** I just published an MCP server so you can query our data directly from Claude Desktop or Claude Code. Ask "which fintech startups are accelerating?" and get live data without leaving your AI workflow. Install: `npx @gitdealflow/mcp-signal`

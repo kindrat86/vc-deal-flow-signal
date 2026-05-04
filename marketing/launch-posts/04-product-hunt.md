@@ -43,7 +43,7 @@ We launched on Indie Hackers and Hacker News last week and got great feedback on
 
 **What you get:**
 - Free Signal Digest: 5 breakout startups with real data, weekly
-- Dashboard (EUR 9.97/mo): 60+ startups ranked by sector, stage, and geography
+- Dashboard (EUR 9.97/mo): 85+ startups ranked by sector, stage, and geography
 - Insider Circle (EUR 97/mo): private investor community, live briefings, API access
 
 **NEW: Works inside Claude.** We just shipped an MCP server so you can query our startup signal data directly from Claude Desktop or Claude Code. Ask your AI assistant "which startups are accelerating in healthcare?" and get live data. No API key, no login. Install: `npx @gitdealflow/mcp-signal`

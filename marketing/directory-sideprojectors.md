@@ -41,7 +41,7 @@ VC Deal Flow Signal monitors GitHub engineering activity across thousands of sta
 **What's inside:**
 - 272 sector / stage / geo pSEO pages with ranked startups
 - Free weekly Signal Digest (5 breakout companies with real data)
-- Dashboard (EUR 9.97/mo) — 60+ startups ranked across 20 sectors
+- Dashboard (EUR 9.97/mo) — 85+ startups ranked across 20 sectors
 - Insider Circle (EUR 97/mo) — private investor community + API access
 - **MCP server** — query the signal from inside Claude Desktop or Claude Code. `npx @gitdealflow/mcp-signal`
 - **Chrome extension** — overlays the engineering signal onto Crunchbase, AngelList, and PitchBook profiles

@@ -26,7 +26,7 @@ The core idea: when a startup's commit velocity spikes sharply compared to their
 
 **Current state of the tool:**
 - 20 sectors tracked weekly (AI, Fintech, Healthcare, Cybersecurity, etc.)
-- 60+ startups showing measurable engineering acceleration right now
+- 85+ startups showing measurable engineering acceleration right now
 - Free Signal Digest and a paid Dashboard (EUR 9.97/mo beta)
 
 **Top signal this week:** carlos-emr (healthcare) — +199% commit velocity, 94 contributors. A burst like that in open-source health tech is unusual.

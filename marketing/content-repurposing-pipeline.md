@@ -91,7 +91,7 @@ We track this across 20 sectors, weekly.
 
 Free community: [Telegram link]
 Free weekly digest: https://gitdealflow.com
-Pro dashboard (60+ startups): EUR 9.97/mo
+Pro dashboard (85+ startups): EUR 9.97/mo
 
 ---
 

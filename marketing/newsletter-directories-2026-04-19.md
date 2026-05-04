@@ -52,10 +52,10 @@ Use identical copy across all four so the newsletter is consistent:
 > Weekly breakout startups spotted via GitHub engineering velocity — the hidden dataset that predicted 7 of 10 fundraises 3-6 weeks early.
 
 **Medium description (≤300 chars):**
-> Weekly email report on breakout startups spotted via GitHub engineering velocity signals. We track acceleration patterns across 60+ startups in 20 sectors — commit surges, new contributor hires, infrastructure repo activity — which predicted 7 of 10 fundraises 3-6 weeks early.
+> Weekly email report on breakout startups spotted via GitHub engineering velocity signals. We track acceleration patterns across 85+ startups in 20 sectors — commit surges, new contributor hires, infrastructure repo activity — which predicted 7 of 10 fundraises 3-6 weeks early.
 
 **Long description (≤500 chars):**
-> The only newsletter packaging GitHub commit velocity as a VC deal flow signal. Public, free, updating in real time — a dataset zero other investor tools surface. We track acceleration patterns across 60+ startups in 20 sectors: commit velocity surges, new contributor hires, infrastructure repo activity. In our backtest, this pattern preceded 7 of 10 fundraise announcements by 3-6 weeks. Free weekly report. No fluff, no webinars, no pitch deck.
+> The only newsletter packaging GitHub commit velocity as a VC deal flow signal. Public, free, updating in real time — a dataset zero other investor tools surface. We track acceleration patterns across 85+ startups in 20 sectors: commit velocity surges, new contributor hires, infrastructure repo activity. In our backtest, this pattern preceded 7 of 10 fundraise announcements by 3-6 weeks. Free weekly report. No fluff, no webinars, no pitch deck.
 
 ---
 
