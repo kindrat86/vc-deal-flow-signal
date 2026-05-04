@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     template: "%s | VC Deal Flow Signal",
   },
   description:
-    "GitHub commit-velocity tracking across 20 startup sectors. Quantifies code-side momentum (not startup accelerator programs) — contributor growth, repository expansion, breakout signals — to surface venture-backed startups 3–6 weeks before fundraise.",
+    "GitHub commit-velocity rankings across 20 startup sectors. Code-side momentum signals (contributor growth, repo expansion, breakouts) surface startups 3–6 weeks before fundraise.",
   keywords: [
     "GitHub commit velocity",
     "venture capital alternative data",

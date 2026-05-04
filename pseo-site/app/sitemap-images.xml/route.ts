@@ -45,10 +45,10 @@ export async function GET() {
     title: "VC Deal Flow Signal — Homepage OG card",
   });
 
-  // Agents page (separate OG image)
+  // Agents page (uses root OG fallback — no per-route opengraph-image.tsx)
   entries.push({
     pageUrl: `${BASE_URL}/agents`,
-    imageUrl: `${BASE_URL}/agents/opengraph-image`,
+    imageUrl: `${BASE_URL}/opengraph-image`,
     caption:
       "Agent Reference — MCP, A2A, NLWeb, function-calling, JSON / CSV / RSS surfaces for VC Deal Flow Signal.",
     title: "Agent Reference",
