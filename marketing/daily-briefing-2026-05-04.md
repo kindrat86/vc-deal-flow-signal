@@ -11,6 +11,8 @@
 
 ## Manual posting blocks (USER ACTION — Claude drafts only per division-of-labor)
 
+> Status as of 2026-05-04 ~15:45 EEST: Twitter ✓ posted · Reddit r/SideProject ✓ posted · Indie Hackers ✓ posted · LinkedIn (company page) ✓ posted · Chrome Web Store listing ✓ submitted (one extension; second still pending) · Hacker News ❌ account BLOCKED.
+
 > All channels below are user-posted per memory rules (no LinkedIn/Reddit/HN automation; HN must stay rough and user-rewritten). Drafts ready to copy-paste.
 
 ### Twitter / X — single tweet ✅ POSTED 2026-05-04 ~14:30 EEST from @data_nerd
@@ -61,11 +63,12 @@ Manifest V3, ~16 KB, no analytics. Only the owner slug hits the public API; resp
 Anyone using GitHub-side signals in their workflow? What would make this more useful?
 ```
 
-### Hacker News — Show HN (USER MUST REWRITE per rough-edit rule)
-**Title (one of):**
-- `Show HN: Hover any GitHub repo for VC-grade engineering signals`
-- `Show HN: A Chrome extension that turns GitHub into a deal-flow surface`
-**Body — DELIBERATELY ROUGH (rewrite before posting per Apr 22 mod flag rule):**
+### Hacker News — Show HN ❌ NOT POSTED — account `the_data_nerd` BLOCKED 2026-05-04
+
+> Self-reported by user 2026-05-04 ~15:45 EEST: HN account is currently blocked from submitting/commenting after the May-2 dang unflag cycle. Saved to memory as `feedback_hn_account_blocked.md` — supersedes the prior "rough drafts only" rule while the block stands. Do NOT redraft, do NOT retry. Resolution = user emails dang@/hn@ycombinator.com from `mkondratyuk86@gmail.com` (real-name inbox) when ready.
+
+The original rough draft is preserved below for the record; do not use it until the user explicitly says "HN is back".
+
 ```
 this is a free chrome extension. hover any github repo or org link, see commit velocity over the last 14d, velocity change vs prior period, contributor count and growth, signal type, stage estimate. chip on direct visits. toolbar popup if you want to type an org name in.
 
