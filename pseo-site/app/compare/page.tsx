@@ -18,6 +18,7 @@ export default function CompareIndex() {
     "@graph": [
       {
         "@type": "CollectionPage",
+        "@id": "https://signals.gitdealflow.com/compare#page",
         name: "Compare Deal Flow Tools",
         description:
           "Side-by-side comparisons of deal flow and startup sourcing tools for investors.",
@@ -27,6 +28,64 @@ export default function CompareIndex() {
           name: "VC Deal Flow Signal",
           url: "https://gitdealflow.com",
         },
+        speakable: {
+          "@type": "SpeakableSpecification",
+          cssSelector: ["h1", "h2", "[data-speakable]"],
+        },
+        hasPart: comparisons.map((comp) => ({
+          "@type": "WebPage",
+          name: comp.h1,
+          url: `https://signals.gitdealflow.com/compare/${comp.slug}`,
+          description: comp.description,
+        })),
+      },
+      {
+        "@type": "ItemList",
+        name: "Deal flow tool comparisons",
+        numberOfItems: comparisons.length,
+        itemListElement: comparisons.map((comp, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          name: comp.h1,
+          url: `https://signals.gitdealflow.com/compare/${comp.slug}`,
+        })),
+      },
+      {
+        "@type": "FAQPage",
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: "What's the difference between VC Deal Flow Signal and traditional databases like Crunchbase or PitchBook?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Crunchbase and PitchBook are lagging indicators — they show what's already known: announced rounds, hires, headlines. VC Deal Flow Signal is a leading indicator that watches public GitHub activity (commit velocity, contributor growth, repository expansion) and flags acceleration patterns 3–6 weeks before fundraise announcements typically appear in those databases. The two are complementary: use VC Deal Flow Signal to spot momentum early, then use Crunchbase/PitchBook to enrich the company profile.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "How do I choose between Harmonic, SignalFire, and VC Deal Flow Signal?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Harmonic and SignalFire are full-stack proprietary platforms with broad data coverage (founders, funding, products, social) and enterprise-tier pricing — they fit GP-led firms with platform budgets. VC Deal Flow Signal is the focused, free-tier alternative for GitHub engineering signals specifically: a single high-signal data source, machine-readable APIs, MCP server, and a free Chrome extension. If you already have a deal-flow platform and want a code-side signal layer on top, VC Deal Flow Signal slots in via API or Chrome.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Is the comparison data on these pages accurate and unbiased?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Comparisons are written by the VC Deal Flow Signal team, so naturally we know our own product best. We aim for factual accuracy — pricing, feature matrices, integrations are sourced from public marketing pages and product docs at the time of writing. If you spot an inaccuracy, email signal@gitdealflow.com and we'll correct it. Pricing and feature sets change; comparison pages list a refresh date in the footer.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Can I use VC Deal Flow Signal alongside another deal-flow tool?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Yes — VC Deal Flow Signal is designed as a complementary layer. The free MCP server, JSON API, CSV export, OpenAPI spec, and RSS feed make it trivial to integrate signal data into existing workflows: enrich Affinity/Attio CRM records with momentum tier, trigger Slack alerts on acceleration spikes, pre-screen warm intros against signal data, or power custom dashboards. No proprietary lock-in.",
+            },
+          },
+        ],
       },
       {
         "@type": "BreadcrumbList",

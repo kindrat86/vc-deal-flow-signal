@@ -37,6 +37,51 @@ export default function UseCasesIndex() {
         })),
       },
       {
+        "@type": "FAQPage",
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: "Who is VC Deal Flow Signal designed for?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Three investor personas: (1) Angel investors and solo capitalists who want a defensible signal layer to compete with larger funds without an analyst team; (2) VC analysts at seed and Series A funds who use it as a sourcing pre-filter before warm intros and database scans; (3) Fund-of-funds and LPs who use it as a portfolio-monitoring proxy across managers' GitHub-active portfolio companies. Developer-investors (the dual-identity persona) sit across all three.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Do I need engineering or quant skills to use this?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "No. The dashboard and weekly digest deliver ranked output: company name, sector, stage, acceleration percentage, contributor count, signal type. The analysis is done before the report hits your inbox. If you can read a Crunchbase company page, you can read this. The MCP server, OpenAPI spec, and CSV export are there for users who want deeper integration into their own tools — but they're optional, not required.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Can I integrate signals into my CRM (Affinity, Attio, Salesforce)?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Yes. The JSON API (signals.json), CSV export (signals.csv), OpenAPI 3.1 spec, and MCP server make CRM integration straightforward. Common patterns: nightly sync into Affinity custom fields, Attio webhook on signal-tier change, Zapier/Make.com flows that update Salesforce records on acceleration alerts. The Insider Circle tier (EUR 97/mo) includes API access for higher-rate-limit programmatic use.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "How does the workflow look weekly?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Mondays: data refreshes 06:00 UTC; the Signal Digest email goes out with this week's top 5 breakouts. Tuesday–Thursday: investors triage the digest plus full Dashboard, mark companies of interest, queue cold outreach. Friday: optional weekly briefing for Insider Circle members covering the strongest acceleration patterns and which sectors to watch. The cycle is intentionally weekly to match how investors review deal flow — not minute-by-minute alert fatigue.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Is this useful for non-investors (founders, operators, recruiters)?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Yes, indirectly. Founders track competitor engineering velocity. Recruiters use the contributor-growth signal to identify hiring-burst companies. Operators at portfolio companies use it as a benchmark against peers. The free MCP server and Chrome extension make these adjacent use cases easy without a paid tier.",
+            },
+          },
+        ],
+      },
+      {
         "@type": "BreadcrumbList",
         itemListElement: [
           {

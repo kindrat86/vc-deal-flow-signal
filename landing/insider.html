@@ -37,12 +37,74 @@
         "name": "Insider Circle — VC Deal Flow Signal",
         "description": "Weekly walkthrough of how GitHub engineering signals predict fundraises 3 weeks early.",
         "inLanguage": "en-US",
+        "datePublished": "2026-04-14",
+        "dateModified": "2026-05-04",
         "isPartOf": { "@id": "https://gitdealflow.com/#website" },
         "publisher": { "@id": "https://gitdealflow.com/#organization" },
         "speakable": {
           "@type": "SpeakableSpecification",
-          "cssSelector": ["h1", "h2"]
+          "cssSelector": ["h1", "h2", ".max-w-3xl p.text-lg"]
         }
+      },
+      {
+        "@type": "Product",
+        "@id": "https://gitdealflow.com/insider#product",
+        "name": "Insider Circle",
+        "description": "Premium tier with private investor Telegram group, monthly signal briefings, custom watchlists, and API access.",
+        "brand": { "@id": "https://gitdealflow.com/#organization" },
+        "offers": {
+          "@type": "Offer",
+          "price": "97",
+          "priceCurrency": "EUR",
+          "url": "https://gitdealflow.com/insider",
+          "availability": "https://schema.org/InStock",
+          "priceValidUntil": "2026-12-31"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Isn't GitHub data too noisy to give an investment edge?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Raw GitHub data is noisy — commit counts alone tell you nothing, since a bot can inflate them. The Insider Circle doesn't track absolute numbers. We track acceleration patterns: when a company's engineering velocity deviates sharply from its own baseline. A startup that goes from 20 commits/week to 60 commits/week while adding 4 new contributors and spinning up infrastructure repos is not having a noisy week — something changed. We track these acceleration patterns across 60+ startups in 20 sectors weekly."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "I already have enough deal flow — why do I need this?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Your network shows you what other investors are already seeing. By the time a warm intro reaches you, the founder has talked to 3 to 5 other investors, the deck is circulating, and terms are forming. The deals that generate outsized returns are the ones where you arrive before consensus forms — before the deck exists, before the company is hot. GitHub engineering signals show you what's happening 3 to 6 weeks before the founder decides to fundraise. Your network gets you to the table; this gets you there first."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can public data really give investors an edge?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Everyone has access to SEC filings, and quant funds still make billions parsing them faster and smarter. Everyone has access to satellite imagery, and hedge funds use it to count cars in parking lots and predict quarterly earnings. Right now, zero investor tools package GitHub activity as a deal flow signal. The data is public, but the analysis layer didn't exist — that is the definition of an edge."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What does the Insider Circle include?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Full Dashboard access (60+ startups ranked across 20 sectors, filterable by sector/stage/geography, refreshed weekly); private investor Telegram group with signal alerts and deal-flow sharing; monthly signal briefing (written deep-dive on the strongest acceleration patterns); custom watchlists for specific companies or sectors; API access for integrating signal data into your own deal flow tools; and direct access to the founder for custom analysis. EUR 97/month early-access pricing locks in forever; price moves to EUR 197/month after beta closes."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How is engineering acceleration calculated?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Engineering acceleration is a quantitative GitHub momentum signal computed from public commit-velocity change (most recent 14-day window vs. prior period), contributor-growth rate, and repository-creation rate, normalized against each company's own baseline. It is distinct from startup accelerator programs (Y Combinator, Techstars, 500 Global) — the term refers to engineering velocity acceleration, not program enrollment. Methodology: https://signals.gitdealflow.com/methodology and SSRN preprint at https://ssrn.com/abstract=6606558."
+            }
+          }
+        ]
       },
       {
         "@type": "BreadcrumbList",

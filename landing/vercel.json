@@ -1,13 +1,68 @@
 {
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/AGENTS.md", "destination": "/agents.md" }
+    { "source": "/AGENTS.md", "destination": "/agents.md" },
+    { "source": "/.well-known/agents.md", "destination": "/agents.md" },
+    { "source": "/.well-known/llms.txt", "destination": "/llms.txt" },
+    { "source": "/.well-known/ai.txt", "destination": "/ai.txt" }
   ],
   "headers": [
     {
       "source": "/(.*).html",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+      ]
+    },
+    {
+      "source": "/agents.md",
+      "headers": [
+        { "key": "Content-Type", "value": "text/markdown; charset=utf-8" },
+        { "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" },
+        { "key": "Link", "value": "<https://gitdealflow.com/agents.md>; rel=\"canonical\", <https://ssrn.com/abstract=6606558>; rel=\"cite-as\"" }
+      ]
+    },
+    {
+      "source": "/llms.txt",
+      "headers": [
+        { "key": "Content-Type", "value": "text/plain; charset=utf-8" },
+        { "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" },
+        { "key": "Link", "value": "<https://gitdealflow.com/llms-full.txt>; rel=\"alternate\"; type=\"text/plain\", <https://ssrn.com/abstract=6606558>; rel=\"cite-as\"" }
+      ]
+    },
+    {
+      "source": "/llms-full.txt",
+      "headers": [
+        { "key": "Content-Type", "value": "text/plain; charset=utf-8" },
+        { "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" },
+        { "key": "Link", "value": "<https://gitdealflow.com/llms.txt>; rel=\"alternate\"; type=\"text/plain\", <https://ssrn.com/abstract=6606558>; rel=\"cite-as\"" }
+      ]
+    },
+    {
+      "source": "/ai.txt",
+      "headers": [
+        { "key": "Content-Type", "value": "text/plain; charset=utf-8" },
+        { "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" }
+      ]
+    },
+    {
+      "source": "/agents.txt",
+      "headers": [
+        { "key": "Content-Type", "value": "text/plain; charset=utf-8" },
+        { "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" }
+      ]
+    },
+    {
+      "source": "/sitemap.xml",
+      "headers": [
+        { "key": "Content-Type", "value": "application/xml; charset=utf-8" },
+        { "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" }
+      ]
+    },
+    {
+      "source": "/sitemap-pages.xml",
+      "headers": [
+        { "key": "Content-Type", "value": "application/xml; charset=utf-8" },
+        { "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" }
       ]
     },
     {

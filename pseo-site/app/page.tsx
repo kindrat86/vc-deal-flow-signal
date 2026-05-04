@@ -5,8 +5,11 @@ import { allPosts as posts } from "@/content/posts";
 import { comparisons } from "@/content/comparisons";
 import { FINDINGS as RESEARCH_FINDINGS } from "@/content/research-findings";
 import { AgentSummary } from "@/components/AgentSummary";
+import { HreflangLinks } from "@/components/HreflangLinks";
+import { getHomepageHreflang } from "@/lib/hreflang";
 
 export const metadata: Metadata = {
+  // hreflang emitted via <HreflangLinks/> in JSX (Next 16 silently drops metadata.alternates.languages).
   alternates: {
     canonical: "/",
   },
@@ -561,6 +564,10 @@ export default function Home() {
 
   return (
     <>
+      <HreflangLinks
+        canonical="https://signals.gitdealflow.com/"
+        languages={getHomepageHreflang()}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

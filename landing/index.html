@@ -88,13 +88,36 @@
         "url": "https://gitdealflow.com",
         "description": "Venture-capital alternative-data product. We monitor GitHub commit velocity, contributor growth, and repository expansion across thousands of startups to surface code-side momentum — distinct from startup accelerator programs.",
         "email": "signal@gitdealflow.com",
+        "areaServed": {
+          "@type": "Place",
+          "name": "Worldwide",
+          "geo": { "@type": "GeoShape", "box": "-90 -180 90 180" }
+        },
+        "serviceArea": "https://schema.org/Worldwide",
+        "availableLanguage": [
+          { "@type": "Language", "name": "English", "alternateName": "en" },
+          { "@type": "Language", "name": "Japanese", "alternateName": "ja" },
+          { "@type": "Language", "name": "Chinese", "alternateName": "zh" },
+          { "@type": "Language", "name": "German", "alternateName": "de" },
+          { "@type": "Language", "name": "Spanish", "alternateName": "es" },
+          { "@type": "Language", "name": "French", "alternateName": "fr" },
+          { "@type": "Language", "name": "Portuguese", "alternateName": "pt" },
+          { "@type": "Language", "name": "Korean", "alternateName": "ko" },
+          { "@type": "Language", "name": "Hindi", "alternateName": "hi" },
+          { "@type": "Language", "name": "Russian", "alternateName": "ru" },
+          { "@type": "Language", "name": "Italian", "alternateName": "it" },
+          { "@type": "Language", "name": "Dutch", "alternateName": "nl" },
+          { "@type": "Language", "name": "Arabic", "alternateName": "ar" }
+        ],
         "knowsAbout": [
           "GitHub commit velocity",
           "venture capital alternative data",
           "code-side momentum signals",
           "startup engineering acceleration (quantitative GitHub signal, distinct from accelerator programs)",
           "open-source contributor-growth analytics",
-          "repository-expansion signals"
+          "repository-expansion signals",
+          "pre-seed and Series A founder discovery",
+          "alternative data for venture capital sourcing"
         ],
         "founder": {
           "@type": "Person",
@@ -250,9 +273,20 @@
         "@id": "https://gitdealflow.com/#webpage",
         "url": "https://gitdealflow.com/",
         "name": "VC Deal Flow Signal — The 3-Week Head Start on Every Fundraise",
+        "datePublished": "2026-04-14",
+        "dateModified": "2026-05-04",
+        "primaryImageOfPage": "https://signals.gitdealflow.com/opengraph-image",
         "speakable": {
           "@type": "SpeakableSpecification",
-          "cssSelector": [".relative.max-w-4xl h1", ".relative.max-w-4xl p.text-lg"]
+          "cssSelector": [
+            "h1",
+            ".relative.max-w-4xl p.text-lg",
+            "[data-speakable]",
+            "[data-agent-summary]",
+            "[itemprop='description']",
+            "section h2 + p",
+            ".faq-answer"
+          ]
         }
       },
       {

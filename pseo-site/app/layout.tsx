@@ -27,10 +27,34 @@ export const metadata: Metadata = {
     "VC sourcing",
   ],
   metadataBase: new URL("https://signals.gitdealflow.com"),
+  other: {
+    "theme-color": "#0ea5e9",
+    "color-scheme": "dark light",
+    "format-detection": "telephone=no",
+  },
   openGraph: {
     type: "website",
     siteName: "VC Deal Flow Signal",
+    locale: "en_US",
+    alternateLocale: [
+      "en_GB",
+      "ja_JP",
+      "zh_CN",
+      "de_DE",
+      "es_ES",
+      "fr_FR",
+      "pt_BR",
+      "ko_KR",
+      "ru_RU",
+      "it_IT",
+      "nl_NL",
+      "ar_SA",
+      "hi_IN",
+    ],
   },
+  // hreflang languages are emitted via <HreflangLinks/> JSX per page (Next 16
+  // silently drops metadata.alternates.languages here). See lib/hreflang.ts +
+  // components/HreflangLinks.tsx for the working pattern.
   alternates: {
     types: {
       "application/rss+xml": "https://signals.gitdealflow.com/feed.xml",
