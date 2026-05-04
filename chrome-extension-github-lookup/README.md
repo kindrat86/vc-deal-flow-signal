@@ -30,9 +30,18 @@ When you visit a repo or org page directly, a chip is injected next to the page 
 - No analytics SDK, no tracking, no cookies, no account
 - No host-page content collection beyond the URL of the GitHub link being hovered
 
+## Web surfaces (link from popup + in-product CTAs)
+
+The extension should reference both GitDealFlow surfaces:
+
+- **Apex / landing** — https://gitdealflow.com (marketing + funnel story; the dedicated extensions hub at https://gitdealflow.com/chrome lists both extensions side-by-side, and is the canonical short URL for tweet announcements)
+- **Signals / pSEO** — https://signals.gitdealflow.com (live dashboard, integrations, citations, llms.txt + llms-full.txt; also the only `host_permissions` target in the manifest)
+
+Either surface alone is incomplete — apex covers the marketing/funnel story, signals covers the live data + discovery surfaces. The popup should link to both and the toolbar's manual-lookup popup should drive to `https://signals.gitdealflow.com/` on empty input.
+
 ## Companion extension
 
-[VC Deal Flow Signal — Crunchbase + Wellfound badge](../chrome-extension/) (`hehkgipiamajnnlpkfhpeoeaoaogmknn`) covers the deal-research surfaces (Crunchbase + Wellfound). This extension covers GitHub itself. Together they form the complete loop.
+[VC Deal Flow Signal — Crunchbase + Wellfound badge](../chrome-extension/) (`hehkgipiamajnnlpkfhpeoeaoaogmknn`) covers the deal-research surfaces (Crunchbase + Wellfound). This extension covers GitHub itself. Together they form the complete loop. The companion's [popup](../chrome-extension/popup.html) cross-promotes this extension; this extension's popup (when source lands) should cross-promote the companion via the install URL above.
 
 ## Source
 

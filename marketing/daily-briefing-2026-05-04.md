@@ -13,17 +13,20 @@
 
 > All channels below are user-posted per memory rules (no LinkedIn/Reddit/HN automation; HN must stay rough and user-rewritten). Drafts ready to copy-paste.
 
-### Twitter / X — single tweet (manual post)
+### Twitter / X — single tweet ✅ POSTED 2026-05-04 ~14:30 EEST from @data_nerd
+
+> Shipped variant: hook-first / single branded URL / 169 raw / 162 weighted. Replaced the original 369-raw / 272-weighted draft after Twitter composer red-highlighted the long Chrome Web Store URL. Style codified as durable rule in memory `feedback_tweet_style_short_branded.md`.
+
 ```
-Shipped a second free Chrome extension today: VC GitHub Lookup.
+GitHub is now a deal-flow surface.
 
-Hover any GitHub repo or org → see commit velocity, contributor growth, signal type, and a stage estimate. Chip on direct visits. Toolbar lookup popup.
+Hover any repo → commit velocity, contributor growth, signal type. Free Chrome extension, no account.
 
-GitHub itself becomes a deal-flow surface.
-
-https://chromewebstore.google.com/detail/vc-github-lookup-%E2%80%94-startu/plgngijmloeljfkenecdkhiblcfcbblm
+https://gitdealflow.com/chrome
 ```
-*239 chars (under 280)*
+*169 raw / 162 weighted (well under 280-char @data_nerd non-Premium cap)*
+
+Posted permalink: TBD — paste back into project_daily_marketing_log.md when captured.
 
 ### Reddit — r/SideProject (manual post)
 **Title:** Built a Chrome extension that turns GitHub itself into a deal-flow surface
