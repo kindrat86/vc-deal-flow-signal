@@ -70,7 +70,7 @@ IH typically reveals richer fields once the product exists (pricing, stage, reve
 ```
 VC Deal Flow Signal monitors GitHub engineering activity across thousands of startup organizations and surfaces the ones showing unusual acceleration. Built for seed and Series A investors who want to spot breakouts before the pitch deck hits their inbox.
 
-How it works: we calculate 14-day commit velocity, contributor growth, and repository expansion for every tracked org, then rank startups by engineering acceleration. When a company's velocity deviates sharply from its own baseline, we flag it and classify the signal type. 60+ startups currently live across 20 sectors, updated weekly.
+How it works: we calculate 14-day commit velocity, contributor growth, and repository expansion for every tracked org, then rank startups by engineering acceleration. When a company's velocity deviates sharply from its own baseline, we flag it and classify the signal type. 85+ startups currently live across 20 sectors, updated weekly.
 
 Why this matters: GitHub is the largest free dataset of real-time engineering activity in the world. Every commit is timestamped and public. When a startup's velocity doubles in two weeks, something changed — and it shows up in the data weeks before the TechCrunch headline.
 

@@ -111,7 +111,7 @@ The backstory: I watched a startup's GitHub commit graph spike 200% in two weeks
 
 So I built something that would.
 
-VC Deal Flow Signal monitors GitHub engineering activity across thousands of startup orgs and ranks them by engineering acceleration. When a company's commit velocity deviates sharply from its own baseline, we flag it and classify the signal type. 60+ startups currently live across 20 sectors, updated weekly.
+VC Deal Flow Signal monitors GitHub engineering activity across thousands of startup orgs and ranks them by engineering acceleration. When a company's commit velocity deviates sharply from its own baseline, we flag it and classify the signal type. 85+ startups currently live across 20 sectors, updated weekly.
 
 We launched on Indie Hackers and Hacker News last week and got great feedback on the methodology. The most common question was: "Does this actually predict fundraises?" The honest answer: engineering acceleration is a leading indicator, not a guarantee. But in our data, these patterns appear 3-6 weeks before announcements with enough regularity to be useful.
 
@@ -119,7 +119,7 @@ We launched on Indie Hackers and Hacker News last week and got great feedback on
 
 **What you get:**
 - Free Signal Digest — 5 breakout startups with real GitHub data, weekly
-- Dashboard (EUR 9.97/mo) — 60+ startups ranked by sector, stage, geography
+- Dashboard (EUR 9.97/mo) — 85+ startups ranked by sector, stage, geography
 - Insider Circle (EUR 97/mo) — private investor community, live briefings, API access
 
 **NEW: Works inside Claude.** We shipped an MCP server so you can query the data directly from Claude Desktop or Claude Code. Ask "which startups are accelerating in cybersecurity?" and get live data. No API key, no login. Install: `npx @gitdealflow/mcp-signal`
@@ -142,7 +142,7 @@ Hey Ryan — quick heads up, not asking for a hunt.
 
 I'm launching VC Deal Flow Signal on Product Hunt this Sunday Apr 26. It ranks startup GitHub orgs by engineering acceleration so investors can spot breakouts 3 weeks before pitch-deck stage.
 
-Already shipped: 60+ startups across 20 sectors live, MCP server on npm so Claude can query the data, free weekly digest + EUR 9.97/mo dashboard.
+Already shipped: 85+ startups across 20 sectors live, MCP server on npm so Claude can query the data, free weekly digest + EUR 9.97/mo dashboard.
 
 If it's interesting enough for your weekly roundup, the listing goes live 12:01 AM PT Sunday: https://www.producthunt.com/posts/vc-deal-flow-signal
 
