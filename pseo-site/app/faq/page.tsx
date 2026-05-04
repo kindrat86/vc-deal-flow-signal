@@ -92,6 +92,10 @@ export default function FAQPage() {
         name: "VC Deal Flow Signal — Frequently Asked Questions",
         description:
           "Answers to common questions about GitHub engineering signals, startup deal sourcing, and how investors use engineering acceleration data.",
+        speakable: {
+          "@type": "SpeakableSpecification",
+          cssSelector: ["h1", "[itemtype$='Question']", "[itemtype$='Answer']"],
+        },
         mainEntity: allFaqs.map((faq) => ({
           "@type": "Question",
           name: faq.question,

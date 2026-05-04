@@ -463,7 +463,7 @@ export function parseGeoPageSlug(slug: string): GeoPageData | null {
 // Stage-axis pages (pre-seed, seed, series-a-b, growth)
 // ---------------------------------------------------------------------------
 
-const STAGE_DEFINITIONS = [
+export const STAGE_DEFINITIONS = [
   {
     slug: "pre-seed",
     name: "Pre-Seed",
