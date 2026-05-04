@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import LaunchBanner from "@/components/LaunchBanner";
 import PixelManager from "@/components/PixelManager";
+import HreflangLinks from "@/components/HreflangLinks";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
@@ -103,6 +104,52 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full">
+      <head>
+        <HreflangLinks path="/" />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="VC Deal Flow Signal — Blog RSS"
+          href="https://signals.gitdealflow.com/feed.xml"
+        />
+        <link
+          rel="alternate"
+          type="text/plain"
+          title="LLMs.txt"
+          href="https://signals.gitdealflow.com/llms.txt"
+        />
+        <link
+          rel="alternate"
+          type="text/plain"
+          title="LLMs-full.txt"
+          href="https://signals.gitdealflow.com/llms-full.txt"
+        />
+        <link
+          rel="alternate"
+          type="text/plain"
+          title="ai.txt"
+          href="https://signals.gitdealflow.com/ai.txt"
+        />
+        <link
+          rel="alternate"
+          type="application/x-ndjson"
+          title="Q&amp;A corpus (CC BY 4.0)"
+          href="https://signals.gitdealflow.com/qa.jsonl"
+        />
+        {/* RFC 9727 / RFC 9264 API discovery linkset */}
+        <link
+          rel="api-catalog"
+          href="https://signals.gitdealflow.com/.well-known/api-catalog"
+        />
+        {/* IndieWeb identity verification (rel=me) */}
+        <link rel="me" href="https://x.com/data_nerd" />
+        <link rel="me" href="https://github.com/kindrat86" />
+        <link rel="me" href="https://orcid.org/0009-0002-2222-4112" />
+        <link rel="me" href="https://news.ycombinator.com/user?id=the_data_nerd" />
+        <link rel="me" href="https://www.indiehackers.com/The_Data_Nerd" />
+        <link rel="me" href="https://dev.to/the_data_nerd" />
+        <link rel="me" href="mailto:signal@gitdealflow.com" />
+      </head>
       <body className={`${inter.className} min-h-full flex flex-col bg-slate-950 text-gray-100`}>
         <LaunchBanner />
         <Header />

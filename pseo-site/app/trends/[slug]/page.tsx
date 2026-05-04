@@ -7,6 +7,7 @@ import {
   getSortedStartups,
   getDataLastModified,
 } from "@/lib/data";
+import AgentMirrorLinks from "@/components/AgentMirrorLinks";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -77,6 +78,10 @@ export default async function TrendPage({ params }: PageProps) {
           url: "https://gitdealflow.com",
         },
         dateModified: lastModified.toISOString().slice(0, 10),
+        speakable: {
+          "@type": "SpeakableSpecification",
+          cssSelector: ["[data-speakable]", "h1"],
+        },
       },
       {
         "@type": "WebPage",
@@ -255,6 +260,8 @@ export default async function TrendPage({ params }: PageProps) {
             </Link>
           </div>
         </section>
+
+        <AgentMirrorLinks qaCategory="sector" />
       </div>
     </>
   );

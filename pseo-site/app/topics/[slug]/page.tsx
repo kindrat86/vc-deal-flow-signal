@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { pillars, getPostsInPillar, type Pillar } from "@/content/pillars";
 import { posts as allPosts, type BlogPost } from "@/content/posts";
+import AgentMirrorLinks from "@/components/AgentMirrorLinks";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -195,6 +196,8 @@ export default async function TopicHubPage({ params }: PageProps) {
             Get the Report
           </Link>
         </div>
+
+        <AgentMirrorLinks qaCategory="blog" />
       </div>
     </>
   );

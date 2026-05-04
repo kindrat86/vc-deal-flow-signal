@@ -3,8 +3,8 @@ import { getAllSectors, getCurrentPeriod, getAllPeriods, getAllStartupSlugs, get
 import { posts } from "@/content/posts";
 import { comparisons } from "@/content/comparisons";
 import { standaloneFaqs } from "@/content/standalone-faqs";
+// Note: agentQueries import removed; /answers route lives on a feature branch.
 import { pillars, getPostsInPillar } from "@/content/pillars";
-import { agentQueries } from "@/content/agent-queries";
 import { alternatives } from "@/content/alternatives";
 import { useCases } from "@/content/use-cases";
 
@@ -76,11 +76,14 @@ The full cross-graph identity map — every external anchor (Wikidata, ORCID, SS
 
 - [All Sectors](${BASE_URL}): Homepage with ${activeSectors.length} startup sectors ranked by engineering acceleration
 - [Trending Startups](${BASE_URL}/trending): Top 20 startups across all sectors by commit velocity change, ${period.name}
-- [Receipts](${BASE_URL}/receipts): Free tool — paste any GitHub username, get a Scout Score (0-100) computed from how many validated unicorns the user starred *before* the funding/acquisition/$1B-valuation event. No login, instant shareable card. Backwards-looking proof of taste.
-- [Predict (Scout Game)](${BASE_URL}/predict): Free forward-looking prediction game. Pick a GitHub org, call whether they raise a Series A in 6 months. Auto-resolved at the 6-month window. Public profile at /s/[handle], leaderboard, rank ladder Curious → Oracle.
 - [Methodology](${BASE_URL}/methodology): How we source, process, and rank GitHub engineering data
 - [Glossary](${BASE_URL}/glossary): Definitions of key terms — commit velocity, signal types, engineering acceleration
 - [Compare Deal Flow Tools](${BASE_URL}/compare): Side-by-side comparisons of VC deal sourcing tools
+- [Alternatives](${BASE_URL}/alternatives): "Alternative to X" answer pages for the major VC deal sourcing tools
+- [Use Cases](${BASE_URL}/use-cases): Persona-targeted guides for GP, scout, angel, family-office, accelerator workflows
+- [Research](${BASE_URL}/research): 30 atomic findings from the SSRN-indexed methodology paper
+- [Citations](${BASE_URL}/citations): Cross-graph identity map (Wikidata, ORCID, SSRN, OpenAlex, Crossref, Zenodo, Semantic Scholar)
+- [Agents](${BASE_URL}/agents): Every machine-readable surface — MCP, A2A, NLWeb, function-calling, OpenAPI, JSONL, badges
 - [Blog](${BASE_URL}/blog): Practical guides on using GitHub signals for startup investing
 
 ## Current Data (${period.name})
@@ -139,22 +142,17 @@ ${activeSectors.map((s) => {
 
 ## Public API
 
-- [ai.json](${BASE_URL}/ai.json): **Compact LLM-optimized context blob** — Dataset JSON-LD + metric definitions + signal types + per-sector top-3 + citation metadata. Fetch-once context for AI agents before querying detail endpoints.
 - [qa.jsonl](${BASE_URL}/qa.jsonl): **Consolidated Q&A corpus** — every FAQ across the site as newline-delimited JSON. Fields: question, answer, source, sourceUrl, category. Good for retrieval-augmented generation.
-- [Per-sector RSS feeds](${BASE_URL}/startups-to-watch/ai-ml-${period.slug}/feed.xml): \`/startups-to-watch/{sector}-{period}/feed.xml\` — RSS feed per sector/period ranking. Use for programmatic polling.
+- [feed.xml](${BASE_URL}/feed.xml): RSS 2.0 feed of the blog. Use for programmatic polling.
 - [Sitemap index](${BASE_URL}/sitemap.xml): Sitemap index with sub-sitemaps for core, sectors, crossings, startups, content.
-- [News sitemap](${BASE_URL}/news-sitemap.xml): Google News sitemap for recent blog posts (<48h).
 - [signals.json](${BASE_URL}/api/signals.json): Machine-readable JSON endpoint with all current startup signals, sector rankings, and trending data. Free for personal and editorial use with attribution.
 - [signals.csv](${BASE_URL}/api/signals.csv): CSV download of all current signals for spreadsheet and data science use.
 - [openapi.json](${BASE_URL}/api/openapi.json): OpenAPI 3.1 specification for the signals API.
 - [ai.txt](${BASE_URL}/ai.txt): AI access policy, preferred citation format, and data licensing.
-
-## Answers (citation-ready agent honeypots)
-
-Direct, source-cited answers to the questions AI agents and their users ask most about VC deal flow, GitHub momentum, MCP servers, and engineering signals. Each page leads with a TL;DR (Speakable schema) plus 3 supporting facts with sources, then a long-form answer, then a FAQPage block. Designed to be quoted verbatim with attribution.
-
-- [Answers index](${BASE_URL}/answers): Browse all answer pages.
-${agentQueries.map((q) => `- [${q.h1}](${BASE_URL}/answers/${q.slug}): ${q.description}`).join("\n")}
+- [api-catalog](${BASE_URL}/.well-known/api-catalog): RFC 9727 / RFC 9264 Linkset of all API descriptions and endpoints. \`application/linkset+json\` content type.
+- [a2a](${BASE_URL}/api/a2a): Google A2A JSON-RPC 2.0 endpoint. AgentCard at /.well-known/agent-card.json.
+- [nlweb](${BASE_URL}/api/nlweb): Microsoft NLWeb-compatible conversational endpoint.
+- [mcp/rpc](${BASE_URL}/api/mcp/rpc): MCP Streamable-HTTP endpoint (same six tools as the stdio MCP server).
 
 ## Competitor Alternatives
 
@@ -172,18 +170,11 @@ ${useCases.map((u) => `- [${u.h1}](${BASE_URL}/use-cases/${u.slug}): ${u.descrip
 
 ## Agent surfaces index
 
-- [Agents landing](${BASE_URL}/agents): UX-friendly developer landing page listing every machine-readable surface with paste-ready install snippets for Claude Desktop, Cursor, Continue.dev, OpenAI Agents SDK, Anthropic SDK, LangChain Hub, Hugging Face Datasets, and Postman.
-- [api/agents.json](${BASE_URL}/api/agents.json): Flat-JSON machine-readable index of every surface. Companion to api-catalog for runtimes that prefer conventional shape over RFC 9727 Linkset.
+- [Agents landing](${BASE_URL}/agents): UX-friendly developer landing page listing every machine-readable surface with paste-ready install snippets for Claude Desktop, Cursor, Continue.dev, OpenAI Agents SDK, Anthropic SDK, and Postman.
 - [.well-known/api-catalog](${BASE_URL}/.well-known/api-catalog): RFC 9727 / RFC 9264 Linkset of all API descriptions and endpoints. \`application/linkset+json\` content type.
-- [api/dataset.jsonl](${BASE_URL}/api/dataset.jsonl): Hugging Face Datasets / RAG-ingestion-compatible JSONL of the full panel. Leading metadata line + one startup per line.
-
-## Embeddable Badges
-
-Free SVG badges for README files. Both endpoints return \`image/svg+xml\`, are CORS-enabled, cache 24h on the CDN with hourly ETag revalidation, and degrade to a neutral gray badge on error so READMEs never break.
-
-- [Scout Score badge](${BASE_URL}/api/badge/scout/{username}/svg): Per-user GitHub Scout Score (0-100). Replace \`{username}\` with any GitHub handle. Markdown: \`[![Scout Score](${BASE_URL}/api/badge/scout/USERNAME/svg)](${BASE_URL}/receipts/USERNAME)\`
-- [Commit Momentum badge](${BASE_URL}/api/badge/momentum/{org}/{repo}/svg): Per-repo commit-velocity tier (cold / warming / hot / breakout). Only renders for tracked startup orgs; untracked repos render an "untracked" pill. Markdown: \`[![Commit Momentum](${BASE_URL}/api/badge/momentum/ORG/REPO/svg)](${BASE_URL}/)\`
-- [Badge builder](${BASE_URL}/badge-builder): Interactive UI that generates ready-to-paste markdown / HTML / BBCode snippets for both badge types. \`?handle=USERNAME\` and \`?org=ORG&repo=REPO\` query params pre-fill the form.
+- [.well-known/agent-card.json](${BASE_URL}/.well-known/agent-card.json): Google A2A AgentCard.
+- [.well-known/mcp.json](${BASE_URL}/.well-known/mcp.json): MCP discovery manifest.
+- [.well-known/ai-plugin.json](${BASE_URL}/.well-known/ai-plugin.json): ChatGPT plugin manifest (legacy compatibility).
 
 ## Chrome Extension
 
@@ -192,17 +183,6 @@ Free SVG badges for README files. Both endpoints return \`image/svg+xml\`, are C
 ## Claude MCP Server
 
 - [@gitdealflow/mcp-signal](https://www.npmjs.com/package/@gitdealflow/mcp-signal): Official MCP server for Claude Desktop, Claude Code, Cursor, and any MCP-compatible client. Query startup signals directly from your AI assistant. Install: \`npx @gitdealflow/mcp-signal\`.
-
-## Markdown Alternates
-
-Every major page is available as clean markdown at \`/md/\` for LLM-friendly ingestion:
-
-- [Index](${BASE_URL}/md): Overview with sector + signal-type links
-- [Methodology](${BASE_URL}/md/methodology)
-- [Stage rankings](${BASE_URL}/md/stage/seed): \`/md/stage/{pre-seed,seed,series-a-b,growth}\` (and \`-{period}\` for history)
-- [Signal types](${BASE_URL}/md/signals/hiring-burst): \`/md/signals/{hiring-burst,infrastructure-buildout,deploy-frequency-spike,framework-migration}\`
-- [Sector rankings](${BASE_URL}/md/startups-to-watch/ai-ml-${period.slug}): \`/md/startups-to-watch/{sector}-{period}\`
-- [Startup profiles](${BASE_URL}/md/startup/opennem): \`/md/startup/{slug}\`
 
 ## Detailed Version
 

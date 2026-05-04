@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { alternatives, getAlternative, getAllAlternativeSlugs, type AlternativeFAQ } from "@/content/alternatives";
 import { useCases } from "@/content/use-cases";
 import { getAllSectors, getCurrentPeriod, getDataLastModified } from "@/lib/data";
+import AgentMirrorLinks from "@/components/AgentMirrorLinks";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -423,6 +424,8 @@ export default async function AlternativePage({ params }: PageProps) {
             Get the Report
           </Link>
         </div>
+
+        <AgentMirrorLinks qaCategory="general" />
       </div>
     </>
   );

@@ -101,6 +101,10 @@ export default function TrendingPage() {
           url: "https://gitdealflow.com",
         },
         dateModified: lastModified.toISOString().slice(0, 10),
+        speakable: {
+          "@type": "SpeakableSpecification",
+          cssSelector: ["[data-speakable]", "h1"],
+        },
       },
       {
         "@type": "ItemList",
