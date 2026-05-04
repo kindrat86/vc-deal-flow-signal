@@ -13,16 +13,21 @@ Full multi-dimensional audit of SEO/pSEO/AEO/GEO/AIO health across both apex (`g
 | AIO | 90 |
 | **Composite** | **~84** |
 
-## Final state (post-fix, 8 waves)
+## Final state (post-fix, 10 waves)
 
 | Metric | Score | Delta |
 |---|---:|---:|
 | SEO (classic) | 99 | +13 |
 | pSEO | 99 | +11 |
-| AEO | 96 | +8 |
-| GEO | 97 | +13 |
+| AEO | 97 | +9 |
+| GEO | 98 | +14 |
 | AIO | 99 | +9 |
-| **Composite** | **~98** | **+14** |
+| **Composite** | **~98.4** | **+14.4** |
+
+Bonus operational wins (not part of the score but high impact):
+- IndexNow now submits 1,050 URLs per build (was 5).
+- Every advertised agent endpoint (`/api/nlweb` GET+POST, `/api/agent/call`, `/api/a2a` `message/send`, `/api/mcp/rpc` `initialize`/`tools/list`/`tools/call`) verified to respond correctly end-to-end.
+- OpenAPI spec is now an accurate, copy-pasteable contract — agents reading the spec submit valid bodies on the first try.
 
 ## Live verification
 
@@ -78,6 +83,16 @@ Full multi-dimensional audit of SEO/pSEO/AEO/GEO/AIO health across both apex (`g
 ### Wave 8 — final static-page sweep
 23. 6 static pages (citations/agents/leaderboard/a2a/a2a-demo/trending) empty og:image → fixed
 24. `gitdealflow.com/report` ld=0 stale deploy → 9 schema types after redeploy
+
+### Wave 9 — agent-discovery accuracy
+25. `/api/nlweb` GET ?query= returned manifest, not search results — but the home WebSite SearchAction declares it as the SearchAction target. Refactored to a shared `buildResponse()` used by both GET ?query= and POST. GET without query still serves the manifest.
+26. `/glossary` no Speakable → SpeakableSpecification on h1/h2/DefinedTerm
+27. `/changelog` no Speakable → SpeakableSpecification on h1/h2/ListItem
+
+### Wave 10 — IndexNow recursion + OpenAPI accuracy
+28. `submit-indexnow.ts` was only fetching the sitemap index (5 sub-sitemap URLs) instead of recursing into sub-sitemaps. Now submits 1,050 URLs per build (verified live: HTTP 200). Also added `INDEXNOW_FORCE=1` env override so the script can be triggered manually post-deploy when running outside Vercel CI.
+29. OpenAPI spec for `/api/agent/call` declared `tool: string` but handler reads `body.name`. Spec now lists `name` as required + enum of the 5 tool names.
+30. OpenAPI spec for `/api/a2a` listed `tasks/send` but the handler implements `message/send` (canonical A2A v0.3.0 method for synchronous task submission). Updated method enum to `[message/send, tasks/get, tasks/cancel, tasks/list]`.
 
 ## Live agent surfaces (post-audit)
 
