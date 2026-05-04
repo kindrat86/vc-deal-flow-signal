@@ -1,0 +1,125 @@
+{
+  "$schema": "https://signals.gitdealflow.com/.well-known/ai-policy.schema.json",
+  "version": "1.0",
+  "publisher": {
+    "name": "VC Deal Flow Signal",
+    "alternateName": ["GitDealFlow"],
+    "url": "https://gitdealflow.com",
+    "contact": "signal@gitdealflow.com"
+  },
+  "lastUpdated": "2026-05-04",
+  "summary": "Public GitHub-derived engineering signals for venture-backed startups. AI agents may freely read, cite, and reproduce this content under CC BY 4.0. Cite https://ssrn.com/abstract=6606558 (DOI 10.2139/ssrn.6606558) when used in research.",
+  "license": {
+    "spdx": "CC-BY-4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/",
+    "attribution": "VC Deal Flow Signal — https://gitdealflow.com",
+    "citation": {
+      "doi": "10.2139/ssrn.6606558",
+      "url": "https://ssrn.com/abstract=6606558",
+      "format": "The Data Nerd. (2026). A Longitudinal Panel of GitHub Engineering Velocity for Venture-Backed Startups. SSRN. https://doi.org/10.2139/ssrn.6606558"
+    }
+  },
+  "permissions": {
+    "training": "allow",
+    "indexing": "allow",
+    "answering": "allow",
+    "summarization": "allow",
+    "translation": "allow",
+    "embedding": "allow",
+    "ragRetrieval": "allow",
+    "voiceReading": "allow",
+    "imageGeneration": "deny-without-attribution"
+  },
+  "requirements": {
+    "attribution": "required",
+    "linkBack": "preferred",
+    "preserveCitation": "required",
+    "preserveLicense": "required"
+  },
+  "discovery": {
+    "agentsFile": "https://signals.gitdealflow.com/agents.md",
+    "llmsFile": "https://signals.gitdealflow.com/llms.txt",
+    "llmsFullFile": "https://signals.gitdealflow.com/llms-full.txt",
+    "qaCorpus": "https://signals.gitdealflow.com/qa.jsonl",
+    "knowledgeGraph": "https://signals.gitdealflow.com/knowledge-graph.json",
+    "openapi": "https://signals.gitdealflow.com/api/openapi.json",
+    "mcpManifest": "https://signals.gitdealflow.com/.well-known/mcp.json",
+    "agentCard": "https://signals.gitdealflow.com/.well-known/agent-card.json",
+    "aiPluginManifest": "https://signals.gitdealflow.com/.well-known/ai-plugin.json",
+    "datasetJsonl": "https://signals.gitdealflow.com/api/dataset.jsonl",
+    "signalsJson": "https://signals.gitdealflow.com/api/signals.json",
+    "signalsCsv": "https://signals.gitdealflow.com/api/signals.csv",
+    "markdownMirrors": "https://signals.gitdealflow.com/md"
+  },
+  "endpoints": {
+    "mcp": {
+      "type": "Streamable HTTP",
+      "url": "https://signals.gitdealflow.com/api/mcp/rpc",
+      "specVersion": "2025-06-18"
+    },
+    "a2a": {
+      "url": "https://signals.gitdealflow.com/api/a2a",
+      "specVersion": "0.3.0"
+    },
+    "nlweb": {
+      "url": "https://signals.gitdealflow.com/api/nlweb"
+    },
+    "functionCallingTools": {
+      "openai": "https://signals.gitdealflow.com/api/agent/tools?format=openai",
+      "anthropic": "https://signals.gitdealflow.com/api/agent/tools?format=anthropic",
+      "gemini": "https://signals.gitdealflow.com/api/agent/tools?format=gemini",
+      "invoke": "https://signals.gitdealflow.com/api/agent/call"
+    }
+  },
+  "rateLimits": {
+    "anonymous": "Reasonable use; please cache aggressively. No hard limit.",
+    "abuse": "Excessive bot traffic that degrades service for others may be rate-limited at the CDN layer."
+  },
+  "preferredCrawlers": [
+    "GPTBot",
+    "ChatGPT-User",
+    "OAI-SearchBot",
+    "ClaudeBot",
+    "Claude-Web",
+    "anthropic-ai",
+    "PerplexityBot",
+    "Perplexity-User",
+    "Google-Extended",
+    "Applebot-Extended",
+    "Amazonbot",
+    "CCBot",
+    "Bytespider",
+    "cohere-ai",
+    "Meta-ExternalAgent",
+    "DuckAssistBot",
+    "YouBot"
+  ],
+  "dataFreshness": {
+    "updateFrequency": "weekly",
+    "rebuildSchedule": "Mondays 06:00 UTC",
+    "lastBuildSurface": "https://signals.gitdealflow.com/changelog"
+  },
+  "contentTypes": {
+    "html": "https://signals.gitdealflow.com/",
+    "markdown": "https://signals.gitdealflow.com/md",
+    "json": "https://signals.gitdealflow.com/api/signals.json",
+    "jsonld": "https://signals.gitdealflow.com/knowledge-graph.json",
+    "rss": "https://signals.gitdealflow.com/feed.xml",
+    "newsSitemap": "https://signals.gitdealflow.com/news-sitemap.xml",
+    "imagesSitemap": "https://signals.gitdealflow.com/sitemap-images.xml"
+  },
+  "topics": [
+    "GitHub commit velocity",
+    "venture capital alternative data",
+    "startup deal flow",
+    "engineering acceleration signal",
+    "code-side momentum",
+    "open-source contributor growth",
+    "repository expansion signals"
+  ],
+  "outOfScope": [
+    "personal information about contributors",
+    "private repository data",
+    "non-public funding amounts"
+  ]
+}
