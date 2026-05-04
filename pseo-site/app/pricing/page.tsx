@@ -156,18 +156,21 @@ const tiers: Tier[] = [
     name: "Custom Sector Sweep",
     priceLabel: "€1,997",
     priceCadence: "one-time",
-    rrpLabel: null,
+    rrpLabel: "€13,000+ in itemized value · 8 seats per quarter",
     oneLine:
       "A custom written report on one sector you pick — engineering momentum across every venture-backed startup in that sector, ranked, with diligence prompts and the top three early-stage targets.",
     forWho:
       "Funds investing seven-figure cheques into a defined sector who want a one-off, deeper-than-Dashboard analysis without a yearly contract.",
     bullets: [
-      "Full sector audit — every venture-backed startup in the sector you pick",
-      "Engineering acceleration ranked over the past four quarters",
-      "Diligence prompts for each top-ten startup",
-      "Three early-stage targets not yet on Crunchbase or PitchBook",
-      "Delivered as a written report within 7 business days",
-      "One 30-minute clarifications call after delivery",
+      "40-page custom Sector Sweep PDF — every venture-backed startup in your sector ranked over the last four quarters (analyst-report equivalent: €4,500)",
+      "Raw CSV — every org × every metric, license-friendly to drop into your CRM (data-license equivalent: €1,200)",
+      "Written walkthrough — 60 minutes of reading, methodology + top-5 deep dives + thesis-specific surprises (analyst-hour equivalent: €600)",
+      "Diligence prompts for each top-10 startup, paste-ready into your IC memo (custom diligence work: €800)",
+      "Three early-stage targets not on Crunchbase or PitchBook, surfaced via the same engine (sourcing-fee equivalent: €2,000)",
+      "14-day email Q&A window — unlimited follow-up, additional cuts on demand (4-6 analyst emails: €1,400)",
+      "Reproducible methodology audit trail — every metric you can re-derive from public GitHub data (audit deliverable: €500)",
+      "BONUS — €1,997 100% credited toward an Insider Circle subscription if you upgrade within 60 days (your first ~20 months of Insider, paid)",
+      "30-day Signal-or-It's-Free guarantee on the Sweep itself",
     ],
     ctaLabel: "Commission a Sector Sweep",
     ctaHref: STRIPE_SWEEP,
@@ -482,6 +485,131 @@ export default function PricingPage() {
               </a>
             </div>
           ))}
+        </section>
+
+        {/* Sector Sweep stack slide — anchored value vs price */}
+        <section
+          id="sector-sweep-stack"
+          className="mb-12 rounded-xl border border-amber-700/40 bg-amber-950/10 p-6 sm:p-8"
+          aria-label="Sector Sweep — itemized value stack"
+        >
+          <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider mb-3">
+            Custom Sector Sweep — what €1,997 actually buys
+          </p>
+          <h2 className="text-2xl font-bold text-gray-100 mb-2">
+            €13,000+ of analyst work, packaged as one written report
+          </h2>
+          <p className="text-gray-400 text-sm mb-6 max-w-2xl">
+            The Sweep is built from scratch on your thesis. Below is the
+            itemized stack — each line is the standalone market price for
+            the same deliverable. You pay the bottom line, not the sum.
+          </p>
+          <ul className="divide-y divide-amber-900/30 mb-6 border border-amber-900/30 rounded-lg overflow-hidden">
+            {[
+              {
+                label: "40-page custom Sector Sweep PDF",
+                detail:
+                  "Every venture-backed org in your sector, ranked over the past four quarters. Top-5 deep dives. Sub-sector cuts.",
+                value: "€4,500",
+              },
+              {
+                label: "Raw CSV — every org × every metric",
+                detail:
+                  "Commit velocity 14d/30d/90d, contributor delta, new-repo count, signal classification. License-friendly to drop into your CRM.",
+                value: "€1,200",
+              },
+              {
+                label: "Written walkthrough (60 min reading)",
+                detail:
+                  "Methodology, top-5 deep dives, the thesis-specific surprises. Async, re-readable, paste-able into your notes.",
+                value: "€600",
+              },
+              {
+                label: "Diligence prompts for the top-10 startups",
+                detail:
+                  "Paste-ready into your IC memo or first-call brief. Specific to your thesis, not generic.",
+                value: "€800",
+              },
+              {
+                label: "Three early-stage targets not on Crunchbase",
+                detail:
+                  "Net-new orgs surfaced by the same engine. Pre-deck, pre-press, pre-AngelList.",
+                value: "€2,000",
+              },
+              {
+                label: "14-day email Q&A window",
+                detail:
+                  "Unlimited follow-up. Request additional cuts, re-runs on a sub-thesis, or specific orgs. Same-week response.",
+                value: "€1,400",
+              },
+              {
+                label: "Reproducible methodology audit trail",
+                detail:
+                  "Every metric is re-derivable from public GitHub data. Methodology source on SSRN abstract 6606558.",
+                value: "€500",
+              },
+              {
+                label: "BONUS — Insider Circle credit (€1,997, 60 days)",
+                detail:
+                  "Upgrade to Insider Circle within 60 days of receiving the Sweep and the €1,997 is 100% credited — first ~20 months of Insider, paid.",
+                value: "€1,997",
+              },
+              {
+                label: "BONUS — 30-day Signal-or-It's-Free guarantee",
+                detail:
+                  "Reply with REFUND within 30 days if the Sweep doesn't surface three orgs you didn't already know about. No forms, no call.",
+                value: "Priceless",
+              },
+            ].map((row) => (
+              <li
+                key={row.label}
+                className="flex flex-col sm:flex-row sm:items-baseline gap-y-1 sm:gap-x-4 px-4 py-3 bg-slate-900/50"
+              >
+                <div className="flex-1">
+                  <p className="text-gray-100 text-sm font-medium">
+                    {row.label}
+                  </p>
+                  <p className="text-gray-500 text-xs leading-relaxed mt-0.5">
+                    {row.detail}
+                  </p>
+                </div>
+                <p className="text-amber-300 text-sm font-mono font-semibold whitespace-nowrap sm:self-start">
+                  {row.value}
+                </p>
+              </li>
+            ))}
+          </ul>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 rounded-lg border border-amber-700/50 bg-amber-950/30 px-5 py-4">
+            <div>
+              <p className="text-gray-400 text-xs uppercase tracking-wider mb-1">
+                Itemized value
+              </p>
+              <p className="text-gray-300 text-base">
+                <span className="line-through decoration-amber-400/60">
+                  €13,000+
+                </span>{" "}
+                <span className="text-gray-500 text-sm">
+                  (excluding bonuses)
+                </span>
+              </p>
+            </div>
+            <div className="text-left sm:text-right">
+              <p className="text-amber-300 text-xs uppercase tracking-wider mb-1">
+                Today, one-time
+              </p>
+              <p className="text-3xl font-bold text-amber-200">€1,997</p>
+            </div>
+            <a
+              href={STRIPE_SWEEP}
+              className="inline-flex items-center justify-center px-5 py-3 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-semibold text-sm shadow-lg shadow-amber-500/20 transition-all"
+            >
+              Commission via Stripe →
+            </a>
+          </div>
+          <p className="text-gray-500 text-xs mt-3">
+            Capped at 8 sweeps per quarter. Q3 2026: 7 of 8 open. Each Sweep
+            is custom — nothing template, nothing reused.
+          </p>
         </section>
 
         {/* Guarantee */}

@@ -1,0 +1,21 @@
+TO: hello@devtools.fyi
+FROM: signal@gitdealflow.com
+SUBJECT: Affiliate program — GitDealFlow MCP (5 free tools, A-Tier Glama)
+
+Hi,
+
+Tool for the devtools.fyi index:
+
+GitDealFlow — open methodology (SSRN abstract=6606558) that ranks 4,200 venture-backed startup GitHub orgs by commit-velocity acceleration. Free MCP server with 5 read-only tools (npm @gitdealflow/mcp-signal). Paid tiers: €9.97/mo Dashboard, €97/mo Insider, €1,997 Sector Sweep.
+
+20% lifetime affiliate is open if it fits the directory model: €19.40/mo recurring per Insider sub, €399 on each Sector Sweep, 60d last-click cookie. Program: signals.gitdealflow.com/affiliates.
+
+Listed on:
+- Glama A-Tier (4.9/5.0)
+- AlternativeTo
+- SaaSHub
+- AlternativeTo
+- OpenAlex / DataCite (DOI-anchored dataset)
+
+The Data Nerd
+gitdealflow.com

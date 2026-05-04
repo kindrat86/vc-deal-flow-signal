@@ -8,6 +8,7 @@ import {
   getAllTrendSlugs,
   getAllRegionPageSlugs,
   getAllStagePageSlugs,
+  getAllStageSlugs,
   getAllStageSectorPairs,
   getAllSignalSectorPairs,
   getAllStageSignalPairs,
@@ -25,6 +26,7 @@ import { PRIMITIVES } from "@/content/signal-primitives";
 import { LOCALES } from "@/content/locales";
 import { getMarketSlugs } from "@/lib/markets";
 import { getAllTop100Slugs } from "@/lib/top-100";
+import { getAllPredictionWeekSlugs } from "@/lib/predictions";
 
 const BASE_URL = "https://signals.gitdealflow.com";
 
@@ -61,6 +63,11 @@ export async function GET(_req: Request, ctx: RouteContext) {
       { url: BASE_URL, lastmod, changefreq: "weekly", priority: 1.0 },
       { url: `${BASE_URL}/trending`, lastmod, changefreq: "weekly", priority: 0.9 },
       { url: `${BASE_URL}/methodology`, lastmod, changefreq: "monthly", priority: 0.8 },
+      { url: `${BASE_URL}/pricing`, lastmod, changefreq: "monthly", priority: 0.9 },
+      { url: `${BASE_URL}/buyers-guide`, lastmod, changefreq: "monthly", priority: 0.85 },
+      { url: `${BASE_URL}/enterprise`, lastmod, changefreq: "monthly", priority: 0.85 },
+      { url: `${BASE_URL}/api/v1/pricing.json`, lastmod, changefreq: "monthly", priority: 0.7 },
+      { url: `${BASE_URL}/dataset`, lastmod, changefreq: "weekly", priority: 0.85 },
       { url: `${BASE_URL}/faq`, lastmod, changefreq: "monthly", priority: 0.7 },
       { url: `${BASE_URL}/about`, lastmod, changefreq: "monthly", priority: 0.6 },
       { url: `${BASE_URL}/story`, lastmod, changefreq: "monthly", priority: 0.75 },
@@ -68,12 +75,22 @@ export async function GET(_req: Request, ctx: RouteContext) {
       { url: `${BASE_URL}/compare`, lastmod, changefreq: "monthly", priority: 0.6 },
       { url: `${BASE_URL}/weekly`, lastmod, changefreq: "weekly", priority: 0.6 },
       { url: `${BASE_URL}/weekly/top-100`, lastmod, changefreq: "weekly", priority: 0.85 },
-      ...getAllTop100Slugs().map((slug) => ({
-        url: `${BASE_URL}/weekly/top-100/${slug}`,
-        lastmod,
-        changefreq: "weekly" as const,
-        priority: 0.8,
-      })),
+      { url: `${BASE_URL}/weekly/top-100/data.json`, lastmod, changefreq: "weekly", priority: 0.7 },
+      { url: `${BASE_URL}/weekly/top-100/feed.xml`, lastmod, changefreq: "weekly", priority: 0.7 },
+      ...getAllTop100Slugs().flatMap((slug) => [
+        {
+          url: `${BASE_URL}/weekly/top-100/${slug}`,
+          lastmod,
+          changefreq: "weekly" as const,
+          priority: 0.8,
+        },
+        {
+          url: `${BASE_URL}/weekly/top-100/${slug}/data.json`,
+          lastmod,
+          changefreq: "weekly" as const,
+          priority: 0.65,
+        },
+      ]),
       { url: `${BASE_URL}/signal-of-the-week`, lastmod, changefreq: "weekly", priority: 0.8 },
       { url: `${BASE_URL}/alternatives`, lastmod, changefreq: "monthly", priority: 0.8 },
       { url: `${BASE_URL}/use-cases`, lastmod, changefreq: "monthly", priority: 0.8 },
@@ -151,6 +168,21 @@ export async function GET(_req: Request, ctx: RouteContext) {
       { url: `${BASE_URL}/a2a/openai-agents-sdk`, lastmod, changefreq: "monthly", priority: 0.75 },
       { url: `${BASE_URL}/a2a/langchain`, lastmod, changefreq: "monthly", priority: 0.75 },
       { url: `${BASE_URL}/a2a/vercel-ai-sdk`, lastmod, changefreq: "monthly", priority: 0.75 },
+      { url: `${BASE_URL}/affiliates`, lastmod, changefreq: "monthly", priority: 0.6 },
+      { url: `${BASE_URL}/authors`, lastmod, changefreq: "monthly", priority: 0.7 },
+      { url: `${BASE_URL}/authors/the-data-nerd`, lastmod, changefreq: "monthly", priority: 0.75 },
+      { url: `${BASE_URL}/authors/engineering-research`, lastmod, changefreq: "monthly", priority: 0.7 },
+      { url: `${BASE_URL}/authors/founder-perspective`, lastmod, changefreq: "monthly", priority: 0.7 },
+      { url: `${BASE_URL}/badge-builder`, lastmod, changefreq: "monthly", priority: 0.75 },
+      { url: `${BASE_URL}/built-with`, lastmod, changefreq: "weekly", priority: 0.7 },
+      { url: `${BASE_URL}/predicted`, lastmod, changefreq: "weekly", priority: 0.85 },
+      ...getAllPredictionWeekSlugs().map((slug) => ({
+        url: `${BASE_URL}/predicted/${slug}`,
+        lastmod,
+        changefreq: "weekly" as const,
+        priority: 0.75,
+      })),
+      { url: `${BASE_URL}/challenge`, lastmod, changefreq: "monthly", priority: 0.85 },
     ];
   } else if (id === "sectors") {
     entries = [
@@ -187,7 +219,7 @@ export async function GET(_req: Request, ctx: RouteContext) {
     ];
   } else if (id === "crossings") {
     entries = [
-      ...getAllStagePageSlugs().map((slug) => ({
+      ...getAllStageSlugs().map((slug) => ({
         url: `${BASE_URL}/stage/${slug}`,
         lastmod,
         changefreq: "weekly",

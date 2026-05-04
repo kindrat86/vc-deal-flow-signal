@@ -1,0 +1,25 @@
+TO: [kanvas.dev / bakaphp founder email — research before send]
+FROM: signal@gitdealflow.com
+SUBJECT: Kanvas is named in this week's Acceleration Watch (rank #4, LATAM seed)
+
+Hi,
+
+I run gitdealflow.com — open SSRN-published methodology (abstract=6606558) that ranks venture-backed startup GitHub orgs by engineering acceleration.
+
+Kanvas (BakaPHP) is at rank #4 in this week's Acceleration Watch (week of 2026-05-04, 598 commits / 14d, +32%, framework-migration signal, LATAM seed). Live: signals.gitdealflow.com/predicted
+
+LATAM seed is under-covered in venture-data tooling. Your row may surface to LATAM-focused funds (Kaszek, Monashees, Magma, etc.) that subscribe to the watch.
+
+Three notes:
+
+(1) Methodology is open and re-derivable — your team can audit it.
+
+(2) We grade every pick post-hoc at 60 and 90 days against public fundraise / acquisition / launch news. Transparent mark.
+
+(3) If you'd like the named placement linked from your fundraising page or partner-deck appendix, the permanent URL is signals.gitdealflow.com/predicted/2026-w18#bakaphp.
+
+Reply "exclude" if you'd rather we drop the row.
+
+Best,
+The Data Nerd
+gitdealflow.com

@@ -1,6 +1,6 @@
 {
   "_doc": "Pre-approved post queue for Mastodon. Char limit 500 (more generous than Bluesky 300). Style: Brunson-tight, statements > questions, no em-dashes, SSRN abstract=6606558 anchor.",
-  "_updated": "2026-05-03",
+  "_updated": "2026-05-04",
   "_rules": {
     "max_per_day": 2,
     "min_gap_minutes": 240,
@@ -137,7 +137,7 @@
     },
     {
       "id": "015-agent-runtimes-hub-2026-05-03",
-      "text": "Cross-listed our MCP server in 7 agent runtimes today.\n\nOne npm package \u2014 `@gitdealflow/mcp-signal` \u2014 same install everywhere: Cursor, Cline, Block Goose, OpenHands, Aider (via mcpm-aider), AiderDesk, Raycast.\n\nFree, no auth required, weekly refresh from public GitHub data. Six read-only tools for VC deal flow sourcing.\n\nHub with copy-paste snippets per runtime: https://signals.gitdealflow.com/integrations/agent-runtimes\n\n#MCP #ModelContextProtocol #AIagents #VC #buildinpublic #OpenSource",
+      "text": "Cross-listed our MCP server in 7 agent runtimes today.\n\nOne npm package — `@gitdealflow/mcp-signal` — same install everywhere: Cursor, Cline, Block Goose, OpenHands, Aider (via mcpm-aider), AiderDesk, Raycast.\n\nFree, no auth required, weekly refresh from public GitHub data. Six read-only tools for VC deal flow sourcing.\n\nHub with copy-paste snippets per runtime: https://signals.gitdealflow.com/integrations/agent-runtimes\n\n#MCP #ModelContextProtocol #AIagents #VC #buildinpublic #OpenSource",
       "tags": [
         "mcp",
         "agent-runtimes",
@@ -175,31 +175,114 @@
     {
       "id": "019-developer-investor-stack-2026-05-04",
       "text": "Developer-investor 2026 stack: MCP server in your IDE, Copilot for due diligence, Notion for pipeline, Crunchbase free.\n\nUnder EUR 30/mo. Traditional VCs structurally cannot match without hiring engineering analysts.\n\nFull guide: signals.gitdealflow.com/compare/best-deal-flow-tools-developer-investors-2026\n\n#VC #DealFlow #MCP",
-      "tags": ["developer-investor", "stack", "shipped"],
+      "tags": [
+        "developer-investor",
+        "stack",
+        "shipped"
+      ],
       "use_count": 0
     },
     {
       "id": "020-vs-tribe-magnify-2026-05-04",
       "text": "Tribe Capital won't license Magnify externally.\n\nFor outside investors who want a Tribe-style data edge in 2026: external GitHub commit-velocity signals, 6-12 weeks pre-fundraise, EUR 9.97/mo.\n\nDifferent signal, same thesis: data beats narrative.\n\nsignals.gitdealflow.com/compare/vc-deal-flow-signal-vs-tribe-capital-magnify\n\n#VC #DealFlow",
-      "tags": ["tribe-capital", "vs", "shipped"],
+      "tags": [
+        "tribe-capital",
+        "vs",
+        "shipped"
+      ],
       "use_count": 0
     },
     {
       "id": "021-vs-signalfire-beacon-2026-05-04",
       "text": "SignalFire's Beacon is the gold standard internal sourcing platform. Internal being the operative word.\n\nFor investors not at SignalFire: single-signal sharpness on engineering velocity, externally accessible, EUR 9.97/mo.\n\nsignals.gitdealflow.com/compare/vc-deal-flow-signal-vs-signalfire-beacon\n\n#VC #DealFlow",
-      "tags": ["signalfire", "beacon", "vs", "shipped"],
+      "tags": [
+        "signalfire",
+        "beacon",
+        "vs",
+        "shipped"
+      ],
       "use_count": 0
     },
     {
       "id": "022-vs-affinity-2026-05-04",
       "text": "Affinity tells you who you know.\n\nVC Deal Flow Signal tells you who you should know.\n\nNot competitors. Combined workflow: signal fires, Affinity finds the warm intro, you're in the meeting six weeks before the round closes.\n\nsignals.gitdealflow.com/compare/vc-deal-flow-signal-vs-affinity-relationship-intelligence\n\n#VC #DealFlow",
-      "tags": ["affinity", "vs", "shipped"],
+      "tags": [
+        "affinity",
+        "vs",
+        "shipped"
+      ],
       "use_count": 0
     },
     {
       "id": "023-developer-investor-edge-2026-05-04",
       "text": "If you write code AND deploy capital, your edge is reading engineering signals others miss.\n\nMCP server in your IDE. AI coding assistant for codebase due diligence. Crunchbase free for funding cross-check.\n\nUnder EUR 30/mo total.\n\nsignals.gitdealflow.com/compare\n\n#VC #DealFlow",
-      "tags": ["developer-investor", "edge"],
+      "tags": [
+        "developer-investor",
+        "edge"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "024-vs-angellist-2026-05-04",
+      "text": "AngelList shows you founders who have already chosen to broadcast — they're listed and actively raising.\n\nVC Deal Flow Signal shows you founders who are 6 to 12 weeks from raising, while they're still heads-down building.\n\nSame audience, different point in the cycle. Signal first, AngelList for the syndicate transaction once timing fits.\n\nsignals.gitdealflow.com/alternatives/angellist\n\n#VC #DealFlow",
+      "tags": [
+        "angellist",
+        "vs"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "025-vs-apollo-2026-05-04",
+      "text": "Apollo.io is excellent at answering: which person at this company should I email.\n\nIt does not tell you which company is worth your time in the first place.\n\nVC Deal Flow Signal sits at the layer above — engineering acceleration on technical startups, 6 to 12 weeks before fundraise announcements. Stack them: Signal as the sourcing input, Apollo as the contact-data and outbound layer.\n\nsignals.gitdealflow.com/alternatives/apollo-io\n\n#VC #DealFlow",
+      "tags": [
+        "apollo",
+        "vs"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "026-vs-tracxn-2026-05-04",
+      "text": "Tracxn's strength: analyst-curated sector reports across 350+ feeds with deep coverage in India, SEA, MENA. Comprehensive but lagging by definition.\n\nVC Deal Flow Signal sits ahead of that lag — weekly leading signals on engineering acceleration, 6 to 12 weeks before fundraise announcements.\n\nLagging vs leading. Most investors who can afford both run them in sequence.\n\nsignals.gitdealflow.com/alternatives/tracxn\n\n#VC #DealFlow",
+      "tags": [
+        "tracxn",
+        "vs"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "027-emerging-manager-stack-2026-05-04",
+      "text": "Emerging managers face a structural disadvantage: large funds use $20K+/yr platforms (PitchBook, CB Insights, Harmonic) that solo GPs cannot afford.\n\nThe 2026 lean stack matches large-fund sourcing capability for under $80/mo total: VC Deal Flow Signal + Crunchbase Pro + Dealroom Free + HubSpot Free.\n\nSkip PitchBook until fund 2.\n\nsignals.gitdealflow.com/compare/best-deal-flow-tools-emerging-managers-2026\n\n#VC #EmergingManager",
+      "tags": [
+        "emerging-managers",
+        "stack"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "028-vc-tech-stack-2026-05-04",
+      "text": "The 2026 VC tech stack has stratified by tool layer rather than consolidated into a single platform.\n\nSourcing has bifurcated into databases (PitchBook, Crunchbase) and signal engines (VC Deal Flow Signal, Harmonic, Forager). CRM remains Affinity-dominant. The stack-defining decision is which signal engine sits at the front of your funnel — that compounds over a fund's life.\n\nsignals.gitdealflow.com/compare/vc-tech-stack-essentials-2026\n\n#VC #DealFlow",
+      "tags": [
+        "vc-stack",
+        "essentials"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "029-acceleration-watch-launch-2026-05-04",
+      "text": "Acceleration Watch launches today on gitdealflow.\n\nEvery Monday: 10 startups whose GitHub engineering activity crossed the signal threshold the prior week. Each pick graded post-hoc at 60 and 90 days against public fundraise news.\n\nPublic scorecard. SSRN methodology, abstract=6606558.\n\nsignals.gitdealflow.com/predicted",
+      "tags": ["predicted", "launch", "weekly"],
+      "use_count": 0
+    },
+    {
+      "id": "030-7-day-challenge-2026-05-04",
+      "text": "Free email course: 7-Day Deal Flow Reset Challenge.\n\nOne GitHub signal per day. One 5-minute exercise per day. By day 7 you have a personal sourcing framework you can run on any startup, without paying for any tool.\n\nMethodology from the SSRN paper (abstract=6606558).\n\nsignals.gitdealflow.com/challenge",
+      "tags": ["challenge", "course", "free"],
+      "use_count": 0
+    },
+    {
+      "id": "031-acceleration-watch-grading-2026-05-04",
+      "text": "Public bet rule: every named pick on the Acceleration Watch is graded against public fundraise / acquisition / IPO news at 60 and 90 days.\n\nNo edits. No silent removals. Every miss is permanent.\n\nThat's the discipline. That's the brand.\n\nsignals.gitdealflow.com/predicted",
+      "tags": ["predicted", "public-bet", "methodology"],
       "use_count": 0
     }
   ]

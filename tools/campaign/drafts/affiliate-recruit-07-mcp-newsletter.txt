@@ -1,0 +1,18 @@
+TO: [author of any active MCP-focused newsletter — research before send]
+FROM: signal@gitdealflow.com
+SUBJECT: Affiliate — GitDealFlow MCP (one of the higher-ranked A-Tier servers on Glama)
+
+Hi,
+
+Quick affiliate offer relevant to your audience:
+
+GitDealFlow ships an MCP server with 5 read-only tools (npm @gitdealflow/mcp-signal). A-Tier on Glama (4.9/5.0). The use case your readers care about: a developer-investor pasting "what's accelerating in AI infra this week" into Claude or Cursor and getting a ranked answer from real GitHub data, not vibes.
+
+Methodology is public on SSRN (abstract=6606558), so you can write the post around the data not the pitch.
+
+20% lifetime affiliate is open: €19.40/mo recurring on every Insider sub, €399 on every Sector Sweep. 60d cookie. Stripe monthly payouts. Program: signals.gitdealflow.com/affiliates.
+
+Free MCP stays free forever — you can recommend it without anyone needing to pay anything for the placement to be useful.
+
+The Data Nerd
+gitdealflow.com

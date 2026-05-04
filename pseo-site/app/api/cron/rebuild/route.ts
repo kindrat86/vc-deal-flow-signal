@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { getAllPageSlugs, getAllGeoPageSlugs, getAllStartupSlugs } from "@/lib/data";
 import { getAllPostSlugs } from "@/content/posts";
 import { getAllComparisonSlugs } from "@/content/comparisons";
+import { getAllPredictionWeekSlugs } from "@/lib/predictions";
 
 const BASE_URL = "https://signals.gitdealflow.com";
 const INDEXNOW_KEY = process.env.INDEXNOW_KEY;
@@ -16,6 +17,9 @@ async function pingIndexNow() {
     `${BASE_URL}/glossary`,
     `${BASE_URL}/blog`,
     `${BASE_URL}/compare`,
+    `${BASE_URL}/predicted`,
+    `${BASE_URL}/challenge`,
+    ...getAllPredictionWeekSlugs().map((s) => `${BASE_URL}/predicted/${s}`),
     ...getAllPageSlugs().map((s) => `${BASE_URL}/startups-to-watch/${s}`),
     ...getAllGeoPageSlugs().map((s) => `${BASE_URL}/startups-to-watch/geo/${s}`),
     ...getAllStartupSlugs().map((s) => `${BASE_URL}/startup/${s}`),

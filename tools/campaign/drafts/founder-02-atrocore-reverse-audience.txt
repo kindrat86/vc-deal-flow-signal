@@ -1,0 +1,23 @@
+TO: [atrocore.com founder email — research before send]
+FROM: signal@gitdealflow.com
+SUBJECT: AtroCore is named in this week's Acceleration Watch (rank #2)
+
+Hi,
+
+I run gitdealflow.com — methodology-published (SSRN abstract=6606558) signal that ranks 4,200 venture-backed startup GitHub orgs by engineering acceleration.
+
+AtroCore is named at rank #2 in this week's Acceleration Watch (week of 2026-05-04, 116 commits / 14d, +38%, framework-migration signal, EU seed). Live page: signals.gitdealflow.com/predicted
+
+Investors who use the watch as a sourcing input may show up in your inbound. Three notes:
+
+(1) The signal is data-derived from public GitHub. Methodology is open and re-derivable. Your engineering team can audit it: ssrn.com/abstract=6606558.
+
+(2) We grade every named pick post-hoc at 60 and 90 days against public fundraise / acquisition / product-launch news. Your row gets a transparent mark.
+
+(3) If you'd like the named placement linked from your investor-update or partner page, the URL is signals.gitdealflow.com/predicted/2026-w18#atrocore. Permanent, archived.
+
+If you'd rather we exclude the row from grading, reply "exclude" and we honor it within 24h.
+
+Best,
+The Data Nerd
+gitdealflow.com

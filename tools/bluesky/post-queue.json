@@ -1,6 +1,6 @@
 {
   "_doc": "Pre-approved post queue. Script pops oldest unposted, publishes once/day. Refill weekly. Style: Brunson-tight, statements > questions, no em-dashes (per Reddit memory rule extends here), 280 char target.",
-  "_updated": "2026-05-03",
+  "_updated": "2026-05-04T19:00:00Z",
   "_rules": {
     "max_per_day": 2,
     "min_gap_minutes": 240,
@@ -144,7 +144,7 @@
     },
     {
       "id": "015-agent-runtimes-hub-2026-05-03",
-      "text": "Cross-listed our MCP server in 7 agent runtimes today.\n\nOne npm package \u2014 same install everywhere \u2014 Cursor, Cline, Goose, OpenHands, Aider, AiderDesk, Raycast.\n\nFree, no auth, weekly refresh.\n\nHub: signals.gitdealflow.com/integrations/agent-runtimes",
+      "text": "Cross-listed our MCP server in 7 agent runtimes today.\n\nOne npm package — same install everywhere — Cursor, Cline, Goose, OpenHands, Aider, AiderDesk, Raycast.\n\nFree, no auth, weekly refresh.\n\nHub: signals.gitdealflow.com/integrations/agent-runtimes",
       "tags": [
         "mcp",
         "agent-runtimes",
@@ -227,6 +227,110 @@
         "ai-sourcing",
         "comparison",
         "shipped"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "024-vs-angellist-2026-05-04",
+      "text": "AngelList shows founders who are actively raising.\n\nVC Deal Flow Signal shows founders 6–12 weeks from raising.\n\nSame audience, different point in the cycle.\n\nsignals.gitdealflow.com/alternatives/angellist",
+      "tags": [
+        "angellist",
+        "vs"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "025-vs-apollo-2026-05-04",
+      "text": "Apollo answers 'which person at this company should I email'.\n\nVC Deal Flow Signal answers 'which company is even worth your time'.\n\nStack them. Sourcing first, contact-data second.\n\nsignals.gitdealflow.com/alternatives/apollo-io",
+      "tags": [
+        "apollo",
+        "vs"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "026-vs-tracxn-2026-05-04",
+      "text": "Tracxn sector reports tell you what already happened in a market.\n\nVC Deal Flow Signal tells you which startups in that market are accelerating right now.\n\nLagging vs leading.\n\nsignals.gitdealflow.com/alternatives/tracxn",
+      "tags": [
+        "tracxn",
+        "vs"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "027-emerging-manager-stack-2026-05-04",
+      "text": "The full emerging-manager deal flow stack for 2026 runs under $80/mo total.\n\nSignal engine + verification + CRM + EU coverage. Skip PitchBook until fund 2.\n\nsignals.gitdealflow.com/compare/best-deal-flow-tools-emerging-managers-2026",
+      "tags": [
+        "emerging-managers",
+        "stack"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "028-vc-tech-stack-2026-05-04",
+      "text": "Mapped the 2026 VC tech stack across sourcing, CRM, data, diligence, LP comms.\n\nThe stack-defining decision is no longer Affinity vs Salesforce. It's which signal engine sits at the front of the funnel.\n\nsignals.gitdealflow.com/compare/vc-tech-stack-essentials-2026",
+      "tags": [
+        "vc-stack",
+        "essentials"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "029-acceleration-watch-launch-2026-05-04",
+      "text": "Acceleration Watch launches today.\n\n10 named startups every Monday. GitHub-engineering acceleration crossing the signal threshold the prior week.\n\nGraded post-hoc against public fundraise news at 60 and 90 days. Public scorecard.\n\nsignals.gitdealflow.com/predicted",
+      "tags": [
+        "predicted",
+        "launch",
+        "weekly"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "030-acceleration-watch-methodology-2026-05-04",
+      "text": "Public bet rule: every named pick gets graded against public fundraise news at 60 and 90 days.\n\nNot a prediction. A data-driven engineering watchlist. Methodology re-derivable from public GitHub.\n\nssrn.com/abstract=6606558\n\nsignals.gitdealflow.com/predicted",
+      "tags": [
+        "predicted",
+        "methodology"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "031-acceleration-watch-w18-pick1-2026-05-04",
+      "text": "Week 18 Acceleration Watch is live.\n\nRank 1: zapplyjobs (US pre-seed, 1,694 commits / 14d, +82% acceleration, hiring burst).\n\nGraded by 2026-07-03 against public fundraise news.\n\nsignals.gitdealflow.com/predicted",
+      "tags": [
+        "predicted",
+        "weekly",
+        "pre-seed"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "032-acceleration-watch-eu-2026-05-04",
+      "text": "EU + LATAM seed-stage are under-covered in venture-data tooling.\n\nThis week's Acceleration Watch names AtroCore (EU, +38%), Kanvas (LATAM, +32%), metasfresh (EU, +139%).\n\nGraded post-hoc, public scorecard.\n\nsignals.gitdealflow.com/predicted",
+      "tags": [
+        "predicted",
+        "geo",
+        "eu",
+        "latam"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "033-7-day-challenge-launch-2026-05-04",
+      "text": "Free 7-Day Deal Flow Reset Challenge.\n\nOne signal per day. 5-minute exercise per day. Builds a personal sourcing framework from the SSRN methodology — no tool required.\n\nDay 7 reveals the composite + how to scale it.\n\nsignals.gitdealflow.com/challenge",
+      "tags": [
+        "challenge",
+        "free",
+        "course"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "034-acceleration-watch-grading-2026-05-04",
+      "text": "Bookmark signals.gitdealflow.com/predicted today. Come back in 60 days. Count the hits.\n\nThat's the rule. We grade every named pick post-hoc against public fundraise news. Every miss is on record forever.\n\nThe discipline is the brand.",
+      "tags": [
+        "predicted",
+        "public-bet"
       ],
       "use_count": 0
     }
