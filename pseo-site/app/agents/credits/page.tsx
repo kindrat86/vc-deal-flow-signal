@@ -8,7 +8,7 @@ const STRIPE_LINK =
   "https://buy.stripe.com/PLACEHOLDER_AGENT_CREDITS_100";
 
 export const metadata: Metadata = {
-  title: "Agent Credits — Pay Per Deep Signal | VC Deal Flow Signal",
+  title: "Agent Credits — Pay Per Deep Signal",
   description:
     "Per-request pricing for AI agents and programmatic callers. €19 = 100 deep-signal calls (€0.19 each). One credit per deep signal returned. The 6 free MCP tools stay free.",
   alternates: { canonical: "/agents/credits" },
