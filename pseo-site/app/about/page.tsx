@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllSectors, getCurrentPeriod, getAllPeriods } from "@/lib/data";
+import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 
 export const metadata: Metadata = {
   title: "About VC Deal Flow Signal — Who We Are & How It Works",
@@ -206,6 +207,7 @@ export default function AboutPage() {
 
   return (
     <>
+      <AgentMirrorLinks path="/about" qaCategory="general" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

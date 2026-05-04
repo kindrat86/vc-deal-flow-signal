@@ -1,0 +1,23 @@
+# RFC 9116 security policy for VC Deal Flow Signal (signals.gitdealflow.com)
+# Canonical URL: https://signals.gitdealflow.com/.well-known/security.txt
+# Updated: 2026-05-04
+
+Contact: mailto:signal@gitdealflow.com
+Expires: 2027-05-04T00:00:00Z
+Preferred-Languages: en
+Canonical: https://signals.gitdealflow.com/.well-known/security.txt
+Policy: https://gitdealflow.com/privacy
+
+# Reporting guidelines
+# Please email signal@gitdealflow.com with:
+#   - A clear description of the issue
+#   - Steps to reproduce
+#   - Affected URL or endpoint
+#   - Your name (or pseudonym) for attribution if desired
+#
+# We aim to acknowledge reports within 5 business days.
+# This is a small independent project — there is no bug bounty,
+# but we credit responsible disclosures in our changelog if requested.
+#
+# Please do NOT publicly disclose vulnerabilities until we have
+# acknowledged them and worked with you on a fix.

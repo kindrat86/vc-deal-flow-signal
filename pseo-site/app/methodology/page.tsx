@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentSummary } from "@/components/AgentSummary";
+import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { getDataLastModified } from "@/lib/data";
 import PSEOFooterNav from "@/components/PSEOFooterNav";
 
@@ -240,6 +241,7 @@ export default function MethodologyPage() {
 
   return (
     <>
+      <AgentMirrorLinks path="/methodology" qaCategory="methodology" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

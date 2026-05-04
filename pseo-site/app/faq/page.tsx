@@ -3,6 +3,7 @@ import Link from "next/link";
 import { posts } from "@/content/posts";
 import { getAllSectors, getCurrentPeriod } from "@/lib/data";
 import PSEOFooterNav from "@/components/PSEOFooterNav";
+import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 
 export const metadata: Metadata = {
   title: "Frequently Asked Questions — VC Deal Flow Signal",
@@ -122,6 +123,7 @@ export default function FAQPage() {
 
   return (
     <>
+      <AgentMirrorLinks path="/faq" qaCategory="general" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

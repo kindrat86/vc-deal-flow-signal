@@ -7,6 +7,7 @@ import {
 } from "@/lib/data";
 import { posts } from "@/content/posts";
 import { standaloneFaqs } from "@/content/standalone-faqs";
+import { extraPageFaqs } from "@/content/extra-page-faqs";
 import { FINDINGS as RESEARCH_FINDINGS } from "@/content/research-findings";
 
 const BASE_URL = "https://signals.gitdealflow.com";
@@ -39,7 +40,19 @@ export async function GET() {
     source: BASE_URL,
     contact: "signal@gitdealflow.com",
     schema: ["question", "answer", "source", "sourceUrl", "category"],
-    categories: ["general", "blog", "sector", "signal-type"],
+    categories: [
+      "general",
+      "blog",
+      "sector",
+      "signal-type",
+      "research-finding",
+      "pricing",
+      "comparison",
+      "use-case",
+      "agent-protocol",
+      "extension",
+      "weekly-report",
+    ],
   };
 
   for (const faq of standaloneFaqs) {
@@ -52,6 +65,16 @@ export async function GET() {
       source: faq.source,
       sourceUrl: url,
       category: "general",
+    });
+  }
+
+  for (const faq of extraPageFaqs) {
+    out.push({
+      question: faq.question,
+      answer: faq.answer,
+      source: faq.source,
+      sourceUrl: faq.sourceUrl,
+      category: faq.category,
     });
   }
 

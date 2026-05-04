@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 
 export const metadata: Metadata = {
   title: "Glossary — VC Deal Flow Signal Terms & Definitions",
@@ -130,6 +131,7 @@ export default function GlossaryPage() {
 
   return (
     <>
+      <AgentMirrorLinks path="/glossary" qaCategory="general" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

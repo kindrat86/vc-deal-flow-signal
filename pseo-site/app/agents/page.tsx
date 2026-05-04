@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentSummary } from "@/components/AgentSummary";
+import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { getDataLastModified } from "@/lib/data";
 
 const SITE = "https://signals.gitdealflow.com";
@@ -274,6 +275,59 @@ export default function AgentsLandingPage() {
           url: SITE,
         },
       },
+      {
+        "@type": "FAQPage",
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: "How do I install the MCP server?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "For Claude Desktop or Claude Code, add to your mcpServers config: { 'gitdealflow': { 'command': 'npx', 'args': ['-y', '@gitdealflow/mcp-signal'] } }. Cursor, Windsurf, Zed, and Cline accept the same stdio invocation. For ChatGPT Apps and any host that does not spawn child processes, use the Streamable HTTP transport at POST https://signals.gitdealflow.com/api/mcp/rpc (MCP 2025-06-18 protocol).",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Do I need an API key or auth token?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "No. All public agent surfaces — MCP server, A2A endpoint, NLWeb, function-calling API, OpenAPI 3.1 spec, JSON/CSV/JSONL panel exports, embeddable badges, ChatGPT plugin manifest, RFC 9727 api-catalog — are auth-free. There are polite per-IP origin limits (rate limits scale generously for normal use); the Insider Circle paid tier (EUR 97/month) adds higher rate limits and prioritized API access for programmatic users.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "What's the difference between the MCP server and the function-calling API?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Same six tools, two delivery surfaces. The MCP server is the right choice for any MCP-compatible host (Claude Desktop, Claude Code, Cursor, Windsurf, Zed, Cline, ChatGPT Apps). The function-calling API is the right choice when you're using OpenAI/Anthropic/Gemini SDKs directly without an MCP client — GET /api/agent/tools returns tool schemas in your provider's format, POST /api/agent/call invokes any tool. Both wrap the same data and produce identical results.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Is the data licensed for AI training?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Yes. The dataset is CC BY 4.0 — free for personal, editorial, and AI-training use with attribution. Citation: 'VC Deal Flow Signal (GitDealFlow), https://gitdealflow.com.' For academic use, cite the SSRN preprint at https://ssrn.com/abstract=6606558. Bulk commercial redistribution requires permission — email signal@gitdealflow.com.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Where can I file a bug or request a new tool?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Bugs and feature requests for the MCP server: GitHub issues at https://github.com/kindrat86/vc-deal-flow-signal. Issues with the public APIs (signals.json, signals.csv, NLWeb, A2A, function-calling): email signal@gitdealflow.com — we triage weekly. The MCP discovery manifest at /.well-known/mcp.json lists all current tools, resources, and prompts; api-catalog at /.well-known/api-catalog tracks every API description we publish.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Will the free MCP tools ever be paywalled?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "No. The five core MCP tools, the dataset, the Chrome extension, and the public APIs (JSON/CSV/JSONL/OpenAPI/RSS) stay free in perpetuity. Paid tiers (Dashboard at EUR 9.97/month, Insider Circle at EUR 97/month) add depth on top — private briefings, custom watchlists, higher rate limits, monthly research deep-dives — but never gate the existing free utility.",
+            },
+          },
+        ],
+      },
     ],
   };
 
@@ -292,6 +346,7 @@ export default function AgentsLandingPage() {
 
   return (
     <>
+      <AgentMirrorLinks path="/agents" qaCategory="general" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

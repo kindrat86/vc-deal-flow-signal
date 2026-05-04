@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { alternatives } from "@/content/alternatives";
+import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 
 export const metadata: Metadata = {
   title: "Alternatives to Harmonic.ai, Dealroom, Crunchbase & Forager.ai",
@@ -37,6 +38,51 @@ export default function AlternativesIndex() {
         })),
       },
       {
+        "@type": "FAQPage",
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: "Is VC Deal Flow Signal a direct replacement for Harmonic.ai or Dealroom?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Not a 1:1 replacement — VC Deal Flow Signal is a focused engineering-signal layer, not a full-stack deal-flow platform. Harmonic.ai and Dealroom cover broader entity graphs (founders, funding rounds, hiring, social signals) at enterprise pricing. We cover the GitHub-momentum slice deeply and freely, with machine-readable APIs and an MCP server. Most users run them side-by-side: VC Deal Flow Signal as the leading-indicator alert layer, Harmonic/Dealroom as the enrichment layer once a signal triggers.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "What's the lead-time advantage vs Crunchbase alerts?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Crunchbase alerts fire on announced events: funding rounds, leadership changes, product launches. By definition these are lagging indicators — the company has already committed to the milestone. GitHub commit-velocity acceleration patterns historically precede fundraise announcements by 3 to 6 weeks in our dataset (7 of 10 tracked rounds). The lead-time gap is real and reproducible from the public methodology.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Does Forager.ai or Specter.ai cover GitHub signals?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Forager.ai and Specter.ai surface signals from job postings, web traffic, hiring momentum, and social mentions. They do not, as of 2026, package GitHub commit-velocity acceleration as a first-class signal layer with weekly rankings. VC Deal Flow Signal is the only product currently focused exclusively on the GitHub engineering-velocity slice — our methodology is published openly on SSRN at https://ssrn.com/abstract=6606558.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "How is pricing different from incumbent platforms?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Most incumbent platforms (Harmonic, SignalFire, Dealroom Enterprise, PitchBook) operate at enterprise tiers — typically USD 30k+ per seat per year, with annual contracts and seat minimums. VC Deal Flow Signal has a free tier (Signal Digest weekly email + 5 free MCP tools), a EUR 9.97/month Dashboard Beta, and a EUR 97/month Insider Circle. The 5 core MCP tools and Chrome extension stay free in perpetuity; paid tiers add private briefings, API access, and custom watchlists.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Can the comparison data here be used for procurement decisions?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "These pages are written by the VC Deal Flow Signal team — useful for surfacing differences, but you should also read the comparison page from the competing tool (most publish their own) and run a hands-on trial. We list public pricing and feature data accurate at the time of writing; tool teams change roadmaps frequently, so verify on the vendor's own site before signing a contract.",
+            },
+          },
+        ],
+      },
+      {
         "@type": "BreadcrumbList",
         itemListElement: [
           {
@@ -58,6 +104,7 @@ export default function AlternativesIndex() {
 
   return (
     <>
+      <AgentMirrorLinks path="/alternatives" qaCategory="general" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

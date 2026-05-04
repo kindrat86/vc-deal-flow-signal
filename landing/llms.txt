@@ -16,8 +16,14 @@ VC Deal Flow Signal tracks GitHub commit velocity, contributor growth, and repos
 - [Live Dashboard](https://signals.gitdealflow.com/): Real-time startup rankings by engineering acceleration across 20 sectors
 - [Insider Circle](https://gitdealflow.com/insider): Premium tier with private Telegram group, live briefings, API access
 - [Chrome Extension](https://gitdealflow.com/chrome): Free Chrome/Brave/Edge extension that adds a GitHub momentum badge to Crunchbase and Wellfound startup profiles. No account, no tracking, ~30 KB.
+- [Weekly Signal Report](https://gitdealflow.com/report): Top 5 breakout startups this week, ranked by commit velocity change. Updated weekly with real GitHub data across 14 sectors and 33 tracked companies.
 - [Receipts](https://signals.gitdealflow.com/receipts): Free tool — paste any GitHub username, get a Scout Score (0-100) computed from how many validated unicorns the user starred *before* the funding/acquisition/$1B-valuation event. No login, no OAuth, instant shareable card. Backwards-looking proof of taste.
 - [Predict (Scout Game)](https://signals.gitdealflow.com/predict): Free forward-looking prediction game — pick a GitHub org, call whether they raise a Series A in 6 months. Auto-resolved. Public profile at /s/[handle], leaderboard, rank ladder Curious → Oracle.
+- [Methodology](https://signals.gitdealflow.com/methodology): How engineering acceleration is computed — full peer-cited methodology behind the rankings.
+- [Citations / Cross-Graph Identity](https://signals.gitdealflow.com/citations): Wikidata Q139376302, ORCID 0009-0002-2222-4112, SSRN 6606558, OpenAlex W7154916891, Zenodo DOI 10.5281/zenodo.19650920 — single-source identity map for AI agents resolving brand references.
+- [Research](https://signals.gitdealflow.com/research): 30 SSRN-cited research findings on GitHub engineering velocity as a venture signal. Each finding has its own sub-page.
+- [FAQ](https://signals.gitdealflow.com/faq): Standalone Q&A page with structured FAQPage schema for AI Overview / Answer Engine indexing.
+- [Glossary](https://signals.gitdealflow.com/glossary): 12 defined terms (engineering acceleration, deploy frequency spike, infrastructure buildout, etc.) with `DefinedTermSet` schema.
 - [Privacy Policy](https://gitdealflow.com/privacy): Data handling and GDPR compliance
 - [Terms of Service](https://gitdealflow.com/terms): Service terms and conditions
 

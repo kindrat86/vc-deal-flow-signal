@@ -79,6 +79,17 @@ export default async function TrendPage({ params }: PageProps) {
         dateModified: lastModified.toISOString().slice(0, 10),
       },
       {
+        "@type": "WebPage",
+        "@id": `https://signals.gitdealflow.com/trends/${slug}#webpage`,
+        url: `https://signals.gitdealflow.com/trends/${slug}`,
+        name: `${sector.name}: ${periodA.name} vs ${periodB.name}`,
+        inLanguage: "en-US",
+        speakable: {
+          "@type": "SpeakableSpecification",
+          cssSelector: ["h1", "[data-speakable]", "[data-agent-summary]"],
+        },
+      },
+      {
         "@type": "BreadcrumbList",
         itemListElement: [
           {
