@@ -25,13 +25,13 @@
     "source": "github",
     "subfolder": "mcp-server"
   },
-  "version": "1.5.3",
+  "version": "2.0.0",
   "packages": [
     {
       "registryType": "npm",
       "registryBaseUrl": "https://registry.npmjs.org",
       "identifier": "@gitdealflow/mcp-signal",
-      "version": "1.5.3",
+      "version": "2.0.0",
       "transport": {
         "type": "stdio"
       }
