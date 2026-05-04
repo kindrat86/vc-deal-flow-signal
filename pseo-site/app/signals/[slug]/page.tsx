@@ -27,7 +27,7 @@ export async function generateMetadata({
   if (!signalData) return {};
 
   const period = getCurrentPeriod();
-  const title = `${signalData.name} Signal — Startups Showing ${signalData.name}, ${period.name}`;
+  const title = `${signalData.name} — Startup Signal, ${period.name}`;
   const description = `${signalData.totalAcrossSectors} startups showing "${signalData.name.toLowerCase()}" signal across all sectors in ${period.name}. ${signalData.description}`;
 
   return {

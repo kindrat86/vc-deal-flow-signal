@@ -30,7 +30,7 @@ export async function generateMetadata({
 
   const { sector, year } = parsed;
   const sectorLower = sector.name.toLowerCase();
-  const title = `Best ${sector.name} Startups ${year} — Top Engineering Momentum`;
+  const title = `Best ${sector.name} Startups ${year}`;
   const description = `The best ${sectorLower} startups in ${year} ranked by GitHub commit-velocity acceleration. Commit velocity, contributor growth, and breakout signals for investors looking at ${sectorLower}.`;
 
   return {
