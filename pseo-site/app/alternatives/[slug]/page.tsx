@@ -425,7 +425,7 @@ export default async function AlternativePage({ params }: PageProps) {
           </Link>
         </div>
 
-        <AgentMirrorLinks qaCategory="general" />
+        <AgentMirrorLinks path={`/alternatives/${slug}`} qaCategory="general" />
       </div>
     </>
   );

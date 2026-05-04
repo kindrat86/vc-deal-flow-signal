@@ -197,7 +197,7 @@ export default async function TopicHubPage({ params }: PageProps) {
           </Link>
         </div>
 
-        <AgentMirrorLinks qaCategory="blog" />
+        <AgentMirrorLinks path={`/topics/${slug}`} qaCategory="blog" />
       </div>
     </>
   );

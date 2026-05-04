@@ -1,87 +1,87 @@
+/**
+ * Citation-ready TL;DR block.
+ *
+ * Renders a self-contained "what this page says + how to cite + machine-readable
+ * payload" panel that AI search crawlers (Perplexity, ChatGPT-with-search,
+ * Claude-with-search) preferentially extract. The Speakable selector at the
+ * top makes voice assistants pick the same passage.
+ *
+ * Useful to humans too — works as a TL;DR with copy-paste citation. So we
+ * render it unconditionally rather than gating on User-Agent. The `data-cite`
+ * attributes on each fact let RAG pipelines scrape (passage, source, date)
+ * tuples without parsing prose.
+ */
+
 import Link from "next/link";
 
-export interface AgentSummaryFact {
+interface Fact {
+  /** Self-contained sentence. */
   claim: string;
+  /** Source URL — usually a same-origin canonical URL. */
   sourceUrl: string;
+  /** Human-readable source label, e.g. "GitDealFlow methodology". */
   sourceLabel: string;
 }
 
-export interface AgentSummaryProps {
+interface AgentSummaryProps {
+  /** One-sentence answer. Goes inside the Speakable selector. */
   tldr: string;
+  /** Stable canonical URL for this page. */
   pageUrl: string;
+  /** ISO date when the page's data was last refreshed. */
   asOf: string;
+  /** 0-5 supporting facts the page elaborates on. Each becomes a citable bullet. */
+  facts?: Fact[];
+  /** Citation string — what consumers should write when quoting. */
   citeAs: string;
-  facts: AgentSummaryFact[];
 }
 
 export function AgentSummary({
   tldr,
   pageUrl,
   asOf,
-  citeAs,
   facts,
+  citeAs,
 }: AgentSummaryProps) {
-  const speakable = {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    url: pageUrl,
-    speakable: {
-      "@type": "SpeakableSpecification",
-      cssSelector: ["[data-speakable=tldr]", "[data-speakable=fact]"],
-    },
-  };
-
   return (
     <aside
-      aria-label="At-a-glance summary for AI agents and search engines"
-      className="mb-10 rounded-xl border border-sky-900/60 bg-sky-950/30 p-5 sm:p-6"
+      data-agent-summary
+      data-cite={citeAs}
+      data-source-url={pageUrl}
+      aria-label="Summary and citation"
+      className="mb-8 rounded-xl border border-sky-500/25 bg-sky-500/5 px-5 py-4 sm:px-6 sm:py-5"
     >
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(speakable) }}
-      />
-
-      <div className="flex items-baseline gap-2 mb-3">
-        <span className="text-[10px] uppercase tracking-wider font-semibold text-sky-300">
+      <p
+        className="speakable text-sky-100 text-sm sm:text-base leading-relaxed"
+        data-cite="tldr"
+      >
+        <span className="text-sky-400 font-semibold uppercase tracking-wider text-[10px] mr-2">
           TL;DR
         </span>
-        <span className="text-[10px] text-sky-500/60">As of {asOf}</span>
-      </div>
-
-      <p
-        data-speakable="tldr"
-        className="text-gray-100 text-base leading-relaxed mb-4"
-      >
         {tldr}
       </p>
-
-      <div className="grid gap-2 mb-4">
-        {facts.map((f, i) => (
-          <div key={i} className="flex items-start gap-2">
-            <span
-              aria-hidden="true"
-              className="mt-1 h-1.5 w-1.5 flex-none rounded-full bg-sky-500"
-            />
-            <p
-              data-speakable="fact"
-              className="text-gray-300 text-sm leading-relaxed"
-            >
-              {f.claim}{" "}
+      {facts && facts.length > 0 && (
+        <ul className="mt-3 space-y-1.5 text-xs text-gray-300">
+          {facts.map((f, i) => (
+            <li key={i} data-cite-source={f.sourceUrl} className="leading-relaxed">
+              <span className="text-gray-300">{f.claim}</span>{" "}
               <Link
                 href={f.sourceUrl}
-                className="text-sky-400 hover:text-sky-300 underline decoration-dotted underline-offset-2"
+                className="text-sky-400 hover:text-sky-300 underline underline-offset-2"
               >
-                [{f.sourceLabel}]
+                ({f.sourceLabel})
               </Link>
-            </p>
-          </div>
-        ))}
-      </div>
-
-      <div className="border-t border-sky-900/60 pt-3 text-[11px] text-sky-500/80">
-        <span className="font-semibold text-sky-300">Cite as:</span>{" "}
-        <span className="text-gray-400">{citeAs}</span>
-      </div>
+            </li>
+          ))}
+        </ul>
+      )}
+      <p className="mt-3 text-[11px] text-gray-400 leading-relaxed">
+        <span className="font-semibold text-gray-300">Cite as:</span>{" "}
+        <code className="bg-slate-950 border border-slate-800 rounded px-1.5 py-0.5 text-gray-300 font-mono">
+          {citeAs}
+        </code>{" "}
+        · Data current as of {asOf}.
+      </p>
     </aside>
   );
 }

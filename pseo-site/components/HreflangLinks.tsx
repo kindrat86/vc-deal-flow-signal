@@ -1,21 +1,26 @@
-// Renders <link rel="alternate" hreflang> tags + canonical into <head>.
-//
-// In Next.js 16, when the root layout has an explicit <head> or any page
-// uses Server Components, metadata.alternates.languages can silently emit
-// zero hreflang tags. This component bypasses that by rendering JSX.
-// React emits camelCase `hrefLang` (HTML is case-insensitive — verify with
-// `curl -s URL | grep -i hreflang`).
-//
-// See memory: feedback_next16_alternates_languages_drop.md
+/**
+ * Direct <link rel="alternate" hreflang> emitter.
+ *
+ * Why this exists: Next 16 silently drops metadata.alternates.languages
+ * in production output. metadata.alternates.canonical works, but the
+ * language map is gone — same hidden-failure class as alternates.types
+ * for non-RSS MIMEs (documented in memory). Rendering <link> directly
+ * inside the page tree works because Next hoists head-level link tags
+ * automatically.
+ *
+ * Pass a Record<hreflang, absoluteUrl>. Output is one <link> per entry
+ * plus an x-default if the caller provides it. No client JS, no React
+ * state — just typed JSX.
+ */
 
-interface HreflangLinksProps {
-  /** Absolute canonical URL for this page. */
+interface Props {
+  /** Canonical absolute URL for this page (rel="canonical"). */
   canonical: string;
-  /** lang code → URL map. Build from getHomepageHreflang() / getPageHreflang() in lib/hreflang. */
+  /** Hreflang map: { "en": "https://…", "ja": "https://…/ja", "x-default": "https://…" } */
   languages: Record<string, string>;
 }
 
-export function HreflangLinks({ canonical, languages }: HreflangLinksProps) {
+export function HreflangLinks({ canonical, languages }: Props) {
   return (
     <>
       <link rel="canonical" href={canonical} />
@@ -25,5 +30,3 @@ export function HreflangLinks({ canonical, languages }: HreflangLinksProps) {
     </>
   );
 }
-
-export default HreflangLinks;

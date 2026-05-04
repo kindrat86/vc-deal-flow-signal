@@ -313,7 +313,7 @@ export default async function BestSectorPage({ params }: PageProps) {
           </section>
         )}
 
-        <AgentMirrorLinks qaCategory="sector" />
+        <AgentMirrorLinks path={`/best/${slug}`} qaCategory="sector" />
       </div>
     </>
   );

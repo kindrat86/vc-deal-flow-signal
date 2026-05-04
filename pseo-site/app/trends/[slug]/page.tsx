@@ -261,7 +261,7 @@ export default async function TrendPage({ params }: PageProps) {
           </div>
         </section>
 
-        <AgentMirrorLinks qaCategory="sector" />
+        <AgentMirrorLinks path={`/trends/${slug}`} qaCategory="sector" />
       </div>
     </>
   );

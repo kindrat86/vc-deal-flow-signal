@@ -273,7 +273,7 @@ export default async function VsPage({ params }: PageProps) {
           </div>
         </section>
 
-        <AgentMirrorLinks qaCategory="general" />
+        <AgentMirrorLinks path={`/vs/${slug}`} qaCategory="general" />
       </div>
     </>
   );

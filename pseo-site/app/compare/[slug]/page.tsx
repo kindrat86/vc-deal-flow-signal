@@ -336,7 +336,7 @@ export default async function ComparisonPage({ params }: PageProps) {
           </Link>
         </div>
 
-        <AgentMirrorLinks qaCategory="general" />
+        <AgentMirrorLinks path={`/compare/${slug}`} qaCategory="general" />
       </div>
     </>
   );

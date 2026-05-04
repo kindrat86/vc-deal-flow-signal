@@ -310,7 +310,7 @@ export default async function SignalTypePage({ params }: PageProps) {
           </div>
         </section>
 
-        <AgentMirrorLinks qaCategory="signal-type" />
+        <AgentMirrorLinks path={`/signals/${slug}`} qaCategory="signal-type" />
       </div>
     </>
   );
