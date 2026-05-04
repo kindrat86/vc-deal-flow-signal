@@ -274,3 +274,69 @@ Diminishing returns: the major buyer-trust surfaces, content pages, and comparis
 1. **User unblocking the 3 USER TODOs** (DEV_TO_API_KEY, Neynar signer, HOLD lift) — each opens a major outbound channel
 2. **User reviewing + committing the working-tree edits in main** — captures the work cleanly for future PR/cherry-pick
 3. **Allowing time for the new pSEO routes to be indexed** — Google + Bing typically take 24-72h to crawl new entries; first SERP visibility for /pricing and /buyers-guide should arrive between 2026-05-05 and 2026-05-07.
+
+---
+
+## 2026-05-04 — Wave 8 (Enterprise + machine-readable pricing API, ~21:00 EEST)
+
+User said "proceed autonomously" again after dev.to API key was provided and PR opened. Two more high-leverage shipments:
+
+### Wave 8a — `/api/v1/pricing.json` (machine-readable pricing for AI agents)
+- NEW `pseo-site/app/api/v1/pricing.json/route.ts` (287 lines).
+- Returns all 6 tiers with structured fields: `priceEur`, `priceCadence` (free/one-time/monthly/yearly/monthly-or-yearly), `listPriceEur`, `foundingMember` flag, `applicationGated` flag, `capacity` string, `oneLine`, `forWho`, `bullets`, `ctaLabel`, `ctaHref`, `guarantee`, `promoCode`.
+- Top-level metadata blocks: `currency: "EUR"`, `promoCode` (PH50OFF — applies to dashboard-beta + insider-circle, stacks with founding-member rates), `guarantee` (30-day Signal-or-It's-Free with mechanism + appliesTo array), `foundingMemberPolicy`, `cancellationPolicy`, `enterprise` pointer (Sharp Tier slug + applicationUrl + capacityRemaining + humanPage).
+- `relatedDocs` cross-references `humanPricingPage`, `buyersGuide`, `enterprisePage`, `methodology`, `llmsIndex`, `llmsFull`.
+- License: `CC-BY-4.0` with attribution string.
+- Cache: `public, s-maxage=3600, stale-while-revalidate=86400`. CORS: `Access-Control-Allow-Origin: *`. `Last-Modified` derived from `getDataLastModified()`.
+- Verified live: `curl https://signals.gitdealflow.com/api/v1/pricing.json` returns HTTP 200 with `tiers=6, version=1.0.0, currency=EUR, promoCode.code=PH50OFF`.
+
+### Wave 8b — NEW `/enterprise` page (SERP capture for enterprise queries)
+- NEW `pseo-site/app/enterprise/page.tsx` (413 lines).
+- Targets "VC deal flow enterprise pricing", "GitDealFlow enterprise plan", "VC deal flow tool enterprise" SERPs.
+- Two paths surfaced:
+  - **Sharp Tier** at €497/mo (€4,970/yr saves two months, application-gated, capped at 8 funds in 2026)
+  - **Custom enterprise scope** starting at €15,000/yr (white-label fund-branded UI, dedicated Slack channel, on-call fundraise diligence, custom sector coverage expansion, multi-seat agreements covering multiple investing arms under one GP)
+- 7 detailed Sharp Tier features (quarterly review call, custom watchlist co-build, white-labeled API endpoint, methodology source code access via private repo invite, same-day signal Q&A, data-room exports for LP updates, all future paid MCP tools included).
+- 5 custom-enterprise-scope features (fund-branded UI, dedicated Slack, on-call diligence, sector expansion, multi-seat).
+- 8-question FAQ targeting enterprise-specific intent (cap rationale, application process, cancellation policy, methodology contribution path, multi-seat pricing, custom sector expansion, Sharp-vs-Sweep relationship).
+- Schema: WebPage Speakable + 3-level BreadcrumbList (Sectors → Pricing → Enterprise) + FAQPage with 8 Q&As.
+- Two structured `mailto:` CTAs with prefilled subject/body intake templates (Sharp Tier application + custom enterprise scope request).
+- AgentSummary with 4 facts.
+- Verified live: `curl /enterprise` returns Sharp Tier + €497 + application-gated + Apply for Sharp visible.
+
+### Wiring
+- `pseo-site/app/sitemap/[id]/route.ts` core block: `/enterprise` priority 0.85, `/api/v1/pricing.json` priority 0.7.
+- `pseo-site/app/llms.txt`: NEW Enterprise entry (Sharp Tier + custom scope summary) + NEW Pricing JSON API entry (machine-readable companion for AI agents/MCP/procurement automations).
+- `pseo-site/components/Header.tsx`: NAV array gains `{ href: "/enterprise", label: "Enterprise" }`. Drives JSON-LD SiteNavigationElement.
+- `pseo-site/components/Footer.tsx`: Product column gains `<Link href="/enterprise">Enterprise</Link>`.
+
+### Production deploy
+- pseo-site v12 `dpl_…` (READY → signals.gitdealflow.com). Verified both endpoints HTTP 200.
+- IndexNow ping fired for `/enterprise + /api/v1/pricing.json + /llms.txt + sitemap/core.xml` — HTTP 200.
+
+### PR #18 update
+- Commit `1354582` pushed to `claude/pricing-buyers-guide-2026-05-04`. PR #18 now contains:
+  - Commit 1: `seo: NEW /pricing + /buyers-guide pSEO pillars + cross-link mesh` (1321 insertions, 4 NEW files)
+  - Commit 2: `seo: NEW /enterprise page + /api/v1/pricing.json (wave 8)` (700 insertions, 2 NEW files)
+
+### Cumulative session deltas (waves 1-8)
+- **NEW pSEO routes shipped today**: 4 (`/pricing`, `/buyers-guide`, `/enterprise`, `/api/v1/pricing.json`)
+- **NEW pricing tier surfaced**: 1 (Sharp Tier — was buried on apex landing only, now first-class on /pricing + dedicated /enterprise + JSON API + llms.txt + AgentSummary)
+- **NEW schema entities**: 11 (WebPage Speakable × 3, BreadcrumbList × 3 incl 3-level on /enterprise, ItemList × 2, FAQPage × 3 with 11+8+8 Q&As, Article × 1)
+- **Internal links pointing at /pricing**: 16 (Header desktop + Header mobile + Header NAV + Footer Product + PSEOFooterNav + apex pricing CTA + /alternatives + /integrations + /buyers-guide top + /buyers-guide bottom + /faq + /methodology + /attestations + /press + /about + /enterprise)
+- **Internal links pointing at /buyers-guide**: 6 (Header NAV + Footer + /methodology + /attestations + /press + /enterprise nav)
+- **Internal links pointing at /enterprise**: 2 (Header NAV + Footer)
+- **Internal links pointing at /api/v1/pricing.json**: 2 (llms.txt + sitemap)
+- **AEO manifests updated**: 2 (llms.txt + llms-full.txt with all 4 new routes)
+- **Production deploys**: 12 pseo-site + 2 apex landing
+- **IndexNow batches**: 11 (all HTTP 200)
+- **Data refresh**: 91 → 109 startups (+19.8%)
+- **Social posts shipped**: 2 (Bluesky + Mastodon, warmup-aware day-2)
+- **dev.to articles published autonomously**: 2 ("I tracked 4,200 startup GitHub orgs" + "0 votes on Product Hunt") with canonical-back to /blog
+- **Changelog entries added today**: 3
+- **Commits on PR #18**: 2 (43ce717 + 1354582), 6 NEW files total (1321 + 700 = 2021 lines added)
+
+### Remaining USER TODOs (truly external dependencies)
+1. **Farcaster** — provision Neynar signer + add 3 vars to `tools/.env`, then `node tools/farcaster/engage.mjs`.
+2. **Cold outreach** — `rm tools/campaign/HOLD` from real-name terminal to resume queue (oldest pending: pitch-001-failory).
+3. **Companion modifications commit** — review the 14 modified files in `seo/disambiguation-chain-2026-05-01` working tree (Header / Footer / hreflang / sitemap / llms* / cross-link CTAs / apex landing) and commit them on the appropriate branch.
