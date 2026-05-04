@@ -445,7 +445,7 @@ export function parseGeoPageSlug(slug: string): GeoPageData | null {
       const startups = snapshot.startups.filter(
         (s) => s.geography === geo.match
       );
-      if (startups.length < 2) continue;
+      if (startups.length < 1) continue;
 
       return {
         geoSlug: geo.slug,

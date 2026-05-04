@@ -7,7 +7,7 @@ import {
   getAllBestSectorSlugs,
   getAllTrendSlugs,
   getAllRegionPageSlugs,
-  getAllStagePageSlugs,
+  getAllStageSlugs,
   getAllStageSectorPairs,
   getAllSignalSectorPairs,
   getAllStageSignalPairs,
@@ -102,7 +102,7 @@ export async function GET(_req: Request, ctx: RouteContext) {
     ];
   } else if (id === "crossings") {
     entries = [
-      ...getAllStagePageSlugs().map((slug) => ({
+      ...getAllStageSlugs().map((slug) => ({
         url: `${BASE_URL}/stage/${slug}`,
         lastmod,
         changefreq: "weekly",
