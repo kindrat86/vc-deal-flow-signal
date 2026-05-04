@@ -6,6 +6,7 @@ import {
   getStartupProfile,
   getCurrentPeriod,
 } from "@/lib/data";
+import { linkify } from "@/lib/linkify";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -496,7 +497,7 @@ export default async function StartupPage({ params }: PageProps) {
                   {faq.question}
                 </h3>
                 <p className="text-gray-400 text-sm leading-relaxed">
-                  {faq.answer}
+                  {linkify(faq.answer)}
                 </p>
               </div>
             ))}

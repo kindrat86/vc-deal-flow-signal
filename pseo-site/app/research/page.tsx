@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { FINDINGS, type Finding } from "@/content/research-findings";
+import { linkify } from "@/lib/linkify";
 
 const SITE = "https://signals.gitdealflow.com";
 const SSRN_URL = "https://ssrn.com/abstract=6606558";
@@ -390,7 +391,7 @@ export default function ResearchPage() {
                   {entry.q}
                 </dt>
                 <dd className="text-gray-300 text-sm leading-relaxed">
-                  {entry.a}
+                  {linkify(entry.a)}
                 </dd>
               </div>
             ))}

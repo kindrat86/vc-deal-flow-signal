@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllPeriods, getAllSectors, getCurrentPeriod, getDataLastModified } from "@/lib/data";
+import { linkify } from "@/lib/linkify";
 
 export const metadata: Metadata = {
   title: "Changelog — Weekly Signal Updates & Product Releases",
@@ -220,7 +221,7 @@ export default function ChangelogPage() {
                   {entry.title}
                 </h3>
                 <p className="text-gray-400 text-sm leading-relaxed">
-                  {entry.body}
+                  {linkify(entry.body)}
                 </p>
               </article>
             ))}

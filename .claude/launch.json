@@ -14,6 +14,12 @@
       "port": 3100
     },
     {
+      "name": "pseo-site-worktree",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "/Users/sipi/launch-projects/vc-deal-flow-signal/.claude/worktrees/goofy-dirac-ca6167/pseo-site", "run", "dev", "--", "--port", "3101"],
+      "port": 3101
+    },
+    {
       "name": "monitoring",
       "runtimeExecutable": "python3",
       "runtimeArgs": ["-m", "http.server", "8091", "-d", "/Users/sipi/launch-projects/vc-deal-flow-signal/monitoring"],
