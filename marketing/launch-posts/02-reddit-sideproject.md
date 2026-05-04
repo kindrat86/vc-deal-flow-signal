@@ -29,11 +29,12 @@ Built this as a side project over the past few months. The idea: use public GitH
 
 Still early — launched the site this month. Getting signal on whether investors actually find this useful.
 
-Also shipped a free Chrome extension that overlays the signal on Crunchbase, AngelList, and PitchBook profiles — so investors see the acceleration data inside their existing research workflow, not a separate dashboard. Was by far the most fun piece to build.
+Also shipped two free Chrome extensions — one overlays the signal onto Crunchbase + Wellfound startup profiles (deal research surface), and a brand-new companion (May 2026) puts the same signal on hover over any GitHub repo or org link. Two surfaces, same data, complete loop.
 
 Check it out:
 - Main site: https://gitdealflow.com
 - Sector data: https://signals.gitdealflow.com
-- Chrome extension: https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn
+- Chrome extension #1 (Crunchbase + Wellfound badge): https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn
+- Chrome extension #2 (VC GitHub Lookup — hover, NEW): https://chromewebstore.google.com/detail/vc-github-lookup-%E2%80%94-startu/plgngijmloeljfkenecdkhiblcfcbblm
 
 Would love any feedback on the idea or the execution. What would you add?

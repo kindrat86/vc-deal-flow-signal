@@ -31,4 +31,6 @@ Has anyone here used GitHub activity data in their sourcing process? Curious whe
 
 I built a free tool that publishes weekly rankings by sector if anyone wants to poke around the data: https://signals.gitdealflow.com
 
-There's also a free Chrome extension if you want the signal to appear directly on Crunchbase / AngelList / PitchBook profiles while you do your usual deal research: https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn
+Two free Chrome extensions if you want the signal in-browser during deal research:
+- Crunchbase + Wellfound badge: https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn
+- GitHub hover lookup (new May 2026): https://chromewebstore.google.com/detail/vc-github-lookup-%E2%80%94-startu/plgngijmloeljfkenecdkhiblcfcbblm

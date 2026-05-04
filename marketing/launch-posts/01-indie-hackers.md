@@ -33,7 +33,9 @@ Whatever the cause, the signal shows up in the commit graph **weeks before** it 
 
 **NEW: Works inside Claude.** I just published an MCP server so you can query our data directly from Claude Desktop or Claude Code. Ask "which fintech startups are accelerating?" and get live data without leaving your AI workflow. Install: `npx @gitdealflow/mcp-signal`
 
-**NEW: Works inside Crunchbase.** I also shipped a free Chrome extension that injects a green "Accelerating" badge onto any startup profile on Crunchbase, AngelList, or PitchBook that's showing engineering momentum. Same workflow you already have, new layer of signal. Install: https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn
+**NEW: Two free Chrome extensions.**
+- *Extension 1 — Crunchbase + Wellfound badge:* a green "Accelerating" badge appears on any startup profile on Crunchbase or Wellfound that's showing engineering momentum. Same workflow you already have, new layer of signal. https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn
+- *Extension 2 — VC GitHub Lookup (NEW, May 2026):* hover any GitHub repo or org link for instant commit velocity, contributor growth, signal type, and stage estimate. Turns GitHub itself into a deal-flow surface. https://chromewebstore.google.com/detail/vc-github-lookup-%E2%80%94-startu/plgngijmloeljfkenecdkhiblcfcbblm
 
 **What's next**: Public API for investors who want to pipe signals into their own workflows, watchlists, or trading systems.
 

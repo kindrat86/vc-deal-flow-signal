@@ -274,9 +274,13 @@ The MCP server ships five investor-grade prompt templates that any MCP host can 
 - A2A AgentCard: https://signals.gitdealflow.com/.well-known/agent-card.json
 - Agent reference (HTML/Markdown): https://signals.gitdealflow.com/agents.md
 
-## Chrome Extension
+## Chrome Extensions
 
-VC Deal Flow Signal ships a free Chrome extension that injects a GitHub engineering momentum badge on startup company profile pages.
+VC Deal Flow Signal ships **two** free Chromium extensions. They are designed as a pair: extension 1 surfaces the signal where investors research startups (Crunchbase, Wellfound), and extension 2 surfaces the signal where the engineering work itself happens (GitHub).
+
+## Chrome Extension 1 — VC Deal Flow Signal (Crunchbase + Wellfound badge)
+
+Injects a GitHub engineering momentum badge on startup company profile pages.
 
 ### Where it runs
 - **Crunchbase**: every page matching `https://www.crunchbase.com/organization/*`
@@ -307,6 +311,38 @@ VC Deal Flow Signal ships a free Chrome extension that injects a GitHub engineer
 - Install: https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn
 - Landing page: https://gitdealflow.com/chrome
 - Source: included in the project repository under `chrome-extension/`
+
+## Chrome Extension 2 — VC GitHub Lookup: Startup Signals on Hover (NEW, May 2026)
+
+Turns GitHub itself into a deal-flow surface. Whereas Extension 1 covers structured deal-research surfaces (Crunchbase, Wellfound), Extension 2 covers the workspace where the engineering activity originates.
+
+### Where it runs
+- **GitHub link hovers**: any anchor pointing to `github.com/<owner>` or `github.com/<owner>/<repo>` triggers a tooltip lookup.
+- **GitHub repo / org page loads**: when you visit `https://github.com/<owner>` or `https://github.com/<owner>/<repo>` directly, a chip is injected next to the page header.
+- **Toolbar popup**: opens a manual lookup form that accepts a GitHub org slug or arbitrary GitHub URL.
+
+### What it surfaces
+- Commit velocity (last 14 days)
+- Velocity change vs. prior period
+- Contributor count and contributor growth
+- Engineering signal type (hiring burst, reorg, breakout, ...)
+- Stage estimate
+
+### What it does not do
+- No analytics SDK, no tracking pixels, no account requirement.
+- The only outbound network request is to `https://signals.gitdealflow.com` — only when you hover a GitHub link or open the popup.
+- Only the owner slug is transmitted in the URL; nothing else is collected.
+- Responses are cached in session storage (≤5 minutes) so the API stays friendly.
+
+### Technical
+- Manifest V3, ~16 KB total.
+- `host_permissions`: `https://signals.gitdealflow.com/*` only.
+- Uses GitDealFlow's public sector rankings — built from the public GitHub API, refreshed continuously, free to browse at https://signals.gitdealflow.com.
+
+### Links
+- Install: https://chromewebstore.google.com/detail/vc-github-lookup-%E2%80%94-startu/plgngijmloeljfkenecdkhiblcfcbblm
+- Landing page: https://gitdealflow.com/chrome (shared with Extension 1)
+- Companion product: Extension 1 above (Crunchbase + Wellfound badge)
 
 ## Glossary of Key Terms
 

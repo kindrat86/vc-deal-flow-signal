@@ -40,15 +40,25 @@ export default function CTABanner() {
           </div>
         </div>
         <p className="text-gray-500 text-xs mt-5 pt-5 border-t border-slate-800">
-          Want the signal while you browse Crunchbase?{" "}
+          Want the signal while you research?{" "}
           <a
             href="https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn"
             className="text-emerald-400 hover:text-emerald-300 font-medium"
             rel="noopener noreferrer"
             target="_blank"
           >
-            Install the free Chrome extension &rarr;
+            Crunchbase/Wellfound badge
           </a>
+          {" "}or{" "}
+          <a
+            href="https://chromewebstore.google.com/detail/vc-github-lookup-%E2%80%94-startu/plgngijmloeljfkenecdkhiblcfcbblm"
+            className="text-sky-400 hover:text-sky-300 font-medium"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            GitHub hover lookup
+          </a>
+          {" "}&mdash; both free.
         </p>
       </div>
     </div>

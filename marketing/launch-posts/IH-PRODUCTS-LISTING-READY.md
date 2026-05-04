@@ -91,7 +91,8 @@ Extra links to add if an expanded form offers multiple URL fields:
 | Label | URL |
 | --- | --- |
 | Dashboard | https://signals.gitdealflow.com |
-| Chrome extension | https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn |
+| Chrome extension #1 (Crunchbase + Wellfound badge) | https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn |
+| Chrome extension #2 (VC GitHub Lookup — hover) | https://chromewebstore.google.com/detail/vc-github-lookup-%E2%80%94-startu/plgngijmloeljfkenecdkhiblcfcbblm |
 | MCP server (npm) | https://www.npmjs.com/package/@gitdealflow/mcp-signal |
 | GitHub (methodology) | https://github.com/kindrat86/mcp-deal-flow-signal |
 | Free Telegram | https://t.me/gitdealflow |

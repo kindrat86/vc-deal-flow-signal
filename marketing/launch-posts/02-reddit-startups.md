@@ -33,6 +33,8 @@ The core idea: when a startup's commit velocity spikes sharply compared to their
 
 If anyone's curious about the data or wants to see specific sectors, happy to share: https://signals.gitdealflow.com
 
-There's also a free Chrome extension if you want to see the engineering signal next to any startup on Crunchbase / AngelList / PitchBook: https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn — useful for competitive intelligence too.
+Two free Chrome extensions if you want the signal in your browser:
+- Crunchbase + Wellfound badge: https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn
+- GitHub hover lookup (new): https://chromewebstore.google.com/detail/vc-github-lookup-%E2%80%94-startu/plgngijmloeljfkenecdkhiblcfcbblm — useful for competitive intelligence too.
 
 Building this solo. Would love feedback from founders on whether this kind of data would concern you (an investor watching your GitHub) or whether you'd find it useful for competitive intelligence.

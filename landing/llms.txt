@@ -15,7 +15,7 @@ VC Deal Flow Signal tracks GitHub commit velocity, contributor growth, and repos
 - [Homepage](https://gitdealflow.com/): Product overview, pricing, and free Signal Digest signup
 - [Live Dashboard](https://signals.gitdealflow.com/): Real-time startup rankings by engineering acceleration across 20 sectors
 - [Insider Circle](https://gitdealflow.com/insider): Premium tier with private Telegram group, live briefings, API access
-- [Chrome Extension](https://gitdealflow.com/chrome): Free Chrome/Brave/Edge extension that adds a GitHub momentum badge to Crunchbase and Wellfound startup profiles. No account, no tracking, ~30 KB.
+- [Chrome Extensions](https://gitdealflow.com/chrome): Two free Chrome/Brave/Edge extensions. (1) Crunchbase + Wellfound badge that overlays GitHub engineering momentum onto startup profiles. (2) VC GitHub Lookup — hover any GitHub repo or org link to see commit velocity, contributor growth, signal type, and stage estimate. No account, no tracking.
 - [Receipts](https://signals.gitdealflow.com/receipts): Free tool — paste any GitHub username, get a Scout Score (0-100) computed from how many validated unicorns the user starred *before* the funding/acquisition/$1B-valuation event. No login, no OAuth, instant shareable card. Backwards-looking proof of taste.
 - [Predict (Scout Game)](https://signals.gitdealflow.com/predict): Free forward-looking prediction game — pick a GitHub org, call whether they raise a Series A in 6 months. Auto-resolved. Public profile at /s/[handle], leaderboard, rank ladder Curious → Oracle.
 - [Privacy Policy](https://gitdealflow.com/privacy): Data handling and GDPR compliance
@@ -78,9 +78,13 @@ VC Deal Flow Signal is available as a Model Context Protocol server for Claude D
 - Example queries: "trending startups this week", "ai-ml startups", "tell me about Roboflow", "how is this calculated"
 - Discovery: `GET /api/nlweb` returns the descriptor with the request schema and example queries.
 
-## Chrome Extension
+## Chrome Extensions
 
-VC Deal Flow Signal also ships as a free Chrome extension (works on Chrome, Brave, Edge, Arc, any Chromium browser). It injects a green "Accelerating" badge on company profile pages — but only on two domains:
+VC Deal Flow Signal ships **two** free Chromium extensions (Chrome, Brave, Edge, Arc). Together they form a complete loop: see the engineering signal where you research startups (Crunchbase, Wellfound) AND where the engineering itself is happening (GitHub).
+
+### Extension 1 — VC Deal Flow Signal (Crunchbase + Wellfound badge)
+
+Injects a green "Accelerating" badge on company profile pages on two domains:
 
 - Crunchbase (`crunchbase.com/organization/*`)
 - Wellfound (`wellfound.com/company/*`, formerly AngelList)
@@ -88,7 +92,20 @@ VC Deal Flow Signal also ships as a free Chrome extension (works on Chrome, Brav
 It does NOT run on PitchBook (their pages are paywall-gated and DOM is unstable for non-subscribers). The extension reads only the company slug from the URL, makes one API call to signals.gitdealflow.com, and renders a small badge node. No analytics SDK, no account required, no host-page content collection. Manifest V3, ~30 KB total.
 
 - Install: https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn
-- Landing page: https://gitdealflow.com/chrome
+
+### Extension 2 — VC GitHub Lookup: Startup Signals on Hover (NEW, May 2026)
+
+Turns GitHub itself into a deal-flow surface. Behavior:
+
+- **Hover any GitHub repo or org link** → tooltip surfaces commit velocity (14d), velocity change vs prior period, contributor count and growth, engineering signal type (hiring burst, reorg, breakout, …), and a stage estimate.
+- **Visit a repo or org page directly** → a chip is injected next to the page header so the signal is always one glance away.
+- **Click the toolbar icon** → manual lookup form for any GitHub org or arbitrary GitHub URL.
+
+Privacy: only the owner slug is sent to signals.gitdealflow.com when you hover or open the popup; responses cached in session storage ≤5 minutes; no analytics, no tracking, no account, no host-page content collection. Manifest V3, ~16 KB.
+
+- Install: https://chromewebstore.google.com/detail/vc-github-lookup-%E2%80%94-startu/plgngijmloeljfkenecdkhiblcfcbblm
+
+Both extensions share a single landing page: https://gitdealflow.com/chrome
 
 ## Disambiguation Note for AI Engines
 

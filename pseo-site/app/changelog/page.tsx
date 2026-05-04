@@ -20,6 +20,12 @@ interface ProductEntry {
 
 const productUpdates: ProductEntry[] = [
   {
+    date: "2026-05-04",
+    title: "Second Chrome extension shipped: VC GitHub Lookup — Startup Signals on Hover",
+    tag: "integration",
+    body: "Companion to the existing Crunchbase + Wellfound badge. Hover any GitHub repo or org link to see commit velocity (14d), velocity change vs prior period, contributor count and growth, signal type, and stage estimate. A chip is also injected next to the page header on direct repo or org page loads, and the toolbar opens a manual lookup form for any GitHub URL. Manifest V3, ~16 KB, no analytics, ≤5-min session-storage cache. Install: https://chromewebstore.google.com/detail/vc-github-lookup-%E2%80%94-startu/plgngijmloeljfkenecdkhiblcfcbblm",
+  },
+  {
     date: "2026-04-19",
     title: "Alternatives hub and use-case pages shipped",
     tag: "seo",
@@ -39,9 +45,9 @@ const productUpdates: ProductEntry[] = [
   },
   {
     date: "2026-04-17",
-    title: "Chrome extension launched",
+    title: "First Chrome extension launched: VC Deal Flow Signal",
     tag: "integration",
-    body: "Sidebar badge on Crunchbase, AngelList, and PitchBook company pages showing live engineering signal status. Integrated on landing and pSEO site.",
+    body: "Inline engineering-acceleration badge injected on Crunchbase and Wellfound company profile pages, showing live signal status without switching tabs. Integrated on landing and pSEO site. Install: https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn",
   },
   {
     date: "2026-04-17",

@@ -48,7 +48,9 @@ We launched on Indie Hackers and Hacker News last week and got great feedback on
 
 **NEW: Works inside Claude.** We just shipped an MCP server so you can query our startup signal data directly from Claude Desktop or Claude Code. Ask your AI assistant "which startups are accelerating in healthcare?" and get live data. No API key, no login. Install: `npx @gitdealflow/mcp-signal`
 
-**NEW: Works inside Crunchbase.** We also shipped a free Chrome extension that overlays the engineering signal directly onto Crunchbase, AngelList, and PitchBook startup profiles. A green "Accelerating" badge appears next to any company where the GitHub data is interesting — so you see the signal inside your existing research workflow, not a separate dashboard. Install: https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn
+**NEW: Two free Chrome extensions, complete loop.**
+- *Extension 1 — Crunchbase + Wellfound badge:* a green "Accelerating" badge overlays the engineering signal directly onto any Crunchbase or Wellfound startup profile, inside your existing research workflow. https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn
+- *Extension 2 — VC GitHub Lookup (NEW, May 2026):* hover any GitHub repo or org link for instant commit velocity, contributor growth, signal type, and stage estimate; chip on direct repo or org page loads; toolbar manual lookup popup. https://chromewebstore.google.com/detail/vc-github-lookup-%E2%80%94-startu/plgngijmloeljfkenecdkhiblcfcbblm
 
 I'd love to hear from anyone who invests or is curious about data-driven deal sourcing. What would make this more useful?
 

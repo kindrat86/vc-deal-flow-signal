@@ -185,9 +185,12 @@ Free SVG badges for README files. Both endpoints return \`image/svg+xml\`, are C
 - [Commit Momentum badge](${BASE_URL}/api/badge/momentum/{org}/{repo}/svg): Per-repo commit-velocity tier (cold / warming / hot / breakout). Only renders for tracked startup orgs; untracked repos render an "untracked" pill. Markdown: \`[![Commit Momentum](${BASE_URL}/api/badge/momentum/ORG/REPO/svg)](${BASE_URL}/)\`
 - [Badge builder](${BASE_URL}/badge-builder): Interactive UI that generates ready-to-paste markdown / HTML / BBCode snippets for both badge types. \`?handle=USERNAME\` and \`?org=ORG&repo=REPO\` query params pre-fill the form.
 
-## Chrome Extension
+## Chrome Extensions
 
-- [Install on Chrome Web Store](https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn): Free Chrome extension that injects a GitHub engineering acceleration badge onto startup profiles on Crunchbase, AngelList, and PitchBook. Investors see the signal while doing deal research, without switching tabs.
+Two free Chromium extensions (Chrome, Brave, Edge, Arc). Together they form a complete loop — engineering signals on the deal-research surfaces (Crunchbase, Wellfound) AND on GitHub itself.
+
+- [VC Deal Flow Signal — Crunchbase + Wellfound badge](https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn): Inline engineering-acceleration badge injected on Crunchbase and Wellfound profile pages. Investors see the signal while doing deal research without switching tabs.
+- [VC GitHub Lookup — Startup Signals on Hover](https://chromewebstore.google.com/detail/vc-github-lookup-%E2%80%94-startu/plgngijmloeljfkenecdkhiblcfcbblm) (NEW, May 2026): Hover any GitHub repo or org link for instant commit velocity, contributor growth, signal type, and stage estimate. A chip is also injected on direct repo and org page loads, and the toolbar opens a manual lookup form for any GitHub URL.
 
 ## Claude MCP Server
 

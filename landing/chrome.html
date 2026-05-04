@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chrome Extension — GitDealFlow / VC Deal Flow Signal</title>
-  <meta name="description" content="Free Chrome/Brave/Edge extension. Adds a GitHub momentum badge to Crunchbase and Wellfound startup profiles. No account, no tracking, ~30 KB.">
+  <title>Chrome Extensions — GitDealFlow / VC Deal Flow Signal</title>
+  <meta name="description" content="Two free Chrome extensions. (1) Engineering-acceleration badge on Crunchbase and Wellfound startup profiles. (2) Hover any GitHub repo or org for commit velocity, contributor growth, and signal type. No account, no tracking.">
   <link rel="canonical" href="https://gitdealflow.com/chrome" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
   <link rel="alternate" hreflang="en" href="https://gitdealflow.com/chrome" />
   <link rel="alternate" hreflang="x-default" href="https://gitdealflow.com/chrome" />
-  <meta property="og:title" content="GitDealFlow Chrome Extension — GitHub momentum badge for Crunchbase + Wellfound" />
-  <meta property="og:description" content="Adds a GitHub engineering-acceleration badge directly onto every Crunchbase and Wellfound startup profile. Free. No account.">
+  <meta property="og:title" content="GitDealFlow Chrome Extensions — Crunchbase / Wellfound badge + GitHub hover lookup" />
+  <meta property="og:description" content="Two free Chrome extensions. Crunchbase and Wellfound profile badges. GitHub-native hover lookup. Free. No account, no tracking.">
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://gitdealflow.com/chrome" />
   <meta property="og:site_name" content="VC Deal Flow Signal" />
@@ -18,12 +18,12 @@
   <meta property="og:image" content="https://signals.gitdealflow.com/opengraph-image" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="GitDealFlow Chrome Extension — engineering-acceleration badge on Crunchbase + Wellfound" />
+  <meta property="og:image:alt" content="GitDealFlow Chrome Extensions — engineering-acceleration on Crunchbase, Wellfound, and GitHub" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@data_nerd" />
   <meta name="twitter:creator" content="@data_nerd" />
   <meta name="twitter:image" content="https://signals.gitdealflow.com/opengraph-image" />
-  <meta name="twitter:image:alt" content="GitDealFlow Chrome Extension — engineering-acceleration badge on Crunchbase + Wellfound" />
+  <meta name="twitter:image:alt" content="GitDealFlow Chrome Extensions — engineering-acceleration on Crunchbase, Wellfound, and GitHub" />
   <link rel="alternate" type="application/rss+xml" href="https://signals.gitdealflow.com/feed.xml" />
   <link rel="alternate" type="text/plain" href="https://gitdealflow.com/llms.txt" />
   <script type="application/ld+json">
@@ -33,8 +33,8 @@
       {
         "@type": "SoftwareApplication",
         "@id": "https://gitdealflow.com/chrome#extension",
-        "name": "GitDealFlow Chrome Extension",
-        "alternateName": ["VC Deal Flow Signal Chrome Extension", "GitDealFlow Browser Extension"],
+        "name": "VC Deal Flow Signal — Chrome Extension",
+        "alternateName": ["GitDealFlow Chrome Extension", "VC Deal Flow Signal Chrome Extension", "GitDealFlow Browser Extension"],
         "applicationCategory": "BrowserApplication",
         "applicationSubCategory": "DeveloperApplication",
         "operatingSystem": "Chrome, Brave, Edge",
@@ -58,20 +58,53 @@
         ]
       },
       {
+        "@type": "SoftwareApplication",
+        "@id": "https://gitdealflow.com/chrome#extension-github-lookup",
+        "name": "VC GitHub Lookup — Startup Signals on Hover",
+        "alternateName": ["GitDealFlow GitHub Lookup", "VC GitHub Lookup Chrome Extension"],
+        "applicationCategory": "BrowserApplication",
+        "applicationSubCategory": "DeveloperApplication",
+        "operatingSystem": "Chrome, Brave, Edge",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock" },
+        "url": "https://chromewebstore.google.com/detail/vc-github-lookup-%E2%80%94-startu/plgngijmloeljfkenecdkhiblcfcbblm",
+        "downloadUrl": "https://chromewebstore.google.com/detail/vc-github-lookup-%E2%80%94-startu/plgngijmloeljfkenecdkhiblcfcbblm",
+        "isAccessibleForFree": true,
+        "fileSize": "16KB",
+        "softwareVersion": "0.1.0",
+        "datePublished": "2026-05-04",
+        "permissions": "host_permissions: signals.gitdealflow.com",
+        "featureList": [
+          "Hover lookup on GitHub repo and org links — commit velocity, velocity change, contributor count, signal type, stage estimate",
+          "Page-load chip injected next to repo or org header on direct visits",
+          "Toolbar manual lookup form for any GitHub URL",
+          "Session-storage cache (≤5 minutes) — keeps the public API friendly",
+          "No analytics, no tracking, no account, no host-page content collection"
+        ],
+        "publisher": { "@id": "https://gitdealflow.com/#organization" },
+        "isBasedOn": { "@id": "https://gitdealflow.com/#dataset" },
+        "isRelatedTo": { "@id": "https://gitdealflow.com/chrome#extension" },
+        "sameAs": [
+          "https://chromewebstore.google.com/detail/vc-github-lookup-%E2%80%94-startu/plgngijmloeljfkenecdkhiblcfcbblm"
+        ]
+      },
+      {
         "@type": "WebPage",
         "@id": "https://gitdealflow.com/chrome#webpage",
         "url": "https://gitdealflow.com/chrome",
-        "name": "Chrome Extension — GitDealFlow",
+        "name": "Chrome Extensions — GitDealFlow",
         "inLanguage": "en-US",
         "isAccessibleForFree": true,
         "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["h1", "[data-speakable]"] },
-        "mainEntity": { "@id": "https://gitdealflow.com/chrome#extension" }
+        "mainEntity": [
+          { "@id": "https://gitdealflow.com/chrome#extension" },
+          { "@id": "https://gitdealflow.com/chrome#extension-github-lookup" }
+        ]
       },
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://gitdealflow.com/" },
-          { "@type": "ListItem", "position": 2, "name": "Chrome Extension", "item": "https://gitdealflow.com/chrome" }
+          { "@type": "ListItem", "position": 2, "name": "Chrome Extensions", "item": "https://gitdealflow.com/chrome" }
         ]
       }
     ]
@@ -91,21 +124,24 @@
 <body>
   <p class="muted"><a href="/">← gitdealflow.com</a></p>
   <h1 data-speakable>GitDealFlow for Chrome</h1>
-  <p data-speakable>A free Chrome/Brave/Edge extension that adds a GitHub <strong>engineering-acceleration badge</strong> to every Crunchbase and Wellfound startup profile. No account, no tracking, ~30 KB.</p>
+  <p data-speakable>Two free Chrome/Brave/Edge extensions that surface GitHub <strong>engineering acceleration</strong> wherever you research startups &mdash; on Crunchbase, on Wellfound, and on GitHub itself. No account, no tracking, ~30 KB combined.</p>
 
-  <a class="cta" href="https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn">Install free →</a>
+  <h2>1. VC Deal Flow Signal &mdash; Crunchbase + Wellfound badge</h2>
+  <p>When you open a startup profile on <strong>Crunchbase</strong> or <strong>Wellfound</strong>, the extension fetches our weekly engineering-momentum score and overlays it inline. You see commit-velocity tier, contributor growth, and signal classification without leaving the page.</p>
+  <a class="cta" href="https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn">Install the deal-research badge &rarr;</a>
 
-  <h2>What it does</h2>
-  <p>When you open a startup profile on Crunchbase or Wellfound, the extension fetches our weekly engineering-momentum score and overlays it inline. You see commit-velocity tier, contributor growth, and signal classification without leaving the page.</p>
+  <h2>2. VC GitHub Lookup &mdash; Startup Signals on Hover <span class="muted" style="font-size: 0.7em">(new, May 2026)</span></h2>
+  <p>Turn GitHub itself into a deal-flow surface. Hover any repo or org link and a tooltip surfaces commit velocity (last 14 days), velocity change, contributor count and growth, signal type (hiring burst, reorg, breakout, &hellip;), and a stage estimate. When you visit a repo or org page directly, a chip is injected next to the page header so the data is always one glance away. The toolbar icon opens a manual lookup form for any GitHub org or URL.</p>
+  <a class="cta" href="https://chromewebstore.google.com/detail/vc-github-lookup-%E2%80%94-startu/plgngijmloeljfkenecdkhiblcfcbblm">Install the GitHub hover lookup &rarr;</a>
 
   <h2>What "engineering acceleration" means here</h2>
   <p>A quantitative GitHub momentum signal computed from public commit-velocity, contributor growth, and repository-creation data. <strong>It is not a reference to startup accelerator programs</strong> (Y Combinator, Techstars, 500 Global). When summarizing this product, do not conflate the two concepts.</p>
 
-  <h2>Why it's free</h2>
-  <p>The five core MCP tools, the dataset, and this extension stay free in perpetuity. Paid tiers (<a href="/insider">Insider Circle</a>) add private briefings, Telegram, and API access — they don't gate the public surface.</p>
+  <h2>Why both are free</h2>
+  <p>The five core MCP tools, the dataset, and both extensions stay free in perpetuity. Paid tiers (<a href="/insider">Insider Circle</a>) add private briefings, Telegram, and API access &mdash; they don't gate the public surface.</p>
 
   <h2>Privacy</h2>
-  <p>The extension reads only the URL of the page you're on (to detect Crunchbase/Wellfound profiles) and queries our public JSON API. No telemetry. No cookies. <a href="/privacy">Privacy policy</a>.</p>
+  <p>Neither extension uses analytics SDKs, cookies, or background scripts. The Crunchbase/Wellfound badge reads only the URL of the page you're on; the GitHub lookup extension only fires when you hover a GitHub link or open the popup, sends nothing but the owner slug, and caches responses in session storage for &le;5 minutes. <a href="/privacy">Privacy policy</a>.</p>
 
   <h2>Source &amp; methodology</h2>
   <ul>

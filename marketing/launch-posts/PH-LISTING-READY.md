@@ -53,7 +53,8 @@ We monitor GitHub engineering activity across thousands of startup orgs and surf
 | --- | --- |
 | Website | https://gitdealflow.com |
 | Dashboard | https://signals.gitdealflow.com |
-| Chrome extension | https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn |
+| Chrome extension #1 (Crunchbase + Wellfound badge) | https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn |
+| Chrome extension #2 (VC GitHub Lookup — hover) | https://chromewebstore.google.com/detail/vc-github-lookup-%E2%80%94-startu/plgngijmloeljfkenecdkhiblcfcbblm |
 | MCP server (npm) | https://www.npmjs.com/package/@gitdealflow/mcp-signal |
 | GitHub (methodology) | https://github.com/kindrat86/mcp-deal-flow-signal |
 | Twitter/X | https://x.com/data_nerd |
@@ -124,7 +125,9 @@ We launched on Indie Hackers and Hacker News last week and got great feedback on
 
 **NEW: Works inside Claude.** We shipped an MCP server so you can query the data directly from Claude Desktop or Claude Code. Ask "which startups are accelerating in cybersecurity?" and get live data. No API key, no login. Install: `npx @gitdealflow/mcp-signal`
 
-**NEW: Works inside Crunchbase.** Free Chrome extension overlays the signal onto Crunchbase, AngelList, and PitchBook profiles. A green "Accelerating" badge appears next to any company where the GitHub data is interesting — the signal shows up inside your existing research workflow, not in a separate dashboard. https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn
+**NEW: Two free Chrome extensions, complete loop.**
+- *Extension 1 — Crunchbase + Wellfound badge:* a green "Accelerating" badge overlays the engineering signal onto any Crunchbase or Wellfound startup profile, directly in your existing research workflow. https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn
+- *Extension 2 — VC GitHub Lookup (NEW, May 2026):* hover any GitHub repo or org link for instant commit velocity, contributor growth, signal type, and stage estimate. A chip is also injected on direct repo and org page loads, and the toolbar opens a manual lookup popup. https://chromewebstore.google.com/detail/vc-github-lookup-%E2%80%94-startu/plgngijmloeljfkenecdkhiblcfcbblm
 
 I'd love to hear from anyone who invests or is curious about data-driven deal sourcing. What would make this more useful?
 ```

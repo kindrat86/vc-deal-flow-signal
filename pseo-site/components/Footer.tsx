@@ -39,7 +39,8 @@ export default function Footer() {
           <div>
             <p className="text-xs font-medium text-gray-300 uppercase tracking-wider mb-3">Elsewhere</p>
             <nav className="flex flex-col gap-2 text-sm text-gray-500">
-              <a href="https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn" className="hover:text-gray-300 transition-colors" rel="noopener noreferrer" target="_blank">Chrome Extension</a>
+              <a href="https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn" className="hover:text-gray-300 transition-colors" rel="noopener noreferrer" target="_blank">Chrome — Crunchbase/Wellfound</a>
+              <a href="https://chromewebstore.google.com/detail/vc-github-lookup-%E2%80%94-startu/plgngijmloeljfkenecdkhiblcfcbblm" className="hover:text-gray-300 transition-colors" rel="noopener noreferrer" target="_blank">Chrome — GitHub Hover Lookup</a>
               <a href="https://t.me/gitdealflow" className="hover:text-gray-300 transition-colors" rel="noopener noreferrer" target="_blank">Telegram</a>
               <a href="https://x.com/data_nerd" className="hover:text-gray-300 transition-colors" rel="noopener noreferrer" target="_blank">Twitter/X</a>
               <a href="https://www.linkedin.com/company/gitdealflow" className="hover:text-gray-300 transition-colors" rel="noopener noreferrer" target="_blank">LinkedIn</a>

@@ -3,12 +3,13 @@
 
 ## Embedded distribution layers (Isenberg Strategy #1: piggyback on existing platforms)
 
-Two free entry rungs on the Brunson value ladder. Mention BOTH in every launch asset alongside the core site, not as afterthoughts. Each attracts a distinct persona:
+Three free entry rungs on the Brunson value ladder. Mention all three in every launch asset alongside the core site, not as afterthoughts. Each attracts a distinct persona:
 
-1. **Chrome extension** — injects a green "Accelerating" badge on Crunchbase, AngelList, and PitchBook startup profiles. Install: https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn. Audience: traditional VCs doing deal research in the browser.
-2. **Claude MCP server** — serves signals inside Claude Desktop, Claude Code, Cursor, and any MCP-compatible AI assistant. Install: `npx @gitdealflow/mcp-signal`. Audience: dev-investors and AI-native workflows.
+1. **Chrome extension #1 — VC Deal Flow Signal (Crunchbase + Wellfound badge)** — injects a green "Accelerating" badge on Crunchbase and Wellfound startup profiles. Install: https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn. Audience: traditional VCs doing deal research in the browser.
+2. **Chrome extension #2 — VC GitHub Lookup: Startup Signals on Hover (NEW, May 2026)** — hover any GitHub repo or org link for instant commit velocity, contributor growth, signal type, and stage estimate; chip on direct visits; toolbar lookup popup. Install: https://chromewebstore.google.com/detail/vc-github-lookup-%E2%80%94-startu/plgngijmloeljfkenecdkhiblcfcbblm. Audience: developer-investors who live on GitHub.
+3. **Claude MCP server** — serves signals inside Claude Desktop, Claude Code, Cursor, and any MCP-compatible AI assistant. Install: `npx @gitdealflow/mcp-signal`. Audience: dev-investors and AI-native workflows.
 
-Both are free, both drive signups to the weekly digest, which feeds the EUR 9.97/mo dashboard and EUR 97/mo Insider Circle conversions.
+All three are free, all three drive signups to the weekly digest, which feeds the EUR 9.97/mo dashboard and EUR 97/mo Insider Circle conversions. Extensions #1 and #2 are explicit companions — install both for the complete loop (signal where you research startups AND signal where the engineering originates).
 
 ## Launch Strategy: Consolidated single-day launch (Sunday April 26)
 

@@ -100,7 +100,8 @@ Built solo by the Data Nerd. Shipping in public. Feedback welcome.
 | GitHub | https://github.com/kindrat86/mcp-deal-flow-signal |
 | Product Hunt | https://www.producthunt.com/posts/vc-deal-flow-signal *(live Apr 26 — leave blank if pre-launch)* |
 | Crunchbase | https://www.crunchbase.com/organization/gitdealflow |
-| Chrome Web Store | https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn |
+| Chrome Web Store (VC Deal Flow Signal — Crunchbase/Wellfound badge) | https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn |
+| Chrome Web Store (VC GitHub Lookup — hover, NEW May 2026) | https://chromewebstore.google.com/detail/vc-github-lookup-%E2%80%94-startu/plgngijmloeljfkenecdkhiblcfcbblm |
 | npm (MCP) | https://www.npmjs.com/package/@gitdealflow/mcp-signal |
 
 ---

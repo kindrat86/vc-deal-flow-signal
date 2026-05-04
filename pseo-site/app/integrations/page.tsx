@@ -93,12 +93,23 @@ const integrations: Integration[] = [
   },
   {
     slug: "chrome-extension",
-    name: "Chrome Extension",
-    tagline: "Engineering signals on Crunchbase, AngelList, PitchBook",
+    name: "Chrome Extension — Crunchbase + Wellfound badge",
+    tagline: "Engineering signal badge on Crunchbase and Wellfound profiles",
     description:
-      "Sidebar badge that appears on Crunchbase, AngelList, and PitchBook company pages with the current engineering signal status for that startup. Works passively — no extra clicks, no login required.",
+      "Inline badge that appears on Crunchbase and Wellfound company profile pages with the current engineering signal status for that startup. Works passively — no extra clicks, no login required, no telemetry.",
     status: "live",
-    href: "https://chromewebstore.google.com/",
+    href: "https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn",
+    category: "AI",
+    setup: "Install from Chrome Web Store",
+  },
+  {
+    slug: "chrome-extension-github-lookup",
+    name: "Chrome Extension — VC GitHub Lookup",
+    tagline: "Hover any GitHub repo or org for live startup signals",
+    description:
+      "Hover any link to github.com/<owner> or github.com/<owner>/<repo> and instantly see commit velocity (14d), velocity change, contributor count and growth, signal type (hiring burst, reorg, breakout, …), and a stage estimate. A chip is also injected on direct repo or org page loads, and the toolbar opens a manual lookup form for any GitHub URL. Manifest V3, ~16 KB, no telemetry.",
+    status: "live",
+    href: "https://chromewebstore.google.com/detail/vc-github-lookup-%E2%80%94-startu/plgngijmloeljfkenecdkhiblcfcbblm",
     category: "AI",
     setup: "Install from Chrome Web Store",
   },

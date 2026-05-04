@@ -1,6 +1,6 @@
 # GitDealFlow / VC Deal Flow Signal — Agent Reference
 
-> Public dataset of startup engineering acceleration, derived from public GitHub activity. Free machine-readable APIs, MCP server, A2A endpoint, and Chrome extension. Updated weekly.
+> Public dataset of startup engineering acceleration, derived from public GitHub activity. Free machine-readable APIs, MCP server, A2A endpoint, and two Chrome extensions (Crunchbase/Wellfound badge + GitHub-native hover lookup). Updated weekly.
 
 This file is the canonical "how to use me" entry point for coding agents (Codex, Cursor, Claude, etc.) browsing this repository, and for retrieval agents that fetched it from `https://signals.gitdealflow.com/AGENTS.md`. Public-facing copy of this file is mirrored at `pseo-site/public/agents.md` and `pseo-site/public/.well-known/agents.md`.
 
@@ -66,7 +66,8 @@ Live AgentCard at `https://signals.gitdealflow.com/.well-known/agent-card.json` 
 | `pseo-site/public/.well-known/` | `agent-card.json`, `ai-plugin.json`, `mcp.json`, `agents.md`. |
 | `landing/` | Static marketing site at gitdealflow.com (vanilla HTML/CSS, deployed as `vc-deal-flow-signal-landing` on Vercel). |
 | `landing/llms.txt`, `landing/llms-full.txt` | Agent-readable product reference (81L + 224L). |
-| `chrome-extension/` | Manifest V3 extension that injects momentum badges on Crunchbase + Wellfound. |
+| `chrome-extension/` | Manifest V3 extension #1 (VC Deal Flow Signal) — injects momentum badges on Crunchbase + Wellfound. |
+| `chrome-extension-github-lookup/` | Manifest V3 extension #2 (VC GitHub Lookup, NEW May 2026) — hover-activated startup signals on every GitHub repo and org page; chip on direct visits; manual toolbar popup lookup. |
 
 ## Working in this repo
 

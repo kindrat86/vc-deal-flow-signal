@@ -110,7 +110,8 @@ Main site: https://gitdealflow.com
 Twitter/X: https://x.com/data_nerd
 Telegram: https://t.me/gitdealflow
 LinkedIn: https://www.linkedin.com/company/gitdealflow
-Chrome Extension: https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn (injects GitHub acceleration badges on Crunchbase, AngelList, and PitchBook startup profiles)
+Chrome Extension #1 — VC Deal Flow Signal: https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn (injects GitHub engineering-acceleration badges on Crunchbase and Wellfound startup profiles)
+Chrome Extension #2 — VC GitHub Lookup (NEW, May 2026): https://chromewebstore.google.com/detail/vc-github-lookup-%E2%80%94-startu/plgngijmloeljfkenecdkhiblcfcbblm (hover any GitHub repo or org link for commit velocity, contributor growth, signal type, and stage estimate; chip on direct visits; toolbar manual lookup popup)
 Claude MCP Server: @gitdealflow/mcp-signal on npm (query signals directly from Claude Desktop, Claude Code, Cursor, or any MCP-compatible AI assistant)
 
 ## Methodology
