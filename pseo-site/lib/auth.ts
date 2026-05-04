@@ -20,9 +20,11 @@ function getMagicLinkSecret() {
   return new TextEncoder().encode(`magic-link:${getBaseSecret()}`);
 }
 
+export type Tier = "dashboard" | "insider" | "payg";
+
 export interface SessionPayload {
   email: string;
-  tier: "dashboard" | "insider";
+  tier: Tier;
   customerId: string;
 }
 

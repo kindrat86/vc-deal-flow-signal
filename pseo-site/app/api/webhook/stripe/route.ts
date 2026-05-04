@@ -1,5 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
-import { stripe, getTierFromSession } from "@/lib/stripe";
+import type Stripe from "stripe";
+import {
+  stripe,
+  getTierFromSession,
+  incrementCustomerBalanceCents,
+  getCustomerBalanceCents,
+} from "@/lib/stripe";
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY!;
 const FROM_EMAIL = process.env.FROM_EMAIL || "signal@gitdealflow.com";
@@ -119,12 +125,48 @@ export async function POST(request: NextRequest) {
   if (event.type === "checkout.session.completed") {
     const session = event.data.object;
 
-    // Fetch full session with line items
     const fullSession = await stripe.checkout.sessions.retrieve(session.id, {
       expand: ["line_items"],
     });
 
     const email = fullSession.customer_details?.email;
+    const plan = fullSession.metadata?.gdf_plan ?? "";
+
+    // PAYG top-up: credit customer balance, no subscription email
+    if (plan.startsWith("payg-") || fullSession.mode === "payment") {
+      const customerId =
+        typeof fullSession.customer === "string"
+          ? fullSession.customer
+          : fullSession.customer?.id;
+      const cents = fullSession.amount_total ?? 0;
+
+      if (customerId && cents > 0) {
+        try {
+          const newBalance = await incrementCustomerBalanceCents(customerId, cents);
+          if (email) {
+            await sendEmail(
+              email,
+              `€${(cents / 100).toFixed(2)} credit added — VC Deal Flow Signal`,
+              paygTopupEmail(email, cents, newBalance)
+            );
+          }
+          await sendEmail(
+            "signal@gitdealflow.com",
+            `PAYG top-up: ${email ?? customerId} — €${(cents / 100).toFixed(2)}`,
+            `<p>PAYG top-up received.</p>
+<p>Customer: ${escapeHtml(customerId)}</p>
+<p>Email: ${escapeHtml(email ?? "(none)")}</p>
+<p>Amount: €${(cents / 100).toFixed(2)}</p>
+<p>New balance: €${(newBalance / 100).toFixed(2)}</p>
+<p>Session: ${escapeHtml(session.id)}</p>`
+          );
+        } catch (err) {
+          console.error("PAYG balance update failed:", err);
+        }
+      }
+      return NextResponse.json({ received: true });
+    }
+
     if (!email) {
       console.error("No email in checkout session:", session.id);
       return NextResponse.json({ received: true });
@@ -140,7 +182,6 @@ export async function POST(request: NextRequest) {
       console.error("Failed to send welcome email:", err);
     }
 
-    // Notify admin
     try {
       await sendEmail(
         "signal@gitdealflow.com",
@@ -156,5 +197,68 @@ export async function POST(request: NextRequest) {
     }
   }
 
+  if (event.type === "customer.subscription.deleted") {
+    const sub = event.data.object;
+    const customerId =
+      typeof sub.customer === "string" ? sub.customer : sub.customer.id;
+
+    try {
+      const balance = await getCustomerBalanceCents(customerId);
+      const newTier = balance > 0 ? "payg" : "dashboard";
+      const customer = await stripe.customers.retrieve(customerId);
+      const existingMeta =
+        !customer || (customer as Stripe.DeletedCustomer).deleted
+          ? {}
+          : (customer as Stripe.Customer).metadata ?? {};
+      await stripe.customers.update(customerId, {
+        metadata: { ...existingMeta, gdf_tier: newTier },
+      });
+
+      const email =
+        !customer || (customer as Stripe.DeletedCustomer).deleted
+          ? null
+          : (customer as Stripe.Customer).email;
+      try {
+        await sendEmail(
+          "signal@gitdealflow.com",
+          `Insider Circle cancelled: ${email ?? customerId}`,
+          `<p>Subscription cancelled.</p>
+<p>Customer: ${escapeHtml(customerId)}</p>
+<p>Email: ${escapeHtml(email ?? "(unknown)")}</p>
+<p>Downgraded to: ${escapeHtml(newTier)}</p>
+<p>Remaining balance: €${(balance / 100).toFixed(2)}</p>
+<p>Subscription: ${escapeHtml(sub.id)}</p>`
+        );
+      } catch {
+        // Admin notification is best-effort
+      }
+    } catch (err) {
+      console.error("Failed to handle subscription cancel:", err);
+    }
+  }
+
   return NextResponse.json({ received: true });
+}
+
+function paygTopupEmail(email: string, addedCents: number, balanceCents: number): string {
+  const added = (addedCents / 100).toFixed(2);
+  const balance = (balanceCents / 100).toFixed(2);
+  return `<!DOCTYPE html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head>
+<body style="margin:0;padding:0;background:#f8fafc;color:#1e293b;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
+<div style="max-width:600px;margin:0 auto;padding:32px 24px;">
+<div style="margin-bottom:24px;"><strong style="color:#0ea5e9;font-size:14px;letter-spacing:1px;">VC DEAL FLOW SIGNAL</strong></div>
+<div style="font-size:16px;line-height:1.7;color:#1e293b;">
+<p>Your pay-as-you-go credit is ready.</p>
+<p><strong>€${added}</strong> added &middot; current balance <strong>€${balance}</strong></p>
+<p>Free MCP tools keep working as before — paid agent tools (research_company, compose_thesis, deep_dive_scan) now run from this balance at €0.10 per call.</p>
+<p style="margin:24px 0;"><a href="https://signals.gitdealflow.com/login" style="display:inline-block;background:#0284c7;color:#fff;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:600;">Open billing dashboard</a></p>
+<p>Log in with ${escapeHtml(email)} — we'll send a magic link, no password needed.</p>
+<p>Balance never expires. No auto-charge — top-ups are always explicit.</p>
+<p>— The Data Nerd</p>
+</div>
+<div style="margin-top:40px;padding-top:20px;border-top:1px solid #e2e8f0;font-size:12px;color:#94a3b8;">
+<p><a href="https://gitdealflow.com" style="color:#0ea5e9;">gitdealflow.com</a></p>
+</div>
+</div></body></html>`;
 }

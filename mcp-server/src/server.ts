@@ -25,10 +25,15 @@ import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { homedir } from "node:os";
 
-const SERVER_VERSION = "1.4.0";
+const SERVER_VERSION = "2.0.0";
 const BASE_URL = "https://signals.gitdealflow.com";
 const UA = `gitdealflow-mcp/${SERVER_VERSION}`;
 const FOOTER = "— Powered by gitdealflow.com";
+
+const API_KEY = (process.env.GITDEALFLOW_API_KEY ?? "").trim();
+const HAS_API_KEY = API_KEY.length > 0;
+const PAID_HINT =
+  "Paid agent tool. Get an API key at https://signals.gitdealflow.com/pricing — €19 starts you with 190 paid calls. Set GITDEALFLOW_API_KEY in your MCP config to enable.";
 
 const TELEMETRY_DISABLED =
   process.env.GITDEALFLOW_MCP_TELEMETRY === "0" ||
@@ -93,6 +98,35 @@ async function fetchText(path: string): Promise<string> {
   });
   if (!res.ok) throw new Error(`HTTP ${res.status} from ${path}`);
   return res.text();
+}
+
+interface PaidCallResult {
+  ok: boolean;
+  status: number;
+  body: Record<string, unknown>;
+}
+
+async function callPaidTool(
+  name: string,
+  args: Record<string, unknown>
+): Promise<PaidCallResult> {
+  const headers: Record<string, string> = {
+    "User-Agent": UA,
+    "Content-Type": "application/json",
+  };
+  if (HAS_API_KEY) headers["Authorization"] = `Bearer ${API_KEY}`;
+  const res = await fetch(`${BASE_URL}/api/agent/call`, {
+    method: "POST",
+    headers,
+    body: JSON.stringify({ name, arguments: args }),
+  });
+  let body: Record<string, unknown> = {};
+  try {
+    body = (await res.json()) as Record<string, unknown>;
+  } catch {
+    body = { error: `HTTP ${res.status} (non-JSON response)` };
+  }
+  return { ok: res.ok, status: res.status, body };
 }
 
 interface Startup {
@@ -672,6 +706,112 @@ const TOOLS = [
       openWorldHint: true,
     },
   },
+  {
+    name: "research_company",
+    title: "Research Company (paid)",
+    description: [
+      "PAID AGENT TOOL — €0.10 per call. Returns an enriched dossier for a single tracked startup: full signal row, sector rank, top-5 peers in the same sector, period label, and citation.",
+      "",
+      "WHEN TO USE: VC, scout, or analyst wants more than a one-row signal — they want the company in context (rank, peers, trajectory) for a 1-pager or memo prep.",
+      "",
+      "DO NOT USE FOR: simple lookup of one row (free `get_startup_signal` is enough), browsing a sector (use `search_startups_by_sector` free), or composing an investment thesis (use `compose_thesis`).",
+      "",
+      "AUTH: Requires `GITDEALFLOW_API_KEY` in the MCP server env. Without it, the tool returns a polite hint pointing to /pricing.",
+      "",
+      "PARAMETERS: { name: string } — company display name or GitHub org (case-insensitive).",
+      "",
+      "RETURNS: { startup, sectorRank: { rank, of }, peers[5], period, citation, _meter }. The `_meter` block reports the tier (`payg` | `insider`), remaining balance for PAYG, calls-today for Insider.",
+    ].join("\n"),
+    inputSchema: {
+      type: "object" as const,
+      properties: {
+        name: {
+          type: "string",
+          description: "Startup display name or GitHub org slug.",
+        },
+      },
+      required: ["name"],
+      additionalProperties: false,
+    },
+    annotations: {
+      title: "Research Company (paid)",
+      readOnlyHint: true,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: true,
+    },
+  },
+  {
+    name: "compose_thesis",
+    title: "Compose Investment Thesis (paid)",
+    description: [
+      "PAID AGENT TOOL — €0.10 per call. Returns a structured investment thesis for one tracked startup: snapshot, signal type, sector rank, data-derived strengths, peer comparables, period.",
+      "",
+      "WHEN TO USE: agent / analyst is drafting a memo or 1-pager and wants a populated structure to start from rather than a raw row.",
+      "",
+      "DO NOT USE FOR: discovering candidates (use free `get_trending_startups`), or sector-wide deep dives (use `deep_dive_scan`).",
+      "",
+      "AUTH: Requires `GITDEALFLOW_API_KEY`. Free `get_startup_signal` keeps working without auth.",
+      "",
+      "PARAMETERS: { name: string } — company display name or GitHub org slug.",
+      "",
+      "RETURNS: { company, sector, snapshot, signalType, sectorRank, strengths[], peers[5], period, citation, _meter }.",
+    ].join("\n"),
+    inputSchema: {
+      type: "object" as const,
+      properties: {
+        name: {
+          type: "string",
+          description: "Startup display name or GitHub org slug.",
+        },
+      },
+      required: ["name"],
+      additionalProperties: false,
+    },
+    annotations: {
+      title: "Compose Investment Thesis (paid)",
+      readOnlyHint: true,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: true,
+    },
+  },
+  {
+    name: "deep_dive_scan",
+    title: "Deep-Dive Sector Scan (paid)",
+    description: [
+      "PAID AGENT TOOL — €0.10 per call. Returns a multi-cohort scan of one sector for the current period: total tracked count, breakout count, cooling count, top-10 by commit velocity, breakouts list, cold list.",
+      "",
+      "WHEN TO USE: sourcing-cycle prep where the user wants more than the basic sector list — they want pre-segmented breakout vs. cooling vs. top-of-velocity views in one call.",
+      "",
+      "DO NOT USE FOR: simple sector listing (free `search_startups_by_sector` is enough), or single-company research (use `research_company`).",
+      "",
+      "AUTH: Requires `GITDEALFLOW_API_KEY`. Free `search_startups_by_sector` keeps working without auth.",
+      "",
+      "PARAMETERS: { sector: string } — one of the 20 supported sector slugs.",
+      "",
+      "RETURNS: { sector, period, summary: { total, breakouts, cold }, breakouts[≤10], cold[≤5], top10ByCommitVelocity[10], citation, _meter }.",
+    ].join("\n"),
+    inputSchema: {
+      type: "object" as const,
+      properties: {
+        sector: {
+          type: "string",
+          description:
+            "Sector slug. One of: " + SECTOR_SLUGS.join(", ") + ".",
+        },
+      },
+      required: ["sector"],
+      additionalProperties: false,
+    },
+    annotations: {
+      title: "Deep-Dive Sector Scan (paid)",
+      readOnlyHint: true,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: true,
+    },
+  },
 ];
 
 const RESOURCES = [
@@ -1163,6 +1303,60 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
             },
           ],
           structuredContent: { methodology, url },
+        };
+      }
+
+      case "research_company":
+      case "compose_thesis":
+      case "deep_dive_scan": {
+        if (!HAS_API_KEY) {
+          success = false;
+          errorMessage = `paid_no_key:${name}`;
+          return {
+            content: [{ type: "text" as const, text: PAID_HINT }],
+            structuredContent: {
+              error: PAID_HINT,
+              tool: name,
+              pricingUrl: `${BASE_URL}/pricing`,
+              billingUrl: `${BASE_URL}/dashboard/billing`,
+            },
+            isError: true,
+          };
+        }
+        const result = await callPaidTool(name, (args ?? {}) as Record<string, unknown>);
+        if (!result.ok) {
+          success = false;
+          errorMessage = `paid_${result.status}:${name}`;
+          const detail =
+            (typeof result.body.error === "string" ? result.body.error : "") ||
+            (typeof result.body.hint === "string" ? result.body.hint : "") ||
+            `HTTP ${result.status}`;
+          return {
+            content: [
+              {
+                type: "text" as const,
+                text: `${detail}\n\nUpgrade or top up: ${BASE_URL}/dashboard/billing\n\n${FOOTER}`,
+              },
+            ],
+            structuredContent: result.body,
+            isError: true,
+          };
+        }
+        const meter = (result.body as { _meter?: { tier?: string; balanceEur?: string; callsToday?: number; dailyQuota?: number } })._meter;
+        let footerLine = FOOTER;
+        if (meter?.tier === "payg" && meter.balanceEur) {
+          footerLine = `${FOOTER} · debited €0.10 · balance €${meter.balanceEur}`;
+        } else if (meter?.tier === "insider" && typeof meter.callsToday === "number") {
+          footerLine = `${FOOTER} · Insider: ${meter.callsToday}/${meter.dailyQuota ?? 1000} calls today`;
+        }
+        return {
+          content: [
+            {
+              type: "text" as const,
+              text: `${name} result:\n\n${JSON.stringify(result.body, null, 2)}\n\n${footerLine}`,
+            },
+          ],
+          structuredContent: result.body,
         };
       }
 
