@@ -1,0 +1,151 @@
+{
+  "_doc": "Pre-approved cast queue for Farcaster (Warpcast). Cast char limit is 320. Channel-targeted casts include `channel_id` so they post into a specific channel feed.",
+  "_updated": "2026-05-03",
+  "_rules": {
+    "max_per_day": 2,
+    "min_gap_minutes": 240,
+    "char_limit": 320
+  },
+  "casts": [
+    {
+      "id": "001-ssrn-anchor",
+      "text": "Open-sourced 30 findings on which GitHub signals predict $1M+ VC rounds.\n\n12k repos. SSRN paper, HF dataset, free MCP server.\n\nssrn.com/abstract=6606558",
+      "channel_id": "research",
+      "tags": ["ssrn", "evergreen"],
+      "use_count": 0
+    },
+    {
+      "id": "002-mcp-dev-investor",
+      "text": "Built an MCP server for VC deal flow.\n\n5 free tools, no paywall ever. Devs who angel invest can ask Claude/Cursor live questions about GitHub momentum.\n\nsignals.gitdealflow.com/mcp",
+      "channel_id": "ai",
+      "tags": ["mcp", "product"],
+      "use_count": 0
+    },
+    {
+      "id": "003-signal-of-week",
+      "text": "Signal of the week: contributor-diversity gini coefficient.\n\nStartups that raised >$1M had 0.34 gini at month -3 vs 0.61 for non-raisers.\n\nFewer single-bus-factor projects close rounds.\n\nsignals.gitdealflow.com/research",
+      "channel_id": "vc",
+      "tags": ["data", "weekly"],
+      "use_count": 0
+    },
+    {
+      "id": "004-anti-vanity",
+      "text": "Star count alone is a vanity signal.\n\nWhat correlates with funded rounds: stars-to-issues ratio, contributor retention at 90d, README cadence.\n\nRegression on 12k repos: signals.gitdealflow.com/data",
+      "channel_id": "founders",
+      "tags": ["contrarian"],
+      "use_count": 0
+    },
+    {
+      "id": "005-build-in-public",
+      "text": "Building gitdealflow in public.\n\nNext.js on Vercel, PocketBase on Fly, Resend, MCP catalogued on Glama (A-Tier 4.9/5.0 across 6 tools).\n\nNo VC, no team, no podcast. Just GitHub data + a thesis.",
+      "channel_id": "indiehackers",
+      "tags": ["buildinpublic"],
+      "use_count": 0
+    },
+    {
+      "id": "006-mcp-server-stats",
+      "text": "MCP server catalogued on Glama: A-Tier, 4.9/5.0 across 6 tools.\n\nSix tools that let any LLM query VC-grade GitHub signals.\n\nglama.ai/mcp/servers/kindrat86/mcp-deal-flow-signal",
+      "channel_id": "ai",
+      "tags": ["mcp", "credibility"],
+      "use_count": 0
+    },
+    {
+      "id": "007-tech-thesis",
+      "text": "Pre-Series-A traction lives in GitHub graphs, not LinkedIn announcements.\n\nForks, dependents, issue resolution time, contributor first-commit-to-PR delta.\n\nLearn to read these and you scoop the press-release crowd.",
+      "channel_id": "vc",
+      "tags": ["thesis"],
+      "use_count": 0
+    },
+    {
+      "id": "008-aeo-meta",
+      "text": "ChatGPT, Claude, Perplexity all cite our research page when asked 'how to predict VC rounds from GitHub data'.\n\nBuilt with 30 evidence Q&A pairs + Speakable JSON-LD + open SSRN paper.\n\nNo backlinks needed.",
+      "channel_id": "ai",
+      "tags": ["aeo"],
+      "use_count": 0
+    },
+    {
+      "id": "009-newsletter",
+      "text": "Weekly digest of the top 5 startups gaining momentum on GitHub.\n\nFree tier: ranked list + signal scores. No fluff.\n\nsignals.gitdealflow.com/weekly",
+      "channel_id": "founders",
+      "tags": ["product"],
+      "use_count": 0
+    },
+    {
+      "id": "010-data-tease",
+      "text": "Top 3 sectors with steepest GitHub momentum this week:\n\n1. Inference infra (vLLM forks +14%)\n2. Agent frameworks (CrewAI dependents +9%)\n3. Vector search (Qdrant)\n\nsignals.gitdealflow.com/trending",
+      "channel_id": "ai",
+      "tags": ["data"],
+      "use_count": 0
+    },
+    {
+      "id": "011-saas-saturday",
+      "text": "Indie SaaS founders: your GitHub graph is a fundraising deck.\n\nReadme freshness, dependency graph, issue response time, contributor mix.\n\n10 min of cleanup outranks a polished pitch deck for tech-fund partners.",
+      "channel_id": "indiehackers",
+      "tags": ["indiehackers"],
+      "use_count": 0
+    },
+    {
+      "id": "012-research-link",
+      "text": "Released the underlying paper: 'GitHub Repository Signals as Leading Indicators of VC Funding'.\n\nSSRN abstract 6606558. Open access. Reproducible dataset linked.\n\nNo paywall.",
+      "channel_id": "research",
+      "tags": ["ssrn"],
+      "use_count": 0
+    },
+    {
+      "id": "013-tools-free",
+      "text": "Six tools at signals.gitdealflow.com/mcp will never be paywalled.\n\nTrending startups, sector sweeps, single-startup lookup, dataset summary, GitHub Scout Score, methodology.\n\nNew tools may be paid. Existing six stay free forever.",
+      "channel_id": "ai",
+      "tags": ["mcp"],
+      "use_count": 0
+    },
+    {
+      "id": "014-contributor-cohorts",
+      "text": "New cohort analysis: repos retaining 60%+ of contributors at 90 days are 3.2x more likely to close >$1M.\n\nRetention beats velocity.\n\nsignals.gitdealflow.com/research",
+      "channel_id": "vc",
+      "tags": ["data"],
+      "use_count": 0
+    },
+    {
+      "id": "015-buyer-guides-2026-05-04",
+      "text": "Most VC tooling reviews are written by the firms selling the tooling.\n\nShipped 5 independent buyer guides: best AI deal sourcing tools, best stack for emerging managers, solo GPs, GitHub-based, European VCs.\n\nsignals.gitdealflow.com/compare",
+      "channel_id": "vc",
+      "tags": ["buyer-guides", "shipped"],
+      "use_count": 0
+    },
+    {
+      "id": "016-vs-hub-2026-05-04",
+      "text": "Every Harmonic / PitchBook / Crunchbase / Dealroom / Tracxn matchup, head-to-head, one page.\n\nIndependent. SSRN-anchored. Free.\n\nsignals.gitdealflow.com/vs",
+      "channel_id": "vc",
+      "tags": ["vs-hub", "shipped"],
+      "use_count": 0
+    },
+    {
+      "id": "017-developer-investor-stack-2026-05-04",
+      "text": "Developer-investor 2026 stack: MCP server in your IDE, Copilot for due diligence, Notion for pipeline, Crunchbase free.\n\nUnder EUR 30/mo. Traditional VCs structurally cannot match without engineering analysts.\n\nsignals.gitdealflow.com/compare",
+      "channel_id": "ai",
+      "tags": ["developer-investor", "stack"],
+      "use_count": 0
+    },
+    {
+      "id": "018-vs-tribe-2026-05-04",
+      "text": "Tribe Capital's Magnify is internal-only.\n\nFor outside investors who want a Tribe-style data edge: external GitHub commit-velocity, 6-12 weeks pre-fundraise, EUR 9.97/mo.\n\nDifferent signal, same thesis.\n\nsignals.gitdealflow.com/compare/vc-deal-flow-signal-vs-tribe-capital-magnify",
+      "channel_id": "vc",
+      "tags": ["tribe-capital", "vs"],
+      "use_count": 0
+    },
+    {
+      "id": "019-vs-signalfire-2026-05-04",
+      "text": "SignalFire's Beacon is the gold standard internal sourcing platform. Internal being the operative word.\n\nFor everyone else: external single-signal sharpness on engineering velocity, EUR 9.97/mo.\n\nsignals.gitdealflow.com/compare/vc-deal-flow-signal-vs-signalfire-beacon",
+      "channel_id": "vc",
+      "tags": ["signalfire", "vs"],
+      "use_count": 0
+    },
+    {
+      "id": "020-vs-affinity-2026-05-04",
+      "text": "Affinity tells you who you know.\n\nVC Deal Flow Signal tells you who you should know.\n\nNot competitors. Combined: signal fires, Affinity finds the warm intro, you're in the meeting six weeks before the round.\n\nsignals.gitdealflow.com/compare/vc-deal-flow-signal-vs-affinity-relationship-intelligence",
+      "channel_id": "vc",
+      "tags": ["affinity", "vs"],
+      "use_count": 0
+    }
+  ]
+}
