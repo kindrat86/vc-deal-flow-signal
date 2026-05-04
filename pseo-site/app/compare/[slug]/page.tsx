@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getComparison, getAllComparisonSlugs, type ComparisonFAQ } from "@/content/comparisons";
 import { getAllSectors, getCurrentPeriod, getDataLastModified } from "@/lib/data";
+import AgentMirrorLinks from "@/components/AgentMirrorLinks";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -334,6 +335,8 @@ export default async function ComparisonPage({ params }: PageProps) {
             Get the Report
           </Link>
         </div>
+
+        <AgentMirrorLinks qaCategory="general" />
       </div>
     </>
   );

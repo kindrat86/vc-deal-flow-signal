@@ -11,6 +11,7 @@ import {
 } from "@/lib/data";
 import StartupTable from "@/components/StartupTable";
 import CTABanner from "@/components/CTABanner";
+import AgentMirrorLinks from "@/components/AgentMirrorLinks";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -311,6 +312,8 @@ export default async function BestSectorPage({ params }: PageProps) {
             </div>
           </section>
         )}
+
+        <AgentMirrorLinks qaCategory="sector" />
       </div>
     </>
   );

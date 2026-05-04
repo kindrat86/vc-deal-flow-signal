@@ -1,0 +1,11 @@
+Contact: mailto:signal@gitdealflow.com
+Expires: 2027-05-04T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://gitdealflow.com/.well-known/security.txt
+Policy: https://gitdealflow.com/terms
+Acknowledgments: https://signals.gitdealflow.com/about
+
+# RFC 9116 disclosure contact for VC Deal Flow Signal (GitDealFlow).
+# Please email signal@gitdealflow.com with any vulnerability reports.
+# Ack within 48h. CC BY 4.0 dataset; no PII collected at signup beyond
+# the email used to verify the Signal Report subscription.

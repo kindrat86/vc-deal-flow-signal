@@ -8,6 +8,7 @@ import {
 } from "@/content/competitor-vs";
 import { getDataLastModified } from "@/lib/data";
 import CTABanner from "@/components/CTABanner";
+import AgentMirrorLinks from "@/components/AgentMirrorLinks";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -271,6 +272,8 @@ export default async function VsPage({ params }: PageProps) {
               })}
           </div>
         </section>
+
+        <AgentMirrorLinks qaCategory="general" />
       </div>
     </>
   );

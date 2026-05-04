@@ -22,6 +22,12 @@ import { pillars } from "@/content/pillars";
 import { agentQueries } from "@/content/agent-queries";
 import { FINDINGS as RESEARCH_FINDINGS } from "@/content/research-findings";
 
+// Only include URLs that resolve to a real page in this branch. Routes that
+// live on feature branches but haven't merged yet (e.g. /predict, /receipts,
+// /a2a, /answers, /md, /badge-builder) must be added here only when their
+// page.tsx or route.ts is also present — otherwise we ship a sitemap with
+// 404s, which Search Console downgrades.
+
 const BASE_URL = "https://signals.gitdealflow.com";
 
 interface Entry {
@@ -52,7 +58,6 @@ export async function GET(_req: Request, ctx: RouteContext) {
       { url: `${BASE_URL}/glossary`, lastmod, changefreq: "monthly", priority: 0.7 },
       { url: `${BASE_URL}/compare`, lastmod, changefreq: "monthly", priority: 0.6 },
       { url: `${BASE_URL}/weekly`, lastmod, changefreq: "weekly", priority: 0.6 },
-      { url: `${BASE_URL}/signal-of-the-week`, lastmod, changefreq: "weekly", priority: 0.8 },
       { url: `${BASE_URL}/alternatives`, lastmod, changefreq: "monthly", priority: 0.8 },
       { url: `${BASE_URL}/use-cases`, lastmod, changefreq: "monthly", priority: 0.8 },
       { url: `${BASE_URL}/integrations`, lastmod, changefreq: "monthly", priority: 0.8 },
@@ -60,18 +65,7 @@ export async function GET(_req: Request, ctx: RouteContext) {
       { url: `${BASE_URL}/developers`, lastmod, changefreq: "monthly", priority: 0.7 },
       { url: `${BASE_URL}/data-sources`, lastmod, changefreq: "monthly", priority: 0.7 },
       { url: `${BASE_URL}/citations`, lastmod, changefreq: "monthly", priority: 0.85 },
-      { url: `${BASE_URL}/predict`, lastmod, changefreq: "weekly", priority: 0.95 },
-      { url: `${BASE_URL}/receipts`, lastmod, changefreq: "weekly", priority: 0.9 },
-      { url: `${BASE_URL}/install`, lastmod, changefreq: "monthly", priority: 0.85 },
-      { url: `${BASE_URL}/leaderboard`, lastmod, changefreq: "hourly", priority: 0.85 },
       { url: `${BASE_URL}/agents`, lastmod, changefreq: "weekly", priority: 0.9 },
-      { url: `${BASE_URL}/a2a`, lastmod, changefreq: "monthly", priority: 0.85 },
-      { url: `${BASE_URL}/a2a-demo`, lastmod, changefreq: "monthly", priority: 0.8 },
-      { url: `${BASE_URL}/a2a/claude-code`, lastmod, changefreq: "monthly", priority: 0.75 },
-      { url: `${BASE_URL}/a2a/cursor`, lastmod, changefreq: "monthly", priority: 0.75 },
-      { url: `${BASE_URL}/a2a/openai-agents-sdk`, lastmod, changefreq: "monthly", priority: 0.75 },
-      { url: `${BASE_URL}/a2a/langchain`, lastmod, changefreq: "monthly", priority: 0.75 },
-      { url: `${BASE_URL}/a2a/vercel-ai-sdk`, lastmod, changefreq: "monthly", priority: 0.75 },
     ];
   } else if (id === "sectors") {
     entries = [
@@ -194,13 +188,20 @@ export async function GET(_req: Request, ctx: RouteContext) {
         changefreq: "monthly",
         priority: 0.7,
       })),
-      { url: `${BASE_URL}/answers`, lastmod, changefreq: "weekly", priority: 0.85 },
-      ...agentQueries.map((q) => ({
-        url: `${BASE_URL}/answers/${q.slug}`,
-        lastmod,
-        changefreq: "weekly",
-        priority: 0.85,
-      })),
+      // /answers/{slug} pages live on a separate feature branch; gate sitemap
+      // entries on the agentQueries array (currently []) so they only appear
+      // when the route is also present.
+      ...(agentQueries.length > 0
+        ? [
+            { url: `${BASE_URL}/answers`, lastmod, changefreq: "weekly", priority: 0.85 },
+            ...agentQueries.map((q) => ({
+              url: `${BASE_URL}/answers/${q.slug}`,
+              lastmod,
+              changefreq: "weekly",
+              priority: 0.85,
+            })),
+          ]
+        : []),
       { url: `${BASE_URL}/research`, lastmod, changefreq: "weekly", priority: 0.9 },
       ...RESEARCH_FINDINGS.map((f) => ({
         url: `${BASE_URL}/research/${f.slug}`,

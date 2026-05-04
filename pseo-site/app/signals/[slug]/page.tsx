@@ -9,6 +9,7 @@ import {
 } from "@/lib/data";
 import StartupTable from "@/components/StartupTable";
 import CTABanner from "@/components/CTABanner";
+import AgentMirrorLinks from "@/components/AgentMirrorLinks";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -68,6 +69,10 @@ export default async function SignalTypePage({ params }: PageProps) {
           url: "https://gitdealflow.com",
         },
         dateModified: lastModified.toISOString().slice(0, 10),
+        speakable: {
+          "@type": "SpeakableSpecification",
+          cssSelector: ["[data-speakable]", "h1"],
+        },
       },
       {
         "@type": "BreadcrumbList",
@@ -293,6 +298,8 @@ export default async function SignalTypePage({ params }: PageProps) {
             ))}
           </div>
         </section>
+
+        <AgentMirrorLinks qaCategory="signal-type" />
       </div>
     </>
   );
