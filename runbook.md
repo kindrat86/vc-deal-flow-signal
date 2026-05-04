@@ -74,7 +74,8 @@
 - [ ] Execute Wave 1 launch (target: Sun April 19, 11:00 EEST)
 - [x] Schedule newsletter outreach emails (5 emails, Resend, launchd cron 9:15am daily, auto-sends on date)
 - [ ] Schedule first Perfect Webinar (target: first Thursday of May)
-- [ ] Build Chrome extension (Phase 2, after 50 subscribers)
+- [x] Build Chrome extension #1 — VC Deal Flow Signal (Crunchbase + Wellfound badge, shipped 2026-04-17, id hehkgipiamajnnlpkfhpeoeaoaogmknn)
+- [x] Build Chrome extension #2 — VC GitHub Lookup: Startup Signals on Hover (shipped 2026-05-04, id plgngijmloeljfkenecdkhiblcfcbblm)
 
 ### Pre-requisites (do before driving any traffic)
 - [x] Create private Telegram group for Insider Circle members

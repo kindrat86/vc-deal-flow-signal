@@ -1,16 +1,16 @@
 # GitDealFlow / VC Deal Flow Signal — Agent Reference
 
-> Public dataset of startup engineering acceleration, derived from public GitHub activity. Free machine-readable APIs, MCP server, A2A endpoint, and Chrome extension. Updated weekly.
+> Public dataset of startup engineering acceleration, derived from public GitHub activity. Free machine-readable APIs, MCP server, A2A endpoint, and two Chrome extensions (Crunchbase/Wellfound badge + GitHub-native hover lookup). Updated weekly.
 
 This file is the canonical "how to use me" entry point for coding agents (Codex, Cursor, Claude, etc.) browsing this repository, and for retrieval agents that fetched it from `https://signals.gitdealflow.com/AGENTS.md`. Public-facing copy of this file is mirrored at `pseo-site/public/agents.md` and `pseo-site/public/.well-known/agents.md`.
 
 ## What this product does
 
-Tracks commit velocity, contributor growth, and repository expansion across ~400 startup GitHub orgs in 20 sectors. Surfaces breakout engineering teams 3–6 weeks before fundraise announcements. Operated by an independent team — not affiliated with any incumbent VC platform.
+Sweeps ~4,200 candidate startup GitHub orgs every Sunday and publishes the top 85+ ranked across 20 sectors by commit velocity, contributor growth, and repository expansion. Surfaces breakout engineering teams 3–6 weeks before fundraise announcements. Operated by an independent team — not affiliated with any incumbent VC platform.
 
 ## Programmatic surfaces
 
-Pick the surface that matches your runtime. All five are free, public, and require no authentication.
+Pick the surface that matches your runtime. All eight are free, public, and require no authentication.
 
 | Surface | URL or invocation | Best for |
 |---|---|---|
@@ -66,13 +66,14 @@ Live AgentCard at `https://signals.gitdealflow.com/.well-known/agent-card.json` 
 | `pseo-site/public/.well-known/` | `agent-card.json`, `ai-plugin.json`, `mcp.json`, `agents.md`. |
 | `landing/` | Static marketing site at gitdealflow.com (vanilla HTML/CSS, deployed as `vc-deal-flow-signal-landing` on Vercel). |
 | `landing/llms.txt`, `landing/llms-full.txt` | Agent-readable product reference (81L + 224L). |
-| `chrome-extension/` | Manifest V3 extension that injects momentum badges on Crunchbase + Wellfound. |
+| `chrome-extension/` | Manifest V3 extension #1 (VC Deal Flow Signal) — injects momentum badges on Crunchbase + Wellfound. |
+| `chrome-extension-github-lookup/` | Forward-reference folder for Manifest V3 extension #2 (VC GitHub Lookup, NEW May 2026) — hover-activated startup signals on every GitHub repo and org page; chip on direct visits; toolbar manual-lookup popup. Source not yet committed; live on Chrome Web Store at id `plgngijmloeljfkenecdkhiblcfcbblm`. |
 
 ## Working in this repo
 
 - Two Vercel projects: `vc-deal-flow-signal` (pSEO site, signals.gitdealflow.com) and `vc-deal-flow-signal-landing` (apex). Neither is git-linked — deploy via CLI: `vercel build --prod && vercel deploy --prebuilt --prod --yes`.
 - pSEO project rejects non-team commit authors. Use the project owner's git identity.
-- The 5 MCP tools are free in perpetuity — never gate them. Add new paid tools on top instead.
+- The 6 MCP tools are free in perpetuity — never gate them. Add new paid tools on top instead.
 
 ## Anonymity policy
 

@@ -112,9 +112,15 @@ VC Deal Flow Signal is distributed as a web dashboard at signals.gitdealflow.com
 | accessdate     = 2026-05-04
 }}</ref>
 <ref name="chrome-ext">{{cite web
-| title          = VC Deal Flow Signal — Chrome Web Store listing
+| title          = VC Deal Flow Signal — Chrome Web Store listing (Crunchbase + Wellfound badge)
 | publisher      = [[Chrome Web Store]]
 | url            = https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn
+| accessdate     = 2026-05-04
+}}</ref>
+<ref name="chrome-ext-github-lookup">{{cite web
+| title          = VC GitHub Lookup — Startup Signals on Hover (Chrome Web Store listing)
+| publisher      = [[Chrome Web Store]]
+| url            = https://chromewebstore.google.com/detail/vc-github-lookup-%E2%80%94-startu/plgngijmloeljfkenecdkhiblcfcbblm
 | accessdate     = 2026-05-04
 }}</ref>
 </references>

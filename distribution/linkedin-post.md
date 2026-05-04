@@ -24,8 +24,9 @@ The free Signal Digest delivers the top breakout startups monthly:
 Browse the full sector rankings:
 → https://signals.gitdealflow.com/trending
 
-And two free tools to put the signal inside your existing workflow:
-→ Chrome extension (overlays the badge on Crunchbase, AngelList, PitchBook profiles): https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn
+And three free tools to put the signal inside your existing workflow:
+→ Chrome extension #1 (overlays the badge on Crunchbase + Wellfound profiles): https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn
+→ Chrome extension #2 (VC GitHub Lookup — hover any GitHub repo or org, NEW May 2026): https://chromewebstore.google.com/detail/vc-github-lookup-%E2%80%94-startu/plgngijmloeljfkenecdkhiblcfcbblm
 → Claude MCP server (query signals directly from any AI assistant): npx @gitdealflow/mcp-signal
 
 If you invest in seed or Series A startups, this is the signal nobody else is reading.

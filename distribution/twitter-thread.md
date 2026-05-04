@@ -74,9 +74,9 @@ If you're a seed/Series A investor, this is the signal nobody else is reading.
 ## Tweet 8 (embedded distribution)
 Prefer to stay in your existing workflow?
 
-Chrome extension: see the acceleration badge inside Crunchbase, AngelList, and PitchBook profiles you already browse.
-
-Install: https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn
+Two free Chrome extensions:
+- Crunchbase + Wellfound badge: https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn
+- VC GitHub Lookup (hover any GitHub repo, NEW): https://chromewebstore.google.com/detail/vc-github-lookup-%E2%80%94-startu/plgngijmloeljfkenecdkhiblcfcbblm
 
 ## Tweet 9 (AI-native distribution)
 Use Claude for research?

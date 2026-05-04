@@ -99,11 +99,13 @@ I submitted to 8 directories in total:
 - Official MCP Registry (published)
 - npm (published)
 - awesome-mcp-servers (PR open)
-- Glama (approved)
-- mcp.so (submitted)
+- Glama (approved, A-Tier)
 - MCP Market (submitted)
 - PulseMCP (auto-ingests from registry)
 - Cline Marketplace (submitted)
+- ~~mcp.so (404 since 2026-05-03 — structurally unavailable)~~
+- ~~Smithery (delisted 2026-05-03 — needs HTTP gateway wrap)~~
+- ~~Continue Hub (registry deprecated 2026-05-02)~~
 
 The whole process from zero to published took about 3 hours.
 
@@ -140,7 +142,8 @@ Then ask Claude: "Which startups are accelerating in fintech?" or "Show me the s
 - npm: [@gitdealflow/mcp-signal](https://www.npmjs.com/package/@gitdealflow/mcp-signal)
 - GitHub: [kindrat86/mcp-deal-flow-signal](https://github.com/kindrat86/mcp-deal-flow-signal)
 - Live data: [signals.gitdealflow.com](https://signals.gitdealflow.com)
-- Chrome extension (Crunchbase / AngelList / PitchBook badge): [Chrome Web Store](https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn)
+- Chrome extension #1 (Crunchbase + Wellfound badge): [Chrome Web Store](https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn)
+- Chrome extension #2 (VC GitHub Lookup — hover, NEW May 2026): [Chrome Web Store](https://chromewebstore.google.com/detail/vc-github-lookup-%E2%80%94-startu/plgngijmloeljfkenecdkhiblcfcbblm)
 
 ---
 
