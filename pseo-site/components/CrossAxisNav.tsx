@@ -2,6 +2,7 @@ import Link from "next/link";
 import {
   SIGNAL_TYPES,
   getAllStageSlugs,
+  getAllPeriods,
   type Sector,
   type Period,
   type SectorSnapshot,
@@ -33,7 +34,16 @@ interface CrossAxisNavProps {
 export default function CrossAxisNav({ sector, period, snapshot }: CrossAxisNavProps) {
   const year = period.name.match(/\d{4}/)?.[0] ?? "2026";
   const bestSlug = `${sector.slug}-${year}`;
-  const trendSlug = sector.slug;
+
+  // Trend slug is `{sector}-{periodA}-vs-{periodB}` where A, B are adjacent in
+  // data.periods (most-recent-first). Fall back to no link if no prior period.
+  const allPeriods = getAllPeriods();
+  const idx = allPeriods.findIndex((p) => p.slug === period.slug);
+  const prevPeriod = idx >= 0 && idx + 1 < allPeriods.length ? allPeriods[idx + 1] : null;
+  const trendSlug =
+    prevPeriod && sector.periods[prevPeriod.slug]
+      ? `${sector.slug}-${period.slug}-vs-${prevPeriod.slug}`
+      : null;
 
   // Top 3 signal types by count in this sector × period
   const signalCounts: Record<string, number> = {};
@@ -74,17 +84,19 @@ export default function CrossAxisNav({ sector, period, snapshot }: CrossAxisNavP
             Top {sector.name} startups ranked across all {year} quarters &rarr;
           </p>
         </Link>
-        <Link
-          href={`/trends/${trendSlug}`}
-          className="block rounded-md border border-slate-800 bg-slate-900 p-3 hover:border-sky-700 hover:bg-slate-900/80 transition-colors"
-        >
-          <p className="text-xs font-medium text-sky-400 uppercase tracking-wider mb-1">
-            Quarter-over-quarter trends
-          </p>
-          <p className="text-sm text-gray-300">
-            How {sector.name} commit velocity has shifted period-over-period &rarr;
-          </p>
-        </Link>
+        {trendSlug && (
+          <Link
+            href={`/trends/${trendSlug}`}
+            className="block rounded-md border border-slate-800 bg-slate-900 p-3 hover:border-sky-700 hover:bg-slate-900/80 transition-colors"
+          >
+            <p className="text-xs font-medium text-sky-400 uppercase tracking-wider mb-1">
+              {period.name} vs {prevPeriod?.name}
+            </p>
+            <p className="text-sm text-gray-300">
+              How {sector.name} commit velocity has shifted quarter-over-quarter &rarr;
+            </p>
+          </Link>
+        )}
       </div>
 
       {topSignals.length > 0 && (
