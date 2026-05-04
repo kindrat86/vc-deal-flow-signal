@@ -411,7 +411,6 @@
     <button type="button" id="launch-banner-close" aria-label="Dismiss" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);background:transparent;color:#bae6fd;border:0;cursor:pointer;font-size:16px;line-height:1;padding:6px;">×</button>
   </div>
   <script>(function(){var b=document.getElementById('launch-banner');if(!b)return;try{if(localStorage.getItem('gd_banner_dismissed_v1')==='1')return;}catch(e){}b.style.display='block';var d=new Date('2026-06-25T23:59:00Z').getTime();var c=document.getElementById('launch-banner-countdown');function t(){var l=d-Date.now();if(l<=0){b.style.display='none';return;}var dd=Math.floor(l/86400000),hh=Math.floor((l%86400000)/3600000),mm=Math.floor((l%3600000)/60000);if(c)c.textContent=dd+'d '+hh+'h '+mm+'m';}t();var iv=setInterval(t,30000);document.getElementById('launch-banner-close').addEventListener('click',function(){b.style.display='none';try{localStorage.setItem('gd_banner_dismissed_v1','1');}catch(e){}clearInterval(iv);});document.getElementById('launch-banner-link').addEventListener('click',function(){if(window.posthog){try{window.posthog.capture('launch_banner_clicked');}catch(e){}}});})();</script>
-  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[60] focus:bg-brand-500 focus:text-white focus:px-4 focus:py-2 focus:rounded">Skip to main content</a>
 
   <header class="border-b border-gray-800 bg-dark-900/80 backdrop-blur-sm sticky top-0 z-50">
     <div class="max-w-4xl mx-auto px-6 h-14 flex items-center justify-between">
@@ -428,7 +427,9 @@
         <a href="#pricing" class="text-gray-400 text-sm hover:text-gray-100 transition">Pricing</a>
         <a href="https://signals.gitdealflow.com/predict" class="text-gray-400 text-sm hover:text-gray-100 transition">Predict</a>
         <a href="https://signals.gitdealflow.com/leaderboard" class="text-gray-400 text-sm hover:text-gray-100 transition">Leaderboard</a>
-        <a href="#signup" class="text-sm bg-brand-600 hover:bg-brand-700 text-white px-3 py-1.5 rounded-md transition font-medium">Show Me This Week's 5</a>
+        <a href="#signup" class="btn btn-cta btn-sm">
+          Show Me This Week's 5 <span aria-hidden="true" class="btn-arrow">&rarr;</span>
+        </a>
       </nav>
     </div>
     <div id="mobile-menu" class="hidden md:hidden border-t border-gray-800 bg-dark-900 px-6 py-4">
@@ -436,7 +437,9 @@
         <a href="#method" class="text-gray-300 text-sm py-1">The Method</a>
         <a href="https://signals.gitdealflow.com" class="text-gray-300 text-sm py-1">Signals</a>
         <a href="#pricing" class="text-gray-300 text-sm py-1">Pricing</a>
-        <a href="#signup" class="text-sm bg-brand-600 text-white px-3 py-1.5 rounded-md font-medium text-center">Show Me This Week's 5</a>
+        <a href="#signup" class="btn btn-cta btn-md w-full text-center">
+          Show Me This Week's 5 <span aria-hidden="true" class="btn-arrow">&rarr;</span>
+        </a>
       </nav>
     </div>
   </header>
@@ -447,7 +450,7 @@
   <section class="relative overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-br from-dark-900 via-dark-800 to-brand-900 opacity-80"></div>
     <div class="relative max-w-4xl mx-auto px-6 py-24 md:py-36 text-center">
-      <p class="text-brand-500 font-semibold text-sm uppercase tracking-wider mb-4">For developers who already know the algorithm is buying — and want the receipts</p>
+      <p class="text-brand-500 font-semibold text-sm uppercase tracking-wider mb-4">For developer-investors who already know the algorithm is buying — and want the receipts</p>
       <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
         Crunchbase tells you the day they raised.<br class="hidden md:block"> <span class="text-signal-500">We tell you 47 days before the deck.</span>
       </h1>
@@ -457,10 +460,10 @@
       <div class="flex flex-col items-center gap-4">
         <p class="text-xs font-semibold uppercase tracking-[0.2em] text-signal-500">&#9660; This Sunday's 5 &#9660;</p>
         <div class="relative">
-          <div aria-hidden="true" class="pointer-events-none absolute inset-0 -mx-20 -my-10 rounded-full bg-signal-500/25 blur-3xl"></div>
-          <a href="#signup" onclick="if(window.posthog)posthog.capture('hero_cta_clicked',{variant:'russell-bigdomino',target:'signup'})" class="group relative inline-flex items-center justify-center gap-3 whitespace-nowrap rounded-xl bg-signal-500 hover:bg-signal-400 active:bg-signal-600 px-8 md:px-12 py-4 md:py-5 text-base md:text-lg font-bold tracking-tight text-white shadow-[0_12px_32px_rgba(255,107,26,0.35)] hover:shadow-[0_18px_44px_rgba(255,107,26,0.55)] ring-1 ring-white/20 hover:ring-white/30 transition-all duration-150 ease-out hover:-translate-y-0.5 active:translate-y-0 animate-cta-pulse">
+          <span aria-hidden="true" class="cta-glow"></span>
+          <a href="#signup" onclick="if(window.posthog)posthog.capture('hero_cta_clicked',{variant:'russell-bigdomino',target:'signup'})" class="btn btn-primary btn-xl relative">
             <span>Send Me This Sunday's 5</span>
-            <span aria-hidden="true" class="transition-transform duration-150 group-hover:translate-x-1">&rarr;</span>
+            <span aria-hidden="true" class="btn-arrow">&rarr;</span>
           </a>
         </div>
         <p class="text-gray-500 text-sm"><a href="https://ssrn.com/abstract=6606558" target="_blank" rel="noopener noreferrer" class="hover:text-gray-300 underline decoration-dotted">SSRN-published methodology</a> on 219 startups &middot; cited in awesome-quant &middot; Glama A-Tier MCP &middot; unsubscribe in one click</p>
@@ -778,7 +781,7 @@
           <form id="firstlook-form" class="flex flex-col sm:flex-row gap-2" onsubmit="if(window.posthog)posthog.capture('firstlook_checkout_clicked',{cta:'get_pass'});return GDFsignup(event,'firstlook');">
             <label for="firstlook-email" class="sr-only">Email address for First Look Pass</label>
             <input type="email" required id="firstlook-email" name="email" placeholder="you@yourfund.com" class="flex-1 px-4 py-3 rounded-lg bg-dark-900 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-signal-500" aria-label="Your email for First Look Pass checkout">
-            <button type="submit" class="bg-signal-500 hover:bg-signal-400 text-white font-semibold px-6 py-3 rounded-lg transition whitespace-nowrap">Get The Pass &mdash; €7 &rarr;</button>
+            <button type="submit" class="btn btn-primary btn-md">Get The Pass &mdash; &euro;7 <span aria-hidden="true" class="btn-arrow">&rarr;</span></button>
           </form>
           <p class="text-gray-500 text-xs mt-3">Secure checkout via Stripe. First 50 passes lock the €7 price &mdash; goes to €19 after launch. Sector picked at checkout, deep dive shipped within 24 hours. <a href="/firstlook/sample" class="text-signal-500 hover:text-signal-400 underline decoration-dotted">See a sample first &rarr;</a></p>
         </div>
@@ -808,7 +811,7 @@
             <li class="flex items-start gap-2"><span class="text-brand-500 mt-1">&#10003;</span> Every Sunday at 9am EST</li>
             <li class="flex items-start gap-2"><span class="text-brand-500 mt-1">&#10003;</span> Unsubscribe in one click</li>
           </ul>
-          <a href="#signup" class="block text-center bg-gray-700 hover:bg-gray-600 text-white font-semibold py-3 rounded-lg transition">Get the Report</a>
+          <a href="#signup" class="btn btn-ghost btn-md w-full">Get the Report &mdash; Free <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
         </div>
 
         <!-- Pro: Dashboard (Brunson stack with value anchors) -->
@@ -845,7 +848,7 @@
             </div>
           </div>
 
-          <a href="https://buy.stripe.com/28E7sK48H04U8ou07u0x200" onclick="if(window.posthog)posthog.capture('dashboard_checkout_clicked')" class="block text-center bg-brand-600 hover:bg-brand-700 text-white font-semibold py-3 rounded-lg transition">Lock In Founding Price &rarr;</a>
+          <a href="https://buy.stripe.com/28E7sK48H04U8ou07u0x200" onclick="if(window.posthog)posthog.capture('dashboard_checkout_clicked')" class="btn btn-cta btn-lg w-full">Lock In Founding Price <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
           <p class="text-gray-500 text-xs text-center mt-3">Reply to any email to refund. No forms, no call. <a href="#guarantee" class="text-emerald-400 hover:text-emerald-300 underline decoration-dotted">Read the full promise &rarr;</a></p>
         </div>
 
@@ -884,7 +887,7 @@
           </div>
 
           <p class="text-gray-500 text-xs mb-3">Best for active investors syndicating 6+ deals/year.</p>
-          <a href="https://buy.stripe.com/4gM00ifRpcRG2069I40x202" onclick="if(window.posthog)posthog.capture('insider_checkout_clicked')" class="block text-center bg-gray-700 hover:bg-gray-600 text-white font-semibold py-3 rounded-lg transition">Join the Insider Circle</a>
+          <a href="https://buy.stripe.com/4gM00ifRpcRG2069I40x202" onclick="if(window.posthog)posthog.capture('insider_checkout_clicked')" class="btn btn-cta btn-lg w-full">Join the Insider Circle <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
         </div>
 
       </div>
@@ -913,7 +916,7 @@
                 <p class="text-3xl md:text-4xl font-extrabold text-white">€497<span class="text-base font-normal text-gray-400">/mo</span></p>
                 <p class="text-gray-500 text-sm">or €4,970/yr — annual saves two months</p>
               </div>
-              <a href="mailto:signal@gitdealflow.com?subject=Sharp%20Tier%20Application%20%E2%80%94%20%5BYour%20Fund%5D&amp;body=Hi%20%E2%80%94%0A%0AFund%2Fsyndicate%20name%3A%20%0AAUM%20or%20deals%2Fyear%3A%20%0AThesis%20focus%3A%20%0AHow%20you%20heard%20about%20us%3A%20%0A%0AOne%20thing%20you%27d%20want%20the%20quarterly%20review%20call%20to%20cover%3A%20%0A%0AThanks%2C%0A" onclick="if(window.posthog)posthog.capture('sharp_tier_apply_clicked')" class="inline-block bg-yellow-500 hover:bg-yellow-400 text-dark-900 font-bold px-6 py-3 rounded-lg transition">Apply for Sharp Tier &rarr;</a>
+              <a href="mailto:signal@gitdealflow.com?subject=Sharp%20Tier%20Application%20%E2%80%94%20%5BYour%20Fund%5D&amp;body=Hi%20%E2%80%94%0A%0AFund%2Fsyndicate%20name%3A%20%0AAUM%20or%20deals%2Fyear%3A%20%0AThesis%20focus%3A%20%0AHow%20you%20heard%20about%20us%3A%20%0A%0AOne%20thing%20you%27d%20want%20the%20quarterly%20review%20call%20to%20cover%3A%20%0A%0AThanks%2C%0A" onclick="if(window.posthog)posthog.capture('sharp_tier_apply_clicked')" class="btn btn-gold btn-lg">Apply for Sharp Tier <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
               <p class="text-gray-500 text-xs mt-3">Capped at 8 funds in 2026. We reply within 48 hours with a 20-min intro call &mdash; if there's a fit, we onboard the same week.</p>
             </div>
           </div>
@@ -931,7 +934,7 @@
               <p class="text-gray-300 leading-relaxed mb-4">
                 You pick the thesis, sector, geography, stage filter. I run the GitHub momentum signal across our 4,200-org tracker plus net-new orgs we discover. You get a <strong class="text-white">40-page PDF, raw CSV, written walkthrough</strong> in 10 business days, plus a 14-day email Q&amp;A window. <strong class="text-emerald-300">100% credits toward Insider Circle if you upgrade within 60 days.</strong>
               </p>
-              <a href="/sector-sweep" class="inline-block bg-yellow-500 hover:bg-yellow-400 text-dark-900 font-bold px-6 py-3 rounded-lg transition">See the Sector Sweep &rarr;</a>
+              <a href="/sector-sweep" class="btn btn-gold btn-lg">See the Sector Sweep <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
               <p class="text-gray-500 text-xs mt-3">14-day &ldquo;Sweep or It's Free&rdquo; refund. Q3 2026: 7 of 8 seats open.</p>
             </div>
           </div>
@@ -1019,7 +1022,7 @@
     <form id="signup-form" class="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto">
       <label for="signup-email" class="sr-only">Email address</label>
       <input type="email" id="signup-email" placeholder="you@example.com" required aria-label="Email address" class="flex-1 px-5 py-4 rounded-lg bg-dark-800 border border-gray-600 text-gray-100 placeholder-gray-500 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 text-lg">
-      <button type="submit" id="signup-btn" class="px-8 py-4 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-lg text-lg transition whitespace-nowrap">Send Me The 5 &rarr;</button>
+      <button type="submit" id="signup-btn" class="btn btn-cta btn-lg">Send Me The 5 <span aria-hidden="true" class="btn-arrow">&rarr;</span></button>
     </form>
     <p id="signup-msg" class="text-center text-gray-500 text-sm mt-4">
       <span class="text-emerald-400">✓</span> Free forever &nbsp; <span class="text-emerald-400">✓</span> Unsubscribe in one click &nbsp; <span class="text-emerald-400">✓</span> One email every Sunday — no spam
@@ -1037,7 +1040,7 @@
             Install the free Chrome extension and a green "Accelerating" badge appears on any startup profile on <strong class="text-white">Crunchbase</strong> or <strong class="text-white">Wellfound</strong> showing unusual engineering momentum. No tabs to switch. No dashboard to remember. The signal meets you where you already work. <a href="/chrome" class="text-emerald-400 hover:text-emerald-300 underline">See how it works &rarr;</a>
           </p>
         </div>
-        <a href="https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn" rel="noopener noreferrer" target="_blank" class="inline-block bg-brand-600 hover:bg-brand-700 text-white font-semibold px-6 py-3 rounded-lg transition whitespace-nowrap">Add to Chrome &rarr;</a>
+        <a href="https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn" rel="noopener noreferrer" target="_blank" class="btn btn-cta btn-md">Add to Chrome <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
       </div>
     </div>
   </section>
@@ -1053,7 +1056,7 @@
             The sibling that runs on <strong class="text-white">github.com</strong> itself. Hover any repo or org link and a card appears with commit velocity, contributor growth, and breakout status. Same backend, engineering-side surface. Install both for end-to-end coverage. <a href="/chrome-github" class="text-emerald-400 hover:text-emerald-300 underline">See how it works &rarr;</a>
           </p>
         </div>
-        <a href="/chrome-github" class="inline-block bg-brand-600 hover:bg-brand-700 text-white font-semibold px-6 py-3 rounded-lg transition whitespace-nowrap">Install &rarr;</a>
+        <a href="/chrome-github" class="btn btn-cta btn-md">Install <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
       </div>
     </div>
   </section>
@@ -1073,7 +1076,7 @@
             <img src="https://signals.gitdealflow.com/api/badge/momentum/mlflow/mlflow/svg" alt="Sample Commit Momentum badge" width="160" height="20" loading="lazy" decoding="async" class="h-5 block">
           </div>
         </div>
-        <a href="https://signals.gitdealflow.com/badge-builder" rel="noopener" class="inline-block bg-sky-600 hover:bg-sky-500 text-white font-semibold px-6 py-3 rounded-lg transition whitespace-nowrap">Get your badge &rarr;</a>
+        <a href="https://signals.gitdealflow.com/badge-builder" rel="noopener" class="btn btn-cta btn-md">Get your badge <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
       </div>
     </div>
   </section>
@@ -1112,7 +1115,7 @@
           <div class="flex items-start gap-2 text-sm text-gray-300"><span class="text-brand-500 mt-0.5">&#10003;</span> Works in Claude Desktop &amp; CLI</div>
         </div>
 
-        <a href="#signup" class="inline-block bg-brand-600 hover:bg-brand-700 text-white font-semibold px-6 py-3 rounded-lg transition">Get the setup guide (comes with the digest) &rarr;</a>
+        <a href="#signup" class="btn btn-cta btn-md">Get the setup guide (comes with the digest) <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
         <p class="text-gray-500 text-xs mt-3">Already on the list? Check your inbox — the MCP setup guide is in your welcome email.</p>
       </div>
     </div>
@@ -1141,7 +1144,7 @@
   <!-- Telegram — moved to a small "also available on" tail -->
   <section class="max-w-3xl mx-auto px-6 py-10 text-center">
     <p class="text-gray-500 text-sm mb-3">Also available on Telegram — broadcast only, zero noise.</p>
-    <a href="https://t.me/gitdealflow" class="inline-block border border-gray-700 hover:border-brand-500 text-gray-300 hover:text-brand-500 font-medium px-6 py-2 rounded-lg text-sm transition">Join the free channel &rarr;</a>
+    <a href="https://t.me/gitdealflow" class="btn btn-ghost btn-sm">Join the free channel <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
   </section>
 
   <!-- P.S. close — Brunson personal-voice re-assert above footer -->
@@ -1418,6 +1421,39 @@
       function _load(){var s=document.createElement('script');s.src='/pixels.js';s.async=true;document.head.appendChild(s);}
       if('requestIdleCallback' in window){requestIdleCallback(_load,{timeout:3000});}
       else{setTimeout(_load,2500);}
+    })();
+  </script>
+
+  <!-- Sticky mobile bottom CTA — slides up after the fold; only on mobile -->
+  <div id="sticky-cta" class="sticky-cta" role="region" aria-label="Quick signup">
+    <div class="flex items-center gap-3 max-w-md mx-auto">
+      <p class="text-gray-300 text-xs leading-tight flex-1">
+        <strong class="text-white block text-sm">This Sunday's 5 are ready.</strong>
+        <span class="text-gray-500">Free forever &middot; no card</span>
+      </p>
+      <a href="#signup" onclick="if(window.posthog)posthog.capture('sticky_cta_clicked')" class="btn btn-primary btn-md text-sm whitespace-nowrap shrink-0">
+        Send 'em <span aria-hidden="true" class="btn-arrow">&rarr;</span>
+      </a>
+    </div>
+  </div>
+  <script>
+    // Show sticky CTA only after the user scrolls past the hero (mobile only).
+    (function(){
+      var bar = document.getElementById('sticky-cta');
+      if (!bar) return;
+      var triggered = false;
+      function check() {
+        if (triggered) return;
+        if (window.innerWidth >= 768) return;
+        if (window.scrollY > 700) {
+          bar.classList.add('is-visible');
+          triggered = true;
+          if (window.posthog) { try { window.posthog.capture('sticky_cta_shown'); } catch(e){} }
+          window.removeEventListener('scroll', check);
+        }
+      }
+      window.addEventListener('scroll', check, { passive: true });
+      window.addEventListener('resize', function(){ if (window.innerWidth >= 768) bar.classList.remove('is-visible'); });
     })();
   </script>
 
