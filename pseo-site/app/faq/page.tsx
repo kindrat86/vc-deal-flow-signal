@@ -113,6 +113,41 @@ const standaloneFaqs: FAQEntry[] = [
     source: "Methodology",
     sourceHref: "/methodology",
   },
+  {
+    question: "What are the best VC deal flow tools in 2026?",
+    answer:
+      "The 2026 deal flow stack typically combines three layers. A leading-signal sourcing engine: Harmonic.ai for team-pattern matching at incorporation (enterprise), Forager.ai or Specter for web and hiring signals (more accessible pricing), or VC Deal Flow Signal for GitHub engineering acceleration on technical startups (EUR 9.97/mo). A curated reference database: PitchBook for institutional benchmarking, Crunchbase for accessible funding context, Dealroom for European depth, CB Insights for analyst-led research, Tracxn for sector mapping. A relationship-CRM workflow layer: Affinity is the default for VC pipeline tracking. Most investors run one tool from each layer.",
+    source: "Comparison",
+    sourceHref: "/alternatives",
+  },
+  {
+    question: "What is the cheapest alternative data tool for VCs?",
+    answer:
+      "The free weekly Signal Report from VC Deal Flow Signal is the most accessible entry point at zero cost. The Dashboard upgrade is EUR 9.97/month during beta. Among the broader alt-data category, Forager.ai and Specter both offer limited free tiers and tiered pricing accessible to individual investors. Crunchbase Pro at $49/mo is the cheapest of the curated funding databases. PitchBook, CB Insights, and Affinity are enterprise-priced (typically tens of thousands per year) and not realistic for individual investors or small funds.",
+    source: "Pricing",
+    sourceHref: "/alternatives",
+  },
+  {
+    question: "What's the difference between Harmonic.ai and VC Deal Flow Signal?",
+    answer:
+      "Harmonic.ai uses AI team-pattern matching across founder backgrounds and networks to surface companies near incorporation; VC Deal Flow Signal uses GitHub engineering acceleration to surface companies 21 to 47 days before the round on technical startups specifically. Harmonic is broader and earlier but enterprise-priced; VC Deal Flow Signal is narrower (technical startups only) and accessible at EUR 9.97/mo. They produce different signals on different types of companies and most institutional firms layer them rather than choosing one.",
+    source: "Comparison",
+    sourceHref: "/vs/affinity-vs-harmonic-ai",
+  },
+  {
+    question: "Can VC Deal Flow Signal replace PitchBook or Crunchbase?",
+    answer:
+      "No. PitchBook and Crunchbase are curated funding databases that record every closed round, M&A event, and team change after the fact. VC Deal Flow Signal is a leading-indicator sourcing engine focused on technical startups. They solve different problems and are complementary rather than substitutable. Most working investors use VC Deal Flow Signal for early sourcing and Crunchbase or PitchBook for confirmed funding context once a candidate surfaces.",
+    source: "Comparison",
+    sourceHref: "/alternatives/pitchbook",
+  },
+  {
+    question: "How is engineering acceleration different from GitHub stars?",
+    answer:
+      "GitHub stars are a vanity metric — they correlate weakly with anything causally meaningful for fundraising. Engineering acceleration measures three causal signals: commit velocity (the rate of new work shipping), contributor delta (new engineering hires pushing their first public commits), and repository expansion (new internal tools and infrastructure). All three trace back to operational decisions a startup makes when it is preparing to scale, which is precisely the period that precedes a fundraise. Stars are popularity; acceleration is operational momentum.",
+    source: "Methodology",
+    sourceHref: "/methodology",
+  },
 ];
 
 export default function FAQPage() {
