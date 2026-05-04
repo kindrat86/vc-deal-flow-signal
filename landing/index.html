@@ -405,29 +405,70 @@
 </head>
 <body class="bg-dark-900 text-gray-100 font-sans antialiased">
   <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:bg-brand-500 focus:text-white focus:px-4 focus:py-2 focus:rounded focus:shadow-lg">Skip to main content</a>
-  <div id="launch-banner" role="region" aria-label="Launch promotion" style="display:none;position:relative;background:linear-gradient(90deg,#0c4a6e 0%,#075985 100%);color:#e0f2fe;padding:10px 36px 10px 16px;font-size:14px;text-align:center;border-bottom:1px solid #0369a1;">
-    <a href="#pricing" id="launch-banner-link" style="color:#fef3c7;text-decoration:none;font-weight:600;">Launch week: 50% off 3 months — code <code style="background:rgba(254,243,199,0.15);padding:1px 6px;border-radius:4px;">PH50OFF</code></a>
-    <span style="opacity:0.85;margin-left:6px;">ends in <span id="launch-banner-countdown">…</span></span>
-    <button type="button" id="launch-banner-close" aria-label="Dismiss" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);background:transparent;color:#bae6fd;border:0;cursor:pointer;font-size:16px;line-height:1;padding:6px;">×</button>
+  <div id="launch-banner" role="region" aria-label="Launch promotion" class="hidden relative bg-gradient-to-r from-signal-600 via-signal-500 to-signal-400 text-white border-b border-signal-600 shadow-lg shadow-signal-500/20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-2.5 pr-12 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-sm">
+      <span aria-hidden="true" class="inline-flex items-center gap-1.5 font-bold tracking-wide">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" class="drop-shadow-sm"><path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"/><path d="M4 6v12c0 1.1.9 2 2 2h14v-4"/><path d="M18 12a2 2 0 0 0-2 2c0 1.1.9 2 2 2h4v-4h-4z"/></svg>
+        <span class="hidden sm:inline">Launch week:</span>
+      </span>
+      <a href="#pricing" id="launch-banner-link" class="inline-flex items-center gap-2 font-semibold hover:underline underline-offset-2">
+        <span>50% off 3 months</span>
+        <span class="text-white/80 hidden md:inline">&middot;</span>
+        <span class="hidden md:inline text-white/90">use code</span>
+        <code class="font-mono font-bold tracking-wider bg-white/20 ring-1 ring-white/30 px-2 py-0.5 rounded text-[13px]">PH50OFF</code>
+      </a>
+      <span class="text-white/85 text-xs sm:text-sm whitespace-nowrap">
+        ends in <span id="launch-banner-countdown" class="font-bold tabular-nums">…</span>
+      </span>
+    </div>
+    <button type="button" id="launch-banner-close" aria-label="Dismiss promotion" class="absolute right-2 top-1/2 -translate-y-1/2 text-white/80 hover:text-white hover:bg-white/10 rounded-full w-8 h-8 flex items-center justify-center transition leading-none">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
   </div>
-  <script>(function(){var b=document.getElementById('launch-banner');if(!b)return;try{if(localStorage.getItem('gd_banner_dismissed_v1')==='1')return;}catch(e){}b.style.display='block';var d=new Date('2026-06-25T23:59:00Z').getTime();var c=document.getElementById('launch-banner-countdown');function t(){var l=d-Date.now();if(l<=0){b.style.display='none';return;}var dd=Math.floor(l/86400000),hh=Math.floor((l%86400000)/3600000),mm=Math.floor((l%3600000)/60000);if(c)c.textContent=dd+'d '+hh+'h '+mm+'m';}t();var iv=setInterval(t,30000);document.getElementById('launch-banner-close').addEventListener('click',function(){b.style.display='none';try{localStorage.setItem('gd_banner_dismissed_v1','1');}catch(e){}clearInterval(iv);});document.getElementById('launch-banner-link').addEventListener('click',function(){if(window.posthog){try{window.posthog.capture('launch_banner_clicked');}catch(e){}}});})();</script>
+  <script>
+    (function(){
+      var b=document.getElementById('launch-banner');if(!b)return;
+      // v2 banner — fresh dismiss key so prior v1 dismissers see this one too
+      try{if(localStorage.getItem('gd_banner_dismissed_v2')==='1')return;}catch(e){}
+      b.classList.remove('hidden');
+      var d=new Date('2026-06-25T23:59:00Z').getTime();
+      var c=document.getElementById('launch-banner-countdown');
+      function t(){
+        var l=d-Date.now();
+        if(l<=0){b.classList.add('hidden');return;}
+        var dd=Math.floor(l/86400000),hh=Math.floor((l%86400000)/3600000),mm=Math.floor((l%3600000)/60000);
+        if(c)c.textContent=dd+'d '+hh+'h '+mm+'m';
+      }
+      t();
+      var iv=setInterval(t,30000);
+      document.getElementById('launch-banner-close').addEventListener('click',function(){
+        b.classList.add('hidden');
+        try{localStorage.setItem('gd_banner_dismissed_v2','1');}catch(e){}
+        clearInterval(iv);
+        if(window.posthog){try{window.posthog.capture('launch_banner_dismissed');}catch(e){}}
+      });
+      document.getElementById('launch-banner-link').addEventListener('click',function(){
+        if(window.posthog){try{window.posthog.capture('launch_banner_clicked',{code:'PH50OFF'});}catch(e){}}
+      });
+    })();
+  </script>
 
   <header class="border-b border-gray-800 bg-dark-900/80 backdrop-blur-sm sticky top-0 z-50">
-    <div class="max-w-4xl mx-auto px-6 h-14 flex items-center justify-between">
-      <a href="/" class="flex items-baseline gap-3 text-gray-100 font-semibold text-base tracking-tight hover:text-brand-500 transition">
+    <div class="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between gap-6">
+      <a href="/" class="flex items-baseline gap-3 text-gray-100 font-semibold text-base tracking-tight hover:text-brand-500 transition shrink-0 whitespace-nowrap">
         <span>VC Deal Flow Signal</span>
-        <span class="hidden lg:inline text-gray-500 text-xs font-normal italic">Read the code. See the future.</span>
+        <span class="hidden xl:inline text-gray-500 text-xs font-normal italic whitespace-nowrap">Read the code. See the future.</span>
       </a>
       <button type="button" id="mobile-menu-btn" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle menu" onclick="var m=document.getElementById('mobile-menu'),t=this;m.classList.toggle('hidden');t.setAttribute('aria-expanded',m.classList.contains('hidden')?'false':'true');" class="md:hidden text-gray-300">
         <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
       </button>
-      <nav class="hidden md:flex items-center gap-6">
-        <a href="#method" class="text-gray-400 text-sm hover:text-gray-100 transition">The Method</a>
+      <nav class="hidden md:flex items-center gap-5 lg:gap-6">
+        <a href="#method" class="text-gray-400 text-sm hover:text-gray-100 transition whitespace-nowrap">The Method</a>
         <a href="https://signals.gitdealflow.com" class="text-gray-400 text-sm hover:text-gray-100 transition">Signals</a>
         <a href="#pricing" class="text-gray-400 text-sm hover:text-gray-100 transition">Pricing</a>
-        <a href="https://signals.gitdealflow.com/predict" class="text-gray-400 text-sm hover:text-gray-100 transition">Predict</a>
-        <a href="https://signals.gitdealflow.com/leaderboard" class="text-gray-400 text-sm hover:text-gray-100 transition">Leaderboard</a>
-        <a href="#signup" class="btn btn-cta btn-sm">
+        <a href="https://signals.gitdealflow.com/predict" class="text-gray-400 text-sm hover:text-gray-100 transition hidden lg:inline">Predict</a>
+        <a href="https://signals.gitdealflow.com/leaderboard" class="text-gray-400 text-sm hover:text-gray-100 transition hidden lg:inline">Leaderboard</a>
+        <a href="#signup" class="btn btn-cta btn-sm whitespace-nowrap">
           Show Me This Week's 5 <span aria-hidden="true" class="btn-arrow">&rarr;</span>
         </a>
       </nav>
@@ -467,6 +508,10 @@
           </a>
         </div>
         <p class="text-gray-500 text-sm"><a href="https://ssrn.com/abstract=6606558" target="_blank" rel="noopener noreferrer" class="hover:text-gray-300 underline decoration-dotted">SSRN-published methodology</a> on 219 startups &middot; cited in awesome-quant &middot; Glama A-Tier MCP &middot; unsubscribe in one click</p>
+        <p class="inline-flex items-center gap-2 text-xs text-signal-500/95 bg-signal-500/10 ring-1 ring-signal-500/30 rounded-full px-3 py-1.5 mt-2">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 12 2 2 4-4"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 5c0 1.66 4 3 9 3s9-1.34 9-3-4-3-9-3-9 1.34-9 3z"/></svg>
+          <span>Upgrading to Dashboard? Use code <code class="font-mono font-bold tracking-wider bg-signal-500/20 px-1.5 py-0.5 rounded text-signal-400">PH50OFF</code> &mdash; 50% off your first 3 months.</span>
+        </p>
       </div>
     </div>
   </section>
