@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { useCases } from "@/content/use-cases";
+import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 
 export const metadata: Metadata = {
   title: "Use Cases — Angels, VC Analysts, Fund of Funds",
@@ -103,6 +104,7 @@ export default function UseCasesIndex() {
 
   return (
     <>
+      <AgentMirrorLinks path="/use-cases" qaCategory="general" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

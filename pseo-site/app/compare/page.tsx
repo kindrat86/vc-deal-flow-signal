@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { comparisons } from "@/content/comparisons";
 import PSEOFooterNav from "@/components/PSEOFooterNav";
+import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 
 export const metadata: Metadata = {
   title: "Compare Deal Flow Tools — VC Deal Flow Signal",
@@ -109,6 +110,7 @@ export default function CompareIndex() {
 
   return (
     <>
+      <AgentMirrorLinks path="/compare" qaCategory="general" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

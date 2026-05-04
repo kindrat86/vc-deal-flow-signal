@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentSummary } from "@/components/AgentSummary";
+import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { getDataLastModified } from "@/lib/data";
 
 const SITE = "https://signals.gitdealflow.com";
@@ -345,6 +346,7 @@ export default function AgentsLandingPage() {
 
   return (
     <>
+      <AgentMirrorLinks path="/agents" qaCategory="general" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

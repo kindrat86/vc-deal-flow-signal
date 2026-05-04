@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { alternatives } from "@/content/alternatives";
+import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 
 export const metadata: Metadata = {
   title: "Alternatives to Harmonic.ai, Dealroom, Crunchbase & Forager.ai",
@@ -103,6 +104,7 @@ export default function AlternativesIndex() {
 
   return (
     <>
+      <AgentMirrorLinks path="/alternatives" qaCategory="general" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
