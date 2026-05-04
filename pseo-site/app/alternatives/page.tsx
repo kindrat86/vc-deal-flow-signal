@@ -3,9 +3,9 @@ import Link from "next/link";
 import { alternatives } from "@/content/alternatives";
 
 export const metadata: Metadata = {
-  title: "Alternatives to Harmonic.ai, Dealroom, Crunchbase & Forager.ai",
+  title: "Deal Flow Tool Alternatives — Harmonic, PitchBook, CB Insights, Affinity & 5 more",
   description:
-    "Compare VC Deal Flow Signal against Harmonic.ai, Dealroom, Crunchbase alerts, and Forager.ai. Engineering-signal alternatives for early deal flow — 6-12 weeks before fundraise announcements.",
+    "Compare VC Deal Flow Signal head-to-head against Harmonic.ai, PitchBook, CB Insights, Affinity, Crunchbase, Dealroom, Forager.ai, Tracxn, and Specter. Engineering-signal alternatives for early VC deal flow — 6-12 weeks before fundraise announcements.",
   alternates: {
     canonical: "/alternatives",
   },

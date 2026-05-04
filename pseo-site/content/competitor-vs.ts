@@ -146,6 +146,69 @@ export const competitors: Record<string, CompetitorInfo> = {
       "Data freshness varies by sector depth",
     ],
   },
+  affinity: {
+    key: "affinity",
+    name: "Affinity",
+    url: "https://www.affinity.co",
+    tagline: "Relationship-intelligence CRM for VCs and dealmakers.",
+    signalType: "Relationship-graph signals from team email and calendar",
+    leadTime: "Network-introduction lead time (varies)",
+    pricing: "Per-seat enterprise (typically several hundred USD/seat/mo)",
+    coverage: "Whatever your team's network already touches",
+    freeTier: "No public free tier",
+    strengths: [
+      "Industry-default CRM for VCs, PE, and IB dealmakers",
+      "Auto-enriches contacts and tracks every email and meeting in the relationship graph",
+      "Strong integrations with Gmail, Outlook, and major data providers",
+    ],
+    weaknesses: [
+      "Not a discovery tool — surfaces deals only if your team already has a network thread to them",
+      "Per-seat enterprise pricing makes it impractical for solo investors and angels",
+      "Adds zero leading signal on companies your team hasn't met yet",
+    ],
+  },
+  "cb-insights": {
+    key: "cb-insights",
+    name: "CB Insights",
+    url: "https://www.cbinsights.com",
+    tagline: "Research and market-intelligence platform for institutional investors.",
+    signalType: "Curated research, analyst reports, market maps",
+    leadTime: "Post-publication (research-led, not signal-led)",
+    pricing: "Enterprise (typically five-figure annual contracts)",
+    coverage: "Global, all sectors, with deep tech and financial focus",
+    freeTier: "Limited newsletter-tier access only",
+    strengths: [
+      "Authoritative analyst reports and market maps used by Fortune 500 strategy teams",
+      "Strong proprietary taxonomy and Mosaic scoring for company health",
+      "Integrated newsletter and intelligence feed reaches a large institutional audience",
+    ],
+    weaknesses: [
+      "Research is curated and lagging — not designed to surface acceleration in real time",
+      "Enterprise pricing excludes individual investors, angels, and most early-stage scouts",
+      "Mosaic scores rely on signals like funding history and headcount that lag the actual product work",
+    ],
+  },
+  specter: {
+    key: "specter",
+    name: "Specter",
+    url: "https://tryspecter.com",
+    tagline: "Alternative-data growth signals across web, hiring, and product traction.",
+    signalType: "Web traffic, hiring growth, product traction signals",
+    leadTime: "2-8 weeks pre-fundraise (signal-dependent)",
+    pricing: "Tiered (Starter, Pro, Enterprise)",
+    coverage: "Global, all sectors with public web footprint",
+    freeTier: "Limited free tier with restricted searches",
+    strengths: [
+      "Cross-sector growth signals not limited to technical founders",
+      "Combines web traffic, hiring, and product signals in a single workflow",
+      "More approachable pricing than enterprise data platforms",
+    ],
+    weaknesses: [
+      "Web and hiring signals often surface only after a product launch or PR push",
+      "Engineering acceleration on GitHub is upstream of most Specter signals",
+      "Growth signals can lag technical breakouts by 6-12 weeks for early-stage software startups",
+    ],
+  },
 };
 
 /**
@@ -257,6 +320,76 @@ export const competitorVsPairs: CompetitorVs[] = [
     b: "tracxn",
     verdict:
       "PitchBook is the LP-GP and fund-performance gold standard globally; Tracxn is the sector-map specialist with strong Asian coverage. Different use cases, different buyers. Most institutional firms that can afford PitchBook use it as the reference; Tracxn serves analyst teams who need 2,000+ sector maps and Asian startup depth.",
+  },
+  {
+    slug: "affinity-vs-harmonic-ai",
+    a: "affinity",
+    b: "harmonic-ai",
+    verdict:
+      "Affinity is a relationship-intelligence CRM — it tells you who on your team knows the founder, not whether the founder is breaking out. Harmonic.ai is an AI-powered discovery engine that finds the founder in the first place. They sit on opposite sides of the deal-flow funnel and most institutional firms run both: Harmonic for sourcing, Affinity for relationship workflow. Neither replaces a leading product-traction signal; pair either with a GitHub-engineering signal like VC Deal Flow Signal to know which of the candidates is actually accelerating.",
+  },
+  {
+    slug: "affinity-vs-pitchbook",
+    a: "affinity",
+    b: "pitchbook",
+    verdict:
+      "Affinity is the relationship-intelligence CRM most VCs run their pipeline in; PitchBook is the institutional reference database for fund performance, M&A, and LP-GP analysis. They solve different problems entirely — Affinity is workflow, PitchBook is research — and most institutional firms run both. Neither is a leading signal on what to buy; both are essential plumbing once a name is already on the radar.",
+  },
+  {
+    slug: "affinity-vs-crunchbase",
+    a: "affinity",
+    b: "crunchbase",
+    verdict:
+      "Affinity is your team's private relationship CRM; Crunchbase is the public funding database that everyone reads. Affinity wins on workflow and pipeline tracking; Crunchbase wins on confirmed funding context. They compose cleanly — Affinity for what your team is working on, Crunchbase for what the market just announced — and neither is a leading indicator on its own.",
+  },
+  {
+    slug: "affinity-vs-cb-insights",
+    a: "affinity",
+    b: "cb-insights",
+    verdict:
+      "Affinity is a workflow tool — relationship CRM tied to your team's email and calendar. CB Insights is a research platform — analyst reports, market maps, and proprietary scoring. They serve different jobs at the same firm: Affinity tracks the deals you're already on, CB Insights helps you decide which sectors to prioritize. Neither surfaces real-time engineering acceleration on individual companies.",
+  },
+  {
+    slug: "cb-insights-vs-pitchbook",
+    a: "cb-insights",
+    b: "pitchbook",
+    verdict:
+      "Both are enterprise-priced institutional platforms. CB Insights is stronger on analyst-led research, market maps, and the Mosaic company-health score; PitchBook is the gold-standard reference for LP-GP, fund performance, and M&A history. Many large firms run both — CB Insights for thesis-building, PitchBook for benchmarking — and accept the combined cost of around fifty thousand USD per year.",
+  },
+  {
+    slug: "cb-insights-vs-crunchbase",
+    a: "cb-insights",
+    b: "crunchbase",
+    verdict:
+      "CB Insights is research-and-analyst heavy — market maps, reports, Mosaic scores — at enterprise pricing. Crunchbase is a curated funding database with broad coverage and individual-investor pricing from $49/mo Pro. Different buyers entirely: CB Insights for institutional strategy and corporate development teams, Crunchbase for working investors who need verified funding context fast.",
+  },
+  {
+    slug: "cb-insights-vs-tracxn",
+    a: "cb-insights",
+    b: "tracxn",
+    verdict:
+      "Both are research-heavy platforms with sector taxonomies. CB Insights is the institutional reference with proprietary scoring (Mosaic) and analyst reports; Tracxn offers deeper sector maps across 2,000+ industries with stronger Asian coverage. Pick CB Insights if your buyer is a Fortune 500 strategy team; pick Tracxn if your team needs granular sector depth at a lower price point.",
+  },
+  {
+    slug: "specter-vs-harmonic-ai",
+    a: "specter",
+    b: "harmonic-ai",
+    verdict:
+      "Specter and Harmonic.ai both target the proactive-sourcing job, but with different signals. Harmonic.ai uses AI team-pattern matching and surfaces companies near incorporation; Specter watches web-traffic, hiring, and product traction signals which usually surface 2-8 weeks pre-fundraise. Harmonic is broader and earlier; Specter is more accessible and tied to public traction. Many investors layer both, plus a GitHub-engineering signal for the technical breakouts that show up in code first.",
+  },
+  {
+    slug: "specter-vs-forager-ai",
+    a: "specter",
+    b: "forager-ai",
+    verdict:
+      "Specter and Forager.ai both belong to the alternative-data signal category — public web, hiring, and product traction. Forager has the longer track record and stronger NLP pipeline; Specter offers a broader signal mix and a more accessible free tier. They overlap heavily and the choice usually comes down to UX and pricing fit. Neither catches engineering acceleration on GitHub before the product hits the public web.",
+  },
+  {
+    slug: "specter-vs-pitchbook",
+    a: "specter",
+    b: "pitchbook",
+    verdict:
+      "Specter is a leading-signal tool tracking traction across web, hiring, and product; PitchBook is a lagging research database covering fund performance, M&A, and LP-GP. They sit at opposite ends of the deal-flow timeline — Specter surfaces candidates, PitchBook benchmarks them. Different price tiers too: Specter is approachable for individual investors, PitchBook is enterprise-only.",
   },
 ];
 

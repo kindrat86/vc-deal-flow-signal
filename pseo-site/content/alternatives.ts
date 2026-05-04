@@ -269,6 +269,308 @@ export const alternatives: Alternative[] = [
     ],
     relatedSectors: ["ai-ml", "enterprise-saas", "dev-tools"],
   },
+  {
+    slug: "pitchbook",
+    competitor: "PitchBook",
+    competitorUrl: "https://pitchbook.com",
+    title: "PitchBook Alternative — VC Deal Flow Signal (2026)",
+    description:
+      "A PitchBook alternative for investors who want leading engineering signals, not enterprise-priced lagging research. VC Deal Flow Signal surfaces GitHub acceleration 6-12 weeks before fundraise announcements at EUR 9.97/month.",
+    h1: "VC Deal Flow Signal vs PitchBook",
+    tagline:
+      "A leading-indicator alternative to PitchBook for investors who want to source early, not benchmark late.",
+    intro:
+      "PitchBook is the institutional gold standard for fund performance, M&A, and LP-GP data. It is also priced for institutions — typical contracts run into the tens of thousands of US dollars per year, and the data is curated, lagging, and oriented toward analysts rather than operators. VC Deal Flow Signal solves a different problem: it watches GitHub commit velocity and contributor growth across thousands of startup organizations to surface engineering acceleration 6-12 weeks before a round is announced. If you need fund-of-funds benchmarks and decade-old M&A history, PitchBook is irreplaceable. If you want to be in rounds before they are competitive, you need a leading signal.",
+    sections: [
+      {
+        heading: "Reference database vs leading signal",
+        body: "PitchBook is, fundamentally, a reference. Every fund return, every M&A multiple, every LP commitment is recorded after the fact and indexed for retrospective analysis. That is exactly what institutional analysts need. VC Deal Flow Signal is not a reference — it is a weekly leading signal on what is about to happen, derived from public GitHub activity. Different jobs, different timelines, different buyers.",
+      },
+      {
+        heading: "Lead time and sourcing",
+        body: "PitchBook tells you a round closed because PitchBook recorded the round closing. Lead time is zero or negative. VC Deal Flow Signal flags engineering acceleration when commit velocity, contributor growth, and infrastructure expansion start moving — historically 6-12 weeks before the corresponding fundraise is announced. For investors trying to source rounds before they are competitive, that lead-time gap is the entire point of using a tool like this.",
+      },
+      {
+        heading: "Pricing and accessibility",
+        body: "PitchBook contracts typically start in the low five figures per year and scale with seats and modules. The platform is built for analyst teams at institutional firms and corporate-development functions. VC Deal Flow Signal offers a free weekly Signal Report and a EUR 9.97/month Dashboard during beta. A solo angel or scout can run our full product for less than a single PitchBook seat costs in monthly fees alone.",
+      },
+      {
+        heading: "Data scope and depth",
+        body: "PitchBook indexes funds, deals, M&A, IPOs, valuations, cap tables, LP-GP relationships, and decades of historical context. The depth is unmatched and irreplaceable for benchmarking work. VC Deal Flow Signal indexes one thing in detail: weekly engineering acceleration on roughly 4,200 startup organizations across 20 sector clusters. We are not trying to compete on database depth — we are trying to be early on a different signal entirely.",
+      },
+      {
+        heading: "Using them together",
+        body: "Most institutional firms with PitchBook contracts also pay for a leading-signal tool of some kind, because PitchBook does not surface candidates before they exist in the database. VC Deal Flow Signal is the affordable leading layer: surface engineering acceleration weekly, then pull historical context from PitchBook on the candidates that warrant outreach. Two complementary tools at radically different price points.",
+      },
+    ],
+    featureTable: {
+      tools: ["VC Deal Flow Signal", "PitchBook"],
+      features: [
+        { feature: "Primary signal", values: { "VC Deal Flow Signal": "GitHub engineering acceleration (leading)", "PitchBook": "Curated fund and M&A reference (lagging)" } },
+        { feature: "Typical lead time", values: { "VC Deal Flow Signal": "6-12 weeks pre-fundraise", "PitchBook": "0 weeks (post-event)" } },
+        { feature: "Pricing", values: { "VC Deal Flow Signal": "EUR 9.97/mo (beta)", "PitchBook": "Enterprise (typically $25k+/yr)" } },
+        { feature: "Free tier", values: { "VC Deal Flow Signal": "Weekly report + sector pages", "PitchBook": "None — sales-led only" } },
+        { feature: "Coverage", values: { "VC Deal Flow Signal": "Technical startups, 20 sector clusters", "PitchBook": "Global, all asset classes" } },
+        { feature: "Best for", values: { "VC Deal Flow Signal": "Sourcing engineering breakouts before the round", "PitchBook": "Institutional benchmarking, fund-of-funds, M&A research" } },
+        { feature: "Buyer persona", values: { "VC Deal Flow Signal": "Angels, scouts, solo GPs, technical funds", "PitchBook": "LPs, GPs, corporate dev, investment banks" } },
+        { feature: "API / agent access", values: { "VC Deal Flow Signal": "MCP server, JSON, CSV, RSS, A2A", "PitchBook": "Enterprise API only" } },
+      ],
+    },
+    verdict:
+      "PitchBook and VC Deal Flow Signal are not really substitutes — they sit at opposite ends of the deal-flow timeline. PitchBook is the institutional benchmarking reference; VC Deal Flow Signal is the leading-signal sourcing engine for technical startups. Use PitchBook when you need decades of fund performance data and you have an enterprise budget. Use VC Deal Flow Signal when you need to know which startups are accelerating right now, before the round is announced.",
+    whenToPick: {
+      us: "You invest in technical startups and want a quantitative, leading signal you can act on in days, not after a round closes. You want individual-investor pricing and an API surface (MCP, JSON, CSV) you can plug into your own workflow.",
+      them: "You are an institutional VC, LP, or corporate-development analyst whose job depends on benchmarking funds, valuations, and M&A history. You have a five-figure annual data budget and a workflow built around analyst-curated reference data.",
+    },
+    faqs: [
+      { question: "Is VC Deal Flow Signal a direct PitchBook replacement?", answer: "No. PitchBook is a reference database for fund performance, M&A, and historical valuations — there is no substitute for that depth at any price. VC Deal Flow Signal is a leading-signal sourcing engine focused on engineering acceleration. They solve different problems and are complementary, not interchangeable." },
+      { question: "Why is VC Deal Flow Signal so much cheaper than PitchBook?", answer: "Different category, different scope. PitchBook curates and licenses decades of private-market data across all asset classes. VC Deal Flow Signal pulls one signal — GitHub engineering acceleration — from public APIs and serves it as a weekly product. The narrower scope is exactly what enables the lower price." },
+      { question: "What does PitchBook do that VC Deal Flow Signal does not?", answer: "Fund performance benchmarking, IRR and TVPI by vintage, M&A multiples by sector, LP-GP relationship mapping, cap-table snapshots, and decades of historical reference. None of these are in scope for a leading-signal product." },
+      { question: "Can angels and solo GPs realistically use PitchBook?", answer: "Most cannot. Pricing typically starts in the low five figures per year and scales with seats. For individual investors and smaller funds, a leading-signal tool plus Crunchbase Pro is a far more cost-effective stack." },
+    ],
+    relatedSectors: ["ai-ml", "enterprise-saas", "dev-tools"],
+  },
+  {
+    slug: "tracxn",
+    competitor: "Tracxn",
+    competitorUrl: "https://tracxn.com",
+    title: "Tracxn Alternative — VC Deal Flow Signal (2026)",
+    description:
+      "A Tracxn alternative for investors who want a weekly leading signal on engineering acceleration instead of curated sector reports. Built for technical-startup sourcing, not analyst-led research.",
+    h1: "VC Deal Flow Signal vs Tracxn",
+    tagline:
+      "A leading-indicator alternative to Tracxn for investors who care about acceleration, not sector taxonomy.",
+    intro:
+      "Tracxn built a serious analyst-curated database with sector maps spanning more than 2,000 industries and strong coverage of Asian startup ecosystems. It is a powerful research tool for teams that need granular sector context. VC Deal Flow Signal answers a different question: which startups are accelerating right now, before any analyst has had time to write a report? Weekly GitHub engineering signals across roughly 4,200 startup organizations, with 6-12 weeks of typical lead time over fundraise announcements.",
+    sections: [
+      {
+        heading: "Sector research vs leading signal",
+        body: "Tracxn is research-led: analysts curate sector maps, write reports, and tag companies into a deep taxonomy. The output is excellent for understanding a sector you are investigating. VC Deal Flow Signal is signal-led: every week, a small number of startups get flagged for unusual engineering acceleration, and you get the data fast enough to act on it before the round is competitive.",
+      },
+      {
+        heading: "Lead time",
+        body: "Tracxn captures companies once they show up in funding data, sector reports, or analyst-curated lists — typically post-announcement. VC Deal Flow Signal captures engineering acceleration 6-12 weeks earlier, while the team is shipping the product that will eventually justify the round. If your edge depends on lead time, Tracxn is a research tool, not a sourcing one.",
+      },
+      {
+        heading: "Coverage",
+        body: "Tracxn is global with particular strength in Asian startup ecosystems and broad coverage across non-technical sectors. VC Deal Flow Signal is global but technical-only — startups need a public GitHub footprint to show up in our data. For consumer brands, services, and non-technical sectors, Tracxn is broader. For technical sectors with public engineering activity, GitHub signals are closer to the actual work.",
+      },
+      {
+        heading: "Pricing",
+        body: "Tracxn is tiered from Pro (mid-four-figure annual contracts) to Enterprise (significantly higher). VC Deal Flow Signal is EUR 9.97/month for the full Dashboard during beta, with a free weekly Signal Report. For individual investors and small funds, the price gap is several orders of magnitude.",
+      },
+      {
+        heading: "Using them together",
+        body: "A few investors run both: Tracxn for sector research when they are investigating a new vertical, VC Deal Flow Signal for weekly leading signals on which companies in that vertical are actually accelerating. Tracxn answers what does this sector look like; VC Deal Flow Signal answers who in this sector is moving fastest right now.",
+      },
+    ],
+    featureTable: {
+      tools: ["VC Deal Flow Signal", "Tracxn"],
+      features: [
+        { feature: "Primary signal", values: { "VC Deal Flow Signal": "GitHub engineering acceleration (leading)", "Tracxn": "Curated sector map (lagging)" } },
+        { feature: "Typical lead time", values: { "VC Deal Flow Signal": "6-12 weeks pre-fundraise", "Tracxn": "Post-announcement" } },
+        { feature: "Pricing", values: { "VC Deal Flow Signal": "EUR 9.97/mo (beta)", "Tracxn": "Tiered ($4k+/yr Pro to enterprise)" } },
+        { feature: "Free tier", values: { "VC Deal Flow Signal": "Weekly report + sector pages", "Tracxn": "Limited" } },
+        { feature: "Coverage", values: { "VC Deal Flow Signal": "Technical startups, 20 sector clusters", "Tracxn": "Global, 2,000+ industries (especially Asia)" } },
+        { feature: "Best for", values: { "VC Deal Flow Signal": "Sourcing engineering breakouts pre-round", "Tracxn": "Sector research, analyst-led workflows" } },
+        { feature: "Data freshness", values: { "VC Deal Flow Signal": "Weekly", "Tracxn": "Varies by sector depth" } },
+      ],
+    },
+    verdict:
+      "Tracxn is the better tool if you need granular sector taxonomy, analyst-curated reports, and broad cross-sector coverage including non-technical companies. VC Deal Flow Signal is the better tool if you invest in technical startups and want a leading signal you can act on each week. They rarely substitute for each other; they compose well when budget allows.",
+    whenToPick: {
+      us: "You invest in technical startups, want weekly leading signals on engineering acceleration, and prefer EUR 9.97/month over a multi-thousand-dollar annual contract. Asian-only coverage is not a hard requirement.",
+      them: "Your team's edge is sector research and analyst-led workflows. You need 2,000+ industry maps, deep Asian-ecosystem coverage, and you have a four-to-five-figure annual data budget.",
+    },
+    faqs: [
+      { question: "Is VC Deal Flow Signal a Tracxn alternative?", answer: "It is an alternative for the sourcing-on-technical-startups job, but not for the broader sector-research job that Tracxn was built for. If you mainly use Tracxn for sector maps, VC Deal Flow Signal will not replace that. If you mainly use it to find accelerating companies, our weekly GitHub signal is more direct and cheaper." },
+      { question: "Does VC Deal Flow Signal cover Asian startups?", answer: "Yes — coverage is global. Any startup organization with public GitHub activity in our 20 sector clusters is in scope, regardless of geography. If you specifically need Asian-region sector breakdowns, Tracxn is more comprehensive on that dimension." },
+      { question: "Why is VC Deal Flow Signal cheaper than Tracxn?", answer: "Narrower scope. Tracxn has analysts curating thousands of sector maps; VC Deal Flow Signal automates one signal (GitHub engineering acceleration) on a focused set of organizations. Lower curation overhead enables individual-investor pricing." },
+      { question: "Should I use both Tracxn and VC Deal Flow Signal?", answer: "Larger funds sometimes do — Tracxn for sector research when investigating new verticals, VC Deal Flow Signal for weekly leading signals once a vertical is in scope. For solo investors, a single leading-signal tool plus Crunchbase Pro is usually a better-fit stack." },
+    ],
+    relatedSectors: ["ai-ml", "enterprise-saas", "dev-tools"],
+  },
+  {
+    slug: "affinity",
+    competitor: "Affinity",
+    competitorUrl: "https://www.affinity.co",
+    title: "Affinity Alternative or Complement — VC Deal Flow Signal (2026)",
+    description:
+      "Affinity tracks the relationships your team already has. VC Deal Flow Signal surfaces the engineering breakouts your team has not met yet. A leading-signal complement to Affinity for VC sourcing.",
+    h1: "VC Deal Flow Signal vs Affinity",
+    tagline:
+      "A leading-signal complement to Affinity. Affinity manages your existing relationship graph; we surface the technical breakouts you have not met yet.",
+    intro:
+      "Affinity is the relationship-intelligence CRM that most VC firms run their pipeline in — it auto-enriches contacts, tracks every email and meeting, and gives a partner a clear view of who on the team has touched which founder. It is excellent at that job. It is also not a discovery tool: Affinity only surfaces deals if your team already has a network thread to the founder. VC Deal Flow Signal sits upstream of that workflow. Each week we flag the technical startups whose GitHub engineering activity is accelerating most aggressively, regardless of whether anyone on your team has ever heard of them.",
+    sections: [
+      {
+        heading: "Relationship CRM vs leading signal",
+        body: "Affinity is workflow infrastructure for the deals you and your team are already touching. VC Deal Flow Signal is a sourcing input for deals nobody on your team has touched yet. They sit at different points in the funnel. Affinity is essential plumbing once a candidate is in motion; VC Deal Flow Signal is the upstream leading signal that puts new candidates on the radar.",
+      },
+      {
+        heading: "Discovery scope",
+        body: "Affinity's discovery surface is bounded by your team's existing network — emails, calendars, intros, deal history. If a founder has never crossed your team's path, Affinity has nothing to say about them. VC Deal Flow Signal scans roughly 4,200 startup organizations on GitHub each week and surfaces engineering acceleration whether or not your team has any prior relationship to the company.",
+      },
+      {
+        heading: "Pricing and access",
+        body: "Affinity is per-seat enterprise pricing — typically several hundred US dollars per seat per month, scaled across the firm. It is built for institutional teams that need shared CRM and pipeline tracking. VC Deal Flow Signal is EUR 9.97/month per investor for the full Dashboard, with a free weekly Signal Report. They serve different buying centers: Affinity is procured by the firm, our product is procured by individual investors.",
+      },
+      {
+        heading: "Workflow composition",
+        body: "The natural workflow is to use VC Deal Flow Signal as the leading-signal input — surface engineering breakouts each week — and then push the names that warrant outreach into Affinity for relationship and pipeline management. Leading signal upstream, relationship CRM downstream. Two tools doing two non-overlapping jobs.",
+      },
+      {
+        heading: "Data freshness and signal type",
+        body: "Affinity is real-time on relationship data — your team's emails and meetings sync continuously. VC Deal Flow Signal is weekly on engineering data — fresh enough to act on, slow enough to filter weekly noise. Different cadences for different jobs.",
+      },
+    ],
+    featureTable: {
+      tools: ["VC Deal Flow Signal", "Affinity"],
+      features: [
+        { feature: "Primary purpose", values: { "VC Deal Flow Signal": "Leading sourcing signal", "Affinity": "Relationship CRM and pipeline workflow" } },
+        { feature: "Discovery surface", values: { "VC Deal Flow Signal": "All public-GitHub startups, regardless of network", "Affinity": "Whatever your team's network already touches" } },
+        { feature: "Lead time", values: { "VC Deal Flow Signal": "6-12 weeks pre-fundraise", "Affinity": "Network-dependent (varies)" } },
+        { feature: "Pricing", values: { "VC Deal Flow Signal": "EUR 9.97/mo per investor (beta)", "Affinity": "Several hundred USD/seat/mo enterprise" } },
+        { feature: "Free tier", values: { "VC Deal Flow Signal": "Weekly report + sector pages", "Affinity": "None" } },
+        { feature: "Best for", values: { "VC Deal Flow Signal": "Adding new candidates to the funnel", "Affinity": "Managing relationships once candidates are in motion" } },
+        { feature: "Buyer", values: { "VC Deal Flow Signal": "Individual investor or scout", "Affinity": "Firm-level procurement" } },
+      ],
+    },
+    verdict:
+      "Affinity and VC Deal Flow Signal are complements, not substitutes. Affinity manages the relationships and pipeline for deals your team is already on; VC Deal Flow Signal surfaces the technical startups your team has not heard of yet. The high-leverage workflow is to run both: VC Deal Flow Signal upstream to put new candidates on the radar, Affinity downstream to manage the relationship and outreach.",
+    whenToPick: {
+      us: "You want a leading-signal sourcing input that surfaces technical breakouts before your team's network has any thread to them. You are budget-conscious and want individual-investor pricing.",
+      them: "You need a firm-wide relationship CRM and pipeline tracker — shared visibility into who on the team has touched which founder, with email and calendar auto-enrichment. You have an enterprise procurement budget.",
+    },
+    faqs: [
+      { question: "Is VC Deal Flow Signal a replacement for Affinity?", answer: "No. Affinity is a relationship CRM; VC Deal Flow Signal is a leading-signal sourcing tool. They sit at different points in the deal-flow funnel and most institutional firms benefit from running both." },
+      { question: "Can VC Deal Flow Signal feed data into Affinity?", answer: "Yes. The product exposes JSON, CSV, RSS, and an MCP server, so flagged candidates can be exported and imported into Affinity (or any CRM) with a small amount of glue. Many investors keep the leading-signal layer outside their CRM and only push qualified candidates in." },
+      { question: "Does Affinity catch engineering acceleration?", answer: "No. Affinity tracks relationship signals — who emailed whom, who took which meeting — not product or engineering data. Engineering acceleration is upstream of any relationship signal and is exactly the gap our product fills." },
+      { question: "What is the cost difference?", answer: "Affinity is typically priced at several hundred US dollars per seat per month, sold to institutional firms. VC Deal Flow Signal is EUR 9.97/month per investor during beta, sold to individual investors. Different orders of magnitude reflecting different buyer personas." },
+    ],
+    relatedSectors: ["ai-ml", "enterprise-saas", "dev-tools"],
+  },
+  {
+    slug: "cb-insights",
+    competitor: "CB Insights",
+    competitorUrl: "https://www.cbinsights.com",
+    title: "CB Insights Alternative — VC Deal Flow Signal (2026)",
+    description:
+      "A CB Insights alternative for investors who want a weekly leading signal on engineering acceleration instead of analyst reports and Mosaic scores. Built for sourcing, not strategy decks.",
+    h1: "VC Deal Flow Signal vs CB Insights",
+    tagline:
+      "A leading-indicator alternative to CB Insights for investors who want acceleration data, not analyst reports.",
+    intro:
+      "CB Insights is the institutional research platform of choice for Fortune 500 strategy teams, corporate-development functions, and many large VCs. It pairs deep curated research with proprietary scoring (Mosaic) and a widely-read newsletter. It is also expensive, lagging, and oriented toward analyst-led workflows. VC Deal Flow Signal is built for a different job: every week, surface the technical startups whose GitHub engineering activity is accelerating most aggressively, with 6-12 weeks of typical lead time over the eventual fundraise announcement.",
+    sections: [
+      {
+        heading: "Research platform vs leading signal",
+        body: "CB Insights publishes analyst-led reports, market maps, and proprietary scores. The output is excellent for thesis-building and corporate strategy. VC Deal Flow Signal does not publish reports — it publishes a small weekly list of accelerating technical startups, derived directly from public GitHub activity. Different products for different jobs.",
+      },
+      {
+        heading: "Lead time",
+        body: "CB Insights data is curated and lagging by design. Market maps and Mosaic scores rely on signals like funding history, headcount, and patents — all of which trail the actual engineering work. VC Deal Flow Signal flags engineering acceleration weekly, typically 6-12 weeks before the corresponding fundraise is announced. If your edge depends on getting in before the round is competitive, the difference is structural.",
+      },
+      {
+        heading: "Pricing",
+        body: "CB Insights contracts are enterprise — typically five-figure annual commitments, with the full Intelligence Unit and analyst access priced higher. The free newsletter is excellent and widely read. VC Deal Flow Signal is EUR 9.97/month for the full Dashboard during beta, with a free weekly Signal Report and free public sector pages. The per-investor cost gap is roughly two orders of magnitude.",
+      },
+      {
+        heading: "Coverage scope",
+        body: "CB Insights covers all sectors, all asset classes, with strong depth in fintech, healthtech, retail, and emerging tech. VC Deal Flow Signal covers technical startups with public GitHub activity across about 20 sector clusters — narrower scope, but with a leading signal that CB Insights does not produce. They sit in different categories.",
+      },
+      {
+        heading: "Mosaic vs engineering acceleration",
+        body: "Mosaic is CB Insights' proprietary score combining funding history, team, and momentum signals. It is a useful synthesis, but its inputs are mostly lagging. VC Deal Flow Signal computes engineering acceleration directly from GitHub commit, contributor, and repository data — a single, transparent signal you can audit yourself. Different methodologies, different freshness profiles.",
+      },
+    ],
+    featureTable: {
+      tools: ["VC Deal Flow Signal", "CB Insights"],
+      features: [
+        { feature: "Primary signal", values: { "VC Deal Flow Signal": "GitHub engineering acceleration (leading)", "CB Insights": "Analyst-curated research and Mosaic scoring (lagging)" } },
+        { feature: "Typical lead time", values: { "VC Deal Flow Signal": "6-12 weeks pre-fundraise", "CB Insights": "Post-publication / post-event" } },
+        { feature: "Pricing", values: { "VC Deal Flow Signal": "EUR 9.97/mo (beta)", "CB Insights": "Enterprise (typically $30k+/yr)" } },
+        { feature: "Free tier", values: { "VC Deal Flow Signal": "Weekly report + sector pages", "CB Insights": "Newsletter only" } },
+        { feature: "Coverage", values: { "VC Deal Flow Signal": "Technical startups, 20 sector clusters", "CB Insights": "Global, all sectors and asset classes" } },
+        { feature: "Buyer persona", values: { "VC Deal Flow Signal": "Angels, scouts, solo GPs, technical funds", "CB Insights": "Corporate strategy, institutional VCs, banks" } },
+        { feature: "API / agent access", values: { "VC Deal Flow Signal": "MCP server, JSON, CSV, RSS, A2A", "CB Insights": "Enterprise API only" } },
+        { feature: "Best for", values: { "VC Deal Flow Signal": "Weekly sourcing of engineering breakouts", "CB Insights": "Thesis building, market maps, corporate strategy" } },
+      ],
+    },
+    verdict:
+      "CB Insights is the better tool if your job is thesis-building, market mapping, or corporate-development analysis and you have an enterprise data budget. VC Deal Flow Signal is the better tool if you invest in technical startups and want a leading-signal sourcing engine you can run for less than the cost of a single CB Insights report. They are not really substitutes — they sit in different categories.",
+    whenToPick: {
+      us: "You invest in technical startups and want a weekly leading signal on engineering acceleration. You prefer transparent inputs (GitHub data) you can audit yourself, and individual-investor pricing.",
+      them: "Your job depends on analyst-led research, market maps, and Mosaic scoring across all sectors. You have an enterprise budget and a workflow built around curated reports.",
+    },
+    faqs: [
+      { question: "Is VC Deal Flow Signal a CB Insights replacement?", answer: "Not for the analyst-led research job CB Insights was built for. VC Deal Flow Signal does not publish reports or sector maps. For the sourcing-of-technical-startups job, our leading GitHub signal is more direct and several orders of magnitude cheaper." },
+      { question: "How does GitHub acceleration compare to the Mosaic score?", answer: "Mosaic synthesizes funding, team, and momentum signals — most of them lagging. GitHub acceleration is a single, transparent, leading signal computed from commit, contributor, and repository data. Different methodologies. Many investors find them useful as complements: Mosaic for breadth, GitHub acceleration for early-warning lead time on technical startups." },
+      { question: "Why is CB Insights so expensive?", answer: "CB Insights employs a large analyst team, runs a high-volume research operation, and prices for institutional buyers (Fortune 500 strategy teams, large VCs, banks). The product is genuinely deep — the price reflects the scope and the buyer." },
+      { question: "Can I use both?", answer: "Yes. Many institutional firms run CB Insights for thesis-building and market maps, and layer a leading-signal tool like VC Deal Flow Signal on top for weekly sourcing of technical breakouts. The combined cost is rounding error against a typical CB Insights contract." },
+    ],
+    relatedSectors: ["ai-ml", "enterprise-saas", "dev-tools"],
+  },
+  {
+    slug: "specter",
+    competitor: "Specter",
+    competitorUrl: "https://tryspecter.com",
+    title: "Specter Alternative — VC Deal Flow Signal (2026)",
+    description:
+      "A Specter alternative focused on engineering acceleration upstream of web traffic and hiring signals. Catch technical startups before public traction shows up in Specter's feed.",
+    h1: "VC Deal Flow Signal vs Specter",
+    tagline:
+      "An upstream alternative to Specter for technical startups. Engineering acceleration usually precedes web traffic and hiring signals by 6-12 weeks.",
+    intro:
+      "Specter is one of the better alternative-data signal platforms — it combines web traffic, hiring growth, and product-traction signals to surface companies gaining momentum before they raise. It works well across sectors and offers more accessible pricing than enterprise platforms. VC Deal Flow Signal sits upstream of Specter for technical startups: engineering acceleration on GitHub typically appears 6-12 weeks before the corresponding web-traffic surge or hiring spike that Specter detects. Same job, earlier signal, narrower scope.",
+    sections: [
+      {
+        heading: "Where each signal sits in time",
+        body: "Specter watches public traction signals — web traffic, hiring, product mentions. These signals appear once a company has launched, gone live, or started hiring publicly. VC Deal Flow Signal watches GitHub engineering activity, which precedes public traction for technical startups by an average of 6-12 weeks. By the time Specter sees a hiring spike, our signal has been flagging the underlying engineering acceleration for over a month.",
+      },
+      {
+        heading: "Coverage and sector scope",
+        body: "Specter covers any company with a meaningful public web footprint — broader scope, including non-technical sectors. VC Deal Flow Signal covers technical startups with public GitHub activity across about 20 sector clusters. For consumer brands, services, and most non-technical companies, Specter is the broader option. For technical startups, GitHub signals appear earlier and are closer to the actual engineering work.",
+      },
+      {
+        heading: "Pricing",
+        body: "Specter offers tiered pricing from a limited free tier through Pro and Enterprise — generally accessible to individual investors at the lower tiers. VC Deal Flow Signal is EUR 9.97/month for the full Dashboard during beta with a free weekly Signal Report. Both are accessible compared to enterprise platforms; the right pick depends on whether you need broad cross-sector coverage or technical-startup lead time.",
+      },
+      {
+        heading: "Signal interpretation",
+        body: "Specter signals are largely already validated by the public — a hiring spike or web-traffic surge has already happened. Lower noise, less interpretation. VC Deal Flow Signal signals are earlier and require a slightly more technical lens — not every commit-velocity surge leads to a raise, but the ones that do are typically catchable a quarter earlier than Specter's equivalent signal.",
+      },
+      {
+        heading: "Using them together",
+        body: "Many investors layer the two: VC Deal Flow Signal for the earliest technical lead, Specter for cross-sector coverage and validation once a name surfaces. The economics work — both are accessible to individual investors at single-digit-to-low-three-digit monthly cost. The combined view catches technical breakouts at the engineering layer and broader public-traction breakouts at the web layer.",
+      },
+    ],
+    featureTable: {
+      tools: ["VC Deal Flow Signal", "Specter"],
+      features: [
+        { feature: "Primary signal", values: { "VC Deal Flow Signal": "GitHub engineering acceleration", "Specter": "Web traffic, hiring growth, product traction" } },
+        { feature: "Typical lead time", values: { "VC Deal Flow Signal": "6-12 weeks pre-fundraise", "Specter": "2-8 weeks pre-fundraise (signal-dependent)" } },
+        { feature: "Coverage", values: { "VC Deal Flow Signal": "Technical startups, 20 sector clusters", "Specter": "Global, any company with public web footprint" } },
+        { feature: "Free tier", values: { "VC Deal Flow Signal": "Weekly report + sector pages", "Specter": "Limited (restricted searches)" } },
+        { feature: "Paid pricing", values: { "VC Deal Flow Signal": "EUR 9.97/mo (beta)", "Specter": "Tiered Starter / Pro / Enterprise" } },
+        { feature: "Signal noise", values: { "VC Deal Flow Signal": "Moderate (engineering acceleration requires context)", "Specter": "Low-moderate (signals already publicly validated)" } },
+        { feature: "Best for", values: { "VC Deal Flow Signal": "Technical-startup early lead", "Specter": "Cross-sector public-traction sourcing" } },
+      ],
+    },
+    verdict:
+      "Specter is the broader cross-sector option and surfaces companies once public traction is visible. VC Deal Flow Signal is the upstream technical-startup option and surfaces companies while engineering acceleration is still happening privately. They compose well: VC Deal Flow Signal as the earliest layer for technical startups, Specter as the cross-sector validation layer.",
+    whenToPick: {
+      us: "You invest in technical startups and want the earliest possible signal — engineering acceleration measured directly on GitHub, before any web-traffic or hiring signal has fired.",
+      them: "You invest across sectors including non-technical ones, and you want web, hiring, and product-traction signals consolidated in one workflow. Public-traction lead time of 2-8 weeks is enough for your strategy.",
+    },
+    faqs: [
+      { question: "Is VC Deal Flow Signal a Specter alternative or complement?", answer: "Both — depending on your thesis. For technical-only investors, VC Deal Flow Signal can replace Specter as the primary signal layer. For cross-sector investors, the two are complements: VC Deal Flow Signal upstream for technical breakouts, Specter for everything else." },
+      { question: "Does VC Deal Flow Signal cover non-technical sectors?", answer: "No. Coverage is limited to startups with public GitHub activity, primarily AI/ML, dev tools, infrastructure, and enterprise SaaS. For consumer brands, services, and other non-technical sectors, Specter has substantially broader reach." },
+      { question: "How much earlier is the GitHub signal vs Specter's signals?", answer: "On average 6-12 weeks for technical startups. Engineering work happens before product launches, hiring spikes, and web-traffic surges, so the GitHub signal is structurally upstream of most public-traction signals. Specter still wins on cross-sector breadth." },
+      { question: "Can I run both?", answer: "Yes — and many investors do. The combined monthly cost is still well under a single seat at any enterprise data platform. The economics make the layered approach the obvious move if you invest across both technical and non-technical sectors." },
+    ],
+    relatedSectors: ["ai-ml", "enterprise-saas", "dev-tools"],
+  },
 ];
 
 export function getAlternative(slug: string): Alternative | undefined {
