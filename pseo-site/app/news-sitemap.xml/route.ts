@@ -6,7 +6,9 @@ export const revalidate = 3600;
 const BASE_URL = "https://signals.gitdealflow.com";
 const PUBLICATION_NAME = "VC Deal Flow Signal";
 const LANG = "en";
-const WINDOW_MS = 48 * 60 * 60 * 1000;
+// Google News expects "recent" articles. 7 days matches our weekly
+// publication cadence; 48h was too narrow and produced empty sitemaps.
+const WINDOW_MS = 7 * 24 * 60 * 60 * 1000;
 
 function escapeXml(s: string): string {
   return s
