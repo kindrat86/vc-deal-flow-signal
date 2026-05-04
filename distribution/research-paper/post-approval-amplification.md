@@ -146,8 +146,8 @@ next candidates.
 
 Longer-form post summarizing the paper — "I built a public dataset of
 GitHub engineering velocity. Here's what's in it." Publish on dev.to
-under the existing @data_nerd account. Cross-post to Hashnode (per
-memory pattern).
+under the existing @data_nerd account. Cross-post to Substack at
+https://gitdealflow.substack.com (Hashnode retired 2026-05-02).
 
 ## T+1 week
 

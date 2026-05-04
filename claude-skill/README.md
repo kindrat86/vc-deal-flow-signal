@@ -41,7 +41,7 @@ Point your client at:
 POST https://signals.gitdealflow.com/api/mcp/rpc
 ```
 
-Same five tools, three resources, two resource templates, five prompts. No auth.
+Same six tools, three resources, two resource templates, five prompts. No auth.
 
 ## What's in the skill
 

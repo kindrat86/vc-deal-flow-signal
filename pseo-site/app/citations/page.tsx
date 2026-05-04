@@ -249,10 +249,11 @@ const SOCIAL_ANCHORS: Anchor[] = [
     description: "dev.to author profile and weekly long-form posts.",
   },
   {
-    label: "Hashnode",
-    url: "https://hashnode.com/@TheData_7cdit42c",
+    label: "Substack",
+    url: "https://gitdealflow.substack.com",
     type: "social",
-    description: "Hashnode author profile.",
+    description:
+      "Substack publication mirror — weekly Top-100 GitHub Signal Startups recap with canonical link back to gitdealflow.com/blog.",
   },
   {
     label: "HackerNoon",

@@ -1,6 +1,6 @@
 ---
 name: gitdealflow-vc-signals
-description: Use this skill when the user asks about VC deal flow, startup engineering acceleration, breakout startups, GitHub-based investor signals, weekly digests, "what's hot in [sector]", or anything related to early-stage venture sourcing. Pulls live data from the @gitdealflow/mcp-signal MCP server (free, no auth) — five tools across trending, sector search, single-startup lookup, dataset summary, and methodology, plus three resources and five reusable prompts. Refreshes weekly (Mondays ~09:00 UTC). Anonymity-safe — no real names anywhere.
+description: Use this skill when the user asks about VC deal flow, startup engineering acceleration, breakout startups, GitHub-based investor signals, weekly digests, "what's hot in [sector]", or anything related to early-stage venture sourcing. Pulls live data from the @gitdealflow/mcp-signal MCP server (free, no auth) — six tools across trending, sector search, single-startup lookup, dataset summary, scout receipts, and methodology, plus three resources and five reusable prompts. Refreshes weekly (Mondays ~09:00 UTC). Anonymity-safe — no real names anywhere.
 license: MIT
 ---
 

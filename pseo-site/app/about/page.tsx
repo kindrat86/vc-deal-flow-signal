@@ -91,7 +91,7 @@ export default function AboutPage() {
           "https://news.ycombinator.com/user?id=the_data_nerd",
           "https://www.indiehackers.com/The_Data_Nerd",
           "https://dev.to/the_data_nerd",
-          "https://hashnode.com/@TheData_7cdit42c",
+          "https://gitdealflow.substack.com",
           "https://hackernoon.com/u/TheData_7cdit42c",
         ],
       },

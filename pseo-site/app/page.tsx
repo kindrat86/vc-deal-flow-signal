@@ -306,7 +306,7 @@ export default function Home() {
         ],
         featureList: [
           "Weekly GitHub engineering acceleration signals",
-          "60+ startups ranked every Monday",
+          "85+ startups ranked every Monday",
           "20 technical sector clusters",
           "MCP server for Claude, Cursor, Windsurf",
           "JSON / CSV / RSS / Telegram / Email delivery",

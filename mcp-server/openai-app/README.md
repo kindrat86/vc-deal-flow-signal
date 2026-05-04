@@ -9,7 +9,7 @@ ChatGPT Apps run inside ChatGPT and use MCP under the hood. We expose two MCP tr
 - **stdio** — `npx -y @gitdealflow/mcp-signal` for Claude Desktop, Claude Code, Cursor, etc.
 - **Streamable HTTP** — `POST https://signals.gitdealflow.com/api/mcp/rpc` for ChatGPT Apps and any HTTP MCP host.
 
-The ChatGPT App points at the HTTP transport. Both transports speak the same JSON-RPC contract and expose the same five tools, three resources, two resource templates, and five prompts.
+The ChatGPT App points at the HTTP transport. Both transports speak the same JSON-RPC contract and expose the same six tools, three resources, two resource templates, and five prompts.
 
 ## Files
 

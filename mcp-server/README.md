@@ -2,13 +2,13 @@
 
 Search startup engineering acceleration signals directly from your AI assistant.
 
-[![smithery badge](https://smithery.ai/badge/kindrat86/vc-deal-flow-signal)](https://smithery.ai/server/kindrat86/vc-deal-flow-signal)
+[![Glama A-Tier](https://glama.ai/mcp/servers/@kindrat86/vc-deal-flow-signal/badge)](https://glama.ai/mcp/servers/@kindrat86/vc-deal-flow-signal)
 
-> One-click install for Claude Desktop / Cursor / Cline / Continue via Smithery — verified, 98/100 quality score.
+> Glama A-Tier (4.9 / 5.0 across 6 tools). One-line install for Claude Desktop, Claude Code, Cursor, Cline, and Continue via `npx -y @gitdealflow/mcp-signal`.
 
 ![Claude querying VC Deal Flow Signal MCP server](https://gitdealflow.com/mcp-demo.gif)
 
-Tracks commit velocity, contributor growth, and repository expansion across 20 sectors. Built for angels, scouts, and technical operators looking for traction signals before they show up in traditional deal flow.
+Tracks commit velocity, contributor growth, and repository expansion across 20 sectors and 85+ startups. Built for angels, scouts, and technical operators looking for traction signals before they show up in traditional deal flow.
 
 ## Install
 

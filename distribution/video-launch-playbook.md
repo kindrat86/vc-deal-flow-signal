@@ -54,8 +54,8 @@ Post from `discord-mcp-posts.md` Section 3. Attach `mcp-demo.mp4`.
 ### 7. dev.to article (T+2h)
 If not yet published: publish from `devto-mcp-article.md` with GIF as cover image + MP4 embedded after first paragraph. If already live: edit to add the embed.
 
-### 8. Hashnode cross-post (T+3h)
-Same content, canonical URL → dev.to. GIF as cover.
+### 8. ~~Hashnode cross-post (T+3h)~~ — **RETIRED 2026-05-02**
+~~Same content, canonical URL → dev.to. GIF as cover.~~ Skipped: 0 followers, 0 referrals after 14d. Replaced by Substack mirror at https://gitdealflow.substack.com.
 
 ---
 

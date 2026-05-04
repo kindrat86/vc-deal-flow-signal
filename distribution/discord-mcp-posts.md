@@ -65,7 +65,7 @@ Built for investors, but the data is interesting for anyone tracking open-source
 
 **Registry:** Listed on the official MCP Registry as `io.github.kindrat86/vc-deal-flow-signal`
 
-Also on npm, Glama, mcp.so, and submitted to awesome-mcp-servers.
+Also on npm, Glama (A-Tier), and submitted to awesome-mcp-servers.
 
 Full build writeup: [dev.to link]
 Source: https://github.com/kindrat86/mcp-deal-flow-signal

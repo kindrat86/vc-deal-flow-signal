@@ -130,7 +130,7 @@ export default async function AlternativePage({ params }: PageProps) {
             price: "9.97",
             priceCurrency: "EUR",
             availability: "https://schema.org/InStock",
-            description: "Full dashboard: 50+ ranked startups, sector/stage/geography filters, MCP access.",
+            description: "Full dashboard: 85+ ranked startups, sector/stage/geography filters, MCP access.",
             priceSpecification: {
               "@type": "UnitPriceSpecification",
               price: "9.97",

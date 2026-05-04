@@ -53,12 +53,10 @@ Both channels should be mentioned together in content. Avoid forcing a choice �
   - [ ] Day 4: Indie builder Discord
   - [ ] Day 5: TypeScript/dev Discord
 
-#### 4. Hashnode cross-post
-- **Asset:** `distribution/hashnode-mcp-crosspost.md`
-- **Actions:**
-  - [ ] Create Hashnode account as The Data Nerd
-  - [ ] Import dev.to article with canonical URL
-  - [ ] Share Hashnode link in Discord communities that prefer it
+#### 4. Hashnode cross-post — **RETIRED 2026-05-02**
+- **Asset:** `distribution/hashnode-mcp-crosspost.md` (archived for reference)
+- **Why retired:** 14 days, 4 posts, 0 followers, 6 views, 0 referrals. Auto-mirror killed at `publish-next.mjs:104-107`.
+- **Replaced by:** Substack mirror at https://gitdealflow.substack.com (live 2026-05-03).
 
 #### 5. Demo GIF/video — 30-second MCP in action
 - **Why:** Visual proof converts 10x better than text descriptions
@@ -144,12 +142,13 @@ Both channels should be mentioned together in content. Avoid forcing a choice �
 - **Why:** Each client = a new distribution channel
 
 #### 14. Streamable HTTP transport
-- **Current:** stdio only (limits discovery on Smithery)
-- **Add:** HTTP transport for browser-based clients
-- **Unlocks:** Smithery listing, web-based MCP clients, API-style usage
+- **Current:** stdio + Streamable HTTP at `https://signals.gitdealflow.com/api/mcp/rpc`
+- **Status:** Smithery's 2026-05 listing model now requires HTTP-hosted servers behind their gateway. Our HTTP route is live but not yet wrapped in their gateway format. Re-listing is unblocked by that wrap.
+- **Unlocks:** Smithery re-listing (delisted 2026-05-03), web-based MCP clients, API-style usage.
 
 #### 15. MCP server directory SEO
-- **Optimize listings on:** Glama, mcp.so, MCP Market, PulseMCP, Cline
+- **Optimize listings on:** Glama (live, A-Tier), MCP Market, PulseMCP, Cline.
+- **Skip:** mcp.so (structurally unavailable 2026-05-03 — site returns Next.js 404 for our URLs; 5 open issues, maintainer dormant), Smithery (delisted 2026-05-03), Continue Hub (registry deprecated 2026-05-02 — `hub.continue.dev/hub?type=mcpServers` 500s after the Continuous AI pivot killed the public registry).
 - **Actions:**
   - [ ] Add screenshots/GIFs to all directory listings
   - [ ] Ensure descriptions are keyword-rich (startup data, VC, deal flow, engineering signals)
@@ -178,7 +177,7 @@ Every week, ensure at least 5 of these happen:
 - [ ] 1 Discord comment in an MCP-related server
 - [ ] 1 Reddit comment in an MCP-related thread
 - [ ] Check awesome-mcp-servers PR status
-- [ ] Check directory listing statuses (mcp.so, MCP Market, Cline)
+- [ ] Check directory listing statuses (MCP Market, Cline). Skip mcp.so (404), Smithery (delisted), Continue Hub (deprecated).
 
 ---
 

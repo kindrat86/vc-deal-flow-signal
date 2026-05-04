@@ -15,7 +15,7 @@ export default function CTABanner() {
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
           <div className="max-w-xl">
             <h3 className="text-gray-100 font-semibold text-lg mb-2">
-              See the full ranked list of 60+ startups across all sectors
+              See the full ranked list of 85+ startups across all sectors
             </h3>
             <p className="text-gray-400 text-sm leading-relaxed">
               Get the free weekly engineering acceleration

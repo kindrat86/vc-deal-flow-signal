@@ -139,7 +139,7 @@ Both properties verified via meta-tag method (`f3f5891cbff0b50f`). All high-leve
 
 ### Answer Engine Presence (AEO) — Tier 3 drafts ready in [tier-3-aeo-geo/](./tier-3-aeo-geo/00-README.md)
 - [x] **Dev.to** ✅ MCP article published ([dev.to/data_nerd/...-c5h](https://dev.to/data_nerd/i-stopped-building-dashboards-ai-assistants-are-the-new-ui-c5h))
-- [x] **Hashnode** ✅ cross-posted with canonical to dev.to
+- [x] **Hashnode** ✅ cross-posted (channel **RETIRED 2026-05-02** — 0 followers / 6 views / 0 referrals; replaced by Substack mirror live 2026-05-03)
 - [x] **Medium** ✅ account live as @signal_41476; Post 1 published + 2 more queued
 - [x] **HackerNoon** ⏳ first story in editorial queue (submitted 2026-04-19, check Apr 22)
 - [~] **Quora** ⏳ Q1+Q2 posted 2026-04-19; Q3-Q15 running daily via `quora-daily-runner` task (target: all 15 by Apr 28)

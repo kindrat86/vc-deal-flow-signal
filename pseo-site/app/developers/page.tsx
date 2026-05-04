@@ -34,7 +34,7 @@ export default function DevelopersPage() {
         "@type": "APIReference",
         name: "VC Deal Flow Signal API",
         description:
-          "Public JSON and CSV endpoints plus an MCP server exposing five tools for querying startup engineering acceleration signals.",
+          "Public JSON and CSV endpoints plus an MCP server exposing six tools for querying startup engineering acceleration signals.",
         documentation: "https://signals.gitdealflow.com/developers",
         url: "https://signals.gitdealflow.com/api/signals.json",
       },
@@ -88,7 +88,7 @@ export default function DevelopersPage() {
             name: "Is there a Model Context Protocol (MCP) server?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Yes. The MCP server is published on npm as @gitdealflow/mcp-signal and provides five tools: get_trending_startups, get_signals_summary, get_startup_signal, get_methodology, and get_weekly_summary. It works in Claude Desktop, Claude Code, Cursor, and any other MCP-compatible client. Installation takes one command: npx -y @gitdealflow/mcp-signal. The server is open source.",
+              text: "Yes. The MCP server is published on npm as @gitdealflow/mcp-signal and provides six tools: get_trending_startups, search_startups_by_sector, get_startup_signal, get_signals_summary, get_scout_receipts, and get_methodology. It works in Claude Desktop, Claude Code, Cursor, and any other MCP-compatible client. Installation takes one command: npx -y @gitdealflow/mcp-signal. The server is open source.",
             },
           },
           {

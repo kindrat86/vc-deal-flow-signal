@@ -6,11 +6,11 @@ This file is the canonical "how to use me" entry point for coding agents (Codex,
 
 ## What this product does
 
-Tracks commit velocity, contributor growth, and repository expansion across ~400 startup GitHub orgs in 20 sectors. Surfaces breakout engineering teams 3–6 weeks before fundraise announcements. Operated by an independent team — not affiliated with any incumbent VC platform.
+Sweeps ~4,200 candidate startup GitHub orgs every Sunday and publishes the top 85+ ranked across 20 sectors by commit velocity, contributor growth, and repository expansion. Surfaces breakout engineering teams 3–6 weeks before fundraise announcements. Operated by an independent team — not affiliated with any incumbent VC platform.
 
 ## Programmatic surfaces
 
-Pick the surface that matches your runtime. All five are free, public, and require no authentication.
+Pick the surface that matches your runtime. All eight are free, public, and require no authentication.
 
 | Surface | URL or invocation | Best for |
 |---|---|---|
@@ -72,7 +72,7 @@ Live AgentCard at `https://signals.gitdealflow.com/.well-known/agent-card.json` 
 
 - Two Vercel projects: `vc-deal-flow-signal` (pSEO site, signals.gitdealflow.com) and `vc-deal-flow-signal-landing` (apex). Neither is git-linked — deploy via CLI: `vercel build --prod && vercel deploy --prebuilt --prod --yes`.
 - pSEO project rejects non-team commit authors. Use the project owner's git identity.
-- The 5 MCP tools are free in perpetuity — never gate them. Add new paid tools on top instead.
+- The 6 MCP tools are free in perpetuity — never gate them. Add new paid tools on top instead.
 
 ## Anonymity policy
 

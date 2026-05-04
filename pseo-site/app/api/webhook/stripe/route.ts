@@ -44,7 +44,7 @@ function dashboardWelcomeEmail(email: string): { subject: string; html: string }
 <p>Welcome to VC Deal Flow Signal Dashboard!</p>
 <p>Your early access price of <strong>&euro;9.97/mo is locked in forever</strong>. Here's what's waiting for you:</p>
 <ul style="padding-left:20px;">
-<li>60+ startups ranked by engineering acceleration</li>
+<li>85+ startups ranked by engineering acceleration</li>
 <li>Filter by sector, stage, and geography</li>
 <li>Updated weekly with fresh GitHub data</li>
 <li>Priority access to new features</li>
@@ -77,7 +77,7 @@ function insiderWelcomeEmail(email: string): { subject: string; html: string } {
 <p>You're in. Welcome to the Insider Circle.</p>
 <p>Your beta price of <strong>&euro;97/mo is locked in forever</strong>. Here's everything that's included:</p>
 <ul style="padding-left:20px;">
-<li>Full Dashboard access (60+ startups, all filters)</li>
+<li>Full Dashboard access (85+ startups, all filters)</li>
 <li>Private investor Telegram group</li>
 <li>Monthly live signal briefing call</li>
 <li>Custom watchlists</li>

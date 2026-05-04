@@ -22,7 +22,7 @@
 
 **Already completed (per memory):**
 - Dev.to: MCP article published at [dev.to/data_nerd/i-stopped-building-dashboards-...-c5h](https://dev.to/data_nerd/i-stopped-building-dashboards-ai-assistants-are-the-new-ui-c5h)
-- Hashnode: Cross-posted at [gitdealflow.hashnode.dev/i-stopped-building-dashboards-ai-assistants-are-the-new-ui](https://gitdealflow.hashnode.dev/i-stopped-building-dashboards-ai-assistants-are-the-new-ui)
+- ~~Hashnode~~: Channel **RETIRED 2026-05-02** (0 followers / 6 views / 0 referrals). Substack mirror at https://gitdealflow.substack.com replaces it (live 2026-05-03).
 - Medium: account live @signal_41476, Post 1 published with canonical to signals.gitdealflow.com
 - Quora: account live as The Data Nerd, Q1+Q2 posted 2026-04-19
 - Substack: account live as The Data Nerd, Notes 1-3 posted 2026-04-19

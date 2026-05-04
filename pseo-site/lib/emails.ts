@@ -46,7 +46,7 @@ export const SOAP_OPERA_EMAILS = [
 <p>Every week, I'll send you the top startups showing unusual engineering acceleration. Commit velocity spikes, contributor surges, new infrastructure repos. The patterns that precede fundraises, product launches, and breakout moments.</p>
 <p>Tomorrow, I want to challenge something you probably believe about your current deal flow.</p>
 <p>Talk soon,<br>${FROM_NAME}</p>
-<p style="color:#64748b;font-size:14px;">P.S. If you want the full picture (60+ startups, filters by sector and stage), the Dashboard is EUR 9.97/mo early access pricing: <a href="${SITE}/#pricing" style="color:#0ea5e9;">${SITE}/#pricing</a></p>
+<p style="color:#64748b;font-size:14px;">P.S. If you want the full picture (85+ startups, filters by sector and stage), the Dashboard is EUR 9.97/mo early access pricing: <a href="${SITE}/#pricing" style="color:#0ea5e9;">${SITE}/#pricing</a></p>
 <p style="color:#64748b;font-size:14px;">P.P.S. Weekly signals on Telegram: <a href="https://t.me/gitdealflow" style="color:#0ea5e9;">t.me/gitdealflow</a></p>
 `),
   },
@@ -102,7 +102,7 @@ export const SOAP_OPERA_EMAILS = [
     html: wrap(`
 <p>You've been getting the free digest. Here's what the full Dashboard shows.</p>
 <p>The Dashboard (EUR 9.97/mo, early access) gives you the full picture:</p>
-<p>60+ startups ranked by engineering acceleration across 20 sectors. Not a static list. A living dashboard where companies move up and down based on real GitHub API data, refreshed weekly.</p>
+<p>85+ startups ranked by engineering acceleration across 20 sectors. Not a static list. A living dashboard where companies move up and down based on real GitHub API data, refreshed weekly.</p>
 <p>You can filter by:</p>
 <ul>
 <li>Sector (fintech, devtools, AI/ML, cybersecurity, healthcare, and 15 more)</li>

@@ -99,11 +99,13 @@ I submitted to 8 directories in total:
 - Official MCP Registry (published)
 - npm (published)
 - awesome-mcp-servers (PR open)
-- Glama (approved)
-- mcp.so (submitted)
+- Glama (approved, A-Tier)
 - MCP Market (submitted)
 - PulseMCP (auto-ingests from registry)
 - Cline Marketplace (submitted)
+- ~~mcp.so (404 since 2026-05-03 — structurally unavailable)~~
+- ~~Smithery (delisted 2026-05-03 — needs HTTP gateway wrap)~~
+- ~~Continue Hub (registry deprecated 2026-05-02)~~
 
 The whole process from zero to published took about 3 hours.
 

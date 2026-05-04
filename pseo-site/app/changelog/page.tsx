@@ -83,7 +83,7 @@ const productUpdates: ProductEntry[] = [
     date: "2026-03-15",
     title: "Dashboard beta launched at EUR 9.97/month",
     tag: "product",
-    body: "Full 50+ startup weekly ranking with sector, stage, and geography filters. Stripe checkout, email auth, and webhook-driven provisioning.",
+    body: "Full 85+ startup weekly ranking with sector, stage, and geography filters. Stripe checkout, email auth, and webhook-driven provisioning.",
   },
 ];
 

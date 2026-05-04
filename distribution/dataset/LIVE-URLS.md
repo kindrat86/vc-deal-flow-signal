@@ -28,7 +28,7 @@ Update as each destination goes live.
 | **Humanities Commons** | _draft ready, needs HC account_ | ⏳ | — | — |
 | **Academia.edu** | _draft ready (low priority)_ | ⏳ | — | — |
 | **dev.to article** | _draft ready, needs DEV_TO_API_KEY_ | ⏳ | — | — |
-| **Hashnode article** | _draft ready, needs HASHNODE_PAT_ | ⏳ | — | — |
+| ~~**Hashnode article**~~ | **RETIRED 2026-05-02** — channel sunset | ✗ | — | — |
 | **Medium article** | _draft ready, via medium-daily-publisher task_ | ⏳ | — | — |
 | **Substack Note + post** | _draft ready, Chrome MCP needed_ | ⏳ | — | — |
 | **HackerNoon article** | _draft ready, manual paste via @TheData_7cdit42c_ | ⏳ | — | — |

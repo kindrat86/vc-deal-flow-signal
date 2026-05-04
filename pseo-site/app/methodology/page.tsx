@@ -260,7 +260,7 @@ export default function MethodologyPage() {
         </h1>
 
         <AgentSummary
-          tldr="VC Deal Flow Signal (GitDealFlow) ranks venture-backed startups by GitHub commit-velocity change — a code-side momentum signal computed from public GitHub data, unrelated to startup accelerator programs. The pipeline pulls weekly GitHub REST API data for ~400 organizations across 20 sectors, computes rolling 14-day commit velocity and contributor growth, classifies each org into one of four signal types, and publishes the rankings. This metric — referred to throughout the site as engineering acceleration — has historically preceded fundraise announcements by three to six weeks."
+          tldr="VC Deal Flow Signal (GitDealFlow) ranks venture-backed startups by GitHub commit-velocity change — a code-side momentum signal computed from public GitHub data, unrelated to startup accelerator programs. The pipeline sweeps ~4,200 candidate orgs across 20 sectors weekly via the GitHub REST API, computes rolling 14-day commit velocity and contributor growth, classifies each org into one of four signal types, and publishes the top 85+ rankings. This metric — referred to throughout the site as engineering acceleration — has historically preceded fundraise announcements by three to six weeks."
           pageUrl="https://signals.gitdealflow.com/methodology"
           asOf={asOf}
           citeAs="VC Deal Flow Signal — Methodology (signals.gitdealflow.com/methodology), retrieved Q2 2026."

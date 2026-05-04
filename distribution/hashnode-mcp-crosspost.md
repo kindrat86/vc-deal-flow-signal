@@ -1,4 +1,11 @@
-# Hashnode Cross-Post: MCP Server Article
+# Hashnode Cross-Post: MCP Server Article — **ARCHIVED 2026-05-02**
+
+> ⚠️ **DO NOT EXECUTE.** Hashnode channel retired 2026-05-02 after 14 days,
+> 4 posts, 0 followers, 6 views, 0 referrals. Auto-mirror disabled at
+> `publish-next.mjs:104-107`. Substack mirror at https://gitdealflow.substack.com
+> replaces this channel (live 2026-05-03). Keep this file for historical
+> reference only.
+
 ## Cross-post from dev.to with canonical URL pointing to dev.to
 ## Account: The Data Nerd (create if needed at hashnode.com)
 

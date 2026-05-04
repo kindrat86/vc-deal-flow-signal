@@ -51,7 +51,7 @@ export const useCases: UseCase[] = [
       {
         step: 2,
         name: "Filter by your sector focus",
-        body: "Open the Dashboard (EUR 9.97/mo beta) and filter 50+ ranked startups by AI/ML, enterprise SaaS, dev tools, fintech, or any of 20 sectors. Layer on stage and geography if you focus geographically.",
+        body: "Open the Dashboard (EUR 9.97/mo beta) and filter 85+ ranked startups by AI/ML, enterprise SaaS, dev tools, fintech, or any of 20 sectors. Layer on stage and geography if you focus geographically.",
       },
       {
         step: 3,
@@ -71,7 +71,7 @@ export const useCases: UseCase[] = [
     ],
     metrics: [
       { label: "Typical lead time", value: "6-12 weeks pre-fundraise" },
-      { label: "Weekly startups surfaced", value: "5 (free) / 50+ (paid)" },
+      { label: "Weekly startups surfaced", value: "5 (free) / 85+ (paid)" },
       { label: "Cost for full access", value: "EUR 9.97/month" },
       { label: "Sectors covered", value: "20 technical clusters" },
     ],
@@ -108,7 +108,7 @@ export const useCases: UseCase[] = [
       {
         step: 2,
         name: "Filter Dashboard by fund thesis",
-        body: "Filter 50+ weekly startups to your fund's specific sectors, stages, and geographies. Export the filtered list to CSV for sharing with partners.",
+        body: "Filter 85+ weekly startups to your fund's specific sectors, stages, and geographies. Export the filtered list to CSV for sharing with partners.",
       },
       {
         step: 3,
@@ -127,7 +127,7 @@ export const useCases: UseCase[] = [
       },
     ],
     metrics: [
-      { label: "Weekly ranked startups", value: "50+ on Dashboard" },
+      { label: "Weekly ranked startups", value: "85+ on Dashboard" },
       { label: "Sectors in single feed", value: "20 technical clusters" },
       { label: "Typical lead time", value: "6-12 weeks pre-fundraise" },
       { label: "Per-seat cost", value: "EUR 9.97/mo (beta)" },
@@ -136,7 +136,7 @@ export const useCases: UseCase[] = [
       { question: "Can multiple analysts share one account?", answer: "For the beta Dashboard, yes — the login is per-seat but the underlying data is the same for every analyst. For larger teams, get in touch and a multi-seat plan can be set up." },
       { question: "How does this integrate with Affinity?", answer: "Via Zapier during beta. Trigger: new weekly signal. Action: create or update Affinity record with sector, signal type, and GitHub URL. Once the Zapier integration is public (after the three-user threshold), it becomes a one-click setup." },
       { question: "Does it replace our existing sourcing tool stack?", answer: "Usually not — it replaces manual GitHub monitoring and the 'keep an eye on this handful of companies' tracker spreadsheet. Most analysts keep Crunchbase, Dealroom, or Harmonic for broad coverage and add VC Deal Flow Signal as the engineering-signal layer." },
-      { question: "Can I feed this into our LLM-powered research workflow?", answer: "Yes. The MCP server exposes five tools (trending, sector search, startup lookup, methodology, summaries) to any MCP-compatible assistant — Claude Desktop, Cursor, Windsurf, Continue. Run a weekly analyst query directly in Claude against live data." },
+      { question: "Can I feed this into our LLM-powered research workflow?", answer: "Yes. The MCP server exposes six tools (trending, sector search, startup lookup, summary, scout receipts, methodology) to any MCP-compatible assistant — Claude Desktop, Cursor, Windsurf, Continue. Run a weekly analyst query directly in Claude against live data." },
     ],
     relatedSectors: ["ai-ml", "enterprise-saas", "fintech"],
     relatedAlternatives: ["harmonic-ai", "dealroom", "forager-ai"],
@@ -265,7 +265,7 @@ export const useCases: UseCase[] = [
     problem:
       "Solo GPs operate against the same competitive landscape as institutional funds: same companies, same rounds, same allocation pressure. But the labor model is fundamentally different — one person cannot manually monitor GitHub activity across thousands of companies. Without an external screening layer, the solo GP either narrows their fund's surface area or ends up sourcing from the same Twitter feed as everyone else.",
     solution:
-      "An automated weekly feed of breakout engineering signals across 20 sectors. The Dashboard ranks 50+ startups every Monday by acceleration magnitude, filterable by stage and geography. Pipe the signal into your existing CRM (Affinity, HubSpot, Notion) via API or RSS. The screening pipeline runs while you are reviewing decks; you arrive at meetings with a longer warm list than peers.",
+      "An automated weekly feed of breakout engineering signals across 20 sectors. The Dashboard ranks 85+ startups every Monday by acceleration magnitude, filterable by stage and geography. Pipe the signal into your existing CRM (Affinity, HubSpot, Notion) via API or RSS. The screening pipeline runs while you are reviewing decks; you arrive at meetings with a longer warm list than peers.",
     workflow: [
       {
         step: 1,

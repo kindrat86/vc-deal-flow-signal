@@ -28,7 +28,7 @@ const integrations: Integration[] = [
     name: "MCP Server",
     tagline: "Claude, Cursor, Windsurf, and any MCP-compatible assistant",
     description:
-      "Query VC Deal Flow Signal directly from Claude, Cursor, Windsurf, or any MCP-compatible client. Five tools expose trending startups, sector signals, individual startup lookups, methodology, and weekly summaries. Published on npm as @gitdealflow/mcp-signal and listed in the MCP Registry and Glama.",
+      "Query VC Deal Flow Signal directly from Claude, Cursor, Windsurf, or any MCP-compatible client. Six tools expose trending startups, sector signals, individual startup lookups, dataset summary, scout receipts, and methodology. Published on npm as @gitdealflow/mcp-signal and listed in the MCP Registry and Glama.",
     status: "live",
     href: "https://www.npmjs.com/package/@gitdealflow/mcp-signal",
     docsHref: "https://gitdealflow.com/#mcp",
@@ -40,7 +40,7 @@ const integrations: Integration[] = [
     name: "Telegram Channel",
     tagline: "Weekly breakout startups, pushed to your Telegram",
     description:
-      "Public @gitdealflow channel delivers the weekly Signal Report and sector alerts. The paid Insider Circle is a separate private Telegram group with 50+ ranked startups per week, filter-ready data, and a direct line to the founder.",
+      "Public @gitdealflow channel delivers the weekly Signal Report and sector alerts. The paid Insider Circle is a separate private Telegram group with 85+ ranked startups per week, filter-ready data, and a direct line to the founder.",
     status: "live",
     href: "https://t.me/gitdealflow",
     category: "Messaging",
@@ -199,7 +199,7 @@ export default function IntegrationsPage() {
             name: "How do I install the MCP server?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Run npx -y @gitdealflow/mcp-signal in your terminal, or add the configuration to your Claude Desktop or Claude Code mcpServers config: command npx, args [-y, @gitdealflow/mcp-signal]. The server provides five tools: trending startups, sector signals, startup lookup, methodology, and weekly summaries. Installation typically takes under two minutes.",
+              text: "Run npx -y @gitdealflow/mcp-signal in your terminal, or add the configuration to your Claude Desktop or Claude Code mcpServers config: command npx, args [-y, @gitdealflow/mcp-signal]. The server provides six tools: trending startups, sector signals, startup lookup, dataset summary, scout receipts, and methodology. Installation typically takes under two minutes.",
             },
           },
           {
