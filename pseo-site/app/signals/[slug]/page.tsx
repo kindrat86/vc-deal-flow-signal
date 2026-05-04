@@ -70,6 +70,17 @@ export default async function SignalTypePage({ params }: PageProps) {
         dateModified: lastModified.toISOString().slice(0, 10),
       },
       {
+        "@type": "WebPage",
+        "@id": `https://signals.gitdealflow.com/signals/${slug}#webpage`,
+        url: `https://signals.gitdealflow.com/signals/${slug}`,
+        name: `${signalData.name} Signal — ${period.name}`,
+        inLanguage: "en-US",
+        speakable: {
+          "@type": "SpeakableSpecification",
+          cssSelector: ["h1", "[data-speakable]", "[data-agent-summary]", ".faq-answer"],
+        },
+      },
+      {
         "@type": "BreadcrumbList",
         itemListElement: [
           {

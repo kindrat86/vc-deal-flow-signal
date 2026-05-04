@@ -591,6 +591,39 @@ function buildTask(invocation: SkillInvocation | null, result: unknown, contextI
   };
 }
 
+function handleTasksGet(id: JsonRpcId | undefined, params: unknown) {
+  // This agent is stateless — message/send returns terminal state synchronously
+  // and does not persist tasks. Per A2A v0.3 spec, return TaskNotFoundError so
+  // clients distinguish "no such task" from "method not supported".
+  const p = params as { id?: string } | undefined;
+  const taskId = p?.id ?? "<missing>";
+  return jsonRpcError(
+    id,
+    -32001,
+    `Task not found: ${taskId}. This agent is stateless — message/send returns terminal task state synchronously and does not persist tasks. Resubmit via message/send to receive a fresh task envelope.`
+  );
+}
+
+function handleTasksCancel(id: JsonRpcId | undefined, params: unknown) {
+  // Stateless agent: every task completes synchronously inside message/send,
+  // so by the time a cancel arrives, the task is already in terminal state
+  // and is not retrievable. Return TaskNotFoundError per spec.
+  const p = params as { id?: string } | undefined;
+  const taskId = p?.id ?? "<missing>";
+  return jsonRpcError(
+    id,
+    -32001,
+    `Task not found: ${taskId}. Tasks complete synchronously inside message/send and are not persisted, so there is nothing to cancel.`
+  );
+}
+
+function handleTasksList(id: JsonRpcId | undefined) {
+  // No persistence layer; list is always empty. Returning an empty array (not
+  // an error) signals "this method is supported but the agent has no
+  // historical tasks to surface" — useful for clients probing capabilities.
+  return jsonRpcResult(id, { tasks: [] });
+}
+
 async function handleMessageSend(id: JsonRpcId | undefined, params: unknown) {
   const p = params as { message?: Message } | undefined;
   if (!p || !p.message || !Array.isArray(p.message.parts)) {
@@ -612,7 +645,17 @@ export async function GET() {
       service: "GitDealFlow A2A Agent",
       protocolVersion: PROTOCOL_VERSION,
       transport: "JSONRPC",
-      methods: ["message/send"],
+      methods: ["message/send", "tasks/get", "tasks/cancel", "tasks/list"],
+      unsupportedMethods: {
+        "tasks/resubscribe":
+          "Streaming not supported — message/send returns terminal task state synchronously in one round-trip.",
+        "tasks/pushNotificationConfig/*":
+          "Push notifications not supported — subscribe to /feed.xml for content updates.",
+        "agent/getAuthenticatedExtendedCard":
+          "Authenticated extended card not supported — fetch the public AgentCard at /.well-known/agent-card.json.",
+      },
+      statelessNote:
+        "This agent is stateless. Every message/send returns a fresh task envelope with terminal state in the same round-trip; tasks are not persisted, so tasks/get and tasks/cancel return TaskNotFoundError (-32001) and tasks/list always returns an empty array.",
       agentCard: `${BASE_URL}/.well-known/agent-card.json`,
       docs: `${BASE_URL}/developers`,
       note: "POST JSON-RPC 2.0 requests here. Send GET to fetch this descriptor.",
@@ -658,16 +701,25 @@ export async function POST(request: NextRequest) {
     case "message/send":
       return handleMessageSend(body.id, body.params);
     case "tasks/get":
-      return jsonRpcError(
-        body.id,
-        -32004,
-        "Tasks are not persisted by this stub agent. message/send returns terminal state synchronously."
-      );
+      return handleTasksGet(body.id, body.params);
     case "tasks/cancel":
+      return handleTasksCancel(body.id, body.params);
+    case "tasks/list":
+      return handleTasksList(body.id);
+    case "tasks/resubscribe":
       return jsonRpcError(
         body.id,
-        -32004,
-        "Tasks are not persisted by this stub agent."
+        -32005,
+        "Streaming not supported. This agent runs synchronously — message/send returns the terminal task state in one round-trip."
+      );
+    case "tasks/pushNotificationConfig/set":
+    case "tasks/pushNotificationConfig/get":
+    case "tasks/pushNotificationConfig/list":
+    case "tasks/pushNotificationConfig/delete":
+      return jsonRpcError(
+        body.id,
+        -32003,
+        "Push notifications not supported. This agent is synchronous; subscribe to /feed.xml for content updates instead."
       );
     case "agent/getAuthenticatedExtendedCard":
       return jsonRpcError(
