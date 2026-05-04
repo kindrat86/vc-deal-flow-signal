@@ -10,6 +10,7 @@ import type { Startup } from "@/lib/data";
 import StartupTable from "@/components/StartupTable";
 import VelocityBar from "@/components/charts/VelocityBar";
 import SignalDistribution from "@/components/charts/SignalDistribution";
+import PSEOFooterNav from "@/components/PSEOFooterNav";
 
 export const metadata: Metadata = {
   title: "Trending Startups — Top Engineering Acceleration Across All Sectors",
@@ -263,6 +264,8 @@ export default function TrendingPage() {
             ))}
           </div>
         </section>
+
+        <PSEOFooterNav excludeHrefs={["/trending"]} />
 
         {/* CTA */}
         <div className="rounded-xl border border-slate-800 bg-slate-900 p-6 sm:p-8 text-center">

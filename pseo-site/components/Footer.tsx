@@ -11,6 +11,7 @@ export default function Footer() {
               <Link href="/alternatives" className="hover:text-gray-300 transition-colors">Alternatives</Link>
               <Link href="/use-cases" className="hover:text-gray-300 transition-colors">Use Cases</Link>
               <Link href="/integrations" className="hover:text-gray-300 transition-colors">Integrations</Link>
+              <Link href="/install" className="hover:text-gray-300 transition-colors">Bookmarklet</Link>
               <Link href="/changelog" className="hover:text-gray-300 transition-colors">Changelog</Link>
             </nav>
           </div>
