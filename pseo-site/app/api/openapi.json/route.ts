@@ -147,16 +147,25 @@ export async function GET() {
           operationId: "invokeAgentTool",
           summary: "Invoke a function-calling tool",
           description:
-            "Server-side dispatcher for the tools defined in /api/agent/tools. Body: { tool: string, arguments: object }.",
+            "Server-side dispatcher for the tools defined in /api/agent/tools. Body: { name: string, arguments: object }.",
           requestBody: {
             required: true,
             content: {
               "application/json": {
                 schema: {
                   type: "object",
-                  required: ["tool"],
+                  required: ["name"],
                   properties: {
-                    tool: { type: "string" },
+                    name: {
+                      type: "string",
+                      enum: [
+                        "get_trending_startups",
+                        "search_startups_by_sector",
+                        "get_startup_signal",
+                        "get_signals_summary",
+                        "get_methodology",
+                      ],
+                    },
                     arguments: { type: "object", additionalProperties: true },
                   },
                 },
@@ -199,7 +208,7 @@ export async function GET() {
           operationId: "callA2A",
           summary: "Google A2A (Agent-to-Agent) JSON-RPC 2.0 endpoint",
           description:
-            "Google A2A spec v0.3.0. Methods supported: tasks/send, tasks/get, tasks/cancel, tasks/list. Manifest at /.well-known/agent-card.json. Body: standard JSON-RPC 2.0 envelope.",
+            "Google A2A spec v0.3.0. Methods supported: message/send (primary, synchronous), tasks/get, tasks/cancel, tasks/list. This agent is stateless — message/send returns terminal task state in one round-trip. Manifest at /.well-known/agent-card.json. Body: standard JSON-RPC 2.0 envelope.",
           requestBody: {
             required: true,
             content: {
@@ -209,7 +218,10 @@ export async function GET() {
                   required: ["jsonrpc", "method"],
                   properties: {
                     jsonrpc: { type: "string", enum: ["2.0"] },
-                    method: { type: "string", enum: ["tasks/send", "tasks/get", "tasks/cancel", "tasks/list"] },
+                    method: {
+                      type: "string",
+                      enum: ["message/send", "tasks/get", "tasks/cancel", "tasks/list"],
+                    },
                     params: { type: "object", additionalProperties: true },
                     id: { type: ["string", "integer"] },
                   },
