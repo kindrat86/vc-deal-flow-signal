@@ -11,6 +11,33 @@
   <link rel="author" href="https://orcid.org/0009-0002-2222-4112" />
   <meta name="yandex-verification" content="f3f5891cbff0b50f" />
   <link rel="canonical" href="https://gitdealflow.com/" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
+  <!-- Hreflang — apex serves en, pSEO subdomain hosts localized variants -->
+  <link rel="alternate" hreflang="en" href="https://gitdealflow.com/" />
+  <link rel="alternate" hreflang="en-US" href="https://gitdealflow.com/" />
+  <link rel="alternate" hreflang="en-GB" href="https://gitdealflow.com/" />
+  <link rel="alternate" hreflang="x-default" href="https://gitdealflow.com/" />
+  <link rel="alternate" hreflang="ja" href="https://signals.gitdealflow.com/ja" />
+  <link rel="alternate" hreflang="zh" href="https://signals.gitdealflow.com/zh" />
+  <link rel="alternate" hreflang="de" href="https://signals.gitdealflow.com/de" />
+  <link rel="alternate" hreflang="es" href="https://signals.gitdealflow.com/es" />
+  <link rel="alternate" hreflang="fr" href="https://signals.gitdealflow.com/fr" />
+  <link rel="alternate" hreflang="pt" href="https://signals.gitdealflow.com/pt" />
+  <link rel="alternate" hreflang="ko" href="https://signals.gitdealflow.com/ko" />
+  <link rel="alternate" hreflang="hi" href="https://signals.gitdealflow.com/hi" />
+  <link rel="alternate" hreflang="ru" href="https://signals.gitdealflow.com/ru" />
+  <link rel="alternate" hreflang="it" href="https://signals.gitdealflow.com/it" />
+  <link rel="alternate" hreflang="nl" href="https://signals.gitdealflow.com/nl" />
+  <link rel="alternate" hreflang="ar" href="https://signals.gitdealflow.com/ar" />
+
+  <!-- Agent-readable alternates (RSS, llms.txt, llms-full.txt, qa, agents, dataset) -->
+  <link rel="alternate" type="application/rss+xml" title="Weekly digest" href="https://signals.gitdealflow.com/feed.xml" />
+  <link rel="alternate" type="text/plain" title="LLMs.txt" href="https://gitdealflow.com/llms.txt" />
+  <link rel="alternate" type="text/plain" title="LLMs-full.txt" href="https://gitdealflow.com/llms-full.txt" />
+  <link rel="alternate" type="text/markdown" title="Agents.md" href="https://gitdealflow.com/agents.md" />
+  <link rel="alternate" type="application/x-ndjson" title="Q&amp;A dataset (CC BY 4.0)" href="https://signals.gitdealflow.com/qa.jsonl" />
+  <link rel="alternate" type="application/json" title="Cross-graph identity map" href="https://signals.gitdealflow.com/knowledge-graph.json" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
@@ -249,6 +276,67 @@
             "text": "You see the momentum weeks before the pitch deck lands in everyone else's inbox. Reach out during the acceleration window — typically 3 to 6 weeks before the fundraise announcement — before consensus forms."
           }
         ]
+      },
+      {
+        "@type": "Dataset",
+        "@id": "https://gitdealflow.com/#dataset",
+        "name": "GitHub Engineering Acceleration Panel — Venture-Backed Startups",
+        "alternateName": "VC Deal Flow Signal Open Dataset",
+        "description": "Longitudinal panel of GitHub commit velocity, contributor growth, and repository expansion across ~400 venture-backed startup organizations in 20 sectors, refreshed weekly. Includes startup_signals, sector_aggregates, and signal_type_timeseries configs.",
+        "url": "https://signals.gitdealflow.com/dataset",
+        "license": "https://creativecommons.org/licenses/by/4.0/",
+        "isAccessibleForFree": true,
+        "creator": { "@id": "https://signals.gitdealflow.com/about#person" },
+        "publisher": { "@id": "https://gitdealflow.com/#organization" },
+        "identifier": [
+          { "@type": "PropertyValue", "propertyID": "DOI", "value": "10.5281/zenodo.19650920" },
+          { "@type": "PropertyValue", "propertyID": "Wikidata", "value": "Q139376302" },
+          { "@type": "PropertyValue", "propertyID": "OpenAlex", "value": "W7154916891" }
+        ],
+        "distribution": [
+          { "@type": "DataDownload", "encodingFormat": "application/x-ndjson", "contentUrl": "https://signals.gitdealflow.com/api/dataset.jsonl" },
+          { "@type": "DataDownload", "encodingFormat": "text/csv", "contentUrl": "https://signals.gitdealflow.com/api/signals.csv" },
+          { "@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://signals.gitdealflow.com/api/signals.json" }
+        ],
+        "sameAs": [
+          "https://zenodo.org/records/19650920",
+          "https://huggingface.co/datasets/thedatanerd/vc-deal-flow-signal",
+          "https://kaggle.com/datasets/thedatanerd/vc-deal-flow-signal",
+          "https://api.crossref.org/works/10.2139/ssrn.6606558"
+        ],
+        "temporalCoverage": "2024-Q1/..",
+        "spatialCoverage": "GLOBAL",
+        "keywords": [
+          "GitHub commit velocity",
+          "engineering acceleration",
+          "venture capital alternative data",
+          "contributor growth",
+          "code-side momentum"
+        ],
+        "citation": "The Data Nerd (2026). A Longitudinal Panel of GitHub Engineering Velocity Across Venture-Backed Startups. SSRN. https://ssrn.com/abstract=6606558"
+      },
+      {
+        "@type": "ScholarlyArticle",
+        "@id": "https://gitdealflow.com/#paper",
+        "headline": "A Longitudinal Panel of GitHub Engineering Velocity Across Venture-Backed Startups",
+        "name": "A Longitudinal Panel of GitHub Engineering Velocity Across Venture-Backed Startups",
+        "author": { "@id": "https://signals.gitdealflow.com/about#person" },
+        "datePublished": "2026-04",
+        "publisher": { "@id": "https://gitdealflow.com/#organization" },
+        "url": "https://ssrn.com/abstract=6606558",
+        "identifier": [
+          { "@type": "PropertyValue", "propertyID": "DOI", "value": "10.2139/ssrn.6606558" },
+          { "@type": "PropertyValue", "propertyID": "OpenAlex", "value": "W7154916891" }
+        ],
+        "isBasedOn": { "@id": "https://gitdealflow.com/#dataset" },
+        "license": "https://creativecommons.org/licenses/by/4.0/",
+        "sameAs": [
+          "https://ssrn.com/abstract=6606558",
+          "https://openalex.org/works/W7154916891",
+          "https://api.crossref.org/works/10.2139/ssrn.6606558",
+          "https://www.semanticscholar.org/paper/A-Longitudinal-Panel-of-GitHub-Engineering-Velocity"
+        ],
+        "citation": "The Data Nerd (2026). SSRN preprint, https://ssrn.com/abstract=6606558. CC BY 4.0."
       }
     ]
   }
