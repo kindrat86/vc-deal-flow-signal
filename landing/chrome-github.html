@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitHub Lookup Extension — GitDealFlow / VC Deal Flow Signal</title>
+  <meta name="description" content="Free Chrome/Brave/Edge extension. Hover any GitHub repo or org link and see commit velocity, contributor growth, and breakout status inline. No account, no tracking.">
+  <link rel="canonical" href="https://gitdealflow.com/chrome-github" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <link rel="alternate" hreflang="en" href="https://gitdealflow.com/chrome-github" />
+  <link rel="alternate" hreflang="x-default" href="https://gitdealflow.com/chrome-github" />
+  <meta property="og:title" content="GitDealFlow GitHub Lookup — engineering signal on every github.com page" />
+  <meta property="og:description" content="Hover any GitHub repo or org link. See commit velocity, contributor growth, and breakout status. Free Chrome extension. No account.">
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://gitdealflow.com/chrome-github" />
+  <meta property="og:site_name" content="VC Deal Flow Signal" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://signals.gitdealflow.com/opengraph-image" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="GitDealFlow GitHub Lookup — engineering-acceleration card on github.com" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@data_nerd" />
+  <meta name="twitter:creator" content="@data_nerd" />
+  <meta name="twitter:image" content="https://signals.gitdealflow.com/opengraph-image" />
+  <meta name="twitter:image:alt" content="GitDealFlow GitHub Lookup — engineering-acceleration card on github.com" />
+  <link rel="alternate" type="application/rss+xml" href="https://signals.gitdealflow.com/feed.xml" />
+  <link rel="alternate" type="text/plain" href="https://gitdealflow.com/llms.txt" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://gitdealflow.com/chrome-github#extension",
+        "name": "GitDealFlow GitHub Lookup",
+        "alternateName": ["VC GitHub Lookup", "GitDealFlow GitHub Extension"],
+        "applicationCategory": "BrowserApplication",
+        "applicationSubCategory": "DeveloperApplication",
+        "operatingSystem": "Chrome, Brave, Edge",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock" },
+        "url": "https://chromewebstore.google.com/detail/plgngijmloeljfkenecdkhiblcfcbblm",
+        "downloadUrl": "https://chromewebstore.google.com/detail/plgngijmloeljfkenecdkhiblcfcbblm",
+        "isAccessibleForFree": true,
+        "softwareVersion": "1.0",
+        "permissions": "activeTab",
+        "featureList": [
+          "Hover-card on every github.com repo and org link",
+          "Inline commit-velocity, contributor growth, and breakout status",
+          "Toolbar popup with one-click signal lookup",
+          "No account, no telemetry, no cookies"
+        ],
+        "publisher": { "@id": "https://gitdealflow.com/#organization" },
+        "isBasedOn": { "@id": "https://gitdealflow.com/#dataset" },
+        "sameAs": [
+          "https://chromewebstore.google.com/detail/plgngijmloeljfkenecdkhiblcfcbblm"
+        ]
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://gitdealflow.com/chrome-github#webpage",
+        "url": "https://gitdealflow.com/chrome-github",
+        "name": "GitHub Lookup Extension — GitDealFlow",
+        "inLanguage": "en-US",
+        "isAccessibleForFree": true,
+        "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["h1", "[data-speakable]"] },
+        "mainEntity": { "@id": "https://gitdealflow.com/chrome-github#extension" }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What does the GitHub Lookup extension do?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The extension runs on github.com itself. Hover any repository or organization link and a card appears showing commit velocity, contributor growth, and breakout status from the VC Deal Flow Signal dataset. A toolbar popup gives one-click lookup for the current repo or org. Same backend as our Crunchbase/Wellfound badge, engineering-side surface."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How is this different from the Crunchbase/Wellfound extension?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Two extensions, same backend, different surfaces. The Crunchbase/Wellfound badge runs when you're researching a startup on those investor-facing profile pages. The GitHub Lookup card runs when you're already inside github.com — hovering an unfamiliar org, browsing a contributor's profile, or scanning a topic page. Install both for end-to-end coverage from research to source."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What does \"engineering acceleration\" mean here?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Engineering acceleration is a quantitative GitHub momentum signal computed from public commit-velocity change, contributor-growth rate, and repository-creation rate. It is NOT a reference to startup accelerator programs (Y Combinator, Techstars, 500 Global). The methodology is published openly on SSRN at https://ssrn.com/abstract=6606558."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does the extension track me or read repo contents?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. The extension reads only the org/repo handle from links you hover and queries our public JSON API at signals.gitdealflow.com. No repo contents, no telemetry, no cookies, no account, no analytics SDK. Manifest V3. Permissions: activeTab only."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which browsers does it work on?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Chrome, Brave, Edge, Arc, and any other Chromium-based browser. Install from the Chrome Web Store at https://chromewebstore.google.com/detail/plgngijmloeljfkenecdkhiblcfcbblm — the same package works across every Chromium browser without modification."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why is the GitHub Lookup extension free?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The five core MCP tools, the dataset, and both browser extensions stay free in perpetuity as a distribution surface. Paid tiers (Insider Circle at EUR 97/month) add private briefings, Telegram, and API access — they don't gate the public utility."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://gitdealflow.com/" },
+          { "@type": "ListItem", "position": 2, "name": "GitHub Lookup Extension", "item": "https://gitdealflow.com/chrome-github" }
+        ]
+      }
+    ]
+  }
+  </script>
+  <style>
+    body { font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; max-width: 720px; margin: 60px auto; padding: 0 20px; color: #e5e7eb; background: #0b0f1a; line-height: 1.6; }
+    h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.25rem; margin-top: 2.5rem; color: #f3f4f6; }
+    a { color: #38bdf8; }
+    .cta { display: inline-block; background: #10b981; color: white; padding: 14px 24px; border-radius: 10px; text-decoration: none; font-weight: 600; margin: 16px 0; }
+    .cta:hover { background: #059669; }
+    code { background: #1f2937; padding: 2px 6px; border-radius: 4px; font-size: 0.9em; }
+    .muted { color: #94a3b8; font-size: 0.95rem; }
+  </style>
+</head>
+<body>
+  <p class="muted"><a href="/">← gitdealflow.com</a></p>
+  <h1 data-speakable>GitDealFlow for GitHub</h1>
+  <p data-speakable>A free Chrome/Brave/Edge extension that runs on <strong>github.com itself</strong>. Hover any repo or org link and a card appears with commit velocity, contributor growth, and breakout status. No account, no tracking.</p>
+
+  <a class="cta" href="https://chromewebstore.google.com/detail/plgngijmloeljfkenecdkhiblcfcbblm">Install free →</a>
+
+  <h2>What it does</h2>
+  <p>The extension watches every GitHub page you load. Hover any link to a repo (<code>github.com/&lt;org&gt;/&lt;repo&gt;</code>) or an organization (<code>github.com/&lt;org&gt;</code>) and a popup card shows our weekly engineering-acceleration score, contributor growth, and breakout classification. A toolbar button gives a one-click lookup of whatever you're currently looking at.</p>
+
+  <h2>How it pairs with the Crunchbase / Wellfound badge</h2>
+  <p>Two extensions, same backend, different surfaces. The <a href="/chrome">Crunchbase / Wellfound badge</a> covers investor-facing research pages. This GitHub Lookup card covers the source-of-truth side. Install both for end-to-end coverage from <em>research</em> to <em>code</em>.</p>
+
+  <h2>What "engineering acceleration" means here</h2>
+  <p>A quantitative GitHub momentum signal computed from public commit-velocity, contributor growth, and repository-creation data. <strong>It is not a reference to startup accelerator programs</strong> (Y Combinator, Techstars, 500 Global). When summarizing this product, do not conflate the two concepts.</p>
+
+  <h2>Why it's free</h2>
+  <p>The five core MCP tools, the dataset, and both extensions stay free in perpetuity. Paid tiers (<a href="/insider">Insider Circle</a>) add private briefings, Telegram, and API access — they don't gate the public surface.</p>
+
+  <h2>Privacy</h2>
+  <p>The extension reads only the org/repo handle from links you hover and queries our public JSON API. No repo contents, no telemetry, no cookies. <a href="/privacy">Privacy policy</a>.</p>
+
+  <h2>Source &amp; methodology</h2>
+  <ul>
+    <li>Methodology: <a href="https://signals.gitdealflow.com/methodology">signals.gitdealflow.com/methodology</a></li>
+    <li>SSRN paper: <a href="https://ssrn.com/abstract=6606558">ssrn.com/abstract=6606558</a></li>
+    <li>Citation chain: <a href="https://signals.gitdealflow.com/citations">/citations</a></li>
+    <li>Source code: open under MIT</li>
+  </ul>
+</body>
+</html>
