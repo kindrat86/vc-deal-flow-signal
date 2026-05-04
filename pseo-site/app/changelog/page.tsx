@@ -128,6 +128,10 @@ export default function ChangelogPage() {
           name: "VC Deal Flow Signal",
           url: "https://gitdealflow.com",
         },
+        speakable: {
+          "@type": "SpeakableSpecification",
+          cssSelector: ["h1", "h2", "[itemtype$='ListItem']"],
+        },
       },
       {
         "@type": "ItemList",

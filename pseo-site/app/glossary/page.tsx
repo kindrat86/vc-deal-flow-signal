@@ -101,6 +101,10 @@ export default function GlossaryPage() {
         name: "VC Deal Flow Signal Glossary",
         description:
           "Definitions of key terms used in startup deal flow signal analysis.",
+        speakable: {
+          "@type": "SpeakableSpecification",
+          cssSelector: ["h1", "h2", "[itemtype$='DefinedTerm']"],
+        },
         hasDefinedTerm: terms.map((t) => ({
           "@type": "DefinedTerm",
           name: `What is ${t.term}?`,

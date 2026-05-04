@@ -378,7 +378,54 @@ const CORS_HEADERS = {
   "Access-Control-Allow-Headers": "Content-Type",
 } as const;
 
-export async function GET() {
+async function buildResponse(query: string) {
+  const intent = inferIntent(query);
+  let payload: object;
+  switch (intent.kind) {
+    case "trending":
+      payload = trendingResponse();
+      break;
+    case "sector":
+      payload = sectorResponse(intent);
+      break;
+    case "startup":
+      payload = startupResponse(intent);
+      break;
+    case "methodology":
+      payload = await methodologyResponse();
+      break;
+    case "summary":
+      payload = summaryResponse();
+      break;
+    case "unknown":
+    default:
+      payload = unknownResponse(query);
+      break;
+  }
+  return { payload, intent };
+}
+
+export async function GET(request: NextRequest) {
+  // Support GET ?query=… as a fallback for Google's SearchAction crawler
+  // (the home WebSite schema declares this URL as the SearchAction target,
+  // and Google probes via GET, not POST).
+  const url = new URL(request.url);
+  const query = (url.searchParams.get("query") ?? "").trim();
+
+  if (query) {
+    const { payload, intent } = await buildResponse(query);
+    return new Response(JSON.stringify(payload, null, 2), {
+      status: 200,
+      headers: {
+        ...CORS_HEADERS,
+        "Content-Type": "application/ld+json; charset=utf-8",
+        "Cache-Control": "public, max-age=300, stale-while-revalidate=60",
+        "X-NLWeb-Intent": intent.kind,
+      },
+    });
+  }
+
+  // No query → return the manifest (discovery for agents).
   const period = getCurrentPeriod();
   return Response.json(
     {
@@ -386,7 +433,7 @@ export async function GET() {
       protocol: "nlweb",
       version: NLWEB_VERSION,
       transport: "https",
-      method: "POST",
+      methods: ["GET", "POST"],
       contentType: "application/json",
       schema: {
         request: {
@@ -463,29 +510,7 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const intent = inferIntent(query);
-  let payload: object;
-  switch (intent.kind) {
-    case "trending":
-      payload = trendingResponse();
-      break;
-    case "sector":
-      payload = sectorResponse(intent);
-      break;
-    case "startup":
-      payload = startupResponse(intent);
-      break;
-    case "methodology":
-      payload = await methodologyResponse();
-      break;
-    case "summary":
-      payload = summaryResponse();
-      break;
-    case "unknown":
-    default:
-      payload = unknownResponse(query);
-      break;
-  }
+  const { payload, intent } = await buildResponse(query);
 
   return new Response(JSON.stringify(payload, null, 2), {
     status: 200,
