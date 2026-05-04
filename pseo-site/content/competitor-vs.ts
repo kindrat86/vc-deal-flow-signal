@@ -391,6 +391,48 @@ export const competitorVsPairs: CompetitorVs[] = [
     verdict:
       "Specter is a leading-signal tool tracking traction across web, hiring, and product; PitchBook is a lagging research database covering fund performance, M&A, and LP-GP. They sit at opposite ends of the deal-flow timeline — Specter surfaces candidates, PitchBook benchmarks them. Different price tiers too: Specter is approachable for individual investors, PitchBook is enterprise-only.",
   },
+  {
+    slug: "specter-vs-tracxn",
+    a: "specter",
+    b: "tracxn",
+    verdict:
+      "Specter is a leading public-traction signal tool (web traffic, hiring, product). Tracxn is a lagging analyst-curated sector-mapped database with 2,000+ industries and strong Asian coverage. Specter for proactive sourcing, Tracxn for sector research. They rarely substitute for each other; they compose if your team needs both leading and reference-grade layers across all sectors.",
+  },
+  {
+    slug: "specter-vs-crunchbase",
+    a: "specter",
+    b: "crunchbase",
+    verdict:
+      "Specter surfaces companies before the round through web, hiring, and product traction signals. Crunchbase records the round once it has been announced. The tools answer different questions and most investors run both: Specter for the leading layer, Crunchbase for confirmed funding context once a candidate surfaces. Both are accessible to individual investors, which is rare in the alt-data category.",
+  },
+  {
+    slug: "specter-vs-cb-insights",
+    a: "specter",
+    b: "cb-insights",
+    verdict:
+      "Specter is a leading public-traction tool (web, hiring, product) at individual-investor pricing. CB Insights is an enterprise research platform with analyst reports, market maps, and Mosaic scoring. Specter wins for proactive sourcing of accelerating companies; CB Insights wins for thesis-building and corporate-strategy work. Different categories, different buyers, two-orders-of-magnitude different price points.",
+  },
+  {
+    slug: "affinity-vs-tracxn",
+    a: "affinity",
+    b: "tracxn",
+    verdict:
+      "Affinity is a relationship-intelligence CRM that tracks your team's existing network. Tracxn is a sector-mapped curated database for analyst-led research across 2,000+ industries. They serve different jobs at the same firm: Affinity is workflow infrastructure for the deals you are already on, Tracxn is research infrastructure for the sectors you are investigating. Neither produces a leading-signal on individual companies.",
+  },
+  {
+    slug: "affinity-vs-forager-ai",
+    a: "affinity",
+    b: "forager-ai",
+    verdict:
+      "Affinity is a relationship-CRM for the deals already in your pipeline. Forager.ai is an alternative-data sourcing engine for cross-sector web and social signals. They are fully complementary and most institutional firms run both: Forager surfaces candidates at the leading layer, Affinity manages relationships and outreach downstream. Different buying centers too — Affinity is firm-wide enterprise, Forager is tier-priced and accessible to scouts and analysts.",
+  },
+  {
+    slug: "cb-insights-vs-forager-ai",
+    a: "cb-insights",
+    b: "forager-ai",
+    verdict:
+      "CB Insights is enterprise research and analyst-led market mapping with proprietary Mosaic scoring. Forager.ai is leading public-traction signals (web, social, hiring) at individual-investor pricing. Different categories, different buyers, different freshness profiles. Forager is a strict sourcing tool; CB Insights is a strategy and market-research tool. They rarely substitute for each other; they compose at firms with both research and proactive-sourcing functions.",
+  },
 ];
 
 export function getCompetitorVsPair(slug: string): CompetitorVs | undefined {
