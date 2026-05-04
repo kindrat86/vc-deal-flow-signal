@@ -8,7 +8,7 @@ import {
 } from "@/content/competitor-vs";
 import { getDataLastModified } from "@/lib/data";
 import CTABanner from "@/components/CTABanner";
-import AgentMirrorLinks from "@/components/AgentMirrorLinks";
+import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 
 interface PageProps {
   params: Promise<{ slug: string }>;

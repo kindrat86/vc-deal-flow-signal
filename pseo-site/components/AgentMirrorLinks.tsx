@@ -4,29 +4,32 @@
 // agents and search crawlers can find: (1) a markdown mirror of the page,
 // (2) the canonical Q&A corpus, (3) the LLMs reference index, (4) the
 // agents discovery page. Designed to sit at the bottom of pillar pages
-// (best, vs, alternatives, compare, research, signals, trends, topics).
+// (best, vs, alternatives, compare, research, signals, trends, topics, etc.).
 //
 // See memory: reference_aeo_geo_aio_patterns.md
 
 import Link from "next/link";
 
 interface AgentMirrorLinksProps {
-  // Optional: when set, surfaces a markdown mirror at the given path.
-  // E.g. for /best/foo, pass "/md/best/foo".
-  markdownPath?: string;
-  // Optional: filter the qa.jsonl corpus by category.
-  qaCategory?: "general" | "blog" | "sector" | "signal-type" | "research-finding";
+  /** The canonical path for this page. Optional; when set, surfaces a markdown mirror at /md{path}. */
+  path?: string;
+  /** Filter the qa.jsonl corpus to a specific category. */
+  qaCategory?:
+    | "general"
+    | "blog"
+    | "sector"
+    | "signal-type"
+    | "research-finding"
+    | "methodology";
 }
 
 const SITE = "https://signals.gitdealflow.com";
 
-export default function AgentMirrorLinks({
-  markdownPath,
-  qaCategory,
-}: AgentMirrorLinksProps) {
+export function AgentMirrorLinks({ path, qaCategory }: AgentMirrorLinksProps) {
   const qaUrl = qaCategory
     ? `${SITE}/qa.jsonl?category=${qaCategory}`
     : `${SITE}/qa.jsonl`;
+  const markdownPath = path ? `/md${path}` : null;
 
   return (
     <aside
@@ -86,3 +89,5 @@ export default function AgentMirrorLinks({
     </aside>
   );
 }
+
+export default AgentMirrorLinks;

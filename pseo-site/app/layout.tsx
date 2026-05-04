@@ -6,7 +6,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import LaunchBanner from "@/components/LaunchBanner";
 import PixelManager from "@/components/PixelManager";
-import HreflangLinks from "@/components/HreflangLinks";
+import { HreflangLinks } from "@/components/HreflangLinks";
+import { getHomepageHreflang } from "@/lib/hreflang";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
@@ -105,7 +106,15 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full">
       <head>
-        <HreflangLinks path="/" />
+        {/* Homepage hreflang baseline. Sub-pages render their own per-route
+            hreflang via <HreflangLinks canonical=... languages=... /> using
+            getPageHreflang() from lib/hreflang. React's head hoisting (Next 16)
+            de-duplicates by href, so pages with their own canonical override
+            this baseline cleanly. */}
+        <HreflangLinks
+          canonical="https://signals.gitdealflow.com/"
+          languages={getHomepageHreflang()}
+        />
         <link
           rel="alternate"
           type="application/rss+xml"

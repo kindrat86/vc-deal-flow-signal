@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { alternatives, getAlternative, getAllAlternativeSlugs, type AlternativeFAQ } from "@/content/alternatives";
 import { useCases } from "@/content/use-cases";
 import { getAllSectors, getCurrentPeriod, getDataLastModified } from "@/lib/data";
-import AgentMirrorLinks from "@/components/AgentMirrorLinks";
+import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 
 interface PageProps {
   params: Promise<{ slug: string }>;

@@ -7,7 +7,7 @@ import {
   getSortedStartups,
   getDataLastModified,
 } from "@/lib/data";
-import AgentMirrorLinks from "@/components/AgentMirrorLinks";
+import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
