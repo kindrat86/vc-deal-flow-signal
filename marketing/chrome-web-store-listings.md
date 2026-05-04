@@ -49,20 +49,27 @@ Free in perpetuity. Manifest V3, ~30 KB.
 ```
 https://gitdealflow.com
 ```
-*Use the apex homepage — CWS validator wants a domain root, not a deep path. `/chrome`, `/integrations`, etc. trigger "link is not reachable" even when HTTP 200.*
+*Apex root only. Deep paths (`/chrome`, `/integrations`, etc.) trigger "Website link is not reachable" even when HTTP 200. Validated 2026-05-04 in the live dev console.*
 
 ### Support link
 
 ```
-mailto:signal@gitdealflow.com
+https://signals.gitdealflow.com/faq
 ```
-*`mailto:` always passes CWS validation — there's no reachability check possible. Avoid HTTP support URLs unless they're a dedicated `/support` or `/contact` page that CWS recognizes.*
+*`mailto:` is rejected by CWS as "Support link is not valid" (validator policy changed). Use the apex `/faq` HTTPS URL. Validated 2026-05-04.*
 
 ### Privacy policy
 
 ```
 https://gitdealflow.com/privacy
 ```
+
+### Operational paste tips (the most common cause of "not reachable" when URL is fine)
+
+- Always clear the form field fully before pasting (`Cmd+A` → `Delete`). The widget caches the previous error.
+- Never copy from inside Markdown backticks — the trailing newline breaks the URL. Copy plain text from this paragraph.
+- After pasting, click outside the field once to fire validation, then **Save Draft**.
+- If a "not reachable" error persists after pasting a URL that returns HTTP 200, refresh the dev console page and re-enter — the validator caches per-form-load.
 
 ---
 
@@ -110,20 +117,27 @@ Free in perpetuity. Manifest V3, ~16 KB.
 ```
 https://gitdealflow.com
 ```
-*Use the apex homepage — CWS validator wants a domain root, not a deep path. `/chrome`, `/integrations`, etc. trigger "link is not reachable" even when HTTP 200.*
+*Apex root only. Deep paths (`/chrome`, `/integrations`, etc.) trigger "Website link is not reachable" even when HTTP 200. Validated 2026-05-04 in the live dev console.*
 
 ### Support link
 
 ```
-mailto:signal@gitdealflow.com
+https://signals.gitdealflow.com/faq
 ```
-*`mailto:` always passes CWS validation — there's no reachability check possible. Avoid HTTP support URLs unless they're a dedicated `/support` or `/contact` page that CWS recognizes.*
+*`mailto:` is rejected by CWS as "Support link is not valid" (validator policy changed). Use the apex `/faq` HTTPS URL. Validated 2026-05-04.*
 
 ### Privacy policy
 
 ```
 https://gitdealflow.com/privacy
 ```
+
+### Operational paste tips (the most common cause of "not reachable" when URL is fine)
+
+- Always clear the form field fully before pasting (`Cmd+A` → `Delete`). The widget caches the previous error.
+- Never copy from inside Markdown backticks — the trailing newline breaks the URL. Copy plain text from this paragraph.
+- After pasting, click outside the field once to fire validation, then **Save Draft**.
+- If a "not reachable" error persists after pasting a URL that returns HTTP 200, refresh the dev console page and re-enter — the validator caches per-form-load.
 
 ---
 
