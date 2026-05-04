@@ -81,7 +81,7 @@ Goal: guest post or data citation, one per quarter per source.
 - **StrictlyVC (Connie)** — KEEP as brand/backlink pickup, deprioritize as Dream Customer channel.
 - **Simon Willison's blog (simonwillison.net)** — MCP angle, he has covered MCP extensively. Send a teardown of how your MCP server works.
 - **dev.to** — MCP article already live (canonical URL in memory). Compound it with monthly technical posts.
-- **Hashnode** — cross-posted. Keep cadence monthly.
+- **Substack** — mirror live at https://gitdealflow.substack.com (since 2026-05-03). Auto-mirror weekly Top-100 with canonical back to gitdealflow.com/blog. **Replaced Hashnode (retired 2026-05-02 — 0 followers, 0 referrals after 14d).**
 
 ### Tier 3: Communities (places where Alex lurks, not broadcasts)
 Goal: contribute for 60 days before dropping any link. Brunson rule: dig your well.
@@ -120,7 +120,7 @@ Every day Alex logs into Cursor, Claude, GitHub, Twitter, HN, one Discord. GitDe
 
 - **Daily:** 5 to 7 Twitter replies with data inside the Dream 100 Tier 1 list. Log in `marketing/dream-100-engagement-log.md` (already in flight).
 - **Daily:** 6 PH comments as @data_nerd on tech/AI launches. (Already in flight.)
-- **Weekly:** 1 long-form technical post on dev.to or Hashnode, cross-posted to Substack Notes + HN Show.
+- **Weekly:** 1 long-form technical post on dev.to (or Substack at gitdealflow.substack.com — Hashnode retired 2026-05-02), cross-posted to Substack Notes + HN Show.
 - **Weekly:** 1 Claude/Anthropic Discord value drop (new data observation, no link).
 - **Weekly:** 1 Cursor Discord #showcase update if the MCP server gets a new tool.
 - **Monthly:** 1 guest-post pitch (rotate Latent Space, Pragmatic Engineer, Simon Willison's blog).

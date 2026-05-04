@@ -54,9 +54,9 @@ Each channel answers: Where does Developer-Investor already gather? What's the f
 - Integrate trigger: 3-4 substantive replies to a single account (Swyx, Simon Willison, Gergely, etc.) over 2-3 weeks before you tag them in your own post.
 - Invade trigger: one of those accounts likes/replies to you → you can quote-tweet them in a thread with their permission. Instant credibility transfer.
 
-**dev.to + Hashnode**
-- Already live per memory (dev.to/data_nerd, Hashnode gitdealflow.hashnode.dev).
-- MCP article is canonical anchor. Compound it with 1 new technical post per month, all cross-posted and always canonical back to signals.gitdealflow.com when relevant (or dev.to when it's developer-audience primary).
+**dev.to + Substack**
+- dev.to/data_nerd live per memory; Substack mirror live at https://gitdealflow.substack.com (since 2026-05-03). **Hashnode retired 2026-05-02** (0 followers, 0 referrals after 14d).
+- MCP article is canonical anchor. Compound it with 1 new technical post per month, all cross-posted and always canonical back to signals.gitdealflow.com when relevant (or dev.to when it's developer-audience primary). Substack auto-mirror via `tools/substack/post-top-100.mjs` covers weekly Top-100 with canonical back.
 - Article pipeline (next 90 days, one per month):
   - May: "How I structured the VC Deal Flow MCP server for Claude, Cursor, Windsurf" (technical teardown).
   - June: "Building alternative data for startups using only the GitHub public API" (methodology deep dive).
@@ -129,7 +129,7 @@ Each channel answers: Where does Developer-Investor already gather? What's the f
 |-----|---------|--------|
 | Mon | Email + Telegram + Twitter | Weekly Signal Digest drops. Same data, three surfaces. |
 | Mon | Twitter (own post) | Thread: "5 startups that accelerated most this week" with data. |
-| Tue | Dev.to/Hashnode | Monthly technical article (1st Tue of month). |
+| Tue | Dev.to/Substack | Monthly technical article (1st Tue of month). Hashnode retired 2026-05-02. |
 | Tue-Fri | Twitter (Dream 100 replies) | 5-7 replies per day to Tier 1 accounts. |
 | Wed | Anthropic Discord | 1 non-product contribution. |
 | Thu | Substack Notes | 1 note with a data observation. |
@@ -191,7 +191,7 @@ The paid-traffic equivalent of these flywheels is "spend more money." Organic eq
 - Daily: IH seeding comments (per existing schedule).
 - Mon Apr 20: Send Connie + Packy newsletter pitches (already drafted).
 - Tue Apr 21: Pre-launch blog post on signals.gitdealflow.com previewing launch.
-- Wed Apr 22: Send Gergely pitch + Hashnode cross-post.
+- Wed Apr 22: Send Gergely pitch + Substack mirror post (Hashnode retired 2026-05-02).
 - Fri Apr 24: Send Lenny pitch + final pSEO QA pass.
 - Sat Apr 25: Telegram channel teaser + Substack Notes teaser.
 
@@ -199,7 +199,7 @@ The paid-traffic equivalent of these flywheels is "spend more money." Organic eq
 - **Sun Apr 26 11:00 EEST:** Wave 1 — IH launch + Reddit (where allowed, per memory).
 - **Mon Apr 27:** Send Elizabeth Yin pitch. Monitor IH comments. Signal Digest goes out.
 - **Tue Apr 28:** Wave 2 — Show HN. Stay on thread all day. Answer every question.
-- **Wed Apr 29:** Cross-post Show HN summary to dev.to + Hashnode.
+- **Wed Apr 29:** Cross-post Show HN summary to dev.to + Substack (Hashnode retired 2026-05-02).
 - **Thu Apr 30:** Cursor / Claude Discord update post.
 - **Fri May 1:** Follow up on Dealroom + any pending newsletter pitches.
 - **Sat May 2:** Substack Notes + Medium cross-post recap.
@@ -207,7 +207,7 @@ The paid-traffic equivalent of these flywheels is "spend more money." Organic eq
 ### Week 3 (May 3-9): Amplification
 - **Sun May 3 11:00 EEST:** Wave 3 — Product Hunt launch.
 - **Mon May 4:** Signal Digest + PH comment answering.
-- **Tue May 5:** First monthly technical article (dev.to + Hashnode). Topic: MCP server architecture teardown.
+- **Tue May 5:** First monthly technical article (dev.to + Substack). Topic: MCP server architecture teardown. (Hashnode retired 2026-05-02.)
 - **Wed May 6:** Perfect Webinar for Insider Circle (per marketing plan memory, "target first Thursday of May").
 - **Thu May 7:** Perplexity Publishers follow-up (per memory, ~May 9 expected).
 - **Fri-Sat May 8-9:** Catch up on Dream 100 replies. Rotate to fresh Tier 2 accounts.
