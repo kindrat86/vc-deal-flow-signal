@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { comparisons } from "@/content/comparisons";
+import PSEOFooterNav from "@/components/PSEOFooterNav";
 
 export const metadata: Metadata = {
   title: "Compare Deal Flow Tools — VC Deal Flow Signal",
@@ -90,6 +91,8 @@ export default function CompareIndex() {
           </Link>
         ))}
       </div>
+
+      <PSEOFooterNav excludeHrefs={["/compare"]} />
     </div>
     </>
   );

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { allPosts as posts } from "@/content/posts";
+import PSEOFooterNav from "@/components/PSEOFooterNav";
 
 export const metadata: Metadata = {
   title: "Blog — VC Deal Flow Signal",
@@ -91,6 +92,8 @@ export default function BlogIndex() {
           </Link>
         ))}
       </div>
+
+      <PSEOFooterNav excludeHrefs={["/blog"]} />
     </div>
     </>
   );

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { allPosts } from "@/content/posts";
+import PSEOFooterNav from "@/components/PSEOFooterNav";
 
 export const metadata: Metadata = {
   title: "Weekly Signal Reports — Engineering Acceleration Archive",
@@ -97,6 +98,8 @@ export default function WeeklyArchivePage() {
             ))}
           </div>
         )}
+
+        <PSEOFooterNav excludeHrefs={["/weekly"]} />
 
         <div className="mt-12 rounded-xl border border-slate-800 bg-slate-900 p-6 sm:p-8 text-center">
           <h2 className="text-gray-100 font-semibold text-lg mb-2">

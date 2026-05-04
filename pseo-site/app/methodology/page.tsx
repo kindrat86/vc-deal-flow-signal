@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentSummary } from "@/components/AgentSummary";
 import { getDataLastModified } from "@/lib/data";
+import PSEOFooterNav from "@/components/PSEOFooterNav";
 
 export const metadata: Metadata = {
   title: "Methodology — How We Measure Startup Engineering Acceleration",
@@ -474,6 +475,8 @@ export default function MethodologyPage() {
             </p>
           </div>
         </section>
+
+        <PSEOFooterNav excludeHrefs={["/methodology"]} />
 
         {/* CTA */}
         <div className="rounded-xl border border-slate-800 bg-slate-900 p-6 sm:p-8 text-center">

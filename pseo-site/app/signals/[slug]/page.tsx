@@ -174,25 +174,47 @@ export default async function SignalTypePage({ params }: PageProps) {
           </div>
         </section>
 
-        {/* Top sectors breakdown */}
-        {signalData.topSectors.length > 0 && (
-          <section className="mb-8" aria-label="Sector breakdown">
-            <h2 className="text-lg font-semibold text-gray-100 mb-3">
-              Top Sectors with This Signal
-            </h2>
-            <div className="flex flex-wrap gap-2">
-              {signalData.topSectors.map((s) => (
-                <span
-                  key={s.name}
-                  className="inline-block rounded-md border border-slate-800 bg-slate-900 px-3 py-1.5 text-xs text-gray-400"
-                >
-                  {s.name}{" "}
-                  <span className="text-sky-400 font-medium">({s.count})</span>
-                </span>
-              ))}
-            </div>
-          </section>
-        )}
+        {/* Top sectors breakdown — clickable sector pages */}
+        {signalData.topSectors.length > 0 && (() => {
+          const sectorSlugByName: Record<string, string> = {};
+          for (const s of signalData.startups) {
+            sectorSlugByName[s.sectorName] = s.sectorSlug;
+          }
+          return (
+            <section className="mb-8" aria-label="Sector breakdown">
+              <h2 className="text-lg font-semibold text-gray-100 mb-3">
+                Top Sectors with This Signal
+              </h2>
+              <div className="flex flex-wrap gap-2">
+                {signalData.topSectors.map((s) => {
+                  const slugForSector = sectorSlugByName[s.name];
+                  if (!slugForSector) {
+                    return (
+                      <span
+                        key={s.name}
+                        className="inline-block rounded-md border border-slate-800 bg-slate-900 px-3 py-1.5 text-xs text-gray-400"
+                      >
+                        {s.name}{" "}
+                        <span className="text-sky-400 font-medium">({s.count})</span>
+                      </span>
+                    );
+                  }
+                  return (
+                    <Link
+                      key={s.name}
+                      href={`/startups-to-watch/${slugForSector}-${period.slug}`}
+                      className="inline-block rounded-md border border-slate-800 bg-slate-900 px-3 py-1.5 text-xs text-gray-400 hover:text-sky-400 hover:border-slate-600 transition-colors"
+                      title={`View ${s.name} startup rankings for ${period.name}`}
+                    >
+                      {s.name}{" "}
+                      <span className="text-sky-400 font-medium">({s.count})</span>
+                    </Link>
+                  );
+                })}
+              </div>
+            </section>
+          );
+        })()}
 
         {/* Table */}
         <section className="mb-10" aria-label="Startup rankings">
