@@ -17,12 +17,14 @@ export const metadata: Metadata = {
       "Every machine-readable surface in one place: MCP, A2A, NLWeb, function-calling, OpenAPI, JSONL, badges, ChatGPT plugin, api-catalog.",
     type: "website",
     url: `${SITE}/agents`,
+    images: ["/opengraph-image"],
   },
   twitter: {
     card: "summary_large_image",
     title: "Agents — Reach VC Deal Flow Signal Programmatically",
     description:
       "Every machine-readable surface in one place. Free, no auth, MIT/CC-BY 4.0.",
+    images: ["/opengraph-image"],
   },
 };
 

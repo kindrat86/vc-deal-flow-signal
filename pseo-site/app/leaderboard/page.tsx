@@ -39,6 +39,14 @@ export const metadata: Metadata = {
       "Live ranking of scouts calling startup fundraises from GitHub signals. Oracle, Elite, Sharp, Scout, Curious.",
     url: "https://signals.gitdealflow.com/leaderboard",
     type: "website",
+    images: ["/opengraph-image"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Scout Leaderboard — Top 100 VC Deal Flow Scouts",
+    description:
+      "Live ranking of scouts calling startup fundraises from GitHub signals.",
+    images: ["/opengraph-image"],
   },
 };
 

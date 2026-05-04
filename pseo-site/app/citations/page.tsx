@@ -17,12 +17,14 @@ export const metadata: Metadata = {
       "All external identifiers, scholarly-graph anchors, and same-as URLs for VC Deal Flow Signal in one canonical place.",
     url: `${SITE}/citations`,
     type: "article",
+    images: ["/opengraph-image"],
   },
   twitter: {
     card: "summary_large_image",
     title: "Citations & Cross-Graph Identity Map — VC Deal Flow Signal",
     description:
       "Wikidata, ORCID, SSRN, OpenAlex, Crossref, Semantic Scholar, Zenodo — full attribution chain.",
+    images: ["/opengraph-image"],
   },
 };
 

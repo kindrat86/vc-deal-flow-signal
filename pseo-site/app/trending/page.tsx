@@ -21,12 +21,14 @@ export const metadata: Metadata = {
     description:
       "Top 20 startups ranked by GitHub engineering acceleration across all sectors. Updated weekly.",
     type: "article",
+    images: ["/opengraph-image"],
   },
   twitter: {
     card: "summary_large_image",
     title: "Trending Startups — Top Engineering Acceleration",
     description:
       "Top 20 startups ranked by GitHub engineering acceleration across all sectors.",
+    images: ["/opengraph-image"],
   },
   alternates: {
     canonical: "/trending",

@@ -11,6 +11,14 @@ export const metadata: Metadata = {
     title: "GitDealFlow A2A — Free Startup Signals for Your AI",
     description:
       "Crunchbase API: $20K/yr. GitDealFlow A2A: free. AgentCard, JSON-RPC endpoint, and 5 framework recipes.",
+    images: ["/opengraph-image"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "GitDealFlow A2A — Free Startup Signals for Your AI",
+    description:
+      "Crunchbase API: $20K/yr. GitDealFlow A2A: free. AgentCard, JSON-RPC, 5 recipes.",
+    images: ["/opengraph-image"],
   },
 };
 

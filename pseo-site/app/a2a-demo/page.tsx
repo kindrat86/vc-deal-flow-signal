@@ -14,6 +14,13 @@ export const metadata: Metadata = {
     description:
       "Crunchbase API: $20K/yr. GitDealFlow A2A: free. Try it now.",
     type: "website",
+    images: ["/opengraph-image"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Try the GitDealFlow A2A Agent — Live Playground",
+    description: "Crunchbase API: $20K/yr. GitDealFlow A2A: free. Try it now.",
+    images: ["/opengraph-image"],
   },
 };
 
