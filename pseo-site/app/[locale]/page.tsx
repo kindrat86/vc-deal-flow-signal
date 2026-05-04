@@ -34,8 +34,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description,
       type: "website",
       locale: l.code,
+      images: ["/opengraph-image"],
     },
-    twitter: { card: "summary_large_image", title, description },
+    twitter: { card: "summary_large_image", title, description, images: ["/opengraph-image"] },
     alternates: { canonical: `/${locale}` },
   };
 }
