@@ -22,7 +22,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default function AgentCreditsPage() {
+export default async function AgentCreditsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ status?: string }>;
+}) {
+  const { status } = await searchParams;
+  const justPaid = status === "paid";
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -81,6 +88,51 @@ export default function AgentCreditsPage() {
       />
 
       <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {justPaid && (
+          <aside
+            role="status"
+            aria-live="polite"
+            className="mb-8 rounded-xl border border-emerald-500/40 bg-emerald-500/10 p-5 sm:p-6"
+          >
+            <div className="flex items-start gap-3">
+              <svg
+                className="h-6 w-6 mt-0.5 shrink-0 text-emerald-400"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z"
+                  clipRule="evenodd"
+                />
+              </svg>
+              <div className="min-w-0">
+                <h2 className="text-emerald-300 font-semibold text-base mb-1">
+                  Payment received — your API key is on the way
+                </h2>
+                <p className="text-emerald-100/80 text-sm leading-relaxed mb-2">
+                  Check the inbox for the email you used at checkout. The
+                  welcome email arrives in ~30 seconds with your API key
+                  (<code className="text-emerald-200 font-mono">gdf_v2.cus_xxx.&lt;hmac&gt;</code>)
+                  and a 100-credit balance.
+                </p>
+                <p className="text-emerald-100/60 text-xs leading-relaxed">
+                  Didn&rsquo;t get it within 2 minutes? Check spam, then email{" "}
+                  <a
+                    href="mailto:signal@gitdealflow.com"
+                    className="text-emerald-200 hover:text-emerald-100 underline"
+                  >
+                    signal@gitdealflow.com
+                  </a>{" "}
+                  with your Stripe receipt — keys are deterministic, we can
+                  resend without re-charging.
+                </p>
+              </div>
+            </div>
+          </aside>
+        )}
+
         <nav className="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300 transition-colors">
             All Sectors
@@ -159,8 +211,8 @@ export default function AgentCreditsPage() {
             Buy 100 credits — €19 →
           </Link>
           <p className="text-gray-500 text-xs mt-3">
-            Stripe-hosted checkout. EU VAT applied where required. One-time
-            payment, no recurring billing.
+            Stripe-hosted checkout. €19 flat, one-time payment, no recurring
+            billing. Promo codes accepted at checkout.
           </p>
         </section>
 
