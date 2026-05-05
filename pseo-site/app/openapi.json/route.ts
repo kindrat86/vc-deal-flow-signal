@@ -1,11 +1,11 @@
 /**
- * /.well-known/openapi.json — OpenAPI 3.1 spec direct alias.
+ * Root-level alias for /api/openapi.json.
  *
- * RFC-track convention some agents probe before checking /api/openapi.json.
- * Serves the spec body directly (200, not 308) because several AI bots
- * (Perplexity, ChatGPT-with-search, Anthropic claude.ai search) don't
- * follow redirects on JSON descriptor probes. The canonical URL —
- * declared via the `Link: rel=canonical` header — remains under /api/.
+ * Some discovery agents and OpenAPI tools default to a root-level
+ * `/openapi.json` rather than the /api/ path. We serve content directly
+ * (200, not 308) because some AI bots don't follow redirects on OpenAPI
+ * descriptor probes. The canonical URL — declared via the `Link:
+ * rel=canonical` header — remains under /api/.
  */
 
 import { GET as ApiOpenApiJson } from "@/app/api/openapi.json/route";
