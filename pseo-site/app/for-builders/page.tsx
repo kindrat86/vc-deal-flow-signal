@@ -331,6 +331,30 @@ export default function ForBuildersPage() {
               time, no expiration.
             </p>
           </div>
+          <div className="rounded-lg border border-sky-700/40 bg-sky-950/20 p-5 space-y-3">
+            <p className="text-sky-300 text-xs font-semibold uppercase tracking-wider">
+              Crypto-native alternative — x402 / USDC on Base
+            </p>
+            <p className="text-gray-300 text-sm leading-relaxed">
+              Fully autonomous agents with their own wallet can skip the
+              credit pack and pay per call in USDC on Base via the{" "}
+              <a
+                href="https://x402.org"
+                target="_blank"
+                rel="noreferrer"
+                className="text-sky-400 hover:text-sky-300 underline"
+              >
+                x402 protocol
+              </a>
+              . No signup, no API key — same payload, $0.19/call settled per
+              request via HTTP 402. Misses still free.
+            </p>
+            <pre className="text-xs text-sky-300 font-mono overflow-x-auto whitespace-pre bg-slate-950 border border-slate-800 rounded p-3">
+{`POST https://signals.gitdealflow.com/api/agent/deep-signal/x402
+{ "name": "supabase" }
+# 402 Payment Required → sign EIP-3009 → retry with X-PAYMENT header`}
+            </pre>
+          </div>
         </section>
 
         {/* USE CASES */}
