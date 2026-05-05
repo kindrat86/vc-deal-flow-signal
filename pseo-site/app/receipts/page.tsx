@@ -6,23 +6,33 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { getDataLastModified } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "GitHub Receipts — Prove You Saw the Next Unicorn First",
+  title:
+    "GitHub Scout Score (Free) — Grade Your Investment Taste from GitHub Stars",
   description:
-    "Free tool. Paste your GitHub username, get a shareable card showing every unicorn / Series A / acquisition you starred before the news broke. Your stars are receipts.",
+    "Free GitHub Scout Score tool. Grade any developer's taste from their public starring history against ~75 validated unicorns / big-funding / acquisitions. Paste a username, get a 0–100 Scout Score and shareable card in 8 seconds. No login.",
   alternates: { canonical: "/receipts" },
+  keywords: [
+    "github scout score",
+    "scout score",
+    "github stars investment receipts",
+    "github starring history grader",
+    "investment track record from github",
+    "unicorn-spotting taste validation",
+    "free github tool no login",
+  ],
   openGraph: {
-    title: "GitHub Receipts — You Saw It First",
+    title: "GitHub Scout Score — Grade Your Investment Taste",
     description:
-      "Every dev has invested in unicorns. They just don't know it. Your GitHub stars are receipts.",
+      "Every dev has invested in unicorns. They just don't know it. Your GitHub stars are the receipts. Free Scout Score from your public starring history.",
     url: "https://signals.gitdealflow.com/receipts",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     site: "@data_nerd",
-    title: "GitHub Receipts — You Saw It First",
+    title: "GitHub Scout Score (free) — You Saw It First",
     description:
-      "Free tool. Get your Scout Score from your starring history.",
+      "Free GitHub Scout Score from your starring history. No login. 8 seconds.",
     images: ["https://signals.gitdealflow.com/api/og/signal-card"],
   },
 };
@@ -35,13 +45,79 @@ export default function ReceiptsLandingPage() {
     "@graph": [
       {
         "@type": "WebApplication",
-        name: "GitHub Receipts — Scout Score from your starring history",
+        name: "GitHub Scout Score — taste-grading from public GitHub starring history",
+        alternateName: ["GitHub Receipts", "GitDealFlow Scout Score"],
         url: "https://signals.gitdealflow.com/receipts",
         applicationCategory: "DeveloperApplication",
         operatingSystem: "Web",
         offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
         description:
           "Free tool that pulls your public GitHub starring history and grades you on how many unicorns / big-funding / acquisitions you starred before the event.",
+      },
+      {
+        "@type": "Service",
+        "@id": "https://signals.gitdealflow.com/receipts#service",
+        name: "GitHub Scout Score Service",
+        serviceType: "Investment-taste validation",
+        provider: {
+          "@type": "Organization",
+          name: "VC Deal Flow Signal",
+          url: "https://gitdealflow.com",
+        },
+        areaServed: "Worldwide",
+        audience: {
+          "@type": "Audience",
+          audienceType:
+            "Developer-investors, scout angels, emerging-fund LPs, GP recruiters",
+        },
+        offers: {
+          "@type": "Offer",
+          price: "0",
+          priceCurrency: "USD",
+          availability: "https://schema.org/InStock",
+        },
+        termsOfService: "https://signals.gitdealflow.com/legal/terms",
+        url: "https://signals.gitdealflow.com/receipts",
+        description:
+          "Backwards-looking investment-taste validation: grade any public GitHub user's starring history against a curated panel of ~75 validated unicorn / big-funding / acquisition outcomes. Returns a 0–100 Scout Score, a five-tier rank (Curious → Oracle), and a shareable OG card. Same data exposed via /api/receipts/{username}, /api/badge/scout/{username}/svg, and the get_scout_receipts MCP tool.",
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: "Scout Score outputs",
+          itemListElement: [
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: "Web grade page",
+                url: "https://signals.gitdealflow.com/receipts",
+              },
+            },
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: "Scout Score JSON API",
+                url: "https://signals.gitdealflow.com/api/receipts/sindresorhus",
+              },
+            },
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: "Embeddable SVG badge",
+                url: "https://signals.gitdealflow.com/api/badge/scout/sindresorhus/svg",
+              },
+            },
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: "MCP tool: get_scout_receipts",
+                url: "https://signals.gitdealflow.com/.well-known/agent-card.json",
+              },
+            },
+          ],
+        },
       },
       {
         "@type": "HowTo",
@@ -157,14 +233,15 @@ export default function ReceiptsLandingPage() {
             Free tool · No login · No OAuth
           </p>
           <h1 className="text-4xl sm:text-5xl font-bold text-gray-100 mb-5 leading-tight">
-            Every dev has invested in unicorns.<br />
-            <span className="text-sky-400">They just don&rsquo;t know it.</span>
+            Get your <span className="text-sky-400">GitHub Scout Score</span>.<br />
+            Every dev has invested in unicorns. They just don&rsquo;t know it.
           </h1>
           <p className="text-lg text-gray-300 leading-relaxed max-w-2xl mb-8">
-            Your GitHub stars are receipts. Paste your username and we&rsquo;ll show
-            you every unicorn / Series A / big acquisition you starred{" "}
-            <em>before</em> the news broke. Get your Scout Score and a shareable
-            card in under 8 seconds.
+            Your GitHub stars are receipts. Paste your username and we&rsquo;ll
+            grade your public starring history against ~75 validated unicorns /
+            Series A / acquisitions — counting only the ones you starred{" "}
+            <em>before</em> the news broke. Free <strong>Scout Score</strong>{" "}
+            (0–100) and a shareable card in under 8 seconds.
           </p>
 
           <ReceiptsForm />
