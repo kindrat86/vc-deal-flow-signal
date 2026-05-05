@@ -20,8 +20,11 @@ const STRIPE_INSIDER = "https://buy.stripe.com/4gM00ifRpcRG2069I40x202";
 const STRIPE_SWEEP = "https://buy.stripe.com/bJe14m34DbNC6gm1by0x204";
 const SIGNUP_URL = "https://gitdealflow.com/#signup";
 // Sharp Tier — application-gated, capped at 8 funds in 2026. The mailto includes a structured intake template so the reply is immediate-prioritised.
-const SHARP_APPLY_URL =
-  "mailto:signal@gitdealflow.com?subject=Sharp%20Tier%20Application%20%E2%80%94%20%5BYour%20Fund%5D&body=Hi%20%E2%80%94%0A%0AFund%2Fsyndicate%20name%3A%20%0AAUM%20or%20deals%2Fyear%3A%20%0AThesis%20focus%3A%20%0AHow%20you%20heard%20about%20us%3A%20%0A%0AOne%20thing%20you%27d%20want%20the%20quarterly%20review%20call%20to%20cover%3A%20%0A%0AThanks%2C%0A";
+// Russell audit 2026-05-05 PM: replaced mailto: with a proper application
+// page (/apply). Mailto leaked the funnel to the user's email client and
+// dropped 60%+ of intents. /apply is a real form posting to
+// /api/sharp-application with the same field shape.
+const SHARP_APPLY_URL = "/apply";
 
 interface Tier {
   slug: string;
@@ -78,7 +81,7 @@ const tiers: Tier[] = [
       "€7 credited toward Dashboard if you upgrade within 14 days",
     ],
     ctaLabel: "Get the Pass — €7",
-    ctaHref: "https://gitdealflow.com/#firstlook",
+    ctaHref: "/firstlook",
     highlight: false,
   },
   {
@@ -399,6 +402,22 @@ export default function PricingPage() {
           and capped at 8 funds in 2026. Every paid tier ships with a 30-day
           Signal-or-It&rsquo;s-Free guarantee.
         </p>
+
+        {/* Quiz nudge — Russell audit 2026-05-05 PM: visitors landing on /pricing
+            cold often pick the wrong tier. The 90-second avatar quiz routes
+            them by self-identification. */}
+        <div className="mb-8 flex items-center gap-3 rounded-lg border border-sky-700/40 bg-sky-950/20 px-4 py-3">
+          <span aria-hidden="true" className="text-sky-300 text-lg">⚡</span>
+          <p className="text-gray-300 text-sm flex-1">
+            Not sure which tier fits the way you write checks?{" "}
+            <Link
+              href="/quiz"
+              className="text-sky-300 hover:text-sky-200 font-medium underline decoration-dotted"
+            >
+              Take the 90-second avatar quiz →
+            </Link>
+          </p>
+        </div>
 
         <AgentSummary
           tldr="VC Deal Flow Signal (GitDealFlow) has six pricing tiers: a free weekly Signal Digest with five ranked startups, a €7 one-time First Look Pass for a sector deep dive, a €9.97/mo Dashboard Beta covering 109 startups across 19 sectors at founding-member rates, a €97/mo Insider Circle adding private Telegram + JSON/CSV API at founding-member rates, a €497/mo Sharp Tier for active funds with quarterly review calls + custom watchlists + white-labeled API + methodology source code (application-gated, capped at 8 funds in 2026), and a €1,997 one-time Custom Sector Sweep written report. The free MCP server (five read-only tools) is bundled with every tier including the free one and will never be gated. Every paid tier ships with a 30-day Signal-or-It's-Free guarantee."

@@ -153,6 +153,68 @@ export default function StoryPage() {
           taught me about distribution.
         </p>
 
+        {/* Hero's Two Journeys — Brunson Expert Secret #6: identity-shift
+            narrative. Audit 2026-05-05: this was the lowest-scoring chapter
+            in the Expert Secrets section (55/100). The launch-diary above
+            covers the external journey; this block adds the internal one. */}
+        <section className="mb-10 rounded-xl border-l-4 border-sky-500 bg-slate-900/60 p-6">
+          <p className="text-sky-400 text-xs font-semibold uppercase tracking-wider mb-3">
+            The two journeys
+          </p>
+          <h2 className="text-xl font-semibold text-gray-100 mb-4">
+            What I did, and who I became.
+          </h2>
+          <div className="space-y-4 text-gray-300 text-base leading-relaxed">
+            <p>
+              <strong className="text-gray-100">External journey:</strong> I
+              went from a developer who occasionally wrote angel checks and
+              kept losing deals to better-networked investors, to running a
+              read-only data tool that any developer-investor can use to spot
+              the same patterns weeks before AngelList does. The tool exists
+              because I wrote it for myself first and stayed disciplined about
+              not turning it into a startup-pitch dashboard.
+            </p>
+            <p>
+              <strong className="text-gray-100">Internal journey:</strong>{" "}
+              I stopped trying to network my way into deals and started reading
+              commit graphs the way quant funds read SEC filings. The shift
+              wasn&rsquo;t learning a new skill — it was accepting that the
+              edge I was looking for was already public, already free, already
+              updating every fifteen minutes, and that nobody else was watching
+              it because nobody had bothered to package it for an investor
+              audience. The product is a side-effect of that internal shift.
+              Most of the work on this site is me trying to share the shift,
+              not the tool.
+            </p>
+            <p className="text-gray-400 text-sm border-l border-slate-700 pl-4 italic">
+              If the internal journey lands for you — if you read commit graphs
+              and feel like the consensus deal-flow tools are reading the
+              wrong column — the rest of this site (the{" "}
+              <a
+                href="/perfect-webinar"
+                className="text-sky-400 hover:text-sky-300 not-italic underline decoration-dotted"
+              >
+                Perfect Webinar
+              </a>
+              , the{" "}
+              <a
+                href="/quiz"
+                className="text-sky-400 hover:text-sky-300 not-italic underline decoration-dotted"
+              >
+                avatar quiz
+              </a>
+              , the{" "}
+              <a
+                href="/pricing"
+                className="text-sky-400 hover:text-sky-300 not-italic underline decoration-dotted"
+              >
+                six tiers
+              </a>
+              ) is the operational version of this paragraph.
+            </p>
+          </div>
+        </section>
+
         <section className="mb-10">
           <h2 className="text-xl font-semibold text-gray-100 mb-4">
             The numbers, before the narrative

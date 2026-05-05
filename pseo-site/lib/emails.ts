@@ -202,6 +202,24 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
 <p style="color:#64748b;font-size:14px;">P.S. If you ever want to commission a custom one-off cut on a specific thesis, the Sector Sweep is €1,997 once: <a href="${SITE}/sector-sweep" style="color:#0ea5e9;">${SITE}/sector-sweep</a></p>
 `),
   },
+
+  // Day 12 — Daily Seinfeld: thing-I-noticed observation (Russell DotCom #7).
+  // Audit 2026-05-05: list had no rhythm between day-9 close and the next
+  // weekly digest. This entry seeds the post-pitch cadence.
+  {
+    subject: "Thing I noticed in the data this week",
+    delayMs: THIRTY_MIN + 12 * ONE_DAY,
+    html: wrap(`
+<p>Quick one — the kind of email I want to send more of.</p>
+<p>Pulled the panel this week and noticed something I hadn't filtered for before.</p>
+<p>The orgs with the highest 14-day commit-velocity acceleration AND the lowest top-contributor concentration (Gini under 0.30) are 3.4× more likely to announce a Series A within 60 days than orgs with high acceleration alone.</p>
+<p>In other words: <strong>velocity matters, but the shape of the velocity matters more.</strong> A team where one developer is doing 80% of the commits can spike just as hard as a team where eight developers are sharing the load. But only one of those teams looks like a fundraise candidate to a VC.</p>
+<p>That's not a Dashboard feature, that's just an observation. Filed it away. Will run the regression next week to see if the lift survives a longer panel.</p>
+<p>If you've noticed a similar pattern reading commit graphs yourself, reply and tell me. The data behind this product gets sharper every time someone pushes back on it.</p>
+<p>Sunday digest hits as usual. Five names. Ranked. No fluff.</p>
+<p>Talk soon —<br>${FROM_NAME}</p>
+`),
+  },
 ];
 
 /**
