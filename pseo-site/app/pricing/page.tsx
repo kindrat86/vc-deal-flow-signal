@@ -19,6 +19,15 @@ export const metadata: Metadata = {
 const STRIPE_DASHBOARD = "https://buy.stripe.com/28E7sK48H04U8ou07u0x200";
 const STRIPE_INSIDER = "https://buy.stripe.com/4gM00ifRpcRG2069I40x202";
 const STRIPE_SWEEP = "https://buy.stripe.com/bJe14m34DbNC6gm1by0x204";
+// `||` not `??` — Vercel env entries can be empty strings, which `??`
+// would NOT replace. We want the hardcoded canonical URL whenever the
+// env var is missing OR empty.
+const STRIPE_DASHBOARD_ANNUAL =
+  process.env.NEXT_PUBLIC_STRIPE_DASHBOARD_ANNUAL_LINK ||
+  "https://buy.stripe.com/aFa28qgVt3h65ci8E00x206";
+const STRIPE_INSIDER_ANNUAL =
+  process.env.NEXT_PUBLIC_STRIPE_INSIDER_ANNUAL_LINK ||
+  "https://buy.stripe.com/9B628q8oX7xmcEK9I40x207";
 const SIGNUP_URL = "https://gitdealflow.com/#signup";
 // Sharp Tier — application-gated, capped at 8 funds in 2026. The mailto includes a structured intake template so the reply is immediate-prioritised.
 // Russell audit 2026-05-05 PM: replaced mailto: with a proper application
@@ -858,7 +867,7 @@ export default function PricingPage() {
             from any future price change for the entire term.
           </p>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5">
-            <li className="rounded-lg border border-slate-800 bg-slate-900/40 p-4 space-y-1.5">
+            <li className="rounded-lg border border-slate-800 bg-slate-900/40 p-4 space-y-2">
               <p className="text-gray-100 font-semibold text-base">
                 Dashboard Beta — Annual
               </p>
@@ -870,8 +879,14 @@ export default function PricingPage() {
                 Same dashboard, same MCP, same guarantee. Renews at the
                 same €99/yr rate as long as the subscription stays active.
               </p>
+              <a
+                href={STRIPE_DASHBOARD_ANNUAL}
+                className="inline-flex items-center justify-center px-3 py-2 rounded-md bg-sky-600 hover:bg-sky-500 text-white text-xs font-semibold transition-colors"
+              >
+                Lock €99/yr →
+              </a>
             </li>
-            <li className="rounded-lg border border-slate-800 bg-slate-900/40 p-4 space-y-1.5">
+            <li className="rounded-lg border border-slate-800 bg-slate-900/40 p-4 space-y-2">
               <p className="text-gray-100 font-semibold text-base">
                 Insider Circle — Annual
               </p>
@@ -883,20 +898,25 @@ export default function PricingPage() {
                 Telegram + 24h lead + API + custom watchlist. Two months
                 free vs monthly. Locks for as long as you stay subscribed.
               </p>
+              <a
+                href={STRIPE_INSIDER_ANNUAL}
+                className="inline-flex items-center justify-center px-3 py-2 rounded-md bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold transition-colors"
+              >
+                Lock €970/yr →
+              </a>
             </li>
           </ul>
-          <p className="text-gray-400 text-sm">
-            To switch to annual, email{" "}
+          <p className="text-gray-500 text-xs leading-relaxed">
+            One-click Stripe checkout above. If you&rsquo;re already on
+            monthly and want to switch, email{" "}
             <a
-              href="mailto:signal@gitdealflow.com?subject=Annual%20plan"
+              href="mailto:signal@gitdealflow.com?subject=Switch%20to%20annual"
               className="text-sky-400 hover:text-sky-300 underline"
             >
               signal@gitdealflow.com
             </a>{" "}
-            with the subject &ldquo;Annual plan&rdquo; and the tier you
-            want. We send back a Stripe link inside one business day. If
-            you&rsquo;re already on monthly, the unused portion of the
-            current month is credited toward the annual term.
+            — we credit the unused portion of the current month toward
+            the annual term.
           </p>
         </section>
 
