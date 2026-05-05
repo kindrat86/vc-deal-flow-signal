@@ -40,7 +40,6 @@ AUTH_FILE = os.path.expanduser(
 
 TEAM_ID = "team_VqIhc5enyfXN91ZlfQhyz2bC"
 PROJECTS = [
-    {"id": "prj_oHjfXDFOz4gHCnrY4U1zUDa6TIzZ", "name": "vc-deal-flow-signal"},
     {"id": "prj_M3iknyIgZ8JMxPZzEPTWdSjm4l3E", "name": "landing"},
     {"id": "prj_s0JL6C4uFTmt83OnzAZDgeMDnlaU", "name": "pseo-site"},
 ]
