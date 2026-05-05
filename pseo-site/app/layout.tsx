@@ -6,8 +6,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import LaunchBanner from "@/components/LaunchBanner";
 import PixelManager from "@/components/PixelManager";
-import { HreflangLinks } from "@/components/HreflangLinks";
-import { getHomepageHreflang } from "@/lib/hreflang";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
@@ -116,15 +114,14 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full">
       <head>
-        {/* Homepage hreflang baseline. Sub-pages render their own per-route
-            hreflang via <HreflangLinks canonical=... languages=... /> using
-            getPageHreflang() from lib/hreflang. React's head hoisting (Next 16)
-            de-duplicates by href, so pages with their own canonical override
-            this baseline cleanly. */}
-        <HreflangLinks
-          canonical="https://signals.gitdealflow.com/"
-          languages={getHomepageHreflang()}
-        />
+        {/* No site-wide hreflang here. hreflang is per-page —
+            "the Chinese version of /faq is /zh" would be wrong for most
+            pages because the locale stubs (/zh, /ja, …) are localized
+            HOMES, not localized faqs. Pages that have actual localized
+            siblings render their own <HreflangLinks/> with a correct
+            map (lib/hreflang.ts getHreflangLanguages()). The home page
+            and locale stubs do this; non-localized pages stay
+            English-only, which Google treats as the default. */}
         <link
           rel="alternate"
           type="application/rss+xml"

@@ -14,8 +14,11 @@
  */
 
 interface Props {
-  /** Canonical absolute URL for this page (rel="canonical"). */
-  canonical: string;
+  /** Canonical absolute URL for this page (rel="canonical"). Optional —
+   * omit when called from a parent layout where the per-page metadata
+   * already emits a canonical (Next 16 metadata.alternates.canonical
+   * works correctly; only languages drops). */
+  canonical?: string;
   /** Hreflang map: { "en": "https://…", "ja": "https://…/ja", "x-default": "https://…" } */
   languages: Record<string, string>;
 }
@@ -23,7 +26,7 @@ interface Props {
 export function HreflangLinks({ canonical, languages }: Props) {
   return (
     <>
-      <link rel="canonical" href={canonical} />
+      {canonical ? <link rel="canonical" href={canonical} /> : null}
       {Object.entries(languages).map(([lang, href]) => (
         <link key={lang} rel="alternate" hrefLang={lang} href={href} />
       ))}
