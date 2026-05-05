@@ -28,13 +28,11 @@ export async function generateMetadata({
       title: `${pillar.name} — Topical Series`,
       description: pillar.description,
       type: "website",
-      images: ["/opengraph-image"],
     },
     twitter: {
       card: "summary_large_image",
       title: `${pillar.name} — Topical Series`,
       description: pillar.description,
-      images: ["/opengraph-image"],
     },
     alternates: {
       canonical: `/topics/${slug}`,
