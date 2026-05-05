@@ -164,47 +164,86 @@ export default function FirstLookPage() {
           </ul>
         </section>
 
-        {/* ORDER BUMP — DotCom Secrets Ch 12. The bump sits between the stack
-            and the CTA, after the visitor has seen the offer but before they
-            click. Bigger sibling at a real discount, framed as a one-time
-            decision. Russell calls this the "yes-and-also". */}
-        <aside
-          className="border-2 border-dashed border-emerald-500/60 bg-emerald-950/20 rounded-xl p-5 sm:p-6 space-y-3"
-          aria-label="Order bump"
+        {/* CHOOSE YOUR OFFER — Brunson order-bump pattern (DotCom Ch 12),
+            upgraded from a one-line preview to a side-by-side A/B card so
+            the buyer can SEE the bump as a deliberate choice, not a footnote.
+            Two cards, two prices, two CTAs. The smaller offer is pre-marked
+            as "most picked"; the bumped offer carries the savings flag. */}
+        <section
+          aria-label="Choose your First Look offer"
+          className="space-y-4"
         >
-          <div className="flex items-start gap-3">
-            <span aria-hidden="true" className="text-emerald-400 font-bold text-lg shrink-0 mt-0.5">
-              ☑
-            </span>
-            <div className="space-y-2">
-              <p className="text-emerald-300 text-[10px] sm:text-xs font-semibold uppercase tracking-wider">
-                Add to your order · Save €200
+          <div className="space-y-1">
+            <p className="text-gray-500 text-xs font-semibold uppercase tracking-wider">
+              Choose your offer
+            </p>
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-100">
+              Two ways to take the same 24-hour intake.
+            </h2>
+            <p className="text-gray-400 text-sm leading-relaxed">
+              The €7 First Look Pass works on its own. Or — only at this step —
+              you can bump to the full Sector Sweep for €200 off and skip the
+              upgrade later.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* Option A — €7 First Look (standard) */}
+            <div className="rounded-xl border-2 border-amber-500/60 bg-amber-950/15 p-5 sm:p-6 space-y-3 relative">
+              <span className="absolute -top-2.5 left-4 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-amber-500 text-slate-950">
+                Most picked
+              </span>
+              <p className="text-amber-300 text-[10px] sm:text-xs font-semibold uppercase tracking-wider pt-1">
+                Option A · First Look Pass
               </p>
-              <h3 className="text-gray-100 font-semibold text-lg leading-snug">
-                Bump up to the full Sector Sweep — €1,797 instead of €1,997
-              </h3>
-              <p className="text-gray-300 text-sm leading-relaxed">
-                Same 24-hour intake, but instead of the top-25 in one sector,
-                you get the <strong className="text-gray-100">full panel</strong>{" "}
-                — every venture-backed GitHub org in the sector, ranked across
-                three time windows, with a 60-minute walkthrough call and an
-                open follow-up Q&amp;A window. €13,000+ standalone value at €1,797
-                if you commit at this step. Mention{" "}
-                <code className="text-xs text-gray-200 bg-slate-900 px-1.5 py-0.5 rounded">
-                  FIRSTLOOK-BUMP
-                </code>{" "}
-                in the order field to lock the discount.
-              </p>
+              <div className="flex items-baseline gap-2">
+                <span className="text-3xl font-bold text-gray-100">€7</span>
+                <span className="text-gray-400 text-sm">one-time</span>
+              </div>
+              <ul className="space-y-1.5 text-gray-300 text-sm leading-relaxed">
+                <li className="flex gap-2"><span className="text-amber-400 shrink-0">✓</span> Top-25 ranked startups in one sector</li>
+                <li className="flex gap-2"><span className="text-amber-400 shrink-0">✓</span> Written PDF brief + raw CSV + JSON</li>
+                <li className="flex gap-2"><span className="text-amber-400 shrink-0">✓</span> 24-hour intake, weekday delivery</li>
+                <li className="flex gap-2"><span className="text-amber-400 shrink-0">✓</span> €7 credited if you upgrade Dashboard in 14d</li>
+              </ul>
               <a
-                href="https://buy.stripe.com/bJe14m34DbNC6gm1by0x204"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-emerald-300 hover:text-emerald-200 text-sm font-medium underline decoration-dotted underline-offset-2"
+                href={FIRSTLOOK_CHECKOUT}
+                className="block text-center w-full rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm py-3 transition-colors"
               >
-                Take the Sector Sweep instead — €1,797 →
+                Get the First Look Pass — €7 →
               </a>
             </div>
+
+            {/* Option B — €1,797 Sweep (bump) */}
+            <div className="rounded-xl border-2 border-dashed border-emerald-500/60 bg-emerald-950/15 p-5 sm:p-6 space-y-3 relative">
+              <span className="absolute -top-2.5 left-4 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-emerald-500 text-slate-950">
+                Save €200 — this step only
+              </span>
+              <p className="text-emerald-300 text-[10px] sm:text-xs font-semibold uppercase tracking-wider pt-1">
+                Option B · Bump to full Sector Sweep
+              </p>
+              <div className="flex items-baseline gap-2">
+                <span className="text-3xl font-bold text-gray-100">€1,797</span>
+                <span className="text-gray-500 line-through text-sm">€1,997</span>
+              </div>
+              <ul className="space-y-1.5 text-gray-300 text-sm leading-relaxed">
+                <li className="flex gap-2"><span className="text-emerald-400 shrink-0">✓</span> Full panel — every venture-backed org in the sector</li>
+                <li className="flex gap-2"><span className="text-emerald-400 shrink-0">✓</span> Three time windows (4w / 12w / 26w deltas)</li>
+                <li className="flex gap-2"><span className="text-emerald-400 shrink-0">✓</span> 60-minute walkthrough call + Q&amp;A window</li>
+                <li className="flex gap-2"><span className="text-emerald-400 shrink-0">✓</span> €13,000+ standalone value · 30-day guarantee</li>
+              </ul>
+              <a
+                href="https://buy.stripe.com/bJe14m34DbNC6gm1by0x204"
+                className="block text-center w-full rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-sm py-3 transition-colors"
+              >
+                Bump to Sector Sweep — €1,797 →
+              </a>
+              <p className="text-gray-400 text-[11px] leading-snug">
+                Mention <code className="bg-slate-900 px-1 py-0.5 rounded text-emerald-200">FIRSTLOOK-BUMP</code> in the order field. The €200 discount is only available from this page — the standard Sweep buyer pays €1,997.
+              </p>
+            </div>
           </div>
-        </aside>
+        </section>
 
         <section className="bg-gradient-to-br from-amber-950/30 via-slate-900 to-slate-950 border border-amber-700/40 rounded-xl p-6 sm:p-8 text-center space-y-4">
           <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider">

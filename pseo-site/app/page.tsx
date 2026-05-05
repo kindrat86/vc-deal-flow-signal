@@ -583,21 +583,6 @@ export default function Home() {
         },
       },
       {
-        "@type": "VideoObject",
-        name: "VC Deal Flow Signal MCP Server — Claude Desktop Demo",
-        description:
-          "Live demo of the VC Deal Flow Signal MCP server running inside Claude Desktop. Shows trending startups, sector search, and individual startup signal lookups via natural-language prompts.",
-        thumbnailUrl: "https://gitdealflow.com/mcp-demo.gif",
-        contentUrl: "https://gitdealflow.com/mcp-demo.mp4",
-        uploadDate: "2026-04-17",
-        duration: "PT1M12S",
-        publisher: {
-          "@type": "Organization",
-          name: "VC Deal Flow Signal",
-          url: "https://gitdealflow.com",
-        },
-      },
-      {
         "@type": "WebPage",
         "@id": "https://signals.gitdealflow.com/#webpage",
         url: "https://signals.gitdealflow.com",
@@ -1020,6 +1005,101 @@ export default function Home() {
           right rolodex. A world where capital finds builders faster is a
           world where better products get built.
         </p>
+        <p className="text-gray-300 text-sm sm:text-base leading-relaxed pt-2">
+          The enemy isn&rsquo;t a fund or a competitor. It&rsquo;s the{" "}
+          <strong className="text-amber-300">warm-intro roulette</strong>{" "}
+          — a sourcing system that rewards proximity to the right rolodex
+          and punishes builders who happen to live three time zones away.
+          We&rsquo;re replacing that roulette with a public, reproducible,
+          code-side signal anyone with curiosity can read.
+        </p>
+      </section>
+
+      {/* IDENTITY DECLARATION — Brunson Expert Secrets identity-belief.
+          This page already names "developer-investor" inside copy; this
+          block surfaces the identity formation as a standalone moment
+          before the pricing ladder. */}
+      <section
+        aria-label="Identity declaration"
+        className="my-8 rounded-xl border border-sky-700/40 bg-gradient-to-br from-sky-950/30 via-slate-900 to-slate-950 p-6 sm:p-8 space-y-3"
+      >
+        <p className="text-sky-300 text-xs font-semibold uppercase tracking-wider">
+          Who this is for
+        </p>
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug">
+          You&rsquo;re not a VC. You&rsquo;re a{" "}
+          <span className="text-sky-400">developer-investor</span>.
+        </h2>
+        <p className="text-gray-300 text-base leading-relaxed">
+          You read commit logs for fun. You write €5k–€50k checks on the side.
+          You don&rsquo;t want a fund-grade platform with a fund-grade contract
+          and a fund-grade price. You want a tool that fits the way you
+          actually source — Sunday email, Wednesday filter, end-of-quarter
+          deeper dive. Built around how you read software, not how a partner
+          reads pitch decks.
+        </p>
+      </section>
+
+      {/* DISQUALIFIER — "Who this is FOR / NOT FOR".
+          Traffic Secrets Ch 1 (dream customer). The polarization is the
+          point: telling the wrong reader to leave is what makes the right
+          reader trust the offer. */}
+      <section
+        aria-label="Who this is for / not for"
+        className="my-8 grid grid-cols-1 md:grid-cols-2 gap-4"
+      >
+        <div className="rounded-xl border border-emerald-700/40 bg-emerald-950/10 p-5 sm:p-6 space-y-3">
+          <p className="text-emerald-400 text-xs font-semibold uppercase tracking-wider">
+            ✓ This is for you if
+          </p>
+          <ul className="space-y-2 text-gray-300 text-sm leading-relaxed">
+            <li className="flex gap-2">
+              <span className="text-emerald-400 shrink-0">✓</span>
+              You write 5–40 angel checks a year and want one extra leading
+              indicator your network can&rsquo;t give you.
+            </li>
+            <li className="flex gap-2">
+              <span className="text-emerald-400 shrink-0">✓</span>
+              You scout for a fund and need a Monday memo your principal
+              respects, sourced from public, reproducible data.
+            </li>
+            <li className="flex gap-2">
+              <span className="text-emerald-400 shrink-0">✓</span>
+              You&rsquo;re a developer who occasionally writes checks and
+              wants the cleanest 5-name digest in your inbox every Sunday.
+            </li>
+            <li className="flex gap-2">
+              <span className="text-emerald-400 shrink-0">✓</span>
+              You read a methodology paper before you trust a metric.
+            </li>
+          </ul>
+        </div>
+        <div className="rounded-xl border border-rose-700/40 bg-rose-950/10 p-5 sm:p-6 space-y-3">
+          <p className="text-rose-400 text-xs font-semibold uppercase tracking-wider">
+            ✗ This is NOT for you if
+          </p>
+          <ul className="space-y-2 text-gray-300 text-sm leading-relaxed">
+            <li className="flex gap-2">
+              <span className="text-rose-400 shrink-0">✗</span>
+              You&rsquo;re a Series-B+ partner with a six-figure data budget —
+              Harmonic, Tracxn, and Affinity are built for you, not us.
+            </li>
+            <li className="flex gap-2">
+              <span className="text-rose-400 shrink-0">✗</span>
+              You want a tool that screens code-quality or runs founder
+              background checks — that&rsquo;s a different category.
+            </li>
+            <li className="flex gap-2">
+              <span className="text-rose-400 shrink-0">✗</span>
+              You source exclusively from warm intros and don&rsquo;t want a
+              cold path to founders. Engineering signal opens cold lanes.
+            </li>
+            <li className="flex gap-2">
+              <span className="text-rose-400 shrink-0">✗</span>
+              You believe public data has no edge. The <Link href="/perfect-webinar" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">Perfect Webinar</Link> argues the opposite. If it doesn&rsquo;t convince you, this isn&rsquo;t the tool.
+            </li>
+          </ul>
+        </div>
       </section>
 
       {/* Pricing ladder — visible on homepage so buyers don't have to hunt for

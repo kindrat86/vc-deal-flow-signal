@@ -232,6 +232,8 @@ export default async function ResearchFindingPage({ params }: PageProps) {
         "@type": "Dataset",
         "@id": `${SITE}/api/dataset.jsonl#dataset`,
         name: "VC Deal Flow Signal — public signals dataset",
+        description:
+          "Public weekly panel of GitHub-derived engineering signals across 20+ startup sectors. Each NDJSON record encodes commit-velocity rank, contributor growth, infrastructure-buildout flags, and sector-relative momentum for one startup-week. Source for every research finding on this site. CC BY 4.0.",
         url: `${SITE}/api/dataset.jsonl`,
         license: "https://creativecommons.org/licenses/by/4.0/",
       },

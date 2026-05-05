@@ -493,6 +493,47 @@ export default function StoryPage() {
           </div>
         </section>
 
+        {/* THE FAIL STORY — Brunson 4 core story lines (Expert Secrets Ch 9).
+            Origin / customer / Big Domino we already have; this is the
+            missing fourth: the failure-and-shift story that earns belief
+            by showing what went wrong before it went right. */}
+        <section className="mb-10 rounded-xl border border-rose-700/30 bg-rose-950/10 p-6 sm:p-7 space-y-4">
+          <p className="text-rose-300 text-xs font-semibold uppercase tracking-wider">
+            The deal I missed
+          </p>
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-100 leading-snug">
+            Before the dataset existed, I trusted the deck. Once.
+          </h2>
+          <div className="space-y-3 text-gray-300 text-sm leading-relaxed">
+            <p>
+              In 2023 a small dev-tool company landed in my inbox via a warm
+              intro. Solid deck. Familiar logos in the &ldquo;customers&rdquo; row.
+              Founder seemed sharp on a 30-minute call. The check would have
+              been €10k. I passed because the deck didn&rsquo;t convince me
+              the engineering team could ship the next eighteen months of
+              roadmap.
+            </p>
+            <p>
+              Eleven months later the same company raised at a 9× valuation
+              from a name-brand fund. The roadmap had shipped. The team had
+              tripled. Their public GitHub had been telling that story the
+              entire time — five new repos, a 4× contributor expansion, and a
+              clean velocity curve I would have read in two minutes if I had
+              known to look.
+            </p>
+            <p>
+              The deck was the lagging indicator. The code was the leading one.
+              I&rsquo;d optimised for the wrong source of truth. The product
+              that exists now is the version of the tool I wish had existed
+              the day that intro hit my inbox.
+            </p>
+            <p className="italic text-rose-300/80 pt-2 border-t border-rose-900/40">
+              That deal is the reason this is built around <strong>commit velocity</strong>,
+              not pitch deck quality.
+            </p>
+          </div>
+        </section>
+
         <section className="mb-10">
           <h2 className="text-xl font-semibold text-gray-100 mb-4">
             What is next

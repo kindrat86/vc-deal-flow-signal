@@ -159,6 +159,7 @@ export async function GET(_req: Request, ctx: RouteContext) {
         priority: 0.9,
       })),
       { url: `${BASE_URL}/install`, lastmod, changefreq: "monthly", priority: 0.85 },
+      { url: `${BASE_URL}/mcp-demo`, lastmod, changefreq: "monthly", priority: 0.7 },
       { url: `${BASE_URL}/leaderboard`, lastmod, changefreq: "hourly", priority: 0.85 },
       { url: `${BASE_URL}/agents`, lastmod, changefreq: "weekly", priority: 0.9 },
       { url: `${BASE_URL}/a2a`, lastmod, changefreq: "monthly", priority: 0.85 },

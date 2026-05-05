@@ -15,7 +15,7 @@ interface Props {
   stages: string[];
   geos: string[];
   signalTypes: string[];
-  tier: "dashboard" | "insider";
+  tier: "dashboard" | "insider" | "payg";
 }
 
 function useWatchlist() {

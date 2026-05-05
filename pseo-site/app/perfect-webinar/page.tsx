@@ -565,6 +565,123 @@ export default function PerfectWebinarPage() {
           </ul>
         </section>
 
+        {/* "IF ALL THIS DID" — Brunson's canonical trial close.
+            Expert Secrets Ch 16. Each line lowers the bar a notch and
+            re-anchors the price against a single high-value outcome. */}
+        <section className="space-y-4">
+          <h2 className="text-2xl font-bold text-gray-100">
+            And if you&rsquo;re still not sure — ask yourself this.
+          </h2>
+          <ul className="space-y-3 text-gray-300 text-base leading-relaxed">
+            <li className="border-l-4 border-amber-500 pl-5 py-1">
+              If all this did was surface{" "}
+              <strong className="text-amber-300">one name</strong> you would
+              otherwise have missed in the next 12 months — would €119.64
+              for the year be worth it?
+            </li>
+            <li className="border-l-4 border-amber-500 pl-5 py-1">
+              If all this did was give you a{" "}
+              <strong className="text-amber-300">15-minute Monday rhythm</strong>{" "}
+              you actually keep, instead of three open tabs you don&rsquo;t —
+              would €9.97/mo be worth it?
+            </li>
+            <li className="border-l-4 border-amber-500 pl-5 py-1">
+              If all this did was let you{" "}
+              <strong className="text-amber-300">reach one founder before the deck circulated</strong>,
+              and that founder remembered you when they took the meeting —
+              would the entire stack pay for itself?
+            </li>
+          </ul>
+          <p className="text-gray-400 text-sm leading-relaxed pt-1">
+            Brunson&rsquo;s trial-close rule: if the answer to any single line
+            is yes, the math is already done.
+          </p>
+        </section>
+
+        {/* THE FOUR CLOSES — Money / Identity / Pricing / Scarcity.
+            Expert Secrets Ch 18. These are the named close-stack patterns
+            Russell teaches; previously the page had one generic close. */}
+        <section
+          aria-label="Closes"
+          className="space-y-5 border-t border-slate-800 pt-8"
+        >
+          <h2 className="text-2xl font-bold text-gray-100">
+            The four closes — one of these is yours.
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* MONEY CLOSE */}
+            <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-5 sm:p-6 space-y-2">
+              <p className="text-emerald-400 text-[10px] font-semibold uppercase tracking-wider">
+                Money close
+              </p>
+              <h3 className="text-gray-100 font-semibold text-base">
+                The price isn&rsquo;t the cost. The deal you miss is.
+              </h3>
+              <p className="text-gray-300 text-sm leading-relaxed">
+                €9.97/mo is €119.64 a year. The expected cost of missing one
+                name that 8x&rsquo;s in five years — at a €5k angel check —
+                is €40,000. The math doesn&rsquo;t work the other way. You
+                are not buying a dashboard. You are insuring against a single
+                missed Monday.
+              </p>
+            </div>
+
+            {/* IDENTITY CLOSE */}
+            <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-5 sm:p-6 space-y-2">
+              <p className="text-sky-400 text-[10px] font-semibold uppercase tracking-wider">
+                Identity close
+              </p>
+              <h3 className="text-gray-100 font-semibold text-base">
+                You&rsquo;re not a VC. You&rsquo;re a developer-investor.
+              </h3>
+              <p className="text-gray-300 text-sm leading-relaxed">
+                Every other deal-flow tool is built for a partner at a fund
+                with a six-figure data budget. This one is built for the
+                person who reads commit logs for fun and writes €5k–€50k
+                checks on the side. If that&rsquo;s you, this isn&rsquo;t a
+                product you adapt. It&rsquo;s the first one designed around
+                your identity.
+              </p>
+            </div>
+
+            {/* PRICING CLOSE */}
+            <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-5 sm:p-6 space-y-2">
+              <p className="text-indigo-400 text-[10px] font-semibold uppercase tracking-wider">
+                Pricing close
+              </p>
+              <h3 className="text-gray-100 font-semibold text-base">
+                The whole stack is €1,728/yr. You&rsquo;re paying €119.64.
+              </h3>
+              <p className="text-gray-300 text-sm leading-relaxed">
+                We could charge €100/mo and the math would still work. We
+                picked €9.97 because we want builders, not budgets. The
+                €49/mo public price launches the Monday a regulated investor
+                tool reviews us — the founding-member rate locks before that
+                day. After it locks, you keep €9.97 for as long as you stay
+                subscribed.
+              </p>
+            </div>
+
+            {/* SCARCITY / URGENCY CLOSE */}
+            <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-5 sm:p-6 space-y-2">
+              <p className="text-rose-400 text-[10px] font-semibold uppercase tracking-wider">
+                Urgency close
+              </p>
+              <h3 className="text-gray-100 font-semibold text-base">
+                The window is the lead time, not the discount.
+              </h3>
+              <p className="text-gray-300 text-sm leading-relaxed">
+                The signal preceded fundraises by 21–47 days. Every Monday
+                you skip is a 21-to-47-day window that closes on five
+                specific names. The discount lock is real — €9.97 vs €49 —
+                but the harder scarcity is the deal flow, not the price.
+                Either it works for you in 30 days or you reply REFUND.
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* CLOSE */}
         <section
           id="close"
@@ -616,6 +733,63 @@ export default function PerfectWebinarPage() {
               <p className="text-gray-400 text-sm leading-relaxed">{f.a}</p>
             </div>
           ))}
+        </section>
+
+        {/* ENCORE CLOSE — Brunson "Perfect Webinar Hack" Ch 15.
+            Last-chance summary that re-stacks every promise into one block.
+            This is the thing the page was missing on the prior audit. */}
+        <section
+          aria-label="Encore — last-chance summary"
+          className="rounded-xl border border-amber-500/40 bg-gradient-to-br from-amber-950/30 via-slate-900 to-slate-950 p-6 sm:p-8 space-y-4"
+        >
+          <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider">
+            One more time, in one block
+          </p>
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug">
+            Here&rsquo;s the entire offer in eight lines.
+          </h2>
+          <ul className="space-y-2 text-gray-200 text-base leading-relaxed">
+            <li className="flex gap-3">
+              <span className="text-amber-400 shrink-0 font-bold">→</span>
+              <span>The full ranked dashboard of every venture-backed startup we track. Refreshed every Monday at 09:00 UTC.</span>
+            </li>
+            <li className="flex gap-3">
+              <span className="text-amber-400 shrink-0 font-bold">→</span>
+              <span>The Sunday digest before that — five names ranked by acceleration, with the chart, the percentile, and the decision rule.</span>
+            </li>
+            <li className="flex gap-3">
+              <span className="text-amber-400 shrink-0 font-bold">→</span>
+              <span>Direct CSV / JSON exports. Drop them into Notion, a Google Sheet, your own pipeline.</span>
+            </li>
+            <li className="flex gap-3">
+              <span className="text-amber-400 shrink-0 font-bold">→</span>
+              <span>The MCP server (six tools) for Claude / Cursor / any agent — read your portfolio against the live signal in plain English.</span>
+            </li>
+            <li className="flex gap-3">
+              <span className="text-amber-400 shrink-0 font-bold">→</span>
+              <span>The full SSRN methodology paper + Zenodo dataset. Reproduce the regression yourself. CC BY 4.0.</span>
+            </li>
+            <li className="flex gap-3">
+              <span className="text-amber-400 shrink-0 font-bold">→</span>
+              <span>30-day Signal-or-It&rsquo;s-Free guarantee. Reply REFUND. Two business days. No exit interview.</span>
+            </li>
+            <li className="flex gap-3">
+              <span className="text-amber-400 shrink-0 font-bold">→</span>
+              <span>Founding-member price <strong className="text-amber-300">locked forever</strong> at €9.97/mo. Public hike to €49/mo lands the day a regulated investor tool reviews us.</span>
+            </li>
+            <li className="flex gap-3">
+              <span className="text-amber-400 shrink-0 font-bold">→</span>
+              <span>One click. Stripe. The Monday digest, the dashboard, and the SSRN paper land in your inbox inside ten minutes.</span>
+            </li>
+          </ul>
+          <div className="border-t border-amber-700/30 pt-4 mt-4 flex items-baseline justify-between text-base">
+            <span className="text-gray-300">Standalone value of the stack</span>
+            <span className="text-emerald-400 font-bold">€1,728/yr</span>
+          </div>
+          <div className="flex items-baseline justify-between text-2xl font-bold">
+            <span className="text-gray-100">Your founding-member rate</span>
+            <span className="text-amber-300">€9.97/mo</span>
+          </div>
         </section>
 
         {/* FINAL CTA — never end on FAQ; close the loop. */}

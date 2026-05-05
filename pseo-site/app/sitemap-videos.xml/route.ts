@@ -14,6 +14,7 @@ export const revalidate = 86400;
 
 const APEX = "https://gitdealflow.com";
 const SIGNALS = "https://signals.gitdealflow.com";
+const WATCH_PAGE = `${SIGNALS}/mcp-demo`;
 
 interface VideoEntry {
   pageUrl: string;
@@ -43,7 +44,7 @@ function escapeXml(s: string): string {
 
 const VIDEOS: VideoEntry[] = [
   {
-    pageUrl: APEX,
+    pageUrl: WATCH_PAGE,
     title: "VC Deal Flow Signal MCP Server — Claude Desktop Demo",
     description:
       "Live demo of the VC Deal Flow Signal MCP server running inside Claude Desktop. Shows trending startups, sector search, and individual startup signal lookups via natural-language prompts. Free, no API key required.",
@@ -117,6 +118,3 @@ ${urlBlocks}
     },
   });
 }
-// Reference SIGNALS so the import isn't dead — page-canonical for the
-// signals subdomain is reserved here in case a sub-page video is added.
-void SIGNALS;
