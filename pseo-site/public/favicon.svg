@@ -1,78 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="GitDealFlow">
+  <title>GitDealFlow</title>
   <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#0f172a"/>
-      <stop offset="100%" style="stop-color:#1e293b"/>
+    <linearGradient id="g" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0ea5e9"/>
+      <stop offset="100%" stop-color="#4f46e5"/>
     </linearGradient>
-    <linearGradient id="signal" x1="0%" y1="100%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#0284c7"/>
-      <stop offset="50%" style="stop-color:#0ea5e9"/>
-      <stop offset="100%" style="stop-color:#38bdf8"/>
-    </linearGradient>
-    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#0ea5e9;stop-opacity:0"/>
-      <stop offset="50%" style="stop-color:#0ea5e9;stop-opacity:0.15"/>
-      <stop offset="100%" style="stop-color:#0ea5e9;stop-opacity:0"/>
-    </linearGradient>
-    <filter id="pulse-glow">
-      <feGaussianBlur stdDeviation="6" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-    <filter id="soft-glow">
-      <feGaussianBlur stdDeviation="12" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
   </defs>
-
-  <!-- Background circle -->
-  <circle cx="200" cy="200" r="200" fill="url(#bg)"/>
-
-  <!-- Subtle grid lines -->
-  <g stroke="#1e293b" stroke-width="0.5" opacity="0.5">
-    <line x1="60" y1="120" x2="340" y2="120"/>
-    <line x1="60" y1="170" x2="340" y2="170"/>
-    <line x1="60" y1="220" x2="340" y2="220"/>
-    <line x1="60" y1="270" x2="340" y2="270"/>
-  </g>
-
-  <!-- Accent dot at the spike peak -->
-  <circle cx="248" cy="105" r="18" fill="#0ea5e9" opacity="0.08" filter="url(#soft-glow)"/>
-
-  <!-- Signal line — the acceleration chart -->
-  <polyline
-    points="65,280 95,270 125,265 155,250 185,240 210,200 235,150 248,105 265,140 290,175 315,165 340,155"
-    fill="none"
-    stroke="url(#signal)"
-    stroke-width="5"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-    filter="url(#pulse-glow)"
-  />
-
-  <!-- Bright dot at the spike peak -->
-  <circle cx="248" cy="105" r="7" fill="#38bdf8" filter="url(#pulse-glow)"/>
-  <circle cx="248" cy="105" r="3.5" fill="#ffffff"/>
-
-  <!-- Small dots at data points -->
-  <circle cx="65" cy="280" r="2.5" fill="#0ea5e9" opacity="0.4"/>
-  <circle cx="125" cy="265" r="2.5" fill="#0ea5e9" opacity="0.5"/>
-  <circle cx="185" cy="240" r="2.5" fill="#0ea5e9" opacity="0.6"/>
-  <circle cx="340" cy="155" r="2.5" fill="#0ea5e9" opacity="0.7"/>
-
-  <!-- Subtle upward arrow hint at the end -->
-  <polyline
-    points="330,170 340,155 335,168"
-    fill="none"
-    stroke="#38bdf8"
-    stroke-width="2.5"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-    opacity="0.6"
+  <rect width="64" height="64" rx="14" ry="14" fill="url(#g)"/>
+  <path
+    fill="#020617"
+    d="M32 14.5c-9.665 0-17.5 7.835-17.5 17.5s7.835 17.5 17.5 17.5c4.46 0 8.531-1.668 11.624-4.41a2.5 2.5 0 0 0 .876-1.9V32a2.5 2.5 0 0 0-2.5-2.5H32a2.5 2.5 0 1 0 0 5h7v6.5a12.5 12.5 0 1 1 .91-13.94 2.5 2.5 0 1 0 4.42-2.34A17.49 17.49 0 0 0 32 14.5z"
   />
 </svg>
