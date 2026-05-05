@@ -2,12 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPost, getAllPostSlugs, posts } from "@/content/posts";
-import { getAllSectors, getCurrentPeriod } from "@/lib/data";
+import { getAllSectors, getCurrentPeriod, getDataLastModified } from "@/lib/data";
 import { getAuthor } from "@/content/authors";
 import { slugify } from "@/lib/slugify";
+import { getSectorWikidata } from "@/lib/sector-wikidata";
 import { getPillarForPost, getPostsInPillar } from "@/content/pillars";
 import figureRegistry from "@/components/figures";
 import StatCallout from "@/components/StatCallout";
+import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -16,6 +18,9 @@ interface PageProps {
 export async function generateStaticParams() {
   return getAllPostSlugs().map((slug) => ({ slug }));
 }
+
+export const dynamicParams = false;
+export const revalidate = 604800;
 
 /**
  * Post-to-author override map. Most posts are authored by the default persona;
@@ -36,6 +41,11 @@ export async function generateMetadata({
   const post = getPost(slug);
   if (!post) return {};
 
+  // Mirror the JSON-LD dateModified policy: data refresh bumps freshness even
+  // if prose is unchanged, so social cards advertise an accurate "modified".
+  const dataLastMod = getDataLastModified().toISOString().slice(0, 10);
+  const modifiedTime = dataLastMod > post.date ? dataLastMod : post.date;
+
   return {
     title: post.title,
     description: post.description,
@@ -44,6 +54,8 @@ export async function generateMetadata({
       description: post.description,
       type: "article",
       publishedTime: post.date,
+      modifiedTime,
+      authors: ["VC Deal Flow Signal Editorial"],
     },
     twitter: {
       card: "summary_large_image",
@@ -107,17 +119,114 @@ export default async function BlogPostPage({ params }: PageProps) {
     }
   }
 
+  // Word count (approximate, body only). BlogPosting + wordCount is the
+  // pair Google Discover uses for length-aware ranking, and many AI
+  // retrieval pipelines use it for chunk budgeting.
+  const wordCount = post.body.trim().split(/\s+/).length;
+  // Reading time at 230 wpm (median English non-fiction).
+  const timeRequired = `PT${Math.max(1, Math.round(wordCount / 230))}M`;
+  // Google News eligibility: surface NewsArticle as a secondary type for
+  // posts published within the last 30 days. Schema.org @type accepts a
+  // string or array — Google's news classifier reads NewsArticle, blog
+  // discovery still reads BlogPosting. Older posts gracefully drop the
+  // NewsArticle type to avoid polluting Google News with evergreen content.
+  const POST_AGE_MS = Date.now() - new Date(post.date).getTime();
+  const NEWS_WINDOW_MS = 30 * 24 * 60 * 60 * 1000;
+  const isNewsEligible = POST_AGE_MS >= 0 && POST_AGE_MS <= NEWS_WINDOW_MS;
+  const articleTypes: string | string[] = isNewsEligible
+    ? ["BlogPosting", "NewsArticle"]
+    : "BlogPosting";
+  // Pull related sectors as `mentions` entities to enrich the knowledge
+  // graph link from the post into the sector entity. Each mention is
+  // anchored to its Wikidata QID via `sameAs` so AI engines and the
+  // Google Knowledge Graph can resolve "machine learning" / "fintech" /
+  // etc. to canonical entity URIs rather than free-text labels.
+  const mentions = (post.relatedSectors || []).map((slug) => {
+    const wikidataUri = getSectorWikidata(slug);
+    const base = {
+      "@type": "Thing" as const,
+      name: slug.replace(/-/g, " "),
+      url: `https://signals.gitdealflow.com/topics/${slug}`,
+    };
+    return wikidataUri ? { ...base, sameAs: [wikidataUri] } : base;
+  });
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "Article",
+        "@type": articleTypes,
+        "@id": `https://signals.gitdealflow.com/blog/${post.slug}#article`,
         headline: post.title,
+        alternativeHeadline: post.summary?.slice(0, 110) ?? post.description,
+        name: post.title,
         description: post.description,
+        abstract: post.summary,
+        url: `https://signals.gitdealflow.com/blog/${post.slug}`,
+        mainEntityOfPage: {
+          "@type": "WebPage",
+          "@id": `https://signals.gitdealflow.com/blog/${post.slug}`,
+        },
+        image: {
+          "@type": "ImageObject",
+          url: "https://signals.gitdealflow.com/opengraph-image",
+          width: 1200,
+          height: 630,
+        },
+        inLanguage: "en-US",
+        isAccessibleForFree: true,
+        isFamilyFriendly: true,
+        license: "https://creativecommons.org/licenses/by/4.0/",
+        copyrightHolder: { "@id": "https://gitdealflow.com/#organization" },
+        copyrightYear: new Date(post.date).getUTCFullYear(),
+        copyrightNotice:
+          "© VC Deal Flow Signal (GitDealFlow). Released under CC BY 4.0 with attribution.",
+        wordCount,
+        timeRequired,
         datePublished: post.date,
-        dateModified: post.date,
+        // dateModified = max(post.date, dataset refresh). Stable post-content
+        // hasn't changed, but the underlying signals dataset that the post
+        // references gets weekly refreshes — Google Discover and AI Overviews
+        // weight recency, so reflecting the data refresh keeps the article
+        // "fresh" without lying about the prose.
+        dateModified: (() => {
+          const dataLastMod = getDataLastModified().toISOString().slice(0, 10);
+          return dataLastMod > post.date ? dataLastMod : post.date;
+        })(),
+        reviewedBy: {
+          "@type": "Organization",
+          "@id": "https://gitdealflow.com/#organization",
+          name: "VC Deal Flow Signal Editorial",
+          url: "https://gitdealflow.com",
+        },
+        // lastReviewed is part of schema.org's WebPage profile but Google AI
+        // Overviews + Search treat it as a freshness signal on Article-typed
+        // entities too. Mirrors dateModified so AI engines can confirm the
+        // article surfaces this week's signal data.
+        lastReviewed: (() => {
+          const dataLastMod = getDataLastModified().toISOString().slice(0, 10);
+          return dataLastMod > post.date ? dataLastMod : post.date;
+        })(),
+        ...(mentions.length > 0 ? { mentions } : {}),
+        ...(post.references && post.references.length > 0
+          ? {
+              citation: post.references.map((r) => ({
+                "@type": "CreativeWork",
+                name: r.title,
+                url: r.url,
+                publisher: r.source,
+              })),
+            }
+          : {}),
+        audience: {
+          "@type": "Audience",
+          audienceType: "Venture capital investors and operators",
+          name: "Investors evaluating engineering-led startups",
+        },
+        discussionUrl: `https://signals.gitdealflow.com/blog/${post.slug}#comments`,
         author: {
           "@type": "Person",
+          "@id": "https://signals.gitdealflow.com/about#person",
           name: author.name,
           url: author.url,
           jobTitle: author.jobTitle,
@@ -131,13 +240,19 @@ export default async function BlogPostPage({ params }: PageProps) {
         },
         publisher: {
           "@type": "Organization",
+          "@id": "https://gitdealflow.com/#organization",
           name: "VC Deal Flow Signal",
           url: "https://gitdealflow.com",
-          logo: "https://signals.gitdealflow.com/opengraph-image",
+          logo: {
+            "@type": "ImageObject",
+            url: "https://signals.gitdealflow.com/icon.png",
+            width: 192,
+            height: 192,
+          },
         },
         speakable: {
           "@type": "SpeakableSpecification",
-          cssSelector: ["[aria-label='Summary']", "h1"],
+          cssSelector: ["[aria-label='Summary']", "h1", ".speakable", "[data-agent-summary]"],
         },
         ...(pillar
           ? {
@@ -336,6 +451,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <AgentMirrorLinks path={`/blog/${post.slug}`} qaCategory="blog" />
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Breadcrumb */}
