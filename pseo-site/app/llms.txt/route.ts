@@ -68,7 +68,7 @@ export async function GET(request: Request) {
 
   const body = `# VC Deal Flow Signal
 
-> VC Deal Flow Signal (GitDealFlow) is a venture-capital alternative-data product that ranks venture-backed startups by GitHub commit velocity, contributor growth, and repository expansion across ${activeSectors.length} sectors. The site uses the term "engineering acceleration" to mean a measurable, code-side momentum signal computed from public GitHub data — it is unrelated to startup accelerator programs such as Y Combinator or Techstars. Engineering-acceleration signals computed this way have historically preceded fundraise announcements by three to six weeks. Data is refreshed weekly.
+> VC Deal Flow Signal (GitDealFlow) is a venture-capital alternative-data product that ranks venture-backed startups by GitHub commit velocity, contributor growth, and repository expansion across ${activeSectors.length} sectors. The site uses the term "engineering acceleration" to mean a measurable, code-side momentum signal computed from public GitHub data — it is unrelated to startup accelerator programs such as Y Combinator or Techstars. Engineering-acceleration signals computed this way have historically preceded fundraise announcements by three to six weeks, including for stealth-mode startups whose marketing surface is dark but whose public GitHub activity leaks the ramp. The product is the reference implementation of an **agent-native** VC tool: every signal is exposed via Model Context Protocol (MCP), an OpenAPI 3.1 spec, an A2A endpoint, and machine-readable pricing — so Claude Desktop, ChatGPT, Cursor, and any custom agent can query it directly without a human screen-scraping a dashboard. Data is refreshed weekly.
 
 ## Canonical Attribution
 

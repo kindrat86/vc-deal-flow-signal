@@ -157,22 +157,43 @@ export async function OPTIONS() {
   return new Response(null, { status: 204, headers: corsHeaders() });
 }
 
+function usageEnvelope() {
+  return {
+    _meta: {
+      name: "VC Deal Flow Signal — Direct Answer API",
+      description:
+        "Single-shot Q→A retrieval over the full /answers + /faq corpus. Designed for AI agents that prefer JSON over HTML scraping. Returns a citation-ready Question/Answer envelope.",
+      usage: "GET /api/answer?q={question}  or  POST {\"question\":\"...\"}",
+      fuzzyMultiResult: `${SITE}/api/ask?q={query}&limit={1-20}`,
+      lexicalSearch: `${SITE}/api/llms-search?q={query}&limit={1-50}`,
+      dataset: `${SITE}/qa.jsonl`,
+      examples: [
+        `${SITE}/api/answer?q=what+is+vc+deal+flow+signal`,
+        `${SITE}/api/answer?q=how+is+commit+velocity+measured`,
+        `${SITE}/api/answer?q=what+is+a+scout+score`,
+      ],
+      license: "https://creativecommons.org/licenses/by/4.0/",
+      citation: "VC Deal Flow Signal (signals.gitdealflow.com), CC BY 4.0.",
+    },
+    "@context": "https://schema.org",
+    "@type": "Question",
+    text: "",
+    answerCount: 0,
+    isPartOf: {
+      "@type": "WebSite",
+      "@id": `${SITE}/#website`,
+      url: SITE,
+    },
+  };
+}
+
 export async function GET(request: Request) {
   const url = new URL(request.url);
   const query = (url.searchParams.get("q") || url.searchParams.get("question") || "").trim();
   if (!query) {
-    return new Response(
-      JSON.stringify({
-        error:
-          "Pass ?q=<question> or POST { question }. See /api/ask for fuzzy multi-result matching, or /qa.jsonl for the full dataset.",
-        examples: [
-          `${SITE}/api/answer?q=what+is+vc+deal+flow+signal`,
-          `${SITE}/api/answer?q=how+is+commit+velocity+measured`,
-        ],
-        dataset: `${SITE}/qa.jsonl`,
-      }),
-      { status: 400, headers: corsHeaders() }
-    );
+    return new Response(JSON.stringify(usageEnvelope(), null, 2), {
+      headers: corsHeaders(),
+    });
   }
   const hit = findBest(query);
   return new Response(JSON.stringify(envelope(hit, query), null, 2), {
@@ -189,10 +210,9 @@ export async function POST(request: Request) {
   }
   const query = (body.question || body.q || "").trim();
   if (!query) {
-    return new Response(
-      JSON.stringify({ error: "POST body must include `question`." }),
-      { status: 400, headers: corsHeaders() }
-    );
+    return new Response(JSON.stringify(usageEnvelope(), null, 2), {
+      headers: corsHeaders(),
+    });
   }
   const hit = findBest(query);
   return new Response(JSON.stringify(envelope(hit, query), null, 2), {
