@@ -4,6 +4,8 @@ import { posts } from "@/content/posts";
 import { getAllSectors, getCurrentPeriod } from "@/lib/data";
 import PSEOFooterNav from "@/components/PSEOFooterNav";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { HreflangLinks } from "@/components/HreflangLinks";
+import { getHreflangLanguages } from "@/lib/hreflang";
 
 export const metadata: Metadata = {
   title: "Frequently Asked Questions — VC Deal Flow Signal",
@@ -127,6 +129,7 @@ export default function FAQPage() {
 
   return (
     <>
+      <HreflangLinks languages={getHreflangLanguages("/faq")} />
       <AgentMirrorLinks path="/faq" qaCategory="general" />
       <script
         type="application/ld+json"

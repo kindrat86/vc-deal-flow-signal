@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentSummary } from "@/components/AgentSummary";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { HreflangLinks } from "@/components/HreflangLinks";
+import { getHreflangLanguages } from "@/lib/hreflang";
 import { getDataLastModified } from "@/lib/data";
 import PSEOFooterNav from "@/components/PSEOFooterNav";
 
@@ -241,6 +243,7 @@ export default function MethodologyPage() {
 
   return (
     <>
+      <HreflangLinks languages={getHreflangLanguages("/methodology")} />
       <AgentMirrorLinks path="/methodology" qaCategory="methodology" />
       <script
         type="application/ld+json"

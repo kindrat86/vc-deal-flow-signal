@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { HreflangLinks } from "@/components/HreflangLinks";
+import { getHreflangLanguages } from "@/lib/hreflang";
 
 export const metadata: Metadata = {
   title: "Glossary — VC Deal Flow Signal Terms & Definitions",
@@ -135,6 +137,7 @@ export default function GlossaryPage() {
 
   return (
     <>
+      <HreflangLinks languages={getHreflangLanguages("/glossary")} />
       <AgentMirrorLinks path="/glossary" qaCategory="general" />
       <script
         type="application/ld+json"

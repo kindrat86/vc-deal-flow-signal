@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { FINDINGS, type Finding } from "@/content/research-findings";
+import { HreflangLinks } from "@/components/HreflangLinks";
+import { getHreflangLanguages } from "@/lib/hreflang";
 
 const SITE = "https://signals.gitdealflow.com";
 const SSRN_URL = "https://ssrn.com/abstract=6606558";
@@ -193,6 +195,7 @@ export default function ResearchPage() {
 
   return (
     <>
+      <HreflangLinks languages={getHreflangLanguages("/research")} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllSectors, getCurrentPeriod, getAllPeriods } from "@/lib/data";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { HreflangLinks } from "@/components/HreflangLinks";
+import { getHreflangLanguages } from "@/lib/hreflang";
 
 export const metadata: Metadata = {
   title: "About VC Deal Flow Signal — Who We Are & How It Works",
@@ -207,6 +209,7 @@ export default function AboutPage() {
 
   return (
     <>
+      <HreflangLinks languages={getHreflangLanguages("/about")} />
       <AgentMirrorLinks path="/about" qaCategory="general" />
       <script
         type="application/ld+json"
