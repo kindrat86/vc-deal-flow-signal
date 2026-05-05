@@ -1,62 +1,144 @@
 const BASE_URL = "https://signals.gitdealflow.com";
 
+export const dynamic = "force-static";
+export const runtime = "nodejs";
+export const revalidate = 3600;
+
 export async function GET() {
   const spec = {
     openapi: "3.1.0",
     info: {
       title: "VC Deal Flow Signal API",
-      version: "1.0.0",
+      version: "1.1.0",
       description:
-        "Public API for startup engineering acceleration data. Provides weekly-updated rankings of startups by GitHub commit velocity, contributor growth, and signal classification across 20 sectors.",
+        "Public API for startup engineering acceleration data. Weekly-updated rankings of startups by GitHub commit velocity, contributor growth, and signal classification across 20 sectors. CC BY 4.0 attribution. No auth required for free endpoints; the paid Deep Signal endpoint uses a per-request credit-pack key delivered after Stripe checkout.",
       contact: { email: "signal@gitdealflow.com" },
       license: {
-        name: "Free with attribution",
-        url: `${BASE_URL}/terms`,
+        name: "Free with attribution (CC BY 4.0)",
+        url: "https://creativecommons.org/licenses/by/4.0/",
       },
+      "x-citation":
+        "VC Deal Flow Signal (signals.gitdealflow.com), Q2 2026 data. SSRN: 6606558.",
     },
     servers: [{ url: BASE_URL }],
+    tags: [
+      { name: "signals", description: "Startup engineering acceleration data" },
+      { name: "agents", description: "Agent / MCP discovery surfaces" },
+      { name: "answer", description: "Citation-ready Q&A retrieval" },
+      { name: "search", description: "On-site search across all content" },
+      { name: "scout", description: "Scout score receipts and prediction" },
+      { name: "markets", description: "Open prediction markets" },
+      { name: "citation", description: "Reference-manager exports" },
+      { name: "badges", description: "SVG badges for embeds" },
+      { name: "deep-signal", description: "Paid per-request enriched signals" },
+      { name: "meta", description: "Pricing, changelog, dataset" },
+    ],
     paths: {
       "/api/signals.json": {
         get: {
+          tags: ["signals"],
           operationId: "getSignals",
-          summary: "Get all startup engineering signals",
+          summary: "Full snapshot of startup engineering signals (free)",
           description:
-            "Returns the current period's startup signals: trending top 20, sector-by-sector rankings with commit velocity, contributor growth, signal classification, and metadata.",
+            "Returns the current period's data: meta, top-20 trending, and per-sector rankings with commit velocity, contributor growth, and signal classification.",
           responses: {
             "200": {
               description: "Successful response with all signal data",
               content: {
                 "application/json": {
+                  schema: { $ref: "#/components/schemas/SignalsResponse" },
+                },
+              },
+            },
+          },
+        },
+      },
+      "/api/signals.csv": {
+        get: {
+          tags: ["signals"],
+          operationId: "getSignalsCSV",
+          summary: "Same data as signals.json in CSV form",
+          responses: {
+            "200": {
+              description: "CSV file with all startup signals",
+              content: { "text/csv": { schema: { type: "string" } } },
+            },
+          },
+        },
+      },
+      "/api/signal": {
+        get: {
+          tags: ["signals"],
+          operationId: "getSingleSignal",
+          summary: "Single startup signal by company name",
+          parameters: [
+            {
+              name: "company",
+              in: "query",
+              required: true,
+              schema: { type: "string", minLength: 1, maxLength: 80 },
+              description: "Display name or GitHub org slug. Case-insensitive fuzzy match.",
+            },
+          ],
+          responses: {
+            "200": {
+              description: "Best-match startup or { found: false }.",
+              content: {
+                "application/json": {
+                  schema: { $ref: "#/components/schemas/Startup" },
+                },
+              },
+            },
+            "400": { description: "Missing company parameter." },
+            "429": { description: "Rate limited (30/min/IP)." },
+          },
+        },
+      },
+      "/api/answer": {
+        get: {
+          tags: ["answer"],
+          operationId: "getAnswer",
+          summary: "Single best answer to a question (citation-ready)",
+          description:
+            "Single-shot retrieval over the agent-query corpus + standalone FAQs. Returns the best match with confidence, supporting facts, and a canonical URL for verification. Designed for ChatGPT custom GPTs, Claude tool use, Perplexity actions.",
+          parameters: [
+            { name: "q", in: "query", required: true, schema: { type: "string", maxLength: 280 } },
+          ],
+          responses: {
+            "200": {
+              description: "Top answer hit",
+              content: {
+                "application/json": {
+                  schema: { $ref: "#/components/schemas/AnswerHit" },
+                },
+              },
+            },
+          },
+        },
+      },
+      "/api/ask": {
+        get: {
+          tags: ["answer"],
+          operationId: "askQuestion",
+          summary: "Top-N ranked candidates for a question",
+          description:
+            "Sibling of /api/answer. Returns ranked candidates instead of a single best match, for autocomplete UX or comparison.",
+          parameters: [
+            { name: "q", in: "query", required: true, schema: { type: "string", maxLength: 280 } },
+            { name: "limit", in: "query", required: false, schema: { type: "integer", minimum: 1, maximum: 20, default: 5 } },
+          ],
+          responses: {
+            "200": {
+              description: "Ranked candidates",
+              content: {
+                "application/json": {
                   schema: {
                     type: "object",
                     properties: {
-                      meta: {
-                        type: "object",
-                        properties: {
-                          name: { type: "string" },
-                          period: {
-                            type: "object",
-                            properties: {
-                              slug: { type: "string" },
-                              name: { type: "string" },
-                            },
-                          },
-                          totalSectors: { type: "integer" },
-                          totalStartups: { type: "integer" },
-                          lastUpdated: {
-                            type: "string",
-                            format: "date-time",
-                          },
-                          citation: { type: "string" },
-                        },
-                      },
-                      trending: {
+                      query: { type: "string" },
+                      hits: {
                         type: "array",
-                        items: { $ref: "#/components/schemas/Startup" },
-                      },
-                      sectors: {
-                        type: "array",
-                        items: { $ref: "#/components/schemas/Sector" },
+                        items: { $ref: "#/components/schemas/AnswerHit" },
                       },
                     },
                   },
@@ -66,26 +148,221 @@ export async function GET() {
           },
         },
       },
-      "/api/signals.csv": {
+      "/api/llms-search": {
         get: {
-          operationId: "getSignalsCSV",
-          summary: "Get all startup signals as CSV",
+          tags: ["search"],
+          operationId: "llmsSearch",
+          summary: "Site-wide semantic-ish search across all content",
           description:
-            "Returns the same data as /api/signals.json in CSV format for spreadsheet and data science consumption.",
+            "Token-overlap search across startups, sectors, blog posts, comparisons, agent queries, FAQs, and research findings. Returns ranked URLs with snippets for LLM retrieval.",
+          parameters: [
+            { name: "q", in: "query", required: true, schema: { type: "string", maxLength: 280 } },
+            { name: "type", in: "query", required: false, schema: { type: "string", enum: ["startup", "sector", "blog", "comparison", "answer", "faq", "research"] } },
+            { name: "limit", in: "query", required: false, schema: { type: "integer", minimum: 1, maximum: 50, default: 10 } },
+          ],
           responses: {
             "200": {
-              description: "CSV file with all startup signals",
+              description: "Ranked search hits",
               content: {
-                "text/csv": {
-                  schema: { type: "string" },
+                "application/json": {
+                  schema: {
+                    type: "object",
+                    properties: {
+                      query: { type: "string" },
+                      total: { type: "integer" },
+                      hits: { type: "array", items: { $ref: "#/components/schemas/SearchHit" } },
+                    },
+                  },
                 },
               },
             },
           },
         },
       },
+      "/api/agents.json": {
+        get: {
+          tags: ["agents"],
+          operationId: "getAgentsCatalog",
+          summary: "MCP / A2A skill catalog",
+          description: "Mirror of /.well-known/agent-card.json — full skill list with examples and tags.",
+          responses: {
+            "200": {
+              description: "Agent skill catalog",
+              content: { "application/json": { schema: { type: "object", additionalProperties: true } } },
+            },
+          },
+        },
+      },
+      "/api/agent/tools": {
+        get: {
+          tags: ["agents"],
+          operationId: "getAgentTools",
+          summary: "JSON-Schema tool definitions for direct LLM tool-use",
+          description: "Tool definitions in OpenAI / Anthropic tool-use format — drop into your agent runtime as-is.",
+          responses: {
+            "200": {
+              description: "Array of tool definitions",
+              content: { "application/json": { schema: { type: "object", additionalProperties: true } } },
+            },
+          },
+        },
+      },
+      "/api/answers.json": {
+        get: {
+          tags: ["answer"],
+          operationId: "getAnswersCorpus",
+          summary: "Full Q&A corpus (agent-queries + FAQs)",
+          description: "Bulk dump of every agent query and standalone FAQ for offline embedding / fine-tuning.",
+          responses: {
+            "200": {
+              description: "Q&A corpus",
+              content: { "application/json": { schema: { type: "object", additionalProperties: true } } },
+            },
+          },
+        },
+      },
+      "/api/changelog.json": {
+        get: {
+          tags: ["meta"],
+          operationId: "getChangelog",
+          summary: "Machine-readable changelog",
+          responses: {
+            "200": {
+              description: "Changelog entries",
+              content: { "application/json": { schema: { type: "object", additionalProperties: true } } },
+            },
+          },
+        },
+      },
+      "/api/dataset.jsonl": {
+        get: {
+          tags: ["signals"],
+          operationId: "getDatasetJsonl",
+          summary: "Full per-startup dataset (NDJSON)",
+          description:
+            "Newline-delimited JSON dump suitable for streaming into pandas, DuckDB, or a training pipeline. CC BY 4.0.",
+          responses: {
+            "200": {
+              description: "JSONL stream",
+              content: { "application/x-ndjson": { schema: { type: "string" } } },
+            },
+          },
+        },
+      },
+      "/api/receipts/{username}": {
+        get: {
+          tags: ["scout"],
+          operationId: "getScoutReceipts",
+          summary: "Scout Score for a GitHub user (0-100)",
+          description:
+            "Backwards-looking proof of taste: how many validated unicorns did this user star *before* the funding/$1B/acquisition event?",
+          parameters: [
+            { name: "username", in: "path", required: true, schema: { type: "string", minLength: 1, maxLength: 39 } },
+          ],
+          responses: {
+            "200": {
+              description: "Scout score with personality + breakdown",
+              content: { "application/json": { schema: { type: "object", additionalProperties: true } } },
+            },
+            "400": { description: "Invalid GitHub username." },
+            "429": { description: "Rate limited (10/min/IP)." },
+          },
+        },
+      },
+      "/api/markets/{slug}": {
+        get: {
+          tags: ["markets"],
+          operationId: "getMarket",
+          summary: "Open prediction market with candidates",
+          description:
+            "Returns the market question, resolver, source-of-truth, and ranked candidates with current signal data.",
+          parameters: [
+            { name: "slug", in: "path", required: true, schema: { type: "string" } },
+          ],
+          responses: {
+            "200": {
+              description: "Market payload",
+              content: { "application/json": { schema: { type: "object", additionalProperties: true } } },
+            },
+            "404": { description: "Market not found — response includes the available list." },
+          },
+        },
+      },
+      "/api/cite/{format}/{slug}": {
+        get: {
+          tags: ["citation"],
+          operationId: "getCitation",
+          summary: "Reference-manager export for a finding or the SSRN paper",
+          description:
+            "Reference-manager export. Use slug=paper for the SSRN paper, slug=dataset for the dataset, or any /research/[slug] finding slug.",
+          parameters: [
+            { name: "format", in: "path", required: true, schema: { type: "string", enum: ["bibtex", "ris", "apa", "mla", "chicago", "wikipedia"] } },
+            { name: "slug", in: "path", required: true, schema: { type: "string" } },
+          ],
+          responses: {
+            "200": {
+              description: "Citation as plain text",
+              content: { "text/plain": { schema: { type: "string" } } },
+            },
+            "404": { description: "Unknown format or slug." },
+          },
+        },
+      },
+      "/api/v1/pricing.json": {
+        get: {
+          tags: ["meta"],
+          operationId: "getPricing",
+          summary: "Versioned pricing table (machine-readable)",
+          description:
+            "Stable v1 pricing surface for affiliates, partner directories, and AI agents. Tier slugs are stable; price values may change.",
+          responses: {
+            "200": {
+              description: "Pricing tiers + currency + as-of timestamp",
+              content: { "application/json": { schema: { type: "object", additionalProperties: true } } },
+            },
+          },
+        },
+      },
+      "/api/badge/scout/{username}/svg": {
+        get: {
+          tags: ["badges"],
+          operationId: "getScoutBadge",
+          summary: "Scout-Score SVG badge for a GitHub user",
+          parameters: [
+            { name: "username", in: "path", required: true, schema: { type: "string" } },
+          ],
+          responses: {
+            "200": { description: "SVG badge", content: { "image/svg+xml": { schema: { type: "string" } } } },
+          },
+        },
+      },
+      "/api/badge/built-with/svg": {
+        get: {
+          tags: ["badges"],
+          operationId: "getBuiltWithBadge",
+          summary: "\"Built with VC Deal Flow Signal\" SVG badge",
+          responses: {
+            "200": { description: "SVG badge", content: { "image/svg+xml": { schema: { type: "string" } } } },
+          },
+        },
+      },
+      "/api/badge/momentum/{org}/{repo}/svg": {
+        get: {
+          tags: ["badges"],
+          operationId: "getMomentumBadge",
+          summary: "Repo momentum SVG badge",
+          parameters: [
+            { name: "org", in: "path", required: true, schema: { type: "string" } },
+            { name: "repo", in: "path", required: true, schema: { type: "string" } },
+          ],
+          responses: {
+            "200": { description: "SVG badge", content: { "image/svg+xml": { schema: { type: "string" } } } },
+          },
+        },
+      },
       "/api/agent/deep-signal": {
         post: {
+          tags: ["deep-signal"],
           operationId: "getDeepSignal",
           summary: "Get deep enriched signal (paid, per-request)",
           description:
@@ -126,22 +403,16 @@ export async function GET() {
                 },
               },
             },
-            "401": {
-              description: "Missing or invalid API key (gdf_v2.<customerId>.<hmac>).",
-            },
-            "402": {
-              description:
-                "Insufficient credits. Top up at https://signals.gitdealflow.com/agents/credits.",
-            },
+            "401": { description: "Missing or invalid API key." },
+            "402": { description: "Insufficient credits." },
           },
         },
       },
       "/api/account/credits": {
         get: {
+          tags: ["deep-signal"],
           operationId: "getCredits",
           summary: "Check credit balance for an API key",
-          description:
-            "Returns the current balance plus lifetime purchased and consumed counters for the customer that owns the bearer token.",
           security: [{ creditPackKey: [] }],
           responses: {
             "200": {
@@ -154,10 +425,7 @@ export async function GET() {
                       balance: { type: "integer", minimum: 0 },
                       purchased: { type: "integer", minimum: 0 },
                       consumed: { type: "integer", minimum: 0 },
-                      lastConsumedAt: {
-                        type: ["string", "null"],
-                        format: "date-time",
-                      },
+                      lastConsumedAt: { type: ["string", "null"], format: "date-time" },
                       purchaseUrl: { type: "string", format: "uri" },
                     },
                   },
@@ -168,41 +436,62 @@ export async function GET() {
           },
         },
       },
+      "/api/scout/predict": {
+        get: {
+          tags: ["scout"],
+          operationId: "getScoutPrediction",
+          summary: "Forward-looking scout prediction (experimental)",
+          description: "Predicts which currently-tracked startups a given GitHub user is most likely to bet on next, using their starring history.",
+          parameters: [
+            { name: "username", in: "query", required: true, schema: { type: "string" } },
+          ],
+          responses: {
+            "200": {
+              description: "Ranked predictions",
+              content: { "application/json": { schema: { type: "object", additionalProperties: true } } },
+            },
+          },
+        },
+      },
     },
     components: {
       schemas: {
+        SignalsResponse: {
+          type: "object",
+          properties: {
+            meta: {
+              type: "object",
+              properties: {
+                name: { type: "string" },
+                period: {
+                  type: "object",
+                  properties: {
+                    slug: { type: "string" },
+                    name: { type: "string" },
+                  },
+                },
+                totalSectors: { type: "integer" },
+                totalStartups: { type: "integer" },
+                lastUpdated: { type: "string", format: "date-time" },
+                citation: { type: "string" },
+              },
+            },
+            trending: { type: "array", items: { $ref: "#/components/schemas/Startup" } },
+            sectors: { type: "array", items: { $ref: "#/components/schemas/Sector" } },
+          },
+        },
         Startup: {
           type: "object",
           properties: {
             name: { type: "string" },
             description: { type: "string" },
-            stage: {
-              type: "string",
-              enum: ["Pre-seed", "Seed", "Series A/B", "Growth"],
-            },
+            stage: { type: "string", enum: ["Pre-seed", "Seed", "Series A/B", "Growth"] },
             geography: { type: "string" },
-            commitVelocity14d: {
-              type: "integer",
-              description: "Total commits over a rolling 14-day window",
-            },
-            commitVelocityChange: {
-              type: "string",
-              description:
-                "Percentage change vs. prior 14-day window (e.g., '+120%')",
-            },
-            contributors: {
-              type: "integer",
-              description: "Number of unique contributors",
-            },
-            contributorGrowth: {
-              type: "string",
-              description:
-                "Contributor growth rate (e.g., '+25%')",
-            },
-            newRepos: {
-              type: "integer",
-              description: "New repositories created in the last 30 days",
-            },
+            commitVelocity14d: { type: "integer", description: "Total commits over a rolling 14-day window" },
+            commitVelocityChange: { type: "string", description: "Percentage change vs. prior 14-day window (e.g., '+120%')" },
+            contributors: { type: "integer" },
+            contributorGrowth: { type: "string" },
+            newRepos: { type: "integer" },
             signalType: {
               type: "string",
               enum: [
@@ -212,22 +501,9 @@ export async function GET() {
                 "Framework migration",
               ],
             },
-            githubUrl: {
-              type: "string",
-              format: "uri",
-            },
-            websiteUrl: {
-              type: "string",
-              format: "uri",
-              description:
-                "Official company homepage, harvested from the GitHub org `blog` field when available.",
-            },
-            linkedinUrl: {
-              type: "string",
-              format: "uri",
-              description:
-                "LinkedIn company page URL, when known. May be absent for many records.",
-            },
+            githubUrl: { type: "string", format: "uri" },
+            websiteUrl: { type: "string", format: "uri" },
+            linkedinUrl: { type: "string", format: "uri" },
           },
         },
         Sector: {
@@ -238,10 +514,47 @@ export async function GET() {
             description: { type: "string" },
             url: { type: "string", format: "uri" },
             startupCount: { type: "integer" },
-            startups: {
+            startups: { type: "array", items: { $ref: "#/components/schemas/Startup" } },
+          },
+        },
+        AnswerHit: {
+          type: "object",
+          properties: {
+            question: { type: "string" },
+            answer: { type: "string" },
+            url: { type: "string", format: "uri" },
+            source: { type: "string", enum: ["agent-query", "faq"] },
+            confidence: { type: "number", minimum: 0, maximum: 1 },
+            facts: {
               type: "array",
-              items: { $ref: "#/components/schemas/Startup" },
+              items: {
+                type: "object",
+                properties: {
+                  claim: { type: "string" },
+                  sourceUrl: { type: "string", format: "uri" },
+                },
+              },
             },
+            related: {
+              type: "array",
+              items: {
+                type: "object",
+                properties: {
+                  question: { type: "string" },
+                  url: { type: "string", format: "uri" },
+                },
+              },
+            },
+          },
+        },
+        SearchHit: {
+          type: "object",
+          properties: {
+            url: { type: "string", format: "uri" },
+            title: { type: "string" },
+            snippet: { type: "string" },
+            type: { type: "string", enum: ["startup", "sector", "blog", "comparison", "answer", "faq", "research"] },
+            score: { type: "number" },
           },
         },
         DeepSignal: {
@@ -299,6 +612,16 @@ export async function GET() {
         },
       },
     },
+    "x-mcp": {
+      rpcEndpoint: `${BASE_URL}/api/mcp/rpc`,
+      manifestUrl: `${BASE_URL}/.well-known/mcp.json`,
+      protocolVersion: "2025-06-18",
+    },
+    "x-a2a": {
+      agentCardUrl: `${BASE_URL}/.well-known/agent-card.json`,
+      jsonrpcEndpoint: `${BASE_URL}/api/a2a`,
+      protocolVersion: "0.3.0",
+    },
   };
 
   return new Response(JSON.stringify(spec, null, 2), {
@@ -306,6 +629,7 @@ export async function GET() {
       "Content-Type": "application/json; charset=utf-8",
       "Cache-Control": "s-maxage=86400, stale-while-revalidate=3600",
       "Access-Control-Allow-Origin": "*",
+      "X-Robots-Tag": "index, follow",
     },
   });
 }

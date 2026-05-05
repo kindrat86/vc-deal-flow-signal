@@ -268,6 +268,18 @@ export default function RootLayout({
           title="DCAT 3 dataset catalog descriptor"
         />
         <link
+          rel="describedby"
+          type="application/json"
+          href="https://signals.gitdealflow.com/.well-known/model.json"
+          title="Model card — capabilities, evaluation, limitations, agent entrypoints"
+        />
+        <link
+          rel="describedby"
+          type="application/json"
+          href="https://signals.gitdealflow.com/.well-known/compliance.json"
+          title="Compliance descriptor — GDPR / CCPA / SOC2 posture, subprocessors, DPA contact"
+        />
+        <link
           rel="author"
           type="text/plain"
           href="https://signals.gitdealflow.com/humans.txt"

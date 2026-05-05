@@ -100,6 +100,20 @@ export async function GET() {
           tags: ["scout", "github", "receipts", "social-proof"],
           examples: ["Show scout score for github user xyz"],
         },
+        {
+          id: "get_deep_signal",
+          name: "Get Deep Signal (paid)",
+          description:
+            "Enriched per-startup signal: composite score, sector percentile, plain-English thesis, comparables, multi-period history. PAID per-request — €0.19/call, 100 credits = €19 at https://signals.gitdealflow.com/agents/credits. 1 credit consumed only on a successful match; misses are FREE. Requires Authorization: Bearer gdf_v2.<customerId>.<hmac>.",
+          tags: ["startups", "deep-signal", "paid", "thesis", "percentile"],
+          examples: [
+            "Get deep signal for Anthropic",
+            "Pull thesis and percentile for vercel",
+          ],
+          paid: true,
+          pricePerCall: { amount: "0.19", currency: "EUR" },
+          purchaseUrl: "https://signals.gitdealflow.com/agents/credits",
+        },
       ],
       sameAs: [
         "https://www.wikidata.org/wiki/Q139376302",

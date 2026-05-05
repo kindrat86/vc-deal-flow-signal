@@ -45,6 +45,11 @@ const AI_CRAWLERS = [
 
 // Routes that should never appear in agent or search indices.
 // Auth callbacks, admin surfaces, ephemeral share/preview tokens, webhooks.
+//
+// /predicted/ is intentionally NOT listed here — /predicted/[week] is a
+// public weekly Acceleration Watch page enumerated in sitemap.xml. A blanket
+// disallow on the prefix would conflict with the sitemap and waste crawl
+// signals.
 const DISALLOW = [
   "/api/auth/",
   "/api/oauth/",
@@ -55,7 +60,6 @@ const DISALLOW = [
   "/login/",
   "/welcome/",
   "/share/",
-  "/predicted/",
   "/api/share/",
 ];
 

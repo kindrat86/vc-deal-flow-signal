@@ -98,6 +98,32 @@ function buildJsonLd(q: AgentQuery): object {
         },
       },
       {
+        // QAPage describes the page itself (one primary question and its
+        // answer). Distinct from FAQPage below which lists supplementary
+        // FAQs. Google treats QAPage as a separate rich-result type with
+        // its own Q&A snippet treatment in AI Overviews.
+        "@type": "QAPage",
+        "@id": `${url}#qapage`,
+        url,
+        mainEntity: {
+          "@type": "Question",
+          name: q.h1,
+          text: q.h1,
+          answerCount: 1,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: q.tldr,
+            url,
+            datePublished: getDataLastModified().toISOString(),
+            author: {
+              "@type": "Organization",
+              name: "VC Deal Flow Signal",
+              url: SITE,
+            },
+          },
+        },
+      },
+      {
         "@type": "FAQPage",
         mainEntity: q.faqs.map((f) => ({
           "@type": "Question",

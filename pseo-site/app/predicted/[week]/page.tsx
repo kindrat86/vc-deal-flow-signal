@@ -38,6 +38,12 @@ export async function generateMetadata({
       description: `10 named startups, graded post-hoc. Window closes ${fmtLongDate(week.gradingDueAt)}.`,
       url: `https://signals.gitdealflow.com/predicted/${week.slug}`,
       type: "article",
+      publishedTime: week.publishedAt,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `Acceleration Watch — Week of ${fmtLongDate(week.weekStart)}`,
+      description: `10 named startups, graded post-hoc. Window closes ${fmtLongDate(week.gradingDueAt)}.`,
     },
   };
 }
@@ -75,13 +81,64 @@ export default async function PredictedWeekPage({ params }: RouteContext) {
   ).length;
   const pending = week.picks.filter((p) => p.outcome === null).length;
 
+  // ClaimReview entries — one per graded pick. Schema.org/ClaimReview is the
+  // closest standard type to a graded prediction: itemReviewed = the claim
+  // ("X will fundraise/acquire"), reviewRating = whether it resolved by the
+  // grading window. Pending picks emit Claim only (no Review yet).
+  const claimReviewItems = week.picks
+    .filter((p) => p.outcome !== null && p.outcome !== "excluded")
+    .map((p) => {
+      const isHit = isPredictionOutcomeHit(p.outcome);
+      return {
+        "@type": "ClaimReview",
+        url: `https://signals.gitdealflow.com/predicted/${week.slug}#pick-${p.rank}`,
+        datePublished: week.publishedAt,
+        author: {
+          "@type": "Organization",
+          name: "VC Deal Flow Signal",
+          url: "https://gitdealflow.com",
+        },
+        claimReviewed: `${p.displayName} engineering acceleration crossed signal threshold (${p.commitVelocityChange}) — likely to fundraise or be acquired within ${week.windowDays} days`,
+        itemReviewed: {
+          "@type": "Claim",
+          author: {
+            "@type": "Organization",
+            name: "VC Deal Flow Signal",
+          },
+          datePublished: week.publishedAt,
+          appearance: {
+            "@type": "OpinionNewsArticle",
+            url: `https://signals.gitdealflow.com/predicted/${week.slug}`,
+          },
+        },
+        reviewRating: {
+          "@type": "Rating",
+          ratingValue: isHit ? "5" : "1",
+          bestRating: "5",
+          worstRating: "1",
+          alternateName: isHit ? "True" : "Not validated",
+        },
+      };
+    });
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Article",
+        "@id": `https://signals.gitdealflow.com/predicted/${week.slug}#article`,
         headline: `Acceleration Watch — Week of ${fmtLongDate(week.weekStart)}`,
+        description: `10 startups whose GitHub engineering acceleration crossed the signal threshold the week of ${fmtLongDate(week.weekStart)}. Graded ${week.windowDays} days post-publish.`,
+        url: `https://signals.gitdealflow.com/predicted/${week.slug}`,
+        mainEntityOfPage: {
+          "@type": "WebPage",
+          "@id": `https://signals.gitdealflow.com/predicted/${week.slug}`,
+        },
         datePublished: week.publishedAt,
+        dateModified: week.publishedAt,
+        inLanguage: "en-US",
+        isAccessibleForFree: true,
+        license: "https://creativecommons.org/licenses/by/4.0/",
         author: {
           "@type": "Organization",
           name: "VC Deal Flow Signal",
@@ -92,7 +149,14 @@ export default async function PredictedWeekPage({ params }: RouteContext) {
           name: "VC Deal Flow Signal",
           url: "https://gitdealflow.com",
         },
+        image: {
+          "@type": "ImageObject",
+          url: `https://signals.gitdealflow.com/predicted/${week.slug}/opengraph-image`,
+          width: 1200,
+          height: 630,
+        },
       },
+      ...claimReviewItems,
       {
         "@type": "BreadcrumbList",
         itemListElement: [

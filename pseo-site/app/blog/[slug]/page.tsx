@@ -41,6 +41,11 @@ export async function generateMetadata({
   const post = getPost(slug);
   if (!post) return {};
 
+  // Mirror the JSON-LD dateModified policy: data refresh bumps freshness even
+  // if prose is unchanged, so social cards advertise an accurate "modified".
+  const dataLastMod = getDataLastModified().toISOString().slice(0, 10);
+  const modifiedTime = dataLastMod > post.date ? dataLastMod : post.date;
+
   return {
     title: post.title,
     description: post.description,
@@ -49,6 +54,8 @@ export async function generateMetadata({
       description: post.description,
       type: "article",
       publishedTime: post.date,
+      modifiedTime,
+      authors: ["VC Deal Flow Signal Editorial"],
     },
     twitter: {
       card: "summary_large_image",

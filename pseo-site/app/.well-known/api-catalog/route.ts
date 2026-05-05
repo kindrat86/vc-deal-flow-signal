@@ -51,6 +51,24 @@ export async function GET() {
             title:
               "Function-calling tool definitions (OpenAI / Anthropic / Gemini formats via ?format=)",
           },
+          {
+            href: `${SITE}/api/schema.json`,
+            type: "application/openapi+json",
+            title:
+              "OpenAPI 3.1 spec (alias of /api/openapi.json — redirects 308)",
+          },
+          {
+            href: `${SITE}/.well-known/model.json`,
+            type: "application/json",
+            title:
+              "Model card — dataset+API capabilities, evaluation, limitations, agent entrypoints",
+          },
+          {
+            href: `${SITE}/.well-known/compliance.json`,
+            type: "application/json",
+            title:
+              "Enterprise compliance descriptor — GDPR / CCPA / SOC2 / ISO27001 posture, subprocessors, DPA contact",
+          },
         ],
         // Human-readable docs
         "service-doc": [
