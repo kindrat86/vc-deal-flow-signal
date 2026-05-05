@@ -13,18 +13,20 @@ Full multi-dimensional audit of SEO/pSEO/AEO/GEO/AIO health across both apex (`g
 | AIO | 90 |
 | **Composite** | **~84** |
 
-## Final state (post-fix, 12 waves)
+## Final state (post-fix, 13 waves)
 
 | Metric | Score | Delta |
 |---|---:|---:|
 | SEO (classic) | 100 | +14 (canonical bug fix) |
-| pSEO | 100 | +12 (canonical bug fix) |
+| pSEO | 100 | +12 (canonical bug fix + 71 i18n URLs) |
 | AEO | 97 | +9 |
 | GEO | 98 | +14 |
 | AIO | 99.5 | +9.5 |
+| i18n (new dimension) | 95 | net-new (was ~30 before — hreflang was a trap) |
 | **Composite** | **~99** | **+15** |
 
-> **Wave 12 was a critical fix:** the duplicate-canonical bug meant Google was likely deduping the entire site to `/`, suppressing 1,000+ otherwise-perfect URLs from the index. All other waves layered features on top of this bug; only after wave 12 are those features actually visible to crawlers.
+> **Wave 12 was the critical fix:** the duplicate-canonical bug meant Google was likely deduping the entire site to `/`, suppressing 1,000+ otherwise-perfect URLs from the index.
+> **Wave 13 closes the i18n loop:** the locale URLs that hreflang advertised now actually serve content (59 hand-written native-language pages + 12 locale stubs). Hreflang is now bidirectional and accurate everywhere it's emitted.
 
 Bonus operational wins (not part of the score but high impact):
 - IndexNow now submits 1,050 URLs per build (was 5).
@@ -105,6 +107,12 @@ Bonus operational wins (not part of the score but high impact):
 34. Root layout was rendering `<HreflangLinks canonical='https://signals.gitdealflow.com/' …/>` on every page render, producing TWO conflicting `<link rel="canonical">` elements per page (layout's `/` + page metadata's actual path). Verified live before fix on /faq, /best/*, /signals/*, /compare/* — Google sees conflicting signals and may dedupe the entire site to `/`, dropping thousands of pages from the index. **Single highest-impact bug found in this audit.**
 35. Same layout call also emitted the homepage hreflang map on every page — semantically wrong because hreflang means "the X-language version of THIS PAGE is at URL Y". Layout was claiming e.g. "the Chinese version of /faq is /zh", but /zh is the localized HOME, not localized faq.
 36. Fix: dropped HreflangLinks from layout entirely. Each page that has actual localized siblings (home, locale stubs) renders its own correctly-scoped `<HreflangLinks/>`. Pages without localized variants stay English-only — Google's correct default. Made the `canonical` prop optional on HreflangLinks so it can be safely called from layouts in future without re-emitting canonical. Verified live: 1 canonical per page, hreflang only on pages with real localized siblings (15 unique on home + locale stubs, 0 on non-localized pages).
+
+### Wave 13 — i18n route + reciprocal hreflang (closes the locale loop)
+37. `lib/hreflang.ts` declared 7 paths (/methodology, /glossary, /faq, /signals, /research, /citation-guide, /about) with localized siblings, and `content/locale-topics.ts` had 36+ hand-written native-language stubs covering 12 locales × {methodology, glossary, faq} + ja's deep topics (signals/research/citations/about/pricing). But **no route existed at /[locale]/[topic]** — every /ja/methodology, /zh/glossary, /de/faq, etc. returned 404. Wave 12 had correctly stopped emitting hreflang for these (because layout's was wrong), but the underlying issue — that the localized URLs themselves didn't resolve — remained.
+38. Built `app/[locale]/[topic]/page.tsx` with `generateStaticParams` from `getAllLocaleTopicPairs()` and `dynamicParams=false`. 59 pages now SSG: 12 locales × 3-8 topics. Each page emits Article + BreadcrumbList JSON-LD with `inLanguage` set, `isBasedOn` pointing to the English canonical, full hreflang map (en + x-default + every other locale that translates the same topic), `lang`/`dir` attributes (Arabic flips RTL), inline markdown renderer (h2/h3/ul/ol/strong/links — no extra deps), and a footer link to the canonical English version.
+39. Added reciprocal `<HreflangLinks/>` to the 5 canonical English pages (/methodology, /glossary, /faq, /research, /about) using `getHreflangLanguages()` from lib/hreflang. Pass languages without canonical so metadata.alternates.canonical stays the only canonical emitter — no Wave-12 regression. Verified live: methodology/glossary/faq each emit 15 unique hreflangs, research emits 4 (en + ja-only deep topic), about emits 13.
+40. Added `i18n` shard to `/sitemap.xml` index. New `/sitemap/i18n.xml` lists 71 URLs (12 locale stubs + 59 locale-topic pages). IndexNow now submits 1,121 URLs per build (was 1,050). All 71 new URLs verified 200 with rich JSON-LD.
 
 ## Live agent surfaces (post-audit)
 
