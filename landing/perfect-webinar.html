@@ -72,6 +72,72 @@
     html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
     .chapter-clock { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.25rem 0.75rem; border-radius: 9999px; background: rgba(255,107,26,0.1); border: 1px solid rgba(255,107,26,0.25); color: #ff9966; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.05em; }
     .trial-close { font-style: italic; color: #94a3b8; padding-left: 1rem; border-left: 2px solid rgba(255,107,26,0.4); margin: 2rem 0; }
+
+    /* Secret cards — three color-coded false-belief breakdowns */
+    .secret-card {
+      position: relative;
+      border-radius: 1rem;
+      padding: 2rem 2rem 1.5rem;
+      margin-bottom: 2rem;
+      border: 1px solid rgba(148, 163, 184, 0.12);
+      border-left-width: 4px;
+      transition: transform 200ms ease, box-shadow 200ms ease;
+      overflow: hidden;
+    }
+    .secret-card:hover { transform: translateY(-2px); box-shadow: 0 14px 40px -16px rgba(0,0,0,0.6); }
+    .secret-card::before {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(135deg, var(--secret-tint, rgba(56,189,248,0.06)) 0%, rgba(15,23,42,0) 60%);
+      pointer-events: none;
+    }
+    .secret-1 { --secret-tint: rgba(56, 189, 248, 0.10); border-left-color: rgb(56, 189, 248); background: linear-gradient(180deg, rgb(15,23,42) 0%, rgb(7,15,30) 100%); }
+    .secret-2 { --secret-tint: rgba(52, 211, 153, 0.10); border-left-color: rgb(52, 211, 153); background: linear-gradient(180deg, rgb(15,23,42) 0%, rgb(7,15,30) 100%); }
+    .secret-3 { --secret-tint: rgba(255, 138, 60, 0.10); border-left-color: rgb(255, 138, 60); background: linear-gradient(180deg, rgb(15,23,42) 0%, rgb(7,15,30) 100%); }
+
+    .secret-numeral {
+      flex-shrink: 0;
+      width: 3rem; height: 3rem;
+      border-radius: 9999px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 1.25rem;
+      letter-spacing: -0.025em;
+    }
+    .secret-1 .secret-numeral { background: rgba(56,189,248,0.15); border: 1px solid rgba(56,189,248,0.45); color: rgb(125, 211, 252); }
+    .secret-2 .secret-numeral { background: rgba(52,211,153,0.15); border: 1px solid rgba(52,211,153,0.45); color: rgb(110, 231, 183); }
+    .secret-3 .secret-numeral { background: rgba(255,138,60,0.15); border: 1px solid rgba(255,138,60,0.45); color: rgb(255, 174, 122); }
+
+    .secret-eyebrow { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.25rem; }
+    .secret-1 .secret-eyebrow { color: rgb(125, 211, 252); }
+    .secret-2 .secret-eyebrow { color: rgb(110, 231, 183); }
+    .secret-3 .secret-eyebrow { color: rgb(255, 174, 122); }
+
+    .secret-list { position: relative; }
+    .secret-list dt {
+      display: inline-block;
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 0.2rem 0.55rem;
+      border-radius: 0.375rem;
+      margin-bottom: 0.45rem;
+    }
+    .secret-list dd { color: rgb(203, 213, 225); margin: 0 0 1.25rem; line-height: 1.7; font-size: 1.0625rem; }
+    .secret-list dd:last-child { margin-bottom: 0; }
+
+    .label-belief { background: rgba(148,163,184,0.10); color: rgb(148,163,184); border: 1px solid rgba(148,163,184,0.25); }
+    .secret-1 .label-break { background: rgba(56,189,248,0.12); color: rgb(125,211,252); border: 1px solid rgba(56,189,248,0.30); }
+    .secret-2 .label-break { background: rgba(52,211,153,0.12); color: rgb(110,231,183); border: 1px solid rgba(52,211,153,0.30); }
+    .secret-3 .label-break { background: rgba(255,138,60,0.12); color: rgb(255,174,122); border: 1px solid rgba(255,138,60,0.30); }
+    .label-proof { background: rgba(52,211,153,0.10); color: rgb(110,231,183); border: 1px solid rgba(52,211,153,0.28); }
+
+    .secret-trial {
+      margin-top: 1.25rem; padding-top: 1rem;
+      border-top: 1px solid rgba(148,163,184,0.12);
+      display: flex; align-items: flex-start; gap: 0.5rem;
+      color: rgb(148,163,184); font-style: italic; font-size: 0.95rem;
+    }
+    .secret-trial .check { font-style: normal; flex-shrink: 0; line-height: 1.4; }
+    .secret-1 .secret-trial .check { color: rgb(125,211,252); }
+    .secret-2 .secret-trial .check { color: rgb(110,231,183); }
+    .secret-3 .secret-trial .check { color: rgb(255,174,122); }
   </style>
 </head>
 <body class="bg-dark-900 text-gray-100 font-sans antialiased">
@@ -186,34 +252,64 @@
       <h2 class="text-3xl font-bold mb-8">The three reasons you haven't used GitHub data yet (and why each one collapses).</h2>
 
       <!-- Secret 1: Vehicle -->
-      <div class="bg-dark-900 border border-gray-700 rounded-xl p-7 mb-8">
-        <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-2">Secret #1 — The Vehicle Belief</p>
-        <h3 class="text-2xl font-bold mb-4 text-white">"GitHub is too noisy to be a real signal."</h3>
-        <p class="text-gray-300 text-lg leading-relaxed mb-4"><strong class="text-gray-200">The belief:</strong> 100 million repos, 99% noise — bots, hackathons, abandoned forks. You'd need a quant team to filter.</p>
-        <p class="text-gray-300 text-lg leading-relaxed mb-4"><strong class="text-white">The break:</strong> we don't read absolute numbers. We read <em>acceleration vs. baseline</em>. When a company's engineering velocity deviates sharply from its own 90-day average, that's not noise — it's a regime change. Bots don't sustain regime changes. Hackathons don't. Hires and product-market-fit do. The math is in the SSRN paper, page 14.</p>
-        <p class="text-gray-300 text-lg leading-relaxed mb-4"><strong class="text-white">The proof:</strong> across 219 funded rounds, the 14-day commit-velocity ratio above 1.5x preceded the announcement in 7 of 10 cases. Quant funds make billions parsing public SEC filings — same logic, different dataset.</p>
-        <p class="trial-close">The vehicle works. Sound right?</p>
-      </div>
+      <article class="secret-card secret-1">
+        <header class="flex items-start gap-4 mb-6">
+          <div class="secret-numeral" aria-hidden="true">1</div>
+          <div class="flex-1 pt-1">
+            <p class="secret-eyebrow">Secret #1 &middot; The Vehicle Belief</p>
+            <h3 class="text-2xl md:text-[1.6rem] font-bold text-white leading-snug">&ldquo;GitHub is too noisy to be a real signal.&rdquo;</h3>
+          </div>
+        </header>
+        <dl class="secret-list">
+          <dt class="label-belief">The belief</dt>
+          <dd>100 million repos, 99% noise — bots, hackathons, abandoned forks. You&rsquo;d need a quant team to filter.</dd>
+          <dt class="label-break">The break</dt>
+          <dd>We don&rsquo;t read absolute numbers. We read <em>acceleration vs. baseline</em>. When a company&rsquo;s engineering velocity deviates sharply from its own 90-day average, that&rsquo;s not noise — it&rsquo;s a regime change. Bots don&rsquo;t sustain regime changes. Hackathons don&rsquo;t. Hires and product-market-fit do. The math is in the SSRN paper, page 14.</dd>
+          <dt class="label-proof">The proof</dt>
+          <dd>Across 219 funded rounds, the 14-day commit-velocity ratio above 1.5× preceded the announcement in 7 of 10 cases. Quant funds make billions parsing public SEC filings — same logic, different dataset.</dd>
+        </dl>
+        <p class="secret-trial"><span class="check" aria-hidden="true">✓</span><span>The vehicle works. Sound right?</span></p>
+      </article>
 
       <!-- Secret 2: Internal -->
-      <div class="bg-dark-900 border border-gray-700 rounded-xl p-7 mb-8">
-        <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-2">Secret #2 — The Internal Belief</p>
-        <h3 class="text-2xl font-bold mb-4 text-white">"I'm not a quant — I wouldn't know what to do with raw engineering data."</h3>
-        <p class="text-gray-300 text-lg leading-relaxed mb-4"><strong class="text-gray-200">The belief:</strong> you opened a few founders' GitHubs once. Saw a wall of green squares. Closed the tab. "Not technical enough."</p>
-        <p class="text-gray-300 text-lg leading-relaxed mb-4"><strong class="text-white">The break:</strong> you won't see raw data. You'll see one line per startup: <em>"Company X. Healthcare. Seed. +180% commit acceleration. 94 new contributors. Flagged 6 weeks ago. Still accelerating."</em> Then you reach out. If you've ever sent a cold intro email to a founder, you already have every skill this requires.</p>
-        <p class="text-gray-300 text-lg leading-relaxed mb-4"><strong class="text-white">The proof:</strong> 800+ engineers and angels installed the free MCP server in the first 30 days. Most of them aren't quants. They're technical operators who know the difference between a green-square wall and a "this team is shipping infrastructure."</p>
-        <p class="trial-close">You don't need a quant team. You need the lens. Got it?</p>
-      </div>
+      <article class="secret-card secret-2">
+        <header class="flex items-start gap-4 mb-6">
+          <div class="secret-numeral" aria-hidden="true">2</div>
+          <div class="flex-1 pt-1">
+            <p class="secret-eyebrow">Secret #2 &middot; The Internal Belief</p>
+            <h3 class="text-2xl md:text-[1.6rem] font-bold text-white leading-snug">&ldquo;I&rsquo;m not a quant — I wouldn&rsquo;t know what to do with raw engineering data.&rdquo;</h3>
+          </div>
+        </header>
+        <dl class="secret-list">
+          <dt class="label-belief">The belief</dt>
+          <dd>You opened a few founders&rsquo; GitHubs once. Saw a wall of green squares. Closed the tab. &ldquo;Not technical enough.&rdquo;</dd>
+          <dt class="label-break">The break</dt>
+          <dd>You won&rsquo;t see raw data. You&rsquo;ll see one line per startup: <em>&ldquo;Company X. Healthcare. Seed. +180% commit acceleration. 94 new contributors. Flagged 6 weeks ago. Still accelerating.&rdquo;</em> Then you reach out. If you&rsquo;ve ever sent a cold intro email to a founder, you already have every skill this requires.</dd>
+          <dt class="label-proof">The proof</dt>
+          <dd>800+ engineers and angels installed the free MCP server in the first 30 days. Most of them aren&rsquo;t quants. They&rsquo;re technical operators who know the difference between a green-square wall and a &ldquo;this team is shipping infrastructure.&rdquo;</dd>
+        </dl>
+        <p class="secret-trial"><span class="check" aria-hidden="true">✓</span><span>You don&rsquo;t need a quant team. You need the lens. Got it?</span></p>
+      </article>
 
       <!-- Secret 3: External -->
-      <div class="bg-dark-900 border border-gray-700 rounded-xl p-7 mb-8">
-        <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-2">Secret #3 — The External Belief</p>
-        <h3 class="text-2xl font-bold mb-4 text-white">"Public data can't give me an edge — everyone has access."</h3>
-        <p class="text-gray-300 text-lg leading-relaxed mb-4"><strong class="text-gray-200">The belief:</strong> if it's public, the market has already priced it in. Edges live in private data — Harmonic's enrichment, PitchBook's curated rounds, AngelList's syndicate flow.</p>
-        <p class="text-gray-300 text-lg leading-relaxed mb-4"><strong class="text-white">The break:</strong> everyone has access to SEC filings. Quant funds still make billions parsing them faster. Everyone has access to satellite imagery. Hedge funds use it to count cars in parking lots and predict quarterly earnings. <strong class="text-white">The edge isn't exclusive data — the edge is reading what others ignore.</strong></p>
-        <p class="text-gray-300 text-lg leading-relaxed mb-4"><strong class="text-white">The proof:</strong> right now, zero institutional investor tools package GitHub commit velocity as a deal flow signal. Harmonic doesn't. Dealroom doesn't. PitchBook doesn't. The data is public. The analysis layer didn't exist. That gap is your edge — and it stays your edge until the market catches up. We have a ~3-year window before the institutionals notice.</p>
-        <p class="trial-close">If three world-class beliefs collapse in 26 minutes, the architecture works. Are you with me?</p>
-      </div>
+      <article class="secret-card secret-3">
+        <header class="flex items-start gap-4 mb-6">
+          <div class="secret-numeral" aria-hidden="true">3</div>
+          <div class="flex-1 pt-1">
+            <p class="secret-eyebrow">Secret #3 &middot; The External Belief</p>
+            <h3 class="text-2xl md:text-[1.6rem] font-bold text-white leading-snug">&ldquo;Public data can&rsquo;t give me an edge — everyone has access.&rdquo;</h3>
+          </div>
+        </header>
+        <dl class="secret-list">
+          <dt class="label-belief">The belief</dt>
+          <dd>If it&rsquo;s public, the market has already priced it in. Edges live in private data — Harmonic&rsquo;s enrichment, PitchBook&rsquo;s curated rounds, AngelList&rsquo;s syndicate flow.</dd>
+          <dt class="label-break">The break</dt>
+          <dd>Everyone has access to SEC filings. Quant funds still make billions parsing them faster. Everyone has access to satellite imagery. Hedge funds use it to count cars in parking lots and predict quarterly earnings. <strong class="text-white">The edge isn&rsquo;t exclusive data — the edge is reading what others ignore.</strong></dd>
+          <dt class="label-proof">The proof</dt>
+          <dd>Right now, zero institutional investor tools package GitHub commit velocity as a deal-flow signal. Harmonic doesn&rsquo;t. Dealroom doesn&rsquo;t. PitchBook doesn&rsquo;t. The data is public. The analysis layer didn&rsquo;t exist. That gap is your edge — and it stays your edge until the market catches up. We have a ~3-year window before the institutionals notice.</dd>
+        </dl>
+        <p class="secret-trial"><span class="check" aria-hidden="true">✓</span><span>If three world-class beliefs collapse in 26 minutes, the architecture works. Are you with me?</span></p>
+      </article>
     </div>
   </section>
 
