@@ -13,8 +13,25 @@ const FROM_NAME = "The Data Nerd";
 const SITE = "https://gitdealflow.com";
 const SIGNALS = "https://signals.gitdealflow.com";
 
-function wrap(body: string): string {
-  return `<!DOCTYPE html>
+// Apply utm_source=email so the click lands as "Email" in PostHog instead of
+// "(direct)". Apple Mail / Outlook desktop strip the Referer header — UTM is
+// the only attribution signal we can rely on for email clicks.
+function tagEmailUrls(html: string, campaign: string): string {
+  return html.replace(
+    /href="(https?:\/\/(?:signals\.)?gitdealflow\.com)([^"]*)"/g,
+    (_m, base: string, rest: string) => {
+      const hashIdx = rest.indexOf("#");
+      const anchor = hashIdx >= 0 ? rest.slice(hashIdx) : "";
+      const pathQuery = hashIdx >= 0 ? rest.slice(0, hashIdx) : rest;
+      const sep = pathQuery.includes("?") ? "&" : "?";
+      const utm = `utm_source=email&utm_medium=drip&utm_campaign=${encodeURIComponent(campaign)}`;
+      return `href="${base}${pathQuery}${sep}${utm}${anchor}"`;
+    }
+  );
+}
+
+function wrap(body: string, campaign: string = "drip"): string {
+  const html = `<!DOCTYPE html>
 <html>
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head>
 <body style="margin:0;padding:0;background:#f8fafc;color:#1e293b;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
@@ -30,6 +47,7 @@ ${body}
 </div>
 </body>
 </html>`;
+  return tagEmailUrls(html, campaign);
 }
 
 const THIRTY_MIN = 30 * 60 * 1000;

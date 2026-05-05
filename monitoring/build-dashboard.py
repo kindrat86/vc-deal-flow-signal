@@ -493,6 +493,76 @@ WHERE event = '$pageview'
 GROUP BY p ORDER BY n DESC LIMIT 10
 """)
 
+# Per-day source breakdown — referring domain × day, unique visitors
+ph_sources_daily = ph_query(f"""
+SELECT toDate(timestamp) as d,
+       coalesce(nullIf(properties.$referring_domain, ''), '(direct)') as src,
+       count(DISTINCT distinct_id) as uv,
+       count() as pv
+FROM events
+WHERE event = '$pageview'
+  AND timestamp >= '{window_start.isoformat()}'
+  {country_filter}
+GROUP BY d, src
+ORDER BY d, uv DESC
+""")
+
+# Per-day UTM campaign attribution
+ph_utm_daily = ph_query(f"""
+SELECT toDate(timestamp) as d,
+       coalesce(nullIf(properties.utm_source, ''), '') as utm_src,
+       coalesce(nullIf(properties.utm_medium, ''), '') as utm_med,
+       coalesce(nullIf(properties.utm_campaign, ''), '') as utm_cmp,
+       count(DISTINCT distinct_id) as uv
+FROM events
+WHERE event = '$pageview'
+  AND timestamp >= '{window_start.isoformat()}'
+  AND properties.utm_source IS NOT NULL
+  AND properties.utm_source != ''
+  {country_filter}
+GROUP BY d, utm_src, utm_med, utm_cmp
+ORDER BY d DESC, uv DESC
+""")
+
+# Per-day landing pages (entry path) — useful to pair with source data
+ph_pages_daily = ph_query(f"""
+SELECT toDate(timestamp) as d,
+       coalesce(nullIf(properties.$pathname, ''), '/') as p,
+       count(DISTINCT distinct_id) as uv
+FROM events
+WHERE event = '$pageview'
+  AND timestamp >= '{window_start.isoformat()}'
+  {country_filter}
+GROUP BY d, p
+ORDER BY d, uv DESC
+""")
+
+# Decompose the "(direct)" bucket. For every pageview with no referring domain,
+# pull every signal that PostHog still captures — UTM tags, raw UA, browser/OS,
+# device, landing path, geo — so we can classify the actual source instead of
+# treating "direct" as a black hole.
+ph_direct_decomp = ph_query(f"""
+SELECT toDate(timestamp) as d,
+       coalesce(nullIf(properties.utm_source, ''), '') as utm_src,
+       coalesce(nullIf(properties.utm_medium, ''), '') as utm_med,
+       coalesce(nullIf(properties.utm_campaign, ''), '') as utm_cmp,
+       coalesce(nullIf(properties.$raw_user_agent, ''), '') as ua,
+       coalesce(nullIf(properties.$browser, ''), '') as browser,
+       coalesce(nullIf(properties.$os, ''), '') as os,
+       coalesce(nullIf(properties.$device_type, ''), '') as device,
+       coalesce(nullIf(properties.$pathname, ''), '/') as path,
+       coalesce(nullIf(properties.$geoip_country_code, ''), '') as country,
+       count() as pv,
+       count(DISTINCT distinct_id) as uv
+FROM events
+WHERE event = '$pageview'
+  AND timestamp >= '{window_start.isoformat()}'
+  AND coalesce(properties.$referring_domain, '$direct') IN ('', '$direct', '(direct)')
+  {country_filter}
+GROUP BY d, utm_src, utm_med, utm_cmp, ua, browser, os, device, path, country
+ORDER BY d DESC, uv DESC
+""")
+
 ph_countries = ph_query(f"""
 SELECT coalesce(nullIf(properties.$geoip_country_code, ''), '?') as c, count() as n
 FROM events
@@ -742,6 +812,313 @@ if ph_countries and ph_countries.get("results"):
             "name": COUNTRY_NAMES.get(code, code),
             "n": row[1],
         })
+
+# ---------------- Per-day source breakdown ----------------
+# Categorize raw referring domains into channel buckets so the per-day
+# stacked chart stays legible. Order matters — AI is checked before Dev so
+# `claude.ai` and `anthropic.com` don't get bucketed as Dev.
+
+SELF_DOMAINS = ("gitdealflow.com", "signals.gitdealflow.com")
+
+CHANNEL_RULES = [
+    # Dev rules listed before Search/AI so webstore.google.com (Chrome Web Store)
+    # gets Dev instead of Search, and chrome.google.com/webstore similarly.
+    ("Dev", (
+        "github.", "gist.github", "npmjs.", "smithery.",
+        "cursor.", "stackoverflow.", "stackexchange.",
+        "gitlab.", "mcpserver", "vercel.com", "vercel.app",
+        "replit.", "codesandbox.", "stackblitz.",
+        "webstore.google", "chrome.google.com/webstore", "chromewebstore.google",
+        "webstore-prod", "webstore-dev",
+    )),
+    ("AI", (
+        "perplexity", "chatgpt", "chat.openai", "openai.com",
+        "claude.ai", "anthropic.com", "you.com", "poe.com",
+        "phind", "gemini.google", "copilot.microsoft", "copilot.github",
+        "huggingface", "kagi.com/assistant",
+    )),
+    ("Search", (
+        "google.", "bing.", "duckduckgo.", "ecosia.",
+        "yandex.", "baidu.", "search.brave", "kagi.",
+        "mojeek.", "yahoo.com/search", "naver.", "qwant.",
+        "startpage.", "swisscows.",
+    )),
+    ("Social", (
+        "twitter.", "x.com", "t.co", "linkedin.", "lnkd.in",
+        "facebook.", "fb.com", "l.facebook", "reddit.", "redd.it",
+        "news.ycombinator", "lobste.rs",
+        "mastodon", "bsky.", "bluesky", "threads.net",
+        "indiehackers", "producthunt", "ph.product",
+        "instagram.", "tiktok.", "youtube.", "youtu.be",
+        "t.me", "telegram.", "warpcast", "farcaster",
+        "daily.dev", "hashnode", "dev.to", "medium.com",
+        "substack.", "beehiiv.", "mirror.xyz", "discord.",
+        "quora.", "pinterest.",
+    )),
+    ("Dev", (
+        "github.", "gist.github", "npmjs.", "smithery.",
+        "cursor.", "stackoverflow.", "stackexchange.",
+        "gitlab.", "mcpserver", "vercel.com", "vercel.app",
+        "replit.", "codesandbox.", "stackblitz.",
+    )),
+    ("Email", (
+        "mail.google", "outlook.", "mail.yahoo",
+        "mail.proton", "fastmail.", "zoho.", "icloud.com/mail",
+    )),
+]
+
+
+def categorize_source(src):
+    """Group raw referring domains into channel buckets."""
+    s = (src or "").lower().strip()
+    if not s or s in ("(direct)", "(none)", "direct", "$direct"):
+        return "Direct"
+    # Self-referrals (internal navigation captured by PostHog) → Direct.
+    if any(s == d or s.endswith("." + d) for d in SELF_DOMAINS):
+        return "Direct"
+    for bucket, needles in CHANNEL_RULES:
+        if any(n in s for n in needles):
+            return bucket
+    return "Other"
+
+
+# Build daily source matrix.
+# Shape: [{ d, total, by_channel: {Direct:n,...}, top_sources:[{src,uv}], }]
+sources_daily_map = {}
+if ph_sources_daily and ph_sources_daily.get("results"):
+    for row in ph_sources_daily["results"]:
+        d_str = str(row[0])[:10]
+        src = row[1] or "(direct)"
+        uv = int(row[2] or 0)
+        bucket = sources_daily_map.setdefault(d_str, {
+            "d": d_str,
+            "total": 0,
+            "by_channel": {},
+            "by_source": [],
+        })
+        bucket["total"] += uv
+        ch = categorize_source(src)
+        bucket["by_channel"][ch] = bucket["by_channel"].get(ch, 0) + uv
+        bucket["by_source"].append({"src": src, "uv": uv, "channel": ch})
+
+# Fill missing days with empty rows so chart is continuous.
+# For the "top sources" pills we collapse all Direct/$direct into a single row,
+# so the table doesn't waste space showing the same `(direct)` pill every day.
+sources_daily_rows = []
+for i in range(WINDOW_DAYS):
+    d = (window_start + timedelta(days=i)).isoformat()
+    row = sources_daily_map.get(d, {"d": d, "total": 0, "by_channel": {}, "by_source": []})
+    row["by_source"] = sorted(row["by_source"], key=lambda x: -x["uv"])
+    # Top non-direct referrers — direct is already shown as a category in the chart
+    # and the totals row, so the pill list focuses on actually-attributable traffic.
+    direct_uv = sum(s["uv"] for s in row["by_source"] if s["channel"] == "Direct")
+    non_direct = [s for s in row["by_source"] if s["channel"] != "Direct"]
+    row["direct_uv"] = direct_uv
+    row["top_sources"] = non_direct[:6]
+    sources_daily_rows.append(row)
+
+# Channel list for chart (only channels that have data, in stable order)
+CHANNEL_ORDER = ["Direct", "Search", "AI", "Social", "Dev", "Email", "Other"]
+channels_present = {ch for r in sources_daily_rows for ch in r["by_channel"]}
+sources_channels = [c for c in CHANNEL_ORDER if c in channels_present]
+
+# Channel totals over the window (for the legend / summary)
+sources_channel_totals = {}
+for r in sources_daily_rows:
+    for ch, n in r["by_channel"].items():
+        sources_channel_totals[ch] = sources_channel_totals.get(ch, 0) + n
+
+# UTM rows — keep as flat list, JS renders the table.
+utm_daily_rows = []
+if ph_utm_daily and ph_utm_daily.get("results"):
+    for row in ph_utm_daily["results"]:
+        utm_daily_rows.append({
+            "d": str(row[0])[:10],
+            "utm_src": row[1] or "",
+            "utm_med": row[2] or "",
+            "utm_cmp": row[3] or "",
+            "uv": int(row[4] or 0),
+        })
+
+
+# ---- Decompose "(direct)" traffic ----------------------------------------
+# Order matters — earlier rules win. Each tuple: (label, [needles in UA]).
+# The needles run case-sensitive against the raw User-Agent string.
+UA_PATTERNS = [
+    # Programmatic / API clients first — these never come from a "browser visit"
+    ("API: curl",            ("curl/",)),
+    ("API: wget",            ("Wget/",)),
+    ("API: python",          ("python-requests", "python-urllib", "aiohttp", "httpx", "Python/")),
+    ("API: node/JS",         ("node-fetch", "undici", "axios/", "got (", "got/")),
+    ("API: Go",              ("Go-http-client",)),
+    ("API: Deno",            ("Deno/",)),
+    ("API: Bun",             ("Bun/",)),
+    # AI / agent clients (most direct hits to /api/mcp/rpc, /api/v1/*, /.well-known/*)
+    ("AI: Claude",           ("Claude-User", "ClaudeBot", "claude-cli", "Anthropic")),
+    ("AI: Cursor",           ("Cursor/", "cursor-ide")),
+    ("AI: ChatGPT/OpenAI",   ("ChatGPT-User", "GPTBot", "OAI-SearchBot", "OpenAI/")),
+    ("AI: Perplexity",       ("PerplexityBot", "Perplexity-User")),
+    ("AI: Smithery/MCP",     ("Smithery", "mcp-client", "MCP/", "MCP-Client")),
+    ("AI: Poe",              ("Poe/",)),
+    ("AI: Gemini/Google",    ("Google-Extended", "GoogleOther", "Bard")),
+    ("AI: You.com",          ("YouBot",)),
+    ("AI: Phind",            ("PhindBot",)),
+    ("AI: HF",               ("HuggingFace",)),
+    # In-app browsers (WebView signals — almost always dark social referrals)
+    ("App: Telegram",        ("TelegramBot", " Telegram", "TgWebView", "tgWebView")),
+    ("App: Twitter/X",       ("Twitter for", "TwitterAndroid", "X for ")),
+    ("App: LinkedIn",        ("LinkedInApp", "LinkedInBot")),
+    ("App: Facebook",        ("FBAN/", "FBAV/", "FB_IAB/", "facebookexternalhit")),
+    ("App: Instagram",       ("Instagram ",)),
+    ("App: Slack",           ("Slackbot", "Slack/", "Slack-")),
+    ("App: Discord",         ("DiscordBot", "Discord/")),
+    ("App: WhatsApp",        ("WhatsApp/",)),
+    ("App: Substack",        ("Substack",)),
+    ("App: Reddit",          ("Reddit/",)),
+    # Email / preview scanners (counted separately — these are not real readers)
+    ("Scan: Google Image Proxy", ("GoogleImageProxy",)),
+    ("Scan: Outlook preview",    ("BingPreview", "Office Outlook", "MSOffice")),
+    ("Scan: Apple",              ("AppleBot", "applewebkit-headless")),
+    # Generic search bots (defensive — country filter usually catches most)
+    ("Bot: search crawler",      ("Googlebot", "Bingbot", "DuckDuckBot", "YandexBot", "Baiduspider")),
+]
+
+
+def classify_ua(ua):
+    if not ua:
+        return None
+    for label, needles in UA_PATTERNS:
+        if any(n in ua for n in needles):
+            return label
+    return None
+
+
+# Programmatic / agent landing paths — humans don't type these into a browser.
+PROGRAMMATIC_PATH_PREFIXES = (
+    "/api/mcp/", "/api/v1/", "/api/answer", "/api/ask",
+    "/api/agent-card", "/api/agents", "/api/changelog",
+    "/.well-known/", "/openapi", "/agent-card.json",
+    "/sitemap", "/robots.txt", "/llms.txt", "/llms-full.txt",
+    "/agents.json", "/dataset.json", "/jsonld",
+    "/atom.xml", "/rss.xml", "/feed.xml",
+    "/security.txt", "/humans.txt",
+)
+EMAIL_LINK_PATH_PREFIXES = ("/share/", "/r/", "/click/", "/track/", "/m/", "/firstlook/thanks")
+
+
+def decompose_direct(row):
+    """Pick the most specific bucket label for one "(direct)" row.
+
+    row layout:
+      [0]=d  [1]=utm_src [2]=utm_med [3]=utm_cmp
+      [4]=ua [5]=browser [6]=os      [7]=device
+      [8]=path [9]=country [10]=pv [11]=uv
+
+    Returns (bucket_label, hint_for_tooltip).
+    """
+    utm_src = (row[1] or "").strip().lower()
+    utm_med = (row[2] or "").strip().lower()
+    utm_cmp = (row[3] or "").strip().lower()
+    ua      = (row[4] or "").strip()
+    browser = (row[5] or "").strip()
+    os_name = (row[6] or "").strip()
+    device  = (row[7] or "").strip()
+    path    = (row[8] or "/").strip()
+
+    # 1. Explicit UTM tag — highest fidelity. Even with referrer stripped,
+    #    UTM survives in the URL.
+    if utm_src:
+        parts = [f"utm_source={utm_src}"]
+        if utm_med:
+            parts.append(f"medium={utm_med}")
+        if utm_cmp:
+            parts.append(f"campaign={utm_cmp}")
+        return (f"UTM: {utm_src}", " · ".join(parts))
+
+    # 2. UA decomposition — catches programmatic clients, AI agents, in-app webviews.
+    ua_label = classify_ua(ua)
+    if ua_label:
+        return (ua_label, ua[:120])
+
+    # 3. Programmatic path heuristic — anyone hitting /api/v1/signals.json or
+    #    /.well-known/llms.txt is an agent or scraper, regardless of UA.
+    if any(path.startswith(p) for p in PROGRAMMATIC_PATH_PREFIXES):
+        return ("Programmatic / API client", path)
+
+    # 4. Email-click landing paths — /share/<token> + /firstlook/thanks are
+    #    only sent in Resend drips, never linked publicly.
+    if any(path.startswith(p) for p in EMAIL_LINK_PATH_PREFIXES):
+        return ("Email click", path)
+
+    # 5. Mobile root-landing — most likely a social-app webview that the UA
+    #    pattern list didn't catch (Telegram on iOS sometimes spoofs Safari).
+    if device.lower() == "mobile" and path in ("/", ""):
+        ctx = " ".join(p for p in (browser, os_name) if p).strip()
+        return ("Mobile direct (likely dark social)", ctx or "mobile")
+
+    # 6. Bookmark / typed URL — genuinely direct, returning visitor.
+    ctx = " ".join(p for p in (browser, os_name) if p).strip()
+    return ("Bookmark / typed URL", ctx or "desktop")
+
+
+# Aggregate per-day direct rows into bucket counts and per-bucket diagnostics
+# (top landing paths + top countries) so even the "Bookmark / typed URL" bucket
+# is inspectable.
+direct_decomp_map = {}             # day -> {label: uv}
+direct_decomp_total = Counter()    # window total per bucket
+direct_decomp_examples = defaultdict(list)
+direct_decomp_paths = defaultdict(Counter)     # label -> Counter[path] = uv
+direct_decomp_countries = defaultdict(Counter) # label -> Counter[country] = uv
+if ph_direct_decomp and ph_direct_decomp.get("results"):
+    for row in ph_direct_decomp["results"]:
+        d_str = str(row[0])[:10]
+        uv = int(row[11] or 0)
+        if uv == 0:
+            continue
+        label, hint = decompose_direct(row)
+        path = (row[8] or "/").strip()
+        country = (row[9] or "?").strip() or "?"
+        bucket = direct_decomp_map.setdefault(d_str, {})
+        bucket[label] = bucket.get(label, 0) + uv
+        direct_decomp_total[label] += uv
+        direct_decomp_paths[label][path] += uv
+        direct_decomp_countries[label][country] += uv
+        if hint and hint not in direct_decomp_examples[label] and len(direct_decomp_examples[label]) < 3:
+            direct_decomp_examples[label].append(hint)
+
+direct_decomp_rows = []
+for i in range(WINDOW_DAYS):
+    d = (window_start + timedelta(days=i)).isoformat()
+    by = direct_decomp_map.get(d, {})
+    items = sorted(by.items(), key=lambda kv: -kv[1])
+    direct_decomp_rows.append({
+        "d": d,
+        "total": sum(by.values()),
+        "buckets": [{"label": k, "uv": v} for k, v in items],
+    })
+
+direct_decomp_summary = []
+for k, v in direct_decomp_total.most_common():
+    direct_decomp_summary.append({
+        "label": k,
+        "uv": v,
+        "examples": direct_decomp_examples.get(k, []),
+        "top_paths": [{"p": p, "uv": n} for p, n in direct_decomp_paths[k].most_common(5)],
+        "top_countries": [{"c": c, "uv": n} for c, n in direct_decomp_countries[k].most_common(4)],
+    })
+direct_decomp_total_uv = sum(direct_decomp_total.values())
+
+# Per-day top landing pages (top 3 per day)
+pages_daily_map = {}
+if ph_pages_daily and ph_pages_daily.get("results"):
+    for row in ph_pages_daily["results"]:
+        d_str = str(row[0])[:10]
+        pages_daily_map.setdefault(d_str, []).append({
+            "p": row[1] or "/",
+            "uv": int(row[2] or 0),
+        })
+for r in sources_daily_rows:
+    r["top_pages"] = pages_daily_map.get(r["d"], [])[:3]
 
 # ---------------- Google Search Console (OAuth) ----------------
 # Fetches clicks/impressions/CTR/position + top queries + top pages over the
@@ -1099,6 +1476,17 @@ payload = {
     "ph_sources": ph_sources_data,
     "ph_pages": ph_pages_data,
     "ph_countries": ph_countries_data,
+    "sources_daily": {
+        "days": sources_daily_rows,
+        "channels": sources_channels,
+        "channel_totals": sources_channel_totals,
+    },
+    "utm_daily": utm_daily_rows,
+    "direct_decomp": {
+        "summary": direct_decomp_summary,
+        "days": direct_decomp_rows,
+        "total_uv": direct_decomp_total_uv,
+    },
     "gsc": gsc_data,
     "excluded": {
         "countries": sorted(EXCLUDE_COUNTRIES),
@@ -1254,9 +1642,135 @@ HTML = """<!DOCTYPE html>
       <tbody id="sub-sources"></tbody></table>
   </div>
   <div class="card">
-    <h3>Traffic sources (PostHog)</h3>
+    <h3>Traffic sources (PostHog · __WINDOW_DAYS__d total)</h3>
     <table><thead><tr><th>Referrer</th><th class="num">Pageviews</th></tr></thead>
       <tbody id="ph-sources"></tbody></table>
+  </div>
+</div>
+
+<h1 style="margin-top:40px;font-size:20px">Traffic sources — daily breakdown</h1>
+<div class="sub">
+  PostHog <code>$pageview</code> events grouped by referring domain. Each day's visitors split across channel categories.
+  <span style="color:#475569">Hover bars for per-channel counts. Use the table below for raw referrers per day.</span>
+</div>
+
+<div class="grid cols-4 row-group">
+  <div class="card kpi"><div class="num" id="src-direct">—</div><div class="lbl" style="color:#94a3b8">Direct (__WINDOW_DAYS__d)</div></div>
+  <div class="card kpi"><div class="num" id="src-search">—</div><div class="lbl" style="color:#0ea5e9">Search</div></div>
+  <div class="card kpi"><div class="num" id="src-ai">—</div><div class="lbl" style="color:#22c55e">AI engines</div></div>
+  <div class="card kpi"><div class="num" id="src-social">—</div><div class="lbl" style="color:#a855f7">Social</div></div>
+</div>
+
+<div class="grid cols-2 row-group">
+  <div class="card" style="grid-column: 1 / -1">
+    <h3>Visitors per day by channel category (stacked)</h3>
+    <canvas id="sourcesChannelChart" style="max-height:340px"></canvas>
+    <div style="margin-top:10px;font-size:11px;color:#64748b">
+      <span style="color:#475569">■</span> Direct
+      &nbsp;<span style="color:#0ea5e9">■</span> Search (Google/Bing/DDG/etc.)
+      &nbsp;<span style="color:#22c55e">■</span> AI (Perplexity/ChatGPT/Claude/etc.)
+      &nbsp;<span style="color:#a855f7">■</span> Social (Reddit/HN/X/LinkedIn/etc.)
+      &nbsp;<span style="color:#f59e0b">■</span> Dev (GitHub/npm/Smithery/etc.)
+      &nbsp;<span style="color:#ec4899">■</span> Email
+      &nbsp;<span style="color:#94a3b8">■</span> Other
+    </div>
+  </div>
+</div>
+
+<div class="grid cols-2 row-group">
+  <div class="card" style="grid-column: 1 / -1">
+    <h3>Day-by-day breakdown — top sources + landing pages per day</h3>
+    <div style="max-height:560px;overflow-y:auto">
+      <table>
+        <thead>
+          <tr>
+            <th style="min-width:100px">Date</th>
+            <th class="num" style="min-width:60px">Visitors</th>
+            <th>Top referrers (channel · visitors)</th>
+            <th>Top landing pages</th>
+          </tr>
+        </thead>
+        <tbody id="sources-by-day"></tbody>
+      </table>
+    </div>
+    <div style="margin-top:10px;font-size:11px;color:#64748b">
+      Newest day at top. <code>(direct)</code> = no referrer (typed URL, app, dark social, or stripped UTM-redirect).
+      The "Direct, decomposed" panel below cracks that bucket open.
+    </div>
+  </div>
+</div>
+
+<div class="grid cols-2 row-group">
+  <div class="card" style="grid-column: 1 / -1">
+    <h3>"Direct" traffic — decomposed (every visit classified)</h3>
+    <div style="font-size:12px;color:#94a3b8;margin-bottom:14px;line-height:1.6">
+      Every <code>(direct)</code> pageview cracked open using UTM tags · raw User-Agent ·
+      browser/OS · device · landing path. The bucket order:
+      <strong>UTM &gt; UA match (AI agent / in-app browser / curl) &gt; programmatic
+      path (<code>/api/v1/*</code>, <code>/.well-known/*</code>) &gt; email-link path
+      (<code>/share/&lt;token&gt;</code>) &gt; mobile-root (likely dark social) &gt; bookmark/typed URL</strong>.
+    </div>
+    <div class="grid cols-2" style="gap:24px">
+      <div>
+        <h4 style="font-size:11px;color:#64748b;letter-spacing:1px;margin:0 0 10px">__WINDOW_DAYS__-DAY TOTALS BY BUCKET</h4>
+        <div style="max-height:340px;overflow-y:auto">
+          <table>
+            <thead>
+              <tr>
+                <th>Bucket</th>
+                <th class="num" style="min-width:60px">Visitors</th>
+                <th class="num" style="min-width:48px">% of direct</th>
+              </tr>
+            </thead>
+            <tbody id="direct-decomp-summary"></tbody>
+          </table>
+        </div>
+        <div style="margin-top:10px;font-size:11px;color:#64748b">
+          Hover a row for sample User-Agent / path / UTM tag.
+        </div>
+      </div>
+      <div>
+        <h4 style="font-size:11px;color:#64748b;letter-spacing:1px;margin:0 0 10px">DAILY TIMELINE</h4>
+        <div style="max-height:340px;overflow-y:auto">
+          <table>
+            <thead>
+              <tr>
+                <th style="min-width:100px">Date</th>
+                <th class="num" style="min-width:60px">Direct</th>
+                <th>Buckets</th>
+              </tr>
+            </thead>
+            <tbody id="direct-decomp-daily"></tbody>
+          </table>
+        </div>
+        <div style="margin-top:10px;font-size:11px;color:#64748b">
+          Newest day at top.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="grid cols-2 row-group">
+  <div class="card" style="grid-column: 1 / -1">
+    <h3>UTM campaign attribution per day</h3>
+    <div style="max-height:340px;overflow-y:auto">
+      <table>
+        <thead>
+          <tr>
+            <th style="min-width:100px">Date</th>
+            <th>Source</th>
+            <th>Medium</th>
+            <th>Campaign</th>
+            <th class="num">Visitors</th>
+          </tr>
+        </thead>
+        <tbody id="utm-by-day"></tbody>
+      </table>
+    </div>
+    <div style="margin-top:10px;font-size:11px;color:#64748b">
+      Only shows pageviews with <code>?utm_source=...</code> tagged. Tag your social/email links to see them here.
+    </div>
   </div>
 </div>
 
@@ -2004,6 +2518,203 @@ if (F && F.rows && F.rows.length) {
         <td class="num">${fmt(p.impressions)}</td>
         <td class="num">${(p.ctr || 0)}%</td></tr>`;
   }).join('') || '<tr><td colspan="4" style="color:#64748b">No pages with impressions yet.</td></tr>';
+})();
+
+// ---- Daily traffic sources by channel category ----
+(function renderSourcesDaily() {
+  const SD = D.sources_daily || {};
+  const days = SD.days || [];
+  const channels = SD.channels || [];
+  const totals = SD.channel_totals || {};
+
+  const palette = {
+    'Direct': '#475569',
+    'Search': '#0ea5e9',
+    'AI':     '#22c55e',
+    'Social': '#a855f7',
+    'Dev':    '#f59e0b',
+    'Email':  '#ec4899',
+    'Other':  '#94a3b8',
+  };
+
+  // Channel summary KPIs
+  const setIf = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = fmt(v || 0); };
+  setIf('src-direct', totals['Direct']);
+  setIf('src-search', totals['Search']);
+  setIf('src-ai',     totals['AI']);
+  setIf('src-social', totals['Social']);
+
+  if (!days.length) return;
+
+  // Stacked bar chart
+  const ctx = document.getElementById('sourcesChannelChart');
+  if (ctx) {
+    const datasets = channels.map(ch => ({
+      label: ch,
+      data: days.map(d => d.by_channel[ch] || 0),
+      backgroundColor: palette[ch] || '#94a3b8',
+      borderWidth: 0,
+      stack: 'sources',
+    }));
+
+    new Chart(ctx, {
+      type: 'bar',
+      data: { labels: days.map(d => d.d.slice(5)), datasets },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { labels: { color: '#cbd5e1', boxWidth: 12, font: { size: 11 } } },
+          tooltip: {
+            mode: 'index', intersect: false,
+            callbacks: {
+              footer: (items) => {
+                const total = items.reduce((s, it) => s + (it.parsed.y || 0), 0);
+                return 'Total: ' + total + ' visitors';
+              },
+            },
+          },
+        },
+        scales: {
+          x: { stacked: true, ticks: { color: '#64748b' }, grid: { color: '#1e293b' } },
+          y: { stacked: true, beginAtZero: true, ticks: { color: '#64748b' }, grid: { color: '#1e293b' },
+               title: { display: true, text: 'Unique visitors / day', color: '#64748b' } },
+        },
+        interaction: { mode: 'index', intersect: false },
+      },
+    });
+  }
+
+  // Day-by-day table — newest first
+  const tbody = document.getElementById('sources-by-day');
+  if (tbody) {
+    const reversed = [...days].reverse();
+    tbody.innerHTML = reversed.map(day => {
+      const total = day.total || 0;
+      if (total === 0) {
+        return `<tr>
+          <td class="mono" style="color:#475569">${day.d}</td>
+          <td class="num" style="color:#475569">0</td>
+          <td colspan="2" style="color:#475569">No traffic recorded</td>
+        </tr>`;
+      }
+      const tops = (day.top_sources || []).slice(0, 6);
+      const directUv = day.direct_uv || 0;
+      const directPill = directUv > 0
+        ? `<span class="pill" style="margin:0 4px 4px 0;background:#0f1729;color:#cbd5e1;border:1px solid #1e293b">
+            <span style="display:inline-block;width:7px;height:7px;background:${palette.Direct};border-radius:50%;margin-right:4px;vertical-align:middle"></span>(direct)
+            <strong style="color:#f1f5f9;margin-left:4px">${directUv}</strong>
+          </span>`
+        : '';
+      const refPills = tops.map(s => {
+        const color = palette[s.channel] || '#94a3b8';
+        const dot = `<span style="display:inline-block;width:7px;height:7px;background:${color};border-radius:50%;margin-right:4px;vertical-align:middle"></span>`;
+        return `<span class="pill" style="margin:0 4px 4px 0;background:#0f1729;color:#cbd5e1;border:1px solid #1e293b">
+          ${dot}${s.src} <strong style="color:#f1f5f9;margin-left:4px">${s.uv}</strong>
+        </span>`;
+      }).join('');
+      const pillsHtml = (directPill + refPills) || '<span style="color:#475569">—</span>';
+      const pages = (day.top_pages || []).map(p =>
+        `<div class="mono" style="font-size:11px;color:#94a3b8;white-space:nowrap;max-width:240px;overflow:hidden;text-overflow:ellipsis">${p.p} <span style="color:#64748b">·${p.uv}</span></div>`
+      ).join('') || '<span style="color:#475569">—</span>';
+      return `<tr>
+        <td class="mono" style="color:#cbd5e1">${day.d}</td>
+        <td class="num" style="color:#f1f5f9;font-weight:600">${total}</td>
+        <td style="line-height:1.9">${pillsHtml}</td>
+        <td>${pages}</td>
+      </tr>`;
+    }).join('');
+  }
+
+  // UTM table
+  const utm = D.utm_daily || [];
+  const utmBody = document.getElementById('utm-by-day');
+  if (utmBody) {
+    if (!utm.length) {
+      utmBody.innerHTML = '<tr><td colspan="5" style="color:#64748b;padding:18px 0">No UTM-tagged traffic in window. Add <code class="mono">?utm_source=reddit&utm_medium=comment&utm_campaign=launch</code> to your share links to see them here.</td></tr>';
+    } else {
+      utmBody.innerHTML = utm.map(r => `<tr>
+        <td class="mono" style="color:#cbd5e1">${r.d}</td>
+        <td class="mono">${r.utm_src || '<span style="color:#475569">—</span>'}</td>
+        <td class="mono" style="color:#94a3b8">${r.utm_med || '<span style="color:#475569">—</span>'}</td>
+        <td class="mono" style="color:#94a3b8">${r.utm_cmp || '<span style="color:#475569">—</span>'}</td>
+        <td class="num" style="color:#f1f5f9;font-weight:600">${fmt(r.uv)}</td>
+      </tr>`).join('');
+    }
+  }
+
+  // ---- Direct, decomposed (every direct visit classified) ----
+  const DD = D.direct_decomp || {};
+  const ddSum  = DD.summary || [];
+  const ddDays = DD.days || [];
+  const ddTotal = DD.total_uv || 0;
+
+  const escape = s => String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;')
+                                     .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  const bucketColor = label => {
+    if (label.startsWith('AI:'))    return '#22c55e';
+    if (label.startsWith('App:'))   return '#a855f7';
+    if (label.startsWith('API:'))   return '#f59e0b';
+    if (label.startsWith('UTM:'))   return '#0ea5e9';
+    if (label.startsWith('Email'))  return '#ec4899';
+    if (label.startsWith('Scan:'))  return '#64748b';
+    if (label.startsWith('Bot:'))   return '#ef4444';
+    if (label.startsWith('Programmatic')) return '#f59e0b';
+    return '#94a3b8';
+  };
+
+  const ddSumBody = document.getElementById('direct-decomp-summary');
+  if (ddSumBody) {
+    if (!ddSum.length) {
+      ddSumBody.innerHTML = '<tr><td colspan="3" style="color:#64748b;padding:18px 0">No direct traffic in window.</td></tr>';
+    } else {
+      ddSumBody.innerHTML = ddSum.map((r, idx) => {
+        const pct = ddTotal > 0 ? Math.round(100 * r.uv / ddTotal) : 0;
+        const examples = (r.examples || []).map(escape).join(' · ');
+        const tipAttr = examples ? ` title="${examples}"` : '';
+        const dot = `<span style="display:inline-block;width:8px;height:8px;background:${bucketColor(r.label)};border-radius:50%;margin-right:8px;vertical-align:middle"></span>`;
+        const paths = (r.top_paths || []).map(p =>
+          `<div class="mono" style="font-size:11px;color:#94a3b8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:280px">${escape(p.p)} <span style="color:#64748b">·${p.uv}</span></div>`
+        ).join('');
+        const countries = (r.top_countries || []).map(c =>
+          `<span class="pill" style="margin:0 4px 0 0;background:#0f1729;color:#94a3b8;border:1px solid #1e293b;font-size:10px">${escape(c.c)} <strong style="color:#cbd5e1">${c.uv}</strong></span>`
+        ).join('');
+        const detailsRow = (paths || countries) ? `
+          <tr>
+            <td colspan="3" style="padding:0 0 12px 24px;border-bottom:1px solid #1e293b">
+              ${paths ? `<div style="margin-bottom:6px"><span style="color:#64748b;font-size:10px;letter-spacing:1px">TOP PATHS</span></div>${paths}` : ''}
+              ${countries ? `<div style="margin-top:6px"><span style="color:#64748b;font-size:10px;letter-spacing:1px">COUNTRIES</span></div><div style="margin-top:4px">${countries}</div>` : ''}
+            </td>
+          </tr>` : '';
+        return `<tr${tipAttr} style="border-bottom:none">
+          <td style="color:#cbd5e1;padding-bottom:4px">${dot}${escape(r.label)}</td>
+          <td class="num" style="color:#f1f5f9;font-weight:600;padding-bottom:4px">${fmt(r.uv)}</td>
+          <td class="num" style="color:#94a3b8;padding-bottom:4px">${pct}%</td>
+        </tr>${detailsRow}`;
+      }).join('');
+    }
+  }
+
+  const ddDailyBody = document.getElementById('direct-decomp-daily');
+  if (ddDailyBody) {
+    const rows = [...ddDays].reverse().filter(d => d.total > 0);
+    if (!rows.length) {
+      ddDailyBody.innerHTML = '<tr><td colspan="3" style="color:#64748b;padding:18px 0">No direct traffic in window.</td></tr>';
+    } else {
+      ddDailyBody.innerHTML = rows.map(day => {
+        const pills = day.buckets.map(b => {
+          const dot = `<span style="display:inline-block;width:7px;height:7px;background:${bucketColor(b.label)};border-radius:50%;margin-right:4px;vertical-align:middle"></span>`;
+          return `<span class="pill" style="margin:0 4px 4px 0;background:#0f1729;color:#cbd5e1;border:1px solid #1e293b">
+            ${dot}${escape(b.label)} <strong style="color:#f1f5f9;margin-left:4px">${b.uv}</strong>
+          </span>`;
+        }).join('');
+        return `<tr>
+          <td class="mono" style="color:#cbd5e1">${day.d}</td>
+          <td class="num" style="color:#f1f5f9;font-weight:600">${day.total}</td>
+          <td style="line-height:1.9">${pills}</td>
+        </tr>`;
+      }).join('');
+    }
+  }
 })();
 
 // Country donut (top 5, rest bucketed)

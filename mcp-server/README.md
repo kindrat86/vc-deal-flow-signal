@@ -87,18 +87,18 @@ All tools are read-only, idempotent, and fetch live data from the public API (no
 
 ## Data
 
-All data is sourced live from [signals.gitdealflow.com](https://signals.gitdealflow.com) public API. No API key required. Updated weekly on Mondays.
+All data is sourced live from [signals.gitdealflow.com](https://signals.gitdealflow.com?utm_source=github&utm_medium=readme&utm_campaign=mcp_server) public API. No API key required. Updated weekly on Mondays.
 
 ## Complementary: the Scout Game
 
-If you want to put your own eye on the line, there's a prediction game on top of the same dataset at [signals.gitdealflow.com/predict](https://signals.gitdealflow.com/predict). Call which tracked startups raise a round in the next 6 months, earn points when your calls resolve, climb a public rank ladder from Curious to Oracle. Free tier: 3 predictions per month. Paid: 10 per month. Leaderboard: [signals.gitdealflow.com/leaderboard](https://signals.gitdealflow.com/leaderboard).
+If you want to put your own eye on the line, there's a prediction game on top of the same dataset at [signals.gitdealflow.com/predict](https://signals.gitdealflow.com/predict?utm_source=github&utm_medium=readme&utm_campaign=mcp_server). Call which tracked startups raise a round in the next 6 months, earn points when your calls resolve, climb a public rank ladder from Curious to Oracle. Free tier: 3 predictions per month. Paid: 10 per month. Leaderboard: [signals.gitdealflow.com/leaderboard](https://signals.gitdealflow.com/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=mcp_server).
 
 ## Links
 
-- Website: https://gitdealflow.com
-- Dashboard: https://signals.gitdealflow.com
-- Scout Game: https://signals.gitdealflow.com/predict
-- Leaderboard: https://signals.gitdealflow.com/leaderboard
+- Website: https://gitdealflow.com?utm_source=github&utm_medium=readme&utm_campaign=mcp_server
+- Dashboard: https://signals.gitdealflow.com?utm_source=github&utm_medium=readme&utm_campaign=mcp_server
+- Scout Game: https://signals.gitdealflow.com/predict?utm_source=github&utm_medium=readme&utm_campaign=mcp_server
+- Leaderboard: https://signals.gitdealflow.com/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=mcp_server
 - JSON API: https://signals.gitdealflow.com/api/signals.json
 - Twitter/X: https://x.com/data_nerd
 
@@ -110,7 +110,7 @@ If you ship something that calls this MCP server, the dataset, or the public sig
 [![Built with @gitdealflow/mcp-signal](https://signals.gitdealflow.com/api/badge/built-with/svg?variant=long)](https://signals.gitdealflow.com/built-with)
 ```
 
-Three variants (default, compact, long) and copy-paste snippets for HTML / BBCode at [signals.gitdealflow.com/built-with](https://signals.gitdealflow.com/built-with). Ping `signal@gitdealflow.com` once you embed and we'll feature you on [/mirrors](https://signals.gitdealflow.com/mirrors).
+Three variants (default, compact, long) and copy-paste snippets for HTML / BBCode at [signals.gitdealflow.com/built-with](https://signals.gitdealflow.com/built-with?utm_source=github&utm_medium=readme&utm_campaign=mcp_server). Ping `signal@gitdealflow.com` once you embed and we'll feature you on [/mirrors](https://signals.gitdealflow.com/mirrors?utm_source=github&utm_medium=readme&utm_campaign=mcp_server).
 
 ## License
 
