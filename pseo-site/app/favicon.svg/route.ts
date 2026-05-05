@@ -1,22 +1,24 @@
 /**
  * /favicon.svg — vector favicon.
  *
- * Yandex Webmaster (recheck 2026-05-02) flagged the missing SVG favicon as a
- * recommendation. Modern browsers (Chrome, Edge, Firefox, Safari Tech Preview)
- * prefer SVG over .ico for crisper display on high-DPI screens; AI engines
- * scrape /favicon.svg as the canonical brand mark.
- *
- * Geometry: a stylized "signal" — three vertical bars of increasing height,
- * representing engineering acceleration. Brand sky-500 on slate-950 ground.
+ * Geometry: gradient-tile "G" mark, matching the inline brand badge in
+ * <Header />. Sky-500 → Indigo-600 background, slate-950 letter, 14px corner
+ * radius (proportionally equivalent to Tailwind's `rounded-md` on a 24x24 box).
+ * Path-traced "G" so rendering is identical across browsers, sharp, and
+ * librsvg-based pipelines (no font dependency).
  */
 
 const SVG = `<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="VC Deal Flow Signal">
-  <title>VC Deal Flow Signal</title>
-  <rect width="64" height="64" rx="12" fill="#0f172a"/>
-  <rect x="12" y="38" width="8" height="14" rx="2" fill="#0ea5e9"/>
-  <rect x="28" y="26" width="8" height="26" rx="2" fill="#38bdf8"/>
-  <rect x="44" y="14" width="8" height="38" rx="2" fill="#7dd3fc"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="GitDealFlow">
+  <title>GitDealFlow</title>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0ea5e9"/>
+      <stop offset="100%" stop-color="#4f46e5"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" ry="14" fill="url(#g)"/>
+  <path fill="#020617" d="M32 14.5c-9.665 0-17.5 7.835-17.5 17.5s7.835 17.5 17.5 17.5c4.46 0 8.531-1.668 11.624-4.41a2.5 2.5 0 0 0 .876-1.9V32a2.5 2.5 0 0 0-2.5-2.5H32a2.5 2.5 0 1 0 0 5h7v6.5a12.5 12.5 0 1 1 .91-13.94 2.5 2.5 0 1 0 4.42-2.34A17.49 17.49 0 0 0 32 14.5z"/>
 </svg>`;
 
 export const dynamic = "force-static";
