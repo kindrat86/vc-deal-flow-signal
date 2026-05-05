@@ -20,6 +20,7 @@ import SignalLeader from "@/components/SignalLeader";
 import ThreeDoorHero from "@/components/ThreeDoorHero";
 import PricingLadder from "@/components/PricingLadder";
 import SocialProofBar from "@/components/SocialProofBar";
+import SharpScarcityBadge from "@/components/SharpScarcityBadge";
 
 export const metadata: Metadata = {
   // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
@@ -1101,6 +1102,11 @@ export default function Home() {
           </ul>
         </div>
       </section>
+
+      {/* Sharp scarcity counter — public 2026-cohort capacity. Sits above
+          PricingLadder so high-intent fund visitors see the cap before the
+          price grid. */}
+      <SharpScarcityBadge variant="default" />
 
       {/* Pricing ladder — visible on homepage so buyers don't have to hunt for
           the price. Greg audit: anchor on Insider, sell the middle tier. */}

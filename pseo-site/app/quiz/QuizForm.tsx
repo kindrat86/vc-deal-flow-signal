@@ -79,7 +79,7 @@ const RESULTS = {
     title: "Insider Circle — or the €1,997 Sector Sweep, depending on what you need first.",
     eyebrow: "Insider Circle · €97/mo  ·  or  ·  Sector Sweep · €1,997 once",
     body: "You're operating at the volume where the API, custom watchlists, and Slack/Telegram alerts start to matter. If you want a one-time deep-dive built around your specific thesis before subscribing, the €1,997 Custom Sector Sweep is the right entry — €1,997 of it credits to Insider if you upgrade within 60 days.",
-    cta: { label: "Apply for Insider Circle", href: "https://buy.stripe.com/4gM00ifRpcRG2069I40x202", external: true },
+    cta: { label: "See the Insider case (24h lead)", href: "/insider", external: false },
     secondary: { label: "Or commission a Sector Sweep", href: "/pricing#sector-sweep-stack" },
   },
 } as const;
@@ -92,12 +92,68 @@ function tally(answers: AnswerKey[]): keyof typeof RESULTS {
   return order.reduce((best, k) => (counts[k] > counts[best] ? k : best), "F");
 }
 
+const RESULT_TIER_LABELS: Record<keyof typeof RESULTS, string> = {
+  F: "Free Acceleration Watch",
+  D: "Dashboard Beta (€9.97/mo)",
+  T: "First Look Pass (€7 once)",
+  I: "Insider Circle (€97/mo) / Sector Sweep (€1,997 once)",
+};
+
+type GateState = "idle" | "submitting" | "ok" | "skip" | "error";
+
 export default function QuizForm() {
   const [answers, setAnswers] = useState<AnswerKey[]>([]);
+  const [email, setEmail] = useState("");
+  const [gate, setGate] = useState<GateState>("idle");
+  const [gateError, setGateError] = useState<string | null>(null);
   const step = answers.length;
 
-  if (step >= QUESTIONS.length) {
-    const result = RESULTS[tally(answers)];
+  const finishedAnswers = step >= QUESTIONS.length;
+  const result = finishedAnswers ? RESULTS[tally(answers)] : null;
+  const resultTierKey = finishedAnswers ? tally(answers) : null;
+
+  async function captureEmail(e: React.FormEvent) {
+    e.preventDefault();
+    setGateError(null);
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
+      setGateError("Please use a valid email.");
+      return;
+    }
+    setGate("submitting");
+    try {
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: email.trim().toLowerCase(),
+          source: "quiz",
+          quiz_route: resultTierKey ?? "F",
+          quiz_route_label: resultTierKey
+            ? RESULT_TIER_LABELS[resultTierKey]
+            : "",
+        }),
+      });
+      // /api/subscribe returns { ok: true } even for already-subscribed —
+      // we always reveal the result, the gate is the capture moment, not
+      // a paywall. If the endpoint hard-fails, we still reveal but flag
+      // the error so we don't block the buyer.
+      if (!res.ok && res.status >= 500) {
+        throw new Error("Subscribe service unavailable");
+      }
+      setGate("ok");
+    } catch (err) {
+      setGateError(
+        err instanceof Error ? err.message : "Subscribe failed — showing result anyway.",
+      );
+      // Still reveal the result — anti-friction default.
+      setGate("ok");
+    }
+  }
+
+  // Reveal result if user submitted email, skipped, or errored through.
+  const reveal = finishedAnswers && (gate === "ok" || gate === "skip");
+
+  if (reveal && result) {
     return (
       <div className="bg-gradient-to-br from-sky-950/40 via-slate-900 to-slate-950 border border-sky-700/50 rounded-xl p-6 sm:p-8 space-y-4">
         <p className="text-sky-300 text-xs font-semibold uppercase tracking-wider">
@@ -108,21 +164,12 @@ export default function QuizForm() {
         </h2>
         <p className="text-gray-300 text-base leading-relaxed">{result.body}</p>
         <div className="flex flex-col sm:flex-row gap-3 pt-2">
-          {result.cta.external ? (
-            <a
-              href={result.cta.href}
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-semibold text-sm shadow-lg shadow-sky-500/30 transition-colors"
-            >
-              {result.cta.label} <span aria-hidden="true">→</span>
-            </a>
-          ) : (
-            <a
-              href={result.cta.href}
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-semibold text-sm shadow-lg shadow-sky-500/30 transition-colors"
-            >
-              {result.cta.label} <span aria-hidden="true">→</span>
-            </a>
-          )}
+          <a
+            href={result.cta.href}
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-semibold text-sm shadow-lg shadow-sky-500/30 transition-colors"
+          >
+            {result.cta.label} <span aria-hidden="true">→</span>
+          </a>
           <a
             href={result.secondary.href}
             className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg border border-slate-700 bg-slate-800 hover:bg-slate-700 text-gray-100 font-semibold text-sm transition-colors"
@@ -130,13 +177,88 @@ export default function QuizForm() {
             {result.secondary.label}
           </a>
         </div>
+        {gate === "ok" ? (
+          <p className="text-emerald-400 text-xs">
+            Sunday digest is on its way — first email lands in 30 minutes.
+          </p>
+        ) : null}
         <button
           type="button"
-          onClick={() => setAnswers([])}
+          onClick={() => {
+            setAnswers([]);
+            setEmail("");
+            setGate("idle");
+            setGateError(null);
+          }}
           className="text-gray-500 hover:text-gray-300 text-xs underline decoration-dotted underline-offset-4 mt-3"
         >
           Retake the quiz
         </button>
+      </div>
+    );
+  }
+
+  // Email gate (after all answers captured, before reveal)
+  if (finishedAnswers) {
+    return (
+      <div className="rounded-xl border border-amber-500/40 bg-amber-500/5 p-6 sm:p-8 space-y-4">
+        <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider">
+          Last step · 10 seconds
+        </p>
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug">
+          Where should we send your routed recommendation?
+        </h2>
+        <p className="text-gray-300 text-sm leading-relaxed">
+          We&rsquo;ll show your result on this page <em>and</em> send a copy
+          to your inbox so you can come back to it later. The email also
+          starts the free Sunday Acceleration Watch digest — five ranked
+          startups every Monday. Reply REFUND or unsubscribe any time.
+        </p>
+        <form onSubmit={captureEmail} className="space-y-3">
+          <div className="flex flex-col sm:flex-row gap-3">
+            <input
+              type="email"
+              autoComplete="email"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="you@example.com"
+              maxLength={200}
+              className="flex-1 px-4 py-3 rounded-lg bg-slate-900 border border-slate-700 focus:border-sky-500 focus:outline-none text-gray-100 text-sm placeholder-gray-600"
+              disabled={gate === "submitting"}
+            />
+            <button
+              type="submit"
+              disabled={gate === "submitting"}
+              className="px-6 py-3 rounded-lg bg-amber-500 hover:bg-amber-400 disabled:bg-slate-700 disabled:cursor-wait text-slate-950 font-semibold text-sm transition-colors whitespace-nowrap"
+            >
+              {gate === "submitting" ? "Sending…" : "Show my result →"}
+            </button>
+          </div>
+          {gateError ? (
+            <p className="text-rose-400 text-xs" role="alert">
+              {gateError}
+            </p>
+          ) : null}
+        </form>
+        <p className="text-gray-500 text-xs leading-relaxed border-t border-slate-800 pt-3">
+          Don&rsquo;t want to share an email?{" "}
+          <button
+            type="button"
+            onClick={() => setGate("skip")}
+            className="text-gray-400 hover:text-gray-200 underline decoration-dotted underline-offset-4"
+          >
+            Show the result without subscribing
+          </button>
+          . The full pricing grid is also at{" "}
+          <a
+            href="/pricing"
+            className="text-sky-400 hover:text-sky-300 underline decoration-dotted"
+          >
+            /pricing
+          </a>
+          .
+        </p>
       </div>
     );
   }
