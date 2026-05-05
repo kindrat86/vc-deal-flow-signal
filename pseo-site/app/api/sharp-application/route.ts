@@ -41,12 +41,18 @@ function applicationEmailHtml(fields: {
   thesis: string;
   how_heard: string;
   quarterly_question: string;
+  dream_state: string;
+  current_state: string;
+  gap: string;
+  money_value: string;
+  urgency: string;
   ip: string;
   ua: string;
 }): string {
   const f = Object.fromEntries(
     Object.entries(fields).map(([k, v]) => [k, escapeHtml(v)]),
   );
+  const blank = "<em style='color:#94a3b8;'>blank</em>";
   return `<!DOCTYPE html>
 <html>
 <head><meta charset="utf-8"></head>
@@ -59,10 +65,20 @@ function applicationEmailHtml(fields: {
 <table style="width:100%;border-collapse:collapse;font-size:14px;">
 <tr><td style="padding:8px 0;font-weight:600;width:180px;color:#475569;">Fund / syndicate</td><td style="padding:8px 0;">${f.fund_name}</td></tr>
 <tr><td style="padding:8px 0;font-weight:600;color:#475569;">Contact</td><td style="padding:8px 0;">${f.contact_name} &lt;<a href="mailto:${f.email}" style="color:#0ea5e9;">${f.email}</a>&gt;</td></tr>
-<tr><td style="padding:8px 0;font-weight:600;color:#475569;">AUM / deals/yr</td><td style="padding:8px 0;">${f.aum || "<em style='color:#94a3b8;'>blank</em>"}</td></tr>
+<tr><td style="padding:8px 0;font-weight:600;color:#475569;">AUM / deals/yr</td><td style="padding:8px 0;">${f.aum || blank}</td></tr>
 <tr><td style="padding:8px 0;font-weight:600;color:#475569;vertical-align:top;">Thesis focus</td><td style="padding:8px 0;white-space:pre-wrap;">${f.thesis}</td></tr>
-<tr><td style="padding:8px 0;font-weight:600;color:#475569;">How heard</td><td style="padding:8px 0;">${f.how_heard || "<em style='color:#94a3b8;'>blank</em>"}</td></tr>
-<tr><td style="padding:8px 0;font-weight:600;color:#475569;vertical-align:top;">Quarterly review focus</td><td style="padding:8px 0;white-space:pre-wrap;">${f.quarterly_question || "<em style='color:#94a3b8;'>blank</em>"}</td></tr>
+<tr><td style="padding:8px 0;font-weight:600;color:#475569;">How heard</td><td style="padding:8px 0;">${f.how_heard || blank}</td></tr>
+<tr><td style="padding:8px 0;font-weight:600;color:#475569;vertical-align:top;">Quarterly review focus</td><td style="padding:8px 0;white-space:pre-wrap;">${f.quarterly_question || blank}</td></tr>
+</table>
+<div style="background:#f1f5ff;border-left:4px solid #6366f1;padding:14px 18px;margin:20px 0 8px;">
+<strong style="color:#3730a3;font-size:12px;letter-spacing:1px;text-transform:uppercase;">Brunson Diligence — 5 Questions</strong>
+</div>
+<table style="width:100%;border-collapse:collapse;font-size:14px;">
+<tr><td style="padding:8px 0;font-weight:600;width:180px;color:#475569;vertical-align:top;">1. Dream state (12-mo)</td><td style="padding:8px 0;white-space:pre-wrap;">${f.dream_state || blank}</td></tr>
+<tr><td style="padding:8px 0;font-weight:600;color:#475569;vertical-align:top;">2. Current state</td><td style="padding:8px 0;white-space:pre-wrap;">${f.current_state || blank}</td></tr>
+<tr><td style="padding:8px 0;font-weight:600;color:#475569;vertical-align:top;">3. The gap</td><td style="padding:8px 0;white-space:pre-wrap;">${f.gap || blank}</td></tr>
+<tr><td style="padding:8px 0;font-weight:600;color:#475569;vertical-align:top;">4. Money — gap value</td><td style="padding:8px 0;white-space:pre-wrap;">${f.money_value || blank}</td></tr>
+<tr><td style="padding:8px 0;font-weight:600;color:#475569;vertical-align:top;">5. Urgency — why now</td><td style="padding:8px 0;white-space:pre-wrap;">${f.urgency || blank}</td></tr>
 </table>
 <hr style="border:none;border-top:1px solid #e2e8f0;margin:24px 0;">
 <p style="color:#94a3b8;font-size:12px;line-height:1.5;">Submitted from ${f.ip} (${f.ua})<br>Form: https://gitdealflow.com/apply</p>
@@ -122,6 +138,12 @@ export async function POST(request: Request) {
     const thesis = clip(raw.thesis, 1000);
     const how_heard = clip(raw.how_heard, 50);
     const quarterly_question = clip(raw.quarterly_question, 1500);
+    // Brunson high-ticket five-question diligence (DotCom Secrets Ch 22).
+    const dream_state = clip(raw.dream_state, 800);
+    const current_state = clip(raw.current_state, 800);
+    const gap = clip(raw.gap, 800);
+    const money_value = clip(raw.money_value, 800);
+    const urgency = clip(raw.urgency, 800);
 
     if (!fund_name || !contact_name || !email || !thesis) {
       return NextResponse.json(
@@ -154,6 +176,11 @@ export async function POST(request: Request) {
       thesis,
       how_heard,
       quarterly_question,
+      dream_state,
+      current_state,
+      gap,
+      money_value,
+      urgency,
       ip,
       ua,
     });
