@@ -138,6 +138,104 @@
     .secret-1 .secret-trial .check { color: rgb(125,211,252); }
     .secret-2 .secret-trial .check { color: rgb(110,231,183); }
     .secret-3 .secret-trial .check { color: rgb(255,174,122); }
+
+    /* Price hero — minute-60 close card */
+    .price-hero {
+      position: relative;
+      margin: 0 auto 1.5rem;
+      max-width: 38rem;
+      background:
+        radial-gradient(1200px 360px at 50% -10%, rgba(255,138,60,0.10), transparent 60%),
+        linear-gradient(180deg, rgb(15,23,42) 0%, rgb(8,15,28) 100%);
+      border: 1px solid rgba(255,138,60,0.30);
+      border-radius: 1.25rem;
+      padding: 2.75rem 2rem 2rem;
+      box-shadow: 0 25px 60px -25px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.04);
+      overflow: hidden;
+    }
+    .price-hero::before {
+      content: ""; position: absolute; left: 50%; top: 0; transform: translate(-50%, -50%);
+      width: 320px; height: 320px;
+      background: radial-gradient(circle, rgba(255,138,60,0.18) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .price-ribbon {
+      position: absolute; top: 0; left: 50%; transform: translate(-50%, -50%);
+      background: linear-gradient(135deg, rgb(255,138,60), rgb(255,107,26));
+      color: white;
+      font-size: 0.65rem; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase;
+      padding: 0.4rem 1rem; border-radius: 9999px;
+      box-shadow: 0 6px 20px -6px rgba(255,107,26,0.6);
+      white-space: nowrap;
+    }
+
+    .price-rows { position: relative; display: flex; flex-direction: column; align-items: center; gap: 0.4rem; margin-bottom: 1rem; }
+    .price-strike-row { color: rgb(148,163,184); font-size: 0.95rem; }
+    .price-strike-row .strike { color: rgb(148,163,184); text-decoration: line-through; text-decoration-thickness: 1px; }
+
+    .price-now-row {
+      display: flex; align-items: baseline; gap: 0.5rem;
+      margin-top: 0.25rem;
+    }
+    .price-now-amount {
+      font-size: 3.25rem; line-height: 1; font-weight: 800; letter-spacing: -0.03em;
+      background: linear-gradient(180deg, rgb(255,255,255), rgb(203,213,225));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .price-now-cadence { color: rgb(203,213,225); font-size: 1rem; font-weight: 500; }
+    .price-yearly { color: rgb(100,116,139); font-size: 0.875rem; margin-top: 0.1rem; }
+
+    .price-save-pill {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: rgba(52,211,153,0.12);
+      border: 1px solid rgba(52,211,153,0.40);
+      color: rgb(110,231,183);
+      font-size: 0.875rem; font-weight: 700;
+      padding: 0.4rem 0.85rem; border-radius: 9999px;
+      margin-top: 0.85rem;
+    }
+    .price-save-pill::before { content: "⤓"; font-weight: 800; }
+
+    .price-locked {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      color: rgb(255,174,122);
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+      margin: 1rem auto 1.5rem;
+      padding: 0.35rem 0.85rem;
+      background: rgba(255,138,60,0.08);
+      border: 1px solid rgba(255,138,60,0.30);
+      border-radius: 9999px;
+    }
+    .price-locked .lock { font-size: 0.85rem; }
+
+    .price-cta {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      background: linear-gradient(135deg, rgb(255,138,60) 0%, rgb(255,107,26) 100%);
+      color: white;
+      font-weight: 800; font-size: 1.0625rem; letter-spacing: -0.005em;
+      padding: 1rem 2.25rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 12px 36px -10px rgba(255,107,26,0.55), inset 0 1px 0 rgba(255,255,255,0.25);
+      transition: transform 150ms ease, box-shadow 150ms ease;
+      text-decoration: none;
+    }
+    .price-cta:hover { transform: translateY(-1px); box-shadow: 0 18px 42px -10px rgba(255,107,26,0.65), inset 0 1px 0 rgba(255,255,255,0.3); }
+    .price-cta .arrow { transition: transform 150ms ease; }
+    .price-cta:hover .arrow { transform: translateX(3px); }
+
+    .price-trust {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 1rem;
+      margin-top: 1.5rem;
+      font-size: 0.75rem; color: rgb(148,163,184);
+    }
+    .price-trust .tcell { display: inline-flex; align-items: center; gap: 0.35rem; }
+    .price-trust .tcheck { color: rgb(110,231,183); font-weight: 800; }
+
+    @media (max-width: 480px) {
+      .price-hero { padding: 2.5rem 1.25rem 1.75rem; }
+      .price-now-amount { font-size: 2.75rem; }
+      .price-cta { padding: 0.9rem 1.5rem; font-size: 1rem; }
+    }
   </style>
 </head>
 <body class="bg-dark-900 text-gray-100 font-sans antialiased">
@@ -409,13 +507,34 @@
         </li>
       </ul>
 
-      <div class="bg-dark-900 border-2 border-brand-600 rounded-2xl p-7 text-center mb-6">
-        <p class="text-gray-400 mb-1">Total standalone value: <span class="text-white font-bold">€9,429/yr</span></p>
-        <p class="text-gray-400 mb-1">Founding-member price: <span class="text-white font-bold text-2xl">€97/mo</span> (€1,164/yr)</p>
-        <p class="text-emerald-400 font-semibold mb-4">You save €8,265 in year one.</p>
-        <p class="text-brand-500 text-xs uppercase tracking-wider mb-4 font-semibold">Locked forever &middot; Goes to €197/mo after beta closes</p>
-        <a href="https://buy.stripe.com/4gM00ifRpcRG2069I40x202" onclick="if(window.posthog)posthog.capture('webinar_insider_close_clicked')" class="inline-block bg-brand-600 hover:bg-brand-700 text-white font-bold px-10 py-4 rounded-lg text-lg transition">Lock in €97/mo &rarr;</a>
-        <p class="text-gray-500 text-xs mt-4">60-day "Signal or It's Free" guarantee. Reply to any email to refund. No forms, no call.</p>
+      <div class="price-hero text-center">
+        <span class="price-ribbon" aria-hidden="true">Founding Member</span>
+
+        <div class="price-rows">
+          <p class="price-strike-row">Total standalone value <span class="strike">€9,429/yr</span></p>
+          <div class="price-now-row">
+            <span class="price-now-amount">€97</span>
+            <span class="price-now-cadence">/ mo</span>
+          </div>
+          <p class="price-yearly">Billed monthly &middot; €1,164 / yr</p>
+          <span class="price-save-pill">Save €8,265 in year one</span>
+        </div>
+
+        <div class="price-locked">
+          <span class="lock" aria-hidden="true">🔒</span>
+          <span>Locked forever &middot; €197/mo after beta closes</span>
+        </div>
+
+        <a href="https://buy.stripe.com/4gM00ifRpcRG2069I40x202" onclick="if(window.posthog)posthog.capture('webinar_insider_close_clicked')" class="price-cta">
+          <span>Lock in €97/mo</span>
+          <span class="arrow" aria-hidden="true">→</span>
+        </a>
+
+        <div class="price-trust" role="list">
+          <span class="tcell" role="listitem"><span class="tcheck">✓</span> 60-day Signal-or-It&rsquo;s-Free</span>
+          <span class="tcell" role="listitem"><span class="tcheck">✓</span> Reply REFUND to any email</span>
+          <span class="tcell" role="listitem"><span class="tcheck">✓</span> No forms, no call</span>
+        </div>
       </div>
 
       <p class="trial-close">If the math works for you, that button is the move. If you want to start smaller, the <a href="https://buy.stripe.com/28E7sK48H04U8ou07u0x200" class="text-signal-500 hover:text-signal-400 underline decoration-dotted">€9.97/mo Dashboard</a> or the <a href="https://signals.gitdealflow.com/pricing#first-look-pass" class="text-signal-500 hover:text-signal-400 underline decoration-dotted">€7 First Look Pass</a> are both on the pricing page. If you want to keep watching for free, the <a href="/#signup" class="text-signal-500 hover:text-signal-400 underline decoration-dotted">Sunday digest</a> is yours forever. All three doors are open.</p>
