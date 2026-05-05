@@ -63,6 +63,8 @@ jobs:
           EOF
 
       - name: Run weekly pipeline
+        env:
+          SKIP_CAPTIONS: "1"
         run: bash scripts/run-weekly-watch.sh
 
       - name: Commit content archive
