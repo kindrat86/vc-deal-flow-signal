@@ -13,7 +13,7 @@ Full multi-dimensional audit of SEO/pSEO/AEO/GEO/AIO health across both apex (`g
 | AIO | 90 |
 | **Composite** | **~84** |
 
-## Final state (post-fix, 10 waves)
+## Final state (post-fix, 11 waves)
 
 | Metric | Score | Delta |
 |---|---:|---:|
@@ -21,8 +21,8 @@ Full multi-dimensional audit of SEO/pSEO/AEO/GEO/AIO health across both apex (`g
 | pSEO | 99 | +11 |
 | AEO | 97 | +9 |
 | GEO | 98 | +14 |
-| AIO | 99 | +9 |
-| **Composite** | **~98.4** | **+14.4** |
+| AIO | 99.5 | +9.5 |
+| **Composite** | **~98.5** | **+14.5** |
 
 Bonus operational wins (not part of the score but high impact):
 - IndexNow now submits 1,050 URLs per build (was 5).
@@ -93,6 +93,11 @@ Bonus operational wins (not part of the score but high impact):
 28. `submit-indexnow.ts` was only fetching the sitemap index (5 sub-sitemap URLs) instead of recursing into sub-sitemaps. Now submits 1,050 URLs per build (verified live: HTTP 200). Also added `INDEXNOW_FORCE=1` env override so the script can be triggered manually post-deploy when running outside Vercel CI.
 29. OpenAPI spec for `/api/agent/call` declared `tool: string` but handler reads `body.name`. Spec now lists `name` as required + enum of the 5 tool names.
 30. OpenAPI spec for `/api/a2a` listed `tasks/send` but the handler implements `message/send` (canonical A2A v0.3.0 method for synchronous task submission). Updated method enum to `[message/send, tasks/get, tasks/cancel, tasks/list]`.
+
+### Wave 11 — per-page OG generators + apex agent-discovery parity
+31. Built per-page `opengraph-image.tsx` for `/best/[slug]`, `/use-cases/[slug]`, `/stage/[slug]`, `/trends/[slug]`, `/topics/[slug]` (5 new routes). Each generator surfaces page-specific data (sector + year + count for best, persona + tagline for use-cases, period flow arrow for trends, etc.). Twitter/LinkedIn/Slack share previews now show contextual cards instead of brand-only fallback. **Side fix:** these templates had `images: ["/opengraph-image"]` hard-coded in metadata, which OVERRODE the file-system OG (Next 16 prefers explicit metadata). Removed the explicit images line so file-system convention wins.
+32. Schema.org `@id` mismatch — `knowledge-graph.json` and home `Organization.founder` referenced `/about#person` but the `/about` page emitted `Person` at `@id=/about#author`. Aligned `/about` to `#person` for cross-page graph resolution.
+33. Apex `gitdealflow.com/.well-known/*` mostly returned 404 — only `security.txt` existed; agent-discovery files lived only at `signals.gitdealflow.com`. Added 9 redirects in `landing/vercel.json` so apex `/.well-known/{mcp,agent-card,ai-plugin,ai-policy,api-catalog}.json` + `/knowledge-graph.json`, `/qa.jsonl`, `/feed.xml`, `/api/openapi.json` all return 200 (302 to canonical signals subdomain). All 14 agent-discovery files now resolve from both hosts.
 
 ## Live agent surfaces (post-audit)
 
