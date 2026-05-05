@@ -16,6 +16,11 @@ fi
 if [[ ! -f out/short-magic-bullet/script-meta.json ]]; then
   printf '%s' '{"id":"short-magic-bullet","fps":30,"width":1080,"height":1920,"scenes":[{"id":"stub","kind":"title","durationSec":2,"voDurationSec":0,"audioPath":null,"data":{}}],"totalDurationSec":2,"totalDurationFrames":60,"voice":{"id":"stub","name":"stub","model":"stub"}}' > out/short-magic-bullet/script-meta.json
 fi
+# Predicted90s.tsx imports captions.json statically; ensure an empty stub
+# exists even when SKIP_CAPTIONS=1 (CI default — whisper.cpp isn't installed
+# on the runner). The stub is a sceneId→[] map matching the runtime shape.
+mkdir -p out/predicted-90s
+[[ -f out/predicted-90s/captions.json ]] || printf '%s' '{}' > out/predicted-90s/captions.json
 
 echo "▸ generating fresh content from /api/v1/signals.json"
 node scripts/00-generate-weekly-watch.mjs
