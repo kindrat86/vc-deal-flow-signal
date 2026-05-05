@@ -120,14 +120,12 @@ const content = {
     },
     {
       id: "leader",
-      kind: "magic-bullet",
+      kind: "problem",
       vo: `${top.name}. Stage: ${stage}. Region: ${geography}. Commit velocity is ${delta} over the last fourteen days. That's the ${sector} pattern, and across the panel of two hundred nineteen confirmed rounds, it has historically preceded the fundraise announcement by twenty-one to forty-seven days.`,
       durationHint: 18,
       data: {
-        topLine: top.name,
-        midLine: delta,
-        bottomLine: `commit velocity 14d`,
-        stamp: `${stage} · ${geography}`,
+        headline: `${top.name} ${delta}`,
+        subhead: `${stage} · ${geography} · ${sector}. The 14-day commit-velocity pattern that has historically preceded Series A and Series B by 21 to 47 days across the SSRN panel.`,
       },
     },
     {
