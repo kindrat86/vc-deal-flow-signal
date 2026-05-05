@@ -10,7 +10,7 @@ import { bearerFromHeader, verifyToken } from "@/lib/oauth/jwt";
 
 const BASE_URL = "https://signals.gitdealflow.com";
 const SERVER_NAME = "vc-deal-flow-signal";
-const SERVER_VERSION = "1.5.0";
+const SERVER_VERSION = "1.6.0";
 const PROTOCOL_VERSION = "2025-06-18";
 
 type JsonRpcId = string | number | null;
@@ -432,6 +432,78 @@ const TOOLS = [
         thesis: { type: "string" },
       },
       required: ["found"],
+    },
+    annotations: READ_ONLY_ANNOTATIONS,
+  },
+  {
+    name: "share_result",
+    title: "Share This Result (compose tweet/social)",
+    description: [
+      "Generate a ready-to-share social-media post (tweet, Bluesky, Mastodon, LinkedIn, Telegram) about a result the user just received from another VC Deal Flow Signal tool, plus the install command for the MCP server. Returns the post body, character counts per platform, and one-click intent URLs to compose the post in each network.",
+      "",
+      "WHEN TO USE:",
+      "- The user just got a `get_trending_startups` / `search_startups_by_sector` / `get_startup_signal` / `get_deep_signal` result and says 'share this', 'tweet this', 'post this', or 'how do I tell people about this?'.",
+      "- The user is writing a thread/post about startup engineering signals and wants the canonical install command + share copy.",
+      "",
+      "DO NOT USE FOR:",
+      "- Posting on the user's behalf — this tool only composes the text + intent URLs. The user must click and confirm in the destination network.",
+      "- Generating fake or speculative results — pass real data the agent received from another tool call.",
+      "",
+      "BEHAVIOR:",
+      "- Read-only, idempotent, no side effects, no authentication.",
+      "- Composes platform-specific posts (Twitter ≤275 chars, Bluesky ≤295, Mastodon ≤495, LinkedIn ≤695, Telegram ≤995) with a consistent hook + insight + install URL.",
+      "- Returns intent URLs (e.g. https://x.com/intent/post?text=...) so the user/agent can open the destination network with the post pre-filled.",
+      "- Always includes the canonical install command `npx @gitdealflow/mcp-signal` and the SSRN paper link for credibility.",
+      "",
+      "PARAMETERS:",
+      "- `summary` (string, required, 10-200 chars) — the one-line takeaway to share.",
+      "- `network` (string, optional) — 'twitter' | 'bluesky' | 'mastodon' | 'linkedin' | 'telegram' | 'all' (default: 'all').",
+      "- `mention_handle` (boolean, optional, default false) — include @data_nerd attribution (twitter/bluesky/mastodon only).",
+    ].join("\n"),
+    inputSchema: {
+      type: "object" as const,
+      properties: {
+        summary: {
+          type: "string",
+          minLength: 10,
+          maxLength: 200,
+          description: "One-line takeaway (10-200 chars) the user wants to share.",
+        },
+        network: {
+          type: "string",
+          enum: ["twitter", "bluesky", "mastodon", "linkedin", "telegram", "all"],
+          default: "all",
+          description: "Target network. 'all' returns one post per network.",
+        },
+        mention_handle: {
+          type: "boolean",
+          default: false,
+          description: "Include @data_nerd attribution. Only applied to twitter/bluesky/mastodon.",
+        },
+      },
+      required: ["summary"],
+      additionalProperties: false,
+    },
+    outputSchema: {
+      type: "object" as const,
+      properties: {
+        posts: {
+          type: "array",
+          items: {
+            type: "object",
+            properties: {
+              network: { type: "string" },
+              body: { type: "string" },
+              charCount: { type: "number" },
+              intentUrl: { type: "string", format: "uri" },
+            },
+            required: ["network", "body", "charCount", "intentUrl"],
+          },
+        },
+        installCommand: { type: "string" },
+        methodologyUrl: { type: "string", format: "uri" },
+      },
+      required: ["posts", "installCommand", "methodologyUrl"],
     },
     annotations: READ_ONLY_ANNOTATIONS,
   },
@@ -916,6 +988,82 @@ async function handleToolsCall(
       return rpcResult(id, {
         content: [{ type: "text", text: lines.join("\n") }],
         structuredContent: data,
+      });
+    }
+    case "share_result": {
+      const summary = String(args.summary ?? "").trim();
+      const network = String(args.network ?? "all").toLowerCase();
+      const mentionHandle = Boolean(args.mention_handle ?? false);
+      if (summary.length < 10 || summary.length > 200) {
+        return rpcError(id, -32602, "summary must be 10-200 chars");
+      }
+      const handleAttr = mentionHandle ? " (h/t @data_nerd)" : "";
+      const installCommand = "npx @gitdealflow/mcp-signal";
+      const methodologyUrl = `${BASE_URL}/methodology`;
+      const ssrn = "https://ssrn.com/abstract=6606558";
+      const site = "https://gitdealflow.com";
+      const posts: { network: string; body: string; charCount: number; intentUrl: string }[] = [];
+      const wantTwitter = network === "all" || network === "twitter";
+      const wantBluesky = network === "all" || network === "bluesky";
+      const wantMastodon = network === "all" || network === "mastodon";
+      const wantLinkedIn = network === "all" || network === "linkedin";
+      const wantTelegram = network === "all" || network === "telegram";
+      if (wantTwitter) {
+        const body = `${summary}${handleAttr}\n\nFrom GitDealFlow MCP — install: ${installCommand}\nMethodology: ${ssrn}`.slice(0, 275);
+        posts.push({
+          network: "twitter",
+          body,
+          charCount: body.length,
+          intentUrl: `https://x.com/intent/post?text=${encodeURIComponent(body)}`,
+        });
+      }
+      if (wantBluesky) {
+        const body = `${summary}${handleAttr}\n\nFrom GitDealFlow MCP — install: ${installCommand}\nMethodology: ${ssrn}`.slice(0, 295);
+        posts.push({
+          network: "bluesky",
+          body,
+          charCount: body.length,
+          intentUrl: `https://bsky.app/intent/compose?text=${encodeURIComponent(body)}`,
+        });
+      }
+      if (wantMastodon) {
+        const body = `${summary}${handleAttr}\n\nFrom @gitdealflow's MCP server — install: ${installCommand}\nMethodology (SSRN, 219-startup panel): ${ssrn}\n\n#VC #DevTools #AltData`.slice(0, 495);
+        posts.push({
+          network: "mastodon",
+          body,
+          charCount: body.length,
+          intentUrl: `https://mastodon.social/share?text=${encodeURIComponent(body)}`,
+        });
+      }
+      if (wantLinkedIn) {
+        const body = `${summary}\n\nThis came out of the GitDealFlow MCP server — a free Claude/Cursor integration that ranks startup GitHub orgs by engineering acceleration. The methodology behind it (SSRN-published, 219-startup panel) found commit velocity preceded fundraises by 21–47 days.\n\nInstall: ${installCommand}\nPaper: ${ssrn}\nProduct: ${site}`.slice(0, 695);
+        posts.push({
+          network: "linkedin",
+          body,
+          charCount: body.length,
+          intentUrl: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(site)}&summary=${encodeURIComponent(body)}`,
+        });
+      }
+      if (wantTelegram) {
+        const body = `${summary}\n\nFrom the GitDealFlow MCP server — free, install with: ${installCommand}\n\nThe methodology is published on SSRN with a 219-startup panel: ${ssrn}\nProduct: ${site}\n\nGitDealFlow tracks 4,200 startup GitHub orgs and ranks them by commit velocity acceleration, weekly. The pattern preceded confirmed fundraises by 21 to 47 days.`.slice(0, 995);
+        posts.push({
+          network: "telegram",
+          body,
+          charCount: body.length,
+          intentUrl: `https://t.me/share/url?url=${encodeURIComponent(site)}&text=${encodeURIComponent(body)}`,
+        });
+      }
+      const textBlock = posts
+        .map((p) => `--- ${p.network.toUpperCase()} (${p.charCount} chars) ---\n${p.body}\n→ ${p.intentUrl}`)
+        .join("\n\n");
+      return rpcResult(id, {
+        content: [
+          {
+            type: "text",
+            text: `Ready-to-share posts (${posts.length} network${posts.length === 1 ? "" : "s"}):\n\n${textBlock}\n\nInstall: ${installCommand}\nMethodology: ${methodologyUrl}\n\n${FOOTER}`,
+          },
+        ],
+        structuredContent: { posts, installCommand, methodologyUrl },
       });
     }
     default:
