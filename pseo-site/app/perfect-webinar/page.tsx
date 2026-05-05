@@ -418,6 +418,127 @@ export default function PerfectWebinarPage() {
           </p>
         </section>
 
+        {/* CONVERSION STORY — Brunson Expert Secrets Ch 12. Five-step
+            canonical script: Old Way → New Vehicle → External Struggle
+            collapsed → Internal Struggle collapsed → Frameworks revealed.
+            The bridge from belief (Three Objections) to offer (Stack). */}
+        <section
+          id="conversion-story"
+          aria-label="Conversion story — five-step bridge"
+          className="space-y-5 border-y border-slate-800 py-8 scroll-mt-20"
+        >
+          <header className="space-y-2">
+            <p className="text-violet-400 text-xs font-semibold uppercase tracking-wider">
+              Conversion story · Expert Secrets Ch 12
+            </p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug">
+              The five-step shift — in your own voice.
+            </h2>
+            <p className="text-gray-400 text-sm leading-relaxed max-w-2xl">
+              If you read the three objections and felt the shift, here&rsquo;s
+              the formal version of what just happened — Russell&rsquo;s
+              canonical Conversion Story, applied to the developer-investor.
+            </p>
+          </header>
+          <ol className="space-y-4">
+            <li className="rounded-xl border border-slate-800 bg-slate-900/40 p-5 sm:p-6 space-y-2">
+              <div className="flex items-baseline gap-3">
+                <span className="text-violet-300 font-bold tabular-nums shrink-0">1.</span>
+                <p className="text-violet-300 text-[10px] font-semibold uppercase tracking-wider">
+                  The old way you were sold
+                </p>
+              </div>
+              <p className="text-gray-100 font-semibold text-base leading-snug">
+                &ldquo;The best deals come from your network. Build the
+                rolodex.&rdquo;
+              </p>
+              <p className="text-gray-300 text-sm leading-relaxed">
+                Every operator-turned-investor was told this. It&rsquo;s the
+                first lesson of every fellowship, every angel-school slide
+                deck, every conversation with a senior partner. Network is the
+                vehicle. Warm intros are the engine. Time-in-seat is the moat.
+              </p>
+            </li>
+            <li className="rounded-xl border border-slate-800 bg-slate-900/40 p-5 sm:p-6 space-y-2">
+              <div className="flex items-baseline gap-3">
+                <span className="text-violet-300 font-bold tabular-nums shrink-0">2.</span>
+                <p className="text-violet-300 text-[10px] font-semibold uppercase tracking-wider">
+                  The new vehicle
+                </p>
+              </div>
+              <p className="text-gray-100 font-semibold text-base leading-snug">
+                Engineering acceleration. Public, reproducible, code-side.
+              </p>
+              <p className="text-gray-300 text-sm leading-relaxed">
+                Every great startup leaves a footprint in its code 21–47 days
+                before the deck circulates. That footprint is public, the
+                methodology is reproducible (SSRN n=219), and the cost of
+                reading it is €9.97/mo. The new vehicle isn&rsquo;t bigger
+                network — it&rsquo;s a different sensor.
+              </p>
+            </li>
+            <li className="rounded-xl border border-slate-800 bg-slate-900/40 p-5 sm:p-6 space-y-2">
+              <div className="flex items-baseline gap-3">
+                <span className="text-violet-300 font-bold tabular-nums shrink-0">3.</span>
+                <p className="text-violet-300 text-[10px] font-semibold uppercase tracking-wider">
+                  External struggle, removed
+                </p>
+              </div>
+              <p className="text-gray-100 font-semibold text-base leading-snug">
+                You don&rsquo;t need partner-grade tooling. You need
+                builder-grade signal.
+              </p>
+              <p className="text-gray-300 text-sm leading-relaxed">
+                Harmonic, Tracxn, and Affinity are €1k–€10k/mo because they
+                serve fund-grade procurement. The developer-investor was
+                priced out of the category, not by methodology, but by sales
+                motion. Pull the sales motion out and the same data ladder
+                runs at €9.97/mo.
+              </p>
+            </li>
+            <li className="rounded-xl border border-slate-800 bg-slate-900/40 p-5 sm:p-6 space-y-2">
+              <div className="flex items-baseline gap-3">
+                <span className="text-violet-300 font-bold tabular-nums shrink-0">4.</span>
+                <p className="text-violet-300 text-[10px] font-semibold uppercase tracking-wider">
+                  Internal struggle, removed
+                </p>
+              </div>
+              <p className="text-gray-100 font-semibold text-base leading-snug">
+                You don&rsquo;t need to become someone else to source.
+              </p>
+              <p className="text-gray-300 text-sm leading-relaxed">
+                The lesson the network rule taught you was that you needed to
+                turn into a partner-style human — coffees, calendar Tetris,
+                socially-aware persuasion. The data-side path lets you stay
+                the engineer who reads commit logs for fun. Identity stays
+                intact. The signal does the introduction.
+              </p>
+            </li>
+            <li className="rounded-xl border border-violet-700/40 bg-violet-950/15 p-5 sm:p-6 space-y-2">
+              <div className="flex items-baseline gap-3">
+                <span className="text-violet-200 font-bold tabular-nums shrink-0">5.</span>
+                <p className="text-violet-200 text-[10px] font-semibold uppercase tracking-wider">
+                  The frameworks (and where they live)
+                </p>
+              </div>
+              <p className="text-gray-100 font-semibold text-base leading-snug">
+                Sunday digest. Wednesday filter. End-of-quarter sweep.
+              </p>
+              <p className="text-gray-300 text-sm leading-relaxed">
+                The Acceleration Watch is the Sunday digest. The Dashboard is
+                the Wednesday filter. The Sector Sweep is the end-of-quarter
+                deep dive. Three rhythms, twelve minutes a week, methodology
+                published. The shift is already wired into the product —
+                you&rsquo;re not buying a tool, you&rsquo;re buying a cadence.
+              </p>
+            </li>
+          </ol>
+          <p className="text-gray-400 text-sm leading-relaxed border-l-2 border-violet-700/40 pl-4">
+            That&rsquo;s the five-step Conversion Story. If steps 1–4 read
+            like the room you&rsquo;re standing in, step 5 is the door.
+          </p>
+        </section>
+
         {/* THE STACK */}
         <section id="stack" className="space-y-6 scroll-mt-20">
           <div className="space-y-2">

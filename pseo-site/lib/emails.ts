@@ -112,6 +112,32 @@ export const SOAP_OPERA_EMAILS = [
 `),
   },
 
+  // Day 3.5 — Conversion Story (Brunson Expert Secrets Ch 12, V4 audit gap)
+  // The 5-step bridge between belief takedown (D1-D2) and tripwire (D4):
+  // Old way → New vehicle → External struggle → Internal struggle → Frameworks.
+  {
+    subject: "The five-step shift — in your own words",
+    delayMs: THIRTY_MIN + Math.round(3.5 * ONE_DAY),
+    html: wrap(`
+<p>Yesterday's email gave you three plays. Today I want to give you the underlying shift in plain language, because the Sunday-Wednesday-quarter rhythm only works if step 5 sits on top of an honest read of steps 1 through 4.</p>
+<p>Russell Brunson calls this the Conversion Story. Five sentences, one-to-five. Read them in order; the last one is the action.</p>
+<p><strong>1. The old way you were sold.</strong><br>
+"The best deals come from your network. Build the rolodex." Every operator-turned-investor is told this. It's the first lesson of every fellowship deck and every senior-partner conversation. Network is the vehicle. Warm intros are the engine. Time-in-seat is the moat.</p>
+<p><strong>2. The new vehicle.</strong><br>
+Engineering acceleration. Public, reproducible, code-side. Every great startup leaves a footprint in its code 21–47 days before the deck circulates. The methodology is reproducible (SSRN n=219). The cost of reading it is €9.97/mo. The new vehicle isn't bigger network — it's a different sensor.</p>
+<p><strong>3. External struggle, removed.</strong><br>
+You don't need partner-grade tooling. Harmonic, Tracxn, and Affinity are €1k–€10k/mo because they serve fund-grade procurement. Pull the sales motion out and the same data ladder runs at €9.97/mo. The category was priced wrong for you, not built wrong.</p>
+<p><strong>4. Internal struggle, removed.</strong><br>
+You don't need to become someone else to source. The lesson the network rule taught you was that you needed to turn into a partner-style human — coffees, calendar Tetris, social persuasion. The data-side path lets you stay the engineer who reads commit logs for fun. Identity stays intact. The signal does the introduction.</p>
+<p><strong>5. The frameworks (and where they live).</strong><br>
+Sunday digest. Wednesday filter. End-of-quarter sweep. The Acceleration Watch is the Sunday digest. The Dashboard is the Wednesday filter. The Sector Sweep is the end-of-quarter deep dive. Three rhythms, twelve minutes a week, methodology published. The shift is already wired into the product — you're not buying a tool, you're buying a cadence.</p>
+<p>If steps 1-4 read like the room you're standing in, step 5 is the door.</p>
+<p><a href="${SIGNALS}/perfect-webinar/5min" style="color:#0ea5e9;font-weight:600;">Read the 5-minute walkthrough &rarr;</a></p>
+<p>Tomorrow: the €7 way to test step 5 on your own thesis before any subscription decision.</p>
+<p>Talk soon,<br>${FROM_NAME}</p>
+`),
+  },
+
   // Day 4 — €7 First Look tripwire (Russell NEW: first dollar)
   {
     subject: "Pick a sector. €7. Full deep-dive in 24 hours.",
