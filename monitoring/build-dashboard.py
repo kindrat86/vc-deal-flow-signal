@@ -9,6 +9,7 @@ Fetches data from:
 Output: monitoring/dashboard.html  (open with: open monitoring/dashboard.html)
 """
 import json
+import math
 import os
 import sys
 import urllib.request
@@ -24,6 +25,7 @@ OUT_FILE = os.path.join(SCRIPT_DIR, "dashboard.html")
 WINDOW_DAYS = 30
 
 # Exclude the founder + tester accounts from all subscriber metrics.
+# Keep in sync with pseo-site/lib/excluded-emails.ts and email-api/excluded-emails.mjs.
 TESTER_EMAILS = {
     "test@example.com",
     "mkondratyuk86@gmail.com",
@@ -32,6 +34,13 @@ TESTER_EMAILS = {
     "signal@gitdealflow.com",
     "escape@invisibleexit.com",
 }
+# Disposable / scanner inboxes — verified by crawlers, not humans.
+BOT_EMAILS = {
+    "jakub@mailinator.com",
+    "probe1777473122350@deltajohnsons.com",
+    "shannon-pool-1777015174929-94zulc@deltajohnsons.com",
+}
+EXCLUDED_EMAILS = TESTER_EMAILS | BOT_EMAILS
 # Exclude founder's country from PostHog traffic (self-traffic noise).
 EXCLUDE_COUNTRIES = {"GR"}
 
@@ -305,30 +314,6 @@ PH_API_KEY = env.get("PH_API_KEY", "")
 PH_HOST = env.get("PH_HOST", "https://eu.posthog.com")
 PH_PROJECT = env.get("PH_PROJECT", "")
 
-# Mailreach lives in tools/.env, not email-api/.env.
-TOOLS_ENV_FILE = os.path.join(PROJECT_DIR, "tools", ".env")
-tools_env = load_env(TOOLS_ENV_FILE) if os.path.exists(TOOLS_ENV_FILE) else {}
-MAILREACH_API_KEY = tools_env.get("MAILREACH_API_KEY", "")
-SENDER_EMAIL = (
-    env.get("FROM_EMAIL")
-    or tools_env.get("FROM_EMAIL")
-    or tools_env.get("ZOHO_EMAIL")
-    or "signal@gitdealflow.com"
-)
-
-# Campaign runner state.
-CAMPAIGN_DIR = os.path.join(PROJECT_DIR, "tools", "campaign")
-QUEUE_PATH = os.path.join(CAMPAIGN_DIR, "queue.jsonl")
-SENT_PATH = os.path.join(CAMPAIGN_DIR, "sent.jsonl")
-HOLD_PATH = os.path.join(CAMPAIGN_DIR, "HOLD")
-
-# Substack autopublish state.
-SUBSTACK_QUEUE_PATH = os.path.join(
-    PROJECT_DIR, "distribution", "substack-autopublish", "queue.json"
-)
-SUBSTACK_STATS_PATH = os.path.join(SCRIPT_DIR, "substack-stats.json")
-
-
 def http(url, method="GET", data=None, headers=None):
     headers = dict(headers or {})
     headers.setdefault("User-Agent", "gitdealflow-dashboard/1.0")
@@ -450,18 +435,18 @@ if token:
     email_sequences = pb_fetch_all(token, "email_sequences")
 raw_sub_count, raw_log_count = len(subscribers), len(email_log)
 
-# Filter testers out of subscribers + email_log (by subscriber relation).
-tester_ids = {s["id"] for s in subscribers if (s.get("email") or "").lower() in TESTER_EMAILS}
-subscribers = [s for s in subscribers if (s.get("email") or "").lower() not in TESTER_EMAILS]
+# Filter testers + bots out of subscribers + email_log (by subscriber relation).
+tester_ids = {s["id"] for s in subscribers if (s.get("email") or "").lower() in EXCLUDED_EMAILS}
+subscribers = [s for s in subscribers if (s.get("email") or "").lower() not in EXCLUDED_EMAILS]
 email_log = [e for e in email_log if e.get("subscriber") not in tester_ids]
-print(f"  subscribers: {len(subscribers)} (excluded {raw_sub_count - len(subscribers)} testers)"
+print(f"  subscribers: {len(subscribers)} (excluded {raw_sub_count - len(subscribers)} testers+bots)"
       f", email_log: {len(email_log)} (excluded {raw_log_count - len(email_log)})")
 
 print("Fetching Resend audience...")
 resend_contacts = resend_audience_contacts()
 resend_emails = {
     c["email"].lower() for c in resend_contacts
-    if not c.get("unsubscribed") and c["email"].lower() not in TESTER_EMAILS
+    if not c.get("unsubscribed") and c["email"].lower() not in EXCLUDED_EMAILS
 }
 print(f"  verified in Resend: {len(resend_emails)}")
 
@@ -586,7 +571,7 @@ if resend_events:
     for e in resend_events:
         recipients = e.get("to") or []
         to = (recipients[0] if recipients else "").lower()
-        if to in TESTER_EMAILS:
+        if to in EXCLUDED_EMAILS:
             continue
         if subscriber_emails and to not in subscriber_emails:
             continue
@@ -940,317 +925,155 @@ else:
         f"The leak is in the hook, not the traffic. Revisit headline + email-gate offer."
     )
 
-# ---------------- Mailreach + campaign readiness ----------------
+# ---------------- Forecast: weekly organic traffic, next 16 weeks ----------------
+# Per-channel ramp model. Each channel contributes independently; totals stack.
+# Numbers are calibrated to a developer-investor niche (small TAM, long-tail-heavy).
+# Scenario bands: low = 50% of mid (sandbox-extended / unfeatured), high = 1.7× mid
+# (Reddit AEO compounds + a single Tier-1 citation lands earlier than expected).
+#
+# Assumptions baked in:
+#   - Reddit wave shipped 2026-05-02 → spike in weeks 1–3, fades to plateau by week 6.
+#   - Google sandbox: branded queries index w2–4, long-tail pSEO from w6, head terms w12+.
+#   - AI engines (Perplexity/ChatGPT search/Claude/Poe) cite from w2, compound through w12.
+#   - SSRN/OpenAlex propagation lifts academic + Google authority from w4.
+#   - Direct (Smithery 98 / Cursor / Poe / GitHub README) is the only "today" channel.
+FORECAST_WEEKS = 16
 
-def fetch_mailreach():
-    """Pull warmup-account state for SENDER_EMAIL from Mailreach."""
-    if not MAILREACH_API_KEY:
-        return None
-    try:
-        req = urllib.request.Request(
-            "https://api.mailreach.co/api/v1/accounts",
-            headers={
-                "X-API-Key": MAILREACH_API_KEY,
-                "Accept": "application/json",
-                # Mailreach 403s on the default urllib UA; use a realistic one.
-                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X) gitdealflow-dashboard/1.0",
-            },
-        )
-        with urllib.request.urlopen(req, timeout=15) as resp:
-            accounts = json.load(resp)
-    except Exception as e:
-        print(f"WARN: mailreach fetch failed: {e}", file=sys.stderr)
-        return None
+# Anchor: current 30d visitor rate from PostHog → weekly equivalent.
+# Treated as already-flowing baseline that persists alongside ramping channels.
+baseline_weekly = round(total_uv / (WINDOW_DAYS / 7)) if total_uv else 0
 
-    acc = next((a for a in accounts if a.get("email") == SENDER_EMAIL), None)
-    if not acc:
-        print(f"WARN: mailreach has no account for {SENDER_EMAIL}", file=sys.stderr)
-        return None
-
-    dom = acc.get("domain") or {}
-    return {
-        "email": acc.get("email"),
-        "score": acc.get("score"),
-        "score_change": dom.get("score_change", 0),
-        "alive": acc.get("alive", False),
-        "suspended": acc.get("suspended", False),
-        "total_sent": acc.get("total_messages_sent", 0),
-        "total_received": acc.get("total_messages_received", 0),
-        "ramp_current": acc.get("config_current_conversation_running", 0),
-        "ramp_target": acc.get("config_rampup_target", 0),
-        "ramp_max": acc.get("config_max_conversation_running", 0),
-        "ramp_increase": acc.get("config_rampup_increase", 0),
-        "domain": {
-            "name": dom.get("domain"),
-            "avg_score": dom.get("avg_score"),
-            "spf_valid": dom.get("spf_valid", False),
-            "dkim_valid": dom.get("dkim_valid", False),
-            "dmarc_valid": dom.get("dmarc_valid", False),
-            "last_check_at": dom.get("last_check_at"),
-        },
-    }
+FORECAST_CHANNELS = [
+    # key,    name,                                                         lag, ramp, mature, shape, [extras]
+    {"key": "direct",   "color": "#0ea5e9", "short": "Direct & registries",
+     "name": "Direct & registries (Smithery 98 / Cursor / Poe / GitHub)",
+     "lag": 0, "ramp": 8, "mature": 60, "shape": "linear"},
+    {"key": "reddit",   "color": "#f97316", "short": "Reddit AEO",
+     "name": "Reddit AEO (May 2 wave + organic comments)",
+     "lag": 0, "ramp": 6, "mature": 30, "shape": "spike",
+     "spike_peak": 90, "spike_week": 1},
+    {"key": "g_brand",  "color": "#22c55e", "short": "Google — branded",
+     "name": "Google — branded queries",
+     "lag": 2, "ramp": 4, "mature": 25, "shape": "log"},
+    {"key": "g_long",   "color": "#a855f7", "short": "Google — long-tail pSEO",
+     "name": "Google — long-tail pSEO (alternatives, glossary, vs)",
+     "lag": 6, "ramp": 14, "mature": 220, "shape": "log"},
+    {"key": "g_head",   "color": "#ec4899", "short": "Google — head terms",
+     "name": "Google — competitive head terms",
+     "lag": 12, "ramp": 16, "mature": 80, "shape": "log"},
+    {"key": "ai",       "color": "#eab308", "short": "AI engines",
+     "name": "AI engines (Perplexity / ChatGPT / Claude / Poe)",
+     "lag": 2, "ramp": 10, "mature": 55, "shape": "log"},
+    {"key": "academic", "color": "#06b6d4", "short": "Academic / SSRN",
+     "name": "Academic / SSRN / OpenAlex propagation",
+     "lag": 4, "ramp": 10, "mature": 15, "shape": "log"},
+    {"key": "social",   "color": "#94a3b8", "short": "Social",
+     "name": "Social (Twitter / LinkedIn / IH / HN)",
+     "lag": 0, "ramp": 16, "mature": 30, "shape": "linear"},
+]
 
 
-def fetch_campaign():
-    """Read queue.jsonl + HOLD file + sent.jsonl for campaign pipeline state."""
-    hold_reason = None
-    if os.path.exists(HOLD_PATH):
-        try:
-            with open(HOLD_PATH) as f:
-                hold_reason = f.read().strip()
-        except Exception:
-            hold_reason = "(unreadable)"
-
-    queue = []
-    if os.path.exists(QUEUE_PATH):
-        with open(QUEUE_PATH) as f:
-            for line in f:
-                line = line.strip()
-                if not line:
-                    continue
-                try:
-                    queue.append(json.loads(line))
-                except Exception:
-                    continue
-
-    by_status = Counter(e.get("status", "unknown") for e in queue)
-
-    pending = [e for e in queue if e.get("status") == "pending" and e.get("editorEmail")]
-    pending.sort(key=lambda e: e.get("scheduledDate") or "")
-    next_entry = pending[0] if pending else None
-
-    sent_recent = []
-    if os.path.exists(SENT_PATH):
-        try:
-            with open(SENT_PATH) as f:
-                for line in f:
-                    line = line.strip()
-                    if not line:
-                        continue
-                    try:
-                        sent_recent.append(json.loads(line))
-                    except Exception:
-                        continue
-        except Exception:
-            pass
-
-    return {
-        "hold": bool(hold_reason),
-        "hold_reason": hold_reason,
-        "total": len(queue),
-        "by_status": [{"k": k, "n": v} for k, v in by_status.most_common()],
-        "pending": len(pending),
-        "next": {
-            "id": next_entry.get("id"),
-            "target": next_entry.get("targetName"),
-            "editor": next_entry.get("editorName"),
-            "date": next_entry.get("scheduledDate"),
-            "subject": next_entry.get("subject"),
-        } if next_entry else None,
-        "sent_count": len(sent_recent),
-    }
+def _channel_value(ch, w):
+    """Weekly visitors contributed by `ch` at week index w (0-based)."""
+    if w < ch["lag"]:
+        return 0.0
+    progress = (w - ch["lag"]) / max(1, ch["ramp"])
+    shape = ch["shape"]
+    mature = ch["mature"]
+    if shape == "linear":
+        return min(1.0, progress) * mature
+    if shape == "log":
+        # Logistic curve centered at half-ramp; slow start, plateau at mature.
+        x = (progress - 0.5) * 6
+        return mature / (1 + math.exp(-x))
+    if shape == "spike":
+        # Linear ramp to peak, then exponential decay toward `mature`.
+        peak = ch.get("spike_peak", mature * 2)
+        sw = ch.get("spike_week", 1)
+        if w <= sw:
+            return (w / max(1, sw)) * peak
+        decay_progress = min(1.0, (w - sw) / max(1, ch["ramp"]))
+        return peak - (peak - mature) * decay_progress
+    return mature
 
 
-def compute_readiness(mr, cmp_):
-    """Derive a READY / HOLD / NOT-READY verdict + checklist."""
-    checks = []
-    blocking = []
+forecast_today = date.today()
+forecast_rows = []
+for w in range(FORECAST_WEEKS):
+    # Pass w+1 so displayed Week 1 reflects "1 week of activity" rather than t=0
+    # (channels that just shipped, like the Reddit wave, are already producing).
+    model_w = w + 1
+    by_channel = {ch["key"]: round(_channel_value(ch, model_w)) for ch in FORECAST_CHANNELS}
+    channel_total = sum(by_channel.values())
+    mid = channel_total + baseline_weekly
+    forecast_rows.append({
+        "w": w + 1,
+        "start": (forecast_today + timedelta(days=w * 7)).isoformat(),
+        "by": by_channel,
+        "low": int(round(mid * 0.5)),
+        "mid": mid,
+        "high": int(round(mid * 1.7)),
+    })
 
-    # 1. HOLD file
-    if cmp_["hold"]:
-        checks.append({"k": "hold", "ok": False, "label": "No HOLD file",
-                       "detail": "Campaign is on HOLD — remove tools/campaign/HOLD to resume"})
-        blocking.append("hold")
-    else:
-        checks.append({"k": "hold", "ok": True, "label": "No HOLD file",
-                       "detail": "Runner will not abort on HOLD"})
+# Cumulative + key milestones (mid scenario).
+forecast_cumulative = []
+cum = 0
+for row in forecast_rows:
+    cum += row["mid"]
+    forecast_cumulative.append(cum)
 
-    # 2. Mailreach reachable
-    if mr is None:
-        checks.append({"k": "api", "ok": False, "label": "Mailreach reachable",
-                       "detail": "API unreachable or no account found for sender"})
-        blocking.append("api")
-        return {"ready": False, "status": "not-ready", "checks": checks,
-                "headline": "Mailreach status unknown", "blocking": blocking}
-
-    # 3. Not suspended + alive
-    if mr["suspended"]:
-        checks.append({"k": "suspended", "ok": False, "label": "Account not suspended",
-                       "detail": "Mailreach flagged the account as suspended"})
-        blocking.append("suspended")
-    elif not mr["alive"]:
-        checks.append({"k": "alive", "ok": False, "label": "Warmup active",
-                       "detail": "Warmup account is not alive"})
-        blocking.append("alive")
-    else:
-        checks.append({"k": "alive", "ok": True, "label": "Warmup active",
-                       "detail": "Account alive + not suspended"})
-
-    # 4. Score ≥ 95
-    score = mr["score"] or 0
-    if score >= 95:
-        checks.append({"k": "score", "ok": True, "label": f"Warmup score ≥ 95",
-                       "detail": f"Current: {score}"})
-    elif score >= 90:
-        checks.append({"k": "score", "ok": False, "label": "Warmup score ≥ 95",
-                       "detail": f"Current: {score} — above runner's 90 threshold but below safety floor (95)"})
-        blocking.append("score-marginal")
-    else:
-        checks.append({"k": "score", "ok": False, "label": "Warmup score ≥ 95",
-                       "detail": f"Current: {score} — below runner's 90 abort threshold"})
-        blocking.append("score-low")
-
-    # 5. No recent drop
-    change = int(mr["score_change"] or 0)
-    if change >= -2:
-        checks.append({"k": "drop", "ok": True, "label": "Recent drop ≤ 2 pts",
-                       "detail": f"score_change: {change:+d}"})
-    elif change >= -5:
-        checks.append({"k": "drop", "ok": False, "label": "Recent drop ≤ 2 pts",
-                       "detail": f"score_change: {change:+d} — drop in progress, wait 48h"})
-        blocking.append("drop-mild")
-    else:
-        checks.append({"k": "drop", "ok": False, "label": "Recent drop ≤ 2 pts",
-                       "detail": f"score_change: {change:+d} — significant hit, wait for recovery"})
-        blocking.append("drop-severe")
-
-    # 6. DNS valid
-    d = mr["domain"]
-    dns_all = d["spf_valid"] and d["dkim_valid"] and d["dmarc_valid"]
-    if dns_all:
-        checks.append({"k": "dns", "ok": True, "label": "SPF + DKIM + DMARC valid",
-                       "detail": f"domain {d['name']} — all three authenticated"})
-    else:
-        bad = [k for k in ("spf", "dkim", "dmarc") if not d[f"{k}_valid"]]
-        checks.append({"k": "dns", "ok": False, "label": "SPF + DKIM + DMARC valid",
-                       "detail": f"invalid: {', '.join(bad).upper()}"})
-        blocking.append("dns")
-
-    # 7. Fully warmed up — ramp_current >= ramp_target (HARD block)
-    ramp_curr = mr["ramp_current"] or 0
-    ramp_tgt = mr["ramp_target"] or 0
-    ramp_pct = int(round(100 * ramp_curr / ramp_tgt)) if ramp_tgt else 0
-    if ramp_tgt and ramp_curr >= ramp_tgt:
-        checks.append({
-            "k": "ramp",
-            "ok": True,
-            "label": "Fully warmed up",
-            "detail": f"{ramp_curr}/{ramp_tgt} conversations/day — ramp complete",
+# Daily breakdown: distribute each week's totals across its 7 days.
+# Lets the dashboard compare projected vs actual on a per-day basis for any
+# user-selected range, instead of only at weekly granularity.
+forecast_daily = []
+for row in forecast_rows:
+    week_start = date.fromisoformat(row["start"])
+    daily_low  = row["low"]  / 7.0
+    daily_mid  = row["mid"]  / 7.0
+    daily_high = row["high"] / 7.0
+    for d in range(7):
+        forecast_daily.append({
+            "d":    (week_start + timedelta(days=d)).isoformat(),
+            "w":    row["w"],
+            "low":  round(daily_low,  2),
+            "mid":  round(daily_mid,  2),
+            "high": round(daily_high, 2),
         })
-    else:
-        # Estimate days to full ramp assuming +ramp_increase/day, no drops.
-        inc = mr.get("ramp_increase") or 1
-        days_to_full = max(1, int((ramp_tgt - ramp_curr) / max(inc, 1))) if ramp_tgt else None
-        eta_txt = f" · ~{days_to_full} days to full ramp" if days_to_full else ""
-        checks.append({
-            "k": "ramp",
-            "ok": False,
-            "label": "Fully warmed up",
-            "detail": f"{ramp_curr}/{ramp_tgt} conversations/day ({ramp_pct}%){eta_txt} — cold outreach stays paused until 100%",
-        })
-        blocking.append("ramp-incomplete")
 
-    # Verdict
-    # drop-mild and ramp-incomplete are both "wait" states, not permanent blockers.
-    soft_blockers = {"drop-mild", "ramp-incomplete"}
-    hard_blocking = [b for b in blocking if b not in soft_blockers]
-    if not blocking:
-        status = "ready"
-        headline = "READY TO SEND"
-    elif hard_blocking:
-        status = "not-ready"
-        headline = "NOT READY"
-    else:
-        status = "waiting"
-        headline = "WAITING — warmup in progress"
+# Headline numbers: week 4, 8, 12, 16 (mid).
+def _row(idx):
+    return forecast_rows[idx] if idx < len(forecast_rows) else None
 
-    return {
-        "ready": status == "ready",
-        "status": status,
-        "headline": headline,
-        "checks": checks,
-        "blocking": blocking,
-    }
+forecast_milestones = {
+    "baseline_weekly": baseline_weekly,
+    "w4_mid":  _row(3)["mid"]  if _row(3)  else 0,
+    "w8_mid":  _row(7)["mid"]  if _row(7)  else 0,
+    "w12_mid": _row(11)["mid"] if _row(11) else 0,
+    "w16_mid": _row(15)["mid"] if _row(15) else 0,
+    "w16_low":  _row(15)["low"]  if _row(15) else 0,
+    "w16_high": _row(15)["high"] if _row(15) else 0,
+    "cum_16w_mid": forecast_cumulative[-1] if forecast_cumulative else 0,
+}
 
-
-mailreach_data = fetch_mailreach()
-campaign_data = fetch_campaign()
-readiness_data = compute_readiness(mailreach_data, campaign_data)
-
-
-def load_substack_state():
-    """Compute Substack autopublish status from the queue + stats files."""
-    state = {
-        "handle": "@thedatanerd2026",
-        "profile_url": "https://substack.com/@thedatanerd2026",
-        "published": 0,
-        "scheduled": 0,
-        "drafts": 0,
-        "next_scheduled": None,
-        "last_published": None,
-        "followers": None,
-        "history": [],
-    }
-    if os.path.exists(SUBSTACK_QUEUE_PATH):
-        try:
-            q = json.load(open(SUBSTACK_QUEUE_PATH))
-            posts = q.get("posts", [])
-            published = [p for p in posts if p.get("status") == "published"]
-            drafts = [p for p in posts if p.get("status") == "draft-ready"]
-            scheduled = [p for p in drafts if p.get("scheduledFor")]
-            state["published"] = len(published)
-            state["scheduled"] = len(scheduled)
-            state["drafts"] = len(drafts)
-            if published:
-                last = published[-1]
-                state["last_published"] = {
-                    "title": last.get("title"),
-                    "url": last.get("url"),
-                    "postedAt": last.get("postedAt"),
-                }
-            upcoming = sorted(
-                [p for p in drafts if p.get("scheduledFor")],
-                key=lambda p: p["scheduledFor"],
-            )
-            if upcoming:
-                nxt = upcoming[0]
-                state["next_scheduled"] = {
-                    "title": nxt.get("title"),
-                    "type": nxt.get("type"),
-                    "scheduledFor": nxt.get("scheduledFor"),
-                }
-        except Exception as e:
-            print(f"WARN: substack queue parse: {e}", file=sys.stderr)
-
-    if os.path.exists(SUBSTACK_STATS_PATH):
-        try:
-            s = json.load(open(SUBSTACK_STATS_PATH))
-            hist = s.get("history", []) or []
-            state["history"] = hist[-30:]
-            if hist:
-                latest = hist[-1]
-                state["followers"] = latest.get("followers")
-        except Exception as e:
-            print(f"WARN: substack stats parse: {e}", file=sys.stderr)
-    return state
-
-
-substack_state = load_substack_state()
-
-# Mutate the Substack entry in CHANNELS["content"] with fresh counts.
-for ch in CHANNELS.get("content", []):
-    if ch.get("name") == "Substack":
-        pub = substack_state["published"]
-        sched = substack_state["scheduled"]
-        ch["stat"] = (
-            f"{pub} Notes posted · {sched} scheduled"
-            + (f" · {substack_state['followers']} followers" if substack_state["followers"] is not None else "")
-        )
-        ch["note"] = (
-            "Daily autopublish via substack-daily-publisher · Brunson voice · 1-2 Notes/day"
-        )
-        ch["as_of"] = today.isoformat()
-        break
+forecast_payload = {
+    "weeks":       FORECAST_WEEKS,
+    "generated":   forecast_today.isoformat(),
+    "baseline":    baseline_weekly,
+    "channels":    [{"key": c["key"], "name": c["name"], "short": c["short"], "color": c["color"]}
+                    for c in FORECAST_CHANNELS],
+    "rows":        forecast_rows,
+    "daily":       forecast_daily,
+    "cumulative":  forecast_cumulative,
+    "milestones":  forecast_milestones,
+    "notes": [
+        "Baseline = current PostHog weekly visitor rate (last 30d). Persists alongside ramps.",
+        "Reddit wave shipped 2026-05-02 — spike weeks 1–3, decays to plateau by week 6.",
+        "Google sandbox: branded queries from w2–4, long-tail pSEO from w6, head terms w12+.",
+        "AI engines (Perplexity/ChatGPT search/Claude/Poe) cite from w2, compound through w12.",
+        "Bands: low = 50% mid (sandbox-extended), high = 170% mid (Tier-1 citation lands early).",
+        "Calibrated to developer-investor niche — small TAM, long-tail-heavy, Reddit/AEO-skewed.",
+    ],
+}
 
 payload = {
     "generated_at": datetime.now(timezone.utc).isoformat(),
@@ -1280,6 +1103,7 @@ payload = {
     "excluded": {
         "countries": sorted(EXCLUDE_COUNTRIES),
         "testers": sorted(TESTER_EMAILS),
+        "bots": sorted(BOT_EMAILS),
     },
     "benchmark": {
         "opt_in_target": BENCHMARK_OPT_IN,
@@ -1304,10 +1128,7 @@ payload = {
     "email_status": [{"k": k, "n": v} for k, v in email_status.most_common()],
     "recent": recent_rows,
     "channels": CHANNELS,
-    "mailreach": mailreach_data,
-    "campaign": campaign_data,
-    "readiness": readiness_data,
-    "substack": substack_state,
+    "forecast": forecast_payload,
 }
 
 
@@ -1362,41 +1183,6 @@ HTML = """<!DOCTYPE html>
   .row-group { margin-bottom:28px; }
   a { color:#38bdf8; }
   .foot { margin-top:32px; padding-top:16px; border-top:1px solid #1e293b; color:#64748b; font-size:11px; }
-
-  /* Campaign-readiness card */
-  .readiness { border-radius:10px; padding:20px 24px; border:1px solid #1e293b; background:#111a2e; }
-  .readiness.ready      { border-color:#22c55e; background:linear-gradient(135deg,#062414 0%,#0b1220 100%); }
-  .readiness.waiting    { border-color:#f59e0b; background:linear-gradient(135deg,#2b1c04 0%,#0b1220 100%); }
-  .readiness.not-ready  { border-color:#ef4444; background:linear-gradient(135deg,#2a0d0d 0%,#0b1220 100%); }
-  .readiness .top { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:18px; }
-  .readiness .headline { font-size:22px; font-weight:800; color:#f1f5f9; letter-spacing:0.5px; }
-  .readiness.ready     .headline::before { content:"✓  "; color:#22c55e; }
-  .readiness.waiting   .headline::before { content:"⏳  "; color:#fbbf24; }
-  .readiness.not-ready .headline::before { content:"✕  "; color:#f87171; }
-  .readiness .subhead { font-size:13px; color:#94a3b8; margin-top:2px; }
-  .readiness .kpis { display:grid; grid-template-columns: repeat(auto-fit, minmax(140px,1fr)); gap:12px; margin-bottom:18px; }
-  .readiness .kpi-tile { background:rgba(255,255,255,0.03); border:1px solid #1e293b; border-radius:8px; padding:12px; }
-  .readiness .kpi-tile .lbl { font-size:10px; color:#64748b; text-transform:uppercase; letter-spacing:1px; margin-bottom:6px; }
-  .readiness .kpi-tile .val { font-size:22px; font-weight:700; color:#f1f5f9; line-height:1; }
-  .readiness .kpi-tile .sub { font-size:11px; color:#94a3b8; margin-top:4px; }
-  .readiness .kpi-tile.good .val { color:#86efac; }
-  .readiness .kpi-tile.warn .val { color:#fbbf24; }
-  .readiness .kpi-tile.bad  .val { color:#fca5a5; }
-  .readiness .checklist { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap:8px 20px; }
-  .readiness .check { display:flex; align-items:flex-start; gap:10px; font-size:13px; color:#cbd5e1; padding:6px 0; border-top:1px solid rgba(255,255,255,0.04); }
-  .readiness .check:first-child { border-top:none; }
-  .readiness .check .mark { font-size:14px; line-height:1.3; width:18px; flex-shrink:0; }
-  .readiness .check.pass .mark { color:#22c55e; }
-  .readiness .check.fail .mark { color:#ef4444; }
-  .readiness .check.soft .mark { color:#64748b; }
-  .readiness .check .body { flex:1; }
-  .readiness .check .lbl { color:#f1f5f9; font-weight:500; }
-  .readiness .check .det { color:#94a3b8; font-size:12px; margin-top:2px; }
-  .readiness .ramp-bar { height:6px; background:#1e293b; border-radius:3px; overflow:hidden; margin-top:6px; }
-  .readiness .ramp-fill { height:100%; background:linear-gradient(90deg,#0ea5e9,#22c55e); }
-  .readiness .hold-box { margin-top:16px; padding:12px 14px; background:rgba(239,68,68,0.08); border:1px solid rgba(239,68,68,0.3); border-radius:6px; }
-  .readiness .hold-box .t { font-size:12px; font-weight:700; color:#fca5a5; text-transform:uppercase; letter-spacing:1px; margin-bottom:6px; }
-  .readiness .hold-box .r { font-size:12px; color:#cbd5e1; white-space:pre-wrap; line-height:1.5; font-family:'SF Mono',Menlo,monospace; }
 </style>
 </head>
 <body>
@@ -1592,53 +1378,125 @@ HTML = """<!DOCTYPE html>
   </div>
 </div>
 
-<h1 style="margin-top:40px;font-size:20px">Cold-Outreach Campaign Readiness</h1>
-<div class="sub">Gates every cold-outreach pipeline (tools/campaign + email-api/send-outreach). Card turns green only when signal@gitdealflow.com is <strong>fully warmed up</strong>.</div>
+<h1 style="margin-top:40px;font-size:20px">Organic traffic forecast — next 16 weeks</h1>
+<div class="sub">
+  Channel-decomposed weekly visitor estimate. Baseline = current PostHog rate. Bands = scenario range (low / mid / high).
+  <span style="color:#475569">Recalibrate when actuals diverge ≥30% from mid for 2 consecutive weeks.</span>
+</div>
 
-<div class="row-group">
-  <div class="readiness" id="readiness">
-    <div class="top">
-      <div>
-        <div class="headline" id="r-headline">—</div>
-        <div class="subhead" id="r-subhead">signal@gitdealflow.com · Zoho SMTP + Resend · Mailreach-warmed</div>
-      </div>
-      <div id="r-cta" style="font-size:12px;color:#94a3b8"></div>
-    </div>
-    <div class="kpis" id="r-kpis"></div>
-    <div class="checklist" id="r-checks"></div>
-    <div class="hold-box" id="r-hold" style="display:none">
-      <div class="t">Campaign HOLD active</div>
-      <div class="r" id="r-hold-reason"></div>
+<div class="grid cols-4 row-group">
+  <div class="card kpi"><div class="num" id="f-baseline">—</div><div class="lbl">Baseline / week (now)</div></div>
+  <div class="card kpi"><div class="num" id="f-w4">—</div><div class="lbl">Week 4 mid</div></div>
+  <div class="card kpi"><div class="num" id="f-w12">—</div><div class="lbl">Week 12 mid</div></div>
+  <div class="card kpi"><div class="num" id="f-w16">—</div><div class="lbl">Week 16 (low–high)</div></div>
+</div>
+
+<div class="grid cols-2 row-group">
+  <div class="card" style="grid-column: 1 / -1">
+    <h3>Weekly visitors by channel (stacked) + scenario bands</h3>
+    <canvas id="forecastChart" style="max-height:340px"></canvas>
+    <div style="margin-top:10px;font-size:11px;color:#64748b">
+      Stacked bars = mid scenario by channel. Dashed lines = low (50%) and high (170%) totals.
+      Baseline persists across all weeks.
     </div>
   </div>
 </div>
 
-<h1 style="margin-top:40px;font-size:20px">Substack Notes autopublish</h1>
-<div class="sub">Daily Brunson-voiced Notes from <a id="sb-profile" href="#" target="_blank" rel="noopener" style="color:#0ea5e9">@thedatanerd2026</a>. 1–2/day, 1-in-5 linked. Queue lives at <code class="mono">distribution/substack-autopublish/queue.json</code>.</div>
-
-<div class="row-group">
+<div class="grid cols-2 row-group">
   <div class="card">
-    <div class="kpis" id="sb-kpis"></div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px">
-      <div>
-        <div style="color:#94a3b8;font-size:12px;margin-bottom:6px">Last published</div>
-        <div id="sb-last" style="font-size:13px">—</div>
-      </div>
-      <div>
-        <div style="color:#94a3b8;font-size:12px;margin-bottom:6px">Next scheduled</div>
-        <div id="sb-next" style="font-size:13px">—</div>
-      </div>
+    <h3>Week-by-week table (mid scenario)</h3>
+    <div style="max-height:340px;overflow-y:auto">
+      <table>
+        <thead>
+          <tr>
+            <th>Wk</th><th>Starts</th>
+            <th class="num">Low</th><th class="num">Mid</th><th class="num">High</th>
+            <th class="num">Cum.</th>
+          </tr>
+        </thead>
+        <tbody id="forecast-table"></tbody>
+      </table>
     </div>
-    <div style="color:#94a3b8;font-size:12px;margin:16px 0 6px">Followers history (last 30 days)</div>
-    <table style="width:100%;font-size:12px">
-      <thead><tr><th style="text-align:left">Date</th><th class="num">Followers</th><th class="num">Notes posted</th><th style="text-align:left">Latest Note</th></tr></thead>
-      <tbody id="sb-history"></tbody>
+  </div>
+  <div class="card">
+    <h3>Model assumptions</h3>
+    <ul id="forecast-notes" style="font-size:13px;line-height:1.7;color:#cbd5e1;padding-left:20px;margin:0"></ul>
+    <div style="margin-top:14px;font-size:11px;color:#64748b">
+      Channel mix at week 16 (mid):
+    </div>
+    <table style="margin-top:6px">
+      <thead><tr><th>Channel</th><th class="num">/ week</th><th class="num">Share</th></tr></thead>
+      <tbody id="forecast-mix"></tbody>
     </table>
   </div>
 </div>
 
+<h1 style="margin-top:40px;font-size:20px">Projected vs reality — daily</h1>
+<div class="sub">
+  Pick any date range. Projected = weekly mid distributed across 7 days. Reality = PostHog daily uniques.
+  <span style="color:#475569">Today is excluded from the Δ stat (partial day). Dates before the forecast generation date have no projection.</span>
+</div>
+
+<div class="grid cols-4 row-group" style="align-items:end">
+  <div class="card" style="padding:14px">
+    <div class="lbl" style="margin-bottom:6px">From</div>
+    <input id="pvr-from" type="date" class="mono"
+      style="background:#0f1729;color:#e2e8f0;border:1px solid #1e293b;border-radius:6px;padding:6px 8px;width:100%;font-size:14px;font-family:inherit">
+  </div>
+  <div class="card" style="padding:14px">
+    <div class="lbl" style="margin-bottom:6px">To</div>
+    <input id="pvr-to" type="date" class="mono"
+      style="background:#0f1729;color:#e2e8f0;border:1px solid #1e293b;border-radius:6px;padding:6px 8px;width:100%;font-size:14px;font-family:inherit">
+  </div>
+  <div class="card kpi"><div class="num" id="pvr-actual">—</div><div class="lbl" id="pvr-actual-lbl">Actual visitors (range)</div></div>
+  <div class="card kpi"><div class="num" id="pvr-variance">—</div><div class="lbl" id="pvr-variance-lbl">Δ vs projected (overlap days)</div></div>
+</div>
+
+<div class="grid cols-2 row-group" style="margin-top:8px;gap:8px">
+  <div style="display:flex;flex-wrap:wrap;gap:8px;grid-column:1 / -1">
+    <button class="pvr-preset" data-preset="last7">Last 7 days</button>
+    <button class="pvr-preset" data-preset="last30">Last 30 days</button>
+    <button class="pvr-preset" data-preset="next14">Next 14 days</button>
+    <button class="pvr-preset" data-preset="next30">Next 30 days</button>
+    <button class="pvr-preset" data-preset="window">±14 days around today</button>
+    <button class="pvr-preset" data-preset="all">Max range</button>
+  </div>
+</div>
+
+<div class="grid cols-2 row-group">
+  <div class="card" style="grid-column: 1 / -1">
+    <h3>Daily actual vs projected</h3>
+    <canvas id="pvrChart" style="max-height:340px"></canvas>
+    <div style="margin-top:10px;font-size:11px;color:#64748b">
+      Solid blue = actual (PostHog). Dashed yellow = projected mid. Faint red/green = projected low/high band.
+    </div>
+  </div>
+</div>
+
+<div class="grid cols-2 row-group">
+  <div class="card" style="grid-column: 1 / -1">
+    <h3>Day-by-day breakdown</h3>
+    <div style="max-height:340px;overflow-y:auto">
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th class="num">Actual</th>
+            <th class="num">Proj. low</th>
+            <th class="num">Proj. mid</th>
+            <th class="num">Proj. high</th>
+            <th class="num">Δ (act − mid)</th>
+            <th class="num">Δ%</th>
+          </tr>
+        </thead>
+        <tbody id="pvr-table"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
 <div class="foot">
-  Data sources: PocketBase (subscribers, email_log) · Resend (audience) · PostHog EU (visitors) · Mailreach (warmup) · tools/campaign (queue + HOLD) · manual curation (channels).
+  Data sources: PocketBase (subscribers, email_log) · Resend (audience) · PostHog EU (visitors) · manual curation (channels).
   Regenerate: <code class="mono">python3 monitoring/build-dashboard.py</code>
 </div>
 
@@ -1671,63 +1529,6 @@ const srcEl = document.getElementById('e-source-note');
 if (srcEl) {
   srcEl.innerHTML = srcEl.innerHTML.replace('<code>—</code>',
     '<code>' + (D.kpis.email_source || 'none') + '</code>');
-}
-
-// Campaign readiness card
-const R = D.readiness || {status:"not-ready", headline:"Status unknown", checks:[]};
-const MR = D.mailreach;
-const CMP = D.campaign || {total:0, by_status:[], pending:0, next:null, hold:false};
-const readinessEl = document.getElementById('readiness');
-readinessEl.classList.add(R.status);
-document.getElementById('r-headline').textContent = R.headline;
-const ctaEl = document.getElementById('r-cta');
-if (R.status === 'ready') ctaEl.textContent = 'You can run: node tools/campaign/run.mjs';
-else if (R.status === 'waiting') ctaEl.textContent = 'Recheck warmup score in 24–48h';
-else ctaEl.textContent = 'Blocking: ' + (R.blocking || []).join(', ');
-
-// KPI tiles
-const scoreTier = MR ? (MR.score >= 95 ? 'good' : (MR.score >= 90 ? 'warn' : 'bad')) : 'bad';
-const dropTier  = MR ? (MR.score_change >= -2 ? 'good' : (MR.score_change >= -5 ? 'warn' : 'bad')) : 'bad';
-const holdTier  = CMP.hold ? 'bad' : 'good';
-const rampPct   = (MR && MR.ramp_target) ? Math.round(100 * MR.ramp_current / MR.ramp_target) : 0;
-const rampTier  = rampPct >= 100 ? 'good' : (rampPct >= 50 ? 'warn' : 'bad');
-const nextTxt   = CMP.next ? (CMP.next.date + ' — ' + CMP.next.target) : 'none queued';
-const nextSub   = CMP.next ? (CMP.next.editor + ' · ' + (CMP.next.id || '')) : '';
-
-const kpisEl = document.getElementById('r-kpis');
-kpisEl.innerHTML = [
-  {lbl:'Mailreach score', val: MR ? MR.score : '—', sub: MR ? ('on ' + MR.domain.name) : 'API unreachable', tier: scoreTier},
-  {lbl:'Recent Δ',        val: MR ? (MR.score_change >= 0 ? '+'+MR.score_change : MR.score_change) : '—', sub: MR ? 'last snapshot' : '—', tier: dropTier},
-  {lbl:'Warmup ramp',     val: MR ? (MR.ramp_current + '/' + MR.ramp_target) : '—', sub: rampPct + '% of target', tier: rampTier, bar: rampPct},
-  {lbl:'Queue pending',   val: fmt(CMP.pending), sub: fmt(CMP.total) + ' total · ' + fmt(CMP.sent_count) + ' sent', tier: CMP.pending > 0 ? 'good' : 'warn'},
-  {lbl:'HOLD file',       val: CMP.hold ? 'ON' : 'off', sub: CMP.hold ? 'aborts all sends' : 'runner free to send', tier: holdTier},
-  {lbl:'Next pitch',      val: nextTxt, sub: nextSub, tier: ''},
-].map(k => `
-  <div class="kpi-tile ${k.tier}">
-    <div class="lbl">${k.lbl}</div>
-    <div class="val">${k.val}</div>
-    <div class="sub">${k.sub}</div>
-    ${typeof k.bar === 'number' ? `<div class="ramp-bar"><div class="ramp-fill" style="width:${Math.min(100,k.bar)}%"></div></div>` : ''}
-  </div>`).join('');
-
-// Checklist
-document.getElementById('r-checks').innerHTML = (R.checks || []).map(c => {
-  const cls = c.ok ? 'pass' : 'fail';
-  const mark = c.ok ? '✓' : '✕';
-  return `
-    <div class="check ${cls}">
-      <div class="mark">${mark}</div>
-      <div class="body">
-        <div class="lbl">${c.label}</div>
-        <div class="det">${c.detail}</div>
-      </div>
-    </div>`;
-}).join('');
-
-// HOLD reason
-if (CMP.hold && CMP.hold_reason) {
-  document.getElementById('r-hold').style.display = 'block';
-  document.getElementById('r-hold-reason').textContent = CMP.hold_reason;
 }
 
 // Verdict + benchmark
@@ -1868,47 +1669,305 @@ tbl('ch-devsearch', CH.dev_search, [
   r => `<td>${statusPill(r.status)}${muted(r.as_of)}</td>`,
 ]);
 
-// ---- Substack Notes autopublish ----
-const SB = D.substack || {published:0, scheduled:0, drafts:0, history:[], next_scheduled:null, last_published:null, followers:null};
-document.getElementById('sb-profile').href = SB.profile_url || 'https://substack.com/@thedatanerd2026';
-document.getElementById('sb-profile').textContent = SB.handle || '@thedatanerd2026';
+// ---- Organic traffic forecast ----
+const F = D.forecast;
+if (F && F.rows && F.rows.length) {
+  const M = F.milestones;
+  document.getElementById('f-baseline').textContent = fmt(M.baseline_weekly);
+  document.getElementById('f-w4').textContent = fmt(M.w4_mid);
+  document.getElementById('f-w12').textContent = fmt(M.w12_mid);
+  document.getElementById('f-w16').textContent = fmt(M.w16_low) + '–' + fmt(M.w16_high);
 
-const sbKpisEl = document.getElementById('sb-kpis');
-sbKpisEl.innerHTML = [
-  {lbl:'Followers',       val: SB.followers != null ? fmt(SB.followers) : '—', sub:'from profile', tier: SB.followers ? 'good' : ''},
-  {lbl:'Notes published', val: fmt(SB.published), sub:'since Apr 19', tier: SB.published > 0 ? 'good' : 'warn'},
-  {lbl:'Scheduled',       val: fmt(SB.scheduled), sub:'draft-ready',  tier: SB.scheduled > 0 ? 'good' : 'warn'},
-  {lbl:'Draft depth',     val: fmt(SB.drafts),    sub:'queue.json',   tier: SB.drafts >= 14 ? 'good' : 'warn'},
-].map(k => `
-  <div class="kpi-tile ${k.tier}">
-    <div class="lbl">${k.lbl}</div>
-    <div class="val">${k.val}</div>
-    <div class="sub">${k.sub}</div>
-  </div>`).join('');
+  // Notes
+  document.getElementById('forecast-notes').innerHTML =
+    F.notes.map(n => `<li>${n}</li>`).join('');
 
-const sbLast = SB.last_published;
-document.getElementById('sb-last').innerHTML = sbLast
-  ? `<div style="color:#cbd5e1">${sbLast.title || ''}</div><div style="color:#64748b;font-size:11px;margin-top:2px">${sbLast.postedAt || ''} · ${sbLast.url ? `<a href="${sbLast.url}" target="_blank" style="color:#0ea5e9">view</a>` : ''}</div>`
-  : '<span style="color:#64748b">No published Notes yet</span>';
+  // Week-by-week table
+  let cum = 0;
+  document.getElementById('forecast-table').innerHTML = F.rows.map(r => {
+    cum += r.mid;
+    return `<tr>
+      <td>${r.w}</td>
+      <td class="mono" style="color:#64748b">${r.start.slice(5)}</td>
+      <td class="num" style="color:#94a3b8">${fmt(r.low)}</td>
+      <td class="num" style="color:#f1f5f9;font-weight:600">${fmt(r.mid)}</td>
+      <td class="num" style="color:#94a3b8">${fmt(r.high)}</td>
+      <td class="num" style="color:#64748b">${fmt(cum)}</td>
+    </tr>`;
+  }).join('');
 
-const sbNext = SB.next_scheduled;
-document.getElementById('sb-next').innerHTML = sbNext
-  ? `<div style="color:#cbd5e1">${sbNext.title || ''}</div><div style="color:#64748b;font-size:11px;margin-top:2px">${sbNext.scheduledFor || ''} · ${sbNext.type || 'idea'}</div>`
-  : '<span style="color:#64748b">No Notes scheduled</span>';
-
-const sbHist = (SB.history || []).slice().reverse();
-const sbHistEl = document.getElementById('sb-history');
-if (!sbHist.length) {
-  sbHistEl.innerHTML = '<tr><td colspan="4" style="color:#64748b">No stats history yet — run <code class="mono">node tools/substack/fetch-stats.mjs</code></td></tr>';
-} else {
-  sbHistEl.innerHTML = sbHist.map(h => `
+  // Channel mix at final week
+  const lastRow = F.rows[F.rows.length - 1];
+  const lastTotal = lastRow.mid - F.baseline;
+  const mixRows = F.channels.map(ch => ({
+    name: ch.name, color: ch.color,
+    n: lastRow.by[ch.key] || 0,
+    pct: lastTotal > 0 ? Math.round(100 * (lastRow.by[ch.key] || 0) / lastTotal) : 0,
+  })).filter(r => r.n > 0).sort((a, b) => b.n - a.n);
+  if (F.baseline > 0) {
+    mixRows.push({name: 'Baseline (sticky)', color: '#475569',
+                  n: F.baseline, pct: Math.round(100 * F.baseline / lastRow.mid)});
+  }
+  document.getElementById('forecast-mix').innerHTML = mixRows.map(r => `
     <tr>
-      <td class="mono">${h.date}</td>
-      <td class="num">${h.followers != null ? fmt(h.followers) : '—'}</td>
-      <td class="num">${h.notesPosted != null ? fmt(h.notesPosted) : '—'}</td>
-      <td>${h.latestNoteUrl ? `<a href="${h.latestNoteUrl}" target="_blank" style="color:#0ea5e9;font-size:11px">view</a>` : '—'}</td>
+      <td><span style="display:inline-block;width:10px;height:10px;background:${r.color};border-radius:2px;margin-right:6px;vertical-align:middle"></span>${r.name}</td>
+      <td class="num">${fmt(r.n)}</td>
+      <td class="num" style="color:#64748b">${r.pct}%</td>
     </tr>`).join('');
+
+  // Stacked bar chart with low/high overlay lines
+  const labels = F.rows.map(r => 'W' + r.w);
+  const datasets = F.channels.map(ch => ({
+    label: ch.short || ch.name,
+    data: F.rows.map(r => r.by[ch.key] || 0),
+    backgroundColor: ch.color,
+    borderColor: ch.color,
+    borderWidth: 0,
+    stack: 'channels',
+    type: 'bar',
+  }));
+  if (F.baseline > 0) {
+    datasets.push({
+      label: 'Baseline',
+      data: F.rows.map(() => F.baseline),
+      backgroundColor: '#475569',
+      borderColor: '#475569',
+      borderWidth: 0,
+      stack: 'channels',
+      type: 'bar',
+    });
+  }
+  // Scenario bands
+  datasets.push({
+    label: 'Low (50%)',
+    data: F.rows.map(r => r.low),
+    type: 'line',
+    borderColor: '#fca5a5',
+    backgroundColor: 'transparent',
+    borderDash: [4, 4],
+    borderWidth: 2,
+    pointRadius: 0,
+    tension: 0.3,
+  });
+  datasets.push({
+    label: 'High (170%)',
+    data: F.rows.map(r => r.high),
+    type: 'line',
+    borderColor: '#86efac',
+    backgroundColor: 'transparent',
+    borderDash: [4, 4],
+    borderWidth: 2,
+    pointRadius: 0,
+    tension: 0.3,
+  });
+
+  new Chart(document.getElementById('forecastChart'), {
+    data: { labels, datasets },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { labels: { color: '#cbd5e1', boxWidth: 12, font: { size: 11 } } },
+        tooltip: { mode: 'index', intersect: false },
+      },
+      scales: {
+        x: { stacked: true, ticks: { color: '#64748b' }, grid: { color: '#1e293b' } },
+        y: { stacked: true, ticks: { color: '#64748b' }, grid: { color: '#1e293b' },
+             title: { display: true, text: 'Visitors / week', color: '#64748b' } },
+      },
+      interaction: { mode: 'index', intersect: false },
+    },
+  });
 }
+
+// ---- Projected vs Reality (daily, range-selectable) ----
+(function() {
+  const FD = (D.forecast && D.forecast.daily) || [];
+  if (!FD.length) return;
+
+  const fromInput = document.getElementById('pvr-from');
+  const toInput   = document.getElementById('pvr-to');
+  if (!fromInput || !toInput) return;
+
+  const actualByDay = {};
+  (D.daily || []).forEach(x => { actualByDay[x.d] = x.visitors; });
+  const projByDay = {};
+  FD.forEach(x => { projByDay[x.d] = x; });
+
+  const today = (D.forecast && D.forecast.generated) || new Date().toISOString().slice(0, 10);
+  const allDays = Array.from(new Set([
+    ...Object.keys(actualByDay),
+    ...Object.keys(projByDay),
+  ])).sort();
+  if (!allDays.length) return;
+
+  const minDay = allDays[0];
+  const maxDay = allDays[allDays.length - 1];
+  fromInput.min = minDay; fromInput.max = maxDay;
+  toInput.min   = minDay; toInput.max   = maxDay;
+
+  const addDays = (iso, n) => {
+    const dt = new Date(iso + 'T00:00:00Z');
+    dt.setUTCDate(dt.getUTCDate() + n);
+    return dt.toISOString().slice(0, 10);
+  };
+  const clamp = (iso) => iso < minDay ? minDay : (iso > maxDay ? maxDay : iso);
+
+  const PRESETS = {
+    last7:   () => [clamp(addDays(today, -6)),  clamp(today)],
+    last30:  () => [clamp(addDays(today, -29)), clamp(today)],
+    next14:  () => [clamp(today),               clamp(addDays(today,  13))],
+    next30:  () => [clamp(today),               clamp(addDays(today,  29))],
+    window:  () => [clamp(addDays(today, -14)), clamp(addDays(today,  14))],
+    all:     () => [minDay, maxDay],
+  };
+
+  // Style preset buttons (use existing palette)
+  document.querySelectorAll('.pvr-preset').forEach(b => {
+    b.style.cssText =
+      'background:#0f1729;color:#cbd5e1;border:1px solid #1e293b;' +
+      'border-radius:6px;padding:6px 12px;font-size:12px;cursor:pointer;font-family:inherit';
+    b.onmouseover = () => b.style.borderColor = '#0ea5e9';
+    b.onmouseout  = () => b.style.borderColor = '#1e293b';
+    b.addEventListener('click', () => {
+      const r = PRESETS[b.dataset.preset];
+      if (!r) return;
+      const [f, t] = r();
+      fromInput.value = f; toInput.value = t;
+      render();
+    });
+  });
+
+  // Default range: ±14 days around today (clamped)
+  const def = PRESETS.window();
+  fromInput.value = def[0];
+  toInput.value   = def[1];
+
+  let chart = null;
+
+  function render() {
+    let f = fromInput.value, t = toInput.value;
+    if (!f || !t) return;
+    if (f > t) { const tmp = f; f = t; t = tmp; fromInput.value = f; toInput.value = t; }
+
+    // Build day list inclusive
+    const days = [];
+    let d = f;
+    while (d <= t) { days.push(d); d = addDays(d, 1); }
+
+    const actual   = days.map(x => (actualByDay[x] !== undefined) ? actualByDay[x] : null);
+    const projMid  = days.map(x => projByDay[x] ? projByDay[x].mid  : null);
+    const projLow  = days.map(x => projByDay[x] ? projByDay[x].low  : null);
+    const projHigh = days.map(x => projByDay[x] ? projByDay[x].high : null);
+
+    // Stats: sum across range, plus overlap-only variance.
+    // Exclude today from variance (the day isn't closed yet — partial actuals
+    // would skew the comparison heavily negative until day's end).
+    let totalActual = 0, hasActualDays = 0;
+    let overlapActual = 0, overlapProjMid = 0, overlapDays = 0;
+    days.forEach(x => {
+      const a = actualByDay[x];
+      const p = projByDay[x];
+      if (a !== undefined) { totalActual += a; hasActualDays += 1; }
+      if (a !== undefined && p && x !== today) {
+        overlapActual += a;
+        overlapProjMid += p.mid;
+        overlapDays += 1;
+      }
+    });
+
+    document.getElementById('pvr-actual').textContent = fmt(Math.round(totalActual));
+    document.getElementById('pvr-actual-lbl').textContent =
+      'Actual visitors · ' + hasActualDays + ' day' + (hasActualDays === 1 ? '' : 's') + ' w/ data';
+
+    const v = document.getElementById('pvr-variance');
+    const vLbl = document.getElementById('pvr-variance-lbl');
+    if (overlapDays > 0 && overlapProjMid > 0) {
+      const pct = Math.round(100 * (overlapActual - overlapProjMid) / overlapProjMid);
+      v.textContent = (pct >= 0 ? '+' : '') + pct + '%';
+      v.style.color = pct >= 0 ? '#86efac' : '#fca5a5';
+      vLbl.textContent = 'Δ vs projected · ' + overlapDays + ' closed day' + (overlapDays === 1 ? '' : 's');
+    } else {
+      v.textContent = '—';
+      v.style.color = '#94a3b8';
+      vLbl.textContent = 'Δ vs projected · no closed overlap days';
+    }
+
+    // Day-by-day table
+    document.getElementById('pvr-table').innerHTML = days.map(x => {
+      const a = actualByDay[x];
+      const p = projByDay[x];
+      const aTxt = (a !== undefined) ? fmt(a) : '<span style="color:#475569">—</span>';
+      const pLow  = p ? p.low.toFixed(1)  : '<span style="color:#475569">—</span>';
+      const pMid  = p ? p.mid.toFixed(1)  : '<span style="color:#475569">—</span>';
+      const pHigh = p ? p.high.toFixed(1) : '<span style="color:#475569">—</span>';
+      const isToday = (x === today);
+      let dTxt = '<span style="color:#475569">—</span>';
+      let pctTxt = '<span style="color:#475569">—</span>';
+      if (a !== undefined && p) {
+        const delta = a - p.mid;
+        const pct = p.mid > 0 ? Math.round(100 * delta / p.mid) : 0;
+        // Today is in-progress — neutral color so partial actuals don't read as a "miss".
+        const col = isToday
+          ? '#94a3b8'
+          : (delta >= 0 ? '#86efac' : '#fca5a5');
+        dTxt   = '<span style="color:' + col + '">' + (delta >= 0 ? '+' : '') + delta.toFixed(1) + '</span>';
+        pctTxt = '<span style="color:' + col + '">' + (pct   >= 0 ? '+' : '') + pct + '%</span>';
+      }
+      const rowStyle = isToday ? 'background:rgba(14,165,233,0.06)' : '';
+      const dCol = isToday ? '#0ea5e9' : '#94a3b8';
+      const dayLabel = isToday ? ' · today (partial)' : '';
+      return '<tr style="' + rowStyle + '">' +
+        '<td class="mono" style="color:' + dCol + '">' + x + dayLabel + '</td>' +
+        '<td class="num" style="color:#f1f5f9;font-weight:600">' + aTxt + '</td>' +
+        '<td class="num" style="color:#94a3b8">' + pLow  + '</td>' +
+        '<td class="num" style="color:#cbd5e1;font-weight:600">' + pMid  + '</td>' +
+        '<td class="num" style="color:#94a3b8">' + pHigh + '</td>' +
+        '<td class="num">' + dTxt   + '</td>' +
+        '<td class="num">' + pctTxt + '</td>' +
+      '</tr>';
+    }).join('');
+
+    // Chart
+    const labels = days.map(x => x.slice(5));
+    const datasets = [
+      { label: 'Actual',           data: actual,
+        borderColor: '#0ea5e9', backgroundColor: 'rgba(14,165,233,0.18)',
+        tension: 0.3, spanGaps: false, pointRadius: 3, fill: false, borderWidth: 2 },
+      { label: 'Projected (mid)',  data: projMid,
+        borderColor: '#eab308', backgroundColor: 'transparent',
+        borderDash: [6, 4], tension: 0.3, spanGaps: false, pointRadius: 0, borderWidth: 2 },
+      { label: 'Projected (low)',  data: projLow,
+        borderColor: '#fca5a5', backgroundColor: 'transparent',
+        borderDash: [2, 4], tension: 0.3, spanGaps: false, pointRadius: 0, borderWidth: 1 },
+      { label: 'Projected (high)', data: projHigh,
+        borderColor: '#86efac', backgroundColor: 'transparent',
+        borderDash: [2, 4], tension: 0.3, spanGaps: false, pointRadius: 0, borderWidth: 1 },
+    ];
+    if (chart) chart.destroy();
+    chart = new Chart(document.getElementById('pvrChart'), {
+      type: 'line',
+      data: { labels, datasets },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { labels: { color: '#cbd5e1', boxWidth: 12, font: { size: 11 } } },
+          tooltip: { mode: 'index', intersect: false },
+        },
+        scales: {
+          x: { ticks: { color: '#64748b', maxRotation: 0, autoSkip: true, maxTicksLimit: 16 },
+               grid: { color: '#1e293b' } },
+          y: { beginAtZero: true, ticks: { color: '#64748b' }, grid: { color: '#1e293b' },
+               title: { display: true, text: 'Visitors / day', color: '#64748b' } },
+        },
+        interaction: { mode: 'index', intersect: false },
+      },
+    });
+  }
+
+  fromInput.addEventListener('change', render);
+  toInput.addEventListener('change', render);
+  render();
+})();
 
 // GSC tile
 (function renderGsc() {
