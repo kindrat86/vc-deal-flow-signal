@@ -26,8 +26,8 @@ export const metadata: Metadata = {
 };
 
 const STRIPE_DASHBOARD = "https://buy.stripe.com/28E7sK48H04U8ou07u0x200";
-const STRIPE_INSIDER = "https://buy.stripe.com/4gM00ifRpcRG2069I40x202";
 const SIGNUP_URL = "https://gitdealflow.com/#signup";
+const FIRST_LOOK_URL = "/pricing#first-look-pass";
 
 const STACK_ITEMS = [
   {
@@ -178,9 +178,24 @@ export default function PerfectWebinarPage() {
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
         {/* HOOK — Brunson rule: hook hard, lead with curiosity. */}
         <header className="space-y-4">
-          <p className="text-sky-400 text-xs font-medium uppercase tracking-wider">
-            Free 12-minute read · Updated 2026-05-05
-          </p>
+          <nav aria-label="Breadcrumb" className="text-xs text-gray-500">
+            <Link href="/" className="hover:text-sky-400 transition-colors">
+              ← Home
+            </Link>
+            <span className="mx-2 text-gray-700">/</span>
+            <span className="text-gray-400">Perfect Webinar</span>
+          </nav>
+          <div className="flex items-center justify-between gap-3 flex-wrap">
+            <p className="text-sky-400 text-xs font-medium uppercase tracking-wider">
+              Free 12-minute read · Updated 2026-05-05
+            </p>
+            <a
+              href="#close"
+              className="text-xs font-medium text-sky-400 hover:text-sky-300 underline decoration-dotted underline-offset-4"
+            >
+              Skip to offer →
+            </a>
+          </div>
           <h1
             className="text-3xl sm:text-5xl font-bold text-gray-100 leading-[1.1] tracking-tight"
             data-speakable
@@ -199,8 +214,11 @@ export default function PerfectWebinarPage() {
         </header>
 
         {/* STORY / EPIPHANY BRIDGE */}
-        <section className="space-y-4 border-l-2 border-sky-500/40 pl-5 italic text-gray-300">
-          <h2 className="not-italic text-2xl font-semibold text-gray-100">
+        <section
+          id="story"
+          className="space-y-4 border-l-2 border-sky-500/40 pl-5 text-gray-300 leading-relaxed scroll-mt-20"
+        >
+          <h2 className="text-2xl font-semibold text-gray-100">
             The accident that started this
           </h2>
           <p>
@@ -223,18 +241,21 @@ export default function PerfectWebinarPage() {
             every developer already opens 30 times a day. And nobody was reading
             it as deal flow.
           </p>
-          <p className="not-italic text-gray-400">
+          <p className="italic text-gray-400 pt-3 border-t border-slate-800">
             That accident is the only reason this product exists.
           </p>
         </section>
 
         {/* BIG DOMINO */}
-        <section className="bg-gradient-to-br from-sky-950/40 via-slate-900 to-slate-950 border border-sky-700/40 rounded-xl p-6 sm:p-8 space-y-4">
+        <section
+          id="domino"
+          className="bg-gradient-to-br from-sky-950/40 via-slate-900 to-slate-950 border border-sky-700/40 rounded-xl p-6 sm:p-8 space-y-4 scroll-mt-20"
+        >
           <p className="text-sky-300 text-xs font-semibold uppercase tracking-wider">
             The big domino
           </p>
           <h2
-            className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug"
+            className="text-2xl sm:text-4xl font-bold text-gray-100 leading-tight tracking-tight"
             data-speakable
           >
             If commit-velocity acceleration is the most leading public signal
@@ -251,7 +272,7 @@ export default function PerfectWebinarPage() {
         </section>
 
         {/* THREE SECRETS */}
-        <section className="space-y-8">
+        <section id="secrets" className="space-y-8 scroll-mt-20">
           <div className="space-y-2">
             <p className="text-emerald-400 text-xs font-semibold uppercase tracking-wider">
               The three secrets
@@ -373,7 +394,10 @@ export default function PerfectWebinarPage() {
         </section>
 
         {/* THE SHIFT */}
-        <section className="bg-slate-900/60 border border-slate-700 rounded-xl p-6 sm:p-8 space-y-4">
+        <section
+          id="shift"
+          className="bg-slate-900/60 border border-slate-700 rounded-xl p-6 sm:p-8 space-y-4 scroll-mt-20"
+        >
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-100">
             So if all three objections are false, what would the world look
             like?
@@ -395,7 +419,7 @@ export default function PerfectWebinarPage() {
         </section>
 
         {/* THE STACK */}
-        <section className="space-y-6">
+        <section id="stack" className="space-y-6 scroll-mt-20">
           <div className="space-y-2">
             <p className="text-amber-400 text-xs font-semibold uppercase tracking-wider">
               The stack
@@ -411,35 +435,51 @@ export default function PerfectWebinarPage() {
           </div>
 
           <ol className="space-y-3">
-            {STACK_ITEMS.map((item, i) => (
-              <li
-                key={item.label}
-                className="flex items-start gap-4 bg-slate-900/60 border border-slate-800 rounded-lg p-4"
-              >
-                <span
-                  aria-hidden="true"
-                  className="shrink-0 w-7 h-7 rounded-full bg-sky-600/20 border border-sky-500/40 text-sky-300 text-sm font-bold flex items-center justify-center"
+            {STACK_ITEMS.map((item, i) => {
+              const isFeatured = i === 0;
+              return (
+                <li
+                  key={item.label}
+                  className={`flex items-start gap-4 rounded-lg p-4 ${
+                    isFeatured
+                      ? "bg-sky-950/30 border border-sky-600/50 ring-1 ring-sky-500/20"
+                      : "bg-slate-900/60 border border-slate-800"
+                  }`}
                 >
-                  {i + 1}
-                </span>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-baseline justify-between gap-3 flex-wrap">
-                    <p className="text-gray-100 font-semibold text-base">
-                      {item.label}
-                    </p>
-                    <p className="text-gray-500 text-xs whitespace-nowrap">
-                      Standalone:{" "}
-                      <span className="text-emerald-400">
-                        {item.standalone}
-                      </span>
+                  <span
+                    aria-hidden="true"
+                    className={`shrink-0 w-7 h-7 rounded-full text-sm font-bold flex items-center justify-center ${
+                      isFeatured
+                        ? "bg-sky-500 text-white"
+                        : "bg-sky-600/20 border border-sky-500/40 text-sky-300"
+                    }`}
+                  >
+                    {i + 1}
+                  </span>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-baseline justify-between gap-3 flex-wrap">
+                      <p className="text-gray-100 font-semibold text-base flex items-center gap-2">
+                        {item.label}
+                        {isFeatured && (
+                          <span className="text-[10px] uppercase tracking-wider font-bold text-sky-300 bg-sky-500/15 border border-sky-500/30 rounded px-1.5 py-0.5">
+                            Core
+                          </span>
+                        )}
+                      </p>
+                      <p className="text-gray-500 text-xs whitespace-nowrap">
+                        Standalone:{" "}
+                        <span className="text-emerald-400">
+                          {item.standalone}
+                        </span>
+                      </p>
+                    </div>
+                    <p className="text-gray-400 text-sm leading-relaxed mt-1">
+                      {item.description}
                     </p>
                   </div>
-                  <p className="text-gray-400 text-sm leading-relaxed mt-1">
-                    {item.description}
-                  </p>
-                </div>
-              </li>
-            ))}
+                </li>
+              );
+            })}
           </ol>
 
           {/* PRICE STACK */}
@@ -465,7 +505,10 @@ export default function PerfectWebinarPage() {
         </section>
 
         {/* GUARANTEE */}
-        <section className="bg-emerald-950/30 border border-emerald-700/40 rounded-xl p-6 sm:p-8 space-y-3">
+        <section
+          id="guarantee"
+          className="bg-emerald-950/30 border border-emerald-700/40 rounded-xl p-6 sm:p-8 space-y-3 scroll-mt-20"
+        >
           <p className="text-emerald-300 text-xs font-semibold uppercase tracking-wider">
             Risk reversal
           </p>
@@ -523,7 +566,10 @@ export default function PerfectWebinarPage() {
         </section>
 
         {/* CLOSE */}
-        <section className="bg-gradient-to-br from-sky-950/50 via-slate-900 to-slate-950 border border-sky-600 rounded-xl p-6 sm:p-8 text-center space-y-4">
+        <section
+          id="close"
+          className="bg-gradient-to-br from-sky-950/50 via-slate-900 to-slate-950 border border-sky-600 rounded-xl p-6 sm:p-8 text-center space-y-4 scroll-mt-20"
+        >
           <p className="text-sky-300 text-xs font-semibold uppercase tracking-wider">
             Close
           </p>
@@ -551,18 +597,18 @@ export default function PerfectWebinarPage() {
           </div>
           <p className="text-gray-500 text-xs pt-2">
             Or test on one sector for{" "}
-            <a
-              href="https://gitdealflow.com/firstlook/sample"
+            <Link
+              href={FIRST_LOOK_URL}
               className="text-sky-400 hover:text-sky-300 underline decoration-dotted"
             >
               €7 (First Look Pass)
-            </a>{" "}
+            </Link>{" "}
             — credited toward Dashboard if you upgrade in 14 days.
           </p>
         </section>
 
         {/* FAQ */}
-        <section className="space-y-5">
+        <section id="faq" className="space-y-5 scroll-mt-20">
           <h2 className="text-2xl font-bold text-gray-100">FAQ</h2>
           {FAQS.map((f) => (
             <div key={f.q} className="space-y-1.5">
@@ -570,6 +616,30 @@ export default function PerfectWebinarPage() {
               <p className="text-gray-400 text-sm leading-relaxed">{f.a}</p>
             </div>
           ))}
+        </section>
+
+        {/* FINAL CTA — never end on FAQ; close the loop. */}
+        <section className="border-t border-slate-800 pt-10 text-center space-y-4">
+          <p className="text-gray-300 text-base leading-relaxed">
+            Read this far? You already believe the signal works.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <a
+              href={STRIPE_DASHBOARD}
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-semibold text-base shadow-lg shadow-sky-500/30 transition-colors"
+            >
+              Lock €9.97/mo · Founder price <span aria-hidden="true">→</span>
+            </a>
+            <a
+              href={SIGNUP_URL}
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg border border-slate-700 bg-slate-800 hover:bg-slate-700 text-gray-100 font-semibold text-base transition-colors"
+            >
+              Free digest first
+            </a>
+          </div>
+          <p className="text-gray-500 text-xs">
+            30-day Signal-or-It&rsquo;s-Free guarantee · Reply REFUND for full refund
+          </p>
         </section>
 
         <AgentSummary
