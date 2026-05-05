@@ -9,7 +9,6 @@
 
 import { GET as RootAiTxt } from "@/app/ai.txt/route";
 
-export const dynamic = "force-static";
 export const runtime = "nodejs";
 
 const SITE = "https://signals.gitdealflow.com";

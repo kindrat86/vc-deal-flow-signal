@@ -15,9 +15,7 @@
 import { NextResponse } from "next/server";
 import { getDataLastModified, getCurrentPeriod, getAllPeriods } from "@/lib/data";
 
-export const dynamic = "force-static";
 export const runtime = "nodejs";
-export const revalidate = 3600;
 
 const SITE = "https://signals.gitdealflow.com";
 

@@ -10,7 +10,6 @@
 
 import { GET as AiPolicyJson } from "@/app/.well-known/ai-policy.json/route";
 
-export const dynamic = "force-static";
 export const runtime = "nodejs";
 
 const SITE = "https://signals.gitdealflow.com";

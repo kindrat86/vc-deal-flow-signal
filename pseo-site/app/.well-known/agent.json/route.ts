@@ -10,7 +10,6 @@
 
 import { GET as AgentCardJson } from "@/app/.well-known/agent-card.json/route";
 
-export const dynamic = "force-static";
 export const runtime = "nodejs";
 
 const SITE = "https://signals.gitdealflow.com";

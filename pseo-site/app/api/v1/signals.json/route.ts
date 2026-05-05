@@ -10,9 +10,7 @@
 import type { NextRequest } from "next/server";
 import { GET as ApiSignalsJson } from "@/app/api/signals.json/route";
 
-export const dynamic = "force-static";
 export const runtime = "nodejs";
-export const revalidate = 3600;
 
 const SITE = "https://signals.gitdealflow.com";
 
