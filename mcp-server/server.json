@@ -1,8 +1,8 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.kindrat86/vc-deal-flow-signal",
-  "title": "GitDealFlow — GitHub signals for startup investors",
-  "description": "GitHub signals for VC deal flow: trending startups, commit velocity, contributor growth, 20 sectors.",
+  "title": "VC Deal Flow Signal",
+  "description": "Startup engineering acceleration signals for VC investors. GitHub commit velocity across 20 sectors.",
   "websiteUrl": "https://gitdealflow.com",
   "icons": [
     {
@@ -21,8 +21,9 @@
     }
   ],
   "repository": {
-    "url": "https://github.com/kindrat86/mcp-deal-flow-signal",
-    "source": "github"
+    "url": "https://github.com/kindrat86/vc-deal-flow-signal",
+    "source": "github",
+    "subfolder": "mcp-server"
   },
   "version": "2.0.0",
   "packages": [
