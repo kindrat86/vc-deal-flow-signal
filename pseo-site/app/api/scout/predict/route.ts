@@ -7,7 +7,7 @@ import {
   createPrediction,
   monthlyLimitForTier,
 } from "@/lib/pocketbase";
-import { generateToken } from "@/lib/verify-token";
+import { signVerifyToken } from "@/lib/verify-token";
 import { scheduleSoapOperaForNewScout } from "@/lib/soap-opera-scout";
 import { isExcluded } from "@/lib/excluded-emails";
 import { makeShareUrl } from "@/lib/share-url";
@@ -208,7 +208,14 @@ export async function POST(request: Request) {
       ipAddress: ip,
     });
 
-    const dashboardToken = generateToken(email);
+    // v2 dashboard token: payload-bound (email + purpose + 7d expiry + nonce).
+    // First click trades the URL token for an httpOnly session cookie at
+    // /dashboard/scout, so the leak surface is one redirect, not perpetual.
+    const { token: dashboardToken } = signVerifyToken({
+      email,
+      purpose: "scout-dashboard",
+      ttlSeconds: 7 * 86_400,
+    });
     const dashboardUrl = `${SITE_URL}/dashboard/scout?email=${encodeURIComponent(email)}&token=${dashboardToken}`;
     const profileUrl = `${SITE_URL}/s/${scout.handle}`;
 

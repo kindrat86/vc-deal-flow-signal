@@ -9,12 +9,13 @@ import {
   type Scout,
   type Prediction,
 } from "@/lib/pocketbase";
-import { verifyToken } from "@/lib/verify-token";
+import { getScoutSession } from "@/lib/scout-session";
 import { makeShareIntents } from "@/lib/share-url";
 
 interface SearchParams {
   email?: string;
   token?: string;
+  gate?: string;
 }
 
 const RANK_LABEL: Record<string, string> = {
@@ -36,6 +37,10 @@ const RANK_COLOR: Record<string, string> = {
 export const metadata: Metadata = {
   title: "Scout Dashboard — Your Predictions",
   robots: { index: false, follow: false },
+  // The page receives an auth token in the URL on first visit. no-referrer
+  // prevents the token from leaking to twitter.com / external links via the
+  // Referer header. After first visit, an httpOnly cookie replaces URL auth.
+  referrer: "no-referrer",
 };
 
 interface PbList<T> {
@@ -59,19 +64,32 @@ export default async function ScoutDashboardPage({
 }: {
   searchParams: Promise<SearchParams>;
 }) {
-  const { email, token } = await searchParams;
+  const { email: urlEmail, token, gate } = await searchParams;
 
-  if (!email || !token) {
+  // Auth precedence:
+  //   1. Existing httpOnly scout-session cookie (set on prior URL-token hit).
+  //   2. URL token present → bounce to /api/dashboard/scout/auth which sets
+  //      the cookie and redirects back here. This keeps the URL token out of
+  //      browser history / referer / proxy logs after the first hop.
+  //   3. Otherwise: gate with login message.
+
+  const session = await getScoutSession();
+  if (!session?.email) {
+    if (urlEmail && token) {
+      const params = new URLSearchParams({ email: urlEmail, token });
+      redirect(`/api/dashboard/scout/auth?${params.toString()}`);
+    }
+    if (gate === "invalid") {
+      return (
+        <GateLogin message="That link is invalid or expired. Make a new prediction to get a fresh link." />
+      );
+    }
     return (
       <GateLogin message="This dashboard requires a magic link from your confirmation email. Make a prediction to get one." />
     );
   }
-  if (!verifyToken(email, token)) {
-    return (
-      <GateLogin message="That link is invalid or expired. Make a new prediction to get a fresh link." />
-    );
-  }
 
+  const email = session.email;
   const scout = await findScoutByEmail(email).catch(() => null);
   if (!scout) {
     redirect("/predict");

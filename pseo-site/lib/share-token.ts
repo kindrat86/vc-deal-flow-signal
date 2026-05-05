@@ -1,6 +1,14 @@
 import { createHmac, timingSafeEqual } from "crypto";
 
-const SECRET = process.env.SHARE_TOKEN_SECRET || process.env.VERIFY_SECRET || "vcdfs-share-2026";
+function getSecret(): string {
+  const s = process.env.SHARE_TOKEN_SECRET || process.env.VERIFY_SECRET;
+  if (!s) {
+    throw new Error(
+      "SHARE_TOKEN_SECRET (or VERIFY_SECRET) environment variable is not set",
+    );
+  }
+  return s;
+}
 
 export interface SharePayload {
   /** Anonymous sharer identifier — handle, email hash, or "anon". */
@@ -22,7 +30,7 @@ function fromB64url(s: string): Buffer {
 
 export function signSharePayload(payload: SharePayload): string {
   const body = b64url(JSON.stringify(payload));
-  const sig = createHmac("sha256", SECRET).update(body).digest("hex");
+  const sig = createHmac("sha256", getSecret()).update(body).digest("hex");
   return `${body}.${sig}`;
 }
 
@@ -31,7 +39,7 @@ export function verifyShareToken(token: string): SharePayload | null {
   if (dot <= 0) return null;
   const body = token.slice(0, dot);
   const sig = token.slice(dot + 1);
-  const expected = createHmac("sha256", SECRET).update(body).digest("hex");
+  const expected = createHmac("sha256", getSecret()).update(body).digest("hex");
   if (expected.length !== sig.length) return null;
   try {
     if (!timingSafeEqual(Buffer.from(expected, "hex"), Buffer.from(sig, "hex"))) return null;

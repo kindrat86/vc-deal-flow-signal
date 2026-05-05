@@ -13,7 +13,11 @@
 
 import { createHmac, timingSafeEqual } from "node:crypto";
 
-const SECRET = process.env.MCP_OAUTH_SECRET || "dev-secret-rotate-via-MCP_OAUTH_SECRET";
+function getSecret(): string {
+  const s = process.env.MCP_OAUTH_SECRET;
+  if (!s) throw new Error("MCP_OAUTH_SECRET environment variable is not set");
+  return s;
+}
 const ISSUER = "https://signals.gitdealflow.com";
 const AUDIENCE = "vc-deal-flow-signal-mcp";
 const TTL_SECONDS = 3600; // 1 hour
@@ -56,7 +60,7 @@ export function issueToken(scope = "mcp:read"): { access_token: string; token_ty
   const header = base64url(JSON.stringify({ alg: "HS256", typ: "JWT" }));
   const payload = base64url(JSON.stringify(claims));
   const signing = `${header}.${payload}`;
-  const signature = base64url(createHmac("sha256", SECRET).update(signing).digest());
+  const signature = base64url(createHmac("sha256", getSecret()).update(signing).digest());
 
   return {
     access_token: `${signing}.${signature}`,
@@ -72,7 +76,7 @@ export function verifyToken(token: string | undefined | null): TokenClaims | nul
   if (parts.length !== 3) return null;
   const [header, payload, signature] = parts;
 
-  const expected = base64url(createHmac("sha256", SECRET).update(`${header}.${payload}`).digest());
+  const expected = base64url(createHmac("sha256", getSecret()).update(`${header}.${payload}`).digest());
   const expectedBuf = Buffer.from(expected);
   const actualBuf = Buffer.from(signature);
   if (expectedBuf.length !== actualBuf.length) return null;

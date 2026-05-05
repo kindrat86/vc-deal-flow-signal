@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { checkRateLimit, getClientIp, rateLimitHeaders } from "@/lib/rate-limit";
 import { isValidEmail, isAllowedOrigin } from "@/lib/validation";
-import { generateToken } from "@/lib/verify-token";
+import { signVerifyToken } from "@/lib/verify-token";
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY!;
 const FROM_EMAIL = process.env.FROM_EMAIL || "signal@gitdealflow.com";
@@ -117,7 +117,14 @@ export async function POST(request: Request) {
     // Build verification URL — attribution piggybacks as query params so
     // /api/verify can persist it to PocketBase regardless of which device
     // the user clicks the verify link from. Cohort piggybacks too.
-    const token = generateToken(email);
+    // v2 token: payload-bound (email + purpose + 30d expiry + nonce). Replaces
+    // the deterministic email-only HMAC. 30 days because confirmation emails
+    // can sit unread in inboxes for weeks.
+    const { token } = signVerifyToken({
+      email,
+      purpose: "verify-subscribe",
+      ttlSeconds: 30 * 86_400,
+    });
     const params = new URLSearchParams({ email, token, cohort });
     for (const [k, v] of Object.entries(attribution)) {
       if (v) params.set(k, v);
