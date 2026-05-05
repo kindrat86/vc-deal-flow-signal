@@ -5,6 +5,7 @@ import { getDataLastModified } from "@/lib/data";
 import PSEOFooterNav from "@/components/PSEOFooterNav";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import SharpScarcityBadge from "@/components/SharpScarcityBadge";
 
 export const metadata: Metadata = {
   title: "Pricing — Free, €7 First Look, €9.97 Dashboard, €97 Insider, €497 Sharp, €1,997 Sweep",
@@ -18,6 +19,15 @@ export const metadata: Metadata = {
 const STRIPE_DASHBOARD = "https://buy.stripe.com/28E7sK48H04U8ou07u0x200";
 const STRIPE_INSIDER = "https://buy.stripe.com/4gM00ifRpcRG2069I40x202";
 const STRIPE_SWEEP = "https://buy.stripe.com/bJe14m34DbNC6gm1by0x204";
+// `||` not `??` — Vercel env entries can be empty strings, which `??`
+// would NOT replace. We want the hardcoded canonical URL whenever the
+// env var is missing OR empty.
+const STRIPE_DASHBOARD_ANNUAL =
+  process.env.NEXT_PUBLIC_STRIPE_DASHBOARD_ANNUAL_LINK ||
+  "https://buy.stripe.com/aFa28qgVt3h65ci8E00x206";
+const STRIPE_INSIDER_ANNUAL =
+  process.env.NEXT_PUBLIC_STRIPE_INSIDER_ANNUAL_LINK ||
+  "https://buy.stripe.com/9B628q8oX7xmcEK9I40x207";
 const SIGNUP_URL = "https://gitdealflow.com/#signup";
 // Sharp Tier — application-gated, capped at 8 funds in 2026. The mailto includes a structured intake template so the reply is immediate-prioritised.
 // Russell audit 2026-05-05 PM: replaced mailto: with a proper application
@@ -377,7 +387,7 @@ export default function PricingPage() {
 
         {/* PH50OFF promo banner — matches apex banner; auto-applies on Stripe checkout */}
         <div
-          className="mb-8 rounded-md border border-amber-700/60 bg-amber-950/30 px-4 py-3 text-sm text-amber-200"
+          className="mb-4 rounded-md border border-amber-700/60 bg-amber-950/30 px-4 py-3 text-sm text-amber-200"
           role="note"
         >
           <strong className="text-amber-100">Limited time:</strong> 50% off
@@ -386,6 +396,11 @@ export default function PricingPage() {
             PH50OFF
           </code>{" "}
           at Stripe checkout. Stacks on top of founding-member pricing.
+        </div>
+
+        {/* Sharp Tier scarcity — public counter, updated when funds sign */}
+        <div className="mb-8">
+          <SharpScarcityBadge variant="default" />
         </div>
 
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-4 leading-tight">
@@ -829,6 +844,117 @@ export default function PricingPage() {
             Capped at 8 sweeps per quarter. Q3 2026: 7 of 8 open. Each Sweep
             is custom — nothing template, nothing reused.
           </p>
+        </section>
+
+        {/* Annual plans — founder-locked, save vs monthly. Stripe links land
+            via env when user creates them; otherwise a soft mailto-style
+            instruction so we don't strand the visitor. */}
+        <section
+          id="annual-plans"
+          className="mb-12 rounded-xl border border-sky-700/40 bg-sky-950/10 p-6 sm:p-8"
+          aria-label="Annual plans"
+        >
+          <p className="text-sky-300 text-xs font-semibold uppercase tracking-wider mb-2">
+            Annual plans · save 17% on monthly
+          </p>
+          <h2 className="text-2xl font-bold text-gray-100 mb-3">
+            Pay yearly. Lock the founder rate twice over.
+          </h2>
+          <p className="text-gray-400 text-sm mb-5 max-w-2xl">
+            Both founding-member tiers offer an annual option that saves
+            roughly two months versus the monthly rate. Annual subscribers
+            keep the founder lock indefinitely <em>and</em> are insulated
+            from any future price change for the entire term.
+          </p>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5">
+            <li className="rounded-lg border border-slate-800 bg-slate-900/40 p-4 space-y-2">
+              <p className="text-gray-100 font-semibold text-base">
+                Dashboard Beta — Annual
+              </p>
+              <p className="text-gray-400 text-sm">
+                <span className="text-2xl font-bold text-sky-300">€99</span>
+                <span className="text-gray-500">/yr · saves €20.64 vs €9.97×12</span>
+              </p>
+              <p className="text-gray-500 text-xs leading-relaxed">
+                Same dashboard, same MCP, same guarantee. Renews at the
+                same €99/yr rate as long as the subscription stays active.
+              </p>
+              <a
+                href={STRIPE_DASHBOARD_ANNUAL}
+                className="inline-flex items-center justify-center px-3 py-2 rounded-md bg-sky-600 hover:bg-sky-500 text-white text-xs font-semibold transition-colors"
+              >
+                Lock €99/yr →
+              </a>
+            </li>
+            <li className="rounded-lg border border-slate-800 bg-slate-900/40 p-4 space-y-2">
+              <p className="text-gray-100 font-semibold text-base">
+                Insider Circle — Annual
+              </p>
+              <p className="text-gray-400 text-sm">
+                <span className="text-2xl font-bold text-emerald-300">€970</span>
+                <span className="text-gray-500">/yr · saves €194 vs €97×12</span>
+              </p>
+              <p className="text-gray-500 text-xs leading-relaxed">
+                Telegram + 24h lead + API + custom watchlist. Two months
+                free vs monthly. Locks for as long as you stay subscribed.
+              </p>
+              <a
+                href={STRIPE_INSIDER_ANNUAL}
+                className="inline-flex items-center justify-center px-3 py-2 rounded-md bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold transition-colors"
+              >
+                Lock €970/yr →
+              </a>
+            </li>
+          </ul>
+          <p className="text-gray-500 text-xs leading-relaxed">
+            One-click Stripe checkout above. If you&rsquo;re already on
+            monthly and want to switch, email{" "}
+            <a
+              href="mailto:signal@gitdealflow.com?subject=Switch%20to%20annual"
+              className="text-sky-400 hover:text-sky-300 underline"
+            >
+              signal@gitdealflow.com
+            </a>{" "}
+            — we credit the unused portion of the current month toward
+            the annual term.
+          </p>
+        </section>
+
+        {/* Agent Credits cross-link — separate ICP (AI-agent builders),
+            buried until now. Brunson "same product, new market" funnel. */}
+        <section
+          id="agent-credits"
+          className="mb-12 rounded-xl border border-amber-500/30 bg-amber-500/5 p-6 sm:p-8"
+          aria-label="Agent credits cross-link"
+        >
+          <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider mb-2">
+            For AI-agent builders · Pay-as-you-go
+          </p>
+          <h2 className="text-2xl font-bold text-gray-100 mb-3">
+            Building an agent? Pay per deep-signal call instead.
+          </h2>
+          <p className="text-gray-400 text-sm mb-4 max-w-2xl">
+            If you&rsquo;re shipping an agent that scouts startups or briefs
+            investors, the subscription tiers above are the wrong shape — you
+            want per-call pricing on the deep-enrichment endpoint. €19 buys
+            100 <code className="text-amber-300 font-mono">get_deep_signal</code>{" "}
+            calls (€0.19 each). Misses are free. Credits never expire. Six
+            other MCP tools stay free forever.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <Link
+              href="/for-builders"
+              className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 text-sm font-semibold transition-colors"
+            >
+              See the builder funnel →
+            </Link>
+            <Link
+              href="/agents/credits"
+              className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-amber-700/40 hover:border-amber-500/60 text-amber-200 text-sm font-medium transition-colors"
+            >
+              Buy 100 credits — €19
+            </Link>
+          </div>
         </section>
 
         {/* Guarantee */}

@@ -330,6 +330,66 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
 <p style="color:#64748b;font-size:14px;">P.S. Founding-price checkout: <a href="${SITE}/#pricing" style="color:#0ea5e9;">${SITE}/#pricing</a> · Quiz if you're unsure which tier fits: <a href="${SIGNALS}/quiz" style="color:#0ea5e9;">${SIGNALS}/quiz</a> · Funnel hub if you want to see all 9 doors: <a href="${SIGNALS}/funnels" style="color:#0ea5e9;">${SIGNALS}/funnels</a></p>
 `),
   },
+
+  // Day 45 — Insider upsell. Brunson "value ladder ascension" — by week 7
+  // the buyer either bought Dashboard or stayed free. This email pitches
+  // the next rung (Insider Circle) by selling the 24-hour lead, not the
+  // features. Free-tier reads it; Dashboard subscribers also read it as
+  // an obvious upgrade trigger.
+  {
+    subject: "The 24-hour head-start I wish I had given a friend",
+    delayMs: THIRTY_MIN + 45 * ONE_DAY,
+    html: wrap(`
+<p>Quick story. Three Sundays ago a friend texted me at 11pm: "saw your acceleration list, the third name was the company I almost cold-emailed in March, kicking myself."</p>
+<p>The list publishes Mondays at 09:00 UTC. He saw it Sunday night, but only because I had forwarded my Insider Circle briefing two hours after I sent it. The public list wouldn't have hit his inbox for another nine hours. By the time it had, the founder he wanted to reach would have had four other investors in DMs.</p>
+<p>That's the only thing the Insider Circle actually sells. Same ten ranked names, sent Sunday at 09:00 UTC instead of Monday. One full sourcing day before any other investor sees them.</p>
+<p>Everything else — the closed Telegram group, the JSON/CSV API, the custom watchlist co-built around your thesis, the webhooks, the direct founder line — is a tool that makes the Sunday-evening rhythm easier. The product is the 24-hour lead.</p>
+<p>If you write more than ten checks a year, the math is roughly: one founder per quarter that you reached because you had a head-start. At a €5k–€50k angel range with even a 3× exit on one in five, that's somewhere between €15k and €150k of expected value per Sunday-night head-start. €97/mo is €1,164 a year. The numbers don't work the other way.</p>
+<p>The full case is on the page: <a href="${SIGNALS}/insider" style="color:#0ea5e9;">${SIGNALS}/insider</a></p>
+<p>Founding-member rate is €97/mo, locked for the lifetime of the subscription. Public hike to €197 lands the day a regulated investor tool reviews us. The Telegram group is one-seat-per-subscription; founding members keep their seat permanently even if the cap is later lowered.</p>
+<p>If Insider isn't right for you yet, no problem — the free digest stays free, and Dashboard at €9.97/mo is the right rung for most of you.</p>
+<p>Talk soon —<br>${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. The Sunday briefing arrives 24h before the public Monday list. That's it. That's the product.</p>
+`),
+  },
+
+  // Day 60 — Sector Sweep upsell. Buyer who got value from Dashboard or
+  // who's in a focused-thesis mode is now warm enough for the high-ticket
+  // one-time. Pitched as "if you went all in for one weekend".
+  {
+    subject: "If you went all in on one sector for a weekend",
+    delayMs: THIRTY_MIN + 60 * ONE_DAY,
+    html: wrap(`
+<p>Most weeks the Dashboard is the right tool. Five names on Sunday, five sector pages on Monday, a 15-minute review block, done.</p>
+<p>But about once a quarter, the right move is the opposite shape — go deep on one thesis, build the entire panel from scratch, and end up with a written artefact you can paste into an IC memo or a fund newsletter.</p>
+<p>That's the Sector Sweep. €1,997 one-time, capped at 8 sweeps per quarter (Q3 2026: 7 of 8 still open). 40-page custom PDF on the sector you pick, raw CSV of every org × every metric, top-five deep dives with diligence prompts, three pre-Crunchbase early-stage targets, 14-day Q&A window for follow-up cuts.</p>
+<p>Itemized value on the page works out to ~€13,000 of analyst time at standard rates: <a href="${SIGNALS}/pricing#sector-sweep-stack" style="color:#0ea5e9;">${SIGNALS}/pricing#sector-sweep-stack</a></p>
+<p>Two reasons to consider it now, specifically:</p>
+<p>One — €1,997 is 100% credited to Insider Circle if you upgrade within 60 days of receiving the Sweep. That's roughly your first 20 months of Insider, paid in full.</p>
+<p>Two — the 30-day Signal-or-It's-Free guarantee covers the Sweep itself. If we don't surface three orgs you didn't already know about, reply REFUND.</p>
+<p>If your thesis is genuinely focused on one sector this quarter — AI infra, dev tools, fintech rails, vertical SaaS, climate, whatever — this is the artefact that compresses three weeks of analyst work into one weekend of reading. Email me with the sector you want covered and I'll send back a tailored proposal in 24 hours.</p>
+<p>Talk soon —<br>${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. Email <a href="mailto:signal@gitdealflow.com?subject=Sector%20Sweep" style="color:#0ea5e9;">signal@gitdealflow.com</a> with subject "Sector Sweep" and the sector. We confirm the spec inside one business day.</p>
+`),
+  },
+
+  // Day 75 — Crystal Ball game invite. Reactivation email for free-tier
+  // readers who haven't bought yet. Free public game, no purchase, but
+  // captures intent + builds taste credibility for a future warmer pitch.
+  {
+    subject: "Pick a startup. We'll grade you in 90 days.",
+    delayMs: THIRTY_MIN + 75 * ONE_DAY,
+    html: wrap(`
+<p>Two new things to tell you about, because both are free and both build a public track record without a single cheque written.</p>
+<p>First — the Underwriting Receipts ledger is now live: <a href="${SIGNALS}/wins" style="color:#0ea5e9;">${SIGNALS}/wins</a>. Every venture-backed startup whose GitHub engineering acceleration matched the SSRN signal pattern before the funding round. No testimonials, no headshots, just the org, the repo, the event, and the date. ~75 entries on the panel today. We append, never edit.</p>
+<p>Second — the Crystal Ball game is open: <a href="${SIGNALS}/crystal-ball" style="color:#0ea5e9;">${SIGNALS}/crystal-ball</a>. Pick any GitHub org. Predict that they'll announce a funding round within 90 days. We grade post-hoc against TechCrunch, Crunchbase, and SEC filings. Leaderboard tracks your hit rate weighted by lead time.</p>
+<p>The reward isn't money — there's no real money in the loop. The reward is the public track record. Five hits earn the Founding Forecaster badge (permanent, public) and unlock 50% off a Sector Sweep.</p>
+<p>If you've been reading the Sunday digest and wondering whether your taste matches the data, this is the cheapest way to find out.</p>
+<p>Three picks per quarter is enough to start showing taste. The cap is one pick per email per week to keep the leaderboard clean.</p>
+<p>Talk soon —<br>${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. The leaderboard is public and indexable. Forecasters in the founding cohort have already had angel-allocation introductions because their pick history was the credential.</p>
+`),
+  },
 ];
 
 /**

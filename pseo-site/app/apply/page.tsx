@@ -3,6 +3,7 @@ import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import SharpScarcityBadge from "@/components/SharpScarcityBadge";
 import ApplyForm from "./ApplyForm";
 
 export const dynamic = "force-static";
@@ -149,6 +150,7 @@ export default function ApplyPage() {
             funds in 2026 because the call time is real. Application
             reviewed within 48 business hours.
           </p>
+          <SharpScarcityBadge variant="default" showCta={false} />
         </header>
 
         <section className="bg-slate-900/60 border border-slate-800 rounded-xl p-6 space-y-4">

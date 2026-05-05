@@ -9,6 +9,7 @@ import {
   type ScoredWin,
 } from "@/lib/scout-score";
 import { makeShareIntents } from "@/lib/share-url";
+import ShareGate from "./ShareGate";
 
 interface Params {
   username: string;
@@ -228,24 +229,11 @@ export default async function ReceiptsResultPage({
               {result.matched_count > 0 ? ` · ${result.matched_count} validated wins` : ""}
             </p>
           </div>
-          <div className="flex gap-2">
-            <a
-              href={twitterShare}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-sm text-gray-300 transition"
-            >
-              Share on X
-            </a>
-            <a
-              href={linkedinShare}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-sm text-gray-300 transition"
-            >
-              Share on LinkedIn
-            </a>
-          </div>
+          <ShareGate
+            username={username}
+            twitterShare={twitterShare}
+            linkedinShare={linkedinShare}
+          />
         </div>
       </header>
 
