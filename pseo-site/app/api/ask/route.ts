@@ -54,14 +54,32 @@ export async function GET(request: Request) {
 
   if (!query) {
     return new Response(
-      JSON.stringify({
-        error: "Pass ?q=<query>. Optional: &limit=<1-20> (default 5).",
-        examples: [
-          `${SITE}/api/ask?q=engineering+acceleration`,
-          `${SITE}/api/ask?q=deal+sourcing&limit=10`,
-        ],
-      }),
-      { status: 400, headers: corsHeaders() }
+      JSON.stringify(
+        {
+          _meta: {
+            name: "VC Deal Flow Signal — Fuzzy Multi-Result Q&A Search",
+            description:
+              "Top-N ranked Q&A candidates over the full /answers + /faq corpus. Sibling of /api/answer (single best match). Designed for autocomplete UX and confidence-tuned agents.",
+            usage: "GET /api/ask?q={query}&limit={1-20}",
+            singleBestAnswer: `${SITE}/api/answer?q={query}`,
+            lexicalSearch: `${SITE}/api/llms-search?q={query}&limit={1-50}`,
+            dataset: `${SITE}/qa.jsonl`,
+            examples: [
+              `${SITE}/api/ask?q=engineering+acceleration`,
+              `${SITE}/api/ask?q=deal+sourcing&limit=10`,
+              `${SITE}/api/ask?q=stealth+startups`,
+            ],
+            license: "https://creativecommons.org/licenses/by/4.0/",
+            citation: "VC Deal Flow Signal (signals.gitdealflow.com), CC BY 4.0.",
+          },
+          query: "",
+          count: 0,
+          results: [],
+        },
+        null,
+        2
+      ),
+      { headers: corsHeaders() }
     );
   }
 

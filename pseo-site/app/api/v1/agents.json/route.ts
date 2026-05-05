@@ -1,10 +1,9 @@
 /**
- * Root-level alias for /api/agents.json.
+ * /api/v1/agents.json — versioned alias for /api/agents.json.
  *
- * Some discovery agents expect a top-level descriptor rather than an /api/
- * path. We serve content directly (200, not 308) because some AI bots
- * don't follow redirects on JSON descriptor probes. The canonical URL —
- * declared via the `Link: rel=canonical` header — remains under /api/.
+ * Stable v1 path for the agent-tool catalog so agent runtimes that pin
+ * to v1 don't 404. Body and headers mirror the upstream; canonical URL —
+ * declared via `Link: rel=canonical` — remains at /api/agents.json.
  */
 
 import { GET as ApiAgentsJson } from "@/app/api/agents.json/route";
