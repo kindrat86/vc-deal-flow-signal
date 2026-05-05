@@ -9,7 +9,6 @@
 
 import { GET as ApiChangelogJson } from "@/app/api/changelog.json/route";
 
-export const dynamic = "force-static";
 export const runtime = "nodejs";
 
 const SITE = "https://signals.gitdealflow.com";

@@ -8,12 +8,20 @@ const nextConfig: NextConfig = {
         destination: "/llms.txt",
       },
       {
-        source: "/.well-known/ai.txt",
-        destination: "/ai.txt",
-      },
-      {
         source: "/AGENTS.md",
         destination: "/agents.md",
+      },
+      {
+        source: "/openapi.json",
+        destination: "/api/openapi.json",
+      },
+      {
+        source: "/.well-known/llms-full.txt",
+        destination: "/llms-full.txt",
+      },
+      {
+        source: "/.well-known/qa.jsonl",
+        destination: "/qa.jsonl",
       },
     ];
   },

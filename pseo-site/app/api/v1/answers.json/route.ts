@@ -8,7 +8,6 @@
 
 import { GET as ApiAnswersJson } from "@/app/api/answers.json/route";
 
-export const dynamic = "force-static";
 export const runtime = "nodejs";
 
 const SITE = "https://signals.gitdealflow.com";

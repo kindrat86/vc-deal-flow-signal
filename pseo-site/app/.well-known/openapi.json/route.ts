@@ -10,7 +10,6 @@
 
 import { GET as ApiOpenApiJson } from "@/app/api/openapi.json/route";
 
-export const dynamic = "force-static";
 export const runtime = "nodejs";
 
 const SITE = "https://signals.gitdealflow.com";

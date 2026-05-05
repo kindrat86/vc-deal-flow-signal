@@ -12,9 +12,7 @@
 
 import { GET as RootSitemap } from "@/app/sitemap.xml/route";
 
-export const dynamic = "force-static";
 export const runtime = "nodejs";
-export const revalidate = 3600;
 
 const SITE = "https://signals.gitdealflow.com";
 

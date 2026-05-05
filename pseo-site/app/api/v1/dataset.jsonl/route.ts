@@ -9,7 +9,6 @@
 
 import { GET as ApiDatasetJsonl } from "@/app/api/dataset.jsonl/route";
 
-export const dynamic = "force-static";
 export const runtime = "nodejs";
 
 const SITE = "https://signals.gitdealflow.com";
