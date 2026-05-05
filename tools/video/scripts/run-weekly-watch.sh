@@ -5,6 +5,18 @@ set -euo pipefail
 
 cd "$(dirname "$0")/.."
 
+# Remotion's Root.tsx imports script-meta.json for every composition at
+# bundle time. The weekly cron only renders Predicted90s, but the bundler
+# still walks Vsl3min and ShortMagicBullet imports — so seed inert stubs
+# for those two if they aren't already present from a prior local render.
+mkdir -p out/vsl-3min out/short-magic-bullet
+if [[ ! -f out/vsl-3min/script-meta.json ]]; then
+  printf '%s' '{"id":"vsl-3min","fps":30,"width":1920,"height":1080,"scenes":[{"id":"stub","kind":"title","durationSec":2,"voDurationSec":0,"audioPath":null,"data":{}}],"totalDurationSec":2,"totalDurationFrames":60,"voice":{"id":"stub","name":"stub","model":"stub"}}' > out/vsl-3min/script-meta.json
+fi
+if [[ ! -f out/short-magic-bullet/script-meta.json ]]; then
+  printf '%s' '{"id":"short-magic-bullet","fps":30,"width":1080,"height":1920,"scenes":[{"id":"stub","kind":"title","durationSec":2,"voDurationSec":0,"audioPath":null,"data":{}}],"totalDurationSec":2,"totalDurationFrames":60,"voice":{"id":"stub","name":"stub","model":"stub"}}' > out/short-magic-bullet/script-meta.json
+fi
+
 echo "▸ generating fresh content from /api/v1/signals.json"
 node scripts/00-generate-weekly-watch.mjs
 
