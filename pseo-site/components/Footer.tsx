@@ -48,6 +48,7 @@ export default function Footer() {
           <div>
             <p className="text-xs font-semibold text-gray-300 uppercase tracking-wider mb-3">Product</p>
             <nav className="flex flex-col gap-2 text-sm text-gray-500">
+              <Link href="/funnels" className="hover:text-gray-200 transition-colors">Funnel Hub</Link>
               <Link href="/pricing" className="hover:text-gray-200 transition-colors">Pricing</Link>
               <Link href="/buyers-guide" className="hover:text-gray-200 transition-colors">Buyers Guide</Link>
               <Link href="/enterprise" className="hover:text-gray-200 transition-colors">Enterprise</Link>
@@ -113,6 +114,9 @@ export default function Footer() {
           <nav className="flex flex-wrap items-center gap-4 text-sm text-gray-500">
             <Link href="https://gitdealflow.com" className="hover:text-gray-300 transition-colors">Main Site</Link>
             <Link href="/about" className="hover:text-gray-300 transition-colors">About</Link>
+            <Link href="/about/founder" className="hover:text-gray-300 transition-colors">Founder</Link>
+            <Link href="/origin" className="hover:text-gray-300 transition-colors">Origin</Link>
+            <Link href="/funnels" className="hover:text-gray-300 transition-colors">Funnels</Link>
             <Link href="https://gitdealflow.com/privacy" className="hover:text-gray-300 transition-colors">Privacy</Link>
             <Link href="https://gitdealflow.com/terms" className="hover:text-gray-300 transition-colors">Terms</Link>
           </nav>

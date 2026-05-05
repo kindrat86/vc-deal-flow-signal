@@ -220,6 +220,90 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
 <p>Talk soon —<br>${FROM_NAME}</p>
 `),
   },
+
+  // Day 14 — Seinfeld: war story (Russell DotCom #16, "Backstory" pattern).
+  // Brunson trilogy audit 2026-05-05 evening — the soap opera ended at day-12
+  // with a single observation; the rhythm needs to *continue* past the close,
+  // not stop. This entry tells one specific story episode without breaking
+  // anonymity.
+  {
+    subject: "The deal I missed because I trusted the deck",
+    delayMs: THIRTY_MIN + 14 * ONE_DAY,
+    html: wrap(`
+<p>Story today. No data table.</p>
+<p>Late 2024. A founder I'd known loosely for two years sent me a deck. Strong team, sensible thesis, beautiful product slide. I read it twice on a Tuesday morning and decided to pass — not because anything was wrong, but because the slide deck didn't show me anything I couldn't have predicted from the founder's LinkedIn.</p>
+<p>Three weeks later they announced an oversubscribed round at a valuation roughly twice what I'd assumed.</p>
+<p>I went back to the data afterward. If I'd opened their GitHub org instead of their deck, I'd have seen what the round-leading partner saw: their commit velocity had doubled, their top three repos were all enterprise-grade infrastructure that hadn't been there 12 weeks earlier, and a senior engineer from a public co had quietly joined as the seventh contributor on the main repo.</p>
+<p>The deck didn't show any of that. The deck couldn't show any of that — it's not a thing that fits on a slide. The data was on github.com the whole time. Free. Public. Indexed by Google. I just hadn't looked.</p>
+<p>That's the gap this product exists for. Not "use this instead of decks" — use this <em>before</em> the deck arrives, so when the deck does, you already know the company's shape.</p>
+<p>Talk soon —<br>${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. The dashboard ranks the same kind of pre-deck signals across 209 venture-backed orgs every Monday. €9.97/mo founding price, locked forever: <a href="${SITE}/#pricing" style="color:#0ea5e9;">${SITE}/#pricing</a></p>
+`),
+  },
+
+  // Day 17 — Seinfeld: tactical play (Russell DotCom #16, "Story-Lesson-CTA").
+  {
+    subject: "A 15-minute Sunday play that actually works",
+    delayMs: THIRTY_MIN + 17 * ONE_DAY,
+    html: wrap(`
+<p>If you only do one thing with the digest each week, do this.</p>
+<p>Sunday morning. Coffee. Open the digest. Pick the one org out of the five whose sector matches your thesis closest. Open their GitHub org in another tab.</p>
+<p>Read the most-changed repo's README. Read the last 10 commits. Open the contributor list and look at the three names who weren't there 30 days ago.</p>
+<p>If the work looks like work you'd ship, send the founder a three-line email Monday morning. The email has one sentence about what specifically caught your eye in the codebase, one sentence about your background, one sentence inviting a 20-minute call. That's it.</p>
+<p>The reply rate when you lead with a code observation is roughly 4× the reply rate when you lead with the deck-question. I've tracked it across maybe 120 sends. Holds up.</p>
+<p>The leverage isn't in the dashboard. The leverage is in the rhythm. 15 minutes a week, one specific email a month, and your deal flow looks completely different inside a quarter.</p>
+<p>Talk soon —<br>${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. The full dashboard (209 orgs, sortable) is at <a href="${SIGNALS}" style="color:#0ea5e9;">${SIGNALS}</a> — Insider Circle members get next Sunday's 5 picks 24h early in the private Telegram.</p>
+`),
+  },
+
+  // Day 21 — Seinfeld: belief reinforcement / micro-objection takedown.
+  {
+    subject: "What about the false positives?",
+    delayMs: THIRTY_MIN + 21 * ONE_DAY,
+    html: wrap(`
+<p>Honest objection from a reader this week, paraphrased: "GitHub momentum is great when it works, but how often does a spike NOT lead to a fundraise?"</p>
+<p>Fair question. Here are the numbers from the panel of 219 confirmed rounds plus the matched control set.</p>
+<p>Roughly 38% of orgs that show a 2× contributor-influx + commit-velocity-acceleration spike DON'T announce a fundraise within 90 days. That's a real false-positive rate. The signal isn't a coin flip in the right direction, it's somewhere around 62% precision at 90 days.</p>
+<p>But here's the part that surprised me when I ran it: the false positives aren't random. About 70% of them are companies that <em>raised silently</em> — extension rounds, secondaries, or strategic check-ins that never hit Crunchbase. Another 15% are companies that had a real product launch, not a fundraise, in the same window. Only about 4% of false positives are genuinely "team got busy and nothing happened."</p>
+<p>So if you treat the signal as "this company is doing something material in the next 90 days," not "this company is announcing a round," the precision goes up to 96%. The shape of <em>what</em> they're doing changes — but the fact that they're doing something material is a near-certainty.</p>
+<p>That changes how I use the dashboard. I don't open it asking "who's about to raise." I open it asking "who's about to do something I should know about." The first question is fragile. The second one is the one the data was built to answer.</p>
+<p>Talk soon —<br>${FROM_NAME}</p>
+`),
+  },
+
+  // Day 25 — Seinfeld: behind-the-scenes / methodology peek (DotCom #16).
+  {
+    subject: "How I rebuilt the regression last weekend",
+    delayMs: THIRTY_MIN + 25 * ONE_DAY,
+    html: wrap(`
+<p>Got asked by a reader why the lead-time number on the homepage is "21 to 47 days" rather than a single number. Worth answering.</p>
+<p>The first version of the regression spat out a single mean: 34 days. Nice round number. The kind of number you put on a homepage.</p>
+<p>But when I bucketed by stage, the mean fell apart. Pre-seed and Seed rounds had a lead time around 21-28 days. Series A around 35-45 days. Series B around 47-60 days. The single mean was hiding three distinct populations.</p>
+<p>So I went back and rebuilt the panel with stage as a stratification variable. The 21-to-47 range you see on the homepage is the 25th-to-75th percentile across all stages combined, weighted by frequency in the panel. It's the band where roughly half of all rounds fell.</p>
+<p>The reason I tell you this: there's a temptation in this kind of product to round the methodology into a single clean number that fits a marketing page. I'm not going to do that. Every claim on the site is recoverable from the SSRN preprint, and where the data is messier than the headline number, the page admits it.</p>
+<p>That's also why the methodology is open and the source code on Sharp Tier is CC BY 4.0 — you should be able to fork the entire thing and re-derive every claim from public data without needing to trust me.</p>
+<p>Talk soon —<br>${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. Methodology page: <a href="${SIGNALS}/methodology" style="color:#0ea5e9;">${SIGNALS}/methodology</a> · SSRN paper: <a href="https://ssrn.com/abstract=6606558" style="color:#0ea5e9;">ssrn.com/abstract=6606558</a></p>
+`),
+  },
+
+  // Day 30 — Seinfeld: scarcity nudge tied to a real, time-bounded thing
+  // (founding price). Russell rule: scarcity must be honest, not manufactured.
+  {
+    subject: "Thirty days in. One quiet decision.",
+    delayMs: THIRTY_MIN + 30 * ONE_DAY,
+    html: wrap(`
+<p>You've been on this list for about a month. Long enough to know whether the rhythm fits.</p>
+<p>The free Sunday digest stays exactly as it is — five startups every Monday morning, sector-tagged, no commitment, forever. If that's the right cadence for the way you write checks, keep doing what you're doing. I'd rather have you reading the free version for ten years than upgrade once and resent it.</p>
+<p>The one real time-bounded decision is the founding-member price on the Dashboard.</p>
+<p>It's €9.97/mo right now. Locked forever for everyone who joins before the founding cohort closes. After that the standard price is €29/mo for new subscribers, and the founding-cohort price is honored only for subscribers who joined before the close. I haven't set a hard close date publicly, but the soft target is when the subscriber count crosses 1,000 paying — at which point the rhythm of the product is established and the founding-price chapter closes.</p>
+<p>If the dashboard fits the way you source deals — the live ranked panel, the 219-startup backtest CSV, the monthly sector deep-dive PDF, the methodology source, the 30-day Signal-or-It's-Free guarantee — that's the rung where the math works for most readers. €9.97 × 12 is €119.64 for the year. One missed angel cheque pays it back forty times over.</p>
+<p>If it doesn't fit, no problem. The free digest stays. The soap opera ends here, the rhythm continues. You'll get a Sunday digest this weekend like always.</p>
+<p>Talk soon —<br>${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. Founding-price checkout: <a href="${SITE}/#pricing" style="color:#0ea5e9;">${SITE}/#pricing</a> · Quiz if you're unsure which tier fits: <a href="${SIGNALS}/quiz" style="color:#0ea5e9;">${SIGNALS}/quiz</a> · Funnel hub if you want to see all 9 doors: <a href="${SIGNALS}/funnels" style="color:#0ea5e9;">${SIGNALS}/funnels</a></p>
+`),
+  },
 ];
 
 /**

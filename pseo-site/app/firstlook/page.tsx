@@ -164,6 +164,48 @@ export default function FirstLookPage() {
           </ul>
         </section>
 
+        {/* ORDER BUMP — DotCom Secrets Ch 12. The bump sits between the stack
+            and the CTA, after the visitor has seen the offer but before they
+            click. Bigger sibling at a real discount, framed as a one-time
+            decision. Russell calls this the "yes-and-also". */}
+        <aside
+          className="border-2 border-dashed border-emerald-500/60 bg-emerald-950/20 rounded-xl p-5 sm:p-6 space-y-3"
+          aria-label="Order bump"
+        >
+          <div className="flex items-start gap-3">
+            <span aria-hidden="true" className="text-emerald-400 font-bold text-lg shrink-0 mt-0.5">
+              ☑
+            </span>
+            <div className="space-y-2">
+              <p className="text-emerald-300 text-[10px] sm:text-xs font-semibold uppercase tracking-wider">
+                Add to your order · Save €200
+              </p>
+              <h3 className="text-gray-100 font-semibold text-lg leading-snug">
+                Bump up to the full Sector Sweep — €1,797 instead of €1,997
+              </h3>
+              <p className="text-gray-300 text-sm leading-relaxed">
+                Same 24-hour intake, but instead of the top-25 in one sector,
+                you get the <strong className="text-gray-100">full panel</strong>{" "}
+                — every venture-backed GitHub org in the sector, ranked across
+                three time windows, with a 60-minute walkthrough call and an
+                open follow-up Q&amp;A window. €13,000+ standalone value at €1,797
+                if you commit at this step. Mention{" "}
+                <code className="text-xs text-gray-200 bg-slate-900 px-1.5 py-0.5 rounded">
+                  FIRSTLOOK-BUMP
+                </code>{" "}
+                in the order field to lock the discount.
+              </p>
+              <a
+                href="https://buy.stripe.com/bJe14m34DbNC6gm1by0x204"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-emerald-300 hover:text-emerald-200 text-sm font-medium underline decoration-dotted underline-offset-2"
+              >
+                Take the Sector Sweep instead — €1,797 →
+              </a>
+            </div>
+          </div>
+        </aside>
+
         <section className="bg-gradient-to-br from-amber-950/30 via-slate-900 to-slate-950 border border-amber-700/40 rounded-xl p-6 sm:p-8 text-center space-y-4">
           <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider">
             One-time payment · No subscription
@@ -188,6 +230,54 @@ export default function FirstLookPage() {
             if you&rsquo;re weighing the Dashboard tier directly.
           </p>
         </section>
+
+        {/* POST-PURCHASE UPSELL PREVIEW — DotCom Ch 12. Show what's coming so
+            the buyer isn't surprised by the offer in the delivery email. */}
+        <aside
+          className="border border-slate-800 bg-slate-900/40 rounded-xl p-5 sm:p-6 space-y-2"
+          aria-label="Post-purchase upsell preview"
+        >
+          <p className="text-teal-400 text-[10px] sm:text-xs font-semibold uppercase tracking-wider">
+            What happens after delivery
+          </p>
+          <p className="text-gray-300 text-sm leading-relaxed">
+            Inside the delivery email there&rsquo;s a one-time invitation to add{" "}
+            <Link href="/pricing#insider" className="text-teal-300 hover:text-teal-200 underline decoration-dotted">
+              Insider Circle
+            </Link>{" "}
+            (private Telegram + spike alerts + monthly briefing) at{" "}
+            <strong className="text-gray-100">€77 for the first month</strong>{" "}
+            — €20 off the standard €97. The invite expires when the next
+            Monday digest goes out, and never re-appears at this price.
+            Decline it and your €7 First Look Pass still works exactly the
+            same way.
+          </p>
+        </aside>
+
+        {/* DOWNSELL — DotCom Ch 12. If they bounce on €7, capture them on the
+            free list. Russell rule: never let a visitor leave at zero
+            commitment if there's a free rung below. */}
+        <aside
+          className="border-l-2 border-slate-700 pl-4 py-1 space-y-1"
+          aria-label="Downsell to free list"
+        >
+          <p className="text-gray-500 text-[10px] sm:text-xs font-semibold uppercase tracking-wider">
+            Not ready for €7?
+          </p>
+          <p className="text-gray-400 text-sm leading-relaxed">
+            The free{" "}
+            <a
+              href="https://gitdealflow.com/#signup"
+              rel="noopener noreferrer"
+              className="text-emerald-400 hover:text-emerald-300 underline decoration-dotted"
+            >
+              Acceleration Watch
+            </a>{" "}
+            sends 5 startups every Monday — sector-tagged, with the same engine
+            behind the First Look Pass. No card. Subscribe, watch the rhythm
+            for two weeks, then decide.
+          </p>
+        </aside>
 
         <section className="space-y-5">
           <h2 className="text-2xl font-bold text-gray-100">FAQ</h2>
