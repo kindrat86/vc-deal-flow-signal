@@ -64,7 +64,7 @@ export default function StartupTable({ startups, tableName }: StartupTableProps)
                     <span className={`font-medium group-hover/link:text-sky-400 transition-colors ${isTop3 ? "text-gray-100" : "text-gray-200"}`}>
                       {startup.name}
                     </span>
-                    <p className="text-gray-500 text-xs mt-0.5 max-w-xs">
+                    <p className="text-gray-500 text-xs mt-0.5 max-w-[220px] sm:max-w-xs line-clamp-2">
                       {startup.description}
                     </p>
                     <span className="text-sky-600 text-[10px] font-medium group-hover/link:text-sky-400 transition-colors">
