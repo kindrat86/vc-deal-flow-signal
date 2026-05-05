@@ -49,20 +49,20 @@ export default function LoginForm() {
   if (sent) {
     return (
       <div className="text-center">
-        <div className="w-16 h-16 bg-sky-500/15 rounded-full flex items-center justify-center mx-auto mb-6">
+        <div className="w-16 h-16 bg-sky-500/15 rounded-full flex items-center justify-center mx-auto mb-6 ring-4 ring-sky-500/10">
           <svg className="w-8 h-8 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
           </svg>
         </div>
-        <h2 className="text-2xl font-bold text-gray-100 mb-3">Check your email</h2>
-        <p className="text-gray-400 mb-2">
-          If <span className="text-gray-200">{email}</span> has an active subscription,
+        <h2 className="text-xl font-bold text-gray-100 mb-3 tracking-tight">Check your email</h2>
+        <p className="text-gray-400 text-sm mb-2 leading-relaxed">
+          If <span className="text-gray-200 font-medium">{email}</span> has an active subscription,
           we just sent you a login link.
         </p>
-        <p className="text-gray-500 text-sm">The link expires in 15 minutes.</p>
+        <p className="text-gray-500 text-xs">The link expires in 15 minutes.</p>
         <button
           onClick={() => { setSent(false); setLoading(false); }}
-          className="mt-6 text-sky-500 hover:text-sky-400 text-sm transition"
+          className="mt-6 text-sky-400 hover:text-sky-300 text-sm font-medium transition"
         >
           Try a different email
         </button>
@@ -73,7 +73,10 @@ export default function LoginForm() {
   return (
     <div>
       {urlError && ERROR_MESSAGES[urlError] && (
-        <div className="mb-6 rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-red-300 text-sm">
+        <div
+          role="alert"
+          className="mb-5 rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-red-300 text-sm"
+        >
           {ERROR_MESSAGES[urlError]}
         </div>
       )}
@@ -82,7 +85,7 @@ export default function LoginForm() {
         <div>
           <label
             htmlFor="email"
-            className="block text-sm font-medium text-gray-300 mb-2"
+            className="block text-sm font-medium text-gray-200 mb-2"
           >
             Email address
           </label>
@@ -90,27 +93,42 @@ export default function LoginForm() {
             id="email"
             type="email"
             required
+            autoComplete="email"
+            autoFocus
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="you@example.com"
-            className="w-full rounded-lg border border-slate-700 bg-slate-800 px-4 py-3 text-gray-100 placeholder-gray-500 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+            className="w-full h-11 rounded-lg border border-slate-700 bg-slate-800 px-4 text-gray-100 placeholder-gray-500 focus:outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-500/30 transition-colors"
           />
         </div>
 
         {error && (
-          <p className="text-red-400 text-sm">{error}</p>
+          <p role="alert" className="text-red-400 text-sm">{error}</p>
         )}
 
         <button
           type="submit"
           disabled={loading}
-          className="w-full bg-sky-600 hover:bg-sky-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold py-3 rounded-lg transition"
+          className="inline-flex w-full items-center justify-center gap-1.5 h-11 bg-sky-600 hover:bg-sky-500 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold rounded-lg transition-colors shadow-sm shadow-sky-500/30"
         >
-          {loading ? "Sending..." : "Send Login Link"}
+          {loading ? (
+            <>
+              <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+              </svg>
+              Sending…
+            </>
+          ) : (
+            <>
+              Send Login Link
+              <span aria-hidden="true">→</span>
+            </>
+          )}
         </button>
       </form>
 
-      <p className="text-gray-600 text-xs mt-4 text-center">
+      <p className="text-gray-500 text-xs mt-4 text-center">
         We&apos;ll email you a magic link — no password needed.
       </p>
     </div>

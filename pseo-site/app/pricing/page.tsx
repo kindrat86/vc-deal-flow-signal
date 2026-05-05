@@ -225,8 +225,45 @@ const faqs: { q: string; a: string }[] = [
   },
 ];
 
+function tierToOffer(tier: Tier) {
+  const priceNumber =
+    tier.priceLabel === "Free"
+      ? 0
+      : parseFloat(tier.priceLabel.replace(/[€,]/g, ""));
+
+  const offer: Record<string, unknown> = {
+    "@type": "Offer",
+    name: tier.name,
+    description: tier.oneLine,
+    price: priceNumber,
+    priceCurrency: "EUR",
+    url: `https://signals.gitdealflow.com/pricing#${tier.slug}`,
+    availability: "https://schema.org/InStock",
+    category: tier.priceCadence === "one-time" ? "one-time" : "subscription",
+    seller: { "@id": "https://gitdealflow.com/#organization" },
+  };
+
+  if (tier.priceCadence === "/mo" || tier.priceCadence === "/yr") {
+    offer.priceSpecification = {
+      "@type": "UnitPriceSpecification",
+      price: priceNumber,
+      priceCurrency: "EUR",
+      billingDuration: tier.priceCadence === "/mo" ? "P1M" : "P1Y",
+      unitCode: "MON",
+    };
+  }
+
+  return offer;
+}
+
 export default function PricingPage() {
   const asOf = getDataLastModified().toISOString().slice(0, 10);
+  const offers = tiers.map(tierToOffer);
+  const paidPrices = tiers
+    .filter((t) => t.priceLabel !== "Free")
+    .map((t) => parseFloat(t.priceLabel.replace(/[€,]/g, "")));
+  const lowPrice = 0;
+  const highPrice = Math.max(...paidPrices);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -237,7 +274,7 @@ export default function PricingPage() {
         url: "https://signals.gitdealflow.com/pricing",
         name: "VC Deal Flow Signal — Pricing",
         description:
-          "Five-tier pricing for VC Deal Flow Signal — free weekly digest, €7 First Look Pass, €9.97/mo Dashboard, €97/mo Insider Circle, and €1,997 one-time Sector Sweep.",
+          "Six-tier pricing for VC Deal Flow Signal — free weekly digest, €7 First Look Pass, €9.97/mo Dashboard, €97/mo Insider Circle, €497/mo Sharp Tier, and €1,997 one-time Sector Sweep.",
         inLanguage: "en-US",
         isPartOf: {
           "@id": "https://signals.gitdealflow.com/#website",
@@ -246,6 +283,32 @@ export default function PricingPage() {
           "@type": "SpeakableSpecification",
           xpath: ["/html/body//h1", "/html/body//h2"],
         },
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://signals.gitdealflow.com/#softwareapplication",
+        name: "VC Deal Flow Signal",
+        alternateName: "GitDealFlow",
+        applicationCategory: "BusinessApplication",
+        applicationSubCategory: "Investment Research",
+        operatingSystem: "Web, MCP-compatible AI clients (Claude, Cursor, Windsurf)",
+        url: "https://signals.gitdealflow.com",
+        description:
+          "Engineering-acceleration signal for venture-backed startups, derived from public GitHub commit velocity, contributor growth, and shipping cadence. Delivered as weekly digests, a live dashboard, JSON/CSV API, and an MCP server.",
+        provider: { "@id": "https://gitdealflow.com/#organization" },
+        offers: {
+          "@type": "AggregateOffer",
+          priceCurrency: "EUR",
+          lowPrice,
+          highPrice,
+          offerCount: tiers.length,
+          offers,
+        },
+        sameAs: [
+          "https://www.wikidata.org/wiki/Q139376302",
+          "https://ssrn.com/abstract=6606558",
+          "https://orcid.org/0009-0002-2222-4112",
+        ],
       },
       {
         "@type": "BreadcrumbList",
@@ -371,58 +434,72 @@ export default function PricingPage() {
         />
 
         {/* Comparison table */}
-        <section className="mb-12 overflow-x-auto">
+        <section className="mb-12">
           <h2 className="text-xl font-semibold text-gray-100 mb-4">
             Tier comparison
           </h2>
-          <table className="w-full text-sm border-collapse">
-            <thead>
-              <tr className="border-b border-slate-700 text-left">
-                <th className="px-3 py-3 text-gray-300 font-semibold">Tier</th>
-                <th className="px-3 py-3 text-gray-300 font-semibold">Price</th>
-                <th className="px-3 py-3 text-gray-300 font-semibold">For who</th>
-                <th className="px-3 py-3 text-gray-300 font-semibold">CTA</th>
-              </tr>
-            </thead>
-            <tbody>
-              {tiers.map((tier) => (
-                <tr key={tier.slug} className="border-b border-slate-800">
-                  <td className="px-3 py-4 text-gray-200 font-medium align-top">
-                    <a
-                      href={`#${tier.slug}`}
-                      className="hover:text-sky-400 transition-colors"
-                    >
-                      {tier.name}
-                    </a>
-                  </td>
-                  <td className="px-3 py-4 text-gray-300 align-top whitespace-nowrap">
-                    <span className="font-semibold text-gray-100">
-                      {tier.priceLabel}
-                    </span>{" "}
-                    <span className="text-gray-500 text-xs">
-                      {tier.priceCadence}
-                    </span>
-                    {tier.rrpLabel ? (
-                      <div className="text-gray-500 text-xs mt-1">
-                        {tier.rrpLabel}
-                      </div>
-                    ) : null}
-                  </td>
-                  <td className="px-3 py-4 text-gray-400 align-top">
-                    {tier.forWho}
-                  </td>
-                  <td className="px-3 py-4 align-top">
-                    <a
-                      href={tier.ctaHref}
-                      className="text-sky-400 hover:text-sky-300 transition-colors text-sm font-medium"
-                    >
-                      {tier.ctaLabel} &rarr;
-                    </a>
-                  </td>
+          <div className="overflow-x-auto rounded-lg border border-slate-800 bg-slate-900/40">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-slate-700 bg-slate-900/60 text-left text-xs uppercase tracking-wider">
+                  <th className="px-4 py-3 text-gray-300 font-semibold">Tier</th>
+                  <th className="px-4 py-3 text-gray-300 font-semibold">Price</th>
+                  <th className="px-4 py-3 text-gray-300 font-semibold">For who</th>
+                  <th className="px-4 py-3 text-gray-300 font-semibold text-right">CTA</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {tiers.map((tier) => (
+                  <tr
+                    key={tier.slug}
+                    className={`border-b border-slate-800 last:border-b-0 hover:bg-slate-900/60 transition-colors ${
+                      tier.highlight ? "bg-sky-950/15" : ""
+                    }`}
+                  >
+                    <td className="px-4 py-4 text-gray-100 font-medium align-top">
+                      <a
+                        href={`#${tier.slug}`}
+                        className="inline-flex items-center gap-2 hover:text-sky-400 transition-colors"
+                      >
+                        {tier.name}
+                        {tier.highlight && (
+                          <span className="inline-block bg-sky-500 text-slate-950 text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded">
+                            Popular
+                          </span>
+                        )}
+                      </a>
+                    </td>
+                    <td className="px-4 py-4 align-top">
+                      <div className="flex items-baseline gap-1 whitespace-nowrap">
+                        <span className="font-bold text-gray-100 text-base tabular-nums">
+                          {tier.priceLabel}
+                        </span>
+                        <span className="text-gray-500 text-xs">
+                          {tier.priceCadence}
+                        </span>
+                      </div>
+                      {tier.rrpLabel ? (
+                        <div className="text-gray-500 text-[11px] mt-1 max-w-[180px] sm:max-w-xs leading-tight">
+                          {tier.rrpLabel}
+                        </div>
+                      ) : null}
+                    </td>
+                    <td className="px-4 py-4 text-gray-400 align-top text-sm leading-snug">
+                      {tier.forWho}
+                    </td>
+                    <td className="px-4 py-4 align-top text-right">
+                      <a
+                        href={tier.ctaHref}
+                        className="inline-flex items-center gap-1 text-sky-400 hover:text-sky-300 transition-colors text-sm font-medium whitespace-nowrap"
+                      >
+                        {tier.ctaLabel} <span aria-hidden="true">→</span>
+                      </a>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </section>
 
         {/* Tier detail cards */}
@@ -635,19 +712,36 @@ export default function PricingPage() {
           </p>
         </section>
 
-        {/* FAQ */}
+        {/* FAQ — collapsible <details> reduces scroll fatigue and lets readers
+            jump straight to the question that matches their objection. */}
         <section className="mb-12">
-          <h2 className="text-xl font-semibold text-gray-100 mb-6">
+          <h2 className="text-xl font-semibold text-gray-100 mb-2">
             Frequently asked questions
           </h2>
-          <div className="space-y-6">
+          <p className="text-gray-500 text-xs mb-5">
+            Tap any question to expand. {faqs.length} answers.
+          </p>
+          <div className="divide-y divide-slate-800 rounded-lg border border-slate-800 bg-slate-900/40">
             {faqs.map((f, i) => (
-              <div key={i}>
-                <h3 className="text-base font-semibold text-gray-200 mb-2">
-                  {f.q}
-                </h3>
-                <p className="text-gray-400 text-sm leading-relaxed">{f.a}</p>
-              </div>
+              <details
+                key={i}
+                className="group px-5 py-4 [&[open]>summary>span:last-child]:rotate-45"
+              >
+                <summary className="flex items-start justify-between gap-4 cursor-pointer list-none">
+                  <h3 className="text-base font-semibold text-gray-100 group-hover:text-sky-400 transition-colors">
+                    {f.q}
+                  </h3>
+                  <span
+                    aria-hidden="true"
+                    className="shrink-0 text-gray-500 group-hover:text-sky-400 text-2xl leading-none transition-transform duration-200"
+                  >
+                    +
+                  </span>
+                </summary>
+                <p className="text-gray-400 text-sm leading-relaxed mt-3 pr-8">
+                  {f.a}
+                </p>
+              </details>
             ))}
           </div>
         </section>

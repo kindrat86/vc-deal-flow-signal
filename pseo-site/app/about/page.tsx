@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllSectors, getCurrentPeriod, getAllPeriods } from "@/lib/data";
+import { getHreflangLanguages } from "@/lib/hreflang";
+import { HreflangLinks } from "@/components/HreflangLinks";
 
 export const metadata: Metadata = {
   title: "About VC Deal Flow Signal — Who We Are & How It Works",
   description:
     "VC Deal Flow Signal tracks startup engineering acceleration from public GitHub data. Learn who built it, why, how the data pipeline works, and how to use it for deal sourcing.",
-  alternates: {
-    canonical: "/about",
-  },
+  // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
+  alternates: { canonical: "/about" },
 };
 
 export default function AboutPage() {
@@ -38,6 +39,7 @@ export default function AboutPage() {
           "https://www.wikidata.org/wiki/Q139376302",
           "https://www.crunchbase.com/organization/gitdealflow",
           "https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn",
+          "https://chromewebstore.google.com/detail/vc-github-lookup-%E2%80%94-startu/plgngijmloeljfkenecdkhiblcfcbblm",
           "https://www.sideprojectors.com/project/78284/vc-deal-flow-signal-engineering-momentum-for-vcs",
           "https://signals.gitdealflow.com",
         ],
@@ -91,7 +93,7 @@ export default function AboutPage() {
           "https://news.ycombinator.com/user?id=the_data_nerd",
           "https://www.indiehackers.com/The_Data_Nerd",
           "https://dev.to/the_data_nerd",
-          "https://hashnode.com/@TheData_7cdit42c",
+          "https://gitdealflow.substack.com",
           "https://hackernoon.com/u/TheData_7cdit42c",
         ],
       },
@@ -107,6 +109,7 @@ export default function AboutPage() {
           "https://www.wikidata.org/wiki/Q139376302",
           "https://www.crunchbase.com/organization/gitdealflow",
           "https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn",
+          "https://chromewebstore.google.com/detail/vc-github-lookup-%E2%80%94-startu/plgngijmloeljfkenecdkhiblcfcbblm",
           "https://www.sideprojectors.com/project/78284/vc-deal-flow-signal-engineering-momentum-for-vcs",
         ],
       },
@@ -206,6 +209,10 @@ export default function AboutPage() {
 
   return (
     <>
+      <HreflangLinks
+        canonical="https://signals.gitdealflow.com/about"
+        languages={getHreflangLanguages("/about")}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -264,28 +271,42 @@ export default function AboutPage() {
           <h2 className="text-xl font-semibold text-gray-100 mb-4">
             What We Track
           </h2>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
-            <div className="rounded-lg border border-slate-800 bg-slate-900 p-4 text-center">
-              <p className="text-sky-400 text-2xl font-bold">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+            <div className="rounded-lg border border-slate-800 bg-gradient-to-b from-slate-900 to-slate-950 p-5 text-center">
+              <p className="text-sky-300 text-3xl sm:text-4xl font-bold tabular-nums tracking-tight">
                 {activeSectors.length}
               </p>
-              <p className="text-gray-400 text-xs mt-1">Sectors</p>
+              <p className="text-gray-400 text-[11px] mt-2 uppercase tracking-wider font-medium">
+                Sectors
+              </p>
             </div>
-            <div className="rounded-lg border border-slate-800 bg-slate-900 p-4 text-center">
-              <p className="text-sky-400 text-2xl font-bold">
+            <div className="rounded-lg border border-slate-800 bg-gradient-to-b from-slate-900 to-slate-950 p-5 text-center">
+              <p className="text-sky-300 text-3xl sm:text-4xl font-bold tabular-nums tracking-tight">
                 {totalStartups}+
               </p>
-              <p className="text-gray-400 text-xs mt-1">Startups</p>
+              <p className="text-gray-400 text-[11px] mt-2 uppercase tracking-wider font-medium">
+                Startups
+              </p>
             </div>
-            <div className="rounded-lg border border-slate-800 bg-slate-900 p-4 text-center">
-              <p className="text-sky-400 text-2xl font-bold">
+            <div className="rounded-lg border border-slate-800 bg-gradient-to-b from-slate-900 to-slate-950 p-5 text-center">
+              <p className="text-sky-300 text-3xl sm:text-4xl font-bold tabular-nums tracking-tight">
                 {allPeriods.length}
               </p>
-              <p className="text-gray-400 text-xs mt-1">Quarters of data</p>
+              <p className="text-gray-400 text-[11px] mt-2 uppercase tracking-wider font-medium">
+                Quarters of data
+              </p>
             </div>
-            <div className="rounded-lg border border-slate-800 bg-slate-900 p-4 text-center">
-              <p className="text-sky-400 text-2xl font-bold">Weekly</p>
-              <p className="text-gray-400 text-xs mt-1">Data refresh</p>
+            <div className="rounded-lg border border-emerald-800/40 bg-gradient-to-b from-emerald-950/30 to-slate-950 p-5 text-center">
+              <p className="inline-flex items-center gap-1.5 text-emerald-300 text-2xl sm:text-3xl font-bold tracking-tight">
+                <span className="relative inline-flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400/60 opacity-75" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+                </span>
+                Weekly
+              </p>
+              <p className="text-gray-400 text-[11px] mt-2 uppercase tracking-wider font-medium">
+                Data refresh
+              </p>
             </div>
           </div>
           <div className="rounded-lg border border-slate-800 bg-slate-900 p-6 text-gray-400 text-sm leading-relaxed space-y-4">
@@ -534,7 +555,7 @@ export default function AboutPage() {
             Browse startup rankings across {activeSectors.length} sectors, or
             get this week's top 5 breakout startups free.
           </p>
-          <div className="flex justify-center gap-3">
+          <div className="flex flex-wrap justify-center gap-3">
             <Link
               href="/"
               className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-sky-700 hover:bg-sky-600 text-white text-sm font-medium transition-colors"
@@ -546,6 +567,12 @@ export default function AboutPage() {
               className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 hover:border-slate-500 text-gray-300 text-sm font-medium transition-colors"
             >
               See This Week's Signals
+            </Link>
+            <Link
+              href="/pricing"
+              className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 hover:border-slate-500 text-gray-300 text-sm font-medium transition-colors"
+            >
+              See Pricing
             </Link>
           </div>
         </div>

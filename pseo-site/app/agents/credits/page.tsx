@@ -97,21 +97,44 @@ export default function AgentCreditsPage() {
           <p className="text-amber-400 text-xs uppercase tracking-wider mb-3 font-semibold">
             Pay-as-you-go · For agents
           </p>
-          <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-3 leading-tight">
+          <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-3 leading-tight tracking-tight">
             Agent credits — pay per deep signal
           </h1>
-          <p className="text-gray-400 text-base leading-relaxed max-w-2xl">
+          <p className="text-gray-300 text-base leading-relaxed max-w-2xl mb-6">
             One credit = one deep signal returned. €0.19 per call. No
-            subscription, no monthly minimum, credits never expire. The six free
-            MCP tools stay free forever — credits only apply to the new
-            <code className="text-emerald-400 font-mono"> get_deep_signal </code>
-            tool and the
-            <code className="text-emerald-400 font-mono">
-              {" "}
-              POST /api/agent/deep-signal{" "}
-            </code>
+            subscription, no monthly minimum, credits never expire. The six
+            free MCP tools stay free forever — credits only apply to the new{" "}
+            <code className="text-emerald-300 font-mono">get_deep_signal</code>{" "}
+            tool and the{" "}
+            <code className="text-emerald-300 font-mono">
+              POST /api/agent/deep-signal
+            </code>{" "}
             HTTP endpoint.
           </p>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 max-w-2xl">
+            {[
+              "Hit rate > 80% on tracked orgs — misses are free",
+              "HMAC-keyed, no DB lookup, ~200ms median latency",
+              "Credits never expire, top up any time",
+              "Zero rate limits inside your quota",
+            ].map((b) => (
+              <li key={b} className="flex items-start gap-2 text-gray-300 text-sm">
+                <svg
+                  className="h-4 w-4 mt-0.5 shrink-0 text-emerald-400"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M16.704 5.29a1 1 0 0 1 .006 1.414l-7.5 7.6a1 1 0 0 1-1.42.006l-3.5-3.5a1 1 0 1 1 1.414-1.414l2.79 2.79 6.793-6.89a1 1 0 0 1 1.417-.006Z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+                <span className="leading-snug">{b}</span>
+              </li>
+            ))}
+          </ul>
         </header>
 
         <section className="mb-10 rounded-xl border border-amber-500/30 bg-amber-500/5 p-6 sm:p-8">

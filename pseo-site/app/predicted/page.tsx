@@ -14,23 +14,25 @@ import {
 
 export const metadata: Metadata = {
   title:
-    "Acceleration Watch — Public Bet, Graded Weekly | VC Deal Flow Signal",
+    "Engineering Acceleration Watch — Weekly Data Index (Not an Accelerator Program)",
   description:
-    "Each Monday we name 10 startups whose GitHub engineering acceleration crossed our signal threshold the prior week. We grade every pick post-hoc against public fundraise news at 60 and 90 days. Track the receipts.",
+    "A weekly public data feed — not an accelerator program. Every Monday we name 10 startups whose GitHub engineering acceleration crossed the signal threshold. Each pick is graded post-hoc against public fundraise news at 60 and 90 days.",
   alternates: { canonical: "/predicted" },
   openGraph: {
-    title: "Acceleration Watch — 10 named startups, graded post-hoc",
+    title:
+      "Engineering Acceleration Watch — weekly data index, not an accelerator program",
     description:
-      "Public bet, graded weekly. 10 named GitHub-engineering accelerations every Monday. Live scorecard versus public fundraise news.",
+      "Public weekly data feed. 10 named GitHub-engineering accelerations every Monday. Graded post-hoc versus fundraise news. No application, no cohort, no equity — just the dataset.",
     url: "https://signals.gitdealflow.com/predicted",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     site: "@data_nerd",
-    title: "Acceleration Watch — public bet, graded weekly",
+    title:
+      "Engineering Acceleration Watch — public bet, graded weekly (not Y Combinator)",
     description:
-      "10 named startups every Monday. Outcomes graded against public fundraise news at 60 and 90 days.",
+      "10 named startups every Monday. Public dataset, not an accelerator program. Outcomes graded against fundraise news at 60 and 90 days.",
   },
 };
 
@@ -74,14 +76,21 @@ export default function PredictedPage() {
         "@type": "WebPage",
         "@id": "https://signals.gitdealflow.com/predicted#webpage",
         url: "https://signals.gitdealflow.com/predicted",
-        name: "Acceleration Watch — Public Bet, Graded Weekly",
+        name: "Engineering Acceleration Watch — Weekly Data Index",
+        alternateName: "Acceleration Watch",
         description:
-          "Weekly named watchlist of 10 startups showing the strongest GitHub engineering acceleration, graded post-hoc against public fundraise news at 60 and 90 days.",
+          "Weekly public data feed (not an accelerator program). Names 10 startups whose GitHub engineering acceleration crossed the signal threshold; graded post-hoc against public fundraise news at 60 and 90 days.",
+        about: {
+          "@type": "Thing",
+          name: "Engineering acceleration as a leading fundraise signal",
+          description:
+            "Engineering acceleration measures the change-in-change of commit velocity over rolling 14-day windows. It is distinct from accelerator programs (Y Combinator, Techstars, 500 Startups, Antler) which are cohort-based investment vehicles.",
+        },
         inLanguage: "en-US",
         isPartOf: { "@id": "https://signals.gitdealflow.com/#website" },
         speakable: {
           "@type": "SpeakableSpecification",
-          xpath: ["/html/body//h1", "/html/body//h2"],
+          xpath: ["/html/body//h1", "/html/body//h2", "/html/body//p[1]"],
         },
       },
       {
@@ -146,8 +155,14 @@ export default function PredictedPage() {
             Public bet · Week of {fmtLongDate(week.weekStart)}
           </p>
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-4 leading-tight">
-            Acceleration Watch — 10 named startups, graded weekly
+            Engineering Acceleration Watch — 10 named startups, graded weekly
           </h1>
+          <p className="text-amber-300/90 text-sm leading-relaxed max-w-2xl mb-3">
+            <strong>Not an accelerator program.</strong> This is a weekly
+            public data feed. There is no application, no cohort, no equity —
+            just the dataset. (Y Combinator, Techstars, etc. are accelerator
+            programs; this is engineering-acceleration as a leading signal.)
+          </p>
           <p className="text-gray-400 text-base leading-relaxed max-w-2xl">
             Every Monday we publish 10 startups whose GitHub engineering
             acceleration crossed our signal threshold the prior week. Each
@@ -202,46 +217,54 @@ export default function PredictedPage() {
             </p>
           ) : (
             <>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-3">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
                 <div>
-                  <div className="text-3xl font-bold text-gray-100">
-                    {score.hitRatePct ?? 0}%
+                  <div className="text-4xl sm:text-5xl font-bold text-emerald-300 tabular-nums tracking-tight">
+                    {score.hitRatePct ?? 0}
+                    <span className="text-2xl sm:text-3xl text-emerald-400/60">%</span>
                   </div>
-                  <div className="text-xs text-gray-400 mt-1">
-                    Hit rate (raise / acquire / IPO)
+                  <div className="text-xs text-gray-300 mt-1.5 uppercase tracking-wider font-medium">
+                    Hit rate
+                  </div>
+                  <div className="text-[11px] text-gray-500">
+                    Raise · acquire · IPO
                   </div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-gray-100">
+                  <div className="text-4xl sm:text-5xl font-bold text-gray-100 tabular-nums tracking-tight">
                     {score.raised + score.acquired + score.ipo}
-                    <span className="text-gray-500 text-lg">
-                      {" "}
-                      / {score.picksGraded}
+                    <span className="text-2xl sm:text-3xl text-gray-500">
+                      {" "}/ {score.picksGraded}
                     </span>
                   </div>
-                  <div className="text-xs text-gray-400 mt-1">Hits / graded</div>
+                  <div className="text-xs text-gray-300 mt-1.5 uppercase tracking-wider font-medium">
+                    Hits / graded
+                  </div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-gray-100">
+                  <div className="text-4xl sm:text-5xl font-bold text-gray-100 tabular-nums tracking-tight">
                     {score.weeksGraded}
                   </div>
-                  <div className="text-xs text-gray-400 mt-1">
+                  <div className="text-xs text-gray-300 mt-1.5 uppercase tracking-wider font-medium">
                     Weeks with grades
                   </div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-gray-100">
+                  <div className="text-4xl sm:text-5xl font-bold text-amber-300 tabular-nums tracking-tight">
                     {score.picksPending}
                   </div>
-                  <div className="text-xs text-gray-400 mt-1">
-                    Picks still pending
+                  <div className="text-xs text-gray-300 mt-1.5 uppercase tracking-wider font-medium">
+                    Pending
                   </div>
                 </div>
               </div>
-              <p className="text-gray-400 text-xs">
-                {score.raised} raised · {score.acquired} acquired · {score.ipo}{" "}
-                IPO · {score.otherMilestone} other milestone ·{" "}
-                {score.noEvent} no event · {score.shutdown} shutdown.
+              <p className="text-gray-400 text-xs leading-relaxed border-t border-sky-900/40 pt-3">
+                <span className="text-emerald-400">{score.raised} raised</span> ·{" "}
+                <span className="text-emerald-400">{score.acquired} acquired</span> ·{" "}
+                <span className="text-emerald-400">{score.ipo} IPO</span> ·{" "}
+                <span className="text-amber-300">{score.otherMilestone} other milestone</span> ·{" "}
+                <span className="text-gray-400">{score.noEvent} no event</span> ·{" "}
+                <span className="text-rose-400">{score.shutdown} shutdown</span>.
                 Excluded: {score.excluded}.
               </p>
             </>
