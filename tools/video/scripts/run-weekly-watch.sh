@@ -41,10 +41,10 @@ echo "▸ background music"
 node scripts/03-music.mjs predicted-90s || echo "  (music failed, continuing without)"
 
 echo "▸ Remotion render"
-npx remotion render src/index.ts Predicted90s out/predicted-90s.mp4
+npx remotion render src/index.ts Predicted90s out/predicted-90s/predicted-90s.mp4
 
 echo "▸ thumbnail render"
-npx remotion still src/index.ts ThumbnailPredicted out/thumbnail-predicted.jpg \
+npx remotion still src/index.ts ThumbnailPredicted out/thumbnail-predicted-90s.jpg \
   --image-format=jpeg --jpeg-quality=92
 
 echo "▸ upload to YouTube"
