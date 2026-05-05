@@ -8,6 +8,7 @@ import {
 } from "@/content/competitor-vs";
 import { getDataLastModified } from "@/lib/data";
 import CTABanner from "@/components/CTABanner";
+import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -16,6 +17,9 @@ interface PageProps {
 export async function generateStaticParams() {
   return getAllCompetitorVsSlugs().map((slug) => ({ slug }));
 }
+
+export const dynamicParams = false;
+export const revalidate = 604800;
 
 export async function generateMetadata({
   params,
@@ -125,6 +129,7 @@ export default async function VsPage({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <AgentMirrorLinks path={`/vs/${slug}`} />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <nav className="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300 transition-colors">

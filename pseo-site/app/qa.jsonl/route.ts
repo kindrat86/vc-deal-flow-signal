@@ -20,7 +20,9 @@ interface QA {
   category: string;
 }
 
-export async function GET() {
+export async function GET(request: Request) {
+  const url = new URL(request.url);
+  const categoryFilter = url.searchParams.get("category");
   const out: QA[] = [];
 
   const lastModified = getDataLastModified();
@@ -135,10 +137,19 @@ export async function GET() {
     });
   }
 
+  const filtered = categoryFilter
+    ? out.filter((qa) => qa.category === categoryFilter)
+    : out;
+
   const body =
-    JSON.stringify(datasetMeta) +
+    JSON.stringify({
+      ...datasetMeta,
+      ...(categoryFilter
+        ? { filteredCategory: categoryFilter, filteredCount: filtered.length }
+        : { totalCount: out.length }),
+    }) +
     "\n" +
-    out.map((qa) => JSON.stringify(qa)).join("\n") +
+    filtered.map((qa) => JSON.stringify(qa)).join("\n") +
     "\n";
 
   return new Response(body, {

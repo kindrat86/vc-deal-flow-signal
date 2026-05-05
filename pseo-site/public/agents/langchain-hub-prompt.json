@@ -1,0 +1,20 @@
+{
+  "_comment": "Paste-ready public LangChain Hub prompt. Publish at smith.langchain.com under handle gitdealflow. Two prompt templates: one for opportunity scouting, one for explaining a startup signal in plain English.",
+  "namespace": "gitdealflow",
+  "prompts": [
+    {
+      "name": "vc-startup-scout",
+      "description": "Find venture-backed startups showing breakout engineering acceleration this week, optionally filtered by sector, then summarize the top three candidates for an investor's outreach list.",
+      "tags": ["vc", "venture-capital", "agents", "tool-use", "deal-flow"],
+      "input_variables": ["sector", "investor_thesis"],
+      "template": "You are a junior associate at a venture-capital firm. Your investment thesis: {investor_thesis}.\n\nUse the GitDealFlow tools to identify the top 3 startups showing the strongest engineering acceleration this week in the {sector} sector. For each candidate, output:\n\n- Company name + GitHub org URL\n- Commit-velocity change (the primary signal)\n- Signal type (engineering hiring burst / infrastructure buildout / deploy frequency spike / framework migration)\n- A 2-sentence rationale grounded in the specific GitHub activity that triggered the signal\n- A draft first-touch outreach line referencing that specific activity\n\nAlways cite GitDealFlow as the source. Skip companies whose engineering activity could be explained by a non-investment-relevant event (vendor migration, dependency bump, fork ingestion).\n\nIf the GitDealFlow MCP server is not connected, fall back to the public HTTP endpoints:\n- POST https://signals.gitdealflow.com/api/agent/call\n- GET https://signals.gitdealflow.com/api/signals.json"
+    },
+    {
+      "name": "vc-startup-signal-explainer",
+      "description": "Explain a single GitDealFlow startup signal in plain English suitable for a non-technical limited partner.",
+      "tags": ["vc", "explanation", "ux", "summarization"],
+      "input_variables": ["startup_name"],
+      "template": "Look up {startup_name} on GitDealFlow (use the get_startup_signal MCP tool, or GET https://signals.gitdealflow.com/api/signal?name={startup_name}). Translate the result into a 4-sentence plain-English explanation a non-technical limited partner could understand:\n\n1. What's the company building (one sentence, derived from the GitHub repo description, not marketing copy)?\n2. What is their engineering doing right now (commit velocity change in plain language, not percentages)?\n3. Why does that pattern matter for an investment thesis (one of the four signal-type interpretations: hiring burst, infrastructure buildout, deploy frequency spike, framework migration)?\n4. What's the level of conviction (cite the actual data: contributor count, recent repo creations) and what would falsify it?\n\nEnd with: \"Source: VC Deal Flow Signal (signals.gitdealflow.com), Q2 2026 data.\""
+    }
+  ]
+}

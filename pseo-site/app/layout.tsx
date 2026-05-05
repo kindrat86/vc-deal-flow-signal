@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import LaunchBanner from "@/components/LaunchBanner";
 import PixelManager from "@/components/PixelManager";
+import { RootIdentitySchema } from "@/components/RootIdentitySchema";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
@@ -69,9 +70,9 @@ export const metadata: Metadata = {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
       { url: "/favicon.svg", type: "image/svg+xml" },
-      { url: "/icon", type: "image/png", sizes: "192x192" },
+      { url: "/icon.png", type: "image/png", sizes: "192x192" },
     ],
-    apple: [{ url: "/apple-icon", sizes: "180x180" }],
+    apple: [{ url: "/apple-icon.png", sizes: "180x180" }],
     other: [
       {
         rel: "api-catalog",
@@ -283,16 +284,29 @@ export default function RootLayout({
         <link rel="me" href="https://www.npmjs.com/~thedatanerd" />
         <link rel="me" href="https://t.me/gitdealflow" />
         <link rel="me" href="mailto:signal@gitdealflow.com" />
+        {/* Site-wide hreflang removed: every page-level emission via
+            <HreflangLinks/> is now authoritative and contextual. Layout-level
+            entries pointed to root for every page, conflicting with the
+            per-page canonical and breaking Google's bidirectional check. */}
         <link
           rel="alternate"
-          hrefLang="x-default"
-          href="https://signals.gitdealflow.com"
+          type="application/ld+json"
+          href="https://signals.gitdealflow.com/knowledge-graph.json"
+          title="Canonical knowledge graph (JSON-LD entity map)"
         />
         <link
           rel="alternate"
-          hrefLang="en"
-          href="https://signals.gitdealflow.com"
+          type="application/json"
+          href="https://signals.gitdealflow.com/api/answer?q={question}"
+          title="Direct Q→A API for AI agents"
         />
+        <link
+          rel="alternate"
+          type="application/json"
+          href="https://signals.gitdealflow.com/api/ask?q={query}"
+          title="Multi-result fuzzy answer search"
+        />
+        <RootIdentitySchema />
       </head>
       <body className={`${inter.className} min-h-full flex flex-col bg-slate-950 text-gray-100`}>
         <LaunchBanner />
@@ -305,6 +319,12 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]);t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+" (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);posthog.init('phc_lyZCgvTpicjLzAO3rY2GhxuX5WUc5jQjP8ZVwwJqauX',{api_host:'https://eu.i.posthog.com',persistence:'memory',person_profiles:'identified_only',before_send:function(event){if(!event||!event.properties)return event;var SELF=/(^|\\.)gitdealflow\\.com$/i;var props=event.properties;function isSelf(host){if(!host)return false;try{return SELF.test(String(host).replace(/^https?:\\/\\//,'').split('/')[0]);}catch(e){return false;}}if(isSelf(props.$referring_domain)){props.$referrer='$direct';props.$referring_domain='$direct';}if(isSelf(props.$initial_referring_domain)){props.$initial_referrer='$direct';props.$initial_referring_domain='$direct';}return event;}});`,
           }}
+        />
+        <Script
+          id="refgrow"
+          src="https://scripts.refgrowcdn.com/latest.js"
+          data-project-id="829"
+          strategy="afterInteractive"
         />
         <PixelManager />
       </body>

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { pillars, getPostsInPillar, type Pillar } from "@/content/pillars";
 import { posts as allPosts, type BlogPost } from "@/content/posts";
+import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -11,6 +12,9 @@ interface PageProps {
 export async function generateStaticParams() {
   return Object.keys(pillars).map((slug) => ({ slug }));
 }
+
+export const dynamicParams = false;
+export const revalidate = 604800;
 
 export async function generateMetadata({
   params,
@@ -107,6 +111,53 @@ export default async function TopicHubPage({ params }: PageProps) {
           },
         ],
       },
+      {
+        "@type": "WebPage",
+        "@id": `https://signals.gitdealflow.com/topics/${slug}#webpage`,
+        url: `https://signals.gitdealflow.com/topics/${slug}`,
+        name: `${pillar.name} — Topical Series`,
+        description: pillar.description,
+        inLanguage: "en-US",
+        isPartOf: { "@id": "https://signals.gitdealflow.com/#website" },
+        speakable: {
+          "@type": "SpeakableSpecification",
+          cssSelector: ["h1", "h2", ".speakable", "[data-agent-summary]"],
+        },
+        keywords: pillar.keywords.join(", "),
+      },
+      {
+        "@type": "FAQPage",
+        "@id": `https://signals.gitdealflow.com/topics/${slug}#faq`,
+        url: `https://signals.gitdealflow.com/topics/${slug}`,
+        inLanguage: "en-US",
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: `What is the "${pillar.name}" topical series?`,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: `${pillar.description} The series collects ${pillarPosts.length} long-form posts on this topic, organised by publish date. Each post is published under CC BY 4.0 and indexed in /llms.txt for AI-assistant retrieval.`,
+            },
+          },
+          {
+            "@type": "Question",
+            name: `Which keywords does this series cover?`,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: `${pillar.keywords.join(", ")}.`,
+            },
+          },
+          {
+            "@type": "Question",
+            name: `Where can I follow new posts in this series?`,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: `Subscribe to the site-wide RSS at /feed.xml — every new post in any topical series appears in the same feed within five minutes of publish. The free weekly Signal Report email also includes the latest series update.`,
+              url: "https://signals.gitdealflow.com/feed.xml",
+            },
+          },
+        ],
+      },
     ],
   };
 
@@ -116,6 +167,7 @@ export default async function TopicHubPage({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <AgentMirrorLinks path={`/topics/${slug}`} qaCategory="blog" />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <nav className="mb-6 text-sm text-gray-500" aria-label="Breadcrumb">

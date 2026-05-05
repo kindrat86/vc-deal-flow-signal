@@ -11,6 +11,7 @@ import {
 } from "@/lib/data";
 import StartupTable from "@/components/StartupTable";
 import CTABanner from "@/components/CTABanner";
+import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -19,6 +20,9 @@ interface PageProps {
 export async function generateStaticParams() {
   return getAllBestSectorSlugs().map((slug) => ({ slug }));
 }
+
+export const dynamicParams = false;
+export const revalidate = 604800;
 
 export async function generateMetadata({
   params,
@@ -182,6 +186,7 @@ export default async function BestSectorPage({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <AgentMirrorLinks path={`/best/${slug}`} qaCategory="sector" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <nav className="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">

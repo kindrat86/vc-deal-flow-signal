@@ -2,11 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentSummary } from "@/components/AgentSummary";
 import { getDataLastModified } from "@/lib/data";
+import PSEOFooterNav from "@/components/PSEOFooterNav";
+import { HreflangLinks } from "@/components/HreflangLinks";
+import { getHreflangLanguages } from "@/lib/hreflang";
 
 export const metadata: Metadata = {
   title: "Methodology — How We Measure Startup Engineering Acceleration",
   description:
     "How VC Deal Flow Signal measures GitHub engineering acceleration: data sources, commit velocity calculation, contributor growth metrics, signal classification, and update frequency.",
+  // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
   alternates: {
     canonical: "/methodology",
   },
@@ -239,6 +243,10 @@ export default function MethodologyPage() {
 
   return (
     <>
+      <HreflangLinks
+        canonical="https://signals.gitdealflow.com/methodology"
+        languages={getHreflangLanguages("/methodology")}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -475,21 +483,37 @@ export default function MethodologyPage() {
           </div>
         </section>
 
+        <PSEOFooterNav excludeHrefs={["/methodology"]} />
+
         {/* CTA */}
         <div className="rounded-xl border border-slate-800 bg-slate-900 p-6 sm:p-8 text-center">
           <h2 className="text-gray-100 font-semibold text-lg mb-2">
             See the signals in action
           </h2>
           <p className="text-gray-400 text-sm mb-5 max-w-lg mx-auto">
-            Browse startup rankings across 20 sectors, updated weekly with fresh
-            GitHub data.
+            Browse startup rankings across 19 sectors, updated weekly with
+            fresh GitHub data — or jump straight to the pricing page.
           </p>
-          <Link
-            href="/"
-            className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-sky-700 hover:bg-sky-600 text-white text-sm font-medium transition-colors"
-          >
-            Browse Sector Rankings
-          </Link>
+          <div className="flex flex-wrap justify-center gap-3">
+            <Link
+              href="/"
+              className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-sky-700 hover:bg-sky-600 text-white text-sm font-medium transition-colors"
+            >
+              Browse Sector Rankings
+            </Link>
+            <Link
+              href="/pricing"
+              className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg border border-slate-700 hover:border-slate-500 text-gray-300 text-sm font-medium transition-colors"
+            >
+              See Pricing
+            </Link>
+            <Link
+              href="/buyers-guide"
+              className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg border border-slate-700 hover:border-slate-500 text-gray-300 text-sm font-medium transition-colors"
+            >
+              Read the Buyers Guide
+            </Link>
+          </div>
         </div>
       </div>
     </>

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getComparison, getAllComparisonSlugs, type ComparisonFAQ } from "@/content/comparisons";
 import { getAllSectors, getCurrentPeriod, getDataLastModified } from "@/lib/data";
+import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -11,6 +12,9 @@ interface PageProps {
 export async function generateStaticParams() {
   return getAllComparisonSlugs().map((slug) => ({ slug }));
 }
+
+export const dynamicParams = false;
+export const revalidate = 604800;
 
 export async function generateMetadata({
   params,
@@ -183,6 +187,7 @@ export default async function ComparisonPage({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <AgentMirrorLinks path={`/compare/${slug}`} />
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Breadcrumb */}

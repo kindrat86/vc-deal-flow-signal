@@ -20,6 +20,24 @@ interface ProductEntry {
 
 const productUpdates: ProductEntry[] = [
   {
+    date: "2026-05-04",
+    title: "Pricing surface redesign: /pricing + /buyers-guide + Sharp Tier",
+    tag: "seo",
+    body: "Net-new /pricing pillar with all six tiers exposed (Free Signal Digest, €7 First Look Pass, €9.97/mo Dashboard Beta, €97/mo Insider Circle, €497/mo Sharp Tier for active funds, €1,997 one-time Sector Sweep). Sharp Tier surfaces the application-gated active-fund landing previously buried on apex. New /buyers-guide pillar with an opinionated 11-criterion evaluation framework for VC deal-flow tools, paired with 8 Q&As on small-fund decision weighting. Both pages wired into Header NAV, Footer, sitemap, hreflang, llms.txt, and llms-full.txt. /alternatives, /integrations, /faq, and /methodology gain in-page CTAs pointing at /pricing and /buyers-guide. Apex landing trust-strip gains Substack publication anchor; pricing-section gains 'See the full six-tier pricing comparison' deep link.",
+  },
+  {
+    date: "2026-05-04",
+    title: "Dataset refresh: 91 → 109 startups (+19.8%)",
+    tag: "data",
+    body: "Background GitHub-data fetch added 18 new venture-backed startup orgs to the panel (91 → 109 across 19 sectors). 76 sector-period pages, 228 FAQs, 136 unique orgs deduped. Signal-of-the-week and signal-digest emails regenerated against the fresh panel. /pricing, /buyers-guide, llms-full.txt, and AgentSummary fact-blocks updated to reflect 109/19.",
+  },
+  {
+    date: "2026-05-04",
+    title: "Second Chrome extension shipped: VC GitHub Lookup — Startup Signals on Hover",
+    tag: "integration",
+    body: "Companion to the existing Crunchbase + Wellfound badge. Hover any GitHub repo or org link to see commit velocity (14d), velocity change vs prior period, contributor count and growth, signal type, and stage estimate. A chip is also injected next to the page header on direct repo or org page loads, and the toolbar opens a manual lookup form for any GitHub URL. Manifest V3, ~16 KB, no analytics, ≤5-min session-storage cache. Install: https://chromewebstore.google.com/detail/vc-github-lookup-%E2%80%94-startu/plgngijmloeljfkenecdkhiblcfcbblm",
+  },
+  {
     date: "2026-04-19",
     title: "Alternatives hub and use-case pages shipped",
     tag: "seo",
@@ -39,9 +57,9 @@ const productUpdates: ProductEntry[] = [
   },
   {
     date: "2026-04-17",
-    title: "Chrome extension launched",
+    title: "First Chrome extension launched: VC Deal Flow Signal",
     tag: "integration",
-    body: "Sidebar badge on Crunchbase, AngelList, and PitchBook company pages showing live engineering signal status. Integrated on landing and pSEO site.",
+    body: "Inline engineering-acceleration badge injected on Crunchbase and Wellfound company profile pages, showing live signal status without switching tabs. Integrated on landing and pSEO site. Install: https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn",
   },
   {
     date: "2026-04-17",
@@ -83,7 +101,7 @@ const productUpdates: ProductEntry[] = [
     date: "2026-03-15",
     title: "Dashboard beta launched at EUR 9.97/month",
     tag: "product",
-    body: "Full 50+ startup weekly ranking with sector, stage, and geography filters. Stripe checkout, email auth, and webhook-driven provisioning.",
+    body: "Full 85+ startup weekly ranking with sector, stage, and geography filters. Stripe checkout, email auth, and webhook-driven provisioning.",
   },
 ];
 
@@ -118,11 +136,18 @@ export default function ChangelogPage() {
     "@graph": [
       {
         "@type": "CollectionPage",
+        "@id": "https://signals.gitdealflow.com/changelog#collection",
         name: "VC Deal Flow Signal Changelog",
         description:
           "Weekly data refreshes and product updates for VC Deal Flow Signal.",
         url: "https://signals.gitdealflow.com/changelog",
         dateModified: lastModified.toISOString(),
+        inLanguage: "en-US",
+        isPartOf: { "@id": "https://signals.gitdealflow.com/#website" },
+        speakable: {
+          "@type": "SpeakableSpecification",
+          cssSelector: ["h1", "h2", ".speakable", "[data-agent-summary]"],
+        },
         publisher: {
           "@type": "Organization",
           name: "VC Deal Flow Signal",
@@ -131,11 +156,39 @@ export default function ChangelogPage() {
       },
       {
         "@type": "ItemList",
+        itemListOrder: "https://schema.org/ItemListOrderDescending",
+        numberOfItems: productUpdates.length,
         itemListElement: productUpdates.slice(0, 20).map((u, i) => ({
           "@type": "ListItem",
           position: i + 1,
           name: u.title,
           description: u.body,
+        })),
+      },
+      {
+        // LiveBlogPosting wraps the changelog as a continuously-updated stream.
+        // Google News + Discover give LiveBlogPosting better surfaceability
+        // for "what changed recently" intents than a plain CollectionPage.
+        "@type": "LiveBlogPosting",
+        "@id": "https://signals.gitdealflow.com/changelog#liveblog",
+        headline: "VC Deal Flow Signal — Live Changelog",
+        description:
+          "Continuously-updated log of weekly data refreshes, product releases, and integration updates.",
+        url: "https://signals.gitdealflow.com/changelog",
+        coverageStartTime: "2026-04-15T00:00:00Z",
+        coverageEndTime: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString(),
+        datePublished: "2026-04-15",
+        dateModified: lastModified.toISOString(),
+        author: { "@id": "https://signals.gitdealflow.com/about#author" },
+        publisher: { "@id": "https://gitdealflow.com/#organization" },
+        inLanguage: "en-US",
+        liveBlogUpdate: productUpdates.slice(0, 25).map((u) => ({
+          "@type": "BlogPosting",
+          headline: u.title,
+          datePublished: u.date,
+          articleBody: u.body,
+          articleSection: u.tag,
+          author: { "@id": "https://signals.gitdealflow.com/about#author" },
         })),
       },
       {

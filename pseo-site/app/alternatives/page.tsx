@@ -102,6 +102,27 @@ export default function AlternativesIndex() {
             </Link>
           ))}
         </div>
+
+        {/* Pricing CTA — buyer-intent block for visitors comparison-shopping */}
+        <section className="mt-14 rounded-lg border border-sky-800 bg-sky-950/20 p-6">
+          <h2 className="text-lg font-semibold text-sky-200 mb-2">
+            Comparing tools? Here&rsquo;s what we cost.
+          </h2>
+          <p className="text-gray-300 text-sm leading-relaxed mb-3">
+            Five tiers, ordered cheapest to most expensive: free weekly
+            digest, &euro;7 one-time First Look Pass, &euro;9.97/mo Dashboard
+            Beta, &euro;97/mo Insider Circle, and &euro;1,997 one-time Custom
+            Sector Sweep. Founding-member rates lock in for the lifetime of
+            the subscription. Every paid tier ships with a 30-day
+            Signal-or-It&rsquo;s-Free guarantee.
+          </p>
+          <Link
+            href="/pricing"
+            className="inline-block bg-sky-600 hover:bg-sky-500 text-white text-sm font-semibold px-4 py-2 rounded-md transition-colors"
+          >
+            See full pricing &rarr;
+          </Link>
+        </section>
       </div>
     </>
   );

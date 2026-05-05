@@ -28,7 +28,7 @@ const integrations: Integration[] = [
     name: "MCP Server",
     tagline: "Claude, Cursor, Windsurf, and any MCP-compatible assistant",
     description:
-      "Query VC Deal Flow Signal directly from Claude, Cursor, Windsurf, or any MCP-compatible client. Six tools expose trending startups, sector signals, individual startup lookups, Scout receipts, methodology, and weekly summaries. Published on npm as @gitdealflow/mcp-signal, on Smithery (verified, 98/100), and live as a Streamable HTTP endpoint at signals.gitdealflow.com/api/mcp/rpc.",
+      "Query VC Deal Flow Signal directly from Claude, Cursor, Windsurf, or any MCP-compatible client. Six tools expose trending startups, sector signals, individual startup lookups, dataset summary, Scout receipts, and methodology. Published on npm as @gitdealflow/mcp-signal, catalogued at Glama A-Tier (4.9/5.0 across 6 tools), and live as a Streamable HTTP endpoint at signals.gitdealflow.com/api/mcp/rpc.",
     status: "live",
     href: "https://www.npmjs.com/package/@gitdealflow/mcp-signal",
     docsHref: "https://gitdealflow.com/#mcp",
@@ -53,18 +53,18 @@ const integrations: Integration[] = [
     tagline: "GitHub VC Signal — public OpenAPI Action, four tools, no setup",
     description:
       "Use the GitHub VC Signal GPT directly inside ChatGPT (Plus, Team, Enterprise, Edu). The Action calls signals.gitdealflow.com under the hood — same dataset, same classifications, same weekly refresh as the MCP server. Four read-only Actions: getAllSignals, getStartupSignal, getSignalsSummary, getMethodology. No install, no auth, no setup. OpenAPI 3.1 spec at signals.gitdealflow.com/api/actions/openapi.json for anyone building their own GPT or agent.",
-    status: "beta",
-    href: "/integrations/chatgpt",
-    docsHref: "https://signals.gitdealflow.com/api/actions/openapi.json",
+    status: "live",
+    href: "https://chatgpt.com/g/g-69f76b9b3b308191b6948bff20c0fbf8-github-vc-signal",
+    docsHref: "/integrations/chatgpt",
     category: "AI",
-    setup: "chatgpt.com → Browse GPTs → search \"GitHub VC Signal\"",
+    setup: "Open chatgpt.com/g/g-69f76b9b... — no install required",
   },
   {
     slug: "telegram",
     name: "Telegram Channel",
     tagline: "Weekly breakout startups, pushed to your Telegram",
     description:
-      "Public @gitdealflow channel delivers the weekly Signal Report and sector alerts. The paid Insider Circle is a separate private Telegram group with 50+ ranked startups per week, filter-ready data, and a direct line to the founder.",
+      "Public @gitdealflow channel delivers the weekly Signal Report and sector alerts. The paid Insider Circle is a separate private Telegram group with 85+ ranked startups per week, filter-ready data, and a direct line to the founder.",
     status: "live",
     href: "https://t.me/gitdealflow",
     category: "Messaging",
@@ -117,12 +117,23 @@ const integrations: Integration[] = [
   },
   {
     slug: "chrome-extension",
-    name: "Chrome Extension",
-    tagline: "Engineering signals on Crunchbase, AngelList, PitchBook",
+    name: "Chrome Extension — Crunchbase + Wellfound badge",
+    tagline: "Engineering signal badge on Crunchbase and Wellfound profiles",
     description:
-      "Sidebar badge that appears on Crunchbase, AngelList, and PitchBook company pages with the current engineering signal status for that startup. Works passively — no extra clicks, no login required.",
+      "Inline badge that appears on Crunchbase and Wellfound company profile pages with the current engineering signal status for that startup. Works passively — no extra clicks, no login required, no telemetry.",
     status: "live",
-    href: "https://chromewebstore.google.com/",
+    href: "https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn",
+    category: "AI",
+    setup: "Install from Chrome Web Store",
+  },
+  {
+    slug: "chrome-extension-github-lookup",
+    name: "Chrome Extension — VC GitHub Lookup",
+    tagline: "Hover any GitHub repo or org for live startup signals",
+    description:
+      "Hover any link to github.com/<owner> or github.com/<owner>/<repo> and instantly see commit velocity (14d), velocity change, contributor count and growth, signal type (hiring burst, reorg, breakout, …), and a stage estimate. A chip is also injected on direct repo or org page loads, and the toolbar opens a manual lookup form for any GitHub URL. Manifest V3, ~16 KB, no telemetry.",
+    status: "live",
+    href: "https://chromewebstore.google.com/detail/vc-github-lookup-%E2%80%94-startu/plgngijmloeljfkenecdkhiblcfcbblm",
     category: "AI",
     setup: "Install from Chrome Web Store",
   },
@@ -295,7 +306,7 @@ export default function IntegrationsPage() {
             name: "How do I install the MCP server?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Run npx -y @gitdealflow/mcp-signal in your terminal, or add the configuration to your Claude Desktop or Claude Code mcpServers config: command npx, args [-y, @gitdealflow/mcp-signal]. The server provides five tools: trending startups, sector signals, startup lookup, methodology, and weekly summaries. Installation typically takes under two minutes.",
+              text: "Run npx -y @gitdealflow/mcp-signal in your terminal, or add the configuration to your Claude Desktop or Claude Code mcpServers config: command npx, args [-y, @gitdealflow/mcp-signal]. The server provides six tools: trending startups, sector signals, startup lookup, dataset summary, scout receipts, and methodology. Installation typically takes under two minutes.",
             },
           },
           {
@@ -433,6 +444,22 @@ export default function IntegrationsPage() {
             className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-medium transition-colors"
           >
             Request an integration
+          </Link>
+        </div>
+
+        {/* Pricing CTA — most integrations evaluators are tool-shopping */}
+        <div className="rounded-xl border border-sky-800 bg-sky-950/20 p-6 sm:p-8 text-center mt-6">
+          <h2 className="text-sky-200 font-semibold text-lg mb-2">
+            What does it cost?
+          </h2>
+          <p className="text-gray-300 text-sm mb-5 max-w-lg mx-auto">
+            Free weekly digest plus a free MCP server (five read-only tools, never gated). Paid tiers from &euro;7 one-time to &euro;1,997 one-time, with founding-member rates on the recurring plans.
+          </p>
+          <Link
+            href="/pricing"
+            className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-medium transition-colors"
+          >
+            See full pricing &rarr;
           </Link>
         </div>
       </div>

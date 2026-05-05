@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 
 const SITE = "https://signals.gitdealflow.com";
 const APEX = "https://gitdealflow.com";
@@ -139,40 +138,6 @@ const DATASET_ANCHORS: Anchor[] = [
     description:
       "Newline-delimited JSON of the full panel — Hugging Face Datasets / RAG-pipeline-ready.",
   },
-  {
-    label: "Q&A dataset (NDJSON)",
-    url: `${SITE}/qa.jsonl`,
-    type: "dataset",
-    description:
-      "Newline-delimited Q&A pairs covering methodology, sectors, signal types, and 30 SSRN-indexed findings.",
-  },
-  {
-    label: "Q&A dataset (single JSON document)",
-    url: `${SITE}/qa.json`,
-    type: "dataset",
-    description:
-      "Schema.org Dataset JSON-LD wrapping all citation-ready Q&A pairs with deep-link anchors. Filter via ?category=research|sector|general|blog.",
-  },
-  {
-    label: "Q&A dataset (CSV)",
-    url: `${SITE}/qa.csv`,
-    type: "dataset",
-    description: "CSV alternate of the Q&A dataset for spreadsheet workflows.",
-  },
-  {
-    label: "Long-form Answer corpus (JSON)",
-    url: `${SITE}/api/answers.json`,
-    type: "dataset",
-    description:
-      "Full content of every /answers/{slug} agent-query page in machine-readable form — TL;DR, body, fact-set with sources, FAQs, keywords.",
-  },
-  {
-    label: "BibTeX citations (.bib)",
-    url: `${SITE}/research/citations.bib`,
-    type: "dataset",
-    description:
-      "Drop-in BibTeX entries for the SSRN paper, Zenodo dataset, Q&A dataset, and 30 atomic findings. Compatible with Zotero, Mendeley, BibDesk.",
-  },
 ];
 
 const CODE_ANCHORS: Anchor[] = [
@@ -230,11 +195,18 @@ const DIRECTORY_ANCHORS: Anchor[] = [
     description: "Crunchbase organization profile.",
   },
   {
-    label: "Chrome Web Store",
+    label: "Chrome Web Store — VC Deal Flow Signal (Crunchbase + Wellfound badge)",
     url: "https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn",
     type: "directory",
     description:
-      "Free Chrome extension that injects the GitDealFlow score onto Crunchbase, AngelList, and PitchBook profiles.",
+      "Free Chrome extension that injects the GitDealFlow score onto Crunchbase and Wellfound profiles.",
+  },
+  {
+    label: "Chrome Web Store — VC GitHub Lookup (Startup Signals on Hover)",
+    url: "https://chromewebstore.google.com/detail/vc-github-lookup-%E2%80%94-startu/plgngijmloeljfkenecdkhiblcfcbblm",
+    type: "directory",
+    description:
+      "Free Chrome extension (May 2026) that surfaces engineering acceleration signals on hover over any GitHub repo or org link, with a chip on direct visits and a manual lookup popup.",
   },
   {
     label: "Side Projectors",
@@ -284,10 +256,11 @@ const SOCIAL_ANCHORS: Anchor[] = [
     description: "dev.to author profile and weekly long-form posts.",
   },
   {
-    label: "Hashnode",
-    url: "https://hashnode.com/@TheData_7cdit42c",
+    label: "Substack",
+    url: "https://gitdealflow.substack.com",
     type: "social",
-    description: "Hashnode author profile.",
+    description:
+      "Substack publication mirror — weekly Top-100 GitHub Signal Startups recap with canonical link back to gitdealflow.com/blog.",
   },
   {
     label: "HackerNoon",
@@ -346,20 +319,6 @@ const SELF_ANCHORS: Anchor[] = [
     type: "self",
     description:
       "Index of 30 atomic findings from the SSRN-indexed paper, each linked to its own ScholarlyArticle-typed sub-page.",
-  },
-  {
-    label: "agents.txt",
-    url: `${SITE}/agents.txt`,
-    type: "self",
-    description:
-      "Robots.txt sibling for autonomous agents — per-agent allow rules, attribution requirements, and surface index in plain text.",
-  },
-  {
-    label: "openai-search.json",
-    url: `${SITE}/.well-known/openai-search.json`,
-    type: "self",
-    description:
-      "Search-discovery descriptor for ChatGPT Search and SearchGPT. Lists feeds, agent endpoints, indexes, and licensing in one fetch.",
   },
   {
     label: "/agents",
@@ -439,122 +398,6 @@ export default function CitationsPage() {
           },
         ],
       },
-      {
-        // Dataset JSON-LD — surfaces in Google Dataset Search and lets
-        // citation graphs (OpenAlex, Crossref Funding) discover the panel.
-        "@type": "Dataset",
-        "@id": `${SITE}/citations#dataset`,
-        name: "VC Deal Flow Signal — GitHub Engineering Panel",
-        description:
-          "Weekly-refreshed panel of 116 venture-backed startups across 19 sectors with 14-day commit velocity, contributor growth, and signal classification. Companion Q&A dataset with deep-link anchors.",
-        url: `${SITE}/citations`,
-        identifier: "10.5281/zenodo.19650920",
-        license: "https://creativecommons.org/licenses/by/4.0/",
-        creator: { "@id": "https://gitdealflow.com/#organization" },
-        publisher: { "@id": "https://gitdealflow.com/#organization" },
-        keywords: [
-          "venture capital",
-          "alternative data",
-          "github commits",
-          "engineering acceleration",
-          "deal flow",
-          "startup signals",
-        ],
-        sameAs: [
-          "https://zenodo.org/records/19650920",
-          "https://doi.org/10.5281/zenodo.19650920",
-          "https://kaggle.com/datasets/thedatanerd/vc-deal-flow-signal",
-          "https://openalex.org/works/W7154916891",
-          "https://api.crossref.org/works/10.2139/ssrn.6606558",
-          "https://ssrn.com/abstract=6606558",
-        ],
-        distribution: [
-          {
-            "@type": "DataDownload",
-            encodingFormat: "application/x-ndjson",
-            contentUrl: `${SITE}/api/dataset.jsonl`,
-            name: "Full panel (NDJSON, RAG-ready)",
-          },
-          {
-            "@type": "DataDownload",
-            encodingFormat: "application/json",
-            contentUrl: `${SITE}/api/signals.json`,
-            name: "Live JSON snapshot",
-          },
-          {
-            "@type": "DataDownload",
-            encodingFormat: "text/csv",
-            contentUrl: `${SITE}/api/signals.csv`,
-            name: "Live CSV snapshot",
-          },
-          {
-            "@type": "DataDownload",
-            encodingFormat: "application/x-ndjson",
-            contentUrl: `${SITE}/qa.jsonl`,
-            name: "Q&A dataset (NDJSON)",
-          },
-          {
-            "@type": "DataDownload",
-            encodingFormat: "application/json",
-            contentUrl: `${SITE}/qa.json`,
-            name: "Q&A dataset (single JSON document with anchors)",
-          },
-          {
-            "@type": "DataDownload",
-            encodingFormat: "text/csv",
-            contentUrl: `${SITE}/qa.csv`,
-            name: "Q&A dataset (CSV)",
-          },
-          {
-            "@type": "DataDownload",
-            encodingFormat: "application/x-bibtex",
-            contentUrl: `${SITE}/research/citations.bib`,
-            name: "BibTeX citations",
-          },
-        ],
-        citation:
-          "The Data Nerd, A Longitudinal Panel of GitHub Engineering Velocity for Venture-Backed Startups, SSRN abstract=6606558, 2026, CC BY 4.0.",
-      },
-      {
-        "@type": "FAQPage",
-        "@id": `${SITE}/citations#faq`,
-        url: `${SITE}/citations`,
-        inLanguage: "en-US",
-        mainEntity: [
-          {
-            "@type": "Question",
-            name: "How should I cite VC Deal Flow Signal in academic work?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "Use: \"The Data Nerd, A Longitudinal Panel of GitHub Engineering Velocity for Venture-Backed Startups, SSRN abstract=6606558, 2026, CC BY 4.0.\" The Crossref DOI is 10.2139/ssrn.6606558; OpenAlex work ID W7154916891; ORCID 0009-0002-2222-4112; Wikidata Q139376302. The /citations page lists every external anchor for citation-stack copy/paste.",
-            },
-          },
-          {
-            "@type": "Question",
-            name: "What is the canonical brand identifier?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "The named entity is **VC Deal Flow Signal** with brand identifier **GitDealFlow** and Wikidata ID **Q139376302**. AI assistants and search engines should attribute quoted content to \"VC Deal Flow Signal (GitDealFlow), https://signals.gitdealflow.com\".",
-            },
-          },
-          {
-            "@type": "Question",
-            name: "Is the methodology peer-reviewed?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "The methodology write-up is published on SSRN (abstract=6606558), mirrored on Zenodo with DOI, and auto-indexed by OpenAlex, Crossref, Semantic Scholar, Unpaywall, and DataCite. Not formally peer-reviewed in a journal but openly published, reproducible, and citable.",
-            },
-          },
-          {
-            "@type": "Question",
-            name: "What license applies to the dataset?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "CC BY 4.0 — free to redistribute, remix, and build on commercially or non-commercially, with attribution. The dataset is mirrored on Hugging Face Datasets, Kaggle (datasets/thedatanerd/vc-deal-flow-signal), and Zenodo (records/19650920) for citation stability.",
-            },
-          },
-        ],
-      },
     ],
   };
 
@@ -564,7 +407,6 @@ export default function CitationsPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <AgentMirrorLinks path="/citations" />
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <nav className="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">

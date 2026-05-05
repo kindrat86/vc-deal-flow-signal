@@ -1,0 +1,229 @@
+{
+  "info": {
+    "name": "VC Deal Flow Signal — Public Agent API",
+    "description": "Free, no-auth public API surface for AI agents. Includes JSON / CSV exports, MCP server (Streamable HTTP), A2A JSON-RPC, NLWeb, function-calling tools (OpenAI / Anthropic / Gemini formats), and embeddable SVG badges. OpenAPI 3.1 spec describes every callable route. CC-BY 4.0 with attribution. See https://signals.gitdealflow.com/AGENTS.md.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_postman_id": "gitdealflow-public-agent-api-2026-04-26"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://signals.gitdealflow.com",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Bulk dataset",
+      "item": [
+        {
+          "name": "GET signals.json — full panel",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/signals.json",
+            "description": "Returns all sectors, all periods, all startup signals as a single JSON object. CDN cache 24h."
+          }
+        },
+        {
+          "name": "GET signals.csv — same panel as CSV",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/signals.csv",
+            "description": "CSV export of all current signals for spreadsheet and dataframe ingestion."
+          }
+        },
+        {
+          "name": "GET changelog.json — dataset version",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/changelog.json",
+            "description": "Schema and pipeline changelog, with versioning."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Per-startup lookup",
+      "item": [
+        {
+          "name": "GET /api/signal — single startup by name",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/signal?name=Roboflow",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "signal"],
+              "query": [{ "key": "name", "value": "Roboflow" }]
+            },
+            "description": "Case-insensitive, normalization-tolerant lookup. Returns current metrics + signal type + history."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Scout receipts (per-user)",
+      "item": [
+        {
+          "name": "GET /api/receipts/{username} — Scout Score",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/receipts/sindresorhus",
+            "description": "Scout Score (0-100) for any GitHub user, computed from their starring history vs. the validated-wins database."
+          }
+        }
+      ]
+    },
+    {
+      "name": "MCP / A2A / NLWeb",
+      "item": [
+        {
+          "name": "POST /api/mcp/rpc — Streamable HTTP MCP",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": "{{baseUrl}}/api/mcp/rpc",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"id\": 1,\n  \"method\": \"tools/list\"\n}"
+            },
+            "description": "Model Context Protocol over Streamable HTTP. Six tools available."
+          }
+        },
+        {
+          "name": "POST /api/a2a — A2A JSON-RPC",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": "{{baseUrl}}/api/a2a",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"id\": 1,\n  \"method\": \"message/send\",\n  \"params\": {\n    \"message\": \"trending fintech startups this week\"\n  }\n}"
+            },
+            "description": "Google A2A JSON-RPC stub endpoint."
+          }
+        },
+        {
+          "name": "POST /api/nlweb — Microsoft NLWeb",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": "{{baseUrl}}/api/nlweb",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"trending fintech startups this week\"\n}"
+            },
+            "description": "NLWeb conversational endpoint. Returns schema.org-typed JSON-LD."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Function-calling API",
+      "item": [
+        {
+          "name": "GET /api/agent/tools?format=openai",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/agent/tools?format=openai",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "agent", "tools"],
+              "query": [{ "key": "format", "value": "openai" }]
+            },
+            "description": "Returns tool definitions in OpenAI / Anthropic / Gemini format. Vary the format query param."
+          }
+        },
+        {
+          "name": "POST /api/agent/call",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": "{{baseUrl}}/api/agent/call",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tool\": \"get_trending_startups\",\n  \"arguments\": {}\n}"
+            },
+            "description": "Invoke any of the six MCP tools without an MCP client. Tool name + arguments object."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Embeddable badges",
+      "item": [
+        {
+          "name": "GET /api/badge/scout/{username}/svg",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/badge/scout/torvalds/svg",
+            "description": "Scout Score SVG badge for any GitHub user. README-embeddable."
+          }
+        },
+        {
+          "name": "GET /api/badge/momentum/{org}/{repo}/svg",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/badge/momentum/vercel/next.js/svg",
+            "description": "Commit Momentum SVG badge for any tracked startup repo."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Discovery",
+      "item": [
+        {
+          "name": "GET /api/openapi.json — OpenAPI 3.1 spec",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/openapi.json",
+            "description": "OpenAPI 3.1 specification covering every callable route."
+          }
+        },
+        {
+          "name": "GET /.well-known/agent-card.json — A2A AgentCard",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/.well-known/agent-card.json"
+          }
+        },
+        {
+          "name": "GET /.well-known/mcp.json — MCP discovery manifest",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/.well-known/mcp.json"
+          }
+        },
+        {
+          "name": "GET /.well-known/ai-plugin.json — ChatGPT manifest",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/.well-known/ai-plugin.json"
+          }
+        },
+        {
+          "name": "GET /llms.txt — concise LLM context",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/llms.txt"
+          }
+        },
+        {
+          "name": "GET /llms-full.txt — full LLM context",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/llms-full.txt"
+          }
+        }
+      ]
+    }
+  ]
+}

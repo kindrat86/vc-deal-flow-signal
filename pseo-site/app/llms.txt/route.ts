@@ -86,12 +86,17 @@ The full cross-graph identity map — every external anchor (Wikidata, ORCID, SS
 - [Markets methodology](${BASE_URL}/markets/methodology): Composite signal score, candidate selection, resolver criteria, refresh cadence, conflict-of-interest disclosures.
 - [Series A Race 2026](${BASE_URL}/markets/series-a-race-2026): Live implied odds for 5 candidates (zapplyjobs, Kanvas, AtroCore, OpenOLAT, Lonero). Resolves Dec 31, 2026 on first publicly disclosed primary Series A round.
 - [Methodology](${BASE_URL}/methodology): How we source, process, and rank GitHub engineering data
+- [Pricing](${BASE_URL}/pricing): Six pricing tiers (free Signal Digest, €7 First Look Pass, €9.97/mo Dashboard Beta, €97/mo Insider Circle, €497/mo Sharp Tier for active funds — application-gated, capped at 8 funds in 2026, €1,997 one-time Custom Sector Sweep). Founding-member rates lock in for the lifetime of the subscription. 30-day Signal-or-It's-Free guarantee on every paid tier. PH50OFF code stacks 50% off first 3 months on Dashboard or Insider.
+- [Buyers Guide](${BASE_URL}/buyers-guide): Opinionated 11-criterion guide for evaluating VC deal-flow tools — data transparency, signal recency, free tier honesty, AI assistant / MCP integration, methodology reproducibility, pricing transparency, API/CSV access, guarantee and cancellation, geographic and sector coverage, vendor stability, developer-investor fit. Each criterion includes the question to ask the vendor and how VC Deal Flow Signal handles it.
+- [Enterprise](${BASE_URL}/enterprise): Enterprise plan landing for active VC funds. Sharp Tier (€497/mo or €4,970/yr saves two months, application-gated, capped at 8 funds in 2026) plus custom enterprise scope starting at €15,000/yr (white-label fund-branded UI, dedicated Slack channel, on-call fundraise diligence, custom sector coverage expansion, multi-seat agreements). 8-question FAQ covering Sharp Tier mechanics, application process, multi-seat options, methodology contribution.
+- [Pricing JSON API](${BASE_URL}/api/v1/pricing.json): Machine-readable pricing for AI agents, MCP clients, and procurement automations. Returns all six tiers with priceEur, priceCadence, listPriceEur, foundingMember, applicationGated flags, capacity, ctaHref, guarantee, and promoCode fields. CC-BY-4.0, no auth, 1-hour cache. Companion to the human /pricing page.
+- [Open Dataset](${BASE_URL}/dataset): Dedicated dataset landing page — 5 mirrors (Hugging Face, Zenodo DOI, Kaggle, Data.world, live API), three CSV configs (startup_signals, sector_aggregates, signal_type_timeseries), variables measured table, APA/BibTeX/CITATION.cff. CC BY 4.0, DOI 10.5281/zenodo.19650920.
 - [Glossary](${BASE_URL}/glossary): Definitions of key terms — commit velocity, signal types, engineering acceleration
 - [Signal vocabulary](${BASE_URL}/signals): Six atomic signal primitives with formula, decision rule, common pitfall, linked findings
 - [Knowledge graph hub](${BASE_URL}/knowledge): Hub-and-spoke topic taxonomy linking pillars → primitives → findings → trust surfaces
 - [Standards](${BASE_URL}/standards): Every published spec the site implements — Schema.org, Dublin Core, Highwire Press, DCAT 3, FAIR, OpenAPI 3.1, MCP, A2A, llms.txt, security.txt, IndieWeb
 - [Reproducibility kit](${BASE_URL}/reproducibility): Step-by-step reproduction of every published number (HowTo, ~15 minutes, curl + jq)
-- [Attestations](${BASE_URL}/attestations): Third-party indexers + registries with our identifier in each (SSRN, Crossref, Semantic Scholar, OpenAlex, DataCite, Zenodo, Wikidata, Smithery 98)
+- [Attestations](${BASE_URL}/attestations): Third-party indexers + registries with our identifier in each (SSRN, Crossref, Semantic Scholar, OpenAlex, DataCite, Zenodo, Wikidata, Glama A-Tier)
 - [Corrections policy &amp; log](${BASE_URL}/corrections): Public timestamped log of every substantive correction
 - [Mirrors](${BASE_URL}/mirrors): Every external mirror of the methodology, dataset, MCP, source, extension, knowledge entity
 - [Press kit](${BASE_URL}/press): Logos, fact sheet, copy-paste citation block, founder bio, contact
@@ -147,7 +152,7 @@ A subset of canonical pages is fully translated into Japanese (not stubs). Use t
 - [シグナル語彙 / Signal vocabulary](${BASE_URL}/ja/signals): The six signal primitives explained in Japanese.
 - [研究結果の概要 / Research overview](${BASE_URL}/ja/research): Research findings index in Japanese.
 - [引用ガイド / Citation guide](${BASE_URL}/ja/citations): APA/MLA/Chicago/BibTeX/RIS citation formats in Japanese.
-- [価格 / Pricing](${BASE_URL}/ja/pricing): Pricing tiers in Japanese (ja-only — no English counterpart).
+- [価格 / Pricing](${BASE_URL}/ja/pricing): Pricing tiers in Japanese (English canonical at /pricing).
 - [プロジェクトについて / About](${BASE_URL}/ja/about): About page in Japanese.
 - Six findings translated in full at \`/ja/research/{slug}\` — see the research overview above.
 
@@ -189,6 +194,8 @@ ${activeSectors.map((s) => {
 
 - [Weekly Signal Reports Archive](${BASE_URL}/weekly): Archive of automated weekly engineering acceleration reports with top 10 startups across all sectors
 - [Top 100 GitHub-Signal Startups — Weekly Index](${BASE_URL}/weekly/top-100): Weekly composite leaderboard of all 100 tracked startups ranked by Signal Score (capped composite of velocity change %, contributor growth %, raw commit scale, contributor count). Refreshed every Monday.
+- [Top 100 latest JSON](${BASE_URL}/weekly/top-100/data.json): Machine-readable JSON of the latest weekly Top-100 ranking. CC-BY-4.0. Includes per-startup signal score, raw metrics, sector cross-listing, and a citation string. Per-week archive at /weekly/top-100/<isoweek>/data.json.
+- [Top 100 RSS feed](${BASE_URL}/weekly/top-100/feed.xml): RSS 2.0 feed listing every weekly Top-100 edition. One item per ISO-week edition with TL;DR description.
 
 ## Pillar-segmented agent indexes
 
@@ -257,19 +264,22 @@ Free SVG badges for README files. Both endpoints return \`image/svg+xml\`, are C
 - [Built-With badge](${BASE_URL}/api/badge/built-with/svg): "Built with gitdealflow MCP" pill for any project that calls our MCP server, signals JSON, or dataset API. Three variants — \`?variant=default|compact|long\`. Static SVG, ETag-revalidated. Markdown: \`[![Built with gitdealflow MCP](${BASE_URL}/api/badge/built-with/svg)](${BASE_URL}/built-with)\`
 - [Badge builder](${BASE_URL}/badge-builder): Interactive UI that generates ready-to-paste markdown / HTML / BBCode snippets for all three badge types. \`?handle=USERNAME\`, \`?org=ORG&repo=REPO\`, \`?variant=default|compact|long\` query params pre-fill the form.
 
-## Chrome Extension
+## Chrome Extensions
 
-- [Install on Chrome Web Store](https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn): Free Chrome extension that injects a GitHub engineering acceleration badge onto startup profiles on Crunchbase, AngelList, and PitchBook. Investors see the signal while doing deal research, without switching tabs.
+Two free Chromium extensions (Chrome, Brave, Edge, Arc). Together they form a complete loop — engineering signals on the deal-research surfaces (Crunchbase, Wellfound) AND on GitHub itself.
+
+- [VC Deal Flow Signal — Crunchbase + Wellfound badge](https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn): Inline engineering-acceleration badge injected on Crunchbase and Wellfound profile pages. Investors see the signal while doing deal research without switching tabs.
+- [VC GitHub Lookup — Startup Signals on Hover](https://chromewebstore.google.com/detail/vc-github-lookup-%E2%80%94-startu/plgngijmloeljfkenecdkhiblcfcbblm) (NEW, May 2026): Hover any GitHub repo or org link for instant commit velocity, contributor growth, signal type, and stage estimate. A chip is also injected on direct repo and org page loads, and the toolbar opens a manual lookup form for any GitHub URL.
 
 ## MCP Server (multi-host: Claude, Cursor, Cline, Continue, HuggingChat, etc.)
 
-- [@gitdealflow/mcp-signal](https://www.npmjs.com/package/@gitdealflow/mcp-signal): Official MCP server (stdio transport) for Claude Desktop, Claude Code, Cursor, Cline, Continue, Zed, and any MCP-compatible host. Install: \`npx @gitdealflow/mcp-signal\`. Six read-only tools: get_trending_startups, search_startups_by_sector, get_startup_signal, get_signals_summary, get_scout_receipts, get_methodology.
-- [Smithery](https://smithery.ai/server/kindrat86/vc-deal-flow-signal): Verified MCP marketplace listing, 98/100 quality score, Typed Output. One-click install into Cursor / Cline / Claude Desktop. Same six tools, served via Smithery's HTTPS proxy gateway.
-- [Glama](https://glama.ai/mcp/servers/kindrat86/mcp-deal-flow-signal): A-Tier MCP catalog listing with full tool metadata and install instructions.
+- [@gitdealflow/mcp-signal](https://www.npmjs.com/package/@gitdealflow/mcp-signal): Official MCP server (stdio transport) for Claude Desktop, Claude Code, Cursor, Cline, Continue, Zed, and any MCP-compatible host. Install: \`npx @gitdealflow/mcp-signal\`. Six FREE read-only tools (get_trending_startups, search_startups_by_sector, get_startup_signal, get_signals_summary, get_scout_receipts, get_methodology) plus one PAID tool (get_deep_signal — enriched signal with composite score, sector percentile, plain-English thesis, and comparables; €0.19/call, 100 credits = €19; set GITDEALFLOW_API_KEY env var; buy at ${BASE_URL}/agents/credits).
+- [Agent Credits — pay per deep signal](${BASE_URL}/agents/credits): Per-request pricing for AI agents. 100 credits = €19 (€0.19/call). One credit consumed per match returned by the get_deep_signal tool; misses are free. Credits never expire. Stored on Stripe customer metadata; balance checkable via \`curl ${BASE_URL}/api/account/credits -H "Authorization: Bearer gdf_v2.cus_xxx.<hmac>"\`. The 6 free tools above stay free forever — credits only apply to get_deep_signal.
+- [Glama](https://glama.ai/mcp/servers/kindrat86/mcp-deal-flow-signal): A-Tier MCP catalog listing (4.9/5.0 across 6 tools) with full tool metadata and install instructions.
 - [api/mcp/rpc](${BASE_URL}/api/mcp/rpc): **Streamable HTTP MCP endpoint** — same six tools, JSON-RPC 2.0 over HTTPS POST. Used by HuggingChat (already connected) and Anthropic Connectors Directory. Anonymous requests accepted; OAuth 2.1 bearer tokens supported for hosts that require them.
 - [.well-known/oauth-authorization-server](${BASE_URL}/.well-known/oauth-authorization-server): RFC 8414 OAuth 2.0 Authorization Server Metadata. Discovers token endpoint, supported grants (\`client_credentials\`), supported scopes (\`mcp:read\`).
 - [api/oauth/token](${BASE_URL}/api/oauth/token): RFC 6749 §4.4 token endpoint. POST \`grant_type=client_credentials\` (no client auth required); returns 1-hour HS256 JWT.
-- [.well-known/mcp/server-card.json](${BASE_URL}/.well-known/mcp/server-card.json): MCP server metadata card for catalog scanners (Smithery + future MCP catalogs). Single-fetch metadata covering name, description, protocol version, transports, tool list, prompts, install instructions, OAuth endpoints, privacy posture, and academic citation.
+- [.well-known/mcp/server-card.json](${BASE_URL}/.well-known/mcp/server-card.json): MCP server metadata card for catalog scanners (Glama + future MCP catalogs). Single-fetch metadata covering name, description, protocol version, transports, tool list, prompts, install instructions, OAuth endpoints, privacy posture, and academic citation.
 
 ## Markdown Alternates
 

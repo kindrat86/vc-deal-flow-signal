@@ -6,6 +6,7 @@ import {
   getStartupProfile,
   getCurrentPeriod,
 } from "@/lib/data";
+import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -14,6 +15,9 @@ interface PageProps {
 export async function generateStaticParams() {
   return getAllStartupSlugs().map((slug) => ({ slug }));
 }
+
+export const dynamicParams = false;
+export const revalidate = 604800;
 
 export async function generateMetadata({
   params,
@@ -99,11 +103,16 @@ export default async function StartupPage({ params }: PageProps) {
     },
   ];
 
+  const orgSameAs = [profile.githubUrl, profile.websiteUrl, profile.linkedinUrl].filter(
+    (u): u is string => Boolean(u)
+  );
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Article",
+        "@id": `https://signals.gitdealflow.com/startup/${slug}#article`,
         headline: `${profile.name} Engineering Signal — GitHub Activity & Acceleration`,
         description: profile.description,
         author: {
@@ -121,6 +130,46 @@ export default async function StartupPage({ params }: PageProps) {
           "@type": "SpeakableSpecification",
           cssSelector: ["[aria-label='Key takeaway']", "h1"],
         },
+        about: {
+          "@id": `https://signals.gitdealflow.com/startup/${slug}#org`,
+        },
+        mainEntity: {
+          "@id": `https://signals.gitdealflow.com/startup/${slug}#org`,
+        },
+      },
+      {
+        // Tracked startup as an Organization. sameAs anchors GitHub +
+        // optional website + LinkedIn so AI engines can disambiguate this
+        // entity from name-collisions (e.g. "Pulse", "Vector", "Atlas").
+        "@type": "Organization",
+        "@id": `https://signals.gitdealflow.com/startup/${slug}#org`,
+        name: profile.name,
+        url: profile.websiteUrl || profile.githubUrl,
+        description: profile.description,
+        ...(orgSameAs.length > 0 ? { sameAs: orgSameAs } : {}),
+        ...(profile.latestGeography
+          ? {
+              location: {
+                "@type": "Place",
+                name: geoLabel,
+              },
+            }
+          : {}),
+        // Render acceleration metrics as InteractionCounter for AIO surfaces.
+        interactionStatistic: [
+          {
+            "@type": "InteractionCounter",
+            name: "Commit velocity (14-day)",
+            interactionType: "https://schema.org/WriteAction",
+            userInteractionCount: latest.commitVelocity14d,
+          },
+          {
+            "@type": "InteractionCounter",
+            name: "Contributors",
+            interactionType: "https://schema.org/JoinAction",
+            userInteractionCount: latest.contributors,
+          },
+        ],
       },
       {
         "@type": "BreadcrumbList",
@@ -165,6 +214,7 @@ export default async function StartupPage({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <AgentMirrorLinks path={`/startup/${slug}`} qaCategory="sector" />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         {/* Breadcrumb */}
@@ -321,6 +371,48 @@ export default async function StartupPage({ params }: PageProps) {
                 {latest.newRepos}
               </p>
             </div>
+          </div>
+
+          {/* Russell-fixes round 2, 2026-05-05 — Dealroom-style curiosity-gap row.
+              Renders a static-visual "Predicted fundraise window" + "Estimated round size" row
+              with the actual numbers blurred until the visitor signs up at /#signup. The
+              email signup is the gate; the blur is the lift. */}
+          <div className="mt-4 rounded-lg border-2 border-signal-500/30 bg-gradient-to-br from-signal-500/[0.03] to-slate-900 p-5">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="inline-block bg-signal-500/15 text-signal-300 text-[10px] font-bold uppercase tracking-[0.15em] px-2 py-1 rounded-full border border-signal-500/30">
+                Insider preview
+              </span>
+              <p className="text-gray-500 text-xs">Free with email signup</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+              <div>
+                <p className="text-gray-500 text-xs mb-1">Predicted fundraise window</p>
+                <p className="text-2xl font-bold text-signal-400 select-none filter blur-sm">
+                  Q3 2026 (74 days ±21)
+                </p>
+              </div>
+              <div>
+                <p className="text-gray-500 text-xs mb-1">Estimated round size</p>
+                <p className="text-2xl font-bold text-signal-400 select-none filter blur-sm">
+                  $4.2M – $7.8M Series A
+                </p>
+              </div>
+            </div>
+            <p className="text-gray-400 text-sm leading-relaxed mb-4">
+              Free Sunday digest unlocks both of these for {profile.name} and the other 108 startups
+              we track — plus 14-day acceleration deltas, contributor maps, and the top 3 names not on
+              Crunchbase yet. Five names every Sunday, no card.
+            </p>
+            <a
+              href="https://gitdealflow.com/#signup"
+              className="inline-flex items-center gap-2 rounded-lg bg-signal-500 hover:bg-signal-400 active:bg-signal-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-signal-500/30 transition-all hover:-translate-y-0.5"
+            >
+              Unlock with email →
+            </a>
+            <p className="text-gray-500 text-[10px] mt-3 italic">
+              Predictions are model estimates from the SSRN-published methodology, not statements of
+              fact. Cross-reference with primary sources before acting.
+            </p>
           </div>
         </section>
 

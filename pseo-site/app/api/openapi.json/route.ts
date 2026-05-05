@@ -84,6 +84,90 @@ export async function GET() {
           },
         },
       },
+      "/api/agent/deep-signal": {
+        post: {
+          operationId: "getDeepSignal",
+          summary: "Get deep enriched signal (paid, per-request)",
+          description:
+            "PAID per-request endpoint — €0.19/call, sold in 100-credit packs at €19. Returns enriched signal beyond /api/signal: composite score, sector percentile, plain-English thesis, comparables, multi-period history. 1 credit consumed only on a successful match; misses are FREE. Credits never expire. Buy at https://signals.gitdealflow.com/agents/credits — API key delivered by email after Stripe checkout.",
+          security: [{ creditPackKey: [] }],
+          requestBody: {
+            required: true,
+            content: {
+              "application/json": {
+                schema: {
+                  type: "object",
+                  properties: {
+                    name: {
+                      type: "string",
+                      minLength: 1,
+                      maxLength: 100,
+                      description: "Startup display name or GitHub org slug.",
+                    },
+                  },
+                  required: ["name"],
+                },
+              },
+            },
+          },
+          responses: {
+            "200": {
+              description:
+                "Deep signal payload (or { found: false } for an untracked startup, charged: 0).",
+              headers: {
+                "X-Credits-Balance": {
+                  description: "Remaining credit balance after this call.",
+                  schema: { type: "integer", minimum: 0 },
+                },
+              },
+              content: {
+                "application/json": {
+                  schema: { $ref: "#/components/schemas/DeepSignal" },
+                },
+              },
+            },
+            "401": {
+              description: "Missing or invalid API key (gdf_v2.<customerId>.<hmac>).",
+            },
+            "402": {
+              description:
+                "Insufficient credits. Top up at https://signals.gitdealflow.com/agents/credits.",
+            },
+          },
+        },
+      },
+      "/api/account/credits": {
+        get: {
+          operationId: "getCredits",
+          summary: "Check credit balance for an API key",
+          description:
+            "Returns the current balance plus lifetime purchased and consumed counters for the customer that owns the bearer token.",
+          security: [{ creditPackKey: [] }],
+          responses: {
+            "200": {
+              description: "Current credit state.",
+              content: {
+                "application/json": {
+                  schema: {
+                    type: "object",
+                    properties: {
+                      balance: { type: "integer", minimum: 0 },
+                      purchased: { type: "integer", minimum: 0 },
+                      consumed: { type: "integer", minimum: 0 },
+                      lastConsumedAt: {
+                        type: ["string", "null"],
+                        format: "date-time",
+                      },
+                      purchaseUrl: { type: "string", format: "uri" },
+                    },
+                  },
+                },
+              },
+            },
+            "401": { description: "Missing or invalid API key." },
+          },
+        },
+      },
     },
     components: {
       schemas: {
@@ -159,6 +243,59 @@ export async function GET() {
               items: { $ref: "#/components/schemas/Startup" },
             },
           },
+        },
+        DeepSignal: {
+          type: "object",
+          properties: {
+            found: { type: "boolean" },
+            name: { type: "string" },
+            sector: { type: "string" },
+            stage: { type: "string" },
+            geography: { type: "string" },
+            signalType: { type: "string" },
+            scores: {
+              type: "object",
+              properties: {
+                velocity: { type: "integer", minimum: 0, maximum: 100 },
+                growth: { type: "integer", minimum: 0, maximum: 100 },
+                novelty: { type: "integer", minimum: 0, maximum: 100 },
+                composite: { type: "integer", minimum: 0, maximum: 100 },
+              },
+            },
+            rank: {
+              type: "object",
+              properties: {
+                inSector: { type: "integer" },
+                sectorTotal: { type: "integer" },
+                sectorPercentile: { type: "integer", minimum: 0, maximum: 100 },
+              },
+            },
+            thesis: { type: "string" },
+            comparables: {
+              type: "array",
+              items: {
+                type: "object",
+                properties: {
+                  name: { type: "string" },
+                  commitVelocityChange: { type: "string" },
+                  signalType: { type: "string" },
+                },
+              },
+            },
+            balance: { type: "integer", minimum: 0 },
+            charged: { type: "integer", minimum: 0, maximum: 1 },
+            citation: { type: "string" },
+          },
+          required: ["found"],
+        },
+      },
+      securitySchemes: {
+        creditPackKey: {
+          type: "http",
+          scheme: "bearer",
+          bearerFormat: "gdf_v2.<customerId>.<hmac>",
+          description:
+            "Per-request credit-pack API key delivered by email after Stripe checkout. Format: `gdf_v2.<stripe_customer_id>.<hmac16>`. Buy at https://signals.gitdealflow.com/agents/credits.",
         },
       },
     },

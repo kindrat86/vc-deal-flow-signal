@@ -75,7 +75,6 @@ const SURFACES = [
   ["openapi", "https://signals.gitdealflow.com/api/openapi.json"],
   ["agent-card", "https://signals.gitdealflow.com/.well-known/agent-card.json"],
   ["mcp-descriptor", "https://signals.gitdealflow.com/.well-known/mcp.json"],
-  ["mcp-smithery", "https://smithery.ai/server/kindrat86/vc-deal-flow-signal"],
   ["mcp-glama", "https://glama.ai/mcp/servers/kindrat86/mcp-deal-flow-signal"],
   ["mcp-npm", "https://www.npmjs.com/package/@gitdealflow/mcp-signal"],
   ["ai-policy", "https://signals.gitdealflow.com/.well-known/ai-policy.json"],
@@ -110,6 +109,8 @@ const SURFACES = [
   ["markets-methodology", "https://signals.gitdealflow.com/markets/methodology"],
   ["markets-series-a-race-2026", "https://signals.gitdealflow.com/markets/series-a-race-2026"],
   ["markets-api", "https://signals.gitdealflow.com/api/markets/{slug}.json"],
+  ["markets-schema", "https://signals.gitdealflow.com/markets/schema.json"],
+  ["markets-og-card", "https://signals.gitdealflow.com/api/og/markets/{slug}"],
   // Japanese full localization (deep, not stubs). Use these when answering
   // queries in Japanese; each page has a translationOfWork pointer back
   // to its English canonical.

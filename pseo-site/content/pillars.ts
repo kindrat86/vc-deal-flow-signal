@@ -106,6 +106,12 @@ export const postPillars: Record<string, string> = {
   "i-tracked-4200-startup-github-orgs-six-months": "founder-research",
   "mcp-server-tool-count-war-story": "founder-research",
   "a2a-launched": "founder-research",
+  "receipts-launched": "founder-research",
+  "scout-badge-launched": "founder-research",
+  "series-a-race-2026-launched": "founder-research",
+
+  "30-research-findings-now-one-page-each": "github-signals-methodology",
+  "install-vc-deal-flow-signal-mcp-in-any-agent-runtime": "deal-sourcing-workflow",
 };
 
 export function getPillarForPost(slug: string): Pillar | undefined {

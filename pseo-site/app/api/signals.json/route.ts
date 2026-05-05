@@ -69,14 +69,21 @@ export async function GET(request: NextRequest) {
   const authHeader = request.headers.get("authorization");
   const apiKey = authHeader?.startsWith("Bearer ") ? authHeader.slice(7) : null;
   const isAuthenticated = apiKey ? await authenticateApiKey(apiKey) : false;
+  const url = new URL(request.url);
+  const mode = url.searchParams.get("mode");
+  const sectorFilter = url.searchParams.get("sector");
   const sectors = getAllSectors();
   const period = getCurrentPeriod();
   const allPeriods = getAllPeriods();
   const lastModified = getDataLastModified();
   const activeSectors = sectors.filter((s) => s.periods[period.slug]);
 
-  // Build sector summaries
-  const sectorSummaries = activeSectors.map((s) => {
+  // Build sector summaries — optionally filter to one sector to keep payload
+  // small enough for ChatGPT Actions / agent ingestion (~10KB instead of 80KB).
+  const filteredSectors = sectorFilter
+    ? activeSectors.filter((s) => s.slug === sectorFilter)
+    : activeSectors;
+  const sectorSummaries = filteredSectors.map((s) => {
     const snapshot = s.periods[period.slug];
     const sorted = getSortedStartups(snapshot.startups);
 
@@ -140,35 +147,39 @@ export async function GET(request: NextRequest) {
       ...(st.linkedinUrl ? { linkedinUrl: st.linkedinUrl } : {}),
     }));
 
-  const payload = {
-    meta: {
-      name: "VC Deal Flow Signal",
-      description:
-        "Startup engineering acceleration data from public GitHub activity. Commit velocity, contributor growth, and breakout signals across startup sectors.",
-      website: BASE_URL,
-      methodology: `${BASE_URL}/methodology`,
-      period: {
-        slug: period.slug,
-        name: period.name,
-      },
-      availablePeriods: allPeriods.map((p) => ({
-        slug: p.slug,
-        name: p.name,
-        current: p.current,
-      })),
-      lastUpdated: lastModified.toISOString(),
-      totalSectors: activeSectors.length,
-      totalStartups: allStartups.length,
-      license:
-        "Free for personal and editorial use. Attribution required: cite as 'VC Deal Flow Signal (signals.gitdealflow.com)'. Commercial redistribution prohibited.",
-      citation:
-        "VC Deal Flow Signal (signals.gitdealflow.com), " + period.name + " data.",
+  const meta = {
+    name: "VC Deal Flow Signal",
+    description:
+      "Startup engineering acceleration data from public GitHub activity. Commit velocity, contributor growth, and breakout signals across startup sectors.",
+    website: BASE_URL,
+    methodology: `${BASE_URL}/methodology`,
+    period: {
+      slug: period.slug,
+      name: period.name,
     },
-    trending: globalTop20,
-    sectors: sectorSummaries,
+    availablePeriods: allPeriods.map((p) => ({
+      slug: p.slug,
+      name: p.name,
+      current: p.current,
+    })),
+    lastUpdated: lastModified.toISOString(),
+    totalSectors: activeSectors.length,
+    totalStartups: allStartups.length,
+    license:
+      "Free for personal and editorial use. Attribution required: cite as 'VC Deal Flow Signal (signals.gitdealflow.com)'. Commercial redistribution prohibited.",
+    citation:
+      "VC Deal Flow Signal (signals.gitdealflow.com), " + period.name + " data.",
   };
 
-  return new Response(JSON.stringify(payload, null, 2), {
+  // mode=trending → meta + top-20 only (~9KB).
+  // sector=<slug>  → meta + trending + that sector only (~13KB).
+  // default        → full dataset (~80KB) for backward compat.
+  const payload =
+    mode === "trending"
+      ? { meta, trending: globalTop20 }
+      : { meta, trending: globalTop20, sectors: sectorSummaries };
+
+  return new Response(JSON.stringify(payload), {
     headers: {
       "Content-Type": "application/json; charset=utf-8",
       "Cache-Control": "s-maxage=3600, stale-while-revalidate=600",

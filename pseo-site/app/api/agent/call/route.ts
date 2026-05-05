@@ -282,6 +282,36 @@ export async function POST(request: NextRequest) {
         headers: { ...CORS_HEADERS, "Cache-Control": "no-store" },
       });
 
+    case "get_deep_signal": {
+      // Paid per-request tool — forward to the dedicated /api/agent/deep-signal
+      // route that owns auth + credit decrement + enrichment. Keeping that route
+      // as the single source of truth avoids divergence.
+      const startupName = String(args.name ?? "");
+      const auth = request.headers.get("authorization");
+      const url = new URL(request.url);
+      const forwardUrl = `${url.protocol}//${url.host}/api/agent/deep-signal`;
+      const fwdRes = await fetch(forwardUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          ...(auth ? { Authorization: auth } : {}),
+        },
+        body: JSON.stringify({ name: startupName }),
+      });
+      const fwdBody = await fwdRes.text();
+      return new Response(fwdBody, {
+        status: fwdRes.status,
+        headers: {
+          ...CORS_HEADERS,
+          "Content-Type": fwdRes.headers.get("content-type") ?? "application/json",
+          "Cache-Control": "no-store",
+          ...(fwdRes.headers.get("x-credits-balance")
+            ? { "X-Credits-Balance": fwdRes.headers.get("x-credits-balance")! }
+            : {}),
+        },
+      });
+    }
+
     default:
       return Response.json(
         {
@@ -293,6 +323,7 @@ export async function POST(request: NextRequest) {
             "get_signals_summary",
             "get_scout_receipts",
             "get_methodology",
+            "get_deep_signal",
           ],
         },
         { status: 404, headers: CORS_HEADERS }

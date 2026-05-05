@@ -180,6 +180,60 @@ export function getSortedStartups(startups: Startup[]): Startup[] {
   });
 }
 
+export interface TopMover extends Startup {
+  sectorName: string;
+  sectorSlug: string;
+  velocityChangePct: number;
+}
+
+/**
+ * Returns the top-N movers across every sector for the current period,
+ * ranked by commitVelocityChange. Used by the homepage hero so visitors
+ * see live, named startups instead of an abstract pitch.
+ *
+ * Applies a minimum-base-rate filter (default: 30 commits in the 14-day
+ * window) so a startup that goes from 1 → 6 commits doesn't dominate the
+ * homepage with a meaningless +999%. The floor is generous enough to keep
+ * legitimately small-but-active orgs eligible while filtering pure noise.
+ */
+export function getTopMoversThisWeek(
+  limit = 3,
+  minCommits14d = 30
+): TopMover[] {
+  const period = getCurrentPeriod();
+  const all: TopMover[] = [];
+  for (const sector of data.sectors) {
+    const snap = sector.periods[period.slug];
+    if (!snap) continue;
+    for (const s of snap.startups) {
+      if (s.commitVelocity14d < minCommits14d) continue;
+      const pct =
+        parseInt(s.commitVelocityChange.replace(/[^0-9-]/g, ""), 10) || 0;
+      all.push({
+        ...s,
+        sectorName: sector.name,
+        sectorSlug: sector.slug,
+        velocityChangePct: pct,
+      });
+    }
+  }
+  return all
+    .sort((a, b) => b.velocityChangePct - a.velocityChangePct)
+    .slice(0, limit);
+}
+
+/**
+ * Total tracked startup count for the current period — used for the
+ * social-proof bar and homepage credibility chips.
+ */
+export function getTotalTrackedThisWeek(): number {
+  const period = getCurrentPeriod();
+  return data.sectors.reduce((sum, sector) => {
+    const snap = sector.periods[period.slug];
+    return snap ? sum + snap.startups.length : sum;
+  }, 0);
+}
+
 /**
  * Returns related sectors with a link to the same period.
  */
@@ -687,15 +741,21 @@ export function parseTrendSlug(slug: string): TrendPageData | null {
   return { sector, periodA, periodB, snapshotA, snapshotB };
 }
 
-/** Returns the mtime of data/startups.json as the "last modified" date for all pSEO pages. */
+// Vercel's build system resets file mtimes to 2018-10-20 (known platform
+// quirk). If the raw mtime is older than this floor, fall back to the build
+// timestamp so we never publish a 2018 "last modified" to LLMs or search
+// engines.
+const MTIME_FLOOR = new Date("2024-01-01T00:00:00.000Z").getTime();
+
 export function getDataLastModified(): Date {
   try {
     const filePath = path.join(process.cwd(), "data", "startups.json");
     const stat = fs.statSync(filePath);
-    return stat.mtime;
+    if (stat.mtime.getTime() >= MTIME_FLOOR) return stat.mtime;
   } catch {
-    return new Date();
+    // ignore
   }
+  return new Date();
 }
 
 // ---------------------------------------------------------------------------

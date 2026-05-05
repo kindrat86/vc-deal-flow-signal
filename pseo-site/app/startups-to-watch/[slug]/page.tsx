@@ -16,6 +16,7 @@ import CTABanner from "@/components/CTABanner";
 import ShareBar from "@/components/ShareBar";
 import VelocityBar from "@/components/charts/VelocityBar";
 import SignalDistribution from "@/components/charts/SignalDistribution";
+import CrossAxisNav from "@/components/CrossAxisNav";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -24,6 +25,9 @@ interface PageProps {
 export async function generateStaticParams() {
   return getAllPageSlugs().map((slug) => ({ slug }));
 }
+
+export const dynamicParams = false;
+export const revalidate = 604800;
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
@@ -272,6 +276,9 @@ export default async function SectorPage({ params }: PageProps) {
         <section className="mb-12" aria-label="Call to action">
           <CTABanner />
         </section>
+
+        {/* Cross-axis exploration (best/trends/signals/stage) */}
+        <CrossAxisNav sector={sector} period={period} snapshot={snapshot} />
 
         {/* Other periods for this sector */}
         {otherPeriods.length > 0 && (

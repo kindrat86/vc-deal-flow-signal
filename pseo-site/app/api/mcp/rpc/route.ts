@@ -6,6 +6,7 @@ import {
   type Startup,
 } from "@/lib/data";
 import { slugify } from "@/lib/slugify";
+import { bearerFromHeader, verifyToken } from "@/lib/oauth/jwt";
 
 const BASE_URL = "https://signals.gitdealflow.com";
 const SERVER_NAME = "vc-deal-flow-signal";
@@ -44,15 +45,112 @@ const SECTOR_SLUGS = [
   "social-community",
 ] as const;
 
+// All tools are read-only research operations against a public dataset.
+// Per MCP spec: readOnlyHint=true, idempotentHint=true, openWorldHint=false
+// (closed-world: tools only return data from our pre-computed weekly dataset,
+// they do NOT crawl external services on demand). destructiveHint=false because
+// nothing is mutated. annotations are advisory hints to the host UI; we publish
+// them so Anthropic Connectors directory + other catalogs can render appropriately.
+const READ_ONLY_ANNOTATIONS = {
+  readOnlyHint: true,
+  idempotentHint: true,
+  destructiveHint: false,
+  openWorldHint: false,
+} as const;
+
+const STARTUP_ITEM_SCHEMA = {
+  type: "object" as const,
+  description:
+    "A single startup ranked by engineering acceleration, derived from public GitHub activity.",
+  properties: {
+    rank: { type: "integer", description: "1-indexed rank within this result set." },
+    name: { type: "string", description: "Startup or GitHub org name." },
+    sector: { type: "string", description: "Sector the startup is classified into." },
+    stage: {
+      type: "string",
+      description: "Funding stage if known (e.g. 'Seed', 'Series A', 'Unknown').",
+    },
+    geography: { type: "string", description: "Headquarters region if known." },
+    commitVelocity14d: {
+      type: "number",
+      description: "Commits across tracked repos in the trailing 14 days.",
+    },
+    commitVelocityChange: {
+      type: "string",
+      description:
+        "Percentage change in commit velocity vs. the prior 14-day window, e.g. '+142%'.",
+    },
+    contributors: {
+      type: "integer",
+      description: "Distinct contributors active in the last 30 days.",
+    },
+    contributorGrowth: {
+      type: "string",
+      description: "Percentage change in contributor count vs. the prior 30-day window.",
+    },
+    newRepos: {
+      type: "integer",
+      description: "New public repositories created in the last 30 days.",
+    },
+    signalType: {
+      type: "string",
+      description:
+        "Classification label. Common values: 'breakout' (sudden surge), 'acceleration' (sustained growth), 'steady' (healthy baseline), 'cooling' (declining).",
+    },
+    description: { type: "string", description: "One-line summary of the startup." },
+    githubUrl: { type: "string", format: "uri", description: "Primary GitHub org URL." },
+    websiteUrl: {
+      type: "string",
+      format: "uri",
+      description: "Company website if known.",
+    },
+    linkedinUrl: {
+      type: "string",
+      format: "uri",
+      description: "LinkedIn company page if known.",
+    },
+    profileUrl: {
+      type: "string",
+      format: "uri",
+      description: "Public profile page on signals.gitdealflow.com.",
+    },
+  },
+  required: [
+    "rank",
+    "name",
+    "commitVelocityChange",
+    "contributors",
+    "signalType",
+    "githubUrl",
+  ],
+} as const;
+
 const TOOLS = [
   {
     name: "get_trending_startups",
+    title: "Trending Startups",
     description:
       "Top 20 startups by engineering acceleration across all 20 sectors for the current weekly period. Read-only, idempotent.",
     inputSchema: { type: "object", properties: {}, additionalProperties: false },
+    outputSchema: {
+      type: "object" as const,
+      properties: {
+        period: { type: "string", description: "Reporting period label, e.g. 'Q2 2026'." },
+        startups: {
+          type: "array",
+          description: "Top 20 startups ranked by engineering acceleration.",
+          items: STARTUP_ITEM_SCHEMA,
+        },
+        citation: { type: "string", description: "Suggested citation string for reports." },
+        source: { type: "string", format: "uri" },
+      },
+      required: ["period", "startups", "citation", "source"],
+    },
+    annotations: READ_ONLY_ANNOTATIONS,
   },
   {
     name: "search_startups_by_sector",
+    title: "Search Startups by Sector",
     description:
       "Every tracked startup within a sector, ranked by engineering acceleration. Sector slug must be one of 20 enumerated values.",
     inputSchema: {
@@ -61,34 +159,139 @@ const TOOLS = [
         sector: {
           type: "string",
           enum: [...SECTOR_SLUGS],
-          description: "Sector slug from the enumerated list.",
+          description:
+            "Sector slug from the enumerated list. Map fuzzy user input to the closest slug (e.g. 'AI' → 'ai-ml', 'crypto' → 'web3', 'cyber' → 'cybersecurity', 'SaaS' → 'enterprise-saas').",
+          examples: ["ai-ml", "fintech", "cybersecurity", "developer-tools"],
         },
       },
       required: ["sector"],
       additionalProperties: false,
     },
+    outputSchema: {
+      type: "object" as const,
+      properties: {
+        sector: {
+          type: "object",
+          description: "Sector metadata.",
+          properties: {
+            slug: { type: "string", description: "Sector slug." },
+            name: { type: "string", description: "Human-readable sector name." },
+            description: { type: "string", description: "One-line sector description." },
+            url: { type: "string", format: "uri", description: "Sector landing page URL." },
+          },
+          required: ["slug", "name"],
+        },
+        period: { type: "string", description: "Reporting period label." },
+        startupCount: { type: "integer", description: "Number of startups in this sector." },
+        startups: {
+          type: "array",
+          description: "Startups within the sector, ranked by engineering acceleration.",
+          items: STARTUP_ITEM_SCHEMA,
+        },
+        citation: { type: "string", description: "Suggested citation string." },
+        error: { type: "string", description: "Present only when the sector slug is invalid." },
+        availableSectors: {
+          type: "array",
+          description: "When error is present, the full list of valid sector slugs.",
+          items: { type: "string" },
+        },
+      },
+      required: ["period"],
+    },
+    annotations: READ_ONLY_ANNOTATIONS,
   },
   {
     name: "get_startup_signal",
+    title: "Get Startup Signal",
     description:
       "Full engineering-acceleration profile for a single tracked startup, by display name or GitHub org slug. Case-insensitive, normalization-tolerant.",
     inputSchema: {
       type: "object",
       properties: {
-        name: { type: "string", minLength: 1, maxLength: 100 },
+        name: {
+          type: "string",
+          description:
+            "Startup display name OR GitHub org name. Case-insensitive; punctuation and whitespace are ignored during matching.",
+          minLength: 1,
+          maxLength: 100,
+          examples: ["roboflow", "SkyPilot", "Supabase", "Hugging Face"],
+        },
       },
       required: ["name"],
       additionalProperties: false,
     },
+    outputSchema: {
+      type: "object" as const,
+      properties: {
+        found: {
+          type: "boolean",
+          description:
+            "True when the startup is in the tracked universe; false is an expected outcome, not an error.",
+        },
+        startup: STARTUP_ITEM_SCHEMA,
+        suggestion: {
+          type: "string",
+          description:
+            "When found=false, a hint on how to discover the correct name or alternative tools to call.",
+        },
+        citation: { type: "string", description: "Suggested citation string." },
+      },
+      required: ["found"],
+    },
+    annotations: READ_ONLY_ANNOTATIONS,
   },
   {
     name: "get_signals_summary",
+    title: "Dataset Summary",
     description:
       "Period, sector and startup counts, last refresh, citation, and direct URLs to every machine-readable format.",
     inputSchema: { type: "object", properties: {}, additionalProperties: false },
+    outputSchema: {
+      type: "object" as const,
+      properties: {
+        period: { type: "string", description: "Current reporting period label." },
+        sectorsActive: { type: "integer", description: "Number of active sectors." },
+        startupsTracked: { type: "integer", description: "Total startups in the dataset." },
+        lastDataRefresh: {
+          type: "string",
+          description: "ISO 8601 timestamp of the last refresh.",
+        },
+        updateFrequency: { type: "string", description: "Human-readable update cadence." },
+        formats: {
+          type: "object",
+          description: "Direct URLs for every machine-readable format.",
+          properties: {
+            json: { type: "string", format: "uri" },
+            csv: { type: "string", format: "uri" },
+            rss: { type: "string", format: "uri" },
+            openapi: { type: "string", format: "uri" },
+            llmsTxt: { type: "string", format: "uri" },
+            llmsFullTxt: { type: "string", format: "uri" },
+            aiPolicy: { type: "string", format: "uri" },
+            agentCard: { type: "string", format: "uri" },
+            mcpManifest: { type: "string", format: "uri" },
+            agentsMd: { type: "string", format: "uri" },
+            nlweb: { type: "string", format: "uri" },
+          },
+        },
+        website: { type: "string", format: "uri" },
+        dashboard: { type: "string", format: "uri" },
+        citation: { type: "string", description: "Suggested citation string." },
+      },
+      required: [
+        "period",
+        "sectorsActive",
+        "startupsTracked",
+        "lastDataRefresh",
+        "formats",
+        "citation",
+      ],
+    },
+    annotations: READ_ONLY_ANNOTATIONS,
   },
   {
     name: "get_scout_receipts",
+    title: "Scout Score for GitHub User",
     description:
       "Compute a Scout Score (0-100) for a GitHub user from their public starring history. Cross-references starred repos against ~75 validated unicorns and grades how many they starred *before* the validation event. Returns score, rank (curious/scout/sharp/elite/oracle), top early calls, personality summary, and a shareable card URL.",
     inputSchema: {
@@ -100,17 +303,137 @@ const TOOLS = [
           maxLength: 39,
           pattern: "^[a-zA-Z0-9](?:[a-zA-Z0-9]|-(?=[a-zA-Z0-9])){0,38}$",
           description: "GitHub username, 1-39 chars, alphanumeric + single hyphens.",
+          examples: ["torvalds", "kindrat86", "tj"],
         },
       },
       required: ["github_username"],
       additionalProperties: false,
     },
+    outputSchema: {
+      type: "object" as const,
+      properties: {
+        username: { type: "string", description: "GitHub username analysed." },
+        score: {
+          type: "number",
+          description: "Scout Score, 0-100. Higher means earlier+more validated calls.",
+        },
+        rank: {
+          type: "string",
+          description:
+            "Rank label derived from the score: 'curious' | 'scout' | 'sharp' | 'elite' | 'oracle'.",
+        },
+        total_stars: { type: "integer", description: "Total public stars analysed." },
+        matched_count: {
+          type: "integer",
+          description: "Stars that match a validated unicorn in the database.",
+        },
+        early_count: {
+          type: "integer",
+          description: "Of the matches, how many were starred BEFORE the validation event.",
+        },
+        top_wins: {
+          type: "array",
+          description: "Top early calls ranked by points contribution.",
+          items: {
+            type: "object",
+            properties: {
+              org: { type: "string" },
+              name: { type: "string" },
+              repo: { type: "string" },
+              event: { type: "string", description: "Validation event label." },
+              event_date: { type: "string", description: "ISO date of the validation event." },
+              starred_at: { type: "string", description: "ISO date of the star." },
+              months_early: {
+                type: "number",
+                description: "Months between star and validation event.",
+              },
+              weight: { type: "number" },
+              points: { type: "number" },
+            },
+            required: ["name", "event", "months_early", "points"],
+          },
+        },
+        personality: {
+          type: "string",
+          description: "Optional one-line personality summary based on starring patterns.",
+        },
+        share_url: {
+          type: "string",
+          format: "uri",
+          description: "Shareable Scout Receipts page URL.",
+        },
+        og_image_url: {
+          type: "string",
+          format: "uri",
+          description: "OG/Twitter card image URL for sharing.",
+        },
+      },
+      required: ["username", "score", "rank", "share_url"],
+    },
+    annotations: READ_ONLY_ANNOTATIONS,
   },
   {
     name: "get_methodology",
+    title: "Methodology Documentation",
     description:
       "Full methodology document covering data sources, metric computation, signal classification thresholds, refresh cadence, and known limitations.",
     inputSchema: { type: "object", properties: {}, additionalProperties: false },
+    outputSchema: {
+      type: "object" as const,
+      properties: {
+        methodology: {
+          type: "string",
+          description:
+            "Plain-text methodology covering sources, metrics, thresholds, cadence, and limitations.",
+        },
+        url: {
+          type: "string",
+          format: "uri",
+          description: "Canonical methodology page on signals.gitdealflow.com.",
+        },
+      },
+      required: ["methodology", "url"],
+    },
+    annotations: READ_ONLY_ANNOTATIONS,
+  },
+  {
+    name: "get_deep_signal",
+    title: "Get Deep Signal (paid)",
+    description:
+      "PAID per-request — €0.19/call, 100 credits = €19 at https://signals.gitdealflow.com/agents/credits. Returns enriched signal beyond the free get_startup_signal: composite score (0-100), velocity/growth/novelty sub-scores, in-sector rank + percentile, plain-English investment thesis, top-3 sector comparables, and multi-period history. Requires Authorization: Bearer gdf_v2.cus_xxx.<hmac>. 1 credit consumed only on a successful match; misses are FREE. Credits never expire.",
+    inputSchema: {
+      type: "object" as const,
+      properties: {
+        name: {
+          type: "string",
+          minLength: 1,
+          maxLength: 100,
+          description: "Startup display name or GitHub org slug.",
+        },
+      },
+      required: ["name"],
+      additionalProperties: false,
+    },
+    outputSchema: {
+      type: "object" as const,
+      properties: {
+        found: { type: "boolean" },
+        balance: { type: "integer", minimum: 0 },
+        charged: { type: "integer", minimum: 0, maximum: 1 },
+        scores: {
+          type: "object",
+          properties: {
+            velocity: { type: "integer", minimum: 0, maximum: 100 },
+            growth: { type: "integer", minimum: 0, maximum: 100 },
+            novelty: { type: "integer", minimum: 0, maximum: 100 },
+            composite: { type: "integer", minimum: 0, maximum: 100 },
+          },
+        },
+        thesis: { type: "string" },
+      },
+      required: ["found"],
+    },
+    annotations: READ_ONLY_ANNOTATIONS,
   },
 ];
 
@@ -415,7 +738,11 @@ function rpcError(id: JsonRpcId | undefined, code: number, message: string) {
   );
 }
 
-async function handleToolsCall(id: JsonRpcId | undefined, params: unknown) {
+async function handleToolsCall(
+  id: JsonRpcId | undefined,
+  params: unknown,
+  request: NextRequest
+) {
   const p = (params ?? {}) as { name?: string; arguments?: Record<string, unknown> };
   const name = p.name;
   const args = (p.arguments ?? {}) as Record<string, unknown>;
@@ -546,6 +873,49 @@ async function handleToolsCall(id: JsonRpcId | undefined, params: unknown) {
       return rpcResult(id, {
         content: [{ type: "text", text }],
         structuredContent: structured,
+      });
+    }
+    case "get_deep_signal": {
+      // Paid tool — forward to /api/agent/deep-signal which owns auth + credit
+      // ledger. Auth scheme is gdf_v2.<customerId>.<hmac>, NOT the OAuth JWT
+      // used for free-tool gating; the POST handler skips JWT verify when the
+      // bearer is gdf_v2-prefixed so this path can run unblocked.
+      const startupName = String(args.name ?? "");
+      const auth = request.headers.get("authorization");
+      const url = new URL(request.url);
+      const fwdRes = await fetch(`${url.protocol}//${url.host}/api/agent/deep-signal`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          ...(auth ? { Authorization: auth } : {}),
+        },
+        body: JSON.stringify({ name: startupName }),
+      });
+      const data = (await fwdRes.json().catch(() => ({}))) as Record<string, unknown>;
+      if (!fwdRes.ok) {
+        return rpcError(
+          id,
+          fwdRes.status === 401 ? -32001 : fwdRes.status === 402 ? -32004 : -32603,
+          (data.message as string) ?? `HTTP ${fwdRes.status}`
+        );
+      }
+      const lines: string[] = [];
+      if (data.found === false) {
+        lines.push(
+          `"${startupName}" is not in the tracked universe. ${data.suggestion ?? ""} (0 credits charged for misses.)`
+        );
+      } else {
+        lines.push(`${data.name as string} — Deep Signal (paid)`);
+        const scores = data.scores as Record<string, number> | undefined;
+        const rank = data.rank as Record<string, number> | undefined;
+        if (scores) lines.push(`Composite ${scores.composite}/100 · V${scores.velocity} G${scores.growth} N${scores.novelty}`);
+        if (rank) lines.push(`Sector rank: #${rank.inSector} of ${rank.sectorTotal} (${rank.sectorPercentile}th pct)`);
+        if (typeof data.thesis === "string") lines.push(`Thesis: ${data.thesis}`);
+        lines.push(`Credits remaining: ${data.balance ?? "?"} · Charged: ${data.charged ?? 0}`);
+      }
+      return rpcResult(id, {
+        content: [{ type: "text", text: lines.join("\n") }],
+        structuredContent: data,
       });
     }
     default:
@@ -746,6 +1116,37 @@ export async function OPTIONS() {
 }
 
 export async function POST(request: NextRequest) {
+  // OPTIONAL OAuth 2.1 bearer-token verification.
+  // - If Authorization header is present, the token MUST be valid (else 401).
+  // - If absent, request is allowed anyway — preserves backward compat for
+  //   public clients (Claude Desktop, Cursor, Cline, etc.) that don't send tokens.
+  // - This satisfies Anthropic Connectors Directory's requirement that the
+  //   server "supports OAuth 2.1" while keeping the open-by-default surface.
+  const auth = request.headers.get("authorization");
+  if (auth) {
+    const token = bearerFromHeader(auth);
+    // gdf_v2.<customerId>.<hmac> is the credit-pack API key; it has its own
+    // validator inside /api/agent/deep-signal. Skip the OAuth JWT verify here
+    // so the paid-tool dispatcher can forward and validate downstream.
+    const isCreditPackKey = typeof token === "string" && token.startsWith("gdf_v2.");
+    if (!isCreditPackKey) {
+      const claims = verifyToken(token);
+      if (!claims) {
+        return new Response(
+          JSON.stringify({ jsonrpc: "2.0", id: null, error: { code: -32001, message: "Invalid bearer token" } }),
+          {
+            status: 401,
+            headers: {
+              ...CORS_HEADERS,
+              "Content-Type": "application/json",
+              "WWW-Authenticate": 'Bearer realm="vc-deal-flow-signal-mcp", error="invalid_token"',
+            },
+          }
+        );
+      }
+    }
+  }
+
   let body: JsonRpcRequest;
   try {
     body = (await request.json()) as JsonRpcRequest;
@@ -761,7 +1162,24 @@ export async function POST(request: NextRequest) {
       return rpcResult(body.id, {
         protocolVersion: PROTOCOL_VERSION,
         capabilities: { tools: {}, resources: {}, prompts: {} },
-        serverInfo: { name: SERVER_NAME, version: SERVER_VERSION },
+        serverInfo: {
+          name: SERVER_NAME,
+          version: SERVER_VERSION,
+          title: "VC Deal Flow Signal",
+          websiteUrl: "https://gitdealflow.com",
+          icons: [
+            {
+              src: "https://signals.gitdealflow.com/icon.svg",
+              mimeType: "image/svg+xml",
+              sizes: ["any"],
+            },
+            {
+              src: "https://signals.gitdealflow.com/icon.png",
+              mimeType: "image/png",
+              sizes: ["192x192"],
+            },
+          ],
+        },
       });
     case "notifications/initialized":
     case "notifications/cancelled":
@@ -771,7 +1189,7 @@ export async function POST(request: NextRequest) {
     case "tools/list":
       return rpcResult(body.id, { tools: TOOLS });
     case "tools/call":
-      return handleToolsCall(body.id, body.params);
+      return handleToolsCall(body.id, body.params, request);
     case "resources/list":
       return rpcResult(body.id, { resources: RESOURCES });
     case "resources/templates/list":

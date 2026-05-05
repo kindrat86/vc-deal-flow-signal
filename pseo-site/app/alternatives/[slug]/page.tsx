@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { alternatives, getAlternative, getAllAlternativeSlugs, type AlternativeFAQ } from "@/content/alternatives";
 import { useCases } from "@/content/use-cases";
 import { getAllSectors, getCurrentPeriod, getDataLastModified } from "@/lib/data";
+import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -12,6 +13,9 @@ interface PageProps {
 export async function generateStaticParams() {
   return getAllAlternativeSlugs().map((slug) => ({ slug }));
 }
+
+export const dynamicParams = false;
+export const revalidate = 604800;
 
 export async function generateMetadata({
   params,
@@ -130,7 +134,7 @@ export default async function AlternativePage({ params }: PageProps) {
             price: "9.97",
             priceCurrency: "EUR",
             availability: "https://schema.org/InStock",
-            description: "Full dashboard: 50+ ranked startups, sector/stage/geography filters, MCP access.",
+            description: "Full dashboard: 85+ ranked startups, sector/stage/geography filters, MCP access.",
             priceSpecification: {
               "@type": "UnitPriceSpecification",
               price: "9.97",
@@ -214,6 +218,7 @@ export default async function AlternativePage({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <AgentMirrorLinks path={`/alternatives/${slug}`} />
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <nav className="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">

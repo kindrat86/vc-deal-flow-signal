@@ -196,6 +196,20 @@ export default function DataSourcesPage() {
         ],
       },
       {
+        "@type": "WebPage",
+        "@id": "https://signals.gitdealflow.com/data-sources#webpage",
+        url: "https://signals.gitdealflow.com/data-sources",
+        name: "Data Sources — VC Deal Flow Signal",
+        description:
+          "Public GitHub data sources, refresh cadence, and dataset distribution formats for VC Deal Flow Signal.",
+        inLanguage: "en-US",
+        isPartOf: { "@id": "https://signals.gitdealflow.com/#website" },
+        speakable: {
+          "@type": "SpeakableSpecification",
+          cssSelector: ["h1", "h2", ".speakable", "[data-agent-summary]"],
+        },
+      },
+      {
         "@type": "FAQPage",
         mainEntity: [
           {

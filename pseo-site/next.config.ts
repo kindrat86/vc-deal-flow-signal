@@ -18,6 +18,51 @@ const nextConfig: NextConfig = {
     ];
   },
 
+  async redirects() {
+    return [
+      {
+        source: "/startups-to-watch/:sector([a-z0-9-]+)-q2-2025",
+        destination: "/startups-to-watch/:sector-q3-2025",
+        permanent: true,
+      },
+      {
+        source: "/icon",
+        destination: "/icon.png",
+        permanent: true,
+      },
+      {
+        source: "/apple-icon",
+        destination: "/apple-icon.png",
+        permanent: true,
+      },
+      {
+        source: "/signals/commit-velocity",
+        destination: "/signals/define/commit-velocity",
+        permanent: true,
+      },
+      {
+        source: "/signals/commit-velocity-change",
+        destination: "/signals/define/commit-velocity-change",
+        permanent: true,
+      },
+      {
+        source: "/signals/contributor-growth",
+        destination: "/signals/define/contributor-growth",
+        permanent: true,
+      },
+      {
+        source: "/startups-to-watch",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/signals/engineering-hiring-burst",
+        destination: "/signals/define/engineering-hiring-burst",
+        permanent: true,
+      },
+    ];
+  },
+
   async headers() {
     return [
       {

@@ -34,7 +34,7 @@ export default function DevelopersPage() {
         "@type": "APIReference",
         name: "VC Deal Flow Signal API",
         description:
-          "Public JSON and CSV endpoints plus an MCP server exposing five tools for querying startup engineering acceleration signals.",
+          "Public JSON and CSV endpoints plus an MCP server exposing six tools for querying startup engineering acceleration signals.",
         documentation: "https://signals.gitdealflow.com/developers",
         url: "https://signals.gitdealflow.com/api/signals.json",
       },
@@ -65,6 +65,18 @@ export default function DevelopersPage() {
         ],
       },
       {
+        "@type": "WebPage",
+        "@id": "https://signals.gitdealflow.com/developers#webpage",
+        url: "https://signals.gitdealflow.com/developers",
+        name: "VC Deal Flow Signal Developer Documentation",
+        inLanguage: "en-US",
+        isPartOf: { "@id": "https://signals.gitdealflow.com/#website" },
+        speakable: {
+          "@type": "SpeakableSpecification",
+          cssSelector: ["h1", "h2", ".speakable", "[data-agent-summary]"],
+        },
+      },
+      {
         "@type": "FAQPage",
         mainEntity: [
           {
@@ -88,7 +100,7 @@ export default function DevelopersPage() {
             name: "Is there a Model Context Protocol (MCP) server?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Yes. The MCP server is published on npm as @gitdealflow/mcp-signal and provides five tools: get_trending_startups, get_signals_summary, get_startup_signal, get_methodology, and get_weekly_summary. It works in Claude Desktop, Claude Code, Cursor, and any other MCP-compatible client. Installation takes one command: npx -y @gitdealflow/mcp-signal. The server is open source.",
+              text: "Yes. The MCP server is published on npm as @gitdealflow/mcp-signal and provides six tools: get_trending_startups, search_startups_by_sector, get_startup_signal, get_signals_summary, get_scout_receipts, and get_methodology. It works in Claude Desktop, Claude Code, Cursor, and any other MCP-compatible client. Installation takes one command: npx -y @gitdealflow/mcp-signal. The server is open source.",
             },
           },
           {
@@ -129,6 +141,14 @@ export default function DevelopersPage() {
             acceptedAnswer: {
               "@type": "Answer",
               text: "Yes. An Agent Card is published at /.well-known/agent-card.json and the JSON-RPC stub endpoint is /api/a2a. Worked examples are provided for Claude Code, Cursor, OpenAI Agents SDK, LangChain, and Vercel AI SDK at /a2a/<framework>. The A2A surface is intentionally thin and stable — see /a2a for the full specification.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Is there per-request pricing for agents?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Yes. The new get_deep_signal MCP tool and the POST /api/agent/deep-signal HTTP endpoint are priced per-request: €0.19 per call, sold in 100-credit packs at €19. One credit is consumed per match; misses (startup not in our universe) are free. Credits never expire. The six free MCP tools stay free forever — credits only apply to get_deep_signal. Buy at signals.gitdealflow.com/agents/credits.",
             },
           },
         ],
@@ -311,6 +331,44 @@ export default function DevelopersPage() {
             <div className="rounded border border-slate-800 bg-slate-950 px-3 py-2 font-mono text-sm text-emerald-400 overflow-x-auto">
               curl https://signals.gitdealflow.com/api/signals.json
             </div>
+          </div>
+        </section>
+
+        <section className="mb-12" aria-label="Per-request pricing">
+          <h2 className="text-xl font-semibold text-gray-100 mb-4">
+            Per-Request Pricing (Agents)
+          </h2>
+          <p className="text-gray-400 text-sm leading-relaxed mb-4">
+            The free MCP tools and REST endpoints listed above stay free
+            forever. For agents that need scored, ranked, comparable-aware
+            output — memo-grade signal — the new{" "}
+            <code className="text-emerald-400 font-mono">get_deep_signal</code>{" "}
+            tool is priced per-request.
+          </p>
+          <div className="rounded-lg border border-amber-500/30 bg-amber-500/5 p-6 mb-4">
+            <div className="flex flex-wrap items-baseline justify-between gap-3 mb-2">
+              <p className="text-gray-100 font-semibold">
+                Starter pack: 100 credits
+              </p>
+              <p className="text-amber-400 font-mono text-sm">
+                €19 · €0.19/call
+              </p>
+            </div>
+            <ul className="text-gray-300 text-sm leading-relaxed space-y-1 mb-4">
+              <li>• 1 credit per deep signal returned. Misses are free.</li>
+              <li>• Credits never expire.</li>
+              <li>• API key delivered instantly via email.</li>
+              <li>
+                • Works in MCP (set <code className="text-emerald-400 font-mono">GITDEALFLOW_API_KEY</code>) or
+                straight HTTP (<code className="text-emerald-400 font-mono">Authorization: Bearer …</code>).
+              </li>
+            </ul>
+            <Link
+              href="/agents/credits"
+              className="inline-flex items-center justify-center px-5 py-2 rounded-lg bg-amber-600 hover:bg-amber-500 text-white text-sm font-semibold transition-colors"
+            >
+              Pricing &amp; checkout →
+            </Link>
           </div>
         </section>
 

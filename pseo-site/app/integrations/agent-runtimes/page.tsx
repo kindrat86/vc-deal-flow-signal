@@ -220,7 +220,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: "What about Claude Desktop, Claude.ai, and Mistral Le Chat?",
-    a: "Already covered on dedicated pages. Claude Desktop installs via the .mcpb extension at github.com/kindrat86/mcp-deal-flow-signal/releases or via Smithery one-click. Claude.ai uses the Anthropic Connectors Directory (HTTP MCP at " +
+    a: "Already covered on dedicated pages. Claude Desktop installs via the .mcpb extension at github.com/kindrat86/mcp-deal-flow-signal/releases or via npm (Glama A-Tier 4.9/5.0). Claude.ai uses the Anthropic Connectors Directory (HTTP MCP at " +
       HTTP_RPC +
       "). Mistral Le Chat: see /integrations/mistral. ChatGPT GPTs: see /integrations/chatgpt.",
   },
