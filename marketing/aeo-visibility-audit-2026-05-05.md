@@ -13,16 +13,18 @@ Full multi-dimensional audit of SEO/pSEO/AEO/GEO/AIO health across both apex (`g
 | AIO | 90 |
 | **Composite** | **~84** |
 
-## Final state (post-fix, 11 waves)
+## Final state (post-fix, 12 waves)
 
 | Metric | Score | Delta |
 |---|---:|---:|
-| SEO (classic) | 99 | +13 |
-| pSEO | 99 | +11 |
+| SEO (classic) | 100 | +14 (canonical bug fix) |
+| pSEO | 100 | +12 (canonical bug fix) |
 | AEO | 97 | +9 |
 | GEO | 98 | +14 |
 | AIO | 99.5 | +9.5 |
-| **Composite** | **~98.5** | **+14.5** |
+| **Composite** | **~99** | **+15** |
+
+> **Wave 12 was a critical fix:** the duplicate-canonical bug meant Google was likely deduping the entire site to `/`, suppressing 1,000+ otherwise-perfect URLs from the index. All other waves layered features on top of this bug; only after wave 12 are those features actually visible to crawlers.
 
 Bonus operational wins (not part of the score but high impact):
 - IndexNow now submits 1,050 URLs per build (was 5).
@@ -98,6 +100,11 @@ Bonus operational wins (not part of the score but high impact):
 31. Built per-page `opengraph-image.tsx` for `/best/[slug]`, `/use-cases/[slug]`, `/stage/[slug]`, `/trends/[slug]`, `/topics/[slug]` (5 new routes). Each generator surfaces page-specific data (sector + year + count for best, persona + tagline for use-cases, period flow arrow for trends, etc.). Twitter/LinkedIn/Slack share previews now show contextual cards instead of brand-only fallback. **Side fix:** these templates had `images: ["/opengraph-image"]` hard-coded in metadata, which OVERRODE the file-system OG (Next 16 prefers explicit metadata). Removed the explicit images line so file-system convention wins.
 32. Schema.org `@id` mismatch — `knowledge-graph.json` and home `Organization.founder` referenced `/about#person` but the `/about` page emitted `Person` at `@id=/about#author`. Aligned `/about` to `#person` for cross-page graph resolution.
 33. Apex `gitdealflow.com/.well-known/*` mostly returned 404 — only `security.txt` existed; agent-discovery files lived only at `signals.gitdealflow.com`. Added 9 redirects in `landing/vercel.json` so apex `/.well-known/{mcp,agent-card,ai-plugin,ai-policy,api-catalog}.json` + `/knowledge-graph.json`, `/qa.jsonl`, `/feed.xml`, `/api/openapi.json` all return 200 (302 to canonical signals subdomain). All 14 agent-discovery files now resolve from both hosts.
+
+### Wave 12 — CRITICAL: duplicate canonical + wrong hreflang baseline (highest-impact fix)
+34. Root layout was rendering `<HreflangLinks canonical='https://signals.gitdealflow.com/' …/>` on every page render, producing TWO conflicting `<link rel="canonical">` elements per page (layout's `/` + page metadata's actual path). Verified live before fix on /faq, /best/*, /signals/*, /compare/* — Google sees conflicting signals and may dedupe the entire site to `/`, dropping thousands of pages from the index. **Single highest-impact bug found in this audit.**
+35. Same layout call also emitted the homepage hreflang map on every page — semantically wrong because hreflang means "the X-language version of THIS PAGE is at URL Y". Layout was claiming e.g. "the Chinese version of /faq is /zh", but /zh is the localized HOME, not localized faq.
+36. Fix: dropped HreflangLinks from layout entirely. Each page that has actual localized siblings (home, locale stubs) renders its own correctly-scoped `<HreflangLinks/>`. Pages without localized variants stay English-only — Google's correct default. Made the `canonical` prop optional on HreflangLinks so it can be safely called from layouts in future without re-emitting canonical. Verified live: 1 canonical per page, hreflang only on pages with real localized siblings (15 unique on home + locale stubs, 0 on non-localized pages).
 
 ## Live agent surfaces (post-audit)
 
