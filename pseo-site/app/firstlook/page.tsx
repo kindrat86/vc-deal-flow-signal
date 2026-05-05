@@ -149,6 +149,35 @@ export default function FirstLookPage() {
           </p>
         </header>
 
+        {/* BEST BAIT — Brunson DotCom Secrets Ch 13. Frame the offer as
+            bait specifically built for the developer-investor avatar so
+            the buyer recognises it as their kind of trip-wire, not a
+            generic upsell. The teaching is that bait is signal, not
+            noise — match the bait to the buyer&rsquo;s identity. */}
+        <aside
+          aria-label="Why this is bait built for you"
+          className="rounded-xl border border-amber-700/40 bg-amber-950/15 p-5 sm:p-6 space-y-2"
+        >
+          <p className="text-amber-300 text-[10px] sm:text-xs font-semibold uppercase tracking-wider">
+            Why this is the right bait
+          </p>
+          <h2 className="text-gray-100 font-bold text-lg sm:text-xl leading-snug">
+            This pass isn&rsquo;t a generic trial. It&rsquo;s built for the
+            developer-investor specifically.
+          </h2>
+          <p className="text-gray-300 text-sm leading-relaxed">
+            Brunson&rsquo;s rule of bait: match the offer to the avatar.
+            A €7 PDF is the wrong bait for a fund partner with a
+            six-figure data budget — too small to register. It&rsquo;s the
+            <em> right </em>bait for the engineer-investor who reads
+            commit logs for fun, writes €5k–€50k checks on the side, and
+            wants to test the data on their actual thesis before
+            subscribing. That&rsquo;s why the price is €7, the deliverable
+            is sector-specific, and the format is PDF + raw CSV — not a
+            sales call, not a demo, not a calendar invite.
+          </p>
+        </aside>
+
         <section className="bg-slate-900/60 border border-slate-800 rounded-xl p-6 space-y-4">
           <h2 className="text-xl font-bold text-gray-100">What lands in your inbox</h2>
           <ul className="space-y-3">

@@ -1,0 +1,367 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { HreflangLinks } from "@/components/HreflangLinks";
+import { getHreflangLanguages } from "@/lib/hreflang";
+
+export const dynamic = "force-static";
+
+export const metadata: Metadata = {
+  title: "Where to find us — every channel, mirror, and feed",
+  description:
+    "GitDealFlow on the open web: Substack, dev.to, RSS, MCP, npm, GitHub, Bluesky, Mastodon, Farcaster, ChatGPT GPT Store, SSRN, Zenodo, agents.json, OpenAPI, llms.txt. The full distribution map for the developer-investor.",
+  alternates: { canonical: "/distribution" },
+  openGraph: {
+    title: "Where to find us — distribution map",
+    description:
+      "Every public surface where GitDealFlow's signal shows up: newsletter, RSS, MCP, agent mirrors, federated social, academic, agents.json. The map.",
+    url: "https://signals.gitdealflow.com/distribution",
+    type: "article",
+  },
+};
+
+type Channel = {
+  name: string;
+  what: string;
+  href: string;
+  external?: boolean;
+  cadence?: string;
+};
+
+type Group = {
+  id: string;
+  label: string;
+  intro: string;
+  channels: Channel[];
+};
+
+const GROUPS: Group[] = [
+  {
+    id: "primary",
+    label: "Primary surfaces",
+    intro: "The two pages most readers find us on first.",
+    channels: [
+      {
+        name: "signals.gitdealflow.com",
+        what: "The product site — pricing, dashboard, dataset, methodology, MCP install, all 1,060+ pSEO pages.",
+        href: "https://signals.gitdealflow.com",
+        external: true,
+      },
+      {
+        name: "gitdealflow.com",
+        what: "The apex landing — Acceleration Watch signup, First Look Pass, Sector Sweep, daily-data sweep.",
+        href: "https://gitdealflow.com",
+        external: true,
+      },
+    ],
+  },
+  {
+    id: "newsletters",
+    label: "Newsletters & long-form",
+    intro:
+      "Where we publish text. Substack mirrors the Top-100 list weekly; dev.to is our long-form essay home; the apex blog ships the founder-voice posts.",
+    channels: [
+      {
+        name: "Free Acceleration Watch",
+        what: "Five names every Monday. Sector-tagged, with chart + percentile + decision rule. The free tier of the value ladder.",
+        href: "https://gitdealflow.com/#signup",
+        cadence: "Weekly · Mon 09:00 UTC",
+        external: true,
+      },
+      {
+        name: "Substack — gitdealflow",
+        what: "Mirror of the weekly Top-100 startups list and the Acceleration Watch. Free publication, canonical back to signals.gitdealflow.com.",
+        href: "https://gitdealflow.substack.com",
+        cadence: "Weekly · Sunday 12:00 UTC",
+        external: true,
+      },
+      {
+        name: "dev.to — @gitdealflow",
+        what: "Long-form engineering-side essays. Where the methodology gets explained, not pitched.",
+        href: "https://dev.to/gitdealflow",
+        cadence: "Bi-weekly",
+        external: true,
+      },
+      {
+        name: "Blog (signals.gitdealflow.com/blog)",
+        what: "Founder-voice posts and methodology updates. RSS-discoverable.",
+        href: "/blog",
+        cadence: "Bi-weekly",
+      },
+    ],
+  },
+  {
+    id: "feeds",
+    label: "Machine-readable feeds",
+    intro:
+      "Every public surface has an agent-side mirror. If you want our signal in your pipeline instead of your inbox, here is the full URL set.",
+    channels: [
+      { name: "RSS — feed.xml", what: "Atom 1.0 feed of every blog post + Acceleration Watch entry.", href: "/feed.xml" },
+      { name: "JSON Feed — feed.json", what: "JSON Feed 1.1 mirror of the same content. Use whichever your tooling prefers.", href: "/feed.json" },
+      { name: "News sitemap — news-sitemap.xml", what: "Google News–compatible sitemap of recent posts.", href: "/news-sitemap.xml" },
+      { name: "OpenAPI — /api/actions/openapi.json", what: "12-endpoint OpenAPI 3.1 spec. Powers the ChatGPT GPT, agent integrations, and the agent-card.", href: "/api/actions/openapi.json" },
+      { name: "llms.txt", what: "Standardised LLM-instruction surface — every page agent-readable in markdown.", href: "/llms.txt" },
+      { name: "llms-full.txt", what: "Full corpus dump for embedding pipelines. ~1.4MB.", href: "/llms-full.txt" },
+      { name: "agents.json", what: "Agent-card discovery. Capabilities, tools, schema versions.", href: "/agents.json" },
+      { name: "agent-card (.well-known)", what: "RFC-style well-known endpoint advertising agent capabilities.", href: "/.well-known/agent-card.json" },
+      { name: "Sitemap index", what: "Master sitemap. 1,060+ URLs across 12 hreflang locales.", href: "/sitemap.xml" },
+      { name: "Q&A corpus — qa.jsonl", what: "Categorisable Q&A dump for embedding-pipeline answers.", href: "/qa.jsonl" },
+    ],
+  },
+  {
+    id: "mcp",
+    label: "MCP & developer integrations",
+    intro:
+      "The agent-native surface. Eight tools. Free forever (the five core tools — see memory rule). Drop into Claude Desktop, Cursor, or any MCP-compatible client.",
+    channels: [
+      { name: "npm — @gitdealflow/mcp-signal", what: "The official MCP server. Install with one line: npx @gitdealflow/mcp-signal.", href: "https://www.npmjs.com/package/@gitdealflow/mcp-signal", external: true },
+      { name: "GitHub — gitdealflow", what: "Source code, issue tracker, public roadmap.", href: "https://github.com/gitdealflow", external: true },
+      { name: "Install instructions", what: "Step-by-step for Claude / Cursor / Mastra / LangChain / CrewAI / Letta / Vercel AI SDK.", href: "/install" },
+      { name: "MCP Demo", what: "Live demonstration page. Watch the tools fire against real data.", href: "/mcp-demo" },
+      { name: "OpenAPI viewer", what: "Browseable API documentation, agent-friendly.", href: "/api/actions/openapi.json" },
+      { name: "ChatGPT GPT — VC Deal Flow Signal", what: "OpenAPI-mounted GPT in the GPT Store. Action calls /api/actions endpoints.", href: "https://chat.openai.com/g/g-vc-deal-flow-signal", external: true },
+    ],
+  },
+  {
+    id: "social",
+    label: "Federated social (decentralised redundancy)",
+    intro:
+      "Three federated networks. Posts cross-mirror via WebSub + ActivityPub-side bridges. Anonymity rule: company-page identity only.",
+    channels: [
+      { name: "Bluesky — gitdealflow.bsky.social", what: "AT Protocol social. Custom feed-generator + label service. Posts mirror the Acceleration Watch.", href: "https://bsky.app/profile/gitdealflow.bsky.social", external: true },
+      { name: "Mastodon — fosstodon.org/@gitdealflow", what: "ActivityPub. The fediverse-native distribution layer.", href: "https://fosstodon.org/@gitdealflow", external: true },
+      { name: "Farcaster — gitdealflow", what: "On-chain social via Neynar. Where the crypto-native developer-investor reads.", href: "https://warpcast.com/gitdealflow", external: true },
+      { name: "LinkedIn — GitDealFlow Company", what: "Company page (no founder personal account, anonymity rule). Long-form essays + Dream 100 engagement.", href: "https://www.linkedin.com/company/gitdealflow", external: true },
+    ],
+  },
+  {
+    id: "communities",
+    label: "Community channels",
+    intro:
+      "Where conversation happens. We engage in comment threads — never main posts on subs that auto-remove product content (see r/venturecapital).",
+    channels: [
+      { name: "Reddit — u/gitdealflow", what: "Comment-side engagement on AEO-relevant threads. Never a main post on r/venturecapital.", href: "https://www.reddit.com/user/gitdealflow", external: true },
+      { name: "Indie Hackers — gitdealflow", what: "Build-in-public surface. Bootstrapped-side audience.", href: "https://www.indiehackers.com/gitdealflow", external: true },
+      { name: "Product Hunt — gitdealflow", what: "Launch artifact. Live with the post-launch comment ladder strategy.", href: "https://www.producthunt.com/@gitdealflow", external: true },
+      { name: "AlternativeTo", what: "Top-of-funnel for the buyer comparing dev-tool ecosystems.", href: "https://alternativeto.net/software/gitdealflow", external: true },
+      { name: "SaaSHub", what: "Cross-listing surface for SaaS comparison.", href: "https://www.saashub.com/gitdealflow", external: true },
+    ],
+  },
+  {
+    id: "academic",
+    label: "Academic & reproducibility surfaces",
+    intro:
+      "What makes the signal honest. Every prediction is reproducible against the SSRN paper + Zenodo dataset.",
+    channels: [
+      { name: "SSRN paper — abstract=6606558", what: "Methodology paper. n=219 paired observations, lead-time 21–47 days IQR. The grounding citation for every claim on the site.", href: "https://ssrn.com/abstract=6606558", external: true },
+      { name: "Zenodo dataset", what: "CC BY 4.0. Reproducible. The exact data behind the regression in the SSRN paper.", href: "https://zenodo.org/records/gitdealflow-dataset", external: true },
+      { name: "Methodology page", what: "Plain-English walkthrough of the regression, the panel construction, and the false-positive controls.", href: "/methodology" },
+      { name: "Citation guide", what: "BibTeX, APA, Chicago. For academic / industry-report citations.", href: "/citation-guide" },
+      { name: "Reproducibility page", what: "Step-by-step: clone the dataset, run the notebook, replicate the regression.", href: "/reproducibility" },
+      { name: "Dataset (live)", what: "Current panel. CSV + JSON. The buyer's edge.", href: "/dataset" },
+    ],
+  },
+  {
+    id: "agent-mirrors",
+    label: "Agent-side mirrors (one per page)",
+    intro:
+      "Every public page has a markdown mirror at /md/<path>, plus inline AgentMirrorLinks discoverability headers. Built for retrieval pipelines.",
+    channels: [
+      { name: "Markdown mirror — /md/<path>", what: "Plain-text-friendly version of every public page. Drop into RAG without re-parsing HTML.", href: "/md/" },
+      { name: "Knowledge graph — knowledge-graph.json", what: "Entity graph of products, sectors, predictions, dates. JSON-LD-compatible.", href: "/knowledge-graph.json" },
+      { name: "AI corpus — ai.json", what: "Categorised content for AI training / retrieval. JSON Feed format.", href: "/ai.json" },
+      { name: "ai.txt", what: "Standardised AI-bot policy + sitemap pointer.", href: "/ai.txt" },
+      { name: "Compliance manifest — compliance.json", what: "Privacy, anonymisation, and reproducibility manifest. Public.", href: "/compliance.json" },
+      { name: "Model manifest — model.json", what: "Schema versions, training-data cutoffs, methodology revision IDs.", href: "/model.json" },
+    ],
+  },
+];
+
+export default function DistributionPage() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://signals.gitdealflow.com/distribution",
+        name: "Where to find us — distribution map",
+        description:
+          "Every public surface where GitDealFlow's signal shows up: Substack, dev.to, RSS, MCP, npm, GitHub, federated social, academic, agent-side mirrors.",
+        speakable: {
+          "@type": "SpeakableSpecification",
+          cssSelector: ["h1", "h2"],
+        },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://signals.gitdealflow.com" },
+          { "@type": "ListItem", position: 2, name: "Distribution", item: "https://signals.gitdealflow.com/distribution" },
+        ],
+      },
+    ],
+  };
+
+  return (
+    <>
+      <HreflangLinks
+        canonical="https://signals.gitdealflow.com/distribution"
+        languages={getHreflangLanguages("/distribution")}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <AgentMirrorLinks path="/distribution" />
+
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
+        <header className="space-y-4">
+          <nav aria-label="Breadcrumb" className="text-xs text-gray-500">
+            <Link href="/" className="hover:text-gray-300">Home</Link>
+            <span className="mx-2">/</span>
+            <span className="text-gray-400">Distribution</span>
+          </nav>
+          <p className="text-emerald-400 text-xs font-semibold uppercase tracking-wider">
+            Traffic Secrets, Section 1, Chapter 2 · Applied
+          </p>
+          <h1 className="text-3xl sm:text-5xl font-bold text-gray-100 leading-[1.1] tracking-tight">
+            Where to find us. <span className="text-emerald-400">Every channel, every mirror.</span>
+          </h1>
+          <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
+            Brunson&rsquo;s rule: your reader can&rsquo;t follow you on a
+            channel they don&rsquo;t know exists. So here&rsquo;s the full
+            map — every public surface where the GitDealFlow signal shows up,
+            grouped by what you&rsquo;re trying to do.
+          </p>
+          <p className="text-gray-300 text-base leading-relaxed">
+            If you&rsquo;re building a portfolio agent, every machine-readable
+            feed lives in <a href="#feeds" className="text-emerald-400 hover:text-emerald-300 underline decoration-dotted">Machine-readable feeds</a>. If
+            you&rsquo;re reading on the federated web,{" "}
+            <a href="#social" className="text-emerald-400 hover:text-emerald-300 underline decoration-dotted">Federated social</a> covers Bluesky / Mastodon /
+            Farcaster. If you want the methodology, jump to{" "}
+            <a href="#academic" className="text-emerald-400 hover:text-emerald-300 underline decoration-dotted">Academic & reproducibility</a>.
+          </p>
+        </header>
+
+        <nav
+          aria-label="Sections"
+          className="rounded-xl border border-slate-800 bg-slate-900/60 p-5 sm:p-6"
+        >
+          <p className="text-gray-500 text-[10px] font-semibold uppercase tracking-wider mb-3">
+            8 groups · jump to:
+          </p>
+          <ul className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-sm">
+            {GROUPS.map((g) => (
+              <li key={g.id}>
+                <a
+                  href={`#${g.id}`}
+                  className="block px-3 py-1.5 rounded-md bg-slate-800/60 hover:bg-slate-800 text-emerald-300 hover:text-emerald-200 transition-colors"
+                >
+                  {g.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        {GROUPS.map((g) => (
+          <section
+            key={g.id}
+            id={g.id}
+            className="space-y-4 scroll-mt-20"
+            aria-label={g.label}
+          >
+            <header className="space-y-2 border-l-4 border-emerald-600 pl-5">
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug">
+                {g.label}
+              </h2>
+              <p className="text-gray-400 text-sm leading-relaxed">
+                {g.intro}
+              </p>
+            </header>
+            <ul className="space-y-3">
+              {g.channels.map((c) => (
+                <li
+                  key={c.href}
+                  className="rounded-lg border border-slate-800 bg-slate-900/40 p-4 sm:p-5 space-y-1.5"
+                >
+                  <div className="flex flex-wrap items-baseline gap-2">
+                    {c.external ? (
+                      <a
+                        href={c.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-emerald-300 hover:text-emerald-200 font-semibold text-base underline decoration-dotted"
+                      >
+                        {c.name}
+                      </a>
+                    ) : (
+                      <Link
+                        href={c.href}
+                        className="text-emerald-300 hover:text-emerald-200 font-semibold text-base underline decoration-dotted"
+                      >
+                        {c.name}
+                      </Link>
+                    )}
+                    {c.cadence && (
+                      <span className="text-gray-500 text-[10px] font-medium uppercase tracking-wider">
+                        {c.cadence}
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-gray-400 text-sm leading-relaxed">
+                    {c.what}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
+
+        <section className="rounded-xl border border-sky-700/40 bg-gradient-to-br from-sky-950/30 via-slate-900 to-slate-950 p-6 sm:p-8 space-y-3">
+          <p className="text-sky-300 text-xs font-semibold uppercase tracking-wider">
+            Conversation Domination · Traffic Secrets Ch 12
+          </p>
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-100">
+            Why we&rsquo;re on this many surfaces.
+          </h2>
+          <p className="text-gray-300 text-base leading-relaxed">
+            Brunson teaches Conversation Domination as the third leg of
+            traffic — every reader has a different home, and you have to
+            show up on theirs, not yours. We do that on principle: the dev.to
+            reader, the Substack reader, the Bluesky reader, and the Claude
+            Desktop reader all have the same right to the signal.
+          </p>
+          <p className="text-gray-300 text-base leading-relaxed">
+            The Brunson half: distribution. The honest half: every surface
+            mirrors the same canonical data, with the same SSRN-grounded
+            methodology, with the same 30-day Signal-or-It&rsquo;s-Free
+            guarantee. We don&rsquo;t change the message per channel — we
+            change the medium.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3 pt-2">
+            <Link
+              href="/dream-100"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-sm transition-colors"
+            >
+              Dream 100 (the other side of the map) →
+            </Link>
+            <Link
+              href="/funnels"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg border border-slate-700 bg-slate-800 hover:bg-slate-700 text-gray-100 font-semibold text-sm transition-colors"
+            >
+              Funnel Hub →
+            </Link>
+          </div>
+        </section>
+
+        <p className="text-gray-500 text-xs leading-relaxed border-t border-slate-800 pt-6">
+          Distribution mapped per <em>Traffic Secrets</em> Section 1 (Where
+          Are They Hiding) and Section 2 Ch 12 (Conversation Domination), by
+          Russell Brunson (2020). Anonymity rule preserved: company-page
+          identity only, no individual founder content.
+        </p>
+      </div>
+    </>
+  );
+}

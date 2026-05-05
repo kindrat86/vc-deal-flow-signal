@@ -383,6 +383,167 @@ export default function FunnelHubPage() {
             use, or skip the one that would have paid for itself the first month.
           </p>
         </section>
+
+        {/* 23 BUILDING BLOCKS — Brunson DotCom Secrets Ch 11. The architecture
+            page that explains every component used to build any funnel on this
+            site, mapped 1:1 to the chapters of the workbook. */}
+        <section
+          id="building-blocks"
+          aria-label="The 23 building blocks of a funnel"
+          className="border-t border-slate-800 pt-10 space-y-5 scroll-mt-20"
+        >
+          <header className="space-y-2">
+            <p className="text-violet-400 text-xs font-semibold uppercase tracking-wider">
+              DotCom Secrets · Chapter 11
+            </p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug">
+              The 23 Building Blocks — and where each one lives.
+            </h2>
+            <p className="text-gray-300 text-base leading-relaxed max-w-3xl">
+              Every funnel on this site is assembled from the same 23 components
+              Russell catalogued. If you&rsquo;re reverse-engineering us — or
+              building your own — here&rsquo;s the map.
+            </p>
+          </header>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {[
+              { n: 1, name: "Pre-Headline", where: "/perfect-webinar — \"Brunson Perfect Webinar · 12-min read\"" },
+              { n: 2, name: "Headline (Big Promise)", where: "Home — \"47 days before the deck circulates\"" },
+              { n: 3, name: "Sub-Headline / Promise Stack", where: "Home — \"public, reproducible, code-side signal\"" },
+              { n: 4, name: "Hook", where: "/pitch — Hook/Story/Offer landing" },
+              { n: 5, name: "Origin Story", where: "/origin, /story, /perfect-webinar — Hero's Two Journeys" },
+              { n: 6, name: "Big Domino", where: "Home + /perfect-webinar + /pitch — three surfaces" },
+              { n: 7, name: "Three Secrets / Three Objections", where: "/perfect-webinar — full breakdown" },
+              { n: 8, name: "Demonstration / Magic Bullet", where: "/predicted — D-31 → D 0 worked example" },
+              { n: 9, name: "The Stack", where: "/pricing + /perfect-webinar — 8-row stack" },
+              { n: 10, name: "Trial Closes (\"if all this did was…\")", where: "/perfect-webinar — 3-line cluster" },
+              { n: 11, name: "Money Close", where: "/perfect-webinar — \"the deal you miss is the cost\"" },
+              { n: 12, name: "Identity Close", where: "/perfect-webinar + home — \"developer-investor\"" },
+              { n: 13, name: "Pricing Close", where: "/perfect-webinar — \"€1,728/yr stack at €119.64\"" },
+              { n: 14, name: "Urgency / Scarcity Close", where: "/perfect-webinar — founding-rate lock" },
+              { n: 15, name: "Encore Close", where: "/perfect-webinar — 8-line summary at the end" },
+              { n: 16, name: "Order Form Bump", where: "/firstlook — €7 + €1,797 A/B card" },
+              { n: 17, name: "One-Time Offer (OTO)", where: "/firstlook delivery email — Insider €77/mo first month" },
+              { n: 18, name: "Downsell", where: "/firstlook — free Acceleration Watch fallback" },
+              { n: 19, name: "Risk Reversal / Guarantee", where: "30-day Signal-or-It's-Free, every tier" },
+              { n: 20, name: "Social Proof", where: "Home SignalLeader + SSRN paper + 1,060 indexed pages" },
+              { n: 21, name: "Application / Filter", where: "/apply — 8-fund cap on Sharp Tier" },
+              { n: 22, name: "Soap Opera Sequence", where: "lib/emails.ts D0–D7 + Challenge cohort" },
+              { n: 23, name: "Daily Seinfeld", where: "lib/emails.ts D9, D12, D14, D17, D21, D25, D30" },
+            ].map((b) => (
+              <div
+                key={b.n}
+                className="rounded-lg border border-slate-800 bg-slate-900/40 p-3 sm:p-4"
+              >
+                <p className="text-violet-400 text-[10px] font-semibold uppercase tracking-wider mb-0.5">
+                  #{b.n}
+                </p>
+                <p className="text-gray-100 font-semibold text-sm">{b.name}</p>
+                <p className="text-gray-400 text-xs leading-relaxed mt-1">
+                  {b.where}
+                </p>
+              </div>
+            ))}
+          </div>
+          <p className="text-gray-500 text-sm leading-relaxed border-l-2 border-slate-700 pl-4 mt-4">
+            Builders who want to copy this architecture: every block above is
+            named, located, and shipped in production. Read the
+            corresponding page, then re-implement on your own funnel — that&rsquo;s
+            the funnel-hack pattern Russell teaches in Section 3 of DotCom
+            Secrets.
+          </p>
+        </section>
+
+        {/* REVERSE-ENGINEERING FRAME — Brunson DotCom Secrets Ch 9.
+            The teaching is "find a successful funnel and reverse-engineer it."
+            We're giving the reader the methodology by showing how we'd
+            reverse-engineer three competitors. */}
+        <section
+          id="reverse-engineering"
+          aria-label="How to reverse-engineer a funnel"
+          className="border-t border-slate-800 pt-10 space-y-5 scroll-mt-20"
+        >
+          <header className="space-y-2">
+            <p className="text-rose-400 text-xs font-semibold uppercase tracking-wider">
+              DotCom Secrets · Chapter 9
+            </p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug">
+              How to reverse-engineer a funnel — applied to our category.
+            </h2>
+            <p className="text-gray-300 text-base leading-relaxed max-w-3xl">
+              Brunson&rsquo;s methodology in three steps: find the leaders,
+              walk every page of their funnel, write down what they&rsquo;re
+              optimising for. Here&rsquo;s how that read on the three deal-flow
+              tools every developer-investor compares us to.
+            </p>
+          </header>
+
+          <div className="space-y-5">
+            <div className="rounded-xl border border-slate-800 bg-slate-900/40 p-5 sm:p-6 space-y-3">
+              <header className="flex items-baseline justify-between gap-3 flex-wrap">
+                <h3 className="text-gray-100 font-bold text-lg">Harmonic.ai</h3>
+                <span className="text-rose-400 text-[10px] font-semibold uppercase tracking-wider">
+                  Enterprise · partner-budget
+                </span>
+              </header>
+              <ul className="space-y-1.5 text-gray-300 text-sm leading-relaxed">
+                <li><strong className="text-gray-100">Lead funnel:</strong> demo request gated on company size + AUM. No free tier, no tripwire.</li>
+                <li><strong className="text-gray-100">Bridge:</strong> sales call with named partner. The funnel is the call — there&rsquo;s no self-serve.</li>
+                <li><strong className="text-gray-100">Stack:</strong> "we cover 20M+ companies." Quantity-anchored, not signal-anchored.</li>
+                <li><strong className="text-gray-100">Close:</strong> annual contract, six-figure price band, custom-MSA negotiation.</li>
+                <li><strong className="text-gray-100">Read:</strong> built for partners with €100k+/yr data budgets. Not for the developer-investor writing €5k–€50k checks.</li>
+              </ul>
+            </div>
+
+            <div className="rounded-xl border border-slate-800 bg-slate-900/40 p-5 sm:p-6 space-y-3">
+              <header className="flex items-baseline justify-between gap-3 flex-wrap">
+                <h3 className="text-gray-100 font-bold text-lg">Tracxn</h3>
+                <span className="text-rose-400 text-[10px] font-semibold uppercase tracking-wider">
+                  Enterprise · sector-coverage play
+                </span>
+              </header>
+              <ul className="space-y-1.5 text-gray-300 text-sm leading-relaxed">
+                <li><strong className="text-gray-100">Lead funnel:</strong> "request a sector report" — gated lead form, sales-led nurture.</li>
+                <li><strong className="text-gray-100">Bridge:</strong> sample report PDF + sales rep outreach inside 24h.</li>
+                <li><strong className="text-gray-100">Stack:</strong> "1,200+ sector reports, 250 analysts." Effort-anchored, not lead-time-anchored.</li>
+                <li><strong className="text-gray-100">Close:</strong> annual subscription, 5-figure entry, custom seats.</li>
+                <li><strong className="text-gray-100">Read:</strong> sector-coverage play. Their edge is breadth; their weakness is the lag between event and report.</li>
+              </ul>
+            </div>
+
+            <div className="rounded-xl border border-slate-800 bg-slate-900/40 p-5 sm:p-6 space-y-3">
+              <header className="flex items-baseline justify-between gap-3 flex-wrap">
+                <h3 className="text-gray-100 font-bold text-lg">Affinity / SignalFire</h3>
+                <span className="text-rose-400 text-[10px] font-semibold uppercase tracking-wider">
+                  CRM-first · network-graph
+                </span>
+              </header>
+              <ul className="space-y-1.5 text-gray-300 text-sm leading-relaxed">
+                <li><strong className="text-gray-100">Lead funnel:</strong> ICP is "VC partner with a Salesforce-or-Affinity choice." Bottom-up adoption inside funds.</li>
+                <li><strong className="text-gray-100">Bridge:</strong> Chrome extension + Gmail integration — the funnel is workflow integration.</li>
+                <li><strong className="text-gray-100">Stack:</strong> network-graph + warm-intro routing. "Who in your firm knows the founder?"</li>
+                <li><strong className="text-gray-100">Close:</strong> seat-based, fund-wide rollout, multi-year.</li>
+                <li><strong className="text-gray-100">Read:</strong> network-graph plays double down on the warm-intro economy. We do the opposite — we replace it with public data.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="rounded-xl border border-amber-700/40 bg-amber-950/15 p-5 sm:p-6 space-y-2">
+            <p className="text-amber-300 text-[10px] font-semibold uppercase tracking-wider">
+              The funnel-hack we&rsquo;re running
+            </p>
+            <p className="text-gray-200 text-base leading-relaxed">
+              Three enterprise tools, three six-figure price bands, three
+              sales-led funnels. They share an assumption: the buyer is a
+              partner at a fund. We don&rsquo;t reverse-engineer their pricing
+              — we reverse-engineer their <em>blind spot</em>. The
+              developer-investor writing €5k–€50k checks isn&rsquo;t their
+              ICP. We built the funnel for that buyer instead — €9.97/mo,
+              self-serve, agent-readable, methodology-published. Same data
+              economy, different ladder.
+            </p>
+          </div>
+        </section>
       </div>
     </>
   );
