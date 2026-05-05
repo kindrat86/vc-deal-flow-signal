@@ -3,9 +3,9 @@ import Link from "next/link";
 const DOORS = [
   {
     href: "https://gitdealflow.com/#signup",
-    eyebrow: "Free email",
-    title: "Get this week's signals",
-    body: "5 breakout startups, ranked by GitHub momentum. Delivered every Monday.",
+    eyebrow: "Acceleration Watch · Free",
+    title: "The Monday email investors set their calendar to",
+    body: "5 breakout startups, ranked by 14-day GitHub commit-velocity acceleration. Delivered every Monday at 09:00 UTC.",
     cta: "Subscribe free",
     accent: "sky",
     external: true,

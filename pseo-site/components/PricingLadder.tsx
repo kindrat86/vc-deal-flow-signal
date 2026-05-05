@@ -17,9 +17,9 @@ const TIERS: readonly Tier[] = [
     name: "Free",
     price: "€0",
     cadence: "forever",
-    pitch: "Weekly signal email + Receipts + MCP server.",
+    pitch: "Acceleration Watch — the Monday email investors set their calendar to.",
     bullets: [
-      "Top 5 breakout startups every Monday",
+      "Acceleration Watch: top 5 breakouts every Monday 09:00 UTC",
       "Free Scout Receipts at /receipts",
       "MCP server for Claude / Cursor",
       "JSON / CSV / RSS public dataset",

@@ -564,6 +564,129 @@ export default function PricingPage() {
           ))}
         </section>
 
+        {/* Dashboard stack slide — Brunson stack-and-close on the workhorse
+            mid-tier. Mirrors the Sector Sweep stack pattern but for the
+            €9.97/mo subscription that converts most buyers. Russell audit
+            2026-05-05: only the €1,997 tier had a stack visualization. */}
+        <section
+          id="dashboard-stack"
+          className="mb-12 rounded-xl border border-sky-700/40 bg-sky-950/10 p-6 sm:p-8"
+          aria-label="Dashboard — itemized value stack"
+        >
+          <p className="text-sky-300 text-xs font-semibold uppercase tracking-wider mb-3">
+            Dashboard Beta — what €9.97/mo actually buys
+          </p>
+          <h2 className="text-2xl font-bold text-gray-100 mb-2">
+            €1,728/yr of standalone value, locked at the founder price
+          </h2>
+          <p className="text-gray-400 text-sm mb-6 max-w-2xl">
+            Each row below is the standalone market price for the same
+            deliverable from a comparable tool. You pay the bottom line, and
+            the founder price stays €9.97/mo for as long as you stay
+            subscribed — even after the public launch hike to €49/mo.
+          </p>
+          <ul className="divide-y divide-sky-900/30 mb-6 border border-sky-900/30 rounded-lg overflow-hidden">
+            {[
+              {
+                label: "The Live Dashboard",
+                detail:
+                  "109 venture-backed startups ranked by 14-day commit-velocity acceleration, refreshed every Monday at 06:00 UTC. Filter by sector, stage, geography.",
+                value: "€348/yr",
+              },
+              {
+                label: "219-Startup Backtest CSV",
+                detail:
+                  "Five quarters of historical signal-to-fundraise pairs. The full dataset behind the SSRN-published 21–47-day lead-time claim.",
+                value: "€297 once",
+              },
+              {
+                label: "Monthly Sector Deep-Dive PDF",
+                detail:
+                  "Pick any sector each month — twelve 12-page deep-dives a year, with top 25 ranked orgs, contributor maps, and three pre-Crunchbase breakouts.",
+                value: "€588/yr",
+              },
+              {
+                label: "Two free Chrome Extensions",
+                detail:
+                  "Crunchbase + Wellfound badge injects a momentum score, and VC GitHub Lookup hovers any org or repo and returns the velocity in 200ms.",
+                value: "€198/yr",
+              },
+              {
+                label: "Free MCP server (forever, never gated)",
+                detail:
+                  "npx @gitdealflow/mcp-signal — six read-only tools inside Claude, Cursor, Windsurf. Ask 'which AI infra startups are accelerating' inline.",
+                value: "Bundled",
+              },
+              {
+                label: "Async Watchlist Build",
+                detail:
+                  "Send your thesis. Custom watchlist of the 10 highest-acceleration orgs comes back in 48h. One-time, kicks off the day you upgrade.",
+                value: "€297 once",
+              },
+              {
+                label: "Methodology Vault",
+                detail:
+                  "Full SSRN preprint, every signal definition, the regression code that produced the lead-time numbers. CC BY 4.0.",
+                value: "Open",
+              },
+              {
+                label: "BONUS — 30-day Signal-or-It's-Free guarantee",
+                detail:
+                  "If the signal doesn't surface a startup you find genuinely interesting in 30 days, reply REFUND. Full refund inside two business days.",
+                value: "Priceless",
+              },
+            ].map((row) => (
+              <li
+                key={row.label}
+                className="flex flex-col sm:flex-row sm:items-baseline gap-y-1 sm:gap-x-4 px-4 py-3 bg-slate-900/50"
+              >
+                <div className="flex-1">
+                  <p className="text-gray-100 text-sm font-medium">
+                    {row.label}
+                  </p>
+                  <p className="text-gray-500 text-xs leading-relaxed mt-0.5">
+                    {row.detail}
+                  </p>
+                </div>
+                <p className="text-sky-300 text-sm font-mono font-semibold whitespace-nowrap sm:self-start">
+                  {row.value}
+                </p>
+              </li>
+            ))}
+          </ul>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 rounded-lg border border-sky-700/50 bg-sky-950/30 px-5 py-4">
+            <div>
+              <p className="text-gray-400 text-xs uppercase tracking-wider mb-1">
+                Standalone value
+              </p>
+              <p className="text-gray-300 text-base">
+                <span className="line-through decoration-sky-400/60">
+                  €1,728/yr
+                </span>{" "}
+                <span className="text-gray-500 text-sm">
+                  (post-launch retail €588/yr)
+                </span>
+              </p>
+            </div>
+            <div className="text-left sm:text-right">
+              <p className="text-sky-300 text-xs uppercase tracking-wider mb-1">
+                Founder price, locked forever
+              </p>
+              <p className="text-3xl font-bold text-sky-200">€9.97/mo</p>
+            </div>
+            <a
+              href={STRIPE_DASHBOARD}
+              className="inline-flex items-center justify-center px-5 py-3 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-semibold text-sm shadow-lg shadow-sky-500/20 transition-all"
+            >
+              Lock founder price →
+            </a>
+          </div>
+          <p className="text-gray-500 text-xs mt-3">
+            €119.64/year. Roughly the cost of one missed seed deal. The price
+            stays €9.97 for as long as you stay subscribed.
+          </p>
+        </section>
+
         {/* Sector Sweep stack slide — anchored value vs price */}
         <section
           id="sector-sweep-stack"

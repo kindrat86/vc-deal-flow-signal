@@ -894,6 +894,134 @@ export default function Home() {
         ]}
       />
 
+      {/* Brunson Big Domino — single-belief block above the pricing close.
+          The whole offer rests on this one statement. Russell audit
+          2026-05-05: home was missing the "if this is true, everything else
+          falls" frame. */}
+      <section
+        aria-label="Big domino"
+        className="bg-gradient-to-br from-sky-950/40 via-slate-900 to-slate-950 border border-sky-700/40 rounded-xl p-6 sm:p-8 my-8"
+      >
+        <p className="text-sky-300 text-xs font-semibold uppercase tracking-wider mb-3">
+          What this whole site argues
+        </p>
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug mb-3">
+          If commit-velocity acceleration is the most leading public signal in
+          venture capital, then every other deal-flow source —{" "}
+          <span className="text-sky-400">
+            pitch decks, AngelList, Crunchbase, warm intros
+          </span>{" "}
+          — is a lagging indicator.
+        </h2>
+        <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
+          Read the long version on the{" "}
+          <Link
+            href="/perfect-webinar"
+            className="text-sky-400 hover:text-sky-300 underline decoration-dotted"
+          >
+            12-minute Perfect Webinar
+          </Link>
+          {" "}or the{" "}
+          <Link
+            href="/pitch"
+            className="text-sky-400 hover:text-sky-300 underline decoration-dotted"
+          >
+            90-second pitch
+          </Link>
+          . Three objections, three breakdowns, the SSRN panel that proves the
+          21-to-47-day lead time.
+        </p>
+      </section>
+
+      {/* Three Secrets — the false-belief breakdowns from Workbook 4. Surface
+          them on the most-trafficked surface (home) instead of burying them
+          inside the soap-opera email sequence. */}
+      <section aria-label="Three objections" className="my-8 space-y-5">
+        <div>
+          <p className="text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-2">
+            The three objections every investor raises
+          </p>
+          <h2 className="text-2xl font-bold text-gray-100">
+            And why each one is wrong.
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="border-l-4 border-sky-500 bg-slate-900/60 p-5 rounded-r-lg">
+            <p className="text-sky-400 text-[10px] font-semibold uppercase tracking-wider mb-2">
+              #1 · Vehicle
+            </p>
+            <h3 className="text-gray-100 font-semibold text-base mb-2">
+              &ldquo;GitHub data is just noise.&rdquo;
+            </h3>
+            <p className="text-gray-400 text-sm leading-relaxed">
+              We don&rsquo;t look at absolute numbers — only sharp deviations
+              from each company&rsquo;s own baseline. That isn&rsquo;t noise,
+              that&rsquo;s a regime change.
+            </p>
+          </div>
+          <div className="border-l-4 border-emerald-500 bg-slate-900/60 p-5 rounded-r-lg">
+            <p className="text-emerald-400 text-[10px] font-semibold uppercase tracking-wider mb-2">
+              #2 · Internal
+            </p>
+            <h3 className="text-gray-100 font-semibold text-base mb-2">
+              &ldquo;I have enough deal flow already.&rdquo;
+            </h3>
+            <p className="text-gray-400 text-sm leading-relaxed">
+              Your network shows you what other investors already see. We open
+              the 21-to-47-day window before consensus forms.
+            </p>
+          </div>
+          <div className="border-l-4 border-indigo-500 bg-slate-900/60 p-5 rounded-r-lg">
+            <p className="text-indigo-400 text-[10px] font-semibold uppercase tracking-wider mb-2">
+              #3 · External
+            </p>
+            <h3 className="text-gray-100 font-semibold text-base mb-2">
+              &ldquo;Public data isn&rsquo;t edge.&rdquo;
+            </h3>
+            <p className="text-gray-400 text-sm leading-relaxed">
+              Quant funds make billions on SEC filings. The edge is in the
+              lens, not the data. Zero investor tools package GitHub as deal
+              flow.
+            </p>
+          </div>
+        </div>
+
+        <p className="text-gray-500 text-sm">
+          Full breakdown on the{" "}
+          <Link
+            href="/perfect-webinar"
+            className="text-sky-400 hover:text-sky-300 underline decoration-dotted"
+          >
+            Perfect Webinar
+          </Link>
+          .
+        </p>
+      </section>
+
+      {/* Manifesto — Brunson "future-based cause" surfaced on home. The
+          movement-frame the workbook had but the page didn't. */}
+      <section
+        aria-label="Manifesto"
+        className="my-8 border-l-2 border-amber-500/50 pl-5 sm:pl-6 py-1"
+      >
+        <p className="text-amber-400 text-xs font-semibold uppercase tracking-wider mb-3">
+          What we believe
+        </p>
+        <p className="text-gray-200 text-base sm:text-lg leading-relaxed mb-2">
+          The next generation of great investments will be found in{" "}
+          <em className="not-italic font-semibold text-amber-300">data</em>,
+          not networks.
+        </p>
+        <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
+          The best startups leave footprints in their code long before they
+          leave footprints in the press. Our mission is to make engineering
+          momentum visible to every investor — not just the ones with the
+          right rolodex. A world where capital finds builders faster is a
+          world where better products get built.
+        </p>
+      </section>
+
       {/* Pricing ladder — visible on homepage so buyers don't have to hunt for
           the price. Greg audit: anchor on Insider, sell the middle tier. */}
       <PricingLadder />
