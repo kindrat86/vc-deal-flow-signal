@@ -21,6 +21,8 @@ import { getAllCompetitorVsSlugs } from "@/content/competitor-vs";
 import { pillars } from "@/content/pillars";
 import { agentQueries } from "@/content/agent-queries";
 import { FINDINGS as RESEARCH_FINDINGS } from "@/content/research-findings";
+import { LOCALES } from "@/content/locales";
+import { getAllLocaleTopicPairs } from "@/content/locale-topics";
 
 // Only include URLs that resolve to a real page in this branch. Routes that
 // live on feature branches but haven't merged yet (e.g. /predict, /receipts,
@@ -208,6 +210,21 @@ export async function GET(_req: Request, ctx: RouteContext) {
         lastmod,
         changefreq: "monthly",
         priority: 0.8,
+      })),
+    ];
+  } else if (id === "i18n") {
+    entries = [
+      ...LOCALES.map((l) => ({
+        url: `${BASE_URL}/${l.code}`,
+        lastmod,
+        changefreq: "weekly",
+        priority: 0.7,
+      })),
+      ...getAllLocaleTopicPairs().map(({ locale, topic }) => ({
+        url: `${BASE_URL}/${locale}/${topic}`,
+        lastmod,
+        changefreq: "monthly",
+        priority: 0.6,
       })),
     ];
   } else {

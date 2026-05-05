@@ -9,7 +9,7 @@ const BASE_URL = "https://signals.gitdealflow.com";
 export async function GET() {
   const lastmod = getDataLastModified().toISOString();
 
-  const shards = ["core", "sectors", "crossings", "startups", "content"];
+  const shards = ["core", "sectors", "crossings", "startups", "content", "i18n"];
 
   const sitemapsXml = shards
     .map(
