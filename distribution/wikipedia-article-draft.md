@@ -1,6 +1,6 @@
 # Wikipedia article draft — VC Deal Flow Signal
 
-**Status:** Ready for submission to Wikipedia via Articles for Creation (AfC).
+**Status:** Updated 2026-05-04 — references hardened (SSRN paper now has live DOI; npm + Chrome Web Store + awesome-mcp-servers all citable). Still recommend waiting for one tier-1 press citation before AfC submission per notability section below.
 **Target title:** `VC Deal Flow Signal`
 **Wikidata entity:** [Q139376302](https://www.wikidata.org/wiki/Q139376302) (already exists + enriched)
 **Submission path:** [Wikipedia:Articles_for_creation](https://en.wikipedia.org/wiki/Wikipedia:Articles_for_creation) — submit anonymously or via the account tied to the Wikidata edits.
@@ -33,8 +33,8 @@ The SSRN paper (once approved) + Zenodo dataset + arXiv preprint form the academ
 | logo                   = 
 | developer              = VC Deal Flow Signal
 | released               = {{Start date and age|2026|03|15}}
-| latest release version = 1.2.0
-| latest release date    = {{Start date and age|2026|04|17}}
+| latest release version = 1.5.2
+| latest release date    = {{Start date and age|2026|05|02}}
 | operating system       = Web, [[Model Context Protocol|MCP]], Email, RSS, [[Telegram (software)|Telegram]]
 | genre                  = [[Venture capital|Venture-capital]] intelligence; [[alternative data]]
 | license                = Proprietary; dataset released under {{CC-BY|4.0}}
@@ -57,11 +57,11 @@ Signals are published weekly for a public sample of roughly fifty-five venture-b
 
 The platform's public dataset, ''Startup GitHub Engineering Velocity Panel'', is published under a Creative Commons Attribution 4.0 International license on [[Zenodo]] with the digital object identifier {{doi|10.5281/zenodo.19650920}}.<ref name="zenodo" /> Mirrored copies of the dataset are maintained on [[Kaggle]] and [[data.world]].{{citation needed|date=April 2026}}
 
-A working paper describing the methodology was submitted to the [[Social Science Research Network]] in April 2026 and is under editorial review.{{citation needed|date=April 2026}}
+A working paper describing the methodology was published on the [[Social Science Research Network]] in April 2026.<ref name="ssrn-paper" /> The paper is registered with [[Crossref]] under {{doi|10.2139/ssrn.6606558}} and is indexed by Unpaywall.<ref name="ssrn-paper" />
 
 == Distribution ==
 
-VC Deal Flow Signal is distributed as a web dashboard at signals.gitdealflow.com, a free weekly email report, an [[RSS]] feed, and a [[Model Context Protocol]] server (``@gitdealflow/mcp-signal``) published on the [[npm (software)|npm]] registry.{{citation needed|date=April 2026}} A browser extension for [[Crunchbase]], AngelList, and [[PitchBook]] is available through the [[Chrome Web Store]].{{citation needed|date=April 2026}}
+VC Deal Flow Signal is distributed as a web dashboard at signals.gitdealflow.com, a free weekly email report, an [[RSS]] feed, and a [[Model Context Protocol]] server (``@gitdealflow/mcp-signal``) published on the [[npm (software)|npm]] registry.<ref name="npm-mcp" /> The MCP server is also listed in the official [[Model Context Protocol]] registry and in the community-curated ''awesome-mcp-servers'' index.<ref name="awesome-mcp" /> A browser extension for [[Crunchbase]], AngelList, and [[PitchBook]] is available through the [[Chrome Web Store]].<ref name="chrome-ext" />
 
 == See also ==
 
@@ -89,11 +89,40 @@ VC Deal Flow Signal is distributed as a web dashboard at signals.gitdealflow.com
 | url            = https://www.bain.com/insights/alternative-data-in-private-equity/
 | accessdate     = 2026-04-19
 }}</ref>
+<ref name="ssrn-paper">{{cite journal
+| last           = The Data Nerd
+| title          = Engineering Acceleration as a Leading Indicator of Startup Fundraising
+| journal        = SSRN Working Paper Series
+| publisher      = [[Social Science Research Network]]
+| date           = 2026-04-25
+| doi            = 10.2139/ssrn.6606558
+| url            = https://ssrn.com/abstract=6606558
+| accessdate     = 2026-05-04
+}}</ref>
+<ref name="npm-mcp">{{cite web
+| title          = @gitdealflow/mcp-signal — Model Context Protocol server for VC Deal Flow Signal
+| publisher      = [[npm (software)|npm]] registry
+| url            = https://www.npmjs.com/package/@gitdealflow/mcp-signal
+| accessdate     = 2026-05-04
+}}</ref>
+<ref name="awesome-mcp">{{cite web
+| title          = awesome-mcp-servers — community index of Model Context Protocol servers
+| publisher      = GitHub
+| url            = https://github.com/punkpeye/awesome-mcp-servers
+| accessdate     = 2026-05-04
+}}</ref>
+<ref name="chrome-ext">{{cite web
+| title          = VC Deal Flow Signal — Chrome Web Store listing
+| publisher      = [[Chrome Web Store]]
+| url            = https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn
+| accessdate     = 2026-05-04
+}}</ref>
 </references>
 
 == External links ==
 
 * {{Official website|https://gitdealflow.com}}
+* [https://ssrn.com/abstract=6606558 Engineering Acceleration as a Leading Indicator of Startup Fundraising] (SSRN, DOI 10.2139/ssrn.6606558)
 * [https://zenodo.org/records/19650920 Startup GitHub Engineering Velocity Panel] (Zenodo, DOI 10.5281/zenodo.19650920)
 * {{Wikidata|Q139376302}}
 ```

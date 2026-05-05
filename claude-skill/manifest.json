@@ -1,0 +1,49 @@
+{
+  "name": "gitdealflow-vc-signals",
+  "displayName": "GitDealFlow — VC Engineering Signals",
+  "version": "1.5.0",
+  "description": "Live VC deal flow signals from public GitHub data — trending startups, sector rankings, single-startup profiles, methodology, and reusable investor prompts. Free, no auth.",
+  "license": "MIT",
+  "author": {
+    "name": "GitDealFlow",
+    "email": "signal@gitdealflow.com",
+    "url": "https://gitdealflow.com"
+  },
+  "homepage": "https://gitdealflow.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kindrat86/vc-deal-flow-signal",
+    "directory": "claude-skill"
+  },
+  "category": "research",
+  "tags": [
+    "venture-capital",
+    "deal-flow",
+    "startup-signals",
+    "github-analytics",
+    "engineering-acceleration",
+    "investor",
+    "research"
+  ],
+  "requires": {
+    "mcpServers": [
+      {
+        "name": "vc-deal-flow-signal",
+        "package": "@gitdealflow/mcp-signal",
+        "minVersion": "1.5.0",
+        "transport": "stdio",
+        "alternativeTransport": {
+          "type": "streamable_http",
+          "url": "https://signals.gitdealflow.com/api/mcp/rpc"
+        }
+      }
+    ]
+  },
+  "skillFile": "SKILL.md",
+  "discovery": {
+    "agentsMd": "https://signals.gitdealflow.com/.well-known/agents.md",
+    "mcpManifest": "https://signals.gitdealflow.com/.well-known/mcp.json",
+    "agentCard": "https://signals.gitdealflow.com/.well-known/agent-card.json",
+    "openapi": "https://signals.gitdealflow.com/api/openapi.json"
+  }
+}

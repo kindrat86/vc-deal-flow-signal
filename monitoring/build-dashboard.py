@@ -9,10 +9,8 @@ Fetches data from:
 Output: monitoring/dashboard.html  (open with: open monitoring/dashboard.html)
 """
 import json
-import math
 import os
 import sys
-import time
 import urllib.request
 import urllib.error
 from collections import Counter, defaultdict
@@ -26,7 +24,6 @@ OUT_FILE = os.path.join(SCRIPT_DIR, "dashboard.html")
 WINDOW_DAYS = 30
 
 # Exclude the founder + tester accounts from all subscriber metrics.
-# Keep in sync with pseo-site/lib/excluded-emails.ts and email-api/excluded-emails.mjs.
 TESTER_EMAILS = {
     "test@example.com",
     "mkondratyuk86@gmail.com",
@@ -35,13 +32,6 @@ TESTER_EMAILS = {
     "signal@gitdealflow.com",
     "escape@invisibleexit.com",
 }
-# Disposable / scanner inboxes — verified by crawlers, not humans.
-BOT_EMAILS = {
-    "jakub@mailinator.com",
-    "probe1777473122350@deltajohnsons.com",
-    "shannon-pool-1777015174929-94zulc@deltajohnsons.com",
-}
-EXCLUDED_EMAILS = TESTER_EMAILS | BOT_EMAILS
 # Exclude founder's country from PostHog traffic (self-traffic noise).
 EXCLUDE_COUNTRIES = {"GR"}
 
@@ -62,304 +52,218 @@ CHANNELS = {
     "social": [
         {"name": "Twitter / X", "handle": "@data_nerd",
          "url": "https://twitter.com/data_nerd",
-         "stat": "2 followers · 124 posts · 100 following",
-         "note": "May 3 burst: 7-tweet IH-leverage thread + 4 ICP reply-jacks (rauchg 199K, lennysan 48K, gregisenberg 39K, ivanburazin 4.5K) + 1 search-SEO own-post",
-         "status": "active", "as_of": "2026-05-03"},
+         "stat": "1 follower · 57 posts · 88 following",
+         "note": "First organic follower; daily Dream 100 blitz + own posts (not Premium)",
+         "status": "active", "as_of": "2026-04-20"},
         {"name": "Reddit", "handle": "u/Worth_Wealth_6811",
          "url": "https://www.reddit.com/user/Worth_Wealth_6811",
-         "stat": "778 karma · 1,147 contribs · 18 followers",
-         "note": "Top 5% Poster; 5y account age; user-managed",
-         "status": "active", "as_of": "2026-05-02"},
+         "stat": "731 karma · 976 contribs · 18 followers",
+         "note": "Top 5% Poster; 5y account age; 80 gold · 27 achievements; user-managed",
+         "status": "active", "as_of": "2026-04-21"},
         {"name": "LinkedIn", "handle": "company/gitdealflow",
          "url": "https://www.linkedin.com/company/gitdealflow",
-         "stat": "636 impr · 11 comments · 4 reactions · 0 reposts (Apr)",
-         "note": "Peak Apr 21: 115 impr/day · 14 clicks · 19 reached; user-managed (anonymity)",
-         "status": "active", "as_of": "2026-05-02"},
+         "stat": "1 follower · 55 imp (30d) · Post1 17% ER / Post2 5% ER",
+         "note": "Short video + link-in-comment = 3x engagement vs long-form (Post1 vs Post2). User handles all LinkedIn actions — Claude drafts + tracks stats only.",
+         "status": "active", "as_of": "2026-04-21"},
         {"name": "Product Hunt", "handle": "data_nerd",
          "url": "https://www.producthunt.com/@data_nerd",
-         "stat": "1 follower · 0 KP · launch unfeatured Apr 26",
-         "note": "Streak restored May 2 (3 day-15 comments); Tier 1 daily 3-in-DevTools/AI; T+6d support follow-up drafted",
-         "status": "active", "as_of": "2026-05-02"},
+         "stat": "0 followers · 18 following · 6-day streak",
+         "note": "Launch: Apr 26 · 6 seeding comments/day · badges: Gemologist/Tastemaker/Gone streaking 5",
+         "status": "pre-launch", "as_of": "2026-04-20"},
         {"name": "IndieHackers", "handle": "@The_Data_Nerd",
          "url": "https://www.indiehackers.com/The_Data_Nerd",
-         "stat": "Product listing live · 30 active threads · depth 3.4 avg",
-         "note": "Day 18: 2 new external replies on PH-failure post (txdesk depth 11, Raquel50 depth 9); 3 new drafts pending paste (2 rejoinders + 1 fresh top-level on ReleaseLog 12-day plan)",
-         "status": "active", "as_of": "2026-05-03"},
+         "stat": "Product listing live · 4 active threads · depth 2.0 avg",
+         "note": "IH redesign killed public followers/points; track thread depth + newsletter mentions instead. 4 replies earned Apr 20-21 (sabahattink, clawback, apives, Vishal_chaudhary)",
+         "status": "active", "as_of": "2026-04-21"},
         {"name": "Hacker News", "handle": "the_data_nerd",
          "url": "https://news.ycombinator.com/user?id=the_data_nerd",
-         "stat": "karma 25 · 17 submissions · 4 dead comments",
-         "note": "BLOCKED 2026-05-02 — 4th dead comment today (47984445); dang email drafted; no more posts until dang confirms unflag OR karma > 50 organically. Show HN take 2 deferred to ~May 16+. Account is auto-flagged.",
-         "status": "blocked", "as_of": "2026-05-02"},
+         "stat": "1 karma · 6d old · 7 comments posted",
+         "note": "Manual-only (noob filter killed autonomous post Apr 20); Apr 20 (3) + Apr 21 (3) + Apr 17 (1) replies posted; daily drafts at marketing/hn-seeding/drafts/",
+         "status": "active", "as_of": "2026-04-21"},
         {"name": "Telegram", "handle": "@gitdealflow",
          "url": "https://t.me/gitdealflow",
-         "stat": "1 subscriber · public broadcast channel",
-         "note": "Free tier; Insider Circle = separate private group; teasers gated until ≥10 subs",
-         "status": "active", "as_of": "2026-05-02"},
+         "stat": "1 subscriber",
+         "note": "Free public channel; bio refreshed to unified claims 2026-04-20; Insider Circle = separate private group",
+         "status": "active", "as_of": "2026-04-20"},
         {"name": "Discord", "handle": "the_data_nerd",
          "url": "",
-         "stat": "5 servers joined · last post Apr 25 · 1 🔥 / 0 comments",
-         "note": "RETIRED 2026-05-02 — embedding plan never executed past Day 1; phone-verify gates Glama/Windsurf; reactive-only on Cursor #mcp going forward",
-         "status": "retired", "as_of": "2026-05-02"},
+         "stat": "Cursor + TS joined",
+         "note": "Blitz: Cursor #showcase Apr 18; TS lurk only",
+         "status": "active", "as_of": "2026-04-17"},
     ],
     "content": [
         {"name": "Company Blog", "handle": "signals.gitdealflow.com/blog",
          "url": "https://signals.gitdealflow.com/blog",
-         "stat": "34 posts live · 30 SSRN-cited research sub-pages",
-         "note": "Canonical URL for all cross-posts; latest: Weekly Signal Report Q2 2026 (May 2)",
-         "status": "active", "as_of": "2026-05-02"},
+         "stat": "20 posts live",
+         "note": "Canonical URL for all cross-posts",
+         "status": "active", "as_of": "2026-04-20"},
         {"name": "Medium", "handle": "@signal_41476",
          "url": "https://medium.com/@signal_41476",
-         "stat": "6 posts · 0 followers · 60 impr · 4 views · 1 read (lifetime) · 0 referrals",
-         "note": "RETIRED 2026-05-02. Auto-publisher disabled. Publication-pivot rejected after live verification of all three Ali Mese sister pubs: Start it up rejects already-published+pivoted away from data/VC; Curious rejects money/finance+work topics; Geek Culture wants pure tech (investor frame is wrong-side-of-table). 6 published posts stay as passive SEO/AI-retrieval surface (canonicals point at gitdealflow). Full audit trail in distribution/medium-autopublish/the-startup-submission-package.md. Resume only if (a) we hire creator-economy ghostwriter, (b) we rewrite content to drop investor angle for Geek Culture, or (c) we launch our own Medium publication.",
-         "status": "retired", "as_of": "2026-05-02"},
+         "stat": "1 post published",
+         "note": "Canonical → signals.gitdealflow.com; Import Story tool",
+         "status": "active", "as_of": "2026-04-19"},
         {"name": "Substack", "handle": "@thedatanerd2026",
          "url": "https://substack.com/@thedatanerd2026",
-         "stat": "17 Notes posted · 19 draft-ready (frozen) · 1 follower · 0 subs · 0 likes/restacks/replies · 0 PostHog referrals",
-         "note": "NOTES RUNNER DISABLED 2026-05-02 (Russell+Greg self-audit kill #3: 17 Notes → 0 referrals, channel paid no rent). 19 draft-ready entries frozen in queue. NEWSLETTER MIRROR test still live (passive RSS from signals.gitdealflow.com/blog, free-only, canonical → apex) — 60-day window 2026-04-28 → 2026-06-27 with checkpoints May 4 / May 25 / Jun 27 (binary keep/modify/kill decision). USER ACTION pending: 30-min publication setup per distribution/substack-autopublish/SETUP-PUBLICATION-RUNBOOK.md (autonomous setup blocked by Steel free-tier silent magic-link drop). Cover image at distribution/substack-cover-1500x500.png awaits manual upload.",
-         "status": "audit-killed", "as_of": "2026-05-02"},
+         "stat": "3 Notes posted · 12 scheduled",
+         "note": "Notes channel only (no split-list newsletter)",
+         "status": "active", "as_of": "2026-04-19"},
         {"name": "HackerNoon", "handle": "@TheData_7cdit42c",
-         "url": "https://hackernoon.com/can-github-activity-predict-the-next-startup-fundraise",
-         "stat": "1 published (Apr 27, 171 reads/5 reacts) · 1 in editorial (May 2) · 0 PostHog referrals",
-         "note": "Submission #1 rejected (Apr 19). Submission #2 published Apr 27 (HN claims own canonical → brand-citation only, 0 referrals in 5d). Submission #3 'Which Five GitHub Patterns Show Up Before a Startup Fundraise?' submitted autonomously May 2 11:40 EEST via Chrome MCP, canonical /blog/5-github-patterns-that-predict-fundraises, green 'submitted' badge confirmed. Strategy: keep posting 1/wk, do NOT amplify HN posts, do NOT chase referrals. Kill switch: if 30-day total at 2026-05-27 still shows 0 PostHog referrals AND no AI-engine citations, drop to monthly cadence.",
-         "status": "active", "as_of": "2026-05-02"},
+         "url": "https://hackernoon.com/u/TheData_7cdit42c",
+         "stat": "1 story in editorial queue",
+         "note": "'Alternative Data for VC' · check Apr 22",
+         "status": "pending-review", "as_of": "2026-04-19"},
         {"name": "dev.to", "handle": "data_nerd",
-         "url": "https://dev.to/data_nerd",
-         "stat": "3 articles · 47 views · 2 reactions · 1 comment · 0 followers (lifetime)",
-         "note": "AUTOPILOT-LITE: weekly Mon 11:30 EEST anchor via devto-weekly-anchor cron + Forem API (zero-effort, canonical→apex). 7 drafts ready through Jun 1, 7 pending titles through Jul 20. Dream 10 daily comments DEAD since Apr 24 (Comet auth fails in unattended cron). 90-day kill switch: if <500 lifetime views AND <5 apex referrals by 2026-08-02, retire publisher. Frame as SEO/backlink play, not direct-traffic channel.",
-         "status": "active", "as_of": "2026-05-02"},
+         "url": "https://dev.to/data_nerd/i-stopped-building-dashboards-ai-assistants-are-the-new-ui-c5h",
+         "stat": "1 MCP article published",
+         "note": "Canonical URL for Hashnode cross-post",
+         "status": "active", "as_of": "2026-04-18"},
         {"name": "Hashnode", "handle": "gitdealflow.hashnode.dev",
-         "url": "https://gitdealflow.hashnode.dev",
-         "stat": "4 posts · 0 followers · 6 views · 4 responses · 0 PostHog referrals",
-         "note": "RETIRED 2026-05-02 — auto-mirror killed (tools/devto/publish-next.mjs:104-107) after 14 days w/ 0 follower growth, 0 apex referrals; same self-audit kill as Discord. 4 existing posts (Apr 18 → Apr 28) remain as apex-canonical backlinks; toolkit (follow-tags / dream10-find / launchd plist) preserved but dormant, re-arm gated on organic follower signal. Newest: PH-failure post auto-mirrored Apr 28.",
-         "status": "retired", "as_of": "2026-05-02"},
+         "url": "https://gitdealflow.hashnode.dev/i-stopped-building-dashboards-ai-assistants-are-the-new-ui",
+         "stat": "1 cross-post live",
+         "note": "Canonical → dev.to -c5h",
+         "status": "active", "as_of": "2026-04-19"},
         {"name": "Quora", "handle": "The Data Nerd",
          "url": "https://www.quora.com/profile/The-Data-Nerd",
-         "stat": "14 answers posted (Q1-Q14) · Q15 never shipped · 0 PostHog referrals",
-         "note": "RETIRED 2026-05-02 — Russell+Greg self-audit kill #2: 14/15 answers → 0 referrals over 6d posting window (Apr 19-25). Root cause: account-age sandbox + 8 self-created ghost questions (Q5-Q8, Q10, Q11-Q14) never Google-indexed; only Q1-Q4 + Q9 sit on real existing questions. Credential + 10 Spaces fixes applied 2026-04-25, no lift. quora-daily-runner cron disabled. Re-arm trigger: 1 answer hits Google page-1 for a real query OR explicit user OK. 60-day mute through 2026-07-01.",
-         "status": "retired", "as_of": "2026-05-02"},
+         "stat": "4 answers posted · 11 scheduled",
+         "note": "Q1-Q4 live · 2/day pace through Apr 26",
+         "status": "active", "as_of": "2026-04-20"},
     ],
     "directories": [
         {"name": "Crunchbase", "category": "Business", "status": "live",
-         "as_of": "2026-05-02",
+         "as_of": "2026-04-16",
          "url": "https://www.crunchbase.com/organization/gitdealflow",
-         "note": "Tier B passive co-citation (verified via Wikidata P2088 claim 2026-05-02); 5 profile edits applied 2026-04-25; 0 PostHog referrals lifetime; HTTP 403 to crawlers (Cloudflare)"},
+         "note": "High-DA backlink + VC discoverability"},
         {"name": "G2", "category": "Software", "status": "live",
-         "as_of": "2026-05-02", "url": "",
-         "note": "Tier B; footer badge + JSON-LD shipped 2026-04-25; bot-walled to crawlers; 0 referrals; category assignment still pending"},
+         "as_of": "2026-04-16",
+         "url": "https://www.g2.com/products/gitdealflow/reviews",
+         "note": "Free listing; category assignment pending"},
         {"name": "SaaSHub", "category": "Software", "status": "live",
-         "as_of": "2026-05-02", "url": "",
-         "note": "Tier B passive; HTTP 404 on slug probes 2026-05-02 (listing may have been rejected); 0 referrals; manual re-check needed"},
+         "as_of": "2026-04-16",
+         "url": "https://www.saashub.com/git-deal-flow-alternatives",
+         "note": "Pending: verify badge + embed on landing"},
         {"name": "IH Products", "category": "Startup", "status": "live",
-         "as_of": "2026-05-02",
-         "url": "https://www.indiehackers.com/product/vc-deal-flow-signal",
-         "note": "Tier C dead — HTTP 301→200 verified 2026-05-02; nofollow links + IH redesign killed Products visibility; brand-only"},
+         "as_of": "2026-04-18",
+         "url": "https://indiehackers.com/product/vc-deal-flow-signal",
+         "note": "Links are nofollow — brand value only"},
         {"name": "Wikidata", "category": "Knowledge graph", "status": "live",
-         "as_of": "2026-05-02",
+         "as_of": "2026-04-16",
          "url": "https://www.wikidata.org/wiki/Q139376302",
-         "note": "Tier B knowledge-graph; HTTP 200 verified 2026-05-02; 21 P-claims incl. P2088 (Crunchbase) + P973 backlinks; 27 entity views/30d"},
+         "note": "Fully enriched: refs, P154 logo, P1813 short name"},
         {"name": "StackShare", "category": "Tech stack", "status": "live",
-         "as_of": "2026-05-02",
+         "as_of": "2026-04-19",
          "url": "https://stackshare.io/vc-deal-flow-signal-spot-breakout-startups-before-anyone-else",
-         "note": "Tier C audience-mismatch (devs ≠ VCs); HTTP 429 rate-limited on probe 2026-05-02; 0 referrals"},
-        {"name": "FutureTools", "category": "AI", "status": "silent-reject",
-         "as_of": "2026-05-02", "url": "",
-         "note": "Tier C — silent-rejected since 2026-04-25 audit; manual editorial gate rejects B2B-VC focus; 0 referrals; ship-and-forget"},
-        {"name": "AItoolslist.io", "category": "AI", "status": "ghost-site",
-         "as_of": "2026-05-02", "url": "",
-         "note": "Tier C — abandoned WordPress directory dead since Jul 2023; confirmed unchanged 2026-05-02; 0 referrals"},
-        {"name": "StartupRanking", "category": "Startup", "status": "queued",
-         "as_of": "2026-05-02", "url": "",
-         "note": "Tier C — 80-day free queue, submitted 2026-04-19; ~67d remaining; 0 referrals expected"},
+         "note": "Passive brand listing"},
+        {"name": "FutureTools", "category": "AI", "status": "live",
+         "as_of": "2026-04-19", "url": "", "note": ""},
+        {"name": "AItoolslist.io", "category": "AI", "status": "live",
+         "as_of": "2026-04-19", "url": "", "note": ""},
+        {"name": "StartupRanking", "category": "Startup", "status": "submitted",
+         "as_of": "2026-04-19",
+         "url": "https://www.startupranking.com/startup/gitdealflow",
+         "note": "Claimed + HTML-verified; 80-day free queue"},
         {"name": "SideProjectors", "category": "Indie", "status": "pending-review",
-         "as_of": "2026-05-02",
-         "url": "https://www.sideprojectors.com/project/78284",
-         "note": "Tier C — 14d no movement in mod queue (submitted 2026-04-18); HTTP 301→200 verified 2026-05-02; audience = side-project buyers"},
-        {"name": "AlternativeTo", "category": "Software", "status": "live",
-         "as_of": "2026-05-02", "url": "",
-         "note": "Tier A — 2 visitors lifetime (PostHog 2026-04-24); HTTP 403 (Cloudflare blocks bot crawl); only software-comparison directory driving traffic"},
-        {"name": "VentureRadar", "category": "Startup", "status": "queued",
-         "as_of": "2026-05-02", "url": "",
-         "note": "Tier C — 21d review queue (submitted 2026-04-19); T+13d 2026-05-02 ~8d remaining; HQ Cyprus"},
-        {"name": "10words", "category": "SaaS", "status": "queued",
-         "as_of": "2026-05-02", "url": "",
-         "note": "Tier C — 1,866-day queue (~5y); submitted 2026-04-19; effectively dead, ship-and-forget"},
+         "as_of": "2026-04-18",
+         "url": "https://www.sideprojectors.com/project/78284/vc-deal-flow-signal-engineering-momentum-for-vcs",
+         "note": "In mod queue; public URL ≠ approval"},
+        {"name": "AlternativeTo", "category": "Software", "status": "queued",
+         "as_of": "2026-04-16", "url": "",
+         "note": "Account created; 7-day wait; submit after Apr 22"},
+        {"name": "VentureRadar", "category": "Startup", "status": "submitted",
+         "as_of": "2026-04-19", "url": "",
+         "note": "~21-day free review; HQ: Cyprus"},
+        {"name": "10words", "category": "SaaS", "status": "submitted",
+         "as_of": "2026-04-19", "url": "",
+         "note": "Queue: 1,866 days (~5y); passive only"},
         {"name": "OpenVC", "category": "VC", "status": "signed-up",
-         "as_of": "2026-05-02", "url": "",
-         "note": "Tier E — NOT a directory; private deck-submission tool; signed up 2026-04-19; activate on fundraise event"},
-        {"name": "Dealroom for Builders", "category": "VC", "status": "no-reply",
-         "as_of": "2026-05-02", "url": "",
-         "note": "Tier D — applied 2026-04-19 (5-biz-day promised); T+9BD 2026-05-02 no reply; ship-and-forget"},
+         "as_of": "2026-04-19", "url": "",
+         "note": "For future outbound; not a passive directory"},
+        {"name": "Dealroom for Builders", "category": "VC", "status": "applied",
+         "as_of": "2026-04-19", "url": "",
+         "note": "5-biz-day review; follow up ~May 1"},
         {"name": "CB Insights", "category": "VC", "status": "applied",
-         "as_of": "2026-05-02", "url": "",
-         "note": "Tier D — trial-signup lead-gen, applied 2026-04-19; no public form, no proactive contact expected; 0 referrals"},
+         "as_of": "2026-04-19", "url": "",
+         "note": "Trial-signup lead-gen (no public form)"},
         {"name": "FinTech Report", "category": "Award", "status": "submitted",
-         "as_of": "2026-05-02", "url": "",
-         "note": "Tier D — WealthTech nomination submitted 2026-04-19; editorial-only; T+13d no contact"},
-        {"name": "Letterlist", "category": "Newsletter", "status": "abandoned",
-         "as_of": "2026-05-02", "url": "",
-         "note": "Tier C — directory abandoned by operator (RSS feed last update Jun 2023); confirmed unchanged 2026-05-02; no listing pipeline"},
-        {"name": "InboxReads", "category": "Newsletter", "status": "live",
-         "as_of": "2026-05-02",
-         "url": "https://inboxreads.co",
-         "note": "Tier A — 4 visitors lifetime (PostHog 2026-04-20→04-25); HTTP 200 verified 2026-05-02; only newsletter directory driving traffic"},
+         "as_of": "2026-04-19", "url": "",
+         "note": "WealthTech nomination; editorial only"},
+        {"name": "Letterlist", "category": "Newsletter", "status": "submitted",
+         "as_of": "2026-04-19", "url": "https://letterlist.com",
+         "note": "≤24h review · submitted via letterlist.com/submit/"},
+        {"name": "InboxReads", "category": "Newsletter", "status": "submitted",
+         "as_of": "2026-04-19", "url": "https://inboxreads.co",
+         "note": "≤24h review · submitted via inboxreads.co/submit"},
         {"name": "daily.dev", "category": "Dev", "status": "deferred",
-         "as_of": "2026-05-02", "url": "",
-         "note": "Post-launch deferral; one Squad submission planned ~May 3+; held 14d since 2026-04-19"},
+         "as_of": "2026-04-19", "url": "",
+         "note": "Post-launch (~May 3+): one Squad submission"},
     ],
     "dev_search": [
-        {"name": "npm — mcp-signal", "stat": "@gitdealflow/mcp-signal v1.5.2",
-         "status": "live", "as_of": "2026-05-02",
+        {"name": "npm — mcp-signal", "stat": "@gitdealflow/mcp-signal v1.2.0",
+         "status": "live", "as_of": "2026-04-18",
          "url": "https://www.npmjs.com/package/@gitdealflow/mcp-signal",
-         "note": "Verified 2026-05-02 npm registry"},
-        {"name": "Glama MCP", "stat": "kindrat86/mcp-deal-flow-signal",
-         "status": "live", "as_of": "2026-05-02",
+         "note": ""},
+        {"name": "Glama MCP", "stat": "Full A-tier (5 tools, 4.8-4.9/5.0)",
+         "status": "live", "as_of": "2026-04-18",
          "url": "https://glama.ai/mcp/servers/kindrat86/mcp-deal-flow-signal",
-         "note": "HTTP 200 verified 2026-05-02; A-tier (5 tools)"},
-        {"name": "MCP Registry", "stat": "io.github.kindrat86/vc-deal-flow-signal v1.5.2 (6 versions)",
-         "status": "live", "as_of": "2026-05-02",
-         "url": "https://registry.modelcontextprotocol.io/v0/servers?search=vc-deal-flow",
-         "note": "Verified 2026-05-02 via search API; JWT re-auth ~every 8d for new publishes"},
-        {"name": "awesome-mcp-servers", "stat": "PR #4933 merged 2026-04-23",
-         "status": "live", "as_of": "2026-05-02",
+         "note": ""},
+        {"name": "MCP Registry", "stat": "Listed as io.github.kindrat86/vc-deal-flow-signal",
+         "status": "live", "as_of": "2026-04-17",
+         "url": "https://registry.modelcontextprotocol.io", "note": ""},
+        {"name": "awesome-mcp-servers", "stat": "PR #4933",
+         "status": "pending-merge", "as_of": "2026-04-18",
          "url": "https://github.com/punkpeye/awesome-mcp-servers/pull/4933",
-         "note": "Verified 2026-05-02 in main README as kindrat86/mcp-deal-flow-signal w/ Glama score badge"},
-        {"name": "Chrome Web Store", "stat": "Extension live (id hehkgipi…oogmknn)",
-         "status": "live", "as_of": "2026-05-02",
+         "note": "In merge queue"},
+        {"name": "Chrome Web Store", "stat": "Extension live",
+         "status": "live", "as_of": "2026-04-17",
          "url": "https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn",
-         "note": "HTTP 302 verified 2026-05-02; badges on Crunchbase/AngelList/PitchBook"},
+         "note": "Badge on Crunchbase/AngelList/PitchBook"},
         {"name": "awesome-quant", "stat": "PR #360 merged",
-         "status": "live", "as_of": "2026-05-02",
-         "url": "https://github.com/wilsonfreitas/awesome-quant",
-         "note": "Verified 2026-05-02 in master README; Tier 5 link building"},
-        {"name": "awesome-public-datasets", "stat": "apd-core PR #396 (Finance)",
-         "status": "pending", "as_of": "2026-05-03",
-         "url": "https://github.com/awesomedata/apd-core/pull/396",
-         "note": "VC-Deal-Flow-Signal.yml under core/Finance; validation passes; awesomedata maintainer review pending. After merge, verify entry survives autogen in awesome-public-datasets/README.rst (silent-drop rule)."},
-        {"name": "Wolfram Data Repository", "stat": "Submission package staged (CC BY 4.0)",
-         "status": "pending", "as_of": "2026-05-03",
-         "url": "",
-         "note": "submit.wl + metadata.json + runbook at distribution/dataset/wolfram/. Blocked on user Wolfram ID + Publisher ID + interactive ResourceSubmit (no wolframscript on machine; account creation prohibited)."},
-        {"name": "Kaggle / Data.world / Zenodo", "stat": "Dataset mirrors (Zenodo DOI 10.5281/zenodo.19650920)",
-         "status": "live", "as_of": "2026-05-02",
+         "status": "live", "as_of": "2026-04-19",
+         "url": "https://github.com/wilsonfreitas/awesome-quant/pull/360",
+         "note": "Tier 5 link building"},
+        {"name": "Kaggle", "stat": "Dataset mirror",
+         "status": "live", "as_of": "2026-04-19",
+         "url": "https://www.kaggle.com/datasets/thedatanerd2026/vc-deal-flow-signal",
+         "note": "High-DA backlink bundle"},
+        {"name": "Data.world", "stat": "Dataset mirror",
+         "status": "live", "as_of": "2026-04-19",
+         "url": "https://data.world/thedatanerd2026/vc-deal-flow-signal-startup-engineering-acceleration",
+         "note": "High-DA backlink bundle"},
+        {"name": "Zenodo", "stat": "DOI 10.5281/zenodo.19650920",
+         "status": "live", "as_of": "2026-04-19",
          "url": "https://zenodo.org/records/19650920",
-         "note": "Kaggle 200 + Zenodo 200 verified 2026-05-02; Data.world per Wikipedia article draft"},
-        {"name": "SSRN", "stat": "abstract=6606558 approved + 6/8 indexed",
-         "status": "live", "as_of": "2026-05-02",
+         "note": "Canonical, DOI-stamped"},
+        {"name": "SSRN", "stat": "Paper LIVE (abstract 6606558, 29h review)",
+         "status": "live", "as_of": "2026-04-20",
          "url": "https://ssrn.com/abstract=6606558",
-         "note": "HTTP 301→canonical verified 2026-05-02; Crossref/SemScholar/OpenAlex/Unpaywall/DataCite/Zenodo indexed"},
-        {"name": "arXiv", "stat": "Endorsement pending (blocked since 2026-04-25)",
-         "status": "blocked", "as_of": "2026-05-02",
-         "url": "", "note": "Dalle OOO 2026-04-25 → no reply; Zhu fallback rearm 2026-05-04 (T+5BD); 7d in blocked state"},
-        {"name": "Papers With Code", "stat": "Pending submission · SSRN-unblocked",
-         "status": "queued", "as_of": "2026-05-02",
+         "note": "Author page ssrn.com/author=11219548"},
+        {"name": "arXiv", "stat": "Endorsement candidate shortlist sent",
+         "status": "pending-review", "as_of": "2026-04-19",
+         "url": "https://arxiv.org", "note": "Awaiting endorser"},
+        {"name": "Papers With Code", "stat": "Submission draft ready (SSRN live unblocks)",
+         "status": "pending-review", "as_of": "2026-04-20",
          "url": "https://paperswithcode.com/submit",
-         "note": "Was blocked on SSRN approval; now cleared (DOI 10.2139/ssrn.6606558 live since 2026-04-25). Prep: distribution/research-paper/papers-with-code-submission.md. PwC review: 3-7d after submit"},
-        {"name": "Google Search Console", "stat": "OAuth dashboard live (hourly tile)",
-         "status": "live", "as_of": "2026-05-02",
-         "url": "https://search.google.com/search-console",
-         "note": "Hourly tile pulls clicks/impr/queries; baseline 1 click / 43 imp / pos 2.8 (since 2026-04-26)"},
-        {"name": "Bing / IndexNow", "stat": "1080 URLs submitted",
-         "status": "live", "as_of": "2026-05-02",
-         "url": "", "note": "SEO chain expansion 2026-05-02; propagates to Yandex + Seznam"},
-        {"name": "Yandex Webmaster", "stat": "Apex clean · signals 7 'low-value' pages",
-         "status": "live", "as_of": "2026-05-02",
+         "note": "Paste distribution/research-paper/papers-with-code-submission.md"},
+        {"name": "Google Search Console", "stat": "Configured",
+         "status": "live", "as_of": "2026-04-15",
+         "url": "https://search.google.com/search-console", "note": ""},
+        {"name": "Bing Webmaster / IndexNow", "stat": "272 URLs submitted",
+         "status": "live", "as_of": "2026-04-18",
+         "url": "https://www.bing.com/webmasters",
+         "note": "Propagates to Yandex + Seznam"},
+        {"name": "Yandex Webmaster", "stat": "19 URLs reindexed · 12 tracked",
+         "status": "live", "as_of": "2026-04-18",
          "url": "https://webmaster.yandex.com",
-         "note": "T+14d recheck 2026-05-02: apex 'no errors'; signals subdomain has 1 favicon-SVG warn + /feed.xml fetch fail + 7 'low-value classifier' pages (need backlink graph + internal links)"},
-        {"name": "Brave Search", "stat": "Indexed · 4 results for site:gitdealflow.com",
-         "status": "live", "as_of": "2026-05-02",
-         "url": "https://search.brave.com/search?q=site%3Agitdealflow.com",
-         "note": "Verified 2026-05-02 via site: query (apex + signals subdomain pages)"},
-        {"name": "llms.txt registry", "stat": "Finance category (14d in queue)",
-         "status": "submitted", "as_of": "2026-05-02",
-         "url": "https://directory.llmstxt.cloud",
-         "note": "Submitted 2026-04-18; re-verified 2026-05-02 not yet listed; ship-and-forget"},
-        {"name": "Perplexity Publishers", "stat": "Intake form submitted (14d wait)",
-         "status": "applied", "as_of": "2026-05-02",
-         "url": "https://www.perplexity.ai/hub/legal/publishers-program",
-         "note": "Submitted 2026-04-18; follow-up window 2026-05-09 (T+7d); no proactive reply as of 2026-05-02"},
-        {"name": "OAuth 2.1 endpoint", "stat": "client_credentials, RFC 8414",
-         "status": "live", "as_of": "2026-05-02",
-         "url": "https://signals.gitdealflow.com/.well-known/oauth-authorization-server",
-         "note": "Bearer wired into /api/mcp/rpc; anonymous backward-compat preserved"},
-        {"name": "Poe SSE adapter", "stat": "Server Bot v1 protocol",
-         "status": "live", "as_of": "2026-05-02",
-         "url": "https://signals.gitdealflow.com/api/poe",
-         "note": "User must sign up at creator.poe.com to publish"},
-        {"name": "MCP server-card", "stat": "/.well-known/mcp/server-card.json",
-         "status": "live", "as_of": "2026-05-02",
-         "url": "https://signals.gitdealflow.com/.well-known/mcp/server-card.json",
-         "note": "Universal metadata for Smithery + future catalog scanners"},
-        {"name": "AGENTS.md", "stat": "/agents.md",
-         "status": "live", "as_of": "2026-05-02",
-         "url": "https://signals.gitdealflow.com/agents.md", "note": "HTTP 200 verified"},
-        {"name": "ai.txt", "stat": "/ai.txt",
-         "status": "live", "as_of": "2026-05-02",
-         "url": "https://signals.gitdealflow.com/ai.txt", "note": "HTTP 200 verified"},
-        {"name": "llms.txt", "stat": "/llms.txt",
-         "status": "live", "as_of": "2026-05-02",
-         "url": "https://signals.gitdealflow.com/llms.txt", "note": "HTTP 200 verified"},
-        {"name": "Q&A JSONL", "stat": "/qa.jsonl (30 SSRN-cited)",
-         "status": "live", "as_of": "2026-05-02",
-         "url": "https://signals.gitdealflow.com/qa.jsonl", "note": "HTTP 200; ?category= filter API"},
-        {"name": "Cline MCP Marketplace", "stat": "Issue #1491 OPEN",
-         "status": "in-review", "as_of": "2026-05-02",
-         "url": "https://github.com/cline/mcp-marketplace/issues/1491",
-         "note": "Submitted 2026-05-02; ~1-3d review (watcher polling 2x/day)"},
-        {"name": "mcp.so directory", "stat": "Issue #2201 OPEN",
-         "status": "in-review", "as_of": "2026-05-02",
-         "url": "https://github.com/chatmcp/mcpso/issues/2201",
-         "note": "20k+ servers in directory; ~1-3d review"},
-        {"name": "Block Goose extensions", "stat": "PR #8974 OPEN (mergeable)",
-         "status": "in-review", "as_of": "2026-05-03",
-         "url": "https://github.com/aaif-goose/goose/pull/8974",
-         "note": "Submitted 2026-05-03; appends to documentation/static/servers.json (60→61). Goose has 43.7k stars."},
-        {"name": "Raycast MCP Registry", "stat": "PR #27618 OPEN (greptile-bot reviewed)",
-         "status": "in-review", "as_of": "2026-05-03",
-         "url": "https://github.com/raycast/extensions/pull/27618",
-         "note": "Submitted 2026-05-03; appends to extensions/model-context-protocol-registry/.../entries.ts. Surfaces in MCP Registry browser on every Mac running Raycast v1.98+."},
-        {"name": "CrewAI Tools", "stat": "PR #5682 OPEN",
-         "status": "in-review", "as_of": "2026-05-02",
-         "url": "https://github.com/crewAIInc/crewAI/pull/5682",
-         "note": "Submitted 2026-05-02; awaiting maintainer review"},
-        {"name": "Anthropic Connectors Directory", "stat": "Submission package ready",
-         "status": "user-action", "as_of": "2026-05-02",
-         "url": "https://claude.com/docs/connectors/building/submission",
-         "note": "OAuth + manifest deployed; user 5-min form submit pending"},
-        {"name": "Anthropic Desktop Extensions", "stat": "Google Form submitted",
-         "status": "submitted", "as_of": "2026-05-02",
-         "url": "", "note": "Submitted 2026-05-02 ~12:00 EEST; anthropic-extension-watcher monitoring"},
-        {"name": "HuggingChat MCP", "stat": "Custom Server (personal config)",
-         "status": "live", "as_of": "2026-05-02",
-         "url": "https://huggingface.co/chat/conversation/69f5a4dbe8a1d19b3daba541",
-         "note": "Personal config only — public Base Servers list is partnership-only"},
-        {"name": "HF Space — DeepSeek demo", "stat": "Scaffolded local",
-         "status": "user-action", "as_of": "2026-05-02",
-         "url": "", "note": "distribution/hf-space-deepseek/; user HF write token + push pending"},
-        {"name": "Anthropic Cookbook PR", "stat": "Scheduled 2026-05-04",
-         "status": "scheduled", "as_of": "2026-05-02",
-         "url": "", "note": "Task framework-pr-anthropic-cookbook"},
-        {"name": "LlamaHub Tool PR", "stat": "Scheduled 2026-05-06",
-         "status": "scheduled", "as_of": "2026-05-02",
-         "url": "", "note": "Task framework-pr-llamahub-tool"},
-        {"name": "Vercel AI SDK PR", "stat": "Scheduled 2026-05-08",
-         "status": "scheduled", "as_of": "2026-05-02",
-         "url": "", "note": "Task framework-pr-vercel-ai-sdk"},
-        {"name": "n8n community node", "stat": "n8n-nodes-gitdealflow@0.1.0",
-         "status": "live", "as_of": "2026-05-03",
-         "url": "https://www.npmjs.com/package/n8n-nodes-gitdealflow",
-         "note": "Published to npm 2026-05-03; auto-indexed at n8n.io/integrations within 24h. 5 ops: getTrending / searchBySector / findStartup / getSignals / getSummary. No auth, weekly refresh."},
-        {"name": "Zapier", "stat": "App 240628 v1.0.3 (private)",
-         "status": "user-action", "as_of": "2026-05-03",
-         "url": "https://developer.zapier.com/app/240628/version/1.0.3/dashboard",
-         "note": "Schema 43/43 passed; 2 triggers + 2 searches; needs 3 users w/ live Zaps before Public review eligible (S001/S002 publishing tasks). User invites testers + clicks Promote in dev portal."},
-        {"name": "Pipedream", "stat": "PR #20774 OPEN",
-         "status": "in-review", "as_of": "2026-05-03",
-         "url": "https://github.com/PipedreamHQ/pipedream/pull/20774",
-         "note": "4 actions + 2 sources for @pipedream/gitdealflow opened against PipedreamHQ/pipedream:master via fork kindrat86/pipedream branch add-gitdealflow. Awaiting maintainer review (Pipedream review SLA ~3-7d)."},
-        {"name": "Make.com", "stat": "Custom App spec staged",
-         "status": "user-action", "as_of": "2026-05-03",
-         "url": "https://www.make.com/en/help/apps/about-the-development-of-custom-apps",
-         "note": "4 modules at make-app/ (3 search + 1 polling trigger); Make has no CLI/API for app creation, user pastes IML JSON in dev portal."},
+         "note": "Both properties verified"},
+        {"name": "Brave Search", "stat": "apex + signals submitted",
+         "status": "submitted", "as_of": "2026-04-18",
+         "url": "https://search.brave.com", "note": ""},
+        {"name": "llms.txt registry", "stat": "Finance category",
+         "status": "submitted", "as_of": "2026-04-18",
+         "url": "https://directory.llmstxt.cloud", "note": ""},
+        {"name": "Perplexity Publishers", "stat": "Intake form submitted",
+         "status": "applied", "as_of": "2026-04-18",
+         "url": "https://www.perplexity.ai/hub/blog/perplexity-publishers-program",
+         "note": "Follow up ~May 9"},
     ],
 }
 
@@ -401,35 +305,47 @@ PH_API_KEY = env.get("PH_API_KEY", "")
 PH_HOST = env.get("PH_HOST", "https://eu.posthog.com")
 PH_PROJECT = env.get("PH_PROJECT", "")
 
+# Mailreach lives in tools/.env, not email-api/.env.
+TOOLS_ENV_FILE = os.path.join(PROJECT_DIR, "tools", ".env")
+tools_env = load_env(TOOLS_ENV_FILE) if os.path.exists(TOOLS_ENV_FILE) else {}
+MAILREACH_API_KEY = tools_env.get("MAILREACH_API_KEY", "")
+SENDER_EMAIL = (
+    env.get("FROM_EMAIL")
+    or tools_env.get("FROM_EMAIL")
+    or tools_env.get("ZOHO_EMAIL")
+    or "signal@gitdealflow.com"
+)
 
-def http(url, method="GET", data=None, headers=None, retries=3):
+# Campaign runner state.
+CAMPAIGN_DIR = os.path.join(PROJECT_DIR, "tools", "campaign")
+QUEUE_PATH = os.path.join(CAMPAIGN_DIR, "queue.jsonl")
+SENT_PATH = os.path.join(CAMPAIGN_DIR, "sent.jsonl")
+HOLD_PATH = os.path.join(CAMPAIGN_DIR, "HOLD")
+
+# Substack autopublish state.
+SUBSTACK_QUEUE_PATH = os.path.join(
+    PROJECT_DIR, "distribution", "substack-autopublish", "queue.json"
+)
+SUBSTACK_STATS_PATH = os.path.join(SCRIPT_DIR, "substack-stats.json")
+
+
+def http(url, method="GET", data=None, headers=None):
     headers = dict(headers or {})
     headers.setdefault("User-Agent", "gitdealflow-dashboard/1.0")
     body = None
     if data is not None:
         body = json.dumps(data).encode()
         headers.setdefault("Content-Type", "application/json")
-    last_err = None
-    for attempt in range(retries):
-        req = urllib.request.Request(url, data=body, headers=headers, method=method)
-        try:
-            with urllib.request.urlopen(req, timeout=30) as resp:
-                return json.load(resp)
-        except urllib.error.HTTPError as e:
-            # 4xx is client error — don't retry. 5xx is worth a retry.
-            msg = e.read().decode()[:160]
-            if e.code < 500 or attempt == retries - 1:
-                print(f"WARN: HTTP {e.code} {url}: {msg}", file=sys.stderr)
-                return None
-            last_err = f"HTTP {e.code}: {msg}"
-        except Exception as e:
-            last_err = str(e)
-            if attempt == retries - 1:
-                print(f"WARN: {url}: {e}", file=sys.stderr)
-                return None
-        time.sleep(2 ** attempt)  # 1s, 2s, 4s
-    print(f"WARN: {url}: {last_err} (after {retries} attempts)", file=sys.stderr)
-    return None
+    req = urllib.request.Request(url, data=body, headers=headers, method=method)
+    try:
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            return json.load(resp)
+    except urllib.error.HTTPError as e:
+        print(f"WARN: HTTP {e.code} {url}: {e.read().decode()[:160]}", file=sys.stderr)
+        return None
+    except Exception as e:
+        print(f"WARN: {url}: {e}", file=sys.stderr)
+        return None
 
 
 # ---------------- PocketBase ----------------
@@ -478,6 +394,34 @@ def resend_audience_contacts():
     return c.get("data", []) if c else []
 
 
+def resend_email_events(window_start_date):
+    """Page through Resend /emails back to window_start_date. Returns list of
+    email records with fields: to[], subject, last_event, created_at."""
+    if not RESEND_API_KEY:
+        return []
+    cutoff_iso = window_start_date.isoformat()
+    collected = []
+    after = None
+    # Hard cap at 50 pages (5000 emails) to prevent runaway
+    for _ in range(50):
+        url = "https://api.resend.com/emails?limit=100"
+        if after:
+            url += f"&after={after}"
+        r = http(url, headers={"Authorization": f"Bearer {RESEND_API_KEY}"})
+        if not r or not r.get("data"):
+            break
+        data = r["data"]
+        collected.extend(data)
+        oldest = data[-1].get("created_at", "")
+        # created_at format: "2026-04-20 16:30:28.882432+00"; first 10 chars = date
+        if oldest[:10] < cutoff_iso:
+            break
+        if not r.get("has_more"):
+            break
+        after = data[-1]["id"]
+    return collected
+
+
 # ---------------- PostHog ----------------
 
 def ph_query(hogql):
@@ -499,23 +443,25 @@ window_start = today - timedelta(days=WINDOW_DAYS - 1)
 print("Authenticating PocketBase...")
 token = pb_auth()
 subscribers, email_log = [], []
+email_sequences = []
 if token:
     subscribers = pb_fetch_all(token, "subscribers")
     email_log = pb_fetch_all(token, "email_log")
+    email_sequences = pb_fetch_all(token, "email_sequences")
 raw_sub_count, raw_log_count = len(subscribers), len(email_log)
 
-# Filter testers + bots out of subscribers + email_log (by subscriber relation).
-excluded_ids = {s["id"] for s in subscribers if (s.get("email") or "").lower() in EXCLUDED_EMAILS}
-subscribers = [s for s in subscribers if (s.get("email") or "").lower() not in EXCLUDED_EMAILS]
-email_log = [e for e in email_log if e.get("subscriber") not in excluded_ids]
-print(f"  subscribers: {len(subscribers)} (excluded {raw_sub_count - len(subscribers)} testers/bots)"
+# Filter testers out of subscribers + email_log (by subscriber relation).
+tester_ids = {s["id"] for s in subscribers if (s.get("email") or "").lower() in TESTER_EMAILS}
+subscribers = [s for s in subscribers if (s.get("email") or "").lower() not in TESTER_EMAILS]
+email_log = [e for e in email_log if e.get("subscriber") not in tester_ids]
+print(f"  subscribers: {len(subscribers)} (excluded {raw_sub_count - len(subscribers)} testers)"
       f", email_log: {len(email_log)} (excluded {raw_log_count - len(email_log)})")
 
 print("Fetching Resend audience...")
 resend_contacts = resend_audience_contacts()
 resend_emails = {
     c["email"].lower() for c in resend_contacts
-    if not c.get("unsubscribed") and c["email"].lower() not in EXCLUDED_EMAILS
+    if not c.get("unsubscribed") and c["email"].lower() not in TESTER_EMAILS
 }
 print(f"  verified in Resend: {len(resend_emails)}")
 
@@ -625,12 +571,40 @@ sub_emails = {s.get("email", "").lower() for s in subscribers}
 verified = sub_emails & resend_emails
 unverified_in_pb = sub_emails - resend_emails
 
-# Email log aggregates
-email_status = Counter()
-for e in email_log:
-    email_status[e.get("status") or "unknown"] += 1
+# Email log aggregates — prefer Resend API (pSEO signup path doesn't write PB email_log)
+print("Fetching Resend email events...")
+resend_events = resend_email_events(window_start)
+print(f"  resend events fetched: {len(resend_events)}")
 
-total_sent = sum(v for k, v in email_status.items() if k in ("sent", "opened", "clicked"))
+email_status = Counter()
+email_source = "none"
+# Only count subscriber-directed sends; cold outreach to editors etc. is a
+# different pipeline and would pollute open/click denominators.
+subscriber_emails = {(s.get("email") or "").lower() for s in subscribers}
+if resend_events:
+    email_source = "resend"
+    for e in resend_events:
+        recipients = e.get("to") or []
+        to = (recipients[0] if recipients else "").lower()
+        if to in TESTER_EMAILS:
+            continue
+        if subscriber_emails and to not in subscriber_emails:
+            continue
+        subject = e.get("subject") or ""
+        if subject.startswith("Confirm your email"):
+            continue
+        email_status[e.get("last_event") or "unknown"] += 1
+elif email_log:
+    email_source = "pocketbase"
+    for e in email_log:
+        email_status[e.get("status") or "unknown"] += 1
+
+# Resend last_event vocabulary: scheduled, sent, delivered, bounced, complained,
+# opened, clicked, delivery_delayed, failed. Treat anything delivered-or-later
+# as "sent" for rate denominators.
+_SENT_EVENTS = ("sent", "delivered", "opened", "clicked", "delivery_delayed")
+total_sent = sum(email_status[k] for k in _SENT_EVENTS if k in email_status)
+total_scheduled = email_status.get("scheduled", 0)
 total_opened = email_status.get("opened", 0) + email_status.get("clicked", 0)
 total_clicked = email_status.get("clicked", 0)
 open_rate = round(100 * total_opened / total_sent, 1) if total_sent else 0.0
@@ -650,19 +624,118 @@ funnel = [
     {"label": "Verified (Resend)", "value": len(verified)},
 ]
 
+# Per-subscriber Resend event stats (sent / opened / clicked).
+# Resend events have `to[]` + `last_event` but no subscriber_id, so we match by email.
+per_sub_stats = {}
+for s in subscribers:
+    email = (s.get("email") or "").lower()
+    if email:
+        per_sub_stats[email] = {"sent": 0, "opened": 0, "clicked": 0}
+
+for e in resend_events:
+    recipients = e.get("to") or []
+    to = (recipients[0] if recipients else "").lower()
+    if to not in per_sub_stats:
+        continue
+    subject = e.get("subject") or ""
+    # Skip the double-opt-in confirmation email; it would distort engagement rates.
+    if subject.startswith("Confirm your email"):
+        continue
+    last = e.get("last_event") or ""
+    if last in _SENT_EVENTS:
+        per_sub_stats[to]["sent"] += 1
+    if last in ("opened", "clicked"):
+        per_sub_stats[to]["opened"] += 1
+    if last == "clicked":
+        per_sub_stats[to]["clicked"] += 1
+
+
+# Per-subscriber sequence identification (from PB email_log latest email_key).
+log_by_sub = defaultdict(list)
+for e in email_log:
+    log_by_sub[e.get("subscriber")].append(e)
+
+
+def describe_sequence(key):
+    if not key:
+        return "—"
+    if key.startswith("soap-opera-"):
+        try:
+            n = int(key.rsplit("-", 1)[1])
+            return f"Soap Opera {n}/5"
+        except Exception:
+            return key
+    if key.startswith("weekly-digest"):
+        return "Weekly Digest"
+    if key.startswith("welcome"):
+        return "Welcome"
+    return key
+
+
+# Fallback: match Resend subjects → email_sequences.key (for pSEO signups that
+# bypass the PB email_log writer).
+subject_to_key = {
+    (seq.get("subject") or "").strip(): seq.get("key")
+    for seq in email_sequences
+    if seq.get("subject") and seq.get("key")
+}
+
+
+def resend_latest_key_for(email):
+    latest_ts, latest_key = "", None
+    for e in resend_events:
+        recipients = e.get("to") or []
+        to = (recipients[0] if recipients else "").lower()
+        if to != email:
+            continue
+        subj = (e.get("subject") or "").strip()
+        if subj.startswith("Confirm your email"):
+            continue
+        key = subject_to_key.get(subj)
+        if not key:
+            continue
+        ts = e.get("created_at") or ""
+        if ts > latest_ts:
+            latest_ts, latest_key = ts, key
+    return latest_key
+
+
+per_sub_sequence = {}
+for s in subscribers:
+    sid = s.get("id")
+    logs = sorted(
+        log_by_sub.get(sid, []),
+        key=lambda x: x.get("sent_at") or x.get("created") or "",
+        reverse=True,
+    )
+    latest_key = logs[0].get("email_key") if logs else None
+    if not latest_key:
+        latest_key = resend_latest_key_for((s.get("email") or "").lower())
+    per_sub_sequence[sid] = describe_sequence(latest_key)
+
+
 # Recent subscribers (most recent 30)
 def sort_key(s):
     return s.get("created") or ""
+
+
+def _rates(email):
+    stats = per_sub_stats.get(email, {"sent": 0, "opened": 0, "clicked": 0})
+    sent = stats["sent"]
+    return {
+        "emails_sent": sent,
+        "open_rate": round(100 * stats["opened"] / sent, 1) if sent else 0.0,
+        "click_rate": round(100 * stats["clicked"] / sent, 1) if sent else 0.0,
+    }
+
 
 recent = sorted(subscribers, key=sort_key, reverse=True)[:30]
 recent_rows = [
     {
         "email": s.get("email", ""),
-        "created": (s.get("created") or "")[:10],
-        "source": s.get("source") or "—",
-        "tier": s.get("tier") or "free",
-        "status": s.get("status") or "active",
         "verified": s.get("email", "").lower() in resend_emails,
+        "sequence": per_sub_sequence.get(s.get("id"), "—"),
+        **_rates((s.get("email") or "").lower()),
     }
     for s in recent
 ]
@@ -684,6 +757,127 @@ if ph_countries and ph_countries.get("results"):
             "name": COUNTRY_NAMES.get(code, code),
             "n": row[1],
         })
+
+# ---------------- Google Search Console (OAuth) ----------------
+# Fetches clicks/impressions/CTR/position + top queries + top pages over the
+# rolling WINDOW_DAYS window. Token at secrets/gsc-oauth-token.json (created
+# by tools/gsc-oauth/login.py). Soft-fails if missing/expired.
+gsc_data = None
+
+def fetch_gsc():
+    """Pull GSC search-analytics for the rolling window. Returns dict or None."""
+    token_path = os.path.join(PROJECT_DIR, "secrets", "gsc-oauth-token.json")
+    if not os.path.exists(token_path):
+        return None
+    try:
+        from google.oauth2.credentials import Credentials
+        from google.auth.transport.requests import Request as GoogleAuthRequest
+        from googleapiclient.discovery import build as gbuild
+    except Exception as e:
+        return {"error": f"google libs missing: {e}"}
+
+    properties = (env.get("GSC_PROPERTIES") or "sc-domain:gitdealflow.com").split(",")
+    properties = [p.strip() for p in properties if p.strip()]
+
+    try:
+        creds = Credentials.from_authorized_user_file(
+            token_path,
+            scopes=["https://www.googleapis.com/auth/webmasters.readonly"],
+        )
+        if creds.expired and creds.refresh_token:
+            creds.refresh(GoogleAuthRequest())
+        sc = gbuild("searchconsole", "v1", credentials=creds, cache_discovery=False)
+    except Exception as e:
+        return {"error": f"auth failed: {e}"}
+
+    end = date.today()
+    start = end - timedelta(days=WINDOW_DAYS)
+    out = {
+        "properties": properties,
+        "window_start": start.isoformat(),
+        "window_end": end.isoformat(),
+        "totals": {"clicks": 0, "impressions": 0, "ctr": 0.0, "position": 0.0},
+        "top_queries": [],
+        "top_pages": [],
+    }
+    pos_weighted_sum = 0.0
+    pos_weight = 0
+
+    def _query(prop, dimension):
+        return sc.searchanalytics().query(
+            siteUrl=prop,
+            body={
+                "startDate": start.isoformat(),
+                "endDate": end.isoformat(),
+                "dimensions": [dimension] if dimension else [],
+                "rowLimit": 25 if dimension else 1,
+            },
+        ).execute()
+
+    queries_agg = {}
+    pages_agg = {}
+    for prop in properties:
+        try:
+            tot = _query(prop, None)
+            for r in tot.get("rows", []):
+                out["totals"]["clicks"] += int(r.get("clicks", 0))
+                out["totals"]["impressions"] += int(r.get("impressions", 0))
+                if r.get("impressions"):
+                    pos_weighted_sum += float(r.get("position", 0)) * int(r["impressions"])
+                    pos_weight += int(r["impressions"])
+
+            for r in _query(prop, "query").get("rows", []):
+                k = r["keys"][0]
+                rec = queries_agg.setdefault(k, {"q": k, "clicks": 0, "impressions": 0, "position_w": 0.0, "_w": 0})
+                rec["clicks"] += int(r.get("clicks", 0))
+                rec["impressions"] += int(r.get("impressions", 0))
+                if r.get("impressions"):
+                    rec["position_w"] += float(r.get("position", 0)) * int(r["impressions"])
+                    rec["_w"] += int(r["impressions"])
+
+            for r in _query(prop, "page").get("rows", []):
+                k = r["keys"][0]
+                rec = pages_agg.setdefault(k, {"p": k, "clicks": 0, "impressions": 0})
+                rec["clicks"] += int(r.get("clicks", 0))
+                rec["impressions"] += int(r.get("impressions", 0))
+        except Exception as e:
+            out.setdefault("warnings", []).append(f"{prop}: {e}")
+
+    if out["totals"]["impressions"]:
+        out["totals"]["ctr"] = round(100 * out["totals"]["clicks"] / out["totals"]["impressions"], 2)
+    if pos_weight:
+        out["totals"]["position"] = round(pos_weighted_sum / pos_weight, 1)
+
+    def _finalize(rec):
+        if rec.get("_w"):
+            rec["position"] = round(rec["position_w"] / rec["_w"], 1)
+        for k in ("position_w", "_w"):
+            rec.pop(k, None)
+        if rec.get("impressions"):
+            rec["ctr"] = round(100 * rec["clicks"] / rec["impressions"], 2)
+        else:
+            rec["ctr"] = 0.0
+        return rec
+
+    out["top_queries"] = sorted(
+        (_finalize(q) for q in queries_agg.values()),
+        key=lambda x: (-x["clicks"], -x["impressions"]),
+    )[:15]
+    out["top_pages"] = sorted(
+        pages_agg.values(),
+        key=lambda x: (-x["clicks"], -x["impressions"]),
+    )[:10]
+    for p in out["top_pages"]:
+        p["ctr"] = round(100 * p["clicks"] / p["impressions"], 2) if p["impressions"] else 0.0
+    return out
+
+try:
+    gsc_data = fetch_gsc()
+    if gsc_data and not gsc_data.get("error"):
+        print(f"  GSC: {gsc_data['totals']['clicks']} clicks / {gsc_data['totals']['impressions']} impressions / pos {gsc_data['totals']['position']}")
+except Exception as e:
+    gsc_data = {"error": str(e)}
+    print(f"  GSC: skipped ({e})")
 
 conversion_rate = round(100 * len(subscribers) / total_uv, 2) if total_uv else 0.0
 
@@ -746,155 +940,317 @@ else:
         f"The leak is in the hook, not the traffic. Revisit headline + email-gate offer."
     )
 
-# ---------------- Forecast: weekly organic traffic, next 16 weeks ----------------
-# Per-channel ramp model. Each channel contributes independently; totals stack.
-# Numbers are calibrated to a developer-investor niche (small TAM, long-tail-heavy).
-# Scenario bands: low = 50% of mid (sandbox-extended / unfeatured), high = 1.7× mid
-# (Reddit AEO compounds + a single Tier-1 citation lands earlier than expected).
-#
-# Assumptions baked in:
-#   - Reddit wave shipped 2026-05-02 → spike in weeks 1–3, fades to plateau by week 6.
-#   - Google sandbox: branded queries index w2–4, long-tail pSEO from w6, head terms w12+.
-#   - AI engines (Perplexity/ChatGPT search/Claude/Poe) cite from w2, compound through w12.
-#   - SSRN/OpenAlex propagation lifts academic + Google authority from w4.
-#   - Direct (Smithery 98 / Cursor / Poe / GitHub README) is the only "today" channel.
-FORECAST_WEEKS = 16
+# ---------------- Mailreach + campaign readiness ----------------
 
-# Anchor: current 30d visitor rate from PostHog → weekly equivalent.
-# Treated as already-flowing baseline that persists alongside ramping channels.
-baseline_weekly = round(total_uv / (WINDOW_DAYS / 7)) if total_uv else 0
+def fetch_mailreach():
+    """Pull warmup-account state for SENDER_EMAIL from Mailreach."""
+    if not MAILREACH_API_KEY:
+        return None
+    try:
+        req = urllib.request.Request(
+            "https://api.mailreach.co/api/v1/accounts",
+            headers={
+                "X-API-Key": MAILREACH_API_KEY,
+                "Accept": "application/json",
+                # Mailreach 403s on the default urllib UA; use a realistic one.
+                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X) gitdealflow-dashboard/1.0",
+            },
+        )
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            accounts = json.load(resp)
+    except Exception as e:
+        print(f"WARN: mailreach fetch failed: {e}", file=sys.stderr)
+        return None
 
-FORECAST_CHANNELS = [
-    # key,    name,                                                         lag, ramp, mature, shape, [extras]
-    {"key": "direct",   "color": "#0ea5e9", "short": "Direct & registries",
-     "name": "Direct & registries (Smithery 98 / Cursor / Poe / GitHub)",
-     "lag": 0, "ramp": 8, "mature": 60, "shape": "linear"},
-    {"key": "reddit",   "color": "#f97316", "short": "Reddit AEO",
-     "name": "Reddit AEO (May 2 wave + organic comments)",
-     "lag": 0, "ramp": 6, "mature": 30, "shape": "spike",
-     "spike_peak": 90, "spike_week": 1},
-    {"key": "g_brand",  "color": "#22c55e", "short": "Google — branded",
-     "name": "Google — branded queries",
-     "lag": 2, "ramp": 4, "mature": 25, "shape": "log"},
-    {"key": "g_long",   "color": "#a855f7", "short": "Google — long-tail pSEO",
-     "name": "Google — long-tail pSEO (alternatives, glossary, vs)",
-     "lag": 6, "ramp": 14, "mature": 220, "shape": "log"},
-    {"key": "g_head",   "color": "#ec4899", "short": "Google — head terms",
-     "name": "Google — competitive head terms",
-     "lag": 12, "ramp": 16, "mature": 80, "shape": "log"},
-    {"key": "ai",       "color": "#eab308", "short": "AI engines",
-     "name": "AI engines (Perplexity / ChatGPT / Claude / Poe)",
-     "lag": 2, "ramp": 10, "mature": 55, "shape": "log"},
-    {"key": "academic", "color": "#06b6d4", "short": "Academic / SSRN",
-     "name": "Academic / SSRN / OpenAlex propagation",
-     "lag": 4, "ramp": 10, "mature": 15, "shape": "log"},
-    {"key": "social",   "color": "#94a3b8", "short": "Social",
-     "name": "Social (Twitter / LinkedIn / IH / HN)",
-     "lag": 0, "ramp": 16, "mature": 30, "shape": "linear"},
-]
+    acc = next((a for a in accounts if a.get("email") == SENDER_EMAIL), None)
+    if not acc:
+        print(f"WARN: mailreach has no account for {SENDER_EMAIL}", file=sys.stderr)
+        return None
 
-
-def _channel_value(ch, w):
-    """Weekly visitors contributed by `ch` at week index w (0-based)."""
-    if w < ch["lag"]:
-        return 0.0
-    progress = (w - ch["lag"]) / max(1, ch["ramp"])
-    shape = ch["shape"]
-    mature = ch["mature"]
-    if shape == "linear":
-        return min(1.0, progress) * mature
-    if shape == "log":
-        # Logistic curve centered at half-ramp; slow start, plateau at mature.
-        x = (progress - 0.5) * 6
-        return mature / (1 + math.exp(-x))
-    if shape == "spike":
-        # Linear ramp to peak, then exponential decay toward `mature`.
-        peak = ch.get("spike_peak", mature * 2)
-        sw = ch.get("spike_week", 1)
-        if w <= sw:
-            return (w / max(1, sw)) * peak
-        decay_progress = min(1.0, (w - sw) / max(1, ch["ramp"]))
-        return peak - (peak - mature) * decay_progress
-    return mature
+    dom = acc.get("domain") or {}
+    return {
+        "email": acc.get("email"),
+        "score": acc.get("score"),
+        "score_change": dom.get("score_change", 0),
+        "alive": acc.get("alive", False),
+        "suspended": acc.get("suspended", False),
+        "total_sent": acc.get("total_messages_sent", 0),
+        "total_received": acc.get("total_messages_received", 0),
+        "ramp_current": acc.get("config_current_conversation_running", 0),
+        "ramp_target": acc.get("config_rampup_target", 0),
+        "ramp_max": acc.get("config_max_conversation_running", 0),
+        "ramp_increase": acc.get("config_rampup_increase", 0),
+        "domain": {
+            "name": dom.get("domain"),
+            "avg_score": dom.get("avg_score"),
+            "spf_valid": dom.get("spf_valid", False),
+            "dkim_valid": dom.get("dkim_valid", False),
+            "dmarc_valid": dom.get("dmarc_valid", False),
+            "last_check_at": dom.get("last_check_at"),
+        },
+    }
 
 
-forecast_today = date.today()
-forecast_rows = []
-for w in range(FORECAST_WEEKS):
-    # Pass w+1 so displayed Week 1 reflects "1 week of activity" rather than t=0
-    # (channels that just shipped, like the Reddit wave, are already producing).
-    model_w = w + 1
-    by_channel = {ch["key"]: round(_channel_value(ch, model_w)) for ch in FORECAST_CHANNELS}
-    channel_total = sum(by_channel.values())
-    mid = channel_total + baseline_weekly
-    forecast_rows.append({
-        "w": w + 1,
-        "start": (forecast_today + timedelta(days=w * 7)).isoformat(),
-        "by": by_channel,
-        "low": int(round(mid * 0.5)),
-        "mid": mid,
-        "high": int(round(mid * 1.7)),
-    })
+def fetch_campaign():
+    """Read queue.jsonl + HOLD file + sent.jsonl for campaign pipeline state."""
+    hold_reason = None
+    if os.path.exists(HOLD_PATH):
+        try:
+            with open(HOLD_PATH) as f:
+                hold_reason = f.read().strip()
+        except Exception:
+            hold_reason = "(unreadable)"
 
-# Cumulative + key milestones (mid scenario).
-forecast_cumulative = []
-cum = 0
-for row in forecast_rows:
-    cum += row["mid"]
-    forecast_cumulative.append(cum)
+    queue = []
+    if os.path.exists(QUEUE_PATH):
+        with open(QUEUE_PATH) as f:
+            for line in f:
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    queue.append(json.loads(line))
+                except Exception:
+                    continue
 
-# Daily breakdown: distribute each week's totals across its 7 days.
-# Lets the dashboard compare projected vs actual on a per-day basis for any
-# user-selected range, instead of only at weekly granularity.
-forecast_daily = []
-for row in forecast_rows:
-    week_start = date.fromisoformat(row["start"])
-    daily_low  = row["low"]  / 7.0
-    daily_mid  = row["mid"]  / 7.0
-    daily_high = row["high"] / 7.0
-    for d in range(7):
-        forecast_daily.append({
-            "d":    (week_start + timedelta(days=d)).isoformat(),
-            "w":    row["w"],
-            "low":  round(daily_low,  2),
-            "mid":  round(daily_mid,  2),
-            "high": round(daily_high, 2),
+    by_status = Counter(e.get("status", "unknown") for e in queue)
+
+    pending = [e for e in queue if e.get("status") == "pending" and e.get("editorEmail")]
+    pending.sort(key=lambda e: e.get("scheduledDate") or "")
+    next_entry = pending[0] if pending else None
+
+    sent_recent = []
+    if os.path.exists(SENT_PATH):
+        try:
+            with open(SENT_PATH) as f:
+                for line in f:
+                    line = line.strip()
+                    if not line:
+                        continue
+                    try:
+                        sent_recent.append(json.loads(line))
+                    except Exception:
+                        continue
+        except Exception:
+            pass
+
+    return {
+        "hold": bool(hold_reason),
+        "hold_reason": hold_reason,
+        "total": len(queue),
+        "by_status": [{"k": k, "n": v} for k, v in by_status.most_common()],
+        "pending": len(pending),
+        "next": {
+            "id": next_entry.get("id"),
+            "target": next_entry.get("targetName"),
+            "editor": next_entry.get("editorName"),
+            "date": next_entry.get("scheduledDate"),
+            "subject": next_entry.get("subject"),
+        } if next_entry else None,
+        "sent_count": len(sent_recent),
+    }
+
+
+def compute_readiness(mr, cmp_):
+    """Derive a READY / HOLD / NOT-READY verdict + checklist."""
+    checks = []
+    blocking = []
+
+    # 1. HOLD file
+    if cmp_["hold"]:
+        checks.append({"k": "hold", "ok": False, "label": "No HOLD file",
+                       "detail": "Campaign is on HOLD — remove tools/campaign/HOLD to resume"})
+        blocking.append("hold")
+    else:
+        checks.append({"k": "hold", "ok": True, "label": "No HOLD file",
+                       "detail": "Runner will not abort on HOLD"})
+
+    # 2. Mailreach reachable
+    if mr is None:
+        checks.append({"k": "api", "ok": False, "label": "Mailreach reachable",
+                       "detail": "API unreachable or no account found for sender"})
+        blocking.append("api")
+        return {"ready": False, "status": "not-ready", "checks": checks,
+                "headline": "Mailreach status unknown", "blocking": blocking}
+
+    # 3. Not suspended + alive
+    if mr["suspended"]:
+        checks.append({"k": "suspended", "ok": False, "label": "Account not suspended",
+                       "detail": "Mailreach flagged the account as suspended"})
+        blocking.append("suspended")
+    elif not mr["alive"]:
+        checks.append({"k": "alive", "ok": False, "label": "Warmup active",
+                       "detail": "Warmup account is not alive"})
+        blocking.append("alive")
+    else:
+        checks.append({"k": "alive", "ok": True, "label": "Warmup active",
+                       "detail": "Account alive + not suspended"})
+
+    # 4. Score ≥ 95
+    score = mr["score"] or 0
+    if score >= 95:
+        checks.append({"k": "score", "ok": True, "label": f"Warmup score ≥ 95",
+                       "detail": f"Current: {score}"})
+    elif score >= 90:
+        checks.append({"k": "score", "ok": False, "label": "Warmup score ≥ 95",
+                       "detail": f"Current: {score} — above runner's 90 threshold but below safety floor (95)"})
+        blocking.append("score-marginal")
+    else:
+        checks.append({"k": "score", "ok": False, "label": "Warmup score ≥ 95",
+                       "detail": f"Current: {score} — below runner's 90 abort threshold"})
+        blocking.append("score-low")
+
+    # 5. No recent drop
+    change = int(mr["score_change"] or 0)
+    if change >= -2:
+        checks.append({"k": "drop", "ok": True, "label": "Recent drop ≤ 2 pts",
+                       "detail": f"score_change: {change:+d}"})
+    elif change >= -5:
+        checks.append({"k": "drop", "ok": False, "label": "Recent drop ≤ 2 pts",
+                       "detail": f"score_change: {change:+d} — drop in progress, wait 48h"})
+        blocking.append("drop-mild")
+    else:
+        checks.append({"k": "drop", "ok": False, "label": "Recent drop ≤ 2 pts",
+                       "detail": f"score_change: {change:+d} — significant hit, wait for recovery"})
+        blocking.append("drop-severe")
+
+    # 6. DNS valid
+    d = mr["domain"]
+    dns_all = d["spf_valid"] and d["dkim_valid"] and d["dmarc_valid"]
+    if dns_all:
+        checks.append({"k": "dns", "ok": True, "label": "SPF + DKIM + DMARC valid",
+                       "detail": f"domain {d['name']} — all three authenticated"})
+    else:
+        bad = [k for k in ("spf", "dkim", "dmarc") if not d[f"{k}_valid"]]
+        checks.append({"k": "dns", "ok": False, "label": "SPF + DKIM + DMARC valid",
+                       "detail": f"invalid: {', '.join(bad).upper()}"})
+        blocking.append("dns")
+
+    # 7. Fully warmed up — ramp_current >= ramp_target (HARD block)
+    ramp_curr = mr["ramp_current"] or 0
+    ramp_tgt = mr["ramp_target"] or 0
+    ramp_pct = int(round(100 * ramp_curr / ramp_tgt)) if ramp_tgt else 0
+    if ramp_tgt and ramp_curr >= ramp_tgt:
+        checks.append({
+            "k": "ramp",
+            "ok": True,
+            "label": "Fully warmed up",
+            "detail": f"{ramp_curr}/{ramp_tgt} conversations/day — ramp complete",
         })
+    else:
+        # Estimate days to full ramp assuming +ramp_increase/day, no drops.
+        inc = mr.get("ramp_increase") or 1
+        days_to_full = max(1, int((ramp_tgt - ramp_curr) / max(inc, 1))) if ramp_tgt else None
+        eta_txt = f" · ~{days_to_full} days to full ramp" if days_to_full else ""
+        checks.append({
+            "k": "ramp",
+            "ok": False,
+            "label": "Fully warmed up",
+            "detail": f"{ramp_curr}/{ramp_tgt} conversations/day ({ramp_pct}%){eta_txt} — cold outreach stays paused until 100%",
+        })
+        blocking.append("ramp-incomplete")
 
-# Headline numbers: week 4, 8, 12, 16 (mid).
-def _row(idx):
-    return forecast_rows[idx] if idx < len(forecast_rows) else None
+    # Verdict
+    # drop-mild and ramp-incomplete are both "wait" states, not permanent blockers.
+    soft_blockers = {"drop-mild", "ramp-incomplete"}
+    hard_blocking = [b for b in blocking if b not in soft_blockers]
+    if not blocking:
+        status = "ready"
+        headline = "READY TO SEND"
+    elif hard_blocking:
+        status = "not-ready"
+        headline = "NOT READY"
+    else:
+        status = "waiting"
+        headline = "WAITING — warmup in progress"
 
-forecast_milestones = {
-    "baseline_weekly": baseline_weekly,
-    "w4_mid":  _row(3)["mid"]  if _row(3)  else 0,
-    "w8_mid":  _row(7)["mid"]  if _row(7)  else 0,
-    "w12_mid": _row(11)["mid"] if _row(11) else 0,
-    "w16_mid": _row(15)["mid"] if _row(15) else 0,
-    "w16_low":  _row(15)["low"]  if _row(15) else 0,
-    "w16_high": _row(15)["high"] if _row(15) else 0,
-    "cum_16w_mid": forecast_cumulative[-1] if forecast_cumulative else 0,
-}
+    return {
+        "ready": status == "ready",
+        "status": status,
+        "headline": headline,
+        "checks": checks,
+        "blocking": blocking,
+    }
 
-forecast_payload = {
-    "weeks":       FORECAST_WEEKS,
-    "generated":   forecast_today.isoformat(),
-    "baseline":    baseline_weekly,
-    "channels":    [{"key": c["key"], "name": c["name"], "short": c["short"], "color": c["color"]}
-                    for c in FORECAST_CHANNELS],
-    "rows":        forecast_rows,
-    "daily":       forecast_daily,
-    "cumulative":  forecast_cumulative,
-    "milestones":  forecast_milestones,
-    "notes": [
-        "Baseline = current PostHog weekly visitor rate (last 30d). Persists alongside ramps.",
-        "Reddit wave shipped 2026-05-02 — spike weeks 1–3, decays to plateau by week 6.",
-        "Google sandbox: branded queries from w2–4, long-tail pSEO from w6, head terms w12+.",
-        "AI engines (Perplexity/ChatGPT search/Claude/Poe) cite from w2, compound through w12.",
-        "Bands: low = 50% mid (sandbox-extended), high = 170% mid (Tier-1 citation lands early).",
-        "Calibrated to developer-investor niche — small TAM, long-tail-heavy, Reddit/AEO-skewed.",
-    ],
-}
+
+mailreach_data = fetch_mailreach()
+campaign_data = fetch_campaign()
+readiness_data = compute_readiness(mailreach_data, campaign_data)
+
+
+def load_substack_state():
+    """Compute Substack autopublish status from the queue + stats files."""
+    state = {
+        "handle": "@thedatanerd2026",
+        "profile_url": "https://substack.com/@thedatanerd2026",
+        "published": 0,
+        "scheduled": 0,
+        "drafts": 0,
+        "next_scheduled": None,
+        "last_published": None,
+        "followers": None,
+        "history": [],
+    }
+    if os.path.exists(SUBSTACK_QUEUE_PATH):
+        try:
+            q = json.load(open(SUBSTACK_QUEUE_PATH))
+            posts = q.get("posts", [])
+            published = [p for p in posts if p.get("status") == "published"]
+            drafts = [p for p in posts if p.get("status") == "draft-ready"]
+            scheduled = [p for p in drafts if p.get("scheduledFor")]
+            state["published"] = len(published)
+            state["scheduled"] = len(scheduled)
+            state["drafts"] = len(drafts)
+            if published:
+                last = published[-1]
+                state["last_published"] = {
+                    "title": last.get("title"),
+                    "url": last.get("url"),
+                    "postedAt": last.get("postedAt"),
+                }
+            upcoming = sorted(
+                [p for p in drafts if p.get("scheduledFor")],
+                key=lambda p: p["scheduledFor"],
+            )
+            if upcoming:
+                nxt = upcoming[0]
+                state["next_scheduled"] = {
+                    "title": nxt.get("title"),
+                    "type": nxt.get("type"),
+                    "scheduledFor": nxt.get("scheduledFor"),
+                }
+        except Exception as e:
+            print(f"WARN: substack queue parse: {e}", file=sys.stderr)
+
+    if os.path.exists(SUBSTACK_STATS_PATH):
+        try:
+            s = json.load(open(SUBSTACK_STATS_PATH))
+            hist = s.get("history", []) or []
+            state["history"] = hist[-30:]
+            if hist:
+                latest = hist[-1]
+                state["followers"] = latest.get("followers")
+        except Exception as e:
+            print(f"WARN: substack stats parse: {e}", file=sys.stderr)
+    return state
+
+
+substack_state = load_substack_state()
+
+# Mutate the Substack entry in CHANNELS["content"] with fresh counts.
+for ch in CHANNELS.get("content", []):
+    if ch.get("name") == "Substack":
+        pub = substack_state["published"]
+        sched = substack_state["scheduled"]
+        ch["stat"] = (
+            f"{pub} Notes posted · {sched} scheduled"
+            + (f" · {substack_state['followers']} followers" if substack_state["followers"] is not None else "")
+        )
+        ch["note"] = (
+            "Daily autopublish via substack-daily-publisher · Brunson voice · 1-2 Notes/day"
+        )
+        ch["as_of"] = today.isoformat()
+        break
 
 payload = {
     "generated_at": datetime.now(timezone.utc).isoformat(),
@@ -907,8 +1263,10 @@ payload = {
         "unverified": len(unverified_in_pb),
         "conversion_rate": conversion_rate,
         "emails_sent": total_sent,
+        "emails_scheduled": total_scheduled,
         "open_rate": open_rate,
         "click_rate": click_rate,
+        "email_source": email_source,
     },
     "funnel": funnel,
     "daily": chart_days,
@@ -918,10 +1276,10 @@ payload = {
     "ph_sources": ph_sources_data,
     "ph_pages": ph_pages_data,
     "ph_countries": ph_countries_data,
+    "gsc": gsc_data,
     "excluded": {
         "countries": sorted(EXCLUDE_COUNTRIES),
         "testers": sorted(TESTER_EMAILS),
-        "bots": sorted(BOT_EMAILS),
     },
     "benchmark": {
         "opt_in_target": BENCHMARK_OPT_IN,
@@ -946,7 +1304,10 @@ payload = {
     "email_status": [{"k": k, "n": v} for k, v in email_status.most_common()],
     "recent": recent_rows,
     "channels": CHANNELS,
-    "forecast": forecast_payload,
+    "mailreach": mailreach_data,
+    "campaign": campaign_data,
+    "readiness": readiness_data,
+    "substack": substack_state,
 }
 
 
@@ -1001,6 +1362,41 @@ HTML = """<!DOCTYPE html>
   .row-group { margin-bottom:28px; }
   a { color:#38bdf8; }
   .foot { margin-top:32px; padding-top:16px; border-top:1px solid #1e293b; color:#64748b; font-size:11px; }
+
+  /* Campaign-readiness card */
+  .readiness { border-radius:10px; padding:20px 24px; border:1px solid #1e293b; background:#111a2e; }
+  .readiness.ready      { border-color:#22c55e; background:linear-gradient(135deg,#062414 0%,#0b1220 100%); }
+  .readiness.waiting    { border-color:#f59e0b; background:linear-gradient(135deg,#2b1c04 0%,#0b1220 100%); }
+  .readiness.not-ready  { border-color:#ef4444; background:linear-gradient(135deg,#2a0d0d 0%,#0b1220 100%); }
+  .readiness .top { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:18px; }
+  .readiness .headline { font-size:22px; font-weight:800; color:#f1f5f9; letter-spacing:0.5px; }
+  .readiness.ready     .headline::before { content:"✓  "; color:#22c55e; }
+  .readiness.waiting   .headline::before { content:"⏳  "; color:#fbbf24; }
+  .readiness.not-ready .headline::before { content:"✕  "; color:#f87171; }
+  .readiness .subhead { font-size:13px; color:#94a3b8; margin-top:2px; }
+  .readiness .kpis { display:grid; grid-template-columns: repeat(auto-fit, minmax(140px,1fr)); gap:12px; margin-bottom:18px; }
+  .readiness .kpi-tile { background:rgba(255,255,255,0.03); border:1px solid #1e293b; border-radius:8px; padding:12px; }
+  .readiness .kpi-tile .lbl { font-size:10px; color:#64748b; text-transform:uppercase; letter-spacing:1px; margin-bottom:6px; }
+  .readiness .kpi-tile .val { font-size:22px; font-weight:700; color:#f1f5f9; line-height:1; }
+  .readiness .kpi-tile .sub { font-size:11px; color:#94a3b8; margin-top:4px; }
+  .readiness .kpi-tile.good .val { color:#86efac; }
+  .readiness .kpi-tile.warn .val { color:#fbbf24; }
+  .readiness .kpi-tile.bad  .val { color:#fca5a5; }
+  .readiness .checklist { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap:8px 20px; }
+  .readiness .check { display:flex; align-items:flex-start; gap:10px; font-size:13px; color:#cbd5e1; padding:6px 0; border-top:1px solid rgba(255,255,255,0.04); }
+  .readiness .check:first-child { border-top:none; }
+  .readiness .check .mark { font-size:14px; line-height:1.3; width:18px; flex-shrink:0; }
+  .readiness .check.pass .mark { color:#22c55e; }
+  .readiness .check.fail .mark { color:#ef4444; }
+  .readiness .check.soft .mark { color:#64748b; }
+  .readiness .check .body { flex:1; }
+  .readiness .check .lbl { color:#f1f5f9; font-weight:500; }
+  .readiness .check .det { color:#94a3b8; font-size:12px; margin-top:2px; }
+  .readiness .ramp-bar { height:6px; background:#1e293b; border-radius:3px; overflow:hidden; margin-top:6px; }
+  .readiness .ramp-fill { height:100%; background:linear-gradient(90deg,#0ea5e9,#22c55e); }
+  .readiness .hold-box { margin-top:16px; padding:12px 14px; background:rgba(239,68,68,0.08); border:1px solid rgba(239,68,68,0.3); border-radius:6px; }
+  .readiness .hold-box .t { font-size:12px; font-weight:700; color:#fca5a5; text-transform:uppercase; letter-spacing:1px; margin-bottom:6px; }
+  .readiness .hold-box .r { font-size:12px; color:#cbd5e1; white-space:pre-wrap; line-height:1.5; font-family:'SF Mono',Menlo,monospace; }
 </style>
 </head>
 <body>
@@ -1065,123 +1461,6 @@ HTML = """<!DOCTYPE html>
   </div>
 </div>
 
-<h1 style="margin-top:40px;font-size:20px">Organic traffic forecast — next 16 weeks</h1>
-<div class="sub">
-  Channel-decomposed weekly visitor estimate. Baseline = current PostHog rate. Bands = scenario range (low / mid / high).
-  <span style="color:#475569">Recalibrate when actuals diverge ≥30% from mid for 2 consecutive weeks.</span>
-</div>
-
-<div class="grid cols-4 row-group">
-  <div class="card kpi"><div class="num" id="f-baseline">—</div><div class="lbl">Baseline / week (now)</div></div>
-  <div class="card kpi"><div class="num" id="f-w4">—</div><div class="lbl">Week 4 mid</div></div>
-  <div class="card kpi"><div class="num" id="f-w12">—</div><div class="lbl">Week 12 mid</div></div>
-  <div class="card kpi"><div class="num" id="f-w16">—</div><div class="lbl">Week 16 (low–high)</div></div>
-</div>
-
-<div class="grid cols-2 row-group">
-  <div class="card" style="grid-column: 1 / -1">
-    <h3>Weekly visitors by channel (stacked) + scenario bands</h3>
-    <canvas id="forecastChart" style="max-height:340px"></canvas>
-    <div style="margin-top:10px;font-size:11px;color:#64748b">
-      Stacked bars = mid scenario by channel. Dashed lines = low (50%) and high (170%) totals.
-      Baseline persists across all weeks.
-    </div>
-  </div>
-</div>
-
-<div class="grid cols-2 row-group">
-  <div class="card">
-    <h3>Week-by-week table (mid scenario)</h3>
-    <div style="max-height:340px;overflow-y:auto">
-      <table>
-        <thead>
-          <tr>
-            <th>Wk</th><th>Starts</th>
-            <th class="num">Low</th><th class="num">Mid</th><th class="num">High</th>
-            <th class="num">Cum.</th>
-          </tr>
-        </thead>
-        <tbody id="forecast-table"></tbody>
-      </table>
-    </div>
-  </div>
-  <div class="card">
-    <h3>Model assumptions</h3>
-    <ul id="forecast-notes" style="font-size:13px;line-height:1.7;color:#cbd5e1;padding-left:20px;margin:0"></ul>
-    <div style="margin-top:14px;font-size:11px;color:#64748b">
-      Channel mix at week 16 (mid):
-    </div>
-    <table style="margin-top:6px">
-      <thead><tr><th>Channel</th><th class="num">/ week</th><th class="num">Share</th></tr></thead>
-      <tbody id="forecast-mix"></tbody>
-    </table>
-  </div>
-</div>
-
-<h1 style="margin-top:40px;font-size:20px">Projected vs reality — daily</h1>
-<div class="sub">
-  Pick any date range. Projected = weekly mid distributed across 7 days. Reality = PostHog daily uniques.
-  <span style="color:#475569">Today is excluded from the Δ stat (partial day). Dates before the forecast generation date have no projection.</span>
-</div>
-
-<div class="grid cols-4 row-group" style="align-items:end">
-  <div class="card" style="padding:14px">
-    <div class="lbl" style="margin-bottom:6px">From</div>
-    <input id="pvr-from" type="date" class="mono"
-      style="background:#0f1729;color:#e2e8f0;border:1px solid #1e293b;border-radius:6px;padding:6px 8px;width:100%;font-size:14px;font-family:inherit">
-  </div>
-  <div class="card" style="padding:14px">
-    <div class="lbl" style="margin-bottom:6px">To</div>
-    <input id="pvr-to" type="date" class="mono"
-      style="background:#0f1729;color:#e2e8f0;border:1px solid #1e293b;border-radius:6px;padding:6px 8px;width:100%;font-size:14px;font-family:inherit">
-  </div>
-  <div class="card kpi"><div class="num" id="pvr-actual">—</div><div class="lbl" id="pvr-actual-lbl">Actual visitors (range)</div></div>
-  <div class="card kpi"><div class="num" id="pvr-variance">—</div><div class="lbl" id="pvr-variance-lbl">Δ vs projected (overlap days)</div></div>
-</div>
-
-<div class="grid cols-2 row-group" style="margin-top:8px;gap:8px">
-  <div style="display:flex;flex-wrap:wrap;gap:8px;grid-column:1 / -1">
-    <button class="pvr-preset" data-preset="last7">Last 7 days</button>
-    <button class="pvr-preset" data-preset="last30">Last 30 days</button>
-    <button class="pvr-preset" data-preset="next14">Next 14 days</button>
-    <button class="pvr-preset" data-preset="next30">Next 30 days</button>
-    <button class="pvr-preset" data-preset="window">±14 days around today</button>
-    <button class="pvr-preset" data-preset="all">Max range</button>
-  </div>
-</div>
-
-<div class="grid cols-2 row-group">
-  <div class="card" style="grid-column: 1 / -1">
-    <h3>Daily actual vs projected</h3>
-    <canvas id="pvrChart" style="max-height:340px"></canvas>
-    <div style="margin-top:10px;font-size:11px;color:#64748b">
-      Solid blue = actual (PostHog). Dashed yellow = projected mid. Faint red/green = projected low/high band.
-    </div>
-  </div>
-</div>
-
-<div class="grid cols-2 row-group">
-  <div class="card" style="grid-column: 1 / -1">
-    <h3>Day-by-day breakdown</h3>
-    <div style="max-height:340px;overflow-y:auto">
-      <table>
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th class="num">Actual</th>
-            <th class="num">Proj. low</th>
-            <th class="num">Proj. mid</th>
-            <th class="num">Proj. high</th>
-            <th class="num">Δ (act − mid)</th>
-            <th class="num">Δ%</th>
-          </tr>
-        </thead>
-        <tbody id="pvr-table"></tbody>
-      </table>
-    </div>
-  </div>
-</div>
-
 <div class="grid cols-2 row-group">
   <div class="card">
     <h3>Source attribution (subscribers)</h3>
@@ -1222,24 +1501,49 @@ HTML = """<!DOCTYPE html>
   </div>
 </div>
 
+<h1 style="margin-top:40px;font-size:20px">Google Search Console — last __WINDOW_DAYS__ days</h1>
+<div class="sub" id="gsc-status">—</div>
+
+<div class="grid cols-4 row-group">
+  <div class="card kpi"><div class="num" id="gsc-clicks">—</div><div class="lbl">Clicks</div></div>
+  <div class="card kpi"><div class="num" id="gsc-impressions">—</div><div class="lbl">Impressions</div></div>
+  <div class="card kpi"><div class="num" id="gsc-ctr">—</div><div class="lbl">CTR</div></div>
+  <div class="card kpi"><div class="num" id="gsc-position">—</div><div class="lbl">Avg position</div></div>
+</div>
+
+<div class="grid cols-2 row-group">
+  <div class="card">
+    <h3>Top queries (by clicks)</h3>
+    <table><thead><tr><th>Query</th><th class="num">Clicks</th><th class="num">Impr.</th><th class="num">CTR</th><th class="num">Pos</th></tr></thead>
+      <tbody id="gsc-queries"></tbody></table>
+  </div>
+  <div class="card">
+    <h3>Top pages (by clicks)</h3>
+    <table><thead><tr><th>Page</th><th class="num">Clicks</th><th class="num">Impr.</th><th class="num">CTR</th></tr></thead>
+      <tbody id="gsc-pages"></tbody></table>
+  </div>
+</div>
+
 <div class="grid cols-2 row-group">
   <div class="card">
     <h3>Email engagement</h3>
     <div class="grid cols-4" style="margin-bottom:16px">
       <div><div class="num" id="e-sent">—</div><div class="lbl">Sent</div></div>
+      <div><div class="num" id="e-sched">—</div><div class="lbl">Scheduled</div></div>
       <div><div class="num" id="e-open">—</div><div class="lbl">Open rate</div></div>
       <div><div class="num" id="e-click">—</div><div class="lbl">Click rate</div></div>
     </div>
     <table><thead><tr><th>Status</th><th class="num">Count</th></tr></thead>
       <tbody id="email-status"></tbody></table>
-    <div style="margin-top:10px;font-size:11px;color:#64748b">
-      Open/click rates depend on Resend webhooks populating <code>email_log.status</code>.
-      If rates look low, webhooks aren't wired up yet — status will stay at <code>sent</code>.
+    <div style="margin-top:10px;font-size:11px;color:#64748b" id="e-source-note">
+      Source: <code>—</code>. Open/click tracking enabled on <code>gitdealflow.com</code>
+      (2026-04-20). Emails sent before that date stay at <code>delivered</code>; new sends
+      report <code>opened</code> / <code>clicked</code>.
     </div>
   </div>
   <div class="card">
-    <h3>Recent signups (latest 30)</h3>
-    <table><thead><tr><th>Date</th><th>Email</th><th>Source</th><th>Verified</th></tr></thead>
+    <h3>Per-subscriber engagement (latest 30)</h3>
+    <table><thead><tr><th>Email</th><th class="num">Sent</th><th>Verified</th><th class="num">Open</th><th class="num">Click</th><th>Sequence</th></tr></thead>
       <tbody id="recent"></tbody></table>
   </div>
 </div>
@@ -1288,8 +1592,53 @@ HTML = """<!DOCTYPE html>
   </div>
 </div>
 
+<h1 style="margin-top:40px;font-size:20px">Cold-Outreach Campaign Readiness</h1>
+<div class="sub">Gates every cold-outreach pipeline (tools/campaign + email-api/send-outreach). Card turns green only when signal@gitdealflow.com is <strong>fully warmed up</strong>.</div>
+
+<div class="row-group">
+  <div class="readiness" id="readiness">
+    <div class="top">
+      <div>
+        <div class="headline" id="r-headline">—</div>
+        <div class="subhead" id="r-subhead">signal@gitdealflow.com · Zoho SMTP + Resend · Mailreach-warmed</div>
+      </div>
+      <div id="r-cta" style="font-size:12px;color:#94a3b8"></div>
+    </div>
+    <div class="kpis" id="r-kpis"></div>
+    <div class="checklist" id="r-checks"></div>
+    <div class="hold-box" id="r-hold" style="display:none">
+      <div class="t">Campaign HOLD active</div>
+      <div class="r" id="r-hold-reason"></div>
+    </div>
+  </div>
+</div>
+
+<h1 style="margin-top:40px;font-size:20px">Substack Notes autopublish</h1>
+<div class="sub">Daily Brunson-voiced Notes from <a id="sb-profile" href="#" target="_blank" rel="noopener" style="color:#0ea5e9">@thedatanerd2026</a>. 1–2/day, 1-in-5 linked. Queue lives at <code class="mono">distribution/substack-autopublish/queue.json</code>.</div>
+
+<div class="row-group">
+  <div class="card">
+    <div class="kpis" id="sb-kpis"></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px">
+      <div>
+        <div style="color:#94a3b8;font-size:12px;margin-bottom:6px">Last published</div>
+        <div id="sb-last" style="font-size:13px">—</div>
+      </div>
+      <div>
+        <div style="color:#94a3b8;font-size:12px;margin-bottom:6px">Next scheduled</div>
+        <div id="sb-next" style="font-size:13px">—</div>
+      </div>
+    </div>
+    <div style="color:#94a3b8;font-size:12px;margin:16px 0 6px">Followers history (last 30 days)</div>
+    <table style="width:100%;font-size:12px">
+      <thead><tr><th style="text-align:left">Date</th><th class="num">Followers</th><th class="num">Notes posted</th><th style="text-align:left">Latest Note</th></tr></thead>
+      <tbody id="sb-history"></tbody>
+    </table>
+  </div>
+</div>
+
 <div class="foot">
-  Data sources: PocketBase (subscribers, email_log) · Resend (audience) · PostHog EU (visitors) · manual curation (channels).
+  Data sources: PocketBase (subscribers, email_log) · Resend (audience) · PostHog EU (visitors) · Mailreach (warmup) · tools/campaign (queue + HOLD) · manual curation (channels).
   Regenerate: <code class="mono">python3 monitoring/build-dashboard.py</code>
 </div>
 
@@ -1315,8 +1664,71 @@ document.getElementById('k-signups').textContent = fmt(D.kpis.signups);
 document.getElementById('k-verified').textContent = fmt(D.kpis.verified);
 document.getElementById('k-conv').textContent = D.kpis.conversion_rate + '%';
 document.getElementById('e-sent').textContent = fmt(D.kpis.emails_sent);
+document.getElementById('e-sched').textContent = fmt(D.kpis.emails_scheduled || 0);
 document.getElementById('e-open').textContent = D.kpis.open_rate + '%';
 document.getElementById('e-click').textContent = D.kpis.click_rate + '%';
+const srcEl = document.getElementById('e-source-note');
+if (srcEl) {
+  srcEl.innerHTML = srcEl.innerHTML.replace('<code>—</code>',
+    '<code>' + (D.kpis.email_source || 'none') + '</code>');
+}
+
+// Campaign readiness card
+const R = D.readiness || {status:"not-ready", headline:"Status unknown", checks:[]};
+const MR = D.mailreach;
+const CMP = D.campaign || {total:0, by_status:[], pending:0, next:null, hold:false};
+const readinessEl = document.getElementById('readiness');
+readinessEl.classList.add(R.status);
+document.getElementById('r-headline').textContent = R.headline;
+const ctaEl = document.getElementById('r-cta');
+if (R.status === 'ready') ctaEl.textContent = 'You can run: node tools/campaign/run.mjs';
+else if (R.status === 'waiting') ctaEl.textContent = 'Recheck warmup score in 24–48h';
+else ctaEl.textContent = 'Blocking: ' + (R.blocking || []).join(', ');
+
+// KPI tiles
+const scoreTier = MR ? (MR.score >= 95 ? 'good' : (MR.score >= 90 ? 'warn' : 'bad')) : 'bad';
+const dropTier  = MR ? (MR.score_change >= -2 ? 'good' : (MR.score_change >= -5 ? 'warn' : 'bad')) : 'bad';
+const holdTier  = CMP.hold ? 'bad' : 'good';
+const rampPct   = (MR && MR.ramp_target) ? Math.round(100 * MR.ramp_current / MR.ramp_target) : 0;
+const rampTier  = rampPct >= 100 ? 'good' : (rampPct >= 50 ? 'warn' : 'bad');
+const nextTxt   = CMP.next ? (CMP.next.date + ' — ' + CMP.next.target) : 'none queued';
+const nextSub   = CMP.next ? (CMP.next.editor + ' · ' + (CMP.next.id || '')) : '';
+
+const kpisEl = document.getElementById('r-kpis');
+kpisEl.innerHTML = [
+  {lbl:'Mailreach score', val: MR ? MR.score : '—', sub: MR ? ('on ' + MR.domain.name) : 'API unreachable', tier: scoreTier},
+  {lbl:'Recent Δ',        val: MR ? (MR.score_change >= 0 ? '+'+MR.score_change : MR.score_change) : '—', sub: MR ? 'last snapshot' : '—', tier: dropTier},
+  {lbl:'Warmup ramp',     val: MR ? (MR.ramp_current + '/' + MR.ramp_target) : '—', sub: rampPct + '% of target', tier: rampTier, bar: rampPct},
+  {lbl:'Queue pending',   val: fmt(CMP.pending), sub: fmt(CMP.total) + ' total · ' + fmt(CMP.sent_count) + ' sent', tier: CMP.pending > 0 ? 'good' : 'warn'},
+  {lbl:'HOLD file',       val: CMP.hold ? 'ON' : 'off', sub: CMP.hold ? 'aborts all sends' : 'runner free to send', tier: holdTier},
+  {lbl:'Next pitch',      val: nextTxt, sub: nextSub, tier: ''},
+].map(k => `
+  <div class="kpi-tile ${k.tier}">
+    <div class="lbl">${k.lbl}</div>
+    <div class="val">${k.val}</div>
+    <div class="sub">${k.sub}</div>
+    ${typeof k.bar === 'number' ? `<div class="ramp-bar"><div class="ramp-fill" style="width:${Math.min(100,k.bar)}%"></div></div>` : ''}
+  </div>`).join('');
+
+// Checklist
+document.getElementById('r-checks').innerHTML = (R.checks || []).map(c => {
+  const cls = c.ok ? 'pass' : 'fail';
+  const mark = c.ok ? '✓' : '✕';
+  return `
+    <div class="check ${cls}">
+      <div class="mark">${mark}</div>
+      <div class="body">
+        <div class="lbl">${c.label}</div>
+        <div class="det">${c.detail}</div>
+      </div>
+    </div>`;
+}).join('');
+
+// HOLD reason
+if (CMP.hold && CMP.hold_reason) {
+  document.getElementById('r-hold').style.display = 'block';
+  document.getElementById('r-hold-reason').textContent = CMP.hold_reason;
+}
 
 // Verdict + benchmark
 const B = D.benchmark;
@@ -1396,10 +1808,12 @@ tbl('tiers',      D.tiers,      [r => `<td>${r.k}</td>`, r => `<td class="num">$
 tbl('statuses',   D.statuses,   [r => `<td>${r.k}</td>`, r => `<td class="num">${fmt(r.n)}</td>`]);
 tbl('email-status', D.email_status, [r => `<td>${r.k}</td>`, r => `<td class="num">${fmt(r.n)}</td>`]);
 tbl('recent', D.recent, [
-  r => `<td class="mono">${r.created}</td>`,
   r => `<td>${r.email}</td>`,
-  r => `<td>${r.source}</td>`,
+  r => `<td class="num">${fmt(r.emails_sent)}</td>`,
   r => `<td><span class="pill ${r.verified ? 'ok' : 'warn'}">${r.verified ? 'verified' : 'pending'}</span></td>`,
+  r => `<td class="num">${r.open_rate}%</td>`,
+  r => `<td class="num">${r.click_rate}%</td>`,
+  r => `<td>${r.sequence}</td>`,
 ]);
 
 tbl('ph-countries', D.ph_countries, [
@@ -1411,9 +1825,8 @@ tbl('ph-countries', D.ph_countries, [
 const CH = D.channels || {social:[], content:[], directories:[], dev_search:[]};
 const allCh = [...CH.social, ...CH.content, ...CH.directories, ...CH.dev_search];
 const liveStatuses = new Set(['live','active']);
-const pendingStatuses = new Set(['submitted','pending-review','applied','pending-merge','in-review','user-action']);
-const prelaunchStatuses = new Set(['pre-launch','queued','signed-up','deferred','scheduled']);
-const deadStatuses = new Set(['retired','audit-killed','abandoned','ghost-site','silent-reject','blocked','no-reply']);
+const pendingStatuses = new Set(['submitted','pending-review','applied','pending-merge']);
+const prelaunchStatuses = new Set(['pre-launch','queued','signed-up','deferred']);
 
 document.getElementById('ch-total').textContent = fmt(allCh.length);
 document.getElementById('ch-live').textContent = fmt(allCh.filter(c => liveStatuses.has(c.status)).length);
@@ -1424,7 +1837,6 @@ const pillClass = s => {
   if (liveStatuses.has(s)) return 'above';
   if (pendingStatuses.has(s)) return 'on-track';
   if (prelaunchStatuses.has(s)) return 'early';
-  if (deadStatuses.has(s)) return 'below';
   return '';
 };
 const statusPill = s => `<span class="pill ${pillClass(s)}">${s}</span>`;
@@ -1456,304 +1868,83 @@ tbl('ch-devsearch', CH.dev_search, [
   r => `<td>${statusPill(r.status)}${muted(r.as_of)}</td>`,
 ]);
 
-// ---- Organic traffic forecast ----
-const F = D.forecast;
-if (F && F.rows && F.rows.length) {
-  const M = F.milestones;
-  document.getElementById('f-baseline').textContent = fmt(M.baseline_weekly);
-  document.getElementById('f-w4').textContent = fmt(M.w4_mid);
-  document.getElementById('f-w12').textContent = fmt(M.w12_mid);
-  document.getElementById('f-w16').textContent = fmt(M.w16_low) + '–' + fmt(M.w16_high);
+// ---- Substack Notes autopublish ----
+const SB = D.substack || {published:0, scheduled:0, drafts:0, history:[], next_scheduled:null, last_published:null, followers:null};
+document.getElementById('sb-profile').href = SB.profile_url || 'https://substack.com/@thedatanerd2026';
+document.getElementById('sb-profile').textContent = SB.handle || '@thedatanerd2026';
 
-  // Notes
-  document.getElementById('forecast-notes').innerHTML =
-    F.notes.map(n => `<li>${n}</li>`).join('');
+const sbKpisEl = document.getElementById('sb-kpis');
+sbKpisEl.innerHTML = [
+  {lbl:'Followers',       val: SB.followers != null ? fmt(SB.followers) : '—', sub:'from profile', tier: SB.followers ? 'good' : ''},
+  {lbl:'Notes published', val: fmt(SB.published), sub:'since Apr 19', tier: SB.published > 0 ? 'good' : 'warn'},
+  {lbl:'Scheduled',       val: fmt(SB.scheduled), sub:'draft-ready',  tier: SB.scheduled > 0 ? 'good' : 'warn'},
+  {lbl:'Draft depth',     val: fmt(SB.drafts),    sub:'queue.json',   tier: SB.drafts >= 14 ? 'good' : 'warn'},
+].map(k => `
+  <div class="kpi-tile ${k.tier}">
+    <div class="lbl">${k.lbl}</div>
+    <div class="val">${k.val}</div>
+    <div class="sub">${k.sub}</div>
+  </div>`).join('');
 
-  // Week-by-week table
-  let cum = 0;
-  document.getElementById('forecast-table').innerHTML = F.rows.map(r => {
-    cum += r.mid;
-    return `<tr>
-      <td>${r.w}</td>
-      <td class="mono" style="color:#64748b">${r.start.slice(5)}</td>
-      <td class="num" style="color:#94a3b8">${fmt(r.low)}</td>
-      <td class="num" style="color:#f1f5f9;font-weight:600">${fmt(r.mid)}</td>
-      <td class="num" style="color:#94a3b8">${fmt(r.high)}</td>
-      <td class="num" style="color:#64748b">${fmt(cum)}</td>
-    </tr>`;
-  }).join('');
+const sbLast = SB.last_published;
+document.getElementById('sb-last').innerHTML = sbLast
+  ? `<div style="color:#cbd5e1">${sbLast.title || ''}</div><div style="color:#64748b;font-size:11px;margin-top:2px">${sbLast.postedAt || ''} · ${sbLast.url ? `<a href="${sbLast.url}" target="_blank" style="color:#0ea5e9">view</a>` : ''}</div>`
+  : '<span style="color:#64748b">No published Notes yet</span>';
 
-  // Channel mix at final week
-  const lastRow = F.rows[F.rows.length - 1];
-  const lastTotal = lastRow.mid - F.baseline;
-  const mixRows = F.channels.map(ch => ({
-    name: ch.name, color: ch.color,
-    n: lastRow.by[ch.key] || 0,
-    pct: lastTotal > 0 ? Math.round(100 * (lastRow.by[ch.key] || 0) / lastTotal) : 0,
-  })).filter(r => r.n > 0).sort((a, b) => b.n - a.n);
-  if (F.baseline > 0) {
-    mixRows.push({name: 'Baseline (sticky)', color: '#475569',
-                  n: F.baseline, pct: Math.round(100 * F.baseline / lastRow.mid)});
-  }
-  document.getElementById('forecast-mix').innerHTML = mixRows.map(r => `
+const sbNext = SB.next_scheduled;
+document.getElementById('sb-next').innerHTML = sbNext
+  ? `<div style="color:#cbd5e1">${sbNext.title || ''}</div><div style="color:#64748b;font-size:11px;margin-top:2px">${sbNext.scheduledFor || ''} · ${sbNext.type || 'idea'}</div>`
+  : '<span style="color:#64748b">No Notes scheduled</span>';
+
+const sbHist = (SB.history || []).slice().reverse();
+const sbHistEl = document.getElementById('sb-history');
+if (!sbHist.length) {
+  sbHistEl.innerHTML = '<tr><td colspan="4" style="color:#64748b">No stats history yet — run <code class="mono">node tools/substack/fetch-stats.mjs</code></td></tr>';
+} else {
+  sbHistEl.innerHTML = sbHist.map(h => `
     <tr>
-      <td><span style="display:inline-block;width:10px;height:10px;background:${r.color};border-radius:2px;margin-right:6px;vertical-align:middle"></span>${r.name}</td>
-      <td class="num">${fmt(r.n)}</td>
-      <td class="num" style="color:#64748b">${r.pct}%</td>
+      <td class="mono">${h.date}</td>
+      <td class="num">${h.followers != null ? fmt(h.followers) : '—'}</td>
+      <td class="num">${h.notesPosted != null ? fmt(h.notesPosted) : '—'}</td>
+      <td>${h.latestNoteUrl ? `<a href="${h.latestNoteUrl}" target="_blank" style="color:#0ea5e9;font-size:11px">view</a>` : '—'}</td>
     </tr>`).join('');
-
-  // Stacked bar chart with low/high overlay lines
-  const labels = F.rows.map(r => 'W' + r.w);
-  const datasets = F.channels.map(ch => ({
-    label: ch.short || ch.name,
-    data: F.rows.map(r => r.by[ch.key] || 0),
-    backgroundColor: ch.color,
-    borderColor: ch.color,
-    borderWidth: 0,
-    stack: 'channels',
-    type: 'bar',
-  }));
-  if (F.baseline > 0) {
-    datasets.push({
-      label: 'Baseline',
-      data: F.rows.map(() => F.baseline),
-      backgroundColor: '#475569',
-      borderColor: '#475569',
-      borderWidth: 0,
-      stack: 'channels',
-      type: 'bar',
-    });
-  }
-  // Scenario bands
-  datasets.push({
-    label: 'Low (50%)',
-    data: F.rows.map(r => r.low),
-    type: 'line',
-    borderColor: '#fca5a5',
-    backgroundColor: 'transparent',
-    borderDash: [4, 4],
-    borderWidth: 2,
-    pointRadius: 0,
-    tension: 0.3,
-  });
-  datasets.push({
-    label: 'High (170%)',
-    data: F.rows.map(r => r.high),
-    type: 'line',
-    borderColor: '#86efac',
-    backgroundColor: 'transparent',
-    borderDash: [4, 4],
-    borderWidth: 2,
-    pointRadius: 0,
-    tension: 0.3,
-  });
-
-  new Chart(document.getElementById('forecastChart'), {
-    data: { labels, datasets },
-    options: {
-      responsive: true, maintainAspectRatio: false,
-      plugins: {
-        legend: { labels: { color: '#cbd5e1', boxWidth: 12, font: { size: 11 } } },
-        tooltip: { mode: 'index', intersect: false },
-      },
-      scales: {
-        x: { stacked: true, ticks: { color: '#64748b' }, grid: { color: '#1e293b' } },
-        y: { stacked: true, ticks: { color: '#64748b' }, grid: { color: '#1e293b' },
-             title: { display: true, text: 'Visitors / week', color: '#64748b' } },
-      },
-      interaction: { mode: 'index', intersect: false },
-    },
-  });
 }
 
-// ---- Projected vs Reality (daily, range-selectable) ----
-(function() {
-  const FD = (D.forecast && D.forecast.daily) || [];
-  if (!FD.length) return;
-
-  const fromInput = document.getElementById('pvr-from');
-  const toInput   = document.getElementById('pvr-to');
-  if (!fromInput || !toInput) return;
-
-  const actualByDay = {};
-  (D.daily || []).forEach(x => { actualByDay[x.d] = x.visitors; });
-  const projByDay = {};
-  FD.forEach(x => { projByDay[x.d] = x; });
-
-  const today = (D.forecast && D.forecast.generated) || new Date().toISOString().slice(0, 10);
-  const allDays = Array.from(new Set([
-    ...Object.keys(actualByDay),
-    ...Object.keys(projByDay),
-  ])).sort();
-  if (!allDays.length) return;
-
-  const minDay = allDays[0];
-  const maxDay = allDays[allDays.length - 1];
-  fromInput.min = minDay; fromInput.max = maxDay;
-  toInput.min   = minDay; toInput.max   = maxDay;
-
-  const addDays = (iso, n) => {
-    const dt = new Date(iso + 'T00:00:00Z');
-    dt.setUTCDate(dt.getUTCDate() + n);
-    return dt.toISOString().slice(0, 10);
-  };
-  const clamp = (iso) => iso < minDay ? minDay : (iso > maxDay ? maxDay : iso);
-
-  const PRESETS = {
-    last7:   () => [clamp(addDays(today, -6)),  clamp(today)],
-    last30:  () => [clamp(addDays(today, -29)), clamp(today)],
-    next14:  () => [clamp(today),               clamp(addDays(today,  13))],
-    next30:  () => [clamp(today),               clamp(addDays(today,  29))],
-    window:  () => [clamp(addDays(today, -14)), clamp(addDays(today,  14))],
-    all:     () => [minDay, maxDay],
-  };
-
-  // Style preset buttons (use existing palette)
-  document.querySelectorAll('.pvr-preset').forEach(b => {
-    b.style.cssText =
-      'background:#0f1729;color:#cbd5e1;border:1px solid #1e293b;' +
-      'border-radius:6px;padding:6px 12px;font-size:12px;cursor:pointer;font-family:inherit';
-    b.onmouseover = () => b.style.borderColor = '#0ea5e9';
-    b.onmouseout  = () => b.style.borderColor = '#1e293b';
-    b.addEventListener('click', () => {
-      const r = PRESETS[b.dataset.preset];
-      if (!r) return;
-      const [f, t] = r();
-      fromInput.value = f; toInput.value = t;
-      render();
-    });
-  });
-
-  // Default range: ±14 days around today (clamped)
-  const def = PRESETS.window();
-  fromInput.value = def[0];
-  toInput.value   = def[1];
-
-  let chart = null;
-
-  function render() {
-    let f = fromInput.value, t = toInput.value;
-    if (!f || !t) return;
-    if (f > t) { const tmp = f; f = t; t = tmp; fromInput.value = f; toInput.value = t; }
-
-    // Build day list inclusive
-    const days = [];
-    let d = f;
-    while (d <= t) { days.push(d); d = addDays(d, 1); }
-
-    const actual   = days.map(x => (actualByDay[x] !== undefined) ? actualByDay[x] : null);
-    const projMid  = days.map(x => projByDay[x] ? projByDay[x].mid  : null);
-    const projLow  = days.map(x => projByDay[x] ? projByDay[x].low  : null);
-    const projHigh = days.map(x => projByDay[x] ? projByDay[x].high : null);
-
-    // Stats: sum across range, plus overlap-only variance.
-    // Exclude today from variance (the day isn't closed yet — partial actuals
-    // would skew the comparison heavily negative until day's end).
-    let totalActual = 0, hasActualDays = 0;
-    let overlapActual = 0, overlapProjMid = 0, overlapDays = 0;
-    days.forEach(x => {
-      const a = actualByDay[x];
-      const p = projByDay[x];
-      if (a !== undefined) { totalActual += a; hasActualDays += 1; }
-      if (a !== undefined && p && x !== today) {
-        overlapActual += a;
-        overlapProjMid += p.mid;
-        overlapDays += 1;
-      }
-    });
-
-    document.getElementById('pvr-actual').textContent = fmt(Math.round(totalActual));
-    document.getElementById('pvr-actual-lbl').textContent =
-      'Actual visitors · ' + hasActualDays + ' day' + (hasActualDays === 1 ? '' : 's') + ' w/ data';
-
-    const v = document.getElementById('pvr-variance');
-    const vLbl = document.getElementById('pvr-variance-lbl');
-    if (overlapDays > 0 && overlapProjMid > 0) {
-      const pct = Math.round(100 * (overlapActual - overlapProjMid) / overlapProjMid);
-      v.textContent = (pct >= 0 ? '+' : '') + pct + '%';
-      v.style.color = pct >= 0 ? '#86efac' : '#fca5a5';
-      vLbl.textContent = 'Δ vs projected · ' + overlapDays + ' closed day' + (overlapDays === 1 ? '' : 's');
-    } else {
-      v.textContent = '—';
-      v.style.color = '#94a3b8';
-      vLbl.textContent = 'Δ vs projected · no closed overlap days';
-    }
-
-    // Day-by-day table
-    document.getElementById('pvr-table').innerHTML = days.map(x => {
-      const a = actualByDay[x];
-      const p = projByDay[x];
-      const aTxt = (a !== undefined) ? fmt(a) : '<span style="color:#475569">—</span>';
-      const pLow  = p ? p.low.toFixed(1)  : '<span style="color:#475569">—</span>';
-      const pMid  = p ? p.mid.toFixed(1)  : '<span style="color:#475569">—</span>';
-      const pHigh = p ? p.high.toFixed(1) : '<span style="color:#475569">—</span>';
-      const isToday = (x === today);
-      let dTxt = '<span style="color:#475569">—</span>';
-      let pctTxt = '<span style="color:#475569">—</span>';
-      if (a !== undefined && p) {
-        const delta = a - p.mid;
-        const pct = p.mid > 0 ? Math.round(100 * delta / p.mid) : 0;
-        // Today is in-progress — neutral color so partial actuals don't read as a "miss".
-        const col = isToday
-          ? '#94a3b8'
-          : (delta >= 0 ? '#86efac' : '#fca5a5');
-        dTxt   = '<span style="color:' + col + '">' + (delta >= 0 ? '+' : '') + delta.toFixed(1) + '</span>';
-        pctTxt = '<span style="color:' + col + '">' + (pct   >= 0 ? '+' : '') + pct + '%</span>';
-      }
-      const rowStyle = isToday ? 'background:rgba(14,165,233,0.06)' : '';
-      const dCol = isToday ? '#0ea5e9' : '#94a3b8';
-      const dayLabel = isToday ? ' · today (partial)' : '';
-      return '<tr style="' + rowStyle + '">' +
-        '<td class="mono" style="color:' + dCol + '">' + x + dayLabel + '</td>' +
-        '<td class="num" style="color:#f1f5f9;font-weight:600">' + aTxt + '</td>' +
-        '<td class="num" style="color:#94a3b8">' + pLow  + '</td>' +
-        '<td class="num" style="color:#cbd5e1;font-weight:600">' + pMid  + '</td>' +
-        '<td class="num" style="color:#94a3b8">' + pHigh + '</td>' +
-        '<td class="num">' + dTxt   + '</td>' +
-        '<td class="num">' + pctTxt + '</td>' +
-      '</tr>';
-    }).join('');
-
-    // Chart
-    const labels = days.map(x => x.slice(5));
-    const datasets = [
-      { label: 'Actual',           data: actual,
-        borderColor: '#0ea5e9', backgroundColor: 'rgba(14,165,233,0.18)',
-        tension: 0.3, spanGaps: false, pointRadius: 3, fill: false, borderWidth: 2 },
-      { label: 'Projected (mid)',  data: projMid,
-        borderColor: '#eab308', backgroundColor: 'transparent',
-        borderDash: [6, 4], tension: 0.3, spanGaps: false, pointRadius: 0, borderWidth: 2 },
-      { label: 'Projected (low)',  data: projLow,
-        borderColor: '#fca5a5', backgroundColor: 'transparent',
-        borderDash: [2, 4], tension: 0.3, spanGaps: false, pointRadius: 0, borderWidth: 1 },
-      { label: 'Projected (high)', data: projHigh,
-        borderColor: '#86efac', backgroundColor: 'transparent',
-        borderDash: [2, 4], tension: 0.3, spanGaps: false, pointRadius: 0, borderWidth: 1 },
-    ];
-    if (chart) chart.destroy();
-    chart = new Chart(document.getElementById('pvrChart'), {
-      type: 'line',
-      data: { labels, datasets },
-      options: {
-        responsive: true, maintainAspectRatio: false,
-        plugins: {
-          legend: { labels: { color: '#cbd5e1', boxWidth: 12, font: { size: 11 } } },
-          tooltip: { mode: 'index', intersect: false },
-        },
-        scales: {
-          x: { ticks: { color: '#64748b', maxRotation: 0, autoSkip: true, maxTicksLimit: 16 },
-               grid: { color: '#1e293b' } },
-          y: { beginAtZero: true, ticks: { color: '#64748b' }, grid: { color: '#1e293b' },
-               title: { display: true, text: 'Visitors / day', color: '#64748b' } },
-        },
-        interaction: { mode: 'index', intersect: false },
-      },
-    });
+// GSC tile
+(function renderGsc() {
+  const g = D.gsc;
+  const statusEl = document.getElementById('gsc-status');
+  if (!g) {
+    statusEl.innerHTML = 'GSC not configured. Run <code class="mono">python3 tools/gsc-oauth/login.py</code> then rebuild.';
+    return;
   }
-
-  fromInput.addEventListener('change', render);
-  toInput.addEventListener('change', render);
-  render();
+  if (g.error) {
+    statusEl.innerHTML = `<span style="color:#ef4444">GSC fetch failed:</span> ${g.error}. Re-auth via <code class="mono">python3 tools/gsc-oauth/login.py</code>.`;
+    return;
+  }
+  const t = g.totals || {};
+  document.getElementById('gsc-clicks').textContent = fmt(t.clicks || 0);
+  document.getElementById('gsc-impressions').textContent = fmt(t.impressions || 0);
+  document.getElementById('gsc-ctr').textContent = (t.ctr || 0) + '%';
+  document.getElementById('gsc-position').textContent = (t.position || 0).toFixed(1);
+  const props = (g.properties || []).join(', ');
+  statusEl.textContent = `${props} · ${g.window_start} → ${g.window_end}`;
+  const qBody = document.getElementById('gsc-queries');
+  qBody.innerHTML = (g.top_queries || []).map(q => `
+    <tr><td class="mono" style="max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${q.q}</td>
+        <td class="num">${fmt(q.clicks)}</td>
+        <td class="num">${fmt(q.impressions)}</td>
+        <td class="num">${(q.ctr || 0)}%</td>
+        <td class="num">${(q.position || 0).toFixed(1)}</td></tr>
+  `).join('') || '<tr><td colspan="5" style="color:#64748b">No queries with impressions yet.</td></tr>';
+  const pBody = document.getElementById('gsc-pages');
+  pBody.innerHTML = (g.top_pages || []).map(p => {
+    const path = (p.p || '').replace(/^https?:\/\/[^/]+/, '');
+    return `<tr><td class="mono" style="max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${path || '/'}</td>
+        <td class="num">${fmt(p.clicks)}</td>
+        <td class="num">${fmt(p.impressions)}</td>
+        <td class="num">${(p.ctr || 0)}%</td></tr>`;
+  }).join('') || '<tr><td colspan="4" style="color:#64748b">No pages with impressions yet.</td></tr>';
 })();
 
 // Country donut (top 5, rest bucketed)
