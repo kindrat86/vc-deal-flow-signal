@@ -216,6 +216,61 @@ export default async function AgentCreditsPage({
           </p>
         </section>
 
+        <section
+          className="mb-10 rounded-xl border border-sky-500/30 bg-sky-500/5 p-6 sm:p-8"
+          aria-label="x402 — pay-per-call in USDC"
+        >
+          <p className="text-sky-400 text-xs uppercase tracking-wider mb-2 font-semibold">
+            Crypto-native alternative · for fully autonomous agents
+          </p>
+          <h2 className="text-2xl font-bold text-gray-100 mb-2">
+            Pay per call in USDC on Base — no signup, no API key
+          </h2>
+          <p className="text-gray-300 text-sm leading-relaxed mb-4">
+            If your agent has its own wallet (Coinbase CDP, MetaMask, any
+            EIP-3009-capable signer) and there&rsquo;s no human in the loop to
+            top up credits, use the{" "}
+            <a
+              href="https://x402.org"
+              target="_blank"
+              rel="noreferrer"
+              className="text-sky-400 hover:text-sky-300 underline"
+            >
+              x402 protocol
+            </a>{" "}
+            endpoint instead. The agent calls the endpoint, gets a{" "}
+            <code className="text-sky-300 font-mono">402 Payment Required</code>{" "}
+            with USDC payment requirements, signs an EIP-3009{" "}
+            <code className="text-sky-300 font-mono">transferWithAuthorization</code>
+            , and retries with the <code className="text-sky-300 font-mono">X-PAYMENT</code>{" "}
+            header. ~$0.001 in gas, ~2-second settlement, $0.19/call. Misses
+            (404) are free. Settled by the Coinbase x402 facilitator.
+          </p>
+          <pre className="bg-slate-950 border border-slate-800 rounded p-3 text-xs text-sky-300 font-mono overflow-x-auto whitespace-pre mb-4">
+{`POST https://signals.gitdealflow.com/api/agent/deep-signal/x402
+Content-Type: application/json
+
+{ "name": "supabase" }`}
+          </pre>
+          <ul className="text-gray-300 text-sm leading-relaxed space-y-1 mb-2">
+            <li>• No account, no email, no password — pure HTTP 402</li>
+            <li>• Same payload as the credit-pack endpoint</li>
+            <li>• Misses (404) are not charged</li>
+            <li>• Use{" "}
+              <code className="text-sky-300 font-mono">x402-fetch</code> on the
+              client side, or any compliant client at{" "}
+              <a
+                href="https://x402.org"
+                target="_blank"
+                rel="noreferrer"
+                className="text-sky-400 hover:text-sky-300 underline"
+              >
+                x402.org
+              </a>
+            </li>
+          </ul>
+        </section>
+
         <section className="mb-10" aria-label="What you get">
           <h2 className="text-xl font-bold text-gray-100 mb-4">
             What 1 credit returns
@@ -291,6 +346,38 @@ export default async function AgentCreditsPage({
             </pre>
           </div>
 
+          <div className="rounded-lg border border-slate-800 bg-slate-900/40 p-5 mb-4">
+            <p className="text-xs font-medium text-sky-500 uppercase tracking-wider mb-3">
+              x402 — USDC on Base, no key
+            </p>
+            <pre className="bg-slate-950 border border-slate-800 rounded p-3 text-xs text-sky-300 font-mono overflow-x-auto whitespace-pre">
+{`# 1. First call returns 402 with payment requirements
+curl -i -X POST https://signals.gitdealflow.com/api/agent/deep-signal/x402 \\
+  -H "Content-Type: application/json" \\
+  -d '{"name":"supabase"}'
+
+# 2. Wallet-equipped agents can use x402-fetch instead:
+import { wrapFetchWithPayment } from "x402-fetch";
+const fetchWithPayment = wrapFetchWithPayment(fetch, account);
+const r = await fetchWithPayment(
+  "https://signals.gitdealflow.com/api/agent/deep-signal/x402",
+  { method: "POST", body: JSON.stringify({ name: "supabase" }) }
+);`}
+            </pre>
+            <p className="text-gray-400 text-xs mt-2">
+              Spec + clients (TS, Python, Rust, Go):{" "}
+              <a
+                href="https://x402.org"
+                target="_blank"
+                rel="noreferrer"
+                className="text-sky-400 hover:text-sky-300 underline"
+              >
+                x402.org
+              </a>
+              .
+            </p>
+          </div>
+
           <div className="rounded-lg border border-slate-800 bg-slate-900/40 p-5">
             <p className="text-xs font-medium text-sky-500 uppercase tracking-wider mb-3">
               Check balance
@@ -350,6 +437,21 @@ export default async function AgentCreditsPage({
                 credits are a separate, additive product for programmatic
                 callers. Buy either, both, or neither — they don&rsquo;t
                 interact.
+              </dd>
+            </div>
+            <div>
+              <dt className="text-gray-100 font-semibold mb-1">
+                What&rsquo;s the difference between credits and x402?
+              </dt>
+              <dd className="text-gray-400 leading-relaxed">
+                Credits are pre-paid in EUR via Stripe (€19 for 100 calls); the
+                agent identifies itself with an HMAC API key on every call.
+                x402 is pay-per-call in USDC on Base — no signup, no key, the
+                agent&rsquo;s wallet signs each request via the HTTP 402
+                protocol. Credits suit teams with a human topping up the
+                balance; x402 suits fully autonomous agents that hold their
+                own wallet. Same payload, same data, same misses-are-free
+                rule.
               </dd>
             </div>
             <div>

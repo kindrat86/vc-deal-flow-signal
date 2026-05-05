@@ -408,6 +408,62 @@ export async function GET() {
           },
         },
       },
+      "/api/agent/deep-signal/x402": {
+        post: {
+          tags: ["deep-signal"],
+          operationId: "getDeepSignalX402",
+          summary: "Get deep enriched signal (x402 — pay-per-call USDC on Base)",
+          description:
+            "Same payload as /api/agent/deep-signal but priced and authenticated via the x402 protocol (HTTP 402 micropayments). $0.19 USDC per successful call on Base mainnet. No signup, no API key — agents pay per request via the X-PAYMENT header (EIP-3009 transferWithAuthorization). Misses (404) are not charged. Settled by the Coinbase x402 facilitator. See https://x402.org for client implementations.",
+          requestBody: {
+            required: true,
+            content: {
+              "application/json": {
+                schema: {
+                  type: "object",
+                  properties: {
+                    name: {
+                      type: "string",
+                      minLength: 1,
+                      maxLength: 100,
+                      description: "Startup display name or GitHub org slug.",
+                    },
+                  },
+                  required: ["name"],
+                },
+              },
+            },
+          },
+          responses: {
+            "200": {
+              description:
+                "Deep signal payload, settled. Response includes X-PAYMENT-RESPONSE header with transaction reference.",
+              headers: {
+                "X-PAYMENT-RESPONSE": {
+                  description:
+                    "Base64-encoded JSON with on-chain settlement details (txHash, network, payer).",
+                  schema: { type: "string" },
+                },
+              },
+              content: {
+                "application/json": {
+                  schema: { $ref: "#/components/schemas/DeepSignal" },
+                },
+              },
+            },
+            "402": {
+              description:
+                "Payment Required. Response body lists supported payment requirements (network, asset, payTo, price). Agent signs an EIP-3009 authorization and retries with X-PAYMENT header.",
+            },
+            "404": {
+              description: "Startup not in tracked universe — no settlement performed.",
+            },
+            "503": {
+              description: "x402 endpoint not configured (X402_PAY_TO_ADDRESS env var missing).",
+            },
+          },
+        },
+      },
       "/api/account/credits": {
         get: {
           tags: ["deep-signal"],
