@@ -1,23 +1,32 @@
 /**
- * /api/schema.json — alias of /api/openapi.json.
+ * /api/schema.json — alias of /api/openapi.json (direct content, not redirect).
  *
  * Several MCP catalogs and AI Action builders probe `schema.json` (older
  * convention) while OpenAPI 3.x adopters use `openapi.json`. Serving both at
  * the same content avoids the failure mode where a discovery scanner skips
  * us because it's looking under a different filename.
  *
- * This route 308-redirects to the canonical /api/openapi.json so caches stay
- * unified and a single body is the source of truth.
+ * Pass VII (2026-05-05) — converted from 308 to 200 direct, matching the
+ * established Pass V/VI rule: agent bots probing JSON descriptors often
+ * skip the redirect hop and treat 308 as "not found." Canonical URL is
+ * still declared via `Link: rel=canonical` so caches stay unified.
  */
 
-import { NextResponse } from "next/server";
+import { GET as ApiOpenApiJson } from "@/app/api/openapi.json/route";
 
 export const dynamic = "force-static";
 export const runtime = "nodejs";
+export const revalidate = 3600;
+
+const SITE = "https://signals.gitdealflow.com";
 
 export async function GET() {
-  return NextResponse.redirect(
-    "https://signals.gitdealflow.com/api/openapi.json",
-    308,
-  );
+  const upstream = await ApiOpenApiJson();
+  const headers = new Headers(upstream.headers);
+  headers.set("Link", `<${SITE}/api/openapi.json>; rel="canonical"`);
+  return new Response(upstream.body, {
+    status: upstream.status,
+    statusText: upstream.statusText,
+    headers,
+  });
 }
