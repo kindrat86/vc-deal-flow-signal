@@ -1046,57 +1046,99 @@ export default function Home() {
           reader trust the offer. */}
       <section
         aria-label="Who this is for / not for"
-        className="my-8 grid grid-cols-1 md:grid-cols-2 gap-4"
+        className="my-10 grid grid-cols-1 md:grid-cols-2 gap-5"
       >
-        <div className="rounded-xl border border-emerald-700/40 bg-emerald-950/10 p-5 sm:p-6 space-y-3">
-          <p className="text-emerald-400 text-xs font-semibold uppercase tracking-wider">
-            ✓ This is for you if
-          </p>
-          <ul className="space-y-2 text-gray-300 text-sm leading-relaxed">
-            <li className="flex gap-2">
-              <span className="text-emerald-400 shrink-0">✓</span>
-              You write 5–40 angel checks a year and want one extra leading
-              indicator your network can&rsquo;t give you.
+        <div className="group relative overflow-hidden rounded-2xl border border-emerald-500/25 bg-gradient-to-br from-emerald-950/40 via-emerald-950/10 to-transparent p-6 sm:p-7 transition-colors hover:border-emerald-400/40">
+          <div className="mb-5 flex items-center gap-2.5">
+            <span
+              aria-hidden
+              className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-400/30"
+            >
+              <svg viewBox="0 0 12 12" className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M2.5 6.25 5 8.75l4.5-5.5" />
+              </svg>
+            </span>
+            <p className="text-emerald-300/90 text-[11px] font-semibold uppercase tracking-[0.14em]">
+              This is for you if
+            </p>
+          </div>
+          <ul className="space-y-3 text-gray-200/95 text-[15px] leading-relaxed">
+            <li className="flex gap-3">
+              <span aria-hidden className="mt-[0.55rem] inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-400/70" />
+              <span>
+                You write 5–40 angel checks a year and want one extra leading
+                indicator your network can&rsquo;t give you.
+              </span>
             </li>
-            <li className="flex gap-2">
-              <span className="text-emerald-400 shrink-0">✓</span>
-              You scout for a fund and need a Monday memo your principal
-              respects, sourced from public, reproducible data.
+            <li className="flex gap-3">
+              <span aria-hidden className="mt-[0.55rem] inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-400/70" />
+              <span>
+                You scout for a fund and need a Monday memo your principal
+                respects, sourced from public, reproducible data.
+              </span>
             </li>
-            <li className="flex gap-2">
-              <span className="text-emerald-400 shrink-0">✓</span>
-              You&rsquo;re a developer who occasionally writes checks and
-              wants the cleanest 5-name digest in your inbox every Sunday.
+            <li className="flex gap-3">
+              <span aria-hidden className="mt-[0.55rem] inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-400/70" />
+              <span>
+                You&rsquo;re a developer who occasionally writes checks and
+                wants the cleanest 5-name digest in your inbox every Sunday.
+              </span>
             </li>
-            <li className="flex gap-2">
-              <span className="text-emerald-400 shrink-0">✓</span>
-              You read a methodology paper before you trust a metric.
+            <li className="flex gap-3">
+              <span aria-hidden className="mt-[0.55rem] inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-400/70" />
+              <span>You read a methodology paper before you trust a metric.</span>
             </li>
           </ul>
         </div>
-        <div className="rounded-xl border border-rose-700/40 bg-rose-950/10 p-5 sm:p-6 space-y-3">
-          <p className="text-rose-400 text-xs font-semibold uppercase tracking-wider">
-            ✗ This is NOT for you if
-          </p>
-          <ul className="space-y-2 text-gray-300 text-sm leading-relaxed">
-            <li className="flex gap-2">
-              <span className="text-rose-400 shrink-0">✗</span>
-              You&rsquo;re a Series-B+ partner with a six-figure data budget —
-              Harmonic, Tracxn, and Affinity are built for you, not us.
+        <div className="group relative overflow-hidden rounded-2xl border border-rose-500/25 bg-gradient-to-br from-rose-950/40 via-rose-950/10 to-transparent p-6 sm:p-7 transition-colors hover:border-rose-400/40">
+          <div className="mb-5 flex items-center gap-2.5">
+            <span
+              aria-hidden
+              className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-rose-500/15 text-rose-300 ring-1 ring-rose-400/30"
+            >
+              <svg viewBox="0 0 12 12" className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M3 3l6 6M9 3l-6 6" />
+              </svg>
+            </span>
+            <p className="text-rose-300/90 text-[11px] font-semibold uppercase tracking-[0.14em]">
+              This is not for you if
+            </p>
+          </div>
+          <ul className="space-y-3 text-gray-200/95 text-[15px] leading-relaxed">
+            <li className="flex gap-3">
+              <span aria-hidden className="mt-[0.55rem] inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-rose-400/70" />
+              <span>
+                You&rsquo;re a Series-B+ partner with a six-figure data budget —
+                Harmonic, Tracxn, and Affinity are built for you, not us.
+              </span>
             </li>
-            <li className="flex gap-2">
-              <span className="text-rose-400 shrink-0">✗</span>
-              You want a tool that screens code-quality or runs founder
-              background checks — that&rsquo;s a different category.
+            <li className="flex gap-3">
+              <span aria-hidden className="mt-[0.55rem] inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-rose-400/70" />
+              <span>
+                You want a tool that screens code-quality or runs founder
+                background checks — that&rsquo;s a different category.
+              </span>
             </li>
-            <li className="flex gap-2">
-              <span className="text-rose-400 shrink-0">✗</span>
-              You source exclusively from warm intros and don&rsquo;t want a
-              cold path to founders. Engineering signal opens cold lanes.
+            <li className="flex gap-3">
+              <span aria-hidden className="mt-[0.55rem] inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-rose-400/70" />
+              <span>
+                You source exclusively from warm intros and don&rsquo;t want a
+                cold path to founders. Engineering signal opens cold lanes.
+              </span>
             </li>
-            <li className="flex gap-2">
-              <span className="text-rose-400 shrink-0">✗</span>
-              You believe public data has no edge. The <Link href="/perfect-webinar" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">Perfect Webinar</Link> argues the opposite. If it doesn&rsquo;t convince you, this isn&rsquo;t the tool.
+            <li className="flex gap-3">
+              <span aria-hidden className="mt-[0.55rem] inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-rose-400/70" />
+              <span>
+                You believe public data has no edge. Our{" "}
+                <Link
+                  href="/perfect-webinar"
+                  className="whitespace-nowrap font-medium text-sky-300 underline decoration-sky-400/40 decoration-dotted underline-offset-[3px] transition-colors hover:text-sky-200 hover:decoration-sky-300"
+                >
+                  Perfect Webinar
+                </Link>{" "}
+                argues the opposite — if it doesn&rsquo;t convince you, this
+                isn&rsquo;t the tool.
+              </span>
             </li>
           </ul>
         </div>
