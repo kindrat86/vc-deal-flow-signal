@@ -2321,32 +2321,32 @@
           "intro": "Healthcare tech engineering is picking up after a slow Q1, led by clinical workflow automation teams.",
           "startups": [
             {
-              "name": "third-culture-software",
-              "description": "",
-              "stage": "Series A/B",
-              "geography": "Unknown",
-              "commitVelocity14d": 20,
-              "commitVelocityChange": "+25%",
-              "contributors": 28,
-              "contributorGrowth": "+44%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/third-culture-software",
-              "websiteUrl": "https://blog.thirdculturesoftware.com"
-            },
-            {
               "name": "hapifhir",
               "description": "This is the source home for the HAPI FHIR project. Note that we are in the progress of migrating our codebase from the m",
               "stage": "Growth",
               "geography": "Unknown",
-              "commitVelocity14d": 33,
-              "commitVelocityChange": "-45%",
+              "commitVelocity14d": 2,
+              "commitVelocityChange": "-97%",
               "contributors": 92,
-              "contributorGrowth": "+24%",
+              "contributorGrowth": "+0%",
               "newRepos": 0,
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/hapifhir",
               "websiteUrl": "https://github.com/jamesagnew/hapi-fhir"
+            },
+            {
+              "name": "third-culture-software",
+              "description": "",
+              "stage": "Series A/B",
+              "geography": "Unknown",
+              "commitVelocity14d": 3,
+              "commitVelocityChange": "-90%",
+              "contributors": 28,
+              "contributorGrowth": "+30%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/third-culture-software",
+              "websiteUrl": "https://blog.thirdculturesoftware.com"
             },
             {
               "name": "ohcnetwork",
@@ -2407,11 +2407,11 @@
           "faqs": [
             {
               "question": "What engineering signals are healthcare startups showing in Q2 2026?",
-              "answer": "In Q2 2026, we are tracking 6 healthcare startups with measurable GitHub engineering signals. 1 of 6 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 5 of the tracked companies. The average 14-day commit velocity across the sector is 30 commits, with third-culture-software leading at 20 commits (+25% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q2 2026, we are tracking 6 healthcare startups with measurable GitHub engineering signals. 0 of 6 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 5 of the tracked companies. The average 14-day commit velocity across the sector is 22 commits, with andes leading at 8 commits (-47% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which healthcare startup has the highest engineering acceleration in Q2 2026?",
-              "answer": "third-culture-software leads the healthcare sector in Q2 2026 with 20 commits over a 14-day window, representing a +25% change from the prior period. With 28 active contributors, third-culture-software is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
+              "answer": "andes leads the healthcare sector in Q2 2026 with 8 commits over a 14-day window, representing a -47% change from the prior period. With 44 active contributors, andes is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
             },
             {
               "question": "Where are the most active healthcare engineering teams located?",
@@ -2423,32 +2423,32 @@
           "intro": "Healthcare tech engineering is picking up after a slow Q1, led by clinical workflow automation teams.",
           "startups": [
             {
-              "name": "third-culture-software",
-              "description": "",
-              "stage": "Series A/B",
-              "geography": "Unknown",
-              "commitVelocity14d": 29,
-              "commitVelocityChange": "+26%",
-              "contributors": 28,
-              "contributorGrowth": "+44%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/third-culture-software",
-              "websiteUrl": "https://blog.thirdculturesoftware.com"
-            },
-            {
               "name": "hapifhir",
               "description": "This is the source home for the HAPI FHIR project. Note that we are in the progress of migrating our codebase from the m",
               "stage": "Growth",
               "geography": "Unknown",
-              "commitVelocity14d": 57,
-              "commitVelocityChange": "+159%",
+              "commitVelocity14d": 52,
+              "commitVelocityChange": "+68%",
               "contributors": 92,
-              "contributorGrowth": "+24%",
+              "contributorGrowth": "+0%",
               "newRepos": 0,
-              "signalType": "Deploy frequency spike",
+              "signalType": "Framework migration",
               "githubUrl": "https://github.com/hapifhir",
               "websiteUrl": "https://github.com/jamesagnew/hapi-fhir"
+            },
+            {
+              "name": "third-culture-software",
+              "description": "",
+              "stage": "Series A/B",
+              "geography": "Unknown",
+              "commitVelocity14d": 7,
+              "commitVelocityChange": "-79%",
+              "contributors": 28,
+              "contributorGrowth": "+30%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/third-culture-software",
+              "websiteUrl": "https://blog.thirdculturesoftware.com"
             },
             {
               "name": "ohcnetwork",
@@ -2509,7 +2509,7 @@
           "faqs": [
             {
               "question": "What engineering signals are healthcare startups showing in Q1 2026?",
-              "answer": "In Q1 2026, we are tracking 6 healthcare startups with measurable GitHub engineering signals. 5 of 6 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 3 of the tracked companies. The average 14-day commit velocity across the sector is 124 commits, with andes leading at 4 commits (+999% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q1 2026, we are tracking 6 healthcare startups with measurable GitHub engineering signals. 4 of 6 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 4 of the tracked companies. The average 14-day commit velocity across the sector is 119 commits, with andes leading at 4 commits (+999% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which healthcare startup has the highest engineering acceleration in Q1 2026?",
@@ -2525,32 +2525,32 @@
           "intro": "Healthcare tech engineering is picking up after a slow Q1, led by clinical workflow automation teams.",
           "startups": [
             {
-              "name": "third-culture-software",
-              "description": "",
-              "stage": "Series A/B",
-              "geography": "Unknown",
-              "commitVelocity14d": 4,
-              "commitVelocityChange": "+100%",
-              "contributors": 28,
-              "contributorGrowth": "+44%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/third-culture-software",
-              "websiteUrl": "https://blog.thirdculturesoftware.com"
-            },
-            {
               "name": "hapifhir",
               "description": "This is the source home for the HAPI FHIR project. Note that we are in the progress of migrating our codebase from the m",
               "stage": "Growth",
               "geography": "Unknown",
-              "commitVelocity14d": 110,
-              "commitVelocityChange": "-5%",
+              "commitVelocity14d": 130,
+              "commitVelocityChange": "-3%",
               "contributors": 92,
-              "contributorGrowth": "+24%",
+              "contributorGrowth": "+0%",
               "newRepos": 0,
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/hapifhir",
               "websiteUrl": "https://github.com/jamesagnew/hapi-fhir"
+            },
+            {
+              "name": "third-culture-software",
+              "description": "",
+              "stage": "Series A/B",
+              "geography": "Unknown",
+              "commitVelocity14d": 5,
+              "commitVelocityChange": "+150%",
+              "contributors": 28,
+              "contributorGrowth": "+30%",
+              "newRepos": 0,
+              "signalType": "Deploy frequency spike",
+              "githubUrl": "https://github.com/third-culture-software",
+              "websiteUrl": "https://blog.thirdculturesoftware.com"
             },
             {
               "name": "ohcnetwork",
@@ -2611,11 +2611,11 @@
           "faqs": [
             {
               "question": "What engineering signals are healthcare startups showing in Q4 2025?",
-              "answer": "In Q4 2025, we are tracking 6 healthcare startups with measurable GitHub engineering signals. 3 of 6 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 5 of the tracked companies. The average 14-day commit velocity across the sector is 175 commits, with ballerina-platform leading at 414 commits (+124% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q4 2025, we are tracking 6 healthcare startups with measurable GitHub engineering signals. 3 of 6 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 4 of the tracked companies. The average 14-day commit velocity across the sector is 179 commits, with third-culture-software leading at 5 commits (+150% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which healthcare startup has the highest engineering acceleration in Q4 2025?",
-              "answer": "ballerina-platform leads the healthcare sector in Q4 2025 with 414 commits over a 14-day window, representing a +124% change from the prior period. With 100 active contributors, ballerina-platform is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
+              "answer": "third-culture-software leads the healthcare sector in Q4 2025 with 5 commits over a 14-day window, representing a +150% change from the prior period. With 28 active contributors, third-culture-software is showing a \"Deploy frequency spike\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
             },
             {
               "question": "Where are the most active healthcare engineering teams located?",
@@ -2627,32 +2627,32 @@
           "intro": "Healthcare tech engineering is picking up after a slow Q1, led by clinical workflow automation teams.",
           "startups": [
             {
-              "name": "third-culture-software",
-              "description": "",
-              "stage": "Series A/B",
-              "geography": "Unknown",
-              "commitVelocity14d": 14,
-              "commitVelocityChange": "-68%",
-              "contributors": 28,
-              "contributorGrowth": "+44%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/third-culture-software",
-              "websiteUrl": "https://blog.thirdculturesoftware.com"
-            },
-            {
               "name": "hapifhir",
               "description": "This is the source home for the HAPI FHIR project. Note that we are in the progress of migrating our codebase from the m",
               "stage": "Growth",
               "geography": "Unknown",
-              "commitVelocity14d": 160,
-              "commitVelocityChange": "+36%",
+              "commitVelocity14d": 106,
+              "commitVelocityChange": "-29%",
               "contributors": 92,
-              "contributorGrowth": "+24%",
+              "contributorGrowth": "+0%",
               "newRepos": 0,
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/hapifhir",
               "websiteUrl": "https://github.com/jamesagnew/hapi-fhir"
+            },
+            {
+              "name": "third-culture-software",
+              "description": "",
+              "stage": "Series A/B",
+              "geography": "Unknown",
+              "commitVelocity14d": 4,
+              "commitVelocityChange": "-91%",
+              "contributors": 28,
+              "contributorGrowth": "+30%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/third-culture-software",
+              "websiteUrl": "https://blog.thirdculturesoftware.com"
             },
             {
               "name": "ohcnetwork",
@@ -2713,7 +2713,7 @@
           "faqs": [
             {
               "question": "What engineering signals are healthcare startups showing in Q3 2025?",
-              "answer": "In Q3 2025, we are tracking 6 healthcare startups with measurable GitHub engineering signals. 2 of 6 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 5 of the tracked companies. The average 14-day commit velocity across the sector is 176 commits, with ballerina-platform leading at 360 commits (+134% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q3 2025, we are tracking 6 healthcare startups with measurable GitHub engineering signals. 1 of 6 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 5 of the tracked companies. The average 14-day commit velocity across the sector is 165 commits, with ballerina-platform leading at 360 commits (+134% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which healthcare startup has the highest engineering acceleration in Q3 2025?",
@@ -2741,17 +2741,45 @@
           "intro": "EdTech signals are mixed: consumer platforms in maintenance mode, institutional B2B showing the energy.",
           "startups": [
             {
+              "name": "mdn",
+              "description": "Data and tools related to MDN Web Docs (formerly Mozilla Developer Network, formerly Mozilla Developer Center...)",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 224,
+              "commitVelocityChange": "-38%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/mdn",
+              "websiteUrl": "https://developer.mozilla.org"
+            },
+            {
               "name": "Vacademy-io",
               "description": "",
               "stage": "Series A/B",
               "geography": "APAC",
-              "commitVelocity14d": 248,
-              "commitVelocityChange": "-63%",
+              "commitVelocity14d": 249,
+              "commitVelocityChange": "-48%",
               "contributors": 23,
-              "contributorGrowth": "+84%",
+              "contributorGrowth": "+32%",
               "newRepos": 0,
-              "signalType": "Engineering hiring burst",
+              "signalType": "Framework migration",
               "githubUrl": "https://github.com/Vacademy-io"
+            },
+            {
+              "name": "OpenOLAT",
+              "description": "Open Source Learning Management System written in Java",
+              "stage": "Seed",
+              "geography": "EU",
+              "commitVelocity14d": 61,
+              "commitVelocityChange": "-54%",
+              "contributors": 15,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/OpenOLAT",
+              "websiteUrl": "https://www.openolat.org"
             },
             {
               "name": "NDLANO",
@@ -2837,34 +2865,6 @@
               "githubUrl": "https://github.com/hpi-schul-cloud"
             },
             {
-              "name": "OpenOLAT",
-              "description": "Open Source Learning Management System written in Java",
-              "stage": "Seed",
-              "geography": "EU",
-              "commitVelocity14d": 102,
-              "commitVelocityChange": "-33%",
-              "contributors": 15,
-              "contributorGrowth": "+25%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/OpenOLAT",
-              "websiteUrl": "https://www.openolat.org"
-            },
-            {
-              "name": "mdn",
-              "description": "Data and tools related to MDN Web Docs (formerly Mozilla Developer Network, formerly Mozilla Developer Center...)",
-              "stage": "Growth",
-              "geography": "Unknown",
-              "commitVelocity14d": 225,
-              "commitVelocityChange": "-55%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/mdn",
-              "websiteUrl": "https://developer.mozilla.org"
-            },
-            {
               "name": "particify",
               "description": "Particify creates software for interactive lectures, presentations, events and more...",
               "stage": "Seed",
@@ -2882,7 +2882,7 @@
           "faqs": [
             {
               "question": "What engineering signals are edtech startups showing in Q2 2026?",
-              "answer": "In Q2 2026, we are tracking 10 edtech startups with measurable GitHub engineering signals. 1 of 10 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 7 of the tracked companies. The average 14-day commit velocity across the sector is 68 commits, with sonic-pi-net leading at 8 commits (+999% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q2 2026, we are tracking 10 edtech startups with measurable GitHub engineering signals. 1 of 10 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 8 of the tracked companies. The average 14-day commit velocity across the sector is 64 commits, with sonic-pi-net leading at 8 commits (+999% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which edtech startup has the highest engineering acceleration in Q2 2026?",
@@ -2898,17 +2898,45 @@
           "intro": "EdTech signals are mixed: consumer platforms in maintenance mode, institutional B2B showing the energy.",
           "startups": [
             {
+              "name": "mdn",
+              "description": "Data and tools related to MDN Web Docs (formerly Mozilla Developer Network, formerly Mozilla Developer Center...)",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 548,
+              "commitVelocityChange": "+1%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/mdn",
+              "websiteUrl": "https://developer.mozilla.org"
+            },
+            {
               "name": "Vacademy-io",
               "description": "",
               "stage": "Series A/B",
               "geography": "APAC",
-              "commitVelocity14d": 173,
-              "commitVelocityChange": "-12%",
+              "commitVelocity14d": 163,
+              "commitVelocityChange": "-36%",
               "contributors": 23,
-              "contributorGrowth": "+84%",
+              "contributorGrowth": "+32%",
               "newRepos": 0,
-              "signalType": "Engineering hiring burst",
+              "signalType": "Framework migration",
               "githubUrl": "https://github.com/Vacademy-io"
+            },
+            {
+              "name": "OpenOLAT",
+              "description": "Open Source Learning Management System written in Java",
+              "stage": "Seed",
+              "geography": "EU",
+              "commitVelocity14d": 129,
+              "commitVelocityChange": "+3%",
+              "contributors": 15,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/OpenOLAT",
+              "websiteUrl": "https://www.openolat.org"
             },
             {
               "name": "NDLANO",
@@ -2966,34 +2994,6 @@
               "githubUrl": "https://github.com/hpi-schul-cloud"
             },
             {
-              "name": "OpenOLAT",
-              "description": "Open Source Learning Management System written in Java",
-              "stage": "Seed",
-              "geography": "EU",
-              "commitVelocity14d": 142,
-              "commitVelocityChange": "+517%",
-              "contributors": 15,
-              "contributorGrowth": "+25%",
-              "newRepos": 0,
-              "signalType": "Deploy frequency spike",
-              "githubUrl": "https://github.com/OpenOLAT",
-              "websiteUrl": "https://www.openolat.org"
-            },
-            {
-              "name": "mdn",
-              "description": "Data and tools related to MDN Web Docs (formerly Mozilla Developer Network, formerly Mozilla Developer Center...)",
-              "stage": "Growth",
-              "geography": "Unknown",
-              "commitVelocity14d": 492,
-              "commitVelocityChange": "+13%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/mdn",
-              "websiteUrl": "https://developer.mozilla.org"
-            },
-            {
               "name": "particify",
               "description": "Particify creates software for interactive lectures, presentations, events and more...",
               "stage": "Seed",
@@ -3011,7 +3011,7 @@
           "faqs": [
             {
               "question": "What engineering signals are edtech startups showing in Q1 2026?",
-              "answer": "In Q1 2026, we are tracking 8 edtech startups with measurable GitHub engineering signals. 6 of 8 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 3 of the tracked companies. The average 14-day commit velocity across the sector is 137 commits, with hpi-schul-cloud leading at 5 commits (+999% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q1 2026, we are tracking 8 edtech startups with measurable GitHub engineering signals. 6 of 8 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 5 of the tracked companies. The average 14-day commit velocity across the sector is 141 commits, with hpi-schul-cloud leading at 5 commits (+999% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which edtech startup has the highest engineering acceleration in Q1 2026?",
@@ -3027,17 +3027,45 @@
           "intro": "EdTech signals are mixed: consumer platforms in maintenance mode, institutional B2B showing the energy.",
           "startups": [
             {
+              "name": "mdn",
+              "description": "Data and tools related to MDN Web Docs (formerly Mozilla Developer Network, formerly Mozilla Developer Center...)",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 341,
+              "commitVelocityChange": "-40%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/mdn",
+              "websiteUrl": "https://developer.mozilla.org"
+            },
+            {
               "name": "Vacademy-io",
               "description": "",
               "stage": "Series A/B",
               "geography": "APAC",
-              "commitVelocity14d": 94,
-              "commitVelocityChange": "+7%",
+              "commitVelocity14d": 141,
+              "commitVelocityChange": "+104%",
               "contributors": 23,
-              "contributorGrowth": "+84%",
+              "contributorGrowth": "+32%",
               "newRepos": 0,
-              "signalType": "Engineering hiring burst",
+              "signalType": "Framework migration",
               "githubUrl": "https://github.com/Vacademy-io"
+            },
+            {
+              "name": "OpenOLAT",
+              "description": "Open Source Learning Management System written in Java",
+              "stage": "Seed",
+              "geography": "EU",
+              "commitVelocity14d": 103,
+              "commitVelocityChange": "+6%",
+              "contributors": 15,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/OpenOLAT",
+              "websiteUrl": "https://www.openolat.org"
             },
             {
               "name": "NDLANO",
@@ -3109,34 +3137,6 @@
               "githubUrl": "https://github.com/hpi-schul-cloud"
             },
             {
-              "name": "OpenOLAT",
-              "description": "Open Source Learning Management System written in Java",
-              "stage": "Seed",
-              "geography": "EU",
-              "commitVelocity14d": 85,
-              "commitVelocityChange": "-25%",
-              "contributors": 15,
-              "contributorGrowth": "+25%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/OpenOLAT",
-              "websiteUrl": "https://www.openolat.org"
-            },
-            {
-              "name": "mdn",
-              "description": "Data and tools related to MDN Web Docs (formerly Mozilla Developer Network, formerly Mozilla Developer Center...)",
-              "stage": "Growth",
-              "geography": "Unknown",
-              "commitVelocity14d": 692,
-              "commitVelocityChange": "+68%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/mdn",
-              "websiteUrl": "https://developer.mozilla.org"
-            },
-            {
               "name": "particify",
               "description": "Particify creates software for interactive lectures, presentations, events and more...",
               "stage": "Seed",
@@ -3154,11 +3154,11 @@
           "faqs": [
             {
               "question": "What engineering signals are edtech startups showing in Q4 2025?",
-              "answer": "In Q4 2025, we are tracking 9 edtech startups with measurable GitHub engineering signals. 3 of 9 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 7 of the tracked companies. The average 14-day commit velocity across the sector is 115 commits, with mdn leading at 692 commits (+68% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q4 2025, we are tracking 9 edtech startups with measurable GitHub engineering signals. 3 of 9 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 8 of the tracked companies. The average 14-day commit velocity across the sector is 84 commits, with Vacademy-io leading at 141 commits (+104% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which edtech startup has the highest engineering acceleration in Q4 2025?",
-              "answer": "mdn leads the edtech sector in Q4 2025 with 692 commits over a 14-day window, representing a +68% change from the prior period. With 100 active contributors, mdn is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
+              "answer": "Vacademy-io leads the edtech sector in Q4 2025 with 141 commits over a 14-day window, representing a +104% change from the prior period. With 23 active contributors, Vacademy-io is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
             },
             {
               "question": "Where are the most active edtech engineering teams located?",
@@ -3170,17 +3170,45 @@
           "intro": "EdTech signals are mixed: consumer platforms in maintenance mode, institutional B2B showing the energy.",
           "startups": [
             {
+              "name": "mdn",
+              "description": "Data and tools related to MDN Web Docs (formerly Mozilla Developer Network, formerly Mozilla Developer Center...)",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 211,
+              "commitVelocityChange": "+13%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/mdn",
+              "websiteUrl": "https://developer.mozilla.org"
+            },
+            {
               "name": "Vacademy-io",
               "description": "",
               "stage": "Series A/B",
               "geography": "APAC",
               "commitVelocity14d": 80,
-              "commitVelocityChange": "-18%",
+              "commitVelocityChange": "-29%",
               "contributors": 23,
-              "contributorGrowth": "+84%",
+              "contributorGrowth": "+32%",
               "newRepos": 0,
-              "signalType": "Engineering hiring burst",
+              "signalType": "Framework migration",
               "githubUrl": "https://github.com/Vacademy-io"
+            },
+            {
+              "name": "OpenOLAT",
+              "description": "Open Source Learning Management System written in Java",
+              "stage": "Seed",
+              "geography": "EU",
+              "commitVelocity14d": 75,
+              "commitVelocityChange": "-32%",
+              "contributors": 15,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/OpenOLAT",
+              "websiteUrl": "https://www.openolat.org"
             },
             {
               "name": "NDLANO",
@@ -3252,34 +3280,6 @@
               "githubUrl": "https://github.com/hpi-schul-cloud"
             },
             {
-              "name": "OpenOLAT",
-              "description": "Open Source Learning Management System written in Java",
-              "stage": "Seed",
-              "geography": "EU",
-              "commitVelocity14d": 138,
-              "commitVelocityChange": "+24%",
-              "contributors": 15,
-              "contributorGrowth": "+25%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/OpenOLAT",
-              "websiteUrl": "https://www.openolat.org"
-            },
-            {
-              "name": "mdn",
-              "description": "Data and tools related to MDN Web Docs (formerly Mozilla Developer Network, formerly Mozilla Developer Center...)",
-              "stage": "Growth",
-              "geography": "Unknown",
-              "commitVelocity14d": 197,
-              "commitVelocityChange": "-17%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/mdn",
-              "websiteUrl": "https://developer.mozilla.org"
-            },
-            {
               "name": "particify",
               "description": "Particify creates software for interactive lectures, presentations, events and more...",
               "stage": "Seed",
@@ -3297,7 +3297,7 @@
           "faqs": [
             {
               "question": "What engineering signals are edtech startups showing in Q3 2025?",
-              "answer": "In Q3 2025, we are tracking 9 edtech startups with measurable GitHub engineering signals. 6 of 9 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 7 of the tracked companies. The average 14-day commit velocity across the sector is 291 commits, with particify leading at 15 commits (+114% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q3 2025, we are tracking 9 edtech startups with measurable GitHub engineering signals. 6 of 9 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 8 of the tracked companies. The average 14-day commit velocity across the sector is 286 commits, with particify leading at 15 commits (+114% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which edtech startup has the highest engineering acceleration in Q3 2025?",
@@ -3329,8 +3329,8 @@
               "description": "Become the brand everyone talks about.",
               "stage": "Growth",
               "geography": "Unknown",
-              "commitVelocity14d": 10,
-              "commitVelocityChange": "-41%",
+              "commitVelocity14d": 5,
+              "commitVelocityChange": "-82%",
               "contributors": 100,
               "contributorGrowth": "+0%",
               "newRepos": 0,
@@ -3343,8 +3343,8 @@
               "description": "A Free and Opensource laravel eCommerce framework built for all to build and scale your business.",
               "stage": "Growth",
               "geography": "APAC",
-              "commitVelocity14d": 78,
-              "commitVelocityChange": "+59%",
+              "commitVelocity14d": 36,
+              "commitVelocityChange": "-61%",
               "contributors": 100,
               "contributorGrowth": "+0%",
               "newRepos": 0,
@@ -3384,7 +3384,7 @@
           "faqs": [
             {
               "question": "What engineering signals are e-commerce infrastructure startups showing in Q2 2026?",
-              "answer": "In Q2 2026, we are tracking 4 e-commerce infrastructure startups with measurable GitHub engineering signals. 3 of 4 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 4 of the tracked companies. The average 14-day commit velocity across the sector is 29 commits, with ishgroup leading at 7 commits (+75% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q2 2026, we are tracking 4 e-commerce infrastructure startups with measurable GitHub engineering signals. 2 of 4 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 4 of the tracked companies. The average 14-day commit velocity across the sector is 17 commits, with ishgroup leading at 7 commits (+75% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which e-commerce infrastructure startup has the highest engineering acceleration in Q2 2026?",
@@ -3404,8 +3404,8 @@
               "description": "Become the brand everyone talks about.",
               "stage": "Growth",
               "geography": "Unknown",
-              "commitVelocity14d": 17,
-              "commitVelocityChange": "+6%",
+              "commitVelocity14d": 15,
+              "commitVelocityChange": "-12%",
               "contributors": 100,
               "contributorGrowth": "+0%",
               "newRepos": 0,
@@ -3418,8 +3418,8 @@
               "description": "A Free and Opensource laravel eCommerce framework built for all to build and scale your business.",
               "stage": "Growth",
               "geography": "APAC",
-              "commitVelocity14d": 83,
-              "commitVelocityChange": "-28%",
+              "commitVelocity14d": 78,
+              "commitVelocityChange": "-27%",
               "contributors": 100,
               "contributorGrowth": "+0%",
               "newRepos": 0,
@@ -3459,7 +3459,7 @@
           "faqs": [
             {
               "question": "What engineering signals are e-commerce infrastructure startups showing in Q1 2026?",
-              "answer": "In Q1 2026, we are tracking 4 e-commerce infrastructure startups with measurable GitHub engineering signals. 3 of 4 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 4 of the tracked companies. The average 14-day commit velocity across the sector is 29 commits, with ishgroup leading at 6 commits (+50% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q1 2026, we are tracking 4 e-commerce infrastructure startups with measurable GitHub engineering signals. 2 of 4 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 4 of the tracked companies. The average 14-day commit velocity across the sector is 27 commits, with ishgroup leading at 6 commits (+50% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which e-commerce infrastructure startup has the highest engineering acceleration in Q1 2026?",
@@ -3479,8 +3479,8 @@
               "description": "Become the brand everyone talks about.",
               "stage": "Growth",
               "geography": "Unknown",
-              "commitVelocity14d": 46,
-              "commitVelocityChange": "+283%",
+              "commitVelocity14d": 63,
+              "commitVelocityChange": "+215%",
               "contributors": 100,
               "contributorGrowth": "+0%",
               "newRepos": 0,
@@ -3493,8 +3493,8 @@
               "description": "A Free and Opensource laravel eCommerce framework built for all to build and scale your business.",
               "stage": "Growth",
               "geography": "APAC",
-              "commitVelocity14d": 2,
-              "commitVelocityChange": "-97%",
+              "commitVelocity14d": 15,
+              "commitVelocityChange": "-66%",
               "contributors": 100,
               "contributorGrowth": "+0%",
               "newRepos": 0,
@@ -3534,11 +3534,11 @@
           "faqs": [
             {
               "question": "What engineering signals are e-commerce infrastructure startups showing in Q4 2025?",
-              "answer": "In Q4 2025, we are tracking 4 e-commerce infrastructure startups with measurable GitHub engineering signals. 1 of 4 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 3 of the tracked companies. The average 14-day commit velocity across the sector is 15 commits, with solidusio leading at 46 commits (+283% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q4 2025, we are tracking 4 e-commerce infrastructure startups with measurable GitHub engineering signals. 1 of 4 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 3 of the tracked companies. The average 14-day commit velocity across the sector is 23 commits, with solidusio leading at 63 commits (+215% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which e-commerce infrastructure startup has the highest engineering acceleration in Q4 2025?",
-              "answer": "solidusio leads the e-commerce infrastructure sector in Q4 2025 with 46 commits over a 14-day window, representing a +283% change from the prior period. With 100 active contributors, solidusio is showing a \"Deploy frequency spike\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
+              "answer": "solidusio leads the e-commerce infrastructure sector in Q4 2025 with 63 commits over a 14-day window, representing a +215% change from the prior period. With 100 active contributors, solidusio is showing a \"Deploy frequency spike\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
             },
             {
               "question": "Where are the most active e-commerce infrastructure engineering teams located?",
@@ -3554,8 +3554,8 @@
               "description": "Become the brand everyone talks about.",
               "stage": "Growth",
               "geography": "Unknown",
-              "commitVelocity14d": 19,
-              "commitVelocityChange": "+111%",
+              "commitVelocity14d": 20,
+              "commitVelocityChange": "+100%",
               "contributors": 100,
               "contributorGrowth": "+0%",
               "newRepos": 0,
@@ -3568,8 +3568,8 @@
               "description": "A Free and Opensource laravel eCommerce framework built for all to build and scale your business.",
               "stage": "Growth",
               "geography": "APAC",
-              "commitVelocity14d": 14,
-              "commitVelocityChange": "-12%",
+              "commitVelocity14d": 23,
+              "commitVelocityChange": "+130%",
               "contributors": 100,
               "contributorGrowth": "+0%",
               "newRepos": 0,
@@ -3623,7 +3623,7 @@
           "faqs": [
             {
               "question": "What engineering signals are e-commerce infrastructure startups showing in Q3 2025?",
-              "answer": "In Q3 2025, we are tracking 5 e-commerce infrastructure startups with measurable GitHub engineering signals. 2 of 5 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 4 of the tracked companies. The average 14-day commit velocity across the sector is 14 commits, with vuestorefront leading at 1 commits (+999% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q3 2025, we are tracking 5 e-commerce infrastructure startups with measurable GitHub engineering signals. 3 of 5 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 4 of the tracked companies. The average 14-day commit velocity across the sector is 16 commits, with vuestorefront leading at 1 commits (+999% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which e-commerce infrastructure startup has the highest engineering acceleration in Q3 2025?",
@@ -3655,8 +3655,8 @@
               "description": "Endpoint management solution",
               "stage": "Series A/B",
               "geography": "EU",
-              "commitVelocity14d": 20,
-              "commitVelocityChange": "-49%",
+              "commitVelocity14d": 9,
+              "commitVelocityChange": "-84%",
               "contributors": 25,
               "contributorGrowth": "+0%",
               "newRepos": 1,
@@ -3668,11 +3668,11 @@
           "faqs": [
             {
               "question": "What engineering signals are supply chain startups showing in Q2 2026?",
-              "answer": "In Q2 2026, we are tracking 1 supply chain startups with measurable GitHub engineering signals. 0 of 1 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 1 of the tracked companies. The average 14-day commit velocity across the sector is 20 commits, with medulla-tech leading at 20 commits (-49% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q2 2026, we are tracking 1 supply chain startups with measurable GitHub engineering signals. 0 of 1 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 1 of the tracked companies. The average 14-day commit velocity across the sector is 9 commits, with medulla-tech leading at 9 commits (-84% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which supply chain startup has the highest engineering acceleration in Q2 2026?",
-              "answer": "medulla-tech leads the supply chain sector in Q2 2026 with 20 commits over a 14-day window, representing a -49% change from the prior period. With 25 active contributors and 1 new repositories, medulla-tech is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
+              "answer": "medulla-tech leads the supply chain sector in Q2 2026 with 9 commits over a 14-day window, representing a -84% change from the prior period. With 25 active contributors and 1 new repositories, medulla-tech is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
             },
             {
               "question": "Where are the most active supply chain engineering teams located?",
@@ -3688,12 +3688,12 @@
               "description": "Endpoint management solution",
               "stage": "Series A/B",
               "geography": "EU",
-              "commitVelocity14d": 51,
-              "commitVelocityChange": "+325%",
+              "commitVelocity14d": 61,
+              "commitVelocityChange": "+20%",
               "contributors": 25,
               "contributorGrowth": "+0%",
               "newRepos": 1,
-              "signalType": "Deploy frequency spike",
+              "signalType": "Framework migration",
               "githubUrl": "https://github.com/medulla-tech",
               "websiteUrl": "https://medulla-tech.io"
             }
@@ -3701,11 +3701,11 @@
           "faqs": [
             {
               "question": "What engineering signals are supply chain startups showing in Q1 2026?",
-              "answer": "In Q1 2026, we are tracking 1 supply chain startups with measurable GitHub engineering signals. 1 of 1 show positive commit velocity growth. The most common signal type is \"Deploy frequency spike\", observed in 1 of the tracked companies. The average 14-day commit velocity across the sector is 51 commits, with medulla-tech leading at 51 commits (+325% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q1 2026, we are tracking 1 supply chain startups with measurable GitHub engineering signals. 1 of 1 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 1 of the tracked companies. The average 14-day commit velocity across the sector is 61 commits, with medulla-tech leading at 61 commits (+20% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which supply chain startup has the highest engineering acceleration in Q1 2026?",
-              "answer": "medulla-tech leads the supply chain sector in Q1 2026 with 51 commits over a 14-day window, representing a +325% change from the prior period. With 25 active contributors and 1 new repositories, medulla-tech is showing a \"Deploy frequency spike\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
+              "answer": "medulla-tech leads the supply chain sector in Q1 2026 with 61 commits over a 14-day window, representing a +20% change from the prior period. With 25 active contributors and 1 new repositories, medulla-tech is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
             },
             {
               "question": "Where are the most active supply chain engineering teams located?",
@@ -3721,8 +3721,8 @@
               "description": "Endpoint management solution",
               "stage": "Series A/B",
               "geography": "EU",
-              "commitVelocity14d": 72,
-              "commitVelocityChange": "+140%",
+              "commitVelocity14d": 55,
+              "commitVelocityChange": "-24%",
               "contributors": 25,
               "contributorGrowth": "+0%",
               "newRepos": 1,
@@ -3734,11 +3734,11 @@
           "faqs": [
             {
               "question": "What engineering signals are supply chain startups showing in Q4 2025?",
-              "answer": "In Q4 2025, we are tracking 1 supply chain startups with measurable GitHub engineering signals. 1 of 1 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 1 of the tracked companies. The average 14-day commit velocity across the sector is 72 commits, with medulla-tech leading at 72 commits (+140% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q4 2025, we are tracking 1 supply chain startups with measurable GitHub engineering signals. 0 of 1 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 1 of the tracked companies. The average 14-day commit velocity across the sector is 55 commits, with medulla-tech leading at 55 commits (-24% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which supply chain startup has the highest engineering acceleration in Q4 2025?",
-              "answer": "medulla-tech leads the supply chain sector in Q4 2025 with 72 commits over a 14-day window, representing a +140% change from the prior period. With 25 active contributors and 1 new repositories, medulla-tech is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
+              "answer": "medulla-tech leads the supply chain sector in Q4 2025 with 55 commits over a 14-day window, representing a -24% change from the prior period. With 25 active contributors and 1 new repositories, medulla-tech is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
             },
             {
               "question": "Where are the most active supply chain engineering teams located?",
@@ -3754,12 +3754,12 @@
               "description": "Endpoint management solution",
               "stage": "Series A/B",
               "geography": "EU",
-              "commitVelocity14d": 50,
-              "commitVelocityChange": "+25%",
+              "commitVelocity14d": 141,
+              "commitVelocityChange": "+182%",
               "contributors": 25,
               "contributorGrowth": "+0%",
               "newRepos": 1,
-              "signalType": "Framework migration",
+              "signalType": "Deploy frequency spike",
               "githubUrl": "https://github.com/medulla-tech",
               "websiteUrl": "https://medulla-tech.io"
             }
@@ -3767,11 +3767,11 @@
           "faqs": [
             {
               "question": "What engineering signals are supply chain startups showing in Q3 2025?",
-              "answer": "In Q3 2025, we are tracking 1 supply chain startups with measurable GitHub engineering signals. 1 of 1 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 1 of the tracked companies. The average 14-day commit velocity across the sector is 50 commits, with medulla-tech leading at 50 commits (+25% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q3 2025, we are tracking 1 supply chain startups with measurable GitHub engineering signals. 1 of 1 show positive commit velocity growth. The most common signal type is \"Deploy frequency spike\", observed in 1 of the tracked companies. The average 14-day commit velocity across the sector is 141 commits, with medulla-tech leading at 141 commits (+182% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which supply chain startup has the highest engineering acceleration in Q3 2025?",
-              "answer": "medulla-tech leads the supply chain sector in Q3 2025 with 50 commits over a 14-day window, representing a +25% change from the prior period. With 25 active contributors and 1 new repositories, medulla-tech is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
+              "answer": "medulla-tech leads the supply chain sector in Q3 2025 with 141 commits over a 14-day window, representing a +182% change from the prior period. With 25 active contributors and 1 new repositories, medulla-tech is showing a \"Deploy frequency spike\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
             },
             {
               "question": "Where are the most active supply chain engineering teams located?",
@@ -3794,6 +3794,48 @@
         "q2-2026": {
           "intro": "Web3 engineering activity has rebounded sharply, with infrastructure and bridge tooling teams nearly doubling contributor counts.",
           "startups": [
+            {
+              "name": "aptos-labs",
+              "description": "",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 71,
+              "commitVelocityChange": "-38%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 2,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/aptos-labs",
+              "websiteUrl": "https://aptoslabs.com"
+            },
+            {
+              "name": "hiero-ledger",
+              "description": "Open Source Distributed Ledger Technology",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 49,
+              "commitVelocityChange": "-36%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/hiero-ledger",
+              "websiteUrl": "https://hiero.org"
+            },
+            {
+              "name": "l2beat",
+              "description": "",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 70,
+              "commitVelocityChange": "-41%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/l2beat",
+              "websiteUrl": "https://l2beat.com"
+            },
             {
               "name": "NethermindEth",
               "description": "Ethereum and Starknet researchers and builders developing the Nethermind Ethereum client, Juno, Voyager, and Sedge.",
@@ -3881,7 +3923,7 @@
           "faqs": [
             {
               "question": "What engineering signals are web3 startups showing in Q2 2026?",
-              "answer": "In Q2 2026, we are tracking 6 web3 startups with measurable GitHub engineering signals. 0 of 6 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 5 of the tracked companies. The average 14-day commit velocity across the sector is 61 commits, with NethermindEth leading at 99 commits (-26% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q2 2026, we are tracking 9 web3 startups with measurable GitHub engineering signals. 0 of 9 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 8 of the tracked companies. The average 14-day commit velocity across the sector is 62 commits, with NethermindEth leading at 99 commits (-26% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which web3 startup has the highest engineering acceleration in Q2 2026?",
@@ -3889,13 +3931,55 @@
             },
             {
               "question": "Where are the most active web3 engineering teams located?",
-              "answer": "Among the 6 web3 startups we track, US accounts for the highest concentration with 1 teams. Startups building decentralized applications and blockchain infrastructure. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+              "answer": "Among the 9 web3 startups we track, US accounts for the highest concentration with 1 teams. Startups building decentralized applications and blockchain infrastructure. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
             }
           ]
         },
         "q1-2026": {
           "intro": "Web3 engineering activity has rebounded sharply, with infrastructure and bridge tooling teams nearly doubling contributor counts.",
           "startups": [
+            {
+              "name": "aptos-labs",
+              "description": "",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 103,
+              "commitVelocityChange": "+102%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 2,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/aptos-labs",
+              "websiteUrl": "https://aptoslabs.com"
+            },
+            {
+              "name": "hiero-ledger",
+              "description": "Open Source Distributed Ledger Technology",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 142,
+              "commitVelocityChange": "+33%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/hiero-ledger",
+              "websiteUrl": "https://hiero.org"
+            },
+            {
+              "name": "l2beat",
+              "description": "",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 167,
+              "commitVelocityChange": "+5%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/l2beat",
+              "websiteUrl": "https://l2beat.com"
+            },
             {
               "name": "NethermindEth",
               "description": "Ethereum and Starknet researchers and builders developing the Nethermind Ethereum client, Juno, Voyager, and Sedge.",
@@ -3983,7 +4067,7 @@
           "faqs": [
             {
               "question": "What engineering signals are web3 startups showing in Q1 2026?",
-              "answer": "In Q1 2026, we are tracking 6 web3 startups with measurable GitHub engineering signals. 6 of 6 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 3 of the tracked companies. The average 14-day commit velocity across the sector is 133 commits, with IntersectMBO leading at 119 commits (+358% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q1 2026, we are tracking 9 web3 startups with measurable GitHub engineering signals. 9 of 9 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 6 of the tracked companies. The average 14-day commit velocity across the sector is 134 commits, with IntersectMBO leading at 119 commits (+358% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which web3 startup has the highest engineering acceleration in Q1 2026?",
@@ -3991,13 +4075,55 @@
             },
             {
               "question": "Where are the most active web3 engineering teams located?",
-              "answer": "Among the 6 web3 startups we track, US accounts for the highest concentration with 1 teams. Startups building decentralized applications and blockchain infrastructure. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+              "answer": "Among the 9 web3 startups we track, US accounts for the highest concentration with 1 teams. Startups building decentralized applications and blockchain infrastructure. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
             }
           ]
         },
         "q4-2025": {
           "intro": "Web3 engineering activity has rebounded sharply, with infrastructure and bridge tooling teams nearly doubling contributor counts.",
           "startups": [
+            {
+              "name": "aptos-labs",
+              "description": "",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 82,
+              "commitVelocityChange": "+14%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 2,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/aptos-labs",
+              "websiteUrl": "https://aptoslabs.com"
+            },
+            {
+              "name": "hiero-ledger",
+              "description": "Open Source Distributed Ledger Technology",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 109,
+              "commitVelocityChange": "-29%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/hiero-ledger",
+              "websiteUrl": "https://hiero.org"
+            },
+            {
+              "name": "l2beat",
+              "description": "",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 191,
+              "commitVelocityChange": "+15%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/l2beat",
+              "websiteUrl": "https://l2beat.com"
+            },
             {
               "name": "NethermindEth",
               "description": "Ethereum and Starknet researchers and builders developing the Nethermind Ethereum client, Juno, Voyager, and Sedge.",
@@ -4085,7 +4211,7 @@
           "faqs": [
             {
               "question": "What engineering signals are web3 startups showing in Q4 2025?",
-              "answer": "In Q4 2025, we are tracking 6 web3 startups with measurable GitHub engineering signals. 3 of 6 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 5 of the tracked companies. The average 14-day commit velocity across the sector is 64 commits, with NethermindEth leading at 115 commits (+85% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q4 2025, we are tracking 9 web3 startups with measurable GitHub engineering signals. 5 of 9 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 8 of the tracked companies. The average 14-day commit velocity across the sector is 85 commits, with NethermindEth leading at 115 commits (+85% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which web3 startup has the highest engineering acceleration in Q4 2025?",
@@ -4093,13 +4219,55 @@
             },
             {
               "question": "Where are the most active web3 engineering teams located?",
-              "answer": "Among the 6 web3 startups we track, US accounts for the highest concentration with 1 teams. Startups building decentralized applications and blockchain infrastructure. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+              "answer": "Among the 9 web3 startups we track, US accounts for the highest concentration with 1 teams. Startups building decentralized applications and blockchain infrastructure. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
             }
           ]
         },
         "q3-2025": {
           "intro": "Web3 engineering activity has rebounded sharply, with infrastructure and bridge tooling teams nearly doubling contributor counts.",
           "startups": [
+            {
+              "name": "aptos-labs",
+              "description": "",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 70,
+              "commitVelocityChange": "+35%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 2,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/aptos-labs",
+              "websiteUrl": "https://aptoslabs.com"
+            },
+            {
+              "name": "hiero-ledger",
+              "description": "Open Source Distributed Ledger Technology",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 105,
+              "commitVelocityChange": "+44%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/hiero-ledger",
+              "websiteUrl": "https://hiero.org"
+            },
+            {
+              "name": "l2beat",
+              "description": "",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 260,
+              "commitVelocityChange": "+47%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/l2beat",
+              "websiteUrl": "https://l2beat.com"
+            },
             {
               "name": "NethermindEth",
               "description": "Ethereum and Starknet researchers and builders developing the Nethermind Ethereum client, Juno, Voyager, and Sedge.",
@@ -4187,7 +4355,7 @@
           "faqs": [
             {
               "question": "What engineering signals are web3 startups showing in Q3 2025?",
-              "answer": "In Q3 2025, we are tracking 6 web3 startups with measurable GitHub engineering signals. 3 of 6 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 4 of the tracked companies. The average 14-day commit velocity across the sector is 93 commits, with BibliothecaDAO leading at 23 commits (+156% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q3 2025, we are tracking 9 web3 startups with measurable GitHub engineering signals. 6 of 9 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 7 of the tracked companies. The average 14-day commit velocity across the sector is 110 commits, with BibliothecaDAO leading at 23 commits (+156% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which web3 startup has the highest engineering acceleration in Q3 2025?",
@@ -4195,7 +4363,7 @@
             },
             {
               "question": "Where are the most active web3 engineering teams located?",
-              "answer": "Among the 6 web3 startups we track, US accounts for the highest concentration with 1 teams. Startups building decentralized applications and blockchain infrastructure. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+              "answer": "Among the 9 web3 startups we track, US accounts for the highest concentration with 1 teams. Startups building decentralized applications and blockchain infrastructure. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
             }
           ]
         }
