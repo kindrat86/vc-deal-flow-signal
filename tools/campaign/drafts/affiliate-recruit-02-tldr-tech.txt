@@ -1,0 +1,21 @@
+TO: dan@tldr.tech
+FROM: signal@gitdealflow.com
+SUBJECT: Sponsored slot — TLDR Founders / Dev — 20% lifetime affiliate or flat sponsorship
+
+Hi Dan,
+
+I run gitdealflow.com — a methodology-published (SSRN abstract=6606558) signal that ranks startups by GitHub engineering acceleration. Targeting the dev-investor crossover audience: angels who code, scout angels, emerging GPs at sub-$10M funds.
+
+Two ways to work together if it's interesting:
+
+(1) Affiliate program — 20% lifetime. €19.40/mo recurring per Insider Circle subscriber. €399 on every €1,997 Sector Sweep. 60-day cookie. Monthly Stripe payouts. Program: signals.gitdealflow.com/affiliates.
+
+(2) Flat sponsorship — TLDR Founders or TLDR Dev, one-issue placement. Send rate card if affiliate isn't your model.
+
+The angle that lands: a free MCP server (npm @gitdealflow/mcp-signal, A-Tier on Glama, 5 read-only tools) that your dev-leaning readers can install in Claude / Cursor / Windsurf and ask live signal questions. Then a paid Insider tier for the deeper data. Free product is the funnel; never gated.
+
+Happy to write a 100-word ad blurb in your house style if useful. Or send the SSRN paper as the angle.
+
+Best,
+The Data Nerd
+gitdealflow.com

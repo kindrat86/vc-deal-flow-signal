@@ -78,10 +78,10 @@ const MCP_HTML = `<!DOCTYPE html>
 <p style="margin:12px 0 0 0;font-size:14px;color:#64748b;">Each query triggers a live API call &mdash; the data updates weekly.</p>
 </div>
 
-<!-- ============ 5 TOOLS ============ -->
+<!-- ============ 6 TOOLS ============ -->
 <div style="margin:28px 0;">
 <h2 style="margin:0 0 12px 0;font-size:18px;color:#0f172a;">What you just installed</h2>
-<p style="margin:0 0 16px 0;color:#334155;">The MCP server gives Claude 5 tools it can call on your behalf:</p>
+<p style="margin:0 0 16px 0;color:#334155;">The MCP server gives Claude 6 tools it can call on your behalf:</p>
 <table style="width:100%;border-collapse:collapse;font-size:14px;">
 <tr style="border-bottom:1px solid #e2e8f0;">
 <td style="padding:10px 12px;font-weight:600;color:#0f172a;white-space:nowrap;">Trending Startups</td>
@@ -96,12 +96,16 @@ const MCP_HTML = `<!DOCTYPE html>
 <td style="padding:10px 12px;color:#64748b;">Deep-dive signal data for any individual startup</td>
 </tr>
 <tr style="border-bottom:1px solid #e2e8f0;">
-<td style="padding:10px 12px;font-weight:600;color:#0f172a;white-space:nowrap;">Methodology</td>
-<td style="padding:10px 12px;color:#64748b;">How we score and rank engineering acceleration signals</td>
-</tr>
-<tr>
 <td style="padding:10px 12px;font-weight:600;color:#0f172a;white-space:nowrap;">Data Summary</td>
 <td style="padding:10px 12px;color:#64748b;">Aggregate stats and coverage across all tracked startups</td>
+</tr>
+<tr style="border-bottom:1px solid #e2e8f0;">
+<td style="padding:10px 12px;font-weight:600;color:#0f172a;white-space:nowrap;">Scout Receipts</td>
+<td style="padding:10px 12px;color:#64748b;">Compute a Scout Score (0-100) for any GitHub user from their starring history</td>
+</tr>
+<tr>
+<td style="padding:10px 12px;font-weight:600;color:#0f172a;white-space:nowrap;">Methodology</td>
+<td style="padding:10px 12px;color:#64748b;">How we score and rank engineering acceleration signals</td>
 </tr>
 </table>
 </div>

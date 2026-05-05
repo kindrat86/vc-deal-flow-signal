@@ -1,0 +1,14 @@
+Subject: Free dataset for Theory Ventures blog (no strings)
+
+Tom,
+
+I run GitDealFlow – tracking 100+ startup GitHub orgs for engineering-velocity signals that historically precede fundraises by 3-6 weeks.
+
+This week's top mover is airbytehq (Data Infrastructure): +866% commit velocity change, 100 contributors, signal type "Deploy frequency spike". Pulled a cut tailored to your audience – full breakdown + CSV here: https://signals.gitdealflow.com/blog/signal-of-the-week-2026-05-04.
+
+Use it, cite it, ignore it – whichever's useful. Not pitching a sponsorship, just think the SaaS / dev-tool correlation angle is on-theme for tomtunguz.com.
+
+Citation block if useful:
+> GitDealFlow Signal of the Week, Q2 2026 – airbytehq shows +866% commit velocity change over 14 days (https://signals.gitdealflow.com/blog/signal-of-the-week-2026-05-04).
+
+– Data Nerd, gitdealflow.com

@@ -1,0 +1,18 @@
+TO: hello@console.dev
+FROM: signal@gitdealflow.com
+SUBJECT: Devtool review candidate + affiliate program — GitDealFlow MCP (A-Tier on Glama)
+
+Hi David,
+
+Console.dev surfaces devtools your readers haven't seen. Here is one for review:
+
+GitDealFlow MCP server — npm @gitdealflow/mcp-signal. Five read-only tools (get_trending_startups, search_startups_by_sector, get_startup_signal, get_signals_summary, get_methodology). Streamable HTTP at signals.gitdealflow.com/api/mcp/rpc. Works in Claude / Cursor / Windsurf / Mistral Le Chat / any MCP client. A-Tier on Glama, 4.9/5.0 across 6 tool categories.
+
+Methodology is public, SSRN-anchored: ssrn.com/abstract=6606558.
+
+The "why I built it" angle: I'm a developer who angel invests. The data I needed to source pre-deck was sitting in public GitHub commit graphs, but no investor tool packaged it. So the MCP server is what I shipped first; the paid tiers came after.
+
+20% lifetime affiliate is open if useful (€19.40/mo recurring per Insider sub). Program: signals.gitdealflow.com/affiliates. Otherwise the free tier is the headline.
+
+The Data Nerd
+gitdealflow.com

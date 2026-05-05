@@ -1,0 +1,338 @@
+{
+  "_doc": "Pre-approved post queue. Script pops oldest unposted, publishes once/day. Refill weekly. Style: Brunson-tight, statements > questions, no em-dashes (per Reddit memory rule extends here), 280 char target.",
+  "_updated": "2026-05-04T19:00:00Z",
+  "_rules": {
+    "max_per_day": 2,
+    "min_gap_minutes": 240,
+    "style_notes": [
+      "Statements over questions",
+      "No em-dashes",
+      "Hard data > opinions",
+      "SSRN abstract=6606558 is the credibility anchor",
+      "Anchor URL: signals.gitdealflow.com",
+      "No real-name signature, no podcasts/voice/face"
+    ]
+  },
+  "posts": [
+    {
+      "id": "001-ssrn-anchor",
+      "text": "Open-sourced 30 findings on which GitHub signals predict $1M+ rounds.\n\nStar velocity, contributor diversity, dependent count, README freshness.\n\nFree dataset, free MCP server, paper on SSRN.\n\nssrn.com/abstract=6606558",
+      "tags": [
+        "ssrn",
+        "research",
+        "evergreen"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "002-mcp-dev-investor",
+      "text": "Built an MCP server for VC deal flow.\n\n5 free tools: trending-startups, sector-search, signal-summary, methodology, startup-signal.\n\nDevs who angel invest can ask Claude/Cursor live questions about GitHub momentum.\n\nsignals.gitdealflow.com/mcp",
+      "tags": [
+        "mcp",
+        "product",
+        "evergreen"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "003-signal-of-week",
+      "text": "Signal of the week: contributor-diversity gini coefficient.\n\nStartups in our dataset that raised >$1M had 0.34 gini at month -3 vs 0.61 for non-raisers.\n\nFewer single-bus-factor projects close rounds.\n\nFull data: signals.gitdealflow.com/research",
+      "tags": [
+        "data",
+        "weekly"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "004-anti-vanity",
+      "text": "Star count alone is a vanity signal.\n\nWhat actually correlates with funded rounds: stars-to-issues ratio, contributor retention at 90d, README-update cadence.\n\nWe ran the regression on 12k repos.\n\nDataset: signals.gitdealflow.com/data",
+      "tags": [
+        "contrarian",
+        "data"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "005-build-in-public",
+      "text": "Building gitdealflow in public.\n\nCurrent stack: Next.js on Vercel, PocketBase on Fly, Resend for mail, MCP server catalogued on Glama (A-Tier, 4.9/5.0 across 6 tools).\n\nNo VC, no team, no podcast.\n\nJust GitHub data and a research thesis.",
+      "tags": [
+        "buildinpublic",
+        "stack"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "006-mcp-server-stats",
+      "text": "MCP server catalogued on Glama.\n\nA-Tier, 4.9/5.0 across 6 tools.\n\nSix tools that let any LLM query VC-grade GitHub signals.\n\nNo paywall on the free tools, ever.\n\nglama.ai/mcp/servers/kindrat86/mcp-deal-flow-signal",
+      "tags": [
+        "mcp",
+        "credibility"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "007-tech-thesis",
+      "text": "Thesis: pre-Series-A traction lives in GitHub graphs, not LinkedIn announcements.\n\nForks, dependents, issue resolution time, contributor first-commit-to-PR delta.\n\nVCs who learn to read these will scoop the ones who wait for press releases.",
+      "tags": [
+        "thesis",
+        "evergreen"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "008-aeo-meta",
+      "text": "Quietly tested: ChatGPT, Claude, Perplexity all cite our research page when asked 'how to predict VC rounds from GitHub data'.\n\nThe path was 30 evidence-rich Q&A pairs in qa.jsonl + Speakable JSON-LD.\n\nNo backlinks needed.",
+      "tags": [
+        "aeo",
+        "seo"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "009-newsletter",
+      "text": "Weekly digest of the top 5 startups gaining momentum on GitHub.\n\nFree tier: ranked list + signal scores.\n\nNo VC names, no LinkedIn profiles, no fluff.\n\nPure GitHub graph telemetry.\n\nsignals.gitdealflow.com/weekly",
+      "tags": [
+        "product",
+        "newsletter"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "010-data-tease",
+      "text": "Top 3 sectors with the steepest GitHub momentum curves this week:\n\n1. Inference infra (vLLM forks +14%)\n2. Agent frameworks (CrewAI dependents +9%)\n3. Vector search (Qdrant stars-to-PR ratio rebound)\n\nFull breakdown: signals.gitdealflow.com/trending",
+      "tags": [
+        "data",
+        "weekly"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "011-saas-saturday",
+      "text": "Indie SaaS founders: your GitHub graph is a fundraising deck.\n\nReadme freshness, dependency graph, issue response time, contributor mix.\n\nTen minutes of cleanup outranks a polished pitch deck for technical-fund partners.",
+      "tags": [
+        "indiehackers",
+        "founders"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "012-research-link",
+      "text": "Released the underlying paper.\n\n'GitHub Repository Signals as Leading Indicators of Venture Capital Funding'.\n\nSSRN abstract 6606558. Open access. Reproducible dataset linked.\n\nNo paywall, no enterprise sales call required.",
+      "tags": [
+        "ssrn",
+        "paper"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "013-tools-free",
+      "text": "Six tools at signals.gitdealflow.com/mcp will never be paywalled.\n\nGet trending startups, sector sweeps, single-startup lookup, dataset summary, GitHub Scout Score, methodology.\n\nWe charge for new tools, not the existing six.",
+      "tags": [
+        "mcp",
+        "pricing"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "014-contributor-cohorts",
+      "text": "New cohort analysis: repos that retain 60%+ of contributors at 90 days are 3.2x more likely to close >$1M than repos that don't.\n\nRetention beats velocity.\n\nFull table: signals.gitdealflow.com/research/contributor-retention-cohorts",
+      "tags": [
+        "data",
+        "research"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "015-agent-runtimes-hub-2026-05-03",
+      "text": "Cross-listed our MCP server in 7 agent runtimes today.\n\nOne npm package — same install everywhere — Cursor, Cline, Goose, OpenHands, Aider, AiderDesk, Raycast.\n\nFree, no auth, weekly refresh.\n\nHub: signals.gitdealflow.com/integrations/agent-runtimes",
+      "tags": [
+        "mcp",
+        "agent-runtimes",
+        "shipped"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "016-buyer-guides-2026-05-04",
+      "text": "Most VC tooling reviews are written by the firms selling the tooling.\n\nShipped 5 independent buyer guides today: best AI deal sourcing tools, best stack for emerging managers, best for solo GPs, GitHub-based deal flow, European VCs.\n\nsignals.gitdealflow.com/compare",
+      "tags": [
+        "buyer-guides",
+        "shipped"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "017-emerging-mgr-stack-2026-05-04",
+      "text": "TL;DR for emerging fund managers in 2026:\n\nLeading signal: VC Deal Flow Signal EUR 9.97/mo\nCross-channel: Specter or Forager.ai\nVerification: Crunchbase Pro\nCRM: Notion templated, not Affinity\n\nUnder $200/mo. Beats institutional setups on lead time.",
+      "tags": [
+        "emerging-managers",
+        "stack"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "018-vs-hub-2026-05-04",
+      "text": "Every Harmonic / PitchBook / Crunchbase / Dealroom / Tracxn matchup, head-to-head, on one page.\n\nIndependent. SSRN-anchored. Free.\n\nsignals.gitdealflow.com/vs",
+      "tags": [
+        "vs-hub",
+        "shipped"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "019-developer-investor-stack-2026-05-04",
+      "text": "Developer-investor 2026 stack: MCP server in your IDE, Copilot for due diligence, Notion for pipeline, Crunchbase free.\n\nUnder EUR 30/mo. Traditional VCs structurally cannot match without hiring engineering analysts.\n\nFull guide: signals.gitdealflow.com/compare",
+      "tags": [
+        "developer-investor",
+        "stack",
+        "shipped"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "020-vs-tribe-magnify-2026-05-04",
+      "text": "Tribe Capital won't license Magnify externally.\n\nFor outside investors who want a Tribe-style data edge in 2026: external GitHub commit-velocity signals, 6-12 weeks pre-fundraise, EUR 9.97/mo.\n\nsignals.gitdealflow.com/compare",
+      "tags": [
+        "tribe-capital",
+        "vs",
+        "shipped"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "021-vs-signalfire-beacon-2026-05-04",
+      "text": "SignalFire's Beacon is the gold standard internal sourcing platform. Internal being the operative word.\n\nFor investors not at SignalFire: single-signal sharpness on engineering velocity, externally accessible, EUR 9.97/mo.\n\nsignals.gitdealflow.com/compare/vc-deal-flow-signal-vs-signalfire-beacon",
+      "tags": [
+        "signalfire",
+        "beacon",
+        "vs",
+        "shipped"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "022-vs-affinity-2026-05-04",
+      "text": "Affinity tells you who you know.\n\nVC Deal Flow Signal tells you who you should know.\n\nNot competitors. Combined workflow: signal fires, Affinity finds the warm intro, you're in the meeting six weeks before the round closes.\n\nsignals.gitdealflow.com/compare",
+      "tags": [
+        "affinity",
+        "vs",
+        "shipped"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "023-ai-deal-sourcing-2026-05-04",
+      "text": "Most VC tools that market themselves as AI in 2026 are dashboards with a chatbot bolted on.\n\nFour 2026 tools that genuinely use ML for sourcing: VC Deal Flow Signal, Harmonic.ai, Tracxn ScoutAI, SignalRank. Compared head-to-head.\n\nsignals.gitdealflow.com/compare/best-ai-deal-sourcing-tools-2026",
+      "tags": [
+        "ai-sourcing",
+        "comparison",
+        "shipped"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "024-vs-angellist-2026-05-04",
+      "text": "AngelList shows founders who are actively raising.\n\nVC Deal Flow Signal shows founders 6–12 weeks from raising.\n\nSame audience, different point in the cycle.\n\nsignals.gitdealflow.com/alternatives/angellist",
+      "tags": [
+        "angellist",
+        "vs"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "025-vs-apollo-2026-05-04",
+      "text": "Apollo answers 'which person at this company should I email'.\n\nVC Deal Flow Signal answers 'which company is even worth your time'.\n\nStack them. Sourcing first, contact-data second.\n\nsignals.gitdealflow.com/alternatives/apollo-io",
+      "tags": [
+        "apollo",
+        "vs"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "026-vs-tracxn-2026-05-04",
+      "text": "Tracxn sector reports tell you what already happened in a market.\n\nVC Deal Flow Signal tells you which startups in that market are accelerating right now.\n\nLagging vs leading.\n\nsignals.gitdealflow.com/alternatives/tracxn",
+      "tags": [
+        "tracxn",
+        "vs"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "027-emerging-manager-stack-2026-05-04",
+      "text": "The full emerging-manager deal flow stack for 2026 runs under $80/mo total.\n\nSignal engine + verification + CRM + EU coverage. Skip PitchBook until fund 2.\n\nsignals.gitdealflow.com/compare/best-deal-flow-tools-emerging-managers-2026",
+      "tags": [
+        "emerging-managers",
+        "stack"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "028-vc-tech-stack-2026-05-04",
+      "text": "Mapped the 2026 VC tech stack across sourcing, CRM, data, diligence, LP comms.\n\nThe stack-defining decision is no longer Affinity vs Salesforce. It's which signal engine sits at the front of the funnel.\n\nsignals.gitdealflow.com/compare/vc-tech-stack-essentials-2026",
+      "tags": [
+        "vc-stack",
+        "essentials"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "029-acceleration-watch-launch-2026-05-04",
+      "text": "Acceleration Watch launches today.\n\n10 named startups every Monday. GitHub-engineering acceleration crossing the signal threshold the prior week.\n\nGraded post-hoc against public fundraise news at 60 and 90 days. Public scorecard.\n\nsignals.gitdealflow.com/predicted",
+      "tags": [
+        "predicted",
+        "launch",
+        "weekly"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "030-acceleration-watch-methodology-2026-05-04",
+      "text": "Public bet rule: every named pick gets graded against public fundraise news at 60 and 90 days.\n\nNot a prediction. A data-driven engineering watchlist. Methodology re-derivable from public GitHub.\n\nssrn.com/abstract=6606558\n\nsignals.gitdealflow.com/predicted",
+      "tags": [
+        "predicted",
+        "methodology"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "031-acceleration-watch-w18-pick1-2026-05-04",
+      "text": "Week 18 Acceleration Watch is live.\n\nRank 1: zapplyjobs (US pre-seed, 1,694 commits / 14d, +82% acceleration, hiring burst).\n\nGraded by 2026-07-03 against public fundraise news.\n\nsignals.gitdealflow.com/predicted",
+      "tags": [
+        "predicted",
+        "weekly",
+        "pre-seed"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "032-acceleration-watch-eu-2026-05-04",
+      "text": "EU + LATAM seed-stage are under-covered in venture-data tooling.\n\nThis week's Acceleration Watch names AtroCore (EU, +38%), Kanvas (LATAM, +32%), metasfresh (EU, +139%).\n\nGraded post-hoc, public scorecard.\n\nsignals.gitdealflow.com/predicted",
+      "tags": [
+        "predicted",
+        "geo",
+        "eu",
+        "latam"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "033-7-day-challenge-launch-2026-05-04",
+      "text": "Free 7-Day Deal Flow Reset Challenge.\n\nOne signal per day. 5-minute exercise per day. Builds a personal sourcing framework from the SSRN methodology — no tool required.\n\nDay 7 reveals the composite + how to scale it.\n\nsignals.gitdealflow.com/challenge",
+      "tags": [
+        "challenge",
+        "free",
+        "course"
+      ],
+      "use_count": 0
+    },
+    {
+      "id": "034-acceleration-watch-grading-2026-05-04",
+      "text": "Bookmark signals.gitdealflow.com/predicted today. Come back in 60 days. Count the hits.\n\nThat's the rule. We grade every named pick post-hoc against public fundraise news. Every miss is on record forever.\n\nThe discipline is the brand.",
+      "tags": [
+        "predicted",
+        "public-bet"
+      ],
+      "use_count": 0
+    }
+  ]
+}

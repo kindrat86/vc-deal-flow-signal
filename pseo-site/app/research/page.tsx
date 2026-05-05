@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { FINDINGS, type Finding } from "@/content/research-findings";
+import { getHreflangLanguages } from "@/lib/hreflang";
+import { HreflangLinks } from "@/components/HreflangLinks";
 
 const SITE = "https://signals.gitdealflow.com";
 const SSRN_URL = "https://ssrn.com/abstract=6606558";
@@ -12,6 +14,7 @@ export const metadata: Metadata = {
     "GitHub Engineering Velocity for Venture-Backed Startups — 30 Findings (SSRN-Indexed)",
   description:
     "Public research panel by VC Deal Flow Signal (GitDealFlow): 219 startup-period observations across 55 venture-backed startups in 20 sectors using GitHub commit-velocity data — code-side momentum, distinct from startup accelerator programs. Median 14-day commit velocity 71. Framework migration dominates (75%). Free dataset, CC BY 4.0.",
+  // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
   alternates: { canonical: "/research" },
   openGraph: {
     title: PAPER_TITLE,
@@ -88,7 +91,16 @@ export default function ResearchPage() {
     inLanguage: "en",
     license: "https://creativecommons.org/licenses/by/4.0/",
     isAccessibleForFree: true,
-    sameAs: SSRN_URL,
+    sameAs: [
+      SSRN_URL,
+      "https://doi.org/10.2139/ssrn.6606558",
+      "https://openalex.org/works/W7154916891",
+      "https://www.semanticscholar.org/paper/4dd7b11e79757f68e0c4107252514cbfdfbb0462",
+      "https://www.semanticscholar.org/author/The-Data-Nerd/2430837379",
+      "https://www.connectedpapers.com/main/4dd7b11e79757f68e0c4107252514cbfdfbb0462",
+      "https://api.crossref.org/works/10.2139/ssrn.6606558",
+      "https://huggingface.co/datasets/the-data-nerd/vc-deal-flow-signal",
+    ],
     citation: SSRN_URL,
     isPartOf: {
       "@type": "Periodical",
@@ -108,11 +120,49 @@ export default function ResearchPage() {
     })),
   };
 
+  const itemListJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "@id": `${SITE}/research#findings`,
+    name: "30 SSRN-indexed research findings — GitHub engineering velocity panel",
+    description:
+      "Per-finding citation-ready pages derived from the SSRN methodology paper. Group A: numerical findings; Group B: methodology/structural; Group C: open questions.",
+    numberOfItems: FINDINGS.length,
+    itemListOrder: "https://schema.org/ItemListOrderAscending",
+    itemListElement: FINDINGS.map((f, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      url: `${SITE}/research/${f.slug}`,
+      name: f.title,
+      description: f.claim,
+    })),
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE },
+      { "@type": "ListItem", position: 2, name: "Research", item: `${SITE}/research` },
+    ],
+  };
+
   const speakableJsonLd = {
     "@context": "https://schema.org",
-    "@type": "WebPage",
+    // CollectionPage signals "this is an index of N items" — strictly more
+    // informative than WebPage for a research index, and renders as a list
+    // result in Google + Perplexity.
+    "@type": "CollectionPage",
     name: PAPER_TITLE,
     url: "https://signals.gitdealflow.com/research",
+    description:
+      "Index of every quantitative finding from the SSRN-indexed methodology paper, split into individually citable pages.",
+    inLanguage: "en-US",
+    isPartOf: { "@id": "https://signals.gitdealflow.com/#website" },
+    primaryImageOfPage: {
+      "@type": "ImageObject",
+      url: "https://signals.gitdealflow.com/opengraph-image",
+    },
     speakable: {
       "@type": "SpeakableSpecification",
       cssSelector: ["[data-speakable]", "h1", "h2"],
@@ -125,6 +175,9 @@ export default function ResearchPage() {
       "https://ssrn.com/abstract=6606558",
       "https://doi.org/10.5281/zenodo.19650920",
       "https://github.com/kindrat86/gitdealflow-signal-classifier",
+      "https://www.semanticscholar.org/paper/4dd7b11e79757f68e0c4107252514cbfdfbb0462",
+      "https://www.connectedpapers.com/main/4dd7b11e79757f68e0c4107252514cbfdfbb0462",
+      "https://huggingface.co/datasets/the-data-nerd/vc-deal-flow-signal",
     ],
     significantLink: [
       "https://signals.gitdealflow.com/answers/github-metrics-that-predict-startup-fundraising",
@@ -143,6 +196,9 @@ export default function ResearchPage() {
     sameAs: [
       "https://ssrn.com/abstract=6606558",
       "https://github.com/kindrat86/gitdealflow-signal-classifier",
+      "https://www.semanticscholar.org/paper/4dd7b11e79757f68e0c4107252514cbfdfbb0462",
+      "https://www.connectedpapers.com/main/4dd7b11e79757f68e0c4107252514cbfdfbb0462",
+      "https://huggingface.co/datasets/the-data-nerd/vc-deal-flow-signal",
     ],
     identifier: "doi:10.5281/zenodo.19650920",
     license: "https://creativecommons.org/licenses/by/4.0/",
@@ -193,6 +249,10 @@ export default function ResearchPage() {
 
   return (
     <>
+      <HreflangLinks
+        canonical={`${SITE}/research`}
+        languages={getHreflangLanguages("/research")}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
@@ -208,6 +268,14 @@ export default function ResearchPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(datasetJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <script
         type="application/ld+json"
@@ -278,6 +346,30 @@ export default function ResearchPage() {
             Below: 30 atomic findings from the paper, each cited to its
             section, each falsifiable against the public dataset.
           </p>
+          <div
+            data-speakable
+            className="mb-6 max-w-3xl rounded-lg border border-emerald-500/30 bg-emerald-500/5 p-4 text-sm sm:text-base"
+          >
+            <p className="text-emerald-300 font-semibold mb-1">
+              Citation-ready key finding
+            </p>
+            <p className="text-gray-100 leading-relaxed">
+              Across the 219-observation panel, sustained engineering
+              acceleration on GitHub — measured as commit-velocity change in
+              the top quintile over a rolling 14-day window — preceded
+              announced venture-fundraise events by a median of{" "}
+              <strong>three to six weeks</strong>. Source:{" "}
+              <a
+                href={SSRN_URL}
+                rel="noopener"
+                className="text-sky-300 underline decoration-dotted"
+              >
+                SSRN abstract&nbsp;6606558
+              </a>
+              . Cite as: <em>VC Deal Flow Signal (2026)</em> ·{" "}
+              <em>doi.org/10.2139/ssrn.6606558</em>.
+            </p>
+          </div>
           <div className="flex flex-wrap gap-3">
             <a
               href={SSRN_URL}

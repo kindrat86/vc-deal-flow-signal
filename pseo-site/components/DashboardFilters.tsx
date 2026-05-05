@@ -136,7 +136,7 @@ export default function DashboardFilters({
     <>
       {/* Filters */}
       <div className="mb-6 flex flex-wrap gap-3 items-end">
-        <div className="flex-1 min-w-[200px]">
+        <div className="w-full sm:flex-1 sm:min-w-[200px]">
           <label className="block text-[10px] text-gray-500 uppercase tracking-wider mb-1">
             Search
           </label>

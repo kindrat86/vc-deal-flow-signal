@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { getHreflangLanguages } from "@/lib/hreflang";
+import { HreflangLinks } from "@/components/HreflangLinks";
 
 export const metadata: Metadata = {
   title: "Glossary — VC Deal Flow Signal Terms & Definitions",
   description:
     "Definitions of key terms used in startup deal flow signal analysis: commit velocity, engineering acceleration, contributor growth, signal types, and more. A reference for investors using GitHub data for deal sourcing.",
-  alternates: {
-    canonical: "/glossary",
-  },
+  // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
+  alternates: { canonical: "/glossary" },
 };
 
 interface Term {
@@ -89,6 +91,42 @@ const terms: Term[] = [
     definition:
       "An open protocol that allows websites to notify search engines (Bing, Yandex, Seznam, Naver, and others) about new or updated content in real time. Instead of waiting for search engine crawlers to discover changes, IndexNow pushes URLs directly to participating engines. VC Deal Flow Signal uses IndexNow to ensure new sector rankings and blog posts are indexed within hours of publication.",
   },
+  {
+    term: "AEO (Answer Engine Optimization)",
+    id: "aeo",
+    definition:
+      "Structuring content so that answer engines — Google's People-Also-Ask, Reddit pull-quotes, Quora top answers, ChatGPT search results, Perplexity citations — can extract a complete, self-contained answer in 40–80 words. AEO emphasises FAQPage and QAPage schema, atomic question-answer blocks, and explicit source attribution. VC Deal Flow Signal publishes a 200+ Q&A dataset at /qa.jsonl as an AEO surface for both human readers and retrieval pipelines.",
+  },
+  {
+    term: "AIO (AI Overview Optimization)",
+    id: "aio",
+    definition:
+      "The subset of GEO/AEO targeted specifically at Google's AI Overviews (formerly SGE). AIO combines clear topic sentences, FAQPage schema, Speakable selectors, HowTo structure, DefinedTerm sets, and quotable single-sentence facts. Google's AI Overview model preferentially extracts text wrapped in Speakable selectors and content surrounded by topical entity schema. VC Deal Flow Signal exposes /llms.txt, /llms-full.txt, /qa.jsonl, /md/* and a Speakable selector across pillar pages for this purpose.",
+  },
+  {
+    term: "Scout Score",
+    id: "scout-score",
+    definition:
+      "A 0–100 score computed from a GitHub user's public starring history, measuring how many validated unicorn outcomes the user starred before the funding, acquisition, or $1B-valuation event. The Scout Score is backwards-looking proof of taste — it says nothing about future picks until paired with the forward-looking Scout Game (see /predict). Free, no signup, instant. Available as a shields.io-style badge for any GitHub README.",
+  },
+  {
+    term: "MCP (Model Context Protocol)",
+    id: "mcp",
+    definition:
+      "An open standard from Anthropic for exposing tools and data to large-language-model hosts (Claude Desktop, Cursor, agentic frameworks). VC Deal Flow Signal ships a free MCP server — `npx @gitdealflow/mcp-signal` — that lets any MCP-compatible host call six read-only tools: get_trending_startups, get_signals_summary, get_methodology, get_startup_signal, search_startups_by_sector, get_methodology. The same surface is mirrored at /api/mcp/rpc (Streamable HTTP).",
+  },
+  {
+    term: "A2A (Agent-to-Agent Protocol)",
+    id: "a2a",
+    definition:
+      "Google's Agent-to-Agent protocol — a JSON-RPC envelope plus an /.well-known/agent-card.json descriptor that lets autonomous agents discover and call each other's capabilities. VC Deal Flow Signal publishes an AgentCard at /.well-known/agent-card.json and a JSON-RPC stub at /api/a2a so any A2A-compatible orchestrator can route deal-flow queries to the panel without bespoke integration.",
+  },
+  {
+    term: "llms.txt",
+    id: "llms-txt",
+    definition:
+      "A proposed standard for guiding LLMs and AI assistants to a site's most useful content surfaces in a single deterministic file. Similar in spirit to robots.txt or sitemap.xml but optimised for retrieval-augmented generation. VC Deal Flow Signal publishes /llms.txt (~800 lines, link-only) and /llms-full.txt (full content) plus per-page /md/* mirrors, so any LLM can resolve canonical context in one or two fetches.",
+  },
 ];
 
 export default function GlossaryPage() {
@@ -125,15 +163,109 @@ export default function GlossaryPage() {
           },
         ],
       },
+      {
+        "@type": "FAQPage",
+        "@id": "https://signals.gitdealflow.com/glossary#faq",
+        url: "https://signals.gitdealflow.com/glossary",
+        inLanguage: "en-US",
+        mainEntity: terms.map((t) => ({
+          "@type": "Question",
+          name: `What is ${t.term}?`,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: t.definition,
+            url: `https://signals.gitdealflow.com/glossary#${t.id}`,
+          },
+        })),
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://signals.gitdealflow.com/glossary#webpage",
+        url: "https://signals.gitdealflow.com/glossary",
+        name: "Glossary — VC Deal Flow Signal Terms & Definitions",
+        description:
+          "Definitions of key terms used in startup deal flow signal analysis: commit velocity, engineering acceleration, contributor growth, Scout Score, MCP, A2A, llms.txt, AEO, AIO and more.",
+        inLanguage: "en-US",
+        isPartOf: { "@id": "https://signals.gitdealflow.com/#website" },
+        speakable: {
+          "@type": "SpeakableSpecification",
+          cssSelector: ["h1", "h2", ".speakable", "[data-agent-summary]"],
+        },
+        relatedLink: [
+          "https://signals.gitdealflow.com/methodology",
+          "https://signals.gitdealflow.com/faq",
+          "https://signals.gitdealflow.com/research",
+          "https://signals.gitdealflow.com/citations",
+          "https://signals.gitdealflow.com/answers",
+          "https://signals.gitdealflow.com/data-sources",
+        ],
+        significantLink: [
+          "https://signals.gitdealflow.com/qa.jsonl",
+          "https://signals.gitdealflow.com/llms-full.txt",
+          "https://ssrn.com/abstract=6606558",
+        ],
+      },
+      // DefinedTermSet — gives glossary terms a controlled-vocabulary
+      // identity that retrieval pipelines can consume independently of the
+      // FAQPage. Cross-links matching terms to /signals/[type] so the
+      // glossary acts as a hub into the formal signal definitions.
+      {
+        "@type": "DefinedTermSet",
+        "@id": "https://signals.gitdealflow.com/glossary#vocabulary",
+        name: "VC Deal Flow Signal — controlled vocabulary",
+        description:
+          "Canonical definitions of every term used in VC Deal Flow Signal research, methodology, and dashboard. Each term has a stable @id anchor and, where applicable, a cross-link to its formal signal definition.",
+        url: "https://signals.gitdealflow.com/glossary",
+        inLanguage: "en-US",
+        publisher: { "@id": "https://gitdealflow.com/#organization" },
+        license: "https://creativecommons.org/licenses/by/4.0/",
+        hasDefinedTerm: terms.map((t) => {
+          // Map glossary anchors to their formal /signals/[type] pages where
+          // a primitive exists. Only terms that map to a signal primitive
+          // get the cross-link; the rest are pure glossary entries.
+          const signalSlugMap: Record<string, string> = {
+            "commit-velocity": "commit-velocity",
+            "commit-velocity-change": "commit-velocity-change",
+            "engineering-acceleration": "commit-velocity-change",
+            "contributor-growth": "contributor-growth",
+            "engineering-hiring-burst": "engineering-hiring-burst",
+            "framework-migration": "framework-migration",
+            "infrastructure-buildout": "infrastructure-buildout",
+          };
+          const signalSlug = signalSlugMap[t.id];
+          return {
+            "@type": "DefinedTerm",
+            "@id": `https://signals.gitdealflow.com/glossary#${t.id}`,
+            name: t.term,
+            url: `https://signals.gitdealflow.com/glossary#${t.id}`,
+            description: t.definition,
+            termCode: t.id,
+            inDefinedTermSet: {
+              "@id":
+                "https://signals.gitdealflow.com/glossary#vocabulary",
+            },
+            ...(signalSlug
+              ? {
+                  sameAs: `https://signals.gitdealflow.com/signals/define/${signalSlug}`,
+                }
+              : {}),
+          };
+        }),
+      },
     ],
   };
 
   return (
     <>
+      <HreflangLinks
+        canonical="https://signals.gitdealflow.com/glossary"
+        languages={getHreflangLanguages("/glossary")}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <AgentMirrorLinks path="/glossary" />
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <nav className="mb-6 text-sm text-gray-500" aria-label="Breadcrumb">
@@ -173,13 +305,25 @@ export default function GlossaryPage() {
               key={t.id}
               id={t.id}
               className="rounded-lg border border-slate-800 bg-slate-900 p-6 scroll-mt-20"
+              itemScope
+              itemType="https://schema.org/DefinedTerm"
             >
-              <h2 className="text-gray-100 font-semibold text-lg mb-3">
+              <h2
+                className="speakable text-gray-100 font-semibold text-lg mb-3"
+                itemProp="name"
+              >
                 What is {t.term}?
               </h2>
-              <p className="text-gray-400 text-sm leading-relaxed">
+              <p
+                className="text-gray-400 text-sm leading-relaxed"
+                itemProp="description"
+              >
                 {t.definition}
               </p>
+              <link
+                itemProp="url"
+                href={`https://signals.gitdealflow.com/glossary#${t.id}`}
+              />
             </div>
           ))}
         </div>

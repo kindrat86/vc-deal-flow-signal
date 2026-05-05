@@ -1,0 +1,309 @@
+# APIs.guru submission — paste into a PR to github.com/APIs-guru/openapi-directory
+#
+# APIs.guru is the canonical open directory of OpenAPI specs (10k+ APIs).
+# It's mirrored into many AI agent training corpora and is read by API-discovery
+# agents. The submission process is a GitHub PR adding a metadata file under
+# `APIs/{provider}/{service}/{version}/`.
+#
+# Workflow (manual, requires GitHub auth):
+#   1. Fork github.com/APIs-guru/openapi-directory
+#   2. Create the directory: APIs/gitdealflow.com/2026.04.26/
+#   3. Drop this file as `openapi.yaml` (renamed)
+#   4. Validate locally with `npx @apidevtools/swagger-cli validate openapi.yaml`
+#   5. Open a PR titled "Add gitdealflow.com signals API"
+#
+# The actual OpenAPI spec is served live at https://signals.gitdealflow.com/api/openapi.json.
+# This file is the APIs.guru *metadata wrapper* — it links to the live spec
+# and adds APIs.guru-specific fields (info.x-providerName, info.x-apisguru-categories, etc.).
+
+openapi: "3.1.0"
+info:
+  title: VC Deal Flow Signal Public API
+  description: |
+    GitHub-derived engineering acceleration signals across ~400 venture-backed
+    startup organizations in 20 sectors. Free, no-auth public API. Same dataset
+    is also exposed via MCP server, A2A JSON-RPC, NLWeb, function-calling
+    tools (OpenAI / Anthropic / Gemini formats), embeddable SVG badges,
+    Hugging Face Datasets-compatible JSONL, and RFC 9727 api-catalog Linkset.
+
+    Citation: VC Deal Flow Signal (signals.gitdealflow.com), Q2 2026 data.
+    SSRN preprint: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558
+
+    Full agent surface index at https://signals.gitdealflow.com/agents
+    Machine-readable index at https://signals.gitdealflow.com/api/agents.json
+  version: "2026.04.26"
+  contact:
+    name: VC Deal Flow Signal
+    email: signal@gitdealflow.com
+    url: https://signals.gitdealflow.com
+  license:
+    name: CC-BY 4.0
+    url: https://creativecommons.org/licenses/by/4.0/
+  termsOfService: https://signals.gitdealflow.com/ai.txt
+  x-providerName: gitdealflow.com
+  x-apisguru-categories:
+    - financial
+    - open_data
+    - developer_tools
+  x-logo:
+    url: https://signals.gitdealflow.com/icon
+    backgroundColor: "#0F172A"
+  x-origin:
+    - format: openapi
+      url: https://signals.gitdealflow.com/api/openapi.json
+      version: "3.1"
+  x-tags:
+    - venture-capital
+    - startup-data
+    - github
+    - alternative-data
+    - engineering-velocity
+    - mcp-server
+    - rag-corpus
+servers:
+  - url: https://signals.gitdealflow.com
+    description: Production
+externalDocs:
+  description: Full agent surface reference (AGENTS.md)
+  url: https://signals.gitdealflow.com/AGENTS.md
+paths:
+  /api/signals.json:
+    get:
+      summary: Full panel — all sectors, all periods, all startups
+      operationId: getSignalsJson
+      responses:
+        "200":
+          description: JSON panel
+          content:
+            application/json: {}
+  /api/signals.csv:
+    get:
+      summary: Full panel as CSV
+      operationId: getSignalsCsv
+      responses:
+        "200":
+          description: CSV panel
+          content:
+            text/csv: {}
+  /api/dataset.jsonl:
+    get:
+      summary: Full panel as NDJSON (Hugging Face Datasets / RAG-compatible)
+      operationId: getDatasetJsonl
+      responses:
+        "200":
+          description: Newline-delimited JSON, leading metadata line + 1 startup per line
+          content:
+            application/x-ndjson: {}
+  /api/signal:
+    get:
+      summary: Single startup lookup by name
+      operationId: getSignalByName
+      parameters:
+        - in: query
+          name: name
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Single startup signal
+          content:
+            application/json: {}
+  /api/receipts/{username}:
+    get:
+      summary: Scout Score (0-100) for any GitHub user
+      operationId: getReceiptsForUser
+      parameters:
+        - in: path
+          name: username
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Scout Score result
+          content:
+            application/json: {}
+  /api/agent/tools:
+    get:
+      summary: Function-calling tool definitions in OpenAI / Anthropic / Gemini formats
+      operationId: getAgentTools
+      parameters:
+        - in: query
+          name: format
+          required: false
+          schema:
+            type: string
+            enum: [openai, anthropic, gemini]
+            default: openai
+      responses:
+        "200":
+          description: Tool definitions
+          content:
+            application/json: {}
+  /api/agent/call:
+    post:
+      summary: Invoke any of the six MCP tools without an MCP client
+      operationId: callAgentTool
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [tool]
+              properties:
+                tool:
+                  type: string
+                  enum:
+                    - get_trending_startups
+                    - search_startups_by_sector
+                    - get_startup_signal
+                    - get_signals_summary
+                    - get_scout_receipts
+                    - get_methodology
+                arguments:
+                  type: object
+      responses:
+        "200":
+          description: Tool result
+          content:
+            application/json: {}
+  /api/mcp/rpc:
+    post:
+      summary: Streamable HTTP MCP transport
+      operationId: invokeMcpRpc
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        "200":
+          description: JSON-RPC 2.0 response
+          content:
+            application/json: {}
+  /api/a2a:
+    post:
+      summary: Google A2A JSON-RPC 2.0 endpoint
+      operationId: invokeA2a
+      responses:
+        "200":
+          description: JSON-RPC 2.0 response
+          content:
+            application/json: {}
+  /api/nlweb:
+    post:
+      summary: Microsoft NLWeb conversational endpoint
+      operationId: invokeNlweb
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [query]
+              properties:
+                query:
+                  type: string
+      responses:
+        "200":
+          description: schema.org JSON-LD
+          content:
+            application/ld+json: {}
+  /api/agents.json:
+    get:
+      summary: Machine-readable index of every agent surface
+      operationId: getAgentsIndex
+      responses:
+        "200":
+          description: Surfaces index
+          content:
+            application/json: {}
+  /api/answers.json:
+    get:
+      summary: Full-content corpus of citation-ready answer pages
+      operationId: getAnswersCorpus
+      responses:
+        "200":
+          description: Answer corpus
+          content:
+            application/json: {}
+  /api/agents/install/{host}:
+    get:
+      summary: Per-host install configuration for 16 agent runtimes
+      operationId: getAgentInstallConfig
+      parameters:
+        - in: path
+          name: host
+          required: true
+          schema:
+            type: string
+            enum:
+              - claude-desktop
+              - claude-code
+              - cursor
+              - windsurf
+              - zed
+              - cline
+              - continue
+              - aider
+              - openai-agents-sdk
+              - anthropic-sdk
+              - google-genai-sdk
+              - langchain
+              - llamaindex
+              - huggingface-datasets
+              - postman
+              - chatgpt-custom-gpt
+              - index
+      responses:
+        "200":
+          description: Install config (or list of hosts when host=index)
+          content:
+            application/json: {}
+  /api/badge/scout/{username}/svg:
+    get:
+      summary: Scout Score SVG badge for a GitHub user
+      operationId: getScoutBadge
+      parameters:
+        - in: path
+          name: username
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Shields-style SVG badge
+          content:
+            image/svg+xml: {}
+  /api/badge/momentum/{org}/{repo}/svg:
+    get:
+      summary: Commit Momentum SVG badge for a tracked startup repo
+      operationId: getMomentumBadge
+      parameters:
+        - in: path
+          name: org
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: repo
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Shields-style SVG badge
+          content:
+            image/svg+xml: {}
+  /api/openapi.json:
+    get:
+      summary: Live OpenAPI 3.1 spec for the entire surface (canonical)
+      operationId: getOpenApiSpec
+      responses:
+        "200":
+          description: OpenAPI 3.1 specification
+          content:
+            application/json: {}

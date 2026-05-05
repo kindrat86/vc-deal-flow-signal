@@ -146,6 +146,90 @@ export const competitors: Record<string, CompetitorInfo> = {
       "Data freshness varies by sector depth",
     ],
   },
+  openvc: {
+    key: "openvc",
+    name: "OpenVC",
+    url: "https://www.openvc.app",
+    tagline: "Free founder-side investor directory for outbound fundraising.",
+    signalType: "Curated investor directory (founder-facing)",
+    leadTime: "N/A — directory, not a signal",
+    pricing: "Free core, tiered outbound CRM",
+    coverage: "Thousands of VCs, angels, and funds globally",
+    freeTier: "Yes — most founder workflows free",
+    strengths: [
+      "Most accessible free investor directory in the category",
+      "Strong founder-side workflow tooling (intros, pitch templates)",
+      "Indexed by stage, sector, and geography for targeted outreach",
+    ],
+    weaknesses: [
+      "Founder-side product — not a deal-sourcing tool for investors",
+      "Static directory, not a leading or live signal",
+      "Outbound CRM features are paid above the free core",
+    ],
+  },
+  affinity: {
+    key: "affinity",
+    name: "Affinity",
+    url: "https://affinity.co",
+    tagline: "Relationship-intelligence CRM for VC and PE firms.",
+    signalType: "Internal network and email graph",
+    leadTime: "N/A (relationship-driven)",
+    pricing: "Enterprise per-seat",
+    coverage: "Your firm's communication graph",
+    freeTier: "None",
+    strengths: [
+      "Industry-standard pipeline CRM for VC and PE firms",
+      "Auto-builds relationship graph from inbox and calendar",
+      "Strong reporting for partner meetings and LP updates",
+    ],
+    weaknesses: [
+      "Optimises existing network — does not source net-new deals",
+      "Insights are only as good as your inbound flow",
+      "Limited value for solo angels and emerging managers without an existing network",
+    ],
+  },
+  specter: {
+    key: "specter",
+    name: "Specter",
+    url: "https://tryspecter.com",
+    tagline: "Growth-signal database with web traffic, hiring and product data.",
+    signalType: "Growth metrics across web, hiring, and product",
+    leadTime: "2-6 weeks pre-fundraise",
+    pricing: "Tiered (mid-market)",
+    coverage: "Cross-sector, English-speaking markets",
+    freeTier: "Limited dataset access",
+    strengths: [
+      "Cross-channel growth signals beyond GitHub",
+      "Approachable pricing for emerging fund managers",
+      "Strong coverage of consumer and SaaS plays",
+    ],
+    weaknesses: [
+      "Coverage of deep-tech and infrastructure startups is shallow",
+      "Lead time shorter than engineering-signal approaches",
+      "Mid-market pricing still excludes solo angels",
+    ],
+  },
+  signalrank: {
+    key: "signalrank",
+    name: "SignalRank",
+    url: "https://signalrank.ai",
+    tagline: "Series-B prediction model for late-stage signal quality.",
+    signalType: "Predictive Series-B graduation score",
+    leadTime: "Post-Series A (forward-looking)",
+    pricing: "Index-fund product, not direct subscription",
+    coverage: "Series A-B graduations globally",
+    freeTier: "Public methodology",
+    strengths: [
+      "Strongest published signal for Series-B graduation odds",
+      "Useful for late-stage thesis validation",
+      "Data-driven approach with peer-reviewed methodology",
+    ],
+    weaknesses: [
+      "Useless for pre-seed or seed sourcing — different stage",
+      "Not a deal-sourcing tool; index-fund product instead",
+      "No individual-investor SaaS access",
+    ],
+  },
 };
 
 /**
@@ -257,6 +341,111 @@ export const competitorVsPairs: CompetitorVs[] = [
     b: "tracxn",
     verdict:
       "PitchBook is the LP-GP and fund-performance gold standard globally; Tracxn is the sector-map specialist with strong Asian coverage. Different use cases, different buyers. Most institutional firms that can afford PitchBook use it as the reference; Tracxn serves analyst teams who need 2,000+ sector maps and Asian startup depth.",
+  },
+  {
+    slug: "openvc-vs-harmonic-ai",
+    a: "openvc",
+    b: "harmonic-ai",
+    verdict:
+      "OpenVC and Harmonic.ai sit on opposite sides of the fundraising market. OpenVC is a free founder-side investor directory used to find VCs to pitch; Harmonic.ai is an enterprise investor-side AI platform used to find startups to back. Almost no overlap in users — founders pick OpenVC, institutional VCs pick Harmonic. They're not competing products despite both being in the VC tools category.",
+  },
+  {
+    slug: "openvc-vs-dealroom",
+    a: "openvc",
+    b: "dealroom",
+    verdict:
+      "OpenVC is founder-side (a free directory of investors); Dealroom is investor-side (a curated startup and funding database). Different products for different users. Founders raising rounds use OpenVC to map the investor universe; investors sourcing deals use Dealroom for startup-side data. Not direct alternatives despite both being free-tier-friendly tools in the broader VC market.",
+  },
+  {
+    slug: "openvc-vs-crunchbase",
+    a: "openvc",
+    b: "crunchbase",
+    verdict:
+      "OpenVC is a free founder-side directory of investors; Crunchbase is the default investor-side startup database. They mirror opposite sides of the same market and almost never compete for the same user. Founders raising use OpenVC; investors and analysts use Crunchbase. Most fundraising-active companies and active investors end up using both — OpenVC for outbound mapping, Crunchbase for funding and team verification.",
+  },
+  {
+    slug: "openvc-vs-pitchbook",
+    a: "openvc",
+    b: "pitchbook",
+    verdict:
+      "OpenVC is free and founder-facing; PitchBook is enterprise-priced and institution-facing. They serve completely different users at completely different price points and use cases. OpenVC helps a founder identify VCs to pitch; PitchBook gives an LP or banker a comprehensive private-markets reference dataset. Not alternatives — different products in different categories.",
+  },
+  {
+    slug: "openvc-vs-forager-ai",
+    a: "openvc",
+    b: "forager-ai",
+    verdict:
+      "OpenVC is a free founder-side investor directory; Forager.ai is an investor-side NLP web-signal sourcing engine. They sit on opposite sides of the fundraising market with no overlap in users. Founders use OpenVC to map outbound targets; investors use Forager.ai to surface emerging startups via web/social signals. Not competing products.",
+  },
+  {
+    slug: "openvc-vs-tracxn",
+    a: "openvc",
+    b: "tracxn",
+    verdict:
+      "OpenVC is a free founder-side investor directory; Tracxn is an investor-side sector-mapped startup database with strong Asian coverage. Different products, different users. Founders raising rounds use OpenVC; analyst teams researching sectors or markets use Tracxn. Almost no overlap.",
+  },
+  {
+    slug: "affinity-vs-harmonic-ai",
+    a: "affinity",
+    b: "harmonic-ai",
+    verdict:
+      "Affinity optimises sourcing through your firm's existing network; Harmonic.ai sources externally with AI-powered team pattern matching. They are complements, not substitutes. Most institutional VCs run both — Affinity for pipeline and warm-intro mapping, Harmonic for net-new discovery. Solo angels and emerging managers usually cannot justify either without a strong existing network or institutional budget.",
+  },
+  {
+    slug: "affinity-vs-pitchbook",
+    a: "affinity",
+    b: "pitchbook",
+    verdict:
+      "Affinity is a CRM for VC pipeline and relationship management; PitchBook is a research database for fund-performance and M&A reference. Different layers of the stack and they compose cleanly. Almost every institutional firm runs both: PitchBook as the data reference, Affinity as the operational CRM. Neither helps with proactive sourcing of unknown startups — pair with a leading-signal tool if that matters.",
+  },
+  {
+    slug: "affinity-vs-crunchbase",
+    a: "affinity",
+    b: "crunchbase",
+    verdict:
+      "Affinity is a relationship CRM for VC pipeline; Crunchbase is a public startup database. Almost every institutional firm uses both — Crunchbase for verification and basic research, Affinity for pipeline tracking and warm intros. Solo investors with a smaller network typically pick Crunchbase Pro and a leading-signal tool over an Affinity seat.",
+  },
+  {
+    slug: "specter-vs-harmonic-ai",
+    a: "specter",
+    b: "harmonic-ai",
+    verdict:
+      "Specter focuses on cross-channel growth signals (web, hiring, product) at mid-market pricing; Harmonic.ai focuses on AI-powered team pattern matching at incorporation, enterprise priced. Specter is the better fit for emerging managers tracking consumer and SaaS plays; Harmonic is for institutional VCs with sourcing teams. Both miss deep-tech and infrastructure plays where engineering acceleration is the right primary signal.",
+  },
+  {
+    slug: "specter-vs-forager-ai",
+    a: "specter",
+    b: "forager-ai",
+    verdict:
+      "Both are mid-market growth-signal platforms. Specter leans heavier on web traffic and product launch data; Forager.ai leans heavier on NLP across web, social, and hiring data. Coverage is comparable. Choice usually comes down to interface fit and pricing — both are reasonable picks for emerging managers wanting cross-sector early signals at individual-investor pricing.",
+  },
+  {
+    slug: "specter-vs-crunchbase",
+    a: "specter",
+    b: "crunchbase",
+    verdict:
+      "Specter is a leading growth-signal platform (2-6 weeks pre-fundraise); Crunchbase is a lagging funding database. They answer different questions and compose cleanly: Specter for early discovery, Crunchbase for funding history once a name surfaces. Most emerging managers run both alongside a leading engineering-signal tool for technical sectors.",
+  },
+  {
+    slug: "signalrank-vs-pitchbook",
+    a: "signalrank",
+    b: "pitchbook",
+    verdict:
+      "SignalRank is a Series-B graduation prediction model packaged as an index-fund product; PitchBook is the institutional reference database for private-markets data. Almost no overlap. SignalRank is useful for late-stage thesis validation and passive index exposure; PitchBook is the operational data layer for any institutional firm. They are not substitutes.",
+  },
+  {
+    slug: "signalrank-vs-harmonic-ai",
+    a: "signalrank",
+    b: "harmonic-ai",
+    verdict:
+      "SignalRank predicts Series-B graduation odds for already-Series-A companies; Harmonic.ai sources companies at incorporation. They sit at opposite ends of the funnel. Most institutional firms running both do so for distinct reasons — SignalRank for thesis validation on late-stage opportunities, Harmonic for proactive early-stage discovery.",
+  },
+  {
+    slug: "harmonic-ai-vs-affinity",
+    a: "harmonic-ai",
+    b: "affinity",
+    verdict:
+      "Harmonic.ai is a sourcing tool — it brings new companies to your attention; Affinity is a relationship-intelligence CRM — it organises and optimises the network you already have. They are complements, not alternatives. Institutional VCs typically run both: Harmonic to expand the funnel, Affinity to manage and convert it.",
   },
 ];
 

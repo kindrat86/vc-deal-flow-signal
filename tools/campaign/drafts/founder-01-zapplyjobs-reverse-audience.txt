@@ -1,0 +1,25 @@
+TO: [zapply.jobs founder email — research before send]
+FROM: signal@gitdealflow.com
+SUBJECT: zapply.jobs is in this week's Acceleration Watch (publicly named, week of 2026-05-04)
+
+Hi,
+
+I run gitdealflow.com — open methodology that ranks venture-backed startup GitHub orgs by engineering acceleration. SSRN-published: abstract=6606558.
+
+You're publicly named at rank #1 in this week's Acceleration Watch (week of 2026-05-04, 1,694 commits / 14d, +82% acceleration, hiring-burst signal). Live page: signals.gitdealflow.com/predicted
+
+A few investors actively use the watch as a sourcing input. If you're raising or about to raise, the named placement may show up in their inbound — at minimum, it's worth knowing your engineering activity caught the signal.
+
+A few notes that might be useful:
+
+(1) The placement is data-derived; we didn't pick you, the signal did. Methodology is open and re-derivable from public GitHub data — your team can audit it.
+
+(2) We grade every named pick post-hoc against public fundraise news at 60 and 90 days. Your row gets a "raised / acquired / IPO / no event" mark transparently. If you'd rather we exclude you from grading, reply with "exclude" — we honor it within 24h.
+
+(3) If you're open to forwarding to investors who already use the watch, we're happy to facilitate. Reply with "intro" and we send the watch link with your row pinned.
+
+No ask, no pitch. Just a heads up that your engineering activity is publicly named on a watchlist investors read.
+
+Best,
+The Data Nerd
+gitdealflow.com

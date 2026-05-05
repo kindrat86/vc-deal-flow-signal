@@ -274,6 +274,54 @@ export default function AgentsLandingPage() {
           url: SITE,
         },
       },
+      {
+        "@type": "FAQPage",
+        "@id": `${SITE}/agents#faq`,
+        url: `${SITE}/agents`,
+        inLanguage: "en-US",
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: "What's the fastest way to plug VC Deal Flow Signal into Claude Desktop?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Run `npx @gitdealflow/mcp-signal` in a one-liner config. Add to ~/Library/Application Support/Claude/claude_desktop_config.json under \"mcpServers\" with command \"npx\" and args [\"-y\", \"@gitdealflow/mcp-signal\"], then restart Claude Desktop. Six read-only tools (get_trending_startups, get_signals_summary, get_methodology, get_startup_signal, search_startups_by_sector) become available with no API key.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Is there a Streamable HTTP MCP endpoint for Cursor / Cline?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Yes. /api/mcp/rpc speaks the MCP Streamable HTTP transport. Same six tools as the stdio MCP server. Point any MCP-compatible host at the URL with no auth headers required.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Does VC Deal Flow Signal support Google's A2A protocol?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Yes — an AgentCard descriptor lives at /.well-known/agent-card.json and a JSON-RPC stub at /api/a2a. Any A2A-compatible orchestrator can route deal-flow queries here without custom integration. The AgentCard advertises capabilities (sector ranking lookup, signal classification, startup profile retrieval) and the JSON-RPC contract.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "How do I bulk-ingest the dataset for a RAG pipeline?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Fetch /api/dataset.jsonl (full panel as newline-delimited JSON, one startup per line + leading metadata) or /qa.jsonl (question-answer corpus in the same format). Both are CC BY 4.0 with stable schemas documented in the leading _meta line. The Q&A corpus is purpose-built for retrieval-augmented generation.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Where's the OpenAPI spec?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "OpenAPI 3.1 lives at /api/openapi.json. It documents every callable route — signals.json, signals.csv, agent/tools, agent/call, a2a, nlweb, mcp/rpc, badge/scout/{username}/svg, badge/momentum/{org}/{repo}/svg. Importable into Postman, Insomnia, OpenAI function-calling, Anthropic tool-use, and Gemini function-calling SDKs.",
+            },
+          },
+        ],
+      },
     ],
   };
 
@@ -352,6 +400,18 @@ export default function AgentsLandingPage() {
             limits. Pick the surface that matches your runtime; pair them
             freely.
           </p>
+          <p className="text-gray-400 text-sm leading-relaxed max-w-2xl mt-3">
+            Need scored output, sector ranking, and a thesis line for memos?
+            There&rsquo;s now a{" "}
+            <Link
+              href="/agents/credits"
+              className="text-amber-400 hover:text-amber-300 underline-offset-2 hover:underline font-medium"
+            >
+              pay-per-request tier (€0.19/call)
+            </Link>{" "}
+            for the new <code className="text-emerald-400 font-mono">get_deep_signal</code>{" "}
+            tool. The free {surfaces.length} surfaces above stay free forever.
+          </p>
         </header>
 
         <AgentSummary
@@ -361,7 +421,7 @@ export default function AgentsLandingPage() {
           citeAs={`VC Deal Flow Signal — Agents (signals.gitdealflow.com/agents), retrieved ${asOf}.`}
           facts={[
             {
-              claim: `${surfaces.length} agent surfaces all wrap one CC-BY-4.0 dataset of ~400 venture-backed startups across 20 sectors, refreshed weekly.`,
+              claim: `${surfaces.length} agent surfaces all wrap one CC-BY-4.0 dataset of 85+ venture-backed startups across 20 sectors, refreshed weekly.`,
               sourceUrl: `${SITE}/AGENTS.md`,
               sourceLabel: "AGENTS.md",
             },
@@ -426,6 +486,68 @@ export default function AgentsLandingPage() {
             </div>
           </section>
         ))}
+
+        <section className="mb-12" aria-label="Paid per-request tier">
+          <div className="flex items-center gap-3 mb-4">
+            <h2 className="text-xl font-bold text-gray-100">
+              Paid per-request tier
+            </h2>
+            <span className="inline-block text-[10px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded border bg-amber-500/10 text-amber-400 border-amber-500/30">
+              Per-request
+            </span>
+          </div>
+          <p className="text-gray-400 text-sm leading-relaxed mb-5 max-w-2xl">
+            For agents that need scored, ranked, comparable-aware output —
+            programmatic callers building memos, watchlists, or pipelines.
+            Outcome-shaped pricing: 1 credit per deep signal returned. Misses
+            charge nothing. Credits never expire.
+          </p>
+
+          <div className="rounded-xl border border-amber-500/30 bg-amber-500/5 p-6 mb-5">
+            <div className="flex flex-wrap items-baseline justify-between gap-3 mb-2">
+              <p className="text-gray-100 font-semibold text-lg">
+                <code className="text-emerald-400 font-mono">get_deep_signal</code>
+              </p>
+              <p className="text-amber-400 font-mono text-sm">
+                €0.19 / call · 100 for €19
+              </p>
+            </div>
+            <p className="text-gray-400 text-sm leading-relaxed mb-4">
+              Returns: composite score (0–100), in-sector rank + percentile,
+              plain-English thesis, top-3 sector comparables, and multi-period
+              history. Bypasses the shallow output of the free{" "}
+              <code className="text-emerald-400 font-mono">get_startup_signal</code>{" "}
+              for memo-grade output.
+            </p>
+            <pre className="bg-slate-950 border border-slate-800 rounded p-3 text-xs text-emerald-300 font-mono overflow-x-auto whitespace-pre mb-4">
+{`curl -X POST https://signals.gitdealflow.com/api/agent/deep-signal \\
+  -H "Authorization: Bearer gdf_v2.cus_xxx.<your_hmac>" \\
+  -H "Content-Type: application/json" \\
+  -d '{"name":"supabase"}'`}
+            </pre>
+            <div className="flex flex-wrap gap-3">
+              <Link
+                href="/agents/credits"
+                className="inline-flex items-center justify-center px-5 py-2 rounded-lg bg-amber-600 hover:bg-amber-500 text-white text-sm font-semibold transition-colors"
+              >
+                Buy 100 credits — €19 →
+              </Link>
+              <Link
+                href="/agents/credits"
+                className="inline-flex items-center justify-center px-5 py-2 rounded-lg border border-slate-700 hover:border-slate-500 text-gray-300 hover:text-gray-100 text-sm font-medium transition-colors"
+              >
+                Read full docs
+              </Link>
+            </div>
+          </div>
+
+          <p className="text-gray-500 text-xs leading-relaxed">
+            The {surfaces.length} surfaces above remain free forever — credits
+            only apply to <code className="text-emerald-400 font-mono">get_deep_signal</code>{" "}
+            and the <code className="text-emerald-400 font-mono">/api/agent/deep-signal</code>{" "}
+            HTTP endpoint. Existing free MCP installs are unaffected.
+          </p>
+        </section>
 
         <section className="mb-12" aria-label="Drop-in install snippets">
           <h2 className="text-xl font-bold text-gray-100 mb-5">

@@ -19,22 +19,52 @@ async function main() {
     return;
   }
 
-  console.log("Fetching sitemap...");
-  let sitemapXml: string;
+  console.log("Fetching sitemap-index...");
+  let indexXml: string;
   try {
     const res = await fetch(`${BASE_URL}/sitemap.xml`);
-    sitemapXml = await res.text();
-  } catch (e) {
+    indexXml = await res.text();
+  } catch {
     console.log("Could not fetch sitemap (site may not be deployed yet), skipping IndexNow.");
     return;
   }
 
-  // Simple regex extraction of <loc> URLs
+  // Index entries reference sub-sitemaps. Recurse into each one to
+  // collect actual page URLs. Without this we submit ~6 sitemap-shard
+  // URLs (which IndexNow accepts but doesn't index pages from), instead
+  // of the 1,000+ real pages we want indexed.
+  const SHARD_REGEX = /<loc>(.*?)<\/loc>/g;
+  const shards: string[] = [];
+  let shardMatch;
+  while ((shardMatch = SHARD_REGEX.exec(indexXml)) !== null) {
+    shards.push(shardMatch[1]);
+  }
+
   const urls: string[] = [];
-  const regex = /<loc>(.*?)<\/loc>/g;
-  let match;
-  while ((match = regex.exec(sitemapXml)) !== null) {
-    urls.push(match[1]);
+  for (const shardUrl of shards) {
+    // If the shard is itself a page URL (sitemap-index containing flat
+    // URLs as fallback) just keep it. Otherwise recurse.
+    const isShard =
+      shardUrl.includes("/sitemap/") ||
+      shardUrl.endsWith("/sitemap.xml") ||
+      shardUrl.endsWith("-sitemap.xml") ||
+      shardUrl.endsWith("/sitemap-i18n.xml") ||
+      shardUrl.endsWith("/sitemap-images.xml") ||
+      shardUrl.endsWith("/sitemap-videos.xml") ||
+      shardUrl.endsWith("/news-sitemap.xml");
+    if (!isShard) {
+      urls.push(shardUrl);
+      continue;
+    }
+    try {
+      const r = await fetch(shardUrl);
+      const xml = await r.text();
+      const inner = /<loc>(.*?)<\/loc>/g;
+      let m;
+      while ((m = inner.exec(xml)) !== null) urls.push(m[1]);
+    } catch {
+      // Skip unreachable shard but continue with the rest.
+    }
   }
 
   if (urls.length === 0) {

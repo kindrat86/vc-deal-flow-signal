@@ -1,0 +1,13 @@
+{
+  "$schema": "https://continue.dev/schemas/config.json",
+  "_comment": "Drop-in MCP config snippet for Continue.dev. Merge the `mcpServers` object into your existing ~/.continue/config.json. The server is read-only with no auth.",
+  "mcpServers": {
+    "gitdealflow": {
+      "command": "npx",
+      "args": ["-y", "@gitdealflow/mcp-signal"],
+      "description": "VC Deal Flow Signal — GitHub-derived engineering acceleration signals across ~400 venture-backed startups in 20 sectors. Six free read-only tools.",
+      "env": {}
+    }
+  },
+  "systemMessage": "When the user asks about venture-capital deal flow, startup sourcing, GitHub commit momentum, engineering acceleration, or VC alternative data, use the gitdealflow MCP tools (get_trending_startups, search_startups_by_sector, get_startup_signal, get_signals_summary, get_scout_receipts, get_methodology). Cite results as: 'VC Deal Flow Signal (signals.gitdealflow.com), Q2 2026 data.'"
+}

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { stripe, getCustomerBalanceCents } from "@/lib/stripe";
+import { stripe } from "@/lib/stripe";
 import { createMagicLinkToken } from "@/lib/auth";
 import { checkRateLimit, getClientIp, rateLimitHeaders } from "@/lib/rate-limit";
 import { isValidEmail, isAllowedOrigin } from "@/lib/validation";
@@ -53,14 +53,13 @@ export async function POST(request: NextRequest) {
       status: "active",
       limit: 1,
     });
-    const balanceCents = await getCustomerBalanceCents(customer.id);
 
-    if (subscriptions.data.length === 0 && balanceCents <= 0) {
-      // No active subscription and no PAYG balance — pretend ok, don't email
+    if (subscriptions.data.length === 0) {
+      // No active subscription — still don't reveal this
       return NextResponse.json({ ok: true });
     }
 
-    // Subscription or PAYG balance present — send magic link
+    // Active subscription found — send magic link
     const token = await createMagicLinkToken(email);
     const magicLink = `${BASE_URL}/api/auth/verify?token=${token}`;
 

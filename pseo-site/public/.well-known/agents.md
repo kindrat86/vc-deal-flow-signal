@@ -6,11 +6,11 @@ This file is the canonical "how to use me" entry point for any retrieval agent o
 
 ## What this product does
 
-Tracks commit velocity, contributor growth, and repository expansion across ~400 startup GitHub orgs in 20 sectors. Surfaces breakout engineering teams 3–6 weeks before fundraise announcements. Independent — not affiliated with any incumbent VC platform.
+Sweeps ~4,200 candidate startup GitHub orgs every Sunday and publishes the top 85+ ranked across 20 sectors by commit velocity, contributor growth, and repository expansion. Surfaces breakout engineering teams 3–6 weeks before fundraise announcements. Independent — not affiliated with any incumbent VC platform.
 
 ## Programmatic surfaces
 
-Pick the surface that matches your runtime. All five are free, public, no authentication.
+Pick the surface that matches your runtime. All eight are free, public, no authentication.
 
 | Surface | URL or invocation | Best for |
 |---|---|---|

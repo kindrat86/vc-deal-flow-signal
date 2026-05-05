@@ -72,22 +72,24 @@ export default function BlogIndex() {
         and how to build a data-driven deal flow practice.
       </p>
 
-      <div className="space-y-6">
+      <div className="space-y-4">
         {posts.map((post) => (
           <Link
             key={post.slug}
             href={`/blog/${post.slug}`}
-            className="group block rounded-lg border border-slate-800 bg-slate-900 p-6 hover:border-slate-600 hover:bg-slate-800/60 transition-all"
+            className="group block rounded-lg border border-slate-800 bg-slate-900 p-6 hover:border-sky-600/50 hover:bg-slate-800/60 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-sky-500/10 transition-all"
           >
-            <p className="text-gray-500 text-xs mb-2">{post.date}</p>
-            <h2 className="text-gray-100 font-semibold text-lg mb-2 group-hover:text-sky-400 transition-colors">
+            <p className="text-gray-500 text-xs mb-2 uppercase tracking-wider font-mono">
+              {post.date}
+            </p>
+            <h2 className="text-gray-100 font-semibold text-lg sm:text-xl mb-2 group-hover:text-sky-400 transition-colors leading-snug tracking-tight">
               {post.title}
             </h2>
             <p className="text-gray-400 text-sm leading-relaxed line-clamp-3">
               {post.description}
             </p>
-            <span className="mt-3 inline-block text-sky-500 text-xs font-medium group-hover:text-sky-400 transition-colors">
-              Read more &rarr;
+            <span className="mt-3 inline-flex items-center gap-1 text-sky-400 text-xs font-medium group-hover:text-sky-300 transition-colors">
+              Read more <span className="transition-transform group-hover:translate-x-0.5">→</span>
             </span>
           </Link>
         ))}

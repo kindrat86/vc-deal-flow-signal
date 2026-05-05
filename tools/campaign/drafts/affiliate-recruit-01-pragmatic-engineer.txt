@@ -1,0 +1,25 @@
+TO: gergely@pragmaticengineer.com
+FROM: signal@gitdealflow.com
+SUBJECT: Affiliate idea for The Pragmatic Engineer — 20% lifetime, dev-investor angle
+
+Hi Gergely,
+
+I run gitdealflow.com — open SSRN-published methodology that ranks 4,200 venture-backed startup GitHub orgs by commit-velocity acceleration. Methodology: ssrn.com/abstract=6606558.
+
+Reason I'm writing: a meaningful share of your readers angel invest, and the question they keep asking ("how do I source pre-deck?") maps to a tool you could recommend.
+
+I just opened a 20% lifetime affiliate program (Refgrow). Numbers: €399 on each €1,997 Sector Sweep. €19.40/mo recurring on every €97/mo Insider Circle subscriber, for life. 60-day cookie, monthly Stripe payouts. Full program at signals.gitdealflow.com/affiliates.
+
+Two paths if it's relevant:
+
+(1) Reader-recommendation placement — one mention in a pricing-related issue with your unique link, anchored to the SSRN paper not the product.
+
+(2) Custom-audit angle — I run a free Sector Sweep on your reader's most-asked-about thesis (AI infra has been my guess), publish the methodology in a guest post or interview, link sits naturally inside.
+
+Either way zero pressure. The free MCP server (5 read-only tools, npm @gitdealflow/mcp-signal, Glama A-Tier) is permanent — your readers can use it without paying anything.
+
+Reply if you want the affiliate dashboard link, or just send it to /dev/null if it's not a fit.
+
+The Data Nerd
+gitdealflow.com
+ssrn.com/abstract=6606558

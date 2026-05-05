@@ -1,21 +1,73 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getAllSectors, getCurrentPeriod, getAllPeriods, getDataLastModified } from "@/lib/data";
+import {
+  getAllSectors,
+  getCurrentPeriod,
+  getAllPeriods,
+  getDataLastModified,
+  getTopMoversThisWeek,
+  getTotalTrackedThisWeek,
+} from "@/lib/data";
 import { allPosts as posts } from "@/content/posts";
 import { comparisons } from "@/content/comparisons";
 import { FINDINGS as RESEARCH_FINDINGS } from "@/content/research-findings";
+import { standaloneFaqs } from "@/content/standalone-faqs";
 import { AgentSummary } from "@/components/AgentSummary";
+import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { HreflangLinks } from "@/components/HreflangLinks";
+import { getHomepageHreflang } from "@/lib/hreflang";
+import SignalLeader from "@/components/SignalLeader";
+import ThreeDoorHero from "@/components/ThreeDoorHero";
+import PricingLadder from "@/components/PricingLadder";
+import SocialProofBar from "@/components/SocialProofBar";
 
 export const metadata: Metadata = {
+  // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
   alternates: {
     canonical: "/",
   },
 };
 
+// Hoisted to module scope so the array is allocated once at build, not per
+// render. Drives the "Pillar pages & topic clusters" block — strengthens the
+// internal-link graph from the home page to routes Yandex flagged
+// "low-value or low-demand" in the 2026-05-02 recheck.
+const PILLAR_LINKS = [
+  { href: "/methodology", label: "Methodology", sub: "How signals are computed", icon: "📐" },
+  { href: "/weekly", label: "This week's signals", sub: "Weekly top movers", icon: "📈" },
+  { href: "/trending", label: "Trending now", sub: "Real-time leaderboard", icon: "🔥" },
+  { href: "/startups-to-watch", label: "Startups to watch", sub: "By sector + region", icon: "🌍" },
+  { href: "/signals", label: "Signal taxonomy", sub: "Every signal type", icon: "🏷️" },
+  { href: "/alternatives", label: "Alternatives", sub: "vs Harmonic, Affinity, Tracxn", icon: "⚖️" },
+  { href: "/glossary", label: "Glossary", sub: "Defined terms", icon: "📖" },
+  { href: "/faq", label: "FAQ", sub: "60+ answers", icon: "❓" },
+  { href: "/research", label: "Research panel", sub: "30 SSRN findings", icon: "🔬" },
+  { href: "/blog", label: "Blog", sub: "Long-form analyses", icon: "✍️" },
+  { href: "/markets", label: "Prediction markets", sub: "Series A Race 2026", icon: "🎯" },
+  { href: "/citations", label: "Citation guide", sub: "How to cite us", icon: "📚" },
+] as const;
+
+// "Where to go next" deep-dive entry points. Icons help the eye navigate a
+// dense grid of similarly-shaped cards.
+const NEXT_LINKS = [
+  { href: "/weekly", label: "Weekly leaderboard", sub: "Top 10 commit-velocity movers across every tracked sector, rebuilt every Monday.", icon: "🏆" },
+  { href: "/signal-of-the-week", label: "Signal of the week", sub: "The single sharpest momentum break we observed this week, with the 14-day chart and decision rule.", icon: "⚡" },
+  { href: "/signals", label: "Signal vocabulary", sub: "The six atomic primitives we compute — formula, decision rule, common pitfall for each.", icon: "🧪" },
+  { href: "/methodology", label: "Methodology", sub: "How we compute commit velocity, sample frame, biases we accept, and what we explicitly do not claim.", icon: "📐" },
+  { href: "/reproducibility", label: "Reproducibility", sub: "Step-by-step HowTo to re-run the panel against the public dataset. CC BY 4.0.", icon: "🔁" },
+  { href: "/attestations", label: "Attestations", sub: "Every public claim with source, date, and a fact-check status (ClaimReview).", icon: "✅" },
+  { href: "/knowledge", label: "Knowledge graph", sub: "Defined-term hub linking every sector, signal primitive, and competitor entity.", icon: "🕸️" },
+  { href: "/alternatives", label: "Alternatives", sub: "Honest side-by-side: Harmonic, Forager, SignalFire Beacon, Affinity, Tracxn — and where each beats us.", icon: "⚖️" },
+] as const;
+
 export default function Home() {
   const sectors = getAllSectors();
   const period = getCurrentPeriod();
   const allPeriods = getAllPeriods();
+  const topMovers = getTopMoversThisWeek(3);
+  const totalTracked = getTotalTrackedThisWeek();
+  const activeSectorCount = sectors.filter((s) => s.periods[period.slug]).length;
+  const asOf = getDataLastModified().toISOString().slice(0, 10);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -48,8 +100,8 @@ export default function Home() {
         url: "https://gitdealflow.com",
         logo: {
           "@type": "ImageObject",
-          url: "https://signals.gitdealflow.com/icon",
-          contentUrl: "https://signals.gitdealflow.com/icon",
+          url: "https://signals.gitdealflow.com/icon.png",
+          contentUrl: "https://signals.gitdealflow.com/icon.png",
           width: 192,
           height: 192,
           encodingFormat: "image/png",
@@ -81,6 +133,7 @@ export default function Home() {
           "https://www.wikidata.org/wiki/Q139376302",
           "https://www.crunchbase.com/organization/gitdealflow",
           "https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn",
+          "https://chromewebstore.google.com/detail/vc-github-lookup-%E2%80%94-startu/plgngijmloeljfkenecdkhiblcfcbblm",
           "https://www.sideprojectors.com/project/78284/vc-deal-flow-signal-engineering-momentum-for-vcs",
           "https://www.npmjs.com/package/@gitdealflow/mcp-signal",
           "https://www.producthunt.com/products/vc-deal-flow-signal",
@@ -94,6 +147,9 @@ export default function Home() {
           "https://api.crossref.org/works/10.2139/ssrn.6606558",
           "https://www.semanticscholar.org/paper/A-Longitudinal-Panel-of-GitHub-Engineering-Velocity",
           "https://kaggle.com/datasets/thedatanerd/vc-deal-flow-signal",
+          "https://huggingface.co/datasets/the-data-nerd/vc-deal-flow-signal",
+          "https://huggingface.co/spaces/the-data-nerd/vc-deal-flow-explorer",
+          "https://huggingface.co/spaces/the-data-nerd/vc-deal-flow-deepseek",
         ],
         knowsAbout: [
           "GitHub commit velocity",
@@ -144,8 +200,18 @@ export default function Home() {
           allPeriods.length +
           " quarterly periods. Designed for venture-capital deal sourcing, portfolio monitoring, and academic research on alternative data in venture capital.",
         url: "https://signals.gitdealflow.com",
-        identifier: "https://signals.gitdealflow.com",
-        sameAs: "https://gitdealflow.com",
+        identifier: [
+          "https://signals.gitdealflow.com",
+          "https://doi.org/10.5281/zenodo.19650920",
+          "https://doi.org/10.5281/zenodo.19650919",
+        ],
+        sameAs: [
+          "https://gitdealflow.com",
+          "https://huggingface.co/datasets/the-data-nerd/vc-deal-flow-signal",
+          "https://www.kaggle.com/datasets/thedatanerd2026/vc-deal-flow-signal",
+          "https://zenodo.org/records/19650920",
+          "https://data.world/thedatanerd2026/vc-deal-flow-signal-startup-engineering-acceleration",
+        ],
         version: "1.0.0",
         datePublished: "2026-04-19",
         dateModified: new Date().toISOString().slice(0, 10),
@@ -179,23 +245,72 @@ export default function Home() {
           name: "VC Deal Flow Signal",
           url: "https://gitdealflow.com",
         },
-        includedInDataCatalog: {
-          "@type": "DataCatalog",
-          name: "VC Deal Flow Signal Data Catalog",
-          url: "https://signals.gitdealflow.com",
-        },
+        includedInDataCatalog: [
+          {
+            "@type": "DataCatalog",
+            name: "VC Deal Flow Signal Data Catalog",
+            url: "https://signals.gitdealflow.com",
+          },
+          {
+            "@type": "DataCatalog",
+            name: "Hugging Face Datasets",
+            url: "https://huggingface.co/datasets",
+          },
+          {
+            "@type": "DataCatalog",
+            name: "Zenodo",
+            url: "https://zenodo.org",
+          },
+          {
+            "@type": "DataCatalog",
+            name: "Kaggle Datasets",
+            url: "https://www.kaggle.com/datasets",
+          },
+          {
+            "@type": "DataCatalog",
+            name: "Data.world",
+            url: "https://data.world",
+          },
+        ],
         distribution: [
           {
             "@type": "DataDownload",
-            name: "Startup signals — CSV",
+            name: "Startup signals — CSV (live)",
             encodingFormat: "text/csv",
             contentUrl: "https://signals.gitdealflow.com/api/signals.csv",
           },
           {
             "@type": "DataDownload",
-            name: "Startup signals — JSON",
+            name: "Startup signals — JSON (live)",
             encodingFormat: "application/json",
             contentUrl: "https://signals.gitdealflow.com/api/signals.json",
+          },
+          {
+            "@type": "DataDownload",
+            name: "Hugging Face Dataset mirror",
+            encodingFormat: "text/csv",
+            contentUrl:
+              "https://huggingface.co/datasets/the-data-nerd/vc-deal-flow-signal/resolve/main/startup_signals.csv",
+          },
+          {
+            "@type": "DataDownload",
+            name: "Zenodo archive (v1.0.0, DOI 10.5281/zenodo.19650920)",
+            encodingFormat: "application/zip",
+            contentUrl: "https://zenodo.org/records/19650920/files-archive",
+          },
+          {
+            "@type": "DataDownload",
+            name: "Kaggle dataset mirror",
+            encodingFormat: "text/csv",
+            contentUrl:
+              "https://www.kaggle.com/datasets/thedatanerd2026/vc-deal-flow-signal",
+          },
+          {
+            "@type": "DataDownload",
+            name: "Data.world mirror (autosynced daily)",
+            encodingFormat: "text/csv",
+            contentUrl:
+              "https://data.world/thedatanerd2026/vc-deal-flow-signal-startup-engineering-acceleration",
           },
         ],
         temporalCoverage: allPeriods.map((p) => p.name).join("/"),
@@ -288,7 +403,7 @@ export default function Home() {
             priceCurrency: "EUR",
             availability: "https://schema.org/InStock",
             description:
-              "Full dashboard access: 60+ ranked startups per week, filters by sector, stage, and geography, MCP server access, CSV export.",
+              "Full dashboard access: 85+ ranked startups per week, filters by sector, stage, and geography, MCP server access, CSV export.",
             url: "https://signals.gitdealflow.com/dashboard",
             priceSpecification: {
               "@type": "UnitPriceSpecification",
@@ -306,7 +421,7 @@ export default function Home() {
         ],
         featureList: [
           "Weekly GitHub engineering acceleration signals",
-          "60+ startups ranked every Monday",
+          "85+ startups ranked every Monday",
           "20 technical sector clusters",
           "MCP server for Claude, Cursor, Windsurf",
           "JSON / CSV / RSS / Telegram / Email delivery",
@@ -388,7 +503,7 @@ export default function Home() {
           "@type": "Brand",
           name: "VC Deal Flow Signal",
           url: "https://gitdealflow.com",
-          logo: "https://signals.gitdealflow.com/icon",
+          logo: "https://signals.gitdealflow.com/icon.png",
         },
         hasOfferCatalog: {
           "@type": "OfferCatalog",
@@ -437,6 +552,33 @@ export default function Home() {
               category: "One-time",
               eligibleRegion: { "@type": "Place", name: "Global" },
             },
+            {
+              "@type": "Offer",
+              name: "Agent Credits — Pay Per Deep Signal",
+              description:
+                "Per-request pricing for AI agents and programmatic callers. 100 deep-signal calls for €19 (€0.19 per call). One credit consumed per match; misses are free. Credits never expire. Applies only to the new get_deep_signal MCP tool and POST /api/agent/deep-signal endpoint — the six free MCP tools stay free forever.",
+              price: "19",
+              priceCurrency: "EUR",
+              availability: "https://schema.org/InStock",
+              url: "https://signals.gitdealflow.com/agents/credits",
+              category: "API Credits",
+              eligibleQuantity: {
+                "@type": "QuantitativeValue",
+                value: 100,
+                unitText: "API calls",
+              },
+              priceSpecification: {
+                "@type": "UnitPriceSpecification",
+                price: "0.19",
+                priceCurrency: "EUR",
+                referenceQuantity: {
+                  "@type": "QuantitativeValue",
+                  value: 1,
+                  unitText: "deep-signal call",
+                },
+              },
+              eligibleRegion: { "@type": "Place", name: "Global" },
+            },
           ],
         },
       },
@@ -475,6 +617,106 @@ export default function Home() {
           "@type": "WebSite",
           name: "VC Deal Flow Signal",
           url: "https://signals.gitdealflow.com",
+        },
+        // Named-entity disambiguation — anchor to Wikidata so AI engines can
+        // cross-reference. Competitors, platforms, and concepts mentioned on
+        // this site are explicitly typed and linked.
+        mentions: [
+          {
+            "@type": "Thing",
+            name: "GitHub",
+            sameAs: [
+              "https://www.wikidata.org/wiki/Q364",
+              "https://github.com",
+            ],
+          },
+          {
+            "@type": "Thing",
+            name: "Venture capital",
+            sameAs: ["https://www.wikidata.org/wiki/Q189569"],
+          },
+          {
+            "@type": "Thing",
+            name: "Alternative data",
+            sameAs: ["https://www.wikidata.org/wiki/Q4734016"],
+          },
+          {
+            "@type": "Thing",
+            name: "Open-source software",
+            sameAs: ["https://www.wikidata.org/wiki/Q1130645"],
+          },
+          {
+            "@type": "Organization",
+            name: "Y Combinator",
+            sameAs: [
+              "https://www.wikidata.org/wiki/Q4933824",
+              "https://www.ycombinator.com",
+            ],
+            description:
+              "Startup accelerator. Distinct from this site's 'engineering acceleration' GitHub signal.",
+          },
+          {
+            "@type": "Organization",
+            name: "Techstars",
+            sameAs: [
+              "https://www.wikidata.org/wiki/Q3522381",
+              "https://www.techstars.com",
+            ],
+          },
+          {
+            "@type": "Organization",
+            name: "Crunchbase",
+            sameAs: [
+              "https://www.wikidata.org/wiki/Q5188749",
+              "https://www.crunchbase.com",
+            ],
+          },
+          {
+            "@type": "Organization",
+            name: "PitchBook",
+            sameAs: ["https://www.wikidata.org/wiki/Q15639544"],
+          },
+          {
+            "@type": "Organization",
+            name: "AngelList",
+            sameAs: ["https://www.wikidata.org/wiki/Q4754038"],
+          },
+          {
+            "@type": "Organization",
+            name: "Dealroom",
+            sameAs: ["https://dealroom.co"],
+          },
+          {
+            "@type": "Organization",
+            name: "Harmonic.ai",
+            sameAs: ["https://harmonic.ai"],
+          },
+          {
+            "@type": "SoftwareApplication",
+            name: "Model Context Protocol (MCP)",
+            sameAs: [
+              "https://modelcontextprotocol.io",
+              "https://github.com/modelcontextprotocol",
+            ],
+          },
+          {
+            "@type": "SoftwareApplication",
+            name: "Claude Desktop",
+            sameAs: ["https://www.anthropic.com/claude"],
+          },
+          {
+            "@type": "SoftwareApplication",
+            name: "Cursor",
+            sameAs: ["https://cursor.com"],
+          },
+        ],
+        // lastReviewed lets AIO surfaces (Google AI Overviews) treat this
+        // page's data as evergreen-but-monitored.
+        lastReviewed: getDataLastModified().toISOString().slice(0, 10),
+        reviewedBy: {
+          "@type": "Organization",
+          name: "VC Deal Flow Signal",
+          url: "https://gitdealflow.com",
         },
       },
       {
@@ -556,45 +798,80 @@ export default function Home() {
           url: "https://signals.gitdealflow.com",
         },
       },
+      {
+        "@type": "FAQPage",
+        "@id": "https://signals.gitdealflow.com/#faq",
+        url: "https://signals.gitdealflow.com",
+        inLanguage: "en-US",
+        about: { "@id": "https://gitdealflow.com/#organization" },
+        isPartOf: { "@id": "https://signals.gitdealflow.com/#website" },
+        mainEntity: standaloneFaqs.slice(0, 12).map((f) => ({
+          "@type": "Question",
+          name: f.question,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: f.answer,
+            url: f.sourceHref.startsWith("http")
+              ? f.sourceHref
+              : `https://signals.gitdealflow.com${f.sourceHref}`,
+          },
+        })),
+      },
     ],
   };
 
   return (
     <>
+      <HreflangLinks
+        canonical="https://signals.gitdealflow.com/"
+        languages={getHomepageHreflang()}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      {/* Header section */}
-      <div className="mb-10 max-w-2xl">
-        <p className="text-sky-400 text-sm font-medium mb-3 uppercase tracking-wider">
-          {period.name} Edition
+      <AgentMirrorLinks path="/" />
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 space-y-8 sm:space-y-10">
+      {/* Hero — specific outcome H1 + one-line subhead. Greg audit 2026-05-02:
+          previous H1 ("Startup Engineering Signals by Sector") was a filename,
+          not a hook. New copy names the job-to-be-done and surfaces SSRN /
+          live data as proof above the fold. */}
+      <header className="max-w-3xl">
+        <p className="text-sky-400 text-xs font-medium mb-3 uppercase tracking-wider">
+          {period.name} Edition · Updated {asOf}
         </p>
-        <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-4 leading-tight">
-          Startup Engineering Signals by Sector
+        <h1 className="text-3xl sm:text-5xl font-bold text-gray-100 mb-4 leading-[1.1] tracking-tight">
+          Crunchbase tells you the day they raised.{" "}
+          <span className="text-sky-400">We tell you 47 days before the deck.</span>
         </h1>
-        <p className="text-gray-400 text-base leading-relaxed">
-          We track GitHub commit velocity, contributor growth, and repository
-          expansion across {sectors.length} startup sectors to surface breakout
-          engineering teams before they appear on the funding radar. These
-          signals — commit acceleration, hiring bursts, infrastructure
-          buildouts — have historically preceded fundraise announcements by
-          three to six weeks. Each page ranks the top startups in a sector by
-          engineering acceleration, updated weekly.
+        <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
+          {totalTracked} venture-backed GitHub orgs ranked every week by commit
+          velocity. The pattern preceded 219 confirmed fundraises by 21–47 days
+          (SSRN-indexed). Free forever, built for the developer who also
+          angel-invests.
         </p>
-        <Link
-          href="/receipts"
-          className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-emerald-400 hover:text-emerald-300 transition-colors"
-        >
-          What&rsquo;s your developer Scout Score? Free in 30 seconds &rarr;
-        </Link>
-      </div>
+      </header>
 
+      <SocialProofBar
+        startupCount={totalTracked}
+        sectorCount={activeSectorCount}
+      />
+
+      {/* Live hero — top 3 movers this week. Greg audit: "embed a live,
+          breathing thing at the top." */}
+      <SignalLeader movers={topMovers} periodSlug={period.slug} asOf={asOf} />
+
+      {/* Three doors — Brunson-meets-Isenberg ladder: free email / receipts /
+          predict. All lead to the same email gate downstream. */}
+      <ThreeDoorHero />
+
+      {/* AgentSummary kept for AI extractability — visually de-emphasized
+          via wrapper since the live SignalLeader now plays the human-facing
+          TL;DR role. */}
       <AgentSummary
-        tldr={`VC Deal Flow Signal (GitDealFlow) ranks ${sectors.filter((s) => s.periods[period.slug]).length} startup sectors by GitHub commit velocity every Monday — a quantitative code-side momentum signal computed from public GitHub data, distinct from startup accelerator programs (Y Combinator, Techstars). Data is free via JSON / CSV / RSS / MCP / A2A / NLWeb. The metric — sometimes called engineering acceleration on this site — has historically preceded fundraise announcements by three to six weeks.`}
+        tldr={`VC Deal Flow Signal (GitDealFlow) ranks ${activeSectorCount} startup sectors by GitHub commit velocity every Monday — a quantitative code-side momentum signal computed from public GitHub data, distinct from startup accelerator programs (Y Combinator, Techstars). Data is free via JSON / CSV / RSS / MCP / A2A / NLWeb. The metric — sometimes called engineering acceleration on this site — has historically preceded fundraise announcements by three to six weeks.`}
         pageUrl="https://signals.gitdealflow.com"
-        asOf={getDataLastModified().toISOString().slice(0, 10)}
+        asOf={asOf}
         citeAs={`VC Deal Flow Signal (signals.gitdealflow.com), ${period.name} data.`}
         facts={[
           {
@@ -610,44 +887,199 @@ export default function Home() {
             sourceLabel: "agents.md",
           },
           {
-            claim: `${sectors.filter((s) => s.periods[period.slug]).reduce((sum, s) => sum + s.periods[period.slug].startups.length, 0)} startup signals across ${sectors.filter((s) => s.periods[period.slug]).length} sectors and ${allPeriods.length} quarterly periods of history.`,
+            claim: `${totalTracked} startup signals across ${activeSectorCount} sectors and ${allPeriods.length} quarterly periods of history.`,
             sourceUrl: "https://signals.gitdealflow.com/api/signals.json",
             sourceLabel: "signals.json",
           },
         ]}
       />
 
-      {/* Sector grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-        {sectors.map((sector) => {
-          const snapshot = sector.periods[period.slug];
-          if (!snapshot) return null;
-          return (
-            <Link
-              key={sector.slug}
-              href={`/startups-to-watch/${sector.slug}-${period.slug}`}
-              className="group block rounded-lg border border-slate-800 bg-slate-900 p-5 hover:border-slate-600 hover:bg-slate-800/60 transition-all"
-            >
-              <h2 className="text-gray-100 font-semibold text-base mb-1 group-hover:text-sky-400 transition-colors">
-                {sector.name}
-              </h2>
-              <p className="text-gray-400 text-xs mb-3">
-                {snapshot.startups.length} startups tracked
-              </p>
-              <p className="text-gray-400 text-sm leading-relaxed line-clamp-3">
-                {sector.description}
-              </p>
-              <span className="mt-3 inline-block text-sky-500 text-xs font-medium group-hover:text-sky-400 transition-colors">
-                View rankings &rarr;
-              </span>
-            </Link>
-          );
-        })}
+      {/* Brunson Big Domino — single-belief block above the pricing close.
+          The whole offer rests on this one statement. Russell audit
+          2026-05-05: home was missing the "if this is true, everything else
+          falls" frame. */}
+      <section
+        aria-label="Big domino"
+        className="bg-gradient-to-br from-sky-950/40 via-slate-900 to-slate-950 border border-sky-700/40 rounded-xl p-6 sm:p-8 my-8"
+      >
+        <p className="text-sky-300 text-xs font-semibold uppercase tracking-wider mb-3">
+          What this whole site argues
+        </p>
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug mb-3">
+          If commit-velocity acceleration is the most leading public signal in
+          venture capital, then every other deal-flow source —{" "}
+          <span className="text-sky-400">
+            pitch decks, AngelList, Crunchbase, warm intros
+          </span>{" "}
+          — is a lagging indicator.
+        </h2>
+        <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
+          Read the long version on the{" "}
+          <Link
+            href="/perfect-webinar"
+            className="text-sky-400 hover:text-sky-300 underline decoration-dotted"
+          >
+            12-minute Perfect Webinar
+          </Link>
+          {" "}or the{" "}
+          <Link
+            href="/pitch"
+            className="text-sky-400 hover:text-sky-300 underline decoration-dotted"
+          >
+            90-second pitch
+          </Link>
+          . Three objections, three breakdowns, the SSRN panel that proves the
+          21-to-47-day lead time.
+        </p>
+      </section>
+
+      {/* Three Secrets — the false-belief breakdowns from Workbook 4. Surface
+          them on the most-trafficked surface (home) instead of burying them
+          inside the soap-opera email sequence. */}
+      <section aria-label="Three objections" className="my-8 space-y-5">
+        <div>
+          <p className="text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-2">
+            The three objections every investor raises
+          </p>
+          <h2 className="text-2xl font-bold text-gray-100">
+            And why each one is wrong.
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="border-l-4 border-sky-500 bg-slate-900/60 p-5 rounded-r-lg">
+            <p className="text-sky-400 text-[10px] font-semibold uppercase tracking-wider mb-2">
+              #1 · Vehicle
+            </p>
+            <h3 className="text-gray-100 font-semibold text-base mb-2">
+              &ldquo;GitHub data is just noise.&rdquo;
+            </h3>
+            <p className="text-gray-400 text-sm leading-relaxed">
+              We don&rsquo;t look at absolute numbers — only sharp deviations
+              from each company&rsquo;s own baseline. That isn&rsquo;t noise,
+              that&rsquo;s a regime change.
+            </p>
+          </div>
+          <div className="border-l-4 border-emerald-500 bg-slate-900/60 p-5 rounded-r-lg">
+            <p className="text-emerald-400 text-[10px] font-semibold uppercase tracking-wider mb-2">
+              #2 · Internal
+            </p>
+            <h3 className="text-gray-100 font-semibold text-base mb-2">
+              &ldquo;I have enough deal flow already.&rdquo;
+            </h3>
+            <p className="text-gray-400 text-sm leading-relaxed">
+              Your network shows you what other investors already see. We open
+              the 21-to-47-day window before consensus forms.
+            </p>
+          </div>
+          <div className="border-l-4 border-indigo-500 bg-slate-900/60 p-5 rounded-r-lg">
+            <p className="text-indigo-400 text-[10px] font-semibold uppercase tracking-wider mb-2">
+              #3 · External
+            </p>
+            <h3 className="text-gray-100 font-semibold text-base mb-2">
+              &ldquo;Public data isn&rsquo;t edge.&rdquo;
+            </h3>
+            <p className="text-gray-400 text-sm leading-relaxed">
+              Quant funds make billions on SEC filings. The edge is in the
+              lens, not the data. Zero investor tools package GitHub as deal
+              flow.
+            </p>
+          </div>
+        </div>
+
+        <p className="text-gray-500 text-sm">
+          Full breakdown on the{" "}
+          <Link
+            href="/perfect-webinar"
+            className="text-sky-400 hover:text-sky-300 underline decoration-dotted"
+          >
+            Perfect Webinar
+          </Link>
+          .
+        </p>
+      </section>
+
+      {/* Manifesto — Brunson "future-based cause" surfaced on home. The
+          movement-frame the workbook had but the page didn't. */}
+      <section
+        aria-label="Manifesto"
+        className="my-8 border-l-2 border-amber-500/50 pl-5 sm:pl-6 py-1"
+      >
+        <p className="text-amber-400 text-xs font-semibold uppercase tracking-wider mb-3">
+          What we believe
+        </p>
+        <p className="text-gray-200 text-base sm:text-lg leading-relaxed mb-2">
+          The next generation of great investments will be found in{" "}
+          <em className="not-italic font-semibold text-amber-300">data</em>,
+          not networks.
+        </p>
+        <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
+          The best startups leave footprints in their code long before they
+          leave footprints in the press. Our mission is to make engineering
+          momentum visible to every investor — not just the ones with the
+          right rolodex. A world where capital finds builders faster is a
+          world where better products get built.
+        </p>
+      </section>
+
+      {/* Pricing ladder — visible on homepage so buyers don't have to hunt for
+          the price. Greg audit: anchor on Insider, sell the middle tier. */}
+      <PricingLadder />
+
+      {/* All sectors — moved below the fold. Still SEO-load-bearing (links to
+          every /startups-to-watch/{sector}-{period} page) but no longer the
+          first thing a human visitor sees. */}
+      <div>
+        <div className="flex items-baseline justify-between mb-3 flex-wrap gap-2">
+          <h2 className="text-gray-100 font-semibold text-2xl">
+            All sectors we track
+          </h2>
+          <p className="text-gray-500 text-xs">
+            {activeSectorCount} sectors · {totalTracked} venture-backed
+            startups · refreshed weekly
+          </p>
+        </div>
+        <p className="text-gray-400 text-sm mb-5 max-w-2xl">
+          Each sector page ranks the top startups by 14-day commit velocity
+          change, with contributor growth and signal type. Updated every
+          Monday at 09:00 UTC.
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          {sectors.map((sector) => {
+            const snapshot = sector.periods[period.slug];
+            if (!snapshot) return null;
+            return (
+              <Link
+                key={sector.slug}
+                href={`/startups-to-watch/${sector.slug}-${period.slug}`}
+                className="group block rounded-lg border border-slate-800 bg-slate-900 p-5 hover:border-sky-600/50 hover:bg-slate-800/60 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-sky-500/10 transition-all"
+              >
+                <div className="flex items-baseline justify-between gap-2 mb-1">
+                  <h3 className="text-gray-100 font-semibold text-base group-hover:text-sky-400 transition-colors">
+                    {sector.name}
+                  </h3>
+                  <span className="text-gray-500 text-[11px] font-mono tabular-nums shrink-0">
+                    {snapshot.startups.length}
+                  </span>
+                </div>
+                <p className="text-gray-400 text-xs mb-3 uppercase tracking-wider">
+                  startups tracked
+                </p>
+                <p className="text-gray-400 text-sm leading-relaxed line-clamp-3">
+                  {sector.description}
+                </p>
+                <span className="mt-3 inline-flex items-center gap-1 text-sky-400 text-xs font-medium group-hover:text-sky-300 transition-colors">
+                  View rankings <span className="transition-transform group-hover:translate-x-0.5">→</span>
+                </span>
+              </Link>
+            );
+          })}
+        </div>
       </div>
 
       {/* Previous periods */}
       {allPeriods.length > 1 && (
-        <div className="mt-10 mb-6">
+        <div>
           <h2 className="text-gray-100 font-semibold text-lg mb-3">
             Previous Quarters
           </h2>
@@ -667,8 +1099,49 @@ export default function Home() {
         </div>
       )}
 
+      {/* Topical hubs — in-body editorial links to high-intent destinations.
+          Footer carries discoverability; this carries contextual weight.
+          Yandex 2026-05-02 audit found apex-routes underweighted — body
+          links from the home page move PageRank where it matters. */}
+      <div>
+        <div className="flex items-baseline justify-between mb-3 flex-wrap gap-2">
+          <h2 className="text-gray-100 font-semibold text-2xl">
+            Where to go next
+          </h2>
+          <p className="text-gray-500 text-xs">
+            The 8 highest-signal pages on this site
+          </p>
+        </div>
+        <p className="text-gray-400 text-sm mb-5 max-w-2xl">
+          Most of the value isn&rsquo;t in the sector grids — it&rsquo;s in
+          the methodology, the weekly leaderboard, and the receipts you can
+          run against your own GitHub stars.
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          {NEXT_LINKS.map((n) => (
+            <Link
+              key={n.href}
+              href={n.href}
+              className="group block rounded-lg border border-slate-800 bg-slate-900 p-4 hover:border-sky-600/50 hover:bg-slate-800/60 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-sky-500/10 transition-all"
+            >
+              <div className="flex items-start gap-2.5 mb-2">
+                <span aria-hidden="true" className="text-base leading-none mt-0.5">
+                  {n.icon}
+                </span>
+                <h3 className="text-gray-100 font-semibold text-sm group-hover:text-sky-400 transition-colors">
+                  {n.label}
+                </h3>
+              </div>
+              <p className="text-gray-400 text-xs leading-relaxed">
+                {n.sub}
+              </p>
+            </Link>
+          ))}
+        </div>
+      </div>
+
       {/* Latest from the blog */}
-      <div className="mt-12 mb-10">
+      <div>
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-gray-100 font-semibold text-lg">
             Signal Intelligence
@@ -685,10 +1158,10 @@ export default function Home() {
             <Link
               key={post.slug}
               href={`/blog/${post.slug}`}
-              className="group block rounded-lg border border-slate-800 bg-slate-900 p-5 hover:border-slate-600 hover:bg-slate-800/60 transition-all"
+              className="group block rounded-lg border border-slate-800 bg-slate-900 p-5 hover:border-sky-600/50 hover:bg-slate-800/60 hover:-translate-y-0.5 transition-all"
             >
-              <p className="text-gray-400 text-xs mb-2">{post.date}</p>
-              <h3 className="text-gray-100 font-semibold text-sm mb-2 group-hover:text-sky-400 transition-colors">
+              <p className="text-gray-500 text-xs mb-2 uppercase tracking-wider">{post.date}</p>
+              <h3 className="text-gray-100 font-semibold text-base mb-2 group-hover:text-sky-400 transition-colors leading-snug">
                 {post.title}
               </h3>
               <p className="text-gray-400 text-xs leading-relaxed line-clamp-2">
@@ -700,7 +1173,7 @@ export default function Home() {
       </div>
 
       {/* Research findings — internal-link to /research/[slug] sub-pages */}
-      <div className="mb-10">
+      <div>
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-gray-100 font-semibold text-lg">
             From the research panel
@@ -721,12 +1194,12 @@ export default function Home() {
             <Link
               key={f.slug}
               href={`/research/${f.slug}`}
-              className="group block rounded-lg border border-slate-800 bg-slate-900 p-4 hover:border-slate-600 hover:bg-slate-800/60 transition-all"
+              className="group block rounded-lg border border-slate-800 bg-slate-900 p-4 hover:border-sky-600/50 hover:bg-slate-800/60 hover:-translate-y-0.5 transition-all"
             >
-              <p className="font-mono text-xs text-sky-500 font-semibold mb-2">
+              <p className="font-mono text-xs text-sky-400 font-semibold mb-2 tabular-nums">
                 #{f.n.toString().padStart(2, "0")}
               </p>
-              <p className="text-gray-200 text-sm leading-snug group-hover:text-sky-400 transition-colors line-clamp-3">
+              <p className="text-gray-200 text-sm leading-snug group-hover:text-sky-300 transition-colors line-clamp-3">
                 {f.title}
               </p>
             </Link>
@@ -735,7 +1208,7 @@ export default function Home() {
       </div>
 
       {/* Compare tools */}
-      <div className="mb-10">
+      <div>
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-gray-100 font-semibold text-lg">
             Compare Deal Flow Tools
@@ -752,36 +1225,85 @@ export default function Home() {
             <Link
               key={comp.slug}
               href={`/compare/${comp.slug}`}
-              className="group block rounded-lg border border-slate-800 bg-slate-900 p-4 hover:border-slate-600 hover:bg-slate-800/60 transition-all"
+              className="group block rounded-lg border border-slate-800 bg-slate-900 p-4 hover:border-sky-600/50 hover:bg-slate-800/60 hover:-translate-y-0.5 transition-all"
             >
-              <h3 className="text-gray-200 font-medium text-sm group-hover:text-sky-400 transition-colors mb-1">
+              <h3 className="text-gray-100 font-medium text-sm group-hover:text-sky-400 transition-colors mb-1 leading-snug">
                 {comp.h1}
               </h3>
-              <p className="text-gray-400 text-xs">Read comparison &rarr;</p>
+              <p className="text-gray-400 text-xs inline-flex items-center gap-1">
+                Read comparison <span className="transition-transform group-hover:translate-x-0.5">→</span>
+              </p>
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      {/* Pillar-page hub — boosts internal-link graph for Yandex
+          "low-value" recheck routes (/weekly, /methodology, /trending,
+          /startups-to-watch, /alternatives, /signals, /faq, /glossary).
+          Added 2026-05-03 per traffic-impact action plan. */}
+      <div>
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-gray-100 font-semibold text-lg">
+            Pillar pages &amp; topic clusters
+          </h2>
+        </div>
+        <p className="text-gray-400 text-xs mb-3">
+          Deep-dive entry points for the most-asked questions about GitHub
+          momentum signals — methodology, sectors, signal types, and tooling
+          comparisons.
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+          {PILLAR_LINKS.map((p) => (
+            <Link
+              key={p.href}
+              href={p.href}
+              className="group block rounded-lg border border-slate-800 bg-slate-900 p-3 hover:border-sky-600/50 hover:bg-slate-800/60 hover:-translate-y-0.5 transition-all"
+            >
+              <div className="flex items-center gap-2">
+                <span aria-hidden="true" className="text-sm leading-none">
+                  {p.icon}
+                </span>
+                <p className="text-gray-200 text-sm font-medium group-hover:text-sky-400 transition-colors">
+                  {p.label}
+                </p>
+              </div>
+              <p className="text-gray-500 text-[11px] mt-1 leading-tight pl-6">
+                {p.sub}
+              </p>
             </Link>
           ))}
         </div>
       </div>
 
       {/* Bottom CTA — receipts-led lead magnet (Russell pivot 2026-04-26) */}
-      <div className="mt-12 rounded-xl border border-slate-800 bg-slate-900 p-6 sm:p-8 text-center">
-        <h2 className="text-gray-100 font-semibold text-lg mb-2">
+      <div className="relative rounded-xl border border-emerald-800/50 bg-gradient-to-br from-emerald-950/30 via-slate-900 to-slate-950 p-6 sm:p-10 text-center overflow-hidden shadow-lg shadow-emerald-500/5">
+        <div
+          aria-hidden="true"
+          className="absolute inset-x-0 top-0 h-px"
+          style={{ background: "linear-gradient(90deg, transparent, #10b981 40%, #0ea5e9 60%, transparent)" }}
+        />
+        <span className="inline-flex items-center gap-1.5 mb-3 rounded-full border border-emerald-700/50 bg-emerald-950/40 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-emerald-300">
+          <span aria-hidden="true">★</span> Free · 30 seconds · No signup
+        </span>
+        <h2 className="text-gray-100 font-bold text-2xl sm:text-3xl mb-3 tracking-tight">
           What&rsquo;s your developer Scout Score?
         </h2>
-        <p className="text-gray-400 text-sm mb-5 max-w-lg mx-auto">
+        <p className="text-gray-300 text-sm sm:text-base mb-6 max-w-xl mx-auto leading-relaxed">
           Paste any GitHub username and see how many validated unicorns you
-          starred <em>before</em> they hit $1B. Free, 30 seconds, no signup.
+          starred <em className="text-emerald-300 not-italic font-medium">before</em> they hit $1B.
         </p>
-        <div className="flex flex-col sm:flex-row gap-2 justify-center items-center">
+        <div className="flex flex-col sm:flex-row gap-3 justify-center items-stretch sm:items-center">
           <Link
             href="/receipts"
-            className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-emerald-700 hover:bg-emerald-600 text-white text-sm font-medium transition-colors"
+            className="inline-flex items-center justify-center gap-1.5 px-6 py-3 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold transition-all shadow-sm shadow-emerald-500/30 hover:shadow-md hover:shadow-emerald-500/40"
           >
-            Get my Scout Score &rarr;
+            Get my Scout Score
+            <span aria-hidden="true">→</span>
           </Link>
           <Link
             href="https://gitdealflow.com/#signup"
-            className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg border border-slate-700 hover:border-slate-500 text-gray-300 hover:text-gray-100 text-sm font-medium transition-colors"
+            className="inline-flex items-center justify-center px-6 py-3 rounded-lg border border-slate-700 hover:border-slate-500 hover:bg-slate-800/40 text-gray-300 hover:text-white text-sm font-medium transition-colors"
           >
             Or get the weekly report
           </Link>

@@ -2,101 +2,78 @@ import "server-only";
 import { createHmac, timingSafeEqual } from "crypto";
 
 const PREFIX_V1 = "gdf_";
-const PREFIX_V2 = "gdf_v2_";
+const PREFIX_V2 = "gdf_v2.";
 
-function hmacFor(customerId: string, length: number): string {
+function getSecret(): string {
   const secret = process.env.AUTH_SECRET;
   if (!secret) throw new Error("AUTH_SECRET environment variable is not set");
-  return createHmac("sha256", secret)
+  // `vercel env pull` historically writes \n inside quoted values which
+  // dotenv parses as a real trailing newline. Trim defensively so HMACs
+  // computed at issue time match HMACs at validation time even if the env
+  // value was added with stray whitespace.
+  return secret.trim();
+}
+
+export function generateApiKey(customerId: string): string {
+  const hmac = createHmac("sha256", getSecret())
     .update(`api-key:${customerId}`)
     .digest("hex")
-    .slice(0, length);
-}
-
-function safeHmacFor(customerId: string, length: number): string | null {
-  try { return hmacFor(customerId, length); } catch { return null; }
-}
-
-function b64urlEncode(str: string): string {
-  return Buffer.from(str, "utf8")
-    .toString("base64")
-    .replace(/\+/g, "-")
-    .replace(/\//g, "_")
-    .replace(/=+$/, "");
-}
-
-function b64urlDecode(str: string): string | null {
-  try {
-    const padded = str.replace(/-/g, "+").replace(/_/g, "/");
-    return Buffer.from(padded, "base64").toString("utf8");
-  } catch {
-    return null;
-  }
-}
-
-/**
- * Generate a deterministic API key from a Stripe customer ID.
- * v2 format: gdf_v2_<base64url(customerId)>.<hmac16>
- *   — embeds customerId so verifyApiKey can reverse-lookup without a database
- */
-export function generateApiKey(customerId: string): string {
-  const enc = b64urlEncode(customerId);
-  const sig = hmacFor(customerId, 16);
-  return `${PREFIX_V2}${enc}.${sig}`;
-}
-
-/**
- * Legacy v1 generator — deterministic 32-char HMAC, no embedded customer.
- * Kept for backward compatibility with any existing keys printed before v2.
- */
-export function generateLegacyApiKey(customerId: string): string {
-  const sig = hmacFor(customerId, 32);
-  return `${PREFIX_V1}${sig}`;
+    .slice(0, 32);
+  return `${PREFIX_V1}${hmac}`;
 }
 
 export function verifyApiKeyFormat(key: string): boolean {
-  if (key.startsWith(PREFIX_V2)) {
-    const rest = key.slice(PREFIX_V2.length);
-    const dot = rest.lastIndexOf(".");
-    if (dot < 1) return false;
-    const enc = rest.slice(0, dot);
-    const sig = rest.slice(dot + 1);
-    return /^[A-Za-z0-9_-]+$/.test(enc) && /^[a-f0-9]{16}$/.test(sig);
-  }
-  if (key.startsWith(PREFIX_V1)) {
-    return key.length === PREFIX_V1.length + 32;
-  }
-  return false;
+  return key.startsWith(PREFIX_V1) && key.length === PREFIX_V1.length + 32;
 }
 
 /**
- * Verify an API key and recover the Stripe customer ID it encodes.
- * Returns the customerId if the HMAC matches, null otherwise.
+ * v2 API key — reversible, embeds the Stripe customer ID so the server can
+ * authenticate per-request without iterating the customer list.
  *
- * Only v2 keys can be reversed without a database lookup.
- * v1 keys return null (no embedded customer info — would need a key→customer
- * mapping in a real DB).
+ * Format: `gdf_v2.<customerId>.<hmac16>`
+ *   customerId — literal Stripe customer ID (e.g. `cus_NffrFeUfNV2Hib`)
+ *   hmac16     — first 16 hex chars of HMAC-SHA256(secret, "api-key-v2:" + customerId)
+ *
+ * Used for the per-request agent tier. v1 keys remain valid for legacy callers.
  */
-export function verifyApiKey(key: string): { customerId: string } | null {
-  if (!verifyApiKeyFormat(key)) return null;
+export function generateApiKeyV2(customerId: string): string {
+  const tag = createHmac("sha256", getSecret())
+    .update(`api-key-v2:${customerId}`)
+    .digest("hex")
+    .slice(0, 16);
+  return `${PREFIX_V2}${customerId}.${tag}`;
+}
+
+export interface ParsedApiKeyV2 {
+  customerId: string;
+}
+
+export function parseApiKeyV2(key: string): ParsedApiKeyV2 | null {
   if (!key.startsWith(PREFIX_V2)) return null;
-
   const rest = key.slice(PREFIX_V2.length);
-  const dot = rest.lastIndexOf(".");
-  const enc = rest.slice(0, dot);
-  const sig = rest.slice(dot + 1);
-  const customerId = b64urlDecode(enc);
-  if (!customerId) return null;
+  const lastDot = rest.lastIndexOf(".");
+  if (lastDot <= 0) return null;
+  const customerId = rest.slice(0, lastDot);
+  const tag = rest.slice(lastDot + 1);
+  if (!/^cus_[A-Za-z0-9]+$/.test(customerId)) return null;
+  if (!/^[a-f0-9]{16}$/.test(tag)) return null;
 
-  const expected = safeHmacFor(customerId, 16);
-  if (!expected) return null;
-  if (sig.length !== expected.length) return null;
-  let equal = true;
-  try {
-    equal = timingSafeEqual(Buffer.from(sig, "hex"), Buffer.from(expected, "hex"));
-  } catch {
-    return null;
-  }
-  if (!equal) return null;
+  // Without a secret, no key can validate. Return null (→ 401) instead of throwing (→ 500).
+  if (!process.env.AUTH_SECRET) return null;
+
+  const expected = createHmac("sha256", getSecret())
+    .update(`api-key-v2:${customerId}`)
+    .digest("hex")
+    .slice(0, 16);
+  const a = Buffer.from(expected, "hex");
+  const b = Buffer.from(tag, "hex");
+  if (a.length !== b.length || !timingSafeEqual(a, b)) return null;
   return { customerId };
+}
+
+/** Pull a bearer token out of an `Authorization` header value. */
+export function extractBearer(authHeader: string | null): string | null {
+  if (!authHeader) return null;
+  const m = authHeader.match(/^Bearer\s+(\S+)$/i);
+  return m ? m[1] : null;
 }

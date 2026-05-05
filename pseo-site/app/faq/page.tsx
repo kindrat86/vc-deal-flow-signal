@@ -3,11 +3,14 @@ import Link from "next/link";
 import { posts } from "@/content/posts";
 import { getAllSectors, getCurrentPeriod } from "@/lib/data";
 import PSEOFooterNav from "@/components/PSEOFooterNav";
+import { HreflangLinks } from "@/components/HreflangLinks";
+import { getHreflangLanguages } from "@/lib/hreflang";
 
 export const metadata: Metadata = {
   title: "Frequently Asked Questions — VC Deal Flow Signal",
   description:
     "Answers to common questions about GitHub engineering signals, startup deal sourcing, commit velocity, engineering acceleration, and how investors use VC Deal Flow Signal to find breakout startups.",
+  // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
   alternates: {
     canonical: "/faq",
   },
@@ -32,7 +35,7 @@ const standaloneFaqs: FAQEntry[] = [
   {
     question: "How much does VC Deal Flow Signal cost?",
     answer:
-      "VC Deal Flow Signal offers a free Signal Report — this week's top 5 breakout startups delivered free after email confirmation, then weekly updates. The Dashboard beta is EUR 9.97/month and gives access to 50+ ranked startups across all 20 sectors with filtering by stage, geography, and signal type. There is no annual commitment required.",
+      "VC Deal Flow Signal offers a free Signal Report — this week's top 5 breakout startups delivered free after email confirmation, then weekly updates. The Dashboard beta is EUR 9.97/month and gives access to 85+ ranked startups across all 20 sectors with filtering by stage, geography, and signal type. There is no annual commitment required.",
     source: "Pricing",
     sourceHref: "https://gitdealflow.com/#signup",
   },
@@ -122,6 +125,10 @@ export default function FAQPage() {
 
   return (
     <>
+      <HreflangLinks
+        canonical="https://signals.gitdealflow.com/faq"
+        languages={getHreflangLanguages("/faq")}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -232,7 +239,7 @@ export default function FAQPage() {
             Browse the sector rankings to see engineering signals in action, or
             read the methodology for the full technical breakdown.
           </p>
-          <div className="flex justify-center gap-3">
+          <div className="flex flex-wrap justify-center gap-3">
             <Link
               href="/"
               className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-medium transition-colors"
@@ -244,6 +251,12 @@ export default function FAQPage() {
               className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 hover:border-slate-500 text-gray-300 text-sm font-medium transition-colors"
             >
               Read Methodology
+            </Link>
+            <Link
+              href="/pricing"
+              className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 hover:border-slate-500 text-gray-300 text-sm font-medium transition-colors"
+            >
+              See Pricing
             </Link>
           </div>
         </div>

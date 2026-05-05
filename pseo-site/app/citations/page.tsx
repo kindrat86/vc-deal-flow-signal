@@ -195,11 +195,18 @@ const DIRECTORY_ANCHORS: Anchor[] = [
     description: "Crunchbase organization profile.",
   },
   {
-    label: "Chrome Web Store",
+    label: "Chrome Web Store — VC Deal Flow Signal (Crunchbase + Wellfound badge)",
     url: "https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn",
     type: "directory",
     description:
-      "Free Chrome extension that injects the GitDealFlow score onto Crunchbase, AngelList, and PitchBook profiles.",
+      "Free Chrome extension that injects the GitDealFlow score onto Crunchbase and Wellfound profiles.",
+  },
+  {
+    label: "Chrome Web Store — VC GitHub Lookup (Startup Signals on Hover)",
+    url: "https://chromewebstore.google.com/detail/vc-github-lookup-%E2%80%94-startu/plgngijmloeljfkenecdkhiblcfcbblm",
+    type: "directory",
+    description:
+      "Free Chrome extension (May 2026) that surfaces engineering acceleration signals on hover over any GitHub repo or org link, with a chip on direct visits and a manual lookup popup.",
   },
   {
     label: "Side Projectors",
@@ -249,10 +256,11 @@ const SOCIAL_ANCHORS: Anchor[] = [
     description: "dev.to author profile and weekly long-form posts.",
   },
   {
-    label: "Hashnode",
-    url: "https://hashnode.com/@TheData_7cdit42c",
+    label: "Substack",
+    url: "https://gitdealflow.substack.com",
     type: "social",
-    description: "Hashnode author profile.",
+    description:
+      "Substack publication mirror — weekly Top-100 GitHub Signal Startups recap with canonical link back to gitdealflow.com/blog.",
   },
   {
     label: "HackerNoon",

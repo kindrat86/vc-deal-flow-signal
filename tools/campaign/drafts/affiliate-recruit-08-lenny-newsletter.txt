@@ -1,0 +1,21 @@
+TO: lenny@lennysnewsletter.com (likely won't accept affiliate; consider sponsor track)
+FROM: signal@gitdealflow.com
+SUBJECT: Sponsorship — PM/operator angle into angel investing — GitDealFlow
+
+Hi Lenny,
+
+Lenny's audience has the largest concentration of operator-investors on the open web — PMs at Stripe / Notion / Figma / Plaid who write angel checks. The question we keep hearing from them: "how do I source deals before the deck circulates?"
+
+GitDealFlow answers that with public-data engineering signals. SSRN methodology, 4,200 startup orgs, weekly refresh. Free Sunday digest, €9.97/mo Dashboard, €1,997 Sector Sweep.
+
+I know your sponsor format is flat-rate not affiliate. Happy to send rate-card-fitting bid for one issue. Two ad-copy approaches:
+
+(1) "Most operator-investors source from their network. Here's the public-data layer your network doesn't have." — leads with thesis, links to landing.
+
+(2) "I'm an anonymous solo founder who built a tracker for my own angel checks. SSRN-published methodology, free MCP server, paid tiers. Here's how I use it." — first-person, authentic, soft pitch.
+
+Reply with rate card if there's a slot in the next 8 weeks.
+
+The Data Nerd
+gitdealflow.com
+ssrn.com/abstract=6606558

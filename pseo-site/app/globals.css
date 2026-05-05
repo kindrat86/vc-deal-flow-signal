@@ -14,4 +14,87 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: inherit;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Honor reduced-motion for any decorative animation. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Selection palette — sky to match brand accent. */
+::selection {
+  background-color: rgba(14, 165, 233, 0.35);
+  color: #f1f5f9;
+}
+
+/* Focus-visible — readable, brand-coloured ring on every interactive element. */
+:where(a, button, [role="button"], input, textarea, select):focus-visible {
+  outline: 2px solid #38bdf8;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Scrollbar — slim, slate-toned, doesn't fight the dark background. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #334155 transparent;
+}
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 999px;
+  border: 2px solid #020617;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* Card interaction — consistent hover affordance across every card-shaped link. */
+@utility card-interactive {
+  transition: border-color 0.2s ease, background-color 0.2s ease,
+    transform 0.2s ease, box-shadow 0.2s ease;
+}
+@utility card-interactive-hover {
+  border-color: #475569;
+  background-color: rgba(30, 41, 59, 0.7);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 25px -10px rgba(14, 165, 233, 0.18);
+}
+
+/* Subtle row stagger for data-heavy lists. */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@utility fade-in-up {
+  animation: fade-in-up 0.4s ease-out both;
+}
+
+/* Soft brand glow — used behind hero stats and CTA badges. */
+@utility brand-glow {
+  background: radial-gradient(
+    600px circle at 50% 0%,
+    rgba(14, 165, 233, 0.12),
+    transparent 60%
+  );
 }

@@ -1,0 +1,17 @@
+TO: alex@bytebytego.com
+FROM: signal@gitdealflow.com
+SUBJECT: Affiliate placement — GitDealFlow (SSRN methodology, devtools angle)
+
+Hi Alex,
+
+ByteByteGo's audience overlaps heavily with the angel-investing dev crowd. I built gitdealflow.com — a signal that ranks 4,200 venture-backed startup GitHub orgs by engineering acceleration. SSRN-published methodology: ssrn.com/abstract=6606558.
+
+Affiliate is open: 20% lifetime, €19.40/mo recurring per Insider sub, €399 on every Sector Sweep. 60d cookie, monthly Stripe payouts. Program details: signals.gitdealflow.com/affiliates.
+
+The natural placement: a "tools systems engineers use to angel invest" issue or sidebar mention. The free MCP server is the soft entry — engineers install it, ask Claude live questions about startup GitHub momentum, and the paid tiers ascend from there.
+
+If sponsorship is your preference over affiliate, send rate card. Either works.
+
+The Data Nerd
+gitdealflow.com
+ssrn.com/abstract=6606558

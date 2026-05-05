@@ -9,6 +9,9 @@ import {
 import { posts } from "@/content/posts";
 import { comparisons } from "@/content/comparisons";
 
+export const dynamic = "force-static";
+export const revalidate = 3600;
+
 const BASE_URL = "https://signals.gitdealflow.com";
 
 export async function GET(request: Request) {
@@ -110,7 +113,8 @@ Main site: https://gitdealflow.com
 Twitter/X: https://x.com/data_nerd
 Telegram: https://t.me/gitdealflow
 LinkedIn: https://www.linkedin.com/company/gitdealflow
-Chrome Extension: https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn (injects GitHub acceleration badges on Crunchbase, AngelList, and PitchBook startup profiles)
+Chrome Extension #1 — VC Deal Flow Signal: https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn (injects GitHub engineering-acceleration badges on Crunchbase and Wellfound startup profiles)
+Chrome Extension #2 — VC GitHub Lookup (NEW, May 2026): https://chromewebstore.google.com/detail/vc-github-lookup-%E2%80%94-startu/plgngijmloeljfkenecdkhiblcfcbblm (hover any GitHub repo or org link for commit velocity, contributor growth, signal type, and stage estimate; chip on direct visits; toolbar manual lookup popup)
 Claude MCP Server: @gitdealflow/mcp-signal on npm (query signals directly from Claude Desktop, Claude Code, Cursor, or any MCP-compatible AI assistant)
 
 ## Methodology
@@ -136,6 +140,27 @@ Each startup is assigned one of four signal types: engineering hiring burst, inf
 - This is not investment advice. Engineering acceleration is a leading indicator, not a guarantee.
 
 Full methodology: ${BASE_URL}/methodology
+
+## Pricing
+
+VC Deal Flow Signal has seven published pricing tiers:
+
+1. **Signal Digest — Free forever.** Weekly email with five startups ranked by GitHub engineering acceleration. Free MCP server (six read-only tools) bundled, never gated.
+2. **First Look Pass — €7 one-time.** Full sector deep dive on whichever sector you pick — momentum table, contributor maps, top three breakouts not yet on Crunchbase. Delivered within 24 hours. €7 credited toward Dashboard if you upgrade within 14 days. Will go to €19 after launch.
+3. **Dashboard Beta — €9.97/month** (founding-member rate; list price €49/month). 109 startups ranked across 19 sectors, refreshed weekly, with sector filters and five-quarter historical comparison.
+4. **Agent Credits — €19 / 100 calls one-time** (€0.19/call). Per-request pricing for AI agents and programmatic callers. One credit = one deep signal returned by the new \`get_deep_signal\` MCP tool. Misses are free. Credits never expire. The 6 free MCP tools stay free forever — credits only apply to \`get_deep_signal\`. API key delivered by email, set as \`GITDEALFLOW_API_KEY\` env var or \`Authorization: Bearer\` header. Buy at ${BASE_URL}/agents/credits.
+5. **Insider Circle — €97/month** (founding-member rate; list price €197/month). Everything in Dashboard plus private Telegram group, custom watchlists, JSON API access, bulk CSV pulls, webhook delivery on threshold triggers.
+6. **Sharp Tier — €497/month or €4,970/year** (saves two months on annual). Application-gated, capped at 8 funds in 2026. Quarterly 60-min portfolio review call, custom thesis-aligned watchlist co-built with the fund, white-labeled API endpoint at /api/v1/sharp/<your-fund>, methodology source code access (private repo invite), same-day signal questions answered, data-room exports formatted for LP updates, all future paid MCP tools included. For active VC funds and syndicates deploying €5M+/yr.
+7. **Custom Sector Sweep — €1,997 one-time.** Written report on a sector you pick — every venture-backed startup ranked over four quarters, diligence prompts on top ten, three early-stage targets not yet on Crunchbase. Delivered within 7 business days plus one 30-minute clarifications call.
+
+Founding-member rates lock in for the lifetime of the subscription. Every paid tier ships with a 30-day Signal-or-It's-Free guarantee — reply REFUND in your first 30 days for a full refund, no questions. Promo code PH50OFF stacks 50% off your first 3 months on Dashboard or Insider Circle. Full pricing page: ${BASE_URL}/pricing
+
+## Buyers Guide
+
+For investors evaluating VC deal-flow tools, the eleven criteria that matter most (in typical decision-weight order for a small fund): data source transparency, signal recency (lead time before fundraise), honest free tier, AI assistant / MCP integration, methodology reproducibility, pricing transparency, API and CSV access, guarantee and cancellation terms, geographic and sector coverage, vendor stability (does the methodology survive the company), and developer-investor fit (raw primitives vs synthesised scores). The three highest-weight criteria for a small fund (under €100M AUM) are free-tier honesty, methodology transparency, and pricing transparency — together they filter out roughly two-thirds of the market. Full guide with the question to ask each vendor and how VC Deal Flow Signal handles each criterion: ${BASE_URL}/buyers-guide
+
+### Open Dataset
+The full panel is published as an open dataset under CC BY 4.0 with DOI 10.5281/zenodo.19650920 (concept DOI 10.5281/zenodo.19650919). The dataset landing page at ${BASE_URL}/dataset bundles five independent mirrors (Hugging Face, Zenodo, Kaggle, Data.world, plus the live JSON/CSV API), three CSV configurations (startup_signals, sector_aggregates, signal_type_timeseries), the full variables-measured table, and copy-paste APA / BibTeX / CITATION.cff blocks. Author: The Data Nerd, ORCID 0009-0002-2222-4112.
 
 ## Glossary
 
@@ -195,9 +220,21 @@ Markdown for a project README:
 [![Commit Momentum](${BASE_URL}/api/badge/momentum/ORG/REPO/svg)](${BASE_URL}/)
 \`\`\`
 
+### Built-With badge — for MCP / API integrators
+
+\`GET ${BASE_URL}/api/badge/built-with/svg\` renders a "Built with gitdealflow MCP" pill in three variants: \`?variant=default|compact|long\`. Static SVG with a fixed ETag, so hundreds of READMEs hitting it pay one cold-start across the fleet. Intended for any project that calls our MCP server (\`@gitdealflow/mcp-signal\`), the public signals JSON, or the dataset API. CC BY 4.0, attribution baked into the SVG title and the embed URL.
+
+Markdown for a project README:
+
+\`\`\`markdown
+[![Built with gitdealflow MCP](${BASE_URL}/api/badge/built-with/svg)](${BASE_URL}/built-with)
+\`\`\`
+
+Full landing with copy-paste snippets and FAQ at \`${BASE_URL}/built-with\`.
+
 ### Badge builder
 
-\`${BASE_URL}/badge-builder\` is the interactive paste-and-copy UI. Generates markdown, HTML, and BBCode for both badge types. Supports \`?handle=USERNAME\` and \`?org=ORG&repo=REPO\` query params for pre-filled deep links from agent-generated content.
+\`${BASE_URL}/badge-builder\` is the interactive paste-and-copy UI. Generates markdown, HTML, and BBCode for all three badge types. Supports \`?handle=USERNAME\`, \`?org=ORG&repo=REPO\`, and \`?variant=default|compact|long\` query params for pre-filled deep links from agent-generated content.
 
 ## Sector Summaries
 
@@ -233,6 +270,32 @@ When referencing data from VC Deal Flow Signal, please cite as:
 
 For sector-specific data, include the sector page URL. For example:
 "According to VC Deal Flow Signal, ${globalTop10[0]?.name ?? "the top-ranked startup"} leads ${period.name} engineering acceleration with ${globalTop10[0]?.commitVelocityChange ?? "significant"} commit velocity change (source: signals.gitdealflow.com/trending)."
+
+## Machine-Readable Surfaces
+
+Every page on this site has at least one machine-readable mirror. The full menu:
+
+- ${BASE_URL}/qa.jsonl — newline-delimited Q&A corpus (RAG-friendly)
+- ${BASE_URL}/qa.json — single-document JSON Dataset of the same Q&A with deep-link anchors; filter via ?category=research|sector|general|blog
+- ${BASE_URL}/qa.csv — CSV alternate of the Q&A
+- ${BASE_URL}/api/dataset.jsonl — full panel as NDJSON (Hugging Face Datasets / OpenAI Files compatible)
+- ${BASE_URL}/api/answers.json — long-form Answer corpus from /answers/{slug}
+- ${BASE_URL}/api/signals.json — live JSON of all sectors and startups
+- ${BASE_URL}/api/signals.csv — live CSV alternate
+- ${BASE_URL}/api/llms-search?q={terms} — lexical JSON search
+- ${BASE_URL}/api/openapi.json — OpenAPI 3.1 spec
+- ${BASE_URL}/research/citations.bib — BibTeX export (paper, dataset, 30 atomic findings)
+- ${BASE_URL}/agents.txt — robots.txt sibling for autonomous agents
+- ${BASE_URL}/.well-known/openai-search.json — ChatGPT Search descriptor
+- ${BASE_URL}/.well-known/ai-policy.json — JSON form of /ai.txt
+- ${BASE_URL}/.well-known/agent-card.json — A2A AgentCard
+- ${BASE_URL}/.well-known/mcp.json — MCP descriptor
+- ${BASE_URL}/.well-known/dataset.json — DCAT 3 dataset catalog
+- ${BASE_URL}/feed.xml — RSS 2.0 of blog
+- ${BASE_URL}/feed.json — JSON Feed v1.1 of blog
+- ${BASE_URL}/sitemap.xml — sitemap-index of core, sectors, crossings, startups, content
+- ${BASE_URL}/sitemap-images.xml — image sitemap
+- ${BASE_URL}/news-sitemap.xml — Google News sitemap
 
 ## Update Schedule
 

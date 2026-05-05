@@ -86,6 +86,7 @@ export default function PSEOFooterNav({
       <div className="flex flex-wrap gap-2">
         {link("/trending", "Trending now")}
         {link("/weekly", "Weekly reports")}
+        {link("/pricing", "Pricing")}
         {link("/methodology", "Methodology")}
         {link("/research", "Research")}
         {link("/citations", "Citations")}

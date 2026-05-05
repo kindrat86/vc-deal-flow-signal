@@ -26,6 +26,9 @@ export async function generateStaticParams() {
   return getAllPageSlugs().map((slug) => ({ slug }));
 }
 
+export const dynamicParams = false;
+export const revalidate = 604800;
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const parsed = parsePageSlug(slug);

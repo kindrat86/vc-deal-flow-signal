@@ -2192,7 +2192,7 @@ If you have shipped an MCP server, what is your tool count and how did you arriv
       {
         question: "Do I need an API key?",
         answer:
-          "No. The A2A endpoint at signals.gitdealflow.com/api/a2a is unauthenticated. There is no signup, no rate limit enforced at the application layer, and the upstream CDN absorbs typical agent traffic. The five free MCP tools and five free A2A skills are part of our distribution-magnet strategy and stay free forever. Paid features are scoped to /predict and the Insider Circle layer.",
+          "No. The A2A endpoint at signals.gitdealflow.com/api/a2a is unauthenticated. There is no signup, no rate limit enforced at the application layer, and the upstream CDN absorbs typical agent traffic. The six free MCP tools and five free A2A skills are part of our distribution-magnet strategy and stay free forever. Paid features are scoped to /predict and the Insider Circle layer.",
       },
       {
         question: "What can the agent NOT do today?",
@@ -2310,9 +2310,9 @@ If you are a developer-investor, an angel scout, or anyone running an AI workflo
 
 ## Why we are telling you instead of pitching you
 
-GitDealFlow's business model has always been: ship the free distribution magnet first, charge for the premium layer. Our 5 MCP tools are free forever. Our 5 A2A skills are free forever. The signals website is free. The CSV export is free. The methodology paper is free.
+GitDealFlow's business model has always been: ship the free distribution magnet first, charge for the premium layer. Our 6 MCP tools are free forever. Our 5 A2A skills are free forever. The signals website is free. The CSV export is free. The methodology paper is free.
 
-What is paid: [Insider Circle](/dashboard) ($9.90 per month, $97 per year) and the prediction game's premium tier. Those will earn their keep when there are 500 paying subscribers and we can start building the things only that audience needs.
+What is paid: [Dashboard Beta](/dashboard) (€9.97/mo) and [Insider Circle](/insider) (€97/mo). Those will earn their keep when there are 500 paying subscribers and we can start building the things only that audience needs.
 
 Until then, every developer-investor who wires GitDealFlow into their Claude Code is one more node in a network where breakout startups cannot hide for 6-12 weeks anymore. That is worth more than $20,000 of API access.
 

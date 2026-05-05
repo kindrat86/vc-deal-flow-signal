@@ -19,6 +19,9 @@ export async function generateStaticParams() {
   return getAllGeoPageSlugs().map((slug) => ({ slug }));
 }
 
+export const dynamicParams = false;
+export const revalidate = 604800;
+
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {

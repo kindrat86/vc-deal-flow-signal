@@ -8,6 +8,7 @@ import {
   getAllTrendSlugs,
   getAllRegionPageSlugs,
   getAllStagePageSlugs,
+  getAllStageSlugs,
   getAllStageSectorPairs,
   getAllSignalSectorPairs,
   getAllStageSignalPairs,
@@ -21,6 +22,11 @@ import { getAllCompetitorVsSlugs } from "@/content/competitor-vs";
 import { pillars } from "@/content/pillars";
 import { agentQueries } from "@/content/agent-queries";
 import { FINDINGS as RESEARCH_FINDINGS } from "@/content/research-findings";
+import { PRIMITIVES } from "@/content/signal-primitives";
+import { LOCALES } from "@/content/locales";
+import { getMarketSlugs } from "@/lib/markets";
+import { getAllTop100Slugs } from "@/lib/top-100";
+import { getAllPredictionWeekSlugs } from "@/lib/predictions";
 
 const BASE_URL = "https://signals.gitdealflow.com";
 
@@ -35,6 +41,16 @@ interface RouteContext {
   params: Promise<{ id: string }>;
 }
 
+export const dynamic = "force-static";
+export const dynamicParams = false;
+export const revalidate = 3600;
+
+export function generateStaticParams() {
+  return ["core", "sectors", "crossings", "startups", "content"].map((id) => ({
+    id: `${id}.xml`,
+  }));
+}
+
 export async function GET(_req: Request, ctx: RouteContext) {
   const { id: rawId } = await ctx.params;
   const id = rawId.replace(/\.xml$/, "");
@@ -47,21 +63,101 @@ export async function GET(_req: Request, ctx: RouteContext) {
       { url: BASE_URL, lastmod, changefreq: "weekly", priority: 1.0 },
       { url: `${BASE_URL}/trending`, lastmod, changefreq: "weekly", priority: 0.9 },
       { url: `${BASE_URL}/methodology`, lastmod, changefreq: "monthly", priority: 0.8 },
+      { url: `${BASE_URL}/pricing`, lastmod, changefreq: "monthly", priority: 0.9 },
+      { url: `${BASE_URL}/buyers-guide`, lastmod, changefreq: "monthly", priority: 0.85 },
+      { url: `${BASE_URL}/enterprise`, lastmod, changefreq: "monthly", priority: 0.85 },
+      { url: `${BASE_URL}/api/v1/pricing.json`, lastmod, changefreq: "monthly", priority: 0.7 },
+      { url: `${BASE_URL}/dataset`, lastmod, changefreq: "weekly", priority: 0.85 },
       { url: `${BASE_URL}/faq`, lastmod, changefreq: "monthly", priority: 0.7 },
       { url: `${BASE_URL}/about`, lastmod, changefreq: "monthly", priority: 0.6 },
+      { url: `${BASE_URL}/story`, lastmod, changefreq: "monthly", priority: 0.75 },
       { url: `${BASE_URL}/glossary`, lastmod, changefreq: "monthly", priority: 0.7 },
       { url: `${BASE_URL}/compare`, lastmod, changefreq: "monthly", priority: 0.6 },
       { url: `${BASE_URL}/weekly`, lastmod, changefreq: "weekly", priority: 0.6 },
+      { url: `${BASE_URL}/weekly/top-100`, lastmod, changefreq: "weekly", priority: 0.85 },
+      { url: `${BASE_URL}/weekly/top-100/data.json`, lastmod, changefreq: "weekly", priority: 0.7 },
+      { url: `${BASE_URL}/weekly/top-100/feed.xml`, lastmod, changefreq: "weekly", priority: 0.7 },
+      ...getAllTop100Slugs().flatMap((slug) => [
+        {
+          url: `${BASE_URL}/weekly/top-100/${slug}`,
+          lastmod,
+          changefreq: "weekly" as const,
+          priority: 0.8,
+        },
+        {
+          url: `${BASE_URL}/weekly/top-100/${slug}/data.json`,
+          lastmod,
+          changefreq: "weekly" as const,
+          priority: 0.65,
+        },
+      ]),
       { url: `${BASE_URL}/signal-of-the-week`, lastmod, changefreq: "weekly", priority: 0.8 },
       { url: `${BASE_URL}/alternatives`, lastmod, changefreq: "monthly", priority: 0.8 },
       { url: `${BASE_URL}/use-cases`, lastmod, changefreq: "monthly", priority: 0.8 },
       { url: `${BASE_URL}/integrations`, lastmod, changefreq: "monthly", priority: 0.8 },
+      { url: `${BASE_URL}/integrations/mistral`, lastmod, changefreq: "monthly", priority: 0.75 },
+      { url: `${BASE_URL}/integrations/chatgpt`, lastmod, changefreq: "monthly", priority: 0.85 },
+      { url: `${BASE_URL}/integrations/agent-runtimes`, lastmod, changefreq: "monthly", priority: 0.85 },
+      // Programmatic /for-{framework} dev-investor crossover surfaces (2026-05-03)
+      { url: `${BASE_URL}/for-langchain`, lastmod, changefreq: "monthly", priority: 0.8 },
+      { url: `${BASE_URL}/for-crewai`, lastmod, changefreq: "monthly", priority: 0.8 },
+      { url: `${BASE_URL}/for-letta`, lastmod, changefreq: "monthly", priority: 0.8 },
+      { url: `${BASE_URL}/for-mastra`, lastmod, changefreq: "monthly", priority: 0.8 },
+      { url: `${BASE_URL}/for-vercel-ai-sdk`, lastmod, changefreq: "monthly", priority: 0.8 },
+      { url: `${BASE_URL}/api/actions/openapi.json`, lastmod, changefreq: "weekly", priority: 0.7 },
       { url: `${BASE_URL}/changelog`, lastmod, changefreq: "weekly", priority: 0.7 },
       { url: `${BASE_URL}/developers`, lastmod, changefreq: "monthly", priority: 0.7 },
       { url: `${BASE_URL}/data-sources`, lastmod, changefreq: "monthly", priority: 0.7 },
       { url: `${BASE_URL}/citations`, lastmod, changefreq: "monthly", priority: 0.85 },
+      { url: `${BASE_URL}/citation-guide`, lastmod, changefreq: "monthly", priority: 0.85 },
+      { url: `${BASE_URL}/knowledge-graph.json`, lastmod, changefreq: "weekly", priority: 0.7 },
+      // E-E-A-T trust surfaces (2026-05-02 chain)
+      { url: `${BASE_URL}/standards`, lastmod, changefreq: "monthly", priority: 0.8 },
+      { url: `${BASE_URL}/corrections`, lastmod, changefreq: "weekly", priority: 0.7 },
+      { url: `${BASE_URL}/reproducibility`, lastmod, changefreq: "monthly", priority: 0.85 },
+      { url: `${BASE_URL}/attestations`, lastmod, changefreq: "monthly", priority: 0.85 },
+      // Topical-authority hubs
+      { url: `${BASE_URL}/signals`, lastmod, changefreq: "monthly", priority: 0.85 },
+      ...PRIMITIVES.map((p) => ({
+        url: `${BASE_URL}/signals/define/${p.slug}`,
+        lastmod,
+        changefreq: "monthly",
+        priority: 0.8,
+      })),
+      { url: `${BASE_URL}/knowledge`, lastmod, changefreq: "monthly", priority: 0.8 },
+      // Off-page receptacles
+      { url: `${BASE_URL}/press`, lastmod, changefreq: "monthly", priority: 0.75 },
+      { url: `${BASE_URL}/mirrors`, lastmod, changefreq: "monthly", priority: 0.7 },
+      { url: `${BASE_URL}/embed`, lastmod, changefreq: "monthly", priority: 0.7 },
+      // i18n surfaces
+      { url: `${BASE_URL}/translations`, lastmod, changefreq: "monthly", priority: 0.6 },
+      ...LOCALES.map((l) => ({
+        url: `${BASE_URL}/${l.code}`,
+        lastmod,
+        changefreq: "monthly",
+        priority: 0.6,
+      })),
+      // Localized topic stubs — 12 locales × 3 topics = 36 stubs
+      ...LOCALES.flatMap((l) =>
+        ["methodology", "glossary", "faq"].map((topic) => ({
+          url: `${BASE_URL}/${l.code}/${topic}`,
+          lastmod,
+          changefreq: "monthly",
+          priority: 0.55,
+        })),
+      ),
+      // Wikipedia citation helper
+      { url: `${BASE_URL}/wikipedia`, lastmod, changefreq: "monthly", priority: 0.7 },
       { url: `${BASE_URL}/predict`, lastmod, changefreq: "weekly", priority: 0.95 },
       { url: `${BASE_URL}/receipts`, lastmod, changefreq: "weekly", priority: 0.9 },
+      { url: `${BASE_URL}/markets`, lastmod, changefreq: "weekly", priority: 0.9 },
+      { url: `${BASE_URL}/markets/methodology`, lastmod, changefreq: "monthly", priority: 0.8 },
+      ...getMarketSlugs().map((slug) => ({
+        url: `${BASE_URL}/markets/${slug}`,
+        lastmod,
+        changefreq: "weekly" as const,
+        priority: 0.9,
+      })),
       { url: `${BASE_URL}/install`, lastmod, changefreq: "monthly", priority: 0.85 },
       { url: `${BASE_URL}/leaderboard`, lastmod, changefreq: "hourly", priority: 0.85 },
       { url: `${BASE_URL}/agents`, lastmod, changefreq: "weekly", priority: 0.9 },
@@ -72,6 +168,21 @@ export async function GET(_req: Request, ctx: RouteContext) {
       { url: `${BASE_URL}/a2a/openai-agents-sdk`, lastmod, changefreq: "monthly", priority: 0.75 },
       { url: `${BASE_URL}/a2a/langchain`, lastmod, changefreq: "monthly", priority: 0.75 },
       { url: `${BASE_URL}/a2a/vercel-ai-sdk`, lastmod, changefreq: "monthly", priority: 0.75 },
+      { url: `${BASE_URL}/affiliates`, lastmod, changefreq: "monthly", priority: 0.6 },
+      { url: `${BASE_URL}/authors`, lastmod, changefreq: "monthly", priority: 0.7 },
+      { url: `${BASE_URL}/authors/the-data-nerd`, lastmod, changefreq: "monthly", priority: 0.75 },
+      { url: `${BASE_URL}/authors/engineering-research`, lastmod, changefreq: "monthly", priority: 0.7 },
+      { url: `${BASE_URL}/authors/founder-perspective`, lastmod, changefreq: "monthly", priority: 0.7 },
+      { url: `${BASE_URL}/badge-builder`, lastmod, changefreq: "monthly", priority: 0.75 },
+      { url: `${BASE_URL}/built-with`, lastmod, changefreq: "weekly", priority: 0.7 },
+      { url: `${BASE_URL}/predicted`, lastmod, changefreq: "weekly", priority: 0.85 },
+      ...getAllPredictionWeekSlugs().map((slug) => ({
+        url: `${BASE_URL}/predicted/${slug}`,
+        lastmod,
+        changefreq: "weekly" as const,
+        priority: 0.75,
+      })),
+      { url: `${BASE_URL}/challenge`, lastmod, changefreq: "monthly", priority: 0.85 },
     ];
   } else if (id === "sectors") {
     entries = [
@@ -108,7 +219,7 @@ export async function GET(_req: Request, ctx: RouteContext) {
     ];
   } else if (id === "crossings") {
     entries = [
-      ...getAllStagePageSlugs().map((slug) => ({
+      ...getAllStageSlugs().map((slug) => ({
         url: `${BASE_URL}/stage/${slug}`,
         lastmod,
         changefreq: "weekly",

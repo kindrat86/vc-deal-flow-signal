@@ -1,0 +1,23 @@
+TO: [ever.co founder email — research before send]
+FROM: signal@gitdealflow.com
+SUBJECT: Ever is named in this week's Acceleration Watch (+854%, rank #3)
+
+Hi,
+
+gitdealflow.com tracks 4,200 venture-backed startup GitHub orgs and ranks them by engineering acceleration. Open SSRN methodology, abstract=6606558.
+
+Ever (ever-co) is at rank #3 in this week's Acceleration Watch (week of 2026-05-04, 124 commits / 14d, +854% over baseline, deploy-frequency-spike signal). 9.5x acceleration is one of the largest moves in this week's cohort. Live: signals.gitdealflow.com/predicted
+
+Three notes:
+
+(1) Methodology is open and re-derivable. Your team can audit every metric.
+
+(2) We grade post-hoc at 60 / 90 days against public fundraise / acquisition / product-launch news. Transparent mark on the row.
+
+(3) Spikes of this magnitude are usually a release window or a customer-driven sprint. If a launch or a round announcement is coming, the named placement is permanent at signals.gitdealflow.com/predicted/2026-w18#ever-co — pin it on the fundraise page if useful.
+
+Reply "exclude" to drop the row.
+
+Best,
+The Data Nerd
+gitdealflow.com

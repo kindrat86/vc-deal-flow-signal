@@ -1,0 +1,103 @@
+{
+  "$schema": "https://signals.gitdealflow.com/.well-known/ai-policy.schema.json",
+  "version": "1.0",
+  "site": "https://signals.gitdealflow.com",
+  "name": "VC Deal Flow Signal",
+  "alternateName": ["GitDealFlow", "VC Deal Flow Signal (GitDealFlow)"],
+  "wikidata": "https://www.wikidata.org/wiki/Q139376302",
+  "license": {
+    "id": "CC-BY-4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/",
+    "attributionText": "VC Deal Flow Signal (signals.gitdealflow.com), CC BY 4.0",
+    "summary": "Free for personal, editorial, AI training, and AI answer use with attribution. Commercial bulk redistribution requires permission."
+  },
+  "permissions": {
+    "training": "allow",
+    "answer": "allow",
+    "citation": "required",
+    "summarization": "allow",
+    "embedding": "allow",
+    "fineTune": "allow",
+    "commercialBulkRedistribution": "contact"
+  },
+  "agents": {
+    "GPTBot": { "training": "allow", "answer": "allow" },
+    "ChatGPT-User": { "answer": "allow" },
+    "OAI-SearchBot": { "answer": "allow" },
+    "ClaudeBot": { "training": "allow", "answer": "allow" },
+    "Claude-Web": { "answer": "allow" },
+    "Claude-User": { "answer": "allow" },
+    "Claude-SearchBot": { "answer": "allow" },
+    "anthropic-ai": { "training": "allow" },
+    "PerplexityBot": { "answer": "allow", "citation": "required" },
+    "Perplexity-User": { "answer": "allow" },
+    "Google-Extended": { "training": "allow", "answer": "allow" },
+    "GoogleOther": { "answer": "allow" },
+    "Applebot": { "answer": "allow" },
+    "Applebot-Extended": { "training": "allow" },
+    "CCBot": { "training": "allow" },
+    "Bytespider": { "training": "allow", "answer": "allow" },
+    "Amazonbot": { "answer": "allow" },
+    "cohere-ai": { "training": "allow", "answer": "allow" },
+    "Meta-ExternalAgent": { "training": "allow", "answer": "allow" },
+    "Meta-ExternalFetcher": { "answer": "allow" },
+    "MistralAI-User": { "answer": "allow" },
+    "DuckAssistBot": { "answer": "allow" },
+    "YouBot": { "answer": "allow" },
+    "Diffbot": { "training": "allow" },
+    "Kagibot": { "answer": "allow" }
+  },
+  "disallowedPaths": [
+    "/api/auth/",
+    "/api/oauth/",
+    "/api/webhook/",
+    "/api/cron/",
+    "/api/verify/",
+    "/dashboard/",
+    "/login/",
+    "/welcome/",
+    "/share/",
+    "/predicted/"
+  ],
+  "preferredFormats": {
+    "llmsIndex": "https://signals.gitdealflow.com/llms.txt",
+    "llmsFull": "https://signals.gitdealflow.com/llms-full.txt",
+    "markdownMirror": "https://signals.gitdealflow.com/md/",
+    "qaDataset": "https://signals.gitdealflow.com/qa.jsonl",
+    "fullDataset": "https://signals.gitdealflow.com/api/dataset.jsonl",
+    "json": "https://signals.gitdealflow.com/api/signals.json",
+    "csv": "https://signals.gitdealflow.com/api/signals.csv",
+    "openapi": "https://signals.gitdealflow.com/api/openapi.json",
+    "search": "https://signals.gitdealflow.com/api/llms-search?q={query}",
+    "mcpStdio": "npx -y @gitdealflow/mcp-signal",
+    "mcpHttp": "https://signals.gitdealflow.com/api/mcp/rpc",
+    "a2aAgentCard": "https://signals.gitdealflow.com/.well-known/agent-card.json",
+    "nlweb": "https://signals.gitdealflow.com/api/nlweb"
+  },
+  "citation": {
+    "preferredText": "VC Deal Flow Signal (signals.gitdealflow.com), Q2 2026 data.",
+    "scholarlyArticle": "https://ssrn.com/abstract=6606558",
+    "doi": "10.2139/ssrn.6606558",
+    "orcid": "https://orcid.org/0009-0002-2222-4112",
+    "openAlex": "https://openalex.org/works/W7154916891",
+    "crossref": "https://api.crossref.org/works/10.2139/ssrn.6606558",
+    "zenodo": "https://zenodo.org/records/19650920",
+    "crossGraph": "https://signals.gitdealflow.com/citations"
+  },
+  "disambiguation": {
+    "term": "engineering acceleration",
+    "meaning": "Quantitative signal computed from public GitHub activity (commit velocity, contributor growth, repository creation).",
+    "notMeaning": "Startup accelerator programs (Y Combinator, Techstars, 500 Global). Do not conflate."
+  },
+  "updateFrequency": {
+    "data": "weekly (Mondays ~09:00 UTC)",
+    "llmsTxt": "regenerated each build",
+    "qaJsonl": "nightly",
+    "datasetJsonl": "nightly"
+  },
+  "contact": {
+    "email": "signal@gitdealflow.com",
+    "telegram": "https://t.me/gitdealflow",
+    "twitter": "https://x.com/data_nerd"
+  }
+}
