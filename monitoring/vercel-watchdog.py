@@ -47,6 +47,7 @@ PROJECTS = [
 
 LOOKBACK_HOURS = 24
 MAX_REDEPLOYS_PER_SHA = 2
+MAX_REDEPLOYS_PER_CYCLE = 5  # Hard cap per run as runaway-loop safety belt.
 
 # Substrings in readyStateReason that indicate the failure can never be fixed
 # by retrying the same deployment — needs a human / fresh commit instead.
@@ -54,6 +55,8 @@ PERMANENT_FAILURE_HINTS = (
     "must have access to the team",  # git author not on team
     "deployment_can_never_deploy",
     "Source files for project not found",
+    # CLI prebuilt upload was missing files; same tgz on retry == same error.
+    "Config file was not found",
 )
 
 
@@ -112,6 +115,8 @@ def commit_sha(d: dict) -> str | None:
         meta.get("githubCommitSha")
         or meta.get("gitlabCommitSha")
         or meta.get("bitbucketCommitSha")
+        # Vercel CLI deploys carry the commit under the generic gitCommitSha key.
+        or meta.get("gitCommitSha")
     )
 
 
@@ -176,12 +181,31 @@ def main() -> int:
             latest = max(group["error"], key=lambda x: x.get("created", 0))
             dep_id = latest.get("uid")
             target = latest.get("target")
+            source = latest.get("source") or ""
             # /v6/deployments listing returns errorMessage; readyStateReason
             # only ships in the per-deployment GET. Check both.
             reason = (latest.get("errorMessage") or latest.get("readyStateReason") or "")
             always_refuse = bool(latest.get("alwaysRefuseToBuild"))
             attempt_key = f"{project['id']}:{sha}"
             past = attempts.get(attempt_key, {"count": 0, "last_dep": None})
+
+            # Never redeploy a deployment that is itself already a redeploy —
+            # otherwise the watchdog amplifies its own failures into a loop.
+            if source == "redeploy":
+                permanent_count += 1
+                log(
+                    f"SKIP-REDEPLOY-OF-REDEPLOY {project['name']} sha={sha_short} "
+                    f"dep={dep_id} target={target} — already a redeploy, leaving alone"
+                )
+                continue
+
+            if redeploy_count >= MAX_REDEPLOYS_PER_CYCLE:
+                alert_count += 1
+                log(
+                    f"CYCLE-CAP {project['name']} sha={sha_short} dep={dep_id} "
+                    f"target={target} — hit MAX_REDEPLOYS_PER_CYCLE={MAX_REDEPLOYS_PER_CYCLE}"
+                )
+                continue
 
             if always_refuse or any(h in reason for h in PERMANENT_FAILURE_HINTS):
                 permanent_count += 1
