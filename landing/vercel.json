@@ -6,6 +6,17 @@
     { "source": "/.well-known/llms.txt", "destination": "/llms.txt" },
     { "source": "/.well-known/ai.txt", "destination": "/ai.txt" }
   ],
+  "redirects": [
+    { "source": "/.well-known/mcp.json",            "destination": "https://signals.gitdealflow.com/.well-known/mcp.json",            "permanent": false },
+    { "source": "/.well-known/agent-card.json",     "destination": "https://signals.gitdealflow.com/.well-known/agent-card.json",     "permanent": false },
+    { "source": "/.well-known/ai-plugin.json",      "destination": "https://signals.gitdealflow.com/.well-known/ai-plugin.json",      "permanent": false },
+    { "source": "/.well-known/ai-policy.json",      "destination": "https://signals.gitdealflow.com/.well-known/ai-policy.json",      "permanent": false },
+    { "source": "/.well-known/api-catalog",         "destination": "https://signals.gitdealflow.com/.well-known/api-catalog",         "permanent": false },
+    { "source": "/knowledge-graph.json",            "destination": "https://signals.gitdealflow.com/knowledge-graph.json",            "permanent": false },
+    { "source": "/qa.jsonl",                        "destination": "https://signals.gitdealflow.com/qa.jsonl",                        "permanent": false },
+    { "source": "/feed.xml",                        "destination": "https://signals.gitdealflow.com/feed.xml",                        "permanent": false },
+    { "source": "/api/openapi.json",                "destination": "https://signals.gitdealflow.com/api/openapi.json",                "permanent": false }
+  ],
   "headers": [
     {
       "source": "/(.*).html",
