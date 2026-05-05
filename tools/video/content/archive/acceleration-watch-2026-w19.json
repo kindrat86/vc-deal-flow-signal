@@ -1,0 +1,68 @@
+{
+  "id": "predicted-90s",
+  "title": "Engineering Acceleration Watch — Week of 2026-05-05 — sonic-pi-net +999%",
+  "description": "This week's biggest engineering accelerator: sonic-pi-net (Growth, Unknown).\n\nCommit velocity: +999% over 14 days. Signal type: Deploy frequency spike.\n\nWhy it matters: across the SSRN-indexed panel of 219 confirmed Series A and Series B fundraises, this acceleration profile has historically preceded the announcement by 21 to 47 days. Crunchbase, AngelList, warm intros — all lagging.\n\n🔗 Full Acceleration Watch:    https://signals.gitdealflow.com/predicted\n🔗 Free Sunday digest:          https://gitdealflow.com/#signup\n🔗 SSRN methodology paper:     https://ssrn.com/abstract=6606558\n🔗 Live ranked dashboard:      https://signals.gitdealflow.com/trending\n\n⏱  Chapters\n00:00  This week's biggest accelerator\n00:15  Why GitHub commit velocity is the leading indicator\n00:40  Stage-stratified lead-time band: 21–47 days\n01:00  How to act on the signal\n01:25  CTA — free Sunday digest\n\nEngineering Acceleration ≠ accelerator program. Quantitative GitHub signal computed from public commit-velocity, contributor-influx, and dependents-graph data. Distinct from Y Combinator / Techstars references.\n\n#VentureCapital #DealFlow #GitHub #SeriesA #StartupSignals #sonicpinet #VCTools",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "scenes": [
+    {
+      "id": "title",
+      "kind": "title",
+      "vo": "",
+      "durationHint": 2.5,
+      "data": {
+        "title": "Engineering Acceleration Watch",
+        "subtitle": "Week of 2026-05-05. Live data feed — not an accelerator program."
+      }
+    },
+    {
+      "id": "hook",
+      "kind": "hook",
+      "vo": "By the time a startup hits Crunchbase, every other VC sees it the same morning you do. This week's biggest engineering accelerator surfaced thirty to forty days earlier — and the data was public the whole time.",
+      "durationHint": 9.5,
+      "data": {
+        "lines": [
+          "By the time it hits Crunchbase,",
+          "every other VC sees it the same morning.",
+          "We saw this one 30+ days earlier."
+        ]
+      }
+    },
+    {
+      "id": "leader",
+      "kind": "magic-bullet",
+      "vo": "sonic-pi-net. Stage: Growth. Region: Unknown. Commit velocity is +999% over the last fourteen days. That's the deploy frequency spike pattern, and across the panel of two hundred nineteen confirmed rounds, it has historically preceded the fundraise announcement by twenty-one to forty-seven days.",
+      "durationHint": 18,
+      "data": {
+        "topLine": "sonic-pi-net",
+        "midLine": "+999%",
+        "bottomLine": "commit velocity 14d",
+        "stamp": "Growth · Unknown"
+      }
+    },
+    {
+      "id": "domino",
+      "kind": "hook",
+      "vo": "If commit-velocity acceleration is the most leading public signal in venture capital, then every other deal-flow source — pitch decks, AngelList, Crunchbase, warm intros — is a lagging indicator.",
+      "durationHint": 12,
+      "data": {
+        "lines": [
+          "If commit-velocity acceleration is",
+          "the most leading public signal,",
+          "every other deal-flow source is lagging."
+        ]
+      }
+    },
+    {
+      "id": "cta",
+      "kind": "title",
+      "vo": "Five startups every Monday, free, at gitdealflow.com slash predicted. Methodology open at signals.gitdealflow.com slash methodology. Talk soon.",
+      "durationHint": 9,
+      "data": {
+        "title": "gitdealflow.com/predicted",
+        "subtitle": "Free Sunday digest. SSRN methodology. CC BY 4.0."
+      }
+    }
+  ]
+}

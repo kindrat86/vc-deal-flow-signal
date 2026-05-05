@@ -1,0 +1,97 @@
+{
+  "id": "vsl-3min",
+  "title": "How to Spot a Series A 47 Days Before the Deck Lands — Perfect Webinar VSL",
+  "description": "The 3-minute version of the Perfect Webinar at signals.gitdealflow.com/perfect-webinar.\n\nOne belief: GitHub commit-velocity acceleration is the most leading public signal in venture capital.\n\nFull stack: https://signals.gitdealflow.com/perfect-webinar\nSSRN methodology: https://ssrn.com/abstract=6606558",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "scenes": [
+    {
+      "id": "title",
+      "kind": "title",
+      "vo": "",
+      "durationHint": 2.5,
+      "data": {
+        "title": "Spot a Series A — 47 days early.",
+        "subtitle": "The 3-minute Perfect Webinar."
+      }
+    },
+    {
+      "id": "hook",
+      "kind": "hook",
+      "vo": "If you write angel checks but you find your deals on Crunchbase, you are already thirty days behind every other V-C. Three minutes. One uncomfortable conclusion.",
+      "durationHint": 11.0,
+      "data": {
+        "lines": [
+          "If you write angel checks",
+          "but find your deals on Crunchbase,",
+          "you're already 30 days behind."
+        ],
+        "stamp": "30 days late"
+      }
+    },
+    {
+      "id": "big-domino",
+      "kind": "big-domino",
+      "vo": "Here is the one belief everything hangs on. If GitHub commit-velocity acceleration is the most leading public signal in venture capital, then every other deal-flow source — pitch decks, AngelList, Crunchbase, warm intros — is a lagging indicator. Not because they're bad. Because they're slow. The whole thesis stands or falls on this one belief.",
+      "durationHint": 28.0,
+      "data": {
+        "label": "The Big Domino",
+        "before": "If GitHub commit-velocity is the most leading public signal in VC, then every other deal-flow source",
+        "highlight": "is a lagging indicator.",
+        "after": "Pitch decks. AngelList. Crunchbase. Warm intros. Slow.",
+        "footnote": "Engineering moves first. The deck moves last."
+      }
+    },
+    {
+      "id": "magic-bullet",
+      "kind": "magic-bullet",
+      "vo": "Here is the proof on one real cohort. Day minus thirty-one. A quiet fintech repo. Three contributors. Day minus twenty-one. Contributor count jumps to seven. New repos: auth-service, billing-engine. Day minus fourteen. Velocity is two-point-six times baseline. Day minus seven. Marketing site swaps to a production stack. Day zero. Series A. Four million dollars. We had it on day minus thirty-one.",
+      "durationHint": 32.0,
+      "data": {
+        "title": "One worked example — replicate it yourself.",
+        "beats": [
+          { "day": "D-31", "label": "Quiet fintech repo", "detail": "3 contributors" },
+          { "day": "D-21", "label": "Contributors → 7", "detail": "auth-service · billing-engine" },
+          { "day": "D-14", "label": "2.6× velocity baseline", "detail": "incumbent eng on board" },
+          { "day": "D-7",  "label": "Site → production stack", "detail": "preparing to launch" },
+          { "day": "D 0",  "label": "Series A · $4M",          "detail": "we had it 31 days early", "win": true }
+        ]
+      }
+    },
+    {
+      "id": "stack",
+      "kind": "stack-reveal",
+      "vo": "Here is what nine euros ninety-seven a month gets you. The live dashboard, refreshed every Monday — three hundred forty-eight a year. The two-hundred-nineteen startup backtest C-S-V — two ninety-seven. Monthly sector deep-dive P-D-Fs — five eighty-eight. Two free Chrome extensions — one ninety-eight. The free M-C-P server, never gated — zero. One async watchlist build — two ninety-seven. Methodology vault — published, zero. Thirty-day refund guarantee — bonus. Total real value: one thousand six hundred twenty-eight a year. Your price: nine ninety-seven a month.",
+      "durationHint": 50.0,
+      "data": {
+        "items": [
+          { "name": "Live Dashboard", "detail": "Refreshed every Monday", "value": "€348/yr" },
+          { "name": "219-Startup Backtest CSV", "detail": "Replicate the regression yourself", "value": "€297" },
+          { "name": "Monthly Sector Deep-Dive PDF", "detail": "12 issues a year, your sector", "value": "€588/yr" },
+          { "name": "2 Free Chrome Extensions", "detail": "Crunchbase + Wellfound velocity badge", "value": "€198/yr" },
+          { "name": "Free MCP Server (forever)", "detail": "Six tools inside Claude / Cursor", "value": "€0" },
+          { "name": "Async Watchlist Build", "detail": "Custom 10 startups for your thesis", "value": "€297" },
+          { "name": "Methodology Vault", "detail": "Full SSRN paper + regression code", "value": "€0" },
+          { "name": "30-Day Signal-or-It's-Free", "detail": "Reply REFUND. Two business days.", "value": "Bonus" }
+        ],
+        "totalValue": "€1,628/yr",
+        "yourPrice": "€9.97/mo"
+      }
+    },
+    {
+      "id": "cta",
+      "kind": "cta",
+      "vo": "Subscribe at gitdealflow dot com slash perfect webinar. Read the full twelve-minute argument. The thirty-day guarantee makes the decision reversible. The opportunity-cost of not knowing — does not.",
+      "durationHint": 17.0,
+      "data": {
+        "headline": "€9.97/mo · 30-day refund guarantee",
+        "url": "gitdealflow.com/perfect-webinar",
+        "ctas": [
+          "Read the full Perfect Webinar →",
+          "Reply REFUND for 100% money back →"
+        ]
+      }
+    }
+  ]
+}

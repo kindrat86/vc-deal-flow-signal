@@ -1,0 +1,33 @@
+{
+  "name": "@gitdealflow/video",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Anonymous AI video pipeline — Remotion + Cartesia TTS + YouTube upload",
+  "scripts": {
+    "tts": "node scripts/01-tts.mjs",
+    "captions": "node scripts/02-captions.mjs",
+    "music": "node scripts/03-music.mjs",
+    "render": "remotion render src/index.ts Predicted90s out/predicted-90s.mp4",
+    "thumbnail": "remotion still src/index.ts ThumbnailPredicted out/thumbnail-predicted.jpg --image-format=jpeg --jpeg-quality=92",
+    "studio": "remotion studio src/index.ts",
+    "yt:auth": "node scripts/04-youtube-auth.mjs",
+    "upload": "node scripts/05-youtube-upload.mjs",
+    "ship": "npm run tts && npm run captions && npm run music && npm run render && npm run thumbnail"
+  },
+  "dependencies": {
+    "@remotion/bundler": "4.0.380",
+    "@remotion/captions": "4.0.380",
+    "@remotion/cli": "4.0.380",
+    "@remotion/renderer": "4.0.380",
+    "googleapis": "^171.4.0",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "remotion": "4.0.380"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.0",
+    "@types/react-dom": "19.2.0",
+    "typescript": "5.6.3"
+  }
+}

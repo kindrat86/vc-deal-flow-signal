@@ -1,0 +1,48 @@
+{
+  "id": "short-magic-bullet",
+  "title": "How GitHub commits predicted a $4M Series A — 31 days early.",
+  "description": "Day -31: quiet repo, 3 contributors. Day 0: $4M Series A.\n\nThe full Acceleration Watch ships every Monday at gitdealflow.com/predicted. Free.\n\nSSRN paper: ssrn.com/abstract=6606558\n#shorts",
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "scenes": [
+    {
+      "id": "hook",
+      "kind": "short-hook",
+      "vo": "We named this startup thirty-one days before they announced their Series A.",
+      "durationHint": 5.0,
+      "data": {
+        "topLine": "We named this startup",
+        "midLine": "31 DAYS",
+        "bottomLine": "before their Series A.",
+        "stamp": "True story"
+      }
+    },
+    {
+      "id": "magic-bullet",
+      "kind": "short-timeline",
+      "vo": "Day minus thirty-one. Quiet fintech repo. Three contributors. Day minus twenty-one. New repos appear. Day minus fourteen. Velocity is two-point-six times baseline. Day zero. Series A. Four million dollars.",
+      "durationHint": 17.5,
+      "data": {
+        "title": "The signal in action",
+        "beats": [
+          { "day": "D-31", "label": "Quiet fintech repo", "detail": "3 contributors" },
+          { "day": "D-21", "label": "New repos appear", "detail": "auth · billing · infra" },
+          { "day": "D-14", "label": "2.6× velocity", "detail": "incumbent eng joins" },
+          { "day": "D 0",  "label": "Series A · $4M", "detail": "we had it 31 days early", "win": true }
+        ]
+      }
+    },
+    {
+      "id": "cta",
+      "kind": "short-cta",
+      "vo": "Free Sunday digest at gitdealflow dot com slash predicted. Five names every week.",
+      "durationHint": 6.5,
+      "data": {
+        "headline": "Free Sunday digest",
+        "url": "gitdealflow.com/predicted",
+        "tag": "5 names · every Monday"
+      }
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+.env.local
+.env
+.yt-credentials.json
+.yt-token.json
+node_modules/
+out/
+.remotion/
+*.log
