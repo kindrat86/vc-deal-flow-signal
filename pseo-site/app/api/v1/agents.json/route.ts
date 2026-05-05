@@ -1,11 +1,9 @@
 /**
- * /.well-known/agents.json — agent toolkit discovery direct alias.
+ * /api/v1/agents.json — versioned alias for /api/agents.json.
  *
- * Aliases the canonical /agents.json body so agent runtimes hitting either
- * location resolve to the same content. Serves directly (200, not 308)
- * because several AI bots don't follow redirects on JSON descriptor probes.
- * The canonical URL — declared via the `Link: rel=canonical` header —
- * remains at /agents.json.
+ * Stable v1 path for the agent-tool catalog so agent runtimes that pin
+ * to v1 don't 404. Body and headers mirror the upstream; canonical URL —
+ * declared via `Link: rel=canonical` — remains at /api/agents.json.
  */
 
 import { GET as ApiAgentsJson } from "@/app/api/agents.json/route";
