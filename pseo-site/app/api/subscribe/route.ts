@@ -117,6 +117,14 @@ export async function POST(request: Request) {
       landing_path: clip(body.landing_path, 500),
     };
 
+    // Phase 3 (Qualify Subs) — quiz_route is the avatar tier the visitor
+    // self-selected before email capture. Whitelisted to F/T/D/I; anything
+    // else degrades to "" so an unqualified email never silently gets a
+    // wrong-tier label downstream.
+    const rawRoute = clip(body.quiz_route, 4);
+    const quiz_route = ["F", "T", "D", "I"].includes(rawRoute) ? rawRoute : "";
+    const quiz_route_label = quiz_route ? clip(body.quiz_route_label, 120) : "";
+
     // Cohort dispatches the post-verify drip sequence. Default = "soap-opera"
     // (the existing 8-email Russell-style funnel). "challenge" routes to the
     // 7-Day Deal Flow Reset sequence. "launch" routes to the 5-email Brunson
@@ -144,6 +152,8 @@ export async function POST(request: Request) {
     for (const [k, v] of Object.entries(attribution)) {
       if (v) params.set(k, v);
     }
+    if (quiz_route) params.set("quiz_route", quiz_route);
+    if (quiz_route_label) params.set("quiz_route_label", quiz_route_label);
     const verifyUrl = `${VERIFY_BASE_URL}/api/verify?${params.toString()}`;
 
     // Send verification email
