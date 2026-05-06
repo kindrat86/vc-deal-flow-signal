@@ -2,12 +2,23 @@ import { NextRequest, NextResponse } from "next/server";
 import { stripe, getTierFromSession, CREDIT_PACK_SIZES } from "@/lib/stripe";
 import { addCredits } from "@/lib/credits";
 import { generateApiKeyV2 } from "@/lib/api-key";
+import { BOOK_DRIP } from "@/lib/emails";
+import { isNonceUsed, markNonceUsed } from "@/lib/runtime-cache";
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY!;
 const FROM_EMAIL = process.env.FROM_EMAIL || "signal@gitdealflow.com";
 const FROM_NAME = process.env.FROM_NAME || "The Data Nerd";
 const WEBHOOK_SECRET = process.env.STRIPE_WEBHOOK_SECRET!;
 const TELEGRAM_INSIDER_INVITE = process.env.TELEGRAM_INSIDER_INVITE || "";
+
+// Stripe retries `checkout.session.completed` on any non-2xx response and on
+// transient network errors, with the same `event.id`. Without dedup, a retry
+// would re-send the welcome email, re-credit a credit pack, re-queue the book
+// drip, and re-notify the admin. We mark the event ID in Runtime Cache the
+// moment the handler enters the post-verify branch and bail on replay. 14-day
+// TTL covers Stripe's max retry window (3 days) with comfortable headroom.
+const STRIPE_EVENT_NAMESPACE = "stripe-webhook-event";
+const STRIPE_EVENT_TTL_SECONDS = 14 * 86_400;
 
 function escapeHtml(str: string): string {
   return str
@@ -214,7 +225,7 @@ function bookWelcomeEmail(email: string): { subject: string; html: string } {
 <p><strong>The three bonus emails arrive in this order:</strong></p>
 <ol style="padding-left:20px;">
 <li><strong>Tomorrow</strong> — a fully worked walkthrough of the most recent Series A announcement that the seven-signal stack would have caught, week-by-week, signal-by-signal.</li>
-<li><strong>Day 4</strong> — a private link to the unedited interview transcripts with two early-stage developer-investors who use the workflow daily. Names redacted at their request, but the operational detail is intact.</li>
+<li><strong>Day 4</strong> — the unedited interview transcripts with two early-stage developer-investors who use the workflow daily, inline in this thread. Names redacted at their request, but the operational detail is intact.</li>
 <li><strong>Day 7</strong> — the direct line. Reply to that email with any methodology question and I&rsquo;ll respond personally for thirty days from purchase.</li>
 </ol>
 <p>If anything in the book breaks for you, reply to this email. I read every message and the next edition folds in your correction with attribution.</p>
@@ -315,6 +326,18 @@ export async function POST(request: NextRequest) {
   if (event.type === "checkout.session.completed") {
     const session = event.data.object;
 
+    // Replay defense: Stripe retries on 5xx with the same event.id. Mark
+    // before side effects fire so a concurrent retry racing the first
+    // delivery cannot double-charge credits / double-send emails. The
+    // mark-then-check ordering is intentional — `markNonceUsed` is
+    // idempotent in the underlying Runtime Cache, so re-marking on a real
+    // first delivery costs nothing, while a true retry sees the prior mark.
+    if (await isNonceUsed(STRIPE_EVENT_NAMESPACE, event.id)) {
+      console.log(`[stripe-webhook] replay suppressed: ${event.id}`);
+      return NextResponse.json({ received: true, replay: true });
+    }
+    await markNonceUsed(STRIPE_EVENT_NAMESPACE, event.id, STRIPE_EVENT_TTL_SECONDS);
+
     // Fetch full session with line items + customer (credit pack tier needs the customer ID)
     const fullSession = await stripe.checkout.sessions.retrieve(session.id, {
       expand: ["line_items", "customer"],
@@ -371,6 +394,49 @@ export async function POST(request: NextRequest) {
       await sendEmail(email, welcomeEmail.subject, welcomeEmail.html);
     } catch (err) {
       console.error("Failed to send welcome email:", err);
+    }
+
+    // Book buyers: queue the +1d / +4d / +7d follow-ups promised in the
+    // welcome email. Best-effort — a Resend hiccup must not 5xx out of this
+    // handler and trigger Stripe to retry the whole webhook (which would
+    // double-send the welcome and double-queue the drip).
+    if (tier === "book") {
+      const now = Date.now();
+      for (const drip of BOOK_DRIP) {
+        const sendAt = new Date(now + drip.delayMs).toISOString();
+        try {
+          const res = await fetch("https://api.resend.com/emails", {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${RESEND_API_KEY}`,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              from: `${FROM_NAME} <${FROM_EMAIL}>`,
+              to: email,
+              subject: drip.subject,
+              html: drip.html,
+              scheduled_at: sendAt,
+              headers: {
+                "List-Unsubscribe": `<mailto:${FROM_EMAIL}?subject=unsubscribe>`,
+                "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
+              },
+            }),
+          });
+          if (!res.ok) {
+            const errText = await res.text();
+            console.error(
+              `Failed to schedule book drip "${drip.subject}" for ${email}:`,
+              errText,
+            );
+          }
+        } catch (err) {
+          console.error(
+            `Error scheduling book drip "${drip.subject}" for ${email}:`,
+            err,
+          );
+        }
+      }
     }
 
     // Notify admin
