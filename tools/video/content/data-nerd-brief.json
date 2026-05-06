@@ -1,0 +1,60 @@
+{
+  "id": "data-nerd-brief",
+  "title": "Data Nerd Brief — Week of 2026-05-06 — Ship faster than the inbox",
+  "description": "One observation from this week's panel: ship faster than the inbox.\n\nFrame: ratio — methodology talk, not a single org.\n\nWhy it matters: across the SSRN-indexed panel of 219 confirmed Series A and Series B fundraises, the patterns we read on this channel have historically preceded the announcement by 21 to 47 days. The Brief runs every Wednesday; the full Acceleration Watch every Monday.\n\n🔗 Free Sunday digest:          https://gitdealflow.com/#signup\n🔗 Full Acceleration Watch:    https://signals.gitdealflow.com/predicted\n🔗 SSRN methodology paper:     https://ssrn.com/abstract=6606558\n🔗 Live ranked dashboard:      https://signals.gitdealflow.com/trending\n\n#shorts #vc #dealflow #github #startups",
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "scenes": [
+    {
+      "id": "hook",
+      "kind": "short-hook",
+      "vo": "I am the Data Nerd. Quick observation from the panel this week.",
+      "durationHint": 5,
+      "data": {
+        "topLine": "Quick observation",
+        "midLine": "PR > ISSUE",
+        "bottomLine": "ship the inbox.",
+        "stamp": "The Data Nerd"
+      }
+    },
+    {
+      "id": "observation",
+      "kind": "short-timeline",
+      "vo": "Pull requests closed divided by issues opened, over thirty days. Above one point five and the team is shipping faster than its inbox. Below zero point seven and the next round is firefighting.",
+      "durationHint": 18,
+      "data": {
+        "title": "Ship faster than the inbox",
+        "beats": [
+          {
+            "day": "READ",
+            "label": "PRs ÷ Issues > 1.5",
+            "detail": "30-day window"
+          },
+          {
+            "day": "FAIL",
+            "label": "Ratio under 0.7",
+            "detail": "queue piles up"
+          },
+          {
+            "day": "WHY",
+            "label": "Round absorbs hires",
+            "detail": "not firefighting",
+            "win": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "cta",
+      "kind": "short-cta",
+      "vo": "Free Sunday digest at gitdealflow dot com slash predicted. Five names every week.",
+      "durationHint": 6.5,
+      "data": {
+        "headline": "Free Sunday digest",
+        "url": "gitdealflow.com/predicted",
+        "tag": "5 names · every Monday"
+      }
+    }
+  ]
+}

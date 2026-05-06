@@ -39,8 +39,10 @@ const content = JSON.parse(
   readFileSync(path.join(ROOT, `content/${slug}.json`), "utf8"),
 );
 
-// SEO tags shared by every weekly Acceleration Watch upload. Trimmed to <= 480 chars.
-const TAGS = [
+// SEO tags. Per-slug list — most overlap, but Shorts get a tighter tag set
+// optimised for Shorts shelf discovery rather than Watch-page search.
+// Trimmed to <= 480 chars at runtime.
+const TAGS_DEFAULT = [
   "venture capital",
   "vc deal flow",
   "deal sourcing",
@@ -67,6 +69,35 @@ const TAGS = [
   "mcp server",
   "code-side momentum",
 ];
+
+const TAGS_DATA_NERD_BRIEF = [
+  "the data nerd",
+  "data nerd brief",
+  "vc deal flow",
+  "github signals",
+  "engineering acceleration",
+  "venture capital",
+  "deal sourcing",
+  "startup signals",
+  "alternative data vc",
+  "ssrn venture capital",
+  "github momentum",
+  "vc shorts",
+  "investor shorts",
+  "open source signals",
+  "gitdealflow",
+];
+
+const TAGS = slug === "data-nerd-brief" ? TAGS_DATA_NERD_BRIEF : TAGS_DEFAULT;
+
+// Each upload slug routes to its primary playlist on the channel. The
+// playlists themselves are created by 06-channel-optimize.mjs.
+const PLAYLIST_FOR_SLUG = {
+  "predicted-90s": "engineering acceleration watch",
+  "short-magic-bullet": "shorts",
+  "data-nerd-brief": "shorts",
+};
+const targetPlaylistName = PLAYLIST_FOR_SLUG[slug] ?? "engineering acceleration watch";
 
 function trimTags(tags) {
   const out = [];
@@ -102,14 +133,14 @@ await yt.videos.update({
 });
 console.log(`✓ metadata applied to ${videoId}`);
 
-// Add to "Engineering Acceleration Watch" playlist (case-insensitive match).
+// Route to the slug's primary playlist (case-insensitive match).
 const playlists = await yt.playlists.list({
   part: ["snippet"],
   mine: true,
   maxResults: 50,
 });
 const target = (playlists.data.items ?? []).find(
-  (p) => p.snippet?.title?.toLowerCase() === "engineering acceleration watch",
+  (p) => p.snippet?.title?.toLowerCase() === targetPlaylistName,
 );
 if (target) {
   await yt.playlistItems.insert({
@@ -123,7 +154,7 @@ if (target) {
   });
   console.log(`✓ added to playlist "${target.snippet.title}" (${target.id})`);
 } else {
-  console.log("⚠ playlist 'Engineering Acceleration Watch' not found — run 06-channel-optimize first");
+  console.log(`⚠ playlist "${targetPlaylistName}" not found — run 06-channel-optimize first`);
 }
 
 console.log(`\nLive: https://youtube.com/watch?v=${videoId}`);
