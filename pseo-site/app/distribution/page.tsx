@@ -234,6 +234,9 @@ export default function DistributionPage() {
             grouped by what you&rsquo;re trying to do.
           </p>
           <p className="text-gray-300 text-base leading-relaxed">
+            First — <a href="#hiding" className="text-emerald-400 hover:text-emerald-300 underline decoration-dotted">where they&rsquo;re hiding</a>: the literal 10 forums, 10 substacks, and 10 GitHub orgs the developer-investor reads. Then: the eight surface groups we mirror to so we show up on each of them.
+          </p>
+          <p className="text-gray-300 text-base leading-relaxed">
             If you&rsquo;re building a portfolio agent, every machine-readable
             feed lives in <a href="#feeds" className="text-emerald-400 hover:text-emerald-300 underline decoration-dotted">Machine-readable feeds</a>. If
             you&rsquo;re reading on the federated web,{" "}
@@ -242,6 +245,120 @@ export default function DistributionPage() {
             <a href="#academic" className="text-emerald-400 hover:text-emerald-300 underline decoration-dotted">Academic & reproducibility</a>.
           </p>
         </header>
+
+        <section
+          id="hiding"
+          aria-label="Where the developer-investor is hiding"
+          className="rounded-xl border border-emerald-700/40 bg-gradient-to-br from-emerald-950/30 via-slate-900 to-slate-950 p-6 sm:p-8 space-y-6 scroll-mt-20"
+        >
+          <div className="space-y-3">
+            <p className="text-emerald-300 text-xs font-semibold uppercase tracking-wider">
+              The Secret Formula · Step 2: Where Are They Hiding · DotCom Secrets §1 + Traffic Secrets §1 Ch 2
+            </p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug">
+              Where the developer-investor is hiding.
+            </h2>
+            <p className="text-gray-300 text-base leading-relaxed">
+              Brunson&rsquo;s Secret Formula starts by naming the Dream
+              Customer, then asking <em>where they congregate</em>. Our
+              Dream Customer is the developer-investor — someone writing
+              €5k–€50k checks who reads commit logs for fun. Below is
+              the literal map: the 10 forums they browse, the 10
+              substacks they read, and the 10 GitHub orgs they watch.
+              Every surface group further down the page is a mirror
+              we&rsquo;ve built to show up wherever they already are.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-3 gap-5">
+            <div className="space-y-2 rounded-lg border border-emerald-900/40 bg-slate-950/50 p-4">
+              <h3 className="text-sm font-semibold text-emerald-300 uppercase tracking-wider">
+                10 forums
+              </h3>
+              <p className="text-gray-500 text-[11px] leading-relaxed">
+                Where the comment threads are alive — engagement-side targets.
+              </p>
+              <ol className="text-gray-300 text-sm leading-relaxed space-y-1 list-decimal list-inside marker:text-emerald-500">
+                <li>Hacker News</li>
+                <li>Lobste.rs</li>
+                <li>r/venturecapital</li>
+                <li>r/SaaS</li>
+                <li>r/startups</li>
+                <li>r/AngelInvesting</li>
+                <li>r/ExperiencedDevs</li>
+                <li>Indie Hackers</li>
+                <li>Product Hunt Discussions</li>
+                <li>Tildes.net</li>
+              </ol>
+            </div>
+
+            <div className="space-y-2 rounded-lg border border-emerald-900/40 bg-slate-950/50 p-4">
+              <h3 className="text-sm font-semibold text-emerald-300 uppercase tracking-wider">
+                10 substacks
+              </h3>
+              <p className="text-gray-500 text-[11px] leading-relaxed">
+                Where the long-form reading happens — Dream-100 mirror targets.
+              </p>
+              <ol className="text-gray-300 text-sm leading-relaxed space-y-1 list-decimal list-inside marker:text-emerald-500">
+                <li>The Pragmatic Engineer — Gergely Orosz</li>
+                <li>Lenny&rsquo;s Newsletter — Lenny Rachitsky</li>
+                <li>Not Boring — Packy McCormick</li>
+                <li>The Diff — Byrne Hobart</li>
+                <li>Stratechery — Ben Thompson</li>
+                <li>Newcomer — Eric Newcomer</li>
+                <li>SemiAnalysis — Dylan Patel</li>
+                <li>The Generalist — Mario Gabriele</li>
+                <li>Refactoring — Luca Rossi</li>
+                <li>Tomasz Tunguz — Theory Ventures</li>
+              </ol>
+            </div>
+
+            <div className="space-y-2 rounded-lg border border-emerald-900/40 bg-slate-950/50 p-4">
+              <h3 className="text-sm font-semibold text-emerald-300 uppercase tracking-wider">
+                10 GitHub orgs
+              </h3>
+              <p className="text-gray-500 text-[11px] leading-relaxed">
+                Where the commit logs they read for fun ship from — bait-drop adjacency.
+              </p>
+              <ol className="text-gray-300 text-sm leading-relaxed space-y-1 list-decimal list-inside marker:text-emerald-500">
+                <li>vercel</li>
+                <li>anthropics</li>
+                <li>openai</li>
+                <li>supabase</li>
+                <li>langchain-ai</li>
+                <li>modelcontextprotocol</li>
+                <li>clerk</li>
+                <li>triggerdotdev</li>
+                <li>resend</li>
+                <li>neondatabase</li>
+              </ol>
+            </div>
+          </div>
+
+          <p className="text-gray-400 text-sm leading-relaxed border-t border-emerald-900/40 pt-4">
+            Bait per surface differs — a Lobste.rs methodology drop, a
+            Substack Acceleration Watch, an MCP install on the Cursor feed,
+            a /predicted citation in a Pragmatic Engineer reply — but every
+            path lands on the same SSRN paper{" "}
+            <a
+              href="https://ssrn.com/abstract=6606558"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-emerald-400 hover:text-emerald-300 underline decoration-dotted"
+            >
+              (abstract=6606558)
+            </a>
+            , the same{" "}
+            <Link
+              href="/predicted"
+              className="text-emerald-400 hover:text-emerald-300 underline decoration-dotted"
+            >
+              /predicted dashboard
+            </Link>
+            , and the same 30-day Signal-or-It&rsquo;s-Free guarantee.
+            That&rsquo;s the result.
+          </p>
+        </section>
 
         <nav
           aria-label="Sections"
