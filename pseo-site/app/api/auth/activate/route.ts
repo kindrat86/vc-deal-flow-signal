@@ -70,21 +70,25 @@ export async function GET(request: NextRequest) {
       return NextResponse.redirect(new URL("/", request.url));
     }
 
-    // One-time tiers (firstlook, sector_sweep, agent_credits_*) don't grant
-    // Dashboard access — the deliverable arrives by email (API key for credit
-    // packs; PDF for sector sweep; sector report for first look). Redirect to
-    // a thank-you page instead of issuing a session cookie.
+    // One-time tiers (teardown, firstlook, sector_sweep, agent_credits_*)
+    // don't grant Dashboard access — the deliverable arrives by email (tweet
+    // for teardown; sector report for first look; PDF for sector sweep; API
+    // key for credit packs). Redirect to a thank-you page instead of issuing
+    // a session cookie.
     if (
+      tier === "teardown" ||
       tier === "firstlook" ||
       tier === "sector_sweep" ||
       tier === "agent_credits_100"
     ) {
       const thanksUrl =
-        tier === "sector_sweep"
-          ? new URL("/sector-sweep?status=paid", request.url)
-          : tier === "agent_credits_100"
-            ? new URL("/agents/credits?status=paid", request.url)
-            : new URL("/?status=paid&pass=firstlook#firstlook", request.url);
+        tier === "teardown"
+          ? new URL("/thanks/teardown?status=paid", request.url)
+          : tier === "sector_sweep"
+            ? new URL("/sector-sweep?status=paid", request.url)
+            : tier === "agent_credits_100"
+              ? new URL("/agents/credits?status=paid", request.url)
+              : new URL("/?status=paid&pass=firstlook#firstlook", request.url);
       return NextResponse.redirect(thanksUrl);
     }
 

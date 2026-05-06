@@ -10,12 +10,15 @@ export const dynamic = "force-static";
 // Bridges the €0 → €7 jump that Russell flagged as psychologically large.
 // One paragraph, one number, one shipped via email within 24h.
 //
-// Checkout pattern mirrors /firstlook: point at the apex landing #teardown
-// anchor, which captures email via /api/subscribe and redirects to the
-// Stripe payment link (set in landing JS or env). When the env var is
-// missing the apex still captures email and the founder ships manually —
-// no visitor stranded.
-const TEARDOWN_CHECKOUT = "https://gitdealflow.com/#teardown";
+// Direct Stripe payment link with a custom field for the startup name
+// (plink_1TU4ZvCwGoUDklReEjuprkH0 → buy.stripe.com/bJe5kC48H2d2cEKg6s0x209).
+// On success the buyer is redirected to /thanks/teardown; the Stripe webhook
+// fires the post-purchase email server-side. The env var lets future link
+// rotations stay in env without a code redeploy. `||` over `??` because empty
+// strings should fall back too.
+const TEARDOWN_CHECKOUT =
+  process.env.NEXT_PUBLIC_STRIPE_TEARDOWN_LINK ||
+  "https://buy.stripe.com/bJe5kC48H2d2cEKg6s0x209";
 
 export const metadata: Metadata = {
   title: "Tweet Teardown — €1. One startup. 24-hour signal call.",
