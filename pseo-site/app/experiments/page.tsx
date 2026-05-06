@@ -277,6 +277,14 @@ export default function ExperimentsPage() {
           <h1 className="text-3xl sm:text-5xl font-bold text-gray-100 leading-[1.1] tracking-tight">
             Every conversion test we&rsquo;ve run, <span className="text-sky-400">in public</span>.
           </h1>
+          <p className="text-gray-400 text-sm leading-relaxed">
+            Looking specifically for the cold-traffic hook log (Brunson Traffic
+            Secrets §5)? That lives at{" "}
+            <Link href="/experiments/hooks" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">
+              /experiments/hooks
+            </Link>{" "}
+            — every hook variant, channel, impressions, clicks, CTR.
+          </p>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
             Brunson&rsquo;s teaching on conversion testing: don&rsquo;t
             optimise in private. The buyer who can see what you tested,

@@ -214,6 +214,12 @@ export async function GET(_req: Request, ctx: RouteContext) {
       { url: `${BASE_URL}/dream-100`, lastmod, changefreq: "monthly", priority: 0.8 },
       { url: `${BASE_URL}/distribution`, lastmod, changefreq: "monthly", priority: 0.75 },
       { url: `${BASE_URL}/funnels`, lastmod, changefreq: "monthly", priority: 0.75 },
+      { url: `${BASE_URL}/experiments`, lastmod, changefreq: "monthly", priority: 0.7 },
+      { url: `${BASE_URL}/experiments/hooks`, lastmod, changefreq: "monthly", priority: 0.7 },
+      { url: `${BASE_URL}/affiliates/dream-50`, lastmod, changefreq: "monthly", priority: 0.7 },
+      { url: `${BASE_URL}/earned-plays`, lastmod, changefreq: "monthly", priority: 0.65 },
+      { url: `${BASE_URL}/scorecard`, lastmod, changefreq: "monthly", priority: 0.65 },
+      { url: `${BASE_URL}/wins`, lastmod, changefreq: "monthly", priority: 0.65 },
     ];
   } else if (id === "sectors") {
     entries = [

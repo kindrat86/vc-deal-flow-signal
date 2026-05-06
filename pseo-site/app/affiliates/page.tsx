@@ -441,12 +441,20 @@ export default function AffiliatesPage() {
           <h2 className="text-xl font-semibold text-gray-100 mb-3">
             The swipe kit — 6 channels, zero writing required
           </h2>
-          <p className="text-gray-400 text-sm leading-relaxed mb-6">
+          <p className="text-gray-400 text-sm leading-relaxed mb-3">
             Every affiliate program promises &quot;creative templates.&quot; Most
             ship a logo and a banner. We ship the actual copy you&apos;d use,
             tested against real audiences. Pick the channel where your audience
             already reads you. Replace <code className="bg-slate-800 text-sky-400 px-1.5 py-0.5 rounded text-xs">YOURLINK</code> with
             your unique referral URL from the Refgrow dashboard.
+          </p>
+          <p className="text-gray-500 text-xs leading-relaxed mb-6">
+            Run a newsletter, podcast, or community? Check the{" "}
+            <Link href="/affiliates/dream-50" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">
+              Dream 50 publisher roster
+            </Link>{" "}
+            — 50 named partners we&apos;d like to hear from, with the exact
+            pitch templates we send.
           </p>
 
           {/* Twitter / X */}
