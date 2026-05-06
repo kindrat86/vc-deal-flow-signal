@@ -1,0 +1,163 @@
+name: Canary Dead-Man's Switch
+
+# WHY NOT VERCEL CRON — read this first if you're tempted to migrate.
+# This workflow is intentionally a GitHub Actions cron, NOT a Vercel Cron,
+# because its job is to detect the failure of the Vercel cron at
+# pseo-site/vercel.json -> /api/cron/route-canary. A dead-man's switch
+# cannot share its failure domain with the thing it monitors. If a
+# silent-rollback deploy wipes /api/cron/route-canary, a Vercel-Cron-based
+# probe vanishes with it; this GH Actions job runs on separate compute
+# from a separate scheduler, so it survives any Vercel-side incident.
+# Linter validators that flag "use Vercel Cron instead" are wrong for
+# THIS file specifically — the in-Vercel cron already exists, this is
+# the layer above it.
+#
+# External probe of the in-Vercel route-canary cron, fired from a separate
+# scheduler (GitHub Actions) on separate compute (ubuntu-latest). Catches
+# the failure mode the in-Vercel canary cannot catch: the canary endpoint
+# itself disappearing (silent rollback wiped /api/cron/route-canary), the
+# Vercel cron not firing (scheduler outage, project paused), or DNS/alias
+# loss on signals.gitdealflow.com.
+#
+# Cadence — fires 06:27 UTC daily, 14 minutes after the in-Vercel canary
+# at 06:13 UTC. That window lets the in-Vercel canary run + log + (if
+# regressed) email signal@gitdealflow.com via Resend before this probe
+# checks. If THIS probe fails, it means either:
+#   - the canary endpoint is gone (silent rollback, the worst case)
+#   - the canary returned a regression (the email already fired, this
+#     opens an issue as a backup record + permanent ledger)
+#   - the prod alias is dead (DNS, Vercel outage)
+#
+# All three deserve a GitHub issue and the standard "workflow failed"
+# email to the repo owner.
+#
+# Background — feedback_unmerged_branch_overwrites_prod.md +
+# project_video_pipeline_2026_05_05.md (existing GH Actions cron pattern).
+
+on:
+  schedule:
+    # 06:27 UTC daily — 14 min after pseo-site/vercel.json canary at 06:13.
+    - cron: "27 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: canary-deadmans-switch
+  cancel-in-progress: false
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Probe canary endpoint
+        id: probe
+        run: |
+          set -uo pipefail
+          URL="https://signals.gitdealflow.com/api/cron/route-canary?dry=1"
+          echo "Probing $URL"
+          # Capture body + final HTTP status. -m 30 caps total time so a
+          # hung TCP connection can't eat the whole timeout-minutes budget.
+          HTTP_BODY=$(curl -sS -m 30 -o /tmp/canary_body.json -w "%{http_code}" "$URL" || true)
+          STATUS="$HTTP_BODY"
+          echo "HTTP $STATUS"
+          {
+            echo "url=$URL"
+            echo "status=$STATUS"
+          } >> "$GITHUB_OUTPUT"
+
+          if [ "$STATUS" != "200" ]; then
+            echo "::error::Canary endpoint returned non-200 ($STATUS) — endpoint may be down, silently 404'd, or the prod alias is broken"
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+            echo "reason=non_200" >> "$GITHUB_OUTPUT"
+            cat /tmp/canary_body.json 2>/dev/null | head -c 2000 > /tmp/canary_excerpt.txt || true
+            exit 1
+          fi
+
+          # 200 — parse the JSON envelope and verify ok=true.
+          if ! jq -e '.ok == true' /tmp/canary_body.json >/dev/null 2>&1; then
+            FAIL_COUNT=$(jq -r '.failureCount // "unknown"' /tmp/canary_body.json)
+            FAILED_PATHS=$(jq -r '.results // [] | map(select(.ok == false)) | map(.path) | join(", ")' /tmp/canary_body.json)
+            echo "::error::Canary reports regression — failureCount=$FAIL_COUNT failedPaths=$FAILED_PATHS"
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+            echo "reason=regression" >> "$GITHUB_OUTPUT"
+            echo "failure_count=$FAIL_COUNT" >> "$GITHUB_OUTPUT"
+            echo "failed_paths=$FAILED_PATHS" >> "$GITHUB_OUTPUT"
+            cat /tmp/canary_body.json | jq . > /tmp/canary_excerpt.txt
+            exit 1
+          fi
+
+          PROBED=$(jq -r '.probedCount' /tmp/canary_body.json)
+          DURATION=$(jq -r '.durationMs' /tmp/canary_body.json)
+          echo "✓ Canary clean: $PROBED routes 2xx/3xx in ${DURATION}ms"
+          echo "ok=true" >> "$GITHUB_OUTPUT"
+
+      - name: Open or update GitHub issue on failure
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -uo pipefail
+          REASON="${{ steps.probe.outputs.reason || 'unknown' }}"
+          STATUS="${{ steps.probe.outputs.status || '???' }}"
+          FAILED_PATHS="${{ steps.probe.outputs.failed_paths || '' }}"
+          FAILURE_COUNT="${{ steps.probe.outputs.failure_count || '' }}"
+          EXCERPT=$(cat /tmp/canary_excerpt.txt 2>/dev/null | head -c 4000 || echo "(no body captured)")
+
+          TITLE_PREFIX="[Canary] Production regression"
+          # Search for an OPEN issue with the same title prefix to dedupe.
+          # If found, append a comment instead of opening a new one.
+          EXISTING=$(gh issue list \
+            --state open \
+            --label canary \
+            --json number,title \
+            --jq ".[] | select(.title | startswith(\"$TITLE_PREFIX\")) | .number" \
+            | head -n1)
+
+          BODY=$(cat <<EOF
+          **External canary probe failed** (GitHub Actions dead-man's switch).
+
+          - **Reason**: \`$REASON\`
+          - **HTTP status returned by canary endpoint**: \`$STATUS\`
+          - **Failed routes** (if regression): \`$FAILED_PATHS\`
+          - **Failure count**: \`$FAILURE_COUNT\`
+          - **Probe URL**: \`https://signals.gitdealflow.com/api/cron/route-canary?dry=1\`
+          - **Workflow run**: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          - **Time (UTC)**: $(date -u +"%Y-%m-%dT%H:%M:%SZ")
+
+          ## What this means
+          - \`reason=non_200\` → the canary endpoint itself is gone (silent rollback wiped \`/api/cron/route-canary\`), or the prod alias is broken. **This is the worst case.**
+          - \`reason=regression\` → the canary works but reports one or more canonical routes are not 2xx/3xx. The in-Vercel cron should already have emailed signal@gitdealflow.com; this issue is the permanent record.
+          - \`reason=unknown\` → curl crashed before getting a response. Likely DNS or network.
+
+          ## Recovery
+          \`\`\`
+          cd pseo-site
+          rm -rf .next .vercel/output
+          vercel pull --yes --environment=production
+          vercel build --prod
+          vercel deploy --prebuilt --prod --archive=tgz
+          \`\`\`
+
+          Then re-run this workflow via \`gh workflow run "Canary Dead-Man's Switch"\` and verify the new run goes green.
+
+          ## Canary response excerpt
+          \`\`\`json
+          $EXCERPT
+          \`\`\`
+          EOF
+          )
+
+          if [ -n "$EXISTING" ]; then
+            echo "Appending comment to existing issue #$EXISTING"
+            gh issue comment "$EXISTING" --body "$BODY"
+          else
+            echo "Opening new canary issue"
+            gh issue create \
+              --title "$TITLE_PREFIX — $(date -u +"%Y-%m-%d") ($REASON)" \
+              --label canary \
+              --body "$BODY"
+          fi
