@@ -98,3 +98,170 @@ body {
     transparent 60%
   );
 }
+
+/* ===========================================================================
+   Book prose — used by /book/read/[chapter] and /book/print
+   Long-form reading typography against the dark theme. Tuned for ~75ch
+   measure, generous line-height, headings that breathe, and code blocks that
+   stay readable on small screens.
+   =========================================================================== */
+.book-prose {
+  color: #cbd5e1;
+  font-size: 17px;
+  line-height: 1.75;
+  max-width: 38em;
+  margin-left: auto;
+  margin-right: auto;
+}
+.book-prose .book-p {
+  margin: 1.1em 0;
+}
+.book-prose .book-h1,
+.book-prose .book-h2,
+.book-prose .book-h3 {
+  color: #f1f5f9;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  margin-top: 2.2em;
+  margin-bottom: 0.7em;
+}
+.book-prose .book-h1 {
+  font-size: 1.75em;
+}
+.book-prose .book-h2 {
+  font-size: 1.4em;
+  border-bottom: 1px solid #1e293b;
+  padding-bottom: 0.25em;
+}
+.book-prose .book-h3 {
+  font-size: 1.15em;
+}
+.book-prose strong {
+  color: #f1f5f9;
+}
+.book-prose em {
+  color: #e2e8f0;
+}
+.book-prose .book-link {
+  color: #38bdf8;
+  text-decoration: underline;
+  text-decoration-color: rgba(56, 189, 248, 0.4);
+  text-underline-offset: 2px;
+}
+.book-prose .book-link:hover {
+  color: #7dd3fc;
+}
+.book-prose .book-ul,
+.book-prose .book-ol {
+  margin: 1.1em 0;
+  padding-left: 1.6em;
+}
+.book-prose .book-ul li,
+.book-prose .book-ol li {
+  margin: 0.5em 0;
+}
+.book-prose .book-ul {
+  list-style-type: disc;
+}
+.book-prose .book-ol {
+  list-style-type: decimal;
+}
+.book-prose .book-quote {
+  border-left: 3px solid #334155;
+  padding: 0.4em 0 0.4em 1.2em;
+  margin: 1.4em 0;
+  color: #94a3b8;
+  font-style: italic;
+}
+.book-prose .book-inline-code {
+  background: rgba(15, 23, 42, 0.7);
+  color: #7dd3fc;
+  padding: 0.12em 0.42em;
+  border-radius: 0.25em;
+  font-family: "SF Mono", Menlo, ui-monospace, monospace;
+  font-size: 0.92em;
+}
+.book-prose .book-code {
+  background: #0f172a;
+  border: 1px solid #1e293b;
+  border-radius: 0.5em;
+  padding: 1em 1.1em;
+  margin: 1.4em 0;
+  overflow-x: auto;
+  font-size: 0.86em;
+  line-height: 1.6;
+}
+.book-prose .book-code code {
+  color: #cbd5e1;
+  font-family: "SF Mono", Menlo, ui-monospace, monospace;
+  background: transparent;
+  padding: 0;
+}
+.book-prose .book-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.4em 0;
+  font-size: 0.92em;
+}
+.book-prose .book-table th,
+.book-prose .book-table td {
+  border: 1px solid #1e293b;
+  padding: 0.55em 0.85em;
+  text-align: left;
+}
+.book-prose .book-table th {
+  background: rgba(15, 23, 42, 0.7);
+  color: #f1f5f9;
+  font-weight: 600;
+}
+
+/* Print-friendly version of the book — used on /book/print and when any
+   /book/* page is sent to the printer. Reverses to light-on-paper. */
+@media print {
+  .book-print {
+    color: #0f172a;
+    background: #ffffff;
+    font-size: 11pt;
+    max-width: none;
+  }
+  .book-print .book-prose {
+    color: #1e293b;
+    max-width: none;
+  }
+  .book-print .book-prose .book-h1,
+  .book-print .book-prose .book-h2,
+  .book-print .book-prose .book-h3 {
+    color: #020617;
+  }
+  .book-print .book-prose .book-link {
+    color: #0369a1;
+  }
+  .book-print .book-prose .book-quote {
+    border-left-color: #94a3b8;
+    color: #475569;
+  }
+  .book-print .book-prose .book-code {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+  }
+  .book-print .book-prose .book-code code {
+    color: #1e293b;
+  }
+  .book-print .book-prose .book-inline-code {
+    background: #f1f5f9;
+    color: #0369a1;
+  }
+  .book-print .book-prose .book-table th {
+    background: #f1f5f9;
+    color: #020617;
+  }
+  .book-print .book-prose .book-table th,
+  .book-print .book-prose .book-table td {
+    border-color: #cbd5e1;
+  }
+  /* Force chapter breaks. */
+  .book-print section {
+    break-before: page;
+  }
+}

@@ -70,21 +70,25 @@ export async function GET(request: NextRequest) {
       return NextResponse.redirect(new URL("/", request.url));
     }
 
-    // One-time tiers (firstlook, sector_sweep, agent_credits_*) don't grant
-    // Dashboard access — the deliverable arrives by email (API key for credit
-    // packs; PDF for sector sweep; sector report for first look). Redirect to
-    // a thank-you page instead of issuing a session cookie.
+    // One-time tiers (firstlook, sector_sweep, agent_credits_*, book)
+    // don't grant Dashboard access — the deliverable arrives by email (API
+    // key for credit packs; PDF for sector sweep; sector report for first
+    // look; book downloads + bonus emails for book). Redirect to a
+    // thank-you page instead of issuing a session cookie.
     if (
       tier === "firstlook" ||
       tier === "sector_sweep" ||
-      tier === "agent_credits_100"
+      tier === "agent_credits_100" ||
+      tier === "book"
     ) {
       const thanksUrl =
         tier === "sector_sweep"
           ? new URL("/sector-sweep?status=paid", request.url)
           : tier === "agent_credits_100"
             ? new URL("/agents/credits?status=paid", request.url)
-            : new URL("/?status=paid&pass=firstlook#firstlook", request.url);
+            : tier === "book"
+              ? new URL("/book/thanks?status=paid", request.url)
+              : new URL("/?status=paid&pass=firstlook#firstlook", request.url);
       return NextResponse.redirect(thanksUrl);
     }
 

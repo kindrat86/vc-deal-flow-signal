@@ -253,6 +253,26 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
 `),
   },
 
+  // Day 8 — Book promo (Brunson Secret 17 — Book Funnels, 2026-05-06).
+  // The book is the highest-trust frontend in the stack. Anyone who's been
+  // reading the drip for a week is exactly the audience that converts on a
+  // 100-page methodology asset. Free PDF + EPUB, no friction.
+  {
+    subject: "I wrote a 104-page book. It's free. Here's the link.",
+    delayMs: THIRTY_MIN + 8 * ONE_DAY,
+    html: wrap(`
+<p>Quick aside before the next Sunday digest.</p>
+<p>I spent the last few weekends turning the seven-signal methodology into a proper book — 104 pages, the seven signals each in its own chapter, plus a methodology chapter and a 90-minute replication appendix that takes you from a fresh laptop to a verified rank against the live leaderboard.</p>
+<p>It's free. PDF + EPUB + plain text + markdown, all four formats, no email gate beyond the one you've already given me, no upsell on the download page.</p>
+<p style="margin:24px 0;"><a href="${SIGNALS}/book" style="display:inline-block;background:#0284c7;color:#ffffff;font-weight:600;font-size:15px;padding:11px 22px;border-radius:8px;text-decoration:none;">Get the book — free</a></p>
+<p>Why free? Three reasons. The methodology is already public — the SSRN preprint at <a href="https://ssrn.com/abstract=6606558" style="color:#0ea5e9;">ssrn.com/abstract=6606558</a> is the formal version. Free distribution is the point: every reader who finds a false-positive pattern reports it back and the next edition gets better. And readers who get value from the book are the ones who eventually subscribe to the Dashboard — a book that closes that loop pays for itself in three subscribers.</p>
+<p>If you want to support the work, the €0.99 Kindle copy adds three bonus emails (a worked walkthrough of the most recent Series A catch, the unedited investor interviews, and a direct line to me for thirty days). Same content, different bonus stack.</p>
+<p>Read it on a flight, on a long Saturday morning, or skip to the appendix and run the script against your own watchlist this weekend. Either way works.</p>
+<p>— ${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. The book is also fully readable on the open web at <a href="${SIGNALS}/book/read" style="color:#0ea5e9;">${SIGNALS}/book/read</a> — Google-indexed, citation-friendly. If you find it useful, sharing the URL with one investor friend is the most useful thing you can do.</p>
+`),
+  },
+
   // Day 9 — Bonus: public-data-edge follow-on (was old day-4)
   {
     subject: "If the data is public, where's the edge?",
@@ -270,6 +290,27 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
 <p>From here on out, the Sunday digest takes over. Five names a week, every Sunday, free forever. That's the rhythm.</p>
 <p>Talk soon,<br>${FROM_NAME}</p>
 <p style="color:#64748b;font-size:14px;">P.S. If you ever want to commission a custom one-off cut on a specific thesis, the Sector Sweep is €1,997 once: <a href="${SITE}/sector-sweep" style="color:#0ea5e9;">${SITE}/sector-sweep</a></p>
+`),
+  },
+
+  // Day 11 — Book deep-dive promo (Brunson Secret 17 sequel, 2026-05-06).
+  // Reinforces the book asset for readers who didn't open D8. Different angle:
+  // points to a single specific chapter and a single specific exercise.
+  {
+    subject: "If you only read one chapter, read this one",
+    delayMs: THIRTY_MIN + 11 * ONE_DAY,
+    html: wrap(`
+<p>If the book email three days ago got buried, the link is at the bottom — but here's a sharper version.</p>
+<p>The book has eleven sections. Most readers I've heard from skipped straight to chapter 9 — the replication appendix — and ran the script against their own watchlist before reading anything else.</p>
+<p>That was the right call. The appendix takes ninety minutes. By the end you have a Python file that computes Signals 1, 2, and 6 against any GitHub organization, and you've verified the numbers against the live leaderboard.</p>
+<p>From that point on, the methodology is yours. The leaderboard, the Dashboard, the MCP server — all of it becomes a convenience layer over a workflow you can run yourself, on a $0 budget, indefinitely.</p>
+<p>If that's the workflow you want, jump straight to the appendix:</p>
+<p style="margin:20px 0;"><a href="${SIGNALS}/book/read/replication-appendix" style="color:#0ea5e9;font-weight:600;">→ Read the 90-minute replication walkthrough</a></p>
+<p>If you'd rather start at the beginning and have it on Kindle:</p>
+<p style="margin:20px 0;"><a href="${SIGNALS}/book" style="color:#0ea5e9;font-weight:600;">→ Free PDF + EPUB (or €0.99 Kindle with three bonus emails)</a></p>
+<p>Either path works. The methodology is the same.</p>
+<p>— ${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. If you've already read it and have a methodology question, reply to this email. The book is meant to be improved over time — every correction I get back gets folded into the next edition with attribution.</p>
 `),
   },
 

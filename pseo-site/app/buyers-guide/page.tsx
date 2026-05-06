@@ -377,9 +377,9 @@ export default function BuyersGuidePage() {
             Ready to test the signal?
           </h2>
           <p className="text-gray-300 text-sm leading-relaxed mb-5 max-w-2xl mx-auto">
-            Start free with the weekly Signal Digest, or buy a one-time
-            Sector Deep Dive at &euro;7 to test the data on a sector you
-            already know. Both are linked from the pricing page.
+            Start free with the weekly Signal Digest, the 104-page free book,
+            or buy a one-time Sector Deep Dive at &euro;7 to test the data on
+            a sector you already know. All linked below.
           </p>
           <div className="flex flex-wrap gap-3 justify-center">
             <Link
@@ -387,6 +387,12 @@ export default function BuyersGuidePage() {
               className="inline-block bg-sky-600 hover:bg-sky-500 text-white text-sm font-semibold px-5 py-2.5 rounded-md transition-colors"
             >
               See full pricing &rarr;
+            </Link>
+            <Link
+              href="/book"
+              className="inline-block border border-amber-700 hover:border-amber-500 bg-amber-950/30 text-amber-200 text-sm font-semibold px-5 py-2.5 rounded-md transition-colors"
+            >
+              Get the free book &rarr;
             </Link>
             <Link
               href="/alternatives"
