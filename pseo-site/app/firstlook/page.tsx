@@ -476,6 +476,85 @@ export default function FirstLookPage() {
           </ol>
         </section>
 
+        {/* FUTURE PACING — Brunson Expert Secrets Ch 14. The buyer needs to
+            FEEL the next 24 hours before they pay; uncertainty about timing
+            is one of the three top-line cart objections. Timeline removes
+            it by making each stop concrete. */}
+        <section
+          aria-label="What happens in the next 24 hours"
+          className="rounded-xl border border-slate-800 bg-slate-900/40 p-5 sm:p-7 space-y-4"
+        >
+          <header className="space-y-1.5">
+            <p className="text-cyan-400 text-[10px] sm:text-xs font-semibold uppercase tracking-wider">
+              Future pacing · the next 24 hours
+            </p>
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-100 leading-snug">
+              What actually happens between paying and reading.
+            </h2>
+            <p className="text-gray-400 text-sm leading-relaxed">
+              The 24-hour window is real work, not an SLA marketing trick.
+              Here&rsquo;s the timeline so you know what you&rsquo;re getting at
+              every checkpoint.
+            </p>
+          </header>
+
+          <ol className="space-y-3 border-l-2 border-cyan-700/40 pl-5 sm:pl-6">
+            {[
+              {
+                t: "T+0 min",
+                head: "Stripe confirms · sector locked",
+                body: "You complete checkout. Stripe webhook fires. The order field (your sector) lands in the founder's intake queue with your email stamped.",
+              },
+              {
+                t: "T+30 min",
+                head: "Engine pulls the panel",
+                body: "Same engine behind the Dashboard runs your sector through the 14-day commit-velocity acceleration filter. ~2,400 GitHub orgs scored in one batch; top 25 stamped with two-period confirmation.",
+              },
+              {
+                t: "T+4 h",
+                head: "Contributor maps + breakouts compiled",
+                body: "Top 10 orgs get a 30-day contributor influx map. The breakout-detection pass surfaces three pre-Crunchbase candidates. Raw CSV + JSON dump sealed.",
+              },
+              {
+                t: "T+12 h",
+                head: "Written walkthrough drafted",
+                body: "Founder writes the 14-page narrative: what stood out, what's likely a false positive, the thesis-specific surprises. Manual, not auto-generated. The thinking part of the deliverable.",
+              },
+              {
+                t: "T+18 h",
+                head: "Self-review + cross-check",
+                body: "Each named breakout cross-checked against Crunchbase + LinkedIn to confirm pre-funded status. Two-source rule. If a breakout fails the check, it gets pulled and the report ships with the remaining two plus a noted skip.",
+              },
+              {
+                t: "T+24 h",
+                head: "Delivery email lands · credit window opens",
+                body: "PDF + CSV + JSON in your inbox. The 14-day Dashboard-credit window starts now: reply REQUEST CREDIT inside two weeks and the €7 applies to month one of Dashboard.",
+              },
+            ].map((s, i) => (
+              <li key={s.t} className="relative">
+                <span
+                  aria-hidden="true"
+                  className="absolute -left-[26px] sm:-left-[31px] top-1 w-3 h-3 rounded-full bg-cyan-400 border-2 border-slate-950"
+                />
+                <p className="text-cyan-300 text-[11px] font-mono uppercase tracking-wider">
+                  {s.t}
+                </p>
+                <p className="text-gray-100 font-semibold text-sm sm:text-base">
+                  {s.head}
+                </p>
+                <p className="text-gray-400 text-xs sm:text-sm leading-relaxed">
+                  {s.body}
+                </p>
+              </li>
+            ))}
+          </ol>
+          <p className="text-gray-500 text-xs leading-relaxed border-l-2 border-cyan-700/30 pl-3">
+            Weekday delivery. Pay Friday after 18:00 UTC and the timeline
+            shifts to Monday 18:00 UTC; the email tells you when to expect
+            the inbox land if it&rsquo;s a weekend gap.
+          </p>
+        </section>
+
         {/* POST-PURCHASE OTO PREVIEW — DotCom Ch 12. */}
         <aside
           className="border border-slate-800 bg-slate-900/40 rounded-xl p-5 sm:p-6 space-y-2"
@@ -497,6 +576,82 @@ export default function FirstLookPage() {
             same way.
           </p>
         </aside>
+
+        {/* AGENT CART — Brunson Secret 13 ("right bait, right avatar")
+            applied to a non-human buyer. The same data, different cart
+            shape. Builders who run an autonomous deal-screen agent
+            don't want a 24-hour PDF; they want a callable JSON endpoint
+            with USDC settlement. Both carts answer the same big domino
+            ("see GitHub momentum first"); the bait differs. */}
+        <section
+          aria-label="Pay-per-call cart for agents and AI buyers"
+          className="rounded-xl border border-violet-700/50 bg-gradient-to-br from-violet-950/30 via-slate-900 to-slate-950 p-5 sm:p-7 space-y-4"
+        >
+          <header className="space-y-1.5">
+            <p className="text-violet-300 text-[10px] sm:text-xs font-semibold uppercase tracking-wider">
+              Different buyer · different cart
+            </p>
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-100 leading-snug">
+              Building an agent? There&rsquo;s a cart shape for that.
+            </h2>
+            <p className="text-gray-300 text-sm leading-relaxed">
+              €7 + 24-hour PDF is the right bait for an investor at a
+              keyboard. The wrong bait for an agent screening 200 orgs
+              overnight. Same data, different cart: pay-per-call USDC, no
+              account, JSON in 2 seconds.
+            </p>
+          </header>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm">
+            <div className="rounded-lg border border-slate-800 bg-slate-900/60 p-3 sm:p-4 space-y-1">
+              <p className="text-violet-400 text-[10px] uppercase tracking-wider">
+                Price
+              </p>
+              <p className="text-gray-100 font-bold text-base">$0.19 USDC</p>
+              <p className="text-gray-400 text-xs leading-snug">
+                Per deep-signal call. ~$0.001 in gas. Misses (404) are free.
+              </p>
+            </div>
+            <div className="rounded-lg border border-slate-800 bg-slate-900/60 p-3 sm:p-4 space-y-1">
+              <p className="text-violet-400 text-[10px] uppercase tracking-wider">
+                Settlement
+              </p>
+              <p className="text-gray-100 font-bold text-base">x402 protocol</p>
+              <p className="text-gray-400 text-xs leading-snug">
+                HTTP 402 challenge → wallet signs → 2-second settlement on Base.
+              </p>
+            </div>
+            <div className="rounded-lg border border-slate-800 bg-slate-900/60 p-3 sm:p-4 space-y-1">
+              <p className="text-violet-400 text-[10px] uppercase tracking-wider">
+                Endpoint
+              </p>
+              <p className="text-gray-100 font-bold text-base font-mono text-xs">
+                /api/agent/deep-signal/x402
+              </p>
+              <p className="text-gray-400 text-xs leading-snug">
+                Curl-callable. SDK-friendly. Coinbase facilitator handles
+                receipts.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap gap-2 pt-1">
+            <Link
+              href="/agents/credits"
+              className="inline-flex items-center gap-1.5 rounded-lg bg-violet-500 hover:bg-violet-400 text-slate-950 font-bold text-sm px-4 py-2 transition-colors"
+            >
+              Open the agent cart →
+            </Link>
+            <a
+              href="https://x402.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-lg border border-violet-700/50 text-violet-200 hover:text-violet-100 hover:border-violet-500 text-sm px-4 py-2 transition-colors"
+            >
+              x402 protocol ↗
+            </a>
+          </div>
+        </section>
 
         {/* DOWNSELL — DotCom Ch 12. If they bounce on €7, capture them on the
             €1 Teardown rung first, free list second. Russell rule: never let
@@ -553,6 +708,41 @@ export default function FirstLookPage() {
           </Link>
           .
         </p>
+
+        {/* Bottom spacer so the sticky mobile cart bar doesn't cover content */}
+        <div aria-hidden="true" className="md:hidden h-20" />
+      </div>
+
+      {/* STICKY MOBILE CART BAR — Brunson Cart Funnel Secret 18. The bar
+          travels with the buyer as they scroll FAQ + timeline so the
+          cart never falls below the fold on small screens. CSS-only
+          (no JS, no client component) — the price is the base €7;
+          tap to scroll to the interactive CartPreview where the bump
+          can be toggled. Hidden md+ (the full cart is always visible
+          on desktop). */}
+      <div
+        aria-label="Sticky cart bar (mobile)"
+        className="fixed bottom-0 inset-x-0 md:hidden z-40 border-t border-amber-500/40 bg-slate-950/95 backdrop-blur-sm shadow-[0_-4px_20px_rgba(245,158,11,0.15)]"
+      >
+        <div className="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
+          <div className="space-y-0.5 min-w-0">
+            <p className="text-amber-300 text-[10px] font-semibold uppercase tracking-wider">
+              First Look · cart price
+            </p>
+            <p className="text-gray-100 font-bold text-lg tabular-nums leading-none">
+              €7
+              <span className="text-gray-400 text-[10px] font-medium ml-1.5 uppercase tracking-wider">
+                one-time
+              </span>
+            </p>
+          </div>
+          <a
+            href={FIRSTLOOK_CHECKOUT}
+            className="inline-flex items-center gap-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm px-4 py-2.5 shadow-md shrink-0"
+          >
+            Check out →
+          </a>
+        </div>
       </div>
     </>
   );
