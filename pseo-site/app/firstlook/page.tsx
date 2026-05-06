@@ -323,17 +323,32 @@ export default function FirstLookPage() {
         </aside>
 
         {/* DOWNSELL — DotCom Ch 12. If they bounce on €7, capture them on the
-            free list. Russell rule: never let a visitor leave at zero
-            commitment if there's a free rung below. */}
+            €1 Teardown rung first, free list second. Russell rule: never let
+            a visitor leave at zero commitment if there's a paid-but-cheaper
+            rung below — the €1 Teardown is the buyer-threshold breaker added
+            specifically to close the €0-to-€7 psychological gap. */}
         <aside
-          className="border-l-2 border-slate-700 pl-4 py-1 space-y-1"
-          aria-label="Downsell to free list"
+          className="border-l-2 border-rose-700/50 pl-4 py-1 space-y-2"
+          aria-label="Downsell to €1 Teardown then to free list"
         >
-          <p className="text-gray-500 text-[10px] sm:text-xs font-semibold uppercase tracking-wider">
+          <p className="text-rose-300 text-[10px] sm:text-xs font-semibold uppercase tracking-wider">
             Not ready for €7?
           </p>
           <p className="text-gray-400 text-sm leading-relaxed">
-            The free{" "}
+            Try the{" "}
+            <Link
+              href="/teardown"
+              className="text-rose-300 hover:text-rose-200 underline decoration-dotted"
+            >
+              €1 Tweet Teardown
+            </Link>{" "}
+            instead — name one startup, get a tweet-length read on its
+            engineering momentum in 24h, written by the founder. €1 credits
+            into the First Look Pass if you upgrade within 7 days, so this
+            is the €0-to-€7 bridge, not a separate purchase.
+          </p>
+          <p className="text-gray-500 text-sm leading-relaxed">
+            Or skip paid entirely and join the free{" "}
             <a
               href="https://gitdealflow.com/#signup"
               rel="noopener noreferrer"
@@ -341,9 +356,7 @@ export default function FirstLookPage() {
             >
               Acceleration Watch
             </a>{" "}
-            sends 5 startups every Monday — sector-tagged, with the same engine
-            behind the First Look Pass. No card. Subscribe, watch the rhythm
-            for two weeks, then decide.
+            — five startups every Monday, sector-tagged, no card.
           </p>
         </aside>
 
