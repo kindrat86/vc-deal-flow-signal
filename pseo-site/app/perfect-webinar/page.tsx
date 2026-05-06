@@ -54,6 +54,16 @@ const STACK_ITEMS = [
     description:
       "(1) Crunchbase + Wellfound badge that injects a momentum score into every profile. (2) VC GitHub Lookup — hover any org or repo, see the velocity in 200ms.",
     standalone: "€198/yr value",
+    links: [
+      {
+        label: "Install Crunchbase + Wellfound badge",
+        href: "https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn",
+      },
+      {
+        label: "Install VC GitHub Lookup",
+        href: "https://chromewebstore.google.com/detail/vc-github-lookup-%E2%80%94-startu/plgngijmloeljfkenecdkhiblcfcbblm",
+      },
+    ],
   },
   {
     label: "The Free MCP Server (forever, never gated)",
@@ -678,6 +688,22 @@ export default function PerfectWebinarPage() {
                     <p className="text-gray-400 text-sm leading-relaxed mt-1">
                       {item.description}
                     </p>
+                    {"links" in item && item.links && item.links.length > 0 && (
+                      <ul className="flex flex-wrap gap-x-3 gap-y-1 mt-2">
+                        {item.links.map((link) => (
+                          <li key={link.href}>
+                            <a
+                              href={link.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1 text-[12px] font-semibold text-sky-300 hover:text-sky-200 underline decoration-dotted underline-offset-4"
+                            >
+                              {link.label} →
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </div>
                 </li>
               );

@@ -215,7 +215,7 @@ Sunday digest. Wednesday filter. End-of-quarter sweep. The Acceleration Watch is
 <p>What pitch decks tell you: what the founder <em>wants</em> you to believe.<br>
 What commit velocity tells you: what the engineering team is <em>actually doing</em>.</p>
 <p>One is a narrative. The other is behavior.</p>
-<p>The 8-object stack — Dashboard, 219-startup Backtest CSV, monthly Sector Deep-Dive PDF, Chrome Extension #1 (Crunchbase + Wellfound badge), Chrome Extension #2 (VC GitHub Lookup — hover any repo), Claude MCP Server, async Watchlist Build, Methodology Vault — totals €1,980 of standalone value. Founding-member price €9.97/mo, locked forever, 60-day no-questions refund.</p>
+<p>The 8-object stack — Dashboard, 219-startup Backtest CSV, monthly Sector Deep-Dive PDF, <a href="https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn" style="color:#0ea5e9;">Chrome Extension #1 (Crunchbase + Wellfound badge)</a>, <a href="https://chromewebstore.google.com/detail/vc-github-lookup-%E2%80%94-startu/plgngijmloeljfkenecdkhiblcfcbblm" style="color:#0ea5e9;">Chrome Extension #2 (VC GitHub Lookup — hover any repo)</a>, Claude MCP Server, async Watchlist Build, Methodology Vault — totals €1,980 of standalone value. Founding-member price €9.97/mo, locked forever, 60-day no-questions refund.</p>
 <p><strong>Founding-member window closes May 15</strong> or at 30 signups, whichever comes first. After that, the Dashboard goes to €49/mo permanently.</p>
 <p><a href="${SITE}/#pricing" style="color:#0ea5e9;font-weight:600;">Lock in founding price &rarr;</a></p>
 <p>If the free digest is enough for now, that's fine too. You'll keep getting it every Sunday.</p>
