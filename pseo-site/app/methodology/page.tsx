@@ -381,6 +381,46 @@ export default function MethodologyPage() {
                 migrations.
               </p>
             </div>
+            <div
+              id="3-4x-finding"
+              className="rounded-lg border border-sky-700/40 bg-gradient-to-br from-sky-950/30 via-slate-900 to-slate-900 p-6 scroll-mt-24"
+            >
+              <h3 className="text-gray-100 font-medium mb-2">
+                Composite predictor: velocity × contributor diversity (the 3.4× finding)
+              </h3>
+              <p className="text-gray-400 text-sm leading-relaxed mb-3">
+                The single most predictive composite in the SSRN panel of 219
+                confirmed rounds is{" "}
+                <strong className="text-gray-200">14-day commit-velocity acceleration</strong>{" "}
+                <em>combined with</em>{" "}
+                <strong className="text-gray-200">low top-contributor concentration</strong>{" "}
+                (Gini coefficient under 0.30 over the same 14-day window).
+              </p>
+              <p className="text-gray-400 text-sm leading-relaxed mb-3">
+                Orgs that meet <em>both</em> conditions are{" "}
+                <strong className="text-sky-300">3.4× more likely</strong> to announce a
+                Series A within 60 days than orgs with high acceleration
+                <em> alone</em>. In other words: velocity matters, but the{" "}
+                <em>shape</em> of the velocity matters more. A team where one
+                developer is doing 80% of the commits can spike just as hard as
+                a team where eight developers are sharing the load — but only
+                one of those teams looks like a fundraise candidate to a Series
+                A partner.
+              </p>
+              <p className="text-gray-500 text-xs leading-relaxed">
+                Source: SSRN preprint{" "}
+                <a
+                  href="https://ssrn.com/abstract=6606558"
+                  className="text-sky-400 hover:text-sky-300 underline decoration-sky-400/40 underline-offset-2"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  abstract=6606558
+                </a>
+                , panel n=219, regression stratified by stage. Lift survives a
+                90-day extension of the panel (next refresh: Q3 2026).
+              </p>
+            </div>
           </div>
         </section>
 

@@ -830,11 +830,65 @@ export default function Home() {
           Crunchbase tells you the day they raised.{" "}
           <span className="text-sky-400">We tell you 47 days before the deck.</span>
         </h1>
+
+        {/* Brunson Secret Formula §1 fix (audit 2026-05-06): "Define result
+            in numerical terms above the fold." The 3.4× lift is the
+            headline finding from soap-opera D12 (lib/emails.ts:241) —
+            high-acceleration AND low-contributor-concentration (Gini < 0.30)
+            orgs are 3.4× more likely to announce a Series A within 60 days
+            than orgs with high acceleration alone. Stat band sits between
+            H1 and subhead so the result is the first number a reader sees. */}
+        <dl
+          aria-label="Headline results from the SSRN panel"
+          className="grid grid-cols-3 gap-3 sm:gap-4 mb-5 rounded-xl border border-sky-700/40 bg-gradient-to-br from-sky-950/40 via-slate-900 to-slate-950 p-4 sm:p-5"
+        >
+          <div className="text-center sm:text-left">
+            <dt className="text-[10px] sm:text-xs uppercase tracking-wider text-sky-300/80 font-semibold mb-1">
+              Series A within 60d
+            </dt>
+            <dd className="text-2xl sm:text-3xl font-bold text-gray-100 tabular-nums leading-none">
+              3.4<span className="text-sky-400">×</span>
+            </dd>
+            <p className="text-[11px] text-gray-500 mt-1 leading-snug">
+              more likely vs. velocity alone
+            </p>
+          </div>
+          <div className="text-center sm:text-left border-l border-slate-800 pl-3 sm:pl-4">
+            <dt className="text-[10px] sm:text-xs uppercase tracking-wider text-sky-300/80 font-semibold mb-1">
+              Median lead time
+            </dt>
+            <dd className="text-2xl sm:text-3xl font-bold text-gray-100 tabular-nums leading-none">
+              21–47<span className="text-sky-400 text-base sm:text-lg ml-1">d</span>
+            </dd>
+            <p className="text-[11px] text-gray-500 mt-1 leading-snug">
+              before the round announces
+            </p>
+          </div>
+          <div className="text-center sm:text-left border-l border-slate-800 pl-3 sm:pl-4">
+            <dt className="text-[10px] sm:text-xs uppercase tracking-wider text-sky-300/80 font-semibold mb-1">
+              Panel size
+            </dt>
+            <dd className="text-2xl sm:text-3xl font-bold text-gray-100 tabular-nums leading-none">
+              n=219
+            </dd>
+            <p className="text-[11px] text-gray-500 mt-1 leading-snug">
+              confirmed rounds, SSRN-indexed
+            </p>
+          </div>
+        </dl>
+
         <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
           {totalTracked} venture-backed GitHub orgs ranked every week by commit
-          velocity. The pattern preceded 219 confirmed fundraises by 21–47 days
-          (SSRN-indexed). Free forever, built for the developer who also
-          angel-invests.
+          velocity <strong className="text-gray-100">and contributor diversity</strong> —
+          the two signals that, combined, drove the{" "}
+          <a
+            href="/methodology#3-4x-finding"
+            className="text-sky-400 hover:text-sky-300 underline decoration-sky-400/40 underline-offset-2"
+          >
+            3.4× Series-A lift
+          </a>{" "}
+          in the SSRN panel of 219 confirmed fundraises (median lead time 21–47
+          days). Free forever, built for the developer who also angel-invests.
         </p>
       </header>
 
