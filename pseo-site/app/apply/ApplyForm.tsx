@@ -10,6 +10,14 @@ interface FormState {
   thesis: string;
   how_heard: string;
   quarterly_question: string;
+  // Brunson high-ticket diligence (DotCom Secrets Ch 22 — async equivalent
+  // of the phone-close five-question script). Replaces the live-call closer
+  // with a written diligence questionnaire to preserve founder anonymity.
+  dream_state: string;
+  current_state: string;
+  gap: string;
+  money_value: string;
+  urgency: string;
 }
 
 const INITIAL: FormState = {
@@ -20,6 +28,11 @@ const INITIAL: FormState = {
   thesis: "",
   how_heard: "",
   quarterly_question: "",
+  dream_state: "",
+  current_state: "",
+  gap: "",
+  money_value: "",
+  urgency: "",
 };
 
 type Status = "idle" | "submitting" | "success" | "error";
@@ -141,6 +154,65 @@ export default function ApplyForm() {
         placeholder="What's the one thing you'd want from the white-labeled API or quarterly call that makes Sharp worth €497/mo over Insider's €97/mo?"
         rows={3}
       />
+
+      <div className="rounded-xl border border-purple-700/40 bg-purple-950/20 p-5 space-y-5">
+        <div>
+          <p className="text-purple-300 text-[11px] font-semibold uppercase tracking-wider">
+            Diligence — 5 questions, 90 seconds each
+          </p>
+          <p className="text-gray-400 text-xs mt-1 leading-relaxed">
+            These replace what would normally be a 30-minute phone close. Async
+            and anonymity-preserving. The founder reads every answer before
+            replying — short and specific beats long and polished.
+          </p>
+        </div>
+
+        <FieldArea
+          label="1 · Dream state — where do you want your sourcing to be 12 months from now?"
+          required
+          id="dream_state"
+          value={form.dream_state}
+          onChange={(v) => update("dream_state", v)}
+          placeholder="e.g. 'Seeing 3 of every 5 of our Series A deals before any other fund is talking to them' / '50% of new portfolio adds sourced from data, not warm intros'"
+          rows={2}
+        />
+        <FieldArea
+          label="2 · Current state — where are you actually today on that axis?"
+          required
+          id="current_state"
+          value={form.current_state}
+          onChange={(v) => update("current_state", v)}
+          placeholder="e.g. '~80% of deals are warm intro, ~10% inbound, ~10% other' / 'We have an analyst running Crunchbase queries but no GitHub layer'"
+          rows={2}
+        />
+        <FieldArea
+          label="3 · Gap — what's between the two? What's blocking dream state?"
+          required
+          id="gap"
+          value={form.gap}
+          onChange={(v) => update("gap", v)}
+          placeholder="e.g. 'Nobody on the team reads commit graphs / no time to build the regression / no API to plug into our CRM'"
+          rows={2}
+        />
+        <FieldArea
+          label="4 · Money — what's that gap worth to your fund this year?"
+          required
+          id="money_value"
+          value={form.money_value}
+          onChange={(v) => update("money_value", v)}
+          placeholder="e.g. 'One missed Series A is ~€800k of foregone fees + ~€4M of unrealized markups over 4 years' / 'We size around 12 deals/year — a 1-deal sourcing improvement is ~5% of the fund's vintage outcome'"
+          rows={2}
+        />
+        <FieldArea
+          label="5 · Urgency — why now, vs. waiting six months?"
+          required
+          id="urgency"
+          value={form.urgency}
+          onChange={(v) => update("urgency", v)}
+          placeholder="e.g. 'Cohort closes 8 funds for 2026 / our Q3 allocation cycle is locked by July / we're losing 1 deal a quarter to faster competitors'"
+          rows={2}
+        />
+      </div>
 
       <button
         type="submit"

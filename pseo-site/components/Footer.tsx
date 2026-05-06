@@ -79,6 +79,7 @@ export default function Footer() {
               <Link href="/stage/seed" className="hover:text-gray-200 transition-colors">By Stage</Link>
               <Link href="/vs/harmonic-ai-vs-dealroom" className="hover:text-gray-200 transition-colors">Head-to-Head</Link>
               <Link href="/blog" className="hover:text-gray-200 transition-colors">Blog</Link>
+              <Link href="/book" className="hover:text-gray-200 transition-colors">Book — 7 Signals</Link>
               <Link href="/glossary" className="hover:text-gray-200 transition-colors">Glossary</Link>
               <Link href="/faq" className="hover:text-gray-200 transition-colors">FAQ</Link>
             </nav>

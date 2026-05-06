@@ -24,6 +24,7 @@ export const stripe = new Proxy({} as Stripe, {
 
 export type TierKey =
   | "teardown"
+  | "book"
   | "firstlook"
   | "dashboard"
   | "insider"
@@ -32,7 +33,8 @@ export type TierKey =
 
 // Map Stripe price amounts (in cents) to internal tier names
 const TIER_BY_AMOUNT: Record<number, TierKey> = {
-  100: "teardown", // EUR 1.00 one-time — Brunson buyer-threshold breaker (€0→€7 bridge)
+  100: "teardown", // EUR 1.00 one-time — Tweet Teardown micro-tripwire / €0→€7 bridge (Brunson DCS Ch 18)
+  99: "book", // EUR 0.99 one-time — The 7 GitHub Signals book (Brunson Secret 17)
   700: "firstlook", // EUR 7.00 one-time
   997: "dashboard", // EUR 9.97/mo
   1900: "agent_credits_100", // EUR 19 one-time, 100 deep-signal calls

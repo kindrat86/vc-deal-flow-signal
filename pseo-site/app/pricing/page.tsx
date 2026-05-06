@@ -73,6 +73,27 @@ const tiers: Tier[] = [
     highlight: false,
   },
   {
+    slug: "book",
+    name: "The Book — 7 GitHub Signals",
+    priceLabel: "€0.99",
+    priceCadence: "one-time",
+    rrpLabel: "Free PDF + EPUB",
+    oneLine:
+      "104-page operational field manual on the seven public-data signals that precede Series A rounds — read free on the open web, free PDF/EPUB download, or €0.99 Kindle copy with three bonus emails.",
+    forWho:
+      "Developer-investors who want to learn the methodology end-to-end before subscribing — or who prefer reading to dashboards.",
+    bullets: [
+      "Eleven chapters: introduction, seven signal chapters, methodology, replication appendix, conclusion",
+      "Replication appendix takes you from a fresh laptop to a verified leaderboard rank in 90 minutes",
+      "Free downloads: PDF, EPUB, Markdown, plain text",
+      "€0.99 Kindle copy adds three bonus emails (most-recent-catch walkthrough, investor interviews, 30-day direct line)",
+      "ISBN 979-8-9876543-1-7 · CC-BY-4.0 license",
+    ],
+    ctaLabel: "Get the Book",
+    ctaHref: "/book",
+    highlight: false,
+  },
+  {
     slug: "tweet-teardown",
     name: "Tweet Teardown",
     priceLabel: "€1",
@@ -91,7 +112,7 @@ const tiers: Tier[] = [
       "No PDF, no CSV, no call — pure signal compression",
     ],
     ctaLabel: "Buy the Teardown — €1",
-    ctaHref: "/teardown",
+    ctaHref: "/tweet-teardown",
     highlight: false,
   },
   {

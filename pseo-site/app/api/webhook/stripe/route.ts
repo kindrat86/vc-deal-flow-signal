@@ -180,6 +180,41 @@ function creditPackWelcomeEmail(
   };
 }
 
+function bookWelcomeEmail(email: string): { subject: string; html: string } {
+  return {
+    subject: "Your Kindle copy is ready (+ the three bonus emails)",
+    html: `<!DOCTYPE html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head>
+<body style="margin:0;padding:0;background:#f8fafc;color:#1e293b;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
+<div style="max-width:600px;margin:0 auto;padding:32px 24px;">
+<div style="margin-bottom:24px;"><strong style="color:#d97706;font-size:14px;letter-spacing:1px;">VC DEAL FLOW SIGNAL — BOOK</strong></div>
+<div style="font-size:16px;line-height:1.7;color:#1e293b;">
+<p>The €0.99 hit. Thank you for buying the book.</p>
+<p>Your downloads:</p>
+<table cellpadding="0" cellspacing="0" border="0" style="margin:16px 0;">
+<tr>
+<td style="padding-right:8px;padding-bottom:8px;"><a href="https://signals.gitdealflow.com/downloads/seven-signals.pdf" style="display:inline-block;background:#0284c7;color:#ffffff;font-weight:600;font-size:15px;padding:11px 22px;border-radius:8px;text-decoration:none;">PDF</a></td>
+<td style="padding-right:8px;padding-bottom:8px;"><a href="https://signals.gitdealflow.com/downloads/seven-signals.epub" style="display:inline-block;background:#0284c7;color:#ffffff;font-weight:600;font-size:15px;padding:11px 22px;border-radius:8px;text-decoration:none;">EPUB (Kindle)</a></td>
+<td style="padding-right:8px;padding-bottom:8px;"><a href="https://signals.gitdealflow.com/downloads/seven-signals.md" style="display:inline-block;background:#475569;color:#ffffff;font-weight:600;font-size:14px;padding:9px 18px;border-radius:8px;text-decoration:none;">Markdown</a></td>
+</tr>
+</table>
+<p>To read on Kindle: tap the EPUB link on your Kindle device or app, or email it to your kindle.com address. Most Kindle apps now accept EPUB natively; if yours doesn&rsquo;t, drop the file into <a href="https://www.amazon.com/sendtokindle" style="color:#0ea5e9;">Send to Kindle</a> and it will sync within minutes.</p>
+<p><strong>The three bonus emails arrive in this order:</strong></p>
+<ol style="padding-left:20px;">
+<li><strong>Tomorrow</strong> — a fully worked walkthrough of the most recent Series A announcement that the seven-signal stack would have caught, week-by-week, signal-by-signal.</li>
+<li><strong>Day 4</strong> — a private link to the unedited interview transcripts with two early-stage developer-investors who use the workflow daily. Names redacted at their request, but the operational detail is intact.</li>
+<li><strong>Day 7</strong> — the direct line. Reply to that email with any methodology question and I&rsquo;ll respond personally for thirty days from purchase.</li>
+</ol>
+<p>If anything in the book breaks for you, reply to this email. I read every message and the next edition folds in your correction with attribution.</p>
+<p>— The Data Nerd</p>
+</div>
+<div style="margin-top:40px;padding-top:20px;border-top:1px solid #e2e8f0;font-size:12px;color:#94a3b8;">
+<p>Account email: ${escapeHtml(email)} · <a href="https://gitdealflow.com" style="color:#0ea5e9;">gitdealflow.com</a></p>
+</div>
+</div></body></html>`,
+  };
+}
+
 function teardownWelcomeEmail(email: string): { subject: string; html: string } {
   // Suppress unused-param warning — email is reserved for future per-recipient
   // personalisation (e.g. inserting the buyer's first name once Stripe captures it).
@@ -309,6 +344,8 @@ export async function POST(request: NextRequest) {
       welcomeEmail = sectorSweepWelcomeEmail(email);
     } else if (tier === "firstlook") {
       welcomeEmail = firstLookWelcomeEmail(email);
+    } else if (tier === "book") {
+      welcomeEmail = bookWelcomeEmail(email);
     } else if (tier === "teardown") {
       welcomeEmail = teardownWelcomeEmail(email);
     } else {

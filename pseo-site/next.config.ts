@@ -1,8 +1,12 @@
 import type { NextConfig } from "next";
+import * as path from "node:path";
 
 const nextConfig: NextConfig = {
+  // Pin turbopack root to this package so worktree builds (and any nested
+  // checkout layout) don't drift to a parent lockfile. Harmless on Vercel —
+  // the production root resolves to the same directory.
   turbopack: {
-    root: process.cwd(),
+    root: path.resolve(__dirname),
   },
   async rewrites() {
     return [
