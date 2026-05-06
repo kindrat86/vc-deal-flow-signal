@@ -80,6 +80,8 @@ export async function GET(_req: Request, ctx: RouteContext) {
       { url: `${BASE_URL}/book/read/methodology`, lastmod, changefreq: "monthly", priority: 0.8 },
       { url: `${BASE_URL}/book/read/replication-appendix`, lastmod, changefreq: "monthly", priority: 0.8 },
       { url: `${BASE_URL}/book/read/conclusion`, lastmod, changefreq: "monthly", priority: 0.8 },
+      // Tweet Teardown — €1 micro-tripwire (Brunson DCS Ch 18, 2026-05-06).
+      { url: `${BASE_URL}/tweet-teardown`, lastmod, changefreq: "monthly", priority: 0.85 },
       { url: `${BASE_URL}/enterprise`, lastmod, changefreq: "monthly", priority: 0.85 },
       { url: `${BASE_URL}/api/v1/pricing.json`, lastmod, changefreq: "monthly", priority: 0.7 },
       { url: `${BASE_URL}/dataset`, lastmod, changefreq: "weekly", priority: 0.85 },
