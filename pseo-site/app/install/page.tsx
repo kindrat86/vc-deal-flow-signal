@@ -81,10 +81,10 @@ const jsonLd = {
       mainEntity: [
         {
           "@type": "Question",
-          name: "How is this different from the GitDealFlow Chrome Extension?",
+          name: "How is this different from the two GitDealFlow Chrome Extensions?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "The Chrome Extension overlays signal on Crunchbase and Wellfound profiles. The bookmarklet works on github.com pages — the place where engineering momentum actually shows up first. Use both, or pick whichever matches where you scout deal flow today.",
+            text: "Three install paths, three surfaces. (1) The bookmarklet works on github.com pages — the place where engineering momentum first shows up. (2) Chrome Extension #1 overlays signal on Crunchbase and Wellfound profiles. (3) Chrome Extension #2 — VC GitHub Lookup — hovers any github.com repo or org link from any page and returns velocity in 200ms. Use all three, or pick whichever matches where you scout deal flow today.",
           },
         },
         {
