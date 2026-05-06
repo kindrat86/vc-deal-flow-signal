@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { verifyToken, verifyVerifyToken } from "@/lib/verify-token";
 import { isValidEmail } from "@/lib/validation";
-import { SOAP_OPERA_EMAILS, CHALLENGE_EMAILS } from "@/lib/emails";
+import { SOAP_OPERA_EMAILS, CHALLENGE_EMAILS, LAUNCH_EMAILS } from "@/lib/emails";
 import { isExcluded } from "@/lib/excluded-emails";
 
 // In-memory single-use tracking for v2 verify-subscribe nonces. Once a v2
@@ -163,10 +163,15 @@ export async function GET(request: Request) {
   }
 
   // 2. Schedule the cohort drip sequence. `cohort=challenge` routes to the
-  //    7-Day Deal Flow Reset; default routes to the existing soap-opera funnel.
+  //    7-Day Deal Flow Reset; `cohort=launch` routes to the 5-email Brunson
+  //    Product Launch Funnel; default routes to the existing soap-opera funnel.
   const cohortParam = url.searchParams.get("cohort");
   const sequence =
-    cohortParam === "challenge" ? CHALLENGE_EMAILS : SOAP_OPERA_EMAILS;
+    cohortParam === "challenge"
+      ? CHALLENGE_EMAILS
+      : cohortParam === "launch"
+        ? LAUNCH_EMAILS
+        : SOAP_OPERA_EMAILS;
   const now = Date.now();
   for (const soapEmail of sequence) {
     const sendAt = new Date(now + soapEmail.delayMs).toISOString();
@@ -205,9 +210,13 @@ export async function GET(request: Request) {
   }
 
   // 3. Redirect — challenge cohort lands on /challenge/started so the user
-  //    sees the curriculum and what to expect; default lands on the report.
+  //    sees the curriculum, launch cohort lands on the open launch page so
+  //    they can buy immediately if they want, default lands on the report.
   if (cohortParam === "challenge") {
     return NextResponse.redirect(`${SITE_URL}/challenge/started`);
+  }
+  if (cohortParam === "launch") {
+    return NextResponse.redirect(`${SITE_URL}/launch/agent-credits`);
   }
   return NextResponse.redirect(REPORT_URL);
 }

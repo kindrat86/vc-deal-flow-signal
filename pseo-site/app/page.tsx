@@ -46,6 +46,10 @@ const PILLAR_LINKS = [
   { href: "/blog", label: "Blog", sub: "Long-form analyses", icon: "✍️" },
   { href: "/markets", label: "Prediction markets", sub: "Series A Race 2026", icon: "🎯" },
   { href: "/citations", label: "Citation guide", sub: "How to cite us", icon: "📚" },
+  { href: "/state-of-github", label: "State of GitHub", sub: "Monthly engineering-velocity address", icon: "🏛️" },
+  { href: "/watch", label: "Watch (silent demo)", sub: "90-second visual walkthrough", icon: "📺" },
+  { href: "/launch", label: "Launches", sub: "Active and archived 4-stage funnels", icon: "🚀" },
+  { href: "/press", label: "Press kit", sub: "Wire-ready releases + boilerplate", icon: "📰" },
 ] as const;
 
 // "Where to go next" deep-dive entry points. Icons help the eye navigate a

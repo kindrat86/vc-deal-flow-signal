@@ -127,7 +127,15 @@ export async function GET(_req: Request, ctx: RouteContext) {
       { url: `${BASE_URL}/knowledge`, lastmod, changefreq: "monthly", priority: 0.8 },
       // Off-page receptacles
       { url: `${BASE_URL}/press`, lastmod, changefreq: "monthly", priority: 0.75 },
+      { url: `${BASE_URL}/press/ssrn-panel-q2-2026`, lastmod, changefreq: "yearly", priority: 0.7 },
+      { url: `${BASE_URL}/press/agent-credits-launch-q2-2026`, lastmod, changefreq: "yearly", priority: 0.7 },
+      { url: `${BASE_URL}/press/annual-state-of-engineering-velocity-q4-2026`, lastmod, changefreq: "yearly", priority: 0.7 },
       { url: `${BASE_URL}/mirrors`, lastmod, changefreq: "monthly", priority: 0.7 },
+      // Brunson-trilogy surfaces shipped 2026-05-06 (audit V7)
+      { url: `${BASE_URL}/launch`, lastmod, changefreq: "weekly", priority: 0.8 },
+      { url: `${BASE_URL}/launch/agent-credits`, lastmod, changefreq: "weekly", priority: 0.85 },
+      { url: `${BASE_URL}/state-of-github`, lastmod, changefreq: "monthly", priority: 0.85 },
+      { url: `${BASE_URL}/watch`, lastmod, changefreq: "monthly", priority: 0.7 },
       { url: `${BASE_URL}/embed`, lastmod, changefreq: "monthly", priority: 0.7 },
       // i18n surfaces
       { url: `${BASE_URL}/translations`, lastmod, changefreq: "monthly", priority: 0.6 },

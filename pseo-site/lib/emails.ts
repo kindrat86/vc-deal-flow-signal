@@ -663,3 +663,96 @@ export const CHALLENGE_EMAILS = [
 `),
   },
 ];
+
+/**
+ * Launch sequence — Brunson Product Launch Funnel as a 5-email drip
+ * (DotCom Secrets Ch 15). Stage 1 problem → Stage 2 broken fixes → Stage 3
+ * the fix → Stage 4 cart open → Stage 5 last call. Wired via cohort=launch
+ * in /api/subscribe. The sequence is launch-agnostic by intention so a single
+ * cohort can cover any future launch; the specific Agent Credits launch
+ * (closes 2026-05-20) is referenced inline.
+ */
+export const LAUNCH_EMAILS = [
+  // Stage 1 — The problem (immediate, 30 min)
+  {
+    subject: "Why nobody is selling deal-flow data on agent terms",
+    delayMs: THIRTY_MIN,
+    html: wrap(`
+<p>Welcome — and quick context.</p>
+<p>You signed up to a launch sequence, not the regular Sunday digest. The free digest still arrives Sundays. This is a separate, time-bounded thread that lasts about ten days and ends when the cart closes on May 20.</p>
+<p>The launch is for <strong>Agent Credits</strong> — the first per-call pricing tier for the GitDealFlow signal engine, built specifically for AI agents that programmatically diligence GitHub orgs. Five emails over ten days. No padding.</p>
+<p><strong>Stage 1 — The problem.</strong></p>
+<p>Spend two minutes inside Claude or Cursor with an MCP server attached and the future is obvious. Agents don't scroll dashboards. They issue tool calls. They scrape, score, decide, ship a memo before you finish your coffee.</p>
+<p>Every signal-data product on the market still bills humans by the seat — €99/month, $299/month, €497/month — assuming a partner clicks through pages. None of them have a credit-meter that an agent can spend against. Until now, that included us.</p>
+<p>The next email picks up at Stage 2 — why every fix I tried before this one failed.</p>
+<p>Talk soon,<br>${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. Read the full launch at <a href="${SIGNALS}/launch/agent-credits" style="color:#0ea5e9;">${SIGNALS}/launch/agent-credits</a>. Cart closes May 20, 23:59 UTC.</p>
+`),
+  },
+
+  // Stage 2 — Why current fixes fail (Day 2)
+  {
+    subject: "‘Just sell us a higher seat tier’ doesn’t work",
+    delayMs: THIRTY_MIN + 2 * ONE_DAY,
+    html: wrap(`
+<p><strong>Stage 2 — why every current fix fails.</strong></p>
+<p>I tried two fixes before I built Agent Credits. First, I tried higher Insider tiers — €97 → €197 → €497. The math broke immediately: a single agent scaling across 4,200 orgs ends up running ~30,000 deep-signal calls in a weekend. €497/month doesn't cover the GitHub-API cost layer underneath, let alone the regression compute.</p>
+<p>Second, I tried a flat ‘fair-use ceiling.’ That's the SaaS-pricing equivalent of duct tape. The honest agents stay polite at 200 calls/month. The dishonest ones blow through 30,000 the first week and the ceiling becomes the entire ceiling — at which point the only honest move is to cut their API access, which is a worse experience than charging them per call up front.</p>
+<p>What this product needed was the simplest economic model in software: <strong>a credit. Pay for the call, get the result, walk away.</strong> No subscription, no overage drama, no per-seat fiction.</p>
+<p>The fix had to be priced by what an agent actually does, not by what a human looks like to a billing system. Tomorrow's email is Stage 3 — what I shipped.</p>
+<p>Talk soon,<br>${FROM_NAME}</p>
+`),
+  },
+
+  // Stage 3 — The fix I built (Day 4)
+  {
+    subject: "100 deep-signal calls for €19, locked at €0.19/call forever",
+    delayMs: THIRTY_MIN + 4 * ONE_DAY,
+    html: wrap(`
+<p><strong>Stage 3 — the fix.</strong></p>
+<p>Agent Credits is a single dead-simple integer balance attached to your API key. Every successful deep-signal call decrements your balance by 1. Misses (no matching org) decrement by zero. Credits never expire. You buy more when you run out.</p>
+<p>The first 100 calls cost €19 — €0.19 per call — and that price is locked forever for buyers in this launch window. After May 20, the standard rate becomes €29 per 100 (€0.29 per call) for new buyers. Existing buyers keep €0.19 indefinitely.</p>
+<p>Integration is two lines. With Claude Desktop or Cursor: install <code style="background:#1e293b;color:#e2e8f0;padding:2px 6px;border-radius:4px;">@gitdealflow/mcp-signal</code>, set <code style="background:#1e293b;color:#e2e8f0;padding:2px 6px;border-radius:4px;">GITDEALFLOW_API_KEY</code>, the new <code style="background:#1e293b;color:#e2e8f0;padding:2px 6px;border-radius:4px;">get_deep_signal</code> tool appears next to the six free tools you already have. With raw HTTP: POST <code style="background:#1e293b;color:#e2e8f0;padding:2px 6px;border-radius:4px;">/api/agent/deep-signal</code> with a GitHub org slug, get the full signal panel JSON back. Every retry with the same X-Request-Id is idempotent — no double-billing.</p>
+<p>The free five-call sample has no card and no commitment. Drop your email at <a href="${SIGNALS}/agents/credits/sample" style="color:#0ea5e9;">${SIGNALS}/agents/credits/sample</a>, get an API key, run five real deep-signal calls inside Claude or Cursor.</p>
+<p>If the integration fits, the €19 pack upgrades the same key. If not, the five free calls are yours either way.</p>
+<p>Talk soon,<br>${FROM_NAME}</p>
+`),
+  },
+
+  // Stage 4 — Cart open, deadline reminder (Day 6)
+  {
+    subject: "Cart's been open four days. Quick checkpoint.",
+    delayMs: THIRTY_MIN + 6 * ONE_DAY,
+    html: wrap(`
+<p><strong>Stage 4 — cart open until May 20.</strong></p>
+<p>Quick honest checkpoint. The cart for Agent Credits at €0.19/call has been open four days. As of this email, the launch-window count is at the kind of number where I can be specific without anyone being identifiable: somewhere between 'enough to validate the pricing' and 'the third email in this sequence is doing real work.'</p>
+<p>Two reasons you might not have bought yet, both fine:</p>
+<ol>
+<li><strong>Your sourcing isn't agent-routed yet.</strong> Stay on the free digest. The launch doesn't change anything about the human-facing tiers. Free Sunday digest stays free, €9.97 founding price on the Dashboard stays open, none of that depends on Agent Credits selling well.</li>
+<li><strong>You want to test before paying.</strong> The free 5-call sample at <a href="${SIGNALS}/agents/credits/sample" style="color:#0ea5e9;">${SIGNALS}/agents/credits/sample</a> takes 90 seconds. No card. Five real deep-signal calls with the same MCP tool you'd use after upgrading. If it doesn't fit your agent's flow, walk away — those five calls cost you nothing.</li>
+</ol>
+<p>The launch-window pricing — €19 for 100 calls, €0.19/call locked forever — closes at midnight UTC on May 20. After that the standard rate is €29 per 100 calls (€0.29/call) for new buyers. Existing buyers keep €0.19 indefinitely on every future top-up.</p>
+<p>Buy here: <a href="${SIGNALS}/launch/agent-credits" style="color:#0ea5e9;font-weight:600;">${SIGNALS}/launch/agent-credits</a></p>
+<p>Talk soon,<br>${FROM_NAME}</p>
+`),
+  },
+
+  // Stage 5 — Last call (Day 9, evening before close)
+  {
+    subject: "Last 30 hours on €0.19/call",
+    delayMs: THIRTY_MIN + 9 * ONE_DAY,
+    html: wrap(`
+<p><strong>Last 30 hours.</strong></p>
+<p>The €19-for-100 launch-window pricing closes tomorrow at midnight UTC. After that, new buyers pay €29 for the same 100-call pack. Existing buyers keep €0.19/call on every top-up forever.</p>
+<p>If you bought a pack already — you're done. The price you locked sticks. You'll never pay more than €0.19 per call on this product, even five years from now when the standard rate is whatever it ends up being. That's the founding-buyer trade.</p>
+<p>If you haven't, two paths from here:</p>
+<ol>
+<li><strong>Buy at €19/100.</strong> 100 calls, €0.19 locked forever. <a href="${SIGNALS}/launch/agent-credits" style="color:#0ea5e9;">${SIGNALS}/launch/agent-credits</a></li>
+<li><strong>Run the free sample first.</strong> 5 calls, no card. <a href="${SIGNALS}/agents/credits/sample" style="color:#0ea5e9;">${SIGNALS}/agents/credits/sample</a></li>
+</ol>
+<p>This is the last email of the launch sequence. After tomorrow, this thread ends and the regular Sunday digest takes over. No more launch reminders unless I open another window for a different product later in the year.</p>
+<p>Whichever path fits, thank you for following this far.</p>
+<p>Talk soon,<br>${FROM_NAME}</p>
+`),
+  },
+];

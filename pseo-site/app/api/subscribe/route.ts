@@ -12,19 +12,28 @@ const VERIFY_BASE_URL =
 
 function verificationEmailHtml(
   verifyUrl: string,
-  cohort: "soap-opera" | "challenge",
+  cohort: "soap-opera" | "challenge" | "launch",
 ): string {
   const headline =
     cohort === "challenge"
       ? "Confirm your email — your 7-Day Reset starts immediately"
-      : "Your report is ready.";
+      : cohort === "launch"
+        ? "Confirm your email — launch sequence starts in 30 minutes"
+        : "Your report is ready.";
   const body =
     cohort === "challenge"
       ? `<p>Click below to confirm your email and start the 7-Day Deal Flow Reset Challenge.</p>
 <p>Day 1 lands within 15 minutes of confirmation. One signal per day, one 5-minute exercise per day. By Day 7 you'll have a personal sourcing framework built from the SSRN-published methodology.</p>`
-      : `<p>Click the button below to confirm your email and get instant access to <strong>This Week's Top 5 Breakout Startups</strong> — with real GitHub acceleration data on the fastest-moving companies right now.</p>`;
+      : cohort === "launch"
+        ? `<p>Click below to confirm your email and start the Agent Credits launch sequence.</p>
+<p>Five emails over ten days, structured as a Brunson Product Launch Funnel: Stage 1 the problem, Stage 2 why current fixes fail, Stage 3 what I shipped, Stage 4 cart open, Stage 5 last call. Cart closes May 20 at 23:59 UTC.</p>`
+        : `<p>Click the button below to confirm your email and get instant access to <strong>This Week's Top 5 Breakout Startups</strong> — with real GitHub acceleration data on the fastest-moving companies right now.</p>`;
   const cta =
-    cohort === "challenge" ? "Start the Challenge" : "Get the Report";
+    cohort === "challenge"
+      ? "Start the Challenge"
+      : cohort === "launch"
+        ? "Start the Launch Sequence"
+        : "Get the Report";
   return `<!DOCTYPE html>
 <html>
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head>
@@ -110,9 +119,15 @@ export async function POST(request: Request) {
 
     // Cohort dispatches the post-verify drip sequence. Default = "soap-opera"
     // (the existing 8-email Russell-style funnel). "challenge" routes to the
-    // 7-Day Deal Flow Reset sequence in lib/emails.ts. Whitelist enforced.
+    // 7-Day Deal Flow Reset sequence. "launch" routes to the 5-email Brunson
+    // Product Launch Funnel for an active launch window. Whitelist enforced.
     const rawCohort = clip(body.cohort, 32);
-    const cohort = rawCohort === "challenge" ? "challenge" : "soap-opera";
+    const cohort: "soap-opera" | "challenge" | "launch" =
+      rawCohort === "challenge"
+        ? "challenge"
+        : rawCohort === "launch"
+          ? "launch"
+          : "soap-opera";
 
     // Build verification URL — attribution piggybacks as query params so
     // /api/verify can persist it to PocketBase regardless of which device
@@ -144,7 +159,9 @@ export async function POST(request: Request) {
         subject:
           cohort === "challenge"
             ? "Confirm your email — your 7-Day Reset starts now"
-            : "Confirm your email — your report is ready",
+            : cohort === "launch"
+              ? "Confirm your email — Agent Credits launch starts now"
+              : "Confirm your email — your report is ready",
         html: verificationEmailHtml(verifyUrl, cohort),
         headers: {
           "List-Unsubscribe": `<mailto:${FROM_EMAIL}?subject=unsubscribe>`,
