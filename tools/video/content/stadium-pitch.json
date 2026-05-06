@@ -1,0 +1,122 @@
+{
+  "id": "vsl-3min",
+  "cadence": "monthly-stadium-pitch",
+  "monthIso": "2026-05",
+  "title": "State of GitHub Engineering Velocity — Stadium Pitch — May 2026",
+  "description": "Monthly Stadium Pitch from VC Deal Flow Signal — May 2026.\n\nOne belief: across the panel of 219+ confirmed Series A and Series B fundraises, GitHub commit-velocity acceleration showed up 21–47 days before the deck did. This month's cut: AI-native devtools sustained the highest median acceleration of any tracked sector.\n\nFull written address: https://signals.gitdealflow.com/state-of-github\nFree Sunday digest:    https://gitdealflow.com/#signup\nLive ranking:          https://signals.gitdealflow.com/predicted\nSSRN methodology:      https://ssrn.com/abstract=6606558\n\n#vc #dealflow #github #startups #seriesA",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "scenes": [
+    {
+      "id": "title",
+      "kind": "title",
+      "vo": "",
+      "durationHint": 2.5,
+      "data": {
+        "title": "State of GitHub — May 2026.",
+        "subtitle": "The monthly Stadium Pitch."
+      }
+    },
+    {
+      "id": "hook",
+      "kind": "hook",
+      "vo": "If you read code-side momentum to source deal flow, three minutes of this address will reset what you watch for the next thirty days.",
+      "durationHint": 9,
+      "data": {
+        "lines": [
+          "If you read code-side momentum",
+          "to source deal flow,",
+          "three minutes resets the next thirty days."
+        ],
+        "stamp": "May 2026"
+      }
+    },
+    {
+      "id": "panel",
+      "kind": "panel-stat",
+      "vo": "Across 219-plus confirmed Series A and B fundraises, the signal sat ahead of the deck by twenty one to forty seven days. False positive rate this month, 38%. Of those false positives, roughly seventy percent were silent rounds, not no-events.",
+      "durationHint": 14,
+      "data": {
+        "panelLabel": "Confirmed rounds in panel",
+        "panelValue": "219+",
+        "leadLabel": "Pre-deck lead band",
+        "leadValue": "21–47 days",
+        "fpLabel": "False-positive rate, this month",
+        "fpValue": "38%"
+      }
+    },
+    {
+      "id": "sectors",
+      "kind": "timeline",
+      "vo": "Top three sectors by median commit-velocity acceleration this month. AI-native devtools. Verifiable compute. On-device inference. The first one is the loudest. The middle one is the most consequential.",
+      "durationHint": 22,
+      "data": {
+        "title": "Top sectors — May 2026",
+        "beats": [
+          {
+            "day": "#1",
+            "label": "AI-native devtools",
+            "detail": "Δ 0.41 · n=18",
+            "win": true
+          },
+          {
+            "day": "#2",
+            "label": "Verifiable compute",
+            "detail": "Δ 0.36 · n=11",
+            "win": false
+          },
+          {
+            "day": "#3",
+            "label": "On-device inference",
+            "detail": "Δ 0.29 · n=9",
+            "win": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "stadium",
+      "kind": "story",
+      "vo": "Here is the standing offer at the end of every monthly address. Free Sunday digest, five names a week, no upgrade pressure. Dashboard, nine ninety seven a month founding rate, locked forever. Insider Circle, ninety seven a month, twenty four hour lead on the public list. Sector Sweep, nineteen ninety seven once, written report on any one sector you pick. Pick the rung that fits your cadence. The rest stay out of your way.",
+      "durationHint": 18,
+      "data": {
+        "title": "Where the four rungs sit",
+        "beats": [
+          {
+            "day": "FREE",
+            "label": "Sunday digest",
+            "detail": "5 names/wk"
+          },
+          {
+            "day": "€9.97/mo",
+            "label": "Dashboard",
+            "detail": "founding rate"
+          },
+          {
+            "day": "€97/mo",
+            "label": "Insider",
+            "detail": "24h lead"
+          },
+          {
+            "day": "€1,997×",
+            "label": "Sector Sweep",
+            "detail": "1 sector deep",
+            "win": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "close",
+      "kind": "close",
+      "vo": "One belief — in venture, edge is time, not research. If a twenty four hour lead on a list of ten ranked engineering accelerations would change one cheque you write this year, the math is already done. signals dot gitdealflow dot com slash state of github. Talk soon.",
+      "durationHint": 14,
+      "data": {
+        "title": "Edge is time, not research.",
+        "subtitle": "signals.gitdealflow.com/state-of-github",
+        "cta": "Read the full address →"
+      }
+    }
+  ]
+}
