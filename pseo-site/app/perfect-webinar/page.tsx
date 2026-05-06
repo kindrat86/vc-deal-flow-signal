@@ -539,6 +539,81 @@ export default function PerfectWebinarPage() {
           </p>
         </section>
 
+        {/* FUTURE-PACING — Brunson Expert Secrets Ch 21. The mental movie
+            placed between Conversion Story and Stack — buyer is now
+            primed for the offer, but doesn't yet feel the offer. The
+            "Tuesday in August" block makes them live the cadence three
+            months from now in their own working week, so the Stack
+            reveal that follows isn't a list of features, it's the
+            instrument that produces the future they just imagined. */}
+        <section
+          aria-label="Three months from now — a Tuesday in August"
+          className="bg-gradient-to-br from-violet-950/40 via-slate-900 to-slate-950 border border-violet-700/40 rounded-xl p-6 sm:p-8 space-y-5"
+        >
+          <div className="space-y-1.5">
+            <p className="text-violet-300 text-xs font-semibold uppercase tracking-wider">
+              Future-pace · 90 days from today
+            </p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-tight">
+              A Tuesday in August. The cadence is installed.
+            </h2>
+            <p className="text-gray-400 text-sm leading-relaxed">
+              Three months from now. Second Tuesday of August. You&rsquo;ve
+              run the Sunday–Wednesday–Quarter rhythm for twelve weeks.
+              Here&rsquo;s what your day looks like, hour by hour, once
+              the cadence is just background.
+            </p>
+          </div>
+
+          <ol className="space-y-4">
+            {[
+              {
+                time: "09:14",
+                scene:
+                  "Coffee, laptop open. Sunday’s digest from this past weekend is still in the tab to the left — five names, sector-tagged. The third one, an AI-infra org out of Berlin, you opened on Monday because it matched the thesis you keep pulling toward. You spent fifteen minutes on their commit graph and sent the founder a three-line email. There’s a reply at the top of your inbox now: short, friendly, asks if you want to see the deck.",
+              },
+              {
+                time: "11:30",
+                scene:
+                  "Wednesday filter, but pulled forward to Tuesday because you have a partner call this afternoon. You open the Dashboard, set sector = AI infra, stage = Seed, and sort by 14-day acceleration. Top ten. You cross-reference two of them against your portfolio’s GitHub orgs — and one of them has a contributor in common with a portfolio company you led last year. That’s a warm-intro vector your AngelList syndicate doesn’t have. You note it for the partner call.",
+              },
+              {
+                time: "15:00",
+                scene:
+                  "Partner call. You open with the Berlin org and the warm-intro vector. The partner asks how you’re finding these. You don’t name the tool — you describe the rhythm. Five names on Sunday, fifteen minutes on Wednesday, one specific email a month. Twelve minutes a week. The partner is quiet for a beat and then asks if you’d co-source the next three. That’s the moment the cadence stops being a private edge and becomes leverage in the room.",
+              },
+              {
+                time: "18:00",
+                scene:
+                  "End of day. You drop the Sector Sweep file on the AI-infra panel into the partner’s shared folder — €1,997 once, paid in March, still earning attention now five months later. The IC memo for next week writes itself: three names, two of them off-Crunchbase, one already with a confirmed product launch since the Sweep was delivered. You close the laptop. The Sunday email lands again in five days. The rhythm is the room you live in now, not a workflow you maintain.",
+              },
+            ].map((moment) => (
+              <li
+                key={moment.time}
+                className="flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-5 border-l-2 border-violet-600/40 pl-4"
+              >
+                <span
+                  className="font-mono text-violet-300 font-bold text-sm tracking-wider shrink-0 sm:w-16 pt-0.5"
+                  aria-hidden="true"
+                >
+                  {moment.time}
+                </span>
+                <p className="text-gray-300 text-sm sm:text-[15px] leading-relaxed flex-1">
+                  {moment.scene}
+                </p>
+              </li>
+            ))}
+          </ol>
+
+          <p className="text-gray-300 text-sm leading-relaxed border-t border-violet-800/40 pt-4">
+            That&rsquo;s the August Tuesday. The cadence isn&rsquo;t a tool
+            you operate, it&rsquo;s a room you live in. The Stack below is
+            the instrument that produces it. The price below is what the
+            instrument costs to lease per month, founding-member rate,
+            locked forever.
+          </p>
+        </section>
+
         {/* THE STACK */}
         <section id="stack" className="space-y-6 scroll-mt-20">
           <div className="space-y-2">

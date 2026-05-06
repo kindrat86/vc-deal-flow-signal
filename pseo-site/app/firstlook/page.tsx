@@ -274,6 +274,109 @@ export default function FirstLookPage() {
           </div>
         </section>
 
+        {/* FUTURE-PACING TIMELINE — Brunson Expert Secrets Ch 21 (mental
+            movie). The cart-funnel V9 24-hour timeline: walk the buyer
+            from T+0 (click) through T+24h (delivery email lands) so the
+            timing objection ("how do I know it'll actually arrive in 24h?
+            what does the next day actually look like?") is removed before
+            it's asked. Six stops, named clock points, founder-side
+            transparency on what happens between purchase and inbox. */}
+        <section
+          aria-label="What the next 24 hours look like"
+          className="space-y-5"
+        >
+          <div className="space-y-1">
+            <p className="text-gray-500 text-xs font-semibold uppercase tracking-wider">
+              The next 24 hours, stop by stop
+            </p>
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-100">
+              Where you&rsquo;ll be 24 hours from clicking the button.
+            </h2>
+            <p className="text-gray-400 text-sm leading-relaxed">
+              Most tripwires hand-wave the delivery window. This one
+              doesn&rsquo;t. Six clock-stops between checkout and inbox so
+              you can see exactly when each step happens, founder-side and
+              buyer-side.
+            </p>
+          </div>
+
+          <ol className="relative border-l-2 border-amber-700/40 ml-2 space-y-5">
+            {[
+              {
+                clock: "T + 0 min",
+                role: "Buyer",
+                title: "You click checkout",
+                detail:
+                  "Stripe takes the €7. The order field carries the sector slug into the founder pipeline. You get a Stripe receipt; nothing else to do for the next 18 hours.",
+              },
+              {
+                clock: "T + 15 min",
+                role: "Founder pipeline",
+                title: "Confirmation email lands",
+                detail:
+                  "Subject: “Sector confirmed — [your sector].” Tells you the deliverable spec, the private slug where the PDF will live, and the next email to expect. If you picked the wrong sector, this is the window to reply with a correction.",
+              },
+              {
+                clock: "T + 2 h",
+                role: "Engine",
+                title: "Panel slices to your sector",
+                detail:
+                  "The 4,200-org engine narrows to your sector, ranks by 14-day commit-velocity acceleration, snapshots contributor maps for the top 25, and pulls dependents-graph data for the top 5. Fully automated; no founder hand-holding.",
+              },
+              {
+                clock: "T + 6 h",
+                role: "Founder",
+                title: "Narrative gets written",
+                detail:
+                  "I take the slice and write the 14-page brief by hand: what stood out, what's a likely false positive, the three pre-Crunchbase orgs the engine surfaced, the thesis-specific surprises this quarter. ∼3 hours of focused writing per pass.",
+              },
+              {
+                clock: "T + 18 h",
+                role: "Founder pipeline",
+                title: "PDF + CSV + JSON ship to private link",
+                detail:
+                  "Final PDF, raw CSV, and JSON manifest land in a private S3 slug. Delivery email is composed and queued for the next 09:00 UTC slot (so it arrives at the start of your working day, not at 02:00).",
+              },
+              {
+                clock: "T + 24 h",
+                role: "Buyer",
+                title: "Delivery email lands at 09:00 UTC",
+                detail:
+                  "PDF + CSV + JSON + the 15-minute written walkthrough hit your inbox. Your €7 credit toward the Dashboard activates for 14 days; the one-time Insider Circle bump (€77 instead of €97 for the first month) expires when next Monday’s digest goes out.",
+              },
+            ].map((stop) => (
+              <li key={stop.clock} className="ml-4 sm:ml-6 relative">
+                <span
+                  aria-hidden="true"
+                  className="absolute -left-[1.55rem] sm:-left-[1.85rem] top-1 w-3 h-3 rounded-full bg-amber-500 ring-4 ring-amber-500/15"
+                />
+                <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                  <span className="font-mono text-[11px] sm:text-xs font-bold text-amber-300 uppercase tracking-wider">
+                    {stop.clock}
+                  </span>
+                  <span className="text-[10px] uppercase tracking-wider font-semibold text-gray-500">
+                    {stop.role}
+                  </span>
+                </div>
+                <p className="text-gray-100 font-semibold text-sm sm:text-base mt-0.5">
+                  {stop.title}
+                </p>
+                <p className="text-gray-400 text-sm leading-relaxed mt-1">
+                  {stop.detail}
+                </p>
+              </li>
+            ))}
+          </ol>
+
+          <p className="text-gray-500 text-xs leading-relaxed border-l-2 border-slate-800 pl-3">
+            Weekends queue to the next weekday 09:00 UTC slot. If a
+            delivery is more than 24 working-hours late, reply{" "}
+            <code className="text-amber-300">REFUND</code> and the €7 is
+            returned same-day, no questions — the brief and CSV stay
+            yours either way.
+          </p>
+        </section>
+
         <section className="bg-gradient-to-br from-amber-950/30 via-slate-900 to-slate-950 border border-amber-700/40 rounded-xl p-6 sm:p-8 text-center space-y-4">
           <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider">
             One-time payment · No subscription
