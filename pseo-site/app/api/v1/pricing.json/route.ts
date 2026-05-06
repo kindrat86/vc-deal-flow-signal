@@ -59,6 +59,33 @@ const tiers: PricingTier[] = [
     promoCode: null,
   },
   {
+    slug: "tweet-teardown",
+    name: "Tweet Teardown",
+    priceEur: 1,
+    priceCadence: "one-time",
+    priceLabel: "€1 one-time",
+    listPriceEur: null,
+    listPriceCadence: null,
+    foundingMember: false,
+    applicationGated: false,
+    capacity: null,
+    oneLine:
+      "Pay €1 once, name one venture-backed startup, and within 24 hours get a tweet-length (≤280 char) teardown of its GitHub momentum — signal type, 14-day acceleration delta, and the kicker insight. Buyer-threshold breaker between Free and €7.",
+    forWho:
+      "Curious investors who want to feel the signal quality on a startup they already know before paying real money.",
+    bullets: [
+      "Tweet-length (≤280 char) teardown of one startup you name",
+      "Signal classification + 14-day acceleration delta + kicker insight",
+      "Hand-written by the founder, not LLM-generated",
+      "Delivered within 24h on weekdays",
+      "€1 credited toward First Look Pass if you upgrade within 7 days",
+    ],
+    ctaLabel: "Buy the Teardown",
+    ctaHref: "https://signals.gitdealflow.com/teardown",
+    guarantee: null,
+    promoCode: null,
+  },
+  {
     slug: "first-look-pass",
     name: "First Look Pass",
     priceEur: 7,
@@ -209,7 +236,7 @@ export async function GET() {
     version: "1.0.0",
     name: "VC Deal Flow Signal — Pricing",
     description:
-      "Machine-readable pricing for VC Deal Flow Signal (GitDealFlow). Six published tiers with founding-member rates, application-gated Sharp Tier, and a 30-day Signal-or-It's-Free guarantee on every paid plan. Designed for AI agents, MCP clients, and procurement automations that need pricing in JSON form.",
+      "Machine-readable pricing for VC Deal Flow Signal (GitDealFlow). Seven published tiers (free Signal Digest, €1 Tweet Teardown, €7 First Look Pass, €9.97/mo Dashboard Beta, €97/mo Insider Circle, €497/mo Sharp Tier, €1,997 Sector Sweep) with founding-member rates, application-gated Sharp Tier, and a 30-day Signal-or-It's-Free guarantee on every paid plan above €1. Designed for AI agents, MCP clients, and procurement automations that need pricing in JSON form.",
     site: SITE,
     canonicalHumanPage: `${SITE}/pricing`,
     license: {
@@ -242,6 +269,29 @@ export async function GET() {
         "sharp-tier",
         "sector-sweep",
       ],
+      excludes: ["tweet-teardown", "first-look-pass"],
+      excludesReason:
+        "€1 Tweet Teardown and €7 First Look Pass are one-time micro-deliverables — refund window is 24h after delivery, not 30 days. Tweet Teardown auto-refunds if no public GitHub data is available for the named org.",
+    },
+    upgradeCredits: {
+      "tweet-teardown": {
+        creditsToward: ["first-look-pass"],
+        amountEur: 1,
+        windowDays: 7,
+        note: "€1 credited toward First Look Pass if upgraded within 7 days. Reply REQUEST CREDIT to delivery email; founder applies manually.",
+      },
+      "first-look-pass": {
+        creditsToward: ["dashboard-beta"],
+        amountEur: 7,
+        windowDays: 14,
+        note: "€7 credited toward first month of Dashboard Beta if upgraded within 14 days. Credits chain — Tweet Teardown → First Look → Dashboard.",
+      },
+      "sector-sweep": {
+        creditsToward: ["insider-circle"],
+        amountEur: 1997,
+        windowDays: 60,
+        note: "€1,997 credited toward Insider Circle if upgraded within 60 days — first ~20 months of Insider, paid.",
+      },
     },
     foundingMemberPolicy: {
       tiers: ["dashboard-beta", "insider-circle"],

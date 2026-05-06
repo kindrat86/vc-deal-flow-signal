@@ -64,6 +64,8 @@ export async function GET(_req: Request, ctx: RouteContext) {
       { url: `${BASE_URL}/trending`, lastmod, changefreq: "weekly", priority: 0.9 },
       { url: `${BASE_URL}/methodology`, lastmod, changefreq: "monthly", priority: 0.8 },
       { url: `${BASE_URL}/pricing`, lastmod, changefreq: "monthly", priority: 0.9 },
+      { url: `${BASE_URL}/teardown`, lastmod, changefreq: "monthly", priority: 0.85 },
+      { url: `${BASE_URL}/firstlook`, lastmod, changefreq: "monthly", priority: 0.85 },
       { url: `${BASE_URL}/buyers-guide`, lastmod, changefreq: "monthly", priority: 0.85 },
       { url: `${BASE_URL}/enterprise`, lastmod, changefreq: "monthly", priority: 0.85 },
       { url: `${BASE_URL}/api/v1/pricing.json`, lastmod, changefreq: "monthly", priority: 0.7 },
