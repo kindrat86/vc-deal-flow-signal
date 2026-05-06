@@ -31,6 +31,8 @@ interface Attribution {
   utm_campaign: string;
   referrer: string;
   landing_path: string;
+  quiz_route: string;
+  quiz_route_label: string;
 }
 
 // Marker we prepend to the JSON-encoded attribution we stash in Resend's
@@ -99,6 +101,7 @@ export async function GET(request: Request) {
   // Pull attribution that /api/subscribe piggybacked on the verify URL.
   const clip = (v: string | null, max: number): string =>
     (v || "").slice(0, max);
+  const rawRoute = clip(url.searchParams.get("quiz_route"), 4);
   const attribution: Attribution = {
     source: clip(url.searchParams.get("source"), 100),
     utm_source: clip(url.searchParams.get("utm_source"), 100),
@@ -106,6 +109,8 @@ export async function GET(request: Request) {
     utm_campaign: clip(url.searchParams.get("utm_campaign"), 200),
     referrer: clip(url.searchParams.get("referrer"), 500),
     landing_path: clip(url.searchParams.get("landing_path"), 500),
+    quiz_route: ["F", "T", "D", "I"].includes(rawRoute) ? rawRoute : "",
+    quiz_route_label: clip(url.searchParams.get("quiz_route_label"), 120),
   };
   const packedAttribution = packAttribution(attribution);
 
