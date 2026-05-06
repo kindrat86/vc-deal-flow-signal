@@ -1150,6 +1150,74 @@ export default function Home() {
           price grid. */}
       <SharpScarcityBadge variant="default" />
 
+      {/* Trial closes — Brunson Expert Secrets Ch 15. Three yes-no gut-checks
+          immediately above the pricing card, so the visitor's head is nodding
+          before they see the number. Russell rule: the trial close is the
+          bridge between belief (Big Domino + Three Objections) and price
+          (PricingLadder). One Money close, one Identity close, one Urgency
+          close — each phrased as "would that be worth it" so the answer is
+          a self-spoken yes. */}
+      <section
+        aria-label="Gut-check before pricing"
+        className="my-8 rounded-2xl border border-amber-500/30 bg-gradient-to-br from-amber-950/30 via-slate-950 to-slate-950 p-6 sm:p-8"
+      >
+        <p className="text-amber-300 text-xs font-semibold uppercase tracking-[0.14em] mb-4">
+          Three quick gut-checks before the price
+        </p>
+        <ul className="space-y-4 text-gray-100 text-base sm:text-[17px] leading-relaxed">
+          <li className="flex gap-3">
+            <span
+              aria-hidden
+              className="mt-[0.6rem] inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-amber-400"
+            />
+            <span>
+              <strong className="text-amber-300">If a 24-hour lead</strong> on
+              the same ten ranked startups changed{" "}
+              <em>one</em> cheque you write in the next 12 months — at a €5k–€50k
+              angel range with a 3× exit on one in five — would that head-start
+              be worth <strong>€97/month</strong>?
+            </span>
+          </li>
+          <li className="flex gap-3">
+            <span
+              aria-hidden
+              className="mt-[0.6rem] inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-amber-400"
+            />
+            <span>
+              <strong className="text-amber-300">If you stayed</strong> the
+              engineer who reads commit logs for fun — never had to turn into a
+              warm-intro-Tetris partner — and the signal still found the
+              founders before consensus did, would{" "}
+              <strong>€9.97/month</strong> be a fair trade?
+            </span>
+          </li>
+          <li className="flex gap-3">
+            <span
+              aria-hidden
+              className="mt-[0.6rem] inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-amber-400"
+            />
+            <span>
+              <strong className="text-amber-300">If the founding rate</strong>{" "}
+              locks forever for everyone who joins before the cohort closes —
+              and the public price is already scheduled to step to €29/€197
+              after — does the cost of waiting one more week feel{" "}
+              <em>cheaper</em> than the cost of locking in tonight?
+            </span>
+          </li>
+        </ul>
+        <p className="mt-5 text-gray-400 text-sm">
+          If you said yes to any one of these, the rung that fits sits in the
+          ladder below. If you said no to all three, the{" "}
+          <Link
+            href="/predicted"
+            className="text-sky-400 hover:text-sky-300 underline decoration-dotted"
+          >
+            free Sunday digest
+          </Link>{" "}
+          is the right rhythm for now — no upgrade pressure, ever.
+        </p>
+      </section>
+
       {/* Pricing ladder — visible on homepage so buyers don't have to hunt for
           the price. Greg audit: anchor on Insider, sell the middle tier. */}
       <PricingLadder />
