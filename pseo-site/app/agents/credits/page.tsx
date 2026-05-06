@@ -189,35 +189,81 @@ export default async function AgentCreditsPage({
           </ul>
         </header>
 
-        <section className="mb-10 rounded-xl border border-amber-500/30 bg-amber-500/5 p-6 sm:p-8">
-          <p className="text-amber-400 text-xs uppercase tracking-wider mb-2 font-semibold">
-            Starter pack
+        <section className="mb-10" aria-label="Choose your payment path">
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-100 mb-1">
+            Two paths · same data · same €0.19 / $0.19 per call
+          </h2>
+          <p className="text-gray-400 text-sm mb-5">
+            Pick the one that matches your runtime. Both hit the same{" "}
+            <code className="text-emerald-300 font-mono">get_deep_signal</code>{" "}
+            payload, both treat 404 misses as free.
           </p>
-          <div className="flex items-baseline gap-3 mb-2">
-            <p className="text-4xl font-bold text-gray-100">€19</p>
-            <p className="text-gray-400 text-sm">= 100 calls · €0.19 / call</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="rounded-xl border border-amber-500/40 bg-amber-500/5 p-6 flex flex-col">
+              <p className="text-amber-400 text-xs uppercase tracking-wider mb-2 font-semibold">
+                For humans &amp; teams
+              </p>
+              <h3 className="text-lg font-bold text-gray-100 mb-1">
+                Credit pack · Stripe
+              </h3>
+              <p className="text-3xl font-bold text-gray-100">
+                €19{" "}
+                <span className="text-base font-normal text-gray-400">
+                  = 100 calls
+                </span>
+              </p>
+              <p className="text-gray-400 text-xs mb-4">
+                €0.19 / call · credits never expire
+              </p>
+              <ul className="text-gray-300 text-sm space-y-1.5 mb-5 flex-1">
+                <li>✓ Card or SEPA via Stripe checkout</li>
+                <li>✓ API key emailed in ~30s</li>
+                <li>✓ Promo codes accepted, top up any time</li>
+                <li>✓ Best for human-supervised agents</li>
+              </ul>
+              <Link
+                href={STRIPE_LINK}
+                className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-amber-600 hover:bg-amber-500 text-white text-sm font-semibold transition-colors"
+              >
+                Buy 100 credits — €19 →
+              </Link>
+            </div>
+
+            <div className="rounded-xl border border-sky-500/40 bg-sky-500/5 p-6 flex flex-col">
+              <p className="text-sky-400 text-xs uppercase tracking-wider mb-2 font-semibold">
+                For autonomous agents
+              </p>
+              <h3 className="text-lg font-bold text-gray-100 mb-1">
+                Pay-per-call · x402 / USDC
+              </h3>
+              <p className="text-3xl font-bold text-gray-100">
+                $0.19{" "}
+                <span className="text-base font-normal text-gray-400">
+                  USDC / call
+                </span>
+              </p>
+              <p className="text-gray-400 text-xs mb-4">
+                No signup · wallet signs each request
+              </p>
+              <ul className="text-gray-300 text-sm space-y-1.5 mb-5 flex-1">
+                <li>✓ USDC on Base mainnet</li>
+                <li>✓ HTTP 402 + EIP-3009 (gasless to buyer)</li>
+                <li>✓ ~2s settlement · 404 misses free</li>
+                <li>✓ Works with x402-fetch, Coinbase CDP, MetaMask</li>
+              </ul>
+              <a
+                href="#x402-detail"
+                className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-semibold transition-colors"
+              >
+                See x402 endpoint ↓
+              </a>
+            </div>
           </div>
-          <ul className="text-gray-300 text-sm leading-relaxed mb-6 space-y-1">
-            <li>• 100 <code className="text-emerald-400 font-mono">get_deep_signal</code> calls</li>
-            <li>• Misses (startup not in our universe) are FREE — only matches charge</li>
-            <li>• Credits never expire</li>
-            <li>• API key delivered instantly via email</li>
-            <li>• Top up any time, no expiration on stacked credits</li>
-          </ul>
-          <Link
-            href={STRIPE_LINK}
-            className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-amber-600 hover:bg-amber-500 text-white text-base font-semibold transition-colors"
-          >
-            Buy 100 credits — €19 →
-          </Link>
-          <p className="text-gray-500 text-xs mt-3">
-            Stripe-hosted checkout. €19 flat, one-time payment, no recurring
-            billing. Promo codes accepted at checkout.
-          </p>
         </section>
 
         <section
-          className="mb-10 rounded-xl border border-sky-500/30 bg-sky-500/5 p-6 sm:p-8"
+          id="x402-detail"
+          className="mb-10 rounded-xl border border-sky-500/30 bg-sky-500/5 p-6 sm:p-8 scroll-mt-20"
           aria-label="x402 — pay-per-call in USDC"
         >
           <p className="text-sky-400 text-xs uppercase tracking-wider mb-2 font-semibold">

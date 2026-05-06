@@ -333,6 +333,24 @@
         "public-bet"
       ],
       "use_count": 0
+    },
+    {
+      "id": "035-bait-buffet-launch-2026-05-06",
+      "text": "Shipped a Bait Buffet.\n\n14 free magnets in one page, categorized by Brunson Ch 13: Tools (MCP, Chrome ext, SVG badge), Information (SSRN paper, dataset, buyers guide), Service (Scout Score, Scout game, markets).\n\nPick what fits how you actually buy.\n\nsignals.gitdealflow.com/bait",
+      "tags": ["bait", "launch", "brunson"],
+      "use_count": 0
+    },
+    {
+      "id": "036-bait-mcp-vs-pdf-2026-05-06",
+      "text": "Distribution = product = bait.\n\nThe free MCP server is the right bait for devs who read commit logs. The 7 EUR PDF is the right bait for engineer-investors who want a sector deep dive on their thesis.\n\nWrong bait, no bite.\n\nFull buffet: signals.gitdealflow.com/bait",
+      "tags": ["bait", "mcp", "brunson"],
+      "use_count": 0
+    },
+    {
+      "id": "037-bait-avatar-fit-2026-05-06",
+      "text": "Bait works when it matches identity, not budget.\n\nA 14-page paper is wrong bait for a maintainer who wants a one-line npx command.\n\nA 7 EUR PDF is wrong bait for a fund partner with a six-figure data budget.\n\nSo we ship 14 baits, categorized.\n\nsignals.gitdealflow.com/bait",
+      "tags": ["bait", "avatar-fit", "brunson"],
+      "use_count": 0
     }
   ]
 }
