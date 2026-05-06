@@ -1,0 +1,88 @@
+name: YouTube monthly Stadium Pitch
+
+# Brunson Expert Secrets §1 Ch 20 — Stadium Pitch as event-shaped anchor.
+# Fires the first Wednesday of every month at 14:07 UTC, an hour after
+# the /state-of-github page ships its monthly written Address. Pulls the
+# month's top-3 sectors from /api/v1/signals.json, generates a synthetic-
+# voice 90-second pitch via Cartesia + Remotion (re-using the Vsl3min
+# composition), uploads to the channel.
+#
+# Anonymity rule: no founder face/voice/name. Cartesia "Theo" + AI-avatar
+# overlay only. Memory: synthetic TTS + AI avatars are explicitly allowed
+# (feedback_anonymity_no_podcasts.md, updated 2026-05-05).
+#
+# Cron only fires from the default branch (main). Until this file lands
+# on main, use workflow_dispatch to run it manually.
+
+on:
+  schedule:
+    # First Wednesday of the month: day-of-month 1-7, weekday Wed (3).
+    - cron: "7 14 1-7 * 3"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: youtube-stadium-pitch
+  cancel-in-progress: false
+
+jobs:
+  ship:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    defaults:
+      run:
+        working-directory: tools/video
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: tools/video/package-lock.json
+
+      - name: Install system deps (ffmpeg + chromium libs for Remotion)
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg \
+            libnss3 libatk1.0-0 libatk-bridge2.0-0 libxcomposite1 \
+            libxdamage1 libxrandr2 libxkbcommon0 libgbm1 libpango-1.0-0 \
+            libasound2t64 libgtk-3-0
+
+      - name: Install npm deps
+        run: npm ci
+
+      - name: Decode YouTube OAuth credentials
+        run: |
+          echo "${{ secrets.YT_CREDENTIALS_B64 }}" | base64 -d > .yt-credentials.json
+          echo "${{ secrets.YT_TOKEN_B64 }}" | base64 -d > .yt-token.json
+
+      - name: Write Cartesia env
+        run: |
+          cat > .env.local <<EOF
+          CARTESIA_API_KEY=${{ secrets.CARTESIA_API_KEY }}
+          CARTESIA_VOICE_ID=${{ secrets.CARTESIA_VOICE_ID }}
+          CARTESIA_VOICE_NAME=Theo
+          CARTESIA_MODEL_ID=sonic-2
+          CARTESIA_VERSION=2026-03-01
+          EOF
+
+      - name: Run stadium-pitch pipeline
+        env:
+          SKIP_CAPTIONS: "1"
+        run: bash scripts/run-stadium-pitch.sh
+
+      - name: Commit content archive
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add content/stadium-pitch.json content/vsl-3min.json content/archive/ || true
+          git diff --cached --quiet || \
+            git commit -m "youtube: monthly Stadium Pitch ship $(date -u +%Y-%m)"
+          git push || true
+
+      - name: Cleanup secrets
+        if: always()
+        run: rm -f .yt-credentials.json .yt-token.json .env.local
