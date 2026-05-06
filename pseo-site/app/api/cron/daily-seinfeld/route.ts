@@ -1,0 +1,198 @@
+/**
+ * Daily Seinfeld broadcast cron — invoked by Vercel Cron at 14:00 UTC.
+ *
+ * Brunson DotCom Secret #8. The Sunday digest trains the rhythm; this
+ * keeps the list warm between Mondays. One observation, 60–90 second read,
+ * single soft CTA. Each day uses a different editorial frame, anchored to
+ * today's #1 mover from `getTopMoversThisWeek(1)`.
+ *
+ * Auth:
+ *   - Production: Vercel Cron sends `Authorization: Bearer ${CRON_SECRET}`.
+ *     Without that header (or with the wrong secret), the route 401s.
+ *   - Local + manual: `?dry=1` skips both auth and Resend send, returning
+ *     the rendered email payload as JSON.
+ *
+ * Test surfaces:
+ *   - `GET /api/cron/daily-seinfeld?dry=1`        → JSON, no send, no auth
+ *   - `GET /api/cron/daily-seinfeld?to=foo@bar`   → single recipient via
+ *                                                   Resend /emails (auth)
+ *   - `GET /api/cron/daily-seinfeld`              → broadcast to audience
+ *                                                   (auth)
+ *
+ * Restored 2026-05-06 — original cron + lib were uncommitted on
+ * `claude/blissful-hamilton-6f38ab`, got overwritten when main moved.
+ */
+
+import { NextResponse } from "next/server";
+import { getTopMoversThisWeek } from "@/lib/data";
+import { buildDailySeinfeld, FROM_EMAIL } from "@/lib/daily-seinfeld";
+
+export const dynamic = "force-dynamic";
+export const maxDuration = 60;
+
+const RESEND_API_KEY = process.env.RESEND_API_KEY;
+const CRON_SECRET = process.env.CRON_SECRET;
+
+interface ResendBroadcastCreateResponse {
+  id?: string;
+  data?: { id?: string };
+  message?: string;
+}
+
+interface ResendErrorBody {
+  message?: string;
+  name?: string;
+  statusCode?: number;
+}
+
+async function getAudienceId(): Promise<string | null> {
+  if (!RESEND_API_KEY) return null;
+  const res = await fetch("https://api.resend.com/audiences", {
+    method: "GET",
+    headers: { Authorization: `Bearer ${RESEND_API_KEY}` },
+  });
+  if (!res.ok) return null;
+  const json: { data?: Array<{ id?: string }> } = await res.json();
+  return json.data?.[0]?.id ?? null;
+}
+
+export async function GET(req: Request): Promise<Response> {
+  const url = new URL(req.url);
+  const dry = url.searchParams.get("dry") === "1";
+  const to = url.searchParams.get("to");
+
+  // Build the email regardless of mode — even auth failures benefit from the
+  // payload being computed so we can debug schedule misfires from logs.
+  const movers = getTopMoversThisWeek(1);
+  const topMover = movers.length > 0 ? movers[0] : null;
+  const today = new Date();
+  const email = buildDailySeinfeld(today, topMover);
+
+  // Dry-run: no auth required, no send.
+  if (dry) {
+    return NextResponse.json({
+      ok: true,
+      mode: "dry",
+      date: today.toISOString().slice(0, 10),
+      weekday: today.getUTCDay(),
+      ...email,
+    });
+  }
+
+  // Cron + manual paths require Vercel cron auth.
+  const authHeader = req.headers.get("authorization");
+  if (!CRON_SECRET) {
+    console.error("[daily-seinfeld] CRON_SECRET not configured");
+    return new Response("Cron secret not configured", { status: 500 });
+  }
+  if (authHeader !== `Bearer ${CRON_SECRET}`) {
+    return new Response("Unauthorized", { status: 401 });
+  }
+
+  if (!RESEND_API_KEY) {
+    console.error("[daily-seinfeld] RESEND_API_KEY not configured");
+    return new Response("Resend not configured", { status: 500 });
+  }
+
+  // ?to=email — single test recipient via /emails endpoint (not /broadcasts).
+  if (to) {
+    const sendRes = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${RESEND_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: FROM_EMAIL,
+        to: [to],
+        subject: email.subject,
+        html: email.html,
+        text: email.text,
+        headers: { "X-Entity-Ref-ID": `daily-seinfeld-test-${Date.now()}` },
+      }),
+    });
+    const body = (await sendRes.json()) as ResendErrorBody & { id?: string };
+    if (!sendRes.ok) {
+      console.error("[daily-seinfeld] test send failed:", body);
+      return NextResponse.json(
+        { ok: false, mode: "test", to, error: body },
+        { status: 502 },
+      );
+    }
+    console.info(`[daily-seinfeld] test sent to ${to}, frame=${email.frame}`);
+    return NextResponse.json({
+      ok: true,
+      mode: "test",
+      to,
+      frame: email.frame,
+      moverOrg: email.moverOrg,
+      resend_id: body.id,
+    });
+  }
+
+  // Default: full broadcast to the audience.
+  const audienceId = await getAudienceId();
+  if (!audienceId) {
+    console.error("[daily-seinfeld] no Resend audience found");
+    return new Response("No audience", { status: 500 });
+  }
+
+  // 1. Create the broadcast (draft).
+  const createRes = await fetch("https://api.resend.com/broadcasts", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${RESEND_API_KEY}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      audience_id: audienceId,
+      from: FROM_EMAIL,
+      subject: email.subject,
+      html: email.html,
+      name: `daily-seinfeld-${today.toISOString().slice(0, 10)}-${email.frame}`,
+      reply_to: ["signal@gitdealflow.com"],
+    }),
+  });
+  const created = (await createRes.json()) as ResendBroadcastCreateResponse;
+  const broadcastId = created.id ?? created.data?.id;
+  if (!createRes.ok || !broadcastId) {
+    console.error("[daily-seinfeld] broadcast create failed:", created);
+    return NextResponse.json(
+      { ok: false, mode: "broadcast", error: created },
+      { status: 502 },
+    );
+  }
+
+  // 2. Trigger the send.
+  const sendRes = await fetch(
+    `https://api.resend.com/broadcasts/${broadcastId}/send`,
+    {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${RESEND_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({}),
+    },
+  );
+  if (!sendRes.ok) {
+    const body = await sendRes.json().catch(() => ({}));
+    console.error("[daily-seinfeld] broadcast send failed:", body);
+    return NextResponse.json(
+      { ok: false, mode: "broadcast", broadcastId, error: body },
+      { status: 502 },
+    );
+  }
+
+  console.info(
+    `[daily-seinfeld] broadcast ${broadcastId} sent (frame=${email.frame}, mover=${email.moverOrg ?? "none"})`,
+  );
+  return NextResponse.json({
+    ok: true,
+    mode: "broadcast",
+    broadcastId,
+    frame: email.frame,
+    moverOrg: email.moverOrg,
+    subject: email.subject,
+  });
+}

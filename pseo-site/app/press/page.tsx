@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { PRESS_RELEASES } from "@/content/press-releases";
 
 const SITE = "https://signals.gitdealflow.com";
 const APEX = "https://gitdealflow.com";
@@ -155,6 +156,49 @@ export default function PressPage() {
               </li>
             ))}
           </ul>
+        </section>
+
+        <section className="mb-12">
+          <h2 className="text-xl font-semibold text-white mb-4">
+            Wire releases
+          </h2>
+          <p className="text-sm text-gray-400 mb-4">
+            Copy-paste-ready releases for wire desks (Newswire, EIN, sector
+            trade press). Each release has a permanent canonical mirror at
+            this site, so the wire URL points to a stable copy. Anonymity
+            preserved — bylines are &quot;The Data Nerd, founder of VC Deal
+            Flow Signal (GitDealFlow)&quot; with ORCID + SSRN citation.
+          </p>
+          <ul className="space-y-3">
+            {PRESS_RELEASES.map((r) => (
+              <li key={r.slug}>
+                <Link
+                  href={`/press/${r.slug}`}
+                  className="block rounded-lg border border-slate-800 bg-slate-900/40 hover:bg-slate-900/60 hover:border-slate-700 p-5 transition-colors"
+                >
+                  <p className="text-xs text-sky-400 uppercase tracking-wider mb-2">
+                    {r.dateline} · {r.date}
+                  </p>
+                  <p className="text-sky-300 font-semibold leading-snug mb-2">
+                    {r.headline}
+                  </p>
+                  <p className="text-sm text-gray-400 leading-relaxed">
+                    {r.subhead}
+                  </p>
+                  <p className="text-xs text-gray-500 mt-3">
+                    {r.wireCategories.slice(0, 3).join(" · ")}
+                    {r.wireCategories.length > 3
+                      ? ` · +${r.wireCategories.length - 3} more`
+                      : ""}
+                  </p>
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <p className="text-xs text-gray-500 mt-4">
+            All releases CC BY 4.0 — attribution required. Boilerplate +
+            target wire desks listed on each release page.
+          </p>
         </section>
 
         <section className="mb-12">
