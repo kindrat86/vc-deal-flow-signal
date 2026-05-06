@@ -430,6 +430,7 @@ export default function FunnelHubPage() {
               { n: 21, name: "Application / Filter", where: "/apply — 8-fund cap on Sharp Tier" },
               { n: 22, name: "Soap Opera Sequence", where: "lib/emails.ts D0–D7 + Challenge cohort" },
               { n: 23, name: "Daily Seinfeld", where: "lib/emails.ts D9, D12, D14, D17, D21, D25, D30" },
+              { n: 24, name: "Stadium Pitch / State of Industry", where: "/state-of-github — first-Wednesday-of-month address" },
             ].map((b) => (
               <div
                 key={b.n}

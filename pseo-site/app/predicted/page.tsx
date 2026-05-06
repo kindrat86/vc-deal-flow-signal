@@ -187,6 +187,13 @@ export default function PredictedPage() {
             >
               ssrn.com/abstract=6606558
             </a>{" "}
+            · Monthly address:{" "}
+            <Link
+              href="/state-of-github"
+              className="text-sky-400 hover:text-sky-300 underline decoration-dotted"
+            >
+              /state-of-github
+            </Link>{" "}
             · Grading window for this cohort closes{" "}
             <span className="text-gray-300">
               {fmtLongDate(week.gradingDueAt)}
