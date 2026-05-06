@@ -229,7 +229,7 @@ export default function StateOfGitHubPage() {
               Synthetic-voice 90-second video version of this address ships
               the same day as the written canonical. Bookmark{" "}
               <a
-                href="https://www.youtube.com/@VCDealFlowSignal"
+                href="https://www.youtube.com/@data_nerd"
                 rel="noopener"
                 className="text-sky-400 hover:text-sky-300 underline decoration-dotted"
               >
@@ -264,7 +264,7 @@ export default function StateOfGitHubPage() {
             months are indexed below as they accumulate. Subscribe to the free
             Sunday digest at{" "}
             <Link
-              href="/#signup"
+              href="https://gitdealflow.com/#signup"
               className="text-sky-400 hover:text-sky-300 underline decoration-dotted"
             >
               gitdealflow.com

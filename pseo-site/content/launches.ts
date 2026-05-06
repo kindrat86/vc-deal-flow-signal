@@ -144,7 +144,7 @@ export const LAUNCHES: Launch[] = [
         ],
       },
     ],
-    buyUrl: "https://buy.stripe.com/agent-credits-100",
+    buyUrl: "https://buy.stripe.com/00w4gyfRpg3SbAGcUg0x205",
     ctaLabel: "Lock €0.19/call — €19 for 100 calls →",
     cohort: "launch-agent-credits",
     faq: [

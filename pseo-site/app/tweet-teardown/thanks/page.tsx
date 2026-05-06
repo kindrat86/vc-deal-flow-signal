@@ -104,7 +104,7 @@ export default function TeardownThanksPage() {
             locked forever for the cohort closing in days, not weeks.
           </p>
           <Link
-            href="/pricing#dashboard"
+            href="/pricing#dashboard-beta"
             className="inline-flex items-center justify-center w-full sm:w-auto rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-semibold px-6 py-3 transition-colors"
           >
             Lock in €9.97/mo Dashboard →
@@ -122,7 +122,7 @@ export default function TeardownThanksPage() {
             commitment, no pressure, free forever.
           </p>
           <Link
-            href="/#signup"
+            href="https://gitdealflow.com/#signup"
             className="text-sky-400 hover:text-sky-300 font-medium"
           >
             Confirm I'm on the free Sunday list →

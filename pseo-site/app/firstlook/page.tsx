@@ -92,7 +92,7 @@ const OTO_LADDER = [
     label: "Insider Circle",
     price: "€77 / mo",
     purpose: "Private Telegram + spike alerts + monthly briefing. €20 off first month, this funnel only.",
-    href: "/pricing#insider",
+    href: "/pricing#insider-circle",
     tone: "teal",
   },
   {
@@ -565,7 +565,7 @@ export default function FirstLookPage() {
           </p>
           <p className="text-gray-300 text-sm leading-relaxed">
             Inside the delivery email there&rsquo;s a one-time invitation to add{" "}
-            <Link href="/pricing#insider" className="text-teal-300 hover:text-teal-200 underline decoration-dotted">
+            <Link href="/pricing#insider-circle" className="text-teal-300 hover:text-teal-200 underline decoration-dotted">
               Insider Circle
             </Link>{" "}
             (private Telegram + spike alerts + monthly briefing) at{" "}
