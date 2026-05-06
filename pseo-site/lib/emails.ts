@@ -821,3 +821,82 @@ export const LAUNCH_EMAILS = [
 `),
   },
 ];
+
+/**
+ * Book drip — three follow-ups for buyers of the €0.99 "7 GitHub Signals"
+ * book that fulfil the bonus-email promise made in the immediate welcome
+ * email (see bookWelcomeEmail in app/api/webhook/stripe/route.ts).
+ *
+ *   Day +1 — worked Series A walkthrough, signal-by-signal, T-6 → T-0.
+ *   Day +4 — two unedited interview transcripts inlined (names redacted).
+ *   Day +7 — the direct line opens for 30 days.
+ *
+ * Scheduled via Resend `scheduled_at` from the Stripe webhook on
+ * `checkout.session.completed` for tier === "book".
+ */
+export const BOOK_DRIP = [
+  {
+    subject: "Six weeks before the term sheet: signal-by-signal",
+    delayMs: ONE_DAY,
+    html: wrap(`
+<p>Yesterday I promised the worked walkthrough. Here it is.</p>
+<p>One Series A from the most recent quarter. Developer-tools sector. Public-data only — no insider scuttlebutt, no warm-intro chatter, nothing the dashboard couldn't see. I'm leaving the org name off this email on purpose, so when you next sit down with the dashboard you can run the same trace yourself instead of reaching for the answer key.</p>
+<p>Six weeks before the announcement, all seven signals on the org sat at the twelve-month median. ~38 commits/week. Two contributors. No new repos in eleven months. Boring. Baseline. The kind of profile that makes a partner skip past it on a Monday list.</p>
+<p><strong>T-5 (five weeks out)</strong> — Signal #1, commit velocity, jumped to 71/week. By itself, noise — could be a doc rewrite or a refactor sprint. Signal #2, contributor count, held flat. The stack waits.</p>
+<p><strong>T-4</strong> — Signal #2 fired: a third contributor appeared, then a fourth four days later. Signal #3, repo creation, added two new repos in a fortnight after eleven months of silence — one named for an obvious gateway rewrite, one named for a billing rail. Two new repos in a fortnight after eleven flat months is the regime change. Three concurrent flags. That's the threshold the book talks about in chapter four.</p>
+<p><strong>T-3</strong> — Signal #4, PR merge cadence, dropped from 4.1 days median time-to-merge to 1.3 days. Code review gets faster when a team is racing. Signal #5, dependency-graph delta, added Stripe, a vector DB, and an internal package in the same week — a billing rail and a retrieval index landing together is what an AI-product launch looks like in dependency form. Five of seven, lit.</p>
+<p><strong>T-2</strong> — Signal #6, platform migration cue, showed: the primary repo flipped from a single Dockerfile to a Dockerfile + Helm chart + Terraform module. Kubernetes-shaped deploys usually mean an enterprise pilot is in flight. Signal #7, issue-creator diversity (a hiring proxy), spiked: five new issue authors in seven days, three with GitHub profiles less than ninety days old. New hires push first commits before the HR page updates.</p>
+<p><strong>T-1</strong> — Velocity peaked, contributor count peaked, then both relaxed. The book calls this the "calm before announcement" — the team stops shipping for a week to clean up the demo branch. The stack doesn't dim; it just plateaus.</p>
+<p><strong>T-0</strong> — TechCrunch ran the headline. By that point the stack had been lit for thirty-eight days.</p>
+<p>The whole trace cost €0 in marginal data spend. Public commit graph, weekly cron, deterministic regression. The two-hour version of this analysis collapses to a fifteen-minute scan once the stack is wired up — chapters four through nine define each signal, chapter ten ties them into the scoring rubric.</p>
+<p>Day four, you'll get the unedited transcripts I promised — two developer-investors who run a version of this daily, names redacted at their request, operational detail intact.</p>
+<p>Talk soon,<br>${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. The live panel that ran this trace is the Dashboard — 209 ranked orgs, weekly refresh, sector and stage filters, €9.97/mo founding-member: <a href="${SIGNALS}" style="color:#0ea5e9;">${SIGNALS}</a>.</p>
+`, "book-day1"),
+  },
+  {
+    subject: "The workflow, in their words",
+    delayMs: 4 * ONE_DAY,
+    html: wrap(`
+<p>Two transcripts as promised. Names redacted at their request — both reviewed and signed off on what's below. Lightly cut for length, otherwise unedited.</p>
+<p><strong>Investor A</strong> — seed-stage, EU-based, 11 active investments, fintech and dev-tools split.</p>
+<p><em>Q: When did GitHub data stop being a curiosity and start being your sourcing pipeline?</em></p>
+<p>A: "About eighteen months in. I'd missed two deals that I'd flagged in my notes weeks before they announced. The third time I caught the pattern I just bought the lookup myself the next morning instead of waiting for a warm intro. The intro never came; the deal closed at a valuation I would have happily paid at half. After that I built a Sunday ritual around it. Hour and a half. Coffee, dashboard, three to five names I want to dig into the following week."</p>
+<p><em>Q: What's the signal you trust the most?</em></p>
+<p>A: "Contributor diversity, not commit velocity. Velocity is easy to fake — one engineer can carry a fork. Three new contributors arriving inside fourteen days, none of whom committed to the org before, that's a hiring event. Hiring is the most reliable forward indicator of a fundraise I've found, because the round usually closes inside a quarter of the first new hire pushing code."</p>
+<p><em>Q: Biggest false positive?</em></p>
+<p>A: "Hackathons. Once a year an org will spike on every signal for a week and it's just an internal week-long sprint. The book's filter for that — checking whether the spike sustains past day ten — is what saved me from spending three afternoons on the wrong company last summer."</p>
+<p><em>Q: Biggest miss you still kick yourself about?</em></p>
+<p>A: "An infra startup that flipped to Kubernetes manifests six weeks before their A. I had the trace open. I told myself the team was too senior to be moving that fast. They were moving exactly that fast. I bought the round at the next markup. Lesson: trust the data, not your priors about who's allowed to ship."</p>
+<p><strong>Investor B</strong> — Series A lead, US-based, fintech-focused fund.</p>
+<p><em>Q: How does this fit into a fund where the cheques are bigger and the diligence is longer?</em></p>
+<p>A: "It doesn't replace anything. It moves the funnel earlier. By the time we're in a process, every fund has the same Crunchbase data, the same deck. The advantage is being three weeks earlier than the partner across the table. GitHub data is the only public source I've found that's reliably ahead of TechCrunch by a month. Everything else — Twitter, hiring sites, AngelList — is downstream of someone deciding to broadcast."</p>
+<p><em>Q: How do you avoid drowning in noise at fund scale?</em></p>
+<p>A: "We watch about two hundred orgs at any time. The rule is: if three signals fire in the same fortnight, an analyst writes a one-pager by Friday. If only one signal fires, we ignore it. Two signals, we tag and revisit. Three is the threshold. About one in fifteen three-signal flags becomes a real conversation. That hit rate is what makes the workflow pay for itself — fifteen one-pagers a year for one preempted round is a price I'd pay ten times over."</p>
+<p><em>Q: Is there anything in this workflow that doesn't generalise?</em></p>
+<p>A: "Closed-source companies, obviously. About a third of what I look at has no public commit history at all. For those I'm back to old-fashioned founder calls and reference checks. The workflow is additive, not exclusive — it surfaces orgs the network wouldn't have surfaced, but the network still surfaces orgs the workflow can't see."</p>
+<p>Day seven, the direct line opens.</p>
+<p>Talk soon,<br>${FROM_NAME}</p>
+`, "book-day4"),
+  },
+  {
+    subject: "Reply with any methodology question (30-day window)",
+    delayMs: 7 * ONE_DAY,
+    html: wrap(`
+<p>The direct line is open. Reply to this email with any methodology question and I'll answer personally for the next thirty days from your purchase date.</p>
+<p>Some questions buyers tend to ask, just so you know what's fair game:</p>
+<ol style="padding-left:20px;">
+<li>"My fund covers [sector]. Which of the seven signals fires loudest there, and which can I down-weight?"</li>
+<li>"I traced an org and only two signals are lit. Is the methodology saying ignore it, or watch it?"</li>
+<li>"How do I tell apart a real contributor surge from outsourcing or an agency push?"</li>
+<li>"What's the smallest version of this stack I can run without a paid GitHub plan?"</li>
+<li>"You said in chapter [X] that [Y]. I disagree because [Z]. Where am I wrong?"</li>
+</ol>
+<p>The disagreement question is the most useful one — every correction lands in the next edition with attribution to the buyer, on request.</p>
+<p>Reply turnaround is 24-72 hours during the working week. Outside the thirty-day window I still read everything, but I stop promising a personal reply.</p>
+<p>If nothing in the book broke for you and you've got nothing to ask — that's also fine. The seven-signal stack should mostly be self-contained by the time you finish chapter ten. Save this email; the window holds whether you use it on day eight or day twenty-nine.</p>
+<p>Talk soon,<br>${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. If running this manually starts to feel like a part-time job — the Dashboard is the same trace, automated, weekly: <a href="${SIGNALS}" style="color:#0ea5e9;">${SIGNALS}</a>. The book buyer's price (€9.97/mo founding) holds for thirty days from your purchase, same window as this reply offer.</p>
+`, "book-day7"),
+  },
+];
