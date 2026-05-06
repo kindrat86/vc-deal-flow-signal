@@ -12,6 +12,7 @@
 const FROM_NAME = "The Data Nerd";
 const SITE = "https://gitdealflow.com";
 const SIGNALS = "https://signals.gitdealflow.com";
+const TELEGRAM = "https://t.me/gitdealflow";
 
 // Apply utm_source=email so the click lands as "Email" in PostHog instead of
 // "(direct)". Apple Mail / Outlook desktop strip the Referer header — UTM is
@@ -441,6 +442,7 @@ export const CHALLENGE_EMAILS = [
 <li><strong>Day 7:</strong> Composite score + how to run it across 4,200 orgs</li>
 </ul>
 <p>Pick one startup before tomorrow. Any one. A founder you met, a company you almost-invested in, a portfolio org you want to monitor. Have its GitHub URL ready.</p>
+<p><strong>One optional companion:</strong> the active cohort runs alongside the public Telegram channel at <a href="${TELEGRAM}" style="color:#0ea5e9;">t.me/gitdealflow</a>. I cross-post each day's exercise on a worked example, alumni post their own day-N readings, and the sharpest questions get surfaced in the next morning's email. Free, no signup, lurkers welcome — joining is optional and the seven daily emails work standalone.</p>
 <p>Tomorrow at the same time, Day 1 lands. Talk soon —<br>${FROM_NAME}</p>
 `),
   },
@@ -530,6 +532,7 @@ export const CHALLENGE_EMAILS = [
 <p><strong>Why this works:</strong> the README is the public pitch. When founders are about to raise, they tighten the positioning. A README that hasn't been touched in a year is either a dead project or a team focused entirely on internal customers — both relevant to your decision, but very different stories.</p>
 <p><strong>Bonus signal:</strong> a "Funding" or "Investors" section that just appeared. Founders who are mid-raise often add this to make outreach easier.</p>
 <p>Tomorrow: new repo creation rate — the platform-buildout tell.</p>
+<p>Halfway through. If you've been running the exercises on the startup you picked, drop the org URL + which signal moved you most so far in the cohort thread at <a href="${TELEGRAM}" style="color:#0ea5e9;">t.me/gitdealflow</a> — I read every reply and the sharpest read of the week gets cross-posted on Day 7.</p>
 <p>Talk soon —<br>${FROM_NAME}</p>
 `),
   },
@@ -604,6 +607,7 @@ export const CHALLENGE_EMAILS = [
 <li><strong>Custom Sector Sweep, €1,997 one-time:</strong> a 40-page written report on the one sector you pick, plus the raw CSV, plus three early-stage targets not on Crunchbase. <a href="${SITE}/sector-sweep" style="color:#0ea5e9;">${SITE}/sector-sweep</a></li>
 </ol>
 <p>Whatever you do — even if you just keep running the manual version yourself — you now have a sourcing process that works without paying anyone. That's the point of the week.</p>
+<p>One last thing. The cohort thread on <a href="${TELEGRAM}" style="color:#0ea5e9;">t.me/gitdealflow</a> stays open. Alumni keep posting day-N readings on new orgs, the next cohort cycles through every two weeks, and that's where I cross-post the sharpest reads + breakout alerts mid-week. If you want to stay in the loop without paying anyone, that's the room.</p>
 <p>Talk soon —<br>${FROM_NAME}</p>
 <p style="color:#64748b;font-size:14px;">P.S. The Sector Sweep is capped at 8 per quarter. Q3 2026 has 7 of 8 open as of this email.</p>
 `),

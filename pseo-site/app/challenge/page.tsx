@@ -93,6 +93,13 @@ export default function ChallengePage() {
           courseMode: "Online",
           courseWorkload: "PT35M",
           inLanguage: "en-US",
+          location: {
+            "@type": "VirtualLocation",
+            url: "https://t.me/gitdealflow",
+            name: "Cohort Telegram channel",
+            description:
+              "Active cohort runs alongside the public Telegram channel where alumni post day-N output and the founder cross-posts the worked example.",
+          },
         },
         offers: {
           "@type": "Offer",
@@ -166,6 +173,14 @@ export default function ChallengePage() {
               text: "The Sunday digest is the ongoing free product — five named startups every week, applied. The Challenge is the framework — it teaches you the underlying signals so you can run the analysis yourself on any startup, not just the ones we name.",
             },
           },
+          {
+            "@type": "Question",
+            name: "Is there a community for the active cohort?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Yes. Every active cohort runs alongside the public Telegram channel at t.me/gitdealflow. The founder cross-posts each day's exercise output on a worked example, alumni post their own day-N readings, and the sharpest questions get surfaced in the next morning's email. Free, no signup, lurkers welcome — joining is optional and the seven daily emails work standalone.",
+            },
+          },
         ],
       },
     ],
@@ -206,6 +221,34 @@ export default function ChallengePage() {
         <div className="mb-10">
           <ChallengeForm />
         </div>
+
+        <section
+          className="mb-12 rounded-xl border border-cyan-700/40 bg-cyan-950/20 p-6 sm:p-8"
+          aria-label="Cohort community"
+        >
+          <p className="text-cyan-300 text-xs font-medium mb-2 uppercase tracking-wider">
+            Active cohort
+          </p>
+          <h2 className="text-gray-100 font-semibold text-lg mb-2">
+            Run the week with the cohort, not alone
+          </h2>
+          <p className="text-gray-300 text-sm leading-relaxed mb-4">
+            Every active cohort runs alongside the public Telegram channel.
+            The founder cross-posts each day&rsquo;s exercise output on a worked
+            example, alumni post their own day-N readings, and we surface the
+            sharpest questions in the next morning&rsquo;s email. Free, no
+            additional signup, lurkers welcome. The link arrives in your Day 0
+            welcome email — you can join now if you prefer.
+          </p>
+          <a
+            href="https://t.me/gitdealflow"
+            target="_blank"
+            rel="noopener"
+            className="inline-flex items-center gap-1.5 text-cyan-300 hover:text-cyan-200 underline decoration-dotted text-sm font-medium"
+          >
+            Join the cohort Telegram → t.me/gitdealflow
+          </a>
+        </section>
 
         <section className="mb-12" aria-label="Curriculum">
           <h2 className="text-gray-100 font-semibold text-lg mb-4">
@@ -251,6 +294,20 @@ export default function ChallengePage() {
               <span className="text-emerald-400 mt-0.5">✓</span>The exact same
               framework that powers the GitDealFlow ranking — open methodology,
               re-derivable from public GitHub data
+            </li>
+            <li className="flex gap-3">
+              <span className="text-emerald-400 mt-0.5">✓</span>An ongoing
+              cohort thread on Telegram (
+              <a
+                href="https://t.me/gitdealflow"
+                target="_blank"
+                rel="noopener"
+                className="text-cyan-300 hover:text-cyan-200 underline decoration-dotted"
+              >
+                t.me/gitdealflow
+              </a>
+              ) where the next cohorts run, alumni post their day-N output,
+              and the founder cross-posts the worked example
             </li>
             <li className="flex gap-3">
               <span className="text-emerald-400 mt-0.5">✓</span>Three optional
@@ -315,6 +372,28 @@ export default function ChallengePage() {
                 every week. The Challenge is the framework — the underlying
                 signals so you can run the analysis yourself on any startup,
                 not only the ones we surface.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-gray-100 font-medium mb-2">
+                Is there a community for the active cohort?
+              </h3>
+              <p className="text-gray-400 text-sm leading-relaxed">
+                Yes. The active cohort runs alongside the public Telegram
+                channel at{" "}
+                <a
+                  href="https://t.me/gitdealflow"
+                  target="_blank"
+                  rel="noopener"
+                  className="text-cyan-300 hover:text-cyan-200 underline decoration-dotted"
+                >
+                  t.me/gitdealflow
+                </a>
+                . The founder cross-posts each day&rsquo;s exercise on a worked
+                example; alumni post their own day-N readings; the sharpest
+                questions get surfaced in the next morning&rsquo;s email. Free,
+                no signup. Joining is optional — the seven daily emails work
+                standalone.
               </p>
             </div>
           </div>

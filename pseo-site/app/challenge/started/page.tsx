@@ -27,6 +27,31 @@ export default function ChallengeStartedPage() {
         signal per day with a 5-minute exercise.
       </p>
 
+      <div className="rounded-xl border border-cyan-700/40 bg-cyan-950/20 p-6 mb-8">
+        <p className="text-cyan-300 text-xs font-medium mb-2 uppercase tracking-wider">
+          One optional step before Day 1
+        </p>
+        <h2 className="text-gray-100 font-semibold text-lg mb-3">
+          Join the cohort Telegram
+        </h2>
+        <p className="text-gray-300 text-sm leading-relaxed mb-4">
+          The active cohort runs alongside the public Telegram channel. The
+          founder cross-posts each day&rsquo;s exercise on a worked example,
+          alumni post their day-N readings, and the sharpest questions land in
+          the next morning&rsquo;s email. Free, no extra signup, lurkers
+          welcome.
+        </p>
+        <a
+          href="https://t.me/gitdealflow"
+          target="_blank"
+          rel="noopener"
+          className="inline-flex items-center justify-center gap-1.5 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold px-5 py-2 rounded-md text-sm transition-colors"
+        >
+          Open t.me/gitdealflow
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+
       <div className="rounded-xl border border-emerald-700/40 bg-emerald-950/20 p-6 mb-8">
         <h2 className="text-gray-100 font-semibold text-lg mb-3">
           What lands in your inbox
