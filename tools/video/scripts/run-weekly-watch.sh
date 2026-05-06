@@ -7,21 +7,19 @@ cd "$(dirname "$0")/.."
 
 # Remotion's Root.tsx imports script-meta.json for every composition at
 # bundle time. The weekly cron only renders Predicted90s, but the bundler
-# still walks Vsl3min and ShortMagicBullet imports — so seed inert stubs
-# for those two if they aren't already present from a prior local render.
-mkdir -p out/vsl-3min out/short-magic-bullet
-if [[ ! -f out/vsl-3min/script-meta.json ]]; then
-  printf '%s' '{"id":"vsl-3min","fps":30,"width":1920,"height":1080,"scenes":[{"id":"stub","kind":"title","durationSec":2,"voDurationSec":0,"audioPath":null,"data":{}}],"totalDurationSec":2,"totalDurationFrames":60,"voice":{"id":"stub","name":"stub","model":"stub"}}' > out/vsl-3min/script-meta.json
-fi
-if [[ ! -f out/short-magic-bullet/script-meta.json ]]; then
-  printf '%s' '{"id":"short-magic-bullet","fps":30,"width":1080,"height":1920,"scenes":[{"id":"stub","kind":"title","durationSec":2,"voDurationSec":0,"audioPath":null,"data":{}}],"totalDurationSec":2,"totalDurationFrames":60,"voice":{"id":"stub","name":"stub","model":"stub"}}' > out/short-magic-bullet/script-meta.json
-fi
-# Each composition (Predicted90s, Vsl3min, ShortMagicBullet) imports its
-# own captions.json statically; stub all three when missing. SKIP_CAPTIONS=1
-# is the CI default since whisper.cpp isn't installed on the runner.
-# Shape: sceneId → [] (sceneId→Word[] map).
-mkdir -p out/predicted-90s out/vsl-3min out/short-magic-bullet
-for d in predicted-90s vsl-3min short-magic-bullet; do
+# still walks Vsl3min, ShortMagicBullet, and DataNerdBrief imports — so
+# seed inert stubs for the others if they aren't already present from a
+# prior local render.
+mkdir -p out/predicted-90s out/vsl-3min out/short-magic-bullet out/data-nerd-brief
+for d in vsl-3min short-magic-bullet data-nerd-brief; do
+  if [[ ! -f "out/$d/script-meta.json" ]]; then
+    printf '%s' "{\"id\":\"$d\",\"fps\":30,\"width\":1080,\"height\":1920,\"scenes\":[{\"id\":\"stub\",\"kind\":\"title\",\"durationSec\":2,\"voDurationSec\":0,\"audioPath\":null,\"data\":{}}],\"totalDurationSec\":2,\"totalDurationFrames\":60,\"voice\":{\"id\":\"stub\",\"name\":\"stub\",\"model\":\"stub\"}}" > "out/$d/script-meta.json"
+  fi
+done
+# Each composition imports its own captions.json statically; stub all four
+# when missing. SKIP_CAPTIONS=1 is the CI default since whisper.cpp isn't
+# installed on the runner. Shape: sceneId → [] (sceneId→Word[] map).
+for d in predicted-90s vsl-3min short-magic-bullet data-nerd-brief; do
   [[ -f "out/$d/captions.json" ]] || printf '%s' '{}' > "out/$d/captions.json"
 done
 
