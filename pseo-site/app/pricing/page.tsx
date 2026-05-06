@@ -698,6 +698,16 @@ export default function PricingPage() {
                 detail:
                   "Crunchbase + Wellfound badge injects a momentum score, and VC GitHub Lookup hovers any org or repo and returns the velocity in 200ms.",
                 value: "€198/yr",
+                links: [
+                  {
+                    label: "Install Crunchbase + Wellfound badge",
+                    href: "https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn",
+                  },
+                  {
+                    label: "Install VC GitHub Lookup",
+                    href: "https://chromewebstore.google.com/detail/vc-github-lookup-%E2%80%94-startu/plgngijmloeljfkenecdkhiblcfcbblm",
+                  },
+                ],
               },
               {
                 label: "Free MCP server (forever, never gated)",
@@ -735,6 +745,22 @@ export default function PricingPage() {
                   <p className="text-gray-500 text-xs leading-relaxed mt-0.5">
                     {row.detail}
                   </p>
+                  {"links" in row && row.links && row.links.length > 0 && (
+                    <ul className="flex flex-wrap gap-x-3 gap-y-1 mt-1.5">
+                      {row.links.map((link) => (
+                        <li key={link.href}>
+                          <a
+                            href={link.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 text-[11px] font-semibold text-sky-300 hover:text-sky-200 underline decoration-dotted underline-offset-4"
+                          >
+                            {link.label} →
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
                 <p className="text-sky-300 text-sm font-mono font-semibold whitespace-nowrap sm:self-start">
                   {row.value}
