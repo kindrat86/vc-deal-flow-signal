@@ -9,8 +9,14 @@ import {
 /**
  * GET /api/cron/state-of-github
  *
- * Vercel Cron schedule: 0 9 1-7 * 3 (09:00 UTC every Wednesday whose
- * day-of-month falls in 1-7 — i.e. the FIRST Wednesday of every month).
+ * Vercel Cron schedule: 0 9 * * 3 (09:00 UTC every Wednesday).
+ *
+ * Vercel cron validation disallows combined day-of-month + day-of-week,
+ * so we fire every Wednesday and self-gate the publish action inside the
+ * route. The draft itself is always regenerated (cheap, deterministic,
+ * harmless), but the response indicates whether THIS Wednesday is the
+ * first-of-month — which is when the founder should actually paste the
+ * draft and trigger the synthetic-narration video render.
  *
  * Drafts next month's "State of GitHub Engineering Velocity" address
  * from the live current period of /api/v1/signals.json. Returns a
@@ -174,6 +180,13 @@ export async function GET(req: Request) {
       .filter((x): x is { sector: string; medianVelocityChangePct: number; orgs: number } => x !== null)
       .sort((a, b) => b.medianVelocityChangePct - a.medianVelocityChangePct);
 
+    const now = new Date();
+    // First-Wednesday gate: cron fires every Wed; only the Wed in days 1-7
+    // is the actual publish day. We always generate the draft for
+    // observability + idempotency, but flag whether to act on it.
+    const isFirstWednesdayOfMonth =
+      now.getUTCDay() === 3 && now.getUTCDate() >= 1 && now.getUTCDate() <= 7;
+
     const target = nextFirstWednesday();
     const forMonth = monthName(target);
     const forSlug = forMonth.toLowerCase().replace(/\s+/g, "-");
@@ -264,6 +277,7 @@ export async function GET(req: Request) {
     return NextResponse.json(
       {
         ok: true,
+        publishToday: isFirstWednesdayOfMonth,
         draft,
         instructions: {
           consume:
