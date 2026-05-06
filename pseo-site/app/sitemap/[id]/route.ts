@@ -224,6 +224,9 @@ export async function GET(_req: Request, ctx: RouteContext) {
       { url: `${BASE_URL}/earned-plays`, lastmod, changefreq: "monthly", priority: 0.65 },
       { url: `${BASE_URL}/scorecard`, lastmod, changefreq: "monthly", priority: 0.65 },
       { url: `${BASE_URL}/wins`, lastmod, changefreq: "monthly", priority: 0.65 },
+      // Brunson DCS Ch 13 — Best-Bait redacted Friday-noon trailer of
+      // Sunday's digest. Weekly cadence matches the data refresh.
+      { url: `${BASE_URL}/friday-preview`, lastmod, changefreq: "weekly", priority: 0.8 },
     ];
   } else if (id === "sectors") {
     entries = [
