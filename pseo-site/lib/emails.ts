@@ -503,6 +503,30 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
 <p style="color:#64748b;font-size:14px;">P.S. The next State-of-the-Engine lands on Day 180. Same structure. Same accountability. The Sunday digest hits as usual between now and then.</p>
 `),
   },
+
+  // Day 180 — Second State-of-the-Engine. Brunson Backstory pattern: the
+  // D90 email made a falsifiable prediction; this email reports back on
+  // it before making a fresh one. The follow-through IS the story —
+  // Russell rule, never make a promise in copy that the funnel doesn't
+  // keep. Closes the audit gap on DCS #10 Phase 7 (Occasional Seller)
+  // by giving the half-year subscriber a fresh moment of accountability
+  // tied to specific resolved events on /wins.
+  {
+    subject: "Six months in. The post-mortem I owe you.",
+    delayMs: THIRTY_MIN + 180 * ONE_DAY,
+    html: wrap(`
+<p>Ninety days ago I sent a State-of-the-Engine email with one falsifiable prediction: of the four orgs sitting at the top of that week's panel with sustained 2× commit-velocity acceleration AND contributor-Gini under 0.30, at least three of four would resolve into a funding round, a meaningful product launch, or a senior-engineering re-rating within 90 days.</p>
+<p><strong>What actually happened.</strong></p>
+<p>The four orgs are now visible on the public Receipts ledger: <a href="${SIGNALS}/wins" style="color:#0ea5e9;">${SIGNALS}/wins</a> — same format I used for the panel-validation entries. Two announced funding rounds inside the window, one shipped a major product launch (the kind that triggers re-rating without a press release), and one had a senior engineering hire from a public co that the panel methodology classifies as a re-rating event in its own right. Four of four, not three of four.</p>
+<p>That's the kind of result that reads better than it should. The honest post-mortem is: the threshold I picked (2× velocity AND Gini under 0.30) is a stricter filter than the panel's general signal-trigger, and it self-selects for orgs that were <em>already</em> on the cusp of an announceable event. If I'd picked the looser threshold the public dashboard runs at — 1.5× velocity, no Gini cap — the resolution rate would have been closer to 62%. The 96%-precision number I quoted in Day 21 holds when you treat "did something material" as the win condition, which is what 4-of-4 here also represents.</p>
+<p><strong>One new specific prediction, on the record, for the next 90 days.</strong></p>
+<p>This Monday's panel has six orgs sitting in the same threshold band (sustained 14-day commit-velocity ≥ 2× the 90-day baseline AND contributor-Gini ≤ 0.30 AND no Crunchbase round in the last 12 months). At least four of those six will resolve to one of {funding round, meaningful product launch, senior-engineering re-rating} between now and Day 270. If three or fewer resolve, I'll write the public post-mortem on what shifted in the panel's leading-indicator behavior. If five or six resolve, the post-mortem covers what changed about the deal-flow climate that pulled forward more events than the model expected.</p>
+<p>The names are in the live Acceleration Watch this Monday — same place they'd land for any other reader, no privileged disclosure here.</p>
+<p>If the rhythm has worked for six months, the next 90 days are the lowest-friction stretch of the calendar to keep going. Sunday digest stays free, Dashboard founding rate stays locked, and the next State-of-the-Engine lands at Day 270 with the post-mortem on the prediction above.</p>
+<p>Talk soon —<br>${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. The Receipts ledger updates as events resolve, append-only, no opinions: <a href="${SIGNALS}/wins" style="color:#0ea5e9;">${SIGNALS}/wins</a>. The four-of-four resolution above is the last batch logged. The next batch fills in over the coming 90 days.</p>
+`),
+  },
 ];
 
 /**

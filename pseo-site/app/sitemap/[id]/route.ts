@@ -66,6 +66,10 @@ export async function GET(_req: Request, ctx: RouteContext) {
       { url: `${BASE_URL}/pricing`, lastmod, changefreq: "monthly", priority: 0.9 },
       { url: `${BASE_URL}/teardown`, lastmod, changefreq: "monthly", priority: 0.85 },
       { url: `${BASE_URL}/firstlook`, lastmod, changefreq: "monthly", priority: 0.85 },
+      // Brunson DCS Secret 15 — single-purpose Lead Squeeze landing.
+      // High priority because this is the dedicated paid-traffic + cold-link
+      // capture page; Sunday-digest acquisition target.
+      { url: `${BASE_URL}/squeeze`, lastmod, changefreq: "monthly", priority: 0.95 },
       { url: `${BASE_URL}/buyers-guide`, lastmod, changefreq: "monthly", priority: 0.85 },
       // Book funnel — Brunson Secret 17 (2026-05-06). Free PDF + EPUB +
       // €0.99 Kindle. Each chapter is its own indexable page.
