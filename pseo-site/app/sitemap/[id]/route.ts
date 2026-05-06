@@ -184,6 +184,9 @@ export async function GET(_req: Request, ctx: RouteContext) {
         priority: 0.75,
       })),
       { url: `${BASE_URL}/challenge`, lastmod, changefreq: "monthly", priority: 0.85 },
+      { url: `${BASE_URL}/dream-100`, lastmod, changefreq: "monthly", priority: 0.8 },
+      { url: `${BASE_URL}/distribution`, lastmod, changefreq: "monthly", priority: 0.75 },
+      { url: `${BASE_URL}/funnels`, lastmod, changefreq: "monthly", priority: 0.75 },
     ];
   } else if (id === "sectors") {
     entries = [
