@@ -200,6 +200,9 @@ function firstLookWelcomeEmail(email: string): { subject: string; html: string }
 <li>Raw CSV + ranked PDF</li>
 </ul>
 <p>If you upgrade to the Dashboard (€9.97/mo) within 14 days, the €7 is credited.</p>
+<p style="margin-top:24px;padding:14px 16px;background:#fff7ed;border-left:3px solid #FF6B1A;border-radius:4px;font-size:14px;line-height:1.6;color:#7c2d12;">
+<strong>Allocating into a sector at fund scale?</strong> The <a href="https://gitdealflow.com/sector-sweep?utm_source=email&amp;utm_medium=firstlook-welcome&amp;utm_campaign=sector-sweep" style="color:#FF6B1A;font-weight:600;">Custom Sector Sweep</a> is the same engineering-acceleration lens across every venture-backed startup in one sector — written report in 7 business days, plus a clarifications call. €1,997 one-time. Mention it in your reply if you want to skip ahead.
+</p>
 <p>— The Data Nerd</p>
 </div>
 <div style="margin-top:40px;padding-top:20px;border-top:1px solid #e2e8f0;font-size:12px;color:#94a3b8;">

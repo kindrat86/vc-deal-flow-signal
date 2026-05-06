@@ -176,8 +176,11 @@ ${top10
 
 ## What's next
 
+If you're allocating real capital into one sector and need this depth across the whole field:
+- **Custom Sector Sweep** (€1,997 one-time) — every venture-backed startup in one sector you pick, engineering acceleration ranked over four quarters, diligence prompts on each top-10 name, three early-stage targets not yet on Crunchbase or PitchBook. Written report in 7 business days, 30-minute clarifications call after delivery. Detail: https://gitdealflow.com/sector-sweep?utm_source=email&utm_medium=firstlook-delivery&utm_campaign=sector-sweep · Commission: https://buy.stripe.com/bJe14m34DbNC6gm1by0x204
+
 If you want this every week, across all 20 sectors, with filters and the live dashboard:
-- **Dashboard** (€9.97/mo founding-member, locked forever) — https://gitdealflow.com/#pricing
+- **Dashboard** (€9.97/mo founding-member, locked forever) — https://gitdealflow.com/#pricing?utm_source=email&utm_medium=firstlook-delivery&utm_campaign=dashboard
 - Reply to your confirmation email with **"credit me"** and your €7 First Look Pass is credited toward your first month.
 
 If you want a different sector or a follow-up on a specific name, just reply.
@@ -279,7 +282,12 @@ export function buildAutoFulfillmentEmailHtml(opts: {
 <li><strong>${displaySector}-deep-dive.csv</strong> — raw filtered CSV (open in Excel/Numbers/Sheets for your own analysis)</li>
 </ul>
 <p>The report ranks <strong>${recordCount} startups in the ${displaySector} sector</strong> by 14-day commit-velocity change. The TL;DR at the top calls out the top 3 with the smallest contributor base — early-stage proxy for "not yet on Crunchbase."</p>
-<p><strong>Want this every week, across all 20 sectors?</strong> Reply with <code>credit me</code> to apply your €7 toward the full Dashboard (€9.97/mo founding price, locked forever).</p>
+<div style="margin-top:32px;padding:20px 22px;background:#fff7ed;border-left:4px solid #FF6B1A;border-radius:6px;font-size:15px;line-height:1.65;">
+<strong style="color:#9a3412;font-size:16px;display:block;margin-bottom:8px;">Allocating real capital into a sector — not just researching one?</strong>
+The <a href="https://gitdealflow.com/sector-sweep?utm_source=email&amp;utm_medium=firstlook-delivery&amp;utm_campaign=sector-sweep" style="color:#FF6B1A;font-weight:600;">Custom Sector Sweep</a> takes the same lens you just got for ${displaySector} and runs it across <em>every</em> venture-backed startup in one sector you pick &mdash; engineering acceleration ranked over four quarters, diligence prompts on each top-10 name, three early-stage targets not yet on Crunchbase or PitchBook. Written report in 7 business days, plus a 30-minute clarifications call after delivery. <strong>€1,997 one-time.</strong>
+<div style="margin-top:14px;"><a href="https://buy.stripe.com/bJe14m34DbNC6gm1by0x204" style="display:inline-block;background:#FF6B1A;color:#ffffff;font-weight:600;padding:10px 18px;border-radius:6px;text-decoration:none;">Commission a Sector Sweep &rarr;</a></div>
+</div>
+<p style="margin-top:28px;"><strong>Want this every week, across all 20 sectors?</strong> Reply with <code>credit me</code> to apply your €7 toward the full Dashboard (€9.97/mo founding price, locked forever).</p>
 <p>Questions about any specific name? Reply &mdash; same email thread.</p>
 <p>— The Data Nerd</p>
 </div>
