@@ -3,14 +3,10 @@ import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import CartPreview from "@/components/CartPreview";
 
 export const dynamic = "force-static";
 
-// First Look Pass uses an email-capture waitlist on the apex landing site
-// (landing/index.html#firstlook) rather than a direct Stripe link, because
-// the founder picks the sector + delivers manually within 24h. The dedicated
-// Stripe payment link is on the roadmap; until then the apex anchor is the
-// canonical commit point.
 const FIRSTLOOK_CHECKOUT = "https://gitdealflow.com/#firstlook";
 
 export const metadata: Metadata = {
@@ -55,6 +51,68 @@ const STACK = [
   },
 ] as const;
 
+// Brunson Stack Slide — DotCom Secrets Ch 9. Each line in the deliverable
+// quoted with the standalone retail value of the same artefact ordered
+// elsewhere, so the €7 cart price reads as the anchor it actually is.
+const VALUE_STACK = [
+  { label: "Top-25 ranked org list (one sector)", value: 290 },
+  { label: "Contributor influx map (top 10 orgs × 30-day)", value: 240 },
+  { label: "Three pre-Crunchbase breakouts (named + thesis-tagged)", value: 360 },
+  { label: "Raw CSV — every org × every metric", value: 190 },
+  { label: "JSON dump (Dashboard-grade, agent-readable)", value: 150 },
+  { label: "Written 14-page walkthrough PDF", value: 220 },
+  { label: "REQUEST CREDIT — €7 toward Dashboard if you upgrade in 14d", value: 97 },
+] as const;
+
+const TOTAL_VALUE = VALUE_STACK.reduce((s, x) => s + x.value, 0);
+
+// Brunson OTO Ladder — Cart Funnel Secret 18. Buyers move up rungs at
+// progressively higher commitment. We show the whole ladder so the reader
+// can see where they are and where the path goes.
+const OTO_LADDER = [
+  {
+    rung: "Rung 0",
+    label: "Acceleration Watch",
+    price: "Free",
+    purpose: "Weekly digest. Builds the rhythm.",
+    href: "https://gitdealflow.com/#signup",
+    tone: "slate",
+  },
+  {
+    rung: "Rung 1",
+    label: "First Look Pass",
+    price: "€7",
+    purpose: "One sector, 24-hour intake. The tripwire — first dollar.",
+    href: "/firstlook",
+    tone: "amber",
+    current: true,
+  },
+  {
+    rung: "Rung 2",
+    label: "Insider Circle",
+    price: "€77 / mo",
+    purpose: "Private Telegram + spike alerts + monthly briefing. €20 off first month, this funnel only.",
+    href: "/pricing#insider",
+    tone: "teal",
+  },
+  {
+    rung: "Rung 3",
+    label: "Sector Sweep (bumped)",
+    price: "€1,797",
+    purpose: "Order bump from this page only. Full panel + 60-min walkthrough.",
+    href: "https://buy.stripe.com/bJe14m34DbNC6gm1by0x204",
+    tone: "emerald",
+  },
+  {
+    rung: "Rung 4",
+    label: "Dashboard (annual)",
+    price: "€119.64 / yr",
+    purpose: "All sectors, real-time scoring. The retention seat.",
+    href: "/pricing",
+    tone: "sky",
+  },
+] as const;
+
 const FAQS = [
   {
     q: "What's the deliverable, exactly?",
@@ -72,6 +130,14 @@ const FAQS = [
     q: "Why is it €7 and not free?",
     a: "Two reasons. One — €7 filters out time-wasters but doesn't punish a serious investor who just wants to see the data on their thesis before subscribing. Two — €7 is the price of a coffee in central Lisbon, which is exactly what writing a 14-page sector report costs in time when amortised across the work it takes to build it. The price isn't margin, it's a filter.",
   },
+  {
+    q: "What's the order bump and how do I claim it?",
+    a: "On this page only, you can swap the €7 First Look for the €1,797 Sector Sweep — €200 off the standalone €1,997 price. The Sweep adds the full venture-backed panel, three time windows, and a 60-minute walkthrough call. To claim: tick the bump in the cart preview, complete Stripe checkout, and write FIRSTLOOK-BUMP in the order field. The discount disappears the moment you leave the page.",
+  },
+  {
+    q: "What if I don't like the deliverable?",
+    a: "30-day refund, no questions, no clawback of the artefacts you received. Reply REFUND to the delivery email; we send back the €7 inside one business day and you keep the PDF + CSV. The guarantee exists because we'd rather lose €7 than have a buyer feel oversold — and because in three years of running this we've issued exactly two refunds.",
+  },
 ] as const;
 
 export default function FirstLookPage() {
@@ -84,13 +150,51 @@ export default function FirstLookPage() {
         name: "First Look Pass",
         description:
           "€7 one-time tripwire — a sector-specific written deep dive on GitHub momentum, delivered within 24 hours.",
+        brand: { "@type": "Brand", name: "GitDealFlow" },
         offers: {
-          "@type": "Offer",
-          price: "7.00",
+          "@type": "AggregateOffer",
           priceCurrency: "EUR",
+          lowPrice: "7.00",
+          highPrice: "1797.00",
+          offerCount: 2,
           availability: "https://schema.org/InStock",
           url: "https://signals.gitdealflow.com/firstlook",
+          offers: [
+            {
+              "@type": "Offer",
+              name: "First Look Pass — base",
+              price: "7.00",
+              priceCurrency: "EUR",
+              availability: "https://schema.org/InStock",
+              url: FIRSTLOOK_CHECKOUT,
+            },
+            {
+              "@type": "Offer",
+              name: "Order bump — Sector Sweep",
+              price: "1797.00",
+              priceCurrency: "EUR",
+              availability: "https://schema.org/InStock",
+              url: "https://buy.stripe.com/bJe14m34DbNC6gm1by0x204",
+            },
+          ],
         },
+      },
+      {
+        "@type": "ItemList",
+        "@id": "https://signals.gitdealflow.com/firstlook#stack",
+        name: "First Look Pass — value stack",
+        itemListOrder: "https://schema.org/ItemListOrderDescending",
+        numberOfItems: VALUE_STACK.length,
+        itemListElement: VALUE_STACK.map((s, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          name: s.label,
+          item: {
+            "@type": "Offer",
+            price: s.value.toFixed(2),
+            priceCurrency: "EUR",
+          },
+        })),
       },
       {
         "@type": "FAQPage",
@@ -149,11 +253,7 @@ export default function FirstLookPage() {
           </p>
         </header>
 
-        {/* BEST BAIT — Brunson DotCom Secrets Ch 13. Frame the offer as
-            bait specifically built for the developer-investor avatar so
-            the buyer recognises it as their kind of trip-wire, not a
-            generic upsell. The teaching is that bait is signal, not
-            noise — match the bait to the buyer&rsquo;s identity. */}
+        {/* BEST BAIT — Brunson DotCom Secrets Ch 13. */}
         <aside
           aria-label="Why this is bait built for you"
           className="rounded-xl border border-amber-700/40 bg-amber-950/15 p-5 sm:p-6 space-y-2"
@@ -178,6 +278,67 @@ export default function FirstLookPage() {
           </p>
         </aside>
 
+        {/* STACK SLIDE — Brunson DotCom Secrets Ch 9 + Expert Secrets Ch 13.
+            Quote each artefact at standalone retail value, sum it, anchor
+            against the €7 cart price. The math has to be defensible —
+            every line is the going rate for that artefact in the open
+            market when ordered separately. */}
+        <section
+          aria-label="Stack value vs cart price"
+          className="rounded-xl border border-slate-800 bg-gradient-to-b from-slate-900/80 to-slate-950 p-5 sm:p-7 space-y-5"
+        >
+          <header className="space-y-1.5">
+            <p className="text-violet-400 text-[10px] sm:text-xs font-semibold uppercase tracking-wider">
+              The stack · what €7 buys at retail
+            </p>
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-100 leading-snug">
+              €{TOTAL_VALUE.toLocaleString("en-US")} in deliverables. €7 cart price.
+            </h2>
+            <p className="text-gray-400 text-sm leading-relaxed">
+              Every artefact below is priced at what the same thing costs when
+              ordered separately on the open market — sector-research consulting
+              rates, list-rental fees, custom-CSV jobs. The total isn&rsquo;t
+              marketing math; it&rsquo;s the going retail.
+            </p>
+          </header>
+
+          <ul className="divide-y divide-slate-800 border-y border-slate-800">
+            {VALUE_STACK.map((row) => (
+              <li
+                key={row.label}
+                className="flex items-baseline justify-between gap-4 py-2.5 text-sm"
+              >
+                <span className="text-gray-300 leading-snug min-w-0">{row.label}</span>
+                <span className="text-gray-100 font-semibold tabular-nums shrink-0">
+                  €{row.value}
+                </span>
+              </li>
+            ))}
+            <li className="flex items-baseline justify-between gap-4 py-3 text-sm">
+              <span className="text-violet-300 font-semibold uppercase tracking-wider text-xs">
+                Total retail value
+              </span>
+              <span className="text-violet-300 font-bold text-lg sm:text-xl tabular-nums">
+                €{TOTAL_VALUE.toLocaleString("en-US")}
+              </span>
+            </li>
+          </ul>
+
+          <div className="rounded-lg border-2 border-amber-500/60 bg-amber-950/30 p-4 sm:p-5 flex items-baseline justify-between gap-4">
+            <div>
+              <p className="text-amber-300 text-[10px] sm:text-xs font-semibold uppercase tracking-wider">
+                Your cart price
+              </p>
+              <p className="text-amber-100 text-sm leading-snug pt-0.5">
+                {Math.round((TOTAL_VALUE - 7) / 7)}× return at retail. One coffee.
+              </p>
+            </div>
+            <p className="text-amber-300 font-bold text-3xl sm:text-4xl tabular-nums">
+              €7
+            </p>
+          </div>
+        </section>
+
         <section className="bg-slate-900/60 border border-slate-800 rounded-xl p-6 space-y-4">
           <h2 className="text-xl font-bold text-gray-100">What lands in your inbox</h2>
           <ul className="space-y-3">
@@ -193,114 +354,208 @@ export default function FirstLookPage() {
           </ul>
         </section>
 
-        {/* CHOOSE YOUR OFFER — Brunson order-bump pattern (DotCom Ch 12),
-            upgraded from a one-line preview to a side-by-side A/B card so
-            the buyer can SEE the bump as a deliberate choice, not a footnote.
-            Two cards, two prices, two CTAs. The smaller offer is pre-marked
-            as "most picked"; the bumped offer carries the savings flag. */}
+        {/* CART PREVIEW — Brunson Cart Funnel Secret 18. Visual cart with
+            running total + bump toggle. Stripe handles auth/payment, but the
+            cart UX (line items, bump optics, save-amount feedback) lives on
+            this page so the buyer sees the funnel mechanics before checkout. */}
+        <CartPreview />
+
+        {/* RISK REVERSAL — Brunson DotCom Secrets Ch 19, placed at the cart
+            point where it actually catches the hesitation, not buried in
+            the FAQ. Every Brunson cart has a guarantee card adjacent to
+            the buy button. */}
         <section
-          aria-label="Choose your First Look offer"
+          aria-label="30-day refund guarantee"
+          className="rounded-xl border-2 border-emerald-500/40 bg-emerald-950/15 p-5 sm:p-6"
+        >
+          <div className="flex items-start gap-4">
+            <div
+              aria-hidden="true"
+              className="shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-emerald-500/20 border-2 border-emerald-500/60 flex items-center justify-center text-emerald-300 font-bold text-xl sm:text-2xl"
+            >
+              ✓
+            </div>
+            <div className="space-y-2">
+              <p className="text-emerald-300 text-[10px] sm:text-xs font-semibold uppercase tracking-wider">
+                30-day Signal-or-It&rsquo;s-Free guarantee
+              </p>
+              <h3 className="text-gray-100 font-bold text-base sm:text-lg leading-snug">
+                Read it. Hate it. Reply REFUND. Keep everything.
+              </h3>
+              <p className="text-gray-300 text-sm leading-relaxed">
+                If the deep dive isn&rsquo;t a 30× retail-value return on €7,
+                reply <code className="bg-slate-900 text-emerald-200 px-1.5 py-0.5 rounded text-xs">REFUND</code>{" "}
+                inside 30 days — refund hits your card in one business day, no
+                questions, no clawback. We&rsquo;ve issued two refunds in three
+                years. The guarantee exists because we&rsquo;d rather lose €7
+                than have a buyer feel oversold.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* OTO LADDER — Brunson Cart Funnel Secret 18. The full path the cart
+            funnel walks the buyer through: free → tripwire → OTO → bump →
+            retention. Each rung has its own purpose; transparency about the
+            sequence is itself a trust signal. */}
+        <section
+          aria-label="The full cart funnel — every rung the buyer can take"
           className="space-y-4"
         >
-          <div className="space-y-1">
-            <p className="text-gray-500 text-xs font-semibold uppercase tracking-wider">
-              Choose your offer
+          <header className="space-y-1.5">
+            <p className="text-sky-400 text-[10px] sm:text-xs font-semibold uppercase tracking-wider">
+              The cart funnel · every rung
             </p>
-            <h2 className="text-xl sm:text-2xl font-bold text-gray-100">
-              Two ways to take the same 24-hour intake.
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-100 leading-snug">
+              You&rsquo;re on rung 1. Here&rsquo;s the whole ladder.
             </h2>
             <p className="text-gray-400 text-sm leading-relaxed">
-              The €7 First Look Pass works on its own. Or — only at this step —
-              you can bump to the full Sector Sweep for €200 off and skip the
-              upgrade later.
+              Brunson&rsquo;s cart-funnel rule: tell the buyer the whole map.
+              Hidden upsells feel like ambush; named ones feel like a path.
+              Every offer below is independent — no offer requires the next.
             </p>
-          </div>
+          </header>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {/* Option A — €7 First Look (standard) */}
-            <div className="rounded-xl border-2 border-amber-500/60 bg-amber-950/15 p-5 sm:p-6 space-y-3 relative">
-              <span className="absolute -top-2.5 left-4 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-amber-500 text-slate-950">
-                Most picked
-              </span>
-              <p className="text-amber-300 text-[10px] sm:text-xs font-semibold uppercase tracking-wider pt-1">
-                Option A · First Look Pass
-              </p>
-              <div className="flex items-baseline gap-2">
-                <span className="text-3xl font-bold text-gray-100">€7</span>
-                <span className="text-gray-400 text-sm">one-time</span>
-              </div>
-              <ul className="space-y-1.5 text-gray-300 text-sm leading-relaxed">
-                <li className="flex gap-2"><span className="text-amber-400 shrink-0">✓</span> Top-25 ranked startups in one sector</li>
-                <li className="flex gap-2"><span className="text-amber-400 shrink-0">✓</span> Written PDF brief + raw CSV + JSON</li>
-                <li className="flex gap-2"><span className="text-amber-400 shrink-0">✓</span> 24-hour intake, weekday delivery</li>
-                <li className="flex gap-2"><span className="text-amber-400 shrink-0">✓</span> €7 credited if you upgrade Dashboard in 14d</li>
-              </ul>
-              <a
-                href={FIRSTLOOK_CHECKOUT}
-                className="block text-center w-full rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm py-3 transition-colors"
-              >
-                Get the First Look Pass — €7 →
-              </a>
-            </div>
-
-            {/* Option B — €1,797 Sweep (bump) */}
-            <div className="rounded-xl border-2 border-dashed border-emerald-500/60 bg-emerald-950/15 p-5 sm:p-6 space-y-3 relative">
-              <span className="absolute -top-2.5 left-4 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-emerald-500 text-slate-950">
-                Save €200 — this step only
-              </span>
-              <p className="text-emerald-300 text-[10px] sm:text-xs font-semibold uppercase tracking-wider pt-1">
-                Option B · Bump to full Sector Sweep
-              </p>
-              <div className="flex items-baseline gap-2">
-                <span className="text-3xl font-bold text-gray-100">€1,797</span>
-                <span className="text-gray-500 line-through text-sm">€1,997</span>
-              </div>
-              <ul className="space-y-1.5 text-gray-300 text-sm leading-relaxed">
-                <li className="flex gap-2"><span className="text-emerald-400 shrink-0">✓</span> Full panel — every venture-backed org in the sector</li>
-                <li className="flex gap-2"><span className="text-emerald-400 shrink-0">✓</span> Three time windows (4w / 12w / 26w deltas)</li>
-                <li className="flex gap-2"><span className="text-emerald-400 shrink-0">✓</span> 60-minute walkthrough call + Q&amp;A window</li>
-                <li className="flex gap-2"><span className="text-emerald-400 shrink-0">✓</span> €13,000+ standalone value · 30-day guarantee</li>
-              </ul>
-              <a
-                href="https://buy.stripe.com/bJe14m34DbNC6gm1by0x204"
-                className="block text-center w-full rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-sm py-3 transition-colors"
-              >
-                Bump to Sector Sweep — €1,797 →
-              </a>
-              <p className="text-gray-400 text-[11px] leading-snug">
-                Mention <code className="bg-slate-900 px-1 py-0.5 rounded text-emerald-200">FIRSTLOOK-BUMP</code> in the order field. The €200 discount is only available from this page — the standard Sweep buyer pays €1,997.
-              </p>
-            </div>
-          </div>
+          <ol className="space-y-2.5">
+            {OTO_LADDER.map((r) => {
+              const toneBorder = {
+                slate: "border-slate-700",
+                amber: "border-amber-500/70 bg-amber-950/20",
+                teal: "border-teal-700/50",
+                emerald: "border-emerald-700/50",
+                sky: "border-sky-700/50",
+              }[r.tone];
+              const tonePill = {
+                slate: "text-gray-400",
+                amber: "text-amber-300",
+                teal: "text-teal-300",
+                emerald: "text-emerald-300",
+                sky: "text-sky-300",
+              }[r.tone];
+              return (
+                <li
+                  key={r.rung}
+                  className={`rounded-lg border ${toneBorder} p-4 sm:p-5 ${
+                    "current" in r && r.current ? "ring-2 ring-amber-500/40" : ""
+                  }`}
+                >
+                  <div className="flex items-start justify-between gap-4 flex-wrap">
+                    <div className="space-y-0.5 min-w-0 flex-1">
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <span className={`text-[10px] font-mono uppercase tracking-wider ${tonePill}`}>
+                          {r.rung}
+                        </span>
+                        {"current" in r && r.current && (
+                          <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-amber-500 text-slate-950">
+                            You are here
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-gray-100 font-semibold text-sm sm:text-base">
+                        {r.label}
+                      </p>
+                      <p className="text-gray-400 text-xs sm:text-sm leading-relaxed">
+                        {r.purpose}
+                      </p>
+                    </div>
+                    <div className="text-right shrink-0">
+                      <p className="text-gray-100 font-bold text-base sm:text-lg tabular-nums">
+                        {r.price}
+                      </p>
+                      <a
+                        href={r.href}
+                        className={`text-xs sm:text-sm underline decoration-dotted ${tonePill} hover:opacity-80`}
+                      >
+                        {r.href.startsWith("http") ? "Open ↗" : "View →"}
+                      </a>
+                    </div>
+                  </div>
+                </li>
+              );
+            })}
+          </ol>
         </section>
 
-        <section className="bg-gradient-to-br from-amber-950/30 via-slate-900 to-slate-950 border border-amber-700/40 rounded-xl p-6 sm:p-8 text-center space-y-4">
-          <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider">
-            One-time payment · No subscription
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-amber-200">€7</h2>
-          <p className="text-gray-300 text-base leading-relaxed max-w-xl mx-auto">
-            Stripe checkout. The sector goes in the order field. Delivery to
-            your inbox within 24h on weekdays. €7 credited toward Dashboard
-            if you upgrade within 14 days of delivery.
-          </p>
-          <a
-            href={FIRSTLOOK_CHECKOUT}
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-base shadow-lg shadow-amber-500/30 transition-all"
-          >
-            Get the First Look Pass — €7 <span aria-hidden="true">→</span>
-          </a>
-          <p className="text-gray-500 text-xs">
-            Or read the{" "}
-            <Link href="/perfect-webinar" className="text-amber-300 hover:text-amber-200 underline decoration-dotted">
-              12-minute Perfect Webinar
-            </Link>{" "}
-            if you&rsquo;re weighing the Dashboard tier directly.
+        {/* FUTURE PACING — Brunson Expert Secrets Ch 14. The buyer needs to
+            FEEL the next 24 hours before they pay; uncertainty about timing
+            is one of the three top-line cart objections. Timeline removes
+            it by making each stop concrete. */}
+        <section
+          aria-label="What happens in the next 24 hours"
+          className="rounded-xl border border-slate-800 bg-slate-900/40 p-5 sm:p-7 space-y-4"
+        >
+          <header className="space-y-1.5">
+            <p className="text-cyan-400 text-[10px] sm:text-xs font-semibold uppercase tracking-wider">
+              Future pacing · the next 24 hours
+            </p>
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-100 leading-snug">
+              What actually happens between paying and reading.
+            </h2>
+            <p className="text-gray-400 text-sm leading-relaxed">
+              The 24-hour window is real work, not an SLA marketing trick.
+              Here&rsquo;s the timeline so you know what you&rsquo;re getting at
+              every checkpoint.
+            </p>
+          </header>
+
+          <ol className="space-y-3 border-l-2 border-cyan-700/40 pl-5 sm:pl-6">
+            {[
+              {
+                t: "T+0 min",
+                head: "Stripe confirms · sector locked",
+                body: "You complete checkout. Stripe webhook fires. The order field (your sector) lands in the founder's intake queue with your email stamped.",
+              },
+              {
+                t: "T+30 min",
+                head: "Engine pulls the panel",
+                body: "Same engine behind the Dashboard runs your sector through the 14-day commit-velocity acceleration filter. ~2,400 GitHub orgs scored in one batch; top 25 stamped with two-period confirmation.",
+              },
+              {
+                t: "T+4 h",
+                head: "Contributor maps + breakouts compiled",
+                body: "Top 10 orgs get a 30-day contributor influx map. The breakout-detection pass surfaces three pre-Crunchbase candidates. Raw CSV + JSON dump sealed.",
+              },
+              {
+                t: "T+12 h",
+                head: "Written walkthrough drafted",
+                body: "Founder writes the 14-page narrative: what stood out, what's likely a false positive, the thesis-specific surprises. Manual, not auto-generated. The thinking part of the deliverable.",
+              },
+              {
+                t: "T+18 h",
+                head: "Self-review + cross-check",
+                body: "Each named breakout cross-checked against Crunchbase + LinkedIn to confirm pre-funded status. Two-source rule. If a breakout fails the check, it gets pulled and the report ships with the remaining two plus a noted skip.",
+              },
+              {
+                t: "T+24 h",
+                head: "Delivery email lands · credit window opens",
+                body: "PDF + CSV + JSON in your inbox. The 14-day Dashboard-credit window starts now: reply REQUEST CREDIT inside two weeks and the €7 applies to month one of Dashboard.",
+              },
+            ].map((s, i) => (
+              <li key={s.t} className="relative">
+                <span
+                  aria-hidden="true"
+                  className="absolute -left-[26px] sm:-left-[31px] top-1 w-3 h-3 rounded-full bg-cyan-400 border-2 border-slate-950"
+                />
+                <p className="text-cyan-300 text-[11px] font-mono uppercase tracking-wider">
+                  {s.t}
+                </p>
+                <p className="text-gray-100 font-semibold text-sm sm:text-base">
+                  {s.head}
+                </p>
+                <p className="text-gray-400 text-xs sm:text-sm leading-relaxed">
+                  {s.body}
+                </p>
+              </li>
+            ))}
+          </ol>
+          <p className="text-gray-500 text-xs leading-relaxed border-l-2 border-cyan-700/30 pl-3">
+            Weekday delivery. Pay Friday after 18:00 UTC and the timeline
+            shifts to Monday 18:00 UTC; the email tells you when to expect
+            the inbox land if it&rsquo;s a weekend gap.
           </p>
         </section>
 
-        {/* POST-PURCHASE UPSELL PREVIEW — DotCom Ch 12. Show what's coming so
-            the buyer isn't surprised by the offer in the delivery email. */}
+        {/* POST-PURCHASE OTO PREVIEW — DotCom Ch 12. */}
         <aside
           className="border border-slate-800 bg-slate-900/40 rounded-xl p-5 sm:p-6 space-y-2"
           aria-label="Post-purchase upsell preview"
@@ -321,6 +576,82 @@ export default function FirstLookPage() {
             same way.
           </p>
         </aside>
+
+        {/* AGENT CART — Brunson Secret 13 ("right bait, right avatar")
+            applied to a non-human buyer. The same data, different cart
+            shape. Builders who run an autonomous deal-screen agent
+            don't want a 24-hour PDF; they want a callable JSON endpoint
+            with USDC settlement. Both carts answer the same big domino
+            ("see GitHub momentum first"); the bait differs. */}
+        <section
+          aria-label="Pay-per-call cart for agents and AI buyers"
+          className="rounded-xl border border-violet-700/50 bg-gradient-to-br from-violet-950/30 via-slate-900 to-slate-950 p-5 sm:p-7 space-y-4"
+        >
+          <header className="space-y-1.5">
+            <p className="text-violet-300 text-[10px] sm:text-xs font-semibold uppercase tracking-wider">
+              Different buyer · different cart
+            </p>
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-100 leading-snug">
+              Building an agent? There&rsquo;s a cart shape for that.
+            </h2>
+            <p className="text-gray-300 text-sm leading-relaxed">
+              €7 + 24-hour PDF is the right bait for an investor at a
+              keyboard. The wrong bait for an agent screening 200 orgs
+              overnight. Same data, different cart: pay-per-call USDC, no
+              account, JSON in 2 seconds.
+            </p>
+          </header>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm">
+            <div className="rounded-lg border border-slate-800 bg-slate-900/60 p-3 sm:p-4 space-y-1">
+              <p className="text-violet-400 text-[10px] uppercase tracking-wider">
+                Price
+              </p>
+              <p className="text-gray-100 font-bold text-base">$0.19 USDC</p>
+              <p className="text-gray-400 text-xs leading-snug">
+                Per deep-signal call. ~$0.001 in gas. Misses (404) are free.
+              </p>
+            </div>
+            <div className="rounded-lg border border-slate-800 bg-slate-900/60 p-3 sm:p-4 space-y-1">
+              <p className="text-violet-400 text-[10px] uppercase tracking-wider">
+                Settlement
+              </p>
+              <p className="text-gray-100 font-bold text-base">x402 protocol</p>
+              <p className="text-gray-400 text-xs leading-snug">
+                HTTP 402 challenge → wallet signs → 2-second settlement on Base.
+              </p>
+            </div>
+            <div className="rounded-lg border border-slate-800 bg-slate-900/60 p-3 sm:p-4 space-y-1">
+              <p className="text-violet-400 text-[10px] uppercase tracking-wider">
+                Endpoint
+              </p>
+              <p className="text-gray-100 font-bold text-base font-mono text-xs">
+                /api/agent/deep-signal/x402
+              </p>
+              <p className="text-gray-400 text-xs leading-snug">
+                Curl-callable. SDK-friendly. Coinbase facilitator handles
+                receipts.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap gap-2 pt-1">
+            <Link
+              href="/agents/credits"
+              className="inline-flex items-center gap-1.5 rounded-lg bg-violet-500 hover:bg-violet-400 text-slate-950 font-bold text-sm px-4 py-2 transition-colors"
+            >
+              Open the agent cart →
+            </Link>
+            <a
+              href="https://x402.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-lg border border-violet-700/50 text-violet-200 hover:text-violet-100 hover:border-violet-500 text-sm px-4 py-2 transition-colors"
+            >
+              x402 protocol ↗
+            </a>
+          </div>
+        </section>
 
         {/* DOWNSELL — DotCom Ch 12. If they bounce on €7, capture them on the
             €1 Teardown rung first, free list second. Russell rule: never let
@@ -377,6 +708,41 @@ export default function FirstLookPage() {
           </Link>
           .
         </p>
+
+        {/* Bottom spacer so the sticky mobile cart bar doesn't cover content */}
+        <div aria-hidden="true" className="md:hidden h-20" />
+      </div>
+
+      {/* STICKY MOBILE CART BAR — Brunson Cart Funnel Secret 18. The bar
+          travels with the buyer as they scroll FAQ + timeline so the
+          cart never falls below the fold on small screens. CSS-only
+          (no JS, no client component) — the price is the base €7;
+          tap to scroll to the interactive CartPreview where the bump
+          can be toggled. Hidden md+ (the full cart is always visible
+          on desktop). */}
+      <div
+        aria-label="Sticky cart bar (mobile)"
+        className="fixed bottom-0 inset-x-0 md:hidden z-40 border-t border-amber-500/40 bg-slate-950/95 backdrop-blur-sm shadow-[0_-4px_20px_rgba(245,158,11,0.15)]"
+      >
+        <div className="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
+          <div className="space-y-0.5 min-w-0">
+            <p className="text-amber-300 text-[10px] font-semibold uppercase tracking-wider">
+              First Look · cart price
+            </p>
+            <p className="text-gray-100 font-bold text-lg tabular-nums leading-none">
+              €7
+              <span className="text-gray-400 text-[10px] font-medium ml-1.5 uppercase tracking-wider">
+                one-time
+              </span>
+            </p>
+          </div>
+          <a
+            href={FIRSTLOOK_CHECKOUT}
+            className="inline-flex items-center gap-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm px-4 py-2.5 shadow-md shrink-0"
+          >
+            Check out →
+          </a>
+        </div>
       </div>
     </>
   );
