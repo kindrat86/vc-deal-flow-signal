@@ -7,6 +7,10 @@
     {
       "path": "/api/cron/daily-seinfeld",
       "schedule": "0 14 * * *"
+    },
+    {
+      "path": "/api/cron/route-canary",
+      "schedule": "13 6 * * *"
     }
   ],
   "headers": [
