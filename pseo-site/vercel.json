@@ -3,6 +3,10 @@
     {
       "path": "/api/cron/rebuild",
       "schedule": "0 6 * * 1"
+    },
+    {
+      "path": "/api/cron/state-of-github",
+      "schedule": "0 9 1-7 * 3"
     }
   ],
   "headers": [

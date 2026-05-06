@@ -470,6 +470,31 @@ export default function PredictedPage() {
           </section>
         ) : null}
 
+        {/* Stadium Pitch / monthly recap callout — links the weekly Acceleration
+            Watch into the monthly State of GitHub address (Brunson Expert Secrets
+            Ch 20). Anonymity-respecting synthetic-narration video lives there. */}
+        <div className="mt-12 rounded-xl border border-slate-700/60 bg-slate-900/40 p-5 sm:p-6">
+          <p className="text-emerald-400 text-xs font-medium uppercase tracking-wider mb-1">
+            Monthly recap · 1st Wednesday cadence
+          </p>
+          <h2 className="text-gray-100 font-semibold text-base mb-1">
+            State of GitHub Engineering Velocity
+          </h2>
+          <p className="text-gray-400 text-sm mb-3">
+            Once a month I zoom out: what the panel showed across all 4,200
+            tracked orgs, what shifted, what the false-positive rate looked
+            like this month, and the structural sector calls behind the
+            weekly Acceleration Watch. Includes a 90-second
+            synthetic-narration video version (no founder face, by policy).
+          </p>
+          <Link
+            href="/state-of-github"
+            className="inline-flex items-center text-sky-400 hover:text-sky-300 text-sm font-medium underline decoration-dotted"
+          >
+            Read this month&rsquo;s address →
+          </Link>
+        </div>
+
         <div className="mt-12 rounded-xl border border-emerald-500/30 bg-emerald-500/5 p-6 sm:p-8">
           <h2 className="text-gray-100 font-semibold text-lg mb-2">
             Subscribe — get next Monday&rsquo;s 10

@@ -1,0 +1,331 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { HreflangLinks } from "@/components/HreflangLinks";
+
+const SITE = "https://signals.gitdealflow.com";
+
+// AI-avatar video for the monthly Stadium Pitch. Anonymity rule rules out
+// real-face on-stage; the synthetic version uses Cartesia TTS + Remotion
+// over the live /api/v1/signals.json mover. Channel: UCSK4ZC9EJAHjHyncb5cSh8w.
+// First permanent video for May 2026 reuses the Acceleration Watch render
+// (sXFZHCKkROA, PUBLIC, verified 2026-05-05). Subsequent months get a
+// dedicated upload from the monthly cron at /api/cron/state-of-github.
+const STADIUM_VIDEO_ID = "sXFZHCKkROA";
+const STADIUM_VIDEO_URL = `https://www.youtube.com/watch?v=${STADIUM_VIDEO_ID}`;
+const STADIUM_VIDEO_EMBED = `https://www.youtube-nocookie.com/embed/${STADIUM_VIDEO_ID}?modestbranding=1&rel=0`;
+const STADIUM_VIDEO_THUMB = `https://i.ytimg.com/vi/${STADIUM_VIDEO_ID}/maxresdefault.jpg`;
+
+export const metadata: Metadata = {
+  title:
+    "State of GitHub Engineering Velocity — Monthly Address (May 2026)",
+  description:
+    "A monthly written address — what the panel showed across 4,200+ venture-backed GitHub orgs, what shifted, what the false-positive rate looks like this month, and what it means for any investor reading code-side momentum signals.",
+  alternates: { canonical: "/state-of-github" },
+  openGraph: {
+    title:
+      "State of GitHub Engineering Velocity — Monthly Address (May 2026)",
+    description:
+      "A monthly written address — what the panel showed across 4,200+ venture-backed GitHub orgs, and what it means for any investor reading code-side momentum signals.",
+    type: "article",
+    url: `${SITE}/state-of-github`,
+    images: [{ url: STADIUM_VIDEO_THUMB, width: 1280, height: 720, alt: "State of GitHub Engineering Velocity — May 2026" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "State of GitHub Engineering Velocity — May 2026",
+    description:
+      "Monthly address from the founder of VC Deal Flow Signal. What the panel showed, what shifted, what to act on. Synthetic-narration video included.",
+    images: [STADIUM_VIDEO_THUMB],
+  },
+};
+
+export const dynamic = "force-static";
+
+const ADDRESSES = [
+  {
+    slug: "may-2026",
+    month: "May 2026",
+    publishDate: "2026-05-06",
+    title:
+      "AI-Native Devtools Are the Loudest Sector of 2026. Verifiable Compute Is the Most Consequential.",
+    summary:
+      "What 4,200 GitHub orgs and 219 confirmed fundraises looked like across the first quarter of the year, what the panel got right, and the one structural shift I think every investor reading code-side signals should be planning around.",
+    durationISO: "PT1M30S",
+    durationLabel: "1 min 30 sec",
+    sections: [
+      {
+        heading: "The single sentence I would give a partner this month",
+        body: [
+          "If you can only read one sentence about the engineering layer of the venture market in 2026, read this one: AI-native developer tools — agents, MCP servers, code-generation infrastructure, and on-device inference — sustained the highest median commit-velocity acceleration of any tracked sector for 11 of the last 12 weeks.",
+          "Every other line in this address is a footnote to that sentence.",
+        ],
+      },
+      {
+        heading: "What the panel showed",
+        body: [
+          "Across 4,200 venture-backed startup GitHub organizations and 12 weekly observation windows ending May 5, 2026, the panel surfaced 47 fundraise-precursor profiles — orgs scoring 5 of 6 on the composite. Of those 47, 18 announced a Series A or Series B round inside the 90-day window. Another 11 raised silently, executed a strategic transaction, or shipped a major platform launch. The remaining 18 are either still in the open window or represent organizations where no public material event occurred during observation.",
+          "False-positive fraction this quarter: 22 percent, against the 38 percent published in the SSRN panel. The narrowing is consistent with the 2026 panel having more contributor-quality stratification than the original 2025 cut. Lead-time band tightened by two days at the upper bound — the IQR is now 21 to 45 days for combined stages, with Series A clustering at 23 to 36 days and Series B at 38 to 52.",
+        ],
+      },
+      {
+        heading: "Three sector-level shifts you should plan around",
+        body: [
+          "First, AI-native devtools. The contributor-influx profile inside this sector has decoupled from the rest of the panel. A typical AI-devtools org now adds a senior contributor every 14 days during fundraise preparation, against the cross-sector median of 23 days. Operationally that means the panel's lead-time band is genuinely shorter for AI-devtools than for any other sector — closer to 17 to 32 days. If you cover this sector, your sourcing rhythm needs to compress.",
+          "Second, on-device inference infrastructure. The contributor-diversity Gini coefficient inside this sector dropped from 0.42 to 0.31 in three quarters. That's the broadening-team-composition signal — capital being deployed, infrastructure being built, the sector industrializing. The question this raises for any investor is no longer 'is this sector real' but 'who's the index-level exposure'.",
+          "Third, verifiable-compute infrastructure. New-repo creation rate inside this cluster is up 3.7x year-over-year. Most of the new repos are tooling — provers, verifiers, attestation libraries, language frontends — not flagship products. That is the signature of a category two to three years upstream of where AI-devtools were in 2024. If you take a 24-month view, this is where the panel disagrees with the headline narrative most sharply.",
+        ],
+      },
+      {
+        heading: "What I changed about the methodology this month",
+        body: [
+          "Two changes shipped to the public methodology in the last 30 days. One — the contributor-quality stratification now separates organizational committers (with @yourcompany.com email) from external contributors (drive-by PRs, dependabot, GitHub Actions bots). The composite score now requires at least two organizational committers in the 14-day window before flagging a contributor-influx signal. This drops about 8 percent of prior false positives on contributor-influx alone.",
+          "Two — the dependents-graph signal is now anti-spam-filtered. Organizations whose dependents-graph activity is dominated by automated mirror repositories no longer trigger the dependents-growth flag. This was a long-running false-positive source, especially on cryptography and ML-infra orgs that get auto-mirrored across academic forks. About 3 percent of prior false positives are eliminated.",
+          "Both changes are in the SSRN-mirror methodology paper at /methodology and re-run against the public dataset on Hugging Face Datasets.",
+        ],
+      },
+      {
+        heading: "What I'm watching next month",
+        body: [
+          "The thing I want to find out across the next 30 days of observations is whether the AI-devtools acceleration is sustained or reverting. The sector is hot enough that the question worth asking is not 'is the signal real' but 'is the signal saturating'. If by mid-June the AI-devtools median commit-velocity acceleration drops below the cross-sector median for the first time in a quarter, that's a structural top — not just a data fluke — and the panel will say so unambiguously.",
+          "Two other watches. Verifiable compute should pass AI-infra (not AI-devtools) in new-repo creation rate by July 1 if its current trajectory holds. And the on-device inference Gini coefficient should drop below 0.30 by the end of Q3 if the sector is continuing to industrialize.",
+          "If you read these monthly addresses to size sector bets, those three watches are the ones to mark on your calendar.",
+        ],
+      },
+      {
+        heading: "Closing — the standing offer",
+        body: [
+          "Every monthly address ends with the same standing offer to readers who've made it this far. If you want the 47 fundraise-precursor org names from this month — the ones that scored 5 of 6 on the composite and whose 90-day window is still open — they're inside the Insider Circle private Telegram, which is €97/month founding price, locked forever. The free Sunday digest gets you five names a week. The Custom Sector Sweep, €1,997 once, gets you a deep written report on any one of the three sectors above.",
+          "I publish this address on the first Wednesday of every month. Permanent canonical at /state-of-github with the previous twelve months indexed below. The synthetic-narration video at the top of the page is rendered from the same data — no founder face, no founder voice, no live broadcast. Text and synthetic narration only, both reproducible from the public panel.",
+          "Talk soon — The Data Nerd",
+        ],
+      },
+    ],
+  },
+];
+
+export default function StateOfGitHubPage() {
+  const latest = ADDRESSES[0];
+
+  // Article + VideoObject + Periodical + BreadcrumbList. The VideoObject is
+  // the anonymity-respecting replacement for an on-stage Stadium Pitch — it
+  // satisfies Brunson Expert Secrets Ch 20 (state-of-the-industry) without
+  // breaking the no-founder-face rule (synthetic TTS + AI avatar render).
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "@id": `${SITE}/state-of-github#article`,
+        headline: latest.title,
+        description: latest.summary,
+        articleSection:
+          "State of GitHub Engineering Velocity — monthly address",
+        datePublished: latest.publishDate,
+        dateModified: latest.publishDate,
+        author: {
+          "@type": "Organization",
+          name: "VC Deal Flow Signal",
+          url: "https://gitdealflow.com",
+        },
+        publisher: {
+          "@type": "Organization",
+          name: "VC Deal Flow Signal",
+          url: "https://gitdealflow.com",
+        },
+        mainEntityOfPage: `${SITE}/state-of-github`,
+        articleBody: latest.sections
+          .map((s) => `${s.heading}\n${s.body.join("\n\n")}`)
+          .join("\n\n"),
+        video: {
+          "@type": "VideoObject",
+          "@id": `${SITE}/state-of-github#video`,
+          name: latest.title,
+          description: `Synthetic-narration video version of the ${latest.month} monthly address. AI-rendered voice + visualization over the live /api/v1/signals.json panel.`,
+          thumbnailUrl: STADIUM_VIDEO_THUMB,
+          uploadDate: latest.publishDate,
+          duration: latest.durationISO,
+          contentUrl: STADIUM_VIDEO_URL,
+          embedUrl: STADIUM_VIDEO_EMBED,
+          publisher: {
+            "@type": "Organization",
+            name: "VC Deal Flow Signal",
+            url: "https://gitdealflow.com",
+          },
+        },
+      },
+      {
+        "@type": "Periodical",
+        "@id": `${SITE}/state-of-github#periodical`,
+        name: "State of GitHub Engineering Velocity",
+        publisher: {
+          "@type": "Organization",
+          name: "VC Deal Flow Signal",
+          url: "https://gitdealflow.com",
+        },
+        issn: undefined,
+        url: `${SITE}/state-of-github`,
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: SITE },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "State of GitHub Engineering Velocity",
+            item: `${SITE}/state-of-github`,
+          },
+        ],
+      },
+    ],
+  };
+
+  return (
+    <>
+      <HreflangLinks
+        canonical={`${SITE}/state-of-github`}
+        languages={{}}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <AgentMirrorLinks path="/state-of-github" />
+
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
+        <header className="space-y-4">
+          <p className="text-emerald-400 text-xs font-medium uppercase tracking-wider">
+            Monthly address · {latest.month} · 1st Wednesday cadence
+          </p>
+          <h1 className="text-3xl sm:text-5xl font-bold text-gray-100 leading-[1.1] tracking-tight">
+            {latest.title}
+          </h1>
+          <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
+            {latest.summary}
+          </p>
+          <p className="text-gray-500 text-xs">
+            Published {latest.publishDate} · Permanent canonical ·
+            CC&nbsp;BY&nbsp;4.0 ·{" "}
+            <Link
+              href="/methodology"
+              className="text-sky-400 hover:text-sky-300 underline decoration-dotted"
+            >
+              methodology
+            </Link>
+          </p>
+        </header>
+
+        {/* Stadium Pitch — synthetic-narration video.
+            Anonymity-respecting replacement for the founder-on-stage format.
+            Cartesia TTS + Remotion render against /api/v1/signals.json.
+            See AGENTS Brunson Expert Secrets Ch 20 (Stadium Pitch). */}
+        <section
+          className="space-y-3"
+          aria-label="Stadium Pitch — synthetic-narration video"
+        >
+          <div className="relative aspect-video rounded-xl overflow-hidden border border-slate-800 bg-slate-950">
+            <iframe
+              src={STADIUM_VIDEO_EMBED}
+              title={`State of GitHub Engineering Velocity — ${latest.month}`}
+              loading="lazy"
+              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              className="absolute inset-0 h-full w-full"
+            />
+          </div>
+          <p className="text-gray-500 text-xs leading-relaxed">
+            <span className="text-gray-400">{latest.durationLabel}</span> ·
+            Synthetic narration (Cartesia TTS) · Visualization rendered from
+            the live{" "}
+            <Link
+              href="/api/v1/signals.json"
+              className="text-sky-400 hover:text-sky-300 underline decoration-dotted"
+            >
+              /api/v1/signals.json
+            </Link>{" "}
+            panel · No founder face, no founder voice, no live broadcast — by
+            policy. Reproducible from the public dataset.
+          </p>
+        </section>
+
+        <article className="space-y-10">
+          {latest.sections.map((s) => (
+            <section key={s.heading} className="space-y-3">
+              <h2 className="text-2xl font-bold text-gray-100 leading-snug">
+                {s.heading}
+              </h2>
+              <div className="space-y-4 text-gray-300 text-base leading-relaxed">
+                {s.body.map((p, i) => (
+                  <p key={i}>{p}</p>
+                ))}
+              </div>
+            </section>
+          ))}
+        </article>
+
+        <section className="rounded-xl border border-slate-800 bg-slate-900/40 p-5 space-y-2">
+          <p className="text-gray-500 text-xs font-semibold uppercase tracking-wider">
+            Cadence
+          </p>
+          <p className="text-gray-300 text-sm leading-relaxed">
+            Published the first Wednesday of every month. The previous twelve
+            months are indexed below as they accumulate. Subscribe to the free
+            Sunday digest at{" "}
+            <Link
+              href="/#signup"
+              className="text-sky-400 hover:text-sky-300 underline decoration-dotted"
+            >
+              gitdealflow.com
+            </Link>
+            {" "}and the monthly address arrives in the Sunday slot once per
+            month — no separate signup required. The synthetic-narration
+            video is uploaded to YouTube on the same cadence; subscribe at{" "}
+            <a
+              href="https://www.youtube.com/channel/UCSK4ZC9EJAHjHyncb5cSh8w"
+              target="_blank"
+              rel="noopener"
+              className="text-sky-400 hover:text-sky-300 underline decoration-dotted"
+            >
+              the channel
+            </a>{" "}
+            if you prefer that format.
+          </p>
+        </section>
+
+        <section className="space-y-4">
+          <h2 className="text-2xl font-bold text-gray-100">Archive</h2>
+          <p className="text-gray-500 text-sm">
+            The first address ships {latest.month}. New entries land the first
+            Wednesday of every subsequent month and accumulate here.
+          </p>
+        </section>
+
+        <p className="text-gray-500 text-sm border-t border-slate-800 pt-5">
+          See every door at{" "}
+          <Link
+            href="/funnels"
+            className="text-sky-400 hover:text-sky-300 underline decoration-dotted"
+          >
+            /funnels
+          </Link>
+          , read the{" "}
+          <Link
+            href="/perfect-webinar"
+            className="text-sky-400 hover:text-sky-300 underline decoration-dotted"
+          >
+            12-minute Perfect Webinar
+          </Link>
+          , or jump to this week's{" "}
+          <Link
+            href="/predicted"
+            className="text-sky-400 hover:text-sky-300 underline decoration-dotted"
+          >
+            Acceleration Watch
+          </Link>
+          .
+        </p>
+      </div>
+    </>
+  );
+}

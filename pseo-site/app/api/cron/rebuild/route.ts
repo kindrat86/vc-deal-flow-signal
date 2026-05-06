@@ -26,6 +26,7 @@ async function pingIndexNow() {
     `${BASE_URL}/blog`,
     `${BASE_URL}/compare`,
     `${BASE_URL}/predicted`,
+    `${BASE_URL}/state-of-github`,
     `${BASE_URL}/challenge`,
     `${BASE_URL}/research`,
     `${BASE_URL}/alternatives`,

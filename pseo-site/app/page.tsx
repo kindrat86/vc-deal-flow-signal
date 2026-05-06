@@ -35,6 +35,8 @@ export const metadata: Metadata = {
 // "low-value or low-demand" in the 2026-05-02 recheck.
 const PILLAR_LINKS = [
   { href: "/methodology", label: "Methodology", sub: "How signals are computed", icon: "📐" },
+  { href: "/predicted", label: "Acceleration Watch", sub: "Weekly 10-name leaderboard", icon: "📡" },
+  { href: "/state-of-github", label: "State of GitHub", sub: "Monthly address — 1st Wed", icon: "🏟️" },
   { href: "/weekly", label: "This week's signals", sub: "Weekly top movers", icon: "📈" },
   { href: "/trending", label: "Trending now", sub: "Real-time leaderboard", icon: "🔥" },
   { href: "/startups-to-watch", label: "Startups to watch", sub: "By sector + region", icon: "🌍" },

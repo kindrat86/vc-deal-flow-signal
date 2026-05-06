@@ -183,6 +183,7 @@ export async function GET(_req: Request, ctx: RouteContext) {
         changefreq: "weekly" as const,
         priority: 0.75,
       })),
+      { url: `${BASE_URL}/state-of-github`, lastmod, changefreq: "monthly", priority: 0.85 },
       { url: `${BASE_URL}/challenge`, lastmod, changefreq: "monthly", priority: 0.85 },
     ];
   } else if (id === "sectors") {

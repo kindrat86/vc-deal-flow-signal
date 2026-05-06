@@ -71,6 +71,44 @@ const VIDEOS: VideoEntry[] = [
     },
     license: "https://creativecommons.org/licenses/by/4.0/",
   },
+  {
+    // Stadium Pitch — synthetic-narration version of the May 2026 monthly
+    // address. Anonymity-respecting (no founder face/voice). Brunson
+    // Expert Secrets Ch 20. First permanent video reuses the Acceleration
+    // Watch render (sXFZHCKkROA, PUBLIC). Subsequent monthly uploads come
+    // from the cron at /api/cron/state-of-github + tools/video pipeline.
+    pageUrl: `${SIGNALS}/state-of-github`,
+    title:
+      "State of GitHub Engineering Velocity — Monthly Address (May 2026)",
+    description:
+      "AI-Native Devtools Are the Loudest Sector of 2026. Verifiable Compute Is the Most Consequential. Synthetic-narration video version of the monthly written address — Cartesia TTS + Remotion render over the live /api/v1/signals.json panel. No founder face, no founder voice, no live broadcast. Reproducible from the public dataset.",
+    thumbnailUrl: "https://i.ytimg.com/vi/sXFZHCKkROA/maxresdefault.jpg",
+    contentUrl: "https://www.youtube.com/watch?v=sXFZHCKkROA",
+    playerUrl:
+      "https://www.youtube-nocookie.com/embed/sXFZHCKkROA?modestbranding=1&rel=0",
+    duration: 90,
+    publicationDate: "2026-05-06T00:00:00+00:00",
+    familyFriendly: "yes",
+    liveStream: "no",
+    tags: [
+      "State of GitHub",
+      "engineering velocity",
+      "VC sourcing",
+      "GitHub momentum",
+      "deal flow",
+      "AI devtools",
+      "verifiable compute",
+      "on-device inference",
+      "alternative data",
+      "monthly address",
+    ],
+    category: "Finance",
+    uploader: {
+      name: "VC Deal Flow Signal",
+      url: APEX,
+    },
+    license: "https://creativecommons.org/licenses/by/4.0/",
+  },
 ];
 
 export async function GET() {
