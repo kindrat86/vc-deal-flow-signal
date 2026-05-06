@@ -8,7 +8,8 @@
     "build": "next build",
     "postbuild": "npx tsx scripts/submit-indexnow.ts",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "deploy:prod": "bash scripts/deploy-prod.sh"
   },
   "dependencies": {
     "@coinbase/x402": "^2.1.0",
