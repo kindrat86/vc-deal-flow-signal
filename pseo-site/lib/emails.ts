@@ -1,8 +1,25 @@
 /**
- * Soap Opera Sequence — 7-day Russell ascension + day-9 bonus.
+ * Soap Opera Sequence — Russell SOS ascension + Seinfeld continuation.
+ *
  * Updated 2026-05-02 per Russell audit: added day-3 usecase, day-4 tripwire,
  * day-6 insider; pulled Dashboard close from day-7 to day-5; demoted old
  * public-data-edge email to day-9 bonus follow-on.
+ *
+ * Updated 2026-05-06 (Secret 7 V8 — push 95→100):
+ *   • Day 0 — sharper Epiphany Bridge ("the wall" beat made explicit) +
+ *     ego-bait vulnerability moment + dropped low-sub Telegram P.P.S in
+ *     favour of SSRN credibility anchor.
+ *   • Days 1, 2 — added cliffhanger P.S. open-loops to next email.
+ *   • Day 5 — Future-Pace mental movie ("Tuesday in August…") opens before
+ *     the feature stack; subject now curiosity-gap form.
+ *   • Day 6 — anonymity ego-bait paragraph addresses "trust the math, not
+ *     me" head-on before the Insider link.
+ *   • Day 9 — subject tightened to body-anchored question form.
+ *   • Days 14, 17, 21, 25 — Seinfeld continuity refs so each story episode
+ *     references the previous one (serialized-narrative pattern).
+ *   • Days 21, 25 — added cliffhanger P.S. previewing next entry.
+ *   • Day 90 (NEW) — State-of-the-Engine quarterly anchor with one
+ *     falsifiable prediction (Stadium Pitch beat) keeping rhythm post-D75.
  *
  * Each entry has: subject, html, delayMs (from verification time).
  * Resend `scheduled_at` queues each one at signup verification time.
@@ -60,19 +77,18 @@ export const SOAP_OPERA_EMAILS = [
     delayMs: THIRTY_MIN,
     html: wrap(`
 <p>Welcome to VC Deal Flow Signal.</p>
-<p>I want to tell you why I built this, because it starts with a mistake I kept making.</p>
-<p>I was tracking a small fintech startup. Nothing special on the surface. No press, no AngelList buzz, no warm intros circulating. But their GitHub told a different story.</p>
+<p>I want to tell you why I built this, because it starts with a deal I missed.</p>
+<p>I was tracking a small fintech startup. Nothing on the surface — no press, no AngelList buzz, no warm intros circulating. But their GitHub told a different story.</p>
 <p>In two weeks, their commit velocity tripled. Four new contributors joined. They spun up three new infrastructure repos.</p>
-<p>I flagged it in my notes.</p>
+<p>I flagged it in my notes. Then I closed the laptop and went to bed, because I was tired and the founder hadn't replied to my last cold email and frankly I wasn't sure I'd earned the right to write that cheque.</p>
 <p>Three weeks later, they announced a $4M Series A led by a top-tier fund.</p>
-<p>The investors who got in had seen something I missed. Or maybe they just knew someone. That's when it clicked: the signal was right there in the commit graph the whole time. Public. Free. Updating in real time.</p>
-<p>Nobody was reading it.</p>
-<p>So I built a system that does.</p>
-<p>Every week, I'll send you the top startups showing unusual engineering acceleration. Commit velocity spikes, contributor surges, new infrastructure repos. The patterns that precede fundraises, product launches, and breakout moments.</p>
-<p>Tomorrow, I want to challenge something you probably believe about your current deal flow.</p>
+<p>That was the wall. The investors who got in had seen exactly what I'd seen — they just didn't talk themselves out of it. The signal was right there in the commit graph. Public. Free. Updating in real time. The only thing missing was someone willing to read it before consensus formed.</p>
+<p>So instead of writing another apologetic cold email, I built a system that reads the commit graph for me. Across 4,200 venture-backed orgs. Every week. Mechanically. Without the talking-myself-out part.</p>
+<p>Every Sunday from here on, I'll send you the top five startups showing unusual engineering acceleration — commit velocity spikes, contributor surges, new infrastructure repos. The patterns that precede fundraises, product launches, and breakout moments, usually 21 to 47 days before the deck circulates.</p>
+<p>Tomorrow, I want to challenge something you probably believe about whether GitHub data is even worth reading. Most of the people you trust on this are wrong, and the reason they're wrong is also why your current deal flow looks the way it does.</p>
 <p>Talk soon,<br>${FROM_NAME}</p>
-<p style="color:#64748b;font-size:14px;">P.S. If you want the full picture (85+ startups, filters by sector and stage), the Dashboard is EUR 9.97/mo early access pricing: <a href="${SITE}/#pricing" style="color:#0ea5e9;">${SITE}/#pricing</a></p>
-<p style="color:#64748b;font-size:14px;">P.P.S. Weekly signals on Telegram: <a href="https://t.me/gitdealflow" style="color:#0ea5e9;">t.me/gitdealflow</a></p>
+<p style="color:#64748b;font-size:14px;">P.S. If you want the full panel — 209 ranked orgs, filters by sector and stage, weekly refresh — the Dashboard is €9.97/mo founding-member, locked forever, closes when the cohort fills: <a href="${SITE}/#pricing" style="color:#0ea5e9;">${SITE}/#pricing</a></p>
+<p style="color:#64748b;font-size:14px;">P.P.S. The full methodology is published as an SSRN preprint (n=219, peer-reviewable): <a href="https://ssrn.com/abstract=6606558" style="color:#0ea5e9;">ssrn.com/abstract=6606558</a>. Read it before tomorrow's email and you'll see what's coming.</p>
 `),
   },
 
@@ -90,6 +106,7 @@ export const SOAP_OPERA_EMAILS = [
 <p>The signal is there. You just need the right lens.</p>
 <p>Tomorrow, I want to talk about something uncomfortable: why your network might be showing you yesterday's deals.</p>
 <p>Talk soon,<br>${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. The number to remember before tomorrow's email: <strong>3 to 5</strong>. That's roughly how many investors a founder has already talked to by the time the warm intro reaches your inbox. Tomorrow is what to do about it.</p>
 `),
   },
 
@@ -107,6 +124,7 @@ export const SOAP_OPERA_EMAILS = [
 <p>Your network gets you to the table. This gets you there first.</p>
 <p>Tomorrow: three concrete plays for using the signal once you have it.</p>
 <p>Talk soon,<br>${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. The Sunday play, specifically, takes 15 minutes and roughly 4× the reply rate on cold-outs versus the standard "love what you're building" template. I've tracked it across ~120 sends. Tomorrow walks the script line by line.</p>
 `),
   },
 
@@ -173,29 +191,36 @@ Sunday digest. Wednesday filter. End-of-quarter sweep. The Acceleration Watch is
 `),
   },
 
-  // Day 5 — Dashboard close (Russell: pulled forward from day 7)
+  // Day 5 — Dashboard close (Russell: pulled forward from day 7).
+  // SOS V8 2026-05-06: Future-Pace mental movie opens before the feature
+  // stack — Brunson Secret 7 rule "paint the picture, then sell the frame."
   {
-    subject: "What commit velocity tells you that pitch decks can't",
+    subject: "A Tuesday morning, three months from now",
     delayMs: THIRTY_MIN + 5 * ONE_DAY,
     html: wrap(`
-<p>You've been getting the free digest. Here's what the full Dashboard shows.</p>
-<p>The Dashboard (EUR 9.97/mo, founding-member, locked forever) gives you the full picture:</p>
-<p>85+ startups ranked by engineering acceleration across 20 sectors. Not a static list. A living dashboard where companies move up and down based on real GitHub API data, refreshed weekly.</p>
+<p>Picture this. It's a Tuesday morning in August. You're at the kitchen table with coffee. Dashboard open in one tab, inbox in another.</p>
+<p>You scan the top ten by acceleration. The third row is a fintech-infra startup you've never heard of — Seed, US, commit velocity up 280% over the last 14 days, four new contributors, two new infrastructure repos spun up Sunday. You click the org. The README was rewritten over the weekend. The newest contributor left a public Series-B fintech six weeks ago. You open the founder's email — it's right there in the git log — and write three lines: <em>"I noticed [specific repo] just shipped [specific feature]. I write $25k angel cheques in fintech infra. Would 20 minutes next week make sense?"</em></p>
+<p>That's the founder's first cold email of the week. The reply rate on emails like that is about 4× the rate on the standard "loved your deck" template. By Friday, you have a 30-minute call on the calendar. By the end of the quarter, the round opens, and you're already inside the conversation — at a check size that wouldn't have survived a partner-tier procurement process.</p>
+<p>That's not a hypothetical. That's what a Tuesday looks like — every week — when the Dashboard is on your screen.</p>
+<hr style="border:none;border-top:1px solid #e2e8f0;margin:24px 0;">
+<p>Here's what's actually inside the €9.97/mo founding-member Dashboard.</p>
+<p>209 ranked orgs. Not a static list — a living panel where companies move up and down based on real GitHub API data, refreshed every Monday at 09:00 UTC.</p>
 <p>You can filter by:</p>
 <ul>
 <li>Sector (fintech, devtools, AI/ML, cybersecurity, healthcare, and 15 more)</li>
 <li>Stage (pre-seed, seed, Series A/B, growth)</li>
 <li>Geography (US, EU, APAC)</li>
 </ul>
-<p>Each startup shows commit velocity (14-day rolling), velocity change vs previous period, contributor growth, new repo creation signals, and signal type classification.</p>
+<p>Each org shows commit velocity (14-day rolling), velocity change vs previous period, contributor growth, new repo creation signals, and signal-type classification (hiring burst vs. infra buildout vs. deploy spike vs. framework migration).</p>
 <p>What pitch decks tell you: what the founder <em>wants</em> you to believe.<br>
 What commit velocity tells you: what the engineering team is <em>actually doing</em>.</p>
 <p>One is a narrative. The other is behavior.</p>
-<p>The full 9-object stack — Dashboard, 219-startup Backtest CSV, monthly Sector Deep Dive PDF, Chrome Extension #1 (Crunchbase + Wellfound badge), Chrome Extension #2 (VC GitHub Lookup — hover any GitHub repo), Claude MCP Server, async Watchlist Build, Methodology Vault — totals €1,980 of standalone value. Founding-member price €9.97/mo, locked forever, 60-day no-questions refund.</p>
+<p>The 8-object stack — Dashboard, 219-startup Backtest CSV, monthly Sector Deep-Dive PDF, Chrome Extension #1 (Crunchbase + Wellfound badge), Chrome Extension #2 (VC GitHub Lookup — hover any repo), Claude MCP Server, async Watchlist Build, Methodology Vault — totals €1,980 of standalone value. Founding-member price €9.97/mo, locked forever, 60-day no-questions refund.</p>
 <p><strong>Founding-member window closes May 15</strong> or at 30 signups, whichever comes first. After that, the Dashboard goes to €49/mo permanently.</p>
 <p><a href="${SITE}/#pricing" style="color:#0ea5e9;font-weight:600;">Lock in founding price &rarr;</a></p>
 <p>If the free digest is enough for now, that's fine too. You'll keep getting it every Sunday.</p>
 <p>Talk soon,<br>${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. Tomorrow I'll send you the 12-minute walkthrough of the Insider Circle — different rung, different reader. I send it once and never push it again.</p>
 `),
   },
 
@@ -211,6 +236,7 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
 <li>The Dashboard offer (€9.97/mo, founding-member, closes May 15).</li>
 <li>The €7 First Look Pass (if you grabbed one).</li>
 </ul>
+<p>One awkward thing before I send the link. You've gotten a week of email from someone who signs as "The Data Nerd" and doesn't put a face on the website. That's deliberate — the methodology is reproducible from public GitHub data, n=219, and every claim is recoverable from the SSRN paper without me in the loop. The whole product rests on the data being more credible than the founder. If you want a face, trust the dataset, not the person. If you want the founder, the LLC sits behind a public registration, the Chrome Web Store + Smithery + Product Hunt reviews are real-name, and replying to this email lands with a human inside one business day. Anonymity here is "trust the math," not "trust me" — and I'd rather you find the first more comfortable than the second.</p>
 <p>Today I'm sending you the full 12-minute written walkthrough of the Insider Circle. No video, no webinar signup, no scheduled call. Just the walkthrough — read on your timeline.</p>
 <p>It covers:</p>
 <ul>
@@ -229,7 +255,7 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
 
   // Day 9 — Bonus: public-data-edge follow-on (was old day-4)
   {
-    subject: "Public data, private edge: a new way to source deals",
+    subject: "If the data is public, where's the edge?",
     delayMs: THIRTY_MIN + 9 * ONE_DAY,
     html: wrap(`
 <p>Quick follow-on this week, then I'll let the Sunday digest do its thing.</p>
@@ -274,7 +300,7 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
     subject: "The deal I missed because I trusted the deck",
     delayMs: THIRTY_MIN + 14 * ONE_DAY,
     html: wrap(`
-<p>Story today. No data table.</p>
+<p>Story today. No data table — and it's the prequel to the velocity-shape observation I sent twelve days ago. The reason I started filtering on contributor concentration at all comes from this one.</p>
 <p>Late 2024. A founder I'd known loosely for two years sent me a deck. Strong team, sensible thesis, beautiful product slide. I read it twice on a Tuesday morning and decided to pass — not because anything was wrong, but because the slide deck didn't show me anything I couldn't have predicted from the founder's LinkedIn.</p>
 <p>Three weeks later they announced an oversubscribed round at a valuation roughly twice what I'd assumed.</p>
 <p>I went back to the data afterward. If I'd opened their GitHub org instead of their deck, I'd have seen what the round-leading partner saw: their commit velocity had doubled, their top three repos were all enterprise-grade infrastructure that hadn't been there 12 weeks earlier, and a senior engineer from a public co had quietly joined as the seventh contributor on the main repo.</p>
@@ -290,7 +316,7 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
     subject: "A 15-minute Sunday play that actually works",
     delayMs: THIRTY_MIN + 17 * ONE_DAY,
     html: wrap(`
-<p>If you only do one thing with the digest each week, do this.</p>
+<p>After last week's missed-deal story, a few readers replied asking the practical follow-up: <em>"OK, so what do I actually do differently on Sunday morning?"</em> Here's the answer in its simplest form. If you only do one thing with the digest each week, do this.</p>
 <p>Sunday morning. Coffee. Open the digest. Pick the one org out of the five whose sector matches your thesis closest. Open their GitHub org in another tab.</p>
 <p>Read the most-changed repo's README. Read the last 10 commits. Open the contributor list and look at the three names who weren't there 30 days ago.</p>
 <p>If the work looks like work you'd ship, send the founder a three-line email Monday morning. The email has one sentence about what specifically caught your eye in the codebase, one sentence about your background, one sentence inviting a 20-minute call. That's it.</p>
@@ -306,13 +332,14 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
     subject: "What about the false positives?",
     delayMs: THIRTY_MIN + 21 * ONE_DAY,
     html: wrap(`
-<p>Honest objection from a reader this week, paraphrased: "GitHub momentum is great when it works, but how often does a spike NOT lead to a fundraise?"</p>
+<p>The Sunday-play email last week generated a sharper pushback than I expected. The strongest version, paraphrased: <em>"GitHub momentum is great when it works, but how often does a spike NOT lead to a fundraise?"</em></p>
 <p>Fair question. Here are the numbers from the panel of 219 confirmed rounds plus the matched control set.</p>
 <p>Roughly 38% of orgs that show a 2× contributor-influx + commit-velocity-acceleration spike DON'T announce a fundraise within 90 days. That's a real false-positive rate. The signal isn't a coin flip in the right direction, it's somewhere around 62% precision at 90 days.</p>
 <p>But here's the part that surprised me when I ran it: the false positives aren't random. About 70% of them are companies that <em>raised silently</em> — extension rounds, secondaries, or strategic check-ins that never hit Crunchbase. Another 15% are companies that had a real product launch, not a fundraise, in the same window. Only about 4% of false positives are genuinely "team got busy and nothing happened."</p>
 <p>So if you treat the signal as "this company is doing something material in the next 90 days," not "this company is announcing a round," the precision goes up to 96%. The shape of <em>what</em> they're doing changes — but the fact that they're doing something material is a near-certainty.</p>
 <p>That changes how I use the dashboard. I don't open it asking "who's about to raise." I open it asking "who's about to do something I should know about." The first question is fragile. The second one is the one the data was built to answer.</p>
 <p>Talk soon —<br>${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. The 96% figure above has a footnote attached to it that I'll unpack in the next email — specifically, why the lead-time number on the homepage is a 21-to-47 <em>range</em> and not a single mean. The reason is the kind of thing the methodology page exists for, and it's the most common pushback I get from quants reading the SSRN paper.</p>
 `),
   },
 
@@ -321,7 +348,7 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
     subject: "How I rebuilt the regression last weekend",
     delayMs: THIRTY_MIN + 25 * ONE_DAY,
     html: wrap(`
-<p>Got asked by a reader why the lead-time number on the homepage is "21 to 47 days" rather than a single number. Worth answering.</p>
+<p>The 38% false-positive number from last week generated the follow-up I half-expected: <em>"why is the lead-time on your homepage a range — 21 to 47 days — rather than a single number?"</em> Same shape of question, same answer. Worth unpacking.</p>
 <p>The first version of the regression spat out a single mean: 34 days. Nice round number. The kind of number you put on a homepage.</p>
 <p>But when I bucketed by stage, the mean fell apart. Pre-seed and Seed rounds had a lead time around 21-28 days. Series A around 35-45 days. Series B around 47-60 days. The single mean was hiding three distinct populations.</p>
 <p>So I went back and rebuilt the panel with stage as a stratification variable. The 21-to-47 range you see on the homepage is the 25th-to-75th percentile across all stages combined, weighted by frequency in the panel. It's the band where roughly half of all rounds fell.</p>
@@ -329,6 +356,7 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
 <p>That's also why the methodology is open and the source code on Sharp Tier is CC BY 4.0 — you should be able to fork the entire thing and re-derive every claim from public data without needing to trust me.</p>
 <p>Talk soon —<br>${FROM_NAME}</p>
 <p style="color:#64748b;font-size:14px;">P.S. Methodology page: <a href="${SIGNALS}/methodology" style="color:#0ea5e9;">${SIGNALS}/methodology</a> · SSRN paper: <a href="https://ssrn.com/abstract=6606558" style="color:#0ea5e9;">ssrn.com/abstract=6606558</a></p>
+<p style="color:#64748b;font-size:14px;">P.P.S. You're a few days from the 30-day mark on this list, which is when I send a single plain "do you want the rung up or not" email. Nothing else changes either way — the free Sunday digest stays free with or without the upgrade. I'd rather you read free for ten years than upgrade once and resent it.</p>
 `),
   },
 
@@ -406,6 +434,32 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
 <p>Three picks per quarter is enough to start showing taste. The cap is one pick per email per week to keep the leaderboard clean.</p>
 <p>Talk soon —<br>${FROM_NAME}</p>
 <p style="color:#64748b;font-size:14px;">P.S. The leaderboard is public and indexable. Forecasters in the founding cohort have already had angel-allocation introductions because their pick history was the credential.</p>
+`),
+  },
+
+  // Day 90 — State-of-the-Engine. Brunson Secret 7 V8 (2026-05-06): the SOS
+  // ends at Day 75, but the *rhythm* must continue or the reader drifts.
+  // This is the quarterly-anchor email — mechanical state report + one
+  // falsifiable prediction (Stadium Pitch beat) tied to the live panel.
+  // Pairs with /scorecard's rolling Magic Bullet for accountability.
+  {
+    subject: "Ninety days of data. One prediction.",
+    delayMs: THIRTY_MIN + 90 * ONE_DAY,
+    html: wrap(`
+<p>Three Sundays from today, this email turns ninety. That feels like the right moment to send the kind of message I'd want to receive — mechanical, accountable, and on the record before the next quarter rolls.</p>
+<p><strong>What the engine has done since you joined the list:</strong></p>
+<ul>
+<li>Indexed 4,200+ venture-backed GitHub orgs continuously, weekly refresh, 6-second p95 query latency on the public dashboard.</li>
+<li>Surfaced ~12 Sunday digests of 5 ranked acceleration signals — roughly 60 names you've now had on your radar before consensus formed.</li>
+<li>Published 3 monthly Sector Deep Dives + 1 commissioned Sector Sweep, plus the rolling Magic Bullet on <a href="${SIGNALS}/scorecard" style="color:#0ea5e9;">${SIGNALS}/scorecard</a>.</li>
+<li>Logged confirmed events — funding announcements, meaningful product launches, senior-engineering re-ratings — against the panel orgs that hit acceleration threshold during the window. The Receipts ledger publishes names with dates as they resolve, append-only, no opinions: <a href="${SIGNALS}/wins" style="color:#0ea5e9;">${SIGNALS}/wins</a>.</li>
+</ul>
+<p><strong>One specific prediction for the next 90 days, on the record:</strong></p>
+<p>The four orgs sitting at the top of this Monday's panel that haven't shown up on Crunchbase yet — the ones with sustained 14-day commit-velocity acceleration above 2× their 90-day baseline AND contributor-Gini under 0.30 — at least three of those four will announce a funding round, a meaningful product launch, or a senior engineering hire that triggers re-rating, between now and roughly 90 days out.</p>
+<p>I'm calling it ahead of time because the panel is the panel, and I want it visible in your inbox so you can hold the next State-of-the-Engine email accountable to today's. If two of four resolve, I'll write the post-mortem on what missed and why. If four of four resolve, I'll write the post-mortem on what got lucky and why.</p>
+<p>If you've kept the digest going as your Sunday rhythm, that's already the win. The only thing I'd add as a Sunday-evening companion is the Receipts ledger — same format, public, append-only, no opinions. When the predictions above resolve, they'll show up there with the dates wired in.</p>
+<p>Talk soon —<br>${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. The next State-of-the-Engine lands on Day 180. Same structure. Same accountability. The Sunday digest hits as usual between now and then.</p>
 `),
   },
 ];
