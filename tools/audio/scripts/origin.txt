@@ -1,0 +1,17 @@
+I used to think deal flow was a network problem. Then I watched a four-million-dollar Series A I should have been in.
+
+This is the long version. Russell Brunson calls it the Hero's Two Journeys — the identity-shift story where you took the wrong road first, three false beliefs broke one by one, and the new road became the only road that made sense.
+
+The old journey: build the rolodex. Coffees. Calendar Tetris. Warm intros that arrived three weeks after the term sheet was signed. I told myself I was sourcing. What I was actually doing was waiting in line behind every other operator-turned-investor in a five-time-zone radius.
+
+The first false belief that broke: that more network meant earlier deals. It doesn't. More network means the same deals at the same time as everyone else who has more network. The signal you actually want is the one that arrives before the network knows there's something to talk about.
+
+The second false belief: that public data was too noisy to be useful. I now have a paper on SSRN with two hundred and nineteen startups in the panel that says otherwise. Acceleration patterns are not noise. They are regime changes. Something happened inside that company. They hired. They found product-market fit. They are about to ship.
+
+The third false belief: that you needed a six-figure data budget to run this kind of analysis. You don't. The whole price difference between Harmonic at one thousand a month and us at nine ninety-seven a month is the cost of a sales team. Pull the sales team out and the data ladder fits the buyer.
+
+The new journey is engineering acceleration. Code-side. Public. Reproducible. Twenty-one to forty-seven days before the deck circulates.
+
+I didn't switch because the data is beautiful, although it is. I switched because the network road was a structurally broken vehicle for someone who writes small, infrequent checks into AI infra and devtools. The new road isn't bigger network. It's a different sensor.
+
+Read the dashboard. Read the paper. Decide for yourself.

@@ -1,0 +1,13 @@
+Day twenty-five. The Data Nerd. How I rebuilt the regression last weekend.
+
+The methodology paper on SSRN is the version of this work I am willing to defend in public. It is not the version I run on Sunday nights.
+
+The Sunday version has a few extra things in it. A heuristic that down-weights synthetic commit-spikes from documentation rewrites. A small classifier that flags repository name patterns associated with stealth-mode product launches. A separate rolling window for organizations under twelve months old, because the noise floor for new organizations is structurally different from the noise floor for organizations with five years of git history.
+
+None of these are exotic. All of them came from a Sunday night where I looked at last week's top-five and realized one of the names did not pass the smell test, and I sat with the data until I understood why. Then I added the rule. Then I re-ran the prior six weeks to make sure the rule didn't reject things that should have stayed.
+
+This is the boring version of moat. Not a model. Not a paper. A list of small rules I noticed needed to exist, written down in the order I noticed them.
+
+The dashboard you see on Sunday is the output of about forty of these rules. The paper described twelve of them. The other twenty-eight are why the Sunday digest is not the same product as the SSRN version.
+
+Talk soon.

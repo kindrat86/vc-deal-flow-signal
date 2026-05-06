@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { DataNerdAudio } from "@/components/DataNerdAudio";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 
@@ -94,6 +95,11 @@ export default function FiveMinPerfectWebinarPage() {
             </Link>{" "}
             is here.
           </p>
+          <DataNerdAudio
+            slug="perfect-webinar-5min"
+            label="Press play — 5-minute auto-webinar, narrated by The Data Nerd"
+            subtitle="The whole pitch as audio. Read it, listen to it, or both. Hook → Story → Three Secrets → Stack → Four Closes — in five minutes flat."
+          />
         </header>
 
         <section className="space-y-3">

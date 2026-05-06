@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { DataNerdAudio } from "@/components/DataNerdAudio";
 
 export const metadata: Metadata = {
   title:
@@ -152,6 +153,12 @@ export default function StoryPage() {
           what happened and what the comments on the Indie Hackers post-mortem
           taught me about distribution.
         </p>
+
+        <DataNerdAudio
+          slug="story"
+          label="Listen — The Data Nerd reads the launch diary"
+          subtitle="Same Cartesia voice as every other narration on this site. The face stays anonymous; the voice is consistent on purpose."
+        />
 
         {/* Hero's Two Journeys — Brunson Expert Secret #6: identity-shift
             narrative. Audit 2026-05-05: this was the lowest-scoring chapter

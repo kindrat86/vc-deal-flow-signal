@@ -13,6 +13,16 @@ const FROM_NAME = "The Data Nerd";
 const SITE = "https://gitdealflow.com";
 const SIGNALS = "https://signals.gitdealflow.com";
 
+// Audio companion link — same Cartesia "Data Nerd" voice across every surface
+// (YouTube, page narrations, email-audio). Brunson Attractive Character: voice
+// consistency is what makes the persona character-grade across channels.
+function audioCompanion(slug: string, durationLabel: string): string {
+  return `<p style="margin:16px 0;padding:12px 14px;background:#f1f5f9;border-left:3px solid #0ea5e9;border-radius:4px;font-size:14px;color:#475569;">
+🎧 <strong>Audio companion · ${durationLabel}</strong> — <a href="${SIGNALS}/audio/data-nerd/${slug}.mp3" style="color:#0ea5e9;font-weight:600;">Listen to The Data Nerd read this aloud &rarr;</a><br>
+<span style="color:#94a3b8;font-size:12px;">Synthetic voice (Cartesia). Same voice across every email and YouTube short. The face stays anonymous; the voice is consistent on purpose.</span>
+</p>`;
+}
+
 // Apply utm_source=email so the click lands as "Email" in PostHog instead of
 // "(direct)". Apple Mail / Outlook desktop strip the Referer header — UTM is
 // the only attribution signal we can rely on for email clicks.
@@ -60,6 +70,7 @@ export const SOAP_OPERA_EMAILS = [
     delayMs: THIRTY_MIN,
     html: wrap(`
 <p>Welcome to VC Deal Flow Signal.</p>
+${audioCompanion("email-day-0", "90 sec")}
 <p>I want to tell you why I built this, because it starts with a mistake I kept making.</p>
 <p>I was tracking a small fintech startup. Nothing special on the surface. No press, no AngelList buzz, no warm intros circulating. But their GitHub told a different story.</p>
 <p>In two weeks, their commit velocity tripled. Four new contributors joined. They spun up three new infrastructure repos.</p>
@@ -137,6 +148,7 @@ export const SOAP_OPERA_EMAILS = [
     subject: "The five-step shift — in your own words",
     delayMs: THIRTY_MIN + Math.round(3.5 * ONE_DAY),
     html: wrap(`
+${audioCompanion("email-day-3-5", "90 sec")}
 <p>Yesterday's email gave you three plays. Today I want to give you the underlying shift in plain language, because the Sunday-Wednesday-quarter rhythm only works if step 5 sits on top of an honest read of steps 1 through 4.</p>
 <p>Russell Brunson calls this the Conversion Story. Five sentences, one-to-five. Read them in order; the last one is the action.</p>
 <p><strong>1. The old way you were sold.</strong><br>
@@ -204,6 +216,7 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
     subject: "The 12-minute walkthrough I owed you",
     delayMs: THIRTY_MIN + 6 * ONE_DAY,
     html: wrap(`
+${audioCompanion("email-day-6", "60 sec")}
 <p>You've now had:</p>
 <ul>
 <li>A week of context (Day 0 through Day 5).</li>
@@ -254,6 +267,7 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
     subject: "Thing I noticed in the data this week",
     delayMs: THIRTY_MIN + 12 * ONE_DAY,
     html: wrap(`
+${audioCompanion("email-day-12", "60 sec")}
 <p>Quick one — the kind of email I want to send more of.</p>
 <p>Pulled the panel this week and noticed something I hadn't filtered for before.</p>
 <p>The orgs with the highest 14-day commit-velocity acceleration AND the lowest top-contributor concentration (Gini under 0.30) are 3.4× more likely to announce a Series A within 60 days than orgs with high acceleration alone.</p>
@@ -274,6 +288,7 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
     subject: "The deal I missed because I trusted the deck",
     delayMs: THIRTY_MIN + 14 * ONE_DAY,
     html: wrap(`
+${audioCompanion("email-day-14", "60 sec")}
 <p>Story today. No data table.</p>
 <p>Late 2024. A founder I'd known loosely for two years sent me a deck. Strong team, sensible thesis, beautiful product slide. I read it twice on a Tuesday morning and decided to pass — not because anything was wrong, but because the slide deck didn't show me anything I couldn't have predicted from the founder's LinkedIn.</p>
 <p>Three weeks later they announced an oversubscribed round at a valuation roughly twice what I'd assumed.</p>
@@ -321,6 +336,7 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
     subject: "How I rebuilt the regression last weekend",
     delayMs: THIRTY_MIN + 25 * ONE_DAY,
     html: wrap(`
+${audioCompanion("email-day-25", "60 sec")}
 <p>Got asked by a reader why the lead-time number on the homepage is "21 to 47 days" rather than a single number. Worth answering.</p>
 <p>The first version of the regression spat out a single mean: 34 days. Nice round number. The kind of number you put on a homepage.</p>
 <p>But when I bucketed by stage, the mean fell apart. Pre-seed and Seed rounds had a lead time around 21-28 days. Series A around 35-45 days. Series B around 47-60 days. The single mean was hiding three distinct populations.</p>
@@ -338,6 +354,7 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
     subject: "Thirty days in. One quiet decision.",
     delayMs: THIRTY_MIN + 30 * ONE_DAY,
     html: wrap(`
+${audioCompanion("email-day-30", "60 sec")}
 <p>You've been on this list for about a month. Long enough to know whether the rhythm fits.</p>
 <p>The free Sunday digest stays exactly as it is — five startups every Monday morning, sector-tagged, no commitment, forever. If that's the right cadence for the way you write checks, keep doing what you're doing. I'd rather have you reading the free version for ten years than upgrade once and resent it.</p>
 <p>The one real time-bounded decision is the founding-member price on the Dashboard.</p>

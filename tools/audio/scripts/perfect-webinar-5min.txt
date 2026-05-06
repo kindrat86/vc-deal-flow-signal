@@ -1,0 +1,15 @@
+This is the auto-webinar. Five minutes. The whole pitch.
+
+Hook. If commit-velocity acceleration is the most leading public signal in venture capital, every other deal-flow source — pitch decks, AngelList, Crunchbase, warm intros — is a lagging indicator. That is the Big Domino. The rest of the argument is what falls when it tips.
+
+Story. I was tracking a small fintech startup. Nothing special on the surface. No press, no AngelList buzz, no warm intros circulating. But their GitHub told a different story. Two weeks. Commit velocity tripled. Four new contributors. Three new infrastructure repos. I flagged it. Three weeks later, four-million-dollar Series A led by a top-tier fund. The investors who got in had seen something I missed. The signal was right there in the commit graph the whole time. Public. Free. Updating in real time. Nobody was reading it.
+
+Three secrets. The first is that GitHub data is not noise — once you index on acceleration, not absolute counts. Two-times contributor spikes inside fourteen days are regime changes, not stochastic flutter. The second is that your network shows you yesterday's deals, because by the time a warm intro reaches you, the founder has already talked to three to five other investors. The deck is circulating. You are competing on speed and reputation, not information. The third is that this stack costs nine ninety-seven a month, not a thousand, because we do not have a sales team. The whole price difference is the cost of an enterprise sales motion. Pull it out and the data ladder fits the buyer.
+
+The stack. Live dashboard, one hundred and nine venture-backed startups ranked by fourteen-day acceleration. Backtest CSV, two hundred and nineteen historical pairs. Monthly sector deep-dive PDF. Two free Chrome extensions. The free MCP server inside Claude or Cursor. Async watchlist build. Methodology vault. Thirty-day signal-or-it's-free guarantee. Standalone value, around two thousand euros a year. Founding-member price, nine ninety-seven a month, locked.
+
+The four closes. The money close — two thousand euros of standalone value for nine ninety-seven a month is a pricing arbitrage, not a discount. The identity close — this is the tool a developer-investor would build, because a developer-investor built it. The pricing close — the founding window closes at thirty seats or May fifteenth, whichever first. After that, forty-nine euros a month, permanently. The urgency close — every Sunday you wait is a Sunday someone else got the digest first.
+
+If you have twelve minutes, the full Perfect Webinar is one click away. If you have five, you just heard it.
+
+Talk soon. The Data Nerd.

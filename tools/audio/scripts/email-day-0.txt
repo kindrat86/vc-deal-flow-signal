@@ -1,0 +1,13 @@
+Welcome. The Data Nerd here.
+
+This is a short audio companion to the email you just received. Sixty seconds. Same parable.
+
+I was tracking a small fintech startup. Nothing special on the surface. No press, no AngelList buzz, no warm intros circulating. But their GitHub told a different story. Two weeks. Commit velocity tripled. Four new contributors. Three new infrastructure repos. I flagged it.
+
+Three weeks later, four-million-dollar Series A. Top-tier fund. The investors who got in had seen something I missed.
+
+That's when it clicked. The signal was right there in the commit graph the whole time. Public. Free. Updating in real time. And nobody was reading it.
+
+So I built a system that does. Every Sunday I'll send you the top startups showing unusual engineering acceleration. Commit spikes. Contributor surges. Patterns that precede fundraises by twenty-one to forty-seven days.
+
+Tomorrow, I want to challenge something you probably believe about your current deal flow. Talk soon.

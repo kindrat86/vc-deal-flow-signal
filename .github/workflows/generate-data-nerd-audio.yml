@@ -1,0 +1,58 @@
+name: Generate Data Nerd Audio
+
+# Generates Cartesia "Data Nerd" voice MP3s from tools/audio/scripts/*.txt
+# and commits the output (pseo-site/public/audio/data-nerd/*.mp3 +
+# pseo-site/lib/data-nerd-manifest.ts) back to main. The commit triggers
+# Vercel auto-deploy, putting the audio on the live site.
+#
+# Voice consistency is the whole point: same CARTESIA_VOICE_ID secret as the
+# YouTube video pipeline, so every surface (website, email-audio, YouTube)
+# carries the same synthetic Data Nerd voice.
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "tools/audio/scripts/**"
+      - "tools/audio/generate.mjs"
+      - "tools/lib/data-nerd-voice.mjs"
+      - ".github/workflows/generate-data-nerd-audio.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install ffmpeg
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+
+      - name: Generate audio (skip clips that haven't changed)
+        env:
+          CARTESIA_API_KEY: ${{ secrets.CARTESIA_API_KEY }}
+          CARTESIA_VOICE_ID: ${{ secrets.CARTESIA_VOICE_ID }}
+          CARTESIA_MODEL_ID: sonic-2
+          CARTESIA_VOICE_NAME: The Data Nerd
+        run: node tools/audio/generate.mjs
+
+      - name: Commit + push if anything changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add pseo-site/public/audio/data-nerd pseo-site/lib/data-nerd-manifest.ts
+          if git diff --staged --quiet; then
+            echo "No audio changes."
+            exit 0
+          fi
+          git commit -m "data-nerd: regenerate audio clips (Cartesia, ${GITHUB_SHA::7})"
+          git push
