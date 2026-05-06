@@ -3,20 +3,16 @@ import { verifyToken, verifyVerifyToken } from "@/lib/verify-token";
 import { isValidEmail } from "@/lib/validation";
 import { SOAP_OPERA_EMAILS, CHALLENGE_EMAILS, LAUNCH_EMAILS } from "@/lib/emails";
 import { isExcluded } from "@/lib/excluded-emails";
+import { isNonceUsed, markNonceUsed } from "@/lib/runtime-cache";
 
-// In-memory single-use tracking for v2 verify-subscribe nonces. Once a v2
-// token's nonce is consumed, any replay (link prefetcher, leaked URL replay)
-// becomes a no-op redirect with no Resend side effects. Vercel's per-region
-// instance reuse means this is best-effort, not strict — but every replay we
-// catch saves an audience-add + 8 drip-email schedule.
-const usedVerifyNonces = new Map<string, number>();
-const VERIFY_NONCE_TTL_MS = 30 * 86_400_000; // matches v2 token TTL
-setInterval(() => {
-  const cutoff = Date.now() - VERIFY_NONCE_TTL_MS;
-  for (const [n, ts] of usedVerifyNonces) {
-    if (ts < cutoff) usedVerifyNonces.delete(n);
-  }
-}, 60 * 60 * 1000).unref?.();
+// Single-use tracking for v2 verify-subscribe nonces. Once a v2 token's nonce
+// is consumed, any replay (link prefetcher, leaked URL replay) becomes a
+// no-op redirect with no Resend side effects. Backed by Vercel Runtime Cache
+// — survives cold starts and is shared across function instances within a
+// region. Every replay we catch saves an audience-add + N-email drip
+// schedule. See lib/runtime-cache.ts.
+const VERIFY_NONCE_NAMESPACE = "verify-nonce";
+const VERIFY_NONCE_TTL_SECONDS = 30 * 86_400; // matches v2 token 30-day TTL
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY!;
 const FROM_EMAIL = process.env.FROM_EMAIL || "signal@gitdealflow.com";
@@ -71,7 +67,7 @@ export async function GET(request: Request) {
   let isV2 = false;
   if (v2 && v2.email === email) {
     isV2 = true;
-    if (usedVerifyNonces.has(v2.nonce)) {
+    if (await isNonceUsed(VERIFY_NONCE_NAMESPACE, v2.nonce)) {
       // Replay (link-prefetcher rescan, leaked URL replay) — return success
       // redirect but skip every Resend side effect.
       return NextResponse.redirect(REPORT_URL);
@@ -84,7 +80,7 @@ export async function GET(request: Request) {
   // (e.g. corporate email scanner racing the user's click) cannot trigger the
   // 8-email drip + Resend audience-add twice.
   if (isV2 && v2) {
-    usedVerifyNonces.set(v2.nonce, Date.now());
+    await markNonceUsed(VERIFY_NONCE_NAMESPACE, v2.nonce, VERIFY_NONCE_TTL_SECONDS);
   }
 
   // Tester / bot suppression. Bots (mailinator, deltajohnsons probes, etc.)
