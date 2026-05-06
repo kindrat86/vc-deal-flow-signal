@@ -54,6 +54,9 @@ function dashboardWelcomeEmail(email: string): { subject: string; html: string }
 <p style="margin:24px 0;"><a href="https://signals.gitdealflow.com/login" style="display:inline-block;background:#0284c7;color:#fff;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:600;">Access Your Dashboard</a></p>
 <p>Log in with this email address (${escapeHtml(email)}) — we'll send you a magic link, no password needed.</p>
 <p>Questions? Just reply to this email.</p>
+<p style="margin-top:28px;padding:16px 18px;background:#f0f9ff;border-left:3px solid #0284c7;border-radius:4px;font-size:14px;line-height:1.6;color:#0c4a6e;">
+<strong>Already running this for an active fund?</strong> The next rung is the <a href="https://signals.gitdealflow.com/insider?utm_source=email&amp;utm_medium=dashboard-welcome&amp;utm_campaign=insider" style="color:#0284c7;font-weight:600;">Insider Circle</a> — Dashboard + private investor Telegram + monthly briefing call + custom watchlists + API access + direct line to me. €97/mo founding price (locked, list is €197). Reply <code>upgrade me</code> any time and I'll credit your current month.
+</p>
 <p>— The Data Nerd</p>
 </div>
 <div style="margin-top:40px;padding-top:20px;border-top:1px solid #e2e8f0;font-size:12px;color:#94a3b8;">
@@ -93,6 +96,9 @@ ${telegramLine}
 </ol>
 <p style="margin:24px 0;"><a href="https://signals.gitdealflow.com/login" style="display:inline-block;background:#0284c7;color:#fff;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:600;">Access Your Dashboard</a></p>
 <p>I'll reach out personally within 24 hours to learn what sectors and stages you care about most.</p>
+<p style="margin-top:28px;padding:16px 18px;background:#fef3c7;border-left:3px solid #d97706;border-radius:4px;font-size:14px;line-height:1.6;color:#78350f;">
+<strong>Investing seven-figure cheques into a defined sector?</strong> The next rung is <a href="mailto:signal@gitdealflow.com?subject=Sharp%20Tier%20Application%20%E2%80%94%20%5BYour%20Fund%5D" style="color:#d97706;font-weight:600;">Sharp Tier</a> (€497/mo or €4,970/yr — saves two months) — adds quarterly portfolio review call, white-labeled <code>/api/v1/sharp/&lt;your-fund&gt;</code> data feed, custom thesis-aligned watchlist co-built with me, same-day signal questions (typically &lt;4h), data-room exports for LP updates, all future paid MCP tools included. <strong>Capped at 8 funds in 2026 — applications reviewed within 48h.</strong> Or grab a one-off <a href="https://gitdealflow.com/sector-sweep?utm_source=email&amp;utm_medium=insider-welcome&amp;utm_campaign=sector-sweep" style="color:#d97706;font-weight:600;">Custom Sector Sweep</a> (€1,997 one-time) for a single thesis cycle.
+</p>
 <p>— The Data Nerd</p>
 </div>
 <div style="margin-top:40px;padding-top:20px;border-top:1px solid #e2e8f0;font-size:12px;color:#94a3b8;">
@@ -129,6 +135,9 @@ function sectorSweepWelcomeEmail(email: string): { subject: string; html: string
 </ul>
 <p>If you want to upgrade to Insider Circle within 60 days of delivery, the €1,997 credits 100% — your first ~20 months of Insider are paid.</p>
 <p>The "Sweep or It's Free" 14-day refund applies after delivery.</p>
+<p style="margin-top:28px;padding:16px 18px;background:#fef3c7;border-left:3px solid #d97706;border-radius:4px;font-size:14px;line-height:1.6;color:#78350f;">
+<strong>If your fund needs this on a quarterly cadence, not a one-off?</strong> The apex tier is <a href="mailto:signal@gitdealflow.com?subject=Sharp%20Tier%20Application%20%E2%80%94%20%5BYour%20Fund%5D" style="color:#d97706;font-weight:600;">Sharp Tier</a> (€497/mo or €4,970/yr) — quarterly portfolio review call, white-labeled <code>/api/v1/sharp/&lt;your-fund&gt;</code> data feed, custom watchlist co-built with me, same-day questions (&lt;4h), data-room exports for LP updates. <strong>Capped at 8 funds in 2026, applications reviewed in 48h.</strong> The €1,997 from this Sweep counts toward your first two months if you're approved.
+</p>
 <p>— The Data Nerd</p>
 </div>
 <div style="margin-top:40px;padding-top:20px;border-top:1px solid #e2e8f0;font-size:12px;color:#94a3b8;">
@@ -171,6 +180,9 @@ function creditPackWelcomeEmail(
 <li><strong>Top up</strong> any time at <a href="https://signals.gitdealflow.com/agents/credits" style="color:#0ea5e9;">signals.gitdealflow.com/agents/credits</a>.</li>
 </ul>
 <p>Reply to this email if you hit anything weird. I read every message.</p>
+<p style="margin-top:28px;padding:16px 18px;background:#f0f9ff;border-left:3px solid #0284c7;border-radius:4px;font-size:14px;line-height:1.6;color:#0c4a6e;">
+<strong>Hitting the API regularly for a fund?</strong> The <a href="https://signals.gitdealflow.com/insider?utm_source=email&amp;utm_medium=credits-welcome&amp;utm_campaign=insider" style="color:#0284c7;font-weight:600;">Insider Circle</a> bundles unlimited dashboard access + private investor Telegram + monthly briefing call + custom watchlists + API access + direct line to me for €97/mo (founding price, locked). Cheaper than buying credit packs once you're past ~50 deep-signal calls/month. Reply <code>insider me</code> and I'll move you over.
+</p>
 <p>— The Data Nerd</p>
 </div>
 <div style="margin-top:40px;padding-top:20px;border-top:1px solid #e2e8f0;font-size:12px;color:#94a3b8;">
@@ -272,6 +284,9 @@ function firstLookWelcomeEmail(email: string): { subject: string; html: string }
 <li>Raw CSV + ranked PDF</li>
 </ul>
 <p>If you upgrade to the Dashboard (€9.97/mo) within 14 days, the €7 is credited.</p>
+<p style="margin-top:24px;padding:14px 16px;background:#fff7ed;border-left:3px solid #FF6B1A;border-radius:4px;font-size:14px;line-height:1.6;color:#7c2d12;">
+<strong>Allocating into a sector at fund scale?</strong> The <a href="https://gitdealflow.com/sector-sweep?utm_source=email&amp;utm_medium=firstlook-welcome&amp;utm_campaign=sector-sweep" style="color:#FF6B1A;font-weight:600;">Custom Sector Sweep</a> is the same engineering-acceleration lens across every venture-backed startup in one sector — written report in 7 business days, plus a clarifications call. €1,997 one-time. Mention it in your reply if you want to skip ahead.
+</p>
 <p>— The Data Nerd</p>
 </div>
 <div style="margin-top:40px;padding-top:20px;border-top:1px solid #e2e8f0;font-size:12px;color:#94a3b8;">
