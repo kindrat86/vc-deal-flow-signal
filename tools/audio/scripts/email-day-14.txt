@@ -1,0 +1,13 @@
+Day fourteen. The Data Nerd. The deal I missed because I trusted the deck.
+
+This one is harder to write, so I'll keep it short.
+
+A friend of mine sent me a deck for a Series A round in twenty-twenty-three. The deck was clean. The numbers were neat. The team slide had the right logos. I passed because the market timing felt off and the moat felt thin. I told myself I had done the work.
+
+I had not done the work. I had read a deck.
+
+The same week I passed, the company shipped three open-source repositories that, in retrospect, were the entire moat. Not the SaaS product the deck was pitching. The open-source layer underneath it that was about to become the default in a sub-category nobody was tracking yet. By the end of the quarter, the company had been the rate-limiting step in three other rounds I tried to get into. By the end of the year, the round I passed was three times oversubscribed at three times the valuation.
+
+If I had read the GitHub instead of the deck, I would have known by the second slide that the deck was the wrong artifact to evaluate the company on.
+
+This is the discipline the dashboard enforces. Read the code, then read the deck. In that order. Always.

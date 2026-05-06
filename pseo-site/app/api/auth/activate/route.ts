@@ -74,10 +74,10 @@ export async function GET(request: NextRequest) {
 
     // One-time tiers (teardown, firstlook, sector_sweep, agent_credits_*,
     // book) don't grant Dashboard access — the deliverable arrives by email
-    // (API key for credit packs; PDF for sector sweep; sector report for
-    // first look; book downloads + bonus emails for book; manual teardown
-    // reply within 4h for teardown). Redirect to a thank-you page instead
-    // of issuing a session cookie.
+    // (manual teardown reply within 4h for teardown; sector report for
+    // first look; PDF for sector sweep; API key for credit packs; book
+    // downloads + bonus emails for book). Redirect to a thank-you page
+    // instead of issuing a session cookie.
     if (
       tier === "teardown" ||
       tier === "firstlook" ||

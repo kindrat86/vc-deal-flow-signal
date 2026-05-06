@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { DataNerdAudio } from "@/components/DataNerdAudio";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 
@@ -123,6 +124,11 @@ export default function FounderPage() {
             kind of person you want signal from. Skim the headers if you&rsquo;re
             in a hurry.
           </p>
+          <DataNerdAudio
+            slug="about-founder"
+            label="Listen — The Data Nerd introduces himself"
+            subtitle="Synthetic Cartesia voice. Same voice across YouTube, email-audio, and every page narration on this site."
+          />
         </header>
 
         {/* IDENTITY */}

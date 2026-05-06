@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentSummary } from "@/components/AgentSummary";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { DataNerdAudio } from "@/components/DataNerdAudio";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 
@@ -211,6 +212,11 @@ export default function PerfectWebinarPage() {
             conclusion will follow. And one specific, sub-€10/mo tool will let
             you act on it.
           </p>
+          <DataNerdAudio
+            slug="perfect-webinar-prologue"
+            label="Press play — 90-second prologue, narrated by The Data Nerd"
+            subtitle="If you only have 90 seconds: this is the Big Domino, stated. The rest of the page is what falls when it tips."
+          />
         </header>
 
         {/* STORY / EPIPHANY BRIDGE */}

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { DataNerdAudio } from "@/components/DataNerdAudio";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 
@@ -112,6 +113,11 @@ export default function OriginPage() {
             became the only road that made sense. Read it if you want to know
             why I built this. Skip it if you just want the data.
           </p>
+          <DataNerdAudio
+            slug="origin"
+            label="Listen — The Data Nerd tells the Hero's Two Journeys"
+            subtitle="Synthetic voice (Cartesia). The same voice you'll hear on every YouTube short and every email-audio companion."
+          />
         </header>
 
         {/* THE OLD JOURNEY */}

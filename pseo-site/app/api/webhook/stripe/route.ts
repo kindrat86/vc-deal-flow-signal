@@ -215,6 +215,43 @@ function bookWelcomeEmail(email: string): { subject: string; html: string } {
   };
 }
 
+function teardownWelcomeEmail(email: string): { subject: string; html: string } {
+  // Suppress unused-param warning — email is reserved for future per-recipient
+  // personalisation (e.g. inserting the buyer's first name once Stripe captures it).
+  void email;
+  return {
+    subject: "Tweet Teardown — name your startup",
+    html: `<!DOCTYPE html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head>
+<body style="margin:0;padding:0;background:#f8fafc;color:#1e293b;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
+<div style="max-width:600px;margin:0 auto;padding:32px 24px;">
+<div style="margin-bottom:24px;"><strong style="color:#f43f5e;font-size:14px;letter-spacing:1px;">VC DEAL FLOW SIGNAL — TWEET TEARDOWN</strong></div>
+<div style="font-size:16px;line-height:1.7;color:#1e293b;">
+<p>€1 received. The 24-hour clock starts when you reply with the startup name.</p>
+<p>What I need:</p>
+<ul style="padding-left:20px;">
+<li>The startup name</li>
+<li>Their public GitHub org URL if you have it (otherwise I'll find it)</li>
+<li>Optional: one sentence on what you already think — bullish, sceptical, or just curious. The kicker insight gets sharper when I know your prior.</li>
+</ul>
+<p>What lands back in your inbox within 24h on weekdays:</p>
+<ul style="padding-left:20px;">
+<li>Signal classification (hiring burst / shipping sprint / infra buildout / platform migration)</li>
+<li>14-day commit-velocity delta — the actual number, two-period confirmed</li>
+<li>The kicker insight — what the data implies for a check-writer this month</li>
+</ul>
+<p>All in a single tweet-shaped paragraph (≤280 chars). Paste-able into Twitter, into your IC memo, into a partner Slack. Your name is never attached unless you ask.</p>
+<p><strong>If the org has no public GitHub footprint:</strong> I refund the €1 within the same hour — no public commit data, no signal to read.</p>
+<p><strong>Want to upgrade?</strong> The €1 credits toward the €7 First Look Pass if you check out within 7 days. Reply <code>REQUEST CREDIT</code> to this email and I apply it manually.</p>
+<p>— The Data Nerd</p>
+</div>
+<div style="margin-top:40px;padding-top:20px;border-top:1px solid #e2e8f0;font-size:12px;color:#94a3b8;">
+<p><a href="https://signals.gitdealflow.com/firstlook" style="color:#0ea5e9;">See the €7 First Look Pass</a> · <a href="https://gitdealflow.com" style="color:#0ea5e9;">gitdealflow.com</a></p>
+</div>
+</div></body></html>`,
+  };
+}
+
 function firstLookWelcomeEmail(email: string): { subject: string; html: string } {
   return {
     subject: "First Look Pass — pick your sector",
@@ -309,6 +346,8 @@ export async function POST(request: NextRequest) {
       welcomeEmail = firstLookWelcomeEmail(email);
     } else if (tier === "book") {
       welcomeEmail = bookWelcomeEmail(email);
+    } else if (tier === "teardown") {
+      welcomeEmail = teardownWelcomeEmail(email);
     } else {
       welcomeEmail = dashboardWelcomeEmail(email);
     }

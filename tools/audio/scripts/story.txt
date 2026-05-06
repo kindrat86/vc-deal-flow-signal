@@ -1,0 +1,15 @@
+Launch diary. Zero votes on Product Hunt. Fifteen upvotes on the post-mortem.
+
+This is what actually happened on launch day, written down before I could rationalize it.
+
+I launched on a Sunday. No email list. Anonymous handle. One real subscriber after I filtered out the testers and the bots. Five other launches in the same seven-oh-one-UTC batch were featured by editorial. This one was not. I checked twice.
+
+The first lesson is that Product Hunt editorial selects featured products partly on first-hour velocity, and first-hour velocity requires either a warm network or a credibility signal that compensates for the absence of one. I had neither. The result is honest signal about what happens when a B2B credibility product launches without B2B trust signals.
+
+The second lesson, which I did not expect: the channel that worked on launch day was Discord. Specifically the Model Context Protocol angle. Three confirmed installs from one technical message in the Cursor MCP channel. Versus zero installable conversions from the broad Product Hunt push the same day. Distribution channel and product surface being the same thing is a completely different leverage ratio than driving traffic to a landing page. I am still thinking about that.
+
+The third lesson is that upvoter mining is dead. Product Hunt stripped public upvoter lists in twenty-twenty-two. The whole strategy of finding accounts that upvoted similar products and direct-messaging them is structurally unavailable. Most circulating launch guides still reference upvoter mining because nobody retracts a twenty-twenty-one tweet when the algorithm changes. The half-life of bad advice on these platforms is approximately forever.
+
+I posted the post-mortem to Indie Hackers. Fifteen upvotes. More engagement than the launch itself. Two of the comments became product changes within the same week.
+
+I am writing this down because I want to remember what it felt like to ship to zero. The next launch will not feel like this. The next launch will feel like I knew what I was doing. I will not believe that next-launch version of me when it shows up. This is the version I will trust.

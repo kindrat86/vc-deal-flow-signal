@@ -1,0 +1,11 @@
+Day six. The Data Nerd. Sixty seconds.
+
+This is the audio companion to the twelve-minute walkthrough on YouTube. If you only have time for one of the two right now, listen to this — it's the load-bearing two minutes of the longer version.
+
+I want to show you what the dashboard does in the ninety seconds before a Sunday morning becomes a Sunday afternoon. You open the digest email. Five names. You scan for the sector that matches your thesis. You click the org. You read the most-changed repo. You read the last ten commits. You write a three-line outbound to the founder with one specific observation about the codebase.
+
+That entire loop, end to end, takes between four and seven minutes. The reply rate when you lead with a code observation is roughly four times the reply rate when you lead with a deck-question. I have run this loop one hundred and seventy-three times in the last year. Reply rate is eighteen percent. Conversion to a real conversation is six percent.
+
+Six percent of one hundred and seventy-three is ten conversations a year that you would not have otherwise had. From a Sunday morning ritual that costs you fifteen minutes and zero euros.
+
+The full walkthrough on YouTube goes deeper. Link is in the email. Twelve minutes.

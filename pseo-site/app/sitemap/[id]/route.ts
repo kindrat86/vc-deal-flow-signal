@@ -64,6 +64,8 @@ export async function GET(_req: Request, ctx: RouteContext) {
       { url: `${BASE_URL}/trending`, lastmod, changefreq: "weekly", priority: 0.9 },
       { url: `${BASE_URL}/methodology`, lastmod, changefreq: "monthly", priority: 0.8 },
       { url: `${BASE_URL}/pricing`, lastmod, changefreq: "monthly", priority: 0.9 },
+      { url: `${BASE_URL}/teardown`, lastmod, changefreq: "monthly", priority: 0.85 },
+      { url: `${BASE_URL}/firstlook`, lastmod, changefreq: "monthly", priority: 0.85 },
       { url: `${BASE_URL}/buyers-guide`, lastmod, changefreq: "monthly", priority: 0.85 },
       // Book funnel — Brunson Secret 17 (2026-05-06). Free PDF + EPUB +
       // €0.99 Kindle. Each chapter is its own indexable page.
@@ -209,6 +211,9 @@ export async function GET(_req: Request, ctx: RouteContext) {
         priority: 0.75,
       })),
       { url: `${BASE_URL}/challenge`, lastmod, changefreq: "monthly", priority: 0.85 },
+      { url: `${BASE_URL}/dream-100`, lastmod, changefreq: "monthly", priority: 0.8 },
+      { url: `${BASE_URL}/distribution`, lastmod, changefreq: "monthly", priority: 0.75 },
+      { url: `${BASE_URL}/funnels`, lastmod, changefreq: "monthly", priority: 0.75 },
     ];
   } else if (id === "sectors") {
     entries = [

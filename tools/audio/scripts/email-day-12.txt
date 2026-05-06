@@ -1,0 +1,11 @@
+Day twelve. The Data Nerd. A thing I noticed in the data this week.
+
+I was running the weekly aggregation on Sunday night and one of the contributor-spike thresholds tripped on a company I had not heard of. Two new contributors with prior work at very serious infrastructure companies. Three new repositories spun up inside the same fourteen-day window, all of them named in a way that suggested a single internal product, not exploration.
+
+This is the kind of pattern I built the dashboard to surface. The names alone tell you nothing. The names plus the timing plus the repository structure tell you that someone inside that company decided to ship something specific, and that they hired the people who could ship it before they announced what it was.
+
+I don't know what they're building. I have a guess. I will be wrong about the guess. But the company is now on my outbound list, and the email I will send on Monday morning is going to be specific to a piece of code in their commit history that nobody outside that company has read yet.
+
+That is the only edge worth having in this market. Reading the thing other people are not reading.
+
+The Sunday digest goes out tonight. Five names. Same reasoning, smaller batch.
