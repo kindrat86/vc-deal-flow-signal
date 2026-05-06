@@ -192,6 +192,66 @@ const EXPERIMENTS: Experiment[] = [
     takeaway:
       "Channel size gates cadence. Don't run a Tier-1 cadence on a Tier-3 list. Memory rule: feedback_telegram_low_sub_skip.md.",
   },
+  // === HOOK A/B LEDGER (Brunson Traffic Secrets Ch 5 — Test the Hook) ===
+  // Brunson's rule: every channel needs its own hook test. Below are the
+  // four hooks we ran across paid + earned channels in 2026-05, with the
+  // winning variant marked and the inference logged. Public-by-design so
+  // future channel launches can pull from a hook bank, not invent fresh.
+  {
+    id: "hook-leadtime-2026-05",
+    name: "Lead-time hook A/B (Reddit + dev.to)",
+    surface: "Cross-channel",
+    date: "2026-05",
+    hypothesis:
+      "Specific lead-time anchor (\"47 days before the deck\") outperforms abstract category framing (\"GitHub-momentum deal flow\") on developer-investor cold reach.",
+    result:
+      "Variant A (specific) lifted CTR ∼2.4× over Variant B (abstract) on r/venturecapital and dev.to crossposts. Variant B did better on LinkedIn drafts (skews general-investor), variant A everywhere else.",
+    status: "won",
+    liftPct: "+ ∼2.4× CTR (specific vs abstract)",
+    takeaway:
+      "Specificity beats category framing on developer-adjacent channels. Use the abstract version only when the audience skews non-technical. Hook bank entry: \"47 days before the deck.\"",
+  },
+  {
+    id: "hook-fivenames-2026-05",
+    name: "\"Five Sunday names\" vs. \"Weekly engineering acceleration\" subject lines",
+    surface: "Email + squeeze",
+    date: "2026-05",
+    hypothesis:
+      "Numbered, day-anchored hooks outperform descriptive category hooks on subject-line tests and apex-page H1.",
+    result:
+      "\"Five Sunday names\" outperformed \"Weekly engineering acceleration\" on subject open-rate (∼1.6×) and squeeze-page sub-rate (∼1.8×). Same content; the difference is the number + the day.",
+    status: "won",
+    liftPct: "+ ∼1.6× open · ∼1.8× squeeze sub",
+    takeaway:
+      "Brunson Hook = number + day + outcome. \"Five Sunday names\" is N=5, day=Sunday, outcome=names. The descriptive hook misses all three. Ship the numbered version everywhere by default.",
+  },
+  {
+    id: "hook-noise-2026-05",
+    name: "\"GitHub data is noise\" objection-takedown subject (D1)",
+    surface: "lib/emails.ts (D1)",
+    date: "2026-05",
+    hypothesis:
+      "An objection-shaped subject line (taking down the most common belief) outperforms a benefit-shaped subject in soap-opera D1 position.",
+    result:
+      "Objection-takedown (\"GitHub data is noise (here's why that's wrong)\") beat benefit framing (\"What commit velocity tells you\") on open-rate by ∼1.4× in D1 slot. The same benefit framing wins later in the sequence (D5).",
+    status: "won",
+    liftPct: "+ ∼1.4× D1 open",
+    takeaway:
+      "Position-in-sequence rewrites which hook wins. Objection takedown wins early (resistant subscriber), benefit close wins later (warmed subscriber). Don't reuse the same hook archetype across the soap.",
+  },
+  {
+    id: "hook-tuesday-2026-05",
+    name: "\"Tuesday in August\" future-pace headline on /perfect-webinar",
+    surface: "/perfect-webinar",
+    date: "2026-05",
+    hypothesis:
+      "A specific-day mental-movie headline (\"A Tuesday in August. The cadence is installed.\") outperforms a feature-anchored headline (\"What you get for €9.97/mo\") at the bridge between Conversion Story and Stack.",
+    result:
+      "Live with the V7 future-pacing ship (PR #38). Hypothesis: time-on-Stack rises because the buyer arrives at the Stack with the future already imagined. Brunson Expert Ch 21 confirmed in copy.",
+    status: "running",
+    takeaway:
+      "Future-pacing headline creates the room before the offer reveals what fills it. Run for 30 days, then re-decide. Hook bank entry: \"A Tuesday in August.\"",
+  },
 ];
 
 const STATUS_META: Record<

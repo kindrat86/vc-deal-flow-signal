@@ -68,23 +68,90 @@ export default function ApplyForm() {
   }
 
   if (status === "success") {
+    // Brunson DotCom Secrets Ch 12 — application thank-you. Manage the
+    // wait window: tell the buyer exactly what's happening between now
+    // and the reply, give them a single sub-step CTA so the moment of
+    // momentum doesn't dissipate, and pre-empt the "did it get there?"
+    // anxiety with the inline bump-it instruction.
+    const stops: Array<{ when: string; who: string; what: string }> = [
+      {
+        when: "Now",
+        who: "Pipeline",
+        what: "Your application was logged and forwarded to the founder's review queue. You'll see a confirmation email in the next 5 minutes from signal@gitdealflow.com — that one is automated, the human reply is not.",
+      },
+      {
+        when: "Within 12 hours",
+        who: "Founder",
+        what: "I read every Sharp application personally. The first read happens today (or first thing tomorrow if you submitted after 22:00 UTC). I check fund fit against the 8-fund 2026 cap, and your specific quarterly question against what the methodology can actually deliver.",
+      },
+      {
+        when: "Within 24–36 hours",
+        who: "Founder",
+        what: "If accepted, I draft a Stripe Sharp Tier invoice and an Insider Circle invitation. If declined, I write a one-paragraph reason — never a form letter. Either reply lands inside 48 business hours of submission.",
+      },
+      {
+        when: "After acceptance",
+        who: "Founder pipeline",
+        what: "The first quarterly call gets scheduled (anonymity-preserving — initials only on the founder side). The white-labeled API sub-domain is set up the same week. Methodology source code repo gets shared on day one of paid.",
+      },
+    ];
+
     return (
-      <div className="bg-emerald-950/30 border border-emerald-700/40 rounded-lg p-5 space-y-2">
-        <p className="text-emerald-300 text-xs font-semibold uppercase tracking-wider">
-          Received
-        </p>
-        <p className="text-gray-100 text-base">
-          Application logged. The founder will reply to{" "}
-          <strong className="text-emerald-200">{form.email}</strong> within 48
-          business hours with either a Stripe invoice or a written decline.
-        </p>
-        <p className="text-gray-400 text-sm">
-          If you don&rsquo;t see a reply by Wednesday next week, check spam, then
-          reply to your most recent email from{" "}
+      <div className="bg-emerald-950/30 border border-emerald-700/40 rounded-xl p-5 sm:p-6 space-y-5">
+        <div className="space-y-2">
+          <p className="text-emerald-300 text-xs font-semibold uppercase tracking-wider">
+            Received · Reply window opens now
+          </p>
+          <p className="text-gray-100 text-base sm:text-lg leading-snug">
+            Application logged. The founder reply lands at{" "}
+            <strong className="text-emerald-200">{form.email}</strong> within
+            48 business hours.
+          </p>
+        </div>
+
+        <ol className="space-y-3.5 border-l-2 border-emerald-700/40 pl-4">
+          {stops.map((s) => (
+            <li key={s.when} className="space-y-1">
+              <div className="flex flex-wrap items-baseline gap-x-3 gap-y-0.5">
+                <span className="font-mono text-[11px] sm:text-xs font-bold text-emerald-300 uppercase tracking-wider">
+                  {s.when}
+                </span>
+                <span className="text-[10px] uppercase tracking-wider font-semibold text-gray-500">
+                  {s.who}
+                </span>
+              </div>
+              <p className="text-gray-300 text-sm leading-relaxed">{s.what}</p>
+            </li>
+          ))}
+        </ol>
+
+        <div className="rounded-lg bg-slate-950/40 border border-slate-800 p-4 space-y-2">
+          <p className="text-gray-300 text-sm font-semibold">
+            While the review runs — one useful 12 minutes
+          </p>
+          <p className="text-gray-400 text-sm leading-relaxed">
+            If you haven&rsquo;t already, the{" "}
+            <a
+              href="/perfect-webinar"
+              className="text-sky-400 hover:text-sky-300 underline decoration-dotted"
+            >
+              12-minute Perfect Webinar
+            </a>{" "}
+            is the document I assume every Sharp applicant has read before
+            the first quarterly call. It saves us the first ten minutes of
+            the call and makes the rest of it sharper.
+          </p>
+        </div>
+
+        <p className="text-gray-500 text-xs leading-relaxed border-t border-emerald-900/40 pt-3">
+          If you don&rsquo;t see a reply by the end of the second business
+          day, check spam, then reply to your most recent message from{" "}
           <code className="text-emerald-200 bg-emerald-900/40 px-1.5 py-0.5 rounded text-xs">
             signal@gitdealflow.com
           </code>{" "}
-          to bump it.
+          with the word <em>bump</em> to surface it. No application has gone
+          un-replied; if yours is the first, it&rsquo;s a delivery issue, not
+          a decline.
         </p>
       </div>
     );
