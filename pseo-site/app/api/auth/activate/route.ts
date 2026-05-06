@@ -94,7 +94,7 @@ export async function GET(request: NextRequest) {
               ? new URL("/book/thanks?status=paid", request.url)
               : tier === "teardown"
                 ? new URL("/tweet-teardown/thanks?status=paid", request.url)
-                : new URL("/?status=paid&pass=firstlook#firstlook", request.url);
+                : new URL("/thanks/firstlook?status=paid", request.url);
       return NextResponse.redirect(thanksUrl);
     }
 

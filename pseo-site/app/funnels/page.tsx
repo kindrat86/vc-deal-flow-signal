@@ -103,7 +103,7 @@ const FUNNELS: Funnel[] = [
   },
   {
     slug: "Insider Circle",
-    href: "/pricing#insider",
+    href: "/pricing#insider-circle",
     tier: "Mid-ladder",
     price: "€97/mo",
     hook: "Private investor Telegram + monthly live briefing + Slack/Telegram spike alerts.",

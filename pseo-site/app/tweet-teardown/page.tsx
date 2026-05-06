@@ -8,7 +8,7 @@ export const dynamic = "force-static";
 
 const STRIPE_TEARDOWN_LINK =
   process.env.NEXT_PUBLIC_STRIPE_TEARDOWN_LINK ||
-  "https://buy.stripe.com/test_placeholder_teardown";
+  "https://buy.stripe.com/bJe5kC48H2d2cEKg6s0x209";
 
 const PAGE_URL = "https://signals.gitdealflow.com/tweet-teardown";
 const PRICE_EUR = 1;
@@ -343,7 +343,7 @@ ask. The window is the next 14 days.`}
           <p className="text-gray-500 text-sm">
             Prefer to read first? The free Sunday digest goes out with five
             ranked names every week —{" "}
-            <Link href="/#signup" className="text-sky-400 hover:text-sky-300">
+            <Link href="https://gitdealflow.com/#signup" className="text-sky-400 hover:text-sky-300">
               join the list
             </Link>
             .

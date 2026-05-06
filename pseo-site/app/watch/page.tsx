@@ -147,7 +147,7 @@ export default function WatchPage() {
           <ul className="space-y-2 text-gray-300 text-sm leading-relaxed">
             <li>
               <Link
-                href="/#signup"
+                href="https://gitdealflow.com/#signup"
                 className="text-sky-400 hover:text-sky-300 underline decoration-dotted"
               >
                 Get the Sunday digest →

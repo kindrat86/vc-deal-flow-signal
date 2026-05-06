@@ -5,7 +5,7 @@ const SITE = "https://signals.gitdealflow.com";
 
 const STRIPE_LINK =
   process.env.NEXT_PUBLIC_STRIPE_AGENT_CREDITS_LINK ??
-  "https://buy.stripe.com/PLACEHOLDER_AGENT_CREDITS_100";
+  "https://buy.stripe.com/00w4gyfRpg3SbAGcUg0x205";
 
 export const metadata: Metadata = {
   title: "Agent Credits — Pay Per Deep Signal",

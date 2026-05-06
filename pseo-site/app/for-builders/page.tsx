@@ -34,7 +34,7 @@ export const metadata: Metadata = {
 
 const STRIPE_AGENT_CREDITS =
   process.env.NEXT_PUBLIC_STRIPE_AGENT_CREDITS_LINK ??
-  "https://buy.stripe.com/PLACEHOLDER_AGENT_CREDITS_100";
+  "https://buy.stripe.com/00w4gyfRpg3SbAGcUg0x205";
 
 const FREE_TOOLS = [
   {
