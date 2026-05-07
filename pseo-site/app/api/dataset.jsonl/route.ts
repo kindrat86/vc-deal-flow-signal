@@ -1,8 +1,16 @@
 import { getAllSectors, getCurrentPeriod, getDataLastModified } from "@/lib/data";
+import {
+  isNotModified,
+  makeETag,
+  notModifiedResponse,
+  withConditionalHeaders,
+} from "@/lib/http-conditional";
 
 export const runtime = "nodejs";
 
 const SITE = "https://signals.gitdealflow.com";
+const CACHE_CONTROL =
+  "public, max-age=300, s-maxage=86400, stale-while-revalidate=604800";
 
 /**
  * Hugging-Face-Datasets-compatible JSONL stream of the current panel.
@@ -10,30 +18,21 @@ const SITE = "https://signals.gitdealflow.com";
  * One startup per line, NDJSON, plus a leading metadata line that lets a
  * dataset card or RAG ingestion pipeline self-describe without a side fetch.
  *
- * Why JSONL: HF Datasets, OpenAI Files, and most RAG ingestion pipelines
- * accept newline-delimited JSON natively. This endpoint is what lets agents
- * "drop in" the GitDealFlow panel as a finetune/RAG corpus with one curl.
+ * Honors both If-None-Match and If-Modified-Since for crawl-budget /
+ * RAG-pipeline efficiency.
  */
 export async function GET(request: Request) {
   const sectors = getAllSectors();
   const period = getCurrentPeriod();
   const lastModified = getDataLastModified();
+  const etag = makeETag("jsonl", period.slug, lastModified.getTime());
 
-  const ifNoneMatch = request.headers.get("if-none-match");
-  const etag = `"jsonl:${period.slug}:${lastModified.getTime()}"`;
-  if (ifNoneMatch === etag) {
-    return new Response(null, {
-      status: 304,
-      headers: {
-        ETag: etag,
-        "Cache-Control": "s-maxage=86400, stale-while-revalidate=3600",
-      },
-    });
+  if (isNotModified(request, lastModified, etag)) {
+    return notModifiedResponse(lastModified, etag, CACHE_CONTROL);
   }
 
   const lines: string[] = [];
 
-  // Leading metadata line — single JSON object describing the panel.
   lines.push(
     JSON.stringify({
       _meta: true,
@@ -43,9 +42,9 @@ export async function GET(request: Request) {
       periodSlug: period.slug,
       lastModified: lastModified.toISOString(),
       license: "https://creativecommons.org/licenses/by/4.0/",
-      citation: `VC Deal Flow Signal (signals.gitdealflow.com), ${period.name} data.`,
-      methodology: `${SITE}/methodology`,
-      schemaUrl: `${SITE}/api/openapi.json`,
+      citation: "VC Deal Flow Signal (signals.gitdealflow.com), " + period.name + " data.",
+      methodology: SITE + "/methodology",
+      schemaUrl: SITE + "/api/openapi.json",
       fields: [
         "name",
         "sector",
@@ -91,12 +90,12 @@ export async function GET(request: Request) {
 
   const body = lines.join("\n") + "\n";
 
-  return new Response(body, {
-    headers: {
-      "Content-Type": "application/x-ndjson; charset=utf-8",
-      "Cache-Control": "public, max-age=300, s-maxage=86400, stale-while-revalidate=604800",
-      ETag: etag,
-      "Last-Modified": lastModified.toUTCString(),
+  return withConditionalHeaders(body, {
+    contentType: "application/x-ndjson; charset=utf-8",
+    lastModified,
+    etag,
+    cacheControl: CACHE_CONTROL,
+    extraHeaders: {
       "Access-Control-Allow-Origin": "*",
       "X-Robots-Tag": "index, follow",
     },
