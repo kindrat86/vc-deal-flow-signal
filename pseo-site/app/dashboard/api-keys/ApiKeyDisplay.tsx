@@ -21,7 +21,7 @@ export default function ApiKeyDisplay({ apiKey }: { apiKey: string }) {
       </code>
       <button
         onClick={() => setRevealed(!revealed)}
-        className="text-gray-500 hover:text-gray-300 text-xs transition whitespace-nowrap"
+        className="text-gray-400 hover:text-gray-300 text-xs transition whitespace-nowrap"
       >
         {revealed ? "Hide" : "Reveal"}
       </button>

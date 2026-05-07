@@ -138,7 +138,7 @@ export default function StartHerePage() {
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
         <header className="space-y-4">
-          <nav aria-label="Breadcrumb" className="text-xs text-gray-500">
+          <nav aria-label="Breadcrumb" className="text-xs text-gray-400">
             <Link href="/" className="hover:text-gray-300">Home</Link>
             <span className="mx-2">/</span>
             <span className="text-gray-400">Start Here</span>
@@ -289,7 +289,7 @@ export default function StartHerePage() {
           </ul>
         </section>
 
-        <p className="text-gray-500 text-xs leading-relaxed border-t border-slate-800 pt-6">
+        <p className="text-gray-400 text-xs leading-relaxed border-t border-slate-800 pt-6">
           Built for cold visitors per <em>Traffic Secrets</em> Section 2 Ch
           18 (Cool Traffic) by Russell Brunson (2020). The Cool Traffic
           visitor doesn&rsquo;t know us yet — this page exists so they

@@ -326,7 +326,7 @@ export default function ExperimentsPage() {
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
         <header className="space-y-4">
-          <nav aria-label="Breadcrumb" className="text-xs text-gray-500">
+          <nav aria-label="Breadcrumb" className="text-xs text-gray-400">
             <Link href="/" className="hover:text-gray-300">Home</Link>
             <span className="mx-2">/</span>
             <span className="text-gray-400">Experiments</span>
@@ -355,7 +355,7 @@ export default function ExperimentsPage() {
         </header>
 
         <section className="rounded-xl border border-slate-800 bg-slate-900/60 p-5 sm:p-6">
-          <p className="text-gray-500 text-[10px] font-semibold uppercase tracking-wider mb-3">
+          <p className="text-gray-400 text-[10px] font-semibold uppercase tracking-wider mb-3">
             {EXPERIMENTS.length} experiments · status snapshot
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -389,7 +389,7 @@ export default function ExperimentsPage() {
                     >
                       {meta.label}
                     </span>
-                    <span className="text-gray-500 text-xs font-mono">
+                    <span className="text-gray-400 text-xs font-mono">
                       {e.surface} · {e.date}
                     </span>
                   </div>
@@ -399,7 +399,7 @@ export default function ExperimentsPage() {
                 </header>
                 <div className="space-y-2 text-sm">
                   <p>
-                    <span className="text-gray-500 uppercase tracking-wider text-[10px] mr-2">
+                    <span className="text-gray-400 uppercase tracking-wider text-[10px] mr-2">
                       Hypothesis
                     </span>
                     <span className="text-gray-300 leading-relaxed">
@@ -407,7 +407,7 @@ export default function ExperimentsPage() {
                     </span>
                   </p>
                   <p>
-                    <span className="text-gray-500 uppercase tracking-wider text-[10px] mr-2">
+                    <span className="text-gray-400 uppercase tracking-wider text-[10px] mr-2">
                       Result
                     </span>
                     <span className="text-gray-300 leading-relaxed">
@@ -420,7 +420,7 @@ export default function ExperimentsPage() {
                     )}
                   </p>
                   <p>
-                    <span className="text-gray-500 uppercase tracking-wider text-[10px] mr-2">
+                    <span className="text-gray-400 uppercase tracking-wider text-[10px] mr-2">
                       Takeaway
                     </span>
                     <span className="text-gray-200 leading-relaxed font-medium">
@@ -463,7 +463,7 @@ export default function ExperimentsPage() {
           </div>
         </section>
 
-        <p className="text-gray-500 text-xs leading-relaxed border-t border-slate-800 pt-6">
+        <p className="text-gray-400 text-xs leading-relaxed border-t border-slate-800 pt-6">
           Public conversion-test log per <em>Expert Secrets</em> Ch 19
           (Test for Conversions) by Russell Brunson (2017/2020). Used
           under fair-use commentary.

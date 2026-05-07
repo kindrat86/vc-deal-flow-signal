@@ -218,7 +218,7 @@ export default function ChangelogPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <nav className="mb-6 text-sm text-gray-500" aria-label="Breadcrumb">
+        <nav className="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300 transition-colors">
             All Sectors
           </Link>
@@ -237,15 +237,15 @@ export default function ChangelogPage() {
 
         <div className="grid sm:grid-cols-3 gap-4 mb-12">
           <div className="rounded-lg border border-slate-800 bg-slate-900 p-5">
-            <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Current period</p>
+            <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Current period</p>
             <p className="text-gray-100 font-semibold text-lg">{current.name}</p>
           </div>
           <div className="rounded-lg border border-slate-800 bg-slate-900 p-5">
-            <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Sectors tracked</p>
+            <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Sectors tracked</p>
             <p className="text-gray-100 font-semibold text-lg">{activeSectors.length}</p>
           </div>
           <div className="rounded-lg border border-slate-800 bg-slate-900 p-5">
-            <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Startups this period</p>
+            <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Startups this period</p>
             <p className="text-gray-100 font-semibold text-lg">{totalStartups}</p>
           </div>
         </div>
@@ -261,7 +261,7 @@ export default function ChangelogPage() {
                 <div className="flex items-center gap-3 mb-2">
                   <time
                     dateTime={entry.date}
-                    className="text-xs text-gray-500 font-mono"
+                    className="text-xs text-gray-400 font-mono"
                   >
                     {entry.date}
                   </time>
@@ -314,7 +314,7 @@ export default function ChangelogPage() {
                             Current
                           </span>
                         ) : (
-                          <span className="text-gray-500 text-xs">Archived</span>
+                          <span className="text-gray-400 text-xs">Archived</span>
                         )}
                       </td>
                     </tr>

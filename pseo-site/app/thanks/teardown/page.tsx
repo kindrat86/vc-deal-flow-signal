@@ -50,7 +50,7 @@ export default function ThanksTeardown() {
               you&rsquo;re bullish, sceptical, or just curious.
             </li>
           </ul>
-          <p className="text-gray-500 text-xs leading-relaxed">
+          <p className="text-gray-400 text-xs leading-relaxed">
             If the org has no public GitHub footprint, you get an immediate
             €1 refund &mdash; no public commit data means no signal to read.
           </p>

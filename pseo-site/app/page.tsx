@@ -871,9 +871,9 @@ export default function Home() {
             <dd className="text-2xl sm:text-3xl font-bold text-gray-100 tabular-nums leading-none">
               3.4<span className="text-sky-400">×</span>
             </dd>
-            <p className="text-[11px] text-gray-500 mt-1 leading-snug">
+            <dd className="text-[11px] text-gray-400 mt-1 leading-snug">
               more likely vs. velocity alone
-            </p>
+            </dd>
           </div>
           <div className="text-center sm:text-left border-l border-slate-800 pl-3 sm:pl-4">
             <dt className="text-[10px] sm:text-xs uppercase tracking-wider text-sky-300/80 font-semibold mb-1">
@@ -882,9 +882,9 @@ export default function Home() {
             <dd className="text-2xl sm:text-3xl font-bold text-gray-100 tabular-nums leading-none">
               21–47<span className="text-sky-400 text-base sm:text-lg ml-1">d</span>
             </dd>
-            <p className="text-[11px] text-gray-500 mt-1 leading-snug">
+            <dd className="text-[11px] text-gray-400 mt-1 leading-snug">
               before the round announces
-            </p>
+            </dd>
           </div>
           <div className="text-center sm:text-left border-l border-slate-800 pl-3 sm:pl-4">
             <dt className="text-[10px] sm:text-xs uppercase tracking-wider text-sky-300/80 font-semibold mb-1">
@@ -893,9 +893,9 @@ export default function Home() {
             <dd className="text-2xl sm:text-3xl font-bold text-gray-100 tabular-nums leading-none">
               n=219
             </dd>
-            <p className="text-[11px] text-gray-500 mt-1 leading-snug">
+            <dd className="text-[11px] text-gray-400 mt-1 leading-snug">
               confirmed rounds, SSRN-indexed
-            </p>
+            </dd>
           </div>
         </dl>
 
@@ -1049,7 +1049,7 @@ export default function Home() {
           </div>
         </div>
 
-        <p className="text-gray-500 text-sm">
+        <p className="text-gray-400 text-sm">
           Full breakdown on the{" "}
           <Link
             href="/perfect-webinar"
@@ -1306,7 +1306,7 @@ export default function Home() {
           <h2 className="text-gray-100 font-semibold text-2xl">
             All sectors we track
           </h2>
-          <p className="text-gray-500 text-xs">
+          <p className="text-gray-400 text-xs">
             {activeSectorCount} sectors · {totalTracked} venture-backed
             startups · refreshed weekly
           </p>
@@ -1330,7 +1330,7 @@ export default function Home() {
                   <h3 className="text-gray-100 font-semibold text-base group-hover:text-sky-400 transition-colors">
                     {sector.name}
                   </h3>
-                  <span className="text-gray-500 text-[11px] font-mono tabular-nums shrink-0">
+                  <span className="text-gray-400 text-[11px] font-mono tabular-nums shrink-0">
                     {snapshot.startups.length}
                   </span>
                 </div>
@@ -1380,7 +1380,7 @@ export default function Home() {
           <h2 className="text-gray-100 font-semibold text-2xl">
             Where to go next
           </h2>
-          <p className="text-gray-500 text-xs">
+          <p className="text-gray-400 text-xs">
             The 8 highest-signal pages on this site
           </p>
         </div>
@@ -1432,7 +1432,7 @@ export default function Home() {
               href={`/blog/${post.slug}`}
               className="group block rounded-lg border border-slate-800 bg-slate-900 p-5 hover:border-sky-600/50 hover:bg-slate-800/60 hover:-translate-y-0.5 transition-all"
             >
-              <p className="text-gray-500 text-xs mb-2 uppercase tracking-wider">{post.date}</p>
+              <p className="text-gray-400 text-xs mb-2 uppercase tracking-wider">{post.date}</p>
               <h3 className="text-gray-100 font-semibold text-base mb-2 group-hover:text-sky-400 transition-colors leading-snug">
                 {post.title}
               </h3>
@@ -1540,7 +1540,7 @@ export default function Home() {
                   {p.label}
                 </p>
               </div>
-              <p className="text-gray-500 text-[11px] mt-1 leading-tight pl-6">
+              <p className="text-gray-400 text-[11px] mt-1 leading-tight pl-6">
                 {p.sub}
               </p>
             </Link>

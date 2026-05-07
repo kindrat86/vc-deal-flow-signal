@@ -407,7 +407,7 @@ export default function MethodologyPage() {
                 one of those teams looks like a fundraise candidate to a Series
                 A partner.
               </p>
-              <p className="text-gray-500 text-xs leading-relaxed">
+              <p className="text-gray-400 text-xs leading-relaxed">
                 Source: SSRN preprint{" "}
                 <a
                   href="https://ssrn.com/abstract=6606558"

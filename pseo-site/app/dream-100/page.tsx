@@ -194,7 +194,7 @@ export default function Dream100Page() {
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
         <header className="space-y-4">
-          <nav aria-label="Breadcrumb" className="text-xs text-gray-500">
+          <nav aria-label="Breadcrumb" className="text-xs text-gray-400">
             <Link href="/" className="hover:text-gray-300">
               Home
             </Link>
@@ -240,7 +240,7 @@ export default function Dream100Page() {
           aria-label="Status summary"
           className="rounded-xl border border-slate-800 bg-slate-900/60 p-5 sm:p-6 space-y-4"
         >
-          <p className="text-gray-500 text-[10px] font-semibold uppercase tracking-wider">
+          <p className="text-gray-400 text-[10px] font-semibold uppercase tracking-wider">
             Engagement status · {DREAM_100_TOTAL} entries
           </p>
           <ul className="grid grid-cols-2 sm:grid-cols-5 gap-3 text-sm">
@@ -317,7 +317,7 @@ export default function Dream100Page() {
               Tier 3 &lt; 70 — read-only / mental-model only
             </span>
           </div>
-          <p className="text-gray-500 text-xs leading-relaxed">
+          <p className="text-gray-400 text-xs leading-relaxed">
             Score = Match × 4 + Reach × 3 + Engage × 3. Max 100. Re-scored
             quarterly; last pass 2026-05-06.
           </p>
@@ -378,7 +378,7 @@ export default function Dream100Page() {
           aria-label="Sections"
           className="rounded-xl border border-slate-800 bg-slate-900/60 p-5 sm:p-6"
         >
-          <p className="text-gray-500 text-[10px] font-semibold uppercase tracking-wider mb-3">
+          <p className="text-gray-400 text-[10px] font-semibold uppercase tracking-wider mb-3">
             10 categories · 100 voices · jump to:
           </p>
           <ul className="grid grid-cols-2 sm:grid-cols-5 gap-2 text-sm">
@@ -481,7 +481,7 @@ export default function Dream100Page() {
                         {v.what}
                       </p>
                       {v.note && (
-                        <p className="text-gray-500 text-xs leading-relaxed italic border-l border-slate-700 pl-3">
+                        <p className="text-gray-400 text-xs leading-relaxed italic border-l border-slate-700 pl-3">
                           {v.note}
                         </p>
                       )}
@@ -580,7 +580,7 @@ export default function Dream100Page() {
           </div>
         </section>
 
-        <p className="text-gray-500 text-xs leading-relaxed border-t border-slate-800 pt-6">
+        <p className="text-gray-400 text-xs leading-relaxed border-t border-slate-800 pt-6">
           The Dream 100 is a teaching from{" "}
           <em>Traffic Secrets</em> by Russell Brunson (2020). Used here under
           fair-use commentary. Not affiliated with ClickFunnels or Russell.

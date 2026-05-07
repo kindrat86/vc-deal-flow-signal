@@ -587,12 +587,12 @@ export default function PricingPage() {
                         <span className="font-bold text-gray-100 text-base tabular-nums">
                           {tier.priceLabel}
                         </span>
-                        <span className="text-gray-500 text-xs">
+                        <span className="text-gray-400 text-xs">
                           {tier.priceCadence}
                         </span>
                       </div>
                       {tier.rrpLabel ? (
-                        <div className="text-gray-500 text-[11px] mt-1 max-w-[180px] sm:max-w-xs leading-tight">
+                        <div className="text-gray-400 text-[11px] mt-1 max-w-[180px] sm:max-w-xs leading-tight">
                           {tier.rrpLabel}
                         </div>
                       ) : null}
@@ -641,7 +641,7 @@ export default function PricingPage() {
                   {tier.priceCadence}
                 </span>
                 {tier.rrpLabel ? (
-                  <span className="text-gray-500 text-xs">
+                  <span className="text-gray-400 text-xs">
                     ({tier.rrpLabel})
                   </span>
                 ) : null}
@@ -649,7 +649,7 @@ export default function PricingPage() {
               <p className="text-gray-300 text-sm leading-relaxed mb-3">
                 {tier.oneLine}
               </p>
-              <p className="text-gray-500 text-xs italic mb-4">
+              <p className="text-gray-400 text-xs italic mb-4">
                 Best for: {tier.forWho}
               </p>
               <ul className="space-y-2 mb-4">
@@ -767,7 +767,7 @@ export default function PricingPage() {
                   <p className="text-gray-100 text-sm font-medium">
                     {row.label}
                   </p>
-                  <p className="text-gray-500 text-xs leading-relaxed mt-0.5">
+                  <p className="text-gray-400 text-xs leading-relaxed mt-0.5">
                     {row.detail}
                   </p>
                   {"links" in row && row.links && row.links.length > 0 && (
@@ -802,7 +802,7 @@ export default function PricingPage() {
                 <span className="line-through decoration-sky-400/60">
                   €1,728/yr
                 </span>{" "}
-                <span className="text-gray-500 text-sm">
+                <span className="text-gray-400 text-sm">
                   (post-launch retail €588/yr)
                 </span>
               </p>
@@ -820,7 +820,7 @@ export default function PricingPage() {
               Lock founder price →
             </a>
           </div>
-          <p className="text-gray-500 text-xs mt-3">
+          <p className="text-gray-400 text-xs mt-3">
             €119.64/year. Roughly the cost of one missed seed deal. The price
             stays €9.97 for as long as you stay subscribed.
           </p>
@@ -908,7 +908,7 @@ export default function PricingPage() {
                   <p className="text-gray-100 text-sm font-medium">
                     {row.label}
                   </p>
-                  <p className="text-gray-500 text-xs leading-relaxed mt-0.5">
+                  <p className="text-gray-400 text-xs leading-relaxed mt-0.5">
                     {row.detail}
                   </p>
                 </div>
@@ -927,7 +927,7 @@ export default function PricingPage() {
                 <span className="line-through decoration-amber-400/60">
                   €13,000+
                 </span>{" "}
-                <span className="text-gray-500 text-sm">
+                <span className="text-gray-400 text-sm">
                   (excluding bonuses)
                 </span>
               </p>
@@ -945,7 +945,7 @@ export default function PricingPage() {
               Commission via Stripe →
             </a>
           </div>
-          <p className="text-gray-500 text-xs mt-3">
+          <p className="text-gray-400 text-xs mt-3">
             Capped at 8 sweeps per quarter. Q3 2026: 7 of 8 open. Each Sweep
             is custom — nothing template, nothing reused.
           </p>
@@ -978,9 +978,9 @@ export default function PricingPage() {
               </p>
               <p className="text-gray-400 text-sm">
                 <span className="text-2xl font-bold text-sky-300">€99</span>
-                <span className="text-gray-500">/yr · saves €20.64 vs €9.97×12</span>
+                <span className="text-gray-400">/yr · saves €20.64 vs €9.97×12</span>
               </p>
-              <p className="text-gray-500 text-xs leading-relaxed">
+              <p className="text-gray-400 text-xs leading-relaxed">
                 Same dashboard, same MCP, same guarantee. Renews at the
                 same €99/yr rate as long as the subscription stays active.
               </p>
@@ -997,9 +997,9 @@ export default function PricingPage() {
               </p>
               <p className="text-gray-400 text-sm">
                 <span className="text-2xl font-bold text-emerald-300">€970</span>
-                <span className="text-gray-500">/yr · saves €194 vs €97×12</span>
+                <span className="text-gray-400">/yr · saves €194 vs €97×12</span>
               </p>
-              <p className="text-gray-500 text-xs leading-relaxed">
+              <p className="text-gray-400 text-xs leading-relaxed">
                 Telegram + 24h lead + API + custom watchlist. Two months
                 free vs monthly. Locks for as long as you stay subscribed.
               </p>
@@ -1011,7 +1011,7 @@ export default function PricingPage() {
               </a>
             </li>
           </ul>
-          <p className="text-gray-500 text-xs leading-relaxed">
+          <p className="text-gray-400 text-xs leading-relaxed">
             One-click Stripe checkout above. If you&rsquo;re already on
             monthly and want to switch, email{" "}
             <a
@@ -1078,7 +1078,7 @@ export default function PricingPage() {
             </code>{" "}
             and the full payment is refunded, no questions asked.
           </p>
-          <p className="text-gray-500 text-xs">
+          <p className="text-gray-400 text-xs">
             The guarantee exists because the signal either works or it
             doesn&rsquo;t; charging for an output you don&rsquo;t find
             useful is bad business.
@@ -1091,7 +1091,7 @@ export default function PricingPage() {
           <h2 className="text-xl font-semibold text-gray-100 mb-2">
             Frequently asked questions
           </h2>
-          <p className="text-gray-500 text-xs mb-5">
+          <p className="text-gray-400 text-xs mb-5">
             Tap any question to expand. {faqs.length} answers.
           </p>
           <div className="divide-y divide-slate-800 rounded-lg border border-slate-800 bg-slate-900/40">
@@ -1106,7 +1106,7 @@ export default function PricingPage() {
                   </h3>
                   <span
                     aria-hidden="true"
-                    className="shrink-0 text-gray-500 group-hover:text-sky-400 text-2xl leading-none transition-transform duration-200"
+                    className="shrink-0 text-gray-400 group-hover:text-sky-400 text-2xl leading-none transition-transform duration-200"
                   >
                     +
                   </span>
@@ -1120,7 +1120,7 @@ export default function PricingPage() {
         </section>
 
         {/* Cite */}
-        <p className="text-xs text-gray-500 mt-8 mb-4">
+        <p className="text-xs text-gray-400 mt-8 mb-4">
           Pricing snapshot last verified {asOf}. Founding-member rates apply
           to all signups before list-price exit; list prices apply to
           subsequent signups.

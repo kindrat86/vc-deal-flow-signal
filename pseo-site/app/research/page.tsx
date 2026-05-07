@@ -556,10 +556,10 @@ function FindingRow({ finding }: { finding: Finding }) {
           </p>
         </div>
         <p className="text-gray-400 text-sm leading-relaxed mb-2 pl-9">
-          <span className="text-gray-500 italic">Why it matters: </span>
+          <span className="text-gray-400 italic">Why it matters: </span>
           {finding.why}
         </p>
-        <p className="text-gray-500 text-xs pl-9">
+        <p className="text-gray-400 text-xs pl-9">
           Source: {finding.section} · SSRN abstract=6606558 ·{" "}
           <span className="text-sky-500 group-hover:text-sky-400">
             View full finding →

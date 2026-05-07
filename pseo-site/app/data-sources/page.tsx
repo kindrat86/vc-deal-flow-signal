@@ -280,7 +280,7 @@ export default function DataSourcesPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <nav className="mb-6 text-sm text-gray-500" aria-label="Breadcrumb">
+        <nav className="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300 transition-colors">
             All Sectors
           </Link>
@@ -300,15 +300,15 @@ export default function DataSourcesPage() {
 
         <div className="grid sm:grid-cols-3 gap-4 mb-12">
           <div className="rounded-lg border border-slate-800 bg-slate-900 p-5">
-            <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Last refresh</p>
+            <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Last refresh</p>
             <p className="text-gray-100 font-semibold text-sm">{lastModified.toISOString().slice(0, 10)}</p>
           </div>
           <div className="rounded-lg border border-slate-800 bg-slate-900 p-5">
-            <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Sectors tracked</p>
+            <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Sectors tracked</p>
             <p className="text-gray-100 font-semibold text-sm">{activeSectors.length} clusters</p>
           </div>
           <div className="rounded-lg border border-slate-800 bg-slate-900 p-5">
-            <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Startups in dataset</p>
+            <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Startups in dataset</p>
             <p className="text-gray-100 font-semibold text-sm">{totalStartups} this period</p>
           </div>
         </div>
@@ -337,16 +337,16 @@ export default function DataSourcesPage() {
                 )}
                 <div className="grid sm:grid-cols-2 gap-3 text-xs">
                   <div>
-                    <p className="text-gray-500 uppercase tracking-wider font-medium mb-1">Update cadence</p>
+                    <p className="text-gray-400 uppercase tracking-wider font-medium mb-1">Update cadence</p>
                     <p className="text-gray-300">{s.updateCadence}</p>
                   </div>
                   <div>
-                    <p className="text-gray-500 uppercase tracking-wider font-medium mb-1">License</p>
+                    <p className="text-gray-400 uppercase tracking-wider font-medium mb-1">License</p>
                     <p className="text-gray-300">{s.license}</p>
                   </div>
                   {s.attribution && (
                     <div className="sm:col-span-2">
-                      <p className="text-gray-500 uppercase tracking-wider font-medium mb-1">Attribution</p>
+                      <p className="text-gray-400 uppercase tracking-wider font-medium mb-1">Attribution</p>
                       <p className="text-gray-300">{s.attribution}</p>
                     </div>
                   )}

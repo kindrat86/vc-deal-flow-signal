@@ -41,7 +41,7 @@ export default function BookReadIndex() {
           <p className="text-lg text-gray-300 leading-relaxed">
             {BOOK.subtitle}.
           </p>
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-gray-400">
             By {BOOK.authorName}, {BOOK.authorRole} · {BOOK.edition} ·{" "}
             {BOOK.publishedDate} · ISBN {BOOK.isbn}
           </p>
@@ -88,7 +88,7 @@ export default function BookReadIndex() {
                   </Link>
                   <p className="text-gray-400 text-sm mt-0.5">{c.subtitle}</p>
                 </div>
-                <span className="text-gray-500 text-xs flex-shrink-0">
+                <span className="text-gray-400 text-xs flex-shrink-0">
                   {c.estimatedReadMinutes} min
                 </span>
               </li>

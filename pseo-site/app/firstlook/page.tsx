@@ -555,7 +555,7 @@ export default function FirstLookPage() {
               </li>
             ))}
           </ol>
-          <p className="text-gray-500 text-xs leading-relaxed border-l-2 border-cyan-700/30 pl-3">
+          <p className="text-gray-400 text-xs leading-relaxed border-l-2 border-cyan-700/30 pl-3">
             Weekday delivery. Pay Friday after 18:00 UTC and the timeline
             shifts to Monday 18:00 UTC; the email tells you when to expect
             the inbox land if it&rsquo;s a weekend gap.
@@ -685,7 +685,7 @@ export default function FirstLookPage() {
             into the First Look Pass if you upgrade within 7 days, so this
             is the €0-to-€7 bridge, not a separate purchase.
           </p>
-          <p className="text-gray-500 text-sm leading-relaxed">
+          <p className="text-gray-400 text-sm leading-relaxed">
             Or skip paid entirely and join the free{" "}
             <a
               href="https://gitdealflow.com/#signup"
@@ -708,7 +708,7 @@ export default function FirstLookPage() {
           ))}
         </section>
 
-        <p className="text-gray-500 text-sm border-t border-slate-800 pt-5">
+        <p className="text-gray-400 text-sm border-t border-slate-800 pt-5">
           Not sure if €7 fits or you should just lock the Dashboard?{" "}
           <Link href="/quiz" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">
             Take the 90-second quiz

@@ -82,7 +82,7 @@ export default function QuizPage() {
 
         <QuizForm />
 
-        <p className="text-gray-500 text-xs leading-relaxed border-t border-slate-800 pt-4">
+        <p className="text-gray-400 text-xs leading-relaxed border-t border-slate-800 pt-4">
           The answers stay in your browser — nothing is sent anywhere unless
           you click through to a checkout. No analytics events fire on the
           question screens.

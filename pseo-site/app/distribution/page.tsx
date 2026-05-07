@@ -216,7 +216,7 @@ export default function DistributionPage() {
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
         <header className="space-y-4">
-          <nav aria-label="Breadcrumb" className="text-xs text-gray-500">
+          <nav aria-label="Breadcrumb" className="text-xs text-gray-400">
             <Link href="/" className="hover:text-gray-300">Home</Link>
             <span className="mx-2">/</span>
             <span className="text-gray-400">Distribution</span>
@@ -275,7 +275,7 @@ export default function DistributionPage() {
               <h3 className="text-sm font-semibold text-emerald-300 uppercase tracking-wider">
                 10 forums
               </h3>
-              <p className="text-gray-500 text-[11px] leading-relaxed">
+              <p className="text-gray-400 text-[11px] leading-relaxed">
                 Where the comment threads are alive — engagement-side targets.
               </p>
               <ol className="text-gray-300 text-sm leading-relaxed space-y-1 list-decimal list-inside marker:text-emerald-500">
@@ -296,7 +296,7 @@ export default function DistributionPage() {
               <h3 className="text-sm font-semibold text-emerald-300 uppercase tracking-wider">
                 10 substacks
               </h3>
-              <p className="text-gray-500 text-[11px] leading-relaxed">
+              <p className="text-gray-400 text-[11px] leading-relaxed">
                 Where the long-form reading happens — Dream-100 mirror targets.
               </p>
               <ol className="text-gray-300 text-sm leading-relaxed space-y-1 list-decimal list-inside marker:text-emerald-500">
@@ -317,7 +317,7 @@ export default function DistributionPage() {
               <h3 className="text-sm font-semibold text-emerald-300 uppercase tracking-wider">
                 10 GitHub orgs
               </h3>
-              <p className="text-gray-500 text-[11px] leading-relaxed">
+              <p className="text-gray-400 text-[11px] leading-relaxed">
                 Where the commit logs they read for fun ship from — bait-drop adjacency.
               </p>
               <ol className="text-gray-300 text-sm leading-relaxed space-y-1 list-decimal list-inside marker:text-emerald-500">
@@ -364,7 +364,7 @@ export default function DistributionPage() {
           aria-label="Sections"
           className="rounded-xl border border-slate-800 bg-slate-900/60 p-5 sm:p-6"
         >
-          <p className="text-gray-500 text-[10px] font-semibold uppercase tracking-wider mb-3">
+          <p className="text-gray-400 text-[10px] font-semibold uppercase tracking-wider mb-3">
             8 groups · jump to:
           </p>
           <ul className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-sm">
@@ -421,7 +421,7 @@ export default function DistributionPage() {
                       </Link>
                     )}
                     {c.cadence && (
-                      <span className="text-gray-500 text-[10px] font-medium uppercase tracking-wider">
+                      <span className="text-gray-400 text-[10px] font-medium uppercase tracking-wider">
                         {c.cadence}
                       </span>
                     )}
@@ -472,7 +472,7 @@ export default function DistributionPage() {
           </div>
         </section>
 
-        <p className="text-gray-500 text-xs leading-relaxed border-t border-slate-800 pt-6">
+        <p className="text-gray-400 text-xs leading-relaxed border-t border-slate-800 pt-6">
           Distribution mapped per <em>Traffic Secrets</em> Section 1 (Where
           Are They Hiding) and Section 2 Ch 12 (Conversation Domination), by
           Russell Brunson (2020). Anonymity rule preserved: company-page

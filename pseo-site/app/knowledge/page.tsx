@@ -145,8 +145,8 @@ export default function KnowledgePage() {
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <nav className="text-xs text-gray-500 mb-6" aria-label="Breadcrumb">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <nav className="text-xs text-gray-400 mb-6" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300">
             Home
           </Link>
@@ -215,7 +215,7 @@ export default function KnowledgePage() {
           ))}
         </div>
 
-        <p className="text-xs text-gray-500 text-center mt-12">
+        <p className="text-xs text-gray-400 text-center mt-12">
           Cross-graph entity:{" "}
           <a
             href="https://www.wikidata.org/wiki/Q139376302"
@@ -244,7 +244,7 @@ export default function KnowledgePage() {
             10.2139/ssrn.6606558
           </a>
         </p>
-      </main>
+      </div>
     </>
   );
 }

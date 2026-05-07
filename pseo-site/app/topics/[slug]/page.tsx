@@ -171,7 +171,7 @@ export default async function TopicHubPage({ params }: PageProps) {
       <AgentMirrorLinks path={`/topics/${slug}`} qaCategory="blog" />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <nav className="mb-6 text-sm text-gray-500" aria-label="Breadcrumb">
+        <nav className="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300 transition-colors">
             All Sectors
           </Link>
@@ -197,7 +197,7 @@ export default async function TopicHubPage({ params }: PageProps) {
             {pillar.keywords.map((kw) => (
               <span
                 key={kw}
-                className="text-xs text-gray-500 border border-slate-800 rounded-full px-3 py-1"
+                className="text-xs text-gray-400 border border-slate-800 rounded-full px-3 py-1"
               >
                 {kw}
               </span>
@@ -218,14 +218,14 @@ export default async function TopicHubPage({ params }: PageProps) {
               >
                 <time
                   dateTime={p.date}
-                  className="text-xs text-gray-500 mb-2 block"
+                  className="text-xs text-gray-400 mb-2 block"
                 >
                   {p.date}
                 </time>
                 <h3 className="text-gray-100 font-medium text-base group-hover:text-sky-400 transition-colors mb-2 leading-snug">
                   {p.title}
                 </h3>
-                <p className="text-gray-500 text-sm leading-relaxed line-clamp-3">
+                <p className="text-gray-400 text-sm leading-relaxed line-clamp-3">
                   {p.description}
                 </p>
               </Link>

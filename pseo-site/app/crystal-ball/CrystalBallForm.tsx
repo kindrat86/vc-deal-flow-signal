@@ -144,7 +144,7 @@ export default function CrystalBallForm() {
           GitHub org or repo
         </label>
         <div className="relative">
-          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 font-mono text-sm pointer-events-none">
+          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 font-mono text-sm pointer-events-none">
             github.com/
           </span>
           <input
@@ -180,7 +180,7 @@ export default function CrystalBallForm() {
           className="w-full px-4 py-3 rounded-lg bg-slate-900 border border-slate-700 focus:border-sky-500 focus:outline-none text-gray-100 text-sm placeholder-gray-600 resize-y"
           disabled={status === "submitting"}
         />
-        <p className="text-gray-500 text-xs">
+        <p className="text-gray-400 text-xs">
           {thesis.length}/300. Public on the leaderboard.
         </p>
       </div>
@@ -193,7 +193,7 @@ export default function CrystalBallForm() {
         >
           {status === "submitting" ? "Submitting…" : "Predict — 90-day window"}
         </button>
-        <p className="text-gray-500 text-xs leading-relaxed">
+        <p className="text-gray-400 text-xs leading-relaxed">
           One pick per email per week. We grade post-hoc against public
           funding news.
         </p>

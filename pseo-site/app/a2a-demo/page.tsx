@@ -112,7 +112,7 @@ export default function A2ADemoPage() {
   };
 
   return (
-    <main style={{ maxWidth: 880, margin: "0 auto", padding: "32px 20px 80px" }}>
+    <div style={{ maxWidth: 880, margin: "0 auto", padding: "32px 20px 80px" }}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -363,7 +363,7 @@ Once registered, ask your AI:
           . When it goes live as an A2A skill, that is when this gets really fun.
         </p>
       </section>
-    </main>
+    </div>
   );
 }
 

@@ -300,7 +300,7 @@ export default function HookTestsPage() {
   };
 
   return (
-    <main className="min-h-screen bg-slate-950 text-gray-100">
+    <div className="min-h-screen bg-slate-950 text-gray-100">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -372,7 +372,7 @@ export default function HookTestsPage() {
                     >
                       {meta.label}
                     </span>
-                    <span className="text-xs text-gray-500 tabular-nums">
+                    <span className="text-xs text-gray-400 tabular-nums">
                       {h.date}
                     </span>
                   </div>
@@ -383,23 +383,23 @@ export default function HookTestsPage() {
 
                   <dl className="grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-2 text-xs mb-4">
                     <div>
-                      <dt className="text-gray-500 uppercase tracking-wider">Channel</dt>
+                      <dt className="text-gray-400 uppercase tracking-wider">Channel</dt>
                       <dd className="text-gray-300 mt-0.5">{h.channel}</dd>
                     </div>
                     <div>
-                      <dt className="text-gray-500 uppercase tracking-wider">Surface</dt>
+                      <dt className="text-gray-400 uppercase tracking-wider">Surface</dt>
                       <dd className="text-gray-300 mt-0.5">{h.surface}</dd>
                     </div>
                     <div>
-                      <dt className="text-gray-500 uppercase tracking-wider">Impressions</dt>
+                      <dt className="text-gray-400 uppercase tracking-wider">Impressions</dt>
                       <dd className="text-gray-300 mt-0.5 tabular-nums">{h.impressions}</dd>
                     </div>
                     <div>
-                      <dt className="text-gray-500 uppercase tracking-wider">Clicks</dt>
+                      <dt className="text-gray-400 uppercase tracking-wider">Clicks</dt>
                       <dd className="text-gray-300 mt-0.5 tabular-nums">{h.clicks}</dd>
                     </div>
                     <div className="col-span-2 sm:col-span-1">
-                      <dt className="text-gray-500 uppercase tracking-wider">CTR</dt>
+                      <dt className="text-gray-400 uppercase tracking-wider">CTR</dt>
                       <dd className="text-emerald-300 mt-0.5 tabular-nums font-semibold">
                         {h.ctr}
                       </dd>
@@ -526,6 +526,6 @@ export default function HookTestsPage() {
 
         <AgentMirrorLinks path="/experiments/hooks" />
       </div>
-    </main>
+    </div>
   );
 }

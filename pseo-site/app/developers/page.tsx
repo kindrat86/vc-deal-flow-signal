@@ -163,7 +163,7 @@ export default function DevelopersPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <nav className="mb-6 text-sm text-gray-500" aria-label="Breadcrumb">
+        <nav className="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300 transition-colors">
             All Sectors
           </Link>
@@ -252,7 +252,7 @@ export default function DevelopersPage() {
             </Link>
             <Link
               href="https://glama.ai/mcp/servers"
-              className="text-gray-500 hover:text-gray-300 font-medium transition-colors"
+              className="text-gray-400 hover:text-gray-300 font-medium transition-colors"
             >
               Glama listing
             </Link>

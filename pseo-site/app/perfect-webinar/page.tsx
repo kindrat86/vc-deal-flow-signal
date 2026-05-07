@@ -189,7 +189,7 @@ export default function PerfectWebinarPage() {
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
         {/* HOOK — Brunson rule: hook hard, lead with curiosity. */}
         <header className="space-y-4">
-          <nav aria-label="Breadcrumb" className="text-xs text-gray-500">
+          <nav aria-label="Breadcrumb" className="text-xs text-gray-400">
             <Link href="/" className="hover:text-sky-400 transition-colors">
               ← Home
             </Link>
@@ -678,7 +678,7 @@ export default function PerfectWebinarPage() {
                           </span>
                         )}
                       </p>
-                      <p className="text-gray-500 text-xs whitespace-nowrap">
+                      <p className="text-gray-400 text-xs whitespace-nowrap">
                         Standalone:{" "}
                         <span className="text-emerald-400">
                           {item.standalone}
@@ -724,7 +724,7 @@ export default function PerfectWebinarPage() {
               <span>Founding-member price, locked forever</span>
               <span className="text-sky-400">€9.97/mo</span>
             </div>
-            <p className="text-gray-500 text-xs">
+            <p className="text-gray-400 text-xs">
               That is €119.64/year, or roughly the cost of one missed seed
               deal. The price stays €9.97 for as long as you stay subscribed,
               even after the public launch hike to €49/mo.
@@ -940,7 +940,7 @@ export default function PerfectWebinarPage() {
               Or start with the free digest
             </a>
           </div>
-          <p className="text-gray-500 text-xs pt-2">
+          <p className="text-gray-400 text-xs pt-2">
             Or test on one sector for{" "}
             <Link
               href={FIRST_LOOK_URL}
@@ -1039,7 +1039,7 @@ export default function PerfectWebinarPage() {
               Free digest first
             </a>
           </div>
-          <p className="text-gray-500 text-xs">
+          <p className="text-gray-400 text-xs">
             30-day Signal-or-It&rsquo;s-Free guarantee · Reply REFUND for full refund
           </p>
         </section>

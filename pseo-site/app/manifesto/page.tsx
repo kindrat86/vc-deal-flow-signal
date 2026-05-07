@@ -132,7 +132,7 @@ export default function ManifestoPage() {
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
         <header className="space-y-4">
-          <nav aria-label="Breadcrumb" className="text-xs text-gray-500">
+          <nav aria-label="Breadcrumb" className="text-xs text-gray-400">
             <Link href="/" className="hover:text-gray-300">Home</Link>
             <span className="mx-2">/</span>
             <span className="text-gray-400">Manifesto</span>
@@ -258,7 +258,7 @@ export default function ManifestoPage() {
           </div>
         </section>
 
-        <p className="text-gray-500 text-xs leading-relaxed border-t border-slate-800 pt-6">
+        <p className="text-gray-400 text-xs leading-relaxed border-t border-slate-800 pt-6">
           Movement framing per <em>Expert Secrets</em> Ch 5 (The Cult-ure
           of Your Movement) by Russell Brunson (2017/2020). Used under
           fair-use commentary.

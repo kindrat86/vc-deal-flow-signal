@@ -361,7 +361,7 @@ export default function AgentsLandingPage() {
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-3 leading-tight">
             Every way to reach VC Deal Flow Signal programmatically
           </h1>
-          <p className="text-xs text-gray-500 mb-3 leading-relaxed">
+          <p className="text-xs text-gray-400 mb-3 leading-relaxed">
             <strong className="text-gray-300">VC Deal Flow Signal (GitDealFlow)</strong>{" "}
             — Wikidata{" "}
             <a
@@ -541,7 +541,7 @@ export default function AgentsLandingPage() {
             </div>
           </div>
 
-          <p className="text-gray-500 text-xs leading-relaxed">
+          <p className="text-gray-400 text-xs leading-relaxed">
             The {surfaces.length} surfaces above remain free forever — credits
             only apply to <code className="text-emerald-400 font-mono">get_deep_signal</code>{" "}
             and the <code className="text-emerald-400 font-mono">/api/agent/deep-signal</code>{" "}

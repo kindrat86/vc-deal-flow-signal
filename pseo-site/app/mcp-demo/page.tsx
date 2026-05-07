@@ -106,7 +106,7 @@ export default function McpDemoPage() {
   };
 
   return (
-    <main className="min-h-screen bg-slate-950 text-slate-100">
+    <div className="min-h-screen bg-slate-950 text-slate-100">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -204,6 +204,6 @@ export default function McpDemoPage() {
           </ul>
         </section>
       </div>
-    </main>
+    </div>
   );
 }

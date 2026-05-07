@@ -64,7 +64,7 @@ export default function ScreeningChecklist() {
           All pass = deeper look
         </text>
       </svg>
-      <figcaption className="mt-2 text-center text-gray-500 text-xs">
+      <figcaption className="mt-2 text-center text-gray-400 text-xs">
         A five-check screen that takes 2-5 minutes per startup. If a company
         fails checks 1 or 2, the engineering signal is not there — move on.
       </figcaption>

@@ -169,7 +169,7 @@ export default function ForBuildersPage() {
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
         {/* HOOK */}
         <header className="space-y-4">
-          <nav aria-label="Breadcrumb" className="text-xs text-gray-500">
+          <nav aria-label="Breadcrumb" className="text-xs text-gray-400">
             <Link href="/" className="hover:text-sky-400 transition-colors">
               ← Home
             </Link>
@@ -326,7 +326,7 @@ export default function ForBuildersPage() {
             >
               Buy 100 credits — €19 →
             </a>
-            <p className="text-gray-500 text-xs mt-2">
+            <p className="text-gray-400 text-xs mt-2">
               Stripe-hosted checkout. API key delivered in ~30s. Top up any
               time, no expiration.
             </p>

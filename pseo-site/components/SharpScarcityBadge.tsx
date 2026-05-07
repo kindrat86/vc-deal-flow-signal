@@ -74,7 +74,7 @@ export default function SharpScarcityBadge({
         </p>
         <p className="text-3xl font-bold text-gray-100 tabular-nums">
           {SHARP_2026_TAKEN}
-          <span className="text-gray-500 text-xl"> / {SHARP_2026_CAP}</span>
+          <span className="text-gray-400 text-xl"> / {SHARP_2026_CAP}</span>
         </p>
         <p className="text-gray-400 text-xs">
           spots taken · {SHARP_2026_REMAINING} open · application-gated · 48h response

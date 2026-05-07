@@ -232,7 +232,7 @@ export default function DecadePage() {
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
         <header className="space-y-4">
-          <nav aria-label="Breadcrumb" className="text-xs text-gray-500">
+          <nav aria-label="Breadcrumb" className="text-xs text-gray-400">
             <Link href="/" className="hover:text-gray-300">Home</Link>
             <span className="mx-2">/</span>
             <span className="text-gray-400">A Decade in a Day</span>
@@ -262,7 +262,7 @@ export default function DecadePage() {
           aria-label="Module index"
           className="rounded-xl border border-slate-800 bg-slate-900/60 p-5 sm:p-6"
         >
-          <p className="text-gray-500 text-[10px] font-semibold uppercase tracking-wider mb-3">
+          <p className="text-gray-400 text-[10px] font-semibold uppercase tracking-wider mb-3">
             12 modules · {TOTAL_MIN} minutes · jump to:
           </p>
           <ol className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-sm">
@@ -273,7 +273,7 @@ export default function DecadePage() {
                   className="block px-3 py-1.5 rounded-md hover:bg-slate-800 text-violet-300 hover:text-violet-200 transition-colors"
                 >
                   {m.n}. {m.title}{" "}
-                  <span className="text-gray-500 text-xs ml-1">
+                  <span className="text-gray-400 text-xs ml-1">
                     {m.minutes}m
                   </span>
                 </a>
@@ -359,7 +359,7 @@ export default function DecadePage() {
           </div>
         </section>
 
-        <p className="text-gray-500 text-xs leading-relaxed border-t border-slate-800 pt-6">
+        <p className="text-gray-400 text-xs leading-relaxed border-t border-slate-800 pt-6">
           Curriculum compressed per <em>Expert Secrets</em> Ch 22 (A Decade
           in a Day) by Russell Brunson (2017/2020). Used here under
           fair-use commentary. Not affiliated with ClickFunnels.

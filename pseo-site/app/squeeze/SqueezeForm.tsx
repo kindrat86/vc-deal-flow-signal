@@ -129,7 +129,7 @@ export default function SqueezeForm() {
           disabled={submitting}
           autoComplete="email"
           placeholder="you@yourfund.com"
-          className="block w-full rounded-md border border-slate-700 bg-slate-900 text-gray-100 text-base px-3 py-2.5 placeholder:text-gray-500 focus:border-sky-500 focus:ring-1 focus:ring-sky-500 disabled:opacity-50"
+          className="block w-full rounded-md border border-slate-700 bg-slate-900 text-gray-100 text-base px-3 py-2.5 placeholder:text-gray-400 focus:border-sky-500 focus:ring-1 focus:ring-sky-500 disabled:opacity-50"
         />
       </div>
       <button
@@ -139,7 +139,7 @@ export default function SqueezeForm() {
       >
         {submitting ? "Sending confirmation…" : "Send me Sunday's 5 →"}
       </button>
-      <p className="text-gray-500 text-xs leading-relaxed">
+      <p className="text-gray-400 text-xs leading-relaxed">
         Free forever. One email a week. Unsubscribe with one click. We
         never sell or share your email — see{" "}
         <a

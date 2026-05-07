@@ -53,7 +53,7 @@ export default function PSEOFooterNav({
         Or browse by axis
       </h2>
 
-      <p className="text-xs text-gray-500 mb-2 uppercase tracking-wider">
+      <p className="text-xs text-gray-400 mb-2 uppercase tracking-wider">
         By sector ({period.name})
       </p>
       <div className="flex flex-wrap gap-2 mb-5">
@@ -62,7 +62,7 @@ export default function PSEOFooterNav({
         )}
       </div>
 
-      <p className="text-xs text-gray-500 mb-2 uppercase tracking-wider">
+      <p className="text-xs text-gray-400 mb-2 uppercase tracking-wider">
         By signal type
       </p>
       <div className="flex flex-wrap gap-2 mb-5">
@@ -71,7 +71,7 @@ export default function PSEOFooterNav({
         )}
       </div>
 
-      <p className="text-xs text-gray-500 mb-2 uppercase tracking-wider">
+      <p className="text-xs text-gray-400 mb-2 uppercase tracking-wider">
         By stage
       </p>
       <div className="flex flex-wrap gap-2 mb-5">
@@ -80,7 +80,7 @@ export default function PSEOFooterNav({
         )}
       </div>
 
-      <p className="text-xs text-gray-500 mb-2 uppercase tracking-wider">
+      <p className="text-xs text-gray-400 mb-2 uppercase tracking-wider">
         Other entry points
       </p>
       <div className="flex flex-wrap gap-2">

@@ -101,7 +101,7 @@ export default function CrossAxisNav({ sector, period, snapshot }: CrossAxisNavP
 
       {topSignals.length > 0 && (
         <div className="mt-4">
-          <p className="text-xs text-gray-500 mb-2 uppercase tracking-wider">
+          <p className="text-xs text-gray-400 mb-2 uppercase tracking-wider">
             By signal type in this sector
           </p>
           <div className="flex flex-wrap gap-2">
@@ -124,7 +124,7 @@ export default function CrossAxisNav({ sector, period, snapshot }: CrossAxisNavP
 
       {stageHits.length > 0 && (
         <div className="mt-4">
-          <p className="text-xs text-gray-500 mb-2 uppercase tracking-wider">
+          <p className="text-xs text-gray-400 mb-2 uppercase tracking-wider">
             By stage
           </p>
           <div className="flex flex-wrap gap-2">

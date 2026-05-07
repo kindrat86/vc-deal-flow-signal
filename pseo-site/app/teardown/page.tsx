@@ -215,7 +215,7 @@ export default function TeardownPage() {
               repos in 9 days; first PRs from a former Anthropic eng.
               Read: pre-fundraise hardening, expect press 4-6 weeks out.
             </p>
-            <p className="text-gray-500 text-xs italic">
+            <p className="text-gray-400 text-xs italic">
               Real format. Real numbers when you name a real org.
             </p>
           </div>
@@ -240,7 +240,7 @@ export default function TeardownPage() {
           >
             Buy the Teardown — €1 <span aria-hidden="true">→</span>
           </a>
-          <p className="text-gray-500 text-xs">
+          <p className="text-gray-400 text-xs">
             Already know you want the full sector deep dive?{" "}
             <Link
               href="/firstlook"
@@ -282,7 +282,7 @@ export default function TeardownPage() {
           className="border-l-2 border-slate-700 pl-4 py-1 space-y-1"
           aria-label="Downsell to free list"
         >
-          <p className="text-gray-500 text-[10px] sm:text-xs font-semibold uppercase tracking-wider">
+          <p className="text-gray-400 text-[10px] sm:text-xs font-semibold uppercase tracking-wider">
             Not ready for €1?
           </p>
           <p className="text-gray-400 text-sm leading-relaxed">
@@ -311,7 +311,7 @@ export default function TeardownPage() {
           ))}
         </section>
 
-        <p className="text-gray-500 text-sm border-t border-slate-800 pt-5">
+        <p className="text-gray-400 text-sm border-t border-slate-800 pt-5">
           Want the full pricing ladder?{" "}
           <Link
             href="/pricing"

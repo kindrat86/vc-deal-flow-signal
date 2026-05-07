@@ -460,7 +460,7 @@ Retrieved from https://signals.gitdealflow.com/research`}
         </section>
 
         <section className="mb-10 rounded-lg border border-slate-800 bg-slate-900 p-6">
-          <p className="text-gray-500 text-xs uppercase tracking-wider font-semibold mb-3">
+          <p className="text-gray-400 text-xs uppercase tracking-wider font-semibold mb-3">
             Disambiguation note
           </p>
           <p className="text-gray-300 text-sm leading-relaxed">

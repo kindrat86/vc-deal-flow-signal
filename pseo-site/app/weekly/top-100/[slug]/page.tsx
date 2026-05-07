@@ -169,7 +169,7 @@ export default async function Top100WeeklyPage({ params }: PageProps) {
       />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <nav className="mb-6 text-sm text-gray-500" aria-label="Breadcrumb">
+        <nav className="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300 transition-colors">
             All Sectors
           </Link>
@@ -188,7 +188,7 @@ export default async function Top100WeeklyPage({ params }: PageProps) {
           <span className="text-gray-400">{label}</span>
         </nav>
 
-        <p className="text-gray-500 text-xs mb-2">{dateIso}</p>
+        <p className="text-gray-400 text-xs mb-2">{dateIso}</p>
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-4 leading-tight">
           Top 100 GitHub-Signal Startups — {label}
         </h1>
@@ -228,7 +228,7 @@ export default async function Top100WeeklyPage({ params }: PageProps) {
               className="rounded-lg border border-slate-800 bg-slate-900 p-3 hover:border-slate-600 transition-colors"
             >
               <p className="text-gray-200 text-sm font-medium">{s.name}</p>
-              <p className="text-gray-500 text-xs mt-1">
+              <p className="text-gray-400 text-xs mt-1">
                 {s.count} in top-100 · top: {s.topRow?.name}
               </p>
             </Link>
@@ -255,13 +255,13 @@ export default async function Top100WeeklyPage({ params }: PageProps) {
               >
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0 w-12 text-right">
-                    <p className="text-gray-500 text-xs">rank</p>
+                    <p className="text-gray-400 text-xs">rank</p>
                     <p className="text-gray-100 font-bold text-lg leading-none">
                       {r.rank}
                     </p>
                   </div>
                   <div className="flex-shrink-0 w-16 text-right">
-                    <p className="text-gray-500 text-xs">score</p>
+                    <p className="text-gray-400 text-xs">score</p>
                     <p className="text-sky-300 font-bold text-lg leading-none">
                       {r.signalScore}
                     </p>
@@ -274,7 +274,7 @@ export default async function Top100WeeklyPage({ params }: PageProps) {
                       >
                         {r.name}
                       </Link>
-                      <span className="text-xs text-gray-500">
+                      <span className="text-xs text-gray-400">
                         {r.sectorName}
                         {r.alsoInSectors && r.alsoInSectors.length > 0 && (
                           <>
@@ -289,7 +289,7 @@ export default async function Top100WeeklyPage({ params }: PageProps) {
                         {r.description}
                       </p>
                     )}
-                    <p className="text-gray-500 text-xs mt-2">{subline}</p>
+                    <p className="text-gray-400 text-xs mt-2">{subline}</p>
                     <div className="mt-2">
                       <ScoreBar score={r.signalScore} max={max} />
                     </div>
@@ -345,7 +345,7 @@ export default async function Top100WeeklyPage({ params }: PageProps) {
                 {snap.substackUrl.replace("https://", "")}
               </a>
             </p>
-            <p className="text-gray-500 text-xs">
+            <p className="text-gray-400 text-xs">
               Same data, same canonical (this page). The Substack version is
               free, mirrors here every Monday.
             </p>

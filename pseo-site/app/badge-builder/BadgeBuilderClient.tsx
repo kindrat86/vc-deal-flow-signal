@@ -228,7 +228,7 @@ export default function BadgeBuilderClient() {
                 onClick={() => trackTweetIntent("scout", handle.trim())}
                 label="Tweet my Scout Score"
               />
-              <span className="text-[10px] text-gray-500">
+              <span className="text-[10px] text-gray-400">
                 Pre-filled tweet · opens X compose
               </span>
             </div>
@@ -317,7 +317,7 @@ export default function BadgeBuilderClient() {
                 onClick={() => trackTweetIntent("momentum", `${org.trim()}/${repo.trim()}`)}
                 label="Tweet this momentum"
               />
-              <span className="text-[10px] text-gray-500">
+              <span className="text-[10px] text-gray-400">
                 Pre-filled tweet · opens X compose
               </span>
             </div>

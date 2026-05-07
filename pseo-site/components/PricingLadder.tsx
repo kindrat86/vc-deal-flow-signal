@@ -91,7 +91,7 @@ export default function PricingLadder() {
         <h2 className="text-gray-100 font-semibold text-2xl">
           Simple pricing. Free forever for the curious.
         </h2>
-        <p className="text-gray-500 text-xs">
+        <p className="text-gray-400 text-xs">
           Beta pricing — Dashboard goes to €49/mo and Insider to €197/mo after
           launch. Founders keep their price forever.
         </p>
@@ -137,7 +137,7 @@ export default function PricingLadder() {
                 <span className="text-gray-100 font-bold text-3xl tracking-tight">
                   {t.price}
                 </span>
-                <span className="text-gray-500 text-sm ml-1.5">{t.cadence}</span>
+                <span className="text-gray-400 text-sm ml-1.5">{t.cadence}</span>
               </div>
               <p className="text-gray-300 text-sm font-medium mb-4 leading-snug">
                 {t.pitch}
@@ -166,7 +166,7 @@ export default function PricingLadder() {
         })}
       </div>
 
-      <p className="text-gray-500 text-xs mt-4">
+      <p className="text-gray-400 text-xs mt-4">
         Or try the{" "}
         <Link href="https://gitdealflow.com/firstlook/sample" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">
           €7 First Look Pass

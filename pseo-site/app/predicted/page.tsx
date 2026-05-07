@@ -54,7 +54,7 @@ const OUTCOME_TONE: Record<NonNullable<PredictionOutcome>, string> = {
   other_milestone: "text-amber-300 border-amber-500/40 bg-amber-500/10",
   no_event: "text-gray-400 border-slate-700 bg-slate-800",
   shutdown: "text-rose-400 border-rose-500/40 bg-rose-500/10",
-  excluded: "text-gray-500 border-slate-700 bg-slate-900",
+  excluded: "text-gray-400 border-slate-700 bg-slate-900",
 };
 
 export default function PredictedPage() {
@@ -155,7 +155,7 @@ export default function PredictedPage() {
       />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <nav className="mb-6 text-sm text-gray-500" aria-label="Breadcrumb">
+        <nav className="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300 transition-colors">
             All Sectors
           </Link>
@@ -183,7 +183,7 @@ export default function PredictedPage() {
             and product-launch news at the 60-day and 90-day window. We keep
             score in public.
           </p>
-          <p className="text-gray-500 text-sm mt-3 max-w-2xl">
+          <p className="text-gray-400 text-sm mt-3 max-w-2xl">
             Methodology:{" "}
             <Link
               href="/methodology"
@@ -246,14 +246,14 @@ export default function PredictedPage() {
                   <div className="text-xs text-gray-300 mt-1.5 uppercase tracking-wider font-medium">
                     Hit rate
                   </div>
-                  <div className="text-[11px] text-gray-500">
+                  <div className="text-[11px] text-gray-400">
                     Raise · acquire · IPO
                   </div>
                 </div>
                 <div>
                   <div className="text-4xl sm:text-5xl font-bold text-gray-100 tabular-nums tracking-tight">
                     {score.raised + score.acquired + score.ipo}
-                    <span className="text-2xl sm:text-3xl text-gray-500">
+                    <span className="text-2xl sm:text-3xl text-gray-400">
                       {" "}/ {score.picksGraded}
                     </span>
                   </div>
@@ -455,7 +455,7 @@ export default function PredictedPage() {
                     </Link>
                   </div>
                   {p.outcomeNotes ? (
-                    <p className="text-gray-500 text-xs italic mt-3">
+                    <p className="text-gray-400 text-xs italic mt-3">
                       Outcome note: {p.outcomeNotes}
                       {p.outcomeAt
                         ? ` (recorded ${fmtLongDate(p.outcomeAt)})`
@@ -521,7 +521,7 @@ export default function PredictedPage() {
           </div>
         </div>
 
-        <p className="mt-8 text-xs text-gray-500 text-center">
+        <p className="mt-8 text-xs text-gray-400 text-center">
           This is a data-driven engineering activity watchlist generated from
           public GitHub data — not investment advice. Naming a company
           indicates its observed engineering activity matches the patterns

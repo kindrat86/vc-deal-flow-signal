@@ -114,8 +114,8 @@ export default function WikipediaPage() {
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <nav className="text-xs text-gray-500 mb-6" aria-label="Breadcrumb">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <nav className="text-xs text-gray-400 mb-6" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300">
             Home
           </Link>
@@ -170,13 +170,13 @@ export default function WikipediaPage() {
                 <p className="text-sm text-gray-400 leading-relaxed mb-3">
                   {s.note}
                 </p>
-                <p className="text-xs text-gray-500 mb-1">
+                <p className="text-xs text-gray-400 mb-1">
                   Wikipedia template (copy-paste):
                 </p>
                 <pre className="rounded-md bg-slate-950 border border-slate-800 px-4 py-3 text-xs font-mono text-gray-200 overflow-x-auto whitespace-pre-wrap break-all">
                   <code>{s.cite}</code>
                 </pre>
-                <p className="text-xs text-gray-500 mt-3">
+                <p className="text-xs text-gray-400 mt-3">
                   <a
                     href={s.apiHref}
                     className="text-sky-400 hover:text-sky-300"
@@ -219,7 +219,7 @@ export default function WikipediaPage() {
                         {f.title}
                       </Link>
                     </td>
-                    <td className="px-4 py-3 text-xs font-mono text-gray-500 w-1/6">
+                    <td className="px-4 py-3 text-xs font-mono text-gray-400 w-1/6">
                       {f.section}
                     </td>
                     <td className="px-4 py-3 w-1/2">
@@ -285,7 +285,7 @@ export default function WikipediaPage() {
               </li>
             ))}
           </ul>
-          <p className="text-xs text-gray-500 mt-3">
+          <p className="text-xs text-gray-400 mt-3">
             Replace <code className="font-mono text-sky-300">paper</code>{" "}
             with <code className="font-mono text-sky-300">dataset</code> or
             any{" "}
@@ -299,7 +299,7 @@ export default function WikipediaPage() {
           </p>
         </section>
 
-        <p className="text-xs text-gray-500 text-center mt-10">
+        <p className="text-xs text-gray-400 text-center mt-10">
           See also:{" "}
           <Link href="/citation-guide" className="hover:text-gray-300">
             Citation guide
@@ -317,7 +317,7 @@ export default function WikipediaPage() {
             Press kit
           </Link>
         </p>
-      </main>
+      </div>
     </>
   );
 }

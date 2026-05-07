@@ -134,8 +134,8 @@ export default function EmbedPage() {
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <nav className="text-xs text-gray-500 mb-6" aria-label="Breadcrumb">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <nav className="text-xs text-gray-400 mb-6" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300">
             Home
           </Link>
@@ -184,15 +184,15 @@ export default function EmbedPage() {
                         />
                       </div>
                     ) : null}
-                    <p className="text-xs text-gray-500 mb-2 mt-3">URL pattern</p>
+                    <p className="text-xs text-gray-400 mb-2 mt-3">URL pattern</p>
                     <pre className="rounded-md bg-slate-950 border border-slate-800 px-4 py-3 text-xs font-mono text-gray-200 overflow-x-auto mb-3">
                       <code>{e.href}</code>
                     </pre>
-                    <p className="text-xs text-gray-500 mb-2">Example</p>
+                    <p className="text-xs text-gray-400 mb-2">Example</p>
                     <pre className="rounded-md bg-slate-950 border border-slate-800 px-4 py-3 text-xs font-mono text-sky-300 overflow-x-auto mb-3">
                       <code>{e.example}</code>
                     </pre>
-                    <p className="text-xs text-gray-500 mb-2">Copy-paste</p>
+                    <p className="text-xs text-gray-400 mb-2">Copy-paste</p>
                     <pre className="rounded-md bg-slate-950 border border-slate-800 px-4 py-3 text-xs font-mono text-gray-200 overflow-x-auto whitespace-pre-wrap">
                       <code>{e.copy}</code>
                     </pre>
@@ -235,7 +235,7 @@ export default function EmbedPage() {
           </ul>
         </section>
 
-        <p className="text-xs text-gray-500 text-center">
+        <p className="text-xs text-gray-400 text-center">
           See also:{" "}
           <Link href="/badge-builder" className="hover:text-gray-300">
             Badge builder UI
@@ -253,7 +253,7 @@ export default function EmbedPage() {
             Citation guide
           </Link>
         </p>
-      </main>
+      </div>
     </>
   );
 }

@@ -38,7 +38,7 @@ export default function TopicsIndexPage() {
       />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <nav className="mb-6 text-sm text-gray-500" aria-label="Breadcrumb">
+        <nav className="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300 transition-colors">
             All Sectors
           </Link>
@@ -67,7 +67,7 @@ export default function TopicsIndexPage() {
               <h2 className="text-gray-100 font-medium text-lg group-hover:text-sky-400 transition-colors mb-2">
                 {pillar.name}
               </h2>
-              <p className="text-gray-500 text-sm leading-relaxed mb-3 line-clamp-3">
+              <p className="text-gray-400 text-sm leading-relaxed mb-3 line-clamp-3">
                 {pillar.description}
               </p>
               <p className="text-xs text-sky-500">

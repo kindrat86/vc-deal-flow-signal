@@ -128,7 +128,7 @@ export default async function MarketsIndexPage() {
                   <h2 className="text-xl font-semibold text-gray-100">
                     {m.shortName}
                   </h2>
-                  <span className="text-xs text-gray-500">
+                  <span className="text-xs text-gray-400">
                     Resolves {m.resolvesOn}
                   </span>
                 </div>
@@ -139,10 +139,10 @@ export default async function MarketsIndexPage() {
                   <span className="px-2 py-0.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-300">
                     Top: {top.displayName} {pctLabel(top.impliedProbability)}
                   </span>
-                  <span className="text-gray-500">
+                  <span className="text-gray-400">
                     {m.candidates.length} candidates
                   </span>
-                  <span className="text-gray-500">·</span>
+                  <span className="text-gray-400">·</span>
                   <span className="text-sky-400">View market →</span>
                 </div>
               </Link>
@@ -177,7 +177,7 @@ export default async function MarketsIndexPage() {
               they go live.
             </li>
           </ul>
-          <p className="text-xs text-gray-500 mt-4">
+          <p className="text-xs text-gray-400 mt-4">
             Methodology:{" "}
             <Link
               href="/markets/methodology"

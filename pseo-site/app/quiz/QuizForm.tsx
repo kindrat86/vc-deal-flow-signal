@@ -190,7 +190,7 @@ export default function QuizForm() {
             setGate("idle");
             setGateError(null);
           }}
-          className="text-gray-500 hover:text-gray-300 text-xs underline decoration-dotted underline-offset-4 mt-3"
+          className="text-gray-400 hover:text-gray-300 text-xs underline decoration-dotted underline-offset-4 mt-3"
         >
           Retake the quiz
         </button>
@@ -241,7 +241,7 @@ export default function QuizForm() {
             </p>
           ) : null}
         </form>
-        <p className="text-gray-500 text-xs leading-relaxed border-t border-slate-800 pt-3">
+        <p className="text-gray-400 text-xs leading-relaxed border-t border-slate-800 pt-3">
           Don&rsquo;t want to share an email?{" "}
           <button
             type="button"
@@ -267,7 +267,7 @@ export default function QuizForm() {
   return (
     <div className="space-y-5">
       <div className="flex items-center justify-between">
-        <p className="text-gray-500 text-xs font-medium uppercase tracking-wider">
+        <p className="text-gray-400 text-xs font-medium uppercase tracking-wider">
           Question {step + 1} of {QUESTIONS.length}
         </p>
         <div className="flex gap-1.5" aria-hidden="true">
@@ -301,7 +301,7 @@ export default function QuizForm() {
         <button
           type="button"
           onClick={() => setAnswers((a) => a.slice(0, -1))}
-          className="text-gray-500 hover:text-gray-300 text-xs underline decoration-dotted underline-offset-4"
+          className="text-gray-400 hover:text-gray-300 text-xs underline decoration-dotted underline-offset-4"
         >
           ← Previous question
         </button>

@@ -77,7 +77,7 @@ export default function LaunchIndex() {
 
         {closed.length > 0 && (
           <section className="space-y-4">
-            <h2 className="text-gray-500 text-xs font-semibold uppercase tracking-wider">
+            <h2 className="text-gray-400 text-xs font-semibold uppercase tracking-wider">
               Archive
             </h2>
             <div className="grid gap-3">
@@ -87,7 +87,7 @@ export default function LaunchIndex() {
                   href={`/launch/${l.slug}`}
                   className="block rounded-lg border border-slate-800 bg-slate-900/40 p-4 hover:border-slate-600 transition-colors"
                 >
-                  <p className="text-gray-500 text-[11px] font-semibold uppercase tracking-wider mb-1">
+                  <p className="text-gray-400 text-[11px] font-semibold uppercase tracking-wider mb-1">
                     Closed
                   </p>
                   <h3 className="text-gray-100 font-semibold text-base leading-snug">
@@ -102,7 +102,7 @@ export default function LaunchIndex() {
           </section>
         )}
 
-        <p className="text-gray-500 text-sm border-t border-slate-800 pt-5">
+        <p className="text-gray-400 text-sm border-t border-slate-800 pt-5">
           See every door at{" "}
           <Link
             href="/funnels"

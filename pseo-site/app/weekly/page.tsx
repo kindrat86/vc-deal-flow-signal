@@ -55,7 +55,7 @@ export default function WeeklyArchivePage() {
       />
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <nav className="mb-6 text-sm text-gray-500" aria-label="Breadcrumb">
+        <nav className="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300 transition-colors">
             All Sectors
           </Link>
@@ -75,7 +75,7 @@ export default function WeeklyArchivePage() {
         </p>
 
         {weeklyPosts.length === 0 ? (
-          <p className="text-gray-500 text-sm">
+          <p className="text-gray-400 text-sm">
             No weekly reports published yet. The first report will appear after
             the next Monday data refresh.
           </p>
@@ -87,7 +87,7 @@ export default function WeeklyArchivePage() {
                 href={`/blog/${post.slug}`}
                 className="group block rounded-lg border border-slate-800 bg-slate-900 p-5 hover:border-slate-600 hover:bg-slate-800/60 transition-all"
               >
-                <p className="text-gray-500 text-xs mb-2">{post.date}</p>
+                <p className="text-gray-400 text-xs mb-2">{post.date}</p>
                 <h2 className="text-gray-100 font-semibold text-base mb-2 group-hover:text-sky-400 transition-colors">
                   {post.title}
                 </h2>

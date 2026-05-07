@@ -181,7 +181,7 @@ export default function RoadmapPage() {
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
         <header className="space-y-4">
-          <nav aria-label="Breadcrumb" className="text-xs text-gray-500">
+          <nav aria-label="Breadcrumb" className="text-xs text-gray-400">
             <Link href="/" className="hover:text-gray-300">Home</Link>
             <span className="mx-2">/</span>
             <span className="text-gray-400">Roadmap</span>
@@ -209,7 +209,7 @@ export default function RoadmapPage() {
           aria-label="Sections"
           className="rounded-xl border border-slate-800 bg-slate-900/60 p-5 sm:p-6"
         >
-          <p className="text-gray-500 text-[10px] font-semibold uppercase tracking-wider mb-3">
+          <p className="text-gray-400 text-[10px] font-semibold uppercase tracking-wider mb-3">
             Five lanes · jump to:
           </p>
           <ul className="grid grid-cols-2 sm:grid-cols-5 gap-2 text-sm">
@@ -291,7 +291,7 @@ export default function RoadmapPage() {
           </div>
         </section>
 
-        <p className="text-gray-500 text-xs leading-relaxed border-t border-slate-800 pt-6">
+        <p className="text-gray-400 text-xs leading-relaxed border-t border-slate-800 pt-6">
           Public roadmap per <em>Traffic Secrets</em> Ch 19 (My Pre-Launch)
           + <em>Expert Secrets</em> Ch 18 (Test Your Webinar Live —
           transparency variant) by Russell Brunson. Used under fair-use

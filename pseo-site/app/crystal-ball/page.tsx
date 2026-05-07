@@ -189,7 +189,7 @@ export default function CrystalBallPage() {
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
         <header className="space-y-4">
-          <nav aria-label="Breadcrumb" className="text-xs text-gray-500">
+          <nav aria-label="Breadcrumb" className="text-xs text-gray-400">
             <Link href="/" className="hover:text-sky-400 transition-colors">
               ← Home
             </Link>
@@ -259,7 +259,7 @@ export default function CrystalBallPage() {
             One pick. Sixty seconds. Permanent record.
           </h2>
           <CrystalBallForm />
-          <p className="text-gray-500 text-xs">
+          <p className="text-gray-400 text-xs">
             Submissions are manually reviewed within 24 hours to keep spam
             out. Once accepted, your pick appears with a timestamped permalink
             and goes into the 90-day grading queue.
@@ -272,7 +272,7 @@ export default function CrystalBallPage() {
             <h2 className="text-2xl font-bold text-gray-100">
               Founding cohort — first picks on record
             </h2>
-            <p className="text-gray-500 text-xs">
+            <p className="text-gray-400 text-xs">
               Sorted by submission date. Manually graded as outcomes resolve.
             </p>
           </div>
@@ -282,7 +282,7 @@ export default function CrystalBallPage() {
                 key={`${pick.handle}-${pick.pick}`}
                 className="flex flex-col sm:flex-row sm:items-baseline gap-y-1 sm:gap-x-4 px-4 py-3 bg-slate-900/50 hover:bg-slate-900/80 transition-colors"
               >
-                <span className="text-gray-500 font-mono text-sm shrink-0 sm:w-8">
+                <span className="text-gray-400 font-mono text-sm shrink-0 sm:w-8">
                   #{i + 1}
                 </span>
                 <div className="flex-1 min-w-0">
@@ -299,7 +299,7 @@ export default function CrystalBallPage() {
                   >
                     {STATUS_LABEL[pick.status]}
                   </span>
-                  <p className="text-gray-500 text-xs">{pick.outcome}</p>
+                  <p className="text-gray-400 text-xs">{pick.outcome}</p>
                 </div>
               </li>
             ))}

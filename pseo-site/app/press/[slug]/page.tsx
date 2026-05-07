@@ -109,8 +109,8 @@ export default async function PressReleasePage({ params }: PageProps) {
       />
       <AgentMirrorLinks path={`/press/${slug}`} />
 
-      <main className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
-        <nav className="text-xs text-gray-500" aria-label="Breadcrumb">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
+        <nav className="text-xs text-gray-400" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300">
             Home
           </Link>
@@ -123,7 +123,7 @@ export default async function PressReleasePage({ params }: PageProps) {
         </nav>
 
         <header className="space-y-4 border-b border-slate-800 pb-6">
-          <p className="text-gray-500 text-xs font-mono uppercase tracking-wider">
+          <p className="text-gray-400 text-xs font-mono uppercase tracking-wider">
             {r.dateline} — {r.date}
           </p>
           <p className="text-emerald-400 text-xs font-semibold uppercase tracking-wider">
@@ -146,14 +146,14 @@ export default async function PressReleasePage({ params }: PageProps) {
           ))}
           <blockquote className="border-l-4 border-emerald-500/60 bg-slate-900/40 pl-5 py-3 my-6 italic text-gray-200">
             {r.quote}
-            <footer className="text-gray-500 text-sm not-italic mt-2">
+            <footer className="text-gray-400 text-sm not-italic mt-2">
               — The Data Nerd, founder of VC Deal Flow Signal
             </footer>
           </blockquote>
         </article>
 
         <section className="rounded-lg border border-slate-800 bg-slate-900/40 p-5 space-y-3">
-          <p className="text-gray-500 text-xs font-semibold uppercase tracking-wider">
+          <p className="text-gray-400 text-xs font-semibold uppercase tracking-wider">
             About VC Deal Flow Signal
           </p>
           <p className="text-gray-300 text-sm leading-relaxed">
@@ -162,7 +162,7 @@ export default async function PressReleasePage({ params }: PageProps) {
         </section>
 
         <section className="rounded-lg border border-slate-800 bg-slate-900/40 p-5 space-y-3">
-          <p className="text-gray-500 text-xs font-semibold uppercase tracking-wider">
+          <p className="text-gray-400 text-xs font-semibold uppercase tracking-wider">
             Press contact
           </p>
           <p className="text-gray-300 text-sm leading-relaxed">
@@ -180,12 +180,12 @@ export default async function PressReleasePage({ params }: PageProps) {
         </section>
 
         <section className="rounded-lg border border-slate-800 bg-slate-900/40 p-5 space-y-3">
-          <p className="text-gray-500 text-xs font-semibold uppercase tracking-wider">
+          <p className="text-gray-400 text-xs font-semibold uppercase tracking-wider">
             Wire metadata (for the desk filing this)
           </p>
           <div className="grid sm:grid-cols-2 gap-3 text-sm text-gray-300">
             <div>
-              <p className="text-gray-500 text-xs uppercase tracking-wider mb-1">
+              <p className="text-gray-400 text-xs uppercase tracking-wider mb-1">
                 Categories
               </p>
               <ul className="space-y-1">
@@ -195,7 +195,7 @@ export default async function PressReleasePage({ params }: PageProps) {
               </ul>
             </div>
             <div>
-              <p className="text-gray-500 text-xs uppercase tracking-wider mb-1">
+              <p className="text-gray-400 text-xs uppercase tracking-wider mb-1">
                 Suggested desks
               </p>
               <ul className="space-y-1 text-xs">
@@ -207,7 +207,7 @@ export default async function PressReleasePage({ params }: PageProps) {
           </div>
         </section>
 
-        <p className="text-gray-500 text-sm border-t border-slate-800 pt-5">
+        <p className="text-gray-400 text-sm border-t border-slate-800 pt-5">
           Back to the{" "}
           <Link
             href="/press"
@@ -224,7 +224,7 @@ export default async function PressReleasePage({ params }: PageProps) {
           </Link>
           .
         </p>
-      </main>
+      </div>
     </>
   );
 }

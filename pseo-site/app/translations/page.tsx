@@ -57,8 +57,8 @@ export default function TranslationsPage() {
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <nav className="text-xs text-gray-500 mb-6" aria-label="Breadcrumb">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <nav className="text-xs text-gray-400 mb-6" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300">
             Home
           </Link>
@@ -97,11 +97,11 @@ export default function TranslationsPage() {
                     className="text-white font-medium"
                     dangerouslySetInnerHTML={{ __html: l.nativeName }}
                   />
-                  <p className="text-xs text-gray-500 mt-1">
+                  <p className="text-xs text-gray-400 mt-1">
                     {l.display} · /{l.code}
                   </p>
                   <p
-                    className="text-xs text-gray-500 mt-1"
+                    className="text-xs text-gray-400 mt-1"
                     dangerouslySetInnerHTML={{ __html: l.region }}
                   />
                 </Link>
@@ -114,7 +114,7 @@ export default function TranslationsPage() {
                 className="block rounded-lg border border-slate-800 bg-slate-900/40 hover:bg-slate-900/60 p-4"
               >
                 <p className="text-white font-medium">English (canonical)</p>
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs text-gray-400 mt-1">
                   en-US · / · all product pages
                 </p>
               </Link>
@@ -173,7 +173,7 @@ export default function TranslationsPage() {
           </ul>
         </section>
 
-        <p className="text-xs text-gray-500 text-center">
+        <p className="text-xs text-gray-400 text-center">
           See also:{" "}
           <Link href="/standards" className="hover:text-gray-300">
             Standards
@@ -187,7 +187,7 @@ export default function TranslationsPage() {
             Press kit
           </Link>
         </p>
-      </main>
+      </div>
     </>
   );
 }

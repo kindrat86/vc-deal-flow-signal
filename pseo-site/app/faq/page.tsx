@@ -140,7 +140,7 @@ export default function FAQPage() {
       />
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <nav className="mb-6 text-sm text-gray-500" aria-label="Breadcrumb">
+        <nav className="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300 transition-colors">
             All Sectors
           </Link>
@@ -159,7 +159,7 @@ export default function FAQPage() {
         </p>
 
         {/* Quick stats for AI extraction */}
-        <div className="mb-10 flex flex-wrap gap-4 text-xs text-gray-500">
+        <div className="mb-10 flex flex-wrap gap-4 text-xs text-gray-400">
           <span>{activeSectors.length} sectors tracked</span>
           <span className="text-slate-700">|</span>
           <span>{allFaqs.length} questions answered</span>
