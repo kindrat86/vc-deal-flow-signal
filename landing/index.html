@@ -402,7 +402,7 @@
     html { scroll-padding-top: 6rem; }
     @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
     /* Signup-form anchor: lands viewport on the qualifier+email block, not the section header */
-    #signup-anchor { display: block; height: 0; scroll-margin-top: 5rem; }
+    #signup { display: block; height: 0; scroll-margin-top: 5rem; }
     /* Radio-card qualifier (mobile-first, replaces native <select>) */
     .qual-grid { display: grid; grid-template-columns: 1fr; gap: 0.625rem; }
     @media (min-width: 640px) { .qual-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; } }
@@ -1128,7 +1128,7 @@
       </div>
     </div>
 
-    <span id="signup-anchor" aria-hidden="true"></span>
+    <span id="signup" aria-hidden="true"></span>
     <form id="signup-form" class="max-w-lg mx-auto">
       <fieldset class="border-0 p-0 m-0 mb-4">
         <legend class="block text-gray-300 text-sm font-semibold mb-3 px-0">
