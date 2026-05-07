@@ -172,6 +172,7 @@ const SURFACES: Surface[] = [
   { name: "llms-index-wellknown", url: `${SITE}/.well-known/llms.txt`, format: "text/plain", category: "retrieval", description: "Well-known alias for /llms.txt" },
   { name: "llms-full", url: `${SITE}/llms-full.txt`, format: "text/plain", category: "retrieval", description: "llms-full.txt — extended canonical content for retrieval pipelines" },
   { name: "llms-full-wellknown", url: `${SITE}/.well-known/llms-full.txt`, format: "text/plain", category: "retrieval", description: "Well-known alias for /llms-full.txt" },
+  { name: "llms-search-manifest", url: `${SITE}/llms-search.json`, format: "application/json", category: "retrieval", description: "llms-search.json — flat retrieval manifest of every canonical page (JSON twin of llms.txt; { url, title, summary, contentType, tags, lastModified })", endpoints: [{ method: "GET", path: "/llms-search.json", description: "Returns _meta + count + items[] flat array of every canonical page; use this when ingesting the corpus once for retrieval" }] },
   { name: "qa-jsonl", url: `${SITE}/qa.jsonl`, format: "application/x-ndjson", category: "retrieval", description: "Q&A NDJSON corpus — citation-ready, RAG-friendly" },
   { name: "qa-jsonl-wellknown", url: `${SITE}/.well-known/qa.jsonl`, format: "application/x-ndjson", category: "retrieval", description: "Well-known alias for /qa.jsonl" },
   { name: "markdown-mirror", url: `${SITE}/md/`, format: "text/markdown", category: "retrieval", description: "Markdown mirror — every page available at /md/{path}" },
