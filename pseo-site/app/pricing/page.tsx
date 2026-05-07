@@ -378,6 +378,17 @@ export default function PricingPage() {
           availability: "https://schema.org/InStock",
           offers,
         },
+        award: [
+          "Indexed by SSRN as abstract id 6606558",
+          "Indexed by OpenAlex as W7154916891",
+          "Mirrored on Zenodo with persistent DOI",
+        ],
+        subjectOf: { "@id": "https://signals.gitdealflow.com/wins#dataset" },
+        isBasedOn: {
+          "@type": "CreativeWork",
+          "@id": "https://ssrn.com/abstract=6606558",
+          name: "SSRN preprint on GitHub engineering-acceleration signals as a leading indicator of venture-stage outcomes",
+        },
         sameAs: [
           "https://www.wikidata.org/wiki/Q139376302",
           "https://ssrn.com/abstract=6606558",
