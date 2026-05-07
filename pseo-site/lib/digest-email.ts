@@ -72,14 +72,15 @@ function escape(s: string): string {
     .replace(/"/g, "&quot;");
 }
 
-function unsubToken(esp: DigestOptions["esp"]): { unsub: string; prefs: string } {
-  if (esp === "resend") {
-    return {
-      unsub: "{{{RESEND_UNSUBSCRIBE_URL}}}",
-      prefs: "{{{RESEND_UNSUBSCRIBE_URL}}}",
-    };
-  }
-  return { unsub: "%unsubscribe_url%", prefs: "%preferences_url%" };
+function unsubToken(_esp: DigestOptions["esp"]): { unsub: string; prefs: string } {
+  // We send the digest via Resend's /emails endpoint (per-recipient), not
+  // /broadcasts — so neither {{{RESEND_UNSUBSCRIBE_URL}}} nor
+  // %unsubscribe_url% would be substituted at send time and the literal
+  // template text would land in the inbox. Use a real mailto: link that
+  // works in any client. The List-Unsubscribe header set by the sender
+  // (email-api/send-weekly-digest.mjs) covers Gmail/Yahoo one-click.
+  const mailto = "mailto:signal@gitdealflow.com?subject=Unsubscribe";
+  return { unsub: mailto, prefs: mailto };
 }
 
 function startupCard(s: DigestStartup): string {
