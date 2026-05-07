@@ -149,6 +149,27 @@ export default function FirstLookPage() {
     "@context": "https://schema.org",
     "@graph": [
       {
+        // F23: explicit access-status statement. The /firstlook URL itself is
+        // fully crawlable — every word of the marketing copy, value stack,
+        // FAQs, and order-bump description is publicly readable. The PRODUCT
+        // is paid (€7 base + €1,797 order-bump), but its description is not
+        // paywalled, so we set isAccessibleForFree: true on the page. This
+        // tells Google we are not cloaking paywalled content. The Product's
+        // paid status is already represented by the Offer.price > 0 signal.
+        "@type": "WebPage",
+        "@id": "https://signals.gitdealflow.com/firstlook#webpage",
+        url: "https://signals.gitdealflow.com/firstlook",
+        name: "First Look Pass — €7. One sector. 24-hour deep dive.",
+        isAccessibleForFree: true,
+        primaryImageOfPage: {
+          "@type": "ImageObject",
+          url: "https://signals.gitdealflow.com/api/og/firstlook",
+        },
+        mainEntity: {
+          "@id": "https://signals.gitdealflow.com/firstlook#product",
+        },
+      },
+      {
         "@type": "Product",
         "@id": "https://signals.gitdealflow.com/firstlook#product",
         name: "First Look Pass",

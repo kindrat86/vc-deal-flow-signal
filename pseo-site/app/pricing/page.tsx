@@ -348,6 +348,11 @@ export default function PricingPage() {
         description:
           "Seven-tier pricing for VC Deal Flow Signal — free weekly digest, €1 Tweet Teardown, €7 First Look Pass, €9.97/mo Dashboard, €97/mo Insider Circle, €497/mo Sharp Tier, and €1,997 one-time Sector Sweep.",
         inLanguage: "en-US",
+        // F23: every word of the pricing page is publicly readable — only the
+        // Product/Service deliverables behind the prices are paid. Setting
+        // this explicitly avoids appearing to cloak paywalled content; the
+        // paid status of the offers themselves is represented by Offer.price.
+        isAccessibleForFree: true,
         isPartOf: {
           "@id": "https://signals.gitdealflow.com/#website",
         },
