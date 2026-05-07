@@ -90,27 +90,27 @@ export default async function AlternativePage({ params }: PageProps) {
           "@type": "SpeakableSpecification",
           cssSelector: ["h1", ".verdict-block", ".tagline"],
         },
-        review: {
-          "@type": "Review",
-          author: {
-            "@type": "Person",
-            name: "The Data Nerd",
-            url: "https://signals.gitdealflow.com/about",
-          },
-          reviewBody: alt.verdict,
-          reviewRating: {
-            "@type": "Rating",
-            ratingValue: 4.5,
-            bestRating: 5,
-            worstRating: 1,
-            ratingExplanation: `Structured comparison across ${alt.sections.length} dimensions plus feature table.`,
-          },
-          itemReviewed: {
-            "@type": "SoftwareApplication",
-            name: alt.competitor,
-            applicationCategory: "BusinessApplication",
-            url: alt.competitorUrl,
-          },
+      },
+      {
+        "@type": "Review",
+        author: {
+          "@type": "Person",
+          name: "The Data Nerd",
+          url: "https://signals.gitdealflow.com/about",
+        },
+        reviewBody: alt.verdict,
+        reviewRating: {
+          "@type": "Rating",
+          ratingValue: 4.5,
+          bestRating: 5,
+          worstRating: 1,
+          ratingExplanation: `Structured comparison across ${alt.sections.length} dimensions plus feature table.`,
+        },
+        itemReviewed: {
+          "@type": "SoftwareApplication",
+          name: alt.competitor,
+          applicationCategory: "BusinessApplication",
+          url: alt.competitorUrl,
         },
       },
       {
