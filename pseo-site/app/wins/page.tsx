@@ -107,6 +107,14 @@ export default function WinsPage() {
     };
   }).filter((g) => g.items.length > 0);
 
+  // Date range covered by the ledger (used in Dataset.temporalCoverage).
+  const sortedDates = wins
+    .map((w) => w.event_date)
+    .filter(Boolean)
+    .sort();
+  const earliest = sortedDates[0] || "2020-01-01";
+  const latest = sortedDates[sortedDates.length - 1] || "2026-05-05";
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -117,7 +125,9 @@ export default function WinsPage() {
         description: `Public ledger of ${totalWins} venture-backed startups whose GitHub engineering acceleration matched the SSRN-published signal pattern (abstract id 6606558) before a documented funding event, acquisition, or breakout-adoption milestone. Sourced from public GitHub data and public funding news; CC BY 4.0.`,
         url: "https://signals.gitdealflow.com/wins",
         creator: { "@id": "https://gitdealflow.com/#organization" },
+        publisher: { "@id": "https://gitdealflow.com/#organization" },
         license: "https://creativecommons.org/licenses/by/4.0/",
+        isAccessibleForFree: true,
         keywords: [
           "venture capital",
           "deal flow",
@@ -127,19 +137,88 @@ export default function WinsPage() {
           "underwriting receipts",
         ],
         datePublished: "2026-05-05",
+        dateModified: latest,
+        temporalCoverage: `${earliest}/${latest}`,
+        variableMeasured: [
+          {
+            "@type": "PropertyValue",
+            name: "GitHub engineering acceleration",
+            description:
+              "14-day commit velocity acceleration with two-period confirmation, derived from public GitHub Archive data.",
+          },
+          {
+            "@type": "PropertyValue",
+            name: "Outcome event",
+            description:
+              "Public funding event, acquisition, or $1B-valuation milestone, sourced from Crunchbase, PitchBook, and public press releases.",
+          },
+          {
+            "@type": "PropertyValue",
+            name: "Outcome date",
+            description: "ISO 8601 date of the public outcome announcement.",
+          },
+          {
+            "@type": "PropertyValue",
+            name: "Tier weight",
+            description:
+              "Outcome-magnitude weight (50/70/90/100) used to rank entries; not signal-strength.",
+          },
+        ],
+        distribution: [
+          {
+            "@type": "DataDownload",
+            encodingFormat: "application/json",
+            contentUrl: "https://signals.gitdealflow.com/api/v1/dataset.jsonl",
+            name: "Full dataset (NDJSON)",
+          },
+          {
+            "@type": "DataDownload",
+            encodingFormat: "text/html",
+            contentUrl: "https://signals.gitdealflow.com/wins",
+            name: "Public ledger (this page)",
+          },
+        ],
+        citation: [
+          "https://ssrn.com/abstract=6606558",
+          "https://openalex.org/W7154916891",
+        ],
+        sameAs: ["https://ssrn.com/abstract=6606558"],
+        recordedIn: {
+          "@type": "CreativeWork",
+          "@id": "https://ssrn.com/abstract=6606558",
+          name: "SSRN preprint on GitHub engineering-acceleration signals as a leading indicator of venture-stage outcomes",
+        },
       },
       {
         "@type": "ItemList",
+        "@id": "https://signals.gitdealflow.com/wins#itemlist",
         name: "Validated underwriting receipts (sorted by event weight)",
+        description: `Full validated panel — ${totalWins} entries, ${uniqueOrgs} unique orgs.`,
         numberOfItems: totalWins,
         itemListOrder: "https://schema.org/ItemListOrderDescending",
-        itemListElement: wins.slice(0, 20).map((w, i) => ({
+        isPartOf: { "@id": "https://signals.gitdealflow.com/wins#dataset" },
+        itemListElement: wins.map((w, i) => ({
           "@type": "ListItem",
           position: i + 1,
           name: `${w.name} — ${w.event}`,
           url: `https://github.com/${w.repo}`,
           description: `${w.event} on ${w.event_date}. Tracked via ${w.repo}.`,
         })),
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://signals.gitdealflow.com/wins#webpage",
+        url: "https://signals.gitdealflow.com/wins",
+        name: "Underwriting Receipts — Public Ledger of Validated GitHub Signals",
+        primaryImageOfPage: {
+          "@type": "ImageObject",
+          url: "https://signals.gitdealflow.com/api/og/signal-card",
+        },
+        mainEntity: { "@id": "https://signals.gitdealflow.com/wins#dataset" },
+        speakable: {
+          "@type": "SpeakableSpecification",
+          cssSelector: ["h1", "h2", "[data-speakable]", "[data-agent-summary]"],
+        },
       },
       {
         "@type": "BreadcrumbList",

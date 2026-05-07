@@ -80,6 +80,12 @@ export default function ReceiptsLandingPage() {
         url: "https://signals.gitdealflow.com/receipts",
         description:
           "Backwards-looking investment-taste validation: grade any public GitHub user's starring history against a curated panel of ~75 validated unicorn / big-funding / acquisition outcomes. Returns a 0–100 Scout Score, a five-tier rank (Curious → Oracle), and a shareable OG card. Same data exposed via /api/receipts/{username}, /api/badge/scout/{username}/svg, and the get_scout_receipts MCP tool.",
+        subjectOf: { "@id": "https://signals.gitdealflow.com/wins#dataset" },
+        isBasedOn: {
+          "@type": "CreativeWork",
+          "@id": "https://ssrn.com/abstract=6606558",
+          name: "SSRN preprint on GitHub engineering-acceleration signals as a leading indicator of venture-stage outcomes",
+        },
         hasOfferCatalog: {
           "@type": "OfferCatalog",
           name: "Scout Score outputs",
