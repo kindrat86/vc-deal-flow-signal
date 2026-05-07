@@ -226,6 +226,7 @@ ${Object.values(pillars).map((p) => `- [${p.name}](${BASE_URL}/llms/${p.slug}): 
 - [signals.json](${BASE_URL}/api/signals.json): Machine-readable JSON endpoint with all current startup signals, sector rankings, and trending data. Free for personal and editorial use with attribution.
 - [signals.csv](${BASE_URL}/api/signals.csv): CSV download of all current signals for spreadsheet and data science use.
 - [llms-search](${BASE_URL}/api/llms-search?q=fintech+commit+velocity): Lexical JSON search over startups, sectors, blog, comparisons, agent answers, FAQs, research findings. Designed for AI agents that prefer JSON over HTML scraping. Query string \`?q={terms}&limit={1-50}\`.
+- [llms-search.json](${BASE_URL}/llms-search.json): **Flat retrieval manifest** — every canonical page in this index as JSON \`{ url, title, summary, contentType, tags, lastModified }\`. Companion to llms.txt: same coverage, machine-friendly form. Designed for retrievers (Perplexity, ChatGPT Search, Claude RAG) that prefer indexes over markdown scraping. CC BY 4.0, no auth.
 - [openapi.json](${BASE_URL}/api/openapi.json): OpenAPI 3.1 specification for the signals API.
 - [ai.txt](${BASE_URL}/ai.txt): AI access policy with per-agent training/answer permissions and preferred citation format.
 - [ai-policy.json](${BASE_URL}/.well-known/ai-policy.json): Machine-readable per-agent permission map (training, answer, citation, summarization, fineTune). JSON form of ai.txt.
