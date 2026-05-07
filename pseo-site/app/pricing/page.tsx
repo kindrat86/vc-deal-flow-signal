@@ -14,6 +14,13 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/pricing",
   },
+  openGraph: {
+    title: "Pricing — Free, €1 Teardown, €7 First Look, €9.97 Dashboard, €97 Insider, €497 Sharp, €1,997 Sweep",
+    description:
+      "Seven tiers from free to €1,997 custom sector sweep. Founding-member rates on Dashboard (€9.97/mo) and Insider Circle (€97/mo). 30-day Signal-or-It's-Free guarantee.",
+    url: "https://signals.gitdealflow.com/pricing",
+    type: "website",
+  },
 };
 
 const STRIPE_DASHBOARD = "https://buy.stripe.com/28E7sK48H04U8ou07u0x200";
