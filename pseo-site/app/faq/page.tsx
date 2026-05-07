@@ -96,9 +96,23 @@ export default function FAQPage() {
     "@graph": [
       {
         "@type": "FAQPage",
+        "@id": "https://signals.gitdealflow.com/faq#faqpage",
+        url: "https://signals.gitdealflow.com/faq",
         name: "VC Deal Flow Signal — Frequently Asked Questions",
         description:
           "Answers to common questions about GitHub engineering signals, startup deal sourcing, and how investors use engineering acceleration data.",
+        inLanguage: "en-US",
+        isPartOf: { "@id": "https://signals.gitdealflow.com/#website" },
+        speakable: {
+          "@type": "SpeakableSpecification",
+          cssSelector: [
+            "[data-speakable]",
+            "h1",
+            "h2",
+            ".speakable",
+            "[data-agent-summary]",
+          ],
+        },
         mainEntity: allFaqs.map((faq) => ({
           "@type": "Question",
           name: faq.question,
@@ -151,7 +165,7 @@ export default function FAQPage() {
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-4 leading-tight">
           Frequently Asked Questions
         </h1>
-        <p className="text-gray-400 text-base leading-relaxed mb-4">
+        <p className="text-gray-400 text-base leading-relaxed mb-4" data-speakable>
           Answers to common questions about GitHub engineering signals, startup
           deal sourcing, commit velocity, and how investors use VC Deal Flow
           Signal. Currently tracking {activeSectors.length} sectors with data
@@ -185,7 +199,7 @@ export default function FAQPage() {
                   </span>
                 </summary>
                 <div className="px-5 pb-5">
-                  <p className="text-gray-400 text-sm leading-relaxed">
+                  <p className="text-gray-400 text-sm leading-relaxed" data-speakable>
                     {faq.answer}
                   </p>
                   <Link
@@ -218,7 +232,7 @@ export default function FAQPage() {
                   </span>
                 </summary>
                 <div className="px-5 pb-5">
-                  <p className="text-gray-400 text-sm leading-relaxed">
+                  <p className="text-gray-400 text-sm leading-relaxed" data-speakable>
                     {faq.answer}
                   </p>
                   <Link
