@@ -5,8 +5,16 @@
  * different output surface (HTML email instead of blog post).
  *
  * Usage:
- *   npx tsx scripts/generate-signal-digest-email.ts              # generic ESP syntax (%unsubscribe_url%)
- *   npx tsx scripts/generate-signal-digest-email.ts --esp=resend # Resend syntax ({{{RESEND_UNSUBSCRIBE_URL}}})
+ *   npx tsx scripts/generate-signal-digest-email.ts              # default
+ *   npx tsx scripts/generate-signal-digest-email.ts --esp=resend # (kept for back-compat; same output)
+ *
+ * Note: the --esp flag used to inject ESP-specific unsubscribe template
+ * tokens ({{{RESEND_UNSUBSCRIBE_URL}}} / %unsubscribe_url%). Those only
+ * substitute via Resend Broadcasts; this digest is sent via /emails
+ * (per-recipient), so the placeholders leaked through as literal text.
+ * The renderer now always emits a real mailto: unsubscribe link, and
+ * one-click unsub is supplied via the List-Unsubscribe header set by
+ * email-api/send-weekly-digest.mjs.
  *
  * Writes:
  *   emails/signal-digest-<YYYY-MM-DD>.html  (dated issue, committed weekly)
