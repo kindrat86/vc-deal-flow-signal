@@ -6271,8 +6271,8 @@
               "description": "",
               "stage": "Growth",
               "geography": "LATAM",
-              "commitVelocity14d": 22,
-              "commitVelocityChange": "-68%",
+              "commitVelocity14d": 46,
+              "commitVelocityChange": "-33%",
               "contributors": 51,
               "contributorGrowth": "+0%",
               "newRepos": 0,
@@ -6283,11 +6283,11 @@
           "faqs": [
             {
               "question": "What engineering signals are proptech startups showing in Q2 2026?",
-              "answer": "In Q2 2026, we are tracking 1 proptech startups with measurable GitHub engineering signals. 0 of 1 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 1 of the tracked companies. The average 14-day commit velocity across the sector is 22 commits, with open-condo-software leading at 22 commits (-68% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q2 2026, we are tracking 1 proptech startups with measurable GitHub engineering signals. 0 of 1 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 1 of the tracked companies. The average 14-day commit velocity across the sector is 46 commits, with open-condo-software leading at 46 commits (-33% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which proptech startup has the highest engineering acceleration in Q2 2026?",
-              "answer": "open-condo-software leads the proptech sector in Q2 2026 with 22 commits over a 14-day window, representing a -68% change from the prior period. With 51 active contributors, open-condo-software is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
+              "answer": "open-condo-software leads the proptech sector in Q2 2026 with 46 commits over a 14-day window, representing a -33% change from the prior period. With 51 active contributors, open-condo-software is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
             },
             {
               "question": "Where are the most active proptech engineering teams located?",
@@ -6411,8 +6411,8 @@
               "description": "",
               "stage": "Growth",
               "geography": "Canada",
-              "commitVelocity14d": 20,
-              "commitVelocityChange": "-78%",
+              "commitVelocity14d": 52,
+              "commitVelocityChange": "-43%",
               "contributors": 65,
               "contributorGrowth": "+0%",
               "newRepos": 0,
@@ -6437,7 +6437,7 @@
           "faqs": [
             {
               "question": "What engineering signals are agtech startups showing in Q2 2026?",
-              "answer": "In Q2 2026, we are tracking 2 agtech startups with measurable GitHub engineering signals. 0 of 2 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 2 of the tracked companies. The average 14-day commit velocity across the sector is 18 commits, with betagouv leading at 16 commits (-24% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q2 2026, we are tracking 2 agtech startups with measurable GitHub engineering signals. 0 of 2 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 2 of the tracked companies. The average 14-day commit velocity across the sector is 34 commits, with betagouv leading at 16 commits (-24% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which agtech startup has the highest engineering acceleration in Q2 2026?",
@@ -6954,6 +6954,33 @@
           "intro": "Space tech has a small but distinct engineering footprint on GitHub.",
           "startups": [
             {
+              "name": "OpenC3",
+              "description": "Open Source. Open Architecture. Command, Control and Communication",
+              "stage": "Series A/B",
+              "geography": "US",
+              "commitVelocity14d": 106,
+              "commitVelocityChange": "+15%",
+              "contributors": 45,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/OpenC3"
+            },
+            {
+              "name": "orbiternassp",
+              "description": "",
+              "stage": "Series A/B",
+              "geography": "Unknown",
+              "commitVelocity14d": 14,
+              "commitVelocityChange": "-48%",
+              "contributors": 37,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/orbiternassp",
+              "websiteUrl": "https://nassp.space"
+            },
+            {
               "name": "naev",
               "description": "Migrated to https://codeberg.org/naev .Naev is a 2D space trading and combat game that combines elements from the action",
               "stage": "Growth",
@@ -6966,43 +6993,16 @@
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/naev",
               "websiteUrl": "https://codeberg.org/naev"
-            },
-            {
-              "name": "OpenC3",
-              "description": "Open Source. Open Architecture. Command, Control and Communication",
-              "stage": "Series A/B",
-              "geography": "US",
-              "commitVelocity14d": 88,
-              "commitVelocityChange": "-4%",
-              "contributors": 45,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/OpenC3"
-            },
-            {
-              "name": "orbiternassp",
-              "description": "",
-              "stage": "Series A/B",
-              "geography": "Unknown",
-              "commitVelocity14d": 8,
-              "commitVelocityChange": "-70%",
-              "contributors": 37,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/orbiternassp",
-              "websiteUrl": "https://nassp.space"
             }
           ],
           "faqs": [
             {
               "question": "What engineering signals are space tech startups showing in Q2 2026?",
-              "answer": "In Q2 2026, we are tracking 3 space tech startups with measurable GitHub engineering signals. 0 of 3 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 3 of the tracked companies. The average 14-day commit velocity across the sector is 39 commits, with OpenC3 leading at 88 commits (-4% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q2 2026, we are tracking 3 space tech startups with measurable GitHub engineering signals. 1 of 3 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 3 of the tracked companies. The average 14-day commit velocity across the sector is 47 commits, with OpenC3 leading at 106 commits (+15% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which space tech startup has the highest engineering acceleration in Q2 2026?",
-              "answer": "OpenC3 leads the space tech sector in Q2 2026 with 88 commits over a 14-day window, representing a -4% change from the prior period. With 45 active contributors, OpenC3 is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
+              "answer": "OpenC3 leads the space tech sector in Q2 2026 with 106 commits over a 14-day window, representing a +15% change from the prior period. With 45 active contributors, OpenC3 is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
             },
             {
               "question": "Where are the most active space tech engineering teams located?",
@@ -7013,20 +7013,6 @@
         "q1-2026": {
           "intro": "Space tech has a small but distinct engineering footprint on GitHub.",
           "startups": [
-            {
-              "name": "naev",
-              "description": "Migrated to https://codeberg.org/naev .Naev is a 2D space trading and combat game that combines elements from the action",
-              "stage": "Growth",
-              "geography": "Unknown",
-              "commitVelocity14d": 145,
-              "commitVelocityChange": "-37%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/naev",
-              "websiteUrl": "https://codeberg.org/naev"
-            },
             {
               "name": "OpenC3",
               "description": "Open Source. Open Architecture. Command, Control and Communication",
@@ -7053,6 +7039,20 @@
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/orbiternassp",
               "websiteUrl": "https://nassp.space"
+            },
+            {
+              "name": "naev",
+              "description": "Migrated to https://codeberg.org/naev .Naev is a 2D space trading and combat game that combines elements from the action",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 145,
+              "commitVelocityChange": "-37%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/naev",
+              "websiteUrl": "https://codeberg.org/naev"
             },
             {
               "name": "DaedalusDock",
@@ -7088,20 +7088,6 @@
           "intro": "Space tech has a small but distinct engineering footprint on GitHub.",
           "startups": [
             {
-              "name": "naev",
-              "description": "Migrated to https://codeberg.org/naev .Naev is a 2D space trading and combat game that combines elements from the action",
-              "stage": "Growth",
-              "geography": "Unknown",
-              "commitVelocity14d": 168,
-              "commitVelocityChange": "+4%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/naev",
-              "websiteUrl": "https://codeberg.org/naev"
-            },
-            {
               "name": "OpenC3",
               "description": "Open Source. Open Architecture. Command, Control and Communication",
               "stage": "Series A/B",
@@ -7127,6 +7113,20 @@
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/orbiternassp",
               "websiteUrl": "https://nassp.space"
+            },
+            {
+              "name": "naev",
+              "description": "Migrated to https://codeberg.org/naev .Naev is a 2D space trading and combat game that combines elements from the action",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 168,
+              "commitVelocityChange": "+4%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/naev",
+              "websiteUrl": "https://codeberg.org/naev"
             }
           ],
           "faqs": [
@@ -7147,20 +7147,6 @@
         "q3-2025": {
           "intro": "Space tech has a small but distinct engineering footprint on GitHub.",
           "startups": [
-            {
-              "name": "naev",
-              "description": "Migrated to https://codeberg.org/naev .Naev is a 2D space trading and combat game that combines elements from the action",
-              "stage": "Growth",
-              "geography": "Unknown",
-              "commitVelocity14d": 246,
-              "commitVelocityChange": "-20%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/naev",
-              "websiteUrl": "https://codeberg.org/naev"
-            },
             {
               "name": "OpenC3",
               "description": "Open Source. Open Architecture. Command, Control and Communication",
@@ -7187,6 +7173,20 @@
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/orbiternassp",
               "websiteUrl": "https://nassp.space"
+            },
+            {
+              "name": "naev",
+              "description": "Migrated to https://codeberg.org/naev .Naev is a 2D space trading and combat game that combines elements from the action",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 246,
+              "commitVelocityChange": "-20%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/naev",
+              "websiteUrl": "https://codeberg.org/naev"
             },
             {
               "name": "DaedalusDock",
@@ -7234,32 +7234,60 @@
           "intro": "Social and community platform engineering shows two distinct clusters this quarter.",
           "startups": [
             {
-              "name": "bakaphp",
-              "description": "Baka: packages that look to make development simpler for everyone.",
-              "stage": "Seed",
-              "geography": "LATAM",
-              "commitVelocity14d": 172,
-              "commitVelocityChange": "-74%",
-              "contributors": 14,
-              "contributorGrowth": "+0%",
+              "name": "nextcloud",
+              "description": "📱☁️💻 A safe home for all your data – community-driven, free & open source 👏",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 431,
+              "commitVelocityChange": "-41%",
+              "contributors": 100,
+              "contributorGrowth": "+400%",
               "newRepos": 0,
+              "signalType": "Engineering hiring burst",
+              "githubUrl": "https://github.com/nextcloud",
+              "websiteUrl": "https://nextcloud.com"
+            },
+            {
+              "name": "GetStream",
+              "description": "Build scalable in-app chat, feeds, and live video with AI moderation capabilities in hours, not weeks.",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 43,
+              "commitVelocityChange": "+54%",
+              "contributors": 65,
+              "contributorGrowth": "+0%",
+              "newRepos": 1,
               "signalType": "Framework migration",
-              "githubUrl": "https://github.com/bakaphp",
-              "websiteUrl": "https://kanvas.dev"
+              "githubUrl": "https://github.com/GetStream",
+              "websiteUrl": "https://getstream.io"
             },
             {
               "name": "unacms",
               "description": "Unified Networking Applications",
               "stage": "Seed",
               "geography": "Unknown",
-              "commitVelocity14d": 33,
-              "commitVelocityChange": "-47%",
+              "commitVelocity14d": 48,
+              "commitVelocityChange": "-23%",
               "contributors": 11,
               "contributorGrowth": "+0%",
               "newRepos": 0,
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/unacms",
               "websiteUrl": "https://unacms.com"
+            },
+            {
+              "name": "bakaphp",
+              "description": "Baka: packages that look to make development simpler for everyone.",
+              "stage": "Seed",
+              "geography": "LATAM",
+              "commitVelocity14d": 276,
+              "commitVelocityChange": "-58%",
+              "contributors": 14,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/bakaphp",
+              "websiteUrl": "https://kanvas.dev"
             },
             {
               "name": "goalgorilla",
@@ -7274,34 +7302,20 @@
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/goalgorilla",
               "websiteUrl": "https://www.getopensocial.com"
-            },
-            {
-              "name": "nextcloud",
-              "description": "📱☁️💻 A safe home for all your data – community-driven, free & open source 👏",
-              "stage": "Growth",
-              "geography": "Unknown",
-              "commitVelocity14d": 57,
-              "commitVelocityChange": "-39%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/nextcloud",
-              "websiteUrl": "https://nextcloud.com"
             }
           ],
           "faqs": [
             {
               "question": "What engineering signals are social & community startups showing in Q2 2026?",
-              "answer": "In Q2 2026, we are tracking 4 social & community startups with measurable GitHub engineering signals. 0 of 4 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 4 of the tracked companies. The average 14-day commit velocity across the sector is 66 commits, with nextcloud leading at 57 commits (-39% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q2 2026, we are tracking 5 social & community startups with measurable GitHub engineering signals. 1 of 5 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 4 of the tracked companies. The average 14-day commit velocity across the sector is 160 commits, with GetStream leading at 43 commits (+54% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which social & community startup has the highest engineering acceleration in Q2 2026?",
-              "answer": "nextcloud leads the social & community sector in Q2 2026 with 57 commits over a 14-day window, representing a -39% change from the prior period. With 100 active contributors, nextcloud is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
+              "answer": "GetStream leads the social & community sector in Q2 2026 with 43 commits over a 14-day window, representing a +54% change from the prior period. With 65 active contributors and 1 new repositories, GetStream is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
             },
             {
               "question": "Where are the most active social & community engineering teams located?",
-              "answer": "Among the 4 social & community startups we track, LATAM accounts for the highest concentration with 1 teams. Startups building social networks, community platforms, and creator tools. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+              "answer": "Among the 5 social & community startups we track, LATAM accounts for the highest concentration with 1 teams. Startups building social networks, community platforms, and creator tools. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
             }
           ]
         },
@@ -7309,18 +7323,32 @@
           "intro": "Social and community platform engineering shows two distinct clusters this quarter.",
           "startups": [
             {
-              "name": "bakaphp",
-              "description": "Baka: packages that look to make development simpler for everyone.",
-              "stage": "Seed",
-              "geography": "LATAM",
-              "commitVelocity14d": 545,
-              "commitVelocityChange": "+8%",
-              "contributors": 14,
-              "contributorGrowth": "+0%",
+              "name": "nextcloud",
+              "description": "📱☁️💻 A safe home for all your data – community-driven, free & open source 👏",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 45,
+              "commitVelocityChange": "+36%",
+              "contributors": 100,
+              "contributorGrowth": "+400%",
               "newRepos": 0,
+              "signalType": "Engineering hiring burst",
+              "githubUrl": "https://github.com/nextcloud",
+              "websiteUrl": "https://nextcloud.com"
+            },
+            {
+              "name": "GetStream",
+              "description": "Build scalable in-app chat, feeds, and live video with AI moderation capabilities in hours, not weeks.",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 47,
+              "commitVelocityChange": "+47%",
+              "contributors": 65,
+              "contributorGrowth": "+0%",
+              "newRepos": 1,
               "signalType": "Framework migration",
-              "githubUrl": "https://github.com/bakaphp",
-              "websiteUrl": "https://kanvas.dev"
+              "githubUrl": "https://github.com/GetStream",
+              "websiteUrl": "https://getstream.io"
             },
             {
               "name": "unacms",
@@ -7337,6 +7365,20 @@
               "websiteUrl": "https://unacms.com"
             },
             {
+              "name": "bakaphp",
+              "description": "Baka: packages that look to make development simpler for everyone.",
+              "stage": "Seed",
+              "geography": "LATAM",
+              "commitVelocity14d": 545,
+              "commitVelocityChange": "+8%",
+              "contributors": 14,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/bakaphp",
+              "websiteUrl": "https://kanvas.dev"
+            },
+            {
               "name": "goalgorilla",
               "description": "",
               "stage": "Growth",
@@ -7349,34 +7391,20 @@
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/goalgorilla",
               "websiteUrl": "https://www.getopensocial.com"
-            },
-            {
-              "name": "nextcloud",
-              "description": "📱☁️💻 A safe home for all your data – community-driven, free & open source 👏",
-              "stage": "Growth",
-              "geography": "Unknown",
-              "commitVelocity14d": 53,
-              "commitVelocityChange": "+430%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Deploy frequency spike",
-              "githubUrl": "https://github.com/nextcloud",
-              "websiteUrl": "https://nextcloud.com"
             }
           ],
           "faqs": [
             {
               "question": "What engineering signals are social & community startups showing in Q1 2026?",
-              "answer": "In Q1 2026, we are tracking 4 social & community startups with measurable GitHub engineering signals. 3 of 4 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 3 of the tracked companies. The average 14-day commit velocity across the sector is 176 commits, with nextcloud leading at 53 commits (+430% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q1 2026, we are tracking 5 social & community startups with measurable GitHub engineering signals. 4 of 5 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 4 of the tracked companies. The average 14-day commit velocity across the sector is 149 commits, with unacms leading at 82 commits (+71% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which social & community startup has the highest engineering acceleration in Q1 2026?",
-              "answer": "nextcloud leads the social & community sector in Q1 2026 with 53 commits over a 14-day window, representing a +430% change from the prior period. With 100 active contributors, nextcloud is showing a \"Deploy frequency spike\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
+              "answer": "unacms leads the social & community sector in Q1 2026 with 82 commits over a 14-day window, representing a +71% change from the prior period. With 11 active contributors, unacms is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
             },
             {
               "question": "Where are the most active social & community engineering teams located?",
-              "answer": "Among the 4 social & community startups we track, LATAM accounts for the highest concentration with 1 teams. Startups building social networks, community platforms, and creator tools. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+              "answer": "Among the 5 social & community startups we track, LATAM accounts for the highest concentration with 1 teams. Startups building social networks, community platforms, and creator tools. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
             }
           ]
         },
@@ -7384,18 +7412,32 @@
           "intro": "Social and community platform engineering shows two distinct clusters this quarter.",
           "startups": [
             {
-              "name": "bakaphp",
-              "description": "Baka: packages that look to make development simpler for everyone.",
-              "stage": "Seed",
-              "geography": "LATAM",
-              "commitVelocity14d": 652,
-              "commitVelocityChange": "+56%",
-              "contributors": 14,
-              "contributorGrowth": "+0%",
+              "name": "nextcloud",
+              "description": "📱☁️💻 A safe home for all your data – community-driven, free & open source 👏",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 40,
+              "commitVelocityChange": "+5%",
+              "contributors": 100,
+              "contributorGrowth": "+400%",
               "newRepos": 0,
+              "signalType": "Engineering hiring burst",
+              "githubUrl": "https://github.com/nextcloud",
+              "websiteUrl": "https://nextcloud.com"
+            },
+            {
+              "name": "GetStream",
+              "description": "Build scalable in-app chat, feeds, and live video with AI moderation capabilities in hours, not weeks.",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 19,
+              "commitVelocityChange": "-37%",
+              "contributors": 65,
+              "contributorGrowth": "+0%",
+              "newRepos": 1,
               "signalType": "Framework migration",
-              "githubUrl": "https://github.com/bakaphp",
-              "websiteUrl": "https://kanvas.dev"
+              "githubUrl": "https://github.com/GetStream",
+              "websiteUrl": "https://getstream.io"
             },
             {
               "name": "unacms",
@@ -7412,6 +7454,20 @@
               "websiteUrl": "https://unacms.com"
             },
             {
+              "name": "bakaphp",
+              "description": "Baka: packages that look to make development simpler for everyone.",
+              "stage": "Seed",
+              "geography": "LATAM",
+              "commitVelocity14d": 652,
+              "commitVelocityChange": "+56%",
+              "contributors": 14,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/bakaphp",
+              "websiteUrl": "https://kanvas.dev"
+            },
+            {
               "name": "goalgorilla",
               "description": "",
               "stage": "Growth",
@@ -7424,26 +7480,12 @@
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/goalgorilla",
               "websiteUrl": "https://www.getopensocial.com"
-            },
-            {
-              "name": "nextcloud",
-              "description": "📱☁️💻 A safe home for all your data – community-driven, free & open source 👏",
-              "stage": "Growth",
-              "geography": "Unknown",
-              "commitVelocity14d": 132,
-              "commitVelocityChange": "+6%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/nextcloud",
-              "websiteUrl": "https://nextcloud.com"
             }
           ],
           "faqs": [
             {
               "question": "What engineering signals are social & community startups showing in Q4 2025?",
-              "answer": "In Q4 2025, we are tracking 4 social & community startups with measurable GitHub engineering signals. 4 of 4 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 4 of the tracked companies. The average 14-day commit velocity across the sector is 228 commits, with goalgorilla leading at 49 commits (+133% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q4 2025, we are tracking 5 social & community startups with measurable GitHub engineering signals. 4 of 5 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 4 of the tracked companies. The average 14-day commit velocity across the sector is 168 commits, with goalgorilla leading at 49 commits (+133% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which social & community startup has the highest engineering acceleration in Q4 2025?",
@@ -7451,7 +7493,7 @@
             },
             {
               "question": "Where are the most active social & community engineering teams located?",
-              "answer": "Among the 4 social & community startups we track, LATAM accounts for the highest concentration with 1 teams. Startups building social networks, community platforms, and creator tools. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+              "answer": "Among the 5 social & community startups we track, LATAM accounts for the highest concentration with 1 teams. Startups building social networks, community platforms, and creator tools. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
             }
           ]
         },
@@ -7459,18 +7501,32 @@
           "intro": "Social and community platform engineering shows two distinct clusters this quarter.",
           "startups": [
             {
-              "name": "bakaphp",
-              "description": "Baka: packages that look to make development simpler for everyone.",
-              "stage": "Seed",
-              "geography": "LATAM",
-              "commitVelocity14d": 379,
-              "commitVelocityChange": "-24%",
-              "contributors": 14,
-              "contributorGrowth": "+0%",
+              "name": "nextcloud",
+              "description": "📱☁️💻 A safe home for all your data – community-driven, free & open source 👏",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 134,
+              "commitVelocityChange": "+40%",
+              "contributors": 100,
+              "contributorGrowth": "+400%",
               "newRepos": 0,
+              "signalType": "Engineering hiring burst",
+              "githubUrl": "https://github.com/nextcloud",
+              "websiteUrl": "https://nextcloud.com"
+            },
+            {
+              "name": "GetStream",
+              "description": "Build scalable in-app chat, feeds, and live video with AI moderation capabilities in hours, not weeks.",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 14,
+              "commitVelocityChange": "-67%",
+              "contributors": 65,
+              "contributorGrowth": "+0%",
+              "newRepos": 1,
               "signalType": "Framework migration",
-              "githubUrl": "https://github.com/bakaphp",
-              "websiteUrl": "https://kanvas.dev"
+              "githubUrl": "https://github.com/GetStream",
+              "websiteUrl": "https://getstream.io"
             },
             {
               "name": "unacms",
@@ -7487,6 +7543,20 @@
               "websiteUrl": "https://unacms.com"
             },
             {
+              "name": "bakaphp",
+              "description": "Baka: packages that look to make development simpler for everyone.",
+              "stage": "Seed",
+              "geography": "LATAM",
+              "commitVelocity14d": 379,
+              "commitVelocityChange": "-24%",
+              "contributors": 14,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/bakaphp",
+              "websiteUrl": "https://kanvas.dev"
+            },
+            {
               "name": "goalgorilla",
               "description": "",
               "stage": "Growth",
@@ -7499,26 +7569,12 @@
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/goalgorilla",
               "websiteUrl": "https://www.getopensocial.com"
-            },
-            {
-              "name": "nextcloud",
-              "description": "📱☁️💻 A safe home for all your data – community-driven, free & open source 👏",
-              "stage": "Growth",
-              "geography": "Unknown",
-              "commitVelocity14d": 98,
-              "commitVelocityChange": "+13%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/nextcloud",
-              "websiteUrl": "https://nextcloud.com"
             }
           ],
           "faqs": [
             {
               "question": "What engineering signals are social & community startups showing in Q3 2025?",
-              "answer": "In Q3 2025, we are tracking 4 social & community startups with measurable GitHub engineering signals. 2 of 4 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 4 of the tracked companies. The average 14-day commit velocity across the sector is 132 commits, with goalgorilla leading at 14 commits (+100% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q3 2025, we are tracking 5 social & community startups with measurable GitHub engineering signals. 2 of 5 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 4 of the tracked companies. The average 14-day commit velocity across the sector is 116 commits, with goalgorilla leading at 14 commits (+100% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which social & community startup has the highest engineering acceleration in Q3 2025?",
@@ -7526,7 +7582,7 @@
             },
             {
               "question": "Where are the most active social & community engineering teams located?",
-              "answer": "Among the 4 social & community startups we track, LATAM accounts for the highest concentration with 1 teams. Startups building social networks, community platforms, and creator tools. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+              "answer": "Among the 5 social & community startups we track, LATAM accounts for the highest concentration with 1 teams. Startups building social networks, community platforms, and creator tools. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
             }
           ]
         }
