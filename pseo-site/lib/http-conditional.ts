@@ -1,3 +1,4 @@
+/**
  * HTTP conditional-request helpers — Last-Modified + ETag with 304 negotiation.
  *
  * RFC 9110 §13 (Conditional Requests). Used by data + feed routes to
