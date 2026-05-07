@@ -1,9 +1,16 @@
 {
   "cleanUrls": true,
+  "trailingSlash": false,
   "rewrites": [
     { "source": "/feed.xml", "destination": "https://signals.gitdealflow.com/feed.xml" }
   ],
   "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.gitdealflow.com" }],
+      "destination": "https://gitdealflow.com/:path*",
+      "permanent": true
+    },
     { "source": "/AGENTS.md", "destination": "/agents.md", "permanent": true },
     { "source": "/g2", "destination": "https://www.g2.com/products/gitdealflow/reviews", "permanent": false }
   ],
