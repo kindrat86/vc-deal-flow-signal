@@ -9,9 +9,9 @@ export async function GET() {
     openapi: "3.1.0",
     info: {
       title: "VC Deal Flow Signal API",
-      version: "1.1.0",
+      version: "1.2.0",
       description:
-        "Public API for startup engineering acceleration data. Weekly-updated rankings of startups by GitHub commit velocity, contributor growth, and signal classification across 20 sectors. CC BY 4.0 attribution. No auth required for free endpoints; the paid Deep Signal endpoint uses a per-request credit-pack key delivered after Stripe checkout.",
+        "Unified OpenAPI 3.1 + MCP descriptor for startup engineering-acceleration data. Documents the public REST surface (signals, answers, citations, badges, deep signals, scout receipts, prediction markets) AND the MCP server tools, resources, prompts. Operations that have an MCP analog carry an `x-mcp-tool` vendor extension; the full MCP server is enumerated under the top-level `x-mcp-server` block. CC BY 4.0 attribution. No auth required for free endpoints; the paid Deep Signal endpoint uses a per-request credit-pack key delivered after Stripe checkout, OR x402 USDC pay-per-call on Base.",
       contact: { email: "signal@gitdealflow.com" },
       license: {
         name: "Free with attribution (CC BY 4.0)",
@@ -19,6 +19,9 @@ export async function GET() {
       },
       "x-citation":
         "VC Deal Flow Signal (signals.gitdealflow.com), Q2 2026 data. SSRN: 6606558.",
+      "x-revision-date": "2026-05-07",
+      "x-mcp-tool-count": 8,
+      "x-rest-operation-count": 25,
     },
     servers: [{ url: BASE_URL }],
     tags: [
@@ -32,6 +35,9 @@ export async function GET() {
       { name: "badges", description: "SVG badges for embeds" },
       { name: "deep-signal", description: "Paid per-request enriched signals" },
       { name: "meta", description: "Pricing, changelog, dataset" },
+      { name: "v1", description: "Versioned, machine-readable mirrors of agent surfaces (stable URL contract)" },
+      { name: "methodology", description: "Reproducible signal-computation methodology" },
+      { name: "glossary", description: "Controlled-vocabulary term definitions" },
     ],
     paths: {
       "/api/signals.json": {
@@ -41,6 +47,13 @@ export async function GET() {
           summary: "Full snapshot of startup engineering signals (free)",
           description:
             "Returns the current period's data: meta, top-20 trending, and per-sector rankings with commit velocity, contributor growth, and signal classification.",
+          "x-mcp-tool": {
+            name: "get_signals_summary",
+            description:
+              "MCP analog projects this response to the meta + format-URL summary; full data is reachable as the `signal://summary` MCP resource and the `signal://trending` MCP resource.",
+            relation: "superset",
+            annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
+          },
           responses: {
             "200": {
               description: "Successful response with all signal data",
@@ -71,6 +84,14 @@ export async function GET() {
           tags: ["signals"],
           operationId: "getSingleSignal",
           summary: "Single startup signal by company name",
+          "x-mcp-tool": {
+            name: "get_startup_signal",
+            description:
+              "1:1 MCP analog. The `name` MCP arg maps to the `company` query parameter. Reachable via the `signal://startup/{name}` MCP resource template.",
+            relation: "exact",
+            argumentMapping: { name: "company" },
+            annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
+          },
           parameters: [
             {
               name: "company",
@@ -256,6 +277,14 @@ export async function GET() {
           summary: "Scout Score for a GitHub user (0-100)",
           description:
             "Backwards-looking proof of taste: how many validated unicorns did this user star *before* the funding/$1B/acquisition event?",
+          "x-mcp-tool": {
+            name: "get_scout_receipts",
+            description:
+              "1:1 MCP analog. The `github_username` MCP arg maps to the `username` path parameter.",
+            relation: "exact",
+            argumentMapping: { github_username: "username" },
+            annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
+          },
           parameters: [
             { name: "username", in: "path", required: true, schema: { type: "string", minLength: 1, maxLength: 39 } },
           ],
@@ -367,6 +396,15 @@ export async function GET() {
           summary: "Get deep enriched signal (paid, per-request)",
           description:
             "PAID per-request endpoint — €0.19/call, sold in 100-credit packs at €19. Returns enriched signal beyond /api/signal: composite score, sector percentile, plain-English thesis, comparables, multi-period history. 1 credit consumed only on a successful match; misses are FREE. Credits never expire. Buy at https://signals.gitdealflow.com/agents/credits — API key delivered by email after Stripe checkout.",
+          "x-mcp-tool": {
+            name: "get_deep_signal",
+            description:
+              "1:1 MCP analog (credit-pack-key flavour). The MCP server reuses the same handler. Pricing parity: €0.19/call. The x402 (USDC pay-per-call) flavour is documented under POST /api/agent/deep-signal/x402.",
+            relation: "exact",
+            paid: true,
+            unitPrice: "EUR 0.19",
+            annotations: { readOnlyHint: false, idempotentHint: true, openWorldHint: false },
+          },
           security: [{ creditPackKey: [] }],
           requestBody: {
             required: true,
@@ -415,6 +453,16 @@ export async function GET() {
           summary: "Get deep enriched signal (x402 — pay-per-call USDC on Base)",
           description:
             "Same payload as /api/agent/deep-signal but priced and authenticated via the x402 protocol (HTTP 402 micropayments). $0.19 USDC per successful call on Base mainnet. No signup, no API key — agents pay per request via the X-PAYMENT header (EIP-3009 transferWithAuthorization). Misses (404) are not charged. Settled by the Coinbase x402 facilitator. See https://x402.org for client implementations.",
+          "x-mcp-tool": {
+            name: "get_deep_signal",
+            description:
+              "x402 variant — same MCP tool, no API key, USDC on Base. The MCP server picks the right pricing rail based on caller context.",
+            relation: "exact",
+            paid: true,
+            unitPrice: "USDC 0.19",
+            paymentProtocol: "x402",
+            annotations: { readOnlyHint: false, idempotentHint: true, openWorldHint: false },
+          },
           requestBody: {
             required: true,
             content: {
@@ -504,6 +552,144 @@ export async function GET() {
           responses: {
             "200": {
               description: "Ranked predictions",
+              content: { "application/json": { schema: { type: "object", additionalProperties: true } } },
+            },
+          },
+        },
+      },
+      "/api/v1/signals.json": {
+        get: {
+          tags: ["v1", "signals"],
+          operationId: "getSignalsV1",
+          summary: "Versioned alias of /api/signals.json",
+          description:
+            "Stable v1 path for procurement automations and agents that pin to a versioned URL. Body identical to /api/signals.json. Canonical URL declared via Link rel=canonical header.",
+          responses: {
+            "200": {
+              description: "Successful response with all signal data",
+              content: {
+                "application/json": {
+                  schema: { $ref: "#/components/schemas/SignalsResponse" },
+                },
+              },
+            },
+          },
+        },
+      },
+      "/api/v1/agents.json": {
+        get: {
+          tags: ["v1", "agents"],
+          operationId: "getAgentsV1",
+          summary: "Versioned alias of /api/agents.json (MCP / A2A skill catalog)",
+          responses: {
+            "200": {
+              description: "Agent skill catalog",
+              content: { "application/json": { schema: { type: "object", additionalProperties: true } } },
+            },
+          },
+        },
+      },
+      "/api/v1/answers.json": {
+        get: {
+          tags: ["v1", "answer"],
+          operationId: "getAnswersV1",
+          summary: "Versioned alias of /api/answers.json (full Q&A corpus)",
+          responses: {
+            "200": {
+              description: "Q&A corpus",
+              content: { "application/json": { schema: { type: "object", additionalProperties: true } } },
+            },
+          },
+        },
+      },
+      "/api/v1/changelog.json": {
+        get: {
+          tags: ["v1", "meta"],
+          operationId: "getChangelogV1",
+          summary: "Versioned alias of /api/changelog.json",
+          responses: {
+            "200": {
+              description: "Changelog entries",
+              content: { "application/json": { schema: { type: "object", additionalProperties: true } } },
+            },
+          },
+        },
+      },
+      "/api/v1/dataset.jsonl": {
+        get: {
+          tags: ["v1", "signals"],
+          operationId: "getDatasetJsonlV1",
+          summary: "Versioned alias of /api/dataset.jsonl (NDJSON dataset)",
+          responses: {
+            "200": {
+              description: "NDJSON stream of every tracked startup × period.",
+              content: { "application/x-ndjson": { schema: { type: "string" } } },
+            },
+          },
+        },
+      },
+      "/api/v1/faq.json": {
+        get: {
+          tags: ["v1", "answer"],
+          operationId: "getFaqV1",
+          summary: "Standalone FAQ corpus (101 entries)",
+          description:
+            "Curated FAQ corpus separate from the agent-query firehose. Stable answer slugs — safe to cite.",
+          responses: {
+            "200": {
+              description: "FAQ entries",
+              content: { "application/json": { schema: { type: "object", additionalProperties: true } } },
+            },
+          },
+        },
+      },
+      "/api/v1/methodology.json": {
+        get: {
+          tags: ["v1", "methodology"],
+          operationId: "getMethodologyV1",
+          summary: "Reproducible signal-computation methodology (HowTo)",
+          description:
+            "Schema.org HowTo describing the 6-step signal pipeline (collect, filter, normalise, accelerate, classify, rank). Companion to the human-facing /methodology page and the SSRN write-up (DOI 10.2139/ssrn.6606558).",
+          "x-mcp-tool": {
+            name: "get_methodology",
+            description:
+              "1:1 MCP analog. The MCP tool returns the same HowTo + summary metadata.",
+            relation: "exact",
+            annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
+          },
+          responses: {
+            "200": {
+              description: "Methodology HowTo + metadata",
+              content: { "application/json": { schema: { type: "object", additionalProperties: true } } },
+            },
+          },
+        },
+      },
+      "/api/v1/glossary.json": {
+        get: {
+          tags: ["v1", "glossary"],
+          operationId: "getGlossaryV1",
+          summary: "Controlled-vocabulary glossary (DefinedTermSet)",
+          description:
+            "Schema.org DefinedTermSet of 18 controlled-vocabulary terms used across signals, sectors, and methodology.",
+          responses: {
+            "200": {
+              description: "Glossary as DefinedTermSet",
+              content: { "application/json": { schema: { type: "object", additionalProperties: true } } },
+            },
+          },
+        },
+      },
+      "/api/v1/openapi.json": {
+        get: {
+          tags: ["v1", "agents"],
+          operationId: "getOpenapiV1",
+          summary: "This document — versioned alias of /api/openapi.json",
+          description:
+            "Self-referential. Some agents pin to versioned URLs for the descriptor itself.",
+          responses: {
+            "200": {
+              description: "OpenAPI 3.1 spec (this document)",
               content: { "application/json": { schema: { type: "object", additionalProperties: true } } },
             },
           },
@@ -673,11 +859,226 @@ export async function GET() {
       manifestUrl: `${BASE_URL}/.well-known/mcp.json`,
       protocolVersion: "2025-06-18",
     },
+    "x-mcp-server": {
+      protocolVersion: "2025-06-18",
+      server: {
+        name: "vc-deal-flow-signal",
+        title: "VC Deal Flow Signal",
+        version: "1.2.0",
+        instructions:
+          "Read-only signal data on startup engineering acceleration. All data CC BY 4.0 — cite signals.gitdealflow.com when used in derivative work.",
+      },
+      transports: [
+        {
+          type: "streamable-http",
+          url: `${BASE_URL}/api/mcp/rpc`,
+          authentication: "none-for-free-tools; bearer gdf_v2 for get_deep_signal",
+        },
+        {
+          type: "stdio",
+          npm: "@gitdealflow/mcp-signal",
+          command: "npx -y @gitdealflow/mcp-signal",
+        },
+      ],
+      directories: [
+        { name: "Smithery", url: "https://smithery.ai/servers/kindrat86/mcp-deal-flow-signal" },
+        { name: "Glama", url: "https://glama.ai/mcp/servers/kindrat86/mcp-deal-flow-signal" },
+      ],
+      tools: [
+        {
+          name: "get_trending_startups",
+          description: "Top 20 startups across all sectors for the current weekly period.",
+          httpAnalog: { method: "GET", path: "/api/signals.json", projection: "trending[]" },
+          inputSchema: { type: "object", properties: {}, additionalProperties: false },
+          annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
+        },
+        {
+          name: "search_startups_by_sector",
+          description: "Startups within a single sector ranked by engineering acceleration.",
+          httpAnalog: { method: "GET", path: "/api/signals.json", projection: "sectors[?slug==input.sector_slug]" },
+          inputSchema: {
+            type: "object",
+            properties: {
+              sector_slug: { type: "string", description: "Sector slug (e.g. 'devtools', 'ai-infrastructure')." },
+            },
+            required: ["sector_slug"],
+            additionalProperties: false,
+          },
+          annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
+        },
+        {
+          name: "get_startup_signal",
+          description: "Full profile for a single tracked startup by display name or GitHub org slug.",
+          httpAnalog: { method: "GET", path: "/api/signal", argumentMapping: { name: "company" } },
+          inputSchema: {
+            type: "object",
+            properties: {
+              name: { type: "string", description: "Startup display name or GitHub org slug." },
+            },
+            required: ["name"],
+            additionalProperties: false,
+          },
+          annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
+        },
+        {
+          name: "get_signals_summary",
+          description: "Period, sector and startup counts, last refresh, format URLs.",
+          httpAnalog: { method: "GET", path: "/api/signals.json", projection: "meta + format URLs" },
+          inputSchema: { type: "object", properties: {}, additionalProperties: false },
+          annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
+        },
+        {
+          name: "get_scout_receipts",
+          description: "Scout Score (0-100) for a GitHub user — backwards-looking proof of taste.",
+          httpAnalog: { method: "GET", path: "/api/receipts/{username}", argumentMapping: { github_username: "username" } },
+          inputSchema: {
+            type: "object",
+            properties: {
+              github_username: {
+                type: "string",
+                pattern: "^[a-zA-Z0-9](?:[a-zA-Z0-9]|-(?=[a-zA-Z0-9])){0,38}$",
+                description: "GitHub username, 1-39 chars, alphanumeric + single hyphens.",
+              },
+            },
+            required: ["github_username"],
+            additionalProperties: false,
+          },
+          annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
+        },
+        {
+          name: "get_methodology",
+          description: "Full reproducible signal-computation methodology (HowTo).",
+          httpAnalog: { method: "GET", path: "/api/v1/methodology.json" },
+          inputSchema: { type: "object", properties: {}, additionalProperties: false },
+          annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
+        },
+        {
+          name: "get_deep_signal",
+          description: "PAID — €0.19/call (or USDC 0.19 via x402). Returns enriched signal: composite score, sector percentile, plain-English thesis, comparables, multi-period history.",
+          httpAnalog: [
+            { method: "POST", path: "/api/agent/deep-signal", auth: "creditPackKey", paid: true, unitPrice: "EUR 0.19" },
+            { method: "POST", path: "/api/agent/deep-signal/x402", auth: "x402", paid: true, unitPrice: "USDC 0.19" },
+          ],
+          inputSchema: {
+            type: "object",
+            properties: {
+              name: { type: "string", description: "Startup display name or GitHub org slug." },
+            },
+            required: ["name"],
+            additionalProperties: false,
+          },
+          annotations: { readOnlyHint: false, idempotentHint: true, openWorldHint: false },
+          paid: true,
+        },
+        {
+          name: "share_result",
+          description: "Compose a sharable post for X / Bluesky / Mastodon / LinkedIn / Telegram from a signal takeaway.",
+          httpAnalog: null,
+          requiresUserApproval: true,
+          inputSchema: {
+            type: "object",
+            properties: {
+              text: { type: "string", minLength: 10, maxLength: 200 },
+              network: {
+                type: "string",
+                enum: ["all", "twitter", "bluesky", "mastodon", "linkedin", "telegram"],
+                default: "all",
+              },
+              includeAttribution: { type: "boolean", default: true },
+            },
+            required: ["text"],
+            additionalProperties: false,
+          },
+          annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
+        },
+      ],
+      resources: [
+        {
+          uri: "signal://trending",
+          name: "Trending Startups (current week)",
+          description: "Top 20 startups across all sectors for the current weekly period.",
+          mimeType: "application/json",
+          httpAnalog: "GET /api/signals.json",
+        },
+        {
+          uri: "signal://summary",
+          name: "Dataset Summary",
+          description: "Period, sector and startup counts, last refresh, format URLs.",
+          mimeType: "application/json",
+          httpAnalog: "GET /api/v1/signals.json (meta sub-object)",
+        },
+        {
+          uri: "signal://methodology",
+          name: "Signal Methodology",
+          description: "Full methodology document.",
+          mimeType: "text/markdown",
+          httpAnalog: "GET /api/v1/methodology.json",
+        },
+      ],
+      resourceTemplates: [
+        {
+          uriTemplate: "signal://startup/{name}",
+          name: "Startup Signal Profile",
+          description: "Full profile for a single tracked startup.",
+          mimeType: "application/json",
+          httpAnalog: "GET /api/signal?company={name}",
+        },
+        {
+          uriTemplate: "signal://sector/{slug}",
+          name: "Sector Signal Snapshot",
+          description: "All tracked startups within a sector.",
+          mimeType: "application/json",
+          httpAnalog: "GET /api/signals.json (sectors[slug])",
+        },
+      ],
+      prompts: [
+        {
+          name: "weekly_digest",
+          description: "Monday-morning Signal Digest from the current top-20 trending startups.",
+          arguments: [],
+        },
+        {
+          name: "sector_deep_dive",
+          description: "Sector intelligence brief — top movers, dark horses, thesis follow-ups.",
+          arguments: [{ name: "sector", description: "Sector slug.", required: true }],
+        },
+        {
+          name: "find_dark_horse",
+          description: "Surface one under-the-radar startup with sustained acceleration.",
+          arguments: [{ name: "sector", description: "Optional sector slug.", required: false }],
+        },
+        {
+          name: "compare_startups",
+          description: "Head-to-head investor comparison of two named startups.",
+          arguments: [
+            { name: "name_a", description: "First startup.", required: true },
+            { name: "name_b", description: "Second startup.", required: true },
+          ],
+        },
+        {
+          name: "acceleration_memo",
+          description: "One-page deal memo grounded in the live signal profile of a named startup.",
+          arguments: [{ name: "name", description: "Startup display name or GitHub org slug.", required: true }],
+        },
+      ],
+    },
     "x-a2a": {
       agentCardUrl: `${BASE_URL}/.well-known/agent-card.json`,
       jsonrpcEndpoint: `${BASE_URL}/api/a2a`,
       protocolVersion: "0.3.0",
     },
+    "x-changelog": [
+      {
+        version: "1.2.0",
+        date: "2026-05-07",
+        changes: [
+          "Added x-mcp-tool extensions to 6 operations with MCP analogs (get_signals_summary, get_startup_signal, get_scout_receipts, get_methodology, get_deep_signal x2 variants).",
+          "Added top-level x-mcp-server with full tool/resource/prompt enumeration including HTTP analog mapping.",
+          "Documented 9 /api/v1/* versioned endpoints (signals, agents, answers, changelog, dataset, faq, methodology, glossary, openapi).",
+        ],
+      },
+      { version: "1.1.0", date: "2026-04-22", changes: ["Initial public spec."] },
+    ],
   };
 
   return new Response(JSON.stringify(spec, null, 2), {
