@@ -2,7 +2,10 @@
 
 import { useState } from "react";
 
-const BASE_CHECKOUT = "https://gitdealflow.com/#firstlook";
+// Base checkout creates a Stripe Checkout Session server-side with
+// setup_future_usage='off_session', so the saved card can be reused for
+// one-click OTOs on /firstlook/thanks. The bump path stays on the legacy
+// Sector Sweep Payment Link — bumped buyers skip the OTO ladder by design.
 const BUMP_CHECKOUT = "https://buy.stripe.com/bJe14m34DbNC6gm1by0x204";
 
 const BASE_LINE = {
@@ -23,7 +26,6 @@ export default function CartPreview() {
 
   const subtotal = BASE_LINE.price + (bumpOn ? BUMP_LINE.price : 0);
   const youSave = bumpOn ? BUMP_LINE.strike - BUMP_LINE.price : 0;
-  const ctaHref = bumpOn ? BUMP_CHECKOUT : BASE_CHECKOUT;
   const ctaLabel = bumpOn
     ? `Check out — €${subtotal.toLocaleString("en-US")} →`
     : `Check out — €${subtotal} →`;
@@ -116,12 +118,24 @@ export default function CartPreview() {
           </p>
         )}
 
-        <a
-          href={ctaHref}
-          className="block text-center w-full rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm sm:text-base py-3 sm:py-3.5 shadow-lg shadow-amber-500/20 transition-colors"
-        >
-          {ctaLabel}
-        </a>
+        {bumpOn ? (
+          <a
+            href={BUMP_CHECKOUT}
+            className="block text-center w-full rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm sm:text-base py-3 sm:py-3.5 shadow-lg shadow-amber-500/20 transition-colors"
+          >
+            {ctaLabel}
+          </a>
+        ) : (
+          <form action="/api/checkout/session" method="POST">
+            <input type="hidden" name="tier" value="firstlook" />
+            <button
+              type="submit"
+              className="block text-center w-full rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm sm:text-base py-3 sm:py-3.5 shadow-lg shadow-amber-500/20 transition-colors"
+            >
+              {ctaLabel}
+            </button>
+          </form>
+        )}
 
         <ul className="grid grid-cols-3 gap-1.5 text-[10px] sm:text-[11px] text-gray-500 pt-1">
           <li className="flex items-center gap-1">
