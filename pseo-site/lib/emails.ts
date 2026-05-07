@@ -900,3 +900,150 @@ export const BOOK_DRIP = [
 `, "book-day7"),
   },
 ];
+
+/**
+ * Per-tier soap-opera sequences — Brunson value-ladder fork (2026-05-07).
+ *
+ * The /landing#signup qualifier captures `quiz_route` ∈ {F,T,D,I}, piggybacks
+ * it through /api/subscribe → /api/verify, and verify dispatches the
+ * post-confirmation drip to the matching sequence below. Default (route
+ * missing or unknown) falls back to SOAP_OPERA_EMAILS.
+ *
+ * Tier mapping (from landing ROUTE_LABELS):
+ *   F = Exploring (0–1 angel checks/yr) — free digest IS the product
+ *   T = Building cadence (2–5)           — €7 First Look is the right rung
+ *   D = Actively sourcing (6–20)         — €9.97/mo Dashboard is the target
+ *   I = Insider tier (20+ or fund)       — €97/mo Insider + €1,997 Sweep
+ *
+ * Strategy: SOAP_OPERA_EMAILS is tuned for D (the modal reader). F/T/I are
+ * derived from D by (1) skipping pitch emails that don't apply per tier and
+ * (2) swapping the Day-30 "quiet decision" close with a tier-aligned version.
+ * Universal storytelling and book-promo emails are shared across all four
+ * tiers — the methodology and character story don't change per buyer profile.
+ *
+ * Index map (verified against SOAP_OPERA_EMAILS layout 2026-05-07):
+ *   0=D0  1=D1  2=D2  3=D3  4=D3.5  5=D4 €7  6=D5 Dashboard  7=D6 Insider
+ *   8=D8 Book  9=D9 public-data  10=D11 Book2  11=D12 Seinfeld
+ *   12=D14 missed-deal  13=D17 Sunday-play  14=D21 false-pos
+ *   15=D25 regression  16=D30 quiet-decision  17=D45 Insider2
+ *   18=D60 Sector Sweep  19=D75 Crystal Ball  20=D90 SoE  21=D180 SoE2
+ */
+
+type Tier = "F" | "T" | "D" | "I";
+type SoapOperaEmail = (typeof SOAP_OPERA_EMAILS)[number];
+
+// Day-30 close, tier F — "free is the product". No upsell pressure; the
+// reader self-described as a 0-1 check writer, so the right end-state is
+// "keep reading the free digest forever" with the €7 First Look named only
+// as a future option if their cadence changes.
+const D30_F: SoapOperaEmail = {
+  subject: "Thirty days in. The free version is the version.",
+  delayMs: THIRTY_MIN + 30 * ONE_DAY,
+  html: wrap(`
+<p>You've been on this list for about a month. Long enough to know whether the rhythm fits.</p>
+<p>You told me on signup that you've written 0–1 angel checks in the past year. Translation: you're in the "watching, learning, maybe one day" tier — and that's the version of this product that's free forever, no asterisk.</p>
+<p>The free Sunday digest <strong>is</strong> the product on your tier. Five startups every Monday, sector-tagged, ranked, no commitment. That stays exactly as it is. I'd rather you read for ten years and write your first cheque informed than upgrade once and resent it.</p>
+<p>If your cadence ever crosses into the 2–5/year range, the right next rung is the <strong>€7 First Look Pass</strong> — you pick a sector at checkout, I send the Sector Deep Dive PDF + raw CSV in 24 hours. €7 is roughly what a coffee costs in Lisbon; it's the lowest-friction way to test the deeper data on your own thesis without committing to a subscription.</p>
+<p>If your range is still 0–1/year, you don't need anything else from me. Keep the Sunday digest. Read the SSRN paper at <a href="https://ssrn.com/abstract=6606558" style="color:#0ea5e9;">ssrn.com/abstract=6606558</a> if you want the methodology end-to-end. The book is free at <a href="${SIGNALS}/book" style="color:#0ea5e9;">${SIGNALS}/book</a>.</p>
+<p>That's the offer for your tier: free, forever. The soap opera ends here, the rhythm continues. Sunday digest hits as usual this weekend.</p>
+<p>Talk soon —<br>${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. SSRN paper (n=219, the methodology backbone): <a href="https://ssrn.com/abstract=6606558" style="color:#0ea5e9;">ssrn.com/abstract=6606558</a> · Free book: <a href="${SIGNALS}/book" style="color:#0ea5e9;">${SIGNALS}/book</a> · Funnel hub if you ever want to see all 9 doors: <a href="${SIGNALS}/funnels" style="color:#0ea5e9;">${SIGNALS}/funnels</a></p>
+`),
+};
+
+// Day-30 close, tier T — "€7 is the right test". They self-described as
+// 2-5 checks/yr (building cadence), so the First Look Pass is the perfect
+// micro-tripwire. Dashboard is the next rung *after* the First Look proves
+// out, never before. No Insider/Sweep pitch — those are two rungs too high.
+const D30_T: SoapOperaEmail = {
+  subject: "Thirty days in. The €7 question.",
+  delayMs: THIRTY_MIN + 30 * ONE_DAY,
+  html: wrap(`
+<p>You've been on this list for about a month. Long enough to know whether the rhythm fits.</p>
+<p>You told me on signup that you've written 2–5 angel checks in the past year. Translation: you're not exploring anymore — you're building cadence. The right rung for you isn't a €97 subscription; it's the <strong>€7 First Look Pass</strong>.</p>
+<p>Here's the test, plain. You pick one sector at checkout — fintech infra, AI/ML, dev tools, healthtech, whichever matches your thesis closest. Within 24 hours I send you the full Sector Deep Dive PDF: top 25 ranked orgs, 14-day acceleration deltas, contributor maps, signal-type classification, plus the top 3 names that haven't shown up on Crunchbase yet. Plus the raw CSV. Plus a written walkthrough of what stood out.</p>
+<p>If the deep dive surfaces three orgs you'd genuinely consider writing a check into, the €7 was the right call. The First Look Pass also <em>credits 100% to the Dashboard</em> if you upgrade within 14 days — so you don't pay twice.</p>
+<p>If it surfaces nothing useful, you keep the report and the CSV and you've spent €7 to find that out. Either way, you've tested step 5 of the conversion story on your own thesis without committing.</p>
+<p>The Dashboard founding rate (€9.97/mo, locked forever) is the right rung <em>after</em> the First Look proves out, not before. No Insider or Sector Sweep pitch from me at your tier — those are tools for fund-scale operators, and you're not there yet.</p>
+<p>The free digest stays free either way. Sunday hits as usual this weekend.</p>
+<p>Talk soon —<br>${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. First Look checkout (€7, 24h delivery, credits 100% to Dashboard): <a href="${SITE}/#firstlook" style="color:#0ea5e9;">${SITE}/#firstlook</a> · Quiz if you'd rather see all the rungs first: <a href="${SIGNALS}/quiz" style="color:#0ea5e9;">${SIGNALS}/quiz</a></p>
+`),
+};
+
+// Day-30 close, tier I — "fund-tier rung". €9.97/mo reads like noise on a
+// fund operating budget; €97 + €1,997 are the right denominations. Lead with
+// the 24-hour Sunday-night lead (the only thing Insider actually sells) and
+// the Sector Sweep credit-back loop.
+const D30_I: SoapOperaEmail = {
+  subject: "Thirty days in. The fund-tier rung.",
+  delayMs: THIRTY_MIN + 30 * ONE_DAY,
+  html: wrap(`
+<p>You've been on this list for about a month. Long enough to know whether the rhythm fits.</p>
+<p>You told me on signup that you write 20+ checks per year, or you run a fund or syndicate. Translation: the €9.97/mo Dashboard is too small a tool to register on your operating budget. The right rungs for your tier are the <strong>Insider Circle</strong> and the <strong>Sector Sweep</strong>.</p>
+<p><strong>Insider Circle — €97/mo, founding rate, locked for the lifetime of the subscription.</strong></p>
+<ul>
+<li>Next Sunday's 5 picks land in your inbox <em>24 hours before</em> the public Monday digest. One full sourcing day before any other investor sees them.</li>
+<li>Closed Telegram with the founder and the rest of the fund-tier subscribers. Real-time pings when an org crosses the 2× contributor-influx + commit-velocity-acceleration threshold.</li>
+<li>JSON / CSV API for piping the panel into your existing diligence stack.</li>
+<li>Direct founder line — reply to any Insider email and you get a human inside one business day.</li>
+<li>One custom watchlist co-built around your thesis on signup.</li>
+</ul>
+<p><strong>Sector Sweep — €1,997 one-time, capped at 8 sweeps per quarter (Q3 2026: 7 of 8 still open).</strong></p>
+<ul>
+<li>40-page custom PDF on the sector you pick. Raw CSV of every org × every metric. Top-five deep dives with diligence prompts. Three pre-Crunchbase early-stage targets. 14-day Q&amp;A window for follow-up cuts.</li>
+<li>100% credited to Insider Circle if you upgrade within 60 days of receiving the Sweep — that's roughly your first 20 months of Insider, paid in full.</li>
+<li>30-day Signal-or-It's-Free guarantee. If we don't surface three orgs you didn't already know about, reply REFUND.</li>
+</ul>
+<p>The math at fund scale: one founder per quarter that you reached because you had a Sunday-night head-start, at a €5k–€50k angel range with even a 3× exit on one in five, lands somewhere between €15k and €150k of expected value per head-start. €97/mo is €1,164/yr. The numbers don't work the other way.</p>
+<p>The free Sunday digest stays free regardless. The soap opera ends here, the rhythm continues. Sunday hits as usual this weekend.</p>
+<p>Talk soon —<br>${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. Insider founding rate (€97/mo, 24h lead, closed Telegram): <a href="${SIGNALS}/insider" style="color:#0ea5e9;">${SIGNALS}/insider</a> · Sector Sweep (€1,997, 7 of 8 Q3 slots open): <a href="${SIGNALS}/sector-sweep" style="color:#0ea5e9;">${SIGNALS}/sector-sweep</a> · Email <a href="mailto:signal@gitdealflow.com?subject=Sector%20Sweep" style="color:#0ea5e9;">signal@gitdealflow.com</a> with the sector and the spec lands in your inbox inside one business day.</p>
+`),
+};
+
+// Per-tier override map. Key = SOAP_OPERA_EMAILS index. Value "skip" drops
+// the email from the tier's sequence; an object replaces it. Missing key
+// keeps SOAP_OPERA_EMAILS[i] verbatim.
+const TIER_OVERRIDES: Record<Tier, Record<number, "skip" | SoapOperaEmail>> = {
+  F: {
+    5: "skip", // D4 €7 First Look — pre-buyer at 0-1 checks/yr, don't push paid
+    6: "skip", // D5 Dashboard close — pre-buyer; would feel like a cold pitch
+    7: "skip", // D6 Insider walkthrough — €97/mo is two rungs too high
+    16: D30_F, // D30 — rewritten to "stay free, here's what that means"
+    17: "skip", // D45 Insider upsell — same reason as D6
+    18: "skip", // D60 Sector Sweep — €1,997 is laughable at this tier
+  },
+  T: {
+    7: "skip", // D6 Insider walkthrough — too high a rung for 2-5 checks/yr
+    16: D30_T, // D30 — rewritten to focus on the €7 First Look as the right test
+    17: "skip", // D45 Insider upsell — wait until they've moved through First Look + Dashboard
+    18: "skip", // D60 Sector Sweep — fund-scale denomination, not building-cadence
+  },
+  D: {
+    // Existing SOAP_OPERA_EMAILS sequence is tuned for D (the modal reader).
+    // No overrides — this builds the same array as SOAP_OPERA_EMAILS via the
+    // builder, kept for API symmetry with F/T/I.
+  },
+  I: {
+    5: "skip", // D4 €7 First Look — €7 reads insulting on a fund budget
+    6: "skip", // D5 Dashboard close (Tuesday morning) — €9.97/mo doesn't register
+    16: D30_I, // D30 — rewritten to lead with Insider 24h-lead + Sector Sweep
+  },
+};
+
+function buildTierSequence(tier: Tier): SoapOperaEmail[] {
+  const overrides = TIER_OVERRIDES[tier];
+  const out: SoapOperaEmail[] = [];
+  for (let i = 0; i < SOAP_OPERA_EMAILS.length; i++) {
+    const ov = overrides[i];
+    if (ov === "skip") continue;
+    out.push(typeof ov === "object" && ov !== null ? ov : SOAP_OPERA_EMAILS[i]);
+  }
+  return out;
+}
+
+export const SOAP_OPERA_F = buildTierSequence("F");
+export const SOAP_OPERA_T = buildTierSequence("T");
+export const SOAP_OPERA_D = buildTierSequence("D");
+export const SOAP_OPERA_I = buildTierSequence("I");
