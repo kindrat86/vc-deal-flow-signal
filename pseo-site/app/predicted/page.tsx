@@ -9,6 +9,7 @@ import {
   computeScorecard,
   fmtLongDate,
   isPredictionOutcomeHit,
+  buildClaimReviewItems,
   type PredictionOutcome,
 } from "@/lib/predictions";
 
@@ -68,6 +69,17 @@ export default function PredictedPage() {
       </div>
     );
   }
+
+  // F4 — top-level ClaimReview blocks (one per pick) per the schema rule
+  // documented in feedback_review_jsonld_must_be_top_level.md: ClaimReview
+  // must sit at @graph top-level, never nested under an Article's `review:`.
+  // Current-week picks are still pre-grading-window so each emits
+  // alternateName "Unproven" with ratingValue 0 — Google's controlled
+  // vocabulary for "on the record, not yet adjudicated".
+  const claimReviewItems = buildClaimReviewItems(week, {
+    skipExcluded: true,
+    includePending: true,
+  });
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -130,6 +142,7 @@ export default function PredictedPage() {
           description: p.thesis,
         })),
       },
+      ...claimReviewItems,
     ],
   };
 

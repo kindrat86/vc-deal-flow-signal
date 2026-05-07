@@ -177,3 +177,101 @@ export function fmtLongDate(iso: string): string {
 export function isPredictionOutcomeHit(o: PredictionOutcome): boolean {
   return o !== null && HIT_OUTCOMES.has(o);
 }
+
+/**
+ * Map a prediction outcome to the controlled Schema.org / Google ClaimReview
+ * rating. Resolved picks use Google's fact-check vocabulary so the rendered
+ * ClaimReview blocks are rich-result eligible. Pending picks emit "Unproven"
+ * (Google-accepted) with ratingValue 0 — communicating "on the record, not
+ * yet adjudicated".
+ */
+export function predictionOutcomeRating(o: PredictionOutcome): {
+  ratingValue: string;
+  alternateName: string;
+} {
+  if (o === "raised" || o === "acquired" || o === "ipo") {
+    return { ratingValue: "5", alternateName: "True" };
+  }
+  if (o === "other_milestone") {
+    return { ratingValue: "3", alternateName: "Mixture" };
+  }
+  if (o === "no_event" || o === "shutdown") {
+    return { ratingValue: "1", alternateName: "False" };
+  }
+  // outcome === null (pending) OR "excluded" handled by callers
+  return { ratingValue: "0", alternateName: "Unproven" };
+}
+
+export interface ClaimReviewBuildOptions {
+  /** Skip entries with outcome === "excluded". Defaults to true. */
+  skipExcluded?: boolean;
+  /** Whether to emit entries for pending picks (outcome === null). Defaults to true. */
+  includePending?: boolean;
+}
+
+/**
+ * Build top-level JSON-LD @graph ClaimReview entries for a week's picks.
+ *
+ * IMPORTANT — Schema rule: ClaimReview MUST sit at the top level of a JSON-LD
+ * @graph. It must NOT be nested under an Article's `review` property while
+ * also carrying `itemReviewed` — that produces the "directional conflict"
+ * warning Google Search Console raised on 2026-05-07. Spread the array
+ * returned by this helper directly into your `@graph: [...]` array.
+ */
+export function buildClaimReviewItems(
+  week: PredictionWeek,
+  opts: ClaimReviewBuildOptions = {},
+): Array<Record<string, unknown>> {
+  const { skipExcluded = true, includePending = true } = opts;
+  const items: Array<Record<string, unknown>> = [];
+  for (const p of week.picks) {
+    if (skipExcluded && p.outcome === "excluded") continue;
+    if (!includePending && p.outcome === null) continue;
+    const rating = predictionOutcomeRating(p.outcome);
+    const pickAnchor = `https://signals.gitdealflow.com/predicted/${week.slug}#${p.name}`;
+    const claimAt = p.outcomeAt ?? week.publishedAt;
+    const claimReviewBody: Record<string, unknown> = {
+      "@type": "ClaimReview",
+      "@id": `${pickAnchor}-claimreview`,
+      url: pickAnchor,
+      datePublished: week.publishedAt,
+      dateModified: claimAt,
+      author: {
+        "@type": "Organization",
+        name: "VC Deal Flow Signal",
+        url: "https://gitdealflow.com",
+      },
+      claimReviewed: `${p.displayName} (${p.sector}) engineering acceleration crossed our signal threshold at ${p.commitVelocityChange}; the published prediction was a fundraise, acquisition, or IPO announcement within ${week.windowDays} days of ${week.publishedAt.slice(0, 10)}.`,
+      itemReviewed: {
+        "@type": "Claim",
+        "@id": `${pickAnchor}-claim`,
+        author: {
+          "@type": "Organization",
+          name: "VC Deal Flow Signal",
+        },
+        datePublished: week.publishedAt,
+        firstAppearance: {
+          "@type": "OpinionNewsArticle",
+          url: `https://signals.gitdealflow.com/predicted/${week.slug}`,
+          datePublished: week.publishedAt,
+        },
+        appearance: {
+          "@type": "OpinionNewsArticle",
+          url: pickAnchor,
+        },
+      },
+      reviewRating: {
+        "@type": "Rating",
+        ratingValue: rating.ratingValue,
+        bestRating: "5",
+        worstRating: "0",
+        alternateName: rating.alternateName,
+      },
+    };
+    if (p.outcomeNotes) {
+      claimReviewBody.reviewBody = p.outcomeNotes;
+    }
+    items.push(claimReviewBody);
+  }
+  return items;
+}
