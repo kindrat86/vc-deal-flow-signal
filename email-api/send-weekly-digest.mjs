@@ -19,6 +19,7 @@ import { Resend } from "resend";
 import { readFileSync, existsSync } from "fs";
 import { resolve, dirname, join } from "path";
 import { fileURLToPath } from "url";
+import { isExcluded } from "./excluded-emails.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = resolve(__dirname, "..");
@@ -162,7 +163,11 @@ async function alreadySentIds() {
 }
 
 const [subs, sent] = await Promise.all([fetchAllActive(), alreadySentIds()]);
-let queue = subs.filter((s) => !sent.has(s.id));
+const excludedHits = subs.filter((s) => isExcluded(s.email)).map((s) => s.email);
+if (excludedHits.length) {
+  console.log(`Skipping ${excludedHits.length} excluded address(es): ${excludedHits.join(", ")}`);
+}
+let queue = subs.filter((s) => !sent.has(s.id) && !isExcluded(s.email));
 if (LIMIT > 0) queue = queue.slice(0, LIMIT);
 
 console.log(`Digest file: ${FILE}`);
