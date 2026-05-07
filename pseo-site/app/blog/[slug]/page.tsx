@@ -53,6 +53,7 @@ export async function generateMetadata({
       title: post.title,
       description: post.description,
       type: "article",
+      url: `/blog/${slug}`,
       publishedTime: post.date,
       modifiedTime,
       authors: ["VC Deal Flow Signal Editorial"],

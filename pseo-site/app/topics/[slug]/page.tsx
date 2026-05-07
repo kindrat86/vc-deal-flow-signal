@@ -31,6 +31,7 @@ export async function generateMetadata({
       title: `${pillar.name} — Topical Series`,
       description: pillar.description,
       type: "website",
+      url: `/topics/${slug}`,
     },
     twitter: {
       card: "summary_large_image",

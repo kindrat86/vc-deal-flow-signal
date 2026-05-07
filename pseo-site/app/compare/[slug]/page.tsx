@@ -30,6 +30,7 @@ export async function generateMetadata({
       title: comp.title,
       description: comp.description,
       type: "article",
+      url: `/compare/${slug}`,
     },
     twitter: {
       card: "summary_large_image",
