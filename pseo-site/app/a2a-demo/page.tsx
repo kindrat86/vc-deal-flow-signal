@@ -14,6 +14,7 @@ export const metadata: Metadata = {
     description:
       "Crunchbase API: $20K/yr. GitDealFlow A2A: free. Try it now.",
     type: "website",
+    url: "/a2a-demo",
   },
 };
 

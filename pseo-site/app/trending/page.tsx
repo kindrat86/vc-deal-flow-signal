@@ -21,6 +21,7 @@ export const metadata: Metadata = {
     description:
       "Top 20 startups ranked by GitHub engineering acceleration across all sectors. Updated weekly.",
     type: "article",
+    url: "/trending",
   },
   twitter: {
     card: "summary_large_image",

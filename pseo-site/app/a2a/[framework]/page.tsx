@@ -32,6 +32,7 @@ export async function generateMetadata({
     openGraph: {
       title: `${fw.name} + GitDealFlow A2A`,
       description: `Crunchbase API: $20K/yr. GitDealFlow A2A: free. Plug ${fw.name} into our agent in 5 minutes.`,
+      url: `/a2a/${fw.slug}`,
     },
   };
 }

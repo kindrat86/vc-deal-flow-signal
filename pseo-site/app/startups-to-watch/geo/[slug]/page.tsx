@@ -40,6 +40,7 @@ export async function generateMetadata({
       title,
       description,
       type: "article",
+      url: `/startups-to-watch/geo/${slug}`,
     },
     twitter: {
       card: "summary_large_image",

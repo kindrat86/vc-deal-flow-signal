@@ -31,6 +31,7 @@ export async function generateMetadata({
       title: alt.title,
       description: alt.description,
       type: "article",
+      url: `/alternatives/${slug}`,
     },
     twitter: {
       card: "summary_large_image",
