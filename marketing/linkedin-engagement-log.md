@@ -29,3 +29,8 @@
 - Own-post reply reminder: Friday May 1 was a scheduled post day (Tue/Wed/Thu/Fri cadence) — schedule file still missing, check linkedin.com/company/gitdealflow/posts manually and reply within 2h
 - Targets: Gergely Orosz, Avichal Garg, Peter Walker
 - Drafts saved above for copy-paste
+
+## 2026-05-07
+- Own-post reply reminder: Wed May 6 was a scheduled post day — likely the "20-min GitHub due-diligence pass" Substack piece cross-posted; check linkedin.com/company/gitdealflow/posts and reply within 2h
+- Targets: Harry Stebbings, Sarah Tavel, Fabrice Grinda
+- Drafts saved above for copy-paste
