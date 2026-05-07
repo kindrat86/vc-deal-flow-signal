@@ -88,26 +88,26 @@ export default async function ComparisonPage({ params }: PageProps) {
           "@type": "SpeakableSpecification",
           cssSelector: ["h1", ".verdict-block"],
         },
-        review: {
-          "@type": "Review",
-          author: {
-            "@type": "Person",
-            name: "The Data Nerd",
-            url: "https://signals.gitdealflow.com/about",
-          },
-          reviewBody: comp.verdict,
-          reviewRating: {
-            "@type": "Rating",
-            ratingValue: comp.sections.length >= 5 ? 4.5 : 4,
-            bestRating: 5,
-            worstRating: 1,
-            ratingExplanation: `Comparison depth: ${comp.sections.length} dimensions analyzed${comp.featureTable ? ", structured feature table included" : ""}.`,
-          },
-          itemReviewed: {
-            "@type": "SoftwareApplication",
-            name: comp.h1,
-            applicationCategory: "BusinessApplication",
-          },
+      },
+      {
+        "@type": "Review",
+        author: {
+          "@type": "Person",
+          name: "The Data Nerd",
+          url: "https://signals.gitdealflow.com/about",
+        },
+        reviewBody: comp.verdict,
+        reviewRating: {
+          "@type": "Rating",
+          ratingValue: comp.sections.length >= 5 ? 4.5 : 4,
+          bestRating: 5,
+          worstRating: 1,
+          ratingExplanation: `Comparison depth: ${comp.sections.length} dimensions analyzed${comp.featureTable ? ", structured feature table included" : ""}.`,
+        },
+        itemReviewed: {
+          "@type": "SoftwareApplication",
+          name: comp.h1,
+          applicationCategory: "BusinessApplication",
         },
       },
       ...(comp.featureTable
