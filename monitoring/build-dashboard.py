@@ -26,11 +26,12 @@ WINDOW_DAYS = 30
 
 # Exclude the founder + tester accounts from all subscriber metrics.
 # Keep in sync with pseo-site/lib/excluded-emails.ts and email-api/excluded-emails.mjs.
+# sales@sipiteno.com intentionally NOT excluded — kept as a live QA inbox so the
+# founder receives every production send and can spot regressions in real time.
 TESTER_EMAILS = {
     "test@example.com",
     "mkondratyuk86@gmail.com",
     "maryan.kondratyuk@quickstarter.ai",
-    "sales@sipiteno.com",
     "signal@gitdealflow.com",
     "escape@invisibleexit.com",
 }

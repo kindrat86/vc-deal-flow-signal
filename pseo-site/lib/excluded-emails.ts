@@ -12,11 +12,12 @@
  *   - monitoring/build-dashboard.py (TESTER_EMAILS + BOT_EMAILS)
  */
 
+// sales@sipiteno.com intentionally NOT excluded — kept as a live QA inbox so the
+// founder receives every production send and can spot regressions in real time.
 export const TESTER_EMAILS: ReadonlySet<string> = new Set([
   "test@example.com",
   "mkondratyuk86@gmail.com",
   "maryan.kondratyuk@quickstarter.ai",
-  "sales@sipiteno.com",
   "signal@gitdealflow.com",
   "escape@invisibleexit.com",
 ]);

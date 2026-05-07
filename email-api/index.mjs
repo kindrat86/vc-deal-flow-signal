@@ -5,6 +5,7 @@ import { Resend } from "resend";
 import { readFileSync } from "fs";
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";
+import { isExcluded } from "./excluded-emails.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -203,10 +204,12 @@ app.post("/subscribe", async (c) => {
 <p>Time: ${new Date().toISOString()}</p>`,
   }).catch((err) => console.error("Admin notification failed:", err.message));
 
-  // Send welcome email immediately (soap-opera-1)
-  const seq = await pbFetch(
-    `/api/collections/email_sequences/records?filter=(key='soap-opera-1')&perPage=1`
-  );
+  // Send welcome email immediately (soap-opera-1) — skip excluded addresses
+  const seq = isExcluded(email)
+    ? { items: [] }
+    : await pbFetch(
+        `/api/collections/email_sequences/records?filter=(key='soap-opera-1')&perPage=1`
+      );
   if (seq.items && seq.items.length > 0) {
     const welcomeEmail = seq.items[0];
     try {
@@ -276,6 +279,10 @@ app.post("/cron/send-emails", async (c) => {
   let errors = 0;
 
   for (const sub of allSubscribers) {
+    if (isExcluded(sub.email)) {
+      skipped++;
+      continue;
+    }
     const daysSinceSignup = Math.floor(
       (Date.now() - new Date(sub.created).getTime()) / 86400_000
     );
