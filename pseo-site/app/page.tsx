@@ -696,6 +696,8 @@ export default function Home() {
           {
             "@type": "SoftwareApplication",
             name: "Model Context Protocol (MCP)",
+            applicationCategory: "DeveloperApplication",
+            operatingSystem: "Cross-platform (stdio, Streamable HTTP)",
             sameAs: [
               "https://modelcontextprotocol.io",
               "https://github.com/modelcontextprotocol",
@@ -704,11 +706,15 @@ export default function Home() {
           {
             "@type": "SoftwareApplication",
             name: "Claude Desktop",
+            applicationCategory: "DeveloperApplication",
+            operatingSystem: "macOS, Windows",
             sameAs: ["https://www.anthropic.com/claude"],
           },
           {
             "@type": "SoftwareApplication",
             name: "Cursor",
+            applicationCategory: "DeveloperApplication",
+            operatingSystem: "macOS, Windows, Linux",
             sameAs: ["https://cursor.com"],
           },
         ],
