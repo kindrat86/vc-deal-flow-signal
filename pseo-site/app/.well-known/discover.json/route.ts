@@ -8,6 +8,13 @@
  * inventory in one fetch — agent-card, openapi, llms.txt, sitemaps, RSS/
  * Atom, dataset descriptors, AI-policy, freshness manifest, mcp.json, etc.
  *
+ * F2 (2026-05-07) — every Surface now carries a stable `name` (kebab-slug)
+ * and canonical API surfaces carry a populated `endpoints[]` array with
+ * method+path+description tuples so a fresh agent can map operations in
+ * one fetch instead of probing each endpoint. Adds the previously-missing
+ * /api/cite/{format}/{slug} formatter surface that was reachable but not
+ * advertised in this manifest.
+ *
  * Designed for retrieval pipelines that want a one-shot "what does this site
  * expose?" probe before deciding which detailed surface to fetch.
  */
@@ -19,21 +26,16 @@ export const runtime = "nodejs";
 
 const SITE = "https://signals.gitdealflow.com";
 
-interface EndpointParam {
-  name: string;
-  in: "query" | "path" | "header" | "body";
-  required?: boolean;
-  description?: string;
-}
-
 interface Endpoint {
-  method: "GET" | "POST" | "PUT" | "DELETE" | "HEAD";
-  params?: EndpointParam[];
-  contentType?: string;
+  method: string;
+  path: string;
   description?: string;
+  params?: string[];
+  contentType?: string;
 }
 
 interface Surface {
+  name: string;
   url: string;
   format: string;
   category:
@@ -50,209 +52,244 @@ interface Surface {
   endpoints?: Endpoint[];
 }
 
-// Default GET endpoint metadata for most surfaces (no params, plain HTTP GET).
-const GET_ONLY: Endpoint[] = [{ method: "GET" }];
-
 const SURFACES: Surface[] = [
   // ── Agent / MCP discovery ──────────────────────────────
-  { url: `${SITE}/.well-known/agent-card.json`, format: "application/json", category: "agent", description: "A2A AgentCard — canonical agent descriptor with skills, transports, capabilities" },
-  { url: `${SITE}/.well-known/agent.json`, format: "application/json", category: "agent", description: "Legacy alias for agent-card.json (some early A2A adopters probe this name)" },
-  { url: `${SITE}/.well-known/agents.json`, format: "application/json", category: "agent", description: "Toolkit-style agent surface index (mirrors /agents.json)" },
-  { url: `${SITE}/.well-known/mcp.json`, format: "application/json", category: "agent", description: "Model Context Protocol discovery manifest — install snippet, tools list" },
-  { url: `${SITE}/agents.json`, format: "application/json", category: "agent", description: "Root agent toolkit catalog — same body as well-known mirror" },
-  { url: `${SITE}/agents.txt`, format: "text/plain", category: "agent", description: "Human-readable agent policy summary" },
-  { url: `${SITE}/agent-card.json`, format: "application/json", category: "agent", description: "Root alias for /.well-known/agent-card.json" },
-  { url: `${SITE}/.well-known/api-catalog`, format: "application/linkset+json", category: "agent", description: "RFC 9727 Linkset of every agent surface" },
+  {
+    name: "agent-card-wellknown",
+    url: `${SITE}/.well-known/agent-card.json`,
+    format: "application/json",
+    category: "agent",
+    description: "A2A AgentCard — canonical agent descriptor with skills, transports, capabilities",
+    endpoints: [{ method: "GET", path: "/.well-known/agent-card.json", description: "Fetch the canonical A2A AgentCard payload" }],
+  },
+  {
+    name: "agent-card-legacy",
+    url: `${SITE}/.well-known/agent.json`,
+    format: "application/json",
+    category: "agent",
+    description: "Legacy alias for agent-card.json (some early A2A adopters probe this name)",
+    endpoints: [{ method: "GET", path: "/.well-known/agent.json", description: "Same body as /.well-known/agent-card.json" }],
+  },
+  {
+    name: "agents-wellknown",
+    url: `${SITE}/.well-known/agents.json`,
+    format: "application/json",
+    category: "agent",
+    description: "Toolkit-style agent surface index (mirrors /agents.json)",
+    endpoints: [{ method: "GET", path: "/.well-known/agents.json", description: "List of agent toolkits and their capabilities" }],
+  },
+  {
+    name: "mcp-discovery",
+    url: `${SITE}/.well-known/mcp.json`,
+    format: "application/json",
+    category: "agent",
+    description: "Model Context Protocol discovery manifest — install snippet, tools list",
+    endpoints: [{ method: "GET", path: "/.well-known/mcp.json", description: "MCP server discovery manifest" }],
+  },
+  {
+    name: "agents-root",
+    url: `${SITE}/agents.json`,
+    format: "application/json",
+    category: "agent",
+    description: "Root agent toolkit catalog — same body as well-known mirror",
+    endpoints: [{ method: "GET", path: "/agents.json", description: "Same body as /.well-known/agents.json" }],
+  },
+  {
+    name: "agents-policy-text",
+    url: `${SITE}/agents.txt`,
+    format: "text/plain",
+    category: "agent",
+    description: "Human-readable agent policy summary",
+  },
+  {
+    name: "agent-card-root",
+    url: `${SITE}/agent-card.json`,
+    format: "application/json",
+    category: "agent",
+    description: "Root alias for /.well-known/agent-card.json",
+    endpoints: [{ method: "GET", path: "/agent-card.json", description: "Same body as /.well-known/agent-card.json" }],
+  },
+  {
+    name: "api-catalog-linkset",
+    url: `${SITE}/.well-known/api-catalog`,
+    format: "application/linkset+json",
+    category: "agent",
+    description: "RFC 9727 Linkset of every agent surface",
+    endpoints: [{ method: "GET", path: "/.well-known/api-catalog", description: "RFC 9727 Linkset linking every agent + API surface" }],
+  },
+  {
+    name: "mcp-rpc",
+    url: `${SITE}/api/mcp/rpc`,
+    format: "application/json",
+    category: "agent",
+    description: "Streamable MCP JSON-RPC 2.0 endpoint — 7 free tools + 1 paid (x402 €0.19 USDC)",
+    endpoints: [
+      { method: "POST", path: "/api/mcp/rpc", description: "JSON-RPC 2.0 envelope; method=initialize" },
+      { method: "POST", path: "/api/mcp/rpc", description: "JSON-RPC method=tools/list — enumerate available tools" },
+      { method: "POST", path: "/api/mcp/rpc", description: "JSON-RPC tools/call name=get_trending_startups (read-only)", params: ["sector?", "limit?"] },
+      { method: "POST", path: "/api/mcp/rpc", description: "JSON-RPC tools/call name=search_startups_by_sector", params: ["sector", "limit?"] },
+      { method: "POST", path: "/api/mcp/rpc", description: "JSON-RPC tools/call name=get_startup_signal", params: ["slug"] },
+      { method: "POST", path: "/api/mcp/rpc", description: "JSON-RPC tools/call name=get_signals_summary" },
+      { method: "POST", path: "/api/mcp/rpc", description: "JSON-RPC tools/call name=get_scout_receipts", params: ["github_username"] },
+      { method: "POST", path: "/api/mcp/rpc", description: "JSON-RPC tools/call name=get_methodology" },
+      { method: "POST", path: "/api/mcp/rpc", description: "JSON-RPC tools/call name=get_deep_signal (paid, x402 €0.19 USDC on Base)", params: ["slug"] },
+      { method: "POST", path: "/api/mcp/rpc", description: "JSON-RPC tools/call name=share_result (requires user approval token)", params: ["payload", "userApprovalToken"] },
+    ],
+  },
   // ── API discovery ──────────────────────────────────────
-  { url: `${SITE}/api/openapi.json`, format: "application/json", category: "api", description: "OpenAPI 3.1 spec — full API contract with paths, schemas, examples" },
-  { url: `${SITE}/.well-known/openapi.json`, format: "application/json", category: "api", description: "Well-known alias for /api/openapi.json" },
-  { url: `${SITE}/openapi.json`, format: "application/json", category: "api", description: "Root alias for /api/openapi.json" },
-  { url: `${SITE}/api/v1/openapi.json`, format: "application/json", category: "api", description: "Versioned alias for /api/openapi.json (v1-pinned consumers)" },
-  { url: `${SITE}/api/v1/pricing.json`, format: "application/json", category: "api", description: "Machine-readable pricing — six tiers, founding-member rates, guarantees" },
-  { url: `${SITE}/api/v1/glossary.json`, format: "application/ld+json", category: "api", description: "Schema.org DefinedTermSet of 18 controlled-vocabulary terms" },
-  { url: `${SITE}/api/v1/faq.json`, format: "application/ld+json", category: "api", description: "Schema.org FAQPage with 100+ Q&A entries" },
-  { url: `${SITE}/api/v1/methodology.json`, format: "application/ld+json", category: "api", description: "Schema.org HowTo of the 6-step signal computation methodology" },
-  { url: `${SITE}/api/v1/signals.json`, format: "application/json", category: "api", description: "Versioned alias for /api/signals.json (full signal panel)" },
-  { url: `${SITE}/api/v1/agents.json`, format: "application/json", category: "api", description: "Versioned alias for /api/agents.json" },
-  { url: `${SITE}/api/v1/answers.json`, format: "application/json", category: "api", description: "Versioned alias for /api/answers.json (citation-ready answer corpus)" },
-  { url: `${SITE}/api/v1/changelog.json`, format: "application/json", category: "api", description: "Versioned alias for /api/changelog.json" },
-  { url: `${SITE}/api/v1/dataset.jsonl`, format: "application/x-ndjson", category: "api", description: "Versioned alias for /api/dataset.jsonl (HF Datasets compatible)" },
-  { url: `${SITE}/api/health.json`, format: "application/json", category: "api", description: "Service health probe — uptime, last data refresh, surface readiness" },
-  { url: `${SITE}/api/catalog.json`, format: "application/json", category: "api", description: "Browseable catalog of every public surface" },
-  { url: `${SITE}/api/schema.json`, format: "application/schema+json", category: "schema", description: "JSON Schema for the signals payload" },
-  { url: `${SITE}/api/answer`, format: "application/json", category: "api", description: "Live citation-ready answer endpoint with usage envelope" },
-  { url: `${SITE}/api/ask`, format: "application/json", category: "api", description: "Live ask-anything endpoint over the answer corpus" },
+  { name: "openapi-api", url: `${SITE}/api/openapi.json`, format: "application/json", category: "api", description: "OpenAPI 3.1 spec — full API contract with paths, schemas, examples", endpoints: [{ method: "GET", path: "/api/openapi.json", description: "OpenAPI 3.1 contract for every public REST endpoint" }] },
+  { name: "openapi-wellknown", url: `${SITE}/.well-known/openapi.json`, format: "application/json", category: "api", description: "Well-known alias for /api/openapi.json", endpoints: [{ method: "GET", path: "/.well-known/openapi.json", description: "Same body as /api/openapi.json" }] },
+  { name: "openapi-root", url: `${SITE}/openapi.json`, format: "application/json", category: "api", description: "Root alias for /api/openapi.json", endpoints: [{ method: "GET", path: "/openapi.json", description: "Same body as /api/openapi.json" }] },
+  { name: "openapi-v1", url: `${SITE}/api/v1/openapi.json`, format: "application/json", category: "api", description: "Versioned alias for /api/openapi.json (v1-pinned consumers)", endpoints: [{ method: "GET", path: "/api/v1/openapi.json", description: "v1-pinned OpenAPI 3.1 contract" }] },
+  { name: "pricing-v1", url: `${SITE}/api/v1/pricing.json`, format: "application/json", category: "api", description: "Machine-readable pricing — six tiers, founding-member rates, guarantees", endpoints: [{ method: "GET", path: "/api/v1/pricing.json", description: "Pricing tiers with priceCurrency, availability, validUntil" }] },
+  { name: "glossary-v1", url: `${SITE}/api/v1/glossary.json`, format: "application/ld+json", category: "api", description: "Schema.org DefinedTermSet of 18 controlled-vocabulary terms", endpoints: [{ method: "GET", path: "/api/v1/glossary.json", description: "Full DefinedTermSet (Schema.org JSON-LD)" }] },
+  { name: "faq-v1", url: `${SITE}/api/v1/faq.json`, format: "application/ld+json", category: "api", description: "Schema.org FAQPage with 100+ Q&A entries", endpoints: [{ method: "GET", path: "/api/v1/faq.json", description: "Full FAQPage (Schema.org JSON-LD)" }] },
+  { name: "methodology-v1", url: `${SITE}/api/v1/methodology.json`, format: "application/ld+json", category: "api", description: "Schema.org HowTo of the 6-step signal computation methodology", endpoints: [{ method: "GET", path: "/api/v1/methodology.json", description: "Six-step HowTo describing how Scout Score is computed" }] },
+  { name: "signals-v1", url: `${SITE}/api/v1/signals.json`, format: "application/json", category: "api", description: "Versioned alias for /api/signals.json (full signal panel)", endpoints: [{ method: "GET", path: "/api/v1/signals.json", description: "Full ranked signal panel — refresh weekly Mondays ~09:00 UTC", params: ["sector?", "limit?", "offset?"] }] },
+  { name: "agents-v1", url: `${SITE}/api/v1/agents.json`, format: "application/json", category: "api", description: "Versioned alias for /api/agents.json", endpoints: [{ method: "GET", path: "/api/v1/agents.json", description: "Same body as /agents.json (versioned)" }] },
+  { name: "answers-v1", url: `${SITE}/api/v1/answers.json`, format: "application/json", category: "api", description: "Versioned alias for /api/answers.json (citation-ready answer corpus)", endpoints: [{ method: "GET", path: "/api/v1/answers.json", description: "Citation-ready answer corpus, anchored back to /answers/{slug}" }] },
+  { name: "changelog-v1", url: `${SITE}/api/v1/changelog.json`, format: "application/json", category: "api", description: "Versioned alias for /api/changelog.json", endpoints: [{ method: "GET", path: "/api/v1/changelog.json", description: "Granular release notes per surface" }] },
+  { name: "dataset-jsonl-v1", url: `${SITE}/api/v1/dataset.jsonl`, format: "application/x-ndjson", category: "api", description: "Versioned alias for /api/dataset.jsonl (HF Datasets compatible)", endpoints: [{ method: "GET", path: "/api/v1/dataset.jsonl", description: "NDJSON dump of the full signal panel; HF Datasets ready" }] },
+  { name: "health", url: `${SITE}/api/health.json`, format: "application/json", category: "api", description: "Service health probe — uptime, last data refresh, surface readiness", endpoints: [{ method: "GET", path: "/api/health.json", description: "Liveness + freshness probe" }] },
+  { name: "catalog", url: `${SITE}/api/catalog.json`, format: "application/json", category: "api", description: "Browseable catalog of every public surface", endpoints: [{ method: "GET", path: "/api/catalog.json", description: "Browseable catalog of every public surface" }] },
+  { name: "schema-payload", url: `${SITE}/api/schema.json`, format: "application/schema+json", category: "schema", description: "JSON Schema for the signals payload", endpoints: [{ method: "GET", path: "/api/schema.json", description: "JSON Schema describing /api/v1/signals.json items" }] },
+  { name: "answer-live", url: `${SITE}/api/answer`, format: "application/json", category: "api", description: "Live citation-ready answer endpoint with usage envelope", endpoints: [{ method: "GET", path: "/api/answer", description: "Live citation-ready answer; returns 400 with usage envelope when q is empty", params: ["q"] }] },
+  { name: "ask-live", url: `${SITE}/api/ask`, format: "application/json", category: "api", description: "Live ask-anything endpoint over the answer corpus", endpoints: [{ method: "GET", path: "/api/ask", description: "Free-form ask; returns 400 with usage envelope when q is empty", params: ["q"] }] },
+  {
+    name: "cite-formatter",
+    url: `${SITE}/api/cite/{format}/{slug}`,
+    format: "text/plain",
+    category: "api",
+    description: "Per-finding citation formatter — emits BibTeX, APA, or MLA for any /research, /answers, or /receipts slug",
+    endpoints: [
+      { method: "GET", path: "/api/cite/bibtex/{slug}", description: "BibTeX citation for the named slug", params: ["slug"], contentType: "text/x-bibtex" },
+      { method: "GET", path: "/api/cite/apa/{slug}", description: "APA-style citation for the named slug", params: ["slug"], contentType: "text/plain" },
+      { method: "GET", path: "/api/cite/mla/{slug}", description: "MLA-style citation for the named slug", params: ["slug"], contentType: "text/plain" },
+    ],
+  },
   // ── Retrieval / LLM ────────────────────────────────────
-  { url: `${SITE}/llms.txt`, format: "text/plain", category: "retrieval", description: "llms.txt — agent index of every canonical page (172KB)" },
-  { url: `${SITE}/.well-known/llms.txt`, format: "text/plain", category: "retrieval", description: "Well-known alias for /llms.txt" },
-  { url: `${SITE}/llms-full.txt`, format: "text/plain", category: "retrieval", description: "llms-full.txt — extended canonical content for retrieval pipelines" },
-  { url: `${SITE}/.well-known/llms-full.txt`, format: "text/plain", category: "retrieval", description: "Well-known alias for /llms-full.txt" },
-  { url: `${SITE}/qa.jsonl`, format: "application/x-ndjson", category: "retrieval", description: "Q&A NDJSON corpus — citation-ready, RAG-friendly" },
-  { url: `${SITE}/.well-known/qa.jsonl`, format: "application/x-ndjson", category: "retrieval", description: "Well-known alias for /qa.jsonl" },
-  { url: `${SITE}/md/`, format: "text/markdown", category: "retrieval", description: "Markdown mirror — every page available at /md/{path}" },
+  { name: "llms-index", url: `${SITE}/llms.txt`, format: "text/plain", category: "retrieval", description: "llms.txt — agent index of every canonical page (172KB)" },
+  { name: "llms-index-wellknown", url: `${SITE}/.well-known/llms.txt`, format: "text/plain", category: "retrieval", description: "Well-known alias for /llms.txt" },
+  { name: "llms-full", url: `${SITE}/llms-full.txt`, format: "text/plain", category: "retrieval", description: "llms-full.txt — extended canonical content for retrieval pipelines" },
+  { name: "llms-full-wellknown", url: `${SITE}/.well-known/llms-full.txt`, format: "text/plain", category: "retrieval", description: "Well-known alias for /llms-full.txt" },
+  { name: "qa-jsonl", url: `${SITE}/qa.jsonl`, format: "application/x-ndjson", category: "retrieval", description: "Q&A NDJSON corpus — citation-ready, RAG-friendly" },
+  { name: "qa-jsonl-wellknown", url: `${SITE}/.well-known/qa.jsonl`, format: "application/x-ndjson", category: "retrieval", description: "Well-known alias for /qa.jsonl" },
+  { name: "markdown-mirror", url: `${SITE}/md/`, format: "text/markdown", category: "retrieval", description: "Markdown mirror — every page available at /md/{path}" },
   // ── Policy / governance ────────────────────────────────
-  { url: `${SITE}/.well-known/ai-policy.json`, format: "application/json", category: "policy", description: "Machine-readable AI access policy — per-agent allow/disallow + use modes" },
-  { url: `${SITE}/.well-known/ai.json`, format: "application/json", category: "policy", description: "Short-name alias for ai-policy.json" },
-  { url: `${SITE}/ai.txt`, format: "text/plain", category: "policy", description: "Human-readable AI access policy (analog to robots.txt)" },
-  { url: `${SITE}/.well-known/ai.txt`, format: "text/plain", category: "policy", description: "Well-known alias for /ai.txt" },
-  { url: `${SITE}/.well-known/security.txt`, format: "text/plain", category: "policy", description: "RFC 9116 security disclosure contact" },
-  { url: `${SITE}/.well-known/security-policy.json`, format: "application/json", category: "policy", description: "Machine-readable security disclosure policy" },
-  { url: `${SITE}/security.txt`, format: "text/plain", category: "policy", description: "Root alias for /.well-known/security.txt" },
-  { url: `${SITE}/robots.txt`, format: "text/plain", category: "policy", description: "Crawler access rules" },
+  { name: "ai-policy", url: `${SITE}/.well-known/ai-policy.json`, format: "application/json", category: "policy", description: "Machine-readable AI access policy — per-agent allow/disallow + use modes" },
+  { name: "ai-policy-shortname", url: `${SITE}/.well-known/ai.json`, format: "application/json", category: "policy", description: "Short-name alias for ai-policy.json" },
+  { name: "ai-policy-text", url: `${SITE}/ai.txt`, format: "text/plain", category: "policy", description: "Human-readable AI access policy (analog to robots.txt)" },
+  { name: "ai-policy-text-wellknown", url: `${SITE}/.well-known/ai.txt`, format: "text/plain", category: "policy", description: "Well-known alias for /ai.txt" },
+  { name: "security-txt", url: `${SITE}/.well-known/security.txt`, format: "text/plain", category: "policy", description: "RFC 9116 security disclosure contact" },
+  { name: "security-policy", url: `${SITE}/.well-known/security-policy.json`, format: "application/json", category: "policy", description: "Machine-readable security disclosure policy" },
+  { name: "security-txt-root", url: `${SITE}/security.txt`, format: "text/plain", category: "policy", description: "Root alias for /.well-known/security.txt" },
+  { name: "robots", url: `${SITE}/robots.txt`, format: "text/plain", category: "policy", description: "Crawler access rules" },
   // ── Sitemaps ──────────────────────────────────────────
-  { url: `${SITE}/sitemap.xml`, format: "application/xml", category: "sitemap", description: "Root sitemapindex — points to 5 sub-sitemaps + news + i18n + images + videos" },
-  { url: `${SITE}/.well-known/sitemap.xml`, format: "application/xml", category: "sitemap", description: "Well-known alias for /sitemap.xml" },
-  { url: `${SITE}/sitemap.txt`, format: "text/plain", category: "sitemap", description: "Plain-text sitemap (one URL per line)" },
-  { url: `${SITE}/sitemap-i18n.xml`, format: "application/xml", category: "sitemap", description: "i18n sitemap with hreflang annotations across 12 locales" },
-  { url: `${SITE}/sitemap-images.xml`, format: "application/xml", category: "sitemap", description: "Image sitemap with captions" },
-  { url: `${SITE}/sitemap-videos.xml`, format: "application/xml", category: "sitemap", description: "Video sitemap" },
-  { url: `${SITE}/news-sitemap.xml`, format: "application/xml", category: "sitemap", description: "Google News sitemap (recent posts only)" },
+  { name: "sitemap-index", url: `${SITE}/sitemap.xml`, format: "application/xml", category: "sitemap", description: "Root sitemapindex — points to 5 sub-sitemaps + news + i18n + images + videos" },
+  { name: "sitemap-wellknown", url: `${SITE}/.well-known/sitemap.xml`, format: "application/xml", category: "sitemap", description: "Well-known alias for /sitemap.xml" },
+  { name: "sitemap-text", url: `${SITE}/sitemap.txt`, format: "text/plain", category: "sitemap", description: "Plain-text sitemap (one URL per line)" },
+  { name: "sitemap-i18n", url: `${SITE}/sitemap-i18n.xml`, format: "application/xml", category: "sitemap", description: "i18n sitemap with hreflang annotations across 12 locales" },
+  { name: "sitemap-images", url: `${SITE}/sitemap-images.xml`, format: "application/xml", category: "sitemap", description: "Image sitemap with captions" },
+  { name: "sitemap-videos", url: `${SITE}/sitemap-videos.xml`, format: "application/xml", category: "sitemap", description: "Video sitemap" },
+  { name: "sitemap-news", url: `${SITE}/news-sitemap.xml`, format: "application/xml", category: "sitemap", description: "Google News sitemap (recent posts only)" },
   // ── Feeds ─────────────────────────────────────────────
-  { url: `${SITE}/rss.xml`, format: "application/rss+xml", category: "feed", description: "RSS 2.0 feed of recent posts" },
-  { url: `${SITE}/atom.xml`, format: "application/atom+xml", category: "feed", description: "Atom 1.0 feed of recent posts" },
+  { name: "rss", url: `${SITE}/rss.xml`, format: "application/rss+xml", category: "feed", description: "RSS 2.0 feed of recent posts" },
+  { name: "atom", url: `${SITE}/atom.xml`, format: "application/atom+xml", category: "feed", description: "Atom 1.0 feed of recent posts" },
   // ── Dataset / freshness ───────────────────────────────
-  { url: `${SITE}/.well-known/dataset.json`, format: "application/ld+json", category: "schema", description: "DCAT 3 dataset descriptor — distributions, license, cadence" },
-  { url: `${SITE}/dataset.json`, format: "application/ld+json", category: "schema", description: "Root alias for /.well-known/dataset.json" },
-  { url: `${SITE}/.well-known/freshness.json`, format: "application/ld+json", category: "schema", description: "DataFeed manifest — last modified timestamp, refresh cadence per surface" },
+  { name: "dataset-descriptor", url: `${SITE}/.well-known/dataset.json`, format: "application/ld+json", category: "schema", description: "DCAT 3 dataset descriptor — distributions, license, cadence" },
+  { name: "dataset-descriptor-root", url: `${SITE}/dataset.json`, format: "application/ld+json", category: "schema", description: "Root alias for /.well-known/dataset.json" },
+  { name: "freshness", url: `${SITE}/.well-known/freshness.json`, format: "application/ld+json", category: "schema", description: "DataFeed manifest — last modified timestamp, refresh cadence per surface" },
   // ── Identity / federation ─────────────────────────────
-  { url: `${SITE}/.well-known/did-configuration.json`, format: "application/json", category: "identity", description: "DID Configuration — verifiable identity binding" },
-  { url: `${SITE}/.well-known/webfinger`, format: "application/jrd+json", category: "identity", description: "WebFinger account discovery (RFC 7033)" },
-  { url: `${SITE}/.well-known/host-meta`, format: "application/xml", category: "identity", description: "RFC 9079 host metadata" },
-  { url: `${SITE}/.well-known/host-meta.json`, format: "application/json", category: "identity", description: "JSON form of host-meta" },
-  { url: `${SITE}/.well-known/nodeinfo`, format: "application/json", category: "identity", description: "NodeInfo discovery for Fediverse compatibility" },
-  { url: `${SITE}/.well-known/oauth-authorization-server`, format: "application/json", category: "identity", description: "OAuth 2.0 authorization server metadata (RFC 8414)" },
-  { url: `${SITE}/.well-known/openai-search.json`, format: "application/json", category: "schema", description: "OpenAI search policy + agent-card pointer" },
-  { url: `${SITE}/.well-known/model.json`, format: "application/json", category: "schema", description: "Model.json descriptor — capabilities, sources, license" },
-  { url: `${SITE}/.well-known/compliance.json`, format: "application/json", category: "schema", description: "Machine-readable compliance posture" },
+  { name: "did-configuration", url: `${SITE}/.well-known/did-configuration.json`, format: "application/json", category: "identity", description: "DID Configuration — verifiable identity binding" },
+  { name: "webfinger", url: `${SITE}/.well-known/webfinger`, format: "application/jrd+json", category: "identity", description: "WebFinger account discovery (RFC 7033)", endpoints: [{ method: "GET", path: "/.well-known/webfinger", description: "Account discovery via resource= query parameter", params: ["resource"] }] },
+  { name: "host-meta", url: `${SITE}/.well-known/host-meta`, format: "application/xml", category: "identity", description: "RFC 9079 host metadata" },
+  { name: "host-meta-json", url: `${SITE}/.well-known/host-meta.json`, format: "application/json", category: "identity", description: "JSON form of host-meta" },
+  { name: "nodeinfo", url: `${SITE}/.well-known/nodeinfo`, format: "application/json", category: "identity", description: "NodeInfo discovery for Fediverse compatibility" },
+  { name: "oauth-authorization-server", url: `${SITE}/.well-known/oauth-authorization-server`, format: "application/json", category: "identity", description: "OAuth 2.0 authorization server metadata (RFC 8414)" },
+  { name: "openai-search", url: `${SITE}/.well-known/openai-search.json`, format: "application/json", category: "schema", description: "OpenAI search policy + agent-card pointer" },
+  { name: "model-descriptor", url: `${SITE}/.well-known/model.json`, format: "application/json", category: "schema", description: "Model.json descriptor — capabilities, sources, license" },
+  { name: "compliance", url: `${SITE}/.well-known/compliance.json`, format: "application/json", category: "schema", description: "Machine-readable compliance posture" },
   // ── Human-readable ─────────────────────────────────────
-  { url: `${SITE}/.well-known/humans.txt`, format: "text/plain", category: "human", description: "Human attribution — author, ORCID, contact" },
-  { url: `${SITE}/humans.txt`, format: "text/plain", category: "human", description: "Root alias for /.well-known/humans.txt" },
+  { name: "humans-wellknown", url: `${SITE}/.well-known/humans.txt`, format: "text/plain", category: "human", description: "Human attribution — author, ORCID, contact" },
+  { name: "humans-root", url: `${SITE}/humans.txt`, format: "text/plain", category: "human", description: "Root alias for /.well-known/humans.txt" },
 ];
 
-// Per-URL endpoint overrides for surfaces that take parameters or non-GET methods.
-// Anything not listed here defaults to a single GET with no params.
-const ENDPOINT_OVERRIDES: Record<string, Endpoint[]> = {
-  [`${SITE}/api/mcp/rpc`]: [
-    {
-      method: "POST",
-      contentType: "application/json",
-      params: [
-        { name: "jsonrpc", in: "body", required: true, description: "Must be '2.0'" },
-        { name: "method", in: "body", required: true, description: "MCP method name (e.g. tools/list, tools/call)" },
-        { name: "id", in: "body", required: true, description: "Request id" },
-        { name: "params", in: "body", required: false, description: "Method-specific params object" },
-      ],
-      description: "JSON-RPC 2.0 over HTTPS — see /.well-known/mcp.json for the tool catalog",
-    },
-  ],
-  [`${SITE}/api/answer`]: [
-    {
-      method: "GET",
-      params: [
-        { name: "q", in: "query", required: true, description: "Question string (1-500 chars)" },
-        { name: "format", in: "query", required: false, description: "json|text|jsonl (default json)" },
-      ],
-    },
-  ],
-  [`${SITE}/api/ask`]: [
-    {
-      method: "GET",
-      params: [
-        { name: "q", in: "query", required: true, description: "Question string" },
-      ],
-    },
-  ],
-  [`${SITE}/api/v1/signals.json`]: [
-    {
-      method: "GET",
-      params: [
-        { name: "sector", in: "query", required: false, description: "Filter by sector slug (e.g. ai-ml)" },
-        { name: "stage", in: "query", required: false, description: "Filter by stage (seed|series-a|series-b)" },
-        { name: "limit", in: "query", required: false, description: "Max results (default 100)" },
-      ],
-    },
-  ],
-  [`${SITE}/api/v1/glossary.json`]: [
-    {
-      method: "GET",
-      params: [
-        { name: "term", in: "query", required: false, description: "Look up a single DefinedTerm by slug" },
-      ],
-    },
-  ],
-  [`${SITE}/md/`]: [
-    {
-      method: "GET",
-      params: [
-        { name: "path", in: "path", required: true, description: "Site path to mirror as markdown (e.g. /md/methodology)" },
-      ],
-    },
-  ],
-};
-
-function endpointsFor(surface: Surface): Endpoint[] {
-  const override = ENDPOINT_OVERRIDES[surface.url];
-  if (override) return override;
-  // Sitemaps, feeds, well-known, and root aliases all answer plain GET.
-  return GET_ONLY;
-}
-
 export async function GET() {
-  const lastModified = getDataLastModified();
+  try {
+    const lastModified = getDataLastModified();
 
-  const counts = SURFACES.reduce<Record<string, number>>((acc, s) => {
-    acc[s.category] = (acc[s.category] || 0) + 1;
-    return acc;
-  }, {});
+    const counts = SURFACES.reduce<Record<string, number>>((acc, s) => {
+      acc[s.category] = (acc[s.category] || 0) + 1;
+      return acc;
+    }, {});
 
-  // Decorate every surface with its endpoint metadata so retrieval pipelines
-  // know how to call it without fetching OpenAPI separately. Non-API surfaces
-  // get the default `[{ method: "GET" }]`. (F2 — closes empty-endpoints gap.)
-  const decoratedSurfaces = SURFACES.map((s) => ({
-    ...s,
-    endpoints: endpointsFor(s),
-  }));
+    const totalEndpoints = SURFACES.reduce(
+      (acc, s) => acc + (s.endpoints?.length ?? 0),
+      0,
+    );
 
-  const body = {
-    "@context": "https://schema.org",
-    "@type": "DataCatalog",
-    "@id": `${SITE}/.well-known/discover.json`,
-    name: "VC Deal Flow Signal — Discovery Manifest",
-    description:
-      "Umbrella manifest of every well-known, root-level, and /api/v1/* surface this site exposes for AI agents, retrieval pipelines, and machine consumers. Designed as a one-shot probe so agents don't have to fan out across 60+ URLs to map the agent surface area.",
-    publisher: {
-      "@type": "Organization",
-      "@id": "https://gitdealflow.com/#organization",
-      name: "VC Deal Flow Signal",
-      alternateName: "GitDealFlow",
-      url: "https://gitdealflow.com",
-    },
-    license: "https://creativecommons.org/licenses/by/4.0/",
-    citation: "VC Deal Flow Signal (signals.gitdealflow.com), Q2 2026 data.",
-    dateModified: lastModified.toISOString(),
-    summary: {
-      totalSurfaces: SURFACES.length,
-      byCategory: counts,
-      coverage:
-        "Agent/MCP, OpenAPI, retrieval (llms.txt + qa.jsonl + markdown mirror), policy (ai-policy + security), sitemaps, RSS/Atom feeds, dataset descriptors, identity (DID + WebFinger + NodeInfo), and human attribution.",
-    },
-    surfaces: decoratedSurfaces,
-    relatedDocs: {
-      llmsIndex: `${SITE}/llms.txt`,
-      llmsFull: `${SITE}/llms-full.txt`,
-      methodology: `${SITE}/methodology`,
-      standards: `${SITE}/standards`,
-      reproducibility: `${SITE}/reproducibility`,
-      ssrnPaper: "https://ssrn.com/abstract=6606558",
-    },
-  };
+    const body = {
+      "@context": "https://schema.org",
+      "@type": "DataCatalog",
+      "@id": `${SITE}/.well-known/discover.json`,
+      name: "VC Deal Flow Signal — Discovery Manifest",
+      description:
+        "Umbrella manifest of every well-known, root-level, and /api/v1/* surface this site exposes for AI agents, retrieval pipelines, and machine consumers. Each surface carries a stable `name` (kebab-slug) and canonical API surfaces carry a populated `endpoints[]` array with method+path+description tuples so a fresh agent can map operations in one fetch.",
+      publisher: {
+        "@type": "Organization",
+        "@id": "https://gitdealflow.com/#organization",
+        name: "VC Deal Flow Signal",
+        alternateName: "GitDealFlow",
+        url: "https://gitdealflow.com",
+      },
+      license: "https://creativecommons.org/licenses/by/4.0/",
+      citation: "VC Deal Flow Signal (signals.gitdealflow.com), Q2 2026 data.",
+      dateModified: lastModified.toISOString(),
+      summary: {
+        totalSurfaces: SURFACES.length,
+        totalEndpoints,
+        byCategory: counts,
+        coverage:
+          "Agent/MCP, OpenAPI, retrieval (llms.txt + qa.jsonl + markdown mirror), policy (ai-policy + security), sitemaps, RSS/Atom feeds, dataset descriptors, identity (DID + WebFinger + NodeInfo), and human attribution.",
+      },
+      surfaces: SURFACES,
+      relatedDocs: {
+        llmsIndex: `${SITE}/llms.txt`,
+        llmsFull: `${SITE}/llms-full.txt`,
+        methodology: `${SITE}/methodology`,
+        standards: `${SITE}/standards`,
+        reproducibility: `${SITE}/reproducibility`,
+        ssrnPaper: "https://ssrn.com/abstract=6606558",
+      },
+    };
 
-  return NextResponse.json(body, {
-    headers: {
-      "Content-Type": "application/ld+json; charset=utf-8",
-      "Cache-Control": "public, max-age=900, s-maxage=3600",
-      "X-Robots-Tag": "index, follow",
-      Link: `<https://creativecommons.org/licenses/by/4.0/>; rel="license"`,
-    },
-  });
+    return NextResponse.json(body, {
+      headers: {
+        "Content-Type": "application/ld+json; charset=utf-8",
+        "Cache-Control": "public, max-age=900, s-maxage=3600",
+        "X-Robots-Tag": "index, follow",
+        Link: `<https://creativecommons.org/licenses/by/4.0/>; rel="license"`,
+      },
+    });
+  } catch (err) {
+    console.error("[discover.json] failed to build manifest", err);
+    return NextResponse.json(
+      {
+        "@context": "https://schema.org",
+        "@type": "DataCatalog",
+        "@id": `${SITE}/.well-known/discover.json`,
+        error: "discover_manifest_unavailable",
+        message: "Discovery manifest temporarily unavailable.",
+        totalSurfaces: SURFACES.length,
+      },
+      {
+        status: 500,
+        headers: {
+          "Content-Type": "application/ld+json; charset=utf-8",
+          "Cache-Control": "no-store",
+          "X-Robots-Tag": "noindex",
+        },
+      },
+    );
+  }
 }
