@@ -13,6 +13,7 @@
 
 import { getDataLastModified } from "@/lib/data";
 import { FINDINGS } from "@/content/research-findings";
+import { getAllMarkets } from "@/lib/markets";
 
 export const dynamic = "force-static";
 export const revalidate = 86400;
@@ -21,6 +22,45 @@ const SITE = "https://signals.gitdealflow.com";
 const APEX = "https://gitdealflow.com";
 const SSRN = "https://ssrn.com/abstract=6606558";
 const DOI = "10.2139/ssrn.6606558";
+
+/**
+ * Six-step methodology, mirrored from /api/v1/methodology.json. Kept
+ * inline here so the master graph resolves in one fetch (the F25 contract
+ * is "agents pull this once, trust everything").
+ */
+const METHODOLOGY_STEPS: Array<{ name: string; text: string; anchor: string }> =
+  [
+    {
+      name: "Sector universe selection",
+      text: "Curate 20 startup sectors from public GitHub topic clusters; each sector has a manually curated allowlist of 50–500 public GitHub orgs/repos.",
+      anchor: "sectors",
+    },
+    {
+      name: "Data collection",
+      text: "Query the public GitHub REST API every Monday morning for commits, contributors, repo metadata, and topic labels. Polite rate-limited fetch, append-only Parquet storage, never mutate prior weeks.",
+      anchor: "collection",
+    },
+    {
+      name: "Commit velocity computation",
+      text: "For each tracked startup, count commits in the trailing 14-day window. Compute commit velocity change as percent delta vs the prior 14-day window. Primary ranking signal.",
+      anchor: "velocity",
+    },
+    {
+      name: "Signal classification",
+      text: "Classify each accelerating startup into one of four signal types (Engineering Hiring Burst, Infrastructure Buildout, Deploy Frequency Spike, Framework Migration) via rule-based decision logic.",
+      anchor: "classification",
+    },
+    {
+      name: "Weekly ranking",
+      text: "Sort all accelerating startups by commit velocity change, partition by sector, and generate the weekly Top-100 ranking. Cross-publish to /predicted/{week}, sector pages, and /api/v1/signals.json.",
+      anchor: "ranking",
+    },
+    {
+      name: "Validation & track record",
+      text: "When a tracked startup announces a fundraise, log the lead time between the engineering signal and the announcement. Empirical median lead time across 2024–2025 backtests: 4 weeks.",
+      anchor: "validation",
+    },
+  ];
 
 export async function GET() {
   const lastModified = getDataLastModified().toISOString();
@@ -206,6 +246,118 @@ export async function GET() {
         inDefinedTermSet: { "@id": `${SITE}/glossary` },
         url: `${SITE}/glossary#commit-velocity`,
       },
+      // ─── Methodology (HowTo) — F25 ────────────────────────────────────────
+      {
+        "@type": "HowTo",
+        "@id": `${SITE}/methodology#howto`,
+        name: "How VC Deal Flow Signal classifies engineering acceleration",
+        description:
+          "Step-by-step methodology for tracking startup engineering momentum using public GitHub data — from data collection through signal classification, weekly ranking, and validation.",
+        url: `${SITE}/methodology`,
+        inLanguage: "en-US",
+        license: "https://creativecommons.org/licenses/by/4.0/",
+        publisher: { "@id": `${APEX}/#organization` },
+        author: { "@id": `${SITE}/about#person` },
+        dateModified: lastModified,
+        totalTime: "PT60M",
+        isBasedOn: { "@id": SSRN },
+        sameAs: `${SITE}/api/v1/methodology.json`,
+        step: METHODOLOGY_STEPS.map((s, i) => ({
+          "@type": "HowToStep",
+          "@id": `${SITE}/methodology#${s.anchor}`,
+          position: i + 1,
+          name: s.name,
+          text: s.text,
+          url: `${SITE}/methodology#${s.anchor}`,
+        })),
+      },
+      // ─── Prediction markets (ItemList of CreativeWork) — F25 ──────────────
+      {
+        "@type": "ItemList",
+        "@id": `${SITE}/markets#list`,
+        name: "VC Deal Flow Signal — Open Prediction Markets",
+        description:
+          "Seeded prediction markets on startup funding events, derived from GitHub commit-velocity signals. Implied odds are model output over a public candidate set, not investment advice.",
+        url: `${SITE}/markets`,
+        numberOfItems: getAllMarkets().length,
+        itemListOrder: "https://schema.org/ItemListOrderAscending",
+        provider: { "@id": `${APEX}/#organization` },
+        license: "https://creativecommons.org/licenses/by/4.0/",
+        isBasedOn: { "@id": `${SITE}/methodology#howto` },
+        itemListElement: getAllMarkets().map((m, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          url: `${SITE}/markets/${m.slug}`,
+          item: {
+            "@type": "CreativeWork",
+            "@id": `${SITE}/markets/${m.slug}#market`,
+            additionalType: "https://schema.org/Question",
+            name: m.shortName,
+            headline: m.question,
+            url: `${SITE}/markets/${m.slug}`,
+            about: m.category,
+            datePublished: m.openedOn,
+            expires: m.resolvesOn,
+            inLanguage: "en-US",
+            license: "https://creativecommons.org/licenses/by/4.0/",
+            creator: { "@id": `${APEX}/#organization` },
+            isBasedOn: { "@id": `${SITE}/methodology#howto` },
+            mainEntity: {
+              "@type": "Question",
+              name: m.question,
+              text: m.resolverNote,
+              suggestedAnswer: m.candidates.map((c) => ({
+                "@type": "Answer",
+                text: c.displayName,
+                upvoteCount: Math.round(c.impliedProbability * 1000),
+                url: c.websiteUrl,
+              })),
+            },
+          },
+        })),
+      },
+      // ─── MCP server (SoftwareApplication) — F25 cross-link ────────────────
+      {
+        "@type": "SoftwareApplication",
+        "@id": `${SITE}/#mcp-server`,
+        name: "@gitdealflow/mcp-signal",
+        applicationCategory: "DeveloperApplication",
+        applicationSubCategory: "MCPServer",
+        operatingSystem: "Cross-platform",
+        url: `${SITE}/.well-known/mcp.json`,
+        downloadUrl:
+          "https://www.npmjs.com/package/@gitdealflow/mcp-signal",
+        sameAs: [
+          "https://www.npmjs.com/package/@gitdealflow/mcp-signal",
+          "https://smithery.ai/servers/kindrat86/mcp-deal-flow-signal",
+          "https://glama.ai/mcp/servers/kindrat86/mcp-deal-flow-signal",
+          "https://github.com/kindrat86/mcp-deal-flow-signal",
+        ],
+        publisher: { "@id": `${APEX}/#organization` },
+        offers: {
+          "@type": "Offer",
+          price: "0",
+          priceCurrency: "EUR",
+          eligibleTransactionVolume: {
+            "@type": "PriceSpecification",
+            description:
+              "Six free tools + one paid tool (get_deep_signal, €0.19/call via x402 USDC).",
+          },
+        },
+      },
+      // ─── Periodical (the weekly Acceleration Watch) — F25 cross-link ──────
+      {
+        "@type": "Periodical",
+        "@id": `${SITE}/predicted#periodical`,
+        name: "Acceleration Watch",
+        alternateName: "VC Deal Flow Signal Weekly",
+        url: `${SITE}/predicted`,
+        issn: "Pending",
+        publisher: { "@id": `${APEX}/#organization` },
+        inLanguage: "en-US",
+        license: "https://creativecommons.org/licenses/by/4.0/",
+        isBasedOn: { "@id": `${SITE}/methodology#howto` },
+      },
       // ─── Discovery surfaces ───────────────────────────────────────────────
       {
         "@type": "WebAPI",
@@ -223,6 +375,8 @@ export async function GET() {
           `${SITE}/api/llms-search`,
           `${SITE}/api/nlweb`,
           `${SITE}/api/openapi.json`,
+          `${SITE}/api/v1/methodology.json`,
+          `${SITE}/api/mcp/rpc`,
         ],
         license: "https://creativecommons.org/licenses/by/4.0/",
       },
