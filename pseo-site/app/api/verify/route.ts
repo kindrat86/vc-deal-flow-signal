@@ -1,7 +1,15 @@
 import { NextResponse } from "next/server";
 import { verifyToken, verifyVerifyToken } from "@/lib/verify-token";
 import { isValidEmail } from "@/lib/validation";
-import { SOAP_OPERA_EMAILS, CHALLENGE_EMAILS, LAUNCH_EMAILS } from "@/lib/emails";
+import {
+  SOAP_OPERA_EMAILS,
+  SOAP_OPERA_F,
+  SOAP_OPERA_T,
+  SOAP_OPERA_D,
+  SOAP_OPERA_I,
+  CHALLENGE_EMAILS,
+  LAUNCH_EMAILS,
+} from "@/lib/emails";
 import { isExcluded } from "@/lib/excluded-emails";
 import { isNonceUsed, markNonceUsed } from "@/lib/runtime-cache";
 
@@ -165,14 +173,33 @@ export async function GET(request: Request) {
 
   // 2. Schedule the cohort drip sequence. `cohort=challenge` routes to the
   //    7-Day Deal Flow Reset; `cohort=launch` routes to the 5-email Brunson
-  //    Product Launch Funnel; default routes to the existing soap-opera funnel.
+  //    Product Launch Funnel. Otherwise we fork on `quiz_route` (F/T/D/I) so
+  //    the value-ladder pitch matches what the visitor self-described on
+  //    /landing#signup — pre-buyers (F) skip the €7/€9.97/€97 pitch days,
+  //    First-Look (T) gets €7 + Dashboard, Dashboard (D) gets the modal
+  //    sequence, Insider (I) skips the small denominations and emphasises
+  //    €97 + €1,997. Missing/unknown route falls back to SOAP_OPERA_EMAILS
+  //    (= D) so legacy signups without the quiz card stay on the existing
+  //    flow.
   const cohortParam = url.searchParams.get("cohort");
+  const route = attribution.quiz_route as "F" | "T" | "D" | "I" | "";
   const sequence =
     cohortParam === "challenge"
       ? CHALLENGE_EMAILS
       : cohortParam === "launch"
         ? LAUNCH_EMAILS
-        : SOAP_OPERA_EMAILS;
+        : route === "F"
+          ? SOAP_OPERA_F
+          : route === "T"
+            ? SOAP_OPERA_T
+            : route === "D"
+              ? SOAP_OPERA_D
+              : route === "I"
+                ? SOAP_OPERA_I
+                : SOAP_OPERA_EMAILS;
+  console.log(
+    `[verify] dispatch email=${email} cohort=${cohortParam || "default"} route=${route || "none"} count=${sequence.length}`,
+  );
   const now = Date.now();
   for (const soapEmail of sequence) {
     const sendAt = new Date(now + soapEmail.delayMs).toISOString();
