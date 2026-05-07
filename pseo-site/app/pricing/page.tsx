@@ -14,6 +14,17 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/pricing",
   },
+  openGraph: {
+    // F5 — explicit og:url so the field reaches the rendered <head>.
+    // (Layout-default openGraph is replaced wholesale when a child page
+    // sets its own openGraph object, so no inheritance for url here.)
+    url: "https://signals.gitdealflow.com/pricing",
+    title:
+      "Pricing — Free, €1 Teardown, €7 First Look, €9.97 Dashboard, €97 Insider, €497 Sharp, €1,997 Sweep | VC Deal Flow Signal",
+    description:
+      "VC Deal Flow Signal pricing — seven tiers from a free weekly digest and €1 Tweet Teardown to a €4,970/yr Sharp Tier and €1,997 custom Sector Sweep. Founding-member rates on Dashboard (€9.97/mo) and Insider Circle (€97/mo). 30-day Signal-or-It's-Free guarantee.",
+    type: "website",
+  },
 };
 
 const STRIPE_DASHBOARD = "https://buy.stripe.com/28E7sK48H04U8ou07u0x200";

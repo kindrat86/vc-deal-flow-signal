@@ -10,6 +10,8 @@ export const metadata: Metadata = {
     "VC Deal Flow Signal tracks startup engineering acceleration from public GitHub data. Learn who built it, why, how the data pipeline works, and how to use it for deal sourcing.",
   // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
   alternates: { canonical: "/about" },
+  // F5 — absolute og:url (Next 16 drops relative og:url even with metadataBase).
+  openGraph: { url: "https://signals.gitdealflow.com/about", type: "website" },
 };
 
 export default function AboutPage() {
