@@ -162,6 +162,7 @@ export default function FirstLookPage() {
           highPrice: "1797.00",
           offerCount: 2,
           availability: "https://schema.org/InStock",
+          priceValidUntil: "2026-12-31",
           url: "https://signals.gitdealflow.com/firstlook",
           offers: [
             {
@@ -170,6 +171,7 @@ export default function FirstLookPage() {
               price: "7.00",
               priceCurrency: "EUR",
               availability: "https://schema.org/InStock",
+              priceValidUntil: "2026-12-31",
               url: FIRSTLOOK_OFFER_URL,
             },
             {
@@ -178,6 +180,7 @@ export default function FirstLookPage() {
               price: "1797.00",
               priceCurrency: "EUR",
               availability: "https://schema.org/InStock",
+              priceValidUntil: "2026-12-31",
               url: "https://buy.stripe.com/bJe14m34DbNC6gm1by0x204",
             },
           ],

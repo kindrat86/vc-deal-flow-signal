@@ -92,6 +92,8 @@ export default function ApplyPage() {
           "@type": "Offer",
           price: "497.00",
           priceCurrency: "EUR",
+          priceValidUntil: "2026-12-31",
+          availability: "https://schema.org/InStock",
           eligibleQuantity: { "@type": "QuantitativeValue", maxValue: 8, unitText: "year" },
         },
       },

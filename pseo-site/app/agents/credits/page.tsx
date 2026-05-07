@@ -53,6 +53,7 @@ export default async function AgentCreditsPage({
           "100 per-request credits for the get_deep_signal MCP tool and POST /api/agent/deep-signal HTTP endpoint. One credit consumed per match. Misses are free. Credits never expire.",
         price: "19",
         priceCurrency: "EUR",
+        priceValidUntil: "2026-12-31",
         availability: "https://schema.org/InStock",
         url: `${SITE}/agents/credits`,
         category: "API Credits",

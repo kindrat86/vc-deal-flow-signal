@@ -156,6 +156,7 @@ export default function BookPage() {
             availability: "https://schema.org/InStock",
             price: "0.99",
             priceCurrency: "EUR",
+            priceValidUntil: "2026-12-31",
             url: STRIPE_BOOK_LINK,
             name: "Premium Kindle edition",
           },
