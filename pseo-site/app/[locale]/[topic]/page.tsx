@@ -255,12 +255,12 @@ export default async function LocaleTopicPage({ params }: PageProps) {
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <main
+      <div
         className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12"
         lang={locale}
         dir={localeMeta.dir}
       >
-        <nav className="text-xs text-gray-500 mb-6" aria-label="Breadcrumb">
+        <nav className="text-xs text-gray-400 mb-6" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300" hrefLang="en">
             English ↩
           </Link>
@@ -307,7 +307,7 @@ export default async function LocaleTopicPage({ params }: PageProps) {
         ) : null}
 
         {siblings.length > 0 ? (
-          <p className="text-xs text-gray-500 text-center">
+          <p className="text-xs text-gray-400 text-center">
             {siblings.map((s, i) => (
               <span key={s.locale}>
                 {i > 0 ? <span className="mx-2">·</span> : null}
@@ -323,7 +323,7 @@ export default async function LocaleTopicPage({ params }: PageProps) {
             ))}
           </p>
         ) : null}
-      </main>
+      </div>
     </>
   );
 }

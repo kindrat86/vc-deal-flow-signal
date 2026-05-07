@@ -355,7 +355,7 @@ export default function BuyersGuidePage() {
               <p className="text-gray-400 text-sm leading-relaxed mb-4">
                 <span dangerouslySetInnerHTML={{ __html: c.why }} />
               </p>
-              <p className="text-xs uppercase tracking-wider text-gray-500 mb-1">
+              <p className="text-xs uppercase tracking-wider text-gray-400 mb-1">
                 Question to ask the vendor
               </p>
               <p className="text-gray-300 text-sm italic mb-4">
@@ -420,7 +420,7 @@ export default function BuyersGuidePage() {
           </div>
         </section>
 
-        <p className="text-xs text-gray-500 mt-8 mb-4">
+        <p className="text-xs text-gray-400 mt-8 mb-4">
           Buyers guide last updated {asOf}. Criteria reflect typical
           small-to-mid fund evaluation patterns; weighting may differ for
           institutional / late-stage funds with dedicated procurement

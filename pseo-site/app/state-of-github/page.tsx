@@ -182,7 +182,7 @@ export default function StateOfGitHubPage() {
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
             {latest.summary}
           </p>
-          <p className="text-gray-500 text-xs">
+          <p className="text-gray-400 text-xs">
             Published {latest.publishDate} · Permanent canonical ·
             CC&nbsp;BY&nbsp;4.0 ·{" "}
             <Link
@@ -256,7 +256,7 @@ export default function StateOfGitHubPage() {
         </article>
 
         <section className="rounded-xl border border-slate-800 bg-slate-900/40 p-5 space-y-2">
-          <p className="text-gray-500 text-xs font-semibold uppercase tracking-wider">
+          <p className="text-gray-400 text-xs font-semibold uppercase tracking-wider">
             Cadence
           </p>
           <p className="text-gray-300 text-sm leading-relaxed">
@@ -276,13 +276,13 @@ export default function StateOfGitHubPage() {
 
         <section className="space-y-4">
           <h2 className="text-2xl font-bold text-gray-100">Archive</h2>
-          <p className="text-gray-500 text-sm">
+          <p className="text-gray-400 text-sm">
             The first address ships {latest.month}. New entries land the first
             Wednesday of every subsequent month and accumulate here.
           </p>
         </section>
 
-        <p className="text-gray-500 text-sm border-t border-slate-800 pt-5">
+        <p className="text-gray-400 text-sm border-t border-slate-800 pt-5">
           See every door at{" "}
           <Link
             href="/funnels"

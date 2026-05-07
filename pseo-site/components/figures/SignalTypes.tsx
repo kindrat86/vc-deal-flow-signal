@@ -61,7 +61,7 @@ export default function SignalTypes() {
           );
         })}
       </svg>
-      <figcaption className="mt-2 text-center text-gray-500 text-xs">
+      <figcaption className="mt-2 text-center text-gray-400 text-xs">
         Each startup is classified into one of four signal types based on which
         metric drives the acceleration. The classification helps investors
         understand what phase the company is in.

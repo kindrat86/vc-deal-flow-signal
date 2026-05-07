@@ -363,7 +363,7 @@ export default function IntegrationsPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <nav className="mb-6 text-sm text-gray-500" aria-label="Breadcrumb">
+        <nav className="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300 transition-colors">
             All Sectors
           </Link>
@@ -419,7 +419,7 @@ export default function IntegrationsPage() {
                       {i.docsHref && (
                         <Link
                           href={i.docsHref}
-                          className="text-gray-500 hover:text-gray-300 font-medium transition-colors"
+                          className="text-gray-400 hover:text-gray-300 font-medium transition-colors"
                         >
                           Docs
                         </Link>

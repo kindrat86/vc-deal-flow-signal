@@ -17,11 +17,11 @@ export default function Footer() {
               VC Deal Flow Signal
             </span>
             <span className="hidden sm:inline text-gray-600">·</span>
-            <span className="hidden sm:inline text-gray-500 text-xs">
+            <span className="hidden sm:inline text-gray-400 text-xs">
               GitHub momentum, before the fundraise
             </span>
           </div>
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-gray-500">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-gray-400">
             <a
               href="https://ssrn.com/abstract=6606558"
               rel="noopener noreferrer"
@@ -47,7 +47,7 @@ export default function Footer() {
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8 mb-8">
           <div>
             <p className="text-xs font-semibold text-gray-300 uppercase tracking-wider mb-3">Product</p>
-            <nav className="flex flex-col gap-2 text-sm text-gray-500">
+            <nav aria-label="Footer — Product" className="flex flex-col gap-2 text-sm text-gray-400">
               <Link href="/funnels" className="hover:text-gray-200 transition-colors">Funnel Hub</Link>
               <Link href="/pricing" className="hover:text-gray-200 transition-colors">Pricing</Link>
               <Link href="/buyers-guide" className="hover:text-gray-200 transition-colors">Buyers Guide</Link>
@@ -61,7 +61,7 @@ export default function Footer() {
           </div>
           <div>
             <p className="text-xs font-semibold text-gray-300 uppercase tracking-wider mb-3">Data</p>
-            <nav className="flex flex-col gap-2 text-sm text-gray-500">
+            <nav aria-label="Footer — Data" className="flex flex-col gap-2 text-sm text-gray-400">
               <Link href="/methodology" className="hover:text-gray-200 transition-colors">Methodology</Link>
               <Link href="/reproducibility" className="hover:text-gray-200 transition-colors">Reproducibility</Link>
               <Link href="/data-sources" className="hover:text-gray-200 transition-colors">Data Sources</Link>
@@ -73,7 +73,7 @@ export default function Footer() {
           </div>
           <div>
             <p className="text-xs font-semibold text-gray-300 uppercase tracking-wider mb-3">Browse</p>
-            <nav className="flex flex-col gap-2 text-sm text-gray-500">
+            <nav aria-label="Footer — Browse" className="flex flex-col gap-2 text-sm text-gray-400">
               <Link href="/" className="hover:text-gray-200 transition-colors">All Sectors</Link>
               <Link href="/trending" className="hover:text-gray-200 transition-colors">Trending</Link>
               <Link href="/stage/seed" className="hover:text-gray-200 transition-colors">By Stage</Link>
@@ -86,7 +86,7 @@ export default function Footer() {
           </div>
           <div>
             <p className="text-xs font-semibold text-gray-300 uppercase tracking-wider mb-3">Elsewhere</p>
-            <nav className="flex flex-col gap-2 text-sm text-gray-500">
+            <nav aria-label="Footer — Elsewhere" className="flex flex-col gap-2 text-sm text-gray-400">
               <a href="https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn" className="hover:text-gray-200 transition-colors" rel="noopener noreferrer" target="_blank">Chrome — Crunchbase/Wellfound</a>
               <a href="https://chromewebstore.google.com/detail/vc-github-lookup-%E2%80%94-startu/plgngijmloeljfkenecdkhiblcfcbblm" className="hover:text-gray-200 transition-colors" rel="noopener noreferrer" target="_blank">Chrome — GitHub Hover Lookup</a>
               <a href="https://t.me/gitdealflow" className="hover:text-gray-200 transition-colors" rel="noopener noreferrer" target="_blank">Telegram</a>
@@ -96,7 +96,7 @@ export default function Footer() {
             </nav>
           </div>
         </div>
-        <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs text-gray-500 pt-6 border-t border-slate-800">
+        <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs text-gray-400 pt-6 border-t border-slate-800">
           <Link href="/standards" className="hover:text-gray-300 transition-colors">Standards</Link>
           <Link href="/attestations" className="hover:text-gray-300 transition-colors">Attestations</Link>
           <Link href="/corrections" className="hover:text-gray-300 transition-colors">Corrections</Link>
@@ -112,7 +112,7 @@ export default function Footer() {
             VC Deal Flow Signal tracks GitHub engineering acceleration as a
             leading indicator of startup momentum. Data is updated weekly.
           </p>
-          <nav className="flex flex-wrap items-center gap-4 text-sm text-gray-500">
+          <nav aria-label="Footer — Legal" className="flex flex-wrap items-center gap-4 text-sm text-gray-400">
             <Link href="https://gitdealflow.com" className="hover:text-gray-300 transition-colors">Main Site</Link>
             <Link href="/about" className="hover:text-gray-300 transition-colors">About</Link>
             <Link href="/about/founder" className="hover:text-gray-300 transition-colors">Founder</Link>

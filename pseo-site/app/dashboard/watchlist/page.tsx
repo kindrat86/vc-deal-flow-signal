@@ -17,7 +17,7 @@ export default async function WatchlistPage() {
 
   return (
     <div className="max-w-3xl mx-auto px-6 py-10">
-      <nav className="mb-6 text-sm text-gray-500" aria-label="Breadcrumb">
+      <nav className="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">
         <Link href="/dashboard" className="hover:text-gray-300 transition-colors">
           Dashboard
         </Link>

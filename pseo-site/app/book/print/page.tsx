@@ -33,10 +33,10 @@ export default function BookPrintPage() {
         <p className="text-lg text-gray-300 leading-relaxed pt-2">
           {BOOK.subtitle}.
         </p>
-        <p className="text-sm text-gray-500 pt-3">
+        <p className="text-sm text-gray-400 pt-3">
           By {BOOK.authorName}, {BOOK.authorRole} · GitDealFlow · CC-BY-4.0
         </p>
-        <p className="text-xs text-gray-500 italic pt-4 max-w-xl mx-auto">
+        <p className="text-xs text-gray-400 italic pt-4 max-w-xl mx-auto">
           To save as PDF, use your browser&rsquo;s print dialog (⌘+P / Ctrl+P)
           and choose &ldquo;Save as PDF&rdquo;. Or grab the pre-generated
           downloads at{" "}
@@ -74,7 +74,7 @@ export default function BookPrintPage() {
         </section>
       ))}
 
-      <footer className="mt-20 pt-10 border-t border-slate-800 text-center text-sm text-gray-500 space-y-2">
+      <footer className="mt-20 pt-10 border-t border-slate-800 text-center text-sm text-gray-400 space-y-2">
         <p>
           {BOOK.title} — {BOOK.edition}, {BOOK.publishedDate}.
         </p>

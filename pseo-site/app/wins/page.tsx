@@ -254,7 +254,7 @@ export default function WinsPage() {
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
         <header className="space-y-4">
-          <nav aria-label="Breadcrumb" className="text-xs text-gray-500">
+          <nav aria-label="Breadcrumb" className="text-xs text-gray-400">
             <Link href="/" className="hover:text-sky-400 transition-colors">
               ← Home
             </Link>
@@ -345,7 +345,7 @@ export default function WinsPage() {
             so the validation panel here is the validation panel everyone is
             graded against.
           </p>
-          <p className="text-gray-500 text-xs leading-relaxed pt-1 border-t border-slate-800">
+          <p className="text-gray-400 text-xs leading-relaxed pt-1 border-t border-slate-800">
             What this ledger is not: a claim that we predicted these
             outcomes for any specific investor at any specific time. The
             forward-looking artefact is the{" "}
@@ -390,7 +390,7 @@ export default function WinsPage() {
                         <p className="text-gray-100 text-base font-medium">
                           {w.name}
                         </p>
-                        <p className="text-gray-500 text-xs leading-relaxed mt-0.5 font-mono">
+                        <p className="text-gray-400 text-xs leading-relaxed mt-0.5 font-mono">
                           <a
                             href={`https://github.com/${w.repo}`}
                             target="_blank"
@@ -405,7 +405,7 @@ export default function WinsPage() {
                         <p className={`text-sm font-medium ${tn.text}`}>
                           {w.event}
                         </p>
-                        <p className="text-gray-500 text-xs tabular-nums">
+                        <p className="text-gray-400 text-xs tabular-nums">
                           {formatDate(w.event_date)}
                         </p>
                       </div>

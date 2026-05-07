@@ -446,7 +446,7 @@ export default function FunnelHubPage() {
               </div>
             ))}
           </div>
-          <p className="text-gray-500 text-sm leading-relaxed border-l-2 border-slate-700 pl-4 mt-4">
+          <p className="text-gray-400 text-sm leading-relaxed border-l-2 border-slate-700 pl-4 mt-4">
             Builders who want to copy this architecture: every block above is
             named, located, and shipped in production. Read the
             corresponding page, then re-implement on your own funnel — that&rsquo;s
@@ -572,11 +572,11 @@ function FunnelCardBody({
       </div>
       <p className="text-gray-200 text-base leading-relaxed mb-2">{f.hook}</p>
       <p className="text-gray-400 text-sm leading-relaxed mb-2">
-        <span className="text-gray-500 uppercase tracking-wider text-[10px] mr-2">For</span>
+        <span className="text-gray-400 uppercase tracking-wider text-[10px] mr-2">For</span>
         {f.who}
       </p>
       <p className="text-gray-400 text-sm leading-relaxed mb-3">
-        <span className="text-gray-500 uppercase tracking-wider text-[10px] mr-2">You get</span>
+        <span className="text-gray-400 uppercase tracking-wider text-[10px] mr-2">You get</span>
         {f.offer}
       </p>
       <p className={`${c.pill} text-sm font-medium group-hover:underline`}>{f.cta} →</p>

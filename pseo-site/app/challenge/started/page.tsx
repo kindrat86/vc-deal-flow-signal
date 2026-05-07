@@ -78,7 +78,7 @@ export default function ChallengeStartedPage() {
           >
             /methodology
           </Link>{" "}
-          <span className="text-gray-500 text-sm">
+          <span className="text-gray-400 text-sm">
             — the open, reproducible methodology behind the seven signals.
           </span>
         </li>
@@ -89,7 +89,7 @@ export default function ChallengeStartedPage() {
           >
             /predicted
           </Link>{" "}
-          <span className="text-gray-500 text-sm">
+          <span className="text-gray-400 text-sm">
             — this week&rsquo;s public Acceleration Watch (10 named startups,
             graded post-hoc).
           </span>
@@ -103,13 +103,13 @@ export default function ChallengeStartedPage() {
           >
             ssrn.com/abstract=6606558
           </a>{" "}
-          <span className="text-gray-500 text-sm">
+          <span className="text-gray-400 text-sm">
             — the SSRN paper covering the 219-round panel.
           </span>
         </li>
       </ul>
 
-      <p className="text-gray-500 text-xs">
+      <p className="text-gray-400 text-xs">
         If Day 1 doesn&rsquo;t arrive within 30 minutes, check your spam
         folder and add{" "}
         <code className="bg-slate-800 px-1 rounded text-gray-300">

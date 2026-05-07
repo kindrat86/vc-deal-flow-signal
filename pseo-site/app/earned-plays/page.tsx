@@ -178,7 +178,7 @@ export default function EarnedPlaysPage() {
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
         <header className="space-y-4">
-          <nav aria-label="Breadcrumb" className="text-xs text-gray-500">
+          <nav aria-label="Breadcrumb" className="text-xs text-gray-400">
             <Link href="/" className="hover:text-gray-300">Home</Link>
             <span className="mx-2">/</span>
             <span className="text-gray-400">Earned Plays</span>
@@ -212,13 +212,13 @@ export default function EarnedPlaysPage() {
                 <h2 className="text-xl sm:text-2xl font-bold text-gray-100 leading-snug">
                   {p.channel}
                 </h2>
-                <p className="text-gray-500 text-xs italic">
+                <p className="text-gray-400 text-xs italic">
                   Format: {p.format}
                 </p>
               </header>
               <div className="space-y-2 text-sm">
                 <p>
-                  <span className="text-gray-500 uppercase tracking-wider text-[10px] mr-2">
+                  <span className="text-gray-400 uppercase tracking-wider text-[10px] mr-2">
                     What
                   </span>
                   <span className="text-gray-300 leading-relaxed">
@@ -226,7 +226,7 @@ export default function EarnedPlaysPage() {
                   </span>
                 </p>
                 <p>
-                  <span className="text-gray-500 uppercase tracking-wider text-[10px] mr-2">
+                  <span className="text-gray-400 uppercase tracking-wider text-[10px] mr-2">
                     Why
                   </span>
                   <span className="text-gray-300 leading-relaxed">
@@ -329,7 +329,7 @@ export default function EarnedPlaysPage() {
           </div>
         </section>
 
-        <p className="text-gray-500 text-xs leading-relaxed border-t border-slate-800 pt-6">
+        <p className="text-gray-400 text-xs leading-relaxed border-t border-slate-800 pt-6">
           Earned-traffic playbook per <em>Traffic Secrets</em> Ch 4
           (Working Way In) by Russell Brunson (2020). Used under
           fair-use commentary.

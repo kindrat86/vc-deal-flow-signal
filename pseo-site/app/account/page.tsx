@@ -102,7 +102,7 @@ export default function AccountBalancePage() {
             placeholder="gdf_v2.cus_xxxxxxxxxxxxxx.xxxxxxxxxxxxxxxx"
             spellCheck={false}
             autoComplete="off"
-            className="flex-1 h-11 rounded-lg border border-slate-700 bg-slate-950 px-4 text-sm text-gray-100 font-mono placeholder:text-gray-500 focus:border-sky-500 focus:ring-2 focus:ring-sky-500/30 focus:outline-none transition-colors"
+            className="flex-1 h-11 rounded-lg border border-slate-700 bg-slate-950 px-4 text-sm text-gray-100 font-mono placeholder:text-gray-400 focus:border-sky-500 focus:ring-2 focus:ring-sky-500/30 focus:outline-none transition-colors"
           />
           <button
             type="submit"
@@ -122,7 +122,7 @@ export default function AccountBalancePage() {
             )}
           </button>
         </div>
-        <p className="text-gray-500 text-xs mt-2">
+        <p className="text-gray-400 text-xs mt-2">
           Your key is sent only to{" "}
           <code className="font-mono text-gray-400">/api/account/credits</code>{" "}
           on this domain. Nothing is stored client-side.
@@ -153,15 +153,15 @@ export default function AccountBalancePage() {
           </p>
           <dl className="grid grid-cols-2 gap-4 text-sm border-t border-emerald-900/40 pt-4">
             <div>
-              <dt className="text-gray-500 text-xs uppercase tracking-wider">Lifetime purchased</dt>
+              <dt className="text-gray-400 text-xs uppercase tracking-wider">Lifetime purchased</dt>
               <dd className="text-gray-100 font-mono mt-1 text-base tabular-nums">{state.purchased}</dd>
             </div>
             <div>
-              <dt className="text-gray-500 text-xs uppercase tracking-wider">Lifetime consumed</dt>
+              <dt className="text-gray-400 text-xs uppercase tracking-wider">Lifetime consumed</dt>
               <dd className="text-gray-100 font-mono mt-1 text-base tabular-nums">{state.consumed}</dd>
             </div>
             <div className="col-span-2">
-              <dt className="text-gray-500 text-xs uppercase tracking-wider">Last call</dt>
+              <dt className="text-gray-400 text-xs uppercase tracking-wider">Last call</dt>
               <dd className="text-gray-300 font-mono mt-1 text-xs">
                 {state.lastConsumedAt ?? "never"}
               </dd>

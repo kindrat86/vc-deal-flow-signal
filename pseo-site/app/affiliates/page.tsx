@@ -134,7 +134,7 @@ export default function AffiliatesPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <nav className="mb-6 text-sm text-gray-500" aria-label="Breadcrumb">
+        <nav className="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300 transition-colors">
             All Sectors
           </Link>
@@ -448,7 +448,7 @@ export default function AffiliatesPage() {
             already reads you. Replace <code className="bg-slate-800 text-sky-400 px-1.5 py-0.5 rounded text-xs">YOURLINK</code> with
             your unique referral URL from the Refgrow dashboard.
           </p>
-          <p className="text-gray-500 text-xs leading-relaxed mb-6">
+          <p className="text-gray-400 text-xs leading-relaxed mb-6">
             Run a newsletter, podcast, or community? Check the{" "}
             <Link href="/affiliates/dream-50" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">
               Dream 50 publisher roster
@@ -465,7 +465,7 @@ export default function AffiliatesPage() {
             <pre className="text-gray-300 text-sm leading-relaxed whitespace-pre-wrap font-sans bg-slate-950 border border-slate-800 rounded p-4 mb-3">{`I keep telling people about this. GitDealFlow scans 4,200 GitHub orgs every Sunday and tells you which startups are accelerating before they raise. The pattern preceded 219 confirmed fundraises by 21–47 days in their SSRN paper.
 
 Free Sunday digest, no card: YOURLINK`}</pre>
-            <p className="text-gray-500 text-xs">~245 chars. Add the SSRN link if you have room. Pin if you have a small audience — the share rate compounds.</p>
+            <p className="text-gray-400 text-xs">~245 chars. Add the SSRN link if you have room. Pin if you have a small audience — the share rate compounds.</p>
           </div>
 
           {/* Newsletter recommendation */}
@@ -480,7 +480,7 @@ Every Sunday, the Data Nerd sends 5 startups whose GitHub commit velocity just s
 If you spend any time on alt-data for venture, this is the lowest-friction one I've found.
 
 Free Sunday digest → YOURLINK`}</pre>
-            <p className="text-gray-500 text-xs">Newsletter writers: drop this into a "what I'm reading" section. Conversion runs 3-7% on warm investor lists.</p>
+            <p className="text-gray-400 text-xs">Newsletter writers: drop this into a "what I'm reading" section. Conversion runs 3-7% on warm investor lists.</p>
           </div>
 
           {/* dev.to / Substack */}
@@ -495,7 +495,7 @@ Loved this post and want to find startups like the ones in it before they raise?
 If you write checks, scout for a fund, or just like watching engineering data, the digest is free forever: YOURLINK
 
 (Disclosure: affiliate link — costs you nothing, helps me keep writing.)`}</pre>
-            <p className="text-gray-500 text-xs">FTC-compliant disclosure included. Don&apos;t edit it out — it kills trust faster than it lifts conversion.</p>
+            <p className="text-gray-400 text-xs">FTC-compliant disclosure included. Don&apos;t edit it out — it kills trust faster than it lifts conversion.</p>
           </div>
 
           {/* Discord / Slack community */}
@@ -508,7 +508,7 @@ If you write checks, scout for a fund, or just like watching engineering data, t
 GitDealFlow tracks GitHub commit velocity across 4,200 startup orgs and surfaces the ones accelerating fast. The free Sunday digest gives you 5 names a week — they have a research paper on SSRN with 219 confirmed fundraises that the signal preceded by 21-47 days.
 
 free, no card, weekly email: YOURLINK`}</pre>
-            <p className="text-gray-500 text-xs">For #investors, #vc, #startups channels. Drop once per quarter per community max.</p>
+            <p className="text-gray-400 text-xs">For #investors, #vc, #startups channels. Drop once per quarter per community max.</p>
           </div>
 
           {/* Cold email — for established affiliates */}
@@ -529,7 +529,7 @@ I subscribed last week. Haven't pulled the trigger on anything yet but the names
 Sign up here if you want: YOURLINK
 
 [Your name]`}</pre>
-            <p className="text-gray-500 text-xs">Highest-converting channel for affiliates with small but real investor networks. Send to 5-10 close contacts, not 100.</p>
+            <p className="text-gray-400 text-xs">Highest-converting channel for affiliates with small but real investor networks. Send to 5-10 close contacts, not 100.</p>
           </div>
 
           {/* Reddit / IH */}
@@ -540,7 +540,7 @@ Sign up here if you want: YOURLINK
             <pre className="text-gray-300 text-sm leading-relaxed whitespace-pre-wrap font-sans bg-slate-950 border border-slate-800 rounded p-4 mb-3">{`On the question of finding startups before consensus: the cleanest leading indicator I've found is GitHub commit velocity. There's a service called VC Deal Flow Signal (search for it — username gives away free Sunday digest with 5 names/wk). They published an SSRN paper showing 219 confirmed fundraises were preceded by acceleration spikes by an average of 21-47 days.
 
 Not affiliated [or: affiliate disclosure required], just one of the cheapest sources of signal I've found.`}</pre>
-            <p className="text-gray-500 text-xs">For subs that auto-remove links (r/venturecapital, r/EntrepreneurRideAlong). Lower CTR but won&apos;t get auto-modded.</p>
+            <p className="text-gray-400 text-xs">For subs that auto-remove links (r/venturecapital, r/EntrepreneurRideAlong). Lower CTR but won&apos;t get auto-modded.</p>
           </div>
 
           {/* Brand assets */}

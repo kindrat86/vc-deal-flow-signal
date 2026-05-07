@@ -99,8 +99,8 @@ export default function PressPage() {
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <nav className="text-xs text-gray-500 mb-6" aria-label="Breadcrumb">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <nav className="text-xs text-gray-400 mb-6" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300">
             Home
           </Link>
@@ -127,7 +127,7 @@ export default function PressPage() {
               <tbody className="divide-y divide-slate-800">
                 {FACT_SHEET.map((f) => (
                   <tr key={f.label} className="bg-slate-900/40">
-                    <td className="px-4 py-3 text-gray-500 w-1/3 align-top text-xs uppercase tracking-wider">
+                    <td className="px-4 py-3 text-gray-400 w-1/3 align-top text-xs uppercase tracking-wider">
                       {f.label}
                     </td>
                     <td className="px-4 py-3 text-gray-200">{f.value}</td>
@@ -185,7 +185,7 @@ export default function PressPage() {
                   <p className="text-sm text-gray-400 leading-relaxed">
                     {r.subhead}
                   </p>
-                  <p className="text-xs text-gray-500 mt-3">
+                  <p className="text-xs text-gray-400 mt-3">
                     {r.wireCategories.slice(0, 3).join(" · ")}
                     {r.wireCategories.length > 3
                       ? ` · +${r.wireCategories.length - 3} more`
@@ -195,7 +195,7 @@ export default function PressPage() {
               </li>
             ))}
           </ul>
-          <p className="text-xs text-gray-500 mt-4">
+          <p className="text-xs text-gray-400 mt-4">
             All releases CC BY 4.0 — attribution required. Boilerplate +
             target wire desks listed on each release page.
           </p>
@@ -214,7 +214,7 @@ export default function PressPage() {
               {ATTRIBUTION_BLOCK}
             </p>
           </div>
-          <p className="text-xs text-gray-500 mt-2">
+          <p className="text-xs text-gray-400 mt-2">
             Multiple citation formats (APA, MLA, Chicago, BibTeX, RIS) at{" "}
             <Link
               href="/citation-guide"
@@ -230,7 +230,7 @@ export default function PressPage() {
           <h2 className="text-xl font-semibold text-white mb-4">Founder bio</h2>
           <div className="space-y-4">
             <div className="rounded-lg border border-slate-800 bg-slate-900/40 p-5">
-              <p className="text-xs text-gray-500 uppercase tracking-wider mb-2">
+              <p className="text-xs text-gray-400 uppercase tracking-wider mb-2">
                 Long form (~50 words)
               </p>
               <p className="text-sm text-gray-200 leading-relaxed">
@@ -238,7 +238,7 @@ export default function PressPage() {
               </p>
             </div>
             <div className="rounded-lg border border-slate-800 bg-slate-900/40 p-5">
-              <p className="text-xs text-gray-500 uppercase tracking-wider mb-2">
+              <p className="text-xs text-gray-400 uppercase tracking-wider mb-2">
                 Short form (one line)
               </p>
               <p className="text-sm text-gray-200 leading-relaxed">
@@ -309,7 +309,7 @@ export default function PressPage() {
                 <p className="text-sky-400 font-medium">
                   Live dashboard — {SITE}
                 </p>
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs text-gray-400 mt-1">
                   Sector grid, current period, top breakouts.
                 </p>
               </Link>
@@ -320,7 +320,7 @@ export default function PressPage() {
                 className="block rounded-lg border border-slate-800 bg-slate-900/40 hover:bg-slate-900/60 p-4"
               >
                 <p className="text-sky-400 font-medium">Research findings</p>
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs text-gray-400 mt-1">
                   30 atomic findings from the SSRN paper, citable individually.
                 </p>
               </Link>
@@ -331,7 +331,7 @@ export default function PressPage() {
                 className="block rounded-lg border border-slate-800 bg-slate-900/40 hover:bg-slate-900/60 p-4"
               >
                 <p className="text-sky-400 font-medium">Methodology page</p>
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs text-gray-400 mt-1">
                   Public methodology with worked examples.
                 </p>
               </Link>
@@ -342,7 +342,7 @@ export default function PressPage() {
                 className="block rounded-lg border border-slate-800 bg-slate-900/40 hover:bg-slate-900/60 p-4"
               >
                 <p className="text-sky-400 font-medium">Receipts (free tool)</p>
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs text-gray-400 mt-1">
                   Scout Score from any GitHub username — proof-of-taste, no
                   login.
                 </p>
@@ -361,7 +361,7 @@ export default function PressPage() {
             <p className="text-base text-sky-400 mt-2">
               <a href="mailto:signal@gitdealflow.com">signal@gitdealflow.com</a>
             </p>
-            <p className="text-xs text-gray-500 mt-3">
+            <p className="text-xs text-gray-400 mt-3">
               Founder is fully anonymous (handle: The Data Nerd, ORCID
               0009-0002-2222-4112). Email-only — no podcasts, voice, or video
               interviews.
@@ -369,7 +369,7 @@ export default function PressPage() {
           </div>
         </section>
 
-        <p className="text-xs text-gray-500 text-center">
+        <p className="text-xs text-gray-400 text-center">
           See also:{" "}
           <Link href="/citation-guide" className="hover:text-gray-300">
             Citation guide
@@ -392,7 +392,7 @@ export default function PressPage() {
           </Link>{" "}
           · <a href={APEX} className="hover:text-gray-300">{APEX}</a>
         </p>
-      </main>
+      </div>
     </>
   );
 }

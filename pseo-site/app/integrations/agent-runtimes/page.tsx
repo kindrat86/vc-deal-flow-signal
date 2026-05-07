@@ -322,7 +322,7 @@ export default function AgentRuntimesPage() {
       <AgentMirrorLinks path="/integrations/agent-runtimes" />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <nav className="mb-6 text-sm text-gray-500" aria-label="Breadcrumb">
+        <nav className="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300 transition-colors">
             All Sectors
           </Link>
@@ -439,7 +439,7 @@ export default function AgentRuntimesPage() {
               >
                 <summary className="text-gray-100 font-medium cursor-pointer list-none flex items-start justify-between gap-3">
                   <span>{f.q}</span>
-                  <span className="text-gray-500 text-xs flex-shrink-0 mt-1 group-open:rotate-180 transition-transform">
+                  <span className="text-gray-400 text-xs flex-shrink-0 mt-1 group-open:rotate-180 transition-transform">
                     ▼
                   </span>
                 </summary>

@@ -310,12 +310,12 @@ export default async function LocaleResearchPage({ params }: PageProps) {
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <main
+      <div
         className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12"
         lang={locale}
         dir={localeMeta.dir}
       >
-        <nav className="text-xs text-gray-500 mb-6" aria-label="Breadcrumb">
+        <nav className="text-xs text-gray-400 mb-6" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300" hrefLang="en">
             English ↩
           </Link>
@@ -392,7 +392,7 @@ export default async function LocaleResearchPage({ params }: PageProps) {
 
         {otherJaFindings.length > 0 ? (
           <section className="mb-10">
-            <h2 className="text-xs uppercase tracking-wider text-gray-500 mb-3">
+            <h2 className="text-xs uppercase tracking-wider text-gray-400 mb-3">
               他の日本語版研究結果
             </h2>
             <ul className="space-y-2 text-sm">
@@ -410,7 +410,7 @@ export default async function LocaleResearchPage({ params }: PageProps) {
             </ul>
           </section>
         ) : null}
-      </main>
+      </div>
     </>
   );
 }

@@ -379,8 +379,8 @@ export default function StandardsPage() {
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <nav className="text-xs text-gray-500 mb-6" aria-label="Breadcrumb">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <nav className="text-xs text-gray-400 mb-6" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300">
             Home
           </Link>
@@ -543,7 +543,7 @@ export default function StandardsPage() {
           </ol>
         </section>
 
-        <p className="text-xs text-gray-500 text-center">
+        <p className="text-xs text-gray-400 text-center">
           See also:{" "}
           <Link href="/citation-guide" className="hover:text-gray-300">
             Citation guide
@@ -561,7 +561,7 @@ export default function StandardsPage() {
             Corrections policy &amp; log
           </Link>
         </p>
-      </main>
+      </div>
     </>
   );
 }

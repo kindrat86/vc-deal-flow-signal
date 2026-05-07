@@ -137,7 +137,7 @@ export function ForFrameworkPage({ framework: f }: Props) {
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <nav
-          className="mb-6 text-sm text-gray-500"
+          className="mb-6 text-sm text-gray-400"
           aria-label="Breadcrumb"
         >
           <Link href="/" className="hover:text-gray-300 transition-colors">

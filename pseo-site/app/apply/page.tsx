@@ -202,7 +202,7 @@ export default function ApplyPage() {
           ))}
         </section>
 
-        <p className="text-gray-500 text-sm border-t border-slate-800 pt-5">
+        <p className="text-gray-400 text-sm border-t border-slate-800 pt-5">
           Not yet at the Sharp Tier volume?{" "}
           <Link href="/pricing" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">
             Compare all six tiers

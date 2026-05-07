@@ -266,7 +266,7 @@ export default function EnterprisePage() {
             <h2 className="text-2xl font-semibold text-gray-100">Sharp Tier</h2>
             <span className="text-3xl font-bold text-gray-100">€497</span>
             <span className="text-gray-400 text-sm">/mo</span>
-            <span className="text-gray-500 text-xs">
+            <span className="text-gray-400 text-xs">
               or €4,970/yr · application required · 8-fund cap 2026
             </span>
           </div>
@@ -401,7 +401,7 @@ export default function EnterprisePage() {
           </div>
         </section>
 
-        <p className="text-xs text-gray-500 mt-8 mb-4">
+        <p className="text-xs text-gray-400 mt-8 mb-4">
           Enterprise terms last verified {asOf}. Sharp Tier capacity may
           shift based on 2026 utilisation review.
         </p>

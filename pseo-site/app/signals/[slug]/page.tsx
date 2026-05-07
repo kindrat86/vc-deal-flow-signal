@@ -142,7 +142,7 @@ export default async function SignalTypePage({ params }: PageProps) {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         {/* Breadcrumb */}
-        <nav className="mb-6 text-sm text-gray-500" aria-label="Breadcrumb">
+        <nav className="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300 transition-colors">
             All Sectors
           </Link>
@@ -289,7 +289,7 @@ export default async function SignalTypePage({ params }: PageProps) {
                 <h3 className="text-gray-200 font-medium text-sm group-hover:text-sky-400 transition-colors mb-1">
                   {s.name}
                 </h3>
-                <p className="text-gray-500 text-xs line-clamp-2">
+                <p className="text-gray-400 text-xs line-clamp-2">
                   {s.description}
                 </p>
               </Link>

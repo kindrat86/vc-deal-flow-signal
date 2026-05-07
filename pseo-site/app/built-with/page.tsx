@@ -183,7 +183,7 @@ const jsonLd = {
 function CopyBlock({ label, value }: { label: string; value: string }) {
   return (
     <>
-      <p className="text-xs text-gray-500 mt-3 mb-2">{label}</p>
+      <p className="text-xs text-gray-400 mt-3 mb-2">{label}</p>
       <pre className="rounded-md bg-slate-950 border border-slate-800 px-4 py-3 text-xs font-mono text-sky-300 overflow-x-auto whitespace-pre-wrap break-all">
         <code>{value}</code>
       </pre>
@@ -200,8 +200,8 @@ export default function BuiltWithPage() {
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <nav className="text-xs text-gray-500 mb-6" aria-label="Breadcrumb">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <nav className="text-xs text-gray-400 mb-6" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300">
             Home
           </Link>
@@ -236,7 +236,7 @@ export default function BuiltWithPage() {
                   className="h-5"
                   loading="lazy"
                 />
-                <span className="text-[10px] uppercase tracking-wider text-gray-500">
+                <span className="text-[10px] uppercase tracking-wider text-gray-400">
                   {v.name}
                 </span>
               </div>
@@ -337,7 +337,7 @@ export default function BuiltWithPage() {
               </tbody>
             </table>
           </div>
-          <p className="text-xs text-gray-500 mt-3">
+          <p className="text-xs text-gray-400 mt-3">
             Full schema and install instructions:{" "}
             <Link href="/integrations" className="hover:text-gray-300">
               /integrations
@@ -377,7 +377,7 @@ export default function BuiltWithPage() {
           </dl>
         </section>
 
-        <p className="text-xs text-gray-500 text-center">
+        <p className="text-xs text-gray-400 text-center">
           See also:{" "}
           <Link href="/badge-builder" className="hover:text-gray-300">
             Scout Score &amp; Momentum builder
@@ -395,7 +395,7 @@ export default function BuiltWithPage() {
             Mirrors
           </Link>
         </p>
-      </main>
+      </div>
     </>
   );
 }

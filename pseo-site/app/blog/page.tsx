@@ -55,7 +55,7 @@ export default function BlogIndex() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <nav className="mb-6 text-sm text-gray-500" aria-label="Breadcrumb">
+      <nav className="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">
         <Link href="/" className="hover:text-gray-300 transition-colors">
           All Sectors
         </Link>
@@ -79,7 +79,7 @@ export default function BlogIndex() {
             href={`/blog/${post.slug}`}
             className="group block rounded-lg border border-slate-800 bg-slate-900 p-6 hover:border-sky-600/50 hover:bg-slate-800/60 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-sky-500/10 transition-all"
           >
-            <p className="text-gray-500 text-xs mb-2 uppercase tracking-wider font-mono">
+            <p className="text-gray-400 text-xs mb-2 uppercase tracking-wider font-mono">
               {post.date}
             </p>
             <h2 className="text-gray-100 font-semibold text-lg sm:text-xl mb-2 group-hover:text-sky-400 transition-colors leading-snug tracking-tight">

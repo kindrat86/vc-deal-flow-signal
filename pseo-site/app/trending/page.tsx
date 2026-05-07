@@ -163,7 +163,7 @@ export default function TrendingPage() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         {/* Breadcrumb */}
-        <nav className="mb-6 text-sm text-gray-500" aria-label="Breadcrumb">
+        <nav className="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300 transition-colors">
             All Sectors
           </Link>
@@ -254,7 +254,7 @@ export default function TrendingPage() {
                     {s.name}
                   </h3>
                 </div>
-                <p className="text-gray-500 text-xs mb-1">
+                <p className="text-gray-400 text-xs mb-1">
                   {s.count} startups · avg {s.avgVelocity} commits/14d
                 </p>
                 <p className="text-gray-400 text-xs">

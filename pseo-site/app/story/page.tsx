@@ -132,7 +132,7 @@ export default function StoryPage() {
           <span className="text-gray-400">Story</span>
         </nav>
 
-        <p className="text-xs text-gray-500 uppercase tracking-wider mb-3">
+        <p className="text-xs text-gray-400 uppercase tracking-wider mb-3">
           Launch Diary · Published 2026-05-02
         </p>
 
@@ -284,7 +284,7 @@ export default function StoryPage() {
             fundamentally different economics, and most acquisition advice is
             written for the billboard world.&rdquo;
             <br />
-            <span className="text-xs text-gray-500 not-italic">
+            <span className="text-xs text-gray-400 not-italic">
               — ReleaseLog, on the Indie Hackers post-mortem
             </span>
           </p>
@@ -304,7 +304,7 @@ export default function StoryPage() {
             algorithm changes in 2022. Post-mortems beat playbooks for exactly
             that reason.&rdquo;
             <br />
-            <span className="text-xs text-gray-500 not-italic">
+            <span className="text-xs text-gray-400 not-italic">
               — epopteia, on the Indie Hackers post-mortem
             </span>
           </p>
@@ -324,7 +324,7 @@ export default function StoryPage() {
             you built in the three weeks before. The listing got people to
             click; the history got them to trust.&rdquo;
             <br />
-            <span className="text-xs text-gray-500 not-italic">
+            <span className="text-xs text-gray-400 not-italic">
               — HarborPointPress, on the Indie Hackers post-mortem
             </span>
           </p>
@@ -348,7 +348,7 @@ export default function StoryPage() {
             better play: leave the page alone, point all new content at it as
             the canonical hub, and let it accrete backlinks.&rdquo;
             <br />
-            <span className="text-xs text-gray-500 not-italic">
+            <span className="text-xs text-gray-400 not-italic">
               — davidamoroso, on the Indie Hackers post-mortem
             </span>
           </p>
@@ -372,7 +372,7 @@ export default function StoryPage() {
             paper isn&apos;t just a new hook, it&apos;s a trust signal that
             compensates for the anonymity gap.&rdquo;
             <br />
-            <span className="text-xs text-gray-500 not-italic">
+            <span className="text-xs text-gray-400 not-italic">
               — aegiswizard, on the Indie Hackers post-mortem
             </span>
           </p>

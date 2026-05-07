@@ -155,7 +155,7 @@ export default async function LaunchPage({ params }: PageProps) {
         </header>
 
         <section className="rounded-xl border border-slate-800 bg-slate-900/40 p-5 space-y-2">
-          <p className="text-gray-500 text-xs font-semibold uppercase tracking-wider">
+          <p className="text-gray-400 text-xs font-semibold uppercase tracking-wider">
             Abstract
           </p>
           <p className="text-gray-300 text-sm leading-relaxed">
@@ -208,7 +208,7 @@ export default async function LaunchPage({ params }: PageProps) {
                   <p className="text-gray-100 font-semibold text-sm">
                     {item.label}
                   </p>
-                  <p className="text-gray-500 text-xs font-mono shrink-0">
+                  <p className="text-gray-400 text-xs font-mono shrink-0">
                     {item.standalone}
                   </p>
                 </div>
@@ -226,7 +226,7 @@ export default async function LaunchPage({ params }: PageProps) {
               Launch price:{" "}
               <span className="text-amber-300">{launch.launchPrice}</span>
             </p>
-            <p className="text-gray-500 text-xs">
+            <p className="text-gray-400 text-xs">
               After window: {launch.postLaunchPrice}
             </p>
           </div>
@@ -238,7 +238,7 @@ export default async function LaunchPage({ params }: PageProps) {
               {launch.ctaLabel}
             </a>
           ) : (
-            <p className="text-gray-500 text-sm">
+            <p className="text-gray-400 text-sm">
               Launch window is closed. Standard pricing now applies — see{" "}
               <Link
                 href="/pricing"
@@ -261,7 +261,7 @@ export default async function LaunchPage({ params }: PageProps) {
           ))}
         </section>
 
-        <p className="text-gray-500 text-sm border-t border-slate-800 pt-5">
+        <p className="text-gray-400 text-sm border-t border-slate-800 pt-5">
           See every door into VC Deal Flow Signal at{" "}
           <Link
             href="/funnels"

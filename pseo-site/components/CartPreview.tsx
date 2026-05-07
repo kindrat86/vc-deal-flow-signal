@@ -42,7 +42,7 @@ export default function CartPreview() {
             Your cart
           </h2>
         </div>
-        <span className="text-gray-500 text-[10px] sm:text-xs font-mono uppercase tracking-wider">
+        <span className="text-gray-400 text-[10px] sm:text-xs font-mono uppercase tracking-wider">
           Step 1 / 2
         </span>
       </header>
@@ -58,7 +58,7 @@ export default function CartPreview() {
           </div>
           <div className="text-right shrink-0">
             <p className="text-gray-100 font-bold text-base">€{BASE_LINE.price}</p>
-            <p className="text-gray-500 text-[10px] uppercase tracking-wider">one-time</p>
+            <p className="text-gray-400 text-[10px] uppercase tracking-wider">one-time</p>
           </div>
         </li>
 
@@ -88,7 +88,7 @@ export default function CartPreview() {
                 <p className="text-gray-100 font-bold text-base">
                   €{BUMP_LINE.price.toLocaleString("en-US")}
                 </p>
-                <p className="text-gray-500 line-through text-xs">
+                <p className="text-gray-400 line-through text-xs">
                   €{BUMP_LINE.strike.toLocaleString("en-US")}
                 </p>
               </div>
@@ -113,7 +113,7 @@ export default function CartPreview() {
             disappears after checkout.
           </p>
         ) : (
-          <p className="text-gray-500 text-[11px] sm:text-xs leading-snug">
+          <p className="text-gray-400 text-[11px] sm:text-xs leading-snug">
             Tick the bump above to add the full Sector Sweep at a one-step-only €200 off.
           </p>
         )}
@@ -137,7 +137,7 @@ export default function CartPreview() {
           </form>
         )}
 
-        <ul className="grid grid-cols-3 gap-1.5 text-[10px] sm:text-[11px] text-gray-500 pt-1">
+        <ul className="grid grid-cols-3 gap-1.5 text-[10px] sm:text-[11px] text-gray-400 pt-1">
           <li className="flex items-center gap-1">
             <span aria-hidden="true" className="text-emerald-400">🔒</span>
             Stripe checkout

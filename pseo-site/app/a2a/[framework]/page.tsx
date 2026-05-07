@@ -80,7 +80,7 @@ export default async function A2AFrameworkPage({ params }: PageProps) {
   };
 
   return (
-    <main style={{ maxWidth: 880, margin: "0 auto", padding: "32px 20px 80px" }}>
+    <div style={{ maxWidth: 880, margin: "0 auto", padding: "32px 20px 80px" }}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -272,7 +272,7 @@ export default async function A2AFrameworkPage({ params }: PageProps) {
           ))}
         </ul>
       </section>
-    </main>
+    </div>
   );
 }
 

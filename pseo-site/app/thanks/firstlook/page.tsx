@@ -107,7 +107,7 @@ export default function ThanksFirstLook() {
               Read the 12-min walkthrough first
             </Link>
           </div>
-          <p className="text-gray-500 text-xs leading-relaxed pt-1">
+          <p className="text-gray-400 text-xs leading-relaxed pt-1">
             30-day Signal-or-It&rsquo;s-Free guarantee. Reply{" "}
             <code className="text-gray-400 bg-slate-900/60 px-1.5 py-0.5 rounded text-xs">
               REFUND

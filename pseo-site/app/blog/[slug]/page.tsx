@@ -455,7 +455,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Breadcrumb */}
-        <nav className="mb-6 text-sm text-gray-500" aria-label="Breadcrumb">
+        <nav className="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300 transition-colors">
             All Sectors
           </Link>
@@ -472,12 +472,12 @@ export default async function BlogPostPage({ params }: PageProps) {
 
         <article>
           <header className="mb-8">
-            <div className="flex items-center gap-3 text-sm text-gray-500 mb-3">
+            <div className="flex items-center gap-3 text-sm text-gray-400 mb-3">
               <Link href={author.url} className="hover:text-gray-300 transition-colors font-medium">
                 {author.name}
               </Link>
               <span className="text-slate-700">|</span>
-              <span className="text-gray-500 text-xs">{author.jobTitle}</span>
+              <span className="text-gray-400 text-xs">{author.jobTitle}</span>
               <span className="text-slate-700">|</span>
               <time dateTime={post.date}>{post.date}</time>
             </div>
@@ -528,7 +528,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           )}
 
           {/* Authoritative data context – concrete numbers AI models prefer to cite */}
-          <div className="mb-8 flex flex-wrap gap-4 text-xs text-gray-500">
+          <div className="mb-8 flex flex-wrap gap-4 text-xs text-gray-400">
             <span>{sectors.filter((s) => s.periods[period.slug]).length} sectors tracked</span>
             <span className="text-slate-700">|</span>
             <span>{sectors.filter((s) => s.periods[period.slug]).reduce((sum, s) => sum + s.periods[period.slug].startups.length, 0)} startup signals</span>
@@ -552,7 +552,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           {/* Sources footer – boosts AI citation confidence */}
           <footer className="mt-10 pt-6 border-t border-slate-800">
             <p className="text-gray-600 text-xs leading-relaxed">
-              <strong className="text-gray-500">Sources &amp; methodology:</strong> According
+              <strong className="text-gray-400">Sources &amp; methodology:</strong> According
               to data from{" "}
               <a
                 href="https://docs.github.com/en/rest"
@@ -574,24 +574,24 @@ export default async function BlogPostPage({ params }: PageProps) {
 
             {/* Author bio – E-E-A-T signal for Google and LLM reviewers */}
             <div className="mt-6 rounded-lg border border-slate-800 bg-slate-900/50 p-5">
-              <p className="text-gray-500 text-xs font-medium uppercase tracking-wider mb-2">
+              <p className="text-gray-400 text-xs font-medium uppercase tracking-wider mb-2">
                 About the author
               </p>
               <p className="text-gray-300 text-sm font-medium mb-1">{author.name}</p>
-              <p className="text-gray-500 text-xs mb-2">{author.jobTitle}</p>
+              <p className="text-gray-400 text-xs mb-2">{author.jobTitle}</p>
               <p className="text-gray-400 text-sm leading-relaxed">{author.bio}</p>
             </div>
 
             {/* Academic-style references */}
             {post.references && post.references.length > 0 && (
               <div className="mt-6" id="references">
-                <p className="text-gray-500 text-xs font-medium uppercase tracking-wider mb-2">
+                <p className="text-gray-400 text-xs font-medium uppercase tracking-wider mb-2">
                   References
                 </p>
                 <ol className="list-none space-y-1">
                   {post.references.map((ref) => (
                     <li key={ref.label} className="text-gray-600 text-xs leading-relaxed">
-                      <span className="text-gray-500 font-mono">[{ref.label}]</span>{" "}
+                      <span className="text-gray-400 font-mono">[{ref.label}]</span>{" "}
                       <a
                         href={ref.url}
                         className="text-sky-600 hover:text-sky-500 transition-colors"
@@ -646,7 +646,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             <h2 className="text-lg font-semibold text-gray-100 mb-2">
               More articles in this series
             </h2>
-            <p className="text-gray-500 text-sm mb-5">{pillar.description}</p>
+            <p className="text-gray-400 text-sm mb-5">{pillar.description}</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {relatedPosts.map((rp) => (
                 <Link
@@ -657,7 +657,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                   <h3 className="text-gray-100 font-medium text-sm group-hover:text-sky-400 transition-colors mb-1.5 leading-snug">
                     {rp.title}
                   </h3>
-                  <p className="text-gray-500 text-xs leading-relaxed line-clamp-2">
+                  <p className="text-gray-400 text-xs leading-relaxed line-clamp-2">
                     {rp.description}
                   </p>
                 </Link>
@@ -682,7 +682,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                   <h3 className="text-gray-200 font-medium text-sm group-hover:text-sky-400 transition-colors mb-1">
                     {s.name}
                   </h3>
-                  <p className="text-gray-500 text-xs">
+                  <p className="text-gray-400 text-xs">
                     {s.count} startups tracked &rarr;
                   </p>
                 </Link>

@@ -219,7 +219,7 @@ export default function PitchPage() {
         </section>
 
         {/* DEEP DIVE LINK */}
-        <p className="text-center text-gray-500 text-sm pt-4">
+        <p className="text-center text-gray-400 text-sm pt-4">
           Want the long version? Read the{" "}
           <Link
             href="/perfect-webinar"

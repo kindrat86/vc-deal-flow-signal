@@ -178,8 +178,8 @@ export default function ReproducibilityPage() {
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <nav className="text-xs text-gray-500 mb-6" aria-label="Breadcrumb">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <nav className="text-xs text-gray-400 mb-6" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300">
             Home
           </Link>
@@ -209,7 +209,7 @@ export default function ReproducibilityPage() {
             {Object.entries(RUNTIME).map(([k, v]) => (
               <li key={k}>
                 <span className="text-sky-300">{k}</span>{" "}
-                <span className="text-gray-500">— {v}</span>
+                <span className="text-gray-400">— {v}</span>
               </li>
             ))}
           </ul>
@@ -285,7 +285,7 @@ export default function ReproducibilityPage() {
           </ul>
         </section>
 
-        <p className="text-xs text-gray-500 text-center mt-10">
+        <p className="text-xs text-gray-400 text-center mt-10">
           See also:{" "}
           <Link href="/methodology" className="hover:text-gray-300">
             Methodology
@@ -303,7 +303,7 @@ export default function ReproducibilityPage() {
             Attestations
           </Link>
         </p>
-      </main>
+      </div>
     </>
   );
 }

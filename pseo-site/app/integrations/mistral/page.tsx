@@ -200,7 +200,7 @@ export default function MistralIntegrationPage() {
       <AgentMirrorLinks path="/integrations/mistral" />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <nav className="mb-6 text-sm text-gray-500" aria-label="Breadcrumb">
+        <nav className="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300 transition-colors">
             All Sectors
           </Link>
@@ -290,7 +290,7 @@ export default function MistralIntegrationPage() {
               </div>
             ))}
           </div>
-          <p className="text-gray-500 text-xs mt-3">
+          <p className="text-gray-400 text-xs mt-3">
             All tools are read-only, idempotent, and closed-world (no external
             crawl on demand). Annotations exposed via the MCP{" "}
             <code className="font-mono text-gray-400">tools/list</code>{" "}

@@ -136,7 +136,7 @@ export default function SqueezePage() {
             sign up but still wants to look around. Single link, soft
             voice. */}
         <footer className="pt-6 border-t border-slate-800 space-y-2">
-          <p className="text-gray-500 text-sm leading-relaxed">
+          <p className="text-gray-400 text-sm leading-relaxed">
             Already subscribed?{" "}
             <Link
               href="/predicted"

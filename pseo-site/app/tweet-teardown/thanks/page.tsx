@@ -129,7 +129,7 @@ export default function TeardownThanksPage() {
           </Link>
         </section>
 
-        <p className="text-center text-xs text-gray-500">
+        <p className="text-center text-xs text-gray-400">
           Questions? Reply to the receipt email or write to{" "}
           <a
             className="text-sky-400 hover:text-sky-300"

@@ -203,7 +203,7 @@ export default function AnimatedDemo() {
     <div className="relative">
       <div className="rounded-xl overflow-hidden border border-slate-800 bg-slate-950 shadow-lg shadow-fuchsia-500/5">
         <div className="flex items-center justify-between px-4 py-2 border-b border-slate-800 bg-slate-900/60">
-          <p className="text-gray-500 text-[11px] font-mono">
+          <p className="text-gray-400 text-[11px] font-mono">
             example_org · 4,200-org universe · panel-style render
           </p>
           <button
@@ -221,7 +221,7 @@ export default function AnimatedDemo() {
           role="img"
         />
       </div>
-      <p className="text-gray-500 text-xs mt-2">
+      <p className="text-gray-400 text-xs mt-2">
         Synthetic trajectory rendered in your browser, not a recording. Loops
         every 90 seconds. Reduce-motion preference is honored — paused state
         renders the final frame.

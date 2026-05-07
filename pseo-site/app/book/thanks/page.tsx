@@ -50,7 +50,7 @@ export default function BookThanksPage() {
               className="block bg-slate-950/60 border border-slate-800 rounded-lg p-4 hover:border-sky-500 transition-colors"
             >
               <p className="text-gray-100 font-semibold">PDF</p>
-              <p className="text-gray-500 text-xs mt-1">
+              <p className="text-gray-400 text-xs mt-1">
                 Print-ready · ~700 KB
               </p>
             </a>
@@ -59,7 +59,7 @@ export default function BookThanksPage() {
               className="block bg-slate-950/60 border border-slate-800 rounded-lg p-4 hover:border-sky-500 transition-colors"
             >
               <p className="text-gray-100 font-semibold">EPUB</p>
-              <p className="text-gray-500 text-xs mt-1">
+              <p className="text-gray-400 text-xs mt-1">
                 Kindle / iBooks / Calibre
               </p>
             </a>
@@ -68,7 +68,7 @@ export default function BookThanksPage() {
               className="block bg-slate-950/60 border border-slate-800 rounded-lg p-4 hover:border-sky-500 transition-colors"
             >
               <p className="text-gray-100 font-semibold">Markdown</p>
-              <p className="text-gray-500 text-xs mt-1">
+              <p className="text-gray-400 text-xs mt-1">
                 Source · pipe through pandoc
               </p>
             </a>
@@ -77,7 +77,7 @@ export default function BookThanksPage() {
               className="block bg-slate-950/60 border border-slate-800 rounded-lg p-4 hover:border-sky-500 transition-colors"
             >
               <p className="text-gray-100 font-semibold">Plain text</p>
-              <p className="text-gray-500 text-xs mt-1">
+              <p className="text-gray-400 text-xs mt-1">
                 Email-safe · grep-friendly
               </p>
             </a>
@@ -137,7 +137,7 @@ export default function BookThanksPage() {
           </ol>
         </section>
 
-        <p className="text-center text-xs text-gray-500">
+        <p className="text-center text-xs text-gray-400">
           Questions? Reply to any email or write to{" "}
           <a
             className="text-sky-400 hover:text-sky-300"

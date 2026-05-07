@@ -123,7 +123,7 @@ export default async function ChapterPage({ params }: PageProps) {
       <AgentMirrorLinks path={`/book/read/${chapter.slug}`} />
 
       <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <nav className="text-xs text-gray-500 mb-8">
+        <nav className="text-xs text-gray-400 mb-8">
           <Link href="/book" className="hover:text-sky-400">
             {BOOK.title}
           </Link>
@@ -158,7 +158,7 @@ export default async function ChapterPage({ params }: PageProps) {
               href={`/book/read/${prev.slug}`}
               className="bg-slate-900/60 border border-slate-800 rounded-lg p-4 hover:border-slate-600 transition-colors"
             >
-              <p className="text-xs text-gray-500 mb-1">← Previous</p>
+              <p className="text-xs text-gray-400 mb-1">← Previous</p>
               <p className="text-gray-100 font-semibold">{prev.title}</p>
             </Link>
           ) : (
@@ -169,7 +169,7 @@ export default async function ChapterPage({ params }: PageProps) {
               href={`/book/read/${next.slug}`}
               className="bg-slate-900/60 border border-slate-800 rounded-lg p-4 hover:border-slate-600 transition-colors text-right"
             >
-              <p className="text-xs text-gray-500 mb-1">Next →</p>
+              <p className="text-xs text-gray-400 mb-1">Next →</p>
               <p className="text-gray-100 font-semibold">{next.title}</p>
             </Link>
           ) : (

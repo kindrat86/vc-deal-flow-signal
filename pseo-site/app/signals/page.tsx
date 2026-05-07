@@ -60,8 +60,8 @@ export default function SignalsIndexPage() {
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <nav className="text-xs text-gray-500 mb-6" aria-label="Breadcrumb">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <nav className="text-xs text-gray-400 mb-6" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300">
             Home
           </Link>
@@ -95,7 +95,7 @@ export default function SignalsIndexPage() {
                 <h2 className="text-base font-semibold text-white mb-2">
                   {p.name}
                 </h2>
-                <p className="text-xs text-gray-500 leading-relaxed mb-2">
+                <p className="text-xs text-gray-400 leading-relaxed mb-2">
                   Window: {p.window}
                 </p>
                 <p className="text-sm text-gray-300 leading-relaxed line-clamp-3">
@@ -230,7 +230,7 @@ export default function SignalsIndexPage() {
           </ul>
         </section>
 
-        <p className="text-xs text-gray-500 text-center mt-10">
+        <p className="text-xs text-gray-400 text-center mt-10">
           See also:{" "}
           <Link href="/knowledge" className="hover:text-gray-300">
             Knowledge graph
@@ -252,7 +252,7 @@ export default function SignalsIndexPage() {
             Corrections
           </Link>
         </p>
-      </main>
+      </div>
     </>
   );
 }

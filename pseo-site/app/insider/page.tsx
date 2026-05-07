@@ -202,7 +202,7 @@ export default function InsiderPage() {
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
         {/* HOOK */}
         <header className="space-y-4">
-          <nav aria-label="Breadcrumb" className="text-xs text-gray-500">
+          <nav aria-label="Breadcrumb" className="text-xs text-gray-400">
             <Link href="/" className="hover:text-sky-400 transition-colors">
               ← Home
             </Link>
@@ -463,7 +463,7 @@ export default function InsiderPage() {
                           </span>
                         )}
                       </p>
-                      <p className="text-gray-500 text-xs whitespace-nowrap">
+                      <p className="text-gray-400 text-xs whitespace-nowrap">
                         Standalone:{" "}
                         <span className="text-emerald-400">
                           {item.standalone}
@@ -493,7 +493,7 @@ export default function InsiderPage() {
               <span>Founding-member price, locked forever</span>
               <span className="text-emerald-400">€97/mo</span>
             </div>
-            <p className="text-gray-500 text-xs">
+            <p className="text-gray-400 text-xs">
               That is €1,164/year, or roughly the cost of one missed warm
               intro. The price stays €97 for as long as you stay subscribed,
               even after the public hike to €197/mo.
@@ -703,7 +703,7 @@ export default function InsiderPage() {
               Or start with Dashboard at €9.97/mo
             </a>
           </div>
-          <p className="text-gray-500 text-xs pt-2">
+          <p className="text-gray-400 text-xs pt-2">
             Or read the full case in the{" "}
             <Link
               href="/perfect-webinar"
@@ -831,7 +831,7 @@ export default function InsiderPage() {
               Free digest first
             </a>
           </div>
-          <p className="text-gray-500 text-xs">
+          <p className="text-gray-400 text-xs">
             30-day Signal-or-It&rsquo;s-Free guarantee · Reply REFUND for full refund
           </p>
         </section>

@@ -75,7 +75,7 @@ export default function FiveMinPerfectWebinarPage() {
 
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
         <header className="space-y-3">
-          <nav aria-label="Breadcrumb" className="text-xs text-gray-500">
+          <nav aria-label="Breadcrumb" className="text-xs text-gray-400">
             <Link href="/" className="hover:text-gray-300">Home</Link>
             <span className="mx-2">/</span>
             <Link href="/perfect-webinar" className="hover:text-gray-300">Perfect Webinar</Link>
@@ -174,7 +174,7 @@ export default function FiveMinPerfectWebinarPage() {
           </ul>
           <div className="border-t border-slate-700 pt-3 mt-3 flex items-baseline justify-between text-sm">
             <span className="text-gray-400">Total standalone value</span>
-            <span className="text-gray-500 line-through">€1,728/yr</span>
+            <span className="text-gray-400 line-through">€1,728/yr</span>
           </div>
           <div className="flex items-baseline justify-between text-lg font-bold pt-1">
             <span className="text-gray-100">Founding-member price</span>
@@ -239,12 +239,12 @@ export default function FiveMinPerfectWebinarPage() {
               Or start with the free digest
             </a>
           </div>
-          <p className="text-gray-500 text-xs pt-1">
+          <p className="text-gray-400 text-xs pt-1">
             30-day Signal-or-It&rsquo;s-Free guarantee · No call · Reply REFUND
           </p>
         </section>
 
-        <p className="text-gray-500 text-xs leading-relaxed border-t border-slate-800 pt-5">
+        <p className="text-gray-400 text-xs leading-relaxed border-t border-slate-800 pt-5">
           Need the long version? The full{" "}
           <Link href="/perfect-webinar" className="text-amber-300 hover:text-amber-200 underline decoration-dotted">
             12-minute Perfect Webinar

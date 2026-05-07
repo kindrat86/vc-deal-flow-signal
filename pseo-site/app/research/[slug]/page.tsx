@@ -401,7 +401,7 @@ export default async function ResearchFindingPage({ params }: PageProps) {
           >
             {finding.title}
           </h1>
-          <p className="text-xs text-gray-500">
+          <p className="text-xs text-gray-400">
             From{" "}
             <a
               className="text-sky-400 hover:text-sky-300"
@@ -494,7 +494,7 @@ export default async function ResearchFindingPage({ params }: PageProps) {
               </a>
               .
             </li>
-            <li className="text-xs text-gray-500 pt-2 border-t border-slate-800">
+            <li className="text-xs text-gray-400 pt-2 border-t border-slate-800">
               On this site, &ldquo;engineering acceleration&rdquo; refers to a
               quantitative GitHub momentum signal — unrelated to startup
               accelerator programs (Y Combinator, Techstars, 500 Global).
@@ -520,7 +520,7 @@ Retrieved from ${SITE}/research/${slug}`}
               href={`/research/${prev.slug}`}
               className="group block rounded-lg border border-slate-800 bg-slate-900 p-4 hover:border-slate-600 hover:bg-slate-800/60 transition-all"
             >
-              <p className="text-gray-500 text-xs mb-1">
+              <p className="text-gray-400 text-xs mb-1">
                 ← Finding {prev.n} of 30
               </p>
               <p className="text-gray-200 text-sm group-hover:text-sky-400 transition-colors">
@@ -535,7 +535,7 @@ Retrieved from ${SITE}/research/${slug}`}
               href={`/research/${next.slug}`}
               className="group block rounded-lg border border-slate-800 bg-slate-900 p-4 hover:border-slate-600 hover:bg-slate-800/60 transition-all sm:text-right"
             >
-              <p className="text-gray-500 text-xs mb-1">
+              <p className="text-gray-400 text-xs mb-1">
                 Finding {next.n} of 30 →
               </p>
               <p className="text-gray-200 text-sm group-hover:text-sky-400 transition-colors">

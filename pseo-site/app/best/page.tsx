@@ -89,7 +89,7 @@ export default function BestIndex() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <nav className="mb-6 text-sm text-gray-500" aria-label="Breadcrumb">
+        <nav className="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300 transition-colors">
             All Sectors
           </Link>
@@ -106,7 +106,7 @@ export default function BestIndex() {
           identifies for that sector — the startups showing engineering
           acceleration that historically precedes a fundraise by 6-12 weeks.
         </p>
-        <p className="text-gray-500 text-sm mb-10">
+        <p className="text-gray-400 text-sm mb-10">
           {sectors.length} sectors · {items.length} ranked lists · last
           refreshed{" "}
           {new Date(lastModified).toLocaleDateString("en-US", {
@@ -127,7 +127,7 @@ export default function BestIndex() {
               <h2 className="text-gray-100 font-semibold text-sm mb-1 group-hover:text-sky-400 transition-colors">
                 Best {it.sector.name} Startups {it.year}
               </h2>
-              <p className="text-gray-500 text-xs">
+              <p className="text-gray-400 text-xs">
                 {it.count} ranked startup{it.count === 1 ? "" : "s"} · GitHub
                 acceleration
               </p>

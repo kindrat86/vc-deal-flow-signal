@@ -384,7 +384,7 @@ export default function OriginPage() {
           </ul>
         </section>
 
-        <section className="border-t border-slate-800 pt-8 text-sm text-gray-500 leading-relaxed">
+        <section className="border-t border-slate-800 pt-8 text-sm text-gray-400 leading-relaxed">
           <p>
             More about who&rsquo;s writing this on{" "}
             <Link

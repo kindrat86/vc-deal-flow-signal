@@ -290,7 +290,7 @@ export default function DatasetPage() {
   };
 
   return (
-    <main className="mx-auto max-w-5xl px-4 py-12">
+    <div className="mx-auto max-w-5xl px-4 py-12">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -519,6 +519,6 @@ export default function DatasetPage() {
           </li>
         </ul>
       </section>
-    </main>
+    </div>
   );
 }

@@ -193,7 +193,7 @@ export default function Dream50Page() {
   };
 
   return (
-    <main className="min-h-screen bg-slate-950 text-gray-100">
+    <div className="min-h-screen bg-slate-950 text-gray-100">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -265,13 +265,13 @@ export default function Dream50Page() {
                 >
                   <div className="flex flex-wrap items-start justify-between gap-3 mb-2">
                     <div className="flex items-baseline gap-3">
-                      <span className="text-xs font-mono tabular-nums text-gray-500">
+                      <span className="text-xs font-mono tabular-nums text-gray-400">
                         #{String(i + 1).padStart(2, "0")}
                       </span>
                       <h3 className="text-base sm:text-lg font-semibold text-gray-100">
                         {p.name}
                       </h3>
-                      <span className="text-xs text-gray-500">
+                      <span className="text-xs text-gray-400">
                         {arch.emoji} {arch.label}
                       </span>
                     </div>
@@ -285,7 +285,7 @@ export default function Dream50Page() {
                   <p className="text-sm text-gray-400 leading-relaxed mb-1">
                     <span className="text-gray-300">{p.who}</span> · {p.audience}
                   </p>
-                  <p className="text-sm text-gray-500 leading-relaxed">
+                  <p className="text-sm text-gray-400 leading-relaxed">
                     <span className="text-gray-400">Fit:</span> {p.fit}
                   </p>
                 </article>
@@ -481,6 +481,6 @@ gitdealflow.com/dataset · ssrn.com/abstract=6606558`}</pre>
 
         <AgentMirrorLinks path="/affiliates/dream-50" />
       </div>
-    </main>
+    </div>
   );
 }

@@ -247,11 +247,11 @@ export default function BookPage() {
               Read free online
             </Link>
           </div>
-          <p className="text-xs text-gray-500 pt-2">
+          <p className="text-xs text-gray-400 pt-2">
             ISBN {BOOK.isbn} · {BOOK.edition} · CC-BY-4.0 · Methodology indexed at{" "}
             <a
               href="https://ssrn.com/abstract=6606558"
-              className="text-emerald-400 hover:text-emerald-300"
+              className="text-emerald-400 hover:text-emerald-300 underline underline-offset-2"
             >
               SSRN abstract 6606558
             </a>
@@ -342,13 +342,13 @@ export default function BookPage() {
                   </Link>
                   <p className="text-gray-400 text-sm mt-0.5">{c.subtitle}</p>
                 </div>
-                <span className="text-gray-500 text-xs flex-shrink-0">
+                <span className="text-gray-400 text-xs flex-shrink-0">
                   {c.estimatedReadMinutes} min
                 </span>
               </li>
             ))}
           </ol>
-          <p className="text-center text-sm text-gray-500 pt-2">
+          <p className="text-center text-sm text-gray-400 pt-2">
             <Link href="/book/read/introduction" className="text-sky-400 hover:text-sky-300">
               Start reading from the introduction →
             </Link>
@@ -383,7 +383,7 @@ export default function BookPage() {
               required
               autoComplete="email"
               placeholder="you@yourfund.vc"
-              className="flex-1 rounded-lg bg-slate-950 border border-slate-700 text-gray-100 placeholder:text-gray-500 px-4 py-3 focus:border-sky-500 focus:ring-1 focus:ring-sky-500 outline-none"
+              className="flex-1 rounded-lg bg-slate-950 border border-slate-700 text-gray-100 placeholder:text-gray-400 px-4 py-3 focus:border-sky-500 focus:ring-1 focus:ring-sky-500 outline-none"
             />
             <input type="hidden" name="utm_source" value="book-page" />
             <button
@@ -393,18 +393,18 @@ export default function BookPage() {
               Email me the book
             </button>
           </form>
-          <p className="text-xs text-gray-500">
+          <p className="text-xs text-gray-400">
             Direct download (no email):{" "}
-            <a className="text-sky-400 hover:text-sky-300" href="/downloads/seven-signals.pdf">
+            <a className="text-sky-400 hover:text-sky-300 underline underline-offset-2" href="/downloads/seven-signals.pdf">
               PDF
             </a>{" "}·{" "}
-            <a className="text-sky-400 hover:text-sky-300" href="/downloads/seven-signals.epub">
+            <a className="text-sky-400 hover:text-sky-300 underline underline-offset-2" href="/downloads/seven-signals.epub">
               EPUB
             </a>{" "}·{" "}
-            <a className="text-sky-400 hover:text-sky-300" href="/downloads/seven-signals.md">
+            <a className="text-sky-400 hover:text-sky-300 underline underline-offset-2" href="/downloads/seven-signals.md">
               Markdown
             </a>{" "}·{" "}
-            <a className="text-sky-400 hover:text-sky-300" href="/downloads/seven-signals.txt">
+            <a className="text-sky-400 hover:text-sky-300 underline underline-offset-2" href="/downloads/seven-signals.txt">
               Plain text
             </a>
           </p>
@@ -442,7 +442,7 @@ export default function BookPage() {
           >
             Get the Kindle copy — €0.99 one-time
           </a>
-          <p className="text-xs text-gray-500">
+          <p className="text-xs text-gray-400">
             Stripe checkout · receipt in your inbox · the bonus emails arrive
             over the following week.
           </p>
@@ -453,7 +453,7 @@ export default function BookPage() {
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 tracking-tight">
             Early reads
           </h2>
-          <p className="text-xs text-gray-500 italic">
+          <p className="text-xs text-gray-400 italic">
             Quoted with permission, names initialised at request.
           </p>
           <div className="grid sm:grid-cols-3 gap-4">
@@ -465,7 +465,7 @@ export default function BookPage() {
                 <p className="text-gray-200 text-sm leading-relaxed italic">
                   &ldquo;{r.text}&rdquo;
                 </p>
-                <p className="text-gray-500 text-xs">— {r.by}</p>
+                <p className="text-gray-400 text-xs">— {r.by}</p>
               </blockquote>
             ))}
           </div>
@@ -523,19 +523,19 @@ export default function BookPage() {
               Read online
             </Link>
           </div>
-          <p className="text-sm text-gray-500 max-w-xl mx-auto">
+          <p className="text-sm text-gray-400 max-w-xl mx-auto">
             Or skip the book and start with the free Monday-morning{" "}
-            <Link href="/" className="text-sky-400 hover:text-sky-300">
+            <Link href="/" className="text-sky-400 hover:text-sky-300 underline underline-offset-2">
               Signal Digest
             </Link>{" "}
             · the €9.97/mo{" "}
-            <Link href="/pricing" className="text-sky-400 hover:text-sky-300">
+            <Link href="/pricing" className="text-sky-400 hover:text-sky-300 underline underline-offset-2">
               Dashboard
             </Link>{" "}
             · or the SSRN-indexed{" "}
             <a
               href="https://ssrn.com/abstract=6606558"
-              className="text-emerald-400 hover:text-emerald-300"
+              className="text-emerald-400 hover:text-emerald-300 underline underline-offset-2"
             >
               methodology paper
             </a>

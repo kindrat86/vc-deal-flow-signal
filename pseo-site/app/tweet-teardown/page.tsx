@@ -223,7 +223,7 @@ export default function TweetTeardownPage() {
               <li key={s.n} className="flex gap-5">
                 <span className="text-sky-400 font-mono text-sm pt-1.5">{s.n}</span>
                 <div className="space-y-1.5">
-                  <h3 className="text-gray-100 font-semibold text-base leading-tight">{s.h}</h3>
+                  <p className="text-gray-100 font-semibold text-base leading-tight">{s.h}</p>
                   <p className="text-gray-300 text-sm leading-relaxed">{s.p}</p>
                 </div>
               </li>
@@ -296,7 +296,7 @@ ask. The window is the next 14 days.`}
               href={p.href}
               className="block space-y-1 hover:bg-slate-950/40 rounded -m-2 p-2 transition-colors"
             >
-              <p className="text-gray-500 text-xs font-semibold uppercase tracking-wider">
+              <p className="text-gray-400 text-xs font-semibold uppercase tracking-wider">
                 {p.label}
               </p>
               <p className="text-gray-100 text-sm font-medium">{p.value}</p>
@@ -340,10 +340,10 @@ ask. The window is the next 14 days.`}
           >
             Buy a teardown · €{PRICE_EUR}.00 →
           </a>
-          <p className="text-gray-500 text-sm">
+          <p className="text-gray-400 text-sm">
             Prefer to read first? The free Sunday digest goes out with five
             ranked names every week —{" "}
-            <Link href="https://gitdealflow.com/#signup" className="text-sky-400 hover:text-sky-300">
+            <Link href="https://gitdealflow.com/#signup" className="text-sky-400 hover:text-sky-300 underline underline-offset-2">
               join the list
             </Link>
             .
@@ -351,7 +351,7 @@ ask. The window is the next 14 days.`}
         </section>
 
         {/* Ladder reminder — Brunson value-ladder */}
-        <section className="text-center text-xs text-gray-500 pt-6 border-t border-slate-800">
+        <section className="text-center text-xs text-gray-400 pt-6 border-t border-slate-800">
           <p>
             €1 Tweet Teardown · €7 First Look Pass ·{" "}
             <span className="text-gray-400">€9.97/mo Dashboard</span> · €97/mo
