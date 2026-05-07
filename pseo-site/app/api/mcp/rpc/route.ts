@@ -7,6 +7,11 @@ import {
 } from "@/lib/data";
 import { slugify } from "@/lib/slugify";
 import { bearerFromHeader, verifyToken } from "@/lib/oauth/jwt";
+import {
+  approvalUrlFor,
+  verifyApprovalToken,
+  type ApprovalVerifyError,
+} from "@/lib/mcp/share-approval-token";
 
 const BASE_URL = "https://signals.gitdealflow.com";
 const SERVER_NAME = "vc-deal-flow-signal";
@@ -449,14 +454,17 @@ const TOOLS = [
       "- Posting on the user's behalf — this tool only composes the text + intent URLs. The user must click and confirm in the destination network.",
       "- Generating fake or speculative results — pass real data the agent received from another tool call.",
       "",
-      "BEHAVIOR:",
-      "- Read-only, idempotent, no side effects, no authentication.",
+      "BEHAVIOR (two-step approval flow, see `approval_token`):",
+      "- Step 1: call this tool with `summary` only. The server replies with an error (-32602) containing a `/share-approve?summary=...` URL the user must open.",
+      "- Step 2: the user reads the proposed summary on that page, clicks Approve, and pastes the resulting 10-minute token back into the chat. Retry the tool with `approval_token` filled in and the SAME `summary` verbatim.",
+      "- The token is bound to a hash of `summary`; if the agent rewrites the summary between approval and the retry, the call is rejected.",
       "- Composes platform-specific posts (Twitter ≤275 chars, Bluesky ≤295, Mastodon ≤495, LinkedIn ≤695, Telegram ≤995) with a consistent hook + insight + install URL.",
       "- Returns intent URLs (e.g. https://x.com/intent/post?text=...) so the user/agent can open the destination network with the post pre-filled.",
       "- Always includes the canonical install command `npx @gitdealflow/mcp-signal` and the SSRN paper link for credibility.",
       "",
       "PARAMETERS:",
       "- `summary` (string, required, 10-200 chars) — the one-line takeaway to share.",
+      "- `approval_token` (string, required after first call) — the 10-minute token returned by the /share-approve page.",
       "- `network` (string, optional) — 'twitter' | 'bluesky' | 'mastodon' | 'linkedin' | 'telegram' | 'all' (default: 'all').",
       "- `mention_handle` (boolean, optional, default false) — include @data_nerd attribution (twitter/bluesky/mastodon only).",
     ].join("\n"),
@@ -468,6 +476,13 @@ const TOOLS = [
           minLength: 10,
           maxLength: 200,
           description: "One-line takeaway (10-200 chars) the user wants to share.",
+        },
+        approval_token: {
+          type: "string",
+          minLength: 16,
+          maxLength: 512,
+          description:
+            "10-minute HMAC-signed token bound to a hash of `summary`. Obtain it by directing the user to https://signals.gitdealflow.com/share-approve?summary=<urlencoded-summary> — they review and click Approve, then paste the resulting token back. The first call with no token will return an error containing the exact URL to send the user to.",
         },
         network: {
           type: "string",
@@ -481,7 +496,7 @@ const TOOLS = [
           description: "Include @data_nerd attribution. Only applied to twitter/bluesky/mastodon.",
         },
       },
-      required: ["summary"],
+      required: ["summary", "approval_token"],
       additionalProperties: false,
     },
     outputSchema: {
@@ -797,9 +812,19 @@ function rpcResult(id: JsonRpcId | undefined, result: unknown) {
   );
 }
 
-function rpcError(id: JsonRpcId | undefined, code: number, message: string) {
+function rpcError(
+  id: JsonRpcId | undefined,
+  code: number,
+  message: string,
+  data?: unknown,
+) {
+  // Per JSON-RPC 2.0 §5.1, `data` is an OPTIONAL value that contains
+  // additional information about the error. We use it for machine-readable
+  // hints (e.g. an `approval_url` for the share_result tool).
+  const error: { code: number; message: string; data?: unknown } = { code, message };
+  if (data !== undefined) error.data = data;
   return Response.json(
-    { jsonrpc: "2.0", id: id ?? null, error: { code, message } },
+    { jsonrpc: "2.0", id: id ?? null, error },
     {
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -994,9 +1019,44 @@ async function handleToolsCall(
       const summary = String(args.summary ?? "").trim();
       const network = String(args.network ?? "all").toLowerCase();
       const mentionHandle = Boolean(args.mention_handle ?? false);
+      const approvalToken = typeof args.approval_token === "string" ? args.approval_token.trim() : "";
       if (summary.length < 10 || summary.length > 200) {
         return rpcError(id, -32602, "summary must be 10-200 chars");
       }
+
+      // F21: gate composition behind explicit human approval. The agent must
+      // (a) send the user to /share-approve?summary=..., (b) the user clicks
+      // Approve, (c) the agent retries with the resulting `approval_token`.
+      if (!approvalToken) {
+        const url = approvalUrlFor(summary, BASE_URL);
+        return rpcError(
+          id,
+          -32602,
+          `share_result requires an explicit human approval. Ask the user to open this URL, click Approve, and paste the resulting token back. Then retry share_result with the SAME summary plus approval_token.\n\n${url}`,
+          { approval_required: true, approval_url: url, ttl_seconds: 600 },
+        );
+      }
+      const verdict = verifyApprovalToken(approvalToken, summary);
+      if (!verdict.ok) {
+        const explain: Record<ApprovalVerifyError, string> = {
+          missing: "approval_token is required",
+          malformed: "approval_token is malformed",
+          bad_signature: "approval_token signature did not verify",
+          wrong_kind: "approval_token is not a share_result token",
+          expired:
+            "approval_token has expired (10-minute TTL). Ask the user to re-approve at /share-approve.",
+          summary_mismatch:
+            "approval_token does not match this summary. The token is bound to a hash of the summary the user approved — pass the SAME summary verbatim, or re-approve with the new wording.",
+        };
+        const url = approvalUrlFor(summary, BASE_URL);
+        return rpcError(
+          id,
+          -32602,
+          `${explain[verdict.reason]} Re-approve at: ${url}`,
+          { approval_required: true, reason: verdict.reason, approval_url: url, ttl_seconds: 600 },
+        );
+      }
+
       const handleAttr = mentionHandle ? " (h/t @data_nerd)" : "";
       const installCommand = "npx @gitdealflow/mcp-signal";
       const methodologyUrl = `${BASE_URL}/methodology`;
