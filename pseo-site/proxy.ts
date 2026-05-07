@@ -25,6 +25,7 @@ export function proxy(request: NextRequest) {
     pathname.startsWith("/_next/") ||
     pathname.startsWith("/api/") ||
     pathname.startsWith("/md/") ||
+    pathname === "/md" ||
     pathname.startsWith("/jsonld/") ||
     pathname.endsWith(".xml") ||
     pathname.endsWith(".json") ||
@@ -36,6 +37,35 @@ export function proxy(request: NextRequest) {
     pathname.endsWith(".webp")
   ) {
     return NextResponse.next();
+  }
+
+  // Content negotiation: when an LLM/agent client sends `Accept: text/markdown`,
+  // rewrite the request to the corresponding `/md/<path>` mirror (handled by
+  // app/md/[...path]/route.ts and app/md/route.ts). Eliminates the need for
+  // clients to know the mirror URL convention — they can hit the canonical URL
+  // with the right Accept header instead.
+  //
+  // Only triggers for HTML page paths (the early skip above filters out
+  // /api, /md, asset extensions, etc.). The mirror returns 404 markdown for
+  // paths it doesn't have an alternate for — which is the correct answer for
+  // an explicit text/markdown request.
+  const acceptHeader = request.headers.get("accept") ?? "";
+  if (/\btext\/markdown\b/i.test(acceptHeader)) {
+    const trimmed = pathname.length > 1 ? pathname.replace(/\/$/, "") : pathname;
+    const targetPath = trimmed === "/" ? "/md" : `/md${trimmed}`;
+    const rewriteUrl = new URL(targetPath, request.url);
+    rewriteUrl.search = request.nextUrl.search;
+    const mdResponse = NextResponse.rewrite(rewriteUrl);
+    // CDN must keep separate cache entries per Accept variant so an HTML
+    // client doesn't get the markdown payload (or vice-versa) from a shared
+    // edge cache.
+    mdResponse.headers.set("Vary", "Accept");
+    // Canonical still points to the HTML URL — markdown is an alternate
+    // representation, not a competing page.
+    const canonical = `${BASE_URL}${pathname}`;
+    mdResponse.headers.set("Link", `<${canonical}>; rel="canonical"`);
+    mdResponse.headers.set("X-Robots-Tag", "index, follow");
+    return mdResponse;
   }
 
   const ua = request.headers.get("user-agent");
