@@ -10,13 +10,19 @@ import {
 import { generateApiKey, verifyApiKeyFormat } from "@/lib/api-key";
 import { stripe } from "@/lib/stripe";
 import { slugify } from "@/lib/slugify";
+import {
+  isNotModified,
+  makeETag,
+  notModifiedResponse,
+  withConditionalHeaders,
+} from "@/lib/http-conditional";
 
 const BASE_URL = "https://signals.gitdealflow.com";
+const CACHE_CONTROL = "s-maxage=3600, stale-while-revalidate=600";
 
-// Cache API key -> customer mapping to avoid O(n) Stripe calls per request
 let _apiKeyCache: Map<string, string> | null = null;
 let _apiKeyCacheExpiry = 0;
-const API_KEY_CACHE_TTL = 5 * 60 * 1000; // 5 minutes
+const API_KEY_CACHE_TTL = 5 * 60 * 1000;
 
 async function buildApiKeyCache(): Promise<Map<string, string>> {
   const cache = new Map<string, string>();
@@ -44,7 +50,6 @@ async function buildApiKeyCache(): Promise<Map<string, string>> {
 async function authenticateApiKey(key: string): Promise<boolean> {
   if (!verifyApiKeyFormat(key)) return false;
   try {
-    // Use cached mapping — rebuild if expired
     if (!_apiKeyCache || Date.now() > _apiKeyCacheExpiry) {
       _apiKeyCache = await buildApiKeyCache();
       _apiKeyCacheExpiry = Date.now() + API_KEY_CACHE_TTL;
@@ -52,7 +57,6 @@ async function authenticateApiKey(key: string): Promise<boolean> {
     const customerId = _apiKeyCache.get(key);
     if (!customerId) return false;
 
-    // Verify active subscription (single Stripe call)
     const subs = await stripe.subscriptions.list({
       customer: customerId,
       status: "active",
@@ -76,10 +80,26 @@ export async function GET(request: NextRequest) {
   const period = getCurrentPeriod();
   const allPeriods = getAllPeriods();
   const lastModified = getDataLastModified();
+
+  // ETag varies by mode + sector + auth state + data mtime so anonymous
+  // and authenticated caches don't cross-contaminate.
+  const etag = makeETag(
+    "signals",
+    period.slug,
+    mode ?? "full",
+    sectorFilter ?? "all",
+    isAuthenticated ? "auth" : "anon",
+    lastModified.getTime(),
+  );
+
+  if (isNotModified(request, lastModified, etag)) {
+    return notModifiedResponse(lastModified, etag, CACHE_CONTROL, {
+      Vary: "Authorization",
+    });
+  }
+
   const activeSectors = sectors.filter((s) => s.periods[period.slug]);
 
-  // Build sector summaries — optionally filter to one sector to keep payload
-  // small enough for ChatGPT Actions / agent ingestion (~10KB instead of 80KB).
   const filteredSectors = sectorFilter
     ? activeSectors.filter((s) => s.slug === sectorFilter)
     : activeSectors;
@@ -91,7 +111,7 @@ export async function GET(request: NextRequest) {
       name: s.name,
       slug: s.slug,
       description: s.description,
-      url: `${BASE_URL}/startups-to-watch/${s.slug}-${period.slug}`,
+      url: BASE_URL + "/startups-to-watch/" + s.slug + "-" + period.slug,
       startupCount: snapshot.startups.length,
       startups: sorted.map((st) => {
         const enriched = isAuthenticated ? enrichStartup(st) : st;
@@ -109,25 +129,26 @@ export async function GET(request: NextRequest) {
           githubUrl: enriched.githubUrl,
           ...(enriched.websiteUrl ? { websiteUrl: enriched.websiteUrl } : {}),
           ...(enriched.linkedinUrl ? { linkedinUrl: enriched.linkedinUrl } : {}),
-          profileUrl: `${BASE_URL}/startup/${slugify(enriched.name)}`,
-          ...(isAuthenticated && enriched.fundingTotal ? {
-            fundingTotal: enriched.fundingTotal,
-            lastRoundType: enriched.lastRoundType,
-            teamSize: enriched.teamSize,
-            foundedYear: enriched.foundedYear,
-          } : {}),
+          profileUrl: BASE_URL + "/startup/" + slugify(enriched.name),
+          ...(isAuthenticated && enriched.fundingTotal
+            ? {
+                fundingTotal: enriched.fundingTotal,
+                lastRoundType: enriched.lastRoundType,
+                teamSize: enriched.teamSize,
+                foundedYear: enriched.foundedYear,
+              }
+            : {}),
         };
       }),
     };
   });
 
-  // Build global top 20
   const allStartups = activeSectors.flatMap((s) =>
     s.periods[period.slug].startups.map((st) => ({
       ...st,
       sectorName: s.name,
       sectorSlug: s.slug,
-    }))
+    })),
   );
   const globalTop20 = getSortedStartups(allStartups)
     .slice(0, 20)
@@ -152,7 +173,7 @@ export async function GET(request: NextRequest) {
     description:
       "Startup engineering acceleration data from public GitHub activity. Commit velocity, contributor growth, and breakout signals across startup sectors.",
     website: BASE_URL,
-    methodology: `${BASE_URL}/methodology`,
+    methodology: BASE_URL + "/methodology",
     period: {
       slug: period.slug,
       name: period.name,
@@ -171,19 +192,19 @@ export async function GET(request: NextRequest) {
       "VC Deal Flow Signal (signals.gitdealflow.com), " + period.name + " data.",
   };
 
-  // mode=trending → meta + top-20 only (~9KB).
-  // sector=<slug>  → meta + trending + that sector only (~13KB).
-  // default        → full dataset (~80KB) for backward compat.
   const payload =
     mode === "trending"
       ? { meta, trending: globalTop20 }
       : { meta, trending: globalTop20, sectors: sectorSummaries };
 
-  return new Response(JSON.stringify(payload), {
-    headers: {
-      "Content-Type": "application/json; charset=utf-8",
-      "Cache-Control": "s-maxage=3600, stale-while-revalidate=600",
+  return withConditionalHeaders(JSON.stringify(payload), {
+    contentType: "application/json; charset=utf-8",
+    lastModified,
+    etag,
+    cacheControl: CACHE_CONTROL,
+    extraHeaders: {
       "Access-Control-Allow-Origin": "*",
+      Vary: "Authorization",
     },
   });
 }
