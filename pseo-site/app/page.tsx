@@ -27,6 +27,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  openGraph: {
+    // F5 — explicit absolute og:url. Layout-default openGraph is replaced
+    // wholesale when a child page sets its own openGraph object, and Next 16
+    // drops relative URLs at the og:url meta tag, so we go absolute here.
+    url: "https://signals.gitdealflow.com/",
+    type: "website",
+    siteName: "VC Deal Flow Signal",
+  },
 };
 
 // Hoisted to module scope so the array is allocated once at build, not per

@@ -19,6 +19,20 @@ export const runtime = "nodejs";
 
 const SITE = "https://signals.gitdealflow.com";
 
+interface EndpointParam {
+  name: string;
+  in: "query" | "path" | "header" | "body";
+  required?: boolean;
+  description?: string;
+}
+
+interface Endpoint {
+  method: "GET" | "POST" | "PUT" | "DELETE" | "HEAD";
+  params?: EndpointParam[];
+  contentType?: string;
+  description?: string;
+}
+
 interface Surface {
   url: string;
   format: string;
@@ -33,7 +47,11 @@ interface Surface {
     | "schema"
     | "human";
   description: string;
+  endpoints?: Endpoint[];
 }
+
+// Default GET endpoint metadata for most surfaces (no params, plain HTTP GET).
+const GET_ONLY: Endpoint[] = [{ method: "GET" }];
 
 const SURFACES: Surface[] = [
   // ── Agent / MCP discovery ──────────────────────────────
@@ -111,6 +129,74 @@ const SURFACES: Surface[] = [
   { url: `${SITE}/humans.txt`, format: "text/plain", category: "human", description: "Root alias for /.well-known/humans.txt" },
 ];
 
+// Per-URL endpoint overrides for surfaces that take parameters or non-GET methods.
+// Anything not listed here defaults to a single GET with no params.
+const ENDPOINT_OVERRIDES: Record<string, Endpoint[]> = {
+  [`${SITE}/api/mcp/rpc`]: [
+    {
+      method: "POST",
+      contentType: "application/json",
+      params: [
+        { name: "jsonrpc", in: "body", required: true, description: "Must be '2.0'" },
+        { name: "method", in: "body", required: true, description: "MCP method name (e.g. tools/list, tools/call)" },
+        { name: "id", in: "body", required: true, description: "Request id" },
+        { name: "params", in: "body", required: false, description: "Method-specific params object" },
+      ],
+      description: "JSON-RPC 2.0 over HTTPS — see /.well-known/mcp.json for the tool catalog",
+    },
+  ],
+  [`${SITE}/api/answer`]: [
+    {
+      method: "GET",
+      params: [
+        { name: "q", in: "query", required: true, description: "Question string (1-500 chars)" },
+        { name: "format", in: "query", required: false, description: "json|text|jsonl (default json)" },
+      ],
+    },
+  ],
+  [`${SITE}/api/ask`]: [
+    {
+      method: "GET",
+      params: [
+        { name: "q", in: "query", required: true, description: "Question string" },
+      ],
+    },
+  ],
+  [`${SITE}/api/v1/signals.json`]: [
+    {
+      method: "GET",
+      params: [
+        { name: "sector", in: "query", required: false, description: "Filter by sector slug (e.g. ai-ml)" },
+        { name: "stage", in: "query", required: false, description: "Filter by stage (seed|series-a|series-b)" },
+        { name: "limit", in: "query", required: false, description: "Max results (default 100)" },
+      ],
+    },
+  ],
+  [`${SITE}/api/v1/glossary.json`]: [
+    {
+      method: "GET",
+      params: [
+        { name: "term", in: "query", required: false, description: "Look up a single DefinedTerm by slug" },
+      ],
+    },
+  ],
+  [`${SITE}/md/`]: [
+    {
+      method: "GET",
+      params: [
+        { name: "path", in: "path", required: true, description: "Site path to mirror as markdown (e.g. /md/methodology)" },
+      ],
+    },
+  ],
+};
+
+function endpointsFor(surface: Surface): Endpoint[] {
+  const override = ENDPOINT_OVERRIDES[surface.url];
+  if (override) return override;
+  // Sitemaps, feeds, well-known, and root aliases all answer plain GET.
+  return GET_ONLY;
+}
+
 export async function GET() {
   const lastModified = getDataLastModified();
 
@@ -118,6 +204,14 @@ export async function GET() {
     acc[s.category] = (acc[s.category] || 0) + 1;
     return acc;
   }, {});
+
+  // Decorate every surface with its endpoint metadata so retrieval pipelines
+  // know how to call it without fetching OpenAPI separately. Non-API surfaces
+  // get the default `[{ method: "GET" }]`. (F2 — closes empty-endpoints gap.)
+  const decoratedSurfaces = SURFACES.map((s) => ({
+    ...s,
+    endpoints: endpointsFor(s),
+  }));
 
   const body = {
     "@context": "https://schema.org",
@@ -142,7 +236,7 @@ export async function GET() {
       coverage:
         "Agent/MCP, OpenAPI, retrieval (llms.txt + qa.jsonl + markdown mirror), policy (ai-policy + security), sitemaps, RSS/Atom feeds, dataset descriptors, identity (DID + WebFinger + NodeInfo), and human attribution.",
     },
-    surfaces: SURFACES,
+    surfaces: decoratedSurfaces,
     relatedDocs: {
       llmsIndex: `${SITE}/llms.txt`,
       llmsFull: `${SITE}/llms-full.txt`,

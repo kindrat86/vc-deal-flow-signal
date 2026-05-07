@@ -14,6 +14,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/faq",
   },
+  openGraph: {
+    // F5 — absolute og:url (Next 16 drops relative og:url even with metadataBase).
+    url: "https://signals.gitdealflow.com/faq",
+    type: "website",
+  },
 };
 
 interface FAQEntry {
