@@ -7,7 +7,11 @@ import CartPreview from "@/components/CartPreview";
 
 export const dynamic = "force-static";
 
-const FIRSTLOOK_CHECKOUT = "https://gitdealflow.com/#firstlook";
+// Canonical URL for schema.org Offer.url. The actual checkout flow is
+// a server-created Stripe Checkout Session (POST /api/checkout/session)
+// that captures the card with setup_future_usage='off_session' — that's
+// what makes the one-click OTO on /firstlook/thanks possible.
+const FIRSTLOOK_OFFER_URL = "https://signals.gitdealflow.com/firstlook";
 
 export const metadata: Metadata = {
   title: "First Look Pass — €7. One sector. 24-hour deep dive.",
@@ -166,7 +170,7 @@ export default function FirstLookPage() {
               price: "7.00",
               priceCurrency: "EUR",
               availability: "https://schema.org/InStock",
-              url: FIRSTLOOK_CHECKOUT,
+              url: FIRSTLOOK_OFFER_URL,
             },
             {
               "@type": "Offer",
@@ -736,12 +740,15 @@ export default function FirstLookPage() {
               </span>
             </p>
           </div>
-          <a
-            href={FIRSTLOOK_CHECKOUT}
-            className="inline-flex items-center gap-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm px-4 py-2.5 shadow-md shrink-0"
-          >
-            Check out →
-          </a>
+          <form action="/api/checkout/session" method="POST" className="shrink-0">
+            <input type="hidden" name="tier" value="firstlook" />
+            <button
+              type="submit"
+              className="inline-flex items-center gap-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm px-4 py-2.5 shadow-md"
+            >
+              Check out →
+            </button>
+          </form>
         </div>
       </div>
     </>

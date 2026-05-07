@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import type Stripe from "stripe";
 import { stripe, getTierFromSession, CREDIT_PACK_SIZES } from "@/lib/stripe";
 import { addCredits } from "@/lib/credits";
 import { generateApiKeyV2 } from "@/lib/api-key";
@@ -455,5 +456,120 @@ export async function POST(request: NextRequest) {
     }
   }
 
+  // One-click OTO purchases come through as PaymentIntents (one-time, e.g.
+  // Sector Sweep bumped) or Subscription invoices (recurring, e.g. Insider).
+  // Both carry metadata.flow === "oto_one_click" so we can route off-session
+  // welcome emails without touching the entry-checkout branch above.
+  if (event.type === "payment_intent.succeeded") {
+    const pi = event.data.object;
+    // Only PaymentIntents created directly via /api/oto/charge carry
+    // metadata.flow="oto_one_click". Subscription invoices' PIs don't
+    // inherit subscription metadata, so they're ignored here and picked
+    // up by the invoice.paid handler below — no double-send.
+    if (pi.metadata?.flow === "oto_one_click") {
+      // Same replay defense as the entry-checkout branch — Stripe retries
+      // identical event.id on 5xx, so dedupe before sending the welcome.
+      if (await isNonceUsed(STRIPE_EVENT_NAMESPACE, event.id)) {
+        return NextResponse.json({ received: true, replay: true });
+      }
+      await markNonceUsed(STRIPE_EVENT_NAMESPACE, event.id, STRIPE_EVENT_TTL_SECONDS);
+      const oto = pi.metadata.oto;
+      const email = await resolveOtoEmail(pi.metadata.email, pi.customer);
+      if (!email) {
+        console.error("oto pi.succeeded without email:", pi.id);
+        return NextResponse.json({ received: true });
+      }
+      await dispatchOtoWelcome(email, oto, pi.id);
+    }
+  }
+
+  if (event.type === "invoice.paid") {
+    const invoice = event.data.object;
+    if (invoice.billing_reason !== "subscription_create") {
+      return NextResponse.json({ received: true });
+    }
+    if (await isNonceUsed(STRIPE_EVENT_NAMESPACE, event.id)) {
+      return NextResponse.json({ received: true, replay: true });
+    }
+    await markNonceUsed(STRIPE_EVENT_NAMESPACE, event.id, STRIPE_EVENT_TTL_SECONDS);
+    const subId = subscriptionIdFromInvoice(invoice);
+    if (!subId) return NextResponse.json({ received: true });
+    const sub = await stripe.subscriptions.retrieve(subId);
+    if (sub.metadata?.flow !== "oto_one_click") {
+      return NextResponse.json({ received: true });
+    }
+    const oto = sub.metadata.oto;
+    const email = await resolveOtoEmail(sub.metadata.email, sub.customer);
+    if (!email) {
+      console.error("oto invoice.paid without email:", invoice.id);
+      return NextResponse.json({ received: true });
+    }
+    await dispatchOtoWelcome(email, oto, sub.id);
+  }
+
   return NextResponse.json({ received: true });
+}
+
+function subscriptionIdFromInvoice(invoice: Stripe.Invoice): string | null {
+  // The Stripe SDK type narrows differently across API versions; resolve
+  // both shapes (string id vs expanded object) defensively.
+  const raw = (invoice as unknown as { subscription?: unknown }).subscription;
+  if (typeof raw === "string") return raw;
+  if (raw && typeof raw === "object" && "id" in raw) {
+    const id = (raw as { id?: unknown }).id;
+    if (typeof id === "string") return id;
+  }
+  return null;
+}
+
+async function resolveOtoEmail(
+  metaEmail: string | undefined,
+  customerRef: string | Stripe.Customer | Stripe.DeletedCustomer | null
+): Promise<string | null> {
+  if (metaEmail) return metaEmail;
+  const customerId =
+    typeof customerRef === "string"
+      ? customerRef
+      : customerRef && "id" in customerRef
+        ? customerRef.id
+        : null;
+  if (!customerId) return null;
+  try {
+    const cust = await stripe.customers.retrieve(customerId);
+    if (cust.deleted) return null;
+    return cust.email || null;
+  } catch {
+    return null;
+  }
+}
+
+async function dispatchOtoWelcome(email: string, oto: string | undefined, ref: string) {
+  let welcomeEmail: { subject: string; html: string } | null = null;
+  if (oto === "sector_sweep_oto1") {
+    welcomeEmail = sectorSweepWelcomeEmail(email);
+  } else if (oto === "insider_oto2") {
+    welcomeEmail = insiderWelcomeEmail(email);
+  }
+  if (!welcomeEmail) {
+    console.warn("oto webhook: unknown oto key:", oto);
+    return;
+  }
+  try {
+    await sendEmail(email, welcomeEmail.subject, welcomeEmail.html);
+  } catch (err) {
+    console.error("oto welcome send failed:", err);
+  }
+  try {
+    await sendEmail(
+      "signal@gitdealflow.com",
+      `OTO upsell taken: ${oto} · ${email}`,
+      `<p><strong>OTO upsell.</strong></p>
+<p>Email: ${escapeHtml(email)}</p>
+<p>OTO: ${escapeHtml(oto || "")}</p>
+<p>Stripe ref: ${escapeHtml(ref)}</p>
+<p>Time: ${new Date().toISOString()}</p>`
+    );
+  } catch {
+    // best-effort
+  }
 }
