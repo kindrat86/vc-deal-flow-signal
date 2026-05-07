@@ -401,6 +401,33 @@
   <style>
     html { scroll-padding-top: 6rem; }
     @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+    /* Signup-form anchor: lands viewport on the qualifier+email block, not the section header */
+    #signup-anchor { display: block; height: 0; scroll-margin-top: 5rem; }
+    /* Radio-card qualifier (mobile-first, replaces native <select>) */
+    .qual-grid { display: grid; grid-template-columns: 1fr; gap: 0.625rem; }
+    @media (min-width: 640px) { .qual-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; } }
+    .qual-card {
+      position: relative; display: flex; align-items: center; gap: 0.75rem;
+      padding: 0.875rem 1rem; min-height: 56px;
+      border-radius: 0.625rem; border: 1px solid #4b5563;
+      background-color: #1e293b; color: #e5e7eb; cursor: pointer;
+      transition: border-color 120ms ease, background-color 120ms ease, transform 120ms ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .qual-card:hover { border-color: #6b7280; background-color: #243144; }
+    .qual-card:active { transform: scale(0.99); }
+    .qual-card input[type="radio"] {
+      flex: 0 0 auto; appearance: none; -webkit-appearance: none;
+      width: 1.125rem; height: 1.125rem; border-radius: 9999px;
+      border: 2px solid #6b7280; background-color: transparent;
+      display: inline-block; cursor: pointer; margin: 0;
+    }
+    .qual-card input[type="radio"]:checked { border-color: #0ea5e9; background-color: #0ea5e9; box-shadow: inset 0 0 0 3px #1e293b; }
+    .qual-card:has(input[type="radio"]:checked) { border-color: #0ea5e9; background-color: rgba(14, 165, 233, 0.10); }
+    .qual-card input[type="radio"]:focus-visible { outline: 2px solid #0ea5e9; outline-offset: 2px; }
+    .qual-card-text { display: flex; flex-direction: column; line-height: 1.25; }
+    .qual-card-title { font-weight: 600; font-size: 0.95rem; color: #f1f5f9; }
+    .qual-card-sub { font-size: 0.78rem; color: #94a3b8; margin-top: 1px; }
   </style>
 </head>
 <body class="bg-dark-900 text-gray-100 font-sans antialiased">
@@ -1074,7 +1101,7 @@
   </section>
 
   <!-- §10 Primary Email Signup — with lead-magnet preview -->
-  <section id="signup" class="max-w-3xl mx-auto px-6 py-20">
+  <section id="signup-section" class="max-w-3xl mx-auto px-6 py-20">
     <div class="text-center mb-10">
       <h2 class="text-3xl md:text-4xl font-bold mb-4">This Week's 5 Are Ready.<br>Where Do I Send Them?</h2>
       <p class="text-gray-400 max-w-xl mx-auto">This week: 5 startups whose commit velocity jumped <strong class="text-white">80%+ in the past 14 days</strong> — including 3 at +200% or higher. Enter your email, confirm the link, and all 5 names land in your inbox in the next 60 seconds. Next Sunday's edition drops 9am EST.</p>
@@ -1100,18 +1127,46 @@
       </div>
     </div>
 
+    <span id="signup-anchor" aria-hidden="true"></span>
     <form id="signup-form" class="max-w-lg mx-auto">
-      <label for="signup-route" class="block text-gray-300 text-sm font-semibold mb-2">First — quick qualifier so the digest matches how you actually invest:</label>
-      <select id="signup-route" name="route" required aria-label="Roughly how many angel checks have you written in the past 12 months?" class="w-full px-5 py-4 rounded-lg bg-dark-800 border border-gray-600 text-gray-100 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 text-base mb-3">
-        <option value="" disabled selected>Roughly how many angel checks in the past 12 months?</option>
-        <option value="F">Zero or one — I'm exploring</option>
-        <option value="T">Two to five — building cadence</option>
-        <option value="D">Six to twenty — actively sourcing</option>
-        <option value="I">Twenty-plus, or I run a fund / syndicate</option>
-      </select>
+      <fieldset class="border-0 p-0 m-0 mb-4">
+        <legend class="block text-gray-300 text-sm font-semibold mb-3 px-0">
+          Roughly how many angel checks in the past 12 months?
+        </legend>
+        <div class="qual-grid" role="radiogroup" aria-label="Angel-check cadence">
+          <label class="qual-card">
+            <input type="radio" name="route" value="F" required>
+            <span class="qual-card-text">
+              <span class="qual-card-title">0–1</span>
+              <span class="qual-card-sub">Exploring</span>
+            </span>
+          </label>
+          <label class="qual-card">
+            <input type="radio" name="route" value="T" required>
+            <span class="qual-card-text">
+              <span class="qual-card-title">2–5</span>
+              <span class="qual-card-sub">Building cadence</span>
+            </span>
+          </label>
+          <label class="qual-card">
+            <input type="radio" name="route" value="D" required>
+            <span class="qual-card-text">
+              <span class="qual-card-title">6–20</span>
+              <span class="qual-card-sub">Actively sourcing</span>
+            </span>
+          </label>
+          <label class="qual-card">
+            <input type="radio" name="route" value="I" required>
+            <span class="qual-card-text">
+              <span class="qual-card-title">20+ or fund / syndicate</span>
+              <span class="qual-card-sub">Insider tier</span>
+            </span>
+          </label>
+        </div>
+      </fieldset>
       <div class="flex flex-col sm:flex-row gap-3">
         <label for="signup-email" class="sr-only">Email address</label>
-        <input type="email" id="signup-email" placeholder="you@example.com" required aria-label="Email address" class="flex-1 px-5 py-4 rounded-lg bg-dark-800 border border-gray-600 text-gray-100 placeholder-gray-500 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 text-lg">
+        <input type="email" id="signup-email" placeholder="you@example.com" required aria-label="Email address" inputmode="email" autocomplete="email" class="flex-1 px-5 py-4 rounded-lg bg-dark-800 border border-gray-600 text-gray-100 placeholder-gray-500 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 text-lg">
         <button type="submit" id="signup-btn" class="btn btn-cta btn-lg">Send Me The 5 <span aria-hidden="true" class="btn-arrow">&rarr;</span></button>
       </div>
     </form>
@@ -1333,13 +1388,14 @@
       const btn = document.getElementById('signup-btn');
       const msg = document.getElementById('signup-msg');
       const email = document.getElementById('signup-email').value.trim();
-      const routeEl = document.getElementById('signup-route');
-      const route = routeEl ? routeEl.value : '';
+      const routeChecked = document.querySelector('#signup-form input[name="route"]:checked');
+      const route = routeChecked ? routeChecked.value : '';
       if (!email) return;
       if (!route) {
         msg.textContent = 'Pick the option that matches your check cadence so we route you correctly.';
         msg.className = 'text-amber-400 text-sm mt-4 text-center';
-        if (routeEl) routeEl.focus();
+        const firstRoute = document.querySelector('#signup-form input[name="route"]');
+        if (firstRoute) firstRoute.focus();
         return;
       }
       const ROUTE_LABELS = {
