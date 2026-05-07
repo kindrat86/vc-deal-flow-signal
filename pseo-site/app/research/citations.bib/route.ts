@@ -8,6 +8,10 @@
  */
 
 import { FINDINGS } from "@/content/research-findings";
+import {
+  EXTERNAL_CITATIONS,
+  citationToBibTeX,
+} from "@/content/research-citations";
 
 export const dynamic = "force-static";
 
@@ -83,7 +87,14 @@ export async function GET() {
     findingEntry(f.n, f.group, f.slug, f.title, f.claim, f.section),
   ).join("\n\n");
 
-  const body = `${header}${PAPER_ENTRY}\n\n${DATASET_ENTRY}\n\n${QA_ENTRY}\n\n% --- Per-finding entries ---\n\n${findingEntries}\n`;
+  // External, peer-reviewed prior work the SSRN paper builds on (F32). Each
+  // entry has a verifiable DOI in a top-tier venue. Listed before per-finding
+  // entries so reference managers index them as canonical sources.
+  const externalEntries = EXTERNAL_CITATIONS.map(citationToBibTeX).join(
+    "\n\n",
+  );
+
+  const body = `${header}${PAPER_ENTRY}\n\n${DATASET_ENTRY}\n\n${QA_ENTRY}\n\n% --- External references (peer-reviewed prior work) ---\n\n${externalEntries}\n\n% --- Per-finding entries ---\n\n${findingEntries}\n`;
 
   return new Response(body, {
     headers: {

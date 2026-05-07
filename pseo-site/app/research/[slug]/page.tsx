@@ -3,6 +3,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { FINDINGS, getFindingBySlug, getAllFindingSlugs } from "@/content/research-findings";
 import { getJaFindingBySlug } from "@/content/ja-research";
+import {
+  citationsForSection,
+  citationToJsonLd,
+} from "@/content/research-citations";
 import { getDataLastModified } from "@/lib/data";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
@@ -116,6 +120,16 @@ export default async function ResearchFindingPage({ params }: PageProps) {
       },
     }));
 
+  // External scholarly citations. Real, peer-reviewed prior work the SSRN
+  // paper builds on, mapped to this finding's section. Emitted as
+  // ScholarlyArticle entries inside citation[] so Google Scholar, Semantic
+  // Scholar, OpenAlex, and Connected Papers can wire this finding into the
+  // broader literature graph (F32 — extends ScholarlyArticle.citation[] with
+  // verifiable DOIs in top-tier venues).
+  const externalCitations = citationsForSection(finding.section).map(
+    citationToJsonLd,
+  );
+
   const articleJsonLd = {
     "@context": "https://schema.org",
     "@type": "ScholarlyArticle",
@@ -155,8 +169,9 @@ export default async function ResearchFindingPage({ params }: PageProps) {
         ],
       },
       ...siblingCitations,
+      ...externalCitations,
     ],
-    citationCount: siblingCitations.length + 1,
+    citationCount: siblingCitations.length + externalCitations.length + 1,
     author: {
       "@type": "Person",
       "@id": `${SITE}/about#author`,
@@ -500,6 +515,59 @@ export default async function ResearchFindingPage({ params }: PageProps) {
               accelerator programs (Y Combinator, Techstars, 500 Global).
             </li>
           </ul>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-lg font-semibold text-gray-100 mb-3">
+            References
+          </h2>
+          <p className="text-gray-400 text-xs mb-4">
+            Peer-reviewed prior work this finding builds on. Each citation
+            resolves to a DOI in a top-tier venue and appears in the
+            page&rsquo;s structured data as a{" "}
+            <code className="text-sky-400">ScholarlyArticle</code> citation
+            edge.{" "}
+            <a
+              className="text-sky-400 hover:text-sky-300"
+              href="/research/citations.bib"
+            >
+              Download all references as BibTeX
+            </a>
+            .
+          </p>
+          <ol className="text-gray-300 text-sm leading-relaxed space-y-3 list-decimal pl-5">
+            {citationsForSection(finding.section).map((c) => (
+              <li key={c.bibKey}>
+                <span className="text-gray-200">{c.authors.join(", ")}</span>
+                {" ("}
+                {c.year}
+                {"). "}
+                <a
+                  className="text-sky-400 hover:text-sky-300"
+                  href={c.url}
+                  target="_blank"
+                  rel="noopener"
+                >
+                  {c.headline}
+                </a>
+                . <em className="text-gray-400">{c.venue}</em>
+                {c.citeText ? `, ${c.citeText}` : ""}.{" "}
+                {c.doi ? (
+                  <span className="text-gray-500 text-xs">
+                    DOI:{" "}
+                    <a
+                      className="text-sky-500 hover:text-sky-400"
+                      href={`https://doi.org/${c.doi}`}
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      {c.doi}
+                    </a>
+                  </span>
+                ) : null}
+              </li>
+            ))}
+          </ol>
         </section>
 
         <section className="mb-10">
