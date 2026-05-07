@@ -154,6 +154,7 @@ export default function InsiderPage() {
           "Monthly subscription at founding-member rate (€97/mo, locks for the lifetime of the subscription; list price €197/mo). Includes 24-hour lead on Acceleration Watch, private Telegram group, JSON/CSV API, custom watchlist, webhooks, founder line, and Dashboard Beta.",
         price: 97,
         priceCurrency: "EUR",
+        priceValidUntil: "2026-12-31",
         url: STRIPE_INSIDER,
         availability: "https://schema.org/InStock",
         category: "subscription",

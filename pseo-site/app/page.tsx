@@ -406,6 +406,7 @@ export default function Home() {
             name: "Dashboard (Beta)",
             price: "9.97",
             priceCurrency: "EUR",
+            priceValidUntil: "2026-12-31",
             availability: "https://schema.org/InStock",
             description:
               "Full dashboard access: 85+ ranked startups per week, filters by sector, stage, and geography, MCP server access, CSV export.",
@@ -533,6 +534,7 @@ export default function Home() {
                 "Full universe filtering (sector, stage, geography), 10 Scout Game predictions per month, advanced sourcing-edge analytics. Per-individual subscription, no annual commitment, cancellable any time.",
               price: "19",
               priceCurrency: "EUR",
+              priceValidUntil: "2026-12-31",
               priceSpecification: {
                 "@type": "UnitPriceSpecification",
                 price: "19",
@@ -552,6 +554,7 @@ export default function Home() {
                 "One-time tripwire — early access to a sector-specific signal report ahead of the next weekly digest. Single payment, no recurring billing.",
               price: "7",
               priceCurrency: "EUR",
+              priceValidUntil: "2026-12-31",
               availability: "https://schema.org/InStock",
               url: "https://gitdealflow.com/#firstlook",
               category: "One-time",
@@ -564,6 +567,7 @@ export default function Home() {
                 "Per-request pricing for AI agents and programmatic callers. 100 deep-signal calls for €19 (€0.19 per call). One credit consumed per match; misses are free. Credits never expire. Applies only to the new get_deep_signal MCP tool and POST /api/agent/deep-signal endpoint — the six free MCP tools stay free forever.",
               price: "19",
               priceCurrency: "EUR",
+              priceValidUntil: "2026-12-31",
               availability: "https://schema.org/InStock",
               url: "https://signals.gitdealflow.com/agents/credits",
               category: "API Credits",

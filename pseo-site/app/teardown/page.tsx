@@ -94,6 +94,7 @@ export default function TeardownPage() {
           "@type": "Offer",
           price: "1.00",
           priceCurrency: "EUR",
+          priceValidUntil: "2026-12-31",
           availability: "https://schema.org/InStock",
           url: "https://signals.gitdealflow.com/teardown",
         },

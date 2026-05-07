@@ -301,6 +301,7 @@ function tierToOffer(tier: Tier) {
     availability: "https://schema.org/InStock",
     category: tier.priceCadence === "one-time" ? "one-time" : "subscription",
     seller: { "@id": "https://gitdealflow.com/#organization" },
+    ...(priceNumber > 0 ? { priceValidUntil: "2026-12-31" } : {}),
   };
 
   if (tier.priceCadence === "/mo" || tier.priceCadence === "/yr") {
@@ -362,6 +363,8 @@ export default function PricingPage() {
           lowPrice,
           highPrice,
           offerCount: tiers.length,
+          priceValidUntil: "2026-12-31",
+          availability: "https://schema.org/InStock",
           offers,
         },
         sameAs: [

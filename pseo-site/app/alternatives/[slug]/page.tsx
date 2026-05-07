@@ -133,6 +133,7 @@ export default async function AlternativePage({ params }: PageProps) {
             name: "Dashboard (Beta)",
             price: "9.97",
             priceCurrency: "EUR",
+            priceValidUntil: "2026-12-31",
             availability: "https://schema.org/InStock",
             description: "Full dashboard: 85+ ranked startups, sector/stage/geography filters, MCP access.",
             priceSpecification: {
