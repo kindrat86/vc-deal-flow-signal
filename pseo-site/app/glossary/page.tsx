@@ -77,7 +77,13 @@ export default function GlossaryPage() {
         isPartOf: { "@id": "https://signals.gitdealflow.com/#website" },
         speakable: {
           "@type": "SpeakableSpecification",
-          cssSelector: ["h1", "h2", ".speakable", "[data-agent-summary]"],
+          cssSelector: [
+            "[data-speakable]",
+            "h1",
+            "h2",
+            ".speakable",
+            "[data-agent-summary]",
+          ],
         },
         relatedLink: [
           "https://signals.gitdealflow.com/methodology",
@@ -205,6 +211,7 @@ export default function GlossaryPage() {
               <p
                 className="text-gray-400 text-sm leading-relaxed"
                 itemProp="description"
+                data-speakable
               >
                 {t.definition}
               </p>

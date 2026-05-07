@@ -85,7 +85,12 @@ function buildJsonLd(q: AgentQuery): object {
         inLanguage: "en-US",
         speakable: {
           "@type": "SpeakableSpecification",
-          cssSelector: [".speakable", "h1", "[data-agent-summary]"],
+          cssSelector: [
+            "[data-speakable]",
+            ".speakable",
+            "h1",
+            "[data-agent-summary]",
+          ],
         },
         isPartOf: {
           "@type": "WebSite",

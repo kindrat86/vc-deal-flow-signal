@@ -54,6 +54,7 @@ export function AgentSummary({
       <p
         className="speakable text-sky-100 text-sm sm:text-base leading-relaxed"
         data-cite="tldr"
+        data-speakable
       >
         <span className="text-sky-400 font-semibold uppercase tracking-wider text-[10px] mr-2">
           TL;DR

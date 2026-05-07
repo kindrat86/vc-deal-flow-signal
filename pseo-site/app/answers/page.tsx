@@ -61,7 +61,13 @@ export default function AnswersIndexPage() {
         isPartOf: { "@id": `${SITE}/#website` },
         speakable: {
           "@type": "SpeakableSpecification",
-          cssSelector: ["h1", "h2", ".speakable", "[data-agent-summary]"],
+          cssSelector: [
+            "[data-speakable]",
+            "h1",
+            "h2",
+            ".speakable",
+            "[data-agent-summary]",
+          ],
         },
       },
       {
@@ -97,7 +103,7 @@ export default function AnswersIndexPage() {
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-3 leading-tight">
             Citation-ready answers for AI agents
           </h1>
-          <p className="text-gray-400 text-base leading-relaxed">
+          <p className="text-gray-400 text-base leading-relaxed" data-speakable>
             Direct, source-cited answers to the questions AI agents and their
             users ask about VC deal flow, GitHub momentum, MCP servers, and
             engineering acceleration. Each page leads with a TL;DR plus the
