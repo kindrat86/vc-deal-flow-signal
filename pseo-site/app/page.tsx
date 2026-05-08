@@ -21,6 +21,8 @@ import ThreeDoorHero from "@/components/ThreeDoorHero";
 import PricingLadder from "@/components/PricingLadder";
 import SocialProofBar from "@/components/SocialProofBar";
 import SharpScarcityBadge from "@/components/SharpScarcityBadge";
+import EpiphanyBridgeCondensed from "@/components/EpiphanyBridgeCondensed";
+import HomeOfferStack from "@/components/HomeOfferStack";
 
 export const metadata: Metadata = {
   // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
@@ -914,6 +916,14 @@ export default function Home() {
         </p>
       </header>
 
+      {/* Brunson Expert Secrets Ch 7 + Ch 9 — 5-step Epiphany Bridge.
+          HSO audit 2026-05-08: full Hero's Two Journeys lives at /origin
+          (8-min read) but the home reader who never clicks through never
+          sees the bridge. Five pills — Backstory, Desire, External Wall,
+          Internal Shift, New Opportunity — surface the same arc above
+          the fold. Long version stays linked. */}
+      <EpiphanyBridgeCondensed />
+
       <SocialProofBar
         startupCount={totalTracked}
         sectorCount={activeSectorCount}
@@ -926,6 +936,15 @@ export default function Home() {
       {/* Three doors — Brunson-meets-Isenberg ladder: free email / receipts /
           predict. All lead to the same email gate downstream. */}
       <ThreeDoorHero />
+
+      {/* Brunson DotCom Secrets Ch 12 + Expert Secrets Ch 13 — Stack Slide
+          on the home page. HSO audit 2026-05-08: full priced stack lived
+          on /firstlook + /perfect-webinar but the home reader (who never
+          clicks through) saw price tiers without value anchors. Eight
+          stack lines, anchored against standalone equivalents, total
+          €1,728 vs €9.97/mo founding rate. Risk-reversal sticker
+          (30-day guarantee) included as final stack line. */}
+      <HomeOfferStack />
 
       {/* AgentSummary kept for AI extractability — visually de-emphasized
           via wrapper since the live SignalLeader now plays the human-facing
