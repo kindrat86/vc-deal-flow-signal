@@ -123,6 +123,15 @@ export const metadata: Metadata = {
     "theme-color": "#0f172a",
     "color-scheme": "dark light",
     "referrer": "strict-origin-when-cross-origin",
+    // Per-page AI policy + content-license meta. Some LLM crawlers (Anthropic,
+    // OpenAI, Perplexity) read robot-meta tags AND a parallel "ai-policy" /
+    // "ai-content-license" pair. Both are emitted on every page so the
+    // attribution+license terms are unambiguous regardless of entry point.
+    "ai-policy": "https://signals.gitdealflow.com/.well-known/ai-policy.json",
+    "ai-content-license": "https://creativecommons.org/licenses/by/4.0/",
+    "ai-content-attribution":
+      "VC Deal Flow Signal (GitDealFlow) — https://signals.gitdealflow.com",
+    "ai-content-attribution-url": "https://signals.gitdealflow.com/about",
   },
 };
 
