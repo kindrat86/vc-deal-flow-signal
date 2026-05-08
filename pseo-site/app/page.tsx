@@ -17,7 +17,7 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHomepageHreflang } from "@/lib/hreflang";
 import SignalLeader from "@/components/SignalLeader";
-import ThreeDoorHero from "@/components/ThreeDoorHero";
+import HomeSqueeze from "@/components/HomeSqueeze";
 import PricingLadder from "@/components/PricingLadder";
 import SocialProofBar from "@/components/SocialProofBar";
 import SharpScarcityBadge from "@/components/SharpScarcityBadge";
@@ -60,6 +60,10 @@ const PILLAR_LINKS = [
   { href: "/watch", label: "Watch (silent demo)", sub: "90-second visual walkthrough", icon: "📺" },
   { href: "/launch", label: "Launches", sub: "Active and archived 4-stage funnels", icon: "🚀" },
   { href: "/press", label: "Press kit", sub: "Wire-ready releases + boilerplate", icon: "📰" },
+  { href: "/ladder", label: "The value ladder", sub: "Eight rungs, every rung has a funnel", icon: "🪜" },
+  { href: "/acceleration-watch", label: "Acceleration Watch", sub: "Free Monday digest — five accelerating startups", icon: "📬" },
+  { href: "/sector-sweep", label: "Sector Sweep", sub: "€1,997 panel · one sector · 60-min call", icon: "🎯" },
+  { href: "/sharp", label: "Sharp Tier — Fund seat", sub: "€4,970/yr · 8 funds in 2026 · application-gated", icon: "🏛️" },
 ] as const;
 
 // "Where to go next" deep-dive entry points. Icons help the eye navigate a
@@ -855,6 +859,29 @@ export default function Home() {
           <span className="text-sky-400">We tell you 47 days before the deck.</span>
         </h1>
 
+        {/* Brunson Secret Formula §1 — Ch 1 audit fix (2026-05-08):
+            single-sentence "this is who we serve" avatar pin. Names
+            check size, stage, and sector in the buyer's own language.
+            Mirrors the canonical avatar in @/content/dream-100-icp.ts
+            (line 5–7). Placed between H1 and the stat band so it is
+            the first identity moment a reader hits — above the fold,
+            not 1,100 lines down where the longer disqualifier lives. */}
+        <p
+          aria-label="Built for"
+          className="inline-flex items-start sm:items-center gap-2 mb-5 rounded-full border border-emerald-500/30 bg-emerald-950/30 px-3 py-1.5 text-[11px] sm:text-xs font-medium text-emerald-200/95"
+        >
+          <span aria-hidden className="mt-[1px] sm:mt-0">→</span>
+          <span className="leading-snug">
+            Built for{" "}
+            <strong className="font-semibold text-emerald-100">
+              developer-investors
+            </strong>{" "}
+            writing <span className="tabular-nums">€5k–€50k</span> angel
+            checks on AI infra, devtools &amp; SaaS — between deal #5 and
+            deal #40.
+          </span>
+        </p>
+
         {/* Brunson Secret Formula §1 fix (audit 2026-05-06): "Define result
             in numerical terms above the fold." The 3.4× lift is the
             headline finding from soap-opera D12 (lib/emails.ts:241) —
@@ -933,9 +960,14 @@ export default function Home() {
           breathing thing at the top." */}
       <SignalLeader movers={topMovers} periodSlug={period.slug} asOf={asOf} />
 
-      {/* Three doors — Brunson-meets-Isenberg ladder: free email / receipts /
-          predict. All lead to the same email gate downstream. */}
-      <ThreeDoorHero />
+      {/* Brunson DotCom Secrets Ch 14 — Lead "Squeeze" Funnel.
+          HSO audit 2026-05-08 (Ch 14: 87/100): the prior ThreeDoorHero
+          gave equal weight to three CTAs, diluting the squeeze. Replaced
+          with a true single-CTA squeeze — inline email-capture form
+          (dominant) + two small tertiary "exit" links (subordinate).
+          The form posts to /api/subscribe with cohort=soap-opera and
+          source=home for split-bucket attribution vs /squeeze. */}
+      <HomeSqueeze />
 
       {/* Brunson DotCom Secrets Ch 12 + Expert Secrets Ch 13 — Stack Slide
           on the home page. HSO audit 2026-05-08: full priced stack lived
