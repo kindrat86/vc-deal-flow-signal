@@ -34,3 +34,8 @@
 - Own-post reply reminder: Wed May 6 was a scheduled post day — likely the "20-min GitHub due-diligence pass" Substack piece cross-posted; check linkedin.com/company/gitdealflow/posts and reply within 2h
 - Targets: Harry Stebbings, Sarah Tavel, Fabrice Grinda
 - Drafts saved above for copy-paste
+
+## 2026-05-08
+- Own-post reply reminder: Thu May 7 was a scheduled post day (Tue/Wed/Thu/Fri cadence) — schedule file still missing; check linkedin.com/company/gitdealflow/posts manually and reply within 2h (likely airbytehq Signal of the Week amplification or next 30-day sequence post)
+- Targets: Sarah Tavel, Fabrice Grinda, Jenny Fielding
+- Drafts saved above for copy-paste
