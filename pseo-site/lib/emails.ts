@@ -1095,33 +1095,246 @@ const D30_I: SoapOperaEmail = {
 `),
 };
 
+// ---------------------------------------------------------------------------
+// Tier-specific Day-0 welcomes (Brunson Quiz Funnel — "anchor the rung from
+// email 1"). 2026-05-08 expansion: previously only D30 was tier-specific —
+// per Brunson DCS Ch 15 critique "same drip everyone gets" — every reader
+// now lands on a Day-0 message that names their self-described rung in the
+// first paragraph and frames the next 90 days around it.
+// ---------------------------------------------------------------------------
+
+const D0_F: SoapOperaEmail = {
+  subject: "Welcome — the free digest IS the product on your tier",
+  delayMs: THIRTY_MIN,
+  html: wrap(`
+<p>Welcome. You told me on the quiz that you've written 0&ndash;1 angel checks in the past year &mdash; exploring, learning, maybe one day. Important: <strong>the free Acceleration Watch is the product for your tier, full stop.</strong></p>
+<p>I built this after I missed a Series A I'd flagged in my own notebook three weeks before it announced. The signal &mdash; a 3&times; commit-velocity acceleration, four new contributors, three new infrastructure repos in fourteen days &mdash; was sitting in plain sight on a public GitHub org. I'd talked myself out of writing the cheque. The investors who got in had read exactly the same data and didn't.</p>
+<p>So I built a system that reads the commit graph for me. Across 4,200 venture-backed orgs. Every week. Mechanically. The Acceleration Watch &mdash; your free Sunday digest &mdash; is the top five names from that engine, ranked, sector-tagged, no commitment.</p>
+<p>For someone in your tier, that's enough. Read for ten years and write your first cheque informed. The &euro;7 First Look Pass exists if your cadence ever picks up to 2&ndash;5 checks/year &mdash; but I'd rather you read for free for a long time than upgrade once and resent it.</p>
+<p>Tomorrow I'll challenge something most people in your tier believe: that GitHub data is too noisy to read. It isn't. The framing is wrong, and once you see it the Sunday digest becomes a thirty-second read instead of a five-minute one.</p>
+<p>Talk soon,<br>${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. The full methodology is published as an SSRN preprint (n=219, peer-reviewable): <a href="https://ssrn.com/abstract=6606558" style="color:#0ea5e9;">ssrn.com/abstract=6606558</a>. Free book version at <a href="${SIGNALS}/book" style="color:#0ea5e9;">${SIGNALS}/book</a>. Both are yours regardless of whether you ever spend a euro with us.</p>
+`),
+};
+
+const D0_T: SoapOperaEmail = {
+  subject: "Welcome — €7 is the right test for the way you write checks",
+  delayMs: THIRTY_MIN,
+  html: wrap(`
+<p>Welcome. You told me on the quiz that you've written 2&ndash;5 angel checks in the past year &mdash; building cadence, sector-leaning. The right rung for your tier is the <strong>&euro;7 First Look Pass</strong>, and I'm going to spend the next 30 days showing you why it pays for itself the first time you run it.</p>
+<p>Here's the story this product started with. I was tracking a fintech-infra startup. No press, no AngelList buzz, no warm intros circulating. But their GitHub showed a 3&times; commit-velocity spike, four new senior contributors from a public Series-B company, and three new infrastructure repos spun up over a single weekend. I noted it. I closed the laptop. Three weeks later, $4M Series A.</p>
+<p>The signal was public. The methodology is published (SSRN n=219, 21&ndash;47 day median lead time). The only thing missing was someone willing to pay &euro;7 once, pick a sector, and have the deep dive in their inbox in 24 hours.</p>
+<p>That's literally the First Look Pass. Pick fintech-infra, AI/ML, dev tools, healthtech &mdash; whichever sits closest to your thesis. I send the 14-page PDF + raw CSV + walkthrough. If three orgs land that you'd genuinely consider writing into, the &euro;7 was the right call. If not, the report and CSV are still yours.</p>
+<p>The credit-back is the kicker: if you upgrade to the Dashboard within 14 days, the &euro;7 credits 100%. So at worst you spend &euro;7 to test step 5 of the conversion story on your own thesis, and at best you walk into the Dashboard already up &euro;7.</p>
+<p>Tomorrow: why "GitHub data is noise" is the most common objection &mdash; and why it's wrong in a specific, measurable way for your check-size.</p>
+<p>Talk soon,<br>${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. SSRN preprint (the methodology): <a href="https://ssrn.com/abstract=6606558" style="color:#0ea5e9;">ssrn.com/abstract=6606558</a> &middot; Free book: <a href="${SIGNALS}/book" style="color:#0ea5e9;">${SIGNALS}/book</a> &middot; First Look checkout (&euro;7, 24h delivery, credits 100% to Dashboard): <a href="${SITE}/#firstlook" style="color:#0ea5e9;">${SITE}/#firstlook</a></p>
+`),
+};
+
+const D0_I: SoapOperaEmail = {
+  subject: "Welcome — fund-tier rung, 24-hour lead, €1,997 sweep",
+  delayMs: THIRTY_MIN,
+  html: wrap(`
+<p>Welcome. You told me on the quiz that you write 20+ checks per year, run a fund, or run a syndicate. The &euro;9.97/mo Dashboard is a tool too small to register on your operating budget &mdash; so I'm going to spend the next 90 days speaking to the rungs that matter at your scale: the <strong>Insider Circle</strong> (&euro;97/mo, 24-hour lead) and the <strong>Sector Sweep</strong> (&euro;1,997 one-time, 100% credited toward Insider).</p>
+<p>The product started with a missed Series A. A fintech-infra startup with a 3&times; commit-velocity spike, four new senior contributors, three new infrastructure repos in a fortnight. I'd flagged it in my notebook. The investors who actually wrote the cheque had read the same public GitHub data &mdash; they just had a system that made the read mechanical instead of episodic.</p>
+<p>Across 4,200 venture-backed orgs, that system is now the panel that powers two products at your tier. The Insider Circle ships next Sunday's five picks <em>24 hours before</em> the public Monday digest &mdash; one full sourcing day before any other investor sees them, plus closed Telegram, JSON/CSV API, and a custom watchlist co-built around your fund thesis. The Sector Sweep is a 40-page custom PDF on your chosen sector, three pre-Crunchbase early-stage targets, 14-day Q&amp;A &mdash; useful as IC-memo material at fund scale, and the &euro;1,997 credits 100% to Insider if you upgrade within 60 days.</p>
+<p>The math at your check volume: one founder per quarter that you reached because you had a Sunday-night head-start, at angel-range with even a 3&times; exit on one in five, lands at &euro;15k&ndash;&euro;150k of expected value per head-start. &euro;1,164/yr of Insider versus that calculus is a no-brainer if the rhythm fits.</p>
+<p>Tomorrow: why the "GitHub data is noise" objection is wrong at your tier specifically &mdash; the noise floor matters more for low-volume sourcing, not the kind you're running.</p>
+<p>Talk soon,<br>${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. SSRN preprint (n=219, the methodology backbone): <a href="https://ssrn.com/abstract=6606558" style="color:#0ea5e9;">ssrn.com/abstract=6606558</a> &middot; Insider Circle (&euro;97/mo, 24h lead, closed Telegram): <a href="${SIGNALS}/insider" style="color:#0ea5e9;">${SIGNALS}/insider</a> &middot; Sector Sweep (&euro;1,997, capped 8/quarter): <a href="${SIGNALS}/sector-sweep" style="color:#0ea5e9;">${SIGNALS}/sector-sweep</a></p>
+`),
+};
+
+// ---------------------------------------------------------------------------
+// Tier-specific Day-5 future-pace mental movies (Brunson "paint the picture
+// then sell the frame"). The modal D5 is the Dashboard close — perfect for
+// D-tier readers but a complete miss for F (free) and I (fund). Each tier
+// gets its own scenario set inside their actual rung.
+// ---------------------------------------------------------------------------
+
+const D5_F: SoapOperaEmail = {
+  subject: "A Sunday morning, three months from now",
+  delayMs: THIRTY_MIN + 5 * ONE_DAY,
+  html: wrap(`
+<p>Picture this. It's a Sunday morning in August. Coffee in hand. The Acceleration Watch hits your inbox at 09:00 UTC like clockwork. Five startups, ranked, sector-tagged, with a one-line note on what each one's GitHub did this week.</p>
+<p>You scan in twenty seconds. The third entry is an AI-infra startup you've never heard of &mdash; three new senior contributors joined this week, all from a public Series-B company you respect. The README was rewritten Saturday night. Commit velocity is up 240% over baseline.</p>
+<p>You open the founder's email &mdash; it's right there in the git log &mdash; and write four lines: "Saw the README rewrite + the contributor influx. The work looks like the kind I follow. If you ever want a 20-minute call about what early angel allocation looks like for the round after this one, I'm easy to reach."</p>
+<p>You don't have a check ready. You're not pretending to. You're playing the long game &mdash; three quarters of Sunday-morning reading, twelve to twenty cold emails sent, two or three real relationships built. By the time you write your first &euro;5k cheque next year, the founder you back is one of the founders you've been reading for ten months.</p>
+<p>That's what the free digest is for, on your tier. Not "deal flow" &mdash; <strong>taste flow</strong>. You're calibrating which engineering signals match the kind of company you'd want to back, and you're doing it on a budget of zero euros and twenty minutes a week.</p>
+<p>The Sunday digest stays free forever. The &euro;7 First Look Pass exists if your cadence ever moves to 2&ndash;5/year &mdash; at that point the value-per-euro math flips and a single sector deep-dive saves you a week of evenings. But that's <em>your</em> decision and <em>your</em> timing, not mine.</p>
+<p>Tomorrow I'll send the most-asked objection at your tier &mdash; "if the data is public, where's the edge?" &mdash; with the answer that takes about ninety seconds to read and shifts the whole frame.</p>
+<p>Talk soon,<br>${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. The free book at <a href="${SIGNALS}/book" style="color:#0ea5e9;">${SIGNALS}/book</a> is your fastest way to internalise the methodology before next Sunday's digest. 104 pages, four formats, no email gate beyond the one you've already given me.</p>
+`),
+};
+
+const D5_T: SoapOperaEmail = {
+  subject: "A Tuesday afternoon, after your First Look lands",
+  delayMs: THIRTY_MIN + 5 * ONE_DAY,
+  html: wrap(`
+<p>Picture this. It's a Tuesday afternoon in August. Your &euro;7 First Look Pass on fintech-infra (or whichever sector matches your thesis) landed in your inbox at lunch. Fourteen pages, raw CSV, written walkthrough &mdash; the artefact that compresses three weeks of analyst time into one PDF.</p>
+<p>You scan the top 25 ranked orgs first. Three names you already know. Two you've heard mentioned. <em>Twenty</em> you've never heard of. The walkthrough flags three pre-Crunchbase early-stage targets &mdash; the thesis-tagged surprises, the kind of orgs where a polite cold email this week could be a 20-minute call next week.</p>
+<p>You open the raw CSV and sort by 14-day acceleration. The top ten are roughly the right shape: small teams, public infra, recognisable contributor patterns from a small handful of well-respected public companies. You bookmark four for cold-out this Friday and one for an end-of-quarter deeper read.</p>
+<p>Then you do the math. &euro;7. Twenty unknown orgs surfaced, four of them genuinely interesting enough to email. Even one of those four turning into a 20-minute call &mdash; at angel range with even a 5% probability of investing &mdash; pays back the &euro;7 ~700 times over. The &euro;7 wasn't the question; the question was whether the methodology produced names you wouldn't have seen otherwise. The CSV says yes.</p>
+<p>That's the test. If the First Look Pass surfaces three orgs you'd genuinely consider, the &euro;7 was the right call. If not, you keep the report and the CSV anyway and you've spent &euro;7 to find out. Either way the credit-back means upgrading to the Dashboard within 14 days costs you &euro;0 in additional out-of-pocket &mdash; the &euro;7 already paid.</p>
+<p>Tomorrow: the most-asked objection at your tier &mdash; "if it's public, where's the edge?" &mdash; answered cleanly in ninety seconds.</p>
+<p>The First Look checkout is here, when you're ready: <a href="${SITE}/#firstlook" style="color:#0ea5e9;font-weight:600;">${SITE}/#firstlook</a></p>
+<p>Talk soon,<br>${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. The first 50 First Look passes locked the &euro;7 price. After that the price moves to &euro;19. The credit-back to Dashboard stays at 100% indefinitely &mdash; that's the rung structure, not a launch promo.</p>
+`),
+};
+
+const D5_I: SoapOperaEmail = {
+  subject: "A Sunday evening, with the 24-hour lead",
+  delayMs: THIRTY_MIN + 5 * ONE_DAY,
+  html: wrap(`
+<p>Picture this. It's a Sunday evening in August. The Insider Circle briefing landed in your inbox at 09:00 UTC this morning &mdash; twenty-four hours before the public Acceleration Watch goes out tomorrow. Five ranked names, sector-tagged, with the JSON pre-piped into the diligence dashboard your fund's analyst built last quarter.</p>
+<p>You scan. Two names you already knew. Three you didn't. The third entry is an AI-infra startup with sustained 14-day commit-velocity acceleration above 2&times; their 90-day baseline AND contributor-Gini under 0.30 &mdash; the band where the panel's own resolution rate runs ~4-of-4 over a 90-day window. You ping the founder's listed email at 21:00 from the closed Telegram channel, where the rest of the fund-tier subscribers are already comparing notes.</p>
+<p>By Monday at 09:00 &mdash; when the public list goes out and another 800 readers see the same five names &mdash; you've already had a 30-minute call booked, with a follow-up scheduled for end-of-week. By the time the warm-intro version of this deal reaches consensus partners at &euro;5M&ndash;&euro;20M funds, you're three weeks into a relationship that started at angel-allocation scale.</p>
+<p>The math: one founder per quarter, head-start window of one Sunday evening, at angel range with even a 3&times; exit on one in five, is somewhere between &euro;15k and &euro;150k of expected value per head-start. Insider Circle is &euro;1,164/yr at the founding rate. The numbers don't work the other way.</p>
+<p>Plus the rest of the fund-tier scaffolding &mdash; JSON/CSV API for the diligence stack, custom watchlist co-built around your thesis on signup, webhooks, direct founder line, closed Telegram of the other fund-tier subscribers (~30 today, capped at 100 at the founding rate). At your check volume those are the tools that turn a Sunday-night briefing into a Monday-morning conversation.</p>
+<p>Tomorrow I'll address the trust problem head-on &mdash; "I've been reading email from someone who signs as 'The Data Nerd' and doesn't put a face on the website" &mdash; because at your tier that's a legitimate ask, and I'd rather answer it explicitly than have it sit in your head until D90.</p>
+<p>Insider Circle case (12-minute walkthrough): <a href="${SIGNALS}/insider" style="color:#0ea5e9;font-weight:600;">${SIGNALS}/insider</a></p>
+<p>Talk soon,<br>${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. The Sector Sweep (&euro;1,997 one-time, capped 8/quarter, 100% credit toward Insider) is the right artefact if your fund needs IC-memo material on a specific sector before the Insider subscription decision. Send the sector to <a href="mailto:signal@gitdealflow.com?subject=Sector%20Sweep" style="color:#0ea5e9;">signal@gitdealflow.com</a> and the spec lands inside one business day.</p>
+`),
+};
+
+// ---------------------------------------------------------------------------
+// Tier-specific Day-45 ascension emails (Brunson Value Ladder rung-up). The
+// modal D45 pitches Insider — perfect for D-tier readers but a miss for F
+// (no rung-up exists yet) and I (already at Insider). Each tier gets a path
+// to its actual NEXT rung, not the modal one.
+// ---------------------------------------------------------------------------
+
+const D45_F: SoapOperaEmail = {
+  subject: "Forty-five days in. Has your cadence shifted?",
+  delayMs: THIRTY_MIN + 45 * ONE_DAY,
+  html: wrap(`
+<p>You signed up forty-five days ago telling me you've written 0&ndash;1 angel checks in the past year. Six Sunday digests have hit your inbox since. About thirty ranked names you've now had on your radar before consensus formed.</p>
+<p>The honest question I'd ask at this point: <strong>has your cadence shifted?</strong></p>
+<p>If you've gone from "exploring, learning" to "I've written one cheque this quarter and I'm circling a sector" &mdash; that's a real shift, and the right next rung is the <strong>&euro;7 First Look Pass</strong>. Pick the sector you're circling, get the 14-page deep dive + raw CSV in 24 hours, credit 100% toward Dashboard if you upgrade within 14 days. &euro;7 is the price of a coffee in central Lisbon. It's the lowest-friction way to test step 5 of the conversion story on your own thesis without committing to a subscription.</p>
+<p>If your cadence hasn't shifted &mdash; still 0&ndash;1 cheques/year, still calibrating taste &mdash; <strong>nothing changes</strong>. The free Sunday digest stays exactly as it is. I'd rather you read for ten years and write your first cheque informed than upgrade once and resent it.</p>
+<p>The First Look isn't a "graduate now or be left behind" pitch. It's the rung above your tier, named honestly, available the moment your cadence justifies it. If forty-five days from today you're in the same place &mdash; keep reading, keep calibrating. If forty-five days from today you've written two more cheques &mdash; the First Look is here.</p>
+<p>Either way: free digest stays free, Sunday hits as usual this weekend.</p>
+<p>Talk soon,<br>${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. First Look checkout (&euro;7, 24h delivery): <a href="${SITE}/#firstlook" style="color:#0ea5e9;">${SITE}/#firstlook</a> &middot; Free book: <a href="${SIGNALS}/book" style="color:#0ea5e9;">${SIGNALS}/book</a> &middot; Funnel hub if you ever want to see all 9 doors at once: <a href="${SIGNALS}/funnels" style="color:#0ea5e9;">${SIGNALS}/funnels</a></p>
+`),
+};
+
+const D45_T: SoapOperaEmail = {
+  subject: "Forty-five days in. Did the First Look pay back?",
+  delayMs: THIRTY_MIN + 45 * ONE_DAY,
+  html: wrap(`
+<p>You signed up forty-five days ago telling me you write 2&ndash;5 angel checks per year and you're building cadence. Six Sunday digests have hit your inbox. If you grabbed the &euro;7 First Look Pass somewhere along the way, the 14-page sector deep dive + raw CSV is sitting in your inbox too.</p>
+<p>The honest question at this point: <strong>did the First Look pay back?</strong></p>
+<p>If yes &mdash; three or more orgs landed that you wouldn't have surfaced otherwise &mdash; the next rung is <strong>the &euro;9.97/mo Dashboard</strong>. The First Look credit-back means the upgrade is &euro;0 additional out-of-pocket if you do it within 14 days of receiving the deep dive. The Dashboard is the same engine you read once for &euro;7, run weekly, refreshed every Monday at 09:00 UTC, with the live panel of 209 ranked orgs filterable by sector / stage / geography. The 8-object stack &mdash; Dashboard + 219-startup Backtest CSV + monthly Sector Deep Dive + 2 Chrome Extensions + MCP Server + async Watchlist Build + Methodology Vault + 30-day refund &mdash; totals &euro;1,980 of standalone value at &euro;9.97/mo founding rate, locked forever.</p>
+<p>If the First Look didn't pay back &mdash; the deep dive surfaced fewer than three names you'd consider &mdash; that's actionable feedback I want to hear. Reply to this email with the sector you covered and what didn't land, and I'll either run a fresh sweep on a different sector at no charge OR refund the &euro;7 outright. The methodology has to work for the buyer's own thesis or the rung structure breaks down.</p>
+<p>If you haven't grabbed the First Look yet &mdash; the &euro;7 price is still locked at the founding rate, the credit-back to Dashboard is still 100%, and the queue is currently 24 hours. <a href="${SITE}/#firstlook" style="color:#0ea5e9;font-weight:600;">${SITE}/#firstlook</a></p>
+<p>The free digest stays free either way. Sunday hits as usual this weekend.</p>
+<p>Talk soon,<br>${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. The Dashboard 12-minute walkthrough is at <a href="${SIGNALS}/perfect-webinar/5min" style="color:#0ea5e9;">${SIGNALS}/perfect-webinar/5min</a> &mdash; read before upgrading if you want the full case before the click.</p>
+`),
+};
+
+const D45_I: SoapOperaEmail = {
+  subject: "Forty-five days in. The Sector Sweep window opens.",
+  delayMs: THIRTY_MIN + 45 * ONE_DAY,
+  html: wrap(`
+<p>You signed up forty-five days ago at fund-tier &mdash; 20+ checks/year, fund or syndicate operator. Six Sunday digests + (if you took the rung) six Insider briefings have landed. The 24-hour lead has been running for six full sourcing weeks now.</p>
+<p>The honest question at this point: <strong>are you ready for the Sector Sweep?</strong></p>
+<p>The Sweep is the only artefact in the stack that's tuned for IC-memo material rather than weekly rhythm. &euro;1,997 one-time, capped at 8 sweeps per quarter (Q3 2026: 7 of 8 still open). 40-page custom PDF on the sector you pick, raw CSV of every org &times; every metric, top-five deep dives with diligence prompts, three pre-Crunchbase early-stage targets, 14-day Q&amp;A window for follow-up cuts. Itemised value works out to ~&euro;13,000 of analyst time at standard rates.</p>
+<p>Two reasons to consider it now, specifically:</p>
+<p>One &mdash; the &euro;1,997 is 100% credited to Insider Circle if you upgrade within 60 days of receiving the Sweep. That's roughly your first 20 months of Insider, paid in full. Operationally: if your fund is going to subscribe to Insider anyway, the Sweep is a free upgrade with a one-time deep artefact attached.</p>
+<p>Two &mdash; the 30-day Signal-or-It's-Free guarantee covers the Sweep itself. If we don't surface three orgs you didn't already know about, reply REFUND. No forms, no calls, no questions.</p>
+<p>If your fund's thesis is genuinely focused on one sector this quarter &mdash; AI infra, dev tools, fintech rails, vertical SaaS, climate &mdash; this is the artefact that compresses three weeks of analyst work into one weekend of reading. Email <a href="mailto:signal@gitdealflow.com?subject=Sector%20Sweep" style="color:#0ea5e9;">signal@gitdealflow.com</a> with the sector and we confirm the spec inside one business day.</p>
+<p>If Insider Circle isn't running yet either &mdash; the founding-rate window (&euro;97/mo, locked for the lifetime of the subscription) is still open. The 24-hour Sunday lead is the operating leverage; everything else is plumbing.</p>
+<p>Talk soon &mdash;<br>${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. Insider Circle (&euro;97/mo, 24h lead, closed Telegram, ~30 fund-tier subscribers): <a href="${SIGNALS}/insider" style="color:#0ea5e9;">${SIGNALS}/insider</a> &middot; Sector Sweep stack itemised: <a href="${SIGNALS}/pricing#sector-sweep-stack" style="color:#0ea5e9;">${SIGNALS}/pricing#sector-sweep-stack</a></p>
+`),
+};
+
+// ---------------------------------------------------------------------------
+// Tier-specific Day-60 — soft introduction of the Sweep concept for T-tier
+// (so by the time D60 modal pitches it at full price, T readers already
+// know what it is). F still skips D60. D + I keep the modal Sweep pitch.
+// ---------------------------------------------------------------------------
+
+const D60_T: SoapOperaEmail = {
+  subject: "When a single sector is worth a weekend",
+  delayMs: THIRTY_MIN + 60 * ONE_DAY,
+  html: wrap(`
+<p>Most weeks the right rung at your tier is the &euro;7 First Look or the &euro;9.97/mo Dashboard. Both run on the same engine, both are tuned for the 2&ndash;5 cheque/year cadence you described on signup.</p>
+<p>About once a year &mdash; maybe once a quarter if your thesis is sharp &mdash; there's a different shape that's useful: <strong>going all-in on one sector for a single weekend</strong>, with a 40-page artefact you can paste into your decision memo or share with a co-investor.</p>
+<p>That's the Sector Sweep. &euro;1,997 one-time. I'm naming it now not because it's the right rung for your tier <em>today</em> &mdash; at 2&ndash;5 cheques/year, it almost certainly isn't &mdash; but because if your cadence ever moves to 8&ndash;10/year and you start running a sharper sector thesis, this is the artefact that compresses three weeks of work into a weekend of reading.</p>
+<p>Inside: 40-page custom PDF on the sector you pick, raw CSV of every org &times; every metric, top-five deep dives with diligence prompts, three pre-Crunchbase early-stage targets, 14-day Q&amp;A window. ~&euro;13,000 of analyst time at standard rates. Capped at 8 per quarter to preserve quality.</p>
+<p>The credit-back loop is the part to keep in mind for later: 100% of the &euro;1,997 credits to Insider Circle if you upgrade within 60 days. So if you ever do graduate to a fund-tier rhythm, the Sweep is a free Insider on-ramp with a deep artefact attached.</p>
+<p>For now: the &euro;7 First Look + &euro;9.97/mo Dashboard remain the two rungs that match your cadence. The Sweep is a future option, not a current pitch. The free digest stays free regardless. Sunday hits as usual this weekend.</p>
+<p>Talk soon &mdash;<br>${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. Sweep details if curious: <a href="${SIGNALS}/pricing#sector-sweep-stack" style="color:#0ea5e9;">${SIGNALS}/pricing#sector-sweep-stack</a> &middot; The Dashboard remains the right next rung for the way you write checks: <a href="${SITE}/#pricing" style="color:#0ea5e9;">${SITE}/#pricing</a></p>
+`),
+};
+
+// ---------------------------------------------------------------------------
+// Tier-specific Day-75 — F-tier reframe of the Crystal Ball game as the
+// "no-cheque-required public-track-record" play. Modal D75 already covers
+// this implicitly; this version makes it the headline for F-tier readers.
+// ---------------------------------------------------------------------------
+
+const D75_F: SoapOperaEmail = {
+  subject: "Build a track record before you write a cheque",
+  delayMs: THIRTY_MIN + 75 * ONE_DAY,
+  html: wrap(`
+<p>Quick note for the tier you signed up at &mdash; 0&ndash;1 angel checks/year, exploring, calibrating taste.</p>
+<p>The most useful thing you can do before you write your first cheque is build a <strong>public track record of taste</strong>. Not on Twitter. Not in someone's syndicate Discord. On a public, append-only ledger where the predictions are timestamped, the resolutions are mechanical, and the scoring is weighted by lead time.</p>
+<p>That's the <a href="${SIGNALS}/crystal-ball" style="color:#0ea5e9;">Crystal Ball game</a>. Pick any GitHub org. Predict that they'll announce a funding round within 90 days. We grade post-hoc against TechCrunch, Crunchbase, and SEC filings. Leaderboard tracks your hit rate weighted by lead time. No cheque required, no payment, no email gate beyond the one you've already given me.</p>
+<p>The reward isn't money &mdash; there's no money in the loop. The reward is the public track record. Five hits earn the Founding Forecaster badge (permanent, public) and unlock 50% off a future Sector Sweep. More importantly: the leaderboard is public and indexable. Forecasters in the founding cohort have already had angel-allocation introductions <em>because their pick history was the credential</em>.</p>
+<p>Three picks per quarter is enough to start showing taste. The cap is one pick per email per week to keep the leaderboard clean. If your free digest reading has been more careful than most readers' &mdash; if you've been the kind of reader who pulls one or two of the five Sunday names through to a deeper read &mdash; Crystal Ball is the cheapest way to find out whether your taste matches the data.</p>
+<p>Plus the Underwriting Receipts ledger is now live: <a href="${SIGNALS}/wins" style="color:#0ea5e9;">${SIGNALS}/wins</a>. Every venture-backed startup whose GitHub engineering acceleration matched the SSRN signal pattern before the funding round. ~75 entries on the panel today. We append, never edit.</p>
+<p>Both surfaces are free. Both build a credible public track record. Neither requires a cheque written before the credential exists.</p>
+<p>Talk soon &mdash;<br>${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. The leaderboard is at <a href="${SIGNALS}/crystal-ball" style="color:#0ea5e9;">${SIGNALS}/crystal-ball</a>. First pick takes ninety seconds. The badge is what unlocks the next twelve months of low-friction relationship-building.</p>
+`),
+};
+
 // Per-tier override map. Key = SOAP_OPERA_EMAILS index. Value "skip" drops
 // the email from the tier's sequence; an object replaces it. Missing key
 // keeps SOAP_OPERA_EMAILS[i] verbatim.
+//
+// Brunson Quiz Funnel expansion 2026-05-08 — previously only D30 differed
+// per tier (the V8 audit ding). Now D0/D5/D45 differ for all four tiers,
+// D60 has a T-specific introduction, D75 has an F-specific reframe.
 const TIER_OVERRIDES: Record<Tier, Record<number, "skip" | SoapOperaEmail>> = {
   F: {
-    5: "skip", // D4 €7 First Look — pre-buyer at 0-1 checks/yr, don't push paid
-    6: "skip", // D5 Dashboard close — pre-buyer; would feel like a cold pitch
-    7: "skip", // D6 Insider walkthrough — €97/mo is two rungs too high
-    16: D30_F, // D30 — rewritten to "stay free, here's what that means"
-    17: "skip", // D45 Insider upsell — same reason as D6
+    0: D0_F,    // D0 welcome — anchor "free is the version" from email 1
+    5: "skip",  // D4 €7 First Look — pre-buyer at 0-1 checks/yr, don't push paid
+    6: D5_F,    // D5 future-pace — Sunday-morning free-digest scenario, not Tuesday Dashboard
+    7: "skip",  // D6 Insider walkthrough — €97/mo is two rungs too high
+    16: D30_F,  // D30 — "stay free, here's what that means"
+    17: D45_F,  // D45 — "has your cadence shifted?" cadence-check, not cold Insider pitch
     18: "skip", // D60 Sector Sweep — €1,997 is laughable at this tier
+    19: D75_F,  // D75 — Crystal Ball reframed as no-cheque public track record
   },
   T: {
-    7: "skip", // D6 Insider walkthrough — too high a rung for 2-5 checks/yr
-    16: D30_T, // D30 — rewritten to focus on the €7 First Look as the right test
-    17: "skip", // D45 Insider upsell — wait until they've moved through First Look + Dashboard
-    18: "skip", // D60 Sector Sweep — fund-scale denomination, not building-cadence
+    0: D0_T,    // D0 welcome — anchor "€7 First Look is the right rung" from email 1
+    6: D5_T,    // D5 future-pace — Tuesday-afternoon First-Look-landed scenario
+    7: "skip",  // D6 Insider walkthrough — too high a rung for 2-5 checks/yr
+    16: D30_T,  // D30 — "the €7 question"
+    17: D45_T,  // D45 — "did the First Look pay back?" graduating to Dashboard
+    18: D60_T,  // D60 Sector Sweep — soft intro as future option, not current pitch
   },
   D: {
-    // Existing SOAP_OPERA_EMAILS sequence is tuned for D (the modal reader).
-    // No overrides — this builds the same array as SOAP_OPERA_EMAILS via the
+    // SOAP_OPERA_EMAILS sequence is tuned for D (the modal reader). No
+    // overrides — this builds the same array as SOAP_OPERA_EMAILS via the
     // builder, kept for API symmetry with F/T/I.
   },
   I: {
-    5: "skip", // D4 €7 First Look — €7 reads insulting on a fund budget
-    6: "skip", // D5 Dashboard close (Tuesday morning) — €9.97/mo doesn't register
-    16: D30_I, // D30 — rewritten to lead with Insider 24h-lead + Sector Sweep
+    0: D0_I,    // D0 welcome — anchor "Insider + Sweep" from email 1, skip Dashboard talk
+    5: "skip",  // D4 €7 First Look — €7 reads insulting on a fund budget
+    6: D5_I,    // D5 future-pace — Sunday-evening 24h-lead scenario, not Tuesday Dashboard
+    16: D30_I,  // D30 — "the fund-tier rung"
+    17: D45_I,  // D45 — "the Sector Sweep window opens" instead of Insider sales pitch
   },
 };
 
