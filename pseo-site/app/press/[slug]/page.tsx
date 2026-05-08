@@ -57,27 +57,45 @@ export default async function PressReleasePage({ params }: PageProps) {
         "@type": "NewsArticle",
         "@id": `${SITE}/press/${slug}#article`,
         headline: r.headline,
+        alternativeHeadline: r.subhead,
         description: r.subhead,
         articleSection: "Press release",
         articleBody: [r.lead, ...r.body, r.quote].join("\n\n"),
+        // Dateline mirrors the on-page wire prefix ("ATHENS, GR — …") so AI
+        // retrieval can recover origin/byline metadata without re-parsing
+        // the rendered HTML.
+        dateline: r.dateline,
+        inLanguage: "en-US",
+        isAccessibleForFree: true,
+        isFamilyFriendly: true,
+        license: "https://creativecommons.org/licenses/by/4.0/",
         datePublished: r.date,
         dateModified: r.date,
+        // Person byline (consistent with the on-page quote attribution
+        // "— The Data Nerd, founder of VC Deal Flow Signal"). Anchored
+        // to the same @id as the Person node in RootIdentitySchema so
+        // every NewsArticle resolves to the same author entity.
         author: {
-          "@type": "Organization",
-          name: "VC Deal Flow Signal",
-          url: "https://gitdealflow.com",
+          "@type": "Person",
+          "@id": `${SITE}/about#person`,
+          name: "The Data Nerd",
+          url: `${SITE}/about`,
+          jobTitle: "Founder, VC Deal Flow Signal",
         },
-        publisher: {
-          "@type": "Organization",
-          name: "VC Deal Flow Signal",
-          url: "https://gitdealflow.com",
-        },
+        publisher: { "@id": "https://gitdealflow.com/#organization" },
+        // Anchor every press release to the Newspaper umbrella so this
+        // page is recognisable as an entry in a registered publication
+        // rather than a free-floating Article. Resolved via @id from the
+        // RootIdentitySchema @graph.
+        isPartOf: { "@id": "https://gitdealflow.com/#newspaper" },
         mainEntityOfPage: `${SITE}/press/${slug}`,
-        copyrightHolder: {
-          "@type": "Organization",
-          name: "VC Deal Flow Signal",
-        },
-        copyrightNotice: "CC BY 4.0",
+        copyrightHolder: { "@id": "https://gitdealflow.com/#organization" },
+        copyrightYear: new Date(r.date).getUTCFullYear(),
+        copyrightNotice:
+          "© VC Deal Flow Signal (GitDealFlow). Released under CC BY 4.0 with attribution.",
+        ...(r.wireCategories && r.wireCategories.length > 0
+          ? { keywords: r.wireCategories.join(", ") }
+          : {}),
       },
       {
         "@type": "BreadcrumbList",

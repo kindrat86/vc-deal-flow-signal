@@ -340,6 +340,48 @@ export function RootIdentitySchema() {
         ],
         description:
           "Weekly periodical of named startups whose GitHub engineering acceleration crossed the signal threshold during the prior week. Each issue is graded post-hoc against fundraise / acquisition / IPO outcomes within the documented grading window.",
+        isPartOf: { "@id": `${APEX}/#newspaper` },
+      },
+      {
+        // Newspaper-class umbrella for the editorial output of the site —
+        // NewsArticle entries on /blog and /press carry `isPartOf` pointing
+        // here so AI retrieval, Google AI Overviews, and structured-data
+        // validators can resolve every news-class page to a registered
+        // publication entity rather than orphan Article nodes. ISSN is
+        // intentionally omitted (Google News onboarding is a manual
+        // publisher process unrelated to schema markup).
+        "@type": "Newspaper",
+        "@id": `${APEX}/#newspaper`,
+        name: "VC Deal Flow Signal",
+        alternateName: [
+          "GitDealFlow",
+          "VC Deal Flow Signal — Engineering Acceleration Watch",
+        ],
+        url: SITE,
+        publisher: { "@id": `${APEX}/#organization` },
+        copyrightHolder: { "@id": `${APEX}/#organization` },
+        isPartOf: { "@id": `${SITE}/#website` },
+        hasPart: { "@id": `${APEX}/#periodical` },
+        inLanguage: "en-US",
+        foundingDate: "2025",
+        license: "https://creativecommons.org/licenses/by/4.0/",
+        genre: [
+          "Venture capital alternative data",
+          "Engineering acceleration analysis",
+          "Startup signals",
+          "Open-source intelligence",
+        ],
+        about: [
+          "GitHub commit velocity",
+          "venture capital alternative data",
+          "engineering acceleration",
+          "startup engineering signals",
+          "open-source contributor growth",
+        ],
+        description:
+          "Editorial publication of VC Deal Flow Signal — covers GitHub-derived engineering-acceleration signals across venture-backed startups, the weekly Acceleration Watch index, methodology updates, research findings, and press releases. All editorial output published under CC BY 4.0.",
+        author: { "@id": `${SITE}/about#person` },
+        editor: { "@id": `${SITE}/about#person` },
       },
       {
         "@type": "SoftwareApplication",
