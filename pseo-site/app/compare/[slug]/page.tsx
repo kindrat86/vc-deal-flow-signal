@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getComparison, getAllComparisonSlugs, type ComparisonFAQ } from "@/content/comparisons";
+import { getTeardownsForSlug } from "@/content/competitor-teardowns";
 import { getAllSectors, getCurrentPeriod, getDataLastModified } from "@/lib/data";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { FunnelTeardown } from "@/components/FunnelTeardown";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -55,6 +57,7 @@ export default async function ComparisonPage({ params }: PageProps) {
   const period = getCurrentPeriod();
   const lastModified = getDataLastModified();
   const pageUrl = `https://signals.gitdealflow.com/compare/${slug}`;
+  const teardowns = getTeardownsForSlug(slug);
   const relatedSectorData = comp.relatedSectors
     .map((rs) => {
       const sector = sectors.find((s) => s.slug === rs);
@@ -158,6 +161,22 @@ export default async function ComparisonPage({ params }: PageProps) {
             },
           ]
         : []),
+      // HowTo schema per teardown — describes the competitor's funnel
+      // architecture as ordered steps. Crawlable, agent-readable, and
+      // strengthens topical authority on the comparison surface.
+      ...teardowns.map((td) => ({
+        "@type": "HowTo",
+        name: `${td.competitor} funnel architecture`,
+        description: td.tagline,
+        about: { "@type": "Thing", name: td.competitor },
+        step: td.funnelArch.map((s, i) => ({
+          "@type": "HowToStep",
+          position: i + 1,
+          name: s.step.replace(/^\d+\s*[—-]\s*/, ""),
+          text: s.theirMechanic,
+          url: `${pageUrl}#teardown-${td.key}-step-${i + 1}`,
+        })),
+      })),
       {
         "@type": "Claim",
         text: comp.verdict,
@@ -230,6 +249,34 @@ export default async function ComparisonPage({ params }: PageProps) {
             </div>
           ))}
         </div>
+
+        {/* Funnel teardowns — Brunson-style structural reverse-engineering
+            of competitor funnel architecture. Server-rendered, no JS. Renders
+            inline because per-page count is bounded (1–3) by SLUG_TO_TEARDOWN_KEYS. */}
+        {teardowns.length > 0 ? (
+          <section className="mb-12" aria-label="Competitor funnel teardowns">
+            <header className="mb-6">
+              <p className="text-xs font-medium uppercase tracking-[0.2em] text-amber-400/80 mb-2">
+                Reverse-Engineering the Funnels
+              </p>
+              <h2 className="text-2xl font-semibold text-gray-100 mb-3 leading-tight">
+                How {teardowns.length === 1 ? `${teardowns[0].competitor}'s funnel` : "each funnel"}{" "}
+                actually works
+              </h2>
+              <p className="text-gray-400 text-sm leading-relaxed max-w-3xl">
+                Russell Brunson&rsquo;s DotCom Secrets Ch 10: the fastest way to
+                understand a market is to walk every step of every competitor&rsquo;s
+                funnel and name the conversion mechanic. Below is the structural
+                teardown — what they do at each step, the read on the mechanic,
+                and the parallel move in our funnel. All sourced from publicly-
+                observable, logged-out surfaces.
+              </p>
+            </header>
+            {teardowns.map((td) => (
+              <FunnelTeardown key={td.key} teardown={td} />
+            ))}
+          </section>
+        ) : null}
 
         {/* Feature comparison table */}
         {comp.featureTable && (
