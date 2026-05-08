@@ -289,6 +289,36 @@ export default function RootLayout({
           href="https://signals.gitdealflow.com/.well-known/compliance.json"
           title="Compliance descriptor — GDPR / CCPA / SOC2 posture, subprocessors, DPA contact"
         />
+        {/* Content licensing for AI training, RAG, citation, fine-tuning.
+            `rel=license` is RFC 8288 standard; the JSON-typed alternates
+            add machine-readable use-mode permissions and exclusions.
+            Crawlers that respect TDM Reservation Protocol resolve the
+            JSON form via /.well-known/tdm-reservation.json's tdm-policy
+            field. F39 audit closed gap "no machine-readable AI license
+            file" / "no TDM Reservation Protocol" / "no GPC advertisement". */}
+        <link
+          rel="license"
+          href="https://creativecommons.org/licenses/by/4.0/"
+          title="Creative Commons Attribution 4.0 International"
+        />
+        <link
+          rel="describedby"
+          type="application/json"
+          href="https://signals.gitdealflow.com/.well-known/ai-content-license.json"
+          title="AI content license — training, inference, citation, fine-tune permissions"
+        />
+        <link
+          rel="describedby"
+          type="application/json"
+          href="https://signals.gitdealflow.com/.well-known/tdm-reservation.json"
+          title="W3C TDM Reservation Protocol — machine-readable opt-in for text-and-data-mining"
+        />
+        <link
+          rel="describedby"
+          type="application/json"
+          href="https://signals.gitdealflow.com/.well-known/gpc.json"
+          title="Global Privacy Control — publisher honors Sec-GPC: 1"
+        />
         <link
           rel="author"
           type="text/plain"
