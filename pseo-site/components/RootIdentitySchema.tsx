@@ -10,8 +10,11 @@
  * What's included:
  *   - WebSite with SearchAction (sitelinks search box)
  *   - Organization with full sameAs cross-graph (Wikidata/ORCID/SSRN/etc.)
- *   - Person (founder) with academic identifiers
- *   - SoftwareApplication referencing the dashboard product
+ *     and knowsAbout vocabulary anchors
+ *   - Brand (distinct from Organization) with slogan + logo + brand-channel
+ *     sameAs; Organization.brand back-references it
+ *   - Person (founder) with academic identifiers, knowsAbout, knowsLanguage
+ *   - Service + Periodical + SoftwareApplication referencing the offerings
  *
  * @id anchors are stable so cross-page references collapse into the same
  * entity in any consumer's graph.
@@ -206,9 +209,13 @@ export function RootIdentitySchema() {
           "https://www.saashub.com/vc-deal-flow-signal",
           "https://alternativeto.net/software/vc-deal-flow-signal/",
           "https://github.com/kindrat86/mcp-deal-flow-signal",
+          "https://smithery.ai/server/@kindrat86/mcp-deal-flow-signal",
+          "https://www.youtube.com/channel/UCSK4ZC9EJAHjHyncb5cSh8w",
           "https://ssrn.com/abstract=6606558",
+          "https://doi.org/10.2139/ssrn.6606558",
           "https://openalex.org/works/W7154916891",
           "https://zenodo.org/records/19650920",
+          "https://doi.org/10.5281/zenodo.19650920",
           "https://api.crossref.org/works/10.2139/ssrn.6606558",
           "https://kaggle.com/datasets/thedatanerd/vc-deal-flow-signal",
           "https://www.semanticscholar.org/paper/4dd7b11e79757f68e0c4107252514cbfdfbb0462",
@@ -224,8 +231,42 @@ export function RootIdentitySchema() {
           "code-side momentum signals",
           "startup engineering acceleration",
           "open-source contributor-growth analytics",
+          "Model Context Protocol",
+          "Agent-to-Agent (A2A) interoperability",
+          "engineering hiring bursts",
+          "framework migration signals",
+          "deploy-frequency analytics",
         ],
+        brand: { "@id": `${APEX}/#brand` },
         founder: { "@id": `${SITE}/about#person` },
+      },
+      {
+        "@type": "Brand",
+        "@id": `${APEX}/#brand`,
+        name: "GitDealFlow",
+        alternateName: ["VC Deal Flow Signal", "Engineering Acceleration Watch"],
+        slogan: "Read the code; predict the round.",
+        url: APEX,
+        logo: {
+          "@type": "ImageObject",
+          url: `${SITE}/icon.png`,
+          contentUrl: `${SITE}/icon.png`,
+          width: 192,
+          height: 192,
+          encodingFormat: "image/png",
+        },
+        sameAs: [
+          "https://www.wikidata.org/wiki/Q139376302",
+          "https://www.linkedin.com/company/gitdealflow",
+          "https://x.com/data_nerd",
+          "https://t.me/gitdealflow",
+          "https://www.youtube.com/channel/UCSK4ZC9EJAHjHyncb5cSh8w",
+          "https://www.producthunt.com/products/vc-deal-flow-signal",
+          "https://www.g2.com/products/vc-deal-flow-signal/reviews",
+          "https://www.saashub.com/vc-deal-flow-signal",
+          "https://alternativeto.net/software/vc-deal-flow-signal/",
+        ],
+        owner: { "@id": `${APEX}/#organization` },
       },
       {
         "@type": "Person",
@@ -258,6 +299,25 @@ export function RootIdentitySchema() {
           "https://www.indiehackers.com/The_Data_Nerd",
           "https://dev.to/the_data_nerd",
           "https://huggingface.co/the-data-nerd",
+        ],
+        knowsAbout: [
+          "GitHub commit velocity",
+          "venture capital alternative data",
+          "code-side momentum signals",
+          "engineering acceleration",
+          "open-source contributor analytics",
+          "Model Context Protocol",
+          "Agent-to-Agent (A2A) interoperability",
+          "Schema.org structured data",
+          "programmatic SEO",
+          "Generative Engine Optimization",
+        ],
+        knowsLanguage: [
+          "en",
+          "ja",
+          "es",
+          "fr",
+          "de",
         ],
       },
       {
