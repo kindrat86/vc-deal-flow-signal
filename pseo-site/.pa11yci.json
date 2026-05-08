@@ -1,0 +1,25 @@
+{
+  "defaults": {
+    "standard": "WCAG2AA",
+    "timeout": 30000,
+    "wait": 1500,
+    "concurrency": 2,
+    "level": "error",
+    "reporter": "json",
+    "viewport": {
+      "width": 1280,
+      "height": 1024
+    },
+    "chromeLaunchConfig": {
+      "args": [
+        "--no-sandbox",
+        "--disable-setuid-sandbox",
+        "--disable-dev-shm-usage"
+      ]
+    },
+    "runners": [
+      "axe"
+    ],
+    "ignore": []
+  }
+}
