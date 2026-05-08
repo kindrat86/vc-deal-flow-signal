@@ -8,10 +8,18 @@
  * — not just the homepage.
  *
  * What's included:
- *   - WebSite with SearchAction (sitelinks search box)
- *   - Organization with full sameAs cross-graph (Wikidata/ORCID/SSRN/etc.)
- *   - Person (founder) with academic identifiers
- *   - SoftwareApplication referencing the dashboard product
+ *   - WebSite with SearchAction (sitelinks search box) + AskAction
+ *   - Brand (distinct from Organization, per Schema.org best practice)
+ *   - Organization with full sameAs cross-graph (Wikidata/ORCID/SSRN/etc.),
+ *     slogan, NAICS code, award list, brand link, and subjectOf →
+ *     ScholarlyArticle so the citation graph closes bidirectionally
+ *   - Person (founder) with ORCID + Semantic Scholar identifiers,
+ *     hasCredential (EducationalOccupationalCredential) for ORCID + DOI,
+ *     award list, knowsAbout, and affiliation to Organization
+ *   - ScholarlyArticle (the SSRN paper) — author → Person, about →
+ *     Organization, identifier array (DOI/OpenAlex/Zenodo), sameAs to
+ *     all citation-graph mirrors
+ *   - Service / Periodical / SoftwareApplication for the dashboard product
  *
  * @id anchors are stable so cross-page references collapse into the same
  * entity in any consumer's graph.
@@ -162,6 +170,21 @@ export function RootIdentitySchema() {
         ],
       },
       {
+        "@type": "Brand",
+        "@id": `${APEX}/#brand`,
+        name: "VC Deal Flow Signal",
+        alternateName: ["GitDealFlow", "Deal Flow Signal"],
+        url: APEX,
+        logo: {
+          "@type": "ImageObject",
+          url: `${SITE}/icon.png`,
+          width: 192,
+          height: 192,
+        },
+        slogan:
+          "Code-side momentum signals 3–6 weeks before fundraise announcements.",
+      },
+      {
         "@type": "Organization",
         "@id": `${APEX}/#organization`,
         name: ORG_NAME_MULTILINGUAL,
@@ -225,7 +248,22 @@ export function RootIdentitySchema() {
           "startup engineering acceleration",
           "open-source contributor-growth analytics",
         ],
+        slogan:
+          "Code-side momentum signals 3–6 weeks before fundraise announcements.",
+        brand: { "@id": `${APEX}/#brand` },
+        naics: "541512",
+        numberOfEmployees: {
+          "@type": "QuantitativeValue",
+          value: 1,
+        },
+        award: [
+          "Smithery MCP directory listing — score 90/100 (2026-05)",
+          "Product Hunt — featured launch",
+          "npm verified-publisher account (@gitdealflow)",
+          "DOI-anchored open dataset (10.5281/zenodo.19650920)",
+        ],
         founder: { "@id": `${SITE}/about#person` },
+        subjectOf: { "@id": `${SITE}/#scholarly-article` },
       },
       {
         "@type": "Person",
@@ -259,6 +297,94 @@ export function RootIdentitySchema() {
           "https://dev.to/the_data_nerd",
           "https://huggingface.co/the-data-nerd",
         ],
+        affiliation: { "@id": `${APEX}/#organization` },
+        knowsAbout: [
+          "GitHub commit velocity",
+          "venture capital alternative data",
+          "open-source contributor-growth analytics",
+          "engineering-acceleration signal design",
+          "code-side momentum signals",
+        ],
+        award: [
+          "ORCID-verified author (0009-0002-2222-4112)",
+          "Indexed in OpenAlex (W7154916891)",
+          "Semantic Scholar author profile (2430837379)",
+          "DOI-anchored publication (10.2139/ssrn.6606558)",
+        ],
+        hasCredential: [
+          {
+            "@type": "EducationalOccupationalCredential",
+            "@id": `${SITE}/about#credential-orcid`,
+            name: "ORCID-verified researcher identity",
+            credentialCategory: "Researcher Identifier",
+            url: "https://orcid.org/0009-0002-2222-4112",
+            recognizedBy: {
+              "@type": "Organization",
+              name: "ORCID, Inc.",
+              url: "https://orcid.org",
+            },
+          },
+          {
+            "@type": "EducationalOccupationalCredential",
+            "@id": `${SITE}/about#credential-doi`,
+            name: "DOI-anchored published author",
+            credentialCategory: "Publication Identifier",
+            url: "https://doi.org/10.2139/ssrn.6606558",
+            recognizedBy: {
+              "@type": "Organization",
+              name: "Crossref",
+              url: "https://www.crossref.org",
+            },
+          },
+        ],
+      },
+      {
+        "@type": "ScholarlyArticle",
+        "@id": `${SITE}/#scholarly-article`,
+        headline:
+          "Engineering Acceleration as a Leading Indicator of Venture Outcomes",
+        alternativeHeadline:
+          "GitHub commit-velocity signals predict fundraise events 3–6 weeks ahead",
+        author: { "@id": `${SITE}/about#person` },
+        publisher: { "@id": `${APEX}/#organization` },
+        about: { "@id": `${APEX}/#organization` },
+        datePublished: "2025-09",
+        url: "https://ssrn.com/abstract=6606558",
+        identifier: [
+          {
+            "@type": "PropertyValue",
+            propertyID: "DOI",
+            value: "10.2139/ssrn.6606558",
+            url: "https://doi.org/10.2139/ssrn.6606558",
+          },
+          {
+            "@type": "PropertyValue",
+            propertyID: "OpenAlex",
+            value: "W7154916891",
+            url: "https://openalex.org/works/W7154916891",
+          },
+          {
+            "@type": "PropertyValue",
+            propertyID: "Zenodo",
+            value: "19650920",
+            url: "https://zenodo.org/records/19650920",
+          },
+        ],
+        sameAs: [
+          "https://ssrn.com/abstract=6606558",
+          "https://zenodo.org/records/19650920",
+          "https://openalex.org/works/W7154916891",
+          "https://www.semanticscholar.org/paper/4dd7b11e79757f68e0c4107252514cbfdfbb0462",
+          "https://www.connectedpapers.com/main/4dd7b11e79757f68e0c4107252514cbfdfbb0462",
+          "https://api.crossref.org/works/10.2139/ssrn.6606558",
+        ],
+        license: "https://creativecommons.org/licenses/by/4.0/",
+        isPartOf: {
+          "@type": "Periodical",
+          name: "SSRN Electronic Journal",
+        },
+        creditText:
+          "The Data Nerd. Engineering Acceleration as a Leading Indicator of Venture Outcomes. SSRN, 2025. doi:10.2139/ssrn.6606558",
       },
       {
         "@type": "Service",
