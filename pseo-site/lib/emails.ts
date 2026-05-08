@@ -617,6 +617,7 @@ export const CHALLENGE_EMAILS = [
     subject: "Day 2 — Contributor diversity (the bus-factor signal)",
     delayMs: 15 * 60 * 1000 + 2 * ONE_DAY,
     html: wrap(`
+<p><strong>Yesterday's read:</strong> commit velocity told you whether the engineering team is accelerating. Hopefully your pick scored, hopefully it didn't — either is useful. Today the signal layers on top: even sharp acceleration concentrated in one committer is a different bet than sharp acceleration spread across four.</p>
 <p>Signal 2: <strong>contributor diversity</strong>.</p>
 <p>In the panel of 219 funded rounds, startups that closed had a contributor-diversity Gini coefficient of ~0.34 at month -3 before the round. Startups that did not close had ~0.61. Translation: <em>more concentrated codebases (one or two committers doing everything) close fewer rounds than distributed codebases.</em></p>
 <p><strong>The 5-minute exercise:</strong></p>
@@ -638,6 +639,7 @@ export const CHALLENGE_EMAILS = [
     subject: "Day 3 — The dependents graph (who's already using this)",
     delayMs: 15 * 60 * 1000 + 3 * ONE_DAY,
     html: wrap(`
+<p><strong>Yesterday's read:</strong> contributor diversity told you whether the team is real. Today's signal tells you whether anyone outside the team cares about what they're building.</p>
 <p>Signal 3: <strong>the dependents graph</strong>.</p>
 <p>This one is underused because most investors don't know GitHub exposes it. The dependents graph shows you every public repo that depends on this startup's code. It's the cheapest proxy for "is anyone actually using this."</p>
 <p><strong>The 5-minute exercise:</strong></p>
@@ -660,6 +662,7 @@ export const CHALLENGE_EMAILS = [
     subject: "Day 4 — README freshness (the under-rated signal)",
     delayMs: 15 * 60 * 1000 + 4 * ONE_DAY,
     html: wrap(`
+<p><strong>Yesterday's read:</strong> the dependents graph told you whether anyone uses the code. Today tells you whether the team thinks anyone is about to.</p>
 <p>Signal 4: <strong>README freshness</strong>.</p>
 <p>This is the cheapest leading indicator there is. The README is the public-facing pitch. Teams that are actively positioning for a fundraise update it. Teams that aren't, don't.</p>
 <p><strong>The 5-minute exercise:</strong></p>
@@ -682,6 +685,7 @@ export const CHALLENGE_EMAILS = [
     subject: "Day 5 — New repo creation rate (platform buildout)",
     delayMs: 15 * 60 * 1000 + 5 * ONE_DAY,
     html: wrap(`
+<p><strong>Yesterday's read:</strong> a fresh README told you whether the team is positioning. Today tells you whether they're building the platform around the position.</p>
 <p>Signal 5: <strong>new repo creation rate</strong>.</p>
 <p>This signal is most useful for Series A / Series B startups. When the core product works and the team has capital, they start building the platform around it — SDKs, CLIs, internal services, documentation sites, example apps. Each one is a new public repo.</p>
 <p><strong>The 5-minute exercise:</strong></p>
@@ -704,6 +708,7 @@ export const CHALLENGE_EMAILS = [
     subject: "Day 6 — Issue-to-PR ratio (engagement vs. shipping)",
     delayMs: 15 * 60 * 1000 + 6 * ONE_DAY,
     html: wrap(`
+<p><strong>Yesterday's read:</strong> repo-creation told you whether the team is building outward. Today tells you whether they're keeping up with the inbound at the same time.</p>
 <p>Signal 6: <strong>issue-to-PR ratio</strong>.</p>
 <p>This is the team-health signal. A startup with a heavy issue queue and a thin PR queue is collecting feedback they can't ship against. A startup with closed PRs flowing daily and an issue queue that drains is shipping faster than they accumulate problems.</p>
 <p><strong>The 5-minute exercise:</strong></p>
@@ -721,11 +726,12 @@ export const CHALLENGE_EMAILS = [
 `),
   },
 
-  // Day 7 — Composite + reveal
+  // Day 7 — Composite + Stack-Slide close
   {
     subject: "Day 7 — The composite, and 4,200 orgs in 4 seconds",
     delayMs: 15 * 60 * 1000 + 7 * ONE_DAY,
     html: wrap(`
+<p><strong>Yesterday's read:</strong> the issue-to-PR ratio gave you the last of the six atomic signals. Today they assemble.</p>
 <p>You now know six signals. Here is how to compose them.</p>
 <p><strong>The composite score (manual version):</strong></p>
 <ul>
@@ -737,18 +743,81 @@ export const CHALLENGE_EMAILS = [
 <li>PRs closed ÷ Issues opened (last 30d) &gt; 1.5 → +1</li>
 </ul>
 <p>Score 5 of 6, you're looking at a startup with a strong fundraise-precursor profile. Score 6 of 6 with sustained acceleration over 14 days, and the panel data says the round closes within 21–47 days about 38% of the time — which is roughly 5x the base rate.</p>
-<p>That's the manual version. It takes ~30 minutes per startup. If you want to monitor a portfolio of 30, that is a 15-hour week.</p>
-<p><strong>The fast version:</strong></p>
-<p>The same six signals, plus a seventh (signal-type classification — hiring burst vs. infra buildout vs. deploy spike vs. framework migration), runs continuously across <strong>4,200 venture-backed startup GitHub orgs</strong> via the GitDealFlow signal engine. The full ranking is at <a href="${SIGNALS}/trending" style="color:#0ea5e9;">${SIGNALS}/trending</a>.</p>
-<p>Three ways to use it from here:</p>
-<ol>
-<li><strong>Free Signal Digest:</strong> 5 names every Sunday. <a href="${SITE}/#signup" style="color:#0ea5e9;">${SITE}/#signup</a>. Free forever, no upgrade pressure.</li>
-<li><strong>Dashboard, €9.97/mo founding rate:</strong> the full ranking, sector and stage filters, weekly refresh. <a href="${SITE}/#pricing" style="color:#0ea5e9;">${SITE}/#pricing</a></li>
-<li><strong>Custom Sector Sweep, €1,997 one-time:</strong> a 40-page written report on the one sector you pick, plus the raw CSV, plus three early-stage targets not on Crunchbase. <a href="${SITE}/sector-sweep" style="color:#0ea5e9;">${SITE}/sector-sweep</a></li>
-</ol>
-<p>Whatever you do — even if you just keep running the manual version yourself — you now have a sourcing process that works without paying anyone. That's the point of the week.</p>
+<p>That's the manual version. It takes ~30 minutes per startup. If you want to monitor a portfolio of 30, that's a 15-hour week.</p>
+<hr style="border:none;border-top:1px solid #1e293b;margin:24px 0;">
+<p><strong>What you've built this week, at retail.</strong> Comparable signal-walkthrough courses charge €69-€297 per signal. Priced as paid lessons, the seven days break down to:</p>
+<table cellpadding="6" cellspacing="0" style="border-collapse:collapse;width:100%;font-size:14px;color:#cbd5e1;">
+<tr><td>Day 1 — Commit velocity</td><td style="text-align:right;color:#34d399;font-family:monospace;">€79</td></tr>
+<tr><td>Day 2 — Contributor diversity</td><td style="text-align:right;color:#34d399;font-family:monospace;">€79</td></tr>
+<tr><td>Day 3 — Dependents graph</td><td style="text-align:right;color:#34d399;font-family:monospace;">€89</td></tr>
+<tr><td>Day 4 — README freshness</td><td style="text-align:right;color:#34d399;font-family:monospace;">€69</td></tr>
+<tr><td>Day 5 — New repo creation rate</td><td style="text-align:right;color:#34d399;font-family:monospace;">€89</td></tr>
+<tr><td>Day 6 — Issue-to-PR ratio</td><td style="text-align:right;color:#34d399;font-family:monospace;">€89</td></tr>
+<tr><td>Day 7 — Composite + scaling system</td><td style="text-align:right;color:#34d399;font-family:monospace;">€297</td></tr>
+<tr style="border-top:1px solid #334155;"><td style="padding-top:8px;"><strong>Total retail value</strong></td><td style="text-align:right;color:#a7f3d0;font-family:monospace;font-weight:700;padding-top:8px;">€791</td></tr>
+<tr><td><strong>You paid</strong></td><td style="text-align:right;color:#34d399;font-family:monospace;font-weight:700;font-size:18px;">€0</td></tr>
+</table>
+<p>Free because the methodology is published CC BY 4.0 at <a href="https://ssrn.com/abstract=6606558" style="color:#0ea5e9;">ssrn.com/abstract=6606558</a>. We charge for scale (the live engine across 4,200 orgs and the custom Sector Sweep), not for the framework.</p>
+<hr style="border:none;border-top:1px solid #1e293b;margin:24px 0;">
+<p><strong>Three optional rungs from here.</strong> Stacked from least to most committed. Pick none and the framework is still yours.</p>
+<p><strong>Rung 0 — Free Sunday Digest.</strong> Five named GitHub orgs every Sunday, scored against the same 7-signal composite you just learned. <a href="${SITE}/#signup" style="color:#0ea5e9;">${SITE}/#signup</a>. Free forever, no upgrade pressure.</p>
+<p><strong>Rung 1 — Dashboard, €9.97/mo founding rate.</strong> 109 venture-backed startups ranked by 14-day commit-velocity acceleration, refreshed every Monday at 06:00 UTC. Filter by sector, stage, geography. The 219-startup backtest CSV. Two free Chrome extensions. The free MCP server (6 tools across Claude / Cursor / Windsurf). 30-day Signal-or-It's-Free guarantee — reply REFUND, no questions. Standalone retail of the components: ~€1,431/yr. Founding rate locks for life. <a href="${SITE}/pricing#dashboard" style="color:#0ea5e9;">${SITE}/pricing#dashboard</a></p>
+<p><strong>Rung 2 — Custom Sector Sweep, €1,997 one-time.</strong> Pick one sector, we deliver the 40-page written deep-dive in 5 business days: top 25 ranked orgs, contributor maps, three pre-Crunchbase breakouts, raw CSV, 30-day async Q&A. Capped at 8 per quarter — bandwidth, not artificial scarcity. <a href="${SIGNALS}/sector-sweep" style="color:#0ea5e9;">${SIGNALS}/sector-sweep</a></p>
+<p>Or pick none. Whatever you do — even if you just keep running the manual version yourself — you now have a sourcing process that works without paying anyone. That's the point of the week.</p>
+<p>Tomorrow: a Day-8 recap with one ask, and what to expect from this address from here on.</p>
 <p>Talk soon —<br>${FROM_NAME}</p>
-<p style="color:#64748b;font-size:14px;">P.S. The Sector Sweep is capped at 8 per quarter. Q3 2026 has 7 of 8 open as of this email.</p>
+<p style="color:#64748b;font-size:14px;">P.S. The full graduation page is at <a href="${SIGNALS}/challenge/done" style="color:#0ea5e9;">${SIGNALS}/challenge/done</a> — same three rungs, with the deliverables broken out and the standalone retail of each component listed. The Sector Sweep is capped at 8 per quarter; Q3 2026 has 7 of 8 open as of this email.</p>
+`),
+  },
+
+  // Day 8 — Graduation recap + one ask
+  {
+    subject: "Day 8 — You finished. One ask.",
+    delayMs: 15 * 60 * 1000 + 8 * ONE_DAY,
+    html: wrap(`
+<p>You finished the 7-Day Reset. Quick honest note before this thread settles into the Sunday cadence.</p>
+<p><strong>What you did.</strong> Seven days, six 5-minute exercises, one 30-minute composite scoring procedure that runs against any public GitHub org. End-to-end, with public data and a calculator. No tool, no API, no warm intro required. That's a real thing you didn't have eight days ago.</p>
+<p><strong>What changes from here.</strong> This address now sends one Sunday digest per week — five named startups scored against the same 6-signal composite, with sector and stage tags and direct GitHub URLs. Same framework you just learned, applied. Unsubscribe with a reply at any time.</p>
+<p><strong>One ask.</strong> If the Challenge worked for you, send the landing-page link to <em>one</em> other investor or analyst who would use it. That's the entire ask — we don't run an affiliate program because we don't want incentives to distort whether you tell a friend.</p>
+<p>The link: <a href="${SIGNALS}/challenge" style="color:#0ea5e9;">${SIGNALS}/challenge</a></p>
+<p>If you have feedback on the curriculum — anything that didn't land, edge cases I missed, signals you'd add — reply directly to this email. I read all of them and the next cohort gets the lessons.</p>
+<p>Talk soon —<br>${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. The seven days are permanent at <a href="${SIGNALS}/challenge" style="color:#0ea5e9;">${SIGNALS}/challenge</a> — every day has a slug-permalink (e.g. /challenge/commit-velocity, /challenge/dependents-graph). Bookmark it. Refer back when a portfolio call comes up that needs one of the procedures.</p>
+`),
+  },
+
+  // Day 14 — Real-world application case
+  {
+    subject: "Day 14 — How one subscriber used the framework last week",
+    delayMs: 15 * 60 * 1000 + 14 * ONE_DAY,
+    html: wrap(`
+<p>A week into post-Challenge cadence. Quick story from the real world.</p>
+<p>One subscriber from the previous Challenge cohort — angel writing €25-€75k checks, focuses on developer-tools — wrote in last week with a clean application of the framework.</p>
+<p>He runs the 30-minute composite on every founder he meets, before the second meeting. The pre-meeting score becomes the diligence frame.</p>
+<p>Last week, founder pitches him a backend-infra startup. Composite scores 5/6 — sharp commit velocity, four real contributors, 80+ external dependents on a public OSS repo, README rewritten three weeks before the meeting, two new platform repos in the last 30 days. The only missing point: the issue-to-PR ratio is 0.6, suggesting the team is buried in inbound that's outpacing throughput.</p>
+<p>Most investors would skip past that score-of-5 and say "this is a yes." He went further. Took the 0.6 ratio into the second meeting as a question, not a flag — "your throughput vs your inbound is at the level where the next hire matters more than the next feature, what's your hiring plan?"</p>
+<p>The founder's answer was already tight (two senior infra hires lined up to start within 30 days of the round closing). But the question shifted the dynamic — the framework gave him an investor-grade conversation a generalist couldn't have. Allocation: €40k. Founder later told him it was the most useful pre-Series-A meeting he'd had.</p>
+<p><strong>The point:</strong> the framework isn't just a screening tool. The signals translate into questions the founder respects. That's the second-order value of running it manually — you know which signal anchored the question, so you can defend it.</p>
+<p>If something similar has happened to you with the framework, reply with the story. We're collecting cases for the next iteration of the curriculum.</p>
+<p>Talk soon —<br>${FROM_NAME}</p>
+`),
+  },
+
+  // Day 30 — Re-engagement / decision fork
+  {
+    subject: "Day 30 — One quiet decision",
+    delayMs: 15 * 60 * 1000 + 30 * ONE_DAY,
+    html: wrap(`
+<p>Thirty days since you started the Challenge. Quiet checkpoint.</p>
+<p>By now you've either: (a) integrated the manual scoring into your sourcing rhythm, (b) tried it once and it didn't fit, (c) skipped past it and the framework's still in this inbox waiting. All three are fine; the framework is yours either way.</p>
+<p>One question, no agenda — purely informative. Which of the three rungs (if any) made the most sense?</p>
+<p><strong>Rung 0 — Free Sunday Digest.</strong> If the manual cadence is enough and you just want five named startups every Sunday to apply it against. <a href="${SITE}/#signup" style="color:#0ea5e9;">${SITE}/#signup</a>.</p>
+<p><strong>Rung 1 — Dashboard, €9.97/mo founding rate.</strong> If you want to monitor 30+ orgs continuously, not run the 30-min composite manually each time. The founding rate locks for life — €9.97/mo even five years from now when the public rate is whatever it ends up being. <a href="${SITE}/pricing#dashboard" style="color:#0ea5e9;">${SITE}/pricing#dashboard</a>.</p>
+<p><strong>Rung 2 — Custom Sector Sweep, €1,997.</strong> If there's one sector you want to fully map this quarter and the manual scan is too slow. 40-page written deep-dive, 5 business days. Capped at 8/quarter. <a href="${SIGNALS}/sector-sweep" style="color:#0ea5e9;">${SIGNALS}/sector-sweep</a>.</p>
+<p>If none of those fit, no problem — the Sunday digest stays free, the framework stays yours, and this thread continues at one email per week. The only reason this email lands is to make the choice explicit; defaulting to "no decision" is a decision too, and a fine one.</p>
+<p>Reply with the rung, or with "none of them," or just ignore this email. All three work.</p>
+<p>Talk soon —<br>${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. The 30-day Signal-or-It's-Free guarantee on the Dashboard means a Rung-1 trial costs you €0 of net risk. Reply REFUND any time within 30 days, full refund inside two business days, no forms, no call.</p>
 `),
   },
 ];
@@ -1071,3 +1140,64 @@ export const SOAP_OPERA_F = buildTierSequence("F");
 export const SOAP_OPERA_T = buildTierSequence("T");
 export const SOAP_OPERA_D = buildTierSequence("D");
 export const SOAP_OPERA_I = buildTierSequence("I");
+
+/**
+ * Sharp Tier indoctrination drip — Brunson DotCom Secrets §23 (Application
+ * Funnel) post-submission warm-up. Three emails between application and
+ * founder reply. Replaces the live phone-set step that anonymity blocks.
+ *
+ *   T+30 min  — "Application logged" — manage-the-wait + soft pre-frame
+ *   T+12 h    — "What I'm reading right now" — quality bar + indoctrination
+ *   T+36 h    — "One thing before the reply lands" — pre-objection handling
+ *
+ * Scheduled via Resend `scheduled_at` from /api/sharp-application after
+ * the founder-notification email is queued.
+ */
+const HALF_HOUR = 30 * 60 * 1000;
+const TWELVE_HOURS = 12 * 60 * 60 * 1000;
+const THIRTY_SIX_HOURS = 36 * 60 * 60 * 1000;
+
+export const SHARP_INDOCTRINATION_DRIP = [
+  {
+    subject: "Application logged — what the next 48 hours look like",
+    delayMs: HALF_HOUR,
+    html: wrap(`
+<p>Application received. The 48-hour reply window opens now.</p>
+<p>Here's what's about to happen, in case the wait is the part that nags:</p>
+<p><strong>Within 12 hours.</strong> The first read happens at the founder desk. I score every Sharp application against three filters: fund fit (does the thesis intersect what the panel can see), use-case fit (white-label API and quarterly-call cadence vs. what you actually need), and capacity fit (where the 8-fund 2026 cap stands the day your application lands). The first filter takes about ninety seconds. The second takes ten minutes. The third is a calendar check.</p>
+<p><strong>Within 24-36 hours.</strong> Decision drafts. If accepted, I draft a Stripe Sharp Tier invoice + an Insider Circle invitation, both in the same reply email. If declined, I write a one-paragraph reason — never a form letter, never a "thanks for your interest." Either reply lands inside 48 business hours of submission. No application has gone un-replied since the tier opened.</p>
+<p><strong>One thing to do while the review runs.</strong> If you haven't already, the <a href="${SIGNALS}/perfect-webinar">12-minute Perfect Webinar</a> is the page I assume every Sharp applicant has read before the first quarterly call. It saves us the first ten minutes of the call and makes the rest of it sharper. The other thing worth a tab is the <a href="${SIGNALS}/methodology">methodology page</a> — it's the source code of the regression that produces the lead-time numbers. If you're going to write checks against this signal, you'll want to be able to reproduce it on your own.</p>
+<p>Talk soon,<br>${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. The cap (8 funds in 2026) is real, not a marketing line. The quarterly call is real founder time. The reason the gate exists is so every Sharp-tier fund gets meaningful attention on the call. If you're wondering whether you're a fit, the answer to "do you want a sharper version of the same product, on a fund-tier cadence" is the question the application is built to answer.</p>
+`, "sharp-indoc-1"),
+  },
+  {
+    subject: "What I'm reading in your application right now",
+    delayMs: TWELVE_HOURS,
+    html: wrap(`
+<p>Twelve hours in. I'm partway through the Sharp queue, your application is in the stack, and a short note is more useful than silence.</p>
+<p>Here's what gets weighted on the first read, so you know what's happening to your words:</p>
+<p><strong>The dream-state answer.</strong> The single best signal that a Sharp tier will pay for itself is whether the applicant can write the dream state in a single sentence with a number in it. "Seeing 3 of every 5 of our Series A deals before any other fund is talking to them." "50% of new portfolio adds sourced from data, not warm intros." A specific dream is a dream a methodology can deliver against. A vague dream is a fit problem, not a price problem.</p>
+<p><strong>The gap answer.</strong> Most applicants list "we don't have time" or "no API in our CRM." Both are real, both are solvable. The harder gap — the one I look for — is "nobody on our team reads commit graphs." That's a literacy gap, not a tooling gap, and it's the one Sharp's quarterly call moves the needle on. The white-labeled API is the easy half; the call is the half nobody else sells.</p>
+<p><strong>The urgency answer.</strong> "Why now, vs. waiting six months" separates the Sharp applicants from the Insider applicants. Insider is a build-the-rhythm tier. Sharp is a "we're losing one deal a quarter to a faster competitor" tier. If your urgency answer reads more like the first one, the right home is €97/mo Insider, not €497/mo Sharp — and I'll say so in the reply rather than push you up a rung that doesn't fit yet.</p>
+<p>The reply is on track for inside 48 business hours. If you thought of something you didn't get to put in the form, reply to this email and I'll fold it into the same review.</p>
+<p>Talk soon,<br>${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. The methodology source-code repo is the artifact most Sharp applicants want to see before they sign — it's what tells you whether the regression is real or a marketing line. The repo gets shared on day one of paid, but the SSRN preprint at <a href="${SIGNALS}/research">${SIGNALS}/research</a> is the public version of the same thing, and you can read it tonight.</p>
+`, "sharp-indoc-2"),
+  },
+  {
+    subject: "One thing to think about before the reply lands",
+    delayMs: THIRTY_SIX_HOURS,
+    html: wrap(`
+<p>Thirty-six hours in. Decision drafts are on the desk. The reply lands inside the next twelve hours.</p>
+<p>Before it does — one frame worth holding, because it's the frame I'd want a Sharp applicant to land on:</p>
+<p>€497/mo is €5,964/yr. At a fund's blended analyst-day rate (~€350-€400 fully-loaded, post-bonus, post-overhead), Sharp pays for itself the moment it saves an analyst <em>fifteen working days a year</em>. The white-labeled API alone — pulled directly into your CRM, refreshed weekly, no engineering wrapper to maintain — is roughly that delta against the alternative of an analyst running Crunchbase and GitHub queries by hand. The quarterly call, the methodology source, the first-look on new signals — those are above the line.</p>
+<p>The harder math is the one the value-ladder doesn't show on a pricing page: one preempted Series A, at any reasonable fund's check size, is between €400k and €4M of deferred markup against the same vintage outcome. The signal-to-fundraise lead time is 21-47 days at the median (the SSRN panel; <a href="${SIGNALS}/research">${SIGNALS}/research</a> for the full panel). Sharp's job is to compress those days into preemption opportunities. One a year is the floor. The funds at this tier don't talk in terms of "saves an analyst-day" — they talk in terms of "preempted one round, deferred two." That's the conversation the quarterly call is built to support.</p>
+<p>If accepted, the first call gets scheduled this week (initials-only on the founder side, anonymity-preserving). The white-label API sub-domain gets set up the same week. Methodology source repo is shared on day one of paid. Insider Circle invitation lands in the same reply.</p>
+<p>If declined, the reason will be specific — fund-fit, use-case-fit, or capacity. None of those are "you weren't impressive enough." All three are filterable, and most are reversible by either coming in via Insider first (€97/mo, no application) or re-applying after a thesis pivot.</p>
+<p>The reply is queued. Nothing more to do on your end.</p>
+<p>Talk soon,<br>${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. The 8-fund cap moves with each acceptance — the public counter on <a href="${SIGNALS}/apply">${SIGNALS}/apply</a> is the same number I'm reading from. If a slot closes between application and reply, applications already in the queue get priority over inbound applications that arrive after the cap shifts.</p>
+`, "sharp-indoc-3"),
+  },
+];

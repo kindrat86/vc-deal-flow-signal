@@ -305,6 +305,12 @@ export default function ManifestoPage() {
             >
               Or take the curriculum →
             </Link>
+            <Link
+              href="/mechanism"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg border border-amber-500/40 bg-amber-950/20 hover:bg-amber-950/30 text-amber-200 font-semibold text-sm transition-colors"
+            >
+              Read the named mechanism →
+            </Link>
           </div>
         </section>
 

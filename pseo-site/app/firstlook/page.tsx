@@ -27,6 +27,27 @@ export const metadata: Metadata = {
   },
 };
 
+// CURIOSITY LOOPS — Brunson DotCom Secrets Ch 12 (23 Building Blocks),
+// Building Block #3: "What you'll discover" bullets. Each line opens a loop
+// the reader can only close by paying €7. The page-number references make the
+// artefact feel concrete; the counter-intuitive twist on each bullet is what
+// stops the scroll and forces the click. Russell's rule: every bullet has a
+// specific named discovery + a "but here's what surprised us" counter-beat.
+const DISCOVERIES = [
+  {
+    head: "The three sectors where 14-day commit-velocity gives the biggest fundraise lead-time",
+    body: "And the one sector where the signal lags by 60+ days because the engineering work happens in private repos until series B. Page 4.",
+  },
+  {
+    head: "Why a contributor influx of 4+ in 30 days predicts fundraise better than raw commit count",
+    body: "Plus the 90-second test you can run on any GitHub org tonight to see the pattern on a public company before we ship the report. Page 7.",
+  },
+  {
+    head: "Three pre-Crunchbase startups in your sector — named, with the timestamp we surfaced each one",
+    body: "So when one of them announces a round in 21–47 days you can verify we flagged it first, not back-fitted. Page 11.",
+  },
+] as const;
+
 const STACK = [
   {
     label: "Top 25 ranked GitHub orgs in your sector",
@@ -280,6 +301,62 @@ export default function FirstLookPage() {
             and €7 of credit if you upgrade.
           </p>
         </header>
+
+        {/* CURIOSITY LOOPS — Brunson DotCom Secrets Ch 12 (Building Block #3,
+            "What you'll discover"). Squeeze placement: first thing after the
+            hero, before the offer reveal. Three open loops the reader can
+            only close by paying. Specific page numbers + counter-intuitive
+            second beats are what convert curiosity into checkout clicks.
+            Headline pattern: "Discover [specific named thing] — and why
+            [thing that flips the obvious assumption]." */}
+        <section
+          aria-label="What you'll discover inside the deep dive"
+          className="rounded-xl border-2 border-violet-500/40 bg-gradient-to-br from-violet-950/30 via-slate-900 to-slate-950 p-5 sm:p-7 space-y-4"
+        >
+          <header className="space-y-1.5">
+            <p className="text-violet-300 text-[10px] sm:text-xs font-semibold uppercase tracking-wider">
+              What you&rsquo;ll discover · three open loops
+            </p>
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-100 leading-snug">
+              Three things in the report you can&rsquo;t Google.
+            </h2>
+            <p className="text-gray-300 text-sm leading-relaxed">
+              The PDF is 14 pages. These are the three pages investors
+              screenshot most. Each one names a specific finding and the page
+              it&rsquo;s on, so you know exactly what €7 is buying.
+            </p>
+          </header>
+
+          <ul className="space-y-3">
+            {DISCOVERIES.map((d, i) => (
+              <li
+                key={d.head}
+                className="flex items-start gap-3 sm:gap-4 rounded-lg border border-violet-700/30 bg-slate-900/60 p-3 sm:p-4"
+              >
+                <span
+                  aria-hidden="true"
+                  className="shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-violet-500/20 border border-violet-500/60 flex items-center justify-center text-violet-200 font-bold text-sm tabular-nums"
+                >
+                  {i + 1}
+                </span>
+                <div className="space-y-1 min-w-0">
+                  <p className="text-gray-100 font-semibold text-sm sm:text-base leading-snug">
+                    {d.head}
+                  </p>
+                  <p className="text-gray-400 text-xs sm:text-sm leading-relaxed">
+                    {d.body}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ul>
+
+          <p className="text-violet-200/80 text-xs leading-relaxed border-l-2 border-violet-700/40 pl-3">
+            Open loops on purpose. The page numbers are real — if any of these
+            three discoveries isn&rsquo;t in your delivered PDF, reply REFUND
+            and the €7 returns inside one business day, no questions.
+          </p>
+        </section>
 
         {/* BEST BAIT — Brunson DotCom Secrets Ch 13. */}
         <aside

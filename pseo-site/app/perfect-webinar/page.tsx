@@ -5,7 +5,11 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { VideoEmbedBlock } from "@/components/VideoEmbedBlock";
 import { DataNerdAudio } from "@/components/DataNerdAudio";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import { LiveReplayBar } from "@/components/LiveReplayBar";
+import { FastActionBonuses } from "@/components/FastActionBonuses";
+import { DoorsClosingBanner } from "@/components/DoorsClosingBanner";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import { getReplayWindowSnapshot } from "@/lib/replay-window";
 
 export const dynamic = "force-static";
 
@@ -116,6 +120,13 @@ const FAQS = [
 ] as const;
 
 export default function PerfectWebinarPage() {
+  // Brunson Live-Replay Pressure (Expert Secrets Ch 14 — Perfect Webinar Hack):
+  // every cohort opens Mon 06:00 UTC and closes Thu 23:59 UTC, with fast-action
+  // bonuses dropping at Wed 23:59 UTC. The snapshot is captured at build time;
+  // the client components correct to live state on hydration so the cohort
+  // banner is always honest about the current phase.
+  const replaySnapshot = getReplayWindowSnapshot();
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -186,6 +197,11 @@ export default function PerfectWebinarPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <AgentMirrorLinks path="/perfect-webinar" />
+
+      {/* Brunson Expert Secrets Ch 14 — Live-replay pressure mechanic.
+          Sticky cohort countdown across all three phases:
+          fast-action (Mon→Wed), last-hours (Thu), closed (Fri→Sun). */}
+      <LiveReplayBar initialWindow={replaySnapshot} />
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
         {/* VEO anchor — 3-minute VSL version of this Perfect Webinar */}
@@ -735,6 +751,13 @@ export default function PerfectWebinarPage() {
           </div>
         </section>
 
+        {/* FAST-ACTION BONUSES — Brunson DotCom Secrets Ch 12 (Cart Funnel
+            Building Block #19): stacked bonuses with hard expiry. Three
+            named bonuses, dollar-denominated, that disappear at Wed 23:59
+            UTC. The component swaps copy when the cohort enters last-hours
+            (Thu) and closed (Fri–Sun) so the page is honest about phase. */}
+        <FastActionBonuses initialWindow={replaySnapshot} signupUrl={SIGNUP_URL} />
+
         {/* GUARANTEE */}
         <section
           id="guarantee"
@@ -912,6 +935,11 @@ export default function PerfectWebinarPage() {
             </div>
           </div>
         </section>
+
+        {/* DOORS-CLOSING BANNER — phase-aware ribbon directly above the
+            final CTA. Brunson Expert Secrets Ch 14: deadline lives at the
+            point of decision, not buried in the chrome. */}
+        <DoorsClosingBanner initialWindow={replaySnapshot} />
 
         {/* CLOSE */}
         <section
