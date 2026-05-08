@@ -88,6 +88,17 @@ export async function GET(_req: Request, ctx: RouteContext) {
       { url: `${BASE_URL}/book/read/conclusion`, lastmod, changefreq: "monthly", priority: 0.8 },
       // Tweet Teardown — €1 micro-tripwire (Brunson DCS Ch 18, 2026-05-06).
       { url: `${BASE_URL}/tweet-teardown`, lastmod, changefreq: "monthly", priority: 0.85 },
+      // Summit Funnel — Brunson DotCom Ch 16. 20 anonymous-by-design talks
+      // across 5 days. /summit is the squeeze; /summit/[slug] is each talk;
+      // /summit/all-access is the €97 one-time upsell.
+      { url: `${BASE_URL}/summit`, lastmod, changefreq: "weekly", priority: 0.95 },
+      { url: `${BASE_URL}/summit/all-access`, lastmod, changefreq: "weekly", priority: 0.85 },
+      ...["big-domino-engineering-acceleration", "public-over-private-cc-by-walkthrough", "rolodex-to-regression", "six-atomic-signals-glossary", "computing-commit-velocity", "bus-factor-contributor-diversity", "repository-expansion-as-hiring-indicator", "false-positives-honestly", "ai-infrastructure-2026-series-a-wave", "dev-tools-acceleration-first", "climate-tech-engineering-velocity", "fintech-payments-engineering-cadence", "sourcing-workflow-digest-to-reply", "icp-engineering-dream-100-by-github", "agent-native-sourcing-mcp-x402", "signal-to-first-reply-outbound-play", "next-five-years-code-eats-pitch-deck", "reproducibility-as-moat", "stadium-pitch-falsifiable-predictions", "closing-keynote-manifesto-data-first-vc"].map((slug) => ({
+        url: `${BASE_URL}/summit/${slug}`,
+        lastmod,
+        changefreq: "weekly" as const,
+        priority: 0.8,
+      })),
       { url: `${BASE_URL}/enterprise`, lastmod, changefreq: "monthly", priority: 0.85 },
       { url: `${BASE_URL}/api/v1/pricing.json`, lastmod, changefreq: "monthly", priority: 0.7 },
       { url: `${BASE_URL}/dataset`, lastmod, changefreq: "weekly", priority: 0.85 },
