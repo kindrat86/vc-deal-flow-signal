@@ -11,7 +11,20 @@ const LANG = "en";
 // Google News spec: a sitemap may include URLs published within the last
 // 48 hours. Anything older is silently dropped from the news index, so we
 // pre-filter aggressively rather than letting Google trim it for us.
-const WINDOW_MS = 48 * 60 * 60 * 1000;
+const WINDOW_MS_48H = 48 * 60 * 60 * 1000;
+// Quiet-week fallback (audit 2026-05-08 closed gap "News sitemap is 48-h
+// rolling; quiet weeks ship near-empty"). When the 48-h window yields
+// fewer than this many items, we extend the window to 7 days. Google still
+// drops anything past 48 h from its News index, but a non-empty sitemap is
+// re-fetched more aggressively and surfaces freshly-published items the
+// moment they cross into the 48-h window.
+const MIN_FRESH_ITEMS = 3;
+const WINDOW_MS_7D = 7 * 24 * 60 * 60 * 1000;
+// Last-ditch fallback when even the 7-day window is empty. Cap at 5 most
+// recent items regardless of age — guarantees the file is never an empty
+// `<urlset/>` (which Google treats as a soft error and re-attempts less
+// frequently). Items past 48 h are filtered by Google anyway.
+const ABSOLUTE_FALLBACK_LIMIT = 5;
 
 function escapeXml(s: string): string {
   return s
@@ -62,9 +75,20 @@ function blogItems(): NewsItem[] {
   }));
 }
 
+function filterAndSort(items: NewsItem[], now: number, windowMs: number): NewsItem[] {
+  const cutoff = now - windowMs;
+  return items
+    .filter((item) => {
+      const t = Date.parse(item.publishedAt);
+      // Window check + never-future guard: embargoed press releases must not
+      // leak into the index ahead of their wire date.
+      return Number.isFinite(t) && t >= cutoff && t <= now;
+    })
+    .sort((a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt));
+}
+
 export async function GET() {
   const now = Date.now();
-  const cutoff = now - WINDOW_MS;
 
   let all: NewsItem[];
   try {
@@ -77,19 +101,27 @@ export async function GET() {
     all = [];
   }
 
-  const recent = all
-    .filter((item) => {
-      const t = Date.parse(item.publishedAt);
-      // 48h rolling window, and never include future-dated entries — embargoed
-      // press releases would otherwise leak into the index ahead of the
-      // wire date.
-      return Number.isFinite(t) && t >= cutoff && t <= now;
-    })
-    // Newest first — Google News uses publication_date for ranking but
-    // sorted output is friendlier to manual auditors.
-    .sort((a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt))
-    // Google News spec caps a single news sitemap at 1,000 URLs.
-    .slice(0, 1000);
+  // Tiered fallback (audit 2026-05-08): try 48 h → 7 d → 5 most recent.
+  // Newest first — Google News uses publication_date for ranking but
+  // sorted output is friendlier to manual auditors. Capped at the
+  // Google News spec limit of 1,000 URLs per sitemap.
+  let recent = filterAndSort(all, now, WINDOW_MS_48H);
+  let windowUsed: "48h" | "7d" | "absolute" = "48h";
+  if (recent.length < MIN_FRESH_ITEMS) {
+    recent = filterAndSort(all, now, WINDOW_MS_7D);
+    windowUsed = "7d";
+  }
+  if (recent.length === 0 && all.length > 0) {
+    recent = all
+      .filter((item) => {
+        const t = Date.parse(item.publishedAt);
+        return Number.isFinite(t) && t <= now;
+      })
+      .sort((a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt))
+      .slice(0, ABSOLUTE_FALLBACK_LIMIT);
+    windowUsed = "absolute";
+  }
+  recent = recent.slice(0, 1000);
 
   const urls = recent
     .map((item) => {
@@ -122,6 +154,10 @@ ${urls}
       "Content-Type": "application/xml; charset=utf-8",
       "Cache-Control": "s-maxage=600, stale-while-revalidate=300",
       "X-Robots-Tag": "index, follow",
+      // Surface which fallback tier supplied the items so production logs
+      // and any observability tap can detect a sustained quiet-week state.
+      "X-News-Window": windowUsed,
+      "X-News-Item-Count": String(recent.length),
     },
   });
 }

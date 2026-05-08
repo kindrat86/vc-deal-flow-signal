@@ -4,12 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "npx tsx scripts/generate-signal-report.ts && npx tsx scripts/generate-signal-digest-email.ts && npx tsx scripts/generate-book-artifacts.ts && (test -n \"$VERCEL\" && echo 'Skipping data fetch on Vercel (using existing data)' || npx tsx scripts/fetch-github-data.ts)",
+    "prebuild": "npx tsx scripts/generate-signal-report.ts && npx tsx scripts/generate-signal-digest-email.ts && npx tsx scripts/generate-book-artifacts.ts && npx tsx scripts/verify-metadata.ts && (test -n \"$VERCEL\" && echo 'Skipping data fetch on Vercel (using existing data)' || npx tsx scripts/fetch-github-data.ts)",
     "build": "next build",
     "postbuild": "npx tsx scripts/audit-pseo-uniqueness.ts && npx tsx scripts/submit-indexnow.ts",
     "start": "next start",
     "lint": "eslint",
     "audit:pseo": "npx tsx scripts/audit-pseo-uniqueness.ts",
+    "verify:metadata": "npx tsx scripts/verify-metadata.ts",
     "deploy:prod": "bash scripts/deploy-prod.sh"
   },
   "dependencies": {
