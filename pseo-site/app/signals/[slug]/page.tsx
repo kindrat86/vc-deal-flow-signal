@@ -9,6 +9,7 @@ import {
 } from "@/lib/data";
 import StartupTable from "@/components/StartupTable";
 import CTABanner from "@/components/CTABanner";
+import FreshnessWatermark from "@/components/FreshnessWatermark";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -226,6 +227,11 @@ export default async function SignalTypePage({ params }: PageProps) {
             Sorted by commit velocity change (14-day window, descending). Data
             last updated {period.name}.
           </p>
+          <FreshnessWatermark
+            date={lastModified}
+            surface={`${signalData.name} signal data`}
+            variant="full"
+          />
         </section>
 
         {/* CTA */}

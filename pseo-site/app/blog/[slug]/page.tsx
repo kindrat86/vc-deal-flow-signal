@@ -251,6 +251,13 @@ export default async function BlogPostPage({ params }: PageProps) {
             height: 192,
           },
         },
+        // News-class umbrella reference: only emitted when the post is
+        // still inside the 30-day NewsArticle eligibility window so
+        // evergreen blog content stays cleanly typed as BlogPosting
+        // without polluting the Newspaper graph with archival posts.
+        ...(isNewsEligible
+          ? { isPartOf: { "@id": "https://gitdealflow.com/#newspaper" } }
+          : {}),
         speakable: {
           "@type": "SpeakableSpecification",
           cssSelector: ["[aria-label='Summary']", "h1", ".speakable", "[data-agent-summary]"],

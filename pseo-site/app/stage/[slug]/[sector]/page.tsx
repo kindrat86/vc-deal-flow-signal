@@ -8,6 +8,7 @@ import {
 } from "@/lib/data";
 import StartupTable from "@/components/StartupTable";
 import CTABanner from "@/components/CTABanner";
+import FreshnessWatermark from "@/components/FreshnessWatermark";
 
 interface PageProps {
   params: Promise<{ slug: string; sector: string }>;
@@ -192,6 +193,12 @@ export default async function StageSectorPage({ params }: PageProps) {
             {top.commitVelocity14d} commits over 14 days (
             {top.commitVelocityChange}). {stageDescription}
           </p>
+          <FreshnessWatermark
+            date={lastModified}
+            surface={`${sectorInfo.name} sector data`}
+            variant="compact"
+            className="mt-3"
+          />
         </header>
 
         <section
@@ -216,6 +223,11 @@ export default async function StageSectorPage({ params }: PageProps) {
             Sorted by commit velocity change (14-day window). Stage from
             contributor count + enrichment. Last updated {period.name}.
           </p>
+          <FreshnessWatermark
+            date={lastModified}
+            surface="Ranking data"
+            variant="full"
+          />
         </section>
 
         <section className="mb-12" aria-label="Call to action">

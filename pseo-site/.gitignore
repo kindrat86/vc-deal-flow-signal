@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# a11y audit artifacts — regenerated on every run; full report uploaded as
+# CI artifact instead of committed (vs. pSEO uniqueness report which is
+# small and stable enough to commit).
+/data/a11y/
+

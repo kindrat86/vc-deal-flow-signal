@@ -1,0 +1,107 @@
+name: A11y Audit (axe-core via pa11y-ci)
+
+# F40 — closes audit-2026-05-08 gap "no automated axe-core CI; regressions
+# will surface only via visual review".
+#
+# Runs pa11y-ci (Puppeteer + axe-core) against a curated list of ~20
+# representative URLs covering every major route family. Reports WCAG 2.1
+# AA violations.
+#
+# Triggers:
+#   - daily 07:00 UTC: catches drift on production within 24 h
+#   - workflow_dispatch: ad-hoc runs against any BASE_URL
+#   - push to main that touches a11y plumbing: regression gate on the
+#     audit script / config / workflow itself
+#
+# A future iteration can add `pull_request` triggering against the Vercel
+# preview URL once we wire the deployment-status webhook polling. Until
+# then, the daily schedule + post-merge-to-main run is the safety net.
+
+on:
+  schedule:
+    # Daily at 07:00 UTC (just after London/Berlin morning standup).
+    - cron: "0 7 * * *"
+  workflow_dispatch:
+    inputs:
+      base_url:
+        description: "Base URL to audit (default: production)"
+        required: false
+        default: "https://signals.gitdealflow.com"
+      report_only:
+        description: "When 'true', workflow exits 0 even if errors found"
+        required: false
+        default: "true"
+  push:
+    branches: [main]
+    paths:
+      - "pseo-site/.pa11yci.json"
+      - "pseo-site/scripts/a11y-audit.mjs"
+      - "pseo-site/package.json"
+      - ".github/workflows/a11y.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: a11y-audit-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  audit:
+    name: pa11y-ci against ${{ inputs.base_url || 'https://signals.gitdealflow.com' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: pseo-site
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: "npm"
+          cache-dependency-path: pseo-site/package-lock.json
+
+      - name: Install deps
+        run: npm ci --no-audit --no-fund
+
+      # pa11y-ci's bundled Puppeteer downloads its own Chromium; ensure the
+      # required system libraries are present (ubuntu-latest has them, but
+      # keeping the install explicit makes the workflow self-documenting
+      # and survives runner-image churn). Both `libasound2t64` (24.04+) and
+      # `libasound2` (22.04) variants are tried so the workflow works
+      # across Ubuntu runner images.
+      - name: Install Chromium dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            libnss3 libatk-bridge2.0-0 libdrm2 libxkbcommon0 libxcomposite1 \
+            libxdamage1 libxfixes3 libxrandr2 libgbm1 libasound2t64 libpango-1.0-0 \
+            libcairo2 libatspi2.0-0 || \
+          sudo apt-get install -y --no-install-recommends \
+            libnss3 libatk-bridge2.0-0 libdrm2 libxkbcommon0 libxcomposite1 \
+            libxdamage1 libxfixes3 libxrandr2 libgbm1 libasound2 libpango-1.0-0 \
+            libcairo2 libatspi2.0-0
+
+      - name: Run a11y audit
+        env:
+          BASE_URL: ${{ inputs.base_url || 'https://signals.gitdealflow.com' }}
+          # Land the gate in report-only mode while the existing WCAG-AA
+          # contrast backlog (~321 errors at F40 ship time, mostly color-
+          # contrast on launch-banner / hero CTAs / pricing) is cleared.
+          # Flip to 'false' in the PR that lands the last contrast fix so
+          # the workflow gates from then on.
+          A11Y_AUDIT_REPORT_ONLY: ${{ inputs.report_only || 'true' }}
+        run: npm run a11y
+
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: a11y-report-${{ github.run_id }}
+          path: pseo-site/data/a11y/report.json
+          if-no-files-found: warn
+          retention-days: 30

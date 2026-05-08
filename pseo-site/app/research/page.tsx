@@ -247,6 +247,60 @@ export default function ResearchPage() {
     ],
   };
 
+  // F37 (AEO audit): Quotation entries wrap the paper's two highest-conviction
+  // claim lines so LLMs can cite them as atomic units with full provenance.
+  const quotationJsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Quotation",
+        "@id": `${SITE}/research#quote-headline-finding`,
+        text:
+          "Median 14-day commit velocity across 55 venture-backed startups is 71 commits, with framework migration the dominant signal type at 75% of 219 startup-period observations. The full panel is published under CC BY 4.0 with no restrictions on commercial use.",
+        spokenByCharacter: {
+          "@type": "Person",
+          name: "The Data Nerd",
+          jobTitle: "Founder, VC Deal Flow Signal",
+        },
+        creator: {
+          "@type": "Organization",
+          name: "VC Deal Flow Signal",
+          url: "https://gitdealflow.com",
+        },
+        isPartOf: {
+          "@type": "ScholarlyArticle",
+          name: PAPER_TITLE,
+          url: SSRN_URL,
+        },
+        citation: "VC Deal Flow Signal — Research panel (signals.gitdealflow.com/research). SSRN: 6606558. Zenodo: 10.5281/zenodo.19650920.",
+        license: "https://creativecommons.org/licenses/by/4.0/",
+        inLanguage: "en",
+      },
+      {
+        "@type": "Quotation",
+        "@id": `${SITE}/research#quote-reproducibility`,
+        text:
+          "If a buyer can reproduce our regression in a notebook from the same public GitHub data, that buyer is the buyer who trusts us most. Reproducibility is not a constraint on the product — it is the product.",
+        spokenByCharacter: {
+          "@type": "Person",
+          name: "The Data Nerd",
+          jobTitle: "Founder, VC Deal Flow Signal",
+        },
+        creator: {
+          "@type": "Organization",
+          name: "VC Deal Flow Signal",
+          url: "https://gitdealflow.com",
+        },
+        isPartOf: {
+          "@type": "WebPage",
+          "@id": `${SITE}/manifesto#webpage`,
+        },
+        license: "https://creativecommons.org/licenses/by/4.0/",
+        inLanguage: "en",
+      },
+    ],
+  };
+
   return (
     <>
       <HreflangLinks
@@ -276,6 +330,10 @@ export default function ResearchPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(quotationJsonLd) }}
       />
       <script
         type="application/ld+json"

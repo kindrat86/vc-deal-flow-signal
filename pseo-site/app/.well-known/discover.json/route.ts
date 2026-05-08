@@ -41,7 +41,7 @@ import { getDataLastModified } from "@/lib/data";
 export const runtime = "nodejs";
 
 const SITE = "https://signals.gitdealflow.com";
-const CONTRACT_VERSION = "2026-05-07.f34";
+const CONTRACT_VERSION = "2026-05-08.f39";
 
 type HttpMethod = "GET" | "POST" | "PUT" | "PATCH" | "DELETE" | "HEAD" | "OPTIONS";
 
@@ -1196,6 +1196,9 @@ const SURFACES: Surface[] = [
   { name: "security-policy", url: `${SITE}/.well-known/security-policy.json`, format: "application/json", category: "policy", description: "Machine-readable security disclosure policy" },
   { name: "security-txt-root", url: `${SITE}/security.txt`, format: "text/plain", category: "policy", description: "Root alias for /.well-known/security.txt" },
   { name: "robots", url: `${SITE}/robots.txt`, format: "text/plain", category: "policy", description: "Crawler access rules" },
+  { name: "tdm-reservation", url: `${SITE}/.well-known/tdm-reservation.json`, format: "application/json", category: "policy", description: "W3C TDM Reservation Protocol — machine-readable opt-in for text-and-data-mining (EU DSA / Copyright Directive Article 4)" },
+  { name: "ai-content-license", url: `${SITE}/.well-known/ai-content-license.json`, format: "application/json", category: "policy", description: "Machine-readable AI training/inference/citation license — bridges CC BY 4.0 with per-use-mode permissions and exclusions" },
+  { name: "gpc", url: `${SITE}/.well-known/gpc.json`, format: "application/json", category: "policy", description: "Global Privacy Control descriptor — publisher honors the Sec-GPC: 1 signal" },
   // ── Sitemaps ──────────────────────────────────────────
   { name: "sitemap-index", url: `${SITE}/sitemap.xml`, format: "application/xml", category: "sitemap", description: "Root sitemapindex — points to 5 sub-sitemaps + news + i18n + images + videos" },
   { name: "sitemap-wellknown", url: `${SITE}/.well-known/sitemap.xml`, format: "application/xml", category: "sitemap", description: "Well-known alias for /sitemap.xml" },
@@ -1268,6 +1271,24 @@ const SURFACES: Surface[] = [
   // ── Human-readable ─────────────────────────────────────
   { name: "humans-wellknown", url: `${SITE}/.well-known/humans.txt`, format: "text/plain", category: "human", description: "Human attribution — author, ORCID, contact" },
   { name: "humans-root", url: `${SITE}/humans.txt`, format: "text/plain", category: "human", description: "Root alias for /.well-known/humans.txt" },
+  // ── F38 Trust Center surfaces (2026-05-08) ─────────────
+  // Net-new TrustSEO push: enterprise-procurement, AI-agent compliance, and
+  // GDPR controllers all probe this set first. Each pair is HTML page +
+  // machine-readable mirror under /.well-known/.
+  { name: "trust-center", url: `${SITE}/trust`, format: "text/html", category: "policy", description: "Trust Center — single page linking every privacy/security/compliance/transparency surface" },
+  { name: "privacy-policy", url: `${SITE}/privacy`, format: "text/html", category: "policy", description: "Privacy Policy — what we collect, retention, GDPR/CCPA rights, subprocessor pointer" },
+  { name: "terms-of-service", url: `${SITE}/terms`, format: "text/html", category: "policy", description: "Terms of Service — license, acceptable use, paid-tier billing, liability cap" },
+  { name: "security-overview", url: `${SITE}/security`, format: "text/html", category: "policy", description: "Security Overview — TLS, email auth, vuln-disclosure entry point" },
+  { name: "dpa-html", url: `${SITE}/dpa`, format: "text/html", category: "policy", description: "Data Processing Agreement (GDPR Art. 28) — counter-signed PDF on request" },
+  { name: "dpa-wellknown", url: `${SITE}/.well-known/dpa.json`, format: "application/json", category: "policy", description: "DPA pointer + SCCs metadata + processing scope (machine-readable)" },
+  { name: "transparency-html", url: `${SITE}/transparency`, format: "text/html", category: "policy", description: "Annual Transparency Report — gov data requests, takedowns, breaches; warrant canary" },
+  { name: "transparency-wellknown", url: `${SITE}/.well-known/transparency.json`, format: "application/json", category: "policy", description: "Transparency report machine-readable — yearly figures + standing policies" },
+  { name: "disclosure-html", url: `${SITE}/disclosure`, format: "text/html", category: "policy", description: "Coordinated Vulnerability Disclosure — disclose.io core terms, scope, SLAs" },
+  { name: "disclosure-wellknown", url: `${SITE}/.well-known/disclosure.json`, format: "application/json", category: "policy", description: "Disclosure policy machine-readable — disclose.io fields + scope + SLAs" },
+  { name: "subprocessors-html", url: `${SITE}/subprocessors`, format: "text/html", category: "policy", description: "Subprocessor list — Stripe, Vercel, Resend, Hetzner/PocketBase, PostHog, GitHub, Cloudflare, Anthropic, Coinbase" },
+  { name: "subprocessors-wellknown", url: `${SITE}/.well-known/subprocessors.json`, format: "application/json", category: "policy", description: "Subprocessor registry machine-readable — roles, regions, certifications, DPAs" },
+  { name: "mta-sts-policy", url: `${SITE}/.well-known/mta-sts.txt`, format: "text/plain", category: "policy", description: "RFC 8461 MTA-STS — inbound mail must use TLS to advertised MX hosts" },
+  { name: "dnt-policy", url: `${SITE}/.well-known/dnt-policy.txt`, format: "text/plain", category: "policy", description: "EFF Do-Not-Track Policy v1.0 compliance statement" },
 ];
 
 export async function GET() {
@@ -1330,7 +1351,7 @@ export async function GET() {
         byCategory: counts,
         byMethod,
         coverage:
-          "Agent/MCP, OpenAPI, retrieval (llms.txt + qa.jsonl + markdown mirror), policy (ai-policy + security), sitemaps, RSS/Atom feeds, dataset descriptors, identity (DID + WebFinger + NodeInfo), and human attribution.",
+          "Agent/MCP, OpenAPI, retrieval (llms.txt + qa.jsonl + markdown mirror), policy (ai-policy + ai-content-license + tdm-reservation + gpc + security), sitemaps, RSS/Atom feeds, dataset descriptors, identity (DID + WebFinger + NodeInfo), and human attribution.",
       },
       surfaces: SURFACES,
       relatedDocs: {

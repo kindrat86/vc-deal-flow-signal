@@ -8,6 +8,7 @@ import {
 } from "@/lib/data";
 import StartupTable from "@/components/StartupTable";
 import CTABanner from "@/components/CTABanner";
+import FreshnessWatermark from "@/components/FreshnessWatermark";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -192,6 +193,11 @@ export default async function StagePage({ params }: PageProps) {
             Sorted by commit velocity change (14-day window). Stage from
             contributor count + enrichment data. Last updated {period.name}.
           </p>
+          <FreshnessWatermark
+            date={lastModified}
+            surface={`${name} stage data`}
+            variant="full"
+          />
         </section>
 
         <section className="mb-12" aria-label="Call to action">

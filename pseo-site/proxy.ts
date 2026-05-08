@@ -6,6 +6,28 @@ const BASE_URL = "https://signals.gitdealflow.com";
 const CANONICAL_HOST = "signals.gitdealflow.com";
 
 /**
+ * Path prefixes whose pages opt out of indexing via Next metadata
+ * (`metadata.robots.index = false`). The proxy normally sets
+ * `X-Robots-Tag: index, follow` as belt-and-suspenders, but for these paths
+ * the header would override the per-page noindex meta — so we emit
+ * `X-Robots-Tag: noindex, follow` instead. Keep this list aligned with
+ * `defineMetadata({ noindex: true })` callers.
+ */
+const NOINDEX_PREFIXES = [
+  "/account",
+  "/receipts/",
+  "/share-approve",
+  "/momentum/",
+  "/welcome",
+  "/dashboard",
+  "/login",
+];
+
+function shouldNoindex(pathname: string): boolean {
+  return NOINDEX_PREFIXES.some((prefix) => pathname.startsWith(prefix));
+}
+
+/**
  * Hosts that should NOT redirect to the canonical apex even when host !==
  * CANONICAL_HOST. Vercel preview deployments (`*.vercel.app` and
  * `*-vercel.app`) are reached directly during PR review and must serve
@@ -103,7 +125,10 @@ export function proxy(request: NextRequest) {
     // representation, not a competing page.
     const canonical = `${BASE_URL}${pathname}`;
     mdResponse.headers.set("Link", `<${canonical}>; rel="canonical"`);
-    mdResponse.headers.set("X-Robots-Tag", "index, follow");
+    mdResponse.headers.set(
+      "X-Robots-Tag",
+      shouldNoindex(pathname) ? "noindex, follow" : "index, follow",
+    );
     return mdResponse;
   }
 
@@ -136,7 +161,13 @@ export function proxy(request: NextRequest) {
 
   const canonical = `${BASE_URL}${pathname}`;
   response.headers.set("Link", `<${canonical}>; rel="canonical"`);
-  response.headers.set("X-Robots-Tag", "index, follow");
+  // Header-level robots directive must mirror per-page meta robots so a
+  // crawler reading only headers (e.g. some image/preview fetchers) gets the
+  // same indexing decision as one parsing the HTML.
+  response.headers.set(
+    "X-Robots-Tag",
+    shouldNoindex(pathname) ? "noindex, follow" : "index, follow",
+  );
   return response;
 }
 

@@ -50,6 +50,12 @@ export async function generateMetadata({
 
 function buildJsonLd(q: AgentQuery): object {
   const url = `${SITE}/answers/${q.slug}`;
+  // F37 (2026-05-08, AEO audit): single ISO timestamp shared across
+  // datePublished + dateModified on every dated subgraph. Sourced from
+  // getDataLastModified() so the freshness signal stays in sync with
+  // the rest of the panel; flip to per-answer timestamps when each entry
+  // grows its own provenance row.
+  const lastModifiedIso = getDataLastModified().toISOString();
   return {
     "@context": "https://schema.org",
     "@graph": [
@@ -83,13 +89,19 @@ function buildJsonLd(q: AgentQuery): object {
         name: q.h1,
         description: q.description,
         inLanguage: "en-US",
+        datePublished: lastModifiedIso,
+        dateModified: lastModifiedIso,
+        license: "https://creativecommons.org/licenses/by/4.0/",
+        // Speakable: voice assistants and AI Overviews read these selectors
+        // aloud. Order matters — first match wins for some agents. Keep h1
+        // first so the question itself is always the lead.
         speakable: {
           "@type": "SpeakableSpecification",
           cssSelector: [
-            "[data-speakable]",
-            ".speakable",
             "h1",
+            "[data-speakable]",
             "[data-agent-summary]",
+            ".speakable",
           ],
         },
         isPartOf: {
@@ -110,16 +122,23 @@ function buildJsonLd(q: AgentQuery): object {
         "@type": "QAPage",
         "@id": `${url}#qapage`,
         url,
+        datePublished: lastModifiedIso,
+        dateModified: lastModifiedIso,
         mainEntity: {
           "@type": "Question",
+          "@id": `${url}#question`,
           name: q.h1,
           text: q.h1,
           answerCount: 1,
+          dateCreated: lastModifiedIso,
           acceptedAnswer: {
             "@type": "Answer",
+            "@id": `${url}#answer`,
             text: q.tldr,
             url,
-            datePublished: getDataLastModified().toISOString(),
+            datePublished: lastModifiedIso,
+            dateModified: lastModifiedIso,
+            inLanguage: "en-US",
             author: {
               "@type": "Organization",
               name: "VC Deal Flow Signal",
@@ -127,6 +146,53 @@ function buildJsonLd(q: AgentQuery): object {
             },
           },
         },
+      },
+      {
+        // AskAction: machine-actionable hint that this question can be
+        // re-asked programmatically against /api/answer (single best) or
+        // /api/ask (top-N). Voice assistants and AI Overviews use AskAction
+        // to surface "Ask this" / "Try a follow-up" affordances. Keeping
+        // the structure schema.org-canonical: target → EntryPoint with
+        // urlTemplate, object → the Question we're asking, result → the
+        // Answer we already produced (so consuming agents can short-circuit
+        // a fresh API call when this page already answers the query).
+        "@type": "AskAction",
+        "@id": `${url}#askaction`,
+        name: `Ask: ${q.h1}`,
+        description:
+          "Ask this question programmatically — returns a citation-ready Answer envelope.",
+        object: { "@id": `${url}#question` },
+        result: { "@id": `${url}#answer` },
+        target: [
+          {
+            "@type": "EntryPoint",
+            name: "Single best answer",
+            urlTemplate: `${SITE}/api/answer?q={query}`,
+            httpMethod: "GET",
+            contentType: "application/ld+json",
+            encodingType: "application/ld+json",
+            actionPlatform: [
+              "https://schema.org/DesktopWebPlatform",
+              "https://schema.org/MobileWebPlatform",
+            ],
+          },
+          {
+            "@type": "EntryPoint",
+            name: "Ranked top-N answers",
+            urlTemplate: `${SITE}/api/ask?q={query}&limit={limit}`,
+            httpMethod: "GET",
+            contentType: "application/ld+json",
+            encodingType: "application/ld+json",
+            actionPlatform: [
+              "https://schema.org/DesktopWebPlatform",
+              "https://schema.org/MobileWebPlatform",
+            ],
+          },
+        ],
+        "query-input": [
+          "required name=query",
+          "name=limit",
+        ],
       },
       {
         "@type": "FAQPage",
@@ -147,6 +213,8 @@ function buildJsonLd(q: AgentQuery): object {
           `${SITE}/api/signals.json`,
           `${SITE}/api/mcp/rpc`,
           `${SITE}/api/agent/tools`,
+          `${SITE}/api/answer`,
+          `${SITE}/api/ask`,
         ],
         provider: {
           "@type": "Organization",
@@ -198,7 +266,10 @@ export default async function AnswerPage({ params }: PageProps) {
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-3 leading-tight">
             {q.h1}
           </h1>
-          <p className="text-gray-400 text-base leading-relaxed">
+          <p
+            className="text-gray-400 text-base leading-relaxed"
+            data-speakable="description"
+          >
             {q.description}
           </p>
         </header>
@@ -216,7 +287,13 @@ export default async function AnswerPage({ params }: PageProps) {
           aria-label="Full answer"
         >
           {paragraphs.map((p, i) => (
-            <p key={i} className="mb-4 text-base">
+            <p
+              key={i}
+              className="mb-4 text-base"
+              // First paragraph is the natural voice-summary for the answer.
+              // Speakable selectors prefer one short hook over many.
+              {...(i === 0 ? { "data-speakable": "lead" } : {})}
+            >
               {renderParagraphWithBoldAndCode(p)}
             </p>
           ))}

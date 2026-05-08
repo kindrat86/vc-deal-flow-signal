@@ -123,6 +123,15 @@ export const metadata: Metadata = {
     "theme-color": "#0f172a",
     "color-scheme": "dark light",
     "referrer": "strict-origin-when-cross-origin",
+    // Per-page AI policy + content-license meta. Some LLM crawlers (Anthropic,
+    // OpenAI, Perplexity) read robot-meta tags AND a parallel "ai-policy" /
+    // "ai-content-license" pair. Both are emitted on every page so the
+    // attribution+license terms are unambiguous regardless of entry point.
+    "ai-policy": "https://signals.gitdealflow.com/.well-known/ai-policy.json",
+    "ai-content-license": "https://creativecommons.org/licenses/by/4.0/",
+    "ai-content-attribution":
+      "VC Deal Flow Signal (GitDealFlow) — https://signals.gitdealflow.com",
+    "ai-content-attribution-url": "https://signals.gitdealflow.com/about",
   },
 };
 
@@ -280,10 +289,67 @@ export default function RootLayout({
           href="https://signals.gitdealflow.com/.well-known/compliance.json"
           title="Compliance descriptor — GDPR / CCPA / SOC2 posture, subprocessors, DPA contact"
         />
+        {/* Content licensing for AI training, RAG, citation, fine-tuning.
+            `rel=license` is RFC 8288 standard; the JSON-typed alternates
+            add machine-readable use-mode permissions and exclusions.
+            Crawlers that respect TDM Reservation Protocol resolve the
+            JSON form via /.well-known/tdm-reservation.json's tdm-policy
+            field. F39 audit closed gap "no machine-readable AI license
+            file" / "no TDM Reservation Protocol" / "no GPC advertisement". */}
+        <link
+          rel="license"
+          href="https://creativecommons.org/licenses/by/4.0/"
+          title="Creative Commons Attribution 4.0 International"
+        />
+        <link
+          rel="describedby"
+          type="application/json"
+          href="https://signals.gitdealflow.com/.well-known/ai-content-license.json"
+          title="AI content license — training, inference, citation, fine-tune permissions"
+        />
+        <link
+          rel="describedby"
+          type="application/json"
+          href="https://signals.gitdealflow.com/.well-known/tdm-reservation.json"
+          title="W3C TDM Reservation Protocol — machine-readable opt-in for text-and-data-mining"
+        />
+        <link
+          rel="describedby"
+          type="application/json"
+          href="https://signals.gitdealflow.com/.well-known/gpc.json"
+          title="Global Privacy Control — publisher honors Sec-GPC: 1"
+        />
         <link
           rel="author"
           type="text/plain"
           href="https://signals.gitdealflow.com/humans.txt"
+        />
+        {/* F38 (2026-05-08) — explicit content license declaration. Surfaces
+            in Google Search Central reports as a structured trust signal and
+            is consumed by AI-content-licensing crawlers (CCC, Anthropic-Web,
+            etc.) without requiring JSON-LD parsing. */}
+        <link
+          rel="license"
+          href="https://creativecommons.org/licenses/by/4.0/"
+          title="CC BY 4.0 — site content, datasets, and JSON-LD output"
+        />
+        <link
+          rel="alternate"
+          type="text/html"
+          href="https://signals.gitdealflow.com/trust"
+          title="Trust Center — privacy, security, compliance hub"
+        />
+        <link
+          rel="alternate"
+          type="text/html"
+          href="https://signals.gitdealflow.com/privacy"
+          title="Privacy Policy"
+        />
+        <link
+          rel="alternate"
+          type="text/html"
+          href="https://signals.gitdealflow.com/terms"
+          title="Terms of Service"
         />
         {/* IndieWeb / IndieAuth verification. Each rel=me must be reciprocated
             on the destination profile to count as a verified identity link.

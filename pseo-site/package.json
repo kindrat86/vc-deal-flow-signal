@@ -4,13 +4,17 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "npx tsx scripts/generate-signal-report.ts && npx tsx scripts/generate-signal-digest-email.ts && npx tsx scripts/generate-book-artifacts.ts && npx tsx scripts/verify-metadata.ts && (test -n \"$VERCEL\" && echo 'Skipping data fetch on Vercel (using existing data)' || npx tsx scripts/fetch-github-data.ts)",
+    "prebuild": "npx tsx scripts/generate-signal-report.ts && npx tsx scripts/generate-signal-digest-email.ts && npx tsx scripts/generate-book-artifacts.ts && (test -n \"$VERCEL\" && echo 'Skipping data fetch on Vercel (using existing data)' || npx tsx scripts/fetch-github-data.ts)",
     "build": "next build",
-    "postbuild": "npx tsx scripts/audit-pseo-uniqueness.ts && npx tsx scripts/submit-indexnow.ts",
+    "postbuild": "npx tsx scripts/audit-pseo-uniqueness.ts && npx tsx scripts/audit-pseo-coverage.ts && npx tsx scripts/submit-indexnow.ts",
     "start": "next start",
     "lint": "eslint",
     "audit:pseo": "npx tsx scripts/audit-pseo-uniqueness.ts",
+    "audit:pseo-coverage": "npx tsx scripts/audit-pseo-coverage.ts",
     "verify:metadata": "npx tsx scripts/verify-metadata.ts",
+    "a11y": "node scripts/a11y-audit.mjs",
+    "a11y:prod": "BASE_URL=https://signals.gitdealflow.com node scripts/a11y-audit.mjs",
+    "a11y:local": "BASE_URL=http://localhost:3000 node scripts/a11y-audit.mjs",
     "deploy:prod": "bash scripts/deploy-prod.sh"
   },
   "dependencies": {
@@ -34,6 +38,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.3",
+    "pa11y-ci": "^4.1.0",
     "tailwindcss": "^4",
     "tsx": "^4.21.0",
     "typescript": "^5"

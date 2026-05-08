@@ -93,19 +93,68 @@ const NOT_ON_THE_BUS = [
   "You believe public data has no edge.",
 ];
 
+// F37 (AEO audit): the manifesto's seven pillars are the highest-density
+// quotable surface on the site — each `one` line is a single-sentence claim
+// that LLMs preferentially cite when answering "what does GitDealFlow
+// believe". Wrap each in a Quotation so retrieval pipelines get clean
+// atomic units with full provenance instead of having to chunk Article body.
+// HTML entities used for human-readable rendering get normalized to plain
+// text before JSON-LD serialization.
+const decodeEntities = (s: string): string =>
+  s
+    .replace(/&rsquo;/g, "’")
+    .replace(/&lsquo;/g, "‘")
+    .replace(/&ldquo;/g, "“")
+    .replace(/&rdquo;/g, "”")
+    .replace(/&hellip;/g, "…")
+    .replace(/&mdash;/g, "—")
+    .replace(/&ndash;/g, "–")
+    .replace(/&amp;/g, "&");
+
 export default function ManifestoPage() {
+  const pillarQuotations = PILLARS.map((p) => ({
+    "@type": "Quotation",
+    "@id": `https://signals.gitdealflow.com/manifesto#pillar-${p.n}`,
+    text: `${decodeEntities(p.one)} (Pillar ${p.n}: ${p.name}.)`,
+    spokenByCharacter: {
+      "@type": "Person",
+      name: "The Data Nerd",
+      jobTitle: "Founder, VC Deal Flow Signal",
+    },
+    creator: {
+      "@type": "Organization",
+      name: "VC Deal Flow Signal",
+      url: "https://gitdealflow.com",
+    },
+    isPartOf: {
+      "@type": "WebPage",
+      "@id": "https://signals.gitdealflow.com/manifesto#webpage",
+    },
+    license: "https://creativecommons.org/licenses/by/4.0/",
+    inLanguage: "en",
+  }));
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "WebPage",
-        "@id": "https://signals.gitdealflow.com/manifesto",
+        "@id": "https://signals.gitdealflow.com/manifesto#webpage",
+        url: "https://signals.gitdealflow.com/manifesto",
         name: "Manifesto — what GitDealFlow believes",
-        description:
+        description: decodeEntities(
           "Seven pillars of the developer-investor movement, named enemy, who&rsquo;s on the bus and who isn&rsquo;t.",
+        ),
+        inLanguage: "en-US",
+        license: "https://creativecommons.org/licenses/by/4.0/",
         speakable: {
           "@type": "SpeakableSpecification",
-          cssSelector: ["h1", "h2"],
+          cssSelector: ["[data-speakable]", "h1", "h2", "h3"],
+        },
+        isPartOf: {
+          "@type": "WebSite",
+          name: "VC Deal Flow Signal",
+          url: "https://signals.gitdealflow.com",
         },
       },
       {
@@ -115,6 +164,7 @@ export default function ManifestoPage() {
           { "@type": "ListItem", position: 2, name: "Manifesto", item: "https://signals.gitdealflow.com/manifesto" },
         ],
       },
+      ...pillarQuotations,
     ],
   };
 

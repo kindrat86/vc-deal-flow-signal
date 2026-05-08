@@ -9,6 +9,25 @@ const nextConfig: NextConfig = {
     root: path.resolve(__dirname),
   },
   async rewrites() {
+    // Extension-stripped aliases for /api/v1/* — generic agents that infer
+    // REST conventions and strip ".json" from URLs hit 404 without these.
+    // Each alias is a routing-layer rewrite (NOT alias-via-import — that
+    // pattern silently breaks under force-static; see Pass VIII memo).
+    const v1Aliases = [
+      { from: "/api/v1/signals", to: "/api/v1/signals.json" },
+      { from: "/api/v1/agents", to: "/api/v1/agents.json" },
+      { from: "/api/v1/answers", to: "/api/v1/answers.json" },
+      { from: "/api/v1/changelog", to: "/api/v1/changelog.json" },
+      { from: "/api/v1/faq", to: "/api/v1/faq.json" },
+      { from: "/api/v1/glossary", to: "/api/v1/glossary.json" },
+      { from: "/api/v1/methodology", to: "/api/v1/methodology.json" },
+      { from: "/api/v1/openapi", to: "/api/v1/openapi.json" },
+      { from: "/api/v1/pricing", to: "/api/v1/pricing.json" },
+      { from: "/api/v1/uptime", to: "/api/v1/uptime.json" },
+      { from: "/api/v1/citations", to: "/api/v1/citations.json" },
+      { from: "/api/v1/dataset", to: "/api/v1/dataset.jsonl" },
+    ].map(({ from, to }) => ({ source: from, destination: to }));
+
     return [
       {
         source: "/.well-known/llms.txt",
@@ -30,6 +49,7 @@ const nextConfig: NextConfig = {
         source: "/.well-known/qa.jsonl",
         destination: "/qa.jsonl",
       },
+      ...v1Aliases,
     ];
   },
 
