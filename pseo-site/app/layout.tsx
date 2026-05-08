@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import LaunchBanner from "@/components/LaunchBanner";
 import PixelManager from "@/components/PixelManager";
 import { RootIdentitySchema } from "@/components/RootIdentitySchema";
+import BreadcrumbsSchema from "@/components/BreadcrumbsSchema";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
@@ -319,6 +320,11 @@ export default function RootLayout({
           title="Multi-result fuzzy answer search"
         />
         <RootIdentitySchema />
+        {/* Site-wide BreadcrumbList JSON-LD derived from the request path
+            injected by proxy.ts (`x-pathname`). Closes audit gap 2026-05-08
+            "No site-wide BreadcrumbList component". Schema-only; ad-hoc
+            visible breadcrumbs on stage/sector hubs continue to render. */}
+        <BreadcrumbsSchema />
       </head>
       <body className={`${inter.className} min-h-full flex flex-col bg-slate-950 text-gray-100`}>
         <LaunchBanner />

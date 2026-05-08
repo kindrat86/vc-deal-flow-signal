@@ -3,6 +3,25 @@ import type { NextRequest } from "next/server";
 import { detectAgentBot } from "@/lib/agent-bots";
 
 const BASE_URL = "https://signals.gitdealflow.com";
+const CANONICAL_HOST = "signals.gitdealflow.com";
+
+/**
+ * Hosts that should NOT redirect to the canonical apex even when host !==
+ * CANONICAL_HOST. Vercel preview deployments (`*.vercel.app` and
+ * `*-vercel.app`) are reached directly during PR review and must serve
+ * content; localhost is the dev loop. Anything else (e.g. `www.<domain>`,
+ * misconfigured `xn--…` IDN aliases, unrelated cnamed hosts) gets 308'd to
+ * the canonical apex.
+ */
+function isCanonicalOrAllowedHost(host: string | null): boolean {
+  if (!host) return true; // No Host header → don't risk a redirect loop.
+  // Strip a port if present (host: "localhost:3000" → "localhost").
+  const bareHost = host.split(":")[0].toLowerCase();
+  if (bareHost === CANONICAL_HOST) return true;
+  if (bareHost === "localhost" || bareHost === "127.0.0.1") return true;
+  if (bareHost.endsWith(".vercel.app")) return true;
+  return false;
+}
 
 /**
  * Add SEO + AI-crawler HTTP headers to every page response, and forward an
@@ -10,6 +29,14 @@ const BASE_URL = "https://signals.gitdealflow.com";
  * additions (Speakable schema, AgentSummary blocks) when a known agent crawler
  * fetches the page.
  *
+ * - **Canonical-host redirect** — non-apex hosts (e.g. `www.gitdealflow.com`,
+ *   IDN aliases) are 308'd to the apex before any other logic. Defense-in-
+ *   depth on top of Vercel's domain-level redirect (see memory entry
+ *   `feedback_vercel_json_host_redirect_unreliable.md` — the platform-level
+ *   rule has historically silently failed; this is the layer that survives).
+ * - `x-pathname: <pathname>` — forwarded request header consumed by the
+ *   site-wide `<BreadcrumbsSchema/>` server component to emit BreadcrumbList
+ *   JSON-LD from the layout (closes audit gap "No site-wide BreadcrumbList").
  * - `Link: <canonical>; rel="canonical"` — explicit canonical for crawlers
  *   that skip HTML parsing (Google, Bing do read this).
  * - `X-Robots-Tag: index, follow` — belt-and-suspenders indexing directive.
@@ -20,6 +47,18 @@ const BASE_URL = "https://signals.gitdealflow.com";
  */
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
+
+  // Canonical-host enforcement runs FIRST so all non-canonical hosts redirect
+  // before we waste compute building the markdown rewrite, agent-bot headers,
+  // or canonical Link header. 308 preserves method + body (and search params)
+  // and signals "permanent" to crawlers and Google's deduper.
+  const requestHost = request.headers.get("host");
+  if (!isCanonicalOrAllowedHost(requestHost)) {
+    const target = new URL(request.url);
+    target.protocol = "https:";
+    target.host = CANONICAL_HOST;
+    return NextResponse.redirect(target, 308);
+  }
 
   if (
     pathname.startsWith("/_next/") ||
@@ -75,9 +114,15 @@ export function proxy(request: NextRequest) {
   const queryOverride = request.nextUrl.searchParams.get("format") === "agent";
   const agentBotToken = detectedBot ?? (queryOverride ? "manual" : null);
 
+  // Always forward the resolved pathname so layout-level server components
+  // (notably <BreadcrumbsSchema/>) can build URL-derived JSON-LD without
+  // their own access to NextRequest. Combined with the agent-bot header when
+  // present.
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set("x-pathname", pathname);
+
   let response: NextResponse;
   if (agentBotToken) {
-    const requestHeaders = new Headers(request.headers);
     requestHeaders.set("x-agent-bot", agentBotToken);
     response = NextResponse.next({ request: { headers: requestHeaders } });
     // Surface the same token on the response so log analysis can split on it
@@ -86,7 +131,7 @@ export function proxy(request: NextRequest) {
     response.headers.set("X-Agent-Bot", agentBotToken);
     response.headers.set("Vary", "User-Agent");
   } else {
-    response = NextResponse.next();
+    response = NextResponse.next({ request: { headers: requestHeaders } });
   }
 
   const canonical = `${BASE_URL}${pathname}`;
