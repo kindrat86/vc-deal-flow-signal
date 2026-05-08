@@ -1205,7 +1205,11 @@ const SURFACES: Surface[] = [
   { name: "sitemap-text", url: `${SITE}/sitemap.txt`, format: "text/plain", category: "sitemap", description: "Plain-text sitemap (one URL per line)" },
   { name: "sitemap-i18n", url: `${SITE}/sitemap-i18n.xml`, format: "application/xml", category: "sitemap", description: "i18n sitemap with hreflang annotations across 12 locales" },
   { name: "sitemap-images", url: `${SITE}/sitemap-images.xml`, format: "application/xml", category: "sitemap", description: "Image sitemap with captions" },
-  { name: "sitemap-videos", url: `${SITE}/sitemap-videos.xml`, format: "application/xml", category: "sitemap", description: "Video sitemap" },
+  { name: "sitemap-videos", url: `${SITE}/sitemap-videos.xml`, format: "application/xml", category: "sitemap", description: "Google Video sitemap — every VideoObject (YouTube + self-hosted) with thumbnail_loc, player_loc, duration, chapters, family-friendly + region whitelist" },
+  { name: "videos-catalog", url: `${SITE}/api/v1/videos.json`, format: "application/ld+json", category: "api", description: "JSON-LD video catalog — every video with Clip[] chapters, transcripts, SeekToAction targets. Mirrors what /watch/[slug] HTML pages embed; agent-friendly shape." },
+  { name: "videos-catalog-stripped", url: `${SITE}/api/v1/videos`, format: "application/ld+json", category: "api", description: "Extension-stripped alias for /api/v1/videos.json (matches F37 pattern)." },
+  { name: "video-transcripts", url: `${SITE}/api/v1/transcripts/{slug}`, format: "text/vtt", category: "api", description: "WebVTT transcript per video, slug-keyed. Content-negotiates to text/plain when Accept asks. Cues align to chapter timing from content/videos.ts." },
+  { name: "watch-pages", url: `${SITE}/watch`, format: "text/html", category: "human", description: "Human watch hub — links to every /watch/[slug] page with chapters + transcript. The silent-canvas /watch demo plus three synthetic-voice videos on YouTube and the self-hosted MCP screencast." },
   { name: "sitemap-news", url: `${SITE}/news-sitemap.xml`, format: "application/xml", category: "sitemap", description: "Google News sitemap (recent posts only)" },
   // ── Feeds ─────────────────────────────────────────────
   { name: "rss", url: `${SITE}/rss.xml`, format: "application/rss+xml", category: "feed", description: "RSS 2.0 feed of recent posts" },

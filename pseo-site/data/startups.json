@@ -41,6 +41,90 @@
           "intro": "AI and ML engineering teams are moving at an unusual pace this quarter. We are tracking model infrastructure startups with commit velocities that have tripled in under three weeks.",
           "startups": [
             {
+              "name": "huggingface",
+              "description": "The AI community building the future.",
+              "stage": "Growth",
+              "geography": "EU",
+              "commitVelocity14d": 121,
+              "commitVelocityChange": "-33%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 1,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/huggingface",
+              "websiteUrl": "https://huggingface.co"
+            },
+            {
+              "name": "ROCm",
+              "description": "",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 346,
+              "commitVelocityChange": "-20%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/ROCm",
+              "websiteUrl": "https://rocm.docs.amd.com"
+            },
+            {
+              "name": "netdata",
+              "description": "",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 120,
+              "commitVelocityChange": "+25%",
+              "contributors": 100,
+              "contributorGrowth": "+14%",
+              "newRepos": 1,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/netdata",
+              "websiteUrl": "https://www.netdata.cloud"
+            },
+            {
+              "name": "mlflow",
+              "description": "The open source AI engineering platform for agents, LLMs, and ML models.",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 195,
+              "commitVelocityChange": "-51%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 2,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/mlflow",
+              "websiteUrl": "https://www.mlflow.org"
+            },
+            {
+              "name": "zapplyjobs",
+              "description": "Free job boards and career resources for students & new grads",
+              "stage": "Pre-seed",
+              "geography": "US",
+              "commitVelocity14d": 1692,
+              "commitVelocityChange": "+23%",
+              "contributors": 3,
+              "contributorGrowth": "+400%",
+              "newRepos": 0,
+              "signalType": "Engineering hiring burst",
+              "githubUrl": "https://github.com/zapplyjobs",
+              "websiteUrl": "https://zapply.jobs"
+            },
+            {
+              "name": "nautechsystems",
+              "description": "next-generation algorithmic trading technologies",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 217,
+              "commitVelocityChange": "+10%",
+              "contributors": 100,
+              "contributorGrowth": "+21%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/nautechsystems",
+              "websiteUrl": "https://nautilustrader.io"
+            },
+            {
               "name": "modular",
               "description": "Modular is an integrated, composable suite of tools that simplifies your AI infrastructure so your team can develop, dep",
               "stage": "Growth",
@@ -69,34 +153,6 @@
               "websiteUrl": "https://vespa.ai"
             },
             {
-              "name": "zapplyjobs",
-              "description": "Free job boards and career resources for students & new grads",
-              "stage": "Pre-seed",
-              "geography": "US",
-              "commitVelocity14d": 1672,
-              "commitVelocityChange": "+21%",
-              "contributors": 3,
-              "contributorGrowth": "+400%",
-              "newRepos": 0,
-              "signalType": "Engineering hiring burst",
-              "githubUrl": "https://github.com/zapplyjobs",
-              "websiteUrl": "https://zapply.jobs"
-            },
-            {
-              "name": "mlflow",
-              "description": "The open source AI engineering platform for agents, LLMs, and ML models.",
-              "stage": "Growth",
-              "geography": "US",
-              "commitVelocity14d": 191,
-              "commitVelocityChange": "-52%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 2,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/mlflow",
-              "websiteUrl": "https://www.mlflow.org"
-            },
-            {
               "name": "inception-project",
               "description": "",
               "stage": "Growth",
@@ -108,20 +164,6 @@
               "newRepos": 1,
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/inception-project"
-            },
-            {
-              "name": "huggingface",
-              "description": "The AI community building the future.",
-              "stage": "Growth",
-              "geography": "EU",
-              "commitVelocity14d": 70,
-              "commitVelocityChange": "-61%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 2,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/huggingface",
-              "websiteUrl": "https://huggingface.co"
             },
             {
               "name": "openvinotoolkit",
@@ -164,20 +206,6 @@
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/photoprism",
               "websiteUrl": "https://www.photoprism.app"
-            },
-            {
-              "name": "nautechsystems",
-              "description": "next-generation algorithmic trading technologies",
-              "stage": "Growth",
-              "geography": "Unknown",
-              "commitVelocity14d": 139,
-              "commitVelocityChange": "-30%",
-              "contributors": 100,
-              "contributorGrowth": "+5%",
-              "newRepos": 1,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/nautechsystems",
-              "websiteUrl": "https://nautilustrader.io"
             },
             {
               "name": "harvard-edge",
@@ -224,7 +252,7 @@
           "faqs": [
             {
               "question": "What engineering signals are ai & machine learning startups showing in Q2 2026?",
-              "answer": "In Q2 2026, we are tracking 13 ai & machine learning startups with measurable GitHub engineering signals. 5 of 13 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 11 of the tracked companies. The average 14-day commit velocity across the sector is 356 commits, with harvard-edge leading at 1132 commits (+55% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q2 2026, we are tracking 15 ai & machine learning startups with measurable GitHub engineering signals. 7 of 15 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 13 of the tracked companies. The average 14-day commit velocity across the sector is 349 commits, with harvard-edge leading at 1132 commits (+55% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which ai & machine learning startup has the highest engineering acceleration in Q2 2026?",
@@ -232,13 +260,97 @@
             },
             {
               "question": "Where are the most active ai & machine learning engineering teams located?",
-              "answer": "Among the 13 ai & machine learning startups we track, US accounts for the highest concentration with 4 teams. Startups building AI/ML infrastructure, applications, and tools. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+              "answer": "Among the 15 ai & machine learning startups we track, US accounts for the highest concentration with 5 teams. Startups building AI/ML infrastructure, applications, and tools. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
             }
           ]
         },
         "q1-2026": {
           "intro": "AI and ML engineering teams are moving at an unusual pace this quarter. We are tracking model infrastructure startups with commit velocities that have tripled in under three weeks.",
           "startups": [
+            {
+              "name": "huggingface",
+              "description": "The AI community building the future.",
+              "stage": "Growth",
+              "geography": "EU",
+              "commitVelocity14d": 239,
+              "commitVelocityChange": "+55%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 1,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/huggingface",
+              "websiteUrl": "https://huggingface.co"
+            },
+            {
+              "name": "ROCm",
+              "description": "",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 244,
+              "commitVelocityChange": "-8%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/ROCm",
+              "websiteUrl": "https://rocm.docs.amd.com"
+            },
+            {
+              "name": "netdata",
+              "description": "",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 90,
+              "commitVelocityChange": "-26%",
+              "contributors": 100,
+              "contributorGrowth": "+14%",
+              "newRepos": 1,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/netdata",
+              "websiteUrl": "https://www.netdata.cloud"
+            },
+            {
+              "name": "mlflow",
+              "description": "The open source AI engineering platform for agents, LLMs, and ML models.",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 365,
+              "commitVelocityChange": "-20%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 2,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/mlflow",
+              "websiteUrl": "https://www.mlflow.org"
+            },
+            {
+              "name": "zapplyjobs",
+              "description": "Free job boards and career resources for students & new grads",
+              "stage": "Pre-seed",
+              "geography": "US",
+              "commitVelocity14d": 8,
+              "commitVelocityChange": "+999%",
+              "contributors": 3,
+              "contributorGrowth": "+400%",
+              "newRepos": 0,
+              "signalType": "Engineering hiring burst",
+              "githubUrl": "https://github.com/zapplyjobs",
+              "websiteUrl": "https://zapply.jobs"
+            },
+            {
+              "name": "nautechsystems",
+              "description": "next-generation algorithmic trading technologies",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 147,
+              "commitVelocityChange": "-4%",
+              "contributors": 100,
+              "contributorGrowth": "+21%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/nautechsystems",
+              "websiteUrl": "https://nautilustrader.io"
+            },
             {
               "name": "modular",
               "description": "Modular is an integrated, composable suite of tools that simplifies your AI infrastructure so your team can develop, dep",
@@ -268,34 +380,6 @@
               "websiteUrl": "https://vespa.ai"
             },
             {
-              "name": "zapplyjobs",
-              "description": "Free job boards and career resources for students & new grads",
-              "stage": "Pre-seed",
-              "geography": "US",
-              "commitVelocity14d": 8,
-              "commitVelocityChange": "+999%",
-              "contributors": 3,
-              "contributorGrowth": "+400%",
-              "newRepos": 0,
-              "signalType": "Engineering hiring burst",
-              "githubUrl": "https://github.com/zapplyjobs",
-              "websiteUrl": "https://zapply.jobs"
-            },
-            {
-              "name": "mlflow",
-              "description": "The open source AI engineering platform for agents, LLMs, and ML models.",
-              "stage": "Growth",
-              "geography": "US",
-              "commitVelocity14d": 365,
-              "commitVelocityChange": "-20%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 2,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/mlflow",
-              "websiteUrl": "https://www.mlflow.org"
-            },
-            {
               "name": "inception-project",
               "description": "",
               "stage": "Growth",
@@ -307,20 +391,6 @@
               "newRepos": 1,
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/inception-project"
-            },
-            {
-              "name": "huggingface",
-              "description": "The AI community building the future.",
-              "stage": "Growth",
-              "geography": "EU",
-              "commitVelocity14d": 239,
-              "commitVelocityChange": "+55%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 2,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/huggingface",
-              "websiteUrl": "https://huggingface.co"
             },
             {
               "name": "openvinotoolkit",
@@ -363,20 +433,6 @@
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/photoprism",
               "websiteUrl": "https://www.photoprism.app"
-            },
-            {
-              "name": "nautechsystems",
-              "description": "next-generation algorithmic trading technologies",
-              "stage": "Growth",
-              "geography": "Unknown",
-              "commitVelocity14d": 147,
-              "commitVelocityChange": "-4%",
-              "contributors": 100,
-              "contributorGrowth": "+5%",
-              "newRepos": 1,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/nautechsystems",
-              "websiteUrl": "https://nautilustrader.io"
             },
             {
               "name": "harvard-edge",
@@ -423,7 +479,7 @@
           "faqs": [
             {
               "question": "What engineering signals are ai & machine learning startups showing in Q1 2026?",
-              "answer": "In Q1 2026, we are tracking 13 ai & machine learning startups with measurable GitHub engineering signals. 8 of 13 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 10 of the tracked companies. The average 14-day commit velocity across the sector is 220 commits, with zapplyjobs leading at 8 commits (+999% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q1 2026, we are tracking 15 ai & machine learning startups with measurable GitHub engineering signals. 8 of 15 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 12 of the tracked companies. The average 14-day commit velocity across the sector is 213 commits, with zapplyjobs leading at 8 commits (+999% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which ai & machine learning startup has the highest engineering acceleration in Q1 2026?",
@@ -431,13 +487,83 @@
             },
             {
               "question": "Where are the most active ai & machine learning engineering teams located?",
-              "answer": "Among the 13 ai & machine learning startups we track, US accounts for the highest concentration with 4 teams. Startups building AI/ML infrastructure, applications, and tools. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+              "answer": "Among the 15 ai & machine learning startups we track, US accounts for the highest concentration with 5 teams. Startups building AI/ML infrastructure, applications, and tools. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
             }
           ]
         },
         "q4-2025": {
           "intro": "AI and ML engineering teams are moving at an unusual pace this quarter. We are tracking model infrastructure startups with commit velocities that have tripled in under three weeks.",
           "startups": [
+            {
+              "name": "huggingface",
+              "description": "The AI community building the future.",
+              "stage": "Growth",
+              "geography": "EU",
+              "commitVelocity14d": 113,
+              "commitVelocityChange": "-49%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 1,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/huggingface",
+              "websiteUrl": "https://huggingface.co"
+            },
+            {
+              "name": "ROCm",
+              "description": "",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 405,
+              "commitVelocityChange": "+43%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/ROCm",
+              "websiteUrl": "https://rocm.docs.amd.com"
+            },
+            {
+              "name": "netdata",
+              "description": "",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 81,
+              "commitVelocityChange": "+5%",
+              "contributors": 100,
+              "contributorGrowth": "+14%",
+              "newRepos": 1,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/netdata",
+              "websiteUrl": "https://www.netdata.cloud"
+            },
+            {
+              "name": "mlflow",
+              "description": "The open source AI engineering platform for agents, LLMs, and ML models.",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 260,
+              "commitVelocityChange": "+3%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 2,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/mlflow",
+              "websiteUrl": "https://www.mlflow.org"
+            },
+            {
+              "name": "nautechsystems",
+              "description": "next-generation algorithmic trading technologies",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 186,
+              "commitVelocityChange": "+0%",
+              "contributors": 100,
+              "contributorGrowth": "+21%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/nautechsystems",
+              "websiteUrl": "https://nautilustrader.io"
+            },
             {
               "name": "modular",
               "description": "Modular is an integrated, composable suite of tools that simplifies your AI infrastructure so your team can develop, dep",
@@ -467,20 +593,6 @@
               "websiteUrl": "https://vespa.ai"
             },
             {
-              "name": "mlflow",
-              "description": "The open source AI engineering platform for agents, LLMs, and ML models.",
-              "stage": "Growth",
-              "geography": "US",
-              "commitVelocity14d": 260,
-              "commitVelocityChange": "+3%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 2,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/mlflow",
-              "websiteUrl": "https://www.mlflow.org"
-            },
-            {
               "name": "inception-project",
               "description": "",
               "stage": "Growth",
@@ -492,20 +604,6 @@
               "newRepos": 1,
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/inception-project"
-            },
-            {
-              "name": "huggingface",
-              "description": "The AI community building the future.",
-              "stage": "Growth",
-              "geography": "EU",
-              "commitVelocity14d": 113,
-              "commitVelocityChange": "-49%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 2,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/huggingface",
-              "websiteUrl": "https://huggingface.co"
             },
             {
               "name": "openvinotoolkit",
@@ -548,20 +646,6 @@
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/photoprism",
               "websiteUrl": "https://www.photoprism.app"
-            },
-            {
-              "name": "nautechsystems",
-              "description": "next-generation algorithmic trading technologies",
-              "stage": "Growth",
-              "geography": "Unknown",
-              "commitVelocity14d": 186,
-              "commitVelocityChange": "+0%",
-              "contributors": 100,
-              "contributorGrowth": "+5%",
-              "newRepos": 1,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/nautechsystems",
-              "websiteUrl": "https://nautilustrader.io"
             },
             {
               "name": "harvard-edge",
@@ -608,21 +692,91 @@
           "faqs": [
             {
               "question": "What engineering signals are ai & machine learning startups showing in Q4 2025?",
-              "answer": "In Q4 2025, we are tracking 12 ai & machine learning startups with measurable GitHub engineering signals. 3 of 12 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 11 of the tracked companies. The average 14-day commit velocity across the sector is 176 commits, with openvinotoolkit leading at 165 commits (+6% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q4 2025, we are tracking 14 ai & machine learning startups with measurable GitHub engineering signals. 5 of 14 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 13 of the tracked companies. The average 14-day commit velocity across the sector is 186 commits, with ROCm leading at 405 commits (+43% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which ai & machine learning startup has the highest engineering acceleration in Q4 2025?",
-              "answer": "openvinotoolkit leads the ai & machine learning sector in Q4 2025 with 165 commits over a 14-day window, representing a +6% change from the prior period. With 100 active contributors, openvinotoolkit is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
+              "answer": "ROCm leads the ai & machine learning sector in Q4 2025 with 405 commits over a 14-day window, representing a +43% change from the prior period. With 100 active contributors, ROCm is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
             },
             {
               "question": "Where are the most active ai & machine learning engineering teams located?",
-              "answer": "Among the 12 ai & machine learning startups we track, US accounts for the highest concentration with 3 teams. Startups building AI/ML infrastructure, applications, and tools. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+              "answer": "Among the 14 ai & machine learning startups we track, US accounts for the highest concentration with 4 teams. Startups building AI/ML infrastructure, applications, and tools. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
             }
           ]
         },
         "q3-2025": {
           "intro": "AI and ML engineering teams are moving at an unusual pace this quarter. We are tracking model infrastructure startups with commit velocities that have tripled in under three weeks.",
           "startups": [
+            {
+              "name": "huggingface",
+              "description": "The AI community building the future.",
+              "stage": "Growth",
+              "geography": "EU",
+              "commitVelocity14d": 220,
+              "commitVelocityChange": "-15%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 1,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/huggingface",
+              "websiteUrl": "https://huggingface.co"
+            },
+            {
+              "name": "ROCm",
+              "description": "",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 376,
+              "commitVelocityChange": "+5%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/ROCm",
+              "websiteUrl": "https://rocm.docs.amd.com"
+            },
+            {
+              "name": "netdata",
+              "description": "",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 70,
+              "commitVelocityChange": "-18%",
+              "contributors": 100,
+              "contributorGrowth": "+14%",
+              "newRepos": 1,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/netdata",
+              "websiteUrl": "https://www.netdata.cloud"
+            },
+            {
+              "name": "mlflow",
+              "description": "The open source AI engineering platform for agents, LLMs, and ML models.",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 174,
+              "commitVelocityChange": "+27%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 2,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/mlflow",
+              "websiteUrl": "https://www.mlflow.org"
+            },
+            {
+              "name": "nautechsystems",
+              "description": "next-generation algorithmic trading technologies",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 127,
+              "commitVelocityChange": "+15%",
+              "contributors": 100,
+              "contributorGrowth": "+21%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/nautechsystems",
+              "websiteUrl": "https://nautilustrader.io"
+            },
             {
               "name": "modular",
               "description": "Modular is an integrated, composable suite of tools that simplifies your AI infrastructure so your team can develop, dep",
@@ -652,20 +806,6 @@
               "websiteUrl": "https://vespa.ai"
             },
             {
-              "name": "mlflow",
-              "description": "The open source AI engineering platform for agents, LLMs, and ML models.",
-              "stage": "Growth",
-              "geography": "US",
-              "commitVelocity14d": 174,
-              "commitVelocityChange": "+27%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 2,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/mlflow",
-              "websiteUrl": "https://www.mlflow.org"
-            },
-            {
               "name": "inception-project",
               "description": "",
               "stage": "Growth",
@@ -677,20 +817,6 @@
               "newRepos": 1,
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/inception-project"
-            },
-            {
-              "name": "huggingface",
-              "description": "The AI community building the future.",
-              "stage": "Growth",
-              "geography": "EU",
-              "commitVelocity14d": 220,
-              "commitVelocityChange": "-15%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 2,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/huggingface",
-              "websiteUrl": "https://huggingface.co"
             },
             {
               "name": "openvinotoolkit",
@@ -733,20 +859,6 @@
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/photoprism",
               "websiteUrl": "https://www.photoprism.app"
-            },
-            {
-              "name": "nautechsystems",
-              "description": "next-generation algorithmic trading technologies",
-              "stage": "Growth",
-              "geography": "Unknown",
-              "commitVelocity14d": 127,
-              "commitVelocityChange": "+15%",
-              "contributors": 100,
-              "contributorGrowth": "+5%",
-              "newRepos": 1,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/nautechsystems",
-              "websiteUrl": "https://nautilustrader.io"
             },
             {
               "name": "harvard-edge",
@@ -793,7 +905,7 @@
           "faqs": [
             {
               "question": "What engineering signals are ai & machine learning startups showing in Q3 2025?",
-              "answer": "In Q3 2025, we are tracking 12 ai & machine learning startups with measurable GitHub engineering signals. 7 of 12 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 11 of the tracked companies. The average 14-day commit velocity across the sector is 221 commits, with harvard-edge leading at 748 commits (+713% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q3 2025, we are tracking 14 ai & machine learning startups with measurable GitHub engineering signals. 8 of 14 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 13 of the tracked companies. The average 14-day commit velocity across the sector is 221 commits, with harvard-edge leading at 748 commits (+713% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which ai & machine learning startup has the highest engineering acceleration in Q3 2025?",
@@ -801,7 +913,7 @@
             },
             {
               "question": "Where are the most active ai & machine learning engineering teams located?",
-              "answer": "Among the 12 ai & machine learning startups we track, US accounts for the highest concentration with 3 teams. Startups building AI/ML infrastructure, applications, and tools. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+              "answer": "Among the 14 ai & machine learning startups we track, US accounts for the highest concentration with 4 teams. Startups building AI/ML infrastructure, applications, and tools. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
             }
           ]
         }
@@ -965,6 +1077,19 @@
           "intro": "Climate tech engineering activity is concentrated in grid software and carbon accounting tooling.",
           "startups": [
             {
+              "name": "ESCOMP",
+              "description": "",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 14,
+              "commitVelocityChange": "-88%",
+              "contributors": 61,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/ESCOMP"
+            },
+            {
               "name": "carbon-design-system",
               "description": "An open-source design system built by IBM.",
               "stage": "Growth",
@@ -991,19 +1116,6 @@
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/CliMA",
               "websiteUrl": "https://clima.caltech.edu"
-            },
-            {
-              "name": "ESCOMP",
-              "description": "",
-              "stage": "Growth",
-              "geography": "Unknown",
-              "commitVelocity14d": 14,
-              "commitVelocityChange": "-88%",
-              "contributors": 61,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/ESCOMP"
             },
             {
               "name": "nco",
@@ -1052,6 +1164,19 @@
           "intro": "Climate tech engineering activity is concentrated in grid software and carbon accounting tooling.",
           "startups": [
             {
+              "name": "ESCOMP",
+              "description": "",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 89,
+              "commitVelocityChange": "-9%",
+              "contributors": 61,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/ESCOMP"
+            },
+            {
               "name": "carbon-design-system",
               "description": "An open-source design system built by IBM.",
               "stage": "Growth",
@@ -1078,19 +1203,6 @@
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/CliMA",
               "websiteUrl": "https://clima.caltech.edu"
-            },
-            {
-              "name": "ESCOMP",
-              "description": "",
-              "stage": "Growth",
-              "geography": "Unknown",
-              "commitVelocity14d": 89,
-              "commitVelocityChange": "-9%",
-              "contributors": 61,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/ESCOMP"
             },
             {
               "name": "nco",
@@ -1139,6 +1251,19 @@
           "intro": "Climate tech engineering activity is concentrated in grid software and carbon accounting tooling.",
           "startups": [
             {
+              "name": "ESCOMP",
+              "description": "",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 98,
+              "commitVelocityChange": "+48%",
+              "contributors": 61,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/ESCOMP"
+            },
+            {
               "name": "carbon-design-system",
               "description": "An open-source design system built by IBM.",
               "stage": "Growth",
@@ -1165,19 +1290,6 @@
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/CliMA",
               "websiteUrl": "https://clima.caltech.edu"
-            },
-            {
-              "name": "ESCOMP",
-              "description": "",
-              "stage": "Growth",
-              "geography": "Unknown",
-              "commitVelocity14d": 98,
-              "commitVelocityChange": "+48%",
-              "contributors": 61,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/ESCOMP"
             },
             {
               "name": "nco",
@@ -1226,6 +1338,19 @@
           "intro": "Climate tech engineering activity is concentrated in grid software and carbon accounting tooling.",
           "startups": [
             {
+              "name": "ESCOMP",
+              "description": "",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 116,
+              "commitVelocityChange": "+25%",
+              "contributors": 61,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/ESCOMP"
+            },
+            {
               "name": "carbon-design-system",
               "description": "An open-source design system built by IBM.",
               "stage": "Growth",
@@ -1252,19 +1377,6 @@
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/CliMA",
               "websiteUrl": "https://clima.caltech.edu"
-            },
-            {
-              "name": "ESCOMP",
-              "description": "",
-              "stage": "Growth",
-              "geography": "Unknown",
-              "commitVelocity14d": 116,
-              "commitVelocityChange": "+25%",
-              "contributors": 61,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/ESCOMP"
             },
             {
               "name": "nco",
@@ -1325,6 +1437,20 @@
           "intro": "Developer tools is the sector with the most consistent engineering signal this quarter.",
           "startups": [
             {
+              "name": "daintreehq",
+              "description": "",
+              "stage": "Pre-seed",
+              "geography": "Unknown",
+              "commitVelocity14d": 2596,
+              "commitVelocityChange": "+92%",
+              "contributors": 5,
+              "contributorGrowth": "+0%",
+              "newRepos": 1,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/daintreehq",
+              "websiteUrl": "http://daintree.org"
+            },
+            {
               "name": "OpenAPITools",
               "description": "A collection of tools for OpenAPI specifications. (NOTE: This organization is not affiliated with OpenAPI Initiative (OA",
               "stage": "Growth",
@@ -1370,11 +1496,11 @@
           "faqs": [
             {
               "question": "What engineering signals are developer tools startups showing in Q2 2026?",
-              "answer": "In Q2 2026, we are tracking 3 developer tools startups with measurable GitHub engineering signals. 1 of 3 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 3 of the tracked companies. The average 14-day commit velocity across the sector is 66 commits, with OpenAPITools leading at 89 commits (+44% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q2 2026, we are tracking 4 developer tools startups with measurable GitHub engineering signals. 2 of 4 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 4 of the tracked companies. The average 14-day commit velocity across the sector is 699 commits, with daintreehq leading at 2596 commits (+92% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which developer tools startup has the highest engineering acceleration in Q2 2026?",
-              "answer": "OpenAPITools leads the developer tools sector in Q2 2026 with 89 commits over a 14-day window, representing a +44% change from the prior period. With 100 active contributors, OpenAPITools is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
+              "answer": "daintreehq leads the developer tools sector in Q2 2026 with 2596 commits over a 14-day window, representing a +92% change from the prior period. With 5 active contributors and 1 new repositories, daintreehq is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
             },
             {
               "question": "Where are the most active developer tools engineering teams located?",
@@ -1385,6 +1511,20 @@
         "q1-2026": {
           "intro": "Developer tools is the sector with the most consistent engineering signal this quarter.",
           "startups": [
+            {
+              "name": "daintreehq",
+              "description": "",
+              "stage": "Pre-seed",
+              "geography": "Unknown",
+              "commitVelocity14d": 475,
+              "commitVelocityChange": "+95%",
+              "contributors": 5,
+              "contributorGrowth": "+0%",
+              "newRepos": 1,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/daintreehq",
+              "websiteUrl": "http://daintree.org"
+            },
             {
               "name": "continuedev",
               "description": "Quality control for your software factory",
@@ -1445,15 +1585,15 @@
           "faqs": [
             {
               "question": "What engineering signals are developer tools startups showing in Q1 2026?",
-              "answer": "In Q1 2026, we are tracking 4 developer tools startups with measurable GitHub engineering signals. 2 of 4 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 4 of the tracked companies. The average 14-day commit velocity across the sector is 167 commits, with nocobase leading at 267 commits (+37% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q1 2026, we are tracking 5 developer tools startups with measurable GitHub engineering signals. 3 of 5 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 5 of the tracked companies. The average 14-day commit velocity across the sector is 228 commits, with daintreehq leading at 475 commits (+95% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which developer tools startup has the highest engineering acceleration in Q1 2026?",
-              "answer": "nocobase leads the developer tools sector in Q1 2026 with 267 commits over a 14-day window, representing a +37% change from the prior period. With 98 active contributors and 1 new repositories, nocobase is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
+              "answer": "daintreehq leads the developer tools sector in Q1 2026 with 475 commits over a 14-day window, representing a +95% change from the prior period. With 5 active contributors and 1 new repositories, daintreehq is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
             },
             {
               "question": "Where are the most active developer tools engineering teams located?",
-              "answer": "Among the 4 developer tools startups we track, US accounts for the highest concentration with 1 teams. Startups building tools and infrastructure for developers. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+              "answer": "Among the 5 developer tools startups we track, US accounts for the highest concentration with 1 teams. Startups building tools and infrastructure for developers. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
             }
           ]
         },
@@ -1623,6 +1763,144 @@
           "intro": "Cybersecurity engineering teams show a bifurcated pattern: vulnerability scanning sprints vs. identity teams with steady commits but growing contributor lists.",
           "startups": [
             {
+              "name": "greenbone",
+              "description": "Open Source Vulnerability Management",
+              "stage": "Series A/B",
+              "geography": "EU",
+              "commitVelocity14d": 76,
+              "commitVelocityChange": "+130%",
+              "contributors": 46,
+              "contributorGrowth": "+9%",
+              "newRepos": 1,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/greenbone",
+              "websiteUrl": "https://greenbone.net"
+            },
+            {
+              "name": "cilium",
+              "description": "eBPF-based Networking, Security, and Observability",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 68,
+              "commitVelocityChange": "-57%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 1,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/cilium",
+              "websiteUrl": "https://cilium.io"
+            },
+            {
+              "name": "openbao",
+              "description": "",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 43,
+              "commitVelocityChange": "-48%",
+              "contributors": 100,
+              "contributorGrowth": "+28%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/openbao"
+            },
+            {
+              "name": "fleetdm",
+              "description": "Open device, endpoint, and vulnerability management for everything from macOS to Android.",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 432,
+              "commitVelocityChange": "-7%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/fleetdm",
+              "websiteUrl": "https://fleetdm.com"
+            },
+            {
+              "name": "lf-edge",
+              "description": "LF Edge aims to establish an open, interoperable framework for edge computing independent of hardware, silicon, cloud, o",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 55,
+              "commitVelocityChange": "-65%",
+              "contributors": 91,
+              "contributorGrowth": "+122%",
+              "newRepos": 0,
+              "signalType": "Engineering hiring burst",
+              "githubUrl": "https://github.com/lf-edge",
+              "websiteUrl": "https://www.lfedge.org"
+            },
+            {
+              "name": "dependency-check",
+              "description": "",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 25,
+              "commitVelocityChange": "+25%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/dependency-check"
+            },
+            {
+              "name": "tenzir",
+              "description": "Open source data pipelines for security teams",
+              "stage": "Series A/B",
+              "geography": "EU",
+              "commitVelocity14d": 166,
+              "commitVelocityChange": "-7%",
+              "contributors": 47,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/tenzir",
+              "websiteUrl": "https://tenzir.com"
+            },
+            {
+              "name": "goauthentik",
+              "description": "Making authentication simple.",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 244,
+              "commitVelocityChange": "+28%",
+              "contributors": 100,
+              "contributorGrowth": "+11%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/goauthentik",
+              "websiteUrl": "https://goauthentik.io"
+            },
+            {
+              "name": "stackrox",
+              "description": "StackRox provides security across the container life cycle. Our container security platform reduces the attack surface,",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 147,
+              "commitVelocityChange": "-23%",
+              "contributors": 100,
+              "contributorGrowth": "+20%",
+              "newRepos": 1,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/stackrox",
+              "websiteUrl": "https://stackrox.io"
+            },
+            {
+              "name": "akto-api-security",
+              "description": "Instant API Security",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 253,
+              "commitVelocityChange": "-17%",
+              "contributors": 53,
+              "contributorGrowth": "+3%",
+              "newRepos": 3,
+              "signalType": "Infrastructure buildout",
+              "githubUrl": "https://github.com/akto-api-security",
+              "websiteUrl": "https://www.akto.io"
+            },
+            {
               "name": "gravitational",
               "description": "The easiest, most secure way to access all your infrastructure.",
               "stage": "Growth",
@@ -1707,20 +1985,6 @@
               "websiteUrl": "http://www.freeipa.org"
             },
             {
-              "name": "goauthentik",
-              "description": "Making authentication simple.",
-              "stage": "Growth",
-              "geography": "Unknown",
-              "commitVelocity14d": 120,
-              "commitVelocityChange": "-37%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/goauthentik",
-              "websiteUrl": "https://goauthentik.io"
-            },
-            {
               "name": "wireapp",
               "description": "Wire open source secure messenger",
               "stage": "Growth",
@@ -1791,20 +2055,6 @@
               "websiteUrl": "https://www.infisical.com"
             },
             {
-              "name": "cilium",
-              "description": "eBPF-based Networking, Security, and Observability",
-              "stage": "Growth",
-              "geography": "Unknown",
-              "commitVelocity14d": 70,
-              "commitVelocityChange": "-59%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 1,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/cilium",
-              "websiteUrl": "https://cilium.io"
-            },
-            {
               "name": "projectdiscovery",
               "description": "Monitor your infrastructure. Real vulnerabilities. Zero noise.",
               "stage": "Growth",
@@ -1817,54 +2067,12 @@
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/projectdiscovery",
               "websiteUrl": "https://projectdiscovery.io"
-            },
-            {
-              "name": "akto-api-security",
-              "description": "Instant API Security",
-              "stage": "Growth",
-              "geography": "US",
-              "commitVelocity14d": 267,
-              "commitVelocityChange": "+75%",
-              "contributors": 53,
-              "contributorGrowth": "+0%",
-              "newRepos": 1,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/akto-api-security",
-              "websiteUrl": "https://www.akto.io"
-            },
-            {
-              "name": "tenzir",
-              "description": "Open source data pipelines for security teams",
-              "stage": "Series A/B",
-              "geography": "EU",
-              "commitVelocity14d": 75,
-              "commitVelocityChange": "-56%",
-              "contributors": 48,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/tenzir",
-              "websiteUrl": "https://tenzir.com"
-            },
-            {
-              "name": "fleetdm",
-              "description": "Open device, endpoint, and vulnerability management for everything from macOS to Android.",
-              "stage": "Growth",
-              "geography": "Unknown",
-              "commitVelocity14d": 347,
-              "commitVelocityChange": "-26%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/fleetdm",
-              "websiteUrl": "https://fleetdm.com"
             }
           ],
           "faqs": [
             {
               "question": "What engineering signals are cybersecurity startups showing in Q2 2026?",
-              "answer": "In Q2 2026, we are tracking 17 cybersecurity startups with measurable GitHub engineering signals. 5 of 17 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 12 of the tracked companies. The average 14-day commit velocity across the sector is 158 commits, with NewLifeX leading at 6 commits (+999% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q2 2026, we are tracking 22 cybersecurity startups with measurable GitHub engineering signals. 7 of 22 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 15 of the tracked companies. The average 14-day commit velocity across the sector is 151 commits, with NewLifeX leading at 6 commits (+999% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which cybersecurity startup has the highest engineering acceleration in Q2 2026?",
@@ -1872,13 +2080,151 @@
             },
             {
               "question": "Where are the most active cybersecurity engineering teams located?",
-              "answer": "Among the 17 cybersecurity startups we track, US accounts for the highest concentration with 6 teams. Startups protecting systems, networks, and data from digital attacks. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+              "answer": "Among the 22 cybersecurity startups we track, US accounts for the highest concentration with 8 teams. Startups protecting systems, networks, and data from digital attacks. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
             }
           ]
         },
         "q1-2026": {
           "intro": "Cybersecurity engineering teams show a bifurcated pattern: vulnerability scanning sprints vs. identity teams with steady commits but growing contributor lists.",
           "startups": [
+            {
+              "name": "greenbone",
+              "description": "Open Source Vulnerability Management",
+              "stage": "Series A/B",
+              "geography": "EU",
+              "commitVelocity14d": 39,
+              "commitVelocityChange": "+34%",
+              "contributors": 46,
+              "contributorGrowth": "+9%",
+              "newRepos": 1,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/greenbone",
+              "websiteUrl": "https://greenbone.net"
+            },
+            {
+              "name": "cilium",
+              "description": "eBPF-based Networking, Security, and Observability",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 201,
+              "commitVelocityChange": "-7%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 1,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/cilium",
+              "websiteUrl": "https://cilium.io"
+            },
+            {
+              "name": "openbao",
+              "description": "",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 68,
+              "commitVelocityChange": "+100%",
+              "contributors": 100,
+              "contributorGrowth": "+28%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/openbao"
+            },
+            {
+              "name": "fleetdm",
+              "description": "Open device, endpoint, and vulnerability management for everything from macOS to Android.",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 492,
+              "commitVelocityChange": "+43%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/fleetdm",
+              "websiteUrl": "https://fleetdm.com"
+            },
+            {
+              "name": "lf-edge",
+              "description": "LF Edge aims to establish an open, interoperable framework for edge computing independent of hardware, silicon, cloud, o",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 41,
+              "commitVelocityChange": "+21%",
+              "contributors": 91,
+              "contributorGrowth": "+122%",
+              "newRepos": 0,
+              "signalType": "Engineering hiring burst",
+              "githubUrl": "https://github.com/lf-edge",
+              "websiteUrl": "https://www.lfedge.org"
+            },
+            {
+              "name": "dependency-check",
+              "description": "",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 28,
+              "commitVelocityChange": "+40%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/dependency-check"
+            },
+            {
+              "name": "tenzir",
+              "description": "Open source data pipelines for security teams",
+              "stage": "Series A/B",
+              "geography": "EU",
+              "commitVelocity14d": 323,
+              "commitVelocityChange": "+22%",
+              "contributors": 47,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/tenzir",
+              "websiteUrl": "https://tenzir.com"
+            },
+            {
+              "name": "goauthentik",
+              "description": "Making authentication simple.",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 228,
+              "commitVelocityChange": "-25%",
+              "contributors": 100,
+              "contributorGrowth": "+11%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/goauthentik",
+              "websiteUrl": "https://goauthentik.io"
+            },
+            {
+              "name": "stackrox",
+              "description": "StackRox provides security across the container life cycle. Our container security platform reduces the attack surface,",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 158,
+              "commitVelocityChange": "+1%",
+              "contributors": 100,
+              "contributorGrowth": "+20%",
+              "newRepos": 1,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/stackrox",
+              "websiteUrl": "https://stackrox.io"
+            },
+            {
+              "name": "akto-api-security",
+              "description": "Instant API Security",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 265,
+              "commitVelocityChange": "-41%",
+              "contributors": 53,
+              "contributorGrowth": "+3%",
+              "newRepos": 3,
+              "signalType": "Infrastructure buildout",
+              "githubUrl": "https://github.com/akto-api-security",
+              "websiteUrl": "https://www.akto.io"
+            },
             {
               "name": "gravitational",
               "description": "The easiest, most secure way to access all your infrastructure.",
@@ -1964,20 +2310,6 @@
               "websiteUrl": "http://www.freeipa.org"
             },
             {
-              "name": "goauthentik",
-              "description": "Making authentication simple.",
-              "stage": "Growth",
-              "geography": "Unknown",
-              "commitVelocity14d": 228,
-              "commitVelocityChange": "-25%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/goauthentik",
-              "websiteUrl": "https://goauthentik.io"
-            },
-            {
               "name": "wireapp",
               "description": "Wire open source secure messenger",
               "stage": "Growth",
@@ -2048,20 +2380,6 @@
               "websiteUrl": "https://www.infisical.com"
             },
             {
-              "name": "cilium",
-              "description": "eBPF-based Networking, Security, and Observability",
-              "stage": "Growth",
-              "geography": "Unknown",
-              "commitVelocity14d": 220,
-              "commitVelocityChange": "+224%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 1,
-              "signalType": "Deploy frequency spike",
-              "githubUrl": "https://github.com/cilium",
-              "websiteUrl": "https://cilium.io"
-            },
-            {
               "name": "projectdiscovery",
               "description": "Monitor your infrastructure. Real vulnerabilities. Zero noise.",
               "stage": "Growth",
@@ -2074,54 +2392,12 @@
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/projectdiscovery",
               "websiteUrl": "https://projectdiscovery.io"
-            },
-            {
-              "name": "akto-api-security",
-              "description": "Instant API Security",
-              "stage": "Growth",
-              "geography": "US",
-              "commitVelocity14d": 311,
-              "commitVelocityChange": "+141%",
-              "contributors": 53,
-              "contributorGrowth": "+0%",
-              "newRepos": 1,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/akto-api-security",
-              "websiteUrl": "https://www.akto.io"
-            },
-            {
-              "name": "tenzir",
-              "description": "Open source data pipelines for security teams",
-              "stage": "Series A/B",
-              "geography": "EU",
-              "commitVelocity14d": 208,
-              "commitVelocityChange": "+66%",
-              "contributors": 48,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/tenzir",
-              "websiteUrl": "https://tenzir.com"
-            },
-            {
-              "name": "fleetdm",
-              "description": "Open device, endpoint, and vulnerability management for everything from macOS to Android.",
-              "stage": "Growth",
-              "geography": "Unknown",
-              "commitVelocity14d": 360,
-              "commitVelocityChange": "+221%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Deploy frequency spike",
-              "githubUrl": "https://github.com/fleetdm",
-              "websiteUrl": "https://fleetdm.com"
             }
           ],
           "faqs": [
             {
               "question": "What engineering signals are cybersecurity startups showing in Q1 2026?",
-              "answer": "In Q1 2026, we are tracking 17 cybersecurity startups with measurable GitHub engineering signals. 10 of 17 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 10 of the tracked companies. The average 14-day commit velocity across the sector is 217 commits, with Infisical leading at 399 commits (+1496% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q1 2026, we are tracking 22 cybersecurity startups with measurable GitHub engineering signals. 13 of 22 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 15 of the tracked companies. The average 14-day commit velocity across the sector is 191 commits, with Infisical leading at 399 commits (+1496% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which cybersecurity startup has the highest engineering acceleration in Q1 2026?",
@@ -2129,13 +2405,151 @@
             },
             {
               "question": "Where are the most active cybersecurity engineering teams located?",
-              "answer": "Among the 17 cybersecurity startups we track, US accounts for the highest concentration with 6 teams. Startups protecting systems, networks, and data from digital attacks. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+              "answer": "Among the 22 cybersecurity startups we track, US accounts for the highest concentration with 8 teams. Startups protecting systems, networks, and data from digital attacks. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
             }
           ]
         },
         "q4-2025": {
           "intro": "Cybersecurity engineering teams show a bifurcated pattern: vulnerability scanning sprints vs. identity teams with steady commits but growing contributor lists.",
           "startups": [
+            {
+              "name": "greenbone",
+              "description": "Open Source Vulnerability Management",
+              "stage": "Series A/B",
+              "geography": "EU",
+              "commitVelocity14d": 105,
+              "commitVelocityChange": "+38%",
+              "contributors": 46,
+              "contributorGrowth": "+9%",
+              "newRepos": 1,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/greenbone",
+              "websiteUrl": "https://greenbone.net"
+            },
+            {
+              "name": "cilium",
+              "description": "eBPF-based Networking, Security, and Observability",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 271,
+              "commitVelocityChange": "+27%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 1,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/cilium",
+              "websiteUrl": "https://cilium.io"
+            },
+            {
+              "name": "openbao",
+              "description": "",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 55,
+              "commitVelocityChange": "-31%",
+              "contributors": 100,
+              "contributorGrowth": "+28%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/openbao"
+            },
+            {
+              "name": "fleetdm",
+              "description": "Open device, endpoint, and vulnerability management for everything from macOS to Android.",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 292,
+              "commitVelocityChange": "+10%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/fleetdm",
+              "websiteUrl": "https://fleetdm.com"
+            },
+            {
+              "name": "lf-edge",
+              "description": "LF Edge aims to establish an open, interoperable framework for edge computing independent of hardware, silicon, cloud, o",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 100,
+              "commitVelocityChange": "+285%",
+              "contributors": 91,
+              "contributorGrowth": "+122%",
+              "newRepos": 0,
+              "signalType": "Engineering hiring burst",
+              "githubUrl": "https://github.com/lf-edge",
+              "websiteUrl": "https://www.lfedge.org"
+            },
+            {
+              "name": "dependency-check",
+              "description": "",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 23,
+              "commitVelocityChange": "-58%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/dependency-check"
+            },
+            {
+              "name": "tenzir",
+              "description": "Open source data pipelines for security teams",
+              "stage": "Series A/B",
+              "geography": "EU",
+              "commitVelocity14d": 125,
+              "commitVelocityChange": "-8%",
+              "contributors": 47,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/tenzir",
+              "websiteUrl": "https://tenzir.com"
+            },
+            {
+              "name": "goauthentik",
+              "description": "Making authentication simple.",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 131,
+              "commitVelocityChange": "-48%",
+              "contributors": 100,
+              "contributorGrowth": "+11%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/goauthentik",
+              "websiteUrl": "https://goauthentik.io"
+            },
+            {
+              "name": "stackrox",
+              "description": "StackRox provides security across the container life cycle. Our container security platform reduces the attack surface,",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 141,
+              "commitVelocityChange": "-21%",
+              "contributors": 100,
+              "contributorGrowth": "+20%",
+              "newRepos": 1,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/stackrox",
+              "websiteUrl": "https://stackrox.io"
+            },
+            {
+              "name": "akto-api-security",
+              "description": "Instant API Security",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 164,
+              "commitVelocityChange": "+44%",
+              "contributors": 53,
+              "contributorGrowth": "+3%",
+              "newRepos": 3,
+              "signalType": "Infrastructure buildout",
+              "githubUrl": "https://github.com/akto-api-security",
+              "websiteUrl": "https://www.akto.io"
+            },
             {
               "name": "gravitational",
               "description": "The easiest, most secure way to access all your infrastructure.",
@@ -2221,20 +2635,6 @@
               "websiteUrl": "http://www.freeipa.org"
             },
             {
-              "name": "goauthentik",
-              "description": "Making authentication simple.",
-              "stage": "Growth",
-              "geography": "Unknown",
-              "commitVelocity14d": 131,
-              "commitVelocityChange": "-48%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/goauthentik",
-              "websiteUrl": "https://goauthentik.io"
-            },
-            {
               "name": "wireapp",
               "description": "Wire open source secure messenger",
               "stage": "Growth",
@@ -2291,20 +2691,6 @@
               "websiteUrl": "https://www.infisical.com"
             },
             {
-              "name": "cilium",
-              "description": "eBPF-based Networking, Security, and Observability",
-              "stage": "Growth",
-              "geography": "Unknown",
-              "commitVelocity14d": 164,
-              "commitVelocityChange": "-13%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 1,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/cilium",
-              "websiteUrl": "https://cilium.io"
-            },
-            {
               "name": "projectdiscovery",
               "description": "Monitor your infrastructure. Real vulnerabilities. Zero noise.",
               "stage": "Growth",
@@ -2317,29 +2703,116 @@
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/projectdiscovery",
               "websiteUrl": "https://projectdiscovery.io"
+            }
+          ],
+          "faqs": [
+            {
+              "question": "What engineering signals are cybersecurity startups showing in Q4 2025?",
+              "answer": "In Q4 2025, we are tracking 21 cybersecurity startups with measurable GitHub engineering signals. 12 of 21 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 15 of the tracked companies. The average 14-day commit velocity across the sector is 167 commits, with lf-edge leading at 100 commits (+285% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
-              "name": "akto-api-security",
-              "description": "Instant API Security",
+              "question": "Which cybersecurity startup has the highest engineering acceleration in Q4 2025?",
+              "answer": "lf-edge leads the cybersecurity sector in Q4 2025 with 100 commits over a 14-day window, representing a +285% change from the prior period. With 91 active contributors, lf-edge is showing a \"Engineering hiring burst\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
+            },
+            {
+              "question": "Where are the most active cybersecurity engineering teams located?",
+              "answer": "Among the 21 cybersecurity startups we track, US accounts for the highest concentration with 8 teams. Startups protecting systems, networks, and data from digital attacks. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+            }
+          ]
+        },
+        "q3-2025": {
+          "intro": "Cybersecurity engineering teams show a bifurcated pattern: vulnerability scanning sprints vs. identity teams with steady commits but growing contributor lists.",
+          "startups": [
+            {
+              "name": "greenbone",
+              "description": "Open Source Vulnerability Management",
+              "stage": "Series A/B",
+              "geography": "EU",
+              "commitVelocity14d": 93,
+              "commitVelocityChange": "-35%",
+              "contributors": 46,
+              "contributorGrowth": "+9%",
+              "newRepos": 1,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/greenbone",
+              "websiteUrl": "https://greenbone.net"
+            },
+            {
+              "name": "cilium",
+              "description": "eBPF-based Networking, Security, and Observability",
               "stage": "Growth",
-              "geography": "US",
-              "commitVelocity14d": 182,
-              "commitVelocityChange": "-8%",
-              "contributors": 53,
+              "geography": "Unknown",
+              "commitVelocity14d": 206,
+              "commitVelocityChange": "+26%",
+              "contributors": 100,
               "contributorGrowth": "+0%",
               "newRepos": 1,
               "signalType": "Framework migration",
-              "githubUrl": "https://github.com/akto-api-security",
-              "websiteUrl": "https://www.akto.io"
+              "githubUrl": "https://github.com/cilium",
+              "websiteUrl": "https://cilium.io"
+            },
+            {
+              "name": "openbao",
+              "description": "",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 48,
+              "commitVelocityChange": "+78%",
+              "contributors": 100,
+              "contributorGrowth": "+28%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/openbao"
+            },
+            {
+              "name": "fleetdm",
+              "description": "Open device, endpoint, and vulnerability management for everything from macOS to Android.",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 218,
+              "commitVelocityChange": "-5%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/fleetdm",
+              "websiteUrl": "https://fleetdm.com"
+            },
+            {
+              "name": "lf-edge",
+              "description": "LF Edge aims to establish an open, interoperable framework for edge computing independent of hardware, silicon, cloud, o",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 29,
+              "commitVelocityChange": "-9%",
+              "contributors": 91,
+              "contributorGrowth": "+122%",
+              "newRepos": 0,
+              "signalType": "Engineering hiring burst",
+              "githubUrl": "https://github.com/lf-edge",
+              "websiteUrl": "https://www.lfedge.org"
+            },
+            {
+              "name": "dependency-check",
+              "description": "",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 17,
+              "commitVelocityChange": "+13%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/dependency-check"
             },
             {
               "name": "tenzir",
               "description": "Open source data pipelines for security teams",
               "stage": "Series A/B",
               "geography": "EU",
-              "commitVelocity14d": 144,
-              "commitVelocityChange": "+17%",
-              "contributors": 48,
+              "commitVelocity14d": 203,
+              "commitVelocityChange": "+24%",
+              "contributors": 47,
               "contributorGrowth": "+0%",
               "newRepos": 0,
               "signalType": "Framework migration",
@@ -2347,38 +2820,47 @@
               "websiteUrl": "https://tenzir.com"
             },
             {
-              "name": "fleetdm",
-              "description": "Open device, endpoint, and vulnerability management for everything from macOS to Android.",
+              "name": "goauthentik",
+              "description": "Making authentication simple.",
               "stage": "Growth",
               "geography": "Unknown",
-              "commitVelocity14d": 280,
-              "commitVelocityChange": "+3%",
+              "commitVelocity14d": 178,
+              "commitVelocityChange": "-17%",
               "contributors": 100,
-              "contributorGrowth": "+0%",
+              "contributorGrowth": "+11%",
               "newRepos": 0,
               "signalType": "Framework migration",
-              "githubUrl": "https://github.com/fleetdm",
-              "websiteUrl": "https://fleetdm.com"
-            }
-          ],
-          "faqs": [
-            {
-              "question": "What engineering signals are cybersecurity startups showing in Q4 2025?",
-              "answer": "In Q4 2025, we are tracking 16 cybersecurity startups with measurable GitHub engineering signals. 9 of 16 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 12 of the tracked companies. The average 14-day commit velocity across the sector is 188 commits, with JanssenProject leading at 189 commits (+93% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "githubUrl": "https://github.com/goauthentik",
+              "websiteUrl": "https://goauthentik.io"
             },
             {
-              "question": "Which cybersecurity startup has the highest engineering acceleration in Q4 2025?",
-              "answer": "JanssenProject leads the cybersecurity sector in Q4 2025 with 189 commits over a 14-day window, representing a +93% change from the prior period. With 100 active contributors, JanssenProject is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
+              "name": "stackrox",
+              "description": "StackRox provides security across the container life cycle. Our container security platform reduces the attack surface,",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 159,
+              "commitVelocityChange": "+81%",
+              "contributors": 100,
+              "contributorGrowth": "+20%",
+              "newRepos": 1,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/stackrox",
+              "websiteUrl": "https://stackrox.io"
             },
             {
-              "question": "Where are the most active cybersecurity engineering teams located?",
-              "answer": "Among the 16 cybersecurity startups we track, US accounts for the highest concentration with 6 teams. Startups protecting systems, networks, and data from digital attacks. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
-            }
-          ]
-        },
-        "q3-2025": {
-          "intro": "Cybersecurity engineering teams show a bifurcated pattern: vulnerability scanning sprints vs. identity teams with steady commits but growing contributor lists.",
-          "startups": [
+              "name": "akto-api-security",
+              "description": "Instant API Security",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 159,
+              "commitVelocityChange": "-8%",
+              "contributors": 53,
+              "contributorGrowth": "+3%",
+              "newRepos": 3,
+              "signalType": "Infrastructure buildout",
+              "githubUrl": "https://github.com/akto-api-security",
+              "websiteUrl": "https://www.akto.io"
+            },
             {
               "name": "gravitational",
               "description": "The easiest, most secure way to access all your infrastructure.",
@@ -2464,20 +2946,6 @@
               "websiteUrl": "http://www.freeipa.org"
             },
             {
-              "name": "goauthentik",
-              "description": "Making authentication simple.",
-              "stage": "Growth",
-              "geography": "Unknown",
-              "commitVelocity14d": 178,
-              "commitVelocityChange": "-17%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/goauthentik",
-              "websiteUrl": "https://goauthentik.io"
-            },
-            {
               "name": "wireapp",
               "description": "Wire open source secure messenger",
               "stage": "Growth",
@@ -2548,20 +3016,6 @@
               "websiteUrl": "https://www.infisical.com"
             },
             {
-              "name": "cilium",
-              "description": "eBPF-based Networking, Security, and Observability",
-              "stage": "Growth",
-              "geography": "Unknown",
-              "commitVelocity14d": 153,
-              "commitVelocityChange": "-26%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 1,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/cilium",
-              "websiteUrl": "https://cilium.io"
-            },
-            {
               "name": "projectdiscovery",
               "description": "Monitor your infrastructure. Real vulnerabilities. Zero noise.",
               "stage": "Growth",
@@ -2574,54 +3028,12 @@
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/projectdiscovery",
               "websiteUrl": "https://projectdiscovery.io"
-            },
-            {
-              "name": "akto-api-security",
-              "description": "Instant API Security",
-              "stage": "Growth",
-              "geography": "US",
-              "commitVelocity14d": 111,
-              "commitVelocityChange": "-8%",
-              "contributors": 53,
-              "contributorGrowth": "+0%",
-              "newRepos": 1,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/akto-api-security",
-              "websiteUrl": "https://www.akto.io"
-            },
-            {
-              "name": "tenzir",
-              "description": "Open source data pipelines for security teams",
-              "stage": "Series A/B",
-              "geography": "EU",
-              "commitVelocity14d": 129,
-              "commitVelocityChange": "+24%",
-              "contributors": 48,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/tenzir",
-              "websiteUrl": "https://tenzir.com"
-            },
-            {
-              "name": "fleetdm",
-              "description": "Open device, endpoint, and vulnerability management for everything from macOS to Android.",
-              "stage": "Growth",
-              "geography": "Unknown",
-              "commitVelocity14d": 247,
-              "commitVelocityChange": "+13%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/fleetdm",
-              "websiteUrl": "https://fleetdm.com"
             }
           ],
           "faqs": [
             {
               "question": "What engineering signals are cybersecurity startups showing in Q3 2025?",
-              "answer": "In Q3 2025, we are tracking 17 cybersecurity startups with measurable GitHub engineering signals. 8 of 17 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 13 of the tracked companies. The average 14-day commit velocity across the sector is 171 commits, with bytebase leading at 704 commits (+102% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q3 2025, we are tracking 22 cybersecurity startups with measurable GitHub engineering signals. 11 of 22 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 16 of the tracked companies. The average 14-day commit velocity across the sector is 154 commits, with bytebase leading at 704 commits (+102% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which cybersecurity startup has the highest engineering acceleration in Q3 2025?",
@@ -2629,7 +3041,7 @@
             },
             {
               "question": "Where are the most active cybersecurity engineering teams located?",
-              "answer": "Among the 17 cybersecurity startups we track, US accounts for the highest concentration with 6 teams. Startups protecting systems, networks, and data from digital attacks. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+              "answer": "Among the 22 cybersecurity startups we track, US accounts for the highest concentration with 8 teams. Startups protecting systems, networks, and data from digital attacks. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
             }
           ]
         }

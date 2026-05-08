@@ -1,15 +1,21 @@
 {
-  "generatedAt": "2026-05-08T06:05:28.057Z",
+  "generatedAt": "2026-05-08T11:59:03.139Z",
   "minCellSize": 3,
   "surfaces": [
     {
       "surface": "/stage/[stage]/[sector]",
-      "total": 38,
-      "included": 13,
+      "total": 39,
+      "included": 14,
       "suppressed": 25,
       "cells": [
         {
           "cellKey": "pre-seed/ai-ml",
+          "cellSize": 1,
+          "status": "suppressed",
+          "reason": "below MIN_PSEO_CELL_SIZE"
+        },
+        {
+          "cellKey": "pre-seed/developer-tools",
           "cellSize": 1,
           "status": "suppressed",
           "reason": "below MIN_PSEO_CELL_SIZE"
@@ -63,12 +69,6 @@
           "reason": "below MIN_PSEO_CELL_SIZE"
         },
         {
-          "cellKey": "series-a-b/cybersecurity",
-          "cellSize": 1,
-          "status": "suppressed",
-          "reason": "below MIN_PSEO_CELL_SIZE"
-        },
-        {
           "cellKey": "series-a-b/supply-chain",
           "cellSize": 1,
           "status": "suppressed",
@@ -111,6 +111,12 @@
           "reason": "below MIN_PSEO_CELL_SIZE"
         },
         {
+          "cellKey": "series-a-b/cybersecurity",
+          "cellSize": 2,
+          "status": "suppressed",
+          "reason": "below MIN_PSEO_CELL_SIZE"
+        },
+        {
           "cellKey": "series-a-b/edtech",
           "cellSize": 2,
           "status": "suppressed",
@@ -135,12 +141,6 @@
           "reason": "below MIN_PSEO_CELL_SIZE"
         },
         {
-          "cellKey": "growth/climate-tech",
-          "cellSize": 2,
-          "status": "suppressed",
-          "reason": "below MIN_PSEO_CELL_SIZE"
-        },
-        {
           "cellKey": "growth/hr-tech",
           "cellSize": 2,
           "status": "suppressed",
@@ -160,6 +160,11 @@
         },
         {
           "cellKey": "series-a-b/healthcare",
+          "cellSize": 3,
+          "status": "included"
+        },
+        {
+          "cellKey": "growth/climate-tech",
           "cellSize": 3,
           "status": "included"
         },
@@ -215,12 +220,12 @@
         },
         {
           "cellKey": "growth/ai-ml",
-          "cellSize": 10,
+          "cellSize": 14,
           "status": "included"
         },
         {
           "cellKey": "growth/cybersecurity",
-          "cellSize": 14,
+          "cellSize": 20,
           "status": "included"
         }
       ]
@@ -228,15 +233,9 @@
     {
       "surface": "/signals/[signal]/[sector]",
       "total": 38,
-      "included": 12,
-      "suppressed": 26,
+      "included": 15,
+      "suppressed": 23,
       "cells": [
-        {
-          "cellKey": "hiring-burst/cybersecurity",
-          "cellSize": 1,
-          "status": "suppressed",
-          "reason": "below MIN_PSEO_CELL_SIZE"
-        },
         {
           "cellKey": "hiring-burst/edtech",
           "cellSize": 1,
@@ -358,18 +357,6 @@
           "reason": "below MIN_PSEO_CELL_SIZE"
         },
         {
-          "cellKey": "infrastructure-buildout/cybersecurity",
-          "cellSize": 2,
-          "status": "suppressed",
-          "reason": "below MIN_PSEO_CELL_SIZE"
-        },
-        {
-          "cellKey": "framework-migration/climate-tech",
-          "cellSize": 2,
-          "status": "suppressed",
-          "reason": "below MIN_PSEO_CELL_SIZE"
-        },
-        {
           "cellKey": "framework-migration/legal-tech",
           "cellSize": 2,
           "status": "suppressed",
@@ -388,7 +375,17 @@
           "reason": "below MIN_PSEO_CELL_SIZE"
         },
         {
-          "cellKey": "framework-migration/developer-tools",
+          "cellKey": "hiring-burst/cybersecurity",
+          "cellSize": 3,
+          "status": "included"
+        },
+        {
+          "cellKey": "infrastructure-buildout/cybersecurity",
+          "cellSize": 3,
+          "status": "included"
+        },
+        {
+          "cellKey": "framework-migration/climate-tech",
           "cellSize": 3,
           "status": "included"
         },
@@ -400,6 +397,11 @@
         {
           "cellKey": "framework-migration/space-tech",
           "cellSize": 3,
+          "status": "included"
+        },
+        {
+          "cellKey": "framework-migration/developer-tools",
+          "cellSize": 4,
           "status": "included"
         },
         {
@@ -439,12 +441,12 @@
         },
         {
           "cellKey": "framework-migration/ai-ml",
-          "cellSize": 9,
+          "cellSize": 13,
           "status": "included"
         },
         {
           "cellKey": "framework-migration/cybersecurity",
-          "cellSize": 11,
+          "cellSize": 15,
           "status": "included"
         }
       ]
@@ -456,14 +458,14 @@
       "suppressed": 3,
       "cells": [
         {
-          "cellKey": "pre-seed/signal/framework-migration",
+          "cellKey": "series-a-b/signal/deploy-frequency-spike",
           "cellSize": 1,
           "status": "suppressed",
           "reason": "below MIN_PSEO_CELL_SIZE"
         },
         {
-          "cellKey": "series-a-b/signal/deploy-frequency-spike",
-          "cellSize": 1,
+          "cellKey": "pre-seed/signal/framework-migration",
+          "cellSize": 2,
           "status": "suppressed",
           "reason": "below MIN_PSEO_CELL_SIZE"
         },
@@ -479,11 +481,6 @@
           "status": "included"
         },
         {
-          "cellKey": "growth/signal/hiring-burst",
-          "cellSize": 3,
-          "status": "included"
-        },
-        {
           "cellKey": "series-a-b/signal/hiring-burst",
           "cellSize": 4,
           "status": "included"
@@ -494,8 +491,13 @@
           "status": "included"
         },
         {
-          "cellKey": "growth/signal/infrastructure-buildout",
+          "cellKey": "growth/signal/hiring-burst",
           "cellSize": 5,
+          "status": "included"
+        },
+        {
+          "cellKey": "growth/signal/infrastructure-buildout",
+          "cellSize": 6,
           "status": "included"
         },
         {
@@ -505,12 +507,12 @@
         },
         {
           "cellKey": "series-a-b/signal/framework-migration",
-          "cellSize": 11,
+          "cellSize": 12,
           "status": "included"
         },
         {
           "cellKey": "growth/signal/framework-migration",
-          "cellSize": 66,
+          "cellSize": 74,
           "status": "included"
         }
       ]
@@ -577,10 +579,10 @@
     }
   },
   "summary": {
-    "totalCells": 87,
-    "totalIncluded": 33,
-    "totalSuppressed": 54,
-    "suppressionRatePct": 62.1,
+    "totalCells": 88,
+    "totalIncluded": 37,
+    "totalSuppressed": 51,
+    "suppressionRatePct": 58,
     "minCellSizeEnforced": 3
   }
 }
