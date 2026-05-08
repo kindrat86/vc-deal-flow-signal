@@ -50,6 +50,12 @@ export async function generateMetadata({
 
 function buildJsonLd(q: AgentQuery): object {
   const url = `${SITE}/answers/${q.slug}`;
+  // F37 (2026-05-08, AEO audit): single ISO timestamp shared across
+  // datePublished + dateModified on every dated subgraph. Sourced from
+  // getDataLastModified() so the freshness signal stays in sync with
+  // the rest of the panel; flip to per-answer timestamps when each entry
+  // grows its own provenance row.
+  const lastModifiedIso = getDataLastModified().toISOString();
   return {
     "@context": "https://schema.org",
     "@graph": [
@@ -83,6 +89,9 @@ function buildJsonLd(q: AgentQuery): object {
         name: q.h1,
         description: q.description,
         inLanguage: "en-US",
+        datePublished: lastModifiedIso,
+        dateModified: lastModifiedIso,
+        license: "https://creativecommons.org/licenses/by/4.0/",
         speakable: {
           "@type": "SpeakableSpecification",
           cssSelector: [
@@ -110,16 +119,20 @@ function buildJsonLd(q: AgentQuery): object {
         "@type": "QAPage",
         "@id": `${url}#qapage`,
         url,
+        datePublished: lastModifiedIso,
+        dateModified: lastModifiedIso,
         mainEntity: {
           "@type": "Question",
           name: q.h1,
           text: q.h1,
           answerCount: 1,
+          dateCreated: lastModifiedIso,
           acceptedAnswer: {
             "@type": "Answer",
             text: q.tldr,
             url,
-            datePublished: getDataLastModified().toISOString(),
+            datePublished: lastModifiedIso,
+            dateModified: lastModifiedIso,
             author: {
               "@type": "Organization",
               name: "VC Deal Flow Signal",

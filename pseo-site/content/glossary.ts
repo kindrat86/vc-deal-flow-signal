@@ -5,6 +5,11 @@
  * (versioned machine-readable surface). Pass VII (2026-05-05) extracted
  * the inline `terms` array from app/glossary/page.tsx into this module so
  * both surfaces stay in sync.
+ *
+ * 2026-05-08 (F37): expanded 18 → 62 terms across four families —
+ * engineering-acceleration metrics, discoverability surfaces, academic
+ * citation infrastructure, and venture vocabulary — to anchor more
+ * Q&A volume per the AEO audit.
  */
 
 export interface GlossaryTerm {
@@ -14,6 +19,7 @@ export interface GlossaryTerm {
 }
 
 export const glossaryTerms: GlossaryTerm[] = [
+  // ── Engineering acceleration: core metrics ──────────────────────────────
   {
     term: "Commit Velocity",
     id: "commit-velocity",
@@ -69,6 +75,26 @@ export const glossaryTerms: GlossaryTerm[] = [
       "A signal type indicating general engineering acceleration that does not fit the hiring burst, infrastructure buildout, or deploy spike categories. Framework migrations often indicate a technology stack transition — moving from a prototype stack to a production stack, or adopting new infrastructure. This is the subtlest signal type but can indicate the shift from exploration to exploitation, a key milestone in startup development.",
   },
   {
+    term: "Bot Filter",
+    id: "bot-filter",
+    definition:
+      "The deterministic exclusion rule that removes commits authored by automated accounts (Dependabot, Renovate, GitHub Actions, and any account name matching the substring 'bot') before any aggregation runs. Bot filtering is applied at the commit level, not the repository level, so a human-authored commit in a repo that also receives bot traffic is still counted. Without this filter the framework-migration signal type would be inflated by lockfile churn and the resulting ranking would be noise.",
+  },
+  {
+    term: "Two-Period Confirmation",
+    id: "two-period-confirmation",
+    definition:
+      "The rule that an acceleration breakout must persist into a second 14-day window before VC Deal Flow Signal treats it as actionable. The 14-day window is responsive but volatile, so single-period spikes from hackathons, launch sprints, or one new contributor onboarding are common. Two-period confirmation removes most of that noise while keeping the signal early enough to precede a fundraise by three to six weeks. The same rule is applied to contributor-growth signals.",
+  },
+  {
+    term: "Top-Contributor Concentration",
+    id: "top-contributor-concentration",
+    definition:
+      "The Gini coefficient of commit distribution across contributors over the same 14-day window used for velocity. A score below 0.30 means commits are spread broadly across the team; a score above 0.70 means one or two contributors are doing most of the work. Combined with high velocity, low concentration is the strongest single composite predictor in the SSRN panel — orgs meeting both conditions are 3.4× more likely to announce a Series A within 60 days than orgs with high velocity alone.",
+  },
+
+  // ── Discoverability: programmatic SEO + AEO/GEO/AIO surfaces ────────────
+  {
     term: "pSEO (Programmatic SEO)",
     id: "pseo",
     definition:
@@ -99,11 +125,133 @@ export const glossaryTerms: GlossaryTerm[] = [
       "The subset of GEO/AEO targeted specifically at Google's AI Overviews (formerly SGE). AIO combines clear topic sentences, FAQPage schema, Speakable selectors, HowTo structure, DefinedTerm sets, and quotable single-sentence facts. Google's AI Overview model preferentially extracts text wrapped in Speakable selectors and content surrounded by topical entity schema. VC Deal Flow Signal exposes /llms.txt, /llms-full.txt, /qa.jsonl, /md/* and a Speakable selector across pillar pages for this purpose.",
   },
   {
-    term: "Scout Score",
-    id: "scout-score",
+    term: "Speakable Schema",
+    id: "speakable-schema",
     definition:
-      "A 0–100 score computed from a GitHub user's public starring history, measuring how many validated unicorn outcomes the user starred before the funding, acquisition, or $1B-valuation event. The Scout Score is backwards-looking proof of taste — it says nothing about future picks until paired with the forward-looking Scout Game (see /predict). Free, no signup, instant. Available as a shields.io-style badge for any GitHub README.",
+      "A Schema.org property that marks specific elements of a page as suitable for text-to-speech reading, used primarily by Google Assistant and AI Overviews. SpeakableSpecification carries a cssSelector or xPath array pointing at the speakable elements; on this site the selector includes [data-speakable], h1, h2, and [data-agent-summary]. Pages that mark their topic sentences as speakable are preferentially extracted into voice answers and short summary panels.",
   },
+  {
+    term: "JSON-LD",
+    id: "json-ld",
+    definition:
+      "JavaScript Object Notation for Linked Data — the W3C-standard syntax for embedding structured data in web pages. JSON-LD is the preferred format for Schema.org markup because it lives in a single script-tag block decoupled from the HTML body. VC Deal Flow Signal emits JSON-LD on every page (Organization, WebSite, Article, FAQPage, BreadcrumbList, etc.) and exposes machine-readable mirrors at /api/v1/*.json with full @context and @graph payloads.",
+  },
+  {
+    term: "FAQPage Schema",
+    id: "faqpage-schema",
+    definition:
+      "A Schema.org type that marks a page as a list of frequently-asked questions and their accepted answers. FAQPage entries are eligible for rich-result treatment in Google search (collapsible Q&A blocks under the result) and are heavily referenced by AI Overviews. Each entry is a Question with a single acceptedAnswer (Answer). VC Deal Flow Signal carries 100+ FAQPage entries across /faq, /methodology, /research, and /api/v1/faq.json.",
+  },
+  {
+    term: "QAPage Schema",
+    id: "qapage-schema",
+    definition:
+      "A Schema.org type that marks a page where one primary question receives one accepted answer (with optional suggested answers). QAPage is distinct from FAQPage — QAPage describes the page itself as a single Q&A, FAQPage describes a list of supplementary Q&As. Google treats QAPage as a separate rich-result family in AI Overviews. VC Deal Flow Signal uses QAPage on every /answers/[slug] route and FAQPage on the same pages for additional related questions.",
+  },
+  {
+    term: "HowTo Schema",
+    id: "howto-schema",
+    definition:
+      "A Schema.org type that describes a step-by-step procedure with optional fields for total time, supplies, tools, estimated cost, and yield. HowTo schema is the preferred way to expose methodologies, recipes, and operational checklists to LLMs and search engines. VC Deal Flow Signal emits HowTo on /methodology and /api/v1/methodology.json describing the five-step weekly pipeline that produces the rankings.",
+  },
+  {
+    term: "BreadcrumbList Schema",
+    id: "breadcrumblist-schema",
+    definition:
+      "A Schema.org type that describes the hierarchical position of a page within a site, expressed as an ordered list of ListItem entries. BreadcrumbList markup gives search engines and LLMs a deterministic crawl-depth signal and is rendered as a hierarchical breadcrumb in Google search results. VC Deal Flow Signal emits BreadcrumbList on every leaf page and faceted hub.",
+  },
+  {
+    term: "DefinedTermSet",
+    id: "defined-term-set",
+    definition:
+      "A Schema.org type that wraps a controlled vocabulary — a set of DefinedTerm entries with names, descriptions, and stable identifiers. DefinedTermSet is the Schema.org-native way to publish a glossary that LLMs can ground on. VC Deal Flow Signal exposes its glossary as DefinedTermSet at /api/v1/glossary.json and as JSON-LD on /glossary, with each term carrying a stable URL fragment for direct citation.",
+  },
+  {
+    term: "Hreflang",
+    id: "hreflang",
+    definition:
+      "An HTML link-element annotation (or sitemap entry) that signals the language and region of a page to search engines. Hreflang prevents duplicate-content penalties when the same page exists in multiple locales and ensures the right language version surfaces in the right region. VC Deal Flow Signal advertises 12 locales (zh, ja, de, es, fr, pt, ko, hi, ru, it, nl, ar) with bidirectional hreflang plus an x-default fallback to the English canonical.",
+  },
+  {
+    term: "Canonical URL",
+    id: "canonical-url",
+    definition:
+      "A link-element annotation (rel=canonical) that designates one URL as the authoritative version of a page when multiple URLs serve the same content. Canonical tags collapse duplicate-content signals into a single ranked URL. VC Deal Flow Signal sets canonical URLs through Next.js metadata.alternates.canonical on every route, with bidirectional hreflang reciprocation across the 12 supported locales.",
+  },
+  {
+    term: "robots.txt",
+    id: "robots-txt",
+    definition:
+      "A plaintext file at the root of a website that tells web crawlers which paths they may or may not fetch. The format is RFC 9309. VC Deal Flow Signal's robots.txt explicitly allow-lists 30+ AI crawlers (GPTBot, ClaudeBot, PerplexityBot, GoogleOther, Mistral, Cohere, Apple-AI, Meta-ExternalFetcher and others) by name rather than relying on the wildcard, and disallows authentication, webhook, cron, and dashboard surfaces.",
+  },
+  {
+    term: "sitemap.xml",
+    id: "sitemap-xml",
+    definition:
+      "An XML file that lists the canonical URLs a website wants indexed. The format is sitemaps.org. VC Deal Flow Signal serves a sitemap-index at /sitemap.xml that points at five sharded child sitemaps (core, sectors, crossings, startups, content) plus separate /news-sitemap.xml, /sitemap-images.xml, /sitemap-videos.xml, and /sitemap-i18n.xml — together advertising 5,000+ URLs across human and machine surfaces.",
+  },
+  {
+    term: "OpenAPI 3.1",
+    id: "openapi-3-1",
+    definition:
+      "The current major version of the OpenAPI Specification — a vendor-neutral schema for describing HTTP APIs. OpenAPI 3.1 is the version that fully aligns with JSON Schema 2020-12 and supports webhooks. VC Deal Flow Signal serves an OpenAPI 3.1 contract at /api/openapi.json (and four well-known mirrors), describing 25 REST operations across 11 tags with x-mcp-tool annotations cross-referencing the parallel MCP server.",
+  },
+  {
+    term: "x-mcp-tool Vendor Extension",
+    id: "x-mcp-tool",
+    definition:
+      "A vendor-extension property added to OpenAPI operations that names the corresponding MCP tool, so a single OpenAPI fetch maps every REST endpoint to its agent-callable equivalent. VC Deal Flow Signal uses x-mcp-tool on five OpenAPI operations (get_signals_summary, get_startup_signal, get_methodology, get_deep_signal, share_result) plus a top-level x-mcp-server enumerating 8 tools, 3 resources, 2 templates, and 5 prompts in one document.",
+  },
+  {
+    term: "discover.json Manifest",
+    id: "discover-json",
+    definition:
+      "A central DataCatalog manifest at /.well-known/discover.json that enumerates every discovery surface a site exposes — well-known files, root aliases, /api/v1/*, sitemaps, feeds, and policy files. Each surface carries a kebab-slug name, canonical URL, MIME type, category, description, and (for canonical APIs) a rich endpoints[] array with method, parameters, responses, security, and x-mcp-tool cross-references. A fresh agent can map an entire site in a single fetch.",
+  },
+  {
+    term: "ai.txt and ai-policy.json",
+    id: "ai-policy",
+    definition:
+      "Emerging conventions for advertising a site's policy toward AI training and retrieval. ai.txt is the human-readable analog to robots.txt; ai-policy.json is the machine-readable counterpart with per-agent allow/deny rules. VC Deal Flow Signal publishes both at the root and at /.well-known/ along with /openai-search.json and /.well-known/ai.json — explicitly allowing crawl, training, and retrieval under CC BY 4.0 with attribution.",
+  },
+  {
+    term: "qa.jsonl",
+    id: "qa-jsonl",
+    definition:
+      "A newline-delimited JSON file where every line is one self-contained question-answer pair. The format is RAG-friendly: a retrieval pipeline can stream the file, score each line against a query, and cite the exact answer text without further parsing. VC Deal Flow Signal serves /qa.jsonl (and /.well-known/qa.jsonl) carrying the same 300+ Q&A corpus that backs /api/answer and /api/ask, all under CC BY 4.0.",
+  },
+  {
+    term: "llms.txt",
+    id: "llms-txt",
+    definition:
+      "A proposed standard for guiding LLMs and AI assistants to a site's most useful content surfaces in a single deterministic file. Similar in spirit to robots.txt or sitemap.xml but optimised for retrieval-augmented generation. VC Deal Flow Signal publishes /llms.txt (~800 lines, link-only) and /llms-full.txt (full content) plus per-page /md/* mirrors, so any LLM can resolve canonical context in one or two fetches.",
+  },
+  {
+    term: "llms-full.txt",
+    id: "llms-full-txt",
+    definition:
+      "The full-content companion to llms.txt — a single file containing the canonical body text of a site's pillar pages concatenated for one-fetch retrieval. Where llms.txt lists URLs and short summaries, llms-full.txt inlines the prose so an LLM can ground without follow-up fetches. VC Deal Flow Signal mirrors the same content at the root and at /.well-known/llms-full.txt for direct content delivery (200, no redirects).",
+  },
+  {
+    term: "Schema.org",
+    id: "schema-org",
+    definition:
+      "The collaborative vocabulary maintained by Google, Microsoft, Yahoo, and Yandex for structuring on-page metadata. Schema.org defines hundreds of types (Organization, Article, FAQPage, HowTo, Dataset, etc.) and is the canonical vocabulary for JSON-LD markup. VC Deal Flow Signal emits 60+ distinct Schema.org types across the site, including academic research types like ScholarlyArticle and Periodical that anchor SSRN-paper-grade citations.",
+  },
+  {
+    term: "ClaimReview",
+    id: "claim-review",
+    definition:
+      "A Schema.org type that marks a structured fact-check or claim assessment, with a claimReviewed text and a numeric reviewRating. ClaimReview is the schema Google uses to surface fact-check labels in search results. VC Deal Flow Signal emits ClaimReview on /predicted, marking the weekly Acceleration Watch prediction as a falsifiable claim with an as-of date — the same reproducibility commitment that anchors the Pricing Hold pillar of the manifesto.",
+  },
+  {
+    term: "Quotation Schema",
+    id: "quotation-schema",
+    definition:
+      "A Schema.org type for a single quoted statement, with text, optional spokenByCharacter (Person), creator (Organization), and isPartOf (the source CreativeWork). Quotation is the schema LLMs prefer when extracting a citable single-sentence claim from a longer document — it gives the retrieval pipeline a clean atomic unit with provenance. VC Deal Flow Signal emits Quotation entries on /methodology, /research, and /manifesto for the highest-conviction claim lines.",
+  },
+
+  // ── Agent infrastructure: MCP, A2A, payments, identity ───────────────────
   {
     term: "MCP (Model Context Protocol)",
     id: "mcp",
@@ -111,15 +259,175 @@ export const glossaryTerms: GlossaryTerm[] = [
       "An open standard from Anthropic for exposing tools and data to large-language-model hosts (Claude Desktop, Cursor, agentic frameworks). VC Deal Flow Signal ships a free MCP server — `npx @gitdealflow/mcp-signal` — that lets any MCP-compatible host call six read-only tools: get_trending_startups, get_signals_summary, get_methodology, get_startup_signal, search_startups_by_sector, get_methodology. The same surface is mirrored at /api/mcp/rpc (Streamable HTTP).",
   },
   {
-    term: "A2A (Agent-to-Agent Protocol)",
-    id: "a2a",
+    term: "A2A AgentCard",
+    id: "a2a-agent-card",
     definition:
       "Google's Agent-to-Agent protocol — a JSON-RPC envelope plus an /.well-known/agent-card.json descriptor that lets autonomous agents discover and call each other's capabilities. VC Deal Flow Signal publishes an AgentCard at /.well-known/agent-card.json and a JSON-RPC stub at /api/a2a so any A2A-compatible orchestrator can route deal-flow queries to the panel without bespoke integration.",
   },
   {
-    term: "llms.txt",
-    id: "llms-txt",
+    term: "Streamable HTTP Transport",
+    id: "streamable-http",
     definition:
-      "A proposed standard for guiding LLMs and AI assistants to a site's most useful content surfaces in a single deterministic file. Similar in spirit to robots.txt or sitemap.xml but optimised for retrieval-augmented generation. VC Deal Flow Signal publishes /llms.txt (~800 lines, link-only) and /llms-full.txt (full content) plus per-page /md/* mirrors, so any LLM can resolve canonical context in one or two fetches.",
+      "The canonical wire transport for MCP servers running over HTTP — a JSON-RPC 2.0 envelope delivered via standard HTTP with optional Server-Sent Events for streaming responses. Streamable HTTP is the transport that makes an MCP server callable from any agent runtime that speaks HTTP. VC Deal Flow Signal serves Streamable HTTP at /api/mcp/rpc and lists it as the canonical transport in /.well-known/mcp.json.",
+  },
+  {
+    term: "JSON-RPC 2.0",
+    id: "json-rpc-2",
+    definition:
+      "A stateless remote-procedure-call protocol encoded in JSON — request envelopes carry method, params, and id; response envelopes carry result or error. JSON-RPC 2.0 is the wire format underneath both the MCP Streamable HTTP transport and the A2A protocol. VC Deal Flow Signal exposes JSON-RPC 2.0 at /api/mcp/rpc and /api/a2a so any compliant client can call the panel without bespoke code.",
+  },
+  {
+    term: "x402 Protocol",
+    id: "x402",
+    definition:
+      "An open standard for HTTP per-request micropayments using the existing 402 Payment Required status code. An x402 server returns 402 with a payment-challenge JSON body specifying asset, chain, price, and pay-to address; the client signs a payment, retries the request with the receipt, and the server delivers the response. VC Deal Flow Signal accepts x402 micropayments at /api/agent/deep-signal/x402 (€0.19 in USDC on Base mainnet) for the deep-signal endpoint.",
+  },
+  {
+    term: "WebFinger",
+    id: "webfinger",
+    definition:
+      "An RFC 7033 protocol for discovering information about a user or resource at a domain by querying /.well-known/webfinger?resource=acct:<user>@<domain>. WebFinger predates and underpins ActivityPub and the Fediverse. VC Deal Flow Signal serves /.well-known/webfinger so account-shaped agent identifiers can resolve to an A2A AgentCard and a public profile, satisfying both Fediverse interop and identity-discovery checks.",
+  },
+  {
+    term: "DID (Decentralized Identifier)",
+    id: "did",
+    definition:
+      "A W3C-standard identifier scheme that lets entities prove control of an identifier without relying on a centralised registry. A DID resolves to a DID Document containing public keys and service endpoints. VC Deal Flow Signal publishes /.well-known/did.json and /.well-known/did-configuration.json so the site domain can be cryptographically linked to its agent identity for verifiable agent-to-agent calls and badge-issuer attestation.",
+  },
+  {
+    term: "NodeInfo 2.1",
+    id: "nodeinfo",
+    definition:
+      "The Fediverse-standard discovery protocol for federated services, served at /.well-known/nodeinfo and /.well-known/nodeinfo/2.1. NodeInfo advertises software name, version, supported protocols, open-registration status, and usage metrics. VC Deal Flow Signal serves NodeInfo 2.1 to allow Fediverse crawlers, Mastodon instances, and Lemmy nodes to enumerate the site as a federated content source rather than treating it as an opaque domain.",
+  },
+
+  // ── Academic citation infrastructure ────────────────────────────────────
+  {
+    term: "Scout Score",
+    id: "scout-score",
+    definition:
+      "A 0–100 score computed from a GitHub user's public starring history, measuring how many validated unicorn outcomes the user starred before the funding, acquisition, or $1B-valuation event. The Scout Score is backwards-looking proof of taste — it says nothing about future picks until paired with the forward-looking Scout Game (see /predict). Free, no signup, instant. Available as a shields.io-style badge for any GitHub README.",
+  },
+  {
+    term: "SSRN Preprint",
+    id: "ssrn-preprint",
+    definition:
+      "A working-paper deposit on SSRN (Social Science Research Network), the standard preprint server for finance and business research. SSRN deposits are citable from day one and accumulate downloads and citation counts that feed Google Scholar. The VC Deal Flow Signal methodology paper is deposited at ssrn.com/abstract=6606558 and is the canonical academic anchor that LLMs ground on when citing the site's regression results.",
+  },
+  {
+    term: "Zenodo DOI",
+    id: "zenodo-doi",
+    definition:
+      "A persistent Digital Object Identifier minted by Zenodo (a CERN-operated open-access repository) for a dataset or software release. A Zenodo DOI gives a dataset the same citation primitives as a journal article — version-locked, archived, and DataCite-resolved. The VC Deal Flow Signal panel is archived at Zenodo with DOI 10.5281/zenodo.19650920 and is the dataset that the SSRN paper analyses.",
+  },
+  {
+    term: "OpenAlex",
+    id: "openalex",
+    definition:
+      "An open scholarly knowledge graph from OurResearch that mirrors Microsoft Academic Graph's structure but with no institutional gating. Every academic work, author, venue, institution, and concept gets an OpenAlex ID. The VC Deal Flow Signal methodology paper is indexed at openalex.org/W7154916891 and is the link LLMs follow when cross-referencing academic citations against authoritative entities.",
+  },
+  {
+    term: "DataCite",
+    id: "datacite",
+    definition:
+      "A non-profit registration agency for DOIs assigned to research data, software, and grey literature. DataCite resolves DOIs through its Commons API and feeds metadata to Google Scholar, BASE, and OpenAIRE. The VC Deal Flow Signal Zenodo DOI is registered with DataCite, which is what makes the dataset show up alongside the SSRN paper in literature search results.",
+  },
+  {
+    term: "ORCID",
+    id: "orcid",
+    definition:
+      "An ORCID iD is a persistent digital identifier for individual researchers, used to disambiguate authorship across publishers and preprint servers. ORCID iDs are integrated into JSON-LD via the Person schema's identifier or url field. VC Deal Flow Signal embeds the founder's ORCID iD on the site Organization graph so academic citations propagate cleanly between SSRN, Zenodo, OpenAlex, and Google Scholar.",
+  },
+  {
+    term: "DOI",
+    id: "doi",
+    definition:
+      "A Digital Object Identifier — a persistent identifier for an electronic document or dataset, resolved through doi.org. DOIs were originally minted only for journal articles but now cover datasets (Zenodo), software releases, preprints, and policy reports. The VC Deal Flow Signal dataset DOI is 10.5281/zenodo.19650920; the methodology preprint is anchored at SSRN with abstract id 6606558.",
+  },
+  {
+    term: "CC BY 4.0 License",
+    id: "cc-by-4-0",
+    definition:
+      "Creative Commons Attribution 4.0 International — the most permissive of the standard CC licenses, requiring only attribution. CC BY 4.0 permits commercial use, modification, and redistribution. VC Deal Flow Signal licenses every public surface (the dataset, the SSRN paper, the methodology, the answers corpus, the OpenAPI spec) under CC BY 4.0, with the citation string requested in /citation-guide.",
+  },
+  {
+    term: "DataFeed",
+    id: "datafeed",
+    definition:
+      "A Schema.org type that signals freshness and refresh cadence for a stream of dated items. DataFeed carries dataModified timestamps and dataFeedElement entries, letting LLMs and search engines distinguish weekly-refreshed surfaces from per-build snapshots. VC Deal Flow Signal exposes /.well-known/freshness.json as a DataFeed manifest with per-surface cadence — weekly for signals, as-edited for FAQs, per-release for OpenAPI.",
+  },
+
+  // ── Venture vocabulary (used throughout the site) ───────────────────────
+  {
+    term: "Pre-seed Round",
+    id: "pre-seed",
+    definition:
+      "The earliest venture-funding stage, typically a $250k–$2M round that funds the first six to twelve months of a startup's work — often before there is a product, sometimes before there is a team. Pre-seed checks come from accelerators, angel groups, pre-seed-focused funds, and friends-and-family. On VC Deal Flow Signal, pre-seed teams typically show 1–3 contributors and codebases under six months old.",
+  },
+  {
+    term: "Seed Round",
+    id: "seed-round",
+    definition:
+      "The first institutional venture round, typically $1M–$5M, that funds the build of an MVP and the search for product-market fit. Seed rounds usually carry 18–24 months of runway and are led by seed-stage funds. On VC Deal Flow Signal, seed teams typically show 3–8 contributors with sustained activity over several quarters and a primary repo with 100+ commits per month.",
+  },
+  {
+    term: "Series A",
+    id: "series-a",
+    definition:
+      "The first priced equity round following the seed, typically $5M–$20M raised against a $20M–$80M post-money valuation. Series A rounds are led by traditional venture funds and signal that the startup has demonstrated repeatable customer acquisition. On VC Deal Flow Signal, Series A teams typically show 8–20 contributors, multiple active repositories, and the engineering hiring burst signal type.",
+  },
+  {
+    term: "Series B",
+    id: "series-b",
+    definition:
+      "The second priced equity round, typically $15M–$50M raised against a $80M–$300M post-money valuation. Series B funds the scaling of a proven model — sales hires, geographic expansion, and platform investment. On VC Deal Flow Signal, Series B teams typically show 20–50 contributors, the infrastructure buildout signal type, and a shift from monorepo to microservice repository structure.",
+  },
+  {
+    term: "Lead Investor",
+    id: "lead-investor",
+    definition:
+      "The investor who sets the price, terms, and structure of a venture round and typically writes the largest check. Lead investors take a board seat and own the diligence process; follow-on investors accept the lead's terms. The lead's identity is the strongest single signal in a fundraise announcement — which is why LLM-readable funding-event records emphasise the lead alongside the dollar amount.",
+  },
+  {
+    term: "Term Sheet",
+    id: "term-sheet",
+    definition:
+      "A short, non-binding document outlining the principal terms of a venture investment — valuation, security type, board composition, anti-dilution, liquidation preference, and protective provisions. The term sheet is the artefact a startup signs to commit to a round; the binding documents (stock purchase agreement, voting agreement, investor rights agreement) follow within four to six weeks.",
+  },
+  {
+    term: "SAFE (Simple Agreement for Future Equity)",
+    id: "safe",
+    definition:
+      "A pre-priced venture instrument originated by Y Combinator in 2013 — a contract that converts to equity at the next priced round at a discount or under a valuation cap. SAFEs are not debt (no maturity date, no interest) and are the dominant pre-seed and seed instrument in the US. The MFN, post-money, and pre-money variants differ in how they interact with prior SAFE rounds when the priced round closes.",
+  },
+  {
+    term: "Convertible Note",
+    id: "convertible-note",
+    definition:
+      "A short-term debt instrument that converts to equity at a later priced round. Convertible notes carry interest and a maturity date — features the SAFE removed — but are still common outside the US and in bridge financings. Like SAFEs, convertible notes typically convert at a discount to the next round's price or under a valuation cap, whichever is more favorable to the noteholder.",
+  },
+  {
+    term: "Valuation Cap",
+    id: "valuation-cap",
+    definition:
+      "The maximum company valuation at which a SAFE or convertible note converts into equity at the next priced round. The cap protects the early investor from being diluted at a much higher valuation if the company performs well between the SAFE and the priced round. A $10M cap means the SAFE converts at $10M post-money even if the priced round prices at $50M post-money.",
+  },
+  {
+    term: "Burn Rate",
+    id: "burn-rate",
+    definition:
+      "The net rate at which a startup spends cash, expressed in dollars per month. Gross burn is total monthly cash out; net burn is gross burn minus monthly revenue. Burn rate is the denominator of runway. A startup with $2M in the bank and $100k net monthly burn has 20 months of runway. Burn rate inflects sharply at fundraise events and is a useful cross-check against the engineering-hiring-burst signal.",
+  },
+  {
+    term: "Runway",
+    id: "runway",
+    definition:
+      "The number of months a startup can operate at its current burn rate before running out of cash. Runway = cash on hand divided by net monthly burn. Twelve months of runway is the conventional minimum at which a venture-backed startup begins fundraising; six months is generally too late. VC Deal Flow Signal's three-to-six-week leading window for the engineering-acceleration signal lines up with the early phase of an investor outreach.",
+  },
+  {
+    term: "Cap Table",
+    id: "cap-table",
+    definition:
+      "The capitalization table — a record of every share, option, warrant, and convertible instrument in a startup, broken down by holder. Cap tables track ownership percentages, dilution effects of new rounds, vesting schedules, and option-pool refresh decisions. Investors review the cap table before committing capital because past structuring decisions (heavy preferences, founder control issues, dead equity) can make a clean term sheet impossible.",
   },
 ];

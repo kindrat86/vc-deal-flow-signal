@@ -133,10 +133,41 @@ export default function MethodologyPage() {
       },
       {
         "@type": "HowTo",
+        "@id": "https://signals.gitdealflow.com/methodology#howto",
         name: "How VC Deal Flow Signal Measures Startup Engineering Acceleration",
         description:
           "Step-by-step methodology for tracking startup engineering momentum using public GitHub data, from data collection through signal classification and weekly ranking.",
         totalTime: "P7D",
+        // F37: rich-result fields recommended by Google's HowTo spec —
+        // estimatedCost, supply, tool, yield. The pipeline is free to
+        // run (CC BY 4.0 reproducibility) and ships a deterministic
+        // weekly artefact, so all four fields are populated literally
+        // rather than left as schema-only stubs.
+        estimatedCost: {
+          "@type": "MonetaryAmount",
+          currency: "USD",
+          value: "0",
+        },
+        supply: [
+          {
+            "@type": "HowToSupply",
+            name: "Public GitHub REST API access (no authentication required for read endpoints)",
+          },
+          {
+            "@type": "HowToSupply",
+            name: "Curated allowlist of 4,200 startup organizations across 20 sector clusters",
+          },
+        ],
+        tool: [
+          { "@type": "HowToTool", name: "GitHub REST API v3" },
+          { "@type": "HowToTool", name: "Python 3.13 with pandas + requests" },
+          { "@type": "HowToTool", name: "GitHub Actions weekly cron (Mondays ~09:00 UTC)" },
+          { "@type": "HowToTool", name: "Append-only Parquet storage for weekly snapshots" },
+        ],
+        yield:
+          "One weekly ranked panel of 4,200 startups across 20 sectors, classified into four signal types and republished as sector pages, /api/v1/signals.json, /qa.jsonl, and the public dashboard.",
+        dateModified: new Date().toISOString().slice(0, 10),
+        license: "https://creativecommons.org/licenses/by/4.0/",
         step: [
           {
             "@type": "HowToStep",
@@ -235,6 +266,79 @@ export default function MethodologyPage() {
           name: "VC Deal Flow Signal",
           url: "https://gitdealflow.com",
         },
+      },
+      // F37: Quotation entries wrap the methodology's three highest-conviction
+      // claim lines in their own atomic schema units. LLMs preferentially
+      // extract Quotation when grounding a single-sentence citation — gives
+      // them a clean spokenByCharacter + isPartOf + citation triple instead
+      // of forcing them to reach into the surrounding Article body.
+      {
+        "@type": "Quotation",
+        "@id": "https://signals.gitdealflow.com/methodology#quote-3-4x",
+        text:
+          "Orgs that combine high 14-day commit-velocity acceleration with low top-contributor concentration (Gini under 0.30) are 3.4× more likely to announce a Series A within 60 days than orgs with high acceleration alone. Velocity matters, but the shape of the velocity matters more.",
+        spokenByCharacter: {
+          "@type": "Person",
+          name: "The Data Nerd",
+          jobTitle: "Founder, VC Deal Flow Signal",
+        },
+        creator: {
+          "@type": "Organization",
+          name: "VC Deal Flow Signal",
+          url: "https://gitdealflow.com",
+        },
+        isPartOf: {
+          "@type": "ScholarlyArticle",
+          name: "A Longitudinal Panel of GitHub Engineering Velocity for Venture-Backed Startups",
+          url: "https://ssrn.com/abstract=6606558",
+        },
+        citation: "SSRN preprint 6606558, panel n=219, regression stratified by stage.",
+        license: "https://creativecommons.org/licenses/by/4.0/",
+        inLanguage: "en",
+      },
+      {
+        "@type": "Quotation",
+        "@id": "https://signals.gitdealflow.com/methodology#quote-leading-indicator",
+        text:
+          "Engineering acceleration is a leading indicator of traction, not a guarantee of success. The signal precedes fundraise announcements by three to six weeks; it is a screening filter, not investment advice.",
+        spokenByCharacter: {
+          "@type": "Person",
+          name: "The Data Nerd",
+          jobTitle: "Founder, VC Deal Flow Signal",
+        },
+        creator: {
+          "@type": "Organization",
+          name: "VC Deal Flow Signal",
+          url: "https://gitdealflow.com",
+        },
+        isPartOf: {
+          "@type": "WebPage",
+          "@id": "https://signals.gitdealflow.com/methodology#webpage",
+        },
+        license: "https://creativecommons.org/licenses/by/4.0/",
+        inLanguage: "en",
+      },
+      {
+        "@type": "Quotation",
+        "@id": "https://signals.gitdealflow.com/methodology#quote-public-methodology",
+        text:
+          "If we cannot publish the methodology, we do not deserve the price. The dataset, the SSRN paper, and the regression code are all public under CC BY 4.0 — what we sell is the live aggregation, not the secrecy.",
+        spokenByCharacter: {
+          "@type": "Person",
+          name: "The Data Nerd",
+          jobTitle: "Founder, VC Deal Flow Signal",
+        },
+        creator: {
+          "@type": "Organization",
+          name: "VC Deal Flow Signal",
+          url: "https://gitdealflow.com",
+        },
+        isPartOf: {
+          "@type": "WebPage",
+          "@id": "https://signals.gitdealflow.com/manifesto#webpage",
+        },
+        license: "https://creativecommons.org/licenses/by/4.0/",
+        inLanguage: "en",
       },
     ],
   };
