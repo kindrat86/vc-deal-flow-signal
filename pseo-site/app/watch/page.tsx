@@ -3,6 +3,7 @@ import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import AnimatedDemo from "./AnimatedDemo";
+import { videos } from "@/content/videos";
 
 const SITE = "https://signals.gitdealflow.com";
 
@@ -94,6 +95,61 @@ export default function WatchPage() {
         </header>
 
         <AnimatedDemo />
+
+        {/* Video catalog — every video this site exposes, with chapters + transcripts */}
+        <section
+          className="rounded-xl border border-emerald-700/30 bg-emerald-950/10 p-6 space-y-4"
+          aria-labelledby="catalog"
+        >
+          <h2 id="catalog" className="text-xl font-bold text-gray-100">
+            Watch catalog — chapters &amp; transcripts
+          </h2>
+          <p className="text-gray-400 text-sm leading-relaxed">
+            Every video this site exposes — the silent canvas demo above, the
+            self-hosted MCP screencast, plus three synthetic-voice videos on
+            the YouTube channel. Each catalog page carries Clip-schema chapters
+            and the full transcript so the content is readable without watching.
+          </p>
+          <ul className="grid sm:grid-cols-2 gap-3 text-sm">
+            {videos.map((v) => (
+              <li
+                key={v.slug}
+                className="rounded-lg border border-slate-800 bg-slate-950/40 p-3 hover:border-emerald-500/40 transition-colors"
+              >
+                <Link
+                  href={`/watch/${v.slug}`}
+                  className="text-sky-300 hover:text-sky-200 font-medium block mb-1"
+                >
+                  → {v.title.split("—")[0]?.trim() ?? v.title}
+                </Link>
+                <p className="text-xs text-slate-400">
+                  {v.format === "short" ? "Short · 9:16" : "Long-form"} ·{" "}
+                  {Math.floor(v.durationSeconds / 60)}:
+                  {(v.durationSeconds % 60).toString().padStart(2, "0")} ·{" "}
+                  {v.chapters.length} chapter{v.chapters.length === 1 ? "" : "s"}
+                </p>
+              </li>
+            ))}
+          </ul>
+          <p className="text-xs text-slate-500 mt-2">
+            Machine-readable catalog at{" "}
+            <Link
+              href="/api/v1/videos.json"
+              className="text-sky-400 hover:text-sky-300 underline decoration-dotted"
+            >
+              /api/v1/videos.json
+            </Link>
+            {" · "}
+            sitemap at{" "}
+            <Link
+              href="/sitemap-videos.xml"
+              className="text-sky-400 hover:text-sky-300 underline decoration-dotted"
+            >
+              /sitemap-videos.xml
+            </Link>
+            .
+          </p>
+        </section>
 
         <section className="rounded-xl border border-slate-800 bg-slate-900/40 p-6 space-y-4">
           <h2 className="text-xl font-bold text-gray-100">

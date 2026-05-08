@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentSummary } from "@/components/AgentSummary";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { VideoEmbedBlock } from "@/components/VideoEmbedBlock";
 import { DataNerdAudio } from "@/components/DataNerdAudio";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
@@ -187,6 +188,8 @@ export default function PerfectWebinarPage() {
       <AgentMirrorLinks path="/perfect-webinar" />
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
+        {/* VEO anchor — 3-minute VSL version of this Perfect Webinar */}
+        <VideoEmbedBlock slug="perfect-webinar-vsl" variant="full" />
         {/* HOOK — Brunson rule: hook hard, lead with curiosity. */}
         <header className="space-y-4">
           <nav aria-label="Breadcrumb" className="text-xs text-gray-400">
