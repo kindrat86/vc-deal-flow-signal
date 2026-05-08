@@ -60,6 +60,7 @@ const PILLAR_LINKS = [
   { href: "/citations", label: "Citation guide", sub: "How to cite us", icon: "📚" },
   { href: "/state-of-github", label: "State of GitHub", sub: "Monthly engineering-velocity address", icon: "🏛️" },
   { href: "/watch", label: "Watch (silent demo)", sub: "90-second visual walkthrough", icon: "📺" },
+  { href: "/summit", label: "Summit", sub: "5 days · 20 anonymous-by-design talks · free during the live window", icon: "🎤" },
   { href: "/launch", label: "Launches", sub: "Active and archived 4-stage funnels", icon: "🚀" },
   { href: "/press", label: "Press kit", sub: "Wire-ready releases + boilerplate", icon: "📰" },
 ] as const;
