@@ -92,6 +92,56 @@ export default async function FirstLookDonePage({ searchParams }: Props) {
         </ul>
       </section>
 
+      {/* Brunson Traffic Secrets Ch 12 (Conversation Domination) — the
+          buyer is at peak commitment right now (just paid). The lowest-
+          friction post-purchase ask is not "buy something else", it's
+          "tell one person who'd want this". The sharable link is the
+          /firstlook URL with a ref tag so we can attribute referred
+          buyers in PostHog. No referral payout — this is a pure word-of-
+          mouth ask, congruent with the manifesto pillar #4 (Methodology
+          over personality / no growth-hacking schemes). */}
+      <section
+        aria-label="Tell one investor"
+        className="rounded-xl border border-amber-700/30 bg-amber-950/10 p-5 sm:p-6 space-y-3"
+      >
+        <p className="text-amber-300 text-[10px] sm:text-xs font-semibold uppercase tracking-wider">
+          One ask, then we&rsquo;re out of your inbox
+        </p>
+        <h2 className="text-gray-100 font-bold text-base sm:text-lg leading-snug">
+          Know one investor who reads code before decks?
+        </h2>
+        <p className="text-gray-400 text-sm leading-relaxed">
+          That&rsquo;s our buyer. If a name comes to mind, the share link
+          below opens a pre-written note — feel free to edit. We attribute
+          the referrer in our weekly write-up; nothing else, no payout, no
+          tracking pixel.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-2 pt-1">
+          <a
+            href={`mailto:?subject=${encodeURIComponent(
+              "Worth €7 — sector deep dive on GitHub momentum",
+            )}&body=${encodeURIComponent(
+              "I just bought one of these and the 24-hour intake is unusual.\n\nIt's €7, picks any of 19 venture sectors, and you get a 14-page PDF + raw CSV on which startups in that sector are accelerating on commit-velocity (the SSRN paper backs it up — 21–47 day lead on fundraise announcements).\n\nhttps://signals.gitdealflow.com/firstlook?ref=" +
+                encodeURIComponent(session.id),
+            )}`}
+            className="inline-flex items-center justify-center rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-semibold text-sm px-4 py-2.5 transition-colors"
+          >
+            ✉ Send a one-line email
+          </a>
+          <a
+            href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
+              "€7, 24h, one sector, 14-page PDF on commit-velocity acceleration. The SSRN-backed engine is unusual: signals.gitdealflow.com/firstlook?ref=" +
+                session.id,
+            )}`}
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            className="inline-flex items-center justify-center rounded-lg border border-slate-700 text-slate-300 hover:text-slate-100 hover:border-slate-600 text-sm px-4 py-2.5 transition-colors"
+          >
+            Share on X
+          </a>
+        </div>
+      </section>
+
       <p className="text-slate-600 text-xs leading-relaxed">
         Receipt: <code className="bg-slate-900 text-slate-400 px-1.5 py-0.5 rounded text-[11px]">{session.id}</code>
         <br />

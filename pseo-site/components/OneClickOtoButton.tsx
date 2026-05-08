@@ -5,7 +5,12 @@ import { useRouter } from "next/navigation";
 
 type Props = {
   sessionId: string;
-  oto: "sector_sweep_oto1" | "insider_oto2";
+  // Brunson DotCom Ch 18 — three-rung OTO ladder. sector_sweep_oto1 fires
+  // on /firstlook/thanks, insider_oto2 on /firstlook/downsell, and
+  // extra_sector_oto3 on /firstlook/last-chance after the buyer declines
+  // both upper rungs. Keep this union in lockstep with OtoKey in
+  // lib/stripe-tiers.ts.
+  oto: "sector_sweep_oto1" | "insider_oto2" | "extra_sector_oto3";
   acceptHref: string;
   declineHref: string;
   acceptLabel: string;

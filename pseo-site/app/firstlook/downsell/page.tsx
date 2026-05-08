@@ -123,9 +123,9 @@ export default async function FirstLookDownsellPage({ searchParams }: Props) {
           sessionId={session.id}
           oto="insider_oto2"
           acceptHref="/firstlook/done"
-          declineHref="/firstlook/done"
+          declineHref="/firstlook/last-chance"
           acceptLabel={`Yes — start Insider for ${fmt(firstMonthAmount)} this month`}
-          declineLabel="No thanks, just deliver my First Look"
+          declineLabel="No thanks, see one final option"
           acceptToneClass="bg-teal-500 hover:bg-teal-400 text-slate-950"
         />
 
