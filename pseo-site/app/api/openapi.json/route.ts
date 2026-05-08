@@ -9,9 +9,9 @@ export async function GET() {
     openapi: "3.1.0",
     info: {
       title: "VC Deal Flow Signal API",
-      version: "1.2.0",
+      version: "1.3.0",
       description:
-        "Unified OpenAPI 3.1 + MCP descriptor for startup engineering-acceleration data. Documents the public REST surface (signals, answers, citations, badges, deep signals, scout receipts, prediction markets) AND the MCP server tools, resources, prompts. Operations that have an MCP analog carry an `x-mcp-tool` vendor extension; the full MCP server is enumerated under the top-level `x-mcp-server` block. CC BY 4.0 attribution. No auth required for free endpoints; the paid Deep Signal endpoint uses a per-request credit-pack key delivered after Stripe checkout, OR x402 USDC pay-per-call on Base.",
+        "Unified OpenAPI 3.1 + MCP descriptor for startup engineering-acceleration data. Documents the public REST surface (signals, answers, citations, badges, deep signals, scout receipts, prediction markets) AND the MCP server tools, resources, prompts. Operations that have an MCP analog carry an `x-mcp-tool` vendor extension; the full MCP server is enumerated under the top-level `x-mcp-server` block. Default rate limits are declared at the `info.x-rate-limit` level; operations that override the default carry their own `x-rate-limit` block. CC BY 4.0 attribution. No auth required for free endpoints; the paid Deep Signal endpoint uses a per-request credit-pack key delivered after Stripe checkout, OR x402 USDC pay-per-call on Base.",
       contact: { email: "signal@gitdealflow.com" },
       license: {
         name: "Free with attribution (CC BY 4.0)",
@@ -19,9 +19,25 @@ export async function GET() {
       },
       "x-citation":
         "VC Deal Flow Signal (signals.gitdealflow.com), Q2 2026 data. SSRN: 6606558.",
-      "x-revision-date": "2026-05-07",
+      "x-revision-date": "2026-05-08",
       "x-mcp-tool-count": 8,
       "x-rest-operation-count": 25,
+      "x-rate-limit": {
+        default: {
+          requestsPerMinute: 60,
+          scope: "ip",
+          burst: 120,
+          onExceeded: { status: 429, header: "Retry-After" },
+          notes:
+            "Per-IP default for free, read-only routes. Static .json/.jsonl/.txt surfaces are edge-cached and effectively unlimited. Operations that override the default carry their own `x-rate-limit` extension. Paid /api/agent/deep-signal* routes are scoped to credit-pack key, not IP.",
+        },
+        retryAfter: {
+          mechanism: "header",
+          header: "Retry-After",
+          unit: "seconds",
+        },
+        documentation: `${BASE_URL}/api/v1/changelog.json`,
+      },
     },
     servers: [{ url: BASE_URL }],
     tags: [
@@ -101,6 +117,12 @@ export async function GET() {
               description: "Display name or GitHub org slug. Case-insensitive fuzzy match.",
             },
           ],
+          "x-rate-limit": {
+            requestsPerMinute: 30,
+            scope: "ip",
+            burst: 60,
+            onExceeded: { status: 429, header: "Retry-After" },
+          },
           responses: {
             "200": {
               description: "Best-match startup or { found: false }.",
@@ -111,7 +133,7 @@ export async function GET() {
               },
             },
             "400": { description: "Missing company parameter." },
-            "429": { description: "Rate limited (30/min/IP)." },
+            "429": { description: "Rate limited (30/min/IP). Retry after the `Retry-After` header." },
           },
         },
       },
@@ -288,13 +310,21 @@ export async function GET() {
           parameters: [
             { name: "username", in: "path", required: true, schema: { type: "string", minLength: 1, maxLength: 39 } },
           ],
+          "x-rate-limit": {
+            requestsPerMinute: 10,
+            scope: "ip",
+            burst: 20,
+            onExceeded: { status: 429, header: "Retry-After" },
+            notes:
+              "Tighter than the default because the scoring step calls the GitHub API and is bursty by nature.",
+          },
           responses: {
             "200": {
               description: "Scout score with personality + breakdown",
               content: { "application/json": { schema: { type: "object", additionalProperties: true } } },
             },
             "400": { description: "Invalid GitHub username." },
-            "429": { description: "Rate limited (10/min/IP)." },
+            "429": { description: "Rate limited (10/min/IP). Retry after the `Retry-After` header." },
           },
         },
       },
@@ -857,6 +887,7 @@ export async function GET() {
     "x-mcp": {
       rpcEndpoint: `${BASE_URL}/api/mcp/rpc`,
       manifestUrl: `${BASE_URL}/.well-known/mcp.json`,
+      skillsManifest: `${BASE_URL}/.well-known/skills.json`,
       protocolVersion: "2025-06-18",
     },
     "x-mcp-server": {
@@ -884,6 +915,7 @@ export async function GET() {
         { name: "Smithery", url: "https://smithery.ai/servers/kindrat86/mcp-deal-flow-signal" },
         { name: "Glama", url: "https://glama.ai/mcp/servers/kindrat86/mcp-deal-flow-signal" },
       ],
+      skillsManifest: `${BASE_URL}/.well-known/skills.json`,
       tools: [
         {
           name: "get_trending_startups",
@@ -1068,6 +1100,16 @@ export async function GET() {
       protocolVersion: "0.3.0",
     },
     "x-changelog": [
+      {
+        version: "1.3.0",
+        date: "2026-05-08",
+        changes: [
+          "Added `info.x-rate-limit` default (60/min/IP, burst 120) so paid agents discover throttling without hitting 429.",
+          "Added per-operation `x-rate-limit` overrides on /api/signal (30/min/IP) and /api/receipts/{username} (10/min/IP).",
+          "Added `x-mcp.skillsManifest` and `x-mcp-server.skillsManifest` pointing to /.well-known/skills.json — Anthropic-style skills card enumerating the 5 MCP prompts as agent-callable skills with explicit invoke contracts.",
+          "Added 11 extension-stripped /api/v1/<resource> aliases (signals, faq, methodology, glossary, answers, openapi, agents, changelog, dataset, pricing, uptime) for agents that strip file extensions; canonical URLs remain at .json/.jsonl variants.",
+        ],
+      },
       {
         version: "1.2.0",
         date: "2026-05-07",
