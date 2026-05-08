@@ -239,6 +239,45 @@ function bookWelcomeEmail(email: string): { subject: string; html: string } {
   };
 }
 
+// Brunson Cart-Funnel Ch 18 order-bump welcome — €5.96 Reader's Pack
+// (Kindle + raw CSV + Jupyter replication notebook + audio chapter
+// pre-release). Reuses the BOOK_DRIP follow-up sequence; only the welcome
+// is tier-specific because it has to deliver the bump-only artefacts.
+function bookPackWelcomeEmail(email: string): { subject: string; html: string } {
+  return {
+    subject: "Reader's Pack — Kindle + CSV + notebook + audio pre-release",
+    html: `<!DOCTYPE html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head>
+<body style="margin:0;padding:0;background:#f8fafc;color:#1e293b;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
+<div style="max-width:600px;margin:0 auto;padding:32px 24px;">
+<div style="margin-bottom:24px;"><strong style="color:#d97706;font-size:14px;letter-spacing:1px;">VC DEAL FLOW SIGNAL — READER&rsquo;S PACK</strong></div>
+<div style="font-size:16px;line-height:1.7;color:#1e293b;">
+<p>Welcome to the Reader&rsquo;s Pack. The full bundle — Kindle + raw CSV + Jupyter replication notebook + early-access audio — is below.</p>
+<p><strong>The book (every format):</strong></p>
+<table cellpadding="0" cellspacing="0" border="0" style="margin:12px 0;">
+<tr>
+<td style="padding-right:8px;padding-bottom:8px;"><a href="https://signals.gitdealflow.com/downloads/seven-signals.pdf" style="display:inline-block;background:#0284c7;color:#ffffff;font-weight:600;font-size:15px;padding:11px 22px;border-radius:8px;text-decoration:none;">PDF</a></td>
+<td style="padding-right:8px;padding-bottom:8px;"><a href="https://signals.gitdealflow.com/downloads/seven-signals.epub" style="display:inline-block;background:#0284c7;color:#ffffff;font-weight:600;font-size:15px;padding:11px 22px;border-radius:8px;text-decoration:none;">EPUB (Kindle)</a></td>
+<td style="padding-right:8px;padding-bottom:8px;"><a href="https://signals.gitdealflow.com/downloads/seven-signals.md" style="display:inline-block;background:#475569;color:#ffffff;font-weight:600;font-size:14px;padding:9px 18px;border-radius:8px;text-decoration:none;">Markdown</a></td>
+</tr>
+</table>
+<p><strong>The workflow artefacts (pack-only):</strong></p>
+<ol style="padding-left:20px;">
+<li><strong>Raw CSV</strong> — every signal &times; every tracked org for the most recent quarter. Drop it into a notebook or your CRM. Download: <a href="https://signals.gitdealflow.com/api/v1/dataset" style="color:#0ea5e9;">/api/v1/dataset</a> (JSONL — pipe through <code>jq</code> for CSV) or the static snapshot at <a href="https://signals.gitdealflow.com/downloads/seven-signals-dataset.csv" style="color:#0ea5e9;">/downloads/seven-signals-dataset.csv</a>.</li>
+<li><strong>Replication notebook</strong> — the Jupyter walkthrough from the appendix, with every formula and every threshold pre-coded. Saves a Sunday. Download: <a href="https://signals.gitdealflow.com/downloads/seven-signals-replication.ipynb" style="color:#0ea5e9;">/downloads/seven-signals-replication.ipynb</a>.</li>
+<li><strong>Audio chapter pre-release</strong> — the audiobook RSS feed, ahead of the public drop. Subscribe: <a href="https://signals.gitdealflow.com/book/podcast.xml" style="color:#0284c7;">signals.gitdealflow.com/book/podcast.xml</a>. The episodes that have rendered are live now; the rest auto-deliver as the Cartesia narration cron lands them.</li>
+</ol>
+<p><strong>Plus the universal book sequence:</strong> tomorrow you&rsquo;ll get the worked Series A walkthrough, Day 4 the interview transcripts, Day 7 the direct-line offer, Day 14 the audiobook reveal, and Day 21 the reader-cohort follow-up. Same content as the €0.99 path — the difference is what landed in this email.</p>
+<p>If a download link breaks or a notebook cell errors on your machine, reply to this email. I read every message and patch the artefacts in place.</p>
+<p>— The Data Nerd</p>
+</div>
+<div style="margin-top:40px;padding-top:20px;border-top:1px solid #e2e8f0;font-size:12px;color:#94a3b8;">
+<p>Account email: ${escapeHtml(email)} · <a href="https://gitdealflow.com" style="color:#0ea5e9;">gitdealflow.com</a></p>
+</div>
+</div></body></html>`,
+  };
+}
+
 function teardownWelcomeEmail(email: string): { subject: string; html: string } {
   // Suppress unused-param warning — email is reserved for future per-recipient
   // personalisation (e.g. inserting the buyer's first name once Stripe captures it).
@@ -385,6 +424,8 @@ export async function POST(request: NextRequest) {
       welcomeEmail = firstLookWelcomeEmail(email);
     } else if (tier === "book") {
       welcomeEmail = bookWelcomeEmail(email);
+    } else if (tier === "book_pack") {
+      welcomeEmail = bookPackWelcomeEmail(email);
     } else if (tier === "teardown") {
       welcomeEmail = teardownWelcomeEmail(email);
     } else {
@@ -397,11 +438,16 @@ export async function POST(request: NextRequest) {
       console.error("Failed to send welcome email:", err);
     }
 
-    // Book buyers: queue the +1d / +4d / +7d follow-ups promised in the
-    // welcome email. Best-effort — a Resend hiccup must not 5xx out of this
-    // handler and trigger Stripe to retry the whole webhook (which would
-    // double-send the welcome and double-queue the drip).
-    if (tier === "book") {
+    // Book buyers: queue the +1d / +4d / +7d / +14d / +21d follow-ups promised
+    // in the welcome email. Reader's Pack buyers (€5.96) get the same drip —
+    // the methodology, the audiobook reveal, and the reader-cohort
+    // reactivation are identical content; the welcome email is the only
+    // tier-specific surface (it adds the CSV + notebook + audio-pre-release
+    // download links promised in the upgrade page). Best-effort — a Resend
+    // hiccup must not 5xx out of this handler and trigger Stripe to retry
+    // the whole webhook (which would double-send the welcome and double-queue
+    // the drip).
+    if (tier === "book" || tier === "book_pack") {
       const now = Date.now();
       for (const drip of BOOK_DRIP) {
         const sendAt = new Date(now + drip.delayMs).toISOString();

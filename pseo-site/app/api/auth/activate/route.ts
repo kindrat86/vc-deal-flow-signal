@@ -73,25 +73,27 @@ export async function GET(request: NextRequest) {
     }
 
     // One-time tiers (teardown, firstlook, sector_sweep, agent_credits_*,
-    // book) don't grant Dashboard access — the deliverable arrives by email
-    // (manual teardown reply within 4h for teardown; sector report for
-    // first look; PDF for sector sweep; API key for credit packs; book
-    // downloads + bonus emails for book). Redirect to a thank-you page
-    // instead of issuing a session cookie.
+    // book, book_pack) don't grant Dashboard access — the deliverable
+    // arrives by email (manual teardown reply within 4h for teardown;
+    // sector report for first look; PDF for sector sweep; API key for
+    // credit packs; book downloads + bonus emails for book; pack artefacts
+    // for book_pack). Redirect to a thank-you page instead of issuing a
+    // session cookie.
     if (
       tier === "teardown" ||
       tier === "firstlook" ||
       tier === "sector_sweep" ||
       tier === "agent_credits_100" ||
-      tier === "book"
+      tier === "book" ||
+      tier === "book_pack"
     ) {
       const thanksUrl =
         tier === "sector_sweep"
           ? new URL("/sector-sweep?status=paid", request.url)
           : tier === "agent_credits_100"
             ? new URL("/agents/credits?status=paid", request.url)
-            : tier === "book"
-              ? new URL("/book/thanks?status=paid", request.url)
+            : tier === "book" || tier === "book_pack"
+              ? new URL(`/book/thanks?status=paid&tier=${tier}`, request.url)
               : tier === "teardown"
                 ? new URL("/tweet-teardown/thanks?status=paid", request.url)
                 : new URL("/thanks/firstlook?status=paid", request.url);

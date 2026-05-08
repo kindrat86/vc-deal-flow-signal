@@ -25,6 +25,7 @@ export const stripe = new Proxy({} as Stripe, {
 export type TierKey =
   | "teardown"
   | "book"
+  | "book_pack"
   | "firstlook"
   | "dashboard"
   | "insider"
@@ -35,6 +36,7 @@ export type TierKey =
 const TIER_BY_AMOUNT: Record<number, TierKey> = {
   100: "teardown", // EUR 1.00 one-time — Tweet Teardown micro-tripwire / €0→€7 bridge (Brunson DCS Ch 18)
   99: "book", // EUR 0.99 one-time — The 7 GitHub Signals book (Brunson Secret 17)
+  596: "book_pack", // EUR 5.96 one-time — Reader's Pack (Kindle + CSV + Jupyter notebook + audio pre-release) — Brunson Cart Funnel Ch 18 order-bump
   700: "firstlook", // EUR 7.00 one-time
   997: "dashboard", // EUR 9.97/mo
   1900: "agent_credits_100", // EUR 19 one-time, 100 deep-signal calls
