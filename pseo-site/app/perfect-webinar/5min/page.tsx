@@ -3,7 +3,10 @@ import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { DataNerdAudio } from "@/components/DataNerdAudio";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import { LiveReplayBar } from "@/components/LiveReplayBar";
+import { DoorsClosingBanner } from "@/components/DoorsClosingBanner";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import { getReplayWindowSnapshot } from "@/lib/replay-window";
 
 export const dynamic = "force-static";
 
@@ -25,6 +28,10 @@ const STRIPE_DASHBOARD = "https://buy.stripe.com/28E7sK48H04U8ou07u0x200";
 const SIGNUP_URL = "https://gitdealflow.com/#signup";
 
 export default function FiveMinPerfectWebinarPage() {
+  // Brunson live-replay cohort snapshot — same engine as the long-form
+  // /perfect-webinar page, so both surfaces show a synchronized deadline.
+  const replaySnapshot = getReplayWindowSnapshot();
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -72,6 +79,10 @@ export default function FiveMinPerfectWebinarPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <AgentMirrorLinks path="/perfect-webinar/5min" />
+
+      {/* Brunson live-replay sticky cohort countdown — shared across the
+          long-form and 5-minute Perfect Webinar surfaces. */}
+      <LiveReplayBar initialWindow={replaySnapshot} />
 
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
         <header className="space-y-3">
@@ -215,6 +226,9 @@ export default function FiveMinPerfectWebinarPage() {
             </div>
           </div>
         </section>
+
+        {/* Phase-aware doors-closing banner directly above the final CTA. */}
+        <DoorsClosingBanner initialWindow={replaySnapshot} />
 
         <section className="rounded-xl border border-amber-500/40 bg-gradient-to-br from-amber-950/30 via-slate-900 to-slate-950 p-6 sm:p-8 text-center space-y-4">
           <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider">
