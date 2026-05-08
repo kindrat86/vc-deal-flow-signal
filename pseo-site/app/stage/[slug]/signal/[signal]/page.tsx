@@ -8,6 +8,7 @@ import {
 } from "@/lib/data";
 import StartupTable from "@/components/StartupTable";
 import CTABanner from "@/components/CTABanner";
+import FreshnessWatermark from "@/components/FreshnessWatermark";
 
 interface PageProps {
   params: Promise<{ slug: string; signal: string }>;
@@ -182,6 +183,12 @@ export default async function StageSignalPage({ params }: PageProps) {
             {top.name} ({top.sectorName}) leads with {top.commitVelocity14d}{" "}
             commits over 14 days ({top.commitVelocityChange}). {signalDescription}
           </p>
+          <FreshnessWatermark
+            date={lastModified}
+            surface={`${signalName} signal data`}
+            variant="compact"
+            className="mt-3"
+          />
         </header>
 
         <section
@@ -226,6 +233,11 @@ export default async function StageSignalPage({ params }: PageProps) {
             Sorted by commit velocity change (14-day window). Last updated{" "}
             {period.name}.
           </p>
+          <FreshnessWatermark
+            date={lastModified}
+            surface="Ranking data"
+            variant="full"
+          />
         </section>
 
         <section className="mb-12" aria-label="Call to action">

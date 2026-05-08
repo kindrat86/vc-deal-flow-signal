@@ -946,6 +946,22 @@ export interface StageSectorPageData {
   startups: Startup[];
 }
 
+/**
+ * Thin-cell suppression threshold for Cartesian pSEO routes.
+ *
+ * Cells with fewer than this many startups would render near-empty
+ * tables — Google flags those as thin content and downranks the entire
+ * site. We hide them from `generateStaticParams` and return `null` from
+ * the data getters so the route 404s cleanly under `dynamicParams=false`.
+ *
+ * Set to 3: aggressive enough to drop the worst 1–2-startup cells,
+ * generous enough that we keep ~95% of the existing surface area.
+ * Override via env if you need to tune (CI experiments, full-graph audits).
+ */
+export const MIN_PSEO_CELL_SIZE = Number(
+  process.env.PSEO_MIN_CELL_SIZE ?? 3,
+);
+
 export function getStageSectorData(
   stageSlug: string,
   sectorSlug: string
@@ -963,7 +979,7 @@ export function getStageSectorData(
       (m) => s.stage === m || s.stage.includes(m)
     )
   );
-  if (matching.length === 0) return null;
+  if (matching.length < MIN_PSEO_CELL_SIZE) return null;
 
   return {
     stageSlug: stageDef.slug,
@@ -983,12 +999,18 @@ export function getAllStageSectorPairs(): { stage: string; sector: string }[] {
     for (const sector of data.sectors) {
       const snapshot = sector.periods[period.slug];
       if (!snapshot) continue;
-      const has = snapshot.startups.some((s) =>
-        (stageDef.match as readonly string[]).some(
-          (m) => s.stage === m || s.stage.includes(m)
-        )
+      const matchCount = snapshot.startups.reduce(
+        (n, s) =>
+          (stageDef.match as readonly string[]).some(
+            (m) => s.stage === m || s.stage.includes(m),
+          )
+            ? n + 1
+            : n,
+        0,
       );
-      if (has) pairs.push({ stage: stageDef.slug, sector: sector.slug });
+      if (matchCount >= MIN_PSEO_CELL_SIZE) {
+        pairs.push({ stage: stageDef.slug, sector: sector.slug });
+      }
     }
   }
   return pairs;
@@ -1023,7 +1045,7 @@ export function getSignalSectorData(
   const matching = snapshot.startups.filter(
     (s) => s.signalType === signalDef.match
   );
-  if (matching.length === 0) return null;
+  if (matching.length < MIN_PSEO_CELL_SIZE) return null;
 
   return {
     signalSlug: signalDef.slug,
@@ -1043,8 +1065,13 @@ export function getAllSignalSectorPairs(): { signal: string; sector: string }[] 
     for (const sector of data.sectors) {
       const snapshot = sector.periods[period.slug];
       if (!snapshot) continue;
-      const has = snapshot.startups.some((s) => s.signalType === signalDef.match);
-      if (has) pairs.push({ signal: signalDef.slug, sector: sector.slug });
+      const matchCount = snapshot.startups.reduce(
+        (n, s) => (s.signalType === signalDef.match ? n + 1 : n),
+        0,
+      );
+      if (matchCount >= MIN_PSEO_CELL_SIZE) {
+        pairs.push({ signal: signalDef.slug, sector: sector.slug });
+      }
     }
   }
   return pairs;
@@ -1103,7 +1130,7 @@ export function getStageSignalData(
     }
   }
 
-  if (startups.length === 0) return null;
+  if (startups.length < MIN_PSEO_CELL_SIZE) return null;
 
   return {
     stageSlug: stageDef.slug,
