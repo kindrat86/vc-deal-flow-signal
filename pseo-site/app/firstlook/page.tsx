@@ -122,10 +122,10 @@ const OTO_LADDER = [
   },
   {
     rung: "Rung 3",
-    label: "Sector Sweep (bumped)",
+    label: "Sector Sweep (post-purchase OTO)",
     price: "€1,797",
-    purpose: "Order bump from this page only. Full panel + 60-min walkthrough.",
-    href: "https://buy.stripe.com/bJe14m34DbNC6gm1by0x204",
+    purpose: "One-click upsell on the thank-you page. Full panel + 60-min walkthrough — €200 off standalone.",
+    href: "/firstlook/thanks",
     tone: "emerald",
   },
   {
@@ -157,7 +157,7 @@ const FAQS = [
   },
   {
     q: "What's the order bump and how do I claim it?",
-    a: "On this page only, you can swap the €7 First Look for the €1,797 Sector Sweep — €200 off the standalone €1,997 price. The Sweep adds the full venture-backed panel, three time windows, and a 60-minute walkthrough call. To claim: tick the bump in the cart preview, complete Stripe checkout, and write FIRSTLOOK-BUMP in the order field. The discount disappears the moment you leave the page.",
+    a: "Tick the Methodology Vault checkbox in the cart preview before checkout — the 38-page PDF is added to your order as a +€19 line item, total €26. The Vault unpacks every signal definition, every regression coefficient in the SSRN paper, and the three confounders the public preprint does not name. It arrives as an instant download link in your First Look intake email. The bump is only available at this checkout step — the Vault is not sold standalone.",
   },
   {
     q: "What if I don't like the deliverable?",
@@ -173,10 +173,11 @@ export default function FirstLookPage() {
         // F23: explicit access-status statement. The /firstlook URL itself is
         // fully crawlable — every word of the marketing copy, value stack,
         // FAQs, and order-bump description is publicly readable. The PRODUCT
-        // is paid (€7 base + €1,797 order-bump), but its description is not
-        // paywalled, so we set isAccessibleForFree: true on the page. This
-        // tells Google we are not cloaking paywalled content. The Product's
-        // paid status is already represented by the Offer.price > 0 signal.
+        // is paid (€7 base + €19 Methodology Vault order-bump), but its
+        // description is not paywalled, so we set isAccessibleForFree: true
+        // on the page. This tells Google we are not cloaking paywalled
+        // content. The Product's paid status is already represented by the
+        // Offer.price > 0 signal.
         "@type": "WebPage",
         "@id": "https://signals.gitdealflow.com/firstlook#webpage",
         url: "https://signals.gitdealflow.com/firstlook",
@@ -201,7 +202,11 @@ export default function FirstLookPage() {
           "@type": "AggregateOffer",
           priceCurrency: "EUR",
           lowPrice: "7.00",
-          highPrice: "1797.00",
+          // €7 base + €19 Methodology Vault bump. Sector Sweep €1,797 is
+          // the OTO #1 rung on /firstlook/thanks — surfaced to its own
+          // Product/Offer entity over there, not aggregated here, because
+          // it is post-purchase and not selectable on /firstlook itself.
+          highPrice: "26.00",
           offerCount: 2,
           availability: "https://schema.org/InStock",
           priceValidUntil: "2026-12-31",
@@ -218,12 +223,12 @@ export default function FirstLookPage() {
             },
             {
               "@type": "Offer",
-              name: "Order bump — Sector Sweep",
-              price: "1797.00",
+              name: "Order bump — Methodology Vault PDF",
+              price: "19.00",
               priceCurrency: "EUR",
               availability: "https://schema.org/InStock",
               priceValidUntil: "2026-12-31",
-              url: "https://buy.stripe.com/bJe14m34DbNC6gm1by0x204",
+              url: FIRSTLOOK_OFFER_URL,
             },
           ],
         },
