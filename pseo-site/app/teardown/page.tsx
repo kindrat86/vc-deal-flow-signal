@@ -317,7 +317,7 @@ export default function TeardownPage() {
             href="/pricing"
             className="text-sky-400 hover:text-sky-300 underline decoration-dotted"
           >
-            See all seven tiers
+            See all ten tiers
           </Link>
           .
         </p>

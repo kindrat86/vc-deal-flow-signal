@@ -529,6 +529,39 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
 <p style="color:#64748b;font-size:14px;">P.S. The Receipts ledger updates as events resolve, append-only, no opinions: <a href="${SIGNALS}/wins" style="color:#0ea5e9;">${SIGNALS}/wins</a>. The four-of-four resolution above is the last batch logged. The next batch fills in over the coming 90 days.</p>
 `),
   },
+
+  // Day 240 — Methodology Partnership ascension (Brunson Audit 2026-05-08
+  // Value Ladder ding fix). The Day-180 State-of-the-Engine email closes
+  // the second falsifiable-prediction loop. This email opens the next rung
+  // for D-tier subscribers who've sat through eight months of the rhythm:
+  // the Methodology Partnership at €14,997/yr trains the regression on
+  // their fund's portfolio. The pitch is async-only, anonymity-preserving,
+  // 5-fund cap. F/T/I tiers skip this email via TIER_OVERRIDES (the rung
+  // is two-plus rungs above the buyer at those tiers — would feel like a
+  // cold pitch, not an ascension).
+  {
+    subject: "Eight months in. The rung above the Dashboard.",
+    delayMs: THIRTY_MIN + 240 * ONE_DAY,
+    html: wrap(`
+<p>Eight months ago you signed up for the Acceleration Watch. You've watched the Dashboard run weekly, the State-of-the-Engine prediction resolve at Day 90, the post-mortem land at Day 180. The rhythm works.</p>
+<p>If your fund has more than five years of historical investment outcomes — wins, write-offs, exits, holds — the regression that powers the Dashboard runs against the public 219-startup panel. It does not run against your fund's portfolio. Funds that license the public Dashboard read the same signal everyone else reads.</p>
+<p>The <strong>Methodology Partnership</strong> trains the same regression on your fund's anonymized portfolio outcomes and ships a fund-specific lead-time model — plus the source code to re-run it whenever your portfolio updates. €14,997/yr, founding-rate locked through end of 2027, capped at 5 funds in 2026.</p>
+<p>What's in it:</p>
+<ul style="margin:0;padding-left:20px;">
+<li><strong>Custom panel construction</strong> — your fund's regression trained on your anonymized portfolio.</li>
+<li><strong>Bespoke 50-org watchlist</strong> tuned to your written thesis, monthly rebuild.</li>
+<li><strong>White-labeled fund subdomain</strong> — signal.yourfund.com behind your auth.</li>
+<li><strong>Quarterly synthetic Stadium Pitch</strong> — 6-min Remotion video on your fund's specific thesis (4/yr).</li>
+<li><strong>Async methodology Q&A</strong> — unlimited via dedicated email channel, 24h weekday turn.</li>
+<li><strong>Annual fund-only methodology brief</strong> — 30-min synthetic-voice walkthrough + 40-page PDF.</li>
+</ul>
+<p>The whole engagement is async-only. No live calls, no in-person attendance, no founder voice on a recording. The constraint is the founder anonymity rule — and it forces every deliverable to be licensable, archivable, and reviewable on your own time.</p>
+<p>Application is by structured email at <a href="${SIGNALS}/methodology-partnership" style="color:#0ea5e9;">${SIGNALS}/methodology-partnership</a>. We respond inside 48 business hours with either an invoice + onboarding pack or a written decline reason. The application is free and never auto-converts to a charge.</p>
+<p>Above the Methodology Partnership: the <strong>Vault</strong> at €49,997/yr — methodology source license, 72-hour signal head-start over the public Dashboard, co-development access, capped at 2 funds in 2026. Most Vault funds enter via Methodology Partnership for 6–12 months first, then upgrade. Page: <a href="${SIGNALS}/vault" style="color:#0ea5e9;">${SIGNALS}/vault</a>.</p>
+<p>Talk soon —<br>${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. The 5-fund cap exists because the custom regression work is real founder-engineering time. Two of the five 2026 seats are filled. After 2026, the rate moves to €29,997/yr; founding funds keep €14,997/yr through end of 2027.</p>
+`, "drip-d240-methodology"),
+  },
 ];
 
 /**

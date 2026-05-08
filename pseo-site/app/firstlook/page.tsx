@@ -115,6 +115,30 @@ const OTO_LADDER = [
     href: "/pricing",
     tone: "sky",
   },
+  {
+    rung: "Rung 5",
+    label: "Sharp Tier",
+    price: "€4,970 / yr",
+    purpose: "Application-gated. White-labeled API, custom watchlist. 8-fund cap.",
+    href: "/apply",
+    tone: "indigo",
+  },
+  {
+    rung: "Rung 6",
+    label: "Methodology Partnership",
+    price: "€14,997 / yr",
+    purpose: "Done-with-you. Custom regression on your fund's portfolio. 5-fund cap.",
+    href: "/methodology-partnership",
+    tone: "violet",
+  },
+  {
+    rung: "Rung 7",
+    label: "The Vault",
+    price: "€49,997 / yr",
+    purpose: "Methodology source license + 72h signal head-start. 2-fund cap.",
+    href: "/vault",
+    tone: "amber",
+  },
 ] as const;
 
 const FAQS = [
@@ -452,6 +476,8 @@ export default function FirstLookPage() {
                 teal: "border-teal-700/50",
                 emerald: "border-emerald-700/50",
                 sky: "border-sky-700/50",
+                indigo: "border-indigo-700/50",
+                violet: "border-violet-700/50",
               }[r.tone];
               const tonePill = {
                 slate: "text-gray-400",
@@ -459,6 +485,8 @@ export default function FirstLookPage() {
                 teal: "text-teal-300",
                 emerald: "text-emerald-300",
                 sky: "text-sky-300",
+                indigo: "text-indigo-300",
+                violet: "text-violet-300",
               }[r.tone];
               return (
                 <li

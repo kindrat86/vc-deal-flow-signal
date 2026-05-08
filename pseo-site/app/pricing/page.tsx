@@ -8,9 +8,10 @@ import { getHreflangLanguages } from "@/lib/hreflang";
 import SharpScarcityBadge from "@/components/SharpScarcityBadge";
 
 export const metadata: Metadata = {
-  title: "Pricing — Free, €1 Teardown, €7 First Look, €9.97 Dashboard, €97 Insider, €497 Sharp, €1,997 Sweep",
+  title:
+    "Pricing — Ten rungs, free to €49,997/yr Vault | VC Deal Flow Signal",
   description:
-    "VC Deal Flow Signal pricing — seven tiers from a free weekly digest and €1 Tweet Teardown to a €4,970/yr Sharp Tier and €1,997 custom Sector Sweep. Founding-member rates on Dashboard (€9.97/mo) and Insider Circle (€97/mo). 30-day Signal-or-It's-Free guarantee.",
+    "VC Deal Flow Signal pricing — ten rungs from a free weekly digest to the €49,997/yr Vault. Tripwire €1 / €7, €9.97/mo Dashboard, €97/mo Insider, €497/mo Sharp, €1,997 one-time Sector Sweep, €14,997/yr Methodology Partnership, €49,997/yr Vault. Founding-member rates locked. 30-day Signal-or-It's-Free guarantee on every paid plan above €1.",
   alternates: {
     canonical: "/pricing",
   },
@@ -20,9 +21,9 @@ export const metadata: Metadata = {
     // sets its own openGraph object, so no inheritance for url here.)
     url: "https://signals.gitdealflow.com/pricing",
     title:
-      "Pricing — Free, €1 Teardown, €7 First Look, €9.97 Dashboard, €97 Insider, €497 Sharp, €1,997 Sweep | VC Deal Flow Signal",
+      "Pricing — Ten rungs, free to €49,997/yr Vault | VC Deal Flow Signal",
     description:
-      "VC Deal Flow Signal pricing — seven tiers from a free weekly digest and €1 Tweet Teardown to a €4,970/yr Sharp Tier and €1,997 custom Sector Sweep. Founding-member rates on Dashboard (€9.97/mo) and Insider Circle (€97/mo). 30-day Signal-or-It's-Free guarantee.",
+      "VC Deal Flow Signal pricing — ten rungs from a free weekly digest to the €49,997/yr Vault. New high-ticket research-partnership rungs above the Sector Sweep: Methodology Partnership (€14,997/yr) and Vault (€49,997/yr). Async-only, anonymity-preserving.",
     type: "website",
   },
 };
@@ -243,12 +244,63 @@ const tiers: Tier[] = [
     ctaHref: STRIPE_SWEEP,
     highlight: false,
   },
+  {
+    slug: "methodology-partnership",
+    name: "Methodology Partnership",
+    priceLabel: "€14,997",
+    priceCadence: "/yr",
+    rrpLabel:
+      "Founding-rate locked through end of 2027 · 5-fund cap in 2026 · Async-only · Brunson Audit 2026-05-08",
+    oneLine:
+      "Done-with-you methodology engagement: custom panel construction trained on your fund's anonymized portfolio outcomes, bespoke 50-org watchlist with monthly rebuild, white-labeled fund subdomain, quarterly synthetic Stadium Pitch, async-only methodology Q&A. The done-with-you rung above Sharp Tier.",
+    forWho:
+      "Active VC funds with 5+ years of historical investment outcomes who want the regression trained on their portfolio — not the public 219-startup panel — and a fund-branded data feed integrated into their CRM.",
+    bullets: [
+      "Everything in Sharp Tier (€4,970/yr value)",
+      "Custom panel construction — your fund's regression model trained on anonymized portfolio outcomes",
+      "Bespoke 50-org watchlist tuned to your written thesis, monthly rebuild against the live signal feed",
+      "White-labeled fund subdomain — signal.yourfund.com returns the same dataset behind your auth",
+      "Quarterly synthetic Stadium Pitch — 6-min Remotion video on your fund's specific thesis (4/yr)",
+      "Async methodology Q&A — unlimited via dedicated email channel, 24h weekday turn",
+      "Quarterly anonymized fund-as-case-study published to /press (attribution opt-in)",
+      "Annual fund-only methodology brief — 30-min synthetic-voice walkthrough + 40-page PDF",
+      "Founding-rate locked through end of 2027. After 2026: €29,997/yr. Capped at 5 funds in 2026.",
+    ],
+    ctaLabel: "Apply for Methodology Partnership",
+    ctaHref: "/methodology-partnership",
+    highlight: false,
+  },
+  {
+    slug: "vault",
+    name: "The Vault",
+    priceLabel: "€49,997",
+    priceCadence: "/yr",
+    rrpLabel:
+      "Founding-rate locked through end of 2028 · 2-fund cap in 2026 · Top of the ladder · Brunson Audit 2026-05-08",
+    oneLine:
+      "Top rung. Methodology Partnership plus: co-development access to the panel-construction pipeline, pre-publication SSRN preview six months early, 72-hour signal head-start over the public Dashboard, methodology source repo (fund-only fork license), Signal-of-the-Quarter co-investment alerts.",
+    forWho:
+      "Funds intending to make GitHub-momentum signal a multi-year sourcing advantage — funds who want to own the methodology, not license the output. Most Vault funds enter via Methodology Partnership for 6–12 months first.",
+    bullets: [
+      "Everything in Methodology Partnership (€68,000+ stack value)",
+      "Co-development access — your analysts submit signal hypotheses to the panel-construction pipeline, ~24 senior-engineering hours/mo equivalent",
+      "Pre-publication SSRN preview — read next year's successor paper 6 months before public release, opt-in author credit (initials)",
+      "72-hour signal head-start — every flag delivered to Vault funds 72h before the public Dashboard (~12 flags/yr)",
+      "Annual async methodology summit — 8-hour Remotion-rendered keynote + fund-branded artifacts, no live attendance required",
+      "Methodology source repo — private fork, MIT-license to your fund only, panel construction + regression engine + ETL pipeline",
+      "Signal-of-the-Quarter co-investment alerts — 4 deep written analyses per year on the highest-conviction events",
+      "Founding-rate locked through end of 2028. After 2026: €99,997/yr. Capped at 2 funds in 2026.",
+    ],
+    ctaLabel: "Apply for the Vault",
+    ctaHref: "/vault",
+    highlight: false,
+  },
 ];
 
 const faqs: { q: string; a: string }[] = [
   {
     q: "How much does VC Deal Flow Signal cost?",
-    a: "Pricing has seven tiers. The Signal Digest is free forever — a weekly email with five ranked startups. The Tweet Teardown is €1 one-time and delivers a tweet-length (≤280 char) momentum teardown of one startup you name, hand-written by the founder, within 24 hours. The First Look Pass is €7 one-time and delivers a full sector deep dive within 24 hours. The Dashboard Beta is €9.97 per month at founding-member pricing (going to €49 per month permanently) and ranks 109 startups across 19 sectors with weekly refresh. The Insider Circle is €97 per month at founding-member pricing (going to €197 per month) and adds a private Telegram group, custom watchlists, and JSON / CSV API access. The Sharp Tier is €497 per month or €4,970 per year for active funds and syndicates — quarterly portfolio review call, custom thesis-aligned watchlist co-built with the fund, white-labeled API endpoint at /api/v1/sharp/<your-fund>, methodology source code access, application-gated and capped at 8 funds in 2026. The Custom Sector Sweep is €1,997 one-time for a written report on one sector of your choice. The free MCP server for Claude / Cursor / Windsurf is bundled with every tier including the free one and will never be gated.",
+    a: "Pricing has ten tiers. The Signal Digest is free forever — a weekly email with five ranked startups. The Book is €0.99 one-time (or free PDF/EPUB) for the 104-page operational field manual on the seven public-data signals that precede Series A rounds. The Tweet Teardown is €1 one-time and delivers a tweet-length (≤280 char) momentum teardown of one startup you name, hand-written by the founder, within 24 hours. The First Look Pass is €7 one-time and delivers a full sector deep dive within 24 hours. The Dashboard Beta is €9.97 per month at founding-member pricing (going to €49 per month permanently) and ranks 109 startups across 19 sectors with weekly refresh. The Insider Circle is €97 per month at founding-member pricing (going to €197 per month) and adds a private Telegram group, custom watchlists, and JSON / CSV API access. The Sharp Tier is €497 per month or €4,970 per year for active funds and syndicates — quarterly portfolio review brief, custom thesis-aligned watchlist co-built with the fund, white-labeled API endpoint at /api/v1/sharp/<your-fund>, methodology source code access, application-gated and capped at 8 funds in 2026. The Custom Sector Sweep is €1,997 one-time for a written report on one sector of your choice. The Methodology Partnership is €14,997 per year (founding rate, going to €29,997 per year for funds joining 2027+) and runs a custom regression on the fund's anonymized portfolio outcomes, ships a bespoke 50-org watchlist with monthly rebuild, runs a white-labeled fund subdomain at signal.yourfund.com, and includes a quarterly synthetic Stadium Pitch and async-only methodology Q&A — capped at 5 funds in 2026. The Vault is €49,997 per year (founding rate, going to €99,997 per year for funds joining 2027+) and adds co-development access to the panel-construction pipeline, pre-publication SSRN preview six months early, 72-hour signal head-start over the public Dashboard, an annual async methodology summit, methodology source repo on a fund-only fork license, and Signal-of-the-Quarter co-investment alerts — capped at 2 funds in 2026. The Methodology Partnership and Vault are async-only and anonymity-preserving — no live calls, no in-person attendance. The free MCP server for Claude / Cursor / Windsurf is bundled with every tier including the free one and will never be gated.",
   },
   {
     q: "Why is there a €1 tier?",
