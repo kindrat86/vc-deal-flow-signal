@@ -41,7 +41,7 @@ import { getDataLastModified } from "@/lib/data";
 export const runtime = "nodejs";
 
 const SITE = "https://signals.gitdealflow.com";
-const CONTRACT_VERSION = "2026-05-07.f34";
+const CONTRACT_VERSION = "2026-05-08.f39";
 
 type HttpMethod = "GET" | "POST" | "PUT" | "PATCH" | "DELETE" | "HEAD" | "OPTIONS";
 
@@ -1196,6 +1196,9 @@ const SURFACES: Surface[] = [
   { name: "security-policy", url: `${SITE}/.well-known/security-policy.json`, format: "application/json", category: "policy", description: "Machine-readable security disclosure policy" },
   { name: "security-txt-root", url: `${SITE}/security.txt`, format: "text/plain", category: "policy", description: "Root alias for /.well-known/security.txt" },
   { name: "robots", url: `${SITE}/robots.txt`, format: "text/plain", category: "policy", description: "Crawler access rules" },
+  { name: "tdm-reservation", url: `${SITE}/.well-known/tdm-reservation.json`, format: "application/json", category: "policy", description: "W3C TDM Reservation Protocol — machine-readable opt-in for text-and-data-mining (EU DSA / Copyright Directive Article 4)" },
+  { name: "ai-content-license", url: `${SITE}/.well-known/ai-content-license.json`, format: "application/json", category: "policy", description: "Machine-readable AI training/inference/citation license — bridges CC BY 4.0 with per-use-mode permissions and exclusions" },
+  { name: "gpc", url: `${SITE}/.well-known/gpc.json`, format: "application/json", category: "policy", description: "Global Privacy Control descriptor — publisher honors the Sec-GPC: 1 signal" },
   // ── Sitemaps ──────────────────────────────────────────
   { name: "sitemap-index", url: `${SITE}/sitemap.xml`, format: "application/xml", category: "sitemap", description: "Root sitemapindex — points to 5 sub-sitemaps + news + i18n + images + videos" },
   { name: "sitemap-wellknown", url: `${SITE}/.well-known/sitemap.xml`, format: "application/xml", category: "sitemap", description: "Well-known alias for /sitemap.xml" },
@@ -1328,7 +1331,7 @@ export async function GET() {
         byCategory: counts,
         byMethod,
         coverage:
-          "Agent/MCP, OpenAPI, retrieval (llms.txt + qa.jsonl + markdown mirror), policy (ai-policy + security), sitemaps, RSS/Atom feeds, dataset descriptors, identity (DID + WebFinger + NodeInfo), and human attribution.",
+          "Agent/MCP, OpenAPI, retrieval (llms.txt + qa.jsonl + markdown mirror), policy (ai-policy + ai-content-license + tdm-reservation + gpc + security), sitemaps, RSS/Atom feeds, dataset descriptors, identity (DID + WebFinger + NodeInfo), and human attribution.",
       },
       surfaces: SURFACES,
       relatedDocs: {

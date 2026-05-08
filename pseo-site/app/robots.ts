@@ -61,7 +61,25 @@ const DISALLOW = [
   "/welcome/",
   "/share/",
   "/api/share/",
+  // Per-account dashboard — gated by API key; nothing public to index.
+  // Mirrors the proxy's NOINDEX_PREFIXES + the page's defineMetadata
+  // noindex flag so all three layers agree.
+  "/account/",
 ];
+
+// Aggressive bots that benefit from a crawl-delay directive — protects
+// origin from request storms while still permitting indexing. Bytespider
+// (ByteDance) and Amazonbot are the most common offenders in production
+// access logs; PetalBot has been increasingly aggressive since 2025;
+// ImagesiftBot fans out across image OG routes generating high RPS.
+//
+// Audit 2026-05-08 added crawl-delay to dimension 17 Crawl/Bot governance.
+const AGGRESSIVE_BOTS_DELAY_S: Record<string, number> = {
+  Bytespider: 10,
+  Amazonbot: 10,
+  PetalBot: 10,
+  ImagesiftBot: 10,
+};
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -71,11 +89,15 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
         disallow: DISALLOW,
       },
-      ...AI_CRAWLERS.map((userAgent) => ({
-        userAgent,
-        allow: "/",
-        disallow: DISALLOW,
-      })),
+      ...AI_CRAWLERS.map((userAgent) => {
+        const delay = AGGRESSIVE_BOTS_DELAY_S[userAgent];
+        return {
+          userAgent,
+          allow: "/",
+          disallow: DISALLOW,
+          ...(delay !== undefined ? { crawlDelay: delay } : {}),
+        };
+      }),
     ],
     sitemap: [
       `${BASE_URL}/sitemap.xml`,
