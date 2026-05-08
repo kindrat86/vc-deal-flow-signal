@@ -1266,6 +1266,24 @@ const SURFACES: Surface[] = [
   // ── Human-readable ─────────────────────────────────────
   { name: "humans-wellknown", url: `${SITE}/.well-known/humans.txt`, format: "text/plain", category: "human", description: "Human attribution — author, ORCID, contact" },
   { name: "humans-root", url: `${SITE}/humans.txt`, format: "text/plain", category: "human", description: "Root alias for /.well-known/humans.txt" },
+  // ── F38 Trust Center surfaces (2026-05-08) ─────────────
+  // Net-new TrustSEO push: enterprise-procurement, AI-agent compliance, and
+  // GDPR controllers all probe this set first. Each pair is HTML page +
+  // machine-readable mirror under /.well-known/.
+  { name: "trust-center", url: `${SITE}/trust`, format: "text/html", category: "policy", description: "Trust Center — single page linking every privacy/security/compliance/transparency surface" },
+  { name: "privacy-policy", url: `${SITE}/privacy`, format: "text/html", category: "policy", description: "Privacy Policy — what we collect, retention, GDPR/CCPA rights, subprocessor pointer" },
+  { name: "terms-of-service", url: `${SITE}/terms`, format: "text/html", category: "policy", description: "Terms of Service — license, acceptable use, paid-tier billing, liability cap" },
+  { name: "security-overview", url: `${SITE}/security`, format: "text/html", category: "policy", description: "Security Overview — TLS, email auth, vuln-disclosure entry point" },
+  { name: "dpa-html", url: `${SITE}/dpa`, format: "text/html", category: "policy", description: "Data Processing Agreement (GDPR Art. 28) — counter-signed PDF on request" },
+  { name: "dpa-wellknown", url: `${SITE}/.well-known/dpa.json`, format: "application/json", category: "policy", description: "DPA pointer + SCCs metadata + processing scope (machine-readable)" },
+  { name: "transparency-html", url: `${SITE}/transparency`, format: "text/html", category: "policy", description: "Annual Transparency Report — gov data requests, takedowns, breaches; warrant canary" },
+  { name: "transparency-wellknown", url: `${SITE}/.well-known/transparency.json`, format: "application/json", category: "policy", description: "Transparency report machine-readable — yearly figures + standing policies" },
+  { name: "disclosure-html", url: `${SITE}/disclosure`, format: "text/html", category: "policy", description: "Coordinated Vulnerability Disclosure — disclose.io core terms, scope, SLAs" },
+  { name: "disclosure-wellknown", url: `${SITE}/.well-known/disclosure.json`, format: "application/json", category: "policy", description: "Disclosure policy machine-readable — disclose.io fields + scope + SLAs" },
+  { name: "subprocessors-html", url: `${SITE}/subprocessors`, format: "text/html", category: "policy", description: "Subprocessor list — Stripe, Vercel, Resend, Hetzner/PocketBase, PostHog, GitHub, Cloudflare, Anthropic, Coinbase" },
+  { name: "subprocessors-wellknown", url: `${SITE}/.well-known/subprocessors.json`, format: "application/json", category: "policy", description: "Subprocessor registry machine-readable — roles, regions, certifications, DPAs" },
+  { name: "mta-sts-policy", url: `${SITE}/.well-known/mta-sts.txt`, format: "text/plain", category: "policy", description: "RFC 8461 MTA-STS — inbound mail must use TLS to advertised MX hosts" },
+  { name: "dnt-policy", url: `${SITE}/.well-known/dnt-policy.txt`, format: "text/plain", category: "policy", description: "EFF Do-Not-Track Policy v1.0 compliance statement" },
 ];
 
 export async function GET() {

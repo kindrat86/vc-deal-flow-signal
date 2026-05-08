@@ -294,6 +294,33 @@ export default function RootLayout({
           type="text/plain"
           href="https://signals.gitdealflow.com/humans.txt"
         />
+        {/* F38 (2026-05-08) — explicit content license declaration. Surfaces
+            in Google Search Central reports as a structured trust signal and
+            is consumed by AI-content-licensing crawlers (CCC, Anthropic-Web,
+            etc.) without requiring JSON-LD parsing. */}
+        <link
+          rel="license"
+          href="https://creativecommons.org/licenses/by/4.0/"
+          title="CC BY 4.0 — site content, datasets, and JSON-LD output"
+        />
+        <link
+          rel="alternate"
+          type="text/html"
+          href="https://signals.gitdealflow.com/trust"
+          title="Trust Center — privacy, security, compliance hub"
+        />
+        <link
+          rel="alternate"
+          type="text/html"
+          href="https://signals.gitdealflow.com/privacy"
+          title="Privacy Policy"
+        />
+        <link
+          rel="alternate"
+          type="text/html"
+          href="https://signals.gitdealflow.com/terms"
+          title="Terms of Service"
+        />
         {/* IndieWeb / IndieAuth verification. Each rel=me must be reciprocated
             on the destination profile to count as a verified identity link.
             ORCID + Wikidata + X + GitHub + LinkedIn + npm cover the canonical
