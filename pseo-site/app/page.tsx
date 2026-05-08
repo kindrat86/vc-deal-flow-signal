@@ -18,6 +18,7 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHomepageHreflang } from "@/lib/hreflang";
 import SignalLeader from "@/components/SignalLeader";
 import ThreeDoorHero from "@/components/ThreeDoorHero";
+import IdentityBanner from "@/components/IdentityBanner";
 import PricingLadder from "@/components/PricingLadder";
 import SocialProofBar from "@/components/SocialProofBar";
 import SharpScarcityBadge from "@/components/SharpScarcityBadge";
@@ -922,6 +923,12 @@ export default function Home() {
       {/* Live hero — top 3 movers this week. Greg audit: "embed a live,
           breathing thing at the top." */}
       <SignalLeader movers={topMovers} periodSlug={period.slug} asOf={asOf} />
+
+      {/* IdentityBanner — Brunson DotCom Secrets Ch 4 (Three Core Markets /
+          Desires). Wealth (returns) primary, Status (analyst reputation)
+          secondary. Frames every door beneath it as an identity choice, not
+          a feature comparison. /identity is the long-form companion. */}
+      <IdentityBanner />
 
       {/* Three doors — Brunson-meets-Isenberg ladder: free email / receipts /
           predict. All lead to the same email gate downstream. */}
