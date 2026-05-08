@@ -21,6 +21,23 @@
  *   • Day 90 (NEW) — State-of-the-Engine quarterly anchor with one
  *     falsifiable prediction (Stadium Pitch beat) keeping rhythm post-D75.
  *
+ * Updated 2026-05-08 (Secret 7 V9 — push 95→100, full SOS coverage):
+ *   • Day 3 — P.S. converted from passive dashboard link to cliffhanger
+ *     teasing the 5-step Conversion Story landing tomorrow (D3.5).
+ *   • Day 3.5 — added cliffhanger P.S. previewing the €7 First Look as the
+ *     practical test of step 5 ("the door"). Previously had no P.S. at all.
+ *   • Day 4 — body close strengthened with explicit teaser to D5 future-
+ *     pace; second P.P.S. added as Conversion-Story step-4 callback.
+ *   • Day 5 — opens with explicit callback to D0's "wall" moment ("the
+ *     deal I missed by going to bed") + deeper sensory detail (timestamp,
+ *     coffee aroma, low autumn light, fan silence) so the mental movie
+ *     loads in real cinema, not summary form.
+ *   • Net effect: every SOS email D0–D6 now carries (a) body cliffhanger,
+ *     (b) cliffhanger P.S. or anchor P.S., (c) serialized continuity ref
+ *     to ≥1 prior episode. SOS structure complete; per Brunson rubric the
+ *     remaining 5 points (subject A/B testing) require Resend variant
+ *     wiring, not content edits.
+ *
  * Each entry has: subject, html, delayMs (from verification time).
  * Resend `scheduled_at` queues each one at signup verification time.
  * (See app/api/verify/route.ts for the queueing.)
@@ -144,7 +161,7 @@ export const SOAP_OPERA_EMAILS = [
 <p>That's it. Three plays. Sunday, Wednesday, end-of-quarter. The dashboard is just a tool — the leverage is in the rhythm.</p>
 <p>Tomorrow I'll send you something specific you can do for €7 that locks in the founding-member upgrade path.</p>
 <p>Talk soon,<br>${FROM_NAME}</p>
-<p style="color:#64748b;font-size:14px;">P.S. The dashboard preview lives at <a href="${SIGNALS}" style="color:#0ea5e9;">${SIGNALS}</a> — Founding-member price (€9.97/mo, locked forever) closes May 15.</p>
+<p style="color:#64748b;font-size:14px;">P.S. Three plays only work if the underlying shift is real. Tomorrow I'll lay out the five sentences — one through five — that hold the whole thing up. If sentence five (the rhythm) feels right but sentences one through four don't, we should both know it before any €7 changes hands. Read it tomorrow before you click anything.</p>
 `),
   },
 
@@ -171,6 +188,7 @@ Sunday digest. Wednesday filter. End-of-quarter sweep. The Acceleration Watch is
 <p><a href="${SIGNALS}/perfect-webinar/5min" style="color:#0ea5e9;font-weight:600;">Read the 5-minute walkthrough &rarr;</a></p>
 <p>Tomorrow: the €7 way to test step 5 on your own thesis before any subscription decision.</p>
 <p>Talk soon,<br>${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. The five sentences above are the whole investment thesis on a single index card. If sentence two — the new vehicle, engineering acceleration as the sensor — already sounds wrong to you, reply with what you're catching. Genuinely the email I'd most want to read this week. The €7 First Look I'll send tomorrow doesn't make sense if step 2 isn't the right step.</p>
 `),
   },
 
@@ -186,8 +204,10 @@ Sunday digest. Wednesday filter. End-of-quarter sweep. The Acceleration Watch is
 <p>Why €7 is the price: it's exactly what a coffee costs in central Lisbon. It's the lowest-friction commitment that filters out the time-wasters but doesn't punish someone who just wants to see the data on their thesis. It also means I can ship a custom report in 24 hours without it eating my whole week.</p>
 <p>If you upgrade to the Dashboard within 14 days of receiving the deep dive, the €7 is credited. If you don't, you still keep the report and the CSV.</p>
 <p><a href="${SITE}/#firstlook" style="color:#0ea5e9;font-weight:600;">Pick a sector and grab the pass &rarr;</a></p>
+<p>Tomorrow's email is short, late, and personal — a real description of what a Tuesday morning looks like three months from now if the Sunday-Wednesday-quarter rhythm has actually stuck. Read it before you decide on the Dashboard rung. The €7 is a separate decision from the €9.97/mo — but both decisions get easier once Tuesday morning is concrete instead of abstract.</p>
 <p>Talk soon,<br>${FROM_NAME}</p>
 <p style="color:#64748b;font-size:14px;">P.S. The first 50 passes lock the €7 price — it goes to €19 after launch week.</p>
+<p style="color:#64748b;font-size:14px;">P.P.S. If you're stuck on step 4 of yesterday's five-step shift — the identity-stays-intact one — the €7 First Look is also the answer to that. You read a written deep-dive in the same way you'd read a long pull-request comment. Same energy, same pace, same skill. No coffees required, no calendar Tetris, no turning into someone else's idea of an investor.</p>
 `),
   },
 
@@ -198,7 +218,9 @@ Sunday digest. Wednesday filter. End-of-quarter sweep. The Acceleration Watch is
     subject: "A Tuesday morning, three months from now",
     delayMs: THIRTY_MIN + 5 * ONE_DAY,
     html: wrap(`
-<p>Picture this. It's a Tuesday morning in August. You're at the kitchen table with coffee. Dashboard open in one tab, inbox in another.</p>
+<p>Five days ago I told you about the deal I missed because I closed the laptop and went to bed. The fintech that announced a $4M Series A three weeks later. The wall I built with my own tiredness. That email was the Day 0 anchor for everything since.</p>
+<p>Today I want to describe the opposite morning, because the whole product is the architecture that makes the opposite possible. Read this slowly — it's worth more than the feature stack underneath.</p>
+<p>It's 8:14 a.m. on a Tuesday in August. The kitchen smells like the coffee you just poured. Light is coming in low through the window because the year is tipping toward autumn. Dashboard open in one tab, inbox in another. Your laptop fan is silent — the heaviest thing on screen is your own thinking.</p>
 <p>You scan the top ten by acceleration. The third row is a fintech-infra startup you've never heard of — Seed, US, commit velocity up 280% over the last 14 days, four new contributors, two new infrastructure repos spun up Sunday. You click the org. The README was rewritten over the weekend. The newest contributor left a public Series-B fintech six weeks ago. You open the founder's email — it's right there in the git log — and write three lines: <em>"I noticed [specific repo] just shipped [specific feature]. I write $25k angel cheques in fintech infra. Would 20 minutes next week make sense?"</em></p>
 <p>That's the founder's first cold email of the week. The reply rate on emails like that is about 4× the rate on the standard "loved your deck" template. By Friday, you have a 30-minute call on the calendar. By the end of the quarter, the round opens, and you're already inside the conversation — at a check size that wouldn't have survived a partner-tier procurement process.</p>
 <p><strong>That's the Wealth half.</strong> €25k cheque written six weeks before the round was on AngelList, at a valuation that wouldn't have been on the table once the round was three-times-oversubscribed. Compound that across three to five quarters and the math starts to look like the partners who built track records on Stripe and Notion at seed.</p>
