@@ -24,7 +24,8 @@ export const metadata: Metadata = {
   },
 };
 
-const STRIPE_DASHBOARD = "https://buy.stripe.com/28E7sK48H04U8ou07u0x200";
+// Cohort-gated checkout — see /perfect-webinar comment for full rationale.
+const STRIPE_DASHBOARD = "/api/checkout/founder?ref=perfect-webinar-5min";
 const SIGNUP_URL = "https://gitdealflow.com/#signup";
 
 export default function FiveMinPerfectWebinarPage() {

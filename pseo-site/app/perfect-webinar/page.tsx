@@ -31,7 +31,11 @@ export const metadata: Metadata = {
   },
 };
 
-const STRIPE_DASHBOARD = "https://buy.stripe.com/28E7sK48H04U8ou07u0x200";
+// Brunson Live-Replay cart-close gate. Routes through /api/checkout/founder
+// which checks cohort phase server-side: open → creates fresh Stripe
+// Checkout Session and 303s to it; closed → 302s to /founder-closed
+// waitlist. Never a hard 4xx or broken-link experience.
+const STRIPE_DASHBOARD = "/api/checkout/founder?ref=perfect-webinar";
 const SIGNUP_URL = "https://gitdealflow.com/#signup";
 const FIRST_LOOK_URL = "/pricing#first-look-pass";
 
