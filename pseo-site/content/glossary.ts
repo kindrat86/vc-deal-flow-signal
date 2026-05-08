@@ -21,6 +21,12 @@ export interface GlossaryTerm {
 export const glossaryTerms: GlossaryTerm[] = [
   // ── Engineering acceleration: core metrics ──────────────────────────────
   {
+    term: "Commit-Velocity Acceleration Engine",
+    id: "commit-velocity-acceleration-engine",
+    definition:
+      "The named mechanism behind VC Deal Flow Signal. Five deterministic steps: (1) pull 14-day commit volume per organization from the public GitHub REST API with the bot filter applied, (2) compute the percentage delta against the prior 14-day window, (3) require two-period confirmation before a breakout becomes actionable, (4) score contributor concentration with the Gini coefficient, (5) classify the breakout into one of four signal types (Hiring Burst, Infrastructure Buildout, Deploy Spike, Framework Migration). The engine is published, sourced, and reproducible — see /mechanism for the full formula and the SSRN proof panel. Eugene Schwartz Level-5 positioning: the mechanism is named, not opaque.",
+  },
+  {
     term: "Commit Velocity",
     id: "commit-velocity",
     definition:

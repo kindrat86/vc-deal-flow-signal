@@ -45,6 +45,7 @@ export const metadata: Metadata = {
 // internal-link graph from the home page to routes Yandex flagged
 // "low-value or low-demand" in the 2026-05-02 recheck.
 const PILLAR_LINKS = [
+  { href: "/mechanism", label: "The named mechanism", sub: "Commit-Velocity Acceleration Engine — formula, falsifiability, ladder", icon: "🔬" },
   { href: "/methodology", label: "Methodology", sub: "How signals are computed", icon: "📐" },
   { href: "/weekly", label: "This week's signals", sub: "Weekly top movers", icon: "📈" },
   { href: "/trending", label: "Trending now", sub: "Real-time leaderboard", icon: "🔥" },
