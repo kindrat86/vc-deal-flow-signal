@@ -60,6 +60,7 @@ export const CANONICAL_PROD_ROUTES = [
   "/dream-100",
   "/distribution",
   "/manifesto",
+  "/identity",
   "/start-here",
   "/scorecard",
   "/experiments",
