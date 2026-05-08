@@ -856,6 +856,29 @@ export default function Home() {
           <span className="text-sky-400">We tell you 47 days before the deck.</span>
         </h1>
 
+        {/* Brunson Secret Formula §1 — Ch 1 audit fix (2026-05-08):
+            single-sentence "this is who we serve" avatar pin. Names
+            check size, stage, and sector in the buyer's own language.
+            Mirrors the canonical avatar in @/content/dream-100-icp.ts
+            (line 5–7). Placed between H1 and the stat band so it is
+            the first identity moment a reader hits — above the fold,
+            not 1,100 lines down where the longer disqualifier lives. */}
+        <p
+          aria-label="Built for"
+          className="inline-flex items-start sm:items-center gap-2 mb-5 rounded-full border border-emerald-500/30 bg-emerald-950/30 px-3 py-1.5 text-[11px] sm:text-xs font-medium text-emerald-200/95"
+        >
+          <span aria-hidden className="mt-[1px] sm:mt-0">→</span>
+          <span className="leading-snug">
+            Built for{" "}
+            <strong className="font-semibold text-emerald-100">
+              developer-investors
+            </strong>{" "}
+            writing <span className="tabular-nums">€5k–€50k</span> angel
+            checks on AI infra, devtools &amp; SaaS — between deal #5 and
+            deal #40.
+          </span>
+        </p>
+
         {/* Brunson Secret Formula §1 fix (audit 2026-05-06): "Define result
             in numerical terms above the fold." The 3.4× lift is the
             headline finding from soap-opera D12 (lib/emails.ts:241) —
