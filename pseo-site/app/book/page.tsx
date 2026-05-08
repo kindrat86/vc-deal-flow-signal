@@ -227,19 +227,25 @@ export default function BookPage() {
           <p className="text-lg sm:text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
             {BOOK.subtitle}.
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center pt-4">
+          <div className="flex flex-col sm:flex-row flex-wrap gap-3 justify-center pt-4">
             <Link
               href="#download"
               className="inline-flex items-center justify-center rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-semibold px-6 py-3 transition-colors"
             >
               Get the free PDF + EPUB
             </Link>
-            <a
-              href={STRIPE_BOOK_LINK}
+            <Link
+              href="/book/listen"
+              className="inline-flex items-center justify-center rounded-lg border border-emerald-600/60 hover:border-emerald-400 text-emerald-200 hover:text-emerald-100 font-semibold px-6 py-3 transition-colors"
+            >
+              ▶ Listen (audiobook)
+            </Link>
+            <Link
+              href="/book/upgrade"
               className="inline-flex items-center justify-center rounded-lg border border-amber-500/60 hover:border-amber-400 text-amber-200 hover:text-amber-100 font-semibold px-6 py-3 transition-colors"
             >
-              Get the €0.99 Kindle copy
-            </a>
+              Upgrade · €0.99 → €5.96
+            </Link>
             <Link
               href="/book/read/introduction"
               className="inline-flex items-center justify-center rounded-lg border border-slate-700 hover:border-slate-500 text-gray-300 hover:text-gray-100 font-semibold px-6 py-3 transition-colors"
@@ -406,8 +412,54 @@ export default function BookPage() {
             </a>{" "}·{" "}
             <a className="text-sky-400 hover:text-sky-300 underline underline-offset-2" href="/downloads/seven-signals.txt">
               Plain text
+            </a>{" "}·{" "}
+            <Link className="text-emerald-400 hover:text-emerald-300 underline underline-offset-2" href="/book/listen">
+              Audiobook
+            </Link>{" "}·{" "}
+            <a className="text-emerald-400 hover:text-emerald-300 underline underline-offset-2" href="/book/podcast.xml">
+              RSS feed
             </a>
           </p>
+        </section>
+
+        {/* Audiobook + Reader credential — Brunson Cart-Funnel Ch 18 social loop */}
+        <section className="grid sm:grid-cols-2 gap-5">
+          <div className="bg-gradient-to-br from-emerald-950/30 via-slate-900 to-slate-950 border border-emerald-700/40 rounded-xl p-6 space-y-3">
+            <p className="text-emerald-300 text-xs font-semibold uppercase tracking-wider">
+              Listen instead
+            </p>
+            <h3 className="text-xl font-bold text-gray-100">
+              The audiobook is free and ad-free.
+            </h3>
+            <p className="text-gray-300 text-sm leading-relaxed">
+              Eleven chapters narrated by a synthetic neural voice (Cartesia).
+              RSS-syndicated to every podcast app. No signup, no ads.
+            </p>
+            <Link
+              href="/book/listen"
+              className="inline-flex items-center justify-center rounded-md bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold px-4 py-2 text-sm"
+            >
+              Open the audiobook →
+            </Link>
+          </div>
+          <div className="bg-gradient-to-br from-amber-950/30 via-slate-900 to-slate-950 border border-amber-700/40 rounded-xl p-6 space-y-3">
+            <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider">
+              Reader credential
+            </p>
+            <h3 className="text-xl font-bold text-gray-100">
+              Finished it? Get the certificate.
+            </h3>
+            <p className="text-gray-300 text-sm leading-relaxed">
+              ISBN-stamped completion certificate. Personalized PNG. Share on
+              LinkedIn or Twitter. No server-side storage.
+            </p>
+            <Link
+              href="/book/certificate"
+              className="inline-flex items-center justify-center rounded-md bg-amber-500 hover:bg-amber-400 text-slate-950 font-semibold px-4 py-2 text-sm"
+            >
+              Claim the certificate →
+            </Link>
+          </div>
         </section>
 
         {/* €0.99 Kindle CTA */}

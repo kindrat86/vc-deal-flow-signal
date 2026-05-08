@@ -12,6 +12,8 @@ import {
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import { BookProgress } from "@/components/BookProgress";
+import { BookShareQuote } from "@/components/BookShareQuote";
 
 export const dynamic = "force-static";
 export const dynamicParams = false;
@@ -151,6 +153,18 @@ export default async function ChapterPage({ params }: PageProps) {
           className="book-prose"
           dangerouslySetInnerHTML={{ __html: html }}
         />
+
+        <BookProgress
+          chapterSlug={chapter.slug}
+          chapterNumber={chapter.number}
+          allChapters={BOOK.chapters.map((c) => ({
+            slug: c.slug,
+            title: c.title,
+            number: c.number,
+          }))}
+        />
+
+        <BookShareQuote chapterTitle={chapter.title} chapterUrl={url} />
 
         <nav className="mt-16 pt-8 border-t border-slate-800 grid grid-cols-1 sm:grid-cols-2 gap-4">
           {prev ? (

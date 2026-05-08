@@ -901,6 +901,42 @@ export const BOOK_DRIP = [
 <p style="color:#64748b;font-size:14px;">P.S. If running this manually starts to feel like a part-time job — the Dashboard is the same trace, automated, weekly: <a href="${SIGNALS}" style="color:#0ea5e9;">${SIGNALS}</a>. The book buyer's price (€9.97/mo founding) holds for thirty days from your purchase, same window as this reply offer.</p>
 `, "book-day7"),
   },
+  // Day +14 — Audiobook reveal. Anonymous synthetic narration, RSS-syndicated.
+  // Adds an asynchronous channel for buyers who'd otherwise re-read the book
+  // on commute. The methodology pillar (anonymity over personality) stays
+  // intact: synthetic voice, no human narrator credited.
+  {
+    subject: "The audiobook is live — synthetic narration, free, ad-free",
+    delayMs: 14 * ONE_DAY,
+    html: wrap(`
+<p>Two weeks in. If you finished the book, this is the second-listen channel; if you didn't, this is the alternative format that fits a commute.</p>
+<p>The full eleven-chapter audiobook is up at <a href="${SIGNALS}/book/listen" style="color:#0ea5e9;">signals.gitdealflow.com/book/listen</a>. Every chapter is a separate episode in a public RSS feed at <a href="${SIGNALS}/book/podcast.xml" style="color:#0ea5e9;">signals.gitdealflow.com/book/podcast.xml</a> — paste the URL into Apple Podcasts, Spotify, Overcast, Pocket Casts, or anything that speaks RSS, and the chapters arrive as standard episodes.</p>
+<p>Two notes on the format:</p>
+<ol style="padding-left:20px;">
+<li><strong>The narration is synthetic.</strong> Cartesia neural voice, the same one that reads the weekly Acceleration Watch on YouTube. Methodology over personality is the manifesto pillar — a real human narrator would put a face on a measurement product, and we've chosen not to. The voice is consistent, regeneratable per edition, and costs nothing to ship in additional languages later.</li>
+<li><strong>It's free.</strong> No ads, no signup, no upsell. The audiobook is the same content as the free PDF and EPUB and the free web edition — different format, same words, same CC-BY-4.0 licence.</li>
+</ol>
+<p>If a chapter you want to hear hasn't been narrated yet, the page tells you so and shows the read-instead link. The narration cron runs weekly; chapters fill in over the next month. Subscribe once and the episodes land as they finish.</p>
+<p>Talk soon,<br>${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. The audiobook also runs the methodology chapter (chapter nine) start-to-finish, which is the chapter most buyers tell me they re-read first. Listening to it on a long flight beat re-reading on a small screen for two of the buyers who tested the early cut.</p>
+`, "book-day14"),
+  },
+  // Day +21 — Reader Hall of Fame + completion certificate. Reactivation
+  // for slow readers + social-proof + Brunson Cart-Funnel order-bump pivot
+  // to the €5.96 Reader's Pack for buyers who want the working notebook.
+  {
+    subject: "If you finished the book, claim your reader certificate",
+    delayMs: 21 * ONE_DAY,
+    html: wrap(`
+<p>Three weeks since the book landed in your inbox. The honest distribution we see at this point is roughly: a third of buyers finished the book, a third are mid-way, a third saved it for "the right Sunday." All three are fine — what follows is one offer per cohort.</p>
+<p><strong>If you finished it</strong> — claim a reader completion certificate at <a href="${SIGNALS}/book/certificate" style="color:#fbbf24;">signals.gitdealflow.com/book/certificate</a>. Type your name, download a PNG (1200×630, ISBN-stamped), share it wherever proof-of-work counts for you. Nothing about you is stored on a server — your name only ever lives in the URL parameter and the rendered PNG. The certificate is the receipt: the book's job was to make the methodology yours.</p>
+<p><strong>If you're mid-way</strong> — the chapter most buyers stall on is chapter five (issue closure cadence) because the formula reads heavier than it computes. There's a 90-second worked example in the audiobook that walks the formula in plain English; if reading the chapter is grinding, listen to that section and the rest of the chapter usually clicks. <a href="${SIGNALS}/book/listen/signal-5-issue-cadence" style="color:#0ea5e9;">signals.gitdealflow.com/book/listen/signal-5-issue-cadence</a>.</p>
+<p><strong>If you saved it for the right Sunday</strong> — there is no right Sunday. The reproducible bit of the book is the appendix, and the appendix needs ninety minutes of focused time once. Block ninety minutes on a Saturday morning, run the appendix, and the rest of the book becomes "context for what you just did" instead of "homework you'll get to." That sequence works for nine of ten readers I've watched try it.</p>
+<p>One last thing — if you wanted the working version (Kindle plus the raw CSV plus the replication notebook plus an audio chapter pre-release), the Reader's Pack is at <a href="${SIGNALS}/book/upgrade" style="color:#fbbf24;">signals.gitdealflow.com/book/upgrade</a> for €5.96. That bundle is a labour-cost upgrade, not a margin grab; the value is the notebook saving you a Sunday.</p>
+<p>Talk soon,<br>${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. The shared-certificate PNG seeds Dream-100 distribution: every reader who shares it on LinkedIn or Twitter is a one-shot ad with a built-in landing page. The reciprocity isn't enforced — it's a side effect of the book being good enough to put a name to. If yours is one of the names, we appreciate it.</p>
+`, "book-day21"),
+  },
 ];
 
 /**

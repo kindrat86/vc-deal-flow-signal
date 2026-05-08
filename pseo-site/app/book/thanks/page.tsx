@@ -113,6 +113,34 @@ export default function BookThanksPage() {
           </Link>
         </section>
 
+        {/* New format options + reader credential */}
+        <section className="grid sm:grid-cols-2 gap-3">
+          <Link
+            href="/book/listen"
+            className="block bg-gradient-to-br from-emerald-950/30 via-slate-900 to-slate-950 border border-emerald-700/40 rounded-lg p-5 hover:border-emerald-500 transition-colors"
+          >
+            <p className="text-emerald-300 text-xs font-semibold uppercase tracking-wider mb-1">
+              Prefer to listen?
+            </p>
+            <p className="text-gray-100 font-semibold">Free audiobook →</p>
+            <p className="text-gray-400 text-xs mt-1">
+              11 chapters · RSS · Cartesia synthetic narration
+            </p>
+          </Link>
+          <Link
+            href="/book/certificate"
+            className="block bg-gradient-to-br from-amber-950/30 via-slate-900 to-slate-950 border border-amber-700/40 rounded-lg p-5 hover:border-amber-500 transition-colors"
+          >
+            <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider mb-1">
+              When you finish
+            </p>
+            <p className="text-gray-100 font-semibold">Reader certificate →</p>
+            <p className="text-gray-400 text-xs mt-1">
+              ISBN-stamped PNG · LinkedIn-ready · no server storage
+            </p>
+          </Link>
+        </section>
+
         <section className="bg-slate-900/40 border border-slate-800 rounded-lg p-5 space-y-3 text-sm">
           <p className="text-gray-400 text-xs font-semibold uppercase tracking-wider">
             What happens next
