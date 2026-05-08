@@ -64,6 +64,8 @@ export async function GET() {
       hasPart: clips,
       transcript: v.transcriptParagraphs.join("\n\n"),
       transcriptParagraphs: v.transcriptParagraphs,
+      transcriptVttUrl: `${SITE}/api/v1/transcripts/${v.slug}`,
+      transcriptPlainUrl: `${SITE}/api/v1/transcripts/${v.slug}`,
       chapters: v.chapters,
       embeddedOn: v.embeddedOn,
       potentialAction: {

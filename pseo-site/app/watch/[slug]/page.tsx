@@ -277,8 +277,16 @@ export default async function WatchPage({
               playsInline
               className="w-full h-full"
               aria-label={v.title}
+              crossOrigin="anonymous"
             >
               <source src={v.contentUrl} type="video/mp4" />
+              <track
+                kind="captions"
+                label="English"
+                srcLang="en"
+                src={`/api/v1/transcripts/${v.slug}`}
+                default
+              />
             </video>
           ) : null}
         </figure>
