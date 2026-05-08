@@ -17,7 +17,7 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHomepageHreflang } from "@/lib/hreflang";
 import SignalLeader from "@/components/SignalLeader";
-import ThreeDoorHero from "@/components/ThreeDoorHero";
+import HomeSqueeze from "@/components/HomeSqueeze";
 import IdentityBanner from "@/components/IdentityBanner";
 import PricingLadder from "@/components/PricingLadder";
 import SocialProofBar from "@/components/SocialProofBar";
@@ -963,9 +963,14 @@ export default function Home() {
           a feature comparison. /identity is the long-form companion. */}
       <IdentityBanner />
 
-      {/* Three doors — Brunson-meets-Isenberg ladder: free email / receipts /
-          predict. All lead to the same email gate downstream. */}
-      <ThreeDoorHero />
+      {/* Brunson DotCom Secrets Ch 14 — Lead "Squeeze" Funnel.
+          HSO audit 2026-05-08 (Ch 14: 87/100): the prior ThreeDoorHero
+          gave equal weight to three CTAs, diluting the squeeze. Replaced
+          with a true single-CTA squeeze — inline email-capture form
+          (dominant) + two small tertiary "exit" links (subordinate).
+          The form posts to /api/subscribe with cohort=soap-opera and
+          source=home for split-bucket attribution vs /squeeze. */}
+      <HomeSqueeze />
 
       {/* Brunson DotCom Secrets Ch 12 + Expert Secrets Ch 13 — Stack Slide
           on the home page. HSO audit 2026-05-08: full priced stack lived
