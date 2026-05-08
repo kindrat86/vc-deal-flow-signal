@@ -327,8 +327,8 @@ export default async function WatchPage({
         <section className="space-y-4">
           <h2 className="text-2xl font-bold text-gray-100">Transcript</h2>
           <p className="text-xs text-slate-400 uppercase tracking-wider">
-            Synthetic voice — Cartesia "Theo" — anonymity-safe per the
-            project's no-founder-face rule.
+            Synthetic voice — Cartesia &ldquo;Theo&rdquo; — anonymity-safe per
+            the project&rsquo;s no-founder-face rule.
           </p>
           <div className="space-y-4 text-gray-300 text-base leading-relaxed">
             {v.transcriptParagraphs.map((p, i) => (
@@ -344,7 +344,7 @@ export default async function WatchPage({
           <ul className="grid sm:grid-cols-2 gap-3 text-sm">
             <li>
               <Link href="/predicted" className="text-sky-300 hover:underline">
-                → Engineering Acceleration Watch (this week's picks)
+                → Engineering Acceleration Watch (this week&rsquo;s picks)
               </Link>
             </li>
             <li>
