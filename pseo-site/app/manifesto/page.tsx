@@ -3,6 +3,7 @@ import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 
 export const dynamic = "force-static";
 
@@ -313,6 +314,8 @@ export default function ManifestoPage() {
             </Link>
           </div>
         </section>
+
+        <DataNerdSignoff variant="long" catchphraseIndex={2} />
 
         <p className="text-gray-400 text-xs leading-relaxed border-t border-slate-800 pt-6">
           Movement framing per <em>Expert Secrets</em> Ch 5 (The Cult-ure

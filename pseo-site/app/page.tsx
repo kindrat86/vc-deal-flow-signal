@@ -24,6 +24,8 @@ import SocialProofBar from "@/components/SocialProofBar";
 import SharpScarcityBadge from "@/components/SharpScarcityBadge";
 import EpiphanyBridgeCondensed from "@/components/EpiphanyBridgeCondensed";
 import HomeOfferStack from "@/components/HomeOfferStack";
+import { DataNerdPolarityCard } from "@/components/DataNerdPolarityCard";
+import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 
 export const metadata: Metadata = {
   // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
@@ -983,6 +985,12 @@ export default function Home() {
           (30-day guarantee) included as final stack line. */}
       <HomeOfferStack />
 
+      {/* Brunson DCS Ch 7 — Attractive Character polarity card. The reader
+          self-qualifies on the four pillars before they hit the conversion
+          path, so people who'd churn at email #2 churn here at scroll-second
+          15 instead. Compact, links to /data-nerd for the long version. */}
+      <DataNerdPolarityCard />
+
       {/* AgentSummary kept for AI extractability — visually de-emphasized
           via wrapper since the live SignalLeader now plays the human-facing
           TL;DR role. */}
@@ -1637,6 +1645,11 @@ export default function Home() {
           </Link>
         </div>
       </div>
+
+      {/* Brunson DCS Ch 7 — Attractive Character signoff at page-end. Links
+          to /data-nerd character bible and /about/founder backstory. */}
+      <DataNerdSignoff variant="default" />
+
     </div>
     </>
   );

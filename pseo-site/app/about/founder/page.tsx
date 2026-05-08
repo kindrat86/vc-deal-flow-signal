@@ -347,10 +347,36 @@ export default function FounderPage() {
           </ul>
         </section>
 
+        {/* CHARACTER BIBLE LINK */}
+        <section className="rounded-xl border border-amber-700/30 bg-gradient-to-br from-amber-950/15 via-slate-900 to-slate-950 p-6 sm:p-7 space-y-3">
+          <p className="text-amber-300 text-[10px] font-semibold uppercase tracking-wider">
+            06 · The fuller character bible
+          </p>
+          <h2 className="text-xl font-bold text-gray-100">
+            This page is the introduction. The bible is at /data-nerd.
+          </h2>
+          <p className="text-gray-300 text-sm leading-relaxed">
+            If you want the long version — six parables (three more than on
+            this page), seven voice rules the site is audited against, the
+            synthetic-voice disclosure, and the six surfaces where you&rsquo;ll
+            meet the same handle — that lives at the canonical character page.
+            Brunson would call this the Attractive-Character bible. Same
+            handle, same voice, more density.
+          </p>
+          <Link
+            href="/data-nerd"
+            className="inline-flex items-center gap-1 text-sm font-bold text-amber-300 hover:text-amber-200 underline decoration-dotted"
+          >
+            Read the{" "}
+            <em className="not-italic">Data Nerd</em>{" "}
+            character bible →
+          </Link>
+        </section>
+
         {/* RESULT */}
         <section className="space-y-3 border-t border-slate-800 pt-8">
           <p className="text-emerald-400 text-xs font-semibold uppercase tracking-wider">
-            06 · What this means for you
+            07 · What this means for you
           </p>
           <h2 className="text-2xl font-bold text-gray-100">
             If any of the above made you nod, you&rsquo;re my reader.
