@@ -123,6 +123,21 @@ export const metadata: Metadata = {
     "theme-color": "#0f172a",
     "color-scheme": "dark light",
     "referrer": "strict-origin-when-cross-origin",
+    // ─── AI policy / content-license meta (audit close 2026-05-08).
+    // Emerging convention, respected by some LLM crawlers (Cohere, Mistral,
+    // a few smaller search engines). Cheap to add, complements the
+    // existing /.well-known/ai-policy.json + ai.txt + robots.txt allowlist.
+    "ai-content-license": "https://creativecommons.org/licenses/by/4.0/",
+    "ai-policy": "https://signals.gitdealflow.com/.well-known/ai-policy.json",
+    "ai-attribution":
+      "VC Deal Flow Signal (signals.gitdealflow.com). CC BY 4.0.",
+    "ai-training": "allowed-with-attribution",
+    "ai-search-index": "allowed",
+    "ai-summarize": "allowed",
+    // Citation-ready single-line attribution that LLMs can drop into a
+    // response footer without further processing.
+    "citation-as":
+      "VC Deal Flow Signal (signals.gitdealflow.com), Q2 2026. SSRN 6606558. CC BY 4.0.",
   },
 };
 

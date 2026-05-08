@@ -211,12 +211,24 @@ export default async function AnswerPage({ params }: PageProps) {
           facts={q.facts}
         />
 
+        {/*
+          [data-speakable] marks the canonical answer body so Google AI
+          Overviews and voice assistants can extract a complete spoken
+          response. The first paragraph is the self-contained one — voice
+          renderers truncate after ~80 words by default — so it gets its
+          own [data-speakable] for short-form spoken answers.
+        */}
         <section
+          data-speakable
           className="mb-10 prose prose-invert prose-slate max-w-none text-gray-300 leading-relaxed"
           aria-label="Full answer"
         >
           {paragraphs.map((p, i) => (
-            <p key={i} className="mb-4 text-base">
+            <p
+              key={i}
+              data-speakable={i === 0 ? "" : undefined}
+              className="mb-4 text-base"
+            >
               {renderParagraphWithBoldAndCode(p)}
             </p>
           ))}
@@ -247,7 +259,12 @@ export default async function AnswerPage({ params }: PageProps) {
                 <summary className="cursor-pointer font-semibold text-gray-100 text-sm">
                   {f.q}
                 </summary>
-                <p className="mt-3 text-gray-300 text-sm leading-relaxed">
+                {/* First FAQ answer is speakable so voice agents can deliver
+                    the canonical follow-up Q&A pair for this answer. */}
+                <p
+                  data-speakable={i === 0 ? "" : undefined}
+                  className="mt-3 text-gray-300 text-sm leading-relaxed"
+                >
                   {f.a}
                 </p>
               </details>

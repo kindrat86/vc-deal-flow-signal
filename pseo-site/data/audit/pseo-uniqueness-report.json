@@ -1,134 +1,42 @@
 {
-  "generatedAt": "2026-05-07T19:40:56.910Z",
+  "generatedAt": "2026-05-08T05:56:47.251Z",
   "config": {
-    "hammingThreshold": 20,
+    "hammingThreshold": 9,
     "globalThresholdPct": 5,
-    "reportOnly": true
+    "reportOnly": false
   },
   "totals": {
     "entries": 72,
-    "flagged": 17,
-    "flaggedPct": 23.61
+    "flagged": 0,
+    "flaggedPct": 0
   },
-  "verdict": "FAIL",
+  "verdict": "PASS",
   "surfaces": [
     {
       "name": "compare",
       "basePath": "/compare",
       "totalEntries": 19,
-      "flaggedEntries": 9,
-      "flaggedPct": 47.4,
+      "flaggedEntries": 0,
+      "flaggedPct": 0,
       "shingleCounts": {
         "min": 406,
         "max": 708,
         "mean": 537
       },
-      "pairs": [
-        {
-          "a": "vc-deal-flow-signal-vs-pitchbook",
-          "b": "vc-deal-flow-signal-vs-cb-insights",
-          "hamming": 15,
-          "similarity": 76.6
-        },
-        {
-          "a": "vc-deal-flow-signal-vs-harmonic-ai",
-          "b": "vc-deal-flow-signal-vs-affinity-relationship-intelligence",
-          "hamming": 15,
-          "similarity": 76.6
-        },
-        {
-          "a": "vc-deal-flow-signal-vs-tribe-capital-magnify",
-          "b": "vc-deal-flow-signal-vs-affinity-relationship-intelligence",
-          "hamming": 16,
-          "similarity": 75
-        },
-        {
-          "a": "vc-deal-flow-signal-vs-harmonic-ai",
-          "b": "best-deal-flow-tools-european-investors",
-          "hamming": 17,
-          "similarity": 73.4
-        },
-        {
-          "a": "vc-deal-flow-signal-vs-dealroom",
-          "b": "best-deal-flow-tools-developer-investors-2026",
-          "hamming": 18,
-          "similarity": 71.9
-        },
-        {
-          "a": "vc-deal-flow-signal-vs-pitchbook",
-          "b": "vc-deal-flow-signal-vs-harmonic-ai",
-          "hamming": 20,
-          "similarity": 68.8
-        },
-        {
-          "a": "vc-deal-flow-signal-vs-pitchbook",
-          "b": "vc-deal-flow-signal-vs-signalfire-beacon",
-          "hamming": 20,
-          "similarity": 68.8
-        },
-        {
-          "a": "vc-deal-flow-signal-vs-cb-insights",
-          "b": "best-deal-flow-tools-european-investors",
-          "hamming": 20,
-          "similarity": 68.8
-        },
-        {
-          "a": "vc-deal-flow-signal-vs-cb-insights",
-          "b": "vc-deal-flow-signal-vs-tribe-capital-magnify",
-          "hamming": 20,
-          "similarity": 68.8
-        }
-      ]
+      "pairs": []
     },
     {
       "name": "alternatives",
       "basePath": "/alternatives",
       "totalEntries": 11,
-      "flaggedEntries": 8,
-      "flaggedPct": 72.7,
+      "flaggedEntries": 0,
+      "flaggedPct": 0,
       "shingleCounts": {
         "min": 512,
         "max": 749,
         "mean": 622
       },
-      "pairs": [
-        {
-          "a": "harmonic-ai",
-          "b": "cb-insights",
-          "hamming": 16,
-          "similarity": 75
-        },
-        {
-          "a": "specter",
-          "b": "openvc",
-          "hamming": 18,
-          "similarity": 71.9
-        },
-        {
-          "a": "cb-insights",
-          "b": "signalrank",
-          "hamming": 19,
-          "similarity": 70.3
-        },
-        {
-          "a": "dealroom",
-          "b": "pitchbook",
-          "hamming": 20,
-          "similarity": 68.8
-        },
-        {
-          "a": "dealroom",
-          "b": "specter",
-          "hamming": 20,
-          "similarity": 68.8
-        },
-        {
-          "a": "crunchbase-alerts",
-          "b": "cb-insights",
-          "hamming": 20,
-          "similarity": 68.8
-        }
-      ]
+      "pairs": []
     },
     {
       "name": "use-cases",
