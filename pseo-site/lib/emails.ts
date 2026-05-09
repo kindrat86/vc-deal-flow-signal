@@ -603,6 +603,74 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
 `),
   },
 
+  // ──────────────────────────────────────────────────────────────────────
+  // Attractive-Character parable inserts (Brunson DCS Ch 7 + ES Ch 2).
+  //
+  // Three Seinfeld-style character emails that build the narrator persona
+  // (The Data Nerd) without selling. Each is a small story with a lesson;
+  // none has a hard CTA. They run BETWEEN sales beats so the reader gets
+  // narrative continuity, not pitch fatigue.
+  //
+  // Appended to the END of the array intentionally — TIER_OVERRIDES is
+  // keyed by index for the first ~22 entries, so index drift here would
+  // misroute F/T/I cohorts. Appending preserves all existing overrides.
+  // ──────────────────────────────────────────────────────────────────────
+
+  // Day 7 — Parable: The Sunday Email I Never Sent
+  {
+    subject: "The Sunday email I never sent (and what it cost me)",
+    delayMs: THIRTY_MIN + 7 * ONE_DAY,
+    html: wrap(`
+<p>Quick story this morning. No pitch.</p>
+<p>The Sunday before the $4M Series A I should have been in, I drafted a three-line email to the founder. It said: "Saw your settlement-layer commits. The way you're handling the FX edge case is the kind of thing your competitors will copy in eighteen months. Would love to put a small cheque in if you ever raise."</p>
+<p>I read it back. Decided I hadn't earned the right. Closed the laptop.</p>
+<p>Three weeks later the deck went out and the round closed inside a week.</p>
+<p>I've thought about that draft a lot. The work was done. I had the technical observation. I had the timing. I had the cheque size that would have been welcome on a small angel pre-seed. The thing I lacked was permission — not from the founder, who would have read it in 30 seconds and replied — but from myself.</p>
+<p>The product on this site exists because I wanted to remove that step. The Sunday digest tells me which engineering observations are sharp enough to be worth an email. When the digest flags an org, I don't ask whether I've earned the right anymore. The digest is the permission slip. I write the three lines.</p>
+<p>If you're reading this and there's a draft sitting in your folder — about a repo, a contributor, a README change you noticed last week — that's the email. Send it today. The expensive move was never the email. The expensive move was the week you waited.</p>
+<p>Talk soon —<br>${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. Where this lives in the broader character: this is one of six parables on the <a href="${SIGNALS}/data-nerd#sunday-email" style="color:#0ea5e9;">character bible page</a>. Read it if you want the rest. Or just send the email and skip the page.</p>
+`, "drip-d7-parable"),
+  },
+
+  // Day 33 — Parable: The Reader Who Told Me I Was Wrong
+  {
+    subject: "The reader who told me I was wrong (and why I'm grateful)",
+    delayMs: THIRTY_MIN + 33 * ONE_DAY,
+    html: wrap(`
+<p>A month ago a Series B associate replied to a Tuesday digest with two lines.</p>
+<p>"You flagged orgname. Their commit velocity tripled because they migrated a monorepo. There was no acceleration. Just a re-org."</p>
+<p>She was right. The model had no signal for monorepo migration events — when a team consolidates ten repos into one, every commit to the new repo looks like a ten-fold velocity surge for two weeks until the dust settles. Pure noise dressed as signal.</p>
+<p>We added a monorepo-migration detector the next Sunday. False positive rate dropped from 7% to 4% on the back of one reader's reply. The methodology page at <a href="${SIGNALS}/methodology" style="color:#0ea5e9;">${SIGNALS}/methodology</a> got updated the same week, with a footnote crediting the catch.</p>
+<p>Three things I want to name out loud, because the way most data products handle this is the opposite:</p>
+<ol>
+<li><strong>Every methodology is wrong somewhere.</strong> The cheap move is to deny it. The expensive move — and the one that compounds — is to publish the limit before the reader finds it.</li>
+<li><strong>The reader who corrects us is the reader who matters most.</strong> She's been on the bus longer than most. She's the one whose Tuesday morning we're trying to be useful on.</li>
+<li><strong>The 4% false positive rate is the new floor, not the new ceiling.</strong> Aiming for 2% by Q4. Will publish the next post-mortem when we get there or when we discover the next thing we got wrong, whichever comes first.</li>
+</ol>
+<p>If you've spotted something — a flagged org that doesn't make sense, a signal we're missing, a category we don't understand yet — reply to this email. Two daily reply batches. I read every one. Most don't change the model. The ones that do are why the model gets better.</p>
+<p>Talk soon —<br>${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. The full list of methodology corrections (with reader credits where given) lives at <a href="${SIGNALS}/uptime" style="color:#0ea5e9;">${SIGNALS}/uptime</a>. The list is short. That's a feature: each correction is a real thing we got wrong, named in public.</p>
+`, "drip-d33-parable"),
+  },
+
+  // Day 80 — Parable: The Tuesday I Broke the Regression
+  {
+    subject: "The Tuesday I broke the regression (a public post-mortem)",
+    delayMs: THIRTY_MIN + 80 * ONE_DAY,
+    html: wrap(`
+<p>This is the kind of email most products don't send. I'm sending it because the methodology is supposed to be more interesting than the wins.</p>
+<p>On a Tuesday in February I refactored the velocity-computation function "just to clean it up." Pushed at 9pm with a one-line commit message. Wednesday morning the digest went out with three orgs ranked at the top that had no business being there — a hackathon, a bot-heavy security-tool repo, and a vendor's documentation site. Thirty subscribers replied, mostly polite. A few were not.</p>
+<p>I rolled back the refactor at 11am Wednesday. Ran the regression against the prior week's known-good output. Found the bug — an off-by-one in the contributor-deduplication step that double-counted any account whose handle started with a number. Hackathons over-index on numbered usernames. Bots, too. Documentation sites have repos owned by accounts like "1password-docs-deploy" — same pattern.</p>
+<p>Shipped the fix Thursday at 3am. Regenerated the prior week's digest from corrected data, re-sent to everyone who'd been on the bad list. Posted the post-mortem at <a href="${SIGNALS}/uptime" style="color:#0ea5e9;">${SIGNALS}/uptime</a> Friday morning, with the bad commit, the fix commit, the regression test that would have caught it (and now does), and the names of the seven readers who'd flagged it first.</p>
+<p>The whole thing took three days. The total subscriber loss from the bad digest: two unsubscribes. The lesson, which is why I'm telling you, is that this is the entire reason the price is €9.97/mo and not €9,970/mo:</p>
+<p><em>If we're charging €9,970, the post-mortem is internal and the bug never gets named in public.</em> The customer wouldn't tolerate it. At €9.97, the post-mortem is the product. Subscribers who reply with bug reports are the regression test. The whole feedback loop runs in public, on the methodology page, with names attached. That's not a discount; it's a different relationship.</p>
+<p>If you've ever wondered what happens when the model breaks, this is what happens. Slow Tuesday. Bad Wednesday. Public Thursday. Better Friday.</p>
+<p>Talk soon —<br>${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. The seven readers who flagged the bad ranking first all got a free month of Insider Circle, no asks attached. The names are in the post-mortem. The system continues to work because they kept it honest.</p>
+`, "drip-d80-parable"),
+  },
+
   // Day 240 — Methodology Partnership ascension (Brunson Audit 2026-05-08
   // Value Ladder ding fix). The Day-180 State-of-the-Engine email closes
   // the second falsifiable-prediction loop. This email opens the next rung

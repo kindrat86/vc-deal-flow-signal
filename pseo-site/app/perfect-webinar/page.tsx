@@ -4,6 +4,7 @@ import { AgentSummary } from "@/components/AgentSummary";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { VideoEmbedBlock } from "@/components/VideoEmbedBlock";
 import { DataNerdAudio } from "@/components/DataNerdAudio";
+import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { LiveReplayBar } from "@/components/LiveReplayBar";
 import { FastActionBonuses } from "@/components/FastActionBonuses";
@@ -1074,6 +1075,8 @@ export default function PerfectWebinarPage() {
             30-day Signal-or-It&rsquo;s-Free guarantee · Reply REFUND for full refund
           </p>
         </section>
+
+        <DataNerdSignoff variant="long" catchphraseIndex={3} />
 
         <AgentSummary
           tldr="The Perfect Webinar page lays out the single belief — commit-velocity acceleration is the most leading public signal in venture capital — and supports it by breaking three classic objections (vehicle: GitHub data is noise; internal: I already have deal flow; external: public data has no edge). Closes on the €9.97/mo Dashboard tier (founding-member, locked forever) with a 30-day Signal-or-It's-Free guarantee. Built on the 219-startup SSRN-published panel with a 21–47 day median lead time over fundraise announcements."
