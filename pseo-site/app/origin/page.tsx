@@ -4,6 +4,7 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { DataNerdAudio } from "@/components/DataNerdAudio";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import ThreeCoreStoriesNav from "@/components/ThreeCoreStoriesNav";
 
 export const dynamic = "force-static";
 
@@ -422,6 +423,15 @@ export default function OriginPage() {
             </li>
           </ul>
         </section>
+
+        {/* Brunson Expert Secrets Ch 9 — The Three Core Stories.
+            Audit 2026-05-09 (Ch 9 push 94→100): replace the generic
+            "more reading" footer below with story-aware transition CTAs
+            that move the reader explicitly into the Vehicle and Identity
+            stories. The footer below is preserved for the secondary
+            references (founder page, walkthrough, /story post-mortem)
+            but the primary next-step is now the Three Core Stories nav. */}
+        <ThreeCoreStoriesNav current="origin" />
 
         <section className="border-t border-slate-800 pt-8 text-sm text-gray-400 leading-relaxed">
           <p>

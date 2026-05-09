@@ -11,6 +11,7 @@ import { LiveReplayBar } from "@/components/LiveReplayBar";
 import { FastActionBonuses } from "@/components/FastActionBonuses";
 import { DoorsClosingBanner } from "@/components/DoorsClosingBanner";
 import TrialClose from "@/components/TrialClose";
+import ThreeCoreStoriesNav from "@/components/ThreeCoreStoriesNav";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { getReplayWindowSnapshot } from "@/lib/replay-window";
 
@@ -1125,6 +1126,13 @@ export default function PerfectWebinarPage() {
             30-day Signal-or-It&rsquo;s-Free guarantee · Reply REFUND for full refund
           </p>
         </section>
+
+        {/* Brunson Expert Secrets Ch 9 — Three Core Stories.
+            Audit 2026-05-09 (Ch 9 push 94→100): the walkthrough is the
+            Vehicle (long form). Walk the reader into the Origin (where
+            the story started) and the Identity (who they become) so the
+            three stories cross-link narratively, not as footer chrome. */}
+        <ThreeCoreStoriesNav current="vehicle-walkthrough" />
 
         <DataNerdSignoff variant="long" catchphraseIndex={3} />
 
