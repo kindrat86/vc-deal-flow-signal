@@ -3,6 +3,7 @@ import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import ThreeCoreStoriesNav from "@/components/ThreeCoreStoriesNav";
 
 export const dynamic = "force-static";
 
@@ -434,6 +435,14 @@ export default function MechanismPage() {
             <span aria-hidden="true">→</span>
           </Link>
         </section>
+
+        {/* Brunson Expert Secrets Ch 9 — Three Core Stories.
+            Audit 2026-05-09 (Ch 9 push 94→100): the engine page is the
+            "vehicle in formula form." Walk the reader into the Origin
+            and Identity stories instead of dead-ending on a Schwartz
+            citation. The citation footer below is preserved for the
+            scholarly reader who needs the source. */}
+        <ThreeCoreStoriesNav current="vehicle-mechanism" />
 
         <p className="text-slate-500 text-xs leading-relaxed border-t border-slate-800 pt-6">
           Sophistication-ladder framing per Eugene Schwartz,{" "}

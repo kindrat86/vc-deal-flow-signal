@@ -5,6 +5,7 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import IdentityBanner from "@/components/IdentityBanner";
 import { EMOTIONAL_CAUSE_LINES } from "@/content/cause";
+import ThreeCoreStoriesNav from "@/components/ThreeCoreStoriesNav";
 
 export const dynamic = "force-static";
 
@@ -400,6 +401,15 @@ export default function IdentityPage() {
           </span>
         </Link>
       </section>
+
+      {/* Brunson Expert Secrets Ch 9 — Three Core Stories.
+          Audit 2026-05-09 (Ch 9 push 94→100): walk the reader from
+          Identity into Origin (where the story started) and the Vehicle
+          (the long-form walkthrough). The two-door section above closes
+          on /firstlook + /walkthrough (commerce intent); this section
+          closes on /origin + /walkthrough (story intent). Both sets
+          coexist intentionally — different jobs for different readers. */}
+      <ThreeCoreStoriesNav current="identity" />
 
       <AgentMirrorLinks path="/identity" />
     </main>
