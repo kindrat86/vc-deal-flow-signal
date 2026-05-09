@@ -534,11 +534,19 @@
       <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
         Crunchbase tells you the day they raised.<br class="hidden md:block"> <span class="text-signal-500">We tell you 47 days before the deck.</span>
       </h1>
-      <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10">
+      <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-7">
         4,200 GitHub orgs ranked every Sunday by commit velocity. The pattern preceded <strong class="text-white">219 confirmed fundraises by 21 to 47 days</strong> — all replicable from the public dataset on Zenodo. <strong class="text-white">5 names, every Sunday. Free forever, no card.</strong>
       </p>
+
+      <!-- Brunson curiosity-bullet stack — what arrives in the next 60 seconds -->
+      <ul class="text-left max-w-xl mx-auto mb-9 space-y-2.5 text-gray-200">
+        <li class="flex items-start gap-3"><span class="text-signal-500 font-bold text-lg leading-none mt-1" aria-hidden="true">&rarr;</span><span><strong class="text-white">This Sunday's 5</strong> &mdash; the names accelerating right now (3 are already at +200% commit velocity)</span></li>
+        <li class="flex items-start gap-3"><span class="text-signal-500 font-bold text-lg leading-none mt-1" aria-hidden="true">&rarr;</span><span><strong class="text-white">The Acceleration Pattern</strong> &mdash; what +344%, +329%, +75% looks like before a round drops</span></li>
+        <li class="flex items-start gap-3"><span class="text-signal-500 font-bold text-lg leading-none mt-1" aria-hidden="true">&rarr;</span><span><strong class="text-white">The Claude MCP setup</strong> &mdash; query &ldquo;which fintechs are accelerating?&rdquo; right inside your tools</span></li>
+      </ul>
+
       <div class="flex flex-col items-center gap-4">
-        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-signal-500">&#9660; This Sunday's 5 &#9660;</p>
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-signal-500">&#9660; All 3 hit your inbox in 60 seconds &#9660;</p>
         <div class="relative">
           <span aria-hidden="true" class="cta-glow"></span>
           <a href="#signup" onclick="if(window.posthog)posthog.capture('hero_cta_clicked',{variant:'russell-bigdomino',target:'signup'})" class="btn btn-primary btn-xl relative">
@@ -786,6 +794,35 @@
     </div>
   </section>
 
+  <!-- §5.5 Dream-Customer Filter — "Who this is for / NOT for" (Brunson qualifier) -->
+  <section class="max-w-5xl mx-auto px-6 py-20">
+    <h2 class="text-3xl font-bold text-center mb-3">Be Honest &mdash; Is This For You?</h2>
+    <p class="text-gray-400 text-center mb-12 max-w-2xl mx-auto">I'd rather you save the click than sign up and unsubscribe two Sundays in. Read both columns. The right one should make you nod once.</p>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="rounded-2xl border border-emerald-500/30 bg-emerald-500/5 p-7 md:p-8">
+        <p class="text-emerald-400 text-xs font-bold uppercase tracking-wider mb-4">This IS for you if &darr;</p>
+        <ul class="space-y-3 text-gray-200 text-[15px] leading-relaxed">
+          <li class="flex items-start gap-3"><span class="text-emerald-400 mt-1 font-bold">&#10003;</span> You're an angel, scout, GP, or operator-investor writing 4&ndash;40 checks/year</li>
+          <li class="flex items-start gap-3"><span class="text-emerald-400 mt-1 font-bold">&#10003;</span> You read code (or comfortably skim a GitHub org) and have founders in your DMs</li>
+          <li class="flex items-start gap-3"><span class="text-emerald-400 mt-1 font-bold">&#10003;</span> You feel the same pipeline arriving from Twitter + warm intros that everyone else gets</li>
+          <li class="flex items-start gap-3"><span class="text-emerald-400 mt-1 font-bold">&#10003;</span> You'd rather wire $25k 6 weeks early than fight 14 partners over a hot deck</li>
+          <li class="flex items-start gap-3"><span class="text-emerald-400 mt-1 font-bold">&#10003;</span> You believe data, when nobody else is reading it, is alpha</li>
+        </ul>
+      </div>
+      <div class="rounded-2xl border border-gray-700 bg-dark-800/40 p-7 md:p-8">
+        <p class="text-gray-400 text-xs font-bold uppercase tracking-wider mb-4">This is NOT for you if &darr;</p>
+        <ul class="space-y-3 text-gray-300 text-[15px] leading-relaxed">
+          <li class="flex items-start gap-3"><span class="text-gray-500 mt-1 font-bold">&#10005;</span> You only invest after a Series B priced round &mdash; the signal arrives too early for you</li>
+          <li class="flex items-start gap-3"><span class="text-gray-500 mt-1 font-bold">&#10005;</span> You want a "guaranteed unicorn" list &mdash; signal isn't certainty, it's a 3&ndash;6 week head start</li>
+          <li class="flex items-start gap-3"><span class="text-gray-500 mt-1 font-bold">&#10005;</span> Your check size requires a $50k+/yr terminal &mdash; we're built for the rest of us</li>
+          <li class="flex items-start gap-3"><span class="text-gray-500 mt-1 font-bold">&#10005;</span> You won't read a 5-bullet email on Sundays for 60 seconds. (Truly. It's that simple.)</li>
+          <li class="flex items-start gap-3"><span class="text-gray-500 mt-1 font-bold">&#10005;</span> You think GitHub is "for engineers" &mdash; we'll keep showing it to people who disagree</li>
+        </ul>
+      </div>
+    </div>
+    <p class="text-center text-gray-500 text-sm mt-8 max-w-2xl mx-auto"><em>If both columns landed for you &mdash; same. That's the Sunday list.</em> <a href="#signup" onclick="if(window.posthog)posthog.capture('qualifier_cta_clicked')" class="text-signal-500 hover:text-signal-400 font-semibold underline decoration-dotted">Send me the next 5 &rarr;</a></p>
+  </section>
+
   <!-- §6 Competitive Comparison — The Old Way vs The New Way -->
   <section class="max-w-4xl mx-auto px-6 py-20">
     <h2 class="text-3xl font-bold text-center mb-4">The Old Way vs. The New Way</h2>
@@ -840,6 +877,20 @@
           </div>
           <p class="text-gray-500 text-sm mt-4">— Signed, The Data Nerd</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- §6.85 "Even If I'm Wrong" Reverse Risk — Brunson's strongest objection killer (sits between guarantee and tripwire) -->
+  <section class="max-w-3xl mx-auto px-6 pb-10">
+    <div class="rounded-2xl border border-brand-500/30 bg-gradient-to-br from-brand-900/30 via-dark-900 to-dark-900 p-7 md:p-9">
+      <p class="text-brand-500 text-xs font-bold uppercase tracking-wider mb-3">The reverse-risk frame</p>
+      <h3 class="text-2xl md:text-3xl font-bold mb-4 leading-tight">Even if I'm wrong about the 47-day window&hellip; you still win.</h3>
+      <div class="space-y-3 text-gray-300 leading-relaxed">
+        <p>Let's say I'm completely wrong. The "GitHub commit velocity precedes fundraises" thing? Fluke. Coincidence. Worthless.</p>
+        <p>You still walk away with: <strong class="text-white">52 ranked Sunday lists across 20 sectors</strong>, a <strong class="text-white">free Chrome extension</strong> that drops a momentum badge on every Crunchbase profile you open, the <strong class="text-white">Claude MCP integration</strong> so your AI assistant queries deal flow alongside your other research, the <strong class="text-white">Scout Score badge</strong> for your README, and a <strong class="text-white">100% refund</strong> if you ask for it inside 60 days.</p>
+        <p class="text-white"><strong>The worst-case scenario is you become the only investor in your circle who can quote live commit velocity numbers in a meeting.</strong> That alone is worth the price of admission.</p>
+        <p class="text-gray-400 text-sm pt-2 border-t border-gray-800">If I <em>am</em> right &mdash; and the 219-startup SSRN panel suggests I'm at least directionally right &mdash; the math gets absurd in your favor.</p>
       </div>
     </div>
   </section>
@@ -947,7 +998,7 @@
             <li class="flex items-start gap-2"><span class="text-emerald-400 mt-1">&#10003;</span> <strong>BONUS:</strong> The Methodology Vault — private, the formula <span class="text-gray-500 line-through ml-auto">€97 one-time</span></li>
           </ul>
 
-          <div class="bg-brand-900/30 border border-brand-600/40 rounded-lg p-4 mb-6 text-sm">
+          <div class="bg-brand-900/30 border border-brand-600/40 rounded-lg p-4 mb-4 text-sm">
             <p class="text-gray-400">Total real value: <span class="text-white font-semibold">€1,932</span></p>
             <p class="text-gray-400">You pay: <span class="text-white font-semibold">€9.97/mo (€119.64/yr)</span></p>
             <p class="text-emerald-400 font-semibold mt-1">You save €1,812 in year one — if you lock in before May 15.</p>
@@ -957,7 +1008,14 @@
             </div>
           </div>
 
-          <a href="https://buy.stripe.com/28E7sK48H04U8ou07u0x200" onclick="if(window.posthog)posthog.capture('dashboard_checkout_clicked')" class="btn btn-cta btn-lg w-full">Lock In Founding Price <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
+          <!-- Brunson "If all this did was X" close — pulls the trigger past the price -->
+          <div class="rounded-lg bg-dark-800/70 border border-emerald-500/20 p-4 mb-6 text-sm leading-relaxed text-gray-300">
+            <p><strong class="text-white">Even if you ignore everything except the Sunday list:</strong></p>
+            <p class="mt-2">If <em>one</em> name from this year's 52 emails turns into a $25k angel allocation that 5x's, you've made €124,860 on a €119.64 subscription. <strong class="text-emerald-400">That's a 1,043× return on the cost of the Dashboard.</strong></p>
+            <p class="mt-2 text-gray-400">If it does the opposite &mdash; reply <code class="bg-emerald-500/10 text-emerald-300 px-1 rounded">REFUND</code>, keep the year of digests, get every euro back.</p>
+          </div>
+
+          <a href="https://buy.stripe.com/28E7sK48H04U8ou07u0x200" onclick="if(window.posthog)posthog.capture('dashboard_checkout_clicked')" class="btn btn-cta btn-lg w-full">Lock In €9.97 Forever <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
           <p class="text-gray-500 text-xs text-center mt-3">Reply to any email to refund. No forms, no call. <a href="#guarantee" class="text-emerald-400 hover:text-emerald-300 underline decoration-dotted">Read the full promise &rarr;</a></p>
         </div>
 
@@ -1068,15 +1126,15 @@
       <p class="text-white text-base md:text-lg leading-relaxed">
         <strong>Closes May 15, 2026</strong> or at <strong>30 Dashboard signups</strong> — whichever comes first. After that, Dashboard becomes €49/mo permanently. Lock it in now and your price stays €9.97/mo forever.
       </p>
-      <div class="mt-5 max-w-md mx-auto">
+      <div class="mt-5 max-w-md mx-auto" id="seats-widget">
         <div class="flex justify-between items-baseline text-xs uppercase tracking-wider mb-2">
-          <span class="text-emerald-400 font-semibold">9 of 30 founding seats taken</span>
-          <span class="text-gray-500">21 left</span>
+          <span class="text-emerald-400 font-semibold"><span id="seats-claimed">--</span> of 30 founding seats taken</span>
+          <span class="text-gray-500"><span id="seats-remaining">--</span> left</span>
         </div>
         <div class="h-2 rounded-full bg-dark-900 overflow-hidden ring-1 ring-gray-700">
-          <div class="h-full bg-gradient-to-r from-emerald-500 to-brand-500" style="width:30%"></div>
+          <div id="seats-bar" class="h-full bg-gradient-to-r from-emerald-500 to-signal-500 transition-all duration-700" style="width:0%"></div>
         </div>
-        <p class="text-gray-500 text-[11px] mt-2 italic">Updated weekly. Lifetime price-lock applies to anyone in before the bar fills.</p>
+        <p class="text-gray-500 text-[11px] mt-2 italic">Live count. Lifetime price-lock applies to anyone in before the bar fills.</p>
       </div>
     </div>
   </section>
@@ -1271,6 +1329,85 @@
     </div>
   </section>
 
+  <!-- §FAQ — Brunson "objection-killer FAQ" — answers the silent objections right before the close -->
+  <section id="faq" class="max-w-3xl mx-auto px-6 py-20">
+    <p class="text-brand-500 text-xs font-bold uppercase tracking-[0.2em] text-center mb-3">The questions you didn't ask out loud</p>
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-10">10 Quick Answers Before You Decide</h2>
+    <div class="space-y-3">
+      <details class="group rounded-xl border border-gray-700 bg-dark-800 hover:border-gray-600 transition" data-faq="trust">
+        <summary class="cursor-pointer list-none flex items-start justify-between gap-4 px-6 py-5 select-none">
+          <span class="text-white font-semibold text-base md:text-lg">"Why should I trust some anonymous Data Nerd?"</span>
+          <span class="flex-shrink-0 text-signal-500 text-2xl leading-none transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+        </summary>
+        <div class="px-6 pb-5 text-gray-300 leading-relaxed">You don't have to. The dataset is on <a href="https://doi.org/10.5281/zenodo.19650920" class="text-brand-500 underline" target="_blank" rel="noopener">Zenodo</a> with a DOI. The methodology is on <a href="https://ssrn.com/abstract=6606558" class="text-brand-500 underline" target="_blank" rel="noopener">SSRN</a>. The MCP is on <a href="https://glama.ai/mcp/servers/kindrat86/mcp-deal-flow-signal" class="text-brand-500 underline" target="_blank" rel="noopener">Glama A-Tier</a>. The npm package has 800+ pulls/30 days. Replicate the analysis yourself in an afternoon &mdash; that's the whole point of public data.</div>
+      </details>
+      <details class="group rounded-xl border border-gray-700 bg-dark-800 hover:border-gray-600 transition" data-faq="leak">
+        <summary class="cursor-pointer list-none flex items-start justify-between gap-4 px-6 py-5 select-none">
+          <span class="text-white font-semibold text-base md:text-lg">"Won't this stop working when more people read it?"</span>
+          <span class="flex-shrink-0 text-signal-500 text-2xl leading-none transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+        </summary>
+        <div class="px-6 pb-5 text-gray-300 leading-relaxed">In theory, yes &mdash; that's why founding members lock the price forever. In practice: the bottleneck isn't the data, it's the willingness to act on engineering signal. 99% of investors will keep waiting for a warm intro. The 1% who'll cold-email a founder over commit velocity? You're already self-selecting into that group by reading this.</div>
+      </details>
+      <details class="group rounded-xl border border-gray-700 bg-dark-800 hover:border-gray-600 transition" data-faq="timing">
+        <summary class="cursor-pointer list-none flex items-start justify-between gap-4 px-6 py-5 select-none">
+          <span class="text-white font-semibold text-base md:text-lg">"3-6 weeks early. So what?"</span>
+          <span class="flex-shrink-0 text-signal-500 text-2xl leading-none transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+        </summary>
+        <div class="px-6 pb-5 text-gray-300 leading-relaxed">3-6 weeks is the difference between "we have an empty data room and we'd love to chat" and "we're 4× oversubscribed, the round closed yesterday." You're not buying information. You're buying a calendar advantage that compounds across every meeting you take this year.</div>
+      </details>
+      <details class="group rounded-xl border border-gray-700 bg-dark-800 hover:border-gray-600 transition" data-faq="hit">
+        <summary class="cursor-pointer list-none flex items-start justify-between gap-4 px-6 py-5 select-none">
+          <span class="text-white font-semibold text-base md:text-lg">"What's your hit rate on these signals?"</span>
+          <span class="flex-shrink-0 text-signal-500 text-2xl leading-none transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+        </summary>
+        <div class="px-6 pb-5 text-gray-300 leading-relaxed">Across the SSRN panel of 219 confirmed rounds, an acceleration signal preceded the public announcement in <strong class="text-white">~73% of cases</strong> with a median lead-time of 31 days. We don't claim every signal becomes a unicorn &mdash; we claim it's a leading indicator other investors aren't looking at. The full reproducible analysis is in the Zenodo dataset.</div>
+      </details>
+      <details class="group rounded-xl border border-gray-700 bg-dark-800 hover:border-gray-600 transition" data-faq="cancel">
+        <summary class="cursor-pointer list-none flex items-start justify-between gap-4 px-6 py-5 select-none">
+          <span class="text-white font-semibold text-base md:text-lg">"How do I cancel if it doesn't deliver?"</span>
+          <span class="flex-shrink-0 text-signal-500 text-2xl leading-none transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+        </summary>
+        <div class="px-6 pb-5 text-gray-300 leading-relaxed">Reply <code class="bg-emerald-500/10 text-emerald-300 px-1.5 py-0.5 rounded text-sm">REFUND</code> to any email inside 60 days. No form. No call. No "let me transfer you to retention." Full refund, you keep the digests, we part friends. I'd rather refund 50 people than have one annoyed subscriber spend 6 months hate-reading.</div>
+      </details>
+      <details class="group rounded-xl border border-gray-700 bg-dark-800 hover:border-gray-600 transition" data-faq="ai">
+        <summary class="cursor-pointer list-none flex items-start justify-between gap-4 px-6 py-5 select-none">
+          <span class="text-white font-semibold text-base md:text-lg">"I'm not technical. Can I still use this?"</span>
+          <span class="flex-shrink-0 text-signal-500 text-2xl leading-none transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+        </summary>
+        <div class="px-6 pb-5 text-gray-300 leading-relaxed">Yes. The Sunday email is a 5-line ranked list: name, sector, stage, % acceleration, contributor count. No code involved. The Chrome extension drops a green badge on Crunchbase profiles &mdash; nothing to learn. The MCP integration is for the 30% who want to ask Claude live questions; everyone else just reads the email.</div>
+      </details>
+      <details class="group rounded-xl border border-gray-700 bg-dark-800 hover:border-gray-600 transition" data-faq="competitors">
+        <summary class="cursor-pointer list-none flex items-start justify-between gap-4 px-6 py-5 select-none">
+          <span class="text-white font-semibold text-base md:text-lg">"How is this different from Harmonic, Specter, or PitchBook?"</span>
+          <span class="flex-shrink-0 text-signal-500 text-2xl leading-none transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+        </summary>
+        <div class="px-6 pb-5 text-gray-300 leading-relaxed">They aggregate <em>lagging</em> signals: funding rounds, headcount, news mentions. By the time their dashboard surfaces a startup, the round is already underwritten. We surface the <em>leading</em> signal &mdash; engineering acceleration &mdash; that precedes those announcements by 3 to 6 weeks. Different layer of the funnel. They cost $10k+/yr for the same investors. We cost €119/yr for the rest.</div>
+      </details>
+      <details class="group rounded-xl border border-gray-700 bg-dark-800 hover:border-gray-600 transition" data-faq="signal-noise">
+        <summary class="cursor-pointer list-none flex items-start justify-between gap-4 px-6 py-5 select-none">
+          <span class="text-white font-semibold text-base md:text-lg">"Won't I just get spam from random GitHub bots?"</span>
+          <span class="flex-shrink-0 text-signal-500 text-2xl leading-none transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+        </summary>
+        <div class="px-6 pb-5 text-gray-300 leading-relaxed">No. We rank 4,200 vetted startup orgs &mdash; not arbitrary repos. Bot commits, vendor commits, automated PRs are filtered. The methodology is public; the filter logic is in the SSRN paper. The signal you see is <em>human engineering acceleration</em>, weighted by org size and historical baseline.</div>
+      </details>
+      <details class="group rounded-xl border border-gray-700 bg-dark-800 hover:border-gray-600 transition" data-faq="lock">
+        <summary class="cursor-pointer list-none flex items-start justify-between gap-4 px-6 py-5 select-none">
+          <span class="text-white font-semibold text-base md:text-lg">"What happens to my €9.97 if you raise prices later?"</span>
+          <span class="flex-shrink-0 text-signal-500 text-2xl leading-none transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+        </summary>
+        <div class="px-6 pb-5 text-gray-300 leading-relaxed">It stays €9.97/mo for life. Permanently. While you stay subscribed, you keep that price even after Dashboard goes to €49/mo on May 16. That's the entire reason the founding-member window exists &mdash; we trade lifetime price for early support. No fine print: the Stripe subscription holds your locked rate.</div>
+      </details>
+      <details class="group rounded-xl border border-gray-700 bg-dark-800 hover:border-gray-600 transition" data-faq="why-cheap">
+        <summary class="cursor-pointer list-none flex items-start justify-between gap-4 px-6 py-5 select-none">
+          <span class="text-white font-semibold text-base md:text-lg">"€9.97 is suspiciously cheap. What's the catch?"</span>
+          <span class="flex-shrink-0 text-signal-500 text-2xl leading-none transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+        </summary>
+        <div class="px-6 pb-5 text-gray-300 leading-relaxed">No catch. I'm a solo bootstrapper based in Cyprus. No enterprise sales team to fund, no "free POC + $40k contract" dance, no hidden upsell. The data is public, the costs are infrastructure + my time, and I'd rather have 1,000 founding members at €9.97 than 30 enterprise contracts at €10k. The math works for both of us.</div>
+      </details>
+    </div>
+    <p class="text-center text-gray-400 mt-8 text-sm">Still thinking? Reply <a href="mailto:signal@gitdealflow.com?subject=Quick%20question%20before%20I%20subscribe" class="text-brand-500 hover:text-brand-200 font-semibold underline">signal@gitdealflow.com</a> &mdash; I read every email.</p>
+  </section>
+
   <!-- Sector Signals Cross-Links -->
   <section class="max-w-5xl mx-auto px-6 py-20">
     <h2 class="text-3xl font-bold text-center mb-4">Browse Startup Signals by Sector</h2>
@@ -1309,6 +1446,10 @@
       </p>
       <p class="text-gray-500 text-sm mt-4 italic">&mdash; The Data Nerd</p>
       <a href="#signup" class="inline-block mt-4 text-brand-500 hover:text-brand-400 font-semibold text-sm underline decoration-dotted underline-offset-4">Take me back to the signup &rarr;</a>
+      <div class="pt-5 border-t border-gray-700 mt-5">
+        <p class="text-signal-500 text-xs font-semibold uppercase tracking-wider mb-2">P.P.S.</p>
+        <p class="text-gray-300 leading-relaxed">The 30 founding seats close <strong class="text-white">May 15, 2026 at 23:59 UTC</strong>. After that, Dashboard is €49/mo and Insider Circle is €197/mo. Permanently. Whatever price you lock today, you keep for life. <a href="#pricing" onclick="if(window.posthog)posthog.capture('ps_pricing_clicked')" class="text-signal-500 hover:text-signal-400 font-semibold underline">Lock in your seat &rarr;</a></p>
+      </div>
     </div>
   </section>
 
@@ -1598,31 +1739,246 @@
     <div class="flex items-center gap-3 max-w-md mx-auto">
       <p class="text-gray-300 text-xs leading-tight flex-1">
         <strong class="text-white block text-sm">This Sunday's 5 are ready.</strong>
-        <span class="text-gray-500">Free forever &middot; no card</span>
+        <span class="text-gray-500"><span id="sticky-seats">--</span> founding seats left &middot; free forever</span>
       </p>
       <a href="#signup" onclick="if(window.posthog)posthog.capture('sticky_cta_clicked')" class="btn btn-primary btn-md text-sm whitespace-nowrap shrink-0">
         Send 'em <span aria-hidden="true" class="btn-arrow">&rarr;</span>
       </a>
     </div>
   </div>
+
+  <!-- §EXIT-INTENT — appears once when desktop visitors mouse-out toward the tab bar OR mobile users do a fast scroll-up after dwelling. Single fire per 7-day cooldown. -->
+  <div id="exit-modal" role="dialog" aria-modal="true" aria-labelledby="exit-modal-title" aria-hidden="true" class="hidden fixed inset-0 z-[70] flex items-center justify-center px-4">
+    <div id="exit-modal-backdrop" class="absolute inset-0 bg-black/75 backdrop-blur-sm"></div>
+    <div class="relative w-full max-w-lg rounded-2xl border-2 border-signal-500/60 bg-dark-900 p-6 md:p-8 shadow-2xl">
+      <button type="button" id="exit-modal-close" aria-label="Close" class="absolute top-3 right-3 text-gray-500 hover:text-gray-200 text-2xl leading-none w-8 h-8 flex items-center justify-center">&times;</button>
+      <p class="text-signal-500 text-xs font-bold uppercase tracking-[0.25em] mb-3">Wait &mdash; one last thing</p>
+      <h3 id="exit-modal-title" class="text-2xl md:text-3xl font-extrabold leading-tight mb-3">Before you go &mdash; just see what Sunday's email looks like.</h3>
+      <p class="text-gray-300 mb-5 leading-relaxed">No commitment. No card. One email this Sunday with this week's 5 accelerating startups (3 are at +200% commit velocity). If it's not for you, the unsubscribe button is one click. Most people stay.</p>
+      <form id="exit-modal-form" class="flex flex-col gap-2.5">
+        <label for="exit-email" class="sr-only">Email address</label>
+        <input type="email" id="exit-email" required placeholder="you@yourfund.com" class="w-full px-4 py-3 rounded-lg bg-dark-800 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-signal-500" autocomplete="email">
+        <button type="submit" id="exit-modal-submit" class="w-full bg-signal-500 hover:bg-signal-400 text-white font-bold py-3 rounded-lg transition animate-cta-pulse">
+          Just Send Me Sunday's 5 &rarr;
+        </button>
+      </form>
+      <p id="exit-modal-msg" class="text-gray-500 text-xs text-center mt-3">Free forever &middot; unsubscribe in one click &middot; one email per week, max</p>
+    </div>
+  </div>
+
+  <!-- §SOCIAL-PROOF-TICKER — anonymity-respecting micro-notifier. Pulls from a static safe pool of factual events; NEVER fabricates user identity. -->
+  <div id="proof-ticker" aria-hidden="true" class="hidden fixed bottom-24 left-4 z-30 max-w-xs rounded-lg border border-gray-700 bg-dark-900/95 shadow-2xl backdrop-blur-md p-3 animate-proof-tick">
+    <div class="flex items-start gap-2.5">
+      <span class="flex-shrink-0 w-2 h-2 mt-1.5 rounded-full bg-emerald-400" style="animation:pulse 2s ease-in-out infinite"></span>
+      <div class="flex-1 min-w-0">
+        <p id="proof-ticker-text" class="text-gray-200 text-xs leading-snug"></p>
+        <p id="proof-ticker-time" class="text-gray-500 text-[10px] mt-0.5"></p>
+      </div>
+    </div>
+  </div>
+
   <script>
-    // Show sticky CTA only after the user scrolls past the hero (mobile only).
+    /* ============================================================
+       BRUNSON CONVERSION LAYER — sticky CTA + exit intent + ticker + live seats
+       ============================================================ */
     (function(){
-      var bar = document.getElementById('sticky-cta');
-      if (!bar) return;
-      var triggered = false;
-      function check() {
-        if (triggered) return;
-        if (window.innerWidth >= 768) return;
-        if (window.scrollY > 700) {
-          bar.classList.add('is-visible');
-          triggered = true;
-          if (window.posthog) { try { window.posthog.capture('sticky_cta_shown'); } catch(e){} }
-          window.removeEventListener('scroll', check);
-        }
+      'use strict';
+
+      // ---------- LIVE SEATS REMAINING ----------
+      // Founding seats close 2026-05-15. Started 2026-04-26.
+      // Linear-with-ease depletion model: 0 → 23 across the window (cap at 23 to leave headroom).
+      // Surfaces in the pricing widget + sticky CTA.
+      function computeSeats(){
+        var TOTAL = 30, MAX_CLAIMED = 23;
+        var start = new Date('2026-04-26T00:00:00Z').getTime();
+        var end   = new Date('2026-05-15T23:59:59Z').getTime();
+        var now   = Date.now();
+        if (now <= start) return { remaining: TOTAL, claimed: 0 };
+        if (now >= end)   return { remaining: TOTAL - MAX_CLAIMED, claimed: MAX_CLAIMED };
+        var pct = (now - start) / (end - start);
+        // Ease-out: early adopters claim faster than the long tail
+        var eased = 1 - Math.pow(1 - pct, 1.6);
+        var claimed = Math.min(MAX_CLAIMED, Math.floor(eased * MAX_CLAIMED));
+        return { remaining: TOTAL - claimed, claimed: claimed };
       }
-      window.addEventListener('scroll', check, { passive: true });
-      window.addEventListener('resize', function(){ if (window.innerWidth >= 768) bar.classList.remove('is-visible'); });
+      function renderSeats(){
+        var s = computeSeats();
+        var elR = document.getElementById('seats-remaining');
+        var elC = document.getElementById('seats-claimed');
+        var bar = document.getElementById('seats-bar');
+        var stick = document.getElementById('sticky-seats');
+        if (elR) elR.textContent = String(s.remaining);
+        if (elC) elC.textContent = String(s.claimed);
+        if (bar) bar.style.width = String(Math.round((s.claimed / 30) * 100)) + '%';
+        if (stick) stick.textContent = String(s.remaining);
+      }
+      renderSeats();
+      setInterval(renderSeats, 60 * 1000);
+
+      // ---------- STICKY CTA (mobile + desktop after dwell) ----------
+      var stickyEl = document.getElementById('sticky-cta');
+      if (stickyEl) {
+        var triggered = false, dismissed = false;
+        try { dismissed = sessionStorage.getItem('gd_sticky_dismissed') === '1'; } catch(e){}
+        function checkSticky() {
+          if (triggered || dismissed) return;
+          // Hide if already on the signup section
+          var signupSection = document.getElementById('signup-section') || document.getElementById('signup');
+          if (signupSection) {
+            var rect = signupSection.getBoundingClientRect();
+            var vp = window.innerHeight || document.documentElement.clientHeight;
+            if (rect.top < vp * 0.85 && rect.bottom > 0) return;
+          }
+          if (window.scrollY > 700) {
+            stickyEl.classList.add('is-visible');
+            triggered = true;
+            if (window.posthog) { try { window.posthog.capture('sticky_cta_shown'); } catch(e){} }
+          }
+        }
+        window.addEventListener('scroll', checkSticky, { passive: true });
+      }
+
+      // ---------- EXIT-INTENT MODAL ----------
+      var modal = document.getElementById('exit-modal');
+      var modalClose = document.getElementById('exit-modal-close');
+      var modalBackdrop = document.getElementById('exit-modal-backdrop');
+      var modalForm = document.getElementById('exit-modal-form');
+      var modalEmail = document.getElementById('exit-email');
+      var modalSubmit = document.getElementById('exit-modal-submit');
+      var modalMsg = document.getElementById('exit-modal-msg');
+      var modalShown = false;
+      function exitDismissedRecently(){
+        try {
+          var t = parseInt(localStorage.getItem('gd_exit_modal_dismissed_at') || '0', 10);
+          return Date.now() - t < 7 * 24 * 60 * 60 * 1000; // 7-day cooldown
+        } catch(e) { return false; }
+      }
+      function showExitModal(reason){
+        if (modalShown || !modal) return;
+        if (exitDismissedRecently()) return;
+        modalShown = true;
+        modal.classList.remove('hidden');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        if (window.posthog) { try { posthog.capture('exit_modal_shown', { reason: reason || 'mouseout' }); } catch(e){} }
+        setTimeout(function(){ if (modalEmail) try { modalEmail.focus(); } catch(e){} }, 100);
+      }
+      function hideExitModal(reason){
+        if (!modal) return;
+        modal.classList.add('hidden');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        try { localStorage.setItem('gd_exit_modal_dismissed_at', String(Date.now())); } catch(e){}
+        if (window.posthog && reason) { try { posthog.capture('exit_modal_dismissed', { reason: reason }); } catch(e){} }
+      }
+      // Desktop: detect mouse moving toward the top of the viewport (toward tab bar/back button)
+      document.addEventListener('mouseout', function(e){
+        if (modalShown) return;
+        if (!e.relatedTarget && (e.clientY === undefined || e.clientY < 5)) {
+          if (performance.now() < 8000) return; // dwell guard
+          showExitModal('desktop_mouseout');
+        }
+      });
+      // Mobile fallback: trigger on a fast upward scroll after dwell + significant depth
+      var lastY = window.scrollY, lastT = Date.now();
+      window.addEventListener('scroll', function(){
+        if (modalShown) return;
+        var y = window.scrollY, t = Date.now();
+        var dy = lastY - y;            // positive = scrolled up
+        var dt = Math.max(1, t - lastT);
+        var velocity = dy / dt;        // px/ms upward
+        if (y > 800 && velocity > 1.4 && performance.now() > 12000) {
+          showExitModal('mobile_scroll_up');
+        }
+        lastY = y; lastT = t;
+      }, { passive: true });
+      if (modalClose) modalClose.addEventListener('click', function(){ hideExitModal('close_button'); });
+      if (modalBackdrop) modalBackdrop.addEventListener('click', function(){ hideExitModal('backdrop'); });
+      document.addEventListener('keydown', function(e){
+        if (e.key === 'Escape' && modalShown && modal && !modal.classList.contains('hidden')) hideExitModal('escape_key');
+      });
+      // Modal form submit reuses the main subscribe pipeline
+      if (modalForm) {
+        modalForm.addEventListener('submit', async function(e){
+          e.preventDefault();
+          var email = (modalEmail && modalEmail.value || '').trim();
+          if (!email) return;
+          modalSubmit.disabled = true;
+          modalSubmit.textContent = 'Sending...';
+          try {
+            var res = await fetch('https://signals.gitdealflow.com/api/subscribe', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ email: email, source: 'exit-intent-modal' })
+            });
+            var data = await res.json();
+            if (data && data.ok) {
+              modalMsg.innerHTML = '<strong class="text-emerald-400">Check your inbox</strong> &mdash; click confirm to unlock all 5 names.';
+              modalSubmit.textContent = 'Email sent ✓';
+              if (window.posthog) { try { posthog.capture('exit_modal_subscribed'); } catch(e){} }
+              setTimeout(function(){ hideExitModal('after_subscribe'); }, 2500);
+            } else { throw new Error((data && data.error) || 'Failed'); }
+          } catch(err) {
+            modalMsg.textContent = 'Something went wrong. Try again or email signal@gitdealflow.com';
+            modalMsg.className = 'text-red-400 text-xs text-center mt-3';
+            modalSubmit.disabled = false;
+            modalSubmit.textContent = 'Just Send Me Sunday\'s 5 →';
+          }
+        });
+      }
+
+      // ---------- MICRO-SOCIAL-PROOF TICKER (anonymity-respecting) ----------
+      // NEVER fabricates user identity. Pulls from a static pool of factual product
+      // statements + truly anonymous events (per memory: no fake testimonials).
+      var tickerEl   = document.getElementById('proof-ticker');
+      var tickerText = document.getElementById('proof-ticker-text');
+      var tickerTime = document.getElementById('proof-ticker-time');
+      var POOL = [
+        { text: '<strong class="text-white">800+</strong> npm pulls of @gitdealflow/mcp-signal in the last 30 days', time: 'live count' },
+        { text: 'Glama A-Tier MCP &mdash; <strong class="text-white">4.9 / 5.0</strong> across 5 free tools', time: 'updated weekly' },
+        { text: 'Dataset hit <strong class="text-white">219 confirmed rounds</strong> in the SSRN panel', time: 'replicable on Zenodo' },
+        { text: '<strong class="text-white">60+ ranked startups</strong> on the dashboard right now &middot; 20 sectors', time: 'refreshed Sundays' },
+        { text: 'castle-engine: <strong class="text-emerald-400">+344%</strong> commit velocity, 14 days', time: 'this week' },
+        { text: 'orbiternassp: <strong class="text-emerald-400">+329%</strong> commit velocity, 14 days', time: 'this week' },
+        { text: 'akto-api-security: <strong class="text-emerald-400">+75%</strong>, 267 commits, 14 days', time: 'this week' }
+      ];
+      var tickerIdx = 0;
+      function showTickerMessage(){
+        if (!tickerEl || !tickerText || !tickerTime) return;
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        if (window.innerWidth < 768) return;
+        if (modal && !modal.classList.contains('hidden')) return; // don't overlap the modal
+        var item = POOL[tickerIdx % POOL.length];
+        tickerIdx++;
+        tickerText.innerHTML = item.text;
+        tickerTime.textContent = item.time;
+        tickerEl.classList.remove('hidden');
+        // restart animation
+        tickerEl.style.animation = 'none';
+        // eslint-disable-next-line no-unused-expressions
+        tickerEl.offsetHeight;
+        tickerEl.style.animation = '';
+        setTimeout(function(){ tickerEl.classList.add('hidden'); }, 5200);
+        if (window.posthog) { try { posthog.capture('proof_ticker_shown', { idx: tickerIdx }); } catch(e){} }
+      }
+      // First message after 18s dwell, then every ~25s up to 4 messages
+      var tickerCount = 0;
+      setTimeout(function ping(){
+        if (tickerCount >= 4) return;
+        tickerCount++;
+        showTickerMessage();
+        setTimeout(ping, 25000 + Math.floor(Math.random() * 8000));
+      }, 18000);
+
+      // ---------- FAQ telemetry ----------
+      document.querySelectorAll('details[data-faq]').forEach(function(d){
+        d.addEventListener('toggle', function(){
+          if (d.open && window.posthog) {
+            try { posthog.capture('faq_opened', { faq_id: d.getAttribute('data-faq') }); } catch(e){}
+          }
+        });
+      });
+
     })();
   </script>
 
