@@ -199,6 +199,18 @@ export default function IdentityPage() {
           everyone else opened the deck). The seven shifts below take you from
           one identity to the other.
         </p>
+        <p className="text-gray-400 text-sm leading-relaxed mt-4 border-l-2 border-amber-700/40 pl-4">
+          The category this identity operates in has a name:{" "}
+          <Link
+            href="/code-side-sourcing"
+            className="text-amber-300 hover:text-amber-200 underline decoration-dotted"
+          >
+            Code-Side Sourcing
+          </Link>
+          {" "}— public repository-velocity data as a leading indicator of
+          venture-stage outcomes. The shifts below are how the buyer becomes
+          a practitioner of that category.
+        </p>
       </header>
 
       <IdentityBanner />

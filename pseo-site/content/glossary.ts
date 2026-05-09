@@ -19,12 +19,19 @@ export interface GlossaryTerm {
 }
 
 export const glossaryTerms: GlossaryTerm[] = [
+  // ── Code-Side Sourcing — the named category ────────────────────────────
+  {
+    term: "Code-Side Sourcing",
+    id: "code-side-sourcing",
+    definition:
+      "The category VC Deal Flow Signal defines: the practice of using public repository-velocity data as a leading indicator of venture-stage outcomes, surfacing fundraises 21 to 47 days before pitch decks circulate. Three properties make a sourcing channel Code-Side: (1) the input data is public and reproducible from primary sources, (2) the signal arrives before the company actively markets the round, (3) the methodology is published and falsifiable, not opaque. Code-Side Sourcing is a sub-category of alternative data — narrowed to engineering-side public repository activity — and runs alongside warm intros, decks, and databases rather than replacing them. The full canonical definition, what it replaces, the five first principles, and the practitioner list live at /code-side-sourcing.",
+  },
   // ── Engineering acceleration: core metrics ──────────────────────────────
   {
     term: "Commit-Velocity Acceleration Engine",
     id: "commit-velocity-acceleration-engine",
     definition:
-      "The named mechanism behind VC Deal Flow Signal. Five deterministic steps: (1) pull 14-day commit volume per organization from the public GitHub REST API with the bot filter applied, (2) compute the percentage delta against the prior 14-day window, (3) require two-period confirmation before a breakout becomes actionable, (4) score contributor concentration with the Gini coefficient, (5) classify the breakout into one of four signal types (Hiring Burst, Infrastructure Buildout, Deploy Spike, Framework Migration). The engine is published, sourced, and reproducible — see /mechanism for the full formula and the SSRN proof panel. Eugene Schwartz Level-5 positioning: the mechanism is named, not opaque.",
+      "The named mechanism behind VC Deal Flow Signal. Five deterministic steps: (1) pull 14-day commit volume per organization from the public GitHub REST API with the bot filter applied, (2) compute the percentage delta against the prior 14-day window, (3) require two-period confirmation before a breakout becomes actionable, (4) score contributor concentration with the Gini coefficient, (5) classify the breakout into one of four signal types (Hiring Burst, Infrastructure Buildout, Deploy Spike, Framework Migration). The engine is published, sourced, and reproducible — see /mechanism for the full formula and the SSRN proof panel. The engine is the formal implementation of the broader category: Code-Side Sourcing.",
   },
   {
     term: "Commit Velocity",
