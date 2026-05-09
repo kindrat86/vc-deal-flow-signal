@@ -271,6 +271,7 @@ export async function GET(_req: Request, ctx: RouteContext) {
       // templates are individually indexable so the cohort surface compounds
       // as members claim.
       { url: `${BASE_URL}/members`, lastmod, changefreq: "weekly", priority: 0.8 },
+      { url: `${BASE_URL}/members/leaderboard`, lastmod, changefreq: "weekly", priority: 0.78 },
       { url: `${BASE_URL}/members/join`, lastmod, changefreq: "monthly", priority: 0.7 },
       { url: `${BASE_URL}/members/charter-1`, lastmod, changefreq: "weekly", priority: 0.65 },
       { url: `${BASE_URL}/members/charter-2`, lastmod, changefreq: "weekly", priority: 0.65 },
