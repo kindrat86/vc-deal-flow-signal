@@ -11,6 +11,8 @@ import StartupTable from "@/components/StartupTable";
 import VelocityBar from "@/components/charts/VelocityBar";
 import SignalDistribution from "@/components/charts/SignalDistribution";
 import PSEOFooterNav from "@/components/PSEOFooterNav";
+import { HreflangLinks } from "@/components/HreflangLinks";
+import { getHreflangLanguages } from "@/lib/hreflang";
 
 export const metadata: Metadata = {
   title: "Trending Startups — Top Engineering Acceleration Across All Sectors",
@@ -93,6 +95,19 @@ export default function TrendingPage() {
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@type": "WebPage",
+        "@id": "https://signals.gitdealflow.com/trending#webpage",
+        url: "https://signals.gitdealflow.com/trending",
+        name: `Trending Startups — Top Engineering Acceleration, ${period.name}`,
+        description: `Top 20 startups across all sectors ranked by GitHub engineering acceleration in ${period.name}.`,
+        inLanguage: "en-US",
+        isAccessibleForFree: true,
+        speakable: {
+          "@type": "SpeakableSpecification",
+          cssSelector: ["[data-speakable]", "h1", "h2"],
+        },
+      },
+      {
         "@type": "Article",
         headline: `Trending Startups — Top Engineering Acceleration, ${period.name}`,
         description: `Top 20 startups across all sectors ranked by GitHub engineering acceleration in ${period.name}.`,
@@ -157,6 +172,10 @@ export default function TrendingPage() {
 
   return (
     <>
+      <HreflangLinks
+        canonical="https://signals.gitdealflow.com/trending"
+        languages={getHreflangLanguages("/trending")}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

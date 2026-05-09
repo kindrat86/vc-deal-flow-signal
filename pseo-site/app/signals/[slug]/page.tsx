@@ -10,6 +10,8 @@ import {
 import StartupTable from "@/components/StartupTable";
 import CTABanner from "@/components/CTABanner";
 import FreshnessWatermark from "@/components/FreshnessWatermark";
+import { HreflangLinks } from "@/components/HreflangLinks";
+import { getHreflangLanguages } from "@/lib/hreflang";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -57,6 +59,19 @@ export default async function SignalTypePage({ params }: PageProps) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": `https://signals.gitdealflow.com/signals/${slug}#webpage`,
+        url: `https://signals.gitdealflow.com/signals/${slug}`,
+        name: `${signalData.name} Signal — Startups Showing ${signalData.name}, ${period.name}`,
+        description: signalData.description,
+        inLanguage: "en-US",
+        isAccessibleForFree: true,
+        speakable: {
+          "@type": "SpeakableSpecification",
+          cssSelector: ["[data-speakable]", "h1", "h2"],
+        },
+      },
       {
         "@type": "Article",
         headline: `${signalData.name} Signal — ${period.name}`,
@@ -136,6 +151,10 @@ export default async function SignalTypePage({ params }: PageProps) {
 
   return (
     <>
+      <HreflangLinks
+        canonical={`https://signals.gitdealflow.com/signals/${slug}`}
+        languages={getHreflangLanguages(`/signals/${slug}`)}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

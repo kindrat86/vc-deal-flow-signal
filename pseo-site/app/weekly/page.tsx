@@ -2,11 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { allPosts } from "@/content/posts";
 import PSEOFooterNav from "@/components/PSEOFooterNav";
+import { HreflangLinks } from "@/components/HreflangLinks";
+import { getHreflangLanguages } from "@/lib/hreflang";
 
 export const metadata: Metadata = {
   title: "Weekly Signal Reports — Engineering Acceleration Archive",
   description:
     "Archive of weekly startup engineering acceleration reports from VC Deal Flow Signal. Each report ranks the top 10 startups by GitHub commit velocity change across all sectors.",
+  // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
   alternates: {
     canonical: "/weekly",
   },
@@ -20,6 +23,20 @@ export default function WeeklyArchivePage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://signals.gitdealflow.com/weekly#webpage",
+        url: "https://signals.gitdealflow.com/weekly",
+        name: "Weekly Signal Reports — VC Deal Flow Signal",
+        description:
+          "Archive of weekly startup engineering acceleration reports.",
+        inLanguage: "en-US",
+        isAccessibleForFree: true,
+        speakable: {
+          "@type": "SpeakableSpecification",
+          cssSelector: ["[data-speakable]", "h1", "h2"],
+        },
+      },
       {
         "@type": "CollectionPage",
         name: "Weekly Signal Reports Archive",
@@ -49,6 +66,10 @@ export default function WeeklyArchivePage() {
 
   return (
     <>
+      <HreflangLinks
+        canonical="https://signals.gitdealflow.com/weekly"
+        languages={getHreflangLanguages("/weekly")}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { pillars, getPostsInPillar } from "@/content/pillars";
+import { HreflangLinks } from "@/components/HreflangLinks";
+import { getHreflangLanguages } from "@/lib/hreflang";
 
 export const metadata: Metadata = {
   title: "Topics — VC Deal Flow Signal",
   description:
     "Browse VC Deal Flow Signal articles by topical series — GitHub signals methodology, deal sourcing workflows, alternative data for VC, sector deep dives, and operator notes.",
+  // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
   alternates: { canonical: "/topics" },
 };
 
@@ -17,21 +20,43 @@ export default function TopicsIndexPage() {
 
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    name: "Topics — VC Deal Flow Signal",
-    description:
-      "Browse articles by topical series across GitHub signals methodology, deal sourcing, alternative data, sector deep dives, and operator notes.",
-    url: "https://signals.gitdealflow.com/topics",
-    hasPart: entries.map(({ pillar }) => ({
-      "@type": "CreativeWorkSeries",
-      name: pillar.name,
-      description: pillar.description,
-      url: `https://signals.gitdealflow.com/topics/${pillar.slug}`,
-    })),
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://signals.gitdealflow.com/topics#webpage",
+        url: "https://signals.gitdealflow.com/topics",
+        name: "Topics — VC Deal Flow Signal",
+        description:
+          "Browse articles by topical series across GitHub signals methodology, deal sourcing, alternative data, sector deep dives, and operator notes.",
+        inLanguage: "en-US",
+        isAccessibleForFree: true,
+        speakable: {
+          "@type": "SpeakableSpecification",
+          cssSelector: ["[data-speakable]", "h1", "h2"],
+        },
+      },
+      {
+        "@type": "CollectionPage",
+        name: "Topics — VC Deal Flow Signal",
+        description:
+          "Browse articles by topical series across GitHub signals methodology, deal sourcing, alternative data, sector deep dives, and operator notes.",
+        url: "https://signals.gitdealflow.com/topics",
+        hasPart: entries.map(({ pillar }) => ({
+          "@type": "CreativeWorkSeries",
+          name: pillar.name,
+          description: pillar.description,
+          url: `https://signals.gitdealflow.com/topics/${pillar.slug}`,
+        })),
+      },
+    ],
   };
 
   return (
     <>
+      <HreflangLinks
+        canonical="https://signals.gitdealflow.com/topics"
+        languages={getHreflangLanguages("/topics")}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

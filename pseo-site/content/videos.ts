@@ -208,7 +208,55 @@ export const videos: SiteVideo[] = [
     embeddedOn: ["/watch/magic-bullet-short"],
   },
 
-  // ─────────── 4. MCP Server demo — silent screencast (self-hosted MP4)
+  // ─────────── 4. Acceleration Watch — Week 19 of 2026 (sonic-pi-net) (landscape)
+  // Shipped by the autonomous Monday cron 2026-05-05 23:36 UTC. The 90s explainer
+  // explains the methodology in general; this entry is the live data drop for
+  // that specific week — the brand's first weekly cron product on YouTube.
+  {
+    slug: "acceleration-watch-2026-w19-sonic-pi-net",
+    youtubeId: "gDjBh37cDDM",
+    contentUrl: null,
+    thumbnailUrl: ytThumbHQ("gDjBh37cDDM"),
+    thumbnailMaxUrl: ytThumb("gDjBh37cDDM"),
+    title:
+      "Engineering Acceleration Watch — Week of 2026-05-05 — sonic-pi-net +999%",
+    description:
+      "This week's biggest engineering accelerator: sonic-pi-net (Growth). Commit velocity +999% over 14 days — deploy-frequency spike pattern. Across the SSRN-indexed panel of 219 confirmed Series A and Series B fundraises, this profile has historically preceded the announcement by 21–47 days. Crunchbase, AngelList, warm intros — all lagging.",
+    uploadDate: "2026-05-05T23:36:31+00:00",
+    durationSeconds: 60,
+    format: "landscape",
+    category: "Science & Technology",
+    tags: [
+      "engineering acceleration watch",
+      "weekly drop",
+      "sonic-pi-net",
+      "venture capital",
+      "vc deal flow",
+      "github commit velocity",
+      "series a prediction",
+      "alternative data vc",
+      "ssrn venture capital",
+      "deploy frequency spike",
+      "the data nerd",
+      "gitdealflow",
+    ],
+    chapters: [
+      { start: 0, end: 3, name: "Title — Acceleration Watch, week of 2026-05-05" },
+      { start: 3, end: 13, name: "Hook — Crunchbase tells you the day they raised" },
+      { start: 13, end: 32, name: "Magic Bullet — sonic-pi-net, +999% commit velocity" },
+      { start: 32, end: 48, name: "Big Domino — every other deal-flow source is lagging" },
+      { start: 48, end: 60, name: "CTA — free Sunday digest, methodology open" },
+    ],
+    transcriptParagraphs: [
+      "By the time a startup hits Crunchbase, every other VC sees it the same morning you do. This week's biggest engineering accelerator surfaced thirty to forty days earlier — and the data was public the whole time.",
+      "sonic-pi-net. Stage: Growth. Region: Unknown. Commit velocity is +999% over the last fourteen days. That's the deploy frequency spike pattern, and across the panel of two hundred nineteen confirmed rounds, it has historically preceded the fundraise announcement by twenty-one to forty-seven days.",
+      "If commit-velocity acceleration is the most leading public signal in venture capital, then every other deal-flow source — pitch decks, AngelList, Crunchbase, warm intros — is a lagging indicator.",
+      "Five startups every Monday, free, at gitdealflow.com slash predicted. Methodology open at signals.gitdealflow.com slash methodology. Talk soon.",
+    ],
+    embeddedOn: ["/predicted", "/watch/acceleration-watch-2026-w19-sonic-pi-net"],
+  },
+
+  // ─────────── 5. MCP Server demo — silent screencast (self-hosted MP4)
   {
     slug: "mcp-claude-desktop-demo",
     youtubeId: null,

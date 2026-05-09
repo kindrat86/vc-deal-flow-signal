@@ -35,10 +35,17 @@ module.exports = {
           '0%':   { opacity: '0', transform: 'translateY(8px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
+        'proof-tick': {
+          '0%':   { transform: 'translateY(110%)', opacity: '0' },
+          '10%':  { transform: 'translateY(0)',    opacity: '1' },
+          '85%':  { transform: 'translateY(0)',    opacity: '1' },
+          '100%': { transform: 'translateY(-110%)', opacity: '0' },
+        },
       },
       animation: {
         'cta-pulse':   'cta-pulse 2.4s ease-in-out infinite',
         'fade-in-up':  'fade-in-up 0.4s ease-out both',
+        'proof-tick':  'proof-tick 5s ease-in-out',
       },
     },
   },

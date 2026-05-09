@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { HreflangLinks } from "@/components/HreflangLinks";
+import { getHreflangLanguages } from "@/lib/hreflang";
 
 export const metadata: Metadata = {
   title: "Developers — Deal Flow API, MCP Server, JSON & CSV Endpoints",
   description:
     "Developer documentation for VC Deal Flow Signal: MCP server tools, JSON/CSV API, OpenAPI schema, RSS feed, llms.txt, and webhook endpoints. Build deal flow automation on top of engineering signals.",
+  // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
   alternates: {
     canonical: "/developers",
   },
@@ -14,6 +17,20 @@ export default function DevelopersPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://signals.gitdealflow.com/developers#webpage",
+        url: "https://signals.gitdealflow.com/developers",
+        name: "Developers — VC Deal Flow Signal API & MCP",
+        description:
+          "MCP server, JSON/CSV API, and OpenAPI schema for building deal flow automation on top of engineering acceleration signals.",
+        inLanguage: "en-US",
+        isAccessibleForFree: true,
+        speakable: {
+          "@type": "SpeakableSpecification",
+          cssSelector: ["[data-speakable]", "h1", "h2"],
+        },
+      },
       {
         "@type": "TechArticle",
         headline: "VC Deal Flow Signal Developer Documentation",
@@ -158,6 +175,10 @@ export default function DevelopersPage() {
 
   return (
     <>
+      <HreflangLinks
+        canonical="https://signals.gitdealflow.com/developers"
+        languages={getHreflangLanguages("/developers")}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

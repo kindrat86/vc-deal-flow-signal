@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { useCases } from "@/content/use-cases";
+import { HreflangLinks } from "@/components/HreflangLinks";
+import { getHreflangLanguages } from "@/lib/hreflang";
 
 export const metadata: Metadata = {
   title: "Use Cases — Angels, VC Analysts, Fund of Funds",
   description:
     "How VC Deal Flow Signal is used by different investor personas — angel investors, VC analysts, fund of funds and LPs. Workflows, metrics, and persona-specific integrations.",
+  // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
   alternates: {
     canonical: "/use-cases",
   },
@@ -15,6 +18,20 @@ export default function UseCasesIndex() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://signals.gitdealflow.com/use-cases#webpage",
+        url: "https://signals.gitdealflow.com/use-cases",
+        name: "Use Cases — VC Deal Flow Signal",
+        description:
+          "Persona-specific workflows for angel investors, VC analysts, and fund of funds / LPs.",
+        inLanguage: "en-US",
+        isAccessibleForFree: true,
+        speakable: {
+          "@type": "SpeakableSpecification",
+          cssSelector: ["[data-speakable]", "h1", "h2"],
+        },
+      },
       {
         "@type": "CollectionPage",
         name: "VC Deal Flow Signal Use Cases",
@@ -58,6 +75,10 @@ export default function UseCasesIndex() {
 
   return (
     <>
+      <HreflangLinks
+        canonical="https://signals.gitdealflow.com/use-cases"
+        languages={getHreflangLanguages("/use-cases")}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

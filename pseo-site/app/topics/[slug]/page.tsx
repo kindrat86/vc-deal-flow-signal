@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import { pillars, getPostsInPillar, type Pillar } from "@/content/pillars";
 import { posts as allPosts, type BlogPost } from "@/content/posts";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { HreflangLinks } from "@/components/HreflangLinks";
+import { getHreflangLanguages } from "@/lib/hreflang";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -65,6 +67,19 @@ export default async function TopicHubPage({ params }: PageProps) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": `https://signals.gitdealflow.com/topics/${slug}#webpage`,
+        url: `https://signals.gitdealflow.com/topics/${slug}`,
+        name: `${pillar.name} — Topical Series | VC Deal Flow Signal`,
+        description: pillar.description,
+        inLanguage: "en-US",
+        isAccessibleForFree: true,
+        speakable: {
+          "@type": "SpeakableSpecification",
+          cssSelector: ["[data-speakable]", "h1", "h2"],
+        },
+      },
       {
         "@type": "CollectionPage",
         name: `${pillar.name} — Topical Series`,
@@ -164,6 +179,10 @@ export default async function TopicHubPage({ params }: PageProps) {
 
   return (
     <>
+      <HreflangLinks
+        canonical={`https://signals.gitdealflow.com/topics/${slug}`}
+        languages={getHreflangLanguages(`/topics/${slug}`)}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

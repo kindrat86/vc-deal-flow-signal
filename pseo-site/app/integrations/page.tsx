@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { HreflangLinks } from "@/components/HreflangLinks";
+import { getHreflangLanguages } from "@/lib/hreflang";
 
 export const metadata: Metadata = {
   title: "Integrations — MCP, Telegram, Email, RSS, API",
   description:
     "Plug VC Deal Flow Signal into your existing workflow. MCP server for Claude and Cursor, Telegram channel, weekly email, JSON/CSV API, RSS feed, and Zapier.",
+  // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
   alternates: {
     canonical: "/integrations",
   },
@@ -252,6 +255,20 @@ export default function IntegrationsPage() {
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@type": "WebPage",
+        "@id": "https://signals.gitdealflow.com/integrations#webpage",
+        url: "https://signals.gitdealflow.com/integrations",
+        name: "Integrations — VC Deal Flow Signal",
+        description:
+          "MCP server, Telegram, email, RSS, JSON/CSV API, Zapier, and Chrome extension integrations.",
+        inLanguage: "en-US",
+        isAccessibleForFree: true,
+        speakable: {
+          "@type": "SpeakableSpecification",
+          cssSelector: ["[data-speakable]", "h1", "h2"],
+        },
+      },
+      {
         "@type": "CollectionPage",
         name: "VC Deal Flow Signal Integrations",
         description:
@@ -358,6 +375,10 @@ export default function IntegrationsPage() {
 
   return (
     <>
+      <HreflangLinks
+        canonical="https://signals.gitdealflow.com/integrations"
+        languages={getHreflangLanguages("/integrations")}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

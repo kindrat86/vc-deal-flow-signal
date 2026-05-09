@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { alternatives } from "@/content/alternatives";
+import { HreflangLinks } from "@/components/HreflangLinks";
+import { getHreflangLanguages } from "@/lib/hreflang";
 
 export const metadata: Metadata = {
   title: "Alternatives to Harmonic.ai, Dealroom, Crunchbase & Forager.ai",
   description:
     "Compare VC Deal Flow Signal against Harmonic.ai, Dealroom, Crunchbase alerts, and Forager.ai. Engineering-signal alternatives for early deal flow — 6-12 weeks before fundraise announcements.",
+  // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
   alternates: {
     canonical: "/alternatives",
   },
@@ -15,6 +18,20 @@ export default function AlternativesIndex() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://signals.gitdealflow.com/alternatives#webpage",
+        url: "https://signals.gitdealflow.com/alternatives",
+        name: "Deal Flow Tool Alternatives — VC Deal Flow Signal",
+        description:
+          "Head-to-head alternatives comparing VC Deal Flow Signal to Harmonic.ai, Dealroom, Crunchbase, and Forager.ai.",
+        inLanguage: "en-US",
+        isAccessibleForFree: true,
+        speakable: {
+          "@type": "SpeakableSpecification",
+          cssSelector: ["[data-speakable]", "h1", "h2"],
+        },
+      },
       {
         "@type": "CollectionPage",
         name: "Deal Flow Tool Alternatives",
@@ -58,6 +75,10 @@ export default function AlternativesIndex() {
 
   return (
     <>
+      <HreflangLinks
+        canonical="https://signals.gitdealflow.com/alternatives"
+        languages={getHreflangLanguages("/alternatives")}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

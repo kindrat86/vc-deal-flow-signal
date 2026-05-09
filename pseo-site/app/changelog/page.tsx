@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllPeriods, getAllSectors, getCurrentPeriod, getDataLastModified } from "@/lib/data";
+import { HreflangLinks } from "@/components/HreflangLinks";
+import { getHreflangLanguages } from "@/lib/hreflang";
 
 export const metadata: Metadata = {
   title: "Changelog — Weekly Signal Updates & Product Releases",
   description:
     "Weekly data refreshes, new sectors, MCP server releases, and product updates for VC Deal Flow Signal. Updated every Monday at 09:00 EEST.",
+  // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
   alternates: {
     canonical: "/changelog",
   },
@@ -135,6 +138,20 @@ export default function ChangelogPage() {
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@type": "WebPage",
+        "@id": "https://signals.gitdealflow.com/changelog#webpage",
+        url: "https://signals.gitdealflow.com/changelog",
+        name: "Changelog — VC Deal Flow Signal",
+        description:
+          "Weekly data refreshes and product updates for VC Deal Flow Signal.",
+        inLanguage: "en-US",
+        isAccessibleForFree: true,
+        speakable: {
+          "@type": "SpeakableSpecification",
+          cssSelector: ["[data-speakable]", "h1", "h2"],
+        },
+      },
+      {
         "@type": "CollectionPage",
         "@id": "https://signals.gitdealflow.com/changelog#collection",
         name: "VC Deal Flow Signal Changelog",
@@ -213,6 +230,10 @@ export default function ChangelogPage() {
 
   return (
     <>
+      <HreflangLinks
+        canonical="https://signals.gitdealflow.com/changelog"
+        languages={getHreflangLanguages("/changelog")}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

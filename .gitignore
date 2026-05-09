@@ -33,4 +33,5 @@ CREDENTIAL-ROTATION.md
 *.zip
 .claude/scheduled_tasks.lock
 .claude/settings.local.json
+.claude/worktrees/
 .env*.local
