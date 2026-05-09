@@ -254,7 +254,7 @@ export default function FunnelHubPage() {
         itemListElement: FUNNELS.map((f, i) => ({
           "@type": "ListItem",
           position: i + 1,
-          name: f.slug,
+          name: f.name,
           url: f.external ? f.href : `https://signals.gitdealflow.com${f.href}`,
         })),
       },
@@ -321,7 +321,7 @@ export default function FunnelHubPage() {
               if (f.external) {
                 return (
                   <a
-                    key={f.slug}
+                    key={f.activitySlug}
                     href={f.href}
                     rel="noopener noreferrer"
                     className={`block border-l-4 ${c.bar} ${c.hover} bg-slate-900/60 hover:bg-slate-900 p-5 sm:p-6 rounded-r-lg transition-colors group`}
@@ -332,7 +332,7 @@ export default function FunnelHubPage() {
               }
               return (
                 <Link
-                  key={f.slug}
+                  key={f.activitySlug}
                   href={f.href}
                   className={`block border-l-4 ${c.bar} ${c.hover} bg-slate-900/60 hover:bg-slate-900 p-5 sm:p-6 rounded-r-lg transition-colors group`}
                 >
@@ -639,7 +639,7 @@ function FunnelCardBody({
             {f.tier}
           </p>
           <h3 className="text-gray-100 font-semibold text-lg group-hover:text-white">
-            {f.slug}
+            {f.name}
           </h3>
         </div>
         <p className={`${c.price} text-sm font-mono`}>{f.price}</p>
