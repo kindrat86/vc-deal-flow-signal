@@ -1,0 +1,14 @@
+Weekly tip-line drop — 2026-w19
+Week: 2026-w18 (2026-05-04 → 2026-05-10)
+Picks shown: top 5 of 10
+Generated: 2026-05-09T18:38:33.529Z
+
+Drafts:
+  - StrictlyVC: tools/campaign/drafts/tipline-2026-w19-strictlyvc.txt (3060 bytes)
+  - Term Sheet (Fortune): tools/campaign/drafts/tipline-2026-w19-term-sheet.txt (3207 bytes)
+  - Axios Pro Rata: tools/campaign/drafts/tipline-2026-w19-axios-pro-rata.txt (3121 bytes)
+  - Newcomer: tools/campaign/drafts/tipline-2026-w19-newcomer.txt (3203 bytes)
+  - The Information: tools/campaign/drafts/tipline-2026-w19-the-information.txt (3201 bytes)
+
+Status: drafts only — review and forward manually.
+HOLD active: no

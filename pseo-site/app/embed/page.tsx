@@ -76,6 +76,15 @@ const EMBEDS: Embed[] = [
   // Mini-widgets
   {
     group: "Mini-widgets",
+    name: "Weekly Acceleration Watch (iframe)",
+    href: `${SITE}/embed/weekly`,
+    example: `${SITE}/embed/weekly`,
+    description:
+      "Drop-in iframe widget showing the top 5 picks from this week's Engineering Acceleration Watch. Updates every Monday. CDN-cached, sandbox-safe, supports light + dark prefers-color-scheme. Pulls from the same dataset as /predicted and /predicted/feed.json.",
+    copy: `<iframe src="https://signals.gitdealflow.com/embed/weekly" width="380" height="420" frameborder="0" loading="lazy" title="Engineering Acceleration Watch — top 5 this week"></iframe>`,
+  },
+  {
+    group: "Mini-widgets",
     name: "Sector mini-leaderboard (iframe)",
     href: `${SITE}/embed/leaderboard/{sector-slug}`,
     example: `${SITE}/embed/leaderboard/ai-ml`,
