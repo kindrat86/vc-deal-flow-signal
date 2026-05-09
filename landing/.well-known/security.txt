@@ -1,0 +1,23 @@
+# Security disclosure policy for VC Deal Flow Signal
+# https://gitdealflow.com
+#
+# Report security issues by email. We aim to acknowledge within 72 hours.
+# Please do not file public GitHub issues for security findings.
+
+Contact: mailto:signal@gitdealflow.com
+Expires: 2027-05-09T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://gitdealflow.com/.well-known/security.txt
+Canonical: https://signals.gitdealflow.com/.well-known/security.txt
+Policy: https://gitdealflow.com/privacy
+
+# This service exposes a public, no-auth read-only API. There is no user
+# authentication, no session storage, and no sensitive PII. Findings of
+# interest are typically: SSRF in image proxies, prototype pollution in
+# our build pipeline, or social-engineering vectors via our public APIs.
+#
+# Apex (gitdealflow.com) hosts the marketing landing pages. The data
+# product, agent endpoints, and MCP server live on the signals
+# subdomain (signals.gitdealflow.com). Both surfaces share the same
+# disclosure policy and contact address; this file is a mirror so that
+# scanners hitting either origin discover the same Contact directive.
