@@ -3,6 +3,7 @@ import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import TelegramCTA from "@/components/TelegramCTA";
 
 export const dynamic = "force-static";
 
@@ -101,6 +102,11 @@ export default function ThanksSweep() {
             </Link>
           </p>
         </section>
+
+        {/* Brunson TS §3 Ch 11 — Sweep buyers wait 5–10 business days for
+            delivery. The public Telegram pinned during that window keeps
+            the signal-rhythm alive between purchase and delivery. */}
+        <TelegramCTA tone="amber" context="post-purchase" />
 
         <section className="bg-slate-900/40 border border-slate-800 rounded-lg p-5 space-y-2">
           <p className="text-gray-400 text-xs font-semibold uppercase tracking-wider">

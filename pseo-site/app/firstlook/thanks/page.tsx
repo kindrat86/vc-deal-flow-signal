@@ -5,6 +5,7 @@ import { stripe } from "@/lib/stripe";
 import { OTO_TIERS } from "@/lib/stripe-tiers";
 import OneClickOtoButton from "@/components/OneClickOtoButton";
 import DeliveryCountdown from "@/components/DeliveryCountdown";
+import TelegramCTA from "@/components/TelegramCTA";
 
 export const dynamic = "force-dynamic";
 
@@ -174,6 +175,12 @@ export default async function FirstLookThanksPage({ searchParams }: Props) {
           First Look Pass.
         </p>
       </section>
+
+      {/* Brunson TS §3 Ch 11 — second owned channel push, sits AFTER the
+          OTO so it doesn't compete with the upsell. The buyer's already
+          past the upsell decision; Telegram is a free habit-anchor that
+          survives whichever way the OTO went. */}
+      <TelegramCTA tone="amber" context="post-purchase" />
 
       <p className="text-slate-600 text-xs leading-relaxed">
         Receipt: <code className="bg-slate-900 text-slate-400 px-1.5 py-0.5 rounded text-[11px]">{session.id}</code>
