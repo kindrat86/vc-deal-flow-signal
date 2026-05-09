@@ -178,6 +178,7 @@ export async function GET(_req: Request, ctx: RouteContext) {
       { url: `${BASE_URL}/press/ssrn-panel-q2-2026`, lastmod, changefreq: "yearly", priority: 0.7 },
       { url: `${BASE_URL}/press/agent-credits-launch-q2-2026`, lastmod, changefreq: "yearly", priority: 0.7 },
       { url: `${BASE_URL}/press/annual-state-of-engineering-velocity-q4-2026`, lastmod, changefreq: "yearly", priority: 0.7 },
+      { url: `${BASE_URL}/podcasts`, lastmod, changefreq: "weekly", priority: 0.7 },
       { url: `${BASE_URL}/mirrors`, lastmod, changefreq: "monthly", priority: 0.7 },
       // Brunson-trilogy surfaces shipped 2026-05-06 (audit V7)
       { url: `${BASE_URL}/launch`, lastmod, changefreq: "weekly", priority: 0.8 },
@@ -204,6 +205,10 @@ export async function GET(_req: Request, ctx: RouteContext) {
       ),
       // Wikipedia citation helper
       { url: `${BASE_URL}/wikipedia`, lastmod, changefreq: "monthly", priority: 0.7 },
+      // Wikidata Knowledge Panel claim — Brunson Audit V8 2026-05-09
+      // (closes Traffic Secrets §2 Ch 9 +4-pt gap on Google).
+      { url: `${BASE_URL}/wikidata`, lastmod, changefreq: "monthly", priority: 0.85 },
+      { url: `${BASE_URL}/.well-known/wikidata.json`, lastmod, changefreq: "monthly", priority: 0.7 },
       { url: `${BASE_URL}/predict`, lastmod, changefreq: "weekly", priority: 0.95 },
       { url: `${BASE_URL}/receipts`, lastmod, changefreq: "weekly", priority: 0.9 },
       { url: `${BASE_URL}/markets`, lastmod, changefreq: "weekly", priority: 0.9 },
@@ -242,6 +247,7 @@ export async function GET(_req: Request, ctx: RouteContext) {
       { url: `${BASE_URL}/challenge`, lastmod, changefreq: "monthly", priority: 0.85 },
       { url: `${BASE_URL}/target-list`, lastmod, changefreq: "monthly", priority: 0.8 },
       { url: `${BASE_URL}/distribution`, lastmod, changefreq: "monthly", priority: 0.75 },
+      { url: `${BASE_URL}/distribution/platform-hooks`, lastmod, changefreq: "monthly", priority: 0.7 },
       { url: `${BASE_URL}/funnels`, lastmod, changefreq: "monthly", priority: 0.75 },
       { url: `${BASE_URL}/experiments`, lastmod, changefreq: "monthly", priority: 0.7 },
       { url: `${BASE_URL}/experiments/hooks`, lastmod, changefreq: "monthly", priority: 0.7 },

@@ -184,6 +184,153 @@ export const TIER_CHIP_CLASS: Record<IcpTier, string> = {
 };
 
 /**
+ * Archetype affinity overlay (audit 2026-05-09 — Brunson Traffic Secrets Ch 1
+ * split). For each Dream-100 voice, which of the three reader-archetypes
+ * (Solo Angel / Fund GP / Family Office) skews toward consuming this voice.
+ * Used by distribution playbooks to target by archetype, not just by score.
+ *
+ * Values are 0–10; higher = stronger affinity. A voice can score high for
+ * multiple archetypes (e.g. Pragmatic Engineer is read by Solo Angels AND
+ * Fund GPs). The total can exceed 10 — these are independent affinity
+ * dimensions, not a budget.
+ *
+ * Internal use only (no customer-facing surface reads from this map yet).
+ * Source workbook: brunson/08-dream-customer.md §8.7.
+ */
+export type ArchetypeAffinity = {
+  soloAngel: number;
+  fundGp: number;
+  familyOffice: number;
+};
+
+export const ARCHETYPE_AFFINITY: Record<string, ArchetypeAffinity> = {
+  // ---- substacks ----
+  "Lenny's Newsletter": { soloAngel: 7, fundGp: 6, familyOffice: 3 },
+  "The Pragmatic Engineer": { soloAngel: 9, fundGp: 7, familyOffice: 4 },
+  "Stratechery": { soloAngel: 6, fundGp: 9, familyOffice: 8 },
+  "Not Boring": { soloAngel: 7, fundGp: 8, familyOffice: 6 },
+  "Software Lead Weekly": { soloAngel: 9, fundGp: 6, familyOffice: 3 },
+  "Last Week in AWS": { soloAngel: 8, fundGp: 5, familyOffice: 3 },
+  "Construction Physics": { soloAngel: 4, fundGp: 5, familyOffice: 6 },
+  "The Generalist": { soloAngel: 5, fundGp: 7, familyOffice: 7 },
+  "Bits about Money": { soloAngel: 4, fundGp: 6, familyOffice: 8 },
+  "One Useful Thing — Ethan Mollick": { soloAngel: 8, fundGp: 6, familyOffice: 5 },
+  // ---- podcasts ----
+  "Acquired": { soloAngel: 6, fundGp: 9, familyOffice: 8 },
+  "Invest Like the Best": { soloAngel: 6, fundGp: 9, familyOffice: 9 },
+  "20VC": { soloAngel: 7, fundGp: 9, familyOffice: 7 },
+  "Founders": { soloAngel: 5, fundGp: 6, familyOffice: 6 },
+  "Lenny's Podcast": { soloAngel: 7, fundGp: 6, familyOffice: 3 },
+  "The Logan Bartlett Show": { soloAngel: 8, fundGp: 8, familyOffice: 4 },
+  "BG2 Pod": { soloAngel: 6, fundGp: 8, familyOffice: 5 },
+  "Stratechery Daily": { soloAngel: 6, fundGp: 9, familyOffice: 8 },
+  "Practical AI": { soloAngel: 9, fundGp: 6, familyOffice: 4 },
+  "The Rest is History": { soloAngel: 3, fundGp: 4, familyOffice: 4 },
+  // ---- newsletters ----
+  "TLDR Tech": { soloAngel: 9, fundGp: 6, familyOffice: 4 },
+  "ByteByteGo": { soloAngel: 9, fundGp: 5, familyOffice: 3 },
+  "Console.dev": { soloAngel: 10, fundGp: 5, familyOffice: 2 },
+  "Devtools.fyi": { soloAngel: 10, fundGp: 5, familyOffice: 2 },
+  "Hacker Newsletter": { soloAngel: 9, fundGp: 6, familyOffice: 3 },
+  "DBOS / This Week in PostgreSQL": { soloAngel: 8, fundGp: 5, familyOffice: 3 },
+  "Refind": { soloAngel: 6, fundGp: 5, familyOffice: 4 },
+  "Devops'ish": { soloAngel: 9, fundGp: 5, familyOffice: 3 },
+  "Frontend Focus": { soloAngel: 7, fundGp: 4, familyOffice: 2 },
+  "Mind the Product": { soloAngel: 5, fundGp: 6, familyOffice: 4 },
+  // ---- github-orgs ----
+  "vercel": { soloAngel: 10, fundGp: 7, familyOffice: 4 },
+  "supabase": { soloAngel: 10, fundGp: 7, familyOffice: 4 },
+  "huggingface": { soloAngel: 9, fundGp: 8, familyOffice: 6 },
+  "anthropic": { soloAngel: 9, fundGp: 8, familyOffice: 7 },
+  "openai": { soloAngel: 8, fundGp: 9, familyOffice: 8 },
+  "modelcontextprotocol": { soloAngel: 10, fundGp: 6, familyOffice: 4 },
+  "cloudflare": { soloAngel: 9, fundGp: 7, familyOffice: 6 },
+  "neondatabase": { soloAngel: 10, fundGp: 6, familyOffice: 3 },
+  "ollama": { soloAngel: 10, fundGp: 5, familyOffice: 3 },
+  "exo-explore": { soloAngel: 9, fundGp: 5, familyOffice: 3 },
+  // ---- conferences ----
+  "Strange Loop": { soloAngel: 9, fundGp: 4, familyOffice: 2 },
+  "Hot Chips": { soloAngel: 7, fundGp: 5, familyOffice: 4 },
+  "QCon": { soloAngel: 9, fundGp: 5, familyOffice: 4 },
+  "PyCon": { soloAngel: 9, fundGp: 4, familyOffice: 3 },
+  "OSCON / All Things Open": { soloAngel: 8, fundGp: 4, familyOffice: 3 },
+  "RustConf": { soloAngel: 8, fundGp: 4, familyOffice: 2 },
+  "DockerCon / KubeCon": { soloAngel: 9, fundGp: 5, familyOffice: 3 },
+  "AWS re:Invent": { soloAngel: 7, fundGp: 6, familyOffice: 5 },
+  "GitHub Universe": { soloAngel: 9, fundGp: 6, familyOffice: 4 },
+  "Y Combinator Demo Day": { soloAngel: 8, fundGp: 9, familyOffice: 6 },
+  // ---- books ----
+  "Zero to One — Peter Thiel": { soloAngel: 8, fundGp: 9, familyOffice: 8 },
+  "The Innovator's Dilemma — Clayton Christensen": { soloAngel: 6, fundGp: 8, familyOffice: 9 },
+  "The Hard Thing About Hard Things — Ben Horowitz": { soloAngel: 7, fundGp: 9, familyOffice: 7 },
+  "Crossing the Chasm — Geoffrey Moore": { soloAngel: 7, fundGp: 8, familyOffice: 8 },
+  "Direct-response sales canon": { soloAngel: 5, fundGp: 6, familyOffice: 5 },
+  "Antifragile — Nassim Taleb": { soloAngel: 6, fundGp: 7, familyOffice: 9 },
+  "The Lean Startup — Eric Ries": { soloAngel: 8, fundGp: 7, familyOffice: 5 },
+  "Working in Public — Nadia Eghbal": { soloAngel: 9, fundGp: 6, familyOffice: 5 },
+  // ---- frameworks ----
+  "Claude Desktop / Claude Code": { soloAngel: 10, fundGp: 6, familyOffice: 4 },
+  "Cursor": { soloAngel: 10, fundGp: 6, familyOffice: 3 },
+  "OpenAI ChatGPT GPT": { soloAngel: 9, fundGp: 6, familyOffice: 5 },
+  "Mastra": { soloAngel: 10, fundGp: 5, familyOffice: 3 },
+  "LangChain / LangGraph": { soloAngel: 10, fundGp: 6, familyOffice: 4 },
+  "CrewAI": { soloAngel: 10, fundGp: 5, familyOffice: 3 },
+  "Letta (MemGPT)": { soloAngel: 9, fundGp: 5, familyOffice: 3 },
+  "Vercel AI SDK": { soloAngel: 10, fundGp: 6, familyOffice: 3 },
+  "MCP Registry": { soloAngel: 10, fundGp: 5, familyOffice: 3 },
+  "Smithery": { soloAngel: 10, fundGp: 5, familyOffice: 3 },
+  // ---- communities ----
+  "r/venturecapital": { soloAngel: 8, fundGp: 9, familyOffice: 7 },
+  "r/AngelInvesting": { soloAngel: 10, fundGp: 7, familyOffice: 5 },
+  "r/MachineLearning": { soloAngel: 9, fundGp: 6, familyOffice: 5 },
+  "r/ExperiencedDevs": { soloAngel: 10, fundGp: 5, familyOffice: 3 },
+  "Hacker News": { soloAngel: 10, fundGp: 7, familyOffice: 5 },
+  "Indie Hackers": { soloAngel: 9, fundGp: 4, familyOffice: 2 },
+  "dev.to": { soloAngel: 10, fundGp: 5, familyOffice: 3 },
+  "X / Tech Twitter": { soloAngel: 9, fundGp: 7, familyOffice: 5 },
+  "Bluesky / Mastodon / Farcaster": { soloAngel: 9, fundGp: 5, familyOffice: 3 },
+  "Substack Notes": { soloAngel: 7, fundGp: 6, familyOffice: 4 },
+  // ---- linkedin-pages ----
+  "Carta": { soloAngel: 6, fundGp: 9, familyOffice: 8 },
+  "Y Combinator": { soloAngel: 7, fundGp: 9, familyOffice: 7 },
+  "Crunchbase": { soloAngel: 6, fundGp: 9, familyOffice: 8 },
+  "AngelList": { soloAngel: 9, fundGp: 8, familyOffice: 6 },
+  "Andreessen Horowitz (a16z)": { soloAngel: 6, fundGp: 9, familyOffice: 8 },
+  "Sequoia Capital": { soloAngel: 5, fundGp: 9, familyOffice: 9 },
+  "Index Ventures": { soloAngel: 6, fundGp: 9, familyOffice: 8 },
+  "Insight Partners": { soloAngel: 5, fundGp: 9, familyOffice: 9 },
+  "Bessemer Venture Partners": { soloAngel: 6, fundGp: 9, familyOffice: 8 },
+  "First Round Capital": { soloAngel: 7, fundGp: 9, familyOffice: 7 },
+  // ---- datasets ----
+  "GitHub REST + GraphQL": { soloAngel: 10, fundGp: 7, familyOffice: 6 },
+  "GH Archive": { soloAngel: 9, fundGp: 7, familyOffice: 6 },
+  "Crunchbase open data": { soloAngel: 7, fundGp: 8, familyOffice: 8 },
+  "PitchBook (selected free)": { soloAngel: 5, fundGp: 8, familyOffice: 9 },
+  "Common Crawl": { soloAngel: 8, fundGp: 6, familyOffice: 6 },
+  "Stack Overflow Trends": { soloAngel: 9, fundGp: 5, familyOffice: 4 },
+  "Hacker News Algolia": { soloAngel: 9, fundGp: 6, familyOffice: 4 },
+  "PyPI / npm download stats": { soloAngel: 10, fundGp: 6, familyOffice: 5 },
+  "Zenodo": { soloAngel: 6, fundGp: 6, familyOffice: 9 },
+  "Our SSRN paper (n=219)": { soloAngel: 7, fundGp: 8, familyOffice: 10 },
+};
+
+export type DominantArchetype = "soloAngel" | "fundGp" | "familyOffice";
+
+/**
+ * Returns the archetype with the highest affinity for a given Dream-100 voice.
+ * Falls back to "soloAngel" if the voice is missing from the affinity map
+ * (avoids hard-failing distribution playbooks during data drift).
+ */
+export function dominantArchetype(name: string): DominantArchetype {
+  const aff = ARCHETYPE_AFFINITY[name];
+  if (!aff) return "soloAngel";
+  const max = Math.max(aff.soloAngel, aff.fundGp, aff.familyOffice);
+  if (aff.familyOffice === max) return "familyOffice";
+  if (aff.fundGp === max) return "fundGp";
+  return "soloAngel";
+}
+
+/**
  * Throws a build-time error if any name in DREAM_100_GROUPS is missing
  * a score, or if ICP_SCORES has an orphan key. Called from the page render
  * path so misalignment surfaces during `next build`.

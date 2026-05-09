@@ -3,6 +3,7 @@ import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import TelegramCTA from "@/components/TelegramCTA";
 
 export const dynamic = "force-static";
 
@@ -78,6 +79,12 @@ export default function ThanksTeardown() {
             </li>
           </ol>
         </section>
+
+        {/* Brunson TS §3 Ch 11 — €1 buyers are the highest-velocity tier
+            of the value-ladder. Telegram is the lowest-friction next step
+            (no payment, no signup), keeping them inside the orbit while
+            the €7 upgrade decision processes. */}
+        <TelegramCTA tone="violet" context="post-purchase" />
 
         <section className="bg-slate-900/40 border border-slate-800 rounded-lg p-5 space-y-2">
           <p className="text-gray-400 text-xs font-semibold uppercase tracking-wider">

@@ -27,7 +27,12 @@
  *     (see PocketBase `subscribers` collection).
  */
 
-export type ChannelKind = "reddit" | "google" | "newsletter" | "devto";
+export type ChannelKind =
+  | "reddit"
+  | "google"
+  | "newsletter"
+  | "devto"
+  | "facebook";
 
 export type Campaign = {
   /** Short slug used in `/r/<slug>` redirect URL.  Keep <= 24 chars, lowercase. */
@@ -214,6 +219,101 @@ export const CAMPAIGNS: Campaign[] = [
     },
     hypothesis:
       "The Generalist (~150k VC-curious) — purest investor-side ICP we can buy on a single drop.",
+    status: "draft",
+  },
+
+  // ───────────────────────────────────── FACEBOOK / META (Tier 1.6) ────
+  // Anonymity-compatible: data-viz creative, no founder face/voice. Each
+  // ad-set lands on /from/facebook (platform-native pre-frame) which then
+  // funnels to /firstlook with the same UTM payload preserved.
+  //
+  // Brunson Traffic Secrets §2 Ch 8 — Facebook layer. Why we run paid here
+  // despite the "no persona" rule: retargeting site visitors who already
+  // self-qualified via /pricing, /firstlook, /walkthrough is the cheapest
+  // CPA in the funnel (~€2-4 vs ~€15 cold). The 6 ad-sets below split
+  // 70% retargeting / 30% lookalike-cold.
+  {
+    slug: "fb-retargeting-pricing",
+    channel: "facebook",
+    destination: "/from/facebook?ref=rt-pricing",
+    utm: {
+      source: "facebook",
+      medium: "cpc",
+      campaign: "fb-rt-2026-q3",
+      content: "retarget-pricing",
+    },
+    hypothesis:
+      "Retarget /pricing visitors (last 30d) with the €7 First Look bait. Lowest expected CPA in funnel — visitor already self-qualified by hitting pricing.",
+    status: "draft",
+  },
+  {
+    slug: "fb-retargeting-firstlook",
+    channel: "facebook",
+    destination: "/from/facebook?ref=rt-firstlook",
+    utm: {
+      source: "facebook",
+      medium: "cpc",
+      campaign: "fb-rt-2026-q3",
+      content: "retarget-firstlook-abandon",
+    },
+    hypothesis:
+      "Retarget /firstlook visitors who didn't checkout (cart abandoners proxy). Recovery sequence: €7 → free Sunday digest → 30-day guarantee reminder.",
+    status: "draft",
+  },
+  {
+    slug: "fb-retargeting-walkthrough",
+    channel: "facebook",
+    destination: "/from/facebook?ref=rt-walkthrough",
+    utm: {
+      source: "facebook",
+      medium: "cpc",
+      campaign: "fb-rt-2026-q3",
+      content: "retarget-walkthrough-incomplete",
+    },
+    hypothesis:
+      "Retarget /walkthrough viewers (>30s engagement, scroll-depth >50%). Lead with proof: SSRN n=219, 21-47d lead, then €7 close.",
+    status: "draft",
+  },
+  {
+    slug: "fb-lookalike-investor",
+    channel: "facebook",
+    destination: "/from/facebook?ref=lal-investor",
+    utm: {
+      source: "facebook",
+      medium: "cpc",
+      campaign: "fb-lal-2026-q3",
+      content: "lookalike-investor-1pct",
+    },
+    hypothesis:
+      "1% lookalike of paid Insider subscribers (Meta seed list ~50 emails). EU+US, age 28-55, interests: Y Combinator, Crunchbase, AngelList, Lenny's Newsletter.",
+    status: "draft",
+  },
+  {
+    slug: "fb-lookalike-engineer",
+    channel: "facebook",
+    destination: "/from/facebook?ref=lal-engineer",
+    utm: {
+      source: "facebook",
+      medium: "cpc",
+      campaign: "fb-lal-2026-q3",
+      content: "lookalike-engineer-2pct",
+    },
+    hypothesis:
+      "2% lookalike of /firstlook buyers — broader reach. Engineering-investor crossover targeting: GitHub Pro/Team subscribers, dev.to readers, MCP/Claude users.",
+    status: "draft",
+  },
+  {
+    slug: "fb-cold-interest",
+    channel: "facebook",
+    destination: "/from/facebook?ref=cold-interest",
+    utm: {
+      source: "facebook",
+      medium: "cpc",
+      campaign: "fb-cold-2026-q3",
+      content: "cold-interest-targeting",
+    },
+    hypothesis:
+      "Cold interest stack: 'Venture capital' + 'Software development' + 'Angel investor' + 'Crunchbase'. EU+US, English-only. Lead with data-viz creative (chart, no face). Floor budget €5/day to feed the pixel.",
     status: "draft",
   },
 ];

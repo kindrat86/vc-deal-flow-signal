@@ -1243,6 +1243,10 @@ const SURFACES: Surface[] = [
   { name: "freshness", url: `${SITE}/.well-known/freshness.json`, format: "application/ld+json", category: "schema", description: "DataFeed manifest — last modified timestamp, refresh cadence per surface" },
   // ── Identity / federation ─────────────────────────────
   { name: "did-configuration", url: `${SITE}/.well-known/did-configuration.json`, format: "application/json", category: "identity", description: "DID Configuration — verifiable identity binding" },
+  // Brunson Audit V8 (2026-05-09) — Wikidata Knowledge Panel claim. Closes
+  // Traffic Secrets §2 Ch 9 (Google) +4-pt gap on Q139376302 entity claim.
+  { name: "wikidata-claim", url: `${SITE}/.well-known/wikidata.json`, format: "application/json", category: "identity", description: "Wikidata Knowledge Panel claim manifest — bidirectional binding between this domain and Wikidata entity Q139376302, with full P-code property table, attestation-method ledger, and SPARQL verification queries." },
+  { name: "wikidata-claim-page", url: `${SITE}/wikidata`, format: "text/html", category: "human", description: "Human-readable Knowledge Panel claim landing — mirror of the well-known manifest with copy-paste SPARQL queries and the full P-code property table." },
   {
     name: "webfinger",
     url: `${SITE}/.well-known/webfinger`,

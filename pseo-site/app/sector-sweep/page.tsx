@@ -7,6 +7,7 @@ import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import SectorSweepBriefForm from "./SectorSweepBriefForm";
 import TrialClose from "@/components/TrialClose";
 import BuyerRoadmap from "@/components/BuyerRoadmap";
+import { RiskReversalPromise } from "@/components/RiskReversalPromise";
 
 export const dynamic = "force-static";
 
@@ -457,29 +458,18 @@ export default function SectorSweepPage() {
             path before the risk reversal. */}
         <BuyerRoadmap tier="sector-sweep" />
 
-        {/* GUARANTEE */}
-        <section className="rounded-xl border border-emerald-700/40 bg-emerald-950/30 p-6 sm:p-8 space-y-3">
-          <p className="text-emerald-300 text-xs font-semibold uppercase tracking-wider">
-            05 · Risk reversal
-          </p>
-          <h2 className="text-xl sm:text-2xl font-bold text-gray-100">
-            30 days. Three orgs you didn&rsquo;t know. Or it&rsquo;s free.
-          </h2>
-          <p className="text-gray-300 text-base leading-relaxed">
-            If, in your first 30 days after delivery, the Sweep does not
-            surface at least three orgs you didn&rsquo;t already know about
-            — or if any methodology claim cannot be reproduced from the
-            published panel — reply{" "}
-            <code className="bg-slate-800 px-1.5 py-0.5 rounded text-emerald-300 text-sm">
-              REFUND
-            </code>{" "}
-            to the delivery email. Full €1,997 refund inside two business
-            days. No exit interview.
-          </p>
-          <TrialClose tone="emerald">
-            30 days. Three orgs or refund. Fair enough?
-          </TrialClose>
-        </section>
+        {/* GUARANTEE — Brunson Expert Secrets Ch 15. Replaced the
+            paragraph block with the named badge component. The Sweep
+            tier carries the strongest binary promise on the entire site:
+            three orgs or refund. The badge variant makes that promise
+            scannable in two seconds rather than three paragraphs. */}
+        <p className="text-emerald-300 text-xs font-semibold uppercase tracking-wider">
+          05 · Risk reversal
+        </p>
+        <RiskReversalPromise tier="sector-sweep" anchor="sweep-guarantee" />
+        <TrialClose tone="emerald">
+          30 days. Three orgs or refund. Fair enough?
+        </TrialClose>
 
         {/* FAQ */}
         <section className="space-y-5">

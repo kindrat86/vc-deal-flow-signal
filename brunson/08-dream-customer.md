@@ -157,3 +157,122 @@ Every day Alex logs into Cursor, Claude, GitHub, Twitter, HN, one Discord. GitDe
 You are not selling to investors. You are selling to engineers who happen to invest. Their buying behavior is engineer-buying-behavior. They install first, decide second. They read the source before the sales page. They trust the Glama score more than the Stripe checkout.
 
 Build for that. Every decision from here flows from that one sentence.
+
+---
+
+## 8. V2 — Three sub-archetypes (Audit 2026-05-09 split)
+
+**Why:** "Alex, the Developer-Investor" was a single composite avatar. Brunson rule (Traffic Secrets Ch 1): the Dream Customer should be specific enough that the buyer recognises themselves in the first three lines of copy. A composite forces every copy block to hedge across three buying motions (personal angel, fund LP-update, family-office diligence). Splitting closes the audit gap (94 → 100) and lets every page route to one of three named avatars.
+
+**Constraint reminders:**
+- Customer-facing surfaces must NEVER use Brunson framework names (Dream 100, Hook/Story/Offer, Big Domino, Stack Slide, Soap Opera/Seinfeld, Attractive Character, etc.). The terms "archetype", "Solo Angel", "Fund GP", "Family Office" are fine — they are industry-standard, not Brunson-trademarked.
+- The split is a customer-facing reorganisation, NOT a pricing change. Pricing tiers (Free / €7 / €9.97 / €97 / €497 / €1,997 / €14,997 / €49,997) stay identical. Each archetype is routed to the entry tier that matches their buying motion.
+
+### 8.1 — Solo Angel (the original Alex, sharpened)
+
+**One-liner:** Engineer or ex-founder writing personal angel checks of €5k–€50k. 5–40 investments to date. Lives in Cursor / Claude / GitHub.
+
+**Day-shape:** Code in the morning. Twitter/HN scroll at lunch. AngelList syndicate invite at 14:00. Decide on a check by 18:00. Read Pragmatic Engineer in bed.
+
+**Jobs-to-be-done:**
+- "Show me one company a week I'd otherwise miss."
+- "Confirm my hunch that X is shipping faster than its peers."
+- "Give me a Sunday digest dense enough that I don't need to scroll Twitter on Monday."
+
+**Buying motion:** Trial-driven. Will sign up for free first, upgrade to €9.97/mo if the digest hits, escalate to €97/mo Insider only when cadence ramps past 20 checks/year.
+
+**Tier match:** Free → Dashboard (€9.97/mo) → Insider (€97/mo) when cadence justifies.
+
+**What makes them buy:**
+- Sunday digest density (5 names beats 50).
+- MCP-native (`/api/mcp/rpc` exposed; query from Claude/Cursor directly).
+- Methodology PDF over founder polish.
+- €9.97 reads as "I do not have an enterprise sales team" — engineer-coded honesty, not amateur.
+
+**Disqualifier copy (what makes them bounce):** "Built for funds writing €1M+ tickets" — they'll self-deselect. Sharp Tier (€497/mo) is overkill; the application gate would feel performative.
+
+### 8.2 — Fund GP / Scout
+
+**One-liner:** Sole or lead GP at a fund ≤$50M AUM, OR a named scout for a larger fund. Writes a Monday memo for partners. Has at least one analyst or a sourcing-tool stack.
+
+**Day-shape:** Memo before standup. Two founder calls in the afternoon. End of day = watchlist updates + one LP question answered.
+
+**Jobs-to-be-done:**
+- "Give me 50 names per sector my analyst can chase."
+- "Custom watchlist I can share with my partner."
+- "API into our internal CRM so the data flows where the team already works."
+- "First-mover edge of 21–47 days that I can credibly explain in an LP update."
+
+**Buying motion:** Application-gated. Wants defensibility on the LP-update side; wants a real human to review their thesis before purchase.
+
+**Tier match:** Insider (€97/mo, entry) → Sharp (€497/mo, capped 8 funds) → Sector Sweep (€1,997 one-off thesis primer; credit toward Insider on upgrade).
+
+**What makes them buy:**
+- 24-hour lead window over Free.
+- White-labeled API + custom watchlists.
+- Methodology source (CC BY 4.0) — methodology is auditable for LPs.
+- Quarterly review call with the methodology lead.
+- Capped Sharp Tier (8 funds max) reads as scarcity, not gimmick.
+
+**Disqualifier copy:** "If you want a Series-B+ deal-flow platform with a six-figure data budget, Harmonic and Tracxn are built for you." They'll skip if they need full coverage rather than leading-indicator surface area.
+
+### 8.3 — Family Office Analyst / Diligence Lead
+
+**One-liner:** Analyst or principal at a single-family office, multi-family office, or institutional allocator. Less personal stake, more recurring rigor. Long acceptance cycle. Writes detailed diligence memos. Buys methodology, not features.
+
+**Day-shape:** Mornings on existing-portfolio monitoring. Afternoons on deep-dive into one sector. End of week = a written report to principal or compliance.
+
+**Jobs-to-be-done:**
+- "Reproducible methodology paper my compliance team can audit."
+- "ClaimReview-grade provenance on every public claim."
+- "API + watchlist + CSV export with audit trail."
+- "Annual contract with a named methodology lead, not a Stripe self-service flow."
+
+**Buying motion:** Procurement-driven. Annual contracts. Wants a named relationship, not a SaaS subscription.
+
+**Tier match:** Sector Sweep (€1,997, entry — single-thesis deep-dive) → Methodology Partnership (€14,997/yr, recurring) → Vault (€49,997/yr, custom co-development, 2-fund cap).
+
+**What makes them buy:**
+- SSRN paper (DOI 10.2139/ssrn.6606558) + replication appendix.
+- CC BY 4.0 licensing — their compliance team can host the dataset internally.
+- Methodology Partnership is named "partnership" not "subscription" for procurement reasons.
+- Anonymous-by-design matches their compliance preference for "source over personality."
+- 14-day Q&A after each Sector Sweep delivery — not a hand-off, a relationship.
+
+**Disqualifier copy:** "If you need a self-serve €9.97 SaaS, the Dashboard is your tier." They will not trust founder-locked pricing for a multi-million decision; they will trust a methodology paper and an annual contract.
+
+### 8.4 — Routing matrix (which surface routes which archetype)
+
+| Surface | Solo Angel | Fund GP / Scout | Family Office |
+|---------|------------|-----------------|---------------|
+| Free Acceleration Watch | ✅ entry | ☐ awareness | ☐ awareness |
+| /firstlook (€7) | ✅ tripwire | ☐ skip | ☐ skip |
+| Dashboard (€9.97/mo) | ✅ core | ☐ underspec | ✗ wrong tier |
+| Insider (€97/mo) | ✅ ramp | ✅ entry | ☐ underspec |
+| Sharp (€497/mo, application-gated) | ☐ overkill | ✅ core | ☐ awareness |
+| Sector Sweep (€1,997 once) | ☐ overkill | ✅ thesis primer | ✅ entry |
+| Methodology Partnership (€14,997/yr) | ✗ wrong tier | ☐ overkill | ✅ core |
+| Vault (€49,997/yr) | ✗ wrong tier | ☐ awareness | ✅ ramp |
+
+✅ = primary fit · ☐ = secondary fit · ✗ = mismatch
+
+### 8.5 — Quiz routing (V2)
+
+The 90-second avatar quiz at /quiz now collects archetype self-ID as Q5 (after the existing 4 questions on cadence/thesis/rhythm/edge). The result page surfaces both the tier recommendation (F/T/D/I) AND the archetype label, so the buyer recognises themselves twice — once in their answers, once in the routed copy.
+
+Archetype-aware tier overrides:
+- Solo Angel + I-tier answers → Insider (not Sector Sweep — they want recurring, not one-off).
+- Fund GP + F-tier answers → Insider entry with note "the Free tier is awareness, not workflow".
+- Family Office + any tier → Sector Sweep entry, with Methodology Partnership as upgrade path.
+
+### 8.6 — Customer-facing surface
+
+`/who-this-is-for` is the canonical archetype hub. Three cards (Solo Angel / Fund GP / Family Office), each with persona one-liner, day-shape, jobs-to-be-done, and a tier-routing CTA. Cross-linked from homepage, /about, /pricing, and /quiz result page.
+
+`content/archetypes.ts` is the single source of truth. The customer-facing /who-this-is-for page, the homepage card preview, the /about callout, and the quiz result label all read from this module. Edit there, render everywhere.
+
+### 8.7 — Open loops post-split
+
+- A/B test: does the archetype card preview on the homepage move conversion vs. the single-avatar intro? Hypothesis: yes for Fund GP / Family Office traffic (they need to see themselves explicitly); neutral for Solo Angel (already addressed by current copy).
+- Email-sequence overlay: SOAP_OPERA_F/T/D/I sequences are tier-keyed; consider archetype-keyed overrides for top-of-funnel emails (Day 0–Day 5) where the archetype frames the story differently.
+- Distribution overlay: which Top-100 voices skew which archetype? Add ARCHETYPE_AFFINITY map to content/target-list-icp.ts so engagement playbooks can target by archetype, not just by score.

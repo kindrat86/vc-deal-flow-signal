@@ -12,6 +12,7 @@ import { FastActionBonuses } from "@/components/FastActionBonuses";
 import { DoorsClosingBanner } from "@/components/DoorsClosingBanner";
 import TrialClose from "@/components/TrialClose";
 import BuyerRoadmap from "@/components/BuyerRoadmap";
+import { RiskReversalPromise } from "@/components/RiskReversalPromise";
 import ThreeCoreStoriesNav from "@/components/ThreeCoreStoriesNav";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { getReplayWindowSnapshot } from "@/lib/replay-window";
@@ -827,36 +828,19 @@ export default function PerfectWebinarPage() {
             (Thu) and closed (Fri–Sun) so the page is honest about phase. */}
         <FastActionBonuses initialWindow={replaySnapshot} signupUrl={SIGNUP_URL} />
 
-        {/* GUARANTEE */}
-        <section
-          id="guarantee"
-          className="bg-emerald-950/30 border border-emerald-700/40 rounded-xl p-6 sm:p-8 space-y-3 scroll-mt-20"
-        >
-          <p className="text-emerald-300 text-xs font-semibold uppercase tracking-wider">
-            Risk reversal
-          </p>
-          <h2 className="text-xl sm:text-2xl font-bold text-gray-100">
-            30 days. Signal or it&rsquo;s free. No forms. No call.
-          </h2>
-          <p className="text-gray-300 text-base leading-relaxed">
-            If, in your first 30 days, the signal does not surface a startup
-            you find genuinely interesting — defined as one you would have
-            wanted to know about earlier — reply <code className="bg-slate-800 px-1.5 py-0.5 rounded text-emerald-300 text-sm">REFUND</code> to any
-            email. The full payment is refunded inside two business days. No
-            questions, no exit interview, no &ldquo;wait, let me show you
-            one more feature.&rdquo;
-          </p>
-          <p className="text-gray-400 text-sm">
-            The guarantee exists because the signal either works or it
-            doesn&rsquo;t. Charging for an output you don&rsquo;t find useful
-            is bad business.
-          </p>
-          <TrialClose tone="emerald">
-            Worst case: 30 days, you keep what you read, you get the €9.97
-            back. Where else does that downside profile exist for a sourcing
-            tool?
-          </TrialClose>
-        </section>
+        {/* GUARANTEE — Brunson Expert Secrets Ch 15 (Money / Identity /
+            Risk closes). Audit 2026-05-09 verdict: "Risk Reversal close
+            could be louder ('if 31-day prediction misses, full refund')."
+            Replaced the paragraph-style block with the named badge
+            component — wax-seal stamp, three structured rows (Promise /
+            How to redeem / Calibration receipt). Same content, far
+            louder visual treatment. */}
+        <RiskReversalPromise tier="dashboard" anchor="guarantee" />
+        <TrialClose tone="emerald">
+          Worst case: 30 days, you keep what you read, you get the €9.97
+          back. Where else does that downside profile exist for a sourcing
+          tool?
+        </TrialClose>
 
         {/* TRIAL CLOSES — 3-stack */}
         <section className="space-y-3">

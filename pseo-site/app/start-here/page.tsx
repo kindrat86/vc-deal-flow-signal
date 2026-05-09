@@ -3,13 +3,14 @@ import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import StartHereArchetypeQuiz from "@/components/StartHereArchetypeQuiz";
 
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title: "Start Here — what GitDealFlow is, and where to begin",
   description:
-    "Three-minute primer for the developer-investor who hit this site cold. What we measure (GitHub commit-velocity acceleration), why (47 days before the deck), and the four entry points sized to your week.",
+    "Three-minute primer for the cold visitor. 90-second identity quiz routes buyers, subscribers, and engineer-curious to the right next page. What we measure (GitHub commit-velocity acceleration), why (47 days before the deck), and the four entry points sized to your week.",
   alternates: { canonical: "/start-here" },
   openGraph: {
     title: "Start Here — GitDealFlow primer",
@@ -55,10 +56,10 @@ const PATHS = [
   },
   {
     minutes: "90 sec",
-    label: "Take the routing quiz",
-    desc: "Four questions, then a routed recommendation. Most people overpay for tools they barely use, or skip the one that would have paid for itself.",
+    label: "Take the price-tier quiz",
+    desc: "Four questions on check-size, thesis, time, and edge — routed to one of the four pricing tiers. Different from the identity quiz above; this one assumes you're already buying and just need the right rung.",
     href: "/quiz",
-    badge: "Not sure which tier",
+    badge: "Already buying — pick a tier",
     color: "indigo",
   },
 ] as const;
@@ -194,6 +195,8 @@ export default function StartHerePage() {
             €1,000/mo) and why we don&rsquo;t have a sales team.
           </p>
         </section>
+
+        <StartHereArchetypeQuiz />
 
         <section className="space-y-4">
           <h2 className="text-2xl font-bold text-gray-100">What you can do next, sized to your week</h2>

@@ -513,30 +513,54 @@ export default function StoryPage() {
           </h2>
           <div className="space-y-3 text-gray-300 text-sm leading-relaxed">
             <p>
-              In 2023 a small dev-tool company landed in my inbox via a warm
-              intro. Solid deck. Familiar logos in the &ldquo;customers&rdquo; row.
-              Founder seemed sharp on a 30-minute call. The check would have
-              been €10k. I passed because the deck didn&rsquo;t convince me
-              the engineering team could ship the next eighteen months of
-              roadmap.
+              October 2023. A small dev-tool company landed in my inbox via
+              a warm intro from someone I&rsquo;d known six years. The deck
+              was clean — fifteen slides, three named design partners, $180k
+              MRR from twelve customers. Founder was sharp on a 47-minute
+              Zoom. The check would have been €10k of my own money at a $6M
+              post. I sat with it for nine days and emailed back:{" "}
+              <em>&ldquo;Roadmap feels ambitious for the team size — passing
+              for now.&rdquo;</em>
             </p>
             <p>
-              Eleven months later the same company raised at a 9× valuation
-              from a name-brand fund. The roadmap had shipped. The team had
-              tripled. Their public GitHub had been telling that story the
-              entire time — five new repos, a 4× contributor expansion, and a
-              clean velocity curve I would have read in two minutes if I had
-              known to look.
+              The actual reason was smaller and worse. I couldn&rsquo;t tell
+              from the deck whether the four-person engineering team was
+              going to ship what they&rsquo;d promised by Q2 — and I had no
+              framework for verifying it. So I outsourced the decision to a
+              vibe and walked. That sentence cost me €74,300.
             </p>
             <p>
-              The deck was the lagging indicator. The code was the leading one.
-              I&rsquo;d optimised for the wrong source of truth. The product
-              that exists now is the version of the tool I wish had existed
-              the day that intro hit my inbox.
+              Eleven months later the same company raised a $14M Series A at
+              a $54M post — 9× the valuation I&rsquo;d declined. The roadmap
+              had shipped two months early. The team had tripled to twelve
+              engineers. Their public GitHub had been narrating the whole
+              thing in real time: five new repositories, contributor count
+              4 → 14 (eight of them senior engineers traceable to a Series-B
+              incumbent in the same category), commit velocity in the 95th
+              percentile of their cohort for fourteen consecutive weeks. The
+              marketing site migrated from a Notion page to a custom Next.js
+              stack at exactly T-7 from the round closing — the kind of
+              detail that always lags a fundraise by one or two sprints.
+              Every datapoint that would have changed my mind was public,
+              free, and updating every fifteen minutes — and I hadn&rsquo;t
+              looked at any of it.
+            </p>
+            <p>
+              The deck was the lagging indicator. The code was the leading
+              one. I&rsquo;d optimised for the wrong source of truth and lost
+              €74,300 of upside on a single bad inference. The product that
+              exists now is the dashboard I wish had been open in another
+              tab the day that intro hit my inbox — every signal I missed,
+              labelled, ranked, and replaying for the next deal.
             </p>
             <p className="italic text-rose-300/80 pt-2 border-t border-rose-900/40">
-              That deal is the reason this is built around <strong>commit velocity</strong>,
-              not pitch deck quality.
+              That deal is the reason this is built around{" "}
+              <strong>
+                commit velocity, contributor pedigree, and stack-migration
+                timing
+              </strong>{" "}
+              — not pitch-deck quality, not founder charisma, not warm-intro
+              count.
             </p>
           </div>
         </section>

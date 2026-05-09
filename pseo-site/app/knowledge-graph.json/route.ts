@@ -84,6 +84,23 @@ export async function GET() {
       {
         "@type": "Organization",
         "@id": `${APEX}/#organization`,
+        // Brunson Audit V8 (2026-05-09) — Knowledge Panel claim. Pairs with
+        // /.well-known/wikidata.json + /wikidata page + RootIdentitySchema
+        // identifier block. additionalType=Q4830453 (business).
+        additionalType: "https://www.wikidata.org/wiki/Q4830453",
+        identifier: [
+          {
+            "@type": "PropertyValue",
+            propertyID: "wikidata",
+            value: "Q139376302",
+            url: "https://www.wikidata.org/wiki/Q139376302",
+          },
+        ],
+        mainEntityOfPage: {
+          "@type": "WebPage",
+          "@id": `${SITE}/wikidata`,
+          url: `${SITE}/wikidata`,
+        },
         name: "VC Deal Flow Signal",
         legalName: "VC Deal Flow Signal (GitDealFlow)",
         alternateName: ["GitDealFlow", "VC Deal Flow Signal (GitDealFlow)"],
