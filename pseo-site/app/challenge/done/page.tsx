@@ -5,24 +5,24 @@ import { CHALLENGE_DAYS } from "@/content/challenge-curriculum";
 
 export const metadata: Metadata = {
   title:
-    "You finished the 7-Day Reset — what's next | VC Deal Flow Signal",
+    "You finished the 30-Day Reset — what's next | VC Deal Flow Signal",
   description:
-    "Graduation page for the 7-Day Deal Flow Reset Challenge. Three optional ways to keep using the framework: free Sunday digest, €9.97/mo Dashboard, €1,997 one-time Sector Sweep. The framework is yours either way.",
+    "Graduation page for the 30-Day Deal Flow Reset Challenge. Three optional ways to keep using the system: free Sunday digest, €9.97/mo Dashboard, €1,997 one-time Sector Sweep. The framework + your watchlist + custom weights stay yours either way.",
   alternates: { canonical: "/challenge/done" },
   robots: { index: true, follow: true },
   openGraph: {
-    title: "You finished the 7-Day Reset — what's next",
+    title: "You finished the 30-Day Reset — what's next",
     description:
-      "Three optional ways to keep using the framework. Pick none of them and you still own the system.",
+      "Three optional ways to keep using the system. Pick none of them and you still own it.",
     url: "https://signals.gitdealflow.com/challenge/done",
     type: "article",
   },
 };
 
-// Brunson Stack-Slide close for Day 7 graduation. Three rungs of the
-// value ladder — free, founding-rate Dashboard, one-time Sector Sweep —
-// each priced against the standalone retail equivalent. Total stacked
-// retail anchors the €9.97/mo founding-rate ask at ~50× value-to-price.
+// Stack-Slide close for the Day-30 graduation. Three rungs of the value
+// ladder — free, founding-rate Dashboard, one-time Sector Sweep — each
+// priced against the standalone retail equivalent. Total stacked retail
+// anchors the €9.97/mo founding-rate ask at ~50× value-to-price.
 const RUNGS = [
   {
     rung: "Rung 0",
@@ -110,13 +110,13 @@ export default function ChallengeDonePage() {
     "@graph": [
       {
         "@type": "WebPage",
-        name: "You finished the 7-Day Deal Flow Reset",
+        name: "You finished the 30-Day Deal Flow Reset",
         description:
-          "Graduation page with three optional next steps after the 7-day Challenge: free Sunday digest, founding-rate Dashboard at €9.97/mo, or a one-time Sector Sweep at €1,997.",
+          "Graduation page with three optional next steps after the 30-day Challenge: free Sunday digest, founding-rate Dashboard at €9.97/mo, or a one-time Sector Sweep at €1,997.",
         url: "https://signals.gitdealflow.com/challenge/done",
         isPartOf: {
           "@type": "Course",
-          name: "7-Day Deal Flow Reset Challenge",
+          name: "30-Day Deal Flow Reset Challenge",
           url: "https://signals.gitdealflow.com/challenge",
         },
       },
@@ -172,25 +172,25 @@ export default function ChallengeDonePage() {
 
         <header className="mb-10">
           <p className="text-emerald-400 text-sm font-medium mb-3 uppercase tracking-wider">
-            Day 8 · Framework complete
+            Day 31 · System complete
           </p>
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-4 leading-tight">
-            You finished. The framework is yours.
+            You finished. The system is yours.
           </h1>
           <p className="text-gray-300 text-base leading-relaxed">
-            You now own a 6-signal scoring system that runs in ~30 minutes
-            against any public GitHub org, end-to-end, with public data and a
-            calculator. No tool, no API, no warm intro required. The next
-            section is optional — three ways to scale the framework if the
-            manual cadence doesn&rsquo;t fit. Pick none of them and the framework
-            still works.
+            Thirty days. Seven atomic signals. Three real-pipeline candidates
+            scored. A 10-org watchlist. A Monday rhythm. Alerts. A custom-weighted
+            composite calibrated to your beat. An MCP integration that runs the
+            whole thing from your editor. The next section is optional — three
+            ways to scale the system if the manual cadence doesn&rsquo;t fit
+            anymore. Pick none of them and the system still works.
           </p>
         </header>
 
         {/* What you just learned — recap chips. */}
         <section className="mb-10" aria-label="What you learned">
           <h2 className="text-gray-100 font-semibold text-lg mb-4">
-            The seven days, at a glance
+            The 30 days, at a glance
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             {CHALLENGE_DAYS.map((d) => (

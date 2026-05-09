@@ -707,11 +707,16 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
 ];
 
 /**
- * 7-Day Deal Flow Reset Challenge — alternate funnel for /challenge signups.
- * One email per day teaches one of the seven signals from the SSRN paper, with
- * a 5-minute manual exercise the subscriber can run themselves on a public
- * GitHub org. Day 7 reveals "or run it across 4,200 orgs in 4 seconds with the
- * MCP" and stacks the three CTAs (Dashboard / Insider / Sector Sweep).
+ * 30-Day Deal Flow Reset Challenge — alternate funnel for /challenge signups.
+ * Four-week structure:
+ *   Week 1 (Days 1-7)   — Learn the 7 atomic signals (SSRN paper)
+ *   Week 2 (Days 8-14)  — Apply: composite on 3 real candidates + 1 calibration
+ *   Week 3 (Days 15-21) — Synthesize: 10-org watchlist + Monday rhythm + Q&A
+ *   Week 4 (Days 22-30) — Operationalize: alerts, share template, MCP, weights
+ *
+ * Day 30 reveals "or run it across 4,200 orgs in 4 seconds with the MCP" and
+ * stacks the three CTAs (Free digest / Dashboard / Sector Sweep) as a
+ * Stack-Slide close.
  *
  * Trigger: GET /api/verify?cohort=challenge → schedules CHALLENGE_EMAILS
  * instead of SOAP_OPERA_EMAILS. /challenge signup form sets cohort=challenge.
@@ -722,21 +727,17 @@ export const CHALLENGE_EMAILS = [
     subject: "Welcome — your 7-Day Deal Flow Reset starts now",
     delayMs: 15 * 60 * 1000,
     html: wrap(`
-<p>Welcome to the 7-Day Deal Flow Reset.</p>
-<p>Over the next 7 days I'll send you one email per day. Each one teaches you a single GitHub signal that has historically preceded a fundraise — drawn from the panel of 219 confirmed rounds in the SSRN paper at <a href="https://ssrn.com/abstract=6606558" style="color:#0ea5e9;">ssrn.com/abstract=6606558</a>.</p>
-<p>Each email includes a <strong>5-minute manual exercise</strong> you can run yourself on any public GitHub org you're curious about. By the end of the week, you'll have a personal sourcing process that works without any tool.</p>
-<p>On Day 7, I'll show you how the same seven signals run across 4,200 startup orgs in four seconds — but the goal of the week is for you to own the framework either way.</p>
-<p>Here's the plan:</p>
+<p>Welcome to the 30-Day Deal Flow Reset.</p>
+<p>Over the next 30 days I'll send you one email per day. The structure is four phases:</p>
 <ul>
-<li><strong>Day 1:</strong> Commit velocity — the easiest signal to read</li>
-<li><strong>Day 2:</strong> Contributor diversity — what bus-factor reveals</li>
-<li><strong>Day 3:</strong> Dependents graph — who's already building on top</li>
-<li><strong>Day 4:</strong> README freshness — the cheapest leading indicator</li>
-<li><strong>Day 5:</strong> New repo creation rate — the platform-buildout tell</li>
-<li><strong>Day 6:</strong> Issue-to-PR ratio — engagement vs. shipping</li>
-<li><strong>Day 7:</strong> Composite score + how to run it across 4,200 orgs</li>
+<li><strong>Week 1 (Days 1-7) — Learn.</strong> Each of the 7 atomic GitHub signals that historically precede a fundraise, drawn from the panel of 219 confirmed rounds in the SSRN paper at <a href="https://ssrn.com/abstract=6606558" style="color:#0ea5e9;">ssrn.com/abstract=6606558</a>. One signal per day, 5-minute manual exercise.</li>
+<li><strong>Week 2 (Days 8-14) — Apply.</strong> Run the composite on three real candidates from your own pipeline + one calibration backtest on a known recently-funded org. End the week with a real scorecard artifact.</li>
+<li><strong>Week 3 (Days 15-21) — Synthesize.</strong> Build a 10-org watchlist, set the Monday rhythm, sector-batch sweep, score-driven founder Q&amp;A, the 30-second pre-read.</li>
+<li><strong>Week 4 (Days 22-30) — Operationalize.</strong> Alerts, anti-signals, co-investor share template, MCP integration (free), custom composite weights, retrospective, graduation.</li>
 </ul>
-<p>Pick one startup before tomorrow. Any one. A founder you met, a company you almost-invested in, a portfolio org you want to monitor. Have its GitHub URL ready.</p>
+<p><strong>The commitment:</strong> ~5-10 minutes a day. Week 1 is tight 5-min walkthroughs. Weeks 2-4 stretch to 10-15 min/day as you build the operational system.</p>
+<p><strong>The goal:</strong> by Day 31 you own a 7-signal sourcing system that runs in ~25 min/week against any public GitHub org. The framework is licensed CC BY 4.0 and yours either way — no upgrade pressure on Day 30.</p>
+<p>Pick one startup before tomorrow. Any one. A founder you met, a company you almost-invested in, a portfolio org you want to monitor. Have its GitHub URL ready — every signal in the next 7 days runs against the same org you pick today.</p>
 <p>Tomorrow at the same time, Day 1 lands. Talk soon —<br>${FROM_NAME}</p>
 `),
   },
@@ -923,54 +924,456 @@ export const CHALLENGE_EMAILS = [
 `),
   },
 
-  // Day 8 — Graduation recap + one ask
+  // ─────────────────────────────────────────────────────────────────
+  // Week 2 (Days 8-14): APPLY — composite on real candidates
+  // ─────────────────────────────────────────────────────────────────
+
+  // Day 8 — Week 2 kickoff: pick three candidates
   {
-    subject: "Day 8 — You finished. One ask.",
+    subject: "Day 8 — Pick three real candidates",
     delayMs: 15 * 60 * 1000 + 8 * ONE_DAY,
     html: wrap(`
-<p>You finished the 7-Day Reset. Quick honest note before this thread settles into the Sunday cadence.</p>
-<p><strong>What you did.</strong> Seven days, six 5-minute exercises, one 30-minute composite scoring procedure that runs against any public GitHub org. End-to-end, with public data and a calculator. No tool, no API, no warm intro required. That's a real thing you didn't have eight days ago.</p>
-<p><strong>What changes from here.</strong> This address now sends one Sunday digest per week — five named startups scored against the same 6-signal composite, with sector and stage tags and direct GitHub URLs. Same framework you just learned, applied. Unsubscribe with a reply at any time.</p>
-<p><strong>One ask.</strong> If the Challenge worked for you, send the landing-page link to <em>one</em> other investor or analyst who would use it. That's the entire ask — we don't run an affiliate program because we don't want incentives to distort whether you tell a friend.</p>
-<p>The link: <a href="${SIGNALS}/challenge" style="color:#0ea5e9;">${SIGNALS}/challenge</a></p>
-<p>If you have feedback on the curriculum — anything that didn't land, edge cases I missed, signals you'd add — reply directly to this email. I read all of them and the next cohort gets the lessons.</p>
+<p><strong>Week 1 closed yesterday.</strong> You can read the framework. Week 2 starts now — and the only way to lock it in is to run it.</p>
+<p>Today's task: pick three startups from your own pipeline. Three deliberate profiles:</p>
+<ul>
+<li><strong>#1 — the boring one.</strong> A startup you'd assume scores 3/6, no obvious tells.</li>
+<li><strong>#2 — the obvious one.</strong> The startup you already feel good about.</li>
+<li><strong>#3 — the wildcard.</strong> A pre-revenue or stealth-ish org you can't quite read.</li>
+</ul>
+<p>For each: GitHub URL + a one-line gut prediction (score 0-6) + the reason. Write it down before you score anything tomorrow — the most useful artifact of the week is the delta between gut and composite.</p>
+<p>If your pipeline is empty, pick three Series A/B announces from the last 30 days. The framework works retroactively too.</p>
+<p><strong>Tomorrow:</strong> candidate #1, end-to-end, in 15 minutes. We'll do all six signals on the boring one first.</p>
 <p>Talk soon —<br>${FROM_NAME}</p>
-<p style="color:#64748b;font-size:14px;">P.S. The seven days are permanent at <a href="${SIGNALS}/challenge" style="color:#0ea5e9;">${SIGNALS}/challenge</a> — every day has a slug-permalink (e.g. /challenge/commit-velocity, /challenge/dependents-graph). Bookmark it. Refer back when a portfolio call comes up that needs one of the procedures.</p>
+`),
+  },
+  // Day 9 — Score candidate #1
+  {
+    subject: "Day 9 — Score candidate #1 end-to-end",
+    delayMs: 15 * 60 * 1000 + 9 * ONE_DAY,
+    html: wrap(`
+<p><strong>Yesterday's pick:</strong> three candidates, gut predictions written down. Today: candidate #1, the boring one, full composite.</p>
+<p>One tab open on the GitHub org. Six signals, 60-90 seconds each. Total target: 15 minutes.</p>
+<p><strong>Procedure:</strong></p>
+<ol>
+<li>Signal 1 — commit velocity (Insights → Pulse).</li>
+<li>Signal 2 — contributor diversity (Insights → Contributors).</li>
+<li>Signal 3 — dependents graph (Insights → Dependency graph → Dependents).</li>
+<li>Signal 4 — README freshness (file → History).</li>
+<li>Signal 5 — new repo creation (Repositories → Newest).</li>
+<li>Signal 6 — issue-to-PR ratio (Issues, then Pull requests).</li>
+</ol>
+<p>For each: +0 or +1, plus a one-sentence note. Total composite at the end.</p>
+<p><strong>Watch the clock.</strong> 25+ minutes means you're over-thinking. The whole point of the manual procedure is that it's fast enough to run on every founder you meet.</p>
+<p><strong>Edge case:</strong> if signal 3 (dependents) is empty, that's not zero — that's "private distribution" and it deserves a note.</p>
+<p>Compare composite to your gut prediction from yesterday. Note the delta.</p>
+<p><strong>Tomorrow:</strong> candidate #2, the obvious one. Your prediction was probably high — let's see whether the composite agrees.</p>
+<p>Talk soon —<br>${FROM_NAME}</p>
+`),
+  },
+  // Day 10 — Score candidate #2
+  {
+    subject: "Day 10 — Score candidate #2 (the obvious one)",
+    delayMs: 15 * 60 * 1000 + 10 * ONE_DAY,
+    html: wrap(`
+<p><strong>Yesterday:</strong> the boring one. Today: the obvious one — and the most likely place for the framework to disagree with you.</p>
+<p>Same six signals, same order. Try to score honestly. Pretend you've never heard of the founder.</p>
+<p><strong>What to look for:</strong> any signal where the composite disagrees with your prior. A "darling" that scores 2/6 happens — usually because the founder is great but the engineering org is one person. The bet is on the founder, not the team. Note that explicitly.</p>
+<p>If your gut said 5/6 and the composite says 5/6, the prior was right but the framework didn't add value. If gut said 5/6 and composite says 3/6, you just dodged a bullet.</p>
+<p>Both outcomes are useful.</p>
+<p><strong>Tomorrow:</strong> candidate #3, the wildcard. This is where the composite earns its keep — calling something your gut couldn't read.</p>
+<p>Talk soon —<br>${FROM_NAME}</p>
+`),
+  },
+  // Day 11 — Score candidate #3
+  {
+    subject: "Day 11 — Score candidate #3 (the wildcard)",
+    delayMs: 15 * 60 * 1000 + 11 * ONE_DAY,
+    html: wrap(`
+<p><strong>Yesterday:</strong> the obvious one. Today: the unread one — and probably where you'll feel the framework working hardest.</p>
+<p>Same six signals. Be deliberate about signal 3 (dependents) and signal 5 (new repos) — those tell the most about a stealth team.</p>
+<p>Total composite. Compare to gut.</p>
+<p><strong>Then write the next-step:</strong> pass, second meeting, or watch-only.</p>
+<p>A wildcard scoring 6/6 is rare but real. When it happens, the second meeting is almost mandatory — the framework just told you something nobody else has surfaced.</p>
+<p>The wildcard is where the composite generates the most diligence-conversation leverage. The score becomes the question, not the conclusion.</p>
+<p><strong>Tomorrow:</strong> compare all three. We'll pull out the signal that pulled the heaviest weight across your candidates — usually the one you'd have skipped.</p>
+<p>Talk soon —<br>${FROM_NAME}</p>
+`),
+  },
+  // Day 12 — Compare three
+  {
+    subject: "Day 12 — Compare all three. Which signal carried the read?",
+    delayMs: 15 * 60 * 1000 + 12 * ONE_DAY,
+    html: wrap(`
+<p><strong>Yesterday:</strong> all three composites are in. Today: line them up and find the signal that did the most work.</p>
+<p>Lay out the three candidates: name, gut prediction, composite, delta.</p>
+<p>For each signal (1-6), note: did this signal flip a candidate's score? Up or down?</p>
+<p>Identify the signal that produced the biggest disagreement with your gut. For dev-tools investors, it's usually <strong>dependents</strong>. For platform investors, usually <strong>new repo creation</strong>. For B2B SaaS, usually <strong>commit velocity</strong>.</p>
+<p>Write one sentence: "For my beat, the signal I should never skip is ___."</p>
+<p>Save it. Update every 10 candidates. Within a quarter you'll have the personal heuristic that an "all signals equal" framework can't give you.</p>
+<p><strong>Tomorrow:</strong> a calibration run. We'll score one publicly-known recently-funded org and check whether the composite caught the round before it closed.</p>
+<p>Talk soon —<br>${FROM_NAME}</p>
+`),
+  },
+  // Day 13 — Calibration
+  {
+    subject: "Day 13 — Calibration: score a known funded org at month -3",
+    delayMs: 15 * 60 * 1000 + 13 * ONE_DAY,
+    html: wrap(`
+<p><strong>Yesterday:</strong> you found the signal that carries your beat. Today: a backtest. One known round, scored at month -3.</p>
+<p>Pick a Series A or B announce from 60-90 days ago. TechCrunch, Newcomer, Pro Rata. Open the GitHub org. For each signal, set the date filter to the org's state ~90 days before today (i.e. month -3 from announce).</p>
+<p>Score as if you were doing diligence three months pre-announce. Compare the inferred score to the announced round.</p>
+<p><strong>What to expect:</strong> a score of 4/6+ at month -3 is a hit — the framework would have flagged this round. A score of 2/6 or lower is a miss — useful too. The panel data says ~30% of rounds don't surface in GitHub signals.</p>
+<p>Run this on five rounds and you'll have a personal hit-rate. 60-70% accuracy at month -3 is realistic for the public-data version. The MCP version layers in private-data heuristics and runs ~78%.</p>
+<p><strong>Tomorrow:</strong> Week 2 wrap. Your first 3-startup scorecard becomes a real artifact you can show.</p>
+<p>Talk soon —<br>${FROM_NAME}</p>
 `),
   },
 
-  // Day 14 — Real-world application case
+  // Day 14 — Week 2 wrap
   {
-    subject: "Day 14 — How one subscriber used the framework last week",
+    subject: "Day 14 — Your first scorecard. Real artifact.",
     delayMs: 15 * 60 * 1000 + 14 * ONE_DAY,
     html: wrap(`
-<p>A week into post-Challenge cadence. Quick story from the real world.</p>
-<p>One subscriber from the previous Challenge cohort — angel writing €25-€75k checks, focuses on developer-tools — wrote in last week with a clean application of the framework.</p>
-<p>He runs the 30-minute composite on every founder he meets, before the second meeting. The pre-meeting score becomes the diligence frame.</p>
-<p>Last week, founder pitches him a backend-infra startup. Composite scores 5/6 — sharp commit velocity, four real contributors, 80+ external dependents on a public OSS repo, README rewritten three weeks before the meeting, two new platform repos in the last 30 days. The only missing point: the issue-to-PR ratio is 0.6, suggesting the team is buried in inbound that's outpacing throughput.</p>
-<p>Most investors would skip past that score-of-5 and say "this is a yes." He went further. Took the 0.6 ratio into the second meeting as a question, not a flag — "your throughput vs your inbound is at the level where the next hire matters more than the next feature, what's your hiring plan?"</p>
-<p>The founder's answer was already tight (two senior infra hires lined up to start within 30 days of the round closing). But the question shifted the dynamic — the framework gave him an investor-grade conversation a generalist couldn't have. Allocation: €40k. Founder later told him it was the most useful pre-Series-A meeting he'd had.</p>
-<p><strong>The point:</strong> the framework isn't just a screening tool. The signals translate into questions the founder respects. That's the second-order value of running it manually — you know which signal anchored the question, so you can defend it.</p>
-<p>If something similar has happened to you with the framework, reply with the story. We're collecting cases for the next iteration of the curriculum.</p>
+<p><strong>Two weeks in.</strong> You have something nobody else in your network has: a rolling 4-org composite scorecard with calibration. It's small but it's yours.</p>
+<p>Today's task: compile a single page.</p>
+<ul>
+<li>4 orgs (3 candidates + 1 calibration)</li>
+<li>Composite for each</li>
+<li>Delta vs gut</li>
+<li>The signal that mattered most</li>
+</ul>
+<p>Save it somewhere persistent. Send it to one trusted co-investor or analyst with the question: "What did I miss?"</p>
+<p>This becomes the seed of your watchlist tomorrow — same data, different framing. Same orgs, but with a "next-touch date" added.</p>
+<p>Schedule the Week 3 first session: 25 minutes on Monday. The cadence is the system.</p>
+<p><strong>Tomorrow:</strong> Week 3 starts. Building the watchlist that turns these one-off scores into a continuous practice.</p>
 <p>Talk soon —<br>${FROM_NAME}</p>
 `),
   },
 
-  // Day 30 — Re-engagement / decision fork
+  // ─────────────────────────────────────────────────────────────────
+  // Week 3 (Days 15-21): SYNTHESIZE — watchlist + cadence
+  // ─────────────────────────────────────────────────────────────────
+
+  // Day 15 — Build watchlist
   {
-    subject: "Day 30 — One quiet decision",
+    subject: "Day 15 — Build a 10-org watchlist",
+    delayMs: 15 * 60 * 1000 + 15 * ONE_DAY,
+    html: wrap(`
+<p><strong>Last week:</strong> three composites, one calibration, one personal heuristic. This week: turn that snapshot into a habit.</p>
+<p><strong>Today's procedure:</strong></p>
+<ol>
+<li>Pick one sector you actually care about (vertical SaaS, dev-tools, fintech infra, etc.).</li>
+<li>List 10 orgs in that sector with public GitHub. AngelList, Crunchbase, your CRM.</li>
+<li>Run the composite once on each. ~90 minutes total. Yes, today is the long day.</li>
+<li>Sort by score. Save with date stamp.</li>
+</ol>
+<p>The list is the artifact — not the conclusion. Scores will move week to week and that movement is the actual signal.</p>
+<p><strong>Save as CSV with one column per signal.</strong> When a score moves, you'll see which signal moved — and that's where the founder conversation starts.</p>
+<p><strong>Tomorrow:</strong> setting the Monday rhythm. The watchlist isn't useful until it's a calendar habit.</p>
+<p>Talk soon —<br>${FROM_NAME}</p>
+`),
+  },
+  // Day 16 — Monday rhythm
+  {
+    subject: "Day 16 — Set the weekly Monday rhythm (25 min)",
+    delayMs: 15 * 60 * 1000 + 16 * ONE_DAY,
+    html: wrap(`
+<p><strong>Yesterday:</strong> watchlist built. Today: the cadence that makes it pay.</p>
+<p>The investors who outperform on deal flow run the same procedure on the same day every week. 25 minutes Mondays before email is the smallest commitment that survives a busy week.</p>
+<p><strong>Procedure:</strong></p>
+<ol>
+<li>Block 25 minutes on Monday morning, recurring, before email.</li>
+<li>Open the watchlist CSV.</li>
+<li>Score signal 1 (commit velocity) on all 10 orgs — fastest signal first.</li>
+<li>Note any score that moved by 0.5+ on that signal alone.</li>
+<li>Schedule a follow-through to score the moved orgs in full later that day.</li>
+</ol>
+<p>If you can't protect 25 minutes once a week, the system can't compound — drop to 5 orgs in the watchlist and protect the time. After 4 Mondays, you'll have 40 datapoints across 10 orgs. Enough to spot the slope, not just the snapshot.</p>
+<p><strong>Tomorrow:</strong> the sector batch — 25 orgs in 25 minutes when one sector starts getting hot.</p>
+<p>Talk soon —<br>${FROM_NAME}</p>
+`),
+  },
+  // Day 17 — Sector batch
+  {
+    subject: "Day 17 — Sector batch: 25 orgs in 25 minutes",
+    delayMs: 15 * 60 * 1000 + 17 * ONE_DAY,
+    html: wrap(`
+<p><strong>Yesterday:</strong> the weekly rhythm. Today: the high-throughput version for sector-heat moments.</p>
+<p>When a sector is moving (a category is buzzing, a competitor just raised, an LP is asking), the speed move is to score 25 orgs in that sector at lightning pace and rank them.</p>
+<p><strong>Procedure:</strong></p>
+<ol>
+<li>Pick a sector that's moving. List 25 orgs (Crunchbase + AngelList).</li>
+<li>Score signal 1 (commit velocity) on each, 60 seconds per org.</li>
+<li>Sort top 5. For those 5, run the full composite — 75 minutes total.</li>
+<li>Top 1-2 from the sweep get a meeting request the same week.</li>
+</ol>
+<p>This is the procedure the live engine runs every Monday at 06:00 UTC across 4,200 orgs in 4 seconds. You're learning the manual version so you can defend any number the engine produces.</p>
+<p><strong>Tomorrow:</strong> using the composite as the founder Q&amp;A frame — turning a score into a question.</p>
+<p>Talk soon —<br>${FROM_NAME}</p>
+`),
+  },
+  // Day 18 — Score-driven questions
+  {
+    subject: "Day 18 — Five questions, each seeded by a signal",
+    delayMs: 15 * 60 * 1000 + 18 * ONE_DAY,
+    html: wrap(`
+<p><strong>Yesterday's sector sweep</strong> gave you the broad scan. Today: turn one specific score into five sharp questions.</p>
+<p>The framework's second-order value is what it does to your founder conversation. A founder who hears "your dependents graph has 80+ external repos, what's the migration cost for an enterprise customer who depends on you?" knows you read the engineering, not just the deck.</p>
+<p><strong>Procedure:</strong></p>
+<ol>
+<li>Pick one of the candidates you scored last week.</li>
+<li>For each signal that scored +1, write one founder-grade question seeded by that signal.</li>
+<li>For each signal that scored 0, write one diagnostic question.</li>
+<li>Total: 6 questions. Use them in your next first meeting.</li>
+</ol>
+<p>The form is "I noticed [data], what's the [implication]?" — never "do you have...". Yes/no closes the conversation. Implication questions open it.</p>
+<p>Founders remember the investor who read their code. The Q&amp;A bar moves from "standard pitch" to "we're already in diligence."</p>
+<p><strong>Tomorrow:</strong> scoring a portfolio company retroactively — what the framework would have caught at investment time.</p>
+<p>Talk soon —<br>${FROM_NAME}</p>
+`),
+  },
+  // Day 19 — Portfolio retroactive
+  {
+    subject: "Day 19 — Score a portfolio company retroactively",
+    delayMs: 15 * 60 * 1000 + 19 * ONE_DAY,
+    html: wrap(`
+<p><strong>Yesterday:</strong> turned scores into questions. Today: applying the same scoring to your own portfolio history.</p>
+<p>Pick the worst-performing investment from 12-24 months ago. What did the composite say at term sheet?</p>
+<p><strong>Procedure:</strong></p>
+<ol>
+<li>Find the GitHub state from the term-sheet date (use date filters or the Wayback Machine if the org went private).</li>
+<li>Run the composite as it would have read at that date.</li>
+<li>Note: did the score predict the trajectory? Did one signal flip?</li>
+</ol>
+<p>This is where the framework either becomes part of your process or doesn't. If you find that two of your worst-performing investments scored 1/6 at the term-sheet date, that's a procedural change you can implement before the next check.</p>
+<p>Run on 5 investments and the pattern usually shows up: one signal you systematically ignored. That's the highest-leverage change you can make to your own process this year.</p>
+<p><strong>Tomorrow:</strong> the 30-second pre-read — using the composite to prep for a first meeting.</p>
+<p>Talk soon —<br>${FROM_NAME}</p>
+`),
+  },
+  // Day 20 — Pre-read
+  {
+    subject: "Day 20 — The 30-second pre-read for first meetings",
+    delayMs: 15 * 60 * 1000 + 20 * ONE_DAY,
+    html: wrap(`
+<p><strong>Yesterday's portfolio retroactive</strong> closed a backward-looking loop. Today: the forward-looking version — before every meeting.</p>
+<p>Every first meeting is improved by a 30-second pre-read of the founder's GitHub. The framework compresses that pre-read into a number plus three notes — readable from a phone in the elevator.</p>
+<p><strong>Procedure:</strong></p>
+<ol>
+<li>Open the founder's GitHub org from your meeting calendar invite.</li>
+<li>Glance at: README dated? Repo count moving? Top-contributor share?</li>
+<li>30-second composite: 0-2 (cold), 3-4 (warm), 5-6 (hot).</li>
+<li>Walk in with one signal-specific opening question.</li>
+</ol>
+<p>Most investors don't do this. The 30 seconds is the differential. Two months in, the pre-read becomes automatic — and you'll start noticing other investors who haven't done it.</p>
+<p><strong>Tomorrow:</strong> Week 3 wrap. Your operational sourcing system is real, written down, running on a calendar.</p>
+<p>Talk soon —<br>${FROM_NAME}</p>
+`),
+  },
+  // Day 21 — Week 3 wrap
+  {
+    subject: "Day 21 — Your operational sourcing system",
+    delayMs: 15 * 60 * 1000 + 21 * ONE_DAY,
+    html: wrap(`
+<p><strong>Three weeks in.</strong> Watchlist + Monday rhythm + sector-batch + question library + pre-read. You have an operating system, not a framework.</p>
+<p>This is the difference between investors who "use signals" and investors who "run a sourcing process." The system runs you, not the other way around.</p>
+<p><strong>Today's task:</strong></p>
+<ol>
+<li>Document the system on one page. Five components, half a sentence each.</li>
+<li>Bake the calendar blocks: Monday 25 min (rhythm), as-needed (sector batch), every meeting (pre-read).</li>
+<li>Identify the one piece you'll skip first under pressure. Pre-commit to a recovery move.</li>
+<li>Send the doc to your investing partner or your most critical co-investor for sanity-check.</li>
+</ol>
+<p>If it's longer than one page, compress. A junior analyst should be able to replicate the system from the doc alone.</p>
+<p>Annual planning bonus: this becomes your sourcing strategy slide for LPs. "I run a 7-signal composite weekly across N orgs in M sectors" is more concrete than "I source through warm intros."</p>
+<p><strong>Tomorrow:</strong> Week 4 starts. Adding alerts, sharing, and the integration that makes the manual system automatic.</p>
+<p>Talk soon —<br>${FROM_NAME}</p>
+`),
+  },
+
+  // ─────────────────────────────────────────────────────────────────
+  // Week 4 (Days 22-30): OPERATIONALIZE — alerts, sharing, scaling
+  // ─────────────────────────────────────────────────────────────────
+
+  // Day 22 — Alerts
+  {
+    subject: "Day 22 — Set alerts on score moves",
+    delayMs: 15 * 60 * 1000 + 22 * ONE_DAY,
+    html: wrap(`
+<p><strong>Yesterday:</strong> system documented. Today: the layer that catches the move <em>between</em> Monday checkpoints.</p>
+<p>A weekly snapshot is a habit. An alert is leverage. The right alert threshold catches the score move before the round closes; the wrong threshold drowns you in noise.</p>
+<p><strong>Procedure:</strong></p>
+<ol>
+<li>Set a Slack/email alert (or just a Calendar reminder) on commit velocity flips ≥0.4 week-over-week.</li>
+<li>Add a second alert on README updates that change &gt;50 lines.</li>
+<li>Add a third alert on new repo creation (any new repo in a watched org).</li>
+<li>Test by triggering one manually on a known org.</li>
+</ol>
+<p>If you get more than 3 alerts/week per org, the threshold is too sensitive — narrow it.</p>
+<p>When an alert fires on a watchlist org, the response should be tight: 60-second context check, 5-minute composite recheck, a meeting request if the score crossed a meaningful threshold.</p>
+<p><strong>Tomorrow:</strong> the anti-signal — orgs where 6/6 is wrong, and how to flag those before you waste a meeting.</p>
+<p>Talk soon —<br>${FROM_NAME}</p>
+`),
+  },
+  // Day 23 — Anti-signal
+  {
+    subject: "Day 23 — The anti-signal: when 6/6 is wrong",
+    delayMs: 15 * 60 * 1000 + 23 * ONE_DAY,
+    html: wrap(`
+<p><strong>Yesterday:</strong> alerts. Today: the override layer that catches the orgs where alerts will lie to you.</p>
+<p>Frameworks are gameable, especially public ones. A devtools agency, a YC alum farming OSS contributions, a team running a single-customer consultancy — all can score 6/6 on the public composite. Your false-positive list is the personal antibody.</p>
+<p><strong>Procedure:</strong></p>
+<ol>
+<li>List 3 archetypes you've seen game public-data signals (agencies, single-customer consultancies, OSS-funded research labs).</li>
+<li>For each, note the signal that betrays it on closer reading (e.g. agency → look at customer-named repos).</li>
+<li>Add a manual "sanity check" step to your Monday rhythm: top 1 from watchlist gets the 5-minute archetype check.</li>
+<li>Save the archetype list. Update quarterly.</li>
+</ol>
+<p>The archetype list is the most personal artifact in this whole challenge. It encodes your specific bias-correction. Two investors with the same 6-signal framework will produce different deal flow because their archetype lists differ.</p>
+<p><strong>Tomorrow:</strong> making the score legible to a co-investor — the share template that turns a number into a paragraph.</p>
+<p>Talk soon —<br>${FROM_NAME}</p>
+`),
+  },
+  // Day 24 — Co-investor share
+  {
+    subject: "Day 24 — Co-investor share template (3 lines)",
+    delayMs: 15 * 60 * 1000 + 24 * ONE_DAY,
+    html: wrap(`
+<p><strong>Yesterday:</strong> false-positive override. Today: making the framework readable to people who don't run it themselves.</p>
+<p>A composite score is illegible to a co-investor who doesn't know your framework. A three-line template that translates "composite 5/6, sharp acceleration" into a paragraph they can act on is the difference between solo conviction and syndicate conviction.</p>
+<p><strong>Procedure:</strong></p>
+<ol>
+<li>Write a 3-line template. Line 1: org + composite + sector. Line 2: the standout signal in plain English. Line 3: the question or ask.</li>
+<li>Test it on one co-investor with a recent watchlist standout.</li>
+<li>Iterate the template based on their reply (or non-reply).</li>
+</ol>
+<p>If 0/5 replies, the line 2 is too jargon-heavy — rewrite to lead with the implication, not the metric.</p>
+<p>When the template starts producing "who else have you shared this with" replies, you've graduated from sourcing to syndicate-leading. That's a different power level.</p>
+<p><strong>Tomorrow:</strong> the IDE/MCP integration. The manual system runs in the browser; the automated layer runs in your editor.</p>
+<p>Talk soon —<br>${FROM_NAME}</p>
+`),
+  },
+  // Day 25 — MCP integration
+  {
+    subject: "Day 25 — MCP integration (free): score from your editor",
+    delayMs: 15 * 60 * 1000 + 25 * ONE_DAY,
+    html: wrap(`
+<p><strong>Yesterday:</strong> share template. Today: collapse the manual procedure into an editor command.</p>
+<p>After 24 days of running the manual procedure, the integration buys back the time. The MCP server exposes the same six signals as IDE-callable tools — score an org from Claude Desktop, Cursor, or Windsurf in a single command.</p>
+<p><strong>Procedure:</strong></p>
+<ol>
+<li>Install the MCP server (free): <a href="${SIGNALS}/install" style="color:#0ea5e9;">${SIGNALS}/install</a> has the one-line config for Claude / Cursor / Windsurf.</li>
+<li>Test by asking the model: "score the github org [name] using the composite framework."</li>
+<li>Verify the response matches a manual run within ±0.5.</li>
+<li>Add the score-an-org command to your editor command palette.</li>
+</ol>
+<p>Once the MCP works, you can run the framework on a founder's GitHub during a Zoom call without leaving the editor or the call. The diligence move that used to take 25 minutes pre-meeting now happens during the meeting.</p>
+<p>If you don't use a model-augmented editor, skip — the manual cadence still works. The MCP layer is the speed unlock, not a prerequisite.</p>
+<p><strong>Tomorrow:</strong> customising the composite weights — the framework is yours, you should weight it like yours.</p>
+<p>Talk soon —<br>${FROM_NAME}</p>
+`),
+  },
+  // Day 26 — Custom weights
+  {
+    subject: "Day 26 — Custom composite weights for your beat",
+    delayMs: 15 * 60 * 1000 + 26 * ONE_DAY,
+    html: wrap(`
+<p><strong>Yesterday:</strong> MCP integration. Today: the personal calibration the integration alone can't give you.</p>
+<p>The default composite (each signal +1) is the right starting point because it's calibration-light. After 26 days you have enough personal data to see which signal matters most for your beat, and a re-weighted composite outperforms the default for your specific deal flow.</p>
+<p><strong>Procedure:</strong></p>
+<ol>
+<li>Pull the watchlist CSV and the 4-org scorecard from Day 14.</li>
+<li>For each signal: which one would you have weighted higher to better predict your hits?</li>
+<li>Propose new weights (e.g. commit velocity 1.5×, dependents 1.5×, others 1×).</li>
+<li>Recompute composites with new weights. Compare ranking shifts.</li>
+</ol>
+<p>Don't over-weight a signal because you remember one big hit on it. The right weighting reflects pattern across 10+ orgs, not one anchor case.</p>
+<p>The custom weights become a competitive moat. Two analysts with the same framework but different weights produce different deal flow — and yours is calibrated to your specific outperformance pattern.</p>
+<p><strong>Tomorrow:</strong> the 30-day retrospective. Pull out the artifacts. What did the framework actually catch?</p>
+<p>Talk soon —<br>${FROM_NAME}</p>
+`),
+  },
+  // Day 27 — Retrospective
+  {
+    subject: "Day 27 — 30-day retrospective: what the framework caught",
+    delayMs: 15 * 60 * 1000 + 27 * ONE_DAY,
+    html: wrap(`
+<p><strong>Four weeks in.</strong> Time for the audit. Did the framework earn its slot?</p>
+<p>By Day 27 you have ~30 datapoints across ~13 orgs (3 candidates + 1 calibration + 10 watchlist + retroactive portfolio). Enough to write a one-page retrospective.</p>
+<p><strong>Procedure:</strong></p>
+<ol>
+<li>List every score you ran in the last 30 days. Org + composite + delta-vs-gut.</li>
+<li>Count: composite &gt;gut (framework added value) vs composite =gut (confirmed) vs composite &lt;gut (saved you).</li>
+<li>Identify any specific deal flow you wouldn't have surfaced without the framework.</li>
+<li>Write the one-paragraph retrospective: what's keepable, what to drop.</li>
+</ol>
+<p>If you can't articulate one specific case where the framework changed your decision, that's also a valid result — note it and decide accordingly.</p>
+<p>Sometimes 30 days isn't enough to see attribution because rounds take 60-90 days to close. In that case, schedule a 60-day follow-up retrospective to revisit.</p>
+<p><strong>Tomorrow:</strong> the Sunday digest as continuous practice — turning the 30-day muscle into a forever rhythm.</p>
+<p>Talk soon —<br>${FROM_NAME}</p>
+`),
+  },
+  // Day 28 — Sunday digest
+  {
+    subject: "Day 28 — The Sunday digest as continuous practice",
+    delayMs: 15 * 60 * 1000 + 28 * ONE_DAY,
+    html: wrap(`
+<p><strong>Yesterday's retrospective</strong> showed what the framework caught. Today: how to keep the catch rate without forcing 25 weekly minutes.</p>
+<p>30-day challenges produce muscle that fades unless a continuous practice replaces them. Five new orgs every Sunday — scored against the same composite — keeps the framework alive without the active 25-min Monday block.</p>
+<p><strong>Procedure:</strong></p>
+<ol>
+<li>You're already subscribed to the free Sunday digest (this is the same address). It continues automatically.</li>
+<li>Each Sunday: open the digest, score the top 1 with the full composite, glance at the others.</li>
+<li>When a digest org enters your investable beat, add it to the watchlist.</li>
+<li>Every 4 Sundays, review the watchlist for promotion to outreach.</li>
+</ol>
+<p>~25 min/week sustained. Three months of Sundays = 60 newly-scored orgs into your awareness funnel. That's already more deal flow surface than most angel investors see in a year of warm intros alone.</p>
+<p>If the Sunday digest doesn't fit your sector, the underlying engine has 4,200 orgs and 30+ sector tags. The Dashboard rung filters by your sector with the same five-orgs-per-week rhythm.</p>
+<p><strong>Tomorrow:</strong> the rung decision. Three optional ways to keep using the system. Pick one or pick none — the framework stays yours either way.</p>
+<p>Talk soon —<br>${FROM_NAME}</p>
+`),
+  },
+  // Day 29 — Pre-graduation
+  {
+    subject: "Day 29 — Which rung makes sense (the honest match)",
+    delayMs: 15 * 60 * 1000 + 29 * ONE_DAY,
+    html: wrap(`
+<p><strong>Tomorrow is graduation.</strong> Today: the honest pre-conversation. Based on the last 29 days, which rung — if any — actually fits the pattern?</p>
+<p><strong>Procedure:</strong></p>
+<ol>
+<li>Re-read your retrospective from Day 27.</li>
+<li>Quantify: how many orgs did you actually score in 30 days? If &lt;12, free is right. 12-50, Dashboard. 50+ in one sector, Sector Sweep.</li>
+<li>Write a one-line reason for the rung you'll pick (or "none").</li>
+<li>Set a calendar reminder for Day 30 to act on it.</li>
+</ol>
+<p><strong>Match by usage, not FOMO.</strong></p>
+<p>Some readers find the free Sunday digest is correct, full stop — the manual rhythm is enough and the upgrade is FOMO. That's a valid outcome. The framework is yours either way.</p>
+<p>The Dashboard's founding rate (€9.97/mo) locks for life. If usage data points to Dashboard, the founding-rate clock is the only thing that makes the timing matter — pricing reverts after the 2026 cohort closes.</p>
+<p><strong>Tomorrow:</strong> graduation. The Stack Slide, the three rungs, and the one decision. The framework is already yours.</p>
+<p>Talk soon —<br>${FROM_NAME}</p>
+`),
+  },
+
+  // Day 30 — Graduation Stack-Slide close
+  {
+    subject: "Day 30 — Graduation. Three rungs. One decision.",
     delayMs: 15 * 60 * 1000 + 30 * ONE_DAY,
     html: wrap(`
-<p>Thirty days since you started the Challenge. Quiet checkpoint.</p>
-<p>By now you've either: (a) integrated the manual scoring into your sourcing rhythm, (b) tried it once and it didn't fit, (c) skipped past it and the framework's still in this inbox waiting. All three are fine; the framework is yours either way.</p>
-<p>One question, no agenda — purely informative. Which of the three rungs (if any) made the most sense?</p>
-<p><strong>Rung 0 — Free Sunday Digest.</strong> If the manual cadence is enough and you just want five named startups every Sunday to apply it against. <a href="${SITE}/#signup" style="color:#0ea5e9;">${SITE}/#signup</a>.</p>
-<p><strong>Rung 1 — Dashboard, €9.97/mo founding rate.</strong> If you want to monitor 30+ orgs continuously, not run the 30-min composite manually each time. The founding rate locks for life — €9.97/mo even five years from now when the public rate is whatever it ends up being. <a href="${SITE}/pricing#dashboard" style="color:#0ea5e9;">${SITE}/pricing#dashboard</a>.</p>
-<p><strong>Rung 2 — Custom Sector Sweep, €1,997.</strong> If there's one sector you want to fully map this quarter and the manual scan is too slow. 40-page written deep-dive, 5 business days. Capped at 8/quarter. <a href="${SIGNALS}/sector-sweep" style="color:#0ea5e9;">${SIGNALS}/sector-sweep</a>.</p>
-<p>If none of those fit, no problem — the Sunday digest stays free, the framework stays yours, and this thread continues at one email per week. The only reason this email lands is to make the choice explicit; defaulting to "no decision" is a decision too, and a fine one.</p>
-<p>Reply with the rung, or with "none of them," or just ignore this email. All three work.</p>
+<p><strong>Thirty days.</strong> You finished.</p>
+<p><strong>What you have:</strong> a sourcing system that runs every Monday for ~25 minutes, a watchlist of 10 named orgs, a 30-day retrospective, a custom-weighted composite, and (if you installed it) an MCP integration. Whether you upgrade or not, that's the artifact stack.</p>
+<p><strong>What you paid:</strong> €0.</p>
+<p><strong>Standalone retail of the components:</strong> ~€2,800 (30 daily lessons + watchlist + retrospective + custom composite + MCP).</p>
+<hr style="border:none;border-top:1px solid #1e293b;margin:24px 0;">
+<p><strong>Three optional rungs from here.</strong> Stacked from least to most committed. Pick none and the system is still yours.</p>
+<p><strong>Rung 0 — Free Sunday Digest.</strong> Five named startups every Sunday, scored against the same 7-signal composite you just learned. <a href="${SITE}/#signup" style="color:#0ea5e9;">${SITE}/#signup</a>. Free forever, no upgrade pressure.</p>
+<p><strong>Rung 1 — Dashboard, €9.97/mo founding rate.</strong> 109 venture-backed startups ranked by 14-day commit-velocity acceleration, refreshed every Monday at 06:00 UTC. Filter by sector, stage, geography. The 219-startup backtest CSV. Two free Chrome extensions. The free MCP server. 30-day Signal-or-It's-Free guarantee. Founding rate locks for life. <a href="${SITE}/pricing#dashboard" style="color:#0ea5e9;">${SITE}/pricing#dashboard</a></p>
+<p><strong>Rung 2 — Custom Sector Sweep, €1,997 one-time.</strong> Pick one sector, we deliver the 40-page written deep-dive in 5 business days: top 25 ranked orgs, contributor maps, three pre-Crunchbase breakouts, raw CSV, 30-day async Q&amp;A. Capped at 8 per quarter. <a href="${SIGNALS}/sector-sweep" style="color:#0ea5e9;">${SIGNALS}/sector-sweep</a></p>
+<p>Or pick none. The framework is licensed CC BY 4.0; nothing about the rung selection changes your ownership.</p>
+<hr style="border:none;border-top:1px solid #1e293b;margin:24px 0;">
+<p><strong>One ask, no pressure.</strong> If the Challenge worked for you, send the landing-page link to one other investor or analyst who would use it. <a href="${SIGNALS}/challenge" style="color:#0ea5e9;">${SIGNALS}/challenge</a>. We don't run an affiliate program because we don't want incentives to distort whether you tell a friend.</p>
+<p>This thread now settles into the Sunday digest cadence. Sunday hits as usual this weekend.</p>
 <p>Talk soon —<br>${FROM_NAME}</p>
-<p style="color:#64748b;font-size:14px;">P.S. The 30-day Signal-or-It's-Free guarantee on the Dashboard means a Rung-1 trial costs you €0 of net risk. Reply REFUND any time within 30 days, full refund inside two business days, no forms, no call.</p>
+<p style="color:#64748b;font-size:14px;">P.S. The 30 days are permanent at <a href="${SIGNALS}/challenge" style="color:#0ea5e9;">${SIGNALS}/challenge</a> — every day has a slug-permalink. Bookmark it. Refer back when a portfolio call needs one of the procedures.</p>
 `),
   },
 ];

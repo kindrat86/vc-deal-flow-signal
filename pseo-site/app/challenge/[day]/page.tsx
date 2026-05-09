@@ -26,7 +26,7 @@ export async function generateMetadata({
   const d = getChallengeDay(slug);
   if (!d) return { title: "Challenge — Not found" };
 
-  const title = `Day ${d.day} — ${d.title} | 7-Day Deal Flow Reset Challenge`;
+  const title = `Day ${d.day} — ${d.title} | 30-Day Deal Flow Reset Challenge`;
   return {
     title,
     description: `${d.oneLine} ${d.whyItMatters.slice(0, 120)}…`,
@@ -57,7 +57,14 @@ export default async function ChallengeDayPage({
 
   const prev = getPrevDay(d.day);
   const next = getNextDay(d.day);
-  const isLastDay = d.day === 7;
+  const isLastDay = d.day === CHALLENGE_DAYS.length;
+  const isPhaseEnd = d.day === 7 || d.day === 14 || d.day === 21;
+  const phaseLabel: Record<typeof d.phase, string> = {
+    learn: "Week 1 — Learn",
+    apply: "Week 2 — Apply",
+    synthesize: "Week 3 — Synthesize",
+    operationalize: "Week 4 — Operationalize",
+  };
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -72,7 +79,7 @@ export default async function ChallengeDayPage({
         teaches: d.title,
         isPartOf: {
           "@type": "Course",
-          name: "7-Day Deal Flow Reset Challenge",
+          name: "30-Day Deal Flow Reset Challenge",
           url: "https://signals.gitdealflow.com/challenge",
         },
         url: `https://signals.gitdealflow.com/challenge/${d.slug}`,
@@ -148,10 +155,14 @@ export default async function ChallengeDayPage({
           </span>
         </nav>
 
-        {/* Progress dots — Brunson "where you are in the journey" device. */}
+        {/* Progress dots — "where you are in the journey" device.
+            Compact 30-day layout with extra spacing every 7 days to visually
+            separate the four week-phases (learn / apply / synthesize /
+            operationalize). Current day highlighted, past days emerald,
+            future days slate. */}
         <div
-          className="flex items-center gap-1.5 mb-8"
-          aria-label={`Progress: day ${d.day} of 7`}
+          className="flex items-center flex-wrap gap-1 mb-8"
+          aria-label={`Progress: day ${d.day} of ${CHALLENGE_DAYS.length}`}
         >
           {CHALLENGE_DAYS.map((cd) => (
             <Link
@@ -160,24 +171,24 @@ export default async function ChallengeDayPage({
               aria-label={`Go to day ${cd.day} — ${cd.title}`}
               className={`h-2 rounded-full transition-all ${
                 cd.day === d.day
-                  ? "w-8 bg-sky-400"
+                  ? "w-6 bg-sky-400"
                   : cd.day < d.day
                     ? "w-2 bg-emerald-500/60 hover:bg-emerald-400"
                     : "w-2 bg-slate-700 hover:bg-slate-600"
-              }`}
+              } ${cd.day % 7 === 1 && cd.day > 1 ? "ml-3" : ""}`}
             />
           ))}
           <span className="text-gray-500 text-xs ml-3 font-mono">
-            {d.day} / 7
+            {d.day} / {CHALLENGE_DAYS.length}
           </span>
         </div>
 
         <header className="mb-8">
           <p className="text-sky-400 text-sm font-medium mb-3 uppercase tracking-wider">
-            Day {d.day} of 7 · 5 minutes
+            {phaseLabel[d.phase]} · Day {d.day} of {CHALLENGE_DAYS.length}
           </p>
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-3 leading-tight">
-            Signal {d.day}: {d.title}
+            Day {d.day}: {d.title}
           </h1>
           <p className="text-sky-300 text-base leading-relaxed font-medium">
             {d.oneLine}
@@ -282,19 +293,20 @@ export default async function ChallengeDayPage({
           </p>
         </section>
 
-        {/* Day 7 graduation CTA — proper Stack-Slide close. */}
+        {/* Day 30 graduation CTA — Stack-Slide close. */}
         {isLastDay ? (
           <section
             className="mb-10 rounded-xl border border-emerald-700/40 bg-emerald-950/20 p-6 sm:p-8"
             aria-label="Graduation"
           >
             <h2 className="text-emerald-300 text-sm font-medium mb-2 uppercase tracking-wider">
-              You&rsquo;ve finished the framework
+              You&rsquo;ve finished the system
             </h2>
             <p className="text-gray-200 text-base leading-relaxed mb-5">
-              You now own a 6-signal scoring system that runs in ~30 minutes
-              against any public GitHub org. Three optional ways to keep using
-              it — pick none of them and the framework is still yours.
+              Thirty days. Six atomic signals. One operational sourcing system —
+              watchlist, weekly rhythm, alerts, share template, MCP integration,
+              custom weights. Three optional ways to keep using it — pick none
+              of them and the system stays yours.
             </p>
             <Link
               href="/challenge/done"
@@ -302,6 +314,24 @@ export default async function ChallengeDayPage({
             >
               See the three options →
             </Link>
+          </section>
+        ) : null}
+
+        {/* Phase-boundary checkpoint (Days 7, 14, 21) — celebrates the
+            week, primes the next phase, keeps continuity. */}
+        {isPhaseEnd && !isLastDay ? (
+          <section
+            className="mb-10 rounded-xl border border-sky-700/40 bg-sky-950/20 p-5"
+            aria-label="Week checkpoint"
+          >
+            <p className="text-sky-300 text-xs font-medium mb-2 uppercase tracking-wider">
+              Checkpoint — Week {Math.ceil(d.day / 7)} closes today
+            </p>
+            <p className="text-gray-200 text-sm leading-relaxed">
+              You&rsquo;re {Math.round((d.day / CHALLENGE_DAYS.length) * 100)}% through.
+              The full curriculum is permanent at every <code className="text-sky-300">/challenge/&lt;slug&gt;</code> URL —
+              bookmark this page if you want to revisit the procedure later.
+            </p>
           </section>
         ) : null}
 

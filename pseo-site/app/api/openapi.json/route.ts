@@ -678,6 +678,44 @@ export async function GET() {
           },
         },
       },
+      "/api/v1/affiliates.json": {
+        get: {
+          tags: ["v1", "business-model"],
+          operationId: "getAffiliatesV1",
+          summary: "Affiliate program — terms, leaderboard snapshot, swipe-kit templates",
+          description:
+            "Programmatic mirror of /affiliates. Returns commission terms (20% lifetime, €399/Sweep, €19.40/mo/Insider, 60-day cookie), pseudonymized top-10 leaderboard, six clone-ready swipe-kit content templates (tweet thread, LinkedIn post, blog post, newsletter mention, podcast script, 3-email sequence), aggregate program stats, and the Refgrow signup URL. Updated monthly. Cached at the edge for 1 hour.",
+          responses: {
+            "200": {
+              description: "Affiliate program metadata + leaderboard + swipe kit",
+              content: {
+                "application/json": {
+                  schema: {
+                    type: "object",
+                    properties: {
+                      schema_version: { type: "string" },
+                      program_name: { type: "string" },
+                      last_updated: { type: "string", format: "date" },
+                      landing_page: { type: "string", format: "uri" },
+                      leaderboard_page: { type: "string", format: "uri" },
+                      swipe_kit_page: { type: "string", format: "uri" },
+                      signup_url: { type: "string", format: "uri" },
+                      terms: { type: "object", additionalProperties: true },
+                      bait: { type: "object", additionalProperties: true },
+                      program_stats: { type: "object", additionalProperties: true },
+                      leaderboard: { type: "array", items: { type: "object", additionalProperties: true } },
+                      swipe_kit: { type: "object", additionalProperties: true },
+                      prohibited_channels: { type: "array", items: { type: "string" } },
+                      contact: { type: "object", additionalProperties: true },
+                      license: { type: "string" },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
       "/api/v1/answers.json": {
         get: {
           tags: ["v1", "answer"],
