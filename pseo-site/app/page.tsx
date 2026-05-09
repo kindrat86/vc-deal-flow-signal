@@ -23,6 +23,7 @@ import PricingLadder from "@/components/PricingLadder";
 import SocialProofBar from "@/components/SocialProofBar";
 import SharpScarcityBadge from "@/components/SharpScarcityBadge";
 import EpiphanyBridgeCondensed from "@/components/EpiphanyBridgeCondensed";
+import HomeStoryMoment from "@/components/HomeStoryMoment";
 import HomeOfferStack from "@/components/HomeOfferStack";
 import { DataNerdPolarityCard } from "@/components/DataNerdPolarityCard";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
@@ -949,6 +950,21 @@ export default function Home() {
           days). Free forever, built for the developer who also angel-invests.
         </p>
       </header>
+
+      {/* Brunson Expert Secrets §2 Ch 5 — Storytelling. Audit 2026-05-09
+          flagged Ch 5 at 95/100 because the Day 0 / Day 14 / Day 21 / Day 25
+          email beats carry the story arc beautifully and /origin walks the
+          long-form Hero's Two Journeys, but the home above-the-fold had no
+          story moment at all — H1 → avatar pin → stat band → subhead →
+          straight into the abstracted 5-step bridge. The first emotional
+          beat the reader hit was already the conclusion of a story they
+          had not been told yet. HomeStoryMoment ships the same canon scene
+          as the Day 0 email (Saturday afternoon, the laptop fan, a
+          fintech's GitHub on the screen, the unsent email, a Series A
+          announced three weeks later) condensed to ~85 words for a
+          30-second read, with the closing line that bridges into the
+          product. */}
+      <HomeStoryMoment />
 
       {/* Brunson Expert Secrets Ch 7 + Ch 9 — 5-step Epiphany Bridge.
           HSO audit 2026-05-08: full Hero's Two Journeys lives at /origin
