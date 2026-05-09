@@ -7,6 +7,7 @@ import CartPreview from "@/components/CartPreview";
 import SectorIntent from "@/components/SectorIntent";
 import TrialClose from "@/components/TrialClose";
 import { DataNerdCharacterCard } from "@/components/DataNerdCharacterCard";
+import BuyerRoadmap from "@/components/BuyerRoadmap";
 
 export const dynamic = "force-static";
 
@@ -559,6 +560,13 @@ export default function FirstLookPage() {
         <div id="cart" className="scroll-mt-24">
           <CartPreview />
         </div>
+
+        {/* BUYER ROADMAP — Brunson Expert Secrets Ch 18. The four-beat
+            arc (Today → 24h → Day 14 → Day 90) renders the €7 tripwire
+            as a vehicle, not an impulse buy. Sits between the cart and
+            the risk-reversal so the buyer reads the calendar before the
+            guarantee. */}
+        <BuyerRoadmap tier="firstlook" />
 
         {/* RISK REVERSAL — Brunson DotCom Secrets Ch 19, placed at the cart
             point where it actually catches the hesitation, not buried in

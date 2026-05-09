@@ -11,6 +11,7 @@ import { LiveReplayBar } from "@/components/LiveReplayBar";
 import { FastActionBonuses } from "@/components/FastActionBonuses";
 import { DoorsClosingBanner } from "@/components/DoorsClosingBanner";
 import TrialClose from "@/components/TrialClose";
+import BuyerRoadmap from "@/components/BuyerRoadmap";
 import ThreeCoreStoriesNav from "@/components/ThreeCoreStoriesNav";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { getReplayWindowSnapshot } from "@/lib/replay-window";
@@ -1100,6 +1101,13 @@ export default function PerfectWebinarPage() {
             </TrialClose>
           </div>
         </section>
+
+        {/* BUYER ROADMAP — Brunson Expert Secrets Ch 18. The closer's
+            tool: "where you are now → where this takes you" rendered as
+            calendar beats so the offer reads as a vehicle, not a feature.
+            Sits between the closes and the doors-closing banner so the
+            arc is the last thing the buyer reads before the CTA. */}
+        <BuyerRoadmap tier="dashboard" />
 
         {/* DOORS-CLOSING BANNER — phase-aware ribbon directly above the
             final CTA. Brunson Expert Secrets Ch 14: deadline lives at the

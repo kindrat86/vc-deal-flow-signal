@@ -6,6 +6,7 @@ import { getHreflangLanguages } from "@/lib/hreflang";
 import SharpScarcityBadge from "@/components/SharpScarcityBadge";
 import ApplyForm from "./ApplyForm";
 import TrialClose from "@/components/TrialClose";
+import BuyerRoadmap from "@/components/BuyerRoadmap";
 
 export const dynamic = "force-static";
 
@@ -206,6 +207,14 @@ export default function ApplyPage() {
             hours either way. Lower friction than the average enterprise
             sales motion — sound right?
           </TrialClose>
+
+          {/* BUYER ROADMAP — Brunson Expert Secrets Ch 18. The Sharp Tier
+              is the highest-stakes single decision in the funnel; the
+              roadmap renders the application as the start of a quarterly
+              relationship arc, not a one-off application. Sits between
+              the trial close and the form so the buyer fills the form
+              already living in the relationship calendar. */}
+          <BuyerRoadmap tier="sharp" />
 
           <ApplyForm />
         </section>
