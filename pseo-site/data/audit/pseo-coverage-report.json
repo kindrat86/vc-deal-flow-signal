@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-05-08T11:59:03.139Z",
+  "generatedAt": "2026-05-09T14:05:19.209Z",
   "minCellSize": 3,
   "surfaces": [
     {
       "surface": "/stage/[stage]/[sector]",
-      "total": 39,
-      "included": 14,
-      "suppressed": 25,
+      "total": 40,
+      "included": 16,
+      "suppressed": 24,
       "cells": [
         {
           "cellKey": "pre-seed/ai-ml",
@@ -16,6 +16,12 @@
         },
         {
           "cellKey": "pre-seed/developer-tools",
+          "cellSize": 1,
+          "status": "suppressed",
+          "reason": "below MIN_PSEO_CELL_SIZE"
+        },
+        {
+          "cellKey": "pre-seed/healthcare",
           "cellSize": 1,
           "status": "suppressed",
           "reason": "below MIN_PSEO_CELL_SIZE"
@@ -117,18 +123,6 @@
           "reason": "below MIN_PSEO_CELL_SIZE"
         },
         {
-          "cellKey": "series-a-b/edtech",
-          "cellSize": 2,
-          "status": "suppressed",
-          "reason": "below MIN_PSEO_CELL_SIZE"
-        },
-        {
-          "cellKey": "series-a-b/web3",
-          "cellSize": 2,
-          "status": "suppressed",
-          "reason": "below MIN_PSEO_CELL_SIZE"
-        },
-        {
           "cellKey": "series-a-b/gaming",
           "cellSize": 2,
           "status": "suppressed",
@@ -160,6 +154,16 @@
         },
         {
           "cellKey": "series-a-b/healthcare",
+          "cellSize": 3,
+          "status": "included"
+        },
+        {
+          "cellKey": "series-a-b/edtech",
+          "cellSize": 3,
+          "status": "included"
+        },
+        {
+          "cellKey": "series-a-b/web3",
           "cellSize": 3,
           "status": "included"
         },
@@ -210,7 +214,7 @@
         },
         {
           "cellKey": "growth/web3",
-          "cellSize": 7,
+          "cellSize": 8,
           "status": "included"
         },
         {
@@ -232,12 +236,12 @@
     },
     {
       "surface": "/signals/[signal]/[sector]",
-      "total": 38,
+      "total": 40,
       "included": 15,
-      "suppressed": 23,
+      "suppressed": 25,
       "cells": [
         {
-          "cellKey": "hiring-burst/edtech",
+          "cellKey": "hiring-burst/healthcare",
           "cellSize": 1,
           "status": "suppressed",
           "reason": "below MIN_PSEO_CELL_SIZE"
@@ -267,12 +271,6 @@
           "reason": "below MIN_PSEO_CELL_SIZE"
         },
         {
-          "cellKey": "infrastructure-buildout/healthcare",
-          "cellSize": 1,
-          "status": "suppressed",
-          "reason": "below MIN_PSEO_CELL_SIZE"
-        },
-        {
           "cellKey": "infrastructure-buildout/web3",
           "cellSize": 1,
           "status": "suppressed",
@@ -292,6 +290,12 @@
         },
         {
           "cellKey": "deploy-frequency-spike/edtech",
+          "cellSize": 1,
+          "status": "suppressed",
+          "reason": "below MIN_PSEO_CELL_SIZE"
+        },
+        {
+          "cellKey": "deploy-frequency-spike/web3",
           "cellSize": 1,
           "status": "suppressed",
           "reason": "below MIN_PSEO_CELL_SIZE"
@@ -351,7 +355,19 @@
           "reason": "below MIN_PSEO_CELL_SIZE"
         },
         {
+          "cellKey": "hiring-burst/edtech",
+          "cellSize": 2,
+          "status": "suppressed",
+          "reason": "below MIN_PSEO_CELL_SIZE"
+        },
+        {
           "cellKey": "hiring-burst/gaming",
+          "cellSize": 2,
+          "status": "suppressed",
+          "reason": "below MIN_PSEO_CELL_SIZE"
+        },
+        {
+          "cellKey": "infrastructure-buildout/healthcare",
           "cellSize": 2,
           "status": "suppressed",
           "reason": "below MIN_PSEO_CELL_SIZE"
@@ -405,6 +421,11 @@
           "status": "included"
         },
         {
+          "cellKey": "framework-migration/healthcare",
+          "cellSize": 4,
+          "status": "included"
+        },
+        {
           "cellKey": "framework-migration/ecommerce-infrastructure",
           "cellSize": 4,
           "status": "included"
@@ -412,11 +433,6 @@
         {
           "cellKey": "framework-migration/social-community",
           "cellSize": 4,
-          "status": "included"
-        },
-        {
-          "cellKey": "framework-migration/healthcare",
-          "cellSize": 5,
           "status": "included"
         },
         {
@@ -430,13 +446,13 @@
           "status": "included"
         },
         {
-          "cellKey": "framework-migration/web3",
+          "cellKey": "framework-migration/data-infrastructure",
           "cellSize": 8,
           "status": "included"
         },
         {
-          "cellKey": "framework-migration/data-infrastructure",
-          "cellSize": 8,
+          "cellKey": "framework-migration/web3",
+          "cellSize": 9,
           "status": "included"
         },
         {
@@ -477,17 +493,12 @@
         },
         {
           "cellKey": "pre-seed/signal/hiring-burst",
-          "cellSize": 3,
+          "cellSize": 4,
           "status": "included"
         },
         {
           "cellKey": "series-a-b/signal/hiring-burst",
-          "cellSize": 4,
-          "status": "included"
-        },
-        {
-          "cellKey": "growth/signal/deploy-frequency-spike",
-          "cellSize": 4,
+          "cellSize": 5,
           "status": "included"
         },
         {
@@ -496,8 +507,8 @@
           "status": "included"
         },
         {
-          "cellKey": "growth/signal/infrastructure-buildout",
-          "cellSize": 6,
+          "cellKey": "growth/signal/deploy-frequency-spike",
+          "cellSize": 5,
           "status": "included"
         },
         {
@@ -506,13 +517,18 @@
           "status": "included"
         },
         {
+          "cellKey": "growth/signal/infrastructure-buildout",
+          "cellSize": 7,
+          "status": "included"
+        },
+        {
           "cellKey": "series-a-b/signal/framework-migration",
-          "cellSize": 12,
+          "cellSize": 13,
           "status": "included"
         },
         {
           "cellKey": "growth/signal/framework-migration",
-          "cellSize": 74,
+          "cellSize": 73,
           "status": "included"
         }
       ]
@@ -579,10 +595,10 @@
     }
   },
   "summary": {
-    "totalCells": 88,
-    "totalIncluded": 37,
-    "totalSuppressed": 51,
-    "suppressionRatePct": 58,
+    "totalCells": 91,
+    "totalIncluded": 39,
+    "totalSuppressed": 52,
+    "suppressionRatePct": 57.1,
     "minCellSizeEnforced": 3
   }
 }
