@@ -3,7 +3,17 @@ import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import {
+  FunnelLiveActivity,
+  FunnelHubLiveBanner,
+} from "@/components/FunnelLiveActivity";
+import { FunnelViewTracker } from "@/components/FunnelViewTracker";
+import type { FunnelSlug } from "@/content/funnel-slugs";
 
+// The hub itself stays statically rendered — the live counters are client
+// islands fed by /api/funnel-activity. Marking dynamic="force-static" used to
+// be the default but with client-fetched counters it remains correct: the
+// HTML shell is cached, only the badge text updates per visitor.
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
@@ -21,7 +31,10 @@ export const metadata: Metadata = {
 };
 
 type Funnel = {
-  slug: string;
+  /** Display name shown to humans. */
+  name: string;
+  /** Machine slug for activity tracking — must match content/funnel-slugs.ts. */
+  activitySlug: FunnelSlug;
   href: string;
   external?: boolean;
   tier: string;
@@ -35,7 +48,8 @@ type Funnel = {
 
 const FUNNELS: Funnel[] = [
   {
-    slug: "Free Acceleration Watch",
+    name: "Free Acceleration Watch",
+    activitySlug: "free-watch",
     href: "https://gitdealflow.com/#signup",
     external: true,
     tier: "Lead funnel",
@@ -47,7 +61,8 @@ const FUNNELS: Funnel[] = [
     color: "emerald",
   },
   {
-    slug: "Quiz",
+    name: "Quiz",
+    activitySlug: "quiz",
     href: "/quiz",
     tier: "Avatar router",
     price: "Free, 90 seconds",
@@ -58,7 +73,8 @@ const FUNNELS: Funnel[] = [
     color: "indigo",
   },
   {
-    slug: "90-Second Pitch",
+    name: "90-Second Pitch",
+    activitySlug: "pitch",
     href: "/pitch",
     tier: "Bridge page",
     price: "Free, 90-second read",
@@ -69,7 +85,8 @@ const FUNNELS: Funnel[] = [
     color: "sky",
   },
   {
-    slug: "Walkthrough",
+    name: "Walkthrough",
+    activitySlug: "walkthrough",
     href: "/walkthrough",
     tier: "Presentation funnel",
     price: "Free, 12-minute read",
@@ -80,7 +97,8 @@ const FUNNELS: Funnel[] = [
     color: "violet",
   },
   {
-    slug: "Walkthrough — 5-min",
+    name: "Walkthrough — 5-min",
+    activitySlug: "walkthrough-5min",
     href: "/walkthrough/5min",
     tier: "Presentation funnel · condensed",
     price: "Free, 5-minute read",
@@ -91,7 +109,8 @@ const FUNNELS: Funnel[] = [
     color: "amber",
   },
   {
-    slug: "Walkthrough — 90s",
+    name: "Walkthrough — 90s",
+    activitySlug: "walkthrough-90s",
     href: "/walkthrough/90s",
     tier: "Presentation funnel · elevator",
     price: "Free, 90-second read",
@@ -102,7 +121,8 @@ const FUNNELS: Funnel[] = [
     color: "emerald",
   },
   {
-    slug: "Walkthrough — A/B router",
+    name: "Walkthrough — A/B router",
+    activitySlug: "walkthrough-quick",
     href: "/walkthrough/quick",
     tier: "Sticky-bucketed test",
     price: "Free, redirects on mount",
@@ -113,7 +133,8 @@ const FUNNELS: Funnel[] = [
     color: "sky",
   },
   {
-    slug: "First Look Pass",
+    name: "First Look Pass",
+    activitySlug: "firstlook",
     href: "/firstlook",
     tier: "Tripwire",
     price: "€7 one-time",
@@ -124,7 +145,8 @@ const FUNNELS: Funnel[] = [
     color: "amber",
   },
   {
-    slug: "Dashboard",
+    name: "Dashboard",
+    activitySlug: "dashboard",
     href: "/pricing",
     tier: "Core ascension",
     price: "€9.97/mo founding price (locked forever)",
@@ -135,7 +157,8 @@ const FUNNELS: Funnel[] = [
     color: "sky",
   },
   {
-    slug: "Insider Circle",
+    name: "Insider Circle",
+    activitySlug: "insider",
     href: "/pricing#insider-circle",
     tier: "Mid-ladder",
     price: "€97/mo",
@@ -146,7 +169,8 @@ const FUNNELS: Funnel[] = [
     color: "teal",
   },
   {
-    slug: "Sharp Tier",
+    name: "Sharp Tier",
+    activitySlug: "sharp",
     href: "/apply",
     tier: "Application funnel",
     price: "€497/mo · capped at 8 funds in 2026",
@@ -157,7 +181,8 @@ const FUNNELS: Funnel[] = [
     color: "rose",
   },
   {
-    slug: "Sector Sweep",
+    name: "Sector Sweep",
+    activitySlug: "sector-sweep",
     href: "/pricing#sector-sweep",
     tier: "High-ticket one-time",
     price: "€1,997 one-time",
@@ -168,7 +193,8 @@ const FUNNELS: Funnel[] = [
     color: "slate",
   },
   {
-    slug: "Engine Room (post-90 cohort)",
+    name: "Engine Room (post-90 cohort)",
+    activitySlug: "post-90",
     href: "/post-90",
     tier: "Phase 6 — change of selling environment",
     price: "Free, opt-in at Day 90",
