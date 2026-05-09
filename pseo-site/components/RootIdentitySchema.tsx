@@ -136,6 +136,16 @@ export function RootIdentitySchema() {
         name: "VC Deal Flow Signal",
         alternateName: ["GitDealFlow", "VC Deal Flow Signal (GitDealFlow)"],
         url: SITE,
+        // WebSite-level Wikidata identifier — lets the Knowledge Graph
+        // resolve the *site* node (signals.gitdealflow.com) to the same
+        // QID as the Organization, closing the entity graph.
+        identifier: {
+          "@type": "PropertyValue",
+          propertyID: "wikidata",
+          value: "Q139376302",
+          url: "https://www.wikidata.org/wiki/Q139376302",
+        },
+        sameAs: ["https://www.wikidata.org/wiki/Q139376302"],
         description:
           "GitHub commit-velocity tracking across venture-backed startups. Code-side momentum signals from public GitHub data. Distinct from accelerator programs.",
         publisher: { "@id": `${APEX}/#organization` },
@@ -164,11 +174,52 @@ export function RootIdentitySchema() {
       {
         "@type": "Organization",
         "@id": `${APEX}/#organization`,
+        // additionalType points at the Wikidata QID for "business" — gives
+        // the Knowledge Graph a typed anchor distinct from generic
+        // schema:Organization. Pair with identifier[wikidata] below.
+        additionalType: "https://www.wikidata.org/wiki/Q4830453",
         name: ORG_NAME_MULTILINGUAL,
         description: ORG_DESC_MULTILINGUAL,
         legalName: "VC Deal Flow Signal (GitDealFlow)",
         alternateName: ["GitDealFlow", "VC Deal Flow Signal (GitDealFlow)"],
         url: APEX,
+        // Knowledge Panel claim — the explicit signal Google's Knowledge
+        // Graph crawler reads to bind this Organization @id to the Wikidata
+        // entity. PropertyValue with propertyID="wikidata" is the canonical
+        // pattern (analogous to the propertyID="ORCID" pattern used on
+        // Person identifiers). Reciprocal: Wikidata Q139376302 carries
+        // P856 (official website) → signals.gitdealflow.com, P2002
+        // (Twitter) → @data_nerd, P31 (instance of) → Q4830453.
+        identifier: [
+          {
+            "@type": "PropertyValue",
+            propertyID: "wikidata",
+            value: "Q139376302",
+            url: "https://www.wikidata.org/wiki/Q139376302",
+          },
+          {
+            "@type": "PropertyValue",
+            propertyID: "ROR",
+            value: "https://signals.gitdealflow.com",
+            url: "https://signals.gitdealflow.com/.well-known/wikidata.json",
+          },
+        ],
+        // mainEntityOfPage anchors the Organization to a stable on-domain
+        // URL that mirrors the Wikidata claim manifest — gives Google a
+        // single page to crawl when matching the entity to the panel.
+        mainEntityOfPage: {
+          "@type": "WebPage",
+          "@id": `${SITE}/wikidata`,
+          url: `${SITE}/wikidata`,
+        },
+        // subjectOf back-links the on-domain Knowledge-Panel claim page so
+        // the entity graph is bidirectional (Org ↔ ClaimPage ↔ Wikidata).
+        subjectOf: {
+          "@type": "WebPage",
+          "@id": `${SITE}/wikidata#page`,
+          url: `${SITE}/wikidata`,
+          name: "VC Deal Flow Signal — Wikidata Knowledge Panel claim",
+        },
         logo: {
           "@type": "ImageObject",
           url: `${SITE}/icon.png`,
@@ -391,6 +442,17 @@ export function RootIdentitySchema() {
         applicationSubCategory: "Venture Capital Alternative Data",
         operatingSystem: "Web",
         url: `${SITE}/dashboard`,
+        // SoftwareApplication-level Wikidata claim — Q7397 = "software".
+        // identifier carries the publisher-side Wikidata QID for graph
+        // collapse with the Organization node.
+        additionalType: "https://www.wikidata.org/wiki/Q7397",
+        identifier: {
+          "@type": "PropertyValue",
+          propertyID: "wikidata",
+          value: "Q139376302",
+          url: "https://www.wikidata.org/wiki/Q139376302",
+        },
+        sameAs: ["https://www.wikidata.org/wiki/Q139376302"],
         publisher: { "@id": `${APEX}/#organization` },
         creator: { "@id": `${SITE}/about#person` },
         offers: [

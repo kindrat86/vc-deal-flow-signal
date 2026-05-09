@@ -1,0 +1,38 @@
+{
+  "_comment": "Keywords for Dream-100 inbound mention radar. Order matters — strong matches scanned first. Match is case-insensitive, substring-based.",
+  "strong": [
+    "gitdealflow",
+    "signals.gitdealflow.com",
+    "gitdealflow.com",
+    "vc deal flow signal",
+    "vc-deal-flow-signal",
+    "code-side sourcing",
+    "code side sourcing",
+    "commit-velocity acceleration",
+    "commit velocity acceleration",
+    "mcp-deal-flow-signal",
+    "@gitdealflow/mcp-signal"
+  ],
+  "soft": [
+    "engineering acceleration watch",
+    "the data nerd",
+    "@data_nerd"
+  ],
+  "exclude_domains": [
+    "signals.gitdealflow.com",
+    "gitdealflow.com",
+    "github.com/kindrat86",
+    "kindrat86.github.io"
+  ],
+  "exclude_authors": [
+    "kindrat86",
+    "thedatanerd",
+    "the-data-nerd",
+    "data_nerd",
+    "gitdealflow",
+    "gitdealflow-bot",
+    "github-actions[bot]",
+    "github-actions"
+  ],
+  "_note": "exclude_domains drops self-hosted noise (our own posts, PRs, etc.); exclude_authors drops our own activity on third-party repos (e.g. PRs we submit to awesome-* lists). Together they ensure the log only carries third-party mentions."
+}
