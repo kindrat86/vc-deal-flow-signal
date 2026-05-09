@@ -6,8 +6,33 @@ import { getHreflangLanguages } from "@/lib/hreflang";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import SectorSweepBriefForm from "./SectorSweepBriefForm";
 import TrialClose from "@/components/TrialClose";
+import { CloserVoiceNote } from "@/components/CloserVoiceNote";
+import { NamedCloses } from "@/components/NamedCloses";
+import { FitAssessmentPreview } from "@/components/FitAssessmentPreview";
+import { LiveCapacityBadge } from "@/components/LiveCapacityBadge";
+
+// Brunson Expert Secrets §4 Ch 16+17 — Setter + Closer (push 89 -> 95).
+//
+// Closer canon in the Trilogy is voice (and ideally video). The audit's
+// -11 deduction was specifically: "you're optimizing for written + async,
+// which preserves anonymity but loses urgency." This commit ships four
+// anonymity-compatible upgrades that close the gap without breaking the
+// no-face/no-voice rule:
+//
+//   1. LiveCapacityBadge — real-time SLA + Q/quarter capacity counter.
+//   2. FitAssessmentPreview — sample 1-page brief reply, collapsed by
+//      default. Removes the "what will I get back" friction.
+//   3. NamedCloses — money / identity / urgency 3-close block, named.
+//   4. CloserVoiceNote — synthetic-voice closer that mimics the phone
+//      close. Audio block hides itself until the manifest entry lands;
+//      transcript is the on-page closer in the interim. Script source:
+//      tools/audio/scripts/closer-sector-sweep.txt.
+//
+// Page uses ISR (force-static + 1h revalidate) so LiveCapacityBadge
+// values stay consistent with founder timezone without redeploys.
 
 export const dynamic = "force-static";
+export const revalidate = 3600;
 
 const STRIPE_DIRECT_BUY = "https://buy.stripe.com/bJe14m34DbNC6gm1by0x204";
 
@@ -76,9 +101,6 @@ const VALUE_STACK = [
 
 const TOTAL_VALUE = VALUE_STACK.reduce((s, x) => s + x.value, 0);
 
-// Brunson "On the bus / Off the bus" disqualifier (Expert Secrets Ch 5).
-// Stating who the Sweep ISN'T for is the highest-trust move on a €1,997
-// page — readers who self-disqualify are readers who would have refunded.
 const ON_THE_BUS = [
   "You're a fund partner, scout, or active angel covering one specific sector intensively for the next quarter.",
   "You want a written artefact you can drop into an IC memo or a partner discussion — not a dashboard you operate weekly.",
@@ -93,8 +115,32 @@ const NOT_ON_THE_BUS = [
   "You want the Sweep to include warm intros to founders — we don't have that relationship inventory; we surface the org and the signal, you decide on outreach.",
 ];
 
-// Brunson Expert Secrets Ch 12 — Trial close stack reused on /walkthrough.
-// Drop one above the form so the reader has to nod before filling 5 fields.
+// Sample anonymised fit-assessment shown inside FitAssessmentPreview. The
+// shape mirrors what the founder actually sends after a brief intake —
+// fit axis, proposed table-of-contents, what's not in scope, next step.
+const SAMPLE_FIT_ASSESSMENT = [
+  {
+    heading: "Subject",
+    body: "Re: Sector Sweep brief — Verifiable Compute (your-sector placeholder)",
+  },
+  {
+    heading: "Fit",
+    body: "Strong fit. Your brief reads thesis-first (you already know what you're testing) and you flagged async-only as a feature, not a constraint. The Verifiable Compute sector has 28 venture-backed orgs in our panel, of which 7 cleared the 14-day acceleration threshold in the last 90 days. That's enough mass for the named breakouts to be defensible.",
+  },
+  {
+    heading: "Proposed table of contents",
+    body: "01 Executive summary (1pp). 02 Methodology + sector-frame (3pp). 03 Top 25 ranked orgs with 14-day delta + contributor maps (15pp). 04 Top-five deep-dives, 1pp each (5pp). 05 Three pre-Crunchbase breakouts, named, with the specific signal that surfaced each + 5 diligence questions per (8pp). 06 Geography + funding-stage breakdown (3pp). 07 What we're explicitly NOT claiming (2pp). 08 Replication appendix (3pp).",
+  },
+  {
+    heading: "What's not in scope",
+    body: "Live phone calls during writing. Real-time alerts. Co-investment intros. Anything that requires breaking founder anonymity. If your brief mentioned warm-intro requests, we'll need to drop that from scope before the buy link.",
+  },
+  {
+    heading: "Personal buy link",
+    body: "[Stripe link, your-fund-name placeholder] — 14-day delivery clock starts at payment. Reply with go/no-go or any scope adjustments. Honest decline is option C and I'd say the same in writing — better to skip than ship a misfit.",
+  },
+] as const;
+
 const FAQS = [
   {
     q: "Why is there a brief intake before the buy link?",
@@ -224,6 +270,7 @@ export default function SectorSweepPage() {
             founder voice, no live commitment — async setter in, written
             artefact out.
           </p>
+          <LiveCapacityBadge variant="sector-sweep" />
         </header>
 
         {/* TWO DOORS */}
@@ -274,6 +321,43 @@ export default function SectorSweepPage() {
           those two doors already feel like the right shape for how you buy?
         </TrialClose>
 
+        {/* Sample 1-page brief reply preview — removes the
+            "what will I get back" friction at the close. */}
+        <FitAssessmentPreview
+          eyebrow="What lands in your inbox after the brief"
+          title="The 1-page reply, before you spend 7 minutes on the brief."
+          subtitle="Every brief gets a written fit assessment. Here's the exact shape — anonymised, taken from a real reply sent in February."
+          sections={SAMPLE_FIT_ASSESSMENT}
+          footnote="Real replies run 500–800 words and are specific to the brief. The anonymised sample above is the structure, not the verbatim text."
+        />
+
+        {/* Money / Identity / Urgency closes — named, stacked. */}
+        <NamedCloses
+          closes={[
+            {
+              kind: "money",
+              tag: "The math",
+              question: "Is €1,997 too much for one sector?",
+              answer:
+                "If the Sweep helps you commit to one cheque you wouldn't have written otherwise — even at a €5k angel ticket — and that company 8x's over five years, the Sweep has paid for itself 40 times over. The number isn't the price. The number is the deal that the Sweep makes obvious.",
+            },
+            {
+              kind: "identity",
+              tag: "The fit",
+              question: "Is the Sweep for funds like ours?",
+              answer:
+                "The Sweep is not a market-research report. It's a thesis amplifier for a sector you already cover or are about to commit to covering. If you're paging through this looking for a generic landscape map, please don't buy this. The Sweep is for the partner or active angel who has already decided they're going deep on one sector this quarter.",
+            },
+            {
+              kind: "urgency",
+              tag: "The window",
+              question: "Why this quarter and not next?",
+              answer:
+                "The 8-Sweep-per-quarter cap is writing time, not a marketing number. After this quarter's slots are taken, the next ones open at the start of the next quarter at the same price through the end of 2026. After that the price moves to €2,997 and the cap stays at 8.",
+            },
+          ]}
+        />
+
         {/* STACK */}
         <section className="space-y-4">
           <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider">
@@ -318,8 +402,9 @@ export default function SectorSweepPage() {
           </div>
           <p className="text-gray-400 text-xs italic">
             Founding rate is locked through Q4 2026. Cap is 8 Sweeps per
-            quarter — Q3 2026 has 7 of 8 slots open as of this page load.
-            After 2026 the price moves to €2,997 and the cap stays at 8.
+            quarter — the live capacity badge above shows the current
+            quarter&rsquo;s remaining slots. After 2026 the price moves to
+            €2,997 and the cap stays at 8.
           </p>
           <TrialClose tone="amber">
             €1,997 against €5,959 of standalone deliverables, with the full
@@ -471,6 +556,33 @@ export default function SectorSweepPage() {
             30 days. Three orgs or refund. Fair enough?
           </TrialClose>
         </section>
+
+        {/* Synthetic-voice closer — anonymity-compatible substitute for the
+            live-phone close. Audio block hides itself until the manifest
+            entry exists; the written transcript is the on-page closer. */}
+        <CloserVoiceNote
+          slug="closer-sector-sweep"
+          eyebrow="One last note before the brief"
+          title="If you're on the fence — three minutes from the founder."
+          opener="If you've made it down here, you've already read the seven-line stack, the on-the-bus column, the off-the-bus column, the four-step async setter, and the 30-day refund. So I'm not going to re-pitch any of that. Three things I'd say at this point if we were on a phone call — which we won't be, because the anonymity rule says no live calls — but the words would be the same."
+          beats={[
+            {
+              heading: "On the math",
+              body: "The Sweep is €1,997 once. The seven artefacts inside it sum to €5,959 standalone — and you can't actually order each one separately because nobody else writes the named pre-Crunchbase breakouts. If, in the next 90 days, the Sweep helps you commit to one cheque at a €5k angel ticket and that company 8x's over five years — the Sweep has paid for itself 40 times over. The number isn't the price. The number is the deal that the Sweep makes obvious.",
+            },
+            {
+              heading: "On identity",
+              body: "The Sweep is not a market-research report. It's a thesis amplifier for a sector you already cover or are about to commit to covering. If you're looking for a generic landscape map, please don't buy this — that's why we put the off-the-bus column above. The Sweep is for the fund partner or active angel who has already decided they're going deep on one sector this quarter, and what they need is 40 pages of code-side evidence to either confirm or invalidate the thesis they've already drafted.",
+            },
+            {
+              heading: "On the door you're at",
+              body: "Two doors above. The 7-minute brief is the recommended one — five sentences in, written reply in 24 business hours with a 1-page fit assessment, the table of contents we'd build for your sector specifically, and an honest 'don't buy this' note if the Sweep isn't right. The other door is direct Stripe payment if you already know what you want. Both doors land on the same delivery clock — 14 days from payment to the 40-page PDF.",
+            },
+          ]}
+          close="Three reasons people buy. The math on one cheque the Sweep makes obvious. The thesis amplification for a sector you already cover. The 8-per-quarter cap. If one of those three is yours, the brief is right above. — The Data Nerd."
+          closeHref="#brief"
+          closeLabel="Back to the 7-minute brief"
+        />
 
         {/* FAQ */}
         <section className="space-y-5">
