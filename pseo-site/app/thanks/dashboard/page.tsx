@@ -3,6 +3,7 @@ import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import TelegramCTA from "@/components/TelegramCTA";
 
 export const dynamic = "force-static";
 
@@ -95,6 +96,12 @@ export default function ThanksDashboard() {
             don&rsquo;t find useful is bad business.
           </p>
         </section>
+
+        {/* Brunson TS §3 Ch 11 — Dashboard buyers already get email; the
+            channel is the second pipe. Sits AFTER the founder note and
+            BEFORE the next-tier mention so it reads as a useful free
+            add-on, not a competing offer to Insider. */}
+        <TelegramCTA tone="emerald" context="post-purchase" />
 
         <section className="bg-slate-900/40 border border-slate-800 rounded-lg p-5 space-y-2">
           <p className="text-gray-400 text-xs font-semibold uppercase tracking-wider">
