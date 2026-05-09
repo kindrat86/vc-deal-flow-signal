@@ -26,6 +26,7 @@ import EpiphanyBridgeCondensed from "@/components/EpiphanyBridgeCondensed";
 import HomeStoryMoment from "@/components/HomeStoryMoment";
 import HomeOfferStack from "@/components/HomeOfferStack";
 import CharterCohortBlock from "@/components/CharterCohortBlock";
+import ArchetypeCardsPreview from "@/components/ArchetypeCardsPreview";
 import { DataNerdPolarityCard } from "@/components/DataNerdPolarityCard";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import TrialClose from "@/components/TrialClose";
@@ -124,6 +125,34 @@ export default function Home() {
       {
         "@type": "Organization",
         "@id": "https://gitdealflow.com/#organization",
+        // Knowledge Panel claim block — explicit Wikidata identifier
+        // PropertyValue + additionalType pointing at the Wikidata QID for
+        // "business" (Q4830453) + bidirectional mainEntityOfPage pointing
+        // to /wikidata. This is the canonical pattern Google's Knowledge
+        // Graph crawler reads to bind this entity to the existing Wikidata
+        // entry Q139376302 (created 2026-04). Pairs with reciprocal claims
+        // on Wikidata: P856 (official website) + P2002 (Twitter) + P31
+        // (instance of) + P1813 (short name) + P571 (inception).
+        additionalType: "https://www.wikidata.org/wiki/Q4830453",
+        identifier: [
+          {
+            "@type": "PropertyValue",
+            propertyID: "wikidata",
+            value: "Q139376302",
+            url: "https://www.wikidata.org/wiki/Q139376302",
+          },
+        ],
+        mainEntityOfPage: {
+          "@type": "WebPage",
+          "@id": "https://signals.gitdealflow.com/wikidata",
+          url: "https://signals.gitdealflow.com/wikidata",
+        },
+        subjectOf: {
+          "@type": "WebPage",
+          "@id": "https://signals.gitdealflow.com/wikidata#page",
+          url: "https://signals.gitdealflow.com/wikidata",
+          name: "VC Deal Flow Signal — Wikidata Knowledge Panel claim",
+        },
         name: "VC Deal Flow Signal",
         alternateName: ["GitDealFlow", "VC Deal Flow Signal (GitDealFlow)"],
         url: "https://gitdealflow.com",
@@ -1303,17 +1332,27 @@ export default function Home() {
         </p>
         <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug">
           You&rsquo;re not a VC. You&rsquo;re a{" "}
-          <span className="text-sky-400">developer-investor</span>.
+          <span className="text-sky-400">developer-investor</span> — and there
+          are three of you.
         </h2>
         <p className="text-gray-300 text-base leading-relaxed">
-          You read commit logs for fun. You write €5k–€50k checks on the side.
-          You don&rsquo;t want a fund-grade platform with a fund-grade contract
-          and a fund-grade price. You want a tool that fits the way you
-          actually source — Sunday email, Wednesday filter, end-of-quarter
-          deeper dive. Built around how you read software, not how a partner
-          reads pitch decks.
+          You read commit logs for fun. You write €5k–€50k checks on the side,
+          OR you run a Monday memo for partners, OR you write quarterly
+          diligence reports for a family office. Same instinct, three different
+          buying motions. We used to describe one reader; we built for three.
+          Pick the archetype whose week-rhythm sounds like yours — the entry
+          tier and the upgrade path are different on purpose.
         </p>
       </section>
+
+      {/* Three reader-archetypes — Solo Angel / Fund GP / Family Office.
+          Audit 2026-05-09: split from the single "developer-investor"
+          composite. Single source of truth: content/archetypes.ts. Internal
+          workbook: brunson/08-dream-customer.md §8. */}
+      <ArchetypeCardsPreview
+        eyebrow="Three readers · three entry tiers"
+        intro="Solo Angel buys a Sunday digest. Fund GP buys a 24-hour lead window for the LP update. Family Office buys a methodology paper they can show compliance. The data is the same, the contract shape is not."
+      />
 
       {/* DISQUALIFIER — "Who this is FOR / NOT FOR".
           Traffic Secrets Ch 1 (dream customer). The polarization is the

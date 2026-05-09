@@ -1,0 +1,53 @@
+name: Dream 100 Mention Radar
+
+# Why GH Actions and not Vercel Cron Jobs:
+# This workflow appends to a markdown audit log (marketing/dream100-mentions-log.md)
+# and commits state to the repo (tools/dream100-mention-radar/state.json). Vercel Cron
+# Jobs invoke serverless API routes — they cannot commit to git. The 9 sibling
+# workflows in this repo (discover-startups, pseo-uniqueness, youtube-*, etc.) all
+# use this same git-mutating cron pattern for the same structural reason.
+
+on:
+  schedule:
+    # Every 4 hours (00:33, 04:33, 08:33, 12:33, 16:33, 20:33 UTC) — matches the
+    # 4h reply SLA so detection lags the cadence by at most one tick.
+    - cron: "33 */4 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: dream100-mention-radar
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Run mention radar
+        env:
+          # Built-in token gives us search access to public repos at a sane
+          # rate limit. No PAT needed for this workflow.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node tools/dream100-mention-radar/scan.mjs
+
+      - name: Commit if log changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -n "$(git status --porcelain marketing/dream100-mentions-log.md tools/dream100-mention-radar/state.json)" ]; then
+            git add marketing/dream100-mentions-log.md tools/dream100-mention-radar/state.json
+            git commit -m "chore(dream100): radar — new mention(s) detected $(date -u +%Y-%m-%dT%H:%MZ)"
+            git push
+          else
+            echo "No new mentions; nothing to commit."
+          fi

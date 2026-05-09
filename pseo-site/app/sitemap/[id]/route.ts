@@ -204,6 +204,10 @@ export async function GET(_req: Request, ctx: RouteContext) {
       ),
       // Wikipedia citation helper
       { url: `${BASE_URL}/wikipedia`, lastmod, changefreq: "monthly", priority: 0.7 },
+      // Wikidata Knowledge Panel claim — Brunson Audit V8 2026-05-09
+      // (closes Traffic Secrets §2 Ch 9 +4-pt gap on Google).
+      { url: `${BASE_URL}/wikidata`, lastmod, changefreq: "monthly", priority: 0.85 },
+      { url: `${BASE_URL}/.well-known/wikidata.json`, lastmod, changefreq: "monthly", priority: 0.7 },
       { url: `${BASE_URL}/predict`, lastmod, changefreq: "weekly", priority: 0.95 },
       { url: `${BASE_URL}/receipts`, lastmod, changefreq: "weekly", priority: 0.9 },
       { url: `${BASE_URL}/markets`, lastmod, changefreq: "weekly", priority: 0.9 },

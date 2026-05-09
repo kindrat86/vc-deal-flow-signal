@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import type { ArchetypeId } from "@/content/archetypes";
 
 type AnswerKey = "F" | "T" | "D" | "I"; // Free / Tripwire / Dashboard / Insider
 
@@ -8,6 +9,12 @@ interface Question {
   id: string;
   prompt: string;
   options: { label: string; route: AnswerKey }[];
+}
+
+interface ArchetypeQuestion {
+  id: "archetype";
+  prompt: string;
+  options: { label: string; route: ArchetypeId }[];
 }
 
 const QUESTIONS: Question[] = [
@@ -52,6 +59,32 @@ const QUESTIONS: Question[] = [
     ],
   },
 ];
+
+// Q5 — explicit archetype self-ID. Audit 2026-05-09 (Brunson Traffic Secrets
+// Ch 1 split): the F/T/D/I tier-tally answers what the buyer DOES; this
+// question answers what the buyer IS. The two together let us surface both
+// the right tier AND the right archetype profile on the result page.
+const ARCHETYPE_QUESTION: ArchetypeQuestion = {
+  id: "archetype",
+  prompt: "Which best describes you?",
+  options: [
+    {
+      label:
+        "Solo Angel — I write personal checks, €5k–€50k each, on my own balance sheet",
+      route: "solo-angel",
+    },
+    {
+      label:
+        "Fund GP / Scout — I source for a fund (≤$50M AUM) or scout for a larger one; I write a Monday memo",
+      route: "fund-gp",
+    },
+    {
+      label:
+        "Family Office Analyst — I run diligence for a single- or multi-family office or institutional allocator",
+      route: "family-office",
+    },
+  ],
+};
 
 const RESULTS = {
   F: {
@@ -129,14 +162,34 @@ const TIER_SEQUENCE_SUMMARY: Record<keyof typeof RESULTS, { count: number; pitch
 
 type GateState = "idle" | "submitting" | "ok" | "skip" | "error";
 
+// Archetype short-label + lead-line for the result card. Mirrors
+// content/archetypes.ts but kept inline because QuizForm is "use client" and
+// we want zero server-only imports leaking. Edit both in lockstep when
+// archetype labels change.
+const ARCHETYPE_LABEL: Record<ArchetypeId, string> = {
+  "solo-angel": "Solo Angel",
+  "fund-gp": "Fund GP / Scout",
+  "family-office": "Family Office Analyst",
+};
+const ARCHETYPE_BLURB: Record<ArchetypeId, string> = {
+  "solo-angel":
+    "Personal checks, engineer-buying-behavior. Free Sunday digest is the on-ramp; Dashboard is the workflow tier; Insider is for when cadence ramps past 20 checks/year.",
+  "fund-gp":
+    "Monday memo, LP-update defensibility. Insider gives you the 24-hour lead; Sharp (capped 8 funds) gives you the white-labeled API and methodology source.",
+  "family-office":
+    "Diligence cycle, compliance review, annual contract. Sector Sweep is the entry; Methodology Partnership is recurring; Vault is custom co-development.",
+};
+
 export default function QuizForm() {
   const [answers, setAnswers] = useState<AnswerKey[]>([]);
+  const [archetype, setArchetype] = useState<ArchetypeId | null>(null);
   const [email, setEmail] = useState("");
   const [gate, setGate] = useState<GateState>("idle");
   const [gateError, setGateError] = useState<string | null>(null);
   const step = answers.length;
 
-  const finishedAnswers = step >= QUESTIONS.length;
+  const finishedTierAnswers = step >= QUESTIONS.length;
+  const finishedAnswers = finishedTierAnswers && archetype !== null;
   const result = finishedAnswers ? RESULTS[tally(answers)] : null;
   const resultTierKey = finishedAnswers ? tally(answers) : null;
 
@@ -159,6 +212,8 @@ export default function QuizForm() {
           quiz_route_label: resultTierKey
             ? RESULT_TIER_LABELS[resultTierKey]
             : "",
+          archetype: archetype ?? "solo-angel",
+          archetype_label: archetype ? ARCHETYPE_LABEL[archetype] : "",
         }),
       });
       // /api/subscribe returns { ok: true } even for already-subscribed —
@@ -183,6 +238,7 @@ export default function QuizForm() {
 
   if (reveal && result && resultTierKey) {
     const sequence = TIER_SEQUENCE_SUMMARY[resultTierKey];
+    const archetypeId = archetype ?? "solo-angel";
     return (
       <div className="bg-gradient-to-br from-sky-950/40 via-slate-900 to-slate-950 border border-sky-700/50 rounded-xl p-6 sm:p-8 space-y-4">
         <p className="text-sky-300 text-xs font-semibold uppercase tracking-wider">
@@ -192,6 +248,20 @@ export default function QuizForm() {
           {result.title}
         </h2>
         <p className="text-gray-300 text-base leading-relaxed">{result.body}</p>
+        <div className="rounded-lg border border-amber-500/40 bg-amber-500/5 p-4 space-y-2">
+          <p className="text-amber-300 text-[11px] font-semibold uppercase tracking-[0.14em]">
+            Archetype · {ARCHETYPE_LABEL[archetypeId]}
+          </p>
+          <p className="text-gray-200 text-sm leading-relaxed">
+            {ARCHETYPE_BLURB[archetypeId]}
+          </p>
+          <a
+            href={`/who-this-is-for#${archetypeId}`}
+            className="text-amber-300 text-xs underline decoration-amber-400/40 decoration-dotted underline-offset-[3px] hover:text-amber-200 hover:decoration-amber-300 inline-block"
+          >
+            See the full {ARCHETYPE_LABEL[archetypeId]} profile →
+          </a>
+        </div>
         <div className="flex flex-col sm:flex-row gap-3 pt-2">
           <a
             href={result.cta.href}
@@ -227,6 +297,7 @@ export default function QuizForm() {
           type="button"
           onClick={() => {
             setAnswers([]);
+            setArchetype(null);
             setEmail("");
             setGate("idle");
             setGateError(null);
@@ -234,6 +305,59 @@ export default function QuizForm() {
           className="text-gray-400 hover:text-gray-300 text-xs underline decoration-dotted underline-offset-4 mt-3"
         >
           Retake the quiz
+        </button>
+      </div>
+    );
+  }
+
+  // Q5 — archetype self-ID. Sits between the four tier-routing questions and
+  // the email gate. Cleaner than blending into the F/T/D/I tally because this
+  // is identity, not behavior — the buyer recognises themselves once in their
+  // answers (cadence/thesis/rhythm/edge) and again in the archetype label.
+  if (finishedTierAnswers && archetype === null) {
+    return (
+      <div className="space-y-5">
+        <div className="flex items-center justify-between">
+          <p className="text-gray-400 text-xs font-medium uppercase tracking-wider">
+            Question 5 of 5
+          </p>
+          <div className="flex gap-1.5" aria-hidden="true">
+            {[0, 1, 2, 3, 4].map((i) => (
+              <span
+                key={i}
+                className="h-1.5 w-6 rounded-full bg-sky-500"
+              />
+            ))}
+          </div>
+        </div>
+        <h2 className="text-xl sm:text-2xl font-semibold text-gray-100 leading-snug">
+          {ARCHETYPE_QUESTION.prompt}
+        </h2>
+        <p className="text-gray-400 text-sm leading-relaxed">
+          The previous four questions sized your buying motion. This one names
+          it. We&rsquo;ll route you to one of three reader profiles &mdash; the
+          tier suggestion stays the same, the framing changes to fit the way
+          you actually decide.
+        </p>
+        <ul className="space-y-2.5">
+          {ARCHETYPE_QUESTION.options.map((opt) => (
+            <li key={opt.label}>
+              <button
+                type="button"
+                onClick={() => setArchetype(opt.route)}
+                className="w-full text-left bg-slate-900 hover:bg-slate-800 border border-slate-700 hover:border-sky-500 rounded-lg px-5 py-4 text-gray-200 text-base leading-snug transition-colors"
+              >
+                {opt.label}
+              </button>
+            </li>
+          ))}
+        </ul>
+        <button
+          type="button"
+          onClick={() => setAnswers((a) => a.slice(0, -1))}
+          className="text-gray-400 hover:text-gray-300 text-xs underline decoration-dotted underline-offset-4"
+        >
+          ← Previous question
         </button>
       </div>
     );
@@ -305,14 +429,18 @@ export default function QuizForm() {
   }
 
   const q = QUESTIONS[step];
+  // Total questions = 4 tier-routing + 1 archetype = 5. Progress bar reflects
+  // the full quiz length, not just the tier-tally subset, so the buyer sees
+  // honest progress.
+  const TOTAL_STEPS = QUESTIONS.length + 1;
   return (
     <div className="space-y-5">
       <div className="flex items-center justify-between">
         <p className="text-gray-400 text-xs font-medium uppercase tracking-wider">
-          Question {step + 1} of {QUESTIONS.length}
+          Question {step + 1} of {TOTAL_STEPS}
         </p>
         <div className="flex gap-1.5" aria-hidden="true">
-          {QUESTIONS.map((_, i) => (
+          {Array.from({ length: TOTAL_STEPS }).map((_, i) => (
             <span
               key={i}
               className={`h-1.5 w-6 rounded-full ${
