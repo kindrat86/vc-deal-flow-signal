@@ -51,6 +51,7 @@ export const metadata: Metadata = {
 // internal-link graph from the home page to routes Yandex flagged
 // "low-value or low-demand" in the 2026-05-02 recheck.
 const PILLAR_LINKS = [
+  { href: "/code-side-sourcing", label: "Code-Side Sourcing", sub: "The category we're defining — definition, first principles, practitioners", icon: "🧭" },
   { href: "/mechanism", label: "The named mechanism", sub: "Commit-Velocity Acceleration Engine — formula, falsifiability, ladder", icon: "🔬" },
   { href: "/methodology", label: "Methodology", sub: "How signals are computed", icon: "📐" },
   { href: "/weekly", label: "This week's signals", sub: "Weekly top movers", icon: "📈" },
@@ -176,6 +177,7 @@ export default function Home() {
           "https://huggingface.co/spaces/the-data-nerd/vc-deal-flow-deepseek",
         ],
         knowsAbout: [
+          "Code-Side Sourcing",
           "GitHub commit velocity",
           "venture capital alternative data",
           "code-side momentum signals",
@@ -970,6 +972,46 @@ export default function Home() {
           secondary. Frames every door beneath it as an identity choice, not
           a feature comparison. /identity is the long-form companion. */}
       <IdentityBanner />
+
+      {/* CATEGORY NAMING — Russell-Brunson Expert Secrets §1 Ch 3 ship
+          2026-05-09. The "New Opportunity" must be named, not described.
+          Audit had this chapter at 92/100 with the note that the category
+          was walked but never branded. Block names "Code-Side Sourcing" as
+          the category and links the canonical definition page. Placed
+          immediately above the Big Domino so the reader has a category
+          name to attach the single-belief claim to. */}
+      <section
+        aria-label="The category we're defining"
+        className="my-8 rounded-xl border border-amber-700/40 bg-gradient-to-br from-amber-950/20 via-slate-900 to-slate-950 p-6 sm:p-8"
+      >
+        <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider mb-3">
+          The category we&rsquo;re defining
+        </p>
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug mb-3">
+          Code-Side Sourcing — a new sourcing channel for venture capital.
+        </h2>
+        <p className="text-gray-300 text-sm sm:text-base leading-relaxed mb-3">
+          Code-Side Sourcing is the practice of using public
+          repository-velocity data as a leading indicator of venture-stage
+          outcomes — surfacing fundraises{" "}
+          <span className="text-amber-300 font-semibold">
+            21 to 47 days before pitch decks circulate.
+          </span>{" "}
+          It runs alongside warm intros, decks, and databases — not in place
+          of them.
+        </p>
+        <p className="text-gray-400 text-sm leading-relaxed">
+          Read the canonical definition at{" "}
+          <Link
+            href="/code-side-sourcing"
+            className="text-amber-300 hover:text-amber-200 underline decoration-dotted"
+          >
+            /code-side-sourcing
+          </Link>
+          {" "}— what it replaces, the five first principles, who practises it,
+          and the open methodology that grounds it.
+        </p>
+      </section>
 
       {/* Brunson Expert Secrets Ch 6 — Big Domino + Ch 10 Three Secrets
           (false-belief collapses). Audit 2026-05-09: domino used to sit

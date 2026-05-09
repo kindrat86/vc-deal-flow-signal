@@ -249,12 +249,26 @@ export default function MechanismPage() {
         <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">
           The Commit-Velocity Acceleration Engine
         </h1>
-        <p className="text-lg text-slate-300 mb-8 leading-relaxed">
+        <p className="text-lg text-slate-300 mb-3 leading-relaxed">
           A reproducible, public-data mechanism for surfacing venture-backed
           startups 21 to 47 days before the fundraise announcement. Five
           deterministic steps. A formula you can run on your own laptop. A
           219-startup panel you can replicate. No black box, no proprietary
           training data, no &ldquo;trust us.&rdquo;
+        </p>
+        <p className="text-sm text-slate-400 mb-8 leading-relaxed border-l-2 border-amber-700/40 pl-4">
+          The engine is the formal implementation of the broader category we
+          call{" "}
+          <Link
+            href="/code-side-sourcing"
+            className="text-amber-300 hover:text-amber-200 underline decoration-dotted"
+          >
+            Code-Side Sourcing
+          </Link>
+          {" "}— the practice of using public repository-velocity data as a
+          leading indicator of venture-stage outcomes. Read the category
+          definition first if the term is new; the steps below are how we
+          execute it.
         </p>
 
         <section aria-label="The formula" className="mb-12">
