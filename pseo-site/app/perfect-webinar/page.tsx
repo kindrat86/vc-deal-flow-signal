@@ -9,6 +9,7 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { LiveReplayBar } from "@/components/LiveReplayBar";
 import { FastActionBonuses } from "@/components/FastActionBonuses";
 import { DoorsClosingBanner } from "@/components/DoorsClosingBanner";
+import TrialClose from "@/components/TrialClose";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { getReplayWindowSnapshot } from "@/lib/replay-window";
 
@@ -280,6 +281,10 @@ export default function PerfectWebinarPage() {
           <p className="italic text-gray-400 pt-3 border-t border-slate-800">
             That accident is the only reason this product exists.
           </p>
+          <TrialClose tone="sky">
+            Pause for one second. If <em>you</em> had spotted that fintech in your
+            own GitHub feed three weeks early — would you have written a check?
+          </TrialClose>
         </section>
 
         {/* BIG DOMINO */}
@@ -305,6 +310,10 @@ export default function PerfectWebinarPage() {
             am going to spend the next three sections trying to knock it down.
             If it survives, the rest is arithmetic.
           </p>
+          <TrialClose tone="sky">
+            Following so far? Three objections coming, plain language, no
+            sales-pitch detours.
+          </TrialClose>
         </section>
 
         {/* THREE SECRETS */}
@@ -359,6 +368,11 @@ export default function PerfectWebinarPage() {
               </Link>
               .
             </p>
+            <TrialClose tone="amber">
+              Acceleration vs. absolute count — does that distinction land?
+              That single shift is what turns &ldquo;noise&rdquo; into a signal
+              with a 31-day median lead.
+            </TrialClose>
           </div>
 
           {/* SECRET 2 — INTERNAL BELIEF */}
@@ -390,6 +404,10 @@ export default function PerfectWebinarPage() {
               relationship before everyone else is trying to. Your network gets
               you to the table. This gets you there first.
             </p>
+            <TrialClose tone="emerald">
+              If you arrived 21–47 days before the deck started circulating,
+              would your hit rate change? Make a mental note of the answer.
+            </TrialClose>
           </div>
 
           {/* SECRET 3 — EXTERNAL BELIEF */}
@@ -426,6 +444,11 @@ export default function PerfectWebinarPage() {
               . None publish their methodology. None expose raw data.
               Engineering signal is the open lane.
             </p>
+            <TrialClose tone="violet">
+              Three objections, three breakdowns. If none of those three is
+              what was holding you back — what is? (That answer is the one to
+              keep handy as the stack lands.)
+            </TrialClose>
           </div>
         </section>
 
@@ -648,6 +671,11 @@ export default function PerfectWebinarPage() {
             instrument costs to lease per month, founding-member rate,
             locked forever.
           </p>
+          <TrialClose tone="violet">
+            Can you picture it? The Sunday digest, the Tuesday email, the
+            quarter-end Sweep — that&rsquo;s the rhythm that produces the
+            August Tuesday above. The next section is the bill.
+          </TrialClose>
         </section>
 
         {/* THE STACK */}
@@ -750,6 +778,10 @@ export default function PerfectWebinarPage() {
               even after the public launch hike to €49/mo.
             </p>
           </div>
+          <TrialClose tone="amber">
+            €9.97 vs. one missed seed deal. Which side of that math do you
+            want to be on for the next twelve months?
+          </TrialClose>
         </section>
 
         {/* FAST-ACTION BONUSES — Brunson DotCom Secrets Ch 12 (Cart Funnel
@@ -783,6 +815,11 @@ export default function PerfectWebinarPage() {
             doesn&rsquo;t. Charging for an output you don&rsquo;t find useful
             is bad business.
           </p>
+          <TrialClose tone="emerald">
+            Worst case: 30 days, you keep what you read, you get the €9.97
+            back. Where else does that downside profile exist for a sourcing
+            tool?
+          </TrialClose>
         </section>
 
         {/* TRIAL CLOSES — 3-stack */}
