@@ -70,7 +70,7 @@ export default function VslPage() {
         "@id": `${SITE}/vsl#video`,
         name: script.headline,
         description:
-          "10-minute Brunson-format video sales letter. Single belief: GitHub commit-velocity acceleration is the most leading public signal in venture capital. Synthetic voice (Cartesia Theo) — no founder face, voice, or name.",
+          "10-minute video sales letter. Single belief: GitHub commit-velocity acceleration is the most leading public signal in venture capital. Synthetic voice (Cartesia Theo) — no founder face, voice, or name.",
         // Falls back to site icon until the workflow_dispatch render uploads
         // the Remotion-rendered ThumbnailVsl still and we can swap in a CDN URL.
         thumbnailUrl: [`${SITE}/icon.png`],
@@ -568,7 +568,7 @@ export default function VslPage() {
               <Link href="/state-of-github" className="text-emerald-700 hover:underline">
                 /state-of-github
               </Link>{" "}
-              <span className="text-slate-500">— monthly Stadium Pitch (synthetic-voice address).</span>
+              <span className="text-slate-500">— monthly founder talk (synthetic-voice address).</span>
             </li>
             <li>
               <Link href="/predicted" className="text-emerald-700 hover:underline">

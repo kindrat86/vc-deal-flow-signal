@@ -1025,7 +1025,7 @@ export default function Home() {
           2026-05-05: home was missing the "if this is true, everything else
           falls" frame. */}
       <section
-        aria-label="Big domino"
+        aria-label="Core claim"
         className="bg-gradient-to-br from-sky-950/40 via-slate-900 to-slate-950 border border-sky-700/40 rounded-xl p-6 sm:p-8 my-8"
       >
         <p className="text-sky-300 text-xs font-semibold uppercase tracking-wider mb-3">
@@ -1045,7 +1045,7 @@ export default function Home() {
             href="/perfect-webinar"
             className="text-sky-400 hover:text-sky-300 underline decoration-dotted"
           >
-            12-minute Perfect Webinar
+            12-minute walkthrough
           </Link>
           {" "}or the{" "}
           <Link
@@ -1119,7 +1119,7 @@ export default function Home() {
             href="/perfect-webinar"
             className="text-sky-400 hover:text-sky-300 underline decoration-dotted"
           >
-            Perfect Webinar
+            long-form walkthrough
           </Link>
           .
         </p>
@@ -1275,7 +1275,7 @@ export default function Home() {
                   href="/perfect-webinar"
                   className="whitespace-nowrap font-medium text-sky-300 underline decoration-sky-400/40 decoration-dotted underline-offset-[3px] transition-colors hover:text-sky-200 hover:decoration-sky-300"
                 >
-                  Perfect Webinar
+                  long-form pitch
                 </Link>{" "}
                 argues the opposite — if it doesn&rsquo;t convince you, this
                 isn&rsquo;t the tool.

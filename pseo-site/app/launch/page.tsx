@@ -96,17 +96,17 @@ export default function LaunchIndex() {
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
         <header className="space-y-3">
           <p className="text-sky-400 text-xs font-medium uppercase tracking-wider">
-            Product Launches · Jeff Walker PLF · DotCom Secrets Ch 22
+            Product Launches · Jeff Walker PLF
           </p>
           <h1 className="text-3xl sm:text-5xl font-bold text-gray-100 leading-[1.1] tracking-tight">
             Every launch, with the cart open or the window closed.
           </h1>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
-            Each entry below is a 4-stage Product Launch Funnel — Jeff Walker’s
-            canonical sequence, the way Russell Brunson teaches it in DotCom
-            Secrets Chapter 22. Sideways Story, Ownership Experience, Internal
-            Struggle, Big Idea. Permanent record so you can see the offer that
-            was on the table when the window was open.
+            Each entry below is a 4-stage Product Launch Funnel — Jeff
+            Walker&rsquo;s canonical sequence. Sideways Story, Ownership
+            Experience, Internal Struggle, Big Idea. Permanent record so you
+            can see the offer that was on the table when the window was
+            open.
           </p>
         </header>
 

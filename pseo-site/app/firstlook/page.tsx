@@ -440,15 +440,14 @@ export default function FirstLookPage() {
             developer-investor specifically.
           </h2>
           <p className="text-gray-300 text-sm leading-relaxed">
-            Brunson&rsquo;s rule of bait: match the offer to the avatar.
-            A €7 PDF is the wrong bait for a fund partner with a
-            six-figure data budget — too small to register. It&rsquo;s the
-            <em> right </em>bait for the engineer-investor who reads
-            commit logs for fun, writes €5k–€50k checks on the side, and
-            wants to test the data on their actual thesis before
-            subscribing. That&rsquo;s why the price is €7, the deliverable
-            is sector-specific, and the format is PDF + raw CSV — not a
-            sales call, not a demo, not a calendar invite.
+            The rule of bait: match the offer to the avatar. A €7 PDF is the
+            wrong bait for a fund partner with a six-figure data budget — too
+            small to register. It&rsquo;s the <em> right </em>bait for the
+            engineer-investor who reads commit logs for fun, writes €5k–€50k
+            checks on the side, and wants to test the data on their actual
+            thesis before subscribing. That&rsquo;s why the price is €7, the
+            deliverable is sector-specific, and the format is PDF + raw CSV
+            — not a sales call, not a demo, not a calendar invite.
           </p>
         </aside>
 
@@ -595,9 +594,9 @@ export default function FirstLookPage() {
               You&rsquo;re on rung 1. Here&rsquo;s the whole ladder.
             </h2>
             <p className="text-gray-400 text-sm leading-relaxed">
-              Brunson&rsquo;s cart-funnel rule: tell the buyer the whole map.
-              Hidden upsells feel like ambush; named ones feel like a path.
-              Every offer below is independent — no offer requires the next.
+              The cart-funnel rule: tell the buyer the whole map. Hidden
+              upsells feel like ambush; named ones feel like a path. Every
+              offer below is independent — no offer requires the next.
             </p>
           </header>
 

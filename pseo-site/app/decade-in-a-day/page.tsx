@@ -36,7 +36,7 @@ const MODULES: Module[] = [
     title: "Identity — name the buyer you actually are",
     question: "Why does identity precede method?",
     content:
-      "If you decide you're a 'mini-VC' you'll buy fund-grade tooling and complain about the price. If you decide you're a 'developer-investor' the right tools, prices, and rhythm fall into place. Identity is upstream of every purchase decision. Brunson's Identity Close lives or dies on this naming.",
+      "If you decide you're a 'mini-VC' you'll buy fund-grade tooling and complain about the price. If you decide you're a 'developer-investor' the right tools, prices, and rhythm fall into place. Identity is upstream of every purchase decision. The identity close lives or dies on this naming.",
     links: [
       { label: "/about/founder — what a developer-investor is", href: "/about/founder" },
       { label: "Identity declaration on home", href: "/" },
@@ -64,7 +64,7 @@ const MODULES: Module[] = [
     content:
       "An engineer who reads commit logs for fun and writes €5k–€50k checks on the side, 5–40 angel checks a year, more curious about codebases than about pitch decks. Three thesis axes: AI infrastructure, dev tools, technical SaaS. The disqualifier is as important as the qualifier — Series-B+ partners with six-figure data budgets are not us.",
     links: [
-      { label: "/dream-100 — the 100 voices the buyer reads", href: "/dream-100" },
+      { label: "/dream-100 — the top 100 voices the buyer reads", href: "/dream-100" },
       { label: "/funnels — every entry point sized to the buyer", href: "/funnels" },
     ],
   },
@@ -74,7 +74,7 @@ const MODULES: Module[] = [
     title: "Funnel architecture — six rungs, one ladder",
     question: "Why six tiers and not three?",
     content:
-      "Free → €7 → €9.97 → €97 → €497 → €1,997. Every rung exists because the rung below it doesn't fit one specific check size or one specific cadence. Free is for cadence-builders. €7 is for thesis-testers. €9.97 is for the daily-rhythm buyer. €97 is for the syndicate. €497 is for the small fund. €1,997 is for the deep-dive on a single sector. The Brunson rule: never let a buyer leave at zero commitment when there's a free rung below.",
+      "Free → €7 → €9.97 → €97 → €497 → €1,997. Every rung exists because the rung below it doesn't fit one specific check size or one specific cadence. Free is for cadence-builders. €7 is for thesis-testers. €9.97 is for the daily-rhythm buyer. €97 is for the syndicate. €497 is for the small fund. €1,997 is for the deep-dive on a single sector. Never let a buyer leave at zero commitment when there's a free rung below.",
     links: [
       { label: "/funnels — the value ladder visualised", href: "/funnels" },
       { label: "/funnels#building-blocks — the 23 components", href: "/funnels#building-blocks" },
@@ -87,7 +87,7 @@ const MODULES: Module[] = [
     title: "Reverse-engineering — what the leaders are optimising for",
     question: "How do you read a competitor's funnel?",
     content:
-      "Don't read their pricing. Read their lead form, their bridge page, their stack-claim, their close. Harmonic optimises for partner-budgets. Tracxn optimises for sector breadth. Affinity optimises for warm-intro routing. None of them optimise for the developer-investor — that's not a pricing-gap, it's an ICP-gap. The funnel-hack you ship is the one that fills the blind spot.",
+      "Don't read their pricing. Read their lead form, their bridge page, their stack-claim, their close. Harmonic optimises for partner-budgets. Tracxn optimises for sector breadth. Affinity optimises for warm-intro routing. None of them optimise for the developer-investor — that's not a pricing-gap, it's an ICP-gap. The competitor teardown you ship is the one that fills the blind spot.",
     links: [
       { label: "/funnels#reverse-engineering — full teardown", href: "/funnels#reverse-engineering" },
       { label: "/buyers-guide — buyer-side decision tree", href: "/buyers-guide" },
@@ -97,12 +97,12 @@ const MODULES: Module[] = [
   {
     n: 6,
     minutes: 30,
-    title: "The Big Domino — one belief that closes the buyer",
+    title: "The core claim — one belief that closes the buyer",
     question: "What's the single belief that, if held, makes everything else inevitable?",
     content:
       "If commit-velocity acceleration is the most leading public signal in venture capital, every other deal-flow source — pitch decks, AngelList, Crunchbase, warm intros — is a lagging indicator. The whole investing thesis falls or stands on whether that belief is true. Once you accept it, everything we sell follows automatically. If you don't accept it, no amount of stack will move you. Find this belief for your own product before you write copy.",
     links: [
-      { label: "/perfect-webinar — Big Domino + Three Objections", href: "/perfect-webinar" },
+      { label: "/perfect-webinar — core claim + Three Objections", href: "/perfect-webinar" },
       { label: "/pitch — the same belief in 90 seconds", href: "/pitch" },
     ],
   },
@@ -112,7 +112,7 @@ const MODULES: Module[] = [
     title: "The Conversion Story — five steps from belief to action",
     question: "Old way → new vehicle → external → internal → frameworks. Why this order?",
     content:
-      "Brunson's canonical script. (1) Name the old way the buyer was sold — for us, 'best deals come from your network.' (2) Reveal the new vehicle — engineering acceleration. (3) Remove the external struggle — you don't need fund-grade tooling. (4) Remove the internal struggle — you don't need to become a different person to source. (5) Show the frameworks — Sunday digest, Wednesday filter, end-of-quarter sweep. Each step is a beat the reader has to walk through; skip one and they bounce.",
+      "The canonical conversion script. (1) Name the old way the buyer was sold — for us, 'best deals come from your network.' (2) Reveal the new vehicle — engineering acceleration. (3) Remove the external struggle — you don't need fund-grade tooling. (4) Remove the internal struggle — you don't need to become a different person to source. (5) Show the frameworks — Sunday digest, Wednesday filter, end-of-quarter sweep. Each step is a beat the reader has to walk through; skip one and they bounce.",
     links: [
       { label: "/perfect-webinar#conversion-story — full script", href: "/perfect-webinar#conversion-story" },
       { label: "/perfect-webinar/5min — condensed version", href: "/perfect-webinar/5min" },
@@ -150,7 +150,7 @@ const MODULES: Module[] = [
       "Owned: email list (free Acceleration Watch), RSS, MCP server in the buyer's IDE. Earned: Reddit AEO, dev.to long-form, Substack mirror, federated social (Bluesky / Mastodon / Farcaster), academic SSRN citation. Paid: deferred under HOLD until earned-only proof. The reason isn't ideology, it's compounding — earned channels keep paying after you stop. Paid channels stop the day the budget does.",
     links: [
       { label: "/distribution — every channel mapped", href: "/distribution" },
-      { label: "/dream-100 — voices we read on each channel", href: "/dream-100" },
+      { label: "/dream-100 — top 100 voices we read on each channel", href: "/dream-100" },
     ],
   },
   {
@@ -238,16 +238,16 @@ export default function DecadePage() {
             <span className="text-gray-400">A Decade in a Day</span>
           </nav>
           <p className="text-violet-400 text-xs font-semibold uppercase tracking-wider">
-            Expert Secrets · Ch 22 — A Decade in a Day · Applied
+            A decade in a day · Applied
           </p>
           <h1 className="text-3xl sm:text-5xl font-bold text-gray-100 leading-[1.1] tracking-tight">
             Ten years of developer-investor practice — <span className="text-violet-400">in twelve modules</span>.
           </h1>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
-            Brunson&rsquo;s teaching: when a curriculum exists, you compress
-            a decade of practice into a Saturday. The reader doesn&rsquo;t
-            need to repeat your mistakes — they need the conclusions you
-            walked away with, in the order that made them inevitable.
+            When a curriculum exists, you compress a decade of practice into
+            a Saturday. The reader doesn&rsquo;t need to repeat your
+            mistakes — they need the conclusions you walked away with, in
+            the order that made them inevitable.
           </p>
           <p className="text-gray-300 text-base leading-relaxed">
             Twelve modules · {TOTAL_MIN} minutes total · designed to be read
@@ -337,11 +337,11 @@ export default function DecadePage() {
             Don&rsquo;t print this. Pick one module and live in it for a week.
           </h2>
           <p className="text-gray-300 text-base leading-relaxed">
-            Brunson&rsquo;s rule for compressed curricula: a Saturday-morning
-            read changes nothing if you don&rsquo;t pick a single beat to
-            embody. We&rsquo;d pick Module 6 — the Big Domino — and rewrite
-            it for whatever you&rsquo;re building this quarter. Once you have
-            your Big Domino, every other module re-reads in five minutes.
+            A Saturday-morning read changes nothing if you don&rsquo;t pick
+            a single beat to embody. We&rsquo;d pick Module 6 — the core
+            claim — and rewrite it for whatever you&rsquo;re building this
+            quarter. Once you have your core claim, every other module
+            re-reads in five minutes.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 pt-2">
             <a
@@ -360,9 +360,7 @@ export default function DecadePage() {
         </section>
 
         <p className="text-gray-400 text-xs leading-relaxed border-t border-slate-800 pt-6">
-          Curriculum compressed per <em>Expert Secrets</em> Ch 22 (A Decade
-          in a Day) by Russell Brunson (2017/2020). Used here under
-          fair-use commentary. Not affiliated with ClickFunnels.
+          Curriculum compressed from direct-response sales canon.
         </p>
       </div>
     </>

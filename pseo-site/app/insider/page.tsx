@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title:
     "Insider Circle — See Every Signal 24 Hours Before The Public · €97/mo",
   description:
-    "The Insider Circle Perfect Webinar. If the public Acceleration Watch publishes Mondays at 09:00 UTC, Insiders read the same names Sunday at 09:00 UTC. The single belief: in venture, edge is time, not research. Stack value €3,042/yr — founder rate €97/mo locked forever.",
+    "The Insider Circle walkthrough. If the public Acceleration Watch publishes Mondays at 09:00 UTC, Insiders read the same names Sunday at 09:00 UTC. The single belief: in venture, edge is time, not research. Stack value €3,042/yr — founder rate €97/mo locked forever.",
   alternates: {
     canonical: "/insider",
   },
@@ -278,7 +278,7 @@ export default function InsiderPage() {
           className="bg-gradient-to-br from-emerald-950/40 via-slate-900 to-slate-950 border border-emerald-700/40 rounded-xl p-6 sm:p-8 space-y-4 scroll-mt-20"
         >
           <p className="text-emerald-300 text-xs font-semibold uppercase tracking-wider">
-            The big domino
+            The core claim
           </p>
           <h2
             className="text-2xl sm:text-4xl font-bold text-gray-100 leading-tight tracking-tight"
@@ -709,7 +709,7 @@ export default function InsiderPage() {
               href="/perfect-webinar"
               className="text-emerald-400 hover:text-emerald-300 underline decoration-dotted"
             >
-              Dashboard Perfect Webinar
+              Dashboard walkthrough
             </Link>{" "}
             first — Insider includes everything in Dashboard.
           </p>

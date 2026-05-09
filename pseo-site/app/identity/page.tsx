@@ -151,7 +151,7 @@ export default function IdentityPage() {
         "@id": "https://signals.gitdealflow.com/identity#article",
         headline: "Who You Become — The Code-Reading Partner",
         description:
-          "Brunson Three Core Markets framework applied: Wealth (returns) primary, Status (analyst reputation) secondary. Seven before/after shifts.",
+          "Wealth (returns) primary, Status (analyst reputation) secondary. Seven before/after shifts.",
         author: {
           "@type": "Organization",
           name: "VC Deal Flow Signal",
@@ -336,10 +336,10 @@ export default function IdentityPage() {
             Read the case · 12 minutes
           </p>
           <h3 className="text-gray-100 font-bold text-xl mb-2 leading-snug">
-            The 12-minute Perfect Webinar.
+            The 12-minute walkthrough.
           </h3>
           <p className="text-gray-400 text-sm leading-relaxed flex-1 mb-4">
-            The full hook → story → big-domino → stack → close, written for the
+            The full hook → story → core-claim → stack → close, written for the
             investor who has twelve minutes between meetings.
           </p>
           <span className="inline-flex items-center gap-1.5 text-sky-300 text-sm font-semibold">

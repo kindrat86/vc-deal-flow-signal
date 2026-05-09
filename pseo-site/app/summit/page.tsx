@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     title:
       "VC Engineering Acceleration Summit — 5 days · 20 talks · Free",
     description:
-      "Five days, twenty talks. Each talk free for 24h after it airs. The Big Domino, the methodology, the sector deep-dives, the operationalisation, the Stadium Pitch.",
+      "Five days, twenty talks. Each talk free for 24h after it airs. The core claim, the methodology, the sector deep-dives, the operationalisation, the founder talk.",
     url: `${SITE}/summit`,
     type: "article",
   },
@@ -346,7 +346,7 @@ export default function SummitPage() {
             <p className="mt-3 text-sm text-gray-400 leading-relaxed">
               Remotion-rendered slides + synthetic Cartesia narration. The
               same anonymous-by-design pipeline behind the weekly Acceleration
-              Watch and the monthly Stadium Pitch on /state-of-github. Every
+              Watch and the monthly founder talk on /state-of-github. Every
               talk has a full text transcript so you can read or skim if you'd
               rather not watch.
             </p>
@@ -382,7 +382,7 @@ export default function SummitPage() {
         <p className="text-xs text-gray-400 text-center border-t border-slate-800 pt-6">
           See also:{" "}
           <Link href="/state-of-github" className="hover:text-gray-300">State of GitHub address</Link>{" "}·{" "}
-          <Link href="/perfect-webinar" className="hover:text-gray-300">12-min Perfect Webinar</Link>{" "}·{" "}
+          <Link href="/perfect-webinar" className="hover:text-gray-300">12-min walkthrough</Link>{" "}·{" "}
           <Link href="/manifesto" className="hover:text-gray-300">Manifesto</Link>{" "}·{" "}
           <Link href="/firstlook" className="hover:text-gray-300">€7 First Look</Link>
         </p>

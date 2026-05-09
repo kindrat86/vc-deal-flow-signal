@@ -120,13 +120,13 @@ const PLAYS: Play[] = [
   },
   {
     id: "linkedin-dream-100",
-    channel: "LinkedIn Dream 100 engagement",
+    channel: "LinkedIn top-100 engagement",
     cadence: "2x per week (Tue + Fri 14:00 EEST)",
-    format: "Company-page comments on Dream 100 posts (max 4/week)",
-    what: "Company page only (no founder personal account, anonymity rule). Substantive replies to Dream 100 LinkedIn posts that match our buyer's reading habits.",
+    format: "Company-page comments on top-100 posts (max 4/week)",
+    what: "Company page only (no founder personal account, anonymity rule). Substantive replies to top-100 LinkedIn posts that match our buyer's reading habits.",
     why: "LinkedIn algorithm rewards consistent commenting on the same network's posts. Comments compound; broadcast posts don't.",
     rule: "Company page only. First-comment self-tactic in 15 min: preempt skeptic + SSRN anchor + CTA URL on own line (memory: feedback_linkedin_self_comment_tactic.md).",
-    link: { label: "Dream 100 voices we read", href: "/dream-100" },
+    link: { label: "Top-100 voices we read", href: "/dream-100" },
   },
 ];
 
@@ -148,7 +148,7 @@ export default function EarnedPlaysPage() {
         "@id": "https://signals.gitdealflow.com/earned-plays",
         name: "Earned Plays — the traffic playbook",
         description:
-          "Specific traffic plays we run on every earned channel — Reddit AEO, dev.to, Substack, MCP, federated social, SSRN, GitHub, Wikidata, agent-side mirrors, LinkedIn Dream 100.",
+          "Specific traffic plays we run on every earned channel — Reddit AEO, dev.to, Substack, MCP, federated social, SSRN, GitHub, Wikidata, agent-side mirrors, LinkedIn top-100.",
         speakable: {
           "@type": "SpeakableSpecification",
           cssSelector: ["h1", "h2"],
@@ -184,16 +184,15 @@ export default function EarnedPlaysPage() {
             <span className="text-gray-400">Earned Plays</span>
           </nav>
           <p className="text-emerald-400 text-xs font-semibold uppercase tracking-wider">
-            Traffic Secrets · Ch 4 — Working Way In · Applied
+            Working way in · Applied
           </p>
           <h1 className="text-3xl sm:text-5xl font-bold text-gray-100 leading-[1.1] tracking-tight">
             Ten earned plays. <span className="text-emerald-400">Specific cadence, specific format, specific reason.</span>
           </h1>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
-            Brunson&rsquo;s teaching on Working Way In: don&rsquo;t buy
-            traffic until you can earn it. Here&rsquo;s the actual
-            playbook we run, with the cadence we honour and the rules we
-            don&rsquo;t bend. If you&rsquo;re building something parallel,
+            Don&rsquo;t buy traffic until you can earn it. Here&rsquo;s the
+            actual playbook we run, with the cadence we honour and the rules
+            we don&rsquo;t bend. If you&rsquo;re building something parallel,
             you can fork this directly.
           </p>
         </header>
@@ -278,10 +277,9 @@ export default function EarnedPlaysPage() {
             Six channels we&rsquo;re actively NOT on, and why.
           </h2>
           <p className="text-gray-300 text-base leading-relaxed">
-            Brunson&rsquo;s rule on channel selection: name what you cut
-            so visitors don&rsquo;t suggest it on a loop. Each cut is
-            durable — they&rsquo;re not on the &ldquo;maybe Q3&rdquo;
-            list, they&rsquo;re on the structurally-blocked list.
+            Name what you cut so visitors don&rsquo;t suggest it on a loop.
+            Each cut is durable — they&rsquo;re not on the &ldquo;maybe
+            Q3&rdquo; list, they&rsquo;re on the structurally-blocked list.
           </p>
           <ul className="space-y-2 pt-1">
             {NOT_PLAYING.map((np) => (
@@ -307,11 +305,10 @@ export default function EarnedPlaysPage() {
             Pick three plays, run them for a quarter, and only then add a fourth.
           </h2>
           <p className="text-gray-300 text-base leading-relaxed">
-            Brunson&rsquo;s rule for traffic: don&rsquo;t run all ten
-            channels at half-volume. Run three at full volume for ninety
-            days, measure, keep the two that compound, retire the third,
-            then add a fourth. Every play above had to earn its slot
-            against this same test.
+            Don&rsquo;t run all ten channels at half-volume. Run three at
+            full volume for ninety days, measure, keep the two that compound,
+            retire the third, then add a fourth. Every play above had to
+            earn its slot against this same test.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 pt-2">
             <Link
@@ -330,9 +327,7 @@ export default function EarnedPlaysPage() {
         </section>
 
         <p className="text-gray-400 text-xs leading-relaxed border-t border-slate-800 pt-6">
-          Earned-traffic playbook per <em>Traffic Secrets</em> Ch 4
-          (Working Way In) by Russell Brunson (2020). Used under
-          fair-use commentary.
+          Earned-traffic playbook drawn from direct-response sales canon.
         </p>
       </div>
     </>

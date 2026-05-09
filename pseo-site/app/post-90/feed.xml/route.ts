@@ -16,7 +16,7 @@ const SITE = "https://signals.gitdealflow.com";
 const FEED_URL = `${SITE}/post-90/feed.xml`;
 const CHANNEL_TITLE = "Engine Room — VC Deal Flow Signal";
 const CHANNEL_DESC =
-  "The post-90 cohort home for VC Deal Flow Signal. Weekly synthetic-voice voice memo on the single sharpest GitHub-acceleration break, plus the monthly Stadium Pitch and quarterly State-of-the-Engine post-mortem. Methodology, not personality. Anonymity-safe Cartesia voice, panel data, falsifiable predictions.";
+  "The post-90 cohort home for VC Deal Flow Signal. Weekly synthetic-voice voice memo on the single sharpest GitHub-acceleration break, plus the monthly founder talk and quarterly State-of-the-Engine post-mortem. Methodology, not personality. Anonymity-safe Cartesia voice, panel data, falsifiable predictions.";
 
 function pad(n: number): string {
   return n < 10 ? `0${n}` : String(n);
@@ -111,7 +111,7 @@ function buildEpisodes(now: Date): Episode[] {
     const monthLabel = t.toLocaleString("en-US", { month: "long", year: "numeric", timeZone: "UTC" });
     items.push({
       guid: `${SITE}/state-of-github/${t.toISOString().slice(0, 7)}`,
-      title: `Stadium Pitch — ${monthLabel}`,
+      title: `Founder talk — ${monthLabel}`,
       description:
         "Monthly address. What the panel showed across 4,200+ venture-backed orgs this month, what shifted in the false-positive rate, and one falsifiable prediction on the record. Same content cadence as the State of GitHub written archive — now in audio + scheduled-event form.",
       pubDate: t,

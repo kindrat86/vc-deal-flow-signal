@@ -86,9 +86,9 @@ export default function SummitThanksPage() {
             </li>
             <li>
               <Link href="/perfect-webinar" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">
-                12-minute Perfect Webinar
+                12-minute walkthrough
               </Link>{" "}
-              — the Big Domino, written.
+              — the core claim, written.
             </li>
             <li>
               <Link href="/methodology" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">

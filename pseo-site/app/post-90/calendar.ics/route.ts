@@ -17,7 +17,7 @@ const FEED_URL = `${SITE}/post-90/calendar.ics`;
 const PRODID = "-//VC Deal Flow Signal//Engine Room//EN";
 const CALNAME = "Engine Room — VC Deal Flow Signal";
 const CALDESC =
-  "Cohort calendar for the post-90 signal rhythm. Monthly Stadium Pitch (first Tuesday at 16:00 UTC) and quarterly State-of-the-Engine post-mortem (Day 90 / 180 / 270 / 365). Subscribe once — calendar apps auto-refresh.";
+  "Cohort calendar for the post-90 signal rhythm. Monthly founder talk (first Tuesday at 16:00 UTC) and quarterly State-of-the-Engine post-mortem (Day 90 / 180 / 270 / 365). Subscribe once — calendar apps auto-refresh.";
 
 function pad(n: number): string {
   return n < 10 ? `0${n}` : String(n);
@@ -89,7 +89,7 @@ function buildEvents(now: Date): Event[] {
       uid: `stadium-${t.toISOString().slice(0, 7)}@gitdealflow.com`,
       start: t,
       end,
-      summary: `Stadium Pitch — ${monthLabel}`,
+      summary: `Founder talk — ${monthLabel}`,
       description: `Monthly address from VC Deal Flow Signal. What the panel showed across 4,200+ venture-backed orgs this month, what shifted in the false-positive rate, and one falsifiable prediction on the record. Drops as a synthetic-voice video on the Engine Room podcast feed and the State of GitHub archive at signals.gitdealflow.com/state-of-github.`,
       url: `${SITE}/state-of-github`,
     });

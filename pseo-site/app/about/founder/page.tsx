@@ -10,7 +10,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "About The Data Nerd — the founder behind VC Deal Flow Signal",
   description:
-    "Anonymous engineer-investor. Wrote the methodology paper on SSRN. Refuses to do podcasts. Three parables, one polarity, three character flaws this product has on purpose. Russell Brunson Attractive Character page.",
+    "Anonymous engineer-investor. Wrote the methodology paper on SSRN. Refuses to do podcasts. Three parables, one polarity, three character flaws this product has on purpose.",
   alternates: { canonical: "/about/founder" },
   openGraph: {
     title: "About The Data Nerd — VC Deal Flow Signal",
@@ -107,7 +107,7 @@ export default function FounderPage() {
 
         <header className="space-y-4">
           <p className="text-sky-400 text-xs font-medium uppercase tracking-wider">
-            About the founder · The Attractive Character
+            About the founder · The Data Nerd
           </p>
           <h1
             className="text-3xl sm:text-5xl font-bold text-gray-100 leading-[1.05] tracking-tight"
@@ -119,10 +119,9 @@ export default function FounderPage() {
             </span>
           </h1>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed" data-speakable>
-            This is the page Russell Brunson would say I owe you — the one where
-            you find out who I am, why I built this, and whether I&rsquo;m the
-            kind of person you want signal from. Skim the headers if you&rsquo;re
-            in a hurry.
+            This is the page where you find out who I am, why I built this,
+            and whether I&rsquo;m the kind of person you want signal from.
+            Skim the headers if you&rsquo;re in a hurry.
           </p>
           <DataNerdAudio
             slug="about-founder"
@@ -311,10 +310,9 @@ export default function FounderPage() {
             Three things wrong with me, on purpose.
           </h2>
           <p className="text-gray-300 text-base leading-relaxed">
-            Brunson says the Attractive Character has visible flaws because
-            without them you sound like a brochure. These are real. If
-            they&rsquo;re dealbreakers, this product probably isn&rsquo;t for
-            you and that&rsquo;s OK.
+            Visible flaws because without them you sound like a brochure.
+            These are real. If they&rsquo;re dealbreakers, this product
+            probably isn&rsquo;t for you and that&rsquo;s OK.
           </p>
           <ul className="text-gray-200 text-base leading-relaxed space-y-3 pl-1">
             <li>
@@ -360,8 +358,7 @@ export default function FounderPage() {
             this page), seven voice rules the site is audited against, the
             synthetic-voice disclosure, and the six surfaces where you&rsquo;ll
             meet the same handle — that lives at the canonical character page.
-            Brunson would call this the Attractive-Character bible. Same
-            handle, same voice, more density.
+            Same handle, same voice, more density.
           </p>
           <Link
             href="/data-nerd"
@@ -387,7 +384,7 @@ export default function FounderPage() {
               href="/perfect-webinar"
               className="text-sky-400 hover:text-sky-300 underline decoration-dotted font-medium"
             >
-              12-minute Perfect Webinar
+              12-minute walkthrough
             </Link>{" "}
             for the long version of why GitHub momentum is the most leading
             public deal-flow signal. Or skip to the{" "}

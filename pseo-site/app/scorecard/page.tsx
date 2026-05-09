@@ -9,7 +9,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Scorecard — Acceleration Watch grading at 60 and 90 days",
   description:
-    "Public scorecard of every Acceleration Watch pick. Grading rules, hit/miss/pending counts, lead-time measurement against fundraise announcements. Magic Bullet on a rolling cadence.",
+    "Public scorecard of every Acceleration Watch pick. Grading rules, hit/miss/pending counts, lead-time measurement against fundraise announcements. One-shot proof on a rolling cadence.",
   alternates: { canonical: "/scorecard" },
   openGraph: {
     title: "Scorecard — Acceleration Watch public grading",
@@ -131,18 +131,17 @@ export default function ScorecardPage() {
             <span className="text-gray-400">Scorecard</span>
           </nav>
           <p className="text-amber-400 text-xs font-semibold uppercase tracking-wider">
-            Expert Secrets · Ch 13 — Magic Bullet · Rolling cadence
+            One-shot proof · Rolling cadence
           </p>
           <h1 className="text-3xl sm:text-5xl font-bold text-gray-100 leading-[1.1] tracking-tight">
             Public scorecard. <span className="text-amber-400">Every pick, graded.</span>
           </h1>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
-            Brunson&rsquo;s teaching on the Magic Bullet: a single
-            demonstration is good, but a public, rolling, recurring
-            scorecard is the demonstration that compounds. Every
-            Acceleration Watch pick lands with a date, gets graded at
-            60 and 90 days, and stays on this page whether it Hit, Missed,
-            or is still Pending. No hiding the misses.
+            A single demonstration is good, but a public, rolling, recurring
+            scorecard is the demonstration that compounds. Every Acceleration
+            Watch pick lands with a date, gets graded at 60 and 90 days, and
+            stays on this page whether it Hit, Missed, or is still Pending.
+            No hiding the misses.
           </p>
         </header>
 
@@ -304,10 +303,8 @@ export default function ScorecardPage() {
         </section>
 
         <p className="text-gray-400 text-xs leading-relaxed border-t border-slate-800 pt-6">
-          Public-grading scorecard per <em>Expert Secrets</em> Ch 13
-          (Magic Bullet — rolling demonstration variant) +{" "}
-          <em>DotCom Secrets</em> Ch 22 (Magic Bullet) by Russell
-          Brunson. Used under fair-use commentary.
+          Public-grading scorecard drawn from direct-response sales canon —
+          a rolling-demonstration variant of the one-shot proof.
         </p>
       </div>
     </>

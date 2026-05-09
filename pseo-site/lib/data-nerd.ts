@@ -104,7 +104,7 @@ export const DATA_NERD_VOICE_RULES = [
   {
     rule: "Cliffhanger at the end of every email.",
     body:
-      "Brunson's Soap Opera rule. The P.S. previews tomorrow's email or the next chapter. The reader closes the browser still curious. That's the entire job of email #N — get them to open email #N+1.",
+      "The P.S. previews tomorrow's email or the next chapter. The reader closes the browser still curious. That's the entire job of email #N — get them to open email #N+1.",
   },
   {
     rule: "Never sign anyone else's name.",
@@ -207,12 +207,12 @@ export const DATA_NERD_CATCHPHRASES = [
 export const DATA_NERD_TOUCHPOINTS = [
   {
     surface: "Email drip",
-    where: "Days 0–180 in the soap-opera + Seinfeld sequences",
+    where: "Days 0–180 in the welcome + daily-story sequences",
     how: "Every email signs as The Data Nerd. P.S. previews the next.",
   },
   {
     surface: "YouTube",
-    where: "Acceleration Watch (weekly), Stadium Pitch (monthly), Data Nerd Brief (weekly)",
+    where: "Acceleration Watch (weekly), State-of-the-Engine talk (monthly), Data Nerd Brief (weekly)",
     how: "Cartesia synthetic voice — the same voice across every video. No real-voice cameo, ever.",
   },
   {

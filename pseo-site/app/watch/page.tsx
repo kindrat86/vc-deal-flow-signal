@@ -224,7 +224,7 @@ export default function WatchPage() {
                 href="/perfect-webinar"
                 className="text-sky-400 hover:text-sky-300 underline decoration-dotted"
               >
-                Read the 12-minute Perfect Webinar →
+                Read the 12-minute walkthrough →
               </Link>{" "}
               The long version of why the signal works.
             </li>

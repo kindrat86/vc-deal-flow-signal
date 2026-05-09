@@ -11,12 +11,12 @@ import { getReplayWindowSnapshot } from "@/lib/replay-window";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "The 5-Minute Perfect Webinar — GitDealFlow in 800 words",
+  title: "The 5-Minute Walkthrough — GitDealFlow in 800 words",
   description:
-    "The Brunson Perfect Webinar, condensed. Big Domino, three objections, stack, four closes — in five minutes flat. For the buyer who doesn't have twelve.",
+    "The full pitch, condensed. Core claim, three objections, offer stack, four closes — in five minutes flat. For the buyer who doesn't have twelve.",
   alternates: { canonical: "/perfect-webinar/5min" },
   openGraph: {
-    title: "The 5-Minute Perfect Webinar",
+    title: "The 5-Minute Walkthrough",
     description:
       "GitDealFlow's full sales argument in 800 words. Read it on the way to a meeting.",
     url: "https://signals.gitdealflow.com/perfect-webinar/5min",
@@ -38,9 +38,9 @@ export default function FiveMinPerfectWebinarPage() {
       {
         "@type": "Article",
         "@id": "https://signals.gitdealflow.com/perfect-webinar/5min#article",
-        headline: "The 5-Minute Perfect Webinar — GitDealFlow in 800 words",
+        headline: "The 5-Minute Walkthrough — GitDealFlow in 800 words",
         description:
-          "Brunson's Perfect Webinar architecture, condensed to 5 minutes. Big Domino, three objections, stack, four closes.",
+          "GitDealFlow's full sales argument condensed to 5 minutes. Core claim, three objections, offer stack, four closes.",
         url: "https://signals.gitdealflow.com/perfect-webinar/5min",
         datePublished: "2026-05-05T00:00:00.000Z",
         dateModified: "2026-05-05T00:00:00.000Z",
@@ -61,7 +61,7 @@ export default function FiveMinPerfectWebinarPage() {
         "@type": "BreadcrumbList",
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Home", item: "https://signals.gitdealflow.com" },
-          { "@type": "ListItem", position: 2, name: "Perfect Webinar", item: "https://signals.gitdealflow.com/perfect-webinar" },
+          { "@type": "ListItem", position: 2, name: "12-Minute Walkthrough", item: "https://signals.gitdealflow.com/perfect-webinar" },
           { "@type": "ListItem", position: 3, name: "5-Minute Edition", item: "https://signals.gitdealflow.com/perfect-webinar/5min" },
         ],
       },
@@ -89,12 +89,12 @@ export default function FiveMinPerfectWebinarPage() {
           <nav aria-label="Breadcrumb" className="text-xs text-gray-400">
             <Link href="/" className="hover:text-gray-300">Home</Link>
             <span className="mx-2">/</span>
-            <Link href="/perfect-webinar" className="hover:text-gray-300">Perfect Webinar</Link>
+            <Link href="/perfect-webinar" className="hover:text-gray-300">Walkthrough</Link>
             <span className="mx-2">/</span>
             <span className="text-gray-400">5-Minute Edition</span>
           </nav>
           <p className="text-amber-400 text-xs font-semibold uppercase tracking-wider">
-            Expert Secrets · Ch 14 · The 5-Minute Perfect Webinar
+            The 5-Minute Walkthrough
           </p>
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 leading-[1.15] tracking-tight">
             GitDealFlow, the whole pitch — <span className="text-amber-400">in 800 words</span>.
@@ -102,14 +102,14 @@ export default function FiveMinPerfectWebinarPage() {
           <p className="text-gray-400 text-sm">
             Reading time: 5 min. If you have 12, the{" "}
             <Link href="/perfect-webinar" className="text-amber-300 hover:text-amber-200 underline decoration-dotted">
-              full Perfect Webinar
+              long-form walkthrough
             </Link>{" "}
             is here.
           </p>
           <DataNerdAudio
             slug="perfect-webinar-5min"
-            label="Press play — 5-minute auto-webinar, narrated by The Data Nerd"
-            subtitle="The whole pitch as audio. Read it, listen to it, or both. Hook → Story → Three Secrets → Stack → Four Closes — in five minutes flat."
+            label="Press play — 5-minute auto-walkthrough, narrated by The Data Nerd"
+            subtitle="The whole pitch as audio. Read it, listen to it, or both. Hook → Story → Three Objections → Offer Stack → Four Closes — in five minutes flat."
           />
         </header>
 
@@ -135,7 +135,7 @@ export default function FiveMinPerfectWebinarPage() {
         </section>
 
         <section className="space-y-3 border-l-4 border-sky-500 pl-5 py-2">
-          <h2 className="text-xl font-bold text-gray-100">The Big Domino</h2>
+          <h2 className="text-xl font-bold text-gray-100">The core claim</h2>
           <p className="text-gray-100 text-lg font-semibold leading-snug">
             If commit-velocity acceleration is the most leading public signal
             in venture capital, every other deal-flow source — pitch decks,
@@ -261,9 +261,9 @@ export default function FiveMinPerfectWebinarPage() {
         <p className="text-gray-400 text-xs leading-relaxed border-t border-slate-800 pt-5">
           Need the long version? The full{" "}
           <Link href="/perfect-webinar" className="text-amber-300 hover:text-amber-200 underline decoration-dotted">
-            12-minute Perfect Webinar
+            12-minute walkthrough
           </Link>{" "}
-          adds the origin story, the epiphany bridge, the conversion-story
+          adds the origin story, the discovery moment, the conversion-story
           script, the encore close, and the FAQ. Same argument, more depth.
         </p>
       </div>

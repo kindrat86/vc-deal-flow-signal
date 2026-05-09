@@ -32,9 +32,9 @@ export function DataNerdPolarityCard({
           Four polarities. If you nod through them, you&rsquo;re my reader.
         </h2>
         <p className="text-gray-400 text-sm leading-relaxed">
-          Brunson&rsquo;s rule: the Attractive Character has to take a side.
-          These are mine. If any of them feels wrong, this product is probably
-          wrong for you and that&rsquo;s honest.
+          The founder character has to take a side. These are mine. If any
+          of them feels wrong, this product is probably wrong for you and
+          that&rsquo;s honest.
         </p>
       </header>
 

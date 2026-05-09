@@ -36,12 +36,12 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Engine Room — the post-90 cohort home",
   description:
-    "You crossed Day 90. The Engine Room is where the rhythm continues — Sunday voice memo in your podcast app, monthly Stadium Pitch on your calendar, quarterly State-of-the-Engine post-mortem on the record. Three subscribe links. No more inbox-only.",
+    "You crossed Day 90. The Engine Room is where the rhythm continues — Sunday voice memo in your podcast app, monthly founder talk on your calendar, quarterly State-of-the-Engine post-mortem on the record. Three subscribe links. No more inbox-only.",
   alternates: { canonical: "/post-90" },
   openGraph: {
     title: "Engine Room — the post-90 cohort home",
     description:
-      "Sunday voice memo, monthly Stadium drop, quarterly post-mortem. The 90-day rhythm continues in your podcast app and your calendar — not just your inbox.",
+      "Sunday voice memo, monthly founder talk, quarterly post-mortem. The 90-day rhythm continues in your podcast app and your calendar — not just your inbox.",
     type: "article",
     url: `${SITE}/post-90`,
   },
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Engine Room — post-90 cohort home",
     description:
-      "Sunday voice memo, monthly Stadium drop, quarterly post-mortem. Channel-shift from inbox to podcast app and calendar.",
+      "Sunday voice memo, monthly founder talk, quarterly post-mortem. Channel-shift from inbox to podcast app and calendar.",
   },
 };
 
@@ -66,7 +66,7 @@ const RITUALS = [
   },
   {
     cadence: "First Tuesday of each month · 16:00 UTC",
-    title: "The Stadium Pitch",
+    title: "The monthly founder talk",
     medium: "Synthetic-voice video · 8–12 min · YouTube + RSS",
     body:
       "The monthly address — what the panel showed across 4,200+ venture-backed orgs, what shifted in the false-positive rate, and one falsifiable prediction on the record. Same content cadence as State of GitHub, now scheduled in your calendar so it lands as an event, not an email surprise.",
@@ -121,7 +121,7 @@ const SUBSCRIBE_LINKS = [
 
 const COMMITMENT_RITUAL = [
   "Open the Sunday voice memo in your podcast app of choice. Background-listen while you make coffee. The whole point of the channel-shift is that you are *not* in your email when this lands.",
-  "Add the calendar feed once. The first Tuesday of every month from now on, the Stadium Pitch is on your calendar — not a surprise drop.",
+  "Add the calendar feed once. The first Tuesday of every month from now on, the founder talk is on your calendar — not a surprise drop.",
   "When the quarterly post-mortem hits, reply with one sentence: did the previous quarter's prediction resolve on your radar before consensus? That sentence is the only feedback loop the engine asks for.",
 ] as const;
 
@@ -134,7 +134,7 @@ export default function Post90Page() {
         "@id": `${SITE}/post-90#page`,
         name: "Engine Room — post-90 cohort home",
         description:
-          "Cohort home for graduates of the 90-day signal rhythm. Sunday voice memo, monthly Stadium Pitch, quarterly State-of-the-Engine post-mortem. Three subscribe channels — podcast app, calendar app, public Receipts ledger.",
+          "Cohort home for graduates of the 90-day signal rhythm. Sunday voice memo, monthly founder talk, quarterly State-of-the-Engine post-mortem. Three subscribe channels — podcast app, calendar app, public Receipts ledger.",
         url: `${SITE}/post-90`,
         inLanguage: "en-US",
         isPartOf: { "@type": "WebSite", name: "VC Deal Flow Signal", url: "https://gitdealflow.com" },
@@ -155,7 +155,7 @@ export default function Post90Page() {
         "@id": `${SITE}/post-90#podcast`,
         name: "Engine Room — VC Deal Flow Signal",
         description:
-          "Weekly synthetic-voice voice memo for graduates of the 90-day signal rhythm. The single sharpest acceleration break each Sunday, plus the monthly Stadium Pitch and quarterly State-of-the-Engine post-mortem.",
+          "Weekly synthetic-voice voice memo for graduates of the 90-day signal rhythm. The single sharpest acceleration break each Sunday, plus the monthly founder talk and quarterly State-of-the-Engine post-mortem.",
         url: `${SITE}/post-90`,
         webFeed: `${SITE}/post-90/feed.xml`,
         publisher: { "@type": "Organization", name: "VC Deal Flow Signal", url: "https://gitdealflow.com" },
@@ -217,10 +217,10 @@ export default function Post90Page() {
             Engine Room.
           </h1>
           <p className="text-amber-200/80 text-base sm:text-lg leading-relaxed font-sans" data-speakable>
-            You crossed Day 90 of the signal rhythm. The 21-email soap-opera and
-            Seinfeld sequence ends here — the relationship doesn&rsquo;t. From this
-            page on, the rhythm lives in three different surfaces, deliberately
-            outside your inbox.
+            You crossed Day 90 of the signal rhythm. The 21-email welcome
+            sequence and daily-drip end here — the relationship
+            doesn&rsquo;t. From this page on, the rhythm lives in three
+            different surfaces, deliberately outside your inbox.
           </p>
           <div className="text-sm text-gray-400 font-sans pt-2 border-t border-amber-500/20">
             <span className="text-amber-400">›</span> Why the change of context:
@@ -274,7 +274,7 @@ export default function Post90Page() {
           </h2>
           <p className="text-sm text-gray-400 leading-relaxed">
             The same RSS feed plugs into every podcast app. The calendar feed
-            adds the Stadium Pitch + post-mortem dates to your calendar. Two
+            adds the founder talk + post-mortem dates to your calendar. Two
             URLs, four apps, done.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -321,7 +321,7 @@ export default function Post90Page() {
               <div className="text-emerald-400 font-mono text-xs mb-2">+ NEW (post-Day-90)</div>
               <ul className="space-y-1 text-gray-300">
                 <li>• Sunday voice memo in your podcast app</li>
-                <li>• Monthly Stadium Pitch on your calendar</li>
+                <li>• Monthly founder talk on your calendar</li>
                 <li>• Quarterly post-mortem on the record</li>
                 <li>• Public Receipts ledger as the resolve-tracker</li>
               </ul>

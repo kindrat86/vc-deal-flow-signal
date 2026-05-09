@@ -225,7 +225,7 @@ export default function PitchPage() {
             href="/perfect-webinar"
             className="text-sky-400 hover:text-sky-300 underline decoration-dotted"
           >
-            12-minute Perfect Webinar
+            12-minute walkthrough
           </Link>{" "}
           — same case, three objections broken, full stack reveal.
         </p>

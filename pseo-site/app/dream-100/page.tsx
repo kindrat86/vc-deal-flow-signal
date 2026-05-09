@@ -24,14 +24,14 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title:
-    "Dream 100 — literal roster of 100 voices, ICP-scored with engagement status",
+    "Top 100 — literal roster of 100 voices, ICP-scored with engagement status",
   description:
     "100 named publications, communities, GitHub orgs, podcasts, datasets, and LinkedIn Company Pages where the developer-investor's audience already lives. Each entry carries an engagement status flag (engage / watch / hold / read / blocked) and a Match × Reach × Engage ICP score (0-100), so the roster reads as a working board with explicit priority — not a wishlist.",
   alternates: { canonical: "/dream-100" },
   openGraph: {
-    title: "Dream 100 — voices we read, ICP-scored, with engagement status",
+    title: "Top 100 — voices we read, ICP-scored, with engagement status",
     description:
-      "Numbered roster of 100 named entities, ICP-scored on Match × Reach × Engage, status-flagged for engagement. The Brunson Dream 100 applied to the developer-investor.",
+      "Numbered roster of 100 named entities, ICP-scored on Match × Reach × Engage, status-flagged for engagement. The top-100 ICP list applied to the developer-investor.",
     url: "https://signals.gitdealflow.com/dream-100",
     type: "article",
   },
@@ -143,7 +143,7 @@ export default function Dream100Page() {
       {
         "@type": "WebPage",
         "@id": "https://signals.gitdealflow.com/dream-100",
-        name: "Dream 100 — literal roster, ICP-scored, with engagement status",
+        name: "Top 100 — literal roster, ICP-scored, with engagement status",
         description:
           "100 named publications, communities, GitHub orgs, podcasts, datasets, and LinkedIn Company Pages where the developer-investor's audience already lives. Each entry carries an engagement status flag and a Match × Reach × Engage ICP score (0-100).",
         speakable: {
@@ -155,12 +155,12 @@ export default function Dream100Page() {
         "@type": "BreadcrumbList",
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Home", item: "https://signals.gitdealflow.com" },
-          { "@type": "ListItem", position: 2, name: "Dream 100", item: "https://signals.gitdealflow.com/dream-100" },
+          { "@type": "ListItem", position: 2, name: "Top 100", item: "https://signals.gitdealflow.com/dream-100" },
         ],
       },
       {
         "@type": "ItemList",
-        name: "Dream 100 — voices we read",
+        name: "Top 100 — voices we read",
         numberOfItems: DREAM_100_TOTAL,
         itemListOrder: "https://schema.org/ItemListOrderAscending",
         itemListElement: ROSTER.map((r) => ({
@@ -199,13 +199,13 @@ export default function Dream100Page() {
               Home
             </Link>
             <span className="mx-2">/</span>
-            <span className="text-gray-400">Dream 100</span>
+            <span className="text-gray-400">Top 100</span>
           </nav>
           <p className="text-sky-400 text-xs font-semibold uppercase tracking-wider">
-            Traffic Secrets, Section 1, Chapter 5 · Applied · ICP-scored
+            Top-100 ICP list · Applied · ICP-scored
           </p>
           <h1 className="text-3xl sm:text-5xl font-bold text-gray-100 leading-[1.1] tracking-tight">
-            The Dream 100 — the{" "}
+            The Top 100 — the{" "}
             <span className="text-sky-400">literal roster</span> of 100 voices,
             ICP-scored, with engagement status.
           </h1>
@@ -213,14 +213,13 @@ export default function Dream100Page() {
             className="text-gray-300 text-base sm:text-lg leading-relaxed"
             data-speakable
           >
-            Brunson&rsquo;s rule: pick the 100 publications, communities, and
-            orgs whose audience already contains your dream customer.
-            Don&rsquo;t pitch — show up where they are, contribute, let the
-            signal compound.
+            The rule: pick the 100 publications, communities, and orgs whose
+            audience already contains your dream customer. Don&rsquo;t pitch —
+            show up where they are, contribute, let the signal compound.
           </p>
           <p className="text-gray-300 text-base leading-relaxed">
-            Most pages that quote the Dream 100 stop at the framework. We list
-            the actual 100 names, numbered 1 to 100, with two layers:{" "}
+            Most pages that quote the top-100 ICP list stop at the framework.
+            We list the actual 100 names, numbered 1 to 100, with two layers:{" "}
             <strong className="text-gray-100">engagement status</strong> (what
             we&rsquo;re doing about it now) and{" "}
             <strong className="text-gray-100">ICP score</strong> (how worth
@@ -291,8 +290,7 @@ export default function Dream100Page() {
               </dt>
               <dd className="text-gray-400 leading-relaxed text-[13px]">
                 Audience scale, log-ish (1 ≈ &lt;1k, 5 ≈ ~50k, 8 ≈ 500k,
-                10 ≈ &gt;5M). Multiplier is 3 — Brunson&rsquo;s rule: Match
-                before Reach.
+                10 ≈ &gt;5M). Multiplier is 3 — the rule: Match before Reach.
               </dd>
             </div>
             <div className="space-y-1">
@@ -337,8 +335,8 @@ export default function Dream100Page() {
             </h2>
             <p className="text-gray-400 text-sm leading-relaxed">
               Sorted by Match × Reach × Engage. If a voice is in the top 25,
-              we already have a Brunson-style monthly action against it (PR,
-              comment, integration ship, Substack Note quote-thread, LinkedIn
+              we already have a monthly action against it (PR, comment,
+              integration ship, Substack Note quote-thread, LinkedIn
               Company-Page reply).
             </p>
           </div>
@@ -511,9 +509,9 @@ export default function Dream100Page() {
             One contact per surface, twice a week, ceiling of four.
           </h2>
           <p className="text-gray-300 text-base leading-relaxed">
-            The Dream 100 is not a contact-list to email. It&rsquo;s a board
-            we work in public. Every Tuesday and Friday at 14:00 EEST, the
-            company page replies on one or two posts inside the{" "}
+            The top-100 list is not a contact-list to email. It&rsquo;s a
+            board we work in public. Every Tuesday and Friday at 14:00 EEST,
+            the company page replies on one or two posts inside the{" "}
             <code className="text-sky-300 bg-slate-900 px-1 py-0.5 rounded text-xs">
               engage
             </code>
@@ -581,10 +579,9 @@ export default function Dream100Page() {
         </section>
 
         <p className="text-gray-400 text-xs leading-relaxed border-t border-slate-800 pt-6">
-          The Dream 100 is a teaching from{" "}
-          <em>Traffic Secrets</em> by Russell Brunson (2020). Used here under
-          fair-use commentary. Not affiliated with ClickFunnels or Russell.
-          The full audit of how this site reverse-engineers the trilogy is on{" "}
+          The top-100 ICP list is drawn from direct-response sales canon. The
+          full audit of how this site reverse-engineers competitor playbooks
+          is on{" "}
           <Link
             href="/funnels"
             className="text-gray-400 hover:text-gray-300 underline decoration-dotted"

@@ -509,12 +509,9 @@ export default function SectorSweepPage() {
         <DataNerdSignoff variant="long" catchphraseIndex={1} />
 
         <p className="text-gray-400 text-xs leading-relaxed border-t border-slate-800 pt-6">
-          Funnel framing per <em>DotCom Secrets</em> Ch 18 (Cart Funnels) +
-          Ch 23 (Application Funnels) and <em>Expert Secrets</em> Ch 16+17
-          (Magic Script / Setter-Closer), Russell Brunson, 2017/2020.
-          Implemented under the anonymity rule — async-only setter, written
-          closer, pseudonymous handle on every reply. Used under fair-use
-          commentary.
+          Application-funnel structure with an async-only intake and a written
+          closer. Pseudonymous handle on every reply — anonymity rule applies
+          end-to-end.
         </p>
       </div>
     </>

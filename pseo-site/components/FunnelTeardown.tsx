@@ -121,10 +121,10 @@ export function FunnelTeardown({ teardown, withAnchor = true }: FunnelTeardownPr
                   </p>
                 </div>
 
-                {/* Brunson note (highlighted middle column) */}
+                {/* Mechanic note (highlighted middle column) */}
                 <div className="rounded-md border border-amber-900/40 bg-amber-950/20 p-4">
                   <p className="text-[10px] font-medium uppercase tracking-wider text-amber-400/80 mb-2">
-                    Brunson Read
+                    Mechanic Read
                   </p>
                   <p className="text-amber-100/90 leading-relaxed italic">
                     {step.brunsonNote}

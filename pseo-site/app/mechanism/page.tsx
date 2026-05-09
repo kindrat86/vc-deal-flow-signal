@@ -423,10 +423,8 @@ export default function MechanismPage() {
 
         <p className="text-slate-500 text-xs leading-relaxed border-t border-slate-800 pt-6">
           Sophistication-ladder framing per Eugene Schwartz,{" "}
-          <em>Breakthrough Advertising</em> (1966), as taught by Russell
-          Brunson in <em>DotCom Secrets</em> Ch 6 (Three Levels of Market
-          Sophistication, 2020). The decision to publish the mechanism rather
-          than gate it is documented at{" "}
+          <em>Breakthrough Advertising</em> (1966). The decision to publish
+          the mechanism rather than gate it is documented at{" "}
           <Link href="/manifesto" className="text-amber-300 hover:underline">
             /manifesto
           </Link>{" "}

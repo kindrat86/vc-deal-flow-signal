@@ -75,7 +75,7 @@ export default function FridayPreviewPage() {
         name: "Friday preview — Sunday's five, names redacted",
         url: "https://signals.gitdealflow.com/friday-preview",
         description:
-          "Brunson Best-Bait teaser surface — show the shape of the Sunday digest without revealing the names.",
+          "Right-shaped-bait teaser surface — show the shape of the Sunday digest without revealing the names.",
       },
       {
         "@type": "BreadcrumbList",
@@ -221,12 +221,11 @@ export default function FridayPreviewPage() {
             Why redact?
           </p>
           <p className="text-gray-300 text-sm leading-relaxed">
-            Brunson&rsquo;s rule of bait: show enough to let the buyer
-            verify the value, but not so much that they no longer need to
-            consume the offer. The shape of the digest IS the value
-            preview — sector + stage + velocity-bucket + signal-type stack
-            is the engine&rsquo;s actual output. Names are the payload.
-            Trailer first, payload Sunday.
+            Show enough to let the buyer verify the value, but not so much
+            that they no longer need to consume the offer. The shape of the
+            digest IS the value preview — sector + stage + velocity-bucket +
+            signal-type stack is the engine&rsquo;s actual output. Names are
+            the payload. Trailer first, payload Sunday.
           </p>
         </aside>
 

@@ -47,7 +47,7 @@ const EXPERIMENTS: Experiment[] = [
     status: "won",
     liftPct: "+ measurable Sweep take",
     takeaway:
-      "Order-bumps need to be visible at decision time, not previewed in the post-purchase email. Brunson DotCom Ch 12 confirmed.",
+      "Order-bumps need to be visible at decision time, not previewed in the post-purchase email. Confirmed.",
   },
   {
     id: "fw-closes-2026-05",
@@ -60,7 +60,7 @@ const EXPERIMENTS: Experiment[] = [
       "Page reads longer (good for SEO + AEO), encore close reduced exit rate at the FAQ inflection. Conversion baseline measurement still maturing.",
     status: "running",
     takeaway:
-      "Even pre-conversion-data, the named closes earn attention; one close fits one buyer profile, not all. Expert Secrets Ch 18 confirmed in copy.",
+      "Even pre-conversion-data, the named closes earn attention; one close fits one buyer profile, not all. Confirmed in copy.",
   },
   {
     id: "id-decl-home-2026-05",
@@ -73,7 +73,7 @@ const EXPERIMENTS: Experiment[] = [
       "Time-on-page lifted on home; pricing scrolls deeper. Wrong-buyer email reply-rate dropped (anecdotal).",
     status: "won",
     takeaway:
-      "Identity is upstream of price. Brunson Identity Close fires before the buyer sees the number.",
+      "Identity is upstream of price. The identity close fires before the buyer sees the number.",
   },
   {
     id: "fornot-home-2026-05",
@@ -86,24 +86,24 @@ const EXPERIMENTS: Experiment[] = [
       "Hard to A/B a polarising block clean — both qualified and wrong-fit visitors self-select faster. Email reply rate from disqualified visitors dropped to near zero.",
     status: "won",
     takeaway:
-      "Polarisation is the point. Don't soften the NOT-FOR column to 'be welcoming.' Traffic Secrets Ch 1 confirmed.",
+      "Polarisation is the point. Don't soften the NOT-FOR column to 'be welcoming.' Confirmed.",
   },
   {
     id: "fb-pw-2026-05",
-    name: "5-Minute Perfect Webinar variant",
+    name: "5-Minute walkthrough variant",
     surface: "/perfect-webinar/5min",
     date: "2026-05",
     hypothesis:
-      "A condensed 5-minute version captures buyers with less time who would have bounced from the 12-min full PW.",
+      "A condensed 5-minute version captures buyers with less time who would have bounced from the full 12-min walkthrough.",
     result:
-      "Live as of V5 ship. Cross-link from full PW + email D3.5 + Start Here. Early signal: agents prefer the 5-min for retrieval, humans split.",
+      "Live as of V5 ship. Cross-link from full walkthrough + email D3.5 + Start Here. Early signal: agents prefer the 5-min for retrieval, humans split.",
     status: "running",
     takeaway:
       "Length is a feature, not a flaw. Two versions of the same argument cover both buyer types.",
   },
   {
     id: "magicbullet-pred-2026-05",
-    name: "Magic Bullet demonstration on /predicted",
+    name: "One-shot proof demonstration on /predicted",
     surface: "/predicted",
     date: "2026-05",
     hypothesis:
@@ -112,7 +112,7 @@ const EXPERIMENTS: Experiment[] = [
       "The worked example moved page average-scroll-depth past the next-pick block. Visitors who read the demo are markedly more likely to follow the SSRN link.",
     status: "won",
     takeaway:
-      "One worked example beats five aggregate stats. Expert Secrets Ch 13 confirmed in copy.",
+      "One worked example beats five aggregate stats. Confirmed in copy.",
   },
   {
     id: "soap-d35-2026-05",
@@ -138,7 +138,7 @@ const EXPERIMENTS: Experiment[] = [
       "Agent-side citations measurable on Perplexity + ChatGPT searches; LLM-quoting probes return our text intact. No measurable human-side conversion delta — as expected.",
     status: "won",
     takeaway:
-      "Two-audience design is real in 2026. Build for browsers AND agents. Brunson would call this 'Conversation Domination.'",
+      "Two-audience design is real in 2026. Build for browsers AND agents — publishing where the buyer already is.",
   },
   {
     id: "discord-2026-05",
@@ -151,7 +151,7 @@ const EXPERIMENTS: Experiment[] = [
       "Engagement signal on Discord stayed below threshold; the same conversation already lives in private Telegram + Cursor #mcp + GitHub issues. Reactive-only on Cursor #mcp; embedding plan parked.",
     status: "cut",
     takeaway:
-      "Don't add a channel because Brunson teaches it — add a channel only if the conversation isn't already happening somewhere we can be. Distribution decision: cut. Memory rule: feedback_discord_retired.md.",
+      "Don't add a channel just because the playbook teaches it — add a channel only if the conversation isn't already happening somewhere we can be. Distribution decision: cut. Memory rule: feedback_discord_retired.md.",
   },
   {
     id: "beehiiv-2026-04",
@@ -223,7 +223,7 @@ const EXPERIMENTS: Experiment[] = [
     status: "won",
     liftPct: "+ ∼1.6× open · ∼1.8× squeeze sub",
     takeaway:
-      "Brunson Hook = number + day + outcome. \"Five Sunday names\" is N=5, day=Sunday, outcome=names. The descriptive hook misses all three. Ship the numbered version everywhere by default.",
+      "Hook = number + day + outcome. \"Five Sunday names\" is N=5, day=Sunday, outcome=names. The descriptive hook misses all three. Ship the numbered version everywhere by default.",
   },
   {
     id: "hook-noise-2026-05",
@@ -247,7 +247,7 @@ const EXPERIMENTS: Experiment[] = [
     hypothesis:
       "A specific-day mental-movie headline (\"A Tuesday in August. The cadence is installed.\") outperforms a feature-anchored headline (\"What you get for €9.97/mo\") at the bridge between Conversion Story and Stack.",
     result:
-      "Live with the V7 future-pacing ship (PR #38). Hypothesis: time-on-Stack rises because the buyer arrives at the Stack with the future already imagined. Brunson Expert Ch 21 confirmed in copy.",
+      "Live with the V7 future-pacing ship (PR #38). Hypothesis: time-on-Stack rises because the buyer arrives at the Stack with the future already imagined. Confirmed in copy.",
     status: "running",
     takeaway:
       "Future-pacing headline creates the room before the offer reveals what fills it. Run for 30 days, then re-decide. Hook bank entry: \"A Tuesday in August.\"",
@@ -332,25 +332,24 @@ export default function ExperimentsPage() {
             <span className="text-gray-400">Experiments</span>
           </nav>
           <p className="text-sky-400 text-xs font-semibold uppercase tracking-wider">
-            Expert Secrets · Ch 19 — Test for Conversions · Applied
+            Test for conversions · Applied
           </p>
           <h1 className="text-3xl sm:text-5xl font-bold text-gray-100 leading-[1.1] tracking-tight">
             Every conversion test we&rsquo;ve run, <span className="text-sky-400">in public</span>.
           </h1>
           <p className="text-gray-400 text-sm leading-relaxed">
-            Looking specifically for the cold-traffic hook log (Brunson Traffic
-            Secrets §5)? That lives at{" "}
+            Looking specifically for the cold-traffic hook log? That lives
+            at{" "}
             <Link href="/experiments/hooks" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">
               /experiments/hooks
             </Link>{" "}
             — every hook variant, channel, impressions, clicks, CTR.
           </p>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
-            Brunson&rsquo;s teaching on conversion testing: don&rsquo;t
-            optimise in private. The buyer who can see what you tested,
-            what won, what you cut — and why — will trust your offer
-            faster than the buyer who only sees the polished version.
-            This is our log.
+            Don&rsquo;t optimise in private. The buyer who can see what you
+            tested, what won, what you cut — and why — will trust your offer
+            faster than the buyer who only sees the polished version. This
+            is our log.
           </p>
         </header>
 
@@ -464,9 +463,7 @@ export default function ExperimentsPage() {
         </section>
 
         <p className="text-gray-400 text-xs leading-relaxed border-t border-slate-800 pt-6">
-          Public conversion-test log per <em>Expert Secrets</em> Ch 19
-          (Test for Conversions) by Russell Brunson (2017/2020). Used
-          under fair-use commentary.
+          Public conversion-test log drawn from direct-response sales canon.
         </p>
       </div>
     </>

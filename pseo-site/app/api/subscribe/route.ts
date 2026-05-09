@@ -26,7 +26,7 @@ function verificationEmailHtml(
 <p>Day 1 lands within 15 minutes of confirmation. One signal per day, one 5-minute exercise per day. By Day 7 you'll have a personal sourcing framework built from the SSRN-published methodology.</p>`
       : cohort === "launch"
         ? `<p>Click below to confirm your email and start the Agent Credits launch sequence.</p>
-<p>Five emails over ten days, structured as a Brunson Product Launch Funnel: Stage 1 the problem, Stage 2 why current fixes fail, Stage 3 what I shipped, Stage 4 cart open, Stage 5 last call. Cart closes May 20 at 23:59 UTC.</p>`
+<p>Five emails over ten days: Stage 1 the problem, Stage 2 why current fixes fail, Stage 3 what I shipped, Stage 4 cart open, Stage 5 last call. Cart closes May 20 at 23:59 UTC.</p>`
         : `<p>Click the button below to confirm your email and get instant access to <strong>This Week's Top 5 Breakout Startups</strong> — with real GitHub acceleration data on the fastest-moving companies right now.</p>`;
   const cta =
     cohort === "challenge"

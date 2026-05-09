@@ -17,7 +17,7 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title:
-    "How to Spot a Series A 47 Days Before the Deck Lands — Perfect Webinar",
+    "How to Spot a Series A 47 Days Before the Deck Lands — 12-Minute Walkthrough",
   description:
     "The single belief that changes how you source deals: commit-velocity acceleration is the most leading public signal in venture capital. Three objections, three breakdowns, and the stack that delivers it for €9.97/mo.",
   alternates: {
@@ -100,11 +100,11 @@ const STACK_ITEMS = [
 
 const FAQS = [
   {
-    q: "Why do you call this a Perfect Webinar if it's a written page?",
-    a: "Because the structure is the same. The Perfect Webinar framework is a sequence: hook, story, big domino, three secrets, stack, close. Russell Brunson popularised it as a 90-minute sales presentation. We use the same arc on a single scrollable page so a busy investor can read it in 12 minutes instead of sitting through a recording. The structure is what closes; the medium is just delivery.",
+    q: "Why is this a written page instead of a recorded video?",
+    a: "Because a busy investor can read 12 minutes faster than they can sit through a 90-minute recording. The arc is the same one direct-response sellers have used for decades — open with a hook, tell the discovery story, state the single belief, break three objections, stack the offer, close. We just put it on one scrollable page. The structure is what closes; the medium is just delivery.",
   },
   {
-    q: "What's the Big Domino in one sentence?",
+    q: "What's the single belief in one sentence?",
     a: "If GitHub commit-velocity acceleration is the most leading public signal in venture capital, then every other deal-flow source — pitch decks, AngelList, Crunchbase, warm intros — is a lagging indicator. The whole investing thesis falls or stands on whether that single belief is true.",
   },
   {
@@ -180,7 +180,7 @@ export default function PerfectWebinarPage() {
           {
             "@type": "ListItem",
             position: 2,
-            name: "Perfect Webinar",
+            name: "12-Minute Walkthrough",
             item: "https://signals.gitdealflow.com/perfect-webinar",
           },
         ],
@@ -215,7 +215,7 @@ export default function PerfectWebinarPage() {
               ← Home
             </Link>
             <span className="mx-2 text-gray-700">/</span>
-            <span className="text-gray-400">Perfect Webinar</span>
+            <span className="text-gray-400">12-Minute Walkthrough</span>
           </nav>
           <div className="flex items-center justify-between gap-3 flex-wrap">
             <p className="text-sky-400 text-xs font-medium uppercase tracking-wider">
@@ -246,7 +246,7 @@ export default function PerfectWebinarPage() {
           <DataNerdAudio
             slug="perfect-webinar-prologue"
             label="Press play — 90-second prologue, narrated by The Data Nerd"
-            subtitle="If you only have 90 seconds: this is the Big Domino, stated. The rest of the page is what falls when it tips."
+            subtitle="If you only have 90 seconds: this is the single belief, stated. The rest of the page is what falls when it tips."
           />
         </header>
 
@@ -293,7 +293,7 @@ export default function PerfectWebinarPage() {
           className="bg-gradient-to-br from-sky-950/40 via-slate-900 to-slate-950 border border-sky-700/40 rounded-xl p-6 sm:p-8 space-y-4 scroll-mt-20"
         >
           <p className="text-sky-300 text-xs font-semibold uppercase tracking-wider">
-            The big domino
+            The core claim
           </p>
           <h2
             className="text-2xl sm:text-4xl font-bold text-gray-100 leading-tight tracking-tight"
@@ -326,8 +326,8 @@ export default function PerfectWebinarPage() {
               Three objections every investor raises. Three breakdowns.
             </h2>
             <p className="text-gray-400 text-sm">
-              Brunson rule: a great offer is a stack of broken false beliefs.
-              Here are the three that block this one.
+              A great offer is a stack of broken false beliefs. Here are the
+              three that block this one.
             </p>
           </div>
 
@@ -491,15 +491,15 @@ export default function PerfectWebinarPage() {
         >
           <header className="space-y-2">
             <p className="text-violet-400 text-xs font-semibold uppercase tracking-wider">
-              Conversion story · Expert Secrets Ch 12
+              The five-step shift
             </p>
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug">
               The five-step shift — in your own voice.
             </h2>
             <p className="text-gray-400 text-sm leading-relaxed max-w-2xl">
               If you read the three objections and felt the shift, here&rsquo;s
-              the formal version of what just happened — Russell&rsquo;s
-              canonical Conversion Story, applied to the developer-investor.
+              the formal version of what just happened — the same five-beat
+              arc direct-response sellers use, applied to the developer-investor.
             </p>
           </header>
           <ol className="space-y-4">
@@ -888,8 +888,8 @@ export default function PerfectWebinarPage() {
             </li>
           </ul>
           <p className="text-gray-400 text-sm leading-relaxed pt-1">
-            Brunson&rsquo;s trial-close rule: if the answer to any single line
-            is yes, the math is already done.
+            The trial-close rule: if the answer to any single line is yes, the
+            math is already done.
           </p>
         </section>
 
@@ -1119,10 +1119,10 @@ export default function PerfectWebinarPage() {
         <DataNerdSignoff variant="long" catchphraseIndex={3} />
 
         <AgentSummary
-          tldr="The Perfect Webinar page lays out the single belief — commit-velocity acceleration is the most leading public signal in venture capital — and supports it by breaking three classic objections (vehicle: GitHub data is noise; internal: I already have deal flow; external: public data has no edge). Closes on the €9.97/mo Dashboard tier (founding-member, locked forever) with a 30-day Signal-or-It's-Free guarantee. Built on the 219-startup SSRN-published panel with a 21–47 day median lead time over fundraise announcements."
+          tldr="The 12-minute walkthrough lays out the single belief — commit-velocity acceleration is the most leading public signal in venture capital — and supports it by breaking three classic objections (vehicle: GitHub data is noise; internal: I already have deal flow; external: public data has no edge). Closes on the €9.97/mo Dashboard tier (founding-member, locked forever) with a 30-day Signal-or-It's-Free guarantee. Built on the 219-startup SSRN-published panel with a 21–47 day median lead time over fundraise announcements."
           pageUrl="https://signals.gitdealflow.com/perfect-webinar"
           asOf="2026-05-05"
-          citeAs="VC Deal Flow Signal — Perfect Webinar (signals.gitdealflow.com/perfect-webinar)."
+          citeAs="VC Deal Flow Signal — 12-Minute Walkthrough (signals.gitdealflow.com/perfect-webinar)."
           facts={[
             {
               claim:

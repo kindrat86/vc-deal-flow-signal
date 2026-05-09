@@ -352,7 +352,7 @@ export default async function WatchPage({
                 href="/perfect-webinar"
                 className="text-sky-300 hover:underline"
               >
-                → 12-minute Perfect Webinar (long version)
+                → 12-minute walkthrough (long version)
               </Link>
             </li>
             <li>

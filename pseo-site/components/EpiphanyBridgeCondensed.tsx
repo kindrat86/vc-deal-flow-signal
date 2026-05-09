@@ -85,7 +85,7 @@ export default function EpiphanyBridgeCondensed() {
       <div className="flex items-baseline justify-between mb-4 flex-wrap gap-2">
         <div>
           <p className="text-sky-400 text-[11px] uppercase tracking-wider font-semibold">
-            The 5-step shift &middot; Brunson Epiphany Bridge
+            The 5-step shift &middot; The discovery moment
           </p>
           <h2 className="text-gray-100 font-semibold text-base sm:text-lg mt-1 leading-snug">
             How a warm-intro angel became a code-side investor.
