@@ -1,0 +1,15 @@
+If you've read this far, the application form is right above this. The reason I want to record this note instead of just pointing at the form is because the form looks like it asks for a lot — five diligence questions, each with a 90-second answer — and the reason it asks for a lot is the reason most funds end up sending it.
+
+So three things, and then I'll let you decide.
+
+First, on the price. Sharp is four hundred and ninety-seven euros a month. The Insider rung below it is ninety-seven a month. The math on the difference isn't whether you can afford four hundred more euros — it's whether one missed Series A in the next twelve months would have cost more than four hundred euros a month for the year. For a fund writing five-to-fifty-thousand-euro cheques, one missed deal at average outcomes is somewhere between forty and four hundred thousand euros of foregone fees plus markups. So the price isn't the cost. The deal you miss is the cost. And Sharp is the rung where the white-labeled API and the methodology source actually let your team operationalise the signal instead of reading it manually each Sunday.
+
+Second, on identity. Sharp isn't for funds that need a vendor relationship — that's what the enterprise data tools are for, and they have a sales team, and the sales team is the price you're paying. Sharp is for the engineer-investor running a fund that wants to read commit graphs the way a quant fund reads SEC filings. If that's the human you already are, this isn't a tool you adapt to. It's the first one designed around your shape.
+
+Third, on timing. The cap is eight funds for twenty-twenty-six. That's not a marketing number — that's the founder time the quarterly review call costs me, multiplied by four quarters, divided by what I can sustain alongside the rest of the product work. Once eight funds are in, the next slot opens when one churns or in twenty-twenty-seven. So the urgency isn't a discount window. It's a roster window.
+
+The application is five diligence questions: dream state, current state, gap, money value, urgency. Forty-eight-hour reply, written either way. If you're declined, you get a one-paragraph reason. If you're accepted, you get a Stripe invoice and an Insider invitation. No call ever.
+
+So one more time — three reasons people buy at this rung. The price is the math on one missed deal. The identity is for the fund that already reads code. The timing is the eight-fund cap. If one of those three is yours, the form is right above. If none of them is yours, the Insider rung at ninety-seven euros a month is the right starting point and the credit transfers when you're ready.
+
+That's the close. The decision is yours. — The Data Nerd.
