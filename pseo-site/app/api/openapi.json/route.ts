@@ -9,7 +9,7 @@ export async function GET() {
     openapi: "3.1.0",
     info: {
       title: "VC Deal Flow Signal API",
-      version: "1.3.0",
+      version: "1.4.0",
       description:
         "Unified OpenAPI 3.1 + MCP descriptor for startup engineering-acceleration data. Documents the public REST surface (signals, answers, citations, badges, deep signals, scout receipts, prediction markets) AND the MCP server tools, resources, prompts. Operations that have an MCP analog carry an `x-mcp-tool` vendor extension; the full MCP server is enumerated under the top-level `x-mcp-server` block. Default rate limits are declared at the `info.x-rate-limit` level; operations that override the default carry their own `x-rate-limit` block. CC BY 4.0 attribution. No auth required for free endpoints; the paid Deep Signal endpoint uses a per-request credit-pack key delivered after Stripe checkout, OR x402 USDC pay-per-call on Base.",
       contact: { email: "signal@gitdealflow.com" },
@@ -615,6 +615,65 @@ export async function GET() {
             "200": {
               description: "Agent skill catalog",
               content: { "application/json": { schema: { type: "object", additionalProperties: true } } },
+            },
+          },
+        },
+      },
+      "/api/v1/members.json": {
+        get: {
+          tags: ["v1", "community"],
+          operationId: "getMembersV1",
+          summary: "Charter Cohort 2026 — member-side ledger (roster + leaderboard + grading rules)",
+          description:
+            "Programmatic mirror of /members. Returns the full Charter Cohort roster with derived per-member stats, a pre-sorted leaderboard array using the same ranking semantics as /members/leaderboard (hits → closed windows → picks → handle), aggregate cohort stats, and the public 60d/90d grading rules. Pseudonymous handles welcome under the same anonymity rule as the founder. Cached at the edge for 1 hour.",
+          responses: {
+            "200": {
+              description: "Charter Cohort roster + leaderboard + aggregate stats",
+              content: {
+                "application/json": {
+                  schema: {
+                    type: "object",
+                    properties: {
+                      schema: { type: "string", format: "uri" },
+                      version: { type: "string" },
+                      license: { type: "string", format: "uri" },
+                      cohort: {
+                        type: "object",
+                        properties: {
+                          name: { type: "string" },
+                          total_seats: { type: "integer" },
+                          seats_claimed: { type: "integer" },
+                          seats_open: { type: "integer" },
+                          hub_url: { type: "string", format: "uri" },
+                          leaderboard_url: { type: "string", format: "uri" },
+                          apply_url: { type: "string", format: "uri" },
+                          anonymity_rule: { type: "string" },
+                        },
+                      },
+                      aggregate: {
+                        type: "object",
+                        properties: {
+                          total_picks: { type: "integer" },
+                          total_hits: { type: "integer" },
+                          total_closed_windows: { type: "integer" },
+                          cohort_hit_rate_pct: { type: ["integer", "null"] },
+                        },
+                      },
+                      members: { type: "array", items: { type: "object", additionalProperties: true } },
+                      leaderboard: { type: "array", items: { type: "object", additionalProperties: true } },
+                      grading_rules: {
+                        type: "object",
+                        properties: {
+                          hit: { type: "string" },
+                          miss: { type: "string" },
+                          pending: { type: "string" },
+                        },
+                      },
+                      last_modified: { type: "string", format: "date" },
+                    },
+                  },
+                },
+              },
             },
           },
         },
