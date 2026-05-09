@@ -716,6 +716,41 @@ export async function GET() {
           },
         },
       },
+      "/api/v1/social-mascot.json": {
+        get: {
+          tags: ["v1", "brand"],
+          operationId: "getSocialMascotV1",
+          summary: "Data Nerd mascot bible — voice, pillars, cadence, sample batch",
+          description:
+            "Anonymity-respecting brand bible for the GitDealFlow social mascot. Returns channel handles + status, voice/tone rules, content pillars with target ratios, posting cadence + UTC slots, hashtag bank, and a 5-post sample batch with channel-specific bodies. Used by cross-posters, partner accounts, and AI agents that surface our content. Cached at the edge for 1 hour.",
+          responses: {
+            "200": {
+              description: "Mascot bible + sample batch",
+              content: {
+                "application/json": {
+                  schema: {
+                    type: "object",
+                    properties: {
+                      schema_version: { type: "string" },
+                      mascot_name: { type: "string" },
+                      bible_page: { type: "string", format: "uri" },
+                      handles: { type: "object", additionalProperties: { type: "string" } },
+                      handle_status: { type: "object", additionalProperties: { type: "string" } },
+                      voice: { type: "object", additionalProperties: true },
+                      tone: { type: "object", additionalProperties: true },
+                      pillars: { type: "array", items: { type: "object", additionalProperties: true } },
+                      cadence: { type: "object", additionalProperties: true },
+                      posting_hours_utc: { type: "object", additionalProperties: true },
+                      hashtag_bank: { type: "object", additionalProperties: true },
+                      sample_batch: { type: "object", additionalProperties: true },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
       "/api/v1/answers.json": {
         get: {
           tags: ["v1", "answer"],

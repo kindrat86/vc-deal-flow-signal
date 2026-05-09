@@ -42,7 +42,9 @@ export type ConversationSource =
   | "reddit-venturecapital"
   | "reddit-entrepreneur"
   | "reddit-machinelearning"
-  | "github-trending";
+  | "github-trending"
+  | "twitter"
+  | "linkedin";
 
 export type HookFraming =
   | "helpful" // answer the question, drop the data
