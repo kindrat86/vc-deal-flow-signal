@@ -526,18 +526,27 @@ export default function PerfectWebinarPage() {
               <div className="flex items-baseline gap-3">
                 <span className="text-violet-300 font-bold tabular-nums shrink-0">2.</span>
                 <p className="text-violet-300 text-[10px] font-semibold uppercase tracking-wider">
-                  The new vehicle
+                  The new vehicle — a named category
                 </p>
               </div>
               <p className="text-gray-100 font-semibold text-base leading-snug">
-                Engineering acceleration. Public, reproducible, code-side.
+                Code-Side Sourcing. Public, reproducible, code-side.
               </p>
               <p className="text-gray-300 text-sm leading-relaxed">
-                Every great startup leaves a footprint in its code 21–47 days
-                before the deck circulates. That footprint is public, the
-                methodology is reproducible (SSRN n=219), and the cost of
-                reading it is €9.97/mo. The new vehicle isn&rsquo;t bigger
-                network — it&rsquo;s a different sensor.
+                We call the category{" "}
+                <Link
+                  href="/code-side-sourcing"
+                  className="text-violet-300 hover:text-violet-200 underline decoration-dotted"
+                >
+                  Code-Side Sourcing
+                </Link>{" "}
+                — using public repository-velocity data as a leading indicator
+                of venture-stage outcomes. Every great startup leaves a
+                footprint in its code 21–47 days before the deck circulates.
+                That footprint is public, the methodology is reproducible
+                (SSRN n=219), and the cost of reading it is €9.97/mo. The new
+                vehicle isn&rsquo;t bigger network — it&rsquo;s a different
+                sensor, with a category name you can repeat to a partner.
               </p>
             </li>
             <li className="rounded-xl border border-slate-800 bg-slate-900/40 p-5 sm:p-6 space-y-2">

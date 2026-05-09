@@ -26,6 +26,10 @@ import EpiphanyBridgeCondensed from "@/components/EpiphanyBridgeCondensed";
 import HomeOfferStack from "@/components/HomeOfferStack";
 import { DataNerdPolarityCard } from "@/components/DataNerdPolarityCard";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
+import {
+  EMOTIONAL_CAUSE_KICKER,
+  EMOTIONAL_CAUSE_LINES,
+} from "@/content/cause";
 
 export const metadata: Metadata = {
   // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
@@ -47,6 +51,7 @@ export const metadata: Metadata = {
 // internal-link graph from the home page to routes Yandex flagged
 // "low-value or low-demand" in the 2026-05-02 recheck.
 const PILLAR_LINKS = [
+  { href: "/code-side-sourcing", label: "Code-Side Sourcing", sub: "The category we're defining — definition, first principles, practitioners", icon: "🧭" },
   { href: "/mechanism", label: "The named mechanism", sub: "Commit-Velocity Acceleration Engine — formula, falsifiability, ladder", icon: "🔬" },
   { href: "/methodology", label: "Methodology", sub: "How signals are computed", icon: "📐" },
   { href: "/weekly", label: "This week's signals", sub: "Weekly top movers", icon: "📈" },
@@ -172,6 +177,7 @@ export default function Home() {
           "https://huggingface.co/spaces/the-data-nerd/vc-deal-flow-deepseek",
         ],
         knowsAbout: [
+          "Code-Side Sourcing",
           "GitHub commit velocity",
           "venture capital alternative data",
           "code-side momentum signals",
@@ -967,63 +973,53 @@ export default function Home() {
           a feature comparison. /identity is the long-form companion. */}
       <IdentityBanner />
 
-      {/* Brunson DotCom Secrets Ch 14 — Lead "Squeeze" Funnel.
-          HSO audit 2026-05-08 (Ch 14: 87/100): the prior ThreeDoorHero
-          gave equal weight to three CTAs, diluting the squeeze. Replaced
-          with a true single-CTA squeeze — inline email-capture form
-          (dominant) + two small tertiary "exit" links (subordinate).
-          The form posts to /api/subscribe with cohort=soap-opera and
-          source=home for split-bucket attribution vs /squeeze. */}
-      <HomeSqueeze />
+      {/* CATEGORY NAMING — Russell-Brunson Expert Secrets §1 Ch 3 ship
+          2026-05-09. The "New Opportunity" must be named, not described.
+          Audit had this chapter at 92/100 with the note that the category
+          was walked but never branded. Block names "Code-Side Sourcing" as
+          the category and links the canonical definition page. Placed
+          immediately above the Big Domino so the reader has a category
+          name to attach the single-belief claim to. */}
+      <section
+        aria-label="The category we're defining"
+        className="my-8 rounded-xl border border-amber-700/40 bg-gradient-to-br from-amber-950/20 via-slate-900 to-slate-950 p-6 sm:p-8"
+      >
+        <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider mb-3">
+          The category we&rsquo;re defining
+        </p>
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug mb-3">
+          Code-Side Sourcing — a new sourcing channel for venture capital.
+        </h2>
+        <p className="text-gray-300 text-sm sm:text-base leading-relaxed mb-3">
+          Code-Side Sourcing is the practice of using public
+          repository-velocity data as a leading indicator of venture-stage
+          outcomes — surfacing fundraises{" "}
+          <span className="text-amber-300 font-semibold">
+            21 to 47 days before pitch decks circulate.
+          </span>{" "}
+          It runs alongside warm intros, decks, and databases — not in place
+          of them.
+        </p>
+        <p className="text-gray-400 text-sm leading-relaxed">
+          Read the canonical definition at{" "}
+          <Link
+            href="/code-side-sourcing"
+            className="text-amber-300 hover:text-amber-200 underline decoration-dotted"
+          >
+            /code-side-sourcing
+          </Link>
+          {" "}— what it replaces, the five first principles, who practises it,
+          and the open methodology that grounds it.
+        </p>
+      </section>
 
-      {/* Brunson DotCom Secrets Ch 12 + Expert Secrets Ch 13 — Stack Slide
-          on the home page. HSO audit 2026-05-08: full priced stack lived
-          on /firstlook + /walkthrough but the home reader (who never
-          clicks through) saw price tiers without value anchors. Eight
-          stack lines, anchored against standalone equivalents, total
-          €1,728 vs €9.97/mo founding rate. Risk-reversal sticker
-          (30-day guarantee) included as final stack line. */}
-      <HomeOfferStack />
-
-      {/* Brunson DCS Ch 7 — Attractive Character polarity card. The reader
-          self-qualifies on the four pillars before they hit the conversion
-          path, so people who'd churn at email #2 churn here at scroll-second
-          15 instead. Compact, links to /data-nerd for the long version. */}
-      <DataNerdPolarityCard />
-
-      {/* AgentSummary kept for AI extractability — visually de-emphasized
-          via wrapper since the live SignalLeader now plays the human-facing
-          TL;DR role. */}
-      <AgentSummary
-        tldr={`VC Deal Flow Signal (GitDealFlow) ranks ${activeSectorCount} startup sectors by GitHub commit velocity every Monday — a quantitative code-side momentum signal computed from public GitHub data, distinct from startup accelerator programs (Y Combinator, Techstars). Data is free via JSON / CSV / RSS / MCP / A2A / NLWeb. The metric — sometimes called engineering acceleration on this site — has historically preceded fundraise announcements by three to six weeks.`}
-        pageUrl="https://signals.gitdealflow.com"
-        asOf={asOf}
-        citeAs={`VC Deal Flow Signal (signals.gitdealflow.com), ${period.name} data.`}
-        facts={[
-          {
-            claim:
-              "Commit-velocity acceleration has preceded venture fundraise announcements by 3–6 weeks across the tracked dataset.",
-            sourceUrl: "https://signals.gitdealflow.com/methodology",
-            sourceLabel: "Methodology",
-          },
-          {
-            claim:
-              "Free MCP server (npx @gitdealflow/mcp-signal) exposes 6 read-only tools to Claude, Cursor, and any MCP-compatible host.",
-            sourceUrl: "https://signals.gitdealflow.com/agents.md",
-            sourceLabel: "agents.md",
-          },
-          {
-            claim: `${totalTracked} startup signals across ${activeSectorCount} sectors and ${allPeriods.length} quarterly periods of history.`,
-            sourceUrl: "https://signals.gitdealflow.com/api/signals.json",
-            sourceLabel: "signals.json",
-          },
-        ]}
-      />
-
-      {/* Brunson Big Domino — single-belief block above the pricing close.
-          The whole offer rests on this one statement. Russell audit
-          2026-05-05: home was missing the "if this is true, everything else
-          falls" frame. */}
+      {/* Brunson Expert Secrets Ch 6 — Big Domino + Ch 10 Three Secrets
+          (false-belief collapses). Audit 2026-05-09: domino used to sit
+          BELOW the offer (after HomeSqueeze + HomeOfferStack), which is the
+          opposite of canonical Brunson sequence Story → Domino → Three
+          Objections → Offer. Moved up so the reader builds belief BEFORE
+          any commitment ask (email or money). The whole offer beneath
+          this block rests on this one statement. */}
       <section
         aria-label="Core claim"
         className="bg-gradient-to-br from-sky-950/40 via-slate-900 to-slate-950 border border-sky-700/40 rounded-xl p-6 sm:p-8 my-8"
@@ -1059,9 +1055,11 @@ export default function Home() {
         </p>
       </section>
 
-      {/* Three Secrets — the false-belief breakdowns from Workbook 4. Surface
-          them on the most-trafficked surface (home) instead of burying them
-          inside the soap-opera email sequence. */}
+      {/* Three Secrets — the false-belief breakdowns surfaced directly
+          after the Big Domino so the reader's three objections collapse
+          before the offer surfaces below. Same audit as the Domino move
+          above (2026-05-09): belief block sits ahead of any commitment
+          ask. */}
       <section aria-label="Three objections" className="my-8 space-y-5">
         <div>
           <p className="text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-2">
@@ -1125,10 +1123,113 @@ export default function Home() {
         </p>
       </section>
 
-      {/* Manifesto — Brunson "future-based cause" surfaced on home. The
-          movement-frame the workbook had but the page didn't. */}
+      {/* Brunson DotCom Secrets Ch 14 — Lead "Squeeze" Funnel.
+          HSO audit 2026-05-08 (Ch 14: 87/100): the prior ThreeDoorHero
+          gave equal weight to three CTAs, diluting the squeeze. Replaced
+          with a true single-CTA squeeze — inline email-capture form
+          (dominant) + two small tertiary "exit" links (subordinate).
+          The form posts to /api/subscribe with cohort=soap-opera and
+          source=home for split-bucket attribution vs /squeeze. */}
+      <HomeSqueeze />
+
+      {/* Brunson DotCom Secrets Ch 12 + Expert Secrets Ch 13 — Stack Slide
+          on the home page. HSO audit 2026-05-08: full priced stack lived
+          on /firstlook + /walkthrough but the home reader (who never
+          clicks through) saw price tiers without value anchors. Eight
+          stack lines, anchored against standalone equivalents, total
+          €1,728 vs €9.97/mo founding rate. Risk-reversal sticker
+          (30-day guarantee) included as final stack line. */}
+      <HomeOfferStack />
+
+      {/* Brunson DCS Ch 7 — Attractive Character polarity card. The reader
+          self-qualifies on the four pillars before they hit the conversion
+          path, so people who'd churn at email #2 churn here at scroll-second
+          15 instead. Compact, links to /data-nerd for the long version. */}
+      <DataNerdPolarityCard />
+
+      {/* AgentSummary kept for AI extractability — visually de-emphasized
+          via wrapper since the live SignalLeader now plays the human-facing
+          TL;DR role. */}
+      <AgentSummary
+        tldr={`VC Deal Flow Signal (GitDealFlow) ranks ${activeSectorCount} startup sectors by GitHub commit velocity every Monday — a quantitative code-side momentum signal computed from public GitHub data, distinct from startup accelerator programs (Y Combinator, Techstars). Data is free via JSON / CSV / RSS / MCP / A2A / NLWeb. The metric — sometimes called engineering acceleration on this site — has historically preceded fundraise announcements by three to six weeks.`}
+        pageUrl="https://signals.gitdealflow.com"
+        asOf={asOf}
+        citeAs={`VC Deal Flow Signal (signals.gitdealflow.com), ${period.name} data.`}
+        facts={[
+          {
+            claim:
+              "Commit-velocity acceleration has preceded venture fundraise announcements by 3–6 weeks across the tracked dataset.",
+            sourceUrl: "https://signals.gitdealflow.com/methodology",
+            sourceLabel: "Methodology",
+          },
+          {
+            claim:
+              "Free MCP server (npx @gitdealflow/mcp-signal) exposes 6 read-only tools to Claude, Cursor, and any MCP-compatible host.",
+            sourceUrl: "https://signals.gitdealflow.com/agents.md",
+            sourceLabel: "agents.md",
+          },
+          {
+            claim: `${totalTracked} startup signals across ${activeSectorCount} sectors and ${allPeriods.length} quarterly periods of history.`,
+            sourceUrl: "https://signals.gitdealflow.com/api/signals.json",
+            sourceLabel: "signals.json",
+          },
+        ]}
+      />
+
+      {/* CAUSE — emotional layer. Brunson Expert Secrets §1 Ch 2 — the
+          Future-Based Cause has two layers: intellectual and emotional.
+          Intellectual lives below ("data over networks" + named enemy);
+          emotional opens here, because the gut-level version is what
+          recruits a movement and the intellectual version is what
+          retains it. Source of truth: content/cause.ts. */}
       <section
-        aria-label="Manifesto"
+        aria-labelledby="home-emotional-cause-heading"
+        className="my-8 rounded-xl border border-rose-700/40 bg-gradient-to-br from-rose-950/25 via-slate-900 to-slate-950 p-6 sm:p-8"
+      >
+        <p className="text-rose-300 text-xs font-semibold uppercase tracking-wider mb-3">
+          {EMOTIONAL_CAUSE_KICKER}
+        </p>
+        <h2
+          id="home-emotional-cause-heading"
+          className="text-xl sm:text-2xl font-bold text-gray-100 leading-snug mb-5"
+        >
+          Five sentences. If any of them lands, you&rsquo;re one of us.
+        </h2>
+        <ol className="space-y-3.5">
+          {EMOTIONAL_CAUSE_LINES.map((line, i) => (
+            <li
+              key={i}
+              className="flex gap-3 text-gray-200 text-sm sm:text-base leading-relaxed"
+            >
+              <span
+                aria-hidden="true"
+                className="text-rose-400 font-bold tabular-nums shrink-0 w-6 pt-0.5"
+              >
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <span>{line}</span>
+            </li>
+          ))}
+        </ol>
+        <p className="text-gray-400 text-xs sm:text-sm leading-relaxed pt-5 border-t border-rose-700/20 mt-5">
+          Read the long version on the{" "}
+          <Link
+            href="/manifesto"
+            className="text-rose-300 hover:text-rose-200 underline decoration-dotted"
+          >
+            two-layer manifesto
+          </Link>{" "}
+          — what we believe, what we refuse, the seven pillars, the named
+          enemy, who&rsquo;s on the bus.
+        </p>
+      </section>
+
+      {/* CAUSE — intellectual layer. The pillars-flavored summary that
+          retains the reader who already nodded through the emotional
+          opener. The named enemy ("warm-intro roulette") closes the
+          loop. */}
+      <section
+        aria-label="What we believe"
         className="my-8 border-l-2 border-amber-500/50 pl-5 sm:pl-6 py-1"
       >
         <p className="text-amber-400 text-xs font-semibold uppercase tracking-wider mb-3">

@@ -536,7 +536,7 @@ export default function PricingPage() {
           Pricing — Free Forever, €1 to Try, €7 to Test, €9.97 to Subscribe, €497 for Funds
         </h1>
 
-        <p className="text-gray-400 text-base leading-relaxed mb-6">
+        <p className="text-gray-400 text-base leading-relaxed mb-3">
           Seven tiers, ordered cheapest to most expensive. The free Signal
           Digest and the free MCP server are the distribution magnet — they
           will never be gated. The €1 Tweet Teardown is the threshold
@@ -546,6 +546,18 @@ export default function PricingPage() {
           per month is the dedicated landing for active funds; it is
           application-gated and capped at 8 funds in 2026. Every paid tier
           ships with a 30-day Signal-or-It&rsquo;s-Free guarantee.
+        </p>
+        <p className="text-gray-400 text-sm leading-relaxed mb-6 border-l-2 border-amber-700/40 pl-4">
+          All ten rungs implement the same category:{" "}
+          <Link
+            href="/code-side-sourcing"
+            className="text-amber-300 hover:text-amber-200 underline decoration-dotted"
+          >
+            Code-Side Sourcing
+          </Link>
+          {" "}— public repository-velocity data as a leading indicator of
+          venture-stage outcomes. Each rung is a different operational form
+          of the same category, sized to a different sourcing cadence.
         </p>
 
         {/* Quiz nudge — Russell audit 2026-05-05 PM: visitors landing on /pricing

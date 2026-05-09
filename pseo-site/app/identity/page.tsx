@@ -4,6 +4,7 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import IdentityBanner from "@/components/IdentityBanner";
+import { EMOTIONAL_CAUSE_LINES } from "@/content/cause";
 
 export const dynamic = "force-static";
 
@@ -199,9 +200,61 @@ export default function IdentityPage() {
           everyone else opened the deck). The seven shifts below take you from
           one identity to the other.
         </p>
+        <p className="text-gray-400 text-sm leading-relaxed mt-4 border-l-2 border-amber-700/40 pl-4">
+          The category this identity operates in has a name:{" "}
+          <Link
+            href="/code-side-sourcing"
+            className="text-amber-300 hover:text-amber-200 underline decoration-dotted"
+          >
+            Code-Side Sourcing
+          </Link>
+          {" "}— public repository-velocity data as a leading indicator of
+          venture-stage outcomes. The shifts below are how the buyer becomes
+          a practitioner of that category.
+        </p>
       </header>
 
       <IdentityBanner />
+
+      {/* EMOTIONAL CAUSE CALLOUT — Brunson Expert Secrets §1 Ch 2 layer 2.
+          The before/after shifts below are the intellectual identity
+          transformation. This block is the emotional anchor that names
+          the moment the reader has actually lived through. The 5th line
+          ("if you've ever closed a laptop…") is the door — anyone who
+          nods belongs in the seven shifts that follow. Source of truth:
+          content/cause.ts. */}
+      <section
+        aria-label="Why this identity exists"
+        className="my-12 rounded-xl border border-rose-700/40 bg-gradient-to-br from-rose-950/20 via-slate-900 to-slate-950 p-6 sm:p-8"
+      >
+        <p className="text-rose-300 text-xs font-semibold uppercase tracking-wider mb-3">
+          Why this identity is worth becoming
+        </p>
+        <h2 className="text-xl sm:text-2xl font-bold text-gray-100 leading-snug mb-5">
+          Read this last sentence first.
+        </h2>
+        <p className="text-gray-100 text-base sm:text-lg leading-relaxed font-medium border-l-2 border-rose-500/60 pl-4 mb-5 italic">
+          {EMOTIONAL_CAUSE_LINES[EMOTIONAL_CAUSE_LINES.length - 1]}
+        </p>
+        <p className="text-gray-300 text-sm sm:text-base leading-relaxed mb-2">
+          That&rsquo;s the moment the seven shifts below were written for.
+          The before-and-after isn&rsquo;t aesthetic. It&rsquo;s the
+          difference between being the investor who closes the laptop and
+          the investor who sends the email at 11:07 p.m. with the merge
+          graph attached.
+        </p>
+        <p className="text-gray-400 text-sm leading-relaxed pt-1">
+          The four other sentences live on the{" "}
+          <Link
+            href="/manifesto"
+            className="text-rose-300 hover:text-rose-200 underline decoration-dotted"
+          >
+            full manifesto
+          </Link>
+          {" "}— what we&rsquo;re tired of watching, what we believe, what we
+          refuse, the seven pillars, the named enemy, who&rsquo;s on the bus.
+        </p>
+      </section>
 
       <section aria-label="Seven before/after shifts" className="my-12">
         <p className="text-sky-300 text-xs font-semibold uppercase tracking-wider mb-3">
