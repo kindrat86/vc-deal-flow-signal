@@ -73,6 +73,7 @@ const PILLAR_LINKS = [
   { href: "/summit", label: "Summit", sub: "5 days · 20 anonymous-by-design talks · free during the live window", icon: "🎤" },
   { href: "/launch", label: "Launches", sub: "Active and archived 4-stage funnels", icon: "🚀" },
   { href: "/press", label: "Press kit", sub: "Wire-ready releases + boilerplate", icon: "📰" },
+  { href: "/target-list", label: "Top 100", sub: "100 voices we read on the engineering-signal frontier — substacks, podcasts, GitHub orgs, datasets — each ICP-scored", icon: "💬" },
 ] as const;
 
 // "Where to go next" deep-dive entry points. Icons help the eye navigate a
