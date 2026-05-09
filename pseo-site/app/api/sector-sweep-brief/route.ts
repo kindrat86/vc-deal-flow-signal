@@ -1,19 +1,38 @@
 import { NextResponse } from "next/server";
 import { checkRateLimit, getClientIp, rateLimitHeaders } from "@/lib/rate-limit";
 import { isValidEmail, isAllowedOrigin } from "@/lib/validation";
+import {
+  computeReplyDeadline,
+  generateSampleToc,
+  scheduleSetterSequence,
+} from "@/lib/sector-sweep-setter";
 
 /**
  * /api/sector-sweep-brief — Brunson DotCom Ch 18 (Cart Funnel) + Ch 23
- * (Application Funnel) + Expert Secrets Ch 16 (Magic Script).
+ * (Application Funnel) + Expert Secrets Ch 16 (The Setter / Magic Script).
  *
  * Receives the 5-question Sector Sweep brief from /sector-sweep, validates,
- * and emails it to signal@gitdealflow.com via Resend so the founder can
- * reply with a 1-page fit assessment + tailored TOC + buy link inside 24
- * business hours.
+ * emails the brief to signal@gitdealflow.com so The Data Nerd (Closer) can
+ * draft the human reply, AND schedules a 4-step heat-building Setter drip
+ * to the prospect that closes the "async-only loses heat" gap flagged in
+ * the Brunson Trilogy audit (Ch 16, 90→100).
  *
- * Anonymity-preserving by design: the "setter" is this form (async, written),
- * and the "closer" is the founder's written reply with the personal Stripe
- * link. No live calls, no founder face/voice, no real-name attribution.
+ * Heat-build sequence (all signed by "Methodology Lead", the Setter):
+ *   T+0   Instant ack with thesis quoted back, specific UTC reply deadline,
+ *         and a sector-tailored sample table-of-contents (delivers part of
+ *         the Sweep's value at submit-time, not 24h later).
+ *   T+2h  Methodology grounding — links to /methodology + /scorecard.
+ *   T+12h Drafting transparency — the question being nailed before reply.
+ *   T+48h Soft follow-up — "the one question I'd want answered" + SWEEP /
+ *         DASHBOARD / NEITHER one-word reply CTA.
+ *
+ * The T+24h human reply (manual) is sent from The Data Nerd's inbox, signed
+ * by them, with the personal Stripe buy link. Setter / Closer separation
+ * preserves the live phone-room mechanic in async form.
+ *
+ * Anonymity-preserving by design: pseudonymous setter ("Methodology Lead",
+ * the same persona used in /summit), written-only contact, no founder
+ * face/voice/name. Synthetic personas allowed per project rule.
  *
  * Replaces the prior conversion gap where /sector-sweep links in emails 404'd
  * and the only path to the €1,997 tier was a cold Stripe Checkout link.
@@ -215,11 +234,54 @@ export async function POST(request: Request) {
       );
     }
 
+    // Brunson Setter heat-build — schedule the 4-step drip to the prospect.
+    // Computed once here so the response payload, the T+0 ack, and the
+    // scheduled emails all reference the SAME deadline timestamp.
+    const deadline = computeReplyDeadline();
+    const toc = generateSampleToc(sector);
+    const setterResult = await scheduleSetterSequence(
+      {
+        contact_name,
+        email,
+        fund_or_role,
+        sector,
+        thesis,
+        three_orgs,
+        decision_window,
+        why_sweep,
+        deadline,
+      },
+      RESEND_API_KEY,
+    );
+    if (setterResult.failed > 0) {
+      // Log but do NOT fail the request — the internal brief has already
+      // landed at signal@gitdealflow.com so the human reply path still
+      // works even if the heat-build drip partially failed. The Closer
+      // can recover by replying earlier than the deadline.
+      console.error(
+        `[sector-sweep-brief] heat-build sequence partial-failure: ${setterResult.failed}/4 emails errored`,
+        setterResult.errors,
+      );
+    } else {
+      console.log(
+        `[sector-sweep-brief] heat-build sequence scheduled: ${setterResult.scheduled}/4 emails queued for ${email}`,
+      );
+    }
+
     return NextResponse.json(
       {
         ok: true,
-        message:
-          "Brief received. Reply within 24 business hours to the email you provided.",
+        message: `Brief received. Your written reply lands at ${deadline.display}.`,
+        deadline: {
+          iso: deadline.iso,
+          display: deadline.display,
+          hoursFromNow: deadline.hoursFromNow,
+        },
+        toc,
+        setter: {
+          scheduled: setterResult.scheduled,
+          failed: setterResult.failed,
+        },
       },
       { status: 200, headers: { ...headers, ...rateLimitHeaders(rl) } },
     );
