@@ -229,6 +229,27 @@ export default function PerfectWebinarPage() {
               Skip to offer →
             </a>
           </div>
+          {/* Length picker — same argument, three lengths. The two short
+              versions are what /walkthrough/quick A/B-routes a cold visitor
+              into. Showing both here lets a long-form reader who lands here
+              first share whichever short link fits their forward-to recipient. */}
+          <p className="text-xs text-gray-400 leading-relaxed border-y border-slate-800 py-3">
+            <span className="text-gray-300 font-medium">Same argument, shorter?</span>{" "}
+            <Link
+              href="/walkthrough/90s"
+              className="text-emerald-300 hover:text-emerald-200 underline decoration-dotted"
+            >
+              90 seconds
+            </Link>{" "}
+            ·{" "}
+            <Link
+              href="/walkthrough/5min"
+              className="text-amber-300 hover:text-amber-200 underline decoration-dotted"
+            >
+              5 minutes
+            </Link>{" "}
+            · <span className="text-gray-300">12 minutes (this page)</span>
+          </p>
           <h1
             className="text-3xl sm:text-5xl font-bold text-gray-100 leading-[1.1] tracking-tight"
             data-speakable

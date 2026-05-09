@@ -102,6 +102,19 @@ const EXPERIMENTS: Experiment[] = [
       "Length is a feature, not a flaw. Two versions of the same argument cover both buyer types.",
   },
   {
+    id: "fb-90s-vs-5min-2026-05",
+    name: "90-second elevator vs. 5-minute condensed (head-to-head)",
+    surface: "/walkthrough/quick",
+    date: "2026-05",
+    hypothesis:
+      "For cold-traffic visitors landing from a paid ad or a Reddit thread, even five minutes is too much commit. A 250-word 90-second elevator with one core claim, three one-line objections, one stack, and one money-close should out-convert the 800-word 5-minute version on assignment-to-CTA-click rate, even though the absolute closing power per click is weaker.",
+    result:
+      "Just shipped. /walkthrough/quick router does sticky 50/50 bucketing, persisted in localStorage. PostHog events: walkthrough_variant_assigned (router exposure), walkthrough_variant_view (page view per variant), walkthrough_variant_cta_click (segment by primary buy / signup fallback). Run for 30 days, then re-decide which variant becomes the default home → /walkthrough/quick redirect.",
+    status: "running",
+    takeaway:
+      "Brunson Expert Ch 19 rule: every change leaves a measurable trace. Conversion delta drives the next ship — 90s wins on cold ads, 5min keeps the email-list reader, or one length emerges as universal.",
+  },
+  {
     id: "magicbullet-pred-2026-05",
     name: "One-shot proof demonstration on /predicted",
     surface: "/predicted",

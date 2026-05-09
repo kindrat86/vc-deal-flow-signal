@@ -61,6 +61,16 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/perfect-webinar/90s",
+        destination: "/walkthrough/90s",
+        permanent: true,
+      },
+      {
+        source: "/perfect-webinar/quick",
+        destination: "/walkthrough/quick",
+        permanent: true,
+      },
+      {
         source: "/perfect-webinar",
         destination: "/walkthrough",
         permanent: true,

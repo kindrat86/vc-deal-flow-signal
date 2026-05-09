@@ -8,8 +8,17 @@ import { DoorsClosingBanner } from "@/components/DoorsClosingBanner";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { getReplayWindowSnapshot } from "@/lib/replay-window";
 import TrialClose from "@/components/TrialClose";
+import WalkthroughVariantTracker from "@/components/WalkthroughVariantTracker";
+import WalkthroughCtaLink from "@/components/WalkthroughCtaLink";
 
 export const dynamic = "force-static";
+
+// Word count + read-time co-located with the page so the variant tracker
+// logs the same numbers the JSON-LD advertises. Update together if copy
+// changes. Brunson Expert Secrets §4 Ch 19 (Test, Test, Test) — the A/B
+// against /walkthrough/90s is what closes the V8 push from 92→100.
+const WORD_COUNT = 820;
+const READ_SECONDS = 300;
 
 export const metadata: Metadata = {
   title: "The 5-Minute Walkthrough — GitDealFlow in 800 words",
@@ -80,6 +89,11 @@ export default function FiveMinPerfectWebinarPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <AgentMirrorLinks path="/walkthrough/5min" />
+      <WalkthroughVariantTracker
+        variant="5min"
+        wordCount={WORD_COUNT}
+        readSeconds={READ_SECONDS}
+      />
 
       {/* Brunson live-replay sticky cohort countdown — shared across the
           long-form and 5-minute Perfect Webinar surfaces. */}
@@ -101,8 +115,18 @@ export default function FiveMinPerfectWebinarPage() {
             GitDealFlow, the whole pitch — <span className="text-amber-400">in 800 words</span>.
           </h1>
           <p className="text-gray-400 text-sm">
-            Reading time: 5 min. If you have 12, the{" "}
-            <Link href="/walkthrough" className="text-amber-300 hover:text-amber-200 underline decoration-dotted">
+            Reading time: 5 min. In a hurry?{" "}
+            <Link
+              href="/walkthrough/90s"
+              className="text-emerald-300 hover:text-emerald-200 underline decoration-dotted"
+            >
+              The 90-second elevator is here
+            </Link>
+            . If you have 12, the{" "}
+            <Link
+              href="/walkthrough"
+              className="text-amber-300 hover:text-amber-200 underline decoration-dotted"
+            >
               long-form walkthrough
             </Link>{" "}
             is here.
@@ -249,18 +273,20 @@ export default function FiveMinPerfectWebinarPage() {
             €119.64 be worth it?
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
-            <a
-              href={STRIPE_DASHBOARD}
+            <WalkthroughCtaLink
+              href={`${STRIPE_DASHBOARD}?variant=walkthrough_5min`}
+              kind="primary"
               className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-base shadow-lg shadow-amber-500/30 transition-colors"
             >
               Lock €9.97/mo founder price →
-            </a>
-            <a
+            </WalkthroughCtaLink>
+            <WalkthroughCtaLink
               href={SIGNUP_URL}
+              kind="signup"
               className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg border border-slate-700 bg-slate-800 hover:bg-slate-700 text-gray-100 font-semibold text-base transition-colors"
             >
               Or start with the free digest
-            </a>
+            </WalkthroughCtaLink>
           </div>
           <p className="text-gray-400 text-xs pt-1">
             30-day Signal-or-It&rsquo;s-Free guarantee · No call · Reply REFUND
@@ -268,7 +294,15 @@ export default function FiveMinPerfectWebinarPage() {
         </section>
 
         <p className="text-gray-400 text-xs leading-relaxed border-t border-slate-800 pt-5">
-          Need the long version? The full{" "}
+          Even shorter? The{" "}
+          <Link
+            href="/walkthrough/90s"
+            className="text-emerald-300 hover:text-emerald-200 underline decoration-dotted"
+          >
+            90-second elevator
+          </Link>{" "}
+          drops the four named closes and runs one money-close only. Need the
+          long version? The full{" "}
           <Link href="/walkthrough" className="text-amber-300 hover:text-amber-200 underline decoration-dotted">
             12-minute walkthrough
           </Link>{" "}
