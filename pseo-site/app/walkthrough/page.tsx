@@ -1007,6 +1007,98 @@ export default function PerfectWebinarPage() {
               </p>
             </div>
           </div>
+
+          {/* CLOSE-SIDE FUTURE PACE — Brunson Expert Secrets Ch 21.
+              Russell-Brunson audit 2026-05-09 (Secret #21, 93→100):
+              the four closes above answer Money / Identity / Pricing /
+              Urgency objections, but they don't *land* the buyer in
+              the new identity. A 30-second mental movie at the close
+              of the closes — short-horizon (next Sunday), not the
+              90-day August-Tuesday horizon already on the page above
+              — delivers the buyer into the room they're about to step
+              into, in the five days immediately after the click. The
+              existing /walkthrough Future-Pacing block (line ~636)
+              sits between Conversion Story and Stack and runs
+              long-horizon "cadence installed". This block closes the
+              four-close cluster on a short-horizon "first Sunday"
+              moment so the Doors-Closing banner and final CTA below
+              read as the action that produces the very next scene. */}
+          <div
+            aria-label="Five days from now — the first Sunday after you click"
+            className="mt-8 rounded-xl border border-sky-700/50 bg-gradient-to-br from-sky-950/50 via-slate-900 to-slate-950 p-6 sm:p-8 space-y-5"
+          >
+            <div className="space-y-1.5">
+              <p className="text-sky-300 text-xs font-semibold uppercase tracking-wider">
+                Five days from now &middot; the 30-second mental movie
+              </p>
+              <h3 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-tight">
+                The very next Sunday. The first time the rhythm fires.
+              </h3>
+              <p className="text-gray-400 text-sm leading-relaxed">
+                Click the button below. Here&rsquo;s what the next five days
+                actually look like &mdash; not the 90-day horizon, the one
+                right in front of you.
+              </p>
+            </div>
+
+            <ol className="space-y-4">
+              {[
+                {
+                  time: "Today, 14:00",
+                  scene:
+                    "Stripe charges €9.97. Dashboard URL lands in your inbox inside ten minutes, alongside the SSRN backtest CSV and the one-line MCP install. You paste the install into your terminal — the six tools are inside Claude before you finish your coffee. The methodology vault is bookmarked. The Sunday email subscription is already wired.",
+                },
+                {
+                  time: "Sunday, 09:00 UTC",
+                  scene:
+                    "The first Acceleration Watch lands while you’re still on your first coffee. Five names, sector-tagged, with the chart and the percentile next to each. You scan. The third one is in a sector you’ve been quietly pulling toward for three months. You open the commit graph. The contributor influx is exactly the pattern the SSRN paper called out — four new committers inside 14 days, two of them ex-FAANG infrastructure engineers.",
+                },
+                {
+                  time: "Sunday, 09:11",
+                  scene:
+                    "You draft a three-line email to the founder. “Saw your repo. The settlement-layer work caught my eye. Free for 15 minutes this week?” Send. The 21-to-47-day window has started its clock. You close the laptop. Eleven minutes total. The whole sourcing rhythm, fired once. You have not done a single warm intro.",
+                },
+                {
+                  time: "Wednesday, 14:30",
+                  scene:
+                    "Reply lands. The founder is raising. Round closes in six weeks. You’re talking to them roughly 47 days before the deck reaches anyone in your warm-intro network — and the conversation you walk into Wednesday isn’t “I heard about you from a friend,” it’s “I read your code and the work is good.” That’s a different room. That’s the room you bought.",
+                },
+              ].map((moment) => (
+                <li
+                  key={moment.time}
+                  className="flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-5 border-l-2 border-sky-600/50 pl-4"
+                >
+                  <span
+                    className="font-mono text-sky-300 font-bold text-xs tracking-wider shrink-0 sm:w-32 pt-0.5"
+                    aria-hidden="true"
+                  >
+                    {moment.time}
+                  </span>
+                  <p className="text-gray-300 text-sm sm:text-[15px] leading-relaxed flex-1">
+                    {moment.scene}
+                  </p>
+                </li>
+              ))}
+            </ol>
+
+            <p className="text-gray-200 text-sm sm:text-base leading-relaxed border-t border-sky-800/50 pt-4">
+              Five days. One email. One reply. The four closes above answer
+              <em className="not-italic font-semibold text-sky-300">
+                {" "}why{" "}
+              </em>
+              the math works. The five days above are
+              <em className="not-italic font-semibold text-sky-300">
+                {" "}what it feels like{" "}
+              </em>
+              when the math actually fires for the first time.
+            </p>
+
+            <TrialClose tone="sky">
+              If by next Wednesday you have sent that one email and gotten
+              that one reply, is &euro;9.97 the right number to have paid
+              for the rhythm that produced it?
+            </TrialClose>
+          </div>
         </section>
 
         {/* DOORS-CLOSING BANNER — phase-aware ribbon directly above the
