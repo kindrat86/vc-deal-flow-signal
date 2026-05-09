@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import { FalseBeliefBreaker } from "@/components/FalseBeliefBreaker";
 import { getHreflangLanguages } from "@/lib/hreflang";
 
 export const dynamic = "force-static";
@@ -271,6 +272,16 @@ export default function ScorecardPage() {
             + Zenodo dataset (CC BY 4.0).
           </p>
         </section>
+
+        {/* FALSE BELIEFS — Brunson Expert Secrets Ch 13 (Identifying
+            False Beliefs / Buyer's Roadmap intro). Audit 2026-05-09
+            verdict: false-belief patterns "named" but as scattered prose.
+            This is the explicit table — three patterns (Vehicle /
+            Internal / External), three breaks, three receipts. The
+            scorecard page is the right home: the patterns most often
+            attach to the "is the signal real?" beat and the scorecard
+            is where readers come looking for that proof. */}
+        <FalseBeliefBreaker />
 
         <section className="rounded-xl border border-sky-700/40 bg-sky-950/15 p-6 sm:p-8 space-y-3">
           <p className="text-sky-300 text-xs font-semibold uppercase tracking-wider">
