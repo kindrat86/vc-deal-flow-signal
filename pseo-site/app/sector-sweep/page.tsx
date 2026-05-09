@@ -6,6 +6,7 @@ import { getHreflangLanguages } from "@/lib/hreflang";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import SectorSweepBriefForm from "./SectorSweepBriefForm";
 import TrialClose from "@/components/TrialClose";
+import BuyerRoadmap from "@/components/BuyerRoadmap";
 
 export const dynamic = "force-static";
 
@@ -447,6 +448,14 @@ export default function SectorSweepPage() {
           </p>
           <SectorSweepBriefForm />
         </section>
+
+        {/* BUYER ROADMAP — Brunson Expert Secrets Ch 18. The Sweep is a
+            14-day delivery + 14-day Q&A + 60-day upgrade-credit window;
+            the calendar arc renders the €1,997 as a four-beat
+            relationship, not a single PDF charge. Sits between the
+            brief form and the guarantee so the buyer reads the full
+            path before the risk reversal. */}
+        <BuyerRoadmap tier="sector-sweep" />
 
         {/* GUARANTEE */}
         <section className="rounded-xl border border-emerald-700/40 bg-emerald-950/30 p-6 sm:p-8 space-y-3">

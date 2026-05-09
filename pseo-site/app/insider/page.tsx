@@ -5,6 +5,7 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import TrialClose from "@/components/TrialClose";
+import BuyerRoadmap from "@/components/BuyerRoadmap";
 
 export const dynamic = "force-static";
 
@@ -869,6 +870,13 @@ export default function InsiderPage() {
             <span className="text-amber-300">€97/mo</span>
           </div>
         </section>
+
+        {/* BUYER ROADMAP — Brunson Expert Secrets Ch 18. Four-beat
+            calendar (Today → Sunday+6 → first Tuesday → Day 90→1yr) so
+            the €97/mo reads as a vehicle on a calendar, not a recurring
+            charge. Sits between the Encore and the Final CTA so the
+            arc is the last thing the buyer reads before clicking. */}
+        <BuyerRoadmap tier="insider" />
 
         {/* FINAL CTA */}
         <section className="border-t border-slate-800 pt-10 text-center space-y-4">
