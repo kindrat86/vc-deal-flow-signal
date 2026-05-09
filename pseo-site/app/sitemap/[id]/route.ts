@@ -105,6 +105,12 @@ export async function GET(_req: Request, ctx: RouteContext) {
       { url: `${BASE_URL}/faq`, lastmod, changefreq: "monthly", priority: 0.7 },
       { url: `${BASE_URL}/about`, lastmod, changefreq: "monthly", priority: 0.6 },
       { url: `${BASE_URL}/story`, lastmod, changefreq: "monthly", priority: 0.75 },
+      // Brunson Expert Secrets Ch 8 (Hero's Two Journeys) — /origin is the
+      // founder's arc; /origin/your-journey is the buyer's arc, told beat-
+      // for-beat against it. Both indexed at the same priority so search
+      // engines and answer surfaces find the matched pair.
+      { url: `${BASE_URL}/origin`, lastmod, changefreq: "monthly", priority: 0.75 },
+      { url: `${BASE_URL}/origin/your-journey`, lastmod, changefreq: "monthly", priority: 0.75 },
       { url: `${BASE_URL}/glossary`, lastmod, changefreq: "monthly", priority: 0.7 },
       { url: `${BASE_URL}/compare`, lastmod, changefreq: "monthly", priority: 0.6 },
       { url: `${BASE_URL}/weekly`, lastmod, changefreq: "weekly", priority: 0.6 },

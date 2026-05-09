@@ -67,6 +67,7 @@ export const CANONICAL_PROD_ROUTES = [
   "/earned-plays",
   "/decade-in-a-day",
   "/origin",
+  "/origin/your-journey",
   "/story",
   "/roadmap",
 
