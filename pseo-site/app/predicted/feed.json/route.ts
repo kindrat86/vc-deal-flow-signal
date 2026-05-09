@@ -25,13 +25,22 @@ function escapeHtml(s: string): string {
     .replace(/>/g, "&gt;");
 }
 
-function fmtLongDate(iso: string): string {
-  return new Date(iso + "T00:00:00Z").toLocaleDateString("en-US", {
+function fmtLongDate(iso: string | null | undefined): string {
+  if (!iso) return "TBD";
+  const d = new Date(iso + "T00:00:00Z");
+  if (Number.isNaN(d.getTime())) return "TBD";
+  return d.toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
     day: "numeric",
     timeZone: "UTC",
   });
+}
+
+function safeIsoOrNull(iso: string | null | undefined): string | null {
+  if (!iso) return null;
+  const d = new Date(iso + "T09:00:00Z");
+  return Number.isNaN(d.getTime()) ? null : d.toISOString();
 }
 
 const OUTCOME_LABEL: Record<string, string> = {
@@ -88,8 +97,8 @@ export async function GET() {
       summary,
       image: `${BASE_URL}/predicted/${week.slug}/opengraph-image`,
       banner_image: `${BASE_URL}/predicted/${week.slug}/opengraph-image`,
-      date_published: new Date(week.publishedAt + "T09:00:00Z").toISOString(),
-      date_modified: new Date(week.publishedAt + "T09:00:00Z").toISOString(),
+      date_published: safeIsoOrNull(week.publishedAt) ?? lastModified,
+      date_modified: safeIsoOrNull(week.publishedAt) ?? lastModified,
       authors: [
         {
           name: "The Data Nerd",
