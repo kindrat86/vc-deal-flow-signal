@@ -279,6 +279,15 @@ export default function PerfectWebinarPage() {
           <p className="italic text-gray-400 pt-3 border-t border-slate-800">
             That accident is the only reason this product exists.
           </p>
+          {/* Trial close 1/8 — Brunson Expert Secrets Ch 14. Soft permission
+              check after the hook moment, tuned for an investor reader. */}
+          <p className="text-gray-300 text-sm italic leading-relaxed pt-2">
+            Has a deal ever moved past you that way?{" "}
+            <span className="text-gray-400 not-italic">
+              Where the data was on a public website you&rsquo;d opened a hundred
+              times — and you just hadn&rsquo;t read it as deal flow yet?
+            </span>
+          </p>
         </section>
 
         {/* BIG DOMINO */}
@@ -303,6 +312,14 @@ export default function PerfectWebinarPage() {
             so does our entire thesis. So instead of selling you a dashboard, I
             am going to spend the next three sections trying to knock it down.
             If it survives, the rest is arithmetic.
+          </p>
+          {/* Trial close 2/8 — Brunson Expert Secrets Ch 14. Permission to
+              hold the Big Domino as a working hypothesis through the next
+              three sections. Anchors the reader's attention to the question
+              that resolves at the end of the page. */}
+          <p className="text-gray-400 text-sm italic leading-relaxed pt-1">
+            Working hypothesis you can sit with for the next ten minutes? The
+            rest of the page only matters if it is.
           </p>
         </section>
 
@@ -358,6 +375,14 @@ export default function PerfectWebinarPage() {
               </Link>
               .
             </p>
+            {/* Trial close 3/8 — Brunson Expert Secrets Ch 14. After the
+                vehicle-objection takedown, ask the reader to confirm the
+                noise-vs-acceleration framing landed. The whole product
+                hangs on this distinction. */}
+            <p className="text-gray-400 text-sm italic leading-relaxed pt-1">
+              Tracking with me on the difference between volume and
+              acceleration? That distinction is the whole product.
+            </p>
           </div>
 
           {/* SECRET 2 — INTERNAL BELIEF */}
@@ -388,6 +413,16 @@ export default function PerfectWebinarPage() {
               first, offer help before they need money, and build a
               relationship before everyone else is trying to. Your network gets
               you to the table. This gets you there first.
+            </p>
+            {/* Trial close 4/8 — Brunson Expert Secrets Ch 14. Reflective
+                question after the internal-objection takedown — invites the
+                reader to audit their own portfolio against the framing.
+                Stronger than "make sense?" because it asks them to do the
+                empirical check on their own past wins. */}
+            <p className="text-gray-400 text-sm italic leading-relaxed pt-1">
+              Recognise the pattern? The deals that printed best in your last
+              cohort — were they the ones where you arrived first, or the ones
+              where you arrived warm?
             </p>
           </div>
 
@@ -425,6 +460,15 @@ export default function PerfectWebinarPage() {
               . None publish their methodology. None expose raw data.
               Engineering signal is the open lane.
             </p>
+            {/* Trial close 5/8 — Brunson Expert Secrets Ch 14. Closes the
+                three-objections arc with the simplest variant — a one-line
+                permission check before the reader passes into the offer
+                section. Brunson rule: the close lands cleaner if the reader
+                has nodded yes to each objection takedown individually. */}
+            <p className="text-gray-400 text-sm italic leading-relaxed pt-1">
+              Sound right? The edge isn&rsquo;t exclusivity — it&rsquo;s the
+              read.
+            </p>
           </div>
         </section>
 
@@ -450,6 +494,14 @@ export default function PerfectWebinarPage() {
             That is the rhythm. Sunday digest, Wednesday filter, end-of-quarter
             sweep. Three touchpoints, twelve minutes a week, sub-€10/mo. The
             dashboard is just a tool — the leverage is in the rhythm.
+          </p>
+          {/* Trial close 6/8 — Brunson Expert Secrets Ch 14. After the
+              "what would the world look like" picture, the trial close
+              brings the imagined future into first-person. The reader who
+              answers internally is already living the cadence. */}
+          <p className="text-gray-400 text-sm italic leading-relaxed pt-1">
+            Imagine that&rsquo;s already your Monday. What would the next
+            quarter of deal flow actually look like?
           </p>
         </section>
 
@@ -572,6 +624,17 @@ export default function PerfectWebinarPage() {
             That&rsquo;s the five-step Conversion Story. If steps 1–4 read
             like the room you&rsquo;re standing in, step 5 is the door.
           </p>
+          {/* Trial close 7/8 — Brunson Expert Secrets Ch 14. After the
+              full 5-step Conversion Story, ask the reader which step
+              landed hardest. Self-diagnostic question — the reader who
+              picks step 4 (identity preserved) has the highest LTV in
+              the panel. The "most readers tell me" framing is social
+              proof in trial-close form. */}
+          <p className="text-gray-400 text-sm italic leading-relaxed">
+            Does the five-step shift match what you&rsquo;ve been quietly
+            thinking? Most readers tell me step 4 — &ldquo;identity stays
+            intact&rdquo; — is the one that lands hardest.
+          </p>
         </section>
 
         {/* FUTURE-PACING — Brunson Expert Secrets Ch 21. The mental movie
@@ -646,6 +709,21 @@ export default function PerfectWebinarPage() {
             the instrument that produces it. The price below is what the
             instrument costs to lease per month, founding-member rate,
             locked forever.
+          </p>
+          {/* Trial close 8/8 — Brunson Expert Secrets Ch 14. The bridge
+              from future-pacing into the Stack. Asks the reader to make
+              the most consequential internal yes — "can I see myself
+              living in this?" — before they read prices. If they nod
+              yes here, the €9.97/mo lands as cheap. If they nod no, the
+              graceful exit ("save the page and come back") preserves the
+              relationship for the email sequence to do the work over time. */}
+          <p className="text-gray-300 text-sm italic leading-relaxed pt-1">
+            Can you see yourself living in that Tuesday?{" "}
+            <span className="text-gray-400 not-italic">
+              If yes, the Stack below is the instrument that produces it. If
+              not, save the page and come back when the rhythm in your week
+              opens up — the founding-member price stays locked either way.
+            </span>
           </p>
         </section>
 

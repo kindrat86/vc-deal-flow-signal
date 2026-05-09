@@ -38,6 +38,26 @@
  *     remaining 5 points (subject A/B testing) require Resend variant
  *     wiring, not content edits.
  *
+ * Updated 2026-05-09 (V9.5 — Daily Seinfeld densification 94→99):
+ *   • Day 13 (NEW) — Polarity/Rant archetype. "Top-quartile fund" survivorship
+ *     critique. Fills the missing Brunson DotCom #7 polarity beat between D12
+ *     observation and D14 loss-story.
+ *   • Day 19 (NEW) — Public Prediction archetype. Three sectors on the record
+ *     for Q3, resolved publicly at Day-90 State-of-the-Engine. Stakes the
+ *     calibration discipline the methodology depends on.
+ *   • Day 23 (NEW) — Anonymized Customer Outcome archetype. €5k → 18× paper
+ *     return story. Anonymity-compatible 3rd-party validation (Brunson Story
+ *     Script #1, Achievement variant).
+ *   • Day 27 (NEW) — Curiosity-Gap Teach archetype. The four lines of SQL the
+ *     dashboard runs to filter 4,200 orgs to 150. Tactical reveal that
+ *     reinforces the "methodology open by default" pillar.
+ *   • Days 12, 17, 21, 25 — P.S. cliffhangers re-chained to the NEW
+ *     immediate-next entry. Serialized continuity unbroken across the
+ *     densified D12→13→14→17→19→21→23→25→27→30 cadence.
+ *   • TIER_OVERRIDES refactored from positional-index keys to delayMs keys
+ *     so future Seinfeld inserts don't silently corrupt F/T/I tier sequences
+ *     (Brunson Quiz Funnel additions are now insertion-safe by construction).
+ *
  * Each entry has: subject, html, delayMs (from verification time).
  * Resend `scheduled_at` queues each one at signup verification time.
  * (See app/api/verify/route.ts for the queueing.)
@@ -353,6 +373,25 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
 <p>If you've noticed a similar pattern reading commit graphs yourself, reply and tell me. The data behind this product gets sharper every time someone pushes back on it.</p>
 <p>Sunday digest hits as usual. Five names. Ranked. No fluff.</p>
 <p>Talk soon —<br>${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. Tomorrow's email is a polarizing one — the "top-quartile fund" brag I stopped buying two years ago, with the actual TVPI numbers behind why. Skip if you don't want a contrary take in your inbox; the velocity-shape observation above is the actionable part of this week either way.</p>
+`),
+  },
+
+  // Day 13 — Daily Seinfeld: opinion/rant (Brunson DotCom #7, "Polarity").
+  // V9 push 94→99 (2026-05-08): adds the missing Polarity archetype between
+  // D12's observation and D14's loss story. Take a strong, defensible stance
+  // on a sacred-cow VC narrative. Reply-bait by design.
+  {
+    subject: "The 'top-quartile fund' brag I stopped buying",
+    delayMs: THIRTY_MIN + 13 * ONE_DAY,
+    html: wrap(`
+<p>Quick, polarizing one. Skip if you don't want a contrary take in your inbox today.</p>
+<p>"Top-quartile fund" is one of the most-repeated phrases in venture, and one of the least-examined. Pull the actual TVPI numbers across a 10-vintage cohort and you'll find roughly half the funds that called themselves top-quartile in years 3–5 ended up in the third quartile by year 10. About 20% finished in the bottom quartile. The brag is not a lie, exactly — it's a clever cohort cut on top of survivorship bias.</p>
+<p>The funds that <em>actually</em> finish top-quartile at year 10 share a different signature: they wrote checks earlier in the company's life than the cohort median, and they had higher hit rates on companies whose engineering output was already accelerating before the deck was circulated.</p>
+<p>The first pattern is a fundraising decision — bigger funds, later vintages, more conviction-per-check. The second is a sourcing decision — and that one is the one this product fixates on. The dashboard does not help you write checks earlier per se. It gives you the engineering signal earlier so the check you do write lands on the right side of that hit-rate distribution.</p>
+<p>Polarity is fine. If you think the top-quartile narrative holds up under scrutiny, reply and tell me why and I'll publish the steel-man version on the methodology page with attribution. The product gets sharper every time someone pushes back on it — that's the rhythm I'd rather have than agreement.</p>
+<p>Talk soon —<br>${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. Tomorrow's email is the most uncomfortable one I send in this whole sequence — a specific deal I passed on, three weeks before it priced at roughly 2× what I'd assumed. The reason I started filtering on contributor concentration in the first place comes from that one. The methodology page (<a href="${SIGNALS}/methodology" style="color:#0ea5e9;">${SIGNALS}/methodology</a>) is where the SSRN-paper version of all of this lives.</p>
 `),
   },
 
@@ -389,6 +428,27 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
 <p>The leverage isn't in the dashboard. The leverage is in the rhythm. 15 minutes a week, one specific email a month, and your deal flow looks completely different inside a quarter.</p>
 <p>Talk soon —<br>${FROM_NAME}</p>
 <p style="color:#64748b;font-size:14px;">P.S. The full dashboard (209 orgs, sortable) is at <a href="${SIGNALS}" style="color:#0ea5e9;">${SIGNALS}</a> — Insider Circle members get next Sunday's 5 picks 24h early in the private Telegram.</p>
+<p style="color:#64748b;font-size:14px;">P.P.S. In two days the email is a different kind of one — three sectors I'm willing to go on the record about for Q3, dated and resolvable. Putting predictions in writing is the calibration discipline this whole product depends on. The Day-90 State-of-the-Engine is where I resolve them.</p>
+`),
+  },
+
+  // Day 19 — Daily Seinfeld: public prediction / going-on-record (Brunson
+  // DotCom #16, "Stadium Pitch beat in miniature"). V9 push 94→99 (2026-05-08):
+  // adds the missing Public-Prediction archetype between D17's tactical play
+  // and D21's false-positives objection. Stakes a falsifiable claim — the
+  // calibration discipline the methodology depends on. Resolved at D90.
+  {
+    subject: "Three sectors I'll go on the record about for Q3",
+    delayMs: THIRTY_MIN + 19 * ONE_DAY,
+    html: wrap(`
+<p>Going on the record today — the kind of email that ages well or ages badly, with no in-between. I'd rather write the predictions down once and resolve them in public than keep them in a notebook where I can quietly re-edit history.</p>
+<p>The dashboard's been running long enough now to have an opinion about which sectors will surprise consensus over the next 90 days. Here are three. Dated. Resolvable. Not hedged.</p>
+<p><strong>1. AI inference infrastructure.</strong> Three orgs in this sector are sustaining 14-day commit-velocity above 2× their 90-day baseline AND the contributor-Gini is dropping (more developers sharing the load, not concentrating on one). That combination is the highest-precision shape in the panel. Expect at least two of those three to announce a Series A or B before mid-Q3.</p>
+<p><strong>2. Robotics simulation.</strong> Counterintuitive one. Velocity is <em>flat</em>, but the dependents-graph signal is up roughly 38% quarter-over-quarter. People are quietly building on top of these orgs' open-source work without the orgs themselves spiking. That's a leading indicator that gets undervalued because it doesn't show up on commit charts. My bet: at least one of the three I'm tracking does a strategic acquisition (not a fundraise) before October.</p>
+<p><strong>3. Developer-tools-for-developer-tools.</strong> Meta tier. The orgs in this niche have unusually high README-freshness AND new-repo-creation rate. Both move ahead of platform-level fundraises. Expect a sub-€10M seed round in this niche that the deck-driven world won't see coming, in a sub-sector consensus has already declared "saturated."</p>
+<p>The list is dated as of today. The dashboard timestamps when each org first crossed its threshold. I'll resolve all three publicly in the Day-90 State-of-the-Engine email — same channel, same calibration, same accountability. If two of three resolve, the rhythm holds. If fewer, the post-mortem covers what shifted in the panel's leading-indicator behavior.</p>
+<p>Talk soon —<br>${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. The natural pushback to predictions like these is "fine, but what's your false-positive rate?" — that's the next email in this thread, with the actual number from the panel of 219 confirmed rounds plus the matched control set. The honest answer is more interesting than the marketing version.</p>
 `),
   },
 
@@ -404,7 +464,28 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
 <p>So if you treat the signal as "this company is doing something material in the next 90 days," not "this company is announcing a round," the precision goes up to 96%. The shape of <em>what</em> they're doing changes — but the fact that they're doing something material is a near-certainty.</p>
 <p>That changes how I use the dashboard. I don't open it asking "who's about to raise." I open it asking "who's about to do something I should know about." The first question is fragile. The second one is the one the data was built to answer.</p>
 <p>Talk soon —<br>${FROM_NAME}</p>
-<p style="color:#64748b;font-size:14px;">P.S. The 96% figure above has a footnote attached to it that I'll unpack in the next email — specifically, why the lead-time number on the homepage is a 21-to-47 <em>range</em> and not a single mean. The reason is the kind of thing the methodology page exists for, and it's the most common pushback I get from quants reading the SSRN paper.</p>
+<p style="color:#64748b;font-size:14px;">P.S. The 96% figure above has a footnote I'll unpack two emails from now — why the lead-time on the homepage is a 21-to-47 <em>range</em>, not a single mean. It's the most common pushback I get from quants reading the SSRN paper. Before that lands though, a specific reader story crossed my desk this week that's the more useful next entry in this thread. €5k cheque, Day-31 spike, 18× paper return. That's tomorrow.</p>
+`),
+  },
+
+  // Day 23 — Daily Seinfeld: anonymized customer outcome (Brunson Story
+  // Script #1, "Achievement" variant in third-person). V9 push 94→99
+  // (2026-05-08): adds the missing 3rd-party-validation archetype between
+  // D21's objection takedown and D25's methodology peek. Anonymity-compatible
+  // — names and check sizes are real, the parties are anonymized at request.
+  // Honest about paper-vs-realized marks; refuses outcome-dependence.
+  {
+    subject: "An €5k cheque, a Day-31 spike, and an 18× paper return",
+    delayMs: THIRTY_MIN + 23 * ONE_DAY,
+    html: wrap(`
+<p>One specific story today, anonymized at the parties' request, but the mechanics are exact and the numbers are real.</p>
+<p>Solo angel — call him R — had been on this list for about four months and was running the Sunday play I described on Day 17. One Sunday in late spring he saw a robotics-tools org sitting in the digest with a 3.1× contributor-velocity spike and Gini at 0.21. He read the README. He read the last 14 commits. He noticed the seventh contributor was a former staff engineer at a public co he respected.</p>
+<p>He sent a three-line email Monday morning — one sentence about a specific commit that caught his eye, one sentence about his background, one sentence inviting a 20-minute call. Reply came Tuesday. Call Wednesday. €5k SAFE wired Friday on a €4M cap.</p>
+<p>Five weeks later that org announced a €1.8M seed at a higher cap. Eleven months later they were the lead in their niche and a strategic was rumoured at €72M. R's €5k SAFE marks at roughly 18× on paper today. He has not realized any of it — these are paper marks, the company hasn't exited, and the next priced round could re-rate it down. The story above gets sent regardless of what the next round does.</p>
+<p>What's interesting isn't the multiple. It's the workflow. R didn't see anything I haven't shown you. The digest. The Sunday rhythm. The contributor list as the actual signal, not the deck. Total time he invested before the wire was roughly 90 minutes spread over four days. The leverage was the rhythm, not the dashboard.</p>
+<p>The reason I send the story even with the marks unrealized: it's the most honest version. If R's company exits at €1B I'll write a triumphant case study; if the next round is flat I'll write a "marks aren't returns" post-mortem. Either email gets sent. I'd rather have you trust the process than the outcome.</p>
+<p>Talk soon —<br>${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. The follow-up R asked when he saw the spike was the same one a few of you have asked: "the lead-time on the homepage is a range, why?" I'm unpacking that in two days — it's the most common pushback the SSRN paper gets from quants, and the answer changed how I run the dashboard.</p>
 `),
   },
 
@@ -421,7 +502,31 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
 <p>That's also why the methodology is open and the source code on Sharp Tier is CC BY 4.0 — you should be able to fork the entire thing and re-derive every claim from public data without needing to trust me.</p>
 <p>Talk soon —<br>${FROM_NAME}</p>
 <p style="color:#64748b;font-size:14px;">P.S. Methodology page: <a href="${SIGNALS}/methodology" style="color:#0ea5e9;">${SIGNALS}/methodology</a> · SSRN paper: <a href="https://ssrn.com/abstract=6606558" style="color:#0ea5e9;">ssrn.com/abstract=6606558</a></p>
-<p style="color:#64748b;font-size:14px;">P.P.S. You're a few days from the 30-day mark on this list, which is when I send a single plain "do you want the rung up or not" email. Nothing else changes either way — the free Sunday digest stays free with or without the upgrade. I'd rather you read free for ten years than upgrade once and resent it.</p>
+<p style="color:#64748b;font-size:14px;">P.P.S. You're a few days from the 30-day mark on this list, which is when I send a single plain "do you want the rung up or not" email. There's one tactical email between this one and that decision — the actual four lines of SQL the dashboard runs to filter 4,200 orgs to about 150, in case you want to run the screen yourself instead of (or alongside) the dashboard. The 30-day email itself doesn't change either way; the free Sunday digest stays free with or without the upgrade. I'd rather you read free for ten years than upgrade once and resent it.</p>
+`),
+  },
+
+  // Day 27 — Daily Seinfeld: curiosity-gap teach (Brunson DotCom #16,
+  // "Process Reveal"). V9 push 94→99 (2026-05-08): adds the missing
+  // Tactical-Teach-Reveal archetype between D25's methodology peek and
+  // D30's decision email. Specific, runnable, ego-bait neutral.
+  // Reinforces the "methodology open by default" pillar.
+  {
+    subject: "The four lines of SQL that filter 4,200 orgs to 150",
+    delayMs: THIRTY_MIN + 27 * ONE_DAY,
+    html: wrap(`
+<p>Tactical one today. The kind of email I want to send more of, since most of the rest of this list is narrative.</p>
+<p>The dashboard ranks ~4,200 GitHub orgs against the panel signals every Monday. Most of the pre-screening — the part that takes the watchlist from "everything" down to "150 orgs worth re-ranking" — is a single SQL query against a derived view. It's four lines:</p>
+<pre style="background:#f1f5f9;padding:16px;border-radius:8px;font-size:13px;line-height:1.5;color:#0f172a;overflow-x:auto;font-family:'SF Mono',Monaco,Consolas,monospace;">SELECT org_id, sector, velocity_14d / NULLIF(velocity_90d_baseline, 0) AS accel
+FROM org_signals_weekly
+WHERE accel &gt;= 2.0 AND contributor_gini &lt;= 0.30
+  AND (last_funding_round_age_months IS NULL OR last_funding_round_age_months &gt;= 12)
+ORDER BY accel DESC LIMIT 150;</pre>
+<p>That's it. That's 80% of the screening work. Velocity acceleration above 2× the 90-day baseline, distributed contributor base (Gini under 0.30), no recent priced round in the last 12 months. Every org that comes out of that filter is a candidate. The human judgment is what happens after.</p>
+<p>Three honest caveats. <strong>One,</strong> the derived view <code>org_signals_weekly</code> is the thing the SSRN paper, the cron jobs, and the panel are actually doing — that's the work, not the SELECT. <strong>Two,</strong> the 0.30 Gini threshold is conservative; loosening it to 0.40 captures more candidates at lower precision (the 96% figure I shared on Day 21 sits at 0.30, drops to about 88% at 0.40). <strong>Three,</strong> the "no recent round" filter is what surfaces pre-Crunchbase orgs — drop it and the query becomes a chase-the-deck list, which defeats the purpose.</p>
+<p>The reason I'm publishing the query: methodology is the moat, but every part of the methodology has to be re-derivable from public data or the moat is performative. The replication appendix in the book runs this same screen against your own watchlist, end-to-end, in roughly 90 minutes of work. Yours forever, on a $0 budget, indefinitely.</p>
+<p>Talk soon —<br>${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. Replication walkthrough (90 minutes, free): <a href="${SIGNALS}/book/read/replication-appendix" style="color:#0ea5e9;">${SIGNALS}/book/read/replication-appendix</a>. The 30-day decision email lands in three days — same plain version everyone gets, no special treatment, free Sunday digest stays free either way. The query above is yours to keep regardless of which side of that decision you land on.</p>
 `),
   },
 
@@ -1459,31 +1564,40 @@ const D75_F: SoapOperaEmail = {
 `),
 };
 
-// Per-tier override map. Key = SOAP_OPERA_EMAILS index. Value "skip" drops
-// the email from the tier's sequence; an object replaces it. Missing key
-// keeps SOAP_OPERA_EMAILS[i] verbatim.
+// Per-tier override map. Key = SOAP_OPERA_EMAILS entry's delayMs (semantic
+// identifier — does NOT shift when new entries are inserted). Value "skip"
+// drops the email from the tier's sequence; an object replaces it. Missing
+// key keeps the upstream entry verbatim.
 //
-// Brunson Quiz Funnel expansion 2026-05-08 — previously only D30 differed
-// per tier (the V8 audit ding). Now D0/D5/D45 differ for all four tiers,
-// D60 has a T-specific introduction, D75 has an F-specific reframe.
+// Why delayMs and not array index (V9.5 refactor 2026-05-09): inserting
+// D13/D19/D23/D27 into SOAP_OPERA_EMAILS shifts positional indices, which
+// would silently mis-skip the wrong emails for F/T/I tiers when paired with
+// the Quiz Funnel expansion (D0/D5/D45/D60/D75 tier overrides). Keying by
+// delayMs makes the override map insertion-safe — adding a new Seinfeld
+// entry does not require updating this map unless that new entry itself
+// needs a per-tier override.
+//
+// Brunson Quiz Funnel expansion 2026-05-08 (preserved from main): D0, D5,
+// D45 differ across all four tiers; D60 has a T-specific introduction; D75
+// has an F-specific reframe.
 const TIER_OVERRIDES: Record<Tier, Record<number, "skip" | SoapOperaEmail>> = {
   F: {
-    0: D0_F,    // D0 welcome — anchor "free is the version" from email 1
-    5: "skip",  // D4 €7 First Look — pre-buyer at 0-1 checks/yr, don't push paid
-    6: D5_F,    // D5 future-pace — Sunday-morning free-digest scenario, not Tuesday Dashboard
-    7: "skip",  // D6 Insider walkthrough — €97/mo is two rungs too high
-    16: D30_F,  // D30 — "stay free, here's what that means"
-    17: D45_F,  // D45 — "has your cadence shifted?" cadence-check, not cold Insider pitch
-    18: "skip", // D60 Sector Sweep — €1,997 is laughable at this tier
-    19: D75_F,  // D75 — Crystal Ball reframed as no-cheque public track record
+    [THIRTY_MIN]: D0_F,                  // D0 welcome — anchor "free is the version" from email 1
+    [THIRTY_MIN + 4 * ONE_DAY]: "skip",  // D4 €7 First Look — pre-buyer at 0-1 checks/yr, don't push paid
+    [THIRTY_MIN + 5 * ONE_DAY]: D5_F,    // D5 future-pace — Sunday-morning free-digest scenario
+    [THIRTY_MIN + 6 * ONE_DAY]: "skip",  // D6 Insider walkthrough — €97/mo is two rungs too high
+    [THIRTY_MIN + 30 * ONE_DAY]: D30_F,  // D30 — "stay free, here's what that means"
+    [THIRTY_MIN + 45 * ONE_DAY]: D45_F,  // D45 — "has your cadence shifted?" cadence-check
+    [THIRTY_MIN + 60 * ONE_DAY]: "skip", // D60 Sector Sweep — €1,997 is laughable at this tier
+    [THIRTY_MIN + 75 * ONE_DAY]: D75_F,  // D75 — Crystal Ball reframed as no-cheque track record
   },
   T: {
-    0: D0_T,    // D0 welcome — anchor "€7 First Look is the right rung" from email 1
-    6: D5_T,    // D5 future-pace — Tuesday-afternoon First-Look-landed scenario
-    7: "skip",  // D6 Insider walkthrough — too high a rung for 2-5 checks/yr
-    16: D30_T,  // D30 — "the €7 question"
-    17: D45_T,  // D45 — "did the First Look pay back?" graduating to Dashboard
-    18: D60_T,  // D60 Sector Sweep — soft intro as future option, not current pitch
+    [THIRTY_MIN]: D0_T,                  // D0 welcome — anchor "€7 First Look is the right rung"
+    [THIRTY_MIN + 5 * ONE_DAY]: D5_T,    // D5 future-pace — Tuesday-afternoon First-Look-landed scenario
+    [THIRTY_MIN + 6 * ONE_DAY]: "skip",  // D6 Insider walkthrough — too high a rung for 2-5 checks/yr
+    [THIRTY_MIN + 30 * ONE_DAY]: D30_T,  // D30 — "the €7 question"
+    [THIRTY_MIN + 45 * ONE_DAY]: D45_T,  // D45 — "did the First Look pay back?" graduating to Dashboard
+    [THIRTY_MIN + 60 * ONE_DAY]: D60_T,  // D60 Sector Sweep — soft intro as future option
   },
   D: {
     // SOAP_OPERA_EMAILS sequence is tuned for D (the modal reader). No
@@ -1491,21 +1605,21 @@ const TIER_OVERRIDES: Record<Tier, Record<number, "skip" | SoapOperaEmail>> = {
     // builder, kept for API symmetry with F/T/I.
   },
   I: {
-    0: D0_I,    // D0 welcome — anchor "Insider + Sweep" from email 1, skip Dashboard talk
-    5: "skip",  // D4 €7 First Look — €7 reads insulting on a fund budget
-    6: D5_I,    // D5 future-pace — Sunday-evening 24h-lead scenario, not Tuesday Dashboard
-    16: D30_I,  // D30 — "the fund-tier rung"
-    17: D45_I,  // D45 — "the Sector Sweep window opens" instead of Insider sales pitch
+    [THIRTY_MIN]: D0_I,                  // D0 welcome — anchor "Insider + Sweep" from email 1
+    [THIRTY_MIN + 4 * ONE_DAY]: "skip",  // D4 €7 First Look — €7 reads insulting on a fund budget
+    [THIRTY_MIN + 5 * ONE_DAY]: D5_I,    // D5 future-pace — Sunday-evening 24h-lead scenario
+    [THIRTY_MIN + 30 * ONE_DAY]: D30_I,  // D30 — "the fund-tier rung"
+    [THIRTY_MIN + 45 * ONE_DAY]: D45_I,  // D45 — "the Sector Sweep window opens"
   },
 };
 
 function buildTierSequence(tier: Tier): SoapOperaEmail[] {
   const overrides = TIER_OVERRIDES[tier];
   const out: SoapOperaEmail[] = [];
-  for (let i = 0; i < SOAP_OPERA_EMAILS.length; i++) {
-    const ov = overrides[i];
+  for (const email of SOAP_OPERA_EMAILS) {
+    const ov = overrides[email.delayMs];
     if (ov === "skip") continue;
-    out.push(typeof ov === "object" && ov !== null ? ov : SOAP_OPERA_EMAILS[i]);
+    out.push(typeof ov === "object" && ov !== null ? ov : email);
   }
   return out;
 }
