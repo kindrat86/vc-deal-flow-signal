@@ -8,6 +8,7 @@ import {
 } from "@/content/agent-queries";
 import { getDataLastModified } from "@/lib/data";
 import { AgentSummary } from "@/components/AgentSummary";
+import { HreflangLinks } from "@/components/HreflangLinks";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -241,6 +242,14 @@ export default async function AnswerPage({ params }: PageProps) {
 
   return (
     <>
+      <HreflangLinks
+        canonical={url}
+        languages={{
+          en: url,
+          "en-US": url,
+          "x-default": url,
+        }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

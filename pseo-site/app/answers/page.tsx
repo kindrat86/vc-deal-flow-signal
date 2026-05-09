@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { agentQueries } from "@/content/agent-queries";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { HreflangLinks } from "@/components/HreflangLinks";
+import { DEFAULT_HREFLANG_LANGUAGES } from "@/lib/hreflang";
 
 const SITE = "https://signals.gitdealflow.com";
 
@@ -90,6 +92,10 @@ export default function AnswersIndexPage() {
 
   return (
     <>
+      <HreflangLinks
+        canonical={`${SITE}/answers`}
+        languages={DEFAULT_HREFLANG_LANGUAGES}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

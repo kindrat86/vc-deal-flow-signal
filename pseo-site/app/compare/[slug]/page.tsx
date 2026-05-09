@@ -6,6 +6,7 @@ import { getTeardownsForSlug } from "@/content/competitor-teardowns";
 import { getAllSectors, getCurrentPeriod, getDataLastModified } from "@/lib/data";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { FunnelTeardown } from "@/components/FunnelTeardown";
+import { HreflangLinks } from "@/components/HreflangLinks";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -203,6 +204,14 @@ export default async function ComparisonPage({ params }: PageProps) {
 
   return (
     <>
+      <HreflangLinks
+        canonical={pageUrl}
+        languages={{
+          en: pageUrl,
+          "en-US": pageUrl,
+          "x-default": pageUrl,
+        }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

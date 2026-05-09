@@ -6,6 +6,12 @@ const BASE_URL = "https://signals.gitdealflow.com";
 // auditor reading /robots.txt sees clear, named permission rather than
 // inheritance from the wildcard rule. New 2026 entries: Mistral, Cohere
 // training, Meta-ExternalFetcher, ai2bot, Apple-AI, Diffbot, Kagibot.
+//
+// Pass X (2026-05-09) added the major non-Google search engines explicitly:
+// bingbot (Bing/Copilot), YandexBot (Yandex search + AI Alice), DuckDuckBot
+// (DuckDuckGo, distinct from DuckAssistBot), Baiduspider, NaverBot, Slurp
+// (Yahoo). All four-engine surfaces — Google, Bing, Yandex, Baidu — now
+// have named entries.
 const AI_CRAWLERS = [
   "GPTBot",
   "ChatGPT-User",
@@ -41,6 +47,14 @@ const AI_CRAWLERS = [
   "TimpiBot",
   "Kagibot",
   "Brightbot",
+  // Non-Google search engines — explicit allow with crawl-delay where the
+  // engine has historically been aggressive against small origins.
+  "bingbot",
+  "YandexBot",
+  "DuckDuckBot",
+  "Baiduspider",
+  "Slurp",
+  "NaverBot",
 ];
 
 // Routes that should never appear in agent or search indices.
