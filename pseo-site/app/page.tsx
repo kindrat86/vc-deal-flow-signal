@@ -26,6 +26,10 @@ import EpiphanyBridgeCondensed from "@/components/EpiphanyBridgeCondensed";
 import HomeOfferStack from "@/components/HomeOfferStack";
 import { DataNerdPolarityCard } from "@/components/DataNerdPolarityCard";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
+import {
+  EMOTIONAL_CAUSE_KICKER,
+  EMOTIONAL_CAUSE_LINES,
+} from "@/content/cause";
 
 export const metadata: Metadata = {
   // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
@@ -1130,10 +1134,60 @@ export default function Home() {
         ]}
       />
 
-      {/* Manifesto — Brunson "future-based cause" surfaced on home. The
-          movement-frame the workbook had but the page didn't. */}
+      {/* CAUSE — emotional layer. Brunson Expert Secrets §1 Ch 2 — the
+          Future-Based Cause has two layers: intellectual and emotional.
+          Intellectual lives below ("data over networks" + named enemy);
+          emotional opens here, because the gut-level version is what
+          recruits a movement and the intellectual version is what
+          retains it. Source of truth: content/cause.ts. */}
       <section
-        aria-label="Manifesto"
+        aria-labelledby="home-emotional-cause-heading"
+        className="my-8 rounded-xl border border-rose-700/40 bg-gradient-to-br from-rose-950/25 via-slate-900 to-slate-950 p-6 sm:p-8"
+      >
+        <p className="text-rose-300 text-xs font-semibold uppercase tracking-wider mb-3">
+          {EMOTIONAL_CAUSE_KICKER}
+        </p>
+        <h2
+          id="home-emotional-cause-heading"
+          className="text-xl sm:text-2xl font-bold text-gray-100 leading-snug mb-5"
+        >
+          Five sentences. If any of them lands, you&rsquo;re one of us.
+        </h2>
+        <ol className="space-y-3.5">
+          {EMOTIONAL_CAUSE_LINES.map((line, i) => (
+            <li
+              key={i}
+              className="flex gap-3 text-gray-200 text-sm sm:text-base leading-relaxed"
+            >
+              <span
+                aria-hidden="true"
+                className="text-rose-400 font-bold tabular-nums shrink-0 w-6 pt-0.5"
+              >
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <span>{line}</span>
+            </li>
+          ))}
+        </ol>
+        <p className="text-gray-400 text-xs sm:text-sm leading-relaxed pt-5 border-t border-rose-700/20 mt-5">
+          Read the long version on the{" "}
+          <Link
+            href="/manifesto"
+            className="text-rose-300 hover:text-rose-200 underline decoration-dotted"
+          >
+            two-layer manifesto
+          </Link>{" "}
+          — what we believe, what we refuse, the seven pillars, the named
+          enemy, who&rsquo;s on the bus.
+        </p>
+      </section>
+
+      {/* CAUSE — intellectual layer. The pillars-flavored summary that
+          retains the reader who already nodded through the emotional
+          opener. The named enemy ("warm-intro roulette") closes the
+          loop. */}
+      <section
+        aria-label="What we believe"
         className="my-8 border-l-2 border-amber-500/50 pl-5 sm:pl-6 py-1"
       >
         <p className="text-amber-400 text-xs font-semibold uppercase tracking-wider mb-3">

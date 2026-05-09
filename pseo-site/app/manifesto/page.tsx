@@ -4,18 +4,30 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
+import {
+  ALL_CAUSE_QUOTATIONS,
+  EMOTIONAL_CAUSE_HEADLINE,
+  EMOTIONAL_CAUSE_KICKER,
+  EMOTIONAL_CAUSE_LINES,
+  WE_BELIEVE_HEADLINE,
+  WE_BELIEVE_KICKER,
+  WE_BELIEVE_LINES,
+  WE_REFUSE_HEADLINE,
+  WE_REFUSE_KICKER,
+  WE_REFUSE_LINES,
+} from "@/content/cause";
 
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title: "Manifesto — what GitDealFlow believes",
   description:
-    "Seven pillars of the developer-investor movement: data over networks, code over decks, public over private, methodology over personality, ladder over lock-in, free over gated, anonymity over performance.",
+    "The two-layer cause behind the developer-investor movement. The intellectual layer: seven pillars (data over networks, code over decks, public over private, methodology over personality, ladder over lock-in, free over gated, anonymity over performance). The emotional layer: what we're tired of watching, what we believe, and the four lines we refuse to cross to grow.",
   alternates: { canonical: "/manifesto" },
   openGraph: {
     title: "Manifesto — what GitDealFlow believes",
     description:
-      "Seven pillars. The movement, the enemy, who's on the bus.",
+      "The two-layer cause. What we're tired of watching, what we believe, what we refuse, the seven pillars, and who's on the bus.",
     url: "https://signals.gitdealflow.com/manifesto",
     type: "article",
   },
@@ -135,6 +147,41 @@ export default function ManifestoPage() {
     inLanguage: "en",
   }));
 
+  // Emit one Quotation entry per emotional-cause / we-believe / we-refuse
+  // line so retrieval pipelines can cite the gut-level layer of the cause
+  // the same way they cite the pillars. Each line gets a stable @id anchor
+  // for deep-linking from LLM citations.
+  const causeQuotations = ALL_CAUSE_QUOTATIONS.map((q) => ({
+    "@type": "Quotation",
+    "@id": `https://signals.gitdealflow.com/manifesto#${q.id}`,
+    text: q.text,
+    spokenByCharacter: {
+      "@type": "Person",
+      name: "The Data Nerd",
+      jobTitle: "Founder, VC Deal Flow Signal",
+    },
+    creator: {
+      "@type": "Organization",
+      name: "VC Deal Flow Signal",
+      url: "https://gitdealflow.com",
+    },
+    isPartOf: {
+      "@type": "WebPage",
+      "@id": "https://signals.gitdealflow.com/manifesto#webpage",
+    },
+    license: "https://creativecommons.org/licenses/by/4.0/",
+    inLanguage: "en",
+    keywords: [
+      "future-based cause",
+      "developer-investor movement",
+      q.category === "tired"
+        ? "what we're tired of watching"
+        : q.category === "believe"
+          ? "what we believe"
+          : "what we refuse",
+    ],
+  }));
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -166,6 +213,7 @@ export default function ManifestoPage() {
         ],
       },
       ...pillarQuotations,
+      ...causeQuotations,
     ],
   };
 
@@ -195,12 +243,122 @@ export default function ManifestoPage() {
             Seven pillars. <span className="text-amber-400">One movement.</span>
           </h1>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
-            Name what you believe, name the enemy, name who&rsquo;s on the bus.
-            This is the developer-investor movement, in three parts. If you
-            nod through it, you&rsquo;re one of us. If you don&rsquo;t,
-            that&rsquo;s also real information.
+            Name what you&rsquo;re tired of, name what you believe, name what
+            you refuse, name the enemy, name who&rsquo;s on the bus. This is
+            the developer-investor movement, in five parts — the emotional
+            layer first, the intellectual layer second, the segmentation
+            third. If you nod through all of it, you&rsquo;re one of us. If
+            you don&rsquo;t, that&rsquo;s also real information.
           </p>
         </header>
+
+        {/* EMOTIONAL CAUSE — the gut-level companion to the seven pillars
+            (which are the intellectual layer). Five sentences, each
+            anchored to a specific moment a developer-investor has lived
+            through. Sits ABOVE the pillars because the emotional layer
+            recruits; the pillars retain. */}
+        <section
+          aria-labelledby="emotional-cause-heading"
+          className="rounded-xl border border-rose-700/40 bg-gradient-to-br from-rose-950/25 via-slate-900 to-slate-950 p-6 sm:p-8 space-y-5"
+          data-speakable="emotional-cause"
+        >
+          <div className="space-y-1.5">
+            <p className="text-rose-300 text-xs font-semibold uppercase tracking-wider">
+              {EMOTIONAL_CAUSE_KICKER}
+            </p>
+            <h2
+              id="emotional-cause-heading"
+              className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug"
+            >
+              {EMOTIONAL_CAUSE_HEADLINE}
+            </h2>
+          </div>
+          <ol className="space-y-4">
+            {EMOTIONAL_CAUSE_LINES.map((line, i) => (
+              <li
+                key={i}
+                id={`cause-tired-${i + 1}`}
+                className="flex gap-3 text-gray-200 text-base sm:text-lg leading-relaxed scroll-mt-20"
+              >
+                <span
+                  aria-hidden="true"
+                  className="text-rose-400 font-bold tabular-nums shrink-0 w-6"
+                >
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span>{line}</span>
+              </li>
+            ))}
+          </ol>
+          <p className="text-gray-400 text-sm leading-relaxed border-l-2 border-rose-700/40 pl-4">
+            The seven pillars below are why this is true. The five
+            sentences above are why we won&rsquo;t stop building it.
+          </p>
+        </section>
+
+        {/* WE BELIEVE / WE REFUSE — parallel declarative pair. The
+            "believe" column is what we're walking toward; the "refuse"
+            column is the four lines we won't cross to get there. Reads
+            best as a 2-up grid on tablet+ so the polarity is visible at
+            a glance. */}
+        <section aria-label="What we believe and what we refuse" className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div
+            className="rounded-xl border border-emerald-700/40 bg-gradient-to-br from-emerald-950/15 via-slate-900 to-slate-950 p-5 sm:p-6 space-y-3"
+            data-speakable="we-believe"
+          >
+            <p className="text-emerald-300 text-xs font-semibold uppercase tracking-wider">
+              {WE_BELIEVE_KICKER}
+            </p>
+            <h3 className="text-gray-100 font-bold text-lg sm:text-xl leading-snug">
+              {WE_BELIEVE_HEADLINE}
+            </h3>
+            <ul className="space-y-3 pt-1">
+              {WE_BELIEVE_LINES.map((line, i) => (
+                <li
+                  key={i}
+                  id={`cause-believe-${i + 1}`}
+                  className="flex gap-2 text-gray-300 text-sm leading-relaxed scroll-mt-20"
+                >
+                  <span
+                    aria-hidden="true"
+                    className="text-emerald-400 shrink-0 mt-0.5"
+                  >
+                    →
+                  </span>
+                  <span>{line}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div
+            className="rounded-xl border border-amber-700/40 bg-gradient-to-br from-amber-950/15 via-slate-900 to-slate-950 p-5 sm:p-6 space-y-3"
+            data-speakable="we-refuse"
+          >
+            <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider">
+              {WE_REFUSE_KICKER}
+            </p>
+            <h3 className="text-gray-100 font-bold text-lg sm:text-xl leading-snug">
+              {WE_REFUSE_HEADLINE}
+            </h3>
+            <ul className="space-y-3 pt-1">
+              {WE_REFUSE_LINES.map((line, i) => (
+                <li
+                  key={i}
+                  id={`cause-refuse-${i + 1}`}
+                  className="flex gap-2 text-gray-300 text-sm leading-relaxed scroll-mt-20"
+                >
+                  <span
+                    aria-hidden="true"
+                    className="text-amber-400 shrink-0 mt-0.5"
+                  >
+                    ✗
+                  </span>
+                  <span>{line}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
 
         <section className="space-y-5">
           <h2 className="text-2xl font-bold text-gray-100">The seven pillars</h2>
