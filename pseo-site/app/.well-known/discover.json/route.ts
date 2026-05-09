@@ -1198,6 +1198,12 @@ const SURFACES: Surface[] = [
   { name: "members-hub", url: `${SITE}/members`, format: "text/html", category: "community", description: "Charter Cohort 2026 hub — 25-seat counter, archetype templates, claim-a-seat CTA" },
   { name: "members-leaderboard", url: `${SITE}/members/leaderboard`, format: "text/html", category: "community", description: "Public ranked roster of Charter Cohort members by 60d/90d hits" },
   { name: "members-apply", url: `${SITE}/members/join`, format: "text/html", category: "community", description: "Charter seat application form — pseudonymous handles welcome, 48h written review" },
+  // ── Affiliate program (Letterman/Affiliate-Army Traffic Ch 15+17) ─────
+  { name: "affiliates-program", url: `${SITE}/api/v1/affiliates.json`, format: "application/json", category: "community", description: "Affiliate program — terms (20% lifetime, €399/Sweep, €19.40/mo/Insider, 60-day cookie), pseudonymous top-10 leaderboard, 6 swipe-kit content templates, prohibited channels" },
+  { name: "affiliates-hub", url: `${SITE}/affiliates`, format: "text/html", category: "community", description: "Affiliate program landing — commission terms, swipe kit, signup at gitdealflow.refgrow.com" },
+  { name: "affiliates-leaderboard", url: `${SITE}/affiliates/leaderboard`, format: "text/html", category: "community", description: "Public anonymized monthly leaderboard — top 10 affiliates by lifetime commission with tier badges" },
+  { name: "affiliates-funnel-hack", url: `${SITE}/affiliates/funnel-hack`, format: "text/html", category: "community", description: "Sneaky Affiliate Funnel — 6 clone-ready content templates (tweet thread, LinkedIn post, blog post, newsletter mention, podcast script, 3-email sequence) using the free book as bait" },
+  { name: "affiliates-top-partners", url: `${SITE}/affiliates/top-partners`, format: "text/html", category: "community", description: "Dream-50 publisher roster — 50 named newsletter writers, podcast hosts, communities with outreach status and pitch templates" },
   // ── Policy / governance ────────────────────────────────
   { name: "ai-policy", url: `${SITE}/.well-known/ai-policy.json`, format: "application/json", category: "policy", description: "Machine-readable AI access policy — per-agent allow/disallow + use modes" },
   { name: "ai-policy-shortname", url: `${SITE}/.well-known/ai.json`, format: "application/json", category: "policy", description: "Short-name alias for ai-policy.json" },

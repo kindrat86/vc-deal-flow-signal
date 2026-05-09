@@ -164,6 +164,60 @@ export default function AffiliatesPage() {
           Join the program at gitdealflow.refgrow.com →
         </a>
 
+        {/* Affiliate program quick-nav. Three sub-pages live: Leaderboard
+            (top 10 earners, anonymized), Swipe Kit (6 clone-ready content
+            templates with the Sneaky Affiliate Funnel mechanic), and
+            Top Partners (50-publisher Dream-50 roster). */}
+        <nav
+          className="mb-12 grid grid-cols-1 sm:grid-cols-3 gap-3"
+          aria-label="Affiliate sub-pages"
+        >
+          <Link
+            href="/affiliates/leaderboard"
+            className="rounded-lg border border-slate-800 bg-slate-900/60 hover:border-amber-700/40 hover:bg-amber-950/10 p-4 transition-colors"
+          >
+            <p className="text-amber-300 text-xs font-medium uppercase tracking-wider mb-1">
+              Leaderboard
+            </p>
+            <p className="text-gray-100 text-sm font-semibold mb-1">
+              Top 10 earners
+            </p>
+            <p className="text-gray-400 text-xs leading-relaxed">
+              Anonymized monthly snapshot. €5,200+ Platinum, 11.3% top CVR.
+            </p>
+          </Link>
+          <Link
+            href="/affiliates/funnel-hack"
+            className="rounded-lg border border-slate-800 bg-slate-900/60 hover:border-emerald-700/40 hover:bg-emerald-950/10 p-4 transition-colors"
+          >
+            <p className="text-emerald-300 text-xs font-medium uppercase tracking-wider mb-1">
+              Swipe Kit
+            </p>
+            <p className="text-gray-100 text-sm font-semibold mb-1">
+              6 clone-ready templates
+            </p>
+            <p className="text-gray-400 text-xs leading-relaxed">
+              Tweet thread + LinkedIn + blog + newsletter + podcast + 3-email
+              sequence. Free book as bait, 60-day cookie.
+            </p>
+          </Link>
+          <Link
+            href="/affiliates/top-partners"
+            className="rounded-lg border border-slate-800 bg-slate-900/60 hover:border-sky-700/40 hover:bg-sky-950/10 p-4 transition-colors"
+          >
+            <p className="text-sky-300 text-xs font-medium uppercase tracking-wider mb-1">
+              Dream 50
+            </p>
+            <p className="text-gray-100 text-sm font-semibold mb-1">
+              Publishers we want
+            </p>
+            <p className="text-gray-400 text-xs leading-relaxed">
+              50 named newsletter writers, podcast hosts, communities — with
+              outreach status and pitch templates.
+            </p>
+          </Link>
+        </nav>
+
         <section className="mb-12" aria-label="Earnings examples">
           <h2 className="text-xl font-semibold text-gray-100 mb-4">
             What you earn
