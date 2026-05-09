@@ -967,63 +967,13 @@ export default function Home() {
           a feature comparison. /identity is the long-form companion. */}
       <IdentityBanner />
 
-      {/* Brunson DotCom Secrets Ch 14 — Lead "Squeeze" Funnel.
-          HSO audit 2026-05-08 (Ch 14: 87/100): the prior ThreeDoorHero
-          gave equal weight to three CTAs, diluting the squeeze. Replaced
-          with a true single-CTA squeeze — inline email-capture form
-          (dominant) + two small tertiary "exit" links (subordinate).
-          The form posts to /api/subscribe with cohort=soap-opera and
-          source=home for split-bucket attribution vs /squeeze. */}
-      <HomeSqueeze />
-
-      {/* Brunson DotCom Secrets Ch 12 + Expert Secrets Ch 13 — Stack Slide
-          on the home page. HSO audit 2026-05-08: full priced stack lived
-          on /firstlook + /walkthrough but the home reader (who never
-          clicks through) saw price tiers without value anchors. Eight
-          stack lines, anchored against standalone equivalents, total
-          €1,728 vs €9.97/mo founding rate. Risk-reversal sticker
-          (30-day guarantee) included as final stack line. */}
-      <HomeOfferStack />
-
-      {/* Brunson DCS Ch 7 — Attractive Character polarity card. The reader
-          self-qualifies on the four pillars before they hit the conversion
-          path, so people who'd churn at email #2 churn here at scroll-second
-          15 instead. Compact, links to /data-nerd for the long version. */}
-      <DataNerdPolarityCard />
-
-      {/* AgentSummary kept for AI extractability — visually de-emphasized
-          via wrapper since the live SignalLeader now plays the human-facing
-          TL;DR role. */}
-      <AgentSummary
-        tldr={`VC Deal Flow Signal (GitDealFlow) ranks ${activeSectorCount} startup sectors by GitHub commit velocity every Monday — a quantitative code-side momentum signal computed from public GitHub data, distinct from startup accelerator programs (Y Combinator, Techstars). Data is free via JSON / CSV / RSS / MCP / A2A / NLWeb. The metric — sometimes called engineering acceleration on this site — has historically preceded fundraise announcements by three to six weeks.`}
-        pageUrl="https://signals.gitdealflow.com"
-        asOf={asOf}
-        citeAs={`VC Deal Flow Signal (signals.gitdealflow.com), ${period.name} data.`}
-        facts={[
-          {
-            claim:
-              "Commit-velocity acceleration has preceded venture fundraise announcements by 3–6 weeks across the tracked dataset.",
-            sourceUrl: "https://signals.gitdealflow.com/methodology",
-            sourceLabel: "Methodology",
-          },
-          {
-            claim:
-              "Free MCP server (npx @gitdealflow/mcp-signal) exposes 6 read-only tools to Claude, Cursor, and any MCP-compatible host.",
-            sourceUrl: "https://signals.gitdealflow.com/agents.md",
-            sourceLabel: "agents.md",
-          },
-          {
-            claim: `${totalTracked} startup signals across ${activeSectorCount} sectors and ${allPeriods.length} quarterly periods of history.`,
-            sourceUrl: "https://signals.gitdealflow.com/api/signals.json",
-            sourceLabel: "signals.json",
-          },
-        ]}
-      />
-
-      {/* Brunson Big Domino — single-belief block above the pricing close.
-          The whole offer rests on this one statement. Russell audit
-          2026-05-05: home was missing the "if this is true, everything else
-          falls" frame. */}
+      {/* Brunson Expert Secrets Ch 6 — Big Domino + Ch 10 Three Secrets
+          (false-belief collapses). Audit 2026-05-09: domino used to sit
+          BELOW the offer (after HomeSqueeze + HomeOfferStack), which is the
+          opposite of canonical Brunson sequence Story → Domino → Three
+          Objections → Offer. Moved up so the reader builds belief BEFORE
+          any commitment ask (email or money). The whole offer beneath
+          this block rests on this one statement. */}
       <section
         aria-label="Core claim"
         className="bg-gradient-to-br from-sky-950/40 via-slate-900 to-slate-950 border border-sky-700/40 rounded-xl p-6 sm:p-8 my-8"
@@ -1059,9 +1009,11 @@ export default function Home() {
         </p>
       </section>
 
-      {/* Three Secrets — the false-belief breakdowns from Workbook 4. Surface
-          them on the most-trafficked surface (home) instead of burying them
-          inside the soap-opera email sequence. */}
+      {/* Three Secrets — the false-belief breakdowns surfaced directly
+          after the Big Domino so the reader's three objections collapse
+          before the offer surfaces below. Same audit as the Domino move
+          above (2026-05-09): belief block sits ahead of any commitment
+          ask. */}
       <section aria-label="Three objections" className="my-8 space-y-5">
         <div>
           <p className="text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-2">
@@ -1124,6 +1076,59 @@ export default function Home() {
           .
         </p>
       </section>
+
+      {/* Brunson DotCom Secrets Ch 14 — Lead "Squeeze" Funnel.
+          HSO audit 2026-05-08 (Ch 14: 87/100): the prior ThreeDoorHero
+          gave equal weight to three CTAs, diluting the squeeze. Replaced
+          with a true single-CTA squeeze — inline email-capture form
+          (dominant) + two small tertiary "exit" links (subordinate).
+          The form posts to /api/subscribe with cohort=soap-opera and
+          source=home for split-bucket attribution vs /squeeze. */}
+      <HomeSqueeze />
+
+      {/* Brunson DotCom Secrets Ch 12 + Expert Secrets Ch 13 — Stack Slide
+          on the home page. HSO audit 2026-05-08: full priced stack lived
+          on /firstlook + /walkthrough but the home reader (who never
+          clicks through) saw price tiers without value anchors. Eight
+          stack lines, anchored against standalone equivalents, total
+          €1,728 vs €9.97/mo founding rate. Risk-reversal sticker
+          (30-day guarantee) included as final stack line. */}
+      <HomeOfferStack />
+
+      {/* Brunson DCS Ch 7 — Attractive Character polarity card. The reader
+          self-qualifies on the four pillars before they hit the conversion
+          path, so people who'd churn at email #2 churn here at scroll-second
+          15 instead. Compact, links to /data-nerd for the long version. */}
+      <DataNerdPolarityCard />
+
+      {/* AgentSummary kept for AI extractability — visually de-emphasized
+          via wrapper since the live SignalLeader now plays the human-facing
+          TL;DR role. */}
+      <AgentSummary
+        tldr={`VC Deal Flow Signal (GitDealFlow) ranks ${activeSectorCount} startup sectors by GitHub commit velocity every Monday — a quantitative code-side momentum signal computed from public GitHub data, distinct from startup accelerator programs (Y Combinator, Techstars). Data is free via JSON / CSV / RSS / MCP / A2A / NLWeb. The metric — sometimes called engineering acceleration on this site — has historically preceded fundraise announcements by three to six weeks.`}
+        pageUrl="https://signals.gitdealflow.com"
+        asOf={asOf}
+        citeAs={`VC Deal Flow Signal (signals.gitdealflow.com), ${period.name} data.`}
+        facts={[
+          {
+            claim:
+              "Commit-velocity acceleration has preceded venture fundraise announcements by 3–6 weeks across the tracked dataset.",
+            sourceUrl: "https://signals.gitdealflow.com/methodology",
+            sourceLabel: "Methodology",
+          },
+          {
+            claim:
+              "Free MCP server (npx @gitdealflow/mcp-signal) exposes 6 read-only tools to Claude, Cursor, and any MCP-compatible host.",
+            sourceUrl: "https://signals.gitdealflow.com/agents.md",
+            sourceLabel: "agents.md",
+          },
+          {
+            claim: `${totalTracked} startup signals across ${activeSectorCount} sectors and ${allPeriods.length} quarterly periods of history.`,
+            sourceUrl: "https://signals.gitdealflow.com/api/signals.json",
+            sourceLabel: "signals.json",
+          },
+        ]}
+      />
 
       {/* Manifesto — Brunson "future-based cause" surfaced on home. The
           movement-frame the workbook had but the page didn't. */}
