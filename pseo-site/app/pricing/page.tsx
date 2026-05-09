@@ -6,6 +6,7 @@ import PSEOFooterNav from "@/components/PSEOFooterNav";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import SharpScarcityBadge from "@/components/SharpScarcityBadge";
+import TrialClose from "@/components/TrialClose";
 
 export const metadata: Metadata = {
   title:
@@ -682,6 +683,12 @@ export default function PricingPage() {
               </tbody>
             </table>
           </div>
+          <TrialClose tone="sky">
+            Ten rungs from free to €49,997/yr, every cell honest about what
+            it does and doesn&rsquo;t include. If you can already see the
+            rung you&rsquo;d sit on — does the rest of the page just confirm
+            the math?
+          </TrialClose>
         </section>
 
         {/* Tier detail cards */}
@@ -744,6 +751,12 @@ export default function PricingPage() {
               </a>
             </div>
           ))}
+          <TrialClose tone="violet">
+            Each tier names what it&rsquo;s for and who shouldn&rsquo;t buy
+            it. If one of the &ldquo;best for&rdquo; lines reads exactly
+            like the way you write checks — does the choice already feel
+            obvious?
+          </TrialClose>
         </section>
 
         {/* Dashboard stack slide — Brunson stack-and-close on the workhorse
@@ -893,6 +906,10 @@ export default function PricingPage() {
             €119.64/year. Roughly the cost of one missed seed deal. The price
             stays €9.97 for as long as you stay subscribed.
           </p>
+          <TrialClose tone="emerald">
+            €119.64/yr against the expected value of one cheque you wrote
+            because you got there first. Has the math already closed?
+          </TrialClose>
         </section>
 
         {/* Sector Sweep stack slide — anchored value vs price */}
@@ -1018,6 +1035,12 @@ export default function PricingPage() {
             Capped at 8 sweeps per quarter. Q3 2026: 7 of 8 open. Each Sweep
             is custom — nothing template, nothing reused.
           </p>
+          <TrialClose tone="amber">
+            €13,000+ retail at €1,997, with the entire sum credited toward
+            Insider on upgrade. If even half the line items hold up
+            standalone — has the cap (7 of 8 left) become the real
+            constraint?
+          </TrialClose>
         </section>
 
         {/* Annual plans — founder-locked, save vs monthly. Stripe links land

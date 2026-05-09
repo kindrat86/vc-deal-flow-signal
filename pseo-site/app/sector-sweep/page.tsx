@@ -5,6 +5,7 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import SectorSweepBriefForm from "./SectorSweepBriefForm";
+import TrialClose from "@/components/TrialClose";
 
 export const dynamic = "force-static";
 
@@ -267,6 +268,12 @@ export default function SectorSweepPage() {
           </a>
         </section>
 
+        <TrialClose tone="amber">
+          Two doors, no calendar invite, no live commitment either way.
+          Before you read a single line of the stack — does the shape of
+          those two doors already feel like the right shape for how you buy?
+        </TrialClose>
+
         {/* STACK */}
         <section className="space-y-4">
           <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider">
@@ -314,11 +321,10 @@ export default function SectorSweepPage() {
             quarter — Q3 2026 has 7 of 8 slots open as of this page load.
             After 2026 the price moves to €2,997 and the cap stays at 8.
           </p>
-          {/* Brunson Expert Secrets Ch 14 — Trial close. */}
-          <p className="text-amber-300/80 text-sm italic leading-relaxed pt-2 border-t border-amber-800/40">
+          <TrialClose tone="amber">
             €1,997 against €5,959 of standalone deliverables, with the full
             sum credited if you upgrade to Insider in 60 days. Reasonable?
-          </p>
+          </TrialClose>
         </section>
 
         {/* ON THE BUS / OFF THE BUS */}
@@ -356,6 +362,13 @@ export default function SectorSweepPage() {
             </ul>
           </div>
         </section>
+
+        <TrialClose tone="emerald">
+          Self-disqualifying is the highest-trust move on a €1,997 page. If
+          you nodded through the &ldquo;on the bus&rdquo; column and shook
+          your head through the other one — has the bus already left without
+          having to argue about it?
+        </TrialClose>
 
         {/* HOW THE BRIEF WORKS */}
         <section className="rounded-xl border border-sky-700/40 bg-sky-950/15 p-6 sm:p-8 space-y-4">
@@ -410,9 +423,9 @@ export default function SectorSweepPage() {
               </span>
             </li>
           </ol>
-          <p className="text-sky-300/80 text-sm italic leading-relaxed pt-2 border-t border-sky-800/40">
+          <TrialClose tone="sky">
             Async setter, written closer, no calls. Sound fair?
-          </p>
+          </TrialClose>
         </section>
 
         {/* THE BRIEF FORM */}
@@ -454,9 +467,9 @@ export default function SectorSweepPage() {
             to the delivery email. Full €1,997 refund inside two business
             days. No exit interview.
           </p>
-          <p className="text-emerald-300/80 text-sm italic leading-relaxed pt-2 border-t border-emerald-800/40">
+          <TrialClose tone="emerald">
             30 days. Three orgs or refund. Fair enough?
-          </p>
+          </TrialClose>
         </section>
 
         {/* FAQ */}
@@ -473,6 +486,12 @@ export default function SectorSweepPage() {
               <p className="text-gray-400 text-sm leading-relaxed">{f.a}</p>
             </div>
           ))}
+          <TrialClose tone="violet">
+            Brief in 7 minutes, decision in 24 hours, refund window 30 days,
+            credit toward Insider for 60. If the friction profile reads as
+            lower than the average enterprise demo — has the burden of proof
+            already shifted?
+          </TrialClose>
         </section>
 
         {/* TRIAL CLOSE STACK */}

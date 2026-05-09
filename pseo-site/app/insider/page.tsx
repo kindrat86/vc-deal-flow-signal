@@ -4,6 +4,7 @@ import { AgentSummary } from "@/components/AgentSummary";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import TrialClose from "@/components/TrialClose";
 
 export const dynamic = "force-static";
 
@@ -270,6 +271,11 @@ export default function InsiderPage() {
             That&rsquo;s the only reason the Insider Circle exists. To send
             the same list one work-day earlier.
           </p>
+          <TrialClose tone="emerald">
+            One Tuesday too late closes a round. If a single Sunday-instead-
+            of-Monday cycle lands you the meeting before the four-other-
+            investors line forms — has €97/mo already justified itself?
+          </TrialClose>
         </section>
 
         {/* BIG DOMINO */}
@@ -296,6 +302,12 @@ export default function InsiderPage() {
             product. Three secrets follow — each is one objection to that
             belief, and each gets broken.
           </p>
+          <TrialClose tone="emerald">
+            Edge is time, not research. If that single sentence reads as
+            true, does the rest of the page reduce to whether €97/mo is
+            cheaper than the time you&rsquo;re currently spending on
+            sourcing?
+          </TrialClose>
         </section>
 
         {/* THREE SECRETS */}
@@ -385,6 +397,12 @@ export default function InsiderPage() {
               pipeline, not the methodology.
             </p>
           </div>
+
+          <TrialClose tone="indigo">
+            Three objections, three breakdowns, methodology open at SSRN. If
+            none of those three was the real objection — what is? (That
+            answer is the one to keep handy as the stack lands.)
+          </TrialClose>
         </section>
 
         {/* THE SHIFT */}
@@ -413,6 +431,11 @@ export default function InsiderPage() {
             custom watchlist, the founder line — is a tool that makes the
             Sunday-evening rhythm easier.
           </p>
+          <TrialClose tone="amber">
+            Sunday 09:15 in bed, two cold emails scheduled for Monday 07:30,
+            Tuesday a meeting or a polite no. If that rhythm replaced the
+            Sunday-night sourcing block you do anyway — would you swap?
+          </TrialClose>
         </section>
 
         {/* THE STACK */}
@@ -499,6 +522,11 @@ export default function InsiderPage() {
               even after the public hike to €197/mo.
             </p>
           </div>
+          <TrialClose tone="violet">
+            €3,042/yr standalone at €97/mo founding rate, locked through the
+            public hike to €197. If the lock itself is the asset — would you
+            rather wake up on the founding rate or the post-launch rate?
+          </TrialClose>
         </section>
 
         {/* GUARANTEE */}
@@ -520,6 +548,11 @@ export default function InsiderPage() {
             Your Telegram seat is removed at next month boundary. No exit
             interview, no &ldquo;wait, let me show you one more thing.&rdquo;
           </p>
+          <TrialClose tone="rose">
+            Worst case: 30 days, you keep what you read, the €97 lands back
+            on your card. Where else does the &ldquo;keep the asset, get the
+            money back&rdquo; downside profile exist for an investor tool?
+          </TrialClose>
         </section>
 
         {/* TRIAL CLOSES */}

@@ -26,6 +26,7 @@ import EpiphanyBridgeCondensed from "@/components/EpiphanyBridgeCondensed";
 import HomeOfferStack from "@/components/HomeOfferStack";
 import { DataNerdPolarityCard } from "@/components/DataNerdPolarityCard";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
+import TrialClose from "@/components/TrialClose";
 import {
   EMOTIONAL_CAUSE_KICKER,
   EMOTIONAL_CAUSE_LINES,
@@ -1255,6 +1256,11 @@ export default function Home() {
           We&rsquo;re replacing that roulette with a public, reproducible,
           code-side signal anyone with curiosity can read.
         </p>
+        <TrialClose tone="amber">
+          Warm-intro roulette is the named enemy. If the system that&rsquo;s
+          been gating your deal flow for ten years is the system, not your
+          network — does naming it change what you&rsquo;d try next?
+        </TrialClose>
       </section>
 
       {/* IDENTITY DECLARATION — Brunson Expert Secrets identity-belief.
@@ -1457,6 +1463,11 @@ export default function Home() {
           </Link>{" "}
           is the right rhythm for now — no upgrade pressure, ever.
         </p>
+        <TrialClose tone="violet">
+          A free rung, a €7 rung, a €9.97/mo rung, all the way up to a
+          €49,997/yr rung. If even one of those fits where you actually
+          are — would you let the right rung pick itself?
+        </TrialClose>
       </section>
 
       {/* Pricing ladder — visible on homepage so buyers don't have to hunt for

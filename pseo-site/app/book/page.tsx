@@ -4,6 +4,7 @@ import { BOOK } from "@/lib/book";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import TrialClose from "@/components/TrialClose";
 
 export const dynamic = "force-static";
 
@@ -276,6 +277,12 @@ export default function BookPage() {
             against the live leaderboard. Every claim falsifiable, every
             threshold a number, every example a public URL.
           </p>
+          <TrialClose tone="sky">
+            One claim, falsifiable, free to download. If the methodology
+            holds when you replicate it on a fresh laptop in 90 minutes —
+            does the rest of the deal-flow market reduce to a stack of
+            lagging indicators?
+          </TrialClose>
         </section>
 
         {/* What you'll learn */}
@@ -320,6 +327,11 @@ export default function BookPage() {
               </li>
             ))}
           </ul>
+          <TrialClose tone="amber">
+            104 pages, free PDF, €0.99 Kindle. If the price isn&rsquo;t the
+            question and the time-to-read is — would you rather start at
+            chapter one or skim the table of contents below first?
+          </TrialClose>
         </section>
 
         {/* Table of contents */}
