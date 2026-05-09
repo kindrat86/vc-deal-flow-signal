@@ -50,6 +50,8 @@ Forward all alert emails to the GitDealFlow ops inbox.
 
 ### 1.4. Direct outreach to working researchers — PRIMARY LEVER
 
+> **Day-zero progress (2026-05-09 PM):** 4 sends queued/sent. See `marketing/researcher-outreach-2026-05-09/` for active campaign (CAMPAIGN.md / drafts.md / send-log.md). Recipients: Frank Nagle (HBS, OSS economics), Annamaria Conti (IE, entrepreneurial finance), Johannes Wachs (Corvinus, OSS networks), Jermain Kaminski (Maastricht, entrepreneurial finance) — sent or scheduled across 2026-05-09 to 2026-05-11 at ≤2/day. Resend IDs in send-log.md. Reply-window check: 2026-05-23. Halt protocol active. Track 1.4 progress: ~15-20% of 20-30 target sends.
+
 Under the outreach-only path, this track does almost all the work for Gate 1. Aim for **20-30 researcher emails over 6-12 months** to realistically land 2-3 citations.
 
 **Cadence:** 3-5 emails per month. Bursts of 10+ in a single week look like a campaign and reduce response rate.
@@ -103,6 +105,8 @@ Cross-reference with:
 Decision: dropped. All major venture-research and alt-data conferences (SMS, AOM, Wharton P&O, Battle of the Quants, etc.) require speaker name, affiliation, and bio for the program. Anonymity rule blocks this.
 
 ### 1.6. Lift discoverability of the SSRN paper itself
+
+> **Audited state (2026-05-09 PM):** see `marketing/aggregator-submission-2026-05-09/` for the live API audit + paste-ready forms. Discovered: OpenAlex has TWO records (`W7154916891` Zenodo dataset + `W7154992629` SSRN preprint) — corrections-only work needed (link ORCID `0009-0002-2222-4112`, add missing abstract on SSRN record, mark records as `is_supplemented_by`). Semantic Scholar already indexed (`paperId 4dd7b11e…`, `authorId 2430837379` unclaimed) — claim profile + correct affiliation. arXiv not submitted (endorsement-gated, ~6-10 weeks elapsed). MPRA not submitted (form-fill ready, JEL G24/G14/M13/O33/C81 prepped). 6 files in bundle including `SUBMISSION-CHECKLIST.md`. Track 1.6 progress: ~30% (audit + packs done, no clicks yet).
 
 Compounds with Track 1.4 — researchers who can find the paper are more likely to cite it. Discoverability work does not require breaking anonymity.
 
@@ -186,6 +190,7 @@ If all clear → on track for the 2027-Q1 re-evaluation. If any flag → push de
 
 | Date | Actions |
 |---|---|
+| **2026-05-23** | Two-week reply-window check on Track 1.4 day-zero sends. Note replies vs. silence per recipient. |
 | **2026-06-09** | One-month check. Track 1.2 alerts firing? Track 1.6 discoverability tasks done (arXiv, RePEc, OpenAlex, Semantic Scholar)? Track 1.4 researcher target list at 30+? Track 2.2 pitch list complete? |
 | **2026-07-09** | Two-month check. Track 1.4: at least 5-8 researcher emails sent? Wikipedia account audit (Track 3.3) — Gate 3 should be on track. |
 | **2026-08-09** | Three-month check. Gate 3 (90 days no-flags) hits **2026-08-07** — if account still clean, Gate 3 is met. Track 1.4: 10-12 emails sent? Any responses? |
