@@ -5,6 +5,7 @@ import { addCredits } from "@/lib/credits";
 import { generateApiKeyV2 } from "@/lib/api-key";
 import { BOOK_DRIP, FIRSTLOOK_REACTIVATION_DRIP } from "@/lib/emails";
 import { isNonceUsed, markNonceUsed } from "@/lib/runtime-cache";
+import { fireRedditPurchase } from "@/lib/reddit-conversions-api";
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY!;
 const FROM_EMAIL = process.env.FROM_EMAIL || "signal@gitdealflow.com";
@@ -497,6 +498,28 @@ export async function POST(request: NextRequest) {
       );
     } catch {
       // Admin notification is best-effort
+    }
+
+    // Reddit Conversions API — fire `Purchase` server-side. Survives
+    // ad-blockers, ITP cookie partitioning, and any Reddit pixel-side
+    // outage. Reddit dedups against the browser pixel hit via the
+    // (stripeEventId-derived) conversion_id so the same order isn't
+    // counted twice. Wrapped in catch — a Reddit-side failure here must
+    // never 5xx the webhook (Stripe would retry → double-credit).
+    try {
+      const utm = (fullSession.metadata || {}) as Record<string, string>;
+      const amountEUR = (fullSession.amount_total || 0) / 100;
+      await fireRedditPurchase({
+        email,
+        amountEUR,
+        tier,
+        stripeEventId: event.id,
+        utmSource: utm.utm_source,
+        utmCampaign: utm.utm_campaign,
+        utmContent: utm.utm_content,
+      });
+    } catch (capiErr) {
+      console.error("[reddit-capi] Purchase dispatch error:", capiErr);
     }
   }
 

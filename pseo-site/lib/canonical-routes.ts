@@ -80,6 +80,7 @@ export const CANONICAL_PROD_ROUTES = [
   "/affiliates",
   "/buyers-guide",
   "/press",
+  "/podcasts",
   "/wins",
   "/receipts",
   "/crystal-ball",
