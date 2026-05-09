@@ -51,6 +51,17 @@ export default function OriginPage() {
           "@type": "SpeakableSpecification",
           cssSelector: ["[data-speakable]", "h1", "h2"],
         },
+        // Brunson Expert Secrets Ch 8 (Hero's Two Journeys) — the founder's
+        // arc on this page is half of the work; the buyer's arc lives at
+        // /origin/your-journey. hasPart wires the symmetry into structured
+        // data so an LLM reading the schema sees the two arcs as one piece.
+        hasPart: {
+          "@type": "Article",
+          "@id":
+            "https://signals.gitdealflow.com/origin/your-journey#article",
+          name: "Your Journey — the buyer's arc",
+          url: "https://signals.gitdealflow.com/origin/your-journey",
+        },
       },
       {
         "@type": "BreadcrumbList",
@@ -342,6 +353,35 @@ export default function OriginPage() {
             None of these doors are wrong. Pick the one that matches the way
             you actually want to buy.
           </p>
+
+          {/* Brunson Expert Secrets Ch 8 (Hero's Two Journeys) — the
+              founder's arc above is half of the work. The matching buyer's
+              arc lives at /origin/your-journey. Promoted to a dedicated
+              card above the CTAs so a reader who finished the founder
+              journey lands on their own arc next, not on a checkout. */}
+          <Link
+            href="/origin/your-journey"
+            className="block rounded-xl border border-sky-700/40 bg-gradient-to-br from-sky-950/30 via-slate-900 to-slate-950 p-5 sm:p-6 hover:border-sky-600 hover:from-sky-950/45 transition-colors group"
+          >
+            <p className="text-sky-300 text-[10px] font-semibold uppercase tracking-wider mb-2">
+              The matching arc · 10-minute read
+            </p>
+            <h3 className="text-gray-100 font-bold text-lg sm:text-xl leading-snug mb-2">
+              Now read{" "}
+              <span className="text-sky-400 group-hover:text-sky-300">
+                your journey
+              </span>
+              {" "}— the same arc, told from your seat.
+              <span aria-hidden className="ml-1 inline-block transition-transform group-hover:translate-x-0.5">→</span>
+            </h3>
+            <p className="text-gray-300 text-sm leading-relaxed">
+              The deal you&rsquo;ll never tell anyone about, the three false
+              beliefs you&rsquo;re holding without naming, the first concrete
+              move on a Sunday, and what you actually look like as an investor
+              six months in. Eight beats, mirrored against the eight beats above.
+            </p>
+          </Link>
+
           <ul className="text-gray-200 text-base leading-relaxed space-y-2 pl-1 pt-2">
             <li>
               →{" "}
