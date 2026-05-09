@@ -192,6 +192,66 @@ const nextConfig: NextConfig = {
           },
         ],
       },
+      // Iframe-friendly embed surfaces — re-open framing for the public
+      // embed widgets so newsletter authors / blog writers can drop them
+      // into Substack, Ghost, WordPress, etc. The route handlers also set
+      // these headers on their Responses (belt + braces); this entry is
+      // the deterministic site-config-level override.
+      //
+      // Listed AFTER the catch-all so Next merges + later-wins overrides
+      // X-Frame-Options and CSP frame-ancestors. Other security headers
+      // (HSTS, nosniff, Referrer-Policy, Permissions-Policy) inherit
+      // unchanged.
+      {
+        source: "/embed/weekly",
+        headers: [
+          {
+            key: "X-Frame-Options",
+            value: "ALLOWALL",
+          },
+          {
+            key: "Content-Security-Policy",
+            value: [
+              "default-src 'self'",
+              "script-src 'self' 'unsafe-inline'",
+              "style-src 'self' 'unsafe-inline'",
+              "img-src 'self' data: https:",
+              "font-src 'self'",
+              "connect-src 'self'",
+              "frame-ancestors *",
+            ].join("; "),
+          },
+          {
+            key: "Access-Control-Allow-Origin",
+            value: "*",
+          },
+        ],
+      },
+      {
+        source: "/embed/leaderboard/:slug*",
+        headers: [
+          {
+            key: "X-Frame-Options",
+            value: "ALLOWALL",
+          },
+          {
+            key: "Content-Security-Policy",
+            value: [
+              "default-src 'self'",
+              "script-src 'self' 'unsafe-inline'",
+              "style-src 'self' 'unsafe-inline'",
+              "img-src 'self' data: https:",
+              "font-src 'self'",
+              "connect-src 'self'",
+              "frame-ancestors *",
+            ].join("; "),
+          },
+          {
+            key: "Access-Control-Allow-Origin",
+            value: "*",
+          },
+        ],
+      },
     ];
   },
 };
