@@ -3,13 +3,19 @@
 import { useState } from "react";
 
 /**
- * SectorSweepBriefForm — async setter for the €1,997 Custom Sector Sweep.
+ * SectorSweepBriefForm — async Setter for the €1,997 Custom Sector Sweep.
  *
  * Brunson DotCom Secrets Ch 23 (Application Funnel) + Expert Secrets Ch 16
- * (Magic Script). Replaces the live phone-close with a 5-question written
- * intake to preserve the founder anonymity rule. Submission emails the
- * brief to signal@gitdealflow.com via /api/sector-sweep-brief; reply lands
- * in the prospect's inbox inside 24 business hours.
+ * (The Setter / Magic Script). Replaces the live phone-close with a
+ * 5-question written intake to preserve the founder anonymity rule.
+ *
+ * Heat-build mechanics (Brunson Trilogy audit Ch 16, 90→100): on submit
+ * the API schedules a 4-step Setter drip to the prospect (T+0 instant ack
+ * with thesis quoted back + sample TOC + specific UTC reply deadline,
+ * T+2h methodology grounding, T+12h drafting transparency, T+48h soft
+ * follow-up). The form's success state mirrors the same deadline + TOC
+ * the prospect will see in their inbox so the experience is consistent
+ * across the moment of submit and the email drip.
  */
 
 interface FormState {
@@ -34,12 +40,21 @@ const INITIAL: FormState = {
   why_sweep: "",
 };
 
+interface SuccessPayload {
+  ok: true;
+  message: string;
+  deadline: { iso: string; display: string; hoursFromNow: number };
+  toc: readonly string[];
+  setter: { scheduled: number; failed: number };
+}
+
 type Status = "idle" | "submitting" | "success" | "error";
 
 export default function SectorSweepBriefForm() {
   const [form, setForm] = useState<FormState>(INITIAL);
   const [status, setStatus] = useState<Status>("idle");
   const [errMsg, setErrMsg] = useState<string>("");
+  const [payload, setPayload] = useState<SuccessPayload | null>(null);
 
   function update<K extends keyof FormState>(key: K, value: FormState[K]) {
     setForm((f) => ({ ...f, [key]: value }));
@@ -59,6 +74,10 @@ export default function SectorSweepBriefForm() {
         const text = await res.text().catch(() => "");
         throw new Error(text || `HTTP ${res.status}`);
       }
+      const data = (await res.json().catch(() => null)) as
+        | SuccessPayload
+        | null;
+      setPayload(data);
       setStatus("success");
     } catch (err) {
       setStatus("error");
@@ -67,33 +86,97 @@ export default function SectorSweepBriefForm() {
   }
 
   if (status === "success") {
+    const deadlineDisplay = payload?.deadline?.display;
+    const hoursFromNow = payload?.deadline?.hoursFromNow ?? 24;
+    const toc = payload?.toc ?? [];
+    const hasToc = toc.length > 0;
     return (
-      <div className="rounded-xl border-2 border-emerald-500/60 bg-emerald-950/30 p-6 sm:p-7 space-y-3">
-        <p className="text-emerald-300 text-xs font-semibold uppercase tracking-wider">
-          Brief received
-        </p>
-        <h3 className="text-xl font-bold text-gray-100">
-          Thanks. We&rsquo;ll reply inside 24 business hours.
-        </h3>
-        <p className="text-gray-300 text-sm leading-relaxed">
-          The brief landed at{" "}
-          <code className="bg-slate-800 px-1.5 py-0.5 rounded text-emerald-300 text-xs">
-            signal@gitdealflow.com
-          </code>
-          . Our async response — 1-page fit assessment, tailored table of
-          contents, personal Stripe buy link, and an honest &ldquo;don&rsquo;t
-          buy this&rdquo; note if it&rsquo;s the wrong fit — lands in your
-          inbox at <strong className="text-gray-100">{form.email}</strong>{" "}
-          inside 24 business hours.
-        </p>
+      <div className="rounded-xl border-2 border-emerald-500/60 bg-emerald-950/30 p-6 sm:p-7 space-y-5">
+        <div className="space-y-2">
+          <p className="text-emerald-300 text-xs font-semibold uppercase tracking-wider">
+            Brief received · Setter sequence active
+          </p>
+          <h3 className="text-xl font-bold text-gray-100 leading-snug">
+            Your written reply lands at{" "}
+            <span className="text-emerald-300">
+              {deadlineDisplay ?? "the deadline in your ack email"}
+            </span>
+            .
+          </h3>
+          <p className="text-gray-300 text-sm leading-relaxed">
+            That&rsquo;s ~{hoursFromNow} hours from now. We never blow this
+            deadline. If for any reason it slips, the Sweep ships free.
+          </p>
+        </div>
+
+        {/* Surfacing the heat-build schedule makes the async flow feel
+            staffed instead of empty. Mirrors the touchpoints the prospect
+            will receive in their inbox. */}
+        <div className="rounded-lg border border-emerald-700/30 bg-slate-950/40 p-4 space-y-2">
+          <p className="text-emerald-300 text-[10px] font-semibold uppercase tracking-wider">
+            Four touchpoints between now and the deadline
+          </p>
+          <ol className="text-gray-300 text-sm leading-relaxed space-y-1.5">
+            <li>
+              <strong className="text-gray-100">Now — instant ack</strong>{" "}
+              landing in <code className="text-emerald-300">{form.email}</code>:
+              your thesis quoted back, a personalised sample table of contents,
+              the exact deadline above.
+            </li>
+            <li>
+              <strong className="text-gray-100">+2h — Methodology Lead status</strong>:
+              the methodology page that&rsquo;s grounding the reply, plus the
+              one question every Sweep buyer asks before paying €1,997.
+            </li>
+            <li>
+              <strong className="text-gray-100">+12h — drafting transparency</strong>:
+              halftime check-in. The single question we&rsquo;re trying to
+              nail before the human reply lands.
+            </li>
+            <li>
+              <strong className="text-gray-100">+24h — written reply</strong>{" "}
+              from <em>The Data Nerd</em> directly: 1-page fit assessment,
+              tailored TOC, personal Stripe buy link, or the honest
+              &ldquo;don&rsquo;t buy this&rdquo; note.
+            </li>
+          </ol>
+        </div>
+
+        {hasToc ? (
+          <div className="rounded-lg border border-slate-800 bg-slate-950/60 p-4 sm:p-5 space-y-3">
+            <div>
+              <p className="text-amber-300 text-[10px] font-semibold uppercase tracking-wider">
+                Sample table of contents · tailored to the sector you typed
+              </p>
+              <p className="text-gray-400 text-xs leading-relaxed mt-1">
+                The full €1,997 PDF expands each line below into 2&ndash;4
+                pages with the actual orgs, charts, and contributor maps.
+                This is the shape the deliverable will take.
+              </p>
+            </div>
+            <ol className="space-y-1.5">
+              {toc.map((line) => (
+                <li
+                  key={line}
+                  className="text-gray-300 text-xs sm:text-sm leading-relaxed"
+                >
+                  {line}
+                </li>
+              ))}
+            </ol>
+          </div>
+        ) : null}
+
         <p className="text-gray-400 text-xs leading-relaxed">
-          If you don&rsquo;t see a reply within 36 hours, check your spam
-          folder for messages from{" "}
+          If you don&rsquo;t see the instant ack within five minutes, check
+          your spam folder for messages from{" "}
           <code className="bg-slate-800 px-1 py-0.5 rounded">
             signal@gitdealflow.com
           </code>
           , or reply to your most recent Acceleration Watch digest with the
-          word &ldquo;BRIEF&rdquo; — that loops the same inbox.
+          word &ldquo;BRIEF&rdquo; — that loops the same inbox. The Setter
+          sequence stops automatically once you reply or the human writes
+          back, whichever happens first.
         </p>
       </div>
     );
