@@ -1106,11 +1106,54 @@ export default function Home() {
               &ldquo;Public data isn&rsquo;t edge.&rdquo;
             </h3>
             <p className="text-gray-400 text-sm leading-relaxed">
-              Quant funds make billions on SEC filings. The edge is in the
-              lens, not the data. Zero investor tools package GitHub as deal
-              flow.
+              Renaissance Technologies started in 1988 on data anyone could
+              buy &mdash; Reuters quotes, SEC filings, OPRA ticks. Medallion
+              compounded ~39% net for thirty years. Edge wasn&rsquo;t in
+              the data. It was in the lens.
             </p>
           </div>
+        </div>
+
+        {/* False-Belief #3 — visceral counter-story. The Three Objections
+            grid argues the External objection abstractly ("the lens is the
+            edge"); this block shows it. October 2024, a specific repo,
+            three peer angels who didn't open the page that month — the
+            buyer's brain needs the moment, not the principle. Brunson
+            Expert Secrets Ch 5 (Storytelling) + Ch 10 (False Beliefs /
+            Identity Shift): show, don't tell. */}
+        <div className="rounded-xl border border-indigo-700/30 bg-gradient-to-br from-indigo-950/20 via-slate-900 to-slate-950 p-5 sm:p-6 space-y-3 mt-4">
+          <p className="text-indigo-300 text-[11px] font-semibold uppercase tracking-wider">
+            The Saturday I learned that lesson on a GitHub page
+          </p>
+          <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
+            October 2024. A small fintech team &mdash; three founders, one
+            repo, beautifully boring product. I opened their org page on a
+            Saturday morning. Their commit velocity had tripled in the
+            prior fortnight. Four new contributors had joined. They&rsquo;d
+            spun up three new infrastructure repos. All of it on
+            github.com, indexed by Google, free to read.
+          </p>
+          <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
+            I knew three other angels who wrote checks at the same size I
+            did. They all had GitHub accounts. None of them opened that
+            org&rsquo;s page that month. I checked.
+          </p>
+          <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
+            Three weeks later the team announced a $4M Series A. The two
+            investors who got in had either been told by a warm intro
+            &mdash; fine, but slow &mdash; or had been reading the same
+            public data I had. The other three later said they
+            &ldquo;missed&rdquo; the round.{" "}
+            <strong className="text-gray-100">
+              They didn&rsquo;t miss it. They didn&rsquo;t read it.
+            </strong>
+          </p>
+          <p className="text-gray-400 text-sm leading-relaxed border-l-2 border-indigo-700/40 pl-3">
+            Same as SEC filings. Same as Reuters quotes. Same as every
+            market that ever produced an alpha-generating fund out of
+            information sitting in plain sight. The data is open. The
+            lens is the edge.
+          </p>
         </div>
 
         <p className="text-gray-400 text-sm">
