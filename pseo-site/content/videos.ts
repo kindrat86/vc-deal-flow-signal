@@ -162,7 +162,7 @@ export const videos: SiteVideo[] = [
       "Here is what nine euros ninety-seven a month gets you. The live dashboard refreshed every Monday — three hundred forty-eight a year. The two-hundred-nineteen startup backtest CSV — two ninety-seven. Monthly sector deep-dive PDFs — five eighty-eight. Two free Chrome extensions — one ninety-eight. The free MCP server, never gated — zero. One async watchlist build — two ninety-seven. Methodology vault published — zero. Thirty-day refund guarantee — bonus. Total real value: one thousand six hundred twenty-eight a year. Your price: nine ninety-seven a month.",
       "Thirty-day Signal-or-It's-Free guarantee. Founding-member price locked forever for buyers in the founding cohort. Free Sunday digest at gitdealflow.com if the dashboard isn't your speed.",
     ],
-    embeddedOn: ["/walkthrough", "/watch/walkthrough-vsl"],
+    embeddedOn: ["/walkthrough", "/walkthrough/replay", "/watch/walkthrough-vsl"],
   },
 
   // ─────────── 3. Magic Bullet — Short (vertical 9:16)

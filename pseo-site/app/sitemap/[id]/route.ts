@@ -88,6 +88,22 @@ export async function GET(_req: Request, ctx: RouteContext) {
       { url: `${BASE_URL}/book/read/conclusion`, lastmod, changefreq: "monthly", priority: 0.8 },
       // Tweet Teardown — €1 micro-tripwire (Brunson DCS Ch 18, 2026-05-06).
       { url: `${BASE_URL}/tweet-teardown`, lastmod, changefreq: "monthly", priority: 0.85 },
+      // Walkthrough — three lengths of the same Perfect Webinar argument
+      // (Brunson Expert Secrets §3 Ch 15 — Webinar Variations). The 90s
+      // and 5min variants are A/B-tested via /walkthrough/quick (router
+      // is noindex; both variants are canonical).
+      { url: `${BASE_URL}/walkthrough`, lastmod, changefreq: "monthly", priority: 0.9 },
+      { url: `${BASE_URL}/walkthrough/5min`, lastmod, changefreq: "monthly", priority: 0.85 },
+      { url: `${BASE_URL}/walkthrough/90s`, lastmod, changefreq: "monthly", priority: 0.85 },
+      // /walkthrough/replay — synthetic-narrator video replay surface
+      // (Brunson ES §3 Ch 11 + Ch 14 — Perfect Webinar Live Replay
+      // Window). Anchors walkthrough-vsl with click-to-seek chapter
+      // timestamps, fast-action bonuses, and the cohort-window mechanic.
+      // Higher priority + weekly changefreq because the replay window
+      // resets every Monday and the page surfaces a different phase
+      // (fast-action / last-hours / closed) on each cohort cycle.
+      { url: `${BASE_URL}/walkthrough/replay`, lastmod, changefreq: "weekly", priority: 0.95 },
+      { url: `${BASE_URL}/vsl`, lastmod, changefreq: "monthly", priority: 0.85 },
       // Summit Funnel — Brunson DotCom Ch 16. 20 anonymous-by-design talks
       // across 5 days. /summit is the squeeze; /summit/[slug] is each talk;
       // /summit/all-access is the €97 one-time upsell.
@@ -235,6 +251,16 @@ export async function GET(_req: Request, ctx: RouteContext) {
       { url: `${BASE_URL}/earned-plays`, lastmod, changefreq: "monthly", priority: 0.65 },
       { url: `${BASE_URL}/scorecard`, lastmod, changefreq: "monthly", priority: 0.65 },
       { url: `${BASE_URL}/wins`, lastmod, changefreq: "monthly", priority: 0.65 },
+      // Charter Cohort 2026 — Brunson Expert Secrets §1 Ch 4 (Mass Movement
+      // Vehicle). Member-side companion ledger to /wins. The four seat
+      // templates are individually indexable so the cohort surface compounds
+      // as members claim.
+      { url: `${BASE_URL}/members`, lastmod, changefreq: "weekly", priority: 0.8 },
+      { url: `${BASE_URL}/members/join`, lastmod, changefreq: "monthly", priority: 0.7 },
+      { url: `${BASE_URL}/members/charter-1`, lastmod, changefreq: "weekly", priority: 0.65 },
+      { url: `${BASE_URL}/members/charter-2`, lastmod, changefreq: "weekly", priority: 0.65 },
+      { url: `${BASE_URL}/members/charter-3`, lastmod, changefreq: "weekly", priority: 0.65 },
+      { url: `${BASE_URL}/members/charter-4`, lastmod, changefreq: "weekly", priority: 0.65 },
       // Brunson DCS Ch 13 — Best-Bait redacted Friday-noon trailer of
       // Sunday's digest. Weekly cadence matches the data refresh.
       { url: `${BASE_URL}/friday-preview`, lastmod, changefreq: "weekly", priority: 0.8 },

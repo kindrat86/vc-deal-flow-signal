@@ -208,6 +208,22 @@ export default function PerfectWebinarPage() {
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
         {/* VEO anchor — 3-minute VSL version of this Perfect Webinar */}
         <VideoEmbedBlock slug="walkthrough-vsl" variant="full" />
+        {/* Replay surface link — Brunson Expert Secrets §3 Ch 11 + Ch 14
+            (Perfect Webinar Live Replay Window). Inline embed above is
+            the bare anchor; /walkthrough/replay is the *event-shaped*
+            replay funnel with cohort-window urgency, fast-action bonuses,
+            doors-closing banner, and click-to-seek chapter timestamps. */}
+        <p className="text-center text-xs sm:text-sm text-gray-400 leading-relaxed border-y border-slate-800 py-3">
+          <span className="text-amber-400 font-semibold">▶ Live Replay open this week.</span>{" "}
+          Watch the synthetic-voice training inside the cohort window —{" "}
+          <Link
+            href="/walkthrough/replay"
+            className="text-sky-400 hover:text-sky-300 underline decoration-dotted font-semibold"
+          >
+            /walkthrough/replay
+          </Link>{" "}
+          — fast-action bonuses lock Wednesday 23:59 UTC, cart closes Thursday.
+        </p>
         {/* HOOK — Brunson rule: hook hard, lead with curiosity. */}
         <header className="space-y-4">
           <nav aria-label="Breadcrumb" className="text-xs text-gray-400">
