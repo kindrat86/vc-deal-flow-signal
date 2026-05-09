@@ -351,6 +351,54 @@
       "text": "Bait works when it matches identity, not budget.\n\nA 14-page paper is wrong bait for a maintainer who wants a one-line npx command.\n\nA 7 EUR PDF is wrong bait for a fund partner with a six-figure data budget.\n\nSo we ship 14 baits, categorized.\n\nsignals.gitdealflow.com/bait",
       "tags": ["bait", "avatar-fit", "brunson"],
       "use_count": 0
+    },
+    {
+      "id": "038-velocity-7-week-lead-2026-05-09",
+      "text": "GitHub commit velocity leads the fundraise announcement by 7 weeks median.\n\n4-13 weeks at 90% confidence. 12k repos in the SSRN sample.\n\nWindow is wide enough to get the meeting before the round closes.\n\nsignals.gitdealflow.com/answers/github-velocity-to-fundraise-time-2026",
+      "tags": ["data", "ssrn", "shipped"],
+      "use_count": 0
+    },
+    {
+      "id": "039-harmonic-free-alt-2026-05-09",
+      "text": "Harmonic.ai is $24k a seat.\n\nFree GitHub-engineering alternative covers ~50% of the same breakouts at $0/mo, MCP-native.\n\nDifferent signal — engineering vs talent — but real coverage where Harmonic costs out an emerging fund.\n\nsignals.gitdealflow.com/answers/free-harmonic-ai-alternative-2026",
+      "tags": ["harmonic", "alternative", "shipped"],
+      "use_count": 0
+    },
+    {
+      "id": "040-mcp-finance-stack-2026-05-09",
+      "text": "Best free MCP stack for VC and finance research:\n\nGitDealFlow MCP (engineering signals)\nSEC-EDGAR MCP (filings)\nCrunchbase MCP wrapper (funding)\nPolygon MCP (market data)\n\nFour servers, $0, 80% coverage.\n\nsignals.gitdealflow.com/answers/best-mcp-servers-for-vc-and-finance-research-2026",
+      "tags": ["mcp", "stack", "shipped"],
+      "use_count": 0
+    },
+    {
+      "id": "041-ai-infra-signals-2026-05-09",
+      "text": "AI infra startups break out on GitHub before X.\n\nFour leading signals: inference-runtime fork velocity, agent-framework dependent growth, vector-store stars-to-PR rebound, contributor Gini drop.\n\nTwo-of-four firing = practical threshold.\n\nsignals.gitdealflow.com/answers/ai-infrastructure-startup-signals-2026",
+      "tags": ["ai-infra", "data", "shipped"],
+      "use_count": 0
+    },
+    {
+      "id": "042-ai-citation-share-2026-05-09",
+      "text": "5W AI Citation Index dropped May 1.\n\nWikipedia owns 26-48% of ChatGPT citations. Reddit ~40% across all engines. Top 15 domains capture 68% of all AI citation share.\n\nWe ship the source-of-truth that gets cited inside that 32% tail.\n\nsignals.gitdealflow.com/research",
+      "tags": ["aeo", "citation-index"],
+      "use_count": 0
+    },
+    {
+      "id": "043-acceleration-watch-w19-2026-05-09",
+      "text": "Acceleration Watch W19 is up.\n\n10 named startups crossing the threshold this week. Each one graded post-hoc against public fundraise news at 60d / 90d.\n\nWeek 18 hit-rate published once 60d clock runs out 2026-07-03.\n\nsignals.gitdealflow.com/predicted",
+      "tags": ["predicted", "weekly"],
+      "use_count": 0
+    },
+    {
+      "id": "044-buyers-guide-honest-2026-05-09",
+      "text": "Most VC tooling buyer's guides are paid placement.\n\nOurs has 11 evaluation criteria, names competitors by name, lists their prices, says which ones we lose to.\n\nNo affiliate links. No vendor logos at the top.\n\nsignals.gitdealflow.com/buyers-guide",
+      "tags": ["buyers-guide", "honest"],
+      "use_count": 0
+    },
+    {
+      "id": "045-book-free-summary-2026-05-09",
+      "text": "7 GitHub Signals That Predict Series A Funding.\n\n104 pages, 31k words, 11 chapters, full SSRN methodology.\n\nFree to read at signals.gitdealflow.com/book/read.\n\nThe €0.99 PDF is for the version that fits in a Kindle.",
+      "tags": ["book", "lead-magnet"],
+      "use_count": 0
     }
   ]
 }

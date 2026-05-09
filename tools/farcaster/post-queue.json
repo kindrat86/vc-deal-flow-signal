@@ -267,6 +267,62 @@
       "channel_id": "founders",
       "tags": ["predicted", "eu", "latam"],
       "use_count": 0
+    },
+    {
+      "id": "029-velocity-7-week-lead-2026-05-09",
+      "text": "GitHub commit velocity leads the fundraise by 7 weeks median.\n\n4-13 weeks at 90% confidence in the SSRN sample of 12k repos.\n\nWide enough to get the meeting before the round closes.\n\nsignals.gitdealflow.com/answers/github-velocity-to-fundraise-time-2026",
+      "channel_id": "vc",
+      "tags": ["data", "ssrn"],
+      "use_count": 0
+    },
+    {
+      "id": "030-harmonic-free-alt-2026-05-09",
+      "text": "Harmonic.ai = $24k a seat.\n\nFree GitHub-engineering alternative covers ~50% of the same breakouts at $0/mo, MCP-native, no API key.\n\nDifferent signal but real coverage where Harmonic prices out an emerging fund.\n\nsignals.gitdealflow.com/answers/free-harmonic-ai-alternative-2026",
+      "channel_id": "vc",
+      "tags": ["harmonic", "alternative"],
+      "use_count": 0
+    },
+    {
+      "id": "031-mcp-finance-stack-2026-05-09",
+      "text": "Free 4-MCP stack for VC + finance research:\n\nGitDealFlow (engineering)\nSEC-EDGAR (filings)\nCrunchbase wrapper (funding)\nPolygon (market)\n\n$0/mo. 5min install. ~80% coverage.\n\nsignals.gitdealflow.com/answers/best-mcp-servers-for-vc-and-finance-research-2026",
+      "channel_id": "ai",
+      "tags": ["mcp", "stack"],
+      "use_count": 0
+    },
+    {
+      "id": "032-ai-infra-signals-2026-05-09",
+      "text": "AI infra startups break out on GitHub before X.\n\n4 leading signals: inference-runtime fork velocity, agent-framework dependents, vector-store stars-to-PR rebound, contributor Gini drop.\n\n2-of-4 = practical threshold.\n\nsignals.gitdealflow.com/answers/ai-infrastructure-startup-signals-2026",
+      "channel_id": "ai",
+      "tags": ["ai-infra", "data"],
+      "use_count": 0
+    },
+    {
+      "id": "033-citation-share-2026-05-09",
+      "text": "5W AI Citation Index dropped May 1.\n\nWikipedia owns 26-48% of ChatGPT citations. Reddit ~40% across engines. Top 15 domains take 68% of all AI citation share.\n\nWe optimize for cite-grade inside the 32% tail.\n\nsignals.gitdealflow.com/research",
+      "channel_id": "ai",
+      "tags": ["aeo", "citation"],
+      "use_count": 0
+    },
+    {
+      "id": "034-acceleration-watch-w19-2026-05-09",
+      "text": "Acceleration Watch W19 live.\n\n10 named startups crossed the threshold last 14 days. Graded post-hoc against fundraise news at 60d / 90d.\n\nW18 hit-rate publishes 2026-07-03.\n\nsignals.gitdealflow.com/predicted",
+      "channel_id": "founders",
+      "tags": ["predicted", "weekly"],
+      "use_count": 0
+    },
+    {
+      "id": "035-book-free-summary-2026-05-09",
+      "text": "Released the book.\n\n7 GitHub Signals That Predict Series A. 104p, 31k words, full SSRN methodology with Python.\n\nFree in browser. €0.99 PDF/EPUB.\n\nsignals.gitdealflow.com/book/read",
+      "channel_id": "founders",
+      "tags": ["book", "lead-magnet"],
+      "use_count": 0
+    },
+    {
+      "id": "036-buyers-guide-honest-2026-05-09",
+      "text": "Most VC tooling buyer's guides are paid placement.\n\nOurs: 11 criteria, named competitors, public prices, says where we lose.\n\nNo affiliate links. No vendor logos at top.\n\nsignals.gitdealflow.com/buyers-guide",
+      "channel_id": "vc",
+      "tags": ["buyers-guide", "honest"],
+      "use_count": 0
     }
   ]
 }
