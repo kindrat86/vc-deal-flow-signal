@@ -130,22 +130,64 @@ If by Day 14 we don't have ≥ 1 conversion at CPL ≤ €15, **kill the channel
 
 ---
 
-## 5. Manual checklist (user runs)
+## 5. Launch checklist — autonomous-where-possible (V8, 2026-05-09)
 
-The Reddit Ads UI requires login + payment method input. **Per safety rules I cannot create the ad account or enter the credit card on your behalf.** Below is the exact 10-step setup; ~25 minutes wall-clock.
+**Update 2026-05-09:** the surface infra to make this 95% autonomous shipped today (this build). What remains is the unavoidable human-only wall: Reddit will not let an API caller create a new ad account or attach a payment card. Steps marked `[USER-ONLY]` cannot be bypassed.
 
-- [ ] 1. Sign in at `ads.reddit.com` (use the project email — sign-in only, not new account).
-- [ ] 2. Verify business name, website, and time zone (UTC).
-- [ ] 3. Add payment method (your card; receipts go to your email).
-- [ ] 4. Create campaign: objective = **Traffic**, budget = **€5/day**, end date = today + 30.
-- [ ] 5. Create ad group: paste the targeting JSON from §1 above (community list + geo + device).
-- [ ] 6. Bid: **Maximum CPC**, cap **$0.50**.
-- [ ] 7. Upload Creative v1 (image + headline + body + CTA exactly as in §3).
-- [ ] 8. Set landing URL with `utm_content=v1` (full URL in §2).
-- [ ] 9. Duplicate ad group → swap creative + UTM tag for v2 and v3.
-- [ ] 10. Submit for review (Reddit reviews ads in ~4 hours; budget starts after approval).
+### 5a. User-only steps (~12 minutes wall-clock, one-time)
 
-After 7 days, log into `ads.reddit.com` → export CSV → drop in `/marketing/reddit-ads-week-1-results.csv`. I'll compute CTR/CPC/CPL/CPA and recommend the survivor creative.
+- [ ] 1. **[USER-ONLY]** Sign in at `ads.reddit.com` (project email).
+- [ ] 2. **[USER-ONLY]** Verify business name (`VC Deal Flow Signal`), website (`https://signals.gitdealflow.com`), time zone (UTC).
+- [ ] 3. **[USER-ONLY]** Add payment method.
+- [ ] 4. **[USER-ONLY]** In Events Manager → Conversions API, click `Generate access token`. Copy the bearer token.
+- [ ] 5. **[USER-ONLY]** In Events Manager → Pixel, copy the pixel ID (format `a2_xxxxxxxx`).
+- [ ] 6. **[USER-ONLY]** In Account Settings → Account Details, copy the account ID.
+- [ ] 7. **[USER-ONLY]** Register an OAuth app at https://www.reddit.com/prefs/apps (script type) — note client id + secret. Get a refresh token via Reddit's OAuth doc with `ads.read ads.create ads.update` scopes.
+
+Then set Vercel env vars (one `vercel env add` each):
+
+```
+NEXT_PUBLIC_REDDIT_PIXEL_ID            a2_xxxxxxxx       # browser pixel
+REDDIT_ADS_PIXEL_ID                    a2_xxxxxxxx       # CAPI server-side (same value)
+REDDIT_ADS_CONVERSIONS_TOKEN           <generated step 4>
+REDDIT_ADS_ACCOUNT_ID                  a2_xxxxxxxx
+REDDIT_ADS_OAUTH_CLIENT_ID             <step 7>
+REDDIT_ADS_OAUTH_CLIENT_SECRET         <step 7>
+REDDIT_ADS_OAUTH_REFRESH               <step 7>
+REDDIT_ADS_FUNDING_ID                  <Reddit Ads → Billing → funding instrument id>
+```
+
+The browser pixel + server CAPI both fire the moment `NEXT_PUBLIC_REDDIT_PIXEL_ID` and `REDDIT_ADS_CONVERSIONS_TOKEN` go live — no code change needed.
+
+### 5b. Autonomous (one shell command)
+
+After the env vars are set, run from a checkout:
+
+```bash
+# Dry-run first — prints intended payloads without writing to Reddit.
+npx tsx scripts/reddit-ads-launch.ts
+
+# Real launch — creates 1 campaign + 6 ad groups + 18 ads, all PAUSED.
+npx tsx scripts/reddit-ads-launch.ts --execute
+```
+
+The script reads CAMPAIGNS from `pseo-site/lib/paid-acquisition.ts`, builds the targeting payloads, and calls Reddit Ads API v3. **Every entity is created in `PAUSED` state** — zero spend until the user activates in the Reddit Ads UI. Durable rule "launch is user-only" still applies; everything else is automated.
+
+Creative images are served live at:
+
+- `https://signals.gitdealflow.com/api/og/reddit/v1` — Hook-led
+- `https://signals.gitdealflow.com/api/og/reddit/v2` — Story-led
+- `https://signals.gitdealflow.com/api/og/reddit/v3` — Data-led
+
+These are 1200×628 PNGs rendered fresh by `next/og` at the edge. The launch script passes the URLs directly to Reddit (Reddit fetches the bytes and stores its own copy at upload time).
+
+### 5c. The user's last 60 seconds
+
+- [ ] **[USER-ONLY]** Open `ads.reddit.com` → Campaigns → review the 6 ad groups + 18 ads created by the script.
+- [ ] **[USER-ONLY]** Click `Activate` on the campaign. Reddit reviews ads in ~4 hours.
+- [ ] **[USER-ONLY]** Confirm spend has started by Day 2. If CPM > €15 by Day 4 with no clicks, pause and reply with the ad group name — I'll re-cut creative.
+
+After 7 days, export the CSV from `ads.reddit.com` and drop it in `/marketing/reddit-ads-week-1-results.csv`. I'll compute CTR/CPC/CPL/CPA and recommend the survivor creative.
 
 ---
 
