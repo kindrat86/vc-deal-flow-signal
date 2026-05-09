@@ -5,6 +5,7 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import SharpScarcityBadge from "@/components/SharpScarcityBadge";
 import ApplyForm from "./ApplyForm";
+import TrialClose from "@/components/TrialClose";
 
 export const dynamic = "force-static";
 
@@ -155,6 +156,12 @@ export default function ApplyPage() {
           <SharpScarcityBadge variant="default" showCta={false} />
         </header>
 
+        <TrialClose tone="violet">
+          Capped at 8 funds, application-gated, founder reviews in 48 hours.
+          If the gate itself is the trust signal — does that already tell
+          you whether the room is the room you want to be in?
+        </TrialClose>
+
         <section className="bg-slate-900/60 border border-slate-800 rounded-xl p-6 space-y-4">
           <h2 className="text-xl font-bold text-gray-100">What you get on top of Insider</h2>
           <ul className="space-y-3">
@@ -168,6 +175,11 @@ export default function ApplyPage() {
               </li>
             ))}
           </ul>
+          <TrialClose tone="violet">
+            White-labeled API, methodology source, quarterly review with the
+            founder — if any single one of those replaces a tool your fund
+            currently pays for, has €497/mo already done its math?
+          </TrialClose>
         </section>
 
         <section className="bg-gradient-to-br from-purple-950/30 via-slate-900 to-slate-950 border border-purple-700/40 rounded-xl p-6 sm:p-8 space-y-6">
@@ -189,6 +201,12 @@ export default function ApplyPage() {
             </p>
           </div>
 
+          <TrialClose tone="amber">
+            Five fields, no demo, no calendar invite, written response in 48
+            hours either way. Lower friction than the average enterprise
+            sales motion — sound right?
+          </TrialClose>
+
           <ApplyForm />
         </section>
 
@@ -200,6 +218,12 @@ export default function ApplyPage() {
               <p className="text-gray-400 text-sm leading-relaxed">{f.a}</p>
             </div>
           ))}
+          <TrialClose tone="emerald">
+            Insider credit on upgrade, application-gated cap, methodology
+            source under CC BY 4.0. If the structure reads as more
+            partnership than vendor-relationship — would the application
+            itself be the next move?
+          </TrialClose>
         </section>
 
         <p className="text-gray-400 text-sm border-t border-slate-800 pt-5">

@@ -7,6 +7,7 @@ import { LiveReplayBar } from "@/components/LiveReplayBar";
 import { DoorsClosingBanner } from "@/components/DoorsClosingBanner";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { getReplayWindowSnapshot } from "@/lib/replay-window";
+import TrialClose from "@/components/TrialClose";
 
 export const dynamic = "force-static";
 
@@ -146,6 +147,10 @@ export default function FiveMinPerfectWebinarPage() {
             single belief is true. Our SSRN paper (n=219, abstract=6606558)
             says it is.
           </p>
+          <TrialClose tone="sky">
+            One sentence. One falsifiable claim. Read it again. If
+            it&rsquo;s true, the rest of the page is a footnote — fair?
+          </TrialClose>
         </section>
 
         <section className="space-y-3">
@@ -191,6 +196,10 @@ export default function FiveMinPerfectWebinarPage() {
             <span className="text-gray-100">Founding-member price</span>
             <span className="text-amber-400">€9.97/mo · locked forever</span>
           </div>
+          <TrialClose tone="amber">
+            €1,728 of standalone artefacts at €9.97/mo. If even half the
+            stack reads as real — has the math already done itself?
+          </TrialClose>
         </section>
 
         <section className="space-y-3">

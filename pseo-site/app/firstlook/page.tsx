@@ -5,6 +5,7 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import CartPreview from "@/components/CartPreview";
 import SectorIntent from "@/components/SectorIntent";
+import TrialClose from "@/components/TrialClose";
 import { DataNerdCharacterCard } from "@/components/DataNerdCharacterCard";
 
 export const dynamic = "force-static";
@@ -395,6 +396,11 @@ export default function FirstLookPage() {
             three discoveries isn&rsquo;t in your delivered PDF, reply REFUND
             and the €7 returns inside one business day, no questions.
           </p>
+          <TrialClose tone="amber">
+            Three loops opened, three answers gated behind €7. If even one of
+            those questions is one you&rsquo;ve been carrying for a month —
+            what&rsquo;s the cost of carrying it for another?
+          </TrialClose>
         </section>
 
         {/* SAMPLE CTA — Brunson Ch 13 ("Best Bait") rule: show the shape
@@ -450,6 +456,11 @@ export default function FirstLookPage() {
             deliverable is sector-specific, and the format is PDF + raw CSV
             — not a sales call, not a demo, not a calendar invite.
           </p>
+          <TrialClose tone="emerald">
+            Right bait or wrong bait — does this read as built for you, or
+            built for someone else? If it&rsquo;s built for you, the €7
+            isn&rsquo;t the question; the question is which sector.
+          </TrialClose>
         </aside>
 
         {/* STACK SLIDE — Brunson DotCom Secrets Ch 9 + Expert Secrets Ch 13.
@@ -511,6 +522,10 @@ export default function FirstLookPage() {
               €7
             </p>
           </div>
+          <TrialClose tone="violet">
+            Stack value vs cart price — if even half of those line items hold
+            up at retail, has the math already closed itself?
+          </TrialClose>
         </section>
 
         <section className="bg-slate-900/60 border border-slate-800 rounded-xl p-6 space-y-4">
@@ -577,6 +592,11 @@ export default function FirstLookPage() {
               </p>
             </div>
           </div>
+          <TrialClose tone="rose">
+            Two refunds in three years — worst case the €7 lands back on your
+            card in one business day. Where else does that downside profile
+            exist for a sourcing tool?
+          </TrialClose>
         </section>
 
         {/* OTO LADDER — Brunson Cart Funnel Secret 18. The full path the cart
@@ -663,6 +683,10 @@ export default function FirstLookPage() {
               );
             })}
           </ol>
+          <TrialClose tone="sky">
+            Six rungs, all named, no surprises after checkout. Does the
+            transparency change how you read the €7?
+          </TrialClose>
         </section>
 
         {/* FUTURE PACING — Brunson Expert Secrets Ch 14. The buyer needs to
@@ -786,6 +810,11 @@ export default function FirstLookPage() {
             shifts to Monday 18:00 UTC; the email tells you when to expect
             the inbox land if it&rsquo;s a weekend gap.
           </p>
+          <TrialClose tone="cyan">
+            T+0 to T+24, mapped to the minute, founder writing the narrative
+            personally — if the timeline itself were the only deliverable,
+            would you still take it for €7?
+          </TrialClose>
         </section>
 
         {/* POST-PURCHASE OTO PREVIEW — DotCom Ch 12. */}
