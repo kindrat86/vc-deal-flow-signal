@@ -19,7 +19,7 @@ export const dynamic = "force-static";
  *   • Names the buyer's BEFORE identity ("warm-intro reliant analyst")
  *   • Names the AFTER identity ("code-reading partner")
  *   • Walks the seven shifts that get you from one to the other
- *   • Cites the SSRN paper and links to /firstlook + /perfect-webinar
+ *   • Cites the SSRN paper and links to /firstlook + /walkthrough
  *
  * Static RSC. All copy at module scope. Single CTA pair at the bottom.
  */
@@ -329,7 +329,7 @@ export default function IdentityPage() {
         </Link>
 
         <Link
-          href="/perfect-webinar"
+          href="/walkthrough"
           className="group flex flex-col rounded-xl border border-sky-700/50 hover:border-sky-500 bg-gradient-to-br from-sky-950/30 via-slate-900 to-slate-950 hover:shadow-lg hover:shadow-sky-500/15 p-6 transition-all hover:-translate-y-0.5"
         >
           <p className="text-sky-300 text-[11px] uppercase tracking-wider font-semibold mb-2">

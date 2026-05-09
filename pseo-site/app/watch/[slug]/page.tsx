@@ -6,7 +6,7 @@
  *   - Full VideoObject JSON-LD with Clip[] chapters and SeekToAction
  *   - On-page transcript paragraphs (anonymity-safe — no founder face/voice)
  *   - BreadcrumbList + WebPage + Speakable
- *   - Backlinks to the canonical anchor pages (/predicted, /perfect-webinar)
+ *   - Backlinks to the canonical anchor pages (/predicted, /walkthrough)
  *
  * VEO levers concentrated here: Clip schema gives YouTube/Bing/Google search
  * the chapter carousel; transcript paragraphs let LLMs ground citations on
@@ -349,7 +349,7 @@ export default async function WatchPage({
             </li>
             <li>
               <Link
-                href="/perfect-webinar"
+                href="/walkthrough"
                 className="text-sky-300 hover:underline"
               >
                 → 12-minute walkthrough (long version)

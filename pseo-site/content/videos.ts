@@ -117,9 +117,9 @@ export const videos: SiteVideo[] = [
     embeddedOn: ["/predicted", "/watch/engineering-acceleration-watch"],
   },
 
-  // ─────────── 2. Perfect Webinar VSL — 3-minute long-form (landscape)
+  // ─────────── 2. Walkthrough VSL — 3-minute long-form (landscape)
   {
-    slug: "perfect-webinar-vsl",
+    slug: "walkthrough-vsl",
     youtubeId: "6wgrWtR6eZg",
     contentUrl: null,
     thumbnailUrl: ytThumbHQ("6wgrWtR6eZg"),
@@ -162,7 +162,7 @@ export const videos: SiteVideo[] = [
       "Here is what nine euros ninety-seven a month gets you. The live dashboard refreshed every Monday — three hundred forty-eight a year. The two-hundred-nineteen startup backtest CSV — two ninety-seven. Monthly sector deep-dive PDFs — five eighty-eight. Two free Chrome extensions — one ninety-eight. The free MCP server, never gated — zero. One async watchlist build — two ninety-seven. Methodology vault published — zero. Thirty-day refund guarantee — bonus. Total real value: one thousand six hundred twenty-eight a year. Your price: nine ninety-seven a month.",
       "Thirty-day Signal-or-It's-Free guarantee. Founding-member price locked forever for buyers in the founding cohort. Free Sunday digest at gitdealflow.com if the dashboard isn't your speed.",
     ],
-    embeddedOn: ["/perfect-webinar", "/watch/perfect-webinar-vsl"],
+    embeddedOn: ["/walkthrough", "/watch/walkthrough-vsl"],
   },
 
   // ─────────── 3. Magic Bullet — Short (vertical 9:16)

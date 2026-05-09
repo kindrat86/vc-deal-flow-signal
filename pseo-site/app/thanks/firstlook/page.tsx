@@ -101,7 +101,7 @@ export default function ThanksFirstLook() {
               Lock founding rate (€2.97 first month) →
             </Link>
             <Link
-              href="/perfect-webinar"
+              href="/walkthrough"
               className="inline-flex items-center justify-center gap-2 rounded-md border border-slate-700 bg-slate-900/60 hover:bg-slate-800/80 hover:border-slate-600 px-5 py-3 text-gray-200 text-sm font-medium transition-colors"
             >
               Read the 12-min walkthrough first

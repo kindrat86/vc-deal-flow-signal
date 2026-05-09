@@ -372,7 +372,7 @@ export default function DataNerdPage() {
             <li>
               →{" "}
               <Link
-                href="/perfect-webinar"
+                href="/walkthrough"
                 className="text-sky-400 hover:text-sky-300 underline decoration-dotted font-medium"
               >
                 Read the 12-minute walkthrough

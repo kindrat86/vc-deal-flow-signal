@@ -25,7 +25,7 @@ export const DATA_NERD_BIO_SHORT =
   "Engineer-investor. Wrote the SSRN paper (n=219). Replies in batches. Won't do podcasts. Lives behind a regression.";
 
 /**
- * Medium bio — used on /perfect-webinar close, /manifesto signoff, /story footer.
+ * Medium bio — used on /walkthrough close, /manifesto signoff, /story footer.
  */
 export const DATA_NERD_BIO_MEDIUM =
   "I'm The Data Nerd. I won't tell you my real name and that's on purpose — the methodology is the protagonist, I'm just the storyteller. Engineer for fifteen years, angel-checker since deal #5. The whole product rests on whether the signal is real, not on whether you find me charismatic.";
@@ -222,7 +222,7 @@ export const DATA_NERD_TOUCHPOINTS = [
   },
   {
     surface: "Page narrations",
-    where: "/perfect-webinar, /predicted, /state-of-github audio companions",
+    where: "/walkthrough, /predicted, /state-of-github audio companions",
     how: "Synthetic voice reads the page. Disclosure on every player.",
   },
   {

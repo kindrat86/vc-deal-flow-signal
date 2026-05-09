@@ -429,7 +429,7 @@ export default async function LaunchPage({ params }: PageProps) {
           </Link>
           {" "}or read the{" "}
           <Link
-            href="/perfect-webinar"
+            href="/walkthrough"
             className="text-sky-400 hover:text-sky-300 underline decoration-dotted"
           >
             12-minute walkthrough

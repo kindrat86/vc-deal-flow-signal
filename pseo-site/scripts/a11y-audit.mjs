@@ -83,7 +83,7 @@ const PATHS = [
   "/developers",
   // Funnel surfaces (visual-heavy, contrast-prone)
   "/firstlook",
-  "/perfect-webinar",
+  "/walkthrough",
 ];
 
 function buildRuntimeConfig() {

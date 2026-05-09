@@ -394,7 +394,7 @@ export default function OriginPage() {
             </Link>
             . The shorter, lighter version of the same story is the{" "}
             <Link
-              href="/perfect-webinar"
+              href="/walkthrough"
               className="text-gray-400 hover:text-gray-200 underline decoration-dotted"
             >
               12-minute walkthrough

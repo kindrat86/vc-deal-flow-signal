@@ -93,7 +93,7 @@ export async function GET(_req: Request, ctx: RouteContext) {
       // /summit/all-access is the €97 one-time upsell.
       { url: `${BASE_URL}/summit`, lastmod, changefreq: "weekly", priority: 0.95 },
       { url: `${BASE_URL}/summit/all-access`, lastmod, changefreq: "weekly", priority: 0.85 },
-      ...["big-domino-engineering-acceleration", "public-over-private-cc-by-walkthrough", "rolodex-to-regression", "six-atomic-signals-glossary", "computing-commit-velocity", "bus-factor-contributor-diversity", "repository-expansion-as-hiring-indicator", "false-positives-honestly", "ai-infrastructure-2026-series-a-wave", "dev-tools-acceleration-first", "climate-tech-engineering-velocity", "fintech-payments-engineering-cadence", "sourcing-workflow-digest-to-reply", "icp-engineering-dream-100-by-github", "agent-native-sourcing-mcp-x402", "signal-to-first-reply-outbound-play", "next-five-years-code-eats-pitch-deck", "reproducibility-as-moat", "stadium-pitch-falsifiable-predictions", "closing-keynote-manifesto-data-first-vc"].map((slug) => ({
+      ...["core-claim-engineering-acceleration", "public-over-private-cc-by-walkthrough", "rolodex-to-regression", "six-atomic-signals-glossary", "computing-commit-velocity", "bus-factor-contributor-diversity", "repository-expansion-as-hiring-indicator", "false-positives-honestly", "ai-infrastructure-2026-series-a-wave", "dev-tools-acceleration-first", "climate-tech-engineering-velocity", "fintech-payments-engineering-cadence", "sourcing-workflow-digest-to-reply", "icp-engineering-target-list-by-github", "agent-native-sourcing-mcp-x402", "signal-to-first-reply-outbound-play", "next-five-years-code-eats-pitch-deck", "reproducibility-as-moat", "state-of-engine-falsifiable-predictions", "closing-keynote-manifesto-data-first-vc"].map((slug) => ({
         url: `${BASE_URL}/summit/${slug}`,
         lastmod,
         changefreq: "weekly" as const,
@@ -226,12 +226,12 @@ export async function GET(_req: Request, ctx: RouteContext) {
         priority: 0.75,
       })),
       { url: `${BASE_URL}/challenge`, lastmod, changefreq: "monthly", priority: 0.85 },
-      { url: `${BASE_URL}/dream-100`, lastmod, changefreq: "monthly", priority: 0.8 },
+      { url: `${BASE_URL}/target-list`, lastmod, changefreq: "monthly", priority: 0.8 },
       { url: `${BASE_URL}/distribution`, lastmod, changefreq: "monthly", priority: 0.75 },
       { url: `${BASE_URL}/funnels`, lastmod, changefreq: "monthly", priority: 0.75 },
       { url: `${BASE_URL}/experiments`, lastmod, changefreq: "monthly", priority: 0.7 },
       { url: `${BASE_URL}/experiments/hooks`, lastmod, changefreq: "monthly", priority: 0.7 },
-      { url: `${BASE_URL}/affiliates/dream-50`, lastmod, changefreq: "monthly", priority: 0.7 },
+      { url: `${BASE_URL}/affiliates/top-partners`, lastmod, changefreq: "monthly", priority: 0.7 },
       { url: `${BASE_URL}/earned-plays`, lastmod, changefreq: "monthly", priority: 0.65 },
       { url: `${BASE_URL}/scorecard`, lastmod, changefreq: "monthly", priority: 0.65 },
       { url: `${BASE_URL}/wins`, lastmod, changefreq: "monthly", priority: 0.65 },

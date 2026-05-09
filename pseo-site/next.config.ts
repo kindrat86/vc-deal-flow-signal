@@ -56,6 +56,41 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/perfect-webinar/5min",
+        destination: "/walkthrough/5min",
+        permanent: true,
+      },
+      {
+        source: "/perfect-webinar",
+        destination: "/walkthrough",
+        permanent: true,
+      },
+      {
+        source: "/dream-100",
+        destination: "/target-list",
+        permanent: true,
+      },
+      {
+        source: "/affiliates/dream-50",
+        destination: "/affiliates/top-partners",
+        permanent: true,
+      },
+      {
+        source: "/summit/big-domino-engineering-acceleration",
+        destination: "/summit/core-claim-engineering-acceleration",
+        permanent: true,
+      },
+      {
+        source: "/summit/icp-engineering-dream-100-by-github",
+        destination: "/summit/icp-engineering-target-list-by-github",
+        permanent: true,
+      },
+      {
+        source: "/summit/stadium-pitch-falsifiable-predictions",
+        destination: "/summit/state-of-engine-falsifiable-predictions",
+        permanent: true,
+      },
+      {
         source: "/startups-to-watch/:sector([a-z0-9-]+)-q2-2025",
         destination: "/startups-to-watch/:sector-q3-2025",
         permanent: true,

@@ -9,7 +9,7 @@ import {
   STATUS_META,
   dream100StatusCounts,
   type Dream100Status,
-} from "@/content/dream-100";
+} from "@/content/target-list";
 import {
   ICP_SCORES,
   TIER_CHIP_CLASS,
@@ -18,7 +18,7 @@ import {
   assertCoverage,
   score,
   tier,
-} from "@/content/dream-100-icp";
+} from "@/content/target-list-icp";
 
 export const dynamic = "force-static";
 
@@ -27,12 +27,12 @@ export const metadata: Metadata = {
     "Top 100 — literal roster of 100 voices, ICP-scored with engagement status",
   description:
     "100 named publications, communities, GitHub orgs, podcasts, datasets, and LinkedIn Company Pages where the developer-investor's audience already lives. Each entry carries an engagement status flag (engage / watch / hold / read / blocked) and a Match × Reach × Engage ICP score (0-100), so the roster reads as a working board with explicit priority — not a wishlist.",
-  alternates: { canonical: "/dream-100" },
+  alternates: { canonical: "/target-list" },
   openGraph: {
     title: "Top 100 — voices we read, ICP-scored, with engagement status",
     description:
       "Numbered roster of 100 named entities, ICP-scored on Match × Reach × Engage, status-flagged for engagement. The top-100 ICP list applied to the developer-investor.",
-    url: "https://signals.gitdealflow.com/dream-100",
+    url: "https://signals.gitdealflow.com/target-list",
     type: "article",
   },
 };
@@ -142,7 +142,7 @@ export default function Dream100Page() {
     "@graph": [
       {
         "@type": "WebPage",
-        "@id": "https://signals.gitdealflow.com/dream-100",
+        "@id": "https://signals.gitdealflow.com/target-list",
         name: "Top 100 — literal roster, ICP-scored, with engagement status",
         description:
           "100 named publications, communities, GitHub orgs, podcasts, datasets, and LinkedIn Company Pages where the developer-investor's audience already lives. Each entry carries an engagement status flag and a Match × Reach × Engage ICP score (0-100).",
@@ -155,7 +155,7 @@ export default function Dream100Page() {
         "@type": "BreadcrumbList",
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Home", item: "https://signals.gitdealflow.com" },
-          { "@type": "ListItem", position: 2, name: "Top 100", item: "https://signals.gitdealflow.com/dream-100" },
+          { "@type": "ListItem", position: 2, name: "Top 100", item: "https://signals.gitdealflow.com/target-list" },
         ],
       },
       {
@@ -183,14 +183,14 @@ export default function Dream100Page() {
   return (
     <>
       <HreflangLinks
-        canonical="https://signals.gitdealflow.com/dream-100"
-        languages={getHreflangLanguages("/dream-100")}
+        canonical="https://signals.gitdealflow.com/target-list"
+        languages={getHreflangLanguages("/target-list")}
       />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <AgentMirrorLinks path="/dream-100" />
+      <AgentMirrorLinks path="/target-list" />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
         <header className="space-y-4">

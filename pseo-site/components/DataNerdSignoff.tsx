@@ -11,7 +11,7 @@
  *   compact — single-line strip, fits below a CTA
  *   default — 4-line card with a polarity hint and link to /data-nerd
  *   long    — adds the medium bio + a catchphrase, used on /manifesto +
- *             /perfect-webinar where the reader has time
+ *             /walkthrough where the reader has time
  *
  * No founder face/voice anywhere. The "avatar" is a Greek-letter sigma
  * mark — the methodology glyph, not a person.

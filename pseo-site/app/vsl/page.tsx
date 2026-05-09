@@ -547,14 +547,14 @@ export default function VslPage() {
           </p>
           <ul className="text-sm space-y-1">
             <li>
-              <Link href="/perfect-webinar" className="text-emerald-700 hover:underline">
-                /perfect-webinar
+              <Link href="/walkthrough" className="text-emerald-700 hover:underline">
+                /walkthrough
               </Link>{" "}
               <span className="text-slate-500">— the 12-minute written version with full Stack and FAQs.</span>
             </li>
             <li>
-              <Link href="/perfect-webinar/5min" className="text-emerald-700 hover:underline">
-                /perfect-webinar/5min
+              <Link href="/walkthrough/5min" className="text-emerald-700 hover:underline">
+                /walkthrough/5min
               </Link>{" "}
               <span className="text-slate-500">— condensed 5-minute frame.</span>
             </li>

@@ -494,7 +494,7 @@ export default function HookTestsPage() {
             </li>
             <li>
               →{" "}
-              <Link href="/dream-100" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">
+              <Link href="/target-list" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">
                 Top 100
               </Link>{" "}
               — the buyer roster these hooks are pointed at.
@@ -508,7 +508,7 @@ export default function HookTestsPage() {
             </li>
             <li>
               →{" "}
-              <Link href="/affiliates/dream-50" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">
+              <Link href="/affiliates/top-partners" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">
                 Top 50 partner roster
               </Link>{" "}
               — newsletter writers, podcast hosts, community owners we&apos;d

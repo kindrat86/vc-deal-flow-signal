@@ -10,12 +10,12 @@ export const metadata: Metadata = {
   title: "Top 50 — the publishers, podcasts, and communities we'd like to partner with",
   description:
     "GitDealFlow's top-50 publisher roster. 50 named newsletter writers, podcast hosts, and community owners whose audiences overlap our developer-investor segment. Engagement status, fit notes, and the exact pitch templates we send.",
-  alternates: { canonical: "/affiliates/dream-50" },
+  alternates: { canonical: "/affiliates/top-partners" },
   openGraph: {
     title: "Top 50 — publishers we'd like to partner with",
     description:
       "50 named newsletter writers, podcast hosts, and communities. Status: engaged, outreach-sent, replied, pending, declined.",
-    url: "https://signals.gitdealflow.com/affiliates/dream-50",
+    url: "https://signals.gitdealflow.com/affiliates/top-partners",
     type: "article",
   },
 };
@@ -158,8 +158,8 @@ export default function Dream50Page() {
     "@graph": [
       {
         "@type": "WebPage",
-        "@id": "https://signals.gitdealflow.com/affiliates/dream-50#webpage",
-        url: "https://signals.gitdealflow.com/affiliates/dream-50",
+        "@id": "https://signals.gitdealflow.com/affiliates/top-partners#webpage",
+        url: "https://signals.gitdealflow.com/affiliates/top-partners",
         name: "Dream 50 — publisher partner roster",
         description:
           "50 named newsletter writers, podcast hosts, and community owners we'd like to partner with. Engagement status, fit notes, and outreach templates.",
@@ -175,7 +175,7 @@ export default function Dream50Page() {
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "All Sectors", item: "https://signals.gitdealflow.com" },
           { "@type": "ListItem", position: 2, name: "Affiliates", item: "https://signals.gitdealflow.com/affiliates" },
-          { "@type": "ListItem", position: 3, name: "Dream 50", item: "https://signals.gitdealflow.com/affiliates/dream-50" },
+          { "@type": "ListItem", position: 3, name: "Dream 50", item: "https://signals.gitdealflow.com/affiliates/top-partners" },
         ],
       },
       {
@@ -199,8 +199,8 @@ export default function Dream50Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <HreflangLinks
-        canonical="https://signals.gitdealflow.com/affiliates/dream-50"
-        languages={getHreflangLanguages("/affiliates/dream-50")}
+        canonical="https://signals.gitdealflow.com/affiliates/top-partners"
+        languages={getHreflangLanguages("/affiliates/top-partners")}
       />
 
       <div className="max-w-4xl mx-auto px-6 py-16">
@@ -443,7 +443,7 @@ gitdealflow.com/dataset · ssrn.com/abstract=6606558`}</pre>
             </li>
             <li>
               →{" "}
-              <Link href="/dream-100" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">
+              <Link href="/target-list" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">
                 Top 100 — buyer roster
               </Link>{" "}
               — the customers we&apos;re pointed at, parallel to this publisher list.
@@ -479,7 +479,7 @@ gitdealflow.com/dataset · ssrn.com/abstract=6606558`}</pre>
           </ul>
         </section>
 
-        <AgentMirrorLinks path="/affiliates/dream-50" />
+        <AgentMirrorLinks path="/affiliates/top-partners" />
       </div>
     </div>
   );

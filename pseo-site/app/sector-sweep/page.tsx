@@ -92,7 +92,7 @@ const NOT_ON_THE_BUS = [
   "You want the Sweep to include warm intros to founders — we don't have that relationship inventory; we surface the org and the signal, you decide on outreach.",
 ];
 
-// Brunson Expert Secrets Ch 12 — Trial close stack reused on /perfect-webinar.
+// Brunson Expert Secrets Ch 12 — Trial close stack reused on /walkthrough.
 // Drop one above the form so the reader has to nod before filling 5 fields.
 const FAQS = [
   {

@@ -40,7 +40,7 @@ const PLAYS: Play[] = [
     what: "On Google-page-1 Reddit threads in r/venturecapital, r/AngelInvesting, r/MachineLearning, r/ExperiencedDevs, we contribute a substantive 200-350 word comment that compounds via AI Overview / ChatGPT / Perplexity citations.",
     why: "Reddit AEO is the highest-leverage Reddit layer — Google indexes top Reddit threads, and LLMs cite them in answers. A 350-word comment on a high-rank thread keeps producing for months.",
     rule: "Reply to top commenter not OP. Never edit after posting (cache busts re-cite). No em-dashes. Statements beat questions.",
-    link: { label: "/dream-100#communities — communities map", href: "/dream-100#communities" },
+    link: { label: "/target-list#communities — communities map", href: "/target-list#communities" },
   },
   {
     id: "devto",
@@ -115,7 +115,7 @@ const PLAYS: Play[] = [
     cadence: "Continuous (every page ships with the mirrors)",
     format: "/md/<path>, agents.json, llms.txt, llms-full.txt, knowledge-graph.json",
     what: "Every public page has a markdown mirror at /md/<path>. agents.json, llms.txt + llms-full.txt corpus, OpenAPI 21 endpoints, knowledge-graph.json. Six redundant agent surfaces.",
-    why: "Half the readers in 2026 are agents. The agent that retrieves /md/dream-100 quotes us in the answer; the agent that retrieves the HTML version doesn't. Build for both.",
+    why: "Half the readers in 2026 are agents. The agent that retrieves /md/target-list quotes us in the answer; the agent that retrieves the HTML version doesn't. Build for both.",
     link: { label: "/distribution#agent-mirrors", href: "/distribution#agent-mirrors" },
   },
   {
@@ -126,7 +126,7 @@ const PLAYS: Play[] = [
     what: "Company page only (no founder personal account, anonymity rule). Substantive replies to top-100 LinkedIn posts that match our buyer's reading habits.",
     why: "LinkedIn algorithm rewards consistent commenting on the same network's posts. Comments compound; broadcast posts don't.",
     rule: "Company page only. First-comment self-tactic in 15 min: preempt skeptic + SSRN anchor + CTA URL on own line (memory: feedback_linkedin_self_comment_tactic.md).",
-    link: { label: "Top-100 voices we read", href: "/dream-100" },
+    link: { label: "Top-100 voices we read", href: "/target-list" },
   },
 ];
 

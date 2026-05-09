@@ -21,14 +21,14 @@ export const metadata: Metadata = {
   description:
     "The single belief that changes how you source deals: commit-velocity acceleration is the most leading public signal in venture capital. Three objections, three breakdowns, and the stack that delivers it for €9.97/mo.",
   alternates: {
-    canonical: "/perfect-webinar",
+    canonical: "/walkthrough",
   },
   openGraph: {
     title:
       "How to Spot a Series A 47 Days Before the Deck Lands",
     description:
       "If commit-velocity acceleration is the most leading signal in VC, every other deal-flow tool becomes a lagging indicator. Here is the proof.",
-    url: "https://signals.gitdealflow.com/perfect-webinar",
+    url: "https://signals.gitdealflow.com/walkthrough",
     type: "article",
   },
 };
@@ -134,12 +134,12 @@ export default function PerfectWebinarPage() {
     "@graph": [
       {
         "@type": "Article",
-        "@id": "https://signals.gitdealflow.com/perfect-webinar#article",
+        "@id": "https://signals.gitdealflow.com/walkthrough#article",
         headline:
           "How to Spot a Series A 47 Days Before the Deck Lands",
         description:
           "The single belief that changes how you source deals: commit-velocity acceleration is the most leading public signal in venture capital. Three objections, three breakdowns, and the stack that delivers it for €9.97/mo.",
-        url: "https://signals.gitdealflow.com/perfect-webinar",
+        url: "https://signals.gitdealflow.com/walkthrough",
         datePublished: "2026-05-05T00:00:00.000Z",
         dateModified: "2026-05-05T00:00:00.000Z",
         author: {
@@ -154,7 +154,7 @@ export default function PerfectWebinarPage() {
           name: "VC Deal Flow Signal",
           url: "https://gitdealflow.com",
         },
-        mainEntityOfPage: "https://signals.gitdealflow.com/perfect-webinar",
+        mainEntityOfPage: "https://signals.gitdealflow.com/walkthrough",
         speakable: {
           "@type": "SpeakableSpecification",
           cssSelector: ["[data-speakable]", "h1", "h2"],
@@ -181,7 +181,7 @@ export default function PerfectWebinarPage() {
             "@type": "ListItem",
             position: 2,
             name: "12-Minute Walkthrough",
-            item: "https://signals.gitdealflow.com/perfect-webinar",
+            item: "https://signals.gitdealflow.com/walkthrough",
           },
         ],
       },
@@ -191,14 +191,14 @@ export default function PerfectWebinarPage() {
   return (
     <>
       <HreflangLinks
-        canonical="https://signals.gitdealflow.com/perfect-webinar"
-        languages={getHreflangLanguages("/perfect-webinar")}
+        canonical="https://signals.gitdealflow.com/walkthrough"
+        languages={getHreflangLanguages("/walkthrough")}
       />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <AgentMirrorLinks path="/perfect-webinar" />
+      <AgentMirrorLinks path="/walkthrough" />
 
       {/* Brunson Expert Secrets Ch 14 — Live-replay pressure mechanic.
           Sticky cohort countdown across all three phases:
@@ -207,7 +207,7 @@ export default function PerfectWebinarPage() {
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
         {/* VEO anchor — 3-minute VSL version of this Perfect Webinar */}
-        <VideoEmbedBlock slug="perfect-webinar-vsl" variant="full" />
+        <VideoEmbedBlock slug="walkthrough-vsl" variant="full" />
         {/* HOOK — Brunson rule: hook hard, lead with curiosity. */}
         <header className="space-y-4">
           <nav aria-label="Breadcrumb" className="text-xs text-gray-400">
@@ -244,7 +244,7 @@ export default function PerfectWebinarPage() {
             you act on it.
           </p>
           <DataNerdAudio
-            slug="perfect-webinar-prologue"
+            slug="walkthrough-prologue"
             label="Press play — 90-second prologue, narrated by The Data Nerd"
             subtitle="If you only have 90 seconds: this is the single belief, stated. The rest of the page is what falls when it tips."
           />
@@ -1120,9 +1120,9 @@ export default function PerfectWebinarPage() {
 
         <AgentSummary
           tldr="The 12-minute walkthrough lays out the single belief — commit-velocity acceleration is the most leading public signal in venture capital — and supports it by breaking three classic objections (vehicle: GitHub data is noise; internal: I already have deal flow; external: public data has no edge). Closes on the €9.97/mo Dashboard tier (founding-member, locked forever) with a 30-day Signal-or-It's-Free guarantee. Built on the 219-startup SSRN-published panel with a 21–47 day median lead time over fundraise announcements."
-          pageUrl="https://signals.gitdealflow.com/perfect-webinar"
+          pageUrl="https://signals.gitdealflow.com/walkthrough"
           asOf="2026-05-05"
-          citeAs="VC Deal Flow Signal — 12-Minute Walkthrough (signals.gitdealflow.com/perfect-webinar)."
+          citeAs="VC Deal Flow Signal — 12-Minute Walkthrough (signals.gitdealflow.com/walkthrough)."
           facts={[
             {
               claim:

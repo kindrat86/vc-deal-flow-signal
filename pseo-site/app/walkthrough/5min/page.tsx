@@ -14,12 +14,12 @@ export const metadata: Metadata = {
   title: "The 5-Minute Walkthrough — GitDealFlow in 800 words",
   description:
     "The full pitch, condensed. Core claim, three objections, offer stack, four closes — in five minutes flat. For the buyer who doesn't have twelve.",
-  alternates: { canonical: "/perfect-webinar/5min" },
+  alternates: { canonical: "/walkthrough/5min" },
   openGraph: {
     title: "The 5-Minute Walkthrough",
     description:
       "GitDealFlow's full sales argument in 800 words. Read it on the way to a meeting.",
-    url: "https://signals.gitdealflow.com/perfect-webinar/5min",
+    url: "https://signals.gitdealflow.com/walkthrough/5min",
     type: "article",
   },
 };
@@ -29,7 +29,7 @@ const SIGNUP_URL = "https://gitdealflow.com/#signup";
 
 export default function FiveMinPerfectWebinarPage() {
   // Brunson live-replay cohort snapshot — same engine as the long-form
-  // /perfect-webinar page, so both surfaces show a synchronized deadline.
+  // /walkthrough page, so both surfaces show a synchronized deadline.
   const replaySnapshot = getReplayWindowSnapshot();
 
   const jsonLd = {
@@ -37,11 +37,11 @@ export default function FiveMinPerfectWebinarPage() {
     "@graph": [
       {
         "@type": "Article",
-        "@id": "https://signals.gitdealflow.com/perfect-webinar/5min#article",
+        "@id": "https://signals.gitdealflow.com/walkthrough/5min#article",
         headline: "The 5-Minute Walkthrough — GitDealFlow in 800 words",
         description:
           "GitDealFlow's full sales argument condensed to 5 minutes. Core claim, three objections, offer stack, four closes.",
-        url: "https://signals.gitdealflow.com/perfect-webinar/5min",
+        url: "https://signals.gitdealflow.com/walkthrough/5min",
         datePublished: "2026-05-05T00:00:00.000Z",
         dateModified: "2026-05-05T00:00:00.000Z",
         author: {
@@ -54,15 +54,15 @@ export default function FiveMinPerfectWebinarPage() {
           name: "GitDealFlow",
           url: "https://signals.gitdealflow.com",
         },
-        mainEntityOfPage: "https://signals.gitdealflow.com/perfect-webinar/5min",
+        mainEntityOfPage: "https://signals.gitdealflow.com/walkthrough/5min",
         wordCount: 820,
       },
       {
         "@type": "BreadcrumbList",
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Home", item: "https://signals.gitdealflow.com" },
-          { "@type": "ListItem", position: 2, name: "12-Minute Walkthrough", item: "https://signals.gitdealflow.com/perfect-webinar" },
-          { "@type": "ListItem", position: 3, name: "5-Minute Edition", item: "https://signals.gitdealflow.com/perfect-webinar/5min" },
+          { "@type": "ListItem", position: 2, name: "12-Minute Walkthrough", item: "https://signals.gitdealflow.com/walkthrough" },
+          { "@type": "ListItem", position: 3, name: "5-Minute Edition", item: "https://signals.gitdealflow.com/walkthrough/5min" },
         ],
       },
     ],
@@ -71,14 +71,14 @@ export default function FiveMinPerfectWebinarPage() {
   return (
     <>
       <HreflangLinks
-        canonical="https://signals.gitdealflow.com/perfect-webinar/5min"
-        languages={getHreflangLanguages("/perfect-webinar/5min")}
+        canonical="https://signals.gitdealflow.com/walkthrough/5min"
+        languages={getHreflangLanguages("/walkthrough/5min")}
       />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <AgentMirrorLinks path="/perfect-webinar/5min" />
+      <AgentMirrorLinks path="/walkthrough/5min" />
 
       {/* Brunson live-replay sticky cohort countdown — shared across the
           long-form and 5-minute Perfect Webinar surfaces. */}
@@ -89,7 +89,7 @@ export default function FiveMinPerfectWebinarPage() {
           <nav aria-label="Breadcrumb" className="text-xs text-gray-400">
             <Link href="/" className="hover:text-gray-300">Home</Link>
             <span className="mx-2">/</span>
-            <Link href="/perfect-webinar" className="hover:text-gray-300">Walkthrough</Link>
+            <Link href="/walkthrough" className="hover:text-gray-300">Walkthrough</Link>
             <span className="mx-2">/</span>
             <span className="text-gray-400">5-Minute Edition</span>
           </nav>
@@ -101,13 +101,13 @@ export default function FiveMinPerfectWebinarPage() {
           </h1>
           <p className="text-gray-400 text-sm">
             Reading time: 5 min. If you have 12, the{" "}
-            <Link href="/perfect-webinar" className="text-amber-300 hover:text-amber-200 underline decoration-dotted">
+            <Link href="/walkthrough" className="text-amber-300 hover:text-amber-200 underline decoration-dotted">
               long-form walkthrough
             </Link>{" "}
             is here.
           </p>
           <DataNerdAudio
-            slug="perfect-webinar-5min"
+            slug="walkthrough-5min"
             label="Press play — 5-minute auto-walkthrough, narrated by The Data Nerd"
             subtitle="The whole pitch as audio. Read it, listen to it, or both. Hook → Story → Three Objections → Offer Stack → Four Closes — in five minutes flat."
           />
@@ -260,7 +260,7 @@ export default function FiveMinPerfectWebinarPage() {
 
         <p className="text-gray-400 text-xs leading-relaxed border-t border-slate-800 pt-5">
           Need the long version? The full{" "}
-          <Link href="/perfect-webinar" className="text-amber-300 hover:text-amber-200 underline decoration-dotted">
+          <Link href="/walkthrough" className="text-amber-300 hover:text-amber-200 underline decoration-dotted">
             12-minute walkthrough
           </Link>{" "}
           adds the origin story, the discovery moment, the conversion-story

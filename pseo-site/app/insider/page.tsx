@@ -706,7 +706,7 @@ export default function InsiderPage() {
           <p className="text-gray-400 text-xs pt-2">
             Or read the full case in the{" "}
             <Link
-              href="/perfect-webinar"
+              href="/walkthrough"
               className="text-emerald-400 hover:text-emerald-300 underline decoration-dotted"
             >
               Dashboard walkthrough

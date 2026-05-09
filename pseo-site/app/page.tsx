@@ -863,7 +863,7 @@ export default function Home() {
         {/* Brunson Secret Formula §1 — Ch 1 audit fix (2026-05-08):
             single-sentence "this is who we serve" avatar pin. Names
             check size, stage, and sector in the buyer's own language.
-            Mirrors the canonical avatar in @/content/dream-100-icp.ts
+            Mirrors the canonical avatar in @/content/target-list-icp.ts
             (line 5–7). Placed between H1 and the stat band so it is
             the first identity moment a reader hits — above the fold,
             not 1,100 lines down where the longer disqualifier lives. */}
@@ -978,7 +978,7 @@ export default function Home() {
 
       {/* Brunson DotCom Secrets Ch 12 + Expert Secrets Ch 13 — Stack Slide
           on the home page. HSO audit 2026-05-08: full priced stack lived
-          on /firstlook + /perfect-webinar but the home reader (who never
+          on /firstlook + /walkthrough but the home reader (who never
           clicks through) saw price tiers without value anchors. Eight
           stack lines, anchored against standalone equivalents, total
           €1,728 vs €9.97/mo founding rate. Risk-reversal sticker
@@ -1042,7 +1042,7 @@ export default function Home() {
         <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
           Read the long version on the{" "}
           <Link
-            href="/perfect-webinar"
+            href="/walkthrough"
             className="text-sky-400 hover:text-sky-300 underline decoration-dotted"
           >
             12-minute walkthrough
@@ -1116,7 +1116,7 @@ export default function Home() {
         <p className="text-gray-400 text-sm">
           Full breakdown on the{" "}
           <Link
-            href="/perfect-webinar"
+            href="/walkthrough"
             className="text-sky-400 hover:text-sky-300 underline decoration-dotted"
           >
             long-form walkthrough
@@ -1272,7 +1272,7 @@ export default function Home() {
               <span>
                 You believe public data has no edge. Our{" "}
                 <Link
-                  href="/perfect-webinar"
+                  href="/walkthrough"
                   className="whitespace-nowrap font-medium text-sky-300 underline decoration-sky-400/40 decoration-dotted underline-offset-[3px] transition-colors hover:text-sky-200 hover:decoration-sky-300"
                 >
                   long-form pitch

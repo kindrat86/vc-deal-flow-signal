@@ -381,7 +381,7 @@ export default function FounderPage() {
           <p className="text-gray-300 text-base leading-relaxed">
             Start with the{" "}
             <Link
-              href="/perfect-webinar"
+              href="/walkthrough"
               className="text-sky-400 hover:text-sky-300 underline decoration-dotted font-medium"
             >
               12-minute walkthrough
