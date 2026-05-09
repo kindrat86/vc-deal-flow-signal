@@ -47,6 +47,14 @@ const PATHS = [
   },
   {
     minutes: "90 sec",
+    label: "Read the 90-second elevator",
+    desc: "The whole pitch in 250 words. One core claim, three objections, one stack, one close. For the buyer standing in line.",
+    href: "/walkthrough/90s",
+    badge: "90 seconds flat",
+    color: "emerald",
+  },
+  {
+    minutes: "90 sec",
     label: "Take the routing quiz",
     desc: "Four questions, then a routed recommendation. Most people overpay for tools they barely use, or skip the one that would have paid for itself.",
     href: "/quiz",

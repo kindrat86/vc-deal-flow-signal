@@ -89,6 +89,13 @@ export async function GET(_req: Request, ctx: RouteContext) {
       { url: `${BASE_URL}/book/read/conclusion`, lastmod, changefreq: "monthly", priority: 0.8 },
       // Tweet Teardown — €1 micro-tripwire (Brunson DCS Ch 18, 2026-05-06).
       { url: `${BASE_URL}/tweet-teardown`, lastmod, changefreq: "monthly", priority: 0.85 },
+      // Walkthrough — three lengths of the same Perfect Webinar argument
+      // (Brunson Expert Secrets §3 Ch 15 — Webinar Variations). The 90s
+      // and 5min variants are A/B-tested via /walkthrough/quick (router
+      // is noindex; both variants are canonical).
+      { url: `${BASE_URL}/walkthrough`, lastmod, changefreq: "monthly", priority: 0.9 },
+      { url: `${BASE_URL}/walkthrough/5min`, lastmod, changefreq: "monthly", priority: 0.85 },
+      { url: `${BASE_URL}/walkthrough/90s`, lastmod, changefreq: "monthly", priority: 0.85 },
       // Summit Funnel — Brunson DotCom Ch 16. 20 anonymous-by-design talks
       // across 5 days. /summit is the squeeze; /summit/[slug] is each talk;
       // /summit/all-access is the €97 one-time upsell.

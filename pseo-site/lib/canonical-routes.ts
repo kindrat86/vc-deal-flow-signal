@@ -39,9 +39,13 @@ export const CANONICAL_PROD_ROUTES = [
   "/insider",
   "/pricing",
 
-  // Brunson Funnels (DotCom Secrets)
+  // Brunson Funnels (DotCom Secrets) — three lengths of the same Perfect
+  // Webinar argument, plus the A/B router that sticky-buckets a visitor
+  // into 5min or 90s (Brunson Expert Secrets §3 Ch 15 + §4 Ch 19).
   "/walkthrough",
   "/walkthrough/5min",
+  "/walkthrough/90s",
+  "/walkthrough/quick",
   "/quiz",
   "/apply",
   "/challenge",

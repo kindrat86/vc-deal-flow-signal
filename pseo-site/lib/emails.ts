@@ -186,6 +186,7 @@ You don't need to become someone else to source. The lesson the network rule tau
 Sunday digest. Wednesday filter. End-of-quarter sweep. The Acceleration Watch is the Sunday digest. The Dashboard is the Wednesday filter. The Sector Sweep is the end-of-quarter deep dive. Three rhythms, twelve minutes a week, methodology published. The shift is already wired into the product — you're not buying a tool, you're buying a cadence.</p>
 <p>If steps 1-4 read like the room you're standing in, step 5 is the door.</p>
 <p><a href="${SIGNALS}/walkthrough/5min" style="color:#0ea5e9;font-weight:600;">Read the 5-minute walkthrough &rarr;</a></p>
+<p style="color:#64748b;font-size:14px;">(Or — same argument, ninety seconds: <a href="${SIGNALS}/walkthrough/90s" style="color:#0ea5e9;">the elevator version</a>. We A/B-test which length closes; <a href="${SIGNALS}/walkthrough/quick" style="color:#0ea5e9;">/walkthrough/quick</a> picks for you and remembers it.)</p>
 <p>Tomorrow: the €7 way to test step 5 on your own thesis before any subscription decision.</p>
 <p>Talk soon,<br>${FROM_NAME}</p>
 <p style="color:#64748b;font-size:14px;">P.S. The five sentences above are the whole investment thesis on a single index card. If sentence two — the new vehicle, engineering acceleration as the sensor — already sounds wrong to you, reply with what you're catching. Genuinely the email I'd most want to read this week. The €7 First Look I'll send tomorrow doesn't make sense if step 2 isn't the right step.</p>
