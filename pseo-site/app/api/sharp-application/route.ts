@@ -71,7 +71,7 @@ function applicationEmailHtml(fields: {
 <tr><td style="padding:8px 0;font-weight:600;color:#475569;vertical-align:top;">Quarterly review focus</td><td style="padding:8px 0;white-space:pre-wrap;">${f.quarterly_question || blank}</td></tr>
 </table>
 <div style="background:#f1f5ff;border-left:4px solid #6366f1;padding:14px 18px;margin:20px 0 8px;">
-<strong style="color:#3730a3;font-size:12px;letter-spacing:1px;text-transform:uppercase;">Brunson Diligence — 5 Questions</strong>
+<strong style="color:#3730a3;font-size:12px;letter-spacing:1px;text-transform:uppercase;">Diligence — 5 Questions</strong>
 </div>
 <table style="width:100%;border-collapse:collapse;font-size:14px;">
 <tr><td style="padding:8px 0;font-weight:600;width:180px;color:#475569;vertical-align:top;">1. Dream state (12-mo)</td><td style="padding:8px 0;white-space:pre-wrap;">${f.dream_state || blank}</td></tr>

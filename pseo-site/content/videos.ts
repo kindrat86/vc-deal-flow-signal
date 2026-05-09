@@ -127,13 +127,13 @@ export const videos: SiteVideo[] = [
     title:
       "How To Spot a Series A 47 Days Before the Deck — 3-Minute VSL (GitDealFlow)",
     description:
-      "The 3-minute version of the Perfect Webinar — the long version takes 12 minutes, this one cuts to the single belief. If commit-velocity acceleration is the most leading public signal in venture capital, then every other deal-flow source — pitch decks, AngelList, Crunchbase, warm intros — is a lagging indicator. SSRN-indexed panel of 219 confirmed Series A and Series B fundraises is the empirical basis.",
+      "The 3-minute version of the walkthrough — the long version takes 12 minutes, this one cuts to the single belief. If commit-velocity acceleration is the most leading public signal in venture capital, then every other deal-flow source — pitch decks, AngelList, Crunchbase, warm intros — is a lagging indicator. SSRN-indexed panel of 219 confirmed Series A and Series B fundraises is the empirical basis.",
     uploadDate: "2026-05-06T00:00:00+00:00",
     durationSeconds: 180,
     format: "landscape",
     category: "Science & Technology",
     tags: [
-      "perfect webinar",
+      "vsl walkthrough",
       "venture capital",
       "vc deal flow",
       "series a 47 days",
@@ -145,12 +145,12 @@ export const videos: SiteVideo[] = [
       "deal flow software",
       "alternative data vc",
       "ssrn venture capital",
-      "big domino",
+      "core claim",
       "the data nerd",
     ],
     chapters: [
       { start: 0, end: 25, name: "Hook — the 47-day window" },
-      { start: 25, end: 60, name: "The big-domino belief" },
+      { start: 25, end: 60, name: "The core-claim belief" },
       { start: 60, end: 120, name: "Three objections — vehicle, internal, external" },
       { start: 120, end: 155, name: "The stack — what's inside the founding tier" },
       { start: 155, end: 180, name: "Close + 30-day Signal-or-It's-Free guarantee" },
@@ -192,7 +192,7 @@ export const videos: SiteVideo[] = [
       "vc shorts",
       "startup signals",
       "alternative data",
-      "magic bullet",
+      "one-shot proof",
       "the data nerd",
     ],
     chapters: [

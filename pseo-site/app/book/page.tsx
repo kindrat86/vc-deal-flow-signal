@@ -261,7 +261,7 @@ export default function BookPage() {
         {/* The Big Domino — Brunson Perfect Webinar single-belief frame */}
         <section className="bg-gradient-to-br from-slate-900/80 via-slate-950 to-slate-950 border border-sky-900/40 rounded-xl p-6 sm:p-8 space-y-4">
           <p className="text-sky-300 text-xs font-semibold uppercase tracking-wider">
-            The Big Domino
+            The core claim
           </p>
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug">
             If reading public GitHub data can predict Series A rounds three to

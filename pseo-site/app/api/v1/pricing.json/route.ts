@@ -243,7 +243,7 @@ const tiers: PricingTier[] = [
     applicationGated: true,
     capacity: "5 funds in 2026",
     oneLine:
-      "Done-with-you methodology engagement — custom panel construction trained on your fund's anonymized portfolio outcomes, bespoke 50-org watchlist with monthly rebuild, white-labeled fund subdomain, quarterly synthetic Stadium Pitch, async-only methodology Q&A.",
+      "Done-with-you methodology engagement — custom panel construction trained on your fund's anonymized portfolio outcomes, bespoke 50-org watchlist with monthly rebuild, white-labeled fund subdomain, quarterly synthetic State-of-the-Engine talk, async-only methodology Q&A.",
     forWho:
       "Active VC funds with 5+ years of historical investment outcomes who want the regression trained on their portfolio — not the public 219-startup panel — and a fund-branded data feed integrated into their CRM.",
     bullets: [
@@ -251,7 +251,7 @@ const tiers: PricingTier[] = [
       "Custom panel construction — fund-specific regression on your anonymized portfolio outcomes",
       "Bespoke 50-org watchlist tuned to your written thesis, monthly rebuild",
       "White-labeled fund subdomain — signal.yourfund.com",
-      "Quarterly synthetic Stadium Pitch (4/yr) — 6-min Remotion video on your thesis",
+      "Quarterly synthetic State-of-the-Engine talk (4/yr) — 6-min Remotion video on your thesis",
       "Async methodology Q&A — unlimited dedicated email channel, 24h weekday turn",
       "Quarterly anonymized fund-as-case-study published to /press",
       "Annual fund-only methodology brief (synthetic-voice walkthrough + 40-page PDF)",

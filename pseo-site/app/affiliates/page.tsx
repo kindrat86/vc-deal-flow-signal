@@ -437,7 +437,7 @@ export default function AffiliatesPage() {
         {/* BRUNSON SWIPE KIT — added 2026-05-05 per Russell audit (Traffic #17). */}
         {/* Pre-written copy across 6 channels. Affiliates do zero writing. */}
         {/* ============================================================ */}
-        <section className="mb-12" aria-label="Brunson swipe kit">
+        <section className="mb-12" aria-label="Affiliate swipe kit">
           <h2 className="text-xl font-semibold text-gray-100 mb-3">
             The swipe kit — 6 channels, zero writing required
           </h2>

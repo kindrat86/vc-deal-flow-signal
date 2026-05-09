@@ -95,7 +95,7 @@ const ADDRESSES: ReadonlyArray<{
         heading: "Closing — the standing offer",
         body: [
           "Every monthly address ends with the same standing offer to readers who've made it this far. If you want the 47 fundraise-precursor org names from this month — the ones that scored 5 of 6 on the composite and whose 90-day window is still open — they're inside the Insider Circle private Telegram, which is €97/month founding price, locked forever. The free Sunday digest gets you five names a week. The Custom Sector Sweep, €1,997 once, gets you a deep written report on any one of the three sectors above.",
-          "I publish this address on the first Wednesday of every month. Permanent canonical at /state-of-github with the previous twelve months indexed below. From May 2026 onward each address also ships as a 90-second synthetic-voice Stadium Pitch on the YouTube channel — same content, narrated. Read the written version, watch the pitch, or both.",
+          "I publish this address on the first Wednesday of every month. Permanent canonical at /state-of-github with the previous twelve months indexed below. From May 2026 onward each address also ships as a 90-second synthetic-voice founder talk on the YouTube channel — same content, narrated. Read the written version, watch the talk, or both.",
           "Talk soon — The Data Nerd",
         ],
       },
@@ -197,14 +197,14 @@ export default function StateOfGitHubPage() {
         {latest.videoId ? (
           <section
             className="rounded-xl border border-emerald-500/30 bg-emerald-950/20 p-5 space-y-3"
-            aria-label="Stadium Pitch — synthetic-voice video version of this month's address"
+            aria-label="Founder talk — synthetic-voice video version of this month's address"
           >
             <p className="text-emerald-300 text-xs font-semibold uppercase tracking-wider">
-              Stadium Pitch · 90s · synthetic voice
+              Founder talk · 90s · synthetic voice
             </p>
             <div className="aspect-video w-full overflow-hidden rounded-lg bg-black">
               <iframe
-                title={`Stadium Pitch — ${latest.month}`}
+                title={`Founder talk — ${latest.month}`}
                 src={`https://www.youtube-nocookie.com/embed/${latest.videoId}?rel=0`}
                 allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture"
                 allowFullScreen
@@ -220,10 +220,10 @@ export default function StateOfGitHubPage() {
         ) : (
           <section
             className="rounded-xl border border-dashed border-slate-700 bg-slate-900/30 p-5 space-y-2"
-            aria-label="Stadium Pitch — coming soon"
+            aria-label="Founder talk — coming soon"
           >
             <p className="text-slate-400 text-xs font-semibold uppercase tracking-wider">
-              Stadium Pitch · ships first Wednesday {latest.month}
+              Founder talk · ships first Wednesday {latest.month}
             </p>
             <p className="text-gray-400 text-sm">
               Synthetic-voice 90-second video version of this address ships
@@ -295,7 +295,7 @@ export default function StateOfGitHubPage() {
             href="/perfect-webinar"
             className="text-sky-400 hover:text-sky-300 underline decoration-dotted"
           >
-            12-minute Perfect Webinar
+            12-minute walkthrough
           </Link>
           .
         </p>

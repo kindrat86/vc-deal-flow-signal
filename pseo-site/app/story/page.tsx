@@ -201,7 +201,7 @@ export default function StoryPage() {
                 href="/perfect-webinar"
                 className="text-sky-400 hover:text-sky-300 not-italic underline decoration-dotted"
               >
-                Perfect Webinar
+                walkthrough
               </a>
               , the{" "}
               <a

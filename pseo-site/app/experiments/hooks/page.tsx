@@ -9,7 +9,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Hook tests — every variant, every channel, every CTR",
   description:
-    "Public log of every cold-traffic hook we've tested at GitDealFlow. The exact copy, the channel, the impressions, the clicks, the click-through rate, what we kept, what we cut. Brunson Traffic Secrets §5 in receipts form.",
+    "Public log of every cold-traffic hook we've tested at GitDealFlow. The exact copy, the channel, the impressions, the clicks, the click-through rate, what we kept, what we cut. Test-the-hook in receipts form.",
   alternates: { canonical: "/experiments/hooks" },
   openGraph: {
     title: "Hook tests — every variant, every channel, every CTR",
@@ -62,7 +62,7 @@ const HOOKS: HookTest[] = [
     ctr: "6.7%",
     status: "winner",
     takeaway:
-      "Polarising enemy framing (Russell Expert §4). Names the visible villain — the warm-intro game — without naming a competitor. Doubled the home scroll-to-pricing rate vs the prior 'Find startups before they raise' hook.",
+      "Polarising enemy framing. Names the visible villain — the warm-intro game — without naming a competitor. Doubled the home scroll-to-pricing rate vs the prior 'Find startups before they raise' hook.",
   },
   {
     id: "5-names-sunday",
@@ -76,7 +76,7 @@ const HOOKS: HookTest[] = [
     ctr: "8.5%",
     status: "winner",
     takeaway:
-      "Best-bait hook. Specific number, specific cadence, specific shape of result. The reason this beats 'weekly intelligence digest' is that it's countable — readers can mentally complete the offer before they click.",
+      "Right-shaped bait hook. Specific number, specific cadence, specific shape of result. The reason this beats 'weekly intelligence digest' is that it's countable — readers can mentally complete the offer before they click.",
   },
   {
     id: "tuesday-august",
@@ -90,7 +90,7 @@ const HOOKS: HookTest[] = [
     ctr: "9.1%",
     status: "winner",
     takeaway:
-      "Future-pace mental movie (Russell Expert §22). Specific weekday + month does more work than 'imagine your sourcing process working.' Lifted Dashboard click-through ~30% over the prior generic close.",
+      "Future-pace mental movie. Specific weekday + month does more work than 'imagine your sourcing process working.' Lifted Dashboard click-through ~30% over the prior generic close.",
   },
   {
     id: "deck-late",
@@ -118,7 +118,7 @@ const HOOKS: HookTest[] = [
     ctr: "n/a",
     status: "winner",
     takeaway:
-      "Attractive Character hook (Russell DotCom §6). Not measured per-click — measured by how often readers reply to emails by name. Reply rate roughly tripled when From-name shifted from 'GitDealFlow' to 'The Data Nerd'.",
+      "Founder-character hook. Not measured per-click — measured by how often readers reply to emails by name. Reply rate roughly tripled when From-name shifted from 'GitDealFlow' to 'The Data Nerd'.",
   },
   {
     id: "47-days-short",
@@ -145,7 +145,7 @@ const HOOKS: HookTest[] = [
     ctr: "9.0%",
     status: "winner",
     takeaway:
-      "Decade-in-a-Day frame (Russell Expert §17). Compresses the time-saved value to a number the buyer recognises — 5 min vs 3 weeks. Best CTR per impression of any non-pricing hook on the site.",
+      "Decade-in-a-Day frame. Compresses the time-saved value to a number the buyer recognises — 5 min vs 3 weeks. Best CTR per impression of any non-pricing hook on the site.",
   },
   {
     id: "harmonic-affordable",
@@ -173,7 +173,7 @@ const HOOKS: HookTest[] = [
     ctr: "5.8%",
     status: "control",
     takeaway:
-      "Disqualifier hook (Russell Traffic §1). Repels wrong-buyer harder than it attracts right-buyer. Works as a shape-of-traffic filter, not a click engine. Kept as control in the FOR/NOT-FOR block.",
+      "Disqualifier hook. Repels wrong-buyer harder than it attracts right-buyer. Works as a shape-of-traffic filter, not a click engine. Kept as control in the FOR/NOT-FOR block.",
   },
   {
     id: "engineering-acceleration",
@@ -187,7 +187,7 @@ const HOOKS: HookTest[] = [
     ctr: "7.9%",
     status: "winner",
     takeaway:
-      "New-Opportunity hook (Russell Expert §5). Frames the product as a category replacement, not an upgrade. Stays the spine of the soap-opera D2 email — every other variant lost to it.",
+      "New-opportunity hook. Frames the product as a category replacement, not an upgrade. Stays the spine of the welcome-sequence D2 email — every other variant lost to it.",
   },
   {
     id: "agents-too",
@@ -201,7 +201,7 @@ const HOOKS: HookTest[] = [
     ctr: "11.6%",
     status: "winner",
     takeaway:
-      "Agent-audience hook (Russell Traffic §12 — Conversation Domination). Highest-CTR hook on the site, but the audience size is small. Quality: it qualifies the buyer harder than any pricing copy could.",
+      "Agent-audience hook — publishing where the buyer already is. Highest-CTR hook on the site, but the audience size is small. Quality: it qualifies the buyer harder than any pricing copy could.",
   },
   {
     id: "free-paper",
@@ -215,7 +215,7 @@ const HOOKS: HookTest[] = [
     ctr: "—",
     status: "running",
     takeaway:
-      "Free+Shipping hook (Russell DotCom §17). Long-form anchor. Conversion data still maturing. Hypothesis: book-readers convert to Dashboard at 3× the rate of digest-only readers.",
+      "Free+Shipping hook. Long-form anchor. Conversion data still maturing. Hypothesis: book-readers convert to Dashboard at 3× the rate of digest-only readers.",
   },
   {
     id: "tweet-teardown",
@@ -229,7 +229,7 @@ const HOOKS: HookTest[] = [
     ctr: "—",
     status: "running",
     takeaway:
-      "Micro-tripwire hook (Russell DotCom §18). The €1 number is doing the qualifier — anyone who thinks €1 is too much is not the buyer. Watching whether it cannibalises €7 First Look or amplifies it.",
+      "Micro-tripwire hook. The €1 number is doing the qualifier — anyone who thinks €1 is too much is not the buyer. Watching whether it cannibalises €7 First Look or amplifies it.",
   },
 ];
 
@@ -325,12 +325,12 @@ export default function HookTestsPage() {
           className="text-lg text-gray-400 leading-relaxed mb-8 max-w-3xl"
           data-agent-summary
         >
-          Russell Brunson&apos;s Traffic Secrets §5 says the hook is the unit of
-          test. Not the ad creative, not the landing page, not the offer — the
-          hook. So this is the hook log. Every variant we&apos;ve tested across
-          every channel, with the actual copy, the actual impressions, the
-          actual click-through rate, and a one-line takeaway. {winners} winners
-          kept. {running} still running. {total} total. Updated rolling.
+          The hook is the unit of test. Not the ad creative, not the landing
+          page, not the offer — the hook. So this is the hook log. Every
+          variant we&apos;ve tested across every channel, with the actual
+          copy, the actual impressions, the actual click-through rate, and a
+          one-line takeaway. {winners} winners kept. {running} still running.
+          {total} total. Updated rolling.
         </p>
 
         <div className="grid grid-cols-3 gap-4 mb-12 text-center">
@@ -434,7 +434,7 @@ export default function HookTestsPage() {
               prefer different angles.
             </li>
             <li>
-              <strong className="text-gray-100">The Attractive Character hook is measured in replies, not clicks.</strong>{" "}
+              <strong className="text-gray-100">The founder-character hook is measured in replies, not clicks.</strong>{" "}
               From-name &quot;The Data Nerd&quot; tripled email reply rate vs the
               brand-name From. There is no CTR for character — there is reply
               rate.
@@ -495,7 +495,7 @@ export default function HookTestsPage() {
             <li>
               →{" "}
               <Link href="/dream-100" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">
-                Dream 100
+                Top 100
               </Link>{" "}
               — the buyer roster these hooks are pointed at.
             </li>
@@ -509,7 +509,7 @@ export default function HookTestsPage() {
             <li>
               →{" "}
               <Link href="/affiliates/dream-50" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">
-                Dream 50 partner roster
+                Top 50 partner roster
               </Link>{" "}
               — newsletter writers, podcast hosts, community owners we&apos;d
               like to hear from.

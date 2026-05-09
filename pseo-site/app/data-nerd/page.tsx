@@ -22,7 +22,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: `${DATA_NERD_NAME} — character bible · VC Deal Flow Signal`,
   description:
-    "The pseudonymous narrator behind VC Deal Flow Signal: backstory, six parables, four polarities, three character flaws, seven voice rules, and the synthetic-voice disclosure. The Attractive Character page Russell Brunson would say is missing — implemented under the anonymity rule.",
+    "The pseudonymous narrator behind VC Deal Flow Signal: backstory, six parables, four polarities, three character flaws, seven voice rules, and the synthetic-voice disclosure. Character bible — implemented under the anonymity rule.",
   alternates: { canonical: "/data-nerd" },
   openGraph: {
     title: `${DATA_NERD_NAME} — VC Deal Flow Signal`,
@@ -93,8 +93,7 @@ export default function DataNerdPage() {
 
         <header className="space-y-4">
           <p className="text-amber-400 text-xs font-medium uppercase tracking-wider">
-            Character bible · The Attractive Character (under the anonymity
-            rule)
+            Character bible (under the anonymity rule)
           </p>
           <h1
             className="text-3xl sm:text-5xl font-bold text-gray-100 leading-[1.05] tracking-tight"
@@ -133,9 +132,9 @@ export default function DataNerdPage() {
           </p>
           <p className="text-gray-300 text-sm leading-relaxed">
             What you will hear: a synthetic voice (Cartesia) reading every
-            page narration, every YouTube short, every Stadium Pitch. Same
-            synthetic voice across every surface so the brand has rhythm even
-            without a person. {DATA_NERD_AUDIO_DISCLOSURE}
+            page narration, every YouTube short, every monthly founder talk.
+            Same synthetic voice across every surface so the brand has rhythm
+            even without a person. {DATA_NERD_AUDIO_DISCLOSURE}
           </p>
           <p className="text-gray-300 text-sm leading-relaxed">
             What you will read: the same handle (&ldquo;{DATA_NERD_NAME}
@@ -200,10 +199,9 @@ export default function DataNerdPage() {
             Stories I tell to explain why code-side signals work.
           </h2>
           <p className="text-gray-400 text-sm leading-relaxed">
-            Brunson Expert Secrets Ch 6: every Big Domino needs a parable that
-            makes it feel obvious. These are the six I rotate through emails,
-            videos, and the Sunday digest. Each one is a small story with a
-            specific lesson.
+            Every core claim needs a parable that makes it feel obvious. These
+            are the six I rotate through emails, videos, and the Sunday digest.
+            Each one is a small story with a specific lesson.
           </p>
           <ol className="space-y-5">
             {DATA_NERD_PARABLES.map((p, i) => (
@@ -235,9 +233,9 @@ export default function DataNerdPage() {
             What&rsquo;s wrong with me, deliberately.
           </h2>
           <p className="text-gray-400 text-sm leading-relaxed">
-            Brunson DCS Ch 7: an Attractive Character without visible flaws
-            reads as a brochure. These are real. If they&rsquo;re dealbreakers,
-            I&rsquo;m the wrong vendor.
+            A founder character without visible flaws reads as a brochure.
+            These are real. If they&rsquo;re dealbreakers, I&rsquo;m the wrong
+            vendor.
           </p>
           <ul className="space-y-3">
             {DATA_NERD_FLAWS.map((f, i) => (
@@ -264,10 +262,9 @@ export default function DataNerdPage() {
             How every sentence on this site gets shaped before it ships.
           </h2>
           <p className="text-gray-400 text-sm leading-relaxed">
-            Brunson Expert Secrets Ch 2: a Charismatic Leader has a consistent
-            voice that compounds across surfaces. These are the seven rules
-            every page, email, and video script gets reviewed against.
-            They&rsquo;re published so the reader can audit drift.
+            A consistent founder voice compounds across surfaces. These are the
+            seven rules every page, email, and video script gets reviewed
+            against. They&rsquo;re published so the reader can audit drift.
           </p>
           <ol className="space-y-3">
             {DATA_NERD_VOICE_RULES.map((r, i) => (
@@ -294,11 +291,10 @@ export default function DataNerdPage() {
             Lines I repeat until the reader can repeat them back.
           </h2>
           <p className="text-gray-400 text-sm leading-relaxed">
-            Brunson Expert Secrets Ch 2: Charismatic Leaders have 5–7 verbal
-            tells the audience can quote. These are mine. If you&rsquo;ve been
-            reading for more than two months and one of these doesn&rsquo;t
-            sound familiar, the voice has drifted and someone owes you a
-            refund.
+            Founder voices have 5–7 verbal tells the audience can quote. These
+            are mine. If you&rsquo;ve been reading for more than two months
+            and one of these doesn&rsquo;t sound familiar, the voice has
+            drifted and someone owes you a refund.
           </p>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {DATA_NERD_CATCHPHRASES.map((c, i) => (
@@ -379,7 +375,7 @@ export default function DataNerdPage() {
                 href="/perfect-webinar"
                 className="text-sky-400 hover:text-sky-300 underline decoration-dotted font-medium"
               >
-                Read the 12-minute Perfect Webinar
+                Read the 12-minute walkthrough
               </Link>{" "}
               for the long-form sales argument. Same voice, more density.
             </li>
@@ -401,7 +397,7 @@ export default function DataNerdPage() {
               >
                 Read the Origin
               </Link>{" "}
-              — the Hero&rsquo;s Two Journeys, three false beliefs collapsed.
+              — the founder backstory, three false beliefs collapsed.
             </li>
             <li>
               →{" "}
@@ -417,12 +413,9 @@ export default function DataNerdPage() {
         </section>
 
         <p className="text-gray-400 text-xs leading-relaxed border-t border-slate-800 pt-6">
-          Character framing per <em>DotCom Secrets</em> Ch 7 (Attractive
-          Character) and <em>Expert Secrets</em> Ch 2 (Charismatic Leader 2.0)
-          + Ch 5 (Cult-ure of Your Movement), Russell Brunson, 2017/2020.
+          Character framing drawn from direct-response sales canon.
           Implemented under the anonymity rule (manifesto pillar #4) — handle,
-          synthetic voice, methodology glyph, no real face/name/voice. Used
-          under fair-use commentary.
+          synthetic voice, methodology glyph, no real face/name/voice.
         </p>
       </div>
     </>

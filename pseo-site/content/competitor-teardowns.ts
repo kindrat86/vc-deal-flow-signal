@@ -219,7 +219,7 @@ export const TEARDOWNS: CompetitorTeardown[] = [
         theirMechanic:
           "Single-field email capture, immediate first issue delivery. Daily and weekly cadence. Content quality is the retention mechanic.",
         brunsonNote:
-          "The single-field signup is correct — Brunson 101. The daily cadence is heavy but earns trust through sheer reps.",
+          "The single-field signup is correct — direct-response 101. The daily cadence is heavy but earns trust through sheer reps.",
         ourMove:
           "Acceleration Watch is weekly — Sunday digest. Daily would be noise; weekly matches the rhythm of how a partner actually reviews deal flow.",
       },
@@ -400,7 +400,7 @@ export const TEARDOWNS: CompetitorTeardown[] = [
       },
     ],
     whatTheyDoRight:
-      "The auto-built relationship graph is a visceral demo moment — partners see their own network visualised in 3 minutes and feel the value before the price reveal. That's a textbook Brunson 'show, don't tell.'",
+      "The auto-built relationship graph is a visceral demo moment — partners see their own network visualised in 3 minutes and feel the value before the price reveal. That's a textbook 'show, don't tell.'",
     whereTheyLeak:
       "The 4–8 week IT integration walls off every small fund and every solo GP. The funnel is built for the 10+ seat firm, and the unit economics require that floor.",
     ourMoveSummary:

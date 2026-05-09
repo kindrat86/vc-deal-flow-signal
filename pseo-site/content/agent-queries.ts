@@ -307,7 +307,7 @@ For a single-fetch RAG context payload, see \`/ai.json\` and \`/llms-full.txt\`.
       },
       {
         q: "How do I get notified when new data lands?",
-        a: "Subscribe to `/feed.xml` (RSS) for the cross-sector update, or to per-sector RSS feeds at `/startups-to-watch/{sector}-{period}/feed.xml`. New scouts also get a Soap Opera onboarding sequence.",
+        a: "Subscribe to `/feed.xml` (RSS) for the cross-sector update, or to per-sector RSS feeds at `/startups-to-watch/{sector}-{period}/feed.xml`. New scouts also get a welcome onboarding sequence.",
       },
     ],
     ctaUrl: "/api/openapi.json",

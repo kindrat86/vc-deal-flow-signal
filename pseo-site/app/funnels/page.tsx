@@ -9,7 +9,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Funnel Hub — every entry point to VC Deal Flow Signal",
   description:
-    "Ten funnels, one map. Free Acceleration Watch, Quiz, 90-second Pitch, 12-minute Perfect Webinar, €7 First Look Pass, €9.97/mo Dashboard, €97/mo Insider Circle, €497/mo Sharp Tier, €1,997 Sector Sweep, and the post-90 Engine Room cohort. Pick the door.",
+    "Ten funnels, one map. Free Acceleration Watch, Quiz, 90-second Pitch, 12-minute Walkthrough, €7 First Look Pass, €9.97/mo Dashboard, €97/mo Insider Circle, €497/mo Sharp Tier, €1,997 Sector Sweep, and the post-90 Engine Room cohort. Pick the door.",
   alternates: { canonical: "/funnels" },
   openGraph: {
     title: "Funnel Hub — VC Deal Flow Signal",
@@ -69,20 +69,20 @@ const FUNNELS: Funnel[] = [
     color: "sky",
   },
   {
-    slug: "Perfect Webinar",
+    slug: "Walkthrough",
     href: "/perfect-webinar",
     tier: "Presentation funnel",
     price: "Free, 12-minute read",
     hook: "If commit-velocity acceleration is the most leading public signal, every other deal-flow source is lagging.",
     who: "Investors who want the full epiphany — origin story, three objections, full stack, trial closes, guarantee.",
-    offer: "Brunson-canonical script. Big Domino → Origin → Three Secrets → Stack → Close.",
-    cta: "Read the webinar",
+    offer: "Long-form pitch script. Core claim → Origin → Three Secrets → Stack → Close.",
+    cta: "Read the walkthrough",
     color: "violet",
   },
   {
     slug: "First Look Pass",
     href: "/firstlook",
-    tier: "Tripwire (DotCom Ch 12)",
+    tier: "Tripwire",
     price: "€7 one-time",
     hook: "Pick a sector. €7. Full deep dive in 24 hours.",
     who: "Investors who want the data on their thesis before subscribing.",
@@ -115,7 +115,7 @@ const FUNNELS: Funnel[] = [
   {
     slug: "Sharp Tier",
     href: "/apply",
-    tier: "Application funnel (DotCom Ch 14)",
+    tier: "Application funnel",
     price: "€497/mo · capped at 8 funds in 2026",
     hook: "Application-gated. Custom watchlists, white-labeled API, methodology source, quarterly review call.",
     who: "Active funds that already use the data and want sharper integration.",
@@ -137,11 +137,11 @@ const FUNNELS: Funnel[] = [
   {
     slug: "Engine Room (post-90 cohort)",
     href: "/post-90",
-    tier: "Phase 6 — change of selling environment (DotCom Ch 11)",
+    tier: "Phase 6 — change of selling environment",
     price: "Free, opt-in at Day 90",
-    hook: "After 90 days the rhythm leaves your inbox — Sunday voice memo in your podcast app, monthly Stadium Pitch on your calendar, quarterly post-mortem on the public ledger.",
-    who: "Subscribers who've stayed through the 21-email soap-opera and Seinfeld sequence and want the next phase to land in apps they already open daily.",
-    offer: "Cohort home + RSS podcast feed (/post-90/feed.xml) + iCal calendar feed (/post-90/calendar.ics). Three subscribe URLs, four apps, anonymous synthetic-voice audio. Brunson DotCom Secrets Ch 11 Phase 6 — the deliberate channel shift out of email.",
+    hook: "After 90 days the rhythm leaves your inbox — Sunday voice memo in your podcast app, monthly founder talk on your calendar, quarterly post-mortem on the public ledger.",
+    who: "Subscribers who've stayed through the 21-email welcome and daily-drip sequence and want the next phase to land in apps they already open daily.",
+    offer: "Cohort home + RSS podcast feed (/post-90/feed.xml) + iCal calendar feed (/post-90/calendar.ics). Three subscribe URLs, four apps, anonymous synthetic-voice audio. The deliberate channel shift out of email.",
     cta: "Open the Engine Room",
     color: "amber",
   },
@@ -167,7 +167,7 @@ export default function FunnelHubPage() {
         "@id": "https://signals.gitdealflow.com/funnels#page",
         name: "Funnel Hub — VC Deal Flow Signal",
         description:
-          "Every entry point to the GitHub-momentum deal-flow product, mapped on one page. Free Acceleration Watch, Quiz, Pitch, Perfect Webinar, First Look Pass, Dashboard, Insider Circle, Sharp Tier, Sector Sweep.",
+          "Every entry point to the GitHub-momentum deal-flow product, mapped on one page. Free Acceleration Watch, Quiz, Pitch, Walkthrough, First Look Pass, Dashboard, Insider Circle, Sharp Tier, Sector Sweep.",
         url: "https://signals.gitdealflow.com/funnels",
         inLanguage: "en-US",
         isPartOf: {
@@ -235,9 +235,9 @@ export default function FunnelHubPage() {
             <span className="text-sky-400">on one page</span>.
           </h1>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed" data-speakable>
-            Most products hide their funnels. Russell Brunson&rsquo;s playbook is the
-            opposite — surface every entry point so the visitor self-selects the door
-            that matches the way they want to buy. This is that page.
+            Most products hide their funnels. We do the opposite — surface
+            every entry point so the visitor self-selects the door that matches
+            the way they want to buy. This is that page.
           </p>
         </header>
 
@@ -287,9 +287,9 @@ export default function FunnelHubPage() {
         <section className="space-y-4 max-w-3xl">
           <h2 className="text-xl font-bold text-gray-100">The ladder, visualised</h2>
           <p className="text-gray-300 text-sm leading-relaxed">
-            Brunson calls this the Customer-Centric Value Ladder. Free at the bottom,
-            higher commitment at each rung. You don&rsquo;t skip rungs — you climb when
-            the previous rung paid for itself.
+            The customer-centric value ladder. Free at the bottom, higher
+            commitment at each rung. You don&rsquo;t skip rungs — you climb
+            when the previous rung paid for itself.
           </p>
           <ol className="text-gray-300 text-sm leading-relaxed space-y-2 pl-1">
             <li>
@@ -339,9 +339,9 @@ export default function FunnelHubPage() {
               >
                 Origin →
               </Link>{" "}
-              the Hero&rsquo;s Two Journeys story behind the product. Why a developer
-              who also writes angel checks decided that warm-intro deal flow was a
-              broken vehicle.
+              the founder backstory behind the product. Why a developer who
+              also writes angel checks decided that warm-intro deal flow was
+              a broken vehicle.
             </li>
             <li>
               <Link
@@ -405,28 +405,28 @@ export default function FunnelHubPage() {
         >
           <header className="space-y-2">
             <p className="text-violet-400 text-xs font-semibold uppercase tracking-wider">
-              DotCom Secrets · Chapter 11
+              The 23 building blocks
             </p>
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug">
               The 23 Building Blocks — and where each one lives.
             </h2>
             <p className="text-gray-300 text-base leading-relaxed max-w-3xl">
-              Every funnel on this site is assembled from the same 23 components
-              Russell catalogued. If you&rsquo;re reverse-engineering us — or
-              building your own — here&rsquo;s the map.
+              Every funnel on this site is assembled from the same 23
+              direct-response components. If you&rsquo;re reverse-engineering
+              us — or building your own — here&rsquo;s the map.
             </p>
           </header>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {[
-              { n: 1, name: "Pre-Headline", where: "/perfect-webinar — \"Brunson Perfect Webinar · 12-min read\"" },
+              { n: 1, name: "Pre-Headline", where: "/perfect-webinar — \"12-min walkthrough\"" },
               { n: 2, name: "Headline (Big Promise)", where: "Home — \"47 days before the deck circulates\"" },
               { n: 3, name: "Sub-Headline / Promise Stack", where: "Home — \"public, reproducible, code-side signal\"" },
-              { n: 4, name: "Hook", where: "/pitch — Hook/Story/Offer landing" },
-              { n: 5, name: "Origin Story", where: "/origin, /story, /perfect-webinar — Hero's Two Journeys" },
-              { n: 6, name: "Big Domino", where: "Home + /perfect-webinar + /pitch — three surfaces" },
+              { n: 4, name: "Hook", where: "/pitch — hook → story → offer landing" },
+              { n: 5, name: "Origin Story", where: "/origin, /story, /perfect-webinar — founder backstory" },
+              { n: 6, name: "Core claim", where: "Home + /perfect-webinar + /pitch — three surfaces" },
               { n: 7, name: "Three Secrets / Three Objections", where: "/perfect-webinar — full breakdown" },
-              { n: 8, name: "Demonstration / Magic Bullet", where: "/predicted — D-31 → D 0 worked example" },
-              { n: 9, name: "The Stack", where: "/pricing + /perfect-webinar — 8-row stack" },
+              { n: 8, name: "Demonstration / one-shot proof", where: "/predicted — D-31 → D 0 worked example" },
+              { n: 9, name: "The offer stack", where: "/pricing + /perfect-webinar — 8-row stack" },
               { n: 10, name: "Trial Closes (\"if all this did was…\")", where: "/perfect-webinar — 3-line cluster" },
               { n: 11, name: "Money Close", where: "/perfect-webinar — \"the deal you miss is the cost\"" },
               { n: 12, name: "Identity Close", where: "/perfect-webinar + home — \"developer-investor\"" },
@@ -435,13 +435,13 @@ export default function FunnelHubPage() {
               { n: 15, name: "Encore Close", where: "/perfect-webinar — 8-line summary at the end" },
               { n: 16, name: "Order Form Bump", where: "/firstlook — interactive cart preview, toggleable bump (€7 → €1,797), running total" },
               { n: 17, name: "One-Time Offer (OTO)", where: "/firstlook delivery email — Insider €77/mo first month + full OTO ladder shown on page" },
-              { n: 18, name: "Cart Funnel + Downsell", where: "/firstlook — Stack Slide (€1,547 retail → €7), Risk Reversal at cart, free Acceleration Watch fallback" },
+              { n: 18, name: "Cart Funnel + Downsell", where: "/firstlook — offer stack (€1,547 retail → €7), Risk Reversal at cart, free Acceleration Watch fallback" },
               { n: 19, name: "Risk Reversal / Guarantee", where: "30-day Signal-or-It's-Free, every tier" },
               { n: 20, name: "Social Proof", where: "Home SignalLeader + SSRN paper + 1,060 indexed pages" },
               { n: 21, name: "Application / Filter", where: "/apply — 8-fund cap on Sharp Tier" },
-              { n: 22, name: "Soap Opera Sequence", where: "lib/emails.ts D0–D7 + Challenge cohort" },
-              { n: 23, name: "Daily Seinfeld", where: "lib/emails.ts D9, D12, D14, D17, D21, D25, D30" },
-              { n: 24, name: "Stadium Pitch / State of Industry", where: "/state-of-github — first-Wednesday-of-month address" },
+              { n: 22, name: "Welcome email sequence", where: "lib/emails.ts D0–D7 + Challenge cohort" },
+              { n: 23, name: "Daily story drip", where: "lib/emails.ts D9, D12, D14, D17, D21, D25, D30" },
+              { n: 24, name: "Founder talk / State of Industry", where: "/state-of-github — first-Wednesday-of-month address" },
             ].map((b) => (
               <div
                 key={b.n}
@@ -459,10 +459,9 @@ export default function FunnelHubPage() {
           </div>
           <p className="text-gray-400 text-sm leading-relaxed border-l-2 border-slate-700 pl-4 mt-4">
             Builders who want to copy this architecture: every block above is
-            named, located, and shipped in production. Read the
-            corresponding page, then re-implement on your own funnel — that&rsquo;s
-            the funnel-hack pattern Russell teaches in Section 3 of DotCom
-            Secrets.
+            named, located, and shipped in production. Read the corresponding
+            page, then re-implement on your own funnel — that&rsquo;s the
+            competitor-teardown pattern.
           </p>
         </section>
 
@@ -477,16 +476,16 @@ export default function FunnelHubPage() {
         >
           <header className="space-y-2">
             <p className="text-rose-400 text-xs font-semibold uppercase tracking-wider">
-              DotCom Secrets · Chapter 9
+              Reverse-engineering frame
             </p>
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug">
               How to reverse-engineer a funnel — applied to our category.
             </h2>
             <p className="text-gray-300 text-base leading-relaxed max-w-3xl">
-              Brunson&rsquo;s methodology in three steps: find the leaders,
-              walk every page of their funnel, write down what they&rsquo;re
-              optimising for. Here&rsquo;s how that read on the three deal-flow
-              tools every developer-investor compares us to.
+              The methodology in three steps: find the leaders, walk every
+              page of their funnel, write down what they&rsquo;re optimising
+              for. Here&rsquo;s how that read on the three deal-flow tools
+              every developer-investor compares us to.
             </p>
           </header>
 

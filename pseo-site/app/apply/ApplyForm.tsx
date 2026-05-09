@@ -135,7 +135,7 @@ export default function ApplyForm() {
               href="/perfect-webinar"
               className="text-sky-400 hover:text-sky-300 underline decoration-dotted"
             >
-              12-minute Perfect Webinar
+              12-minute walkthrough
             </a>{" "}
             is the document I assume every Sharp applicant has read before
             the first quarterly call. It saves us the first ten minutes of

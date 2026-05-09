@@ -63,7 +63,7 @@ const STACK = [
       "Your fund's subdomain returns the same dataset behind your auth, with your brand. Drop into your CRM (Affinity, Attio, Salesforce), internal dashboards, deal-screening tool, or LP reports. Includes uptime SLA matching the public Dashboard.",
   },
   {
-    label: "Quarterly Synthetic Stadium Pitch — fund-specific",
+    label: "Quarterly Synthetic Founder Talk — fund-specific",
     value: 8000,
     detail:
       "Four times a year, we render a 6-minute Remotion-built synthetic-voice video on your fund's specific thesis: where the engineering data is heading, what the regression flagged in your watchlist, and one falsifiable prediction for the next quarter. Anonymity-preserving (no founder face), shareable internally for IC prep.",
@@ -78,7 +78,7 @@ const STACK = [
     label: "Quarterly Anonymized Case Study — published",
     value: 3200,
     detail:
-      "Each quarter, we co-author a case study using your fund as the (anonymized, attribution-optional) example, published to /press and submitted to industry newsletters. Brunson 'fund-as-publisher' move — your thesis becomes part of the public record without exposing your fund identity. Optional opt-in to named attribution.",
+      "Each quarter, we co-author a case study using your fund as the (anonymized, attribution-optional) example, published to /press and submitted to industry newsletters. Fund-as-publisher move — your thesis becomes part of the public record without exposing your fund identity. Optional opt-in to named attribution.",
   },
   {
     label: "Annual Methodology Brief — fund-only",
@@ -107,7 +107,7 @@ const FAQS = [
   },
   {
     q: "Why €14,997 and not €4,997 or €49,997?",
-    a: "Three anchors. (1) The Sharp Tier at €4,970/yr is what a fund pays for the productized version of this — same data, no custom regression, no fund-branded subdomain, no quarterly Stadium Pitch. The €14,997 is roughly 3× Sharp because the deliverables are bespoke, not productized. (2) Equivalent fund-as-case-study work from a name-brand methodology consultancy quotes €60,000–€120,000/year. We undercut that on margin, not on quality. (3) The next rung up — the Vault — is €49,997/yr and includes co-development access, pre-publication paper preview, and signal-of-the-quarter co-invest alerts. €14,997 sits exactly between productized and partnership-grade.",
+    a: "Three anchors. (1) The Sharp Tier at €4,970/yr is what a fund pays for the productized version of this — same data, no custom regression, no fund-branded subdomain, no quarterly founder talk. The €14,997 is roughly 3× Sharp because the deliverables are bespoke, not productized. (2) Equivalent fund-as-case-study work from a name-brand methodology consultancy quotes €60,000–€120,000/year. We undercut that on margin, not on quality. (3) The next rung up — the Vault — is €49,997/yr and includes co-development access, pre-publication paper preview, and signal-of-the-quarter co-invest alerts. €14,997 sits exactly between productized and partnership-grade.",
   },
   {
     q: "Why is this capped at 5 funds in 2026?",
@@ -131,7 +131,7 @@ export const metadata: Metadata = {
   title:
     "Methodology Partnership — €14,997/yr · Custom regression on your fund's thesis",
   description:
-    "Done-with-you methodology engagement for active VC funds. Custom panel construction trained on your portfolio, bespoke 50-org watchlist, white-labeled fund subdomain, quarterly synthetic Stadium Pitch, async-only methodology Q&A. Capped at 5 funds in 2026. €14,997/yr founding rate.",
+    "Done-with-you methodology engagement for active VC funds. Custom panel construction trained on your portfolio, bespoke 50-org watchlist, white-labeled fund subdomain, quarterly synthetic founder talk, async-only methodology Q&A. Capped at 5 funds in 2026. €14,997/yr founding rate.",
   alternates: { canonical: "/methodology-partnership" },
   openGraph: {
     title: "Methodology Partnership — €14,997/yr · GitDealFlow",
@@ -161,7 +161,7 @@ export default function MethodologyPartnershipPage() {
         name: "Methodology Partnership",
         serviceType: "Investment research and custom regression methodology",
         description:
-          "Twelve-month done-with-you engagement: custom panel construction trained on your fund's anonymized portfolio outcomes, bespoke 50-org watchlist with monthly rebuild, white-labeled fund subdomain, quarterly synthetic Stadium Pitch, async-only methodology Q&A. Capped at 5 funds in 2026.",
+          "Twelve-month done-with-you engagement: custom panel construction trained on your fund's anonymized portfolio outcomes, bespoke 50-org watchlist with monthly rebuild, white-labeled fund subdomain, quarterly synthetic founder talk, async-only methodology Q&A. Capped at 5 funds in 2026.",
         provider: { "@id": "https://gitdealflow.com/#organization" },
         offers: {
           "@type": "Offer",

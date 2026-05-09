@@ -31,15 +31,15 @@ const PATHS = [
   },
   {
     minutes: "12 min",
-    label: "Read the Perfect Webinar",
-    desc: "The full epiphany — Big Domino, three objections collapsed, stack, and the four closes. Read it the way you'd read a long-form blog post.",
+    label: "Read the walkthrough",
+    desc: "The full epiphany — core claim, three objections collapsed, stack, and the four closes. Read it the way you'd read a long-form blog post.",
     href: "/perfect-webinar",
     badge: "Convinced you want to read more",
     color: "violet",
   },
   {
     minutes: "5 min",
-    label: "Read the 5-minute Perfect Webinar",
+    label: "Read the 5-minute walkthrough",
     desc: "Same argument, condensed to ~820 words. For the buyer who has 5, not 12.",
     href: "/perfect-webinar/5min",
     badge: "Short on time",
@@ -144,7 +144,7 @@ export default function StartHerePage() {
             <span className="text-gray-400">Start Here</span>
           </nav>
           <p className="text-emerald-400 text-xs font-semibold uppercase tracking-wider">
-            Traffic Secrets · Cool Traffic Onramp
+            Cold-traffic onramp
           </p>
           <h1 className="text-3xl sm:text-5xl font-bold text-gray-100 leading-[1.1] tracking-tight">
             Hi. <span className="text-emerald-400">Here&rsquo;s what this is</span> in three minutes.
@@ -278,10 +278,10 @@ export default function StartHerePage() {
         <section className="space-y-3 border-t border-slate-800 pt-8">
           <h2 className="text-xl font-bold text-gray-100">If you want the long version</h2>
           <ul className="space-y-2 text-gray-300 text-sm leading-relaxed">
-            <li>→ <Link href="/origin" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">Origin</Link> — the Hero&rsquo;s Two Journeys story behind the product.</li>
+            <li>→ <Link href="/origin" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">Origin</Link> — the founder backstory behind the product.</li>
             <li>→ <Link href="/about/founder" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">About the founder</Link> — identity, parables, the polarity that drew you here.</li>
             <li>→ <Link href="/funnels" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">Funnel Hub</Link> — every entry point to the product, mapped on one page.</li>
-            <li>→ <Link href="/dream-100" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">Dream 100</Link> — the 100 voices we read on the engineering-signal frontier.</li>
+            <li>→ <Link href="/dream-100" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">Top 100</Link> — the 100 voices we read on the engineering-signal frontier.</li>
             <li>→ <Link href="/distribution" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">Distribution</Link> — every channel where we publish + every feed we expose.</li>
             <li>→ <Link href="/manifesto" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">Manifesto</Link> — what we believe, what we&rsquo;re replacing, who&rsquo;s on the bus.</li>
             <li>→ <Link href="/roadmap" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">Roadmap</Link> — what&rsquo;s shipping next + what&rsquo;s on the public bet.</li>
@@ -290,11 +290,9 @@ export default function StartHerePage() {
         </section>
 
         <p className="text-gray-400 text-xs leading-relaxed border-t border-slate-800 pt-6">
-          Built for cold visitors per <em>Traffic Secrets</em> Section 2 Ch
-          18 (Cool Traffic) by Russell Brunson (2020). The Cool Traffic
-          visitor doesn&rsquo;t know us yet — this page exists so they
-          don&rsquo;t have to fight the rest of the site to find a place to
-          land.
+          Built for cold visitors. The cold-traffic visitor doesn&rsquo;t
+          know us yet — this page exists so they don&rsquo;t have to fight
+          the rest of the site to find a place to land.
         </p>
       </div>
     </>

@@ -60,7 +60,7 @@ const STACK = [
 const FAQS = [
   {
     q: "Why €1?",
-    a: "Brunson rule: the €0-to-€7 jump is psychologically larger than the €7-to-€97 jump. €1 isn't margin — it's a buyer-threshold breaker. Once you've put a card on file at any price, the next purchase is no longer a first purchase. We'd rather you trial the signal at the lowest possible cost, see whether the output reads true on a startup you already know, and then decide if the €7 First Look Pass or the €9.97/mo Dashboard is worth a real budget line.",
+    a: "The €0-to-€7 jump is psychologically larger than the €7-to-€97 jump. €1 isn't margin — it's a buyer-threshold breaker. Once you've put a card on file at any price, the next purchase is no longer a first purchase. We'd rather you trial the signal at the lowest possible cost, see whether the output reads true on a startup you already know, and then decide if the €7 First Look Pass or the €9.97/mo Dashboard is worth a real budget line.",
   },
   {
     q: "What's the deliverable, exactly?",

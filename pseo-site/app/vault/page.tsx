@@ -43,7 +43,7 @@ const STACK = [
     label: "Everything in Methodology Partnership (€68,000+ stack value)",
     value: 68000,
     detail:
-      "Sharp Tier baseline, custom panel construction trained on your portfolio, bespoke 50-org watchlist with monthly rebuild, white-labeled fund subdomain, quarterly synthetic Stadium Pitch, async methodology Q&A, quarterly anonymized case study, annual fund-only methodology brief. The full Methodology Partnership stack, included.",
+      "Sharp Tier baseline, custom panel construction trained on your portfolio, bespoke 50-org watchlist with monthly rebuild, white-labeled fund subdomain, quarterly synthetic founder talk, async methodology Q&A, quarterly anonymized case study, annual fund-only methodology brief. The full Methodology Partnership stack, included.",
   },
   {
     label: "Co-Development Access — submit signal hypotheses to the pipeline",
@@ -73,7 +73,7 @@ const STACK = [
     label: "Methodology Source Repo — fund-only fork license",
     value: 60000,
     detail:
-      "Private fork of the entire methodology source repository. Panel construction code, regression engine, signal-type definitions, ETL pipeline, and the build harness for the Stadium Pitch generator. MIT-license to your fund only — fork, audit, run on your own infrastructure, integrate into your CRM. Re-distribution prohibited; all updates pushed to your fork for the duration of the engagement.",
+      "Private fork of the entire methodology source repository. Panel construction code, regression engine, signal-type definitions, ETL pipeline, and the build harness for the founder-talk generator. MIT-license to your fund only — fork, audit, run on your own infrastructure, integrate into your CRM. Re-distribution prohibited; all updates pushed to your fork for the duration of the engagement.",
   },
   {
     label: "Signal-of-the-Quarter Co-Investment Alerts",
@@ -110,7 +110,7 @@ const FAQS = [
   },
   {
     q: "What's the methodology source license, exactly?",
-    a: "A private fork of the methodology repository, MIT-licensed to your fund only. You receive: the panel-construction code, the regression engine, signal-type definitions, the ETL pipeline that pulls public GitHub data, and the build harness for the Stadium Pitch generator. You can fork, audit, run on your own infrastructure, modify, and integrate into your CRM. You cannot re-distribute, sublicense, or open-source the fork. Updates are pushed to your fork for the duration of the engagement; on engagement end, your fork stays read-only at the last delivered commit. The license is anonymity-preserving — there is no individual contributor attribution required from your end.",
+    a: "A private fork of the methodology repository, MIT-licensed to your fund only. You receive: the panel-construction code, the regression engine, signal-type definitions, the ETL pipeline that pulls public GitHub data, and the build harness for the founder-talk generator. You can fork, audit, run on your own infrastructure, modify, and integrate into your CRM. You cannot re-distribute, sublicense, or open-source the fork. Updates are pushed to your fork for the duration of the engagement; on engagement end, your fork stays read-only at the last delivered commit. The license is anonymity-preserving — there is no individual contributor attribution required from your end.",
   },
   {
     q: "What disqualifies an application?",

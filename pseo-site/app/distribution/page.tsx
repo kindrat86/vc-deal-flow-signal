@@ -131,7 +131,7 @@ const GROUPS: Group[] = [
       { name: "Bluesky — gitdealflow.bsky.social", what: "AT Protocol social. Custom feed-generator + label service. Posts mirror the Acceleration Watch.", href: "https://bsky.app/profile/gitdealflow.bsky.social", external: true },
       { name: "Mastodon — fosstodon.org/@gitdealflow", what: "ActivityPub. The fediverse-native distribution layer.", href: "https://fosstodon.org/@gitdealflow", external: true },
       { name: "Farcaster — gitdealflow", what: "On-chain social via Neynar. Where the crypto-native developer-investor reads.", href: "https://warpcast.com/gitdealflow", external: true },
-      { name: "LinkedIn — GitDealFlow Company", what: "Company page (no founder personal account, anonymity rule). Long-form essays + Dream 100 engagement.", href: "https://www.linkedin.com/company/gitdealflow", external: true },
+      { name: "LinkedIn — GitDealFlow Company", what: "Company page (no founder personal account, anonymity rule). Long-form essays + top-100 engagement.", href: "https://www.linkedin.com/company/gitdealflow", external: true },
     ],
   },
   {
@@ -222,16 +222,16 @@ export default function DistributionPage() {
             <span className="text-gray-400">Distribution</span>
           </nav>
           <p className="text-emerald-400 text-xs font-semibold uppercase tracking-wider">
-            Traffic Secrets, Section 1, Chapter 2 · Applied
+            Where they&rsquo;re hiding · Applied
           </p>
           <h1 className="text-3xl sm:text-5xl font-bold text-gray-100 leading-[1.1] tracking-tight">
             Where to find us. <span className="text-emerald-400">Every channel, every mirror.</span>
           </h1>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
-            Brunson&rsquo;s rule: your reader can&rsquo;t follow you on a
-            channel they don&rsquo;t know exists. So here&rsquo;s the full
-            map — every public surface where the GitDealFlow signal shows up,
-            grouped by what you&rsquo;re trying to do.
+            Your reader can&rsquo;t follow you on a channel they don&rsquo;t
+            know exists. So here&rsquo;s the full map — every public surface
+            where the GitDealFlow signal shows up, grouped by what you&rsquo;re
+            trying to do.
           </p>
           <p className="text-gray-300 text-base leading-relaxed">
             First — <a href="#hiding" className="text-emerald-400 hover:text-emerald-300 underline decoration-dotted">where they&rsquo;re hiding</a>: the literal 10 forums, 10 substacks, and 10 GitHub orgs the developer-investor reads. Then: the eight surface groups we mirror to so we show up on each of them.
@@ -253,20 +253,19 @@ export default function DistributionPage() {
         >
           <div className="space-y-3">
             <p className="text-emerald-300 text-xs font-semibold uppercase tracking-wider">
-              The Secret Formula · Step 2: Where Are They Hiding · DotCom Secrets §1 + Traffic Secrets §1 Ch 2
+              The secret formula · Step 2: where are they hiding
             </p>
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug">
               Where the developer-investor is hiding.
             </h2>
             <p className="text-gray-300 text-base leading-relaxed">
-              Brunson&rsquo;s Secret Formula starts by naming the Dream
-              Customer, then asking <em>where they congregate</em>. Our
-              Dream Customer is the developer-investor — someone writing
-              €5k–€50k checks who reads commit logs for fun. Below is
-              the literal map: the 10 forums they browse, the 10
-              substacks they read, and the 10 GitHub orgs they watch.
-              Every surface group further down the page is a mirror
-              we&rsquo;ve built to show up wherever they already are.
+              Start by naming the dream customer, then ask <em>where they
+              congregate</em>. Our dream customer is the developer-investor —
+              someone writing €5k–€50k checks who reads commit logs for fun.
+              Below is the literal map: the 10 forums they browse, the 10
+              substacks they read, and the 10 GitHub orgs they watch. Every
+              surface group further down the page is a mirror we&rsquo;ve
+              built to show up wherever they already are.
             </p>
           </div>
 
@@ -297,7 +296,7 @@ export default function DistributionPage() {
                 10 substacks
               </h3>
               <p className="text-gray-400 text-[11px] leading-relaxed">
-                Where the long-form reading happens — Dream-100 mirror targets.
+                Where the long-form reading happens — top-100 mirror targets.
               </p>
               <ol className="text-gray-300 text-sm leading-relaxed space-y-1 list-decimal list-inside marker:text-emerald-500">
                 <li>The Pragmatic Engineer — Gergely Orosz</li>
@@ -437,31 +436,29 @@ export default function DistributionPage() {
 
         <section className="rounded-xl border border-sky-700/40 bg-gradient-to-br from-sky-950/30 via-slate-900 to-slate-950 p-6 sm:p-8 space-y-3">
           <p className="text-sky-300 text-xs font-semibold uppercase tracking-wider">
-            Conversation Domination · Traffic Secrets Ch 12
+            Publishing where the buyer already is
           </p>
           <h2 className="text-xl sm:text-2xl font-bold text-gray-100">
             Why we&rsquo;re on this many surfaces.
           </h2>
           <p className="text-gray-300 text-base leading-relaxed">
-            Brunson teaches Conversation Domination as the third leg of
-            traffic — every reader has a different home, and you have to
-            show up on theirs, not yours. We do that on principle: the dev.to
-            reader, the Substack reader, the Bluesky reader, and the Claude
-            Desktop reader all have the same right to the signal.
+            Every reader has a different home, and you have to show up on
+            theirs, not yours. We do that on principle: the dev.to reader,
+            the Substack reader, the Bluesky reader, and the Claude Desktop
+            reader all have the same right to the signal.
           </p>
           <p className="text-gray-300 text-base leading-relaxed">
-            The Brunson half: distribution. The honest half: every surface
-            mirrors the same canonical data, with the same SSRN-grounded
-            methodology, with the same 30-day Signal-or-It&rsquo;s-Free
-            guarantee. We don&rsquo;t change the message per channel — we
-            change the medium.
+            The distribution half. The honest half: every surface mirrors
+            the same canonical data, with the same SSRN-grounded methodology,
+            with the same 30-day Signal-or-It&rsquo;s-Free guarantee. We
+            don&rsquo;t change the message per channel — we change the medium.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 pt-2">
             <Link
               href="/dream-100"
               className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-sm transition-colors"
             >
-              Dream 100 (the other side of the map) →
+              Top 100 (the other side of the map) →
             </Link>
             <Link
               href="/funnels"
@@ -473,10 +470,9 @@ export default function DistributionPage() {
         </section>
 
         <p className="text-gray-400 text-xs leading-relaxed border-t border-slate-800 pt-6">
-          Distribution mapped per <em>Traffic Secrets</em> Section 1 (Where
-          Are They Hiding) and Section 2 Ch 12 (Conversation Domination), by
-          Russell Brunson (2020). Anonymity rule preserved: company-page
-          identity only, no individual founder content.
+          Distribution mapped from direct-response sales canon. Anonymity
+          rule preserved: company-page identity only, no individual founder
+          content.
         </p>
       </div>
     </>

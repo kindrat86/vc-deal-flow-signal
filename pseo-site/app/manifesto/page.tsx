@@ -189,17 +189,16 @@ export default function ManifestoPage() {
             <span className="text-gray-400">Manifesto</span>
           </nav>
           <p className="text-amber-400 text-xs font-semibold uppercase tracking-wider">
-            Expert Secrets · Ch 5 — The Cult-ure of Your Movement · Applied
+            The cult-ure of the movement
           </p>
           <h1 className="text-3xl sm:text-5xl font-bold text-gray-100 leading-[1.1] tracking-tight">
             Seven pillars. <span className="text-amber-400">One movement.</span>
           </h1>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
-            Brunson&rsquo;s teaching on movement: name what you believe,
-            name the enemy, name who&rsquo;s on the bus. This is the
-            developer-investor movement, in three parts. If you nod through
-            it, you&rsquo;re one of us. If you don&rsquo;t, that&rsquo;s also
-            real information.
+            Name what you believe, name the enemy, name who&rsquo;s on the bus.
+            This is the developer-investor movement, in three parts. If you
+            nod through it, you&rsquo;re one of us. If you don&rsquo;t,
+            that&rsquo;s also real information.
           </p>
         </header>
 
@@ -318,9 +317,7 @@ export default function ManifestoPage() {
         <DataNerdSignoff variant="long" catchphraseIndex={2} />
 
         <p className="text-gray-400 text-xs leading-relaxed border-t border-slate-800 pt-6">
-          Movement framing per <em>Expert Secrets</em> Ch 5 (The Cult-ure
-          of Your Movement) by Russell Brunson (2017/2020). Used under
-          fair-use commentary.
+          Movement framing drawn from direct-response sales canon.
         </p>
       </div>
     </>

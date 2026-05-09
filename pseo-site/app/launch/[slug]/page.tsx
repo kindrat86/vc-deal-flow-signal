@@ -262,7 +262,7 @@ export default async function LaunchPage({ params }: PageProps) {
             </div>
           )}
           <p className="text-sky-400 text-xs font-medium uppercase tracking-wider">
-            Product Launch · Jeff Walker PLF · DotCom Secrets Ch 22
+            Product Launch · Jeff Walker PLF
           </p>
           <h1 className="text-3xl sm:text-5xl font-bold text-gray-100 leading-[1.1] tracking-tight">
             {launch.headline}
@@ -432,7 +432,7 @@ export default async function LaunchPage({ params }: PageProps) {
             href="/perfect-webinar"
             className="text-sky-400 hover:text-sky-300 underline decoration-dotted"
           >
-            12-minute Perfect Webinar
+            12-minute walkthrough
           </Link>
           .
         </p>

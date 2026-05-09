@@ -264,12 +264,12 @@ export default async function ComparisonPage({ params }: PageProps) {
                 actually works
               </h2>
               <p className="text-gray-400 text-sm leading-relaxed max-w-3xl">
-                Russell Brunson&rsquo;s DotCom Secrets Ch 10: the fastest way to
-                understand a market is to walk every step of every competitor&rsquo;s
-                funnel and name the conversion mechanic. Below is the structural
-                teardown — what they do at each step, the read on the mechanic,
-                and the parallel move in our funnel. All sourced from publicly-
-                observable, logged-out surfaces.
+                The fastest way to understand a market is to walk every step
+                of every competitor&rsquo;s funnel and name the conversion
+                mechanic. Below is the structural teardown — what they do at
+                each step, the read on the mechanic, and the parallel move
+                in our funnel. All sourced from publicly-observable, logged-
+                out surfaces.
               </p>
             </header>
             {teardowns.map((td) => (

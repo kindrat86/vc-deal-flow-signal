@@ -398,18 +398,8 @@ export const DREAM_100_GROUPS: Dream100Group[] = [
         status: "read",
       },
       {
-        name: "DotCom Secrets — Russell Brunson",
-        what: "The funnel architecture this entire site is built around. Reverse-engineered.",
-        status: "read",
-      },
-      {
-        name: "Expert Secrets — Russell Brunson",
-        what: "The Big Domino, the stack, the closes. Frame for /perfect-webinar.",
-        status: "read",
-      },
-      {
-        name: "Traffic Secrets — Russell Brunson",
-        what: "Dream 100, where they hide, conversation domination. The frame for this page.",
+        name: "Direct-response sales canon",
+        what: "The funnel architecture this entire site is built around. Reverse-engineered from the modern direct-response playbook.",
         status: "read",
       },
       {
@@ -501,7 +491,7 @@ export const DREAM_100_GROUPS: Dream100Group[] = [
     id: "communities",
     label: "10 communities where the conversation lives",
     intro:
-      "Where investors and developers actually talk. We listen, we contribute, we don't dominate. Brunson rule: target conversations, not people.",
+      "Where investors and developers actually talk. We listen, we contribute, we don't dominate. Target conversations, not people.",
     items: [
       {
         name: "r/venturecapital",

@@ -9,14 +9,14 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title:
-    "Origin — the Hero's Two Journeys behind VC Deal Flow Signal",
+    "Origin — the founder backstory behind VC Deal Flow Signal",
   description:
-    "Why a developer who also writes angel checks decided that warm-intro deal flow was a structurally broken vehicle, and what replaced it. The full Russell Brunson Hero's Two Journeys arc — identity shift, three false beliefs collapsed, the new vehicle.",
+    "Why a developer who also writes angel checks decided that warm-intro deal flow was a structurally broken vehicle, and what replaced it. The full origin arc — identity shift, three false beliefs collapsed, the new vehicle.",
   alternates: { canonical: "/origin" },
   openGraph: {
     title: "Origin — VC Deal Flow Signal",
     description:
-      "The Hero's Two Journeys story: from warm-intro investor to GitHub-momentum investor, three false beliefs collapsed.",
+      "From warm-intro investor to GitHub-momentum investor, three false beliefs collapsed.",
     url: "https://signals.gitdealflow.com/origin",
     type: "article",
   },
@@ -29,7 +29,7 @@ export default function OriginPage() {
       {
         "@type": "Article",
         "@id": "https://signals.gitdealflow.com/origin#article",
-        headline: "Origin — the Hero's Two Journeys behind VC Deal Flow Signal",
+        headline: "Origin — the founder backstory behind VC Deal Flow Signal",
         description:
           "Why a developer who also writes angel checks decided that warm-intro deal flow was a structurally broken vehicle, and what replaced it.",
         url: "https://signals.gitdealflow.com/origin",
@@ -107,15 +107,14 @@ export default function OriginPage() {
             </span>
           </h1>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed" data-speakable>
-            This is the long version. Russell Brunson calls it the Hero&rsquo;s
-            Two Journeys — the identity-shift story where you took the wrong
-            road first, three false beliefs broke one by one, and the new road
-            became the only road that made sense. Read it if you want to know
-            why I built this. Skip it if you just want the data.
+            This is the long version — the identity-shift story where you took
+            the wrong road first, three false beliefs broke one by one, and the
+            new road became the only road that made sense. Read it if you want
+            to know why I built this. Skip it if you just want the data.
           </p>
           <DataNerdAudio
             slug="origin"
-            label="Listen — The Data Nerd tells the Hero's Two Journeys"
+            label="Listen — The Data Nerd tells the origin story"
             subtitle="Synthetic voice (Cartesia). The same voice you'll hear on every YouTube short and every email-audio companion."
           />
         </header>
@@ -398,7 +397,7 @@ export default function OriginPage() {
               href="/perfect-webinar"
               className="text-gray-400 hover:text-gray-200 underline decoration-dotted"
             >
-              12-minute Perfect Webinar
+              12-minute walkthrough
             </Link>
             . The launch-diary post-mortem (zero PH votes, what I learned) lives
             at{" "}

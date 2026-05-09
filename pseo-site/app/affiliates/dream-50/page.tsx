@@ -7,12 +7,12 @@ import { getHreflangLanguages } from "@/lib/hreflang";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "Dream 50 — the publishers, podcasts, and communities we'd like to partner with",
+  title: "Top 50 — the publishers, podcasts, and communities we'd like to partner with",
   description:
-    "GitDealFlow's Dream 50 publisher roster. 50 named newsletter writers, podcast hosts, and community owners whose audiences overlap our developer-investor segment. Engagement status, fit notes, and the exact pitch templates we send. Brunson Traffic Secrets §1 + DotCom §6 in receipts form.",
+    "GitDealFlow's top-50 publisher roster. 50 named newsletter writers, podcast hosts, and community owners whose audiences overlap our developer-investor segment. Engagement status, fit notes, and the exact pitch templates we send.",
   alternates: { canonical: "/affiliates/dream-50" },
   openGraph: {
-    title: "Dream 50 — publishers we'd like to partner with",
+    title: "Top 50 — publishers we'd like to partner with",
     description:
       "50 named newsletter writers, podcast hosts, and communities. Status: engaged, outreach-sent, replied, pending, declined.",
     url: "https://signals.gitdealflow.com/affiliates/dream-50",
@@ -218,15 +218,15 @@ export default function Dream50Page() {
           className="text-lg text-gray-400 leading-relaxed mb-8 max-w-3xl"
           data-agent-summary
         >
-          Russell Brunson&apos;s Traffic Secrets §1 says you find your dream
-          customer by working backwards from where they already pay attention.
-          The same play works for partners. These are the 50 newsletter writers,
-          podcast hosts, and community owners whose audiences overlap our
-          developer-investor segment closely enough that a recommendation block,
-          interview segment, or sector-deep-dive co-author piece would convert.
-          Engagement status is current; we update the row when status changes.
-          If you write or run one of these, scroll to the pitch templates — we
-          ship the swipe kit pre-filled.
+          You find your dream customer by working backwards from where they
+          already pay attention. The same play works for partners. These are
+          the 50 newsletter writers, podcast hosts, and community owners
+          whose audiences overlap our developer-investor segment closely
+          enough that a recommendation block, interview segment, or
+          sector-deep-dive co-author piece would convert. Engagement status
+          is current; we update the row when status changes. If you write or
+          run one of these, scroll to the pitch templates — we ship the
+          swipe kit pre-filled.
         </p>
 
         <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 mb-12 text-center text-xs">
@@ -444,7 +444,7 @@ gitdealflow.com/dataset · ssrn.com/abstract=6606558`}</pre>
             <li>
               →{" "}
               <Link href="/dream-100" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">
-                Dream 100 — buyer roster
+                Top 100 — buyer roster
               </Link>{" "}
               — the customers we&apos;re pointed at, parallel to this publisher list.
             </li>

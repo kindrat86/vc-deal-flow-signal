@@ -2342,7 +2342,7 @@ Crunchbase API: $20,000 per year. GitDealFlow A2A: free, no signup. Your move.`,
       {
         question: "Why backwards-looking? The Scout game on /predict is forwards.",
         answer:
-          "/predict asks you to call a startup before they raise. The resolution window is six months. That works for taste validation but it has a virality ceiling — Twitter does not share things that pay off in Q4. Receipts inverts the timing: you get instant proof of taste from a database we already maintain. Same Scout ladder, same ranks, same brand. Receipts is the top-of-funnel; /predict is the conversion. Both feed the existing five-email Soap Opera onboarding sequence.",
+          "/predict asks you to call a startup before they raise. The resolution window is six months. That works for taste validation but it has a virality ceiling — Twitter does not share things that pay off in Q4. Receipts inverts the timing: you get instant proof of taste from a database we already maintain. Same Scout ladder, same ranks, same brand. Receipts is the top-of-funnel; /predict is the conversion. Both feed the existing five-email welcome sequence.",
       },
       {
         question: "How is the Scout Score computed?",
@@ -2368,7 +2368,7 @@ That is the whole product. No login. No OAuth. No private repos read. Just publi
 
 ## Why backwards-looking
 
-We already shipped a forward-looking version. [/predict](/predict) is a six-month prediction game where you call whether a startup will raise a Series A. It works. It has a leaderboard, an OG card, a Soap Opera onboarding sequence, a public profile at /s/[handle]. But it has a virality ceiling I underestimated. Twitter does not share things that pay off in Q4.
+We already shipped a forward-looking version. [/predict](/predict) is a six-month prediction game where you call whether a startup will raise a Series A. It works. It has a leaderboard, an OG card, a welcome onboarding sequence, a public profile at /s/[handle]. But it has a virality ceiling I underestimated. Twitter does not share things that pay off in Q4.
 
 Receipts is the inversion. You do not have to wait six months. The receipts already exist in your GitHub account. We just made them visible.
 
@@ -2417,7 +2417,7 @@ Total ship time was about three hours from "paste your GitHub username" idea to 
 
 - **PocketBase** was not used. Receipts is stateless.
 - **The OG image route** at /api/og/scout/[handle]/route.tsx was the template — same dark gradient, same monospace stat blocks, same rank colors. The Receipts card at /api/og/receipts/[username]/route.tsx is a 200-line variant.
-- **The 5-email Soap Opera** at /lib/soap-opera-scout.ts already exists. Receipts does not trigger it. /predict does. We keep one funnel, not two.
+- **The 5-email welcome sequence** at /lib/soap-opera-scout.ts already exists. Receipts does not trigger it. /predict does. We keep one funnel, not two.
 - **The validated-wins database** is a static JSON file. About 75 entries. I curated by hand from memory, Crunchbase summaries, and a quick pass through the most-starred OSS repos from 2021-2025. It will be a moving target — every quarter has new unicorns and old "wins" get re-validated.
 
 The trickiest part was the GitHub rate limit. Unauthenticated, the API gives you 60 requests per hour per IP. That is fine for a single user pulling their own history (one to three paginated calls). It dies the second the launch tweet goes out. The fix was a fine-grained PAT with zero scopes — even an empty-permission token bumps the rate limit to 5,000 per hour. Plus an in-memory cache per Vercel Function instance. Plus the 24-hour CDN cache via stale-while-revalidate. Together those handle a viral spike without ceremony.
@@ -2430,7 +2430,7 @@ The reason Receipts exists is to feed /predict. The conversion path is:
 2. Friend sees it, clicks, enters their own username.
 3. Friend gets a Scout Score, learns the ranks (Curious → Scout → Sharp → Elite → Oracle).
 4. The result page CTA links to /predict.
-5. They make a forward-looking call. The Scout Game starts. The Soap Opera kicks off.
+5. They make a forward-looking call. The Scout Game starts. The welcome sequence kicks off.
 
 Receipts is a free top-of-funnel for a paid product. Same brand, same vocabulary, same ranks, different timing. /predict resolves in six months. Receipts resolves in eight seconds. We can finally tell people why they should care today.
 

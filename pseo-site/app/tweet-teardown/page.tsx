@@ -172,7 +172,7 @@ export default function TweetTeardownPage() {
         {/* Hero */}
         <header className="space-y-5">
           <p className="text-sky-300 text-xs font-semibold uppercase tracking-[0.18em]">
-            €1 micro-tripwire · Brunson DCS Ch 18
+            €1 micro-tripwire
           </p>
           <h1 className="text-4xl sm:text-5xl font-bold text-gray-100 leading-[1.05] tracking-tight">
             Drop us a tweet.{" "}
@@ -202,7 +202,7 @@ export default function TweetTeardownPage() {
         {/* Big-Domino Statement */}
         <section className="bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 border border-slate-800 rounded-xl p-6 sm:p-8 space-y-3">
           <p className="text-emerald-300 text-xs font-semibold uppercase tracking-wider">
-            The big domino
+            The core claim
           </p>
           <p className="text-gray-100 text-xl sm:text-2xl leading-snug">
             If you can extract one verifiable engineering signal from a viral

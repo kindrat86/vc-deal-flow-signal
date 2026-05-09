@@ -121,9 +121,8 @@ export function FastActionBonuses({ initialWindow, signupUrl = "https://gitdealf
           waitlist screen.
         </p>
         <p className="text-rose-200 text-sm leading-relaxed">
-          Brunson&rsquo;s replay rule: doors close on every cohort. This
-          isn&rsquo;t the discount expiring — the cohort is. The seat does
-          not roll over.
+          Doors close on every cohort. This isn&rsquo;t the discount
+          expiring — the cohort is. The seat does not roll over.
         </p>
       </section>
     );
@@ -143,11 +142,10 @@ export function FastActionBonuses({ initialWindow, signupUrl = "https://gitdealf
           Lock by Wednesday and three bonuses ride along with the seat.
         </h2>
         <p className="text-gray-400 text-sm leading-relaxed max-w-2xl">
-          Brunson rule — fast-action bonuses are anti-procrastination, not
-          promo. They reward locking the cadence inside the same cohort,
-          not a vague &ldquo;sometime next month.&rdquo; Wednesday 23:59 UTC:
-          all three disappear. The seat stays available 24 more hours,
-          unbundled.
+          Fast-action bonuses are anti-procrastination, not promo. They
+          reward locking the cadence inside the same cohort, not a vague
+          &ldquo;sometime next month.&rdquo; Wednesday 23:59 UTC: all three
+          disappear. The seat stays available 24 more hours, unbundled.
         </p>
       </div>
 

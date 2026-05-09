@@ -173,7 +173,7 @@ export const SOAP_OPERA_EMAILS = [
     delayMs: THIRTY_MIN + Math.round(3.5 * ONE_DAY),
     html: wrap(`
 <p>Yesterday's email gave you three plays. Today I want to give you the underlying shift in plain language, because the Sunday-Wednesday-quarter rhythm only works if step 5 sits on top of an honest read of steps 1 through 4.</p>
-<p>Russell Brunson calls this the Conversion Story. Five sentences, one-to-five. Read them in order; the last one is the action.</p>
+<p>Five sentences, one-to-five. Read them in order; the last one is the action.</p>
 <p><strong>1. The old way you were sold.</strong><br>
 "The best deals come from your network. Build the rolodex." Every operator-turned-investor is told this. It's the first lesson of every fellowship deck and every senior-partner conversation. Network is the vehicle. Warm intros are the engine. Time-in-seat is the moat.</p>
 <p><strong>2. The new vehicle.</strong><br>
@@ -436,9 +436,9 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
 <p>The one real time-bounded decision is the founding-member price on the Dashboard.</p>
 <p>It's €9.97/mo right now. Locked forever for everyone who joins before the founding cohort closes. After that the standard price is €29/mo for new subscribers, and the founding-cohort price is honored only for subscribers who joined before the close. I haven't set a hard close date publicly, but the soft target is when the subscriber count crosses 1,000 paying — at which point the rhythm of the product is established and the founding-price chapter closes.</p>
 <p>If the dashboard fits the way you source deals — the live ranked panel, the 219-startup backtest CSV, the monthly sector deep-dive PDF, the methodology source, the 30-day Signal-or-It's-Free guarantee — that's the rung where the math works for most readers. €9.97 × 12 is €119.64 for the year. One missed angel cheque pays it back forty times over.</p>
-<p>If it doesn't fit, no problem. The free digest stays. The soap opera ends here, the rhythm continues. You'll get a Sunday digest this weekend like always.</p>
+<p>If it doesn't fit, no problem. The free digest stays. The 30-day welcome sequence ends here, the rhythm continues. You'll get a Sunday digest this weekend like always.</p>
 <p>Talk soon —<br>${FROM_NAME}</p>
-<p style="color:#64748b;font-size:14px;">P.S. Founding-price checkout: <a href="${SITE}/#pricing" style="color:#0ea5e9;">${SITE}/#pricing</a> · Quiz if you're unsure which tier fits: <a href="${SIGNALS}/quiz" style="color:#0ea5e9;">${SIGNALS}/quiz</a> · Funnel hub if you want to see all 9 doors: <a href="${SIGNALS}/funnels" style="color:#0ea5e9;">${SIGNALS}/funnels</a></p>
+<p style="color:#64748b;font-size:14px;">P.S. Founding-price checkout: <a href="${SITE}/#pricing" style="color:#0ea5e9;">${SITE}/#pricing</a> · Quiz if you're unsure which tier fits: <a href="${SIGNALS}/quiz" style="color:#0ea5e9;">${SIGNALS}/quiz</a> · See every door: <a href="${SIGNALS}/funnels" style="color:#0ea5e9;">${SIGNALS}/funnels</a></p>
 `),
   },
 
@@ -517,10 +517,10 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
     delayMs: THIRTY_MIN + 90 * ONE_DAY,
     html: wrap(`
 <p>Today is Day 90 of this list.</p>
-<p>If the Sunday digest has settled into a rhythm, that's already the win. The 21-email soap-opera and Seinfeld sequence I started with on Day 0 ends here — the relationship doesn't, but the way it lands in your day is going to change, on purpose.</p>
-<p>Reading the same kind of email in the same inbox for ninety days is how rhythms die. Russell Brunson calls this the "change of selling environment" beat. The next phase of the engine lives in three different surfaces, deliberately outside email:</p>
+<p>If the Sunday digest has settled into a rhythm, that's already the win. The 21-email welcome and daily-story sequence I started with on Day 0 ends here — the relationship doesn't, but the way it lands in your day is going to change, on purpose.</p>
+<p>Reading the same kind of email in the same inbox for ninety days is how rhythms die. The next phase of the engine lives in three different surfaces, deliberately outside email:</p>
 <p><strong>1. Sunday Brief — in your podcast app.</strong> A 4-to-6-minute synthetic-voice voice memo. The week's single sharpest GitHub-acceleration break, what shifted on the panel, one thing to put on the radar before Monday. Lands in Apple Podcasts / Spotify / Overcast / any RSS reader. The voice is the same Cartesia model that powers the State-of-GitHub video — anonymous by design, methodology over personality.</p>
-<p><strong>2. Stadium Pitch — on your calendar.</strong> First Tuesday of every month at 16:00 UTC. The monthly address — what the panel showed across 4,200+ venture-backed orgs, what shifted in the false-positive rate, and one falsifiable prediction on the record. Subscribe to the calendar feed once and the Pitch lands as a scheduled event, not an email surprise.</p>
+<p><strong>2. The monthly State-of-the-Engine talk — on your calendar.</strong> First Tuesday of every month at 16:00 UTC. The monthly address — what the panel showed across 4,200+ venture-backed orgs, what shifted in the false-positive rate, and one falsifiable prediction on the record. Subscribe to the calendar feed once and the talk lands as a scheduled event, not an email surprise.</p>
 <p><strong>3. State-of-the-Engine post-mortem — on the public Receipts ledger.</strong> Every 90 days, the prediction resolves on <a href="${SIGNALS}/wins" style="color:#0ea5e9;">${SIGNALS}/wins</a> in the same append-only format the panel-validation entries use. Public, no opinions, names + dates only.</p>
 <p>The cohort home with all three subscribe links is at <a href="${SIGNALS}/post-90" style="color:#0ea5e9;">${SIGNALS}/post-90</a>. Two URLs to paste — the RSS feed into your podcast app, the .ics feed into your calendar — and the rhythm continues without me having to send you another email about it.</p>
 <p>Since Day 0 the engine has indexed 4,200+ venture-backed GitHub orgs continuously, surfaced ~12 Sunday digests of 5 ranked acceleration signals (≈60 names on your radar before consensus formed), published 3 monthly Sector Deep Dives, and logged confirmed funding / launch / re-rating events against panel orgs that hit acceleration threshold during the window. The Receipts ledger has the names + dates: <a href="${SIGNALS}/wins" style="color:#0ea5e9;">${SIGNALS}/wins</a>.</p>
@@ -544,7 +544,7 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
     html: wrap(`
 <p>Quick note from inside the Engine Room.</p>
 <p>If you subscribed to the Sunday Brief feed three weeks ago, you've heard four episodes by now. Each one is a 4–6 minute synthetic-voice voice memo on the week's single sharpest acceleration break — the same panel data the public Acceleration Watch ranks on Mondays, but voiced for background-listen and dropped a day earlier in the week.</p>
-<p>If you subscribed to the calendar feed, the first monthly Stadium Pitch is on your calendar for the first Tuesday of next month. 16:00 UTC. Don't add a reminder — the calendar entry is the reminder.</p>
+<p>If you subscribed to the calendar feed, the first monthly State-of-the-Engine talk is on your calendar for the first Tuesday of next month. 16:00 UTC. Don't add a reminder — the calendar entry is the reminder.</p>
 <p>If you didn't subscribe to either, this is the gentle nudge. The Day 90 email (three weeks ago) had three URLs; the cohort home at <a href="${SIGNALS}/post-90" style="color:#0ea5e9;">${SIGNALS}/post-90</a> still lists all three. Two pastes — RSS into your podcast app, .ics into your calendar — and the rhythm fits into apps you already open daily for other reasons.</p>
 <p><strong>What's worth catching up on if you've been listening:</strong></p>
 <ul>
@@ -553,7 +553,7 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
 <li><strong>Brief 03</strong> — the methodology drift question. Why the 90-day baseline is the right denominator (not 30 / 60 / 180) and what the regression said when we tested all four.</li>
 <li><strong>Brief 04</strong> — what shifted in the panel this week; one name to track that wasn't in the Day-90 prediction set but is sitting at the threshold edge now.</li>
 </ul>
-<p>The Sunday Brief feed updates automatically; you don't have to do anything to receive new episodes. The Stadium Pitch lands on your calendar without a separate email. The next time you'll get an email from me is the Day 150 check-in (one short note) and then the Day 180 post-mortem on the Day-90 prediction. Two emails between now and the half-year mark, total. The rest happens in the new channels.</p>
+<p>The Sunday Brief feed updates automatically; you don't have to do anything to receive new episodes. The monthly State-of-the-Engine talk lands on your calendar without a separate email. The next time you'll get an email from me is the Day 150 check-in (one short note) and then the Day 180 post-mortem on the Day-90 prediction. Two emails between now and the half-year mark, total. The rest happens in the new channels.</p>
 <p>Talk soon —<br>${FROM_NAME}</p>
 <p style="color:#64748b;font-size:14px;">P.S. The Engine Room cohort home: <a href="${SIGNALS}/post-90" style="color:#0ea5e9;">${SIGNALS}/post-90</a>. The Receipts ledger (where the Day-90 prediction resolves, name by name): <a href="${SIGNALS}/wins" style="color:#0ea5e9;">${SIGNALS}/wins</a>.</p>
 `),
@@ -692,7 +692,7 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
 <li><strong>Custom panel construction</strong> — your fund's regression trained on your anonymized portfolio.</li>
 <li><strong>Bespoke 50-org watchlist</strong> tuned to your written thesis, monthly rebuild.</li>
 <li><strong>White-labeled fund subdomain</strong> — signal.yourfund.com behind your auth.</li>
-<li><strong>Quarterly synthetic Stadium Pitch</strong> — 6-min Remotion video on your fund's specific thesis (4/yr).</li>
+<li><strong>Quarterly synthetic State-of-the-Engine talk</strong> — 6-min Remotion video on your fund's specific thesis (4/yr).</li>
 <li><strong>Async methodology Q&A</strong> — unlimited via dedicated email channel, 24h weekday turn.</li>
 <li><strong>Annual fund-only methodology brief</strong> — 30-min synthetic-voice walkthrough + 40-page PDF.</li>
 </ul>
@@ -1211,7 +1211,7 @@ export const FIRSTLOOK_REACTIVATION_DRIP = [
 <p>Two paths from here.</p>
 <p><strong>Path 1 — apply the credit, lock the founding rate.</strong> Your first month is €2.97 (€9.97 minus your €7 First Look credit). Founding rate is locked for the lifetime of the subscription, even when the public price moves to €49/mo. The deep dive you already paid for becomes the first month of a continuous engine.</p>
 <p><a href="${SIGNALS}/pricing?utm_source=email&utm_medium=firstlook-credit&utm_campaign=d13" style="color:#0ea5e9;font-weight:600;">Lock the founding rate now &rarr;</a></p>
-<p><strong>Path 2 — keep the deep dive, skip the upgrade.</strong> The PDF + CSV are yours forever. The free Sunday digest still hits every Monday. The credit expires, the €7 stays a one-time deep-dive purchase, no resentment, no follow-up pressure from me. The soap opera ends here on this rung.</p>
+<p><strong>Path 2 — keep the deep dive, skip the upgrade.</strong> The PDF + CSV are yours forever. The free Sunday digest still hits every Monday. The credit expires, the €7 stays a one-time deep-dive purchase, no resentment, no follow-up pressure from me. The follow-up sequence ends here on this rung.</p>
 <p>Either path works. The only path that doesn't is "wait and see" — because tomorrow the credit becomes a regular €9.97 first month and the founding rate may close to new buyers later this year.</p>
 <p>If you want to keep the option open without committing tonight, reply <code>HOLD</code> and I'll extend the window by 7 days, one time. Don't extend without replying — I won't chase.</p>
 <p>— ${FROM_NAME}</p>
@@ -1267,9 +1267,9 @@ const D30_F: SoapOperaEmail = {
 <p>The free Sunday digest <strong>is</strong> the product on your tier. Five startups every Monday, sector-tagged, ranked, no commitment. That stays exactly as it is. I'd rather you read for ten years and write your first cheque informed than upgrade once and resent it.</p>
 <p>If your cadence ever crosses into the 2–5/year range, the right next rung is the <strong>€7 First Look Pass</strong> — you pick a sector at checkout, I send the Sector Deep Dive PDF + raw CSV in 24 hours. €7 is roughly what a coffee costs in Lisbon; it's the lowest-friction way to test the deeper data on your own thesis without committing to a subscription.</p>
 <p>If your range is still 0–1/year, you don't need anything else from me. Keep the Sunday digest. Read the SSRN paper at <a href="https://ssrn.com/abstract=6606558" style="color:#0ea5e9;">ssrn.com/abstract=6606558</a> if you want the methodology end-to-end. The book is free at <a href="${SIGNALS}/book" style="color:#0ea5e9;">${SIGNALS}/book</a>.</p>
-<p>That's the offer for your tier: free, forever. The soap opera ends here, the rhythm continues. Sunday digest hits as usual this weekend.</p>
+<p>That's the offer for your tier: free, forever. The 30-day welcome ends here, the rhythm continues. Sunday digest hits as usual this weekend.</p>
 <p>Talk soon —<br>${FROM_NAME}</p>
-<p style="color:#64748b;font-size:14px;">P.S. SSRN paper (n=219, the methodology backbone): <a href="https://ssrn.com/abstract=6606558" style="color:#0ea5e9;">ssrn.com/abstract=6606558</a> · Free book: <a href="${SIGNALS}/book" style="color:#0ea5e9;">${SIGNALS}/book</a> · Funnel hub if you ever want to see all 9 doors: <a href="${SIGNALS}/funnels" style="color:#0ea5e9;">${SIGNALS}/funnels</a></p>
+<p style="color:#64748b;font-size:14px;">P.S. SSRN paper (n=219, the methodology backbone): <a href="https://ssrn.com/abstract=6606558" style="color:#0ea5e9;">ssrn.com/abstract=6606558</a> · Free book: <a href="${SIGNALS}/book" style="color:#0ea5e9;">${SIGNALS}/book</a> · See every door: <a href="${SIGNALS}/funnels" style="color:#0ea5e9;">${SIGNALS}/funnels</a></p>
 `),
 };
 
@@ -1318,7 +1318,7 @@ const D30_I: SoapOperaEmail = {
 <li>30-day Signal-or-It's-Free guarantee. If we don't surface three orgs you didn't already know about, reply REFUND.</li>
 </ul>
 <p>The math at fund scale: one founder per quarter that you reached because you had a Sunday-night head-start, at a €5k–€50k angel range with even a 3× exit on one in five, lands somewhere between €15k and €150k of expected value per head-start. €97/mo is €1,164/yr. The numbers don't work the other way.</p>
-<p>The free Sunday digest stays free regardless. The soap opera ends here, the rhythm continues. Sunday hits as usual this weekend.</p>
+<p>The free Sunday digest stays free regardless. The 30-day welcome ends here, the rhythm continues. Sunday hits as usual this weekend.</p>
 <p>Talk soon —<br>${FROM_NAME}</p>
 <p style="color:#64748b;font-size:14px;">P.S. Insider founding rate (€97/mo, 24h lead, closed Telegram): <a href="${SIGNALS}/insider" style="color:#0ea5e9;">${SIGNALS}/insider</a> · Sector Sweep (€1,997, 7 of 8 Q3 slots open): <a href="${SIGNALS}/sector-sweep" style="color:#0ea5e9;">${SIGNALS}/sector-sweep</a> · Email <a href="mailto:signal@gitdealflow.com?subject=Sector%20Sweep" style="color:#0ea5e9;">signal@gitdealflow.com</a> with the sector and the spec lands in your inbox inside one business day.</p>
 `),
@@ -1608,7 +1608,7 @@ export const SHARP_INDOCTRINATION_DRIP = [
 <p>Here's what's about to happen, in case the wait is the part that nags:</p>
 <p><strong>Within 12 hours.</strong> The first read happens at the founder desk. I score every Sharp application against three filters: fund fit (does the thesis intersect what the panel can see), use-case fit (white-label API and quarterly-call cadence vs. what you actually need), and capacity fit (where the 8-fund 2026 cap stands the day your application lands). The first filter takes about ninety seconds. The second takes ten minutes. The third is a calendar check.</p>
 <p><strong>Within 24-36 hours.</strong> Decision drafts. If accepted, I draft a Stripe Sharp Tier invoice + an Insider Circle invitation, both in the same reply email. If declined, I write a one-paragraph reason — never a form letter, never a "thanks for your interest." Either reply lands inside 48 business hours of submission. No application has gone un-replied since the tier opened.</p>
-<p><strong>One thing to do while the review runs.</strong> If you haven't already, the <a href="${SIGNALS}/perfect-webinar">12-minute Perfect Webinar</a> is the page I assume every Sharp applicant has read before the first quarterly call. It saves us the first ten minutes of the call and makes the rest of it sharper. The other thing worth a tab is the <a href="${SIGNALS}/methodology">methodology page</a> — it's the source code of the regression that produces the lead-time numbers. If you're going to write checks against this signal, you'll want to be able to reproduce it on your own.</p>
+<p><strong>One thing to do while the review runs.</strong> If you haven't already, the <a href="${SIGNALS}/perfect-webinar">12-minute walkthrough</a> is the page I assume every Sharp applicant has read before the first quarterly call. It saves us the first ten minutes of the call and makes the rest of it sharper. The other thing worth a tab is the <a href="${SIGNALS}/methodology">methodology page</a> — it's the source code of the regression that produces the lead-time numbers. If you're going to write checks against this signal, you'll want to be able to reproduce it on your own.</p>
 <p>Talk soon,<br>${FROM_NAME}</p>
 <p style="color:#64748b;font-size:14px;">P.S. The cap (8 funds in 2026) is real, not a marketing line. The quarterly call is real founder time. The reason the gate exists is so every Sharp-tier fund gets meaningful attention on the call. If you're wondering whether you're a fit, the answer to "do you want a sharper version of the same product, on a fund-tier cadence" is the question the application is built to answer.</p>
 `, "sharp-indoc-1"),
