@@ -71,14 +71,15 @@ const MODULES: Module[] = [
   {
     n: 4,
     minutes: 35,
-    title: "Funnel architecture — six rungs, one ladder",
-    question: "Why six tiers and not three?",
+    title: "Funnel architecture — six rungs, one ladder, one cadence",
+    question: "Why six tiers and not three? And why a monthly drop on top?",
     content:
-      "Free → €7 → €9.97 → €97 → €497 → €1,997. Every rung exists because the rung below it doesn't fit one specific check size or one specific cadence. Free is for cadence-builders. €7 is for thesis-testers. €9.97 is for the daily-rhythm buyer. €97 is for the syndicate. €497 is for the small fund. €1,997 is for the deep-dive on a single sector. Never let a buyer leave at zero commitment when there's a free rung below.",
+      "Free → €7 → €9.97 → €97 → €497 → €1,997. Every rung exists because the rung below it doesn't fit one specific check size or one specific cadence. Free is for cadence-builders. €7 is for thesis-testers. €9.97 is for the daily-rhythm buyer. €97 is for the syndicate. €497 is for the small fund. €1,997 is for the deep-dive on a single sector. Never let a buyer leave at zero commitment when there's a free rung below. Above the rungs sits the continuity layer — a net-new monthly drop (sector deep-dive, methodology release, founder essay, or tool) that turns the paid tier from a tool subscription into an anticipation engine.",
     links: [
       { label: "/funnels — the value ladder visualised", href: "/funnels" },
-      { label: "/funnels#building-blocks — the 23 components", href: "/funnels#building-blocks" },
+      { label: "/funnels#building-blocks — the 25 components", href: "/funnels#building-blocks" },
       { label: "/pricing — the offer side", href: "/pricing" },
+      { label: "/continuity — the monthly Insider Drop calendar", href: "/continuity" },
     ],
   },
   {

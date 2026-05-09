@@ -188,6 +188,7 @@ const tiers: Tier[] = [
       "Custom watchlists co-built around your investment thesis",
       "Insider API access — JSON endpoints + bulk CSV pulls (€1,200/yr value)",
       "Webhook delivery on threshold triggers (route into Slack / Discord / internal tooling)",
+      "Monthly Insider Drop — first Tuesday, net-new sector deep-dive / methodology / essay / tool (12-month forward calendar at /continuity)",
       "Direct line to the founder for diligence questions",
       "30-day Signal-or-It's-Free guarantee",
     ],
