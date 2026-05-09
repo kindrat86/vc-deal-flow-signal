@@ -10,6 +10,8 @@ import {
 } from "@/lib/data";
 import StartupTable from "@/components/StartupTable";
 import CTABanner from "@/components/CTABanner";
+import { HreflangLinks } from "@/components/HreflangLinks";
+import { getHreflangLanguages } from "@/lib/hreflang";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -96,6 +98,19 @@ export default async function GeoSectorPage({ params }: PageProps) {
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@type": "WebPage",
+        "@id": `https://signals.gitdealflow.com/startups-to-watch/geo/${slug}#webpage`,
+        url: `https://signals.gitdealflow.com/startups-to-watch/geo/${slug}`,
+        name: `${sector.name} Startups in ${geoName} to Watch, ${period.name}`,
+        description: `${sector.name} startups in ${geoName} ranked by engineering acceleration.`,
+        inLanguage: "en-US",
+        isAccessibleForFree: true,
+        speakable: {
+          "@type": "SpeakableSpecification",
+          cssSelector: ["[data-speakable]", "h1", "h2"],
+        },
+      },
+      {
         "@type": "Article",
         headline: `${sector.name} Startups in ${geoName} to Watch, ${period.name}`,
         description: `${sector.name} startups in ${geoName} ranked by engineering acceleration.`,
@@ -151,6 +166,10 @@ export default async function GeoSectorPage({ params }: PageProps) {
 
   return (
     <>
+      <HreflangLinks
+        canonical={`https://signals.gitdealflow.com/startups-to-watch/geo/${slug}`}
+        languages={getHreflangLanguages(`/startups-to-watch/geo/${slug}`)}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

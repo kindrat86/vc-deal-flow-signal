@@ -7,6 +7,8 @@ import {
   getSortedStartups,
   getDataLastModified,
 } from "@/lib/data";
+import { HreflangLinks } from "@/components/HreflangLinks";
+import { getHreflangLanguages } from "@/lib/hreflang";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -66,6 +68,19 @@ export default async function TrendPage({ params }: PageProps) {
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@type": "WebPage",
+        "@id": `https://signals.gitdealflow.com/trends/${slug}#webpage`,
+        url: `https://signals.gitdealflow.com/trends/${slug}`,
+        name: `${sector.name} Trend: ${periodA.name} vs ${periodB.name}`,
+        description: `Period-over-period engineering acceleration trend for ${sector.name.toLowerCase()} startups.`,
+        inLanguage: "en-US",
+        isAccessibleForFree: true,
+        speakable: {
+          "@type": "SpeakableSpecification",
+          cssSelector: ["[data-speakable]", "h1", "h2"],
+        },
+      },
+      {
         "@type": "Article",
         headline: `${sector.name}: ${periodA.name} vs ${periodB.name}`,
         description: `Period-over-period engineering acceleration trend for ${sector.name.toLowerCase()} startups.`,
@@ -103,6 +118,10 @@ export default async function TrendPage({ params }: PageProps) {
 
   return (
     <>
+      <HreflangLinks
+        canonical={`https://signals.gitdealflow.com/trends/${slug}`}
+        languages={getHreflangLanguages(`/trends/${slug}`)}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

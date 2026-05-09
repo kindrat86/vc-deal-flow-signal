@@ -8,6 +8,7 @@ import LaunchBanner from "@/components/LaunchBanner";
 import PixelManager from "@/components/PixelManager";
 import { RootIdentitySchema } from "@/components/RootIdentitySchema";
 import BreadcrumbsSchema from "@/components/BreadcrumbsSchema";
+import WebVitalsReporter from "@/components/WebVitalsReporter";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
@@ -411,6 +412,11 @@ export default function RootLayout({
           strategy="afterInteractive"
         />
         <PixelManager />
+        {/* Core Web Vitals beacon — ships LCP/INP/CLS/FCP/TTFB to the
+            existing PostHog EU instance. Closes the audit gap "no CWV
+            measurement" (Performance: 75/100 → measurable). Honors GPC
+            and DNT, no new dependency. */}
+        <WebVitalsReporter />
       </body>
     </html>
   );

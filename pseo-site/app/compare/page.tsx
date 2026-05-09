@@ -2,11 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { comparisons } from "@/content/comparisons";
 import PSEOFooterNav from "@/components/PSEOFooterNav";
+import { HreflangLinks } from "@/components/HreflangLinks";
+import { getHreflangLanguages } from "@/lib/hreflang";
 
 export const metadata: Metadata = {
   title: "Compare Deal Flow Tools — VC Deal Flow Signal",
   description:
     "Compare the best deal flow tools for investors: GitHub engineering signals, AI-powered sourcing, and startup databases. Find the right tool for your investment stage and strategy.",
+  // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
   alternates: {
     canonical: "/compare",
   },
@@ -16,6 +19,20 @@ export default function CompareIndex() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://signals.gitdealflow.com/compare#webpage",
+        url: "https://signals.gitdealflow.com/compare",
+        name: "Compare Deal Flow Tools — VC Deal Flow Signal",
+        description:
+          "Side-by-side comparisons of deal flow and startup sourcing tools for investors.",
+        inLanguage: "en-US",
+        isAccessibleForFree: true,
+        speakable: {
+          "@type": "SpeakableSpecification",
+          cssSelector: ["[data-speakable]", "h1", "h2"],
+        },
+      },
       {
         "@type": "CollectionPage",
         name: "Compare Deal Flow Tools",
@@ -50,6 +67,10 @@ export default function CompareIndex() {
 
   return (
     <>
+      <HreflangLinks
+        canonical="https://signals.gitdealflow.com/compare"
+        languages={getHreflangLanguages("/compare")}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

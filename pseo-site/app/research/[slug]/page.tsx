@@ -10,6 +10,8 @@ import {
 import { getDataLastModified } from "@/lib/data";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import RelatedLinks from "@/components/RelatedLinks";
+import { getRelatedGroupsForFinding } from "@/lib/finding-related";
 
 const SITE = "https://signals.gitdealflow.com";
 const SSRN_URL = "https://ssrn.com/abstract=6606558";

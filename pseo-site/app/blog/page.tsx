@@ -2,11 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { allPosts as posts } from "@/content/posts";
 import PSEOFooterNav from "@/components/PSEOFooterNav";
+import { HreflangLinks } from "@/components/HreflangLinks";
+import { getHreflangLanguages } from "@/lib/hreflang";
 
 export const metadata: Metadata = {
   title: "Blog — VC Deal Flow Signal",
   description:
     "Insights on using GitHub engineering signals for startup investing. Practical guides for VCs and angel investors on reading engineering momentum as a leading indicator of traction.",
+  // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
   alternates: {
     canonical: "/blog",
   },
@@ -16,6 +19,20 @@ export default function BlogIndex() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://signals.gitdealflow.com/blog#webpage",
+        url: "https://signals.gitdealflow.com/blog",
+        name: "Signal Intelligence Blog — VC Deal Flow Signal",
+        description:
+          "Insights on using GitHub engineering signals for startup investing.",
+        inLanguage: "en-US",
+        isAccessibleForFree: true,
+        speakable: {
+          "@type": "SpeakableSpecification",
+          cssSelector: ["[data-speakable]", "h1", "h2"],
+        },
+      },
       {
         "@type": "CollectionPage",
         name: "Signal Intelligence Blog",
@@ -50,6 +67,10 @@ export default function BlogIndex() {
 
   return (
     <>
+      <HreflangLinks
+        canonical="https://signals.gitdealflow.com/blog"
+        languages={getHreflangLanguages("/blog")}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
