@@ -433,18 +433,18 @@ export default function FunnelHubPage() {
             site, mapped 1:1 to the chapters of the workbook. */}
         <section
           id="building-blocks"
-          aria-label="The 23 building blocks of a funnel"
+          aria-label="The 25 building blocks of a funnel"
           className="border-t border-slate-800 pt-10 space-y-5 scroll-mt-20"
         >
           <header className="space-y-2">
             <p className="text-violet-400 text-xs font-semibold uppercase tracking-wider">
-              The 23 building blocks
+              The 25 building blocks
             </p>
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug">
-              The 23 Building Blocks — and where each one lives.
+              The 25 Building Blocks — and where each one lives.
             </h2>
             <p className="text-gray-300 text-base leading-relaxed max-w-3xl">
-              Every funnel on this site is assembled from the same 23
+              Every funnel on this site is assembled from the same 25
               direct-response components. If you&rsquo;re reverse-engineering
               us — or building your own — here&rsquo;s the map.
             </p>
@@ -475,6 +475,7 @@ export default function FunnelHubPage() {
               { n: 22, name: "Welcome email sequence", where: "lib/emails.ts D0–D7 + Challenge cohort" },
               { n: 23, name: "Daily story drip", where: "lib/emails.ts D9, D12, D14, D17, D21, D25, D30" },
               { n: 24, name: "Founder talk / State of Industry", where: "/state-of-github — first-Wednesday-of-month address" },
+              { n: 25, name: "Audience-overlap roster (100 voices, ICP-scored)", where: "/target-list — 10 categories × 10 entries, each scored Match × Reach × Engage with engagement status" },
             ].map((b) => (
               <div
                 key={b.n}
