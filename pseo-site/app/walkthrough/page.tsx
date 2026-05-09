@@ -10,6 +10,7 @@ import { LiveReplayBar } from "@/components/LiveReplayBar";
 import { FastActionBonuses } from "@/components/FastActionBonuses";
 import { DoorsClosingBanner } from "@/components/DoorsClosingBanner";
 import TrialClose from "@/components/TrialClose";
+import LeadCloseClient from "@/components/LeadCloseClient";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { getReplayWindowSnapshot } from "@/lib/replay-window";
 
@@ -120,6 +121,140 @@ const FAQS = [
     a: "The First Look Pass is €7 once. You pick any of 19 tracked sectors at checkout. Within 24 hours you receive a written deep-dive PDF, the raw CSV, and a walkthrough of what stood out. If you upgrade to the Dashboard within 14 days, the €7 is credited. If you don't, you keep the report.",
   },
 ] as const;
+
+// LEAD CLOSE A/B (Brunson Expert Secrets Ch 13 — Stack and Closes).
+// "One named close per chapter of the audience" — and per the audit
+// recommendation, *test which one converts cold traffic best and lead
+// with it*. Server renders all four; CSS `[data-lead-close="…"]` reveals
+// the variant the inline blocking script reads from the cookie that
+// proxy.ts seeded at the edge. Default (no cookie / no JS / hostile
+// crawler) shows `money` so SEO snapshots remain stable.
+type CloseVariant = "money" | "identity" | "pricing" | "urgency";
+
+const LEAD_CLOSES: ReadonlyArray<{
+  variant: CloseVariant;
+  eyebrow: string;
+  headline: string;
+  body: string;
+  // Tailwind colour anchor — used for the eyebrow, the border accent, and
+  // the gradient fill behind the lead block. Keep tones distinct so even
+  // the small minority of users who switch variants on second visit feel
+  // a colour shift, not just a copy shift.
+  accent: {
+    eyebrow: string;
+    border: string;
+    gradient: string;
+    cta: string;
+  };
+  ctaPrimary: { label: string; href: string };
+  ctaSecondary: { label: string; href: string };
+}> = [
+  {
+    variant: "money",
+    eyebrow: "The single close that locks the math",
+    headline: "The price isn't the cost. The deal you miss is.",
+    body:
+      "€9.97/mo is €119.64 a year. The expected cost of missing one name that 8x's in five years — at a €5k angel check — is €40,000. The math doesn't work the other way. You're not buying a dashboard. You're insuring against a single missed Monday.",
+    accent: {
+      eyebrow: "text-emerald-300",
+      border: "border-emerald-500/60",
+      gradient: "from-emerald-950/45 via-slate-900 to-slate-950",
+      cta: "bg-emerald-600 hover:bg-emerald-500 shadow-emerald-500/30",
+    },
+    ctaPrimary: {
+      label: "Lock €9.97/mo before the next missed Monday",
+      href: STRIPE_DASHBOARD,
+    },
+    ctaSecondary: {
+      label: "Or test on one sector for €7",
+      href: FIRST_LOOK_URL,
+    },
+  },
+  {
+    variant: "identity",
+    eyebrow: "The single close that names who you are",
+    headline: "You're not a VC. You're a developer-investor.",
+    body:
+      "Every other deal-flow tool is built for a partner at a fund with a six-figure data budget. This one is built for the person who reads commit logs for fun and writes €5k–€50k checks on the side. If that's you, this isn't a product you adapt — it's the first one designed around your identity.",
+    accent: {
+      eyebrow: "text-sky-300",
+      border: "border-sky-500/60",
+      gradient: "from-sky-950/45 via-slate-900 to-slate-950",
+      cta: "bg-sky-600 hover:bg-sky-500 shadow-sky-500/30",
+    },
+    ctaPrimary: {
+      label: "Lock the developer-investor rate — €9.97/mo",
+      href: STRIPE_DASHBOARD,
+    },
+    ctaSecondary: {
+      label: "Or start with the free Sunday digest",
+      href: SIGNUP_URL,
+    },
+  },
+  {
+    variant: "pricing",
+    eyebrow: "The single close that prices the gap",
+    headline: "The whole stack is €1,728/yr. You're paying €119.64.",
+    body:
+      "We could charge €100/mo and the math would still work. We picked €9.97 because we want builders, not budgets. The €49/mo public price launches the Monday a regulated investor tool reviews us — the founding-member rate locks before that day. After it locks, you keep €9.97 for as long as you stay subscribed.",
+    accent: {
+      eyebrow: "text-indigo-300",
+      border: "border-indigo-500/60",
+      gradient: "from-indigo-950/45 via-slate-900 to-slate-950",
+      cta: "bg-indigo-600 hover:bg-indigo-500 shadow-indigo-500/30",
+    },
+    ctaPrimary: {
+      label: "Lock €9.97/mo before the public hike to €49",
+      href: STRIPE_DASHBOARD,
+    },
+    ctaSecondary: {
+      label: "Or test on one sector for €7",
+      href: FIRST_LOOK_URL,
+    },
+  },
+  {
+    variant: "urgency",
+    eyebrow: "The single close that names the window",
+    headline: "The window is the lead time, not the discount.",
+    body:
+      "The signal preceded fundraises by 21–47 days. Every Monday you skip is a 21-to-47-day window that closes on five specific names. The discount lock is real — €9.97 vs €49 — but the harder scarcity is the deal flow, not the price. Either it works for you in 30 days or you reply REFUND.",
+    accent: {
+      eyebrow: "text-rose-300",
+      border: "border-rose-500/60",
+      gradient: "from-rose-950/45 via-slate-900 to-slate-950",
+      cta: "bg-rose-600 hover:bg-rose-500 shadow-rose-500/30",
+    },
+    ctaPrimary: {
+      label: "Don't miss next Monday — lock €9.97/mo",
+      href: STRIPE_DASHBOARD,
+    },
+    ctaSecondary: {
+      label: "Or start with the free Sunday digest",
+      href: SIGNUP_URL,
+    },
+  },
+];
+
+// Inline blocking script — runs synchronously in the page body before the
+// lead-close section paints. Reads the variant cookie (seeded by proxy.ts
+// at the edge) and stamps `data-lead-close` on <html> so the variant CSS
+// selector matches before first paint = no flicker. Default fallback is
+// "money" so the SEO snapshot + no-cookie crawlers stay stable.
+const LEAD_CLOSE_INLINE_SCRIPT = `(function(){try{var m=(document.cookie.match(/(?:^|;\\s*)gdf_close_variant=([^;]+)/)||[null,'money'])[1];if(['money','identity','pricing','urgency'].indexOf(m)===-1)m='money';document.documentElement.setAttribute('data-lead-close',m);}catch(e){}})();`;
+
+// Variant-driven visibility CSS. Default = `money` is shown when no
+// `data-lead-close` attribute is present (server-rendered HTML, no JS, or
+// crawler with cookies disabled). Once the inline script flips the
+// attribute, the matching variant becomes visible and the others collapse
+// to display:none — the unselected blocks contribute zero layout space.
+const LEAD_CLOSE_CSS = `
+.lc-block { display: none; }
+html:not([data-lead-close]) .lc-block.lc-money { display: block; }
+html[data-lead-close="money"] .lc-block.lc-money { display: block; }
+html[data-lead-close="identity"] .lc-block.lc-identity { display: block; }
+html[data-lead-close="pricing"] .lc-block.lc-pricing { display: block; }
+html[data-lead-close="urgency"] .lc-block.lc-urgency { display: block; }
+`.trim();
 
 export default function PerfectWebinarPage() {
   // Brunson Live-Replay Pressure (Expert Secrets Ch 14 — Perfect Webinar Hack):
@@ -893,15 +1028,100 @@ export default function PerfectWebinarPage() {
           </p>
         </section>
 
+        {/* LEAD CLOSE — Brunson Expert Secrets Ch 13 ("one named close per
+            chapter of the audience" — and lead with it). Server renders
+            all four variants stacked; the inline blocking script below
+            reads the cookie proxy.ts seeded at the edge and sets
+            `data-lead-close` on <html> before paint, so only the matching
+            variant is visible. Default is `money` for no-JS / no-cookie /
+            crawler clients.
+
+            The four-close grid that follows still ships the *full* case
+            for the buyer who wants to see all four arguments — but the
+            Lead Close above it is the conversion test surface. PostHog
+            captures view + CTA-click attribution per variant via the
+            <LeadCloseClient/> shim below, so we can compute lift per
+            variant against the existing Stripe checkout events. */}
+        <script
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: LEAD_CLOSE_INLINE_SCRIPT }}
+        />
+        <style
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: LEAD_CLOSE_CSS }}
+        />
+        <section
+          id="lead-close-section"
+          aria-label="Lead close — the single argument that locks the buy"
+          className="space-y-4 border-t border-slate-800 pt-8"
+        >
+          <header className="space-y-2">
+            <p className="text-amber-300 text-[11px] font-semibold uppercase tracking-wider">
+              The single argument
+            </p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug">
+              Of every reason to buy this — here&rsquo;s the one that matters most.
+            </h2>
+            <p className="text-gray-400 text-sm sm:text-base leading-relaxed max-w-2xl">
+              Every offer has multiple ways to land. We picked the one that
+              lands hardest for someone arriving on this page right now,
+              based on what we&rsquo;ve learned from prior buyers. The other
+              three arguments live in the grid below — they&rsquo;re also
+              true. This one is the close.
+            </p>
+          </header>
+
+          {LEAD_CLOSES.map((c) => (
+            <div
+              key={c.variant}
+              className={`lc-block lc-${c.variant} rounded-2xl border-2 ${c.accent.border} bg-gradient-to-br ${c.accent.gradient} p-6 sm:p-8 space-y-4`}
+            >
+              <p className={`${c.accent.eyebrow} text-[10px] font-semibold uppercase tracking-[0.18em]`}>
+                {c.eyebrow}
+              </p>
+              <h3 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug tracking-tight">
+                {c.headline}
+              </h3>
+              <p className="text-gray-200 text-base sm:text-lg leading-relaxed">
+                {c.body}
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 pt-2">
+                <a
+                  href={c.ctaPrimary.href}
+                  data-cta-label={`lead_close_primary_${c.variant}`}
+                  className={`inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg ${c.accent.cta} text-white font-semibold text-base shadow-lg transition-colors`}
+                >
+                  {c.ctaPrimary.label} <span aria-hidden="true">→</span>
+                </a>
+                <a
+                  href={c.ctaSecondary.href}
+                  data-cta-label={`lead_close_secondary_${c.variant}`}
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg border border-slate-700 bg-slate-800/60 hover:bg-slate-800 text-gray-100 font-semibold text-base transition-colors"
+                >
+                  {c.ctaSecondary.label}
+                </a>
+              </div>
+              <p className="text-gray-400 text-xs leading-relaxed pt-1">
+                30-day Signal-or-It&rsquo;s-Free guarantee. Reply REFUND to
+                any email — no questions, no exit interview.
+              </p>
+            </div>
+          ))}
+          <LeadCloseClient />
+        </section>
+
         {/* THE FOUR CLOSES — Money / Identity / Pricing / Scarcity.
             Expert Secrets Ch 18. These are the named close-stack patterns
-            Russell teaches; previously the page had one generic close. */}
+            Russell teaches; previously the page had one generic close.
+            With the Lead Close above, this grid now plays the supporting
+            "all four arguments are also true" role for the reader who
+            wants to see the full case before they buy. */}
         <section
           aria-label="Closes"
           className="space-y-5 border-t border-slate-800 pt-8"
         >
           <h2 className="text-2xl font-bold text-gray-100">
-            The four closes — one of these is yours.
+            The other three arguments — also true.
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
