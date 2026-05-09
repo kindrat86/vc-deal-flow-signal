@@ -1,0 +1,17 @@
+TO: {{firstName}}@{{firm-domain}}
+FROM: signal@gitdealflow.com
+SUBJECT: Engineering acceleration as a Series A leading indicator
+
+Hi {{firstName}},
+
+Quick note from a peer who's been measuring the same thing you do — what makes a Series A inevitable.
+
+We extracted ~40 GitHub-derived signals across 12,000 startups and ran them against funding outcomes. Five composite features fire 4-12 weeks before a priced round, with AUC 0.78 in out-of-sample tests. Methodology and data are in this SSRN paper: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558
+
+If "engineering acceleration" tracks for {{firm}}'s thesis, the live index is at https://signals.gitdealflow.com.
+
+Worth a 10-minute look?
+
+The Data Nerd
+gitdealflow.com
+ssrn.com/abstract=6606558

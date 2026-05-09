@@ -1,0 +1,17 @@
+TO: {{firstName}}@{{podcast-domain}}
+FROM: signal@gitdealflow.com
+SUBJECT: Possible guest finding — public dev signals as VC alpha
+
+Hi {{firstName}},
+
+Pitch for a future episode — paper, not product.
+
+We measured whether public GitHub data leads private-market funding events. Composite of 5 features predicts Series A 4-12 weeks ahead at AUC 0.78, n=12,000. Paper on SSRN: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558
+
+The discussion-worthy angle: public commit data is now a tradable signal for private capital — and the methodology is reproducible by any reader with a GitHub token. That's a "here's how the sausage is made" episode if it lands.
+
+Happy to share the dataset or appear under brand voice (no founder face/voice). Let me know.
+
+The Data Nerd
+gitdealflow.com
+ssrn.com/abstract=6606558

@@ -1,0 +1,17 @@
+TO: {{firstName}}@{{newsletter-domain}}
+FROM: signal@gitdealflow.com
+SUBJECT: New SSRN — GitHub commits as a leading indicator for VC pricing
+
+Hi {{firstName}},
+
+Long-time reader. Working on a finding that might fit your beat.
+
+We tested whether public GitHub telemetry (commit cadence, contributor breadth, release velocity) leads private-market valuations on early-stage startups. Across 12,000 firms, a 5-feature composite predicts Series A 4-12 weeks ahead at AUC 0.78. Paper: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558
+
+The implication for alt-data shops: dev-platform exhaust may now price private deals the way ship-tracker data prices oil tankers.
+
+Happy to share the underlying dataset (CSV, 12k rows) if it's useful for a piece. No ask attached.
+
+The Data Nerd
+gitdealflow.com
+ssrn.com/abstract=6606558
