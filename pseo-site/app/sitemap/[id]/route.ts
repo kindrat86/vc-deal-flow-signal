@@ -242,6 +242,7 @@ export async function GET(_req: Request, ctx: RouteContext) {
       { url: `${BASE_URL}/challenge`, lastmod, changefreq: "monthly", priority: 0.85 },
       { url: `${BASE_URL}/target-list`, lastmod, changefreq: "monthly", priority: 0.8 },
       { url: `${BASE_URL}/distribution`, lastmod, changefreq: "monthly", priority: 0.75 },
+      { url: `${BASE_URL}/distribution/platform-hooks`, lastmod, changefreq: "monthly", priority: 0.7 },
       { url: `${BASE_URL}/funnels`, lastmod, changefreq: "monthly", priority: 0.75 },
       { url: `${BASE_URL}/experiments`, lastmod, changefreq: "monthly", priority: 0.7 },
       { url: `${BASE_URL}/experiments/hooks`, lastmod, changefreq: "monthly", priority: 0.7 },

@@ -244,6 +244,20 @@ export default function DistributionPage() {
             Farcaster. If you want the methodology, jump to{" "}
             <a href="#academic" className="text-emerald-400 hover:text-emerald-300 underline decoration-dotted">Academic & reproducibility</a>.
           </p>
+          <p className="text-gray-300 text-base leading-relaxed">
+            Want to see <em className="text-gray-200 not-italic">how</em> the
+            same product story gets re-framed for each surface? Twelve openers,
+            one signal:{" "}
+            <Link
+              href="/distribution/platform-hooks"
+              className="text-emerald-400 hover:text-emerald-300 underline decoration-dotted"
+            >
+              /distribution/platform-hooks
+            </Link>{" "}
+            documents the per-platform variants — Twitter / Reddit / Hacker
+            News / dev.to / Hashnode / Discord / LinkedIn / Email / AngelList
+            / Product Hunt / Indie Hackers / Telegram.
+          </p>
         </header>
 
         <section

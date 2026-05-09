@@ -73,6 +73,7 @@ const PILLAR_LINKS = [
   { href: "/summit", label: "Summit", sub: "5 days · 20 anonymous-by-design talks · free during the live window", icon: "🎤" },
   { href: "/launch", label: "Launches", sub: "Active and archived 4-stage funnels", icon: "🚀" },
   { href: "/press", label: "Press kit", sub: "Wire-ready releases + boilerplate", icon: "📰" },
+  { href: "/distribution/platform-hooks", label: "Platform-native openers", sub: "Twelve openers, one signal — how the same product story gets reframed for Twitter, Reddit, HN, dev.to, LinkedIn, Telegram and seven more", icon: "🪝" },
   { href: "/target-list", label: "Top 100", sub: "100 voices we read on the engineering-signal frontier — substacks, podcasts, GitHub orgs, datasets — each ICP-scored", icon: "💬" },
 ] as const;
 

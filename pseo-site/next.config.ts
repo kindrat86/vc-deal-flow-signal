@@ -30,6 +30,12 @@ const nextConfig: NextConfig = {
       // Movement Vehicle) + DCS Ch 13 (Best Bait, agent-side). Mirrors
       // /members hub as JSON for crawlers, agents, and MCP hosts.
       { from: "/api/v1/members", to: "/api/v1/members.json" },
+      // Platform-native opener variants — Brunson Traffic Secrets §1
+      // Ch 3 (Hook, Story, Offer × Hidden Campaign). Twelve openers
+      // resolving the universal product story per platform. Backs the
+      // /distribution/platform-hooks HTML surface and is consumed by
+      // the daily-briefing pipeline + agent retrieval.
+      { from: "/api/v1/platform-hooks", to: "/api/v1/platform-hooks.json" },
     ].map(({ from, to }) => ({ source: from, destination: to }));
 
     return [
