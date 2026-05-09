@@ -26,6 +26,10 @@ const nextConfig: NextConfig = {
       { from: "/api/v1/uptime", to: "/api/v1/uptime.json" },
       { from: "/api/v1/citations", to: "/api/v1/citations.json" },
       { from: "/api/v1/dataset", to: "/api/v1/dataset.jsonl" },
+      // Charter Cohort 2026 — Brunson Expert Secrets §1 Ch 4 (Mass
+      // Movement Vehicle) + DCS Ch 13 (Best Bait, agent-side). Mirrors
+      // /members hub as JSON for crawlers, agents, and MCP hosts.
+      { from: "/api/v1/members", to: "/api/v1/members.json" },
     ].map(({ from, to }) => ({ source: from, destination: to }));
 
     return [
