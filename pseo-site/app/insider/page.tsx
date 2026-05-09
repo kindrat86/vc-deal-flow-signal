@@ -12,14 +12,14 @@ export const metadata: Metadata = {
   title:
     "Insider Circle — See Every Signal 24 Hours Before The Public · €97/mo",
   description:
-    "The Insider Circle walkthrough. If the public Acceleration Watch publishes Mondays at 09:00 UTC, Insiders read the same names Sunday at 09:00 UTC. The single belief: in venture, edge is time, not research. Stack value €3,042/yr — founder rate €97/mo locked forever.",
+    "The Insider Circle walkthrough. If the public Acceleration Watch publishes Mondays at 09:00 UTC, Insiders read the same names Sunday at 09:00 UTC. The single belief: in venture, edge is time, not research. Stack value €4,206/yr — founder rate €97/mo locked forever.",
   alternates: {
     canonical: "/insider",
   },
   openGraph: {
     title: "Insider Circle — 24-Hour Lead Over The Free Tier",
     description:
-      "Same signal, 24h earlier. €97/mo founder rate, locked forever. Telegram + JSON/CSV API + custom watchlists + early-list. Stack value €3,042/yr.",
+      "Same signal, 24h earlier. €97/mo founder rate, locked forever. Telegram + JSON/CSV API + custom watchlists + early-list. Stack value €4,206/yr.",
     url: "https://signals.gitdealflow.com/insider",
     type: "article",
   },
@@ -67,6 +67,12 @@ const STACK_ITEMS = [
     standalone: "Bundled (€397/yr value)",
   },
   {
+    label: "Monthly Insider Drop — net-new artefact every first Tuesday",
+    description:
+      "Sector deep-dive, methodology release, founder essay, or shipping tool — on a four-format rotation. First Tuesday of every month, 09:00 UTC. PDF + CSV + code + chart pack delivered the day it ships. The continuity programme that turns the subscription from a tool into an anticipation engine. Twelve-month forward calendar at /continuity.",
+    standalone: "€1,164/yr (12 drops × €97 standalone value each)",
+  },
+  {
     label: "Direct Founder Line For Diligence Questions",
     description:
       "Reply to any briefing email or Telegram message. Same-day response on signal-quality questions, methodology clarifications, or 'is this org tracked' lookups. Not a sales channel — a research line.",
@@ -105,6 +111,10 @@ const FAQS = [
     q: "Can I downgrade to Dashboard if Insider is too much?",
     a: "Yes — one-click in the Stripe customer portal. The 30-day refund applies first, so if Insider isn't earning its keep, you reply REFUND and get the full €97 back rather than downgrading. After 30 days, downgrades are pro-rated against the current billing period.",
   },
+  {
+    q: "What's the Monthly Insider Drop and what do I actually get?",
+    a: "On the first Tuesday of every month at 09:00 UTC, every Insider gets a net-new artefact — on a four-format rotation: sector deep-dive (25-page PDF + CSV), methodology release (regression code + paper update), founder essay (4-6K-word post-mortem), or tool release (new MCP tool, API endpoint, or chart pack). Public sees the abstract; members get the full essay + member-only artefact bundle. Twelve-month forward calendar at /continuity. If a drop slips by 48 hours past its publish date, every Insider gets one month free automatically — that's how seriously the cadence is taken.",
+  },
 ] as const;
 
 export default function InsiderPage() {
@@ -117,7 +127,7 @@ export default function InsiderPage() {
         headline:
           "Insider Circle — See Every Signal 24 Hours Before The Public",
         description:
-          "If venture-investing edge is time rather than research, then a 24-hour lead on a list of 10 ranked engineering accelerations is the most leveraged €97/mo an active investor can spend. Stack value €3,042/yr.",
+          "If venture-investing edge is time rather than research, then a 24-hour lead on a list of 10 ranked engineering accelerations is the most leveraged €97/mo an active investor can spend. Stack value €4,206/yr.",
         url: "https://signals.gitdealflow.com/insider",
         datePublished: "2026-05-05T00:00:00.000Z",
         dateModified: "2026-05-05T00:00:00.000Z",
@@ -449,7 +459,7 @@ export default function InsiderPage() {
               <span className="text-emerald-400">€97/mo</span>.
             </h2>
             <p className="text-gray-400 text-sm">
-              Eight items. €3,042/yr standalone value. Founding-member price
+              Nine items. €4,206/yr standalone value. Founding-member price
               locked forever.
             </p>
           </div>
@@ -506,7 +516,7 @@ export default function InsiderPage() {
           <div className="border-t border-slate-700 pt-6 space-y-3">
             <div className="flex items-baseline justify-between text-gray-400 text-sm">
               <span>Total standalone value</span>
-              <span className="line-through">€3,042/yr</span>
+              <span className="line-through">€4,206/yr</span>
             </div>
             <div className="flex items-baseline justify-between text-gray-400 text-sm">
               <span>Post-launch retail (Insider at €197/mo)</span>
@@ -523,7 +533,7 @@ export default function InsiderPage() {
             </p>
           </div>
           <TrialClose tone="violet">
-            €3,042/yr standalone at €97/mo founding rate, locked through the
+            €4,206/yr standalone at €97/mo founding rate, locked through the
             public hike to €197. If the lock itself is the asset — would you
             rather wake up on the founding rate or the post-launch rate?
           </TrialClose>
@@ -675,7 +685,7 @@ export default function InsiderPage() {
                 Pricing close
               </p>
               <h3 className="text-gray-100 font-semibold text-base">
-                The stack is €3,042/yr. You pay €1,164.
+                The stack is €4,206/yr. You pay €1,164.
               </h3>
               <p className="text-gray-300 text-sm leading-relaxed">
                 We could charge €197/mo and the math would still work. The
@@ -768,7 +778,7 @@ export default function InsiderPage() {
             One more time, in one block
           </p>
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug">
-            Here&rsquo;s the entire offer in eight lines.
+            Here&rsquo;s the entire offer in nine lines.
           </h2>
           <ul className="space-y-2 text-gray-200 text-base leading-relaxed">
             <li className="flex gap-3">
@@ -828,6 +838,21 @@ export default function InsiderPage() {
             <li className="flex gap-3">
               <span className="text-amber-400 shrink-0 font-bold">→</span>
               <span>
+                Monthly Insider Drop — first Tuesday of every month, 09:00
+                UTC, a net-new sector deep-dive, methodology release, founder
+                essay, or shipping tool. Twelve-month forward calendar at{" "}
+                <Link
+                  href="/continuity"
+                  className="text-amber-300 underline decoration-dotted hover:text-amber-200"
+                >
+                  /continuity
+                </Link>
+                .
+              </span>
+            </li>
+            <li className="flex gap-3">
+              <span className="text-amber-400 shrink-0 font-bold">→</span>
+              <span>
                 30-day Signal-or-It&rsquo;s-Free guarantee. Founding-member
                 price <strong className="text-amber-300">locked forever</strong> at
                 €97/mo. Public hike to €197/mo lands the day a regulated
@@ -837,7 +862,7 @@ export default function InsiderPage() {
           </ul>
           <div className="border-t border-amber-700/30 pt-4 mt-4 flex items-baseline justify-between text-base">
             <span className="text-gray-300">Standalone value of the stack</span>
-            <span className="text-emerald-400 font-bold">€3,042/yr</span>
+            <span className="text-emerald-400 font-bold">€4,206/yr</span>
           </div>
           <div className="flex items-baseline justify-between text-2xl font-bold">
             <span className="text-gray-100">Your founding-member rate</span>
@@ -870,7 +895,7 @@ export default function InsiderPage() {
         </section>
 
         <AgentSummary
-          tldr="Insider Circle is the €97/mo (founding-member rate, locked forever; list €197/mo) tier of VC Deal Flow Signal. The single thing it sells is a 24-hour lead on the public Acceleration Watch — Insiders receive the same ten ranked startups Sunday at 09:00 UTC that the public list publishes Monday at 09:00 UTC. Stack also includes everything in Dashboard Beta, a closed Insider Telegram with founder briefings and threads, an authenticated API (/api/v1/insider/* + bulk CSV), custom thesis-aligned watchlist, webhook delivery on threshold triggers, and a direct founder line for diligence questions. €3,042/yr standalone value. 30-day Signal-or-It's-Free guarantee, reply REFUND."
+          tldr="Insider Circle is the €97/mo (founding-member rate, locked forever; list €197/mo) tier of VC Deal Flow Signal. The single thing it sells is a 24-hour lead on the public Acceleration Watch — Insiders receive the same ten ranked startups Sunday at 09:00 UTC that the public list publishes Monday at 09:00 UTC. Stack also includes everything in Dashboard Beta, a closed Insider Telegram with founder briefings and threads, an authenticated API (/api/v1/insider/* + bulk CSV), custom thesis-aligned watchlist, webhook delivery on threshold triggers, and a direct founder line for diligence questions. €4,206/yr standalone value. 30-day Signal-or-It's-Free guarantee, reply REFUND."
           pageUrl="https://signals.gitdealflow.com/insider"
           asOf="2026-05-05"
           citeAs="VC Deal Flow Signal — Insider Circle (signals.gitdealflow.com/insider)."
