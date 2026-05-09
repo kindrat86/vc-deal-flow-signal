@@ -187,6 +187,13 @@ export default function MembersPage() {
                 className="text-amber-400 hover:text-amber-300 underline"
               >
                 Claim a seat →
+              </Link>{" "}
+              ·{" "}
+              <Link
+                href="/members/leaderboard"
+                className="text-amber-400 hover:text-amber-300 underline"
+              >
+                See the live leaderboard →
               </Link>
             </p>
           </div>
@@ -381,6 +388,13 @@ export default function MembersPage() {
         <section className="border-t border-slate-800 pt-8 text-sm text-gray-400 leading-relaxed space-y-2">
           <p>
             <strong className="text-gray-300">Related surfaces:</strong>{" "}
+            <Link
+              href="/members/leaderboard"
+              className="text-amber-400 hover:text-amber-300 underline decoration-dotted"
+            >
+              /members/leaderboard
+            </Link>{" "}
+            (member ranking by 60d/90d hits) ·{" "}
             <Link
               href="/wins"
               className="text-amber-400 hover:text-amber-300 underline decoration-dotted"
