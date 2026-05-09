@@ -8,6 +8,7 @@ import SectorIntent from "@/components/SectorIntent";
 import TrialClose from "@/components/TrialClose";
 import { DataNerdCharacterCard } from "@/components/DataNerdCharacterCard";
 import BuyerRoadmap from "@/components/BuyerRoadmap";
+import PaidTrafficBanner from "@/components/PaidTrafficBanner";
 
 export const dynamic = "force-static";
 
@@ -327,6 +328,14 @@ export default function FirstLookPage() {
       <AgentMirrorLinks path="/firstlook" />
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
+        {/* Paid-traffic continuity banner — Brunson "scent rule".
+            Renders nothing for organic visitors (returns null until URL
+            params are parsed client-side). When utm_source matches a
+            known paid channel (reddit/google/tldr/...), swaps in
+            channel-specific headline + sub copy so the visitor's eye
+            sees continuity from ad → landing in <50ms. */}
+        <PaidTrafficBanner />
+
         <header className="space-y-4">
           <p className="text-amber-400 text-xs font-medium uppercase tracking-wider">
             Tripwire offer · €7 · One-time

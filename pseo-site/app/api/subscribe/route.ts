@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { checkRateLimit, getClientIp, rateLimitHeaders } from "@/lib/rate-limit";
 import { isValidEmail, isAllowedOrigin } from "@/lib/validation";
 import { signVerifyToken } from "@/lib/verify-token";
+import { fireRedditLead } from "@/lib/reddit-conversions-api";
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY!;
 const FROM_EMAIL = process.env.FROM_EMAIL || "signal@gitdealflow.com";
@@ -187,6 +188,23 @@ export async function POST(request: Request) {
         { error: "Failed to send verification email" },
         { status: 500, headers },
       );
+    }
+
+    // Reddit Conversions API — fire `Lead` server-side for paid Reddit
+    // traffic only (gated inside fireRedditLead on utm_source==="reddit").
+    // Best-effort: a Reddit-side outage must never starve the buyer of
+    // their verification email. The helper has its own 2.5s timeout +
+    // catch — but we still wrap in a final guard for safety.
+    try {
+      await fireRedditLead({
+        email,
+        utmSource: attribution.utm_source,
+        utmCampaign: attribution.utm_campaign,
+        userAgent: request.headers.get("user-agent") || undefined,
+        ipAddress: ip || undefined,
+      });
+    } catch (capiErr) {
+      console.error("[reddit-capi] Lead dispatch error:", capiErr);
     }
 
     return NextResponse.json(
