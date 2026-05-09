@@ -310,12 +310,16 @@ function renderDataLed() {
           219 fundraises. One signal. 21–47 days early.
         </div>
 
+        {/* Satori (next/og) supports flex but not grid — emulate a 4-col
+            grid with flex-wrap + fixed-width children. 1072px content width
+            (1200 - 64*2 padding) ÷ 4 columns = 268, minus 18px gap = 250. */}
         <div
           style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(4, 1fr)",
+            display: "flex",
+            flexWrap: "wrap",
             gap: 18,
             marginTop: 36,
+            width: "100%",
           }}
         >
           {sparkData.map((spark, idx) => {
@@ -330,6 +334,7 @@ function renderDataLed() {
                   padding: "10px 12px",
                   borderRadius: 8,
                   border: "1px solid #334155",
+                  width: 250,
                 }}
               >
                 <div
