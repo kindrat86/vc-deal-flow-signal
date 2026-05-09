@@ -5,6 +5,7 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import CartPreview from "@/components/CartPreview";
 import SectorIntent from "@/components/SectorIntent";
+import { DataNerdCharacterCard } from "@/components/DataNerdCharacterCard";
 
 export const dynamic = "force-static";
 
@@ -940,6 +941,11 @@ export default function FirstLookPage() {
           </Link>
           .
         </p>
+
+        {/* Founder character card — Brunson Expert Secrets Ch 1. Seeded
+            "firstlook" so the slice differs from /walkthrough. */}
+        <DataNerdCharacterCard seed="firstlook" />
+
 
         {/* Bottom spacer so the sticky mobile cart bar doesn't cover content */}
         <div aria-hidden="true" className="md:hidden h-20" />
