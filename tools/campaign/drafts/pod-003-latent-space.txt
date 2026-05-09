@@ -1,0 +1,17 @@
+Subject: Dataset drop for Latent Space — GitHub engineering velocity as an AI-native sourcing signal
+
+swyx and Alessio,
+
+I run a free public GitHub engineering signal tracker — signals.gitdealflow.com. It monitors commit velocity and contributor growth across 100 startups and 19 sectors weekly. The most Latent-Space-relevant signal in this week's data: airbytehq (data infrastructure, open-source) hit +866% commit velocity over 14 days — 1,864 commits, 100 active contributors. Full write-up: https://signals.gitdealflow.com/blog/signal-of-the-week-2026-05-04
+
+The angle worth surfacing for Latent Space: public GitHub data as an AI-native sourcing signal. As AI coding tools accelerate commit velocity across the board, the signal becomes both more complex to interpret and more interesting — the methodology has to evolve alongside the tooling, and that is genuinely a Latent-Space-shaped problem.
+
+I operate anonymously as "The Data Nerd" — a live interview does not work. What does: a written companion piece for an episode on AI tooling and developer productivity, or a dataset drop for any episode covering the data infrastructure space specifically. I can have a written piece ready in 48 hours for any scheduled episode.
+
+Would a dataset drop or written companion fit an upcoming topic?
+
+If you would prefer not to hear from me, just reply and I will remove you immediately.
+
+— The Data Nerd
+signal@gitdealflow.com
+https://gitdealflow.com
