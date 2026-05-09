@@ -4,6 +4,11 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
+import {
+  DATA_NERD_NAME,
+  DATA_NERD_ARCHETYPE,
+  DATA_NERD_TRIBE,
+} from "@/lib/data-nerd";
 
 export const dynamic = "force-static";
 
@@ -272,6 +277,98 @@ export default function ManifestoPage() {
                 </li>
               ))}
             </ul>
+          </div>
+        </section>
+
+        {/* CHARACTER DECLARATION — Brunson Expert Secrets Ch 1
+            (Charismatic Leader 2.0): the manifesto declares the cause
+            and the enemy; the character declaration makes explicit who
+            is delivering the cause and which canonical archetype they
+            occupy. Three blocks: who, what they call you, what they
+            won't do.
+        */}
+        <section className="rounded-xl border border-amber-700/40 bg-gradient-to-br from-amber-950/15 via-slate-900 to-slate-950 p-6 sm:p-8 space-y-5">
+          <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider">
+            Who&rsquo;s delivering this
+          </p>
+          <div className="space-y-3">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug">
+              <Link
+                href="/data-nerd"
+                className="text-amber-300 hover:text-amber-200 underline decoration-dotted"
+              >
+                {DATA_NERD_NAME}
+              </Link>{" "}
+              · {DATA_NERD_ARCHETYPE.label}.
+            </h2>
+            <p className="text-gray-200 text-base leading-relaxed italic">
+              &ldquo;{DATA_NERD_ARCHETYPE.oneLine}&rdquo;
+            </p>
+            <p className="text-gray-300 text-base leading-relaxed">
+              {DATA_NERD_ARCHETYPE.body}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+            <div className="rounded-lg border border-sky-700/40 bg-sky-950/20 p-4 sm:p-5 space-y-2">
+              <p className="text-sky-300 text-[10px] font-semibold uppercase tracking-wider">
+                What I call you
+              </p>
+              <p className="text-gray-100 font-bold text-base leading-snug">
+                {DATA_NERD_TRIBE.name}.
+              </p>
+              <p className="text-gray-300 text-sm leading-relaxed italic">
+                &ldquo;{DATA_NERD_TRIBE.oneLine}&rdquo;
+              </p>
+              <p className="text-gray-400 text-sm leading-relaxed">
+                The label is wearable on purpose. If it feels off, the
+                product is probably wrong for you and that&rsquo;s
+                diagnostic.
+              </p>
+            </div>
+            <div className="rounded-lg border border-rose-700/40 bg-rose-950/15 p-4 sm:p-5 space-y-2">
+              <p className="text-rose-300 text-[10px] font-semibold uppercase tracking-wider">
+                What I won&rsquo;t do (Pillar 7 enforced)
+              </p>
+              <ul className="text-gray-300 text-sm leading-relaxed space-y-1.5">
+                <li>
+                  <span className="text-rose-400">✗</span> Photos, video
+                  cameos, real-voice podcasts.
+                </li>
+                <li>
+                  <span className="text-rose-400">✗</span> Real-name
+                  attribution on this site (the SSRN paper uses my real
+                  name behind a corporate veil; everything here is
+                  &ldquo;{DATA_NERD_NAME}&rdquo;).
+                </li>
+                <li>
+                  <span className="text-rose-400">✗</span> Discovery
+                  calls below the Sharp tier — async written replies
+                  only.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="border-t border-amber-700/30 pt-3 flex flex-wrap gap-x-4 gap-y-1 text-xs">
+            <Link
+              href="/data-nerd"
+              className="text-amber-300 hover:text-amber-200 underline decoration-dotted font-semibold"
+            >
+              Read the full character bible →
+            </Link>
+            <Link
+              href="/now"
+              className="text-emerald-300 hover:text-emerald-200 underline decoration-dotted font-semibold"
+            >
+              /now — what I&rsquo;m working on this week →
+            </Link>
+            <Link
+              href="/parables"
+              className="text-amber-300 hover:text-amber-200 underline decoration-dotted font-semibold"
+            >
+              The six parables →
+            </Link>
           </div>
         </section>
 

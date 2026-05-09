@@ -27,6 +27,7 @@ import { LOCALES } from "@/content/locales";
 import { getMarketSlugs } from "@/lib/markets";
 import { getAllTop100Slugs } from "@/lib/top-100";
 import { getAllPredictionWeekSlugs } from "@/lib/predictions";
+import { DATA_NERD_PARABLES } from "@/lib/data-nerd";
 
 const BASE_URL = "https://signals.gitdealflow.com";
 
@@ -235,6 +236,23 @@ export async function GET(_req: Request, ctx: RouteContext) {
       { url: `${BASE_URL}/earned-plays`, lastmod, changefreq: "monthly", priority: 0.65 },
       { url: `${BASE_URL}/scorecard`, lastmod, changefreq: "monthly", priority: 0.65 },
       { url: `${BASE_URL}/wins`, lastmod, changefreq: "monthly", priority: 0.65 },
+      // Founder character surfaces — Brunson Expert Secrets Ch 1 + 2.
+      // The /data-nerd character bible, the /now live-status surface, the
+      // /parables index + per-parable SSG pages, plus the longform
+      // narrative pages (/origin, /story, /manifesto) and the /about hub.
+      // All anonymity-compatible — no founder face/voice/name.
+      { url: `${BASE_URL}/data-nerd`, lastmod, changefreq: "monthly", priority: 0.85 },
+      { url: `${BASE_URL}/about/founder`, lastmod, changefreq: "monthly", priority: 0.8 },
+      { url: `${BASE_URL}/manifesto`, lastmod, changefreq: "monthly", priority: 0.85 },
+      { url: `${BASE_URL}/origin`, lastmod, changefreq: "monthly", priority: 0.8 },
+      { url: `${BASE_URL}/now`, lastmod, changefreq: "weekly", priority: 0.85 },
+      { url: `${BASE_URL}/parables`, lastmod, changefreq: "monthly", priority: 0.85 },
+      ...DATA_NERD_PARABLES.map((p) => ({
+        url: `${BASE_URL}/parables/${p.slug}`,
+        lastmod,
+        changefreq: "monthly" as const,
+        priority: 0.75,
+      })),
       // Brunson DCS Ch 13 — Best-Bait redacted Friday-noon trailer of
       // Sunday's digest. Weekly cadence matches the data refresh.
       { url: `${BASE_URL}/friday-preview`, lastmod, changefreq: "weekly", priority: 0.8 },

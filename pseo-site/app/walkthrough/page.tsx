@@ -5,6 +5,7 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { VideoEmbedBlock } from "@/components/VideoEmbedBlock";
 import { DataNerdAudio } from "@/components/DataNerdAudio";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
+import { DataNerdCharacterCard } from "@/components/DataNerdCharacterCard";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { LiveReplayBar } from "@/components/LiveReplayBar";
 import { FastActionBonuses } from "@/components/FastActionBonuses";
@@ -1117,6 +1118,13 @@ export default function PerfectWebinarPage() {
         </section>
 
         <DataNerdSignoff variant="long" catchphraseIndex={3} />
+
+        {/* Founder character card — Brunson Expert Secrets Ch 1: the
+            Attractive Character appears on every conversion-critical page
+            in compressed form. Seed = "walkthrough" so the same surface
+            always picks the same belief / parable slice (different from
+            /firstlook, /pricing, etc). */}
+        <DataNerdCharacterCard seed="walkthrough" />
 
         <AgentSummary
           tldr="The 12-minute walkthrough lays out the single belief — commit-velocity acceleration is the most leading public signal in venture capital — and supports it by breaking three classic objections (vehicle: GitHub data is noise; internal: I already have deal flow; external: public data has no edge). Closes on the €9.97/mo Dashboard tier (founding-member, locked forever) with a 30-day Signal-or-It's-Free guarantee. Built on the 219-startup SSRN-published panel with a 21–47 day median lead time over fundraise announcements."

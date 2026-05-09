@@ -15,6 +15,10 @@ import {
   DATA_NERD_CATCHPHRASES,
   DATA_NERD_TOUCHPOINTS,
   DATA_NERD_PERSON_SCHEMA,
+  DATA_NERD_ARCHETYPE,
+  DATA_NERD_TRIBE,
+  DATA_NERD_FUTURE_SELF,
+  DATA_NERD_NOW,
 } from "@/lib/data-nerd";
 
 export const dynamic = "force-static";
@@ -22,12 +26,12 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: `${DATA_NERD_NAME} — character bible · VC Deal Flow Signal`,
   description:
-    "The pseudonymous narrator behind VC Deal Flow Signal: backstory, six parables, four polarities, three character flaws, seven voice rules, and the synthetic-voice disclosure. Character bible — implemented under the anonymity rule.",
+    "The pseudonymous narrator behind VC Deal Flow Signal: identity archetype (Reluctant Reporter), backstory, six parables, eight polarities, three character flaws, seven voice rules, current weekly status, twelve-month commitments. Character bible — implemented under the anonymity rule.",
   alternates: { canonical: "/data-nerd" },
   openGraph: {
     title: `${DATA_NERD_NAME} — VC Deal Flow Signal`,
     description:
-      "The pseudonymous narrator behind the methodology. Six parables, four polarities, three flaws — character without a face.",
+      "The pseudonymous narrator behind the methodology. Reluctant Reporter archetype, six parables, eight polarities, three flaws, twelve-month public commitments — character without a face.",
     url: "https://signals.gitdealflow.com/data-nerd",
     type: "profile",
   },
@@ -154,15 +158,71 @@ export default function DataNerdPage() {
           </p>
         </section>
 
+        {/* ARCHETYPE — declares which of the four canonical character
+            archetypes this character occupies. The reader places the voice
+            on a recognisable map before reading another paragraph. */}
+        <section className="rounded-xl border border-amber-700/40 bg-gradient-to-br from-amber-950/20 via-slate-900 to-slate-950 p-6 sm:p-7 space-y-3">
+          <p className="text-amber-300 text-[10px] font-semibold uppercase tracking-wider">
+            01 · Identity archetype
+          </p>
+          <h2 className="text-2xl font-bold text-gray-100" data-speakable>
+            <span className="text-amber-300">{DATA_NERD_ARCHETYPE.label}.</span>{" "}
+            {DATA_NERD_ARCHETYPE.oneLine}
+          </h2>
+          <p className="text-gray-300 text-base leading-relaxed">
+            {DATA_NERD_ARCHETYPE.body}
+          </p>
+          <p className="text-gray-400 text-sm leading-relaxed border-l-2 border-amber-700/40 pl-4">
+            <strong className="text-amber-200">In contrast:</strong>{" "}
+            {DATA_NERD_ARCHETYPE.contrast}
+          </p>
+          <details className="text-sm text-gray-400 leading-relaxed pt-1">
+            <summary className="cursor-pointer text-amber-300 hover:text-amber-200 font-semibold">
+              Three observable receipts
+            </summary>
+            <ul className="space-y-2 mt-3 pl-4">
+              {DATA_NERD_ARCHETYPE.proof.map((p, i) => (
+                <li
+                  key={i}
+                  className="border-l border-amber-700/30 pl-3"
+                >
+                  {p}
+                </li>
+              ))}
+            </ul>
+          </details>
+        </section>
+
+        {/* TRIBE — name the people the reader joins by self-identifying
+            with the character. Brunson Expert Secrets Ch 3. */}
+        <section className="space-y-3">
+          <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider">
+            02 · The tribe
+          </p>
+          <h2 className="text-2xl font-bold text-gray-100">
+            If you nod through this page, you&rsquo;re a{" "}
+            <span className="text-sky-300">
+              {DATA_NERD_TRIBE.name.slice(0, -1)}
+            </span>
+            .
+          </h2>
+          <p className="text-gray-300 text-base leading-relaxed italic">
+            &ldquo;{DATA_NERD_TRIBE.oneLine}&rdquo;
+          </p>
+          <p className="text-gray-300 text-base leading-relaxed">
+            {DATA_NERD_TRIBE.body}
+          </p>
+        </section>
+
         <section className="space-y-5">
           <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider">
-            01 · Polarity
+            03 · Polarity ({DATA_NERD_POLARITY.length} positions)
           </p>
           <h2 className="text-2xl font-bold text-gray-100">
             What I believe that the consensus deal-flow industry doesn&rsquo;t.
           </h2>
           <p className="text-gray-400 text-sm leading-relaxed">
-            Four polarities. If you nod through all four, you&rsquo;re my
+            Eight polarities. If you nod through all eight, you&rsquo;re my
             reader. If even one feels wrong, please save your money — this is
             the wrong product for you and that&rsquo;s honest.
           </p>
@@ -193,7 +253,7 @@ export default function DataNerdPage() {
 
         <section className="space-y-5">
           <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider">
-            02 · Six parables
+            04 · Six parables
           </p>
           <h2 className="text-2xl font-bold text-gray-100">
             Stories I tell to explain why code-side signals work.
@@ -201,7 +261,15 @@ export default function DataNerdPage() {
           <p className="text-gray-400 text-sm leading-relaxed">
             Every core claim needs a parable that makes it feel obvious. These
             are the six I rotate through emails, videos, and the Sunday digest.
-            Each one is a small story with a specific lesson.
+            Each one is also hyperlinkable at{" "}
+            <Link
+              href="/parables"
+              className="text-amber-300 hover:text-amber-200 underline decoration-dotted font-semibold"
+            >
+              /parables
+            </Link>{" "}
+            so you can send a single one to a friend without sending them
+            this whole bible.
           </p>
           <ol className="space-y-5">
             {DATA_NERD_PARABLES.map((p, i) => (
@@ -211,7 +279,13 @@ export default function DataNerdPage() {
                 className="rounded-xl border-l-4 border-amber-500 bg-slate-900/60 p-5 space-y-3"
               >
                 <p className="text-amber-300 text-[10px] font-semibold uppercase tracking-wider">
-                  Parable {i + 1} · {p.title}
+                  Parable {i + 1} ·{" "}
+                  <Link
+                    href={`/parables/${p.slug}`}
+                    className="hover:text-amber-200 underline decoration-dotted"
+                  >
+                    {p.title}
+                  </Link>
                 </p>
                 <p className="text-gray-100 text-base leading-relaxed">
                   {p.body}
@@ -220,6 +294,14 @@ export default function DataNerdPage() {
                   <strong className="text-emerald-300">Lesson:</strong>{" "}
                   {p.lesson}
                 </p>
+                <p className="text-xs">
+                  <Link
+                    href={`/parables/${p.slug}`}
+                    className="text-amber-300 hover:text-amber-200 underline decoration-dotted"
+                  >
+                    Standalone page →
+                  </Link>
+                </p>
               </li>
             ))}
           </ol>
@@ -227,7 +309,7 @@ export default function DataNerdPage() {
 
         <section className="space-y-3">
           <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider">
-            03 · Three flaws, on purpose
+            05 · Three flaws, on purpose
           </p>
           <h2 className="text-2xl font-bold text-gray-100">
             What&rsquo;s wrong with me, deliberately.
@@ -256,7 +338,7 @@ export default function DataNerdPage() {
 
         <section className="space-y-3">
           <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider">
-            04 · Seven voice rules
+            06 · Seven voice rules
           </p>
           <h2 className="text-2xl font-bold text-gray-100">
             How every sentence on this site gets shaped before it ships.
@@ -285,7 +367,7 @@ export default function DataNerdPage() {
 
         <section className="space-y-3">
           <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider">
-            05 · Catchphrases
+            07 · Catchphrases
           </p>
           <h2 className="text-2xl font-bold text-gray-100">
             Lines I repeat until the reader can repeat them back.
@@ -312,7 +394,7 @@ export default function DataNerdPage() {
 
         <section className="space-y-3">
           <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider">
-            06 · Where you&rsquo;ll meet me
+            08 · Where you&rsquo;ll meet me
           </p>
           <h2 className="text-2xl font-bold text-gray-100">
             Six surfaces. One handle. Same voice.
@@ -337,9 +419,71 @@ export default function DataNerdPage() {
           </ul>
         </section>
 
+        {/* NOW — link to the live status surface. */}
+        <section className="rounded-xl border border-emerald-700/30 bg-gradient-to-br from-emerald-950/15 via-slate-900 to-slate-950 p-6 sm:p-7 space-y-3">
+          <p className="text-emerald-300 text-[10px] font-semibold uppercase tracking-wider">
+            09 · Live status — what I&rsquo;m doing this week
+          </p>
+          <h2 className="text-xl font-bold text-gray-100">
+            Updated every Monday — {DATA_NERD_NOW.weekISO}.
+          </h2>
+          <p className="text-gray-300 text-sm leading-relaxed">
+            The Sunday digest covers broadcast cadence; the monthly{" "}
+            <Link
+              href="/state-of-github"
+              className="text-emerald-300 hover:text-emerald-200 underline decoration-dotted"
+            >
+              State of GitHub
+            </Link>{" "}
+            address covers the long-form. The /now page is the in-between —
+            five fields, five minutes, every Monday. The cadence IS the
+            character.
+          </p>
+          <Link
+            href="/now"
+            className="inline-flex items-center gap-1 text-sm font-bold text-emerald-300 hover:text-emerald-200 underline decoration-dotted pt-1"
+          >
+            Open the /now page →
+          </Link>
+        </section>
+
+        {/* FUTURE SELF — public commitments graded May 2027. */}
+        <section className="space-y-4 border-t border-slate-800 pt-8">
+          <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider">
+            10 · Twelve months from now
+          </p>
+          <h2 className="text-2xl font-bold text-gray-100">
+            Five public commitments. Graded {DATA_NERD_FUTURE_SELF.graderDate}.
+          </h2>
+          <p className="text-gray-300 text-sm leading-relaxed">
+            The character has to project a future or it&rsquo;s a static
+            pose. These are the five public commits the narrator will be
+            graded against on{" "}
+            <span className="font-mono text-amber-200">
+              {DATA_NERD_FUTURE_SELF.graderDate}
+            </span>
+            . Either kept or admitted-broken-with-reason. No third option.
+          </p>
+          <ol className="space-y-3">
+            {DATA_NERD_FUTURE_SELF.twelveMonthCommit.map((c) => (
+              <li
+                key={c.n}
+                className="rounded-lg border border-slate-800 bg-slate-900/40 p-4"
+              >
+                <p className="text-amber-300 text-sm font-bold leading-snug mb-1">
+                  Commit {c.n} — {c.label}
+                </p>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  {c.body}
+                </p>
+              </li>
+            ))}
+          </ol>
+        </section>
+
         <section className="rounded-xl border border-sky-700/40 bg-sky-950/15 p-6 sm:p-8 space-y-3">
           <p className="text-sky-300 text-xs font-semibold uppercase tracking-wider">
-            07 · Where to go next
+            11 · Where to go next
           </p>
           <h2 className="text-xl sm:text-2xl font-bold text-gray-100">
             If you&rsquo;ve nodded through all of this, you&rsquo;re my reader.

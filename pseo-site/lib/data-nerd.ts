@@ -37,8 +37,56 @@ export const DATA_NERD_AUDIO_DISCLOSURE =
   "Synthetic voice (Cartesia). Same voice across YouTube, email-audio, and every page narration. There is no founder voice. The methodology is real. The voice is a writing convention.";
 
 /**
+ * Identity archetype — Brunson Expert Secrets Ch 2 (Charismatic Leader 2.0).
+ *
+ * The character must explicitly belong to one of four canonical archetypes
+ * so the reader can place the voice on a recognisable map. Picking and
+ * declaring the archetype is itself a credibility move — it tells the
+ * reader what they should expect from the next hundred emails before they
+ * commit to opening one.
+ *
+ * The Data Nerd is a Reluctant Reporter: the discovery (GitHub commit
+ * acceleration as a leading deal-flow signal) preceded the obligation to
+ * publish. The character did not set out to lead a movement — the data
+ * forced the position.
+ */
+export const DATA_NERD_ARCHETYPE = {
+  label: "Reluctant Reporter",
+  oneLine:
+    "I didn't set out to lead a movement. I noticed something true and felt obligated to publish it.",
+  body:
+    "The four archetypes a founder character can occupy are Leader, Adventurer, Reluctant Hero, and Reporter. Leaders front-load conviction; Adventurers front-load risk; Reluctant Heroes front-load reluctance; Reporters front-load curiosity. I'm the fourth one with a touch of the third — a Reluctant Reporter. The first time I noticed the seabird flock I thought I was seeing a coincidence. The fifth time I checked I knew I owed the fishermen the warning. The product on this site is the warning, formalised.",
+  contrast:
+    "Not a Leader (I won't take stage), not an Adventurer (I won't sell risk as romance), not a pure Reluctant Hero (I'm not waiting to be drafted) — a Reporter who can't unsee the pattern and a Reluctant Hero about whether the discovery is mine to publish.",
+  proof: [
+    "Refused 14 podcast invitations in the last six months — every reply is a stock paragraph at /press/anonymity-policy.",
+    "Methodology paper went on SSRN before any sales page existed. The order was: discovery → publication → product, not product → publication → discovery.",
+    "First six months of email drips were unsigned. The handle 'The Data Nerd' was added only when readers asked who was writing them.",
+  ],
+} as const;
+
+/**
+ * Tribe — what the character calls the readers who self-identify as members
+ * of the movement. Brunson Expert Secrets Ch 3: the tribe needs a name the
+ * member can wear. We don't pick the slur "VCs" because the buyer is
+ * usually not a partner; we don't pick "angels" because the buyer is often
+ * a fund principal too. "Developer-investor" is the signal-shaped label.
+ */
+export const DATA_NERD_TRIBE = {
+  name: "Developer-Investors",
+  oneLine: "We read commit logs the way other investors read pitch decks.",
+  badge: "code-reading partner · developer-investor",
+  body:
+    "The reader who nods through the polarity is a Developer-Investor — an engineer who occasionally writes a check (or a fund principal who used to ship code and never stopped reading it). The handle the reader earns is 'code-reading partner.' The product is built around that identity. The pricing is built around that identity. Every page on this site is built around that identity. If the label feels off, that's diagnostic — the product is probably wrong for you.",
+} as const;
+
+/**
  * Polarity — what The Data Nerd stands for, what they stand against.
- * Brunson DCS Ch 7: Attractive Character must take a side.
+ * Brunson DCS Ch 7: Attractive Character must take a side. Eight polarities
+ * is the canon-spec spread (four is a teaser; eight is the audit-grade set).
+ *
+ * The 4 → 8 expansion was added 2026-05-09 to push the character page out
+ * of the 'four-pillar teaser' shape and into a full belief manifest.
  */
 export const DATA_NERD_POLARITY = [
   {
@@ -68,6 +116,34 @@ export const DATA_NERD_POLARITY = [
     against: "Six-figure data subscriptions for six-person funds.",
     body:
       "We'd rather have a thousand readers who tell five friends than a hundred enterprise contracts. The founding price is locked forever.",
+  },
+  {
+    n: 5,
+    for: "Methodology before metrics.",
+    against: "Black-box scores.",
+    body:
+      "Every number on this site links to the formula that produced it. The /methodology page is the moat. If you can reproduce the regression, you can audit the claim. If we hide the formula we deserve to be ignored.",
+  },
+  {
+    n: 6,
+    for: "False positives published in the same email as the wins.",
+    against: "Curated case-study reels.",
+    body:
+      "Every Tuesday digest names at least one signal that fired wrong the prior week, with the post-mortem inline. A vendor who never publishes a miss is a vendor with no calibration discipline. The /scorecard page is permanent and includes every miss.",
+  },
+  {
+    n: 7,
+    for: "Async over live.",
+    against: "Discovery-call theatre.",
+    body:
+      "Two daily reply batches. No calendar links above the Sharp tier. A long written email beats a 30-minute call you scheduled to qualify yourself. If the question can be answered in writing, the call wastes the buyer's hour and the founder's anonymity at the same time.",
+  },
+  {
+    n: 8,
+    for: "Distribution is a moat. Friction is the leak.",
+    against: "Walled-garden datasets.",
+    body:
+      "Every public surface has a markdown mirror at /md. Every page has an agent-card endpoint. The MCP server installs in one line. The OpenAPI spec is at a stable URL. We pay the cost of redundant discoverability so the reader, the agent, and the LLM all find us through whichever path fits them.",
   },
 ] as const;
 
@@ -236,6 +312,103 @@ export const DATA_NERD_TOUCHPOINTS = [
     how: "Same handle. Two daily reply batches. No call-scheduling links.",
   },
 ] as const;
+
+/**
+ * Now status — what The Data Nerd is currently working on.
+ *
+ * Brunson Expert Secrets Ch 2 + Ch 9: the character must be in daily contact
+ * with the tribe. The weekly Sunday digest + monthly /state-of-github
+ * address cover the public broadcast cadence. /now is the in-between
+ * surface — what's open in the IDE this week, what just shipped, what's
+ * blocking, what's in the parking lot.
+ *
+ * Update every Monday. Five fields, no more. The cadence IS the character.
+ *
+ * The literal "/now" page is part of the broader nownownow.com convention
+ * (Derek Sivers) — a public commit by the founder to keep this surface
+ * fresher than About-Me. We adopt the convention because it's a perfect
+ * anonymity-compatible character beat: status, not face.
+ */
+export const DATA_NERD_NOW = {
+  asOf: "2026-05-09",
+  weekISO: "2026-W19",
+  shipping: [
+    "Pushing Expert Secrets Ch 1 (the Charismatic Leader chapter) from 78 → ~90 by surfacing identity archetype, eight polarities, /now status, /parables index.",
+    "Watching the /predicted week-19 picks for the first 60-day grading window — first Hits or Misses become public on /scorecard at T+60.",
+    "Fixing two GSC alternate-canonical edge cases on /md mirror routes flagged in the Friday console pull.",
+  ],
+  reading: [
+    "'The Pattern on the Stone' — Daniel Hillis. Re-read for the chapter on signal-to-noise in computation; lifting one passage into the May 2026 /state-of-github address.",
+    "Series A teardowns from Q1 2026 — pulling three for the next /press release on the 219-startup panel update.",
+  ],
+  blocked: [
+    "Synthetic-voice render for /walkthrough/replay — Cartesia voice file ships, Remotion compose stalls on Node 24 build container; investigating before next weekly.",
+  ],
+  parkingLot: [
+    "/dream-100 public list — 100 named developer-investors mapped to the channels we'd want to surface on. Drafted in /target-list, not yet on the open web.",
+    "/walkthrough/5min A/B test against a 90-second variant — both written, neither shipped to live traffic yet.",
+    "Member-visible /wins/[handle] surface — turn the founder-curated Wins ledger into a member-public profile per consenting subscriber.",
+  ],
+  rhythm: {
+    monday: "Sunday digest goes out · /predicted refresh",
+    tuesday: "Reply batch · grading-window check on prior week's picks",
+    wednesday: "Long-form essay (alternating Substack / dev.to) · methodology refinement",
+    thursday: "Reply batch · panel-data audit",
+    friday: "Friday Preview ships · /scorecard refresh",
+    saturday: "Off — no email replies, no commits, no public surface changes",
+    sunday: "Sunday digest pre-flight · the next week's /now update queues",
+  },
+} as const;
+
+/**
+ * Future self — the 12-month character arc.
+ *
+ * Brunson Expert Secrets Ch 22 (Decade in a Day): the character has to
+ * project a future. Not a roadmap of features — a public commitment about
+ * who the character will be 12 months from now. This is the readers'
+ * future-pacing of the character itself, not the product. The two are
+ * intentionally distinct: /roadmap is the product future, this is the
+ * narrator future.
+ *
+ * Read this 12 months from publish (2026-05-09 → 2027-05-09) and grade
+ * against what shipped. That's the credibility test.
+ */
+export const DATA_NERD_FUTURE_SELF = {
+  publishedAt: "2026-05-09",
+  graderDate: "2027-05-09",
+  twelveMonthCommit: [
+    {
+      n: 1,
+      label: "Still anonymous.",
+      body:
+        "No founder face, no real voice, no real-name media tour. If a podcast audience grows by 100K through breaking the rule, the rule still holds. The whole product rests on whether this commitment is kept; the day it breaks is the day the methodology has to compete with personality, and it loses.",
+    },
+    {
+      n: 2,
+      label: "Twelve State-of-Engine addresses on the record.",
+      body:
+        "One per month, every month, May 2026 → April 2027. Each one with a falsifiable prediction graded the following month. Twelve in a row is the cadence proof — eleven is a project, twelve is a practice.",
+    },
+    {
+      n: 3,
+      label: "/scorecard published with at least 80 weekly picks graded.",
+      body:
+        "Twelve months × 4–5 weekly picks per Sunday = ~52 grading windows by May 2027. Hit/Miss/Pending public, no curation. If the published precision drops below 60% across the panel, the price drops with it — the credibility chain has to hold both directions.",
+    },
+    {
+      n: 4,
+      label: "One additional methodology author on the SSRN paper.",
+      body:
+        "Co-author named — credit shared. Not because the work needs help (it doesn't) but because a methodology that lives in one anonymous head is one regression-rewrite away from breaking. A second name on the next preprint version is a continuity commitment to the buyer.",
+    },
+    {
+      n: 5,
+      label: "Insider Circle at 200 paid members or the price drops.",
+      body:
+        "Founding-member rate locked at €97/mo until 200 active subscribers, then a 60-day notice and a public price hike. The cohort closes when the math closes. Members who joined early stay at the locked rate forever.",
+    },
+  ],
+} as const;
 
 /**
  * Schema.org Person object for The Data Nerd.

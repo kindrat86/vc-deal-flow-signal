@@ -4,18 +4,24 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { DataNerdAudio } from "@/components/DataNerdAudio";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import {
+  DATA_NERD_ARCHETYPE,
+  DATA_NERD_TRIBE,
+  DATA_NERD_FUTURE_SELF,
+  DATA_NERD_NOW,
+} from "@/lib/data-nerd";
 
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title: "About The Data Nerd — the founder behind VC Deal Flow Signal",
   description:
-    "Anonymous engineer-investor. Wrote the methodology paper on SSRN. Refuses to do podcasts. Three parables, one polarity, three character flaws this product has on purpose.",
+    "Anonymous engineer-investor. Reluctant Reporter. Wrote the methodology paper on SSRN. Refuses podcasts. Three parables, eight polarities, three character flaws this product has on purpose, and a 12-month commitment graded May 2027.",
   alternates: { canonical: "/about/founder" },
   openGraph: {
     title: "About The Data Nerd — VC Deal Flow Signal",
     description:
-      "Identity, backstory, parables, polarity, and the three character flaws this product carries on purpose.",
+      "Identity archetype, backstory, parables, polarity, character flaws, current week's work, and the 12-month future commitment.",
     url: "https://signals.gitdealflow.com/about/founder",
     type: "article",
   },
@@ -129,6 +135,40 @@ export default function FounderPage() {
             subtitle="Synthetic Cartesia voice. Same voice across YouTube, email-audio, and every page narration on this site."
           />
         </header>
+
+        {/* ARCHETYPE — Brunson Expert Secrets Ch 2 (Charismatic Leader 2.0).
+            Declare which of the four canonical archetypes this character
+            occupies before the reader builds their own model from the prose.
+            Reluctant Reporter is the explicit answer; the proof beats are
+            three observable receipts the reader can verify. */}
+        <section className="rounded-xl border border-amber-700/30 bg-gradient-to-br from-amber-950/15 via-slate-900 to-slate-950 p-6 sm:p-7 space-y-3">
+          <p className="text-amber-300 text-[10px] font-semibold uppercase tracking-wider">
+            00 · Identity archetype
+          </p>
+          <h2 className="text-2xl font-bold text-gray-100" data-speakable>
+            <span className="text-amber-300">{DATA_NERD_ARCHETYPE.label}.</span>{" "}
+            {DATA_NERD_ARCHETYPE.oneLine}
+          </h2>
+          <p className="text-gray-300 text-base leading-relaxed">
+            {DATA_NERD_ARCHETYPE.body}
+          </p>
+          <p className="text-gray-400 text-sm leading-relaxed border-l-2 border-amber-700/40 pl-4">
+            <strong className="text-amber-200">In contrast:</strong>{" "}
+            {DATA_NERD_ARCHETYPE.contrast}
+          </p>
+          <details className="text-sm text-gray-400 leading-relaxed pt-1">
+            <summary className="cursor-pointer text-amber-300 hover:text-amber-200 font-semibold">
+              Three observable receipts
+            </summary>
+            <ul className="space-y-2 mt-3 pl-4">
+              {DATA_NERD_ARCHETYPE.proof.map((p, i) => (
+                <li key={i} className="border-l border-amber-700/30 pl-3">
+                  {p}
+                </li>
+              ))}
+            </ul>
+          </details>
+        </section>
 
         {/* IDENTITY */}
         <section className="space-y-3">
@@ -345,10 +385,109 @@ export default function FounderPage() {
           </ul>
         </section>
 
+        {/* TRIBE DECLARATION — Brunson Expert Secrets Ch 3.
+            Name the people the reader joins by self-identifying with
+            the character. The label has to be wearable. */}
+        <section className="space-y-3 border-t border-slate-800 pt-8">
+          <p className="text-emerald-400 text-xs font-semibold uppercase tracking-wider">
+            06 · The tribe
+          </p>
+          <h2 className="text-2xl font-bold text-gray-100">
+            If you nod through this page, you&rsquo;re a{" "}
+            <span className="text-sky-400">{DATA_NERD_TRIBE.name.slice(0, -1)}</span>.
+          </h2>
+          <p className="text-gray-300 text-base leading-relaxed italic">
+            &ldquo;{DATA_NERD_TRIBE.oneLine}&rdquo;
+          </p>
+          <p className="text-gray-300 text-base leading-relaxed">
+            {DATA_NERD_TRIBE.body}
+          </p>
+          <div className="inline-flex items-center gap-2 rounded-full border border-sky-700/40 bg-sky-950/30 px-4 py-1.5 mt-2">
+            <span className="text-sky-300 text-[10px] font-semibold uppercase tracking-wider">
+              Tribal handle
+            </span>
+            <span className="text-gray-200 text-sm font-mono">
+              {DATA_NERD_TRIBE.badge}
+            </span>
+          </div>
+        </section>
+
+        {/* NOW — current weekly status. Brunson Expert Secrets Ch 2:
+            character must be in daily contact with the tribe. Sunday
+            digest covers the broadcast cadence; this surfaces the
+            in-between status. */}
+        <section className="rounded-xl border border-emerald-700/30 bg-gradient-to-br from-emerald-950/15 via-slate-900 to-slate-950 p-6 sm:p-7 space-y-3">
+          <p className="text-emerald-300 text-[10px] font-semibold uppercase tracking-wider">
+            07 · This week
+          </p>
+          <h2 className="text-xl font-bold text-gray-100">
+            What I&rsquo;m actually working on right now ({DATA_NERD_NOW.weekISO}).
+          </h2>
+          <p className="text-gray-300 text-sm leading-relaxed">
+            Updated every Monday. Five fields, no more. The cadence is the
+            character.
+          </p>
+          <ul className="space-y-1.5 text-gray-300 text-sm leading-relaxed pl-1 pt-1">
+            <li>
+              <strong className="text-emerald-300">Shipping:</strong>{" "}
+              {DATA_NERD_NOW.shipping[0]}
+            </li>
+            {DATA_NERD_NOW.blocked.length > 0 && (
+              <li>
+                <strong className="text-rose-300">Blocked:</strong>{" "}
+                {DATA_NERD_NOW.blocked[0]}
+              </li>
+            )}
+          </ul>
+          <Link
+            href="/now"
+            className="inline-flex items-center gap-1 text-sm font-bold text-emerald-300 hover:text-emerald-200 underline decoration-dotted pt-2"
+          >
+            Read the full /now page →
+          </Link>
+        </section>
+
+        {/* FUTURE SELF — Brunson Expert Secrets Ch 22 (Decade in a Day).
+            The character has to project a future. Not the product
+            roadmap — the narrator's commitment. Five public commits
+            graded May 2027. */}
+        <section className="space-y-4 border-t border-slate-800 pt-8">
+          <p className="text-emerald-400 text-xs font-semibold uppercase tracking-wider">
+            08 · Twelve months from now
+          </p>
+          <h2 className="text-2xl font-bold text-gray-100">
+            Five commitments. Graded {DATA_NERD_FUTURE_SELF.graderDate}.
+          </h2>
+          <p className="text-gray-300 text-base leading-relaxed">
+            Read this on{" "}
+            <span className="font-mono text-amber-200">
+              {DATA_NERD_FUTURE_SELF.graderDate}
+            </span>{" "}
+            and grade against what shipped. That&rsquo;s the credibility test.
+            The character either kept the commitments or admits which one
+            broke and why.
+          </p>
+          <ul className="space-y-3">
+            {DATA_NERD_FUTURE_SELF.twelveMonthCommit.map((c) => (
+              <li
+                key={c.n}
+                className="rounded-lg border border-slate-800 bg-slate-900/40 p-4"
+              >
+                <p className="text-amber-300 text-sm font-bold leading-snug mb-1">
+                  Commit {c.n} — {c.label}
+                </p>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  {c.body}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </section>
+
         {/* CHARACTER BIBLE LINK */}
         <section className="rounded-xl border border-amber-700/30 bg-gradient-to-br from-amber-950/15 via-slate-900 to-slate-950 p-6 sm:p-7 space-y-3">
           <p className="text-amber-300 text-[10px] font-semibold uppercase tracking-wider">
-            06 · The fuller character bible
+            09 · The fuller character bible
           </p>
           <h2 className="text-xl font-bold text-gray-100">
             This page is the introduction. The bible is at /data-nerd.
@@ -373,7 +512,7 @@ export default function FounderPage() {
         {/* RESULT */}
         <section className="space-y-3 border-t border-slate-800 pt-8">
           <p className="text-emerald-400 text-xs font-semibold uppercase tracking-wider">
-            07 · What this means for you
+            10 · What this means for you
           </p>
           <h2 className="text-2xl font-bold text-gray-100">
             If any of the above made you nod, you&rsquo;re my reader.
