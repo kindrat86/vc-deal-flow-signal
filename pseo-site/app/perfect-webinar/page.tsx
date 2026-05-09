@@ -305,6 +305,13 @@ export default function PerfectWebinarPage() {
             am going to spend the next three sections trying to knock it down.
             If it survives, the rest is arithmetic.
           </p>
+          {/* Brunson Expert Secrets Ch 14 — Trial Close #1. The Big Domino is
+              the load-bearing claim of the whole page; pause here so the
+              reader either nods or bails before investing the next 8 minutes
+              in the three objections. */}
+          <p className="text-sky-300/80 text-sm italic leading-relaxed pt-2 border-t border-sky-800/40">
+            Make sense so far?
+          </p>
         </section>
 
         {/* THREE SECRETS */}
@@ -427,6 +434,14 @@ export default function PerfectWebinarPage() {
               Engineering signal is the open lane.
             </p>
           </div>
+
+          {/* Brunson Expert Secrets Ch 14 — Trial Close #2. After all three
+              objections fall, ask explicitly. The reader has to verbally
+              confirm the belief shift before the offer, or the offer reads
+              as unearned. */}
+          <p className="text-emerald-300/80 text-sm italic leading-relaxed pt-3 border-t border-emerald-800/40">
+            All three objections — vehicle, internal, external — gone. With me?
+          </p>
         </section>
 
         {/* THE SHIFT */}
@@ -451,6 +466,13 @@ export default function PerfectWebinarPage() {
             That is the rhythm. Sunday digest, Wednesday filter, end-of-quarter
             sweep. Three touchpoints, twelve minutes a week, sub-€10/mo. The
             dashboard is just a tool — the leverage is in the rhythm.
+          </p>
+          {/* Brunson Expert Secrets Ch 14 — Trial Close #3. The reader has
+              been shown the rhythm, not the price. Make them affirm the
+              shape of the workflow before the price reveal so the price
+              gets compared to the workflow's value, not to a dashboard SKU. */}
+          <p className="text-amber-300/80 text-sm italic leading-relaxed pt-3 border-t border-slate-700">
+            Twelve minutes a week, three touchpoints, one rhythm. Sound fair?
           </p>
         </section>
 
@@ -648,6 +670,15 @@ export default function PerfectWebinarPage() {
             instrument costs to lease per month, founding-member rate,
             locked forever.
           </p>
+          {/* Brunson Expert Secrets Ch 14 — Trial Close #4. Right after the
+              future-pace mental movie, before the Stack reveal. The reader
+              has just seen themselves on the August Tuesday — the question
+              is whether they could imagine that being them. If yes, the
+              Stack lands as the instrument. If no, the Stack lands as a
+              shopping list. */}
+          <p className="text-violet-300/80 text-sm italic leading-relaxed">
+            Could you see yourself in that Tuesday? Still tracking?
+          </p>
         </section>
 
         {/* THE STACK */}
@@ -749,6 +780,13 @@ export default function PerfectWebinarPage() {
               deal. The price stays €9.97 for as long as you stay subscribed,
               even after the public launch hike to €49/mo.
             </p>
+            {/* Brunson Expert Secrets Ch 14 — Trial Close #5. Right after
+                price reveal. The "one missed seed deal" framing is the
+                payoff comparator; ask whether that comparison feels honest
+                before the guarantee section reinforces it. */}
+            <p className="text-amber-300/80 text-sm italic leading-relaxed pt-2">
+              €9.97/mo against the cost of one missed seed deal. Reasonable?
+            </p>
           </div>
         </section>
 
@@ -782,6 +820,15 @@ export default function PerfectWebinarPage() {
             The guarantee exists because the signal either works or it
             doesn&rsquo;t. Charging for an output you don&rsquo;t find useful
             is bad business.
+          </p>
+          {/* Brunson Expert Secrets Ch 14 — Trial Close #6. Last micro-yes
+              before the persona-targeted "Three trial closes" stack. With
+              risk reversed and price anchored, the only remaining question
+              is whether the reader believes us when we say we'll honour
+              the refund. Naming the question gives them permission to
+              answer in their head. */}
+          <p className="text-emerald-300/80 text-sm italic leading-relaxed pt-2">
+            30 days. Reply REFUND, full refund. Fair enough?
           </p>
         </section>
 
