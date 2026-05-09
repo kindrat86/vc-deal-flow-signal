@@ -9,7 +9,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Funnel Hub — every entry point to VC Deal Flow Signal",
   description:
-    "Nine funnels, one map. Free Acceleration Watch, Quiz, 90-second Pitch, 12-minute Perfect Webinar, €7 First Look Pass, €9.97/mo Dashboard, €97/mo Insider Circle, €497/mo Sharp Tier, €1,997 Sector Sweep. Pick the door.",
+    "Ten funnels, one map. Free Acceleration Watch, Quiz, 90-second Pitch, 12-minute Perfect Webinar, €7 First Look Pass, €9.97/mo Dashboard, €97/mo Insider Circle, €497/mo Sharp Tier, €1,997 Sector Sweep, and the post-90 Engine Room cohort. Pick the door.",
   alternates: { canonical: "/funnels" },
   openGraph: {
     title: "Funnel Hub — VC Deal Flow Signal",
@@ -134,6 +134,17 @@ const FUNNELS: Funnel[] = [
     cta: "Buy the sweep",
     color: "slate",
   },
+  {
+    slug: "Engine Room (post-90 cohort)",
+    href: "/post-90",
+    tier: "Phase 6 — change of selling environment (DotCom Ch 11)",
+    price: "Free, opt-in at Day 90",
+    hook: "After 90 days the rhythm leaves your inbox — Sunday voice memo in your podcast app, monthly Stadium Pitch on your calendar, quarterly post-mortem on the public ledger.",
+    who: "Subscribers who've stayed through the 21-email soap-opera and Seinfeld sequence and want the next phase to land in apps they already open daily.",
+    offer: "Cohort home + RSS podcast feed (/post-90/feed.xml) + iCal calendar feed (/post-90/calendar.ics). Three subscribe URLs, four apps, anonymous synthetic-voice audio. Brunson DotCom Secrets Ch 11 Phase 6 — the deliberate channel shift out of email.",
+    cta: "Open the Engine Room",
+    color: "amber",
+  },
 ];
 
 const COLOR_CLASSES: Record<Funnel["color"], { bar: string; pill: string; price: string; hover: string }> = {
@@ -214,7 +225,7 @@ export default function FunnelHubPage() {
 
         <header className="space-y-4 max-w-3xl">
           <p className="text-sky-400 text-xs font-medium uppercase tracking-wider">
-            Funnel Hub · 9 entry points
+            Funnel Hub · 10 entry points
           </p>
           <h1
             className="text-3xl sm:text-5xl font-bold text-gray-100 leading-[1.05] tracking-tight"
@@ -244,7 +255,7 @@ export default function FunnelHubPage() {
         </section>
 
         <section className="space-y-5">
-          <h2 className="text-xl font-bold text-gray-100">All 9 funnels</h2>
+          <h2 className="text-xl font-bold text-gray-100">All 10 funnels</h2>
           <div className="grid grid-cols-1 gap-4">
             {FUNNELS.map((f) => {
               const c = COLOR_CLASSES[f.color];

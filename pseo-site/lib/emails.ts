@@ -502,29 +502,80 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
 `),
   },
 
-  // Day 90 — State-of-the-Engine. Brunson Secret 7 V8 (2026-05-06): the SOS
-  // ends at Day 75, but the *rhythm* must continue or the reader drifts.
-  // This is the quarterly-anchor email — mechanical state report + one
-  // falsifiable prediction (Stadium Pitch beat) tied to the live panel.
-  // Pairs with /scorecard's rolling Magic Bullet for accountability.
+  // Day 90 — Engine Room invitation. Brunson DotCom Secrets Ch 11, Phase 6
+  // (Change the Selling Environment). The 90-day soap-opera + Seinfeld
+  // rhythm has run its course in the inbox; this email is the deliberate
+  // hand-off OUT of email and INTO three new channels — podcast app,
+  // calendar app, public Receipts ledger. The whole point: the
+  // relationship continues but the surface changes. Pairs with
+  // /post-90 (cohort home), /post-90/feed.xml (RSS), and
+  // /post-90/calendar.ics (iCal). The State-of-the-Engine prediction +
+  // accountability still happens — but as the first quarterly post-mortem
+  // ANCHORED in the new environment, not as another inbox arrival.
   {
-    subject: "Ninety days of data. One prediction.",
+    subject: "Ninety days. The rhythm changes apps.",
     delayMs: THIRTY_MIN + 90 * ONE_DAY,
     html: wrap(`
-<p>Three Sundays from today, this email turns ninety. That feels like the right moment to send the kind of message I'd want to receive — mechanical, accountable, and on the record before the next quarter rolls.</p>
-<p><strong>What the engine has done since you joined the list:</strong></p>
-<ul>
-<li>Indexed 4,200+ venture-backed GitHub orgs continuously, weekly refresh, 6-second p95 query latency on the public dashboard.</li>
-<li>Surfaced ~12 Sunday digests of 5 ranked acceleration signals — roughly 60 names you've now had on your radar before consensus formed.</li>
-<li>Published 3 monthly Sector Deep Dives + 1 commissioned Sector Sweep, plus the rolling Magic Bullet on <a href="${SIGNALS}/scorecard" style="color:#0ea5e9;">${SIGNALS}/scorecard</a>.</li>
-<li>Logged confirmed events — funding announcements, meaningful product launches, senior-engineering re-ratings — against the panel orgs that hit acceleration threshold during the window. The Receipts ledger publishes names with dates as they resolve, append-only, no opinions: <a href="${SIGNALS}/wins" style="color:#0ea5e9;">${SIGNALS}/wins</a>.</li>
-</ul>
-<p><strong>One specific prediction for the next 90 days, on the record:</strong></p>
-<p>The four orgs sitting at the top of this Monday's panel that haven't shown up on Crunchbase yet — the ones with sustained 14-day commit-velocity acceleration above 2× their 90-day baseline AND contributor-Gini under 0.30 — at least three of those four will announce a funding round, a meaningful product launch, or a senior engineering hire that triggers re-rating, between now and roughly 90 days out.</p>
-<p>I'm calling it ahead of time because the panel is the panel, and I want it visible in your inbox so you can hold the next State-of-the-Engine email accountable to today's. If two of four resolve, I'll write the post-mortem on what missed and why. If four of four resolve, I'll write the post-mortem on what got lucky and why.</p>
-<p>If you've kept the digest going as your Sunday rhythm, that's already the win. The only thing I'd add as a Sunday-evening companion is the Receipts ledger — same format, public, append-only, no opinions. When the predictions above resolve, they'll show up there with the dates wired in.</p>
+<p>Today is Day 90 of this list.</p>
+<p>If the Sunday digest has settled into a rhythm, that's already the win. The 21-email soap-opera and Seinfeld sequence I started with on Day 0 ends here — the relationship doesn't, but the way it lands in your day is going to change, on purpose.</p>
+<p>Reading the same kind of email in the same inbox for ninety days is how rhythms die. Russell Brunson calls this the "change of selling environment" beat. The next phase of the engine lives in three different surfaces, deliberately outside email:</p>
+<p><strong>1. Sunday Brief — in your podcast app.</strong> A 4-to-6-minute synthetic-voice voice memo. The week's single sharpest GitHub-acceleration break, what shifted on the panel, one thing to put on the radar before Monday. Lands in Apple Podcasts / Spotify / Overcast / any RSS reader. The voice is the same Cartesia model that powers the State-of-GitHub video — anonymous by design, methodology over personality.</p>
+<p><strong>2. Stadium Pitch — on your calendar.</strong> First Tuesday of every month at 16:00 UTC. The monthly address — what the panel showed across 4,200+ venture-backed orgs, what shifted in the false-positive rate, and one falsifiable prediction on the record. Subscribe to the calendar feed once and the Pitch lands as a scheduled event, not an email surprise.</p>
+<p><strong>3. State-of-the-Engine post-mortem — on the public Receipts ledger.</strong> Every 90 days, the prediction resolves on <a href="${SIGNALS}/wins" style="color:#0ea5e9;">${SIGNALS}/wins</a> in the same append-only format the panel-validation entries use. Public, no opinions, names + dates only.</p>
+<p>The cohort home with all three subscribe links is at <a href="${SIGNALS}/post-90" style="color:#0ea5e9;">${SIGNALS}/post-90</a>. Two URLs to paste — the RSS feed into your podcast app, the .ics feed into your calendar — and the rhythm continues without me having to send you another email about it.</p>
+<p>Since Day 0 the engine has indexed 4,200+ venture-backed GitHub orgs continuously, surfaced ~12 Sunday digests of 5 ranked acceleration signals (≈60 names on your radar before consensus formed), published 3 monthly Sector Deep Dives, and logged confirmed funding / launch / re-rating events against panel orgs that hit acceleration threshold during the window. The Receipts ledger has the names + dates: <a href="${SIGNALS}/wins" style="color:#0ea5e9;">${SIGNALS}/wins</a>.</p>
+<p><strong>And the first specific prediction, on the record, for the next 90 days:</strong></p>
+<p>The four orgs sitting at the top of this Monday's panel that haven't shown up on Crunchbase yet — the ones with sustained 14-day commit-velocity acceleration above 2× their 90-day baseline AND contributor-Gini under 0.30 — at least three of those four will resolve into a funding round, a meaningful product launch, or a senior-engineering re-rating between now and Day 180. I'll write the post-mortem live on /wins when each one resolves. The post-mortem audio drops on the Engine Room feed at Day 180. The next inbox email I send is the Day 120 nudge and then the Day 180 wrap-up — even those are recaps of what already played out in the new channels.</p>
+<p>If you'd rather stay inbox-only, the free Sunday Acceleration Watch keeps coming. The change-of-environment is an opt-in, not a forced migration.</p>
 <p>Talk soon —<br>${FROM_NAME}</p>
-<p style="color:#64748b;font-size:14px;">P.S. The next State-of-the-Engine lands on Day 180. Same structure. Same accountability. The Sunday digest hits as usual between now and then.</p>
+<p style="color:#64748b;font-size:14px;">P.S. Three subscribe URLs, one page: <a href="${SIGNALS}/post-90" style="color:#0ea5e9;">${SIGNALS}/post-90</a>. RSS feed: <a href="${SIGNALS}/post-90/feed.xml" style="color:#0ea5e9;">${SIGNALS}/post-90/feed.xml</a>. Calendar feed: <a href="${SIGNALS}/post-90/calendar.ics" style="color:#0ea5e9;">${SIGNALS}/post-90/calendar.ics</a>. Pick the channel that fits the way you already pay attention.</p>
+`),
+  },
+
+  // Day 120 — anchor inside the new environment. Brunson Phase 6 follow-
+  // through: the channel-shift only counts if the *next* touchpoint lands
+  // in the new channel and references the user's behaviour there. This
+  // email is the bridge — short, written from inside the cohort, assumes
+  // the reader has already subscribed (or nudges them to if not), and
+  // points to specific Sunday Briefs that have already dropped.
+  {
+    subject: "Three weeks in the Engine Room — what's playing",
+    delayMs: THIRTY_MIN + 120 * ONE_DAY,
+    html: wrap(`
+<p>Quick note from inside the Engine Room.</p>
+<p>If you subscribed to the Sunday Brief feed three weeks ago, you've heard four episodes by now. Each one is a 4–6 minute synthetic-voice voice memo on the week's single sharpest acceleration break — the same panel data the public Acceleration Watch ranks on Mondays, but voiced for background-listen and dropped a day earlier in the week.</p>
+<p>If you subscribed to the calendar feed, the first monthly Stadium Pitch is on your calendar for the first Tuesday of next month. 16:00 UTC. Don't add a reminder — the calendar entry is the reminder.</p>
+<p>If you didn't subscribe to either, this is the gentle nudge. The Day 90 email (three weeks ago) had three URLs; the cohort home at <a href="${SIGNALS}/post-90" style="color:#0ea5e9;">${SIGNALS}/post-90</a> still lists all three. Two pastes — RSS into your podcast app, .ics into your calendar — and the rhythm fits into apps you already open daily for other reasons.</p>
+<p><strong>What's worth catching up on if you've been listening:</strong></p>
+<ul>
+<li><strong>Brief 01</strong> — the contributor-influx signal, why a 2× spike inside 14 days has been the most precise leading indicator of the panel and where the false positives concentrate (early-stage open-source projects with viral spikes that don't translate to commercial momentum).</li>
+<li><strong>Brief 02</strong> — three orgs from the Day-90 prediction list that crossed the threshold within the first 21 days (one already announced; two trailing). The post-mortem updates as each one resolves on the Receipts ledger.</li>
+<li><strong>Brief 03</strong> — the methodology drift question. Why the 90-day baseline is the right denominator (not 30 / 60 / 180) and what the regression said when we tested all four.</li>
+<li><strong>Brief 04</strong> — what shifted in the panel this week; one name to track that wasn't in the Day-90 prediction set but is sitting at the threshold edge now.</li>
+</ul>
+<p>The Sunday Brief feed updates automatically; you don't have to do anything to receive new episodes. The Stadium Pitch lands on your calendar without a separate email. The next time you'll get an email from me is the Day 150 check-in (one short note) and then the Day 180 post-mortem on the Day-90 prediction. Two emails between now and the half-year mark, total. The rest happens in the new channels.</p>
+<p>Talk soon —<br>${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. The Engine Room cohort home: <a href="${SIGNALS}/post-90" style="color:#0ea5e9;">${SIGNALS}/post-90</a>. The Receipts ledger (where the Day-90 prediction resolves, name by name): <a href="${SIGNALS}/wins" style="color:#0ea5e9;">${SIGNALS}/wins</a>.</p>
+`),
+  },
+
+  // Day 150 — the "five months in" reflection. Stays brief on purpose;
+  // the reader is now inside the new environment, so the email's only
+  // job is to maintain rhythm and re-anchor the next touchpoint (Day-180
+  // post-mortem) without re-pitching anything. Brunson rule: once the
+  // environment has changed, do not pull the buyer back into the old
+  // surface to make a new ask. The email's content lives in the new env.
+  {
+    subject: "Five months. The pattern that's actually emerging.",
+    delayMs: THIRTY_MIN + 150 * ONE_DAY,
+    html: wrap(`
+<p>Five months in.</p>
+<p>If the Sunday Brief has been arriving in your podcast app, here's the pattern I'd point at if you asked me to summarise the last sixty days in one sentence: the threshold-band orgs that resolve into a funding round inside the 90-day window have a markedly different contributor-onboarding shape than the ones that resolve into a product launch or a re-rating.</p>
+<p>That's not a thing the Day-0 me would have said. It's something the panel surfaced after we'd voiced 18 weekly briefs back-to-back and noticed the contour — funding-round resolutions cluster around contributor-influx spikes that pre-date the velocity spike, while product-launch resolutions cluster around velocity spikes that pre-date the contributor influx. Causation is murky; the predictive lift from splitting the two is not.</p>
+<p>The Day-180 post-mortem (lands on the Engine Room feed at the end of next month, also written up at <a href="${SIGNALS}/wins" style="color:#0ea5e9;">${SIGNALS}/wins</a>) will report back on the Day-90 prediction with this two-shape framing applied retroactively. If the four threshold-band orgs split cleanly along the funding-vs-launch contour, that's a real finding. If they don't, the post-mortem says so.</p>
+<p>One short ask: if you've heard a Sunday Brief that landed on a name you'd been tracking before consensus, reply to this email with the org name and the brief number. That's the only feedback loop the engine asks for at this stage — one sentence, one org. It's how the next quarter's prediction set gets sharpened.</p>
+<p>Talk soon —<br>${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. Engine Room cohort home: <a href="${SIGNALS}/post-90" style="color:#0ea5e9;">${SIGNALS}/post-90</a>. If the feed isn't on your podcast app yet, the URL there walks the install in two clicks.</p>
 `),
   },
 
@@ -1121,12 +1172,15 @@ export const FIRSTLOOK_REACTIVATION_DRIP = [
  * Universal storytelling and book-promo emails are shared across all four
  * tiers — the methodology and character story don't change per buyer profile.
  *
- * Index map (verified against SOAP_OPERA_EMAILS layout 2026-05-07):
+ * Index map (verified against SOAP_OPERA_EMAILS layout 2026-05-08 —
+ * Brunson DotCom Ch 11 Phase 6 ship: +D120 EngineRoom-anchor, +D150
+ * pattern-reflection inserted between D90 and D180):
  *   0=D0  1=D1  2=D2  3=D3  4=D3.5  5=D4 €7  6=D5 Dashboard  7=D6 Insider
  *   8=D8 Book  9=D9 public-data  10=D11 Book2  11=D12 Seinfeld
  *   12=D14 missed-deal  13=D17 Sunday-play  14=D21 false-pos
  *   15=D25 regression  16=D30 quiet-decision  17=D45 Insider2
- *   18=D60 Sector Sweep  19=D75 Crystal Ball  20=D90 SoE  21=D180 SoE2
+ *   18=D60 Sector Sweep  19=D75 Crystal Ball  20=D90 EngineRoom-invite
+ *   21=D120 EngineRoom-anchor  22=D150 pattern-reflection  23=D180 SoE2
  */
 
 type Tier = "F" | "T" | "D" | "I";
