@@ -227,6 +227,70 @@ export default function SectorSweepPage() {
           </p>
         </header>
 
+        {/* HERO GUARANTEE BADGE — Brunson DotCom Secrets Ch 11 audit fix
+            2026-05-09 (push 92→100): "Risk Reversal could be louder on
+            /sector-sweep." Prior page buried the 30-day Signal-or-It's-Free
+            guarantee in section 05, three scrolls below the hero. The buyer
+            who only reads the top of the page never sees the risk reversal.
+            Hero-level guarantee badge fixes that — the moment a reader
+            sees the €1,997 price, they also see the 30-day refund. Three
+            bullet pills tell the whole story in one glance. */}
+        <section
+          aria-label="30-day Signal-or-It's-Free guarantee — at-a-glance"
+          className="rounded-xl border-2 border-emerald-500/40 bg-gradient-to-br from-emerald-950/40 via-slate-900 to-slate-950 p-5 sm:p-6 space-y-4"
+        >
+          <div className="flex items-start gap-3 sm:gap-4">
+            <span
+              aria-hidden
+              className="shrink-0 mt-0.5 w-10 h-10 rounded-full bg-emerald-500/20 border border-emerald-500/50 text-emerald-300 text-lg font-bold flex items-center justify-center"
+            >
+              ✓
+            </span>
+            <div className="flex-1 space-y-2">
+              <p className="text-emerald-300 text-xs font-semibold uppercase tracking-wider">
+                30-day Signal-or-It&rsquo;s-Free guarantee · zero exit-interview
+              </p>
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-100 leading-snug">
+                Three orgs you didn&rsquo;t already know about — or every euro
+                back inside two business days.
+              </h2>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3 pt-1">
+            <div className="rounded-lg border border-emerald-700/30 bg-emerald-950/30 p-3">
+              <p className="text-emerald-300 text-[11px] font-semibold uppercase tracking-wider mb-1">
+                Refund window
+              </p>
+              <p className="text-gray-100 text-sm font-semibold leading-snug">
+                30 calendar days from delivery
+              </p>
+            </div>
+            <div className="rounded-lg border border-emerald-700/30 bg-emerald-950/30 p-3">
+              <p className="text-emerald-300 text-[11px] font-semibold uppercase tracking-wider mb-1">
+                How to claim
+              </p>
+              <p className="text-gray-100 text-sm font-semibold leading-snug">
+                Reply <code className="text-amber-300">REFUND</code> to delivery email
+              </p>
+            </div>
+            <div className="rounded-lg border border-emerald-700/30 bg-emerald-950/30 p-3">
+              <p className="text-emerald-300 text-[11px] font-semibold uppercase tracking-wider mb-1">
+                Processed in
+              </p>
+              <p className="text-gray-100 text-sm font-semibold leading-snug">
+                Two business days, full €1,997
+              </p>
+            </div>
+          </div>
+          <p className="text-gray-400 text-xs leading-relaxed border-t border-emerald-900/40 pt-3">
+            The guarantee is unconditional. No exit interview, no &ldquo;wait,
+            let me show you one more thing.&rdquo; If the methodology
+            can&rsquo;t be reproduced from the published panel, that&rsquo;s
+            also a refund trigger — the artefact has to stand on the work,
+            not on the cheque.
+          </p>
+        </section>
+
         {/* TWO DOORS */}
         <section
           aria-label="Two doors — brief setter or direct buy"
@@ -325,6 +389,141 @@ export default function SectorSweepPage() {
           <TrialClose tone="amber">
             €1,997 against €5,959 of standalone deliverables, with the full
             sum credited if you upgrade to Insider in 60 days. Reasonable?
+          </TrialClose>
+        </section>
+
+        {/* BONUS STACK — Brunson DotCom Secrets Ch 11 audit fix 2026-05-09
+            (push 92→100): "Bonus Stack could be louder on /sector-sweep."
+            Prior page melted the bonuses into the value stack — the buyer
+            couldn't tell what was the core artefact and what was the
+            fast-action extra. Three named, time-bounded bonuses split out
+            here so the buyer reads them as bonuses, not as line items. The
+            quarterly cap is the urgency mechanic; the same-quarter delivery
+            slot is the same-week hook. */}
+        <section
+          aria-label="Three bonuses that ride along with this quarter's Sweep"
+          className="rounded-xl border-2 border-amber-500/40 bg-gradient-to-br from-amber-950/30 via-slate-900 to-slate-950 p-6 sm:p-8 space-y-5"
+        >
+          <div className="space-y-2">
+            <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider">
+              01b · Three bonuses for this quarter&rsquo;s Sweep
+            </p>
+            <h2 className="text-2xl font-bold text-gray-100 leading-snug">
+              Lock a Q3 slot and three bonuses ride along — €1,479 of stand-alone value, included.
+            </h2>
+            <p className="text-gray-400 text-sm leading-relaxed">
+              Bonuses are anti-procrastination, not promotion. They reward
+              locking the Sweep inside this quarter&rsquo;s cap of 8 slots.
+              Once the cap fills, all three bonuses roll to the next
+              cohort and the next-cohort price is €2,997 — €1,000 higher.
+              These bonuses do not stack across cohorts.
+            </p>
+          </div>
+
+          <ul className="space-y-3">
+            <li className="rounded-lg border border-amber-700/30 bg-slate-900/50 p-4 sm:p-5 space-y-2">
+              <div className="flex items-start gap-3">
+                <span
+                  aria-hidden
+                  className="shrink-0 mt-0.5 w-7 h-7 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-300 text-sm font-bold flex items-center justify-center"
+                >
+                  1
+                </span>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-baseline justify-between gap-3 flex-wrap">
+                    <p className="text-gray-100 font-bold text-base sm:text-lg leading-snug">
+                      Bonus 1 · Same-quarter delivery slot, no waiting list
+                    </p>
+                    <p className="text-amber-300 text-xs font-semibold whitespace-nowrap">
+                      €497 stand-alone
+                    </p>
+                  </div>
+                  <p className="text-gray-300 text-sm leading-relaxed mt-1.5">
+                    Lock now and your Sweep ships inside the same calendar
+                    quarter — 14 days from brief sign-off, not next-quarter-Monday.
+                    Once the cap fills, the next 7 buyers wait 8–11 weeks
+                    for the next cohort to open.
+                  </p>
+                </div>
+              </div>
+            </li>
+
+            <li className="rounded-lg border border-amber-700/30 bg-slate-900/50 p-4 sm:p-5 space-y-2">
+              <div className="flex items-start gap-3">
+                <span
+                  aria-hidden
+                  className="shrink-0 mt-0.5 w-7 h-7 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-300 text-sm font-bold flex items-center justify-center"
+                >
+                  2
+                </span>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-baseline justify-between gap-3 flex-wrap">
+                    <p className="text-gray-100 font-bold text-base sm:text-lg leading-snug">
+                      Bonus 2 · Founding-rate ratchet (€1,997 anchored to today)
+                    </p>
+                    <p className="text-amber-300 text-xs font-semibold whitespace-nowrap">
+                      €1,000 saved
+                    </p>
+                  </div>
+                  <p className="text-gray-300 text-sm leading-relaxed mt-1.5">
+                    The €1,997 founding rate is locked to your checkout
+                    date through Q4 2026. From 2027 the price moves to
+                    €2,997. If you ever buy a second Sweep — different
+                    sector, future cohort — your second-Sweep price stays
+                    at the founding rate too.
+                  </p>
+                </div>
+              </div>
+            </li>
+
+            <li className="rounded-lg border border-amber-700/30 bg-slate-900/50 p-4 sm:p-5 space-y-2">
+              <div className="flex items-start gap-3">
+                <span
+                  aria-hidden
+                  className="shrink-0 mt-0.5 w-7 h-7 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-300 text-sm font-bold flex items-center justify-center"
+                >
+                  3
+                </span>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-baseline justify-between gap-3 flex-wrap">
+                    <p className="text-gray-100 font-bold text-base sm:text-lg leading-snug">
+                      Bonus 3 · Eight-week Insider trial included (€616 value)
+                    </p>
+                    <p className="text-amber-300 text-xs font-semibold whitespace-nowrap">
+                      €616 saved
+                    </p>
+                  </div>
+                  <p className="text-gray-300 text-sm leading-relaxed mt-1.5">
+                    Eight weeks of Insider Circle (the €77/mo continuity
+                    tier — Monthly Insider Drop, weekly digest, full
+                    archive) included with your Sweep, billing-paused.
+                    Use it during your 14-day Q&amp;A window and beyond.
+                    Cancel any time before week 9 with no charge.
+                  </p>
+                </div>
+              </div>
+            </li>
+          </ul>
+
+          <div className="rounded-lg border border-amber-700/40 bg-amber-950/20 p-4 flex items-baseline justify-between text-base">
+            <span className="text-gray-300 font-semibold">
+              Three-bonus stand-alone value
+            </span>
+            <span className="font-mono font-bold text-amber-300 tabular-nums">
+              €2,113
+            </span>
+          </div>
+          <p className="text-gray-400 text-xs italic leading-relaxed border-t border-amber-900/40 pt-3">
+            Quarterly cap of 8 Sweeps is hard. When it fills, the three
+            bonuses roll to the next cohort. We don&rsquo;t back-fill,
+            we don&rsquo;t pre-sell next quarter, and we don&rsquo;t
+            stack bonuses across cohorts. One quarter, one slot, three
+            bonuses.
+          </p>
+          <TrialClose tone="amber">
+            €2,113 of bonus value rolled into the same €1,997 if locked
+            this quarter — has the math already moved past &ldquo;is it
+            worth it&rdquo;?
           </TrialClose>
         </section>
 

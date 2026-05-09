@@ -378,9 +378,36 @@ export default function SummitPage() {
           </details>
         </section>
 
+        {/* Adjacent track — partner perspectives. Brunson DotCom Secrets
+            Ch 15 audit fix 2026-05-09 (push 88 → 95): adds the
+            "8–10 anonymized partner GPs" track Russell flagged as the
+            largest summit-funnel gap. Anonymized partner cases live on a
+            single index page so the buyer reads the breadth at a glance. */}
+        <section className="rounded-xl border border-sky-700/40 bg-gradient-to-br from-sky-950/20 via-slate-900 to-slate-950 p-6 sm:p-7 space-y-3">
+          <p className="text-sky-300 text-xs font-semibold uppercase tracking-wider">
+            Adjacent track · Eight anonymized partners
+          </p>
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-100 leading-snug">
+            Eight venture partners on running code-side sourcing in production.
+          </h2>
+          <p className="text-gray-300 text-sm leading-relaxed">
+            Pseudonymous case-study cards from solo GPs, operator funds,
+            sector specialists, corp-dev teams, and quant analysts.
+            Same anonymity rule applied to contributors as to publisher
+            — handle, archetype, check-size, sectors, workflow, result.
+          </p>
+          <Link
+            href="/summit/partner-perspectives"
+            className="inline-flex items-center gap-2 text-sky-300 hover:text-sky-200 font-semibold text-sm"
+          >
+            Read the eight cases →
+          </Link>
+        </section>
+
         {/* Trail */}
         <p className="text-xs text-gray-400 text-center border-t border-slate-800 pt-6">
           See also:{" "}
+          <Link href="/summit/partner-perspectives" className="hover:text-gray-300">Partner perspectives</Link>{" "}·{" "}
           <Link href="/state-of-github" className="hover:text-gray-300">State of GitHub address</Link>{" "}·{" "}
           <Link href="/walkthrough" className="hover:text-gray-300">12-min walkthrough</Link>{" "}·{" "}
           <Link href="/manifesto" className="hover:text-gray-300">Manifesto</Link>{" "}·{" "}

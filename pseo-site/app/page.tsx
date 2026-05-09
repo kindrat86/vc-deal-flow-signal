@@ -74,6 +74,8 @@ const PILLAR_LINKS = [
   { href: "/launch", label: "Launches", sub: "Active and archived 4-stage funnels", icon: "🚀" },
   { href: "/press", label: "Press kit", sub: "Wire-ready releases + boilerplate", icon: "📰" },
   { href: "/target-list", label: "Top 100", sub: "100 voices we read on the engineering-signal frontier — substacks, podcasts, GitHub orgs, datasets — each ICP-scored", icon: "💬" },
+  { href: "/swipe-file", label: "Funnel swipe file", sub: "Harmonic, Affinity, Tracxn — three competitor funnels reverse-engineered phase by phase", icon: "📋" },
+  { href: "/invisible", label: "Read the teardown first", sub: "Full predictive teardown of one composite org — no email gate, no paywall — pitch comes after the value lands", icon: "👻" },
 ] as const;
 
 // "Where to go next" deep-dive entry points. Icons help the eye navigate a
@@ -865,10 +867,22 @@ export default function Home() {
         <p className="text-sky-400 text-xs font-medium mb-3 uppercase tracking-wider">
           {period.name} Edition · Updated {asOf}
         </p>
-        <h1 className="text-3xl sm:text-5xl font-bold text-gray-100 mb-4 leading-[1.1] tracking-tight">
+        {/* Brunson DotCom Secrets Ch 2 — Hook, Story, Offer audit 2026-05-09
+            (push 94→100): the prior H1 was a two-sentence comparison hook.
+            Sharp, but not the One-Punchy-Line a cold reader can repeat to
+            themselves on a closed laptop. The 8-word Big-Domino headline
+            below is exactly eight words long, names a falsifiable claim,
+            and re-frames the entire offer in one breath: if you believe
+            commits predict breakouts, you must use this product. The
+            comparison line below it stays as a subhead — it's still the
+            sharpest one-line elevator-pitch we have. */}
+        <h1 className="text-4xl sm:text-6xl font-bold text-gray-100 mb-3 leading-[1.05] tracking-tight">
+          Tomorrow&rsquo;s breakout is shipping commits in public now.
+        </h1>
+        <p className="text-2xl sm:text-3xl text-gray-200 mb-4 leading-snug font-medium">
           Crunchbase tells you the day they raised.{" "}
           <span className="text-sky-400">We tell you 47 days before the deck.</span>
-        </h1>
+        </p>
 
         {/* Brunson Secret Formula §1 — Ch 1 audit fix (2026-05-08):
             single-sentence "this is who we serve" avatar pin. Names

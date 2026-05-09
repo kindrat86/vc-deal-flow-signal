@@ -131,6 +131,172 @@ export default function LaunchIndex() {
           </ol>
         </section>
 
+        {/* PRE-LAUNCH RAISE-YOUR-HAND — Brunson DotCom Secrets Ch 22 audit fix
+            2026-05-09 (push 94→100): "Could add explicit pre-launch
+            'raise your hand' segmentation." Pre-launch list captures intent
+            BEFORE the launch window opens, lets the buyer self-segment by
+            track, and primes a hot list when the cart goes live. Three
+            tracks because we're running three concurrent launch archetypes:
+            Agent Credits (per-call API tier), Sector Sweep (€1,997 cohort),
+            and Charter Cohort (Insider €77/mo founding-member tier). The
+            radio-segmentation pre-qualifies the buyer; when the cart opens
+            they get the right launch in their inbox, not a blanket blast. */}
+        <section
+          aria-label="Pre-launch raise-your-hand — get notified when the next cart opens"
+          className="rounded-xl border border-amber-700/40 bg-gradient-to-br from-amber-950/20 via-slate-900 to-slate-950 p-6 sm:p-7 space-y-5"
+        >
+          <div className="space-y-2">
+            <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider">
+              Raise your hand · Pre-launch list
+            </p>
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-100 leading-snug">
+              Want to know when the next cart opens? Tell us which one.
+            </h2>
+            <p className="text-gray-300 text-sm leading-relaxed">
+              We run three concurrent launch tracks — Agent Credits,
+              Sector Sweep, Charter Cohort. Each opens on its own
+              cadence. Pick which one (or all three) and we&rsquo;ll
+              email you the moment that specific cart opens. No
+              broadcast blasts; no &ldquo;here&rsquo;s a launch you
+              don&rsquo;t care about&rdquo; — only the track you
+              raised your hand for.
+            </p>
+          </div>
+
+          <form
+            action="/api/launch/raise-hand"
+            method="POST"
+            className="space-y-4"
+          >
+            <fieldset className="space-y-2.5">
+              <legend className="text-gray-200 text-xs font-semibold uppercase tracking-wider mb-1">
+                Which track(s) — pick one or more
+              </legend>
+              <label className="flex items-start gap-3 rounded-lg border border-slate-800 bg-slate-900/40 p-3 hover:border-slate-700 cursor-pointer">
+                <input
+                  type="checkbox"
+                  name="tracks"
+                  value="agent-credits"
+                  className="mt-1 accent-amber-400"
+                />
+                <div className="flex-1 min-w-0">
+                  <p className="text-gray-100 font-semibold text-sm leading-snug">
+                    Agent Credits
+                  </p>
+                  <p className="text-gray-400 text-xs leading-relaxed mt-0.5">
+                    Per-call API + MCP tier for autonomous diligence
+                    agents. €0.19 USDC per deep-signal call. For
+                    builders running Claude/GPT-class agents against
+                    the dataset.
+                  </p>
+                </div>
+              </label>
+              <label className="flex items-start gap-3 rounded-lg border border-slate-800 bg-slate-900/40 p-3 hover:border-slate-700 cursor-pointer">
+                <input
+                  type="checkbox"
+                  name="tracks"
+                  value="sector-sweep"
+                  className="mt-1 accent-amber-400"
+                />
+                <div className="flex-1 min-w-0">
+                  <p className="text-gray-100 font-semibold text-sm leading-snug">
+                    Sector Sweep · €1,997 cohort
+                  </p>
+                  <p className="text-gray-400 text-xs leading-relaxed mt-0.5">
+                    8 slots per quarter. 40-page custom deep-dive on
+                    the sector you pick. For partners who want a
+                    written artefact, not a recurring dashboard.
+                  </p>
+                </div>
+              </label>
+              <label className="flex items-start gap-3 rounded-lg border border-slate-800 bg-slate-900/40 p-3 hover:border-slate-700 cursor-pointer">
+                <input
+                  type="checkbox"
+                  name="tracks"
+                  value="charter-cohort"
+                  className="mt-1 accent-amber-400"
+                />
+                <div className="flex-1 min-w-0">
+                  <p className="text-gray-100 font-semibold text-sm leading-snug">
+                    Charter Cohort · Insider €77/mo
+                  </p>
+                  <p className="text-gray-400 text-xs leading-relaxed mt-0.5">
+                    Founding-member rate locked through Q4 2026.
+                    Monthly Insider Drop, full archive, leaderboard
+                    access. Doors open Mon → Thu every cohort.
+                  </p>
+                </div>
+              </label>
+            </fieldset>
+
+            <fieldset className="space-y-2">
+              <legend className="text-gray-200 text-xs font-semibold uppercase tracking-wider mb-1">
+                Buyer archetype (helps us tailor the launch email)
+              </legend>
+              <div className="grid sm:grid-cols-2 gap-2">
+                {[
+                  { value: "solo-angel", label: "Solo angel · €5k–€50k checks" },
+                  { value: "fund-partner", label: "Fund partner · €100k–€2M" },
+                  { value: "operator", label: "Operator / GP / corp-dev" },
+                  { value: "builder", label: "Builder / agent-developer" },
+                  { value: "other", label: "Other / just curious" },
+                ].map((a) => (
+                  <label
+                    key={a.value}
+                    className="flex items-center gap-2 rounded-lg border border-slate-800 bg-slate-900/40 px-3 py-2 hover:border-slate-700 cursor-pointer"
+                  >
+                    <input
+                      type="radio"
+                      name="archetype"
+                      value={a.value}
+                      className="accent-amber-400"
+                    />
+                    <span className="text-gray-200 text-xs leading-snug">
+                      {a.label}
+                    </span>
+                  </label>
+                ))}
+              </div>
+            </fieldset>
+
+            <div className="space-y-2">
+              <label
+                htmlFor="raise-hand-email"
+                className="block text-gray-200 text-xs font-semibold uppercase tracking-wider"
+              >
+                Email
+              </label>
+              <input
+                id="raise-hand-email"
+                type="email"
+                name="email"
+                required
+                autoComplete="email"
+                placeholder="you@yourfund.com"
+                className="w-full rounded-lg border border-slate-700 bg-slate-950/60 px-4 py-3 text-gray-100 placeholder-gray-500 focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500"
+              />
+              <input type="hidden" name="utm_source" value="launch-index" />
+              <input type="hidden" name="utm_medium" value="organic" />
+              <input type="hidden" name="utm_campaign" value="raise-hand-2026" />
+            </div>
+
+            <button
+              type="submit"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-6 py-3 transition-colors"
+            >
+              Add me to the pre-launch list →
+            </button>
+          </form>
+
+          <p className="text-gray-400 text-xs leading-relaxed border-t border-amber-900/40 pt-3">
+            One email per cart-open, per track you raised your hand
+            for. No broadcast blasts. Unsubscribe in one click. Same
+            anonymity-preserving stack as the weekly digest — your
+            email never appears on any public list, leaderboard, or
+            attendee roster.
+          </p>
+        </section>
+
         {open.length > 0 && (
           <section className="space-y-4">
             <h2 className="text-amber-300 text-xs font-semibold uppercase tracking-wider">

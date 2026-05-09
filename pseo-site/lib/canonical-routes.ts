@@ -85,6 +85,12 @@ export const CANONICAL_PROD_ROUTES = [
   "/crystal-ball",
   "/friday-preview",
 
+  // Brunson DotCom Secrets audit fix 2026-05-09 (Ch 9 + 13 + 15 + 21)
+  "/swipe-file",                       // Ch 9 — three reverse-engineered competitor funnels
+  "/firstlook/cold",                   // Ch 13 — second bait variant for cold IG/FB traffic
+  "/summit/partner-perspectives",      // Ch 15 — eight anonymized partner GP cases
+  "/invisible",                        // Ch 21 — invisible-funnel ladder (value before pitch)
+
   // Well-known / agent surfaces (Pass VI–VIII shipped these)
   "/llms.txt",
   "/agents.txt",
