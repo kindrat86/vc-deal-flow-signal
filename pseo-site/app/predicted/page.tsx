@@ -4,6 +4,8 @@ import SignalBadge from "@/components/SignalBadge";
 import ShareBar from "@/components/ShareBar";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { VideoEmbedBlock } from "@/components/VideoEmbedBlock";
+import { HreflangLinks } from "@/components/HreflangLinks";
+import { DEFAULT_HREFLANG_LANGUAGES } from "@/lib/hreflang";
 import {
   getCurrentPredictionWeek,
   getAllPredictionWeeks,
@@ -149,6 +151,10 @@ export default function PredictedPage() {
 
   return (
     <>
+      <HreflangLinks
+        canonical="https://signals.gitdealflow.com/predicted"
+        languages={DEFAULT_HREFLANG_LANGUAGES}
+      />
       <AgentMirrorLinks path="/predicted" qaCategory="methodology" />
       <script
         type="application/ld+json"

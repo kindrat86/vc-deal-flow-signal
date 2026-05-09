@@ -5,6 +5,7 @@ import { alternatives, getAlternative, getAllAlternativeSlugs, type AlternativeF
 import { useCases } from "@/content/use-cases";
 import { getAllSectors, getCurrentPeriod, getDataLastModified } from "@/lib/data";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { HreflangLinks } from "@/components/HreflangLinks";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -216,6 +217,14 @@ export default async function AlternativePage({ params }: PageProps) {
 
   return (
     <>
+      <HreflangLinks
+        canonical={pageUrl}
+        languages={{
+          en: pageUrl,
+          "en-US": pageUrl,
+          "x-default": pageUrl,
+        }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
