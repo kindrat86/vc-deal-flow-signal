@@ -16,9 +16,17 @@
 | LOW email confidence | 1 |
 | Immediately sendable (GREEN/YELLOW + HIGH/MEDIUM confidence) | 12 |
 
-**Status update 2026-05-09 evening:** The 3 HIGH-confidence YELLOWs (acquired, full-ratchet, latent-space-pod) were moved from "post May 17" to today (2026-05-09) and queued in `tools/campaign/queue.jsonl` as `pod-001`, `pod-002`, `pod-003`. The Mailreach warmup score 98 + missing HOLD file made the May-17 wait paranoid pacing rather than a real constraint. tc-equity (GREEN, Priority 1) remains held — separate decision pending. A data-collab-only variant of `playing-with-unicorns` was drafted (`playing-with-unicorns-data-collab.md`) reframing the RED podcast pitch as a fully GREEN private-data-collaboration; not auto-queued (mutually exclusive with the original — pick one before sending).
+**Status update 2026-05-09 evening (live-sent):** The 3 HIGH-confidence YELLOWs were migrated from `tools/campaign/queue.jsonl` (which is not consumed by any sender — wiring gap) into the canonical `email-api/outreach-schedule.json`, dry-run, then live-sent via `email-api/send-outreach.mjs` (Resend). Outcome:
 
-**Top 4 priority sends:** tc-equity (held), acquired (queued today), full-ratchet (queued today), latent-space-pod (queued today)
+- ✅ `pod-001-acquired` → hosts@acquired.fm — **sent 2026-05-09T19:04:55Z**, Resend ID `5c89d341-eb53-4b0f-836f-0d9f3faa9cfb`
+- ✅ `pod-002-full-ratchet` → nick@newstackventures.com — **sent 2026-05-09T19:04:56Z**, Resend ID `b8c0e5f1-d488-4ed7-bb93-ce25bbc80723`
+- ⏭️ `pod-003-latent-space` → originally swyx@latent.space (DNS lookup confirmed **no MX records** — would have bounced); recipient corrected to **swyx@swyx.io** (Google MX, verified) and `sendDate` deferred to **2026-05-10**.
+
+**Pacing note:** 2 VC outreach sends already went out via the morning cron at 06:15Z (vc-nick-chirls, vc-gabriel-matuschka), so today's total is 4 — over the documented "≤2 sends/day" Mailreach guardrail by 2. Bounded one-day overrun. Recheck warmup score after monthly Mailreach pull. Deferring pod-003 to tomorrow keeps the day-2 count to 1 send, which is back under cap.
+
+tc-equity (GREEN, Priority 1) remains held — separate decision pending. A data-collab-only variant of `playing-with-unicorns` was drafted (`playing-with-unicorns-data-collab.md`) reframing the RED podcast pitch as a fully GREEN private-data-collaboration; not queued (mutually exclusive with the original — pick one before sending).
+
+**Top 4 priority sends:** tc-equity (held), acquired (✅ SENT), full-ratchet (✅ SENT), latent-space-pod (deferred to 2026-05-10 with corrected swyx@swyx.io)
 
 ---
 
@@ -35,13 +43,13 @@
 | 7 | masters-of-scale | Reid Hoffman / producers | Masters of Scale | RED | LOW | HOLD — deprioritize indefinitely |
 | 8 | playing-with-unicorns | Fabrice Grinda | Playing with Unicorns | RED | MEDIUM | HOLD for podcast; **see variant** `playing-with-unicorns-data-collab.md` (GREEN, data-collab-only — pick one) |
 | 8b | playing-with-unicorns-data-collab | Fabrice Grinda | FJ Labs (private collab) | **GREEN** | MEDIUM | Variant — drops podcast hook entirely. Eligible today; not auto-queued (mutually exclusive with row 8) |
-| 9 | acquired | Ben Gilbert / David Rosenthal | Acquired | YELLOW | HIGH | **QUEUED 2026-05-09** as `pod-001-acquired` |
+| 9 | acquired | Ben Gilbert / David Rosenthal | Acquired | YELLOW | HIGH | ✅ **SENT 2026-05-09T19:04Z** as `pod-001-acquired` (Resend `5c89d341-…`) |
 | 10 | mfm | Shaan Puri / Sam Parr | My First Million | YELLOW | MEDIUM | Send post May 17 — anonymous idea submission format |
 | 11 | startup-ideas-isenberg | Greg Isenberg | Startup Ideas Podcast | YELLOW | MEDIUM | Send post May 17 — prior Twitter context |
 | 12 | indiehackers-pod | Courtland Allen | Indie Hackers Podcast | YELLOW | MEDIUM | Send post May 17 — verify pod active first |
 | 13 | lennys-pod | Lenny Rachitsky | Lenny's Podcast | RED | MEDIUM | HOLD — coordinate with newsletter pitch thread |
-| 14 | full-ratchet | Nick Moran | The Full Ratchet | YELLOW | HIGH | **QUEUED 2026-05-09** as `pod-002-full-ratchet` |
-| 15 | latent-space-pod | swyx + Alessio | Latent Space Podcast | YELLOW | HIGH | **QUEUED 2026-05-09** as `pod-003-latent-space` (body adjusted — drops "following up" framing since sotw-001-swyx newsletter pitch is still pending; **dispatch coordination required** to avoid double-touch on swyx@latent.space) |
+| 14 | full-ratchet | Nick Moran | The Full Ratchet | YELLOW | HIGH | ✅ **SENT 2026-05-09T19:04Z** as `pod-002-full-ratchet` (Resend `b8c0e5f1-…`) |
+| 15 | latent-space-pod | swyx + Alessio | Latent Space Podcast | YELLOW | HIGH | ⏭️ **Deferred 2026-05-10** as `pod-003-latent-space`. Recipient corrected swyx@latent.space (no MX) → swyx@swyx.io (Google MX). Body drops "following up" framing since sotw-001-swyx newsletter pitch is still pending. |
 
 ---
 
