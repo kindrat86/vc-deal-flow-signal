@@ -6,6 +6,51 @@ const BASE_URL = "https://signals.gitdealflow.com";
 const CANONICAL_HOST = "signals.gitdealflow.com";
 
 /**
+ * Walkthrough close-variant A/B test (Brunson Expert Secrets Ch 13 — Stack
+ * and Closes). The page renders four named closes (Money / Identity /
+ * Pricing / Urgency); the chapter teaches that one close converts cold
+ * traffic best and should *lead*. We deterministically bucket each visitor
+ * into one of four variants on the first /walkthrough hit, set a 30-day
+ * cookie, and let the page surface the matching close in the prominent
+ * "Lead Close" slot above the four-close grid.
+ *
+ * Bucketing is deterministic on a stable seed (IP + UA) so the same client
+ * always gets the same variant — keeps analytics consistent across
+ * sessions and survives cookie clears for the same fingerprint window.
+ * If headers are missing (rare — most agent crawlers include UA at
+ * minimum), we fall back to Math.random which still distributes evenly
+ * across the population.
+ */
+const WALKTHROUGH_VARIANT_COOKIE = "gdf_close_variant";
+const WALKTHROUGH_VARIANTS = ["money", "identity", "pricing", "urgency"] as const;
+type WalkthroughVariant = (typeof WALKTHROUGH_VARIANTS)[number];
+
+function hashSeedToVariant(seed: string): WalkthroughVariant {
+  let h = 0;
+  for (let i = 0; i < seed.length; i++) {
+    h = ((h << 5) - h + seed.charCodeAt(i)) | 0;
+  }
+  return WALKTHROUGH_VARIANTS[Math.abs(h) % WALKTHROUGH_VARIANTS.length];
+}
+
+function pickWalkthroughVariant(request: NextRequest): WalkthroughVariant {
+  const seed =
+    (request.headers.get("x-forwarded-for") ?? "") +
+    "|" +
+    (request.headers.get("user-agent") ?? "") +
+    "|" +
+    (request.headers.get("accept-language") ?? "");
+  if (seed.length > 2) return hashSeedToVariant(seed);
+  // Headers genuinely missing → uniform random. Floor of a 0-1 float × 4
+  // is equally likely to land on any bucket.
+  return WALKTHROUGH_VARIANTS[Math.floor(Math.random() * WALKTHROUGH_VARIANTS.length)];
+}
+
+function isValidWalkthroughVariant(value: string | undefined): value is WalkthroughVariant {
+  return !!value && (WALKTHROUGH_VARIANTS as readonly string[]).includes(value);
+}
+
+/**
  * Path prefixes whose pages opt out of indexing via Next metadata
  * (`metadata.robots.index = false`). The proxy normally sets
  * `X-Robots-Tag: index, follow` as belt-and-suspenders, but for these paths
@@ -146,6 +191,21 @@ export function proxy(request: NextRequest) {
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set("x-pathname", pathname);
 
+  // Walkthrough close-variant assignment (Brunson Expert Secrets Ch 13).
+  // Run only on /walkthrough — every other surface skips this branch and
+  // pays zero cost. We compute the variant whether or not the cookie is
+  // already set so we can forward `x-close-variant` to the page; if it's
+  // already set we honour the existing bucket.
+  let walkthroughVariantToSet: WalkthroughVariant | null = null;
+  if (pathname === "/walkthrough" || pathname === "/walkthrough/") {
+    const existing = request.cookies.get(WALKTHROUGH_VARIANT_COOKIE)?.value;
+    const variant: WalkthroughVariant = isValidWalkthroughVariant(existing)
+      ? existing
+      : pickWalkthroughVariant(request);
+    requestHeaders.set("x-close-variant", variant);
+    if (existing !== variant) walkthroughVariantToSet = variant;
+  }
+
   let response: NextResponse;
   if (agentBotToken) {
     requestHeaders.set("x-agent-bot", agentBotToken);
@@ -168,6 +228,23 @@ export function proxy(request: NextRequest) {
     "X-Robots-Tag",
     shouldNoindex(pathname) ? "noindex, follow" : "index, follow",
   );
+
+  // Walkthrough variant cookie — set on response so first-visit clients
+  // immediately see the chosen bucket on subsequent navigations and on the
+  // inline cookie-read script that flips data-lead-close before paint.
+  // 30-day TTL is long enough to keep a single visitor's experience stable
+  // across the typical decision window (Brunson SOS runs D0–D30) without
+  // permanently locking analytics into stale buckets.
+  if (walkthroughVariantToSet) {
+    response.cookies.set(WALKTHROUGH_VARIANT_COOKIE, walkthroughVariantToSet, {
+      path: "/",
+      maxAge: 60 * 60 * 24 * 30,
+      sameSite: "lax",
+      secure: true,
+      httpOnly: false, // client script must read it to set data-lead-close
+    });
+  }
+
   return response;
 }
 
