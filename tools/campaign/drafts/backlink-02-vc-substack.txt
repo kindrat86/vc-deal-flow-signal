@@ -1,0 +1,17 @@
+TO: {{firstName}}@{{substack-domain}}
+FROM: signal@gitdealflow.com
+SUBJECT: GitHub commits → Series A timing — data, not anecdote
+
+Hi {{firstName}},
+
+Read your last piece on {{topic}} — the framing on signal vs. noise stuck.
+
+Adjacent finding you might enjoy: we ran 12,000 startups' GitHub histories against their funding outcomes. Engineering-acceleration composite leads Series A by 4-12 weeks (AUC 0.78). SSRN: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558
+
+The interesting part isn't the prediction — it's that the signal exists publicly, in commit graphs anyone can scrape. Half the alpha in private markets has apparently been hiding in a free API.
+
+If a chart or dataset would help a future essay, just say.
+
+The Data Nerd
+gitdealflow.com
+ssrn.com/abstract=6606558

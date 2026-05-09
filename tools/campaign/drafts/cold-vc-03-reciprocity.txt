@@ -1,0 +1,17 @@
+TO: {{firstName}}@{{firm-domain}}
+FROM: signal@gitdealflow.com
+SUBJECT: Free Scout Score on 5 startups for {{firm}}
+
+Hi {{firstName}},
+
+Standing offer for Tier-1 partners: send me 5 startup names you're tracking and I'll return a GitHub Scout Score on each — engineering acceleration, contributor health, release cadence — within 48h, no charge.
+
+Method backs out of SSRN 6606558 (https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558), which shows the composite leads Series A by 4-12 weeks at AUC 0.78.
+
+If the output's useful, the live index is at https://signals.gitdealflow.com. If it's not, you've cost me 30 minutes of compute.
+
+Reply with 5 names?
+
+The Data Nerd
+gitdealflow.com
+ssrn.com/abstract=6606558
