@@ -134,3 +134,37 @@ Notes: Dream Customer formally pivoted today from institutional-angel to Develop
   > You can see this split in commit data. Pirate commits: fast, messy, exploratory, solo bursts. Architect commits: reviewed PRs, refactors, typed contracts. The ratio is a signature. Teams that scale show a clean handoff. Teams that stall never make the switch.
   - Chars: 258
   - URL: https://x.com/danshipper/status/2043819933675450455
+
+### 2026-05-09 ✅ POSTED (6 replies via Chrome MCP — first day after 20-day gap, autonomous batch)
+
+Notes: 20 days dark since Apr 19. Claude-for-Chrome extension installed today; Browser 1 selected; @data_nerd session active. User explicit consent for autonomous batch in chat, scope = 5–7 Tier 2/3 + 1–2 Tier 1 sprinkles. Skipped @GergelyOrosz per Apr 19 note (still blocking AI-style replies). Skipped @rrhoover (recent reply Apr 19, too eager). Skipped @packyM (2-word "Appointment Viewing" QT), @levelsio (Shein/SQLite/EV chargers off-topic), @ShaanVP (hantavirus off-topic), @swyx (NK hackers off-topic), @jasonfried ("a lot of stuff coming" too vague), @hunterwalk (timeline didn't render), @fredwilson (last post 10 days old). Tier mix: 2 Tier 2 + 3 Tier 3 + 1 Tier 1.
+
+- **@PeterJ_Walker** ✅ — Angle: AI Infra dominates seed sector map — contributor curve leads fund-raise data
+  > AI Infra at seed shows up in commit data weeks before the rounds. 3× YoY growth in repos with 50+ contributors this quarter, almost all infra-tagged. The fund-raise data is the lagging indicator. The contributor curve is the leading one.
+  - Chars: 234
+  - URL: https://x.com/PeterJ_Walker/status/2052827487483154895
+
+- **@Samirkaji** ✅ — Angle: $1T+ Anthropic broker chatter — secondary activity leads price discovery
+  > Broker activity is the one signal that consistently leads the tape. Hot rounds this quarter — secondary chatter spikes 8-10 days before the primary leaks. By the time price discovery hits the news, the mark's already days behind. $1T for Anthropic fits the pattern.
+  - Chars: 263
+  - URL: https://x.com/Samirkaji/status/2052914073533313341
+
+- **@gregisenberg** ✅ — Angle: AI-native opportunity 2x2 — engineering velocity peaks first in top-right quadrant
+  > Top-right is also where the engineering data lights up first. Repos in high-pain/high-repeat quadrants show 2-3× contributor growth vs the other three, 2 quarters before they monetize. The matrix shows where to build. The data shows who's already there.
+  - Chars: 256
+  - URL: https://x.com/gregisenberg/status/2052074455908614473
+
+- **@arvidkahl** ✅ — Angle: Source-as-spec / agentic coding leaves a commit signature 6mo before teams admit it
+  > The shift shows up in commit data 6 months before teams admit it. Diffs get smaller, comments denser, more docs per commit. Source becomes spec at the line level. Teams running this pattern ship 2× the features per engineer the next quarter. Determinism is downstream.
+  - Chars: 271
+  - URL: https://x.com/arvidkahl/status/2052899712311669197
+
+- **@danmartell** ✅ — Angle: AI 10× workflow claim is real but bimodal — top quartile +4×, bottom quartile zero
+  > The 10× claim shows up in commit data, but unevenly. Top quartile teams using AI agents: 4× output per engineer-hour. Bottom quartile: net zero — agents cycle on rejected PRs. The variance widened more in 2026 than in any prior shift. Tool ≠ leverage.
+  - Chars: 253
+  - URL: https://x.com/danmartell/status/2053135410797183354
+
+- **@bfeld** ✅ — Angle: 36 ships in 2 sessions = new top-decile signature; same tool, different velocity
+  > 36 ships in 2 sessions is the new top-decile signature. We track this across funded teams — pre-AI-agent baseline was ~1.2 ships/dev/day; post-agent top quartile is hitting 8-12. The catch: variance also widened 3×. Same tool, different velocity per team.
+  - Chars: 259
+  - URL: https://x.com/bfeld/status/2052416679557365813
