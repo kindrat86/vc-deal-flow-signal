@@ -1187,6 +1187,16 @@ const SURFACES: Surface[] = [
   { name: "qa-jsonl", url: `${SITE}/qa.jsonl`, format: "application/x-ndjson", category: "retrieval", description: "Q&A NDJSON corpus — citation-ready, RAG-friendly" },
   { name: "qa-jsonl-wellknown", url: `${SITE}/.well-known/qa.jsonl`, format: "application/x-ndjson", category: "retrieval", description: "Well-known alias for /qa.jsonl" },
   { name: "markdown-mirror", url: `${SITE}/md/`, format: "text/markdown", category: "retrieval", description: "Markdown mirror — every page available at /md/{path}" },
+  // ── Community / movement ───────────────────────────────
+  // Brunson Expert Secrets §1 Ch 4 (Mass Movement Vehicle). The Charter
+  // Cohort is the member-side ledger that pairs with /wins (startup-side).
+  // Pseudonymous handles welcome under the same anonymity rule as the
+  // founder. The JSON endpoint mirrors /members hub for agents, the human
+  // web UI surfaces the same data with the seat-claim CTA.
+  { name: "members-cohort", url: `${SITE}/api/v1/members.json`, format: "application/json", category: "community", description: "Charter Cohort 2026 — member roster + leaderboard + aggregate stats + 60d/90d grading rules" },
+  { name: "members-hub", url: `${SITE}/members`, format: "text/html", category: "community", description: "Charter Cohort 2026 hub — 25-seat counter, archetype templates, claim-a-seat CTA" },
+  { name: "members-leaderboard", url: `${SITE}/members/leaderboard`, format: "text/html", category: "community", description: "Public ranked roster of Charter Cohort members by 60d/90d hits" },
+  { name: "members-apply", url: `${SITE}/members/join`, format: "text/html", category: "community", description: "Charter seat application form — pseudonymous handles welcome, 48h written review" },
   // ── Policy / governance ────────────────────────────────
   { name: "ai-policy", url: `${SITE}/.well-known/ai-policy.json`, format: "application/json", category: "policy", description: "Machine-readable AI access policy — per-agent allow/disallow + use modes" },
   { name: "ai-policy-shortname", url: `${SITE}/.well-known/ai.json`, format: "application/json", category: "policy", description: "Short-name alias for ai-policy.json" },
