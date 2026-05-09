@@ -475,6 +475,9 @@ export default function PerfectWebinarPage() {
             sweep. Three touchpoints, twelve minutes a week, sub-€10/mo. The
             dashboard is just a tool — the leverage is in the rhythm.
           </p>
+          <TrialClose tone="amber">
+            Twelve minutes a week, three touchpoints, one rhythm. Sound fair?
+          </TrialClose>
         </section>
 
         {/* CONVERSION STORY — Brunson Expert Secrets Ch 12. Five-step
