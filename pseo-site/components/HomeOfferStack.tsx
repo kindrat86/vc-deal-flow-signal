@@ -2,12 +2,12 @@ import Link from "next/link";
 
 // Brunson DotCom Secrets Ch 12 + Expert Secrets Ch 13 — the Stack Slide.
 // Russell-Brunson HSO audit 2026-05-08 flagged that the full priced
-// stack lives on /firstlook (VALUE_STACK) and /perfect-webinar
+// stack lives on /firstlook (VALUE_STACK) and /walkthrough
 // (STACK_ITEMS) but never on the home page. Most traffic never gets
 // to those sub-pages. The Brunson rule: the stack belongs at the
 // buying moment, not one click away.
 //
-// Numbers mirror /perfect-webinar STACK_ITEMS so the anchor is
+// Numbers mirror /walkthrough STACK_ITEMS so the anchor is
 // consistent across every surface a reader might compare against.
 
 type StackLine = {
@@ -124,7 +124,7 @@ export default function HomeOfferStack() {
         </dl>
         <div className="flex flex-col sm:flex-row gap-3">
           <Link
-            href="/perfect-webinar"
+            href="/walkthrough"
             className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white px-5 py-3 text-sm font-semibold transition-colors shadow-sm shadow-emerald-500/20"
           >
             See the full pitch (12-min) &rarr;

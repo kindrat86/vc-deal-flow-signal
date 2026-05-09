@@ -51,8 +51,8 @@ const EXPERIMENTS: Experiment[] = [
   },
   {
     id: "fw-closes-2026-05",
-    name: "Four named closes on /perfect-webinar",
-    surface: "/perfect-webinar",
+    name: "Four named closes on /walkthrough",
+    surface: "/walkthrough",
     date: "2026-05",
     hypothesis:
       "Replacing a single generic close with four named closes (Money / Identity / Pricing / Urgency) will lift Dashboard signups from the page.",
@@ -91,7 +91,7 @@ const EXPERIMENTS: Experiment[] = [
   {
     id: "fb-pw-2026-05",
     name: "5-Minute walkthrough variant",
-    surface: "/perfect-webinar/5min",
+    surface: "/walkthrough/5min",
     date: "2026-05",
     hypothesis:
       "A condensed 5-minute version captures buyers with less time who would have bounced from the full 12-min walkthrough.",
@@ -241,8 +241,8 @@ const EXPERIMENTS: Experiment[] = [
   },
   {
     id: "hook-tuesday-2026-05",
-    name: "\"Tuesday in August\" future-pace headline on /perfect-webinar",
-    surface: "/perfect-webinar",
+    name: "\"Tuesday in August\" future-pace headline on /walkthrough",
+    surface: "/walkthrough",
     date: "2026-05",
     hypothesis:
       "A specific-day mental-movie headline (\"A Tuesday in August. The cadence is installed.\") outperforms a feature-anchored headline (\"What you get for €9.97/mo\") at the bridge between Conversion Story and Stack.",

@@ -9,7 +9,7 @@
  *      LD blocks on a page so this is additive — does not interfere with
  *      the host page's existing @graph.
  *
- * Used by /predicted (anchors sXFZHCKkROA) and /perfect-webinar (anchors
+ * Used by /predicted (anchors sXFZHCKkROA) and /walkthrough (anchors
  * 6wgrWtR6eZg). Keeps the per-page JSON-LD lean while still giving Google /
  * Bing video carousels a complete VideoObject for the SERP.
  */

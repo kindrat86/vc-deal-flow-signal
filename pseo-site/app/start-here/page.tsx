@@ -33,7 +33,7 @@ const PATHS = [
     minutes: "12 min",
     label: "Read the walkthrough",
     desc: "The full epiphany — core claim, three objections collapsed, stack, and the four closes. Read it the way you'd read a long-form blog post.",
-    href: "/perfect-webinar",
+    href: "/walkthrough",
     badge: "Convinced you want to read more",
     color: "violet",
   },
@@ -41,7 +41,7 @@ const PATHS = [
     minutes: "5 min",
     label: "Read the 5-minute walkthrough",
     desc: "Same argument, condensed to ~820 words. For the buyer who has 5, not 12.",
-    href: "/perfect-webinar/5min",
+    href: "/walkthrough/5min",
     badge: "Short on time",
     color: "amber",
   },
@@ -281,7 +281,7 @@ export default function StartHerePage() {
             <li>→ <Link href="/origin" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">Origin</Link> — the founder backstory behind the product.</li>
             <li>→ <Link href="/about/founder" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">About the founder</Link> — identity, parables, the polarity that drew you here.</li>
             <li>→ <Link href="/funnels" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">Funnel Hub</Link> — every entry point to the product, mapped on one page.</li>
-            <li>→ <Link href="/dream-100" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">Top 100</Link> — the 100 voices we read on the engineering-signal frontier.</li>
+            <li>→ <Link href="/target-list" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">Top 100</Link> — the 100 voices we read on the engineering-signal frontier.</li>
             <li>→ <Link href="/distribution" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">Distribution</Link> — every channel where we publish + every feed we expose.</li>
             <li>→ <Link href="/manifesto" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">Manifesto</Link> — what we believe, what we&rsquo;re replacing, who&rsquo;s on the bus.</li>
             <li>→ <Link href="/roadmap" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">Roadmap</Link> — what&rsquo;s shipping next + what&rsquo;s on the public bet.</li>

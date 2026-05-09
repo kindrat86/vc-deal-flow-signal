@@ -132,7 +132,7 @@ export default function ApplyForm() {
           <p className="text-gray-400 text-sm leading-relaxed">
             If you haven&rsquo;t already, the{" "}
             <a
-              href="/perfect-webinar"
+              href="/walkthrough"
               className="text-sky-400 hover:text-sky-300 underline decoration-dotted"
             >
               12-minute walkthrough

@@ -64,7 +64,7 @@ const MODULES: Module[] = [
     content:
       "An engineer who reads commit logs for fun and writes €5k–€50k checks on the side, 5–40 angel checks a year, more curious about codebases than about pitch decks. Three thesis axes: AI infrastructure, dev tools, technical SaaS. The disqualifier is as important as the qualifier — Series-B+ partners with six-figure data budgets are not us.",
     links: [
-      { label: "/dream-100 — the top 100 voices the buyer reads", href: "/dream-100" },
+      { label: "/target-list — the top 100 voices the buyer reads", href: "/target-list" },
       { label: "/funnels — every entry point sized to the buyer", href: "/funnels" },
     ],
   },
@@ -102,7 +102,7 @@ const MODULES: Module[] = [
     content:
       "If commit-velocity acceleration is the most leading public signal in venture capital, every other deal-flow source — pitch decks, AngelList, Crunchbase, warm intros — is a lagging indicator. The whole investing thesis falls or stands on whether that belief is true. Once you accept it, everything we sell follows automatically. If you don't accept it, no amount of stack will move you. Find this belief for your own product before you write copy.",
     links: [
-      { label: "/perfect-webinar — core claim + Three Objections", href: "/perfect-webinar" },
+      { label: "/walkthrough — core claim + Three Objections", href: "/walkthrough" },
       { label: "/pitch — the same belief in 90 seconds", href: "/pitch" },
     ],
   },
@@ -114,8 +114,8 @@ const MODULES: Module[] = [
     content:
       "The canonical conversion script. (1) Name the old way the buyer was sold — for us, 'best deals come from your network.' (2) Reveal the new vehicle — engineering acceleration. (3) Remove the external struggle — you don't need fund-grade tooling. (4) Remove the internal struggle — you don't need to become a different person to source. (5) Show the frameworks — Sunday digest, Wednesday filter, end-of-quarter sweep. Each step is a beat the reader has to walk through; skip one and they bounce.",
     links: [
-      { label: "/perfect-webinar#conversion-story — full script", href: "/perfect-webinar#conversion-story" },
-      { label: "/perfect-webinar/5min — condensed version", href: "/perfect-webinar/5min" },
+      { label: "/walkthrough#conversion-story — full script", href: "/walkthrough#conversion-story" },
+      { label: "/walkthrough/5min — condensed version", href: "/walkthrough/5min" },
     ],
   },
   {
@@ -126,7 +126,7 @@ const MODULES: Module[] = [
     content:
       "Eight objects, each with a standalone value, totalling €1,728/yr. The buyer's brain anchors on the total. The price (€9.97/mo = €119.64/yr) becomes a 14× discount — which is the actual story. Stack order matters: the most desirable thing first, the bonus last. Never bury the dashboard inside the methodology vault. Lead with the thing the buyer wants most.",
     links: [
-      { label: "/perfect-webinar — the canonical 8-row stack", href: "/perfect-webinar" },
+      { label: "/walkthrough — the canonical 8-row stack", href: "/walkthrough" },
       { label: "/pricing — stack on the offer page", href: "/pricing" },
     ],
   },
@@ -138,7 +138,7 @@ const MODULES: Module[] = [
     content:
       "Money close fires for the spreadsheet buyer. Identity close fires for the engineer who's tired of pretending to be a partner. Pricing close fires for the rate-anchor — €1,728 retail vs €119.64 founding. Urgency close fires for the calendar — every Monday skipped is one 21–47-day window closed. Encore is the safety net for everyone — eight lines, the whole offer in one block, before the FAQ. One of the five always lands; you don't pick, you stack.",
     links: [
-      { label: "/perfect-webinar — four-close grid + encore", href: "/perfect-webinar" },
+      { label: "/walkthrough — four-close grid + encore", href: "/walkthrough" },
     ],
   },
   {
@@ -150,7 +150,7 @@ const MODULES: Module[] = [
       "Owned: email list (free Acceleration Watch), RSS, MCP server in the buyer's IDE. Earned: Reddit AEO, dev.to long-form, Substack mirror, federated social (Bluesky / Mastodon / Farcaster), academic SSRN citation. Paid: deferred under HOLD until earned-only proof. The reason isn't ideology, it's compounding — earned channels keep paying after you stop. Paid channels stop the day the budget does.",
     links: [
       { label: "/distribution — every channel mapped", href: "/distribution" },
-      { label: "/dream-100 — top 100 voices we read on each channel", href: "/dream-100" },
+      { label: "/target-list — top 100 voices we read on each channel", href: "/target-list" },
     ],
   },
   {

@@ -14,7 +14,7 @@ export const dynamic = "force-static";
 //      sophisticated buyer can locate themselves and us
 //   4) Anchoring every claim in reproducible proof (SSRN, Zenodo, CSV)
 // This is the canonical "Named Mechanism" page. Linked from home pillar
-// links, manifesto, and the perfect-webinar Big Domino narrative.
+// links, manifesto, and the walkthrough core-claim narrative.
 
 export const metadata: Metadata = {
   title:

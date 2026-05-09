@@ -57,7 +57,9 @@ const SEGMENT_LABELS: Record<string, string> = {
   // commerce/funnel
   book: "Book",
   challenge: "7-Day Challenge",
-  "perfect-webinar": "Walkthrough",
+  walkthrough: "Walkthrough",
+  "target-list": "Target List",
+  "top-partners": "Top Partners",
   insider: "Insider",
   enterprise: "Enterprise",
   firstlook: "First Look",

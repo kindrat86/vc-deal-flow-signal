@@ -222,7 +222,7 @@ export default function PitchPage() {
         <p className="text-center text-gray-400 text-sm pt-4">
           Want the long version? Read the{" "}
           <Link
-            href="/perfect-webinar"
+            href="/walkthrough"
             className="text-sky-400 hover:text-sky-300 underline decoration-dotted"
           >
             12-minute walkthrough

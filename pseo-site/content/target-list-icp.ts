@@ -21,9 +21,9 @@
  *   T2 (70-84) — sustaining cadence (monthly contact)
  *   T3 (<70)  — read-only / mental-model only
  *
- * Keys must match `name` exactly in @/content/dream-100. Verified at runtime
+ * Keys must match `name` exactly in @/content/target-list. Verified at runtime
  * by `assertCoverage()` (called from the page render path). Keep this file
- * in lockstep with @/content/dream-100 — when names change there, change them
+ * in lockstep with @/content/target-list — when names change there, change them
  * here, or coverage will fail and the build will surface the gap.
  */
 
@@ -197,7 +197,7 @@ export function assertCoverage(names: string[]): void {
       `[dream-100-icp] coverage drift detected:\n` +
         (missing.length ? `  missing scores: ${missing.join(", ")}\n` : "") +
         (orphans.length ? `  orphan scores:  ${orphans.join(", ")}\n` : "") +
-        `  Sync ICP_SCORES with @/content/dream-100 names.`
+        `  Sync ICP_SCORES with @/content/target-list names.`
     );
   }
 }

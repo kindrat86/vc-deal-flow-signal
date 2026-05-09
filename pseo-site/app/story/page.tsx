@@ -198,7 +198,7 @@ export default function StoryPage() {
               and feel like the consensus deal-flow tools are reading the
               wrong column — the rest of this site (the{" "}
               <a
-                href="/perfect-webinar"
+                href="/walkthrough"
                 className="text-sky-400 hover:text-sky-300 not-italic underline decoration-dotted"
               >
                 walkthrough

@@ -81,7 +81,7 @@ export const SUMMIT = {
 export const TALKS: SummitTalk[] = [
   // DAY 1 — Foundations: The Acceleration Era
   {
-    slug: "big-domino-engineering-acceleration",
+    slug: "core-claim-engineering-acceleration",
     day: 1,
     order: 1,
     dayCaption: "Day 1 — Foundations · The Acceleration Era",
@@ -172,7 +172,7 @@ export const TALKS: SummitTalk[] = [
     ],
     relatedRoutes: [
       { label: "Manifesto pillar #1: Data over networks", href: "/manifesto" },
-      { label: "Dream-100 ICP", href: "/dream-100" },
+      { label: "Dream-100 ICP", href: "/target-list" },
       { label: "Distribution map", href: "/distribution" },
     ],
   },
@@ -399,7 +399,7 @@ export const TALKS: SummitTalk[] = [
     relatedRoutes: [
       { label: "Dev tools sector page", href: "/best/developer-tools" },
       { label: "Use cases — sourcing", href: "/use-cases" },
-      { label: "ICP — Top 100", href: "/dream-100" },
+      { label: "ICP — Top 100", href: "/target-list" },
     ],
   },
   {
@@ -500,7 +500,7 @@ export const TALKS: SummitTalk[] = [
     ],
   },
   {
-    slug: "icp-engineering-dream-100-by-github",
+    slug: "icp-engineering-target-list-by-github",
     day: 4,
     order: 2,
     dayCaption: "Day 4 — Operationalizing · From Signal to Term Sheet",
@@ -526,7 +526,7 @@ export const TALKS: SummitTalk[] = [
       "Maintain it as a rolling 90-day list, not a one-shot snapshot. Re-run the filter every quarter. About 30–40 percent of the names will roll off (signal weakened, fundraise happened, sector pivot) and a similar number of new names will roll on. The top-100 you ship in May 2026 should look meaningfully different from the one you ship in August 2026. That rolling nature is a feature — it keeps you out of the trap of fixating on names that no longer match your thesis.",
     ],
     relatedRoutes: [
-      { label: "Top-100 ICP", href: "/dream-100" },
+      { label: "Top-100 ICP", href: "/target-list" },
       { label: "Distribution map", href: "/distribution" },
       { label: "Sector index", href: "/best" },
     ],
@@ -661,7 +661,7 @@ export const TALKS: SummitTalk[] = [
     ],
   },
   {
-    slug: "stadium-pitch-falsifiable-predictions",
+    slug: "state-of-engine-falsifiable-predictions",
     day: 5,
     order: 3,
     dayCaption: "Day 5 — Future · The founder talk",

@@ -40,8 +40,8 @@ export const CANONICAL_PROD_ROUTES = [
   "/pricing",
 
   // Brunson Funnels (DotCom Secrets)
-  "/perfect-webinar",
-  "/perfect-webinar/5min",
+  "/walkthrough",
+  "/walkthrough/5min",
   "/quiz",
   "/apply",
   "/challenge",
@@ -57,7 +57,7 @@ export const CANONICAL_PROD_ROUTES = [
   "/thanks/sector-sweep",
 
   // Brunson Trilogy infra (Expert + Traffic Secrets)
-  "/dream-100",
+  "/target-list",
   "/distribution",
   "/manifesto",
   "/identity",

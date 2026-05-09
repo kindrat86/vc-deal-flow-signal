@@ -185,7 +185,7 @@ You don't need to become someone else to source. The lesson the network rule tau
 <p><strong>5. The frameworks (and where they live).</strong><br>
 Sunday digest. Wednesday filter. End-of-quarter sweep. The Acceleration Watch is the Sunday digest. The Dashboard is the Wednesday filter. The Sector Sweep is the end-of-quarter deep dive. Three rhythms, twelve minutes a week, methodology published. The shift is already wired into the product — you're not buying a tool, you're buying a cadence.</p>
 <p>If steps 1-4 read like the room you're standing in, step 5 is the door.</p>
-<p><a href="${SIGNALS}/perfect-webinar/5min" style="color:#0ea5e9;font-weight:600;">Read the 5-minute walkthrough &rarr;</a></p>
+<p><a href="${SIGNALS}/walkthrough/5min" style="color:#0ea5e9;font-weight:600;">Read the 5-minute walkthrough &rarr;</a></p>
 <p>Tomorrow: the €7 way to test step 5 on your own thesis before any subscription decision.</p>
 <p>Talk soon,<br>${FROM_NAME}</p>
 <p style="color:#64748b;font-size:14px;">P.S. The five sentences above are the whole investment thesis on a single index card. If sentence two — the new vehicle, engineering acceleration as the sensor — already sounds wrong to you, reply with what you're catching. Genuinely the email I'd most want to read this week. The €7 First Look I'll send tomorrow doesn't make sense if step 2 isn't the right step.</p>
@@ -1463,7 +1463,7 @@ const D45_T: SoapOperaEmail = {
 <p>If you haven't grabbed the First Look yet &mdash; the &euro;7 price is still locked at the founding rate, the credit-back to Dashboard is still 100%, and the queue is currently 24 hours. <a href="${SITE}/#firstlook" style="color:#0ea5e9;font-weight:600;">${SITE}/#firstlook</a></p>
 <p>The free digest stays free either way. Sunday hits as usual this weekend.</p>
 <p>Talk soon,<br>${FROM_NAME}</p>
-<p style="color:#64748b;font-size:14px;">P.S. The Dashboard 12-minute walkthrough is at <a href="${SIGNALS}/perfect-webinar/5min" style="color:#0ea5e9;">${SIGNALS}/perfect-webinar/5min</a> &mdash; read before upgrading if you want the full case before the click.</p>
+<p style="color:#64748b;font-size:14px;">P.S. The Dashboard 12-minute walkthrough is at <a href="${SIGNALS}/walkthrough/5min" style="color:#0ea5e9;">${SIGNALS}/walkthrough/5min</a> &mdash; read before upgrading if you want the full case before the click.</p>
 `),
 };
 
@@ -1608,7 +1608,7 @@ export const SHARP_INDOCTRINATION_DRIP = [
 <p>Here's what's about to happen, in case the wait is the part that nags:</p>
 <p><strong>Within 12 hours.</strong> The first read happens at the founder desk. I score every Sharp application against three filters: fund fit (does the thesis intersect what the panel can see), use-case fit (white-label API and quarterly-call cadence vs. what you actually need), and capacity fit (where the 8-fund 2026 cap stands the day your application lands). The first filter takes about ninety seconds. The second takes ten minutes. The third is a calendar check.</p>
 <p><strong>Within 24-36 hours.</strong> Decision drafts. If accepted, I draft a Stripe Sharp Tier invoice + an Insider Circle invitation, both in the same reply email. If declined, I write a one-paragraph reason — never a form letter, never a "thanks for your interest." Either reply lands inside 48 business hours of submission. No application has gone un-replied since the tier opened.</p>
-<p><strong>One thing to do while the review runs.</strong> If you haven't already, the <a href="${SIGNALS}/perfect-webinar">12-minute walkthrough</a> is the page I assume every Sharp applicant has read before the first quarterly call. It saves us the first ten minutes of the call and makes the rest of it sharper. The other thing worth a tab is the <a href="${SIGNALS}/methodology">methodology page</a> — it's the source code of the regression that produces the lead-time numbers. If you're going to write checks against this signal, you'll want to be able to reproduce it on your own.</p>
+<p><strong>One thing to do while the review runs.</strong> If you haven't already, the <a href="${SIGNALS}/walkthrough">12-minute walkthrough</a> is the page I assume every Sharp applicant has read before the first quarterly call. It saves us the first ten minutes of the call and makes the rest of it sharper. The other thing worth a tab is the <a href="${SIGNALS}/methodology">methodology page</a> — it's the source code of the regression that produces the lead-time numbers. If you're going to write checks against this signal, you'll want to be able to reproduce it on your own.</p>
 <p>Talk soon,<br>${FROM_NAME}</p>
 <p style="color:#64748b;font-size:14px;">P.S. The cap (8 funds in 2026) is real, not a marketing line. The quarterly call is real founder time. The reason the gate exists is so every Sharp-tier fund gets meaningful attention on the call. If you're wondering whether you're a fit, the answer to "do you want a sharper version of the same product, on a fund-tier cadence" is the question the application is built to answer.</p>
 `, "sharp-indoc-1"),

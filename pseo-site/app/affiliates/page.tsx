@@ -450,7 +450,7 @@ export default function AffiliatesPage() {
           </p>
           <p className="text-gray-400 text-xs leading-relaxed mb-6">
             Run a newsletter, podcast, or community? Check the{" "}
-            <Link href="/affiliates/dream-50" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">
+            <Link href="/affiliates/top-partners" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">
               Dream 50 publisher roster
             </Link>{" "}
             — 50 named partners we&apos;d like to hear from, with the exact

@@ -50,7 +50,7 @@ const IN_FLIGHT = [
 
 const ON_DECK = [
   { title: "Live A/B order-bump experimentation log", desc: "Public dashboard of the conversion experiments we run on /firstlook + /pricing." },
-  { title: "Long-Form Video Sales Letter (LFVSL)", desc: "Voiceover-only walkthrough of /perfect-webinar. Anonymity-rule preserves: synthetic narration, no founder face." },
+  { title: "Long-Form Video Sales Letter (LFVSL)", desc: "Voiceover-only walkthrough of /walkthrough. Anonymity-rule preserves: synthetic narration, no founder face." },
   { title: "Public scoreboard for past Acceleration Watch picks", desc: "Quarterly grading at 60d / 90d. Re-confirms the one-shot proof on rolling cadence." },
   { title: "Insider Circle Telegram (private group)", desc: "Live for €97/mo subscribers. Spike alerts, monthly briefing, portfolio overlap." },
   { title: "Custom Sector Sweep — recurring Q4 rhythm", desc: "End-of-quarter deep dives on requested sectors, capped at 8 per quarter." },
@@ -60,7 +60,7 @@ const CONSIDERING = [
   { title: "European-side data residency", desc: "Mirror dashboard + CSV in EU-hosted Postgres for GDPR-strict syndicates." },
   { title: "GitHub Actions integration", desc: "Push your portfolio orgs into a YAML, get a PR comment on weekly velocity changes." },
   { title: "Public funder map", desc: "Anonymized view of who&rsquo;s reading the Watch — by region, fund stage, focus." },
-  { title: "Multi-language /perfect-webinar variants", desc: "ja, de, fr-FR currently localised on /[locale]; expand to PW + 5min PW." },
+  { title: "Multi-language /walkthrough variants", desc: "ja, de, fr-FR currently localised on /[locale]; expand to PW + 5min PW." },
 ] as const;
 
 const CUT = [

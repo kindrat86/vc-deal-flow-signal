@@ -382,7 +382,7 @@ export default function SummitPage() {
         <p className="text-xs text-gray-400 text-center border-t border-slate-800 pt-6">
           See also:{" "}
           <Link href="/state-of-github" className="hover:text-gray-300">State of GitHub address</Link>{" "}·{" "}
-          <Link href="/perfect-webinar" className="hover:text-gray-300">12-min walkthrough</Link>{" "}·{" "}
+          <Link href="/walkthrough" className="hover:text-gray-300">12-min walkthrough</Link>{" "}·{" "}
           <Link href="/manifesto" className="hover:text-gray-300">Manifesto</Link>{" "}·{" "}
           <Link href="/firstlook" className="hover:text-gray-300">€7 First Look</Link>
         </p>

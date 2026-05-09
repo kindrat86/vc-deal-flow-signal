@@ -165,7 +165,7 @@ export const TEARDOWNS: CompetitorTeardown[] = [
         brunsonNote:
           "The breadth of the platform is the pitch — every workflow a fund analyst runs lives in one tool. But breadth is a double-edged sword: small teams pay for surface area they never touch.",
         ourMove:
-          "/watch is a 90-second silent demo. /perfect-webinar is a 12-minute scrollable read. The full Stack is on one page; the buyer doesn't need a guided tour to understand the value.",
+          "/watch is a 90-second silent demo. /walkthrough is a 12-minute scrollable read. The full Stack is on one page; the buyer doesn't need a guided tour to understand the value.",
       },
       {
         step: "5 — Custom quote + procurement",

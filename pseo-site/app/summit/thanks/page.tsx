@@ -85,7 +85,7 @@ export default function SummitThanksPage() {
               — the seven pillars and the named enemy.
             </li>
             <li>
-              <Link href="/perfect-webinar" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">
+              <Link href="/walkthrough" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">
                 12-minute walkthrough
               </Link>{" "}
               — the core claim, written.
