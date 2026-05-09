@@ -24,6 +24,7 @@ import SocialProofBar from "@/components/SocialProofBar";
 import SharpScarcityBadge from "@/components/SharpScarcityBadge";
 import EpiphanyBridgeCondensed from "@/components/EpiphanyBridgeCondensed";
 import HomeOfferStack from "@/components/HomeOfferStack";
+import CharterCohortBlock from "@/components/CharterCohortBlock";
 import { DataNerdPolarityCard } from "@/components/DataNerdPolarityCard";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import {
@@ -1140,6 +1141,15 @@ export default function Home() {
           €1,728 vs €9.97/mo founding rate. Risk-reversal sticker
           (30-day guarantee) included as final stack line. */}
       <HomeOfferStack />
+
+      {/* CharterCohortBlock — Brunson Expert Secrets §1 Ch 4 (Mass Movement
+          Vehicle). The chapter teaches that a movement requires *visible
+          momentum* — the new visitor sees other members. /wins is the
+          startup-side ledger; /members is the member-side ledger. Block
+          shows the seat counter (X of 25 open) + 4 archetype previews +
+          claim-a-seat CTA so the home reader sees the movement scaffold
+          before they hit the conversion path. */}
+      <CharterCohortBlock />
 
       {/* Brunson DCS Ch 7 — Attractive Character polarity card. The reader
           self-qualifies on the four pillars before they hit the conversion

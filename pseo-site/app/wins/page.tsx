@@ -450,6 +450,36 @@ export default function WinsPage() {
           </div>
         </section>
 
+        {/* Member-side companion ledger — Brunson Expert Secrets §1 Ch 4
+            (Mass Movement Vehicle). The receipts on this page are
+            *startup-side*; /members is *member-side*. Cross-link makes the
+            pairing explicit. */}
+        <section
+          aria-label="Member-side ledger"
+          className="rounded-xl border border-amber-700/40 bg-gradient-to-br from-amber-950/20 via-slate-900 to-slate-950 p-6 sm:p-8 space-y-3"
+        >
+          <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider">
+            The other ledger
+          </p>
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug">
+            Receipts above. <span className="text-amber-400">Members below.</span>
+          </h2>
+          <p className="text-gray-300 text-base leading-relaxed max-w-2xl">
+            The Charter Cohort is the member-side companion to this page —
+            the investors reading the signals that surface the wins above.
+            Public thesis. Public picks. Public scorecard. Pseudonymous
+            handles welcome under the same anonymity rules as the founder.
+          </p>
+          <div className="pt-1">
+            <Link
+              href="/members"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-amber-600 hover:bg-amber-500 text-white font-semibold text-sm shadow-lg shadow-amber-500/20 transition-colors"
+            >
+              See the Charter Cohort <span aria-hidden>→</span>
+            </Link>
+          </div>
+        </section>
+
         <AgentSummary
           tldr={`Underwriting Receipts is the public ledger of ${totalWins} venture-backed startups (across ${uniqueOrgs} unique orgs) whose public GitHub engineering acceleration matched the SSRN-published signal pattern before a documented funding event, acquisition, or breakout milestone. Tier 1 (€1B+ valuations / breakouts): ${tier1} entries. Tier 2 (Series A-C): ${tier2}. The ledger is backwards-looking — every event is publicly verifiable. The forward-looking artefacts are /predicted (free, public, weekly) and /insider (€97/mo, Sunday briefings 24h before public).`}
           pageUrl="https://signals.gitdealflow.com/wins"

@@ -475,6 +475,12 @@ export default function ManifestoPage() {
             >
               Read the category definition →
             </Link>
+            <Link
+              href="/members"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-amber-600 hover:bg-amber-500 text-white font-bold text-sm shadow-lg shadow-amber-500/20 transition-colors"
+            >
+              Claim a charter seat →
+            </Link>
           </div>
         </section>
 

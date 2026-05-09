@@ -235,6 +235,16 @@ export async function GET(_req: Request, ctx: RouteContext) {
       { url: `${BASE_URL}/earned-plays`, lastmod, changefreq: "monthly", priority: 0.65 },
       { url: `${BASE_URL}/scorecard`, lastmod, changefreq: "monthly", priority: 0.65 },
       { url: `${BASE_URL}/wins`, lastmod, changefreq: "monthly", priority: 0.65 },
+      // Charter Cohort 2026 — Brunson Expert Secrets §1 Ch 4 (Mass Movement
+      // Vehicle). Member-side companion ledger to /wins. The four seat
+      // templates are individually indexable so the cohort surface compounds
+      // as members claim.
+      { url: `${BASE_URL}/members`, lastmod, changefreq: "weekly", priority: 0.8 },
+      { url: `${BASE_URL}/members/join`, lastmod, changefreq: "monthly", priority: 0.7 },
+      { url: `${BASE_URL}/members/charter-1`, lastmod, changefreq: "weekly", priority: 0.65 },
+      { url: `${BASE_URL}/members/charter-2`, lastmod, changefreq: "weekly", priority: 0.65 },
+      { url: `${BASE_URL}/members/charter-3`, lastmod, changefreq: "weekly", priority: 0.65 },
+      { url: `${BASE_URL}/members/charter-4`, lastmod, changefreq: "weekly", priority: 0.65 },
       // Brunson DCS Ch 13 — Best-Bait redacted Friday-noon trailer of
       // Sunday's digest. Weekly cadence matches the data refresh.
       { url: `${BASE_URL}/friday-preview`, lastmod, changefreq: "weekly", priority: 0.8 },
