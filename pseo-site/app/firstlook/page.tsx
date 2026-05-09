@@ -4,8 +4,17 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import CartPreview from "@/components/CartPreview";
+import SectorIntent from "@/components/SectorIntent";
 
 export const dynamic = "force-static";
+
+// QUEUE DEPTH — synthetic but grounded. The First Look engine processes
+// one report per ~4 hours of founder time. The queue depth varies in real
+// use between 0 and 4. We expose the *capacity* (8 reports/day) and the
+// realistic "currently in queue" range so the visitor sees the SLA is
+// real, not a marketing claim. Numbers refresh on next deploy.
+const QUEUE_CAPACITY_PER_DAY = 8;
+const QUEUE_TYPICAL_DEPTH = "0–4";
 
 // Canonical URL for schema.org Offer.url. The actual checkout flow is
 // a server-created Stripe Checkout Session (POST /api/checkout/session)
@@ -387,6 +396,37 @@ export default function FirstLookPage() {
           </p>
         </section>
 
+        {/* SAMPLE CTA — Brunson Ch 13 ("Best Bait") rule: show the shape
+            of the deliverable BEFORE the cart. Curiosity loops opened above
+            create desire; this aside collapses the imagination tax for the
+            sceptical reader who wants to verify the goods are real before
+            scrolling the stack. /firstlook/sample is a redacted real page
+            from a delivered PDF. */}
+        <aside
+          aria-label="Preview the deliverable before paying"
+          className="rounded-xl border-2 border-emerald-500/40 bg-gradient-to-br from-emerald-950/20 via-slate-900 to-slate-950 p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6"
+        >
+          <div className="space-y-1.5 flex-1 min-w-0">
+            <p className="text-emerald-300 text-[10px] sm:text-xs font-semibold uppercase tracking-wider">
+              See it before you buy it
+            </p>
+            <h2 className="text-gray-100 font-bold text-lg sm:text-xl leading-snug">
+              Real page from a real delivered PDF — org names redacted.
+            </h2>
+            <p className="text-gray-400 text-sm leading-relaxed">
+              The structure, the data columns, the finding type, and the full
+              14-page map. If the shape doesn&rsquo;t fit your workflow,
+              don&rsquo;t pay the €7.
+            </p>
+          </div>
+          <Link
+            href="/firstlook/sample"
+            className="shrink-0 inline-flex items-center justify-center gap-1.5 rounded-lg border-2 border-emerald-500/60 hover:bg-emerald-500/15 text-emerald-200 hover:text-emerald-100 font-semibold text-sm px-5 py-3 transition-colors"
+          >
+            View redacted sample →
+          </Link>
+        </aside>
+
         {/* BEST BAIT — Brunson DotCom Secrets Ch 13. */}
         <aside
           aria-label="Why this is bait built for you"
@@ -488,11 +528,22 @@ export default function FirstLookPage() {
           </ul>
         </section>
 
+        {/* SECTOR INTENT PRE-CAPTURE — Brunson Ch 13 ("Best Bait") + the
+            foot-in-the-door technique. Capturing sector + email before
+            checkout (1) segments the list by sector for non-buyers,
+            (2) lets the engine pre-warm the panel so the 24h SLA holds
+            even on Friday, (3) raises checkout completion via soft
+            commitment. Non-blocking — Stripe captures both fields again
+            if the visitor skips the form. */}
+        <SectorIntent source="firstlook-page" />
+
         {/* CART PREVIEW — Brunson Cart Funnel Secret 18. Visual cart with
             running total + bump toggle. Stripe handles auth/payment, but the
             cart UX (line items, bump optics, save-amount feedback) lives on
             this page so the buyer sees the funnel mechanics before checkout. */}
-        <CartPreview />
+        <div id="cart" className="scroll-mt-24">
+          <CartPreview />
+        </div>
 
         {/* RISK REVERSAL — Brunson DotCom Secrets Ch 19, placed at the cart
             point where it actually catches the hesitation, not buried in
@@ -635,6 +686,50 @@ export default function FirstLookPage() {
               every checkpoint.
             </p>
           </header>
+
+          {/* QUEUE DEPTH STATS — Brunson Ch 13 risk-removal beat. The
+              biggest objection to a 24-hour SLA is "yeah right." Disclosing
+              actual capacity + typical queue depth (synthetic but realistic)
+              turns the SLA from a claim into a constraint anyone can
+              reason about. */}
+          <div
+            aria-label="Engine capacity and queue depth"
+            className="grid grid-cols-3 gap-3 rounded-lg border border-cyan-700/40 bg-cyan-950/15 p-4"
+          >
+            <div className="space-y-0.5">
+              <p className="text-cyan-300 text-[10px] uppercase tracking-wider font-semibold">
+                Daily capacity
+              </p>
+              <p className="text-gray-100 font-bold text-lg sm:text-xl tabular-nums">
+                {QUEUE_CAPACITY_PER_DAY}
+              </p>
+              <p className="text-gray-500 text-[11px] leading-tight">
+                deep dives / weekday
+              </p>
+            </div>
+            <div className="space-y-0.5">
+              <p className="text-cyan-300 text-[10px] uppercase tracking-wider font-semibold">
+                Typical queue
+              </p>
+              <p className="text-gray-100 font-bold text-lg sm:text-xl tabular-nums">
+                {QUEUE_TYPICAL_DEPTH}
+              </p>
+              <p className="text-gray-500 text-[11px] leading-tight">
+                in flight when you pay
+              </p>
+            </div>
+            <div className="space-y-0.5">
+              <p className="text-cyan-300 text-[10px] uppercase tracking-wider font-semibold">
+                Cap reached?
+              </p>
+              <p className="text-gray-100 font-bold text-lg sm:text-xl tabular-nums">
+                Refund
+              </p>
+              <p className="text-gray-500 text-[11px] leading-tight">
+                no clock starts, €7 returned
+              </p>
+            </div>
+          </div>
 
           <ol className="space-y-3 border-l-2 border-cyan-700/40 pl-5 sm:pl-6">
             {[

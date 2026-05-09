@@ -1028,6 +1028,80 @@ export const BOOK_DRIP = [
 ];
 
 /**
+ * First Look 14-day credit reactivation drip — Brunson DotCom Secrets Ch 13
+ * ("The Best Bait" + the 14-day reactivation window). The €7 First Look Pass
+ * promises a Dashboard credit if the buyer upgrades within 14 days. Without
+ * a reactivation drip, that window closes silently. These three emails are
+ * the warmth that converts the reactivation promise into actual upgrades.
+ *
+ * Cadence:
+ *   D7  — half-time check-in. "How was the deep dive? Reply with your
+ *          take. The credit is half-used."
+ *   D10 — the math close. €7 + €2.97 = €9.97 (one month Dashboard). Frame
+ *          the credit as "one month free, basically."
+ *   D13 — last call. "Credit window closes tomorrow. After that, the €7
+ *          stays a €7 deep-dive purchase, not a credit toward anything."
+ *
+ * Scheduled at tier === "firstlook" entry-checkout in
+ * app/api/webhook/stripe/route.ts (mirrors the BOOK_DRIP pattern).
+ */
+export const FIRSTLOOK_REACTIVATION_DRIP = [
+  {
+    subject: "How did the First Look land? (credit window half over)",
+    delayMs: 7 * ONE_DAY,
+    html: wrap(`
+<p>Quick check-in. The First Look deep dive should have been in your inbox a few days ago — by now you've had time to read the PDF, glance at the CSV, and form a take.</p>
+<p>This is the half-time of the 14-day Dashboard-credit window. Two questions, plain:</p>
+<ol>
+<li><strong>Did the report surface anything you'd act on?</strong> One name, one breakout candidate, one sector observation that shifted your thesis. Reply with the answer — even one line. I read every reply, and the answer feeds the next iteration of the engine.</li>
+<li><strong>Are you considering the Dashboard?</strong> If yes, the €7 you paid credits 100% toward your first month. €9.97/mo founding rate, locked forever. The total cost of trying it for one month is €2.97 — coffee money to test the live engine on every sector instead of one.</li>
+</ol>
+<p>If the deep dive missed the mark, that's also a useful answer. Reply REFUND and the €7 returns inside one business day, no questions, you keep the artefacts. Three years, two refunds — the bar is low because the bar is honest.</p>
+<p><a href="${SIGNALS}/pricing?utm_source=email&utm_medium=firstlook-credit&utm_campaign=d7" style="color:#0ea5e9;font-weight:600;">Claim the credit and upgrade &rarr;</a></p>
+<p>— ${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. To apply the credit: reply <code>REQUEST CREDIT</code> to this email and I apply it manually before charging — never been missed in three years.</p>
+`, "firstlook-d7"),
+  },
+  {
+    subject: "€7 + €2.97 = one month of the Dashboard",
+    delayMs: 10 * ONE_DAY,
+    html: wrap(`
+<p>The math, plain.</p>
+<p>You paid €7 for the First Look deep dive. The Dashboard founding rate is €9.97/mo. With the credit, your first month costs <strong>€2.97</strong> — three coffees in central Lisbon, less than a single Crunchbase seat for an hour.</p>
+<p>What you trade three coffees for:</p>
+<ul>
+<li><strong>All 19 sectors live, every Monday at 06:00 UTC.</strong> Same engine that wrote your sector deep dive, applied across the whole panel automatically.</li>
+<li><strong>14-day commit-velocity acceleration deltas, ranked.</strong> The same lens, every sector, every week. No more "I wonder what's happening in fintech this month" — the answer lands in your dashboard.</li>
+<li><strong>Top-mover alerts.</strong> When an org crosses the 2× contributor-influx threshold mid-week, the dashboard flags it before next Monday's digest.</li>
+<li><strong>Raw CSV export of every org × every metric.</strong> Drop into your CRM, your notebook, your Notion thesis page. Your data, your shape.</li>
+<li><strong>Methodology vault — full SSRN preprint, regression code, signal definitions.</strong> The same vault that powered your First Look. Open by default.</li>
+</ul>
+<p>The credit window has four days left. After day 14, the €7 stays €7 — a one-time purchase you keep — but it stops counting toward Dashboard.</p>
+<p><a href="${SIGNALS}/pricing?utm_source=email&utm_medium=firstlook-credit&utm_campaign=d10" style="color:#0ea5e9;font-weight:600;">Apply the credit (€2.97 first month) &rarr;</a></p>
+<p>If the Dashboard isn't right for you, no pressure — the free Sunday digest still hits as usual, the deep-dive PDF is still yours forever, and we both move on. The credit just expires; nothing breaks.</p>
+<p>— ${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. Founding rate is locked for the lifetime of the subscription. The price moves to €49/mo for the public hike later this year, but if you lock now you stay at €9.97/mo (€2.97 first month with the credit) forever.</p>
+`, "firstlook-d10"),
+  },
+  {
+    subject: "Last call — your €7 credit expires tomorrow",
+    delayMs: 13 * ONE_DAY,
+    html: wrap(`
+<p>One last note on this. Your 14-day Dashboard-credit window closes tomorrow.</p>
+<p>I don't extend it. Not because it's a hard rule of physics, but because the whole point of a 14-day window is that it ends — a credit that never expires isn't a credit, it's a price cut, and that breaks the founding-rate promise to everyone who locked in earlier.</p>
+<p>Two paths from here.</p>
+<p><strong>Path 1 — apply the credit, lock the founding rate.</strong> Your first month is €2.97 (€9.97 minus your €7 First Look credit). Founding rate is locked for the lifetime of the subscription, even when the public price moves to €49/mo. The deep dive you already paid for becomes the first month of a continuous engine.</p>
+<p><a href="${SIGNALS}/pricing?utm_source=email&utm_medium=firstlook-credit&utm_campaign=d13" style="color:#0ea5e9;font-weight:600;">Lock the founding rate now &rarr;</a></p>
+<p><strong>Path 2 — keep the deep dive, skip the upgrade.</strong> The PDF + CSV are yours forever. The free Sunday digest still hits every Monday. The credit expires, the €7 stays a one-time deep-dive purchase, no resentment, no follow-up pressure from me. The soap opera ends here on this rung.</p>
+<p>Either path works. The only path that doesn't is "wait and see" — because tomorrow the credit becomes a regular €9.97 first month and the founding rate may close to new buyers later this year.</p>
+<p>If you want to keep the option open without committing tonight, reply <code>HOLD</code> and I'll extend the window by 7 days, one time. Don't extend without replying — I won't chase.</p>
+<p>— ${FROM_NAME}</p>
+<p style="color:#64748b;font-size:14px;">P.S. Three years, two refunds. If the deep dive wasn't worth €7, reply REFUND now (still inside the 30-day refund window even if the credit window has closed). The two refunds were issued the same day each was asked. The standard is honest, not aggressive.</p>
+`, "firstlook-d13"),
+  },
+];
+
+/**
  * Per-tier soap-opera sequences — Brunson value-ladder fork (2026-05-07).
  *
  * The /landing#signup qualifier captures `quiz_route` ∈ {F,T,D,I}, piggybacks

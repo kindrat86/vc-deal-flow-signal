@@ -3,7 +3,7 @@ import type Stripe from "stripe";
 import { stripe, getTierFromSession, CREDIT_PACK_SIZES } from "@/lib/stripe";
 import { addCredits } from "@/lib/credits";
 import { generateApiKeyV2 } from "@/lib/api-key";
-import { BOOK_DRIP } from "@/lib/emails";
+import { BOOK_DRIP, FIRSTLOOK_REACTIVATION_DRIP } from "@/lib/emails";
 import { isNonceUsed, markNonceUsed } from "@/lib/runtime-cache";
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY!;
@@ -434,6 +434,50 @@ export async function POST(request: NextRequest) {
         } catch (err) {
           console.error(
             `Error scheduling book drip "${drip.subject}" for ${email}:`,
+            err,
+          );
+        }
+      }
+    }
+
+    // First Look buyers: queue the +7d / +10d / +13d 14-day Dashboard-credit
+    // reactivation drip — Brunson DotCom Secrets Ch 13 ("the bait + the
+    // 14-day reactivation window"). The credit promise on /firstlook expires
+    // silently without these. Same best-effort pattern as the book drip:
+    // a Resend hiccup must not 5xx out of this handler.
+    if (tier === "firstlook") {
+      const now = Date.now();
+      for (const drip of FIRSTLOOK_REACTIVATION_DRIP) {
+        const sendAt = new Date(now + drip.delayMs).toISOString();
+        try {
+          const res = await fetch("https://api.resend.com/emails", {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${RESEND_API_KEY}`,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              from: `${FROM_NAME} <${FROM_EMAIL}>`,
+              to: email,
+              subject: drip.subject,
+              html: drip.html,
+              scheduled_at: sendAt,
+              headers: {
+                "List-Unsubscribe": `<mailto:${FROM_EMAIL}?subject=unsubscribe>`,
+                "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
+              },
+            }),
+          });
+          if (!res.ok) {
+            const errText = await res.text();
+            console.error(
+              `Failed to schedule firstlook drip "${drip.subject}" for ${email}:`,
+              errText,
+            );
+          }
+        } catch (err) {
+          console.error(
+            `Error scheduling firstlook drip "${drip.subject}" for ${email}:`,
             err,
           );
         }
