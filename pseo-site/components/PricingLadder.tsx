@@ -176,6 +176,67 @@ export default function PricingLadder() {
         It&rsquo;s Free&rdquo; refund</strong> on all paid tiers — reply to any
         email, no forms, no call.
       </p>
+
+      {/* Brunson Audit 2026-05-08 — Value Ladder ding fix. Show the
+          high-ticket continuity above €1,997 so the buyer can see where the
+          ladder actually goes. Async-only, anonymity-preserving. */}
+      <div className="mt-6 rounded-xl border border-violet-700/30 bg-gradient-to-br from-violet-950/20 to-slate-900 p-5">
+        <p className="text-violet-300 text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-2">
+          For active funds — high-ticket research partnerships
+        </p>
+        <h3 className="text-gray-100 font-semibold text-base mb-3 leading-snug">
+          The ladder doesn&rsquo;t stop at the Dashboard.
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
+          <Link
+            href="/pricing#sharp-tier"
+            className="rounded-lg border border-slate-800 bg-slate-900/60 p-3 hover:border-indigo-700/50 transition-colors"
+          >
+            <p className="text-indigo-400 text-xs font-mono">€4,970 / yr</p>
+            <p className="text-gray-100 font-semibold text-sm leading-tight mt-0.5">
+              Sharp Tier
+            </p>
+            <p className="text-gray-400 text-xs mt-1 leading-snug">
+              Application-gated. 8-fund cap.
+            </p>
+          </Link>
+          <Link
+            href="/methodology-partnership"
+            className="rounded-lg border border-slate-800 bg-slate-900/60 p-3 hover:border-violet-700/50 transition-colors"
+          >
+            <p className="text-violet-400 text-xs font-mono">€14,997 / yr</p>
+            <p className="text-gray-100 font-semibold text-sm leading-tight mt-0.5">
+              Methodology Partnership
+            </p>
+            <p className="text-gray-400 text-xs mt-1 leading-snug">
+              Done-with-you. 5-fund cap.
+            </p>
+          </Link>
+          <Link
+            href="/vault"
+            className="rounded-lg border border-slate-800 bg-slate-900/60 p-3 hover:border-amber-700/50 transition-colors"
+          >
+            <p className="text-amber-400 text-xs font-mono">€49,997 / yr</p>
+            <p className="text-gray-100 font-semibold text-sm leading-tight mt-0.5">
+              The Vault
+            </p>
+            <p className="text-gray-400 text-xs mt-1 leading-snug">
+              Methodology source. 2-fund cap.
+            </p>
+          </Link>
+        </div>
+        <p className="text-gray-500 text-xs mt-3 leading-relaxed">
+          All three are async-only — no live calls, no in-person attendance.
+          See the{" "}
+          <Link
+            href="/pricing"
+            className="text-violet-400 hover:text-violet-300 underline decoration-dotted"
+          >
+            full ten-rung ladder
+          </Link>{" "}
+          for application links and complete value stacks.
+        </p>
+      </div>
     </section>
   );
 }
