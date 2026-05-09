@@ -2,7 +2,22 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
-    { "source": "/feed.xml", "destination": "https://signals.gitdealflow.com/feed.xml" }
+    { "source": "/feed.xml", "destination": "https://signals.gitdealflow.com/feed.xml" },
+    { "source": "/.well-known/llms.txt", "destination": "https://signals.gitdealflow.com/.well-known/llms.txt" },
+    { "source": "/.well-known/llms-full.txt", "destination": "https://signals.gitdealflow.com/.well-known/llms-full.txt" },
+    { "source": "/.well-known/ai.txt", "destination": "https://signals.gitdealflow.com/.well-known/ai.txt" },
+    { "source": "/.well-known/agents.json", "destination": "https://signals.gitdealflow.com/.well-known/agents.json" },
+    { "source": "/.well-known/agent-card.json", "destination": "https://signals.gitdealflow.com/.well-known/agent-card.json" },
+    { "source": "/.well-known/mcp.json", "destination": "https://signals.gitdealflow.com/.well-known/mcp.json" },
+    { "source": "/.well-known/openapi.json", "destination": "https://signals.gitdealflow.com/.well-known/openapi.json" },
+    { "source": "/.well-known/ai-plugin.json", "destination": "https://signals.gitdealflow.com/.well-known/ai-plugin.json" },
+    { "source": "/.well-known/ai-policy.json", "destination": "https://signals.gitdealflow.com/.well-known/ai-policy.json" },
+    { "source": "/.well-known/freshness.json", "destination": "https://signals.gitdealflow.com/.well-known/freshness.json" },
+    { "source": "/.well-known/openai-search.json", "destination": "https://signals.gitdealflow.com/.well-known/openai-search.json" },
+    { "source": "/.well-known/tdm-reservation.json", "destination": "https://signals.gitdealflow.com/.well-known/tdm-reservation.json" },
+    { "source": "/.well-known/dataset.json", "destination": "https://signals.gitdealflow.com/.well-known/dataset.json" },
+    { "source": "/.well-known/skills.json", "destination": "https://signals.gitdealflow.com/.well-known/skills.json" },
+    { "source": "/.well-known/security.txt", "destination": "https://signals.gitdealflow.com/.well-known/security.txt" }
   ],
   "redirects": [
     {
