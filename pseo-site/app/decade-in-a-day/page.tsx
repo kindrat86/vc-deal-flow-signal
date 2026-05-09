@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import { ThirtyDayQuickstart } from "@/components/ThirtyDayQuickstart";
 import { getHreflangLanguages } from "@/lib/hreflang";
 
 export const dynamic = "force-static";
@@ -330,19 +331,27 @@ export default function DecadePage() {
           </section>
         ))}
 
+        {/* 30-day Quickstart — Brunson Expert Secrets Ch 22 (Decade in
+            a Day / Fast Implementation). Replaces the previous soft "pick
+            one module" block with a literal calendar — 30 dated beats,
+            week-by-week, tied to existing surfaces. Audit 2026-05-09
+            verdict on Ch 22 (score 92/100): "could add a more visible
+            '30-day quickstart' CTA on the page itself." */}
+        <ThirtyDayQuickstart />
+
         <section className="rounded-xl border border-amber-700/40 bg-gradient-to-br from-amber-950/20 via-slate-900 to-slate-950 p-6 sm:p-8 space-y-3">
           <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider">
-            What to do tomorrow
+            Or, if 30 days feels heavy
           </p>
           <h2 className="text-xl sm:text-2xl font-bold text-gray-100">
-            Don&rsquo;t print this. Pick one module and live in it for a week.
+            Pick Module 6 — the core claim — and live in it for a week.
           </h2>
           <p className="text-gray-300 text-base leading-relaxed">
-            A Saturday-morning read changes nothing if you don&rsquo;t pick
-            a single beat to embody. We&rsquo;d pick Module 6 — the core
-            claim — and rewrite it for whatever you&rsquo;re building this
-            quarter. Once you have your core claim, every other module
-            re-reads in five minutes.
+            The 30-day quickstart above is the disciplined path. The
+            seven-day &ldquo;one module&rdquo; path is the soft path. Both
+            beat zero. Once you have your core claim re-written for
+            whatever you&rsquo;re building this quarter, every other
+            module re-reads in five minutes.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 pt-2">
             <a
