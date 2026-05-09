@@ -122,7 +122,8 @@ interface Surface {
     | "feed"
     | "identity"
     | "schema"
-    | "human";
+    | "human"
+    | "community";
   description: string;
   endpoints?: Endpoint[];
 }
