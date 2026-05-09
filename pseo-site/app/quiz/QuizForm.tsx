@@ -99,6 +99,34 @@ const RESULT_TIER_LABELS: Record<keyof typeof RESULTS, string> = {
   I: "Insider Circle (€97/mo) / Sector Sweep (€1,997 once)",
 };
 
+// Brunson Quiz Funnel transparency — show the user the tier-specific drip
+// they'll actually receive. This is the upgrade Russell flagged in his
+// 2026-05-08 audit ("same drip everyone gets" — fixed: 11 new tier-specific
+// emails, every reader gets a sequence shaped to the rung they self-described
+// on the quiz). Source of truth is lib/emails.ts → SOAP_OPERA_F/T/D/I.
+const TIER_SEQUENCE_SUMMARY: Record<keyof typeof RESULTS, { count: number; pitch: string }> = {
+  F: {
+    count: 17,
+    pitch:
+      "Tuned for 0–1 checks/year — Sunday-morning future-pace, no pressure to upgrade, Crystal Ball game framed as no-cheque public track record.",
+  },
+  T: {
+    count: 19,
+    pitch:
+      "Tuned for 2–5 checks/year — €7 First Look as the right test, Tuesday-afternoon scenario, credit-back to Dashboard at the 45-day mark.",
+  },
+  D: {
+    count: 22,
+    pitch:
+      "Tuned for 6–20 checks/year — full Dashboard close, Insider 24h-lead at D45, Sector Sweep at D60, State-of-the-Engine accountability anchor.",
+  },
+  I: {
+    count: 19,
+    pitch:
+      "Tuned for 20+ checks/year — fund-tier rung from email 1, 24h-lead Sunday-evening scenario, Sector Sweep window opens at D45.",
+  },
+};
+
 type GateState = "idle" | "submitting" | "ok" | "skip" | "error";
 
 export default function QuizForm() {
@@ -153,7 +181,8 @@ export default function QuizForm() {
   // Reveal result if user submitted email, skipped, or errored through.
   const reveal = finishedAnswers && (gate === "ok" || gate === "skip");
 
-  if (reveal && result) {
+  if (reveal && result && resultTierKey) {
+    const sequence = TIER_SEQUENCE_SUMMARY[resultTierKey];
     return (
       <div className="bg-gradient-to-br from-sky-950/40 via-slate-900 to-slate-950 border border-sky-700/50 rounded-xl p-6 sm:p-8 space-y-4">
         <p className="text-sky-300 text-xs font-semibold uppercase tracking-wider">
@@ -178,9 +207,21 @@ export default function QuizForm() {
           </a>
         </div>
         {gate === "ok" ? (
-          <p className="text-emerald-400 text-xs">
-            Sunday digest is on its way — first email lands in 30 minutes.
-          </p>
+          <div className="bg-slate-900/60 border border-slate-700/60 rounded-lg p-4 mt-4 space-y-2">
+            <p className="text-emerald-400 text-xs font-semibold uppercase tracking-wider">
+              ✓ Tier-matched sequence queued · first email lands in 30 minutes
+            </p>
+            <p className="text-gray-300 text-sm leading-relaxed">
+              We&rsquo;ll send you the <strong>tier-{resultTierKey} sequence</strong> &mdash;{" "}
+              <strong>{sequence.count} emails over 8 months</strong>. {sequence.pitch}
+            </p>
+            <p className="text-gray-500 text-xs leading-relaxed">
+              Other quiz takers get different sequences. We segment because the rung-up
+              from your tier is genuinely different from the rung-up from the next one over &mdash;
+              there&rsquo;s no point pitching you a &euro;1,997 Sweep if you&rsquo;re a 0&ndash;1 check/year reader,
+              and there&rsquo;s no point pitching a fund operator a &euro;7 tripwire.
+            </p>
+          </div>
         ) : null}
         <button
           type="button"
