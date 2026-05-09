@@ -386,7 +386,7 @@ export default function CursorIntegrationPage() {
             </p>
           </section>
 
-          <AgentMirrorLinks />
+          <AgentMirrorLinks path="/integrations/cursor" />
         </div>
       </main>
     </>

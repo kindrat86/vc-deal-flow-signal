@@ -376,7 +376,7 @@ export default function VercelDeployPage() {
             of self-hosting.
           </p>
 
-          <AgentMirrorLinks />
+          <AgentMirrorLinks path="/integrations/vercel-deploy" />
         </div>
       </main>
     </>
