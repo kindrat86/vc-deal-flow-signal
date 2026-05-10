@@ -34,3 +34,8 @@
 - Own-post reply reminder: Wed May 6 was a scheduled post day — likely the "20-min GitHub due-diligence pass" Substack piece cross-posted; check linkedin.com/company/gitdealflow/posts and reply within 2h
 - Targets: Harry Stebbings, Sarah Tavel, Fabrice Grinda
 - Drafts saved above for copy-paste
+
+## 2026-05-10
+- Own-post reply reminder: none (Saturday May 9 is not a scheduled post day)
+- Targets: Jenny Fielding, Ryan Hoover, Eric Bahn
+- Drafts saved above for copy-paste
