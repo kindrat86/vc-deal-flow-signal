@@ -30,6 +30,18 @@ tc-equity (GREEN, Priority 1) remains held — separate decision pending. A data
 
 ---
 
+**Status update 2026-05-11 (autonomous deploy — all priority sends now shipped):**
+
+- ✅ `pod-003-latent-space` → swyx@swyx.io — **sent 2026-05-10T06:15:01Z** by the daily sender cron, Resend ID `e0eb86dd-3b80-4359-b553-e61e571c93b3`. Confirmed delivered (no bounce in outreach-sent.json over 24h).
+- ✅ `pod-004-tc-equity` → equity@techcrunch.com — **sent 2026-05-11T08:05Z**, Resend ID `fbcfd4f6-9e4d-4bc6-acfb-73750a15e7ca`. GREEN, Priority 1. Releases the previous hold.
+- ✅ `pod-005-fjlabs-data-collab` → fabrice@fjlabs.com — **sent 2026-05-11T08:05Z**, Resend ID `51da31c8-2fdd-4583-82d6-087d66846972`. Variant won over the hybrid; the original `playing-with-unicorns.md` is now **superseded** (do not also send — same recipient).
+
+**Pacing 2026-05-10:** 1 send (pod-003) — well under cap. **2026-05-11:** 2 sends (pod-004 + pod-005) — at cap. ≤2/day rule respected on both days. 5-day rolling: 9 sends across 2026-05-09 to 2026-05-11.
+
+**Five total podcast sends out the door** — pod-001 through pod-005. Remaining 11 targets stay on the post-May-17 schedule per original plan.
+
+---
+
 ## Full Target Table
 
 | # | Slug | Host | Podcast | Anonymity | Email | Recommended Action |
@@ -39,17 +51,17 @@ tc-equity (GREEN, Priority 1) remains held — separate decision pending. A data
 | 3 | invest-like-best | Patrick O'Shaughnessy | Invest Like the Best | YELLOW | MEDIUM | Send post May 17 — written companion |
 | 4 | venture-unlocked | Samir Kaji | Venture Unlocked | YELLOW | MEDIUM | Send post May 17 — confirm show contact first |
 | 5 | the-pitch | Josh Muccio | The Pitch | YELLOW | MEDIUM | Send post May 17 — pre-episode data card |
-| 6 | tc-equity | TechCrunch team | Equity (TechCrunch) | GREEN | HIGH | **PRIORITY 1** — tip-line format, no guest needed (still held — separate go/no-go) |
+| 6 | tc-equity | TechCrunch team | Equity (TechCrunch) | GREEN | HIGH | ✅ **SENT 2026-05-11T08:05Z** as `pod-004-tc-equity` (Resend `fbcfd4f6-…`) |
 | 7 | masters-of-scale | Reid Hoffman / producers | Masters of Scale | RED | LOW | HOLD — deprioritize indefinitely |
-| 8 | playing-with-unicorns | Fabrice Grinda | Playing with Unicorns | RED | MEDIUM | HOLD for podcast; **see variant** `playing-with-unicorns-data-collab.md` (GREEN, data-collab-only — pick one) |
-| 8b | playing-with-unicorns-data-collab | Fabrice Grinda | FJ Labs (private collab) | **GREEN** | MEDIUM | Variant — drops podcast hook entirely. Eligible today; not auto-queued (mutually exclusive with row 8) |
+| 8 | playing-with-unicorns | Fabrice Grinda | Playing with Unicorns | RED | MEDIUM | 🗑️ **SUPERSEDED** by row 8b variant (sent). Do not also send — same recipient. |
+| 8b | playing-with-unicorns-data-collab | Fabrice Grinda | FJ Labs (private collab) | **GREEN** | MEDIUM | ✅ **SENT 2026-05-11T08:05Z** as `pod-005-fjlabs-data-collab` (Resend `51da31c8-…`) |
 | 9 | acquired | Ben Gilbert / David Rosenthal | Acquired | YELLOW | HIGH | ✅ **SENT 2026-05-09T19:04Z** as `pod-001-acquired` (Resend `5c89d341-…`) |
 | 10 | mfm | Shaan Puri / Sam Parr | My First Million | YELLOW | MEDIUM | Send post May 17 — anonymous idea submission format |
 | 11 | startup-ideas-isenberg | Greg Isenberg | Startup Ideas Podcast | YELLOW | MEDIUM | Send post May 17 — prior Twitter context |
 | 12 | indiehackers-pod | Courtland Allen | Indie Hackers Podcast | YELLOW | MEDIUM | Send post May 17 — verify pod active first |
 | 13 | lennys-pod | Lenny Rachitsky | Lenny's Podcast | RED | MEDIUM | HOLD — coordinate with newsletter pitch thread |
 | 14 | full-ratchet | Nick Moran | The Full Ratchet | YELLOW | HIGH | ✅ **SENT 2026-05-09T19:04Z** as `pod-002-full-ratchet` (Resend `b8c0e5f1-…`) |
-| 15 | latent-space-pod | swyx + Alessio | Latent Space Podcast | YELLOW | HIGH | ⏭️ **Deferred 2026-05-10** as `pod-003-latent-space`. Recipient corrected swyx@latent.space (no MX) → swyx@swyx.io (Google MX). Body drops "following up" framing since sotw-001-swyx newsletter pitch is still pending. |
+| 15 | latent-space-pod | swyx + Alessio | Latent Space Podcast | YELLOW | HIGH | ✅ **SENT 2026-05-10T06:15Z** as `pod-003-latent-space` (Resend `e0eb86dd-…`) — recipient corrected to swyx@swyx.io |
 
 ---
 
