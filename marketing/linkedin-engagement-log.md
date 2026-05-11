@@ -39,3 +39,8 @@
 - Own-post reply reminder: none (Saturday May 9 is not a scheduled post day)
 - Targets: Jenny Fielding, Ryan Hoover, Eric Bahn
 - Drafts saved above for copy-paste
+
+## 2026-05-11
+- Own-post reply reminder: none (Sunday May 10 is not a scheduled post day)
+- Targets: Ryan Hoover, Eric Bahn, Charles Hudson
+- Drafts saved above for copy-paste
