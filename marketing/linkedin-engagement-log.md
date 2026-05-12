@@ -44,3 +44,8 @@
 - Own-post reply reminder: none (Sunday May 10 is not a scheduled post day)
 - Targets: Ryan Hoover, Eric Bahn, Charles Hudson
 - Drafts saved above for copy-paste
+
+## 2026-05-12
+- Own-post reply reminder: none (Monday May 11 is not a scheduled post day)
+- Targets: Eric Bahn, Charles Hudson, Beezer Clarkson
+- Drafts saved above for copy-paste
