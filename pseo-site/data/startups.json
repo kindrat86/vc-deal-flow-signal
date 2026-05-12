@@ -45,14 +45,84 @@
               "description": "The AI community building the future.",
               "stage": "Growth",
               "geography": "EU",
-              "commitVelocity14d": 121,
-              "commitVelocityChange": "-33%",
+              "commitVelocity14d": 87,
+              "commitVelocityChange": "-49%",
               "contributors": 100,
               "contributorGrowth": "+0%",
-              "newRepos": 1,
-              "signalType": "Framework migration",
+              "newRepos": 3,
+              "signalType": "Infrastructure buildout",
               "githubUrl": "https://github.com/huggingface",
               "websiteUrl": "https://huggingface.co"
+            },
+            {
+              "name": "roboflow",
+              "description": "",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 12,
+              "commitVelocityChange": "-84%",
+              "contributors": 92,
+              "contributorGrowth": "+0%",
+              "newRepos": 2,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/roboflow",
+              "websiteUrl": "https://roboflow.com"
+            },
+            {
+              "name": "photoprism",
+              "description": "AI-Powered Photos App for the Decentralized Web. We are on a mission to protect your freedom and privacy.",
+              "stage": "Growth",
+              "geography": "EU",
+              "commitVelocity14d": 121,
+              "commitVelocityChange": "+109%",
+              "contributors": 100,
+              "contributorGrowth": "+19%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/photoprism",
+              "websiteUrl": "https://www.photoprism.app"
+            },
+            {
+              "name": "vespa-engine",
+              "description": "Vespa is an open-source platform for applications that need low-latency computation over large structured, text and vect",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 471,
+              "commitVelocityChange": "+17%",
+              "contributors": 100,
+              "contributorGrowth": "+46%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/vespa-engine",
+              "websiteUrl": "https://vespa.ai"
+            },
+            {
+              "name": "catboost",
+              "description": "CatBoost is a fast, scalable, high performance gradient boosting on decision trees library. Used for ranking, classifica",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 13,
+              "commitVelocityChange": "-50%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/catboost",
+              "websiteUrl": "https://catboost.ai"
+            },
+            {
+              "name": "mlflow",
+              "description": "The open source AI engineering platform for agents, LLMs, and ML models.",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 184,
+              "commitVelocityChange": "-56%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 2,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/mlflow",
+              "websiteUrl": "https://www.mlflow.org"
             },
             {
               "name": "ROCm",
@@ -81,20 +151,6 @@
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/netdata",
               "websiteUrl": "https://www.netdata.cloud"
-            },
-            {
-              "name": "mlflow",
-              "description": "The open source AI engineering platform for agents, LLMs, and ML models.",
-              "stage": "Growth",
-              "geography": "US",
-              "commitVelocity14d": 195,
-              "commitVelocityChange": "-51%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 2,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/mlflow",
-              "websiteUrl": "https://www.mlflow.org"
             },
             {
               "name": "zapplyjobs",
@@ -139,20 +195,6 @@
               "websiteUrl": "https://www.modular.com"
             },
             {
-              "name": "vespa-engine",
-              "description": "Vespa is an open-source platform for applications that need low-latency computation over large structured, text and vect",
-              "stage": "Growth",
-              "geography": "Unknown",
-              "commitVelocity14d": 552,
-              "commitVelocityChange": "+42%",
-              "contributors": 100,
-              "contributorGrowth": "+16%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/vespa-engine",
-              "websiteUrl": "https://vespa.ai"
-            },
-            {
               "name": "inception-project",
               "description": "",
               "stage": "Growth",
@@ -194,20 +236,6 @@
               "websiteUrl": "https://docs.ray.io"
             },
             {
-              "name": "photoprism",
-              "description": "AI-Powered Photos App for the Decentralized Web. We are on a mission to protect your freedom and privacy.",
-              "stage": "Growth",
-              "geography": "EU",
-              "commitVelocity14d": 65,
-              "commitVelocityChange": "+48%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/photoprism",
-              "websiteUrl": "https://www.photoprism.app"
-            },
-            {
               "name": "harvard-edge",
               "description": "",
               "stage": "Growth",
@@ -220,20 +248,6 @@
               "signalType": "Engineering hiring burst",
               "githubUrl": "https://github.com/harvard-edge",
               "websiteUrl": "https://edge.seas.harvard.edu"
-            },
-            {
-              "name": "roboflow",
-              "description": "",
-              "stage": "Growth",
-              "geography": "US",
-              "commitVelocity14d": 39,
-              "commitVelocityChange": "-35%",
-              "contributors": 90,
-              "contributorGrowth": "+5%",
-              "newRepos": 2,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/roboflow",
-              "websiteUrl": "https://roboflow.com"
             },
             {
               "name": "paperless-ngx",
@@ -252,15 +266,15 @@
           "faqs": [
             {
               "question": "What engineering signals are ai & machine learning startups showing in Q2 2026?",
-              "answer": "In Q2 2026, we are tracking 15 ai & machine learning startups with measurable GitHub engineering signals. 7 of 15 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 13 of the tracked companies. The average 14-day commit velocity across the sector is 349 commits, with harvard-edge leading at 1132 commits (+55% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q2 2026, we are tracking 16 ai & machine learning startups with measurable GitHub engineering signals. 7 of 16 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 13 of the tracked companies. The average 14-day commit velocity across the sector is 322 commits, with photoprism leading at 121 commits (+109% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which ai & machine learning startup has the highest engineering acceleration in Q2 2026?",
-              "answer": "harvard-edge leads the ai & machine learning sector in Q2 2026 with 1132 commits over a 14-day window, representing a +55% change from the prior period. With 97 active contributors and 1 new repositories, harvard-edge is showing a \"Engineering hiring burst\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
+              "answer": "photoprism leads the ai & machine learning sector in Q2 2026 with 121 commits over a 14-day window, representing a +109% change from the prior period. With 100 active contributors, photoprism is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
             },
             {
               "question": "Where are the most active ai & machine learning engineering teams located?",
-              "answer": "Among the 15 ai & machine learning startups we track, US accounts for the highest concentration with 5 teams. Startups building AI/ML infrastructure, applications, and tools. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+              "answer": "Among the 16 ai & machine learning startups we track, US accounts for the highest concentration with 5 teams. Startups building AI/ML infrastructure, applications, and tools. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
             }
           ]
         },
@@ -272,14 +286,84 @@
               "description": "The AI community building the future.",
               "stage": "Growth",
               "geography": "EU",
-              "commitVelocity14d": 239,
-              "commitVelocityChange": "+55%",
+              "commitVelocity14d": 223,
+              "commitVelocityChange": "+19%",
               "contributors": 100,
               "contributorGrowth": "+0%",
-              "newRepos": 1,
-              "signalType": "Framework migration",
+              "newRepos": 3,
+              "signalType": "Infrastructure buildout",
               "githubUrl": "https://github.com/huggingface",
               "websiteUrl": "https://huggingface.co"
+            },
+            {
+              "name": "roboflow",
+              "description": "",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 30,
+              "commitVelocityChange": "-25%",
+              "contributors": 92,
+              "contributorGrowth": "+0%",
+              "newRepos": 2,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/roboflow",
+              "websiteUrl": "https://roboflow.com"
+            },
+            {
+              "name": "photoprism",
+              "description": "AI-Powered Photos App for the Decentralized Web. We are on a mission to protect your freedom and privacy.",
+              "stage": "Growth",
+              "geography": "EU",
+              "commitVelocity14d": 52,
+              "commitVelocityChange": "+148%",
+              "contributors": 100,
+              "contributorGrowth": "+19%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/photoprism",
+              "websiteUrl": "https://www.photoprism.app"
+            },
+            {
+              "name": "vespa-engine",
+              "description": "Vespa is an open-source platform for applications that need low-latency computation over large structured, text and vect",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 416,
+              "commitVelocityChange": "+62%",
+              "contributors": 100,
+              "contributorGrowth": "+46%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/vespa-engine",
+              "websiteUrl": "https://vespa.ai"
+            },
+            {
+              "name": "catboost",
+              "description": "CatBoost is a fast, scalable, high performance gradient boosting on decision trees library. Used for ranking, classifica",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 43,
+              "commitVelocityChange": "-25%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/catboost",
+              "websiteUrl": "https://catboost.ai"
+            },
+            {
+              "name": "mlflow",
+              "description": "The open source AI engineering platform for agents, LLMs, and ML models.",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 414,
+              "commitVelocityChange": "+11%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 2,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/mlflow",
+              "websiteUrl": "https://www.mlflow.org"
             },
             {
               "name": "ROCm",
@@ -308,20 +392,6 @@
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/netdata",
               "websiteUrl": "https://www.netdata.cloud"
-            },
-            {
-              "name": "mlflow",
-              "description": "The open source AI engineering platform for agents, LLMs, and ML models.",
-              "stage": "Growth",
-              "geography": "US",
-              "commitVelocity14d": 365,
-              "commitVelocityChange": "-20%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 2,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/mlflow",
-              "websiteUrl": "https://www.mlflow.org"
             },
             {
               "name": "zapplyjobs",
@@ -366,20 +436,6 @@
               "websiteUrl": "https://www.modular.com"
             },
             {
-              "name": "vespa-engine",
-              "description": "Vespa is an open-source platform for applications that need low-latency computation over large structured, text and vect",
-              "stage": "Growth",
-              "geography": "Unknown",
-              "commitVelocity14d": 281,
-              "commitVelocityChange": "+29%",
-              "contributors": 100,
-              "contributorGrowth": "+16%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/vespa-engine",
-              "websiteUrl": "https://vespa.ai"
-            },
-            {
               "name": "inception-project",
               "description": "",
               "stage": "Growth",
@@ -421,20 +477,6 @@
               "websiteUrl": "https://docs.ray.io"
             },
             {
-              "name": "photoprism",
-              "description": "AI-Powered Photos App for the Decentralized Web. We are on a mission to protect your freedom and privacy.",
-              "stage": "Growth",
-              "geography": "EU",
-              "commitVelocity14d": 25,
-              "commitVelocityChange": "+79%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/photoprism",
-              "websiteUrl": "https://www.photoprism.app"
-            },
-            {
               "name": "harvard-edge",
               "description": "",
               "stage": "Growth",
@@ -447,20 +489,6 @@
               "signalType": "Engineering hiring burst",
               "githubUrl": "https://github.com/harvard-edge",
               "websiteUrl": "https://edge.seas.harvard.edu"
-            },
-            {
-              "name": "roboflow",
-              "description": "",
-              "stage": "Growth",
-              "geography": "US",
-              "commitVelocity14d": 127,
-              "commitVelocityChange": "-29%",
-              "contributors": 90,
-              "contributorGrowth": "+5%",
-              "newRepos": 2,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/roboflow",
-              "websiteUrl": "https://roboflow.com"
             },
             {
               "name": "paperless-ngx",
@@ -479,7 +507,7 @@
           "faqs": [
             {
               "question": "What engineering signals are ai & machine learning startups showing in Q1 2026?",
-              "answer": "In Q1 2026, we are tracking 15 ai & machine learning startups with measurable GitHub engineering signals. 8 of 15 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 12 of the tracked companies. The average 14-day commit velocity across the sector is 213 commits, with zapplyjobs leading at 8 commits (+999% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q1 2026, we are tracking 16 ai & machine learning startups with measurable GitHub engineering signals. 9 of 16 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 12 of the tracked companies. The average 14-day commit velocity across the sector is 208 commits, with zapplyjobs leading at 8 commits (+999% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which ai & machine learning startup has the highest engineering acceleration in Q1 2026?",
@@ -487,7 +515,7 @@
             },
             {
               "question": "Where are the most active ai & machine learning engineering teams located?",
-              "answer": "Among the 15 ai & machine learning startups we track, US accounts for the highest concentration with 5 teams. Startups building AI/ML infrastructure, applications, and tools. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+              "answer": "Among the 16 ai & machine learning startups we track, US accounts for the highest concentration with 5 teams. Startups building AI/ML infrastructure, applications, and tools. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
             }
           ]
         },
@@ -499,14 +527,84 @@
               "description": "The AI community building the future.",
               "stage": "Growth",
               "geography": "EU",
-              "commitVelocity14d": 113,
-              "commitVelocityChange": "-49%",
+              "commitVelocity14d": 165,
+              "commitVelocityChange": "+67%",
               "contributors": 100,
               "contributorGrowth": "+0%",
-              "newRepos": 1,
-              "signalType": "Framework migration",
+              "newRepos": 3,
+              "signalType": "Infrastructure buildout",
               "githubUrl": "https://github.com/huggingface",
               "websiteUrl": "https://huggingface.co"
+            },
+            {
+              "name": "roboflow",
+              "description": "",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 287,
+              "commitVelocityChange": "+12%",
+              "contributors": 92,
+              "contributorGrowth": "+0%",
+              "newRepos": 2,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/roboflow",
+              "websiteUrl": "https://roboflow.com"
+            },
+            {
+              "name": "photoprism",
+              "description": "AI-Powered Photos App for the Decentralized Web. We are on a mission to protect your freedom and privacy.",
+              "stage": "Growth",
+              "geography": "EU",
+              "commitVelocity14d": 76,
+              "commitVelocityChange": "-52%",
+              "contributors": 100,
+              "contributorGrowth": "+19%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/photoprism",
+              "websiteUrl": "https://www.photoprism.app"
+            },
+            {
+              "name": "vespa-engine",
+              "description": "Vespa is an open-source platform for applications that need low-latency computation over large structured, text and vect",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 229,
+              "commitVelocityChange": "-25%",
+              "contributors": 100,
+              "contributorGrowth": "+46%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/vespa-engine",
+              "websiteUrl": "https://vespa.ai"
+            },
+            {
+              "name": "catboost",
+              "description": "CatBoost is a fast, scalable, high performance gradient boosting on decision trees library. Used for ranking, classifica",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 24,
+              "commitVelocityChange": "-20%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/catboost",
+              "websiteUrl": "https://catboost.ai"
+            },
+            {
+              "name": "mlflow",
+              "description": "The open source AI engineering platform for agents, LLMs, and ML models.",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 214,
+              "commitVelocityChange": "-13%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 2,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/mlflow",
+              "websiteUrl": "https://www.mlflow.org"
             },
             {
               "name": "ROCm",
@@ -537,20 +635,6 @@
               "websiteUrl": "https://www.netdata.cloud"
             },
             {
-              "name": "mlflow",
-              "description": "The open source AI engineering platform for agents, LLMs, and ML models.",
-              "stage": "Growth",
-              "geography": "US",
-              "commitVelocity14d": 260,
-              "commitVelocityChange": "+3%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 2,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/mlflow",
-              "websiteUrl": "https://www.mlflow.org"
-            },
-            {
               "name": "nautechsystems",
               "description": "next-generation algorithmic trading technologies",
               "stage": "Growth",
@@ -577,20 +661,6 @@
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/modular",
               "websiteUrl": "https://www.modular.com"
-            },
-            {
-              "name": "vespa-engine",
-              "description": "Vespa is an open-source platform for applications that need low-latency computation over large structured, text and vect",
-              "stage": "Growth",
-              "geography": "Unknown",
-              "commitVelocity14d": 288,
-              "commitVelocityChange": "-6%",
-              "contributors": 100,
-              "contributorGrowth": "+16%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/vespa-engine",
-              "websiteUrl": "https://vespa.ai"
             },
             {
               "name": "inception-project",
@@ -634,20 +704,6 @@
               "websiteUrl": "https://docs.ray.io"
             },
             {
-              "name": "photoprism",
-              "description": "AI-Powered Photos App for the Decentralized Web. We are on a mission to protect your freedom and privacy.",
-              "stage": "Growth",
-              "geography": "EU",
-              "commitVelocity14d": 94,
-              "commitVelocityChange": "-47%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/photoprism",
-              "websiteUrl": "https://www.photoprism.app"
-            },
-            {
               "name": "harvard-edge",
               "description": "",
               "stage": "Growth",
@@ -660,20 +716,6 @@
               "signalType": "Engineering hiring burst",
               "githubUrl": "https://github.com/harvard-edge",
               "websiteUrl": "https://edge.seas.harvard.edu"
-            },
-            {
-              "name": "roboflow",
-              "description": "",
-              "stage": "Growth",
-              "geography": "US",
-              "commitVelocity14d": 100,
-              "commitVelocityChange": "-61%",
-              "contributors": 90,
-              "contributorGrowth": "+5%",
-              "newRepos": 2,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/roboflow",
-              "websiteUrl": "https://roboflow.com"
             },
             {
               "name": "paperless-ngx",
@@ -692,15 +734,15 @@
           "faqs": [
             {
               "question": "What engineering signals are ai & machine learning startups showing in Q4 2025?",
-              "answer": "In Q4 2025, we are tracking 14 ai & machine learning startups with measurable GitHub engineering signals. 5 of 14 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 13 of the tracked companies. The average 14-day commit velocity across the sector is 186 commits, with ROCm leading at 405 commits (+43% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q4 2025, we are tracking 15 ai & machine learning startups with measurable GitHub engineering signals. 6 of 15 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 13 of the tracked companies. The average 14-day commit velocity across the sector is 183 commits, with huggingface leading at 165 commits (+67% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which ai & machine learning startup has the highest engineering acceleration in Q4 2025?",
-              "answer": "ROCm leads the ai & machine learning sector in Q4 2025 with 405 commits over a 14-day window, representing a +43% change from the prior period. With 100 active contributors, ROCm is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
+              "answer": "huggingface leads the ai & machine learning sector in Q4 2025 with 165 commits over a 14-day window, representing a +67% change from the prior period. With 100 active contributors and 3 new repositories, huggingface is showing a \"Infrastructure buildout\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
             },
             {
               "question": "Where are the most active ai & machine learning engineering teams located?",
-              "answer": "Among the 14 ai & machine learning startups we track, US accounts for the highest concentration with 4 teams. Startups building AI/ML infrastructure, applications, and tools. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+              "answer": "Among the 15 ai & machine learning startups we track, US accounts for the highest concentration with 4 teams. Startups building AI/ML infrastructure, applications, and tools. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
             }
           ]
         },
@@ -712,14 +754,84 @@
               "description": "The AI community building the future.",
               "stage": "Growth",
               "geography": "EU",
-              "commitVelocity14d": 220,
-              "commitVelocityChange": "-15%",
+              "commitVelocity14d": 248,
+              "commitVelocityChange": "-5%",
               "contributors": 100,
               "contributorGrowth": "+0%",
-              "newRepos": 1,
-              "signalType": "Framework migration",
+              "newRepos": 3,
+              "signalType": "Infrastructure buildout",
               "githubUrl": "https://github.com/huggingface",
               "websiteUrl": "https://huggingface.co"
+            },
+            {
+              "name": "roboflow",
+              "description": "",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 190,
+              "commitVelocityChange": "+13%",
+              "contributors": 92,
+              "contributorGrowth": "+0%",
+              "newRepos": 2,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/roboflow",
+              "websiteUrl": "https://roboflow.com"
+            },
+            {
+              "name": "photoprism",
+              "description": "AI-Powered Photos App for the Decentralized Web. We are on a mission to protect your freedom and privacy.",
+              "stage": "Growth",
+              "geography": "EU",
+              "commitVelocity14d": 45,
+              "commitVelocityChange": "+2%",
+              "contributors": 100,
+              "contributorGrowth": "+19%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/photoprism",
+              "websiteUrl": "https://www.photoprism.app"
+            },
+            {
+              "name": "vespa-engine",
+              "description": "Vespa is an open-source platform for applications that need low-latency computation over large structured, text and vect",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 112,
+              "commitVelocityChange": "-25%",
+              "contributors": 100,
+              "contributorGrowth": "+46%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/vespa-engine",
+              "websiteUrl": "https://vespa.ai"
+            },
+            {
+              "name": "catboost",
+              "description": "CatBoost is a fast, scalable, high performance gradient boosting on decision trees library. Used for ranking, classifica",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 29,
+              "commitVelocityChange": "-3%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/catboost",
+              "websiteUrl": "https://catboost.ai"
+            },
+            {
+              "name": "mlflow",
+              "description": "The open source AI engineering platform for agents, LLMs, and ML models.",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 211,
+              "commitVelocityChange": "+21%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 2,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/mlflow",
+              "websiteUrl": "https://www.mlflow.org"
             },
             {
               "name": "ROCm",
@@ -750,20 +862,6 @@
               "websiteUrl": "https://www.netdata.cloud"
             },
             {
-              "name": "mlflow",
-              "description": "The open source AI engineering platform for agents, LLMs, and ML models.",
-              "stage": "Growth",
-              "geography": "US",
-              "commitVelocity14d": 174,
-              "commitVelocityChange": "+27%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 2,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/mlflow",
-              "websiteUrl": "https://www.mlflow.org"
-            },
-            {
               "name": "nautechsystems",
               "description": "next-generation algorithmic trading technologies",
               "stage": "Growth",
@@ -790,20 +888,6 @@
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/modular",
               "websiteUrl": "https://www.modular.com"
-            },
-            {
-              "name": "vespa-engine",
-              "description": "Vespa is an open-source platform for applications that need low-latency computation over large structured, text and vect",
-              "stage": "Growth",
-              "geography": "Unknown",
-              "commitVelocity14d": 135,
-              "commitVelocityChange": "-34%",
-              "contributors": 100,
-              "contributorGrowth": "+16%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/vespa-engine",
-              "websiteUrl": "https://vespa.ai"
             },
             {
               "name": "inception-project",
@@ -847,20 +931,6 @@
               "websiteUrl": "https://docs.ray.io"
             },
             {
-              "name": "photoprism",
-              "description": "AI-Powered Photos App for the Decentralized Web. We are on a mission to protect your freedom and privacy.",
-              "stage": "Growth",
-              "geography": "EU",
-              "commitVelocity14d": 39,
-              "commitVelocityChange": "-37%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/photoprism",
-              "websiteUrl": "https://www.photoprism.app"
-            },
-            {
               "name": "harvard-edge",
               "description": "",
               "stage": "Growth",
@@ -873,20 +943,6 @@
               "signalType": "Engineering hiring burst",
               "githubUrl": "https://github.com/harvard-edge",
               "websiteUrl": "https://edge.seas.harvard.edu"
-            },
-            {
-              "name": "roboflow",
-              "description": "",
-              "stage": "Growth",
-              "geography": "US",
-              "commitVelocity14d": 221,
-              "commitVelocityChange": "+83%",
-              "contributors": 90,
-              "contributorGrowth": "+5%",
-              "newRepos": 2,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/roboflow",
-              "websiteUrl": "https://roboflow.com"
             },
             {
               "name": "paperless-ngx",
@@ -905,7 +961,7 @@
           "faqs": [
             {
               "question": "What engineering signals are ai & machine learning startups showing in Q3 2025?",
-              "answer": "In Q3 2025, we are tracking 14 ai & machine learning startups with measurable GitHub engineering signals. 8 of 14 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 13 of the tracked companies. The average 14-day commit velocity across the sector is 221 commits, with harvard-edge leading at 748 commits (+713% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q3 2025, we are tracking 15 ai & machine learning startups with measurable GitHub engineering signals. 9 of 15 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 13 of the tracked companies. The average 14-day commit velocity across the sector is 210 commits, with harvard-edge leading at 748 commits (+713% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which ai & machine learning startup has the highest engineering acceleration in Q3 2025?",
@@ -913,7 +969,7 @@
             },
             {
               "question": "Where are the most active ai & machine learning engineering teams located?",
-              "answer": "Among the 14 ai & machine learning startups we track, US accounts for the highest concentration with 4 teams. Startups building AI/ML infrastructure, applications, and tools. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+              "answer": "Among the 15 ai & machine learning startups we track, US accounts for the highest concentration with 4 teams. Startups building AI/ML infrastructure, applications, and tools. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
             }
           ]
         }
@@ -1077,6 +1133,33 @@
           "intro": "Climate tech engineering activity is concentrated in grid software and carbon accounting tooling.",
           "startups": [
             {
+              "name": "CliMA",
+              "description": "The next generation of climate models. Built in the open.",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 15,
+              "commitVelocityChange": "-57%",
+              "contributors": 81,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/CliMA",
+              "websiteUrl": "https://clima.caltech.edu"
+            },
+            {
+              "name": "nco",
+              "description": "",
+              "stage": "Series A/B",
+              "geography": "Unknown",
+              "commitVelocity14d": 2,
+              "commitVelocityChange": "-92%",
+              "contributors": 25,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/nco"
+            },
+            {
               "name": "ESCOMP",
               "description": "",
               "stage": "Growth",
@@ -1104,33 +1187,6 @@
               "websiteUrl": "https://carbondesignsystem.com"
             },
             {
-              "name": "CliMA",
-              "description": "The next generation of climate models. Built in the open.",
-              "stage": "Growth",
-              "geography": "US",
-              "commitVelocity14d": 33,
-              "commitVelocityChange": "+6%",
-              "contributors": 81,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/CliMA",
-              "websiteUrl": "https://clima.caltech.edu"
-            },
-            {
-              "name": "nco",
-              "description": "",
-              "stage": "Series A/B",
-              "geography": "Unknown",
-              "commitVelocity14d": 23,
-              "commitVelocityChange": "-18%",
-              "contributors": 24,
-              "contributorGrowth": "+220%",
-              "newRepos": 0,
-              "signalType": "Engineering hiring burst",
-              "githubUrl": "https://github.com/nco"
-            },
-            {
               "name": "opennem",
               "description": "Formerly OpenNEM, Open Electricity aims to make the wealth of public energy data more accessible",
               "stage": "Seed",
@@ -1148,11 +1204,11 @@
           "faqs": [
             {
               "question": "What engineering signals are climate tech startups showing in Q2 2026?",
-              "answer": "In Q2 2026, we are tracking 5 climate tech startups with measurable GitHub engineering signals. 1 of 5 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 3 of the tracked companies. The average 14-day commit velocity across the sector is 39 commits, with CliMA leading at 33 commits (+6% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q2 2026, we are tracking 5 climate tech startups with measurable GitHub engineering signals. 0 of 5 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 4 of the tracked companies. The average 14-day commit velocity across the sector is 31 commits, with carbon-design-system leading at 97 commits (-1% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which climate tech startup has the highest engineering acceleration in Q2 2026?",
-              "answer": "CliMA leads the climate tech sector in Q2 2026 with 33 commits over a 14-day window, representing a +6% change from the prior period. With 81 active contributors, CliMA is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
+              "answer": "carbon-design-system leads the climate tech sector in Q2 2026 with 97 commits over a 14-day window, representing a -1% change from the prior period. With 100 active contributors and 1 new repositories, carbon-design-system is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
             },
             {
               "question": "Where are the most active climate tech engineering teams located?",
@@ -1163,6 +1219,20 @@
         "q1-2026": {
           "intro": "Climate tech engineering activity is concentrated in grid software and carbon accounting tooling.",
           "startups": [
+            {
+              "name": "CliMA",
+              "description": "The next generation of climate models. Built in the open.",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 58,
+              "commitVelocityChange": "-28%",
+              "contributors": 81,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/CliMA",
+              "websiteUrl": "https://clima.caltech.edu"
+            },
             {
               "name": "ESCOMP",
               "description": "",
@@ -1189,20 +1259,6 @@
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/carbon-design-system",
               "websiteUrl": "https://carbondesignsystem.com"
-            },
-            {
-              "name": "CliMA",
-              "description": "The next generation of climate models. Built in the open.",
-              "stage": "Growth",
-              "geography": "US",
-              "commitVelocity14d": 72,
-              "commitVelocityChange": "+13%",
-              "contributors": 81,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/CliMA",
-              "websiteUrl": "https://clima.caltech.edu"
             },
             {
               "name": "nco",
@@ -1235,7 +1291,7 @@
           "faqs": [
             {
               "question": "What engineering signals are climate tech startups showing in Q1 2026?",
-              "answer": "In Q1 2026, we are tracking 5 climate tech startups with measurable GitHub engineering signals. 4 of 5 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 3 of the tracked companies. The average 14-day commit velocity across the sector is 59 commits, with opennem leading at 31 commits (+999% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q1 2026, we are tracking 5 climate tech startups with measurable GitHub engineering signals. 3 of 5 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 3 of the tracked companies. The average 14-day commit velocity across the sector is 56 commits, with opennem leading at 31 commits (+999% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which climate tech startup has the highest engineering acceleration in Q1 2026?",
@@ -1250,6 +1306,33 @@
         "q4-2025": {
           "intro": "Climate tech engineering activity is concentrated in grid software and carbon accounting tooling.",
           "startups": [
+            {
+              "name": "CliMA",
+              "description": "The next generation of climate models. Built in the open.",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 44,
+              "commitVelocityChange": "+100%",
+              "contributors": 81,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/CliMA",
+              "websiteUrl": "https://clima.caltech.edu"
+            },
+            {
+              "name": "nco",
+              "description": "",
+              "stage": "Series A/B",
+              "geography": "Unknown",
+              "commitVelocity14d": 6,
+              "commitVelocityChange": "-33%",
+              "contributors": 25,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/nco"
+            },
             {
               "name": "ESCOMP",
               "description": "",
@@ -1278,33 +1361,6 @@
               "websiteUrl": "https://carbondesignsystem.com"
             },
             {
-              "name": "CliMA",
-              "description": "The next generation of climate models. Built in the open.",
-              "stage": "Growth",
-              "geography": "US",
-              "commitVelocity14d": 22,
-              "commitVelocityChange": "-31%",
-              "contributors": 81,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/CliMA",
-              "websiteUrl": "https://clima.caltech.edu"
-            },
-            {
-              "name": "nco",
-              "description": "",
-              "stage": "Series A/B",
-              "geography": "Unknown",
-              "commitVelocity14d": 6,
-              "commitVelocityChange": "+0%",
-              "contributors": 24,
-              "contributorGrowth": "+220%",
-              "newRepos": 0,
-              "signalType": "Engineering hiring burst",
-              "githubUrl": "https://github.com/nco"
-            },
-            {
               "name": "opennem",
               "description": "Formerly OpenNEM, Open Electricity aims to make the wealth of public energy data more accessible",
               "stage": "Seed",
@@ -1322,11 +1378,11 @@
           "faqs": [
             {
               "question": "What engineering signals are climate tech startups showing in Q4 2025?",
-              "answer": "In Q4 2025, we are tracking 5 climate tech startups with measurable GitHub engineering signals. 2 of 5 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 3 of the tracked companies. The average 14-day commit velocity across the sector is 46 commits, with ESCOMP leading at 98 commits (+48% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q4 2025, we are tracking 5 climate tech startups with measurable GitHub engineering signals. 3 of 5 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 4 of the tracked companies. The average 14-day commit velocity across the sector is 50 commits, with CliMA leading at 44 commits (+100% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which climate tech startup has the highest engineering acceleration in Q4 2025?",
-              "answer": "ESCOMP leads the climate tech sector in Q4 2025 with 98 commits over a 14-day window, representing a +48% change from the prior period. With 61 active contributors, ESCOMP is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
+              "answer": "CliMA leads the climate tech sector in Q4 2025 with 44 commits over a 14-day window, representing a +100% change from the prior period. With 81 active contributors, CliMA is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
             },
             {
               "question": "Where are the most active climate tech engineering teams located?",
@@ -1337,6 +1393,20 @@
         "q3-2025": {
           "intro": "Climate tech engineering activity is concentrated in grid software and carbon accounting tooling.",
           "startups": [
+            {
+              "name": "CliMA",
+              "description": "The next generation of climate models. Built in the open.",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 16,
+              "commitVelocityChange": "-58%",
+              "contributors": 81,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/CliMA",
+              "websiteUrl": "https://clima.caltech.edu"
+            },
             {
               "name": "ESCOMP",
               "description": "",
@@ -1363,20 +1433,6 @@
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/carbon-design-system",
               "websiteUrl": "https://carbondesignsystem.com"
-            },
-            {
-              "name": "CliMA",
-              "description": "The next generation of climate models. Built in the open.",
-              "stage": "Growth",
-              "geography": "US",
-              "commitVelocity14d": 28,
-              "commitVelocityChange": "-3%",
-              "contributors": 81,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/CliMA",
-              "websiteUrl": "https://clima.caltech.edu"
             },
             {
               "name": "nco",
@@ -1409,7 +1465,7 @@
           "faqs": [
             {
               "question": "What engineering signals are climate tech startups showing in Q3 2025?",
-              "answer": "In Q3 2025, we are tracking 5 climate tech startups with measurable GitHub engineering signals. 2 of 5 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 3 of the tracked companies. The average 14-day commit velocity across the sector is 48 commits, with nco leading at 5 commits (+150% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q3 2025, we are tracking 5 climate tech startups with measurable GitHub engineering signals. 2 of 5 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 3 of the tracked companies. The average 14-day commit velocity across the sector is 45 commits, with nco leading at 5 commits (+150% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which climate tech startup has the highest engineering acceleration in Q3 2025?",
@@ -1763,6 +1819,75 @@
           "intro": "Cybersecurity engineering teams show a bifurcated pattern: vulnerability scanning sprints vs. identity teams with steady commits but growing contributor lists.",
           "startups": [
             {
+              "name": "OpenCTI-Platform",
+              "description": "Open Cyber Threat Intelligence Platform",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 119,
+              "commitVelocityChange": "+17%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/OpenCTI-Platform",
+              "websiteUrl": "https://opencti.io"
+            },
+            {
+              "name": "freeipa",
+              "description": "FreeIPA project - An integrated Identity and Authentication solution for Linux/UNIX networked environments",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 2,
+              "commitVelocityChange": "-71%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/freeipa",
+              "websiteUrl": "http://www.freeipa.org"
+            },
+            {
+              "name": "yaklang",
+              "description": "",
+              "stage": "Series A/B",
+              "geography": "Unknown",
+              "commitVelocity14d": 71,
+              "commitVelocityChange": "-52%",
+              "contributors": 34,
+              "contributorGrowth": "+0%",
+              "newRepos": 3,
+              "signalType": "Infrastructure buildout",
+              "githubUrl": "https://github.com/yaklang"
+            },
+            {
+              "name": "bytebase",
+              "description": "Database DevSecOps for Developer, DBA, Security, and Platform Engineering Teams.",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 165,
+              "commitVelocityChange": "+4%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/bytebase",
+              "websiteUrl": "https://www.bytebase.com"
+            },
+            {
+              "name": "falcosecurity",
+              "description": "Falco is Container Native Runtime Security",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 21,
+              "commitVelocityChange": "-54%",
+              "contributors": 100,
+              "contributorGrowth": "+8%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/falcosecurity",
+              "websiteUrl": "https://falco.org"
+            },
+            {
               "name": "greenbone",
               "description": "Open Source Vulnerability Management",
               "stage": "Series A/B",
@@ -1943,48 +2068,6 @@
               "websiteUrl": "https://jans.io"
             },
             {
-              "name": "bytebase",
-              "description": "Database DevSecOps for Developer, DBA, Security, and Platform Engineering Teams.",
-              "stage": "Growth",
-              "geography": "US",
-              "commitVelocity14d": 124,
-              "commitVelocityChange": "-29%",
-              "contributors": 100,
-              "contributorGrowth": "+31%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/bytebase",
-              "websiteUrl": "https://www.bytebase.com"
-            },
-            {
-              "name": "OpenCTI-Platform",
-              "description": "Open Cyber Threat Intelligence Platform",
-              "stage": "Growth",
-              "geography": "US",
-              "commitVelocity14d": 41,
-              "commitVelocityChange": "-62%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/OpenCTI-Platform",
-              "websiteUrl": "https://opencti.io"
-            },
-            {
-              "name": "freeipa",
-              "description": "FreeIPA project - An integrated Identity and Authentication solution for Linux/UNIX networked environments",
-              "stage": "Growth",
-              "geography": "Unknown",
-              "commitVelocity14d": 4,
-              "commitVelocityChange": "-64%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/freeipa",
-              "websiteUrl": "http://www.freeipa.org"
-            },
-            {
               "name": "wireapp",
               "description": "Wire open source secure messenger",
               "stage": "Growth",
@@ -1997,20 +2080,6 @@
               "signalType": "Infrastructure buildout",
               "githubUrl": "https://github.com/wireapp",
               "websiteUrl": "https://wire.com"
-            },
-            {
-              "name": "falcosecurity",
-              "description": "Falco is Container Native Runtime Security",
-              "stage": "Growth",
-              "geography": "Unknown",
-              "commitVelocity14d": 23,
-              "commitVelocityChange": "-32%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/falcosecurity",
-              "websiteUrl": "https://falco.org"
             },
             {
               "name": "NewLifeX",
@@ -2072,7 +2141,7 @@
           "faqs": [
             {
               "question": "What engineering signals are cybersecurity startups showing in Q2 2026?",
-              "answer": "In Q2 2026, we are tracking 22 cybersecurity startups with measurable GitHub engineering signals. 7 of 22 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 15 of the tracked companies. The average 14-day commit velocity across the sector is 151 commits, with NewLifeX leading at 6 commits (+999% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q2 2026, we are tracking 23 cybersecurity startups with measurable GitHub engineering signals. 9 of 23 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 15 of the tracked companies. The average 14-day commit velocity across the sector is 152 commits, with NewLifeX leading at 6 commits (+999% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which cybersecurity startup has the highest engineering acceleration in Q2 2026?",
@@ -2080,13 +2149,82 @@
             },
             {
               "question": "Where are the most active cybersecurity engineering teams located?",
-              "answer": "Among the 22 cybersecurity startups we track, US accounts for the highest concentration with 8 teams. Startups protecting systems, networks, and data from digital attacks. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+              "answer": "Among the 23 cybersecurity startups we track, US accounts for the highest concentration with 8 teams. Startups protecting systems, networks, and data from digital attacks. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
             }
           ]
         },
         "q1-2026": {
           "intro": "Cybersecurity engineering teams show a bifurcated pattern: vulnerability scanning sprints vs. identity teams with steady commits but growing contributor lists.",
           "startups": [
+            {
+              "name": "OpenCTI-Platform",
+              "description": "Open Cyber Threat Intelligence Platform",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 160,
+              "commitVelocityChange": "+1%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/OpenCTI-Platform",
+              "websiteUrl": "https://opencti.io"
+            },
+            {
+              "name": "freeipa",
+              "description": "FreeIPA project - An integrated Identity and Authentication solution for Linux/UNIX networked environments",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 10,
+              "commitVelocityChange": "-17%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/freeipa",
+              "websiteUrl": "http://www.freeipa.org"
+            },
+            {
+              "name": "yaklang",
+              "description": "",
+              "stage": "Series A/B",
+              "geography": "Unknown",
+              "commitVelocity14d": 187,
+              "commitVelocityChange": "+40%",
+              "contributors": 34,
+              "contributorGrowth": "+0%",
+              "newRepos": 3,
+              "signalType": "Infrastructure buildout",
+              "githubUrl": "https://github.com/yaklang"
+            },
+            {
+              "name": "bytebase",
+              "description": "Database DevSecOps for Developer, DBA, Security, and Platform Engineering Teams.",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 198,
+              "commitVelocityChange": "-28%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/bytebase",
+              "websiteUrl": "https://www.bytebase.com"
+            },
+            {
+              "name": "falcosecurity",
+              "description": "Falco is Container Native Runtime Security",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 55,
+              "commitVelocityChange": "+90%",
+              "contributors": 100,
+              "contributorGrowth": "+8%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/falcosecurity",
+              "websiteUrl": "https://falco.org"
+            },
             {
               "name": "greenbone",
               "description": "Open Source Vulnerability Management",
@@ -2268,48 +2406,6 @@
               "websiteUrl": "https://jans.io"
             },
             {
-              "name": "bytebase",
-              "description": "Database DevSecOps for Developer, DBA, Security, and Platform Engineering Teams.",
-              "stage": "Growth",
-              "geography": "US",
-              "commitVelocity14d": 158,
-              "commitVelocityChange": "-52%",
-              "contributors": 100,
-              "contributorGrowth": "+31%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/bytebase",
-              "websiteUrl": "https://www.bytebase.com"
-            },
-            {
-              "name": "OpenCTI-Platform",
-              "description": "Open Cyber Threat Intelligence Platform",
-              "stage": "Growth",
-              "geography": "US",
-              "commitVelocity14d": 160,
-              "commitVelocityChange": "+45%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/OpenCTI-Platform",
-              "websiteUrl": "https://opencti.io"
-            },
-            {
-              "name": "freeipa",
-              "description": "FreeIPA project - An integrated Identity and Authentication solution for Linux/UNIX networked environments",
-              "stage": "Growth",
-              "geography": "Unknown",
-              "commitVelocity14d": 10,
-              "commitVelocityChange": "-29%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/freeipa",
-              "websiteUrl": "http://www.freeipa.org"
-            },
-            {
               "name": "wireapp",
               "description": "Wire open source secure messenger",
               "stage": "Growth",
@@ -2322,20 +2418,6 @@
               "signalType": "Infrastructure buildout",
               "githubUrl": "https://github.com/wireapp",
               "websiteUrl": "https://wire.com"
-            },
-            {
-              "name": "falcosecurity",
-              "description": "Falco is Container Native Runtime Security",
-              "stage": "Growth",
-              "geography": "Unknown",
-              "commitVelocity14d": 45,
-              "commitVelocityChange": "+29%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/falcosecurity",
-              "websiteUrl": "https://falco.org"
             },
             {
               "name": "NewLifeX",
@@ -2397,7 +2479,7 @@
           "faqs": [
             {
               "question": "What engineering signals are cybersecurity startups showing in Q1 2026?",
-              "answer": "In Q1 2026, we are tracking 22 cybersecurity startups with measurable GitHub engineering signals. 13 of 22 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 15 of the tracked companies. The average 14-day commit velocity across the sector is 191 commits, with Infisical leading at 399 commits (+1496% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q1 2026, we are tracking 23 cybersecurity startups with measurable GitHub engineering signals. 14 of 23 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 15 of the tracked companies. The average 14-day commit velocity across the sector is 193 commits, with Infisical leading at 399 commits (+1496% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which cybersecurity startup has the highest engineering acceleration in Q1 2026?",
@@ -2405,13 +2487,82 @@
             },
             {
               "question": "Where are the most active cybersecurity engineering teams located?",
-              "answer": "Among the 22 cybersecurity startups we track, US accounts for the highest concentration with 8 teams. Startups protecting systems, networks, and data from digital attacks. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+              "answer": "Among the 23 cybersecurity startups we track, US accounts for the highest concentration with 8 teams. Startups protecting systems, networks, and data from digital attacks. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
             }
           ]
         },
         "q4-2025": {
           "intro": "Cybersecurity engineering teams show a bifurcated pattern: vulnerability scanning sprints vs. identity teams with steady commits but growing contributor lists.",
           "startups": [
+            {
+              "name": "OpenCTI-Platform",
+              "description": "Open Cyber Threat Intelligence Platform",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 93,
+              "commitVelocityChange": "-57%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/OpenCTI-Platform",
+              "websiteUrl": "https://opencti.io"
+            },
+            {
+              "name": "freeipa",
+              "description": "FreeIPA project - An integrated Identity and Authentication solution for Linux/UNIX networked environments",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 22,
+              "commitVelocityChange": "-8%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/freeipa",
+              "websiteUrl": "http://www.freeipa.org"
+            },
+            {
+              "name": "yaklang",
+              "description": "",
+              "stage": "Series A/B",
+              "geography": "Unknown",
+              "commitVelocity14d": 442,
+              "commitVelocityChange": "+17%",
+              "contributors": 34,
+              "contributorGrowth": "+0%",
+              "newRepos": 3,
+              "signalType": "Infrastructure buildout",
+              "githubUrl": "https://github.com/yaklang"
+            },
+            {
+              "name": "bytebase",
+              "description": "Database DevSecOps for Developer, DBA, Security, and Platform Engineering Teams.",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 235,
+              "commitVelocityChange": "+26%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/bytebase",
+              "websiteUrl": "https://www.bytebase.com"
+            },
+            {
+              "name": "falcosecurity",
+              "description": "Falco is Container Native Runtime Security",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 4,
+              "commitVelocityChange": "-78%",
+              "contributors": 100,
+              "contributorGrowth": "+8%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/falcosecurity",
+              "websiteUrl": "https://falco.org"
+            },
             {
               "name": "greenbone",
               "description": "Open Source Vulnerability Management",
@@ -2593,48 +2744,6 @@
               "websiteUrl": "https://jans.io"
             },
             {
-              "name": "bytebase",
-              "description": "Database DevSecOps for Developer, DBA, Security, and Platform Engineering Teams.",
-              "stage": "Growth",
-              "geography": "US",
-              "commitVelocity14d": 257,
-              "commitVelocityChange": "+57%",
-              "contributors": 100,
-              "contributorGrowth": "+31%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/bytebase",
-              "websiteUrl": "https://www.bytebase.com"
-            },
-            {
-              "name": "OpenCTI-Platform",
-              "description": "Open Cyber Threat Intelligence Platform",
-              "stage": "Growth",
-              "geography": "US",
-              "commitVelocity14d": 92,
-              "commitVelocityChange": "-54%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/OpenCTI-Platform",
-              "websiteUrl": "https://opencti.io"
-            },
-            {
-              "name": "freeipa",
-              "description": "FreeIPA project - An integrated Identity and Authentication solution for Linux/UNIX networked environments",
-              "stage": "Growth",
-              "geography": "Unknown",
-              "commitVelocity14d": 26,
-              "commitVelocityChange": "+44%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/freeipa",
-              "websiteUrl": "http://www.freeipa.org"
-            },
-            {
               "name": "wireapp",
               "description": "Wire open source secure messenger",
               "stage": "Growth",
@@ -2647,20 +2756,6 @@
               "signalType": "Infrastructure buildout",
               "githubUrl": "https://github.com/wireapp",
               "websiteUrl": "https://wire.com"
-            },
-            {
-              "name": "falcosecurity",
-              "description": "Falco is Container Native Runtime Security",
-              "stage": "Growth",
-              "geography": "Unknown",
-              "commitVelocity14d": 4,
-              "commitVelocityChange": "-90%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/falcosecurity",
-              "websiteUrl": "https://falco.org"
             },
             {
               "name": "monero-project",
@@ -2708,7 +2803,7 @@
           "faqs": [
             {
               "question": "What engineering signals are cybersecurity startups showing in Q4 2025?",
-              "answer": "In Q4 2025, we are tracking 21 cybersecurity startups with measurable GitHub engineering signals. 12 of 21 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 15 of the tracked companies. The average 14-day commit velocity across the sector is 167 commits, with lf-edge leading at 100 commits (+285% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q4 2025, we are tracking 22 cybersecurity startups with measurable GitHub engineering signals. 12 of 22 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 15 of the tracked companies. The average 14-day commit velocity across the sector is 179 commits, with lf-edge leading at 100 commits (+285% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which cybersecurity startup has the highest engineering acceleration in Q4 2025?",
@@ -2716,13 +2811,82 @@
             },
             {
               "question": "Where are the most active cybersecurity engineering teams located?",
-              "answer": "Among the 21 cybersecurity startups we track, US accounts for the highest concentration with 8 teams. Startups protecting systems, networks, and data from digital attacks. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+              "answer": "Among the 22 cybersecurity startups we track, US accounts for the highest concentration with 8 teams. Startups protecting systems, networks, and data from digital attacks. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
             }
           ]
         },
         "q3-2025": {
           "intro": "Cybersecurity engineering teams show a bifurcated pattern: vulnerability scanning sprints vs. identity teams with steady commits but growing contributor lists.",
           "startups": [
+            {
+              "name": "OpenCTI-Platform",
+              "description": "Open Cyber Threat Intelligence Platform",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 104,
+              "commitVelocityChange": "-19%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/OpenCTI-Platform",
+              "websiteUrl": "https://opencti.io"
+            },
+            {
+              "name": "freeipa",
+              "description": "FreeIPA project - An integrated Identity and Authentication solution for Linux/UNIX networked environments",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 6,
+              "commitVelocityChange": "-14%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/freeipa",
+              "websiteUrl": "http://www.freeipa.org"
+            },
+            {
+              "name": "yaklang",
+              "description": "",
+              "stage": "Series A/B",
+              "geography": "Unknown",
+              "commitVelocity14d": 121,
+              "commitVelocityChange": "+32%",
+              "contributors": 34,
+              "contributorGrowth": "+0%",
+              "newRepos": 3,
+              "signalType": "Infrastructure buildout",
+              "githubUrl": "https://github.com/yaklang"
+            },
+            {
+              "name": "bytebase",
+              "description": "Database DevSecOps for Developer, DBA, Security, and Platform Engineering Teams.",
+              "stage": "Growth",
+              "geography": "US",
+              "commitVelocity14d": 856,
+              "commitVelocityChange": "+152%",
+              "contributors": 100,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Deploy frequency spike",
+              "githubUrl": "https://github.com/bytebase",
+              "websiteUrl": "https://www.bytebase.com"
+            },
+            {
+              "name": "falcosecurity",
+              "description": "Falco is Container Native Runtime Security",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 11,
+              "commitVelocityChange": "-75%",
+              "contributors": 100,
+              "contributorGrowth": "+8%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/falcosecurity",
+              "websiteUrl": "https://falco.org"
+            },
             {
               "name": "greenbone",
               "description": "Open Source Vulnerability Management",
@@ -2904,48 +3068,6 @@
               "websiteUrl": "https://jans.io"
             },
             {
-              "name": "bytebase",
-              "description": "Database DevSecOps for Developer, DBA, Security, and Platform Engineering Teams.",
-              "stage": "Growth",
-              "geography": "US",
-              "commitVelocity14d": 704,
-              "commitVelocityChange": "+102%",
-              "contributors": 100,
-              "contributorGrowth": "+31%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/bytebase",
-              "websiteUrl": "https://www.bytebase.com"
-            },
-            {
-              "name": "OpenCTI-Platform",
-              "description": "Open Cyber Threat Intelligence Platform",
-              "stage": "Growth",
-              "geography": "US",
-              "commitVelocity14d": 104,
-              "commitVelocityChange": "+6%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/OpenCTI-Platform",
-              "websiteUrl": "https://opencti.io"
-            },
-            {
-              "name": "freeipa",
-              "description": "FreeIPA project - An integrated Identity and Authentication solution for Linux/UNIX networked environments",
-              "stage": "Growth",
-              "geography": "Unknown",
-              "commitVelocity14d": 5,
-              "commitVelocityChange": "-29%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/freeipa",
-              "websiteUrl": "http://www.freeipa.org"
-            },
-            {
               "name": "wireapp",
               "description": "Wire open source secure messenger",
               "stage": "Growth",
@@ -2958,20 +3080,6 @@
               "signalType": "Infrastructure buildout",
               "githubUrl": "https://github.com/wireapp",
               "websiteUrl": "https://wire.com"
-            },
-            {
-              "name": "falcosecurity",
-              "description": "Falco is Container Native Runtime Security",
-              "stage": "Growth",
-              "geography": "Unknown",
-              "commitVelocity14d": 35,
-              "commitVelocityChange": "+9%",
-              "contributors": 100,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/falcosecurity",
-              "websiteUrl": "https://falco.org"
             },
             {
               "name": "NewLifeX",
@@ -3033,15 +3141,15 @@
           "faqs": [
             {
               "question": "What engineering signals are cybersecurity startups showing in Q3 2025?",
-              "answer": "In Q3 2025, we are tracking 22 cybersecurity startups with measurable GitHub engineering signals. 11 of 22 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 16 of the tracked companies. The average 14-day commit velocity across the sector is 154 commits, with bytebase leading at 704 commits (+102% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q3 2025, we are tracking 23 cybersecurity startups with measurable GitHub engineering signals. 10 of 23 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 15 of the tracked companies. The average 14-day commit velocity across the sector is 158 commits, with bytebase leading at 856 commits (+152% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which cybersecurity startup has the highest engineering acceleration in Q3 2025?",
-              "answer": "bytebase leads the cybersecurity sector in Q3 2025 with 704 commits over a 14-day window, representing a +102% change from the prior period. With 100 active contributors, bytebase is showing a \"Framework migration\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
+              "answer": "bytebase leads the cybersecurity sector in Q3 2025 with 856 commits over a 14-day window, representing a +152% change from the prior period. With 100 active contributors, bytebase is showing a \"Deploy frequency spike\" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise."
             },
             {
               "question": "Where are the most active cybersecurity engineering teams located?",
-              "answer": "Among the 22 cybersecurity startups we track, US accounts for the highest concentration with 8 teams. Startups protecting systems, networks, and data from digital attacks. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+              "answer": "Among the 23 cybersecurity startups we track, US accounts for the highest concentration with 8 teams. Startups protecting systems, networks, and data from digital attacks. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
             }
           ]
         }
