@@ -1,6 +1,6 @@
 {
   "_comment": "Dedup state for the mention radar. Each entry: {url, firstSeen}. Append-only — never delete; rows here mean 'already in log'. Maintained by scan.mjs and log-mention.mjs.",
   "version": 1,
-  "lastRun": 1778570576524,
+  "lastRun": 1778583533753,
   "seen": []
 }
