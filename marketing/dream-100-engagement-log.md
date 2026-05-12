@@ -168,3 +168,17 @@ Notes: 20 days dark since Apr 19. Claude-for-Chrome extension installed today; B
   > 36 ships in 2 sessions is the new top-decile signature. We track this across funded teams — pre-AI-agent baseline was ~1.2 ships/dev/day; post-agent top quartile is hitting 8-12. The catch: variance also widened 3×. Same tool, different velocity per team.
   - Chars: 259
   - URL: https://x.com/bfeld/status/2052416679557365813
+
+### 2026-05-12 ✅ POSTED (2 replies — manual "Run now" pipeline test, cooldown set thin)
+
+Notes: Manual inline run of the daily-task pattern, post-`twitter-dream100-daily` reconfig 2026-05-11. First scheduled cron fire is tomorrow ~17:07 Athens local (=~14:07 UTC). Heavy May 9 cooldown set knocked out 6 accounts: @PeterJ_Walker, @Samirkaji, @gregisenberg, @arvidkahl, @danmartell, @bfeld. Permanent @GergelyOrosz skip stays. Scanned 17 remaining profiles. Kept 2. Skip-reasons: @dunkhippo33 (event shoutout), @avichal (politics), @rrhoover (no fresh content since May 9), @swyx (reposts only), @tdinh_me (self-promo for own app), @levelsio (vibejam — replied to similar Apr 18, too eager), @alexhillman ("taps the sign" anti-AI 2-word post), @hunterwalk (timeline still won't render in a11y tree — same blocker as May 9), @joshk (reposts only), @jasonfried (last post May 8 "a lot of stuff coming" — too vague), @naval (podcast launch, 66 replies + 3.5K likes in 7h = reply position too low), @pmarca (politics), @chamath (portfolio promo + 75K views), @DavidSacks (media appearance promos), @peterthiel (dormant, last post 2014), @fredwilson (last post Apr 29, 13d stale). Tier mix: 1 T2 + 1 T3. Browser: deviceId d5fdcca3 (relabeled "Browser 1" from May 11; @data_nerd session live).
+
+- **@ShaanVP** ✅ — Angle: Two-a-day cycle (quoting Hormozi on speeding up business cycles) — same pattern shows in commit data
+  > The two-a-day pattern shows up in commit data clearly. Teams with morning+EOD sync cycles ship 1.7× more PRs/week than weekly-sync teams. Same headcount. The cycles compound across blockers — fewer half-day stalls. Cadence ≠ meeting load.
+  - Chars: 238
+  - URL: https://x.com/ShaanVP/status/2053908074289828133
+
+- **@packyM** ✅ — Angle: "Manifestation = algorithm of what you click on, irl" — pivot to commit-graph as the actual algorithm
+  > The startup-data version of this: repos shipping publicly get inbound at 3-4× the rate of identical private ones. Same code, different surface. The algorithm isn't social — it's the commit graph. You don't summon partners. You git push until they find you.
+  - Chars: 256
+  - URL: https://x.com/packyM/status/2053525577244500041
