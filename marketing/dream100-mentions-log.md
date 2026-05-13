@@ -200,3 +200,11 @@ Both `scan.mjs` and `log-mention.mjs` produce this exact shape. Don't edit the f
   - Quote: > ### Summary Adds a new dataset entry under **Finance**: *VC Deal Flow Signal* — an open dataset of GitHub-derived early-stage venture-capital deal-flow signals. ### Why this is a high-quality fit - **Direct download**, not gated by login or purchase: distributed via Hugging Face
   - Status: `pending` — keyword: `vc deal flow signal`
   - Reply: _none yet_
+### 2026-05-13
+
+- **GitHub — kimjune01** — Protect llama_index from AI slop PRs
+  - URL: https://github.com/run-llama/llama_index/issues/21632
+  - Posted: 2026-05-13 00:45Z · Detected: 2026-05-13 04:29Z · Reply-by (4h SLA): **2026-05-13 08:29Z**
+  - Quote: > 9 of 98 PRs in the last 2 weeks would have been auto-closed before review (e.g. #21616 Security: Fix format-string sandbox bypass in EvaporateExtra, #21600 feat: add GitDealFlow tool spec for engineering acceleration). Install a GitHub Action: - [PR Quality Gate](https://github
+  - Status: `pending` — keyword: `gitdealflow`
+  - Reply: _none yet_
