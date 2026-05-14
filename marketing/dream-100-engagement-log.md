@@ -182,3 +182,7 @@ Notes: Manual inline run of the daily-task pattern, post-`twitter-dream100-daily
   > The startup-data version of this: repos shipping publicly get inbound at 3-4× the rate of identical private ones. Same code, different surface. The algorithm isn't social — it's the commit graph. You don't summon partners. You git push until they find you.
   - Chars: 256
   - URL: https://x.com/packyM/status/2053525577244500041
+
+### 2026-05-14 ⏭ SKIPPED — multi-browser Chrome MCP block
+
+Notes: list_connected_browsers returned 2 instances (Browser 1 d5fdcca3-0e58-4303-b045-bdae10660d73, Browser 2 fe4eedb9-b937-4dec-afe9-fa276cd04594), no user present to disambiguate. Per durable rule (feedback_chrome_mcp_multi_browser_blocks_cron.md), cron tasks must abort rather than guess deviceId. No replies posted, no candidates scanned.
