@@ -54,3 +54,8 @@
 - Own-post reply reminder: Tuesday May 12 was a scheduled post day (Tue/Wed/Thu/Fri cadence) — schedule file still missing, check linkedin.com/company/gitdealflow/posts manually and reply within 2h
 - Targets: Charles Hudson, Beezer Clarkson, Will Larson
 - Drafts saved above for copy-paste
+
+## 2026-05-14
+- Own-post reply reminder: Wednesday May 13 was a scheduled post day (Tue/Wed/Thu/Fri cadence) — schedule file still missing, check linkedin.com/company/gitdealflow/posts manually and reply within 2h
+- Targets: Beezer Clarkson, Will Larson, Lenny Rachitsky
+- Drafts saved above for copy-paste
