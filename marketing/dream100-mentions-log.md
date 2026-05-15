@@ -208,3 +208,11 @@ Both `scan.mjs` and `log-mention.mjs` produce this exact shape. Don't edit the f
   - Quote: > 9 of 98 PRs in the last 2 weeks would have been auto-closed before review (e.g. #21616 Security: Fix format-string sandbox bypass in EvaporateExtra, #21600 feat: add GitDealFlow tool spec for engineering acceleration). Install a GitHub Action: - [PR Quality Gate](https://github
   - Status: `pending` — keyword: `gitdealflow`
   - Reply: _none yet_
+### 2026-05-15
+
+- **GitHub — prassanna-ravishankar** — feat(conformance): persist task-probe results on a daily cadence (#108)
+  - URL: https://github.com/prassanna-ravishankar/a2a-registry/pull/129
+  - Posted: 2026-05-15 12:28Z · Detected: 2026-05-15 15:01Z · Reply-by (4h SLA): **2026-05-15 19:01Z**
+  - Quote: > Closes the gap surfaced in #108: card-health (cheap GET) and task-conformance (real A2A `message/send`) were measured at different times — GET every 30 min, task only at registration. That left the registry showing healthy=true for agents whose POST endpoint had since broken. Th
+  - Status: `pending` — keyword: `gitdealflow`
+  - Reply: _none yet_
