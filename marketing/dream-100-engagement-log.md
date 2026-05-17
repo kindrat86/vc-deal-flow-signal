@@ -186,3 +186,7 @@ Notes: Manual inline run of the daily-task pattern, post-`twitter-dream100-daily
 ### 2026-05-14 ⏭ SKIPPED — multi-browser Chrome MCP block
 
 Notes: list_connected_browsers returned 2 instances (Browser 1 d5fdcca3-0e58-4303-b045-bdae10660d73, Browser 2 fe4eedb9-b937-4dec-afe9-fa276cd04594), no user present to disambiguate. Per durable rule (feedback_chrome_mcp_multi_browser_blocks_cron.md), cron tasks must abort rather than guess deviceId. No replies posted, no candidates scanned.
+
+### 2026-05-17 ⏭ SKIPPED — multi-browser Chrome MCP block
+
+Notes: list_connected_browsers returned 3 instances (Browser 1 fe4eedb9-b937-4dec-afe9-fa276cd04594, Browser 2 d5fdcca3-0e58-4303-b045-bdae10660d73, Sipi Mac Mini 3a10aa08-edb9-40fd-86fe-00026d59d420), no user present to disambiguate. Per durable rule (feedback_chrome_mcp_multi_browser_blocks_cron.md), cron tasks must abort rather than guess deviceId. No replies posted, no candidates scanned. 2nd consecutive skip (prior: 2026-05-14); under 3-consecutive alert threshold.
