@@ -216,3 +216,11 @@ Both `scan.mjs` and `log-mention.mjs` produce this exact shape. Don't edit the f
   - Quote: > Closes the gap surfaced in #108: card-health (cheap GET) and task-conformance (real A2A `message/send`) were measured at different times — GET every 30 min, task only at registration. That left the registry showing healthy=true for agents whose POST endpoint had since broken. Th
   - Status: `pending` — keyword: `gitdealflow`
   - Reply: _none yet_
+### 2026-05-17
+
+- **GitHub — darrelmiller** — v0.3 agents fail: CLI sends 'SendMessage' instead of 'message/send' for older protocol versions
+  - URL: https://github.com/spec-works/A2A-Ask/issues/2
+  - Posted: 2026-05-16 22:52Z · Detected: 2026-05-17 04:39Z · Reply-by (4h SLA): **2026-05-17 08:39Z**
+  - Quote: > ## Bug Report ### Summary When an agent card declares \protocolVersion: "0.3.0"\, the CLI correctly detects this and warns: > This agent uses an older protocol version. send/stream commands may not work. However, the CLI still sends the v1.0 PascalCase JSON-RPC method \SendMe
+  - Status: `pending` — keyword: `gitdealflow`
+  - Reply: _none yet_

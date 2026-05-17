@@ -1,7 +1,7 @@
 {
   "_comment": "Dedup state for the mention radar. Each entry: {url, firstSeen}. Append-only — never delete; rows here mean 'already in log'. Maintained by scan.mjs and log-mention.mjs.",
   "version": 1,
-  "lastRun": 1778904569211,
+  "lastRun": 1778992761420,
   "seen": [
     {
       "url": "https://github.com/run-llama/llama_index/issues/21632",
@@ -10,6 +10,10 @@
     {
       "url": "https://github.com/prassanna-ravishankar/a2a-registry/pull/129",
       "firstSeen": 1778857270723
+    },
+    {
+      "url": "https://github.com/spec-works/A2A-Ask/issues/2",
+      "firstSeen": 1778992761420
     }
   ]
 }
