@@ -64,3 +64,8 @@
 - Own-post reply reminder: Thursday May 14 was a scheduled post day (Tue/Wed/Thu/Fri cadence) — schedule file still missing, check linkedin.com/company/gitdealflow/posts manually and reply within 2h
 - Targets: Will Larson, Lenny Rachitsky, Nick Moran
 - Drafts saved above for copy-paste
+
+## 2026-05-17
+- Own-post reply reminder: none (Saturday May 16 is not a scheduled post day)
+- Targets: Nick Moran, Jason Calacanis, Mario Gabriele
+- Drafts saved above for copy-paste
