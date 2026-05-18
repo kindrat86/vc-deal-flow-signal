@@ -69,3 +69,8 @@
 - Own-post reply reminder: none (Saturday May 16 is not a scheduled post day)
 - Targets: Nick Moran, Jason Calacanis, Mario Gabriele
 - Drafts saved above for copy-paste
+
+## 2026-05-18
+- Own-post reply reminder: none (Sunday May 17 is not a scheduled post day)
+- Targets: Jason Calacanis, Mario Gabriele, Elizabeth Yin
+- Drafts saved above for copy-paste
