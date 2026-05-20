@@ -74,3 +74,8 @@
 - Own-post reply reminder: none (Sunday May 17 is not a scheduled post day)
 - Targets: Jason Calacanis, Mario Gabriele, Elizabeth Yin
 - Drafts saved above for copy-paste
+
+## 2026-05-20
+- Own-post reply reminder: Tuesday May 19 was a scheduled post day (Tue/Wed/Thu/Fri cadence) — schedule file still missing, check linkedin.com/company/gitdealflow/posts manually and reply within 2h
+- Targets: Elizabeth Yin, Hunter Walk, Gergely Orosz
+- Drafts saved above for copy-paste
