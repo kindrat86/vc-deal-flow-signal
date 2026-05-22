@@ -7,8 +7,14 @@ import { pillars, getPostsInPillar } from "@/content/pillars";
 import { agentQueries } from "@/content/agent-queries";
 import { alternatives } from "@/content/alternatives";
 import { nicheSectors, countNiches } from "@/content/niches";
+import { playbooks } from "@/content/playbooks";
 import { useCases } from "@/content/use-cases";
+import {
+  buildVsInvestSectors,
+  QUADRANT_META,
+} from "@/content/build-vs-invest";
 import { FINDINGS as RESEARCH_FINDINGS } from "@/content/research-findings";
+import { SOLO_FOUNDER_SECTORS } from "@/content/solo-founder-tracker";
 
 export const dynamic = "force-static";
 export const revalidate = 3600;
@@ -248,6 +254,13 @@ A "riches are in the niches" map of ${countNiches()} specific sub-niches inside 
 - [Niche-down index](${BASE_URL}/niche-down): Browse all ${nicheSectors.length} sector maps.
 ${nicheSectors.map((s) => `- [${s.name} — ${s.niches.length} sub-niches](${BASE_URL}/niche-down/${s.slug}): ${s.shortPitch}`).join("\n")}
 
+## Playbooks (operator how-tos)
+
+Reproducible how-tos for operator-investors, scouts, solo founders, and angels. Each playbook ships a fixed time budget, a step-by-step rubric, and CTAs into the live product (signals feed, methodology, free book, /firstlook). Pages render HowTo JSON-LD with step-level URLs and time-required metadata.
+
+- [Playbooks index](${BASE_URL}/playbooks): Browse all playbooks.
+${playbooks.map((p) => `- [${p.h1}](${BASE_URL}/playbooks/${p.slug}): ${p.description}`).join("\n")}
+
 ## Competitor Alternatives
 
 Side-by-side comparisons answering "is there an alternative to X?" for the major VC deal sourcing tools. Each page includes a feature table, signal-philosophy comparison, pricing breakdown, and FAQ. Useful when surfacing in "X alternative" or "X vs Y" queries.
@@ -261,6 +274,20 @@ Persona-targeted guides for how different investor types use VC Deal Flow Signal
 
 - [Use cases index](${BASE_URL}/use-cases): Browse all use cases.
 ${useCases.map((u) => `- [${u.h1}](${BASE_URL}/use-cases/${u.slug}): ${u.description.split(".")[0]}.`).join("\n")}
+
+## Build-vs-Invest 2×2 by sector
+
+For every tracked sector, the honest answer to "should I build this or fund it?". Two scores per sector — cost-to-build (1–100) and deal-velocity (1–100) — drop the sector into one of four quadrants (build / fund / wait / avoid). Each slug page renders the matrix, the two scores, a thesis, an indie playbook, an investor playbook, and a FAQ. Useful for surfacing in "is X buildable", "is X fundable", "X startup ideas", and "VC sector outlook" queries.
+
+- [Build-vs-invest index](${BASE_URL}/build-vs-invest): All 20 sector verdicts grouped by quadrant.
+${buildVsInvestSectors.map((s) => `- [${s.name} — ${QUADRANT_META[s.quadrant].short} quadrant](${BASE_URL}/build-vs-invest/${s.slug}): ${s.headline}`).join("\n")}
+
+## Solo-Founder Tracker (one-engineer companies, by sector)
+
+Per-sector editorial pages on the "one-person unicorn" pattern on GitHub. Each page defines the commit / star / contributor thresholds we use to identify solo-founder breakouts in that sector, the observable acceleration shape, and the most common false-positive pattern. Distinct from /predicted (all-stage weekly bet) and /startups-to-watch (sector ranking). Anonymity preserved: no founder names — composite archetypes only.
+
+- [Solo-Founder Tracker index](${BASE_URL}/solo-founder-tracker): Browse all 20 sector trackers.
+${SOLO_FOUNDER_SECTORS.map((s) => `- [${s.name} — Solo-Founder Tracker](${BASE_URL}/solo-founder-tracker/${s.slug}): ${s.tagline}`).join("\n")}
 
 ## Agent surfaces index
 

@@ -19,15 +19,20 @@ import { getAllComparisonSlugs } from "@/content/comparisons";
 import { getAllAlternativeSlugs } from "@/content/alternatives";
 import { getAllUseCaseSlugs } from "@/content/use-cases";
 import { getAllCompetitorVsSlugs } from "@/content/competitor-vs";
+import { getAllBuildVsInvestSlugs } from "@/content/build-vs-invest";
 import { pillars } from "@/content/pillars";
 import { agentQueries } from "@/content/agent-queries";
 import {
   nicheSectors,
   getAllNichePairs as getAllNicheDownPairs,
 } from "@/content/niches";
+import { playbooks } from "@/content/playbooks";
+import { getAllIdeaSlugs } from "@/lib/ideas-of-the-day";
 import { FINDINGS as RESEARCH_FINDINGS } from "@/content/research-findings";
 import { PRIMITIVES } from "@/content/signal-primitives";
+import { SOLO_FOUNDER_SECTORS } from "@/content/solo-founder-tracker";
 import { LOCALES } from "@/content/locales";
+import { COMMUNITY_GROUPS } from "@/content/community-signal";
 import { getMarketSlugs } from "@/lib/markets";
 import { getAllTop100Slugs } from "@/lib/top-100";
 import { getAllPredictionWeekSlugs } from "@/lib/predictions";
@@ -144,6 +149,10 @@ export async function GET(_req: Request, ctx: RouteContext) {
         },
       ]),
       { url: `${BASE_URL}/signal-of-the-week`, lastmod, changefreq: "weekly", priority: 0.8 },
+      // Idea of the Day — perma-URL surface (always serves today's pick).
+      // Daily cadence on the hub itself; archived dated children live in
+      // the `content` shard below.
+      { url: `${BASE_URL}/idea-of-the-day`, lastmod, changefreq: "daily", priority: 0.9 },
       { url: `${BASE_URL}/alternatives`, lastmod, changefreq: "monthly", priority: 0.8 },
       { url: `${BASE_URL}/use-cases`, lastmod, changefreq: "monthly", priority: 0.8 },
       { url: `${BASE_URL}/integrations`, lastmod, changefreq: "monthly", priority: 0.8 },
@@ -400,6 +409,16 @@ export async function GET(_req: Request, ctx: RouteContext) {
         changefreq: "monthly",
         priority: 0.8,
       })),
+      // Build-vs-invest 2×2 by sector — Greg-Isenberg-shaped pSEO surface
+      // shipped 2026-05-22. One index + per-sector slug pages mapped to the
+      // canonical sector taxonomy in data/startups.json.
+      { url: `${BASE_URL}/build-vs-invest`, lastmod, changefreq: "monthly", priority: 0.85 },
+      ...getAllBuildVsInvestSlugs().map((slug) => ({
+        url: `${BASE_URL}/build-vs-invest/${slug}`,
+        lastmod,
+        changefreq: "monthly",
+        priority: 0.8,
+      })),
       ...getAllUseCaseSlugs().map((slug) => ({
         url: `${BASE_URL}/use-cases/${slug}`,
         lastmod,
@@ -435,9 +454,50 @@ export async function GET(_req: Request, ctx: RouteContext) {
         changefreq: "monthly",
         priority: 0.7,
       })),
+      // Playbooks — operator how-tos shipped 2026-05-22. Greg-Isenberg-shaped
+      // micro-SaaS / indie-builder framing on top of the same scoring rubric;
+      // each playbook hands off to /firstlook, /book, /methodology, or the
+      // public signals feed at the natural CTA step.
+      { url: `${BASE_URL}/playbooks`, lastmod, changefreq: "weekly", priority: 0.85 },
+      ...playbooks.map((p) => ({
+        url: `${BASE_URL}/playbooks/${p.slug}`,
+        lastmod,
+        changefreq: "monthly",
+        priority: 0.8,
+      })),
+      // Idea of the Day — dated archive children. Each slug is permanent;
+      // the date is also the slug. `changefreq: yearly` because past entries
+      // never change after publish (only the lastmod stays in sync with
+      // the global data refresh).
+      ...getAllIdeaSlugs().map((slug) => ({
+        url: `${BASE_URL}/idea-of-the-day/${slug}`,
+        lastmod,
+        changefreq: "yearly",
+        priority: 0.7,
+      })),
       { url: `${BASE_URL}/research`, lastmod, changefreq: "weekly", priority: 0.9 },
       ...RESEARCH_FINDINGS.map((f) => ({
         url: `${BASE_URL}/research/${f.slug}`,
+        lastmod,
+        changefreq: "monthly",
+        priority: 0.8,
+      })),
+      // /community-signal — communities ranked by deal-flow yield, indexed by
+      // community type (cousin of /voices which indexes by platform). 2026-05-22.
+      { url: `${BASE_URL}/community-signal`, lastmod, changefreq: "weekly", priority: 0.8 },
+      ...COMMUNITY_GROUPS.map((g) => ({
+        url: `${BASE_URL}/community-signal/${g.slug}`,
+        lastmod,
+        changefreq: "monthly",
+        priority: 0.75,
+      })),
+      // Solo-Founder Tracker (2026-05-22) — per-sector "one-person unicorn"
+      // editorial pages. Index + 20 sector slugs. Distinct from /predicted
+      // (all-stage) and /startups-to-watch (ranking) — see content/
+      // solo-founder-tracker.ts for the rationale.
+      { url: `${BASE_URL}/solo-founder-tracker`, lastmod, changefreq: "weekly", priority: 0.85 },
+      ...SOLO_FOUNDER_SECTORS.map((s) => ({
+        url: `${BASE_URL}/solo-founder-tracker/${s.slug}`,
         lastmod,
         changefreq: "monthly",
         priority: 0.8,
