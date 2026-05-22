@@ -22,6 +22,10 @@ import { getAllCompetitorVsSlugs } from "@/content/competitor-vs";
 import { getAllBuildVsInvestSlugs } from "@/content/build-vs-invest";
 import { pillars } from "@/content/pillars";
 import { agentQueries } from "@/content/agent-queries";
+import {
+  nicheSectors,
+  getAllNichePairs as getAllNicheDownPairs,
+} from "@/content/niches";
 import { startupIdeas } from "@/content/startup-ideas";
 import { playbooks } from "@/content/playbooks";
 import { getAllIdeaSlugs } from "@/lib/ideas-of-the-day";
@@ -435,6 +439,22 @@ export async function GET(_req: Request, ctx: RouteContext) {
         lastmod,
         changefreq: "weekly",
         priority: 0.85,
+      })),
+      // Niche-down — Greg-style "riches are in the niches" pSEO cluster
+      // (2026-05-22). 1 hub + 20 sector hubs + 200 leaf pages = 221 URLs.
+      // Sector → sub-niche taxonomy lives in content/niches.ts.
+      { url: `${BASE_URL}/niche-down`, lastmod, changefreq: "weekly", priority: 0.8 },
+      ...nicheSectors.map((s) => ({
+        url: `${BASE_URL}/niche-down/${s.slug}`,
+        lastmod,
+        changefreq: "weekly",
+        priority: 0.75,
+      })),
+      ...getAllNicheDownPairs().map(({ sector, subniche }) => ({
+        url: `${BASE_URL}/niche-down/${sector}/${subniche}`,
+        lastmod,
+        changefreq: "monthly",
+        priority: 0.7,
       })),
       // Startup Ideas (2026-05-22) — programmatic "buildable opportunity"
       // pages, each joining live against the current-period GitHub signal

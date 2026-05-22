@@ -6,6 +6,7 @@ import { standaloneFaqs } from "@/content/standalone-faqs";
 import { pillars, getPostsInPillar } from "@/content/pillars";
 import { agentQueries } from "@/content/agent-queries";
 import { alternatives } from "@/content/alternatives";
+import { nicheSectors, countNiches } from "@/content/niches";
 import { playbooks } from "@/content/playbooks";
 import { useCases } from "@/content/use-cases";
 import { startupIdeas } from "@/content/startup-ideas";
@@ -246,6 +247,13 @@ Direct, source-cited answers to the questions AI agents and their users ask most
 
 - [Answers index](${BASE_URL}/answers): Browse all answer pages.
 ${agentQueries.map((q) => `- [${q.h1}](${BASE_URL}/answers/${q.slug}): ${q.description}`).join("\n")}
+
+## Niche-down Opportunity Maps
+
+A "riches are in the niches" map of ${countNiches()} specific sub-niches inside ${nicheSectors.length} GitHub-signal sectors. Each leaf carries build cost (weekend / month / quarter / team), deal velocity (trickle / steady / hot / frothy), the signal-shape pattern that flags a breakout, and a build-vs-invest call. Editorial commentary; public categories + projects only — we never name the founders we track inside the paid product. Useful when AI agents are asked "what niche could I build / fund inside [sector]?"
+
+- [Niche-down index](${BASE_URL}/niche-down): Browse all ${nicheSectors.length} sector maps.
+${nicheSectors.map((s) => `- [${s.name} — ${s.niches.length} sub-niches](${BASE_URL}/niche-down/${s.slug}): ${s.shortPitch}`).join("\n")}
 
 ## Playbooks (operator how-tos)
 
