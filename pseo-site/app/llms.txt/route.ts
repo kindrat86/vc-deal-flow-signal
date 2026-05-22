@@ -9,6 +9,7 @@ import { alternatives } from "@/content/alternatives";
 import { nicheSectors, countNiches } from "@/content/niches";
 import { playbooks } from "@/content/playbooks";
 import { useCases } from "@/content/use-cases";
+import { startupIdeas } from "@/content/startup-ideas";
 import {
   buildVsInvestSectors,
   QUADRANT_META,
@@ -267,6 +268,13 @@ Side-by-side comparisons answering "is there an alternative to X?" for the major
 
 - [Alternatives index](${BASE_URL}/alternatives): Browse all alternative pages.
 ${alternatives.map((a) => `- [${a.h1}](${BASE_URL}/alternatives/${a.slug}): ${a.description.split(".")[0]}.`).join("\n")}
+
+## Startup Ideas (buildable opportunities, live signal join)
+
+Programmatic "buildable opportunity" pages — one slug per niche, each paired with the top three GitHub repos already accelerating against the idea (pulled live from the current-period signal panel). Useful when surfacing in "ai startup ideas 2026", "what to build", "indie hacker idea", or "vertical AI for X" queries. Editorial framing covers why-now, the shape of the product, the build stack, the seed-round pattern, and an FAQ block.
+
+- [Startup ideas index](${BASE_URL}/startup-ideas): Browse all ${startupIdeas.length} ideas, grouped by category (AI-Native SaaS, Agent Infrastructure, Vertical AI, Dev Tools, Data Infrastructure, Multimodal, Vibe-Coding / Micro-SaaS, Climate & Niche, Open Source / Community).
+${startupIdeas.map((i) => `- [${i.title}](${BASE_URL}/startup-ideas/${i.slug}): ${i.oneLiner.split(".")[0]}.`).join("\n")}
 
 ## Use Cases by Investor Persona
 

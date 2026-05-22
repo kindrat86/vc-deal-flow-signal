@@ -33,6 +33,7 @@ import { fileURLToPath } from "node:url";
 
 import { comparisons } from "../content/comparisons";
 import { alternatives } from "../content/alternatives";
+import { starsCases } from "../content/from-stars-to-seed";
 import { useCases } from "../content/use-cases";
 import { competitorVsPairs } from "../content/competitor-vs";
 import { nicheSectors } from "../content/niches";
@@ -196,6 +197,11 @@ const SURFACES: Surface[] = [
     entries: nicheSectors.flatMap((s) =>
       s.niches.map((n) => buildEntry(`${s.slug}/${n.slug}`, n)),
     ),
+  },
+  {
+    name: "from-stars-to-seed",
+    basePath: "/from-stars-to-seed",
+    entries: starsCases.map((c) => buildEntry(c.slug, c)),
   },
 ];
 

@@ -26,8 +26,10 @@ import {
   nicheSectors,
   getAllNichePairs as getAllNicheDownPairs,
 } from "@/content/niches";
+import { startupIdeas } from "@/content/startup-ideas";
 import { playbooks } from "@/content/playbooks";
 import { getAllIdeaSlugs } from "@/lib/ideas-of-the-day";
+import { starsCases } from "@/content/from-stars-to-seed";
 import { FINDINGS as RESEARCH_FINDINGS } from "@/content/research-findings";
 import { PRIMITIVES } from "@/content/signal-primitives";
 import { SOLO_FOUNDER_SECTORS } from "@/content/solo-founder-tracker";
@@ -454,6 +456,16 @@ export async function GET(_req: Request, ctx: RouteContext) {
         changefreq: "monthly",
         priority: 0.7,
       })),
+      // Startup Ideas (2026-05-22) — programmatic "buildable opportunity"
+      // pages, each joining live against the current-period GitHub signal
+      // panel. Hub at /startup-ideas plus one page per idea slug.
+      { url: `${BASE_URL}/startup-ideas`, lastmod, changefreq: "weekly", priority: 0.9 },
+      ...startupIdeas.map((idea) => ({
+        url: `${BASE_URL}/startup-ideas/${idea.slug}`,
+        lastmod,
+        changefreq: "weekly",
+        priority: 0.8,
+      })),
       // Playbooks — operator how-tos shipped 2026-05-22. Greg-Isenberg-shaped
       // micro-SaaS / indie-builder framing on top of the same scoring rubric;
       // each playbook hands off to /firstlook, /book, /methodology, or the
@@ -461,6 +473,17 @@ export async function GET(_req: Request, ctx: RouteContext) {
       { url: `${BASE_URL}/playbooks`, lastmod, changefreq: "weekly", priority: 0.85 },
       ...playbooks.map((p) => ({
         url: `${BASE_URL}/playbooks/${p.slug}`,
+        lastmod,
+        changefreq: "monthly",
+        priority: 0.8,
+      })),
+      // From Stars to Seed — case-study pSEO (2026-05-22). Each entry
+      // pairs a public GitHub repo with a publicly announced raise. The
+      // index is high-priority because it is one of the strongest social-
+      // proof surfaces on the site.
+      { url: `${BASE_URL}/from-stars-to-seed`, lastmod, changefreq: "weekly", priority: 0.9 },
+      ...starsCases.map((c) => ({
+        url: `${BASE_URL}/from-stars-to-seed/${c.slug}`,
         lastmod,
         changefreq: "monthly",
         priority: 0.8,
