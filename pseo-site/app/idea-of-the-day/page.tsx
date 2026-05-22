@@ -14,11 +14,14 @@ import { DEFAULT_HREFLANG_LANGUAGES } from "@/lib/hreflang";
 
 const SITE = "https://signals.gitdealflow.com";
 
+// Pure static — no `revalidate`. The daily GH Actions cron commits a
+// new entry to data/ideas-of-the-day.json and pushes; Vercel auto-rebuilds
+// so the perma-URL always shows the latest day. We intentionally avoid ISR
+// here because Next 16 ISR pages register a Prerender route shape that
+// loses routing precedence to the `/[locale]` catch-all, sending the
+// perma-URL to a soft-404 (verified live 2026-05-22 — without revalidate
+// the route resolves correctly).
 export const dynamic = "force-static";
-// Daily refresh — the cron writes a new entry every UTC morning. ISR
-// regenerates the page hourly so the perma-URL keeps pointing at the
-// freshest idea without a redeploy.
-export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title:

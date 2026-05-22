@@ -22,9 +22,9 @@ interface PageProps {
 
 export const dynamic = "force-static";
 export const dynamicParams = false;
-// Daily-published archive: a new slug ships each morning. Hourly ISR
-// keeps the latest day's neighbour links honest without a redeploy.
-export const revalidate = 3600;
+// No `revalidate` — same reason as the parent: ISR shape loses to the
+// `/[locale]/[topic]` catch-all under Next 16. The dated entries never
+// change after publish anyway, so static is the correct shape.
 
 export function generateStaticParams() {
   return getAllIdeaSlugs().map((slug) => ({ date: slug }));
