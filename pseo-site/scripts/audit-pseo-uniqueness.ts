@@ -33,6 +33,7 @@ import { fileURLToPath } from "node:url";
 
 import { comparisons } from "../content/comparisons";
 import { alternatives } from "../content/alternatives";
+import { starsCases } from "../content/from-stars-to-seed";
 import { useCases } from "../content/use-cases";
 import { competitorVsPairs } from "../content/competitor-vs";
 
@@ -184,6 +185,11 @@ const SURFACES: Surface[] = [
     name: "vs",
     basePath: "/vs",
     entries: competitorVsPairs.map((v) => buildEntry(v.slug, v)),
+  },
+  {
+    name: "from-stars-to-seed",
+    basePath: "/from-stars-to-seed",
+    entries: starsCases.map((c) => buildEntry(c.slug, c)),
   },
 ];
 
