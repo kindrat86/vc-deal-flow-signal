@@ -22,6 +22,7 @@ import { getAllCompetitorVsSlugs } from "@/content/competitor-vs";
 import { getAllBuildVsInvestSlugs } from "@/content/build-vs-invest";
 import { pillars } from "@/content/pillars";
 import { agentQueries } from "@/content/agent-queries";
+import { startupIdeas } from "@/content/startup-ideas";
 import { playbooks } from "@/content/playbooks";
 import { getAllIdeaSlugs } from "@/lib/ideas-of-the-day";
 import { FINDINGS as RESEARCH_FINDINGS } from "@/content/research-findings";
@@ -433,6 +434,16 @@ export async function GET(_req: Request, ctx: RouteContext) {
         lastmod,
         changefreq: "weekly",
         priority: 0.85,
+      })),
+      // Startup Ideas (2026-05-22) — programmatic "buildable opportunity"
+      // pages, each joining live against the current-period GitHub signal
+      // panel. Hub at /startup-ideas plus one page per idea slug.
+      { url: `${BASE_URL}/startup-ideas`, lastmod, changefreq: "weekly", priority: 0.9 },
+      ...startupIdeas.map((idea) => ({
+        url: `${BASE_URL}/startup-ideas/${idea.slug}`,
+        lastmod,
+        changefreq: "weekly",
+        priority: 0.8,
       })),
       // Playbooks — operator how-tos shipped 2026-05-22. Greg-Isenberg-shaped
       // micro-SaaS / indie-builder framing on top of the same scoring rubric;
