@@ -26,6 +26,7 @@ import { playbooks } from "@/content/playbooks";
 import { getAllIdeaSlugs } from "@/lib/ideas-of-the-day";
 import { FINDINGS as RESEARCH_FINDINGS } from "@/content/research-findings";
 import { PRIMITIVES } from "@/content/signal-primitives";
+import { SOLO_FOUNDER_SECTORS } from "@/content/solo-founder-tracker";
 import { LOCALES } from "@/content/locales";
 import { COMMUNITY_GROUPS } from "@/content/community-signal";
 import { getMarketSlugs } from "@/lib/markets";
@@ -469,6 +470,17 @@ export async function GET(_req: Request, ctx: RouteContext) {
         lastmod,
         changefreq: "monthly",
         priority: 0.75,
+      })),
+      // Solo-Founder Tracker (2026-05-22) — per-sector "one-person unicorn"
+      // editorial pages. Index + 20 sector slugs. Distinct from /predicted
+      // (all-stage) and /startups-to-watch (ranking) — see content/
+      // solo-founder-tracker.ts for the rationale.
+      { url: `${BASE_URL}/solo-founder-tracker`, lastmod, changefreq: "weekly", priority: 0.85 },
+      ...SOLO_FOUNDER_SECTORS.map((s) => ({
+        url: `${BASE_URL}/solo-founder-tracker/${s.slug}`,
+        lastmod,
+        changefreq: "monthly",
+        priority: 0.8,
       })),
     ];
   } else {
