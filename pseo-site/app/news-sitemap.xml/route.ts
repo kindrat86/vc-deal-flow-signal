@@ -1,6 +1,7 @@
 import { posts } from "@/content/posts";
 import { PRESS_RELEASES } from "@/content/press-releases";
 import { getAllPredictionWeeks } from "@/lib/predictions";
+import { getAllIdeas } from "@/lib/ideas-of-the-day";
 
 export const dynamic = "force-static";
 export const revalidate = 3600;
@@ -75,6 +76,24 @@ function blogItems(): NewsItem[] {
   }));
 }
 
+// Idea of the Day — daily ideation pages. Each entry's publishedAt anchors
+// the news-index window; Google News drops anything past 48 h on its side
+// so the daily cron keeps a fresh item rotating through the index without
+// any extra plumbing here.
+function ideaOfTheDayItems(): NewsItem[] {
+  return getAllIdeas().map((idea) => ({
+    loc: `${BASE_URL}/idea-of-the-day/${idea.slug}`,
+    publishedAt: new Date(idea.publishedAt).toISOString(),
+    title: `Idea of the day: ${idea.headline} — VC Deal Flow Signal`,
+    keywords: [
+      "startup ideas",
+      idea.repo.sector,
+      idea.repo.signalType,
+      "GitHub momentum",
+    ].join(", "),
+  }));
+}
+
 function filterAndSort(items: NewsItem[], now: number, windowMs: number): NewsItem[] {
   const cutoff = now - windowMs;
   return items
@@ -92,7 +111,12 @@ export async function GET() {
 
   let all: NewsItem[];
   try {
-    all = [...blogItems(), ...pressItems(), ...predictionItems()];
+    all = [
+      ...blogItems(),
+      ...pressItems(),
+      ...predictionItems(),
+      ...ideaOfTheDayItems(),
+    ];
   } catch (err) {
     // Module-level data imports are sync, but if any helper throws during
     // ISR revalidate we want a visible signal in Vercel runtime logs rather

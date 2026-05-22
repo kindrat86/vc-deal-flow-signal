@@ -22,6 +22,7 @@ import { getAllCompetitorVsSlugs } from "@/content/competitor-vs";
 import { pillars } from "@/content/pillars";
 import { agentQueries } from "@/content/agent-queries";
 import { playbooks } from "@/content/playbooks";
+import { getAllIdeaSlugs } from "@/lib/ideas-of-the-day";
 import { FINDINGS as RESEARCH_FINDINGS } from "@/content/research-findings";
 import { PRIMITIVES } from "@/content/signal-primitives";
 import { LOCALES } from "@/content/locales";
@@ -141,6 +142,10 @@ export async function GET(_req: Request, ctx: RouteContext) {
         },
       ]),
       { url: `${BASE_URL}/signal-of-the-week`, lastmod, changefreq: "weekly", priority: 0.8 },
+      // Idea of the Day — perma-URL surface (always serves today's pick).
+      // Daily cadence on the hub itself; archived dated children live in
+      // the `content` shard below.
+      { url: `${BASE_URL}/idea-of-the-day`, lastmod, changefreq: "daily", priority: 0.9 },
       { url: `${BASE_URL}/alternatives`, lastmod, changefreq: "monthly", priority: 0.8 },
       { url: `${BASE_URL}/use-cases`, lastmod, changefreq: "monthly", priority: 0.8 },
       { url: `${BASE_URL}/integrations`, lastmod, changefreq: "monthly", priority: 0.8 },
@@ -426,6 +431,16 @@ export async function GET(_req: Request, ctx: RouteContext) {
         lastmod,
         changefreq: "monthly",
         priority: 0.8,
+      })),
+      // Idea of the Day — dated archive children. Each slug is permanent;
+      // the date is also the slug. `changefreq: yearly` because past entries
+      // never change after publish (only the lastmod stays in sync with
+      // the global data refresh).
+      ...getAllIdeaSlugs().map((slug) => ({
+        url: `${BASE_URL}/idea-of-the-day/${slug}`,
+        lastmod,
+        changefreq: "yearly",
+        priority: 0.7,
       })),
       { url: `${BASE_URL}/research`, lastmod, changefreq: "weekly", priority: 0.9 },
       ...RESEARCH_FINDINGS.map((f) => ({
