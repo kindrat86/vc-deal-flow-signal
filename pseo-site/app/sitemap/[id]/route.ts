@@ -26,6 +26,7 @@ import { getAllIdeaSlugs } from "@/lib/ideas-of-the-day";
 import { FINDINGS as RESEARCH_FINDINGS } from "@/content/research-findings";
 import { PRIMITIVES } from "@/content/signal-primitives";
 import { LOCALES } from "@/content/locales";
+import { COMMUNITY_GROUPS } from "@/content/community-signal";
 import { getMarketSlugs } from "@/lib/markets";
 import { getAllTop100Slugs } from "@/lib/top-100";
 import { getAllPredictionWeekSlugs } from "@/lib/predictions";
@@ -448,6 +449,15 @@ export async function GET(_req: Request, ctx: RouteContext) {
         lastmod,
         changefreq: "monthly",
         priority: 0.8,
+      })),
+      // /community-signal — communities ranked by deal-flow yield, indexed by
+      // community type (cousin of /voices which indexes by platform). 2026-05-22.
+      { url: `${BASE_URL}/community-signal`, lastmod, changefreq: "weekly", priority: 0.8 },
+      ...COMMUNITY_GROUPS.map((g) => ({
+        url: `${BASE_URL}/community-signal/${g.slug}`,
+        lastmod,
+        changefreq: "monthly",
+        priority: 0.75,
       })),
     ];
   } else {
