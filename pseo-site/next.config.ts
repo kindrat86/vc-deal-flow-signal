@@ -1,12 +1,18 @@
 import type { NextConfig } from "next";
 import * as path from "node:path";
 
+// `process.cwd()` is the package root when `next build` runs (npm scripts
+// chdir to the package). Universal across CJS and ESM evaluation paths —
+// the previous `__dirname` form broke on Vercel where next.config.ts is
+// compiled to ESM and CJS `__dirname` is undefined (ERR_INVALID_ARG_TYPE).
+const PACKAGE_ROOT = path.resolve(process.cwd());
+
 const nextConfig: NextConfig = {
   // Pin turbopack root to this package so worktree builds (and any nested
   // checkout layout) don't drift to a parent lockfile. Harmless on Vercel —
   // the production root resolves to the same directory.
   turbopack: {
-    root: path.resolve(__dirname),
+    root: PACKAGE_ROOT,
   },
   async rewrites() {
     // Extension-stripped aliases for /api/v1/* — generic agents that infer
