@@ -8,6 +8,10 @@ import { agentQueries } from "@/content/agent-queries";
 import { alternatives } from "@/content/alternatives";
 import { playbooks } from "@/content/playbooks";
 import { useCases } from "@/content/use-cases";
+import {
+  buildVsInvestSectors,
+  QUADRANT_META,
+} from "@/content/build-vs-invest";
 import { FINDINGS as RESEARCH_FINDINGS } from "@/content/research-findings";
 
 export const dynamic = "force-static";
@@ -261,6 +265,13 @@ Persona-targeted guides for how different investor types use VC Deal Flow Signal
 
 - [Use cases index](${BASE_URL}/use-cases): Browse all use cases.
 ${useCases.map((u) => `- [${u.h1}](${BASE_URL}/use-cases/${u.slug}): ${u.description.split(".")[0]}.`).join("\n")}
+
+## Build-vs-Invest 2×2 by sector
+
+For every tracked sector, the honest answer to "should I build this or fund it?". Two scores per sector — cost-to-build (1–100) and deal-velocity (1–100) — drop the sector into one of four quadrants (build / fund / wait / avoid). Each slug page renders the matrix, the two scores, a thesis, an indie playbook, an investor playbook, and a FAQ. Useful for surfacing in "is X buildable", "is X fundable", "X startup ideas", and "VC sector outlook" queries.
+
+- [Build-vs-invest index](${BASE_URL}/build-vs-invest): All 20 sector verdicts grouped by quadrant.
+${buildVsInvestSectors.map((s) => `- [${s.name} — ${QUADRANT_META[s.quadrant].short} quadrant](${BASE_URL}/build-vs-invest/${s.slug}): ${s.headline}`).join("\n")}
 
 ## Agent surfaces index
 
