@@ -21,6 +21,7 @@ import { getAllUseCaseSlugs } from "@/content/use-cases";
 import { getAllCompetitorVsSlugs } from "@/content/competitor-vs";
 import { pillars } from "@/content/pillars";
 import { agentQueries } from "@/content/agent-queries";
+import { startupIdeas } from "@/content/startup-ideas";
 import { FINDINGS as RESEARCH_FINDINGS } from "@/content/research-findings";
 import { PRIMITIVES } from "@/content/signal-primitives";
 import { LOCALES } from "@/content/locales";
@@ -414,6 +415,16 @@ export async function GET(_req: Request, ctx: RouteContext) {
         lastmod,
         changefreq: "weekly",
         priority: 0.85,
+      })),
+      // Startup Ideas (2026-05-22) — programmatic "buildable opportunity"
+      // pages, each joining live against the current-period GitHub signal
+      // panel. Hub at /startup-ideas plus one page per idea slug.
+      { url: `${BASE_URL}/startup-ideas`, lastmod, changefreq: "weekly", priority: 0.9 },
+      ...startupIdeas.map((idea) => ({
+        url: `${BASE_URL}/startup-ideas/${idea.slug}`,
+        lastmod,
+        changefreq: "weekly",
+        priority: 0.8,
       })),
       { url: `${BASE_URL}/research`, lastmod, changefreq: "weekly", priority: 0.9 },
       ...RESEARCH_FINDINGS.map((f) => ({

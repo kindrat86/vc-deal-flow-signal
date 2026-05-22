@@ -14,6 +14,7 @@ import { agentQueries } from "@/content/agent-queries";
 import { alternatives } from "@/content/alternatives";
 import { useCases } from "@/content/use-cases";
 import { FINDINGS as RESEARCH_FINDINGS } from "@/content/research-findings";
+import { startupIdeas } from "@/content/startup-ideas";
 
 export const dynamic = "force-static";
 export const revalidate = 3600;
@@ -30,6 +31,7 @@ type ContentType =
   | "research"
   | "sector"
   | "startup"
+  | "startup-idea"
   | "signal-type"
   | "pillar"
   | "best"
@@ -101,6 +103,7 @@ export async function GET(request: Request) {
     { url: `${BASE_URL}/compare`, title: "Compare Deal Flow Tools", summary: "Side-by-side comparisons of VC deal sourcing tools.", contentType: "page", tags: ["compare", "index"] },
     { url: `${BASE_URL}/blog`, title: "Blog", summary: "Practical guides on using GitHub signals for startup investing.", contentType: "page", tags: ["blog", "index"] },
     { url: `${BASE_URL}/answers`, title: "Answers Index", summary: "Browse all citation-ready answer pages.", contentType: "page", tags: ["answers", "index"] },
+    { url: `${BASE_URL}/startup-ideas`, title: "Startup Ideas Index", summary: "Buildable startup ideas for 2026, each joined live to the top three GitHub repos already accelerating against it.", contentType: "page", tags: ["startup-ideas", "index", "buildable"] },
     { url: `${BASE_URL}/alternatives`, title: "Alternatives Index", summary: "Browse all alternative pages.", contentType: "page", tags: ["alternatives", "index"] },
     { url: `${BASE_URL}/use-cases`, title: "Use Cases Index", summary: "Browse use cases by investor persona.", contentType: "page", tags: ["use-cases", "index"] },
     { url: `${BASE_URL}/research`, title: "Research Index", summary: "Browse all SSRN-anchored findings, grouped A (numerical), B (descriptive), C (corroborated).", contentType: "page", tags: ["research", "index"] },
@@ -224,6 +227,22 @@ export async function GET(request: Request) {
       summary: trim(q.description ?? q.tldr),
       contentType: "answer",
       tags: ["answer", ...(q.keywords ?? []).slice(0, 5)],
+      lastModified: lastModifiedIso,
+    });
+  }
+
+  // ---- Startup ideas → /startup-ideas/{slug} ----
+  for (const idea of startupIdeas) {
+    items.push({
+      url: `${BASE_URL}/startup-ideas/${idea.slug}`,
+      title: idea.title,
+      summary: trim(idea.oneLiner),
+      contentType: "startup-idea",
+      tags: [
+        "startup-idea",
+        idea.category.toLowerCase().replace(/\s+/g, "-"),
+        ...idea.keywords.slice(0, 4),
+      ],
       lastModified: lastModifiedIso,
     });
   }

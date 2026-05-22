@@ -12,6 +12,7 @@ import { useCases } from "@/content/use-cases";
 import { FINDINGS as RESEARCH_FINDINGS } from "@/content/research-findings";
 import { pillars } from "@/content/pillars";
 import { agentQueries } from "@/content/agent-queries";
+import { startupIdeas } from "@/content/startup-ideas";
 
 const SITE = "https://signals.gitdealflow.com";
 
@@ -42,6 +43,7 @@ export async function GET() {
     "/receipts",
     "/leaderboard",
     "/answers",
+    "/startup-ideas",
     "/changelog",
     "/trending",
     "/blog",
@@ -94,6 +96,7 @@ export async function GET() {
   for (const r of RESEARCH_FINDINGS) urls.push(`${SITE}/research/${r.slug}`);
   for (const p of Object.values(pillars)) urls.push(`${SITE}/topics/${p.slug}`);
   for (const q of agentQueries) urls.push(`${SITE}/answers/${q.slug}`);
+  for (const i of startupIdeas) urls.push(`${SITE}/startup-ideas/${i.slug}`);
 
   const body = urls.join("\n") + "\n";
 
