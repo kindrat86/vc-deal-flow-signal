@@ -13,6 +13,7 @@ import {
   QUADRANT_META,
 } from "@/content/build-vs-invest";
 import { FINDINGS as RESEARCH_FINDINGS } from "@/content/research-findings";
+import { SOLO_FOUNDER_SECTORS } from "@/content/solo-founder-tracker";
 
 export const dynamic = "force-static";
 export const revalidate = 3600;
@@ -272,6 +273,13 @@ For every tracked sector, the honest answer to "should I build this or fund it?"
 
 - [Build-vs-invest index](${BASE_URL}/build-vs-invest): All 20 sector verdicts grouped by quadrant.
 ${buildVsInvestSectors.map((s) => `- [${s.name} — ${QUADRANT_META[s.quadrant].short} quadrant](${BASE_URL}/build-vs-invest/${s.slug}): ${s.headline}`).join("\n")}
+
+## Solo-Founder Tracker (one-engineer companies, by sector)
+
+Per-sector editorial pages on the "one-person unicorn" pattern on GitHub. Each page defines the commit / star / contributor thresholds we use to identify solo-founder breakouts in that sector, the observable acceleration shape, and the most common false-positive pattern. Distinct from /predicted (all-stage weekly bet) and /startups-to-watch (sector ranking). Anonymity preserved: no founder names — composite archetypes only.
+
+- [Solo-Founder Tracker index](${BASE_URL}/solo-founder-tracker): Browse all 20 sector trackers.
+${SOLO_FOUNDER_SECTORS.map((s) => `- [${s.name} — Solo-Founder Tracker](${BASE_URL}/solo-founder-tracker/${s.slug}): ${s.tagline}`).join("\n")}
 
 ## Agent surfaces index
 
