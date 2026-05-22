@@ -1,0 +1,69 @@
+name: Idea of the Day — daily append
+
+# One idea per calendar day. 08:55 UTC fires five minutes ahead of the
+# `publishedAt` anchor (09:00 UTC) — gives Vercel time to rebuild before
+# the news-sitemap window opens. workflow_dispatch lets the maintainer
+# trigger a backfill or a re-pick manually.
+on:
+  schedule:
+    - cron: "55 8 * * *"
+  workflow_dispatch:
+    inputs:
+      through:
+        description: "Override the target date (YYYY-MM-DD). Default = today UTC."
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: idea-of-the-day
+  cancel-in-progress: false
+
+jobs:
+  append:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+          cache-dependency-path: pseo-site/package-lock.json
+
+      - name: Resolve target date
+        id: target
+        run: |
+          INPUT="${{ github.event.inputs.through }}"
+          if [ -n "$INPUT" ]; then
+            echo "date=$INPUT" >> "$GITHUB_OUTPUT"
+          else
+            echo "date=$(date -u +%F)" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Append today's idea
+        working-directory: pseo-site
+        run: |
+          node scripts/generate-idea-of-the-day.mjs \
+            --append \
+            --through "${{ steps.target.outputs.date }}"
+
+      - name: Commit and push if data changed
+        working-directory: pseo-site
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/ideas-of-the-day.json
+          if git diff --cached --quiet; then
+            echo "No append (already exists for ${{ steps.target.outputs.date }}) — nothing to commit."
+          else
+            git commit -m "data: idea-of-the-day for ${{ steps.target.outputs.date }}
+
+          Daily append from scripts/generate-idea-of-the-day.mjs."
+            git push
+            echo "Committed and pushed."
+          fi
