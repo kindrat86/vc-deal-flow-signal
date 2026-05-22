@@ -38,7 +38,19 @@ export function getStartupsForIdea(
     t.toLowerCase(),
   );
 
-  const matched: MatchedStartup[] = [];
+  // Pool every sector-matched, volume-passed startup, plus a flag for
+  // whether it ALSO passed the keyword/signal-type narrowing. Surfacing
+  // both buckets lets the resolver prefer narrow matches but supplement
+  // with sector-leader rankings when the narrow filter is sparse —
+  // important because the dataset's org names don't repeat product
+  // marketing keywords verbatim.
+  interface Pool {
+    startup: MatchedStartup;
+    narrow: boolean;
+  }
+  const pool: Pool[] = [];
+  const seen = new Set<string>();
+
   for (const sector of getAllSectors()) {
     if (!idea.matchSignal.sectorSlugs.includes(sector.slug)) continue;
     const snap = sector.periods[period.slug];
@@ -46,22 +58,19 @@ export function getStartupsForIdea(
 
     for (const startup of snap.startups) {
       if (startup.commitVelocity14d < minCommits) continue;
+      if (seen.has(startup.name)) continue;
 
-      // Optional signal-type filter.
-      if (
-        signalTypesLower.length > 0 &&
-        !signalTypesLower.some((t) =>
+      const signalTypeOk =
+        signalTypesLower.length === 0 ||
+        signalTypesLower.some((t) =>
           (startup.signalType ?? "").toLowerCase().includes(t),
-        )
-      ) {
-        continue;
-      }
+        );
+      if (!signalTypeOk) continue;
 
-      // Optional keyword filter — match against name OR description.
+      let narrow = true;
       if (keywordsLower.length > 0) {
         const haystack = `${startup.name} ${startup.description ?? ""}`.toLowerCase();
-        const hit = keywordsLower.some((kw) => haystack.includes(kw));
-        if (!hit) continue;
+        narrow = keywordsLower.some((kw) => haystack.includes(kw));
       }
 
       const pct =
@@ -70,27 +79,29 @@ export function getStartupsForIdea(
           10,
         ) || 0;
 
-      matched.push({
-        ...startup,
-        sectorName: sector.name,
-        sectorSlug: sector.slug,
-        velocityChangePct: pct,
+      seen.add(startup.name);
+      pool.push({
+        startup: {
+          ...startup,
+          sectorName: sector.name,
+          sectorSlug: sector.slug,
+          velocityChangePct: pct,
+        },
+        narrow,
       });
     }
   }
 
-  // De-dup by name in case a startup lives under two of the included sectors.
-  const seen = new Set<string>();
-  const deduped: MatchedStartup[] = [];
-  for (const m of matched) {
-    if (seen.has(m.name)) continue;
-    seen.add(m.name);
-    deduped.push(m);
-  }
+  // Rank narrow matches first (true keyword hit), then sector-leaders,
+  // then by velocity-change desc within each group. This preserves the
+  // editorial promise — when keywords match, those repos win; when they
+  // don't, the page still surfaces credible sector-level signal.
+  pool.sort((a, b) => {
+    if (a.narrow !== b.narrow) return a.narrow ? -1 : 1;
+    return b.startup.velocityChangePct - a.startup.velocityChangePct;
+  });
 
-  return deduped
-    .sort((a, b) => b.velocityChangePct - a.velocityChangePct)
-    .slice(0, limit);
+  return pool.slice(0, limit).map((p) => p.startup);
 }
 
 /**
