@@ -21,6 +21,7 @@ import { getAllUseCaseSlugs } from "@/content/use-cases";
 import { getAllCompetitorVsSlugs } from "@/content/competitor-vs";
 import { pillars } from "@/content/pillars";
 import { agentQueries } from "@/content/agent-queries";
+import { playbooks } from "@/content/playbooks";
 import { FINDINGS as RESEARCH_FINDINGS } from "@/content/research-findings";
 import { PRIMITIVES } from "@/content/signal-primitives";
 import { LOCALES } from "@/content/locales";
@@ -414,6 +415,17 @@ export async function GET(_req: Request, ctx: RouteContext) {
         lastmod,
         changefreq: "weekly",
         priority: 0.85,
+      })),
+      // Playbooks — operator how-tos shipped 2026-05-22. Greg-Isenberg-shaped
+      // micro-SaaS / indie-builder framing on top of the same scoring rubric;
+      // each playbook hands off to /firstlook, /book, /methodology, or the
+      // public signals feed at the natural CTA step.
+      { url: `${BASE_URL}/playbooks`, lastmod, changefreq: "weekly", priority: 0.85 },
+      ...playbooks.map((p) => ({
+        url: `${BASE_URL}/playbooks/${p.slug}`,
+        lastmod,
+        changefreq: "monthly",
+        priority: 0.8,
       })),
       { url: `${BASE_URL}/research`, lastmod, changefreq: "weekly", priority: 0.9 },
       ...RESEARCH_FINDINGS.map((f) => ({

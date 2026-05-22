@@ -6,6 +6,7 @@ import { standaloneFaqs } from "@/content/standalone-faqs";
 import { pillars, getPostsInPillar } from "@/content/pillars";
 import { agentQueries } from "@/content/agent-queries";
 import { alternatives } from "@/content/alternatives";
+import { playbooks } from "@/content/playbooks";
 import { useCases } from "@/content/use-cases";
 import { FINDINGS as RESEARCH_FINDINGS } from "@/content/research-findings";
 
@@ -239,6 +240,13 @@ Direct, source-cited answers to the questions AI agents and their users ask most
 
 - [Answers index](${BASE_URL}/answers): Browse all answer pages.
 ${agentQueries.map((q) => `- [${q.h1}](${BASE_URL}/answers/${q.slug}): ${q.description}`).join("\n")}
+
+## Playbooks (operator how-tos)
+
+Reproducible how-tos for operator-investors, scouts, solo founders, and angels. Each playbook ships a fixed time budget, a step-by-step rubric, and CTAs into the live product (signals feed, methodology, free book, /firstlook). Pages render HowTo JSON-LD with step-level URLs and time-required metadata.
+
+- [Playbooks index](${BASE_URL}/playbooks): Browse all playbooks.
+${playbooks.map((p) => `- [${p.h1}](${BASE_URL}/playbooks/${p.slug}): ${p.description}`).join("\n")}
 
 ## Competitor Alternatives
 

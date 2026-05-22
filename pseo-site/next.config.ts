@@ -36,6 +36,10 @@ const nextConfig: NextConfig = {
       // /distribution/platform-hooks HTML surface and is consumed by
       // the daily-briefing pipeline + agent retrieval.
       { from: "/api/v1/platform-hooks", to: "/api/v1/platform-hooks.json" },
+      // Playbooks — operator how-tos shipped 2026-05-22. Same shape as
+      // /api/v1/answers; mirrors content/playbooks.ts into a JSON corpus
+      // for RAG ingestion alongside the answers corpus.
+      { from: "/api/v1/playbooks", to: "/api/v1/playbooks.json" },
     ].map(({ from, to }) => ({ source: from, destination: to }));
 
     return [
