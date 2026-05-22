@@ -263,12 +263,18 @@ export default function VoicesHubPage() {
             this page. If a developer-investor wants to mirror the cadence,
             three Tuesday-and-Friday hours per week is the entire workload.
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 pt-2">
+          <div className="flex flex-col sm:flex-row flex-wrap gap-3 pt-2">
             <Link
               href="/distribution"
               className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-sm transition-colors"
             >
               See the distribution map →
+            </Link>
+            <Link
+              href="/community-signal"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg border border-emerald-700/50 bg-emerald-950/30 hover:bg-emerald-900/30 text-emerald-200 font-semibold text-sm transition-colors"
+            >
+              Type-indexed cousin: /community-signal →
             </Link>
             <Link
               href="/target-list"
