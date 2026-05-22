@@ -12,6 +12,7 @@ import { comparisons } from "@/content/comparisons";
 import { pillars } from "@/content/pillars";
 import { agentQueries } from "@/content/agent-queries";
 import { alternatives } from "@/content/alternatives";
+import { playbooks } from "@/content/playbooks";
 import { useCases } from "@/content/use-cases";
 import { FINDINGS as RESEARCH_FINDINGS } from "@/content/research-findings";
 import { startupIdeas } from "@/content/startup-ideas";
@@ -36,7 +37,8 @@ type ContentType =
   | "pillar"
   | "best"
   | "manifest"
-  | "integration";
+  | "integration"
+  | "playbook";
 
 interface SearchEntry {
   url: string;
@@ -104,6 +106,7 @@ export async function GET(request: Request) {
     { url: `${BASE_URL}/blog`, title: "Blog", summary: "Practical guides on using GitHub signals for startup investing.", contentType: "page", tags: ["blog", "index"] },
     { url: `${BASE_URL}/answers`, title: "Answers Index", summary: "Browse all citation-ready answer pages.", contentType: "page", tags: ["answers", "index"] },
     { url: `${BASE_URL}/startup-ideas`, title: "Startup Ideas Index", summary: "Buildable startup ideas for 2026, each joined live to the top three GitHub repos already accelerating against it.", contentType: "page", tags: ["startup-ideas", "index", "buildable"] },
+    { url: `${BASE_URL}/playbooks`, title: "Playbooks Index", summary: "Browse operator how-tos for VC deal flow via GitHub signals.", contentType: "page", tags: ["playbooks", "index"] },
     { url: `${BASE_URL}/alternatives`, title: "Alternatives Index", summary: "Browse all alternative pages.", contentType: "page", tags: ["alternatives", "index"] },
     { url: `${BASE_URL}/use-cases`, title: "Use Cases Index", summary: "Browse use cases by investor persona.", contentType: "page", tags: ["use-cases", "index"] },
     { url: `${BASE_URL}/research`, title: "Research Index", summary: "Browse all SSRN-anchored findings, grouped A (numerical), B (descriptive), C (corroborated).", contentType: "page", tags: ["research", "index"] },
@@ -243,6 +246,18 @@ export async function GET(request: Request) {
         idea.category.toLowerCase().replace(/\s+/g, "-"),
         ...idea.keywords.slice(0, 4),
       ],
+      lastModified: lastModifiedIso,
+    });
+  }
+
+  // ---- Playbooks → /playbooks/{slug} ----
+  for (const p of playbooks) {
+    items.push({
+      url: `${BASE_URL}/playbooks/${p.slug}`,
+      title: p.h1,
+      summary: trim(p.description ?? p.tldr),
+      contentType: "playbook",
+      tags: ["playbook", p.difficulty, ...(p.keywords ?? []).slice(0, 4)],
       lastModified: lastModifiedIso,
     });
   }
