@@ -14,6 +14,14 @@ import {
 } from "@/lib/data";
 import { agentQueries, getAgentQueryBySlug } from "@/content/agent-queries";
 import { alternatives, getAlternative } from "@/content/alternatives";
+import {
+  nicheSectors,
+  getNicheSector,
+  getNiche as getNicheDown,
+  countNiches as countNicheDownLeaves,
+  buildCostLabel,
+  dealVelocityLabel,
+} from "@/content/niches";
 import { FINDINGS as RESEARCH_FINDINGS } from "@/content/research-findings";
 import { standaloneFaqs } from "@/content/standalone-faqs";
 
@@ -66,6 +74,12 @@ export async function GET(_request: Request, ctx: RouteContext) {
     body = renderAlternativesIndex();
   } else if (segments[0] === "alternatives" && segments[1]) {
     body = renderAlternative(segments[1]);
+  } else if (segments[0] === "niche-down" && segments.length === 1) {
+    body = renderNicheDownIndex();
+  } else if (segments[0] === "niche-down" && segments.length === 2) {
+    body = renderNicheDownSector(segments[1]);
+  } else if (segments[0] === "niche-down" && segments.length === 3) {
+    body = renderNicheDownLeaf(segments[1], segments[2]);
   } else if (segments[0] === "research" && segments.length === 1) {
     body = renderResearchIndex();
   } else if (segments[0] === "research" && segments[1]) {
@@ -601,6 +615,83 @@ function renderAlternative(slug: string): string | null {
     `**Pick ${a.competitor} if**: ${a.whenToPick.them}\n\n` +
     `## Frequently asked questions\n\n${faqs}\n` +
     `## Canonical\n\n${BASE_URL}/alternatives/${slug}\n`
+  );
+}
+
+function renderNicheDownIndex(): string {
+  const sectorList = nicheSectors
+    .map(
+      (s) =>
+        `- [${s.name} — ${s.niches.length} sub-niches](${BASE_URL}/niche-down/${s.slug}) — ${s.shortPitch}`,
+    )
+    .join("\n");
+  return (
+    frontmatter({
+      title: `Niche-down — ${countNicheDownLeaves()} sub-niches indexed by sector`,
+      url: `${BASE_URL}/niche-down`,
+      description:
+        "Greg-style riches-are-in-the-niches map: every GitHub-signal sector, split into specific small opportunities each tagged with build cost, deal velocity, signal shape, and a build-vs-invest call.",
+    }) +
+    `# Niche-down — ${countNicheDownLeaves()} small specific opportunities, indexed by sector\n\n` +
+    `The actual opportunities are inside each sector — small, specific, often unbuilt. This map splits each GitHub-signal sector into ${nicheSectors[0].niches.length} sub-niches a builder could ship this quarter or an early-stage VC could write a first cheque into next week.\n\n` +
+    `Every leaf carries four flags: build cost (weekend / month / quarter / team), deal velocity (trickle / steady / hot / frothy), the GitHub-trending signal shape that flags a breakout, and a build-vs-invest call.\n\n` +
+    `## Sectors\n\n${sectorList}\n\n` +
+    `## Canonical\n\n${BASE_URL}/niche-down\n`
+  );
+}
+
+function renderNicheDownSector(slug: string): string | null {
+  const sector = getNicheSector(slug);
+  if (!sector) return null;
+  const list = sector.niches
+    .map(
+      (n) =>
+        `- [${n.name}](${BASE_URL}/niche-down/${sector.slug}/${n.slug}) — ${n.pitch} **${buildCostLabel(n.buildCost)}** · **${dealVelocityLabel(n.dealVelocity)}**`,
+    )
+    .join("\n");
+  return (
+    frontmatter({
+      title: `${sector.name} — ${sector.niches.length} niche-down opportunities`,
+      url: `${BASE_URL}/niche-down/${sector.slug}`,
+      description: `${sector.shortPitch} ${sector.niches.length} sub-niches inside ${sector.name}.`,
+    }) +
+    `# ${sector.name}: ${sector.niches.length} sub-niches to consider\n\n` +
+    `> ${sector.shortPitch}\n\n` +
+    `Each entry below is a specific opportunity inside ${sector.name}. We name public projects + categories as examples — never the founders we track inside the paid product.\n\n` +
+    `## Sub-niches\n\n${list}\n\n` +
+    `## Canonical\n\n${BASE_URL}/niche-down/${sector.slug}\n`
+  );
+}
+
+function renderNicheDownLeaf(
+  sectorSlug: string,
+  nicheSlug: string,
+): string | null {
+  const found = getNicheDown(sectorSlug, nicheSlug);
+  if (!found) return null;
+  const { sector, niche } = found;
+  const faqs = niche.faqs
+    .map((f) => `### ${f.q}\n\n${f.a}\n`)
+    .join("\n");
+  const examples = niche.examples.map((e) => `- ${e}`).join("\n");
+  return (
+    frontmatter({
+      title: `${niche.name} — niche opportunity inside ${sector.name}`,
+      url: `${BASE_URL}/niche-down/${sector.slug}/${niche.slug}`,
+      description: niche.pitch,
+    }) +
+    `# ${niche.name}\n\n` +
+    `> ${niche.pitch}\n\n` +
+    `**Sector**: [${sector.name}](${BASE_URL}/niche-down/${sector.slug})  \n` +
+    `**Build cost**: ${buildCostLabel(niche.buildCost)}  \n` +
+    `**Deal velocity**: ${dealVelocityLabel(niche.dealVelocity)}\n\n` +
+    `## Why now\n\n${niche.whyNow}\n\n` +
+    `## What the signal looks like\n\n${niche.signalShape}\n\n` +
+    `## Public examples\n\n*Public projects + categories only — we never name founders tracked inside the paid product.*\n\n${examples}\n\n` +
+    `## What this displaces\n\n${niche.competingFor}\n\n` +
+    `## Our build-vs-invest call\n\n${niche.ourTake}\n\n` +
+    `## Frequently asked\n\n${faqs}\n` +
+    `## Canonical\n\n${BASE_URL}/niche-down/${sector.slug}/${niche.slug}\n`
   );
 }
 

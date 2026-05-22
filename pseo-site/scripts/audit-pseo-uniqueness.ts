@@ -35,6 +35,7 @@ import { comparisons } from "../content/comparisons";
 import { alternatives } from "../content/alternatives";
 import { useCases } from "../content/use-cases";
 import { competitorVsPairs } from "../content/competitor-vs";
+import { nicheSectors } from "../content/niches";
 
 // ---------- config ----------
 
@@ -184,6 +185,17 @@ const SURFACES: Surface[] = [
     name: "vs",
     basePath: "/vs",
     entries: competitorVsPairs.map((v) => buildEntry(v.slug, v)),
+  },
+  {
+    // Niche-down — Greg-style "riches in the niches" cluster (2026-05-22).
+    // Flattens each leaf-niche to its full body for SimHash. Slug shape
+    // "<sector>/<sub-niche>" so the basePath is /niche-down and the leaf
+    // URL is /niche-down/<sector>/<sub-niche>.
+    name: "niche-down",
+    basePath: "/niche-down",
+    entries: nicheSectors.flatMap((s) =>
+      s.niches.map((n) => buildEntry(`${s.slug}/${n.slug}`, n)),
+    ),
   },
 ];
 

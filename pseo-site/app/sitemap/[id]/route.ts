@@ -21,6 +21,10 @@ import { getAllUseCaseSlugs } from "@/content/use-cases";
 import { getAllCompetitorVsSlugs } from "@/content/competitor-vs";
 import { pillars } from "@/content/pillars";
 import { agentQueries } from "@/content/agent-queries";
+import {
+  nicheSectors,
+  getAllNichePairs as getAllNicheDownPairs,
+} from "@/content/niches";
 import { FINDINGS as RESEARCH_FINDINGS } from "@/content/research-findings";
 import { PRIMITIVES } from "@/content/signal-primitives";
 import { LOCALES } from "@/content/locales";
@@ -414,6 +418,22 @@ export async function GET(_req: Request, ctx: RouteContext) {
         lastmod,
         changefreq: "weekly",
         priority: 0.85,
+      })),
+      // Niche-down — Greg-style "riches are in the niches" pSEO cluster
+      // (2026-05-22). 1 hub + 20 sector hubs + 200 leaf pages = 221 URLs.
+      // Sector → sub-niche taxonomy lives in content/niches.ts.
+      { url: `${BASE_URL}/niche-down`, lastmod, changefreq: "weekly", priority: 0.8 },
+      ...nicheSectors.map((s) => ({
+        url: `${BASE_URL}/niche-down/${s.slug}`,
+        lastmod,
+        changefreq: "weekly",
+        priority: 0.75,
+      })),
+      ...getAllNicheDownPairs().map(({ sector, subniche }) => ({
+        url: `${BASE_URL}/niche-down/${sector}/${subniche}`,
+        lastmod,
+        changefreq: "monthly",
+        priority: 0.7,
       })),
       { url: `${BASE_URL}/research`, lastmod, changefreq: "weekly", priority: 0.9 },
       ...RESEARCH_FINDINGS.map((f) => ({
