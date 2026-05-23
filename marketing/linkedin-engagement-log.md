@@ -89,3 +89,8 @@
 - Own-post reply reminder: Thursday May 21 was a scheduled post day (Tue/Wed/Thu/Fri cadence) — schedule file still missing, check linkedin.com/company/gitdealflow/posts manually and reply within 2h
 - Targets: Gergely Orosz, Avichal Garg, Peter Walker
 - Drafts saved above for copy-paste
+
+## 2026-05-23
+- Own-post reply reminder: Friday May 22 was a scheduled post day (Tue/Wed/Thu/Fri cadence) — schedule file still missing, check linkedin.com/company/gitdealflow/posts manually and reply within 2h
+- Targets: Avichal Garg, Peter Walker, Packy McCormick
+- Drafts saved above for copy-paste
