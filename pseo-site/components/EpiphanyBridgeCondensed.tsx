@@ -100,7 +100,7 @@ export default function EpiphanyBridgeCondensed() {
             The 5-step shift &middot; The discovery moment
           </p>
           <h2 className="text-gray-100 font-semibold text-base sm:text-lg mt-1 leading-snug">
-            How a warm-intro angel became a code-side investor.
+            How a late story became an earlier signal.
           </h2>
         </div>
         <Link

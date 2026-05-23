@@ -22,10 +22,10 @@ const WEALTH_OUTCOMES = [
 ] as const;
 
 const STATUS_OUTCOMES = [
-  "The analyst at the partner meeting who saw the breakout 21–47 days before it hit the deck stage.",
-  "The partner who closes their inbox at 09:30 because they already wrote three founder emails before everyone else opened Crunchbase.",
-  "The fund whose pipeline note begins \"GitHub commit-velocity flagged this on 2026-04-12\" — instead of \"warm intro from Marc on Tuesday.\"",
-] as const;
+  "You notice the breakout while everyone else is still waiting for the familiar database update.",
+  "You send the email while the window is still calm enough to matter.",
+  "You carry a clearer timing signal into the conversation instead of repeating what the market already knows.",
+];
 
 export default function IdentityBanner() {
   return (
@@ -37,16 +37,14 @@ export default function IdentityBanner() {
         Who you become · The identity shift
       </p>
 
-      <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-100 leading-snug tracking-tight mb-4">
-        You become <span className="text-amber-300">the partner who reads the code, not the deck.</span>
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-100 leading-tight tracking-tight mb-5">
+        You stop hearing the story late and start seeing the change earlier.
       </h2>
-
       <p className="text-gray-300 text-sm sm:text-base leading-relaxed mb-6">
-        The before-and-after isn't a feature list. It's an identity. The investor
-        who ships this stack stops chasing pitch decks across a warm-intro
-        rolodex — and starts arriving on the founder's inbox{" "}
-        <span className="text-gray-100 font-semibold">21 to 47 days earlier</span>{" "}
-        than every analyst still working off the lagging surface.
+        This shift is not about sounding smarter. It is about seeing what changed
+        while the window is still calm enough to matter. Instead of relying on
+        the same crowded surfaces as everyone else, you start with a public signal
+        that gives you a cleaner read on timing before the round feels obvious.
       </p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">

@@ -81,8 +81,8 @@ export default function HomeOfferStack() {
           Each line is anchored against what the same artefact costs elsewhere
           — Pitchbook for the dashboard tier, McKinsey-grade for the deep
           dives, hand-built for the watchlist. The total below is what a fund
-          partner would spend assembling each piece standalone. The founding
-          rate is what a developer-investor pays once to lock the whole stack
+          would spend assembling each piece standalone. The founding
+          rate is what you pay once to lock the whole stack
           in before the public price hike.
         </p>
         <ul className="space-y-1 mb-6">

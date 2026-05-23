@@ -10,9 +10,9 @@ import TrialClose from "@/components/TrialClose";
 
 export const metadata: Metadata = {
   title:
-    "Pricing — Ten rungs, free to €49,997/yr Vault | VC Deal Flow Signal",
+    "Pricing — Start free, go deeper only when you need it | VC Deal Flow Signal",
   description:
-    "VC Deal Flow Signal pricing — ten rungs from a free weekly digest to the €49,997/yr Vault. Tripwire €1 / €7, €9.97/mo Dashboard, €97/mo Insider, €497/mo Sharp, €1,997 one-time Sector Sweep, €14,997/yr Methodology Partnership, €49,997/yr Vault. Founding-member rates locked. 30-day Signal-or-It's-Free guarantee on every paid plan above €1.",
+    "VC Deal Flow Signal pricing — start free, test one sector, move to the full field, or go deeper only when the question justifies it. Founding-member rates locked. 30-day Signal-or-It's-Free guarantee on every paid plan above €1.",
   alternates: {
     canonical: "/pricing",
   },
@@ -22,9 +22,9 @@ export const metadata: Metadata = {
     // sets its own openGraph object, so no inheritance for url here.)
     url: "https://signals.gitdealflow.com/pricing",
     title:
-      "Pricing — Ten rungs, free to €49,997/yr Vault | VC Deal Flow Signal",
+      "Pricing — Start free, go deeper only when you need it | VC Deal Flow Signal",
     description:
-      "VC Deal Flow Signal pricing — ten rungs from a free weekly digest to the €49,997/yr Vault. New high-ticket research-partnership rungs above the Sector Sweep: Methodology Partnership (€14,997/yr) and Vault (€49,997/yr). Async-only, anonymity-preserving.",
+      "VC Deal Flow Signal pricing — start free, test one sector, work the full field, or go deeper only when the question gets expensive. Research partnership layers sit above the weekly workflow, not in front of it.",
     type: "website",
   },
 };
@@ -73,7 +73,7 @@ const tiers: Tier[] = [
     oneLine:
       "Five breakout startups in your inbox every Monday — the same data the paid tiers see, narrowed to the top five.",
     forWho:
-      "Angel investors and developers who want one shortlist a week without paying.",
+      "Use this if you want to feel the signal first and keep your weekly read simple.",
     bullets: [
       "Weekly email — five startups ranked by engineering acceleration",
       "Signal type per startup (hiring burst, infra buildout, shipping sprint)",
@@ -94,7 +94,7 @@ const tiers: Tier[] = [
     oneLine:
       "104-page operational field manual on the seven public-data signals that precede Series A rounds — read free on the open web, free PDF/EPUB download, or €0.99 Kindle copy with three bonus emails.",
     forWho:
-      "Developer-investors who want to learn the methodology end-to-end before subscribing — or who prefer reading to dashboards.",
+      "Use this if you want to understand the signal fully before you decide on a recurring workflow.",
     bullets: [
       "Eleven chapters: introduction, seven signal chapters, methodology, replication appendix, conclusion",
       "Replication appendix takes you from a fresh laptop to a verified leaderboard rank in 90 minutes",
@@ -115,7 +115,7 @@ const tiers: Tier[] = [
     oneLine:
       "Pay €1 once, name one venture-backed startup, and within 24 hours get a tweet-length (≤280 char) teardown of its GitHub momentum — signal type, 14-day acceleration %, and the kicker insight.",
     forWho:
-      "Curious investors who want to feel the signal quality on a startup they already know before paying real money.",
+      "Use this if you want one fast low-friction test before you trust the signal with more money.",
     bullets: [
       "Tweet-length (≤280 char) teardown of one startup you name",
       "Signal classification + 14-day acceleration delta + the kicker insight",
@@ -137,7 +137,7 @@ const tiers: Tier[] = [
     oneLine:
       "Pay €7 once and get a Sector Deep Dive on the sector you pick — full GitHub momentum table, 14-day acceleration deltas, and the top three names not yet on Crunchbase.",
     forWho:
-      "Investors who want to test the data on one specific sector before committing to a subscription.",
+      "Use this if one sector already matters and you want a sharper answer before you subscribe.",
     bullets: [
       "Full GitHub momentum table for one sector of your choice",
       "14-day commit velocity deltas with two-period confirmation",
@@ -159,7 +159,7 @@ const tiers: Tier[] = [
     oneLine:
       "109 startups ranked across 19 sectors, refreshed weekly, with sector filters and historical period comparisons.",
     forWho:
-      "Active investors and small funds who want to see the full ranking, not just the top five.",
+      "Use this if five names are no longer enough and you want the full field every week.",
     bullets: [
       "109 ranked startups across 19 sectors, refreshed weekly",
       "Sector filters with five-quarter historical comparison",
@@ -181,7 +181,7 @@ const tiers: Tier[] = [
     oneLine:
       "Private Telegram group, live briefings, custom watchlists, JSON API, and bulk CSV pulls — every part of the signal that doesn't fit a public dashboard.",
     forWho:
-      "Active investors syndicating six or more deals per year, plus small funds running structured deal-flow pipelines.",
+      "Use this if you want closer context, live briefings, and a more serious operating rhythm around the signal.",
     bullets: [
       "Everything in Dashboard Beta",
       "Private Insider Circle Telegram group with live briefings",
@@ -205,7 +205,7 @@ const tiers: Tier[] = [
     oneLine:
       "Everything in Insider Circle plus the parts of the work that don't scale — quarterly portfolio review call, custom thesis-aligned watchlist co-built with you, white-labeled API endpoint at /api/v1/sharp/<your-fund>, and direct access to the methodology source code.",
     forWho:
-      "Active VC funds and syndicates deploying €5M+/yr who want a tooling partner, not just a data subscription.",
+      "Use this if the signal needs to support an active fund workflow, not just your own weekly reading.",
     bullets: [
       "Everything in Insider Circle",
       "Quarterly 60-minute portfolio review call — map existing holdings against the live signal",
@@ -230,7 +230,7 @@ const tiers: Tier[] = [
     oneLine:
       "A custom written report on one sector you pick — engineering momentum across every venture-backed startup in that sector, ranked, with diligence prompts and the top three early-stage targets.",
     forWho:
-      "Funds investing seven-figure cheques into a defined sector who want a one-off, deeper-than-Dashboard analysis without a yearly contract.",
+      "Use this if one sector question is already expensive enough to justify a serious one-time pass.",
     bullets: [
       "40-page custom Sector Sweep PDF — every venture-backed startup in your sector ranked over the last four quarters (analyst-report equivalent: €4,500)",
       "Raw CSV — every org × every metric, license-friendly to drop into your CRM (data-license equivalent: €1,200)",
@@ -256,7 +256,7 @@ const tiers: Tier[] = [
     oneLine:
       "Done-with-you methodology engagement: custom panel construction trained on your fund's anonymized portfolio outcomes, bespoke 50-org watchlist with monthly rebuild, white-labeled fund subdomain, quarterly synthetic founder talk, async-only methodology Q&A. The done-with-you rung above Sharp Tier.",
     forWho:
-      "Active VC funds with 5+ years of historical investment outcomes who want the regression trained on their portfolio — not the public 219-startup panel — and a fund-branded data feed integrated into their CRM.",
+      "Use this if you want the methodology adapted to your own portfolio and internal workflow.",
     bullets: [
       "Everything in Sharp Tier (€4,970/yr value)",
       "Custom panel construction — your fund's regression model trained on anonymized portfolio outcomes",
@@ -539,7 +539,7 @@ export default function PricingPage() {
         </h1>
 
         <p className="text-gray-400 text-base leading-relaxed mb-3">
-          Seven tiers, ordered cheapest to most expensive. The free Signal
+          Start with the lightest useful step, then go deeper only if the question justifies it. The free Signal
           Digest and the free MCP server are the distribution magnet — they
           will never be gated. The €1 Tweet Teardown is the threshold
           breaker between Free and €7. Dashboard at €9.97 per month and
@@ -550,7 +550,7 @@ export default function PricingPage() {
           ships with a 30-day Signal-or-It&rsquo;s-Free guarantee.
         </p>
         <p className="text-gray-400 text-sm leading-relaxed mb-6 border-l-2 border-amber-700/40 pl-4">
-          All ten rungs implement the same category:{" "}
+          Every layer serves the same job:{" "}
           <Link
             href="/code-side-sourcing"
             className="text-amber-300 hover:text-amber-200 underline decoration-dotted"
@@ -628,7 +628,7 @@ export default function PricingPage() {
                 <tr className="border-b border-slate-700 bg-slate-900/60 text-left text-xs uppercase tracking-wider">
                   <th className="px-4 py-3 text-gray-300 font-semibold">Tier</th>
                   <th className="px-4 py-3 text-gray-300 font-semibold">Price</th>
-                  <th className="px-4 py-3 text-gray-300 font-semibold">For who</th>
+                  <th className="px-4 py-3 text-gray-300 font-semibold">When this fits</th>
                   <th className="px-4 py-3 text-gray-300 font-semibold text-right">CTA</th>
                 </tr>
               </thead>
@@ -685,7 +685,7 @@ export default function PricingPage() {
             </table>
           </div>
           <TrialClose tone="sky">
-            Ten rungs from free to €49,997/yr, every cell honest about what
+            Start free, go deeper only when you need it from free to €49,997/yr, every cell honest about what
             it does and doesn&rsquo;t include. If you can already see the
             rung you&rsquo;d sit on — does the rest of the page just confirm
             the math?
@@ -727,7 +727,7 @@ export default function PricingPage() {
                 {tier.oneLine}
               </p>
               <p className="text-gray-400 text-xs italic mb-4">
-                Best for: {tier.forWho}
+                When this fits: {tier.forWho}
               </p>
               <ul className="space-y-2 mb-4">
                 {tier.bullets.map((b, i) => (

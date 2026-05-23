@@ -908,18 +908,14 @@ export default function Home() {
             the first identity moment a reader hits — above the fold,
             not 1,100 lines down where the longer disqualifier lives. */}
         <p
-          aria-label="Built for"
+          aria-label="Start here if"
           className="inline-flex items-start sm:items-center gap-2 mb-5 rounded-full border border-emerald-500/30 bg-emerald-950/30 px-3 py-1.5 text-[11px] sm:text-xs font-medium text-emerald-200/95"
         >
           <span aria-hidden className="mt-[1px] sm:mt-0">→</span>
           <span className="leading-snug">
-            Built for{" "}
-            <strong className="font-semibold text-emerald-100">
-              developer-investors
-            </strong>{" "}
-            writing <span className="tabular-nums">€5k–€50k</span> angel
-            checks on AI infra, devtools &amp; SaaS — between deal #5 and
-            deal #40.
+            If you write <span className="tabular-nums">€5k–€50k</span>
+            checks and want a calmer signal before the round gets obvious,
+            you are in the right place.
           </span>
         </p>
 
@@ -980,7 +976,7 @@ export default function Home() {
             3.4× Series-A lift
           </a>{" "}
           in the SSRN panel of 219 confirmed fundraises (median lead time 21–47
-          days). Free forever, built for the developer who also angel-invests.
+          days). Free forever, built to give you a clearer read before the round gets obvious.
         </p>
       </header>
 
@@ -1321,7 +1317,7 @@ export default function Home() {
       </section>
 
       {/* IDENTITY DECLARATION — Brunson Expert Secrets identity-belief.
-          This page already names "developer-investor" inside copy; this
+          This page already names "investor who wants earlier public signals" inside copy; this
           block surfaces the identity formation as a standalone moment
           before the pricing ladder. */}
       <section
@@ -1333,7 +1329,7 @@ export default function Home() {
         </p>
         <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug">
           You&rsquo;re not a VC. You&rsquo;re a{" "}
-          <span className="text-sky-400">developer-investor</span> — and there
+          <span className="text-sky-400">investor who wants earlier public signals</span> — and there
           are three of you.
         </h2>
         <p className="text-gray-300 text-base leading-relaxed">
@@ -1347,7 +1343,7 @@ export default function Home() {
       </section>
 
       {/* Three reader-archetypes — Solo Angel / Fund GP / Family Office.
-          Audit 2026-05-09: split from the single "developer-investor"
+          Audit 2026-05-09: split from the single "investor who wants earlier public signals"
           composite. Single source of truth: content/archetypes.ts. Internal
           workbook: brunson/08-dream-customer.md §8. */}
       <ArchetypeCardsPreview
