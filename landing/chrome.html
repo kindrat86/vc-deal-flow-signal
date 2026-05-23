@@ -73,6 +73,14 @@
         <a class="btn btn-primary btn-xl" href="https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn">Install free <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
       </div>
     </section>
+    <section class="bg-dark-800 py-6 border-y border-gray-800" data-countdown-root data-deadline="2026-06-30T23:59:00Z">
+      <div class="max-w-4xl mx-auto px-6 text-center">
+        <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-2">Urgency timer</p>
+        <p class="text-white font-semibold text-lg">Current free-install push closes in <span data-countdown-output class="text-signal-400">…</span></p>
+        <p class="text-gray-500 text-sm mt-1">Install while the current watchlist window is still open and the signal is fresh.</p>
+      </div>
+    </section>
+
 
     <section class="max-w-5xl mx-auto px-6 py-16">
       <div class="grid md:grid-cols-2 gap-8">
@@ -125,5 +133,30 @@
       <p class="text-gray-600 text-xs">GitDealFlow Chrome extension</p>
     </div>
   </footer>
+
+  <script>
+    (function(){
+      const root = document.querySelector('[data-countdown-root]');
+      if (!root) return;
+      const deadline = Date.parse(root.getAttribute('data-deadline'));
+      if (Number.isNaN(deadline)) return;
+      const out = root.querySelector('[data-countdown-output]');
+      function pad(n){ return n < 10 ? '0' + n : String(n); }
+      function tick(){
+        const left = deadline - Date.now();
+        if (left <= 0) {
+          if (out) out.textContent = 'window closed';
+          return;
+        }
+        const d = Math.floor(left / 86400000);
+        const h = Math.floor((left % 86400000) / 3600000);
+        const m = Math.floor((left % 3600000) / 60000);
+        if (out) out.textContent = d + 'd ' + pad(h) + 'h ' + pad(m) + 'm';
+      }
+      tick();
+      setInterval(tick, 60000);
+    })();
+  </script>
+
 </body>
 </html>
