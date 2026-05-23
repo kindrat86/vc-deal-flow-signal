@@ -423,6 +423,22 @@
     </section>
   </main>
 
+  <div id="exit-modal" class="hidden fixed inset-0 z-[70] items-center justify-center px-4" role="dialog" aria-modal="true" aria-labelledby="exit-title">
+    <div id="exit-backdrop" class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+    <div class="relative w-full max-w-lg rounded-2xl border border-signal-500/40 bg-dark-900 p-6 md:p-8 shadow-2xl">
+      <button type="button" id="exit-close" aria-label="Close" class="absolute top-3 right-3 text-gray-500 hover:text-gray-200 text-2xl leading-none w-8 h-8 flex items-center justify-center">&times;</button>
+      <p class="text-signal-400 text-xs font-semibold uppercase tracking-wider mb-3">Before you go</p>
+      <h2 id="exit-title" class="text-2xl md:text-3xl font-extrabold leading-tight mb-3">Get the free Sunday watchlist first.</h2>
+      <p class="text-gray-300 leading-relaxed mb-5">One short Sunday email. Five names worth your attention. No card, no noise, unsubscribe in one click.</p>
+      <form id="exit-form" class="flex flex-col gap-3">
+        <label for="exit-email" class="sr-only">Email address</label>
+        <input type="email" id="exit-email" required placeholder="you@example.com" class="w-full px-4 py-3 rounded-lg bg-dark-800 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-signal-500">
+        <button type="submit" id="exit-submit" class="w-full bg-signal-500 hover:bg-signal-400 text-white font-bold py-3 rounded-lg transition">Send me the watchlist &rarr;</button>
+      </form>
+      <p id="exit-msg" class="text-gray-500 text-xs text-center mt-3">Free forever · one email a week · no card</p>
+    </div>
+  </div>
+
   <footer class="border-t border-gray-800 bg-dark-900/80 py-12">
     <div class="max-w-5xl mx-auto px-6 text-center">
       <p class="text-gray-300 mb-2 font-semibold">GitDealFlow turns public engineering behavior into a signal you can act on.</p>
@@ -520,6 +536,70 @@
         btn.textContent = 'Get the free Sunday watchlist →';
       }
     });
+
+    (function(){
+      const modal = document.getElementById('exit-modal');
+      const closeBtn = document.getElementById('exit-close');
+      const backdrop = document.getElementById('exit-backdrop');
+      const form = document.getElementById('exit-form');
+      const emailEl = document.getElementById('exit-email');
+      const btn = document.getElementById('exit-submit');
+      const msg = document.getElementById('exit-msg');
+      if (!modal || !form) return;
+      let shown = false;
+      try {
+        const ts = localStorage.getItem('gd_exit_seen_at');
+        if (ts && Date.now() - parseInt(ts, 10) < 7 * 24 * 60 * 60 * 1000) shown = true;
+      } catch (e) {}
+      function openModal() {
+        if (shown) return;
+        shown = true;
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        if (window.posthog) posthog.capture('exit_modal_opened');
+        try { localStorage.setItem('gd_exit_seen_at', String(Date.now())); } catch (e) {}
+      }
+      function closeModal() {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+      document.addEventListener('mouseout', function(e) {
+        if (shown) return;
+        if (e.clientY <= 0) openModal();
+      });
+      closeBtn.addEventListener('click', closeModal);
+      backdrop.addEventListener('click', closeModal);
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const email = emailEl.value.trim();
+        if (!email) return;
+        btn.disabled = true;
+        btn.textContent = 'Sending...';
+        try {
+          const attr = window.GDFattribution('exit-modal');
+          const res = await fetch('https://signals.gitdealflow.com/api/subscribe', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(Object.assign({
+              email: email,
+              quiz_route: 'F',
+              quiz_route_label: 'Free Acceleration Watch'
+            }, attr))
+          });
+          const data = await res.json();
+          if (!data.ok) throw new Error(data.error || 'Failed');
+          msg.textContent = 'Check your inbox. Click the confirmation link to unlock the next Sunday watchlist.';
+          msg.className = 'text-brand-500 text-xs text-center mt-3 font-semibold';
+          btn.textContent = 'Email sent ✓';
+          if (window.posthog) posthog.capture('exit_modal_submitted');
+        } catch (err) {
+          msg.textContent = 'Something went wrong. Try the main signup form instead.';
+          msg.className = 'text-red-400 text-xs text-center mt-3';
+          btn.disabled = false;
+          btn.textContent = 'Send me the watchlist →';
+        }
+      });
+    })();
   </script>
 
   <script>

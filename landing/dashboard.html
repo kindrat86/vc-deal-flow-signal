@@ -43,6 +43,26 @@
       </div>
     </section>
 
+    <section class="bg-dark-800 py-10 border-y border-gray-800">
+      <div class="max-w-4xl mx-auto px-6 grid md:grid-cols-3 gap-6 text-center">
+        <div>
+          <p class="text-signal-300 text-xs font-semibold uppercase tracking-wider mb-2">Scarcity</p>
+          <p class="text-gray-200 font-semibold">Founding price is for current members</p>
+          <p class="text-gray-500 text-sm mt-1">Once the founding rate is removed, existing members keep it and new ones do not.</p>
+        </div>
+        <div>
+          <p class="text-signal-300 text-xs font-semibold uppercase tracking-wider mb-2">Urgency</p>
+          <p class="text-gray-200 font-semibold">Best bought when you already need it weekly</p>
+          <p class="text-gray-500 text-sm mt-1">If you are already sourcing actively, waiting mostly costs you reps and timing.</p>
+        </div>
+        <div>
+          <p class="text-signal-300 text-xs font-semibold uppercase tracking-wider mb-2">Pressure release</p>
+          <p class="text-gray-200 font-semibold">Do not buy this too early</p>
+          <p class="text-gray-500 text-sm mt-1">If the free list still covers your needs, stay there until the rhythm changes.</p>
+        </div>
+      </div>
+    </section>
+
     <section class="max-w-5xl mx-auto px-6 py-16">
       <div class="grid md:grid-cols-2 gap-8">
         <div class="rounded-xl border border-gray-700 bg-dark-800 p-8">
@@ -58,7 +78,7 @@
         <div class="rounded-xl border border-gray-700 bg-dark-800 p-8">
           <h2 class="text-2xl font-bold mb-4">Who it&apos;s for</h2>
           <div class="space-y-4 text-gray-300 leading-relaxed">
-            <p><strong class="text-white">Best fit:</strong> Marcus once he is writing checks consistently and wants more than a five-name shortlist.</p>
+            <p><strong class="text-white">Best fit:</strong> once you are writing checks consistently and want more than a five-name shortlist.</p>
             <p><strong class="text-white">Not the first step:</strong> if you are still evaluating whether the signal fits your thesis, start with the free watchlist or First Look.</p>
             <p><strong class="text-white">If you need thesis-specific custom work:</strong> go to <a href="/sector-sweep" class="text-brand-500 underline">Sector Sweep</a> instead.</p>
           </div>
@@ -78,6 +98,18 @@
       </div>
     </section>
 
+    <section class="max-w-4xl mx-auto px-6 py-12">
+      <div class="rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-8 text-center">
+        <p class="text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-3">Not ready for Dashboard?</p>
+        <h2 class="text-2xl font-bold mb-4">Stay on the free watchlist or test one sector first.</h2>
+        <p class="text-gray-300 leading-relaxed max-w-2xl mx-auto mb-6">The wrong time to buy Dashboard is before you actually need a broader weekly field. If that is where you are, use the free watchlist or First Look first.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/#signup" class="btn btn-secondary btn-md">Get the free Sunday watchlist</a>
+          <a href="/firstlook" class="btn btn-secondary btn-md">See First Look</a>
+        </div>
+      </div>
+    </section>
+
     <section id="checkout" class="max-w-3xl mx-auto px-6 py-20 text-center">
       <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-3">Checkout</p>
       <h2 class="text-3xl font-bold mb-4">Start Dashboard</h2>
@@ -87,7 +119,7 @@
         <input type="email" id="dashboard-email" required placeholder="you@example.com" class="flex-1 px-5 py-4 rounded-lg bg-dark-800 border border-gray-600 text-gray-100 placeholder-gray-500 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 text-lg">
         <button type="submit" id="dashboard-btn" class="btn btn-cta btn-lg">Start checkout <span aria-hidden="true" class="btn-arrow">&rarr;</span></button>
       </form>
-      <p id="dashboard-msg" class="text-gray-500 text-sm mt-4">€9.97/mo founding price &middot; secure checkout via Stripe</p>
+      <p id="dashboard-msg" class="text-gray-500 text-sm mt-4">€9.97/mo founding price · secure checkout via Stripe</p>
     </section>
   </main>
 
@@ -124,7 +156,6 @@
     document.getElementById('dashboard-form').addEventListener('submit', function(e) {
       e.preventDefault();
       const btn = document.getElementById('dashboard-btn');
-      const msg = document.getElementById('dashboard-msg');
       const email = document.getElementById('dashboard-email').value.trim();
       if (!email) return;
       btn.disabled = true;
