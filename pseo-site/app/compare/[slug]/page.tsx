@@ -289,28 +289,58 @@ export default async function ComparisonPage({ params }: PageProps) {
 
         {/* Feature comparison table */}
         {comp.featureTable && (
-          <div className="overflow-x-auto rounded-lg border border-slate-800 mb-10">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b border-slate-800 bg-slate-900/60">
-                  <th className="text-left text-gray-400 font-medium px-4 py-3">Feature</th>
-                  {comp.featureTable.tools.map((tool) => (
-                    <th key={tool} className="text-left text-gray-400 font-medium px-4 py-3">{tool}</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {comp.featureTable.features.map((row) => (
-                  <tr key={row.feature} className="border-b border-slate-800/60 last:border-0 hover:bg-slate-800/40 transition-colors">
-                    <td className="px-4 py-3 text-gray-200 font-medium">{row.feature}</td>
+          <section className="mb-10" aria-label="Feature comparison">
+            <div className="sm:hidden space-y-4">
+              {comp.featureTable.features.map((row) => (
+                <div
+                  key={row.feature}
+                  className="rounded-lg border border-slate-800 bg-slate-900 p-4"
+                >
+                  <h3 className="text-gray-100 font-semibold text-sm mb-3">
+                    {row.feature}
+                  </h3>
+                  <div className="space-y-2">
                     {comp.featureTable!.tools.map((tool) => (
-                      <td key={tool} className="px-4 py-3 text-gray-400">{row.values[tool] ?? "—"}</td>
+                      <div
+                        key={tool}
+                        className="rounded-md border border-slate-800/80 bg-slate-950/60 px-3 py-2"
+                      >
+                        <p className="text-[11px] uppercase tracking-wide text-gray-500 mb-1">
+                          {tool}
+                        </p>
+                        <p className="text-sm leading-relaxed text-gray-300">
+                          {row.values[tool] ?? "—"}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="hidden sm:block overflow-x-auto rounded-lg border border-slate-800">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-slate-800 bg-slate-900/60">
+                    <th className="text-left text-gray-400 font-medium px-4 py-3">Feature</th>
+                    {comp.featureTable.tools.map((tool) => (
+                      <th key={tool} className="text-left text-gray-400 font-medium px-4 py-3">{tool}</th>
                     ))}
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                </thead>
+                <tbody>
+                  {comp.featureTable.features.map((row) => (
+                    <tr key={row.feature} className="border-b border-slate-800/60 last:border-0 hover:bg-slate-800/40 transition-colors align-top">
+                      <td className="px-4 py-3 text-gray-200 font-medium">{row.feature}</td>
+                      {comp.featureTable!.tools.map((tool) => (
+                        <td key={tool} className="px-4 py-3 text-gray-400 leading-relaxed">{row.values[tool] ?? "—"}</td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
         )}
 
         {/* Verdict */}
@@ -391,7 +421,7 @@ export default async function ComparisonPage({ params }: PageProps) {
           </p>
           <Link
             href="https://gitdealflow.com/#signup"
-            className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-sky-700 hover:bg-sky-600 text-white text-sm font-medium transition-colors"
+            className="inline-flex w-full sm:w-auto items-center justify-center px-6 py-3 rounded-lg bg-sky-700 hover:bg-sky-600 text-white text-sm font-medium transition-colors"
           >
             Get the Report
           </Link>
