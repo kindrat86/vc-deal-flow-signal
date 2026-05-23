@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — GitDealFlow</title>
+  <meta name="description" content="The main paid tier for angels actively sourcing. 60+ startups ranked across 20 sectors for €9.97/mo founding price.">
+  <link rel="canonical" href="https://gitdealflow.com/dashboard" />
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Dashboard — GitDealFlow" />
+  <meta property="og:description" content="The full ranked dataset for angels actively sourcing." />
+  <meta property="og:url" content="https://gitdealflow.com/dashboard" />
+  <meta property="og:image" content="https://signals.gitdealflow.com/opengraph-image" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="bg-dark-900 text-gray-100 font-sans antialiased">
+  <header class="sticky top-0 z-50 border-b border-gray-800 bg-dark-900/95 backdrop-blur">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-4">
+      <a href="/" class="font-semibold tracking-tight text-white text-lg">GitDealFlow</a>
+      <nav class="hidden md:flex items-center gap-6">
+        <a href="/" class="text-gray-400 text-sm hover:text-gray-100 transition">Home</a>
+        <a href="https://signals.gitdealflow.com" class="text-gray-400 text-sm hover:text-gray-100 transition">Signals</a>
+        <a href="/firstlook" class="text-gray-400 text-sm hover:text-gray-100 transition">First Look</a>
+        <a href="/insider" class="text-gray-400 text-sm hover:text-gray-100 transition">Insider</a>
+      </nav>
+      <a href="#checkout" class="btn btn-cta btn-sm whitespace-nowrap">Start Dashboard <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
+    </div>
+  </header>
+
+  <main>
+    <section class="relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-br from-dark-900 via-dark-800 to-brand-900 opacity-80"></div>
+      <div class="relative max-w-4xl mx-auto px-6 py-20 md:py-28 text-center">
+        <p class="text-brand-500 font-semibold text-sm uppercase tracking-wider mb-4">Main paid tier</p>
+        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6">The full ranked list for angels who are actively sourcing.</h1>
+        <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8">Use Dashboard when the free Sunday watchlist is no longer enough and you want the broader ranked field every week across sectors.</p>
+        <div class="inline-flex items-center gap-2 rounded-full border border-signal-500/30 bg-signal-500/10 px-4 py-2 text-sm text-signal-300">
+          <span>Founding price:</span>
+          <strong class="text-white">€9.97 / month</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="max-w-5xl mx-auto px-6 py-16">
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="rounded-xl border border-gray-700 bg-dark-800 p-8">
+          <h2 class="text-2xl font-bold mb-4">What you get</h2>
+          <ul class="space-y-3 text-gray-300 leading-relaxed">
+            <li>60+ ranked startups across the tracked sectors</li>
+            <li>Signal summaries built for non-engineer angels</li>
+            <li>A wider working list than the free Sunday five</li>
+            <li>A better weekly operating surface for active sourcing</li>
+            <li>Founding-member price while you stay subscribed</li>
+          </ul>
+        </div>
+        <div class="rounded-xl border border-gray-700 bg-dark-800 p-8">
+          <h2 class="text-2xl font-bold mb-4">Who it&apos;s for</h2>
+          <div class="space-y-4 text-gray-300 leading-relaxed">
+            <p><strong class="text-white">Best fit:</strong> Marcus once he is writing checks consistently and wants more than a five-name shortlist.</p>
+            <p><strong class="text-white">Not the first step:</strong> if you are still evaluating whether the signal fits your thesis, start with the free watchlist or First Look.</p>
+            <p><strong class="text-white">If you need thesis-specific custom work:</strong> go to <a href="/sector-sweep" class="text-brand-500 underline">Sector Sweep</a> instead.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-dark-800 py-16">
+      <div class="max-w-4xl mx-auto px-6 text-center">
+        <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-3">Proof before purchase</p>
+        <h2 class="text-3xl font-bold mb-4">The proof engine still lives on signals.gitdealflow.com.</h2>
+        <p class="text-gray-300 text-lg leading-relaxed max-w-3xl mx-auto mb-8">Methodology on SSRN. Dataset on Zenodo. Sector pages, API, and deeper surface on the signals subdomain. Dashboard is the paid operating layer, not the proof layer.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="https://signals.gitdealflow.com/methodology" class="btn btn-secondary btn-md">Read methodology</a>
+          <a href="/report" class="btn btn-secondary btn-md">See sample report</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="checkout" class="max-w-3xl mx-auto px-6 py-20 text-center">
+      <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-3">Checkout</p>
+      <h2 class="text-3xl font-bold mb-4">Start Dashboard</h2>
+      <p class="text-gray-300 mb-8">Enter your email and go straight to Stripe. We prefill it and tag the attribution so the upgrade path stays clean.</p>
+      <form id="dashboard-form" class="max-w-lg mx-auto flex flex-col sm:flex-row gap-3">
+        <label for="dashboard-email" class="sr-only">Email</label>
+        <input type="email" id="dashboard-email" required placeholder="you@example.com" class="flex-1 px-5 py-4 rounded-lg bg-dark-800 border border-gray-600 text-gray-100 placeholder-gray-500 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 text-lg">
+        <button type="submit" id="dashboard-btn" class="btn btn-cta btn-lg">Go to checkout <span aria-hidden="true" class="btn-arrow">&rarr;</span></button>
+      </form>
+      <p id="dashboard-msg" class="text-gray-500 text-sm mt-4">€9.97/mo founding price &middot; secure checkout via Stripe</p>
+    </section>
+  </main>
+
+  <footer class="border-t border-gray-800 bg-dark-900/80 py-12">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <div class="flex flex-wrap justify-center gap-6 text-gray-500 text-sm mb-4">
+        <a href="/" class="hover:text-gray-300">Home</a>
+        <a href="/firstlook" class="hover:text-gray-300">First Look</a>
+        <a href="/insider" class="hover:text-gray-300">Insider</a>
+        <a href="/sector-sweep" class="hover:text-gray-300">Sector Sweep</a>
+        <a href="/privacy" class="hover:text-gray-300">Privacy</a>
+      </div>
+      <p class="text-gray-600 text-xs">GitDealFlow Dashboard</p>
+    </div>
+  </footer>
+
+  <script>
+    window.GDFattribution = function(source) {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        return {
+          source: source || 'dashboard',
+          utm_source: params.get('utm_source') || '',
+          utm_medium: params.get('utm_medium') || '',
+          utm_campaign: params.get('utm_campaign') || '',
+          referrer: document.referrer || '',
+          landing_path: window.location.pathname + window.location.search
+        };
+      } catch (e) {
+        return { source: source || 'dashboard' };
+      }
+    };
+
+    document.getElementById('dashboard-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const btn = document.getElementById('dashboard-btn');
+      const msg = document.getElementById('dashboard-msg');
+      const email = document.getElementById('dashboard-email').value.trim();
+      if (!email) return;
+      btn.disabled = true;
+      btn.textContent = 'Loading checkout...';
+      try {
+        const attr = window.GDFattribution('dashboard');
+        fetch('https://signals.gitdealflow.com/api/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(Object.assign({
+            email: email,
+            quiz_route: 'D',
+            quiz_route_label: 'Dashboard (€9.97/mo)'
+          }, attr)),
+          keepalive: true
+        }).catch(function(){});
+      } catch(e) {}
+      window.location.href = 'https://buy.stripe.com/28E7sK48H04U8ou07u0x200?prefilled_email=' + encodeURIComponent(email);
+    });
+  </script>
+</body>
+</html>
