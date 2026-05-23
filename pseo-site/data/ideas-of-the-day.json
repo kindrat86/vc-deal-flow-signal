@@ -1338,6 +1338,49 @@
         }
       ],
       "publishedAt": "2026-05-22T09:00:00Z"
+    },
+    {
+      "date": "2026-05-23",
+      "slug": "2026-05-23",
+      "headline": "The edtech opening hiding in a +102% engineering hiring burst",
+      "hook": "Series A/B edtech teams shipping 162 commits in 14 days at +102% aren't just building product — they're broadcasting the hiring-burst that usually precedes a raise.",
+      "repo": {
+        "name": "plomgrading",
+        "githubUrl": "https://github.com/plomgrading",
+        "stage": "Series A/B",
+        "geography": "Unknown",
+        "sector": "EdTech",
+        "sectorSlug": "edtech",
+        "signalType": "Engineering hiring burst",
+        "commitVelocity14d": 162,
+        "commitVelocityChange": "+102%",
+        "contributors": 40,
+        "contributorGrowth": "+72%",
+        "newRepos": 0,
+        "description": "Plom is Paperless Open Marking - mirror of https://gitlab.com/plom/plom"
+      },
+      "ideaThesis": "EdTech has a buyer who is also a builder. The category incumbents shipped for an ops/HR/finance lead; the next wave ships for the engineer running that function. Read the repo: engineering hiring burst, series a/b team, 40 contributors. That's the shape of a team that crosses the next funding line on engineering output, not enterprise sales — and the gap they leave is the wedge for an indie or two-founder tool that does one job better than the suite they're inside of.",
+      "buildAngles": [
+        "Sourcing tool for engineering managers — Slack-native, signal-pulled by sector, no SaaS dashboard.",
+        "Read-only overlay on the incumbent ATS — bring engineering signals (GitHub activity, dependency adoption) onto candidate cards.",
+        "Drip-tool for technical recruiting that writes its own outreach from public commit signals."
+      ],
+      "distributionPlay": "Free Chrome extension into r/recruiting and r/cscareerquestions for the first 1,000 installs. Both subs allow free tools if you don't pitch — frame it as data, not product.",
+      "signalReading": [
+        {
+          "metric": "162 commits / 14 days",
+          "reading": "Maintenance-level cadence. The story isn't the volume; it's whatever else moved alongside it."
+        },
+        {
+          "metric": "+102% commit-velocity change",
+          "reading": "Trend is still accelerating, not peaking. A positive change-in-change is the leading edge of the curve, not the back of it."
+        },
+        {
+          "metric": "40 contributors (+72%)",
+          "reading": "Mature contributor base. The opportunity is less in displacing them and more in serving the engineers who depend on them."
+        }
+      ],
+      "publishedAt": "2026-05-23T09:00:00Z"
     }
   ]
 }
