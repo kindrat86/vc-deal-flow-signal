@@ -593,10 +593,9 @@ export default function InsiderPage() {
             <li className="flex items-start gap-3">
               <span className="text-emerald-400 font-bold shrink-0">3.</span>
               <span>
-                If you are a developer-investor still figuring out the rhythm,
-                start on Dashboard at €9.97/mo. Insider becomes the obvious
-                upgrade the first time you wake up Monday and realise the
-                public list dropped while you were on a plane.
+                If you are still deciding whether the weekly shortlist is enough,
+                start on Dashboard at €9.97/mo. Move up when you want more context,
+                more signal support, and less second-guessing around the call.
               </span>
             </li>
           </ul>
@@ -669,14 +668,10 @@ export default function InsiderPage() {
                 Identity close
               </p>
               <h3 className="text-gray-100 font-semibold text-base">
-                Insiders read commit logs on Sunday. Everyone else reads decks
-                on Tuesday.
+                Start with Dashboard when the shortlist feels useful. Move here when you want more than the shortlist.
               </h3>
               <p className="text-gray-300 text-sm leading-relaxed">
-                Dashboard is the tool for a developer-investor. Insider is the
-                tool for a developer-investor who has decided they want to
-                arrive at fundraises before the rest of the market. Same
-                identity, sharper version.
+                Dashboard is the weekly field. Insider is the layer you add when you want more context, more access, and a steadier signal rhythm around the decisions that matter.
               </p>
             </div>
 

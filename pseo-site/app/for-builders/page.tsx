@@ -66,11 +66,11 @@ const FREE_TOOLS = [
 const FAQS = [
   {
     q: "Why a separate page for builders?",
-    a: "Because the buyer is different. The Dashboard buyer is a developer-investor reading the Sunday digest with their coffee. The builder buyer is shipping an AI agent that scouts startups, briefs investors, or routes deal flow inside a fund's internal tooling. Same data, completely different rhythm. This page is the entry point for the second one.",
+    a: "Because this page is not about reading the signal. It is about wiring the signal into an agent, workflow, or internal tool. Same data, different job.",
   },
   {
     q: "Are the six free tools really free forever, or is this a trial?",
-    a: "Forever. The free MCP server is the distribution magnet — it's the reason developer-investors find this product in the first place. Gating it would kill the funnel. Credits only apply to the seventh tool (get_deep_signal) and its HTTP twin (POST /api/agent/deep-signal). The free six stay free permanently.",
+    a: "Forever. The free MCP server is the public entry layer. Credits only apply to the seventh tool (get_deep_signal) and its HTTP twin (POST /api/agent/deep-signal). The free six stay free permanently.",
   },
   {
     q: "What does get_deep_signal return that the free tools don't?",

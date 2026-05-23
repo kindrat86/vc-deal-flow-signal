@@ -188,21 +188,13 @@ export default function IdentityPage() {
           Who you become
         </p>
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-100 leading-tight tracking-tight mb-5">
-          The partner who reads the code,{" "}
-          <span className="text-amber-300">not the deck.</span>
+          You stop hearing the story late and start moving while the window is still calm.
         </h1>
         <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
-          This isn't a feature list. It's an identity. Two transformations stack:{" "}
-          <span className="text-emerald-300 font-semibold">Wealth</span> (the
-          deals you write get better, earlier, at cheque sizes that compound)
-          and{" "}
-          <span className="text-violet-300 font-semibold">Status</span> (the
-          reputation of the analyst who called the breakout 21–47 days before
-          everyone else opened the deck). The seven shifts below take you from
-          one identity to the other.
+          This is not about adopting a new identity. It is about changing what you notice and when you notice it. The seven shifts below are really seven clarity moves: less dependence on crowded surfaces, more trust in what changed early enough to matter.
         </p>
         <p className="text-gray-400 text-sm leading-relaxed mt-4 border-l-2 border-amber-700/40 pl-4">
-          The category this identity operates in has a name:{" "}
+          The category this page points toward has a name:{" "}
           <Link
             href="/code-side-sourcing"
             className="text-amber-300 hover:text-amber-200 underline decoration-dotted"
@@ -239,10 +231,9 @@ export default function IdentityPage() {
         </p>
         <p className="text-gray-300 text-sm sm:text-base leading-relaxed mb-2">
           That&rsquo;s the moment the seven shifts below were written for.
-          The before-and-after isn&rsquo;t aesthetic. It&rsquo;s the
-          difference between being the investor who closes the laptop and
-          the investor who sends the email at 11:07 p.m. with the merge
-          graph attached.
+          The before-and-after is not aesthetic. It&rsquo;s the difference
+          between closing the laptop and sending the email while the signal is
+          still early enough to matter.
         </p>
         <p className="text-gray-400 text-sm leading-relaxed pt-1">
           The four other sentences live on the{" "}

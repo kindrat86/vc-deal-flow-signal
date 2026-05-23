@@ -234,7 +234,7 @@ export default function DistributionPage() {
             trying to do.
           </p>
           <p className="text-gray-300 text-base leading-relaxed">
-            First — <a href="#hiding" className="text-emerald-400 hover:text-emerald-300 underline decoration-dotted">where they&rsquo;re hiding</a>: the literal 10 forums, 10 substacks, and 10 GitHub orgs the developer-investor reads. Then: the eight surface groups we mirror to so we show up on each of them.
+            First — <a href="#hiding" className="text-emerald-400 hover:text-emerald-300 underline decoration-dotted">where the right attention already lives</a>: the forums, substacks, and GitHub orgs where this kind of signal gets noticed first. Then: the eight surface groups we mirror to so we show up wherever serious readers already are.
           </p>
           <p className="text-gray-300 text-base leading-relaxed">
             If you&rsquo;re building a portfolio agent, every machine-readable
@@ -262,24 +262,18 @@ export default function DistributionPage() {
 
         <section
           id="hiding"
-          aria-label="Where the developer-investor is hiding"
+          aria-label="Where the right attention already lives"
           className="rounded-xl border border-emerald-700/40 bg-gradient-to-br from-emerald-950/30 via-slate-900 to-slate-950 p-6 sm:p-8 space-y-6 scroll-mt-20"
         >
           <div className="space-y-3">
             <p className="text-emerald-300 text-xs font-semibold uppercase tracking-wider">
-              The secret formula · Step 2: where are they hiding
+              The secret formula · Step 2: where the right attention already lives
             </p>
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug">
-              Where the developer-investor is hiding.
+              Where the right attention already lives.
             </h2>
             <p className="text-gray-300 text-base leading-relaxed">
-              Start by naming the dream customer, then ask <em>where they
-              congregate</em>. Our dream customer is the developer-investor —
-              someone writing €5k–€50k checks who reads commit logs for fun.
-              Below is the literal map: the 10 forums they browse, the 10
-              substacks they read, and the 10 GitHub orgs they watch. Every
-              surface group further down the page is a mirror we&rsquo;ve
-              built to show up wherever they already are.
+              Start by naming the problem, then ask where people who care about that problem already pay attention. Below is the literal map: forums, substacks, and GitHub orgs where earlier signal, technical momentum, and startup timing already get discussed. Every surface group further down the page is a mirror we built to show up there naturally.
             </p>
           </div>
 

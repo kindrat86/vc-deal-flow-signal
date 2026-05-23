@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     title:
       "Community Signal — communities ranked by deal-flow yield, indexed by type",
     description:
-      "Ten community types, each a ranked roster of the rooms where developer-investors and stealth-stage builders first show up.",
+      "Ten community types, each a ranked roster of the rooms where early startup signal gets noticed first.",
     url: `${SITE}/community-signal`,
     type: "article",
   },

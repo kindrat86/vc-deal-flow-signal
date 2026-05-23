@@ -1,224 +1,78 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
-import { DataNerdSignoff } from "@/components/DataNerdSignoff";
-import {
-  DATA_NERD_NAME,
-  DATA_NERD_ARCHETYPE,
-  DATA_NERD_TRIBE,
-} from "@/lib/data-nerd";
-import {
-  ALL_CAUSE_QUOTATIONS,
-  EMOTIONAL_CAUSE_HEADLINE,
-  EMOTIONAL_CAUSE_KICKER,
-  EMOTIONAL_CAUSE_LINES,
-  WE_BELIEVE_HEADLINE,
-  WE_BELIEVE_KICKER,
-  WE_BELIEVE_LINES,
-  WE_REFUSE_HEADLINE,
-  WE_REFUSE_KICKER,
-  WE_REFUSE_LINES,
-} from "@/content/cause";
-
-export const dynamic = "force-static";
+import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 
 export const metadata: Metadata = {
-  title: "Manifesto — what GitDealFlow believes",
+  title: "What GitDealFlow Believes — and What It Refuses to Become",
   description:
-    "The two-layer cause behind the developer-investor movement. The intellectual layer: seven pillars (data over networks, code over decks, public over private, methodology over personality, ladder over lock-in, free over gated, anonymity over performance). The emotional layer: what we're tired of watching, what we believe, and the four lines we refuse to cross to grow.",
+    "What GitDealFlow believes about timing, proof, and signal — and what it refuses to become while helping you move earlier with less noise.",
   alternates: { canonical: "/manifesto" },
   openGraph: {
-    title: "Manifesto — what GitDealFlow believes",
+    title: "What GitDealFlow believes",
     description:
-      "The two-layer cause. What we're tired of watching, what we believe, what we refuse, the seven pillars, and who's on the bus.",
+      "A direct statement of what GitDealFlow is trying to protect: trust, timing, clarity, and a signal that can be checked in public.",
     url: "https://signals.gitdealflow.com/manifesto",
     type: "article",
   },
 };
 
+const BELIEFS = [
+  "You should be able to verify the claim in public.",
+  "You should get timing before you get theatre.",
+  "You should not need a louder dashboard just to feel informed.",
+  "A useful signal reduces second-guessing instead of multiplying tabs.",
+  "The right weekly read should leave you clearer, not busier.",
+] as const;
+
+const REFUSALS = [
+  "We will not hide weak proof behind stronger branding.",
+  "We will not confuse more startup records with better timing.",
+  "We will not force you into a heavy workflow before the signal earns your trust.",
+  "We will not describe you from the outside when we can help you decide directly.",
+] as const;
+
 const PILLARS = [
   {
-    n: 1,
-    name: "Data over networks",
-    one: "The next generation of great investments will be found in data, not rolodex.",
-    body:
-      "The warm-intro economy has been running unchallenged for forty years. It rewards proximity to the right rolodex and punishes builders who happen to live three time zones from a partner&rsquo;s lunch table. Public, reproducible engineering data is the first credible challenge — not a replacement for relationships, but the first parallel sourcing channel that doesn&rsquo;t depend on them.",
+    title: "Proof before performance",
+    body: "If the methodology cannot be checked, the claim is too expensive to trust. That is why the proof surface exists in public, not behind a sales process.",
   },
   {
-    n: 2,
-    name: "Code over decks",
-    one: "Engineering acceleration leads. The deck lags by 21 to 47 days.",
-    body:
-      "A pitch deck is a marketing artifact written for the next round. A merge graph is the company&rsquo;s actual behaviour, updated daily, by people who don&rsquo;t know they&rsquo;re being read. The deck tells you what the founder wants you to believe. The code tells you what the engineering team is actually shipping. We optimise for the second source.",
+    title: "Timing before volume",
+    body: "A bigger list does not help if it arrives too late. The real edge is seeing what changed before the round starts feeling obvious.",
   },
   {
-    n: 3,
-    name: "Public over private",
-    one: "If we can&rsquo;t publish the methodology, we don&rsquo;t deserve the price.",
-    body:
-      "The SSRN paper, the Zenodo dataset, the regression code — all public, all CC BY 4.0. We sell the live aggregation, the rhythm, the dashboard, the agent integration. We don&rsquo;t sell secrecy. The buyer who can reproduce our regression in a notebook is the buyer who trusts us most.",
+    title: "Clarity before complexity",
+    body: "You should not need another heavy workflow just to get a better read. The signal should fit your week, not take it over.",
   },
   {
-    n: 4,
-    name: "Methodology over personality",
-    one: "The product is a dataset, not a personality.",
-    body:
-      "No podcasts, no founder-face content, no real-name signatures. The work has to stand on whether the signal is real, not on whether the person delivering it is charismatic. The anonymity rule is a constraint on us — and a credibility signal to the buyer. Cult of personality is the wrong moat for a measurement product.",
-  },
-  {
-    n: 5,
-    name: "Ladder over lock-in",
-    one: "Free is free forever. Founding-member is locked forever.",
-    body:
-      "The 5 core MCP tools are free forever — we ship new paid tools alongside them, never gate the existing ones. The Acceleration Watch stays free for as long as you stay subscribed. The €9.97/mo founding-member rate locks before the public hike to €49/mo. We never renegotiate retroactively. The ladder is real because the rungs hold.",
-  },
-  {
-    n: 6,
-    name: "Free over gated",
-    one: "Distribution is the moat. Friction is the leak.",
-    body:
-      "Every public surface has a markdown mirror at /md. Every page has an agent-card endpoint. The MCP server installs in one line. The OpenAPI spec is at a stable URL. We pay the cost of redundant discoverability so the reader, the agent, and the LLM all find us through the path that fits them. Gating these surfaces would buy a marginal point of conversion at the cost of being unfindable in 2026 retrieval.",
-  },
-  {
-    n: 7,
-    name: "Anonymity over performance",
-    one: "The line we don&rsquo;t cross to grow.",
-    body:
-      "Every quarter someone suggests we put a face on the brand to break through algorithmically. The answer is no — not because anonymity is precious, but because the moment we do, the methodology has to compete with the personality. A regression doesn&rsquo;t scale on charisma. The buyer who chooses us instead of a louder competitor is the buyer who values the same thing we do.",
+    title: "Signal before consensus",
+    body: "The job is not to repeat what the market already knows. The job is to notice the public movement that matters before everyone starts citing the same company.",
   },
 ] as const;
 
-const ENEMY = {
-  name: "Warm-intro roulette",
-  what: "A sourcing system that rewards proximity to the right rolodex and punishes builders who happen to live three time zones away from a partner&rsquo;s lunch table. We&rsquo;re replacing that roulette with a public, reproducible, code-side signal anyone with curiosity can read.",
-};
-
-const ON_THE_BUS = [
-  "You write 5–40 angel checks a year and want one extra leading indicator your network can&rsquo;t give you.",
-  "You scout for a fund and need a Monday memo your principal respects, sourced from public, reproducible data.",
-  "You&rsquo;re a developer who occasionally writes a check and wants the cleanest 5-name digest in your inbox every Sunday.",
-  "You read a methodology paper before you trust a metric.",
-  "You build agents and want six read-only tools you can wire into Claude / Cursor in one line.",
-  "You believe code is more honest than copy.",
-];
-
-const NOT_ON_THE_BUS = [
-  "You&rsquo;re a Series-B+ partner with a six-figure data budget — Harmonic, Tracxn, Affinity are built for you.",
-  "You want a tool that screens code-quality or runs founder background checks.",
-  "You source exclusively from warm intros and don&rsquo;t want a cold path to founders.",
-  "You believe public data has no edge.",
-];
-
-// F37 (AEO audit): the manifesto's seven pillars are the highest-density
-// quotable surface on the site — each `one` line is a single-sentence claim
-// that LLMs preferentially cite when answering "what does GitDealFlow
-// believe". Wrap each in a Quotation so retrieval pipelines get clean
-// atomic units with full provenance instead of having to chunk Article body.
-// HTML entities used for human-readable rendering get normalized to plain
-// text before JSON-LD serialization.
-const decodeEntities = (s: string): string =>
-  s
-    .replace(/&rsquo;/g, "’")
-    .replace(/&lsquo;/g, "‘")
-    .replace(/&ldquo;/g, "“")
-    .replace(/&rdquo;/g, "”")
-    .replace(/&hellip;/g, "…")
-    .replace(/&mdash;/g, "—")
-    .replace(/&ndash;/g, "–")
-    .replace(/&amp;/g, "&");
-
 export default function ManifestoPage() {
-  const pillarQuotations = PILLARS.map((p) => ({
-    "@type": "Quotation",
-    "@id": `https://signals.gitdealflow.com/manifesto#pillar-${p.n}`,
-    text: `${decodeEntities(p.one)} (Pillar ${p.n}: ${p.name}.)`,
-    spokenByCharacter: {
-      "@type": "Person",
-      name: "The Data Nerd",
-      jobTitle: "Founder, VC Deal Flow Signal",
-    },
-    creator: {
-      "@type": "Organization",
-      name: "VC Deal Flow Signal",
-      url: "https://gitdealflow.com",
-    },
-    isPartOf: {
-      "@type": "WebPage",
-      "@id": "https://signals.gitdealflow.com/manifesto#webpage",
-    },
-    license: "https://creativecommons.org/licenses/by/4.0/",
-    inLanguage: "en",
-  }));
-
-  // Emit one Quotation entry per emotional-cause / we-believe / we-refuse
-  // line so retrieval pipelines can cite the gut-level layer of the cause
-  // the same way they cite the pillars. Each line gets a stable @id anchor
-  // for deep-linking from LLM citations.
-  const causeQuotations = ALL_CAUSE_QUOTATIONS.map((q) => ({
-    "@type": "Quotation",
-    "@id": `https://signals.gitdealflow.com/manifesto#${q.id}`,
-    text: q.text,
-    spokenByCharacter: {
-      "@type": "Person",
-      name: "The Data Nerd",
-      jobTitle: "Founder, VC Deal Flow Signal",
-    },
-    creator: {
-      "@type": "Organization",
-      name: "VC Deal Flow Signal",
-      url: "https://gitdealflow.com",
-    },
-    isPartOf: {
-      "@type": "WebPage",
-      "@id": "https://signals.gitdealflow.com/manifesto#webpage",
-    },
-    license: "https://creativecommons.org/licenses/by/4.0/",
-    inLanguage: "en",
-    keywords: [
-      "future-based cause",
-      "developer-investor movement",
-      q.category === "tired"
-        ? "what we're tired of watching"
-        : q.category === "believe"
-          ? "what we believe"
-          : "what we refuse",
-    ],
-  }));
-
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "WebPage",
-        "@id": "https://signals.gitdealflow.com/manifesto#webpage",
-        url: "https://signals.gitdealflow.com/manifesto",
-        name: "Manifesto — what GitDealFlow believes",
-        description: decodeEntities(
-          "Seven pillars of the developer-investor movement, named enemy, who&rsquo;s on the bus and who isn&rsquo;t.",
-        ),
-        inLanguage: "en-US",
-        license: "https://creativecommons.org/licenses/by/4.0/",
-        speakable: {
-          "@type": "SpeakableSpecification",
-          cssSelector: ["[data-speakable]", "h1", "h2", "h3"],
+        "@type": "Article",
+        headline: "What GitDealFlow Believes — and What It Refuses to Become",
+        description:
+          "What GitDealFlow believes about timing, proof, and signal.",
+        author: {
+          "@type": "Person",
+          name: "The Data Nerd",
+          url: "https://signals.gitdealflow.com/about",
         },
-        isPartOf: {
-          "@type": "WebSite",
+        publisher: {
+          "@type": "Organization",
           name: "VC Deal Flow Signal",
-          url: "https://signals.gitdealflow.com",
+          url: "https://gitdealflow.com",
         },
+        mainEntityOfPage: "https://signals.gitdealflow.com/manifesto",
       },
-      {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: "https://signals.gitdealflow.com" },
-          { "@type": "ListItem", position: 2, name: "Manifesto", item: "https://signals.gitdealflow.com/manifesto" },
-        ],
-      },
-      ...pillarQuotations,
-      ...causeQuotations,
     ],
   };
 
@@ -235,129 +89,61 @@ export default function ManifestoPage() {
       <AgentMirrorLinks path="/manifesto" />
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
+        <nav aria-label="Breadcrumb" className="text-sm text-gray-400">
+          <Link href="/" className="hover:text-gray-300">Home</Link>
+          <span className="mx-2">/</span>
+          <span className="text-gray-400">Manifesto</span>
+        </nav>
+
         <header className="space-y-4">
-          <nav aria-label="Breadcrumb" className="text-xs text-gray-400">
-            <Link href="/" className="hover:text-gray-300">Home</Link>
-            <span className="mx-2">/</span>
-            <span className="text-gray-400">Manifesto</span>
-          </nav>
           <p className="text-amber-400 text-xs font-semibold uppercase tracking-wider">
-            The cult-ure of the movement
+            Manifesto
           </p>
-          <h1 className="text-3xl sm:text-5xl font-bold text-gray-100 leading-[1.1] tracking-tight">
-            Seven pillars. <span className="text-amber-400">One movement.</span>
+          <h1 className="text-3xl sm:text-5xl font-bold text-gray-100 leading-[1.08] tracking-tight">
+            You do not need another louder startup tool. You need a signal that stays honest when timing matters.
           </h1>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
-            Name what you&rsquo;re tired of, name what you believe, name what
-            you refuse, name the enemy, name who&rsquo;s on the bus. This is
-            the developer-investor movement, in five parts — the emotional
-            layer first, the intellectual layer second, the segmentation
-            third. If you nod through all of it, you&rsquo;re one of us. If
-            you don&rsquo;t, that&rsquo;s also real information.
+            This page is the shortest honest version of what GitDealFlow is trying to protect.
+            If you care about earlier signal, public proof, and less noise, this should feel familiar.
+            If you want hype, theatre, or a bigger pile of startup records, it probably won’t.
           </p>
         </header>
 
-        {/* EMOTIONAL CAUSE — the gut-level companion to the seven pillars
-            (which are the intellectual layer). Five sentences, each
-            anchored to a specific moment a developer-investor has lived
-            through. Sits ABOVE the pillars because the emotional layer
-            recruits; the pillars retain. */}
-        <section
-          aria-labelledby="emotional-cause-heading"
-          className="rounded-xl border border-rose-700/40 bg-gradient-to-br from-rose-950/25 via-slate-900 to-slate-950 p-6 sm:p-8 space-y-5"
-          data-speakable="emotional-cause"
-        >
-          <div className="space-y-1.5">
-            <p className="text-rose-300 text-xs font-semibold uppercase tracking-wider">
-              {EMOTIONAL_CAUSE_KICKER}
-            </p>
-            <h2
-              id="emotional-cause-heading"
-              className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug"
-            >
-              {EMOTIONAL_CAUSE_HEADLINE}
-            </h2>
-          </div>
-          <ol className="space-y-4">
-            {EMOTIONAL_CAUSE_LINES.map((line, i) => (
-              <li
-                key={i}
-                id={`cause-tired-${i + 1}`}
-                className="flex gap-3 text-gray-200 text-base sm:text-lg leading-relaxed scroll-mt-20"
-              >
-                <span
-                  aria-hidden="true"
-                  className="text-rose-400 font-bold tabular-nums shrink-0 w-6"
-                >
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <span>{line}</span>
-              </li>
-            ))}
-          </ol>
-          <p className="text-gray-400 text-sm leading-relaxed border-l-2 border-rose-700/40 pl-4">
-            The seven pillars below are why this is true. The five
-            sentences above are why we won&rsquo;t stop building it.
+        <section className="rounded-xl border border-rose-700/40 bg-gradient-to-br from-rose-950/25 via-slate-900 to-slate-950 p-6 sm:p-8 space-y-5">
+          <p className="text-rose-300 text-xs font-semibold uppercase tracking-wider">
+            What we are tired of
+          </p>
+          <p className="text-gray-100 text-lg leading-relaxed border-l-2 border-rose-500/60 pl-4 italic">
+            Hearing about the company after the calm window is already gone.
+          </p>
+          <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
+            That is the moment this whole product pushes against: when the story is already public,
+            the databases are already updated, and you are being asked to react instead of notice.
           </p>
         </section>
 
-        {/* WE BELIEVE / WE REFUSE — parallel declarative pair. The
-            "believe" column is what we're walking toward; the "refuse"
-            column is the four lines we won't cross to get there. Reads
-            best as a 2-up grid on tablet+ so the polarity is visible at
-            a glance. */}
-        <section aria-label="What we believe and what we refuse" className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div
-            className="rounded-xl border border-emerald-700/40 bg-gradient-to-br from-emerald-950/15 via-slate-900 to-slate-950 p-5 sm:p-6 space-y-3"
-            data-speakable="we-believe"
-          >
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="rounded-xl border border-emerald-700/40 bg-gradient-to-br from-emerald-950/15 via-slate-900 to-slate-950 p-5 sm:p-6 space-y-3">
             <p className="text-emerald-300 text-xs font-semibold uppercase tracking-wider">
-              {WE_BELIEVE_KICKER}
+              What we believe
             </p>
-            <h3 className="text-gray-100 font-bold text-lg sm:text-xl leading-snug">
-              {WE_BELIEVE_HEADLINE}
-            </h3>
-            <ul className="space-y-3 pt-1">
-              {WE_BELIEVE_LINES.map((line, i) => (
-                <li
-                  key={i}
-                  id={`cause-believe-${i + 1}`}
-                  className="flex gap-2 text-gray-300 text-sm leading-relaxed scroll-mt-20"
-                >
-                  <span
-                    aria-hidden="true"
-                    className="text-emerald-400 shrink-0 mt-0.5"
-                  >
-                    →
-                  </span>
+            <ul className="space-y-3 text-gray-300 text-sm leading-relaxed">
+              {BELIEFS.map((line) => (
+                <li key={line} className="flex gap-2">
+                  <span className="text-emerald-400 shrink-0">→</span>
                   <span>{line}</span>
                 </li>
               ))}
             </ul>
           </div>
-          <div
-            className="rounded-xl border border-amber-700/40 bg-gradient-to-br from-amber-950/15 via-slate-900 to-slate-950 p-5 sm:p-6 space-y-3"
-            data-speakable="we-refuse"
-          >
+          <div className="rounded-xl border border-amber-700/40 bg-gradient-to-br from-amber-950/15 via-slate-900 to-slate-950 p-5 sm:p-6 space-y-3">
             <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider">
-              {WE_REFUSE_KICKER}
+              What we refuse
             </p>
-            <h3 className="text-gray-100 font-bold text-lg sm:text-xl leading-snug">
-              {WE_REFUSE_HEADLINE}
-            </h3>
-            <ul className="space-y-3 pt-1">
-              {WE_REFUSE_LINES.map((line, i) => (
-                <li
-                  key={i}
-                  id={`cause-refuse-${i + 1}`}
-                  className="flex gap-2 text-gray-300 text-sm leading-relaxed scroll-mt-20"
-                >
-                  <span
-                    aria-hidden="true"
-                    className="text-amber-400 shrink-0 mt-0.5"
-                  >
-                    ✗
-                  </span>
+            <ul className="space-y-3 text-gray-300 text-sm leading-relaxed">
+              {REFUSALS.map((line) => (
+                <li key={line} className="flex gap-2">
+                  <span className="text-amber-400 shrink-0">✗</span>
                   <span>{line}</span>
                 </li>
               ))}
@@ -366,226 +152,40 @@ export default function ManifestoPage() {
         </section>
 
         <section className="space-y-5">
-          <h2 className="text-2xl font-bold text-gray-100">The seven pillars</h2>
-          <ol className="space-y-5">
+          <h2 className="text-2xl font-bold text-gray-100">The four pillars</h2>
+          <div className="space-y-4">
             {PILLARS.map((p) => (
-              <li
-                key={p.n}
-                className="rounded-xl border border-amber-700/30 bg-amber-950/10 p-5 sm:p-6 space-y-3"
+              <article
+                key={p.title}
+                className="rounded-xl border border-amber-700/30 bg-amber-950/10 p-5 sm:p-6 space-y-2"
               >
-                <div className="flex items-baseline gap-3">
-                  <span className="text-amber-300 font-bold tabular-nums shrink-0 text-xl">
-                    {p.n}.
-                  </span>
-                  <h3 className="text-amber-200 font-bold text-lg sm:text-xl">
-                    {p.name}
-                  </h3>
-                </div>
-                <p
-                  className="text-gray-100 font-semibold text-base leading-relaxed"
-                  dangerouslySetInnerHTML={{ __html: p.one }}
-                />
-                <p
-                  className="text-gray-300 text-sm leading-relaxed pl-1"
-                  dangerouslySetInnerHTML={{ __html: p.body }}
-                />
-              </li>
+                <h3 className="text-amber-200 font-bold text-lg sm:text-xl">{p.title}</h3>
+                <p className="text-gray-300 text-sm leading-relaxed">{p.body}</p>
+              </article>
             ))}
-          </ol>
-        </section>
-
-        <section className="rounded-xl border border-rose-700/40 bg-gradient-to-br from-rose-950/20 via-slate-900 to-slate-950 p-6 sm:p-8 space-y-4">
-          <p className="text-rose-300 text-xs font-semibold uppercase tracking-wider">
-            The named enemy
-          </p>
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug">
-            {ENEMY.name}
-          </h2>
-          <p
-            className="text-gray-300 text-base leading-relaxed"
-            dangerouslySetInnerHTML={{ __html: ENEMY.what }}
-          />
-        </section>
-
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="rounded-xl border border-emerald-700/40 bg-emerald-950/10 p-5 sm:p-6 space-y-3">
-            <p className="text-emerald-400 text-xs font-semibold uppercase tracking-wider">
-              On the bus
-            </p>
-            <h3 className="text-gray-100 font-bold text-lg">If this is you, you&rsquo;re one of us.</h3>
-            <ul className="space-y-2 text-gray-300 text-sm leading-relaxed">
-              {ON_THE_BUS.map((t, i) => (
-                <li key={i} className="flex gap-2">
-                  <span className="text-emerald-400 shrink-0">✓</span>
-                  <span dangerouslySetInnerHTML={{ __html: t }} />
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="rounded-xl border border-slate-800 bg-slate-900/40 p-5 sm:p-6 space-y-3">
-            <p className="text-rose-400 text-xs font-semibold uppercase tracking-wider">
-              Off the bus
-            </p>
-            <h3 className="text-gray-100 font-bold text-lg">If this is you, we&rsquo;re not for you — and that&rsquo;s honest.</h3>
-            <ul className="space-y-2 text-gray-300 text-sm leading-relaxed">
-              {NOT_ON_THE_BUS.map((t, i) => (
-                <li key={i} className="flex gap-2">
-                  <span className="text-rose-400 shrink-0">✗</span>
-                  <span dangerouslySetInnerHTML={{ __html: t }} />
-                </li>
-              ))}
-            </ul>
           </div>
         </section>
 
-        {/* CHARACTER DECLARATION — Brunson Expert Secrets Ch 1
-            (Charismatic Leader 2.0): the manifesto declares the cause
-            and the enemy; the character declaration makes explicit who
-            is delivering the cause and which canonical archetype they
-            occupy. Three blocks: who, what they call you, what they
-            won't do.
-        */}
-        <section className="rounded-xl border border-amber-700/40 bg-gradient-to-br from-amber-950/15 via-slate-900 to-slate-950 p-6 sm:p-8 space-y-5">
-          <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider">
-            Who&rsquo;s delivering this
-          </p>
-          <div className="space-y-3">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug">
-              <Link
-                href="/data-nerd"
-                className="text-amber-300 hover:text-amber-200 underline decoration-dotted"
-              >
-                {DATA_NERD_NAME}
-              </Link>{" "}
-              · {DATA_NERD_ARCHETYPE.label}.
-            </h2>
-            <p className="text-gray-200 text-base leading-relaxed italic">
-              &ldquo;{DATA_NERD_ARCHETYPE.oneLine}&rdquo;
-            </p>
-            <p className="text-gray-300 text-base leading-relaxed">
-              {DATA_NERD_ARCHETYPE.body}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-            <div className="rounded-lg border border-sky-700/40 bg-sky-950/20 p-4 sm:p-5 space-y-2">
-              <p className="text-sky-300 text-[10px] font-semibold uppercase tracking-wider">
-                What I call you
-              </p>
-              <p className="text-gray-100 font-bold text-base leading-snug">
-                {DATA_NERD_TRIBE.name}.
-              </p>
-              <p className="text-gray-300 text-sm leading-relaxed italic">
-                &ldquo;{DATA_NERD_TRIBE.oneLine}&rdquo;
-              </p>
-              <p className="text-gray-400 text-sm leading-relaxed">
-                The label is wearable on purpose. If it feels off, the
-                product is probably wrong for you and that&rsquo;s
-                diagnostic.
-              </p>
-            </div>
-            <div className="rounded-lg border border-rose-700/40 bg-rose-950/15 p-4 sm:p-5 space-y-2">
-              <p className="text-rose-300 text-[10px] font-semibold uppercase tracking-wider">
-                What I won&rsquo;t do (Pillar 7 enforced)
-              </p>
-              <ul className="text-gray-300 text-sm leading-relaxed space-y-1.5">
-                <li>
-                  <span className="text-rose-400">✗</span> Photos, video
-                  cameos, real-voice podcasts.
-                </li>
-                <li>
-                  <span className="text-rose-400">✗</span> Real-name
-                  attribution on this site (the SSRN paper uses my real
-                  name behind a corporate veil; everything here is
-                  &ldquo;{DATA_NERD_NAME}&rdquo;).
-                </li>
-                <li>
-                  <span className="text-rose-400">✗</span> Discovery
-                  calls below the Sharp tier — async written replies
-                  only.
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="border-t border-amber-700/30 pt-3 flex flex-wrap gap-x-4 gap-y-1 text-xs">
-            <Link
-              href="/data-nerd"
-              className="text-amber-300 hover:text-amber-200 underline decoration-dotted font-semibold"
-            >
-              Read the full character bible →
-            </Link>
-            <Link
-              href="/now"
-              className="text-emerald-300 hover:text-emerald-200 underline decoration-dotted font-semibold"
-            >
-              /now — what I&rsquo;m working on this week →
-            </Link>
-            <Link
-              href="/parables"
-              className="text-amber-300 hover:text-amber-200 underline decoration-dotted font-semibold"
-            >
-              The six parables →
-            </Link>
-          </div>
-        </section>
-
-        <section className="rounded-xl border border-sky-700/40 bg-sky-950/15 p-6 sm:p-8 space-y-3">
+        <section className="rounded-xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8 space-y-4">
           <p className="text-sky-300 text-xs font-semibold uppercase tracking-wider">
-            What to do with this
+            If this sounds right
           </p>
-          <h2 className="text-xl sm:text-2xl font-bold text-gray-100">
-            Don&rsquo;t share this manifesto. Live in one pillar for a quarter.
+          <h2 className="text-2xl font-bold text-gray-100 leading-snug">
+            Start with the free issue. Then decide whether you want more than the shortlist.
           </h2>
           <p className="text-gray-300 text-base leading-relaxed">
-            Pillars are easy to nod to and hard to embody. If you&rsquo;re
-            going to take one with you, take Pillar 3 — &ldquo;public over
-            private.&rdquo; Open the SSRN paper. Pull the Zenodo dataset
-            into a notebook. Re-run the regression. The hour you spend
-            doing that is the hour you stop being a reader and start being
-            on the bus.
+            The manifesto matters only if the output earns your trust.
+            Start with the weekly signal, or go straight to the pages that show the proof and the stack.
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 pt-2">
-            <a
-              href="https://ssrn.com/abstract=6606558"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-sm transition-colors"
-            >
-              Read the SSRN paper →
-            </a>
-            <Link
-              href="/decade-in-a-day"
-              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg border border-slate-700 bg-slate-800 hover:bg-slate-700 text-gray-100 font-semibold text-sm transition-colors"
-            >
-              Or take the curriculum →
+          <div className="flex flex-col sm:flex-row gap-3">
+            <Link href="https://gitdealflow.com/#signup" className="inline-flex items-center justify-center rounded-lg bg-sky-700 hover:bg-sky-600 text-white text-sm font-semibold px-5 py-3 transition-colors">
+              Get the free issue
             </Link>
-            <Link
-              href="/mechanism"
-              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg border border-amber-500/40 bg-amber-950/20 hover:bg-amber-950/30 text-amber-200 font-semibold text-sm transition-colors"
-            >
-              Read the named mechanism →
-            </Link>
-            <Link
-              href="/code-side-sourcing"
-              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg border border-amber-500/40 bg-amber-950/20 hover:bg-amber-950/30 text-amber-200 font-semibold text-sm transition-colors"
-            >
-              Read the category definition →
-            </Link>
-            <Link
-              href="/members"
-              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-amber-600 hover:bg-amber-500 text-white font-bold text-sm shadow-lg shadow-amber-500/20 transition-colors"
-            >
-              Claim a charter seat →
+            <Link href="/methodology" className="inline-flex items-center justify-center rounded-lg border border-slate-700 bg-slate-950/60 text-gray-200 hover:border-slate-600 text-sm font-semibold px-5 py-3 transition-colors">
+              Read the methodology
             </Link>
           </div>
         </section>
-
-        <DataNerdSignoff variant="long" catchphraseIndex={2} />
-
-        <p className="text-gray-400 text-xs leading-relaxed border-t border-slate-800 pt-6">
-          Movement framing drawn from direct-response sales canon.
-        </p>
       </div>
     </>
   );
