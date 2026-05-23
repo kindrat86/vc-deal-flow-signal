@@ -19,9 +19,9 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title:
-    "The Commit-Velocity Acceleration Engine — Named Mechanism for VC Deal Sourcing",
+    "How the Signal Works — The Commit-Velocity Acceleration Engine",
   description:
-    "A reproducible, public-data mechanism for surfacing venture-backed startups 21–47 days before fundraise. Five deterministic steps: 14-day commit velocity, two-period confirmation, Gini-weighted contributor concentration, signal classification. Published formula. 219-startup proof panel. CC BY 4.0.",
+    "How the signal works: a reproducible public-data method for spotting startup momentum earlier, with the formula, the proof, and the checks that keep it honest.",
   alternates: { canonical: "/mechanism" },
   openGraph: {
     title:

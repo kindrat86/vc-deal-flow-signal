@@ -8,9 +8,9 @@ import { getHreflangLanguages } from "@/lib/hreflang";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "A Decade in a Day — the developer-investor curriculum",
+  title: "A Decade in a Day — Twelve Lessons on Earlier Signal and Better Timing",
   description:
-    "Ten years of developer-investor education compressed into one Saturday. Twelve modules: identity, methodology, dream customer, funnel architecture, signal lens, ascension, traffic, agent-side distribution, ethics, scale.",
+    "Twelve lessons on timing, proof, workflow, and signal — compressed into one day for anyone who wants a clearer way to notice startup momentum earlier.",
   alternates: { canonical: "/decade-in-a-day" },
   openGraph: {
     title: "A Decade in a Day — the developer-investor curriculum",

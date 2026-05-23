@@ -10,14 +10,14 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title:
-    "Origin — the founder backstory behind VC Deal Flow Signal",
+    "Origin — Why Hearing About the Company Late Became the Problem",
   description:
-    "Why a developer who also writes angel checks decided that warm-intro deal flow was a structurally broken vehicle, and what replaced it. The full origin arc — identity shift, three false beliefs collapsed, the new vehicle.",
+    "Why hearing about the company late became the real problem, and why public engineering movement became the earlier signal worth watching.",
   alternates: { canonical: "/origin" },
   openGraph: {
-    title: "Origin — VC Deal Flow Signal",
+    title: "Origin — Why the signal exists",
     description:
-      "From warm-intro investor to GitHub-momentum investor, three false beliefs collapsed.",
+      "Why hearing about the company late became the problem, and what changed after that.",
     url: "https://signals.gitdealflow.com/origin",
     type: "article",
   },
@@ -30,9 +30,9 @@ export default function OriginPage() {
       {
         "@type": "Article",
         "@id": "https://signals.gitdealflow.com/origin#article",
-        headline: "Origin — the founder backstory behind VC Deal Flow Signal",
+        headline: "Origin — why hearing about the company late became the problem",
         description:
-          "Why a developer who also writes angel checks decided that warm-intro deal flow was a structurally broken vehicle, and what replaced it.",
+          "Why hearing about the company late became the real problem, and why public engineering movement became the earlier signal worth watching.",
         url: "https://signals.gitdealflow.com/origin",
         datePublished: "2026-05-05T00:00:00.000Z",
         dateModified: "2026-05-05T00:00:00.000Z",
@@ -107,22 +107,16 @@ export default function OriginPage() {
 
         <header className="space-y-4">
           <p className="text-sky-400 text-xs font-medium uppercase tracking-wider">
-            Origin · Hero&rsquo;s Two Journeys · 8-minute read
+            Origin · 8-minute read
           </p>
           <h1
             className="text-3xl sm:text-5xl font-bold text-gray-100 leading-[1.05] tracking-tight"
             data-speakable
           >
-            I used to think deal flow was a network problem.{" "}
-            <span className="text-sky-400">
-              Then I watched a $4M Series A I should have been in.
-            </span>
+            You do not need a bigger network if the real problem is that the signal reached you too late.
           </h1>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed" data-speakable>
-            This is the long version — the identity-shift story where you took
-            the wrong road first, three false beliefs broke one by one, and the
-            new road became the only road that made sense. Read it if you want
-            to know why I built this. Skip it if you just want the data.
+            This is the long version of why the signal exists. The old assumption was that better deals came from better introductions. The harder lesson was that public movement was already there earlier — it just wasn’t being read clearly enough to use.
           </p>
           <DataNerdAudio
             slug="origin"
