@@ -17,6 +17,19 @@ const SITE_ORIGIN = "https://signals.gitdealflow.com";
 // stranger is dropped silently (better than 400-ing a paying buyer).
 const VARIANT_RX = /^[a-zA-Z0-9_.-]{1,32}$/;
 
+function corsHeaders(origin: string | null): HeadersInit {
+  const allowed = [
+    "https://gitdealflow.com",
+    "https://www.gitdealflow.com",
+    ...(process.env.NODE_ENV !== "production" ? ["http://localhost:8080"] : []),
+  ];
+  return {
+    "Access-Control-Allow-Origin": origin && allowed.includes(origin) ? origin : "",
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type, Accept",
+  };
+}
+
 function isEntryTier(value: string): value is EntryTierKey {
   return Object.prototype.hasOwnProperty.call(ENTRY_TIERS, value);
 }
@@ -29,6 +42,7 @@ type CheckoutInput = {
   tier: string | null;
   bump: string | null;
   variant: string | null;
+  email: string | null;
 };
 
 async function readInput(req: NextRequest): Promise<CheckoutInput> {
@@ -39,14 +53,16 @@ async function readInput(req: NextRequest): Promise<CheckoutInput> {
         tier?: unknown;
         bump?: unknown;
         variant?: unknown;
+        email?: unknown;
       };
       return {
         tier: typeof body.tier === "string" ? body.tier : null,
         bump: typeof body.bump === "string" ? body.bump : null,
         variant: typeof body.variant === "string" ? body.variant : null,
+        email: typeof body.email === "string" ? body.email : null,
       };
     } catch {
-      return { tier: null, bump: null, variant: null };
+      return { tier: null, bump: null, variant: null, email: null };
     }
   }
   if (
@@ -57,10 +73,12 @@ async function readInput(req: NextRequest): Promise<CheckoutInput> {
     const tier = fd.get("tier");
     const bump = fd.get("bump");
     const variant = fd.get("variant");
+    const email = fd.get("email");
     return {
       tier: typeof tier === "string" ? tier : null,
       bump: typeof bump === "string" && bump !== "" ? bump : null,
       variant: typeof variant === "string" && variant !== "" ? variant : null,
+      email: typeof email === "string" && email !== "" ? email : null,
     };
   }
   const sp = req.nextUrl.searchParams;
@@ -68,13 +86,15 @@ async function readInput(req: NextRequest): Promise<CheckoutInput> {
     tier: sp.get("tier"),
     bump: sp.get("bump"),
     variant: sp.get("variant"),
+    email: sp.get("email"),
   };
 }
 
 export async function POST(req: NextRequest) {
-  const { tier, bump: rawBump, variant: rawVariant } = await readInput(req);
+  const { tier, bump: rawBump, variant: rawVariant, email } = await readInput(req);
+  const headers = corsHeaders(req.headers.get("origin"));
   if (!tier || !isEntryTier(tier)) {
-    return NextResponse.json({ error: "invalid_tier" }, { status: 400 });
+    return NextResponse.json({ error: "invalid_tier" }, { status: 400, headers });
   }
 
   // Bump is optional. Unknown values are dropped silently rather than
@@ -104,6 +124,7 @@ export async function POST(req: NextRequest) {
     price_data: {
       currency: cfg.currency,
       unit_amount: cfg.unitAmount,
+      ...(cfg.mode === "subscription" ? { recurring: { interval: cfg.interval! } } : {}),
       product_data: {
         name: cfg.productName,
         ...(cfg.description ? { description: cfg.description } : {}),
@@ -139,38 +160,53 @@ export async function POST(req: NextRequest) {
 
   let session: Stripe.Checkout.Session;
   try {
-    session = await stripe.checkout.sessions.create({
-      mode: "payment",
-      customer_creation: "always",
+    const sessionParams: Stripe.Checkout.SessionCreateParams = {
+      mode: cfg.mode,
       payment_method_types: ["card"],
       line_items: lineItems,
-      payment_intent_data: {
+      success_url: `${origin}${cfg.successUrl}`,
+      cancel_url: `${origin}${cfg.cancelUrl}`,
+      metadata,
+      allow_promotion_codes: true,
+      ...(email ? { customer_email: email } : {}),
+    };
+
+    if (cfg.mode === "payment") {
+      sessionParams.customer_creation = "always";
+      sessionParams.payment_intent_data = {
         // Save the card on the customer for one-click OTO charges on the
         // thank-you page (Brunson cart funnel — Secret 18 / DotCom Ch 12).
         // Without this the OTO has to re-collect card details.
         setup_future_usage: "off_session",
         metadata,
-      },
-      success_url: `${origin}${cfg.successUrl}`,
-      cancel_url: `${origin}${cfg.cancelUrl}`,
-      metadata,
-      allow_promotion_codes: true,
-    });
+      };
+    } else {
+      sessionParams.subscription_data = { metadata };
+    }
+
+    session = await stripe.checkout.sessions.create(sessionParams);
   } catch (err) {
     console.error("checkout.session.create failed", { tier, bump, err });
-    return NextResponse.json({ error: "stripe_error" }, { status: 502 });
+    return NextResponse.json({ error: "stripe_error" }, { status: 502, headers });
   }
 
   if (!session.url) {
     console.error("checkout.session.create returned no url", { tier, sessionId: session.id });
-    return NextResponse.json({ error: "no_session_url" }, { status: 500 });
+    return NextResponse.json({ error: "no_session_url" }, { status: 500, headers });
   }
 
   // A regular <form method=POST> submit needs a 303 to turn into a GET on
   // Stripe; fetch() callers asking for JSON get the URL instead.
   const accept = req.headers.get("accept") ?? "";
   if (accept.includes("application/json")) {
-    return NextResponse.json({ url: session.url, id: session.id });
+    return NextResponse.json({ url: session.url, id: session.id }, { headers });
   }
   return NextResponse.redirect(session.url, 303);
+}
+
+export async function OPTIONS(req: NextRequest) {
+  return new NextResponse(null, {
+    status: 204,
+    headers: corsHeaders(req.headers.get("origin")),
+  });
 }

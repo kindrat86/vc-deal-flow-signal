@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>One click left — GitDealFlow</title>
+  <meta name="description" content="Confirm your email and keep the Sunday issue moving.">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="bg-dark-900 text-gray-100 font-sans antialiased">
+  <header class="sticky top-0 z-50 border-b border-gray-800 bg-dark-900/95 backdrop-blur">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-4">
+      <a href="/" class="font-semibold tracking-tight text-white text-lg">GitDealFlow</a>
+      <a href="/" class="text-sm text-gray-400 hover:text-gray-100 transition">Back to home</a>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-6 py-16 sm:py-24">
+    <section class="max-w-3xl mx-auto text-center mb-12">
+      <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-3">One click left</p>
+      <h1 id="hero-title" class="text-4xl sm:text-5xl font-bold tracking-tight mb-6">You're in. Now confirm it.</h1>
+      <p id="hero-copy" class="text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto">Check your inbox and click the confirmation link. The next Sunday issue unlocks on the other side of that click.</p>
+    </section>
+
+    <section class="grid lg:grid-cols-[1.2fr_0.8fr] gap-8 items-start max-w-4xl mx-auto">
+      <div class="rounded-3xl border border-gray-800 bg-dark-800/70 p-8 sm:p-10">
+        <p class="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-5">What to do now</p>
+        <div class="space-y-5">
+          <div>
+            <p class="text-white font-semibold mb-1">1. Open the email from The Data Nerd</p>
+            <p class="text-gray-400">If you do not see it in a minute, check Promotions or Spam. The subject tells you your report is ready.</p>
+          </div>
+          <div>
+            <p class="text-white font-semibold mb-1">2. Click the confirmation link</p>
+            <p class="text-gray-400">That confirms the signup and routes you into the right follow-up based on how you said you source deals.</p>
+          </div>
+          <div>
+            <p class="text-white font-semibold mb-1">3. Use the waiting time well</p>
+            <p id="route-guidance" class="text-gray-400">Read one sample issue now. You will know fast whether this belongs in your week.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="rounded-3xl border border-brand-500/30 bg-brand-950/20 p-8">
+        <p class="text-brand-300 text-xs font-semibold uppercase tracking-wider mb-4">While you wait</p>
+        <div class="space-y-4">
+          <a href="/report" class="btn btn-cta btn-md w-full text-center">Read a sample issue</a>
+          <a href="https://signals.gitdealflow.com/methodology" class="btn btn-secondary btn-md w-full text-center">See the methodology</a>
+          <a id="bridge-link" href="/firstlook" class="btn btn-secondary btn-md w-full text-center">I already have a live thesis</a>
+        </div>
+        <p id="route-note" class="text-gray-400 text-sm mt-5 leading-relaxed">If you already know the question you want answered, do not wait for Sunday. Take the smaller paid step now.</p>
+      </div>
+    </section>
+  </main>
+  <script>
+    (function(){
+      const route = (new URLSearchParams(window.location.search).get('route') || 'F').toUpperCase();
+      const config = {
+        F: {
+          title: "You're in. Now confirm it.",
+          copy: "Check your inbox and click the confirmation link. The next Sunday issue unlocks on the other side of that click.",
+          guidance: "Read one sample issue now. You will know fast whether this belongs in your week.",
+          link: "/firstlook",
+          linkText: "I already have a live thesis",
+          note: "If you already know the question you want answered, do not wait for Sunday. Take the smaller paid step now."
+        },
+        T: {
+          title: "You're close. Confirm first, then test one live sector.",
+          copy: "Check your inbox and click the confirmation link. That keeps the free Sunday issue moving and makes the paid path cleaner.",
+          guidance: "You already signaled you want a live answer faster than the weekly issue. First Look is the natural next move once the email is confirmed.",
+          link: "/firstlook",
+          linkText: "Go back to First Look",
+          note: "You do not need to overthink it. Confirm the email, then decide whether one fast sector pass is worth €7."
+        },
+        D: {
+          title: "You're in. Confirm first, then decide if you want the full field.",
+          copy: "Check your inbox and click the confirmation link. That starts the Sunday rhythm and keeps your higher-intent follow-up clean.",
+          guidance: "You told me you want more than five names. Use the sample issue now, then decide whether Dashboard should become your weekly operating layer.",
+          link: "/dashboard",
+          linkText: "Go back to Dashboard",
+          note: "The right question is simple: do you just want five names, or do you want the whole field every week?"
+        },
+        I: {
+          title: "You're in. Confirm first, then decide how close you want to get.",
+          copy: "Check your inbox and click the confirmation link. That keeps the free signal moving while you decide whether you want the smaller room behind it.",
+          guidance: "Use the sample issue and methodology now. Then decide whether you want Dashboard, Insider, or a one-off Sweep.",
+          link: "/insider",
+          linkText: "Go back to Insider",
+          note: "If the pressure is already real, do not browse. Confirm the email, then choose the level of support you actually want."
+        }
+      };
+      const c = config[route] || config.F;
+      document.getElementById('hero-title').textContent = c.title;
+      document.getElementById('hero-copy').textContent = c.copy;
+      document.getElementById('route-guidance').textContent = c.guidance;
+      document.getElementById('bridge-link').href = c.link;
+      document.getElementById('bridge-link').textContent = c.linkText;
+      document.getElementById('route-note').textContent = c.note;
+      if (window.posthog) posthog.capture('signup_thanks_viewed', { route: route });
+    })();
+  </script>
+
+  <footer class="border-t border-gray-800 bg-dark-900/80 py-12 mt-8">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <div class="flex flex-wrap justify-center gap-6 text-gray-500 text-sm mb-4">
+        <a href="/" class="hover:text-gray-300">Home</a>
+        <a href="/report" class="hover:text-gray-300">Sample issue</a>
+        <a href="https://signals.gitdealflow.com/methodology" class="hover:text-gray-300">Methodology</a>
+        <a href="/privacy" class="hover:text-gray-300">Privacy</a>
+        <a href="/terms" class="hover:text-gray-300">Terms</a>
+      </div>
+      <p class="text-gray-600 text-xs">GitDealFlow</p>
+    </div>
+  </footer>
+  <script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split('.');2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement('script')).type='text/javascript',p.async=!0,p.src=s.api_host+'/static/array.js',(r=t.getElementsByTagName('script')[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a='posthog',u.people=u.people||[],u.toString=function(t){var e='posthog';return'posthog'!==a&&(e+='.'+a),t||(e+=' (stub)'),e},u.people.toString=function(){return u.toString(1)+'.people (stub)'},o='init capture register register_once register_for_session unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group setPersonProperties resetPersonProperties setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags'.split(' '),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    (function(){
+      function _init(){ if(/^https?:$/.test(location.protocol)) posthog.init('phc_lyZCgvTpicjLzAO3rY2GhxuX5WUc5jQjP8ZVwwJqauX', {api_host: 'https://eu.i.posthog.com', persistence: 'memory', person_profiles: 'identified_only'}); }
+      if('requestIdleCallback' in window){requestIdleCallback(_init,{timeout:2500});} else {setTimeout(_init,2000);}
+    })();
+  </script>
+</body>
+</html>

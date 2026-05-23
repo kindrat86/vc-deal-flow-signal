@@ -28,6 +28,19 @@ const FROM_NAME = process.env.FROM_NAME || "The Data Nerd";
 const REPORT_URL = process.env.REPORT_URL || "https://gitdealflow.com/report";
 const SITE_URL = process.env.SITE_URL || "https://signals.gitdealflow.com";
 
+
+function confirmedUrl(route: string) {
+  const params = new URLSearchParams();
+  if (route) params.set("route", route);
+  const query = params.toString();
+  return `https://gitdealflow.com/confirmed${query ? `?${query}` : ""}`;
+}
+
+function routeFromQuery(url: URL): string {
+  const rawRoute = (url.searchParams.get("quiz_route") || "").slice(0, 4);
+  return ["F", "T", "D", "I"].includes(rawRoute) ? rawRoute : "";
+}
+
 interface Attribution {
   source: string;
   utm_source: string;
@@ -80,7 +93,7 @@ export async function GET(request: Request) {
     if (await isNonceUsed(VERIFY_NONCE_NAMESPACE, v2.nonce)) {
       // Replay (link-prefetcher rescan, leaked URL replay) — return success
       // redirect but skip every Resend side effect.
-      return NextResponse.redirect(REPORT_URL);
+      return NextResponse.redirect(confirmedUrl(routeFromQuery(url)));
     }
   } else if (!verifyToken(email, token)) {
     return redirectWithError("This verification link is invalid or expired.");
@@ -99,7 +112,7 @@ export async function GET(request: Request) {
   // no PB attribution row, no Resend audience-add, no 8-email queue.
   if (isExcluded(email)) {
     console.log(`[verify] suppressed excluded address: ${email}`);
-    return NextResponse.redirect(REPORT_URL);
+    return NextResponse.redirect(confirmedUrl(routeFromQuery(url)));
   }
 
   // Pull attribution that /api/subscribe piggybacked on the verify URL.
@@ -120,7 +133,7 @@ export async function GET(request: Request) {
 
   if (!RESEND_API_KEY) {
     console.error("RESEND_API_KEY is not configured");
-    return NextResponse.redirect(REPORT_URL);
+    return NextResponse.redirect(confirmedUrl(routeFromQuery(url)));
   }
 
   // 1. Add verified contact to Resend audience, with attribution packed into
@@ -246,7 +259,7 @@ export async function GET(request: Request) {
   if (cohortParam === "launch") {
     return NextResponse.redirect(`${SITE_URL}/launch/agent-credits`);
   }
-  return NextResponse.redirect(REPORT_URL);
+  return NextResponse.redirect(confirmedUrl(route));
 }
 
 function redirectWithError(message: string) {

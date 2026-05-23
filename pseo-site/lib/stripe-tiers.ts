@@ -2,7 +2,7 @@ import "server-only";
 import { stripe } from "@/lib/stripe";
 import type Stripe from "stripe";
 
-export type EntryTierKey = "firstlook";
+export type EntryTierKey = "firstlook" | "dashboard" | "insider" | "sector_sweep";
 
 export type OtoKey =
   | "sector_sweep_oto1"
@@ -24,12 +24,14 @@ export type BumpConfig = {
 };
 
 export type EntryTierConfig = {
+  mode: "payment" | "subscription";
   productName: string;
   unitAmount: number;
   currency: "eur";
   successUrl: string;
   cancelUrl: string;
   description?: string;
+  interval?: "month" | "year";
 };
 
 export type OtoConfig =
@@ -56,13 +58,46 @@ export type OtoConfig =
 
 export const ENTRY_TIERS: Record<EntryTierKey, EntryTierConfig> = {
   firstlook: {
+    mode: "payment",
     productName: "First Look Pass",
     unitAmount: 700,
     currency: "eur",
-    successUrl: "/firstlook/thanks?session_id={CHECKOUT_SESSION_ID}",
+    successUrl: "/firstlook-thanks?session_id={CHECKOUT_SESSION_ID}",
     cancelUrl: "/firstlook?cancelled=1",
     description:
       "One-sector engineering-acceleration deep dive. PDF + raw CSV + JSON dump within 24h.",
+  },
+  dashboard: {
+    mode: "subscription",
+    productName: "Dashboard",
+    unitAmount: 997,
+    currency: "eur",
+    interval: "month",
+    successUrl: "/dashboard-thanks?session_id={CHECKOUT_SESSION_ID}",
+    cancelUrl: "/dashboard?cancelled=1",
+    description:
+      "Weekly ranked field for active angel sourcing. Founding rate locked at €9.97/mo.",
+  },
+  insider: {
+    mode: "subscription",
+    productName: "Insider Circle",
+    unitAmount: 9700,
+    currency: "eur",
+    interval: "month",
+    successUrl: "/insider-thanks?session_id={CHECKOUT_SESSION_ID}",
+    cancelUrl: "/insider?cancelled=1",
+    description:
+      "Closer room around the signal: steadier context, conviction, and access.",
+  },
+  sector_sweep: {
+    mode: "payment",
+    productName: "Sector Sweep",
+    unitAmount: 199700,
+    currency: "eur",
+    successUrl: "/sector-sweep-thanks?session_id={CHECKOUT_SESSION_ID}",
+    cancelUrl: "/sector-sweep?cancelled=1",
+    description:
+      "One sector. One thesis. One serious custom pass you can act on.",
   },
 };
 

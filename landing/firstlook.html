@@ -186,7 +186,22 @@
           keepalive: true
         }).catch(function(){});
       } catch(e) {}
-      window.location.href = 'https://buy.stripe.com/28E6oGdJh18YgV04nK0x203?prefilled_email=' + encodeURIComponent(email);
+      fetch('https://signals.gitdealflow.com/api/checkout/session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ tier: 'firstlook', email: email })
+      }).then(function(res){ return res.json(); }).then(function(data){
+        if (!data || !data.url) throw new Error('Missing checkout URL');
+        window.location.href = data.url;
+      }).catch(function(){
+        btn.disabled = false;
+        btn.textContent = 'Get my First Look →';
+        const msg = document.getElementById('firstlook-msg');
+        if (msg) {
+          msg.textContent = 'Something went wrong. Try again or email signal@gitdealflow.com';
+          msg.className = 'text-red-400 text-sm mt-4';
+        }
+      });
     });
   </script>
 

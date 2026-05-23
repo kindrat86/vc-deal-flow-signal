@@ -508,10 +508,9 @@
         });
         const data = await res.json();
         if (data.ok) {
-          msg.innerHTML = '<strong>Check your inbox.</strong> Click the confirmation link to unlock this week\'s five names.';
-          msg.className = 'text-brand-500 text-sm mt-4 font-semibold text-center';
-          btn.textContent = 'Email sent ✓';
-          if (window.posthog) posthog.capture('signup_verify_sent');
+          if (window.posthog) posthog.capture('signup_verify_sent', { route: route });
+          window.location.href = '/thanks?route=' + encodeURIComponent(route);
+          return;
         } else {
           throw new Error(data.error || 'Failed');
         }
@@ -574,10 +573,9 @@
           });
           const data = await res.json();
           if (!data.ok) throw new Error(data.error || 'Failed');
-          msg.textContent = 'Check your inbox. Click the confirmation link to unlock the next Sunday watchlist.';
-          msg.className = 'text-brand-500 text-xs text-center mt-3 font-semibold';
-          btn.textContent = 'Email sent ✓';
           if (window.posthog) posthog.capture('exit_modal_submitted');
+          window.location.href = '/thanks?route=F';
+          return;
         } catch (err) {
           msg.textContent = 'Something went wrong. Try the main signup form instead.';
           msg.className = 'text-red-400 text-xs text-center mt-3';
