@@ -73,13 +73,20 @@
         <a class="btn btn-primary btn-xl" href="https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn">Install free <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
       </div>
     </section>
-    <section class="bg-dark-800 py-6 border-y border-gray-800" data-countdown-root data-deadline="2026-06-30T23:59:00Z">
+    <section class="bg-dark-800 py-6 border-y border-gray-800" data-countdown-root data-countdown-key="gdf_timer_chrome">
       <div class="max-w-4xl mx-auto px-6 text-center">
         <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-2">Urgency timer</p>
-        <p class="text-white font-semibold text-lg">Current free-install push closes in <span data-countdown-output class="text-signal-400">…</span></p>
-        <p class="text-gray-500 text-sm mt-1">Install while the current watchlist window is still open and the signal is fresh.</p>
+        <p class="text-white font-semibold text-lg">Your install window closes in <span data-countdown-output class="text-signal-400">05:00</span></p>
+        <p class="text-gray-500 text-sm mt-1">You have five minutes to keep this install session active before it resets.</p>
       </div>
     </section>
+    <section class="max-w-4xl mx-auto px-6 py-10">
+      <div class="rounded-2xl border border-sky-500/30 bg-sky-500/10 p-8 text-left">
+        <p class="text-sky-300 text-xs font-semibold uppercase tracking-wider mb-3">Why this exists</p>
+        <p class="text-gray-300 text-lg leading-relaxed">If you already check Crunchbase or Wellfound, the signal should meet you there instead of asking you to remember one more dashboard.</p>
+      </div>
+    </section>
+
 
 
     <section class="max-w-5xl mx-auto px-6 py-16">
@@ -138,23 +145,34 @@
     (function(){
       const root = document.querySelector('[data-countdown-root]');
       if (!root) return;
-      const deadline = Date.parse(root.getAttribute('data-deadline'));
-      if (Number.isNaN(deadline)) return;
+      const key = root.getAttribute('data-countdown-key') || 'gdf_timer';
       const out = root.querySelector('[data-countdown-output]');
+      const durationMs = 5 * 60 * 1000;
+      let deadline;
+      try {
+        const stored = sessionStorage.getItem(key);
+        if (stored && Number(stored) > Date.now()) {
+          deadline = Number(stored);
+        } else {
+          deadline = Date.now() + durationMs;
+          sessionStorage.setItem(key, String(deadline));
+        }
+      } catch (e) {
+        deadline = Date.now() + durationMs;
+      }
       function pad(n){ return n < 10 ? '0' + n : String(n); }
       function tick(){
-        const left = deadline - Date.now();
+        const left = Math.max(0, deadline - Date.now());
+        const total = Math.floor(left / 1000);
+        const m = Math.floor(total / 60);
+        const s = total % 60;
+        if (out) out.textContent = pad(m) + ':' + pad(s);
         if (left <= 0) {
-          if (out) out.textContent = 'window closed';
-          return;
+          try { sessionStorage.removeItem(key); } catch (e) {}
         }
-        const d = Math.floor(left / 86400000);
-        const h = Math.floor((left % 86400000) / 3600000);
-        const m = Math.floor((left % 3600000) / 60000);
-        if (out) out.textContent = d + 'd ' + pad(h) + 'h ' + pad(m) + 'm';
       }
       tick();
-      setInterval(tick, 60000);
+      setInterval(tick, 1000);
     })();
   </script>
 
