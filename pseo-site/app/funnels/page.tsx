@@ -398,9 +398,7 @@ export default function FunnelHubPage() {
               >
                 Origin →
               </Link>{" "}
-              the founder backstory behind the product. Why a developer who
-              also writes angel checks decided that warm-intro deal flow was
-              a broken vehicle.
+              the story behind why hearing about the company late became the problem, and why earlier public movement became the signal worth building around.
             </li>
             <li>
               <Link

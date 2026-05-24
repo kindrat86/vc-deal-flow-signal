@@ -24,14 +24,14 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title:
-    "Top 100 — literal roster of 100 voices, ICP-scored with engagement status",
+    "Top 100 — the publications, communities, and orgs worth paying attention to",
   description:
-    "100 named publications, communities, GitHub orgs, podcasts, datasets, and LinkedIn Company Pages where the developer-investor's audience already lives. Each entry carries an engagement status flag (engage / watch / hold / read / blocked) and a Match × Reach × Engage ICP score (0-100), so the roster reads as a working board with explicit priority — not a wishlist.",
+    "100 named publications, communities, GitHub orgs, podcasts, datasets, and company pages worth watching if you care about earlier startup signal, clearer timing, and less noise.",
   alternates: { canonical: "/target-list" },
   openGraph: {
-    title: "Top 100 — voices we read, ICP-scored, with engagement status",
+    title: "Top 100 — the voices worth paying attention to",
     description:
-      "Numbered roster of 100 named entities, ICP-scored on Match × Reach × Engage, status-flagged for engagement. The top-100 ICP list applied to the developer-investor.",
+      "A practical roster of 100 publications, communities, and orgs worth watching when you care about earlier startup signal and clearer timing.",
     url: "https://signals.gitdealflow.com/target-list",
     type: "article",
   },
@@ -143,9 +143,9 @@ export default function Dream100Page() {
       {
         "@type": "WebPage",
         "@id": "https://signals.gitdealflow.com/target-list",
-        name: "Top 100 — literal roster, ICP-scored, with engagement status",
+        name: "Top 100 — the voices worth paying attention to",
         description:
-          "100 named publications, communities, GitHub orgs, podcasts, datasets, and LinkedIn Company Pages where the developer-investor's audience already lives. Each entry carries an engagement status flag and a Match × Reach × Engage ICP score (0-100).",
+          "100 named publications, communities, GitHub orgs, podcasts, datasets, and company pages worth watching when you care about earlier startup signal, clearer timing, and less noise.",
         speakable: {
           "@type": "SpeakableSpecification",
           cssSelector: ["h1", "h2", "[data-speakable]"],
@@ -202,29 +202,25 @@ export default function Dream100Page() {
             <span className="text-gray-400">Top 100</span>
           </nav>
           <p className="text-sky-400 text-xs font-semibold uppercase tracking-wider">
-            Top-100 ICP list · Applied · ICP-scored
+            Top 100 · Applied · priority-ranked
           </p>
           <h1 className="text-3xl sm:text-5xl font-bold text-gray-100 leading-[1.1] tracking-tight">
-            The Top 100 — the{" "}
-            <span className="text-sky-400">literal roster</span> of 100 voices,
-            ICP-scored, with engagement status.
+            The Top 100 — the <span className="text-sky-400">publications, communities, and orgs</span>
+            worth paying attention to.
           </h1>
           <p
             className="text-gray-300 text-base sm:text-lg leading-relaxed"
             data-speakable
           >
-            The rule: pick the 100 publications, communities, and orgs whose
-            audience already contains your dream customer. Don&rsquo;t pitch —
-            show up where they are, contribute, let the signal compound.
+            The rule is simple: show up where the right attention already lives.
+            This page turns that rule into a practical roster with two layers:{" "}
+            <strong className="text-gray-100">engagement status</strong> (what
+            we&rsquo;re doing about it now) and <strong className="text-gray-100">priority score</strong>
+            (how worth doing it is). The goal is not a wishlist. The goal is to know
+            what deserves time first.
           </p>
           <p className="text-gray-300 text-base leading-relaxed">
-            Most pages that quote the top-100 ICP list stop at the framework.
-            We list the actual 100 names, numbered 1 to 100, with two layers:{" "}
-            <strong className="text-gray-100">engagement status</strong> (what
-            we&rsquo;re doing about it now) and{" "}
-            <strong className="text-gray-100">ICP score</strong> (how worth
-            doing it is — Match × Reach × Engage, max 100). Together they turn
-            the roster into a 2-axis working board.
+            If you care about earlier signal, this roster shows you where the right attention already lives. Use it to decide where to read, where to show up, and where a thoughtful contribution is worth more than another broad post.
           </p>
           <p className="text-gray-400 text-sm leading-relaxed border-l-2 border-slate-700 pl-4">
             Anonymity rule: every voice on this list is a public publication,

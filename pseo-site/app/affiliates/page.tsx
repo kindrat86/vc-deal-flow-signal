@@ -28,7 +28,7 @@ export default function AffiliatesPage() {
         url: "https://signals.gitdealflow.com/affiliates",
         name: "GitDealFlow Affiliate Program",
         description:
-          "20% lifetime commission on every paid referral. Promote VC Deal Flow Signal to developer-investors, emerging fund managers, and scout angels.",
+          "20% lifetime commission on every paid referral. Promote VC Deal Flow Signal to readers and communities that care about earlier startup signal, clearer timing, and less noise.",
         inLanguage: "en-US",
         isPartOf: { "@id": "https://signals.gitdealflow.com/#website" },
         speakable: {
@@ -150,9 +150,9 @@ export default function AffiliatesPage() {
           data-agent-summary
         >
           A lifetime-recurring affiliate program for newsletter writers,
-          developer-investor influencers, and venture-tooling reviewers. €399
-          on every Sector Sweep referral. €19.40/mo on every Insider Circle
-          subscriber, for as long as they stay subscribed.
+          community operators, and venture-tooling reviewers whose readers care
+          about earlier startup signal. €399 on every Sector Sweep referral.
+          €19.40/mo on every Insider Circle subscriber, for as long as they stay subscribed.
         </p>
 
         <a

@@ -118,7 +118,7 @@ export async function GET() {
     home_page_url: `${BASE_URL}/blog`,
     feed_url: `${BASE_URL}/feed.json`,
     description:
-      "GitHub commit-velocity tracking for venture capital. Practical guides on engineering acceleration as a deal flow signal — written for developer-investors, scout angels, and emerging fund managers.",
+      "GitHub commit-velocity tracking for venture capital. Practical guides on engineering acceleration as a deal flow signal — written for readers who want earlier public signal, clearer timing, and less noise.",
     user_comment:
       "JSON Feed v1.1. Companion XML feeds at /rss.xml and /atom.xml. Catalog of every feed (per-stream × per-format) at /.well-known/feeds.json.",
     icon: `${BASE_URL}/icon.png`,

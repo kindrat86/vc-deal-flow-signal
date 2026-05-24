@@ -218,15 +218,13 @@ export default function Dream50Page() {
           className="text-lg text-gray-400 leading-relaxed mb-8 max-w-3xl"
           data-agent-summary
         >
-          You find your dream customer by working backwards from where they
-          already pay attention. The same play works for partners. These are
-          the 50 newsletter writers, podcast hosts, and community owners
-          whose audiences overlap our developer-investor segment closely
-          enough that a recommendation block, interview segment, or
-          sector-deep-dive co-author piece would convert. Engagement status
-          is current; we update the row when status changes. If you write or
-          run one of these, scroll to the pitch templates — we ship the
-          swipe kit pre-filled.
+          If you work backwards from where the right attention already lives,
+          the same logic works for partners. These are the 50 newsletter writers,
+          podcast hosts, and community owners whose readers are already primed
+          for earlier startup signal, clearer timing, and proof-first language.
+          Engagement status is current; we update the row when status changes.
+          If you write or run one of these, scroll to the pitch templates — we
+          ship the swipe kit pre-filled.
         </p>
 
         <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 mb-12 text-center text-xs">
@@ -324,7 +322,7 @@ Big fan of [Newsletter] — [specific recent piece reference].
 
 I run GitDealFlow. Short version: we scan ~4,200 venture-backed startup GitHub orgs every Sunday and surface the ones whose engineering velocity just spiked. The methodology is on SSRN with a panel of 219 confirmed fundraises that the signal preceded by 21–47 days. Free Sunday digest, 5 names a week.
 
-I don't want a paid placement. I want a one-time recommendation block in a future issue, only if your readers are the kind of people who'd actually use this. The reader profile is "developer-investor" — operators who write angel cheques between deal #5 and deal #40.
+I don't want a paid placement. I want a one-time recommendation block in a future issue, only if your readers are the kind of people who would actually use this — readers who care about earlier startup signal, clearer timing, and proof they can inspect.
 
 If that's plausible, I'll send the swipe block (40 words, your edit). If it's not — totally understand, please ignore this.
 

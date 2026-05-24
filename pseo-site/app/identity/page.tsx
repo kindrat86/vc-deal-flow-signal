@@ -28,14 +28,14 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title:
-    "Who You Become — The Code-Reading Partner | VC Deal Flow Signal",
+    "Who you become — moving earlier with a clearer signal | VC Deal Flow Signal",
   description:
-    "The before-and-after isn't a feature list. It's an identity. The investor who ships this stack stops chasing pitch decks across a warm-intro rolodex — and starts arriving on the founder's inbox 21 to 47 days earlier. The seven shifts that take you from one identity to the other.",
+    "A direct guide to the seven shifts that help you stop hearing the story late and start moving with a clearer signal while the window is still calm.",
   alternates: { canonical: "/identity" },
   openGraph: {
-    title: "Who You Become — The Code-Reading Partner",
+    title: "Who you become — moving earlier with a clearer signal",
     description:
-      "Stop chasing decks across a warm-intro rolodex. Become the partner who reads the code 21–47 days earlier. The seven identity shifts.",
+      "Stop hearing the story late. Start moving with a clearer signal while the window is still calm.",
     url: "https://signals.gitdealflow.com/identity",
     type: "article",
   },
