@@ -166,13 +166,46 @@
     .qual-card-text { display: flex; flex-direction: column; line-height: 1.25; }
     .qual-card-title { font-weight: 600; font-size: 0.95rem; color: #f1f5f9; }
     .qual-card-sub { font-size: 0.78rem; color: #94a3b8; margin-top: 1px; }
+    .proof-card, .support-card, .step-card { transition: border-color 120ms ease, transform 120ms ease; }
+    .proof-card:hover, .support-card:hover, .step-card:hover { border-color: rgba(14, 165, 233, 0.5); }
+    .mobile-cta-stack > * { width: 100%; }
+    .mobile-sticky-cta { display: none; }
+    @media (min-width: 640px) { .mobile-cta-stack > * { width: auto; } }
+    @media (max-width: 639px) {
+      html { scroll-padding-top: 5rem; }
+      body { padding-bottom: 6rem; }
+      .mobile-compact-header { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+      .mobile-hero-wrap { padding-left: 1rem; padding-right: 1rem; padding-top: 4rem; padding-bottom: 4rem; }
+      .mobile-hero-title { font-size: 2rem; line-height: 1.1; }
+      .mobile-hero-copy { font-size: 1rem; line-height: 1.65; }
+      .mobile-section-pad { padding-left: 1rem; padding-right: 1rem; }
+      .mobile-card-pad { padding: 1.25rem; }
+      .mobile-proof-grid { gap: 0.75rem; }
+      .mobile-proof-grid .proof-card { padding: 1rem; border-radius: 0.875rem; }
+      .mobile-stat-grid { gap: 1rem; }
+      .mobile-steps-grid { gap: 1rem; }
+      .qual-card { min-height: 62px; padding: 0.95rem 1rem; }
+      .mobile-sticky-cta {
+        position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; display: block;
+        padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom));
+        background: rgba(2, 6, 23, 0.94); backdrop-filter: blur(12px);
+        border-top: 1px solid rgba(71, 85, 105, 0.7);
+      }
+      .mobile-sticky-cta .inner {
+        display: flex; align-items: center; gap: 0.75rem; max-width: 28rem; margin: 0 auto;
+      }
+      .mobile-sticky-cta .meta { flex: 1; min-width: 0; }
+      .mobile-sticky-cta .meta strong { display: block; color: #fff; font-size: 0.95rem; line-height: 1.1; }
+      .mobile-sticky-cta .meta span { display: block; color: #94a3b8; font-size: 0.72rem; margin-top: 0.1rem; }
+      .mobile-sticky-cta .btn { white-space: nowrap; padding-left: 1rem; padding-right: 1rem; }
+    }
   </style>
 </head>
 <body class="bg-dark-900 text-gray-100 font-sans antialiased">
   <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:bg-brand-500 focus:text-white focus:px-4 focus:py-2 focus:rounded focus:shadow-lg">Skip to main content</a>
 
   <header class="sticky top-0 z-50 border-b border-gray-800 bg-dark-900/95 backdrop-blur">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-4">
+    <div class="mobile-compact-header max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-3">
       <a href="/" class="font-semibold tracking-tight text-white text-lg">GitDealFlow</a>
       <nav class="hidden md:flex items-center gap-6">
         <a href="https://signals.gitdealflow.com" class="text-gray-400 text-sm hover:text-gray-100 transition">Signals</a>
@@ -181,49 +214,49 @@
         <a href="/dashboard" class="text-gray-400 text-sm hover:text-gray-100 transition">Dashboard</a>
         <a href="/insider" class="text-gray-400 text-sm hover:text-gray-100 transition">Insider</a>
       </nav>
-      <a href="#signup" class="btn btn-cta btn-sm whitespace-nowrap">Get the free Sunday watchlist <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
+      <a href="#signup" class="btn btn-cta btn-sm whitespace-nowrap shrink-0"><span class="sm:hidden">Get Sunday issue</span><span class="hidden sm:inline">Get the free Sunday watchlist</span> <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
     </div>
   </header>
 
   <main id="main-content">
     <section class="relative overflow-hidden">
       <div class="absolute inset-0 bg-gradient-to-br from-dark-900 via-dark-800 to-brand-900 opacity-80"></div>
-      <div class="relative max-w-4xl mx-auto px-6 py-20 md:py-28 text-center">
+      <div class="mobile-hero-wrap relative max-w-4xl mx-auto px-4 sm:px-6 py-16 md:py-28 text-center">
         <p class="text-brand-500 font-semibold text-sm uppercase tracking-wider mb-4">For solo angels, scouts, and portfolio-building operators</p>
-        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
+        <h1 class="mobile-hero-title text-4xl md:text-6xl font-extrabold leading-tight mb-6">
           A Sunday watchlist for angels who don&apos;t want consensus deal flow.<br class="hidden md:block"> <span class="text-signal-500">Five names, filtered from 4,200 public engineering footprints.</span>
         </h1>
-        <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+        <p class="mobile-hero-copy text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8">
           You do not need another noisy feed. You need one short Sunday read that tells you which startups look materially different before the round becomes obvious. <strong class="text-white">GitDealFlow is the watchlist.</strong> <strong class="text-white">VC Deal Flow Signal is the public research engine behind it.</strong> Here, the job is simply to get you started.
         </p>
-        <ul class="text-left max-w-2xl mx-auto mb-10 space-y-3 text-gray-200">
+        <ul class="text-left max-w-2xl mx-auto mb-10 space-y-3 text-gray-200 text-[0.98rem] sm:text-base">
           <li class="flex items-start gap-3"><span class="text-signal-500 font-bold text-lg leading-none mt-1" aria-hidden="true">&rarr;</span><span><strong class="text-white">One short Sunday email</strong> — five names, plain-English signal notes, no card.</span></li>
           <li class="flex items-start gap-3"><span class="text-signal-500 font-bold text-lg leading-none mt-1" aria-hidden="true">&rarr;</span><span><strong class="text-white">No code-reading required</strong> — the technical digging is already done for you.</span></li>
           <li class="flex items-start gap-3"><span class="text-signal-500 font-bold text-lg leading-none mt-1" aria-hidden="true">&rarr;</span><span><strong class="text-white">Public proof, not black-box vibes</strong> — methodology, comparison, and sample watchlist all sit one click away.</span></li>
         </ul>
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a href="#signup" onclick="if(window.posthog)posthog.capture('hero_cta_clicked',{target:'signup'})" class="btn btn-primary btn-xl">
+        <div class="mobile-cta-stack flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="#signup" onclick="if(window.posthog)posthog.capture('hero_cta_clicked',{target:'signup'})" class="btn btn-primary btn-xl w-full sm:w-auto">
             <span>Send me this Sunday’s issue</span>
             <span aria-hidden="true" class="btn-arrow">&rarr;</span>
           </a>
-          <a href="https://signals.gitdealflow.com/methodology" class="btn btn-secondary btn-xl">Show me the proof</a>
+          <a href="https://signals.gitdealflow.com/methodology" class="btn btn-secondary btn-xl w-full sm:w-auto">Show me the proof</a>
         </div>
         <p class="text-gray-500 text-sm mt-5">Free forever &middot; unsubscribe in one click &middot; public methodology and dataset behind the signal</p>
       </div>
     </section>
-    <section class="max-w-5xl mx-auto px-6 py-8">
-      <div class="rounded-2xl border border-gray-800 bg-dark-800/70 p-6 md:p-8">
+    <section class="mobile-section-pad max-w-5xl mx-auto px-4 sm:px-6 py-8">
+      <div class="mobile-card-pad rounded-2xl border border-gray-800 bg-dark-800/70 p-6 md:p-8">
         <p class="text-signal-400 text-xs font-semibold uppercase tracking-wider mb-4">Verify the claim in three clicks</p>
-        <div class="grid md:grid-cols-3 gap-4 text-left">
-          <a href="https://signals.gitdealflow.com/methodology" class="rounded-xl border border-gray-700 bg-dark-900 p-5 hover:border-signal-500/50 transition">
+        <div class="mobile-proof-grid grid md:grid-cols-3 gap-4 text-left">
+          <a href="https://signals.gitdealflow.com/methodology" class="proof-card rounded-xl border border-gray-700 bg-dark-900 p-5 hover:border-signal-500/50 transition">
             <p class="text-white font-semibold mb-2">Methodology</p>
             <p class="text-sm text-gray-400">Read how the signal works, what the SSRN panel measured, and why the lead-time claim exists.</p>
           </a>
-          <a href="https://signals.gitdealflow.com/compare/best-alternative-data-tools-for-angel-investors" class="rounded-xl border border-gray-700 bg-dark-900 p-5 hover:border-signal-500/50 transition">
+          <a href="https://signals.gitdealflow.com/compare/best-alternative-data-tools-for-angel-investors" class="proof-card rounded-xl border border-gray-700 bg-dark-900 p-5 hover:border-signal-500/50 transition">
             <p class="text-white font-semibold mb-2">Comparison</p>
             <p class="text-sm text-gray-400">See where GitDealFlow fits versus other alternative-data tools when timing matters more than noise.</p>
           </a>
-          <a href="/report" class="rounded-xl border border-gray-700 bg-dark-900 p-5 hover:border-signal-500/50 transition">
+          <a href="/report" class="proof-card rounded-xl border border-gray-700 bg-dark-900 p-5 hover:border-signal-500/50 transition">
             <p class="text-white font-semibold mb-2">Sample Sunday watchlist</p>
             <p class="text-sm text-gray-400">See the exact output shape before you give us your attention every Sunday.</p>
           </a>
@@ -231,14 +264,14 @@
       </div>
     </section>
     <section class="bg-dark-800 py-6 border-y border-gray-800" data-countdown-root data-countdown-key="gdf_timer_apex">
-      <div class="max-w-4xl mx-auto px-6 text-center">
+      <div class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 text-center">
         <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-2">Urgency timer</p>
         <p class="text-white font-semibold text-lg">Your Sunday issue window closes in <span data-countdown-output class="text-signal-400">05:00</span></p>
         <p class="text-gray-500 text-sm mt-1">You have five minutes to claim the current issue before this session resets.</p>
       </div>
     </section>
-    <section class="max-w-5xl mx-auto px-6 py-12">
-      <div class="rounded-2xl border border-sky-500/30 bg-sky-500/10 p-8 md:p-10 text-left">
+    <section class="mobile-section-pad max-w-5xl mx-auto px-4 sm:px-6 py-12">
+      <div class="mobile-card-pad support-card rounded-2xl border border-sky-500/30 bg-sky-500/10 p-8 md:p-10 text-left">
         <p class="text-sky-300 text-xs font-semibold uppercase tracking-wider mb-3">Why you may trust this faster than other signals</p>
         <h2 class="text-3xl font-bold mb-4">You do not need another expert. You need a filter you trust.</h2>
         <p class="text-gray-300 text-lg leading-relaxed mb-4">I built this because I got tired of seeing the same pattern: a company looks obvious only after the round is already crowded. By then the story is public, the warm intros are moving, and the calm window is gone. That is when doubt gets expensive.</p>
@@ -249,7 +282,7 @@
 
 
     <section aria-label="Trust indicators" class="border-y border-gray-800 bg-dark-900/60">
-      <div class="max-w-5xl mx-auto px-6 py-10 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+      <div class="mobile-section-pad mobile-stat-grid max-w-5xl mx-auto px-4 sm:px-6 py-10 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
         <div>
           <p class="text-3xl font-extrabold text-white">4,200</p>
           <p class="text-gray-500 text-xs mt-1 leading-relaxed">GitHub orgs monitored</p>
@@ -269,8 +302,8 @@
       </div>
     </section>
 
-    <section class="max-w-5xl mx-auto px-6 py-12">
-      <div class="rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-8 md:p-10">
+    <section class="mobile-section-pad max-w-5xl mx-auto px-4 sm:px-6 py-12">
+      <div class="mobile-card-pad support-card rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-8 md:p-10">
         <p class="text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-3">Why this is worth a place in your week</p>
         <div class="grid md:grid-cols-3 gap-6 text-left">
           <div>
@@ -286,15 +319,15 @@
             <p class="text-gray-300 text-sm leading-relaxed">No black box. No “trust me.” The claim is backed by an SSRN paper, a public dataset, and a full discovery surface on the signals subdomain.</p>
           </div>
         </div>
-        <div class="mt-6 flex flex-col sm:flex-row gap-4">
-          <a href="https://signals.gitdealflow.com/compare/best-alternative-data-tools-for-angel-investors" class="btn btn-secondary btn-md">See which alternative-data stack helps you move earlier</a>
-          <a href="https://signals.gitdealflow.com/methodology" class="btn btn-secondary btn-md">Read the methodology</a>
+        <div class="mobile-cta-stack mt-6 flex flex-col sm:flex-row gap-4">
+          <a href="https://signals.gitdealflow.com/compare/best-alternative-data-tools-for-angel-investors" class="btn btn-secondary btn-md w-full sm:w-auto">See which alternative-data stack helps you move earlier</a>
+          <a href="https://signals.gitdealflow.com/methodology" class="btn btn-secondary btn-md w-full sm:w-auto">Read the methodology</a>
         </div>
       </div>
     </section>
 
-    <section class="max-w-5xl mx-auto px-6 py-20">
-      <div class="grid md:grid-cols-2 gap-10 items-start">
+    <section class="mobile-section-pad max-w-5xl mx-auto px-4 sm:px-6 py-16 md:py-20">
+      <div class="grid md:grid-cols-2 gap-8 md:gap-10 items-start">
         <div>
           <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-3">If this lands, you are in the right place</p>
           <h2 class="text-3xl font-bold mb-5">You want sharper timing, not more noise.</h2>
@@ -304,7 +337,7 @@
             <p>You want a signal worth acting on, explained clearly, before the round becomes obvious.</p>
           </div>
         </div>
-        <div class="rounded-2xl border border-gray-700 bg-dark-800 p-8">
+        <div class="mobile-card-pad support-card rounded-2xl border border-gray-700 bg-dark-800 p-8">
           <div class="flex flex-col sm:flex-row items-center sm:items-center gap-4 mb-4 text-center sm:text-left">
             <picture>
               <source srcset="/data-nerd.webp" type="image/webp">
@@ -325,22 +358,22 @@
       </div>
     </section>
 
-    <section class="bg-dark-800 py-20">
-      <div class="max-w-5xl mx-auto px-6">
+    <section class="bg-dark-800 py-16 md:py-20">
+      <div class="mobile-section-pad max-w-5xl mx-auto px-4 sm:px-6">
         <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider text-center mb-3">What happens next</p>
         <h2 class="text-3xl font-bold text-center mb-12">You look once. You see more clearly. You move earlier.</h2>
-        <div class="grid md:grid-cols-3 gap-8 text-center">
-          <div class="rounded-xl border border-gray-700 bg-dark-900 p-8">
+        <div class="mobile-steps-grid grid md:grid-cols-3 gap-8 text-center">
+          <div class="step-card rounded-xl border border-gray-700 bg-dark-900 p-6 md:p-8">
             <div class="w-14 h-14 bg-brand-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">1</div>
             <h3 class="text-xl font-semibold mb-3">We watch</h3>
             <p class="text-gray-400">The deeper engine lives on signals.gitdealflow.com: sectors, methodology, dataset, MCP, comparisons, and weekly ranking surfaces.</p>
           </div>
-          <div class="rounded-xl border border-gray-700 bg-dark-900 p-8">
+          <div class="step-card rounded-xl border border-gray-700 bg-dark-900 p-6 md:p-8">
             <div class="w-14 h-14 bg-brand-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">2</div>
             <h3 class="text-xl font-semibold mb-3">We cut the noise</h3>
             <p class="text-gray-400">That complexity gets compressed into a Sunday watchlist you can scan in minutes.</p>
           </div>
-          <div class="rounded-xl border border-gray-700 bg-dark-900 p-8">
+          <div class="step-card rounded-xl border border-gray-700 bg-dark-900 p-6 md:p-8">
             <div class="w-14 h-14 bg-brand-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">3</div>
             <h3 class="text-xl font-semibold mb-3">You decide with a calmer head</h3>
             <p class="text-gray-400">You decide whether this feels calm, sharp, and true enough to trust with your attention now and your money later.</p>
@@ -349,8 +382,8 @@
       </div>
     </section>
 
-    <section class="bg-dark-800 py-20">
-      <div class="max-w-4xl mx-auto px-6 text-center">
+    <section class="bg-dark-800 py-16 md:py-20">
+      <div class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 text-center">
         <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-3">Start here</p>
         <h2 class="text-3xl font-bold mb-4">Decide whether you want the next Sunday issue in your inbox.</h2>
         <p class="text-gray-300 text-lg leading-relaxed mb-10 max-w-3xl mx-auto">Get the free Sunday watchlist. If it earns your trust, you will know. If it does not, you lose nothing except one short read.</p>
@@ -392,10 +425,10 @@
               </label>
             </div>
           </fieldset>
-          <div class="flex flex-col sm:flex-row gap-3">
+          <div class="mobile-cta-stack flex flex-col sm:flex-row gap-3">
             <label for="signup-email" class="sr-only">Email address</label>
             <input type="email" id="signup-email" placeholder="you@example.com" required aria-label="Email address" inputmode="email" autocomplete="email" class="flex-1 px-5 py-4 rounded-lg bg-dark-800 border border-gray-600 text-gray-100 placeholder-gray-500 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 text-lg">
-            <button type="submit" id="signup-btn" class="btn btn-cta btn-lg">Get the free Sunday watchlist <span aria-hidden="true" class="btn-arrow">&rarr;</span></button>
+            <button type="submit" id="signup-btn" class="btn btn-cta btn-lg w-full sm:w-auto">Get the free Sunday watchlist <span aria-hidden="true" class="btn-arrow">&rarr;</span></button>
           </div>
         </form>
         <p id="signup-msg" class="text-center text-gray-500 text-sm mt-4">
@@ -404,7 +437,7 @@
       </div>
     </section>
 
-    <section class="max-w-4xl mx-auto px-6 py-20">
+    <section class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 py-16 md:py-20">
       <h2 class="text-3xl font-bold text-center mb-10">Three answers you need before you trust this</h2>
       <div class="space-y-3">
         <details class="group rounded-xl border border-gray-700 bg-dark-800 hover:border-gray-600 transition">
@@ -449,7 +482,7 @@
   </div>
 
   <footer class="border-t border-gray-800 bg-dark-900/80 py-12">
-    <div class="max-w-5xl mx-auto px-6 text-center">
+    <div class="mobile-section-pad max-w-5xl mx-auto px-4 sm:px-6 text-center">
       <p class="text-gray-300 mb-2 font-semibold">GitDealFlow is the Sunday watchlist. VC Deal Flow Signal is the public research engine behind it.</p>
       <div class="flex flex-wrap justify-center gap-6 text-gray-500 text-sm mb-5">
         <a href="https://signals.gitdealflow.com/methodology" class="hover:text-gray-300">Methodology</a>
@@ -463,6 +496,16 @@
       <p class="text-gray-600 text-xs">&copy; 2026 GitDealFlow. Proof surfaces live on signals.gitdealflow.com.</p>
     </div>
   </footer>
+
+  <div class="mobile-sticky-cta" aria-hidden="false">
+    <div class="inner">
+      <div class="meta">
+        <strong>Get this Sunday’s issue</strong>
+        <span>Free · one short email · no card</span>
+      </div>
+      <a href="#signup" class="btn btn-cta btn-sm">Get it</a>
+    </div>
+  </div>
 
   <script>
     window.GDFattribution = function(source) {
