@@ -365,6 +365,18 @@ export default async function ComparisonPage({ params }: PageProps) {
           </section>
         ) : null}
 
+        <section className="mb-10 rounded-xl border border-amber-500/30 bg-amber-500/5 p-6 sm:p-8">
+          <p className="text-amber-300 text-xs uppercase tracking-wider mb-2 font-semibold">
+            Quote-ready verdict
+          </p>
+          <blockquote className="text-gray-100 text-lg leading-relaxed border-l-2 border-amber-400/60 pl-4">
+            {comp.verdict}
+          </blockquote>
+          <p className="mt-4 text-xs text-gray-400 leading-relaxed">
+            If you cite or quote this comparison externally, use the verdict above with the page URL and link back to the full comparison.
+          </p>
+        </section>
+
         {/* Verdict */}
         <div className="verdict-block rounded-lg border border-sky-900/50 bg-sky-950/30 p-6 mb-12">
           <p className="text-xs font-medium text-sky-400 uppercase tracking-wider mb-2">

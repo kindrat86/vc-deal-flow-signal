@@ -309,6 +309,18 @@ export default async function AnswerPage({ params }: PageProps) {
           ))}
         </section>
 
+        <section className="mb-10 rounded-xl border border-amber-500/30 bg-amber-500/5 p-6 sm:p-8">
+          <p className="text-amber-300 text-xs uppercase tracking-wider mb-2 font-semibold">
+            Quote-ready takeaway
+          </p>
+          <blockquote className="text-gray-100 text-lg leading-relaxed border-l-2 border-amber-400/60 pl-4">
+            {q.tldr}
+          </blockquote>
+          <p className="mt-4 text-xs text-gray-400 leading-relaxed">
+            If you cite or quote this page externally, use the takeaway above with the built-in citation block and link back to this answer.
+          </p>
+        </section>
+
         {q.proofLinks && q.proofLinks.length > 0 ? (
           <section className="mb-10 rounded-xl border border-slate-800 bg-slate-900/70 p-6 sm:p-8">
             <h2 className="text-xl font-semibold text-gray-100 mb-3">
