@@ -14,27 +14,62 @@
   <meta property="og:image" content="https://signals.gitdealflow.com/opengraph-image" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/styles.css">
+  <style>
+    .mobile-cta-stack > * { width: 100%; }
+    .mobile-card, .mobile-step-card { transition: border-color 120ms ease, transform 120ms ease; }
+    .mobile-card:hover, .mobile-step-card:hover { border-color: rgba(14, 165, 233, 0.5); }
+    .mobile-sticky-cta { display: none; }
+    @media (min-width: 640px) { .mobile-cta-stack > * { width: auto; } }
+    @media (max-width: 639px) {
+      html { scroll-padding-top: 5rem; }
+      body { padding-bottom: 6rem; }
+      .mobile-compact-header { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+      .mobile-hero-wrap { padding-left: 1rem; padding-right: 1rem; padding-top: 4rem; padding-bottom: 4rem; }
+      .mobile-hero-title { font-size: 2rem; line-height: 1.1; }
+      .mobile-hero-copy { font-size: 1rem; line-height: 1.65; }
+      .mobile-section-pad { padding-left: 1rem; padding-right: 1rem; }
+      .mobile-card-pad { padding: 1.25rem; }
+      .mobile-stat-grid { gap: 1rem; }
+      .mobile-grid-gap { gap: 1rem; }
+      .mobile-cta-stack .btn,
+      .mobile-form-stack .btn {
+        white-space: normal; text-align: center; line-height: 1.35;
+        padding-left: 1rem; padding-right: 1rem;
+      }
+      .mobile-sticky-cta {
+        position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; display: block;
+        padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom));
+        background: rgba(2, 6, 23, 0.94); backdrop-filter: blur(12px);
+        border-top: 1px solid rgba(71, 85, 105, 0.7);
+      }
+      .mobile-sticky-cta .inner { display: flex; align-items: center; gap: 0.75rem; max-width: 28rem; margin: 0 auto; }
+      .mobile-sticky-cta .meta { flex: 1; min-width: 0; }
+      .mobile-sticky-cta .meta strong { display: block; color: #fff; font-size: 0.95rem; line-height: 1.1; }
+      .mobile-sticky-cta .meta span { display: block; color: #94a3b8; font-size: 0.72rem; margin-top: 0.1rem; }
+      .mobile-sticky-cta .btn { white-space: nowrap; padding-left: 1rem; padding-right: 1rem; }
+    }
+  </style>
 </head>
 <body class="bg-dark-900 text-gray-100 font-sans antialiased">
   <header class="sticky top-0 z-50 border-b border-gray-800 bg-dark-900/95 backdrop-blur">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-4">
+    <div class="mobile-compact-header max-w-5xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-3">
       <a href="/" class="font-semibold tracking-tight text-white text-lg">GitDealFlow</a>
       <nav class="hidden md:flex items-center gap-6">
         <a href="/" class="text-gray-400 text-sm hover:text-gray-100 transition">Home</a>
         <a href="/dashboard" class="text-gray-400 text-sm hover:text-gray-100 transition">Dashboard</a>
         <a href="/insider" class="text-gray-400 text-sm hover:text-gray-100 transition">Insider</a>
       </nav>
-      <a href="#checkout" class="btn btn-cta btn-sm whitespace-nowrap">Get my First Look <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
+      <a href="#checkout" class="btn btn-cta btn-sm whitespace-nowrap shrink-0"><span class="sm:hidden">First Look</span><span class="hidden sm:inline">Get my First Look</span> <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
     </div>
   </header>
 
   <main>
     <section class="relative overflow-hidden">
       <div class="absolute inset-0 bg-gradient-to-br from-dark-900 via-dark-800 to-brand-900 opacity-80"></div>
-      <div class="relative max-w-4xl mx-auto px-6 py-20 md:py-28 text-center">
+      <div class="mobile-hero-wrap relative max-w-4xl mx-auto px-4 sm:px-6 py-16 md:py-28 text-center">
         <p class="text-brand-500 font-semibold text-sm uppercase tracking-wider mb-4">Lowest-friction paid step</p>
-        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6">One sector. One deep dive. One day.</h1>
-        <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8">Use First Look when you want to test the signal on one thesis before talking yourself into a subscription.</p>
+        <h1 class="mobile-hero-title text-4xl md:text-6xl font-extrabold leading-tight mb-6">One sector. One deep dive. One day.</h1>
+        <p class="mobile-hero-copy text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8">Use First Look when you want to test the signal on one thesis before talking yourself into a subscription.</p>
         <div class="inline-flex items-center gap-2 rounded-full border border-signal-500/30 bg-signal-500/10 px-4 py-2 text-sm text-signal-300">
           <span>Price:</span>
           <strong class="text-white">€7 once</strong>
@@ -42,14 +77,14 @@
       </div>
     </section>
     <section class="bg-dark-800 py-6 border-y border-gray-800" data-countdown-root data-countdown-key="gdf_timer_firstlook">
-      <div class="max-w-4xl mx-auto px-6 text-center">
+      <div class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 text-center">
         <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-2">Urgency timer</p>
         <p class="text-white font-semibold text-lg">Your First Look session closes in <span data-countdown-output class="text-signal-400">05:00</span></p>
         <p class="text-gray-500 text-sm mt-1">You have five minutes to keep this 24-hour turnaround window attached to this session.</p>
       </div>
     </section>
-    <section class="max-w-4xl mx-auto px-6 py-12">
-      <div class="rounded-2xl border border-sky-500/30 bg-sky-500/10 p-8 md:p-10 text-left">
+    <section class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 py-12">
+      <div class="mobile-card mobile-card-pad rounded-2xl border border-sky-500/30 bg-sky-500/10 p-8 md:p-10 text-left">
         <div class="flex flex-col sm:flex-row items-center sm:items-center gap-4 mb-4 text-center sm:text-left">
           <picture>
             <source srcset="/data-nerd.webp" type="image/webp">
@@ -66,7 +101,7 @@
 
 
     <section class="bg-dark-800 py-10 border-y border-gray-800">
-      <div class="max-w-4xl mx-auto px-6 grid md:grid-cols-3 gap-6 text-center">
+      <div class="mobile-section-pad mobile-stat-grid max-w-4xl mx-auto px-4 sm:px-6 grid md:grid-cols-3 gap-6 text-center">
         <div>
           <p class="text-signal-300 text-xs font-semibold uppercase tracking-wider mb-2">Urgency</p>
           <p class="text-gray-200 font-semibold">Delivered within 24 hours</p>
@@ -85,9 +120,9 @@
       </div>
     </section>
 
-    <section class="max-w-5xl mx-auto px-6 py-16">
-      <div class="grid md:grid-cols-2 gap-8">
-        <div class="rounded-xl border border-gray-700 bg-dark-800 p-8">
+    <section class="mobile-section-pad max-w-5xl mx-auto px-4 sm:px-6 py-16 md:py-20">
+      <div class="grid md:grid-cols-2 gap-8 mobile-grid-gap">
+        <div class="mobile-card mobile-card-pad rounded-xl border border-gray-700 bg-dark-800 p-8">
           <h2 class="text-2xl font-bold mb-4">What you walk away with</h2>
           <ul class="space-y-3 text-gray-300 leading-relaxed">
             <li>One sector deep dive delivered within 24 hours</li>
@@ -96,7 +131,7 @@
             <li>A bridge between the free watchlist and Dashboard</li>
           </ul>
         </div>
-        <div class="rounded-xl border border-gray-700 bg-dark-800 p-8">
+        <div class="mobile-card mobile-card-pad rounded-xl border border-gray-700 bg-dark-800 p-8">
           <h2 class="text-2xl font-bold mb-4">If this already feels familiar</h2>
           <div class="space-y-4 text-gray-300 leading-relaxed">
             <p><strong class="text-white">Best fit:</strong> when you like the Sunday rhythm but want one thesis-specific test before going deeper.</p>
@@ -107,20 +142,20 @@
       </div>
     </section>
 
-    <section class="bg-dark-800 py-16">
-      <div class="max-w-4xl mx-auto px-6 text-center">
+    <section class="bg-dark-800 py-16 md:py-20">
+      <div class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 text-center">
         <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-3">Why this matters right now</p>
         <h2 class="text-3xl font-bold mb-4">You should be able to test this before you talk yourself into something bigger.</h2>
         <p class="text-gray-300 text-lg leading-relaxed max-w-3xl mx-auto">This exists to give you one clean proof point. Not a pitch. Not a commitment. Just a sharper answer while the question is still alive.</p>
       </div>
     </section>
 
-    <section class="max-w-4xl mx-auto px-6 py-12">
-      <div class="rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-8 text-center">
+    <section class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 py-12">
+      <div class="mobile-card mobile-card-pad rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-8 text-center">
         <p class="text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-3">If this feels too early</p>
         <h2 class="text-2xl font-bold mb-4">Stay with the free Sunday watchlist until the question gets louder.</h2>
         <p class="text-gray-300 leading-relaxed max-w-2xl mx-auto mb-6">If the free weekly shortlist proves useful, this page will still be here when you want a sharper test on one thesis.</p>
-        <a href="/#signup" class="btn btn-secondary btn-md">Get the free Sunday watchlist</a>
+        <a href="/#signup" class="btn btn-secondary btn-md w-full sm:w-auto">Get the free Sunday watchlist</a>
       </div>
     </section>
 
@@ -128,17 +163,17 @@
       <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-3">Checkout</p>
       <h2 class="text-3xl font-bold mb-4">Buy First Look</h2>
       <p class="text-gray-300 mb-8">Enter your email and go straight to Stripe. Choose your sector at checkout.</p>
-      <form id="firstlook-form" class="max-w-lg mx-auto flex flex-col sm:flex-row gap-3">
+      <form id="firstlook-form" class="mobile-form-stack max-w-lg mx-auto flex flex-col sm:flex-row gap-3">
         <label for="firstlook-email" class="sr-only">Email</label>
         <input type="email" id="firstlook-email" required placeholder="you@example.com" class="flex-1 px-5 py-4 rounded-lg bg-dark-800 border border-gray-600 text-gray-100 placeholder-gray-500 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 text-lg">
-        <button type="submit" id="firstlook-btn" class="btn btn-cta btn-lg">Get my First Look &rarr;</button>
+        <button type="submit" id="firstlook-btn" class="btn btn-cta btn-lg w-full sm:w-auto">Get my First Look &rarr;</button>
       </form>
       <p id="firstlook-msg" class="text-gray-500 text-sm mt-4">€7 once · secure checkout via Stripe</p>
     </section>
   </main>
 
   <footer class="border-t border-gray-800 bg-dark-900/80 py-12">
-    <div class="max-w-4xl mx-auto px-6 text-center">
+    <div class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 text-center">
       <div class="flex flex-wrap justify-center gap-6 text-gray-500 text-sm mb-4">
         <a href="/" class="hover:text-gray-300">Home</a>
         <a href="/dashboard" class="hover:text-gray-300">Dashboard</a>

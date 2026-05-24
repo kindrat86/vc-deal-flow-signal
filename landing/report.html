@@ -44,6 +44,41 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="stylesheet" href="/styles.css">
   <style>
+    .mobile-cta-stack > * { width: 100%; }
+    .mobile-card, .mobile-step-card { transition: border-color 120ms ease, transform 120ms ease; }
+    .mobile-card:hover, .mobile-step-card:hover { border-color: rgba(14, 165, 233, 0.5); }
+    .mobile-sticky-cta { display: none; }
+    @media (min-width: 640px) { .mobile-cta-stack > * { width: auto; } }
+    @media (max-width: 639px) {
+      html { scroll-padding-top: 5rem; }
+      body { padding-bottom: 6rem; }
+      .mobile-compact-header { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+      .mobile-hero-wrap { padding-left: 1rem; padding-right: 1rem; padding-top: 4rem; padding-bottom: 4rem; }
+      .mobile-hero-title { font-size: 2rem; line-height: 1.1; }
+      .mobile-hero-copy { font-size: 1rem; line-height: 1.65; }
+      .mobile-section-pad { padding-left: 1rem; padding-right: 1rem; }
+      .mobile-card-pad { padding: 1.25rem; }
+      .mobile-stat-grid { gap: 1rem; }
+      .mobile-grid-gap { gap: 1rem; }
+      .mobile-cta-stack .btn,
+      .mobile-form-stack .btn {
+        white-space: normal; text-align: center; line-height: 1.35;
+        padding-left: 1rem; padding-right: 1rem;
+      }
+      .mobile-sticky-cta {
+        position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; display: block;
+        padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom));
+        background: rgba(2, 6, 23, 0.94); backdrop-filter: blur(12px);
+        border-top: 1px solid rgba(71, 85, 105, 0.7);
+      }
+      .mobile-sticky-cta .inner { display: flex; align-items: center; gap: 0.75rem; max-width: 28rem; margin: 0 auto; }
+      .mobile-sticky-cta .meta { flex: 1; min-width: 0; }
+      .mobile-sticky-cta .meta strong { display: block; color: #fff; font-size: 0.95rem; line-height: 1.1; }
+      .mobile-sticky-cta .meta span { display: block; color: #94a3b8; font-size: 0.72rem; margin-top: 0.1rem; }
+      .mobile-sticky-cta .btn { white-space: nowrap; padding-left: 1rem; padding-right: 1rem; }
+    }
+  </style>
+  <style>
     .report-card { transition: border-color 0.2s; }
     .report-card:hover { border-color: rgb(14 165 233 / 0.5); }
     .rank-badge {
@@ -58,7 +93,7 @@
 </head>
 <body class="bg-dark-900 text-gray-100 font-sans antialiased">
   <header class="sticky top-0 z-50 border-b border-gray-800 bg-dark-900/95 backdrop-blur">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-4">
+    <div class="mobile-compact-header max-w-5xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-3">
       <a href="/" class="font-semibold tracking-tight text-white text-lg">GitDealFlow</a>
       <nav class="hidden md:flex items-center gap-6">
         <a href="/" class="text-gray-400 text-sm hover:text-gray-100 transition">Home</a>
@@ -66,7 +101,7 @@
         <a href="/firstlook" class="text-gray-400 text-sm hover:text-gray-100 transition">First Look</a>
         <a href="/dashboard" class="text-gray-400 text-sm hover:text-gray-100 transition">Dashboard</a>
       </nav>
-      <a href="/#signup" class="btn btn-cta btn-sm whitespace-nowrap">Get the free Sunday watchlist <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
+      <a href="/#signup" class="btn btn-cta btn-sm whitespace-nowrap shrink-0"><span class="sm:hidden">Get it</span><span class="hidden sm:inline">Get the free Sunday watchlist</span> <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
     </div>
   </header>
 
@@ -108,7 +143,7 @@
       </div>
     </section>
     <section class="bg-dark-800 py-6 border-y border-gray-800" data-countdown-root data-countdown-key="gdf_timer_report">
-      <div class="max-w-4xl mx-auto px-6 text-center">
+      <div class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 text-center">
         <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-2">Urgency timer</p>
         <p class="text-white font-semibold text-lg">Your sample issue window closes in <span data-countdown-output class="text-signal-400">05:00</span></p>
         <p class="text-gray-500 text-sm mt-1">You have five minutes to grab the next Sunday issue before this session resets.</p>
@@ -185,21 +220,21 @@
       </div>
     </section>
 
-    <section class="bg-dark-800 py-16">
-      <div class="max-w-4xl mx-auto px-6 text-center">
+    <section class="bg-dark-800 py-16 md:py-20">
+      <div class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 text-center">
         <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-3">Where this page sits</p>
         <h2 class="text-3xl font-bold mb-4">This page is a sample, not the whole proof library.</h2>
         <p class="text-gray-300 text-lg leading-relaxed max-w-3xl mx-auto mb-8">If you want to verify the claim properly, use the same three proof surfaces every time: methodology, comparison, and this sample output. If that stack feels solid, go back to the apex and take the free Sunday watchlist.</p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="https://signals.gitdealflow.com/compare/best-alternative-data-tools-for-angel-investors" class="btn btn-secondary btn-md">See which alternative-data stack helps you move earlier</a>
-          <a href="/#signup" class="btn btn-cta btn-md">Send me the next Sunday issue</a>
+        <div class="mobile-cta-stack flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="https://signals.gitdealflow.com/compare/best-alternative-data-tools-for-angel-investors" class="btn btn-secondary btn-md w-full sm:w-auto">See which alternative-data stack helps you move earlier</a>
+          <a href="/#signup" class="btn btn-cta btn-md w-full sm:w-auto">Send me the next Sunday issue</a>
         </div>
       </div>
     </section>
   </main>
 
   <footer class="border-t border-gray-800 bg-dark-900/80 py-12">
-    <div class="max-w-4xl mx-auto px-6 text-center">
+    <div class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 text-center">
       <div class="flex flex-wrap justify-center gap-6 text-gray-500 text-sm mb-4">
         <a href="/" class="hover:text-gray-300">Home</a>
         <a href="https://signals.gitdealflow.com" class="hover:text-gray-300">Signals</a>
