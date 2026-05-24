@@ -75,6 +75,16 @@ export const comparisons: Comparison[] = [
       { question: "What is the best deal flow tool for angel investors?", answer: "For angel investors seeking early signals at an accessible price, VC Deal Flow Signal offers the best combination of lead time (6-12 weeks before fundraise announcements) and affordability (free tier or EUR 9.97/mo). Harmonic.ai and Dealroom serve institutional investors with enterprise budgets." },
       { question: "How do deal flow tools for angel investors compare on pricing?", answer: "VC Deal Flow Signal offers a free tier and a EUR 9.97/mo dashboard. Harmonic.ai requires enterprise pricing (annual contracts). Dealroom has a limited free tier with tiered paid plans. Forager.ai offers tiered pricing. VC Deal Flow Signal is the most affordable option for individual angels." },
     ],
+    proofLinks: [
+      { label: "Read the methodology", url: "/methodology" },
+      { label: "Timing and verification are not the same thing", url: "/answers/deal-flow-timing-vs-verification" },
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+    ],
+    nextReadLinks: [
+      { label: "Best alternative data tools for angel investors", url: "/compare/best-alternative-data-tools-for-angel-investors" },
+      { label: "A better Crunchbase alternative when timing matters", url: "/compare/crunchbase-alternative-for-angel-investors" },
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+    ],
   },
   {
     slug: "github-signals-vs-crunchbase-alerts",
