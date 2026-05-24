@@ -22,6 +22,11 @@ export interface AgentQueryFact {
   sourceLabel: string;
 }
 
+export interface AgentQueryLink {
+  label: string;
+  url: string;
+}
+
 export interface AgentQuery {
   /** URL slug at /answers/[slug]. */
   slug: string;
@@ -44,6 +49,9 @@ export interface AgentQuery {
   ctaLabel: string;
   /** Related answer slugs to link from the bottom of the page. */
   related: string[];
+  /** Optional exact links for proof and next-read blocks. */
+  proofLinks?: AgentQueryLink[];
+  nextReadLinks?: AgentQueryLink[];
   /** SEO keywords for meta tag. */
   keywords: string[];
 }
@@ -4649,6 +4657,318 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
       "vc memo automation 2026",
       "scout score agent pipeline",
       "agent native vc deal flow",
+    ],
+  },
+  {
+    slug: "what-is-startup-engineering-momentum",
+    query: "What is startup engineering momentum?",
+    h1: "What startup engineering momentum actually means",
+    description:
+      "Startup engineering momentum is the pattern behind commit velocity, contributor growth, and shipping intensity. Here is how investors use it as an earlier startup signal.",
+    tldr:
+      "Startup engineering momentum is not just more commits. It is the pattern behind shipping intensity, contributor growth, and visible build activity that suggests something real is changing inside a startup before the public story fully catches up.",
+    body: `Startup engineering momentum is the pattern behind visible changes in how a startup is building in public. It matters because those changes can show up before the market story hardens into a pitch, a raise, or a familiar database update. GitDealFlow uses this kind of public engineering movement as one input for spotting earlier startup momentum.
+
+**Quick answer.** Startup engineering momentum is not just more commits. It is the combination of shipping intensity, contributor growth, and visible build activity that suggests something real is changing inside a startup.
+
+**What counts as startup engineering momentum.** The useful pattern is rarely a single metric. You are looking for a combination of faster shipping, more contributors, more visible product movement, and a broader public engineering footprint. One signal alone can be noisy. The pattern matters more than any one spike.
+
+**Why investors should care.** The public story usually arrives late. If public engineering behavior starts changing before the narrative catches up, you get a calmer window to pay attention. That does not guarantee a good investment. It just gives you earlier attention without waiting for the familiar surfaces to update.
+
+**What this is not.** This is not reading every line of code. It is not pretending GitHub predicts everything. It is not a replacement for judgment. It is simply one earlier public signal that can help you notice when a company starts behaving differently.`,
+    facts: [
+      {
+        claim:
+          "GitDealFlow tracks startup engineering acceleration through rolling commit-velocity change, contributor growth, and repository expansion across venture-backed startup GitHub organizations.",
+        sourceUrl: "https://signals.gitdealflow.com/methodology",
+        sourceLabel: "Methodology",
+      },
+      {
+        claim:
+          "The public dataset is refreshed weekly and exposes ranked startup engineering signals across 20 sectors via JSON, CSV, MCP, and OpenAPI surfaces.",
+        sourceUrl: "https://signals.gitdealflow.com/api/signals.json",
+        sourceLabel: "signals.json",
+      },
+      {
+        claim:
+          "The signal logic is formalized in the SSRN preprint for VC Deal Flow Signal, which explains how engineering acceleration is measured and validated.",
+        sourceUrl:
+          "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558",
+        sourceLabel: "SSRN preprint",
+      },
+    ],
+    faqs: [
+      {
+        q: "Is startup engineering momentum just another way of saying more commits?",
+        a: "No. Raw commit count is too noisy on its own. Momentum is the pattern behind commit-velocity change, contributor growth, and visible build activity relative to the startup's own baseline.",
+      },
+      {
+        q: "Why does startup engineering momentum matter to investors?",
+        a: "Because public engineering behavior can change before the outside story catches up. That gives investors a calmer window to notice momentum before the round feels obvious.",
+      },
+      {
+        q: "Does startup engineering momentum replace due diligence?",
+        a: "No. It is an earlier attention signal, not a substitute for judgment, diligence, or understanding the company beyond the public engineering surface.",
+      },
+    ],
+    ctaUrl: "/report",
+    ctaLabel: "Read a sample Sunday watchlist",
+    related: [
+      "how-angel-investors-use-github-signals",
+      "deal-flow-timing-vs-verification",
+      "what-is-a-github-scout-score",
+    ],
+    proofLinks: [
+      { label: "Read the methodology", url: "/methodology" },
+      { label: "How angel investors use GitHub signals", url: "/answers/how-angel-investors-use-github-signals" },
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+    ],
+    nextReadLinks: [
+      { label: "How angel investors use GitHub signals", url: "/answers/how-angel-investors-use-github-signals" },
+      { label: "Deal flow timing vs verification", url: "/answers/deal-flow-timing-vs-verification" },
+      { label: "Best startup signal tools for investors", url: "/compare/best-startup-signal-tools-for-investors" },
+    ],
+    keywords: [
+      "startup engineering momentum",
+      "engineering momentum startups",
+      "github startup signals",
+      "startup momentum signal",
+      "commit velocity investor signal",
+      "public engineering momentum",
+    ],
+  },
+  {
+    slug: "how-angel-investors-use-github-signals",
+    query: "How do angel investors use GitHub signals?",
+    h1: "How angel investors can use GitHub signals without reading code",
+    description:
+      "You do not need to be an engineer to use GitHub signals. Here is how angel investors can use public engineering behavior as an earlier startup timing signal.",
+    tldr:
+      "You do not need to read code line by line to use GitHub signals well. What matters is noticing when public engineering behavior starts changing in a way that could matter before the market story fully catches up.",
+    body: `You do not need to be an engineer to use GitHub signals well. What matters is not reading code line by line. It is noticing when public engineering behavior starts changing in a way that could matter. This page shows how angel investors can use GitHub signals as an earlier startup timing surface.
+
+**Quick answer.** You are not trying to become a developer. You are simply using public engineering movement as another way to notice when a startup starts behaving differently.
+
+**What to look for.** In plain language, look for faster shipping, more contributors, more visible product movement, signs of build intensity, and signs that the team is scaling effort. The question is not whether every commit matters. The question is whether the pattern looks materially different from before.
+
+**What not to overread.** One metric can be noisy. Open source is not the whole market. Some startups are quiet by design. Signal is a starting point, not a verdict.
+
+**Why this is useful for angels.** The advantage is not certainty. The advantage is earlier attention without having to wait for the familiar story surfaces.`,
+    facts: [
+      {
+        claim:
+          "GitDealFlow translates public GitHub activity into startup engineering signals designed for investors who do not want to read raw code directly.",
+        sourceUrl: "https://signals.gitdealflow.com/methodology",
+        sourceLabel: "Methodology",
+      },
+      {
+        claim:
+          "The live dataset exposes startup rankings, sector cuts, and company-level signal pages so investors can inspect the public surface without rebuilding the workflow themselves.",
+        sourceUrl: "https://signals.gitdealflow.com/api/signals.json",
+        sourceLabel: "signals.json",
+      },
+      {
+        claim:
+          "The comparison surface positions GitDealFlow as a timing-first signal layer for angels, scouts, and technical operators rather than a generic database product.",
+        sourceUrl:
+          "https://signals.gitdealflow.com/compare/best-alternative-data-tools-for-angel-investors",
+        sourceLabel: "Alternative data comparison",
+      },
+    ],
+    faqs: [
+      {
+        q: "Do I need to read code to use GitHub signals?",
+        a: "No. The useful investor move is noticing patterns in public engineering behavior, not reviewing pull requests line by line.",
+      },
+      {
+        q: "What is the main advantage of GitHub signals for angel investors?",
+        a: "GitHub signals can give you earlier attention. They help you notice when something starts changing before the public story becomes obvious.",
+      },
+      {
+        q: "What is the main risk of using GitHub signals badly?",
+        a: "Overreading noise. A single spike or repository event is rarely enough. The pattern matters more than any one isolated metric.",
+      },
+    ],
+    ctaUrl: "https://gitdealflow.com/report",
+    ctaLabel: "Read a sample Sunday watchlist",
+    related: [
+      "what-is-startup-engineering-momentum",
+      "github-deal-flow-for-investors",
+      "deal-flow-timing-vs-verification",
+    ],
+    proofLinks: [
+      { label: "What startup engineering momentum means", url: "/answers/what-is-startup-engineering-momentum" },
+      { label: "Read the methodology", url: "/methodology" },
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+    ],
+    nextReadLinks: [
+      { label: "What startup engineering momentum means", url: "/answers/what-is-startup-engineering-momentum" },
+      { label: "How GitHub becomes deal flow for investors", url: "/answers/github-deal-flow-for-investors" },
+      { label: "Best alternative data tools for angel investors", url: "/compare/best-alternative-data-tools-for-angel-investors" },
+    ],
+    keywords: [
+      "how angel investors use github signals",
+      "github signals for angel investors",
+      "github investor signal",
+      "public engineering behavior investors",
+      "angel investor startup timing",
+    ],
+  },
+  {
+    slug: "github-deal-flow-for-investors",
+    query: "How does GitHub become deal flow for investors?",
+    h1: "How GitHub becomes deal flow for investors",
+    description:
+      "GitHub can be more than a developer tool. This guide explains how investors can use public engineering activity to spot startup momentum earlier.",
+    tldr:
+      "GitHub is not a deal flow database, but public engineering activity can become a useful deal flow surface when you know what you are looking for: momentum, change, team expansion, and product intensity before the outside story fully catches up.",
+    body: `GitHub is not a deal flow database. But public engineering activity can become a useful deal flow surface when you know what you are actually looking for. This page explains how GitHub becomes relevant to investors without turning investing into a coding hobby.
+
+**Quick answer.** GitHub becomes deal flow when public engineering movement helps you notice momentum, change, team expansion, and product intensity before the outside story fully catches up.
+
+**Why GitHub matters at all.** It can show behavior, not just claims. That makes it useful earlier than polished narratives, especially for technical startups where product movement leaves a visible public trace.
+
+**What GitHub can show.** It can show public operating movement, visible shipping behavior, team changes, build intensity, and category-specific momentum clues. Those are not the whole company, but they are often earlier than the standard story surfaces.
+
+**What GitHub cannot show.** It cannot show revenue, sales quality, founder judgment, or every private-company truth. That is exactly why it should be used as one signal layer, not as the whole investment process.`,
+    facts: [
+      {
+        claim:
+          "GitDealFlow publishes startup engineering signals from public GitHub activity as a free JSON, CSV, MCP, and agent-facing API surface.",
+        sourceUrl: "https://signals.gitdealflow.com/api/openapi.json",
+        sourceLabel: "OpenAPI",
+      },
+      {
+        claim:
+          "The methodology documents how GitHub-derived engineering acceleration is turned into ranked startup signals across tracked sectors.",
+        sourceUrl: "https://signals.gitdealflow.com/methodology",
+        sourceLabel: "Methodology",
+      },
+      {
+        claim:
+          "The comparison and answer surfaces position GitHub-based momentum as an earlier signal layer rather than a replacement for diligence or traditional databases.",
+        sourceUrl:
+          "https://signals.gitdealflow.com/compare/best-alternative-data-tools-for-angel-investors",
+        sourceLabel: "Alternative data comparison",
+      },
+    ],
+    faqs: [
+      {
+        q: "Is GitHub really useful for investors?",
+        a: "For technical startups, yes. It can show public engineering movement before the outside story becomes obvious. It is less useful for companies with no meaningful public engineering surface.",
+      },
+      {
+        q: "Does GitHub replace startup databases?",
+        a: "No. GitHub is useful as an earlier public signal. Databases are still useful for verification, profiles, and diligence after a company is already on your radar.",
+      },
+      {
+        q: "What is the simplest way to use GitHub as deal flow?",
+        a: "Use a curated signal layer rather than trying to manually monitor repositories yourself. That is the problem GitDealFlow is built to solve.",
+      },
+    ],
+    ctaUrl: "https://gitdealflow.com/report",
+    ctaLabel: "Read a sample Sunday watchlist",
+    related: [
+      "how-angel-investors-use-github-signals",
+      "what-is-startup-engineering-momentum",
+      "deal-flow-timing-vs-verification",
+    ],
+    proofLinks: [
+      { label: "How angel investors use GitHub signals", url: "/answers/how-angel-investors-use-github-signals" },
+      { label: "Read the methodology", url: "/methodology" },
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+    ],
+    nextReadLinks: [
+      { label: "How angel investors use GitHub signals", url: "/answers/how-angel-investors-use-github-signals" },
+      { label: "Timing and verification are not the same thing", url: "/answers/deal-flow-timing-vs-verification" },
+      { label: "Best alternative data tools for angel investors", url: "/compare/best-alternative-data-tools-for-angel-investors" },
+    ],
+    keywords: [
+      "github deal flow for investors",
+      "github startup deal flow",
+      "investors using github",
+      "github startup sourcing",
+      "github public startup signals",
+    ],
+  },
+  {
+    slug: "deal-flow-timing-vs-verification",
+    query: "Deal flow timing vs verification",
+    h1: "Timing and verification are not the same thing",
+    description:
+      "Most deal flow tools help you verify what already happened. This page explains why earlier timing signals matter and where GitDealFlow fits.",
+    tldr:
+      "Verification helps you understand what already happened. Timing helps you notice what is changing earlier. GitDealFlow is built around earlier public engineering signals, not just later database confirmation.",
+    body: `Most deal flow tools are better at verification than timing. That matters because a tool can be useful and still be too late for the kind of earlier attention you actually want. GitDealFlow is built around earlier public signals, not just cleaner confirmation after the story is already obvious.
+
+**Quick answer.** Verification helps you understand what already happened. Timing helps you notice what is changing before everyone else starts repeating the same company.
+
+**What verification is good for.** Verification tools help with funding history, company lookup, basic profiles, and checking what is already known. That is useful. It is just not the same thing as getting there early.
+
+**What timing is good for.** Timing signals help you notice change before the narrative hardens. They matter when the value is in calmer attention, earlier outreach, and a cleaner read before the round gets crowded.
+
+**Why investors confuse the two.** A clean database entry feels informative, but informative is not the same as early. Many investors think they want more data when they really want a better timing surface.
+
+**Where GitDealFlow fits.** GitDealFlow is not trying to replace every verification tool. It is trying to help you see one kind of earlier public movement before the market catches up.`,
+    facts: [
+      {
+        claim:
+          "GitDealFlow positions public GitHub engineering acceleration as a leading indicator, while traditional startup databases primarily surface post-announcement verification signals.",
+        sourceUrl: "https://signals.gitdealflow.com/methodology",
+        sourceLabel: "Methodology",
+      },
+      {
+        claim:
+          "The compare surface explicitly contrasts GitDealFlow's timing advantage with tools like Crunchbase, PitchBook, and broader market-data platforms.",
+        sourceUrl:
+          "https://signals.gitdealflow.com/compare/best-alternative-data-tools-for-angel-investors",
+        sourceLabel: "Alternative data comparison",
+      },
+      {
+        claim:
+          "The live startup signal dataset is updated weekly and meant to surface movement before a company becomes broadly obvious in standard venture data workflows.",
+        sourceUrl: "https://signals.gitdealflow.com/api/signals.json",
+        sourceLabel: "signals.json",
+      },
+    ],
+    faqs: [
+      {
+        q: "What is the difference between timing and verification in deal flow?",
+        a: "Verification helps you confirm what already happened. Timing helps you notice what is changing earlier, before the usual story surfaces fully update.",
+      },
+      {
+        q: "Are verification tools still useful?",
+        a: "Yes. They are useful for diligence, company lookup, market mapping, and background checks. The problem is using them as if they were an early timing edge.",
+      },
+      {
+        q: "Where does GitDealFlow fit?",
+        a: "GitDealFlow fits as an earlier signal layer. It does not replace verification tools. It helps you notice public engineering movement before the round becomes obvious.",
+      },
+    ],
+    ctaUrl: "https://gitdealflow.com/report",
+    ctaLabel: "Read a sample Sunday watchlist",
+    related: [
+      "what-is-startup-engineering-momentum",
+      "what-is-a-github-scout-score",
+      "track-github-momentum-investment-signals",
+    ],
+    proofLinks: [
+      { label: "Read the methodology", url: "/methodology" },
+      { label: "Compare alternative data tools for angel investors", url: "/compare/best-alternative-data-tools-for-angel-investors" },
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+    ],
+    nextReadLinks: [
+      { label: "Best alternative data tools for angel investors", url: "/compare/best-alternative-data-tools-for-angel-investors" },
+      { label: "A better Crunchbase alternative when timing matters", url: "/compare/crunchbase-alternative-for-angel-investors" },
+      { label: "What startup engineering momentum means", url: "/answers/what-is-startup-engineering-momentum" },
+    ],
+    keywords: [
+      "deal flow timing vs verification",
+      "timing vs verification investors",
+      "early startup signals",
+      "alternative data timing",
+      "venture deal flow timing",
+      "angel investor timing signal",
     ],
   },
 ];

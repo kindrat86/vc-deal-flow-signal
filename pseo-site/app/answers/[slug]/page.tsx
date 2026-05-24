@@ -5,6 +5,7 @@ import {
   agentQueries,
   getAgentQueryBySlug,
   type AgentQuery,
+  type AgentQueryLink,
 } from "@/content/agent-queries";
 import { getDataLastModified } from "@/lib/data";
 import { AgentSummary } from "@/components/AgentSummary";
@@ -308,6 +309,28 @@ export default async function AnswerPage({ params }: PageProps) {
           ))}
         </section>
 
+        {q.proofLinks && q.proofLinks.length > 0 ? (
+          <section className="mb-10 rounded-xl border border-slate-800 bg-slate-900/70 p-6 sm:p-8">
+            <h2 className="text-xl font-semibold text-gray-100 mb-3">
+              If you want to verify the claim
+            </h2>
+            <p className="text-gray-400 text-sm leading-relaxed mb-4">
+              The signal logic is public. Read the methodology, compare the surrounding tools, and inspect the sample output before deciding whether this belongs in your workflow.
+            </p>
+            <div className="flex flex-col gap-3">
+              {q.proofLinks.map((link: AgentQueryLink) => (
+                <Link
+                  key={link.url}
+                  href={link.url}
+                  className="text-sky-400 hover:text-sky-300 underline underline-offset-2 text-sm"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </section>
+        ) : null}
+
         <section className="mb-10 rounded-xl border border-sky-500/30 bg-sky-500/5 p-6 sm:p-8 text-center">
           <p className="text-sky-400 text-xs uppercase tracking-wider mb-2 font-semibold">
             Try it now
@@ -341,13 +364,23 @@ export default async function AnswerPage({ params }: PageProps) {
           </div>
         </section>
 
-        {q.related.length > 0 && (
+        {(q.nextReadLinks && q.nextReadLinks.length > 0) || q.related.length > 0 ? (
           <section className="mb-10" aria-label="Related answers">
             <h2 className="text-base font-semibold text-gray-300 mb-4">
-              Related questions
+              What to read next
             </h2>
             <ul className="space-y-2">
-              {q.related
+              {(q.nextReadLinks ?? []).map((link: AgentQueryLink) => (
+                <li key={link.url}>
+                  <Link
+                    href={link.url}
+                    className="text-sky-400 hover:text-sky-300 underline underline-offset-2 text-sm"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+              {!q.nextReadLinks?.length && q.related
                 .map((relSlug) => getAgentQueryBySlug(relSlug))
                 .filter((r): r is AgentQuery => Boolean(r))
                 .map((r) => (
@@ -362,7 +395,7 @@ export default async function AnswerPage({ params }: PageProps) {
                 ))}
             </ul>
           </section>
-        )}
+        ) : null}
       </article>
     </>
   );
