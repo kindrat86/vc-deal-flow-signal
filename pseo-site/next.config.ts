@@ -154,6 +154,11 @@ const nextConfig: NextConfig = {
         destination: "/signals/define/engineering-hiring-burst",
         permanent: true,
       },
+      {
+        source: "/integrations/best-mcp-server-for-vc-research",
+        destination: "/answers/best-mcp-server-for-vc-research",
+        permanent: true,
+      },
     ];
   },
 

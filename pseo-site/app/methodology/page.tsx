@@ -627,6 +627,21 @@ export default function MethodologyPage() {
           </div>
         </section>
 
+        <section className="mb-10 rounded-xl border border-slate-800 bg-slate-900 p-6 sm:p-8">
+          <h2 className="text-xl font-semibold text-gray-100 mb-3">
+            Related questions worth reading next
+          </h2>
+          <p className="text-gray-400 text-sm leading-relaxed mb-4">
+            If you want the investor-facing version of this methodology, start with the definition pages and comparison pages that turn the raw framework into buyer-language.
+          </p>
+          <ul className="space-y-2">
+            <li><Link href="/answers/what-is-startup-engineering-momentum" className="text-sky-400 hover:text-sky-300 underline underline-offset-2 text-sm">What startup engineering momentum means</Link></li>
+            <li><Link href="/answers/deal-flow-timing-vs-verification" className="text-sky-400 hover:text-sky-300 underline underline-offset-2 text-sm">Timing and verification are not the same thing</Link></li>
+            <li><Link href="/answers/how-angel-investors-use-github-signals" className="text-sky-400 hover:text-sky-300 underline underline-offset-2 text-sm">How angel investors can use GitHub signals without reading code</Link></li>
+            <li><Link href="/answers/what-is-a-github-scout-score" className="text-sky-400 hover:text-sky-300 underline underline-offset-2 text-sm">What a GitHub Scout Score tells you</Link></li>
+          </ul>
+        </section>
+
         <PSEOFooterNav excludeHrefs={["/methodology"]} />
 
         {/* CTA */}
