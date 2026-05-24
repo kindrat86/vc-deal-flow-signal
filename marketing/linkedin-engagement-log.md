@@ -94,3 +94,8 @@
 - Own-post reply reminder: Friday May 22 was a scheduled post day (Tue/Wed/Thu/Fri cadence) — schedule file still missing, check linkedin.com/company/gitdealflow/posts manually and reply within 2h
 - Targets: Avichal Garg, Peter Walker, Packy McCormick
 - Drafts saved above for copy-paste
+
+## 2026-05-24
+- Own-post reply reminder: none (Saturday May 23 is not a scheduled post day)
+- Targets: Peter Walker, Packy McCormick, Samir Kaji
+- Drafts saved above for copy-paste
