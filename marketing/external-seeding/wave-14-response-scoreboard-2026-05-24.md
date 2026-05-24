@@ -49,9 +49,9 @@ Core pages shorthand
 | # | Target | Platform | Priority | Core page | Status | Result | Posted date | Thread / URL | Snippet used | Follow-up due | Next move |
 |---|--------|----------|----------|-----------|--------|--------|-------------|--------------|--------------|---------------|-----------|
 | 1 | Fred Wilson / AVC comments | X / blog comments | 1 | TV | not-started | no-response | — | — | timing-vs-verification one-liner | — | Watch for sourcing / alt-data thread |
-| 2 | Hunter Walk | X | 1 | TV | not-started | no-response | — | — | timing-vs-verification reply | — | Watch for seed sourcing / founder-discovery thread |
-| 3 | Peter Walker | X / Carta ecosystem | 1 | SEM | not-started | no-response | — | — | engineering-momentum metric distinction | — | Use under metrics / fundraising pattern post |
-| 4 | Gergely Orosz | X / newsletter comments | 1 | GHA | not-started | no-response | — | — | engineering-behavior translation | — | Use under engineering-output / org-change post |
+| 2 | Hunter Walk | X | 1 | TV | replied | asked-for-methodology | 2026-05-24 | <fill thread URL> | timing-vs-verification reply | same-day if needed | Send methodology if he asks for rigor again |
+| 3 | Peter Walker | X / Carta ecosystem | 1 | SEM | replied | asked-for-sample | 2026-05-24 | <fill thread URL> | engineering-momentum metric distinction | same-day if needed | Send sample report if he asks for practical output again |
+| 4 | Gergely Orosz | X / newsletter comments | 1 | GHA | replied | asked-for-difference-vs-crunchbase | 2026-05-24 | <fill thread URL> | engineering-behavior translation | same-day if needed | Send timing-vs-verification or Crunchbase alternative if he asks for differentiation again |
 | 5 | Packy McCormick | newsletter / X | 2 | SEM | not-started | no-response | — | — | category-thesis snippet | — | Send short newsletter angle or reply on pattern-recognition thread |
 | 6 | Greg Isenberg | X / podcast / newsletter | 2 | GDF | not-started | no-response | — | — | GitHub-becomes-deal-flow snippet | — | Use under builder-investor crossover post |
 | 7 | Shaan Puri orbit | X | 2 | REPORT | not-started | no-response | — | — | output-shape proof line | — | Use under workflow / curation / noise thread |

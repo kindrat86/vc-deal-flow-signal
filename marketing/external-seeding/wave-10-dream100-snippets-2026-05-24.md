@@ -125,15 +125,26 @@ If they ask “what does it actually look like?”
 Best proof is the sample output:
 https://gitdealflow.com/report
 
+Best audience fit so far
+- data / metrics investor
+- practical / output-shaped skepticism
+
 If they ask “what’s the methodology?”
 Start here:
 https://signals.gitdealflow.com/methodology
+
+Best audience fit so far
+- seed / sourcing investor
+- rigor-first curiosity
 
 If they ask “how is this different from Crunchbase / PitchBook?”
 Start here:
 https://signals.gitdealflow.com/answers/deal-flow-timing-vs-verification
 or
 https://signals.gitdealflow.com/compare/crunchbase-alternative-for-angel-investors
+
+Best audience fit so far
+- technical / engineering crossover skepticism
 
 If they ask “can an AI agent use this directly?”
 Start here:

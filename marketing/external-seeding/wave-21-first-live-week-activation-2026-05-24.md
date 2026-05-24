@@ -28,6 +28,11 @@ Proof fallback stack
 - differentiation -> https://signals.gitdealflow.com/answers/deal-flow-timing-vs-verification
 - MCP / agent angle -> https://signals.gitdealflow.com/integrations/best-mcp-server-for-vc-research
 
+Real-outcome routing reminders
+- data / metrics investor -> first page = SEM, second page = REPORT
+- seed / sourcing investor -> first page = TV, second page = METH
+- technical crossover skeptic -> first page = GHA or SEM, second page = TV or CBA
+
 First-live-week rules
 - maximum 2 meaningful touches per day
 - one sentence, one page, one context
