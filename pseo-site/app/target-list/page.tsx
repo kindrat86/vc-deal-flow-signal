@@ -275,9 +275,7 @@ export default function Dream100Page() {
                 Match <span className="text-slate-500 font-mono">×4</span>
               </dt>
               <dd className="text-gray-400 leading-relaxed text-[13px]">
-                How concentrated this voice&rsquo;s audience is with the
-                developer-investor avatar (1–10). Weighted highest because a
-                wide-reach voice with low Match wastes the cycle.
+                How concentrated this voice&rsquo;s audience is with readers who care about earlier startup signal and clearer timing. Weighted highest because broad reach with weak fit still wastes the cycle.
               </dd>
             </div>
             <div className="space-y-1">
