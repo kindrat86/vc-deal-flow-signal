@@ -4,7 +4,7 @@ export const dynamic = "force-static";
 export const revalidate = 3600;
 
 const BASE_URL = "https://signals.gitdealflow.com";
-const SITEMAPS = ["core", "sectors", "crossings", "startups", "content"];
+const SITEMAPS = ["core", "high-intent", "sectors", "crossings", "startups", "content"];
 
 export async function GET() {
   const lastModified = getDataLastModified().toISOString();

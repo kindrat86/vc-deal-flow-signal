@@ -77,7 +77,7 @@ export const dynamicParams = false;
 export const revalidate = 3600;
 
 export function generateStaticParams() {
-  return ["core", "sectors", "crossings", "startups", "content"].map((id) => ({
+  return ["core", "sectors", "crossings", "startups", "content", "high-intent"].map((id) => ({
     id: `${id}.xml`,
   }));
 }
@@ -548,6 +548,24 @@ export async function GET(_req: Request, ctx: RouteContext) {
         changefreq: "monthly",
         priority: 0.8,
       })),
+    ];
+  } else if (id === "high-intent") {
+    entries = [
+      { url: `${BASE_URL}/how-to-spot-startup-momentum-before-the-round-gets-crowded`, lastmod, changefreq: "weekly", priority: 1.0 },
+      { url: `${BASE_URL}/integrations/best-mcp-server-for-vc-research`, lastmod, changefreq: "weekly", priority: 0.95 },
+      { url: `${BASE_URL}/answers/what-is-startup-engineering-momentum`, lastmod, changefreq: "weekly", priority: 0.95 },
+      { url: `${BASE_URL}/answers/deal-flow-timing-vs-verification`, lastmod, changefreq: "weekly", priority: 0.95 },
+      { url: `${BASE_URL}/answers/how-angel-investors-use-github-signals`, lastmod, changefreq: "weekly", priority: 0.9 },
+      { url: `${BASE_URL}/answers/github-deal-flow-for-investors`, lastmod, changefreq: "weekly", priority: 0.9 },
+      { url: `${BASE_URL}/answers/what-is-a-github-scout-score`, lastmod, changefreq: "weekly", priority: 0.9 },
+      { url: `${BASE_URL}/answers/best-vc-deal-flow-software-2026`, lastmod, changefreq: "weekly", priority: 0.9 },
+      { url: `${BASE_URL}/answers/free-vc-tools-for-emerging-fund-managers`, lastmod, changefreq: "weekly", priority: 0.85 },
+      { url: `${BASE_URL}/answers/what-is-the-best-vc-research-stack-for-2026`, lastmod, changefreq: "weekly", priority: 0.85 },
+      { url: `${BASE_URL}/compare/best-alternative-data-tools-for-angel-investors`, lastmod, changefreq: "weekly", priority: 0.95 },
+      { url: `${BASE_URL}/compare/crunchbase-alternative-for-angel-investors`, lastmod, changefreq: "weekly", priority: 0.9 },
+      { url: `${BASE_URL}/compare/best-startup-signal-tools-for-investors`, lastmod, changefreq: "weekly", priority: 0.9 },
+      { url: `${BASE_URL}/compare/best-deal-flow-tools-angel-investors`, lastmod, changefreq: "weekly", priority: 0.85 },
+      { url: `${BASE_URL}/receipts`, lastmod, changefreq: "weekly", priority: 0.9 },
     ];
   } else {
     return new Response("Not Found", { status: 404 });
