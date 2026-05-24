@@ -118,6 +118,16 @@ Install on Claude Desktop, Claude Code, or any MCP host with one command — see
       "ai-agent-venture-capital-deal-flow",
       "open-source-startup-sourcing-api",
     ],
+    proofLinks: [
+      { label: "Read the methodology", url: "/methodology" },
+      { label: "How angel investors can use GitHub signals without reading code", url: "/answers/how-angel-investors-use-github-signals" },
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+    ],
+    nextReadLinks: [
+      { label: "How to Track GitHub Momentum for Investment Signals", url: "/answers/track-github-momentum-investment-signals" },
+      { label: "How angel investors can use GitHub signals without reading code", url: "/answers/how-angel-investors-use-github-signals" },
+      { label: "Read the methodology", url: "/methodology" },
+    ],
     keywords: [
       "MCP server",
       "Model Context Protocol",
@@ -3441,22 +3451,22 @@ The 2026 thesis (cf. Greg Isenberg's "Agents Are the New SaaS") is that the agen
   {
     slug: "what-is-a-github-scout-score",
     query: "What is a GitHub Scout Score?",
-    h1: "What Is a GitHub Scout Score? — Your Stars as Investment Receipts",
+    h1: "What a GitHub Scout Score tells you",
     description:
-      "A GitHub Scout Score (0-100) grades your starring history against ~75 validated unicorns and big exits. The earlier you starred them, the higher your score. Free, no login, computed by GitDealFlow.",
+      "A GitHub Scout Score turns starring behavior into a simple investing-signal read. Here is what it means, what it does not mean, and how to use it.",
     tldr:
-      "A GitHub Scout Score is a 0-100 grade computed by GitDealFlow from a public GitHub user's starring history, measuring how many validated unicorns / big-funding events / acquisitions the user starred *before* the public event. Top 5 wins are normalized so 5 perfect early calls equal 100. Free, no OAuth, instant shareable card. Score buckets: Curious (0-19), Scout (20-49), Sharp (50-79), Elite (80-94), Oracle (95-100).",
-    body: `A **GitHub Scout Score** is a deterministic 0-100 grade that quantifies how good a developer's GitHub-starring history is at predicting startup outcomes. It is computed by [GitDealFlow Receipts](https://signals.gitdealflow.com/receipts) from any public GitHub username, with no login or OAuth required.
+      "A GitHub Scout Score is not a measure of whether you are a good engineer. It is a lightweight taste signal built from what you have starred and how that pattern overlaps with meaningful startup outcomes. The earlier your stars lined up with breakout companies, the stronger the score.",
+    body: `A **GitHub Scout Score** is a simple way to read what your starring behavior may say about your startup taste. It matters because taste signals become useful when they are grounded in public company outcomes rather than vague reputation. This page explains what the score means, what it does not mean, and how to use it.
 
-**The premise.** Every developer has invested attention in startups before they were obvious — that's what starring a project on GitHub *is*. The Scout Score asks: out of the dozens or hundreds of repositories you starred, how many turned into unicorns, raised a big round, or got acquired? And — critically — how early did you star them?
+**Quick answer.** A GitHub Scout Score is not a measure of whether you are a good engineer. It is a lightweight taste signal built from what you have starred and how that pattern overlaps with meaningful startup outcomes.
 
-**The math.** GitDealFlow maintains a curated database of ~75 validated outcome events (Series A+ funding, $1B+ valuation, acquisition by a public company). For each event, the system records the date and the GitHub repository associated with the company. Your top 5 *earliest* hits are normalized: 5 perfect calls (starring all five winners more than 90 days before their event) yields 100. Late calls (starring within 30 days of the event) score lower. Stars after the event count for nothing — those are *receipts*, not scouting.
+**What the score measures.** GitDealFlow maintains a curated panel of validated outcome events and checks whether your public GitHub stars landed before those outcomes became obvious. The score looks for pattern, not ego. It is a way of asking whether your attention has repeatedly landed near breakout companies early.
 
-**The five rank tiers.** Curious (0-19): you star projects but rarely the eventual winners. Scout (20-49): you've spotted a few before they were obvious. Sharp (50-79): consistent early-call pattern across multiple sectors. Elite (80-94): you're starring future winners months or years before consensus. Oracle (95-100): top-percentile founder-tier taste; possibly an angel investor in disguise.
+**What the score does not measure.** It does not measure intelligence, technical depth, investing skill in isolation, or guaranteed future performance. It is useful as feedback, not as identity.
 
-**Three things the Scout Score is not.** (1) It is **not** a predictive signal about *future* startups — that's the [Scout Game](https://signals.gitdealflow.com/predict). The Scout Score is backward-looking validation of your past taste. (2) It is **not** a leaderboard of activity volume — starring 10,000 repos at random doesn't help your score. (3) It is **not** financial advice or a substitute for due diligence — it's a fun, shareable signal of taste calibration.
+**Why this is useful.** The value is not status. The value is feedback. It gives you one more way to think about where your attention has gone and whether your pattern lines up with meaningful startup signal.
 
-**How to get yours.** Go to [/receipts](https://signals.gitdealflow.com/receipts), paste any public GitHub username, get a 1200×630 shareable OG card with your score, your top 5 earliest hits, and your rank tier. The whole flow takes 15 seconds. There's also an SVG badge at \`/api/badge/scout/{username}/svg\` you can drop in any GitHub README to display your rank.`,
+**How to get yours.** Go to [/receipts](https://signals.gitdealflow.com/receipts), paste any public GitHub username, get a shareable card with your score, top early hits, and rank tier. The whole flow takes seconds, no login required.`,
     facts: [
       {
         claim:
@@ -3513,6 +3523,16 @@ The 2026 thesis (cf. Greg Isenberg's "Agents Are the New SaaS") is that the agen
       "what-is-the-scout-game-on-gitdealflow",
       "how-do-i-build-a-public-vc-track-record",
       "github-momentum-vs-stars-which-matters",
+    ],
+    proofLinks: [
+      { label: "Check your GitHub Scout Score", url: "/receipts" },
+      { label: "Read the methodology", url: "/methodology" },
+      { label: "What startup engineering momentum means", url: "/answers/what-is-startup-engineering-momentum" },
+    ],
+    nextReadLinks: [
+      { label: "Check your GitHub Scout Score", url: "/receipts" },
+      { label: "What startup engineering momentum means", url: "/answers/what-is-startup-engineering-momentum" },
+      { label: "Best startup signal tools for investors", url: "/compare/best-startup-signal-tools-for-investors" },
     ],
     keywords: [
       "github scout score",
