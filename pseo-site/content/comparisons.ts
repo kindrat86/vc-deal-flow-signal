@@ -1999,6 +1999,51 @@ export const comparisons: Comparison[] = [
       { label: "How to share a startup signal with a co-investor", url: "/answers/how-to-share-a-startup-signal-with-a-co-investor" },
     ],
   },
+  {
+    slug: "compare/gitdealflow-vs-a-shared-google-sheet-for-deal-flow",
+    title: "GitDealFlow vs a Shared Google Sheet for Deal Flow",
+    description:
+      "A shared Google Sheet is useful for lightweight collaboration and note-taking. GitDealFlow is stronger when you want a recurring timing layer instead of a manually refreshed shared list.",
+    h1: "GitDealFlow vs a shared Google Sheet for deal flow",
+    intro:
+      "A shared Google Sheet is often the first team system because it is fast, familiar, and almost free. But it solves a different problem than a recurring signal layer.",
+    sections: [
+      {
+        heading: "Shared Google Sheet — lightweight collaboration",
+        body: "A shared Google Sheet is useful for simple lists, shared notes, quick comments, and a lightweight source of truth that everyone already knows how to use.",
+      },
+      {
+        heading: "GitDealFlow — recurring timing layer",
+        body: "GitDealFlow is stronger when the real bottleneck is not sharing notes, but noticing what changed each week before the team has to refresh a stale sheet manually.",
+      },
+      {
+        heading: "Where the sheet breaks",
+        body: "A sheet gets weak when it becomes a warehouse for names with no reliable engine updating the team's attention. The problem is not collaboration. The problem is manual re-ranking and stale review.",
+      },
+      {
+        heading: "Simple rule",
+        body: "Use a shared Google Sheet if you mainly need shared memory. Use GitDealFlow if you need a recurring timing layer that tells the team what deserves attention first.",
+      },
+    ],
+    verdict:
+      "A shared Google Sheet is useful for lightweight collaboration and shared memory. GitDealFlow is stronger when the real need is a recurring signal layer that reduces manual refresh work and stale weekly review.",
+    relatedSectors: ["ai-ml", "developer-tools", "enterprise-saas"],
+    faqs: [
+      { question: "Can a shared Google Sheet replace GitDealFlow?", answer: "Not really. A sheet is good at sharing notes and statuses, but it does not inherently create a recurring timing signal or reduce manual scanning." },
+      { question: "Should I use both?", answer: "Yes. For many small teams the clean stack is GitDealFlow for signal and a sheet for lightweight note-sharing if a heavier CRM is still too much." },
+      { question: "When is the sheet enough?", answer: "When your universe is still tiny and the main need is simple collaboration rather than recurring signal visibility." },
+    ],
+    proofLinks: [
+      { label: "What do you actually get from Dashboard each week?", url: "/answers/what-do-i-actually-get-from-dashboard-each-week" },
+      { label: "How to use GitDealFlow with a small investment team", url: "/answers/how-to-use-gitdealflow-with-a-small-investment-team" },
+      { label: "Read the methodology", url: "/methodology" },
+    ],
+    nextReadLinks: [
+      { label: "See the weekly operating surface", url: "/dashboard" },
+      { label: "When to upgrade from a spreadsheet to a real signal workflow", url: "/answers/when-to-upgrade-from-a-spreadsheet-to-a-real-signal-workflow" },
+      { label: "Dashboard vs a custom Airtable deal flow board", url: "/compare/dashboard-vs-a-custom-airtable-deal-flow-board" },
+    ],
+  },
 ];
  
  // ---------------------------------------------------------------------------

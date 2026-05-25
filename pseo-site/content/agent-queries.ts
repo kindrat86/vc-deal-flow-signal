@@ -6889,6 +6889,85 @@ A strong memo makes the signal usable by someone else.`,
       "small fund deal flow prioritization",
     ],
   },
+  {
+    slug: "how-to-run-a-weekly-signal-review-with-a-small-team",
+    query: "How do I run a weekly signal review with a small team?",
+    h1: "How to run a weekly signal review with a small team",
+    description:
+      "A weekly signal review works best when one person prepares the shortlist, one person pressure-tests it, and the team leaves with clear owners and next actions instead of vague enthusiasm.",
+    tldr:
+      "The best weekly signal review with a small team is simple: one prepared shortlist, one challenge pass, and one decision per name — watch, reach out, deepen, or drop.",
+    body: `Small teams do not need a two-hour ritual. They need a weekly review that turns signal into decisions without creating extra noise.
+
+**Quick answer.** One person prepares the shortlist, one person pressure-tests it, and the team leaves with clear owners and next actions.
+
+**What to prepare before the meeting.** Bring the few names that actually deserve discussion, not every name that moved. If the room has to do first-pass filtering live, the meeting is already wasting time.
+
+**What the meeting should do.** For each name, answer four questions: what changed, why it matters, what still needs verification, and what the next action is.
+
+**What to avoid.** Do not let the meeting become an open-ended brainstorm. A weekly review should narrow the field and assign ownership, not multiply possibilities.
+
+**Simple rule.** The meeting is successful if each discussed name ends in one of four outcomes: watch, reach out, deeper pass, or drop.`,
+    facts: [
+      {
+        claim:
+          "The current content system already separates signal, verification, and escalation paths, which maps directly onto a clean weekly team review structure.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/deal-flow-timing-vs-verification",
+        sourceLabel: "Timing vs verification",
+      },
+      {
+        claim:
+          "Partner-meeting guidance already emphasizes bringing one clear signal and one next step rather than flooding the room with noisy names.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/how-to-use-gitdealflow-in-a-partner-meeting",
+        sourceLabel: "Partner meeting answer",
+      },
+      {
+        claim:
+          "Dashboard is positioned as the recurring weekly operating surface, which makes it the natural prep layer for a small team review.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/what-do-i-actually-get-from-dashboard-each-week",
+        sourceLabel: "Dashboard weekly value",
+      },
+    ],
+    faqs: [
+      {
+        q: "How many names should a small team review each week?",
+        a: "Only the few that actually deserve discussion. The goal is decision quality, not maximum list throughput.",
+      },
+      {
+        q: "Who should own the shortlist before the meeting starts?",
+        a: "One person should prepare the shortlist first. Shared preparation by everyone usually creates duplicated work and noisy discussion.",
+      },
+      {
+        q: "What makes a weekly review fail?",
+        a: "When it becomes a live filtering session, a broad brainstorm, or a discussion with no explicit next owner or next action.",
+      },
+    ],
+    ctaUrl: "/dashboard",
+    ctaLabel: "See the weekly operating surface",
+    related: [
+      "how-to-use-gitdealflow-with-a-small-investment-team",
+      "how-to-use-gitdealflow-in-a-partner-meeting",
+      "how-to-rank-startup-signals-in-a-small-fund",
+    ],
+    proofLinks: [
+      { label: "What do you actually get from Dashboard each week?", url: "/answers/what-do-i-actually-get-from-dashboard-each-week" },
+      { label: "How to use GitDealFlow in a partner meeting", url: "/answers/how-to-use-gitdealflow-in-a-partner-meeting" },
+      { label: "Read the methodology", url: "/methodology" },
+    ],
+    nextReadLinks: [
+      { label: "See the weekly operating surface", url: "/dashboard" },
+      { label: "How to rank startup signals in a small fund", url: "/answers/how-to-rank-startup-signals-in-a-small-fund" },
+      { label: "How to use GitDealFlow with a small investment team", url: "/answers/how-to-use-gitdealflow-with-a-small-investment-team" },
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+    ],
+    keywords: [
+      "how to run a weekly signal review with a small team",
+      "weekly deal flow review small team",
+      "startup signal team review",
+      "weekly investment team signal meeting",
+      "small fund weekly review workflow",
+    ],
+  },
 ];
 
 export function getAgentQueryBySlug(slug: string): AgentQuery | undefined {
