@@ -5196,9 +5196,9 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
     query: "When should I use First Look vs Dashboard?",
     h1: "When should you use First Look vs Dashboard?",
     description:
-      "Use First Look when a live sector question already needs a sharper answer. Use Dashboard when you want a recurring weekly operating surface.",
+      "Use First Look when a live sector question already needs a sharper answer. Use Dashboard when you want a recurring weekly operating surface across names, sectors, and weeks.",
     tldr:
-      "Use First Look when one thesis or sector question is already live and you need a sharper pass now. Use Dashboard when you want a recurring weekly operating surface across many names, sectors, and weeks.",
+      "Use First Look when one thesis or sector question is already live and you need a sharper pass now. Use Dashboard when you want a recurring weekly operating surface across many names, sectors, and weeks. The right choice depends on whether the question is one-off or recurring.",
     body: `First Look and Dashboard solve different timing problems. If you treat them like substitutes, you will either overbuy too early or underbuy when the question is already expensive.
 
 **Quick answer.** First Look is for one live question. Dashboard is for recurring weekly coverage.
@@ -5209,7 +5209,9 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
 
 **The practical distinction.** First Look is a fast pass on something already active in your notes. Dashboard is what you use when you want fewer tabs, fewer guessy Mondays, and a stable weekly place to review momentum across the field.
 
-**A simple rule.** If your question starts with 'this sector won't leave me alone', use First Look. If it starts with 'I need a better weekly way to review what changed', use Dashboard.`,
+**A simple rule.** If your question starts with 'this sector won't leave me alone', use First Look. If it starts with 'I need a better weekly way to review what changed', use Dashboard.
+
+**What comes after the choice.** If you choose First Look, the next question is whether it was enough or whether the signal should become a recurring habit. If you choose Dashboard, the next question is whether you need only weekly visibility or a higher-touch support layer.`,
     facts: [
       {
         claim:
@@ -5252,14 +5254,15 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
       "deal-flow-timing-vs-verification",
     ],
     proofLinks: [
+      { label: "Read the research panel", url: "/research" },
       { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
       { label: "Read the buyer's guide", url: "/buyers-guide" },
       { label: "Read the methodology", url: "/methodology" },
     ],
     nextReadLinks: [
-      { label: "See the weekly operating surface", url: "/dashboard" },
       { label: "Get my First Look", url: "/firstlook" },
-      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+      { label: "See the weekly operating surface", url: "/dashboard" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
       { label: "Best VC deal flow software in 2026", url: "/answers/best-vc-deal-flow-software-2026" },
     ],
     keywords: [
@@ -5429,9 +5432,9 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
     query: "Can GitDealFlow replace Crunchbase?",
     h1: "Can GitDealFlow replace Crunchbase?",
     description:
-      "Not completely. GitDealFlow is stronger for earlier timing. Crunchbase is still useful for verification, company lookup, and broader context after a name deserves attention.",
+      "Not completely. GitDealFlow is stronger for earlier timing, while Crunchbase is still useful for verification, company lookup, and broader context after a name deserves attention.",
     tldr:
-      "GitDealFlow can replace Crunchbase for some timing jobs, but not for every verification job. The strongest stack is usually GitDealFlow first, Crunchbase second.",
+      "GitDealFlow can replace Crunchbase for some timing jobs, but not for every verification job. The strongest stack is usually GitDealFlow first for earlier signal, Crunchbase second for verification, then a buyer-side decision about how much workflow depth you need.",
     body: `GitDealFlow is not a full startup database, and it is not trying to be. It is strongest when the real job is earlier timing rather than broad verification.
 
 **Quick answer.** No, not completely. GitDealFlow is better for earlier signal. Crunchbase is still useful for company lookup, funding history, and a lighter verification pass after something already deserves attention.
@@ -5440,7 +5443,9 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
 
 **Where Crunchbase still matters.** It still matters for funding rounds, investor lists, basic company facts, and quick background checks after a name is already on your radar.
 
-**The clean stack.** For most small investors the strongest workflow is simple: GitDealFlow first for timing, Crunchbase second for verification. The mistake is expecting a verification tool to do an early-signal job.`,
+**The clean stack.** For most small investors the strongest workflow is simple: GitDealFlow first for timing, Crunchbase second for verification. The mistake is expecting a verification tool to do an early-signal job.
+
+**What happens after that.** Once the timing-versus-verification split is clear, the next question is not whether one tool should do everything. The next question is whether your workflow needs only a light first step, a recurring weekly surface, or a higher-touch lane.`,
     facts: [
       {
         claim:
@@ -5485,13 +5490,14 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
     proofLinks: [
       { label: "A better Crunchbase alternative when timing matters", url: "/compare/crunchbase-alternative-for-angel-investors" },
       { label: "GitHub signals vs Crunchbase alerts", url: "/compare/github-signals-vs-crunchbase-alerts" },
+      { label: "Read the research panel", url: "/research" },
       { label: "Read the methodology", url: "/methodology" },
     ],
     nextReadLinks: [
-      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
-      { label: "Get my First Look", url: "/firstlook" },
-      { label: "Read the buyer's guide", url: "/buyers-guide" },
       { label: "A better Crunchbase alternative when timing matters", url: "/compare/crunchbase-alternative-for-angel-investors" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
+      { label: "When should you use First Look vs Dashboard?", url: "/answers/when-should-i-use-first-look-vs-dashboard" },
+      { label: "Get my First Look", url: "/firstlook" },
     ],
     keywords: [
       "can GitDealFlow replace Crunchbase",
@@ -5506,9 +5512,9 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
     query: "Is First Look worth it for angels?",
     h1: "Is First Look worth it for angels?",
     description:
-      "First Look is worth it when one live sector or thesis question already needs a sharper answer. It is less useful if you are still too early and only need broad weekly exposure.",
+      "First Look is worth it when one live sector or thesis question already needs a sharper answer. It is less useful if you are still too early and only need broad weekly exposure or recurring workflow.",
     tldr:
-      "First Look is worth it for angels when the question is already hot. If you still just need recurring exposure and patience, start with the free Sunday issue instead.",
+      "First Look is worth it for angels when the question is already hot and specific. If you still just need recurring exposure and patience, start with the free Sunday issue or a recurring weekly surface instead.",
     body: `First Look is not a generic trial. It is a paid shortcut for a specific moment: when a sector or thesis question already has enough heat that a sharper answer is worth more than another week of passive browsing.
 
 **Quick answer.** First Look is worth it when one live question already needs a better answer. If you are still too early, the free Sunday issue is the better starting point.
@@ -5517,7 +5523,9 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
 
 **When it is not worth it yet.** It is usually too early if you are still just orienting yourself, browsing broadly, or figuring out whether this category even fits your workflow. In that case, free weekly exposure is the smarter first move.
 
-**Simple rule.** If the question is specific and already expensive, use First Look. If the question is still fuzzy, start free and let the signal build context first.`,
+**Simple rule.** If the question is specific and already expensive, use First Look. If the question is still fuzzy, start free and let the signal build context first.
+
+**The next decision after that.** Once the question becomes recurring instead of one-off, the real comparison shifts from First Look versus free to First Look versus Dashboard.`,
     facts: [
       {
         claim:
@@ -5562,13 +5570,14 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
     proofLinks: [
       { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
       { label: "Read the buyer's guide", url: "/buyers-guide" },
+      { label: "Read the research panel", url: "/research" },
       { label: "Read the methodology", url: "/methodology" },
     ],
     nextReadLinks: [
       { label: "Get my First Look", url: "/firstlook" },
-      { label: "See the weekly operating surface", url: "/dashboard" },
-      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
       { label: "When should you use First Look vs Dashboard?", url: "/answers/when-should-i-use-first-look-vs-dashboard" },
+      { label: "See the weekly operating surface", url: "/dashboard" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
     ],
     keywords: [
       "is First Look worth it for angels",
