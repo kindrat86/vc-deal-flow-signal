@@ -40,6 +40,26 @@ export default function DisclosurePage() {
         </p>
       </header>
 
+      <section className="mb-8 rounded-xl border border-emerald-700/30 bg-emerald-950/20 p-5 sm:p-6 space-y-3">
+        <p className="text-emerald-300 text-xs font-semibold uppercase tracking-[0.14em]">
+          Start with the most-requested trust routes
+        </p>
+        <p className="text-gray-300 text-sm leading-relaxed">
+          Researchers and buyers reading disclosure policy usually want the main security summary, current service status, and the broader trust center next.
+        </p>
+        <div className="flex flex-wrap gap-3">
+          <Link href="/security" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-emerald-600 text-white text-sm font-semibold hover:bg-emerald-500 transition-colors">
+            Read security overview →
+          </Link>
+          <Link href="/uptime" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+            Check live uptime →
+          </Link>
+          <Link href="/trust" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+            Open trust center →
+          </Link>
+        </div>
+      </section>
+
       <section className="mb-8 rounded-xl border border-emerald-500/30 bg-emerald-500/5 p-5 text-emerald-100 text-sm leading-relaxed">
         <p className="font-semibold mb-2">Quick path</p>
         <ol className="list-decimal list-outside ml-5 space-y-1">
