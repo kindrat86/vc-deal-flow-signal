@@ -207,6 +207,26 @@ export default function IdentityPage() {
         </p>
       </header>
 
+      <section className="mb-10 rounded-xl border border-amber-700/30 bg-amber-950/20 p-6 sm:p-8 space-y-3">
+        <p className="text-amber-300 text-xs font-semibold uppercase tracking-[0.14em]">
+          Start with the highest-intent routes
+        </p>
+        <p className="text-gray-300 text-sm leading-relaxed">
+          Read this page if you want the buyer transformation. But if your real question is proof, timing, or what lane fits you right now, start with the sharper pages first.
+        </p>
+        <div className="flex flex-wrap gap-3">
+          <Link href="/research" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-amber-500 text-slate-950 text-sm font-semibold hover:bg-amber-400 transition-colors">
+            Read the research panel →
+          </Link>
+          <Link href="/who-this-is-for" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+            Pick your starting lane →
+          </Link>
+          <Link href="/buyers-guide" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+            Read the buyer's guide →
+          </Link>
+        </div>
+      </section>
+
       <IdentityBanner />
 
       {/* EMOTIONAL CAUSE CALLOUT — Brunson Expert Secrets §1 Ch 2 layer 2.
