@@ -39,6 +39,26 @@ export default function ThanksTeardown() {
           </p>
         </header>
 
+        <section className="rounded-xl border border-rose-500/30 bg-rose-500/5 p-5 sm:p-6 space-y-3">
+          <p className="text-rose-300 text-xs font-semibold uppercase tracking-wider">
+            Best next move while you wait
+          </p>
+          <p className="text-gray-300 text-sm leading-relaxed">
+            Do not leave this as a €1 receipt page. If the teardown already makes you curious about the wider signal, the best next move is to either step into the full First Look or understand the buyer-side logic first.
+          </p>
+          <div className="flex flex-wrap gap-3 text-sm">
+            <Link href="/firstlook" className="text-rose-200 hover:text-rose-100 underline underline-offset-2">
+              See the First Look Pass
+            </Link>
+            <Link href="/buyers-guide" className="text-rose-200 hover:text-rose-100 underline underline-offset-2">
+              Read the buyer's guide
+            </Link>
+            <Link href="/research" className="text-rose-200 hover:text-rose-100 underline underline-offset-2">
+              Read the research panel
+            </Link>
+          </div>
+        </section>
+
         <section className="bg-slate-900/60 border border-slate-800 rounded-lg p-5 space-y-3">
           <p className="text-gray-300 text-sm font-semibold">
             What to send back
