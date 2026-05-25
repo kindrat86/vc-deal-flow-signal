@@ -1,0 +1,7 @@
+cron.log
+cron.run.log
+cron.run.err
+cron-skipped-*.log
+launchd.out.log
+launchd.err.log
+data.json.tmp
