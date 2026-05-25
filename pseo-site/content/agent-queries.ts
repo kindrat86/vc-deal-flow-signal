@@ -2339,6 +2339,8 @@ Restart Claude Desktop. The six tools (get_trending_startups, search_startups_by
       { label: "Best VC Deal Flow Software 2026", url: "/answers/best-vc-deal-flow-software-2026" },
       { label: "Free VC Tools for Emerging Fund Managers", url: "/answers/free-vc-tools-for-emerging-fund-managers" },
       { label: "Best Deal Flow Tools for Angel Investors", url: "/compare/best-deal-flow-tools-angel-investors" },
+      { label: "See the weekly operating surface", url: "/dashboard" },
+      { label: "Get my First Look", url: "/firstlook" },
     ],
     keywords: [
       "VC research stack",
@@ -3661,6 +3663,8 @@ The 2026 thesis (cf. Greg Isenberg's "Agents Are the New SaaS") is that the agen
       { label: "Free VC Tools for Emerging Fund Managers", url: "/answers/free-vc-tools-for-emerging-fund-managers" },
       { label: "The Best VC Research Stack for 2026", url: "/answers/what-is-the-best-vc-research-stack-for-2026" },
       { label: "Best Deal Flow Tools for Angel Investors", url: "/compare/best-deal-flow-tools-angel-investors" },
+      { label: "See the weekly operating surface", url: "/dashboard" },
+      { label: "Get my First Look", url: "/firstlook" },
     ],
     keywords: [
       "best vc deal flow software",
@@ -4777,6 +4781,8 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
       { label: "How angel investors use GitHub signals", url: "/answers/how-angel-investors-use-github-signals" },
       { label: "Deal flow timing vs verification", url: "/answers/deal-flow-timing-vs-verification" },
       { label: "Best startup signal tools for investors", url: "/compare/best-startup-signal-tools-for-investors" },
+      { label: "Get my First Look", url: "/firstlook" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
     ],
     keywords: [
       "startup engineering momentum",
@@ -4932,6 +4938,8 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
       { label: "How angel investors use GitHub signals", url: "/answers/how-angel-investors-use-github-signals" },
       { label: "Timing and verification are not the same thing", url: "/answers/deal-flow-timing-vs-verification" },
       { label: "Best alternative data tools for angel investors", url: "/compare/best-alternative-data-tools-for-angel-investors" },
+      { label: "Get my First Look", url: "/firstlook" },
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
     ],
     keywords: [
       "github deal flow for investors",
@@ -5011,6 +5019,8 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
       { label: "Best alternative data tools for angel investors", url: "/compare/best-alternative-data-tools-for-angel-investors" },
       { label: "A better Crunchbase alternative when timing matters", url: "/compare/crunchbase-alternative-for-angel-investors" },
       { label: "What startup engineering momentum means", url: "/answers/what-is-startup-engineering-momentum" },
+      { label: "Get my First Look", url: "/firstlook" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
     ],
     keywords: [
       "deal flow timing vs verification",
