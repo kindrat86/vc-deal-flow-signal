@@ -97,6 +97,26 @@ export default function InstallClient() {
         </p>
       </header>
 
+      <section className="mb-10 rounded-2xl border border-orange-500/30 bg-orange-500/5 p-6 sm:p-8">
+        <p className="text-orange-300 text-xs font-semibold uppercase tracking-[0.14em] mb-2">
+          Start with the highest-intent routes
+        </p>
+        <p className="text-gray-300 text-sm leading-relaxed mb-4 max-w-2xl">
+          Use this page if you want the zero-install bookmarklet path. But if your real question is browser extensions, developer docs, or agent pricing, start with the sharper routes first.
+        </p>
+        <div className="flex flex-wrap gap-3">
+          <Link href="/developers" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-orange-500 text-white text-sm font-semibold hover:bg-orange-400 transition-colors">
+            Read developer docs →
+          </Link>
+          <Link href="/badge-builder" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+            Build a repo badge →
+          </Link>
+          <Link href="/agents/credits" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+            See agent credits →
+          </Link>
+        </div>
+      </section>
+
       <BookmarkletDragSection href={BOOKMARKLET_HREF} />
 
       <section className="mb-10 rounded-2xl border border-slate-800 bg-slate-900/50 p-6 sm:p-8">
