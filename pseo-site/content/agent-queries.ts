@@ -6581,6 +6581,160 @@ A strong memo makes the signal usable by someone else.`,
       "deal flow watchlist without noise",
     ],
   },
+  {
+    slug: "how-to-use-gitdealflow-with-a-small-investment-team",
+    query: "How do I use GitDealFlow with a small investment team?",
+    h1: "How to use GitDealFlow with a small investment team",
+    description:
+      "A small investment team should use GitDealFlow as a shared timing layer: one recurring signal surface, one lightweight verification path, and one clear handoff into notes, outreach, or deeper review.",
+    tldr:
+      "The cleanest way to use GitDealFlow with a small investment team is to make it the shared timing layer: one place to notice what changed, then one simple handoff into verification, ownership, and next action.",
+    body: `A small team does not need a giant stack. It needs a shared rhythm.
+
+**Quick answer.** Use GitDealFlow as the shared timing layer, then assign a simple handoff for verification and next action.
+
+**What this looks like in practice.** One person reviews the weekly signal surface first, one person pressure-tests the most interesting names, and the team decides whether to watch, reach out, or escalate. The signal should create shared focus, not more chatter.
+
+**Why this works.** Small teams lose time when everyone scans separately and then argues from slightly different snapshots. A common timing surface reduces duplicate work and makes the discussion cleaner.
+
+**What to avoid.** Do not turn the signal layer into another passive dashboard tab. It should feed a recurring review moment and a clear next owner for follow-up.`,
+    facts: [
+      {
+        claim:
+          "Dashboard is positioned as the recurring weekly operating surface, which makes it the natural shared review layer for a small team.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/what-do-i-actually-get-from-dashboard-each-week",
+        sourceLabel: "Dashboard weekly value",
+      },
+      {
+        claim:
+          "The content system already separates timing, verification, and deeper passes, which maps well onto team handoffs.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/deal-flow-timing-vs-verification",
+        sourceLabel: "Timing vs verification",
+      },
+      {
+        claim:
+          "First Look exists as the sharper pass when one thesis or sector question becomes hot enough to deserve focused attention.",
+        sourceUrl: "https://gitdealflow.com/firstlook.html",
+        sourceLabel: "First Look page",
+      },
+    ],
+    faqs: [
+      {
+        q: "Should every team member review the same weekly list?",
+        a: "Usually yes. The point is to create a shared timing surface before individual follow-up paths diverge.",
+      },
+      {
+        q: "What should happen after a name looks interesting?",
+        a: "Assign a clear next owner and next action: verify, outreach, deeper pass, or ignore for now.",
+      },
+      {
+        q: "When should a small team add heavier tools?",
+        a: "Only when the bottleneck shifts from shared timing to deeper workflow management, relationship tracking, or institutional diligence depth.",
+      },
+    ],
+    ctaUrl: "/dashboard",
+    ctaLabel: "See the weekly operating surface",
+    related: [
+      "how-to-build-a-two-layer-deal-flow-stack",
+      "how-to-use-gitdealflow-in-a-partner-meeting",
+      "what-do-i-actually-get-from-dashboard-each-week",
+    ],
+    proofLinks: [
+      { label: "What do you actually get from Dashboard each week?", url: "/answers/what-do-i-actually-get-from-dashboard-each-week" },
+      { label: "Read the methodology", url: "/methodology" },
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+    ],
+    nextReadLinks: [
+      { label: "See the weekly operating surface", url: "/dashboard" },
+      { label: "Get my First Look", url: "/firstlook" },
+      { label: "How to use GitDealFlow in a partner meeting", url: "/answers/how-to-use-gitdealflow-in-a-partner-meeting" },
+      { label: "How to turn a signal into an investment memo", url: "/answers/how-to-turn-a-signal-into-an-investment-memo" },
+    ],
+    keywords: [
+      "how to use GitDealFlow with a small investment team",
+      "small investment team deal flow workflow",
+      "shared signal workflow investors",
+      "team startup sourcing workflow",
+      "GitDealFlow team usage",
+    ],
+  },
+  {
+    slug: "when-to-upgrade-from-a-spreadsheet-to-a-real-signal-workflow",
+    query: "When should I upgrade from a spreadsheet to a real signal workflow?",
+    h1: "When to upgrade from a spreadsheet to a real signal workflow",
+    description:
+      "Upgrade from a spreadsheet when tracking names is no longer the bottleneck and recurring review, timing, and change-detection become harder than note-taking itself.",
+    tldr:
+      "You should upgrade from a spreadsheet when your problem stops being where to store names and starts being how to notice what changed, how to review it weekly, and how to avoid stale manual tracking.",
+    body: `A spreadsheet is not wrong. It just stops being enough at a certain point.
+
+**Quick answer.** Upgrade when recurring review and change-detection become more expensive than note-taking.
+
+**What spreadsheets are good at.** They are good at holding names, notes, simple status fields, and ad-hoc lists. They are cheap and flexible.
+
+**Where they start to break.** They break when you need to know what changed this week without manually re-checking everything yourself. At that point the problem is not storage. It is timing and repeated review.
+
+**The upgrade signal.** If your spreadsheet still feels alive because you touch it intentionally, keep it. If it has become a stale graveyard that depends on heroic manual refreshes, you need a real signal workflow.`,
+    facts: [
+      {
+        claim:
+          "The current compare layer already distinguishes manual storage systems from recurring signal surfaces, especially in the Dashboard vs Notion framing.",
+        sourceUrl: "https://signals.gitdealflow.com/compare/dashboard-vs-a-notion-watchlist",
+        sourceLabel: "Dashboard vs Notion watchlist",
+      },
+      {
+        claim:
+          "Dashboard is positioned as the recurring weekly operating surface, which is the natural step after a spreadsheet stops handling weekly review well.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/what-do-i-actually-get-from-dashboard-each-week",
+        sourceLabel: "Dashboard weekly value",
+      },
+      {
+        claim:
+          "The two-layer stack pattern already treats timing and verification as distinct jobs, which a spreadsheet alone usually cannot handle elegantly at scale.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/how-to-build-a-two-layer-deal-flow-stack",
+        sourceLabel: "Two-layer stack answer",
+      },
+    ],
+    faqs: [
+      {
+        q: "Can a spreadsheet still be enough for a solo investor?",
+        a: "Yes, if the main need is storage and the review load is still light. The upgrade becomes useful when weekly signal review becomes the real bottleneck.",
+      },
+      {
+        q: "What is the clearest sign I should upgrade?",
+        a: "When you keep rechecking the same names manually and still feel late or stale.",
+      },
+      {
+        q: "Does upgrading mean I should abandon notes entirely?",
+        a: "No. A better signal workflow replaces part of the repeated review burden. You may still keep notes elsewhere.",
+      },
+    ],
+    ctaUrl: "/dashboard",
+    ctaLabel: "See the weekly operating surface",
+    related: [
+      "how-to-build-a-two-layer-deal-flow-stack",
+      "what-do-i-actually-get-from-dashboard-each-week",
+      "how-to-use-a-watchlist-without-overtrading",
+    ],
+    proofLinks: [
+      { label: "Dashboard vs a Notion watchlist", url: "/compare/dashboard-vs-a-notion-watchlist" },
+      { label: "Read the methodology", url: "/methodology" },
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+    ],
+    nextReadLinks: [
+      { label: "See the weekly operating surface", url: "/dashboard" },
+      { label: "Dashboard vs a custom Airtable deal flow board", url: "/compare/dashboard-vs-a-custom-airtable-deal-flow-board" },
+      { label: "How to build a two-layer deal flow stack", url: "/answers/how-to-build-a-two-layer-deal-flow-stack" },
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+    ],
+    keywords: [
+      "when to upgrade from a spreadsheet to a real signal workflow",
+      "spreadsheet vs signal workflow",
+      "deal flow spreadsheet upgrade",
+      "when to move beyond spreadsheet startup sourcing",
+      "investor workflow spreadsheet too manual",
+    ],
+  },
 ];
 
 export function getAgentQueryBySlug(slug: string): AgentQuery | undefined {
