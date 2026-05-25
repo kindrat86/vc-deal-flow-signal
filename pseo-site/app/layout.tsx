@@ -8,6 +8,7 @@ import LaunchBanner from "@/components/LaunchBanner";
 import PixelManager from "@/components/PixelManager";
 import { RootIdentitySchema } from "@/components/RootIdentitySchema";
 import WebVitalsReporter from "@/components/WebVitalsReporter";
+import GuidedConcierge from "@/components/GuidedConcierge";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
     template: "%s | VC Deal Flow Signal",
   },
   description:
-    "Free weekly GitHub-momentum signal across 116+ venture-backed startups, ranked by 14-day commit velocity. SSRN-indexed methodology. Built for developer-investors, scout angels, and emerging fund managers.",
+    "Public engineering signals for earlier startup timing. Weekly rankings, proof pages, API access, and a reproducible methodology.",
   keywords: [
     "GitHub commit velocity",
     "venture capital alternative data",
@@ -392,6 +393,7 @@ export default function RootLayout({
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <GuidedConcierge />
         <Script
           id="posthog"
           strategy="afterInteractive"
