@@ -1339,7 +1339,7 @@ paid_subs = sum(
     1 for s in subscribers
     if s.get("tier") in ("dashboard", "insider") and s.get("status") == "active"
 )
-paid_rate = round(100 * paid_subs / len(subscribers), 2) if subscribers else 0.0
+paid_rate = round(100 * paid_subs / active_subs_count, 2) if active_subs_count else 0.0
 
 # Determine benchmark tier + active row
 if total_uv < 100:
@@ -1355,8 +1355,8 @@ else:
 
 # Expected values against benchmark (using actual visitor count)
 expected_subs = int(round(total_uv * BENCHMARK_OPT_IN / 100)) if total_uv else 0
-expected_paid_lo = int(round(len(subscribers) * BENCHMARK_PAID_LO / 100))
-expected_paid_hi = int(round(len(subscribers) * BENCHMARK_PAID_HI / 100))
+expected_paid_lo = int(round(active_subs_count * BENCHMARK_PAID_LO / 100))
+expected_paid_hi = int(round(active_subs_count * BENCHMARK_PAID_HI / 100))
 
 def grade(actual, expected):
     """Return (status, delta_pct) where status ∈ {early, below, on-track, above}."""
@@ -1369,8 +1369,8 @@ def grade(actual, expected):
         return ("on-track", round((ratio - 1) * 100))
     return ("below", round((ratio - 1) * 100))
 
-opt_in_status, opt_in_delta = grade(len(subscribers), expected_subs)
-paid_status, paid_delta = ("early", 0) if len(subscribers) < 30 else grade(paid_subs, expected_paid_lo)
+opt_in_status, opt_in_delta = grade(active_subs_count, expected_subs)
+paid_status, paid_delta = ("early", 0) if active_subs_count < 30 else grade(paid_subs, expected_paid_lo)
 
 # Build verdict text
 if total_uv < 100:
@@ -1381,16 +1381,18 @@ if total_uv < 100:
         f"Focus on Dream 100 seeding, not on conversion."
     )
 elif opt_in_status == "above":
-    verdict_headline = f"Opt-in is above benchmark ({conversion_rate}% vs 3% target)"
+    verdict_headline = f"Opt-in is above benchmark ({active_conversion_rate}% vs 3% target)"
     verdict_detail = f"You're converting visitors well. Scale traffic — the funnel works."
 elif opt_in_status == "on-track":
-    verdict_headline = f"Opt-in is near benchmark ({conversion_rate}% vs 3% target)"
+    verdict_headline = f"Opt-in is near benchmark ({active_conversion_rate}% vs 3% target)"
     verdict_detail = f"Within 50% of target. Tighten the hook/offer to close the gap."
 else:
-    verdict_headline = f"Opt-in is below benchmark ({conversion_rate}% vs 3% target)"
+    verdict_headline = f"Opt-in is below benchmark ({active_conversion_rate}% vs 3% target)"
     verdict_detail = (
-        f"Expected {expected_subs} subs from {total_uv} visitors; got {len(subscribers)}. "
-        f"The leak is in the hook, not the traffic. Revisit headline + email-gate offer."
+        f"Expected {expected_subs} active subs from {total_uv} visitors; got {active_subs_count}. "
+        f"Note: PostHog identity stitching was just fixed (2026-05-25); the {total_uv} visitor "
+        f"count is currently inflated by the prior per-pageview distinct_id reset and will "
+        f"normalize over 1–2 weeks. Re-evaluate the verdict then."
     )
 
 # ---------------- Forecast: weekly organic traffic, next 16 weeks ----------------
@@ -1598,7 +1600,7 @@ payload = {
         "rows": BENCHMARK_ROWS,
         "active_idx": active_idx,
         "stage": bench_stage,
-        "actual_opt_in": conversion_rate,
+        "actual_opt_in": active_conversion_rate,
         "actual_paid_rate": paid_rate,
         "paid_subs": paid_subs,
         "expected_subs": expected_subs,
@@ -1714,7 +1716,7 @@ HTML = """<!DOCTYPE html>
       <div>Stage: <strong id="b-stage"></strong></div>
       <div>Opt-in rate: <strong id="b-optin"></strong> (target 3%) <span id="b-optin-pill" class="pill"></span></div>
       <div>Expected subs from <span id="b-visitors"></span> visitors: <strong id="b-expected-subs"></strong></div>
-      <div>Actual subs: <strong id="b-actual-subs"></strong></div>
+      <div>Active subs: <strong id="b-actual-subs"></strong></div>
       <div style="margin-top:12px">Paid subs: <strong id="b-paid"></strong> · rate: <strong id="b-paid-rate"></strong> <span id="b-paid-pill" class="pill"></span></div>
       <div>Expected paid range: <strong id="b-expected-paid"></strong></div>
     </div>
@@ -2153,7 +2155,7 @@ document.getElementById('b-stage').textContent = B.stage;
 document.getElementById('b-optin').textContent = B.actual_opt_in + '%';
 document.getElementById('b-visitors').textContent = fmt(D.kpis.visitors);
 document.getElementById('b-expected-subs').textContent = fmt(B.expected_subs);
-document.getElementById('b-actual-subs').textContent = fmt(D.kpis.signups);
+document.getElementById('b-actual-subs').textContent = fmt(D.kpis.active_subscribers);
 document.getElementById('b-paid').textContent = fmt(B.paid_subs);
 document.getElementById('b-paid-rate').textContent = B.actual_paid_rate + '%';
 document.getElementById('b-expected-paid').textContent = B.expected_paid_lo + '–' + B.expected_paid_hi;
