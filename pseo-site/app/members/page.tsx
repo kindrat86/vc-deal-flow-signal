@@ -37,10 +37,10 @@ export const metadata: Metadata = {
   title:
     "Charter Cohort 2026 — 25 founding-member seats · VC Deal Flow Signal",
   description:
-    "The first 25 charter seats of the developer-investor movement. Public thesis, public picks, public scorecard. Pseudonymous handles welcome under the same anonymity rules as the founder. 0 of 25 seats claimed — be the first.",
+    "25 charter seats for readers who want to publish picks, track receipts, and build a public scorecard around earlier startup signal. Pseudonymous handles welcome.",
   alternates: { canonical: "/members" },
   openGraph: {
-    title: "Charter Cohort 2026 — Developer-Investor Movement",
+    title: "Charter Cohort 2026 — Public picks and scorecards",
     description:
       "25 founding-member seats. Public thesis, public picks, public scorecard. Pseudonymous handles welcome.",
     url: `${SITE}/members`,
@@ -61,7 +61,7 @@ export default function MembersPage() {
         url: `${SITE}/members`,
         name: "Charter Cohort 2026",
         description:
-          "The first 25 charter members of the developer-investor movement. Public thesis, public picks, public scorecard.",
+          "25 charter members publishing public thesis, public picks, and a public scorecard.",
         isPartOf: { "@id": `${SITE}/#website` },
         speakable: {
           "@type": "SpeakableSpecification",
@@ -122,7 +122,7 @@ export default function MembersPage() {
             <span className="text-gray-400">Charter Cohort</span>
           </nav>
           <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider">
-            The movement, member-side
+            Public scorecards, member-side
           </p>
           <h1
             data-speakable
@@ -422,7 +422,7 @@ export default function MembersPage() {
             >
               /identity
             </Link>{" "}
-            (the seven shifts of becoming a developer-investor).
+            (the seven shifts behind trusting earlier public signal).
           </p>
         </section>
       </div>

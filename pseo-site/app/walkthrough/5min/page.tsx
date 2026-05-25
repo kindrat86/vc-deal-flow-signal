@@ -23,7 +23,7 @@ const READ_SECONDS = 300;
 export const metadata: Metadata = {
   title: "The 5-Minute Walkthrough — GitDealFlow in 800 words",
   description:
-    "The full pitch, condensed. Core claim, three objections, offer stack, four closes — in five minutes flat. For the buyer who doesn't have twelve.",
+    "The full case, condensed. Core claim, three objections, direct proof, and the weekly signal stack — in five minutes flat.",
   alternates: { canonical: "/walkthrough/5min" },
   openGraph: {
     title: "The 5-Minute Walkthrough",
@@ -192,10 +192,10 @@ export default function FiveMinPerfectWebinarPage() {
               there for the signal to fire.
             </li>
             <li className="border-l-2 border-rose-700 pl-4">
-              <strong className="text-gray-100">&ldquo;Why €9.97/mo when comparable tools cost €1k+/mo?&rdquo;</strong>{" "}
-              We don&rsquo;t have a sales team. The buyer is a
-              developer-investor writing €5k–€50k checks, not a partner
-              with a six-figure data budget. Pricing matches the buyer.
+              <strong className="text-gray-100">&ldquo;€9.97/mo is too cheap to be real.&rdquo;</strong>{" "}
+              We don&rsquo;t have a sales team. This is priced for someone who wants
+              earlier signal without an enterprise contract. Pricing matches the
+              job.
             </li>
           </ol>
         </section>
@@ -239,8 +239,8 @@ export default function FiveMinPerfectWebinarPage() {
             <div className="rounded-lg border border-sky-700/40 bg-sky-950/10 p-4">
               <p className="text-sky-400 text-[10px] font-semibold uppercase tracking-wider">Identity</p>
               <p className="text-gray-200 text-sm leading-relaxed mt-1">
-                You&rsquo;re not a VC. You&rsquo;re a developer-investor. Built
-                around your identity, not adapted to it.
+                You do not need a fund-sized stack. You need earlier signal,
+                calmer timing, and something you can trust quickly.
               </p>
             </div>
             <div className="rounded-lg border border-indigo-700/40 bg-indigo-950/10 p-4">
