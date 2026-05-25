@@ -547,7 +547,8 @@ export default function PricingPage() {
           lock in for the lifetime of the subscription. Sharp Tier at €497
           per month is the dedicated landing for active funds; it is
           application-gated and capped at 8 funds in 2026. Every paid tier
-          ships with a 30-day Signal-or-It&rsquo;s-Free guarantee.
+          ships with a 30-day Signal-or-It&rsquo;s-Free guarantee. If your real
+          question is which paid step to buy first, this page is the offer-selection layer.
         </p>
         <p className="text-gray-400 text-sm leading-relaxed mb-6 border-l-2 border-amber-700/40 pl-4">
           Every layer serves the same job:{" "}
@@ -575,6 +576,26 @@ export default function PricingPage() {
               Take the 90-second start-here quiz →
             </Link>
           </p>
+        </div>
+
+        <div className="mb-10 rounded-2xl border border-amber-500/30 bg-amber-500/5 p-6 sm:p-8">
+          <p className="text-amber-300 text-xs font-semibold uppercase tracking-[0.14em] mb-2">
+            Route the offer correctly
+          </p>
+          <p className="text-gray-300 text-sm leading-relaxed mb-4">
+            Use pricing when the signal already makes sense and the real question is which paid step fits your workflow. If you still need proof, comparison, or buyer-side clarity first, use those pages before you buy.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/buyers-guide" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-amber-400 text-slate-950 text-sm font-semibold hover:bg-amber-300 transition-colors">
+              Read the buyer's guide →
+            </Link>
+            <Link href="/compare/crunchbase-alternative-for-angel-investors" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              Compare timing vs verification →
+            </Link>
+            <Link href="/research" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              Read the research panel →
+            </Link>
+          </div>
         </div>
 
         <AgentSummary
