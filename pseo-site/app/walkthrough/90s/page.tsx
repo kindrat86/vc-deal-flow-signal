@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   title:
     "The 90-Second Walkthrough — GitDealFlow in 250 words",
   description:
-    "The whole pitch in ninety seconds. One core claim, three objections collapsed to one line each, one stack, one close. For the buyer who has 90 seconds, not 12 minutes.",
+    "The whole case in ninety seconds. One core claim, three objections collapsed, one stack, one close.",
   alternates: { canonical: "/walkthrough/90s" },
   openGraph: {
     title: "The 90-Second Walkthrough — GitDealFlow",
@@ -199,9 +199,9 @@ export default function NinetySecondWalkthroughPage() {
             </li>
             <li className="border-l-2 border-rose-700 pl-4">
               <strong className="text-gray-100">&ldquo;€9.97/mo is too cheap to be real.&rdquo;</strong>{" "}
-              We don&rsquo;t have a sales team. The buyer is a
-              developer-investor writing €5k–€50k checks. Pricing matches the
-              buyer.
+              We don&rsquo;t have a sales team. This is priced for someone who wants
+              earlier signal without an enterprise contract. Pricing matches the
+              job.
             </li>
           </ul>
         </section>

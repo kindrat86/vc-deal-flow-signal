@@ -13,9 +13,9 @@ export const metadata: Metadata = {
     "Twelve lessons on timing, proof, workflow, and signal — compressed into one day for anyone who wants a clearer way to notice startup momentum earlier.",
   alternates: { canonical: "/decade-in-a-day" },
   openGraph: {
-    title: "A Decade in a Day — the developer-investor curriculum",
+    title: "A Decade in a Day — Twelve Lessons on Earlier Signal and Better Timing",
     description:
-      "Twelve modules. One Saturday. The curriculum we wish we'd had at the start.",
+      "Twelve lessons. One day. A practical path to earlier signal and clearer timing.",
     url: "https://signals.gitdealflow.com/decade-in-a-day",
     type: "article",
   },
@@ -37,9 +37,9 @@ const MODULES: Module[] = [
     title: "Identity — name the buyer you actually are",
     question: "Why does identity precede method?",
     content:
-      "If you decide you're a 'mini-VC' you'll buy fund-grade tooling and complain about the price. If you decide you're a 'developer-investor' the right tools, prices, and rhythm fall into place. Identity is upstream of every purchase decision. The identity close lives or dies on this naming.",
+      "If you name the problem clearly, the right tools, prices, and rhythm start making sense much faster. If you name the problem badly, you buy the wrong stack and then blame the price. That first naming move shapes everything that follows.",
     links: [
-      { label: "/about/founder — what a developer-investor is", href: "/about/founder" },
+      { label: "/about — why the signal exists", href: "/about" },
       { label: "Identity declaration on home", href: "/" },
       { label: "FOR / NOT FOR disqualifier", href: "/#disqualifier" },
     ],
@@ -89,7 +89,7 @@ const MODULES: Module[] = [
     title: "Reverse-engineering — what the leaders are optimising for",
     question: "How do you read a competitor's funnel?",
     content:
-      "Don't read their pricing. Read their lead form, their bridge page, their stack-claim, their close. Harmonic optimises for partner-budgets. Tracxn optimises for sector breadth. Affinity optimises for warm-intro routing. None of them optimise for the developer-investor — that's not a pricing-gap, it's an ICP-gap. The competitor teardown you ship is the one that fills the blind spot.",
+      "If you can explain the difference between timing and verification, the rest of the comparison work gets easier. Harmonic optimises for partner budgets. Tracxn optimises for sector breadth. Affinity optimises for warm-intro routing. The useful teardown is the one that shows which job they solve well — and which one they leave open.",
     links: [
       { label: "/funnels#reverse-engineering — full teardown", href: "/funnels#reverse-engineering" },
       { label: "/buyers-guide — buyer-side decision tree", href: "/buyers-guide" },
@@ -192,9 +192,9 @@ export default function DecadePage() {
       {
         "@type": "Course",
         "@id": "https://signals.gitdealflow.com/decade-in-a-day#course",
-        name: "A Decade in a Day — the developer-investor curriculum",
+        name: "A Decade in a Day — the earlier-signal curriculum",
         description:
-          "Twelve modules condensing ten years of developer-investor practice into one Saturday: identity, methodology, dream customer, funnel architecture, conversion story, stack, closes, traffic, agent-side distribution, and the ethical lines that don't move.",
+          "Twelve modules condensing ten years of earlier-signal practice into one Saturday: methodology, positioning, funnel architecture, conversion story, stack, closes, traffic, distribution, and the ethical lines that don't move.",
         provider: {
           "@type": "Organization",
           name: "GitDealFlow",
@@ -243,7 +243,7 @@ export default function DecadePage() {
             A decade in a day · Applied
           </p>
           <h1 className="text-3xl sm:text-5xl font-bold text-gray-100 leading-[1.1] tracking-tight">
-            Ten years of developer-investor practice — <span className="text-violet-400">in twelve modules</span>.
+            Ten years of earlier-signal practice — <span className="text-violet-400">in twelve modules</span>.
           </h1>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
             When a curriculum exists, you compress a decade of practice into

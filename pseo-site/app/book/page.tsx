@@ -94,7 +94,7 @@ const FAQS = [
   },
   {
     q: "What do I get with the €0.99 Kindle copy?",
-    a: "Identical content to the free downloads, but in the Amazon Kindle format with native syncing across Kindle apps and devices. The €0.99 also unlocks a sequence of three additional emails: a worked walkthrough of the latest Series A announcement that the methodology would have caught, a private link to the bonus interview with two early-stage developer-investors who use the workflow daily, and a direct line to me by email for any methodology questions.",
+    a: "Identical content to the free downloads, but in the Amazon Kindle format with native syncing across Kindle apps and devices. The €0.99 also unlocks a sequence of three additional emails: a worked walkthrough of the latest Series A announcement that the methodology would have caught, a private link to the bonus interview with two early readers who use the workflow daily, and a direct line to me by email for any methodology questions.",
   },
   {
     q: "How long does it take to read?",
@@ -441,7 +441,7 @@ export default function BookPage() {
             </li>
             <li className="flex gap-3">
               <span className="text-amber-300 flex-shrink-0">✓</span>
-              <span>Bonus email 2: a private link to the unedited interview transcripts with two early-stage developer-investors who use the workflow daily</span>
+              <span>Bonus email 2: a private link to the unedited interview transcripts with two early readers who use the workflow daily</span>
             </li>
             <li className="flex gap-3">
               <span className="text-amber-300 flex-shrink-0">✓</span>

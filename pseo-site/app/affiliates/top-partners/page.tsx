@@ -9,7 +9,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Top 50 — the publishers, podcasts, and communities we'd like to partner with",
   description:
-    "GitDealFlow's top-50 publisher roster. 50 named newsletter writers, podcast hosts, and community owners whose audiences overlap our developer-investor segment. Engagement status, fit notes, and the exact pitch templates we send.",
+    "GitDealFlow's top-50 publisher roster. 50 named newsletter writers, podcast hosts, and community owners whose audiences overlap our earlier-signal audience. Engagement status, fit notes, and the pitch templates we send.",
   alternates: { canonical: "/affiliates/top-partners" },
   openGraph: {
     title: "Top 50 — publishers we'd like to partner with",

@@ -49,39 +49,73 @@
   </script>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/styles.css">
+  <style>
+    .mobile-cta-stack > * { width: 100%; }
+    .mobile-card, .mobile-step-card { transition: border-color 120ms ease, transform 120ms ease; }
+    .mobile-card:hover, .mobile-step-card:hover { border-color: rgba(14, 165, 233, 0.5); }
+    .mobile-sticky-cta { display: none; }
+    @media (min-width: 640px) { .mobile-cta-stack > * { width: auto; } }
+    @media (max-width: 639px) {
+      html { scroll-padding-top: 5rem; }
+      body { padding-bottom: 6rem; }
+      .mobile-compact-header { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+      .mobile-hero-wrap { padding-left: 1rem; padding-right: 1rem; padding-top: 4rem; padding-bottom: 4rem; }
+      .mobile-hero-title { font-size: 2rem; line-height: 1.1; }
+      .mobile-hero-copy { font-size: 1rem; line-height: 1.65; }
+      .mobile-main-pad { padding-left: 1rem; padding-right: 1rem; }
+      .mobile-section-pad { padding-left: 1rem; padding-right: 1rem; }
+      .mobile-card-pad { padding: 1.25rem; }
+      .mobile-grid-gap { gap: 1rem; }
+      .mobile-cta-stack .btn {
+        white-space: normal; text-align: center; line-height: 1.35;
+        padding-left: 1rem; padding-right: 1rem;
+      }
+      .mobile-sticky-cta {
+        position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; display: block;
+        padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom));
+        background: rgba(2, 6, 23, 0.94); backdrop-filter: blur(12px);
+        border-top: 1px solid rgba(71, 85, 105, 0.7);
+      }
+      .mobile-sticky-cta .inner { display: flex; align-items: center; gap: 0.75rem; max-width: 28rem; margin: 0 auto; }
+      .mobile-sticky-cta .meta { flex: 1; min-width: 0; }
+      .mobile-sticky-cta .meta strong { display: block; color: #fff; font-size: 0.95rem; line-height: 1.1; }
+      .mobile-sticky-cta .meta span { display: block; color: #94a3b8; font-size: 0.72rem; margin-top: 0.1rem; }
+      .mobile-sticky-cta .btn { white-space: nowrap; padding-left: 1rem; padding-right: 1rem; }
+    }
+  </style>
 </head>
 <body class="bg-dark-900 text-gray-100 font-sans antialiased">
   <header class="sticky top-0 z-50 border-b border-gray-800 bg-dark-900/95 backdrop-blur">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-4">
+    <div class="mobile-compact-header max-w-5xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-3">
       <a href="/" class="font-semibold tracking-tight text-white text-lg">GitDealFlow</a>
       <nav class="hidden md:flex items-center gap-6">
         <a href="/" class="text-gray-400 text-sm hover:text-gray-100 transition">Home</a>
         <a href="https://signals.gitdealflow.com" class="text-gray-400 text-sm hover:text-gray-100 transition">Signals</a>
         <a href="/dashboard" class="text-gray-400 text-sm hover:text-gray-100 transition">Dashboard</a>
       </nav>
-      <a href="https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn" class="btn btn-cta btn-sm whitespace-nowrap">Install the free lens <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
+      <a href="https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn" class="btn btn-cta btn-sm whitespace-nowrap shrink-0"><span class="sm:hidden">Install</span><span class="hidden sm:inline">Install the free lens</span> <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
     </div>
   </header>
 
-  <main>
+  <main class="mobile-main-pad">
     <section class="relative overflow-hidden">
       <div class="absolute inset-0 bg-gradient-to-br from-dark-900 via-dark-800 to-brand-900 opacity-80"></div>
-      <div class="relative max-w-4xl mx-auto px-6 py-20 md:py-28 text-center">
+      <div class="mobile-hero-wrap relative max-w-4xl mx-auto px-4 sm:px-6 py-16 md:py-28 text-center">
         <p class="text-brand-500 font-semibold text-sm uppercase tracking-wider mb-4">Free lens</p>
-        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6">Put the signal where you already look.</h1>
-        <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8">The Chrome extension is not a paid tier. It is a free surface that drops GitDealFlow’s signal directly onto Crunchbase and Wellfound so you can spot momentum without opening another tab.</p>
-        <a class="btn btn-primary btn-xl" href="https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn">Install the free lens <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
+        <h1 class="mobile-hero-title text-4xl md:text-6xl font-extrabold leading-tight mb-6">Put the signal where you already look.</h1>
+        <p class="mobile-hero-copy text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8">The Chrome extension is not a paid tier. It is a free surface that drops GitDealFlow’s signal directly onto Crunchbase and Wellfound so you can spot momentum without opening another tab.</p>
+        <a class="btn btn-primary btn-xl" href="https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn"><span class="sm:hidden">Install</span><span class="hidden sm:inline">Install the free lens</span> <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
       </div>
     </section>
     <section class="bg-dark-800 py-6 border-y border-gray-800" data-countdown-root data-countdown-key="gdf_timer_chrome">
-      <div class="max-w-4xl mx-auto px-6 text-center">
+      <div class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 text-center">
         <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-2">Urgency timer</p>
         <p class="text-white font-semibold text-lg">Your install window closes in <span data-countdown-output class="text-signal-400">05:00</span></p>
         <p class="text-gray-500 text-sm mt-1">You have five minutes to keep this install session active before it resets.</p>
       </div>
     </section>
-    <section class="max-w-4xl mx-auto px-6 py-10">
-      <div class="rounded-2xl border border-sky-500/30 bg-sky-500/10 p-8 text-left">
+    <section class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 py-10">
+      <div class="mobile-card mobile-card-pad rounded-2xl border border-sky-500/30 bg-sky-500/10 p-8 text-left">
         <p class="text-sky-300 text-xs font-semibold uppercase tracking-wider mb-3">Why this exists</p>
         <p class="text-gray-300 text-lg leading-relaxed">If you already check Crunchbase or Wellfound, the signal should meet you there instead of asking you to remember one more dashboard.</p>
       </div>
@@ -89,9 +123,9 @@
 
 
 
-    <section class="max-w-5xl mx-auto px-6 py-16">
+    <section class="mobile-section-pad max-w-5xl mx-auto px-4 sm:px-6 py-16 md:py-20">
       <div class="grid md:grid-cols-2 gap-8">
-        <div class="rounded-xl border border-gray-700 bg-dark-800 p-8">
+        <div class="mobile-card mobile-card-pad rounded-xl border border-gray-700 bg-dark-800 p-8">
           <h2 class="text-2xl font-bold mb-4">What it does</h2>
           <ul class="space-y-3 text-gray-300 leading-relaxed">
             <li>Shows the signal on Crunchbase and Wellfound profiles</li>
@@ -100,7 +134,7 @@
             <li>Keeps the surface lightweight and frictionless</li>
           </ul>
         </div>
-        <div class="rounded-xl border border-gray-700 bg-dark-800 p-8">
+        <div class="mobile-card mobile-card-pad rounded-xl border border-gray-700 bg-dark-800 p-8">
           <h2 class="text-2xl font-bold mb-4">Where it sits in the ladder</h2>
           <div class="space-y-4 text-gray-300 leading-relaxed">
             <p><strong class="text-white">This is a bonus surface, not a conversion step.</strong> It helps you notice the signal in-context.</p>
@@ -111,15 +145,15 @@
       </div>
     </section>
 
-    <section class="bg-dark-800 py-16">
-      <div class="max-w-4xl mx-auto px-6 text-center">
+    <section class="bg-dark-800 py-16 md:py-20">
+      <div class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 text-center">
         <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-3">Why this matters</p>
         <h2 class="text-3xl font-bold mb-4">You get the output where you already work.</h2>
         <p class="text-gray-300 text-lg leading-relaxed max-w-3xl mx-auto">The extension turns deeper public engineering work into a simple, visible signal on the pages you already check.</p>
       </div>
     </section>
 
-    <section class="max-w-4xl mx-auto px-6 py-16">
+    <section class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 py-16 md:py-20">
       <h2 class="text-3xl font-bold mb-6">Privacy and methodology</h2>
       <div class="space-y-4 text-gray-300 leading-relaxed">
         <p>No account. No telemetry. No cookies. The extension checks the page URL, queries the public GitDealFlow surface, and renders the signal inline.</p>
@@ -130,7 +164,7 @@
   </main>
 
   <footer class="border-t border-gray-800 bg-dark-900/80 py-12">
-    <div class="max-w-4xl mx-auto px-6 text-center">
+    <div class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 text-center">
       <div class="flex flex-wrap justify-center gap-6 text-gray-500 text-sm mb-4">
         <a href="/" class="hover:text-gray-300">Home</a>
         <a href="https://signals.gitdealflow.com" class="hover:text-gray-300">Signals</a>

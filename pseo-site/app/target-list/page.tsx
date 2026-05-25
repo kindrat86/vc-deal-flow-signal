@@ -538,12 +538,12 @@ export default function Dream100Page() {
             How to use this list
           </p>
           <h2 className="text-xl sm:text-2xl font-bold text-gray-100">
-            If three of these voices pattern-match to you, you&rsquo;re our
-            dream customer.
+            If three of these voices already shape your week, this page is for
+            you.
           </h2>
           <p className="text-gray-300 text-base leading-relaxed">
             We didn&rsquo;t make this page for SEO. We made it because every
-            week one developer-investor emails us asking which substacks we
+            week someone asks which substacks we
             read, which podcasts we listen to, which datasets we trust. This
             is the answer in one place. If you read three of these regularly,
             the{" "}

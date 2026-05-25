@@ -19,7 +19,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Funnel Hub — every entry point to VC Deal Flow Signal",
   description:
-    "Ten funnels, one map. Free Acceleration Watch, Quiz, 90-second Pitch, 12-minute Walkthrough, €7 First Look Pass, €9.97/mo Dashboard, €97/mo Insider Circle, €497/mo Sharp Tier, €1,997 Sector Sweep, and the post-90 Engine Room cohort. Pick the door.",
+    "Every GitDealFlow funnel on one page — free watch, quiz, walkthrough, first-look pass, dashboard, insider tiers, and sector-sweep offers.",
   alternates: { canonical: "/funnels" },
   openGraph: {
     title: "Funnel Hub — VC Deal Flow Signal",
@@ -489,7 +489,7 @@ export default function FunnelHubPage() {
               { n: 9, name: "The offer stack", where: "/pricing + /walkthrough — 8-row stack" },
               { n: 10, name: "Trial Closes (\"if all this did was…\")", where: "/walkthrough — 3-line cluster" },
               { n: 11, name: "Money Close", where: "/walkthrough — \"the deal you miss is the cost\"" },
-              { n: 12, name: "Identity Close", where: "/walkthrough + home — \"developer-investor\"" },
+              { n: 12, name: "Identity Close", where: "/walkthrough + home — earlier-signal framing" },
               { n: 13, name: "Pricing Close", where: "/walkthrough — \"€1,728/yr stack at €119.64\"" },
               { n: 14, name: "Urgency / Scarcity Close", where: "/walkthrough — founding-rate lock" },
               { n: 15, name: "Encore Close", where: "/walkthrough — 8-line summary at the end" },
@@ -547,7 +547,7 @@ export default function FunnelHubPage() {
               The methodology in three steps: find the leaders, walk every
               page of their funnel, write down what they&rsquo;re optimising
               for. Here&rsquo;s how that read on the three deal-flow tools
-              every developer-investor compares us to.
+              most buyers compare us to.
             </p>
           </header>
 
@@ -564,7 +564,7 @@ export default function FunnelHubPage() {
                 <li><strong className="text-gray-100">Bridge:</strong> sales call with named partner. The funnel is the call — there&rsquo;s no self-serve.</li>
                 <li><strong className="text-gray-100">Stack:</strong> "we cover 20M+ companies." Quantity-anchored, not signal-anchored.</li>
                 <li><strong className="text-gray-100">Close:</strong> annual contract, six-figure price band, custom-MSA negotiation.</li>
-                <li><strong className="text-gray-100">Read:</strong> built for partners with €100k+/yr data budgets. Not for the developer-investor writing €5k–€50k checks.</li>
+                <li><strong className="text-gray-100">Read:</strong> built for partners with €100k+/yr data budgets. Not for smaller check-writers who want earlier signal without procurement.</li>
               </ul>
             </div>
 
@@ -610,7 +610,7 @@ export default function FunnelHubPage() {
               sales-led funnels. They share an assumption: the buyer is a
               partner at a fund. We don&rsquo;t reverse-engineer their pricing
               — we reverse-engineer their <em>blind spot</em>. The
-              developer-investor writing €5k–€50k checks isn&rsquo;t their
+              smaller check-writer wanting earlier signal isn&rsquo;t their
               ICP. We built the funnel for that buyer instead — €9.97/mo,
               self-serve, agent-readable, methodology-published. Same data
               economy, different ladder.

@@ -27,6 +27,16 @@ function shouldNoindex(pathname: string): boolean {
   return NOINDEX_PREFIXES.some((prefix) => pathname.startsWith(prefix));
 }
 
+function publicHtmlCacheControl(pathname: string): string {
+  // Public marketing / pSEO pages are effectively static between deploys or
+  // weekly data refreshes, so edge-cache them aggressively for crawlers and
+  // humans. Keep noindex/account-like pages private below.
+  if (shouldNoindex(pathname)) {
+    return "private, no-cache, no-store, max-age=0, must-revalidate";
+  }
+  return "public, max-age=0, s-maxage=3600, stale-while-revalidate=86400";
+}
+
 /**
  * Hosts that should NOT redirect to the canonical apex even when host !==
  * CANONICAL_HOST. Vercel preview deployments (`*.vercel.app` and
@@ -129,6 +139,7 @@ export function proxy(request: NextRequest) {
       "X-Robots-Tag",
       shouldNoindex(pathname) ? "noindex, follow" : "index, follow",
     );
+    mdResponse.headers.set("Cache-Control", publicHtmlCacheControl(pathname));
     return mdResponse;
   }
 
@@ -168,6 +179,7 @@ export function proxy(request: NextRequest) {
     "X-Robots-Tag",
     shouldNoindex(pathname) ? "noindex, follow" : "index, follow",
   );
+  response.headers.set("Cache-Control", publicHtmlCacheControl(pathname));
   return response;
 }
 

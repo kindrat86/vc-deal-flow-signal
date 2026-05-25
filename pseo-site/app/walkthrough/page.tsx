@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   title:
     "How to Spot a Series A 47 Days Before the Deck Lands — 12-Minute Walkthrough",
   description:
-    "The single belief that changes how you source deals: commit-velocity acceleration is the most leading public signal in venture capital. Three objections, three breakdowns, and the stack that delivers it for €9.97/mo.",
+    "See why public engineering acceleration can give you earlier startup timing. Three objections, direct proof, and the weekly signal stack behind it.",
   alternates: {
     canonical: "/walkthrough",
   },
@@ -117,7 +117,7 @@ const FAQS = [
   },
   {
     q: "Why €9.97/mo when comparable tools cost €1,000/mo?",
-    a: "Two reasons. One — we do not have a sales team. The whole price difference between us and Harmonic or Tracxn is the cost of an enterprise sales motion. Two — the buyer is a developer-investor writing €5k-€50k checks, not a partner at a fund with a six-figure data budget. Pricing matches the buyer.",
+    a: "Two reasons. One — we do not have a sales team. The whole price difference between us and Harmonic or Tracxn is the cost of an enterprise sales motion. Two — this is priced for someone writing small checks who wants earlier signal without an enterprise contract. Pricing matches the actual job, not procurement theatre.",
   },
   {
     q: "What if I just want to test it on one sector before committing?",
@@ -142,7 +142,7 @@ export default function PerfectWebinarPage() {
         headline:
           "How to Spot a Series A 47 Days Before the Deck Lands",
         description:
-          "The single belief that changes how you source deals: commit-velocity acceleration is the most leading public signal in venture capital. Three objections, three breakdowns, and the stack that delivers it for €9.97/mo.",
+          "See why public engineering acceleration can give you earlier startup timing. Three objections, direct proof, and the weekly signal stack behind it.",
         url: "https://signals.gitdealflow.com/walkthrough",
         datePublished: "2026-05-05T00:00:00.000Z",
         dateModified: "2026-05-05T00:00:00.000Z",
@@ -262,11 +262,10 @@ export default function PerfectWebinarPage() {
             lands in your inbox.
           </h1>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed" data-speakable>
-            If you are a developer, ex-founder, or technical operator who also
-            writes angel checks, the next 12 minutes will reframe how you source
-            deals. Three objections will be addressed. One uncomfortable
-            conclusion will follow. And one specific, sub-€10/mo tool will let
-            you act on it.
+            If you want earlier signal before the round starts feeling obvious,
+            the next 12 minutes will reframe how you source deals. Three
+            objections will be addressed. One uncomfortable conclusion will
+            follow. And one specific, sub-€10/mo tool will let you act on it.
           </p>
           <DataNerdAudio
             slug="walkthrough-prologue"
@@ -524,7 +523,7 @@ export default function PerfectWebinarPage() {
             <p className="text-gray-400 text-sm leading-relaxed max-w-2xl">
               If you read the three objections and felt the shift, here&rsquo;s
               the formal version of what just happened — the same five-beat
-              arc direct-response sellers use, applied to the developer-investor.
+              arc direct-response sellers use, applied to earlier-signal buyers.
             </p>
           </header>
           <ol className="space-y-4">
@@ -586,10 +585,10 @@ export default function PerfectWebinarPage() {
               </p>
               <p className="text-gray-300 text-sm leading-relaxed">
                 Harmonic, Tracxn, and Affinity are €1k–€10k/mo because they
-                serve fund-grade procurement. The developer-investor was
-                priced out of the category, not by methodology, but by sales
-                motion. Pull the sales motion out and the same data ladder
-                runs at €9.97/mo.
+                serve fund-grade procurement. Smaller check-writers were priced
+                out of the category not by methodology, but by sales motion.
+                Pull the sales motion out and the same data ladder runs at
+                €9.97/mo.
               </p>
             </li>
             <li className="rounded-xl border border-slate-800 bg-slate-900/40 p-5 sm:p-6 space-y-2">
@@ -945,15 +944,14 @@ export default function PerfectWebinarPage() {
                 Identity close
               </p>
               <h3 className="text-gray-100 font-semibold text-base">
-                You&rsquo;re not a VC. You&rsquo;re a developer-investor.
+                You don&rsquo;t need a fund-sized stack. You need earlier signal.
               </h3>
               <p className="text-gray-300 text-sm leading-relaxed">
                 Every other deal-flow tool is built for a partner at a fund
-                with a six-figure data budget. This one is built for the
-                person who reads commit logs for fun and writes €5k–€50k
-                checks on the side. If that&rsquo;s you, this isn&rsquo;t a
-                product you adapt. It&rsquo;s the first one designed around
-                your identity.
+                with a six-figure data budget. This one is built for someone
+                who wants clearer timing without paying for procurement theatre.
+                You do not need to adapt yourself to it. It fits the job as it
+                already exists in your week.
               </p>
             </div>
 

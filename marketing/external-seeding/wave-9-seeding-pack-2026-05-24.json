@@ -1,0 +1,68 @@
+{
+  "created_at": "2026-05-24",
+  "theme": "external-seeding-wave-9",
+  "priority_pages": [
+    {
+      "label": "Alternative data tools for angel investors",
+      "url": "https://signals.gitdealflow.com/compare/best-alternative-data-tools-for-angel-investors",
+      "quote": "For a careful angel investor, the best alternative data stack in 2026 is not the biggest one. It is the one that gives earlier signal first, verification second, and complexity only when needed."
+    },
+    {
+      "label": "Startup engineering momentum",
+      "url": "https://signals.gitdealflow.com/answers/what-is-startup-engineering-momentum",
+      "quote": "Startup engineering momentum is not just more commits. It is the pattern behind shipping intensity, contributor growth, and visible build activity that suggests something real is changing inside a startup before the public story fully catches up."
+    },
+    {
+      "label": "Timing vs verification",
+      "url": "https://signals.gitdealflow.com/answers/deal-flow-timing-vs-verification",
+      "quote": "Verification helps you understand what already happened. Timing helps you notice what is changing earlier."
+    },
+    {
+      "label": "GitHub signals for angel investors",
+      "url": "https://signals.gitdealflow.com/answers/how-angel-investors-use-github-signals",
+      "quote": "You do not need to read code line by line to use GitHub signals well. What matters is noticing when public engineering behavior starts changing in a way that could matter before the market story fully catches up."
+    },
+    {
+      "label": "GitHub Scout Score",
+      "url": "https://signals.gitdealflow.com/answers/what-is-a-github-scout-score",
+      "quote": "A GitHub Scout Score is not a measure of whether you are a good engineer. It is a lightweight taste signal built from what you have starred and how that pattern overlaps with meaningful startup outcomes."
+    },
+    {
+      "label": "Best MCP server for VC research",
+      "url": "https://signals.gitdealflow.com/integrations/best-mcp-server-for-vc-research",
+      "quote": "VC Deal Flow Signal works well as an MCP server for VC research because it gives agents structured access to startup engineering momentum, sector rankings, and company-level signal surfaces without private API friction."
+    }
+  ],
+  "platform_snippets": {
+    "hacker_news": [
+      {
+        "context": "timing-vs-verification",
+        "text": "The useful distinction here is timing vs verification. Most tools tell you what already happened. The harder problem is noticing what changed before the round becomes obvious. We’ve been publishing the methodology and answer pages around that here if useful: https://signals.gitdealflow.com/answers/deal-flow-timing-vs-verification"
+      },
+      {
+        "context": "github-momentum",
+        "text": "For technical startups, public engineering movement can become visible before the familiar story surfaces catch up. The key is not raw commit count. It’s the pattern behind contributor growth, shipping intensity, and visible build activity. Definition here: https://signals.gitdealflow.com/answers/what-is-startup-engineering-momentum"
+      }
+    ],
+    "reddit": [
+      {
+        "context": "venturecapital",
+        "text": "The cleanest distinction I’ve found is timing vs verification. Most databases are good once the company is already visible. If the real question is what changed before the round got crowded, the earlier clue is often public engineering movement, not another profile page. https://signals.gitdealflow.com/answers/deal-flow-timing-vs-verification"
+      },
+      {
+        "context": "startups",
+        "text": "One thing I keep noticing: the public story usually shows up later than the operating signal. For technical startups, you can sometimes see momentum in shipping pace and contributor growth before the outside narrative fully catches up. https://signals.gitdealflow.com/answers/what-is-startup-engineering-momentum"
+      }
+    ],
+    "x": [
+      {
+        "context": "alt-data",
+        "text": "The best stack isn’t the biggest one. It’s earlier signal first, verification second, complexity only when needed. https://signals.gitdealflow.com/compare/best-alternative-data-tools-for-angel-investors"
+      },
+      {
+        "context": "mcp-vc",
+        "text": "Useful MCP question: can your agent query real startup signal data without private API friction? That’s where this stack fits. https://signals.gitdealflow.com/integrations/best-mcp-server-for-vc-research"
+      }
+    ]
+  }
+}

@@ -336,10 +336,10 @@ export default function YourJourneyPage() {
           </p>
           <p className="text-gray-300 text-base leading-relaxed">
             This site is what that strip-out looks like. €9.97/mo founding
-            rate, locked forever, for the engineer-investor. The First Look
-            Pass is €7. The cheap rung exists because the buyer is the
-            developer-investor, not the partner-with-budget. You were right
-            that the category wasn&rsquo;t built for you. You were wrong that
+            rate, locked forever, for someone who wants earlier signal without
+            a fund-sized stack. The First Look Pass is €7. The cheap rung
+            exists because the buyer is not the partner-with-budget. You were
+            right that the category wasn&rsquo;t built for you. You were wrong that
             it couldn&rsquo;t be.
           </p>
         </section>

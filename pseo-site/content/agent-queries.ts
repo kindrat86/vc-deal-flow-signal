@@ -22,6 +22,11 @@ export interface AgentQueryFact {
   sourceLabel: string;
 }
 
+export interface AgentQueryLink {
+  label: string;
+  url: string;
+}
+
 export interface AgentQuery {
   /** URL slug at /answers/[slug]. */
   slug: string;
@@ -44,6 +49,9 @@ export interface AgentQuery {
   ctaLabel: string;
   /** Related answer slugs to link from the bottom of the page. */
   related: string[];
+  /** Optional exact links for proof and next-read blocks. */
+  proofLinks?: AgentQueryLink[];
+  nextReadLinks?: AgentQueryLink[];
   /** SEO keywords for meta tag. */
   keywords: string[];
 }
@@ -109,6 +117,16 @@ Install on Claude Desktop, Claude Code, or any MCP host with one command — see
       "track-github-momentum-investment-signals",
       "ai-agent-venture-capital-deal-flow",
       "open-source-startup-sourcing-api",
+    ],
+    proofLinks: [
+      { label: "Read the methodology", url: "/methodology" },
+      { label: "How angel investors can use GitHub signals without reading code", url: "/answers/how-angel-investors-use-github-signals" },
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+    ],
+    nextReadLinks: [
+      { label: "How to Track GitHub Momentum for Investment Signals", url: "/answers/track-github-momentum-investment-signals" },
+      { label: "How angel investors can use GitHub signals without reading code", url: "/answers/how-angel-investors-use-github-signals" },
+      { label: "Read the methodology", url: "/methodology" },
     ],
     keywords: [
       "MCP server",
@@ -1878,6 +1896,16 @@ The preprint is indexed by Crossref, Semantic Scholar, OpenAlex (W7154916891), U
       "free-vc-tools-for-emerging-fund-managers",
       "leading-vs-lagging-vc-signals",
     ],
+    proofLinks: [
+      { label: "Read the methodology", url: "/methodology" },
+      { label: "Best MCP Server for VC Research", url: "/answers/best-mcp-server-for-vc-research" },
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+    ],
+    nextReadLinks: [
+      { label: "Best VC Deal Flow Software 2026", url: "/answers/best-vc-deal-flow-software-2026" },
+      { label: "The Best VC Research Stack for 2026", url: "/answers/what-is-the-best-vc-research-stack-for-2026" },
+      { label: "Best Deal Flow Tools for Angel Investors", url: "/compare/best-deal-flow-tools-angel-investors" },
+    ],
     keywords: [
       "LP report citation",
       "academic citation",
@@ -2301,6 +2329,18 @@ Restart Claude Desktop. The six tools (get_trending_startups, search_startups_by
       "best-alt-data-tools-for-venture-capital",
       "best-pitchbook-alternative-for-solo-investors",
       "free-vc-tools-for-emerging-fund-managers",
+    ],
+    proofLinks: [
+      { label: "Read the methodology", url: "/methodology" },
+      { label: "Best MCP Server for VC Research", url: "/answers/best-mcp-server-for-vc-research" },
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+    ],
+    nextReadLinks: [
+      { label: "Best VC Deal Flow Software 2026", url: "/answers/best-vc-deal-flow-software-2026" },
+      { label: "Free VC Tools for Emerging Fund Managers", url: "/answers/free-vc-tools-for-emerging-fund-managers" },
+      { label: "Best Deal Flow Tools for Angel Investors", url: "/compare/best-deal-flow-tools-angel-investors" },
+      { label: "See the weekly operating surface", url: "/dashboard" },
+      { label: "Get my First Look", url: "/firstlook" },
     ],
     keywords: [
       "VC research stack",
@@ -3433,22 +3473,22 @@ The 2026 thesis (cf. Greg Isenberg's "Agents Are the New SaaS") is that the agen
   {
     slug: "what-is-a-github-scout-score",
     query: "What is a GitHub Scout Score?",
-    h1: "What Is a GitHub Scout Score? — Your Stars as Investment Receipts",
+    h1: "What a GitHub Scout Score tells you",
     description:
-      "A GitHub Scout Score (0-100) grades your starring history against ~75 validated unicorns and big exits. The earlier you starred them, the higher your score. Free, no login, computed by GitDealFlow.",
+      "A GitHub Scout Score turns starring behavior into a simple investing-signal read. Here is what it means, what it does not mean, and how to use it.",
     tldr:
-      "A GitHub Scout Score is a 0-100 grade computed by GitDealFlow from a public GitHub user's starring history, measuring how many validated unicorns / big-funding events / acquisitions the user starred *before* the public event. Top 5 wins are normalized so 5 perfect early calls equal 100. Free, no OAuth, instant shareable card. Score buckets: Curious (0-19), Scout (20-49), Sharp (50-79), Elite (80-94), Oracle (95-100).",
-    body: `A **GitHub Scout Score** is a deterministic 0-100 grade that quantifies how good a developer's GitHub-starring history is at predicting startup outcomes. It is computed by [GitDealFlow Receipts](https://signals.gitdealflow.com/receipts) from any public GitHub username, with no login or OAuth required.
+      "A GitHub Scout Score is not a measure of whether you are a good engineer. It is a lightweight taste signal built from what you have starred and how that pattern overlaps with meaningful startup outcomes. The earlier your stars lined up with breakout companies, the stronger the score.",
+    body: `A **GitHub Scout Score** is a simple way to read what your starring behavior may say about your startup taste. It matters because taste signals become useful when they are grounded in public company outcomes rather than vague reputation. This page explains what the score means, what it does not mean, and how to use it.
 
-**The premise.** Every developer has invested attention in startups before they were obvious — that's what starring a project on GitHub *is*. The Scout Score asks: out of the dozens or hundreds of repositories you starred, how many turned into unicorns, raised a big round, or got acquired? And — critically — how early did you star them?
+**Quick answer.** A GitHub Scout Score is not a measure of whether you are a good engineer. It is a lightweight taste signal built from what you have starred and how that pattern overlaps with meaningful startup outcomes.
 
-**The math.** GitDealFlow maintains a curated database of ~75 validated outcome events (Series A+ funding, $1B+ valuation, acquisition by a public company). For each event, the system records the date and the GitHub repository associated with the company. Your top 5 *earliest* hits are normalized: 5 perfect calls (starring all five winners more than 90 days before their event) yields 100. Late calls (starring within 30 days of the event) score lower. Stars after the event count for nothing — those are *receipts*, not scouting.
+**What the score measures.** GitDealFlow maintains a curated panel of validated outcome events and checks whether your public GitHub stars landed before those outcomes became obvious. The score looks for pattern, not ego. It is a way of asking whether your attention has repeatedly landed near breakout companies early.
 
-**The five rank tiers.** Curious (0-19): you star projects but rarely the eventual winners. Scout (20-49): you've spotted a few before they were obvious. Sharp (50-79): consistent early-call pattern across multiple sectors. Elite (80-94): you're starring future winners months or years before consensus. Oracle (95-100): top-percentile founder-tier taste; possibly an angel investor in disguise.
+**What the score does not measure.** It does not measure intelligence, technical depth, investing skill in isolation, or guaranteed future performance. It is useful as feedback, not as identity.
 
-**Three things the Scout Score is not.** (1) It is **not** a predictive signal about *future* startups — that's the [Scout Game](https://signals.gitdealflow.com/predict). The Scout Score is backward-looking validation of your past taste. (2) It is **not** a leaderboard of activity volume — starring 10,000 repos at random doesn't help your score. (3) It is **not** financial advice or a substitute for due diligence — it's a fun, shareable signal of taste calibration.
+**Why this is useful.** The value is not status. The value is feedback. It gives you one more way to think about where your attention has gone and whether your pattern lines up with meaningful startup signal.
 
-**How to get yours.** Go to [/receipts](https://signals.gitdealflow.com/receipts), paste any public GitHub username, get a 1200×630 shareable OG card with your score, your top 5 earliest hits, and your rank tier. The whole flow takes 15 seconds. There's also an SVG badge at \`/api/badge/scout/{username}/svg\` you can drop in any GitHub README to display your rank.`,
+**How to get yours.** Go to [/receipts](https://signals.gitdealflow.com/receipts), paste any public GitHub username, get a shareable card with your score, top early hits, and rank tier. The whole flow takes seconds, no login required.`,
     facts: [
       {
         claim:
@@ -3505,6 +3545,16 @@ The 2026 thesis (cf. Greg Isenberg's "Agents Are the New SaaS") is that the agen
       "what-is-the-scout-game-on-gitdealflow",
       "how-do-i-build-a-public-vc-track-record",
       "github-momentum-vs-stars-which-matters",
+    ],
+    proofLinks: [
+      { label: "Check your GitHub Scout Score", url: "/receipts" },
+      { label: "Read the methodology", url: "/methodology" },
+      { label: "What startup engineering momentum means", url: "/answers/what-is-startup-engineering-momentum" },
+    ],
+    nextReadLinks: [
+      { label: "Check your GitHub Scout Score", url: "/receipts" },
+      { label: "What startup engineering momentum means", url: "/answers/what-is-startup-engineering-momentum" },
+      { label: "Best startup signal tools for investors", url: "/compare/best-startup-signal-tools-for-investors" },
     ],
     keywords: [
       "github scout score",
@@ -3603,6 +3653,18 @@ The 2026 thesis (cf. Greg Isenberg's "Agents Are the New SaaS") is that the agen
       "agent-native-vc-tools-2026",
       "free-vc-tools-for-emerging-fund-managers",
       "what-is-the-best-vc-research-stack-for-2026",
+    ],
+    proofLinks: [
+      { label: "Read the methodology", url: "/methodology" },
+      { label: "Best MCP Server for VC Research", url: "/answers/best-mcp-server-for-vc-research" },
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+    ],
+    nextReadLinks: [
+      { label: "Free VC Tools for Emerging Fund Managers", url: "/answers/free-vc-tools-for-emerging-fund-managers" },
+      { label: "The Best VC Research Stack for 2026", url: "/answers/what-is-the-best-vc-research-stack-for-2026" },
+      { label: "Best Deal Flow Tools for Angel Investors", url: "/compare/best-deal-flow-tools-angel-investors" },
+      { label: "See the weekly operating surface", url: "/dashboard" },
+      { label: "Get my First Look", url: "/firstlook" },
     ],
     keywords: [
       "best vc deal flow software",
@@ -4649,6 +4711,2261 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
       "vc memo automation 2026",
       "scout score agent pipeline",
       "agent native vc deal flow",
+    ],
+  },
+  {
+    slug: "what-is-startup-engineering-momentum",
+    query: "What is startup engineering momentum?",
+    h1: "What startup engineering momentum actually means",
+    description:
+      "Startup engineering momentum is the pattern behind commit velocity, contributor growth, and shipping intensity. Here is how investors use it as an earlier startup signal.",
+    tldr:
+      "Startup engineering momentum is not just more commits. It is the pattern behind shipping intensity, contributor growth, and visible build activity that suggests something real is changing inside a startup before the public story fully catches up.",
+    body: `Startup engineering momentum is the pattern behind visible changes in how a startup is building in public. It matters because those changes can show up before the market story hardens into a pitch, a raise, or a familiar database update. GitDealFlow uses this kind of public engineering movement as one input for spotting earlier startup momentum.
+
+**Quick answer.** Startup engineering momentum is not just more commits. It is the combination of shipping intensity, contributor growth, and visible build activity that suggests something real is changing inside a startup.
+
+**What counts as startup engineering momentum.** The useful pattern is rarely a single metric. You are looking for a combination of faster shipping, more contributors, more visible product movement, and a broader public engineering footprint. One signal alone can be noisy. The pattern matters more than any one spike.
+
+**Why investors should care.** The public story usually arrives late. If public engineering behavior starts changing before the narrative catches up, you get a calmer window to pay attention. That does not guarantee a good investment. It just gives you earlier attention without waiting for the familiar surfaces to update.
+
+**What this is not.** This is not reading every line of code. It is not pretending GitHub predicts everything. It is not a replacement for judgment. It is simply one earlier public signal that can help you notice when a company starts behaving differently.`,
+    facts: [
+      {
+        claim:
+          "GitDealFlow tracks startup engineering acceleration through rolling commit-velocity change, contributor growth, and repository expansion across venture-backed startup GitHub organizations.",
+        sourceUrl: "https://signals.gitdealflow.com/methodology",
+        sourceLabel: "Methodology",
+      },
+      {
+        claim:
+          "The public dataset is refreshed weekly and exposes ranked startup engineering signals across 20 sectors via JSON, CSV, MCP, and OpenAPI surfaces.",
+        sourceUrl: "https://signals.gitdealflow.com/api/signals.json",
+        sourceLabel: "signals.json",
+      },
+      {
+        claim:
+          "The signal logic is formalized in the SSRN preprint for VC Deal Flow Signal, which explains how engineering acceleration is measured and validated.",
+        sourceUrl:
+          "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558",
+        sourceLabel: "SSRN preprint",
+      },
+    ],
+    faqs: [
+      {
+        q: "Is startup engineering momentum just another way of saying more commits?",
+        a: "No. Raw commit count is too noisy on its own. Momentum is the pattern behind commit-velocity change, contributor growth, and visible build activity relative to the startup's own baseline.",
+      },
+      {
+        q: "Why does startup engineering momentum matter to investors?",
+        a: "Because public engineering behavior can change before the outside story catches up. That gives investors a calmer window to notice momentum before the round feels obvious.",
+      },
+      {
+        q: "Does startup engineering momentum replace due diligence?",
+        a: "No. It is an earlier attention signal, not a substitute for judgment, diligence, or understanding the company beyond the public engineering surface.",
+      },
+    ],
+    ctaUrl: "/report",
+    ctaLabel: "Read a sample Sunday watchlist",
+    related: [
+      "how-angel-investors-use-github-signals",
+      "deal-flow-timing-vs-verification",
+      "what-is-a-github-scout-score",
+    ],
+    proofLinks: [
+      { label: "Read the methodology", url: "/methodology" },
+      { label: "How angel investors use GitHub signals", url: "/answers/how-angel-investors-use-github-signals" },
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+    ],
+    nextReadLinks: [
+      { label: "How angel investors use GitHub signals", url: "/answers/how-angel-investors-use-github-signals" },
+      { label: "Deal flow timing vs verification", url: "/answers/deal-flow-timing-vs-verification" },
+      { label: "Best startup signal tools for investors", url: "/compare/best-startup-signal-tools-for-investors" },
+      { label: "Get my First Look", url: "/firstlook" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
+    ],
+    keywords: [
+      "startup engineering momentum",
+      "engineering momentum startups",
+      "github startup signals",
+      "startup momentum signal",
+      "commit velocity investor signal",
+      "public engineering momentum",
+    ],
+  },
+  {
+    slug: "how-angel-investors-use-github-signals",
+    query: "How do angel investors use GitHub signals?",
+    h1: "How angel investors can use GitHub signals without reading code",
+    description:
+      "You do not need to be an engineer to use GitHub signals. Here is how angel investors can use public engineering behavior as an earlier startup timing signal.",
+    tldr:
+      "You do not need to read code line by line to use GitHub signals well. What matters is noticing when public engineering behavior starts changing in a way that could matter before the market story fully catches up.",
+    body: `You do not need to be an engineer to use GitHub signals well. What matters is not reading code line by line. It is noticing when public engineering behavior starts changing in a way that could matter. This page shows how angel investors can use GitHub signals as an earlier startup timing surface.
+
+**Quick answer.** You are not trying to become a developer. You are simply using public engineering movement as another way to notice when a startup starts behaving differently.
+
+**What to look for.** In plain language, look for faster shipping, more contributors, more visible product movement, signs of build intensity, and signs that the team is scaling effort. The question is not whether every commit matters. The question is whether the pattern looks materially different from before.
+
+**What not to overread.** One metric can be noisy. Open source is not the whole market. Some startups are quiet by design. Signal is a starting point, not a verdict.
+
+**Why this is useful for angels.** The advantage is not certainty. The advantage is earlier attention without having to wait for the familiar story surfaces.`,
+    facts: [
+      {
+        claim:
+          "GitDealFlow translates public GitHub activity into startup engineering signals designed for investors who do not want to read raw code directly.",
+        sourceUrl: "https://signals.gitdealflow.com/methodology",
+        sourceLabel: "Methodology",
+      },
+      {
+        claim:
+          "The live dataset exposes startup rankings, sector cuts, and company-level signal pages so investors can inspect the public surface without rebuilding the workflow themselves.",
+        sourceUrl: "https://signals.gitdealflow.com/api/signals.json",
+        sourceLabel: "signals.json",
+      },
+      {
+        claim:
+          "The comparison surface positions GitDealFlow as a timing-first signal layer for angels, scouts, and technical operators rather than a generic database product.",
+        sourceUrl:
+          "https://signals.gitdealflow.com/compare/best-alternative-data-tools-for-angel-investors",
+        sourceLabel: "Alternative data comparison",
+      },
+    ],
+    faqs: [
+      {
+        q: "Do I need to read code to use GitHub signals?",
+        a: "No. The useful investor move is noticing patterns in public engineering behavior, not reviewing pull requests line by line.",
+      },
+      {
+        q: "What is the main advantage of GitHub signals for angel investors?",
+        a: "GitHub signals can give you earlier attention. They help you notice when something starts changing before the public story becomes obvious.",
+      },
+      {
+        q: "What is the main risk of using GitHub signals badly?",
+        a: "Overreading noise. A single spike or repository event is rarely enough. The pattern matters more than any one isolated metric.",
+      },
+    ],
+    ctaUrl: "https://gitdealflow.com/report",
+    ctaLabel: "Read a sample Sunday watchlist",
+    related: [
+      "what-is-startup-engineering-momentum",
+      "github-deal-flow-for-investors",
+      "deal-flow-timing-vs-verification",
+    ],
+    proofLinks: [
+      { label: "What startup engineering momentum means", url: "/answers/what-is-startup-engineering-momentum" },
+      { label: "Read the methodology", url: "/methodology" },
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+    ],
+    nextReadLinks: [
+      { label: "What startup engineering momentum means", url: "/answers/what-is-startup-engineering-momentum" },
+      { label: "How GitHub becomes deal flow for investors", url: "/answers/github-deal-flow-for-investors" },
+      { label: "Best alternative data tools for angel investors", url: "/compare/best-alternative-data-tools-for-angel-investors" },
+    ],
+    keywords: [
+      "how angel investors use github signals",
+      "github signals for angel investors",
+      "github investor signal",
+      "public engineering behavior investors",
+      "angel investor startup timing",
+    ],
+  },
+  {
+    slug: "github-deal-flow-for-investors",
+    query: "How does GitHub become deal flow for investors?",
+    h1: "How GitHub becomes deal flow for investors",
+    description:
+      "GitHub can be more than a developer tool. This guide explains how investors can use public engineering activity to spot startup momentum earlier.",
+    tldr:
+      "GitHub is not a deal flow database, but public engineering activity can become a useful deal flow surface when you know what you are looking for: momentum, change, team expansion, and product intensity before the outside story fully catches up.",
+    body: `GitHub is not a deal flow database. But public engineering activity can become a useful deal flow surface when you know what you are actually looking for. This page explains how GitHub becomes relevant to investors without turning investing into a coding hobby.
+
+**Quick answer.** GitHub becomes deal flow when public engineering movement helps you notice momentum, change, team expansion, and product intensity before the outside story fully catches up.
+
+**Why GitHub matters at all.** It can show behavior, not just claims. That makes it useful earlier than polished narratives, especially for technical startups where product movement leaves a visible public trace.
+
+**What GitHub can show.** It can show public operating movement, visible shipping behavior, team changes, build intensity, and category-specific momentum clues. Those are not the whole company, but they are often earlier than the standard story surfaces.
+
+**What GitHub cannot show.** It cannot show revenue, sales quality, founder judgment, or every private-company truth. That is exactly why it should be used as one signal layer, not as the whole investment process.`,
+    facts: [
+      {
+        claim:
+          "GitDealFlow publishes startup engineering signals from public GitHub activity as a free JSON, CSV, MCP, and agent-facing API surface.",
+        sourceUrl: "https://signals.gitdealflow.com/api/openapi.json",
+        sourceLabel: "OpenAPI",
+      },
+      {
+        claim:
+          "The methodology documents how GitHub-derived engineering acceleration is turned into ranked startup signals across tracked sectors.",
+        sourceUrl: "https://signals.gitdealflow.com/methodology",
+        sourceLabel: "Methodology",
+      },
+      {
+        claim:
+          "The comparison and answer surfaces position GitHub-based momentum as an earlier signal layer rather than a replacement for diligence or traditional databases.",
+        sourceUrl:
+          "https://signals.gitdealflow.com/compare/best-alternative-data-tools-for-angel-investors",
+        sourceLabel: "Alternative data comparison",
+      },
+    ],
+    faqs: [
+      {
+        q: "Is GitHub really useful for investors?",
+        a: "For technical startups, yes. It can show public engineering movement before the outside story becomes obvious. It is less useful for companies with no meaningful public engineering surface.",
+      },
+      {
+        q: "Does GitHub replace startup databases?",
+        a: "No. GitHub is useful as an earlier public signal. Databases are still useful for verification, profiles, and diligence after a company is already on your radar.",
+      },
+      {
+        q: "What is the simplest way to use GitHub as deal flow?",
+        a: "Use a curated signal layer rather than trying to manually monitor repositories yourself. That is the problem GitDealFlow is built to solve.",
+      },
+    ],
+    ctaUrl: "https://gitdealflow.com/report",
+    ctaLabel: "Read a sample Sunday watchlist",
+    related: [
+      "how-angel-investors-use-github-signals",
+      "what-is-startup-engineering-momentum",
+      "deal-flow-timing-vs-verification",
+    ],
+    proofLinks: [
+      { label: "How angel investors use GitHub signals", url: "/answers/how-angel-investors-use-github-signals" },
+      { label: "Read the methodology", url: "/methodology" },
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+    ],
+    nextReadLinks: [
+      { label: "How angel investors use GitHub signals", url: "/answers/how-angel-investors-use-github-signals" },
+      { label: "Timing and verification are not the same thing", url: "/answers/deal-flow-timing-vs-verification" },
+      { label: "Best alternative data tools for angel investors", url: "/compare/best-alternative-data-tools-for-angel-investors" },
+      { label: "Get my First Look", url: "/firstlook" },
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+    ],
+    keywords: [
+      "github deal flow for investors",
+      "github startup deal flow",
+      "investors using github",
+      "github startup sourcing",
+      "github public startup signals",
+    ],
+  },
+  {
+    slug: "deal-flow-timing-vs-verification",
+    query: "Deal flow timing vs verification",
+    h1: "Timing and verification are not the same thing",
+    description:
+      "Most deal flow tools help you verify what already happened. This page explains why earlier timing signals matter and where GitDealFlow fits.",
+    tldr:
+      "Verification helps you understand what already happened. Timing helps you notice what is changing earlier. GitDealFlow is built around earlier public engineering signals, not just later database confirmation.",
+    body: `Most deal flow tools are better at verification than timing. That matters because a tool can be useful and still be too late for the kind of earlier attention you actually want. GitDealFlow is built around earlier public signals, not just cleaner confirmation after the story is already obvious.
+
+**Quick answer.** Verification helps you understand what already happened. Timing helps you notice what is changing before everyone else starts repeating the same company.
+
+**What verification is good for.** Verification tools help with funding history, company lookup, basic profiles, and checking what is already known. That is useful. It is just not the same thing as getting there early.
+
+**What timing is good for.** Timing signals help you notice change before the narrative hardens. They matter when the value is in calmer attention, earlier outreach, and a cleaner read before the round gets crowded.
+
+**Why investors confuse the two.** A clean database entry feels informative, but informative is not the same as early. Many investors think they want more data when they really want a better timing surface.
+
+**Where GitDealFlow fits.** GitDealFlow is not trying to replace every verification tool. It is trying to help you see one kind of earlier public movement before the market catches up.`,
+    facts: [
+      {
+        claim:
+          "GitDealFlow positions public GitHub engineering acceleration as a leading indicator, while traditional startup databases primarily surface post-announcement verification signals.",
+        sourceUrl: "https://signals.gitdealflow.com/methodology",
+        sourceLabel: "Methodology",
+      },
+      {
+        claim:
+          "The compare surface explicitly contrasts GitDealFlow's timing advantage with tools like Crunchbase, PitchBook, and broader market-data platforms.",
+        sourceUrl:
+          "https://signals.gitdealflow.com/compare/best-alternative-data-tools-for-angel-investors",
+        sourceLabel: "Alternative data comparison",
+      },
+      {
+        claim:
+          "The live startup signal dataset is updated weekly and meant to surface movement before a company becomes broadly obvious in standard venture data workflows.",
+        sourceUrl: "https://signals.gitdealflow.com/api/signals.json",
+        sourceLabel: "signals.json",
+      },
+    ],
+    faqs: [
+      {
+        q: "What is the difference between timing and verification in deal flow?",
+        a: "Verification helps you confirm what already happened. Timing helps you notice what is changing earlier, before the usual story surfaces fully update.",
+      },
+      {
+        q: "Are verification tools still useful?",
+        a: "Yes. They are useful for diligence, company lookup, market mapping, and background checks. The problem is using them as if they were an early timing edge.",
+      },
+      {
+        q: "Where does GitDealFlow fit?",
+        a: "GitDealFlow fits as an earlier signal layer. It does not replace verification tools. It helps you notice public engineering movement before the round becomes obvious.",
+      },
+    ],
+    ctaUrl: "https://gitdealflow.com/report",
+    ctaLabel: "Read a sample Sunday watchlist",
+    related: [
+      "what-is-startup-engineering-momentum",
+      "what-is-a-github-scout-score",
+      "track-github-momentum-investment-signals",
+    ],
+    proofLinks: [
+      { label: "Read the methodology", url: "/methodology" },
+      { label: "Compare alternative data tools for angel investors", url: "/compare/best-alternative-data-tools-for-angel-investors" },
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+    ],
+    nextReadLinks: [
+      { label: "Best alternative data tools for angel investors", url: "/compare/best-alternative-data-tools-for-angel-investors" },
+      { label: "A better Crunchbase alternative when timing matters", url: "/compare/crunchbase-alternative-for-angel-investors" },
+      { label: "What startup engineering momentum means", url: "/answers/what-is-startup-engineering-momentum" },
+      { label: "Get my First Look", url: "/firstlook" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
+    ],
+    keywords: [
+      "deal flow timing vs verification",
+      "timing vs verification investors",
+      "early startup signals",
+      "alternative data timing",
+      "venture deal flow timing",
+      "angel investor timing signal",
+    ],
+  },
+  {
+    slug: "do-i-need-to-know-how-to-code-to-use-gitdealflow",
+    query: "Do I need to know how to code to use GitDealFlow?",
+    h1: "Do you need to know how to code to use GitDealFlow?",
+    description:
+      "No. You do not need to read code to use GitDealFlow well. Here is what actually matters, what the free layer gives you, and when coding helps.",
+    tldr:
+      "No. You do not need to know how to code to use GitDealFlow well. What matters is noticing earlier public movement, not reading every repository line by line.",
+    body: `You do not need to know how to code to use GitDealFlow well. The useful job is not becoming an engineer. The useful job is noticing earlier public movement before the round becomes obvious.
+
+**Quick answer.** If you can read a ranked shortlist, compare a few names, and click into proof when something feels real, you can use GitDealFlow. Coding only becomes helpful if you want to go deeper into the raw public surface yourself.
+
+**What non-coders can still do well.** You can use the free Sunday issue to notice unusual movement, use First Look when a live thesis needs a sharper answer, and use the Buyer’s Guide to pressure-test whether the category fits your workflow at all. None of that requires reading code.
+
+**When technical fluency helps.** It helps when you want to inspect the raw GitHub footprint in more detail, wire the MCP server into your own tooling, or build a deeper internal research workflow. That is an advantage, not a requirement.
+
+**What the product is really doing for you.** It is translating public engineering movement into a calmer investor-facing signal. That is why the product can still be useful even if you never open a repository tab.`,
+    facts: [
+      {
+        claim:
+          "GitDealFlow exposes investor-friendly layers above the raw data, including the free weekly watchlist, First Look, the Dashboard, and buyer-facing comparison/proof pages.",
+        sourceUrl: "https://gitdealflow.com/",
+        sourceLabel: "GitDealFlow homepage",
+      },
+      {
+        claim:
+          "The methodology documents how engineering acceleration is turned into ranked signals, which means non-technical users can verify the logic without rebuilding the workflow themselves.",
+        sourceUrl: "https://signals.gitdealflow.com/methodology",
+        sourceLabel: "Methodology",
+      },
+      {
+        claim:
+          "The integrations layer supports both lightweight user flows (email, Telegram, RSS) and technical ones (MCP, JSON, CSV, OpenAPI).",
+        sourceUrl: "https://signals.gitdealflow.com/integrations",
+        sourceLabel: "Integrations",
+      },
+    ],
+    faqs: [
+      {
+        q: "Do I need to read code to use GitDealFlow?",
+        a: "No. You only need to understand whether earlier public movement deserves attention. The product already translates that movement into a cleaner signal.",
+      },
+      {
+        q: "Who gets extra value from technical skill?",
+        a: "People who want to inspect the raw GitHub footprint, install the MCP server, or build their own workflow around the public data get extra value from technical fluency, but the core product does not require it.",
+      },
+      {
+        q: "What should I start with if I am non-technical?",
+        a: "Start with the free Sunday issue if you want low-friction exposure, or use First Look if you already have a live sector question and want a sharper answer quickly.",
+      },
+    ],
+    ctaUrl: "/firstlook",
+    ctaLabel: "Get my First Look",
+    related: [
+      "how-angel-investors-use-github-signals",
+      "github-deal-flow-for-investors",
+      "deal-flow-timing-vs-verification",
+    ],
+    proofLinks: [
+      { label: "How angel investors can use GitHub signals", url: "/answers/how-angel-investors-use-github-signals" },
+      { label: "Read the methodology", url: "/methodology" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
+    ],
+    nextReadLinks: [
+      { label: "How GitHub becomes deal flow for investors", url: "/answers/github-deal-flow-for-investors" },
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+      { label: "Get my First Look", url: "/firstlook" },
+      { label: "See the weekly operating surface", url: "/dashboard" },
+    ],
+    keywords: [
+      "do I need to know how to code to use GitDealFlow",
+      "do investors need to read code",
+      "GitDealFlow for non technical investors",
+      "GitHub signals without reading code",
+      "non technical angel investor startup signals",
+    ],
+  },
+  {
+    slug: "is-github-startup-signal-too-noisy-for-investing",
+    query: "Is GitHub startup signal too noisy for investing?",
+    h1: "Is GitHub startup signal too noisy for investing?",
+    description:
+      "GitHub startup signal can be noisy if you overread one metric. Here is what creates noise, how the filter works, and when the signal is still useful.",
+    tldr:
+      "Yes, raw GitHub activity is noisy on its own. The useful layer is not a single spike — it is a filtered pattern of momentum, contributor growth, and visible change over time.",
+    body: `GitHub startup signal is noisy if you treat one metric as the whole answer. A single commit spike, one launch week, or one repo burst can mislead you. The useful layer is the pattern, not the isolated blip.
+
+**Quick answer.** Raw GitHub activity is too noisy on its own. Filtered engineering momentum can still be useful if you care about earlier attention rather than false certainty.
+
+**Where the noise comes from.** Release weeks, hackathons, conference demos, open-source bursts, and one-off repository events can all create activity that looks meaningful but is not fundraise-related.
+
+**How the signal gets cleaner.** The useful filter is multi-factor: shipping intensity, contributor growth, visible build movement, and a baseline comparison rather than raw count worship. That is why GitDealFlow treats one spike as insufficient.
+
+**What to do with the result.** Treat the signal as a ranking and prioritization layer. Use it to decide what deserves attention first, then verify with methodology, category comparison, and a sharper pass when the thesis is already live.`,
+    facts: [
+      {
+        claim:
+          "GitDealFlow's methodology explicitly treats raw activity as insufficient on its own and uses a broader engineering-acceleration framework instead of a single metric.",
+        sourceUrl: "https://signals.gitdealflow.com/methodology",
+        sourceLabel: "Methodology",
+      },
+      {
+        claim:
+          "The answer and comparison surfaces repeatedly distinguish early timing from later verification, which reduces the risk of treating one noisy data point as a final verdict.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/deal-flow-timing-vs-verification",
+        sourceLabel: "Timing vs verification",
+      },
+      {
+        claim:
+          "The public dataset refreshes weekly, which supports pattern-reading over time instead of reaction to one intraday change.",
+        sourceUrl: "https://signals.gitdealflow.com/api/signals.json",
+        sourceLabel: "signals.json",
+      },
+    ],
+    faqs: [
+      {
+        q: "Is one GitHub spike enough to trust the signal?",
+        a: "No. One spike is usually not enough. The pattern matters more than any single event.",
+      },
+      {
+        q: "Does noise make the signal useless?",
+        a: "No. It means you should use the signal for prioritization and earlier attention, not as a substitute for judgment.",
+      },
+      {
+        q: "What should I do after a signal looks interesting?",
+        a: "Verify the logic, compare the category, and if the question is already live, use a sharper pass like First Look instead of guessing from one chart.",
+      },
+    ],
+    ctaUrl: "/firstlook",
+    ctaLabel: "Get my First Look",
+    related: [
+      "what-is-startup-engineering-momentum",
+      "deal-flow-timing-vs-verification",
+      "github-deal-flow-for-investors",
+    ],
+    proofLinks: [
+      { label: "What startup engineering momentum actually means", url: "/answers/what-is-startup-engineering-momentum" },
+      { label: "Timing and verification are not the same thing", url: "/answers/deal-flow-timing-vs-verification" },
+      { label: "Read the methodology", url: "/methodology" },
+    ],
+    nextReadLinks: [
+      { label: "Best startup signal tools for investors", url: "/compare/best-startup-signal-tools-for-investors" },
+      { label: "Get my First Look", url: "/firstlook" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+    ],
+    keywords: [
+      "is GitHub startup signal too noisy",
+      "GitHub startup signal noise",
+      "startup engineering momentum noise",
+      "GitHub investing signal false positives",
+      "GitDealFlow noisy signal",
+    ],
+  },
+  {
+    slug: "when-should-i-use-first-look-vs-dashboard",
+    query: "When should I use First Look vs Dashboard?",
+    h1: "When should you use First Look vs Dashboard?",
+    description:
+      "Use First Look when a live sector question already needs a sharper answer. Use Dashboard when you want a recurring weekly operating surface.",
+    tldr:
+      "Use First Look when one thesis or sector question is already live and you need a sharper pass now. Use Dashboard when you want a recurring weekly operating surface across many names, sectors, and weeks.",
+    body: `First Look and Dashboard solve different timing problems. If you treat them like substitutes, you will either overbuy too early or underbuy when the question is already expensive.
+
+**Quick answer.** First Look is for one live question. Dashboard is for recurring weekly coverage.
+
+**Use First Look when...** you already have a sector, thesis, or shortlist pressure in front of you and want a sharper read without committing to a broader ongoing workflow. It is the right move when the question has heat now.
+
+**Use Dashboard when...** you want a dependable weekly operating surface. That means multiple names, recurring review, and a calmer rhythm where the value comes from repeated exposure instead of one-off depth.
+
+**The practical distinction.** First Look is a fast pass on something already active in your notes. Dashboard is what you use when you want fewer tabs, fewer guessy Mondays, and a stable weekly place to review momentum across the field.
+
+**A simple rule.** If your question starts with 'this sector won't leave me alone', use First Look. If it starts with 'I need a better weekly way to review what changed', use Dashboard.`,
+    facts: [
+      {
+        claim:
+          "First Look is positioned as the low-friction paid test for a live question, while Dashboard is positioned as the main recurring operating layer.",
+        sourceUrl: "https://gitdealflow.com/firstlook.html",
+        sourceLabel: "First Look page",
+      },
+      {
+        claim:
+          "The landing-copy system defines Dashboard as the dependable weekly operating surface for readers who need recurring clarity, not just one answer.",
+        sourceUrl: "https://gitdealflow.com/dashboard.html",
+        sourceLabel: "Dashboard page",
+      },
+      {
+        claim:
+          "The routing system across research, compare, answers, and integrations now distinguishes free watch, First Look, Dashboard, and Buyers Guide as separate next-step lanes.",
+        sourceUrl: "https://signals.gitdealflow.com/research",
+        sourceLabel: "Research routing",
+      },
+    ],
+    faqs: [
+      {
+        q: "Should I start with Dashboard if I have only one live thesis?",
+        a: "Usually no. Start with First Look if the pressure is narrow and immediate. Dashboard pays off more when you want a recurring weekly process.",
+      },
+      {
+        q: "Can First Look replace Dashboard long term?",
+        a: "Not really. First Look is a sharper one-off pass. Dashboard is the recurring operating surface you come back to every week.",
+      },
+      {
+        q: "What should I do if I am still too early for both?",
+        a: "Start with the free Sunday issue and let the signal build context until you can feel whether your question is recurring or already hot.",
+      },
+    ],
+    ctaUrl: "/firstlook",
+    ctaLabel: "Get my First Look",
+    related: [
+      "what-is-the-best-vc-research-stack-for-2026",
+      "best-vc-deal-flow-software-2026",
+      "deal-flow-timing-vs-verification",
+    ],
+    proofLinks: [
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
+      { label: "Read the methodology", url: "/methodology" },
+    ],
+    nextReadLinks: [
+      { label: "See the weekly operating surface", url: "/dashboard" },
+      { label: "Get my First Look", url: "/firstlook" },
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+      { label: "Best VC deal flow software in 2026", url: "/answers/best-vc-deal-flow-software-2026" },
+    ],
+    keywords: [
+      "first look vs dashboard",
+      "when should I use First Look vs Dashboard",
+      "GitDealFlow first look or dashboard",
+      "startup signal one-off vs recurring",
+      "deal flow weekly operating surface",
+    ],
+  },
+  {
+    slug: "is-gitdealflow-only-for-technical-startups",
+    query: "Is GitDealFlow only for technical startups?",
+    h1: "Is GitDealFlow only for technical startups?",
+    description:
+      "Mostly yes for the strongest use case. GitDealFlow is best where public engineering movement is a meaningful part of the company story.",
+    tldr:
+      "GitDealFlow is strongest for technical startups because the signal depends on meaningful public engineering movement. It is less useful for companies whose real operating story does not leave that kind of public trace.",
+    body: `GitDealFlow is not trying to be universal across every kind of company. It is strongest where public engineering movement is a real part of how the company develops, ships, and scales.
+
+**Quick answer.** Yes, the strongest use case is technical startups. That is not a weakness of the product. It is the consequence of using a timing surface tied to public engineering movement.
+
+**Where it works best.** Developer tools, AI/ML, infrastructure, fintech software, data tooling, and other categories where product development leaves a meaningful public GitHub footprint.
+
+**Where it works less well.** Consumer brands, non-technical marketplaces, stealth-heavy teams with almost no public engineering surface, or companies whose main operating movement does not show up in public repositories.
+
+**Why that is still useful.** A narrower but sharper timing surface is better than a broad but late one. If your investment universe leans technical, this is a strong first layer. If your universe is broad, you pair it with a second layer that handles verification or other signal types.`,
+    facts: [
+      {
+        claim:
+          "The live tracked sectors and methodology are anchored in public GitHub engineering activity, which naturally favors technical startups with meaningful public code footprints.",
+        sourceUrl: "https://signals.gitdealflow.com/methodology",
+        sourceLabel: "Methodology",
+      },
+      {
+        claim:
+          "Comparison pages position GitDealFlow as a timing-first layer rather than a broad replacement for every startup database across all categories.",
+        sourceUrl: "https://signals.gitdealflow.com/compare/best-alternative-data-tools-for-angel-investors",
+        sourceLabel: "Alternative data comparison",
+      },
+      {
+        claim:
+          "The public dataset, answer pages, and compare pages all treat verification and broader coverage as complementary jobs rather than pretending one signal covers every startup type equally well.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/deal-flow-timing-vs-verification",
+        sourceLabel: "Timing vs verification",
+      },
+    ],
+    faqs: [
+      {
+        q: "Can a non-technical consumer startup still show up?",
+        a: "Sometimes, but it is not the strongest fit. The signal is best when engineering movement is a meaningful part of the story.",
+      },
+      {
+        q: "Should I ignore GitDealFlow if I invest broadly?",
+        a: "No. Use it as a sharper first layer for the technical slice of your universe, then pair it with broader verification or coverage tools where needed.",
+      },
+      {
+        q: "Does narrower coverage make the product weaker?",
+        a: "Not if the job is earlier timing. A narrower but sharper signal is often more useful than a broad surface that gets you there late.",
+      },
+    ],
+    ctaUrl: "/buyers-guide",
+    ctaLabel: "Read the buyer's guide",
+    related: [
+      "best-vc-deal-flow-software-2026",
+      "deal-flow-timing-vs-verification",
+      "github-deal-flow-for-investors",
+    ],
+    proofLinks: [
+      { label: "Read the methodology", url: "/methodology" },
+      { label: "Best alternative data tools for angel investors", url: "/compare/best-alternative-data-tools-for-angel-investors" },
+      { label: "A better Crunchbase alternative when timing matters", url: "/compare/crunchbase-alternative-for-angel-investors" },
+    ],
+    nextReadLinks: [
+      { label: "Best VC deal flow software in 2026", url: "/answers/best-vc-deal-flow-software-2026" },
+      { label: "The best alternative data tools for angel investors", url: "/compare/best-alternative-data-tools-for-angel-investors" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+    ],
+    keywords: [
+      "is GitDealFlow only for technical startups",
+      "GitDealFlow technical startups",
+      "GitHub signal technical startups only",
+      "startup signal for technical companies",
+      "technical startup deal flow",
+    ],
+  },
+  {
+    slug: "when-should-i-use-dashboard-vs-insider",
+    query: "When should I use Dashboard vs Insider?",
+    h1: "When should you use Dashboard vs Insider?",
+    description:
+      "Use Dashboard when you want a recurring weekly signal surface. Use Insider when you want a higher-touch layer around judgment, context, and steadier support.",
+    tldr:
+      "Use Dashboard when you want a dependable weekly operating surface. Use Insider when you want a smaller, higher-touch layer with more context, steadiness, and direct support around your decisions.",
+    body: `Dashboard and Insider solve different versions of the same problem. One gives you a recurring surface to review what changed. The other gives you a tighter layer of context and support when you do not want to carry the decision alone.
+
+**Quick answer.** Dashboard is the recurring signal surface. Insider is the higher-touch context layer.
+
+**Use Dashboard when...** you want a calmer weekly workflow, more names, and a better way to review momentum without opening too many tabs. The value is repeated exposure and cleaner weekly rhythm.
+
+**Use Insider when...** you already know the signal is useful but want more support, more context, and a smaller layer around the judgment itself. Insider makes more sense when the bottleneck is not access to names, but steadiness around what to do with them.
+
+**A simple rule.** If you mainly need a better weekly operating surface, choose Dashboard. If you need a room, a tighter layer, and more confidence around live decisions, choose Insider.`,
+    facts: [
+      {
+        claim:
+          "Dashboard is positioned as the main recurring tier and the dependable weekly operating surface.",
+        sourceUrl: "https://gitdealflow.com/dashboard.html",
+        sourceLabel: "Dashboard page",
+      },
+      {
+        claim:
+          "Insider is positioned as the higher-touch operating layer for readers who want steadiness and context, not just more proof.",
+        sourceUrl: "https://gitdealflow.com/insider.html",
+        sourceLabel: "Insider page",
+      },
+      {
+        claim:
+          "The routing system across proof pages already distinguishes free watch, First Look, Dashboard, and Buyers Guide as separate next-step lanes.",
+        sourceUrl: "https://signals.gitdealflow.com/research",
+        sourceLabel: "Research routing",
+      },
+    ],
+    faqs: [
+      {
+        q: "Should I jump straight to Insider?",
+        a: "Usually only if the signal already makes sense to you and the real bottleneck is confidence, context, or direct support rather than weekly visibility.",
+      },
+      {
+        q: "Can Dashboard be enough on its own?",
+        a: "Yes. For many readers the weekly operating surface is enough, especially if the main need is recurring signal rather than higher-touch guidance.",
+      },
+      {
+        q: "What if I am still too early for both?",
+        a: "Start with the free Sunday issue, then use First Look if one thesis becomes urgent before you commit to a recurring lane.",
+      },
+    ],
+    ctaUrl: "/dashboard",
+    ctaLabel: "See the weekly operating surface",
+    related: [
+      "when-should-i-use-first-look-vs-dashboard",
+      "best-vc-deal-flow-software-2026",
+      "what-is-the-best-vc-research-stack-for-2026",
+    ],
+    proofLinks: [
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
+      { label: "Read the methodology", url: "/methodology" },
+    ],
+    nextReadLinks: [
+      { label: "See the weekly operating surface", url: "/dashboard" },
+      { label: "See the higher-touch layer", url: "/insider" },
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+      { label: "Get my First Look", url: "/firstlook" },
+    ],
+    keywords: [
+      "dashboard vs insider",
+      "when should I use dashboard vs insider",
+      "GitDealFlow dashboard or insider",
+      "weekly signal surface vs higher touch",
+      "deal flow dashboard vs insider circle",
+    ],
+  },
+  {
+    slug: "can-gitdealflow-replace-crunchbase",
+    query: "Can GitDealFlow replace Crunchbase?",
+    h1: "Can GitDealFlow replace Crunchbase?",
+    description:
+      "Not completely. GitDealFlow is stronger for earlier timing. Crunchbase is still useful for verification, company lookup, and broader context after a name deserves attention.",
+    tldr:
+      "GitDealFlow can replace Crunchbase for some timing jobs, but not for every verification job. The strongest stack is usually GitDealFlow first, Crunchbase second.",
+    body: `GitDealFlow is not a full startup database, and it is not trying to be. It is strongest when the real job is earlier timing rather than broad verification.
+
+**Quick answer.** No, not completely. GitDealFlow is better for earlier signal. Crunchbase is still useful for company lookup, funding history, and a lighter verification pass after something already deserves attention.
+
+**Where GitDealFlow can replace Crunchbase.** It can replace Crunchbase as the first place you look when the real problem is earlier attention, cleaner timing, and noticing change before the story gets crowded.
+
+**Where Crunchbase still matters.** It still matters for funding rounds, investor lists, basic company facts, and quick background checks after a name is already on your radar.
+
+**The clean stack.** For most small investors the strongest workflow is simple: GitDealFlow first for timing, Crunchbase second for verification. The mistake is expecting a verification tool to do an early-signal job.`,
+    facts: [
+      {
+        claim:
+          "GitDealFlow is positioned as an earlier timing surface rather than a broad replacement for every database workflow.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/deal-flow-timing-vs-verification",
+        sourceLabel: "Timing vs verification",
+      },
+      {
+        claim:
+          "The comparison surface already distinguishes GitDealFlow's timing role from Crunchbase's verification role.",
+        sourceUrl: "https://signals.gitdealflow.com/compare/crunchbase-alternative-for-angel-investors",
+        sourceLabel: "Crunchbase alternative comparison",
+      },
+      {
+        claim:
+          "The strongest existing compare pages frame GitDealFlow as the first layer and databases as second-layer checks.",
+        sourceUrl: "https://signals.gitdealflow.com/compare/github-signals-vs-crunchbase-alerts",
+        sourceLabel: "GitHub signals vs Crunchbase",
+      },
+    ],
+    faqs: [
+      {
+        q: "Can I stop using Crunchbase if I use GitDealFlow?",
+        a: "Sometimes, but usually not entirely. GitDealFlow is stronger for earlier timing. Crunchbase is still useful for verification and quick company lookup after attention begins.",
+      },
+      {
+        q: "What job does GitDealFlow do better?",
+        a: "Earlier public timing. It helps you notice movement before the round feels obvious.",
+      },
+      {
+        q: "What job does Crunchbase still do better?",
+        a: "Funding history, investor lists, basic company facts, and broad verification after a company is already visible.",
+      },
+    ],
+    ctaUrl: "/compare/crunchbase-alternative-for-angel-investors",
+    ctaLabel: "See the Crunchbase comparison",
+    related: [
+      "deal-flow-timing-vs-verification",
+      "best-vc-deal-flow-software-2026",
+      "github-deal-flow-for-investors",
+    ],
+    proofLinks: [
+      { label: "A better Crunchbase alternative when timing matters", url: "/compare/crunchbase-alternative-for-angel-investors" },
+      { label: "GitHub signals vs Crunchbase alerts", url: "/compare/github-signals-vs-crunchbase-alerts" },
+      { label: "Read the methodology", url: "/methodology" },
+    ],
+    nextReadLinks: [
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+      { label: "Get my First Look", url: "/firstlook" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
+      { label: "A better Crunchbase alternative when timing matters", url: "/compare/crunchbase-alternative-for-angel-investors" },
+    ],
+    keywords: [
+      "can GitDealFlow replace Crunchbase",
+      "GitDealFlow vs Crunchbase",
+      "replace Crunchbase for startup sourcing",
+      "early signal vs Crunchbase",
+      "Crunchbase alternative timing",
+    ],
+  },
+  {
+    slug: "is-first-look-worth-it-for-angels",
+    query: "Is First Look worth it for angels?",
+    h1: "Is First Look worth it for angels?",
+    description:
+      "First Look is worth it when one live sector or thesis question already needs a sharper answer. It is less useful if you are still too early and only need broad weekly exposure.",
+    tldr:
+      "First Look is worth it for angels when the question is already hot. If you still just need recurring exposure and patience, start with the free Sunday issue instead.",
+    body: `First Look is not a generic trial. It is a paid shortcut for a specific moment: when a sector or thesis question already has enough heat that a sharper answer is worth more than another week of passive browsing.
+
+**Quick answer.** First Look is worth it when one live question already needs a better answer. If you are still too early, the free Sunday issue is the better starting point.
+
+**When it is worth it.** It is worth it when you already have a thesis, a sector, or a short list in mind and want a more focused pass without committing to a broader recurring workflow.
+
+**When it is not worth it yet.** It is usually too early if you are still just orienting yourself, browsing broadly, or figuring out whether this category even fits your workflow. In that case, free weekly exposure is the smarter first move.
+
+**Simple rule.** If the question is specific and already expensive, use First Look. If the question is still fuzzy, start free and let the signal build context first.`,
+    facts: [
+      {
+        claim:
+          "First Look is positioned as the low-friction paid test for a live question rather than a generic trial product.",
+        sourceUrl: "https://gitdealflow.com/firstlook.html",
+        sourceLabel: "First Look page",
+      },
+      {
+        claim:
+          "The routing system across research, compare, answers, and integrations now treats First Look as the right lane when the question is already expensive.",
+        sourceUrl: "https://signals.gitdealflow.com/research",
+        sourceLabel: "Research routing",
+      },
+      {
+        claim:
+          "Dashboard is framed as the recurring weekly operating surface, which makes First Look the narrower one-off depth layer rather than the recurring default.",
+        sourceUrl: "https://gitdealflow.com/dashboard.html",
+        sourceLabel: "Dashboard page",
+      },
+    ],
+    faqs: [
+      {
+        q: "Should I buy First Look before Dashboard?",
+        a: "Yes if the question is narrow and urgent. No if what you really need is a recurring weekly operating surface.",
+      },
+      {
+        q: "What if I only want to see whether the signal feels real?",
+        a: "Start with the free Sunday issue if you only want low-friction exposure before paying for depth.",
+      },
+      {
+        q: "Who gets the most value from First Look?",
+        a: "Angels or small-fund operators with one live sector or thesis question that already needs a sharper pass.",
+      },
+    ],
+    ctaUrl: "/firstlook",
+    ctaLabel: "Get my First Look",
+    related: [
+      "when-should-i-use-first-look-vs-dashboard",
+      "when-should-i-use-dashboard-vs-insider",
+      "deal-flow-timing-vs-verification",
+    ],
+    proofLinks: [
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
+      { label: "Read the methodology", url: "/methodology" },
+    ],
+    nextReadLinks: [
+      { label: "Get my First Look", url: "/firstlook" },
+      { label: "See the weekly operating surface", url: "/dashboard" },
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+      { label: "When should you use First Look vs Dashboard?", url: "/answers/when-should-i-use-first-look-vs-dashboard" },
+    ],
+    keywords: [
+      "is First Look worth it for angels",
+      "GitDealFlow First Look worth it",
+      "when to use First Look",
+      "startup sector pass for angels",
+      "one-off startup signal analysis",
+    ],
+  },
+  {
+    slug: "what-do-i-actually-get-from-dashboard-each-week",
+    query: "What do I actually get from Dashboard each week?",
+    h1: "What do you actually get from Dashboard each week?",
+    description:
+      "Dashboard gives you a recurring weekly operating surface: more names, cleaner review, fewer tabs, and a calmer way to see what changed across the field.",
+    tldr:
+      "What you get from Dashboard each week is not just more data. You get a steadier weekly operating surface that helps you review momentum across names and sectors without rebuilding the workflow every Monday.",
+    body: `Dashboard is not just a bigger list. It is a weekly operating surface.
+
+**Quick answer.** Each week you get a calmer way to see what changed across more names and sectors, with less tab chaos and less guesswork.
+
+**What changes in practice.** Instead of bouncing between scattered pages and vague notes, you get one place to review momentum, filter attention, and keep a weekly rhythm. The value is not drama. The value is steadiness.
+
+**What Dashboard is really for.** It is for the buyer who no longer needs just one sharp answer, but also is not looking for a higher-touch room. It sits in the middle: recurring visibility, cleaner timing, and a better Monday workflow.
+
+**What it is not.** It is not a replacement for every diligence tool and it is not the same thing as Insider. Dashboard is the recurring review layer.`,
+    facts: [
+      {
+        claim:
+          "Dashboard is positioned as the dependable weekly operating surface rather than just a larger database view.",
+        sourceUrl: "https://gitdealflow.com/dashboard.html",
+        sourceLabel: "Dashboard page",
+      },
+      {
+        claim:
+          "The routing system across proof and comparison pages now treats Dashboard as the recurring lane after free exposure or one-off depth.",
+        sourceUrl: "https://signals.gitdealflow.com/research",
+        sourceLabel: "Research routing",
+      },
+      {
+        claim:
+          "Dashboard is repeatedly framed as the weekly surface that sits between the free Sunday issue and the higher-touch Insider layer.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/when-should-i-use-dashboard-vs-insider",
+        sourceLabel: "Dashboard vs Insider answer",
+      },
+    ],
+    faqs: [
+      {
+        q: "Is Dashboard mainly about more names?",
+        a: "Partly, but the real value is the recurring weekly operating surface. It helps you review change more calmly and consistently.",
+      },
+      {
+        q: "Should I choose Dashboard if I only have one live question?",
+        a: "Usually no. If the question is narrow and already urgent, First Look is the better fit. Dashboard is stronger when your need is recurring weekly coverage.",
+      },
+      {
+        q: "How is Dashboard different from Insider?",
+        a: "Dashboard is the weekly surface. Insider is the smaller, higher-touch layer for more context and support around the judgment itself.",
+      },
+    ],
+    ctaUrl: "/dashboard",
+    ctaLabel: "See the weekly operating surface",
+    related: [
+      "when-should-i-use-first-look-vs-dashboard",
+      "when-should-i-use-dashboard-vs-insider",
+      "is-first-look-worth-it-for-angels",
+    ],
+    proofLinks: [
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
+      { label: "Read the methodology", url: "/methodology" },
+    ],
+    nextReadLinks: [
+      { label: "See the weekly operating surface", url: "/dashboard" },
+      { label: "See the higher-touch layer", url: "/insider" },
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+      { label: "When should you use Dashboard vs Insider?", url: "/answers/when-should-i-use-dashboard-vs-insider" },
+    ],
+    keywords: [
+      "what do I get from Dashboard each week",
+      "GitDealFlow Dashboard weekly",
+      "what is in the dashboard",
+      "weekly deal flow operating surface",
+      "startup signal dashboard weekly workflow",
+    ],
+  },
+  {
+    slug: "what-do-i-actually-get-from-insider",
+    query: "What do I actually get from Insider?",
+    h1: "What do you actually get from Insider?",
+    description:
+      "Insider gives you the higher-touch layer: more context, more steadiness, and more support around what to do with the signal once it already matters.",
+    tldr:
+      "What you get from Insider is not just more proof. You get a tighter layer of context and steadiness around recurring decisions when you no longer want to carry them alone.",
+    body: `Insider is not just 'Dashboard plus more.' It is the higher-touch layer for the buyer who already trusts the signal and now wants more context and steadiness around what to do with it.
+
+**Quick answer.** Insider gives you a smaller, more serious layer around recurring judgment, not just access to more raw signal.
+
+**What changes in practice.** The value is not simply more names. The value is carrying less of the decision alone. Insider makes sense when the problem becomes confidence, context, and support instead of just access to the weekly surface.
+
+**Who it is really for.** It is for the buyer who has already moved beyond simple exposure and wants a tighter layer around the recurring decisions themselves.
+
+**What it is not.** It is not the best first paid step for most people. It usually makes sense after the free Sunday issue, after First Look, or after Dashboard already proved useful.`,
+    facts: [
+      {
+        claim:
+          "Insider is positioned as the higher-touch operating layer for readers who want steadiness and context rather than just more proof.",
+        sourceUrl: "https://gitdealflow.com/insider.html",
+        sourceLabel: "Insider page",
+      },
+      {
+        claim:
+          "The landing-copy system defines Insider around carrying the decision less alone, not around generic premium positioning.",
+        sourceUrl: "https://gitdealflow.com/insider.html",
+        sourceLabel: "Insider page",
+      },
+      {
+        claim:
+          "Dashboard vs Insider routing now distinguishes the recurring surface from the higher-touch context layer.",
+        sourceUrl: "https://signals.gitdealflow.com/compare/dashboard-vs-insider-for-weekly-workflow",
+        sourceLabel: "Dashboard vs Insider comparison",
+      },
+    ],
+    faqs: [
+      {
+        q: "Is Insider the right first paid step?",
+        a: "Usually not. Most buyers should start with the free Sunday issue, First Look, or Dashboard before Insider becomes the obvious next move.",
+      },
+      {
+        q: "How is Insider different from Dashboard?",
+        a: "Dashboard is the recurring weekly surface. Insider is the tighter layer of context and support around what to do with that surface.",
+      },
+      {
+        q: "When does Insider become worth it?",
+        a: "When the signal already makes sense to you and the real bottleneck is not access, but steadiness, support, and confidence around recurring decisions.",
+      },
+    ],
+    ctaUrl: "/insider",
+    ctaLabel: "See the higher-touch layer",
+    related: [
+      "when-should-i-use-dashboard-vs-insider",
+      "what-do-i-actually-get-from-dashboard-each-week",
+      "is-first-look-worth-it-for-angels",
+    ],
+    proofLinks: [
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
+      { label: "Read the methodology", url: "/methodology" },
+    ],
+    nextReadLinks: [
+      { label: "See the higher-touch layer", url: "/insider" },
+      { label: "See the weekly operating surface", url: "/dashboard" },
+      { label: "When should you use Dashboard vs Insider?", url: "/answers/when-should-i-use-dashboard-vs-insider" },
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+    ],
+    keywords: [
+      "what do I get from Insider",
+      "GitDealFlow Insider what do I get",
+      "what is in Insider",
+      "higher touch deal flow layer",
+      "insider circle startup signal",
+    ],
+  },
+  {
+    slug: "who-should-use-insider-instead-of-dashboard",
+    query: "Who should use Insider instead of Dashboard?",
+    h1: "Who should use Insider instead of Dashboard?",
+    description:
+      "Use Insider instead of Dashboard when you already trust the signal and the real bottleneck is confidence, context, and support — not just access to the weekly surface.",
+    tldr:
+      "You should use Insider instead of Dashboard when the problem is no longer seeing what changed, but deciding what to do with it more confidently and less alone.",
+    body: `Most buyers should not start with Insider. But some should choose it instead of Dashboard once the problem changes.
+
+**Quick answer.** Use Insider instead of Dashboard when you already trust the signal and the real bottleneck is confidence, context, and support rather than access to the weekly surface.
+
+**Choose Insider if...** you already know the signal is valuable, you do not want to carry the recurring judgment alone, and you want a tighter layer around the decision process itself.
+
+**Choose Dashboard if...** your main need is still a better weekly surface, more names, fewer tabs, and a calmer recurring workflow.
+
+**Simple rule.** Dashboard is for recurring review. Insider is for recurring conviction support.`,
+    facts: [
+      {
+        claim:
+          "Dashboard and Insider are framed as different layers of the same workflow rather than interchangeable tiers.",
+        sourceUrl: "https://signals.gitdealflow.com/compare/dashboard-vs-insider-for-weekly-workflow",
+        sourceLabel: "Dashboard vs Insider comparison",
+      },
+      {
+        claim:
+          "Insider is positioned around steadiness and context, while Dashboard is positioned around recurring weekly clarity.",
+        sourceUrl: "https://gitdealflow.com/insider.html",
+        sourceLabel: "Insider page",
+      },
+      {
+        claim:
+          "The routing and content system already treat Dashboard as the recurring surface and Insider as the higher-touch layer.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/when-should-i-use-dashboard-vs-insider",
+        sourceLabel: "Dashboard vs Insider answer",
+      },
+    ],
+    faqs: [
+      {
+        q: "Should most people choose Dashboard first?",
+        a: "Yes. For most buyers Dashboard is the cleaner recurring step before Insider becomes necessary.",
+      },
+      {
+        q: "What makes someone an Insider fit?",
+        a: "They already trust the signal and now want more context, more support, and more steadiness around recurring decisions.",
+      },
+      {
+        q: "Can Dashboard still be enough for serious users?",
+        a: "Yes. If the main need is recurring review rather than higher-touch support, Dashboard can still be enough.",
+      },
+    ],
+    ctaUrl: "/insider",
+    ctaLabel: "See the higher-touch layer",
+    related: [
+      "when-should-i-use-dashboard-vs-insider",
+      "what-do-i-actually-get-from-insider",
+      "what-do-i-actually-get-from-dashboard-each-week",
+    ],
+    proofLinks: [
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+      { label: "Read the methodology", url: "/methodology" },
+    ],
+    nextReadLinks: [
+      { label: "See the higher-touch layer", url: "/insider" },
+      { label: "See the weekly operating surface", url: "/dashboard" },
+      { label: "Get my First Look", url: "/firstlook" },
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+    ],
+    keywords: [
+      "who should use Insider instead of Dashboard",
+      "Insider vs Dashboard fit",
+      "GitDealFlow Insider fit",
+      "when to upgrade from dashboard to insider",
+      "conviction support vs weekly workflow",
+    ],
+  },
+  {
+    slug: "why-most-alternative-data-tools-feel-late",
+    query: "Why do most alternative data tools feel late?",
+    h1: "Why most alternative data tools feel late",
+    description:
+      "Most alternative data tools feel late because they are built for verification, coverage, and procurement clarity, not earlier timing. Here is what that means for your workflow.",
+    tldr:
+      "Most alternative data tools feel late because they optimize for cleaner verification, broader coverage, and easier selling, not for earlier timing before the story gets crowded.",
+    body: `Most alternative data tools do not feel late because they are badly built. They feel late because they were built for a different job.
+
+**Quick answer.** They optimize for verification and broad visibility, not for earlier attention before the round feels obvious.
+
+**Why they drift late.** Enterprise tools are rewarded for breadth, confidence, and a sales-friendly dashboard. That naturally pushes them toward cleaner but later signals — funding updates, profiles, market maps, and broad firmographic coverage.
+
+**Why that matters to you.** If your real problem is timing, a cleaner database often still leaves you late. It helps you understand what already happened, not necessarily what deserves attention before everyone else repeats it.
+
+**What changes when timing comes first.** A timing-first tool accepts more noise at the surface but gives you a calmer window to pay attention earlier. That is why GitDealFlow sits in a different slot than most broad alt-data tools.`,
+    facts: [
+      {
+        claim:
+          "GitDealFlow is explicitly framed as a timing-first layer rather than a broad verification database.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/deal-flow-timing-vs-verification",
+        sourceLabel: "Timing vs verification",
+      },
+      {
+        claim:
+          "Comparison pages across the site repeatedly distinguish early signal from later database clarity.",
+        sourceUrl: "https://signals.gitdealflow.com/compare/best-alternative-data-tools-for-angel-investors",
+        sourceLabel: "Alternative data comparison",
+      },
+      {
+        claim:
+          "GitHub-based engineering acceleration is used as a leading signal rather than a post-event verification layer in the methodology.",
+        sourceUrl: "https://signals.gitdealflow.com/methodology",
+        sourceLabel: "Methodology",
+      },
+    ],
+    faqs: [
+      {
+        q: "Are late-feeling tools still useful?",
+        a: "Yes. They are useful for verification, market context, and due diligence. The issue is using them as if they were early-timing tools.",
+      },
+      {
+        q: "Why do enterprise tools often feel especially late?",
+        a: "Because they are optimized for breadth, confidence, and procurement clarity, which pushes them toward cleaner but later signals.",
+      },
+      {
+        q: "What should I use if timing is the main problem?",
+        a: "Use a timing-first layer first, then add broader verification tools once a name already deserves attention.",
+      },
+    ],
+    ctaUrl: "/compare/best-alternative-data-tools-for-angel-investors",
+    ctaLabel: "Compare alternative data tools",
+    related: [
+      "deal-flow-timing-vs-verification",
+      "can-gitdealflow-replace-crunchbase",
+      "what-is-startup-engineering-momentum",
+    ],
+    proofLinks: [
+      { label: "Timing and verification are not the same thing", url: "/answers/deal-flow-timing-vs-verification" },
+      { label: "Read the methodology", url: "/methodology" },
+      { label: "Best alternative data tools for angel investors", url: "/compare/best-alternative-data-tools-for-angel-investors" },
+    ],
+    nextReadLinks: [
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+      { label: "Get my First Look", url: "/firstlook" },
+      { label: "Can GitDealFlow replace Crunchbase?", url: "/answers/can-gitdealflow-replace-crunchbase" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
+    ],
+    keywords: [
+      "why alternative data tools feel late",
+      "late alternative data tools",
+      "timing vs verification alternative data",
+      "early startup signal tool",
+      "why startup databases feel late",
+    ],
+  },
+  {
+    slug: "how-to-build-a-two-layer-deal-flow-stack",
+    query: "How do I build a two-layer deal flow stack?",
+    h1: "How to build a two-layer deal flow stack",
+    description:
+      "Build a cleaner deal flow stack with two layers: one timing layer for earlier attention and one verification layer for checks after a name already deserves attention.",
+    tldr:
+      "The simplest useful deal flow stack has two layers: a timing-first layer to notice what changed earlier, and a verification layer to check what already became visible.",
+    body: `Most investors overcomplicate tooling too early. A useful stack does not need seven subscriptions. It needs two clean jobs covered well.
+
+**Quick answer.** Build one timing layer and one verification layer.
+
+**Layer one — timing.** This is the layer that helps you notice earlier movement before the round feels obvious. GitDealFlow fits here.
+
+**Layer two — verification.** This is the layer that helps you check funding history, investor lists, and company facts once a name already deserves attention. Crunchbase, Dealroom, or another lighter database can fit here.
+
+**Why this works.** Timing and verification are different jobs. If you buy only verification, you stay late. If you buy only timing, you still need checks once a name gets interesting. The two-layer stack is clean because each tool does one real job well.`,
+    facts: [
+      {
+        claim:
+          "GitDealFlow is repeatedly positioned as a timing-first layer rather than a broad replacement for all database jobs.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/deal-flow-timing-vs-verification",
+        sourceLabel: "Timing vs verification",
+      },
+      {
+        claim:
+          "The comparison surfaces repeatedly recommend simple stacks that use GitDealFlow first and a database second.",
+        sourceUrl: "https://signals.gitdealflow.com/compare/crunchbase-alternative-for-angel-investors",
+        sourceLabel: "Crunchbase alternative comparison",
+      },
+      {
+        claim:
+          "The VC research stack answer already frames leading-signal engine plus verification layer as a durable pattern.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/what-is-the-best-vc-research-stack-for-2026",
+        sourceLabel: "VC research stack answer",
+      },
+    ],
+    faqs: [
+      {
+        q: "Can a two-layer stack be enough?",
+        a: "Yes. For many angels and emerging funds, one timing layer plus one verification layer covers most of the workflow until scale creates a new bottleneck.",
+      },
+      {
+        q: "Which layer should I buy first?",
+        a: "If timing is the bottleneck, buy the timing layer first. If you already have plenty of names but poor verification, buy the verification layer first.",
+      },
+      {
+        q: "When do I add a CRM or a higher-touch layer?",
+        a: "Only after discovery and verification are working well enough that the next real problem is relationship management or conviction support.",
+      },
+    ],
+    ctaUrl: "/buyers-guide",
+    ctaLabel: "Read the buyer's guide",
+    related: [
+      "what-is-the-best-vc-research-stack-for-2026",
+      "can-gitdealflow-replace-crunchbase",
+      "deal-flow-timing-vs-verification",
+    ],
+    proofLinks: [
+      { label: "The best VC research stack for 2026", url: "/answers/what-is-the-best-vc-research-stack-for-2026" },
+      { label: "A better Crunchbase alternative when timing matters", url: "/compare/crunchbase-alternative-for-angel-investors" },
+      { label: "Read the methodology", url: "/methodology" },
+    ],
+    nextReadLinks: [
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+      { label: "Get my First Look", url: "/firstlook" },
+      { label: "See the weekly operating surface", url: "/dashboard" },
+      { label: "Can GitDealFlow replace Crunchbase?", url: "/answers/can-gitdealflow-replace-crunchbase" },
+    ],
+    keywords: [
+      "two layer deal flow stack",
+      "how to build a deal flow stack",
+      "timing layer verification layer",
+      "venture research stack simple",
+      "angel investor deal flow stack",
+    ],
+  },
+  {
+    slug: "what-is-the-best-deal-flow-tool-for-european-angels",
+    query: "What is the best deal flow tool for European angels?",
+    h1: "What is the best deal flow tool for European angels?",
+    description:
+      "For European angels, the best deal flow tool depends on the job: GitDealFlow for earlier timing on technical startups, Dealroom for broader regional coverage, and Crunchbase for lighter verification.",
+    tldr:
+      "For European angels, the best first tool is usually the one that matches the job. GitDealFlow is strongest for earlier timing on technical startups. Dealroom is strongest for broader European coverage. Crunchbase remains useful for lighter verification.",
+    body: `There is no single best deal flow tool for every European angel because European angels do not all need the same thing.
+
+**Quick answer.** If your problem is earlier timing on technical startups, GitDealFlow is the strongest first layer. If your problem is broad European market mapping, Dealroom is stronger. If your problem is quick company verification, Crunchbase can still help.
+
+**Why Europe changes the choice.** In Europe, broad regional coverage matters more because the market is fragmented across countries, ecosystems, and stages. That makes Dealroom genuinely useful. But broader coverage still does not solve the timing problem by itself.
+
+**What to choose first.** Start with the tool that matches the real job. Earlier timing: GitDealFlow. Broad European map: Dealroom. Lightweight verification: Crunchbase.
+
+**Best stack for most European angels.** GitDealFlow first for earlier technical timing, then Dealroom or Crunchbase for broader context and checks.`,
+    facts: [
+      {
+        claim:
+          "Dealroom is positioned as strong for European market mapping and regional coverage, while GitDealFlow is positioned as stronger for earlier technical timing.",
+        sourceUrl: "https://signals.gitdealflow.com/compare/gitdealflow-vs-dealroom-for-european-angels",
+        sourceLabel: "GitDealFlow vs Dealroom comparison",
+      },
+      {
+        claim:
+          "GitDealFlow is repeatedly framed as a timing-first layer rather than a broad database replacement.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/deal-flow-timing-vs-verification",
+        sourceLabel: "Timing vs verification",
+      },
+      {
+        claim:
+          "The alternative-data and Crunchbase comparison pages already separate timing, regional coverage, and verification as different jobs.",
+        sourceUrl: "https://signals.gitdealflow.com/compare/best-alternative-data-tools-for-angel-investors",
+        sourceLabel: "Alternative data comparison",
+      },
+    ],
+    faqs: [
+      {
+        q: "Should a European angel buy Dealroom first?",
+        a: "Only if broad regional coverage is the real bottleneck. If earlier timing on technical startups matters more, GitDealFlow is the stronger first layer.",
+      },
+      {
+        q: "Can one tool cover everything for a European angel?",
+        a: "Usually no. A cleaner stack uses one tool for earlier timing and another for broader context or verification.",
+      },
+      {
+        q: "Where does Crunchbase fit for European angels?",
+        a: "Mostly as a lighter verification layer after a name already deserves attention.",
+      },
+    ],
+    ctaUrl: "/compare/gitdealflow-vs-dealroom-for-european-angels",
+    ctaLabel: "See the European angle comparison",
+    related: [
+      "how-to-build-a-two-layer-deal-flow-stack",
+      "can-gitdealflow-replace-crunchbase",
+      "what-is-the-best-vc-research-stack-for-2026",
+    ],
+    proofLinks: [
+      { label: "GitDealFlow vs Dealroom for European angels", url: "/compare/gitdealflow-vs-dealroom-for-european-angels" },
+      { label: "Read the methodology", url: "/methodology" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
+    ],
+    nextReadLinks: [
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+      { label: "Get my First Look", url: "/firstlook" },
+      { label: "How should a European angel build a lightweight research stack?", url: "/answers/how-should-a-european-angel-build-a-lightweight-research-stack" },
+      { label: "GitDealFlow vs Dealroom for European angels", url: "/compare/gitdealflow-vs-dealroom-for-european-angels" },
+    ],
+    keywords: [
+      "best deal flow tool for European angels",
+      "European angel deal flow tool",
+      "best startup tool Europe angels",
+      "deal flow Europe angel investor",
+      "GitDealFlow Dealroom European angel",
+    ],
+  },
+  {
+    slug: "how-should-a-european-angel-build-a-lightweight-research-stack",
+    query: "How should a European angel build a lightweight research stack?",
+    h1: "How should a European angel build a lightweight research stack?",
+    description:
+      "A lightweight European angel stack should usually start with one timing layer, one regional or verification layer, and only then add heavier workflow tools if the process truly demands them.",
+    tldr:
+      "A practical lightweight European angel stack is simple: one timing layer for earlier attention, one broader regional or verification layer for checks, and only then a CRM or higher-touch layer if scale actually demands it.",
+    body: `A good lightweight stack is not about having fewer tools for the sake of it. It is about buying only the tools that solve the next real bottleneck.
+
+**Quick answer.** Start with one timing layer and one regional or verification layer. Only add more once your workflow proves you need it.
+
+**Layer one — earlier timing.** GitDealFlow fits here when your focus includes technical startups and you care about calmer attention before the round gets crowded.
+
+**Layer two — broader regional context.** Dealroom fits here when you need a map across European geographies and ecosystems. Crunchbase can also work as a lighter verification layer if you need quick checks more than regional breadth.
+
+**What to skip at first.** Heavy enterprise tools, large CRM systems, or too many overlapping signal tools before you have a stable weekly rhythm.
+
+**Simple European stack.** Timing first, regional or verification second, then CRM or higher-touch layer only if your process grows enough to justify it.`,
+    facts: [
+      {
+        claim:
+          "GitDealFlow is positioned as a timing-first layer and Dealroom as a regional coverage layer in the European-angle comparison pages.",
+        sourceUrl: "https://signals.gitdealflow.com/compare/gitdealflow-vs-dealroom-for-european-angels",
+        sourceLabel: "European angle comparison",
+      },
+      {
+        claim:
+          "The two-layer stack pattern has already been formalized in the answer layer as a durable workflow model.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/how-to-build-a-two-layer-deal-flow-stack",
+        sourceLabel: "Two-layer stack answer",
+      },
+      {
+        claim:
+          "Crunchbase remains useful as a lighter verification layer rather than the main timing tool in the current content system.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/can-gitdealflow-replace-crunchbase",
+        sourceLabel: "Crunchbase replacement answer",
+      },
+    ],
+    faqs: [
+      {
+        q: "Do I need Dealroom in a lightweight European stack?",
+        a: "Only if broad European coverage is an actual bottleneck. If your main need is earlier timing on technical startups, GitDealFlow should come first.",
+      },
+      {
+        q: "Should I add a CRM right away?",
+        a: "Usually not. Add a CRM only after timing and verification are already working and relationship management becomes the next bottleneck.",
+      },
+      {
+        q: "Can a lightweight stack still be good enough?",
+        a: "Yes. For many European angels, a small timing-plus-verification stack is cleaner and more effective than buying a big institutional setup too early.",
+      },
+    ],
+    ctaUrl: "/buyers-guide",
+    ctaLabel: "Read the buyer's guide",
+    related: [
+      "what-is-the-best-deal-flow-tool-for-european-angels",
+      "how-to-build-a-two-layer-deal-flow-stack",
+      "what-is-the-best-vc-research-stack-for-2026",
+    ],
+    proofLinks: [
+      { label: "GitDealFlow vs Dealroom for European angels", url: "/compare/gitdealflow-vs-dealroom-for-european-angels" },
+      { label: "How to build a two-layer deal flow stack", url: "/answers/how-to-build-a-two-layer-deal-flow-stack" },
+      { label: "Read the methodology", url: "/methodology" },
+    ],
+    nextReadLinks: [
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+      { label: "Get my First Look", url: "/firstlook" },
+      { label: "What is the best deal flow tool for European angels?", url: "/answers/what-is-the-best-deal-flow-tool-for-european-angels" },
+      { label: "GitDealFlow vs Dealroom for European angels", url: "/compare/gitdealflow-vs-dealroom-for-european-angels" },
+    ],
+    keywords: [
+      "European angel lightweight research stack",
+      "lightweight research stack Europe angel",
+      "European angel deal flow stack",
+      "how should a European angel build a research stack",
+      "Europe angel investor tool stack",
+    ],
+  },
+  {
+    slug: "how-to-share-a-startup-signal-with-a-co-investor",
+    query: "How do I share a startup signal with a co-investor?",
+    h1: "How to share a startup signal with a co-investor",
+    description:
+      "Share the signal in three layers: one sentence on what changed, one line on why it matters now, and one proof link. Keep it calm, specific, and easy to verify.",
+    tldr:
+      "The best way to share a startup signal with a co-investor is to make it easy to verify. One sentence on what changed, one sentence on why it matters now, and one proof link is usually enough.",
+    body: `Most weak signal-sharing dies because it asks the other person to trust your excitement instead of the evidence.
+
+**Quick answer.** Share the signal in three layers: what changed, why it matters now, and where to verify it.
+
+**What to send.** Keep it short. Name the company, describe the change in plain language, explain why it looks early enough to matter, and include one proof link. Do not send a wall of screenshots if one clear proof path does the job.
+
+**Why this works.** A co-investor does not need your full workflow first. He needs a clean reason to pay attention. Clarity beats intensity.
+
+**What to avoid.** Do not oversell certainty. Do not dump five links with no guidance. Do not force the other person to reverse-engineer why you think the signal matters.`,
+    facts: [
+      {
+        claim:
+          "The site already routes readers toward proof pages such as methodology, sample watchlist, and answer/comparison pages so claims can be verified quickly.",
+        sourceUrl: "https://signals.gitdealflow.com/research",
+        sourceLabel: "Research routing",
+      },
+      {
+        claim:
+          "Sample watchlist and answer pages are structured to be citation-ready, which makes them natural proof links in a co-investor share flow.",
+        sourceUrl: "https://gitdealflow.com/report",
+        sourceLabel: "Sample watchlist",
+      },
+      {
+        claim:
+          "The answer layer and comparison layer already separate timing from verification, which is exactly the distinction a co-investor needs quickly.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/deal-flow-timing-vs-verification",
+        sourceLabel: "Timing vs verification",
+      },
+    ],
+    faqs: [
+      {
+        q: "What is the minimum useful signal share?",
+        a: "One sentence on what changed, one sentence on why it matters now, and one proof link. Anything less is vague; anything much more often becomes noise.",
+      },
+      {
+        q: "Should I send the methodology every time?",
+        a: "Not always. Use the sample watchlist or the most relevant answer/comparison page first. Send methodology when the other person wants to inspect the logic itself.",
+      },
+      {
+        q: "Should I share a signal if I am still unsure?",
+        a: "Yes, but frame it honestly as an early read worth checking, not as a finished verdict.",
+      },
+    ],
+    ctaUrl: "https://gitdealflow.com/report",
+    ctaLabel: "Read a sample Sunday watchlist",
+    related: [
+      "why-most-alternative-data-tools-feel-late",
+      "how-to-build-a-two-layer-deal-flow-stack",
+      "deal-flow-timing-vs-verification",
+    ],
+    proofLinks: [
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+      { label: "Timing and verification are not the same thing", url: "/answers/deal-flow-timing-vs-verification" },
+      { label: "Read the methodology", url: "/methodology" },
+    ],
+    nextReadLinks: [
+      { label: "How to build a two-layer deal flow stack", url: "/answers/how-to-build-a-two-layer-deal-flow-stack" },
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+      { label: "Get my First Look", url: "/firstlook" },
+      { label: "What do you actually get from Dashboard each week?", url: "/answers/what-do-i-actually-get-from-dashboard-each-week" },
+    ],
+    keywords: [
+      "share a startup signal with a co-investor",
+      "how to share deal flow with a co-investor",
+      "startup signal co-investor",
+      "how to send a startup lead to an investor",
+      "co-investor signal memo",
+    ],
+  },
+  {
+    slug: "how-to-turn-a-weekly-watchlist-into-founder-outreach",
+    query: "How do I turn a weekly watchlist into founder outreach?",
+    h1: "How to turn a weekly watchlist into founder outreach",
+    description:
+      "A weekly watchlist becomes founder outreach when you move from passive reading to one specific note about one concrete change. The point is early relevance, not generic networking.",
+    tldr:
+      "A weekly watchlist becomes founder outreach when you pick one name, notice one concrete change, and send one specific note that proves you are paying attention earlier than the crowd.",
+    body: `A watchlist only creates value when it changes behavior. Otherwise it is just content.
+
+**Quick answer.** Pick one name, one concrete change, and one specific note. That is enough to turn a watchlist into outreach.
+
+**What the outreach should do.** It should show that you noticed something real before the round became obvious. It does not need to sound clever. It needs to sound attentive.
+
+**Why this works.** Founders ignore generic investor outreach because it feels late and mass-produced. Specificity signals that you are early, thoughtful, and worth replying to.
+
+**What to avoid.** Do not turn the note into a mini-thesis memo. Do not ask for a call before you have shown you noticed something meaningful. Specificity first, ask later.`,
+    facts: [
+      {
+        claim:
+          "The free Sunday issue is explicitly structured around a small set of names that can be reviewed quickly rather than a giant feed that encourages passive browsing.",
+        sourceUrl: "https://gitdealflow.com/",
+        sourceLabel: "GitDealFlow homepage",
+      },
+      {
+        claim:
+          "The product ladder already separates free recurring exposure, one-off depth, weekly operating surface, and higher-touch context — which means outreach can start small and deepen only when needed.",
+        sourceUrl: "https://signals.gitdealflow.com/compare/first-look-vs-dashboard-for-live-theses",
+        sourceLabel: "First Look vs Dashboard comparison",
+      },
+      {
+        claim:
+          "The sample watchlist and proof pages make it easier to show someone else exactly what you noticed and why it matters.",
+        sourceUrl: "https://gitdealflow.com/report",
+        sourceLabel: "Sample watchlist",
+      },
+    ],
+    faqs: [
+      {
+        q: "How many names should I act on from one weekly issue?",
+        a: "Usually one is enough. The goal is not volume. The goal is one thoughtful piece of outreach that comes from real attention.",
+      },
+      {
+        q: "Should I start with a call request?",
+        a: "Usually no. Start by showing that you noticed something specific. Earn the right to ask for more time.",
+      },
+      {
+        q: "What if I am not fully sure the signal matters yet?",
+        a: "That is normal. Frame it as an early observation worth discussing, not as certainty.",
+      },
+    ],
+    ctaUrl: "/firstlook",
+    ctaLabel: "Get my First Look",
+    related: [
+      "how-to-share-a-startup-signal-with-a-co-investor",
+      "why-most-alternative-data-tools-feel-late",
+      "is-first-look-worth-it-for-angels",
+    ],
+    proofLinks: [
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+      { label: "First Look vs Dashboard for live theses", url: "/compare/first-look-vs-dashboard-for-live-theses" },
+      { label: "Read the methodology", url: "/methodology" },
+    ],
+    nextReadLinks: [
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+      { label: "Get my First Look", url: "/firstlook" },
+      { label: "What do you actually get from Dashboard each week?", url: "/answers/what-do-i-actually-get-from-dashboard-each-week" },
+      { label: "How to share a startup signal with a co-investor", url: "/answers/how-to-share-a-startup-signal-with-a-co-investor" },
+    ],
+    keywords: [
+      "turn a weekly watchlist into founder outreach",
+      "founder outreach from startup watchlist",
+      "startup signal founder outreach",
+      "how to outreach founders early",
+      "weekly watchlist investor outreach",
+    ],
+  },
+  {
+    slug: "how-to-explain-a-startup-signal-to-an-lp",
+    query: "How do I explain a startup signal to an LP?",
+    h1: "How to explain a startup signal to an LP",
+    description:
+      "Explain a startup signal to an LP in three parts: what changed, why it matters before the market catches up, and how the claim can be verified without trusting pure intuition.",
+    tldr:
+      "The cleanest way to explain a startup signal to an LP is to make it legible, not clever: what changed, why it matters now, and how the claim can be verified independently.",
+    body: `LPs do not need the whole workflow first. They need a clean explanation of what changed, why it matters, and why it is not just another story told after the fact.
+
+**Quick answer.** Explain the signal in three layers: what changed, why it matters before the market catches up, and how the claim can be verified.
+
+**What to emphasize.** The strongest framing is not 'we have secret data.' It is 'we saw a public change earlier than most people pay attention to it.' That is easier to trust because it does not depend on mystique.
+
+**How to make it believable.** Show one exact change, one reason the change matters now, and one proof path such as methodology, sample output, or a comparison page that separates timing from verification.
+
+**What to avoid.** Do not present the signal as certainty. Do not force the LP to reverse-engineer your logic from a stack of screenshots. Keep it auditable and calm.`,
+    facts: [
+      {
+        claim:
+          "The research, methodology, and answer layers already provide public proof paths that can be used to explain signal logic without relying on raw intuition.",
+        sourceUrl: "https://signals.gitdealflow.com/research",
+        sourceLabel: "Research",
+      },
+      {
+        claim:
+          "The site repeatedly separates timing from verification, which is the key distinction most LPs need to understand quickly.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/deal-flow-timing-vs-verification",
+        sourceLabel: "Timing vs verification",
+      },
+      {
+        claim:
+          "Sample watchlist output gives a concrete, buyer-readable proof surface that can be shared without asking the reader to inspect raw repositories.",
+        sourceUrl: "https://gitdealflow.com/report",
+        sourceLabel: "Sample watchlist",
+      },
+    ],
+    faqs: [
+      {
+        q: "Should I explain the raw GitHub mechanics to an LP?",
+        a: "Only if they ask. Most LPs first need the decision logic and proof path, not the deepest mechanical explanation.",
+      },
+      {
+        q: "What makes a signal explanation credible to an LP?",
+        a: "Clarity, verifiability, and restraint. It should feel like a testable claim, not a dramatic story.",
+      },
+      {
+        q: "Should I position the signal as a replacement for all diligence?",
+        a: "No. Position it as an earlier attention layer that improves when and where you look, not as a substitute for full diligence.",
+      },
+    ],
+    ctaUrl: "/research",
+    ctaLabel: "Read the research summary",
+    related: [
+      "how-to-share-a-startup-signal-with-a-co-investor",
+      "how-to-turn-a-signal-into-an-investment-memo",
+      "deal-flow-timing-vs-verification",
+    ],
+    proofLinks: [
+      { label: "Read the research summary", url: "/research" },
+      { label: "Timing and verification are not the same thing", url: "/answers/deal-flow-timing-vs-verification" },
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+    ],
+    nextReadLinks: [
+      { label: "How to share a startup signal with a co-investor", url: "/answers/how-to-share-a-startup-signal-with-a-co-investor" },
+      { label: "How to turn a signal into an investment memo", url: "/answers/how-to-turn-a-signal-into-an-investment-memo" },
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
+    ],
+    keywords: [
+      "how to explain a startup signal to an LP",
+      "startup signal LP explanation",
+      "alternative data LP memo",
+      "how to explain early signal investing",
+      "venture signal explanation LP",
+    ],
+  },
+  {
+    slug: "how-to-turn-a-signal-into-an-investment-memo",
+    query: "How do I turn a signal into an investment memo?",
+    h1: "How to turn a signal into an investment memo",
+    description:
+      "Turn a signal into an investment memo by separating what changed, what it could mean, what still needs verification, and what action you recommend now.",
+    tldr:
+      "A good investment memo does not just repeat the signal. It translates the signal into a decision structure: what changed, what it might mean, what still needs checking, and what you want to do next.",
+    body: `A signal is not a memo. A signal tells you where to look. A memo tells someone else what to do with the evidence.
+
+**Quick answer.** Turn the signal into four blocks: what changed, what it could mean, what still needs verification, and what action you recommend now.
+
+**Block one — what changed.** Name the exact movement in plain language. Do not start with a grand thesis if the underlying change is still vague.
+
+**Block two — what it could mean.** Explain the likely interpretation without pretending certainty. This is where timing matters most.
+
+**Block three — what still needs verification.** Say explicitly what you do not know yet. That keeps the memo credible and stops the signal from being mistaken for a full diligence package.
+
+**Block four — what you recommend now.** The memo should end in a next step: watch, reach out, run First Look, or ignore for now.
+
+A strong memo makes the signal usable by someone else.`,
+    facts: [
+      {
+        claim:
+          "The content system already distinguishes early signal from later verification, which maps directly onto memo structure.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/deal-flow-timing-vs-verification",
+        sourceLabel: "Timing vs verification",
+      },
+      {
+        claim:
+          "Research and methodology pages provide the proof surface needed when a memo reader wants to inspect the signal logic more deeply.",
+        sourceUrl: "https://signals.gitdealflow.com/methodology",
+        sourceLabel: "Methodology",
+      },
+      {
+        claim:
+          "First Look sits naturally in the workflow as the sharper pass when a signal has enough heat to deserve a more focused memo.",
+        sourceUrl: "https://gitdealflow.com/firstlook.html",
+        sourceLabel: "First Look page",
+      },
+    ],
+    faqs: [
+      {
+        q: "Should an investment memo start with the thesis or the signal?",
+        a: "Start with the signal if that is the reason this company entered your attention. Let the thesis follow from the evidence.",
+      },
+      {
+        q: "What if the signal is still noisy?",
+        a: "Say that directly. A memo becomes stronger, not weaker, when it marks what is still uncertain.",
+      },
+      {
+        q: "When should I escalate from a signal to a deeper memo?",
+        a: "When the signal already feels expensive enough that the next decision needs more than a quick note or a shared link.",
+      },
+    ],
+    ctaUrl: "/firstlook",
+    ctaLabel: "Get my First Look",
+    related: [
+      "how-to-share-a-startup-signal-with-a-co-investor",
+      "how-to-explain-a-startup-signal-to-an-lp",
+      "deal-flow-timing-vs-verification",
+    ],
+    proofLinks: [
+      { label: "Read the methodology", url: "/methodology" },
+      { label: "Read the research summary", url: "/research" },
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+    ],
+    nextReadLinks: [
+      { label: "Get my First Look", url: "/firstlook" },
+      { label: "How to share a startup signal with a co-investor", url: "/answers/how-to-share-a-startup-signal-with-a-co-investor" },
+      { label: "What do you actually get from Dashboard each week?", url: "/answers/what-do-i-actually-get-from-dashboard-each-week" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
+    ],
+    keywords: [
+      "turn a signal into an investment memo",
+      "startup signal investment memo",
+      "deal flow memo from signal",
+      "how to write an investment memo from alternative data",
+      "signal to memo workflow",
+    ],
+  },
+  {
+    slug: "how-to-use-gitdealflow-in-a-partner-meeting",
+    query: "How do I use GitDealFlow in a partner meeting?",
+    h1: "How to use GitDealFlow in a partner meeting",
+    description:
+      "Use GitDealFlow in a partner meeting by bringing one signal, one interpretation, one verification note, and one proposed next step. Keep it short and easy to challenge.",
+    tldr:
+      "The best way to use GitDealFlow in a partner meeting is to bring one company, one clear change, one reason it matters now, and one next step. The point is not to impress the room. The point is to make a decision easier.",
+    body: `A partner meeting is not the place to replay your whole workflow. It is the place to bring one clean decision-ready signal.
+
+**Quick answer.** Bring one company, one clear change, one interpretation, one verification note, and one proposed next step.
+
+**What to show.** Start with the exact public movement you noticed. Then explain why it matters before the market catches up. After that, say what still needs checking and what you want the team to do now.
+
+**Why this works.** A partner meeting rewards clarity more than volume. If you bring five noisy names, the room forgets all of them. If you bring one strong read with one clear next step, the room can act.
+
+**What to avoid.** Do not show too many tabs. Do not hide uncertainty. Do not pretend the signal is the entire investment case. Use it as the reason the company deserves attention now.`,
+    facts: [
+      {
+        claim:
+          "The current content system already separates timing from verification, which is exactly the structure a partner meeting needs in compressed form.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/deal-flow-timing-vs-verification",
+        sourceLabel: "Timing vs verification",
+      },
+      {
+        claim:
+          "Research, methodology, and comparison pages provide the proof surfaces needed when another partner wants to inspect the claim more deeply after the meeting.",
+        sourceUrl: "https://signals.gitdealflow.com/research",
+        sourceLabel: "Research",
+      },
+      {
+        claim:
+          "The sample watchlist provides a compact format that already resembles what a partner-room prompt should look like: one name, one reason, one link to inspect.",
+        sourceUrl: "https://gitdealflow.com/report",
+        sourceLabel: "Sample watchlist",
+      },
+    ],
+    faqs: [
+      {
+        q: "Should I bring multiple names into the meeting?",
+        a: "Only if each one is strong enough to survive discussion. In practice, one or two clean reads are better than five weak ones.",
+      },
+      {
+        q: "How much uncertainty should I show?",
+        a: "Enough to stay credible. The signal is strongest when you say what changed, what it may mean, and what still needs checking.",
+      },
+      {
+        q: "What is the best next step after presenting a signal?",
+        a: "A concrete next action: watch, outreach, deeper pass, or ignore for now. A partner meeting should end in an action, not a vibe.",
+      },
+    ],
+    ctaUrl: "/firstlook",
+    ctaLabel: "Get my First Look",
+    related: [
+      "how-to-explain-a-startup-signal-to-an-lp",
+      "how-to-turn-a-signal-into-an-investment-memo",
+      "how-to-share-a-startup-signal-with-a-co-investor",
+    ],
+    proofLinks: [
+      { label: "Read the research summary", url: "/research" },
+      { label: "Read the methodology", url: "/methodology" },
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+    ],
+    nextReadLinks: [
+      { label: "How to turn a signal into an investment memo", url: "/answers/how-to-turn-a-signal-into-an-investment-memo" },
+      { label: "How to share a startup signal with a co-investor", url: "/answers/how-to-share-a-startup-signal-with-a-co-investor" },
+      { label: "Get my First Look", url: "/firstlook" },
+      { label: "See the weekly operating surface", url: "/dashboard" },
+    ],
+    keywords: [
+      "how to use GitDealFlow in a partner meeting",
+      "partner meeting startup signal",
+      "deal flow partner meeting",
+      "how to present a startup signal in IC",
+      "venture partner meeting signal",
+    ],
+  },
+  {
+    slug: "how-to-use-a-watchlist-without-overtrading",
+    query: "How do I use a watchlist without overtrading?",
+    h1: "How to use a watchlist without overtrading",
+    description:
+      "A watchlist should change your attention, not force constant action. The clean rule is to use it for prioritization first, not for compulsive reaction.",
+    tldr:
+      "The best way to use a watchlist without overtrading is to treat it as a prioritization layer, not as a trigger to act on every new name or every weekly change.",
+    body: `A watchlist becomes dangerous when you confuse movement with obligation.
+
+**Quick answer.** Use the watchlist to prioritize attention, not to force action every week.
+
+**What the watchlist is for.** It tells you where to look sooner, not what to do impulsively. Its job is to improve timing and review discipline, not to manufacture urgency where none exists.
+
+**What good use looks like.** Most weeks, the right action is often just to notice, file, and wait. Some weeks, one name deserves outreach or a deeper pass. The watchlist is supposed to reduce chaos, not create it.
+
+**What overtrading looks like.** Acting on every spike, chasing every new name, and turning weekly movement into performative busyness. That is not discipline. That is noise with a nicer interface.
+
+**Simple rule.** Review everything. Act on little. Escalate only when the signal is clear enough that the next step feels cheaper than ignoring it.`,
+    facts: [
+      {
+        claim:
+          "The free Sunday issue is built as a small recurring attention surface rather than an overwhelming real-time firehose.",
+        sourceUrl: "https://gitdealflow.com/",
+        sourceLabel: "GitDealFlow homepage",
+      },
+      {
+        claim:
+          "The content system consistently positions the signal as a timing layer and not as a full replacement for judgment or diligence.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/deal-flow-timing-vs-verification",
+        sourceLabel: "Timing vs verification",
+      },
+      {
+        claim:
+          "Dashboard is framed as a calmer weekly operating surface, which supports recurring review without forcing a trade on every update.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/what-do-i-actually-get-from-dashboard-each-week",
+        sourceLabel: "Dashboard weekly value",
+      },
+    ],
+    faqs: [
+      {
+        q: "Should I act on something every week?",
+        a: "No. The watchlist is successful if it improves what you notice, even when the right move is simply to wait.",
+      },
+      {
+        q: "When should I escalate a name from the watchlist?",
+        a: "When the signal is strong enough that a specific next action feels cheaper than ignoring it — outreach, deeper pass, or internal discussion.",
+      },
+      {
+        q: "How do I know I am overtrading the signal?",
+        a: "If every weekly movement feels like it demands action, you are probably reacting to noise instead of using the watchlist as a prioritization tool.",
+      },
+    ],
+    ctaUrl: "https://gitdealflow.com/#signup",
+    ctaLabel: "Get the free Sunday issue",
+    related: [
+      "how-to-turn-a-weekly-watchlist-into-founder-outreach",
+      "how-to-build-a-two-layer-deal-flow-stack",
+      "what-do-i-actually-get-from-dashboard-each-week",
+    ],
+    proofLinks: [
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+      { label: "What do you actually get from Dashboard each week?", url: "/answers/what-do-i-actually-get-from-dashboard-each-week" },
+      { label: "Read the methodology", url: "/methodology" },
+    ],
+    nextReadLinks: [
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+      { label: "See the weekly operating surface", url: "/dashboard" },
+      { label: "How to turn a weekly watchlist into founder outreach", url: "/answers/how-to-turn-a-weekly-watchlist-into-founder-outreach" },
+      { label: "Weekly watchlist vs a static startup database", url: "/compare/weekly-watchlist-vs-a-static-startup-database" },
+    ],
+    keywords: [
+      "how to use a watchlist without overtrading",
+      "startup watchlist overtrading",
+      "investor watchlist discipline",
+      "weekly watchlist how to use",
+      "deal flow watchlist without noise",
+    ],
+  },
+  {
+    slug: "how-to-use-gitdealflow-with-a-small-investment-team",
+    query: "How do I use GitDealFlow with a small investment team?",
+    h1: "How to use GitDealFlow with a small investment team",
+    description:
+      "A small investment team should use GitDealFlow as a shared timing layer: one recurring signal surface, one lightweight verification path, and one clear handoff into notes, outreach, or deeper review.",
+    tldr:
+      "The cleanest way to use GitDealFlow with a small investment team is to make it the shared timing layer: one place to notice what changed, then one simple handoff into verification, ownership, and next action.",
+    body: `A small team does not need a giant stack. It needs a shared rhythm.
+
+**Quick answer.** Use GitDealFlow as the shared timing layer, then assign a simple handoff for verification and next action.
+
+**What this looks like in practice.** One person reviews the weekly signal surface first, one person pressure-tests the most interesting names, and the team decides whether to watch, reach out, or escalate. The signal should create shared focus, not more chatter.
+
+**Why this works.** Small teams lose time when everyone scans separately and then argues from slightly different snapshots. A common timing surface reduces duplicate work and makes the discussion cleaner.
+
+**What to avoid.** Do not turn the signal layer into another passive dashboard tab. It should feed a recurring review moment and a clear next owner for follow-up.`,
+    facts: [
+      {
+        claim:
+          "Dashboard is positioned as the recurring weekly operating surface, which makes it the natural shared review layer for a small team.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/what-do-i-actually-get-from-dashboard-each-week",
+        sourceLabel: "Dashboard weekly value",
+      },
+      {
+        claim:
+          "The content system already separates timing, verification, and deeper passes, which maps well onto team handoffs.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/deal-flow-timing-vs-verification",
+        sourceLabel: "Timing vs verification",
+      },
+      {
+        claim:
+          "First Look exists as the sharper pass when one thesis or sector question becomes hot enough to deserve focused attention.",
+        sourceUrl: "https://gitdealflow.com/firstlook.html",
+        sourceLabel: "First Look page",
+      },
+    ],
+    faqs: [
+      {
+        q: "Should every team member review the same weekly list?",
+        a: "Usually yes. The point is to create a shared timing surface before individual follow-up paths diverge.",
+      },
+      {
+        q: "What should happen after a name looks interesting?",
+        a: "Assign a clear next owner and next action: verify, outreach, deeper pass, or ignore for now.",
+      },
+      {
+        q: "When should a small team add heavier tools?",
+        a: "Only when the bottleneck shifts from shared timing to deeper workflow management, relationship tracking, or institutional diligence depth.",
+      },
+    ],
+    ctaUrl: "/dashboard",
+    ctaLabel: "See the weekly operating surface",
+    related: [
+      "how-to-build-a-two-layer-deal-flow-stack",
+      "how-to-use-gitdealflow-in-a-partner-meeting",
+      "what-do-i-actually-get-from-dashboard-each-week",
+    ],
+    proofLinks: [
+      { label: "What do you actually get from Dashboard each week?", url: "/answers/what-do-i-actually-get-from-dashboard-each-week" },
+      { label: "Read the methodology", url: "/methodology" },
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+    ],
+    nextReadLinks: [
+      { label: "See the weekly operating surface", url: "/dashboard" },
+      { label: "Get my First Look", url: "/firstlook" },
+      { label: "How to use GitDealFlow in a partner meeting", url: "/answers/how-to-use-gitdealflow-in-a-partner-meeting" },
+      { label: "How to turn a signal into an investment memo", url: "/answers/how-to-turn-a-signal-into-an-investment-memo" },
+    ],
+    keywords: [
+      "how to use GitDealFlow with a small investment team",
+      "small investment team deal flow workflow",
+      "shared signal workflow investors",
+      "team startup sourcing workflow",
+      "GitDealFlow team usage",
+    ],
+  },
+  {
+    slug: "when-to-upgrade-from-a-spreadsheet-to-a-real-signal-workflow",
+    query: "When should I upgrade from a spreadsheet to a real signal workflow?",
+    h1: "When to upgrade from a spreadsheet to a real signal workflow",
+    description:
+      "Upgrade from a spreadsheet when tracking names is no longer the bottleneck and recurring review, timing, and change-detection become harder than note-taking itself.",
+    tldr:
+      "You should upgrade from a spreadsheet when your problem stops being where to store names and starts being how to notice what changed, how to review it weekly, and how to avoid stale manual tracking.",
+    body: `A spreadsheet is not wrong. It just stops being enough at a certain point.
+
+**Quick answer.** Upgrade when recurring review and change-detection become more expensive than note-taking.
+
+**What spreadsheets are good at.** They are good at holding names, notes, simple status fields, and ad-hoc lists. They are cheap and flexible.
+
+**Where they start to break.** They break when you need to know what changed this week without manually re-checking everything yourself. At that point the problem is not storage. It is timing and repeated review.
+
+**The upgrade signal.** If your spreadsheet still feels alive because you touch it intentionally, keep it. If it has become a stale graveyard that depends on heroic manual refreshes, you need a real signal workflow.`,
+    facts: [
+      {
+        claim:
+          "The current compare layer already distinguishes manual storage systems from recurring signal surfaces, especially in the Dashboard vs Notion framing.",
+        sourceUrl: "https://signals.gitdealflow.com/compare/dashboard-vs-a-notion-watchlist",
+        sourceLabel: "Dashboard vs Notion watchlist",
+      },
+      {
+        claim:
+          "Dashboard is positioned as the recurring weekly operating surface, which is the natural step after a spreadsheet stops handling weekly review well.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/what-do-i-actually-get-from-dashboard-each-week",
+        sourceLabel: "Dashboard weekly value",
+      },
+      {
+        claim:
+          "The two-layer stack pattern already treats timing and verification as distinct jobs, which a spreadsheet alone usually cannot handle elegantly at scale.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/how-to-build-a-two-layer-deal-flow-stack",
+        sourceLabel: "Two-layer stack answer",
+      },
+    ],
+    faqs: [
+      {
+        q: "Can a spreadsheet still be enough for a solo investor?",
+        a: "Yes, if the main need is storage and the review load is still light. The upgrade becomes useful when weekly signal review becomes the real bottleneck.",
+      },
+      {
+        q: "What is the clearest sign I should upgrade?",
+        a: "When you keep rechecking the same names manually and still feel late or stale.",
+      },
+      {
+        q: "Does upgrading mean I should abandon notes entirely?",
+        a: "No. A better signal workflow replaces part of the repeated review burden. You may still keep notes elsewhere.",
+      },
+    ],
+    ctaUrl: "/dashboard",
+    ctaLabel: "See the weekly operating surface",
+    related: [
+      "how-to-build-a-two-layer-deal-flow-stack",
+      "what-do-i-actually-get-from-dashboard-each-week",
+      "how-to-use-a-watchlist-without-overtrading",
+    ],
+    proofLinks: [
+      { label: "Dashboard vs a Notion watchlist", url: "/compare/dashboard-vs-a-notion-watchlist" },
+      { label: "Read the methodology", url: "/methodology" },
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+    ],
+    nextReadLinks: [
+      { label: "See the weekly operating surface", url: "/dashboard" },
+      { label: "Dashboard vs a custom Airtable deal flow board", url: "/compare/dashboard-vs-a-custom-airtable-deal-flow-board" },
+      { label: "How to build a two-layer deal flow stack", url: "/answers/how-to-build-a-two-layer-deal-flow-stack" },
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+    ],
+    keywords: [
+      "when to upgrade from a spreadsheet to a real signal workflow",
+      "spreadsheet vs signal workflow",
+      "deal flow spreadsheet upgrade",
+      "when to move beyond spreadsheet startup sourcing",
+      "investor workflow spreadsheet too manual",
+    ],
+  },
+  {
+    slug: "how-to-decide-when-a-signal-deserves-founder-outreach",
+    query: "How do I decide when a signal deserves founder outreach?",
+    h1: "How to decide when a signal deserves founder outreach",
+    description:
+      "A signal deserves founder outreach when it is specific enough to reference, early enough to matter, and strong enough that ignoring it feels more expensive than sending one thoughtful note.",
+    tldr:
+      "Use founder outreach when the signal is specific, early, and strong enough that a clear next step is cheaper than waiting. If you still cannot say what changed in one sentence, you are probably too early.",
+    body: `Not every signal deserves outreach. Some deserve watching. Some deserve a deeper pass. The hard part is knowing when the move changes from attention into action.
+
+**Quick answer.** A signal deserves founder outreach when you can say what changed, why it matters now, and why it is early enough to matter without pretending certainty.
+
+**What to look for.** You want one concrete change, one plausible reason it matters, and enough confidence that a short thoughtful note is cheaper than sitting on your hands.
+
+**What usually means you are too early.** If you are still speaking in vague category language, still unsure what actually changed, or still depending on five tabs to explain the signal, you probably need more review before outreach.
+
+**Simple rule.** If you can write a specific note in plain language, outreach is likely justified. If you still need to translate the signal to yourself, keep watching or escalate into a deeper pass first.`,
+    facts: [
+      {
+        claim:
+          "The current content system already separates signal, verification, and escalation paths, including one-off deeper passes such as First Look.",
+        sourceUrl: "https://signals.gitdealflow.com/compare/first-look-vs-dashboard-for-live-theses",
+        sourceLabel: "First Look vs Dashboard comparison",
+      },
+      {
+        claim:
+          "The site already has dedicated guidance on turning a weekly watchlist into founder outreach, which frames specificity as the key threshold.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/how-to-turn-a-weekly-watchlist-into-founder-outreach",
+        sourceLabel: "Founder outreach answer",
+      },
+      {
+        claim:
+          "Timing and verification are treated as separate jobs throughout the content system, which is essential before deciding whether outreach is warranted.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/deal-flow-timing-vs-verification",
+        sourceLabel: "Timing vs verification",
+      },
+    ],
+    faqs: [
+      {
+        q: "What if the signal is interesting but still vague?",
+        a: "Do not force outreach. Keep watching or run a deeper pass first. Specificity is the line between useful outreach and noise.",
+      },
+      {
+        q: "Should I always outreach as soon as a signal appears?",
+        a: "No. The signal is a prioritization layer. Outreach makes sense only when the evidence is strong enough to support a specific note.",
+      },
+      {
+        q: "What is the best escalation if I am almost ready but not quite?",
+        a: "Use a sharper pass such as First Look when the thesis is already expensive but the outreach note is not clear enough yet.",
+      },
+    ],
+    ctaUrl: "/firstlook",
+    ctaLabel: "Get my First Look",
+    related: [
+      "how-to-turn-a-weekly-watchlist-into-founder-outreach",
+      "how-to-share-a-startup-signal-with-a-co-investor",
+      "deal-flow-timing-vs-verification",
+    ],
+    proofLinks: [
+      { label: "How to turn a weekly watchlist into founder outreach", url: "/answers/how-to-turn-a-weekly-watchlist-into-founder-outreach" },
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+      { label: "Read the methodology", url: "/methodology" },
+    ],
+    nextReadLinks: [
+      { label: "Get my First Look", url: "/firstlook" },
+      { label: "How to turn a signal into an investment memo", url: "/answers/how-to-turn-a-signal-into-an-investment-memo" },
+      { label: "How to share a startup signal with a co-investor", url: "/answers/how-to-share-a-startup-signal-with-a-co-investor" },
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+    ],
+    keywords: [
+      "when does a signal deserve founder outreach",
+      "decide when to outreach founder from startup signal",
+      "startup signal founder outreach threshold",
+      "when to act on a startup signal",
+      "signal to founder outreach",
+    ],
+  },
+  {
+    slug: "how-to-rank-startup-signals-in-a-small-fund",
+    query: "How do I rank startup signals in a small fund?",
+    h1: "How to rank startup signals in a small fund",
+    description:
+      "A small fund should rank startup signals by decision usefulness: what changed, how early it is, how easy it is to verify, and what the cheapest sensible next step is.",
+    tldr:
+      "A small fund should rank signals by actionability, not drama. The best signals are early enough to matter, clear enough to explain, and cheap enough to test with a sensible next step.",
+    body: `A small fund does not need a perfect scoring religion. It needs a clean way to decide what deserves attention first.
+
+**Quick answer.** Rank signals by four things: what changed, how early it is, how easy it is to verify, and what the cheapest sensible next step would be.
+
+**What to reward.** Reward signals that are early, legible, and actionable. The best signals create a clear next step without forcing the team into expensive speculation.
+
+**What to discount.** Discount signals that look dramatic but are hard to explain, hard to verify, or hard to act on without a lot of extra narrative stitching.
+
+**What this changes in practice.** A small fund should not let the loudest signal win. It should let the clearest next action win. That keeps the team from turning curiosity into churn.`,
+    facts: [
+      {
+        claim:
+          "The content system already frames timing and verification as separate layers, which naturally supports ranking by actionability instead of pure intensity.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/deal-flow-timing-vs-verification",
+        sourceLabel: "Timing vs verification",
+      },
+      {
+        claim:
+          "The recurring workflow pages emphasize calmer weekly visibility and repeated review, not dramatic one-off spikes.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/what-do-i-actually-get-from-dashboard-each-week",
+        sourceLabel: "Dashboard weekly value",
+      },
+      {
+        claim:
+          "The two-layer stack logic already recommends separating the signal layer from the verification layer, which is the basis of practical ranking discipline.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/how-to-build-a-two-layer-deal-flow-stack",
+        sourceLabel: "Two-layer stack answer",
+      },
+    ],
+    faqs: [
+      {
+        q: "Should the earliest signal always rank first?",
+        a: "Not automatically. Early matters, but only when the signal is still clear enough to explain and act on sensibly.",
+      },
+      {
+        q: "What makes a weak signal weak in a small fund workflow?",
+        a: "A signal is weak when it creates lots of curiosity but no clear next step.",
+      },
+      {
+        q: "How do I keep the team aligned around signal ranking?",
+        a: "Use the same criteria every week: clarity, timing, verifiability, and cheapest sensible next action.",
+      },
+    ],
+    ctaUrl: "/dashboard",
+    ctaLabel: "See the weekly operating surface",
+    related: [
+      "how-to-use-gitdealflow-with-a-small-investment-team",
+      "how-to-use-gitdealflow-in-a-partner-meeting",
+      "how-to-build-a-two-layer-deal-flow-stack",
+    ],
+    proofLinks: [
+      { label: "What do you actually get from Dashboard each week?", url: "/answers/what-do-i-actually-get-from-dashboard-each-week" },
+      { label: "Read the methodology", url: "/methodology" },
+      { label: "Read the research summary", url: "/research" },
+    ],
+    nextReadLinks: [
+      { label: "See the weekly operating surface", url: "/dashboard" },
+      { label: "How to use GitDealFlow in a partner meeting", url: "/answers/how-to-use-gitdealflow-in-a-partner-meeting" },
+      { label: "How to use GitDealFlow with a small investment team", url: "/answers/how-to-use-gitdealflow-with-a-small-investment-team" },
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+    ],
+    keywords: [
+      "how to rank startup signals in a small fund",
+      "small fund startup signal ranking",
+      "how to prioritize startup signals",
+      "venture signal ranking workflow",
+      "small fund deal flow prioritization",
+    ],
+  },
+  {
+    slug: "how-to-run-a-weekly-signal-review-with-a-small-team",
+    query: "How do I run a weekly signal review with a small team?",
+    h1: "How to run a weekly signal review with a small team",
+    description:
+      "A weekly signal review works best when one person prepares the shortlist, one person pressure-tests it, and the team leaves with clear owners and next actions instead of vague enthusiasm.",
+    tldr:
+      "The best weekly signal review with a small team is simple: one prepared shortlist, one challenge pass, and one decision per name — watch, reach out, deepen, or drop.",
+    body: `Small teams do not need a two-hour ritual. They need a weekly review that turns signal into decisions without creating extra noise.
+
+**Quick answer.** One person prepares the shortlist, one person pressure-tests it, and the team leaves with clear owners and next actions.
+
+**What to prepare before the meeting.** Bring the few names that actually deserve discussion, not every name that moved. If the room has to do first-pass filtering live, the meeting is already wasting time.
+
+**What the meeting should do.** For each name, answer four questions: what changed, why it matters, what still needs verification, and what the next action is.
+
+**What to avoid.** Do not let the meeting become an open-ended brainstorm. A weekly review should narrow the field and assign ownership, not multiply possibilities.
+
+**Simple rule.** The meeting is successful if each discussed name ends in one of four outcomes: watch, reach out, deeper pass, or drop.`,
+    facts: [
+      {
+        claim:
+          "The current content system already separates signal, verification, and escalation paths, which maps directly onto a clean weekly team review structure.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/deal-flow-timing-vs-verification",
+        sourceLabel: "Timing vs verification",
+      },
+      {
+        claim:
+          "Partner-meeting guidance already emphasizes bringing one clear signal and one next step rather than flooding the room with noisy names.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/how-to-use-gitdealflow-in-a-partner-meeting",
+        sourceLabel: "Partner meeting answer",
+      },
+      {
+        claim:
+          "Dashboard is positioned as the recurring weekly operating surface, which makes it the natural prep layer for a small team review.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/what-do-i-actually-get-from-dashboard-each-week",
+        sourceLabel: "Dashboard weekly value",
+      },
+    ],
+    faqs: [
+      {
+        q: "How many names should a small team review each week?",
+        a: "Only the few that actually deserve discussion. The goal is decision quality, not maximum list throughput.",
+      },
+      {
+        q: "Who should own the shortlist before the meeting starts?",
+        a: "One person should prepare the shortlist first. Shared preparation by everyone usually creates duplicated work and noisy discussion.",
+      },
+      {
+        q: "What makes a weekly review fail?",
+        a: "When it becomes a live filtering session, a broad brainstorm, or a discussion with no explicit next owner or next action.",
+      },
+    ],
+    ctaUrl: "/dashboard",
+    ctaLabel: "See the weekly operating surface",
+    related: [
+      "how-to-use-gitdealflow-with-a-small-investment-team",
+      "how-to-use-gitdealflow-in-a-partner-meeting",
+      "how-to-rank-startup-signals-in-a-small-fund",
+    ],
+    proofLinks: [
+      { label: "What do you actually get from Dashboard each week?", url: "/answers/what-do-i-actually-get-from-dashboard-each-week" },
+      { label: "How to use GitDealFlow in a partner meeting", url: "/answers/how-to-use-gitdealflow-in-a-partner-meeting" },
+      { label: "Read the methodology", url: "/methodology" },
+    ],
+    nextReadLinks: [
+      { label: "See the weekly operating surface", url: "/dashboard" },
+      { label: "How to rank startup signals in a small fund", url: "/answers/how-to-rank-startup-signals-in-a-small-fund" },
+      { label: "How to use GitDealFlow with a small investment team", url: "/answers/how-to-use-gitdealflow-with-a-small-investment-team" },
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+    ],
+    keywords: [
+      "how to run a weekly signal review with a small team",
+      "weekly deal flow review small team",
+      "startup signal team review",
+      "weekly investment team signal meeting",
+      "small fund weekly review workflow",
     ],
   },
 ];

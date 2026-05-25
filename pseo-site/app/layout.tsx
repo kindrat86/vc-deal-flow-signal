@@ -7,8 +7,9 @@ import Footer from "@/components/Footer";
 import LaunchBanner from "@/components/LaunchBanner";
 import PixelManager from "@/components/PixelManager";
 import { RootIdentitySchema } from "@/components/RootIdentitySchema";
-import BreadcrumbsSchema from "@/components/BreadcrumbsSchema";
 import WebVitalsReporter from "@/components/WebVitalsReporter";
+import GuidedConcierge from "@/components/GuidedConcierge";
+import CookieNotice from "@/components/CookieNotice";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
     template: "%s | VC Deal Flow Signal",
   },
   description:
-    "Free weekly GitHub-momentum signal across 116+ venture-backed startups, ranked by 14-day commit velocity. SSRN-indexed methodology. Built for developer-investors, scout angels, and emerging fund managers.",
+    "Public engineering signals for earlier startup timing. Weekly rankings, proof pages, API access, and a reproducible methodology.",
   keywords: [
     "GitHub commit velocity",
     "venture capital alternative data",
@@ -387,22 +388,18 @@ export default function RootLayout({
           title="Multi-result fuzzy answer search"
         />
         <RootIdentitySchema />
-        {/* Site-wide BreadcrumbList JSON-LD derived from the request path
-            injected by proxy.ts (`x-pathname`). Closes audit gap 2026-05-08
-            "No site-wide BreadcrumbList component". Schema-only; ad-hoc
-            visible breadcrumbs on stage/sector hubs continue to render. */}
-        <BreadcrumbsSchema />
       </head>
       <body className={`${inter.className} min-h-full flex flex-col bg-slate-950 text-gray-100`}>
         <LaunchBanner />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <GuidedConcierge />
         <Script
           id="posthog"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
-            __html: `!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]);t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+" (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);posthog.init('phc_lyZCgvTpicjLzAO3rY2GhxuX5WUc5jQjP8ZVwwJqauX',{api_host:'https://eu.i.posthog.com',persistence:'memory',person_profiles:'identified_only',before_send:function(event){if(!event||!event.properties)return event;var SELF=/(^|\\.)gitdealflow\\.com$/i;var props=event.properties;function isSelf(host){if(!host)return false;try{return SELF.test(String(host).replace(/^https?:\\/\\//,'').split('/')[0]);}catch(e){return false;}}if(isSelf(props.$referring_domain)){props.$referrer='$direct';props.$referring_domain='$direct';}if(isSelf(props.$initial_referring_domain)){props.$initial_referrer='$direct';props.$initial_referring_domain='$direct';}return event;}});`,
+            __html: `!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]);t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+" (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);posthog.init('phc_lyZCgvTpicjLzAO3rY2GhxuX5WUc5jQjP8ZVwwJqauX',{api_host:'https://eu.i.posthog.com',persistence:'localStorage+cookie',cross_subdomain_cookie:true,respect_dnt:true,person_profiles:'identified_only',before_send:function(event){if(!event||!event.properties)return event;var SELF=/(^|\\.)gitdealflow\\.com$/i;var props=event.properties;function isSelf(host){if(!host)return false;try{return SELF.test(String(host).replace(/^https?:\\/\\//,'').split('/')[0]);}catch(e){return false;}}if(isSelf(props.$referring_domain)){props.$referrer='$direct';props.$referring_domain='$direct';}if(isSelf(props.$initial_referring_domain)){props.$initial_referrer='$direct';props.$initial_referring_domain='$direct';}return event;}});`,
           }}
         />
         <Script
@@ -417,6 +414,7 @@ export default function RootLayout({
             measurement" (Performance: 75/100 → measurable). Honors GPC
             and DNT, no new dependency. */}
         <WebVitalsReporter />
+        <CookieNotice />
       </body>
     </html>
   );

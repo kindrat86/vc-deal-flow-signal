@@ -117,7 +117,7 @@ export default function StartHerePage() {
         "@id": "https://signals.gitdealflow.com/start-here",
         name: "Start Here — GitDealFlow primer",
         description:
-          "Three-minute primer for the developer-investor on what GitDealFlow is, what we measure, and where to begin.",
+          "Three-minute primer on what GitDealFlow is, what it measures, and where to begin.",
         speakable: {
           "@type": "SpeakableSpecification",
           cssSelector: ["h1", "h2"],
@@ -189,10 +189,10 @@ export default function StartHerePage() {
             and the dataset is on Zenodo, CC BY 4.0.
           </p>
           <p className="text-gray-300 text-base leading-relaxed">
-            The buyer is the developer-investor — the engineer who reads
-            commit logs for fun and writes €5k–€50k checks on the side.
-            That&rsquo;s why pricing matches the buyer (€9.97/mo, not
-            €1,000/mo) and why we don&rsquo;t have a sales team.
+            This is priced for people who want earlier signal without an
+            enterprise contract. That&rsquo;s why the dashboard is €9.97/mo instead
+            of €1,000/mo, and why you can verify the methodology before anyone
+            tries to sell you harder.
           </p>
         </section>
 

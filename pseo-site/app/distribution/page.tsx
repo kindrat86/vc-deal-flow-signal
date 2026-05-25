@@ -9,7 +9,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Where to find us — every channel, mirror, and feed",
   description:
-    "GitDealFlow on the open web: Substack, dev.to, RSS, MCP, npm, GitHub, Bluesky, Mastodon, Farcaster, ChatGPT GPT Store, SSRN, Zenodo, agents.json, OpenAPI, llms.txt. The full distribution map for the developer-investor.",
+    "GitDealFlow on the open web: RSS, MCP, GitHub, social mirrors, agent surfaces, SSRN, Zenodo, llms.txt, and OpenAPI. The full distribution map.",
   alternates: { canonical: "/distribution" },
   openGraph: {
     title: "Where to find us — distribution map",
@@ -130,7 +130,7 @@ const GROUPS: Group[] = [
     channels: [
       { name: "Bluesky — gitdealflow.bsky.social", what: "AT Protocol social. Custom feed-generator + label service. Posts mirror the Acceleration Watch.", href: "https://bsky.app/profile/gitdealflow.bsky.social", external: true },
       { name: "Mastodon — fosstodon.org/@gitdealflow", what: "ActivityPub. The fediverse-native distribution layer.", href: "https://fosstodon.org/@gitdealflow", external: true },
-      { name: "Farcaster — gitdealflow", what: "On-chain social via Neynar. Where the crypto-native developer-investor reads.", href: "https://warpcast.com/gitdealflow", external: true },
+      { name: "Farcaster — gitdealflow", what: "On-chain social via Neynar. Useful when the conversation is already happening in crypto-native circles.", href: "https://warpcast.com/gitdealflow", external: true },
       { name: "LinkedIn — GitDealFlow Company", what: "Company page (no founder personal account, anonymity rule). Long-form essays + top-100 engagement.", href: "https://www.linkedin.com/company/gitdealflow", external: true },
     ],
   },

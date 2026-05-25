@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getComparison, getAllComparisonSlugs, type ComparisonFAQ } from "@/content/comparisons";
+import { getComparison, getAllComparisonSlugs, type ComparisonFAQ, type ComparisonLink } from "@/content/comparisons";
 import { getTeardownsForSlug } from "@/content/competitor-teardowns";
 import { getAllSectors, getCurrentPeriod, getDataLastModified } from "@/lib/data";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
@@ -19,6 +19,10 @@ export async function generateStaticParams() {
 export const dynamicParams = false;
 export const revalidate = 604800;
 
+function clampDescription(text: string, max = 155) {
+  return text.length > max ? `${text.slice(0, max - 3).trimEnd()}...` : text;
+}
+
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
@@ -28,17 +32,17 @@ export async function generateMetadata({
 
   return {
     title: comp.title,
-    description: comp.description,
+    description: clampDescription(comp.description),
     openGraph: {
       title: comp.title,
-      description: comp.description,
+      description: clampDescription(comp.description),
       type: "article",
       url: `/compare/${slug}`,
     },
     twitter: {
       card: "summary_large_image",
       title: comp.title,
-      description: comp.description,
+      description: clampDescription(comp.description),
     },
     alternates: {
       canonical: `/compare/${slug}`,
@@ -343,6 +347,40 @@ export default async function ComparisonPage({ params }: PageProps) {
           </section>
         )}
 
+        {comp.proofLinks && comp.proofLinks.length > 0 ? (
+          <section className="mb-10 rounded-xl border border-slate-800 bg-slate-900/70 p-6 sm:p-8">
+            <h2 className="text-xl font-semibold text-gray-100 mb-3">
+              If you want to verify the claim
+            </h2>
+            <p className="text-gray-400 text-sm leading-relaxed mb-4">
+              The signal logic is public. Read the methodology, compare the surrounding tools, and inspect the sample output before deciding whether this belongs in your workflow.
+            </p>
+            <div className="flex flex-col gap-3">
+              {comp.proofLinks.map((link: ComparisonLink) => (
+                <Link
+                  key={link.url}
+                  href={link.url}
+                  className="text-sky-400 hover:text-sky-300 underline underline-offset-2 text-sm"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </section>
+        ) : null}
+
+        <section className="mb-10 rounded-xl border border-amber-500/30 bg-amber-500/5 p-6 sm:p-8">
+          <p className="text-amber-300 text-xs uppercase tracking-wider mb-2 font-semibold">
+            Quote-ready verdict
+          </p>
+          <blockquote className="text-gray-100 text-lg leading-relaxed border-l-2 border-amber-400/60 pl-4">
+            {comp.verdict}
+          </blockquote>
+          <p className="mt-4 text-xs text-gray-400 leading-relaxed">
+            If you cite or quote this comparison externally, use the verdict above with the page URL and link back to the full comparison.
+          </p>
+        </section>
+
         {/* Verdict */}
         <div className="verdict-block rounded-lg border border-sky-900/50 bg-sky-950/30 p-6 mb-12">
           <p className="text-xs font-medium text-sky-400 uppercase tracking-wider mb-2">
@@ -410,21 +448,56 @@ export default async function ComparisonPage({ params }: PageProps) {
           </section>
         )}
 
+        {comp.nextReadLinks && comp.nextReadLinks.length > 0 ? (
+          <section className="mb-10" aria-label="What to read next">
+            <h2 className="text-base font-semibold text-gray-300 mb-4">
+              What to read next
+            </h2>
+            <ul className="space-y-2">
+              {comp.nextReadLinks.map((link: ComparisonLink) => (
+                <li key={link.url}>
+                  <Link
+                    href={link.url}
+                    className="text-sky-400 hover:text-sky-300 underline underline-offset-2 text-sm"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ) : null}
+
         {/* CTA */}
         <div className="rounded-xl border border-slate-800 bg-slate-900 p-6 sm:p-8 text-center">
           <h2 className="text-gray-100 font-semibold text-lg mb-2">
-            Try the engineering signal approach
+            If the category is clear, pick the next lane.
           </h2>
           <p className="text-gray-400 text-sm mb-5 max-w-lg mx-auto">
-            Get this week's top 5 breakout startups ranked by
-            GitHub commit-velocity acceleration. Free, no spam.
+            Start free if you want one useful read each Sunday. Use First Look
+            if the thesis is already live. Keep the methodology one click away
+            if you still need to verify the claim.
           </p>
-          <Link
-            href="https://gitdealflow.com/#signup"
-            className="inline-flex w-full sm:w-auto items-center justify-center px-6 py-3 rounded-lg bg-sky-700 hover:bg-sky-600 text-white text-sm font-medium transition-colors"
-          >
-            Get the Report
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <Link
+              href="https://gitdealflow.com/#signup"
+              className="inline-flex w-full sm:w-auto items-center justify-center px-6 py-3 rounded-lg bg-sky-700 hover:bg-sky-600 text-white text-sm font-medium transition-colors"
+            >
+              Get the free Sunday issue →
+            </Link>
+            <Link
+              href="/firstlook"
+              className="inline-flex w-full sm:w-auto items-center justify-center px-6 py-3 rounded-lg border border-slate-700 hover:border-slate-500 text-gray-200 text-sm font-medium transition-colors"
+            >
+              Get my First Look →
+            </Link>
+            <Link
+              href="/methodology"
+              className="inline-flex w-full sm:w-auto items-center justify-center px-6 py-3 rounded-lg border border-slate-700 hover:border-slate-500 text-gray-200 text-sm font-medium transition-colors"
+            >
+              Read the methodology →
+            </Link>
+          </div>
         </div>
       </div>
     </>

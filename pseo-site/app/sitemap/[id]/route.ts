@@ -42,6 +42,25 @@ import { DATA_NERD_PARABLES } from "@/lib/data-nerd";
 
 const BASE_URL = "https://signals.gitdealflow.com";
 
+const HIGH_INTENT_COMPARE_SLUGS = new Set([
+  "best-alternative-data-tools-for-angel-investors",
+  "crunchbase-alternative-for-angel-investors",
+  "best-startup-signal-tools-for-investors",
+  "best-deal-flow-tools-angel-investors",
+]);
+
+const HIGH_INTENT_ANSWER_SLUGS = new Set([
+  "what-is-startup-engineering-momentum",
+  "deal-flow-timing-vs-verification",
+  "how-angel-investors-use-github-signals",
+  "github-deal-flow-for-investors",
+  "what-is-a-github-scout-score",
+  "best-mcp-server-for-vc-research",
+  "best-vc-deal-flow-software-2026",
+  "free-vc-tools-for-emerging-fund-managers",
+  "what-is-the-best-vc-research-stack-for-2026",
+]);
+
 interface Entry {
   url: string;
   lastmod: string;
@@ -58,7 +77,7 @@ export const dynamicParams = false;
 export const revalidate = 3600;
 
 export function generateStaticParams() {
-  return ["core", "sectors", "crossings", "startups", "content"].map((id) => ({
+  return ["core", "sectors", "crossings", "startups", "content", "high-intent"].map((id) => ({
     id: `${id}.xml`,
   }));
 }
@@ -83,6 +102,7 @@ export async function GET(_req: Request, ctx: RouteContext) {
       // capture page; Sunday-digest acquisition target.
       { url: `${BASE_URL}/squeeze`, lastmod, changefreq: "monthly", priority: 0.95 },
       { url: `${BASE_URL}/buyers-guide`, lastmod, changefreq: "monthly", priority: 0.85 },
+      { url: `${BASE_URL}/how-to-spot-startup-momentum-before-the-round-gets-crowded`, lastmod, changefreq: "weekly", priority: 0.9 },
       // Book funnel — Brunson Secret 17 (2026-05-06). Free PDF + EPUB +
       // €0.99 Kindle. Each chapter is its own indexable page.
       { url: `${BASE_URL}/book`, lastmod, changefreq: "monthly", priority: 0.9 },
@@ -161,6 +181,7 @@ export async function GET(_req: Request, ctx: RouteContext) {
       { url: `${BASE_URL}/integrations/mistral`, lastmod, changefreq: "monthly", priority: 0.75 },
       { url: `${BASE_URL}/integrations/chatgpt`, lastmod, changefreq: "monthly", priority: 0.85 },
       { url: `${BASE_URL}/integrations/agent-runtimes`, lastmod, changefreq: "monthly", priority: 0.85 },
+      { url: `${BASE_URL}/integrations/best-mcp-server-for-vc-research`, lastmod, changefreq: "weekly", priority: 0.9 },
       // Programmatic /for-{framework} dev-investor crossover surfaces (2026-05-03)
       { url: `${BASE_URL}/for-langchain`, lastmod, changefreq: "monthly", priority: 0.8 },
       { url: `${BASE_URL}/for-crewai`, lastmod, changefreq: "monthly", priority: 0.8 },
@@ -386,6 +407,7 @@ export async function GET(_req: Request, ctx: RouteContext) {
   } else if (id === "content") {
     entries = [
       { url: `${BASE_URL}/blog`, lastmod, changefreq: "weekly", priority: 0.6 },
+      { url: `${BASE_URL}/how-to-spot-startup-momentum-before-the-round-gets-crowded`, lastmod, changefreq: "weekly", priority: 0.9 },
       { url: `${BASE_URL}/topics`, lastmod, changefreq: "weekly", priority: 0.7 },
       ...Object.keys(pillars).map((slug) => ({
         url: `${BASE_URL}/topics/${slug}`,
@@ -402,8 +424,8 @@ export async function GET(_req: Request, ctx: RouteContext) {
       ...getAllComparisonSlugs().map((slug) => ({
         url: `${BASE_URL}/compare/${slug}`,
         lastmod,
-        changefreq: "monthly",
-        priority: 0.7,
+        changefreq: HIGH_INTENT_COMPARE_SLUGS.has(slug) ? "weekly" : "monthly",
+        priority: HIGH_INTENT_COMPARE_SLUGS.has(slug) ? 0.9 : 0.7,
       })),
       ...getAllAlternativeSlugs().map((slug) => ({
         url: `${BASE_URL}/alternatives/${slug}`,
@@ -427,6 +449,7 @@ export async function GET(_req: Request, ctx: RouteContext) {
         changefreq: "monthly",
         priority: 0.8,
       })),
+      { url: `${BASE_URL}/integrations/best-mcp-server-for-vc-research`, lastmod, changefreq: "weekly", priority: 0.9 },
       ...getAllCompetitorVsSlugs().map((slug) => ({
         url: `${BASE_URL}/vs/${slug}`,
         lastmod,
@@ -437,8 +460,8 @@ export async function GET(_req: Request, ctx: RouteContext) {
       ...agentQueries.map((q) => ({
         url: `${BASE_URL}/answers/${q.slug}`,
         lastmod,
-        changefreq: "weekly",
-        priority: 0.85,
+        changefreq: HIGH_INTENT_ANSWER_SLUGS.has(q.slug) ? "weekly" : "weekly",
+        priority: HIGH_INTENT_ANSWER_SLUGS.has(q.slug) ? 0.9 : 0.85,
       })),
       // Niche-down — Greg-style "riches are in the niches" pSEO cluster
       // (2026-05-22). 1 hub + 20 sector hubs + 200 leaf pages = 221 URLs.
@@ -525,6 +548,24 @@ export async function GET(_req: Request, ctx: RouteContext) {
         changefreq: "monthly",
         priority: 0.8,
       })),
+    ];
+  } else if (id === "high-intent") {
+    entries = [
+      { url: `${BASE_URL}/how-to-spot-startup-momentum-before-the-round-gets-crowded`, lastmod, changefreq: "weekly", priority: 1.0 },
+      { url: `${BASE_URL}/integrations/best-mcp-server-for-vc-research`, lastmod, changefreq: "weekly", priority: 0.95 },
+      { url: `${BASE_URL}/answers/what-is-startup-engineering-momentum`, lastmod, changefreq: "weekly", priority: 0.95 },
+      { url: `${BASE_URL}/answers/deal-flow-timing-vs-verification`, lastmod, changefreq: "weekly", priority: 0.95 },
+      { url: `${BASE_URL}/answers/how-angel-investors-use-github-signals`, lastmod, changefreq: "weekly", priority: 0.9 },
+      { url: `${BASE_URL}/answers/github-deal-flow-for-investors`, lastmod, changefreq: "weekly", priority: 0.9 },
+      { url: `${BASE_URL}/answers/what-is-a-github-scout-score`, lastmod, changefreq: "weekly", priority: 0.9 },
+      { url: `${BASE_URL}/answers/best-vc-deal-flow-software-2026`, lastmod, changefreq: "weekly", priority: 0.9 },
+      { url: `${BASE_URL}/answers/free-vc-tools-for-emerging-fund-managers`, lastmod, changefreq: "weekly", priority: 0.85 },
+      { url: `${BASE_URL}/answers/what-is-the-best-vc-research-stack-for-2026`, lastmod, changefreq: "weekly", priority: 0.85 },
+      { url: `${BASE_URL}/compare/best-alternative-data-tools-for-angel-investors`, lastmod, changefreq: "weekly", priority: 0.95 },
+      { url: `${BASE_URL}/compare/crunchbase-alternative-for-angel-investors`, lastmod, changefreq: "weekly", priority: 0.9 },
+      { url: `${BASE_URL}/compare/best-startup-signal-tools-for-investors`, lastmod, changefreq: "weekly", priority: 0.9 },
+      { url: `${BASE_URL}/compare/best-deal-flow-tools-angel-investors`, lastmod, changefreq: "weekly", priority: 0.85 },
+      { url: `${BASE_URL}/receipts`, lastmod, changefreq: "weekly", priority: 0.9 },
     ];
   } else {
     return new Response("Not Found", { status: 404 });

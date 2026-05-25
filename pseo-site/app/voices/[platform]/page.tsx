@@ -325,8 +325,8 @@ export default async function PlatformVoicesPage({ params }: PageProps) {
           </h2>
           <p className="text-gray-300 text-base leading-relaxed">
             We don&rsquo;t guard our infiltration plan because it doesn&rsquo;t
-            scale by secrecy — it scales by repetition. If a developer-investor
-            wants to mirror the same {list.label} attention map, that&rsquo;s
+            scale by secrecy — it scales by repetition. If you want to mirror
+            the same {list.label} attention map, that&rsquo;s
             net positive: the conversation gets denser, the dataset gets
             cleaner, and the answer to the same question on each platform
             converges. We&rsquo;ll still ship the free{" "}

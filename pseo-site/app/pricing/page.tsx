@@ -338,7 +338,7 @@ const faqs: { q: string; a: string }[] = [
   },
   {
     q: "What is the MCP server and is it really free forever?",
-    a: "The MCP (Model Context Protocol) server exposes five read-only tools — get_trending_startups, search_startups_by_sector, get_startup_signal, get_signals_summary, and get_methodology — to any MCP-compatible AI client (Claude, Cursor, Windsurf, Mistral Le Chat, ChatGPT GPT, custom agents). It is published on npm as @gitdealflow/mcp-signal and runs as a Streamable HTTP endpoint at signals.gitdealflow.com/api/mcp/rpc. It is free and will never be gated — it is the distribution magnet that brings developer-investors into the funnel. New paid tools may be added as a separate paid tier; the existing five stay free permanently.",
+    a: "The MCP (Model Context Protocol) server exposes five read-only tools — get_trending_startups, search_startups_by_sector, get_startup_signal, get_signals_summary, and get_methodology — to any MCP-compatible AI client (Claude, Cursor, Windsurf, Mistral Le Chat, ChatGPT GPT, custom agents). It is published on npm as @gitdealflow/mcp-signal and runs as a Streamable HTTP endpoint at signals.gitdealflow.com/api/mcp/rpc. It is free and will never be gated — it is the distribution magnet that brings technical early adopters into the funnel, the same way a free Chrome extension or API trial does in classic technical-tool GTM.",
   },
   {
     q: "Do you offer enterprise pricing?",
@@ -562,18 +562,17 @@ export default function PricingPage() {
           of the same category, sized to a different sourcing cadence.
         </p>
 
-        {/* Quiz nudge — Russell audit 2026-05-05 PM: visitors landing on /pricing
-            cold often pick the wrong tier. The 90-second avatar quiz routes
-            them by self-identification. */}
+        {/* Quiz nudge — visitors landing on /pricing cold often pick the wrong
+            tier. Route them by urgency, not persona labels. */}
         <div className="mb-8 flex items-center gap-3 rounded-lg border border-sky-700/40 bg-sky-950/20 px-4 py-3">
           <span aria-hidden="true" className="text-sky-300 text-lg">⚡</span>
           <p className="text-gray-300 text-sm flex-1">
-            Not sure which tier fits the way you write checks?{" "}
+            Not sure where to start?{" "}
             <Link
               href="/quiz"
               className="text-sky-300 hover:text-sky-200 font-medium underline decoration-dotted"
             >
-              Take the 90-second avatar quiz →
+              Take the 90-second start-here quiz →
             </Link>
           </p>
         </div>

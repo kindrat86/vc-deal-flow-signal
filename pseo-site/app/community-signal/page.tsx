@@ -276,7 +276,7 @@ export default function CommunitySignalIndexPage() {
             >
               /voices
             </Link>{" "}
-            answers <em>where</em> the developer-investor reads. The type map
+            answers <em>where</em> the conversation happens. The type map
             here answers <em>which room are they reading inside that
             platform</em>. The same Discord user is one of half a dozen
             archetypes depending on which server they&rsquo;re in — a Cursor
@@ -334,7 +334,7 @@ export default function CommunitySignalIndexPage() {
               href="/target-list"
               className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg border border-slate-700 bg-slate-800 hover:bg-slate-700 text-gray-100 font-semibold text-sm transition-colors"
             >
-              Master ICP-scored list →
+              Master target list →
             </Link>
           </div>
         </section>

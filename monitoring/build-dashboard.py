@@ -74,11 +74,11 @@ CHANNELS = {
          "stat": "731 karma · 976 contribs · 18 followers",
          "note": "Top 5% Poster; 5y account age; 80 gold · 27 achievements; user-managed",
          "status": "active", "as_of": "2026-04-21"},
-        {"name": "LinkedIn", "handle": "company/gitdealflow",
-         "url": "https://www.linkedin.com/company/gitdealflow",
-         "stat": "1 follower · 55 imp (30d) · Post1 17% ER / Post2 5% ER",
-         "note": "Short video + link-in-comment = 3x engagement vs long-form (Post1 vs Post2). User handles all LinkedIn actions — Claude drafts + tracks stats only.",
-         "status": "active", "as_of": "2026-04-21"},
+        {"name": "LinkedIn", "handle": "VC Deal Flow Signal",
+         "url": "https://www.linkedin.com/company/113165009/",
+         "stat": "2 followers · 1,327 imp (30d, +245%) · 19 cmt · 2 react · 0 reposts · 22 pv / 10 uv · 0 search appearances",
+         "note": "Document/PDF carousel is the only format that converts: 31% CTR / 33% ER vs 0% CTR on image/text/poll. HackerNoon journalist visited — warm. 1 ICP follower (VC managing partner). Posting 2x/wk (Doc Wed, Poll Tue). No invite-to-follow per user rule. User handles all LinkedIn actions — Claude drafts + tracks stats only.",
+         "status": "active", "as_of": "2026-05-25"},
         {"name": "Product Hunt", "handle": "data_nerd",
          "url": "https://www.producthunt.com/@data_nerd",
          "stat": "0 followers · 18 following · 6-day streak",
@@ -505,6 +505,22 @@ WHERE event = '$pageview'
   {country_filter}
 """)
 
+# Engaged visitors = distinct_ids with ≥2 pageviews in the window. Single-pageview
+# visitors are dominated by social-link unfurl bots, search/AI crawlers, and
+# preview fetchers — none of which can convert. Gating the headline on this
+# stops 99%+ single-pv crawler traffic from inflating the visitor card.
+engaged_uv_q = ph_query(f"""
+SELECT count() FROM (
+  SELECT distinct_id, count() as pv
+  FROM events
+  WHERE event = '$pageview'
+    AND timestamp >= '{window_start.isoformat()}'
+    {country_filter}
+  GROUP BY distinct_id
+  HAVING pv >= 2
+)
+""")
+
 # Recent-window visitors — feeds forecast baseline so projections reflect the
 # current weekly rate, not an all-time average diluted by quiet early days.
 recent_uv_q = ph_query(f"""
@@ -678,6 +694,24 @@ sub_emails = {s.get("email", "").lower() for s in subscribers}
 verified = sub_emails & resend_emails
 unverified_in_pb = sub_emails - resend_emails
 
+# Real active subscribers = verified − unsubscribed − dashboard-only QA accounts.
+# sales@sipiteno.com is intentionally kept in EXCLUDED_EMAILS (sends still go to
+# it as a live QA inbox), but it shouldn't inflate the headline subscriber count.
+DASHBOARD_QA_EMAILS = {"sales@sipiteno.com"}
+unsubscribed_emails = set()
+_unsub_path = os.path.join(PROJECT_DIR, "pseo-site", "data", "unsubscribed-emails.json")
+try:
+    with open(_unsub_path) as _f:
+        unsubscribed_emails = {
+            (e.get("email") or "").lower()
+            for e in (json.load(_f).get("emails") or [])
+            if e.get("email")
+        }
+except FileNotFoundError:
+    pass
+active_subs_set = verified - unsubscribed_emails - DASHBOARD_QA_EMAILS
+active_subs_count = len(active_subs_set)
+
 # Email log aggregates — prefer Resend API (pSEO signup path doesn't write PB email_log)
 print("Fetching Resend email events...")
 resend_events = resend_email_events(window_start)
@@ -723,6 +757,10 @@ total_uv = 0
 if pv_total and pv_total.get("results") and pv_total["results"]:
     total_pv = pv_total["results"][0][0] or 0
     total_uv = pv_total["results"][0][1] or 0
+
+engaged_uv = 0
+if engaged_uv_q and engaged_uv_q.get("results") and engaged_uv_q["results"]:
+    engaged_uv = engaged_uv_q["results"][0][0] or 0
 
 # Funnel
 funnel = [
@@ -1294,6 +1332,7 @@ except Exception as e:
     print(f"  GSC: skipped ({e})")
 
 conversion_rate = round(100 * len(subscribers) / total_uv, 2) if total_uv else 0.0
+active_conversion_rate = round(100 * active_subs_count / total_uv, 2) if total_uv else 0.0
 
 # Paid subs (Dashboard or Insider tier, active status)
 paid_subs = sum(
@@ -1512,11 +1551,15 @@ payload = {
     "window_days": WINDOW_DAYS,
     "kpis": {
         "visitors": total_uv,
+        "engaged_visitors": engaged_uv,
+        "window_start": window_start.isoformat(),
         "pageviews": total_pv,
         "signups": len(subscribers),
         "verified": len(verified),
         "unverified": len(unverified_in_pb),
+        "active_subscribers": active_subs_count,
         "conversion_rate": conversion_rate,
+        "active_conversion_rate": active_conversion_rate,
         "emails_sent": total_sent,
         "emails_scheduled": total_scheduled,
         "open_rate": open_rate,
@@ -1640,10 +1683,9 @@ HTML = """<!DOCTYPE html>
 </div>
 
 <div class="grid cols-4 row-group">
-  <div class="card kpi"><div class="num" id="k-visitors">—</div><div class="lbl">Visitors (all time)</div></div>
-  <div class="card kpi"><div class="num" id="k-signups">—</div><div class="lbl">Total signups</div></div>
-  <div class="card kpi"><div class="num" id="k-verified">—</div><div class="lbl">Verified (Resend)</div></div>
-  <div class="card kpi"><div class="num" id="k-conv">—</div><div class="lbl">Visitor → signup</div></div>
+  <div class="card kpi"><div class="num" id="k-visitors">—</div><div class="lbl">Visitors (since <span id="k-since">—</span>)</div></div>
+  <div class="card kpi"><div class="num" id="k-active">—</div><div class="lbl">Active subscribers</div></div>
+  <div class="card kpi"><div class="num" id="k-conv">—</div><div class="lbl">Visitor → active subscriber</div></div>
 </div>
 
 <div class="row-group">
@@ -2087,9 +2129,9 @@ document.getElementById('exc-testers').textContent = (D.excluded.testers || []).
 
 // KPIs
 document.getElementById('k-visitors').textContent = fmt(D.kpis.visitors);
-document.getElementById('k-signups').textContent = fmt(D.kpis.signups);
-document.getElementById('k-verified').textContent = fmt(D.kpis.verified);
-document.getElementById('k-conv').textContent = D.kpis.conversion_rate + '%';
+document.getElementById('k-since').textContent = D.kpis.window_start || '—';
+document.getElementById('k-active').textContent = fmt(D.kpis.active_subscribers);
+document.getElementById('k-conv').textContent = D.kpis.active_conversion_rate + '%';
 document.getElementById('e-sent').textContent = fmt(D.kpis.emails_sent);
 document.getElementById('e-sched').textContent = fmt(D.kpis.emails_scheduled || 0);
 document.getElementById('e-open').textContent = D.kpis.open_rate + '%';

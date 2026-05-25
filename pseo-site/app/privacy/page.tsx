@@ -48,7 +48,7 @@ export default function PrivacyPage() {
           <li><strong>We rank public companies, not people.</strong> Inputs are the public GitHub events API, Wikidata, and SSRN — not individual user activity.</li>
           <li><strong>Free subscribers</strong> give us only an email address; we use it to send the weekly digest and the optional drip sequence.</li>
           <li><strong>Paid subscribers</strong> add a Stripe customer ID; Stripe handles payment data — we never see card numbers.</li>
-          <li><strong>Pseudonymous analytics</strong> via PostHog EU. We do not set persistent identifiers across sites and we honor <Link href="/.well-known/dnt-policy.txt" className="text-sky-400 hover:underline">DNT: 1</Link>.</li>
+          <li><strong>Pseudonymous analytics</strong> via PostHog EU. We set <em>one</em> first-party cookie on <code className="text-emerald-400">.gitdealflow.com</code> so the same visitor isn&apos;t double-counted across pages — no third-party trackers. We honor <Link href="/.well-known/dnt-policy.txt" className="text-sky-400 hover:underline">DNT: 1</Link> and Global Privacy Control by auto-opting-out.</li>
           <li><strong>No selling, no behavioural advertising,</strong> ever. CCPA "do-not-sell" is moot — there's nothing to sell.</li>
           <li><strong>Email <a className="text-sky-400 hover:underline" href="mailto:signal@gitdealflow.com">signal@gitdealflow.com</a></strong> for access, deletion, or DPA execution.</li>
         </ul>
@@ -63,7 +63,7 @@ export default function PrivacyPage() {
         <ul className="list-disc list-outside ml-5 space-y-1">
           <li><strong>Subscriber data</strong> — email address (free + paid), Stripe customer ID (paid), share-token records (when you create a "share my receipts" link). Legal basis: contract (Art. 6(1)(b)) for paid; consent (Art. 6(1)(a)) for free email opt-in.</li>
           <li><strong>Server logs</strong> — request URL, IP, user-agent. Stored 30 days at Vercel (the hosting provider). Legal basis: legitimate interest (Art. 6(1)(f)) in operating the service.</li>
-          <li><strong>Pseudonymous analytics</strong> — page-view counters, sector popularity. PostHog EU; person profiles are <em>identified-only</em> (anonymous visitors never get a profile). Legal basis: legitimate interest.</li>
+          <li><strong>Pseudonymous analytics</strong> — page-view counters, sector popularity. PostHog EU; person profiles are <em>identified-only</em> (anonymous visitors never get a profile). One first-party cookie (<code className="text-emerald-400">ph_*</code>) is set on <code className="text-emerald-400">.gitdealflow.com</code> to stitch pageviews from the same visitor across our own subdomains; this cookie carries an opaque ID, never a name or email. Legal basis: legitimate interest. Browsers sending DNT or GPC are excluded automatically.</li>
         </ul>
 
         <h2 className="text-xl font-semibold text-gray-100">3 · What we do NOT collect</h2>

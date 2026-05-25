@@ -154,11 +154,7 @@ export default function StartupMomentumGuidePage() {
             How to spot startup momentum before the round gets crowded
           </h1>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed max-w-3xl">
-            You do not need another startup database if the real question is
-            timing. You need a way to notice what changed before the round
-            starts feeling obvious. This guide is the short version of what to
-            watch, what to ignore, and how to get a clearer read without adding
-            more noise to your week.
+            If you wait until the story is obvious, the calm window is already gone. This guide explains how to notice startup momentum earlier through public engineering signals and why that matters before the round gets crowded. GitDealFlow exists to make that earlier signal easier to see.
           </p>
         </header>
 
@@ -167,11 +163,10 @@ export default function StartupMomentumGuidePage() {
           className="rounded-2xl border border-sky-900/50 bg-sky-950/30 p-6 sm:p-8"
         >
           <p className="text-sky-300 text-xs font-semibold uppercase tracking-[0.14em] mb-2">
-            Key takeaway
+            Quick answer
           </p>
           <p className="text-gray-200 text-lg leading-relaxed">
-            The useful edge is not more information. It is a calmer read on what
-            changed early enough to matter.
+            Earlier momentum often shows up before the outside story fully catches up. Public engineering movement is one place that change can become visible sooner.
           </p>
         </section>
 
@@ -253,6 +248,26 @@ export default function StartupMomentumGuidePage() {
           </div>
         </section>
 
+        <section className="rounded-2xl border border-slate-800 bg-slate-900/70 p-6 sm:p-8">
+          <h2 className="text-xl font-semibold text-gray-100 mb-3">
+            If you want to verify the claim
+          </h2>
+          <p className="text-gray-400 text-sm leading-relaxed mb-4">
+            The signal logic is public. You can inspect the methodology, compare it against more traditional tools, and read the sample output before deciding whether this belongs in your workflow.
+          </p>
+          <div className="flex flex-col gap-3">
+            <Link href="/answers/what-is-startup-engineering-momentum" className="text-sky-400 hover:text-sky-300 underline underline-offset-2 text-sm">
+              What startup engineering momentum means
+            </Link>
+            <Link href="/answers/deal-flow-timing-vs-verification" className="text-sky-400 hover:text-sky-300 underline underline-offset-2 text-sm">
+              Timing and verification are not the same thing
+            </Link>
+            <Link href="/compare/best-alternative-data-tools-for-angel-investors" className="text-sky-400 hover:text-sky-300 underline underline-offset-2 text-sm">
+              Best alternative data tools for angel investors
+            </Link>
+          </div>
+        </section>
+
         <section aria-label="Frequently asked questions" className="space-y-4">
           <h2 className="text-xl font-semibold text-gray-100">
             Frequently Asked Questions
@@ -275,6 +290,15 @@ export default function StartupMomentumGuidePage() {
               </details>
             ))}
           </div>
+        </section>
+
+        <section className="space-y-4">
+          <h2 className="text-xl font-semibold text-gray-100">What to read next</h2>
+          <ul className="space-y-2">
+            <li><Link href="/answers/what-is-startup-engineering-momentum" className="text-sky-400 hover:text-sky-300 underline underline-offset-2 text-sm">What startup engineering momentum means</Link></li>
+            <li><Link href="/compare/crunchbase-alternative-for-angel-investors" className="text-sky-400 hover:text-sky-300 underline underline-offset-2 text-sm">A better Crunchbase alternative when timing matters</Link></li>
+            <li><Link href="https://gitdealflow.com/report" className="text-sky-400 hover:text-sky-300 underline underline-offset-2 text-sm">Read a sample Sunday watchlist</Link></li>
+          </ul>
         </section>
 
         <section className="rounded-2xl border border-slate-800 bg-slate-900 p-6 sm:p-8 text-center">
