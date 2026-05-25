@@ -5572,6 +5572,237 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
       "one-off startup signal analysis",
     ],
   },
+  {
+    slug: "what-do-i-actually-get-from-dashboard-each-week",
+    query: "What do I actually get from Dashboard each week?",
+    h1: "What do you actually get from Dashboard each week?",
+    description:
+      "Dashboard gives you a recurring weekly operating surface: more names, cleaner review, fewer tabs, and a calmer way to see what changed across the field.",
+    tldr:
+      "What you get from Dashboard each week is not just more data. You get a steadier weekly operating surface that helps you review momentum across names and sectors without rebuilding the workflow every Monday.",
+    body: `Dashboard is not just a bigger list. It is a weekly operating surface.
+
+**Quick answer.** Each week you get a calmer way to see what changed across more names and sectors, with less tab chaos and less guesswork.
+
+**What changes in practice.** Instead of bouncing between scattered pages and vague notes, you get one place to review momentum, filter attention, and keep a weekly rhythm. The value is not drama. The value is steadiness.
+
+**What Dashboard is really for.** It is for the buyer who no longer needs just one sharp answer, but also is not looking for a higher-touch room. It sits in the middle: recurring visibility, cleaner timing, and a better Monday workflow.
+
+**What it is not.** It is not a replacement for every diligence tool and it is not the same thing as Insider. Dashboard is the recurring review layer.`,
+    facts: [
+      {
+        claim:
+          "Dashboard is positioned as the dependable weekly operating surface rather than just a larger database view.",
+        sourceUrl: "https://gitdealflow.com/dashboard.html",
+        sourceLabel: "Dashboard page",
+      },
+      {
+        claim:
+          "The routing system across proof and comparison pages now treats Dashboard as the recurring lane after free exposure or one-off depth.",
+        sourceUrl: "https://signals.gitdealflow.com/research",
+        sourceLabel: "Research routing",
+      },
+      {
+        claim:
+          "Dashboard is repeatedly framed as the weekly surface that sits between the free Sunday issue and the higher-touch Insider layer.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/when-should-i-use-dashboard-vs-insider",
+        sourceLabel: "Dashboard vs Insider answer",
+      },
+    ],
+    faqs: [
+      {
+        q: "Is Dashboard mainly about more names?",
+        a: "Partly, but the real value is the recurring weekly operating surface. It helps you review change more calmly and consistently.",
+      },
+      {
+        q: "Should I choose Dashboard if I only have one live question?",
+        a: "Usually no. If the question is narrow and already urgent, First Look is the better fit. Dashboard is stronger when your need is recurring weekly coverage.",
+      },
+      {
+        q: "How is Dashboard different from Insider?",
+        a: "Dashboard is the weekly surface. Insider is the smaller, higher-touch layer for more context and support around the judgment itself.",
+      },
+    ],
+    ctaUrl: "/dashboard",
+    ctaLabel: "See the weekly operating surface",
+    related: [
+      "when-should-i-use-first-look-vs-dashboard",
+      "when-should-i-use-dashboard-vs-insider",
+      "is-first-look-worth-it-for-angels",
+    ],
+    proofLinks: [
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
+      { label: "Read the methodology", url: "/methodology" },
+    ],
+    nextReadLinks: [
+      { label: "See the weekly operating surface", url: "/dashboard" },
+      { label: "See the higher-touch layer", url: "/insider" },
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+      { label: "When should you use Dashboard vs Insider?", url: "/answers/when-should-i-use-dashboard-vs-insider" },
+    ],
+    keywords: [
+      "what do I get from Dashboard each week",
+      "GitDealFlow Dashboard weekly",
+      "what is in the dashboard",
+      "weekly deal flow operating surface",
+      "startup signal dashboard weekly workflow",
+    ],
+  },
+  {
+    slug: "what-do-i-actually-get-from-insider",
+    query: "What do I actually get from Insider?",
+    h1: "What do you actually get from Insider?",
+    description:
+      "Insider gives you the higher-touch layer: more context, more steadiness, and more support around what to do with the signal once it already matters.",
+    tldr:
+      "What you get from Insider is not just more proof. You get a tighter layer of context and steadiness around recurring decisions when you no longer want to carry them alone.",
+    body: `Insider is not just 'Dashboard plus more.' It is the higher-touch layer for the buyer who already trusts the signal and now wants more context and steadiness around what to do with it.
+
+**Quick answer.** Insider gives you a smaller, more serious layer around recurring judgment, not just access to more raw signal.
+
+**What changes in practice.** The value is not simply more names. The value is carrying less of the decision alone. Insider makes sense when the problem becomes confidence, context, and support instead of just access to the weekly surface.
+
+**Who it is really for.** It is for the buyer who has already moved beyond simple exposure and wants a tighter layer around the recurring decisions themselves.
+
+**What it is not.** It is not the best first paid step for most people. It usually makes sense after the free Sunday issue, after First Look, or after Dashboard already proved useful.`,
+    facts: [
+      {
+        claim:
+          "Insider is positioned as the higher-touch operating layer for readers who want steadiness and context rather than just more proof.",
+        sourceUrl: "https://gitdealflow.com/insider.html",
+        sourceLabel: "Insider page",
+      },
+      {
+        claim:
+          "The landing-copy system defines Insider around carrying the decision less alone, not around generic premium positioning.",
+        sourceUrl: "https://gitdealflow.com/insider.html",
+        sourceLabel: "Insider page",
+      },
+      {
+        claim:
+          "Dashboard vs Insider routing now distinguishes the recurring surface from the higher-touch context layer.",
+        sourceUrl: "https://signals.gitdealflow.com/compare/dashboard-vs-insider-for-weekly-workflow",
+        sourceLabel: "Dashboard vs Insider comparison",
+      },
+    ],
+    faqs: [
+      {
+        q: "Is Insider the right first paid step?",
+        a: "Usually not. Most buyers should start with the free Sunday issue, First Look, or Dashboard before Insider becomes the obvious next move.",
+      },
+      {
+        q: "How is Insider different from Dashboard?",
+        a: "Dashboard is the recurring weekly surface. Insider is the tighter layer of context and support around what to do with that surface.",
+      },
+      {
+        q: "When does Insider become worth it?",
+        a: "When the signal already makes sense to you and the real bottleneck is not access, but steadiness, support, and confidence around recurring decisions.",
+      },
+    ],
+    ctaUrl: "/insider",
+    ctaLabel: "See the higher-touch layer",
+    related: [
+      "when-should-i-use-dashboard-vs-insider",
+      "what-do-i-actually-get-from-dashboard-each-week",
+      "is-first-look-worth-it-for-angels",
+    ],
+    proofLinks: [
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
+      { label: "Read the methodology", url: "/methodology" },
+    ],
+    nextReadLinks: [
+      { label: "See the higher-touch layer", url: "/insider" },
+      { label: "See the weekly operating surface", url: "/dashboard" },
+      { label: "When should you use Dashboard vs Insider?", url: "/answers/when-should-i-use-dashboard-vs-insider" },
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+    ],
+    keywords: [
+      "what do I get from Insider",
+      "GitDealFlow Insider what do I get",
+      "what is in Insider",
+      "higher touch deal flow layer",
+      "insider circle startup signal",
+    ],
+  },
+  {
+    slug: "who-should-use-insider-instead-of-dashboard",
+    query: "Who should use Insider instead of Dashboard?",
+    h1: "Who should use Insider instead of Dashboard?",
+    description:
+      "Use Insider instead of Dashboard when you already trust the signal and the real bottleneck is confidence, context, and support — not just access to the weekly surface.",
+    tldr:
+      "You should use Insider instead of Dashboard when the problem is no longer seeing what changed, but deciding what to do with it more confidently and less alone.",
+    body: `Most buyers should not start with Insider. But some should choose it instead of Dashboard once the problem changes.
+
+**Quick answer.** Use Insider instead of Dashboard when you already trust the signal and the real bottleneck is confidence, context, and support rather than access to the weekly surface.
+
+**Choose Insider if...** you already know the signal is valuable, you do not want to carry the recurring judgment alone, and you want a tighter layer around the decision process itself.
+
+**Choose Dashboard if...** your main need is still a better weekly surface, more names, fewer tabs, and a calmer recurring workflow.
+
+**Simple rule.** Dashboard is for recurring review. Insider is for recurring conviction support.`,
+    facts: [
+      {
+        claim:
+          "Dashboard and Insider are framed as different layers of the same workflow rather than interchangeable tiers.",
+        sourceUrl: "https://signals.gitdealflow.com/compare/dashboard-vs-insider-for-weekly-workflow",
+        sourceLabel: "Dashboard vs Insider comparison",
+      },
+      {
+        claim:
+          "Insider is positioned around steadiness and context, while Dashboard is positioned around recurring weekly clarity.",
+        sourceUrl: "https://gitdealflow.com/insider.html",
+        sourceLabel: "Insider page",
+      },
+      {
+        claim:
+          "The routing and content system already treat Dashboard as the recurring surface and Insider as the higher-touch layer.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/when-should-i-use-dashboard-vs-insider",
+        sourceLabel: "Dashboard vs Insider answer",
+      },
+    ],
+    faqs: [
+      {
+        q: "Should most people choose Dashboard first?",
+        a: "Yes. For most buyers Dashboard is the cleaner recurring step before Insider becomes necessary.",
+      },
+      {
+        q: "What makes someone an Insider fit?",
+        a: "They already trust the signal and now want more context, more support, and more steadiness around recurring decisions.",
+      },
+      {
+        q: "Can Dashboard still be enough for serious users?",
+        a: "Yes. If the main need is recurring review rather than higher-touch support, Dashboard can still be enough.",
+      },
+    ],
+    ctaUrl: "/insider",
+    ctaLabel: "See the higher-touch layer",
+    related: [
+      "when-should-i-use-dashboard-vs-insider",
+      "what-do-i-actually-get-from-insider",
+      "what-do-i-actually-get-from-dashboard-each-week",
+    ],
+    proofLinks: [
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+      { label: "Read the methodology", url: "/methodology" },
+    ],
+    nextReadLinks: [
+      { label: "See the higher-touch layer", url: "/insider" },
+      { label: "See the weekly operating surface", url: "/dashboard" },
+      { label: "Get my First Look", url: "/firstlook" },
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+    ],
+    keywords: [
+      "who should use Insider instead of Dashboard",
+      "Insider vs Dashboard fit",
+      "GitDealFlow Insider fit",
+      "when to upgrade from dashboard to insider",
+      "conviction support vs weekly workflow",
+    ],
+  },
 ];
 
 export function getAgentQueryBySlug(slug: string): AgentQuery | undefined {

@@ -1364,9 +1364,101 @@ export const comparisons: Comparison[] = [
       { label: "Read the buyer's guide", url: "/buyers-guide" },
     ],
   },
+  {
+    slug: "first-look-vs-dashboard-for-live-theses",
+    title: "First Look vs Dashboard for Live Theses",
+    description:
+      "Use First Look when one live thesis already needs a sharper answer. Use Dashboard when you want a recurring weekly operating surface across many names and weeks.",
+    h1: "First Look vs Dashboard for live theses",
+    intro:
+      "These two offers sit at different moments in the same process. First Look is for one live question. Dashboard is for recurring weekly review once you want an operating surface, not just a sharper pass.",
+    sections: [
+      {
+        heading: "First Look — one live question",
+        body: "First Look is the better fit when one thesis, sector, or shortlist already has heat and you want a focused answer quickly.",
+      },
+      {
+        heading: "Dashboard — recurring operating surface",
+        body: "Dashboard is the better fit when the issue is no longer one live question, but a weekly need to review momentum across more names and sectors.",
+      },
+      {
+        heading: "Where most buyers get this wrong",
+        body: "If you buy Dashboard before you actually want a recurring workflow, you may overbuy too early. If you keep buying one-off depth when what you really need is a weekly surface, you stay stuck in narrow sprints.",
+      },
+      {
+        heading: "Simple rule",
+        body: "If the thesis is hot now, use First Look. If the question has turned into a weekly operating need, use Dashboard.",
+      },
+    ],
+    verdict:
+      "First Look is the right move when one thesis is already expensive. Dashboard is the right move when the job has become recurring weekly review rather than one-off depth.",
+    relatedSectors: ["ai-ml", "enterprise-saas", "fintech"],
+    faqs: [
+      { question: "Should I start with First Look or Dashboard?", answer: "Start with First Look if the question is narrow and already urgent. Start with Dashboard if you already know you need a recurring weekly workflow." },
+      { question: "Can Dashboard replace First Look?", answer: "Not when the need is a sharper one-off answer on a live thesis. Dashboard is broader and recurring, not a substitute for focused depth." },
+      { question: "Can First Look replace Dashboard?", answer: "Not long term if the real need is weekly operating rhythm. First Look is a one-off depth layer, not the recurring surface." },
+    ],
+    proofLinks: [
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
+      { label: "Read the methodology", url: "/methodology" },
+    ],
+    nextReadLinks: [
+      { label: "Get my First Look", url: "/firstlook" },
+      { label: "See the weekly operating surface", url: "/dashboard" },
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+      { label: "When should you use First Look vs Dashboard?", url: "/answers/when-should-i-use-first-look-vs-dashboard" },
+    ],
+  },
+  {
+    slug: "dashboard-vs-insider-for-conviction-support",
+    title: "Dashboard vs Insider for Conviction Support",
+    description:
+      "Use Dashboard when you need recurring visibility. Use Insider when you need a higher-touch layer that helps you carry conviction with more steadiness and support.",
+    h1: "Dashboard vs Insider for conviction support",
+    intro:
+      "Dashboard and Insider are close enough to confuse, but the real difference is not price or prestige. The real difference is whether you need recurring visibility or recurring conviction support.",
+    sections: [
+      {
+        heading: "Dashboard — visibility first",
+        body: "Dashboard gives you the recurring weekly view. It helps you see what changed and keep a steadier operating rhythm across the field.",
+      },
+      {
+        heading: "Insider — conviction support",
+        body: "Insider is the better fit when the problem is no longer seeing what changed, but deciding what to do with the signal more confidently and less alone.",
+      },
+      {
+        heading: "Where the upgrade becomes rational",
+        body: "The upgrade from Dashboard to Insider makes sense when you already trust the signal and now want more context, more steadiness, and a smaller higher-touch layer around recurring decisions.",
+      },
+      {
+        heading: "Simple rule",
+        body: "If you want a better weekly surface, use Dashboard. If you want more support around recurring conviction, use Insider.",
+      },
+    ],
+    verdict:
+      "Dashboard is the better choice for recurring visibility. Insider is the better choice for recurring conviction support. The right move depends on which bottleneck is actually slowing you down.",
+    relatedSectors: ["ai-ml", "enterprise-saas", "fintech"],
+    faqs: [
+      { question: "Is Insider only for advanced users?", answer: "Not exactly. It is for users whose main problem has shifted from visibility to support, context, and steadier conviction." },
+      { question: "Should I upgrade from Dashboard to Insider immediately?", answer: "Usually only when Dashboard already proved useful and your next bottleneck is support rather than surface area." },
+      { question: "Can Dashboard still be enough?", answer: "Yes. If recurring visibility is the real need, Dashboard can still be the right long-term lane." },
+    ],
+    proofLinks: [
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
+      { label: "Read the methodology", url: "/methodology" },
+    ],
+    nextReadLinks: [
+      { label: "See the weekly operating surface", url: "/dashboard" },
+      { label: "See the higher-touch layer", url: "/insider" },
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+      { label: "When should you use Dashboard vs Insider?", url: "/answers/when-should-i-use-dashboard-vs-insider" },
+    ],
+  },
 ];
-
-// ---------------------------------------------------------------------------
+ 
+ // ---------------------------------------------------------------------------
 // Programmatic "vs" comparisons — auto-generated for every competitor pair
 // ---------------------------------------------------------------------------
 
