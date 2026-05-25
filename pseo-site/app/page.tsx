@@ -37,7 +37,7 @@ import {
 
 export const metadata: Metadata = {
   description:
-    "See which startups are accelerating before the round feels obvious. Weekly public engineering signals, calmer timing, and direct proof.",
+    "Weekly GitHub-momentum signals across venture-backed startups, built for angels, scouts, and emerging fund managers.",
   // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
   alternates: {
     canonical: "/",
