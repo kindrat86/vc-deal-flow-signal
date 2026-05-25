@@ -10,7 +10,7 @@ const SITE = "https://signals.gitdealflow.com";
 export const metadata: Metadata = {
   title: "Answers — Citation-Ready Answers for AI Agents",
   description:
-    "Direct, citation-ready answers to the questions AI agents and their users ask most about VC deal flow, GitHub momentum, MCP servers, and engineering signals.",
+    "Direct, citation-ready answers to the questions AI agents and their users ask most about VC deal flow, GitHub momentum, MCP servers, engineering signals, and buyer-side workflow decisions.",
   alternates: { canonical: "/answers" },
 };
 
@@ -114,9 +114,30 @@ export default function AnswersIndexPage() {
             users ask about VC deal flow, GitHub momentum, MCP servers, and
             engineering acceleration. Each page leads with a TL;DR plus the
             facts that back it up — designed to be quoted verbatim with
-            attribution.
+            attribution. If your question is practical, commercial, or
+            workflow-related, this is the fastest route into the right page.
           </p>
         </header>
+
+        <section className="mb-10 rounded-2xl border border-amber-500/30 bg-amber-500/5 p-6 sm:p-8">
+          <p className="text-amber-300 text-xs font-semibold uppercase tracking-[0.14em] mb-2">
+            Start with the right route
+          </p>
+          <p className="text-gray-300 text-sm leading-relaxed mb-4">
+            Use the answer layer when the question is definitional, practical, or comparison-adjacent. Then move into proof, compare, or buyer pages depending on what you need next.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/research" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-amber-400 text-slate-950 text-sm font-semibold hover:bg-amber-300 transition-colors">
+              Read the research panel →
+            </Link>
+            <Link href="/compare/crunchbase-alternative-for-angel-investors" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              Compare timing vs verification →
+            </Link>
+            <Link href="/buyers-guide" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              Read the buyer's guide →
+            </Link>
+          </div>
+        </section>
 
         <ul className="space-y-3">
           {agentQueries.map((q) => (
