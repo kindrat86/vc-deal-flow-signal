@@ -1002,8 +1002,232 @@ export const comparisons: Comparison[] = [
       { label: "See the weekly operating surface", url: "/dashboard" },
       { label: "Get my First Look", url: "/firstlook" },
     ],
-  }
-];
+  },
+  {
+    slug: "first-look-vs-startup-database-for-live-theses",
+    title: "First Look vs a Startup Database for Live Theses",
+    description:
+      "Use First Look when a live sector question needs a sharper answer now. Use a startup database when you need broader verification after something already deserves attention.",
+    h1: "First Look vs a startup database for a live thesis",
+    intro:
+      "These two tools solve different problems. First Look is for the moment when a live sector or thesis question already has heat. A startup database is for broader lookup and verification after a company is already on your radar.",
+    sections: [
+      {
+        heading: "What First Look is for",
+        body: "First Look is a sharp pass on one live question. You use it when a sector, thesis, or shortlist already needs a better answer and you want something more focused than a generic database browse.",
+      },
+      {
+        heading: "What a startup database is for",
+        body: "A startup database is useful when you need broad lookup, funding history, investor lists, and basic company verification. It is wide by design. That breadth is useful, but it is not the same thing as a focused answer on one active question.",
+      },
+      {
+        heading: "Where timing changes the choice",
+        body: "If the real problem is timing, a database often gets you information after the story already formed. First Look is better when the question is already expensive and you need a narrower, faster read now.",
+      },
+      {
+        heading: "Practical rule",
+        body: "If you are still exploring broadly, use a database. If one sector or thesis already will not leave you alone, use First Look. The mistake is browsing a wide database when the real need is a sharper pass on one live question.",
+      },
+    ],
+    verdict:
+      "Use First Look when the question is live and specific. Use a startup database when you need broad lookup and verification after something already deserves attention. They are complements, not substitutes.",
+    relatedSectors: ["ai-ml", "enterprise-saas", "fintech"],
+    faqs: [
+      { question: "Is First Look a replacement for Crunchbase or Dealroom?", answer: "No. First Look is a focused answer on a live question. Databases still help with broad lookup and verification." },
+      { question: "When is a database too broad for the job?", answer: "When you already know the sector or thesis and the real problem is deciding faster, not browsing wider." },
+      { question: "What should I start with if I am too early?", answer: "Start with the free Sunday issue if the question is still early. Use First Look once the thesis has real heat." },
+    ],
+    proofLinks: [
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
+      { label: "Read the methodology", url: "/methodology" },
+    ],
+    nextReadLinks: [
+      { label: "Get my First Look", url: "/firstlook" },
+      { label: "A better Crunchbase alternative when timing matters", url: "/compare/crunchbase-alternative-for-angel-investors" },
+      { label: "Timing and verification are not the same thing", url: "/answers/deal-flow-timing-vs-verification" },
+    ],
+  },
+  {
+    slug: "dashboard-vs-crunchbase-pro-for-early-timing",
+    title: "Dashboard vs Crunchbase Pro for Early Timing",
+    description:
+      "Use Dashboard when you want a recurring weekly operating surface for earlier public signal. Use Crunchbase Pro when you need broader verification and company lookup.",
+    h1: "Dashboard vs Crunchbase Pro for early timing",
+    intro:
+      "Dashboard and Crunchbase Pro both help investors work faster, but they sit at different points in the process. One is built for recurring early signal. The other is built for broader verification once a company is already visible.",
+    sections: [
+      {
+        heading: "Dashboard — recurring signal",
+        body: "Dashboard is the weekly operating surface. It helps you review momentum across names, sectors, and weeks without rebuilding the workflow every Monday.",
+      },
+      {
+        heading: "Crunchbase Pro — recurring verification",
+        body: "Crunchbase Pro helps you verify funding history, team profiles, and general company context. It is useful after a name deserves attention, not necessarily before the story gets crowded.",
+      },
+      {
+        heading: "What changes when timing is the goal",
+        body: "If you care about earlier attention, Dashboard is the better recurring first layer because it is built around public engineering movement. Crunchbase Pro becomes more useful once you need a lighter second layer for checks and context.",
+      },
+      {
+        heading: "Best stack",
+        body: "For most small investors and emerging funds, the clean stack is Dashboard first, Crunchbase Pro second. One handles timing. The other handles verification.",
+      },
+    ],
+    verdict:
+      "If the job is earlier timing, Dashboard is the stronger recurring surface. If the job is verification and basic company lookup, Crunchbase Pro still matters. The best stack uses both in that order.",
+    relatedSectors: ["ai-ml", "developer-tools", "fintech"],
+    faqs: [
+      { question: "Can Dashboard replace Crunchbase Pro?", answer: "Not completely. Dashboard is stronger for earlier timing; Crunchbase Pro is still useful for broader verification and company facts." },
+      { question: "Which should come first in the workflow?", answer: "Dashboard first for earlier signal, then Crunchbase Pro for verification after the name deserves attention." },
+      { question: "What if I only want one paid tool?", answer: "If timing matters more than lookup, choose Dashboard first. If your work is mostly post-discovery verification, Crunchbase Pro may matter more." },
+    ],
+    proofLinks: [
+      { label: "Timing and verification are not the same thing", url: "/answers/deal-flow-timing-vs-verification" },
+      { label: "Read the methodology", url: "/methodology" },
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+    ],
+    nextReadLinks: [
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+      { label: "See the weekly operating surface", url: "/dashboard" },
+      { label: "A better Crunchbase alternative when timing matters", url: "/compare/crunchbase-alternative-for-angel-investors" },
+    ],
+  },
+  {
+    slug: "gitdealflow-vs-harmonic-for-solo-angels",
+    title: "GitDealFlow vs Harmonic.ai for Solo Angels",
+    description:
+      "GitDealFlow is the stronger fit for solo angels who want earlier public signal without enterprise spend. Harmonic.ai is stronger for broader team-pattern sourcing at institutional budgets.",
+    h1: "GitDealFlow vs Harmonic.ai for solo angels",
+    intro:
+      "Solo angels do not need the same tool stack as institutional VCs. GitDealFlow and Harmonic.ai both help with sourcing, but they assume very different budgets, workflows, and tolerances for abstraction.",
+    sections: [
+      {
+        heading: "GitDealFlow — timing-first and accessible",
+        body: "GitDealFlow is built around earlier public engineering movement, a free Sunday issue, and lightweight paid layers like First Look and Dashboard. It is designed to be usable without enterprise procurement.",
+      },
+      {
+        heading: "Harmonic.ai — broad AI pattern sourcing",
+        body: "Harmonic.ai is stronger when you want broad pattern matching on founders, teams, and networks across a large market map. That can be powerful, but it comes with enterprise-style budget and workflow assumptions.",
+      },
+      {
+        heading: "What a solo angel actually needs",
+        body: "A solo angel usually needs earlier signal, cleaner timing, and a calmer way to narrow attention. That makes GitDealFlow the stronger first layer. Harmonic.ai becomes more sensible when the operation is larger and the budget supports broader pattern-sourcing infrastructure.",
+      },
+      {
+        heading: "The practical choice",
+        body: "If you write small checks and hate wasting attention, start with GitDealFlow. If you later build a larger sourcing operation, Harmonic.ai may become a second layer rather than the first thing you buy.",
+      },
+    ],
+    verdict:
+      "For solo angels, GitDealFlow is the stronger first choice because it gives earlier signal without enterprise cost or complexity. Harmonic.ai makes more sense once the sourcing team and budget are already real.",
+    relatedSectors: ["ai-ml", "developer-tools", "enterprise-saas"],
+    faqs: [
+      { question: "Is Harmonic.ai overkill for solo angels?", answer: "Often yes. It can be powerful, but it is built for a larger-budget sourcing motion than most solo angels actually need." },
+      { question: "What is GitDealFlow better at?", answer: "Earlier public timing, simpler weekly rhythm, and a much lighter entry cost." },
+      { question: "Could I use both?", answer: "Yes, but for most solo angels GitDealFlow should come first and Harmonic only later if the process expands enough to justify it." },
+    ],
+    proofLinks: [
+      { label: "Best deal flow tools for angel investors", url: "/compare/best-deal-flow-tools-angel-investors" },
+      { label: "Read the methodology", url: "/methodology" },
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+    ],
+    nextReadLinks: [
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+      { label: "Get my First Look", url: "/firstlook" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
+    ],
+  },
+  {
+    slug: "gitdealflow-vs-pitchbook-for-small-funds",
+    title: "GitDealFlow vs PitchBook for Small Funds",
+    description:
+      "PitchBook is stronger for institutional diligence and market data. GitDealFlow is stronger for smaller funds that need earlier signal first and lower operating cost.",
+    h1: "GitDealFlow vs PitchBook for small funds",
+    intro:
+      "GitDealFlow and PitchBook do not compete on the same job. PitchBook is the institutional data platform. GitDealFlow is the earlier-signal layer. Small funds should be careful not to buy institutional breadth before they buy actual timing edge.",
+    sections: [
+      {
+        heading: "PitchBook — heavy institutional breadth",
+        body: "PitchBook is strong for valuations, private-company financials, market maps, comparables, and investment-committee style diligence. It is broad, deep, and expensive.",
+      },
+      {
+        heading: "GitDealFlow — narrow but earlier",
+        body: "GitDealFlow focuses on earlier public engineering movement. It is narrower because it is strongest in technical startup categories, but that narrowness is part of why the timing is sharper and the price stays accessible.",
+      },
+      {
+        heading: "What small funds usually need first",
+        body: "Most small funds need a better way to notice what deserves attention before they need a massive institutional data surface. That makes GitDealFlow the better first layer and PitchBook the later layer if the fund's workflow grows into it.",
+      },
+      {
+        heading: "Best stack logic",
+        body: "If you are already doing later-stage diligence and portfolio benchmarking, PitchBook matters. If you are still fighting for earlier attention and calmer sourcing, GitDealFlow matters first.",
+      },
+    ],
+    verdict:
+      "For small funds, GitDealFlow is the better first purchase when the bottleneck is earlier sourcing. PitchBook becomes worth it when institutional diligence depth and market data become the binding constraint.",
+    relatedSectors: ["ai-ml", "fintech", "enterprise-saas"],
+    faqs: [
+      { question: "Should a small fund buy PitchBook first?", answer: "Usually not if the main bottleneck is earlier sourcing. Buy timing first, then buy heavier diligence depth later if the process justifies it." },
+      { question: "What is PitchBook better at?", answer: "Broad institutional market data, comparables, private-company financials, and later-stage diligence." },
+      { question: "What is GitDealFlow better at?", answer: "Earlier public timing and a lower-cost operating layer for technical startup sourcing." },
+    ],
+    proofLinks: [
+      { label: "The best VC research stack for 2026", url: "/answers/what-is-the-best-vc-research-stack-for-2026" },
+      { label: "Best VC deal flow software in 2026", url: "/answers/best-vc-deal-flow-software-2026" },
+      { label: "Read the methodology", url: "/methodology" },
+    ],
+    nextReadLinks: [
+      { label: "See the weekly operating surface", url: "/dashboard" },
+      { label: "Get my First Look", url: "/firstlook" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
+    ],
+  },
+  {
+    slug: "gitdealflow-vs-affinity-for-discovery-vs-crm",
+    title: "GitDealFlow vs Affinity for Discovery vs CRM",
+    description:
+      "GitDealFlow is for discovery and earlier timing. Affinity is for relationship management after a company is already in the pipeline.",
+    h1: "GitDealFlow vs Affinity for discovery vs CRM",
+    intro:
+      "GitDealFlow and Affinity are both valuable, but they solve different problems. One helps you notice what deserves attention. The other helps you manage relationships once attention already exists.",
+    sections: [
+      {
+        heading: "GitDealFlow — discovery first",
+        body: "GitDealFlow is the discovery layer. It helps you notice public momentum, earlier movement, and sector-specific change before the round becomes obvious.",
+      },
+      {
+        heading: "Affinity — pipeline and network memory",
+        body: "Affinity is the CRM layer. It helps you manage relationships, shared context, warm introductions, and the state of a company once it is already in the funnel.",
+      },
+      {
+        heading: "Why investors confuse them",
+        body: "Both are useful, but they sit at different stages. Discovery and CRM are not the same job. Buying a CRM when your real bottleneck is earlier signal gives you a cleaner pipeline with the same weak sourcing inputs.",
+      },
+      {
+        heading: "Best stack logic",
+        body: "Use GitDealFlow when the problem is what deserves attention this week. Use Affinity when the problem is who knows the founder, what happened on the last call, and how the pipeline is moving after discovery begins.",
+      },
+    ],
+    verdict:
+      "GitDealFlow and Affinity are complements, not substitutes. GitDealFlow is the stronger first layer when you need earlier discovery. Affinity becomes valuable once relationship management, intros, and team-wide pipeline context are the bottleneck.",
+    relatedSectors: ["ai-ml", "developer-tools", "enterprise-saas"],
+    faqs: [
+      { question: "Can Affinity help with discovery?", answer: "Indirectly, but it is not the strongest first layer for earlier signal. It is better once discovery already happened." },
+      { question: "Can GitDealFlow replace a CRM?", answer: "No. It helps with discovery and timing, not shared relationship memory or pipeline management." },
+      { question: "Which should come first for a small team?", answer: "If sourcing is the bottleneck, GitDealFlow first. If pipeline coordination is the bottleneck, CRM first." },
+    ],
+    proofLinks: [
+      { label: "Best VC deal flow software in 2026", url: "/answers/best-vc-deal-flow-software-2026" },
+      { label: "The best VC research stack for 2026", url: "/answers/what-is-the-best-vc-research-stack-for-2026" },
+      { label: "Read the methodology", url: "/methodology" },
+    ],
+    nextReadLinks: [
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+      { label: "See the weekly operating surface", url: "/dashboard" },
+      { label: "Get my First Look", url: "/firstlook" },
+    ],
+  },
 
 // ---------------------------------------------------------------------------
 // Programmatic "vs" comparisons — auto-generated for every competitor pair
