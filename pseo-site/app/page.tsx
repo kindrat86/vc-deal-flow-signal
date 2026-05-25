@@ -26,7 +26,7 @@ import EpiphanyBridgeCondensed from "@/components/EpiphanyBridgeCondensed";
 import HomeStoryMoment from "@/components/HomeStoryMoment";
 import HomeOfferStack from "@/components/HomeOfferStack";
 import CharterCohortBlock from "@/components/CharterCohortBlock";
-import ArchetypeCardsPreview from "@/components/ArchetypeCardsPreview";
+
 import { DataNerdPolarityCard } from "@/components/DataNerdPolarityCard";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import TrialClose from "@/components/TrialClose";
@@ -36,6 +36,8 @@ import {
 } from "@/content/cause";
 
 export const metadata: Metadata = {
+  description:
+    "Weekly GitHub-momentum signals across venture-backed startups, built for angels, scouts, and emerging fund managers.",
   // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
   alternates: {
     canonical: "/",
@@ -89,6 +91,45 @@ const NEXT_LINKS = [
   { href: "/attestations", label: "Attestations", sub: "Every public claim with source, date, and a fact-check status (ClaimReview).", icon: "✅" },
   { href: "/knowledge", label: "Knowledge graph", sub: "Defined-term hub linking every sector, signal primitive, and competitor entity.", icon: "🕸️" },
   { href: "/alternatives", label: "Alternatives", sub: "Honest side-by-side: Harmonic, Forager, SignalFire Beacon, Affinity, Tracxn — and where each beats us.", icon: "⚖️" },
+] as const;
+
+const PRIORITY_LINK_BLOCKS = [
+  {
+    title: "Commercial evaluation",
+    sub: "Send crawlers and buyers toward the pages that help them decide whether to trust, compare, and buy.",
+    links: [
+      { href: "/answers", label: "Answers", icon: "💬" },
+      { href: "/compare", label: "Compare", icon: "⚖️" },
+      { href: "/alternatives", label: "Alternatives", icon: "🧭" },
+      { href: "/vs", label: "VS", icon: "↔️" },
+      { href: "/use-cases", label: "Use Cases", icon: "🎯" },
+      { href: "/funnels", label: "Funnels", icon: "🚀" },
+    ],
+  },
+  {
+    title: "Proof",
+    sub: "Keep authority flowing from evidence and case studies into the commercial paths.",
+    links: [
+      { href: "/research", label: "Research", icon: "🔬" },
+      { href: "/from-stars-to-seed", label: "From Stars to Seed", icon: "🏁" },
+      { href: "/citations", label: "Citations", icon: "📚" },
+      { href: "/attestations", label: "Attestations", icon: "✅" },
+      { href: "/reproducibility", label: "Reproducibility", icon: "🔁" },
+      { href: "/receipts", label: "Scout Receipts", icon: "🧾" },
+    ],
+  },
+  {
+    title: "Live now",
+    sub: "Point both users and crawlers at the freshest recurring surfaces on the site.",
+    links: [
+      { href: "/weekly/top-100", label: "Weekly Top 100", icon: "🏆" },
+      { href: "/signal-of-the-week", label: "Signal of the Week", icon: "⚡" },
+      { href: "/predicted", label: "Predicted", icon: "🔮" },
+      { href: "/trending", label: "Trending", icon: "🔥" },
+      { href: "/startup-ideas", label: "Startup Ideas", icon: "💡" },
+      { href: "/idea-of-the-day", label: "Idea of the Day", icon: "📅" },
+    ],
+  },
 ] as const;
 
 export default function Home() {
@@ -1316,40 +1357,111 @@ export default function Home() {
         </TrialClose>
       </section>
 
-      {/* IDENTITY DECLARATION — Brunson Expert Secrets identity-belief.
-          This page already names "investor who wants earlier public signals" inside copy; this
-          block surfaces the identity formation as a standalone moment
-          before the pricing ladder. */}
-      <section
-        aria-label="Identity declaration"
-        className="my-8 rounded-xl border border-sky-700/40 bg-gradient-to-br from-sky-950/30 via-slate-900 to-slate-950 p-6 sm:p-8 space-y-3"
-      >
+      {/* STARTING-POINT ROUTING — replaces persona/archetype framing with direct decision help. */}
+      <section className="my-12 space-y-4">
         <p className="text-sky-300 text-xs font-semibold uppercase tracking-wider">
-          Who this is for
+          Where to start
         </p>
         <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug">
-          You&rsquo;re not a VC. You&rsquo;re a{" "}
-          <span className="text-sky-400">investor who wants earlier public signals</span> — and there
-          are three of you.
+          You do not need a persona. You need the right starting point for this
+          week.
         </h2>
-        <p className="text-gray-300 text-base leading-relaxed">
-          You read commit logs for fun. You write €5k–€50k checks on the side,
-          OR you run a Monday memo for partners, OR you write quarterly
-          diligence reports for a family office. Same instinct, three different
-          buying motions. We used to describe one reader; we built for three.
-          Pick the archetype whose week-rhythm sounds like yours — the entry
-          tier and the upgrade path are different on purpose.
+        <p className="text-gray-300 text-base leading-relaxed max-w-3xl">
+          If you just want one calm read every Sunday, start there. If you need
+          names faster because a question is already live, take the faster lane.
+          If you need something your team can reuse, start with the methodology.
+          Same signal. Different urgency.
         </p>
       </section>
 
-      {/* Three reader-archetypes — Solo Angel / Fund GP / Family Office.
-          Audit 2026-05-09: split from the single "investor who wants earlier public signals"
-          composite. Single source of truth: content/archetypes.ts. Internal
-          workbook: brunson/08-dream-customer.md §8. */}
-      <ArchetypeCardsPreview
-        eyebrow="Three readers · three entry tiers"
-        intro="Solo Angel buys a Sunday digest. Fund GP buys a 24-hour lead window for the LP update. Family Office buys a methodology paper they can show compliance. The data is the same, the contract shape is not."
-      />
+      <section
+        aria-label="Three ways to start"
+        className="my-12 grid grid-cols-1 gap-5 md:grid-cols-3"
+      >
+        <article className="flex flex-col gap-4 rounded-2xl border border-sky-500/20 bg-slate-950/40 p-6">
+          <div className="space-y-2">
+            <span className="inline-flex items-center rounded-full border border-sky-400/30 bg-sky-500/10 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-sky-200">
+              Start free
+            </span>
+            <h3 className="text-lg font-bold text-gray-100">
+              If you want one useful read each Sunday
+            </h3>
+          </div>
+          <p className="text-sm leading-relaxed text-gray-300">
+            Get the weekly watch when you want earlier signal without another
+            dashboard. Read it in one sitting, keep the names worth revisiting,
+            and ignore the rest.
+          </p>
+          <div className="mt-auto space-y-1.5 border-t border-slate-800/80 pt-3 text-xs text-gray-400">
+            <p className="font-semibold uppercase tracking-[0.12em] text-gray-500">
+              Best first step
+            </p>
+            <p className="text-gray-200">Free Acceleration Watch</p>
+          </div>
+          <Link
+            href="/free"
+            className="inline-flex items-center justify-center gap-2 rounded-lg bg-sky-500 px-4 py-2.5 text-xs font-semibold text-slate-950 shadow-lg transition-colors hover:bg-sky-400"
+          >
+            Get the Sunday issue <span aria-hidden="true">→</span>
+          </Link>
+        </article>
+
+        <article className="flex flex-col gap-4 rounded-2xl border border-emerald-500/20 bg-slate-950/40 p-6">
+          <div className="space-y-2">
+            <span className="inline-flex items-center rounded-full border border-emerald-400/30 bg-emerald-500/10 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-emerald-200">
+              Move faster
+            </span>
+            <h3 className="text-lg font-bold text-gray-100">
+              If a live question is already getting expensive
+            </h3>
+          </div>
+          <p className="text-sm leading-relaxed text-gray-300">
+            Use the 24-hour lane when you need a sharper read now. This is for
+            the week when five names are no longer enough and you need the next
+            shortlist while the timing still matters.
+          </p>
+          <div className="mt-auto space-y-1.5 border-t border-slate-800/80 pt-3 text-xs text-gray-400">
+            <p className="font-semibold uppercase tracking-[0.12em] text-gray-500">
+              Best first step
+            </p>
+            <p className="text-gray-200">First Look</p>
+          </div>
+          <Link
+            href="/firstlook"
+            className="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-500 px-4 py-2.5 text-xs font-semibold text-slate-950 shadow-lg transition-colors hover:bg-emerald-400"
+          >
+            Get a faster read <span aria-hidden="true">→</span>
+          </Link>
+        </article>
+
+        <article className="flex flex-col gap-4 rounded-2xl border border-violet-500/20 bg-slate-950/40 p-6">
+          <div className="space-y-2">
+            <span className="inline-flex items-center rounded-full border border-violet-400/30 bg-violet-500/10 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-violet-200">
+              Reuse the method
+            </span>
+            <h3 className="text-lg font-bold text-gray-100">
+              If you need a workflow your team can defend
+            </h3>
+          </div>
+          <p className="text-sm leading-relaxed text-gray-300">
+            Start with the paper and buyer&apos;s guide when trust, repeatability,
+            or internal sign-off matters more than speed. You get the logic, the
+            thresholds, and the proof before you commit to a recurring lane.
+          </p>
+          <div className="mt-auto space-y-1.5 border-t border-slate-800/80 pt-3 text-xs text-gray-400">
+            <p className="font-semibold uppercase tracking-[0.12em] text-gray-500">
+              Best first step
+            </p>
+            <p className="text-gray-200">Methodology + buyer&apos;s guide</p>
+          </div>
+          <Link
+            href="/buyers-guide"
+            className="inline-flex items-center justify-center gap-2 rounded-lg bg-violet-500 px-4 py-2.5 text-xs font-semibold text-slate-950 shadow-lg transition-colors hover:bg-violet-400"
+          >
+            See how to verify it <span aria-hidden="true">→</span>
+          </Link>
+        </article>
+      </section>
 
       {/* DISQUALIFIER — "Who this is FOR / NOT FOR".
           Traffic Secrets Ch 1 (dream customer). The polarization is the
@@ -1609,6 +1721,33 @@ export default function Home() {
           </div>
         </div>
       )}
+
+      {/* Priority link graph — commercial, proof, and live-now routes get
+          explicit homepage support so crawl pressure matches sitemap priority. */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        {PRIORITY_LINK_BLOCKS.map((block) => (
+          <section
+            key={block.title}
+            className="rounded-xl border border-slate-800 bg-slate-900/70 p-5"
+            aria-label={block.title}
+          >
+            <h2 className="text-gray-100 font-semibold text-lg mb-2">{block.title}</h2>
+            <p className="text-gray-400 text-xs leading-relaxed mb-4">{block.sub}</p>
+            <div className="grid grid-cols-2 gap-2">
+              {block.links.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="group rounded-lg border border-slate-800 bg-slate-950/70 px-3 py-2 text-sm text-gray-300 hover:border-sky-600/50 hover:bg-slate-800/60 hover:text-sky-300 transition-all"
+                >
+                  <span className="mr-2" aria-hidden="true">{link.icon}</span>
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </section>
+        ))}
+      </div>
 
       {/* Topical hubs — in-body editorial links to high-intent destinations.
           Footer carries discoverability; this carries contextual weight.

@@ -562,18 +562,17 @@ export default function PricingPage() {
           of the same category, sized to a different sourcing cadence.
         </p>
 
-        {/* Quiz nudge — Russell audit 2026-05-05 PM: visitors landing on /pricing
-            cold often pick the wrong tier. The 90-second avatar quiz routes
-            them by self-identification. */}
+        {/* Quiz nudge — visitors landing on /pricing cold often pick the wrong
+            tier. Route them by urgency, not persona labels. */}
         <div className="mb-8 flex items-center gap-3 rounded-lg border border-sky-700/40 bg-sky-950/20 px-4 py-3">
           <span aria-hidden="true" className="text-sky-300 text-lg">⚡</span>
           <p className="text-gray-300 text-sm flex-1">
-            Not sure which tier fits the way you write checks?{" "}
+            Not sure where to start?{" "}
             <Link
               href="/quiz"
               className="text-sky-300 hover:text-sky-200 font-medium underline decoration-dotted"
             >
-              Take the 90-second avatar quiz →
+              Take the 90-second start-here quiz →
             </Link>
           </p>
         </div>
