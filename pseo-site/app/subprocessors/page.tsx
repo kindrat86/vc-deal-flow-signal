@@ -145,6 +145,26 @@ export default function SubprocessorsPage() {
         </p>
       </header>
 
+      <section className="mb-8 rounded-xl border border-emerald-700/30 bg-emerald-950/20 p-5 sm:p-6 space-y-3">
+        <p className="text-emerald-300 text-xs font-semibold uppercase tracking-[0.14em]">
+          Start with the most-requested trust routes
+        </p>
+        <p className="text-gray-300 text-sm leading-relaxed max-w-3xl">
+          Buyers who inspect processors usually want the legal wrapper, the live reliability surface, and the main security summary next.
+        </p>
+        <div className="flex flex-wrap gap-3">
+          <Link href="/dpa" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-emerald-600 text-white text-sm font-semibold hover:bg-emerald-500 transition-colors">
+            Read the DPA →
+          </Link>
+          <Link href="/security" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+            Read security overview →
+          </Link>
+          <Link href="/uptime" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+            Check live uptime →
+          </Link>
+        </div>
+      </section>
+
       <div className="rounded-xl border border-slate-800 bg-slate-900/40 overflow-hidden">
         <table className="w-full text-sm">
           <thead>
