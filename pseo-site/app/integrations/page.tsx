@@ -398,8 +398,28 @@ export default function IntegrationsPage() {
         <p className="text-gray-400 text-base leading-relaxed mb-10 max-w-2xl">
           Plug VC Deal Flow Signal into your existing workflow. Nine ways to
           get engineering acceleration signals where you already work — AI
-          assistants, messaging, email, raw data, and automation.
+          assistants, messaging, email, raw data, and automation. If you already know your question is proof, buyer fit, or agent workflow, start with the sharper routes below.
         </p>
+
+        <section className="mb-10 rounded-2xl border border-sky-700/30 bg-sky-950/20 p-6 sm:p-8">
+          <p className="text-sky-300 text-xs font-semibold uppercase tracking-[0.14em] mb-2">
+            Start with the highest-intent routes
+          </p>
+          <p className="text-gray-300 text-sm leading-relaxed mb-4">
+            Use integrations when you need connection points. But if your real question is AI workflow fit, proof, or buyer-side evaluation, start with the sharper pages first.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/integrations/best-mcp-server-for-vc-research" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-sky-600 text-white text-sm font-semibold hover:bg-sky-500 transition-colors">
+              Best MCP server for VC research →
+            </Link>
+            <Link href="/research" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              Read the research panel →
+            </Link>
+            <Link href="/buyers-guide" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              Read the buyer's guide →
+            </Link>
+          </div>
+        </section>
 
         {categories.map((cat) => {
           const items = integrations.filter((i) => i.category === cat);
