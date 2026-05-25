@@ -144,6 +144,26 @@ export default function MembersPage() {
           </p>
         </header>
 
+        <section className="rounded-2xl border border-amber-700/30 bg-amber-950/20 p-6 sm:p-8 space-y-3">
+          <p className="text-amber-300 text-xs font-semibold uppercase tracking-[0.14em]">
+            Start with the highest-intent routes
+          </p>
+          <p className="text-gray-300 text-sm leading-relaxed max-w-3xl">
+            Use this page if you want the full charter-cohort system. But if your real question is how to join, how public receipts work, or whether the buyer workflow fits you, start with the sharper routes first.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/members/join" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-amber-500 text-slate-950 text-sm font-semibold hover:bg-amber-400 transition-colors">
+              Claim a seat →
+            </Link>
+            <Link href="/members/leaderboard" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              See the live leaderboard →
+            </Link>
+            <Link href="/wins" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              Read the wins ledger →
+            </Link>
+          </div>
+        </section>
+
         {/* SEAT COUNTER */}
         <section
           aria-label="Cohort status"
