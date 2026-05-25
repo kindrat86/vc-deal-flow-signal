@@ -201,6 +201,26 @@ export default function ForBuildersPage() {
         </header>
 
         {/* WHY */}
+        <section className="rounded-xl border border-amber-700/30 bg-amber-950/20 p-6 sm:p-8 space-y-3">
+          <p className="text-amber-300 text-xs font-semibold uppercase tracking-[0.14em]">
+            Start with the highest-intent routes
+          </p>
+          <p className="text-gray-300 text-sm leading-relaxed">
+            Use this page when you want the builder-specific offer. But if your real question is proof, MCP workflow fit, or buyer-side evaluation, start with the sharper pages first.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/integrations/best-mcp-server-for-vc-research" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-amber-500 text-slate-950 text-sm font-semibold hover:bg-amber-400 transition-colors">
+              Best MCP server for VC research →
+            </Link>
+            <Link href="/research" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              Read the research panel →
+            </Link>
+            <Link href="/developers" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              Read the developer docs →
+            </Link>
+          </div>
+        </section>
+
         <section
           id="why"
           className="bg-gradient-to-br from-amber-950/30 via-slate-900 to-slate-950 border border-amber-700/40 rounded-xl p-6 sm:p-8 space-y-4"
