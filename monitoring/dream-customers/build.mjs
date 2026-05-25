@@ -32,9 +32,6 @@ const html = `<!DOCTYPE html>
   header { padding:14px 20px; border-bottom:1px solid #1e293b; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; }
   header h1 { margin:0; font-size:16px; font-weight:600; color:#f1f5f9; }
   header .meta { font-size:11px; color:#64748b; }
-  header .actions { display:flex; gap:8px; align-items:center; }
-  header button, header select { background:#1e293b; color:#cbd5e1; border:1px solid #334155; border-radius:6px; padding:6px 10px; font-size:12px; cursor:pointer; }
-  header button:hover { background:#334155; }
   .board { display:flex; gap:10px; padding:14px; overflow-x:auto; min-height: calc(100vh - 60px); align-items:flex-start; }
   .col { width:280px; flex:0 0 280px; background:rgba(15,23,42,0.5); border:1px solid #1e293b; border-radius:8px; display:flex; flex-direction:column; }
   .col.drag-over { border-color:#0ea5e9; background:#082f49; }
@@ -82,9 +79,6 @@ const html = `<!DOCTYPE html>
   .drawer .actions button.secondary { background:#1e293b; color:#cbd5e1; }
   .toast { position:fixed; bottom:16px; right:16px; background:#1e293b; border:1px solid #334155; padding:8px 12px; border-radius:6px; font-size:12px; z-index:100; opacity:0; transition:opacity .2s; }
   .toast.show { opacity:1; }
-  .filter-bar { display:flex; gap:6px; align-items:center; flex-wrap:wrap; }
-  .filter-bar label { font-size:11px; color:#64748b; }
-  .filter-bar input { width:140px; }
 </style>
 </head>
 <body>
@@ -92,12 +86,6 @@ const html = `<!DOCTYPE html>
   <div>
     <h1>Dream Customers CRM</h1>
     <div class="meta" id="meta">73 contacts · last cron run: <span id="cron-when">never</span></div>
-  </div>
-  <div class="actions filter-bar">
-    <label>Segment <select id="filter-seg"><option value="">all</option><option>A</option><option>B</option><option>D</option><option>F</option></select></label>
-    <label>Search <input id="filter-q" type="text" placeholder="name / handle / firm"></label>
-    <button id="reset-state" title="Clear local stage/notes/counter for every contact">reset local</button>
-    <button id="export-json" title="Download local state as JSON">export</button>
   </div>
 </header>
 
@@ -168,20 +156,10 @@ const html = `<!DOCTYPE html>
     return Date.now() - new Date(iso).getTime() < 12 * 3600 * 1000;
   }
 
-  let filterSeg = "";
-  let filterQ = "";
-
-  function matchesFilter(c) {
-    if (filterSeg && c.segment !== filterSeg) return false;
-    if (filterQ) {
-      const q = filterQ.toLowerCase();
-      if (
-        !c.name.toLowerCase().includes(q) &&
-        !c.handle.toLowerCase().includes(q) &&
-        !(c.firm || "").toLowerCase().includes(q)
-      ) return false;
-    }
-    return true;
+  function sortByLatestActivity(a, b) {
+    const aT = a.last_tweet_at ? new Date(a.last_tweet_at).getTime() : 0;
+    const bT = b.last_tweet_at ? new Date(b.last_tweet_at).getTime() : 0;
+    return bT - aT;
   }
 
   function render() {
@@ -194,10 +172,12 @@ const html = `<!DOCTYPE html>
     board.innerHTML = "";
     const byStage = Object.fromEntries(STAGES.map((s) => [s.key, []]));
     for (const c of DATA.contacts) {
-      if (!matchesFilter(c)) continue;
       const u = get(c.handle);
       const stage = byStage[u.stage] ? u.stage : "sourced";
       byStage[stage].push(c);
+    }
+    for (const s of STAGES) {
+      byStage[s.key].sort(sortByLatestActivity);
     }
     for (const s of STAGES) {
       const col = document.createElement("section");
@@ -348,27 +328,6 @@ const html = `<!DOCTYPE html>
   document.getElementById("close").addEventListener("click", closeDrawer);
   document.getElementById("mask").addEventListener("click", closeDrawer);
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeDrawer(); });
-
-  document.getElementById("filter-seg").addEventListener("change", (e) => {
-    filterSeg = e.target.value; render();
-  });
-  document.getElementById("filter-q").addEventListener("input", (e) => {
-    filterQ = e.target.value; render();
-  });
-  document.getElementById("reset-state").addEventListener("click", () => {
-    if (!confirm("Clear all local stage/notes/counter state?")) return;
-    localStorage.removeItem(LS_KEY);
-    for (const k of Object.keys(local)) delete local[k];
-    render();
-    toast("Local state cleared");
-  });
-  document.getElementById("export-json").addEventListener("click", () => {
-    const blob = new Blob([JSON.stringify(local, null, 2)], { type: "application/json" });
-    const a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
-    a.download = "dream-customers-state-" + new Date().toISOString().slice(0, 10) + ".json";
-    a.click();
-  });
 
   function escapeHtml(s) {
     return String(s).replace(/[&<>"']/g, (c) => (
