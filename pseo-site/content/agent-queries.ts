@@ -5355,9 +5355,9 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
     query: "When should I use Dashboard vs Insider?",
     h1: "When should you use Dashboard vs Insider?",
     description:
-      "Use Dashboard when you want a recurring weekly signal surface. Use Insider when you want a higher-touch layer around judgment, context, and steadier support.",
+      "Use Dashboard when you want a recurring weekly signal surface. Use Insider when you want a higher-touch layer around judgment, context, and steadier support after the weekly surface already makes sense.",
     tldr:
-      "Use Dashboard when you want a dependable weekly operating surface. Use Insider when you want a smaller, higher-touch layer with more context, steadiness, and direct support around your decisions.",
+      "Use Dashboard when you want a dependable weekly operating surface. Use Insider when you want a smaller, higher-touch layer with more context, steadiness, and direct support around your decisions after recurring visibility is already useful.",
     body: `Dashboard and Insider solve different versions of the same problem. One gives you a recurring surface to review what changed. The other gives you a tighter layer of context and support when you do not want to carry the decision alone.
 
 **Quick answer.** Dashboard is the recurring signal surface. Insider is the higher-touch context layer.
@@ -5366,7 +5366,9 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
 
 **Use Insider when...** you already know the signal is useful but want more support, more context, and a smaller layer around the judgment itself. Insider makes more sense when the bottleneck is not access to names, but steadiness around what to do with them.
 
-**A simple rule.** If you mainly need a better weekly operating surface, choose Dashboard. If you need a room, a tighter layer, and more confidence around live decisions, choose Insider.`,
+**A simple rule.** If you mainly need a better weekly operating surface, choose Dashboard. If you need a room, a tighter layer, and more confidence around live decisions, choose Insider.
+
+**What comes after that.** If Dashboard becomes part of your weekly habit, the next question is whether the recurring surface is enough on its own. If not, Insider is the lane for support and context, not for replacing the surface you already trust.`,
     facts: [
       {
         claim:
@@ -5409,6 +5411,7 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
       "what-is-the-best-vc-research-stack-for-2026",
     ],
     proofLinks: [
+      { label: "Read the research panel", url: "/research" },
       { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
       { label: "Read the buyer's guide", url: "/buyers-guide" },
       { label: "Read the methodology", url: "/methodology" },
@@ -5416,7 +5419,7 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
     nextReadLinks: [
       { label: "See the weekly operating surface", url: "/dashboard" },
       { label: "See the higher-touch layer", url: "/insider" },
-      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
       { label: "Get my First Look", url: "/firstlook" },
     ],
     keywords: [
@@ -5592,9 +5595,9 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
     query: "What do I actually get from Dashboard each week?",
     h1: "What do you actually get from Dashboard each week?",
     description:
-      "Dashboard gives you a recurring weekly operating surface: more names, cleaner review, fewer tabs, and a calmer way to see what changed across the field.",
+      "Dashboard gives you a recurring weekly operating surface: more names, cleaner review, fewer tabs, and a calmer way to see what changed across the field each week.",
     tldr:
-      "What you get from Dashboard each week is not just more data. You get a steadier weekly operating surface that helps you review momentum across names and sectors without rebuilding the workflow every Monday.",
+      "What you get from Dashboard each week is not just more data. You get a steadier weekly operating surface that helps you review momentum across names and sectors without rebuilding the workflow every Monday, and a cleaner bridge from free exposure into recurring habit.",
     body: `Dashboard is not just a bigger list. It is a weekly operating surface.
 
 **Quick answer.** Each week you get a calmer way to see what changed across more names and sectors, with less tab chaos and less guesswork.
@@ -5603,7 +5606,9 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
 
 **What Dashboard is really for.** It is for the buyer who no longer needs just one sharp answer, but also is not looking for a higher-touch room. It sits in the middle: recurring visibility, cleaner timing, and a better Monday workflow.
 
-**What it is not.** It is not a replacement for every diligence tool and it is not the same thing as Insider. Dashboard is the recurring review layer.`,
+**What it is not.** It is not a replacement for every diligence tool and it is not the same thing as Insider. Dashboard is the recurring review layer.
+
+**What comes next.** Once Dashboard becomes useful, the next question is whether recurring visibility is enough or whether you want the higher-touch Insider layer around the judgment itself.`,
     facts: [
       {
         claim:
@@ -5646,15 +5651,16 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
       "is-first-look-worth-it-for-angels",
     ],
     proofLinks: [
+      { label: "Read the research panel", url: "/research" },
       { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
       { label: "Read the buyer's guide", url: "/buyers-guide" },
       { label: "Read the methodology", url: "/methodology" },
     ],
     nextReadLinks: [
       { label: "See the weekly operating surface", url: "/dashboard" },
-      { label: "See the higher-touch layer", url: "/insider" },
-      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
       { label: "When should you use Dashboard vs Insider?", url: "/answers/when-should-i-use-dashboard-vs-insider" },
+      { label: "See the higher-touch layer", url: "/insider" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
     ],
     keywords: [
       "what do I get from Dashboard each week",
