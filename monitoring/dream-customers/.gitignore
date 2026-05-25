@@ -5,3 +5,12 @@ cron-skipped-*.log
 launchd.out.log
 launchd.err.log
 data.json.tmp
+# Discovery cron — Playwright path
+cron.discovery.log
+cron.discovery.run.log
+cron.discovery.run.err
+launchd.discovery.out.log
+launchd.discovery.err.log
+.x-state.json
+node_modules/
+package-lock.json
