@@ -1228,6 +1228,142 @@ export const comparisons: Comparison[] = [
       { label: "Get my First Look", url: "/firstlook" },
     ],
   },
+  {
+    slug: "dashboard-vs-insider-for-weekly-workflow",
+    title: "Dashboard vs Insider for Weekly Workflow",
+    description:
+      "Use Dashboard when you want a recurring weekly signal surface. Use Insider when you want a higher-touch layer around context, steadiness, and support.",
+    h1: "Dashboard vs Insider for weekly workflow",
+    intro:
+      "Dashboard and Insider are not substitutes. They sit at different depths of the same workflow. One gives you the weekly surface. The other gives you the smaller, higher-touch layer around what you do with it.",
+    sections: [
+      {
+        heading: "Dashboard — the weekly surface",
+        body: "Dashboard is for recurring review. It helps you see what changed across names and sectors without rebuilding your process every week.",
+      },
+      {
+        heading: "Insider — the tighter layer",
+        body: "Insider is for the reader who already trusts the signal and now wants more context, steadiness, and support around the judgment itself.",
+      },
+      {
+        heading: "How to choose honestly",
+        body: "If the main problem is workflow sprawl, choose Dashboard. If the main problem is carrying conviction alone, choose Insider.",
+      },
+      {
+        heading: "Best progression",
+        body: "For most buyers the clean path is free Sunday issue → First Look if needed → Dashboard for recurring use → Insider only when the higher-touch layer becomes the real bottleneck.",
+      },
+    ],
+    verdict:
+      "Dashboard is the stronger choice when you want a dependable weekly operating surface. Insider is the stronger choice when you want more context, more steadiness, and a higher-touch layer around recurring decisions.",
+    relatedSectors: ["ai-ml", "enterprise-saas", "fintech"],
+    faqs: [
+      { question: "Is Insider just a more expensive Dashboard?", answer: "No. Dashboard is the weekly signal surface. Insider is the tighter context and support layer around that surface." },
+      { question: "Should most readers start with Dashboard?", answer: "Yes. For most buyers Dashboard is the cleaner recurring step before Insider becomes necessary." },
+      { question: "When should I skip straight to Insider?", answer: "Only when the signal already makes sense and your real bottleneck is steadiness, support, or higher-touch context rather than access to the weekly surface." },
+    ],
+    proofLinks: [
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
+      { label: "Read the methodology", url: "/methodology" },
+    ],
+    nextReadLinks: [
+      { label: "See the weekly operating surface", url: "/dashboard" },
+      { label: "See the higher-touch layer", url: "/insider" },
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+      { label: "Get my First Look", url: "/firstlook" },
+    ],
+  },
+  {
+    slug: "gitdealflow-vs-crunchbase-for-solo-angels",
+    title: "GitDealFlow vs Crunchbase for Solo Angels",
+    description:
+      "GitDealFlow is the stronger first layer for solo angels who need earlier timing. Crunchbase is the stronger second layer for verification after a name already deserves attention.",
+    h1: "GitDealFlow vs Crunchbase for solo angels",
+    intro:
+      "Solo angels usually do not need a giant workflow stack. They need a practical first layer that tells them what deserves attention and a simple second layer that helps them verify what they are seeing.",
+    sections: [
+      {
+        heading: "GitDealFlow — first layer for timing",
+        body: "GitDealFlow helps solo angels notice public engineering movement before the round feels obvious. It is strongest when you need a calmer timing surface, not a giant database.",
+      },
+      {
+        heading: "Crunchbase — second layer for verification",
+        body: "Crunchbase helps with company facts, funding history, and investor lists once a name is already on your radar. It is useful, but it is not the strongest first place to look if timing is the problem.",
+      },
+      {
+        heading: "What solo angels usually overbuy",
+        body: "Many solo angels buy a broad database before they have a repeatable way to notice what actually matters. That creates cleaner lookup but not earlier attention.",
+      },
+      {
+        heading: "Clean stack for a solo angel",
+        body: "Use GitDealFlow first for earlier signal, then Crunchbase for lighter verification. That stack is simpler, cheaper, and better aligned with the actual bottlenecks of small-check investing.",
+      },
+    ],
+    verdict:
+      "For solo angels, GitDealFlow is the stronger first choice when the real bottleneck is earlier timing. Crunchbase remains useful, but more as a second layer for verification than as the first source of attention.",
+    relatedSectors: ["ai-ml", "developer-tools", "fintech"],
+    faqs: [
+      { question: "Can Crunchbase be enough on its own for solo angels?", answer: "It can be useful, but if timing matters it is usually better as a second layer than as the first place you start." },
+      { question: "What is GitDealFlow better at for solo angels?", answer: "Earlier public timing, a lighter operating rhythm, and clearer attention before the story gets crowded." },
+      { question: "Should a solo angel use both?", answer: "Yes. For many solo angels the strongest stack is GitDealFlow first, Crunchbase second." },
+    ],
+    proofLinks: [
+      { label: "A better Crunchbase alternative when timing matters", url: "/compare/crunchbase-alternative-for-angel-investors" },
+      { label: "GitHub signals vs Crunchbase alerts", url: "/compare/github-signals-vs-crunchbase-alerts" },
+      { label: "Read the methodology", url: "/methodology" },
+    ],
+    nextReadLinks: [
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+      { label: "Get my First Look", url: "/firstlook" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
+    ],
+  },
+  {
+    slug: "gitdealflow-vs-dealroom-for-european-angels",
+    title: "GitDealFlow vs Dealroom for European Angels",
+    description:
+      "Dealroom is stronger for broad European company coverage and market mapping. GitDealFlow is stronger when a European angel wants earlier timing on technical startups.",
+    h1: "GitDealFlow vs Dealroom for European angels",
+    intro:
+      "European angels often end up choosing between broad regional coverage and sharper timing. Dealroom and GitDealFlow sit on opposite sides of that tradeoff.",
+    sections: [
+      {
+        heading: "Dealroom — broad regional coverage",
+        body: "Dealroom is strong for European market mapping, regional filters, and broad startup database coverage. It is useful when you want to understand the landscape across geographies and stages.",
+      },
+      {
+        heading: "GitDealFlow — sharper technical timing",
+        body: "GitDealFlow is stronger when the real need is earlier public timing inside technical startup categories. It is narrower than Dealroom, but sharper on the timing job itself.",
+      },
+      {
+        heading: "How a European angel should think about the choice",
+        body: "If you mainly want a map of Europe, Dealroom is useful. If you want a calmer way to notice earlier technical movement before the round gets crowded, GitDealFlow is the stronger first layer.",
+      },
+      {
+        heading: "Best practical stack",
+        body: "For many European angels the clean stack is GitDealFlow for earlier technical timing and Dealroom for broader regional verification and market context.",
+      },
+    ],
+    verdict:
+      "For European angels, Dealroom is better for broad regional coverage. GitDealFlow is better for earlier timing on technical startups. The strongest workflow often uses both in different roles.",
+    relatedSectors: ["fintech", "enterprise-saas", "ai-ml"],
+    faqs: [
+      { question: "Should a European angel choose Dealroom or GitDealFlow first?", answer: "Choose GitDealFlow first if timing on technical startups is the main bottleneck. Choose Dealroom first if broad regional coverage and market mapping matter more." },
+      { question: "What is Dealroom better at?", answer: "Broad European company coverage, filtering, and market mapping." },
+      { question: "What is GitDealFlow better at?", answer: "Earlier public timing in technical startup categories." },
+    ],
+    proofLinks: [
+      { label: "Best deal flow tools for angel investors", url: "/compare/best-deal-flow-tools-angel-investors" },
+      { label: "Best alternative data tools for angel investors", url: "/compare/best-alternative-data-tools-for-angel-investors" },
+      { label: "Read the methodology", url: "/methodology" },
+    ],
+    nextReadLinks: [
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+      { label: "Get my First Look", url: "/firstlook" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
+    ],
+  },
 ];
 
 // ---------------------------------------------------------------------------

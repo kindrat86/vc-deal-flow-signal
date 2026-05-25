@@ -5495,6 +5495,83 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
       "Crunchbase alternative timing",
     ],
   },
+  {
+    slug: "is-first-look-worth-it-for-angels",
+    query: "Is First Look worth it for angels?",
+    h1: "Is First Look worth it for angels?",
+    description:
+      "First Look is worth it when one live sector or thesis question already needs a sharper answer. It is less useful if you are still too early and only need broad weekly exposure.",
+    tldr:
+      "First Look is worth it for angels when the question is already hot. If you still just need recurring exposure and patience, start with the free Sunday issue instead.",
+    body: `First Look is not a generic trial. It is a paid shortcut for a specific moment: when a sector or thesis question already has enough heat that a sharper answer is worth more than another week of passive browsing.
+
+**Quick answer.** First Look is worth it when one live question already needs a better answer. If you are still too early, the free Sunday issue is the better starting point.
+
+**When it is worth it.** It is worth it when you already have a thesis, a sector, or a short list in mind and want a more focused pass without committing to a broader recurring workflow.
+
+**When it is not worth it yet.** It is usually too early if you are still just orienting yourself, browsing broadly, or figuring out whether this category even fits your workflow. In that case, free weekly exposure is the smarter first move.
+
+**Simple rule.** If the question is specific and already expensive, use First Look. If the question is still fuzzy, start free and let the signal build context first.`,
+    facts: [
+      {
+        claim:
+          "First Look is positioned as the low-friction paid test for a live question rather than a generic trial product.",
+        sourceUrl: "https://gitdealflow.com/firstlook.html",
+        sourceLabel: "First Look page",
+      },
+      {
+        claim:
+          "The routing system across research, compare, answers, and integrations now treats First Look as the right lane when the question is already expensive.",
+        sourceUrl: "https://signals.gitdealflow.com/research",
+        sourceLabel: "Research routing",
+      },
+      {
+        claim:
+          "Dashboard is framed as the recurring weekly operating surface, which makes First Look the narrower one-off depth layer rather than the recurring default.",
+        sourceUrl: "https://gitdealflow.com/dashboard.html",
+        sourceLabel: "Dashboard page",
+      },
+    ],
+    faqs: [
+      {
+        q: "Should I buy First Look before Dashboard?",
+        a: "Yes if the question is narrow and urgent. No if what you really need is a recurring weekly operating surface.",
+      },
+      {
+        q: "What if I only want to see whether the signal feels real?",
+        a: "Start with the free Sunday issue if you only want low-friction exposure before paying for depth.",
+      },
+      {
+        q: "Who gets the most value from First Look?",
+        a: "Angels or small-fund operators with one live sector or thesis question that already needs a sharper pass.",
+      },
+    ],
+    ctaUrl: "/firstlook",
+    ctaLabel: "Get my First Look",
+    related: [
+      "when-should-i-use-first-look-vs-dashboard",
+      "when-should-i-use-dashboard-vs-insider",
+      "deal-flow-timing-vs-verification",
+    ],
+    proofLinks: [
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
+      { label: "Read the methodology", url: "/methodology" },
+    ],
+    nextReadLinks: [
+      { label: "Get my First Look", url: "/firstlook" },
+      { label: "See the weekly operating surface", url: "/dashboard" },
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+      { label: "When should you use First Look vs Dashboard?", url: "/answers/when-should-i-use-first-look-vs-dashboard" },
+    ],
+    keywords: [
+      "is First Look worth it for angels",
+      "GitDealFlow First Look worth it",
+      "when to use First Look",
+      "startup sector pass for angels",
+      "one-off startup signal analysis",
+    ],
+  },
 ];
 
 export function getAgentQueryBySlug(slug: string): AgentQuery | undefined {
