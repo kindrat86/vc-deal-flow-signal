@@ -91,6 +91,13 @@ Discovery rules (full text in `cron-prompt-discovery.md`):
 cd monitoring/dream-customers
 
 cp com.gitdealflow.dream-customers-discovery.plist ~/Library/LaunchAgents/
+
+# Substitute your Anthropic API key (read -s keeps it out of shell history):
+read -s -p "Anthropic API key: " KEY && echo
+sed -i '' "s|__PASTE_YOUR_ANTHROPIC_API_KEY_HERE__|$KEY|g" \
+  ~/Library/LaunchAgents/com.gitdealflow.dream-customers-discovery.plist
+unset KEY
+
 launchctl load ~/Library/LaunchAgents/com.gitdealflow.dream-customers-discovery.plist
 launchctl list | grep dream-customers-discovery
 ```
@@ -99,6 +106,13 @@ Fires every day at **09:15 local** — deliberately 45 minutes after the
 signal cron at 08:30 so the two Claude sessions never race for the single
 Chrome browser. Edit `StartCalendarInterval` in the plist for a different
 slot.
+
+**Why the ANTHROPIC_API_KEY is required:** `claude -p` running headlessly
+under launchd can't refresh the OAuth token in `~/.claude/.credentials.json`
+and 401s without an API key in env. Generate one at
+[console.anthropic.com/settings/keys](https://console.anthropic.com/settings/keys).
+Cost is ~$0.05–$0.15 per discovery run (Sonnet-level usage for ~30s of
+Chrome MCP automation).
 
 ### Trigger a discovery run manually
 
