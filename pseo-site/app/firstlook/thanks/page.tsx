@@ -68,6 +68,26 @@ export default async function FirstLookThanksPage({ searchParams }: Props) {
         </p>
       </header>
 
+      <section className="rounded-xl border border-emerald-500/30 bg-emerald-500/5 p-5 sm:p-6 space-y-3">
+        <p className="text-emerald-300 text-xs font-semibold uppercase tracking-wider">
+          What to do while you wait
+        </p>
+        <p className="text-gray-300 text-sm leading-relaxed">
+          Your next best move is to keep the momentum alive, not to leave this as a receipt page. If you want proof, methodology, or a cleaner buyer-side framework before the report lands, use one of these now.
+        </p>
+        <div className="flex flex-wrap gap-3 text-sm">
+          <Link href="/research" className="text-emerald-200 hover:text-emerald-100 underline underline-offset-2">
+            Read the research panel
+          </Link>
+          <Link href="/buyers-guide" className="text-emerald-200 hover:text-emerald-100 underline underline-offset-2">
+            Read the buyer's guide
+          </Link>
+          <Link href="/compare/crunchbase-alternative-for-angel-investors" className="text-emerald-200 hover:text-emerald-100 underline underline-offset-2">
+            Compare timing vs verification
+          </Link>
+        </div>
+      </section>
+
       {/* IDENTITY FRAME — Brunson Expert Secrets Ch 4 ("New Opportunity")
           + DotCom Ch 13 ("Best Bait" identity-shaping). The bait isn't
           just the artefact; it's the role the buyer steps into. After
