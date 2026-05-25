@@ -5755,9 +5755,9 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
     query: "Who should use Insider instead of Dashboard?",
     h1: "Who should use Insider instead of Dashboard?",
     description:
-      "Use Insider instead of Dashboard when you already trust the signal and the real bottleneck is confidence, context, and support — not just access to the weekly surface.",
+      "Use Insider instead of Dashboard when you already trust the signal and the real bottleneck is confidence, context, and support — not just access to the weekly surface or recurring visibility.",
     tldr:
-      "You should use Insider instead of Dashboard when the problem is no longer seeing what changed, but deciding what to do with it more confidently and less alone.",
+      "You should use Insider instead of Dashboard when the problem is no longer seeing what changed, but deciding what to do with it more confidently and less alone after the weekly surface already works.",
     body: `Most buyers should not start with Insider. But some should choose it instead of Dashboard once the problem changes.
 
 **Quick answer.** Use Insider instead of Dashboard when you already trust the signal and the real bottleneck is confidence, context, and support rather than access to the weekly surface.
@@ -5766,7 +5766,9 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
 
 **Choose Dashboard if...** your main need is still a better weekly surface, more names, fewer tabs, and a calmer recurring workflow.
 
-**Simple rule.** Dashboard is for recurring review. Insider is for recurring conviction support.`,
+**Simple rule.** Dashboard is for recurring review. Insider is for recurring conviction support.
+
+**What comes after that.** Once you know which side you are on, the next move is not more explanation. It is choosing whether you need the recurring surface, the higher-touch layer, or the buyer page that helps you decide which paid step fits your workflow best.`,
     facts: [
       {
         claim:
@@ -5809,15 +5811,17 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
       "what-do-i-actually-get-from-dashboard-each-week",
     ],
     proofLinks: [
+      { label: "Read the research panel", url: "/research" },
       { label: "Read the buyer's guide", url: "/buyers-guide" },
       { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
       { label: "Read the methodology", url: "/methodology" },
     ],
     nextReadLinks: [
       { label: "See the higher-touch layer", url: "/insider" },
+      { label: "When should you use Dashboard vs Insider?", url: "/answers/when-should-i-use-dashboard-vs-insider" },
       { label: "See the weekly operating surface", url: "/dashboard" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
       { label: "Get my First Look", url: "/firstlook" },
-      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
     ],
     keywords: [
       "who should use Insider instead of Dashboard",
