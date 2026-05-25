@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   title:
     "From Stars to Seed — case studies of GitHub repos that became funded companies",
   description:
-    "Real case studies of GitHub repositories whose engineering acceleration signal preceded a public fundraise — from Vercel and LangChain to Modal, Groq, and Cursor. The signal precedes the round.",
+    "Case studies where GitHub engineering acceleration showed up before the public round — from Vercel and LangChain to Cursor, Groq, and Modal.",
   alternates: { canonical: "/from-stars-to-seed" },
   openGraph: {
     title:
@@ -136,7 +136,8 @@ export default function FromStarsToSeedIndexPage() {
             visible <em>weeks or months before</em> the company behind it
             announced a priced round. Vercel, LangChain, Hugging Face,
             Cursor, Groq, Modal, Replicate, ComfyUI, and {totalCases - 8} more.
-            The signal precedes the round.
+            The signal precedes the round. If your question is whether GitHub
+            activity can be real proof instead of a story, this is the proof page.
           </p>
           <p className="text-gray-400 text-sm leading-relaxed border-l-2 border-slate-700 pl-4">
             Sources: each case cites at least one canonical GitHub repository
@@ -206,12 +207,42 @@ export default function FromStarsToSeedIndexPage() {
             in our dataset — the next case study is being authored right
             now in someone&rsquo;s commit log.
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 pt-2">
+          <p className="text-gray-300 text-base leading-relaxed">
+            The right next step after proof is not another abstract claim.
+            It is deciding whether this kind of timing signal belongs in your
+            sourcing stack, how to compare it with verification tools, and what
+            the lightest real workflow should be.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3 pt-2 flex-wrap">
             <Link
               href="/firstlook"
               className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-sm transition-colors"
             >
               Get the weekly signal report →
+            </Link>
+            <Link
+              href="/compare"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg border border-slate-700 bg-slate-800 hover:bg-slate-700 text-gray-100 font-semibold text-sm transition-colors"
+            >
+              Compare sourcing tools →
+            </Link>
+            <Link
+              href="/compare/crunchbase-alternative-for-angel-investors"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg border border-slate-700 bg-slate-800 hover:bg-slate-700 text-gray-100 font-semibold text-sm transition-colors"
+            >
+              Compare timing vs verification →
+            </Link>
+            <Link
+              href="/buyers-guide"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg border border-slate-700 bg-slate-800 hover:bg-slate-700 text-gray-100 font-semibold text-sm transition-colors"
+            >
+              Read the buyers guide →
+            </Link>
+            <Link
+              href="/receipts"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg border border-slate-700 bg-slate-800 hover:bg-slate-700 text-gray-100 font-semibold text-sm transition-colors"
+            >
+              Check your Scout Score →
             </Link>
             <Link
               href="/methodology"
