@@ -197,6 +197,26 @@ export default function EarnedPlaysPage() {
           </p>
         </header>
 
+        <section className="rounded-xl border border-emerald-700/30 bg-emerald-950/20 p-6 sm:p-8 space-y-3">
+          <p className="text-emerald-300 text-xs font-semibold uppercase tracking-[0.14em]">
+            Start with the highest-intent routes
+          </p>
+          <p className="text-gray-300 text-sm leading-relaxed">
+            Use this page if you want the full earned-distribution playbook. But if your real question is affiliate promotion, outreach targets, or a concrete partnership lane, start with the sharper routes first.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/affiliates" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-emerald-600 text-white text-sm font-semibold hover:bg-emerald-500 transition-colors">
+              Join the affiliate program →
+            </Link>
+            <Link href="/target-list" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              Open the target list →
+            </Link>
+            <Link href="/partners" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              See partner tracks →
+            </Link>
+          </div>
+        </section>
+
         <section className="space-y-5">
           {PLAYS.map((p, i) => (
             <article
