@@ -92,8 +92,30 @@ export default function WeeklyArchivePage() {
           across all sectors. These reports capture a snapshot of which
           companies are shipping the fastest — a signal that has historically
           preceded fundraise announcements by three to six weeks. Subscribe to
-          the weekly report to get each edition in your inbox.
+          the weekly report to get each edition in your inbox. If you want the
+          freshest shortlist or the proof behind it, use the routes below before
+          browsing older editions.
         </p>
+
+        <section className="mb-10 rounded-2xl border border-sky-700/30 bg-sky-950/20 p-6 sm:p-8">
+          <p className="text-sky-300 text-xs font-semibold uppercase tracking-[0.14em] mb-2">
+            Start with the highest-intent routes
+          </p>
+          <p className="text-gray-300 text-sm leading-relaxed mb-4">
+            If your real question is what is moving now, whether the signal is real, or how to use the shortlist, these are the best starting pages.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/weekly/top-100" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-sky-600 text-white text-sm font-semibold hover:bg-sky-500 transition-colors">
+              Open the weekly Top 100 →
+            </Link>
+            <Link href="/research" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              Read the research panel →
+            </Link>
+            <Link href="/answers/how-to-turn-a-signal-into-a-watchlist" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              Turn a signal into a watchlist →
+            </Link>
+          </div>
+        </section>
 
         {weeklyPosts.length === 0 ? (
           <p className="text-gray-400 text-sm">
