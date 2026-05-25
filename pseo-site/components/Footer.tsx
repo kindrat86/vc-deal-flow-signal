@@ -44,19 +44,30 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8 mb-8">
+        <div className="grid grid-cols-2 sm:grid-cols-5 gap-6 sm:gap-8 mb-8">
+          <div>
+            <p className="text-xs font-semibold text-gray-300 uppercase tracking-wider mb-3">Start Here</p>
+            <nav aria-label="Footer — Start Here" className="flex flex-col gap-2 text-sm text-gray-400">
+              <Link href="/compare/crunchbase-alternative-for-angel-investors" className="hover:text-gray-200 transition-colors">Crunchbase alternative for angels</Link>
+              <Link href="/answers/deal-flow-timing-vs-verification" className="hover:text-gray-200 transition-colors">Timing vs verification</Link>
+              <Link href="/answers/how-angel-investors-use-github-signals" className="hover:text-gray-200 transition-colors">How angels use GitHub signals</Link>
+              <Link href="/research" className="hover:text-gray-200 transition-colors">Research panel</Link>
+              <Link href="/from-stars-to-seed" className="hover:text-gray-200 transition-colors">Proof before the round</Link>
+              <Link href="/buyers-guide" className="hover:text-gray-200 transition-colors">How to evaluate the tool</Link>
+            </nav>
+          </div>
           <div>
             <p className="text-xs font-semibold text-gray-300 uppercase tracking-wider mb-3">Product</p>
             <nav aria-label="Footer — Product" className="flex flex-col gap-2 text-sm text-gray-400">
               <Link href="/funnels" className="hover:text-gray-200 transition-colors">Funnel Hub</Link>
               <Link href="/pricing" className="hover:text-gray-200 transition-colors">Pricing</Link>
               <Link href="/buyers-guide" className="hover:text-gray-200 transition-colors">Buyers Guide</Link>
-              <Link href="/enterprise" className="hover:text-gray-200 transition-colors">Enterprise</Link>
+              <Link href="/answers" className="hover:text-gray-200 transition-colors">Answers</Link>
+              <Link href="/compare" className="hover:text-gray-200 transition-colors">Compare</Link>
               <Link href="/alternatives" className="hover:text-gray-200 transition-colors">Alternatives</Link>
+              <Link href="/vs" className="hover:text-gray-200 transition-colors">VS</Link>
               <Link href="/use-cases" className="hover:text-gray-200 transition-colors">Use Cases</Link>
-              <Link href="/integrations" className="hover:text-gray-200 transition-colors">Integrations</Link>
-              <Link href="/install" className="hover:text-gray-200 transition-colors">Bookmarklet</Link>
-              <Link href="/changelog" className="hover:text-gray-200 transition-colors">Changelog</Link>
+              <Link href="/enterprise" className="hover:text-gray-200 transition-colors">Enterprise</Link>
             </nav>
           </div>
           <div>
@@ -64,6 +75,9 @@ export default function Footer() {
             <nav aria-label="Footer — Data" className="flex flex-col gap-2 text-sm text-gray-400">
               <Link href="/methodology" className="hover:text-gray-200 transition-colors">Methodology</Link>
               <Link href="/reproducibility" className="hover:text-gray-200 transition-colors">Reproducibility</Link>
+              <Link href="/research" className="hover:text-gray-200 transition-colors">Research</Link>
+              <Link href="/from-stars-to-seed" className="hover:text-gray-200 transition-colors">Proof Stories</Link>
+              <Link href="/weekly/top-100" className="hover:text-gray-200 transition-colors">Weekly Top 100</Link>
               <Link href="/data-sources" className="hover:text-gray-200 transition-colors">Data Sources</Link>
               <Link href="/signals" className="hover:text-gray-200 transition-colors">Signal Vocabulary</Link>
               <Link href="/knowledge" className="hover:text-gray-200 transition-colors">Knowledge Graph</Link>
