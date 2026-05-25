@@ -48,20 +48,35 @@ Build a queue of handles to check this run:
 
 1. `mcp__Claude_in_Chrome__navigate` to `https://x.com/<handle>`.
 2. Wait briefly for the page to render. Don't sleep more than ~3s.
-3. `mcp__Claude_in_Chrome__get_page_text` (markdown form). Look for the
-   first tweet (typically rendered as an article with the user's display
-   name + handle, followed by tweet text + a timestamp like "2h", "1d",
-   or an absolute date).
+3. Read the timeline.
+   - `mcp__Claude_in_Chrome__get_page_text` is the fast path but
+     unreliable on some profiles (returns "No text content found" when the
+     first `<article>` has odd structure).
+   - Fall back to `mcp__Claude_in_Chrome__read_page` with
+     `filter: "interactive"`, depth 3, max_chars ~5000. Each tweet appears
+     as `article [ref_N]` with a `link "<date>"` child whose `href` is
+     `/<handle>/status/<tweet_id>`.
+   - **Pinned-tweet trap** (smoke test 2026-05-25 hit this on
+     @dunkhippo33: pinned tweet was from Jan 2018). The first article is
+     often a long-pinned post. Walk the article list and pick the one
+     with the most recent `<date>` link — that's the one with reply-now
+     value.
 4. Extract:
    - **`last_tweet_text`** — the tweet body, trimmed to ≤220 chars.
-   - **`last_tweet_at`** — absolute ISO8601 timestamp. Convert relative
-     forms ("2h", "1d", "Jun 3") to `now() − relative` or to a parsed date
-     in UTC.
+     `read_page` doesn't return body text; fall back to `get_page_text`
+     on the specific article via permalink if the text is required.
+     Acceptable to leave empty and only set the date if extraction is
+     hard.
+   - **`last_tweet_at`** — absolute ISO8601 UTC. The `<date>` link text
+     is either relative ("2h", "1d") or an absolute month/day ("May 22");
+     convert to a full ISO using `now()` as the anchor. For dates
+     without a year, use the current year unless that produces a future
+     date — then subtract one year.
 5. Set `last_checked_at = now()` (ISO8601).
 6. If extraction fails (login wall, profile gone, suspended, rate-limited,
-   anything weird), leave `last_tweet_*` fields untouched but still update
-   `last_checked_at` so the handle moves to the back of the queue. Note
-   the issue in the log.
+   "No text content found" even after fallback, anything weird), leave
+   `last_tweet_*` fields untouched but still update `last_checked_at` so
+   the handle moves to the back of the queue. Note the issue in the log.
 
 Pace yourself: do not navigate faster than ~one profile per 4 seconds.
 X aggressively rate-limits anything that looks scripted.
