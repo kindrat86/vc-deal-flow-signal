@@ -1864,6 +1864,141 @@ export const comparisons: Comparison[] = [
       { label: "How to use a watchlist without overtrading", url: "/answers/how-to-use-a-watchlist-without-overtrading" },
     ],
   },
+  {
+    slug: "compare/first-look-vs-a-partner-brainstorm-session",
+    title: "First Look vs a Partner Brainstorm Session",
+    description:
+      "A partner brainstorm session can create ideas fast. First Look is stronger when one live thesis already needs a sharper answer that survives after the room goes quiet.",
+    h1: "First Look vs a partner brainstorm session",
+    intro:
+      "A partner brainstorm can be useful, especially when the team needs to surface angles quickly. But it solves a different problem than a focused signal-driven pass on one live thesis.",
+    sections: [
+      {
+        heading: "Partner brainstorm — fast perspective",
+        body: "A brainstorm is good for surfacing angles, prior examples, and quick pattern recognition across a room. The upside is speed and collective context. The downside is that it depends heavily on memory, room energy, and who happens to be loudest that day.",
+      },
+      {
+        heading: "First Look — focused externalized read",
+        body: "First Look is stronger when the real need is a sharper pass on one live sector or thesis question. It turns the question into a deliverable you can revisit, share, and compare against later without relying on meeting mood.",
+      },
+      {
+        heading: "Where the brainstorm breaks",
+        body: "A brainstorm gets weaker when the team leaves with more possibilities than clarity. If the conversation creates ideas but not a cleaner next step, the room did not solve the underlying problem.",
+      },
+      {
+        heading: "Simple rule",
+        body: "Use a brainstorm when you need fast human perspective. Use First Look when you need a sharper answer that survives after the room goes quiet.",
+      },
+    ],
+    verdict:
+      "A partner brainstorm is useful for fast perspective and collective memory. First Look is stronger when one live thesis needs a sharper, reusable answer that does not depend on room energy.",
+    relatedSectors: ["ai-ml", "enterprise-saas", "fintech"],
+    faqs: [
+      { question: "Is First Look better than talking to my partners?", answer: "Not inherently. Partners help with perspective; First Look helps with a sharper externalized pass on a live question." },
+      { question: "When is a brainstorm enough?", answer: "When the room already has enough context and the discussion itself creates a clear next step." },
+      { question: "When is First Look better?", answer: "When the discussion keeps expanding instead of narrowing and you need a tighter answer you can revisit later." },
+    ],
+    proofLinks: [
+      { label: "Get my First Look", url: "/firstlook" },
+      { label: "How to use GitDealFlow in a partner meeting", url: "/answers/how-to-use-gitdealflow-in-a-partner-meeting" },
+      { label: "Read the methodology", url: "/methodology" },
+    ],
+    nextReadLinks: [
+      { label: "When should you use First Look vs Dashboard?", url: "/answers/when-should-i-use-first-look-vs-dashboard" },
+      { label: "How to turn a signal into an investment memo", url: "/answers/how-to-turn-a-signal-into-an-investment-memo" },
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+    ],
+  },
+  {
+    slug: "compare/dashboard-vs-a-free-crm-for-early-sourcing",
+    title: "Dashboard vs a Free CRM for Early Sourcing",
+    description:
+      "A free CRM is useful for tracking names after you already have them. Dashboard is stronger when you need a recurring signal surface that helps you decide what deserves attention first.",
+    h1: "Dashboard vs a free CRM for early sourcing",
+    intro:
+      "A free CRM and a recurring signal surface can both feel like practical tools for a small team. But they solve different jobs. One stores pipeline state. The other helps you decide what should enter the pipeline in the first place.",
+    sections: [
+      {
+        heading: "Free CRM — storage and workflow state",
+        body: "A free CRM is useful when you need statuses, contact records, notes, and a place to store what you are already tracking. It is good at remembering the pipeline you already have.",
+      },
+      {
+        heading: "Dashboard — recurring signal surface",
+        body: "Dashboard is stronger when you need a recurring weekly view of what changed across names and sectors before your CRM is even populated with the right companies.",
+      },
+      {
+        heading: "Where the CRM becomes the wrong first purchase",
+        body: "A CRM becomes the wrong first purchase when your main bottleneck is still sourcing rather than tracking. A better-organized empty funnel is still an empty funnel.",
+      },
+      {
+        heading: "Simple rule",
+        body: "Use a CRM when your main problem is pipeline state. Use Dashboard when your main problem is recurring early-sourcing visibility.",
+      },
+    ],
+    verdict:
+      "A free CRM is useful for pipeline memory once names are already in motion. Dashboard is stronger as the first layer when the real bottleneck is recurring early sourcing, not record-keeping.",
+    relatedSectors: ["ai-ml", "developer-tools", "enterprise-saas"],
+    faqs: [
+      { question: "Can a free CRM replace Dashboard?", answer: "Not for early sourcing. A CRM stores workflow state well, but it does not inherently tell you what changed or what deserves attention this week." },
+      { question: "Should I use both?", answer: "Yes. For many small teams the clean stack is Dashboard for recurring signal and a CRM for follow-up once the right names enter the process." },
+      { question: "When should I buy the CRM first?", answer: "Only when tracking and team coordination are already more painful than finding the right names." },
+    ],
+    proofLinks: [
+      { label: "What do you actually get from Dashboard each week?", url: "/answers/what-do-i-actually-get-from-dashboard-each-week" },
+      { label: "How to use GitDealFlow with a small investment team", url: "/answers/how-to-use-gitdealflow-with-a-small-investment-team" },
+      { label: "Read the methodology", url: "/methodology" },
+    ],
+    nextReadLinks: [
+      { label: "See the weekly operating surface", url: "/dashboard" },
+      { label: "When to upgrade from a spreadsheet to a real signal workflow", url: "/answers/when-to-upgrade-from-a-spreadsheet-to-a-real-signal-workflow" },
+      { label: "Dashboard vs a custom Airtable deal flow board", url: "/compare/dashboard-vs-a-custom-airtable-deal-flow-board" },
+    ],
+  },
+  {
+    slug: "compare/insider-vs-a-whatsapp-group-for-co-investors",
+    title: "Insider vs a WhatsApp Group for Co-Investors",
+    description:
+      "A WhatsApp group is useful for fast loose coordination. Insider is stronger when you want a tighter, calmer layer around recurring conviction support instead of constant chat flow.",
+    h1: "Insider vs a WhatsApp group for co-investors",
+    intro:
+      "A WhatsApp group and a higher-touch layer like Insider can both feel like community. But they create very different kinds of decision environments.",
+    sections: [
+      {
+        heading: "WhatsApp group — fast coordination",
+        body: "A WhatsApp group is useful for quick reactions, fast logistics, and loose co-investor chatter. The upside is speed. The downside is that important context gets buried in message flow almost immediately.",
+      },
+      {
+        heading: "Insider — steadier conviction layer",
+        body: "Insider is stronger when you want less noise and more context around what to do with a signal over time. The point is not just access to people. The point is a better environment for carrying recurring judgment.",
+      },
+      {
+        heading: "Where the chat group breaks",
+        body: "Chat groups become weak when urgency crowds out thinking. The room feels active, but the actual decision support becomes fragmented, repetitive, and easy to lose in the scroll.",
+      },
+      {
+        heading: "Simple rule",
+        body: "Use WhatsApp for fast coordination. Use Insider when you want a tighter, calmer support layer around recurring conviction rather than a constant stream of chat.",
+      },
+    ],
+    verdict:
+      "A WhatsApp group is useful for speed and loose coordination. Insider is stronger when the real need is steadier context and recurring conviction support rather than more chat volume.",
+    relatedSectors: ["ai-ml", "enterprise-saas", "developer-tools"],
+    faqs: [
+      { question: "Is Insider just a better group chat?", answer: "No. The point is not chat quality alone. The point is a tighter layer around recurring judgment and context." },
+      { question: "When is a WhatsApp group enough?", answer: "When you mainly need quick coordination and loose social flow rather than structured conviction support." },
+      { question: "Who should choose Insider instead?", answer: "Someone who already trusts the signal and wants a calmer, more durable layer around recurring co-investor judgment." },
+    ],
+    proofLinks: [
+      { label: "What do you actually get from Insider?", url: "/answers/what-do-i-actually-get-from-insider" },
+      { label: "Dashboard vs Insider for conviction support", url: "/compare/dashboard-vs-insider-for-conviction-support" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
+    ],
+    nextReadLinks: [
+      { label: "See the higher-touch layer", url: "/insider" },
+      { label: "Who should use Insider instead of Dashboard?", url: "/answers/who-should-use-insider-instead-of-dashboard" },
+      { label: "How to share a startup signal with a co-investor", url: "/answers/how-to-share-a-startup-signal-with-a-co-investor" },
+    ],
+  },
 ];
  
  // ---------------------------------------------------------------------------
