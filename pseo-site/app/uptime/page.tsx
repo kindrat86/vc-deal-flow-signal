@@ -127,6 +127,26 @@ export default function UptimePage() {
 
         <p className="mt-6 max-w-prose text-slate-300">{m.page.description}</p>
 
+        <section className="mt-8 rounded-xl border border-emerald-700/30 bg-emerald-950/20 p-5 sm:p-6 space-y-3">
+          <p className="text-emerald-300 text-xs font-semibold uppercase tracking-[0.14em]">
+            Start with the most-requested trust routes
+          </p>
+          <p className="text-sm text-slate-300 leading-relaxed">
+            Reliability checks rarely stand alone. Most people who come here also want the main security summary, the processor list, and the full trust hub.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/security" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-emerald-600 text-white text-sm font-semibold hover:bg-emerald-500 transition-colors">
+              Read security overview →
+            </Link>
+            <Link href="/subprocessors" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-slate-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              Review subprocessors →
+            </Link>
+            <Link href="/trust" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-slate-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              Open trust center →
+            </Link>
+          </div>
+        </section>
+
         <section className="mt-8 grid grid-cols-2 gap-4 rounded-lg border border-slate-800 bg-slate-900/40 p-5 sm:grid-cols-4">
           <Metric label="Uptime, last 30 days" value={`${m.metrics.uptimePercent30d.toFixed(2)}%`} />
           <Metric
