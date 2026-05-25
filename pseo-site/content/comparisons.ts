@@ -1456,6 +1456,144 @@ export const comparisons: Comparison[] = [
       { label: "When should you use Dashboard vs Insider?", url: "/answers/when-should-i-use-dashboard-vs-insider" },
     ],
   },
+  {
+    slug: "gitdealflow-vs-pitchbook-for-european-micro-funds",
+    title: "GitDealFlow vs PitchBook for European Micro-Funds",
+    description:
+      "PitchBook is stronger for institutional depth, market data, and IC-style diligence. GitDealFlow is stronger for European micro-funds that need earlier timing first and lower operating cost.",
+    h1: "GitDealFlow vs PitchBook for European micro-funds",
+    intro:
+      "European micro-funds should be careful not to buy institutional breadth before they buy actual timing edge. GitDealFlow and PitchBook sit on opposite sides of that tradeoff.",
+    sections: [
+      {
+        heading: "PitchBook — institutional breadth and depth",
+        body: "PitchBook is built for heavy diligence, comparables, private-company financials, and investment-committee style workflows. It is broad, deep, and expensive.",
+      },
+      {
+        heading: "GitDealFlow — earlier timing and lighter operating cost",
+        body: "GitDealFlow is built for earlier public timing in technical startup categories. It is narrower, but much cheaper and more aligned with the actual bottlenecks of small, timing-sensitive fund workflows.",
+      },
+      {
+        heading: "Why this matters for European micro-funds",
+        body: "A European micro-fund often needs earlier signal and selective attention more than a giant institutional market-data platform. The question is not whether PitchBook is strong. The question is whether it is the right first purchase for your current fund shape.",
+      },
+      {
+        heading: "Best stack logic",
+        body: "Use GitDealFlow first if earlier timing is still the main bottleneck. Add PitchBook later when institutional diligence depth and portfolio-benchmarking needs become unavoidable.",
+      },
+    ],
+    verdict:
+      "For European micro-funds, GitDealFlow is the better first layer when the bottleneck is earlier sourcing and calmer timing. PitchBook becomes worth it later when institutional diligence depth becomes the constraint.",
+    relatedSectors: ["fintech", "enterprise-saas", "ai-ml"],
+    faqs: [
+      { question: "Should a European micro-fund buy PitchBook first?", answer: "Usually not if earlier sourcing is still the main bottleneck. PitchBook makes more sense once heavy diligence depth and benchmarking become core requirements." },
+      { question: "What is PitchBook better at?", answer: "Institutional market data, comparables, private-company financials, and later-stage diligence workflows." },
+      { question: "What is GitDealFlow better at?", answer: "Earlier public timing in technical startup categories with a lighter cost structure and simpler operating rhythm." },
+    ],
+    proofLinks: [
+      { label: "The best VC research stack for 2026", url: "/answers/what-is-the-best-vc-research-stack-for-2026" },
+      { label: "GitDealFlow vs Dealroom for European angels", url: "/compare/gitdealflow-vs-dealroom-for-european-angels" },
+      { label: "Read the methodology", url: "/methodology" },
+    ],
+    nextReadLinks: [
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+      { label: "Get my First Look", url: "/firstlook" },
+      { label: "How should a European angel build a lightweight research stack?", url: "/answers/how-should-a-european-angel-build-a-lightweight-research-stack" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
+    ],
+  },
+  {
+    slug: "insider-vs-a-generic-slack-group-for-investors",
+    title: "Insider vs a Generic Slack Group for Investors",
+    description:
+      "A generic Slack group gives chatter and broad access. Insider is stronger when you want a tighter higher-touch layer around context, steadiness, and recurring judgment support.",
+    h1: "Insider vs a generic Slack group for investors",
+    intro:
+      "Many investors assume a paid higher-touch layer is just a nicer chat room. That is the wrong comparison. A generic Slack group and Insider do different jobs.",
+    sections: [
+      {
+        heading: "Generic Slack group — broad conversation",
+        body: "A generic Slack group is useful for loose networking, broad chatter, and occasional serendipity. The upside is access. The downside is noise, uneven relevance, and weak continuity around your actual decision process.",
+      },
+      {
+        heading: "Insider — recurring judgment support",
+        body: "Insider is meant to be tighter. The point is not just to give you another room. The point is to help you carry recurring decisions with more steadiness, more context, and less noise.",
+      },
+      {
+        heading: "Why this difference matters",
+        body: "If your bottleneck is loneliness, a room is enough. If your bottleneck is recurring conviction around live opportunities, a generic room often adds more chatter than clarity. That is where Insider wins.",
+      },
+      {
+        heading: "Simple rule",
+        body: "If you want a broad room, use a generic Slack group. If you want a higher-touch layer around what to do with the signal, choose Insider.",
+      },
+    ],
+    verdict:
+      "A generic Slack group is useful for broad conversation. Insider is stronger when you want a smaller, more serious layer built around steadiness, context, and recurring conviction support.",
+    relatedSectors: ["ai-ml", "enterprise-saas", "developer-tools"],
+    faqs: [
+      { question: "Is Insider basically just a chat room?", answer: "No. The point is not broad chatter. The point is more context and more support around recurring decisions." },
+      { question: "When is a generic Slack group enough?", answer: "When you mainly want broad access, serendipity, or loose conversation rather than a tighter decision-support layer." },
+      { question: "Who should choose Insider instead?", answer: "Readers who already trust the signal and want more steadiness and context around recurring judgment, not just another room." },
+    ],
+    proofLinks: [
+      { label: "What do you actually get from Insider?", url: "/answers/what-do-i-actually-get-from-insider" },
+      { label: "Dashboard vs Insider for conviction support", url: "/compare/dashboard-vs-insider-for-conviction-support" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
+    ],
+    nextReadLinks: [
+      { label: "See the higher-touch layer", url: "/insider" },
+      { label: "Who should use Insider instead of Dashboard?", url: "/answers/who-should-use-insider-instead-of-dashboard" },
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+      { label: "Get my First Look", url: "/firstlook" },
+    ],
+  },
+  {
+    slug: "dashboard-vs-a-notion-watchlist",
+    title: "Dashboard vs a Notion Watchlist",
+    description:
+      "A Notion watchlist is useful for manual tracking. Dashboard is stronger when you want a recurring weekly signal surface that reduces tab-sprawl and guesswork.",
+    h1: "Dashboard vs a Notion watchlist",
+    intro:
+      "A Notion watchlist can be perfectly fine early on. But it solves a different problem than Dashboard. One stores what you already decided to track. The other helps you see what changed each week with less manual effort.",
+    sections: [
+      {
+        heading: "Notion watchlist — manual memory",
+        body: "A Notion watchlist is useful when you mainly need a place to store names, notes, and links. It is flexible, cheap, and easy to shape around your own system.",
+      },
+      {
+        heading: "Dashboard — recurring signal surface",
+        body: "Dashboard is useful when the bottleneck is no longer where to store names, but how to see momentum and change across the field each week without rebuilding the workflow manually.",
+      },
+      {
+        heading: "Where the manual system breaks",
+        body: "A manual watchlist starts breaking when weekly review becomes tab-heavy, stale, and guessy. At that point the issue is not storage. The issue is recurring visibility.",
+      },
+      {
+        heading: "Simple rule",
+        body: "If you just need a place to hold names, Notion is enough. If you need a calmer recurring surface that helps you review what changed, Dashboard is the better lane.",
+      },
+    ],
+    verdict:
+      "A Notion watchlist is a good manual memory layer. Dashboard is the stronger choice once the problem becomes recurring visibility, cleaner timing, and less manual review work every week.",
+    relatedSectors: ["ai-ml", "developer-tools", "enterprise-saas"],
+    faqs: [
+      { question: "Can I start with a Notion watchlist?", answer: "Yes. It is a reasonable early system if the main need is storing names and notes." },
+      { question: "When should I move from Notion to Dashboard?", answer: "When weekly review becomes the bottleneck and you want a recurring signal surface rather than a manual storage layer." },
+      { question: "Does Dashboard replace notes entirely?", answer: "No. It replaces part of the manual review burden. You may still keep notes elsewhere, but the weekly visibility layer gets cleaner." },
+    ],
+    proofLinks: [
+      { label: "What do you actually get from Dashboard each week?", url: "/answers/what-do-i-actually-get-from-dashboard-each-week" },
+      { label: "First Look vs Dashboard for live theses", url: "/compare/first-look-vs-dashboard-for-live-theses" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
+    ],
+    nextReadLinks: [
+      { label: "See the weekly operating surface", url: "/dashboard" },
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+      { label: "Get my First Look", url: "/firstlook" },
+      { label: "What do you actually get from Dashboard each week?", url: "/answers/what-do-i-actually-get-from-dashboard-each-week" },
+    ],
+  },
 ];
  
  // ---------------------------------------------------------------------------
