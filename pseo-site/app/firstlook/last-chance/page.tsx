@@ -76,7 +76,9 @@ export default async function FirstLookLastChancePage({ searchParams }: Props) {
         <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
           Most buyers who decline the Sweep want to compare two sectors
           before they pick one. Same engine, same 24-hour cadence — just a
-          second deep-dive PDF + CSV alongside the one you already bought.
+          second deep-dive PDF + CSV alongside the one you already bought. If
+          you do not need that, this page should still leave you with one calm
+          next step instead of a dead end.
         </p>
       </header>
 
@@ -162,6 +164,29 @@ export default async function FirstLookLastChancePage({ searchParams }: Props) {
           card auth.
         </p>
       </section>
+
+      <aside
+        className="border-l-2 border-sky-700/50 pl-4 py-1 space-y-2"
+        aria-label="If you do not need a second sector"
+      >
+        <p className="text-sky-300 text-[10px] sm:text-xs font-semibold uppercase tracking-wider">
+          If you do not need a second sector
+        </p>
+        <p className="text-gray-400 text-sm leading-relaxed">
+          Let the first report land, then decide from a calmer position whether you need recurring coverage or just the free weekly rhythm.
+        </p>
+        <div className="flex flex-wrap gap-3 text-sm">
+          <Link href="/answers/when-should-i-use-first-look-vs-dashboard" className="text-sky-300 hover:text-sky-200 underline underline-offset-2">
+            Choose the next paid step
+          </Link>
+          <a href="https://gitdealflow.com/#signup" className="text-sky-300 hover:text-sky-200 underline underline-offset-2">
+            Stay with the free digest
+          </a>
+          <Link href="/buyers-guide" className="text-sky-300 hover:text-sky-200 underline underline-offset-2">
+            Read the buyer's guide
+          </Link>
+        </div>
+      </aside>
 
       <p className="text-slate-600 text-xs leading-relaxed">
         Receipt for First Look:{" "}
