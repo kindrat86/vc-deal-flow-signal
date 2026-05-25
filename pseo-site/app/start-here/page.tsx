@@ -196,6 +196,29 @@ export default function StartHerePage() {
           </p>
         </section>
 
+        <section className="rounded-xl border border-sky-700/30 bg-sky-950/20 p-6 sm:p-7 space-y-3">
+          <p className="text-sky-300 text-xs font-semibold uppercase tracking-wider">
+            What people usually ask next
+          </p>
+          <p className="text-gray-300 text-sm leading-relaxed">
+            If you already know your question, do not keep browsing. Start with the shortest page that answers it.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <Link href="/compare/crunchbase-alternative-for-angel-investors" className="rounded-xl border border-slate-800 bg-slate-900/70 p-4 hover:border-slate-600 transition-colors">
+              <p className="text-gray-100 font-semibold text-sm mb-1">Why not just use Crunchbase?</p>
+              <p className="text-gray-400 text-xs leading-relaxed">Start with the timing-vs-verification wedge.</p>
+            </Link>
+            <Link href="/research" className="rounded-xl border border-slate-800 bg-slate-900/70 p-4 hover:border-slate-600 transition-colors">
+              <p className="text-gray-100 font-semibold text-sm mb-1">Is there real proof?</p>
+              <p className="text-gray-400 text-xs leading-relaxed">Start with the public panel and evidence layer.</p>
+            </Link>
+            <Link href="/buyers-guide" className="rounded-xl border border-slate-800 bg-slate-900/70 p-4 hover:border-slate-600 transition-colors">
+              <p className="text-gray-100 font-semibold text-sm mb-1">What should I buy first?</p>
+              <p className="text-gray-400 text-xs leading-relaxed">Start with the buyer-side evaluation page.</p>
+            </Link>
+          </div>
+        </section>
+
         <StartHereArchetypeQuiz />
 
         <section className="space-y-4">
