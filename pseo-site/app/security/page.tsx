@@ -34,6 +34,26 @@ export default function SecurityPage() {
         </p>
       </header>
 
+      <section className="mb-8 rounded-xl border border-emerald-700/30 bg-emerald-950/20 p-5 sm:p-6 space-y-3">
+        <p className="text-emerald-300 text-xs font-semibold uppercase tracking-[0.14em]">
+          Start with the most-requested trust routes
+        </p>
+        <p className="text-gray-300 text-sm leading-relaxed">
+          Most buyers checking security also want current status, disclosure policy, and the processor list behind the system.
+        </p>
+        <div className="flex flex-wrap gap-3">
+          <Link href="/uptime" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-emerald-600 text-white text-sm font-semibold hover:bg-emerald-500 transition-colors">
+            Check live uptime →
+          </Link>
+          <Link href="/disclosure" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+            Read disclosure policy →
+          </Link>
+          <Link href="/subprocessors" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+            Review subprocessors →
+          </Link>
+        </div>
+      </section>
+
       <section className="space-y-6 text-gray-200 text-sm leading-relaxed">
         <div className="rounded-xl border border-slate-800 bg-slate-900/40 p-5">
           <h2 className="text-base font-semibold text-gray-100 mb-2">Transport security</h2>
