@@ -5,7 +5,7 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 const SITE = "https://signals.gitdealflow.com";
 const TITLE = "Best MCP Server for VC Research | VC Deal Flow Signal";
 const DESCRIPTION =
-  "Use VC Deal Flow Signal as an MCP server for VC research, startup monitoring, GitHub signal discovery, and agent-native sourcing workflows.";
+  "Use VC Deal Flow Signal as an MCP server for VC research, startup monitoring, GitHub signal discovery, and agent-native sourcing workflows without private API friction.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -107,7 +107,7 @@ export default function BestMcpServerForVcResearchPage() {
           <p className="text-xs font-medium text-sky-500 uppercase tracking-wider">Integration guide</p>
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 leading-tight">The best MCP server for VC research if you track startup signals</h1>
           <p className="text-gray-400 text-base leading-relaxed">
-            If you use agent-native workflows for VC research, the best MCP server is the one that gives you useful signal with low friction. This page explains where VC Deal Flow Signal fits in that stack and why it works well for startup momentum research.
+            If you use agent-native workflows for VC research, the best MCP server is the one that gives you useful signal with low friction. This page explains where VC Deal Flow Signal fits in that stack, why it works well for startup momentum research, and when it should hand off to human-facing proof and buyer pages.
           </p>
         </header>
 
@@ -128,7 +128,7 @@ export default function BestMcpServerForVcResearchPage() {
           <div className="rounded-xl border border-slate-800 bg-slate-900 p-6">
             <h2 className="text-gray-100 text-lg font-semibold mb-3">Where VC Deal Flow Signal fits</h2>
             <p className="text-gray-400 text-sm leading-relaxed">
-              VC Deal Flow Signal is strongest when you want startup monitoring, GitHub-based momentum research, sector-level rankings, and company lookup that supports earlier sourcing. It is not trying to be a CRM or a late-stage financial database. It is an earlier signal layer for technical startups.
+              VC Deal Flow Signal is strongest when you want startup monitoring, GitHub-based momentum research, sector-level rankings, and company lookup that supports earlier sourcing. It is not trying to be a CRM or a late-stage financial database. It is an earlier signal layer for technical startups, then a routing layer into proof, workflow, and buyer-side evaluation.
             </p>
           </div>
           <div className="rounded-xl border border-slate-800 bg-slate-900 p-6">
@@ -147,6 +147,7 @@ export default function BestMcpServerForVcResearchPage() {
           <div className="flex flex-col gap-3">
             <Link href="/integrations/agent-runtimes" className="text-sky-400 hover:text-sky-300 underline underline-offset-2 text-sm">See all supported agent runtimes</Link>
             <Link href="/methodology" className="text-sky-400 hover:text-sky-300 underline underline-offset-2 text-sm">Read the methodology</Link>
+            <Link href="/research" className="text-sky-400 hover:text-sky-300 underline underline-offset-2 text-sm">Read the research panel</Link>
             <Link href="/answers/how-angel-investors-use-github-signals" className="text-sky-400 hover:text-sky-300 underline underline-offset-2 text-sm">How angel investors can use GitHub signals without reading code</Link>
           </div>
         </section>
@@ -167,7 +168,9 @@ export default function BestMcpServerForVcResearchPage() {
           <h2 className="text-base font-semibold text-gray-300 mb-4">What to read next</h2>
           <ul className="space-y-2">
             <li><Link href="/integrations/agent-runtimes" className="text-sky-400 hover:text-sky-300 underline underline-offset-2 text-sm">See all supported agent runtimes</Link></li>
+            <li><Link href="/research" className="text-sky-400 hover:text-sky-300 underline underline-offset-2 text-sm">Read the research panel</Link></li>
             <li><Link href="/answers/how-angel-investors-use-github-signals" className="text-sky-400 hover:text-sky-300 underline underline-offset-2 text-sm">How angel investors can use GitHub signals without reading code</Link></li>
+            <li><Link href="/buyers-guide" className="text-sky-400 hover:text-sky-300 underline underline-offset-2 text-sm">Read the buyer's guide</Link></li>
             <li><Link href="https://gitdealflow.com/report" className="text-sky-400 hover:text-sky-300 underline underline-offset-2 text-sm">Read a sample Sunday watchlist</Link></li>
           </ul>
         </section>
@@ -175,11 +178,16 @@ export default function BestMcpServerForVcResearchPage() {
         <section className="rounded-xl border border-slate-800 bg-slate-900 p-6 sm:p-8 text-center">
           <h2 className="text-gray-100 font-semibold text-lg mb-2">If you want the human-facing version of this signal</h2>
           <p className="text-gray-400 text-sm mb-5 max-w-lg mx-auto">
-            Machines can query the data. Humans still need a clean read. Start with the sample Sunday watchlist and decide whether this belongs in your week.
+            Machines can query the data. Humans still need a clean read. Start with the sample Sunday watchlist, then use the buyer's guide if you want to decide whether this belongs in your stack.
           </p>
-          <Link href="https://gitdealflow.com/report" className="inline-flex w-full sm:w-auto items-center justify-center px-6 py-3 rounded-lg bg-sky-700 hover:bg-sky-600 text-white text-sm font-medium transition-colors">
-            Read a sample Sunday watchlist
-          </Link>
+          <div className="flex flex-col sm:flex-row justify-center gap-3">
+            <Link href="https://gitdealflow.com/report" className="inline-flex w-full sm:w-auto items-center justify-center px-6 py-3 rounded-lg bg-sky-700 hover:bg-sky-600 text-white text-sm font-medium transition-colors">
+              Read a sample Sunday watchlist
+            </Link>
+            <Link href="/buyers-guide" className="inline-flex w-full sm:w-auto items-center justify-center px-6 py-3 rounded-lg border border-slate-700 hover:border-slate-500 text-gray-200 text-sm font-medium transition-colors">
+              Read the buyer's guide
+            </Link>
+          </div>
         </section>
       </article>
     </>
