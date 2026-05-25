@@ -6113,6 +6113,160 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
       "Europe angel investor tool stack",
     ],
   },
+  {
+    slug: "how-to-share-a-startup-signal-with-a-co-investor",
+    query: "How do I share a startup signal with a co-investor?",
+    h1: "How to share a startup signal with a co-investor",
+    description:
+      "Share the signal in three layers: one sentence on what changed, one line on why it matters now, and one proof link. Keep it calm, specific, and easy to verify.",
+    tldr:
+      "The best way to share a startup signal with a co-investor is to make it easy to verify. One sentence on what changed, one sentence on why it matters now, and one proof link is usually enough.",
+    body: `Most weak signal-sharing dies because it asks the other person to trust your excitement instead of the evidence.
+
+**Quick answer.** Share the signal in three layers: what changed, why it matters now, and where to verify it.
+
+**What to send.** Keep it short. Name the company, describe the change in plain language, explain why it looks early enough to matter, and include one proof link. Do not send a wall of screenshots if one clear proof path does the job.
+
+**Why this works.** A co-investor does not need your full workflow first. He needs a clean reason to pay attention. Clarity beats intensity.
+
+**What to avoid.** Do not oversell certainty. Do not dump five links with no guidance. Do not force the other person to reverse-engineer why you think the signal matters.`,
+    facts: [
+      {
+        claim:
+          "The site already routes readers toward proof pages such as methodology, sample watchlist, and answer/comparison pages so claims can be verified quickly.",
+        sourceUrl: "https://signals.gitdealflow.com/research",
+        sourceLabel: "Research routing",
+      },
+      {
+        claim:
+          "Sample watchlist and answer pages are structured to be citation-ready, which makes them natural proof links in a co-investor share flow.",
+        sourceUrl: "https://gitdealflow.com/report",
+        sourceLabel: "Sample watchlist",
+      },
+      {
+        claim:
+          "The answer layer and comparison layer already separate timing from verification, which is exactly the distinction a co-investor needs quickly.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/deal-flow-timing-vs-verification",
+        sourceLabel: "Timing vs verification",
+      },
+    ],
+    faqs: [
+      {
+        q: "What is the minimum useful signal share?",
+        a: "One sentence on what changed, one sentence on why it matters now, and one proof link. Anything less is vague; anything much more often becomes noise.",
+      },
+      {
+        q: "Should I send the methodology every time?",
+        a: "Not always. Use the sample watchlist or the most relevant answer/comparison page first. Send methodology when the other person wants to inspect the logic itself.",
+      },
+      {
+        q: "Should I share a signal if I am still unsure?",
+        a: "Yes, but frame it honestly as an early read worth checking, not as a finished verdict.",
+      },
+    ],
+    ctaUrl: "https://gitdealflow.com/report",
+    ctaLabel: "Read a sample Sunday watchlist",
+    related: [
+      "why-most-alternative-data-tools-feel-late",
+      "how-to-build-a-two-layer-deal-flow-stack",
+      "deal-flow-timing-vs-verification",
+    ],
+    proofLinks: [
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+      { label: "Timing and verification are not the same thing", url: "/answers/deal-flow-timing-vs-verification" },
+      { label: "Read the methodology", url: "/methodology" },
+    ],
+    nextReadLinks: [
+      { label: "How to build a two-layer deal flow stack", url: "/answers/how-to-build-a-two-layer-deal-flow-stack" },
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+      { label: "Get my First Look", url: "/firstlook" },
+      { label: "What do you actually get from Dashboard each week?", url: "/answers/what-do-i-actually-get-from-dashboard-each-week" },
+    ],
+    keywords: [
+      "share a startup signal with a co-investor",
+      "how to share deal flow with a co-investor",
+      "startup signal co-investor",
+      "how to send a startup lead to an investor",
+      "co-investor signal memo",
+    ],
+  },
+  {
+    slug: "how-to-turn-a-weekly-watchlist-into-founder-outreach",
+    query: "How do I turn a weekly watchlist into founder outreach?",
+    h1: "How to turn a weekly watchlist into founder outreach",
+    description:
+      "A weekly watchlist becomes founder outreach when you move from passive reading to one specific note about one concrete change. The point is early relevance, not generic networking.",
+    tldr:
+      "A weekly watchlist becomes founder outreach when you pick one name, notice one concrete change, and send one specific note that proves you are paying attention earlier than the crowd.",
+    body: `A watchlist only creates value when it changes behavior. Otherwise it is just content.
+
+**Quick answer.** Pick one name, one concrete change, and one specific note. That is enough to turn a watchlist into outreach.
+
+**What the outreach should do.** It should show that you noticed something real before the round became obvious. It does not need to sound clever. It needs to sound attentive.
+
+**Why this works.** Founders ignore generic investor outreach because it feels late and mass-produced. Specificity signals that you are early, thoughtful, and worth replying to.
+
+**What to avoid.** Do not turn the note into a mini-thesis memo. Do not ask for a call before you have shown you noticed something meaningful. Specificity first, ask later.`,
+    facts: [
+      {
+        claim:
+          "The free Sunday issue is explicitly structured around a small set of names that can be reviewed quickly rather than a giant feed that encourages passive browsing.",
+        sourceUrl: "https://gitdealflow.com/",
+        sourceLabel: "GitDealFlow homepage",
+      },
+      {
+        claim:
+          "The product ladder already separates free recurring exposure, one-off depth, weekly operating surface, and higher-touch context — which means outreach can start small and deepen only when needed.",
+        sourceUrl: "https://signals.gitdealflow.com/compare/first-look-vs-dashboard-for-live-theses",
+        sourceLabel: "First Look vs Dashboard comparison",
+      },
+      {
+        claim:
+          "The sample watchlist and proof pages make it easier to show someone else exactly what you noticed and why it matters.",
+        sourceUrl: "https://gitdealflow.com/report",
+        sourceLabel: "Sample watchlist",
+      },
+    ],
+    faqs: [
+      {
+        q: "How many names should I act on from one weekly issue?",
+        a: "Usually one is enough. The goal is not volume. The goal is one thoughtful piece of outreach that comes from real attention.",
+      },
+      {
+        q: "Should I start with a call request?",
+        a: "Usually no. Start by showing that you noticed something specific. Earn the right to ask for more time.",
+      },
+      {
+        q: "What if I am not fully sure the signal matters yet?",
+        a: "That is normal. Frame it as an early observation worth discussing, not as certainty.",
+      },
+    ],
+    ctaUrl: "/firstlook",
+    ctaLabel: "Get my First Look",
+    related: [
+      "how-to-share-a-startup-signal-with-a-co-investor",
+      "why-most-alternative-data-tools-feel-late",
+      "is-first-look-worth-it-for-angels",
+    ],
+    proofLinks: [
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+      { label: "First Look vs Dashboard for live theses", url: "/compare/first-look-vs-dashboard-for-live-theses" },
+      { label: "Read the methodology", url: "/methodology" },
+    ],
+    nextReadLinks: [
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+      { label: "Get my First Look", url: "/firstlook" },
+      { label: "What do you actually get from Dashboard each week?", url: "/answers/what-do-i-actually-get-from-dashboard-each-week" },
+      { label: "How to share a startup signal with a co-investor", url: "/answers/how-to-share-a-startup-signal-with-a-co-investor" },
+    ],
+    keywords: [
+      "turn a weekly watchlist into founder outreach",
+      "founder outreach from startup watchlist",
+      "startup signal founder outreach",
+      "how to outreach founders early",
+      "weekly watchlist investor outreach",
+    ],
+  },
 ];
 
 export function getAgentQueryBySlug(slug: string): AgentQuery | undefined {
