@@ -97,6 +97,26 @@ export default function ThanksDashboard() {
           </p>
         </section>
 
+        <section className="rounded-xl border border-emerald-500/30 bg-emerald-500/5 p-5 sm:p-6 space-y-3">
+          <p className="text-emerald-300 text-xs font-semibold uppercase tracking-wider">
+            Best next move this week
+          </p>
+          <p className="text-gray-300 text-sm leading-relaxed">
+            Do not leave this as a receipt page. If you want to get value fast, use one page to understand the signal better and one page to decide whether you eventually need the higher-touch layer.
+          </p>
+          <div className="flex flex-wrap gap-3 text-sm">
+            <Link href="/research" className="text-emerald-200 hover:text-emerald-100 underline underline-offset-2">
+              Read the research panel
+            </Link>
+            <Link href="/answers/when-should-i-use-dashboard-vs-insider" className="text-emerald-200 hover:text-emerald-100 underline underline-offset-2">
+              Decide if Dashboard is enough
+            </Link>
+            <Link href="/buyers-guide" className="text-emerald-200 hover:text-emerald-100 underline underline-offset-2">
+              Read the buyer's guide
+            </Link>
+          </div>
+        </section>
+
         {/* Brunson TS §3 Ch 11 — Dashboard buyers already get email; the
             channel is the second pipe. Sits AFTER the founder note and
             BEFORE the next-tier mention so it reads as a useful free
