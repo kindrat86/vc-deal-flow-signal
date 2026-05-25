@@ -195,6 +195,26 @@ export default function TrustPage() {
         </p>
       </header>
 
+      <section className="mb-10 rounded-xl border border-emerald-700/30 bg-emerald-950/20 p-6 sm:p-8 space-y-3">
+        <p className="text-emerald-300 text-xs font-semibold uppercase tracking-[0.14em]">
+          Start with the most-requested trust routes
+        </p>
+        <p className="text-gray-300 text-sm leading-relaxed max-w-3xl">
+          Most buyers do not need the full trust stack first. They usually want to verify security posture, current service reliability, and who processes the data.
+        </p>
+        <div className="flex flex-wrap gap-3">
+          <Link href="/security" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-emerald-600 text-white text-sm font-semibold hover:bg-emerald-500 transition-colors">
+            Read security overview →
+          </Link>
+          <Link href="/uptime" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+            Check live uptime →
+          </Link>
+          <Link href="/subprocessors" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+            Review subprocessors →
+          </Link>
+        </div>
+      </section>
+
       <div className="space-y-8">
         {TRUST_SURFACES.map((group) => (
           <section key={group.group}>
