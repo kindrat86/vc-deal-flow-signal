@@ -9,7 +9,7 @@ import { getHreflangLanguages } from "@/lib/hreflang";
 export const metadata: Metadata = {
   title: "Methodology — How We Measure Startup Engineering Acceleration",
   description:
-    "How VC Deal Flow Signal measures GitHub engineering acceleration: data sources, commit velocity calculation, contributor growth metrics, signal classification, and update frequency.",
+    "How GitDealFlow measures GitHub engineering acceleration: data sources, formulas, signal rules, update cadence, and the proof behind the timing-first thesis.",
   // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
   alternates: {
     canonical: "/methodology",
@@ -632,14 +632,45 @@ export default function MethodologyPage() {
             Related questions worth reading next
           </h2>
           <p className="text-gray-400 text-sm leading-relaxed mb-4">
-            If you want the investor-facing version of this methodology, start with the definition pages and comparison pages that turn the raw framework into buyer-language.
+            If you want the investor-facing version of this methodology, start with the definition pages and comparison pages that turn the raw framework into buyer-language, then use the buyer's guide to decide whether the stack actually fits how you source.
           </p>
           <ul className="space-y-2">
             <li><Link href="/answers/what-is-startup-engineering-momentum" className="text-sky-400 hover:text-sky-300 underline underline-offset-2 text-sm">What startup engineering momentum means</Link></li>
             <li><Link href="/answers/deal-flow-timing-vs-verification" className="text-sky-400 hover:text-sky-300 underline underline-offset-2 text-sm">Timing and verification are not the same thing</Link></li>
             <li><Link href="/answers/how-angel-investors-use-github-signals" className="text-sky-400 hover:text-sky-300 underline underline-offset-2 text-sm">How angel investors can use GitHub signals without reading code</Link></li>
             <li><Link href="/answers/what-is-a-github-scout-score" className="text-sky-400 hover:text-sky-300 underline underline-offset-2 text-sm">What a GitHub Scout Score tells you</Link></li>
+            <li><Link href="/buyers-guide" className="text-sky-400 hover:text-sky-300 underline underline-offset-2 text-sm">Read the buyer's guide</Link></li>
           </ul>
+        </section>
+
+        <section className="mb-10 rounded-xl border border-amber-500/30 bg-amber-500/5 p-6 sm:p-8">
+          <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider mb-2">
+            Use the method in practice
+          </p>
+          <p className="text-gray-300 text-sm leading-relaxed mb-5 max-w-2xl">
+            Methodology tells you how the signal is computed. The next step is deciding
+            how to use it in sourcing, what to compare it against, and how to test it on
+            your own taste before you trust it with real pipeline time. If the evidence is
+            strong enough, the buyer-side question becomes workflow fit, not whether the
+            signal exists at all.
+          </p>
+          <div className="flex flex-wrap gap-3 text-sm">
+            <Link href="/research" className="inline-flex items-center rounded-lg bg-amber-400 px-4 py-2 font-semibold text-slate-950 hover:bg-amber-300 transition-colors">
+              Read the research panel →
+            </Link>
+            <Link href="/buyers-guide" className="inline-flex items-center rounded-lg border border-slate-700 px-4 py-2 text-gray-200 hover:border-slate-500 hover:bg-slate-800/60 transition-colors">
+              Read the buyer's guide →
+            </Link>
+            <Link href="/compare" className="inline-flex items-center rounded-lg border border-slate-700 px-4 py-2 text-gray-200 hover:border-slate-500 hover:bg-slate-800/60 transition-colors">
+              Compare sourcing tools →
+            </Link>
+            <Link href="/use-cases" className="inline-flex items-center rounded-lg border border-slate-700 px-4 py-2 text-gray-200 hover:border-slate-500 hover:bg-slate-800/60 transition-colors">
+              Investor workflows →
+            </Link>
+            <Link href="/receipts" className="inline-flex items-center rounded-lg border border-slate-700 px-4 py-2 text-gray-200 hover:border-slate-500 hover:bg-slate-800/60 transition-colors">
+              Check your Scout Score →
+            </Link>
+          </div>
         </section>
 
         <PSEOFooterNav excludeHrefs={["/methodology"]} />
