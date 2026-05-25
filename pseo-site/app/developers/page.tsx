@@ -205,6 +205,23 @@ export default function DevelopersPage() {
 
         <section className="mb-10 rounded-2xl border border-amber-500/30 bg-amber-500/5 p-6 sm:p-8">
           <p className="text-amber-300 text-xs font-semibold uppercase tracking-[0.14em] mb-2">
+            Start with the highest-intent routes
+          </p>
+          <p className="text-gray-300 text-sm leading-relaxed mb-4 max-w-2xl">
+            Use this page if you want the full developer surface. But if your real question is builder fit, install path, or per-request pricing, start with the sharper entry points first.
+          </p>
+          <div className="flex flex-wrap gap-3 mb-5">
+            <Link href="/for-builders" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-amber-500 text-slate-950 text-sm font-semibold hover:bg-amber-400 transition-colors">
+              Read the builder offer →
+            </Link>
+            <Link href="/install" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              Install the bookmarklet →
+            </Link>
+            <Link href="/agents/credits" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              See agent credits →
+            </Link>
+          </div>
+          <p className="text-amber-300 text-xs font-semibold uppercase tracking-[0.14em] mb-2">
             Quote-ready takeaway
           </p>
           <blockquote className="text-gray-100 text-lg leading-relaxed border-l-2 border-amber-400/60 pl-4">
