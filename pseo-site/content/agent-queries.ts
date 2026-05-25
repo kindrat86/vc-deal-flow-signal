@@ -5675,9 +5675,9 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
     query: "What do I actually get from Insider?",
     h1: "What do you actually get from Insider?",
     description:
-      "Insider gives you the higher-touch layer: more context, more steadiness, and more support around what to do with the signal once it already matters.",
+      "Insider gives you the higher-touch layer: more context, more steadiness, and more support around what to do with the signal once it already matters and recurring visibility is not enough.",
     tldr:
-      "What you get from Insider is not just more proof. You get a tighter layer of context and steadiness around recurring decisions when you no longer want to carry them alone.",
+      "What you get from Insider is not just more proof. You get a tighter layer of context and steadiness around recurring decisions when you no longer want to carry them alone and the weekly surface is already useful.",
     body: `Insider is not just 'Dashboard plus more.' It is the higher-touch layer for the buyer who already trusts the signal and now wants more context and steadiness around what to do with it.
 
 **Quick answer.** Insider gives you a smaller, more serious layer around recurring judgment, not just access to more raw signal.
@@ -5686,7 +5686,9 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
 
 **Who it is really for.** It is for the buyer who has already moved beyond simple exposure and wants a tighter layer around the recurring decisions themselves.
 
-**What it is not.** It is not the best first paid step for most people. It usually makes sense after the free Sunday issue, after First Look, or after Dashboard already proved useful.`,
+**What it is not.** It is not the best first paid step for most people. It usually makes sense after the free Sunday issue, after First Look, or after Dashboard already proved useful.
+
+**What comes next.** Once you are comparing Insider seriously, the real question is no longer whether the signal works. The real question is whether you need only recurring visibility, or recurring visibility plus a tighter support layer around the judgment itself.`,
     facts: [
       {
         claim:
@@ -5729,15 +5731,16 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
       "is-first-look-worth-it-for-angels",
     ],
     proofLinks: [
+      { label: "Read the research panel", url: "/research" },
       { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
       { label: "Read the buyer's guide", url: "/buyers-guide" },
       { label: "Read the methodology", url: "/methodology" },
     ],
     nextReadLinks: [
       { label: "See the higher-touch layer", url: "/insider" },
-      { label: "See the weekly operating surface", url: "/dashboard" },
       { label: "When should you use Dashboard vs Insider?", url: "/answers/when-should-i-use-dashboard-vs-insider" },
-      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+      { label: "See the weekly operating surface", url: "/dashboard" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
     ],
     keywords: [
       "what do I get from Insider",
