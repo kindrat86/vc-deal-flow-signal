@@ -1,0 +1,14 @@
+{
+  "name": "dream-customers-discovery",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "setup": "node setup-discover.mjs",
+    "discover": "node discover.mjs",
+    "build": "node build.mjs"
+  },
+  "dependencies": {
+    "playwright": "^1.49.0"
+  }
+}

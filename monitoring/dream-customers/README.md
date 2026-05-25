@@ -72,53 +72,65 @@ A separate cron, `run-discovery.sh`, **finds new Marcus-fit handles** on X
 and appends them as `Sourced` rows. Where the signal cron above refreshes
 known contacts, this one grows the roster.
 
-Discovery rules (full text in `cron-prompt-discovery.md`):
+The discovery cron uses **Playwright + a one-time-saved x.com session** —
+no LLM, no Claude CLI, no Anthropic API key. Headless Chromium runs against
+the saved cookies in `.x-state.json`. Logic lives in [`discover.mjs`](./discover.mjs):
 
-- Pick 5 random HIGH-confidence contacts as anchors (deterministic by date).
-- Visit each anchor's profile and harvest the "You might like" / "Who to
-  follow" sidebar.
-- Dedup against existing handles; drop firm-level/parody/operator-only
-  recommendations.
-- Quick-qualify each candidate by visiting their profile and matching role
-  keywords in the bio (Partner / GP / Founder of a fund).
+- Pick 5 random HIGH-confidence contacts as anchors (deterministic by date,
+  so re-running the same day is a no-op).
+- Visit each anchor and harvest `[data-testid="UserCell"]` entries from
+  the "You might like" / "Who to follow" right-rail.
+- Dedup against existing handles; drop firm-level/parody accounts via
+  built-in block-list.
+- Quick-qualify each candidate by visiting their profile and regex-matching
+  VC-role keywords in `[data-testid="UserDescription"]`.
 - Append up to 8 new contacts per run with `confidence: LOW` and
-  `stage_source: auto:x-discovery-sweep`. You review + bump confidence in
-  the dashboard.
+  `stage_source: auto:x-discovery-sweep` (v2 schema). You review + bump
+  confidence in the dashboard.
 
-### Install the discovery launchd job (one time)
+### One-time setup
+
+```bash
+cd monitoring/dream-customers
+
+# Install dependencies (scoped to this folder; ~150MB for chromium binary)
+npm install
+npx playwright install chromium
+
+# Log into x.com once. A real browser opens; log in, come back, press Enter.
+node setup-discover.mjs
+```
+
+The session is saved to `.x-state.json` (gitignored). X cookies last
+roughly 30 days; when the cron logs `reason=session-expired`, re-run
+`node setup-discover.mjs`.
+
+### Install the discovery launchd job
 
 ```bash
 cd monitoring/dream-customers
 
 cp com.gitdealflow.dream-customers-discovery.plist ~/Library/LaunchAgents/
-
-# Substitute your Anthropic API key (read -s keeps it out of shell history):
-read -s -p "Anthropic API key: " KEY && echo
-sed -i '' "s|__PASTE_YOUR_ANTHROPIC_API_KEY_HERE__|$KEY|g" \
-  ~/Library/LaunchAgents/com.gitdealflow.dream-customers-discovery.plist
-unset KEY
-
 launchctl load ~/Library/LaunchAgents/com.gitdealflow.dream-customers-discovery.plist
 launchctl list | grep dream-customers-discovery
 ```
 
-Fires every day at **09:15 local** — deliberately 45 minutes after the
-signal cron at 08:30 so the two Claude sessions never race for the single
-Chrome browser. Edit `StartCalendarInterval` in the plist for a different
-slot.
-
-**Why the ANTHROPIC_API_KEY is required:** `claude -p` running headlessly
-under launchd can't refresh the OAuth token in `~/.claude/.credentials.json`
-and 401s without an API key in env. Generate one at
-[console.anthropic.com/settings/keys](https://console.anthropic.com/settings/keys).
-Cost is ~$0.05–$0.15 per discovery run (Sonnet-level usage for ~30s of
-Chrome MCP automation).
+Fires every day at **09:15 local**. Edit `StartCalendarInterval` in the
+plist for a different slot. (The 45min gap from the signal cron at 08:30
+is no longer load-bearing — Playwright doesn't share the user's Chrome —
+but kept so the two log streams don't interleave.)
 
 ### Trigger a discovery run manually
 
 ```bash
 ./run-discovery.sh
 tail -f cron.discovery.run.log cron.discovery.run.err cron.discovery.log
+```
+
+Or skip the shell entirely:
+
+```bash
+node discover.mjs
 ```
 
 ### Pause discovery (keeps signal cron running)
