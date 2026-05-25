@@ -460,18 +460,16 @@ export default function FirstLookPage() {
             Why this is the right bait
           </p>
           <h2 className="text-gray-100 font-bold text-lg sm:text-xl leading-snug">
-            This pass isn&rsquo;t a generic trial. It&rsquo;s built for the
-            developer-investor specifically.
+            This pass isn&rsquo;t a generic trial. It&rsquo;s built for the week
+            when a live question already needs a sharper answer.
           </h2>
           <p className="text-gray-300 text-sm leading-relaxed">
-            The rule of bait: match the offer to the avatar. A €7 PDF is the
-            wrong bait for a fund partner with a six-figure data budget — too
-            small to register. It&rsquo;s the <em> right </em>bait for the
-            engineer-investor who reads commit logs for fun, writes €5k–€50k
-            checks on the side, and wants to test the data on their actual
-            thesis before subscribing. That&rsquo;s why the price is €7, the
-            deliverable is sector-specific, and the format is PDF + raw CSV
-            — not a sales call, not a demo, not a calendar invite.
+            The rule of bait: match the offer to the pressure. A €7 PDF is the
+            wrong shape for a fund running procurement. It&rsquo;s the right shape
+            when you want to test one sector on a real thesis before you
+            subscribe. That&rsquo;s why the price is €7, the deliverable is
+            sector-specific, and the format is PDF + raw CSV — not a sales
+            call, not a demo, not a calendar invite.
           </p>
           <TrialClose tone="emerald">
             Right bait or wrong bait — does this read as built for you, or

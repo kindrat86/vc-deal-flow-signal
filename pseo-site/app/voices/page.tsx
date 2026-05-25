@@ -14,9 +14,9 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title:
-    "100 voices, per platform — Reddit-100, HN-100, X-100 — the literal rosters where the developer-investor lives",
+    "100 voices, per platform — Reddit-100, HN-100, X-100 — the literal rosters that shape the conversation",
   description:
-    "One mixed top-100 list isn't enough. Direct-response sales canon is unambiguous: one top-100 PER PLATFORM. We publish three — Reddit-100, Hacker News-100, X / Twitter-100 — each as a literal numbered roster with engagement status (engage / watch / hold / read / blocked) and the platform-specific cadence rule. 300 entries across three platforms.",
+    "One mixed top-100 list isn't enough. We publish three platform-specific rosters — Reddit, Hacker News, and X — with engagement status and cadence rules for each.",
   alternates: { canonical: "/voices" },
   openGraph: {
     title:
@@ -215,8 +215,8 @@ export default function VoicesHubPage() {
             Same audience, different rules.
           </h2>
           <p className="text-gray-300 text-base leading-relaxed">
-            The same developer-investor reads X in the morning, Reddit at
-            lunch, and HN before bed. But the platforms reward and punish very
+            The same reader may use X in the morning, Reddit at lunch, and HN
+            before bed. But the platforms reward and punish very
             different posting shapes. Reddit auto-mods anything that names a
             product on the venture-side subs. HN front-page mechanics don&rsquo;t
             tolerate self-promotion at all. X rewards consistency more than
@@ -260,7 +260,7 @@ export default function VoicesHubPage() {
           </p>
           <p className="text-gray-300 text-base leading-relaxed">
             We publish the rosters because every dispatch is reproducible from
-            this page. If a developer-investor wants to mirror the cadence,
+            this page. If you want to mirror the cadence,
             three Tuesday-and-Friday hours per week is the entire workload.
           </p>
           <div className="flex flex-col sm:flex-row flex-wrap gap-3 pt-2">
