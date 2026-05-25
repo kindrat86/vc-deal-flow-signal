@@ -1729,6 +1729,141 @@ export const comparisons: Comparison[] = [
       { label: "How to build a two-layer deal flow stack", url: "/answers/how-to-build-a-two-layer-deal-flow-stack" },
     ],
   },
+  {
+    slug: "compare/gitdealflow-vs-a-twitter-list-for-early-sourcing",
+    title: "GitDealFlow vs a Twitter List for Early Sourcing",
+    description:
+      "A Twitter list can surface chatter and serendipity. GitDealFlow is stronger when you want a calmer, recurring signal layer built on changes you can verify instead of endless social flow.",
+    h1: "GitDealFlow vs a Twitter list for early sourcing",
+    intro:
+      "A Twitter list and a timing-first signal tool can both feel early. But they produce very different kinds of attention. One is driven by conversation. The other is driven by underlying public movement.",
+    sections: [
+      {
+        heading: "Twitter list — conversation-first discovery",
+        body: "A Twitter list is useful for following founders, operators, investors, and narratives in real time. The upside is serendipity and social context. The downside is velocity, mood, and signal dilution.",
+      },
+      {
+        heading: "GitDealFlow — movement-first discovery",
+        body: "GitDealFlow is stronger when you want a calmer recurring layer based on changes that can be verified through public engineering movement rather than whatever is loudest in the feed today.",
+      },
+      {
+        heading: "Where the feed breaks down",
+        body: "A Twitter list becomes weak when your attention gets captured by whoever posts most often rather than by what actually changed underneath the story. The feed can make you feel early while still keeping you reactive.",
+      },
+      {
+        heading: "Simple rule",
+        body: "Use a Twitter list when you want social context and ambient awareness. Use GitDealFlow when you want a calmer filter on what changed before the narrative gets crowded.",
+      },
+    ],
+    verdict:
+      "A Twitter list is useful for social context and serendipity. GitDealFlow is stronger when you want a calmer, more verifiable first layer for early sourcing instead of a reactive feed-driven workflow.",
+    relatedSectors: ["ai-ml", "developer-tools", "fintech"],
+    faqs: [
+      { question: "Can a Twitter list be enough for early sourcing?", answer: "It can help with awareness, but it is weak as a standalone system because it rewards noise and recency more than structured signal." },
+      { question: "What is GitDealFlow better at than a Twitter list?", answer: "Turning public movement into a calmer recurring filter instead of making you rely on whatever the feed happens to amplify." },
+      { question: "Should I use both?", answer: "Yes. Use the feed for social context and GitDealFlow for a steadier signal layer that keeps you from overreacting to chatter." },
+    ],
+    proofLinks: [
+      { label: "Why most alternative data tools feel late", url: "/answers/why-most-alternative-data-tools-feel-late" },
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+      { label: "Read the methodology", url: "/methodology" },
+    ],
+    nextReadLinks: [
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+      { label: "Get my First Look", url: "/firstlook" },
+      { label: "How to use a watchlist without overtrading", url: "/answers/how-to-use-a-watchlist-without-overtrading" },
+    ],
+  },
+  {
+    slug: "compare/gitdealflow-vs-a-manual-github-check-every-monday",
+    title: "GitDealFlow vs a Manual GitHub Check Every Monday",
+    description:
+      "Manual GitHub checks can work at very small scale. GitDealFlow is stronger when you want recurring timing without rebuilding the review process from scratch every week.",
+    h1: "GitDealFlow vs a manual GitHub check every Monday",
+    intro:
+      "A manual GitHub check can absolutely work in the beginning. But it solves a different problem than a recurring signal layer. One is a habit. The other is a system.",
+    sections: [
+      {
+        heading: "Manual GitHub check — craft and control",
+        body: "Manual GitHub review is useful when your universe is tiny and you want full control over how you inspect each company. The upside is precision and intimacy. The downside is that the workflow depends on your time every single week.",
+      },
+      {
+        heading: "GitDealFlow — recurring system",
+        body: "GitDealFlow is stronger when the issue is no longer whether you can inspect one company manually, but whether you want to keep rebuilding the same review process every Monday across a broader set of names.",
+      },
+      {
+        heading: "Where manual review breaks",
+        body: "Manual review starts breaking when consistency, breadth, and discipline become harder than the actual analysis. At that point the bottleneck is not intelligence. It is repeatability.",
+      },
+      {
+        heading: "Simple rule",
+        body: "If you only track a tiny handful of companies and enjoy the craft, manual review can be enough. If you want recurring breadth and a steadier rhythm, GitDealFlow is the better lane.",
+      },
+    ],
+    verdict:
+      "Manual GitHub checking is fine when the universe is tiny and the habit is sustainable. GitDealFlow is stronger when you want the discipline and breadth of a recurring signal system instead of rebuilding the same Monday workflow forever.",
+    relatedSectors: ["developer-tools", "ai-ml", "enterprise-saas"],
+    faqs: [
+      { question: "Should I manually check GitHub before paying for a signal tool?", answer: "Yes, especially if you want to feel the raw surface first. But once the manual routine becomes the bottleneck, a recurring signal layer becomes worth it." },
+      { question: "What is the biggest weakness of manual weekly review?", answer: "Consistency. The system only runs when you run it, and that makes breadth and timing harder to sustain." },
+      { question: "Can GitDealFlow replace manual review completely?", answer: "Not completely. It replaces part of the repeated scanning burden, but you may still inspect raw GitHub when something deserves deeper attention." },
+    ],
+    proofLinks: [
+      { label: "What startup engineering momentum actually means", url: "/answers/what-is-startup-engineering-momentum" },
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+      { label: "Read the methodology", url: "/methodology" },
+    ],
+    nextReadLinks: [
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+      { label: "What do you actually get from Dashboard each week?", url: "/answers/what-do-i-actually-get-from-dashboard-each-week" },
+      { label: "How to use a watchlist without overtrading", url: "/answers/how-to-use-a-watchlist-without-overtrading" },
+    ],
+  },
+  {
+    slug: "compare/dashboard-vs-a-custom-airtable-deal-flow-board",
+    title: "Dashboard vs a Custom Airtable Deal Flow Board",
+    description:
+      "A custom Airtable board is useful for organizing names you already track. Dashboard is stronger when you want a recurring signal surface that helps you decide what deserves attention in the first place.",
+    h1: "Dashboard vs a custom Airtable deal flow board",
+    intro:
+      "Airtable and Dashboard both promise organization, but they organize different things. One organizes what you already decided to track. The other helps you see what changed before your board is already stale.",
+    sections: [
+      {
+        heading: "Airtable board — custom pipeline memory",
+        body: "A custom Airtable board is useful when you need structure, statuses, notes, tags, and a team-friendly system around names already in your process. It is great at organization.",
+      },
+      {
+        heading: "Dashboard — recurring signal surface",
+        body: "Dashboard is useful when the problem is not how to store names, but how to notice what changed and what deserves attention each week before your board becomes a graveyard of stale rows.",
+      },
+      {
+        heading: "Where Airtable starts to strain",
+        body: "Airtable gets weaker when you ask it to generate signal instead of store workflow state. It can hold names beautifully, but it does not inherently tell you what changed or why now matters.",
+      },
+      {
+        heading: "Simple rule",
+        body: "If you need a customizable system of record, Airtable is useful. If you need a recurring signal surface that reduces scanning and re-ranking work, Dashboard is the stronger first layer.",
+      },
+    ],
+    verdict:
+      "A custom Airtable board is strong as a pipeline and organization layer. Dashboard is stronger as the recurring signal layer that tells you what deserves attention before you even decide what belongs on the board.",
+    relatedSectors: ["ai-ml", "developer-tools", "enterprise-saas"],
+    faqs: [
+      { question: "Can Airtable replace Dashboard?", answer: "Not really. Airtable is excellent at storing and organizing what you already track. Dashboard is better at recurring signal visibility and deciding what to track first." },
+      { question: "Should I use both?", answer: "Yes. For many users the best stack is Dashboard for recurring signal and Airtable for the pipeline state once a name enters the process." },
+      { question: "When is Dashboard unnecessary?", answer: "When your universe is still tiny and your main need is simple note-taking rather than recurring signal review." },
+    ],
+    proofLinks: [
+      { label: "What do you actually get from Dashboard each week?", url: "/answers/what-do-i-actually-get-from-dashboard-each-week" },
+      { label: "How to build a two-layer deal flow stack", url: "/answers/how-to-build-a-two-layer-deal-flow-stack" },
+      { label: "Read the methodology", url: "/methodology" },
+    ],
+    nextReadLinks: [
+      { label: "See the weekly operating surface", url: "/dashboard" },
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+      { label: "How to use a watchlist without overtrading", url: "/answers/how-to-use-a-watchlist-without-overtrading" },
+    ],
+  },
 ];
  
  // ---------------------------------------------------------------------------
