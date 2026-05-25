@@ -6425,6 +6425,162 @@ A strong memo makes the signal usable by someone else.`,
       "signal to memo workflow",
     ],
   },
+  {
+    slug: "how-to-use-gitdealflow-in-a-partner-meeting",
+    query: "How do I use GitDealFlow in a partner meeting?",
+    h1: "How to use GitDealFlow in a partner meeting",
+    description:
+      "Use GitDealFlow in a partner meeting by bringing one signal, one interpretation, one verification note, and one proposed next step. Keep it short and easy to challenge.",
+    tldr:
+      "The best way to use GitDealFlow in a partner meeting is to bring one company, one clear change, one reason it matters now, and one next step. The point is not to impress the room. The point is to make a decision easier.",
+    body: `A partner meeting is not the place to replay your whole workflow. It is the place to bring one clean decision-ready signal.
+
+**Quick answer.** Bring one company, one clear change, one interpretation, one verification note, and one proposed next step.
+
+**What to show.** Start with the exact public movement you noticed. Then explain why it matters before the market catches up. After that, say what still needs checking and what you want the team to do now.
+
+**Why this works.** A partner meeting rewards clarity more than volume. If you bring five noisy names, the room forgets all of them. If you bring one strong read with one clear next step, the room can act.
+
+**What to avoid.** Do not show too many tabs. Do not hide uncertainty. Do not pretend the signal is the entire investment case. Use it as the reason the company deserves attention now.`,
+    facts: [
+      {
+        claim:
+          "The current content system already separates timing from verification, which is exactly the structure a partner meeting needs in compressed form.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/deal-flow-timing-vs-verification",
+        sourceLabel: "Timing vs verification",
+      },
+      {
+        claim:
+          "Research, methodology, and comparison pages provide the proof surfaces needed when another partner wants to inspect the claim more deeply after the meeting.",
+        sourceUrl: "https://signals.gitdealflow.com/research",
+        sourceLabel: "Research",
+      },
+      {
+        claim:
+          "The sample watchlist provides a compact format that already resembles what a partner-room prompt should look like: one name, one reason, one link to inspect.",
+        sourceUrl: "https://gitdealflow.com/report",
+        sourceLabel: "Sample watchlist",
+      },
+    ],
+    faqs: [
+      {
+        q: "Should I bring multiple names into the meeting?",
+        a: "Only if each one is strong enough to survive discussion. In practice, one or two clean reads are better than five weak ones.",
+      },
+      {
+        q: "How much uncertainty should I show?",
+        a: "Enough to stay credible. The signal is strongest when you say what changed, what it may mean, and what still needs checking.",
+      },
+      {
+        q: "What is the best next step after presenting a signal?",
+        a: "A concrete next action: watch, outreach, deeper pass, or ignore for now. A partner meeting should end in an action, not a vibe.",
+      },
+    ],
+    ctaUrl: "/firstlook",
+    ctaLabel: "Get my First Look",
+    related: [
+      "how-to-explain-a-startup-signal-to-an-lp",
+      "how-to-turn-a-signal-into-an-investment-memo",
+      "how-to-share-a-startup-signal-with-a-co-investor",
+    ],
+    proofLinks: [
+      { label: "Read the research summary", url: "/research" },
+      { label: "Read the methodology", url: "/methodology" },
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+    ],
+    nextReadLinks: [
+      { label: "How to turn a signal into an investment memo", url: "/answers/how-to-turn-a-signal-into-an-investment-memo" },
+      { label: "How to share a startup signal with a co-investor", url: "/answers/how-to-share-a-startup-signal-with-a-co-investor" },
+      { label: "Get my First Look", url: "/firstlook" },
+      { label: "See the weekly operating surface", url: "/dashboard" },
+    ],
+    keywords: [
+      "how to use GitDealFlow in a partner meeting",
+      "partner meeting startup signal",
+      "deal flow partner meeting",
+      "how to present a startup signal in IC",
+      "venture partner meeting signal",
+    ],
+  },
+  {
+    slug: "how-to-use-a-watchlist-without-overtrading",
+    query: "How do I use a watchlist without overtrading?",
+    h1: "How to use a watchlist without overtrading",
+    description:
+      "A watchlist should change your attention, not force constant action. The clean rule is to use it for prioritization first, not for compulsive reaction.",
+    tldr:
+      "The best way to use a watchlist without overtrading is to treat it as a prioritization layer, not as a trigger to act on every new name or every weekly change.",
+    body: `A watchlist becomes dangerous when you confuse movement with obligation.
+
+**Quick answer.** Use the watchlist to prioritize attention, not to force action every week.
+
+**What the watchlist is for.** It tells you where to look sooner, not what to do impulsively. Its job is to improve timing and review discipline, not to manufacture urgency where none exists.
+
+**What good use looks like.** Most weeks, the right action is often just to notice, file, and wait. Some weeks, one name deserves outreach or a deeper pass. The watchlist is supposed to reduce chaos, not create it.
+
+**What overtrading looks like.** Acting on every spike, chasing every new name, and turning weekly movement into performative busyness. That is not discipline. That is noise with a nicer interface.
+
+**Simple rule.** Review everything. Act on little. Escalate only when the signal is clear enough that the next step feels cheaper than ignoring it.`,
+    facts: [
+      {
+        claim:
+          "The free Sunday issue is built as a small recurring attention surface rather than an overwhelming real-time firehose.",
+        sourceUrl: "https://gitdealflow.com/",
+        sourceLabel: "GitDealFlow homepage",
+      },
+      {
+        claim:
+          "The content system consistently positions the signal as a timing layer and not as a full replacement for judgment or diligence.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/deal-flow-timing-vs-verification",
+        sourceLabel: "Timing vs verification",
+      },
+      {
+        claim:
+          "Dashboard is framed as a calmer weekly operating surface, which supports recurring review without forcing a trade on every update.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/what-do-i-actually-get-from-dashboard-each-week",
+        sourceLabel: "Dashboard weekly value",
+      },
+    ],
+    faqs: [
+      {
+        q: "Should I act on something every week?",
+        a: "No. The watchlist is successful if it improves what you notice, even when the right move is simply to wait.",
+      },
+      {
+        q: "When should I escalate a name from the watchlist?",
+        a: "When the signal is strong enough that a specific next action feels cheaper than ignoring it — outreach, deeper pass, or internal discussion.",
+      },
+      {
+        q: "How do I know I am overtrading the signal?",
+        a: "If every weekly movement feels like it demands action, you are probably reacting to noise instead of using the watchlist as a prioritization tool.",
+      },
+    ],
+    ctaUrl: "https://gitdealflow.com/#signup",
+    ctaLabel: "Get the free Sunday issue",
+    related: [
+      "how-to-turn-a-weekly-watchlist-into-founder-outreach",
+      "how-to-build-a-two-layer-deal-flow-stack",
+      "what-do-i-actually-get-from-dashboard-each-week",
+    ],
+    proofLinks: [
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+      { label: "What do you actually get from Dashboard each week?", url: "/answers/what-do-i-actually-get-from-dashboard-each-week" },
+      { label: "Read the methodology", url: "/methodology" },
+    ],
+    nextReadLinks: [
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+      { label: "See the weekly operating surface", url: "/dashboard" },
+      { label: "How to turn a weekly watchlist into founder outreach", url: "/answers/how-to-turn-a-weekly-watchlist-into-founder-outreach" },
+      { label: "Weekly watchlist vs a static startup database", url: "/compare/weekly-watchlist-vs-a-static-startup-database" },
+    ],
+    keywords: [
+      "how to use a watchlist without overtrading",
+      "startup watchlist overtrading",
+      "investor watchlist discipline",
+      "weekly watchlist how to use",
+      "deal flow watchlist without noise",
+    ],
+  },
 ];
 
 export function getAgentQueryBySlug(slug: string): AgentQuery | undefined {
