@@ -246,9 +246,30 @@ export default function InsiderPage() {
             email and twenty-four hours of head-start. The Insider Circle is
             the tool that gives you the head-start. The next ten minutes
             explain why €97/mo is the most leveraged price in deal-flow
-            tooling.
+            tooling once recurring visibility already works and you need
+            recurring conviction support.
           </p>
         </header>
+
+        <section className="rounded-xl border border-emerald-500/30 bg-emerald-500/5 p-5 sm:p-6 space-y-3">
+          <p className="text-emerald-300 text-xs font-semibold uppercase tracking-wider">
+            Verify the claim before you buy
+          </p>
+          <p className="text-gray-300 text-sm leading-relaxed">
+            If you still need proof, compare logic, or buyer-side clarity before paying €97/mo, use the shortest page for that question first. Then come back when recurring visibility already feels useful and you want the tighter layer around the judgment.
+          </p>
+          <div className="flex flex-wrap gap-3 text-sm">
+            <Link href="/research" className="text-emerald-200 hover:text-emerald-100 underline underline-offset-2">
+              Read the research panel
+            </Link>
+            <Link href="/answers/when-should-i-use-dashboard-vs-insider" className="text-emerald-200 hover:text-emerald-100 underline underline-offset-2">
+              Choose Dashboard vs Insider
+            </Link>
+            <Link href="/buyers-guide" className="text-emerald-200 hover:text-emerald-100 underline underline-offset-2">
+              Read the buyer's guide
+            </Link>
+          </div>
+        </section>
 
         {/* STORY */}
         <section
