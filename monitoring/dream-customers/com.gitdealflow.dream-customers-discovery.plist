@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.gitdealflow.dream-customers-discovery</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/sipi/launch-projects/vc-deal-flow-signal/monitoring/dream-customers/run-discovery.sh</string>
+    </array>
+
+    <!-- Daily at 09:15 local. Deliberately 45 minutes after the existing
+         signal cron (08:30) so the two Claude sessions don't race for the
+         single Chrome browser. Chrome MCP only works while a real Chrome is
+         running, so pick a morning slot the browser is normally open. -->
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>9</integer>
+        <key>Minute</key>
+        <integer>15</integer>
+    </dict>
+
+    <!-- Don't run a backlog burst if the machine was asleep across the
+         scheduled time. -->
+    <key>RunAtLoad</key>
+    <false/>
+
+    <key>StandardOutPath</key>
+    <string>/Users/sipi/launch-projects/vc-deal-flow-signal/monitoring/dream-customers/launchd.discovery.out.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/sipi/launch-projects/vc-deal-flow-signal/monitoring/dream-customers/launchd.discovery.err.log</string>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/sipi/launch-projects/vc-deal-flow-signal/monitoring/dream-customers</string>
+
+    <!-- Inherit the GUI session's env so claude can find Chrome MCP's native
+         host, the user's HOME, etc. -->
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/Users/sipi/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string>
+    </dict>
+</dict>
+</plist>

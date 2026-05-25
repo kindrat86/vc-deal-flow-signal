@@ -77,6 +77,20 @@
     { "handle": "sonyatweetybird", "name": "Sonya Huang", "firm": "Sequoia Capital", "role": "Partner (AI thesis lead)", "segment": "F", "confidence": "HIGH", "last_tweet_at": null, "last_tweet_text": null, "last_checked_at": null },
     { "handle": "Alfred_Lin", "name": "Alfred Lin", "firm": "Sequoia Capital", "role": "Partner", "segment": "F", "confidence": "HIGH", "last_tweet_at": null, "last_tweet_text": null, "last_checked_at": null },
     { "handle": "Beezer232", "name": "Beezer Clarkson", "firm": "Sapphire Partners", "role": "Managing Director (LP-side)", "segment": "F", "confidence": "HIGH", "last_tweet_at": null, "last_tweet_text": null, "last_checked_at": null },
-    { "handle": "withfries2", "name": "Frank Chen", "firm": "(ex-a16z, current TBD)", "role": "Former Partner", "segment": "F", "confidence": "LOW", "last_tweet_at": null, "last_tweet_text": null, "last_checked_at": null }
+    { "handle": "withfries2", "name": "Frank Chen", "firm": "(ex-a16z, current TBD)", "role": "Former Partner", "segment": "F", "confidence": "LOW", "last_tweet_at": null, "last_tweet_text": null, "last_checked_at": null },
+
+    { "handle": "katie_haun", "name": "Katie Haun", "firm": "Haun Ventures", "role": "Founder/Managing Partner", "segment": "A", "confidence": "HIGH", "last_tweet_at": null, "last_tweet_text": null, "last_checked_at": null },
+    { "handle": "pitdesi", "name": "Sheel Mohnot", "firm": "Better Tomorrow Ventures", "role": "Co-Founder/GP", "segment": "A", "confidence": "HIGH", "last_tweet_at": null, "last_tweet_text": null, "last_checked_at": null },
+
+    { "handle": "bussgang", "name": "Jeff Bussgang", "firm": "Flybridge Capital", "role": "General Partner", "segment": "B", "confidence": "HIGH", "last_tweet_at": null, "last_tweet_text": null, "last_checked_at": null },
+    { "handle": "bdeeter", "name": "Byron Deeter", "firm": "Bessemer Venture Partners", "role": "Partner", "segment": "B", "confidence": "HIGH", "last_tweet_at": null, "last_tweet_text": null, "last_checked_at": null },
+    { "handle": "albertwenger", "name": "Albert Wenger", "firm": "Union Square Ventures", "role": "Partner", "segment": "B", "confidence": "HIGH", "last_tweet_at": null, "last_tweet_text": null, "last_checked_at": null },
+    { "handle": "patrick_oshag", "name": "Patrick O'Shaughnessy", "firm": "Positive Sum", "role": "Founder/CEO", "segment": "B", "confidence": "HIGH", "last_tweet_at": null, "last_tweet_text": null, "last_checked_at": null },
+    { "handle": "GeoffLewisOrg", "name": "Geoff Lewis", "firm": "Bedrock Capital", "role": "Founder/Managing Partner", "segment": "B", "confidence": "HIGH", "last_tweet_at": null, "last_tweet_text": null, "last_checked_at": null },
+    { "handle": "rebeccakaden", "name": "Rebecca Kaden", "firm": "Union Square Ventures", "role": "General Partner", "segment": "B", "confidence": "HIGH", "last_tweet_at": null, "last_tweet_text": null, "last_checked_at": null },
+
+    { "handle": "stephzhan", "name": "Stephanie Zhan", "firm": "Sequoia Capital", "role": "Partner", "segment": "F", "confidence": "HIGH", "last_tweet_at": null, "last_tweet_text": null, "last_checked_at": null },
+    { "handle": "andrew__reed", "name": "Andrew Reed", "firm": "Sequoia Capital", "role": "Partner", "segment": "F", "confidence": "HIGH", "last_tweet_at": null, "last_tweet_text": null, "last_checked_at": null },
+    { "handle": "saranormous", "name": "Sarah Guo", "firm": "Conviction", "role": "Founder/Managing Partner", "segment": "F", "confidence": "HIGH", "last_tweet_at": null, "last_tweet_text": null, "last_checked_at": null }
   ]
 }

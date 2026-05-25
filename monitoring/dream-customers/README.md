@@ -66,6 +66,53 @@ Chrome with the extension connected.
 tail -f cron.run.log cron.run.err cron.log
 ```
 
+## Daily Marcus discovery (second cron)
+
+A separate cron, `run-discovery.sh`, **finds new Marcus-fit handles** on X
+and appends them as `Sourced` rows. Where the signal cron above refreshes
+known contacts, this one grows the roster.
+
+Discovery rules (full text in `cron-prompt-discovery.md`):
+
+- Pick 5 random HIGH-confidence contacts as anchors (deterministic by date).
+- Visit each anchor's profile and harvest the "You might like" / "Who to
+  follow" sidebar.
+- Dedup against existing handles; drop firm-level/parody/operator-only
+  recommendations.
+- Quick-qualify each candidate by visiting their profile and matching role
+  keywords in the bio (Partner / GP / Founder of a fund).
+- Append up to 8 new contacts per run with `confidence: LOW` and
+  `stage_source: auto:x-discovery-sweep`. You review + bump confidence in
+  the dashboard.
+
+### Install the discovery launchd job (one time)
+
+```bash
+cd monitoring/dream-customers
+
+cp com.gitdealflow.dream-customers-discovery.plist ~/Library/LaunchAgents/
+launchctl load ~/Library/LaunchAgents/com.gitdealflow.dream-customers-discovery.plist
+launchctl list | grep dream-customers-discovery
+```
+
+Fires every day at **09:15 local** — deliberately 45 minutes after the
+signal cron at 08:30 so the two Claude sessions never race for the single
+Chrome browser. Edit `StartCalendarInterval` in the plist for a different
+slot.
+
+### Trigger a discovery run manually
+
+```bash
+./run-discovery.sh
+tail -f cron.discovery.run.log cron.discovery.run.err cron.discovery.log
+```
+
+### Pause discovery (keeps signal cron running)
+
+```bash
+launchctl unload ~/Library/LaunchAgents/com.gitdealflow.dream-customers-discovery.plist
+```
+
 If Chrome MCP isn't connected (no browser running, or multiple browsers
 open without a designated one), the session exits cleanly within a few
 seconds and writes a `cron-skipped-*.log` entry. Next scheduled run picks
