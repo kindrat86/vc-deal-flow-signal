@@ -338,7 +338,7 @@ const faqs: { q: string; a: string }[] = [
   },
   {
     q: "What is the MCP server and is it really free forever?",
-    a: "The MCP (Model Context Protocol) server exposes five read-only tools — get_trending_startups, search_startups_by_sector, get_startup_signal, get_signals_summary, and get_methodology — to any MCP-compatible AI client (Claude, Cursor, Windsurf, Mistral Le Chat, ChatGPT GPT, custom agents). It is published on npm as @gitdealflow/mcp-signal and runs as a Streamable HTTP endpoint at signals.gitdealflow.com/api/mcp/rpc. It is free and will never be gated — it is the distribution magnet that brings developer-investors into the funnel. New paid tools may be added as a separate paid tier; the existing five stay free permanently.",
+    a: "The MCP (Model Context Protocol) server exposes five read-only tools — get_trending_startups, search_startups_by_sector, get_startup_signal, get_signals_summary, and get_methodology — to any MCP-compatible AI client (Claude, Cursor, Windsurf, Mistral Le Chat, ChatGPT GPT, custom agents). It is published on npm as @gitdealflow/mcp-signal and runs as a Streamable HTTP endpoint at signals.gitdealflow.com/api/mcp/rpc. It is free and will never be gated — it is the distribution magnet that brings technical early adopters into the funnel, the same way a free Chrome extension or API trial does in classic technical-tool GTM.",
   },
   {
     q: "Do you offer enterprise pricing?",

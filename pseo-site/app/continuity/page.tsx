@@ -411,7 +411,7 @@ export default function ContinuityHubPage() {
               href="/decade-in-a-day"
               className="text-violet-300 hover:text-violet-200 underline decoration-dotted text-sm"
             >
-              Read the developer-investor curriculum →
+              Read the earlier-signal curriculum →
             </Link>
             <Link
               href="/funnels"

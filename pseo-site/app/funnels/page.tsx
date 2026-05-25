@@ -489,7 +489,7 @@ export default function FunnelHubPage() {
               { n: 9, name: "The offer stack", where: "/pricing + /walkthrough — 8-row stack" },
               { n: 10, name: "Trial Closes (\"if all this did was…\")", where: "/walkthrough — 3-line cluster" },
               { n: 11, name: "Money Close", where: "/walkthrough — \"the deal you miss is the cost\"" },
-              { n: 12, name: "Identity Close", where: "/walkthrough + home — \"developer-investor\"" },
+              { n: 12, name: "Identity Close", where: "/walkthrough + home — earlier-signal framing" },
               { n: 13, name: "Pricing Close", where: "/walkthrough — \"€1,728/yr stack at €119.64\"" },
               { n: 14, name: "Urgency / Scarcity Close", where: "/walkthrough — founding-rate lock" },
               { n: 15, name: "Encore Close", where: "/walkthrough — 8-line summary at the end" },
