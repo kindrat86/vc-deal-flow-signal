@@ -6968,6 +6968,164 @@ A strong memo makes the signal usable by someone else.`,
       "small fund weekly review workflow",
     ],
   },
+  {
+    slug: "how-to-write-a-one-page-signal-brief",
+    query: "How do I write a one-page signal brief?",
+    h1: "How to write a one-page signal brief",
+    description:
+      "A one-page signal brief should fit on one screenful of logic: what changed, why it matters now, what still needs checking, and what you want to do next.",
+    tldr:
+      "A strong one-page signal brief is short, specific, and decision-ready. It names the change, the likely meaning, the open questions, and the exact next action.",
+    body: `A one-page signal brief is not a mini white paper. Its job is to make one signal legible enough that another person can decide what to do with it.
+
+**Quick answer.** Write it in four blocks: what changed, why it matters now, what still needs checking, and what you want to do next.
+
+**Block one — what changed.** State the observable movement in plain language.
+
+**Block two — why it matters.** Explain why the change could matter before the market catches up.
+
+**Block three — what still needs checking.** Say what is still uncertain so the brief stays credible.
+
+**Block four — next action.** End with one recommendation: watch, outreach, deeper pass, or drop.
+
+If the brief cannot survive on one page, the thinking is probably still too fuzzy.`,
+    facts: [
+      {
+        claim:
+          "The site already separates timing, verification, and escalation paths, which maps directly onto a concise one-page brief structure.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/deal-flow-timing-vs-verification",
+        sourceLabel: "Timing vs verification",
+      },
+      {
+        claim:
+          "The partner-meeting and investment-memo pages already frame how to compress signal into a reusable decision artifact.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/how-to-turn-a-signal-into-an-investment-memo",
+        sourceLabel: "Signal to memo answer",
+      },
+      {
+        claim:
+          "The sample Sunday watchlist is already a compact proof surface that shows how to present one name, one reason, and one link clearly.",
+        sourceUrl: "https://gitdealflow.com/report",
+        sourceLabel: "Sample watchlist",
+      },
+    ],
+    faqs: [
+      {
+        q: "How long should a one-page signal brief be?",
+        a: "Short enough that the reader can understand the signal and the next action in one sitting without hunting through attachments.",
+      },
+      {
+        q: "Should I include every supporting detail?",
+        a: "No. Include the minimum needed to make the signal legible and credible, then link to the deeper proof if needed.",
+      },
+      {
+        q: "What is the biggest mistake in a signal brief?",
+        a: "Turning it into a vague essay instead of a clear decision artifact with a specific next step.",
+      },
+    ],
+    ctaUrl: "/firstlook",
+    ctaLabel: "Get my First Look",
+    related: [
+      "how-to-turn-a-signal-into-an-investment-memo",
+      "how-to-explain-a-startup-signal-to-an-lp",
+      "how-to-use-gitdealflow-in-a-partner-meeting",
+    ],
+    proofLinks: [
+      { label: "How to turn a signal into an investment memo", url: "/answers/how-to-turn-a-signal-into-an-investment-memo" },
+      { label: "Read the methodology", url: "/methodology" },
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+    ],
+    nextReadLinks: [
+      { label: "How to explain a startup signal to an LP", url: "/answers/how-to-explain-a-startup-signal-to-an-lp" },
+      { label: "How to use GitDealFlow in a partner meeting", url: "/answers/how-to-use-gitdealflow-in-a-partner-meeting" },
+      { label: "Get my First Look", url: "/firstlook" },
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+    ],
+    keywords: [
+      "how to write a one-page signal brief",
+      "one page startup signal brief",
+      "signal brief venture investing",
+      "startup signal summary memo",
+      "one page investment signal note",
+    ],
+  },
+  {
+    slug: "how-to-decide-when-to-ignore-a-signal",
+    query: "How do I decide when to ignore a signal?",
+    h1: "How to decide when to ignore a signal",
+    description:
+      "Ignore a signal when it is vague, expensive to interpret, hard to verify, or weaker than the next best use of your attention. The goal is discipline, not maximum reaction.",
+    tldr:
+      "The right time to ignore a signal is when the cost of interpreting it is higher than the likely value of acting on it. Good signal discipline includes saying no early and often.",
+    body: `A useful signal workflow is not just about what you follow. It is also about what you ignore.
+
+**Quick answer.** Ignore a signal when it is too vague, too noisy, too expensive to interpret, or clearly weaker than the next best use of your attention.
+
+**What weak signals look like.** They usually require too much narrative stitching, too many tabs, or too much wishful interpretation before they become actionable.
+
+**Why ignoring matters.** The value of a signal system is not volume. It is cleaner attention. A workflow that cannot ignore weak signals turns curiosity into churn.
+
+**Simple rule.** If you cannot explain the signal clearly, verify it cheaply, and point to a sensible next step, ignoring it is often the correct move.`,
+    facts: [
+      {
+        claim:
+          "The site already distinguishes between timing, verification, and escalation, which implies that some signals should remain at the watch stage instead of being acted on immediately.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/deal-flow-timing-vs-verification",
+        sourceLabel: "Timing vs verification",
+      },
+      {
+        claim:
+          "The watchlist-discipline and small-fund ranking pages already frame actionability as more important than drama or raw movement.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/how-to-use-a-watchlist-without-overtrading",
+        sourceLabel: "Watchlist discipline",
+      },
+      {
+        claim:
+          "First Look is positioned as the escalation path when a signal is almost ready but not yet clear enough to act on directly.",
+        sourceUrl: "https://gitdealflow.com/firstlook.html",
+        sourceLabel: "First Look page",
+      },
+    ],
+    faqs: [
+      {
+        q: "What is the biggest reason to ignore a signal?",
+        a: "When it creates curiosity without a clear next step. Attention is limited, so weak signals should lose quickly.",
+      },
+      {
+        q: "Can I come back to an ignored signal later?",
+        a: "Yes. Ignoring a signal now does not mean denying it forever. It means the current evidence does not justify attention yet.",
+      },
+      {
+        q: "When should I deepen instead of ignore?",
+        a: "When the signal is almost actionable but still needs one sharper pass to become legible and useful.",
+      },
+    ],
+    ctaUrl: "/firstlook",
+    ctaLabel: "Get my First Look",
+    related: [
+      "how-to-use-a-watchlist-without-overtrading",
+      "how-to-rank-startup-signals-in-a-small-fund",
+      "how-to-decide-when-a-signal-deserves-founder-outreach",
+    ],
+    proofLinks: [
+      { label: "How to use a watchlist without overtrading", url: "/answers/how-to-use-a-watchlist-without-overtrading" },
+      { label: "How to rank startup signals in a small fund", url: "/answers/how-to-rank-startup-signals-in-a-small-fund" },
+      { label: "Read the methodology", url: "/methodology" },
+    ],
+    nextReadLinks: [
+      { label: "How to decide when a signal deserves founder outreach", url: "/answers/how-to-decide-when-a-signal-deserves-founder-outreach" },
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+      { label: "Get my First Look", url: "/firstlook" },
+      { label: "How to build a two-layer deal flow stack", url: "/answers/how-to-build-a-two-layer-deal-flow-stack" },
+    ],
+    keywords: [
+      "how to decide when to ignore a signal",
+      "ignore weak startup signal",
+      "when to ignore alternative data signal",
+      "signal discipline investing",
+      "when not to act on a startup signal",
+    ],
+  },
 ];
 
 export function getAgentQueryBySlug(slug: string): AgentQuery | undefined {
