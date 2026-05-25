@@ -42,13 +42,33 @@ export default function PrivacyPage() {
         <p className="text-gray-400 text-sm">Effective {EFFECTIVE} · Plain English first, precise terms below.</p>
       </header>
 
+      <section className="mb-8 rounded-xl border border-emerald-700/30 bg-emerald-950/20 p-5 sm:p-6 space-y-3">
+        <p className="text-emerald-300 text-xs font-semibold uppercase tracking-[0.14em]">
+          Start with the most-requested trust routes
+        </p>
+        <p className="text-gray-300 text-sm leading-relaxed">
+          Privacy readers usually want the processor list, the DPA, and the security summary that explains how the data is protected in practice.
+        </p>
+        <div className="flex flex-wrap gap-3">
+          <Link href="/subprocessors" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-emerald-600 text-white text-sm font-semibold hover:bg-emerald-500 transition-colors">
+            Review subprocessors →
+          </Link>
+          <Link href="/dpa" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+            Read the DPA →
+          </Link>
+          <Link href="/security" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+            Read security overview →
+          </Link>
+        </div>
+      </section>
+
       <section className="mb-8 rounded-xl border border-emerald-500/30 bg-emerald-500/5 p-5">
         <h2 className="text-emerald-300 font-semibold mb-3">The short version</h2>
         <ul className="text-gray-200 text-sm leading-relaxed space-y-2 list-disc list-outside ml-5">
           <li><strong>We rank public companies, not people.</strong> Inputs are the public GitHub events API, Wikidata, and SSRN — not individual user activity.</li>
           <li><strong>Free subscribers</strong> give us only an email address; we use it to send the weekly digest and the optional drip sequence.</li>
           <li><strong>Paid subscribers</strong> add a Stripe customer ID; Stripe handles payment data — we never see card numbers.</li>
-          <li><strong>Pseudonymous analytics</strong> via PostHog EU. We do not set persistent identifiers across sites and we honor <Link href="/.well-known/dnt-policy.txt" className="text-sky-400 hover:underline">DNT: 1</Link>.</li>
+          <li><strong>Pseudonymous analytics</strong> via PostHog EU. We set <em>one</em> first-party cookie on <code className="text-emerald-400">.gitdealflow.com</code> so the same visitor isn&apos;t double-counted across pages — no third-party trackers. We honor <Link href="/.well-known/dnt-policy.txt" className="text-sky-400 hover:underline">DNT: 1</Link> and Global Privacy Control by auto-opting-out.</li>
           <li><strong>No selling, no behavioural advertising,</strong> ever. CCPA "do-not-sell" is moot — there's nothing to sell.</li>
           <li><strong>Email <a className="text-sky-400 hover:underline" href="mailto:signal@gitdealflow.com">signal@gitdealflow.com</a></strong> for access, deletion, or DPA execution.</li>
         </ul>
@@ -63,7 +83,7 @@ export default function PrivacyPage() {
         <ul className="list-disc list-outside ml-5 space-y-1">
           <li><strong>Subscriber data</strong> — email address (free + paid), Stripe customer ID (paid), share-token records (when you create a "share my receipts" link). Legal basis: contract (Art. 6(1)(b)) for paid; consent (Art. 6(1)(a)) for free email opt-in.</li>
           <li><strong>Server logs</strong> — request URL, IP, user-agent. Stored 30 days at Vercel (the hosting provider). Legal basis: legitimate interest (Art. 6(1)(f)) in operating the service.</li>
-          <li><strong>Pseudonymous analytics</strong> — page-view counters, sector popularity. PostHog EU; person profiles are <em>identified-only</em> (anonymous visitors never get a profile). Legal basis: legitimate interest.</li>
+          <li><strong>Pseudonymous analytics</strong> — page-view counters, sector popularity. PostHog EU; person profiles are <em>identified-only</em> (anonymous visitors never get a profile). One first-party cookie (<code className="text-emerald-400">ph_*</code>) is set on <code className="text-emerald-400">.gitdealflow.com</code> to stitch pageviews from the same visitor across our own subdomains; this cookie carries an opaque ID, never a name or email. Legal basis: legitimate interest. Browsers sending DNT or GPC are excluded automatically.</li>
         </ul>
 
         <h2 className="text-xl font-semibold text-gray-100">3 · What we do NOT collect</h2>
