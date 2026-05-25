@@ -355,9 +355,31 @@ export default function FirstLookPage() {
             Most investors won&rsquo;t pay €9.97/mo for a tool they
             haven&rsquo;t tested on their actual thesis. Fair. The First Look
             Pass exists for that exact gap. €7, one-time, no subscription —
-            and €7 of credit if you upgrade.
+            and €7 of credit if you upgrade. If your real question is narrow,
+            hot, and already expensive, this is the paid step before a
+            recurring workflow.
           </p>
         </header>
+
+        <section className="rounded-xl border border-amber-500/30 bg-amber-500/5 p-5 sm:p-6 space-y-3">
+          <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider">
+            Verify the claim before you buy
+          </p>
+          <p className="text-gray-300 text-sm leading-relaxed">
+            If you still need proof, comparison, or buyer-side clarity before paying €7, use the shortest page for that job first. Then come back when the question is live.
+          </p>
+          <div className="flex flex-wrap gap-3 text-sm">
+            <Link href="/research" className="text-amber-200 hover:text-amber-100 underline underline-offset-2">
+              Read the research panel
+            </Link>
+            <Link href="/compare/crunchbase-alternative-for-angel-investors" className="text-amber-200 hover:text-amber-100 underline underline-offset-2">
+              Compare timing vs verification
+            </Link>
+            <Link href="/buyers-guide" className="text-amber-200 hover:text-amber-100 underline underline-offset-2">
+              Read the buyer's guide
+            </Link>
+          </div>
+        </section>
 
         {/* CURIOSITY LOOPS — Brunson DotCom Secrets Ch 12 (Building Block #3,
             "What you'll discover"). Squeeze placement: first thing after the
