@@ -1,30 +1,29 @@
 #!/usr/bin/env node
-// One-time setup: open a real (headed) browser, you log into x.com once,
-// the script saves storage state (cookies + localStorage) so the daily
-// discovery cron can reuse the session headlessly without a password,
-// without API keys, and without holding open your main Chrome.
+// One-time setup: open a real (headed) browser pointed at x.com/login.
+// You log in. As soon as the auth_token cookie appears, the script
+// auto-saves the session and closes the browser — no Enter press required.
 //
-// Re-run this when the cron starts failing with "re-run setup" — X's
-// session cookies last roughly 30 days.
+// Re-run this when the cron logs "reason=session-expired" — X's session
+// cookies last roughly 30 days.
 
 import { chromium } from 'playwright';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import readline from 'readline';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const STATE_PATH = path.join(HERE, '.x-state.json');
+const AUTH_COOKIE = 'auth_token';
+const POLL_MS = 1000;
+const TIMEOUT_MS = 10 * 60 * 1000; // 10 minutes
 
-function waitForEnter(prompt) {
-  return new Promise((resolve) => {
-    const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
-    rl.question(prompt, () => { rl.close(); resolve(); });
-  });
-}
+function sleep(ms) { return new Promise((r) => setTimeout(r, ms)); }
 
 async function main() {
-  console.log('Opening a clean Chromium window. Log into x.com / @TheDataNerd');
-  console.log('there. When the home timeline loads, come back here and press Enter.');
+  console.log('');
+  console.log('STEP 1: A Chromium window will open in a moment.');
+  console.log('STEP 2: Log into x.com inside THAT window (not in your terminal).');
+  console.log('STEP 3: This script auto-detects when login succeeds and saves the');
+  console.log('        session. You do NOT need to press Enter or come back here.');
   console.log('');
 
   const browser = await chromium.launch({ headless: false });
@@ -36,21 +35,28 @@ async function main() {
   const page = await context.newPage();
   await page.goto('https://x.com/login', { waitUntil: 'domcontentloaded' });
 
-  await waitForEnter('Press Enter once you see your x.com home timeline... ');
-
-  // Quick sanity: are we logged in? Cheapest check: presence of a SideNav link to /home.
-  const sideNavHome = await page.locator('a[href="/home"][aria-label*="Home"]').first().count();
-  if (sideNavHome === 0) {
-    console.warn('Heads-up: home side-nav link not detected — session may not be saved correctly.');
-    console.warn('Continuing anyway. If the cron fails with "re-run setup", come back here.');
+  console.log('Polling every 1s for x.com auth_token cookie (timeout 10min)...');
+  const start = Date.now();
+  while (Date.now() - start < TIMEOUT_MS) {
+    const cookies = await context.cookies('https://x.com');
+    const authCookie = cookies.find((c) => c.name === AUTH_COOKIE);
+    if (authCookie && authCookie.value) {
+      console.log(`Detected ${AUTH_COOKIE} cookie. Saving session...`);
+      await context.storageState({ path: STATE_PATH });
+      await browser.close();
+      console.log(`Saved to ${STATE_PATH}`);
+      console.log('You can now run:  node discover.mjs');
+      return;
+    }
+    await sleep(POLL_MS);
   }
 
-  await context.storageState({ path: STATE_PATH });
   await browser.close();
-
-  console.log('');
-  console.log(`Saved session to ${STATE_PATH}`);
-  console.log('You can now run:  node discover.mjs   (or trigger the cron)');
+  console.error('');
+  console.error('Timed out after 10 minutes without detecting auth_token.');
+  console.error('Did you complete the x.com login in the Chromium window?');
+  console.error('Re-run when ready.');
+  process.exit(1);
 }
 
 main().catch((err) => {
