@@ -1228,6 +1228,7 @@ export const comparisons: Comparison[] = [
       { label: "Get my First Look", url: "/firstlook" },
     ],
   },
+];
 
 // ---------------------------------------------------------------------------
 // Programmatic "vs" comparisons — auto-generated for every competitor pair

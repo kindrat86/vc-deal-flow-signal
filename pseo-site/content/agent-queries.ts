@@ -5341,6 +5341,160 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
       "technical startup deal flow",
     ],
   },
+  {
+    slug: "when-should-i-use-dashboard-vs-insider",
+    query: "When should I use Dashboard vs Insider?",
+    h1: "When should you use Dashboard vs Insider?",
+    description:
+      "Use Dashboard when you want a recurring weekly signal surface. Use Insider when you want a higher-touch layer around judgment, context, and steadier support.",
+    tldr:
+      "Use Dashboard when you want a dependable weekly operating surface. Use Insider when you want a smaller, higher-touch layer with more context, steadiness, and direct support around your decisions.",
+    body: `Dashboard and Insider solve different versions of the same problem. One gives you a recurring surface to review what changed. The other gives you a tighter layer of context and support when you do not want to carry the decision alone.
+
+**Quick answer.** Dashboard is the recurring signal surface. Insider is the higher-touch context layer.
+
+**Use Dashboard when...** you want a calmer weekly workflow, more names, and a better way to review momentum without opening too many tabs. The value is repeated exposure and cleaner weekly rhythm.
+
+**Use Insider when...** you already know the signal is useful but want more support, more context, and a smaller layer around the judgment itself. Insider makes more sense when the bottleneck is not access to names, but steadiness around what to do with them.
+
+**A simple rule.** If you mainly need a better weekly operating surface, choose Dashboard. If you need a room, a tighter layer, and more confidence around live decisions, choose Insider.`,
+    facts: [
+      {
+        claim:
+          "Dashboard is positioned as the main recurring tier and the dependable weekly operating surface.",
+        sourceUrl: "https://gitdealflow.com/dashboard.html",
+        sourceLabel: "Dashboard page",
+      },
+      {
+        claim:
+          "Insider is positioned as the higher-touch operating layer for readers who want steadiness and context, not just more proof.",
+        sourceUrl: "https://gitdealflow.com/insider.html",
+        sourceLabel: "Insider page",
+      },
+      {
+        claim:
+          "The routing system across proof pages already distinguishes free watch, First Look, Dashboard, and Buyers Guide as separate next-step lanes.",
+        sourceUrl: "https://signals.gitdealflow.com/research",
+        sourceLabel: "Research routing",
+      },
+    ],
+    faqs: [
+      {
+        q: "Should I jump straight to Insider?",
+        a: "Usually only if the signal already makes sense to you and the real bottleneck is confidence, context, or direct support rather than weekly visibility.",
+      },
+      {
+        q: "Can Dashboard be enough on its own?",
+        a: "Yes. For many readers the weekly operating surface is enough, especially if the main need is recurring signal rather than higher-touch guidance.",
+      },
+      {
+        q: "What if I am still too early for both?",
+        a: "Start with the free Sunday issue, then use First Look if one thesis becomes urgent before you commit to a recurring lane.",
+      },
+    ],
+    ctaUrl: "/dashboard",
+    ctaLabel: "See the weekly operating surface",
+    related: [
+      "when-should-i-use-first-look-vs-dashboard",
+      "best-vc-deal-flow-software-2026",
+      "what-is-the-best-vc-research-stack-for-2026",
+    ],
+    proofLinks: [
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
+      { label: "Read the methodology", url: "/methodology" },
+    ],
+    nextReadLinks: [
+      { label: "See the weekly operating surface", url: "/dashboard" },
+      { label: "See the higher-touch layer", url: "/insider" },
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+      { label: "Get my First Look", url: "/firstlook" },
+    ],
+    keywords: [
+      "dashboard vs insider",
+      "when should I use dashboard vs insider",
+      "GitDealFlow dashboard or insider",
+      "weekly signal surface vs higher touch",
+      "deal flow dashboard vs insider circle",
+    ],
+  },
+  {
+    slug: "can-gitdealflow-replace-crunchbase",
+    query: "Can GitDealFlow replace Crunchbase?",
+    h1: "Can GitDealFlow replace Crunchbase?",
+    description:
+      "Not completely. GitDealFlow is stronger for earlier timing. Crunchbase is still useful for verification, company lookup, and broader context after a name deserves attention.",
+    tldr:
+      "GitDealFlow can replace Crunchbase for some timing jobs, but not for every verification job. The strongest stack is usually GitDealFlow first, Crunchbase second.",
+    body: `GitDealFlow is not a full startup database, and it is not trying to be. It is strongest when the real job is earlier timing rather than broad verification.
+
+**Quick answer.** No, not completely. GitDealFlow is better for earlier signal. Crunchbase is still useful for company lookup, funding history, and a lighter verification pass after something already deserves attention.
+
+**Where GitDealFlow can replace Crunchbase.** It can replace Crunchbase as the first place you look when the real problem is earlier attention, cleaner timing, and noticing change before the story gets crowded.
+
+**Where Crunchbase still matters.** It still matters for funding rounds, investor lists, basic company facts, and quick background checks after a name is already on your radar.
+
+**The clean stack.** For most small investors the strongest workflow is simple: GitDealFlow first for timing, Crunchbase second for verification. The mistake is expecting a verification tool to do an early-signal job.`,
+    facts: [
+      {
+        claim:
+          "GitDealFlow is positioned as an earlier timing surface rather than a broad replacement for every database workflow.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/deal-flow-timing-vs-verification",
+        sourceLabel: "Timing vs verification",
+      },
+      {
+        claim:
+          "The comparison surface already distinguishes GitDealFlow's timing role from Crunchbase's verification role.",
+        sourceUrl: "https://signals.gitdealflow.com/compare/crunchbase-alternative-for-angel-investors",
+        sourceLabel: "Crunchbase alternative comparison",
+      },
+      {
+        claim:
+          "The strongest existing compare pages frame GitDealFlow as the first layer and databases as second-layer checks.",
+        sourceUrl: "https://signals.gitdealflow.com/compare/github-signals-vs-crunchbase-alerts",
+        sourceLabel: "GitHub signals vs Crunchbase",
+      },
+    ],
+    faqs: [
+      {
+        q: "Can I stop using Crunchbase if I use GitDealFlow?",
+        a: "Sometimes, but usually not entirely. GitDealFlow is stronger for earlier timing. Crunchbase is still useful for verification and quick company lookup after attention begins.",
+      },
+      {
+        q: "What job does GitDealFlow do better?",
+        a: "Earlier public timing. It helps you notice movement before the round feels obvious.",
+      },
+      {
+        q: "What job does Crunchbase still do better?",
+        a: "Funding history, investor lists, basic company facts, and broad verification after a company is already visible.",
+      },
+    ],
+    ctaUrl: "/compare/crunchbase-alternative-for-angel-investors",
+    ctaLabel: "See the Crunchbase comparison",
+    related: [
+      "deal-flow-timing-vs-verification",
+      "best-vc-deal-flow-software-2026",
+      "github-deal-flow-for-investors",
+    ],
+    proofLinks: [
+      { label: "A better Crunchbase alternative when timing matters", url: "/compare/crunchbase-alternative-for-angel-investors" },
+      { label: "GitHub signals vs Crunchbase alerts", url: "/compare/github-signals-vs-crunchbase-alerts" },
+      { label: "Read the methodology", url: "/methodology" },
+    ],
+    nextReadLinks: [
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+      { label: "Get my First Look", url: "/firstlook" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
+      { label: "A better Crunchbase alternative when timing matters", url: "/compare/crunchbase-alternative-for-angel-investors" },
+    ],
+    keywords: [
+      "can GitDealFlow replace Crunchbase",
+      "GitDealFlow vs Crunchbase",
+      "replace Crunchbase for startup sourcing",
+      "early signal vs Crunchbase",
+      "Crunchbase alternative timing",
+    ],
+  },
 ];
 
 export function getAgentQueryBySlug(slug: string): AgentQuery | undefined {
