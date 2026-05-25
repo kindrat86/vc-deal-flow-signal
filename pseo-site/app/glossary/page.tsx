@@ -176,8 +176,30 @@ export default function GlossaryPage() {
         <p className="text-gray-400 text-base leading-relaxed mb-10">
           Key terms used in startup engineering signal analysis. Each
           definition is self-contained — useful for investors evaluating
-          GitHub-based deal flow data for the first time.
+          GitHub-based deal flow data for the first time. If you already care
+          more about proof, comparison, or buyer-side fit than definitions,
+          start with the sharper routes below.
         </p>
+
+        <section className="mb-10 rounded-2xl border border-sky-700/30 bg-sky-950/20 p-6 sm:p-8">
+          <p className="text-sky-300 text-xs font-semibold uppercase tracking-[0.14em] mb-2">
+            Start with the highest-intent routes
+          </p>
+          <p className="text-gray-300 text-sm leading-relaxed mb-4">
+            Use the glossary when you want definitions. But if your real question is proof, timing, or what to buy first, start with the sharper pages first.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/research" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-sky-600 text-white text-sm font-semibold hover:bg-sky-500 transition-colors">
+              Read the research panel →
+            </Link>
+            <Link href="/answers/deal-flow-timing-vs-verification" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              Timing vs verification →
+            </Link>
+            <Link href="/buyers-guide" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              Read the buyer's guide →
+            </Link>
+          </div>
+        </section>
 
         {/* Quick navigation */}
         <div className="mb-10 flex flex-wrap gap-2">
