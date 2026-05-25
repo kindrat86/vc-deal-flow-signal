@@ -7,7 +7,7 @@ import { getHreflangLanguages } from "@/lib/hreflang";
 export const metadata: Metadata = {
   title: "Alternatives to Harmonic.ai, Dealroom, Crunchbase & Forager.ai",
   description:
-    "Compare VC Deal Flow Signal against Harmonic.ai, Dealroom, Crunchbase alerts, and Forager.ai. Engineering-signal alternatives for early deal flow — 6-12 weeks before fundraise announcements.",
+    "Compare GitDealFlow with Harmonic.ai, Dealroom, Crunchbase alerts, and Forager.ai for earlier engineering-signal deal flow.",
   // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
   alternates: {
     canonical: "/alternatives",
@@ -98,8 +98,30 @@ export default function AlternativesIndex() {
         <p className="text-gray-400 text-base leading-relaxed mb-10">
           Head-to-head alternatives to the most common deal flow tools investors
           already use. Each comparison covers signal philosophy, lead time,
-          coverage, pricing, and when each tool is the better fit.
+          coverage, pricing, and when each tool is the better fit. If you are
+          comparison-shopping, start with the alternatives that answer the
+          timing question first.
         </p>
+
+        <section className="mb-10 rounded-2xl border border-sky-700/30 bg-sky-950/20 p-6 sm:p-8">
+          <p className="text-sky-300 text-xs font-semibold uppercase tracking-[0.14em] mb-2">
+            Start with the highest-intent routes
+          </p>
+          <p className="text-gray-300 text-sm leading-relaxed mb-4">
+            If the real question is timing, do not start with the broad index. Start with the comparisons that explain what the default tools miss and what kind of stack makes sense next.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/compare/crunchbase-alternative-for-angel-investors" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-sky-600 text-white text-sm font-semibold hover:bg-sky-500 transition-colors">
+              Crunchbase alternative for angels →
+            </Link>
+            <Link href="/compare/best-alternative-data-tools-for-angel-investors" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              Best alternative data tools →
+            </Link>
+            <Link href="/buyers-guide" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              Read the buyer's guide →
+            </Link>
+          </div>
+        </section>
 
         <div className="space-y-6">
           {alternatives.map((alt) => (
