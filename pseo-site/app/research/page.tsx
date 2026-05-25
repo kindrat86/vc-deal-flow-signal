@@ -402,7 +402,9 @@ export default function ResearchPage() {
             <strong>20 sectors</strong>, spanning 5 quarters from Q2 2025
             through Q2 2026 (<strong>219 startup-period observations</strong>).
             Below: 30 atomic findings from the paper, each cited to its
-            section, each falsifiable against the public dataset.
+            section, each falsifiable against the public dataset. If your
+            question is whether GitHub activity can surface startup momentum
+            before a round gets crowded, this is the main evidence page.
           </p>
           <div
             data-speakable
@@ -572,7 +574,8 @@ export default function ResearchPage() {
             The panel tells you what tends to matter. If the question is still
             early, start with the Sunday watchlist. If the thesis is already
             live, move straight to a sharper sector pass. If you still need to
-            pressure-test the category, read the buyer's guide first.
+            pressure-test the category, compare timing versus verification and
+            read the buyer's guide before committing to a heavier workflow.
           </p>
           <div className="flex flex-wrap gap-3 text-sm">
             <Link href="https://gitdealflow.com/#signup" className="inline-flex items-center rounded-lg bg-amber-400 px-4 py-2 font-semibold text-slate-950 hover:bg-amber-300 transition-colors">
@@ -583,6 +586,9 @@ export default function ResearchPage() {
             </Link>
             <Link href="/dashboard" className="inline-flex items-center rounded-lg border border-slate-700 px-4 py-2 text-gray-200 hover:border-slate-500 hover:bg-slate-800/60 transition-colors">
               See the weekly operating surface →
+            </Link>
+            <Link href="/compare/crunchbase-alternative-for-angel-investors" className="inline-flex items-center rounded-lg border border-slate-700 px-4 py-2 text-gray-200 hover:border-slate-500 hover:bg-slate-800/60 transition-colors">
+              Compare timing vs verification →
             </Link>
             <Link href="/buyers-guide" className="inline-flex items-center rounded-lg border border-slate-700 px-4 py-2 text-gray-200 hover:border-slate-500 hover:bg-slate-800/60 transition-colors">
               Read the buyer's guide →
