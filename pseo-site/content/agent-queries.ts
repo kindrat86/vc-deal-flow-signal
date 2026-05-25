@@ -6267,6 +6267,164 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
       "weekly watchlist investor outreach",
     ],
   },
+  {
+    slug: "how-to-explain-a-startup-signal-to-an-lp",
+    query: "How do I explain a startup signal to an LP?",
+    h1: "How to explain a startup signal to an LP",
+    description:
+      "Explain a startup signal to an LP in three parts: what changed, why it matters before the market catches up, and how the claim can be verified without trusting pure intuition.",
+    tldr:
+      "The cleanest way to explain a startup signal to an LP is to make it legible, not clever: what changed, why it matters now, and how the claim can be verified independently.",
+    body: `LPs do not need the whole workflow first. They need a clean explanation of what changed, why it matters, and why it is not just another story told after the fact.
+
+**Quick answer.** Explain the signal in three layers: what changed, why it matters before the market catches up, and how the claim can be verified.
+
+**What to emphasize.** The strongest framing is not 'we have secret data.' It is 'we saw a public change earlier than most people pay attention to it.' That is easier to trust because it does not depend on mystique.
+
+**How to make it believable.** Show one exact change, one reason the change matters now, and one proof path such as methodology, sample output, or a comparison page that separates timing from verification.
+
+**What to avoid.** Do not present the signal as certainty. Do not force the LP to reverse-engineer your logic from a stack of screenshots. Keep it auditable and calm.`,
+    facts: [
+      {
+        claim:
+          "The research, methodology, and answer layers already provide public proof paths that can be used to explain signal logic without relying on raw intuition.",
+        sourceUrl: "https://signals.gitdealflow.com/research",
+        sourceLabel: "Research",
+      },
+      {
+        claim:
+          "The site repeatedly separates timing from verification, which is the key distinction most LPs need to understand quickly.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/deal-flow-timing-vs-verification",
+        sourceLabel: "Timing vs verification",
+      },
+      {
+        claim:
+          "Sample watchlist output gives a concrete, buyer-readable proof surface that can be shared without asking the reader to inspect raw repositories.",
+        sourceUrl: "https://gitdealflow.com/report",
+        sourceLabel: "Sample watchlist",
+      },
+    ],
+    faqs: [
+      {
+        q: "Should I explain the raw GitHub mechanics to an LP?",
+        a: "Only if they ask. Most LPs first need the decision logic and proof path, not the deepest mechanical explanation.",
+      },
+      {
+        q: "What makes a signal explanation credible to an LP?",
+        a: "Clarity, verifiability, and restraint. It should feel like a testable claim, not a dramatic story.",
+      },
+      {
+        q: "Should I position the signal as a replacement for all diligence?",
+        a: "No. Position it as an earlier attention layer that improves when and where you look, not as a substitute for full diligence.",
+      },
+    ],
+    ctaUrl: "/research",
+    ctaLabel: "Read the research summary",
+    related: [
+      "how-to-share-a-startup-signal-with-a-co-investor",
+      "how-to-turn-a-signal-into-an-investment-memo",
+      "deal-flow-timing-vs-verification",
+    ],
+    proofLinks: [
+      { label: "Read the research summary", url: "/research" },
+      { label: "Timing and verification are not the same thing", url: "/answers/deal-flow-timing-vs-verification" },
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+    ],
+    nextReadLinks: [
+      { label: "How to share a startup signal with a co-investor", url: "/answers/how-to-share-a-startup-signal-with-a-co-investor" },
+      { label: "How to turn a signal into an investment memo", url: "/answers/how-to-turn-a-signal-into-an-investment-memo" },
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
+    ],
+    keywords: [
+      "how to explain a startup signal to an LP",
+      "startup signal LP explanation",
+      "alternative data LP memo",
+      "how to explain early signal investing",
+      "venture signal explanation LP",
+    ],
+  },
+  {
+    slug: "how-to-turn-a-signal-into-an-investment-memo",
+    query: "How do I turn a signal into an investment memo?",
+    h1: "How to turn a signal into an investment memo",
+    description:
+      "Turn a signal into an investment memo by separating what changed, what it could mean, what still needs verification, and what action you recommend now.",
+    tldr:
+      "A good investment memo does not just repeat the signal. It translates the signal into a decision structure: what changed, what it might mean, what still needs checking, and what you want to do next.",
+    body: `A signal is not a memo. A signal tells you where to look. A memo tells someone else what to do with the evidence.
+
+**Quick answer.** Turn the signal into four blocks: what changed, what it could mean, what still needs verification, and what action you recommend now.
+
+**Block one — what changed.** Name the exact movement in plain language. Do not start with a grand thesis if the underlying change is still vague.
+
+**Block two — what it could mean.** Explain the likely interpretation without pretending certainty. This is where timing matters most.
+
+**Block three — what still needs verification.** Say explicitly what you do not know yet. That keeps the memo credible and stops the signal from being mistaken for a full diligence package.
+
+**Block four — what you recommend now.** The memo should end in a next step: watch, reach out, run First Look, or ignore for now.
+
+A strong memo makes the signal usable by someone else.`,
+    facts: [
+      {
+        claim:
+          "The content system already distinguishes early signal from later verification, which maps directly onto memo structure.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/deal-flow-timing-vs-verification",
+        sourceLabel: "Timing vs verification",
+      },
+      {
+        claim:
+          "Research and methodology pages provide the proof surface needed when a memo reader wants to inspect the signal logic more deeply.",
+        sourceUrl: "https://signals.gitdealflow.com/methodology",
+        sourceLabel: "Methodology",
+      },
+      {
+        claim:
+          "First Look sits naturally in the workflow as the sharper pass when a signal has enough heat to deserve a more focused memo.",
+        sourceUrl: "https://gitdealflow.com/firstlook.html",
+        sourceLabel: "First Look page",
+      },
+    ],
+    faqs: [
+      {
+        q: "Should an investment memo start with the thesis or the signal?",
+        a: "Start with the signal if that is the reason this company entered your attention. Let the thesis follow from the evidence.",
+      },
+      {
+        q: "What if the signal is still noisy?",
+        a: "Say that directly. A memo becomes stronger, not weaker, when it marks what is still uncertain.",
+      },
+      {
+        q: "When should I escalate from a signal to a deeper memo?",
+        a: "When the signal already feels expensive enough that the next decision needs more than a quick note or a shared link.",
+      },
+    ],
+    ctaUrl: "/firstlook",
+    ctaLabel: "Get my First Look",
+    related: [
+      "how-to-share-a-startup-signal-with-a-co-investor",
+      "how-to-explain-a-startup-signal-to-an-lp",
+      "deal-flow-timing-vs-verification",
+    ],
+    proofLinks: [
+      { label: "Read the methodology", url: "/methodology" },
+      { label: "Read the research summary", url: "/research" },
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+    ],
+    nextReadLinks: [
+      { label: "Get my First Look", url: "/firstlook" },
+      { label: "How to share a startup signal with a co-investor", url: "/answers/how-to-share-a-startup-signal-with-a-co-investor" },
+      { label: "What do you actually get from Dashboard each week?", url: "/answers/what-do-i-actually-get-from-dashboard-each-week" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
+    ],
+    keywords: [
+      "turn a signal into an investment memo",
+      "startup signal investment memo",
+      "deal flow memo from signal",
+      "how to write an investment memo from alternative data",
+      "signal to memo workflow",
+    ],
+  },
 ];
 
 export function getAgentQueryBySlug(slug: string): AgentQuery | undefined {

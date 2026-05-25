@@ -1594,6 +1594,141 @@ export const comparisons: Comparison[] = [
       { label: "What do you actually get from Dashboard each week?", url: "/answers/what-do-i-actually-get-from-dashboard-each-week" },
     ],
   },
+  {
+    slug: "compare/gitdealflow-vs-a-consultant-style-sector-report",
+    title: "GitDealFlow vs a Consultant-Style Sector Report",
+    description:
+      "A consultant-style sector report gives one polished snapshot. GitDealFlow is stronger when you need recurring timing signal instead of a static one-off deliverable.",
+    h1: "GitDealFlow vs a consultant-style sector report",
+    intro:
+      "A consultant-style report and a timing-first signal product can both look serious. But they solve different problems. One gives you a polished static snapshot. The other helps you keep noticing change after the snapshot gets stale.",
+    sections: [
+      {
+        heading: "Consultant-style sector report — polished one-off depth",
+        body: "A consultant-style report is useful when you need a static deep-dive, a board-friendly document, or a one-time map of a sector. It looks clean and can be persuasive, but it starts aging the moment the market moves.",
+      },
+      {
+        heading: "GitDealFlow — recurring timing layer",
+        body: "GitDealFlow is stronger when the real problem is not writing one polished memo, but noticing movement earlier and more often. It is designed to help you keep paying attention after the one-off report would already be stale.",
+      },
+      {
+        heading: "Where the static report still wins",
+        body: "A static report wins when you need a single deliverable for one immediate context: committee prep, partner memo, board deck, or one-time sector immersion.",
+      },
+      {
+        heading: "Where GitDealFlow wins",
+        body: "GitDealFlow wins when you want timing, recurring exposure, and a workflow that compounds weekly instead of expiring as soon as the PDF is read.",
+      },
+    ],
+    verdict:
+      "A consultant-style sector report is stronger for one polished static deliverable. GitDealFlow is stronger when you want recurring timing signal that keeps compounding after the one-off report would already be outdated.",
+    relatedSectors: ["ai-ml", "enterprise-saas", "fintech"],
+    faqs: [
+      { question: "Is First Look basically a consultant report?", answer: "Not exactly. First Look is a sharper one-off pass inside a timing-first system, not just a generic static report detached from the broader signal workflow." },
+      { question: "When should I buy a one-off report instead of a recurring signal tool?", answer: "When you need one static deep-dive for one immediate context. If you need ongoing timing and recurring visibility, the recurring signal layer wins." },
+      { question: "Can both coexist in one workflow?", answer: "Yes. A one-off report can help on one live thesis, while the recurring signal layer keeps feeding you fresh movement every week." },
+    ],
+    proofLinks: [
+      { label: "Get my First Look", url: "/firstlook" },
+      { label: "See the weekly operating surface", url: "/dashboard" },
+      { label: "Read the methodology", url: "/methodology" },
+    ],
+    nextReadLinks: [
+      { label: "First Look vs Dashboard for live theses", url: "/compare/first-look-vs-dashboard-for-live-theses" },
+      { label: "What do you actually get from Dashboard each week?", url: "/answers/what-do-i-actually-get-from-dashboard-each-week" },
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+    ],
+  },
+  {
+    slug: "compare/insider-vs-a-paid-newsletter-for-investors",
+    title: "Insider vs a Paid Newsletter for Investors",
+    description:
+      "A paid newsletter gives recurring commentary. Insider is stronger when you want a tighter higher-touch layer around context, steadiness, and recurring judgment support.",
+    h1: "Insider vs a paid newsletter for investors",
+    intro:
+      "A paid investor newsletter and a higher-touch layer like Insider can both look like recurring information products. But they do not solve the same problem.",
+    sections: [
+      {
+        heading: "Paid newsletter — recurring commentary",
+        body: "A paid newsletter is useful for recurring perspective, curation, and someone else's thinking rhythm. It helps you read smarter, but usually does not tighten your own recurring judgment process directly.",
+      },
+      {
+        heading: "Insider — recurring conviction support",
+        body: "Insider is stronger when the problem is not content consumption but carrying conviction with more support, more context, and less isolation around live decisions.",
+      },
+      {
+        heading: "What this changes in practice",
+        body: "A newsletter helps you think. Insider is meant to help you decide. That is the practical difference.",
+      },
+      {
+        heading: "Simple rule",
+        body: "If you mainly want recurring perspective, a paid newsletter can be enough. If you want a tighter layer around recurring judgment and steadiness, Insider is the stronger lane.",
+      },
+    ],
+    verdict:
+      "A paid newsletter is good for recurring commentary and perspective. Insider is stronger when the real need is recurring conviction support around live investment decisions.",
+    relatedSectors: ["ai-ml", "enterprise-saas", "developer-tools"],
+    faqs: [
+      { question: "Is Insider just a premium newsletter?", answer: "No. A newsletter gives recurring content. Insider is a higher-touch support layer around what to do with the signal." },
+      { question: "When is a paid newsletter enough?", answer: "When the main need is better perspective and recurring reading, not support around live decision-making." },
+      { question: "Who should choose Insider instead?", answer: "Someone who already trusts the signal and wants more context, steadiness, and support around recurring judgment, not just another information stream." },
+    ],
+    proofLinks: [
+      { label: "What do you actually get from Insider?", url: "/answers/what-do-i-actually-get-from-insider" },
+      { label: "Dashboard vs Insider for conviction support", url: "/compare/dashboard-vs-insider-for-conviction-support" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
+    ],
+    nextReadLinks: [
+      { label: "See the higher-touch layer", url: "/insider" },
+      { label: "Who should use Insider instead of Dashboard?", url: "/answers/who-should-use-insider-instead-of-dashboard" },
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+    ],
+  },
+  {
+    slug: "compare/weekly-watchlist-vs-a-static-startup-database",
+    title: "Weekly Watchlist vs a Static Startup Database",
+    description:
+      "A static startup database helps you look up what is already visible. A weekly watchlist is stronger when you want recurring attention on what changed before the market fully catches up.",
+    h1: "Weekly watchlist vs a static startup database",
+    intro:
+      "A startup database and a weekly watchlist both show you companies. But the experience of using them — and the timing advantage you get from them — is different.",
+    sections: [
+      {
+        heading: "Static startup database — lookup and verification",
+        body: "A static database is useful when you want a broad inventory, company facts, and the ability to search across what is already visible.",
+      },
+      {
+        heading: "Weekly watchlist — recurring attention",
+        body: "A weekly watchlist is useful when you want a smaller, calmer set of names that already reflect what changed recently enough to deserve attention now.",
+      },
+      {
+        heading: "Why the watchlist feels different",
+        body: "The watchlist reduces browsing. It pushes you into a rhythm of attention instead of an endless lookup surface.",
+      },
+      {
+        heading: "Simple rule",
+        body: "If you need to search the whole landscape, use the database. If you need a recurring prompt to notice what changed this week, use the watchlist.",
+      },
+    ],
+    verdict:
+      "A static startup database is better for broad lookup and verification. A weekly watchlist is better for recurring attention and calmer timing around what changed recently.",
+    relatedSectors: ["ai-ml", "enterprise-saas", "fintech"],
+    faqs: [
+      { question: "Can a watchlist replace a database?", answer: "Not fully. A database is still stronger for broad lookup. The watchlist is stronger for recurring timing and attention." },
+      { question: "Why does a weekly watchlist often feel easier to use?", answer: "Because it reduces browsing and decision fatigue by giving you a smaller set of names that already passed an initial filter." },
+      { question: "Which should I start with?", answer: "If your problem is attention and timing, start with the watchlist. If your problem is broad verification, start with the database." },
+    ],
+    proofLinks: [
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+      { label: "Can GitDealFlow replace Crunchbase?", url: "/answers/can-gitdealflow-replace-crunchbase" },
+      { label: "Read the methodology", url: "/methodology" },
+    ],
+    nextReadLinks: [
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+      { label: "Dashboard vs a Notion watchlist", url: "/compare/dashboard-vs-a-notion-watchlist" },
+      { label: "How to build a two-layer deal flow stack", url: "/answers/how-to-build-a-two-layer-deal-flow-stack" },
+    ],
+  },
 ];
  
  // ---------------------------------------------------------------------------
