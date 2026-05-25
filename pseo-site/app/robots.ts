@@ -79,6 +79,10 @@ const DISALLOW = [
   // Mirrors the proxy's NOINDEX_PREFIXES + the page's defineMetadata
   // noindex flag so all three layers agree.
   "/account/",
+  // Internal admin-only surfaces (Dream Customers CRM, etc.). Gated by
+  // ADMIN_EMAILS, but the URL itself shouldn't show up in crawler indices.
+  "/internal/",
+  "/api/internal/",
 ];
 
 // Aggressive bots that benefit from a crawl-delay directive — protects

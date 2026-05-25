@@ -71,6 +71,20 @@ export async function getSession(): Promise<SessionPayload | null> {
   return verifySessionToken(token);
 }
 
+/**
+ * Allowlist check for internal-only surfaces (e.g. /internal/crm).
+ * Set ADMIN_EMAILS as a comma-separated env var on the deployment.
+ * Compared case-insensitively. Returns false when the env var is unset, so a
+ * misconfigured deploy fails closed.
+ */
+export function isAdmin(session: SessionPayload | null): boolean {
+  if (!session?.email) return false;
+  const raw = process.env.ADMIN_EMAILS ?? "";
+  if (!raw.trim()) return false;
+  const allow = raw.split(",").map((s) => s.trim().toLowerCase()).filter(Boolean);
+  return allow.includes(session.email.toLowerCase());
+}
+
 export const SESSION_COOKIE_NAME = COOKIE_NAME;
 
 export function sessionCookieOptions(token: string) {
