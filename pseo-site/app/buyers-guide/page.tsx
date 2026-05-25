@@ -177,7 +177,7 @@ export default function BuyersGuidePage() {
           </h2>
           <p className="text-gray-300 text-base leading-relaxed max-w-3xl">
             If this guide matches how you think, the next step is not another abstract checklist.
-            It is seeing the evidence, comparing the timing layer directly, and testing a low-friction action page before you commit to a demo or a subscription.
+            It is seeing the evidence, comparing the timing layer directly, and testing a low-friction action page before you commit to a demo or a subscription. Once the signal makes sense, the next choice becomes which paid step actually fits your workflow.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 flex-wrap">
             <Link
@@ -191,6 +191,12 @@ export default function BuyersGuidePage() {
               className="inline-flex items-center justify-center px-5 py-3 rounded-lg border border-slate-700 bg-slate-950/60 text-gray-200 hover:border-slate-600 transition-colors text-sm font-semibold"
             >
               Compare timing vs verification
+            </Link>
+            <Link
+              href="/answers/when-should-i-use-first-look-vs-dashboard"
+              className="inline-flex items-center justify-center px-5 py-3 rounded-lg border border-slate-700 bg-slate-950/60 text-gray-200 hover:border-slate-600 transition-colors text-sm font-semibold"
+            >
+              Choose the right paid step
             </Link>
             <Link
               href="/receipts"
@@ -216,7 +222,9 @@ export default function BuyersGuidePage() {
           </h2>
           <p className="text-gray-300 text-base leading-relaxed max-w-3xl">
             Start with the pages that make the timing tradeoff obvious. Then test the signal
-            with the lightest real entry point you can.
+            with the lightest real entry point you can. If the signal already feels real,
+            move next into the answer that helps you choose between First Look, Dashboard,
+            and the higher-touch lane.
           </p>
           <div className="flex flex-col sm:flex-row gap-3">
             <Link
@@ -230,6 +238,12 @@ export default function BuyersGuidePage() {
               className="inline-flex items-center justify-center px-5 py-3 rounded-lg border border-slate-700 bg-slate-950/60 text-gray-200 hover:border-slate-600 transition-colors text-sm font-semibold"
             >
               Compare the stack
+            </Link>
+            <Link
+              href="/answers/when-should-i-use-first-look-vs-dashboard"
+              className="inline-flex items-center justify-center px-5 py-3 rounded-lg border border-slate-700 bg-slate-950/60 text-gray-200 hover:border-slate-600 transition-colors text-sm font-semibold"
+            >
+              Choose the right paid step
             </Link>
             <Link
               href="https://gitdealflow.com/report"
