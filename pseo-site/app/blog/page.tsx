@@ -90,8 +90,30 @@ export default function BlogIndex() {
       <p className="text-gray-400 text-base leading-relaxed mb-10">
         Practical guides on using GitHub engineering data for startup
         investing. How to read the signals, what patterns predict fundraises,
-        and how to build a data-driven deal flow practice.
+        and how to build a data-driven deal flow practice. If you are here for
+        proof, comparison, or buyer-side clarity rather than browsing essays,
+        start with the strongest routes below.
       </p>
+
+      <section className="mb-10 rounded-2xl border border-sky-700/30 bg-sky-950/20 p-6 sm:p-8">
+        <p className="text-sky-300 text-xs font-semibold uppercase tracking-[0.14em] mb-2">
+          Start with the highest-intent routes
+        </p>
+        <p className="text-gray-300 text-sm leading-relaxed mb-4">
+          Use the blog when you want depth. But if the real question is proof, timing, or what to buy first, start with a sharper page before diving into the archive.
+        </p>
+        <div className="flex flex-wrap gap-3">
+          <Link href="/research" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-sky-600 text-white text-sm font-semibold hover:bg-sky-500 transition-colors">
+            Read the research panel →
+          </Link>
+          <Link href="/compare/crunchbase-alternative-for-angel-investors" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+            Compare timing vs verification →
+          </Link>
+          <Link href="/buyers-guide" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+            Read the buyer's guide →
+          </Link>
+        </div>
+      </section>
 
       <div className="space-y-4">
         {posts.map((post) => (
