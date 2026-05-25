@@ -190,6 +190,26 @@ export default async function AgentCreditsPage({
           </ul>
         </header>
 
+        <section className="mb-10 rounded-xl border border-amber-500/30 bg-amber-500/5 p-6 sm:p-8">
+          <p className="text-amber-300 text-xs font-semibold uppercase tracking-[0.14em] mb-2">
+            Start with the highest-intent routes
+          </p>
+          <p className="text-gray-300 text-sm leading-relaxed mb-4 max-w-2xl">
+            Use this page when you already want paid deep-signal calls. But if your real question is builder fit, developer setup, or the full builder offer, start with the sharper routes first.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/for-builders" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-amber-500 text-slate-950 text-sm font-semibold hover:bg-amber-400 transition-colors">
+              Read the builder offer →
+            </Link>
+            <Link href="/developers" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              Read developer docs →
+            </Link>
+            <Link href="/integrations/best-mcp-server-for-vc-research" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              Read the MCP comparison →
+            </Link>
+          </div>
+        </section>
+
         <section className="mb-10" aria-label="Choose your payment path">
           <h2 className="text-xl sm:text-2xl font-bold text-gray-100 mb-1">
             Two paths · same data · same €0.19 / $0.19 per call
