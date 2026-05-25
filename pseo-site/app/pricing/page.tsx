@@ -592,6 +592,12 @@ export default function PricingPage() {
             <Link href="/compare/crunchbase-alternative-for-angel-investors" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
               Compare timing vs verification →
             </Link>
+            <Link href="/answers/when-should-i-use-first-look-vs-dashboard" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              Choose First Look vs Dashboard →
+            </Link>
+            <Link href="/answers/when-should-i-use-dashboard-vs-insider" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              Choose Dashboard vs Insider →
+            </Link>
             <Link href="/research" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
               Read the research panel →
             </Link>
