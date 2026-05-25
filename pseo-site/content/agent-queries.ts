@@ -6735,6 +6735,160 @@ A strong memo makes the signal usable by someone else.`,
       "investor workflow spreadsheet too manual",
     ],
   },
+  {
+    slug: "how-to-decide-when-a-signal-deserves-founder-outreach",
+    query: "How do I decide when a signal deserves founder outreach?",
+    h1: "How to decide when a signal deserves founder outreach",
+    description:
+      "A signal deserves founder outreach when it is specific enough to reference, early enough to matter, and strong enough that ignoring it feels more expensive than sending one thoughtful note.",
+    tldr:
+      "Use founder outreach when the signal is specific, early, and strong enough that a clear next step is cheaper than waiting. If you still cannot say what changed in one sentence, you are probably too early.",
+    body: `Not every signal deserves outreach. Some deserve watching. Some deserve a deeper pass. The hard part is knowing when the move changes from attention into action.
+
+**Quick answer.** A signal deserves founder outreach when you can say what changed, why it matters now, and why it is early enough to matter without pretending certainty.
+
+**What to look for.** You want one concrete change, one plausible reason it matters, and enough confidence that a short thoughtful note is cheaper than sitting on your hands.
+
+**What usually means you are too early.** If you are still speaking in vague category language, still unsure what actually changed, or still depending on five tabs to explain the signal, you probably need more review before outreach.
+
+**Simple rule.** If you can write a specific note in plain language, outreach is likely justified. If you still need to translate the signal to yourself, keep watching or escalate into a deeper pass first.`,
+    facts: [
+      {
+        claim:
+          "The current content system already separates signal, verification, and escalation paths, including one-off deeper passes such as First Look.",
+        sourceUrl: "https://signals.gitdealflow.com/compare/first-look-vs-dashboard-for-live-theses",
+        sourceLabel: "First Look vs Dashboard comparison",
+      },
+      {
+        claim:
+          "The site already has dedicated guidance on turning a weekly watchlist into founder outreach, which frames specificity as the key threshold.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/how-to-turn-a-weekly-watchlist-into-founder-outreach",
+        sourceLabel: "Founder outreach answer",
+      },
+      {
+        claim:
+          "Timing and verification are treated as separate jobs throughout the content system, which is essential before deciding whether outreach is warranted.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/deal-flow-timing-vs-verification",
+        sourceLabel: "Timing vs verification",
+      },
+    ],
+    faqs: [
+      {
+        q: "What if the signal is interesting but still vague?",
+        a: "Do not force outreach. Keep watching or run a deeper pass first. Specificity is the line between useful outreach and noise.",
+      },
+      {
+        q: "Should I always outreach as soon as a signal appears?",
+        a: "No. The signal is a prioritization layer. Outreach makes sense only when the evidence is strong enough to support a specific note.",
+      },
+      {
+        q: "What is the best escalation if I am almost ready but not quite?",
+        a: "Use a sharper pass such as First Look when the thesis is already expensive but the outreach note is not clear enough yet.",
+      },
+    ],
+    ctaUrl: "/firstlook",
+    ctaLabel: "Get my First Look",
+    related: [
+      "how-to-turn-a-weekly-watchlist-into-founder-outreach",
+      "how-to-share-a-startup-signal-with-a-co-investor",
+      "deal-flow-timing-vs-verification",
+    ],
+    proofLinks: [
+      { label: "How to turn a weekly watchlist into founder outreach", url: "/answers/how-to-turn-a-weekly-watchlist-into-founder-outreach" },
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+      { label: "Read the methodology", url: "/methodology" },
+    ],
+    nextReadLinks: [
+      { label: "Get my First Look", url: "/firstlook" },
+      { label: "How to turn a signal into an investment memo", url: "/answers/how-to-turn-a-signal-into-an-investment-memo" },
+      { label: "How to share a startup signal with a co-investor", url: "/answers/how-to-share-a-startup-signal-with-a-co-investor" },
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+    ],
+    keywords: [
+      "when does a signal deserve founder outreach",
+      "decide when to outreach founder from startup signal",
+      "startup signal founder outreach threshold",
+      "when to act on a startup signal",
+      "signal to founder outreach",
+    ],
+  },
+  {
+    slug: "how-to-rank-startup-signals-in-a-small-fund",
+    query: "How do I rank startup signals in a small fund?",
+    h1: "How to rank startup signals in a small fund",
+    description:
+      "A small fund should rank startup signals by decision usefulness: what changed, how early it is, how easy it is to verify, and what the cheapest sensible next step is.",
+    tldr:
+      "A small fund should rank signals by actionability, not drama. The best signals are early enough to matter, clear enough to explain, and cheap enough to test with a sensible next step.",
+    body: `A small fund does not need a perfect scoring religion. It needs a clean way to decide what deserves attention first.
+
+**Quick answer.** Rank signals by four things: what changed, how early it is, how easy it is to verify, and what the cheapest sensible next step would be.
+
+**What to reward.** Reward signals that are early, legible, and actionable. The best signals create a clear next step without forcing the team into expensive speculation.
+
+**What to discount.** Discount signals that look dramatic but are hard to explain, hard to verify, or hard to act on without a lot of extra narrative stitching.
+
+**What this changes in practice.** A small fund should not let the loudest signal win. It should let the clearest next action win. That keeps the team from turning curiosity into churn.`,
+    facts: [
+      {
+        claim:
+          "The content system already frames timing and verification as separate layers, which naturally supports ranking by actionability instead of pure intensity.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/deal-flow-timing-vs-verification",
+        sourceLabel: "Timing vs verification",
+      },
+      {
+        claim:
+          "The recurring workflow pages emphasize calmer weekly visibility and repeated review, not dramatic one-off spikes.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/what-do-i-actually-get-from-dashboard-each-week",
+        sourceLabel: "Dashboard weekly value",
+      },
+      {
+        claim:
+          "The two-layer stack logic already recommends separating the signal layer from the verification layer, which is the basis of practical ranking discipline.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/how-to-build-a-two-layer-deal-flow-stack",
+        sourceLabel: "Two-layer stack answer",
+      },
+    ],
+    faqs: [
+      {
+        q: "Should the earliest signal always rank first?",
+        a: "Not automatically. Early matters, but only when the signal is still clear enough to explain and act on sensibly.",
+      },
+      {
+        q: "What makes a weak signal weak in a small fund workflow?",
+        a: "A signal is weak when it creates lots of curiosity but no clear next step.",
+      },
+      {
+        q: "How do I keep the team aligned around signal ranking?",
+        a: "Use the same criteria every week: clarity, timing, verifiability, and cheapest sensible next action.",
+      },
+    ],
+    ctaUrl: "/dashboard",
+    ctaLabel: "See the weekly operating surface",
+    related: [
+      "how-to-use-gitdealflow-with-a-small-investment-team",
+      "how-to-use-gitdealflow-in-a-partner-meeting",
+      "how-to-build-a-two-layer-deal-flow-stack",
+    ],
+    proofLinks: [
+      { label: "What do you actually get from Dashboard each week?", url: "/answers/what-do-i-actually-get-from-dashboard-each-week" },
+      { label: "Read the methodology", url: "/methodology" },
+      { label: "Read the research summary", url: "/research" },
+    ],
+    nextReadLinks: [
+      { label: "See the weekly operating surface", url: "/dashboard" },
+      { label: "How to use GitDealFlow in a partner meeting", url: "/answers/how-to-use-gitdealflow-in-a-partner-meeting" },
+      { label: "How to use GitDealFlow with a small investment team", url: "/answers/how-to-use-gitdealflow-with-a-small-investment-team" },
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+    ],
+    keywords: [
+      "how to rank startup signals in a small fund",
+      "small fund startup signal ranking",
+      "how to prioritize startup signals",
+      "venture signal ranking workflow",
+      "small fund deal flow prioritization",
+    ],
+  },
 ];
 
 export function getAgentQueryBySlug(slug: string): AgentQuery | undefined {
