@@ -483,6 +483,41 @@ export default function IntegrationsPage() {
             See full pricing &rarr;
           </Link>
         </div>
+
+        <div className="rounded-xl border border-emerald-700/40 bg-gradient-to-br from-emerald-950/20 via-slate-900 to-slate-950 p-6 sm:p-8 text-center mt-6">
+          <p className="text-emerald-300 text-xs font-semibold uppercase tracking-wider mb-2">
+            Pick the lane that matches your week
+          </p>
+          <h2 className="text-gray-100 font-semibold text-lg mb-2">
+            Integrations are the plumbing. Here&rsquo;s the next move.
+          </h2>
+          <p className="text-gray-300 text-sm mb-5 max-w-2xl mx-auto">
+            If you want one useful read each Sunday, start free. If you need a
+            sharper answer on a live sector question, use First Look. If you
+            want the weekly operating surface behind the integrations, go to the
+            Dashboard.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <Link
+              href="https://gitdealflow.com/#signup"
+              className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-sm font-semibold transition-colors"
+            >
+              Get the free Sunday issue →
+            </Link>
+            <Link
+              href="/firstlook"
+              className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg border border-slate-700 hover:border-slate-500 text-gray-200 text-sm font-medium transition-colors"
+            >
+              Get my First Look →
+            </Link>
+            <Link
+              href="/dashboard"
+              className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg border border-slate-700 hover:border-slate-500 text-gray-200 text-sm font-medium transition-colors"
+            >
+              See the Dashboard →
+            </Link>
+          </div>
+        </div>
       </div>
     </>
   );

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title:
     "GitHub Engineering Velocity for Venture-Backed Startups — 30 Findings (SSRN-Indexed)",
   description:
-    "Public research panel by VC Deal Flow Signal (GitDealFlow): 219 startup-period observations across 55 venture-backed startups in 20 sectors using GitHub commit-velocity data — code-side momentum, distinct from startup accelerator programs. Median 14-day commit velocity 71. Framework migration dominates (75%). Free dataset, CC BY 4.0.",
+    "SSRN-indexed research panel tracking GitHub engineering signals across 55 venture-backed startups in 20 sectors. Free dataset, 30 findings, CC BY 4.0.",
   // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
   alternates: { canonical: "/research" },
   openGraph: {
@@ -559,6 +559,35 @@ export default function ResearchPage() {
             Unpaywall · DataCite · Zenodo (DOI 10.5281/zenodo.19650920) ·
             OpenAIRE (propagating) · Google Scholar (propagating).
           </p>
+        </section>
+
+        <section className="mb-12 rounded-xl border border-amber-500/30 bg-amber-500/5 p-6 sm:p-8">
+          <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider mb-2">
+            Turn findings into action
+          </p>
+          <h2 className="text-gray-100 font-bold text-xl mb-3">
+            Use the evidence, then choose your next move.
+          </h2>
+          <p className="text-gray-300 text-sm leading-relaxed mb-5 max-w-2xl">
+            The panel tells you what tends to matter. If the question is still
+            early, start with the Sunday watchlist. If the thesis is already
+            live, move straight to a sharper sector pass. If you still need to
+            pressure-test the category, read the buyer's guide first.
+          </p>
+          <div className="flex flex-wrap gap-3 text-sm">
+            <Link href="https://gitdealflow.com/#signup" className="inline-flex items-center rounded-lg bg-amber-400 px-4 py-2 font-semibold text-slate-950 hover:bg-amber-300 transition-colors">
+              Get the free Sunday issue →
+            </Link>
+            <Link href="/firstlook" className="inline-flex items-center rounded-lg border border-slate-700 px-4 py-2 text-gray-200 hover:border-slate-500 hover:bg-slate-800/60 transition-colors">
+              Get my First Look →
+            </Link>
+            <Link href="/dashboard" className="inline-flex items-center rounded-lg border border-slate-700 px-4 py-2 text-gray-200 hover:border-slate-500 hover:bg-slate-800/60 transition-colors">
+              See the weekly operating surface →
+            </Link>
+            <Link href="/buyers-guide" className="inline-flex items-center rounded-lg border border-slate-700 px-4 py-2 text-gray-200 hover:border-slate-500 hover:bg-slate-800/60 transition-colors">
+              Read the buyer's guide →
+            </Link>
+          </div>
         </section>
 
         <section className="text-center text-gray-400 text-sm">

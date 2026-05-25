@@ -343,16 +343,64 @@ export default async function AnswerPage({ params }: PageProps) {
           </section>
         ) : null}
 
+        {q.nextReadLinks && q.nextReadLinks.length > 0 ? (
+          <section className="mb-10 rounded-xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8">
+            <h2 className="text-xl font-semibold text-gray-100 mb-3">
+              What to read next
+            </h2>
+            <p className="text-gray-400 text-sm leading-relaxed mb-4">
+              If this answer is close to your real question, these pages move
+              you from definition into proof and decision.
+            </p>
+            <div className="flex flex-col gap-3">
+              {q.nextReadLinks.map((link: AgentQueryLink) => (
+                <Link
+                  key={link.url}
+                  href={link.url}
+                  className="text-sky-400 hover:text-sky-300 underline underline-offset-2 text-sm"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </section>
+        ) : null}
+
         <section className="mb-10 rounded-xl border border-sky-500/30 bg-sky-500/5 p-6 sm:p-8 text-center">
           <p className="text-sky-400 text-xs uppercase tracking-wider mb-2 font-semibold">
-            Try it now
+            Turn the answer into a next step
           </p>
-          <Link
-            href={q.ctaUrl}
-            className="inline-flex items-center px-6 py-2.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-medium transition-colors"
-          >
-            {q.ctaLabel} →
-          </Link>
+          <p className="text-gray-300 text-sm leading-relaxed mb-5 max-w-2xl mx-auto">
+            If you just want one calm read each Sunday, start there. If the
+            question is already expensive, use First Look. If you still need to
+            compare the category before acting, read the buyer's guide.
+          </p>
+          <div className="flex flex-wrap justify-center gap-3">
+            <Link
+              href="https://gitdealflow.com/#signup"
+              className="inline-flex items-center px-6 py-2.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-medium transition-colors"
+            >
+              Get the free Sunday issue →
+            </Link>
+            <Link
+              href="/firstlook"
+              className="inline-flex items-center px-6 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 hover:bg-slate-800/60 text-sm font-medium transition-colors"
+            >
+              Get my First Look →
+            </Link>
+            <Link
+              href="/buyers-guide"
+              className="inline-flex items-center px-6 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 hover:bg-slate-800/60 text-sm font-medium transition-colors"
+            >
+              Read the buyer's guide →
+            </Link>
+            <Link
+              href={q.ctaUrl}
+              className="inline-flex items-center px-6 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 hover:bg-slate-800/60 text-sm font-medium transition-colors"
+            >
+              {q.ctaLabel} →
+            </Link>
+          </div>
         </section>
 
         <section className="mb-12" aria-label="Frequently asked questions">

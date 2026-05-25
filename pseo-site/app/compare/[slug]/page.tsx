@@ -19,6 +19,10 @@ export async function generateStaticParams() {
 export const dynamicParams = false;
 export const revalidate = 604800;
 
+function clampDescription(text: string, max = 155) {
+  return text.length > max ? `${text.slice(0, max - 3).trimEnd()}...` : text;
+}
+
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
@@ -28,17 +32,17 @@ export async function generateMetadata({
 
   return {
     title: comp.title,
-    description: comp.description,
+    description: clampDescription(comp.description),
     openGraph: {
       title: comp.title,
-      description: comp.description,
+      description: clampDescription(comp.description),
       type: "article",
       url: `/compare/${slug}`,
     },
     twitter: {
       card: "summary_large_image",
       title: comp.title,
-      description: comp.description,
+      description: clampDescription(comp.description),
     },
     alternates: {
       canonical: `/compare/${slug}`,
@@ -467,18 +471,33 @@ export default async function ComparisonPage({ params }: PageProps) {
         {/* CTA */}
         <div className="rounded-xl border border-slate-800 bg-slate-900 p-6 sm:p-8 text-center">
           <h2 className="text-gray-100 font-semibold text-lg mb-2">
-            Try the engineering signal approach
+            If the category is clear, pick the next lane.
           </h2>
           <p className="text-gray-400 text-sm mb-5 max-w-lg mx-auto">
-            Get this week's top 5 breakout startups ranked by
-            GitHub commit-velocity acceleration. Free, no spam.
+            Start free if you want one useful read each Sunday. Use First Look
+            if the thesis is already live. Keep the methodology one click away
+            if you still need to verify the claim.
           </p>
-          <Link
-            href="https://gitdealflow.com/#signup"
-            className="inline-flex w-full sm:w-auto items-center justify-center px-6 py-3 rounded-lg bg-sky-700 hover:bg-sky-600 text-white text-sm font-medium transition-colors"
-          >
-            Get the Report
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <Link
+              href="https://gitdealflow.com/#signup"
+              className="inline-flex w-full sm:w-auto items-center justify-center px-6 py-3 rounded-lg bg-sky-700 hover:bg-sky-600 text-white text-sm font-medium transition-colors"
+            >
+              Get the free Sunday issue →
+            </Link>
+            <Link
+              href="/firstlook"
+              className="inline-flex w-full sm:w-auto items-center justify-center px-6 py-3 rounded-lg border border-slate-700 hover:border-slate-500 text-gray-200 text-sm font-medium transition-colors"
+            >
+              Get my First Look →
+            </Link>
+            <Link
+              href="/methodology"
+              className="inline-flex w-full sm:w-auto items-center justify-center px-6 py-3 rounded-lg border border-slate-700 hover:border-slate-500 text-gray-200 text-sm font-medium transition-colors"
+            >
+              Read the methodology →
+            </Link>
+          </div>
         </div>
       </div>
     </>
