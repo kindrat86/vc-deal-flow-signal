@@ -7126,6 +7126,164 @@ If the brief cannot survive on one page, the thinking is probably still too fuzz
       "when not to act on a startup signal",
     ],
   },
+  {
+    slug: "how-to-turn-a-signal-into-a-watchlist",
+    query: "How do I turn a signal into a watchlist?",
+    h1: "How to turn a signal into a watchlist",
+    description:
+      "Turn a signal into a watchlist by deciding what belongs on the list, what gets reviewed weekly, and what triggers escalation into outreach, deeper pass, or deletion.",
+    tldr:
+      "A watchlist is not just a pile of names. It is a small recurring attention system built from signals that are clear enough to track and important enough to revisit.",
+    body: `A signal becomes useful when it enters a system. A watchlist is that system.
+
+**Quick answer.** Put a signal on the watchlist when it is strong enough to revisit, not merely interesting enough to mention once.
+
+**What belongs on the list.** Names that are early enough to matter, clear enough to explain, and still unresolved enough that a future review could change your decision.
+
+**What does not belong.** Weak curiosities, one-off spikes you cannot explain, or names you are never going to revisit. A crowded watchlist is often just delayed ignoring.
+
+**What the list should do.** It should create recurring review, not passive storage. Each name should eventually move toward one of four outcomes: deepen, reach out, keep watching, or remove.
+
+**Simple rule.** If you would not look at the name again with fresh eyes next week, it probably does not belong on the watchlist.`,
+    facts: [
+      {
+        claim:
+          "The site already frames the watchlist as a recurring attention surface rather than a static database or generic note store.",
+        sourceUrl: "https://signals.gitdealflow.com/compare/weekly-watchlist-vs-a-static-startup-database",
+        sourceLabel: "Watchlist vs database comparison",
+      },
+      {
+        claim:
+          "The watchlist-discipline page already establishes that recurring review should not collapse into overtrading or compulsive action.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/how-to-use-a-watchlist-without-overtrading",
+        sourceLabel: "Watchlist discipline",
+      },
+      {
+        claim:
+          "Dashboard is already positioned as the recurring weekly operating surface once the watchlist becomes something you review consistently.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/what-do-i-actually-get-from-dashboard-each-week",
+        sourceLabel: "Dashboard weekly value",
+      },
+    ],
+    faqs: [
+      {
+        q: "How many names should stay on a watchlist?",
+        a: "Only as many as you can actually revisit with discipline. A shorter living watchlist is usually stronger than a giant stagnant one.",
+      },
+      {
+        q: "When should a name leave the watchlist?",
+        a: "When it clearly deserves a deeper pass or outreach, or when it no longer feels strong enough to justify recurring attention.",
+      },
+      {
+        q: "Should every interesting signal go on the list?",
+        a: "No. The point of the list is repeated attention, not emotional archiving.",
+      },
+    ],
+    ctaUrl: "/dashboard",
+    ctaLabel: "See the weekly operating surface",
+    related: [
+      "how-to-use-a-watchlist-without-overtrading",
+      "when-to-upgrade-from-a-spreadsheet-to-a-real-signal-workflow",
+      "how-to-decide-when-a-signal-deserves-founder-outreach",
+    ],
+    proofLinks: [
+      { label: "Weekly watchlist vs a static startup database", url: "/compare/weekly-watchlist-vs-a-static-startup-database" },
+      { label: "What do you actually get from Dashboard each week?", url: "/answers/what-do-i-actually-get-from-dashboard-each-week" },
+      { label: "Read the methodology", url: "/methodology" },
+    ],
+    nextReadLinks: [
+      { label: "How to use a watchlist without overtrading", url: "/answers/how-to-use-a-watchlist-without-overtrading" },
+      { label: "How to decide when a signal deserves founder outreach", url: "/answers/how-to-decide-when-a-signal-deserves-founder-outreach" },
+      { label: "See the weekly operating surface", url: "/dashboard" },
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+    ],
+    keywords: [
+      "how to turn a signal into a watchlist",
+      "startup signal watchlist",
+      "how to build a startup watchlist",
+      "deal flow watchlist process",
+      "signal to watchlist workflow",
+    ],
+  },
+  {
+    slug: "how-to-know-when-a-signal-is-just-noise",
+    query: "How do I know when a signal is just noise?",
+    h1: "How to know when a signal is just noise",
+    description:
+      "A signal is usually just noise when you cannot explain it clearly, verify it cheaply, or point to a sensible next step. If it creates more interpretation than action, it is probably weak.",
+    tldr:
+      "A signal is usually just noise when it creates more interpretation than action. If you cannot explain it, verify it, and act on it without heroic effort, it probably does not deserve attention yet.",
+    body: `Most noise does not announce itself as noise. It arrives dressed as urgency.
+
+**Quick answer.** A signal is probably just noise when it is hard to explain, expensive to interpret, and weak on next-step clarity.
+
+**What noisy signals do.** They make you open more tabs, invent more stories, and feel more urgency than the evidence actually supports.
+
+**What real signals do.** They reduce ambiguity enough that you can explain what changed and decide whether to watch, deepen, reach out, or ignore.
+
+**Why this matters.** The biggest cost in a signal workflow is not missing one weak name. It is letting noise flood your attention and distort the ranking of what really matters.
+
+**Simple rule.** If the signal increases curiosity but not clarity, it is probably not strong enough yet.`,
+    facts: [
+      {
+        claim:
+          "The existing discipline pages already distinguish action-worthy signals from weak ones by emphasizing clarity, next-step logic, and repeated review discipline.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/how-to-decide-when-a-signal-deserves-founder-outreach",
+        sourceLabel: "Founder outreach threshold",
+      },
+      {
+        claim:
+          "The site consistently separates timing from verification so that weak signals do not get mistaken for full decisions.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/deal-flow-timing-vs-verification",
+        sourceLabel: "Timing vs verification",
+      },
+      {
+        claim:
+          "First Look is positioned as the deeper pass when a signal is almost ready but still too ambiguous to act on directly.",
+        sourceUrl: "https://gitdealflow.com/firstlook.html",
+        sourceLabel: "First Look page",
+      },
+    ],
+    faqs: [
+      {
+        q: "What is the clearest sign that something is just noise?",
+        a: "If you need a lot of extra story to make it feel meaningful, it is probably not strong enough yet.",
+      },
+      {
+        q: "Can a noisy signal become useful later?",
+        a: "Yes. Weak signals can become more useful as they repeat, clarify, or connect to a stronger pattern over time.",
+      },
+      {
+        q: "What should I do with a maybe-signal?",
+        a: "Either keep it on a disciplined watchlist or escalate into a deeper pass if the question is already expensive enough to justify the effort.",
+      },
+    ],
+    ctaUrl: "/firstlook",
+    ctaLabel: "Get my First Look",
+    related: [
+      "how-to-decide-when-to-ignore-a-signal",
+      "how-to-use-a-watchlist-without-overtrading",
+      "how-to-turn-a-signal-into-a-watchlist",
+    ],
+    proofLinks: [
+      { label: "How to decide when to ignore a signal", url: "/answers/how-to-decide-when-to-ignore-a-signal" },
+      { label: "How to decide when a signal deserves founder outreach", url: "/answers/how-to-decide-when-a-signal-deserves-founder-outreach" },
+      { label: "Read the methodology", url: "/methodology" },
+    ],
+    nextReadLinks: [
+      { label: "How to use a watchlist without overtrading", url: "/answers/how-to-use-a-watchlist-without-overtrading" },
+      { label: "How to turn a signal into a watchlist", url: "/answers/how-to-turn-a-signal-into-a-watchlist" },
+      { label: "Get my First Look", url: "/firstlook" },
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+    ],
+    keywords: [
+      "how to know when a signal is just noise",
+      "startup signal noise",
+      "how to tell if a signal is noise",
+      "weak startup signal",
+      "when a startup signal is not actionable",
+    ],
+  },
 ];
 
 export function getAgentQueryBySlug(slug: string): AgentQuery | undefined {
