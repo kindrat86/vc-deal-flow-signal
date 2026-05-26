@@ -504,6 +504,28 @@ export function RootIdentitySchema() {
           "A2A agent endpoint",
           "Free weekly signal report",
         ],
+        // Third-party rating from the Glama MCP catalog A-Tier listing
+        // (https://glama.ai/mcp/servers/kindrat86/mcp-deal-flow-signal).
+        // Glama publishes per-tool quality scores; the listing aggregates
+        // six tools at 4.9/5.0. Surfacing this as schema:AggregateRating
+        // on the SoftwareApplication node gives Google's Knowledge Graph
+        // and AI Overviews a verifiable third-party quality signal beyond
+        // self-claims. authoredBy attribute pins the rating origin so
+        // validators don't mistake it for a self-rating.
+        aggregateRating: {
+          "@type": "AggregateRating",
+          ratingValue: "4.9",
+          bestRating: "5",
+          worstRating: "1",
+          ratingCount: 6,
+          reviewCount: 6,
+          author: {
+            "@type": "Organization",
+            name: "Glama",
+            url: "https://glama.ai",
+          },
+          url: "https://glama.ai/mcp/servers/kindrat86/mcp-deal-flow-signal",
+        },
       },
     ],
   };
