@@ -499,6 +499,7 @@ export async function GET(_req: Request, ctx: RouteContext) {
       // tool shipped 2026-05-27: /tools/safe-calculator.
       { url: `${BASE_URL}/tools`, lastmod, changefreq: "weekly", priority: 0.85 },
       { url: `${BASE_URL}/tools/safe-calculator`, lastmod, changefreq: "monthly", priority: 0.85 },
+      { url: `${BASE_URL}/tools/runway-calculator`, lastmod, changefreq: "monthly", priority: 0.85 },
       // /define — category-grouped index (sibling to /glossary's flat
       // alphabetic listing). Hub for the 62 /define/[term] deep pages.
       { url: `${BASE_URL}/define`, lastmod, changefreq: "monthly", priority: 0.8 },
