@@ -99,3 +99,8 @@
 - Own-post reply reminder: none (Saturday May 23 is not a scheduled post day)
 - Targets: Peter Walker, Packy McCormick, Samir Kaji
 - Drafts saved above for copy-paste
+
+## 2026-05-26
+- Own-post reply reminder: none (Monday May 25 is not a scheduled post day)
+- Targets: Samir Kaji, Harry Stebbings, Sarah Tavel
+- Drafts saved above for copy-paste
