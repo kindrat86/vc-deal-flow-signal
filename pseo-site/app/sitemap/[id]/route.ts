@@ -494,6 +494,11 @@ export async function GET(_req: Request, ctx: RouteContext) {
         changefreq: HIGH_INTENT_ANSWER_SLUGS.has(q.slug) ? "weekly" : "weekly",
         priority: HIGH_INTENT_ANSWER_SLUGS.has(q.slug) ? 0.9 : 0.85,
       })),
+      // /tools — free-tool hub (Greg-Isenberg-style top-of-funnel).
+      // Each tool is its own indexable page; the hub lists them. First
+      // tool shipped 2026-05-27: /tools/safe-calculator.
+      { url: `${BASE_URL}/tools`, lastmod, changefreq: "weekly", priority: 0.85 },
+      { url: `${BASE_URL}/tools/safe-calculator`, lastmod, changefreq: "monthly", priority: 0.85 },
       // /define — category-grouped index (sibling to /glossary's flat
       // alphabetic listing). Hub for the 62 /define/[term] deep pages.
       { url: `${BASE_URL}/define`, lastmod, changefreq: "monthly", priority: 0.8 },
