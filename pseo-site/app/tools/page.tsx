@@ -39,6 +39,15 @@ const TOOLS: Tool[] = [
     badge: "live",
     category: "Financing math",
   },
+  {
+    slug: "runway-calculator",
+    name: "Runway Calculator",
+    tagline: "Cash, burn, headcount scenarios",
+    description:
+      "How many months of runway do you have? Cash divided by net burn, with the option to model adding engineers at loaded cost. Fundraise-timing bands built in. URL-shareable.",
+    badge: "live",
+    category: "Financial planning",
+  },
 ];
 
 export default function ToolsIndexPage() {
@@ -147,10 +156,11 @@ export default function ToolsIndexPage() {
             More tools coming
           </h2>
           <p className="text-gray-400 text-sm leading-relaxed mb-4">
-            New tools ship roughly weekly. On the near-term list: a runway
-            calculator, a dilution-stack modeler for multiple SAFE rounds, and
-            a co-investor graph viewer. If there's a tool you want and don't
-            see, the fastest way to ask is through the Sunday digest.
+            New tools ship roughly weekly. On the near-term list: a
+            dilution-stack modeler for multiple SAFE rounds, a co-investor
+            graph viewer, and a paste-a-GitHub-repo signal scorer. If there's
+            a tool you want and don't see, the fastest way to ask is through
+            the Sunday digest.
           </p>
           <Link
             href="/firstlook"
