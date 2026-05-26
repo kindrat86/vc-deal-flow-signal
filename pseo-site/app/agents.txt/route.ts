@@ -67,6 +67,7 @@ const SURFACES = [
   ["dataset-jsonl", "https://signals.gitdealflow.com/api/dataset.jsonl"],
   ["dataset-catalog", "https://signals.gitdealflow.com/.well-known/dataset.json"],
   ["knowledge-graph", "https://signals.gitdealflow.com/knowledge-graph.json"],
+  ["entities", "https://signals.gitdealflow.com/entities.json"],
   ["citation-guide", "https://signals.gitdealflow.com/citation-guide"],
   ["citations-bib", "https://signals.gitdealflow.com/research/citations.bib"],
   ["sitemap-index", "https://signals.gitdealflow.com/sitemap.xml"],

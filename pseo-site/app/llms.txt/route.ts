@@ -221,6 +221,7 @@ ${Object.values(pillars).map((p) => `- [${p.name}](${BASE_URL}/llms/${p.slug}): 
 - [api/answer](${BASE_URL}/api/answer?q=what+is+vc+deal+flow+signal): **Direct Q→A endpoint** — single best-match answer with citation. \`GET ?q=<question>\` or \`POST { question }\`. Returns Schema.org Question/Answer JSON.
 - [api/ask](${BASE_URL}/api/ask?q=engineering+acceleration): **Fuzzy multi-result search** — top-N ranked candidates from the Q&A corpus. \`GET ?q=<query>&limit=<1-20>\`.
 - [knowledge-graph.json](${BASE_URL}/knowledge-graph.json): **Canonical entity graph** — full Wikidata/ORCID/SSRN/OpenAlex/Crossref/Zenodo cross-reference map in single JSON-LD document.
+- [entities.json](${BASE_URL}/entities.json): **Flat NER-friendly entity manifest** — every named entity (people, organizations, software products, datasets, publications, projects) with typed identifiers and sameAs cross-refs, in plain JSON for spaCy / Hugging Face / lightweight retrieval consumers that don't parse JSON-LD.
 - [citation-guide](${BASE_URL}/citation-guide): **How to cite this work** — APA/MLA/Chicago/BibTeX/RIS plus AI-attribution template.
 - [ai.json](${BASE_URL}/ai.json): **Compact LLM-optimized context blob** — Dataset JSON-LD + metric definitions + signal types + per-sector top-3 + citation metadata. Fetch-once context for AI agents before querying detail endpoints.
 - [qa.jsonl](${BASE_URL}/qa.jsonl): **Consolidated Q&A corpus** — every FAQ across the site as newline-delimited JSON. Fields: question, answer, source, sourceUrl, category. Good for retrieval-augmented generation.
