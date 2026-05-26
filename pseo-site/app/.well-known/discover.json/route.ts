@@ -1247,6 +1247,7 @@ const SURFACES: Surface[] = [
   // Traffic Secrets §2 Ch 9 (Google) +4-pt gap on Q139376302 entity claim.
   { name: "wikidata-claim", url: `${SITE}/.well-known/wikidata.json`, format: "application/json", category: "identity", description: "Wikidata Knowledge Panel claim manifest — bidirectional binding between this domain and Wikidata entity Q139376302, with full P-code property table, attestation-method ledger, and SPARQL verification queries." },
   { name: "wikidata-claim-page", url: `${SITE}/wikidata`, format: "text/html", category: "human", description: "Human-readable Knowledge Panel claim landing — mirror of the well-known manifest with copy-paste SPARQL queries and the full P-code property table." },
+  { name: "entities-json", url: `${SITE}/entities.json`, format: "application/json", category: "identity", description: "Flat NER-friendly entity manifest — people, organizations, software products, datasets, publications. One fetch surfaces the full named-entity inventory in plain JSON for spaCy/Hugging Face/lightweight retrieval consumers that don't parse JSON-LD." },
   {
     name: "webfinger",
     url: `${SITE}/.well-known/webfinger`,
