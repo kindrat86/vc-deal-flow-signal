@@ -20,6 +20,9 @@ import { getAllAlternativeSlugs } from "@/content/alternatives";
 import { getAllUseCaseSlugs } from "@/content/use-cases";
 import { getAllCompetitorVsSlugs } from "@/content/competitor-vs";
 import { getAllBuildVsInvestSlugs } from "@/content/build-vs-invest";
+import { getAllCompanySlugs } from "@/content/companies";
+import { getAllFundSlugs } from "@/content/funds";
+import { getAllFounderHandles } from "@/content/founders";
 import { pillars } from "@/content/pillars";
 import { agentQueries } from "@/content/agent-queries";
 import {
@@ -433,6 +436,33 @@ export async function GET(_req: Request, ctx: RouteContext) {
         changefreq: "monthly",
         priority: 0.8,
       })),
+      // Tier 1 entity-per-page expansion (2026-05-26) — per-company GitHub
+      // signal reports, per-fund deal-flow context, and public-figure founder
+      // engineering profiles. Hub indices at /signal, /fund, /founder; per-
+      // entity leaves under each. Wired here so all three slug families ship
+      // in the same content shard the alternatives surface uses.
+      { url: `${BASE_URL}/signal`, lastmod, changefreq: "monthly", priority: 0.85 },
+      ...getAllCompanySlugs().map((slug) => ({
+        url: `${BASE_URL}/signal/${slug}`,
+        lastmod,
+        changefreq: "weekly",
+        priority: 0.75,
+      })),
+      { url: `${BASE_URL}/fund`, lastmod, changefreq: "monthly", priority: 0.85 },
+      ...getAllFundSlugs().map((slug) => ({
+        url: `${BASE_URL}/fund/${slug}`,
+        lastmod,
+        changefreq: "monthly",
+        priority: 0.75,
+      })),
+      { url: `${BASE_URL}/founder`, lastmod, changefreq: "monthly", priority: 0.75 },
+      ...getAllFounderHandles().map((handle) => ({
+        url: `${BASE_URL}/founder/${handle}`,
+        lastmod,
+        changefreq: "monthly",
+        priority: 0.7,
+      })),
+      { url: `${BASE_URL}/founder/opt-out`, lastmod, changefreq: "yearly", priority: 0.3 },
       // Build-vs-invest 2×2 by sector — Greg-Isenberg-shaped pSEO surface
       // shipped 2026-05-22. One index + per-sector slug pages mapped to the
       // canonical sector taxonomy in data/startups.json.
