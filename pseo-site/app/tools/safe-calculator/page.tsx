@@ -8,36 +8,71 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 const SITE = "https://signals.gitdealflow.com";
 const PAGE_URL = `${SITE}/tools/safe-calculator`;
 
-export const metadata: Metadata = {
-  title:
-    "SAFE Calculator — Post-Money Conversion, Cap vs Discount, Dilution",
-  description:
-    "Free SAFE calculator. Model YC 2018+ post-money SAFE conversion under both the valuation cap and the discount, see your effective ownership at the next priced round, and share the calculation via URL.",
-  alternates: { canonical: "/tools/safe-calculator" },
-  openGraph: {
-    title: "SAFE Calculator — VC Deal Flow Signal",
+const SAFE_PARAM_KEYS = ["amount", "cap", "discount", "pre", "invest"] as const;
+
+interface PageProps {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+/**
+ * Dynamic OG: each shared URL gets its own preview card. The OG image
+ * route at /api/og/tools/safe-calculator reads the same params and
+ * renders the computed result, so a paste to Twitter/Slack/LinkedIn
+ * shows the actual ownership %, not a generic image.
+ */
+export async function generateMetadata({
+  searchParams,
+}: PageProps): Promise<Metadata> {
+  const sp = await searchParams;
+  const ogParams = new URLSearchParams();
+  for (const key of SAFE_PARAM_KEYS) {
+    const v = sp[key];
+    if (typeof v === "string" && v.length > 0) {
+      ogParams.set(key, v);
+    }
+  }
+  const ogQuery = ogParams.toString();
+  const ogImage = `${SITE}/api/og/tools/safe-calculator${ogQuery ? `?${ogQuery}` : ""}`;
+
+  return {
+    title:
+      "SAFE Calculator — Post-Money Conversion, Cap vs Discount, Dilution",
     description:
-      "Post-money SAFE conversion math, cap-vs-discount comparison, URL-shareable results.",
-    type: "website",
-    url: PAGE_URL,
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "SAFE Calculator — VC Deal Flow Signal",
-    description:
-      "Free post-money SAFE calculator with shareable URLs.",
-  },
-  keywords: [
-    "SAFE calculator",
-    "post-money SAFE",
-    "SAFE conversion calculator",
-    "valuation cap calculator",
-    "SAFE discount calculator",
-    "startup dilution calculator",
-    "YC SAFE math",
-    "convertible note vs SAFE",
-  ],
-};
+      "Free SAFE calculator. Model YC 2018+ post-money SAFE conversion under both the valuation cap and the discount, see your effective ownership at the next priced round, and share the calculation via URL.",
+    alternates: { canonical: "/tools/safe-calculator" },
+    openGraph: {
+      title: "SAFE Calculator — VC Deal Flow Signal",
+      description:
+        "Post-money SAFE conversion math, cap-vs-discount comparison, URL-shareable results.",
+      type: "website",
+      url: PAGE_URL,
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: "SAFE Calculator — VC Deal Flow Signal",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "SAFE Calculator — VC Deal Flow Signal",
+      description: "Free post-money SAFE calculator with shareable URLs.",
+      images: [ogImage],
+    },
+    keywords: [
+      "SAFE calculator",
+      "post-money SAFE",
+      "SAFE conversion calculator",
+      "valuation cap calculator",
+      "SAFE discount calculator",
+      "startup dilution calculator",
+      "YC SAFE math",
+      "convertible note vs SAFE",
+    ],
+  };
+}
 
 const FAQS: { question: string; answer: string }[] = [
   {
