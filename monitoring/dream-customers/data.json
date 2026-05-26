@@ -77,6 +77,7 @@
     { "handle": "sonyatweetybird", "name": "Sonya Huang", "firm": "Sequoia Capital", "role": "Partner (AI thesis lead)", "segment": "F", "confidence": "HIGH", "last_tweet_at": null, "last_tweet_text": null, "last_checked_at": null },
     { "handle": "Alfred_Lin", "name": "Alfred Lin", "firm": "Sequoia Capital", "role": "Partner", "segment": "F", "confidence": "HIGH", "last_tweet_at": null, "last_tweet_text": null, "last_checked_at": null },
     { "handle": "Beezer232", "name": "Beezer Clarkson", "firm": "Sapphire Partners", "role": "Managing Director (LP-side)", "segment": "F", "confidence": "HIGH", "last_tweet_at": null, "last_tweet_text": null, "last_checked_at": null },
-    { "handle": "withfries2", "name": "Frank Chen", "firm": "(ex-a16z, current TBD)", "role": "Former Partner", "segment": "F", "confidence": "LOW", "last_tweet_at": null, "last_tweet_text": null, "last_checked_at": null }
+    { "handle": "withfries2", "name": "Frank Chen", "firm": "(ex-a16z, current TBD)", "role": "Former Partner", "segment": "F", "confidence": "LOW", "last_tweet_at": null, "last_tweet_text": null, "last_checked_at": null },
+    { "handle": "PeterDiamandis", "name": "Peter Diamandis", "firm": "Bold Capital Partners", "role": "Co-Founder/Managing Partner", "segment": "F", "confidence": "MEDIUM", "last_tweet_at": null, "last_tweet_text": null, "last_checked_at": null }
   ]
 }
