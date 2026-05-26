@@ -274,6 +274,27 @@ const PROJECTS: Entity[] = [
       "Public Hugging Face Space for interactive exploration of the VC Deal Flow Signal dataset.",
     sameAs: ["https://huggingface.co/spaces/the-data-nerd/vc-deal-flow-explorer"],
   },
+  {
+    name: "Company GitHub Signals Index",
+    type: "CollectionPage",
+    url: `${SITE}/signal`,
+    description:
+      "Index of per-company GitHub engineering signal pages — commit velocity, contributor influx, and repo activity for well-known public technical companies. One leaf page per company under /signal/[slug].",
+  },
+  {
+    name: "Venture Fund Profiles Index",
+    type: "CollectionPage",
+    url: `${SITE}/fund`,
+    description:
+      "Independent profiles of well-known venture funds — published thesis, stage focus, and engineering-signal sourcing map. One leaf page per fund under /fund/[slug].",
+  },
+  {
+    name: "Founder & Public Engineering Profiles Index",
+    type: "CollectionPage",
+    url: `${SITE}/founder`,
+    description:
+      "Public-figure-threshold engineering profile pages — founders, OSS maintainers, and technical executives who self-publish their GitHub handle on their own surface. One leaf per handle under /founder/[handle], with opt-out at /founder/opt-out.",
+  },
 ];
 
 export async function GET() {
