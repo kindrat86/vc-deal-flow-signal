@@ -8,36 +8,71 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 const SITE = "https://signals.gitdealflow.com";
 const PAGE_URL = `${SITE}/tools/runway-calculator`;
 
-export const metadata: Metadata = {
-  title:
-    "Runway Calculator — Cash, Burn, Headcount Scenarios for Startups",
-  description:
-    "Free startup runway calculator. Cash divided by net burn equals months of runway. Model headcount scenarios — see how many months each engineer costs you. URL-shareable results.",
-  alternates: { canonical: "/tools/runway-calculator" },
-  openGraph: {
-    title: "Runway Calculator — VC Deal Flow Signal",
+const RUNWAY_PARAM_KEYS = ["cash", "burn", "rev", "hires", "salary"] as const;
+
+interface PageProps {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+/**
+ * Dynamic OG: each shared URL gets its own preview card with band
+ * color (danger / warning / safe / infinite). See the matching OG
+ * route at /api/og/tools/runway-calculator.
+ */
+export async function generateMetadata({
+  searchParams,
+}: PageProps): Promise<Metadata> {
+  const sp = await searchParams;
+  const ogParams = new URLSearchParams();
+  for (const key of RUNWAY_PARAM_KEYS) {
+    const v = sp[key];
+    if (typeof v === "string" && v.length > 0) {
+      ogParams.set(key, v);
+    }
+  }
+  const ogQuery = ogParams.toString();
+  const ogImage = `${SITE}/api/og/tools/runway-calculator${ogQuery ? `?${ogQuery}` : ""}`;
+
+  return {
+    title:
+      "Runway Calculator — Cash, Burn, Headcount Scenarios for Startups",
     description:
-      "Cash, burn, headcount scenarios. URL-shareable startup runway math.",
-    type: "website",
-    url: PAGE_URL,
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Runway Calculator — VC Deal Flow Signal",
-    description:
-      "Free startup runway calculator with headcount scenarios and shareable URLs.",
-  },
-  keywords: [
-    "runway calculator",
-    "startup runway",
-    "burn rate calculator",
-    "cash runway calculator",
-    "months of runway",
-    "fundraise timing",
-    "headcount cost calculator",
-    "startup financial model",
-  ],
-};
+      "Free startup runway calculator. Cash divided by net burn equals months of runway. Model headcount scenarios — see how many months each engineer costs you. URL-shareable results.",
+    alternates: { canonical: "/tools/runway-calculator" },
+    openGraph: {
+      title: "Runway Calculator — VC Deal Flow Signal",
+      description:
+        "Cash, burn, headcount scenarios. URL-shareable startup runway math.",
+      type: "website",
+      url: PAGE_URL,
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: "Runway Calculator — VC Deal Flow Signal",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "Runway Calculator — VC Deal Flow Signal",
+      description:
+        "Free startup runway calculator with headcount scenarios and shareable URLs.",
+      images: [ogImage],
+    },
+    keywords: [
+      "runway calculator",
+      "startup runway",
+      "burn rate calculator",
+      "cash runway calculator",
+      "months of runway",
+      "fundraise timing",
+      "headcount cost calculator",
+      "startup financial model",
+    ],
+  };
+}
 
 const FAQS: { question: string; answer: string }[] = [
   {
