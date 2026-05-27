@@ -1,0 +1,93 @@
+/* VC Term Highlighter — content styles
+ *
+ * All selectors are scoped under .vc-term-hl / .vc-term-hl-card so we don't
+ * leak styles into host pages. !important is used sparingly to defeat
+ * aggressive host CSS (think product docs with `* { color: inherit }`).
+ */
+
+.vc-term-hl {
+  background-image: linear-gradient(
+    to right,
+    rgba(56, 189, 248, 0.35) 0%,
+    rgba(56, 189, 248, 0.35) 100%
+  ) !important;
+  background-repeat: no-repeat !important;
+  background-size: 100% 2px !important;
+  background-position: 0 100% !important;
+  cursor: help !important;
+  text-decoration: none !important;
+  color: inherit !important;
+  transition: background-size 0.12s ease-out !important;
+  padding-bottom: 1px !important;
+}
+
+.vc-term-hl:hover,
+.vc-term-hl:focus-visible {
+  background-size: 100% 100% !important;
+  background-image: linear-gradient(
+    to right,
+    rgba(56, 189, 248, 0.18) 0%,
+    rgba(56, 189, 248, 0.18) 100%
+  ) !important;
+  outline: none !important;
+  border-radius: 2px !important;
+}
+
+/* Hover card -------------------------------------------------------------- */
+
+.vc-term-hl-card {
+  position: absolute !important;
+  z-index: 2147483647 !important; /* sit above everything */
+  background: #0f172a !important;
+  color: #e2e8f0 !important;
+  border: 1px solid #334155 !important;
+  border-radius: 10px !important;
+  padding: 12px 14px !important;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.45) !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif !important;
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+  width: max-content !important;
+  max-width: 340px !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transform: translateY(-2px) !important;
+  transition: opacity 0.12s ease-out, transform 0.12s ease-out !important;
+}
+
+.vc-term-hl-card--visible {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  transform: translateY(0) !important;
+}
+
+.vc-term-hl-card__title {
+  font-weight: 700 !important;
+  font-size: 13px !important;
+  color: #38bdf8 !important;
+  margin: 0 0 6px 0 !important;
+  letter-spacing: 0.01em !important;
+}
+
+.vc-term-hl-card__body {
+  font-size: 12px !important;
+  color: #cbd5e1 !important;
+  margin: 0 !important;
+}
+
+.vc-term-hl-card__link {
+  display: inline-block !important;
+  margin-top: 10px !important;
+  padding-top: 8px !important;
+  border-top: 1px solid #1e293b !important;
+  color: #38bdf8 !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+}
+
+.vc-term-hl-card__link:hover {
+  color: #7dd3fc !important;
+  text-decoration: underline !important;
+}
