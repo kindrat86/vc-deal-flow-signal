@@ -316,6 +316,13 @@ const PROJECTS: Entity[] = [
     description:
       "Side-by-side engineering-signal comparisons between curated tracked companies. Same-sector pairs only. Independent — no affiliation with the compared orgs. One leaf per pair under /showdown/[a-vs-b].",
   },
+  {
+    name: "Acquirers Index",
+    type: "CollectionPage",
+    url: `${SITE}/acquirer`,
+    description:
+      "Independent M&A pattern pages for 20 well-known public-company tech acquirers — Microsoft, Google, Salesforce, Adobe, Apple, Amazon/AWS, Cisco, IBM, Oracle, Nvidia, Atlassian, ServiceNow, Stripe, Cloudflare, Shopify, Snowflake, Databricks, GitHub, HubSpot, Intel. Every deal listed was announced via press release, SEC filing, or both. One leaf per acquirer under /acquirer/[slug].",
+  },
 ];
 
 export async function GET() {
