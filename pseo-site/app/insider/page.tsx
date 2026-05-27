@@ -246,9 +246,30 @@ export default function InsiderPage() {
             email and twenty-four hours of head-start. The Insider Circle is
             the tool that gives you the head-start. The next ten minutes
             explain why €97/mo is the most leveraged price in deal-flow
-            tooling.
+            tooling once recurring visibility already works and you need
+            recurring conviction support.
           </p>
         </header>
+
+        <section className="rounded-xl border border-emerald-500/30 bg-emerald-500/5 p-5 sm:p-6 space-y-3">
+          <p className="text-emerald-300 text-xs font-semibold uppercase tracking-wider">
+            Verify the claim before you buy
+          </p>
+          <p className="text-gray-300 text-sm leading-relaxed">
+            If you still need proof, compare logic, or buyer-side clarity before paying €97/mo, use the shortest page for that question first. Then come back when recurring visibility already feels useful and you want the tighter layer around the judgment.
+          </p>
+          <div className="flex flex-wrap gap-3 text-sm">
+            <Link href="/research" className="text-emerald-200 hover:text-emerald-100 underline underline-offset-2">
+              Read the research panel
+            </Link>
+            <Link href="/answers/when-should-i-use-dashboard-vs-insider" className="text-emerald-200 hover:text-emerald-100 underline underline-offset-2">
+              Choose Dashboard vs Insider
+            </Link>
+            <Link href="/buyers-guide" className="text-emerald-200 hover:text-emerald-100 underline underline-offset-2">
+              Read the buyer's guide
+            </Link>
+          </div>
+        </section>
 
         {/* STORY */}
         <section
@@ -874,6 +895,40 @@ export default function InsiderPage() {
         <BuyerRoadmap tier="insider" />
 
         {/* FINAL CTA */}
+        <aside
+          className="border-l-2 border-slate-700/60 pl-4 py-1 space-y-2"
+          aria-label="If this feels too early"
+        >
+          <p className="text-slate-300 text-[10px] sm:text-xs font-semibold uppercase tracking-wider">
+            If this feels too early
+          </p>
+          <p className="text-gray-400 text-sm leading-relaxed">
+            Start with the free digest if you still need more repetitions before paying.
+            Use Dashboard if the signal already feels real but you only need the recurring
+            weekly surface, not the tighter support layer.
+          </p>
+          <div className="flex flex-wrap gap-3 text-sm">
+            <a
+              href={SIGNUP_URL}
+              className="text-emerald-300 hover:text-emerald-200 underline decoration-dotted underline-offset-2"
+            >
+              Get the free digest first
+            </a>
+            <Link
+              href="/answers/what-do-i-actually-get-from-dashboard-each-week"
+              className="text-emerald-300 hover:text-emerald-200 underline decoration-dotted underline-offset-2"
+            >
+              See what Dashboard gives you
+            </Link>
+            <Link
+              href="/buyers-guide"
+              className="text-emerald-300 hover:text-emerald-200 underline decoration-dotted underline-offset-2"
+            >
+              Read the buyer's guide
+            </Link>
+          </div>
+        </aside>
+
         <section className="border-t border-slate-800 pt-10 text-center space-y-4">
           <p className="text-gray-300 text-base leading-relaxed">
             Read this far? You already believe the 24-hour lead is real.
@@ -923,6 +978,33 @@ export default function InsiderPage() {
             },
           ]}
         />
+
+        <div aria-hidden="true" className="md:hidden h-20" />
+      </div>
+
+      <div
+        aria-label="Sticky insider bar (mobile)"
+        className="fixed bottom-0 inset-x-0 md:hidden z-40 border-t border-emerald-500/40 bg-slate-950/95 backdrop-blur-sm shadow-[0_-4px_20px_rgba(16,185,129,0.15)]"
+      >
+        <div className="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
+          <div className="space-y-0.5 min-w-0">
+            <p className="text-emerald-300 text-[10px] font-semibold uppercase tracking-wider">
+              Insider · founder rate
+            </p>
+            <p className="text-gray-100 font-bold text-lg tabular-nums leading-none">
+              €97
+              <span className="text-gray-400 text-[10px] font-medium ml-1.5 uppercase tracking-wider">
+                /mo
+              </span>
+            </p>
+          </div>
+          <a
+            href={STRIPE_INSIDER}
+            className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-sm px-4 py-2.5 shadow-md"
+          >
+            Join →
+          </a>
+        </div>
       </div>
     </>
   );

@@ -60,6 +60,26 @@ export default function ThanksInsider() {
           </p>
         </header>
 
+        <section className="rounded-xl border border-sky-500/30 bg-sky-500/5 p-5 sm:p-6 space-y-3">
+          <p className="text-sky-300 text-xs font-semibold uppercase tracking-wider">
+            Best next move this week
+          </p>
+          <p className="text-gray-300 text-sm leading-relaxed">
+            Do not leave this as a confirmation page. If you want to get value fast, use one page to understand the proof more deeply and one page to decide whether the next rung should be Sharp Tier or simply deeper use of Insider.
+          </p>
+          <div className="flex flex-wrap gap-3 text-sm">
+            <Link href="/research" className="text-sky-200 hover:text-sky-100 underline underline-offset-2">
+              Read the research panel
+            </Link>
+            <Link href="/answers/who-should-use-insider-instead-of-dashboard" className="text-sky-200 hover:text-sky-100 underline underline-offset-2">
+              Confirm Insider fit
+            </Link>
+            <Link href="/apply" className="text-sky-200 hover:text-sky-100 underline underline-offset-2">
+              See Sharp Tier next
+            </Link>
+          </div>
+        </section>
+
         <ol className="space-y-4">
           {STEPS.map((s) => (
             <li

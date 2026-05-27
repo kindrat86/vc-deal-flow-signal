@@ -25,6 +25,7 @@ import { getAllFundSlugs } from "@/content/funds";
 import { getAllFounderHandles } from "@/content/founders";
 import { pillars } from "@/content/pillars";
 import { agentQueries } from "@/content/agent-queries";
+import { glossaryTerms } from "@/content/glossary";
 import {
   nicheSectors,
   getAllNichePairs as getAllNicheDownPairs,
@@ -492,6 +493,43 @@ export async function GET(_req: Request, ctx: RouteContext) {
         lastmod,
         changefreq: HIGH_INTENT_ANSWER_SLUGS.has(q.slug) ? "weekly" : "weekly",
         priority: HIGH_INTENT_ANSWER_SLUGS.has(q.slug) ? 0.9 : 0.85,
+      })),
+      // /tools — free-tool hub (Greg-Isenberg-style top-of-funnel).
+      // Each tool is its own indexable page; the hub lists them. First
+      // tool shipped 2026-05-27: /tools/safe-calculator.
+      { url: `${BASE_URL}/tools`, lastmod, changefreq: "weekly", priority: 0.85 },
+      // /api/v1/tools.json — machine-readable catalog of all 8 calculators
+      // (slug, name, tagline, category, page URL, OG URL, share params,
+      // bands source). Companion to /api/v1/glossary.json. Enables MCP
+      // servers + AI agents + RAG pipelines to discover the toolset with
+      // one fetch instead of crawling /tools and parsing per-page JSON-LD.
+      { url: `${BASE_URL}/api/v1/tools.json`, lastmod, changefreq: "weekly", priority: 0.7 },
+      { url: `${BASE_URL}/tools/safe-calculator`, lastmod, changefreq: "monthly", priority: 0.85 },
+      { url: `${BASE_URL}/tools/runway-calculator`, lastmod, changefreq: "monthly", priority: 0.85 },
+      { url: `${BASE_URL}/tools/burn-multiple-calculator`, lastmod, changefreq: "monthly", priority: 0.85 },
+      { url: `${BASE_URL}/tools/magic-number-calculator`, lastmod, changefreq: "monthly", priority: 0.85 },
+      { url: `${BASE_URL}/tools/cac-payback-calculator`, lastmod, changefreq: "monthly", priority: 0.85 },
+      { url: `${BASE_URL}/tools/ltv-calculator`, lastmod, changefreq: "monthly", priority: 0.85 },
+      { url: `${BASE_URL}/tools/dilution-stack`, lastmod, changefreq: "monthly", priority: 0.85 },
+      { url: `${BASE_URL}/tools/quick-ratio-calculator`, lastmod, changefreq: "monthly", priority: 0.85 },
+      // /define — category-grouped index (sibling to /glossary's flat
+      // alphabetic listing). Hub for the 62 /define/[term] deep pages.
+      { url: `${BASE_URL}/define`, lastmod, changefreq: "monthly", priority: 0.8 },
+      // /glossary.jsonl + /api/v1/glossary.jsonl — NDJSON dump of the
+      // controlled vocabulary, one term per line. Sibling to the existing
+      // /qa.jsonl + /dataset.jsonl apex surfaces. HF-Datasets-ready.
+      { url: `${BASE_URL}/glossary.jsonl`, lastmod, changefreq: "weekly", priority: 0.7 },
+      { url: `${BASE_URL}/api/v1/glossary.jsonl`, lastmod, changefreq: "weekly", priority: 0.7 },
+      // /define/[term] — one URL per glossary term, shipped 2026-05-26.
+      // Sibling to /glossary (the flat index) and /signals/define/[type]
+      // (the formal signal primitives). Wikipedia-shaped DefinedTerm pages
+      // are the strongest single AEO citation magnet — see audit notes
+      // in marketing/pseo-define-archetype-2026-05-26.md.
+      ...glossaryTerms.map((t) => ({
+        url: `${BASE_URL}/define/${t.id}`,
+        lastmod,
+        changefreq: "monthly",
+        priority: 0.75,
       })),
       // Niche-down — Greg-style "riches are in the niches" pSEO cluster
       // (2026-05-22). 1 hub + 20 sector hubs + 200 leaf pages = 221 URLs.

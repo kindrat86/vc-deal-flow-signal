@@ -125,6 +125,9 @@ export default function BuyersGuidePage() {
             You do not need a procurement memo to know whether a tool is helping.
             You need to know whether it gives you earlier signal, clearer timing,
             and less noise — or whether it simply helps you verify what already happened.
+            If you are comparing GitDealFlow, Crunchbase, PitchBook, or any
+            other deal-flow tool, this is the buyer-side page that tells you
+            what to check first.
           </p>
         </header>
 
@@ -165,6 +168,51 @@ export default function BuyersGuidePage() {
           ))}
         </section>
 
+        <section className="rounded-2xl border border-emerald-500/30 bg-emerald-950/20 p-6 sm:p-8 space-y-3">
+          <p className="text-emerald-300 text-xs font-semibold uppercase tracking-[0.14em]">
+            What to read next
+          </p>
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-100 leading-snug">
+            Validate the method, compare the stack, then test the lightest real next step.
+          </h2>
+          <p className="text-gray-300 text-base leading-relaxed max-w-3xl">
+            If this guide matches how you think, the next step is not another abstract checklist.
+            It is seeing the evidence, comparing the timing layer directly, and testing a low-friction action page before you commit to a demo or a subscription. Once the signal makes sense, the next choice becomes which paid step actually fits your workflow.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3 flex-wrap">
+            <Link
+              href="/research"
+              className="inline-flex items-center justify-center px-5 py-3 rounded-lg bg-emerald-700 hover:bg-emerald-600 text-white text-sm font-semibold transition-colors"
+            >
+              Read the research panel
+            </Link>
+            <Link
+              href="/compare/crunchbase-alternative-for-angel-investors"
+              className="inline-flex items-center justify-center px-5 py-3 rounded-lg border border-slate-700 bg-slate-950/60 text-gray-200 hover:border-slate-600 transition-colors text-sm font-semibold"
+            >
+              Compare timing vs verification
+            </Link>
+            <Link
+              href="/answers/when-should-i-use-first-look-vs-dashboard"
+              className="inline-flex items-center justify-center px-5 py-3 rounded-lg border border-slate-700 bg-slate-950/60 text-gray-200 hover:border-slate-600 transition-colors text-sm font-semibold"
+            >
+              Choose the right paid step
+            </Link>
+            <Link
+              href="/receipts"
+              className="inline-flex items-center justify-center px-5 py-3 rounded-lg border border-slate-700 bg-slate-950/60 text-gray-200 hover:border-slate-600 transition-colors text-sm font-semibold"
+            >
+              Check your Scout Score
+            </Link>
+            <Link
+              href="https://gitdealflow.com/report"
+              className="inline-flex items-center justify-center px-5 py-3 rounded-lg border border-amber-600/50 bg-amber-500/10 text-amber-200 hover:bg-amber-500/20 transition-colors text-sm font-semibold"
+            >
+              Read a sample issue
+            </Link>
+          </div>
+        </section>
+
         <section className="rounded-2xl border border-amber-500/30 bg-amber-950/20 p-6 sm:p-8 space-y-3">
           <p className="text-amber-300 text-xs font-semibold uppercase tracking-[0.14em]">
             Fastest next step
@@ -174,7 +222,9 @@ export default function BuyersGuidePage() {
           </h2>
           <p className="text-gray-300 text-base leading-relaxed max-w-3xl">
             Start with the pages that make the timing tradeoff obvious. Then test the signal
-            with the lightest real entry point you can.
+            with the lightest real entry point you can. If the signal already feels real,
+            move next into the answer that helps you choose between First Look, Dashboard,
+            and the higher-touch lane.
           </p>
           <div className="flex flex-col sm:flex-row gap-3">
             <Link
@@ -188,6 +238,12 @@ export default function BuyersGuidePage() {
               className="inline-flex items-center justify-center px-5 py-3 rounded-lg border border-slate-700 bg-slate-950/60 text-gray-200 hover:border-slate-600 transition-colors text-sm font-semibold"
             >
               Compare the stack
+            </Link>
+            <Link
+              href="/answers/when-should-i-use-first-look-vs-dashboard"
+              className="inline-flex items-center justify-center px-5 py-3 rounded-lg border border-slate-700 bg-slate-950/60 text-gray-200 hover:border-slate-600 transition-colors text-sm font-semibold"
+            >
+              Choose the right paid step
             </Link>
             <Link
               href="https://gitdealflow.com/report"

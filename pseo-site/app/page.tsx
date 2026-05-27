@@ -1021,6 +1021,29 @@ export default function Home() {
         </p>
       </header>
 
+      <section className="rounded-2xl border border-sky-700/40 bg-gradient-to-br from-sky-950/20 via-slate-900 to-slate-950 p-5 sm:p-6 space-y-3">
+        <p className="text-sky-300 text-xs font-semibold uppercase tracking-wider">
+          Start here if the site feels large
+        </p>
+        <p className="text-gray-300 text-sm leading-relaxed">
+          The best first page depends on the question. If you are comparing against Crunchbase, start with the wedge. If you need proof, start with research. If you want buyer-side clarity, start with the guide.
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <Link href="/compare/crunchbase-alternative-for-angel-investors" className="rounded-xl border border-slate-800 bg-slate-900/70 p-4 hover:border-slate-600 transition-colors">
+            <p className="text-gray-100 font-semibold text-sm mb-1">Why not just use Crunchbase?</p>
+            <p className="text-gray-400 text-xs leading-relaxed">Start with the timing-vs-verification wedge.</p>
+          </Link>
+          <Link href="/research" className="rounded-xl border border-slate-800 bg-slate-900/70 p-4 hover:border-slate-600 transition-colors">
+            <p className="text-gray-100 font-semibold text-sm mb-1">Show me the proof</p>
+            <p className="text-gray-400 text-xs leading-relaxed">Start with the public panel and methodology layer.</p>
+          </Link>
+          <Link href="/buyers-guide" className="rounded-xl border border-slate-800 bg-slate-900/70 p-4 hover:border-slate-600 transition-colors">
+            <p className="text-gray-100 font-semibold text-sm mb-1">What should I buy first?</p>
+            <p className="text-gray-400 text-xs leading-relaxed">Start with the buyer-side evaluation page.</p>
+          </Link>
+        </div>
+      </section>
+
       {/* Brunson Expert Secrets §2 Ch 5 — Storytelling. Audit 2026-05-09
           flagged Ch 5 at 95/100 because the Day 0 / Day 14 / Day 21 / Day 25
           email beats carry the story arc beautifully and /origin walks the

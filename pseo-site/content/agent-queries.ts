@@ -4798,18 +4798,20 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
     query: "How do angel investors use GitHub signals?",
     h1: "How angel investors can use GitHub signals without reading code",
     description:
-      "You do not need to be an engineer to use GitHub signals. Here is how angel investors can use public engineering behavior as an earlier startup timing signal.",
+      "Angel investors can use GitHub signals as an earlier timing layer without reading code. Here is how public engineering behavior becomes practical startup deal flow.",
     tldr:
-      "You do not need to read code line by line to use GitHub signals well. What matters is noticing when public engineering behavior starts changing in a way that could matter before the market story fully catches up.",
-    body: `You do not need to be an engineer to use GitHub signals well. What matters is not reading code line by line. It is noticing when public engineering behavior starts changing in a way that could matter. This page shows how angel investors can use GitHub signals as an earlier startup timing surface.
+      "Angel investors use GitHub signals as an earlier timing layer, not as a coding exercise. The job is to notice changing public engineering behavior before the market story fully catches up, then decide whether the company deserves more attention.",
+    body: `Angel investors can use GitHub signals without turning investing into a code-review hobby. The useful move is not reading repositories line by line. The useful move is noticing when public engineering behavior starts changing in a way that could matter before the market story fully catches up. This page shows how GitHub becomes a practical startup timing surface for angels.
 
-**Quick answer.** You are not trying to become a developer. You are simply using public engineering movement as another way to notice when a startup starts behaving differently.
+**Quick answer.** You are not trying to become a developer. You are using public engineering movement as another way to notice when a startup starts behaving differently before the round feels obvious.
 
-**What to look for.** In plain language, look for faster shipping, more contributors, more visible product movement, signs of build intensity, and signs that the team is scaling effort. The question is not whether every commit matters. The question is whether the pattern looks materially different from before.
+**What to look for.** In plain language, look for faster shipping, more contributors, more visible product movement, signs of build intensity, and signs that the team is scaling effort. The question is not whether every commit matters. The question is whether the pattern looks materially different from before and strong enough to deserve a second step.
+
+**How angels actually use it.** Use the signal to decide which companies should move from invisible to watchlist, from watchlist to deeper pass, or from deeper pass to outreach. GitHub is not the verdict. It is the earlier prompt to pay attention.
 
 **What not to overread.** One metric can be noisy. Open source is not the whole market. Some startups are quiet by design. Signal is a starting point, not a verdict.
 
-**Why this is useful for angels.** The advantage is not certainty. The advantage is earlier attention without having to wait for the familiar story surfaces.`,
+**Why this is useful for angels.** The advantage is not certainty. The advantage is earlier attention without having to wait for the familiar story surfaces, then cleaner workflow decisions about what deserves your next hour.`,
     facts: [
       {
         claim:
@@ -4858,9 +4860,10 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
       { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
     ],
     nextReadLinks: [
+      { label: "Timing and verification are not the same thing", url: "/answers/deal-flow-timing-vs-verification" },
+      { label: "A better Crunchbase alternative when timing matters", url: "/compare/crunchbase-alternative-for-angel-investors" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
       { label: "What startup engineering momentum means", url: "/answers/what-is-startup-engineering-momentum" },
-      { label: "How GitHub becomes deal flow for investors", url: "/answers/github-deal-flow-for-investors" },
-      { label: "Best alternative data tools for angel investors", url: "/compare/best-alternative-data-tools-for-angel-investors" },
     ],
     keywords: [
       "how angel investors use github signals",
@@ -4954,9 +4957,9 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
     query: "Deal flow timing vs verification",
     h1: "Timing and verification are not the same thing",
     description:
-      "Most deal flow tools help you verify what already happened. This page explains why earlier timing signals matter and where GitDealFlow fits.",
+      "Most deal flow tools help you verify what already happened. This page explains why timing matters earlier, how verification fits later, and where GitDealFlow belongs.",
     tldr:
-      "Verification helps you understand what already happened. Timing helps you notice what is changing earlier. GitDealFlow is built around earlier public engineering signals, not just later database confirmation.",
+      "Verification helps you understand what already happened. Timing helps you notice what is changing earlier. The strongest practical stack is usually timing first, verification second, not one verification tool pretending to do both jobs.",
     body: `Most deal flow tools are better at verification than timing. That matters because a tool can be useful and still be too late for the kind of earlier attention you actually want. GitDealFlow is built around earlier public signals, not just cleaner confirmation after the story is already obvious.
 
 **Quick answer.** Verification helps you understand what already happened. Timing helps you notice what is changing before everyone else starts repeating the same company.
@@ -4965,9 +4968,11 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
 
 **What timing is good for.** Timing signals help you notice change before the narrative hardens. They matter when the value is in calmer attention, earlier outreach, and a cleaner read before the round gets crowded.
 
+**Why the stack matters.** Most investors do not need one giant tool that claims to do everything. They need a first layer that helps them notice earlier, then a second layer that helps them verify what they found. That is a more honest workflow than expecting Crunchbase, PitchBook, or any database to create timing edge by itself.
+
 **Why investors confuse the two.** A clean database entry feels informative, but informative is not the same as early. Many investors think they want more data when they really want a better timing surface.
 
-**Where GitDealFlow fits.** GitDealFlow is not trying to replace every verification tool. It is trying to help you see one kind of earlier public movement before the market catches up.`,
+**Where GitDealFlow fits.** GitDealFlow is not trying to replace every verification tool. It is trying to help you see one kind of earlier public movement before the market catches up, then hand you off to the right next proof or buyer page.`,
     facts: [
       {
         claim:
@@ -5012,15 +5017,16 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
     ],
     proofLinks: [
       { label: "Read the methodology", url: "/methodology" },
+      { label: "Read the research panel", url: "/research" },
       { label: "Compare alternative data tools for angel investors", url: "/compare/best-alternative-data-tools-for-angel-investors" },
       { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
     ],
     nextReadLinks: [
-      { label: "Best alternative data tools for angel investors", url: "/compare/best-alternative-data-tools-for-angel-investors" },
       { label: "A better Crunchbase alternative when timing matters", url: "/compare/crunchbase-alternative-for-angel-investors" },
+      { label: "Best alternative data tools for angel investors", url: "/compare/best-alternative-data-tools-for-angel-investors" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
       { label: "What startup engineering momentum means", url: "/answers/what-is-startup-engineering-momentum" },
       { label: "Get my First Look", url: "/firstlook" },
-      { label: "Read the buyer's guide", url: "/buyers-guide" },
     ],
     keywords: [
       "deal flow timing vs verification",
@@ -5190,9 +5196,9 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
     query: "When should I use First Look vs Dashboard?",
     h1: "When should you use First Look vs Dashboard?",
     description:
-      "Use First Look when a live sector question already needs a sharper answer. Use Dashboard when you want a recurring weekly operating surface.",
+      "Use First Look when a live sector question already needs a sharper answer. Use Dashboard when you want a recurring weekly operating surface across names, sectors, and weeks.",
     tldr:
-      "Use First Look when one thesis or sector question is already live and you need a sharper pass now. Use Dashboard when you want a recurring weekly operating surface across many names, sectors, and weeks.",
+      "Use First Look when one thesis or sector question is already live and you need a sharper pass now. Use Dashboard when you want a recurring weekly operating surface across many names, sectors, and weeks. The right choice depends on whether the question is one-off or recurring.",
     body: `First Look and Dashboard solve different timing problems. If you treat them like substitutes, you will either overbuy too early or underbuy when the question is already expensive.
 
 **Quick answer.** First Look is for one live question. Dashboard is for recurring weekly coverage.
@@ -5203,7 +5209,9 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
 
 **The practical distinction.** First Look is a fast pass on something already active in your notes. Dashboard is what you use when you want fewer tabs, fewer guessy Mondays, and a stable weekly place to review momentum across the field.
 
-**A simple rule.** If your question starts with 'this sector won't leave me alone', use First Look. If it starts with 'I need a better weekly way to review what changed', use Dashboard.`,
+**A simple rule.** If your question starts with 'this sector won't leave me alone', use First Look. If it starts with 'I need a better weekly way to review what changed', use Dashboard.
+
+**What comes after the choice.** If you choose First Look, the next question is whether it was enough or whether the signal should become a recurring habit. If you choose Dashboard, the next question is whether you need only weekly visibility or a higher-touch support layer.`,
     facts: [
       {
         claim:
@@ -5246,14 +5254,15 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
       "deal-flow-timing-vs-verification",
     ],
     proofLinks: [
+      { label: "Read the research panel", url: "/research" },
       { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
       { label: "Read the buyer's guide", url: "/buyers-guide" },
       { label: "Read the methodology", url: "/methodology" },
     ],
     nextReadLinks: [
-      { label: "See the weekly operating surface", url: "/dashboard" },
       { label: "Get my First Look", url: "/firstlook" },
-      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+      { label: "See the weekly operating surface", url: "/dashboard" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
       { label: "Best VC deal flow software in 2026", url: "/answers/best-vc-deal-flow-software-2026" },
     ],
     keywords: [
@@ -5346,9 +5355,9 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
     query: "When should I use Dashboard vs Insider?",
     h1: "When should you use Dashboard vs Insider?",
     description:
-      "Use Dashboard when you want a recurring weekly signal surface. Use Insider when you want a higher-touch layer around judgment, context, and steadier support.",
+      "Use Dashboard when you want a recurring weekly signal surface. Use Insider when you want a higher-touch layer around judgment, context, and steadier support after the weekly surface already makes sense.",
     tldr:
-      "Use Dashboard when you want a dependable weekly operating surface. Use Insider when you want a smaller, higher-touch layer with more context, steadiness, and direct support around your decisions.",
+      "Use Dashboard when you want a dependable weekly operating surface. Use Insider when you want a smaller, higher-touch layer with more context, steadiness, and direct support around your decisions after recurring visibility is already useful.",
     body: `Dashboard and Insider solve different versions of the same problem. One gives you a recurring surface to review what changed. The other gives you a tighter layer of context and support when you do not want to carry the decision alone.
 
 **Quick answer.** Dashboard is the recurring signal surface. Insider is the higher-touch context layer.
@@ -5357,7 +5366,9 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
 
 **Use Insider when...** you already know the signal is useful but want more support, more context, and a smaller layer around the judgment itself. Insider makes more sense when the bottleneck is not access to names, but steadiness around what to do with them.
 
-**A simple rule.** If you mainly need a better weekly operating surface, choose Dashboard. If you need a room, a tighter layer, and more confidence around live decisions, choose Insider.`,
+**A simple rule.** If you mainly need a better weekly operating surface, choose Dashboard. If you need a room, a tighter layer, and more confidence around live decisions, choose Insider.
+
+**What comes after that.** If Dashboard becomes part of your weekly habit, the next question is whether the recurring surface is enough on its own. If not, Insider is the lane for support and context, not for replacing the surface you already trust.`,
     facts: [
       {
         claim:
@@ -5400,6 +5411,7 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
       "what-is-the-best-vc-research-stack-for-2026",
     ],
     proofLinks: [
+      { label: "Read the research panel", url: "/research" },
       { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
       { label: "Read the buyer's guide", url: "/buyers-guide" },
       { label: "Read the methodology", url: "/methodology" },
@@ -5407,7 +5419,7 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
     nextReadLinks: [
       { label: "See the weekly operating surface", url: "/dashboard" },
       { label: "See the higher-touch layer", url: "/insider" },
-      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
       { label: "Get my First Look", url: "/firstlook" },
     ],
     keywords: [
@@ -5423,9 +5435,9 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
     query: "Can GitDealFlow replace Crunchbase?",
     h1: "Can GitDealFlow replace Crunchbase?",
     description:
-      "Not completely. GitDealFlow is stronger for earlier timing. Crunchbase is still useful for verification, company lookup, and broader context after a name deserves attention.",
+      "Not completely. GitDealFlow is stronger for earlier timing, while Crunchbase is still useful for verification, company lookup, and broader context after a name deserves attention.",
     tldr:
-      "GitDealFlow can replace Crunchbase for some timing jobs, but not for every verification job. The strongest stack is usually GitDealFlow first, Crunchbase second.",
+      "GitDealFlow can replace Crunchbase for some timing jobs, but not for every verification job. The strongest stack is usually GitDealFlow first for earlier signal, Crunchbase second for verification, then a buyer-side decision about how much workflow depth you need.",
     body: `GitDealFlow is not a full startup database, and it is not trying to be. It is strongest when the real job is earlier timing rather than broad verification.
 
 **Quick answer.** No, not completely. GitDealFlow is better for earlier signal. Crunchbase is still useful for company lookup, funding history, and a lighter verification pass after something already deserves attention.
@@ -5434,7 +5446,9 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
 
 **Where Crunchbase still matters.** It still matters for funding rounds, investor lists, basic company facts, and quick background checks after a name is already on your radar.
 
-**The clean stack.** For most small investors the strongest workflow is simple: GitDealFlow first for timing, Crunchbase second for verification. The mistake is expecting a verification tool to do an early-signal job.`,
+**The clean stack.** For most small investors the strongest workflow is simple: GitDealFlow first for timing, Crunchbase second for verification. The mistake is expecting a verification tool to do an early-signal job.
+
+**What happens after that.** Once the timing-versus-verification split is clear, the next question is not whether one tool should do everything. The next question is whether your workflow needs only a light first step, a recurring weekly surface, or a higher-touch lane.`,
     facts: [
       {
         claim:
@@ -5479,13 +5493,14 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
     proofLinks: [
       { label: "A better Crunchbase alternative when timing matters", url: "/compare/crunchbase-alternative-for-angel-investors" },
       { label: "GitHub signals vs Crunchbase alerts", url: "/compare/github-signals-vs-crunchbase-alerts" },
+      { label: "Read the research panel", url: "/research" },
       { label: "Read the methodology", url: "/methodology" },
     ],
     nextReadLinks: [
-      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
-      { label: "Get my First Look", url: "/firstlook" },
-      { label: "Read the buyer's guide", url: "/buyers-guide" },
       { label: "A better Crunchbase alternative when timing matters", url: "/compare/crunchbase-alternative-for-angel-investors" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
+      { label: "When should you use First Look vs Dashboard?", url: "/answers/when-should-i-use-first-look-vs-dashboard" },
+      { label: "Get my First Look", url: "/firstlook" },
     ],
     keywords: [
       "can GitDealFlow replace Crunchbase",
@@ -5500,9 +5515,9 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
     query: "Is First Look worth it for angels?",
     h1: "Is First Look worth it for angels?",
     description:
-      "First Look is worth it when one live sector or thesis question already needs a sharper answer. It is less useful if you are still too early and only need broad weekly exposure.",
+      "First Look is worth it when one live sector or thesis question already needs a sharper answer. It is less useful if you are still too early and only need broad weekly exposure or recurring workflow.",
     tldr:
-      "First Look is worth it for angels when the question is already hot. If you still just need recurring exposure and patience, start with the free Sunday issue instead.",
+      "First Look is worth it for angels when the question is already hot and specific. If you still just need recurring exposure and patience, start with the free Sunday issue or a recurring weekly surface instead.",
     body: `First Look is not a generic trial. It is a paid shortcut for a specific moment: when a sector or thesis question already has enough heat that a sharper answer is worth more than another week of passive browsing.
 
 **Quick answer.** First Look is worth it when one live question already needs a better answer. If you are still too early, the free Sunday issue is the better starting point.
@@ -5511,7 +5526,9 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
 
 **When it is not worth it yet.** It is usually too early if you are still just orienting yourself, browsing broadly, or figuring out whether this category even fits your workflow. In that case, free weekly exposure is the smarter first move.
 
-**Simple rule.** If the question is specific and already expensive, use First Look. If the question is still fuzzy, start free and let the signal build context first.`,
+**Simple rule.** If the question is specific and already expensive, use First Look. If the question is still fuzzy, start free and let the signal build context first.
+
+**The next decision after that.** Once the question becomes recurring instead of one-off, the real comparison shifts from First Look versus free to First Look versus Dashboard.`,
     facts: [
       {
         claim:
@@ -5556,13 +5573,14 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
     proofLinks: [
       { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
       { label: "Read the buyer's guide", url: "/buyers-guide" },
+      { label: "Read the research panel", url: "/research" },
       { label: "Read the methodology", url: "/methodology" },
     ],
     nextReadLinks: [
       { label: "Get my First Look", url: "/firstlook" },
-      { label: "See the weekly operating surface", url: "/dashboard" },
-      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
       { label: "When should you use First Look vs Dashboard?", url: "/answers/when-should-i-use-first-look-vs-dashboard" },
+      { label: "See the weekly operating surface", url: "/dashboard" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
     ],
     keywords: [
       "is First Look worth it for angels",
@@ -5577,9 +5595,9 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
     query: "What do I actually get from Dashboard each week?",
     h1: "What do you actually get from Dashboard each week?",
     description:
-      "Dashboard gives you a recurring weekly operating surface: more names, cleaner review, fewer tabs, and a calmer way to see what changed across the field.",
+      "Dashboard gives you a recurring weekly operating surface: more names, cleaner review, fewer tabs, and a calmer way to see what changed across the field each week.",
     tldr:
-      "What you get from Dashboard each week is not just more data. You get a steadier weekly operating surface that helps you review momentum across names and sectors without rebuilding the workflow every Monday.",
+      "What you get from Dashboard each week is not just more data. You get a steadier weekly operating surface that helps you review momentum across names and sectors without rebuilding the workflow every Monday, and a cleaner bridge from free exposure into recurring habit.",
     body: `Dashboard is not just a bigger list. It is a weekly operating surface.
 
 **Quick answer.** Each week you get a calmer way to see what changed across more names and sectors, with less tab chaos and less guesswork.
@@ -5588,7 +5606,9 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
 
 **What Dashboard is really for.** It is for the buyer who no longer needs just one sharp answer, but also is not looking for a higher-touch room. It sits in the middle: recurring visibility, cleaner timing, and a better Monday workflow.
 
-**What it is not.** It is not a replacement for every diligence tool and it is not the same thing as Insider. Dashboard is the recurring review layer.`,
+**What it is not.** It is not a replacement for every diligence tool and it is not the same thing as Insider. Dashboard is the recurring review layer.
+
+**What comes next.** Once Dashboard becomes useful, the next question is whether recurring visibility is enough or whether you want the higher-touch Insider layer around the judgment itself.`,
     facts: [
       {
         claim:
@@ -5631,15 +5651,16 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
       "is-first-look-worth-it-for-angels",
     ],
     proofLinks: [
+      { label: "Read the research panel", url: "/research" },
       { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
       { label: "Read the buyer's guide", url: "/buyers-guide" },
       { label: "Read the methodology", url: "/methodology" },
     ],
     nextReadLinks: [
       { label: "See the weekly operating surface", url: "/dashboard" },
-      { label: "See the higher-touch layer", url: "/insider" },
-      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
       { label: "When should you use Dashboard vs Insider?", url: "/answers/when-should-i-use-dashboard-vs-insider" },
+      { label: "See the higher-touch layer", url: "/insider" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
     ],
     keywords: [
       "what do I get from Dashboard each week",
@@ -5654,9 +5675,9 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
     query: "What do I actually get from Insider?",
     h1: "What do you actually get from Insider?",
     description:
-      "Insider gives you the higher-touch layer: more context, more steadiness, and more support around what to do with the signal once it already matters.",
+      "Insider gives you the higher-touch layer: more context, more steadiness, and more support around what to do with the signal once it already matters and recurring visibility is not enough.",
     tldr:
-      "What you get from Insider is not just more proof. You get a tighter layer of context and steadiness around recurring decisions when you no longer want to carry them alone.",
+      "What you get from Insider is not just more proof. You get a tighter layer of context and steadiness around recurring decisions when you no longer want to carry them alone and the weekly surface is already useful.",
     body: `Insider is not just 'Dashboard plus more.' It is the higher-touch layer for the buyer who already trusts the signal and now wants more context and steadiness around what to do with it.
 
 **Quick answer.** Insider gives you a smaller, more serious layer around recurring judgment, not just access to more raw signal.
@@ -5665,7 +5686,9 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
 
 **Who it is really for.** It is for the buyer who has already moved beyond simple exposure and wants a tighter layer around the recurring decisions themselves.
 
-**What it is not.** It is not the best first paid step for most people. It usually makes sense after the free Sunday issue, after First Look, or after Dashboard already proved useful.`,
+**What it is not.** It is not the best first paid step for most people. It usually makes sense after the free Sunday issue, after First Look, or after Dashboard already proved useful.
+
+**What comes next.** Once you are comparing Insider seriously, the real question is no longer whether the signal works. The real question is whether you need only recurring visibility, or recurring visibility plus a tighter support layer around the judgment itself.`,
     facts: [
       {
         claim:
@@ -5708,15 +5731,16 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
       "is-first-look-worth-it-for-angels",
     ],
     proofLinks: [
+      { label: "Read the research panel", url: "/research" },
       { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
       { label: "Read the buyer's guide", url: "/buyers-guide" },
       { label: "Read the methodology", url: "/methodology" },
     ],
     nextReadLinks: [
       { label: "See the higher-touch layer", url: "/insider" },
-      { label: "See the weekly operating surface", url: "/dashboard" },
       { label: "When should you use Dashboard vs Insider?", url: "/answers/when-should-i-use-dashboard-vs-insider" },
-      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+      { label: "See the weekly operating surface", url: "/dashboard" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
     ],
     keywords: [
       "what do I get from Insider",
@@ -5731,9 +5755,9 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
     query: "Who should use Insider instead of Dashboard?",
     h1: "Who should use Insider instead of Dashboard?",
     description:
-      "Use Insider instead of Dashboard when you already trust the signal and the real bottleneck is confidence, context, and support — not just access to the weekly surface.",
+      "Use Insider instead of Dashboard when you already trust the signal and the real bottleneck is confidence, context, and support — not just access to the weekly surface or recurring visibility.",
     tldr:
-      "You should use Insider instead of Dashboard when the problem is no longer seeing what changed, but deciding what to do with it more confidently and less alone.",
+      "You should use Insider instead of Dashboard when the problem is no longer seeing what changed, but deciding what to do with it more confidently and less alone after the weekly surface already works.",
     body: `Most buyers should not start with Insider. But some should choose it instead of Dashboard once the problem changes.
 
 **Quick answer.** Use Insider instead of Dashboard when you already trust the signal and the real bottleneck is confidence, context, and support rather than access to the weekly surface.
@@ -5742,7 +5766,9 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
 
 **Choose Dashboard if...** your main need is still a better weekly surface, more names, fewer tabs, and a calmer recurring workflow.
 
-**Simple rule.** Dashboard is for recurring review. Insider is for recurring conviction support.`,
+**Simple rule.** Dashboard is for recurring review. Insider is for recurring conviction support.
+
+**What comes after that.** Once you know which side you are on, the next move is not more explanation. It is choosing whether you need the recurring surface, the higher-touch layer, or the buyer page that helps you decide which paid step fits your workflow best.`,
     facts: [
       {
         claim:
@@ -5785,15 +5811,17 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
       "what-do-i-actually-get-from-dashboard-each-week",
     ],
     proofLinks: [
+      { label: "Read the research panel", url: "/research" },
       { label: "Read the buyer's guide", url: "/buyers-guide" },
       { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
       { label: "Read the methodology", url: "/methodology" },
     ],
     nextReadLinks: [
       { label: "See the higher-touch layer", url: "/insider" },
+      { label: "When should you use Dashboard vs Insider?", url: "/answers/when-should-i-use-dashboard-vs-insider" },
       { label: "See the weekly operating surface", url: "/dashboard" },
+      { label: "Read the buyer's guide", url: "/buyers-guide" },
       { label: "Get my First Look", url: "/firstlook" },
-      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
     ],
     keywords: [
       "who should use Insider instead of Dashboard",
@@ -6966,6 +6994,322 @@ A strong memo makes the signal usable by someone else.`,
       "startup signal team review",
       "weekly investment team signal meeting",
       "small fund weekly review workflow",
+    ],
+  },
+  {
+    slug: "how-to-write-a-one-page-signal-brief",
+    query: "How do I write a one-page signal brief?",
+    h1: "How to write a one-page signal brief",
+    description:
+      "A one-page signal brief should fit on one screenful of logic: what changed, why it matters now, what still needs checking, and what you want to do next.",
+    tldr:
+      "A strong one-page signal brief is short, specific, and decision-ready. It names the change, the likely meaning, the open questions, and the exact next action.",
+    body: `A one-page signal brief is not a mini white paper. Its job is to make one signal legible enough that another person can decide what to do with it.
+
+**Quick answer.** Write it in four blocks: what changed, why it matters now, what still needs checking, and what you want to do next.
+
+**Block one — what changed.** State the observable movement in plain language.
+
+**Block two — why it matters.** Explain why the change could matter before the market catches up.
+
+**Block three — what still needs checking.** Say what is still uncertain so the brief stays credible.
+
+**Block four — next action.** End with one recommendation: watch, outreach, deeper pass, or drop.
+
+If the brief cannot survive on one page, the thinking is probably still too fuzzy.`,
+    facts: [
+      {
+        claim:
+          "The site already separates timing, verification, and escalation paths, which maps directly onto a concise one-page brief structure.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/deal-flow-timing-vs-verification",
+        sourceLabel: "Timing vs verification",
+      },
+      {
+        claim:
+          "The partner-meeting and investment-memo pages already frame how to compress signal into a reusable decision artifact.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/how-to-turn-a-signal-into-an-investment-memo",
+        sourceLabel: "Signal to memo answer",
+      },
+      {
+        claim:
+          "The sample Sunday watchlist is already a compact proof surface that shows how to present one name, one reason, and one link clearly.",
+        sourceUrl: "https://gitdealflow.com/report",
+        sourceLabel: "Sample watchlist",
+      },
+    ],
+    faqs: [
+      {
+        q: "How long should a one-page signal brief be?",
+        a: "Short enough that the reader can understand the signal and the next action in one sitting without hunting through attachments.",
+      },
+      {
+        q: "Should I include every supporting detail?",
+        a: "No. Include the minimum needed to make the signal legible and credible, then link to the deeper proof if needed.",
+      },
+      {
+        q: "What is the biggest mistake in a signal brief?",
+        a: "Turning it into a vague essay instead of a clear decision artifact with a specific next step.",
+      },
+    ],
+    ctaUrl: "/firstlook",
+    ctaLabel: "Get my First Look",
+    related: [
+      "how-to-turn-a-signal-into-an-investment-memo",
+      "how-to-explain-a-startup-signal-to-an-lp",
+      "how-to-use-gitdealflow-in-a-partner-meeting",
+    ],
+    proofLinks: [
+      { label: "How to turn a signal into an investment memo", url: "/answers/how-to-turn-a-signal-into-an-investment-memo" },
+      { label: "Read the methodology", url: "/methodology" },
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+    ],
+    nextReadLinks: [
+      { label: "How to explain a startup signal to an LP", url: "/answers/how-to-explain-a-startup-signal-to-an-lp" },
+      { label: "How to use GitDealFlow in a partner meeting", url: "/answers/how-to-use-gitdealflow-in-a-partner-meeting" },
+      { label: "Get my First Look", url: "/firstlook" },
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+    ],
+    keywords: [
+      "how to write a one-page signal brief",
+      "one page startup signal brief",
+      "signal brief venture investing",
+      "startup signal summary memo",
+      "one page investment signal note",
+    ],
+  },
+  {
+    slug: "how-to-decide-when-to-ignore-a-signal",
+    query: "How do I decide when to ignore a signal?",
+    h1: "How to decide when to ignore a signal",
+    description:
+      "Ignore a signal when it is vague, expensive to interpret, hard to verify, or weaker than the next best use of your attention. The goal is discipline, not maximum reaction.",
+    tldr:
+      "The right time to ignore a signal is when the cost of interpreting it is higher than the likely value of acting on it. Good signal discipline includes saying no early and often.",
+    body: `A useful signal workflow is not just about what you follow. It is also about what you ignore.
+
+**Quick answer.** Ignore a signal when it is too vague, too noisy, too expensive to interpret, or clearly weaker than the next best use of your attention.
+
+**What weak signals look like.** They usually require too much narrative stitching, too many tabs, or too much wishful interpretation before they become actionable.
+
+**Why ignoring matters.** The value of a signal system is not volume. It is cleaner attention. A workflow that cannot ignore weak signals turns curiosity into churn.
+
+**Simple rule.** If you cannot explain the signal clearly, verify it cheaply, and point to a sensible next step, ignoring it is often the correct move.`,
+    facts: [
+      {
+        claim:
+          "The site already distinguishes between timing, verification, and escalation, which implies that some signals should remain at the watch stage instead of being acted on immediately.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/deal-flow-timing-vs-verification",
+        sourceLabel: "Timing vs verification",
+      },
+      {
+        claim:
+          "The watchlist-discipline and small-fund ranking pages already frame actionability as more important than drama or raw movement.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/how-to-use-a-watchlist-without-overtrading",
+        sourceLabel: "Watchlist discipline",
+      },
+      {
+        claim:
+          "First Look is positioned as the escalation path when a signal is almost ready but not yet clear enough to act on directly.",
+        sourceUrl: "https://gitdealflow.com/firstlook.html",
+        sourceLabel: "First Look page",
+      },
+    ],
+    faqs: [
+      {
+        q: "What is the biggest reason to ignore a signal?",
+        a: "When it creates curiosity without a clear next step. Attention is limited, so weak signals should lose quickly.",
+      },
+      {
+        q: "Can I come back to an ignored signal later?",
+        a: "Yes. Ignoring a signal now does not mean denying it forever. It means the current evidence does not justify attention yet.",
+      },
+      {
+        q: "When should I deepen instead of ignore?",
+        a: "When the signal is almost actionable but still needs one sharper pass to become legible and useful.",
+      },
+    ],
+    ctaUrl: "/firstlook",
+    ctaLabel: "Get my First Look",
+    related: [
+      "how-to-use-a-watchlist-without-overtrading",
+      "how-to-rank-startup-signals-in-a-small-fund",
+      "how-to-decide-when-a-signal-deserves-founder-outreach",
+    ],
+    proofLinks: [
+      { label: "How to use a watchlist without overtrading", url: "/answers/how-to-use-a-watchlist-without-overtrading" },
+      { label: "How to rank startup signals in a small fund", url: "/answers/how-to-rank-startup-signals-in-a-small-fund" },
+      { label: "Read the methodology", url: "/methodology" },
+    ],
+    nextReadLinks: [
+      { label: "How to decide when a signal deserves founder outreach", url: "/answers/how-to-decide-when-a-signal-deserves-founder-outreach" },
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+      { label: "Get my First Look", url: "/firstlook" },
+      { label: "How to build a two-layer deal flow stack", url: "/answers/how-to-build-a-two-layer-deal-flow-stack" },
+    ],
+    keywords: [
+      "how to decide when to ignore a signal",
+      "ignore weak startup signal",
+      "when to ignore alternative data signal",
+      "signal discipline investing",
+      "when not to act on a startup signal",
+    ],
+  },
+  {
+    slug: "how-to-turn-a-signal-into-a-watchlist",
+    query: "How do I turn a signal into a watchlist?",
+    h1: "How to turn a signal into a watchlist",
+    description:
+      "Turn a signal into a watchlist by deciding what belongs on the list, what gets reviewed weekly, and what triggers escalation into outreach, deeper pass, or deletion.",
+    tldr:
+      "A watchlist is not just a pile of names. It is a small recurring attention system built from signals that are clear enough to track and important enough to revisit.",
+    body: `A signal becomes useful when it enters a system. A watchlist is that system.
+
+**Quick answer.** Put a signal on the watchlist when it is strong enough to revisit, not merely interesting enough to mention once.
+
+**What belongs on the list.** Names that are early enough to matter, clear enough to explain, and still unresolved enough that a future review could change your decision.
+
+**What does not belong.** Weak curiosities, one-off spikes you cannot explain, or names you are never going to revisit. A crowded watchlist is often just delayed ignoring.
+
+**What the list should do.** It should create recurring review, not passive storage. Each name should eventually move toward one of four outcomes: deepen, reach out, keep watching, or remove.
+
+**Simple rule.** If you would not look at the name again with fresh eyes next week, it probably does not belong on the watchlist.`,
+    facts: [
+      {
+        claim:
+          "The site already frames the watchlist as a recurring attention surface rather than a static database or generic note store.",
+        sourceUrl: "https://signals.gitdealflow.com/compare/weekly-watchlist-vs-a-static-startup-database",
+        sourceLabel: "Watchlist vs database comparison",
+      },
+      {
+        claim:
+          "The watchlist-discipline page already establishes that recurring review should not collapse into overtrading or compulsive action.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/how-to-use-a-watchlist-without-overtrading",
+        sourceLabel: "Watchlist discipline",
+      },
+      {
+        claim:
+          "Dashboard is already positioned as the recurring weekly operating surface once the watchlist becomes something you review consistently.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/what-do-i-actually-get-from-dashboard-each-week",
+        sourceLabel: "Dashboard weekly value",
+      },
+    ],
+    faqs: [
+      {
+        q: "How many names should stay on a watchlist?",
+        a: "Only as many as you can actually revisit with discipline. A shorter living watchlist is usually stronger than a giant stagnant one.",
+      },
+      {
+        q: "When should a name leave the watchlist?",
+        a: "When it clearly deserves a deeper pass or outreach, or when it no longer feels strong enough to justify recurring attention.",
+      },
+      {
+        q: "Should every interesting signal go on the list?",
+        a: "No. The point of the list is repeated attention, not emotional archiving.",
+      },
+    ],
+    ctaUrl: "/dashboard",
+    ctaLabel: "See the weekly operating surface",
+    related: [
+      "how-to-use-a-watchlist-without-overtrading",
+      "when-to-upgrade-from-a-spreadsheet-to-a-real-signal-workflow",
+      "how-to-decide-when-a-signal-deserves-founder-outreach",
+    ],
+    proofLinks: [
+      { label: "Weekly watchlist vs a static startup database", url: "/compare/weekly-watchlist-vs-a-static-startup-database" },
+      { label: "What do you actually get from Dashboard each week?", url: "/answers/what-do-i-actually-get-from-dashboard-each-week" },
+      { label: "Read the methodology", url: "/methodology" },
+    ],
+    nextReadLinks: [
+      { label: "How to use a watchlist without overtrading", url: "/answers/how-to-use-a-watchlist-without-overtrading" },
+      { label: "How to decide when a signal deserves founder outreach", url: "/answers/how-to-decide-when-a-signal-deserves-founder-outreach" },
+      { label: "See the weekly operating surface", url: "/dashboard" },
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+    ],
+    keywords: [
+      "how to turn a signal into a watchlist",
+      "startup signal watchlist",
+      "how to build a startup watchlist",
+      "deal flow watchlist process",
+      "signal to watchlist workflow",
+    ],
+  },
+  {
+    slug: "how-to-know-when-a-signal-is-just-noise",
+    query: "How do I know when a signal is just noise?",
+    h1: "How to know when a signal is just noise",
+    description:
+      "A signal is usually just noise when you cannot explain it clearly, verify it cheaply, or point to a sensible next step. If it creates more interpretation than action, it is probably weak.",
+    tldr:
+      "A signal is usually just noise when it creates more interpretation than action. If you cannot explain it, verify it, and act on it without heroic effort, it probably does not deserve attention yet.",
+    body: `Most noise does not announce itself as noise. It arrives dressed as urgency.
+
+**Quick answer.** A signal is probably just noise when it is hard to explain, expensive to interpret, and weak on next-step clarity.
+
+**What noisy signals do.** They make you open more tabs, invent more stories, and feel more urgency than the evidence actually supports.
+
+**What real signals do.** They reduce ambiguity enough that you can explain what changed and decide whether to watch, deepen, reach out, or ignore.
+
+**Why this matters.** The biggest cost in a signal workflow is not missing one weak name. It is letting noise flood your attention and distort the ranking of what really matters.
+
+**Simple rule.** If the signal increases curiosity but not clarity, it is probably not strong enough yet.`,
+    facts: [
+      {
+        claim:
+          "The existing discipline pages already distinguish action-worthy signals from weak ones by emphasizing clarity, next-step logic, and repeated review discipline.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/how-to-decide-when-a-signal-deserves-founder-outreach",
+        sourceLabel: "Founder outreach threshold",
+      },
+      {
+        claim:
+          "The site consistently separates timing from verification so that weak signals do not get mistaken for full decisions.",
+        sourceUrl: "https://signals.gitdealflow.com/answers/deal-flow-timing-vs-verification",
+        sourceLabel: "Timing vs verification",
+      },
+      {
+        claim:
+          "First Look is positioned as the deeper pass when a signal is almost ready but still too ambiguous to act on directly.",
+        sourceUrl: "https://gitdealflow.com/firstlook.html",
+        sourceLabel: "First Look page",
+      },
+    ],
+    faqs: [
+      {
+        q: "What is the clearest sign that something is just noise?",
+        a: "If you need a lot of extra story to make it feel meaningful, it is probably not strong enough yet.",
+      },
+      {
+        q: "Can a noisy signal become useful later?",
+        a: "Yes. Weak signals can become more useful as they repeat, clarify, or connect to a stronger pattern over time.",
+      },
+      {
+        q: "What should I do with a maybe-signal?",
+        a: "Either keep it on a disciplined watchlist or escalate into a deeper pass if the question is already expensive enough to justify the effort.",
+      },
+    ],
+    ctaUrl: "/firstlook",
+    ctaLabel: "Get my First Look",
+    related: [
+      "how-to-decide-when-to-ignore-a-signal",
+      "how-to-use-a-watchlist-without-overtrading",
+      "how-to-turn-a-signal-into-a-watchlist",
+    ],
+    proofLinks: [
+      { label: "How to decide when to ignore a signal", url: "/answers/how-to-decide-when-to-ignore-a-signal" },
+      { label: "How to decide when a signal deserves founder outreach", url: "/answers/how-to-decide-when-a-signal-deserves-founder-outreach" },
+      { label: "Read the methodology", url: "/methodology" },
+    ],
+    nextReadLinks: [
+      { label: "How to use a watchlist without overtrading", url: "/answers/how-to-use-a-watchlist-without-overtrading" },
+      { label: "How to turn a signal into a watchlist", url: "/answers/how-to-turn-a-signal-into-a-watchlist" },
+      { label: "Get my First Look", url: "/firstlook" },
+      { label: "Get the free Sunday issue", url: "https://gitdealflow.com/#signup" },
+    ],
+    keywords: [
+      "how to know when a signal is just noise",
+      "startup signal noise",
+      "how to tell if a signal is noise",
+      "weak startup signal",
+      "when a startup signal is not actionable",
     ],
   },
 ];
