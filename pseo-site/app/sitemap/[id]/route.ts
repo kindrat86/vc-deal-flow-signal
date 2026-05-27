@@ -501,6 +501,7 @@ export async function GET(_req: Request, ctx: RouteContext) {
       { url: `${BASE_URL}/tools/safe-calculator`, lastmod, changefreq: "monthly", priority: 0.85 },
       { url: `${BASE_URL}/tools/runway-calculator`, lastmod, changefreq: "monthly", priority: 0.85 },
       { url: `${BASE_URL}/tools/burn-multiple-calculator`, lastmod, changefreq: "monthly", priority: 0.85 },
+      { url: `${BASE_URL}/tools/magic-number-calculator`, lastmod, changefreq: "monthly", priority: 0.85 },
       // /define — category-grouped index (sibling to /glossary's flat
       // alphabetic listing). Hub for the 62 /define/[term] deep pages.
       { url: `${BASE_URL}/define`, lastmod, changefreq: "monthly", priority: 0.8 },
