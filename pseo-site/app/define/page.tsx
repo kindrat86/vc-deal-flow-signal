@@ -14,6 +14,12 @@ const PAGE_URL = `${SITE}/define`;
 
 export const revalidate = 604800;
 
+// Index OG: reuse the same per-term route with the anchor term that
+// best represents the whole collection (code-side-sourcing is the
+// named category that defines the site). Falls back gracefully if the
+// route can't render — the page itself is still indexable.
+const INDEX_OG = `${SITE}/api/og/define/code-side-sourcing`;
+
 export const metadata: Metadata = {
   title: "Definitions — VC Deal Flow Signal Vocabulary by Category",
   description:
@@ -25,6 +31,21 @@ export const metadata: Metadata = {
       "Browse the controlled vocabulary by category. 62 terms, each with its own page.",
     type: "website",
     url: PAGE_URL,
+    images: [
+      {
+        url: INDEX_OG,
+        width: 1200,
+        height: 630,
+        alt: "VC Deal Flow Signal Definitions",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "VC Deal Flow Signal Definitions",
+    description:
+      "Browse the controlled vocabulary by category. 62 terms, each with its own page.",
+    images: [INDEX_OG],
   },
 };
 
