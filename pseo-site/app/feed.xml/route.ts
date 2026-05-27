@@ -31,6 +31,8 @@ export async function GET() {
     <description>Insights on using GitHub engineering signals for startup investing. Practical guides for VCs and angel investors.</description>
     <language>en</language>
     <atom:link href="${BASE_URL}/feed.xml" rel="self" type="application/rss+xml"/>
+    <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub"/>
+    <atom:link href="https://pubsubhubbub.superfeedr.com/" rel="hub"/>
     <lastBuildDate>${getDataLastModified().toUTCString()}</lastBuildDate>
 ${items}
   </channel>

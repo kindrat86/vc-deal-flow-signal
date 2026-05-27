@@ -261,6 +261,37 @@ const nextConfig: NextConfig = {
           },
         ],
       },
+      // Glossary definition embeds — paste-able iframe card for any of
+      // the 84 /define/<term> entries. Tech blogs (Substack, Ghost,
+      // WordPress, Notion handbooks) that mention a VC term drop a
+      // single <iframe src="https://signals.gitdealflow.com/embed/define/<term>">
+      // and get a definition card with CC BY 4.0 attribution baked into
+      // the asset. generateStaticParams fans out over glossaryTerms.
+      {
+        source: "/embed/define/:term*",
+        headers: [
+          {
+            key: "X-Frame-Options",
+            value: "ALLOWALL",
+          },
+          {
+            key: "Content-Security-Policy",
+            value: [
+              "default-src 'self'",
+              "script-src 'self' 'unsafe-inline'",
+              "style-src 'self' 'unsafe-inline'",
+              "img-src 'self' data: https:",
+              "font-src 'self'",
+              "connect-src 'self'",
+              "frame-ancestors *",
+            ].join("; "),
+          },
+          {
+            key: "Access-Control-Allow-Origin",
+            value: "*",
+          },
+        ],
+      },
       // Calculator embed widgets — same iframe-friendly contract as the
       // mini-leaderboard. Operator newsletters (Lenny's, FirstRound,
       // Sacra), founder blogs, and incubator portals drop a single

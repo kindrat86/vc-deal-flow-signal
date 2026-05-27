@@ -6,7 +6,7 @@
     "dev": "next dev",
     "prebuild": "npx tsx scripts/generate-signal-report.ts && npx tsx scripts/generate-signal-digest-email.ts && npx tsx scripts/generate-book-artifacts.ts && (test -n \"$VERCEL\" && echo 'Skipping data fetch on Vercel (using existing data)' || npx tsx scripts/fetch-github-data.ts)",
     "build": "next build",
-    "postbuild": "npx tsx scripts/audit-pseo-uniqueness.ts && npx tsx scripts/audit-pseo-coverage.ts && npx tsx scripts/submit-indexnow.ts",
+    "postbuild": "npx tsx scripts/audit-pseo-uniqueness.ts && npx tsx scripts/audit-pseo-coverage.ts && npx tsx scripts/submit-indexnow.ts && npx tsx scripts/submit-websub.ts",
     "start": "next start",
     "lint": "eslint",
     "audit:pseo": "npx tsx scripts/audit-pseo-uniqueness.ts",
