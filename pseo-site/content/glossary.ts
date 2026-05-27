@@ -443,4 +443,99 @@ export const glossaryTerms: GlossaryTerm[] = [
     definition:
       "The capitalization table — a record of every share, option, warrant, and convertible instrument in a startup, broken down by holder. Cap tables track ownership percentages, dilution effects of new rounds, vesting schedules, and option-pool refresh decisions. Investors review the cap table before committing capital because past structuring decisions (heavy preferences, founder control issues, dead equity) can make a clean term sheet impossible.",
   },
+  // ── SaaS efficiency suite (David Sacks / Mamoon Hamid / Bessemer) ────────
+  {
+    term: "Burn Multiple",
+    id: "burn-multiple",
+    definition:
+      "Net burn divided by net new ARR in the same period. Coined by David Sacks as a single-number SaaS efficiency metric: under 1 is elite, 1–1.5 is great, 1.5–2 is OK, 2–3 is suspect, and over 3 means the business is buying revenue at unsustainable cost. Burn multiple normalizes across stage and gross-margin profiles where standalone burn rate or growth rate would mislead. It is the SaaS analog to LTV:CAC for the venture-rounds market.",
+  },
+  {
+    term: "Magic Number",
+    id: "magic-number",
+    definition:
+      "Net new ARR in a quarter, divided by the prior quarter's sales and marketing spend, then annualized. A magic number above 1.0 means a dollar of S&M spend returns a dollar of ARR inside a year — green light to keep investing. Between 0.5 and 1.0 means the model works but needs tuning; below 0.5 means S&M is broken before scaling further. Popularized by Scale Venture Partners and used as a fast pre-Series-B sanity check.",
+  },
+  {
+    term: "CAC Payback",
+    id: "cac-payback",
+    definition:
+      "The number of months it takes for the gross profit from a new customer to repay the fully-loaded cost of acquiring them. CAC payback = CAC / (ARPA × gross margin), measured in months. Healthy SaaS sits under 12 months; over 24 months is a warning sign that the business needs cheaper acquisition channels or higher-margin contracts. CAC payback is cash-flow-oriented where LTV:CAC is unit-economics-oriented — both are needed.",
+  },
+  {
+    term: "LTV",
+    id: "ltv",
+    definition:
+      "Lifetime Value — the total gross profit a startup expects to earn from an average customer over the full relationship. The standard SaaS formula is ARPU × gross margin × (1 / monthly churn), giving a steady-state estimate. LTV is the numerator of the LTV:CAC ratio, where 3:1 is considered the threshold for capital-efficient growth. LTV math breaks down at low customer counts and at high contract volatility, so investors corroborate it with cohort retention curves.",
+  },
+  {
+    term: "Quick Ratio",
+    id: "quick-ratio",
+    definition:
+      "For SaaS, the ratio of expansion plus new ARR to contraction plus churned ARR in a period. A quick ratio above 4 indicates elite growth efficiency; 2–4 is healthy; 1–2 is stagnating; under 1 means the business is shrinking. Mamoon Hamid of Social Capital popularized the metric as a single number capturing both top-of-funnel acquisition and bottom-of-funnel retention quality. It is distinct from the accounting quick ratio (current assets minus inventory over current liabilities).",
+  },
+  // ── Financing math ──────────────────────────────────────────────────────
+  {
+    term: "Dilution Stack",
+    id: "dilution-stack",
+    definition:
+      "The compounding sequence of dilutive events between founding and exit — SAFE conversions, option-pool refreshes, priced rounds, secondary offers — modeled as a stack so a founder can see their fully diluted ownership at each step. A typical seed-to-Series-B path stacks 5–8 events and lands the founder around 15–25% ownership before any exit dilution. Dilution stack modeling is essential before signing a SAFE with a cap below the next-round target, because the cap conversion is often the largest single dilution event.",
+  },
+  // ── SaaS recurring revenue ──────────────────────────────────────────────
+  {
+    term: "ARR",
+    id: "arr",
+    definition:
+      "Annual Recurring Revenue — the annualized run rate of all active recurring contracts, excluding one-time fees, services, and usage spikes. ARR is the headline SaaS revenue metric venture rounds are priced against; multiples like 10× ARR or 30× ARR set the framing for valuation conversations. ARR is forward-looking by construction (it annualizes the current monthly book) and differs from booked revenue, GAAP recognized revenue, and cash collected — investors will ask for all four.",
+  },
+  {
+    term: "MRR",
+    id: "mrr",
+    definition:
+      "Monthly Recurring Revenue — ARR divided by 12, or the sum of all currently active monthly subscription contracts. MRR is used for shorter feedback cycles than ARR: month-over-month MRR growth, MRR churn, expansion MRR, and new MRR are core SaaS dashboard metrics. Early-stage startups often report MRR before they have enough volume to make ARR a stable number.",
+  },
+  {
+    term: "NRR",
+    id: "nrr",
+    definition:
+      "Net Revenue Retention — the percentage of ARR that a cohort of existing customers continues to deliver after a fixed window (typically 12 months), including expansion, contraction, and churn. Formula: (starting ARR + expansion − downgrade − churn) ÷ starting ARR. Best-in-class public SaaS reports NRR above 120%; 100% means the cohort treads water; below 90% indicates the business is leaking value faster than it can grow.",
+  },
+  {
+    term: "GRR",
+    id: "grr",
+    definition:
+      "Gross Revenue Retention — the percentage of ARR a cohort retains after churn and contraction, but excluding expansion. Formula: (starting ARR − downgrade − churn) ÷ starting ARR. GRR is always less than or equal to NRR and is a cleaner read on customer-success quality because it strips out the upsell motion. Healthy GRR sits above 90% for mid-market SaaS and above 95% for enterprise.",
+  },
+  {
+    term: "Churn",
+    id: "churn",
+    definition:
+      "Customers or revenue lost in a period, divided by the count or revenue at the start of the period. Logo churn measures customer counts; revenue churn measures ARR or MRR; net revenue churn includes expansion. Churn compounds non-linearly: 5% monthly churn is roughly 46% annual churn, not 60%. SaaS investors look at churn cohort-by-cohort because aggregate churn averages early-cohort survivors with recent-cohort decay and masks problems.",
+  },
+  // ── Customer economics ─────────────────────────────────────────────────
+  {
+    term: "CAC",
+    id: "cac",
+    definition:
+      "Customer Acquisition Cost — fully loaded sales and marketing spend in a period divided by new customers acquired in that period. CAC includes people, tools, ad spend, and overhead allocated to acquisition; back-of-envelope CAC that excludes salaries is the most common reason investor diligence finds the real number 2–4× higher than founders report. CAC feeds the LTV:CAC ratio (3:1+ healthy) and CAC payback metric.",
+  },
+  {
+    term: "Gross Margin",
+    id: "gross-margin",
+    definition:
+      "Revenue minus cost of goods sold, divided by revenue, expressed as a percentage. SaaS businesses target gross margins of 70–80% or higher; anything under 60% reads to investors as services-disguised-as-software and earns a software multiple discount. Gross margin is the multiplier in the LTV formula and the gating constraint on how much can be reinvested in growth without raising more capital.",
+  },
+  {
+    term: "Contribution Margin",
+    id: "contribution-margin",
+    definition:
+      "Revenue minus all variable costs of serving a customer — COGS plus CAC plus variable support — divided by revenue. Contribution margin is the per-customer dollar amount left to cover fixed costs and profit. Direct-to-consumer and product-led growth companies obsess over contribution margin because their CAC is so volatile that gross margin alone overstates unit economics. SaaS uses it less often, preferring gross margin plus CAC payback.",
+  },
+  // ── Targeting ──────────────────────────────────────────────────────────
+  {
+    term: "ICP",
+    id: "icp",
+    definition:
+      "Ideal Customer Profile — the firmographic and behavioral description of the segment most likely to buy, retain, and expand. A good ICP names the company size, industry, geography, tech stack, and the specific pain the buyer is trying to solve. Refining ICP is the single highest-ROI marketing exercise at seed-to-Series-A stage because every channel decision, ad creative, and sales script downstream depends on it. A vague ICP (\"SaaS founders\") is functionally no ICP.",
+  },
 ];

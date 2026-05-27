@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "VC Term Highlighter — GitDealFlow Glossary",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Highlights VC terms (SAFE, runway, burn multiple, magic number, …) on any page. Click a term to jump to the full definition on GitDealFlow.",
   "homepage_url": "https://signals.gitdealflow.com/glossary",
   "permissions": ["storage"],

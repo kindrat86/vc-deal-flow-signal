@@ -14,7 +14,7 @@ This is the third Chrome extension in the GitDealFlow line:
 
 ## What it does
 
-1. On every page load, scans visible text against the 69-term controlled
+1. On every page load, scans visible text against the 84-term controlled
    vocabulary published at
    [/api/v1/glossary.json](https://signals.gitdealflow.com/api/v1/glossary.json).
 2. Underlines matches with a soft cyan background; hovering shows a
@@ -83,7 +83,7 @@ After editing any source file, return to `chrome://extensions` and click the
 | `content.js` | Scanner, regex builder, highlight + hover card |
 | `content.css` | Highlight + tooltip styles (scoped, `!important`) |
 | `popup.html/css/js` | Toolbar popup — toggle + stats + links |
-| `glossary.json` | Bundled snapshot (69 terms) — refreshed via `scripts/build-glossary.mjs` |
+| `glossary.json` | Bundled snapshot (84 terms) — refreshed via `scripts/build-glossary.mjs` (add `--local` to parse pseo-site/content/glossary.ts directly before changes have deployed) |
 | `icons/icon-{16,48,128}.png` | Action icons — regenerated via `scripts/build-icons.mjs` |
 | `icon.svg` | Editable icon source |
 | `scripts/` | Build helpers (glossary refresh, icon render, zip packager) |
