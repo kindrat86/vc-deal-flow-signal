@@ -295,6 +295,13 @@ const PROJECTS: Entity[] = [
     description:
       "Public-figure-threshold engineering profile pages — founders, OSS maintainers, and technical executives who self-publish their GitHub handle on their own surface. One leaf per handle under /founder/[handle], with opt-out at /founder/opt-out.",
   },
+  {
+    name: "Sector Hubs Index",
+    type: "CollectionPage",
+    url: `${SITE}/sector`,
+    description:
+      "Curated sector hubs aggregating tracked companies, active venture funds, engineering leaders, and metrics across AI infrastructure, AI/ML, developer tools, cloud infrastructure, databases, observability, analytics, fintech, and productivity. One leaf per sector under /sector/[slug].",
+  },
 ];
 
 export async function GET() {

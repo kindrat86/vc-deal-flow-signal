@@ -23,6 +23,7 @@ import { getAllBuildVsInvestSlugs } from "@/content/build-vs-invest";
 import { getAllCompanySlugs } from "@/content/companies";
 import { getAllFundSlugs } from "@/content/funds";
 import { getAllFounderHandles } from "@/content/founders";
+import { getAllSectorSlugs } from "@/content/sectors";
 import { pillars } from "@/content/pillars";
 import { agentQueries } from "@/content/agent-queries";
 import { glossaryTerms } from "@/content/glossary";
@@ -358,6 +359,13 @@ export async function GET(_req: Request, ctx: RouteContext) {
         lastmod,
         changefreq: "monthly",
         priority: 0.6,
+      })),
+      { url: `${BASE_URL}/sector`, lastmod, changefreq: "weekly", priority: 0.85 },
+      ...getAllSectorSlugs().map((slug) => ({
+        url: `${BASE_URL}/sector/${slug}`,
+        lastmod,
+        changefreq: "weekly",
+        priority: 0.85,
       })),
     ];
   } else if (id === "crossings") {
