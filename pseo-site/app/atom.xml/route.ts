@@ -53,6 +53,8 @@ export async function GET() {
   <subtitle>Engineering acceleration signals for startup investors.</subtitle>
   <link href="${SITE}/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="${SITE}/blog" rel="alternate" type="text/html"/>
+  <link href="https://pubsubhubbub.appspot.com/" rel="hub"/>
+  <link href="https://pubsubhubbub.superfeedr.com/" rel="hub"/>
   <id>${SITE}/atom.xml</id>
   <updated>${updated}</updated>
   <rights>CC BY 4.0 — VC Deal Flow Signal</rights>
