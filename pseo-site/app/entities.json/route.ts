@@ -302,6 +302,20 @@ const PROJECTS: Entity[] = [
     description:
       "Curated sector hubs aggregating tracked companies, active venture funds, engineering leaders, and metrics across AI infrastructure, AI/ML, developer tools, cloud infrastructure, databases, observability, analytics, fintech, and productivity. One leaf per sector under /sector/[slug].",
   },
+  {
+    name: "City Pages Index",
+    type: "CollectionPage",
+    url: `${SITE}/city`,
+    description:
+      "Editorial city pages for 41 venture hubs across Europe, North America, Asia-Pacific, Latin America, and MEA. Each leaf maps notable engineering orgs, active VC anchors, sector mix, and the local commit-cadence pattern. One leaf per city under /city/[slug].",
+  },
+  {
+    name: "Showdowns Index",
+    type: "CollectionPage",
+    url: `${SITE}/showdown`,
+    description:
+      "Side-by-side engineering-signal comparisons between curated tracked companies. Same-sector pairs only. Independent — no affiliation with the compared orgs. One leaf per pair under /showdown/[a-vs-b].",
+  },
 ];
 
 export async function GET() {

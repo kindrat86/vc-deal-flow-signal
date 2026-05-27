@@ -24,6 +24,8 @@ import { getAllCompanySlugs } from "@/content/companies";
 import { getAllFundSlugs } from "@/content/funds";
 import { getAllFounderHandles } from "@/content/founders";
 import { getAllSectorSlugs } from "@/content/sectors";
+import { ALL_CITY_SLUGS } from "@/content/cities";
+import { getAllShowdownSlugs } from "@/content/showdowns";
 import { pillars } from "@/content/pillars";
 import { agentQueries } from "@/content/agent-queries";
 import { glossaryTerms } from "@/content/glossary";
@@ -366,6 +368,20 @@ export async function GET(_req: Request, ctx: RouteContext) {
         lastmod,
         changefreq: "weekly",
         priority: 0.85,
+      })),
+      { url: `${BASE_URL}/city`, lastmod, changefreq: "weekly", priority: 0.8 },
+      ...ALL_CITY_SLUGS.map((slug) => ({
+        url: `${BASE_URL}/city/${slug}`,
+        lastmod,
+        changefreq: "monthly",
+        priority: 0.7,
+      })),
+      { url: `${BASE_URL}/showdown`, lastmod, changefreq: "weekly", priority: 0.75 },
+      ...getAllShowdownSlugs().map((slug) => ({
+        url: `${BASE_URL}/showdown/${slug}`,
+        lastmod,
+        changefreq: "monthly",
+        priority: 0.6,
       })),
     ];
   } else if (id === "crossings") {
