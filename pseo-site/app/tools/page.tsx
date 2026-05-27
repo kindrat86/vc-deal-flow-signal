@@ -93,6 +93,15 @@ const TOOLS: Tool[] = [
     badge: "live",
     category: "Financing math",
   },
+  {
+    slug: "quick-ratio-calculator",
+    name: "Quick Ratio Calculator",
+    tagline: "SaaS growth efficiency",
+    description:
+      "(New ARR + expansion) divided by (churned + contracted). The Kleiner Perkins / Mamoon Hamid heuristic for SaaS growth efficiency. Captures gross-flow dynamics that NDR compresses away. Completes the five-metric SaaS efficiency suite.",
+    badge: "live",
+    category: "SaaS metrics",
+  },
 ];
 
 export default function ToolsIndexPage() {
@@ -201,11 +210,10 @@ export default function ToolsIndexPage() {
             More tools coming
           </h2>
           <p className="text-gray-400 text-sm leading-relaxed mb-4">
-            New tools ship roughly weekly. On the near-term list: an NDR /
-            quick-ratio calculator, a co-investor graph viewer, and a
-            paste-a-GitHub-repo signal scorer. If there's a tool you want
-            and don't see, the fastest way to ask is through the Sunday
-            digest.
+            New tools ship roughly weekly. On the near-term list: an NDR
+            calculator, a co-investor graph viewer, and a paste-a-GitHub-repo
+            signal scorer. If there's a tool you want and don't see, the
+            fastest way to ask is through the Sunday digest.
           </p>
           <Link
             href="/firstlook"
