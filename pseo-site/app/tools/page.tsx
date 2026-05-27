@@ -48,6 +48,15 @@ const TOOLS: Tool[] = [
     badge: "live",
     category: "Financial planning",
   },
+  {
+    slug: "burn-multiple-calculator",
+    name: "Burn Multiple Calculator",
+    tagline: "SaaS capital efficiency",
+    description:
+      "Total burn divided by net new ARR, classified into the David Sacks bands (exceptional / great / OK / suspect / bad). The single-number readout SaaS investors run during diligence. URL-shareable.",
+    badge: "live",
+    category: "SaaS metrics",
+  },
 ];
 
 export default function ToolsIndexPage() {
@@ -158,9 +167,10 @@ export default function ToolsIndexPage() {
           <p className="text-gray-400 text-sm leading-relaxed mb-4">
             New tools ship roughly weekly. On the near-term list: a
             dilution-stack modeler for multiple SAFE rounds, a co-investor
-            graph viewer, and a paste-a-GitHub-repo signal scorer. If there's
-            a tool you want and don't see, the fastest way to ask is through
-            the Sunday digest.
+            graph viewer, a magic-number / CAC-payback companion to the burn
+            multiple calculator, and a paste-a-GitHub-repo signal scorer. If
+            there's a tool you want and don't see, the fastest way to ask is
+            through the Sunday digest.
           </p>
           <Link
             href="/firstlook"
