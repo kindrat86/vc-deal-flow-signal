@@ -104,3 +104,8 @@
 - Own-post reply reminder: none (Monday May 25 is not a scheduled post day)
 - Targets: Samir Kaji, Harry Stebbings, Sarah Tavel
 - Drafts saved above for copy-paste
+
+## 2026-05-27
+- Own-post reply reminder: Tuesday May 26 was a scheduled post day (Tue/Wed/Thu/Fri cadence) — schedule file still missing, check linkedin.com/company/gitdealflow/posts manually and reply within 2h
+- Targets: Harry Stebbings, Sarah Tavel, Fabrice Grinda
+- Drafts saved above for copy-paste
