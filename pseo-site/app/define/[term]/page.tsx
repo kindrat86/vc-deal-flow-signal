@@ -7,6 +7,7 @@ import {
   getCategoryFor,
   getSignalPrimitiveSlug,
   getTermsInCategory,
+  getToolCrossLink,
 } from "@/lib/glossary-categories";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
@@ -81,6 +82,7 @@ export default async function DefineTermPage({ params }: PageProps) {
   const category = getCategoryFor(t.id);
   const categoryMeta = CATEGORY_META[category];
   const signalSlug = getSignalPrimitiveSlug(t.id);
+  const toolLink = getToolCrossLink(t.id);
 
   // Related terms = other terms in the same category, capped at 8.
   const relatedIds = getTermsInCategory(category)
@@ -276,6 +278,23 @@ export default async function DefineTermPage({ params }: PageProps) {
               className="inline-flex items-center text-sky-300 hover:text-sky-200 text-sm font-medium"
             >
               Read the signal definition &rarr;
+            </Link>
+          </section>
+        ) : null}
+
+        {toolLink ? (
+          <section className="mb-10 rounded-lg border border-emerald-700/40 bg-emerald-950/30 p-6">
+            <p className="text-xs uppercase tracking-wider text-emerald-300 font-semibold mb-2">
+              Use it in a free tool
+            </p>
+            <p className="text-sm text-gray-300 leading-relaxed mb-4">
+              {toolLink.blurb}
+            </p>
+            <Link
+              href={`/tools/${toolLink.slug}`}
+              className="inline-flex items-center text-emerald-300 hover:text-emerald-200 text-sm font-medium"
+            >
+              Open the {toolLink.name} &rarr;
             </Link>
           </section>
         ) : null}

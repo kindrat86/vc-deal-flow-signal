@@ -170,3 +170,43 @@ const SIGNAL_SLUG_MAP: Record<string, string> = {
 export function getSignalPrimitiveSlug(termId: string): string | undefined {
   return SIGNAL_SLUG_MAP[termId];
 }
+
+/** Cross-link to a /tools/* calculator where a term is the subject of one.
+ *  Lets /define/[term] render a "Use this in:" CTA that converts the
+ *  definitional page into a funnel for the calculators. */
+export interface ToolCrossLink {
+  slug: string;
+  name: string;
+  blurb: string;
+}
+
+const TOOL_LINK_MAP: Record<string, ToolCrossLink> = {
+  safe: {
+    slug: "safe-calculator",
+    name: "SAFE Calculator",
+    blurb:
+      "Model what a SAFE will convert to at the next priced round under both the cap and the discount.",
+  },
+  "valuation-cap": {
+    slug: "safe-calculator",
+    name: "SAFE Calculator",
+    blurb:
+      "See exactly when the cap binds vs the discount in a post-money SAFE.",
+  },
+  runway: {
+    slug: "runway-calculator",
+    name: "Runway Calculator",
+    blurb:
+      "Cash / net-burn → months of runway, with headcount scenarios.",
+  },
+  "burn-rate": {
+    slug: "runway-calculator",
+    name: "Runway Calculator",
+    blurb:
+      "Gross vs net burn fed straight into months-of-runway with fundraise-timing bands.",
+  },
+};
+
+export function getToolCrossLink(termId: string): ToolCrossLink | undefined {
+  return TOOL_LINK_MAP[termId];
+}

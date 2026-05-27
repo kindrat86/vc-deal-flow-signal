@@ -57,6 +57,15 @@ const TOOLS: Tool[] = [
     badge: "live",
     category: "SaaS metrics",
   },
+  {
+    slug: "magic-number-calculator",
+    name: "Magic Number Calculator",
+    tagline: "SaaS sales efficiency",
+    description:
+      "Annualized net new ARR divided by quarterly S&M spend, classified into the Bessemer / OpenView bands. Tells you whether the GTM motion is paying for itself. Companion to burn multiple.",
+    badge: "live",
+    category: "SaaS metrics",
+  },
 ];
 
 export default function ToolsIndexPage() {
