@@ -31,10 +31,11 @@ configs:
 # VC Deal Flow Signal Glossary
 
 The controlled vocabulary used across the VC Deal Flow Signal site —
-62 definitions covering code-side sourcing, engineering acceleration
+84 definitions covering code-side sourcing, engineering acceleration
 metrics, discoverability surfaces (programmatic SEO, AEO, GEO, AIO),
 agent infrastructure (MCP, A2A, x402), academic citation infrastructure,
-and venture vocabulary.
+and venture vocabulary including the SaaS efficiency quintet (burn
+multiple, magic number, CAC payback, LTV, quick ratio).
 
 Maintained as a single source of truth and refreshed weekly from
 `content/glossary.ts` at https://github.com/kindrat86/vc-deal-flow-signal.
@@ -70,10 +71,10 @@ Each row carries the following fields:
 
 - **Code-Side Sourcing** (1 term): the named category VC Deal Flow Signal defines.
 - **Engineering acceleration** (13 terms): metrics, signal types, decision rules from the methodology.
-- **Discoverability surfaces** (25 terms): pSEO, AEO, GEO, AIO, and the schemas behind them.
+- **Discoverability surfaces** (41 terms): pSEO, AEO, GEO, AIO, and the schemas behind them.
 - **Agent infrastructure** (8 terms): MCP, A2A, micropayments, identity, federation.
 - **Academic citation** (9 terms): SSRN, Zenodo, OpenAlex, DOIs, licenses.
-- **Venture vocabulary** (12 terms): stage names, instruments, financial metrics.
+- **Venture vocabulary** (12 terms): stage names, instruments, financial metrics, SaaS efficiency quintet.
 
 ## Use cases
 

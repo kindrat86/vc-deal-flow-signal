@@ -59,12 +59,12 @@ Same `npx -y @gitdealflow/mcp-signal` runs in every stdio runtime below. Per-run
 | Claude Desktop | stdio | `claude_desktop_config.json` (above) |
 | Claude Code | stdio | `.mcp.json` (above) |
 | Cursor | stdio | Settings → MCP → +Add new MCP server → paste the JSON above; [cursor.directory listing](https://cursor.directory/plugins/vc-deal-flow-signal-mcp-1) (under review) |
-| Cline (VS Code) | stdio | Cline panel → ⚙ → Edit Config → paste JSON; [cline/mcp-marketplace#1491](https://github.com/cline/mcp-marketplace/issues/1491) (submitted) |
-| Block Goose | stdio | `goose session --with-extension "npx -y @gitdealflow/mcp-signal"`; [aaif-goose/goose#8974](https://github.com/aaif-goose/goose/pull/8974) (PR open) |
+| Cline (VS Code) | stdio | Cline panel → ⚙ → Edit Config → paste JSON; [cline/mcp-marketplace#1491](https://github.com/cline/mcp-marketplace/issues/1491) (open, awaiting review) |
+| Block Goose | stdio | `goose session --with-extension "npx -y @gitdealflow/mcp-signal"`; [block/goose#8974](https://github.com/block/goose/pull/8974) (closed — Goose registry moratorium 2026-05-12, pending new listing flow) |
 | OpenHands | stdio | `~/.openhands/mcp.json` paste-JSON, or `openhands mcp add ...` (no marketplace exists) |
 | Aider | stdio | `npx -y mcpm-aider add vc-deal-flow-signal --command "npx -y @gitdealflow/mcp-signal"` (Aider native MCP not yet shipped — bridge required) |
 | AiderDesk | stdio | Settings → Agent → MCP Servers → +Add → paste JSON |
-| Raycast | stdio | Manage MCP Servers → +Add Server → paste JSON; [raycast/extensions#27618](https://github.com/raycast/extensions/pull/27618) (PR open) |
+| Raycast | stdio | Manage MCP Servers → +Add Server → paste JSON; [raycast/extensions#28376](https://github.com/raycast/extensions/pull/28376) (open, Ready for Review; supersedes auto-stale'd #27618) |
 | Smithery one-click | streamable-http or stdio | [smithery.ai/server/kindrat86/vc-deal-flow-signal](https://smithery.ai/server/kindrat86/vc-deal-flow-signal) (Verified, 98/100) |
 | Mistral Le Chat | Streamable HTTP | Custom Connector at `https://signals.gitdealflow.com/api/mcp/rpc` |
 | ChatGPT GPT | OpenAPI Action | [GitHub VC Signal GPT](https://chatgpt.com/g/g-69f76b9b3b308191b6948bff20c0fbf8-github-vc-signal) — no install, paid ChatGPT plan required |
