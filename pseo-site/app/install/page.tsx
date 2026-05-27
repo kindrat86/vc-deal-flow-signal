@@ -81,10 +81,10 @@ const jsonLd = {
       mainEntity: [
         {
           "@type": "Question",
-          name: "How is this different from the two GitDealFlow Chrome Extensions?",
+          name: "How is this different from the three GitDealFlow Chrome Extensions?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Three install paths, three surfaces. (1) The bookmarklet works on github.com pages — the place where engineering momentum first shows up. (2) Chrome Extension #1 overlays signal on Crunchbase and Wellfound profiles. (3) Chrome Extension #2 — VC GitHub Lookup — hovers any github.com repo or org link from any page and returns velocity in 200ms. Use all three, or pick whichever matches where you scout deal flow today.",
+            text: "Four install paths, four surfaces. (1) The bookmarklet works on github.com pages — the place where engineering momentum first shows up. (2) Chrome Extension #1 overlays signal on Crunchbase and Wellfound profiles. (3) Chrome Extension #2 — VC GitHub Lookup — hovers any github.com repo or org link from any page and returns velocity in 200ms. (4) Chrome Extension #3 — VC Term Highlighter — underlines VC terms (SAFE, runway, burn multiple, commit velocity, …) on any web page and links to the full definition in the GitDealFlow glossary. Use all four, or pick whichever matches where you scout deal flow today.",
           },
         },
         {

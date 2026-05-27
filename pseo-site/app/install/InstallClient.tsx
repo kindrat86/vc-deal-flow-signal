@@ -214,7 +214,7 @@ export default function InstallClient() {
         </a>
       </section>
 
-      <section className="mb-10 grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <section className="mb-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <Link
           href="/badge-builder"
           className="rounded-xl border border-slate-800 bg-slate-900/40 hover:bg-slate-900/70 p-5 transition group"
@@ -250,6 +250,19 @@ export default function InstallClient() {
           </p>
           <p className="text-base font-semibold text-gray-100 group-hover:text-white">
             Hover any GitHub repo or org for velocity →
+          </p>
+        </a>
+        <a
+          href="https://github.com/kindrat86/vc-deal-flow-signal/tree/main/chrome-extension-define"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="rounded-xl border border-slate-800 bg-slate-900/40 hover:bg-slate-900/70 p-5 transition group"
+        >
+          <p className="text-[10px] uppercase tracking-wider text-cyan-400 font-semibold mb-1">
+            Chrome Extension #3 — VC Term Highlighter
+          </p>
+          <p className="text-base font-semibold text-gray-100 group-hover:text-white">
+            Underline VC terms on any page →
           </p>
         </a>
       </section>

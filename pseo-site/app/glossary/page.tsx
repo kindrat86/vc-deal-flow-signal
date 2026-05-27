@@ -179,6 +179,32 @@ export default function GlossaryPage() {
           GitHub-based deal flow data for the first time.
         </p>
 
+        <section className="mb-10 rounded-2xl border border-cyan-700/30 bg-cyan-950/20 p-6 sm:p-8">
+          <p className="text-cyan-300 text-xs font-semibold uppercase tracking-[0.14em] mb-2">
+            Read VC content anywhere · don&rsquo;t come back here for every term
+          </p>
+          <p className="text-gray-300 text-sm leading-relaxed mb-4">
+            Install the <strong className="text-gray-100">VC Term Highlighter</strong> Chrome extension. It underlines every term in this glossary — SAFE, runway, commit velocity, all 69 — on any article you read. Hover for the definition, click to jump back here. No telemetry, no remote calls.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <a
+              href="https://github.com/kindrat86/vc-deal-flow-signal/tree/main/chrome-extension-define"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-cyan-600 text-white text-sm font-semibold hover:bg-cyan-500 transition-colors"
+            >
+              Install the extension →
+            </a>
+            <Link
+              href="/install"
+              className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium"
+            >
+              See all install paths →
+            </Link>
+          </div>
+        </section>
+
+
         {/* Quick navigation */}
         <div className="mb-10 flex flex-wrap gap-2">
           {terms.map((t) => (
