@@ -261,6 +261,58 @@ const nextConfig: NextConfig = {
           },
         ],
       },
+      // Calculator embed widgets — same iframe-friendly contract as the
+      // mini-leaderboard. Operator newsletters (Lenny's, FirstRound,
+      // Sacra), founder blogs, and incubator portals drop a single
+      // <iframe src="https://signals.gitdealflow.com/embed/tools/<slug>">
+      // and get a working calculator with persistent attribution. Each
+      // of the 8 /tools/<slug> calcs has a matching /embed/tools/<slug>
+      // route via generateStaticParams.
+      {
+        source: "/embed/tools/:slug*",
+        headers: [
+          {
+            key: "X-Frame-Options",
+            value: "ALLOWALL",
+          },
+          {
+            key: "Content-Security-Policy",
+            value: [
+              "default-src 'self'",
+              "script-src 'self' 'unsafe-inline'",
+              "style-src 'self' 'unsafe-inline'",
+              "img-src 'self' data: https:",
+              "font-src 'self' data:",
+              "connect-src 'self'",
+              "frame-ancestors *",
+            ].join("; "),
+          },
+          {
+            key: "Access-Control-Allow-Origin",
+            value: "*",
+          },
+        ],
+      },
+      // /embed.js — small loader that creates the iframe + listens for
+      // the postMessage height handshake from <EmbedAutoHeight/>. Served
+      // from the same origin so it can be `<script src=>`'d cross-origin
+      // by embedder sites (Substack, Ghost, WordPress, Notion). The
+      // route handler caches it aggressively at the CDN; this entry
+      // makes the cross-origin fetch + correct Content-Type explicit.
+      {
+        source: "/embed.js",
+        headers: [
+          {
+            key: "Access-Control-Allow-Origin",
+            value: "*",
+          },
+          {
+            key: "Cache-Control",
+            value:
+              "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800",
+          },
+        ],
+      },
     ];
   },
 };
