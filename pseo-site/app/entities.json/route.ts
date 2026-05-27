@@ -323,6 +323,13 @@ const PROJECTS: Entity[] = [
     description:
       "Independent M&A pattern pages for 20 well-known public-company tech acquirers — Microsoft, Google, Salesforce, Adobe, Apple, Amazon/AWS, Cisco, IBM, Oracle, Nvidia, Atlassian, ServiceNow, Stripe, Cloudflare, Shopify, Snowflake, Databricks, GitHub, HubSpot, Intel. Every deal listed was announced via press release, SEC filing, or both. One leaf per acquirer under /acquirer/[slug].",
   },
+  {
+    name: "Trend Leaderboards Index",
+    type: "CollectionPage",
+    url: `${SITE}/trend`,
+    description:
+      "Editorial trend leaderboards across 20 technical categories in 2026 — agentic AI frameworks, LLM inference, frontier labs, AI coding tools, open-weight models, voice AI, edge compute, AI sandboxes, serverless runtimes, AI-native databases, Postgres platforms, auth providers, background jobs, ORMs, frontend frameworks, observability, email, payments, video tooling, container orchestration. AEO-optimized for citation. One leaf per trend under /trend/[slug].",
+  },
 ];
 
 export async function GET() {
