@@ -210,6 +210,68 @@ export const alternatives: Alternative[] = [
     relatedSectors: ["ai-ml", "developer-tools", "enterprise-saas"],
   },
   {
+    slug: "crunchbase",
+    competitor: "Crunchbase",
+    competitorUrl: "https://www.crunchbase.com",
+    title: "Crunchbase Alternative — VC Deal Flow Signal (2026)",
+    description:
+      "Looking for a Crunchbase alternative? VC Deal Flow Signal surfaces breakout technical startups from public GitHub engineering acceleration — leading signal vs Crunchbase's funding-event database. EUR 9.97/mo vs Crunchbase Pro at $49+.",
+    h1: "VC Deal Flow Signal vs Crunchbase",
+    tagline:
+      "A leading-indicator alternative to Crunchbase for technical deal flow. Catch engineering acceleration before the round closes.",
+    intro:
+      "Crunchbase is the default startup database for most investors — 100M+ company profiles, comprehensive funding history, integrated search and lists. It is the reference layer of private markets. It is also, structurally, a lagging signal: a company shows up cleanly in Crunchbase after the round closes and the press release fires. VC Deal Flow Signal sits one layer earlier. Public GitHub engineering acceleration — commit velocity, contributor influx, infrastructure buildouts — typically precedes fundraise announcements by 6-12 weeks. Here is how the two compose.",
+    sections: [
+      {
+        heading: "Database vs signal engine",
+        body: "Crunchbase is a structured database: search, filter, save lists, set alerts. The value comes from comprehensiveness and curation across 100M+ profiles. VC Deal Flow Signal is a signal engine: weekly ranked acceleration on technical startups with public GitHub activity. The Crunchbase question is 'what do I know about this company?' The VC Deal Flow Signal question is 'which companies should I be looking at this week?'",
+      },
+      {
+        heading: "Lead time",
+        body: "Crunchbase data is most authoritative when the round has closed and the team has updated the profile. Useful, but the round is already announced and competitive. VC Deal Flow Signal catches companies on the engineering side of the same lifecycle, typically 6-12 weeks earlier — the period when the team is shipping fast, hiring engineers, and building infrastructure, but before the round goes public. If your edge depends on lead time, the engineering signal is causally upstream.",
+      },
+      {
+        heading: "Pricing and access",
+        body: "Crunchbase has a thin free tier (limited profile views, no advanced search), Crunchbase Pro at $49-$99/month for individuals, and Enterprise tiers higher. VC Deal Flow Signal offers a free weekly Signal Report plus full sector pages, with the Dashboard at EUR 9.97/month during beta. Many investors run both: combined cost is still under a single Crunchbase Enterprise seat.",
+      },
+      {
+        heading: "Coverage and sector fit",
+        body: "Crunchbase covers every sector with equal authority — consumer, SaaS, fintech, healthtech, hardware, services. VC Deal Flow Signal covers technical startups with meaningful public engineering activity, primarily AI/ML, infrastructure, dev tools, and enterprise SaaS — about 20 sector clusters. For non-technical investing, Crunchbase is more comprehensive. For technical investing, GitHub signal is closer to the actual product work.",
+      },
+      {
+        heading: "Workflow composition",
+        body: "The standard composed workflow: VC Deal Flow Signal weekly report surfaces 5-10 accelerating technical startups, you click through to validate the engineering signal on the sector page, then jump to Crunchbase to pull funding history, team, and investor context before outreach. Leading signal plus lagging context. The two products answer different questions and overlap only at the moment of outreach.",
+      },
+    ],
+    featureTable: {
+      tools: ["VC Deal Flow Signal", "Crunchbase"],
+      features: [
+        { feature: "Primary product", values: { "VC Deal Flow Signal": "Weekly signal engine", "Crunchbase": "Structured database" } },
+        { feature: "Signal direction", values: { "VC Deal Flow Signal": "Leading (engineering)", "Crunchbase": "Lagging (funding events)" } },
+        { feature: "Typical lead time", values: { "VC Deal Flow Signal": "6-12 weeks pre-fundraise", "Crunchbase": "0+ weeks post-announcement" } },
+        { feature: "Sector coverage", values: { "VC Deal Flow Signal": "Technical startups, 20 clusters", "Crunchbase": "All sectors, 100M+ profiles" } },
+        { feature: "Free tier", values: { "VC Deal Flow Signal": "Weekly report + sector pages", "Crunchbase": "Limited search, no alerts" } },
+        { feature: "Paid pricing", values: { "VC Deal Flow Signal": "EUR 9.97/mo (beta)", "Crunchbase": "$49-$99/mo (Pro)" } },
+        { feature: "API / MCP access", values: { "VC Deal Flow Signal": "MCP server + JSON/CSV", "Crunchbase": "Enterprise API only" } },
+        { feature: "Best for", values: { "VC Deal Flow Signal": "Catching technical breakouts early", "Crunchbase": "Funding research and context" } },
+      ],
+    },
+    verdict:
+      "These are complements more than substitutes. Pick Crunchbase if you need comprehensive funding history, multi-sector coverage, and a structured database you can search and save. Pick VC Deal Flow Signal if you invest in technical startups and your edge depends on getting in 6-12 weeks before the round becomes competitive. The most common workflow runs both: VC Deal Flow Signal for weekly leading signal, Crunchbase for funding context on names you want to approach. Total cost under EUR 60/month for a serious technical investor.",
+    whenToPick: {
+      us: "You invest in technical startups (AI/ML, infrastructure, dev tools, enterprise SaaS) and your edge depends on lead time. Engineering acceleration is a signal you can verify in a browser. You want a weekly delta of accelerating companies, not a database to search.",
+      them: "You need comprehensive funding history, team backgrounds, and investor relationships across all sectors. Your workflow is research-heavy and the round-announcement timing already works for your strategy. You invest in non-technical sectors where public engineering signal is sparse.",
+    },
+    faqs: [
+      { question: "Is VC Deal Flow Signal a Crunchbase replacement?", answer: "No. Crunchbase is a structured funding database; VC Deal Flow Signal is a weekly signal engine. They answer different questions. Most investors run both: VC Deal Flow Signal as the leading signal, Crunchbase as the lagging context layer." },
+      { question: "Why is GitHub signal a leading indicator vs Crunchbase data?", answer: "Engineering acceleration — commit velocity, contributor growth, infrastructure buildout — typically begins 6-12 weeks before a startup announces a fundraise. By the time the round closes and Crunchbase data is updated, the engineering acceleration has been visible for weeks. The engineering signal is causally upstream of the funding signal." },
+      { question: "How much cheaper is VC Deal Flow Signal than Crunchbase Pro?", answer: "VC Deal Flow Signal Dashboard is EUR 9.97/month during beta vs Crunchbase Pro at $49-$99/month for individual investors. The free tier of VC Deal Flow Signal (weekly Signal Report plus 20 sector pages) is also more substantial than Crunchbase's free tier." },
+      { question: "Which is better for non-technical sectors?", answer: "Crunchbase. VC Deal Flow Signal only covers technical startups with public GitHub activity. For consumer brands, healthtech, fintech services, or hardware companies without meaningful open-source presence, Crunchbase's coverage is much broader and more relevant." },
+      { question: "Can I see VC Deal Flow Signal data through a Crunchbase profile?", answer: "Not currently. The two products are independent. The standard workflow is to use VC Deal Flow Signal to identify accelerating technical startups, then look up their Crunchbase profile separately for funding history and team context." },
+    ],
+    relatedSectors: ["ai-ml", "enterprise-saas", "developer-tools"],
+  },
+  {
     slug: "crunchbase-alerts",
     competitor: "Crunchbase",
     competitorUrl: "https://www.crunchbase.com",
