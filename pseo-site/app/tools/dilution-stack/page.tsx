@@ -343,18 +343,29 @@ export default function DilutionStackPage() {
           </Link>
         </section>
 
-        <div className="mt-12 rounded-xl border border-slate-800 bg-slate-900 p-6 sm:p-8 text-center">
+        <div className="mt-12 rounded-xl border border-sky-700/30 bg-gradient-to-br from-sky-950/40 to-slate-900 p-6 sm:p-8 text-center">
+          <p className="text-xs uppercase tracking-wider text-sky-300 font-semibold mb-2">
+            Sunday digest · free
+          </p>
           <h2 className="text-gray-100 font-semibold text-lg mb-2">
-            See this week&apos;s breakout startups
+            Plug these numbers into real companies
           </h2>
           <p className="text-gray-400 text-sm mb-5 max-w-lg mx-auto">
-            VC Deal Flow Signal ranks startups by GitHub engineering
-            acceleration.
+            Every Sunday: the 5 startups with the highest GitHub
+            commit-velocity acceleration this week, with the underlying
+            signals you can pressure-test in these tools. Free, no spam,
+            one-click unsubscribe.
           </p>
           <div className="flex justify-center gap-3 flex-wrap">
             <Link
+              href="/firstlook"
+              className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 text-sm font-semibold transition-colors"
+            >
+              Get the Sunday digest &rarr;
+            </Link>
+            <Link
               href="/"
-              className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-medium transition-colors"
+              className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 hover:border-slate-500 text-gray-300 text-sm font-medium transition-colors"
             >
               Browse Signals
             </Link>
