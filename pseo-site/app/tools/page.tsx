@@ -84,6 +84,15 @@ const TOOLS: Tool[] = [
     badge: "live",
     category: "SaaS metrics",
   },
+  {
+    slug: "dilution-stack",
+    name: "Dilution Stack",
+    tagline: "Multi-SAFE + Series A + option pool",
+    description:
+      "Model up to 3 stacked post-money SAFEs converting at a priced Series A with an option pool refresh. See the final cap table and founder ownership %, with over-dilution warnings when inputs don't fit. The financing-math companion to the single-SAFE calculator.",
+    badge: "live",
+    category: "Financing math",
+  },
 ];
 
 export default function ToolsIndexPage() {
@@ -192,9 +201,8 @@ export default function ToolsIndexPage() {
             More tools coming
           </h2>
           <p className="text-gray-400 text-sm leading-relaxed mb-4">
-            New tools ship roughly weekly. On the near-term list: a
-            dilution-stack modeler for multiple SAFE rounds, an NDR
-            calculator, a co-investor graph viewer, and a
+            New tools ship roughly weekly. On the near-term list: an NDR /
+            quick-ratio calculator, a co-investor graph viewer, and a
             paste-a-GitHub-repo signal scorer. If there's a tool you want
             and don't see, the fastest way to ask is through the Sunday
             digest.
