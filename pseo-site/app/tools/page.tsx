@@ -66,6 +66,15 @@ const TOOLS: Tool[] = [
     badge: "live",
     category: "SaaS metrics",
   },
+  {
+    slug: "cac-payback-calculator",
+    name: "CAC Payback Calculator",
+    tagline: "Customer-acquisition-cost in months",
+    description:
+      "CAC divided by monthly gross contribution (ARPC × GM%) gives you the per-customer payback in months. Standard bands (<6 exceptional / 6-12 great / 12-18 good / 18-24 OK / >24 bad). Completes the SaaS efficiency triad with burn multiple and magic number.",
+    badge: "live",
+    category: "SaaS metrics",
+  },
 ];
 
 export default function ToolsIndexPage() {
@@ -176,10 +185,9 @@ export default function ToolsIndexPage() {
           <p className="text-gray-400 text-sm leading-relaxed mb-4">
             New tools ship roughly weekly. On the near-term list: a
             dilution-stack modeler for multiple SAFE rounds, a co-investor
-            graph viewer, a magic-number / CAC-payback companion to the burn
-            multiple calculator, and a paste-a-GitHub-repo signal scorer. If
-            there's a tool you want and don't see, the fastest way to ask is
-            through the Sunday digest.
+            graph viewer, an LTV / NDR calculator, and a paste-a-GitHub-repo
+            signal scorer. If there's a tool you want and don't see, the
+            fastest way to ask is through the Sunday digest.
           </p>
           <Link
             href="/firstlook"
