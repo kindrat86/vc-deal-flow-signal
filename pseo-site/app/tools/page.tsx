@@ -5,18 +5,34 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 
 const SITE = "https://signals.gitdealflow.com";
 const PAGE_URL = `${SITE}/tools`;
+const OG_IMAGE = `${SITE}/api/og/tools`;
 
 export const metadata: Metadata = {
   title: "Free VC & Founder Tools — Calculators, Checkers, References",
   description:
-    "Free tools for founders and investors: SAFE conversion calculator, dilution math, and venture-vocabulary references. No signup, URL-shareable results, CC BY 4.0.",
+    "Eight free calculators for founders and investors: SAFE conversion, dilution stack, runway, and the full SaaS efficiency suite (burn multiple, magic number, CAC payback, LTV, quick ratio). URL-shareable results, per-share OG cards, CC BY 4.0, no signup. Machine-readable catalog at /api/v1/tools.json.",
   alternates: { canonical: "/tools" },
   openGraph: {
     title: "Free VC & Founder Tools — VC Deal Flow Signal",
     description:
-      "Calculators and references for SAFE math, dilution, and venture vocabulary.",
+      "8 calculators: SAFE, dilution, runway, burn multiple, magic number, CAC payback, LTV, quick ratio. URL-shareable.",
     type: "website",
     url: PAGE_URL,
+    images: [
+      {
+        url: OG_IMAGE,
+        width: 1200,
+        height: 630,
+        alt: "Free VC & Founder Tools — 8 calculators from VC Deal Flow Signal",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Free VC & Founder Tools — VC Deal Flow Signal",
+    description:
+      "8 free calculators with URL-shareable results and per-share OG cards.",
+    images: [OG_IMAGE],
   },
 };
 

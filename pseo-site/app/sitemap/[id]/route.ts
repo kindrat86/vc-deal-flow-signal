@@ -498,6 +498,12 @@ export async function GET(_req: Request, ctx: RouteContext) {
       // Each tool is its own indexable page; the hub lists them. First
       // tool shipped 2026-05-27: /tools/safe-calculator.
       { url: `${BASE_URL}/tools`, lastmod, changefreq: "weekly", priority: 0.85 },
+      // /api/v1/tools.json — machine-readable catalog of all 8 calculators
+      // (slug, name, tagline, category, page URL, OG URL, share params,
+      // bands source). Companion to /api/v1/glossary.json. Enables MCP
+      // servers + AI agents + RAG pipelines to discover the toolset with
+      // one fetch instead of crawling /tools and parsing per-page JSON-LD.
+      { url: `${BASE_URL}/api/v1/tools.json`, lastmod, changefreq: "weekly", priority: 0.7 },
       { url: `${BASE_URL}/tools/safe-calculator`, lastmod, changefreq: "monthly", priority: 0.85 },
       { url: `${BASE_URL}/tools/runway-calculator`, lastmod, changefreq: "monthly", priority: 0.85 },
       { url: `${BASE_URL}/tools/burn-multiple-calculator`, lastmod, changefreq: "monthly", priority: 0.85 },
