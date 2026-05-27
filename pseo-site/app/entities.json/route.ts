@@ -330,6 +330,20 @@ const PROJECTS: Entity[] = [
     description:
       "Editorial trend leaderboards across 20 technical categories in 2026 — agentic AI frameworks, LLM inference, frontier labs, AI coding tools, open-weight models, voice AI, edge compute, AI sandboxes, serverless runtimes, AI-native databases, Postgres platforms, auth providers, background jobs, ORMs, frontend frameworks, observability, email, payments, video tooling, container orchestration. AEO-optimized for citation. One leaf per trend under /trend/[slug].",
   },
+  {
+    name: "Works-with Integrations Index",
+    type: "CollectionPage",
+    url: `${SITE}/works-with`,
+    description:
+      "CRM and workflow tool integration pages — Affinity, HubSpot, Salesforce, Notion, Airtable, Slack, Linear, Attio, Pipedrive, Copper, Microsoft Dynamics, Zapier, Make.com, Google Sheets, n8n. Each leaf documents available integration paths (CSV, REST API, MCP, Zapier, webhook, RSS), live workflows, and what custom integration would require. For Marcus 100 audiences who want signals inside their existing stack.",
+  },
+  {
+    name: "Year in Review Index",
+    type: "CollectionPage",
+    url: `${SITE}/year-in-review`,
+    description:
+      "Annual editorial roundups covering engineering signals, M&A patterns, and venture trends. Currently 2024, 2025, 2026. Each year combines the tracked signal corpus, documented M&A history, and emergent trend leaderboards into a single readable roundup.",
+  },
 ];
 
 export async function GET() {
