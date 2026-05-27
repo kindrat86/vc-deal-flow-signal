@@ -45,6 +45,7 @@ export async function generateMetadata({
   const lede = firstSentence(t.definition);
   const title = `${t.term} — Definition, Context & Related Terms`;
   const description = `${lede} Part of the VC Deal Flow Signal glossary, cross-referenced to the SSRN methodology paper and the signal primitives.`;
+  const ogImage = `${SITE}/api/og/define/${term}`;
 
   return {
     title,
@@ -55,11 +56,20 @@ export async function generateMetadata({
       description: lede,
       type: "article",
       url: `${SITE}/define/${term}`,
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: `${t.term} — VC Deal Flow Signal glossary`,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: `${t.term} — VC Deal Flow Signal`,
       description: lede,
+      images: [ogImage],
     },
     keywords: [
       t.term,
