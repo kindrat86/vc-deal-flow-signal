@@ -75,6 +75,15 @@ const TOOLS: Tool[] = [
     badge: "live",
     category: "SaaS metrics",
   },
+  {
+    slug: "ltv-calculator",
+    name: "LTV Calculator",
+    tagline: "Customer lifetime value + LTV:CAC ratio",
+    description:
+      "(ARPC/12) × gross margin × customer lifetime, with optional CAC input for the LTV:CAC ratio classified into industry-standard bands (>5× exceptional, 3-5× healthy, 2-3× OK, 1-2× suspect, <1× bad). The canonical SaaS unit-economics view.",
+    badge: "live",
+    category: "SaaS metrics",
+  },
 ];
 
 export default function ToolsIndexPage() {
@@ -184,10 +193,11 @@ export default function ToolsIndexPage() {
           </h2>
           <p className="text-gray-400 text-sm leading-relaxed mb-4">
             New tools ship roughly weekly. On the near-term list: a
-            dilution-stack modeler for multiple SAFE rounds, a co-investor
-            graph viewer, an LTV / NDR calculator, and a paste-a-GitHub-repo
-            signal scorer. If there's a tool you want and don't see, the
-            fastest way to ask is through the Sunday digest.
+            dilution-stack modeler for multiple SAFE rounds, an NDR
+            calculator, a co-investor graph viewer, and a
+            paste-a-GitHub-repo signal scorer. If there's a tool you want
+            and don't see, the fastest way to ask is through the Sunday
+            digest.
           </p>
           <Link
             href="/firstlook"
