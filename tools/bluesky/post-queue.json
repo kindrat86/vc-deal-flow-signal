@@ -1,6 +1,6 @@
 {
-  "_doc": "Pre-approved post queue. Script pops oldest unposted, publishes once/day. Refill weekly. Style: Brunson-tight, statements > questions, no em-dashes (per Reddit memory rule extends here), 280 char target.",
-  "_updated": "2026-05-04T19:00:00Z",
+  "_doc": "Pre-approved post queue. Script pops oldest unposted, publishes once/day. Refill weekly. Style: Brunson-tight, statements > questions, no em-dashes (per Reddit memory rule extends here), 280 char target. use_count >= 1 = already posted (skip). posted_at + bsky_uri are present on already-posted entries for traceability.",
+  "_updated": "2026-05-27T18:30:00Z",
   "_rules": {
     "max_per_day": 2,
     "min_gap_minutes": 240,
@@ -399,6 +399,15 @@
       "text": "7 GitHub Signals That Predict Series A Funding.\n\n104 pages, 31k words, 11 chapters, full SSRN methodology.\n\nFree to read at signals.gitdealflow.com/book/read.\n\nThe €0.99 PDF is for the version that fits in a Kindle.",
       "tags": ["book", "lead-magnet"],
       "use_count": 0
+    },
+    {
+      "id": "046-hf-dataset-launch-2026-05-27",
+      "text": "Open-sourced 84 VC and startup-finance definitions today.\n\nCode-side sourcing, engineering acceleration, AEO/GEO/AIO, agent infrastructure, academic citation, venture math.\n\nCC-BY-4.0 NDJSON, RAG-ready, free.\n\nhuggingface.co/datasets/the-data-nerd/vc-deal-flow-signal-glossary",
+      "tags": ["huggingface", "dataset", "launch", "aeo"],
+      "use_count": 1,
+      "posted_at": "2026-05-27T17:45:00Z",
+      "bsky_uri": "at://did:plc:xaejsj7fkpehxurvzrbnt3fb/app.bsky.feed.post/3mmu3asaqld27",
+      "bsky_url": "https://bsky.app/profile/thedatanerd.bsky.social/post/3mmu3asaqld27"
     }
   ]
 }
