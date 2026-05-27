@@ -19,16 +19,99 @@ export const metadata: Metadata = {
 };
 
 interface Embed {
-  group: "Badges" | "OG cards" | "Mini-widgets";
+  group: "Calculators" | "Badges" | "OG cards" | "Mini-widgets";
   name: string;
   href: string;
   preview?: string;
   example: string;
   description: string;
   copy: string;
+  /** Optional secondary snippet, e.g. a <script>-tag alternative to <iframe>. */
+  copyAlt?: string;
+  copyAltLabel?: string;
 }
 
+// Calculators — defined first so they appear at the top of the docs page.
+// Operator newsletters and VC blogs are the primary embed surface for these.
+const CALCULATOR_EMBEDS: Embed[] = (
+  [
+    {
+      slug: "safe-calculator",
+      name: "SAFE Calculator",
+      description:
+        "Post-money SAFE conversion math — cap vs discount, effective ownership at the next priced round. Sliders + share-link.",
+      height: 620,
+    },
+    {
+      slug: "runway-calculator",
+      name: "Runway Calculator",
+      description:
+        "Months of cash runway from balance and net burn, with optional headcount-scenario modeling.",
+      height: 560,
+    },
+    {
+      slug: "burn-multiple-calculator",
+      name: "Burn Multiple Calculator",
+      description:
+        "Total burn ÷ net new ARR, classified into the David Sacks bands (exceptional / great / OK / suspect / bad).",
+      height: 520,
+    },
+    {
+      slug: "magic-number-calculator",
+      name: "Magic Number Calculator",
+      description:
+        "Annualized net new ARR ÷ quarterly S&M spend — Bessemer / OpenView SaaS sales efficiency.",
+      height: 520,
+    },
+    {
+      slug: "cac-payback-calculator",
+      name: "CAC Payback Calculator",
+      description:
+        "Months to recover customer acquisition cost from gross-margin contribution. Standard bands built in.",
+      height: 520,
+    },
+    {
+      slug: "ltv-calculator",
+      name: "LTV Calculator",
+      description:
+        "Customer lifetime value + LTV:CAC ratio with industry-standard bands (>5× exceptional, 3–5× healthy, …).",
+      height: 540,
+    },
+    {
+      slug: "quick-ratio-calculator",
+      name: "Quick Ratio Calculator",
+      description:
+        "(New + expansion ARR) ÷ (churned + contracted) — Kleiner Perkins / Mamoon Hamid SaaS growth efficiency.",
+      height: 520,
+    },
+    {
+      slug: "dilution-stack",
+      name: "Dilution Stack",
+      description:
+        "Up-to-three stacked post-money SAFEs converting at a priced Series A with option-pool refresh. Founder ownership + over-dilution warnings.",
+      height: 760,
+    },
+  ] as Array<{
+    slug: string;
+    name: string;
+    description: string;
+    height: number;
+  }>
+).map(({ slug, name, description, height }) => ({
+  group: "Calculators",
+  name: `${name} (iframe)`,
+  href: `${SITE}/embed/tools/${slug}`,
+  preview: `${SITE}/api/og/tools/${slug}`,
+  example: `${SITE}/embed/tools/${slug}`,
+  description: `${description} Dark theme, CC BY 4.0 attribution baked in, auto-resize via /embed.js. Full standalone tool at /tools/${slug}.`,
+  copy: `<iframe src="https://signals.gitdealflow.com/embed/tools/${slug}" width="100%" height="${height}" frameborder="0" loading="lazy" title="${name} — GitDealFlow"></iframe>`,
+  copyAlt: `<script src="https://signals.gitdealflow.com/embed.js" data-tool="${slug}"></script>`,
+  copyAltLabel:
+    "Script tag (auto-resize, for hosts that allow JS — Ghost, WordPress, Notion)",
+}));
+
 const EMBEDS: Embed[] = [
+  ...CALCULATOR_EMBEDS,
   // Badges
   {
     group: "Badges",
@@ -103,7 +186,12 @@ const EMBEDS: Embed[] = [
   },
 ];
 
-const GROUPS: Embed["group"][] = ["Badges", "OG cards", "Mini-widgets"];
+const GROUPS: Embed["group"][] = [
+  "Calculators",
+  "Mini-widgets",
+  "Badges",
+  "OG cards",
+];
 
 export default function EmbedPage() {
   const jsonLd = {
@@ -159,9 +247,14 @@ export default function EmbedPage() {
           className="text-lg text-gray-300 mb-10 leading-relaxed"
           data-speakable
         >
-          Free embeddable badges, OG cards, and mini-widgets. Drop a single
-          URL into a README, blog post, or social card. CC BY 4.0 — every
-          asset carries attribution.
+          Free embeddable calculators, badges, OG cards, and mini-widgets.
+          Drop a single iframe or script tag into a README, Substack post,
+          Ghost site, Notion page, or VC blog. CC BY 4.0 — every asset
+          carries attribution back to{" "}
+          <Link href="/" className="text-sky-400 hover:text-sky-300">
+            signals.gitdealflow.com
+          </Link>
+          .
         </p>
 
         {GROUPS.map((group) => {
@@ -205,6 +298,16 @@ export default function EmbedPage() {
                     <pre className="rounded-md bg-slate-950 border border-slate-800 px-4 py-3 text-xs font-mono text-gray-200 overflow-x-auto whitespace-pre-wrap">
                       <code>{e.copy}</code>
                     </pre>
+                    {e.copyAlt ? (
+                      <>
+                        <p className="text-xs text-gray-400 mb-2 mt-3">
+                          {e.copyAltLabel ?? "Alternate snippet"}
+                        </p>
+                        <pre className="rounded-md bg-slate-950 border border-slate-800 px-4 py-3 text-xs font-mono text-gray-200 overflow-x-auto whitespace-pre-wrap">
+                          <code>{e.copyAlt}</code>
+                        </pre>
+                      </>
+                    ) : null}
                   </article>
                 ))}
               </div>
@@ -223,8 +326,21 @@ export default function EmbedPage() {
               they all hit cache after the first paint.
             </li>
             <li>
-              Mini-widget iframes set <code className="font-mono text-sky-300">x-frame-options: ALLOWALL</code>
-              {" "}so they embed cross-origin without setup.
+              Calculator + mini-widget iframes set{" "}
+              <code className="font-mono text-sky-300">
+                x-frame-options: ALLOWALL
+              </code>{" "}
+              so they embed cross-origin without setup. Substack, Beehiiv,
+              Ghost, WordPress, and Notion all accept these snippets as-is.
+            </li>
+            <li>
+              For hosts that allow JS, the{" "}
+              <code className="font-mono text-sky-300">
+                /embed.js
+              </code>{" "}
+              loader handles auto-resize via postMessage — no fixed{" "}
+              <code className="font-mono text-sky-300">height=</code>{" "}
+              guess required.
             </li>
             <li>
               No API key required for any surface. If you build something
