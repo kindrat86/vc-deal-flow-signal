@@ -30,6 +30,8 @@ import { getAllAcquirerSlugs } from "@/content/acquirers";
 import { getAllSectorCityPairs } from "@/content/sector-city";
 import { getAllFundsWithPortfolio } from "@/content/fund-portfolio";
 import { getAllTrendLeaderboardSlugs } from "@/content/trend-leaderboards";
+import { getAllWorksWithSlugs } from "@/content/works-with";
+import { getAllYearInReviewSlugs } from "@/content/year-in-review";
 import { pillars } from "@/content/pillars";
 import { agentQueries } from "@/content/agent-queries";
 import { glossaryTerms } from "@/content/glossary";
@@ -415,6 +417,22 @@ export async function GET(_req: Request, ctx: RouteContext) {
         lastmod,
         changefreq: "monthly",
         priority: 0.8,
+      })),
+      // /works-with/[slug] CRM/workflow integration pages
+      { url: `${BASE_URL}/works-with`, lastmod, changefreq: "monthly", priority: 0.85 },
+      ...getAllWorksWithSlugs().map((slug) => ({
+        url: `${BASE_URL}/works-with/${slug}`,
+        lastmod,
+        changefreq: "monthly",
+        priority: 0.8,
+      })),
+      // /year-in-review/[year] annual editorial roundups
+      { url: `${BASE_URL}/year-in-review`, lastmod, changefreq: "yearly", priority: 0.75 },
+      ...getAllYearInReviewSlugs().map((year) => ({
+        url: `${BASE_URL}/year-in-review/${year}`,
+        lastmod,
+        changefreq: "yearly",
+        priority: 0.7,
       })),
     ];
   } else if (id === "crossings") {
