@@ -61,7 +61,8 @@
       "Bash(curl -s -H \"User-Agent: Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36\" \"https://www.reddit.com/r/venturecapital/comments/1sivvvu.json?limit=10\")",
       "mcp__b09f4626-5f92-49b8-84ec-292a6869ec9b__dashboard-insights-run",
       "Bash(curl -s -H \"User-Agent: Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36\" \"https://www.reddit.com/r/Entrepreneur/comments/1snf896.json?limit=10\")",
-      "Bash(python3 -c \" import json,sys d=json.load\\(sys.stdin\\) post=d[0]['data']['children'][0]['data'] print\\('TITLE:', post['title']\\) print\\('BODY:', post.get\\('selftext',''\\)[:1000]\\) print\\(\\) print\\('=== TOP COMMENTS ==='\\) for c in d[1]['data']['children'][:8]: c=c['data'] if c.get\\('body'\\) and c['body'] not in ['[deleted]','[removed]']: print\\(f'[{c[\\\\\"score\\\\\"]}] {c[\\\\\"body\\\\\"][:400]}'\\) print\\(\\) \")"
+      "Bash(python3 -c \" import json,sys d=json.load\\(sys.stdin\\) post=d[0]['data']['children'][0]['data'] print\\('TITLE:', post['title']\\) print\\('BODY:', post.get\\('selftext',''\\)[:1000]\\) print\\(\\) print\\('=== TOP COMMENTS ==='\\) for c in d[1]['data']['children'][:8]: c=c['data'] if c.get\\('body'\\) and c['body'] not in ['[deleted]','[removed]']: print\\(f'[{c[\\\\\"score\\\\\"]}] {c[\\\\\"body\\\\\"][:400]}'\\) print\\(\\) \")",
+      "mcp__b09f4626-5f92-49b8-84ec-292a6869ec9b__exec"
     ]
   }
 }
