@@ -14,7 +14,7 @@ Webhook handler lives at `pseo-site/app/api/telegram/route.ts`, dispatch logic a
 4. **Enable inline mode** (powers `@yourbot <query>` in any chat):
    - Send `/setinline` to BotFather → pick the bot → set placeholder text e.g. `Search VC terms…`.
 5. Optional polish:
-   - `/setdescription` → "Free VC + founder calculators and a 62-term glossary."
+   - `/setdescription` → "Free VC + founder calculators and a full VC glossary."
    - `/setabouttext` → "Built by gitdealflow.com — code-side sourcing signals."
    - `/setuserpic` → upload a 512×512 logo.
 
@@ -79,7 +79,7 @@ If something is off, hit `GET https://signals.gitdealflow.com/api/telegram` — 
 |---|---|
 | `/start`, `/help` | Welcome + command list |
 | `/tools` | Lists the 8 calculators with deep links |
-| `/glossary` | Link to the 62-term glossary |
+| `/glossary` | Link to the full VC glossary |
 | `/define <term>` | Inline glossary lookup |
 | `/safe <amount> <cap> [discount%] [next_pre] [next_invest]` | SAFE conversion + dilution |
 | `/runway <cash> <monthly_burn>` | Months of runway + cash-out month |

@@ -24,6 +24,9 @@ import {
   type CalcResult,
 } from "./calcs";
 import { searchGlossary, defineUrl } from "./glossary-search";
+import { glossaryTerms } from "@/content/glossary";
+
+const GLOSSARY_COUNT = glossaryTerms.length;
 import {
   sendMessage,
   answerInlineQuery,
@@ -76,7 +79,7 @@ function parseCommand(text: string): ParsedCommand | null {
 const START_REPLY = `
 <b>VC Deal Flow Signal Bot</b>
 
-Free VC + founder calculators and a 62-term glossary, in any chat.
+Free VC + founder calculators and the full glossary, in any chat.
 
 <b>Calculators</b> — type /tools to see all 8
 • /safe — SAFE conversion + dilution
@@ -90,7 +93,7 @@ Free VC + founder calculators and a 62-term glossary, in any chat.
 
 <b>Glossary</b>
 • /define &lt;term&gt; — define a VC term
-• /glossary — browse all 62 terms
+• /glossary — browse all ${GLOSSARY_COUNT} terms
 
 <b>Inline mode</b>
 Type <code>@gitdealflow_bot &lt;query&gt;</code> in any chat to search the glossary without joining the bot.
@@ -109,14 +112,14 @@ function toolsListReply(): string {
 }
 
 function glossaryReply(): string {
-  return `Browse all 62 VC terms with full definitions, examples, and JSON-LD:\n<a href="${SITE}/glossary">${SITE}/glossary</a>\n\nOr type <code>/define &lt;term&gt;</code> to look one up here.`;
+  return `Browse all ${GLOSSARY_COUNT} VC terms with full definitions, examples, and JSON-LD:\n<a href="${SITE}/glossary">${SITE}/glossary</a>\n\nOr type <code>/define &lt;term&gt;</code> to look one up here.`;
 }
 
 // ── /define handler ────────────────────────────────────────────────────────
 
 function defineReply(args: string[]): string {
   if (args.length === 0) {
-    return `Usage: <code>/define &lt;term&gt;</code>\nExample: <code>/define safe</code>\n\nOr browse all 62 terms: <a href="${SITE}/glossary">${SITE}/glossary</a>`;
+    return `Usage: <code>/define &lt;term&gt;</code>\nExample: <code>/define safe</code>\n\nOr browse all ${GLOSSARY_COUNT} terms: <a href="${SITE}/glossary">${SITE}/glossary</a>`;
   }
   const query = args.join(" ");
   const hits = searchGlossary(query, 3);
@@ -128,7 +131,7 @@ function defineReply(args: string[]): string {
     )
       ? `\n\nLooks like a metric — try <code>/tools</code> for the calculators.`
       : "";
-    return `No glossary match for <b>${escapeHtml(query)}</b>.${toolHint}\nBrowse all 62 terms: <a href="${SITE}/glossary">${SITE}/glossary</a>`;
+    return `No glossary match for <b>${escapeHtml(query)}</b>.${toolHint}\nBrowse all ${GLOSSARY_COUNT} terms: <a href="${SITE}/glossary">${SITE}/glossary</a>`;
   }
   const top = hits[0];
   const more =
@@ -270,7 +273,7 @@ export function buildInlineResults(
         type: "article",
         id: "no-match",
         title: `No match for "${q}"`,
-        description: "Browse all 62 terms",
+        description: `Browse all ${GLOSSARY_COUNT} terms`,
         url: `${SITE}/glossary`,
         input_message_content: {
           message_text: `No glossary match for <b>${escapeHtml(q)}</b>. Browse: <a href="${SITE}/glossary">${SITE}/glossary</a>`,
