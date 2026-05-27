@@ -10,7 +10,12 @@
  * outside the repo (e.g. from a CI matrix or a contributor's clone without
  * tsx). Falls back to parsing the local TS module if the API is unreachable.
  *
- * Run: `node chrome-extension-define/scripts/build-glossary.mjs`
+ * Flags:
+ *   --local   skip the live fetch entirely and parse the TS source. Use
+ *             this when expanding the glossary locally before the new
+ *             terms have been deployed to production.
+ *
+ * Run: `node chrome-extension-define/scripts/build-glossary.mjs [--local]`
  */
 
 import { readFile, writeFile } from "node:fs/promises";
@@ -91,14 +96,22 @@ function sortByLengthDesc(terms) {
 }
 
 async function main() {
+  const argv = new Set(process.argv.slice(2));
+  const forceLocal = argv.has("--local");
+
   let terms;
-  try {
-    terms = await fromLive();
-    console.log(`[build-glossary] live → ${terms.length} terms`);
-  } catch (err) {
-    console.warn(`[build-glossary] live fetch failed (${err.message}); trying local`);
+  if (forceLocal) {
     terms = await fromLocalTs();
-    console.log(`[build-glossary] local → ${terms.length} terms`);
+    console.log(`[build-glossary] local (forced) → ${terms.length} terms`);
+  } else {
+    try {
+      terms = await fromLive();
+      console.log(`[build-glossary] live → ${terms.length} terms`);
+    } catch (err) {
+      console.warn(`[build-glossary] live fetch failed (${err.message}); trying local`);
+      terms = await fromLocalTs();
+      console.log(`[build-glossary] local → ${terms.length} terms`);
+    }
   }
 
   // Dedup by id (defensive — content.ts is authoritative but live could drift)

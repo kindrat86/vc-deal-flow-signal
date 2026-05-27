@@ -184,7 +184,7 @@ export default function GlossaryPage() {
             Read VC content anywhere · don&rsquo;t come back here for every term
           </p>
           <p className="text-gray-300 text-sm leading-relaxed mb-4">
-            Install the <strong className="text-gray-100">VC Term Highlighter</strong> Chrome extension. It underlines every term in this glossary — SAFE, runway, commit velocity, all 69 — on any article you read. Hover for the definition, click to jump back here. No telemetry, no remote calls.
+            Install the <strong className="text-gray-100">VC Term Highlighter</strong> Chrome extension. It underlines every term in this glossary — SAFE, ARR, burn multiple, magic number, all 84 — on any article you read. Hover for the definition, click to jump back here. No telemetry, no remote calls.
           </p>
           <div className="flex flex-wrap gap-3">
             <a
