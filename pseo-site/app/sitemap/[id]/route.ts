@@ -27,6 +27,9 @@ import { getAllSectorSlugs } from "@/content/sectors";
 import { ALL_CITY_SLUGS } from "@/content/cities";
 import { getAllShowdownSlugs } from "@/content/showdowns";
 import { getAllAcquirerSlugs } from "@/content/acquirers";
+import { getAllSectorCityPairs } from "@/content/sector-city";
+import { getAllFundsWithPortfolio } from "@/content/fund-portfolio";
+import { getAllTrendLeaderboardSlugs } from "@/content/trend-leaderboards";
 import { pillars } from "@/content/pillars";
 import { agentQueries } from "@/content/agent-queries";
 import { glossaryTerms } from "@/content/glossary";
@@ -387,6 +390,28 @@ export async function GET(_req: Request, ctx: RouteContext) {
       { url: `${BASE_URL}/acquirer`, lastmod, changefreq: "weekly", priority: 0.85 },
       ...getAllAcquirerSlugs().map((slug) => ({
         url: `${BASE_URL}/acquirer/${slug}`,
+        lastmod,
+        changefreq: "monthly",
+        priority: 0.8,
+      })),
+      // /sector/[slug]/in/[city] cross-pages — sector × city composition
+      ...getAllSectorCityPairs().map(({ sector, city }) => ({
+        url: `${BASE_URL}/sector/${sector}/in/${city}`,
+        lastmod,
+        changefreq: "monthly",
+        priority: 0.65,
+      })),
+      // /fund/[slug]/portfolio rollups
+      ...getAllFundsWithPortfolio().map((slug) => ({
+        url: `${BASE_URL}/fund/${slug}/portfolio`,
+        lastmod,
+        changefreq: "weekly",
+        priority: 0.75,
+      })),
+      // /trend/[slug] editorial leaderboards
+      { url: `${BASE_URL}/trend`, lastmod, changefreq: "weekly", priority: 0.85 },
+      ...getAllTrendLeaderboardSlugs().map((slug) => ({
+        url: `${BASE_URL}/trend/${slug}`,
         lastmod,
         changefreq: "monthly",
         priority: 0.8,
