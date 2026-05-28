@@ -132,6 +132,8 @@ This is the **most actionable gap.**
 
 **Recommendation (highest ROI in this audit):** migrate hero/above-the-fold imagery to `next/image` (or pre-generate AVIF/WebP + explicit width/height), convert the 1.9 MB landing GIF to the existing `mcp-demo.mp4`, and capture a real Lighthouse/CrUX baseline. A 10-point CWV swing is worth more in 2026 Google ranking than any additional `.well-known` file.
 
+> **Update (2026-05-28, same PR):** Closer inspection refined this finding. The static landing hero is *already* well-optimized (`<picture>` + WebP + `loading="lazy"` + explicit dimensions), and the Next app is text/SVG-heavy with almost no raster `<img>` — so a blanket `next/image` migration has little to migrate. The one concrete offender was **`/mcp-demo`**, which used the 1.9 MB animated `mcp-demo.gif` simultaneously as the `<video poster>`, the Open Graph image, the Twitter card, and the JSON-LD `thumbnailUrl`/`primaryImageOfPage` — forcing every visitor and every social-preview crawler to fetch ~1.9 MB for a still. **Fixed** by adding a colocated `app/mcp-demo/opengraph-image.tsx` (`next/og`, 1280×720, ~tens of KB) and repointing the poster + thumbnails at it; the GIF now survives only in the package README (`mcp-server/README.md`), where an animated GIF is the correct choice. Net: one page drops ~1.9 MB → ~50 KB of poster/preview weight and social cards stop breaking on large/animated-image rejection.
+
 ---
 
 ## 8. 🚩 Risks & honest findings (the part that isn't praise)
