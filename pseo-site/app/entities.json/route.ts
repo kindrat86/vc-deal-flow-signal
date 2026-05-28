@@ -344,6 +344,13 @@ const PROJECTS: Entity[] = [
     description:
       "Annual editorial roundups covering engineering signals, M&A patterns, and venture trends. Currently 2024, 2025, 2026. Each year combines the tracked signal corpus, documented M&A history, and emergent trend leaderboards into a single readable roundup.",
   },
+  {
+    name: "Persona Hubs Index",
+    type: "CollectionPage",
+    url: `${SITE}/for`,
+    description:
+      "Buyer-persona navigation hubs mapping the engineering-signal panel to specific Marcus 100 roles — Corp Dev directors, PE Operating Partners, non-engineer Tech VPs, Emerging-Manager VCs, Founders, Researchers, Tech Journalists. Each leaf documents workflows, quick-start paths, and honest caveats for one buyer persona under /for/[slug].",
+  },
 ];
 
 export async function GET() {
