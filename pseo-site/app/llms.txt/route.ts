@@ -334,7 +334,7 @@ Two free Chromium extensions (Chrome, Brave, Edge, Arc). Together they form a co
 
 ## Markdown Alternates
 
-Every major page is available as clean markdown at \`/md/\` for LLM-friendly ingestion:
+Core content families are available as clean markdown at \`/md/\` for LLM-friendly ingestion (entity pages like /signal, /define, /showdown render as HTML with inline JSON-LD; the families below have dedicated markdown):
 
 - [Index](${BASE_URL}/md): Overview with sector + signal-type links
 - [Methodology](${BASE_URL}/md/methodology)
