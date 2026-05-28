@@ -11,6 +11,7 @@
     "lint": "eslint",
     "audit:pseo": "npx tsx scripts/audit-pseo-uniqueness.ts",
     "audit:pseo-coverage": "npx tsx scripts/audit-pseo-coverage.ts",
+    "audit:schema": "node scripts/schema-sweep.mjs",
     "verify:metadata": "npx tsx scripts/verify-metadata.ts",
     "verify:speakable": "npx tsx scripts/verify-speakable.ts",
     "a11y": "node scripts/a11y-audit.mjs",
