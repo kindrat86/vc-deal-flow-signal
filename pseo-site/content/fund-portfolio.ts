@@ -76,6 +76,22 @@ export const FUND_PORTFOLIO: Record<string, string[]> = {
   "village-global": [],
   ycombinator: ["stripe", "supabase", "e2b", "lovable", "letta-ai", "cursor"],
   "500-global": [],
+  // ── 2026-05-28 fund expansion ──
+  "tiger-global": ["stripe", "openai", "anthropic", "huggingface", "cohere"],
+  "thrive-capital": ["openai", "stripe", "plaid", "anthropic"],
+  "ribbit-capital": ["plaid", "stripe"],
+  "battery-ventures": ["dbt-labs", "pinecone"],
+  "spark-capital": ["cohere", "anthropic"],
+  "redpoint-ventures": ["hashicorp"],
+  "emergence-capital": ["hashicorp"],
+  usv: ["stripe", "cloudflare"],
+  "menlo-ventures": ["anthropic"],
+  "altimeter-capital": ["openai", "mongodb"],
+  "dst-global": ["openai", "anthropic", "stripe"],
+  m12: ["anthropic"],
+  "intel-capital": ["mistral-ai", "writer"],
+  "salesforce-ventures": ["hashicorp", "anthropic"],
+  "lux-capital": ["runway", "anthropic"],
 };
 
 export interface PortfolioMatch {
