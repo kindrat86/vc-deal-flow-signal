@@ -157,7 +157,7 @@ This is the **most actionable gap.**
 | 1 | Adopt `next/image` for above-the-fold imagery + AVIF/WebP + explicit dimensions; convert landing GIF → MP4 | CWV 82→90, SEO 94→96 | M |
 | 2 | Capture a live Lighthouse + CrUX baseline; wire into CI alongside pa11y | Verifies #1; de-risks SEO | S |
 | 3 | Thin-page sweep: score each pSEO leaf by unique data points; `noindex`/prune the bottom decile of crossings | De-risks scaled-content penalty; protects pSEO 96 | M |
-| 4 | Confirm `route-canary` covers *all* agent/well-known/v1 surfaces + alerts on 404/308 regression | Protects GEO/AIO 95–96 | S |
+| 4 | ✅ **Done (this PR):** `route-canary` expanded from 5 → ~55 agent/well-known/v1 discovery surfaces (`CANONICAL_PROD_ROUTES`). 404 regression on any now pages within 24h. *Note:* the 2xx/3xx-healthy threshold is unchanged — 404 (the dominant stale-deploy failure) is caught; a route silently degrading to a 308 redirect is **not** flagged, to avoid false positives on legitimately-redirecting paths. Tightening that is a separate, riskier follow-up. | Protects GEO/AIO 95–96 | S |
 | 5 | Confirm `/answers/[slug]` leads with a 40–55-word extractable answer block | AEO 94→97 | S |
 | 6 | Earn ≥1 genuinely independent citation of the SSRN paper / dataset (real EEAT corroboration) | EEAT 90→94 | L |
 | 7 | Fix `news-sitemap.xml` `lastmod` to real timestamps | Crawl trust | S |
