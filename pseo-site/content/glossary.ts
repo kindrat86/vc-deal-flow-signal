@@ -538,4 +538,187 @@ export const glossaryTerms: GlossaryTerm[] = [
     definition:
       "Ideal Customer Profile — the firmographic and behavioral description of the segment most likely to buy, retain, and expand. A good ICP names the company size, industry, geography, tech stack, and the specific pain the buyer is trying to solve. Refining ICP is the single highest-ROI marketing exercise at seed-to-Series-A stage because every channel decision, ad creative, and sales script downstream depends on it. A vague ICP (\"SaaS founders\") is functionally no ICP.",
   },
+  // ── 2026-05-28 glossary expansion: modern AI/ML vocabulary ─────────────
+  {
+    term: "RLHF (Reinforcement Learning from Human Feedback)",
+    id: "rlhf",
+    definition:
+      "The training technique that aligns large language models to human-preferred outputs after pretraining. Three steps: (1) collect human preferences over model outputs, (2) train a reward model to score outputs, (3) optimize the base model against the reward model via PPO or similar RL algorithm. RLHF is what turns a raw foundation model into the instruct-tuned, helpful-by-default behavior that ChatGPT, Claude, and Gemini exhibit. Modern alternatives (DPO, KTO, RLAIF) achieve similar results without the explicit reward-model step.",
+  },
+  {
+    term: "Chain of Thought (CoT)",
+    id: "chain-of-thought",
+    definition:
+      "Prompting technique where a model is instructed (or trained) to articulate intermediate reasoning steps before producing a final answer. Empirically improves accuracy on math, logic, and multi-step problem solving — sometimes dramatically. 'Reasoning models' like OpenAI's o1/o3 family and Anthropic's Claude with extended thinking train chain-of-thought into the model rather than relying on prompting alone.",
+  },
+  {
+    term: "Retrieval-Augmented Generation (RAG)",
+    id: "rag",
+    definition:
+      "Architecture where a model retrieves relevant documents from an external knowledge store (vector database, search index, or hybrid) before generating an answer. RAG addresses three core LLM limitations: knowledge cutoff dates, hallucination on out-of-distribution facts, and the inability to cite sources. Most enterprise LLM deployments are RAG systems; the retrieval layer typically uses an embedding model plus a vector database like Pinecone, Weaviate, Qdrant, or Milvus.",
+  },
+  {
+    term: "Tool Use (Function Calling)",
+    id: "tool-use",
+    definition:
+      "Capability of an LLM to invoke external functions, APIs, or other tools via a structured output format (typically JSON). The model decides when to call a tool, with what arguments, and how to use the result in its response. Tool use is the foundation of agentic AI — without it, models can only generate text; with it, they can read files, query databases, search the web, send emails, or call any function exposed through a Model Context Protocol (MCP) server.",
+  },
+  {
+    term: "Context Window",
+    id: "context-window",
+    definition:
+      "The maximum number of tokens an LLM can attend to in a single inference pass — its working memory. Modern frontier models reach 200K–1M tokens (Claude, GPT-4, Gemini), though attention quality degrades non-linearly with length. Context-window size constrains how much code, document content, or conversation history can be included in a single prompt. Long-context engineering (chunking, attention sinks, retrieval) is an active research and product frontier.",
+  },
+  {
+    term: "Inference Latency",
+    id: "inference-latency",
+    definition:
+      "The wall-clock time between sending a prompt to an LLM and receiving the response. Broken into time-to-first-token (TTFT — when the streaming response starts) and tokens-per-second (TPS — throughput once it begins). For interactive applications, TTFT under 500ms feels instant; over 2s feels broken. For batch jobs, raw TPS matters more. Inference providers like Groq, Together AI, Fireworks AI, and Replicate compete primarily on this metric.",
+  },
+  {
+    term: "Fine-tuning",
+    id: "fine-tuning",
+    definition:
+      "Continued training of a foundation model on a smaller, task-specific dataset to specialize its behavior. Full fine-tuning updates all model weights; parameter-efficient fine-tuning (PEFT) methods like LoRA update only a small adapter layer, dramatically reducing compute cost and storage. Fine-tuning is the path for domain-specific knowledge, brand voice, or format consistency that prompting alone can't reliably achieve.",
+  },
+  {
+    term: "LoRA (Low-Rank Adaptation)",
+    id: "lora",
+    definition:
+      "Parameter-efficient fine-tuning method that adds small low-rank matrices to a frozen base model. Instead of updating billions of parameters, LoRA updates only a few million — typically 0.1%–1% of the original model. Inference can then mix-and-match LoRAs at runtime. Standard tooling on Hugging Face's PEFT library; default choice for fine-tuning open-weight models like Llama, Mistral, and Qwen.",
+  },
+  {
+    term: "Model Distillation",
+    id: "distillation",
+    definition:
+      "Training a smaller 'student' model to mimic a larger 'teacher' model's outputs. The student learns the teacher's behavior at a fraction of the inference cost. Distillation is how Claude Haiku, GPT-4o-mini, and Gemini Flash are produced — small, fast, cheap models that capture much of the larger model's behavior on common tasks. Critical to making frontier capability economically viable at scale.",
+  },
+  {
+    term: "Quantization",
+    id: "quantization",
+    definition:
+      "Reducing the numerical precision of model weights (typically from 16-bit floats to 8-bit, 4-bit, or even 2-bit integers) to shrink memory footprint and speed up inference. Modern quantization schemes (GPTQ, AWQ, GGUF) preserve most of the model's quality while cutting size 4x–8x. Critical for running open-weight models on consumer GPUs and for edge inference.",
+  },
+  {
+    term: "Embedding Model",
+    id: "embedding-model",
+    definition:
+      "A neural network that converts text (or images, audio, etc.) into a fixed-length vector — typically 384, 768, 1024, or 1536 dimensions. Semantic similarity between two inputs becomes the cosine similarity between their vectors. Embedding models power RAG retrieval, semantic search, clustering, and recommendation systems. Cohere, OpenAI, Mistral, and Voyage AI ship dedicated embedding APIs; open-weight options include Sentence-BERT and BGE.",
+  },
+  {
+    term: "Foundation Model",
+    id: "foundation-model",
+    definition:
+      "A large, broadly-trained neural network that serves as a base for downstream fine-tuning, prompting, or RAG. Term coined by Stanford CRFM in 2021. Modern foundation models include the GPT series (OpenAI), Claude (Anthropic), Gemini (Google), Llama (Meta), Mistral (Mistral AI), and Qwen (Alibaba). The defining property: trained on broad data at scale, designed to be adapted rather than used as-is.",
+  },
+  {
+    term: "Open-Weight Model",
+    id: "open-weight-model",
+    definition:
+      "An LLM whose trained weights are publicly available for download, fine-tuning, and self-hosting. Distinct from 'open source' in the strict sense — most open-weight models do not release training data or full training code, only the final weights. Llama, Mistral, Qwen, Gemma, DeepSeek, and the StableLM family are the headline open-weight providers. Closed-weight models (GPT-4, Claude) are accessed only via API.",
+  },
+  {
+    term: "Reasoning Model",
+    id: "reasoning-model",
+    definition:
+      "An LLM trained to use extended chain-of-thought as a native capability rather than as a prompting technique. The model invests compute time at inference (sometimes minutes) to work through problems step-by-step before answering. OpenAI's o1/o3, Anthropic's Claude with extended thinking, and DeepSeek's R1 are the headline examples. Reasoning models tradeoff latency for accuracy on hard problems — best-fit for math, code, scientific reasoning, and complex planning tasks.",
+  },
+  {
+    term: "Multimodal Model",
+    id: "multimodal-model",
+    definition:
+      "A model that accepts and/or generates multiple input types — typically text and images, sometimes audio and video. GPT-4o, Claude 3.5/4.x Sonnet, and Gemini 1.5/2.x are native multimodal models capable of analyzing images alongside text. Specialized multimodal models exist for image generation (DALL-E, Imagen, Stable Diffusion), video (Sora, Veo, Runway Gen-3), and audio (ElevenLabs, Whisper).",
+  },
+  // ── M&A and Corp Dev vocabulary ────────────────────────────────────────
+  {
+    term: "Strategic Acquisition",
+    id: "strategic-acquisition",
+    definition:
+      "An M&A transaction motivated by strategic synergy rather than financial return alone. Strategic acquirers (corporates, hyperscalers) typically pay higher multiples than financial buyers because they capture revenue synergies, talent, technology, or competitive defense beyond standalone cash flows. Microsoft's GitHub deal, Salesforce's Slack, and IBM's HashiCorp are textbook strategic acquisitions. Contrast with financial sponsors (PE firms) buying for cash-flow returns.",
+  },
+  {
+    term: "Acquihire",
+    id: "acquihire",
+    definition:
+      "An acquisition primarily motivated by acquiring the team rather than the company's products or revenue. Common in AI — Adept (Amazon), Character AI (Google), and Inflection (Microsoft) followed this template in 2024. The product is often wound down post-acquisition; the engineering team joins the acquirer. Acquihire valuations are often non-disclosed and structured as a mix of cash and retention compensation packages.",
+  },
+  {
+    term: "Earn-out",
+    id: "earn-out",
+    definition:
+      "Acquisition consideration paid over time, contingent on the acquired business hitting specified milestones — revenue targets, product launches, or team retention. Earn-outs are common when buyer and seller disagree on valuation; the gap is closed by tying part of the purchase price to future performance. Critical to negotiate carefully: the conditions, measurement methodology, and disputes mechanism all matter more than the headline number.",
+  },
+  {
+    term: "Down Round",
+    id: "down-round",
+    definition:
+      "A financing round where the post-money valuation is lower than the previous round's post-money. Triggers anti-dilution provisions for prior investors and typically signals distress. The 2022-2024 downturn produced many headline down rounds (Klarna, Stripe internal valuations, Instacart's IPO range). Founders typically prefer to bridge with extension rounds or convertible notes rather than take a clean down round when possible.",
+  },
+  {
+    term: "Bridge Round",
+    id: "bridge-round",
+    definition:
+      "An interim financing round between two priced rounds, typically structured as convertible notes or SAFEs that convert at the next priced round's terms (often with a discount or valuation cap). Bridges extend runway when a company needs more time to hit milestones before pricing a Series A/B/C. Common during downturns; sometimes signals difficulty raising; sometimes just gives time to execute.",
+  },
+  {
+    term: "Tender Offer",
+    id: "tender-offer",
+    definition:
+      "A structured liquidity event where existing shareholders are offered the chance to sell some or all of their shares at a fixed price, usually to new investors or to the company itself. Tender offers became common at high-growth private companies (Stripe, SpaceX, Anthropic) as alternatives to delayed IPOs. The pricing serves as a soft valuation marker without the public-market scrutiny of a 409A or IPO.",
+  },
+  {
+    term: "Secondary Sale",
+    id: "secondary-sale",
+    definition:
+      "Sale of existing shares from an early investor or employee to a new buyer, distinct from primary issuance of new shares by the company. Secondary sales provide liquidity to founders and early stakeholders without raising new capital. Most common at growth-stage companies where employees with vested options or early investors with paper gains want to realize value before an IPO.",
+  },
+  {
+    term: "Liquidation Preference",
+    id: "liquidation-preference",
+    definition:
+      "Investor right to receive their original investment (or a multiple of it) back before common shareholders see any proceeds in an exit. 1× non-participating preferred is the modern default — investor gets either their money back OR pro-rata share of proceeds, whichever is larger. Aggressive terms (2× or 3× participating preferred) create overhang for founders and employees; they appear in distressed rounds.",
+  },
+  {
+    term: "Pro-rata Rights",
+    id: "pro-rata-rights",
+    definition:
+      "An investor's right to participate in future financing rounds at their existing ownership percentage, preserving their stake from dilution. Pro-rata rights are a critical signal to subsequent investors that early backers still believe; not exercising pro-rata sometimes signals doubt. Allocations for pro-rata participation are often the most contested item in oversubscribed rounds.",
+  },
+  {
+    term: "Anti-dilution Provision",
+    id: "anti-dilution-provision",
+    definition:
+      "Investor protection against down rounds — adjusts the conversion price of preferred shares so existing investors aren't diluted as much when new shares are issued at a lower price. 'Weighted average' (broad-based) anti-dilution is standard and most founder-friendly. 'Full ratchet' anti-dilution is investor-friendly but punitive in a down round and is uncommon outside distressed deals.",
+  },
+  // ── Engineering and platform primitives ────────────────────────────────
+  {
+    term: "Monorepo",
+    id: "monorepo",
+    definition:
+      "A single Git repository containing multiple distinct projects, applications, or libraries. Monorepos enable atomic cross-package changes, shared tooling, and simplified dependency management. Modern monorepo tooling (Nx, Turborepo, Lerna, Bazel) addresses the build and test scalability problem. Companies like Google, Meta, Microsoft, Vercel, and Linear run monorepos; engineering-signal pattern: monorepo orgs typically show flatter, more uniform commit distribution.",
+  },
+  {
+    term: "Edge Function",
+    id: "edge-function",
+    definition:
+      "Code executed at globally-distributed compute nodes physically close to end users — typically running in V8 isolates, Wasm sandboxes, or lightweight VMs. Cloudflare Workers, Vercel Edge Functions, Fly.io machines, and Deno Deploy are the headline platforms. Edge functions trade execution environment constraints for sub-100ms cold-start times and global low-latency reach. Increasingly used as the AI-inference gateway layer.",
+  },
+  {
+    term: "Continuous Deployment",
+    id: "continuous-deployment",
+    definition:
+      "Software-delivery practice where every code change merged to main is automatically deployed to production, often within minutes. Distinct from continuous integration (which only tests) and continuous delivery (which prepares releases). CD enables small batch sizes, rapid feedback, and lower per-change risk. Companies that ship via CD include Stripe, GitHub, Vercel, Cloudflare, and most modern AI-infra orgs. Engineering-signal correlation: high-CD orgs show distinctive deploy-frequency-spike patterns in their public commit panel.",
+  },
+  {
+    term: "Feature Flag",
+    id: "feature-flag",
+    definition:
+      "Runtime toggle controlling whether a feature is exposed to a given user, request, or environment — independently from deployment. Feature flags decouple deploy from release, enable A/B testing, support gradual rollout, and provide kill switches for production incidents. PostHog, LaunchDarkly, Statsig, and ConfigCat are the headline platforms. Standard practice at most modern product orgs.",
+  },
+  {
+    term: "Distributed Tracing",
+    id: "distributed-tracing",
+    definition:
+      "Observability technique that follows a single request as it crosses multiple services, recording the timing and metadata of each hop. Standard format: OpenTelemetry (OTel). Tools: Datadog APM, Honeycomb, Grafana Tempo, Lightstep (now ServiceNow), Sentry Performance. Distributed tracing is the only effective debugging path in microservices architectures; without it, root-cause analysis devolves into log-grepping across dozens of services.",
+  },
 ];
