@@ -37,6 +37,9 @@ import { starsCases } from "../content/from-stars-to-seed";
 import { useCases } from "../content/use-cases";
 import { competitorVsPairs } from "../content/competitor-vs";
 import { nicheSectors } from "../content/niches";
+import { buildVsInvestSectors } from "../content/build-vs-invest";
+import { SOLO_FOUNDER_SECTORS } from "../content/solo-founder-tracker";
+import { COMMUNITY_GROUPS } from "../content/community-signal";
 
 // ---------- config ----------
 
@@ -202,6 +205,29 @@ const SURFACES: Surface[] = [
     name: "from-stars-to-seed",
     basePath: "/from-stars-to-seed",
     entries: starsCases.map((c) => buildEntry(c.slug, c)),
+  },
+  {
+    // /build-vs-invest/[sector] — editorial "build it yourself vs back a
+    // startup" pages, one per sector. Curation-gated (no live cell-size
+    // threshold), so it belongs under the near-dup gate. Flagged by the
+    // 2026-05-28 thin-page analysis as ungated.
+    name: "build-vs-invest",
+    basePath: "/build-vs-invest",
+    entries: buildVsInvestSectors.map((s) => buildEntry(s.slug, s)),
+  },
+  {
+    // /solo-founder-tracker/[sector] — per-sector solo-founder breakout
+    // commentary. Curation-gated; added to the gate 2026-05-28.
+    name: "solo-founder-tracker",
+    basePath: "/solo-founder-tracker",
+    entries: SOLO_FOUNDER_SECTORS.map((s) => buildEntry(s.slug, s)),
+  },
+  {
+    // /community-signal/[slug] — per-community editorial pages. Curation-
+    // gated; added to the gate 2026-05-28.
+    name: "community-signal",
+    basePath: "/community-signal",
+    entries: COMMUNITY_GROUPS.map((c) => buildEntry(c.slug, c)),
   },
 ];
 
