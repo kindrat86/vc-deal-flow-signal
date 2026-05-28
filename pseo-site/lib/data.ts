@@ -319,20 +319,27 @@ export interface GeoPageData {
 
 /**
  * Returns all geo page slugs in format `{sector}-{geo}-{period}`.
- * Generates pages where at least 1 startup matches the geography — single-startup
- * pages still carry sector context, FAQs, related sectors, and breadcrumbs, so
- * they're not thin-content.
+ *
+ * Emits ONLY slugs that `parseGeoPageSlug` will accept. A candidate is kept iff
+ * round-tripping it back through the parser yields a non-null page — which
+ * guarantees the generated set (used for both `generateStaticParams` and the
+ * sitemap) can never diverge from what the route can actually render.
+ *
+ * Previously this used `matching.length >= 1` while the parser required
+ * `>= 2`, so every single-startup geo combo became an indexable soft-404:
+ * prerendered + sitemap-listed, HTTP 200 / index,follow, but `parseGeoPageSlug`
+ * returned null so the page fell back to the default (home) title with no
+ * FAQ/Article schema. That stranded 81 of 131 geo URLs. Deriving the list from
+ * the parser makes the threshold a single source of truth.
  */
 export function getAllGeoPageSlugs(): string[] {
   const slugs: string[] = [];
   for (const sector of data.sectors) {
-    for (const [periodSlug, snapshot] of Object.entries(sector.periods)) {
+    for (const periodSlug of Object.keys(sector.periods)) {
       for (const geo of GEO_DEFINITIONS) {
-        const matching = snapshot.startups.filter(
-          (s) => s.geography === geo.match
-        );
-        if (matching.length >= 1) {
-          slugs.push(`${sector.slug}-${geo.slug}-${periodSlug}`);
+        const slug = `${sector.slug}-${geo.slug}-${periodSlug}`;
+        if (parseGeoPageSlug(slug) !== null) {
+          slugs.push(slug);
         }
       }
     }
