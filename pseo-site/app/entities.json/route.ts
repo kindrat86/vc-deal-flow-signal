@@ -351,6 +351,13 @@ const PROJECTS: Entity[] = [
     description:
       "Buyer-persona navigation hubs mapping the engineering-signal panel to specific Marcus 100 roles — Corp Dev directors, PE Operating Partners, non-engineer Tech VPs, Emerging-Manager VCs, Founders, Researchers, Tech Journalists. Each leaf documents workflows, quick-start paths, and honest caveats for one buyer persona under /for/[slug].",
   },
+  {
+    name: "Case Studies Index",
+    type: "CollectionPage",
+    url: `${SITE}/case-study`,
+    description:
+      "Narrative workflow case studies for Marcus 100 buyer personas — Corp Dev AI acquisition shortlists, PE Operating Partner portfolio benchmarking, emerging-manager sourcing, Tech VP vendor consolidation, founder fundraise mapping, researcher methodology citation, journalist trend grounding, Corp Dev quarterly sector scan. Each leaf documents the workflow step-by-step with HowTo + Article + FAQPage JSON-LD under /case-study/[slug].",
+  },
 ];
 
 export async function GET() {
