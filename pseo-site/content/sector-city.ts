@@ -14,6 +14,7 @@
 
 import { sectors, getSector, type Sector } from "@/content/sectors";
 import { CITIES, type City, getCityBySlug } from "@/content/cities";
+import { getCompaniesInSectorAndCity } from "@/content/company-locations";
 
 const SECTOR_KEYWORDS: Record<string, string[]> = {
   "ai-infra": ["ai infra", "frontier ai", "applied ai"],
@@ -45,7 +46,10 @@ export function getAllSectorCityPairs(): SectorCityPair[] {
   const pairs: SectorCityPair[] = [];
   for (const sector of sectors) {
     for (const city of CITIES) {
-      if (citySectorMatches(city.notableSectors, sector.slug)) {
+      const editorialMatch = citySectorMatches(city.notableSectors, sector.slug);
+      const hqMatch =
+        getCompaniesInSectorAndCity(sector.slug, city.slug).length > 0;
+      if (editorialMatch || hqMatch) {
         pairs.push({ sector: sector.slug, city: city.slug });
       }
     }
@@ -62,6 +66,8 @@ export function getSectorCity(sectorSlug: string, citySlug: string): SectorCityD
   const sector = getSector(sectorSlug);
   const city = getCityBySlug(citySlug);
   if (!sector || !city) return null;
-  if (!citySectorMatches(city.notableSectors, sector.slug)) return null;
+  const editorialMatch = citySectorMatches(city.notableSectors, sector.slug);
+  const hqMatch = getCompaniesInSectorAndCity(sector.slug, city.slug).length > 0;
+  if (!editorialMatch && !hqMatch) return null;
   return { sector, city };
 }
