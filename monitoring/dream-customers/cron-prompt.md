@@ -1,7 +1,7 @@
 # Cron prompt — Daily Twitter check for Dream Customers CRM
 
 You are running unattended from launchd to refresh the engagement signals on
-73 verified VC targets, so the Dream Customers kanban
+74 verified VC targets, so the Dream Customers kanban
 (`monitoring/dream-customers/dashboard.html`) shows up-to-date "they just
 posted" cues each morning.
 
@@ -11,9 +11,20 @@ posted" cues each morning.
 
 Files there:
 
-- `data.json` — single source of truth for the roster + Twitter signals
-- `build.mjs` — regenerates `dashboard.html` from `data.json`
-- `dashboard.html` — generated; never edit by hand
+- `data.json` — cron scratch for the roster + tweet signals (last_tweet_at /
+  last_tweet_text / last_checked_at). NOT the source of truth for editable
+  fields anymore.
+- `build.mjs` — upserts tweet-signal fields from `data.json` into the
+  PocketBase `contacts` collection. No longer regenerates HTML.
+- `dashboard.html` — PocketBase-backed kanban opened via `python3 launch.py`.
+  Hand-edit it like a normal HTML file; never auto-generated.
+- `launch.py` — issues a PB admin token and writes `dashboard.config.js` so
+  the dashboard can talk to PB at 127.0.0.1:8090. (Not used by the cron.)
+- `migrate-json-to-pb.py` — one-shot importer for new contacts from
+  `data.json` into PB. Run after adding rows to `data.json`.
+
+PB is authoritative for stage / dream_customer / notes / display_name / firm
+/ role / segment / confidence. The cron only writes tweet-signal fields.
 
 ## What to do — in order
 
@@ -89,10 +100,14 @@ X aggressively rate-limits anything that looks scripted.
   `data.json`. The build script reads this file — a half-written JSON would
   produce a broken dashboard.
 
-### 5. Regenerate the dashboard
+### 5. Sync tweet signals to PocketBase
 
-Run `node build.mjs` from this directory. It writes `dashboard.html`. No
-other side effects.
+Run `node build.mjs` from this directory. It reads `data.json` and upserts
+the tweet-signal fields (`last_tweet_at`, `last_tweet_text`,
+`last_checked_at`) into the PB `contacts` collection, matched by `x_handle`.
+It NEVER writes to stage / dream_customer / notes / other user-editable
+fields. The dashboard is PB-backed and shows the new signals on next reload —
+no HTML rebuild needed.
 
 ### 6. Log + exit
 
@@ -104,9 +119,11 @@ other side effects.
 
 - Do not engage with tweets. No replies, no likes, no follows.
 - Do not log into X if a login wall appears. Skip the profile and move on.
-- Do not modify `dashboard.html` directly — always go through `build.mjs`.
-- Do not touch user-driven state (stage, notes, counter live in browser
-  localStorage; the cron must never know about them).
+- Do not modify `dashboard.html` — it's no longer auto-generated. Hand-edit
+  via PR only.
+- Do not touch user-driven state. Stage, dream_customer flag, notes, and
+  edited display_name/firm/role live in PocketBase. `build.mjs` only writes
+  the three tweet-signal fields and must never expand its write scope.
 - Do not commit `data.json` from inside this run. The user pulls + opens
   the local file; the cron stays in their working tree.
 
