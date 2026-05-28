@@ -64,7 +64,8 @@
       "Bash(python3 -c \" import json,sys d=json.load\\(sys.stdin\\) post=d[0]['data']['children'][0]['data'] print\\('TITLE:', post['title']\\) print\\('BODY:', post.get\\('selftext',''\\)[:1000]\\) print\\(\\) print\\('=== TOP COMMENTS ==='\\) for c in d[1]['data']['children'][:8]: c=c['data'] if c.get\\('body'\\) and c['body'] not in ['[deleted]','[removed]']: print\\(f'[{c[\\\\\"score\\\\\"]}] {c[\\\\\"body\\\\\"][:400]}'\\) print\\(\\) \")",
       "mcp__03ab5a56-b780-4bb4-8870-68dcbc0fb0dd__list_teams",
       "mcp__03ab5a56-b780-4bb4-8870-68dcbc0fb0dd__list_projects",
-      "mcp__03ab5a56-b780-4bb4-8870-68dcbc0fb0dd__list_deployments"
+      "mcp__03ab5a56-b780-4bb4-8870-68dcbc0fb0dd__list_deployments",
+      "mcp__03ab5a56-b780-4bb4-8870-68dcbc0fb0dd__web_fetch_vercel_url"
     ]
   }
 }
