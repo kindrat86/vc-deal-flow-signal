@@ -465,6 +465,187 @@ export const ACQUIRERS: Acquirer[] = [
       { name: "McAfee", year: 2011, announcedAmount: "$7.7B", note: "Security (later divested)." },
     ],
   }),
+  // ───────────────────────── 2026-05-28 acquirers expansion (10 orgs) ─────────────────────────
+  build({
+    slug: "meta",
+    name: "Meta Platforms",
+    homepage: "https://about.meta.com",
+    hq: "Menlo Park, CA",
+    strategy:
+      "Meta runs an aggressive consumer-tech M&A program that defined an era of social-network consolidation (Instagram, WhatsApp). Post-2020 emphasis on AR/VR (Oculus) and AI; some deals (GIPHY, Within) faced regulatory pushback. Recent shift toward AI/ML talent and infrastructure acquisitions.",
+    scout:
+      "Meta scouts companies whose engineering teams can scale across the Facebook/Instagram/WhatsApp surface and add AR/VR or AI capability. Engineering-signal hallmarks: deep ML expertise, mobile-app scaling experience, multi-billion-user infrastructure depth.",
+    focusSectors: ["ai-ml", "ai-infra", "infrastructure", "developer-tools"],
+    acquisitions: [
+      { name: "Scale AI", year: 2025, announcedAmount: "$14.3B", note: "Data labeling and AI training infrastructure (49% stake)." },
+      { name: "Kustomer", year: 2022, announcedAmount: "$1B", note: "Customer service platform." },
+      { name: "GIPHY", year: 2020, announcedAmount: "$400M", note: "Animated images (later unwound by UK CMA)." },
+      { name: "CTRL-labs", year: 2019, announcedAmount: "~$500M", note: "Neural interface (became Reality Labs core)." },
+      { name: "WhatsApp", year: 2014, announcedAmount: "$19B", note: "Messaging platform — largest tech acquisition of its era." },
+      { name: "Oculus VR", year: 2014, announcedAmount: "$2B", note: "VR hardware (became Meta Quest)." },
+      { name: "Instagram", year: 2012, announcedAmount: "$1B", note: "Photo and video social network." },
+    ],
+  }),
+  build({
+    slug: "workday",
+    name: "Workday",
+    homepage: "https://www.workday.com",
+    hq: "Pleasanton, CA",
+    strategy:
+      "Workday runs a disciplined M&A program around HR, finance, and adjacent enterprise SaaS. Every acquisition becomes a Workday-suffix product line within the Workday HCM/Financials/Adaptive Planning architecture. Notably acquisitive in the planning, RFP, and engagement layers.",
+    scout:
+      "Workday scouts enterprise SaaS companies with strong Fortune 500 adoption that can integrate into Workday HCM or Financials. Engineering-signal hallmarks: multi-tenant architecture, deep SCM/HR domain expertise, API extensibility into the Workday partner ecosystem.",
+    focusSectors: ["productivity", "analytics", "developer-tools"],
+    acquisitions: [
+      { name: "Peakon", year: 2021, announcedAmount: "$700M", note: "Employee engagement and analytics." },
+      { name: "VNDLY", year: 2021, announcedAmount: "$510M", note: "Vendor management system (contingent workforce)." },
+      { name: "Scout RFP", year: 2019, announcedAmount: "$540M", note: "Strategic sourcing and supplier engagement." },
+      { name: "Adaptive Insights", year: 2018, announcedAmount: "$1.55B", note: "Cloud-based corporate performance management." },
+      { name: "Insightly", year: 2024, note: "Partner-integration acquisition." },
+    ],
+  }),
+  build({
+    slug: "veeva",
+    name: "Veeva Systems",
+    homepage: "https://www.veeva.com",
+    hq: "Pleasanton, CA",
+    strategy:
+      "Veeva runs a focused M&A program around life-sciences and regulated-industry SaaS. Each acquisition fills a specific gap in Veeva's Vault platform or extends into adjacent vertical markets (consumer goods, finance). Discipline-over-volume approach.",
+    scout:
+      "Veeva scouts companies serving pharma, biotech, and regulated industries with proven enterprise SaaS distribution. Engineering-signal hallmarks: deep compliance and regulatory automation, pharma-specific data models, vertical platform integration depth.",
+    focusSectors: ["productivity", "analytics", "developer-tools"],
+    acquisitions: [
+      { name: "Crossix Solutions", year: 2019, announcedAmount: "~$430M", note: "Healthcare analytics and marketing measurement." },
+      { name: "Physicians World", year: 2018, note: "Medical communications platform." },
+    ],
+  }),
+  build({
+    slug: "broadcom",
+    name: "Broadcom",
+    homepage: "https://www.broadcom.com",
+    hq: "Palo Alto, CA",
+    strategy:
+      "Broadcom runs one of the most aggressive PE-style M&A programs in tech — large acquisitions, ruthless cost optimization, focus on profitable enterprise software and semiconductor assets. The VMware acquisition (2023, $69B) was one of the largest tech acquisitions ever.",
+    scout:
+      "Broadcom scouts mature enterprise software and semiconductor companies with strong cash flow and Fortune 500 install base. Engineering-signal hallmarks: enterprise-grade reliability, deep enterprise sales motion, legacy customer base willing to pay for support contracts.",
+    focusSectors: ["infrastructure", "developer-tools"],
+    acquisitions: [
+      { name: "VMware", year: 2023, announcedAmount: "$69B", note: "Enterprise virtualization, cloud, and infrastructure software." },
+      { name: "Symantec Enterprise Security", year: 2019, announcedAmount: "$10.7B", note: "Enterprise cybersecurity (consumer arm spun off as NortonLifeLock)." },
+      { name: "CA Technologies", year: 2018, announcedAmount: "$18.9B", note: "Mainframe and enterprise software (Computer Associates legacy)." },
+      { name: "Brocade Communications", year: 2017, announcedAmount: "$5.5B", note: "Fibre Channel and IP networking." },
+    ],
+  }),
+  build({
+    slug: "palo-alto-networks",
+    name: "Palo Alto Networks",
+    homepage: "https://www.paloaltonetworks.com",
+    hq: "Santa Clara, CA",
+    strategy:
+      "Palo Alto Networks runs a high-cadence security M&A program — typically 4-6 acquisitions per year — extending the Cortex, Prisma, and Strata platforms. Most acquisitions integrate into existing platforms rather than launching new product lines.",
+    scout:
+      "Palo Alto Networks scouts security companies with mature enterprise traction across SOC, network, and cloud-security categories. Engineering-signal hallmarks: deep packet-level or kernel-level engineering, mature SIEM/SOAR integrations, Fortune 1000 customer references.",
+    focusSectors: ["observability", "infrastructure", "developer-tools"],
+    acquisitions: [
+      { name: "Talon Cyber Security", year: 2024, announcedAmount: "$625M", note: "Enterprise browser security." },
+      { name: "Dig Security", year: 2023, announcedAmount: "$400M", note: "Data security posture management (DSPM)." },
+      { name: "Cider Security", year: 2022, announcedAmount: "$300M", note: "Code-to-cloud CI/CD pipeline security." },
+      { name: "CloudGenix", year: 2020, announcedAmount: "$420M", note: "SD-WAN platform." },
+      { name: "Twistlock", year: 2019, announcedAmount: "$410M", note: "Container and cloud-native security." },
+      { name: "Demisto", year: 2019, announcedAmount: "$560M", note: "SOAR (Security Orchestration, Automation, Response)." },
+    ],
+  }),
+  build({
+    slug: "okta",
+    name: "Okta",
+    homepage: "https://www.okta.com",
+    hq: "San Francisco, CA",
+    strategy:
+      "Okta's M&A is dominated by the Auth0 acquisition (2021, $6.5B) which expanded their developer-identity surface. Smaller deals extend the Workforce and Customer Identity Cloud platforms with adjacent security primitives.",
+    scout:
+      "Okta scouts identity, authentication, and access-management companies with developer-friendly APIs and strong SaaS distribution. Engineering-signal hallmarks: clean OAuth/SAML implementation depth, multi-language SDK breadth, enterprise SSO complexity navigation.",
+    focusSectors: ["developer-tools", "infrastructure"],
+    acquisitions: [
+      { name: "Spera Security", year: 2024, note: "Identity security posture management." },
+      { name: "Auth0", year: 2021, announcedAmount: "$6.5B", note: "Developer-facing identity platform — Okta's largest acquisition." },
+      { name: "Azuqua", year: 2019, note: "Workflow automation (became Okta Workflows)." },
+    ],
+  }),
+  build({
+    slug: "crowdstrike",
+    name: "CrowdStrike",
+    homepage: "https://www.crowdstrike.com",
+    hq: "Austin, TX",
+    strategy:
+      "CrowdStrike runs a focused M&A program around endpoint security, log management, and adjacent observability primitives that extend the Falcon platform. Discipline over volume — typically 1-2 acquisitions per year, each ~$100M-$500M range.",
+    scout:
+      "CrowdStrike scouts companies whose telemetry and detection primitives fit the Falcon platform. Engineering-signal hallmarks: high-cardinality data engineering, real-time event processing depth, SIEM/SOC workflow alignment.",
+    focusSectors: ["observability", "infrastructure"],
+    acquisitions: [
+      { name: "Flow Security", year: 2024, announcedAmount: "~$200M", note: "Cloud data security posture management." },
+      { name: "Bionic", year: 2023, announcedAmount: "$350M", note: "Application security posture management." },
+      { name: "Humio", year: 2021, announcedAmount: "$400M", note: "Modern log management (became Falcon LogScale)." },
+      { name: "Preempt Security", year: 2020, announcedAmount: "$96M", note: "Identity-based threat protection." },
+    ],
+  }),
+  build({
+    slug: "block",
+    name: "Block (Square)",
+    homepage: "https://block.xyz",
+    hq: "Oakland, CA",
+    strategy:
+      "Block (formerly Square) runs M&A across payments, BNPL, music, and crypto — the diverse portfolio reflects Jack Dorsey's multi-product holding-company strategy. The Afterpay acquisition (2022) was the company's largest, repositioning Block in the BNPL space.",
+    scout:
+      "Block scouts companies in payments, fintech consumer apps, music streaming, and crypto/Bitcoin infrastructure. Engineering-signal hallmarks: consumer-grade UX, payments-compliance depth, multi-platform mobile engineering.",
+    focusSectors: ["fintech", "developer-tools"],
+    acquisitions: [
+      { name: "Afterpay", year: 2022, announcedAmount: "$29B AUD (~$22B USD)", note: "Buy-now-pay-later platform." },
+      { name: "TIDAL", year: 2021, announcedAmount: "$300M", note: "Music streaming service." },
+      { name: "Weebly", year: 2018, announcedAmount: "$365M", note: "Website builder (became Square Online)." },
+      { name: "Caviar", year: 2014, announcedAmount: "~$90M", note: "Food delivery (later sold to DoorDash)." },
+    ],
+  }),
+  build({
+    slug: "vista-equity-partners",
+    name: "Vista Equity Partners",
+    homepage: "https://www.vistaequitypartners.com",
+    hq: "Austin, TX",
+    strategy:
+      "Vista Equity Partners is the dominant private-equity firm focused on enterprise software. Vista's playbook: acquire mature software companies, apply operational improvements (the Vista Standard Operating Procedure), then sell or IPO. Typical hold period 3-7 years.",
+    scout:
+      "Vista scouts profitable, mature enterprise-software companies with strong product-market fit and clear operational improvement opportunities. Engineering-signal hallmarks: stable engineering output, manageable technical debt, clean separation between innovation and core-product engineering.",
+    focusSectors: ["productivity", "developer-tools", "fintech"],
+    acquisitions: [
+      { name: "Drift", year: 2024, note: "Conversational marketing platform." },
+      { name: "Avalara", year: 2022, announcedAmount: "$8.4B", note: "Tax compliance automation." },
+      { name: "KnowBe4", year: 2023, announcedAmount: "$4.6B", note: "Security awareness training." },
+      { name: "Citrix Systems", year: 2022, announcedAmount: "$16.5B (with Elliott)", note: "Virtual desktop infrastructure." },
+      { name: "Pluralsight", year: 2021, announcedAmount: "$3.5B", note: "Technology skills platform." },
+      { name: "Apptio", year: 2018, announcedAmount: "$1.9B", note: "FinOps and technology business management (later sold to IBM)." },
+      { name: "Marketo", year: 2016, announcedAmount: "$1.8B", note: "Marketing automation (sold to Adobe in 2018)." },
+      { name: "TIBCO Software", year: 2014, announcedAmount: "$4.3B", note: "Enterprise data and analytics middleware." },
+    ],
+  }),
+  build({
+    slug: "sap",
+    name: "SAP",
+    homepage: "https://www.sap.com",
+    hq: "Walldorf, Germany",
+    strategy:
+      "SAP runs a strategic M&A program around enterprise applications, cloud SaaS, and adjacent middleware. Notable for transformative acquisitions (SuccessFactors, Concur, Ariba) that reshaped SAP from on-premises ERP to cloud-first enterprise software vendor.",
+    scout:
+      "SAP scouts mature enterprise SaaS companies with Fortune 500 install base and adjacent fit to SAP's HR, finance, supply-chain, or experience-management platforms. Engineering-signal hallmarks: SAP-integration maturity, enterprise compliance, multi-region deployment.",
+    focusSectors: ["productivity", "analytics", "fintech"],
+    acquisitions: [
+      { name: "WalkMe", year: 2024, announcedAmount: "$1.5B", note: "Digital adoption platform." },
+      { name: "LeanIX", year: 2023, announcedAmount: "~$1.3B", note: "Enterprise architecture management." },
+      { name: "Qualtrics", year: 2018, announcedAmount: "$8B", note: "Experience management (XM)." },
+      { name: "Callidus Software", year: 2018, announcedAmount: "$2.4B", note: "Sales performance management." },
+      { name: "Concur Technologies", year: 2014, announcedAmount: "$8.3B", note: "Travel and expense management." },
+      { name: "Ariba", year: 2012, announcedAmount: "$4.3B", note: "Procurement and supply-chain SaaS." },
+      { name: "SuccessFactors", year: 2011, announcedAmount: "$3.4B", note: "Cloud HCM — SAP's pivot to SaaS." },
+    ],
+  }),
 ];
 
 export function getAllAcquirerSlugs(): string[] {
