@@ -69,15 +69,34 @@ Mitigated correctly: the template emits `hreflang` with `x-default` → the Engl
 
 ---
 
-## Recommended next step (non-destructive, data-driven)
+## A build-time near-duplicate gate already exists — and passes
 
-Rather than prune by guesswork, **instrument** the thinness so any pruning is evidence-based:
+The recommended "build a thinness probe" turned out to be **already implemented**: `scripts/audit-pseo-uniqueness.ts` (the "F24" gate) computes 64-bit SimHash fingerprints over every programmatic entry, pairwise Hamming-compares within each surface, and **fails the build** (`postbuild` on Vercel) **and the PR** (GitHub Actions) if >5% of entries exceed ~86% body similarity. This is the in-code defense the audit hoped for, enforced on every deploy and merge.
 
-1. **Build-time thinness probe.** Add a dev/CI script that renders each generated leaf to text and computes, per page: (a) total visible tokens, (b) tokens unique to that page vs. the family's shared template, (c) count of distinct structured-data points (table rows, list items, schema fields). Emit a CSV sorted ascending by unique-token ratio.
-2. **Flag, don't cut.** Surface the bottom decile per family. A human (or a follow-up session with explicit sign-off) decides per family whether to (i) enrich, (ii) `noindex, follow` (keep for internal linking, drop from index), or (iii) consolidate into a parent hub.
-3. **Extend the existing gate.** The cleanest lever already exists: generalize the `MIN_PSEO_CELL_SIZE` pattern to the curation-gated families that have a countable backing (e.g. require ≥N comparison data points for a `/compare/[slug]` to render). This keeps the defense in code, where the audit found it works.
+**Ran it (2026-05-28) — verified result:**
 
-**No index/robots changes are made by this report.** If you want, a follow-up can implement the build-time thinness probe (read-only, safe) and bring back the ranked CSV for a pruning decision.
+```
+[compare      ]   45 entries · 0 flagged · shingles min/mean/max 290/439/960
+[alternatives ]   12 entries · 0 flagged · 512/639/821
+[use-cases    ]   12 entries · 0 flagged · 428/478/584
+[vs           ]   30 entries · 0 flagged · 37/49/63
+[niche-down   ]  200 entries · 0 flagged · 63/95/202
+[from-stars-to-seed]  48 entries · 0 flagged · 193/250/413
++ build-vs-invest      20 · 0 flagged · 234/268/328   (added this PR)
++ solo-founder-tracker 20 · 0 flagged · 148/187/232   (added this PR)
++ community-signal     10 · 0 flagged · 283/304/322   (added this PR)
+Total: 397 entries · 0 near-duplicates · PASS
+```
+
+**Action taken (this PR):** the gate covered 6 surfaces (347 entries). The three curation-gated editorial families this analysis flagged — `/build-vs-invest`, `/solo-founder-tracker`, `/community-signal` — were **not** in its `SURFACES` list, so they weren't gated. Added them (now 397 entries / 9 surfaces). All three pass with healthy shingle counts, confirming they're genuinely unique rather than thin.
+
+## Remaining non-destructive options (your call)
+
+1. **Watch the low-shingle outliers.** `/vs` entries are short (mean 49 shingles) — they pass the *near-dup* test but are the thinnest by volume. Worth a manual glance for "is there enough here to rank," though short ≠ duplicate.
+2. **Extend the `MIN_PSEO_CELL_SIZE` pattern** to any curation-gated family with a countable backing (e.g. require ≥N data points for a `/compare/[slug]` to render) — keeps the defense quantitative, not just editorial.
+3. **Flag, don't cut.** If a future pass does want to prune, prefer `noindex, follow` (keep internal-linking value, drop from index) over deletion.
+
+**No index/robots changes are made by this report.** The only code change is extending the existing gate's coverage (verified passing).
 
 ---
 
