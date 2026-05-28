@@ -163,7 +163,11 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://api.github.com" />
         <link rel="dns-prefetch" href="https://avatars.githubusercontent.com" />
         <link rel="dns-prefetch" href="https://gitdealflow-pb.fly.dev" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* No preconnect to fonts.gstatic.com: next/font/google self-hosts the
+            Inter woff2 at build time under /_next/static/media (preloaded, same
+            origin). A gstatic preconnect would open an unused DNS+TLS handshake
+            and trip Lighthouse's "unused preconnect" diagnostic — there is no
+            runtime request to Google Fonts to warm. */}
 
         {/* Agent-discoverability hints — alternate machine-readable mirrors of
             the human site. Next 16's metadata.alternates.types only emits a
