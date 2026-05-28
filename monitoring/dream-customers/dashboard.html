@@ -18,8 +18,8 @@
   header label.toggle input { margin:0; accent-color:#0ea5e9; }
   header button.refresh { background:#1e293b; color:#cbd5e1; border:1px solid #334155; padding:5px 10px; border-radius:4px; font-size:12px; cursor:pointer; }
   header button.refresh:hover { border-color:#0ea5e9; color:#0ea5e9; }
-  .board { display:flex; gap:10px; padding:14px; overflow-x:auto; min-height: calc(100vh - 60px); align-items:flex-start; }
-  .col { width:300px; flex:0 0 300px; background:rgba(15,23,42,0.5); border:1px solid #1e293b; border-radius:8px; display:flex; flex-direction:column; }
+  .board { display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:12px; padding:14px; min-height: calc(100vh - 60px); align-items:flex-start; }
+  .col { min-width:0; background:rgba(15,23,42,0.5); border:1px solid #1e293b; border-radius:8px; display:flex; flex-direction:column; }
   .col.drag-over { border-color:#0ea5e9; background:#082f49; }
   .col h2 { margin:0; padding:10px 12px; border-bottom:1px solid #1e293b; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:1px; color:#cbd5e1; display:flex; justify-content:space-between; align-items:center; }
   .col h2 .count { font-family:ui-monospace,Menlo,monospace; color:#64748b; font-weight:400; }
