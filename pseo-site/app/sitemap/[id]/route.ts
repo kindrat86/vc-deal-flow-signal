@@ -33,6 +33,8 @@ import { getAllTrendLeaderboardSlugs } from "@/content/trend-leaderboards";
 import { getAllWorksWithSlugs } from "@/content/works-with";
 import { getAllYearInReviewSlugs } from "@/content/year-in-review";
 import { getAllPersonaSlugs } from "@/content/personas";
+import { getAllCaseStudySlugs } from "@/content/case-studies";
+import { getAllResearchPaperSlugs } from "@/content/research-papers";
 import { pillars } from "@/content/pillars";
 import { agentQueries } from "@/content/agent-queries";
 import { glossaryTerms } from "@/content/glossary";
@@ -442,6 +444,22 @@ export async function GET(_req: Request, ctx: RouteContext) {
         lastmod,
         changefreq: "monthly",
         priority: 0.85,
+      })),
+      // /case-study/[slug] workflow walkthroughs
+      { url: `${BASE_URL}/case-study`, lastmod, changefreq: "monthly", priority: 0.85 },
+      ...getAllCaseStudySlugs().map((slug) => ({
+        url: `${BASE_URL}/case-study/${slug}`,
+        lastmod,
+        changefreq: "monthly",
+        priority: 0.8,
+      })),
+      // /research-paper/[slug] external academic references
+      { url: `${BASE_URL}/research-paper`, lastmod, changefreq: "monthly", priority: 0.85 },
+      ...getAllResearchPaperSlugs().map((slug) => ({
+        url: `${BASE_URL}/research-paper/${slug}`,
+        lastmod,
+        changefreq: "monthly",
+        priority: 0.8,
       })),
     ];
   } else if (id === "crossings") {

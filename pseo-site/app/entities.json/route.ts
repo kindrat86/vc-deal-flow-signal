@@ -351,6 +351,20 @@ const PROJECTS: Entity[] = [
     description:
       "Buyer-persona navigation hubs mapping the engineering-signal panel to specific Marcus 100 roles — Corp Dev directors, PE Operating Partners, non-engineer Tech VPs, Emerging-Manager VCs, Founders, Researchers, Tech Journalists. Each leaf documents workflows, quick-start paths, and honest caveats for one buyer persona under /for/[slug].",
   },
+  {
+    name: "Case Studies Index",
+    type: "CollectionPage",
+    url: `${SITE}/case-study`,
+    description:
+      "Narrative workflow case studies for Marcus 100 buyer personas — Corp Dev AI acquisition shortlists, PE Operating Partner portfolio benchmarking, emerging-manager sourcing, Tech VP vendor consolidation, founder fundraise mapping, researcher methodology citation, journalist trend grounding, Corp Dev quarterly sector scan. Each leaf documents the workflow step-by-step with HowTo + Article + FAQPage JSON-LD under /case-study/[slug].",
+  },
+  {
+    name: "Research Papers Index (External)",
+    type: "CollectionPage",
+    url: `${SITE}/research-paper`,
+    description:
+      "External academic papers we cite in our methodology and editorial. ML/AI foundations (Transformer, GPT-3, RLHF, RAG, LoRA, Constitutional AI, Chain-of-Thought) plus the DORA engineering-velocity research. Each leaf has ScholarlyArticle JSON-LD with abstract summary, editorial context, key findings, and canonical sameAs links to arXiv/Semantic Scholar/OpenAlex under /research-paper/[slug]. Distinct from /research which documents our own SSRN paper's findings.",
+  },
 ];
 
 export async function GET() {
