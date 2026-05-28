@@ -7,6 +7,7 @@ import {
   REGION_LABELS,
   getCityBySlug,
 } from "@/content/cities";
+import { getCompaniesInCity } from "@/content/company-locations";
 import { HreflangLinks } from "@/components/HreflangLinks";
 
 interface PageProps {
@@ -49,6 +50,7 @@ export default async function CityPage({ params }: PageProps) {
   const otherCitiesInRegion = CITIES.filter(
     (c) => c.region === city.region && c.slug !== city.slug,
   ).slice(0, 6);
+  const trackedCompaniesInCity = getCompaniesInCity(slug);
 
   const faqs = [
     {
@@ -202,8 +204,12 @@ export default async function CityPage({ params }: PageProps) {
             <p className="text-xs text-gray-400 mt-1">Population</p>
           </div>
           <div className="rounded-lg border border-slate-800 bg-slate-900 p-4 text-center">
-            <p className="text-2xl font-bold text-sky-400">{city.notableOrgs.length}</p>
-            <p className="text-xs text-gray-400 mt-1">Tracked orgs</p>
+            <p className="text-2xl font-bold text-sky-400">
+              {trackedCompaniesInCity.length + city.notableOrgs.length}
+            </p>
+            <p className="text-xs text-gray-400 mt-1">
+              Mapped orgs ({trackedCompaniesInCity.length} tracked)
+            </p>
           </div>
           <div className="rounded-lg border border-slate-800 bg-slate-900 p-4 text-center">
             <p className="text-2xl font-bold text-sky-400">{city.vcAnchors.length}</p>
@@ -242,6 +248,36 @@ export default async function CityPage({ params }: PageProps) {
             ))}
           </div>
         </section>
+
+        {trackedCompaniesInCity.length > 0 && (
+          <section className="mb-10" aria-label="Tracked companies HQ here">
+            <h2 className="text-xl font-semibold text-gray-100 mb-4">
+              Tracked companies HQ'd in {city.name}
+            </h2>
+            <p className="text-gray-500 text-xs mb-4">
+              Companies from our curated /signal corpus whose primary HQ is in or near
+              {" "}
+              {city.name}. Click through for per-company engineering-signal context.
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {trackedCompaniesInCity.map((c) => (
+                <Link
+                  key={c.slug}
+                  href={`/signal/${c.slug}`}
+                  className="group block rounded-lg border border-slate-800 bg-slate-900 p-4 hover:border-slate-600 transition-all"
+                >
+                  <h3 className="text-gray-100 font-medium text-sm group-hover:text-sky-400 transition-colors mb-1">
+                    {c.name}
+                  </h3>
+                  <p className="text-gray-400 text-xs">
+                    {c.sector} &middot; {c.stage.replace("-", " ")} &middot; github.com/
+                    {c.githubOrg}
+                  </p>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
 
         <section className="mb-10" aria-label="Notable engineering orgs">
           <h2 className="text-xl font-semibold text-gray-100 mb-4">
