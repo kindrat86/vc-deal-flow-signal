@@ -809,7 +809,7 @@ function renderAgents(): string {
     `- **Q&A corpus (RAG)**: ${BASE_URL}/qa.jsonl\n` +
     `- **Q&A as JSON**: ${BASE_URL}/qa.json\n` +
     `- **Q&A as CSV**: ${BASE_URL}/qa.csv\n` +
-    `- **Markdown alternates**: ${BASE_URL}/md/{path}\n\n` +
+    `- **Markdown alternates** (core families): ${BASE_URL}/md/{path} — home, stage, signals, startup, startups-to-watch, methodology, answers, alternatives, niche-down, research, faq, glossary, agents, citations, badge-builder\n\n` +
     `## Discovery\n\n` +
     `- **/.well-known/api-catalog** (RFC 9727 Linkset)\n` +
     `- **/.well-known/mcp.json**\n` +

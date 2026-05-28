@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-28T20:27:21.775Z",
+  "generatedAt": "2026-05-28T21:14:49.490Z",
   "config": {
     "hammingThreshold": 9,
     "globalThresholdPct": 5,
@@ -10,11 +10,16 @@
     "flagged": 0,
     "flaggedPct": 0
   },
+  "observational": {
+    "entries": 1076,
+    "flagged": 947
+  },
   "verdict": "PASS",
   "surfaces": [
     {
       "name": "compare",
       "basePath": "/compare",
+      "reportOnly": false,
       "totalEntries": 45,
       "flaggedEntries": 0,
       "flaggedPct": 0,
@@ -28,6 +33,7 @@
     {
       "name": "alternatives",
       "basePath": "/alternatives",
+      "reportOnly": false,
       "totalEntries": 12,
       "flaggedEntries": 0,
       "flaggedPct": 0,
@@ -41,6 +47,7 @@
     {
       "name": "use-cases",
       "basePath": "/use-cases",
+      "reportOnly": false,
       "totalEntries": 12,
       "flaggedEntries": 0,
       "flaggedPct": 0,
@@ -54,6 +61,7 @@
     {
       "name": "vs",
       "basePath": "/vs",
+      "reportOnly": false,
       "totalEntries": 30,
       "flaggedEntries": 0,
       "flaggedPct": 0,
@@ -67,6 +75,7 @@
     {
       "name": "niche-down",
       "basePath": "/niche-down",
+      "reportOnly": false,
       "totalEntries": 200,
       "flaggedEntries": 0,
       "flaggedPct": 0,
@@ -80,6 +89,7 @@
     {
       "name": "from-stars-to-seed",
       "basePath": "/from-stars-to-seed",
+      "reportOnly": false,
       "totalEntries": 48,
       "flaggedEntries": 0,
       "flaggedPct": 0,
@@ -93,6 +103,7 @@
     {
       "name": "build-vs-invest",
       "basePath": "/build-vs-invest",
+      "reportOnly": false,
       "totalEntries": 20,
       "flaggedEntries": 0,
       "flaggedPct": 0,
@@ -106,6 +117,7 @@
     {
       "name": "solo-founder-tracker",
       "basePath": "/solo-founder-tracker",
+      "reportOnly": false,
       "totalEntries": 20,
       "flaggedEntries": 0,
       "flaggedPct": 0,
@@ -119,6 +131,7 @@
     {
       "name": "community-signal",
       "basePath": "/community-signal",
+      "reportOnly": false,
       "totalEntries": 10,
       "flaggedEntries": 0,
       "flaggedPct": 0,
@@ -128,6 +141,411 @@
         "mean": 304
       },
       "pairs": []
+    },
+    {
+      "name": "signal",
+      "basePath": "/signal",
+      "reportOnly": true,
+      "totalEntries": 114,
+      "flaggedEntries": 43,
+      "flaggedPct": 37.7,
+      "shingleCounts": {
+        "min": 373,
+        "max": 425,
+        "mean": 394
+      },
+      "pairs": [
+        {
+          "a": "astro",
+          "b": "asana",
+          "hamming": 4,
+          "similarity": 93.8
+        },
+        {
+          "a": "cohere",
+          "b": "stability-ai",
+          "hamming": 7,
+          "similarity": 89.1
+        },
+        {
+          "a": "cohere",
+          "b": "twilio",
+          "hamming": 8,
+          "similarity": 87.5
+        },
+        {
+          "a": "huggingface",
+          "b": "typesense",
+          "hamming": 8,
+          "similarity": 87.5
+        },
+        {
+          "a": "hashicorp",
+          "b": "typesense",
+          "hamming": 8,
+          "similarity": 87.5
+        },
+        {
+          "a": "fly-io",
+          "b": "fermyon",
+          "hamming": 8,
+          "similarity": 87.5
+        },
+        {
+          "a": "planetscale",
+          "b": "cube",
+          "hamming": 8,
+          "similarity": 87.5
+        },
+        {
+          "a": "stytch",
+          "b": "pulumi",
+          "hamming": 8,
+          "similarity": 87.5
+        },
+        {
+          "a": "groq",
+          "b": "jina-ai",
+          "hamming": 8,
+          "similarity": 87.5
+        },
+        {
+          "a": "perplexity-ai",
+          "b": "typesense",
+          "hamming": 8,
+          "similarity": 87.5
+        },
+        {
+          "a": "perplexity-ai",
+          "b": "ai21-labs",
+          "hamming": 8,
+          "similarity": 87.5
+        },
+        {
+          "a": "netlify",
+          "b": "weights-biases",
+          "hamming": 8,
+          "similarity": 87.5
+        },
+        {
+          "a": "typesense",
+          "b": "airbyte",
+          "hamming": 8,
+          "similarity": 87.5
+        },
+        {
+          "a": "convex",
+          "b": "dust-tt",
+          "hamming": 9,
+          "similarity": 85.9
+        },
+        {
+          "a": "replicate",
+          "b": "crewai",
+          "hamming": 9,
+          "similarity": 85.9
+        },
+        {
+          "a": "openai",
+          "b": "preset",
+          "hamming": 9,
+          "similarity": 85.9
+        },
+        {
+          "a": "inngest",
+          "b": "perplexity-ai",
+          "hamming": 9,
+          "similarity": 85.9
+        },
+        {
+          "a": "browserbase",
+          "b": "turso",
+          "hamming": 9,
+          "similarity": 85.9
+        },
+        {
+          "a": "browserbase",
+          "b": "stability-ai",
+          "hamming": 9,
+          "similarity": 85.9
+        },
+        {
+          "a": "e2b",
+          "b": "pulumi",
+          "hamming": 9,
+          "similarity": 85.9
+        }
+      ]
+    },
+    {
+      "name": "showdown",
+      "basePath": "/showdown",
+      "reportOnly": true,
+      "totalEntries": 865,
+      "flaggedEntries": 865,
+      "flaggedPct": 100,
+      "shingleCounts": {
+        "min": 748,
+        "max": 839,
+        "mean": 792
+      },
+      "pairs": [
+        {
+          "a": "honeycomb-vs-sentry",
+          "b": "arize-ai-vs-sentry",
+          "hamming": 1,
+          "similarity": 98.4
+        },
+        {
+          "a": "clerk-vs-ory",
+          "b": "inngest-vs-ory",
+          "hamming": 1,
+          "similarity": 98.4
+        },
+        {
+          "a": "pulumi-vs-stytch",
+          "b": "backstage-vs-stytch",
+          "hamming": 1,
+          "similarity": 98.4
+        },
+        {
+          "a": "dust-tt-vs-stability-ai",
+          "b": "jina-ai-vs-stability-ai",
+          "hamming": 1,
+          "similarity": 98.4
+        },
+        {
+          "a": "elevenlabs-vs-jina-ai",
+          "b": "jina-ai-vs-voyage-ai",
+          "hamming": 1,
+          "similarity": 98.4
+        },
+        {
+          "a": "pulumi-vs-weights-biases",
+          "b": "astro-vs-pulumi",
+          "hamming": 1,
+          "similarity": 98.4
+        },
+        {
+          "a": "ory-vs-sourcegraph",
+          "b": "ory-vs-tauri",
+          "hamming": 1,
+          "similarity": 98.4
+        },
+        {
+          "a": "qdrant-vs-timescale",
+          "b": "qdrant-vs-typesense",
+          "hamming": 1,
+          "similarity": 98.4
+        },
+        {
+          "a": "clerk-vs-vercel",
+          "b": "clerk-vs-tailwindcss",
+          "hamming": 2,
+          "similarity": 96.9
+        },
+        {
+          "a": "ory-vs-vercel",
+          "b": "ory-vs-weights-biases",
+          "hamming": 2,
+          "similarity": 96.9
+        },
+        {
+          "a": "ory-vs-resend",
+          "b": "clerk-vs-ory",
+          "hamming": 2,
+          "similarity": 96.9
+        },
+        {
+          "a": "neon-vs-weaviate",
+          "b": "neon-vs-pinecone",
+          "hamming": 2,
+          "similarity": 96.9
+        },
+        {
+          "a": "anthropic-vs-runway",
+          "b": "letta-ai-vs-runway",
+          "hamming": 2,
+          "similarity": 96.9
+        },
+        {
+          "a": "mastra-vs-openai",
+          "b": "letta-ai-vs-mastra",
+          "hamming": 2,
+          "similarity": 96.9
+        },
+        {
+          "a": "cohere-vs-langchain",
+          "b": "cohere-vs-letta-ai",
+          "hamming": 2,
+          "similarity": 96.9
+        },
+        {
+          "a": "huggingface-vs-lovable",
+          "b": "huggingface-vs-mastra",
+          "hamming": 2,
+          "similarity": 96.9
+        },
+        {
+          "a": "huggingface-vs-lovable",
+          "b": "elevenlabs-vs-huggingface",
+          "hamming": 2,
+          "similarity": 96.9
+        },
+        {
+          "a": "huggingface-vs-langchain",
+          "b": "huggingface-vs-letta-ai",
+          "hamming": 2,
+          "similarity": 96.9
+        },
+        {
+          "a": "huggingface-vs-mastra",
+          "b": "lovable-vs-mastra",
+          "hamming": 2,
+          "similarity": 96.9
+        },
+        {
+          "a": "cloudflare-vs-fly-io",
+          "b": "fly-io-vs-netlify",
+          "hamming": 2,
+          "similarity": 96.9
+        }
+      ]
+    },
+    {
+      "name": "sector-city",
+      "basePath": "/sector",
+      "reportOnly": true,
+      "totalEntries": 97,
+      "flaggedEntries": 39,
+      "flaggedPct": 40.2,
+      "shingleCounts": {
+        "min": 563,
+        "max": 16434,
+        "mean": 1382
+      },
+      "pairs": [
+        {
+          "a": "developer-tools/in/san-francisco",
+          "b": "infrastructure/in/san-francisco",
+          "hamming": 2,
+          "similarity": 96.9
+        },
+        {
+          "a": "ai-infra/in/san-francisco",
+          "b": "ai-ml/in/san-francisco",
+          "hamming": 4,
+          "similarity": 93.8
+        },
+        {
+          "a": "ai-ml/in/london",
+          "b": "fintech/in/san-francisco",
+          "hamming": 4,
+          "similarity": 93.8
+        },
+        {
+          "a": "ai-ml/in/san-francisco",
+          "b": "developer-tools/in/san-francisco",
+          "hamming": 4,
+          "similarity": 93.8
+        },
+        {
+          "a": "developer-tools/in/san-francisco",
+          "b": "database/in/san-francisco",
+          "hamming": 4,
+          "similarity": 93.8
+        },
+        {
+          "a": "developer-tools/in/new-york",
+          "b": "infrastructure/in/new-york",
+          "hamming": 4,
+          "similarity": 93.8
+        },
+        {
+          "a": "infrastructure/in/san-francisco",
+          "b": "database/in/san-francisco",
+          "hamming": 4,
+          "similarity": 93.8
+        },
+        {
+          "a": "ai-infra/in/san-francisco",
+          "b": "ai-ml/in/london",
+          "hamming": 5,
+          "similarity": 92.2
+        },
+        {
+          "a": "ai-infra/in/san-francisco",
+          "b": "fintech/in/san-francisco",
+          "hamming": 5,
+          "similarity": 92.2
+        },
+        {
+          "a": "developer-tools/in/san-francisco",
+          "b": "infrastructure/in/new-york",
+          "hamming": 5,
+          "similarity": 92.2
+        },
+        {
+          "a": "developer-tools/in/seattle",
+          "b": "infrastructure/in/seattle",
+          "hamming": 5,
+          "similarity": 92.2
+        },
+        {
+          "a": "infrastructure/in/amsterdam",
+          "b": "database/in/amsterdam",
+          "hamming": 5,
+          "similarity": 92.2
+        },
+        {
+          "a": "analytics/in/san-francisco",
+          "b": "productivity/in/san-francisco",
+          "hamming": 5,
+          "similarity": 92.2
+        },
+        {
+          "a": "ai-infra/in/san-francisco",
+          "b": "developer-tools/in/san-francisco",
+          "hamming": 6,
+          "similarity": 90.6
+        },
+        {
+          "a": "ai-infra/in/san-francisco",
+          "b": "developer-tools/in/seattle",
+          "hamming": 6,
+          "similarity": 90.6
+        },
+        {
+          "a": "ai-infra/in/san-francisco",
+          "b": "infrastructure/in/san-francisco",
+          "hamming": 6,
+          "similarity": 90.6
+        },
+        {
+          "a": "ai-infra/in/san-francisco",
+          "b": "database/in/san-francisco",
+          "hamming": 6,
+          "similarity": 90.6
+        },
+        {
+          "a": "ai-ml/in/san-francisco",
+          "b": "infrastructure/in/san-francisco",
+          "hamming": 6,
+          "similarity": 90.6
+        },
+        {
+          "a": "ai-ml/in/san-francisco",
+          "b": "database/in/san-francisco",
+          "hamming": 6,
+          "similarity": 90.6
+        },
+        {
+          "a": "ai-ml/in/new-york",
+          "b": "developer-tools/in/seattle",
+          "hamming": 6,
+          "similarity": 90.6
+        }
+      ]
     }
   ]
 }

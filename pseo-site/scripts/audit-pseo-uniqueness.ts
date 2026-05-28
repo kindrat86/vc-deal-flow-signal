@@ -40,6 +40,10 @@ import { nicheSectors } from "../content/niches";
 import { buildVsInvestSectors } from "../content/build-vs-invest";
 import { SOLO_FOUNDER_SECTORS } from "../content/solo-founder-tracker";
 import { COMMUNITY_GROUPS } from "../content/community-signal";
+import { getAllShowdownSlugs, getShowdownPair } from "../content/showdowns";
+import { getAllSectorCityPairs, getSectorCity } from "../content/sector-city";
+import { getCompaniesInSectorAndCity } from "../content/company-locations";
+import { companies } from "../content/companies";
 
 // ---------- config ----------
 
@@ -58,6 +62,17 @@ interface Surface {
   name: string;
   basePath: string;
   entries: SurfaceEntry[];
+  /**
+   * When true, the surface is MEASURED and reported but does NOT count
+   * toward the build-gating global FAIL threshold. Used for combinatorial
+   * and entity-template families (showdown, sector×city, signal) whose
+   * cross-page overlap is structural — driven by the shared `companies.ts`
+   * editorial template, not by a per-page authoring defect. Their fix is a
+   * product/content decision (rewrite per-entity editorial, noindex thin
+   * leaves, or canonical to a hub), not something a build gate should force.
+   * The curated, hand-written editorial surfaces remain hard-gated at 5%.
+   */
+  reportOnly?: boolean;
 }
 
 interface DupPair {
@@ -70,6 +85,7 @@ interface DupPair {
 interface SurfaceReport {
   name: string;
   basePath: string;
+  reportOnly: boolean;
   totalEntries: number;
   flaggedEntries: number;
   flaggedPct: number;
@@ -229,6 +245,48 @@ const SURFACES: Surface[] = [
     basePath: "/community-signal",
     entries: COMMUNITY_GROUPS.map((c) => buildEntry(c.slug, c)),
   },
+  // ---- Observational tier (reportOnly: measured, not build-gating) ----
+  //
+  // 2026-05-29 audit finding: these families are built by combining entries
+  // from `companies.ts`, whose per-company prose is templated mad-libs
+  // ("For {Name}, we monitor: (1) Commit velocity…", "{Name} sits at an
+  // interesting point in the {sector} engineering curve…"). Only the name
+  // and 1–2 variables change, so any page built from those objects is a
+  // near-duplicate of its siblings. This is genuine scaled-content exposure.
+  // We MEASURE it here so the number is visible on every build/PR, but do
+  // not fail the deploy — the remediation is a content rewrite or an
+  // index-strategy decision, owned by a human, not a CI gate.
+  {
+    // /signal/[slug] — the root: one entity page per tracked company.
+    name: "signal",
+    basePath: "/signal",
+    reportOnly: true,
+    entries: companies.map((c) => buildEntry(c.slug, c)),
+  },
+  {
+    // /showdown/[slug] — company-vs-company pairs, the LARGEST combinatorial
+    // family. Body = both companies' full data objects.
+    name: "showdown",
+    basePath: "/showdown",
+    reportOnly: true,
+    entries: getAllShowdownSlugs().flatMap((slug) => {
+      const pair = getShowdownPair(slug);
+      return pair ? [buildEntry(slug, { a: pair.a, b: pair.b })] : [];
+    }),
+  },
+  {
+    // /sector/[slug]/in/[city] — sector × city crossings. The 2026-05-28
+    // thin-page analysis named these the highest-risk combinatorial cells.
+    name: "sector-city",
+    basePath: "/sector",
+    reportOnly: true,
+    entries: getAllSectorCityPairs().flatMap(({ sector, city }) => {
+      const data = getSectorCity(sector, city);
+      if (!data) return [];
+      const inCell = getCompaniesInSectorAndCity(sector, city);
+      return [buildEntry(`${sector}/in/${city}`, { ...data, companies: inCell })];
+    }),
+  },
 ];
 
 // ---------- audit ----------
@@ -271,6 +329,7 @@ function auditSurface(s: Surface): SurfaceReport {
   return {
     name: s.name,
     basePath: s.basePath,
+    reportOnly: s.reportOnly ?? false,
     totalEntries,
     flaggedEntries,
     flaggedPct,
@@ -288,30 +347,59 @@ function main(): void {
   console.log(`Report-only:           ${REPORT_ONLY}`);
   console.log("");
 
-  const reports: SurfaceReport[] = [];
-  let totalEntries = 0;
-  let totalFlagged = 0;
+  const reports: SurfaceReport[] = SURFACES.map(auditSurface);
 
-  for (const s of SURFACES) {
-    const r = auditSurface(s);
-    reports.push(r);
-    totalEntries += r.totalEntries;
-    totalFlagged += r.flaggedEntries;
-    console.log(
-      `[${r.name.padEnd(13)}] ${String(r.totalEntries).padStart(4)} entries · ${String(r.flaggedEntries).padStart(3)} flagged (${String(r.flaggedPct).padStart(4)}%) · ${r.pairs.length} near-dup pair(s) · shingles min/mean/max ${r.shingleCounts.min}/${r.shingleCounts.mean}/${r.shingleCounts.max}`,
-    );
+  const fmt = (r: SurfaceReport) =>
+    `[${r.name.padEnd(13)}] ${String(r.totalEntries).padStart(4)} entries · ${String(r.flaggedEntries).padStart(3)} flagged (${String(r.flaggedPct).padStart(5)}%) · ${r.pairs.length} near-dup pair(s) · shingles min/mean/max ${r.shingleCounts.min}/${r.shingleCounts.mean}/${r.shingleCounts.max}`;
+
+  // --- Build-gating tier: hand-written editorial. Counts toward verdict. ---
+  const gating = reports.filter((r) => !r.reportOnly);
+  for (const r of gating) {
+    console.log(fmt(r));
     for (const p of r.pairs.slice(0, 3)) {
       console.log(`    ↪ ${p.a}  ≈  ${p.b}   (sim ${p.similarity}%, hamming ${p.hamming})`);
     }
   }
 
+  const totalEntries = gating.reduce((a, r) => a + r.totalEntries, 0);
+  const totalFlagged = gating.reduce((a, r) => a + r.flaggedEntries, 0);
   const globalPct = totalEntries > 0 ? (totalFlagged / totalEntries) * 100 : 0;
   const verdict = globalPct > GLOBAL_THRESHOLD_PCT ? "FAIL" : "PASS";
 
   console.log("");
-  console.log(`Total programmatic entries: ${totalEntries}`);
-  console.log(`Total flagged:              ${totalFlagged}  (${globalPct.toFixed(1)}%)`);
-  console.log(`Verdict:                    ${verdict}`);
+  console.log(`Gating entries (editorial): ${totalEntries}`);
+  console.log(`Gating flagged:             ${totalFlagged}  (${globalPct.toFixed(1)}%)`);
+  console.log(`Verdict (build gate):       ${verdict}`);
+
+  // --- Observational tier: combinatorial / entity-template families. ---
+  // Measured every build but NOT gating — high cross-page overlap here is
+  // structural (driven by the shared companies.ts template), and the fix is
+  // a content/index-strategy decision, not a CI failure.
+  const observational = reports.filter((r) => r.reportOnly);
+  if (observational.length > 0) {
+    console.log("");
+    console.log("Observational (report-only — NOT build-gating):");
+    for (const r of observational) {
+      console.log(fmt(r));
+      for (const p of r.pairs.slice(0, 3)) {
+        console.log(`    ↪ ${p.a}  ≈  ${p.b}   (sim ${p.similarity}%, hamming ${p.hamming})`);
+      }
+    }
+    const obsEntries = observational.reduce((a, r) => a + r.totalEntries, 0);
+    const obsFlagged = observational.reduce((a, r) => a + r.flaggedEntries, 0);
+    const obsPct = obsEntries > 0 ? (obsFlagged / obsEntries) * 100 : 0;
+    console.log("");
+    console.log(`Observational entries:      ${obsEntries}`);
+    console.log(`Observational flagged:      ${obsFlagged}  (${obsPct.toFixed(1)}%)`);
+    if (obsPct >= 25) {
+      console.log(
+        `⚠️  ${obsPct.toFixed(0)}% of combinatorial/entity pages are near-duplicates of a sibling. ` +
+          `Root cause: templated per-company prose in content/companies.ts. ` +
+          `Remediation is a content/index-strategy decision (rewrite per-entity editorial, ` +
+          `noindex thin leaves, or canonical to a hub) — see marketing/seo-geo-aeo-audit-2026-05-29.md.`,
+      );
+    }
+  }
 
   // Write machine-readable report. Path is relative to this script.
   const here = dirname(fileURLToPath(import.meta.url));
@@ -331,6 +419,10 @@ function main(): void {
           entries: totalEntries,
           flagged: totalFlagged,
           flaggedPct: Number(globalPct.toFixed(2)),
+        },
+        observational: {
+          entries: reports.filter((r) => r.reportOnly).reduce((a, r) => a + r.totalEntries, 0),
+          flagged: reports.filter((r) => r.reportOnly).reduce((a, r) => a + r.flaggedEntries, 0),
         },
         verdict,
         surfaces: reports,
