@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-05-09T14:05:18.810Z",
+  "generatedAt": "2026-05-28T20:27:21.775Z",
   "config": {
     "hammingThreshold": 9,
     "globalThresholdPct": 5,
     "reportOnly": false
   },
   "totals": {
-    "entries": 72,
+    "entries": 397,
     "flagged": 0,
     "flaggedPct": 0
   },
@@ -15,26 +15,26 @@
     {
       "name": "compare",
       "basePath": "/compare",
-      "totalEntries": 19,
+      "totalEntries": 45,
       "flaggedEntries": 0,
       "flaggedPct": 0,
       "shingleCounts": {
-        "min": 406,
-        "max": 708,
-        "mean": 537
+        "min": 290,
+        "max": 960,
+        "mean": 439
       },
       "pairs": []
     },
     {
       "name": "alternatives",
       "basePath": "/alternatives",
-      "totalEntries": 11,
+      "totalEntries": 12,
       "flaggedEntries": 0,
       "flaggedPct": 0,
       "shingleCounts": {
         "min": 512,
-        "max": 749,
-        "mean": 622
+        "max": 821,
+        "mean": 639
       },
       "pairs": []
     },
@@ -61,6 +61,71 @@
         "min": 37,
         "max": 63,
         "mean": 49
+      },
+      "pairs": []
+    },
+    {
+      "name": "niche-down",
+      "basePath": "/niche-down",
+      "totalEntries": 200,
+      "flaggedEntries": 0,
+      "flaggedPct": 0,
+      "shingleCounts": {
+        "min": 63,
+        "max": 202,
+        "mean": 95
+      },
+      "pairs": []
+    },
+    {
+      "name": "from-stars-to-seed",
+      "basePath": "/from-stars-to-seed",
+      "totalEntries": 48,
+      "flaggedEntries": 0,
+      "flaggedPct": 0,
+      "shingleCounts": {
+        "min": 193,
+        "max": 413,
+        "mean": 250
+      },
+      "pairs": []
+    },
+    {
+      "name": "build-vs-invest",
+      "basePath": "/build-vs-invest",
+      "totalEntries": 20,
+      "flaggedEntries": 0,
+      "flaggedPct": 0,
+      "shingleCounts": {
+        "min": 234,
+        "max": 328,
+        "mean": 268
+      },
+      "pairs": []
+    },
+    {
+      "name": "solo-founder-tracker",
+      "basePath": "/solo-founder-tracker",
+      "totalEntries": 20,
+      "flaggedEntries": 0,
+      "flaggedPct": 0,
+      "shingleCounts": {
+        "min": 148,
+        "max": 232,
+        "mean": 187
+      },
+      "pairs": []
+    },
+    {
+      "name": "community-signal",
+      "basePath": "/community-signal",
+      "totalEntries": 10,
+      "flaggedEntries": 0,
+      "flaggedPct": 0,
+      "shingleCounts": {
+        "min": 283,
+        "max": 322,
+        "mean": 304
       },
       "pairs": []
     }
