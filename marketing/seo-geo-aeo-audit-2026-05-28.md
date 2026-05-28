@@ -24,7 +24,7 @@
 | **Schema / Structured data** | JSON-LD coverage | **98** | 30+ types, multilingual `@language` strings, stable `@id` graph. |
 | **Technical SEO / Crawlability** | Indexability, sitemaps, robots | **94** | 9-sitemap index, named-bot robots, crawl-delay governance. |
 | **i18n / hreflang** | Internationalization | **91** | 13-language schema + `[locale]` routes + i18n sitemap. Hreflang reciprocity **verified** symmetric (this PR). |
-| **CWV / Performance** | Core Web Vitals | **82** | **Weakest technical area** — `next/image` used 0×, no `images` config. |
+| **CWV / Performance** | Core Web Vitals | **82** | **Measured** (PostHog field data): LCP p75 3,013 ms (NI) is the sole weak metric; INP/CLS/TTFB good. Localized to heavy hub pages. |
 | **A11y** | Accessibility | **85** | pa11y axe WCAG2AA wired in CI; no live score captured here. |
 | **VSO** | Voice Search Optimization | **74** | Speakable + FAQ present; no audio surface (anonymity constraint). |
 | **Local SEO** | Geo/local | **72** | `/city`, `/sector/in/city` pages exist but no real NAP/GBP presence. |
@@ -132,6 +132,18 @@ This is the **most actionable gap.**
 
 **Recommendation (highest ROI in this audit):** migrate hero/above-the-fold imagery to `next/image` (or pre-generate AVIF/WebP + explicit width/height), convert the 1.9 MB landing GIF to the existing `mcp-demo.mp4`, and capture a real Lighthouse/CrUX baseline. A 10-point CWV swing is worth more in 2026 Google ranking than any additional `.well-known` file.
 
+> **Field-data baseline (2026-05-28, PostHog `$web_vitals`, last 30 days, 865 events) — measured, not synthetic:**
+>
+> | Metric | p75 | Rating |
+> |---|---|---|
+> | LCP | **3,013 ms** | ⚠️ needs-improvement |
+> | INP | 72 ms | ✅ good |
+> | CLS | 0.025 | ✅ good |
+> | FCP | 1,804 ms | ✅ ~good |
+> | TTFB | 483 ms | ✅ good |
+>
+> **Diagnosis:** INP/CLS/TTFB are healthy; **LCP is the sole weak metric.** Per-page LCP p75: `/methodology` 7,943 ms (n=14, volatile), homepage `/` **3,922 ms (n=135, robust)**, `/book` 3,557 ms — while pSEO leaves are fast (`/vs/...` 652 ms, `/login` 962 ms). Crucially, the slow pages are **text-heavy with no LCP image** (PostHog loads `afterInteractive`; fonts use `display:swap`), so the lever is **HTML/JS render weight on the large hub pages** (the homepage imports 30+ components), not image optimization. This *confirms and sharpens* the CWV score: the issue is real (LCP) but localized to heavy hub pages, and the worst page's sample is too small to over-index on. **Next step requires local Lighthouse** to measure a fix safely before touching the live homepage's render path — not done here to avoid a blind regression on the highest-traffic page. The CWV score rationale moves from "assumed" to "measured": **82 stands, now evidence-backed.**
+
 > **Update (2026-05-28, same PR):** Closer inspection refined this finding. The static landing hero is *already* well-optimized (`<picture>` + WebP + `loading="lazy"` + explicit dimensions), and the Next app is text/SVG-heavy with almost no raster `<img>` — so a blanket `next/image` migration has little to migrate. The one concrete offender was **`/mcp-demo`**, which used the 1.9 MB animated `mcp-demo.gif` simultaneously as the `<video poster>`, the Open Graph image, the Twitter card, and the JSON-LD `thumbnailUrl`/`primaryImageOfPage` — forcing every visitor and every social-preview crawler to fetch ~1.9 MB for a still. **Fixed** by adding a colocated `app/mcp-demo/opengraph-image.tsx` (`next/og`, 1280×720, ~tens of KB) and repointing the poster + thumbnails at it; the GIF now survives only in the package README (`mcp-server/README.md`), where an animated GIF is the correct choice. Net: one page drops ~1.9 MB → ~50 KB of poster/preview weight and social cards stop breaking on large/animated-image rejection.
 
 ---
@@ -155,7 +167,7 @@ This is the **most actionable gap.**
 | # | Action | Moves | Effort |
 |---|---|---|---|
 | 1 | Adopt `next/image` for above-the-fold imagery + AVIF/WebP + explicit dimensions; convert landing GIF → MP4 | CWV 82→90, SEO 94→96 | M |
-| 2 | Capture a live Lighthouse + CrUX baseline; wire into CI alongside pa11y | Verifies #1; de-risks SEO | S |
+| 2 | ✅ **Field baseline captured (this PR)** from PostHog `$web_vitals` (better than synthetic): LCP p75 3,013 ms (NI) is the only weak metric; INP/CLS/TTFB good. Localized to heavy hub pages (homepage 3,922 ms, `/methodology` 7,943 ms); pSEO leaves fast (~650 ms). Remaining: local Lighthouse to safely fix homepage render weight. | Verifies #1; de-risks SEO | S |
 | 3 | ✅ **Analyzed + extended gate (this PR):** see `pseo-thin-page-analysis-2026-05-28.md`. Combinatorial crossings are already gated by `MIN_PSEO_CELL_SIZE=3` + HQ/editorial data, **and** a SimHash near-duplicate gate (`scripts/audit-pseo-uniqueness.ts`) fails the build/PR at >5% near-dups. Ran it: **397 entries, 0 near-duplicates, PASS.** Extended its coverage from 6→9 surfaces (added build-vs-invest, solo-founder-tracker, community-signal). **No index changes made.** | De-risks scaled-content penalty; protects pSEO 96 | M |
 | 4 | ✅ **Done (this PR):** `route-canary` expanded from 5 → ~55 agent/well-known/v1 discovery surfaces (`CANONICAL_PROD_ROUTES`). 404 regression on any now pages within 24h. *Note:* the 2xx/3xx-healthy threshold is unchanged — 404 (the dominant stale-deploy failure) is caught; a route silently degrading to a 308 redirect is **not** flagged, to avoid false positives on legitimately-redirecting paths. Tightening that is a separate, riskier follow-up. | Protects GEO/AIO 95–96 | S |
 | 5 | Confirm `/answers/[slug]` leads with a 40–55-word extractable answer block | AEO 94→97 | S |
