@@ -23,7 +23,7 @@
 | **Entity SEO / KGO** | Knowledge-graph / entity | **97** | Wikidata QID, ORCID, SSRN, DOI, OpenAlex, reciprocal sameAs. |
 | **Schema / Structured data** | JSON-LD coverage | **98** | 30+ types, multilingual `@language` strings, stable `@id` graph. |
 | **Technical SEO / Crawlability** | Indexability, sitemaps, robots | **94** | 9-sitemap index, named-bot robots, crawl-delay governance. |
-| **i18n / hreflang** | Internationalization | **88** | 13-language schema + `[locale]` routes + i18n sitemap. |
+| **i18n / hreflang** | Internationalization | **91** | 13-language schema + `[locale]` routes + i18n sitemap. Hreflang reciprocity **verified** symmetric (this PR). |
 | **CWV / Performance** | Core Web Vitals | **82** | **Weakest technical area** — `next/image` used 0×, no `images` config. |
 | **A11y** | Accessibility | **85** | pa11y axe WCAG2AA wired in CI; no live score captured here. |
 | **VSO** | Voice Search Optimization | **74** | Speakable + FAQ present; no audio surface (anonymity constraint). |
@@ -161,7 +161,7 @@ This is the **most actionable gap.**
 | 5 | Confirm `/answers/[slug]` leads with a 40–55-word extractable answer block | AEO 94→97 | S |
 | 6 | Earn ≥1 genuinely independent citation of the SSRN paper / dataset (real EEAT corroboration) | EEAT 90→94 | L |
 | 7 | Fix `news-sitemap.xml` `lastmod` to real timestamps | Crawl trust | S |
-| 8 | Verify reciprocal `hreflang` render on all `[locale]` pages | i18n 88→93 | S |
+| 8 | ✅ **Verified (this PR):** reciprocity is correct. `lib/hreflang.ts` + `app/[locale]/[topic]/page.tsx` both emit a symmetric map — English (`en`/`en-US`/`x-default`) **plus every sibling locale** for the topic. The English page advertises locale variants; each locale page reciprocates English + all siblings. Google's bidirectional requirement is satisfied. i18n raised 88→**91** (remaining gap is breadth of localized substance, not link reciprocity). | i18n 88→91 | S |
 
 ---
 
