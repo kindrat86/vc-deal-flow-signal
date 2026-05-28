@@ -721,4 +721,125 @@ export const glossaryTerms: GlossaryTerm[] = [
     definition:
       "Observability technique that follows a single request as it crosses multiple services, recording the timing and metadata of each hop. Standard format: OpenTelemetry (OTel). Tools: Datadog APM, Honeycomb, Grafana Tempo, Lightstep (now ServiceNow), Sentry Performance. Distributed tracing is the only effective debugging path in microservices architectures; without it, root-cause analysis devolves into log-grepping across dozens of services.",
   },
+  // ── 2026-05-28 glossary expansion 2: agents + VC mechanics + DORA + evals ──
+  {
+    term: "ReAct (Reasoning + Acting)",
+    id: "react-agent",
+    definition:
+      "Prompting framework for LLM agents introduced by Yao et al. (2022) that interleaves reasoning traces with action calls. Each step: the agent generates a thought, takes an action (tool call), observes the result, then continues. ReAct became the dominant agentic pattern in 2023-2024 before being partially superseded by trained tool-use in modern frontier models. LangChain, CrewAI, and many early agent frameworks built around ReAct as the default loop.",
+  },
+  {
+    term: "Agent Memory",
+    id: "agent-memory",
+    definition:
+      "Persistent state an LLM agent maintains across turns, sessions, or interactions. Three common memory types: (1) short-term — the current context window; (2) episodic — recent conversation history retrieved via RAG; (3) long-term — facts and preferences stored in a separate database. Letta (formerly MemGPT) is the canonical reference implementation for persistent agent memory; modern frameworks (Mastra, CrewAI) ship memory primitives as a first-class concept.",
+  },
+  {
+    term: "Multi-Agent Orchestration",
+    id: "multi-agent-orchestration",
+    definition:
+      "Architecture where multiple LLM agents with distinct roles collaborate on a task, coordinated by a meta-agent or explicit workflow. CrewAI and AutoGen pioneered the multi-agent pattern; LangGraph and Mastra extended it with state-machine-style coordination. Critical design tradeoffs: agent role specialization, message-passing semantics, failure handling, and the orchestration overhead vs single-agent baselines.",
+  },
+  {
+    term: "Agent Evaluation",
+    id: "agent-evaluation",
+    definition:
+      "The discipline of measuring LLM agent capability, reliability, and safety across well-defined benchmarks. Distinct from LLM evals (which measure single-call performance) because agent evals require multi-step trajectory measurement. Common benchmarks: SWE-bench (software engineering), τ-bench (tool use), WebArena (browser navigation), AgentBench (general capability). Vendors: Braintrust, Galileo, Inspect AI, LangSmith.",
+  },
+  {
+    term: "Agent Guardrails",
+    id: "agent-guardrails",
+    definition:
+      "Runtime constraints that limit agent behavior — output filtering, tool-call validation, spend limits, time budgets, and harmful-action detection. Implementations include NVIDIA NeMo Guardrails, Guardrails AI, and platform-specific safety APIs (Anthropic, OpenAI). Distinct from training-time alignment (RLHF, Constitutional AI) — guardrails operate at inference time and can be customized per deployment.",
+  },
+  {
+    term: "Planning Agent",
+    id: "planning-agent",
+    definition:
+      "An LLM agent designed to decompose a high-level goal into a sequence of sub-tasks before executing. Planning agents typically use Chain-of-Thought reasoning to construct the plan and a separate execution loop to carry it out. Examples: Devin (Cognition), Claude Code (Anthropic), AutoGen Planner. Modern reasoning models (OpenAI o1/o3, Claude with extended thinking) can serve as planning agents natively.",
+  },
+  {
+    term: "Long-running Agent",
+    id: "long-running-agent",
+    definition:
+      "An LLM agent designed to execute a task over hours, days, or longer — across multiple sessions, with persistent state, and resilient to interruption. Examples: Anthropic's Claude with computer use, OpenAI's o1-Pro mode for extended reasoning, autonomous coding agents (Devin). Long-running agents require durable workflow infrastructure (Temporal, Inngest) and explicit checkpoint-resume primitives.",
+  },
+  {
+    term: "Tool Bench",
+    id: "tool-bench",
+    definition:
+      "Benchmark suite that measures LLM agent capability at calling, chaining, and reasoning over real-world APIs. The original ToolBench (2023) covered 16K+ APIs across 49 categories. Modern variants (Berkeley Function Calling Leaderboard, τ-bench) refine the measurement. Frontier labs publish tool-use scores on these benchmarks as proxies for agent capability.",
+  },
+  {
+    term: "LPA (Limited Partner Agreement)",
+    id: "lpa",
+    definition:
+      "The legal document governing the relationship between a venture capital fund (the General Partner) and its investors (Limited Partners). Specifies fund size, investment period, fund life (typically 10 years), management fee, carried interest, GP commit, distribution waterfall, and key-person provisions. The LPA is the foundational document of fund formation; LP-side legal counsel scrutiny on LPA terms is one of the longest stages of new-fund formation.",
+  },
+  {
+    term: "GP Commit",
+    id: "gp-commit",
+    definition:
+      "The capital that the General Partner (the VC firm) commits to its own fund, expressed as a percentage of fund size. Industry standard ranges from 1% (institutional funds) to 5%+ (emerging-manager funds where LPs require higher skin-in-the-game). GP commit is one of the strongest fund-quality signals LPs evaluate; a low or financed GP commit is often a red flag during LP diligence.",
+  },
+  {
+    term: "Carried Interest (Carry)",
+    id: "carried-interest",
+    definition:
+      "The General Partner's share of fund profits above the LPs' return of capital (and typically a preferred return hurdle of 6-8%). Industry standard is 20% carry on the upside, though high-performing funds can negotiate 25-30%. Carry is the primary economic incentive aligning GPs with LPs and is taxed favorably as long-term capital gains in most jurisdictions.",
+  },
+  {
+    term: "Management Fee",
+    id: "management-fee",
+    definition:
+      "The annual fee a venture fund charges its LPs to cover operating costs, typically 2% of committed capital during the investment period and 2% of invested capital during the harvest period. Tier-1 emerging-manager funds occasionally negotiate 2.5-3% to support more GP infrastructure; large established funds sometimes step down to 1.5%. Management fees are deducted from LP commitments and reduce the net IRR returns LPs ultimately realize.",
+  },
+  {
+    term: "Vintage Year",
+    id: "vintage-year",
+    definition:
+      "The year a fund made its first investment, used by LPs to benchmark fund performance against peers raised in the same market environment. Vintage matters because returns are heavily macro-correlated; a 2020 vintage fund has different return-expectation context than a 2008 vintage. PitchBook, Cambridge Associates, and Preqin publish vintage-year benchmarks that LPs use during fund evaluation.",
+  },
+  {
+    term: "Capital Call",
+    id: "capital-call",
+    definition:
+      "A formal request from a venture fund's General Partner to its Limited Partners to wire committed but not-yet-funded capital to the fund. LPs typically receive capital calls 10-15 days before the deadline with the dollar amount, allocation purpose, and wiring instructions. Capital call defaults are extremely rare (default would forfeit the LP's stake) but do happen during economic distress.",
+  },
+  {
+    term: "Deployment Frequency (DORA)",
+    id: "deployment-frequency",
+    definition:
+      "One of the four DORA metrics measuring software-delivery performance. Counts how often code is deployed to production: elite teams deploy multiple times per day; high-performing teams deploy once per day to once per week; medium-performing teams deploy once per month to once per six months; low-performing teams deploy less than once per six months. High deployment frequency correlates with lower batch sizes, faster feedback, and higher organizational reliability.",
+  },
+  {
+    term: "Lead Time for Changes (DORA)",
+    id: "lead-time-for-changes",
+    definition:
+      "One of the four DORA metrics — the time between a code commit and that code running successfully in production. Elite teams: less than 1 day. High performers: 1 day to 1 week. Medium: 1 week to 1 month. Low: 1 month to 6 months. Short lead time enables rapid iteration on customer feedback and emergency security patches. Long lead time often correlates with batch-up-and-release-monthly culture and brittle deployment pipelines.",
+  },
+  {
+    term: "Change Failure Rate (DORA)",
+    id: "change-failure-rate",
+    definition:
+      "One of the four DORA metrics — the percentage of changes to production that result in degraded service, requiring hotfix, rollback, or remediation. Elite and high-performing teams: 0-15%. Medium and low performers: 16-30%. Despite intuition that high deployment frequency causes more failures, DORA research shows the opposite — high performers have BOTH high deployment frequency AND low change failure rate, because small batches reduce per-change risk.",
+  },
+  {
+    term: "Red-Teaming (AI)",
+    id: "red-teaming-ai",
+    definition:
+      "Adversarial testing of LLMs by humans (or other AI systems) attempting to elicit harmful, unsafe, or undesired behaviors. Goals: surface jailbreaks, alignment failures, security vulnerabilities, and miscalibrated capabilities before public release. Anthropic, OpenAI, Google DeepMind, and Meta all run internal red-teams; the practice has matured into a distinct discipline with publishing venues (Anthropic Red-Teaming Network, OpenAI's evals team).",
+  },
+  {
+    term: "Jailbreak",
+    id: "jailbreak",
+    definition:
+      "A prompt or sequence of prompts designed to bypass an LLM's safety training and elicit prohibited behaviors. Common patterns: role-playing as an uncensored AI, fictional framing, multi-turn manipulation, and adversarial token sequences. Modern frontier models substantially harden against jailbreaks via Constitutional AI training and runtime input filtering, but the cat-and-mouse continues.",
+  },
+  {
+    term: "Eval (LLM Benchmark)",
+    id: "eval-llm",
+    definition:
+      "A structured benchmark measuring LLM capability on a specific task. Common evals: MMLU (broad academic knowledge), HumanEval (Python code generation), GSM8K (math word problems), MATH (advanced math), GPQA (graduate-level science), SWE-bench (software engineering trajectories). Eval-driven development is the foundation of modern LLM training: evals provide the loss signal for reward modeling, the screening test for model releases, and the comparative basis for cross-lab model comparison.",
+  },
 ];
