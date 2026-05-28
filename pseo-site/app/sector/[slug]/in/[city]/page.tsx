@@ -6,6 +6,7 @@ import {
   getSectorCity,
 } from "@/content/sector-city";
 import { getCompaniesInSector } from "@/content/sectors";
+import { getCompaniesInSectorAndCity } from "@/content/company-locations";
 import { REGION_LABELS } from "@/content/cities";
 import { HreflangLinks } from "@/components/HreflangLinks";
 
@@ -51,7 +52,10 @@ export default async function SectorInCityPage({ params }: PageProps) {
   const { sector, city: cityObj } = data;
   const pageUrl = `https://signals.gitdealflow.com/sector/${slug}/in/${city}`;
 
-  const trackedCompanies = getCompaniesInSector(sector.slug).slice(0, 8);
+  // Real curated intersection: companies HQ'd in this city in this sector.
+  const localCompanies = getCompaniesInSectorAndCity(sector.slug, city);
+  // Broader sector roster as a fallback when local set is empty or small.
+  const sectorCompanies = getCompaniesInSector(sector.slug).slice(0, 8);
 
   const faqs = [
     {
@@ -64,10 +68,15 @@ export default async function SectorInCityPage({ params }: PageProps) {
     },
     {
       question: `Which curated ${sector.name.toLowerCase()} companies should I watch?`,
-      answer: `${trackedCompanies
-        .slice(0, 5)
-        .map((c) => c.name)
-        .join(", ")} are among the ${sector.name.toLowerCase()} companies VC Deal Flow Signal tracks. Note: location enrichment is coarse-continent in the public dataset — we do not claim these specific companies are headquartered in ${cityObj.name}. This page is the editorial intersection, not a city-filtered company list.`,
+      answer:
+        localCompanies.length > 0
+          ? `${localCompanies
+              .map((c) => c.name)
+              .join(", ")} are tracked ${sector.name.toLowerCase()} companies HQ'd in or near ${cityObj.name} per our company-location map. The broader sector roster is at /sector/${sector.slug}.`
+          : `${sectorCompanies
+              .slice(0, 5)
+              .map((c) => c.name)
+              .join(", ")} are among the ${sector.name.toLowerCase()} companies VC Deal Flow Signal tracks globally. We do not currently document a ${cityObj.name}-HQ'd company in this sector in our curated corpus — broader regional coverage is at /startups-to-watch/region/${cityObj.parentGeoSlug}.`,
     },
     {
       question: `Why does the intersection of ${sector.name} and ${cityObj.name} matter for sourcing?`,
@@ -247,19 +256,49 @@ export default async function SectorInCityPage({ params }: PageProps) {
           </div>
         </section>
 
-        {trackedCompanies.length > 0 && (
-          <section className="mb-10" aria-label="Tracked sector companies">
+        {localCompanies.length > 0 && (
+          <section className="mb-10" aria-label="Local tracked companies">
             <h2 className="text-xl font-semibold text-gray-100 mb-4">
-              Curated {sector.name.toLowerCase()} companies we track
+              Tracked {sector.name.toLowerCase()} companies HQ'd in {cityObj.name}
             </h2>
             <p className="text-gray-500 text-xs mb-4">
-              Location enrichment in our public dataset is coarse-continent. We do not
-              claim these specific companies are headquartered in {cityObj.name} — this
-              section lists the broader {sector.name.toLowerCase()} corpus you would
-              cross-reference against {cityObj.name} local signals.
+              The actual {sector.name.toLowerCase()} × {cityObj.name} intersection from
+              our curated company-location map — verified primary-HQ companies, not just
+              cross-sector cross-link aggregation.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {trackedCompanies.map((c) => (
+              {localCompanies.map((c) => (
+                <Link
+                  key={c.slug}
+                  href={`/signal/${c.slug}`}
+                  className="group block rounded-lg border border-sky-900/50 bg-sky-950/30 p-4 hover:border-sky-600 transition-all"
+                >
+                  <h3 className="text-gray-100 font-medium text-sm group-hover:text-sky-300 transition-colors mb-1">
+                    {c.name}
+                  </h3>
+                  <p className="text-gray-400 text-xs">
+                    {c.stage.replace("-", " ")} &middot; github.com/{c.githubOrg}
+                  </p>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {sectorCompanies.length > 0 && (
+          <section className="mb-10" aria-label="Tracked sector companies (broader)">
+            <h2 className="text-xl font-semibold text-gray-100 mb-4">
+              {localCompanies.length > 0
+                ? `Other ${sector.name.toLowerCase()} companies to cross-reference`
+                : `Curated ${sector.name.toLowerCase()} companies we track`}
+            </h2>
+            <p className="text-gray-500 text-xs mb-4">
+              {localCompanies.length > 0
+                ? `Broader ${sector.name.toLowerCase()} roster (not necessarily ${cityObj.name}-HQ'd). Use as the cross-reference set when evaluating local ${cityObj.name} engineering signals.`
+                : `We do not currently document a ${cityObj.name}-HQ'd company in ${sector.name.toLowerCase()} in our curated corpus. The companies below are the global ${sector.name.toLowerCase()} corpus you would cross-reference against ${cityObj.name} local signals.`}
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {sectorCompanies.map((c) => (
                 <Link
                   key={c.slug}
                   href={`/signal/${c.slug}`}
