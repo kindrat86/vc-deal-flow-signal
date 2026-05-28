@@ -5,3 +5,7 @@ cron-skipped-*.log
 launchd.out.log
 launchd.err.log
 data.json.tmp
+
+# Local-only: PB token + creds for the launcher
+dashboard.config.js
+.env.local
