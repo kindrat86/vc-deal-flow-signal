@@ -32,6 +32,7 @@ import { getAllFundsWithPortfolio } from "@/content/fund-portfolio";
 import { getAllTrendLeaderboardSlugs } from "@/content/trend-leaderboards";
 import { getAllWorksWithSlugs } from "@/content/works-with";
 import { getAllYearInReviewSlugs } from "@/content/year-in-review";
+import { getAllPersonaSlugs } from "@/content/personas";
 import { pillars } from "@/content/pillars";
 import { agentQueries } from "@/content/agent-queries";
 import { glossaryTerms } from "@/content/glossary";
@@ -433,6 +434,14 @@ export async function GET(_req: Request, ctx: RouteContext) {
         lastmod,
         changefreq: "yearly",
         priority: 0.7,
+      })),
+      // /for/[slug] persona navigation hubs
+      { url: `${BASE_URL}/for`, lastmod, changefreq: "monthly", priority: 0.85 },
+      ...getAllPersonaSlugs().map((slug) => ({
+        url: `${BASE_URL}/for/${slug}`,
+        lastmod,
+        changefreq: "monthly",
+        priority: 0.85,
       })),
     ];
   } else if (id === "crossings") {
