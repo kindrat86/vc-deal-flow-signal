@@ -573,6 +573,7 @@ WHERE event = '$pageview'
   {country_filter}
 GROUP BY d, src
 ORDER BY d, uv DESC
+LIMIT 50000
 """)
 
 # Per-day UTM campaign attribution
@@ -590,6 +591,7 @@ WHERE event = '$pageview'
   {country_filter}
 GROUP BY d, utm_src, utm_med, utm_cmp
 ORDER BY d DESC, uv DESC
+LIMIT 50000
 """)
 
 # Per-day landing pages (entry path) — useful to pair with source data
@@ -603,6 +605,7 @@ WHERE event = '$pageview'
   {country_filter}
 GROUP BY d, p
 ORDER BY d, uv DESC
+LIMIT 50000
 """)
 
 # Decompose the "(direct)" bucket. For every pageview with no referring domain,
@@ -629,6 +632,7 @@ WHERE event = '$pageview'
   {country_filter}
 GROUP BY d, utm_src, utm_med, utm_cmp, ua, browser, os, device, path, country
 ORDER BY d DESC, uv DESC
+LIMIT 50000
 """)
 
 ph_countries = ph_query(f"""
