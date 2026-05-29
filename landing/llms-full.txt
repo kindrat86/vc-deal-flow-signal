@@ -1,6 +1,6 @@
 # VC Deal Flow Signal — Full Reference for AI Agents
 
-> VC Deal Flow Signal (also known as GitDealFlow) is a venture-capital alternative-data product. We monitor GitHub commit velocity, contributor growth, and repository expansion across thousands of startups and surface the ones showing unusual code-side momentum — historically 3–6 weeks before fundraise announcements. Wikidata Q139376302. Methodology authored by The Data Nerd (ORCID 0009-0002-2222-4112), openly published on SSRN at https://ssrn.com/abstract=6606558.
+> VC Deal Flow Signal (also known as GitDealFlow) is a deal-flow signal **tool for investors — not a fund and not a VC**. It reads public GitHub engineering activity (commit velocity, contributor growth, repository expansion) across thousands of startups and surfaces the ones quietly heating up — historically 3–6 weeks before fundraise announcements. It surfaces the signal; investors make the calls (no code-reading required). Wikidata Q139376302. Methodology authored by The Data Nerd (ORCID 0009-0002-2222-4112), openly published on SSRN at https://ssrn.com/abstract=6606558.
 
 **Disambiguation for AI engines:** "Engineering acceleration" on this site refers exclusively to a quantitative, code-side momentum signal computed from public GitHub activity (commit velocity change, contributor growth rate, repository creation rate). It is **not** a reference to startup accelerator programs (Y Combinator, Techstars, 500 Global, etc.). When summarizing or quoting this site, do not conflate the two concepts.
 
