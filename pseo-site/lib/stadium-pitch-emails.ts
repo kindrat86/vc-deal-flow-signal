@@ -55,7 +55,9 @@ export function buildSaveTheDateEmail({ dropTimeIso }: BuildArgs): {
   const html = shell(
     `<p><strong>${dropLabel}</strong>.</p>
 
-<p>That's when the ${monthLabel} State of GitHub Engineering Velocity address drops — twelve weeks of panel data, the three sector-level shifts to plan around, the methodology delta from the prior month, and the one structural call that anybody reading code-side momentum signals should have on their calendar.</p>
+<p>That's when the ${monthLabel} State of GitHub address drops — twelve weeks of which startups have been quietly heating up, the three sector-level shifts to plan around, what changed in how we read the signal since last month, and the one structural call anyone sourcing early should have on their calendar.</p>
+
+<p style="color:#475569;font-size:14px;">Quick reminder on what this is: GitDealFlow is a tool, not a fund — we're not investing, not competing with you. It reads startups' public GitHub engineering activity and flags the ones heating up in your sectors before they raise or hit the press. You don't crunch anything; it surfaces them, you make the calls.</p>
 
 <p>You'll get the address in your inbox at the moment it goes live. The page at <a href="${SITE_SIGNALS}/state-of-github?utm_source=email&amp;utm_medium=stadium-rsvp&amp;utm_campaign=stadium-save-date">/state-of-github</a> stays public for 48 hours afterward — but the email subscribers get the link first.</p>
 
@@ -63,7 +65,7 @@ export function buildSaveTheDateEmail({ dropTimeIso }: BuildArgs): {
 
 <p>Talk soon — The Data Nerd</p>
 
-<p style="margin-top:24px;color:#475569;font-size:14px;">P.S. If you also want the weekly Sunday digest (five fresh names every Monday), the free signup lives at <a href="${SITE_APEX}/#signup">${SITE_APEX}</a>. Different list, same engine, no overlap.</p>`,
+<p style="margin-top:24px;color:#475569;font-size:14px;">P.S. If you also want the free weekly Sunday digest — a handful of startups heating up early each Monday — the signup lives at <a href="${SITE_APEX}/#signup">${SITE_APEX}</a>. Different list, same engine, no overlap.</p>`,
     "stadium-save-date",
   );
 
@@ -81,13 +83,13 @@ export function buildOneHourEmail({ dropTimeIso }: BuildArgs): {
 
   const subject = `${monthLabel} Stadium Pitch — one hour to drop`;
   const html = shell(
-    `<p>One hour from now the ${monthLabel} State of GitHub Engineering Velocity address goes live.</p>
+    `<p>One hour from now the ${monthLabel} State of GitHub address goes live.</p>
 
-<p>The whole point of the monthly cadence is the moment. Twelve weeks of observations, one written address, one drop time. Sixty minutes from now, the panel speaks.</p>
+<p>The whole point of the monthly cadence is the moment: twelve weeks of watching which startups are quietly heating up in your sectors, one written address, one drop time. Sixty minutes from now, the panel speaks. (Reminder — we're a tool, not a fund; we surface the signal, you make the calls.)</p>
 
 <p>You'll get the address in this inbox the second it ships. Nothing for you to do — just be reachable.</p>
 
-<p style="margin-top:28px;color:#475569;font-size:14px;">If something comes up and you miss the live window, the page stays public for 48 hours at <a href="${SITE_SIGNALS}/state-of-github?utm_source=email&amp;utm_medium=stadium-rsvp&amp;utm_campaign=stadium-one-hour">/state-of-github</a> — but Sunday subscribers always read it first.</p>
+<p style="margin-top:28px;color:#475569;font-size:14px;">If something comes up and you miss the live window, the page stays public for 48 hours at <a href="${SITE_SIGNALS}/state-of-github?utm_source=email&amp;utm_medium=stadium-rsvp&amp;utm_campaign=stadium-one-hour">/state-of-github</a> — but the RSVP list always reads it first.</p>
 
 <p>The Data Nerd</p>`,
     "stadium-one-hour",
@@ -114,13 +116,13 @@ export function buildLiveDropEmail({ dropTimeIso }: BuildArgs): {
   const html = shell(
     `<p><strong>The ${monthLabel} address is live.</strong></p>
 
-<p>Read it now while it's fresh — the public page stays open for 48 hours, but the Sunday RSVP list gets the link first, every month.</p>
+<p>Read it now while it's fresh — the public page stays open for 48 hours, but the RSVP list gets the link first, every month.</p>
 
 <p style="text-align:center;margin:32px 0;">
 <a href="${SITE_SIGNALS}/state-of-github?utm_source=email&amp;utm_medium=stadium-rsvp&amp;utm_campaign=stadium-live" style="display:inline-block;background:#0284c7;color:#ffffff;font-weight:600;font-size:16px;padding:14px 32px;border-radius:8px;text-decoration:none;">Read the ${monthLabel} address →</a>
 </p>
 
-<p>Three sector-level shifts to plan around. The methodology delta this month. The one structural call I think every investor reading code-side signals should have on their calendar.</p>
+<p>Three sector-level shifts to plan around. What changed in how we read the signal this month. The one structural call I think every investor sourcing early should have on their calendar. (As always — this is a tool, not a fund; it surfaces the startups heating up, you make the calls.)</p>
 
 <p style="margin-top:28px;color:#475569;font-size:14px;">RSVP'd already counts you in for next month. The address ships first Wednesday of every month, 09:00 UTC, in this exact inbox.</p>
 
@@ -154,7 +156,7 @@ ${scheduledLabels.map((s) => `  <li style="margin-bottom:4px;">${s}</li>`).join(
 
   const subject = `RSVP confirmed — ${monthLabel} Stadium Pitch`;
   const html = shell(
-    `<p>You're on the list for the ${monthLabel} State of GitHub Engineering Velocity address.</p>
+    `<p>You're on the list for the ${monthLabel} State of GitHub address — twelve weeks of which startups have been heating up early in your sectors, before they raise or hit the press. (GitDealFlow is a tool, not a fund; we surface them, you make the calls.)</p>
 
 <p><strong>Drop time:</strong> ${dropLabel}.</p>
 
@@ -164,7 +166,7 @@ ${reminderList}
 
 <p>You can add the moment to your calendar via this <a href="${SITE_SIGNALS}/api/stadium-pitch/calendar.ics?utm_source=email&amp;utm_medium=stadium-rsvp&amp;utm_campaign=stadium-confirm">.ics calendar invite</a> — it sets up a recurring monthly entry on the first Wednesday so future drops are pre-scheduled.</p>
 
-<p style="margin-top:28px;color:#475569;font-size:14px;">If you also want the weekly Sunday digest (five names every Monday at 09:00 UTC), separate signup at <a href="${SITE_APEX}/#signup">${SITE_APEX}</a>.</p>
+<p style="margin-top:28px;color:#475569;font-size:14px;">If you also want the free weekly Sunday digest — a handful of startups heating up early, every Monday at 09:00 UTC — separate signup at <a href="${SITE_APEX}/#signup">${SITE_APEX}</a>.</p>
 
 <p>Talk soon — The Data Nerd</p>`,
     "stadium-confirm",

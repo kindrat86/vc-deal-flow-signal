@@ -14,9 +14,9 @@ Everyone has access to satellite imagery. Hedge funds use it to count cars in pa
 
 The edge isn't in having exclusive data. The edge is in reading what others ignore.
 
-Right now, zero investor tools package GitHub activity as a deal flow signal. The data is public. The analysis layer doesn't exist. That gap is your edge, and it stays your edge until the market catches up.
+Right now, almost no investor tool turns GitHub activity into early deal flow. The data is public. Nobody packages it for you to just look at. That gap is your edge, and it stays your edge until the market catches up.
 
-Think about it: how many investors in your network are monitoring GitHub commit velocity right now? How many have a system that flags engineering acceleration across hundreds of startups?
+Think about it: how many investors in your network are watching which startups are quietly shipping faster right now? How many have a tool that flags the ones heating up early across hundreds of startups, in their sectors?
 
 The answer is probably zero. That's the definition of an edge.
 

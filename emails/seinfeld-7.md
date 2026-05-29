@@ -10,7 +10,7 @@ Not "early stage" where a few other angels were involved. I mean truly first: yo
 
 For most investors, that almost never happens. And when it does, it's usually luck, not a system.
 
-VC Deal Flow Signal is an attempt to make that systematic. GitHub engineering data as a leading indicator. Acceleration patterns as a filter. Enrichment to help you decide if it's worth a cold outreach.
+GitDealFlow is an attempt to make that systematic. It's a tool, not a fund — it reads startups' public GitHub activity and flags the ones heating up early in your sectors, before they raise. Plain-English notes on each one, so you can decide if it's worth a cold outreach. You don't crunch anything; you just look.
 
 It won't replace your network. It will show you things your network can't.
 

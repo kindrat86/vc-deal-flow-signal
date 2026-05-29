@@ -90,20 +90,20 @@ const ONE_DAY = 24 * 60 * 60 * 1000;
 export const SOAP_OPERA_EMAILS = [
   // Day 0 — Welcome (Russell: deliver value)
   {
-    subject: "The deal flow signal hiding in plain sight",
+    subject: "See startups heating up before they raise",
     delayMs: THIRTY_MIN,
     html: wrap(`
-<p>Welcome to VC Deal Flow Signal.</p>
-<p>I want to tell you why I built this, because it starts with a deal I missed.</p>
-<p>I was tracking a small fintech startup. Nothing on the surface — no press, no AngelList buzz, no warm intros circulating. But their GitHub told a different story.</p>
-<p>In two weeks, their commit velocity tripled. Four new contributors joined. They spun up three new infrastructure repos.</p>
+<p>Welcome. Here's the one-line version of what you just signed up for: a tool that shows you startups heating up in your sectors, before they raise or hit the press.</p>
+<p>Let me be clear up front about what this is, because people get confused: it's a tool, not a fund. I'm not a VC, I'm not competing with you for the deal. I built the system so you can see the same early signal I do — you just look, you don't crunch anything.</p>
+<p>I want to tell you why I built it, because it starts with a deal I missed.</p>
+<p>I was tracking a small fintech startup. Nothing on the surface — no press, no AngelList buzz, no warm intros circulating. But their public GitHub told a different story.</p>
+<p>In two weeks, their engineering picked up sharply. Four new contributors joined. They spun up three new infrastructure repos. The team was clearly shipping faster.</p>
 <p>I flagged it in my notes. Then I closed the laptop and went to bed, because I was tired and the founder hadn't replied to my last cold email and frankly I wasn't sure I'd earned the right to write that cheque.</p>
 <p>Three weeks later, they announced a $4M Series A led by a top-tier fund.</p>
-<p>That was the wall. The investors who got in had seen exactly what I'd seen — they just didn't talk themselves out of it. The signal was right there in the commit graph. Public. Free. Updating in real time. The only thing missing was someone willing to read it before consensus formed.</p>
-<p>So instead of writing another apologetic cold email, I built a system that reads the commit graph for me. Across 4,200 venture-backed orgs. Every week. Mechanically. Without the talking-myself-out part.</p>
-<p>To be clear about what this is: it's a tool, not a fund. I'm not investing against you — I built the system so you can read the same signal I do, before consensus forms.</p>
-<p>Every Sunday from here on, I'll send you the top five startups showing unusual engineering acceleration — commit velocity spikes, contributor surges, new infrastructure repos. The patterns that precede fundraises, product launches, and breakout moments, usually 21 to 47 days before the deck circulates.</p>
-<p>Tomorrow, I want to challenge something you probably believe about whether GitHub data is even worth reading. Most of the people you trust on this are wrong, and the reason they're wrong is also why your current deal flow looks the way it does.</p>
+<p>That was the wall. The investors who got in had seen exactly what I'd seen — they just didn't talk themselves out of it. The early engineering signal was right there in public, free, updating in real time. The only thing missing was someone willing to read it before everyone else did.</p>
+<p>So instead of writing another apologetic cold email, I built a system that reads that public engineering activity for me. Across 4,200 venture-backed orgs. Every week. Mechanically. Without the talking-myself-out part. No code-reading on your end — it surfaces the startups heating up, you make the calls.</p>
+<p>Every Sunday from here on, I'll send you five startups in your sectors that are quietly taking off — teams shipping faster, contributors piling in, new infrastructure going up. The patterns that tend to show up 21 to 47 days before the deck circulates.</p>
+<p>Tomorrow, I want to challenge something you probably believe about whether public engineering data is even worth reading. Most of the people you trust on this are wrong, and the reason they're wrong is also why your current deal flow looks the way it does.</p>
 <p>Talk soon,<br>${FROM_NAME}</p>
 <p style="color:#64748b;font-size:14px;">P.S. If you want the full panel — 209 ranked orgs, filters by sector and stage, weekly refresh — the Dashboard is €9.97/mo founding-member, locked forever, closes when the cohort fills: <a href="${SITE}/#pricing" style="color:#0ea5e9;">${SITE}/#pricing</a></p>
 <p style="color:#64748b;font-size:14px;">P.P.S. The full methodology is published as an SSRN preprint (n=219, peer-reviewable): <a href="https://ssrn.com/abstract=6606558" style="color:#0ea5e9;">ssrn.com/abstract=6606558</a>. Read it before tomorrow's email and you'll see what's coming.</p>
@@ -115,12 +115,12 @@ export const SOAP_OPERA_EMAILS = [
     subject: '"GitHub data is noise" (here\'s why that\'s wrong)',
     delayMs: THIRTY_MIN + ONE_DAY,
     html: wrap(`
-<p>When I tell investors I use GitHub to source deal flow, the first response is almost always the same:</p>
+<p>When I tell investors this tool reads public GitHub activity to find startups heating up early, the first response is almost always the same:</p>
 <p><em>"Isn't that just noise?"</em></p>
 <p>Fair question. Raw GitHub data is noisy. Commit counts alone tell you nothing. A bot can inflate them. A hackathon can spike them. A single developer pushing config files looks the same as a team shipping features.</p>
-<p>But here's what changes everything: we don't look at absolute numbers. We look at <strong>acceleration patterns</strong>.</p>
-<p>When a company's engineering velocity deviates sharply from its own baseline, that's not noise. That's a regime change. Something happened inside that company. They hired. They found product-market fit. They're preparing to launch.</p>
-<p>In our analysis across 219 startups (the SSRN-published panel), companies that showed a 2x contributor spike within 14 days had a strong correlation with a fundraise within 21 to 47 days.</p>
+<p>But here's what changes everything: we don't look at absolute numbers. We look at how a team's engineering changes against <strong>its own normal</strong>.</p>
+<p>When a company's engineering picks up sharply from its own baseline, that's not noise. Something happened inside that company. They hired. They found product-market fit. They're preparing to launch — they're shipping faster than they were a month ago.</p>
+<p>In our analysis across 219 startups (the SSRN-published panel), companies where the contributor count doubled within 14 days had a strong correlation with a fundraise within 21 to 47 days.</p>
 <p>The signal is there. You just need the right lens.</p>
 <p>Tomorrow, I want to talk about something uncomfortable: why your network might be showing you yesterday's deals.</p>
 <p>Talk soon,<br>${FROM_NAME}</p>
@@ -137,8 +137,8 @@ export const SOAP_OPERA_EMAILS = [
 <p>But here's the uncomfortable truth: your network shows you what other investors are already seeing.</p>
 <p>By the time a warm intro reaches you, the founder has probably talked to 3 to 5 other investors. The deck is circulating. The terms are forming. You're competing on reputation and speed, not on information.</p>
 <p>The deals that generate outsized returns are the ones where you arrive before consensus forms. Before the deck exists. Before the company is "hot."</p>
-<p>That's the window VC Deal Flow Signal opens.</p>
-<p>When a startup's engineering is accelerating but their fundraise hasn't started, there's a gap. 21 to 47 days. In that gap, you can reach out first. You can offer help before they need money. You can build a relationship before everyone else is trying to.</p>
+<p>That's the window this tool opens for you.</p>
+<p>When a startup's engineering is heating up but their fundraise hasn't started, there's a gap. 21 to 47 days. In that gap, you can reach out first. You can offer help before they need money. You can build a relationship before everyone else is trying to.</p>
 <p>Your network gets you to the table. This gets you there first.</p>
 <p>Tomorrow: three concrete plays for using the signal once you have it.</p>
 <p>Talk soon,<br>${FROM_NAME}</p>
@@ -399,7 +399,7 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
     subject: "What about the false positives?",
     delayMs: THIRTY_MIN + 21 * ONE_DAY,
     html: wrap(`
-<p>The Sunday-play email last week generated a sharper pushback than I expected. The strongest version, paraphrased: <em>"GitHub momentum is great when it works, but how often does a spike NOT lead to a fundraise?"</em></p>
+<p>The Sunday-play email last week generated a sharper pushback than I expected. The strongest version, paraphrased: <em>"An early engineering signal is great when it works, but how often does a spike NOT lead to a fundraise?"</em></p>
 <p>Fair question. Here are the numbers from the panel of 219 confirmed rounds plus the matched control set.</p>
 <p>Roughly 38% of orgs that show a 2× contributor-influx + commit-velocity-acceleration spike DON'T announce a fundraise within 90 days. That's a real false-positive rate. The signal isn't a coin flip in the right direction, it's somewhere around 62% precision at 90 days.</p>
 <p>But here's the part that surprised me when I ran it: the false positives aren't random. About 70% of them are companies that <em>raised silently</em> — extension rounds, secondaries, or strategic check-ins that never hit Crunchbase. Another 15% are companies that had a real product launch, not a fundraise, in the same window. Only about 4% of false positives are genuinely "team got busy and nothing happened."</p>
@@ -729,6 +729,8 @@ export const CHALLENGE_EMAILS = [
     delayMs: 15 * 60 * 1000,
     html: wrap(`
 <p>Welcome to the 30-Day Deal Flow Reset.</p>
+<p>The job this does for you, in one line: see startups heating up in your sectors before they raise or hit the press. You don't read code and you don't crunch anything — you learn to read a handful of public GitHub tells, and the same thing the live tool does for you automatically.</p>
+<p>One thing up front, because people get confused: this is a tool, not a fund. I'm not a VC, I'm not competing with you for the deal. I built the system so you can see the same early engineering signal I do, and source earlier in the sectors you already know.</p>
 <p>Over the next 30 days I'll send you one email per day. The structure is four phases:</p>
 <ul>
 <li><strong>Week 1 (Days 1-7) — Learn.</strong> Each of the 7 atomic GitHub signals that historically precede a fundraise, drawn from the panel of 219 confirmed rounds in the SSRN paper at <a href="https://ssrn.com/abstract=6606558" style="color:#0ea5e9;">ssrn.com/abstract=6606558</a>. One signal per day, 5-minute manual exercise.</li>
@@ -1390,14 +1392,15 @@ export const CHALLENGE_EMAILS = [
 export const LAUNCH_EMAILS = [
   // Stage 1 — The problem (immediate, 30 min)
   {
-    subject: "Why nobody is selling deal-flow data on agent terms",
+    subject: "Let your agent see startups heating up before they raise",
     delayMs: THIRTY_MIN,
     html: wrap(`
 <p>Welcome — and quick context.</p>
+<p>First, what this is, so there's no confusion: GitDealFlow is a tool, not a fund. I'm not a VC and I'm not competing with you for the deal. The tool reads startups' public GitHub engineering activity and flags the ones quietly heating up in your sectors, before they raise or hit the press. You — or now your agent — just look.</p>
 <p>You signed up to a launch sequence, not the regular Sunday digest. The free digest still arrives Sundays. This is a separate, time-bounded thread that lasts about ten days and ends when the cart closes on May 20.</p>
-<p>The launch is for <strong>Agent Credits</strong> — the first per-call pricing tier for the GitDealFlow signal engine, built specifically for AI agents that programmatically diligence GitHub orgs. Five emails over ten days. No padding.</p>
+<p>The launch is for <strong>Agent Credits</strong> — the first per-call pricing tier for the GitDealFlow signal engine, built for AI agents that need to see which GitHub orgs are heating up early. Five emails over ten days. No padding.</p>
 <p><strong>Stage 1 — The problem.</strong></p>
-<p>Spend two minutes inside Claude or Cursor with an MCP server attached and the future is obvious. Agents don't scroll dashboards. They issue tool calls. They scrape, score, decide, ship a memo before you finish your coffee.</p>
+<p>Spend two minutes inside Claude or Cursor with an MCP server attached and the future is obvious. Agents don't scroll dashboards. They issue tool calls. They check, score, decide, and surface the startups heating up before you finish your coffee.</p>
 <p>Every signal-data product on the market still bills humans by the seat — €99/month, $299/month, €497/month — assuming a partner clicks through pages. None of them have a credit-meter that an agent can spend against. Until now, that included us.</p>
 <p>The next email picks up at Stage 2 — why every fix I tried before this one failed.</p>
 <p>Talk soon,<br>${FROM_NAME}</p>
@@ -1490,7 +1493,7 @@ export const BOOK_DRIP = [
     delayMs: ONE_DAY,
     html: wrap(`
 <p>Yesterday I promised the worked walkthrough. Here it is.</p>
-<p>One Series A from the most recent quarter. Developer-tools sector. Public-data only — no insider scuttlebutt, no warm-intro chatter, nothing the dashboard couldn't see. I'm leaving the org name off this email on purpose, so when you next sit down with the dashboard you can run the same trace yourself instead of reaching for the answer key.</p>
+<p>One Series A from the most recent quarter. Developer-tools sector. Public-data only — no insider scuttlebutt, no warm-intro chatter, nothing the tool couldn't see. This is the whole point of the book: how you spot a startup heating up in your sectors weeks before it raises. I'm leaving the org name off this email on purpose, so when you next sit down with the tool you can run the same trace yourself instead of reaching for the answer key.</p>
 <p>Six weeks before the announcement, all seven signals on the org sat at the twelve-month median. ~38 commits/week. Two contributors. No new repos in eleven months. Boring. Baseline. The kind of profile that makes a partner skip past it on a Monday list.</p>
 <p><strong>T-5 (five weeks out)</strong> — Signal #1, commit velocity, jumped to 71/week. By itself, noise — could be a doc rewrite or a refactor sprint. Signal #2, contributor count, held flat. The stack waits.</p>
 <p><strong>T-4</strong> — Signal #2 fired: a third contributor appeared, then a fourth four days later. Signal #3, repo creation, added two new repos in a fortnight after eleven months of silence — one named for an obvious gateway rewrite, one named for a billing rail. Two new repos in a fortnight after eleven flat months is the regime change. Three concurrent flags. That's the threshold the book talks about in chapter four.</p>
@@ -1501,7 +1504,7 @@ export const BOOK_DRIP = [
 <p>The whole trace cost €0 in marginal data spend. Public commit graph, weekly cron, deterministic regression. The two-hour version of this analysis collapses to a fifteen-minute scan once the stack is wired up — chapters four through nine define each signal, chapter ten ties them into the scoring rubric.</p>
 <p>Day four, you'll get the unedited transcripts I promised — two developer-investors who run a version of this daily, names redacted at their request, operational detail intact.</p>
 <p>Talk soon,<br>${FROM_NAME}</p>
-<p style="color:#64748b;font-size:14px;">P.S. The live panel that ran this trace is the Dashboard — 209 ranked orgs, weekly refresh, sector and stage filters, €9.97/mo founding-member: <a href="${SIGNALS}" style="color:#0ea5e9;">${SIGNALS}</a>.</p>
+<p style="color:#64748b;font-size:14px;">P.S. The tool that ran this trace is the Dashboard — it's a tool, not a fund; I'm not investing alongside you, I just surface the startups heating up in your sectors and you make the calls. Weekly refresh, sector and stage filters, €9.97/mo founding-member: <a href="${SIGNALS}" style="color:#0ea5e9;">${SIGNALS}</a>.</p>
 `, "book-day1"),
   },
   {
@@ -1546,7 +1549,7 @@ export const BOOK_DRIP = [
 <p>Reply turnaround is 24-72 hours during the working week. Outside the thirty-day window I still read everything, but I stop promising a personal reply.</p>
 <p>If nothing in the book broke for you and you've got nothing to ask — that's also fine. The seven-signal stack should mostly be self-contained by the time you finish chapter ten. Save this email; the window holds whether you use it on day eight or day twenty-nine.</p>
 <p>Talk soon,<br>${FROM_NAME}</p>
-<p style="color:#64748b;font-size:14px;">P.S. If running this manually starts to feel like a part-time job — the Dashboard is the same trace, automated, weekly: <a href="${SIGNALS}" style="color:#0ea5e9;">${SIGNALS}</a>. The book buyer's price (€9.97/mo founding) holds for thirty days from your purchase, same window as this reply offer.</p>
+<p style="color:#64748b;font-size:14px;">P.S. If running this manually starts to feel like a part-time job — the Dashboard is the same trace, automated, weekly. It's a tool, not a fund: it surfaces the startups heating up in your sectors and you make the calls, no code-reading required: <a href="${SIGNALS}" style="color:#0ea5e9;">${SIGNALS}</a>. The book buyer's price (€9.97/mo founding) holds for thirty days from your purchase, same window as this reply offer.</p>
 `, "book-day7"),
   },
 ];
@@ -1571,14 +1574,15 @@ export const BOOK_DRIP = [
  */
 export const FIRSTLOOK_REACTIVATION_DRIP = [
   {
-    subject: "How did the First Look land? (credit window half over)",
+    subject: "Did the First Look surface anything you'd act on?",
     delayMs: 7 * ONE_DAY,
     html: wrap(`
 <p>Quick check-in. The First Look deep dive should have been in your inbox a few days ago — by now you've had time to read the PDF, glance at the CSV, and form a take.</p>
+<p>Quick reminder of what this is: GitDealFlow is a tool, not a fund. I'm not investing alongside you. It reads startups' public GitHub activity and flags the ones quietly heating up in your sector — before they raise or hit the press. You don't crunch anything; it surfaces them, you look.</p>
 <p>This is the half-time of the 14-day Dashboard-credit window. Two questions, plain:</p>
 <ol>
-<li><strong>Did the report surface anything you'd act on?</strong> One name, one breakout candidate, one sector observation that shifted your thesis. Reply with the answer — even one line. I read every reply, and the answer feeds the next iteration of the engine.</li>
-<li><strong>Are you considering the Dashboard?</strong> If yes, the €7 you paid credits 100% toward your first month. €9.97/mo founding rate, locked forever. The total cost of trying it for one month is €2.97 — coffee money to test the live engine on every sector instead of one.</li>
+<li><strong>Did the report surface anything you'd act on?</strong> One name, one company heating up early, one sector observation that shifted your thesis. Reply with the answer — even one line. I read every reply, and the answer feeds the next iteration of the tool.</li>
+<li><strong>Are you considering the Dashboard?</strong> If yes, the €7 you paid credits 100% toward your first month. €9.97/mo founding rate, locked forever. The total cost of trying it for one month is €2.97 — coffee money to see startups heating up across every sector instead of one.</li>
 </ol>
 <p>If the deep dive missed the mark, that's also a useful answer. Reply REFUND and the €7 returns inside one business day, no questions, you keep the artefacts. Three years, two refunds — the bar is low because the bar is honest.</p>
 <p><a href="${SIGNALS}/pricing?utm_source=email&utm_medium=firstlook-credit&utm_campaign=d7" style="color:#0ea5e9;font-weight:600;">Claim the credit and upgrade &rarr;</a></p>
@@ -1594,11 +1598,11 @@ export const FIRSTLOOK_REACTIVATION_DRIP = [
 <p>You paid €7 for the First Look deep dive. The Dashboard founding rate is €9.97/mo. With the credit, your first month costs <strong>€2.97</strong> — three coffees in central Lisbon, less than a single Crunchbase seat for an hour.</p>
 <p>What you trade three coffees for:</p>
 <ul>
-<li><strong>All 19 sectors live, every Monday at 06:00 UTC.</strong> Same engine that wrote your sector deep dive, applied across the whole panel automatically.</li>
-<li><strong>14-day commit-velocity acceleration deltas, ranked.</strong> The same lens, every sector, every week. No more "I wonder what's happening in fintech this month" — the answer lands in your dashboard.</li>
-<li><strong>Top-mover alerts.</strong> When an org crosses the 2× contributor-influx threshold mid-week, the dashboard flags it before next Monday's digest.</li>
+<li><strong>All 19 sectors live, every Monday at 06:00 UTC.</strong> The same tool that wrote your sector deep dive, applied across every sector automatically — so you see what's heating up everywhere, not just one lane.</li>
+<li><strong>The startups shipping faster, ranked.</strong> The same lens, every sector, every week. No more "I wonder what's happening in fintech this month" — the answer lands in your dashboard.</li>
+<li><strong>Top-mover alerts.</strong> When a company's engineering signal jumps mid-week, the dashboard flags it before next Monday's digest. (Under the hood: a 2× contributor-influx threshold — but you never have to think about the metric.)</li>
 <li><strong>Raw CSV export of every org × every metric.</strong> Drop into your CRM, your notebook, your Notion thesis page. Your data, your shape.</li>
-<li><strong>Methodology vault — full SSRN preprint, regression code, signal definitions.</strong> The same vault that powered your First Look. Open by default.</li>
+<li><strong>Methodology vault — full SSRN preprint, regression code, signal definitions.</strong> The same vault that powered your First Look. Open by default — for when you want to see exactly how it works.</li>
 </ul>
 <p>The credit window has four days left. After day 14, the €7 stays €7 — a one-time purchase you keep — but it stops counting toward Dashboard.</p>
 <p><a href="${SIGNALS}/pricing?utm_source=email&utm_medium=firstlook-credit&utm_campaign=d10" style="color:#0ea5e9;font-weight:600;">Apply the credit (€2.97 first month) &rarr;</a></p>
@@ -1669,7 +1673,7 @@ const D30_F: SoapOperaEmail = {
   html: wrap(`
 <p>You've been on this list for about a month. Long enough to know whether the rhythm fits.</p>
 <p>You told me on signup that you've written 0–1 angel checks in the past year. Translation: you're in the "watching, learning, maybe one day" tier — and that's the version of this product that's free forever, no asterisk.</p>
-<p>The free Sunday digest <strong>is</strong> the product on your tier. Five startups every Monday, sector-tagged, ranked, no commitment. That stays exactly as it is. I'd rather you read for ten years and write your first cheque informed than upgrade once and resent it.</p>
+<p>The free Sunday digest <strong>is</strong> the product on your tier. Five startups heating up in your sectors every Monday, ranked, no commitment. That stays exactly as it is. I'd rather you read for ten years and write your first cheque informed than upgrade once and resent it.</p>
 <p>If your cadence ever crosses into the 2–5/year range, the right next rung is the <strong>€7 First Look Pass</strong> — you pick a sector at checkout, I send the Sector Deep Dive PDF + raw CSV in 24 hours. €7 is roughly what a coffee costs in Lisbon; it's the lowest-friction way to test the deeper data on your own thesis without committing to a subscription.</p>
 <p>If your range is still 0–1/year, you don't need anything else from me. Keep the Sunday digest. Read the SSRN paper at <a href="https://ssrn.com/abstract=6606558" style="color:#0ea5e9;">ssrn.com/abstract=6606558</a> if you want the methodology end-to-end. The book is free at <a href="${SIGNALS}/book" style="color:#0ea5e9;">${SIGNALS}/book</a>.</p>
 <p>That's the offer for your tier: free, forever. The 30-day welcome ends here, the rhythm continues. Sunday digest hits as usual this weekend.</p>
@@ -1741,11 +1745,12 @@ const D0_F: SoapOperaEmail = {
   subject: "Welcome — the free digest IS the product on your tier",
   delayMs: THIRTY_MIN,
   html: wrap(`
-<p>Welcome. You told me on the quiz that you've written 0&ndash;1 angel checks in the past year &mdash; exploring, learning, maybe one day. Important: <strong>the free Acceleration Watch is the product for your tier, full stop.</strong></p>
-<p>I built this after I missed a Series A I'd flagged in my own notebook three weeks before it announced. The signal &mdash; a 3&times; commit-velocity acceleration, four new contributors, three new infrastructure repos in fourteen days &mdash; was sitting in plain sight on a public GitHub org. I'd talked myself out of writing the cheque. The investors who got in had read exactly the same data and didn't.</p>
-<p>So I built a system that reads the commit graph for me. Across 4,200 venture-backed orgs. Every week. Mechanically. The Acceleration Watch &mdash; your free Sunday digest &mdash; is the top five names from that engine, ranked, sector-tagged, no commitment.</p>
+<p>Welcome. Let me be clear up front, because people get confused: GitDealFlow is a tool, not a fund. I'm not a VC, I'm not competing with you for the deal. It reads startups' public GitHub engineering activity and flags the ones heating up in your sectors, before they raise or hit the press. You don't crunch anything &mdash; it surfaces them, you just look.</p>
+<p>You told me on the quiz that you've written 0&ndash;1 angel checks in the past year &mdash; exploring, learning, maybe one day. Important: <strong>the free Sunday digest is the version for your tier, full stop.</strong></p>
+<p>I built this after I missed a Series A I'd flagged in my own notebook three weeks before it announced. The team was clearly shipping faster &mdash; four new contributors, three new infrastructure repos in fourteen days &mdash; all sitting in plain sight on a public GitHub org. I'd talked myself out of writing the cheque. The investors who got in had read exactly the same early engineering signal and didn't.</p>
+<p>So I built a system that reads that public activity for me. Across 4,200 venture-backed orgs. Every week. Mechanically. Your free Sunday digest is the top five startups heating up in your sectors, ranked, sector-tagged, no commitment.</p>
 <p>For someone in your tier, that's enough. Read for ten years and write your first cheque informed. The &euro;7 First Look Pass exists if your cadence ever picks up to 2&ndash;5 checks/year &mdash; but I'd rather you read for free for a long time than upgrade once and resent it.</p>
-<p>Tomorrow I'll challenge something most people in your tier believe: that GitHub data is too noisy to read. It isn't. The framing is wrong, and once you see it the Sunday digest becomes a thirty-second read instead of a five-minute one.</p>
+<p>Tomorrow I'll challenge something most people in your tier believe: that public GitHub data is too noisy to read. It isn't. The framing is wrong, and once you see it the Sunday digest becomes a thirty-second read instead of a five-minute one.</p>
 <p>Talk soon,<br>${FROM_NAME}</p>
 <p style="color:#64748b;font-size:14px;">P.S. The full methodology is published as an SSRN preprint (n=219, peer-reviewable): <a href="https://ssrn.com/abstract=6606558" style="color:#0ea5e9;">ssrn.com/abstract=6606558</a>. Free book version at <a href="${SIGNALS}/book" style="color:#0ea5e9;">${SIGNALS}/book</a>. Both are yours regardless of whether you ever spend a euro with us.</p>
 `),
@@ -1755,8 +1760,9 @@ const D0_T: SoapOperaEmail = {
   subject: "Welcome — €7 is the right test for the way you write checks",
   delayMs: THIRTY_MIN,
   html: wrap(`
-<p>Welcome. You told me on the quiz that you've written 2&ndash;5 angel checks in the past year &mdash; building cadence, sector-leaning. The right rung for your tier is the <strong>&euro;7 First Look Pass</strong>, and I'm going to spend the next 30 days showing you why it pays for itself the first time you run it.</p>
-<p>Here's the story this product started with. I was tracking a fintech-infra startup. No press, no AngelList buzz, no warm intros circulating. But their GitHub showed a 3&times; commit-velocity spike, four new senior contributors from a public Series-B company, and three new infrastructure repos spun up over a single weekend. I noted it. I closed the laptop. Three weeks later, $4M Series A.</p>
+<p>Welcome. First, the plain version so there's no confusion: GitDealFlow is a tool, not a fund. I'm not a VC, not competing with you for the deal. It reads startups' public GitHub activity and flags the ones heating up in your sectors, before they raise or hit the press &mdash; you just look.</p>
+<p>You told me on the quiz that you've written 2&ndash;5 angel checks in the past year &mdash; building cadence, sector-leaning. The right rung for your tier is the <strong>&euro;7 First Look Pass</strong>, and I'm going to spend the next 30 days showing you why it pays for itself the first time you run it.</p>
+<p>Here's the story this started with. I was tracking a fintech-infra startup. No press, no AngelList buzz, no warm intros circulating. But their GitHub told a different story: the team was suddenly shipping faster &mdash; four new senior contributors from a public Series-B company, three new infrastructure repos spun up over a single weekend. I noted it. I closed the laptop. Three weeks later, $4M Series A.</p>
 <p>The signal was public. The methodology is published (SSRN n=219, 21&ndash;47 day median lead time). The only thing missing was someone willing to pay &euro;7 once, pick a sector, and have the deep dive in their inbox in 24 hours.</p>
 <p>That's literally the First Look Pass. Pick fintech-infra, AI/ML, dev tools, healthtech &mdash; whichever sits closest to your thesis. I send the 14-page PDF + raw CSV + walkthrough. If three orgs land that you'd genuinely consider writing into, the &euro;7 was the right call. If not, the report and CSV are still yours.</p>
 <p>The credit-back is the kicker: if you upgrade to the Dashboard within 14 days, the &euro;7 credits 100%. So at worst you spend &euro;7 to test step 5 of the conversion story on your own thesis, and at best you walk into the Dashboard already up &euro;7.</p>
@@ -1770,11 +1776,11 @@ const D0_I: SoapOperaEmail = {
   subject: "Welcome — fund-tier rung, 24-hour lead, €1,997 sweep",
   delayMs: THIRTY_MIN,
   html: wrap(`
-<p>Welcome. You told me on the quiz that you write 20+ checks per year, run a fund, or run a syndicate. The &euro;9.97/mo Dashboard is a tool too small to register on your operating budget &mdash; so I'm going to spend the next 90 days speaking to the rungs that matter at your scale: the <strong>Insider Circle</strong> (&euro;97/mo, 24-hour lead) and the <strong>Sector Sweep</strong> (&euro;1,997 one-time, 100% credited toward Insider).</p>
-<p>The product started with a missed Series A. A fintech-infra startup with a 3&times; commit-velocity spike, four new senior contributors, three new infrastructure repos in a fortnight. I'd flagged it in my notebook. The investors who actually wrote the cheque had read the same public GitHub data &mdash; they just had a system that made the read mechanical instead of episodic.</p>
+<p>Welcome. First, plainly, so there's no confusion: GitDealFlow is a tool, not a fund. I'm not a VC, not competing with you for the deal &mdash; it reads startups' public GitHub activity and flags the ones heating up in your sectors before they raise. You told me on the quiz that you write 20+ checks per year, run a fund, or run a syndicate. The &euro;9.97/mo Dashboard is too small to register on your operating budget &mdash; so I'm going to spend the next 90 days speaking to the rungs that matter at your scale: the <strong>Insider Circle</strong> (&euro;97/mo, 24-hour lead) and the <strong>Sector Sweep</strong> (&euro;1,997 one-time, 100% credited toward Insider).</p>
+<p>The tool started with a missed Series A. A fintech-infra startup that was suddenly shipping faster &mdash; four new senior contributors, three new infrastructure repos in a fortnight. I'd flagged it in my notebook. The investors who actually wrote the cheque had read the same public GitHub signal &mdash; they just had a system that made the read mechanical instead of episodic.</p>
 <p>Across 4,200 venture-backed orgs, that system is now the panel that powers two products at your tier. The Insider Circle ships next Sunday's five picks <em>24 hours before</em> the public Monday digest &mdash; one full sourcing day before any other investor sees them, plus closed Telegram, JSON/CSV API, and a custom watchlist co-built around your fund thesis. The Sector Sweep is a 40-page custom PDF on your chosen sector, three pre-Crunchbase early-stage targets, 14-day Q&amp;A &mdash; useful as IC-memo material at fund scale, and the &euro;1,997 credits 100% to Insider if you upgrade within 60 days.</p>
 <p>The math at your check volume: one founder per quarter that you reached because you had a Sunday-night head-start, at angel-range with even a 3&times; exit on one in five, lands at &euro;15k&ndash;&euro;150k of expected value per head-start. &euro;1,164/yr of Insider versus that calculus is a no-brainer if the rhythm fits.</p>
-<p>Tomorrow: why the "GitHub data is noise" objection is wrong at your tier specifically &mdash; the noise floor matters more for low-volume sourcing, not the kind you're running.</p>
+<p>Tomorrow: why the "public GitHub data is noise" objection is wrong at your tier specifically &mdash; the noise floor matters more for low-volume sourcing, not the kind you're running.</p>
 <p>Talk soon,<br>${FROM_NAME}</p>
 <p style="color:#64748b;font-size:14px;">P.S. SSRN preprint (n=219, the methodology backbone): <a href="https://ssrn.com/abstract=6606558" style="color:#0ea5e9;">ssrn.com/abstract=6606558</a> &middot; Insider Circle (&euro;97/mo, 24h lead, closed Telegram): <a href="${SIGNALS}/insider" style="color:#0ea5e9;">${SIGNALS}/insider</a> &middot; Sector Sweep (&euro;1,997, capped 8/quarter): <a href="${SIGNALS}/sector-sweep" style="color:#0ea5e9;">${SIGNALS}/sector-sweep</a></p>
 `),
@@ -1791,11 +1797,11 @@ const D5_F: SoapOperaEmail = {
   subject: "A Sunday morning, three months from now",
   delayMs: THIRTY_MIN + 5 * ONE_DAY,
   html: wrap(`
-<p>Picture this. It's a Sunday morning in August. Coffee in hand. The Acceleration Watch hits your inbox at 09:00 UTC like clockwork. Five startups, ranked, sector-tagged, with a one-line note on what each one's GitHub did this week.</p>
-<p>You scan in twenty seconds. The third entry is an AI-infra startup you've never heard of &mdash; three new senior contributors joined this week, all from a public Series-B company you respect. The README was rewritten Saturday night. Commit velocity is up 240% over baseline.</p>
-<p>You open the founder's email &mdash; it's right there in the git log &mdash; and write four lines: "Saw the README rewrite + the contributor influx. The work looks like the kind I follow. If you ever want a 20-minute call about what early angel allocation looks like for the round after this one, I'm easy to reach."</p>
+<p>Picture this. It's a Sunday morning in August. Coffee in hand. The free digest hits your inbox at 09:00 UTC like clockwork. Five startups heating up in your sectors, ranked, with a one-line note on what each one's engineering did this week.</p>
+<p>You scan in twenty seconds. The third entry is an AI-infra startup you've never heard of &mdash; three new senior contributors joined this week, all from a public Series-B company you respect. The README was rewritten Saturday night. The team is clearly shipping faster than it was a month ago.</p>
+<p>You open the founder's email &mdash; it's right there in the git log &mdash; and write four lines: "Saw the README rewrite + the new contributors. The work looks like the kind I follow. If you ever want a 20-minute call about what early angel allocation looks like for the round after this one, I'm easy to reach."</p>
 <p>You don't have a check ready. You're not pretending to. You're playing the long game &mdash; three quarters of Sunday-morning reading, twelve to twenty cold emails sent, two or three real relationships built. By the time you write your first &euro;5k cheque next year, the founder you back is one of the founders you've been reading for ten months.</p>
-<p>That's what the free digest is for, on your tier. Not "deal flow" &mdash; <strong>taste flow</strong>. You're calibrating which engineering signals match the kind of company you'd want to back, and you're doing it on a budget of zero euros and twenty minutes a week.</p>
+<p>That's what the free digest is for, on your tier. Not "deal flow" &mdash; <strong>taste flow</strong>. You're calibrating which early engineering signals match the kind of company you'd want to back, and you're doing it on a budget of zero euros and twenty minutes a week.</p>
 <p>The Sunday digest stays free forever. The &euro;7 First Look Pass exists if your cadence ever moves to 2&ndash;5/year &mdash; at that point the value-per-euro math flips and a single sector deep-dive saves you a week of evenings. But that's <em>your</em> decision and <em>your</em> timing, not mine.</p>
 <p>Tomorrow I'll send the most-asked objection at your tier &mdash; "if the data is public, where's the edge?" &mdash; with the answer that takes about ninety seconds to read and shifts the whole frame.</p>
 <p>Talk soon,<br>${FROM_NAME}</p>
@@ -2010,10 +2016,11 @@ export const SHARP_INDOCTRINATION_DRIP = [
     delayMs: HALF_HOUR,
     html: wrap(`
 <p>Application received. The 48-hour reply window opens now.</p>
+<p>First, the thing worth being clear about: GitDealFlow is a tool, not a fund. We're not competing with you for the deal. The job is to help you see startups heating up in your sectors — on their public GitHub engineering activity — before they raise or hit the press. Sharp is the fund-tier version of that same job.</p>
 <p>Here's what's about to happen, in case the wait is the part that nags:</p>
-<p><strong>Within 12 hours.</strong> The first read happens at the founder desk. I score every Sharp application against three filters: fund fit (does the thesis intersect what the panel can see), use-case fit (white-label API and quarterly-call cadence vs. what you actually need), and capacity fit (where the 8-fund 2026 cap stands the day your application lands). The first filter takes about ninety seconds. The second takes ten minutes. The third is a calendar check.</p>
+<p><strong>Within 12 hours.</strong> The first read happens at the founder desk. I look at every Sharp application against three things: fund fit (do your sectors line up with what we can see early), use-case fit (the white-label API and quarterly-call cadence vs. what you actually need), and capacity fit (where the 8-fund 2026 cap stands the day your application lands). The first takes about ninety seconds. The second takes ten minutes. The third is a calendar check.</p>
 <p><strong>Within 24-36 hours.</strong> Decision drafts. If accepted, I draft a Stripe Sharp Tier invoice + an Insider Circle invitation, both in the same reply email. If declined, I write a one-paragraph reason — never a form letter, never a "thanks for your interest." Either reply lands inside 48 business hours of submission. No application has gone un-replied since the tier opened.</p>
-<p><strong>One thing to do while the review runs.</strong> If you haven't already, the <a href="${SIGNALS}/walkthrough">12-minute walkthrough</a> is the page I assume every Sharp applicant has read before the first quarterly call. It saves us the first ten minutes of the call and makes the rest of it sharper. The other thing worth a tab is the <a href="${SIGNALS}/methodology">methodology page</a> — it's the source code of the regression that produces the lead-time numbers. If you're going to write checks against this signal, you'll want to be able to reproduce it on your own.</p>
+<p><strong>One thing to do while the review runs.</strong> If you haven't already, the <a href="${SIGNALS}/walkthrough">12-minute walkthrough</a> is the page I assume every Sharp applicant has read before the first quarterly call. It saves us the first ten minutes of the call and makes the rest of it sharper. The other thing worth a tab is the <a href="${SIGNALS}/methodology">methodology page</a> — it lays out, in plain terms, exactly how a startup ends up flagged as heating up early and where the lead-time numbers come from. If you're going to write checks against this signal, you'll want to see how it works for yourself.</p>
 <p>Talk soon,<br>${FROM_NAME}</p>
 <p style="color:#64748b;font-size:14px;">P.S. The cap (8 funds in 2026) is real, not a marketing line. The quarterly call is real founder time. The reason the gate exists is so every Sharp-tier fund gets meaningful attention on the call. If you're wondering whether you're a fit, the answer to "do you want a sharper version of the same product, on a fund-tier cadence" is the question the application is built to answer.</p>
 `, "sharp-indoc-1"),
@@ -2025,11 +2032,11 @@ export const SHARP_INDOCTRINATION_DRIP = [
 <p>Twelve hours in. I'm partway through the Sharp queue, your application is in the stack, and a short note is more useful than silence.</p>
 <p>Here's what gets weighted on the first read, so you know what's happening to your words:</p>
 <p><strong>The dream-state answer.</strong> The single best signal that a Sharp tier will pay for itself is whether the applicant can write the dream state in a single sentence with a number in it. "Seeing 3 of every 5 of our Series A deals before any other fund is talking to them." "50% of new portfolio adds sourced from data, not warm intros." A specific dream is a dream a methodology can deliver against. A vague dream is a fit problem, not a price problem.</p>
-<p><strong>The gap answer.</strong> Most applicants list "we don't have time" or "no API in our CRM." Both are real, both are solvable. The harder gap — the one I look for — is "nobody on our team reads commit graphs." That's a literacy gap, not a tooling gap, and it's the one Sharp's quarterly call moves the needle on. The white-labeled API is the easy half; the call is the half nobody else sells.</p>
+<p><strong>The gap answer.</strong> Most applicants list "we don't have time" or "no API in our CRM." Both are real, both are solvable. The harder gap — the one I look for — is "nobody on our team is technical enough to read engineering signal on their own." Good news: you don't have to. The whole point of the tool is that it does the reading and hands you plain-English notes — you just look. The white-labeled API is the easy half; the quarterly call, where we walk you through what's heating up in your sectors, is the half nobody else sells.</p>
 <p><strong>The urgency answer.</strong> "Why now, vs. waiting six months" separates the Sharp applicants from the Insider applicants. Insider is a build-the-rhythm tier. Sharp is a "we're losing one deal a quarter to a faster competitor" tier. If your urgency answer reads more like the first one, the right home is €97/mo Insider, not €497/mo Sharp — and I'll say so in the reply rather than push you up a rung that doesn't fit yet.</p>
 <p>The reply is on track for inside 48 business hours. If you thought of something you didn't get to put in the form, reply to this email and I'll fold it into the same review.</p>
 <p>Talk soon,<br>${FROM_NAME}</p>
-<p style="color:#64748b;font-size:14px;">P.S. The methodology source-code repo is the artifact most Sharp applicants want to see before they sign — it's what tells you whether the regression is real or a marketing line. The repo gets shared on day one of paid, but the SSRN preprint at <a href="${SIGNALS}/research">${SIGNALS}/research</a> is the public version of the same thing, and you can read it tonight.</p>
+<p style="color:#64748b;font-size:14px;">P.S. The methodology repo is the thing most Sharp applicants want to see before they sign — it's what tells you the signal is real, not a marketing line. The repo gets shared on day one of paid, but the SSRN paper at <a href="${SIGNALS}/research">${SIGNALS}/research</a> is the public version of the same thing, and you can read it tonight.</p>
 `, "sharp-indoc-2"),
   },
   {
@@ -2039,7 +2046,7 @@ export const SHARP_INDOCTRINATION_DRIP = [
 <p>Thirty-six hours in. Decision drafts are on the desk. The reply lands inside the next twelve hours.</p>
 <p>Before it does — one frame worth holding, because it's the frame I'd want a Sharp applicant to land on:</p>
 <p>€497/mo is €5,964/yr. At a fund's blended analyst-day rate (~€350-€400 fully-loaded, post-bonus, post-overhead), Sharp pays for itself the moment it saves an analyst <em>fifteen working days a year</em>. The white-labeled API alone — pulled directly into your CRM, refreshed weekly, no engineering wrapper to maintain — is roughly that delta against the alternative of an analyst running Crunchbase and GitHub queries by hand. The quarterly call, the methodology source, the first-look on new signals — those are above the line.</p>
-<p>The harder math is the one the value-ladder doesn't show on a pricing page: one preempted Series A, at any reasonable fund's check size, is between €400k and €4M of deferred markup against the same vintage outcome. The signal-to-fundraise lead time is 21-47 days at the median (the SSRN panel; <a href="${SIGNALS}/research">${SIGNALS}/research</a> for the full panel). Sharp's job is to compress those days into preemption opportunities. One a year is the floor. The funds at this tier don't talk in terms of "saves an analyst-day" — they talk in terms of "preempted one round, deferred two." That's the conversation the quarterly call is built to support.</p>
+<p>The harder math is the one a pricing page doesn't show: one preempted Series A, at any reasonable fund's check size, is between €400k and €4M of deferred markup against the same vintage outcome. The time between a startup heating up on GitHub and its raise is 21-47 days at the median (the SSRN panel; <a href="${SIGNALS}/research">${SIGNALS}/research</a> for the full panel). Sharp's job is to turn those days into a chance to get there first. One a year is the floor. The funds at this tier don't talk in terms of "saves an analyst-day" — they talk in terms of "preempted one round, deferred two." That's the conversation the quarterly call is built to support.</p>
 <p>If accepted, the first call gets scheduled this week (initials-only on the founder side, anonymity-preserving). The white-label API sub-domain gets set up the same week. Methodology source repo is shared on day one of paid. Insider Circle invitation lands in the same reply.</p>
 <p>If declined, the reason will be specific — fund-fit, use-case-fit, or capacity. None of those are "you weren't impressive enough." All three are filterable, and most are reversible by either coming in via Insider first (€97/mo, no application) or re-applying after a thesis pivot.</p>
 <p>The reply is queued. Nothing more to do on your end.</p>
