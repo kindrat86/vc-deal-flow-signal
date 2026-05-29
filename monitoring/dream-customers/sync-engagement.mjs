@@ -33,8 +33,13 @@
  * pollute the kanban. Pass --create-missing to instead create a lightweight
  * contact (discovered_via="engagement-scrape") so new engagers surface.
  *
+ * Dream-customer filter: by default ONLY contacts flagged dream_customer get
+ * engagement recorded (the product rule — we don't track non-dream followers).
+ * Everyone else is matched but skipped + logged. Pass --include-non-dream to
+ * record all engagers regardless of dream status.
+ *
  * Usage:
- *   node sync-engagement.mjs [path-to-scratch.json] [--create-missing] [--dry-run]
+ *   node sync-engagement.mjs [scratch.json] [--create-missing] [--include-non-dream] [--dry-run]
  * Creds: PB_EMAIL + PB_PASSWORD env vars, else monitoring/dream-customers/.env.local,
  * else email-api/.env (same resolution order as build.mjs / launch.py).
  */
@@ -45,10 +50,10 @@ import { dirname, join, resolve } from "node:path";
 const here = dirname(fileURLToPath(import.meta.url));
 const repoRoot = resolve(here, "..", "..");
 
-// Weighting: higher-effort, higher-intent signals score more. A reply or a
-// quote is someone spending words on you; a repost is a public endorsement; a
-// like is the cheapest ambient signal. Tune here — the dashboard just sums.
-const SCORE_WEIGHTS = { reply: 3, quote: 3, repost: 2, like: 1 };
+// Points per interaction: reply 7, repost 3 (quote counts as a repost), like 1.
+// Stored on each event as score_weight; the dashboard recomputes totals from
+// counts using the same weights, so these two must stay in sync.
+const SCORE_WEIGHTS = { reply: 7, quote: 3, repost: 3, like: 1 };
 const VALID_TYPES = new Set(Object.keys(SCORE_WEIGHTS));
 
 const args = process.argv.slice(2);
@@ -57,6 +62,10 @@ const positional = args.filter((a) => !a.startsWith("--"));
 const scratchPath = positional[0] || join(here, "engagement-scratch.json");
 const CREATE_MISSING = flags.has("--create-missing");
 const DRY_RUN = flags.has("--dry-run");
+// Only record engagement for contacts flagged as dream customers. This is the
+// default per the product rule ("don't track non-dream followers"); pass
+// --include-non-dream to record everyone who engages.
+const DREAM_ONLY = !flags.has("--include-non-dream");
 
 function parseEnv(text) {
   const env = {};
@@ -213,6 +222,7 @@ async function main() {
   let dupes = 0;
   let createdContacts = 0;
   const unmatched = new Set();
+  const nonDream = new Set();
   const invalid = [];
 
   for (let i = 0; i < events.length; i++) {
@@ -238,6 +248,11 @@ async function main() {
       }
     }
     if (!contact) continue; // dry-run create-missing: can't dedupe a phantom id
+
+    if (DREAM_ONLY && !contact.dream_customer) {
+      nonDream.add(ev.handle);
+      continue;
+    }
 
     const key = `${contact.id}|${ev.type}|${ev.tweetId}`;
     if (existing.has(key)) {
@@ -271,8 +286,12 @@ async function main() {
   const tag = DRY_RUN ? "engagement-sync [DRY RUN]" : "engagement-sync";
   console.log(
     `${tag}: inserted=${inserted} dupes=${dupes} createdContacts=${createdContacts} ` +
-      `unmatched=${unmatched.size} invalid=${invalid.length} total=${events.length}`,
+      `nonDream=${nonDream.size} unmatched=${unmatched.size} invalid=${invalid.length} total=${events.length}`,
   );
+  if (nonDream.size) {
+    console.log(`  skipped (not dream customers): ${[...nonDream].map((h) => "@" + h).join(", ")}`);
+    console.log(`  -> mark them dream_customer in the dashboard, or pass --include-non-dream to record everyone`);
+  }
   if (unmatched.size) {
     console.log(`  unmatched handles (not in CRM, skipped): ${[...unmatched].map((h) => "@" + h).join(", ")}`);
     console.log(`  -> re-run with --create-missing to surface these as new contacts`);

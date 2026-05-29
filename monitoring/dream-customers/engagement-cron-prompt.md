@@ -96,12 +96,18 @@ node sync-engagement.mjs
 ```
 
 It auths to PB, matches each `handle` to an existing contact by `x_handle`,
-dedupes against existing events, assigns score weights (reply/quote=3,
-repost=2, like=1), and inserts inbound events. Handles not already in the CRM
-are **logged and skipped** by default (so the kanban isn't polluted by random
-engagers). If you want new engagers to surface as contacts, re-run with
-`--create-missing`. Use `--dry-run` first if you want to preview without
-writing.
+dedupes against existing events, assigns score weights (**reply=7, repost=3,
+quote=3, like=1**), and inserts inbound events.
+
+**Only dream-customer followers are recorded** (the product rule). Matched
+contacts that aren't flagged `dream_customer` are logged + skipped; pass
+`--include-non-dream` to record everyone. Handles not in the CRM at all are
+logged + skipped too — pass `--create-missing` to surface them as contacts.
+Use `--dry-run` to preview without writing.
+
+Note: you still read the whole notifications feed (you can't filter X's feed
+by dream status); the dream-customer filter is applied at write time, so no
+non-dream engagement is stored.
 
 The dashboard reads `engagement_events` live — no rebuild needed. Reload it to
 see updated ★ scores.

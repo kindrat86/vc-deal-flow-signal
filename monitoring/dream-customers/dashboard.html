@@ -81,50 +81,32 @@
   .viewtoggle button:hover { color:#e2e8f0; }
   .viewtoggle button.active { background:#0ea5e9; color:#0b1220; font-weight:600; }
 
-  /* ---- Gamified leaderboard ---- */
-  #leaderboard { padding:18px; max-width:900px; margin:0 auto; }
-  .lb-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-bottom:20px; }
-  .lb-stat { background:rgba(15,23,42,0.6); border:1px solid #1e293b; border-radius:10px; padding:13px 12px; text-align:center; }
-  .lb-stat .v { font-size:21px; font-weight:700; color:#f1f5f9; font-family:ui-monospace,Menlo,monospace; line-height:1.2; }
-  .lb-stat .l { font-size:9.5px; text-transform:uppercase; letter-spacing:0.8px; color:#64748b; margin-top:4px; }
-
-  .podium { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; align-items:end; margin-bottom:24px; }
-  .pod { background:linear-gradient(180deg, rgba(30,41,59,0.55), rgba(15,23,42,0.35)); border:1px solid #1e293b; border-radius:12px; padding:14px 10px 16px; text-align:center; cursor:pointer; transition:transform .1s, border-color .12s; }
-  .pod[data-id]:hover { border-color:#475569; }
-  .pod .medal { font-size:28px; line-height:1; }
-  .pod .avatar { width:48px; height:48px; border-radius:50%; margin:8px auto 2px; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:19px; color:#0b1220; }
-  .pod .pname { font-weight:600; color:#f1f5f9; font-size:13px; margin-top:4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-  .pod .phandle { color:#0ea5e9; font-size:11px; }
-  .pod .pscore { font-family:ui-monospace,Menlo,monospace; font-weight:700; font-size:18px; margin-top:5px; }
-  .pod.rank1 { border-color:#fbbf24; box-shadow:0 0 0 1px rgba(251,191,36,0.35), 0 10px 32px -14px rgba(251,191,36,0.5); transform:translateY(-10px); }
-  .pod.rank2 { border-color:#94a3b8; }
-  .pod.rank3 { border-color:#b45309; }
-
-  .lb-list { display:flex; flex-direction:column; gap:7px; }
-  .lb-row { display:grid; grid-template-columns:30px 34px 1fr auto; align-items:center; gap:12px; background:#111a2e; border:1px solid #1e293b; border-radius:8px; padding:9px 14px; cursor:pointer; transition:border-color .12s, transform .08s; }
-  .lb-row:hover { border-color:#334155; transform:translateX(2px); }
-  .lb-row .rank { font-family:ui-monospace,Menlo,monospace; font-size:13px; color:#64748b; text-align:center; }
-  .lb-row .avatar { width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px; color:#0b1220; }
-  .lb-row .who .nm { font-weight:600; color:#f1f5f9; font-size:13px; display:flex; align-items:center; gap:7px; flex-wrap:wrap; }
-  .lb-row .who .hd { color:#0ea5e9; font-size:11px; }
-  .lb-row .who .hd a { color:inherit; text-decoration:none; }
-  .lb-row .who .hd a:hover { text-decoration:underline; }
-  .lb-row .right { display:flex; flex-direction:column; align-items:flex-end; gap:5px; }
-  .lb-row .right .topline { display:flex; align-items:center; gap:12px; }
-  .pts { font-family:ui-monospace,Menlo,monospace; font-weight:700; font-size:15px; color:#fbbf24; min-width:46px; text-align:right; }
-  .pts.zero { color:#475569; }
-
-  .tier { display:inline-flex; align-items:center; gap:4px; font-size:10px; font-weight:600; padding:2px 8px; border-radius:20px; white-space:nowrap; }
-  .bd { display:flex; gap:9px; font-size:11px; color:#94a3b8; font-family:ui-monospace,Menlo,monospace; }
-  .bd span.z { color:#334155; }
-  .badges { display:flex; gap:5px; }
-  .badge { font-size:14px; cursor:default; }
-  .xp { width:170px; height:5px; background:#1e293b; border-radius:3px; overflow:hidden; }
-  .xp > i { display:block; height:100%; border-radius:3px; transition:width .4s; }
-  @media (max-width:640px) {
-    .lb-stats { grid-template-columns:repeat(2,1fr); }
-    .xp { width:90px; }
-    .lb-row .right .topline { gap:8px; }
+  /* ---- Followers engagement table ---- */
+  #engagement { padding:18px; max-width:780px; margin:0 auto; }
+  .eng-head { font-size:12px; color:#64748b; margin-bottom:12px; }
+  .eng-head b { color:#cbd5e1; font-weight:600; }
+  .eng-table { width:100%; border-collapse:separate; border-spacing:0 6px; font-size:13px; }
+  .eng-table th { text-align:left; font-size:10px; text-transform:uppercase; letter-spacing:0.8px; color:#64748b; padding:0 12px 4px; font-weight:600; white-space:nowrap; }
+  .eng-table th.num, .eng-table td.num { text-align:right; }
+  .eng-table tbody tr { background:#111a2e; cursor:pointer; }
+  .eng-table tbody tr:hover td { background:#16203a; }
+  .eng-table td { padding:9px 12px; border-top:1px solid #1e293b; border-bottom:1px solid #1e293b; vertical-align:middle; }
+  .eng-table td:first-child { border-left:1px solid #1e293b; border-radius:8px 0 0 8px; }
+  .eng-table td:last-child { border-right:1px solid #1e293b; border-radius:0 8px 8px 0; }
+  .eng-table .acct { display:flex; align-items:center; gap:10px; }
+  .eng-table .avatar { width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:13px; color:#0b1220; flex:0 0 auto; }
+  .eng-table .who { display:flex; flex-direction:column; line-height:1.3; min-width:0; }
+  .eng-table .who .nm { font-weight:600; color:#f1f5f9; display:flex; align-items:center; gap:7px; flex-wrap:wrap; }
+  .eng-table .who .hd { color:#0ea5e9; font-size:11px; text-decoration:none; }
+  .eng-table .who .hd:hover { text-decoration:underline; }
+  .eng-table td.num { font-family:ui-monospace,Menlo,monospace; color:#cbd5e1; }
+  .eng-table td.pts { color:#fbbf24; font-weight:700; }
+  .eng-table td.pts.zero { color:#475569; }
+  .nd-badge { font-size:9px; font-weight:700; letter-spacing:0.5px; padding:1px 6px; border-radius:4px; background:rgba(244,63,94,0.16); color:#fda4af; border:1px solid rgba(244,63,94,0.35); white-space:nowrap; }
+  .eng-empty { text-align:center; color:#475569; padding:26px 12px; }
+  @media (max-width:560px) {
+    .eng-table th, .eng-table td { padding-left:8px; padding-right:8px; }
+    .eng-table .who .nm { font-size:12px; }
   }
 </style>
 </head>
@@ -139,12 +121,12 @@
   </div>
   <div class="controls">
     <div class="viewtoggle">
-      <button id="view-lb" class="active">🏆 Leaderboard</button>
+      <button id="view-eng" class="active">📊 Engagement</button>
       <button id="view-board">📋 Board</button>
     </div>
     <input type="search" id="q" placeholder="search name / handle / firm">
-    <span id="lb-controls" style="display:inline-flex; align-items:center; gap:8px;">
-      <label class="toggle"><input type="checkbox" id="lb-followers-only" checked> followers only</label>
+    <span id="eng-controls" style="display:inline-flex; align-items:center; gap:8px;">
+      <label class="toggle"><input type="checkbox" id="hide-nondream"> hide non-dream</label>
     </span>
     <span id="board-controls" style="display:none; align-items:center; gap:8px;">
       <select id="seg-filter">
@@ -163,7 +145,7 @@
 </header>
 
 <div class="board" id="board" style="display:none"></div>
-<div id="leaderboard" style="display:none"></div>
+<div id="engagement" style="display:none"></div>
 
 <div class="drawer-mask" id="mask"></div>
 <aside class="drawer" id="drawer">
@@ -206,22 +188,15 @@
     : location.origin;
   const TOKEN = window.PB_CONFIG.token;
 
-  // Engagement tiers, highest first. score = sum of weighted inbound events.
-  const TIERS = [
-    { min: 75, name: "Champion", emoji: "👑", color: "#fbbf24", bg: "rgba(251,191,36,0.16)" },
-    { min: 35, name: "Superfan", emoji: "⭐", color: "#c4b5fd", bg: "rgba(168,85,247,0.18)" },
-    { min: 15, name: "Fan",      emoji: "🔥", color: "#fcd34d", bg: "rgba(245,158,11,0.16)" },
-    { min: 5,  name: "Regular",  emoji: "💬", color: "#7dd3fc", bg: "rgba(14,165,233,0.16)" },
-    { min: 1,  name: "Spark",    emoji: "✨", color: "#a5b4fc", bg: "rgba(99,102,241,0.16)" },
-    { min: 0,  name: "Lurker",   emoji: "😴", color: "#64748b", bg: "rgba(100,116,139,0.12)" },
-  ];
+  // Points per inbound interaction. Quote-tweets count as reposts.
+  const POINTS = { like: 1, repost: 3, quote: 3, reply: 7 };
 
   let CONTACTS = []; // server records (with id)
   let EVENTS_BY_CONTACT = {}; // { contactId: [events] }
   let activeContactId = null;
   let filters = { q: "", segment: "", dreamOnly: true };
-  let VIEW = "leaderboard"; // "leaderboard" | "board"
-  let lbFollowersOnly = true;
+  let VIEW = "engagement"; // "engagement" | "board"
+  let hideNonDream = false;
 
   // ---- API ----
   async function api(path, opts = {}) {
@@ -281,23 +256,18 @@
     return Date.now() - new Date(iso).getTime() < 12 * 3600 * 1000;
   }
 
-  function scoreOf(contactId) {
-    const events = EVENTS_BY_CONTACT[contactId] || [];
-    let total = 0;
-    for (const e of events) total += (e.score_weight || 0);
-    return total;
+  // Count inbound events by type. Points are computed live from POINTS so the
+  // displayed totals always reflect the current weights, regardless of the
+  // score_weight stored on each event when it was scraped.
+  function typeCounts(contactId) {
+    const ev = EVENTS_BY_CONTACT[contactId] || [];
+    const c = { like: 0, reply: 0, repost: 0, quote: 0 };
+    for (const e of ev) if (e.type in c) c[e.type]++;
+    return c;
   }
-
-  function scoreBreakdown(contactId) {
-    const events = EVENTS_BY_CONTACT[contactId] || [];
-    const byKey = {};
-    for (const e of events) {
-      const k = e.direction + "/" + e.type;
-      byKey[k] = byKey[k] || { count: 0, weight: 0 };
-      byKey[k].count++;
-      byKey[k].weight += (e.score_weight || 0);
-    }
-    return { total: scoreOf(contactId), breakdown: byKey };
+  function scoreOf(contactId) {
+    const c = typeCounts(contactId);
+    return c.like * POINTS.like + (c.repost + c.quote) * POINTS.repost + c.reply * POINTS.reply;
   }
 
   function passesFilter(c) {
@@ -389,7 +359,7 @@
   // Dispatcher — renders whichever view is active.
   function render() {
     updateMeta();
-    if (VIEW === "leaderboard") renderLeaderboard();
+    if (VIEW === "engagement") renderEngagement();
     else renderBoard();
   }
 
@@ -428,25 +398,7 @@
     }
   }
 
-  // ---- Gamified leaderboard ----
-  function tierOf(score) {
-    for (const t of TIERS) if (score >= t.min) return t;
-    return TIERS[TIERS.length - 1];
-  }
-  function tierProgress(score) {
-    const i = TIERS.findIndex((t) => score >= t.min);
-    const cur = TIERS[i], nxt = TIERS[i - 1]; // i-1 is the next-higher tier (list is desc)
-    const color = cur.color;
-    if (!nxt) return { pct: 100, max: true, color };
-    const span = nxt.min - cur.min, into = score - cur.min;
-    return { pct: Math.max(5, Math.min(100, Math.round((into / span) * 100))), need: nxt.min - score, nextName: nxt.name, color };
-  }
-  function typeCounts(cid) {
-    const ev = EVENTS_BY_CONTACT[cid] || [];
-    const c = { reply: 0, like: 0, repost: 0, quote: 0 };
-    for (const e of ev) if (e.type in c) c[e.type]++;
-    return c;
-  }
+  // ---- Followers engagement table ----
   function avatarHue(s) {
     let h = 0;
     for (const ch of String(s)) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
@@ -455,26 +407,10 @@
   function initial(c) {
     return escapeHtml(String(c.display_name || c.x_handle || "?").trim().slice(0, 1).toUpperCase());
   }
-  function bdSpans(bd) {
-    const reposts = bd.repost + bd.quote;
-    return (
-      '<span class="' + (bd.reply ? "" : "z") + '" title="replies">💬 ' + bd.reply + "</span>" +
-      '<span class="' + (bd.like ? "" : "z") + '" title="likes">❤️ ' + bd.like + "</span>" +
-      '<span class="' + (reposts ? "" : "z") + '" title="reposts + quotes">🔁 ' + reposts + "</span>"
-    );
-  }
-  function badgesFor(cid, rank, score) {
-    const c = typeCounts(cid), out = [];
-    if (rank === 1 && score > 0) out.push(["🥇", "Top Fan — #1 this period"]);
-    if (c.reply >= 5) out.push(["🗣️", "Conversationalist — " + c.reply + " replies"]);
-    if (c.repost + c.quote >= 1) out.push(["🔁", "Amplifier — " + (c.repost + c.quote) + " reposts"]);
-    if (c.reply && c.like && (c.repost || c.quote)) out.push(["🌈", "Triple Threat — replies, likes & reposts"]);
-    return out;
-  }
 
-  function lbPool() {
-    let pool = CONTACTS.slice();
-    if (lbFollowersOnly) pool = pool.filter((c) => c.stage === "followers");
+  function engPool() {
+    let pool = CONTACTS.filter((c) => c.stage === "followers");
+    if (hideNonDream) pool = pool.filter((c) => c.dream_customer);
     if (filters.q) {
       const q = filters.q.toLowerCase();
       pool = pool.filter((c) => (c.x_handle + " " + (c.display_name || "") + " " + (c.firm || "")).toLowerCase().includes(q));
@@ -483,101 +419,66 @@
     return pool;
   }
 
-  function statCard(v, l, small) {
-    return '<div class="lb-stat"><div class="v"' + (small ? ' style="font-size:14px"' : "") + ">" + escapeHtml(String(v)) + '</div><div class="l">' + escapeHtml(l) + "</div></div>";
-  }
-
-  function podiumCard(c, rank) {
-    const medal = rank === 1 ? "🥇" : rank === 2 ? "🥈" : "🥉";
-    const has = c && scoreOf(c.id) > 0;
-    if (!has) {
-      return (
-        '<div class="pod rank' + rank + '">' +
-        '<div class="medal" style="opacity:.35">' + medal + "</div>" +
-        '<div class="avatar" style="background:#1e293b;color:#475569">?</div>' +
-        '<div class="pname" style="color:#475569">open slot</div>' +
-        '<div class="phandle" style="color:#334155">up for grabs</div>' +
-        '<div class="pscore" style="color:#334155">★ 0</div></div>'
-      );
-    }
-    const score = scoreOf(c.id), t = tierOf(score), hue = avatarHue(c.x_handle);
+  function engRow(c) {
+    const cc = typeCounts(c.id);
+    const reposts = cc.repost + cc.quote;
+    const pts = scoreOf(c.id);
+    const hue = avatarHue(c.x_handle);
+    const badge = c.dream_customer ? "" : ' <span class="nd-badge" title="Not a dream customer">NOT DREAM</span>';
     return (
-      '<div class="pod rank' + rank + '" data-id="' + c.id + '">' +
-      '<div class="medal">' + medal + "</div>" +
-      '<div class="avatar" style="background:hsl(' + hue + ',55%,62%)">' + initial(c) + "</div>" +
-      '<div class="pname">' + escapeHtml(c.display_name || c.x_handle) + "</div>" +
-      '<div class="phandle">@' + escapeHtml(c.x_handle) + "</div>" +
-      '<div class="tier" style="color:' + t.color + ";background:" + t.bg + ';margin-top:6px">' + t.emoji + " " + t.name + "</div>" +
-      '<div class="pscore" style="color:' + t.color + '">★ ' + score + "</div>" +
-      '<div class="bd" style="justify-content:center;margin-top:5px">' + bdSpans(typeCounts(c.id)) + "</div>" +
-      "</div>"
+      '<tr data-id="' + c.id + '">' +
+        '<td><div class="acct">' +
+          '<span class="avatar" style="background:hsl(' + hue + ',55%,62%)">' + initial(c) + "</span>" +
+          '<span class="who">' +
+            '<span class="nm">' + escapeHtml(c.display_name || c.x_handle) + badge + "</span>" +
+            '<a class="hd" href="https://twitter.com/' + encodeURIComponent(c.x_handle) + '" target="_blank" rel="noopener">@' + escapeHtml(c.x_handle) + "</a>" +
+          "</span>" +
+        "</div></td>" +
+        '<td class="num">' + cc.like + "</td>" +
+        '<td class="num">' + cc.reply + "</td>" +
+        '<td class="num">' + reposts + "</td>" +
+        '<td class="num pts' + (pts ? "" : " zero") + '">' + pts + "</td>" +
+      "</tr>"
     );
   }
 
-  function lbRow(c, rank) {
-    const score = scoreOf(c.id), t = tierOf(score), prog = tierProgress(score), hue = avatarHue(c.x_handle);
-    const badges = badgesFor(c.id, rank, score).map((b) => '<span class="badge" title="' + escapeHtml(b[1]) + '">' + b[0] + "</span>").join("");
-    return (
-      '<div class="lb-row" data-id="' + c.id + '">' +
-      '<div class="rank">' + rank + "</div>" +
-      '<div class="avatar" style="background:hsl(' + hue + ',55%,62%)">' + initial(c) + "</div>" +
-      '<div class="who">' +
-        '<div class="nm">' + escapeHtml(c.display_name || c.x_handle) +
-          ' <span class="tier" style="color:' + t.color + ";background:" + t.bg + '">' + t.emoji + " " + t.name + "</span></div>" +
-        '<div class="hd"><a href="https://twitter.com/' + encodeURIComponent(c.x_handle) + '" target="_blank" rel="noopener">@' + escapeHtml(c.x_handle) + "</a></div>" +
-      "</div>" +
-      '<div class="right">' +
-        '<div class="topline">' +
-          '<span class="badges">' + badges + "</span>" +
-          '<span class="bd">' + bdSpans(typeCounts(c.id)) + "</span>" +
-          '<span class="pts' + (score ? "" : " zero") + '">★ ' + score + "</span>" +
-        "</div>" +
-        '<div class="xp" title="' + (prog.max ? "Max tier reached" : "+" + prog.need + " to " + prog.nextName) + '"><i style="width:' + prog.pct + "%;background:" + t.color + '"></i></div>' +
-      "</div>" +
-      "</div>"
-    );
-  }
+  function renderEngagement() {
+    const el = document.getElementById("engagement");
+    const followers = CONTACTS.filter((c) => c.stage === "followers");
+    const dreamCount = followers.filter((c) => c.dream_customer).length;
+    const pool = engPool();
 
-  function renderLeaderboard() {
-    const el = document.getElementById("leaderboard");
-    const pool = lbPool();
-    const totalPts = pool.reduce((s, c) => s + scoreOf(c.id), 0);
-    const interactions = pool.reduce((s, c) => s + (EVENTS_BY_CONTACT[c.id] || []).length, 0);
-    const engaged = pool.filter((c) => scoreOf(c.id) > 0).length;
-    const top = pool[0] && scoreOf(pool[0].id) > 0 ? pool[0] : null;
-
-    let html = '<div class="lb-stats">' +
-      statCard(totalPts, "community points") +
-      statCard(interactions, "interactions") +
-      statCard(engaged + " / " + pool.length, "engaged" + (lbFollowersOnly ? " followers" : "")) +
-      statCard(top ? "@" + top.x_handle : "—", "top fan", true) +
-      "</div>";
-
-    html += '<div class="podium">';
-    for (const slot of [1, 0, 2]) html += podiumCard(pool[slot], slot + 1); // visual order: 2nd · 1st · 3rd
-    html += "</div>";
-
-    html += '<div class="lb-list">';
-    if (pool.length <= 3) {
-      html += '<div class="empty" style="padding:14px;text-align:center;color:#475569;font-size:12px">More climbers show up here as the leaderboard fills in.</div>';
+    let rows = pool.map(engRow).join("");
+    if (!pool.length) {
+      rows = '<tr><td colspan="5" class="eng-empty">No followers to show' + (hideNonDream ? " (non-dream hidden)" : "") + ".</td></tr>";
     }
-    for (let i = 3; i < pool.length; i++) html += lbRow(pool[i], i + 1);
-    html += "</div>";
 
-    el.innerHTML = html;
-    el.querySelectorAll("[data-id]").forEach((node) => {
+    el.innerHTML =
+      '<div class="eng-head"><b>' + dreamCount + "</b> dream-customer followers · <b>" + followers.length + "</b> followers total · points = 👍×1 + 🔁×3 + 💬×7</div>" +
+      '<table class="eng-table">' +
+        "<thead><tr>" +
+          "<th>X account</th>" +
+          '<th class="num">👍 Likes</th>' +
+          '<th class="num">💬 Replies</th>' +
+          '<th class="num">🔁 Reposts</th>' +
+          '<th class="num">★ Points</th>' +
+        "</tr></thead>" +
+        "<tbody>" + rows + "</tbody>" +
+      "</table>";
+
+    el.querySelectorAll("tr[data-id]").forEach((node) => {
       node.addEventListener("click", (e) => { if (!e.target.closest("a")) openDrawer(node.dataset.id); });
     });
   }
 
   function switchView(v) {
     VIEW = v;
-    document.getElementById("view-lb").classList.toggle("active", v === "leaderboard");
+    document.getElementById("view-eng").classList.toggle("active", v === "engagement");
     document.getElementById("view-board").classList.toggle("active", v === "board");
     document.getElementById("board").style.display = v === "board" ? "flex" : "none";
-    document.getElementById("leaderboard").style.display = v === "leaderboard" ? "block" : "none";
+    document.getElementById("engagement").style.display = v === "engagement" ? "block" : "none";
     document.getElementById("board-controls").style.display = v === "board" ? "inline-flex" : "none";
-    document.getElementById("lb-controls").style.display = v === "leaderboard" ? "inline-flex" : "none";
+    document.getElementById("eng-controls").style.display = v === "engagement" ? "inline-flex" : "none";
     render();
   }
 
@@ -586,8 +487,16 @@
     activeContactId = id;
     const c = CONTACTS.find((x) => x.id === id);
     if (!c) return;
-    const sb = scoreBreakdown(id);
-    const breakdownLines = Object.entries(sb.breakdown).map(([k, v]) => k + ": " + v.count + " × → " + v.weight).join("<br>") || "(no events yet — populated by v2 scraper)";
+    const cc = typeCounts(id);
+    const reposts = cc.repost + cc.quote;
+    const sbTotal = scoreOf(id);
+    const breakdownLines = (sbTotal === 0)
+      ? "(no engagement recorded yet)"
+      : [
+          "likes:   " + cc.like + " × 1 = " + (cc.like * POINTS.like),
+          "reposts: " + reposts + " × 3 = " + (reposts * POINTS.repost),
+          "replies: " + cc.reply + " × 7 = " + (cc.reply * POINTS.reply),
+        ].join("<br>");
 
     document.getElementById("drawer-body").innerHTML =
       '<label>Handle<input value="@' + escapeHtml(c.x_handle) + '" disabled></label>' +
@@ -607,7 +516,7 @@
       '</div>' +
       '<label><input type="checkbox" id="d-dream" ' + (c.dream_customer ? "checked" : "") + ' style="width:auto;margin-right:6px;vertical-align:middle"> Dream customer</label>' +
       '<label>Notes<textarea id="d-notes" placeholder="anything worth remembering">' + escapeHtml(c.notes || "") + '</textarea></label>' +
-      '<label>Score breakdown<div class="score-breakdown"><span class="total">total: ★ ' + sb.total + '</span><br>' + breakdownLines + '</div></label>' +
+      '<label>Score breakdown<div class="score-breakdown"><span class="total">total: ★ ' + sbTotal + '</span><br>' + breakdownLines + '</div></label>' +
       '<div class="actions">' +
         '<button class="secondary" id="d-cancel">Cancel</button>' +
         '<button id="d-save">Save</button>' +
@@ -673,9 +582,9 @@
   document.getElementById("q").addEventListener("input", (e) => { filters.q = e.target.value; render(); });
   document.getElementById("seg-filter").addEventListener("change", (e) => { filters.segment = e.target.value; render(); });
   document.getElementById("dream-only").addEventListener("change", (e) => { filters.dreamOnly = e.target.checked; render(); });
-  document.getElementById("view-lb").addEventListener("click", () => switchView("leaderboard"));
+  document.getElementById("view-eng").addEventListener("click", () => switchView("engagement"));
   document.getElementById("view-board").addEventListener("click", () => switchView("board"));
-  document.getElementById("lb-followers-only").addEventListener("change", (e) => { lbFollowersOnly = e.target.checked; render(); });
+  document.getElementById("hide-nondream").addEventListener("change", (e) => { hideNonDream = e.target.checked; render(); });
   document.getElementById("refresh").addEventListener("click", load);
   document.getElementById("close").addEventListener("click", closeDrawer);
   document.getElementById("mask").addEventListener("click", closeDrawer);

@@ -93,14 +93,25 @@ Two halves:
   `engagement-scratch.json` (gitignored).
 - **Write half** — `node sync-engagement.mjs` reads that scratch, matches each
   engager to an existing contact by `x_handle`, dedupes against existing events
-  (key: contact + type + tweet_id), assigns score weights
-  (reply/quote = 3, repost = 2, like = 1), and inserts inbound events into PB.
+  (key: contact + type + tweet_id), assigns points
+  (**reply = 7, repost = 3, quote = 3, like = 1**), and inserts inbound events.
+
+**Only dream-customer followers are recorded** by default — matched contacts
+that aren't flagged `dream_customer` are skipped + logged. Flag a follower as a
+dream customer in the dashboard (click their row → "Dream customer" → Save, or
+drag on the Board) before their engagement will be tracked.
 
 ```bash
-node sync-engagement.mjs                  # match existing contacts only (default)
-node sync-engagement.mjs --dry-run        # preview, write nothing
-node sync-engagement.mjs --create-missing # also create new contacts for non-CRM engagers
+node sync-engagement.mjs                    # dream customers only (default)
+node sync-engagement.mjs --dry-run          # preview, write nothing
+node sync-engagement.mjs --include-non-dream # record every engager regardless of dream status
+node sync-engagement.mjs --create-missing   # also create contacts for non-CRM engagers
 ```
+
+The dashboard's **📊 Engagement** view shows followers in a table — X account ·
+likes · replies · reposts · points — with a **NOT DREAM** badge on non-dream
+followers and a "hide non-dream" toggle. Points are computed live from the
+weights above (so changing them re-scores everyone without a re-scrape).
 
 **Hard limitation:** X's web UI virtualizes the notifications feed, so a single
 run only sees a rolling window of recent events (no full backfill). The job is
