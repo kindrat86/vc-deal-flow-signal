@@ -1608,7 +1608,7 @@ export const comparisons: Comparison[] = [
     ],
   },
   {
-    slug: "compare/gitdealflow-vs-a-consultant-style-sector-report",
+    slug: "gitdealflow-vs-a-consultant-style-sector-report",
     title: "GitDealFlow vs a Consultant-Style Sector Report",
     description:
       "A consultant-style sector report gives one polished snapshot. GitDealFlow is stronger when you need recurring timing signal instead of a static one-off deliverable.",
@@ -1653,7 +1653,7 @@ export const comparisons: Comparison[] = [
     ],
   },
   {
-    slug: "compare/insider-vs-a-paid-newsletter-for-investors",
+    slug: "insider-vs-a-paid-newsletter-for-investors",
     title: "Insider vs a Paid Newsletter for Investors",
     description:
       "A paid newsletter gives recurring commentary. Insider is stronger when you want a tighter higher-touch layer around context, steadiness, and recurring judgment support.",
@@ -1698,7 +1698,7 @@ export const comparisons: Comparison[] = [
     ],
   },
   {
-    slug: "compare/weekly-watchlist-vs-a-static-startup-database",
+    slug: "weekly-watchlist-vs-a-static-startup-database",
     title: "Weekly Watchlist vs a Static Startup Database",
     description:
       "A static startup database helps you look up what is already visible. A weekly watchlist is stronger when you want recurring attention on what changed before the market fully catches up.",
@@ -1743,7 +1743,7 @@ export const comparisons: Comparison[] = [
     ],
   },
   {
-    slug: "compare/gitdealflow-vs-a-twitter-list-for-early-sourcing",
+    slug: "gitdealflow-vs-a-twitter-list-for-early-sourcing",
     title: "GitDealFlow vs a Twitter List for Early Sourcing",
     description:
       "A Twitter list can surface chatter and serendipity. GitDealFlow is stronger when you want a calmer, recurring signal layer built on changes you can verify instead of endless social flow.",
@@ -1788,7 +1788,7 @@ export const comparisons: Comparison[] = [
     ],
   },
   {
-    slug: "compare/gitdealflow-vs-a-manual-github-check-every-monday",
+    slug: "gitdealflow-vs-a-manual-github-check-every-monday",
     title: "GitDealFlow vs a Manual GitHub Check Every Monday",
     description:
       "Manual GitHub checks can work at very small scale. GitDealFlow is stronger when you want recurring timing without rebuilding the review process from scratch every week.",
@@ -1833,7 +1833,7 @@ export const comparisons: Comparison[] = [
     ],
   },
   {
-    slug: "compare/dashboard-vs-a-custom-airtable-deal-flow-board",
+    slug: "dashboard-vs-a-custom-airtable-deal-flow-board",
     title: "Dashboard vs a Custom Airtable Deal Flow Board",
     description:
       "A custom Airtable board is useful for organizing names you already track. Dashboard is stronger when you want a recurring signal surface that helps you decide what deserves attention in the first place.",
@@ -1878,7 +1878,7 @@ export const comparisons: Comparison[] = [
     ],
   },
   {
-    slug: "compare/first-look-vs-a-partner-brainstorm-session",
+    slug: "first-look-vs-a-partner-brainstorm-session",
     title: "First Look vs a Partner Brainstorm Session",
     description:
       "A partner brainstorm session can create ideas fast. First Look is stronger when one live thesis already needs a sharper answer that survives after the room goes quiet.",
@@ -1923,7 +1923,7 @@ export const comparisons: Comparison[] = [
     ],
   },
   {
-    slug: "compare/dashboard-vs-a-free-crm-for-early-sourcing",
+    slug: "dashboard-vs-a-free-crm-for-early-sourcing",
     title: "Dashboard vs a Free CRM for Early Sourcing",
     description:
       "A free CRM is useful for tracking names after you already have them. Dashboard is stronger when you need a recurring signal surface that helps you decide what deserves attention first.",
@@ -1968,7 +1968,7 @@ export const comparisons: Comparison[] = [
     ],
   },
   {
-    slug: "compare/insider-vs-a-whatsapp-group-for-co-investors",
+    slug: "insider-vs-a-whatsapp-group-for-co-investors",
     title: "Insider vs a WhatsApp Group for Co-Investors",
     description:
       "A WhatsApp group is useful for fast loose coordination. Insider is stronger when you want a tighter, calmer layer around recurring conviction support instead of constant chat flow.",
@@ -2013,7 +2013,7 @@ export const comparisons: Comparison[] = [
     ],
   },
   {
-    slug: "compare/gitdealflow-vs-a-shared-google-sheet-for-deal-flow",
+    slug: "gitdealflow-vs-a-shared-google-sheet-for-deal-flow",
     title: "GitDealFlow vs a Shared Google Sheet for Deal Flow",
     description:
       "A shared Google Sheet is useful for lightweight collaboration and note-taking. GitDealFlow is stronger when you want a recurring timing layer instead of a manually refreshed shared list.",
