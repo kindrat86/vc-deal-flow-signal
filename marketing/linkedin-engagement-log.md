@@ -109,3 +109,8 @@
 - Own-post reply reminder: Wednesday May 27 was a scheduled post day (Tue/Wed/Thu/Fri cadence) — schedule file still missing, check linkedin.com/company/gitdealflow/posts manually and reply within 2h
 - Targets: Sarah Tavel, Fabrice Grinda, Jenny Fielding
 - Drafts saved above for copy-paste
+
+## 2026-05-29
+- Own-post reply reminder: Thursday May 28 was a scheduled post day (Tue/Wed/Thu/Fri cadence) — schedule file still missing and 30-day window (Apr 21–May 20) has elapsed; check linkedin.com/company/gitdealflow/posts manually and reply within 2h
+- Targets: Fabrice Grinda, Jenny Fielding, Ryan Hoover
+- Drafts saved above for copy-paste
