@@ -36,3 +36,7 @@ CREDENTIAL-ROTATION.md
 .claude/settings.local.json
 .claude/worktrees/
 .env*.local
+
+# GSC service-account key (never commit)
+tools/.gsc-service-account.json
+tools/*gsc*service*account*.json
