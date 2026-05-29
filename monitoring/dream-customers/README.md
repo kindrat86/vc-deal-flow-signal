@@ -77,14 +77,66 @@ it up.
 launchctl unload ~/Library/LaunchAgents/com.gitdealflow.dream-customers.plist
 ```
 
+## Inbound engagement scrape (who engages with YOU)
+
+Separate from the daily "what did they post" check, this captures **inbound
+engagement** — who replied to, liked, reposted, or quoted @data_nerd's posts —
+so each card shows an engagement **★ score** and a reply/like/repost breakdown
+(the PB `engagement_events` collection the dashboard already reads).
+
+Two halves:
+
+- **Read half** — `engagement-cron-prompt.md` is the prompt a Claude session
+  reads to drive Chrome MCP over x.com's Notifications tabs
+  (`/notifications/mentions` for replies/quotes, `/notifications` for
+  likes/reposts). It parses events into a flat JSON array and writes
+  `engagement-scratch.json` (gitignored).
+- **Write half** — `node sync-engagement.mjs` reads that scratch, matches each
+  engager to an existing contact by `x_handle`, dedupes against existing events
+  (key: contact + type + tweet_id), assigns score weights
+  (reply/quote = 3, repost = 2, like = 1), and inserts inbound events into PB.
+
+```bash
+node sync-engagement.mjs                  # match existing contacts only (default)
+node sync-engagement.mjs --dry-run        # preview, write nothing
+node sync-engagement.mjs --create-missing # also create new contacts for non-CRM engagers
+```
+
+**Hard limitation:** X's web UI virtualizes the notifications feed, so a single
+run only sees a rolling window of recent events (no full backfill). The job is
+designed to run on a schedule and accumulate; re-seeing an event is a deduped
+no-op. Reply tweet_ids are the engager's own reply id; like/repost tweet_ids
+are a stable hash of the liked post's text (no engager-side id exists).
+
+### Schedule it (launchd)
+
+`run-engagement.sh` + `com.gitdealflow.engagement.plist` mirror the tweet-check
+job but fire at **09:00 local** (offset from 08:30 so two Claude sessions don't
+contend for Chrome MCP at once).
+
+```bash
+cd monitoring/dream-customers
+chmod +x run-engagement.sh
+cp com.gitdealflow.engagement.plist ~/Library/LaunchAgents/
+launchctl load ~/Library/LaunchAgents/com.gitdealflow.engagement.plist
+launchctl list | grep engagement      # should show the job
+
+./run-engagement.sh                    # trigger a run manually
+launchctl unload ~/Library/LaunchAgents/com.gitdealflow.engagement.plist  # pause
+```
+
 ## Files
 
 ```
 data.json                      # roster + cron-collected signals (committed)
 build.mjs                      # data.json → dashboard.html (deterministic)
 dashboard.html                 # generated; git-ignored or committed, your call
-cron-prompt.md                 # prompt body the Claude CLI reads
-run-daily.sh                   # shell wrapper launchd fires
+cron-prompt.md                 # prompt body the Claude CLI reads (tweet check)
+engagement-cron-prompt.md      # prompt body for the inbound-engagement scrape
+sync-engagement.mjs            # engagement-scratch.json → PB engagement_events
+run-engagement.sh              # shell wrapper launchd fires (engagement, 09:00)
+com.gitdealflow.engagement.plist  # launchd job for the engagement scrape
+run-daily.sh                   # shell wrapper launchd fires (tweet check, 08:30)
 com.gitdealflow.dream-customers.plist   # launchd job (copy to LaunchAgents)
 README.md                      # this file
 cron.log                       # one line per run (created on first run)

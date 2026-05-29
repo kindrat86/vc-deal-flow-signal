@@ -4,7 +4,15 @@ cron.run.err
 cron-skipped-*.log
 launchd.out.log
 launchd.err.log
+engagement.run.log
+engagement.run.err
+launchd.engagement.out.log
+launchd.engagement.err.log
 data.json.tmp
+
+# Engagement scrape scratch (cron writes this; sync-engagement.mjs reads it)
+engagement-scratch.json
+engagement-scratch.json.tmp
 
 # Local-only: PB token + creds for the launcher
 dashboard.config.js
