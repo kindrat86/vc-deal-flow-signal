@@ -196,7 +196,14 @@
     return;
   }
 
-  const PB_URL = window.PB_CONFIG.url.replace(/\/$/, "");
+  // When the page is served over http(s) — locally on :8090 OR through the
+  // Tailscale proxy (https://…ts.net) — PocketBase's API lives at the SAME
+  // origin, so use that. This avoids mixed-content blocking (an https page
+  // can't fetch http://127.0.0.1) and the wrong-host problem when opened from
+  // another device. Only file:// opens fall back to the configured absolute URL.
+  const PB_URL = location.protocol === "file:"
+    ? window.PB_CONFIG.url.replace(/\/$/, "")
+    : location.origin;
   const TOKEN = window.PB_CONFIG.token;
 
   // Engagement tiers, highest first. score = sum of weighted inbound events.
