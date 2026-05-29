@@ -101,6 +101,7 @@ export const SOAP_OPERA_EMAILS = [
 <p>Three weeks later, they announced a $4M Series A led by a top-tier fund.</p>
 <p>That was the wall. The investors who got in had seen exactly what I'd seen — they just didn't talk themselves out of it. The signal was right there in the commit graph. Public. Free. Updating in real time. The only thing missing was someone willing to read it before consensus formed.</p>
 <p>So instead of writing another apologetic cold email, I built a system that reads the commit graph for me. Across 4,200 venture-backed orgs. Every week. Mechanically. Without the talking-myself-out part.</p>
+<p>To be clear about what this is: it's a tool, not a fund. I'm not investing against you — I built the system so you can read the same signal I do, before consensus forms.</p>
 <p>Every Sunday from here on, I'll send you the top five startups showing unusual engineering acceleration — commit velocity spikes, contributor surges, new infrastructure repos. The patterns that precede fundraises, product launches, and breakout moments, usually 21 to 47 days before the deck circulates.</p>
 <p>Tomorrow, I want to challenge something you probably believe about whether GitHub data is even worth reading. Most of the people you trust on this are wrong, and the reason they're wrong is also why your current deal flow looks the way it does.</p>
 <p>Talk soon,<br>${FROM_NAME}</p>
