@@ -4,6 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <title>Dream Customers CRM</title>
 <style>
   * { box-sizing: border-box; }
@@ -74,6 +77,40 @@
   .splash { position:fixed; inset:0; display:flex; align-items:center; justify-content:center; background:#0b1220; z-index:200; color:#64748b; font-size:13px; }
   .splash.err { color:#fca5a5; }
   .splash a { color:#0ea5e9; }
+
+  /* ---- View toggle ---- */
+  .viewtoggle { display:inline-flex; border:1px solid #334155; border-radius:6px; overflow:hidden; }
+  .viewtoggle button { background:#0b1220; color:#94a3b8; border:0; padding:5px 11px; font-size:12px; cursor:pointer; }
+  .viewtoggle button:hover { color:#e2e8f0; }
+  .viewtoggle button.active { background:#0ea5e9; color:#0b1220; font-weight:600; }
+
+  /* ---- Followers engagement table ---- */
+  #engagement { padding:18px; max-width:780px; margin:0 auto; }
+  .eng-head { font-size:12px; color:#64748b; margin-bottom:12px; }
+  .eng-head b { color:#cbd5e1; font-weight:600; }
+  .eng-table { width:100%; border-collapse:separate; border-spacing:0 6px; font-size:13px; }
+  .eng-table th { text-align:left; font-size:10px; text-transform:uppercase; letter-spacing:0.8px; color:#64748b; padding:0 12px 4px; font-weight:600; white-space:nowrap; }
+  .eng-table th.num, .eng-table td.num { text-align:right; }
+  .eng-table tbody tr { background:#111a2e; cursor:pointer; }
+  .eng-table tbody tr:hover td { background:#16203a; }
+  .eng-table td { padding:9px 12px; border-top:1px solid #1e293b; border-bottom:1px solid #1e293b; vertical-align:middle; }
+  .eng-table td:first-child { border-left:1px solid #1e293b; border-radius:8px 0 0 8px; }
+  .eng-table td:last-child { border-right:1px solid #1e293b; border-radius:0 8px 8px 0; }
+  .eng-table .acct { display:flex; align-items:center; gap:10px; }
+  .eng-table .avatar { width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:13px; color:#0b1220; flex:0 0 auto; }
+  .eng-table .who { display:flex; flex-direction:column; line-height:1.3; min-width:0; }
+  .eng-table .who .nm { font-weight:600; color:#f1f5f9; display:flex; align-items:center; gap:7px; flex-wrap:wrap; }
+  .eng-table .who .hd { color:#0ea5e9; font-size:11px; text-decoration:none; }
+  .eng-table .who .hd:hover { text-decoration:underline; }
+  .eng-table td.num { font-family:ui-monospace,Menlo,monospace; color:#cbd5e1; }
+  .eng-table td.pts { color:#fbbf24; font-weight:700; }
+  .eng-table td.pts.zero { color:#475569; }
+  .nd-badge { font-size:9px; font-weight:700; letter-spacing:0.5px; padding:1px 6px; border-radius:4px; background:rgba(244,63,94,0.16); color:#fda4af; border:1px solid rgba(244,63,94,0.35); white-space:nowrap; }
+  .eng-empty { text-align:center; color:#475569; padding:26px 12px; }
+  @media (max-width:560px) {
+    .eng-table th, .eng-table td { padding-left:8px; padding-right:8px; }
+    .eng-table .who .nm { font-size:12px; }
+  }
 </style>
 </head>
 <body>
@@ -87,21 +124,12 @@
   </div>
   <div class="controls">
     <input type="search" id="q" placeholder="search name / handle / firm">
-    <select id="seg-filter">
-      <option value="">all segments</option>
-      <option value="A">A · Solo GPs / micro-VCs</option>
-      <option value="B">B · Series A/B GPs</option>
-      <option value="C">C · Corp Dev</option>
-      <option value="D">D · LP-side</option>
-      <option value="E">E · PE operating partners</option>
-      <option value="F">F · Misc apex</option>
-    </select>
-    <label class="toggle"><input type="checkbox" id="dream-only" checked> dream only</label>
+    <label class="toggle"><input type="checkbox" id="hide-nondream"> hide non-dream</label>
     <button class="refresh" id="refresh">↻ refresh</button>
   </div>
 </header>
 
-<div class="board" id="board" style="display:none"></div>
+<div id="engagement" style="display:none"></div>
 
 <div class="drawer-mask" id="mask"></div>
 <aside class="drawer" id="drawer">
@@ -134,13 +162,24 @@
     return;
   }
 
-  const PB_URL = window.PB_CONFIG.url.replace(/\/$/, "");
+  // When the page is served over http(s) — locally on :8090 OR through the
+  // Tailscale proxy (https://…ts.net) — PocketBase's API lives at the SAME
+  // origin, so use that. This avoids mixed-content blocking (an https page
+  // can't fetch http://127.0.0.1) and the wrong-host problem when opened from
+  // another device. Only file:// opens fall back to the configured absolute URL.
+  const PB_URL = location.protocol === "file:"
+    ? window.PB_CONFIG.url.replace(/\/$/, "")
+    : location.origin;
   const TOKEN = window.PB_CONFIG.token;
+
+  // Points per inbound interaction. Quote-tweets count as reposts.
+  const POINTS = { like: 1, repost: 3, quote: 3, reply: 7 };
 
   let CONTACTS = []; // server records (with id)
   let EVENTS_BY_CONTACT = {}; // { contactId: [events] }
   let activeContactId = null;
-  let filters = { q: "", segment: "", dreamOnly: true };
+  let filters = { q: "" };
+  let hideNonDream = false;
 
   // ---- API ----
   async function api(path, opts = {}) {
@@ -200,141 +239,107 @@
     return Date.now() - new Date(iso).getTime() < 12 * 3600 * 1000;
   }
 
+  // Count inbound events by type. Points are computed live from POINTS so the
+  // displayed totals always reflect the current weights, regardless of the
+  // score_weight stored on each event when it was scraped.
+  function typeCounts(contactId) {
+    const ev = EVENTS_BY_CONTACT[contactId] || [];
+    const c = { like: 0, reply: 0, repost: 0, quote: 0 };
+    for (const e of ev) if (e.type in c) c[e.type]++;
+    return c;
+  }
   function scoreOf(contactId) {
-    const events = EVENTS_BY_CONTACT[contactId] || [];
-    let total = 0;
-    for (const e of events) total += (e.score_weight || 0);
-    return total;
-  }
-
-  function scoreBreakdown(contactId) {
-    const events = EVENTS_BY_CONTACT[contactId] || [];
-    const byKey = {};
-    for (const e of events) {
-      const k = e.direction + "/" + e.type;
-      byKey[k] = byKey[k] || { count: 0, weight: 0 };
-      byKey[k].count++;
-      byKey[k].weight += (e.score_weight || 0);
-    }
-    return { total: scoreOf(contactId), breakdown: byKey };
-  }
-
-  function passesFilter(c) {
-    if (filters.dreamOnly && !c.dream_customer) return false;
-    if (filters.segment && c.segment !== filters.segment) return false;
-    if (filters.q) {
-      const q = filters.q.toLowerCase();
-      const hay = (c.x_handle + " " + (c.display_name || "") + " " + (c.firm || "") + " " + (c.role || "")).toLowerCase();
-      if (!hay.includes(q)) return false;
-    }
-    return true;
-  }
-
-  // ---- Render ----
-  function makeCard(c) {
-    const card = document.createElement("article");
-    card.className = "card" + (isFresh(c.last_tweet_at) ? " fresh" : "") + (c.dream_customer ? "" : " not-dream");
-    card.draggable = true;
-    card.dataset.id = c.id;
-
-    const score = scoreOf(c.id);
-    const chips = [];
-    if (c.segment) chips.push('<span class="chip seg-' + c.segment + '" title="Segment ' + c.segment + ' — ' + (SEGMENT_LABEL[c.segment] || "") + '">' + c.segment + '</span>');
-    if (c.confidence) chips.push('<span class="chip conf-' + c.confidence + '" title="Identification confidence">' + c.confidence + '</span>');
-    if (c.dream_customer) chips.push('<span class="chip dream" title="Dream customer">★</span>');
-
-    let signalHtml = "";
-    if (c.last_tweet_text) {
-      const rt = relTime(c.last_tweet_at);
-      signalHtml =
-        '<div class="signal">' +
-          '<span class="when ' + (isFresh(c.last_tweet_at) ? '' : 'cool') + '">' + (rt || "—") + '</span>' +
-          '<div class="tweet">' + escapeHtml(c.last_tweet_text) + '</div>' +
-        '</div>';
-    }
-
-    card.innerHTML =
-      '<div class="name">' + escapeHtml(c.display_name || "—") + '</div>' +
-      '<div class="handle"><a href="https://twitter.com/' + encodeURIComponent(c.x_handle) + '" target="_blank" rel="noopener">@' + escapeHtml(c.x_handle) + '</a></div>' +
-      (c.firm || c.role ? '<div class="firm">' + escapeHtml([c.firm, c.role].filter(Boolean).join(" · ")) + '</div>' : "") +
-      '<div class="bottom">' +
-        '<div class="chips">' + chips.join("") + '</div>' +
-        '<span class="score ' + (score > 0 ? "has" : "") + '" title="Engagement score (sum of weighted events)">★ ' + score + '</span>' +
-      '</div>' +
-      signalHtml;
-
-    card.addEventListener("click", (e) => { if (!e.target.closest("a")) openDrawer(c.id); });
-    card.addEventListener("dragstart", (e) => {
-      card.classList.add("dragging");
-      e.dataTransfer.setData("text/contact-id", c.id);
-      e.dataTransfer.effectAllowed = "move";
-    });
-    card.addEventListener("dragend", () => card.classList.remove("dragging"));
-    return card;
+    const c = typeCounts(contactId);
+    return c.like * POINTS.like + (c.repost + c.quote) * POINTS.repost + c.reply * POINTS.reply;
   }
 
   function escapeHtml(s) {
     return String(s).replace(/[&<>"']/g, (m) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[m]));
   }
 
-  function attachDropTargets(col) {
-    col.addEventListener("dragover", (e) => {
-      e.preventDefault();
-      e.dataTransfer.dropEffect = "move";
-      col.classList.add("drag-over");
-    });
-    col.addEventListener("dragleave", () => col.classList.remove("drag-over"));
-    col.addEventListener("drop", async (e) => {
-      e.preventDefault();
-      col.classList.remove("drag-over");
-      const id = e.dataTransfer.getData("text/contact-id");
-      const newStage = col.dataset.stage;
-      const c = CONTACTS.find((x) => x.id === id);
-      if (!c || c.stage === newStage) return;
-      const prevStage = c.stage;
-      c.stage = newStage;
-      render();
-      try {
-        await patchContact(id, { stage: newStage });
-        toast("→ " + newStage);
-      } catch (err) {
-        c.stage = prevStage;
-        render();
-        toast("save failed: " + err.message, true);
-      }
-    });
+  // ---- Render ----
+  function render() {
+    updateMeta();
+    renderEngagement();
   }
 
-  function render() {
-    const visible = CONTACTS.filter(passesFilter);
+  function updateMeta() {
+    const followers = CONTACTS.filter((c) => c.stage === "followers").length;
     document.getElementById("meta").innerHTML =
-      visible.length + " / " + CONTACTS.length + " contacts · " +
-      "token: " + (window.PB_CONFIG.generated_at || "—");
+      followers + " followers · token: " + (window.PB_CONFIG.generated_at || "—");
+  }
 
-    const board = document.getElementById("board");
-    board.innerHTML = "";
-    const byStage = Object.fromEntries(STAGES.map((s) => [s.key, []]));
-    for (const c of visible) {
-      const stage = byStage[c.stage] ? c.stage : "sourced";
-      byStage[stage].push(c);
+  // ---- Followers engagement table ----
+  function avatarHue(s) {
+    let h = 0;
+    for (const ch of String(s)) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
+    return h % 360;
+  }
+  function initial(c) {
+    return escapeHtml(String(c.display_name || c.x_handle || "?").trim().slice(0, 1).toUpperCase());
+  }
+
+  function engPool() {
+    let pool = CONTACTS.filter((c) => c.stage === "followers");
+    if (hideNonDream) pool = pool.filter((c) => c.dream_customer);
+    if (filters.q) {
+      const q = filters.q.toLowerCase();
+      pool = pool.filter((c) => (c.x_handle + " " + (c.display_name || "") + " " + (c.firm || "")).toLowerCase().includes(q));
     }
-    for (const s of STAGES) {
-      const col = document.createElement("section");
-      col.className = "col";
-      col.dataset.stage = s.key;
-      const cards = byStage[s.key];
-      col.innerHTML =
-        '<h2>' + s.label + ' <span class="count">' + cards.length + '</span></h2>' +
-        '<div class="cards"></div>';
-      const cardsEl = col.querySelector(".cards");
-      if (cards.length === 0) {
-        cardsEl.innerHTML = '<div class="empty">drop here</div>';
-      } else {
-        for (const c of cards) cardsEl.appendChild(makeCard(c));
-      }
-      attachDropTargets(col);
-      board.appendChild(col);
+    pool.sort((a, b) => scoreOf(b.id) - scoreOf(a.id) || String(a.display_name || a.x_handle).localeCompare(String(b.display_name || b.x_handle)));
+    return pool;
+  }
+
+  function engRow(c) {
+    const cc = typeCounts(c.id);
+    const reposts = cc.repost + cc.quote;
+    const pts = scoreOf(c.id);
+    const hue = avatarHue(c.x_handle);
+    const badge = c.dream_customer ? "" : ' <span class="nd-badge" title="Not a dream customer">NOT DREAM</span>';
+    return (
+      '<tr data-id="' + c.id + '">' +
+        '<td><div class="acct">' +
+          '<span class="avatar" style="background:hsl(' + hue + ',55%,62%)">' + initial(c) + "</span>" +
+          '<span class="who">' +
+            '<span class="nm">' + escapeHtml(c.display_name || c.x_handle) + badge + "</span>" +
+            '<a class="hd" href="https://twitter.com/' + encodeURIComponent(c.x_handle) + '" target="_blank" rel="noopener">@' + escapeHtml(c.x_handle) + "</a>" +
+          "</span>" +
+        "</div></td>" +
+        '<td class="num">' + cc.like + "</td>" +
+        '<td class="num">' + cc.reply + "</td>" +
+        '<td class="num">' + reposts + "</td>" +
+        '<td class="num pts' + (pts ? "" : " zero") + '">' + pts + "</td>" +
+      "</tr>"
+    );
+  }
+
+  function renderEngagement() {
+    const el = document.getElementById("engagement");
+    const followers = CONTACTS.filter((c) => c.stage === "followers");
+    const dreamCount = followers.filter((c) => c.dream_customer).length;
+    const pool = engPool();
+
+    let rows = pool.map(engRow).join("");
+    if (!pool.length) {
+      rows = '<tr><td colspan="5" class="eng-empty">No followers to show' + (hideNonDream ? " (non-dream hidden)" : "") + ".</td></tr>";
     }
+
+    el.innerHTML =
+      '<div class="eng-head"><b>' + dreamCount + "</b> dream-customer followers · <b>" + followers.length + "</b> followers total · points = 👍×1 + 🔁×3 + 💬×7</div>" +
+      '<table class="eng-table">' +
+        "<thead><tr>" +
+          "<th>X account</th>" +
+          '<th class="num">👍 Likes</th>' +
+          '<th class="num">💬 Replies</th>' +
+          '<th class="num">🔁 Reposts</th>' +
+          '<th class="num">★ Points</th>' +
+        "</tr></thead>" +
+        "<tbody>" + rows + "</tbody>" +
+      "</table>";
+
+    el.querySelectorAll("tr[data-id]").forEach((node) => {
+      node.addEventListener("click", (e) => { if (!e.target.closest("a")) openDrawer(node.dataset.id); });
+    });
   }
 
   // ---- Drawer ----
@@ -342,8 +347,16 @@
     activeContactId = id;
     const c = CONTACTS.find((x) => x.id === id);
     if (!c) return;
-    const sb = scoreBreakdown(id);
-    const breakdownLines = Object.entries(sb.breakdown).map(([k, v]) => k + ": " + v.count + " × → " + v.weight).join("<br>") || "(no events yet — populated by v2 scraper)";
+    const cc = typeCounts(id);
+    const reposts = cc.repost + cc.quote;
+    const sbTotal = scoreOf(id);
+    const breakdownLines = (sbTotal === 0)
+      ? "(no engagement recorded yet)"
+      : [
+          "likes:   " + cc.like + " × 1 = " + (cc.like * POINTS.like),
+          "reposts: " + reposts + " × 3 = " + (reposts * POINTS.repost),
+          "replies: " + cc.reply + " × 7 = " + (cc.reply * POINTS.reply),
+        ].join("<br>");
 
     document.getElementById("drawer-body").innerHTML =
       '<label>Handle<input value="@' + escapeHtml(c.x_handle) + '" disabled></label>' +
@@ -363,7 +376,7 @@
       '</div>' +
       '<label><input type="checkbox" id="d-dream" ' + (c.dream_customer ? "checked" : "") + ' style="width:auto;margin-right:6px;vertical-align:middle"> Dream customer</label>' +
       '<label>Notes<textarea id="d-notes" placeholder="anything worth remembering">' + escapeHtml(c.notes || "") + '</textarea></label>' +
-      '<label>Score breakdown<div class="score-breakdown"><span class="total">total: ★ ' + sb.total + '</span><br>' + breakdownLines + '</div></label>' +
+      '<label>Score breakdown<div class="score-breakdown"><span class="total">total: ★ ' + sbTotal + '</span><br>' + breakdownLines + '</div></label>' +
       '<div class="actions">' +
         '<button class="secondary" id="d-cancel">Cancel</button>' +
         '<button id="d-save">Save</button>' +
@@ -418,7 +431,7 @@
       }
       splash.style.display = "none";
       document.getElementById("hdr").style.display = "flex";
-      document.getElementById("board").style.display = "flex";
+      document.getElementById("engagement").style.display = "block";
       render();
     } catch (err) {
       splash.className = "splash err";
@@ -428,8 +441,7 @@
 
   // Wire up filters
   document.getElementById("q").addEventListener("input", (e) => { filters.q = e.target.value; render(); });
-  document.getElementById("seg-filter").addEventListener("change", (e) => { filters.segment = e.target.value; render(); });
-  document.getElementById("dream-only").addEventListener("change", (e) => { filters.dreamOnly = e.target.checked; render(); });
+  document.getElementById("hide-nondream").addEventListener("change", (e) => { hideNonDream = e.target.checked; render(); });
   document.getElementById("refresh").addEventListener("click", load);
   document.getElementById("close").addEventListener("click", closeDrawer);
   document.getElementById("mask").addEventListener("click", closeDrawer);
