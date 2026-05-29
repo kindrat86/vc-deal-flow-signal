@@ -14,11 +14,11 @@ Then: a sharp break. Velocity doubles or triples. New contributors appear (often
 
 The company is either deploying fresh capital into engineering, or building furiously to hit a milestone that will trigger a raise.
 
-Either way, the 14-day acceleration window is the single best leading indicator I've found.
+Either way, that 14-day window where a startup starts shipping faster is the single best early signal I've found.
 
 By the time AngelList shows "trending" or a TechCrunch article drops, you're already weeks late.
 
-The free digest gives you the top 5 each month. The Dashboard gives you 60+ startups across 20 sectors with filters: https://gitdealflow.com/#pricing
+The free digest gives you the top 5 each month. The Dashboard surfaces 60+ startups heating up early across 20 sectors, filtered to your sectors — you just look: https://gitdealflow.com/#pricing
 
 The Data Nerd
 
