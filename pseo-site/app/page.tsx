@@ -37,7 +37,7 @@ import {
 
 export const metadata: Metadata = {
   description:
-    "See which startups are accelerating before the round feels obvious. Weekly public engineering signals, calmer timing, and direct proof.",
+    "A deal-flow signal tool for investors, not a fund. See which startups are accelerating before the round feels obvious — public engineering signals, calmer timing, and direct proof.",
   // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
   alternates: {
     canonical: "/",
@@ -1017,7 +1017,8 @@ export default function Home() {
             3.4× Series-A lift
           </a>{" "}
           in the SSRN panel of 219 confirmed fundraises (median lead time 21–47
-          days). Free forever, built to give you a clearer read before the round gets obvious.
+          days). It is a tool, not a fund — we surface the signal, you make the
+          calls. Free to browse, built to give you a clearer read before the round gets obvious.
         </p>
       </header>
 
