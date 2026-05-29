@@ -27,6 +27,8 @@
       "permanent": true
     },
     { "source": "/AGENTS.md", "destination": "/agents.md", "permanent": true },
+    { "source": "/predicted", "destination": "https://signals.gitdealflow.com/predicted", "permanent": true },
+    { "source": "/book", "destination": "https://signals.gitdealflow.com/book", "permanent": true },
     { "source": "/g2", "destination": "https://www.g2.com/products/gitdealflow/reviews", "permanent": false }
   ],
   "headers": [
