@@ -18,7 +18,7 @@ export async function GET() {
       name: "vc-deal-flow-signal",
       displayName: "VC Deal Flow Signal",
       description:
-        "GitHub momentum tracking for venture deal flow. Find startups whose engineering is accelerating before they raise. Six read-only tools across 20 sectors of venture-backed startups, refreshed weekly.",
+        "GitHub momentum tracking for venture deal flow. Find startups whose engineering is accelerating before they raise. Seven read-only tools across 20 sectors of venture-backed startups, refreshed weekly.",
       version: "1.5.4",
       vendor: {
         name: "GitDealFlow",
@@ -102,6 +102,13 @@ export async function GET() {
           name: "get_methodology",
           description:
             "Full methodology document covering data sources, signal classification, refresh cadence, and known limitations.",
+          readOnly: true,
+          idempotent: true,
+        },
+        {
+          name: "get_diligence_dossier",
+          description:
+            "Public-source diligence dossier for a company or entity: who acquired it (M&A history), which funds publicly backed it, and its published engineering signal. Returns found:false with an honest note when outside the tracked corpus — never guesses.",
           readOnly: true,
           idempotent: true,
         },
