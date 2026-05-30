@@ -835,6 +835,24 @@ const PROMPTS = [
       { name: "name", description: "Startup display name or GitHub org slug.", required: true },
     ],
   },
+  {
+    name: "sourcing_session",
+    description:
+      "Run a full sourcing session in one pass — the corp-dev / scout workflow. Shortlists the strongest engineering-acceleration signals (optionally by sector/region), then attaches a transparent, citable funding-likelihood read to each pick. Pulls live data via shortlist_signals + predict_funding.",
+    arguments: [
+      { name: "sector", description: "Optional sector slug to focus the shortlist (e.g. 'ai-ml'). Omit to scan all.", required: false },
+      { name: "geography", description: "Optional region filter (US/EU/UK/APAC/LATAM/Canada). Aliases normalize up to the region.", required: false },
+      { name: "count", description: "How many companies to shortlist and score. Default 5.", required: false },
+    ],
+  },
+  {
+    name: "diligence_brief",
+    description:
+      "Assemble a cited one-page diligence brief for a named company: public-source dossier (M&A, backers, signal), a transparent funding-likelihood read with its evidence chain, and the methodology behind the score. Pulls live data via get_diligence_dossier + predict_funding + get_methodology.",
+    arguments: [
+      { name: "name", description: "Company display name or GitHub org slug.", required: true },
+    ],
+  },
 ];
 
 const FOOTER = "— Powered by gitdealflow.com";
@@ -2006,6 +2024,45 @@ function handlePromptGet(id: JsonRpcId | undefined, params: unknown) {
         "Step 3: Call `get_methodology` to interpret signalType correctly.",
         `Step 4: Optionally call \`search_startups_by_sector\` for 2-3 comparables.`,
         "Step 5: Sections: TL;DR, Engineering Signal Profile, Sector Context, Leading-Indicator Read, Open Questions.",
+      ].join("\n");
+      break;
+    }
+    case "sourcing_session": {
+      const sector = a.sector;
+      const geography = a.geography;
+      const count = a.count || "5";
+      const shortlistArgs = [
+        sector ? `sector="${sector}"` : null,
+        geography ? `geography="${geography}"` : null,
+        `limit=${count}`,
+      ]
+        .filter(Boolean)
+        .join(", ");
+      messageText = [
+        `You are running a sourcing session${sector ? ` for ${sector}` : ""}${geography ? ` in ${geography}` : ""} — a corp-dev / scout watchlist grounded in engineering-acceleration signals.`,
+        "",
+        `Step 1: Call \`shortlist_signals\` with ${shortlistArgs}. Returns the top ${count} companies ranked by acceleration score, each with a rationale.`,
+        "Step 2: Surface the `notes` from the response verbatim if present (e.g. geography normalized to a region) so the reader knows the filter semantics.",
+        "Step 3: For EACH shortlisted company, call `predict_funding` with its name to attach a funding-likelihood read (score, band, window, confidence) + evidence chain. Run in parallel.",
+        "Step 4: Produce a ranked watchlist: `<rank>. <name> (<sector>, <geography>) — accel <score>/100, raise likelihood <band> (<window>), conf <confidence>. <one-line rationale>.`",
+        "Step 5: Footer 'How to read this': heuristics over public GitHub activity, not investment advice; cite the methodology + SSRN links from predict_funding provenance.",
+        "",
+        "Tone: factual, terse, investor-grade. Use only what the tools return; never invent companies or numbers. If the shortlist is empty, say so and suggest loosening the filters.",
+      ].join("\n");
+      break;
+    }
+    case "diligence_brief": {
+      const companyName = a.name;
+      if (!companyName) return rpcError(id, -32602, "Missing required argument: name");
+      messageText = [
+        `You are assembling a one-page diligence brief for ${companyName}.`,
+        "",
+        `Step 1: Call \`get_diligence_dossier\` with name="${companyName}" for the public-source record (M&A history, backers, published signal). If not found, surface that and continue with the other tools.`,
+        `Step 2: Call \`predict_funding\` with name="${companyName}" for the scored funding-likelihood read + evidence chain.`,
+        "Step 3: Call `get_methodology` once to frame how the score was derived.",
+        "Step 4: Draft the brief (one page max): TL;DR; Public Record (acquirer/M&A with year + amount, backing funds — all cited); Funding-Likelihood Read (score/100, band, window, confidence) with the evidence chain; How the score was derived (one sentence); Open Questions (3-5).",
+        "",
+        "Tone: factual, investor-grade. Cite every claim to the tool that produced it. End with the methodology + SSRN provenance and the disclaimer that this is a heuristic over public data, not investment advice.",
       ].join("\n");
       break;
     }
