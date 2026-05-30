@@ -286,7 +286,8 @@ export const companies: Company[] = [
     sector: "ai-ml",
     stage: "later",
     what: "The default model hub for open-weight AI. Transformers, datasets, diffusers, accelerate — the entire OSS ML stack ships through this org.",
-    momentum: "accelerating",
+    // Downgraded 2026-05-30: current-period (q2-2026) public commit velocity -49%.
+    momentum: "steady",
     repos: "300+ active public repos",
     lang: "Python / Rust",
     related: ["ai-ml", "developer-tools", "infrastructure"],
@@ -676,7 +677,8 @@ export const companies: Company[] = [
     sector: "ai-ml",
     stage: "series-b",
     what: "Most-forked AI-framework org — LangChain, LangGraph, LangSmith. Defines a large slice of the public agent-tooling surface.",
-    momentum: "accelerating",
+    // Downgraded 2026-05-30: current-period (q2-2026) public commit velocity -5% (flat after a strong run).
+    momentum: "steady",
     repos: "60+ public repos",
     lang: "Python / TypeScript",
     related: ["ai-ml", "developer-tools"],
@@ -794,7 +796,8 @@ export const companies: Company[] = [
     sector: "database",
     stage: "series-c",
     what: "Real-time analytics database. The core engine is fully open-source with active enterprise development on cloud, replication, and the SQL layer.",
-    momentum: "accelerating",
+    // Downgraded 2026-05-30: current-period (q2-2026) public commit velocity -60%.
+    momentum: "steady",
     repos: "50+ active public repos",
     lang: "C++ / Rust",
     related: ["database", "analytics", "infrastructure"],
@@ -1473,7 +1476,8 @@ export const companies: Company[] = [
     sector: "analytics",
     stage: "series-b",
     what: "Open-source data integration platform with 350+ connectors. The OSS challenger to Fivetran with strong community-built connector momentum.",
-    momentum: "accelerating",
+    // Downgraded 2026-05-30: current-period (q2-2026) public commit velocity -89%.
+    momentum: "steady",
     repos: "100+ public repos",
     lang: "Python / Java",
     related: ["analytics", "developer-tools", "database"],

@@ -133,6 +133,38 @@ export function renderPendingBadge(label: string, hint = "pending"): string {
   });
 }
 
+// --- Curated-signal badge -------------------------------------------------
+// Distinct from renderMomentumBadge (which reads the live GitHub-velocity
+// scrape). This renders the *editorial* momentum from content/companies.ts
+// `publicSignal.momentum`, so every curated company has a stable, embeddable
+// badge regardless of whether it appears in the weekly live signal set.
+export type CompanyMomentum =
+  | "accelerating"
+  | "steady"
+  | "decelerating"
+  | "unranked";
+
+export const MOMENTUM_HEX: Record<CompanyMomentum, string> = {
+  accelerating: "#34d399", // green — positive
+  steady: "#38bdf8", // blue — neutral
+  decelerating: "#64748b", // slate — cooling
+  unranked: "#475569", // grey — no read
+};
+
+export interface SignalBadgeInput {
+  name: string;
+  momentum: CompanyMomentum;
+}
+
+export function renderSignalBadge({ name, momentum }: SignalBadgeInput): string {
+  return renderBadge({
+    label: "momentum",
+    value: momentum,
+    valueColor: MOMENTUM_HEX[momentum],
+    title: `${name} — ${momentum} · gitdealflow`,
+  });
+}
+
 export function tierFromVelocityChange(change: string): MomentumTier {
   const num = parseInt(change.replace(/[^0-9-]/g, ""), 10) || 0;
   if (num >= 200) return "breakout";
