@@ -58,17 +58,20 @@ export type CorpusCollection =
   | "sectors"
   | "acquirers";
 
-export interface CorpusRecord {
+interface CorpusRecordFields {
   collection: CorpusCollection;
   id: string;
   type: string;
   name: string;
   url: string;
-  /** Deterministic short hash of this record's content fields. */
-  recordHash: string;
-  // Collection-specific fields are spread in below recordHash at build time.
+  // Collection-specific fields are spread in at build time.
   [key: string]: unknown;
 }
+
+export type CorpusRecord = CorpusRecordFields & {
+  /** Deterministic short hash of this record's content fields. */
+  recordHash: string;
+};
 
 /**
  * Stable JSON: object keys serialized in sorted order, recursively, so the
@@ -98,17 +101,14 @@ function shortHash(input: string, len = 12): string {
  * fields only (everything except `recordHash` itself), so it is stable and
  * lets consumers detect per-record changes.
  */
-function makeRecord(
-  collection: CorpusCollection,
-  fields: Omit<CorpusRecord, "recordHash">,
-): CorpusRecord {
+function makeRecord(fields: CorpusRecordFields): CorpusRecord {
   const recordHash = shortHash(stableStringify(fields));
   return { ...fields, recordHash };
 }
 
 function buildCompanyRecords(): CorpusRecord[] {
   return companies.map((c) =>
-    makeRecord("companies", {
+    makeRecord({
       collection: "companies",
       id: c.slug,
       type: "Organization",
@@ -130,7 +130,7 @@ function buildCompanyRecords(): CorpusRecord[] {
 
 function buildFundRecords(): CorpusRecord[] {
   return funds.map((f) =>
-    makeRecord("funds", {
+    makeRecord({
       collection: "funds",
       id: f.slug,
       type: "Organization",
@@ -148,7 +148,7 @@ function buildFundRecords(): CorpusRecord[] {
 
 function buildFounderRecords(): CorpusRecord[] {
   return founders.map((p) =>
-    makeRecord("founders", {
+    makeRecord({
       collection: "founders",
       id: p.handle,
       type: "Person",
@@ -166,7 +166,7 @@ function buildFounderRecords(): CorpusRecord[] {
 
 function buildGlossaryRecords(): CorpusRecord[] {
   return glossaryTerms.map((t) =>
-    makeRecord("glossary", {
+    makeRecord({
       collection: "glossary",
       id: t.id,
       type: "DefinedTerm",
@@ -180,7 +180,7 @@ function buildGlossaryRecords(): CorpusRecord[] {
 function buildSectorRecords(): CorpusRecord[] {
   return sectors.map((s) => {
     const companyCount = companies.filter((c) => c.sector === s.slug).length;
-    return makeRecord("sectors", {
+    return makeRecord({
       collection: "sectors",
       id: s.slug,
       type: "CollectionPage",
@@ -194,7 +194,7 @@ function buildSectorRecords(): CorpusRecord[] {
 
 function buildAcquirerRecords(): CorpusRecord[] {
   return ACQUIRERS.map((a) =>
-    makeRecord("acquirers", {
+    makeRecord({
       collection: "acquirers",
       id: a.slug,
       type: "Organization",
