@@ -114,6 +114,34 @@ const SKILLS = [
     cost: { type: "free" },
   },
   {
+    name: "diligence_dossier",
+    title: "Company Diligence Dossier",
+    description:
+      "One cited, public-source dossier for a company or entity: who acquired it (M&A history), which funds publicly backed it, and its published engineering-acceleration signal. Mid-diligence grounding for 'who acquired X', 'which funds backed Y', 'what's the signal on Z'. Returns found:false with an honest note when the entity is outside the tracked corpus — never guesses.",
+    type: "mcp.tool",
+    arguments: [
+      {
+        name: "company",
+        description:
+          "Company or entity name (target, acquirer, or tracked startup). Examples: 'Figma', 'Supabase', 'Broadcom', 'Auth0'.",
+        required: true,
+      },
+    ],
+    tags: ["diligence", "m&a", "investors", "grounding", "dossier"],
+    invoke: {
+      transport: "mcp",
+      method: "tools/call",
+      params: { name: "get_diligence_dossier" },
+    },
+    httpAnalog: {
+      method: "GET",
+      path: "/api/diligence.json",
+      projection: "?company={company}",
+    },
+    rateLimit: { requestsPerMinute: 60, scope: "ip" },
+    cost: { type: "free" },
+  },
+  {
     name: "acceleration_memo",
     title: "Acceleration Deal Memo",
     description:
