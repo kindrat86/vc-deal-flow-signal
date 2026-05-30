@@ -1604,6 +1604,49 @@
         }
       ],
       "publishedAt": "2026-05-29T09:00:00Z"
+    },
+    {
+      "date": "2026-05-30",
+      "slug": "2026-05-30",
+      "headline": "The edtech reset hiding in a -47% framework migration",
+      "hook": "Seed edtech teams cooling to 58 commits over 14 days (-47%) are showing the framework-migration pattern — a recoverable dip, not a flatline, and the natural moment to build the next adjacent tool.",
+      "repo": {
+        "name": "OpenOLAT",
+        "githubUrl": "https://github.com/OpenOLAT",
+        "stage": "Seed",
+        "geography": "EU",
+        "sector": "EdTech",
+        "sectorSlug": "edtech",
+        "signalType": "Framework migration",
+        "commitVelocity14d": 58,
+        "commitVelocityChange": "-47%",
+        "contributors": 16,
+        "contributorGrowth": "+0%",
+        "newRepos": 0,
+        "description": "Open Source Learning Management System written in Java"
+      },
+      "ideaThesis": "EdTech has a buyer who is also a builder. The category incumbents shipped for an ops/HR/finance lead; the next wave ships for the engineer running that function. Read the repo: framework migration, seed team, 16 contributors. That's the shape of a team that crosses the next funding line on engineering output, not enterprise sales — and the gap they leave is the wedge for an indie or two-founder tool that does one job better than the suite they're inside of.",
+      "buildAngles": [
+        "Sourcing tool for engineering managers — Slack-native, signal-pulled by sector, no SaaS dashboard.",
+        "Read-only overlay on the incumbent ATS — bring engineering signals (GitHub activity, dependency adoption) onto candidate cards.",
+        "Drip-tool for technical recruiting that writes its own outreach from public commit signals."
+      ],
+      "distributionPlay": "Free Chrome extension into r/recruiting and r/cscareerquestions for the first 1,000 installs. Both subs allow free tools if you don't pitch — frame it as data, not product.",
+      "signalReading": [
+        {
+          "metric": "58 commits / 14 days",
+          "reading": "Maintenance-level cadence. The story isn't the volume; it's whatever else moved alongside it."
+        },
+        {
+          "metric": "-47% commit-velocity change",
+          "reading": "Cooling. Often a deliberate slowdown for refactor, rebrand, or hiring — read alongside the next two lines before calling it a decline."
+        },
+        {
+          "metric": "16 contributors (+0%)",
+          "reading": "Small core team — likely seed-funded with focused velocity. The opportunity is adjacent tooling that augments the small team."
+        }
+      ],
+      "publishedAt": "2026-05-30T09:00:00Z"
     }
   ]
 }
