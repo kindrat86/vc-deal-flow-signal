@@ -164,6 +164,13 @@ export async function GET() {
             mediaType: "application/x-ndjson",
             "dct:format": "application/x-ndjson",
           },
+          {
+            "@type": "Distribution",
+            "dct:title": "Hugging Face Datasets mirror (per-collection subsets)",
+            accessURL:
+              "https://huggingface.co/datasets/the-data-nerd/vc-deal-flow-signal-corpus",
+            mediaType: "application/x-ndjson",
+          },
         ],
         landingPage: `${SITE}/data-sources`,
       },

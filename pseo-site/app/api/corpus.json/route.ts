@@ -49,6 +49,10 @@ export async function GET() {
     license: CORPUS_LICENSE,
     citation: corpusCitation(snapshot),
     methodology: `${SITE}/methodology`,
+    mirrors: {
+      huggingface:
+        "https://huggingface.co/datasets/the-data-nerd/vc-deal-flow-signal-corpus",
+    },
     diffGuide:
       "Compare `revision` across two pulls to detect any change. Compare per-record `recordHash` (or diff /api/corpus.jsonl line-by-line) to localize what changed. Both hashes depend only on record content, not on generatedAt.",
     counts: snapshot.counts,

@@ -231,6 +231,7 @@ const DATASETS: Entity[] = [
       `${SITE}/api/corpus.json`,
       `${SITE}/api/corpus.jsonl`,
       `${SITE}/.well-known/dataset.json`,
+      "https://huggingface.co/datasets/the-data-nerd/vc-deal-flow-signal-corpus",
     ],
   },
 ];
