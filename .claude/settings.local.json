@@ -68,7 +68,8 @@
       "mcp__03ab5a56-b780-4bb4-8870-68dcbc0fb0dd__web_fetch_vercel_url",
       "mcp__7c0eff71-0f32-4865-9bab-cd04c9759661__search_files",
       "mcp__7c0eff71-0f32-4865-9bab-cd04c9759661__list_recent_files",
-      "mcp__7c0eff71-0f32-4865-9bab-cd04c9759661__read_file_content"
+      "mcp__7c0eff71-0f32-4865-9bab-cd04c9759661__read_file_content",
+      "mcp__7c0eff71-0f32-4865-9bab-cd04c9759661__create_file"
     ]
   }
 }
