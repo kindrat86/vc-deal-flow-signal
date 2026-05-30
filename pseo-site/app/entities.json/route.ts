@@ -221,6 +221,19 @@ const DATASETS: Entity[] = [
       "https://huggingface.co/datasets/the-data-nerd/vc-deal-flow-signal",
     ],
   },
+  {
+    name: "VC Deal Flow Signal — curated entity corpus",
+    type: "Dataset",
+    url: `${SITE}/api/corpus.json`,
+    description:
+      "Versioned, dated, diffable snapshot of every curated entity asserted by this site — companies, venture funds, public engineering founders, glossary terms, sector hubs, and M&A acquirers. Each record carries a stable recordHash; the snapshot carries a content-derived revision and an asOf date. Served as JSON and NDJSON. CC BY 4.0.",
+    sameAs: [
+      `${SITE}/api/corpus.json`,
+      `${SITE}/api/corpus.jsonl`,
+      `${SITE}/.well-known/dataset.json`,
+      "https://huggingface.co/datasets/the-data-nerd/vc-deal-flow-signal-corpus",
+    ],
+  },
 ];
 
 const PUBLICATIONS: Entity[] = [
