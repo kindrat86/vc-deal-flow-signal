@@ -25,7 +25,7 @@ import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { homedir } from "node:os";
 
-const SERVER_VERSION = "2.1.0";
+const SERVER_VERSION = "2.2.0";
 const BASE_URL = "https://signals.gitdealflow.com";
 const UA = `gitdealflow-mcp/${SERVER_VERSION}`;
 const FOOTER = "— Powered by gitdealflow.com";
@@ -1580,6 +1580,42 @@ const PROMPTS = [
       },
     ],
   },
+  {
+    name: "sourcing_session",
+    description:
+      "Run a full sourcing session in one pass — the corp-dev / scout workflow. Shortlists the strongest engineering-acceleration signals (optionally filtered by sector and region), then attaches a transparent, citable funding-likelihood read to each pick. Produces a ranked watchlist with scores, evidence, and follow-ups. Pulls live data via shortlist_signals + predict_funding.",
+    arguments: [
+      {
+        name: "sector",
+        description:
+          "Optional sector slug to focus the shortlist (e.g. 'ai-ml', 'fintech'). Omit to scan all sectors.",
+        required: false,
+      },
+      {
+        name: "geography",
+        description:
+          "Optional region filter (US/EU/UK/APAC/LATAM/Canada). City/country aliases normalize up to the region.",
+        required: false,
+      },
+      {
+        name: "count",
+        description: "How many companies to shortlist and score. Default 5.",
+        required: false,
+      },
+    ],
+  },
+  {
+    name: "diligence_brief",
+    description:
+      "Assemble a cited, one-page diligence brief for a named company: public-source dossier (M&A history, backers, signal), a transparent funding-likelihood read with its evidence chain, and the methodology behind the score. Pulls live data via get_diligence_dossier + predict_funding + get_methodology.",
+    arguments: [
+      {
+        name: "name",
+        description: "Company display name or GitHub org slug.",
+        required: true,
+      },
+    ],
+  },
 ];
 
 const server = new Server(
@@ -2804,6 +2840,54 @@ server.setRequestHandler(GetPromptRequestSchema, async (request) => {
           "  • Open Questions (3-5 follow-ups for a partner meeting)",
           "",
           "Tone: factual, investor-grade. No hype. End with the citation string from the tool response.",
+        ].join("\n");
+        break;
+      }
+
+      case "sourcing_session": {
+        const sector = a.sector;
+        const geography = a.geography;
+        const count = a.count || "5";
+        const shortlistArgs = [
+          sector ? `sector="${sector}"` : null,
+          geography ? `geography="${geography}"` : null,
+          `limit=${count}`,
+        ]
+          .filter(Boolean)
+          .join(", ");
+        messageText = [
+          `You are running a sourcing session${sector ? ` for ${sector}` : ""}${geography ? ` in ${geography}` : ""} — a corp-dev / scout watchlist grounded in engineering-acceleration signals.`,
+          "",
+          `Step 1: Call \`shortlist_signals\` with ${shortlistArgs}. This returns the top ${count} companies ranked by acceleration score, each with a rationale.`,
+          "Step 2: Surface the `notes` from the response verbatim if present (e.g. geography was normalized to a region) so the reader knows the filter semantics.",
+          "Step 3: For EACH shortlisted company, call `predict_funding` with its name to attach a transparent funding-likelihood read (score, band, estimated window, confidence) and its evidence chain. Run these in parallel.",
+          "Step 4: Produce a ranked watchlist. For each pick, one row: `<rank>. <name> (<sector>, <geography>) — accel <score>/100, raise likelihood <band> (<window>), conf <confidence>. <one-line rationale grounded in the signal>.`",
+          "Step 5: Add a short 'How to read this' footer: these are heuristics over public GitHub activity, not investment advice; cite the methodology + SSRN links from the predict_funding provenance.",
+          "",
+          "Tone: factual, terse, investor-grade. No hype. Never invent companies or numbers — use only what the tools return. If the shortlist is empty, say so and suggest loosening the filters.",
+        ].join("\n");
+        break;
+      }
+
+      case "diligence_brief": {
+        const companyName = a.name;
+        if (!companyName) {
+          throw new Error("Missing required argument: name");
+        }
+        messageText = [
+          `You are assembling a one-page diligence brief for ${companyName}.`,
+          "",
+          `Step 1: Call \`get_diligence_dossier\` with name="${companyName}" for the public-source record (M&A history, backers, published signal). If the entity is not found, surface that and continue with whatever the other tools return.`,
+          `Step 2: Call \`predict_funding\` with name="${companyName}" for the scored funding-likelihood read and its evidence chain.`,
+          "Step 3: Call `get_methodology` once so you can correctly frame how the score was derived.",
+          "Step 4: Draft the brief (one page max):",
+          "  • TL;DR (2 sentences: what the company is + the signal verdict)",
+          "  • Public Record (acquirer/M&A with year + amount, funds that backed it — all cited from the dossier)",
+          "  • Funding-Likelihood Read (score/100, band, estimated window, confidence) with the evidence chain (velocity, contributor growth, new repos, signal type)",
+          "  • How the score was derived (one sentence grounded in get_methodology)",
+          "  • Open Questions (3-5 follow-ups a partner would ask)",
+          "",
+          "Tone: factual, investor-grade. Cite every claim to the tool that produced it. End with the methodology + SSRN provenance URLs and the disclaimer that this is a heuristic over public data, not investment advice.",
         ].join("\n");
         break;
       }
