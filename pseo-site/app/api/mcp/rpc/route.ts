@@ -6,6 +6,7 @@ import {
   type Startup,
 } from "@/lib/data";
 import { slugify } from "@/lib/slugify";
+import { buildDossier } from "@/lib/diligence";
 import { bearerFromHeader, verifyToken } from "@/lib/oauth/jwt";
 import {
   approvalUrlFor,
@@ -291,6 +292,90 @@ const TOOLS = [
         "formats",
         "citation",
       ],
+    },
+    annotations: READ_ONLY_ANNOTATIONS,
+  },
+  {
+    name: "get_diligence_dossier",
+    title: "Company Diligence Dossier",
+    description:
+      "Public-source diligence dossier for a company or entity in one cited object: who acquired it (M&A history), which funds publicly backed it, and its published engineering-acceleration signal. Use mid-diligence for 'who acquired X', 'which funds backed Y', 'what's the signal on Z'. Sources are press-release / SEC-filing / both-sides-disclosed only; returns found:false (an expected outcome, not an error) with honest notes when the entity is outside the tracked corpus — never guesses.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        company: {
+          type: "string",
+          minLength: 1,
+          maxLength: 100,
+          description:
+            "Company or entity name (target, acquirer, or tracked startup). Case-insensitive, normalization-tolerant.",
+          examples: ["Figma", "Supabase", "Broadcom", "Auth0"],
+        },
+      },
+      required: ["company"],
+      additionalProperties: false,
+    },
+    outputSchema: {
+      type: "object" as const,
+      properties: {
+        entity: { type: "string", description: "Resolved canonical entity name." },
+        found: {
+          type: "boolean",
+          description:
+            "True when at least one grounded fact exists; false is an expected outcome, not an error.",
+        },
+        acquiredBy: {
+          type: "array",
+          description: "Public acquisitions where this entity was the target.",
+          items: {
+            type: "object",
+            properties: {
+              acquirer: { type: "string" },
+              year: { type: "integer" },
+              announcedAmount: { type: "string" },
+              note: { type: "string" },
+              acquirerUrl: { type: "string", format: "uri" },
+            },
+          },
+        },
+        acquisitionsMade: {
+          type: "array",
+          description:
+            "If the entity is itself an acquirer: notable companies it has publicly bought.",
+          items: {
+            type: "object",
+            properties: {
+              target: { type: "string" },
+              year: { type: "integer" },
+              announcedAmount: { type: "string" },
+              note: { type: "string" },
+            },
+          },
+        },
+        backedBy: {
+          type: "array",
+          description:
+            "Funds in our tracked corpus that publicly disclosed backing this entity.",
+          items: {
+            type: "object",
+            properties: {
+              fund: { type: "string" },
+              fundUrl: { type: "string", format: "uri" },
+            },
+          },
+        },
+        signal: {
+          type: ["object", "null"],
+          description:
+            "Published engineering-acceleration signal, when the entity is in the tracked corpus.",
+        },
+        notes: {
+          type: "array",
+          description: "Plain-language notes on what is and isn't known.",
+          items: { type: "string" },
+        },
+      },
+      required: ["entity", "found"],
     },
     annotations: READ_ONLY_ANNOTATIONS,
   },
@@ -1180,6 +1265,59 @@ async function handleToolsCall(
       return rpcResult(id, {
         content: [{ type: "text", text }],
         structuredContent: structured,
+      });
+    }
+    case "get_diligence_dossier": {
+      const entity = String(args.company ?? args.entity ?? args.name ?? "").trim();
+      if (!entity) {
+        return rpcError(id, -32602, "Missing required parameter: company");
+      }
+      const d = buildDossier(entity);
+      const lines: string[] = [`Diligence dossier — ${d.entity}`, ``];
+      if (d.acquiredBy.length) {
+        lines.push(
+          `Acquired by: ${d.acquiredBy
+            .map(
+              (a) =>
+                `${a.acquirer} (${a.year}${a.announcedAmount ? `, ${a.announcedAmount}` : ""})`,
+            )
+            .join("; ")}`,
+        );
+      }
+      if (d.acquisitionsMade.length) {
+        lines.push(
+          `Notable acquisitions made: ${d.acquisitionsMade.length} (e.g. ${d.acquisitionsMade
+            .slice(0, 3)
+            .map((x) => x.target)
+            .join(", ")})`,
+        );
+      }
+      if (d.backedBy.length) {
+        lines.push(`Backed by: ${d.backedBy.map((b) => b.fund).join(", ")}`);
+      }
+      if (d.signal) {
+        lines.push(
+          `Engineering signal (published): ${d.signal.momentum} · ${d.signal.sector} · ${d.signal.stage}`,
+        );
+      }
+      if (!d.found) {
+        lines.push(
+          `No grounded facts — "${entity}" is outside the tracked corpus. We do not guess.`,
+        );
+      }
+      for (const n of d.notes) lines.push(``, n);
+      lines.push(``, FOOTER);
+      return rpcResult(id, {
+        content: [{ type: "text", text: lines.join("\n") }],
+        structuredContent: {
+          entity: d.entity,
+          found: d.found,
+          acquiredBy: d.acquiredBy,
+          acquisitionsMade: d.acquisitionsMade,
+          backedBy: d.backedBy,
+          signal: d.signal,
+          notes: d.notes,
+        },
       });
     }
     case "get_scout_receipts": {

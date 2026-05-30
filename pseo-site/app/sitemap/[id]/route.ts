@@ -591,6 +591,7 @@ export async function GET(_req: Request, ctx: RouteContext) {
         priority: 0.7,
       })),
       { url: `${BASE_URL}/answers`, lastmod, changefreq: "weekly", priority: 0.85 },
+      { url: `${BASE_URL}/diligence`, lastmod, changefreq: "weekly", priority: 0.85 },
       ...agentQueries.map((q) => ({
         url: `${BASE_URL}/answers/${q.slug}`,
         lastmod,

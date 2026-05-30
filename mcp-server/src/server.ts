@@ -897,6 +897,87 @@ const TOOLS = [
     },
   },
   {
+    name: "get_diligence_dossier",
+    title: "Company Diligence Dossier",
+    description: [
+      "Return a public-source diligence dossier for a single company or entity in one cited object: who acquired it (M&A history with year + announced amount), which funds publicly backed it, and its published engineering-acceleration signal.",
+      "",
+      "WHEN TO USE:",
+      "- The user is doing diligence and asks 'who acquired X', 'which funds backed Y', or 'what's the signal on Z'.",
+      "- You need a fast, cited grounding fact (M&A / investors / signal) before deeper research.",
+      "",
+      "DO NOT USE FOR:",
+      "- The live engineering signal row alone — `get_startup_signal` is more detailed for tracked startups.",
+      "- Speculative or rumored deals — this tool only returns publicly-disclosed facts.",
+      "",
+      "BEHAVIOR:",
+      "- Read-only, idempotent, no auth. Free.",
+      "- Sources: press-release / SEC-filing / both-sides-disclosed only (same threshold as the /acquirer and /fund pages).",
+      "- Returns found:false (an expected outcome, NOT an error) with honest notes when the entity is outside the tracked corpus — it never guesses an acquirer, investor, or signal.",
+      "",
+      "PARAMETERS: { company: string } — company or entity name (target, acquirer, or tracked startup), case-insensitive.",
+      "",
+      "RETURNS: { entity, found, acquiredBy[], acquisitionsMade[], backedBy[], signal|null, notes[] }, plus a citation array. Human mirror: /diligence. HTTP analog: GET /api/diligence.json?company={name}.",
+    ].join("\n"),
+    inputSchema: {
+      type: "object" as const,
+      properties: {
+        company: {
+          type: "string",
+          minLength: 1,
+          maxLength: 100,
+          description:
+            "Company or entity name (target, acquirer, or tracked startup). Case-insensitive. Examples: 'Figma', 'Supabase', 'Broadcom', 'Auth0'.",
+        },
+      },
+      required: ["company"],
+      additionalProperties: false,
+    },
+    outputSchema: {
+      type: "object" as const,
+      properties: {
+        entity: { type: "string", description: "Resolved canonical entity name." },
+        found: {
+          type: "boolean",
+          description:
+            "True when at least one grounded fact exists; false is expected, not an error.",
+        },
+        acquiredBy: {
+          type: "array",
+          items: { type: "object" },
+          description: "Public acquisitions where this entity was the target.",
+        },
+        acquisitionsMade: {
+          type: "array",
+          items: { type: "object" },
+          description: "If the entity is an acquirer: companies it has publicly bought.",
+        },
+        backedBy: {
+          type: "array",
+          items: { type: "object" },
+          description: "Funds in the tracked corpus that publicly disclosed backing it.",
+        },
+        signal: {
+          type: ["object", "null"],
+          description: "Published engineering-acceleration signal, when tracked.",
+        },
+        notes: {
+          type: "array",
+          items: { type: "string" },
+          description: "Plain-language notes on what is and isn't known.",
+        },
+      },
+      required: ["entity", "found"],
+    },
+    annotations: {
+      title: "Company Diligence Dossier",
+      readOnlyHint: true,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: true,
+    },
+  },
+  {
     name: "research_company",
     title: "Research Company (paid)",
     description: [
@@ -1885,6 +1966,90 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
             },
           ],
           structuredContent: { methodology, url },
+        };
+      }
+
+      case "get_diligence_dossier": {
+        const company = String(
+          (args as Record<string, unknown> | undefined)?.company ?? "",
+        ).trim();
+        if (!company) {
+          return {
+            content: [
+              { type: "text" as const, text: "Missing required parameter: company" },
+            ],
+            structuredContent: { error: "Missing required parameter: company" },
+            isError: true,
+          };
+        }
+        // /api/diligence.json returns 404 for found:false (an expected outcome,
+        // not an error), so read the body regardless of status rather than
+        // using fetchJSON (which throws on !ok).
+        const res = await fetch(
+          `${BASE_URL}/api/diligence.json?company=${encodeURIComponent(company)}`,
+          { headers: { "User-Agent": UA } },
+        );
+        const envelope = (await res.json().catch(() => ({}))) as Record<
+          string,
+          unknown
+        >;
+        const dossier = (envelope.dossier ?? {}) as Record<string, unknown>;
+        const acquiredBy = Array.isArray(dossier.acquiredBy) ? dossier.acquiredBy : [];
+        const acquisitionsMade = Array.isArray(dossier.acquisitionsMade)
+          ? dossier.acquisitionsMade
+          : [];
+        const backedBy = Array.isArray(dossier.backedBy) ? dossier.backedBy : [];
+        const notes = Array.isArray(dossier.notes) ? dossier.notes : [];
+        const signal = dossier.signal ?? null;
+        const entity = typeof dossier.entity === "string" ? dossier.entity : company;
+        const found = Boolean(dossier.found);
+
+        const lines: string[] = [`Diligence dossier — ${entity}`, ""];
+        if (acquiredBy.length) {
+          lines.push(
+            "Acquired by: " +
+              acquiredBy
+                .map((a) => {
+                  const o = a as Record<string, unknown>;
+                  return `${o.acquirer} (${o.year}${o.announcedAmount ? `, ${o.announcedAmount}` : ""})`;
+                })
+                .join("; "),
+          );
+        }
+        if (acquisitionsMade.length) {
+          lines.push(`Notable acquisitions made: ${acquisitionsMade.length}`);
+        }
+        if (backedBy.length) {
+          lines.push(
+            "Backed by: " +
+              backedBy.map((b) => (b as Record<string, unknown>).fund).join(", "),
+          );
+        }
+        if (signal) {
+          const s = signal as Record<string, unknown>;
+          lines.push(
+            `Engineering signal (published): ${s.momentum} · ${s.sector} · ${s.stage}`,
+          );
+        }
+        if (!found) {
+          lines.push(
+            `No grounded facts — "${company}" is outside the tracked corpus. We do not guess.`,
+          );
+        }
+        for (const n of notes) lines.push("", String(n));
+        lines.push("", FOOTER);
+
+        return {
+          content: [{ type: "text" as const, text: lines.join("\n") }],
+          structuredContent: {
+            entity,
+            found,
+            acquiredBy,
+            acquisitionsMade,
+            backedBy,
+            signal,
+            notes,
+          },
         };
       }
 

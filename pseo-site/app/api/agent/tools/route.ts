@@ -73,6 +73,25 @@ const TOOL_DEFINITIONS = [
     },
   },
   {
+    name: "get_diligence_dossier",
+    description:
+      "Public-source diligence dossier for a company or entity, in one cited object: who acquired it (M&A history), which funds publicly backed it, and its published engineering-acceleration signal. Use mid-diligence for 'who acquired X', 'which funds backed Y', 'what's the signal on Z'. Sources are press-release / SEC-filing / both-sides-disclosed only; returns `found: false` (not an error) with honest notes when the entity is outside the tracked corpus — never guesses. Case-insensitive, normalization-tolerant.",
+    parameters: {
+      type: "object" as const,
+      properties: {
+        company: {
+          type: "string",
+          minLength: 1,
+          maxLength: 100,
+          description:
+            "Company or entity name (target, acquirer, or tracked startup). Examples: 'Figma', 'Supabase', 'Broadcom', 'Auth0'.",
+        },
+      },
+      required: ["company"],
+      additionalProperties: false,
+    },
+  },
+  {
     name: "get_signals_summary",
     description:
       "High-level dataset snapshot: current period, sector and startup counts, last refresh timestamp, citation, and direct URLs to every machine-readable format. Cheap — call once per session to orient.",

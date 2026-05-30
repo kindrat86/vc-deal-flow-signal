@@ -53,6 +53,7 @@ export const CANONICAL_PROD_ROUTES = [
   "/watch",
   "/state-of-github",
   "/predicted",
+  "/diligence",
 
   // Post-purchase ascension (Brunson §3 Ladder-to-Funnel)
   "/thanks/firstlook",

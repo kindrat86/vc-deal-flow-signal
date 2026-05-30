@@ -191,6 +191,50 @@ export async function GET() {
           },
         },
       },
+      "/api/diligence.json": {
+        get: {
+          tags: ["answer"],
+          operationId: "getDiligenceDossier",
+          summary: "Public-source diligence dossier for a company/entity",
+          description:
+            "One cited dossier per entity: who acquired it (M&A history), which funds publicly backed it, and its published engineering-acceleration signal. Sources are press-release / SEC-filing / both-sides-disclosed only; returns found:false (404) with honest notes when the entity is outside the tracked corpus — never guesses. Same payload as the get_diligence_dossier MCP tool. Human mirror at /diligence.",
+          parameters: [
+            { name: "company", in: "query", required: false, schema: { type: "string", maxLength: 100 }, description: "Company or entity name (target, acquirer, or tracked startup). Aliases: entity, q. Omit for a usage envelope listing the answerable universe." },
+          ],
+          responses: {
+            "200": {
+              description: "Dossier with at least one grounded fact (or usage envelope when no company param)",
+              content: {
+                "application/json": {
+                  schema: {
+                    type: "object",
+                    properties: {
+                      "@type": { type: "string", example: "Dataset" },
+                      dossier: {
+                        type: "object",
+                        properties: {
+                          entity: { type: "string" },
+                          found: { type: "boolean" },
+                          acquiredBy: { type: "array", items: { type: "object" } },
+                          acquisitionsMade: { type: "array", items: { type: "object" } },
+                          backedBy: { type: "array", items: { type: "object" } },
+                          signal: { type: "object", nullable: true },
+                          notes: { type: "array", items: { type: "string" } },
+                        },
+                      },
+                      citation: { type: "array", items: { type: "object" } },
+                    },
+                  },
+                },
+              },
+            },
+            "404": {
+              description: "found:false — entity outside the tracked corpus (an expected outcome, not an error)",
+            },
+          },
+          "x-mcp-tool": "get_diligence_dossier",
+        },
+      },
       "/api/llms-search": {
         get: {
           tags: ["search"],
