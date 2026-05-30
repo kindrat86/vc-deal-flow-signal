@@ -19,17 +19,20 @@
  * service-account JWT. No `googleapis`, no install step.
  *
  * ──────────────────────────────────────────────────────────────────────────
- * SETUP (one-time, ~3 min — only the account owner can do this):
- *   1. In Google Cloud Console → create (or pick) a project → enable the
- *      "Google Search Console API".
- *   2. IAM & Admin → Service Accounts → create one → Keys → Add key → JSON.
- *      Save the downloaded JSON to:  tools/.gsc-service-account.json
- *      (gitignored — never commit it).
- *   3. In Search Console → Settings → Users and permissions → Add user →
- *      paste the service account's client_email → role "Full" or "Restricted".
- *   4. Run:  node tools/gsc-index-report.mjs
+ * AUTH (preferred = OAuth2 verified owner):
+ *   GSC's "Add user" UI rejects service-account emails, and a domain property
+ *   (sc-domain:) cannot grant Owner to a service account — so SA auth 403s with
+ *   "You do not own this site." The reliable path is OAuth2 as the verified
+ *   owner (signal@gitdealflow.com):
+ *     1. Run:  node tools/gsc-oauth-setup.mjs   (see that file's header for the
+ *        ~3-min Cloud Console "Desktop app" OAuth client setup).
+ *     2. Run:  node tools/gsc-index-report.mjs --all
+ *   This script auto-prefers tools/.gsc-oauth-token.json when present, and
+ *   falls back to a service-account key (tools/.gsc-service-account.json) only
+ *   if no OAuth token exists (works only where the SA is a real property user).
  *
  * ENV / FLAGS:
+ *   GSC_OAUTH_JSON=/path/to/token.json  override the OAuth token path
  *   GSC_SA_JSON=/path/to/key.json     override the SA key path
  *   GSC_SITE_URL=sc-domain:gitdealflow.com   GSC property (default; domain
  *                                     property covers all subdomains). For a
@@ -64,6 +67,12 @@ const SA_PATH =
   process.env.GSC_SA_JSON ||
   process.env.GOOGLE_APPLICATION_CREDENTIALS ||
   resolve(__dirname, ".gsc-service-account.json");
+// OAuth2 (verified-owner) token produced by `gsc-oauth-setup.mjs`. Preferred
+// over the SA key because the URL Inspection API authorizes against the
+// property's owners/users, and a domain property can't grant access to a
+// service account. See gsc-oauth-setup.mjs header.
+const OAUTH_PATH =
+  process.env.GSC_OAUTH_JSON || resolve(__dirname, ".gsc-oauth-token.json");
 const SITE_URL = process.env.GSC_SITE_URL || "sc-domain:gitdealflow.com";
 const SITEMAP_URL = flag("sitemap", "https://signals.gitdealflow.com/sitemap.xml");
 const SAMPLE_PER_FAMILY = has("all") ? Infinity : parseInt(flag("sample", "20"), 10);
@@ -121,6 +130,45 @@ async function getAccessToken(sa) {
     throw new Error(`Token exchange failed (${res.status}): ${await res.text()}`);
   }
   return (await res.json()).access_token;
+}
+
+// ── OAuth2 refresh-token → access token (verified-owner auth) ────────────────
+async function getAccessTokenViaOAuth(oauth) {
+  const res = await fetch(oauth.token_uri || "https://oauth2.googleapis.com/token", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({
+      client_id: oauth.client_id,
+      client_secret: oauth.client_secret,
+      refresh_token: oauth.refresh_token,
+      grant_type: "refresh_token",
+    }),
+  });
+  if (!res.ok) {
+    throw new Error(`OAuth refresh failed (${res.status}): ${await res.text()}`);
+  }
+  return (await res.json()).access_token;
+}
+
+// Prefer OAuth (verified owner) over the SA key. Returns { token, mode, who }.
+async function resolveToken() {
+  if (existsSync(OAUTH_PATH)) {
+    const oauth = JSON.parse(readFileSync(OAUTH_PATH, "utf8"));
+    return {
+      token: await getAccessTokenViaOAuth(oauth),
+      mode: "oauth (verified owner)",
+      who: `client ${String(oauth.client_id).split("-")[0]}…`,
+    };
+  }
+  if (existsSync(SA_PATH)) {
+    const sa = JSON.parse(readFileSync(SA_PATH, "utf8"));
+    return {
+      token: await getAccessToken(sa),
+      mode: "service account",
+      who: sa.client_email,
+    };
+  }
+  return null;
 }
 
 // ── sitemap harvest ─────────────────────────────────────────────────────────
@@ -207,6 +255,10 @@ async function inspect(token, inspectionUrl) {
     }
   );
   if (res.status === 429) return { _retry: true };
+  // 401 = the OAuth access token expired mid-run (they live ~60 min). Signal
+  // the caller to re-mint a token and retry — otherwise a long census silently
+  // mislabels every post-expiry URL as not-indexed.
+  if (res.status === 401) return { _authExpired: true };
   if (!res.ok) {
     return { _error: `${res.status}: ${(await res.text()).slice(0, 200)}` };
   }
@@ -226,26 +278,29 @@ async function inspect(token, inspectionUrl) {
 
 // ── main ─────────────────────────────────────────────────────────────────────
 async function main() {
-  if (!existsSync(SA_PATH)) {
+  const auth = await resolveToken();
+  if (!auth) {
     console.error(
-      `\n❌ Service-account key not found at:\n   ${SA_PATH}\n\n` +
-        `Create one and save it there (see header of this file for the 3-minute\n` +
-        `setup), or pass GSC_SA_JSON=/path/to/key.json. Until then, the indexation\n` +
-        `picture in the audit is the (undercounting) site: proxy, not GSC ground truth.\n`
+      `\n❌ No GSC credentials found. Expected one of:\n` +
+        `   • OAuth token: ${OAUTH_PATH}\n` +
+        `       run  node tools/gsc-oauth-setup.mjs  (verified-owner flow — preferred)\n` +
+        `   • Service-account key: ${SA_PATH}\n` +
+        `       (works only if the SA is a property user; domain properties can't grant this)\n\n` +
+        `Until then, the indexation picture in the audit is the (undercounting)\n` +
+        `site: proxy, not GSC ground truth.\n`
     );
     process.exit(2);
   }
-  const sa = JSON.parse(readFileSync(SA_PATH, "utf8"));
   console.log(`GSC Index-Coverage Report`);
   console.log(`========================`);
   console.log(`Property:   ${SITE_URL}`);
-  console.log(`Service acct: ${sa.client_email}`);
+  console.log(`Auth:       ${auth.mode} — ${auth.who}`);
   console.log(`Sitemap:    ${SITEMAP_URL}`);
   console.log(
     `Sampling:   ${SAMPLE_PER_FAMILY === Infinity ? "ALL" : SAMPLE_PER_FAMILY}/family, max ${MAX_INSPECTIONS}\n`
   );
 
-  const token = await getAccessToken(sa);
+  let token = auth.token;
   const allUrls = await harvestUrls(SITEMAP_URL);
   console.log(`Harvested ${allUrls.length} sitemap URLs.`);
   const sample = sampleByFamily(allUrls);
@@ -262,8 +317,14 @@ async function main() {
       await sleep(5000);
       r = await inspect(token, url);
     }
+    // OAuth access tokens expire ~60 min; a long census outlives one token.
+    // Re-mint and retry so post-expiry URLs aren't silently mislabeled.
+    if (r._authExpired) {
+      token = (await resolveToken()).token;
+      r = await inspect(token, url);
+    }
     done++;
-    const state = r._error ? `ERROR ${r._error}` : r.coverageState;
+    const state = r._error ? `ERROR ${r._error}` : r._authExpired ? "ERROR 401 (auth)" : r.coverageState;
     byCoverage.set(state, (byCoverage.get(state) || 0) + 1);
     if (!byFamily.has(family)) byFamily.set(family, new Map());
     const fam = byFamily.get(family);

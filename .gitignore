@@ -40,3 +40,7 @@ CREDENTIAL-ROTATION.md
 # GSC service-account key (never commit)
 tools/.gsc-service-account.json
 tools/*gsc*service*account*.json
+# GSC OAuth client secret + refresh token (never commit)
+tools/.gsc-oauth-client.json
+tools/.gsc-oauth-token.json
+tools/client_secret*.json
