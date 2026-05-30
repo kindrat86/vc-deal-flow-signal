@@ -607,6 +607,157 @@ const TOOLS = [
     },
     annotations: READ_ONLY_ANNOTATIONS,
   },
+  {
+    name: "predict_funding",
+    title: "Predict Funding Likelihood (with provenance)",
+    description: [
+      "Transparent, scored funding-likelihood claim for one tracked startup, with the full evidence chain and citable provenance. Instead of an opaque number, returns the score, every component that produced it, a confidence level, honest caveats, and links to the methodology + SSRN paper so the derivation can be cited.",
+      "",
+      "IS a deterministic heuristic over public GitHub engineering-acceleration signals; IS NOT an ML black box, a guarantee of any financing event, or based on private/cap-table data. The disclaimer is returned in every response.",
+      "",
+      "SCORING (also returned in evidence.scoreBreakdown): velocity ≤40 (saturates +300%), contributorGrowth ≤25 (saturates +200%), newRepos ≤15 (saturates 10), signalType ≤20 (Deploy frequency spike 20 / Engineering hiring burst 17 / Infrastructure buildout 14 / Framework migration 8). Total 0-100 → >=70 high, 45-69 elevated, 25-44 moderate, <25 low.",
+      "",
+      "PARAMETERS: { name } — display name or GitHub org slug (case-insensitive). On no match returns { found: false, suggestion } (expected, not an error).",
+    ].join("\n"),
+    inputSchema: {
+      type: "object",
+      properties: {
+        name: {
+          type: "string",
+          description: "Startup display name or GitHub org slug. Case-insensitive.",
+          minLength: 1,
+          maxLength: 100,
+        },
+      },
+      required: ["name"],
+      additionalProperties: false,
+    },
+    outputSchema: {
+      type: "object",
+      properties: {
+        found: { type: "boolean" },
+        company: { type: "object" },
+        prediction: {
+          type: "object",
+          properties: {
+            claim: { type: "string" },
+            raiseLikelihood: { type: "string", enum: ["high", "elevated", "moderate", "low"] },
+            accelerationScore: { type: "integer", minimum: 0, maximum: 100 },
+            estimatedWindow: { type: "string" },
+            confidence: { type: "string", enum: ["high", "moderate", "low"] },
+          },
+        },
+        evidence: { type: "object" },
+        caveats: { type: "array", items: { type: "string" } },
+        provenance: {
+          type: "object",
+          properties: {
+            methodologyUrl: { type: "string", format: "uri" },
+            researchPaperUrl: { type: "string", format: "uri" },
+            citation: { type: "string" },
+            source: { type: "string", format: "uri" },
+            period: { type: "string" },
+          },
+          required: ["methodologyUrl", "researchPaperUrl", "citation", "source"],
+        },
+        disclaimer: { type: "string" },
+        suggestion: { type: "string" },
+      },
+      required: ["found", "provenance", "disclaimer"],
+    },
+    annotations: READ_ONLY_ANNOTATIONS,
+  },
+  {
+    name: "shortlist_signals",
+    title: "Shortlist Strongest Signals",
+    description: [
+      "Return a ranked shortlist of the strongest engineering-acceleration signals matching a set of filters — the whole sourcing workflow in ONE call (e.g. 'the 5 strongest signals in fintech in the EU'). Scans the full tracked universe, scores each with the transparent engine (same scoring as predict_funding), filters, sorts by accelerationScore desc, returns the top `limit`.",
+      "",
+      "GEOGRAPHY IS REGION-LEVEL ONLY — values are US / EU / UK / APAC / LATAM / Canada / Unknown. City/country aliases ('NYC', 'New York', 'London', 'Berlin', 'Singapore') normalize up to the enclosing region and the response `notes` says so. There is no city-level filtering.",
+      "",
+      "PARAMETERS (all optional): sector (one of 20 slugs), geography (region token or alias), signalType (exact label), minAccelerationScore (0-100), minVelocityChangePct (integer percent), limit (1-25, default 5).",
+    ].join("\n"),
+    inputSchema: {
+      type: "object",
+      properties: {
+        sector: { type: "string", enum: [...SECTOR_SLUGS] },
+        geography: {
+          type: "string",
+          description:
+            "Region token (US/EU/UK/APAC/LATAM/Canada) or a city/country alias normalized up to the region.",
+        },
+        signalType: {
+          type: "string",
+          enum: [
+            "Deploy frequency spike",
+            "Engineering hiring burst",
+            "Infrastructure buildout",
+            "Framework migration",
+          ],
+        },
+        minAccelerationScore: { type: "integer", minimum: 0, maximum: 100 },
+        minVelocityChangePct: { type: "integer" },
+        limit: { type: "integer", minimum: 1, maximum: 25, default: 5 },
+      },
+      additionalProperties: false,
+    },
+    outputSchema: {
+      type: "object",
+      properties: {
+        query: { type: "object" },
+        period: { type: "string" },
+        consideredCount: { type: "integer" },
+        matchedCount: { type: "integer" },
+        results: { type: "array", items: { type: "object" } },
+        notes: { type: "array", items: { type: "string" } },
+        citation: { type: "string" },
+        source: { type: "string", format: "uri" },
+        methodologyUrl: { type: "string", format: "uri" },
+        disclaimer: { type: "string" },
+      },
+      required: ["query", "period", "matchedCount", "results", "citation"],
+    },
+    annotations: READ_ONLY_ANNOTATIONS,
+  },
+  {
+    name: "compare_signals",
+    title: "Compare Signals Head-to-Head",
+    description: [
+      "Score and rank 2-5 named startups side by side, returning each one's acceleration score, evidence, and raise-likelihood band plus a single recommendation for which warrants deeper diligence. Same transparent scoring as predict_funding / shortlist_signals.",
+      "",
+      "Names that don't resolve are returned in `notFound` (expected, not an error). The recommendation is computed only over resolved companies; if fewer than 2 resolve it explains that no comparison was possible.",
+      "",
+      "PARAMETERS: { names: string[] } — 2 to 5 display names or GitHub org slugs (case-insensitive).",
+    ].join("\n"),
+    inputSchema: {
+      type: "object",
+      properties: {
+        names: {
+          type: "array",
+          items: { type: "string", minLength: 1, maxLength: 100 },
+          minItems: 2,
+          maxItems: 5,
+        },
+      },
+      required: ["names"],
+      additionalProperties: false,
+    },
+    outputSchema: {
+      type: "object",
+      properties: {
+        period: { type: "string" },
+        compared: { type: "array", items: { type: "object" } },
+        notFound: { type: "array", items: { type: "string" } },
+        recommendation: { type: "string" },
+        citation: { type: "string" },
+        source: { type: "string", format: "uri" },
+        methodologyUrl: { type: "string", format: "uri" },
+        disclaimer: { type: "string" },
+      },
+      required: ["period", "compared", "recommendation", "citation"],
+    },
+    annotations: READ_ONLY_ANNOTATIONS,
+  },
 ];
 
 const RESOURCES = [
@@ -712,6 +863,148 @@ function startupRow(s: Startup, rank: number, sectorName: string) {
 function getActiveSectors() {
   const period = getCurrentPeriod();
   return getAllSectors().filter((s) => s.periods[period.slug]);
+}
+
+// ---------------------------------------------------------------------------
+// Transparent scoring engine — shared by predict_funding / shortlist_signals /
+// compare_signals. Mirrors the stdio server (@gitdealflow/mcp-signal). Every
+// component and weight is returned in the response so the score is auditable.
+// ---------------------------------------------------------------------------
+const METHODOLOGY_URL = `${BASE_URL}/methodology`;
+const RESEARCH_PAPER_URL = "https://ssrn.com/abstract=6606558";
+const PREDICTION_DISCLAIMER =
+  "Derived solely from public GitHub engineering-acceleration signals (commit velocity, contributor growth, new-repo creation, signal classification). This is a transparent heuristic, NOT investment advice, NOT a guarantee of any financing event, and NOT based on private, cap-table, or revenue data. Every input is returned in the evidence chain so the score can be audited and cited. See the methodology and SSRN paper for the full derivation.";
+
+const SIGNAL_TYPE_WEIGHT: Record<string, number> = {
+  "deploy frequency spike": 20,
+  "engineering hiring burst": 17,
+  "infrastructure buildout": 14,
+  "framework migration": 8,
+  breakout: 20,
+  acceleration: 14,
+  steady: 6,
+  cooling: 0,
+};
+
+const GEO_REGIONS = ["US", "EU", "UK", "APAC", "LATAM", "Canada", "Unknown"] as const;
+const GEO_ALIASES: Record<string, string> = {
+  us: "US", usa: "US", "u.s.": "US", "u.s.a.": "US", america: "US",
+  "united states": "US", "north america": "US", "new york": "US", nyc: "US",
+  "san francisco": "US", sf: "US", "bay area": "US", "silicon valley": "US",
+  boston: "US", austin: "US", seattle: "US", "los angeles": "US", la: "US",
+  chicago: "US", denver: "US", miami: "US", california: "US",
+  eu: "EU", europe: "EU", european: "EU", germany: "EU", berlin: "EU",
+  france: "EU", paris: "EU", amsterdam: "EU", netherlands: "EU", spain: "EU",
+  sweden: "EU", stockholm: "EU", ireland: "EU", dublin: "EU", lisbon: "EU",
+  portugal: "EU", italy: "EU", poland: "EU", helsinki: "EU", finland: "EU",
+  uk: "UK", "united kingdom": "UK", britain: "UK", england: "UK", london: "UK",
+  scotland: "UK",
+  apac: "APAC", asia: "APAC", "asia-pacific": "APAC", singapore: "APAC",
+  india: "APAC", bangalore: "APAC", bengaluru: "APAC", china: "APAC",
+  japan: "APAC", tokyo: "APAC", australia: "APAC", sydney: "APAC", korea: "APAC",
+  canada: "Canada", toronto: "Canada", vancouver: "Canada", montreal: "Canada",
+  latam: "LATAM", "latin america": "LATAM", brazil: "LATAM", "são paulo": "LATAM",
+  mexico: "LATAM", argentina: "LATAM", chile: "LATAM", colombia: "LATAM",
+};
+
+function normalizeGeography(raw: string): { region: string | null; matchedAlias: boolean } {
+  const t = raw.trim().toLowerCase();
+  if (!t) return { region: null, matchedAlias: false };
+  const direct = GEO_REGIONS.find((r) => r.toLowerCase() === t);
+  if (direct) return { region: direct, matchedAlias: false };
+  if (GEO_ALIASES[t]) return { region: GEO_ALIASES[t], matchedAlias: true };
+  return { region: null, matchedAlias: false };
+}
+
+function parsePercent(raw: unknown): number | null {
+  const m = /^\s*([+-]?\d+(?:\.\d+)?)/.exec(String(raw ?? ""));
+  return m ? Number(m[1]) : null;
+}
+
+function clampNum(n: number, lo: number, hi: number): number {
+  return Math.max(lo, Math.min(hi, n));
+}
+
+interface ScoreBreakdown {
+  velocity: number;
+  contributorGrowth: number;
+  newRepos: number;
+  signalType: number;
+  total: number;
+}
+
+interface SignalScore {
+  accelerationScore: number;
+  raiseLikelihood: "high" | "elevated" | "moderate" | "low";
+  estimatedWindow: string;
+  confidence: "high" | "moderate" | "low";
+  breakdown: ScoreBreakdown;
+  velocityChangePct: number | null;
+  contributorGrowthPct: number | null;
+}
+
+function scoreStartup(s: Startup): SignalScore {
+  const vel = parsePercent(s.commitVelocityChange);
+  const cg = parsePercent(s.contributorGrowth);
+  const repos = Number.isFinite(s.newRepos) ? s.newRepos : 0;
+  const velocity = vel === null ? 0 : (clampNum(vel, 0, 300) / 300) * 40;
+  const contributorGrowth = cg === null ? 0 : (clampNum(cg, 0, 200) / 200) * 25;
+  const newRepos = (clampNum(repos, 0, 10) / 10) * 15;
+  const signalType = SIGNAL_TYPE_WEIGHT[(s.signalType ?? "").toLowerCase()] ?? 6;
+  const breakdown: ScoreBreakdown = {
+    velocity: Math.round(velocity * 10) / 10,
+    contributorGrowth: Math.round(contributorGrowth * 10) / 10,
+    newRepos: Math.round(newRepos * 10) / 10,
+    signalType,
+    total: 0,
+  };
+  const total = Math.round(velocity + contributorGrowth + newRepos + signalType);
+  breakdown.total = total;
+  const raiseLikelihood =
+    total >= 70 ? "high" : total >= 45 ? "elevated" : total >= 25 ? "moderate" : "low";
+  const estimatedWindow =
+    raiseLikelihood === "high"
+      ? "3-6 months (heuristic)"
+      : raiseLikelihood === "elevated"
+        ? "6-9 months (heuristic)"
+        : raiseLikelihood === "moderate"
+          ? "9-12 months (heuristic)"
+          : "12+ months or no near-term signal (heuristic)";
+  const missing = (vel === null ? 1 : 0) + (cg === null ? 1 : 0);
+  let confidence: "high" | "moderate" | "low" = "moderate";
+  if (missing === 0 && (s.contributors ?? 0) >= 5) confidence = "high";
+  if (missing >= 1 || (s.contributors ?? 0) < 3) confidence = "low";
+  return {
+    accelerationScore: total,
+    raiseLikelihood,
+    estimatedWindow,
+    confidence,
+    breakdown,
+    velocityChangePct: vel,
+    contributorGrowthPct: cg,
+  };
+}
+
+type UniverseRow = Startup & { sectorName: string; sectorSlug: string };
+
+function getUniverseWithSector(): { periodName: string; citation: string; rows: UniverseRow[] } {
+  const period = getCurrentPeriod();
+  const active = getActiveSectors();
+  const seen = new Set<string>();
+  const rows: UniverseRow[] = [];
+  for (const sector of active) {
+    for (const st of sector.periods[period.slug].startups) {
+      const key = slugify(st.name);
+      if (seen.has(key)) continue;
+      seen.add(key);
+      rows.push({ ...st, sectorName: sector.name, sectorSlug: sector.slug });
+    }
+  }
+  return {
+    periodName: period.name,
+    citation: `VC Deal Flow Signal (signals.gitdealflow.com), ${period.name} data.`,
+    rows,
+  };
 }
 
 function getTrendingPayload() {
@@ -1262,6 +1555,310 @@ async function handleToolsCall(
           },
         ],
         structuredContent: { posts, installCommand, methodologyUrl },
+      });
+    }
+    case "predict_funding": {
+      const inputName = String(args.name ?? "");
+      const { periodName, citation, rows } = getUniverseWithSector();
+      const target = slugify(inputName);
+      const match = rows.find((r) => slugify(r.name) === target);
+      const provenance = {
+        methodologyUrl: METHODOLOGY_URL,
+        researchPaperUrl: RESEARCH_PAPER_URL,
+        citation,
+        source: BASE_URL,
+        period: periodName,
+      };
+      if (!match) {
+        return rpcResult(id, {
+          content: [
+            {
+              type: "text",
+              text: `"${inputName}" is not in the tracked universe, so no signal-based prediction can be made. Use shortlist_signals or get_trending_startups to browse tracked companies, then retry with an exact name.\n\n${FOOTER}`,
+            },
+          ],
+          structuredContent: {
+            found: false,
+            suggestion:
+              "Not in the tracked universe. Browse via shortlist_signals or get_trending_startups, then retry with the exact name or GitHub org slug.",
+            provenance,
+            disclaimer: PREDICTION_DISCLAIMER,
+          },
+        });
+      }
+      const sc = scoreStartup(match);
+      const claim =
+        `Based on public GitHub engineering signals, ${match.name} shows ${sc.raiseLikelihood.toUpperCase()} near-term funding-round likelihood ` +
+        `(acceleration score ${sc.accelerationScore}/100, estimated window ${sc.estimatedWindow}), ` +
+        `driven by a ${match.commitVelocityChange} commit-velocity change` +
+        (match.signalType ? ` and a "${match.signalType}" signal` : "") +
+        `. Confidence: ${sc.confidence}. This is a transparent heuristic over open-source activity, not a guarantee.`;
+      const caveats: string[] = [
+        "Score reflects engineering acceleration only — it does not see funding rounds, revenue, cap table, or team.",
+        "The estimated window is a heuristic band, not a forecast date.",
+      ];
+      if (sc.confidence === "low") {
+        caveats.push(
+          "Low confidence: a key growth metric was unparseable or the contributor base is very small — treat the score as directional."
+        );
+      }
+      if ((match.geography ?? "Unknown") === "Unknown") {
+        caveats.push("Geography is Unknown for this company in the feed.");
+      }
+      const text = [
+        `${match.name} — Funding-Likelihood Prediction`,
+        ``,
+        claim,
+        ``,
+        `Evidence chain:`,
+        `- Signal type: ${match.signalType}`,
+        `- Commit velocity (14d): ${match.commitVelocity14d} (${match.commitVelocityChange})`,
+        `- Contributors: ${match.contributors} (${match.contributorGrowth})`,
+        `- New repos (30d): ${match.newRepos}`,
+        `- Score breakdown: velocity ${sc.breakdown.velocity} + contributorGrowth ${sc.breakdown.contributorGrowth} + newRepos ${sc.breakdown.newRepos} + signalType ${sc.breakdown.signalType} = ${sc.breakdown.total}/100`,
+        ``,
+        `Methodology: ${METHODOLOGY_URL}`,
+        `Research paper: ${RESEARCH_PAPER_URL}`,
+        `Citation: ${citation}`,
+        ``,
+        PREDICTION_DISCLAIMER,
+        ``,
+        FOOTER,
+      ].join("\n");
+      return rpcResult(id, {
+        content: [{ type: "text", text }],
+        structuredContent: {
+          found: true,
+          company: {
+            name: match.name,
+            sector: match.sectorName,
+            stage: match.stage,
+            geography: match.geography,
+            githubUrl: match.githubUrl,
+            ...(match.websiteUrl ? { websiteUrl: match.websiteUrl } : {}),
+            profileUrl: `${BASE_URL}/startup/${slugify(match.name)}`,
+          },
+          prediction: {
+            claim,
+            raiseLikelihood: sc.raiseLikelihood,
+            accelerationScore: sc.accelerationScore,
+            estimatedWindow: sc.estimatedWindow,
+            confidence: sc.confidence,
+          },
+          evidence: {
+            signalType: match.signalType,
+            commitVelocity14d: match.commitVelocity14d,
+            commitVelocityChange: match.commitVelocityChange,
+            contributors: match.contributors,
+            contributorGrowth: match.contributorGrowth,
+            newRepos: match.newRepos,
+            scoreBreakdown: sc.breakdown,
+          },
+          caveats,
+          provenance,
+          disclaimer: PREDICTION_DISCLAIMER,
+        },
+      });
+    }
+    case "shortlist_signals": {
+      const limit = clampNum(Math.floor(Number(args.limit ?? 5)), 1, 25);
+      const { periodName, citation, rows } = getUniverseWithSector();
+      const notes: string[] = [];
+
+      const sectorArg = typeof args.sector === "string" ? args.sector : undefined;
+      const signalTypeArg = typeof args.signalType === "string" ? args.signalType : undefined;
+      const geoArg = typeof args.geography === "string" ? args.geography : undefined;
+      const minScore = args.minAccelerationScore !== undefined ? Number(args.minAccelerationScore) : undefined;
+      const minVel = args.minVelocityChangePct !== undefined ? Number(args.minVelocityChangePct) : undefined;
+
+      let geoRegion: string | null = null;
+      if (geoArg && geoArg.trim()) {
+        const norm = normalizeGeography(geoArg);
+        geoRegion = norm.region;
+        if (!geoRegion) {
+          notes.push(
+            `Geography "${geoArg}" did not map to a known region (US/EU/UK/APAC/LATAM/Canada); geography filter was ignored.`
+          );
+        } else if (norm.matchedAlias) {
+          notes.push(
+            `Geography is region-level only — "${geoArg}" was normalized to "${geoRegion}". There is no city-level data in the feed.`
+          );
+        }
+      }
+      const sectorActive =
+        sectorArg && rows.some((r) => r.sectorSlug === sectorArg) ? sectorArg : null;
+      if (sectorArg && !sectorActive) {
+        notes.push(`Sector "${sectorArg}" not found or inactive; sector filter was ignored.`);
+      }
+
+      const consideredCount = rows.length;
+      let candidates = rows.map((r) => ({ row: r, score: scoreStartup(r) }));
+      if (sectorActive) candidates = candidates.filter((c) => c.row.sectorSlug === sectorActive);
+      if (geoRegion) candidates = candidates.filter((c) => c.row.geography === geoRegion);
+      if (signalTypeArg)
+        candidates = candidates.filter(
+          (c) => (c.row.signalType ?? "").toLowerCase() === signalTypeArg.toLowerCase()
+        );
+      if (minScore !== undefined && !Number.isNaN(minScore))
+        candidates = candidates.filter((c) => c.score.accelerationScore >= minScore);
+      if (minVel !== undefined && !Number.isNaN(minVel))
+        candidates = candidates.filter(
+          (c) => c.score.velocityChangePct !== null && c.score.velocityChangePct >= minVel
+        );
+
+      candidates.sort((x, y) => y.score.accelerationScore - x.score.accelerationScore);
+      const matchedCount = candidates.length;
+      const results = candidates.slice(0, limit).map((c, i) => ({
+        rank: i + 1,
+        name: c.row.name,
+        sector: c.row.sectorName,
+        stage: c.row.stage,
+        geography: c.row.geography,
+        accelerationScore: c.score.accelerationScore,
+        raiseLikelihood: c.score.raiseLikelihood,
+        signalType: c.row.signalType,
+        commitVelocityChange: c.row.commitVelocityChange,
+        contributorGrowth: c.row.contributorGrowth,
+        contributors: c.row.contributors,
+        newRepos: c.row.newRepos,
+        githubUrl: c.row.githubUrl,
+        profileUrl: `${BASE_URL}/startup/${slugify(c.row.name)}`,
+        rationale: `Score ${c.score.accelerationScore}/100 (${c.score.raiseLikelihood}) — ${c.row.commitVelocityChange} velocity, ${c.row.contributorGrowth} contributor growth, ${c.row.signalType}.`,
+      }));
+
+      const query = {
+        sector: sectorActive,
+        geography: geoRegion,
+        signalType: signalTypeArg ?? null,
+        minAccelerationScore: minScore ?? null,
+        minVelocityChangePct: minVel ?? null,
+        limit,
+      };
+      const lines = results.map(
+        (r) =>
+          `${r.rank}. ${r.name} (${r.sector}, ${r.geography}) — ${r.accelerationScore}/100 ${r.raiseLikelihood}, ${r.commitVelocityChange} velocity, ${r.signalType}`
+      );
+      const text = [
+        `Shortlist — strongest signals (${periodName})`,
+        `Filters: ${JSON.stringify(query)}`,
+        `${matchedCount} matched of ${consideredCount} tracked; showing top ${results.length}.`,
+        ``,
+        lines.join("\n") || "(no companies matched these filters)",
+        notes.length ? `\nNotes:\n- ${notes.join("\n- ")}` : "",
+        ``,
+        `Methodology: ${METHODOLOGY_URL}`,
+        `Citation: ${citation}`,
+        ``,
+        PREDICTION_DISCLAIMER,
+        ``,
+        FOOTER,
+      ]
+        .filter((l) => l !== "")
+        .join("\n");
+      return rpcResult(id, {
+        content: [{ type: "text", text }],
+        structuredContent: {
+          query,
+          period: periodName,
+          consideredCount,
+          matchedCount,
+          results,
+          notes,
+          citation,
+          source: BASE_URL,
+          methodologyUrl: METHODOLOGY_URL,
+          disclaimer: PREDICTION_DISCLAIMER,
+        },
+      });
+    }
+    case "compare_signals": {
+      const rawNames = Array.isArray(args.names) ? (args.names as unknown[]) : [];
+      const wanted = rawNames.map((n) => String(n)).filter((n) => n.trim().length > 0);
+      const { periodName, citation, rows } = getUniverseWithSector();
+
+      const compared: Array<Record<string, unknown>> = [];
+      const notFound: string[] = [];
+      for (const w of wanted) {
+        const target = slugify(w);
+        const match = rows.find((r) => slugify(r.name) === target);
+        if (!match) {
+          notFound.push(w);
+          continue;
+        }
+        const sc = scoreStartup(match);
+        compared.push({
+          name: match.name,
+          sector: match.sectorName,
+          stage: match.stage,
+          geography: match.geography,
+          accelerationScore: sc.accelerationScore,
+          raiseLikelihood: sc.raiseLikelihood,
+          confidence: sc.confidence,
+          signalType: match.signalType,
+          commitVelocityChange: match.commitVelocityChange,
+          contributorGrowth: match.contributorGrowth,
+          contributors: match.contributors,
+          newRepos: match.newRepos,
+          githubUrl: match.githubUrl,
+          scoreBreakdown: sc.breakdown,
+          _score: sc.accelerationScore,
+        });
+      }
+      compared.sort((x, y) => (y._score as number) - (x._score as number));
+      compared.forEach((c, i) => {
+        c.rank = i + 1;
+        delete c._score;
+      });
+
+      let recommendation: string;
+      if (compared.length < 2) {
+        recommendation =
+          compared.length === 0
+            ? "No comparison possible — none of the supplied names are in the tracked universe."
+            : `Only ${(compared[0] as { name: string }).name} resolved to a tracked company, so no head-to-head was possible. The others are not tracked.`;
+      } else {
+        const winner = compared[0] as { name: string; accelerationScore: number; raiseLikelihood: string };
+        const runnerUp = compared[1] as { name: string; accelerationScore: number };
+        const gap = winner.accelerationScore - runnerUp.accelerationScore;
+        recommendation =
+          gap >= 10
+            ? `${winner.name} warrants deeper diligence first — it leads on acceleration score (${winner.accelerationScore} vs ${runnerUp.accelerationScore}, ${winner.raiseLikelihood} likelihood), a clear ${gap}-point margin.`
+            : `${winner.name} edges ahead (${winner.accelerationScore} vs ${runnerUp.accelerationScore}), but the ${gap}-point margin is narrow — treat them as roughly comparable and diligence both.`;
+      }
+
+      const lines = compared.map(
+        (c) =>
+          `${c.rank}. ${c.name} (${c.sector}) — ${c.accelerationScore}/100 ${c.raiseLikelihood}, ${c.commitVelocityChange} velocity, ${c.signalType}`
+      );
+      const text = [
+        `Head-to-head signal comparison (${periodName})`,
+        ``,
+        lines.join("\n") || "(no tracked companies among the supplied names)",
+        notFound.length ? `\nNot tracked: ${notFound.join(", ")}` : "",
+        ``,
+        `Recommendation: ${recommendation}`,
+        ``,
+        `Methodology: ${METHODOLOGY_URL}`,
+        `Citation: ${citation}`,
+        ``,
+        PREDICTION_DISCLAIMER,
+        ``,
+        FOOTER,
+      ]
+        .filter((l) => l !== "")
+        .join("\n");
+      return rpcResult(id, {
+        content: [{ type: "text", text }],
+        structuredContent: {
+          period: periodName,
+          compared,
+          notFound,
+          recommendation,
+          citation,
+          source: BASE_URL,
+          methodologyUrl: METHODOLOGY_URL,
+          disclaimer: PREDICTION_DISCLAIMER,
+        },
       });
     }
     default:

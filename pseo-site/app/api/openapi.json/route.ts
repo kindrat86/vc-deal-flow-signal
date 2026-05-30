@@ -586,6 +586,72 @@ export async function GET() {
           },
         },
       },
+      "/api/agent/deep-signal/solana": {
+        get: {
+          tags: ["deep-signal"],
+          operationId: "getDeepSignalSolanaTerms",
+          summary: "Solana credit top-up — payment instructions",
+          description:
+            "Returns the Solana payment requirements (cluster, USDC mint, payTo, amount, credits granted) so an agent knows how to pay. No auth required for discovery.",
+          responses: {
+            "200": {
+              description: "Payment requirements under an `accepts` array.",
+            },
+            "503": {
+              description: "Solana endpoint not configured (SOLANA_RPC_URL / SOLANA_USDC_MINT / SOLANA_PAY_TO env vars missing).",
+            },
+          },
+        },
+        post: {
+          tags: ["deep-signal"],
+          operationId: "redeemDeepSignalSolana",
+          summary: "Redeem a Solana USDC payment for deep-signal credits",
+          description:
+            "Pay USDC (SPL) to the configured wallet on Solana, then POST the transaction signature with your credit-pack key to add credits to that account. The server verifies the on-chain transfer via Solana JSON-RPC (getTransaction) and grants the configured credit pack. Each signature can be redeemed once. Defaults: 19 USDC → 100 credits. Cluster defaults to devnet until a mainnet wallet is configured.",
+          security: [{ creditPackKey: [] }],
+          "x-mcp-tool": {
+            name: "get_deep_signal",
+            description:
+              "Solana variant — top up the same credit balance with USDC on Solana, then call get_deep_signal as usual.",
+            relation: "related",
+            paid: true,
+            unitPrice: "USDC 19 / 100 credits",
+            paymentProtocol: "solana-spl-transfer",
+            annotations: { readOnlyHint: false, idempotentHint: false, openWorldHint: false },
+          },
+          requestBody: {
+            required: true,
+            content: {
+              "application/json": {
+                schema: {
+                  type: "object",
+                  properties: {
+                    signature: {
+                      type: "string",
+                      description: "Base58 Solana transaction signature of the USDC transfer.",
+                    },
+                  },
+                  required: ["signature"],
+                },
+              },
+            },
+          },
+          responses: {
+            "200": {
+              description: "Payment verified; credits added. Returns new balance.",
+            },
+            "401": { description: "Missing or invalid credit-pack key." },
+            "402": {
+              description: "Payment not yet found/confirmed, or amount below the required price.",
+            },
+            "409": { description: "Signature already redeemed." },
+            "422": { description: "Transaction failed on-chain or paid the wrong recipient." },
+            "503": {
+              description: "Solana endpoint not configured.",
+            },
+          },
+        },
+      },
       "/api/account/credits": {
         get: {
           tags: ["deep-signal"],
