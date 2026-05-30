@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "name": "VC Deal Flow Signal",
   "short_description": "Track startup engineering acceleration from public GitHub data.",
-  "description": "Surface breakout startups before they hit the news. VC Deal Flow Signal tracks commit velocity, contributor growth, and repository expansion across ~400 startup GitHub orgs in 20 sectors. Engineering acceleration has historically preceded fundraise announcements by 3-6 weeks. Free, no auth — backed by an open MCP server with five tools, three resources, and five reusable prompts.",
+  "description": "Surface breakout startups before they hit the news. VC Deal Flow Signal tracks commit velocity, contributor growth, and repository expansion across ~400 startup GitHub orgs in 20 sectors. Engineering acceleration has historically preceded fundraise announcements by 3-6 weeks. Free, no auth — backed by an open MCP server with 13 tools, 3 resources, and 5 reusable prompts. Beyond lookups it returns transparent, citable funding-likelihood predictions with full evidence chains (predict_funding), one-call signal shortlists (shortlist_signals), head-to-head comparisons (compare_signals), and public-source diligence dossiers (get_diligence_dossier).",
   "publisher": {
     "name": "GitDealFlow",
     "url": "https://gitdealflow.com",
@@ -56,6 +56,34 @@
     {
       "name": "get_methodology",
       "summary": "Methodology document covering data, metrics, classification, limitations."
+    },
+    {
+      "name": "predict_funding",
+      "summary": "Transparent, scored funding-likelihood claim for one startup, with the full evidence chain, confidence, caveats, and methodology + SSRN provenance. A citable heuristic, not a black box."
+    },
+    {
+      "name": "shortlist_signals",
+      "summary": "The whole sourcing workflow in one call — ranked strongest signals filtered by sector, region, signal type, and score thresholds."
+    },
+    {
+      "name": "compare_signals",
+      "summary": "Head-to-head scored comparison of 2-5 named startups with a margin-aware diligence recommendation."
+    },
+    {
+      "name": "get_diligence_dossier",
+      "summary": "Public-source diligence dossier for one company in a cited object: M&A history (acquirer, year, amount), funds that publicly backed it, and the published engineering-acceleration signal."
+    },
+    {
+      "name": "research_company",
+      "summary": "Paid. Enriched single-company dossier: full signal row, sector rank, and top-5 sector peers."
+    },
+    {
+      "name": "compose_thesis",
+      "summary": "Paid. Structured investment-thesis scaffold for a named startup, grounded in signal data."
+    },
+    {
+      "name": "deep_dive_scan",
+      "summary": "Paid. Multi-cohort sector scan — breakouts, cooling, and top-by-velocity in one call."
     }
   ],
   "example_prompts": [
@@ -64,6 +92,9 @@
     "Tell me about Roboflow",
     "Find a dark horse in cybersecurity",
     "Compare SkyPilot to Modular",
+    "Is Roboflow likely to raise soon, and what's the evidence?",
+    "Shortlist the 5 strongest AI/ML signals in the US",
+    "Pull a diligence dossier on Supabase",
     "Draft a one-page deal memo for Roboflow",
     "What's the Scout Score for @sindresorhus"
   ],
