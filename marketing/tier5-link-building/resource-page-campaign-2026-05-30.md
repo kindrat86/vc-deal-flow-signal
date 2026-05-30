@@ -18,11 +18,13 @@ will land on indexable pages, not discounted ones).
 - **The ask is small and concrete:** "add one free row to a list you already maintain." Low friction = higher
   hit rate than a generic "please link us."
 
-## ⚠️ Status: DRAFTED — NOT SENT
+## ✅ Status: 3 of 5 SENT 2026-05-30 (user-authorized)
 
-Sending cold email to editorial sites is outward-facing and reputation-affecting. Held for explicit go-ahead.
-Two of these targets accept submissions via a **contact form**, not email — flagged per-row. Contact
-discovery (exact editor email / form URL) is the pre-send step.
+Contact discovery + send executed 2026-05-30 via Resend from `signal@gitdealflow.com`, MX-validated.
+**3 viable targets sent; 2 found non-viable on discovery and correctly NOT sent** (see send-log notes):
+AlternativeData.org is on a stated hiatus ("not adding new providers"), and Qubit Capital is form-only with
+obfuscated emails and no editorial contact — emailing either would burn sender reputation for ~zero chance of
+inclusion. **Follow-up:** wait until **2026-06-13** (14 days), then ONE follow-up to non-repliers, then drop.
 
 ---
 
@@ -119,15 +121,21 @@ Would be glad to be the free entry in that lineup: https://gitdealflow.com
 
 ## Send log (fill on send)
 
-| # | Target | Channel | Sent at | Message/Form ID | Status | Reply |
-|---|---|---|---|---|---|---|
-| 1 | Growth Equity Interview Guide | email | — | — | drafted | — |
-| 2 | Visible.vc | email | — | — | drafted | — |
-| 3 | Affinity | email | — | — | drafted | — |
-| 4 | AlternativeData.org | form | — | — | drafted | — |
-| 5 | Qubit Capital | email | — | — | drafted | — |
+| # | Target | Channel | Contact | Sent at | Resend message ID | Status | Reply |
+|---|---|---|---|---|---|---|---|
+| 1 | Growth Equity Interview Guide | email | himike@growthequityinterviewguide.com (Mike, ex-General Atlantic — real editor) | 2026-05-30 | `db074d4c-e892-4c6d-bf0e-2de8d5c26d32` | **SENT** | — |
+| 2 | Visible.vc | email | support@visible.vc (asked to route to content team) | 2026-05-30 | `9e912630-1d31-4ae0-880e-0156113a977f` | **SENT** | — |
+| 3 | Affinity | email | marketing@affinity.co (documented dept address) | 2026-05-30 | `ab163097-54a2-4f26-a8d7-a5dd951290bd` | **SENT** | — |
+| 4 | AlternativeData.org | form/email | data@alternativedata.org | — | — | **NOT SENT** — site banner: "taking a break, not adding new providers." Revisit if it resumes. | — |
+| 5 | Qubit Capital | form | qubit.capital/contact-us (emails obfuscated, no editorial contact) | — | — | **NOT SENT** — form-only; needs a browser form submission, not email. Candidate for a manual/Chrome-MCP pass. | — |
 
-## Pre-send checklist (the part that needs a human or a go-ahead)
-1. Resolve each target's real contact (editor email vs. form) — ~20 min of contact discovery, autonomous-able via web lookup.
-2. Confirm `signal@gitdealflow.com` Zoho warmup score still healthy before a 5-send day.
-3. Send 5, log message IDs above, set a 14-day follow-up reminder.
+## Follow-up + next batch
+1. **2026-06-13** — one follow-up to any of the 3 non-repliers (check Zoho `signal@gitdealflow.com` inbox first), then drop.
+2. **Batch 2 (remaining Tier-A):** BrightData, Qubit "Startup Databases for Investors", Papermark, Peony, Proven SaaS, ExtractAlpha, BattleFin, FundedIQ, Failory — run contact discovery + send 3–5/day.
+3. **Qubit (#5):** if worth pursuing, submit via their contact form (manual / Chrome-MCP) rather than email.
+
+## How to check delivery / cancel (Resend)
+```bash
+set -a && source email-api/.env && set +a   # (main checkout, not the worktree)
+curl -s "https://api.resend.com/emails/<ID>" -H "Authorization: Bearer $RESEND_API_KEY" | jq .last_event
+```
