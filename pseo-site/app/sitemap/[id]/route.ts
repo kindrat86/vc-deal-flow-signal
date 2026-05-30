@@ -25,7 +25,6 @@ import { getAllFundSlugs } from "@/content/funds";
 import { getAllFounderHandles } from "@/content/founders";
 import { getAllSectorSlugs } from "@/content/sectors";
 import { ALL_CITY_SLUGS } from "@/content/cities";
-import { getAllShowdownSlugs } from "@/content/showdowns";
 import { getAllAcquirerSlugs } from "@/content/acquirers";
 import { getAllSectorCityPairs } from "@/content/sector-city";
 import { getAllFundsWithPortfolio } from "@/content/fund-portfolio";
@@ -385,13 +384,15 @@ export async function GET(_req: Request, ctx: RouteContext) {
         changefreq: "monthly",
         priority: 0.7,
       })),
+      // /showdown hub stays in the sitemap (genuine listing page). The per-pair
+      // /showdown/[slug] LEAVES are intentionally NOT enumerated here: they carry
+      // `robots: noindex,follow` (app/showdown/[slug]/page.tsx) because the uniqueness
+      // audit flags 100% of them as near-duplicates. Submitting noindexed URLs in a
+      // sitemap is a crawl-trust smell, so the two changes ship together. The leaves
+      // remain reachable via internal links + generateStaticParams for agent/MCP value.
+      // Reversible: restore the getAllShowdownSlugs() spread to re-list them.
+      // See marketing/seo-authority-and-indexation-2026-05-30.md.
       { url: `${BASE_URL}/showdown`, lastmod, changefreq: "weekly", priority: 0.75 },
-      ...getAllShowdownSlugs().map((slug) => ({
-        url: `${BASE_URL}/showdown/${slug}`,
-        lastmod,
-        changefreq: "monthly",
-        priority: 0.6,
-      })),
       { url: `${BASE_URL}/acquirer`, lastmod, changefreq: "weekly", priority: 0.85 },
       ...getAllAcquirerSlugs().map((slug) => ({
         url: `${BASE_URL}/acquirer/${slug}`,

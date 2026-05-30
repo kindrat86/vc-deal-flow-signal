@@ -31,6 +31,17 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title,
     description,
+    // noindex,follow — the /showdown/[slug] family is a templated company-vs-company
+    // surface built from the shared per-entity prose in content/companies.ts. The
+    // uniqueness audit (scripts/audit-pseo-uniqueness.ts, observational tier) flags
+    // 100% of these leaves as near-duplicates of a sibling (some byte-identical after
+    // name substitution), which is precisely the profile Google's scaled-content-abuse
+    // policy demotes. We keep the pages crawlable + linkable (follow:true) so internal
+    // equity still flows to the indexed entity/sector hubs, but pull the leaves out of
+    // the search index. Reversible: drop this `robots` block to re-index. Sitemap leaf
+    // entries are removed in parallel (app/sitemap/[id]/route.ts) so we never submit a
+    // noindexed URL. See marketing/seo-authority-and-indexation-2026-05-30.md.
+    robots: { index: false, follow: true },
     openGraph: { title, description, type: "article", url: `/showdown/${slug}` },
     twitter: { card: "summary_large_image", title, description },
     alternates: { canonical: `/showdown/${slug}` },
