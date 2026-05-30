@@ -38,7 +38,7 @@ export default function OriginPage() {
         dateModified: "2026-05-05T00:00:00.000Z",
         author: {
           "@type": "Person",
-          "@id": "https://signals.gitdealflow.com/about#author",
+          "@id": "https://signals.gitdealflow.com/about#person",
           name: "The Data Nerd",
           url: "https://signals.gitdealflow.com/about/founder",
         },

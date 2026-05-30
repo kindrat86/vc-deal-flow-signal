@@ -196,7 +196,7 @@ export default function ChangelogPage() {
         coverageEndTime: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString(),
         datePublished: "2026-04-15",
         dateModified: lastModified.toISOString(),
-        author: { "@id": "https://signals.gitdealflow.com/about#author" },
+        author: { "@id": "https://signals.gitdealflow.com/about#person" },
         publisher: { "@id": "https://gitdealflow.com/#organization" },
         inLanguage: "en-US",
         liveBlogUpdate: productUpdates.slice(0, 25).map((u) => ({
@@ -205,7 +205,7 @@ export default function ChangelogPage() {
           datePublished: u.date,
           articleBody: u.body,
           articleSection: u.tag,
-          author: { "@id": "https://signals.gitdealflow.com/about#author" },
+          author: { "@id": "https://signals.gitdealflow.com/about#person" },
         })),
       },
       {

@@ -44,7 +44,7 @@ export default function FounderPage() {
         },
         mainEntity: {
           "@type": "Person",
-          "@id": "https://signals.gitdealflow.com/about#author",
+          "@id": "https://signals.gitdealflow.com/about#person",
           name: "The Data Nerd",
           jobTitle: "Founder, VC Deal Flow Signal",
           knowsAbout: [

@@ -411,16 +411,98 @@ export const DATA_NERD_FUTURE_SELF = {
 } as const;
 
 /**
- * Schema.org Person object for The Data Nerd.
+ * Canonical author identity — E-E-A-T entity reconciliation.
+ *
+ * The Data Nerd is pseudonymous BY DESIGN (polarity #3: "Anonymity is a
+ * credibility signal"). We never reveal a real name/face/voice. But a
+ * pseudonymous author can still carry strong Experience / Expertise /
+ * Authoritativeness / Trust IF the handle resolves to ONE persistent,
+ * externally-verifiable entity rather than several weakly-linked partial
+ * persons.
+ *
+ * Two rules enforce that:
+ *   1. ONE @id everywhere — `${SITE}/about#person`. This is the id the rest
+ *      of the site already points at (23 references, including bare
+ *      `{ "@id": ... }` author pointers). Never mint a second id (no
+ *      `#author`, no anonymous bare nodes). A split @id splits the entity
+ *      and caps the trust signal. The authoritative full node MUST be
+ *      emitted on /about so every pointer resolves to a rich, credentialed
+ *      Person rather than dangling.
+ *   2. The full verified anchor set on every author node. Each URL below is
+ *      an independently checkable, already-published surface (see
+ *      /citations). Anonymity-safe: scholarly IDs + handles only — never a
+ *      real name. ORCID + the SSRN / Semantic Scholar *author* pages are
+ *      what let an E-E-A-T-aware crawler treat the handle as a credentialed
+ *      researcher with a publication record, not an anonymous byline.
+ */
+export const DATA_NERD_ORCID = "0009-0002-2222-4112";
+
+export const DATA_NERD_AUTHOR_ID =
+  "https://signals.gitdealflow.com/about#person";
+
+/** schema.org-correct way to attach an ORCID to a Person/author node. */
+export const DATA_NERD_ORCID_IDENTIFIER = {
+  "@type": "PropertyValue",
+  propertyID: "ORCID",
+  value: DATA_NERD_ORCID,
+  url: `https://orcid.org/${DATA_NERD_ORCID}`,
+} as const;
+
+/**
+ * Verified, already-published external identity anchors. Order: scholarly
+ * trust anchors first (ORCID, SSRN author page, Semantic Scholar author
+ * page), then dataset/code/social handles, then internal long-form bio
+ * surfaces. Note: Wikidata Q139376302 is the *brand* entity, not the
+ * person — it lives on the Organization node, never here.
+ */
+export const DATA_NERD_AUTHOR_SAMEAS = [
+  "https://orcid.org/0009-0002-2222-4112",
+  "https://ssrn.com/author=8027395",
+  "https://www.semanticscholar.org/author/The-Data-Nerd/2430837379",
+  "https://huggingface.co/the-data-nerd",
+  "https://www.kaggle.com/thedatanerd2026",
+  "https://github.com/kindrat86",
+  "https://x.com/data_nerd",
+  "https://news.ycombinator.com/user?id=the_data_nerd",
+  "https://www.indiehackers.com/The_Data_Nerd",
+  "https://dev.to/the_data_nerd",
+  "https://signals.gitdealflow.com/citations",
+  "https://signals.gitdealflow.com/about/founder",
+  "https://signals.gitdealflow.com/origin",
+] as const;
+
+/**
+ * Reusable author node for `author` / `accountablePerson` / `creator`
+ * fields in any Article, ScholarlyArticle, or Dataset JSON-LD.
+ *
+ * Use this EVERYWHERE instead of hand-rolling an inline Person — it carries
+ * the stable @id, the ORCID identifier, and the full sameAs set, so a
+ * crawler reconciles the entity from a single page view.
+ */
+export const DATA_NERD_AUTHOR_REF = {
+  "@type": "Person",
+  "@id": DATA_NERD_AUTHOR_ID,
+  name: DATA_NERD_NAME,
+  url: "https://signals.gitdealflow.com/about",
+  identifier: DATA_NERD_ORCID_IDENTIFIER,
+  sameAs: [...DATA_NERD_AUTHOR_SAMEAS],
+} as const;
+
+/**
+ * Schema.org Person object for The Data Nerd — the full author entity.
+ * Emitted at high authority (/data-nerd, /about) with the same @id as
+ * DATA_NERD_AUTHOR_REF so every lightweight reference reconciles to it.
  */
 export const DATA_NERD_PERSON_SCHEMA = {
   "@type": "Person",
-  "@id": "https://signals.gitdealflow.com/about#author",
+  "@id": DATA_NERD_AUTHOR_ID,
   name: DATA_NERD_NAME,
   alternateName: ["thedatanerd", "Data Nerd", "@thedatanerd"],
-  additionalType: "https://schema.org/Pseudonym",
-  description: DATA_NERD_BIO_SHORT,
+  description: DATA_NERD_BIO_MEDIUM,
+  disambiguatingDescription:
+    "Pseudonymous engineer-investor and sole methodology author of VC Deal Flow Signal. Identity is withheld by design; the handle resolves to a persistent ORCID and a published SSRN preprint.",
   jobTitle: "Founder & methodology author, VC Deal Flow Signal",
+  identifier: DATA_NERD_ORCID_IDENTIFIER,
   knowsAbout: [
     "GitHub commit-velocity analysis",
     "Venture capital deal flow",
@@ -429,12 +511,7 @@ export const DATA_NERD_PERSON_SCHEMA = {
     "Panel-data regression",
   ],
   url: "https://signals.gitdealflow.com/data-nerd",
-  sameAs: [
-    "https://signals.gitdealflow.com/about/founder",
-    "https://signals.gitdealflow.com/origin",
-    "https://huggingface.co/the-data-nerd",
-    "https://www.kaggle.com/thedatanerd2026",
-  ],
+  sameAs: [...DATA_NERD_AUTHOR_SAMEAS],
   worksFor: {
     "@type": "Organization",
     "@id": "https://gitdealflow.com/#organization",

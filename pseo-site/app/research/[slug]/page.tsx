@@ -12,6 +12,7 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import RelatedLinks from "@/components/RelatedLinks";
 import { getRelatedGroupsForFinding } from "@/lib/finding-related";
+import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 
 const SITE = "https://signals.gitdealflow.com";
 const SSRN_URL = "https://ssrn.com/abstract=6606558";
@@ -174,17 +175,7 @@ export default async function ResearchFindingPage({ params }: PageProps) {
       ...externalCitations,
     ],
     citationCount: siblingCitations.length + externalCitations.length + 1,
-    author: {
-      "@type": "Person",
-      "@id": `${SITE}/about#author`,
-      name: "The Data Nerd",
-      url: `${SITE}/about`,
-      sameAs: [
-        "https://orcid.org/0009-0002-2222-4112",
-        "https://x.com/data_nerd",
-        "https://github.com/kindrat86",
-      ],
-    },
+    author: DATA_NERD_AUTHOR_REF,
     publisher: {
       "@type": "Organization",
       "@id": "https://gitdealflow.com/#organization",
@@ -205,13 +196,7 @@ export default async function ResearchFindingPage({ params }: PageProps) {
       name: "VC Deal Flow Signal Editorial",
       url: `${SITE}/about`,
     },
-    accountablePerson: {
-      "@type": "Person",
-      "@id": `${SITE}/about#person`,
-      name: "The Data Nerd",
-      url: `${SITE}/about`,
-      sameAs: ["https://orcid.org/0009-0002-2222-4112"],
-    },
+    accountablePerson: DATA_NERD_AUTHOR_REF,
     creditText: `The Data Nerd, "${PAPER_TITLE}", VC Deal Flow Signal (GitDealFlow), 2026, DOI 10.2139/ssrn.6606558, CC BY 4.0.`,
     copyrightHolder: { "@id": "https://gitdealflow.com/#organization" },
     copyrightYear: 2026,
@@ -332,12 +317,7 @@ export default async function ResearchFindingPage({ params }: PageProps) {
             datePublished: "2026-04-19",
             appearance: SSRN_URL,
             firstAppearance: SSRN_URL,
-            author: {
-              "@type": "Person",
-              name: "The Data Nerd",
-              url: `${SITE}/about`,
-              sameAs: ["https://orcid.org/0009-0002-2222-4112"],
-            },
+            author: DATA_NERD_AUTHOR_REF,
           },
           author: {
             "@type": "Organization",
