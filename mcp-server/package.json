@@ -1,6 +1,6 @@
 {
   "name": "@gitdealflow/mcp-signal",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "mcpName": "io.github.kindrat86/vc-deal-flow-signal",
   "description": "MCP server for VC Deal Flow Signal — search, shortlist, compare, and predict startup engineering acceleration across 20 sectors. Transparent, citable funding-likelihood scores with full evidence chains. Commit velocity, contributor growth, and repo-expansion signals for seed/Series A investors and corp-dev agents.",
   "keywords": [
