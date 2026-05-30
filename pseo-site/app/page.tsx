@@ -144,139 +144,15 @@ export default function Home() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
-      {
-        "@type": "WebSite",
-        "@id": "https://signals.gitdealflow.com/#website",
-        name: "VC Deal Flow Signal",
-        alternateName: ["GitDealFlow", "VC Deal Flow Signal (GitDealFlow)"],
-        url: "https://signals.gitdealflow.com",
-        description:
-          "GitHub commit-velocity tracking across startup sectors — code-side momentum signals from public GitHub data (distinct from startup accelerator programs). Surfaces venture-backed startups 3–6 weeks before fundraise.",
-        publisher: { "@id": "https://gitdealflow.com/#organization" },
-        inLanguage: "en-US",
-        potentialAction: {
-          "@type": "SearchAction",
-          target: {
-            "@type": "EntryPoint",
-            urlTemplate:
-              "https://signals.gitdealflow.com/api/nlweb?query={search_term_string}",
-          },
-          "query-input": "required name=search_term_string",
-        },
-      },
-      {
-        "@type": "Organization",
-        "@id": "https://gitdealflow.com/#organization",
-        // Knowledge Panel claim block — explicit Wikidata identifier
-        // PropertyValue + additionalType pointing at the Wikidata QID for
-        // "business" (Q4830453) + bidirectional mainEntityOfPage pointing
-        // to /wikidata. This is the canonical pattern Google's Knowledge
-        // Graph crawler reads to bind this entity to the existing Wikidata
-        // entry Q139376302 (created 2026-04). Pairs with reciprocal claims
-        // on Wikidata: P856 (official website) + P2002 (Twitter) + P31
-        // (instance of) + P1813 (short name) + P571 (inception).
-        additionalType: "https://www.wikidata.org/wiki/Q4830453",
-        identifier: [
-          {
-            "@type": "PropertyValue",
-            propertyID: "wikidata",
-            value: "Q139376302",
-            url: "https://www.wikidata.org/wiki/Q139376302",
-          },
-        ],
-        mainEntityOfPage: {
-          "@type": "WebPage",
-          "@id": "https://signals.gitdealflow.com/wikidata",
-          url: "https://signals.gitdealflow.com/wikidata",
-        },
-        subjectOf: {
-          "@type": "WebPage",
-          "@id": "https://signals.gitdealflow.com/wikidata#page",
-          url: "https://signals.gitdealflow.com/wikidata",
-          name: "VC Deal Flow Signal — Wikidata Knowledge Panel claim",
-        },
-        name: "VC Deal Flow Signal",
-        alternateName: ["GitDealFlow", "VC Deal Flow Signal (GitDealFlow)"],
-        url: "https://gitdealflow.com",
-        logo: {
-          "@type": "ImageObject",
-          url: "https://signals.gitdealflow.com/icon.png",
-          contentUrl: "https://signals.gitdealflow.com/icon.png",
-          width: 192,
-          height: 192,
-          encodingFormat: "image/png",
-          caption: "VC Deal Flow Signal logo",
-        },
-        image: {
-          "@type": "ImageObject",
-          url: "https://signals.gitdealflow.com/opengraph-image",
-          contentUrl: "https://signals.gitdealflow.com/opengraph-image",
-          width: 1200,
-          height: 630,
-          encodingFormat: "image/png",
-          caption:
-            "VC Deal Flow Signal — Startup Engineering Acceleration Tracker",
-          representativeOfPage: true,
-        },
-        foundingDate: "2025",
-        description:
-          "VC Deal Flow Signal tracks startup engineering acceleration using public GitHub data to surface breakout startups before they appear on the funding radar.",
-        contactPoint: {
-          "@type": "ContactPoint",
-          email: "signal@gitdealflow.com",
-          contactType: "customer support",
-        },
-        sameAs: [
-          "https://t.me/gitdealflow",
-          "https://x.com/data_nerd",
-          "https://www.linkedin.com/company/gitdealflow",
-          "https://www.wikidata.org/wiki/Q139376302",
-          "https://www.crunchbase.com/organization/gitdealflow",
-          "https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn",
-          "https://chromewebstore.google.com/detail/vc-github-lookup-%E2%80%94-startu/plgngijmloeljfkenecdkhiblcfcbblm",
-          "https://www.sideprojectors.com/project/78284/vc-deal-flow-signal-engineering-momentum-for-vcs",
-          "https://www.npmjs.com/package/@gitdealflow/mcp-signal",
-          "https://www.producthunt.com/products/vc-deal-flow-signal",
-          "https://www.g2.com/products/vc-deal-flow-signal/reviews",
-          "https://www.saashub.com/vc-deal-flow-signal",
-          "https://alternativeto.net/software/vc-deal-flow-signal/",
-          "https://github.com/kindrat86/mcp-deal-flow-signal",
-          "https://ssrn.com/abstract=6606558",
-          "https://openalex.org/works/W7154916891",
-          "https://zenodo.org/records/19650920",
-          "https://api.crossref.org/works/10.2139/ssrn.6606558",
-          "https://www.semanticscholar.org/paper/A-Longitudinal-Panel-of-GitHub-Engineering-Velocity",
-          "https://kaggle.com/datasets/thedatanerd/vc-deal-flow-signal",
-          "https://huggingface.co/datasets/the-data-nerd/vc-deal-flow-signal",
-          "https://huggingface.co/spaces/the-data-nerd/vc-deal-flow-explorer",
-          "https://huggingface.co/spaces/the-data-nerd/vc-deal-flow-deepseek",
-        ],
-        knowsAbout: [
-          "Code-Side Sourcing",
-          "GitHub commit velocity",
-          "venture capital alternative data",
-          "code-side momentum signals",
-          "startup engineering acceleration (quantitative GitHub signal, distinct from accelerator programs)",
-          "open-source contributor-growth analytics",
-          "repository-expansion signals",
-        ],
-        founder: {
-          "@type": "Person",
-          "@id": "https://signals.gitdealflow.com/about#person",
-          name: "The Data Nerd",
-          alternateName: "Data Nerd",
-          jobTitle: "Founder, VC Deal Flow Signal",
-          url: "https://signals.gitdealflow.com/about",
-          sameAs: [
-            "https://orcid.org/0009-0002-2222-4112",
-            "https://x.com/data_nerd",
-            "https://github.com/kindrat86",
-            "https://news.ycombinator.com/user?id=the_data_nerd",
-            "https://www.indiehackers.com/The_Data_Nerd",
-            "https://dev.to/the_data_nerd",
-          ],
-        },
-      },
+      // Site-wide identity nodes (WebSite #website + Organization
+      // #organization) are emitted authoritatively by
+      // <RootIdentitySchema/> in the root layout on every page,
+      // including this one. The homepage previously re-emitted
+      // strict-subset copies under the same @id — pure byte bloat
+      // (duplicated again in the RSC flight payload). Removed; the
+      // richer layout nodes carry all fields. Page-unique nodes
+      // (ItemList, Dataset, WebPage, WebAPI, FAQPage, Service,
+      // SoftwareApplication, Event) remain below.
       {
         "@type": "ItemList",
         name: "Startup Sectors Tracked by Engineering Acceleration",
