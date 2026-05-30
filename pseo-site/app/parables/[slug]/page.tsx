@@ -77,7 +77,7 @@ export default async function ParablePage({ params }: { params: Params }) {
         url: `https://signals.gitdealflow.com/parables/${parable.slug}`,
         author: {
           "@type": "Person",
-          "@id": "https://signals.gitdealflow.com/about#author",
+          "@id": "https://signals.gitdealflow.com/about#person",
           name: DATA_NERD_NAME,
         },
         publisher: {

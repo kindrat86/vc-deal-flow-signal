@@ -23,7 +23,7 @@ function audioObjectJsonLd(slug: string, durationSec: number) {
     inLanguage: "en",
     creator: {
       "@type": "Person",
-      "@id": "https://signals.gitdealflow.com/about#author",
+      "@id": "https://signals.gitdealflow.com/about#person",
       name: "The Data Nerd",
       url: "https://signals.gitdealflow.com/about/founder",
     },

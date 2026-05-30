@@ -5,6 +5,7 @@ import { getDataLastModified } from "@/lib/data";
 import PSEOFooterNav from "@/components/PSEOFooterNav";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 
 export const metadata: Metadata = {
   title: "Methodology — How We Measure Startup Engineering Acceleration",
@@ -25,12 +26,7 @@ export default function MethodologyPage() {
         headline: "How We Measure Startup Engineering Acceleration",
         description:
           "Methodology behind VC Deal Flow Signal: data sources, metrics, classification, and update frequency.",
-        author: {
-          "@type": "Person",
-          name: "The Data Nerd",
-          url: "https://signals.gitdealflow.com/about",
-          jobTitle: "Founder, VC Deal Flow Signal",
-        },
+        author: DATA_NERD_AUTHOR_REF,
         publisher: {
           "@type": "Organization",
           name: "VC Deal Flow Signal",
@@ -277,11 +273,7 @@ export default function MethodologyPage() {
         "@id": "https://signals.gitdealflow.com/methodology#quote-3-4x",
         text:
           "Orgs that combine high 14-day commit-velocity acceleration with low top-contributor concentration (Gini under 0.30) are 3.4× more likely to announce a Series A within 60 days than orgs with high acceleration alone. Velocity matters, but the shape of the velocity matters more.",
-        spokenByCharacter: {
-          "@type": "Person",
-          name: "The Data Nerd",
-          jobTitle: "Founder, VC Deal Flow Signal",
-        },
+        spokenByCharacter: DATA_NERD_AUTHOR_REF,
         creator: {
           "@type": "Organization",
           name: "VC Deal Flow Signal",
@@ -301,11 +293,7 @@ export default function MethodologyPage() {
         "@id": "https://signals.gitdealflow.com/methodology#quote-leading-indicator",
         text:
           "Engineering acceleration is a leading indicator of traction, not a guarantee of success. The signal precedes fundraise announcements by three to six weeks; it is a screening filter, not investment advice.",
-        spokenByCharacter: {
-          "@type": "Person",
-          name: "The Data Nerd",
-          jobTitle: "Founder, VC Deal Flow Signal",
-        },
+        spokenByCharacter: DATA_NERD_AUTHOR_REF,
         creator: {
           "@type": "Organization",
           name: "VC Deal Flow Signal",
@@ -323,11 +311,7 @@ export default function MethodologyPage() {
         "@id": "https://signals.gitdealflow.com/methodology#quote-public-methodology",
         text:
           "If we cannot publish the methodology, we do not deserve the price. The dataset, the SSRN paper, and the regression code are all public under CC BY 4.0 — what we sell is the live aggregation, not the secrecy.",
-        spokenByCharacter: {
-          "@type": "Person",
-          name: "The Data Nerd",
-          jobTitle: "Founder, VC Deal Flow Signal",
-        },
+        spokenByCharacter: DATA_NERD_AUTHOR_REF,
         creator: {
           "@type": "Organization",
           name: "VC Deal Flow Signal",

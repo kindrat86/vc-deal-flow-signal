@@ -3,6 +3,7 @@ import Link from "next/link";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import PSEOFooterNav from "@/components/PSEOFooterNav";
+import { DATA_NERD_PERSON_SCHEMA, DATA_NERD_AUTHOR_ID } from "@/lib/data-nerd";
 
 export const metadata: Metadata = {
   title: "About VC Deal Flow Signal — Why It Exists and Why You Might Trust It",
@@ -54,7 +55,18 @@ export default function AboutPage() {
           "@type": "SpeakableSpecification",
           cssSelector: ["h1", "[data-speakable]"],
         },
+        // Resolve the canonical author entity on its own URL. The site-wide
+        // `${SITE}/about#person` references (author / accountablePerson /
+        // spokenByCharacter across ~30 pages) all reconcile to this node.
+        mainEntity: { "@id": DATA_NERD_AUTHOR_ID },
+        about: { "@id": DATA_NERD_AUTHOR_ID },
       },
+      // Authoritative, fully-anchored author node. Emitted here so every
+      // `#person` pointer elsewhere resolves to a credentialed Person
+      // (ORCID + SSRN/Semantic Scholar author pages + verified handles)
+      // rather than a dangling reference. Pseudonymous by design; the handle
+      // resolves to persistent external identity, never a real name.
+      DATA_NERD_PERSON_SCHEMA,
       {
         "@type": "FAQPage",
         mainEntity: [
