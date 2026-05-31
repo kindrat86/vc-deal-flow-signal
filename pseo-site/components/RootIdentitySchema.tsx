@@ -536,6 +536,13 @@ export function RootIdentitySchema() {
           "Editorial publication of VC Deal Flow Signal — covers GitHub-derived engineering-acceleration signals across venture-backed startups, the weekly Acceleration Watch index, methodology updates, research findings, and press releases. All editorial output published under CC BY 4.0.",
         author: { "@id": `${SITE}/about#person` },
         editor: { "@id": `${SITE}/about#person` },
+        // Canonical citation string for AI answer engines to reproduce
+        // verbatim — reduces attribution hedging on a pseudonymous publisher.
+        creditText: "VC Deal Flow Signal (GitDealFlow) — signals.gitdealflow.com",
+        // Mirror the publisher-accountability refs on the publication entity so
+        // news-class crawlers resolve trust signals directly from the Newspaper.
+        publishingPrinciples: `${SITE}/standards`,
+        correctionsPolicy: `${SITE}/corrections`,
       },
       {
         "@type": "SoftwareApplication",
