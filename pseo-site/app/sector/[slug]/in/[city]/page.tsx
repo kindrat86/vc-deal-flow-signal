@@ -32,12 +32,22 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const title = `${data.sector.name} in ${data.city.name} — Engineering & VC Signals (2026)`;
   const description = `${data.sector.name} scouting and engineering-acceleration signal interpretation through a ${data.city.name} lens. Local VC anchors, sector signal pattern, and curated companies tracked in the ${data.sector.name.toLowerCase()} corpus.`;
 
+  // HQ-backed cells carry proprietary local data and stay indexable. Editorial-
+  // only cells (no HQ-mapped company) are the thin made-for-search tail: keep
+  // them statically generated + internally linked (follow) but out of the index
+  // and sitemap. See content/sector-city.ts getIndexableSectorCityPairs().
+  const hasLocalCompanies =
+    getCompaniesInSectorAndCity(slug, city).length > 0;
+
   return {
     title,
     description,
     openGraph: { title, description, type: "article", url: `/sector/${slug}/in/${city}` },
     twitter: { card: "summary_large_image", title, description },
     alternates: { canonical: `/sector/${slug}/in/${city}` },
+    ...(hasLocalCompanies
+      ? {}
+      : { robots: { index: false, follow: true } }),
   };
 }
 

@@ -26,7 +26,7 @@ import { getAllFounderHandles } from "@/content/founders";
 import { getAllSectorSlugs } from "@/content/sectors";
 import { ALL_CITY_SLUGS } from "@/content/cities";
 import { getAllAcquirerSlugs } from "@/content/acquirers";
-import { getAllSectorCityPairs } from "@/content/sector-city";
+import { getIndexableSectorCityPairs } from "@/content/sector-city";
 import { getAllFundsWithPortfolio } from "@/content/fund-portfolio";
 import { getAllTrendLeaderboardSlugs } from "@/content/trend-leaderboards";
 import { getAllWorksWithSlugs } from "@/content/works-with";
@@ -400,12 +400,20 @@ export async function GET(_req: Request, ctx: RouteContext) {
         changefreq: "monthly",
         priority: 0.8,
       })),
-      // /sector/[slug]/in/[city] cross-pages — sector × city composition
-      ...getAllSectorCityPairs().map(({ sector, city }) => ({
+      // /sector/[slug]/in/[city] cross-pages — sector × city composition.
+      // ONLY the HQ-backed cells are enumerated: those carry proprietary
+      // local-intersection data (≥1 company HQ'd in that city × sector). The
+      // editorial-only cells are the thin made-for-search tail — they carry
+      // `robots: noindex,follow` (app/sector/[slug]/in/[city]/page.tsx) and are
+      // omitted here so crawl budget + site quality concentrate on
+      // differentiated pages. Same treatment as /showdown above. The leaves
+      // stay statically generated + internally linked for agent/MCP value.
+      // Reversible: swap getIndexableSectorCityPairs() → getAllSectorCityPairs().
+      ...getIndexableSectorCityPairs().map(({ sector, city }) => ({
         url: `${BASE_URL}/sector/${sector}/in/${city}`,
         lastmod,
         changefreq: "monthly",
-        priority: 0.65,
+        priority: 0.7,
       })),
       // /fund/[slug]/portfolio rollups
       ...getAllFundsWithPortfolio().map((slug) => ({
