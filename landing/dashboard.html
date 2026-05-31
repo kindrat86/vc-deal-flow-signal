@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard — GitDealFlow</title>
-  <meta name="description" content="The main paid tier for angels actively sourcing. 60+ startups ranked across 20 sectors for €9.97/mo founding price.">
+  <meta name="description" content="The main paid tier for angels actively sourcing. 60+ startups ranked across 20 sectors for €9.97/mo founding price. Cancel in one click.">
   <link rel="canonical" href="https://gitdealflow.com/dashboard" />
   <meta name="robots" content="index, follow">
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Dashboard — GitDealFlow" />
-  <meta property="og:description" content="The full ranked dataset for angels actively sourcing." />
+  <meta property="og:description" content="The full ranked dataset for angels actively sourcing. €9.97/mo founding rate, locked for life. Cancel anytime." />
   <meta property="og:url" content="https://gitdealflow.com/dashboard" />
   <meta property="og:image" content="https://signals.gitdealflow.com/opengraph-image" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -19,6 +19,9 @@
     .mobile-card, .mobile-step-card { transition: border-color 120ms ease, transform 120ms ease; }
     .mobile-card:hover, .mobile-step-card:hover { border-color: rgba(14, 165, 233, 0.5); }
     .mobile-sticky-cta { display: none; }
+    .stack-row { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; padding: 0.85rem 0; border-bottom: 1px dashed rgba(71, 85, 105, 0.5); }
+    .stack-row:last-child { border-bottom: 0; }
+    .stack-row .val { color: #94a3b8; font-variant-numeric: tabular-nums; white-space: nowrap; }
     @media (min-width: 640px) { .mobile-cta-stack > * { width: auto; } }
     @media (max-width: 639px) {
       html { scroll-padding-top: 5rem; }
@@ -31,6 +34,7 @@
       .mobile-card-pad { padding: 1.25rem; }
       .mobile-stat-grid { gap: 1rem; }
       .mobile-grid-gap { gap: 1rem; }
+      .stack-row { font-size: 0.95rem; }
       .mobile-cta-stack .btn,
       .mobile-form-stack .btn {
         white-space: normal; text-align: center; line-height: 1.35;
@@ -65,121 +69,254 @@
   </header>
 
   <main>
+    <!-- ============ HERO · HOOK + offer in view + first CTA ============ -->
     <section class="relative overflow-hidden">
       <div class="absolute inset-0 bg-gradient-to-br from-dark-900 via-dark-800 to-brand-900 opacity-80"></div>
       <div class="mobile-hero-wrap relative max-w-4xl mx-auto px-4 sm:px-6 py-16 md:py-28 text-center">
-        <p class="text-brand-500 font-semibold text-sm uppercase tracking-wider mb-4">Main paid tier</p>
-        <h1 class="mobile-hero-title text-4xl md:text-6xl font-extrabold leading-tight mb-6">The full ranked list for angels who are actively sourcing.</h1>
-        <p class="mobile-hero-copy text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8">Use Dashboard when the free Sunday email is no longer enough and you want the broader ranked field every week across sectors.</p>
-        <div class="inline-flex items-center gap-2 rounded-full border border-signal-500/30 bg-signal-500/10 px-4 py-2 text-sm text-signal-300">
-          <span>Founding price:</span>
-          <strong class="text-white">€9.97/mo</strong>
+        <p class="text-brand-500 font-semibold text-sm uppercase tracking-wider mb-4">The weekly operating layer · for angels actively sourcing</p>
+        <h1 class="mobile-hero-title text-4xl md:text-6xl font-extrabold leading-tight mb-6">See the whole ranked field every week &mdash; weeks before the round, or the press.</h1>
+        <p class="mobile-hero-copy text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8">The free Sunday email gives you five names. Dashboard gives you the full ranked field &mdash; 60+ startups across 20 sectors, refreshed every week, in plain English. No code reading. Built for the moment a shortlist stops being enough.</p>
+        <div class="mobile-cta-stack flex flex-col sm:flex-row gap-3 justify-center items-center mb-5">
+          <a href="#checkout" class="btn btn-cta btn-lg w-full sm:w-auto">Lock €9.97/mo &rarr;</a>
+          <a href="/report" class="btn btn-secondary btn-md w-full sm:w-auto">See a sample issue first</a>
         </div>
+        <p class="text-gray-400 text-sm">Founding rate &mdash; locked for life while you stay. Cancel in one click. Read the methodology before you pay a cent.</p>
       </div>
     </section>
-    <section class="bg-dark-800 py-6 border-y border-gray-800" data-countdown-root data-countdown-key="gdf_timer_dashboard">
+
+    <!-- ============ HONEST URGENCY · real June 30 deadline, no fake reset ============ -->
+    <section class="bg-dark-800 py-6 border-y border-gray-800" data-deadline-root>
       <div class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 text-center">
-        <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-2">Urgency timer</p>
-        <p class="text-white font-semibold text-lg">Your founding-rate window closes in <span data-countdown-output class="text-signal-400">05:00</span></p>
-        <p class="text-gray-500 text-sm mt-1">You have five minutes to keep the current €9.97/mo session active before it resets.</p>
+        <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-2">The founding window is real, and it's dated</p>
+        <p class="text-white font-semibold text-lg">Founding rate closes in <span data-deadline-output class="text-signal-400">&mdash;</span></p>
+        <p class="text-gray-500 text-sm mt-1">I'm not going to fake a five-minute timer at you. The honest version: lock in before <strong class="text-gray-300">June&nbsp;30</strong> and you keep €9.97/mo for as long as you stay. After that, new members pay €49/mo. Same data, different price.</p>
       </div>
     </section>
-    <section class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 py-12">
+
+    <!-- ============ EPIPHANY BRIDGE · the origin aha (attractive character) ============ -->
+    <section class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 py-12 md:py-16">
       <div class="mobile-card mobile-card-pad rounded-2xl border border-sky-500/30 bg-sky-500/10 p-8 md:p-10 text-left">
-        <div class="flex flex-col sm:flex-row items-center sm:items-center gap-4 mb-4 text-center sm:text-left">
+        <div class="flex flex-col sm:flex-row items-center sm:items-center gap-4 mb-6 text-center sm:text-left">
           <picture>
             <source srcset="/data-nerd.webp" type="image/webp">
             <img src="/data-nerd.png" alt="The Data Nerd" width="96" height="96" loading="lazy" decoding="async" class="w-40 h-40 sm:w-32 sm:h-32 rounded-full ring-2 ring-slate-600 shadow-2xl mx-auto sm:mx-0">
           </picture>
-          <p class="text-sky-300 text-xs font-semibold uppercase tracking-wider">Story</p>
+          <div>
+            <p class="text-sky-300 text-xs font-semibold uppercase tracking-wider mb-1">Why I built this &mdash; The Data Nerd</p>
+            <p class="text-gray-400 text-sm">The short version of how I stopped guessing.</p>
+          </div>
         </div>
-        <h2 class="text-3xl font-bold mb-4">A five-name list is useful until you need a working field, not a weekly nudge.</h2>
-        <p class="text-gray-300 text-lg leading-relaxed mb-4">If your Sunday read keeps turning into ten open tabs, three saved companies, and a promise to dig deeper later, you are already feeling the limit of the free layer.</p>
-        <p class="text-gray-300 text-lg leading-relaxed">Dashboard is for the moment when you stop wanting inspiration and start wanting the quiet confidence of knowing where to look every week.</p>
+        <h2 class="text-3xl font-bold mb-4">I missed a company I'd seen six months early. Then I found out the proof had been public the whole time.</h2>
+        <p class="text-gray-300 text-lg leading-relaxed mb-4">A startup I'd glanced at and passed on raised a round that made the rounds on Twitter. My first reaction was the usual one &mdash; <em>how did I miss that?</em> So I went back and pulled their public GitHub history. The answer was sitting right there: six months before the announcement, their engineering output had quietly doubled. New contributors. Tighter release cadence. A team accelerating in plain sight.</p>
+        <p class="text-gray-300 text-lg leading-relaxed mb-4">Nobody was reading it, because reading it meant parsing commit graphs across hundreds of repos every week. So I built the thing that does it for me. Every week it reads the public engineering activity of startups across 20 sectors, ranks who's accelerating, and writes it up in plain English &mdash; <strong class="text-white">no code reading required.</strong></p>
+        <p class="text-gray-300 text-lg leading-relaxed">The free Sunday email is the headline: five names. Dashboard is the full field underneath it &mdash; the working surface I use myself. If your Sunday read keeps turning into ten open tabs and a promise to dig deeper later, you've already outgrown the headline. This is the rest of it.</p>
       </div>
     </section>
 
+    <!-- ============ BIG DOMINO · the one belief everything rests on ============ -->
+    <section class="bg-dark-800 py-14 md:py-16 border-y border-gray-800">
+      <div class="mobile-section-pad max-w-3xl mx-auto px-4 sm:px-6 text-center">
+        <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-3">The only thing you have to believe</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight mb-5">If a team's public engineering acceleration shows up <span class="text-signal-400">weeks before the round</span> &mdash; then the only edge that matters is reading it first.</h2>
+        <p class="text-gray-300 text-lg leading-relaxed">That's the whole bet. Funding rounds and press are lagging indicators. Code is a leading one. Dashboard exists to put that leading indicator in front of you every week, before everyone else is looking. Knock down that one domino and the rest of this page is just logistics.</p>
+      </div>
+    </section>
 
-
-    <section class="bg-dark-800 py-10 border-y border-gray-800">
-      <div class="mobile-section-pad mobile-stat-grid max-w-4xl mx-auto px-4 sm:px-6 grid md:grid-cols-3 gap-6 text-center">
-        <div>
-          <p class="text-signal-300 text-xs font-semibold uppercase tracking-wider mb-2">Scarcity</p>
-          <p class="text-gray-200 font-semibold">€9.97/mo is the founding rate</p>
-          <p class="text-gray-500 text-sm mt-1">Existing members keep €9.97/mo. New members after the launch window pay €49/mo.</p>
+    <!-- ============ 3 SECRETS · break the false beliefs ============ -->
+    <section class="mobile-section-pad max-w-5xl mx-auto px-4 sm:px-6 py-16 md:py-20">
+      <p class="text-center text-brand-500 text-xs font-semibold uppercase tracking-wider mb-3">The three reasons people hesitate &mdash; and why each one doesn't hold</p>
+      <h2 class="text-center text-3xl font-bold mb-10">You've probably already thought one of these.</h2>
+      <div class="grid md:grid-cols-3 gap-6 mobile-grid-gap">
+        <div class="mobile-card mobile-card-pad rounded-xl border border-gray-700 bg-dark-800 p-7">
+          <p class="text-signal-300 text-xs font-semibold uppercase tracking-wider mb-2">&ldquo;I'm not technical enough.&rdquo;</p>
+          <p class="text-gray-300 leading-relaxed">You never touch code. Every company arrives with its sector, stage, and a plain-English note on <em>why</em> it's accelerating. I do the engineering analysis; you do the investing. That's the entire point.</p>
         </div>
-        <div>
-          <p class="text-signal-300 text-xs font-semibold uppercase tracking-wider mb-2">Urgency</p>
-          <p class="text-gray-200 font-semibold">Best bought when you already need it weekly</p>
-          <p class="text-gray-500 text-sm mt-1">If you are already sourcing actively, waiting mostly costs you reps and timing.</p>
+        <div class="mobile-card mobile-card-pad rounded-xl border border-gray-700 bg-dark-800 p-7">
+          <p class="text-signal-300 text-xs font-semibold uppercase tracking-wider mb-2">&ldquo;Public data can't be an edge.&rdquo;</p>
+          <p class="text-gray-300 leading-relaxed">Public isn't the same as <em>read</em>. The data is open; the work of reading every repo, every week, ranked and translated, is not. The edge isn't secrecy &mdash; it's timing and attention. You get both.</p>
         </div>
-        <div>
-          <p class="text-signal-300 text-xs font-semibold uppercase tracking-wider mb-2">Pressure release</p>
-          <p class="text-gray-200 font-semibold">Do not buy this too early</p>
-          <p class="text-gray-500 text-sm mt-1">If the free list still covers your needs, stay there until the rhythm changes.</p>
+        <div class="mobile-card mobile-card-pad rounded-xl border border-gray-700 bg-dark-800 p-7">
+          <p class="text-signal-300 text-xs font-semibold uppercase tracking-wider mb-2">&ldquo;Not another tool to check.&rdquo;</p>
+          <p class="text-gray-300 leading-relaxed">It isn't a dashboard you have to babysit. It's one weekly read that slots into the Sunday habit you already have. Same ten minutes &mdash; the full field instead of five names.</p>
         </div>
       </div>
     </section>
 
+    <!-- ============ THE STACK · offer with value anchoring, price revealed last ============ -->
+    <section class="bg-dark-800 py-16 md:py-20 border-y border-gray-800">
+      <div class="mobile-section-pad max-w-3xl mx-auto px-4 sm:px-6">
+        <p class="text-center text-brand-500 text-xs font-semibold uppercase tracking-wider mb-3">Everything you get every week</p>
+        <h2 class="text-center text-3xl font-bold mb-8">Here's exactly what lands in your hands.</h2>
+        <div class="mobile-card-pad rounded-2xl border border-gray-700 bg-dark-900/60 p-8">
+          <div class="stack-row">
+            <span class="text-gray-200">The full ranked field &mdash; 60+ startups across 20 sectors, every week</span>
+            <span class="val">€39/mo</span>
+          </div>
+          <div class="stack-row">
+            <span class="text-gray-200">Plain-English signal summaries, written for non-engineer angels</span>
+            <span class="val">€19/mo</span>
+          </div>
+          <div class="stack-row">
+            <span class="text-gray-200">Sector, stage &amp; geography ranking &mdash; sort to your thesis in seconds</span>
+            <span class="val">€15/mo</span>
+          </div>
+          <div class="stack-row">
+            <span class="text-gray-200">Acceleration flags &mdash; who's moving <em>now</em>, not who moved last quarter</span>
+            <span class="val">€20/mo</span>
+          </div>
+          <div class="stack-row">
+            <span class="text-gray-200">The published methodology &amp; open dataset behind every ranking</span>
+            <span class="val">included</span>
+          </div>
+          <div class="stack-row">
+            <span class="text-gray-200">Founding-member price, locked for as long as you stay subscribed</span>
+            <span class="val">priceless</span>
+          </div>
+          <div class="flex items-baseline justify-between gap-4 pt-6 mt-2">
+            <span class="text-gray-400">Honest value if you priced the parts</span>
+            <span class="text-gray-500 line-through text-lg">€93/mo</span>
+          </div>
+          <div class="flex items-baseline justify-between gap-4 mt-2">
+            <span class="text-white font-semibold text-lg">Your founding rate today</span>
+            <span class="text-signal-400 font-extrabold text-3xl">€9.97/mo</span>
+          </div>
+        </div>
+        <div class="text-center mt-8">
+          <a href="#checkout" class="btn btn-cta btn-lg w-full sm:w-auto">Lock €9.97/mo &rarr;</a>
+          <p class="text-gray-500 text-sm mt-3">Locked for life while you stay &middot; cancel in one click &middot; €49/mo for members who join after June 30</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROOF · real, verifiable credibility (no invented quotes) ============ -->
+    <section class="mobile-section-pad max-w-5xl mx-auto px-4 sm:px-6 py-16 md:py-20">
+      <p class="text-center text-brand-500 text-xs font-semibold uppercase tracking-wider mb-3">You don't have to take my word for any of it</p>
+      <h2 class="text-center text-3xl font-bold mb-10">The proof is public before the product asks for trust.</h2>
+      <div class="grid md:grid-cols-3 gap-6 mobile-grid-gap mb-10">
+        <div class="mobile-card mobile-card-pad rounded-xl border border-gray-700 bg-dark-800 p-7 text-center">
+          <p class="text-3xl font-extrabold text-white mb-1">Peer-reviewable</p>
+          <p class="text-gray-400 text-sm leading-relaxed">The methodology is published on SSRN and the full dataset is open on Zenodo with a DOI. Read it, check it, argue with it &mdash; before you pay.</p>
+        </div>
+        <div class="mobile-card mobile-card-pad rounded-xl border border-gray-700 bg-dark-800 p-7 text-center">
+          <p class="text-3xl font-extrabold text-white mb-1">60+ / 20</p>
+          <p class="text-gray-400 text-sm leading-relaxed">Sixty-plus startups ranked across twenty sectors, refreshed every single week from the live GitHub API. Not a one-time list &mdash; a standing field.</p>
+        </div>
+        <div class="mobile-card mobile-card-pad rounded-xl border border-gray-700 bg-dark-800 p-7 text-center">
+          <p class="text-3xl font-extrabold text-white mb-1">Open by default</p>
+          <p class="text-gray-400 text-sm leading-relaxed">Browse the deeper signal surface and a full sample issue before checkout. If the signal doesn't fit your thesis, you'll know in ten minutes &mdash; for free.</p>
+        </div>
+      </div>
+      <div class="mobile-cta-stack flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="https://signals.gitdealflow.com/methodology" class="btn btn-secondary btn-md w-full sm:w-auto">Read the methodology</a>
+        <a href="/report" class="btn btn-secondary btn-md w-full sm:w-auto">See a sample issue</a>
+        <a href="https://signals.gitdealflow.com" class="btn btn-secondary btn-md w-full sm:w-auto">Browse the live signal</a>
+      </div>
+      <!-- When you have real founding-member quotes, drop a testimonial band here.
+           Keep them attributed and real — the honesty is the whole brand. -->
+    </section>
+
+    <!-- ============ RISK REVERSAL · remove the "I'll come back" exit ============ -->
+    <section class="bg-dark-800 py-16 md:py-20 border-y border-gray-800">
+      <div class="mobile-section-pad max-w-3xl mx-auto px-4 sm:px-6">
+        <div class="mobile-card mobile-card-pad rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-8 md:p-10 text-center">
+          <p class="text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-3">The risk is on me, not you</p>
+          <h2 class="text-3xl font-bold mb-4">€9.97 and a one-click exit. There's nothing to trap you here.</h2>
+          <p class="text-gray-300 text-lg leading-relaxed max-w-2xl mx-auto mb-6">This is a month-to-month subscription, not a contract. No call to cancel, no dark-pattern hoops &mdash; one click in Stripe and you're done, keeping anything you've already downloaded. Try the next issue. If the full field doesn't earn its ten minutes, leave, and you've risked less than a coffee. Stay, and your founding €9.97 never goes up.</p>
+          <a href="#checkout" class="btn btn-cta btn-md w-full sm:w-auto">Start Dashboard &mdash; €9.97/mo &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ QUALIFY · takeaway posture (kept — it's the brand) ============ -->
     <section class="mobile-section-pad max-w-5xl mx-auto px-4 sm:px-6 py-16 md:py-20">
       <div class="grid md:grid-cols-2 gap-8 mobile-grid-gap">
         <div class="mobile-card mobile-card-pad rounded-xl border border-gray-700 bg-dark-800 p-8">
-          <h2 class="text-2xl font-bold mb-4">What you get back every week</h2>
+          <h2 class="text-2xl font-bold mb-4">This is for you if&hellip;</h2>
           <ul class="space-y-3 text-gray-300 leading-relaxed">
-            <li>60+ ranked startups across the tracked sectors</li>
-            <li>Signal summaries built for non-engineer angels</li>
-            <li>A wider working list than the free Sunday five</li>
-            <li>A better weekly operating surface for active sourcing</li>
-            <li>Founding-member price while you stay subscribed</li>
+            <li>You're writing checks consistently and a five-name shortlist no longer covers your sourcing.</li>
+            <li>You want the full ranked field across sectors, not just the weekly headline.</li>
+            <li>You'd rather spot acceleration yourself than wait for the round or the press.</li>
+            <li>You value a tool that tells you the truth, including when not to buy it.</li>
           </ul>
         </div>
         <div class="mobile-card mobile-card-pad rounded-xl border border-gray-700 bg-dark-800 p-8">
-          <h2 class="text-2xl font-bold mb-4">If this already sounds like your workload</h2>
+          <h2 class="text-2xl font-bold mb-4">Honestly? Skip it for now if&hellip;</h2>
           <div class="space-y-4 text-gray-300 leading-relaxed">
-            <p><strong class="text-white">Best fit:</strong> once you are writing checks consistently and want more than a five-name shortlist.</p>
-            <p><strong class="text-white">Not the first step:</strong> if you are still evaluating whether the signal fits your thesis, start with the free watchlist or First Look.</p>
-            <p><strong class="text-white">If you need thesis-specific custom work:</strong> go to <a href="/sector-sweep" class="text-brand-500 underline">Sector Sweep</a> instead.</p>
+            <p><strong class="text-white">You're still evaluating the signal:</strong> start with the free watchlist or <a href="/firstlook" class="text-brand-500 underline">First Look</a>. Come back when missing the right company would actually bother you.</p>
+            <p><strong class="text-white">You want a smaller room around the signal:</strong> that's <a href="/insider" class="text-brand-500 underline">Insider</a>, the next rung up.</p>
+            <p><strong class="text-white">You need thesis-specific custom work:</strong> go to <a href="/sector-sweep" class="text-brand-500 underline">Sector Sweep</a> instead.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="bg-dark-800 py-16 md:py-20">
-      <div class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 text-center">
-        <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-3">If you need to verify the claim</p>
-        <h2 class="text-3xl font-bold mb-4">The proof is public before the product asks for trust.</h2>
-        <p class="text-gray-300 text-lg leading-relaxed max-w-3xl mx-auto mb-8">You can read the methodology on SSRN, inspect the dataset on Zenodo, and browse the deeper signal surface before you pay for anything. That is exactly how it should be.</p>
-        <div class="mobile-cta-stack flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="https://signals.gitdealflow.com/methodology" class="btn btn-secondary btn-md w-full sm:w-auto">Read the methodology</a>
-          <a href="/report" class="btn btn-secondary btn-md w-full sm:w-auto">See a sample issue</a>
+    <!-- ============ FAQ · objection handling ============ -->
+    <section class="bg-dark-800 py-16 md:py-20 border-y border-gray-800">
+      <div class="mobile-section-pad max-w-3xl mx-auto px-4 sm:px-6">
+        <h2 class="text-center text-3xl font-bold mb-10">The questions I'd ask before paying.</h2>
+        <div class="space-y-4">
+          <details class="mobile-card rounded-xl border border-gray-700 bg-dark-900/60 p-5">
+            <summary class="cursor-pointer font-semibold text-white">Do I need to read code or understand engineering?</summary>
+            <p class="text-gray-300 leading-relaxed mt-3">No. Every company comes with a plain-English note on why it's accelerating. The analysis is done for you. You never open a repo.</p>
+          </details>
+          <details class="mobile-card rounded-xl border border-gray-700 bg-dark-900/60 p-5">
+            <summary class="cursor-pointer font-semibold text-white">What's actually different from the free Sunday email?</summary>
+            <p class="text-gray-300 leading-relaxed mt-3">The free email is the top five. Dashboard is the full ranked field beneath it &mdash; 60+ startups across 20 sectors, sortable by sector, stage and geography, refreshed weekly. The headline vs. the whole story.</p>
+          </details>
+          <details class="mobile-card rounded-xl border border-gray-700 bg-dark-900/60 p-5">
+            <summary class="cursor-pointer font-semibold text-white">Is €9.97 really locked, or does it creep up later?</summary>
+            <p class="text-gray-300 leading-relaxed mt-3">Locked for as long as you stay subscribed. Members who join after June 30 pay €49/mo for the same data. If you lock in now and never cancel, you never see €49.</p>
+          </details>
+          <details class="mobile-card rounded-xl border border-gray-700 bg-dark-900/60 p-5">
+            <summary class="cursor-pointer font-semibold text-white">How do I cancel if it's not for me?</summary>
+            <p class="text-gray-300 leading-relaxed mt-3">One click in the Stripe portal. No email, no call, no retention maze. You keep anything you've already downloaded.</p>
+          </details>
+          <details class="mobile-card rounded-xl border border-gray-700 bg-dark-900/60 p-5">
+            <summary class="cursor-pointer font-semibold text-white">Can I see the work before I pay?</summary>
+            <p class="text-gray-300 leading-relaxed mt-3">Yes, and you should. The <a href="https://signals.gitdealflow.com/methodology" class="text-brand-500 underline">methodology</a> is on SSRN, the <a href="/report" class="text-brand-500 underline">sample issue</a> is public, and the <a href="https://signals.gitdealflow.com" class="text-brand-500 underline">live signal surface</a> is open to browse. Buy only after you've checked the work.</p>
+          </details>
         </div>
       </div>
     </section>
 
-    <section class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 py-12">
+    <!-- ============ CHECKOUT · restate the stack, then ask ============ -->
+    <section id="checkout" class="max-w-3xl mx-auto px-6 py-20 text-center">
+      <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-3">Start Dashboard</p>
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">The full field, every week, for €9.97 &mdash; locked for life.</h2>
+      <p class="text-gray-300 max-w-xl mx-auto mb-3">60+ ranked startups across 20 sectors &middot; plain-English signal &middot; sortable to your thesis &middot; methodology and dataset included &middot; founding rate locked while you stay &middot; cancel in one click.</p>
+      <p class="text-gray-500 mb-8">Enter your email and go straight to Stripe. I prefill it and tag the attribution so the upgrade path stays clean.</p>
+      <form id="dashboard-form" class="mobile-form-stack max-w-lg mx-auto flex flex-col sm:flex-row gap-3">
+        <label for="dashboard-email" class="sr-only">Email</label>
+        <input type="email" id="dashboard-email" required placeholder="you@example.com" class="flex-1 px-5 py-4 rounded-lg bg-dark-800 border border-gray-600 text-gray-100 placeholder-gray-500 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 text-lg">
+        <button type="submit" id="dashboard-btn" class="btn btn-cta btn-lg w-full sm:w-auto">Lock €9.97/mo &rarr;</button>
+      </form>
+      <p id="dashboard-msg" class="text-gray-500 text-sm mt-4">€9.97/mo until June 30 &middot; then €49/mo for new members &middot; cancel anytime &middot; secure checkout via Stripe</p>
+    </section>
+
+    <!-- ============ TAKEAWAY CLOSE · honest off-ramp (kept — it's the character) ============ -->
+    <section class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 pb-20">
       <div class="mobile-card mobile-card-pad rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-8 text-center">
-        <p class="text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-3">If this feels too early</p>
+        <p class="text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-3">And if this still feels too early</p>
         <h2 class="text-2xl font-bold mb-4">Stay with the lighter layer until the pain is real.</h2>
-        <p class="text-gray-300 leading-relaxed max-w-2xl mx-auto mb-6">If a five-name email still feels like enough, wait. Come back when missing the right company would actually bother you.</p>
+        <p class="text-gray-300 leading-relaxed max-w-2xl mx-auto mb-6">If a five-name email still feels like enough, wait. I'd rather you come back when missing the right company would actually bother you than buy something you don't need yet. That's the deal.</p>
         <div class="mobile-cta-stack flex flex-col sm:flex-row gap-4 justify-center">
           <a href="/#signup" class="btn btn-secondary btn-md w-full sm:w-auto">Get the free Sunday email</a>
           <a href="/firstlook" class="btn btn-secondary btn-md w-full sm:w-auto">See First Look</a>
         </div>
       </div>
     </section>
-
-    <section id="checkout" class="max-w-3xl mx-auto px-6 py-20 text-center">
-      <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-3">Checkout</p>
-      <h2 class="text-3xl font-bold mb-4">Start Dashboard</h2>
-      <p class="text-gray-300 mb-8">Enter your email and go straight to Stripe. I prefill it and tag the attribution so the upgrade path stays clean.</p>
-      <form id="dashboard-form" class="mobile-form-stack max-w-lg mx-auto flex flex-col sm:flex-row gap-3">
-        <label for="dashboard-email" class="sr-only">Email</label>
-        <input type="email" id="dashboard-email" required placeholder="you@example.com" class="flex-1 px-5 py-4 rounded-lg bg-dark-800 border border-gray-600 text-gray-100 placeholder-gray-500 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 text-lg">
-        <button type="submit" id="dashboard-btn" class="btn btn-cta btn-lg w-full sm:w-auto">Lock €9.97/mo &rarr;</button>
-      </form>
-      <p id="dashboard-msg" class="text-gray-500 text-sm mt-4">€9.97/mo until June 30 · then €49/mo · secure checkout via Stripe</p>
-    </section>
   </main>
+
+  <!-- Mobile sticky CTA -->
+  <div class="mobile-sticky-cta" aria-hidden="false">
+    <div class="inner">
+      <div class="meta">
+        <strong>€9.97/mo &middot; founding rate</strong>
+        <span>Locked for life &middot; cancel in one click</span>
+      </div>
+      <a href="#checkout" class="btn btn-cta btn-sm">Lock it in &rarr;</a>
+    </div>
+  </div>
 
   <footer class="border-t border-gray-800 bg-dark-900/80 py-12">
     <div class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 text-center">
@@ -264,37 +401,26 @@
   </script>
 
   <script>
+    // Honest urgency: a real countdown to the founding-rate deadline (June 30, 23:59 UTC).
+    // No per-session reset, no fake five-minute loop — the date is the date.
     (function(){
-      const root = document.querySelector('[data-countdown-root]');
+      const root = document.querySelector('[data-deadline-root]');
       if (!root) return;
-      const key = root.getAttribute('data-countdown-key') || 'gdf_timer';
-      const out = root.querySelector('[data-countdown-output]');
-      const durationMs = 5 * 60 * 1000;
-      let deadline;
-      try {
-        const stored = sessionStorage.getItem(key);
-        if (stored && Number(stored) > Date.now()) {
-          deadline = Number(stored);
-        } else {
-          deadline = Date.now() + durationMs;
-          sessionStorage.setItem(key, String(deadline));
-        }
-      } catch (e) {
-        deadline = Date.now() + durationMs;
-      }
+      const out = root.querySelector('[data-deadline-output]');
+      const deadline = Date.UTC(2026, 5, 30, 23, 59, 59); // month is 0-indexed → 5 = June
       function pad(n){ return n < 10 ? '0' + n : String(n); }
       function tick(){
-        const left = Math.max(0, deadline - Date.now());
-        const total = Math.floor(left / 1000);
-        const m = Math.floor(total / 60);
-        const s = total % 60;
-        if (out) out.textContent = pad(m) + ':' + pad(s);
-        if (left <= 0) {
-          try { sessionStorage.removeItem(key); } catch (e) {}
-        }
+        const left = deadline - Date.now();
+        if (!out) return;
+        if (left <= 0) { out.textContent = 'the founding window has closed'; return; }
+        const totalMin = Math.floor(left / 60000);
+        const days = Math.floor(totalMin / 1440);
+        const hours = Math.floor((totalMin % 1440) / 60);
+        const mins = totalMin % 60;
+        out.textContent = days + 'd ' + pad(hours) + 'h ' + pad(mins) + 'm';
       }
       tick();
-      setInterval(tick, 1000);
+      setInterval(tick, 30000);
     })();
   </script>
 
