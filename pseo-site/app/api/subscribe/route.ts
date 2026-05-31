@@ -38,25 +38,75 @@ function verificationEmailHtml(
       : cohort === "launch"
         ? "Start the Launch Sequence"
         : "Get the Report";
+  // Inbox preview line (hidden preheader). Mobile clients show ~90 chars.
+  const preheader =
+    cohort === "challenge"
+      ? "Confirm to start your 7-Day Deal Flow Reset — Day 1 lands in 15 minutes."
+      : cohort === "launch"
+        ? "Confirm to start the Agent Credits launch sequence — first email in 30 minutes."
+        : "Confirm to unlock This Week's Top 5 Breakout Startups — plus the deal I missed.";
   return `<!DOCTYPE html>
-<html>
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head>
-<body style="margin:0;padding:0;background:#f8fafc;color:#1e293b;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
-<div style="max-width:600px;margin:0 auto;padding:32px 24px;">
-<div style="margin-bottom:24px;"><strong style="color:#0ea5e9;font-size:14px;letter-spacing:1px;">VC DEAL FLOW SIGNAL</strong></div>
-<div style="font-size:16px;line-height:1.7;color:#1e293b;">
-<p>${headline}</p>
+<html lang="en" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark">
+<title>VC Deal Flow Signal</title>
+<!--[if mso]><noscript><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript><![endif]-->
+<style>
+  body { margin:0 !important; padding:0 !important; width:100% !important; }
+  * { -ms-text-size-adjust:100%; -webkit-text-size-adjust:100%; }
+  table, td { mso-table-lspace:0pt; mso-table-rspace:0pt; border-collapse:collapse; }
+  img { -ms-interpolation-mode:bicubic; border:0; height:auto; line-height:100%; outline:none; text-decoration:none; }
+  a { color:#0284c7; }
+  @media only screen and (max-width:600px) {
+    .container { width:100% !important; }
+    .px { padding-left:22px !important; padding-right:22px !important; }
+    .h1 { font-size:25px !important; line-height:1.25 !important; }
+    .btn-a { font-size:18px !important; padding:17px 24px !important; }
+  }
+</style>
+</head>
+<body style="margin:0;padding:0;width:100%;background:#f1f5f9;color:#1e293b;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+<div style="display:none;max-height:0;overflow:hidden;mso-hide:all;font-size:1px;line-height:1px;color:#f1f5f9;opacity:0;">${preheader}&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f1f5f9;">
+<tr><td align="center" style="padding:24px 12px;">
+<table role="presentation" class="container" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px;max-width:600px;background:#ffffff;border-radius:14px;overflow:hidden;box-shadow:0 1px 3px rgba(15,23,42,0.08);">
+<tr><td class="px" style="padding:32px 40px 8px 40px;">
+<span style="display:inline-block;color:#0ea5e9;font-size:13px;font-weight:700;letter-spacing:1.5px;">VC DEAL FLOW SIGNAL</span>
+</td></tr>
+<tr><td class="px" style="padding:8px 40px 0 40px;">
+<h1 class="h1" style="margin:0;font-size:28px;line-height:1.25;font-weight:800;color:#0f172a;letter-spacing:-0.4px;">${headline}</h1>
+</td></tr>
+<tr><td class="px" style="padding:16px 40px 0 40px;font-size:17px;line-height:1.65;color:#334155;">
 ${body}
-<div style="text-align:center;margin:32px 0;">
-<a href="${verifyUrl}" style="display:inline-block;background:#0284c7;color:#ffffff;font-weight:600;font-size:16px;padding:14px 32px;border-radius:8px;text-decoration:none;">${cta}</a>
-</div>
-<p style="color:#64748b;font-size:14px;">After you confirm, you'll also start receiving weekly signal updates — the top startups showing unusual engineering acceleration. No spam, unsubscribe anytime.</p>
-</div>
-<div style="margin-top:40px;padding-top:20px;border-top:1px solid #e2e8f0;font-size:12px;color:#94a3b8;">
-<p>You're receiving this because you entered your email at <a href="https://gitdealflow.com" style="color:#0ea5e9;">gitdealflow.com</a></p>
-<p>If you didn't sign up, you can safely ignore this email.</p>
-</div>
-</div>
+</td></tr>
+<tr><td class="px" style="padding:28px 40px 8px 40px;">
+<!--[if mso]>
+<v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="${verifyUrl}" style="height:54px;v-text-anchor:middle;width:520px;" arcsize="20%" stroke="f" fillcolor="#0284c7">
+<w:anchorlock/><center style="color:#ffffff;font-family:sans-serif;font-size:18px;font-weight:bold;">${cta} &rarr;</center>
+</v:roundrect>
+<![endif]-->
+<!--[if !mso]><!-->
+<a class="btn-a" href="${verifyUrl}" style="display:block;width:100%;box-sizing:border-box;background:#0284c7;color:#ffffff;font-weight:700;font-size:19px;line-height:1.2;padding:18px 28px;border-radius:10px;text-decoration:none;text-align:center;box-shadow:0 4px 14px rgba(2,132,199,0.35);">${cta} &rarr;</a>
+<!--<![endif]-->
+</td></tr>
+<tr><td class="px" style="padding:0 40px 4px 40px;font-size:13px;line-height:1.5;color:#94a3b8;text-align:center;">
+Button not working? Paste this into your browser:<br>
+<a href="${verifyUrl}" style="color:#0284c7;word-break:break-all;">${verifyUrl}</a>
+</td></tr>
+<tr><td class="px" style="padding:20px 40px 28px 40px;font-size:14px;line-height:1.6;color:#64748b;">
+After you confirm, you'll also start receiving weekly signal updates — the top startups showing unusual engineering acceleration. No spam, unsubscribe anytime.
+</td></tr>
+<tr><td class="px" style="padding:20px 40px 32px 40px;border-top:1px solid #e2e8f0;font-size:12px;line-height:1.6;color:#94a3b8;">
+You're receiving this because you entered your email at <a href="https://gitdealflow.com" style="color:#0ea5e9;">gitdealflow.com</a>.<br>
+If you didn't sign up, you can safely ignore this email.
+</td></tr>
+</table>
+</td></tr>
+</table>
 </body>
 </html>`;
 }

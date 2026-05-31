@@ -287,10 +287,10 @@ export function renderDigestEmail(data: DigestData, opts: DigestOptions = {}): s
           <tr><td style="height:32px;line-height:32px;font-size:0;">&nbsp;</td></tr>
           <tr>
             <td align="center" class="px-outer" style="padding:0 8px;">
-              <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;">
                 <tr>
-                  <td align="center" style="background:${BRAND.accent};border-radius:10px;">
-                    <a href="https://signals.gitdealflow.com/trending" style="display:inline-block;padding:14px 28px;color:${BRAND.onAccent};font-size:15px;font-weight:700;letter-spacing:-0.01em;">Browse the full 60+ ranking &rarr;</a>
+                  <td align="center">
+                    <a href="https://signals.gitdealflow.com/trending" style="display:block;width:100%;box-sizing:border-box;background:${BRAND.accent};color:${BRAND.onAccent};font-weight:700;font-size:19px;line-height:1.2;letter-spacing:-0.01em;padding:18px 28px;border-radius:10px;text-decoration:none;text-align:center;box-shadow:0 4px 14px rgba(2,132,199,0.35);">Browse the full 60+ ranking &rarr;</a>
                   </td>
                 </tr>
               </table>

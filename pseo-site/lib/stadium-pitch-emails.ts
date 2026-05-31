@@ -119,7 +119,7 @@ export function buildLiveDropEmail({ dropTimeIso }: BuildArgs): {
 <p>Read it now while it's fresh — the public page stays open for 48 hours, but the RSVP list gets the link first, every month.</p>
 
 <p style="text-align:center;margin:32px 0;">
-<a href="${SITE_SIGNALS}/state-of-github?utm_source=email&amp;utm_medium=stadium-rsvp&amp;utm_campaign=stadium-live" style="display:inline-block;background:#0284c7;color:#ffffff;font-weight:600;font-size:16px;padding:14px 32px;border-radius:8px;text-decoration:none;">Read the ${monthLabel} address →</a>
+<a href="${SITE_SIGNALS}/state-of-github?utm_source=email&amp;utm_medium=stadium-rsvp&amp;utm_campaign=stadium-live" style="display:block;width:100%;box-sizing:border-box;background:#0284c7;color:#ffffff;font-weight:700;font-size:19px;line-height:1.2;padding:18px 28px;border-radius:10px;text-decoration:none;text-align:center;box-shadow:0 4px 14px rgba(2,132,199,0.35);">Read the ${monthLabel} address →</a>
 </p>
 
 <p>Three sector-level shifts to plan around. What changed in how we read the signal this month. The one structural call I think every investor sourcing early should have on their calendar. (As always — this is a tool, not a fund; it surfaces the startups heating up, you make the calls.)</p>
