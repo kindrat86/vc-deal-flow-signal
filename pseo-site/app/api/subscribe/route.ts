@@ -3,6 +3,7 @@ import { checkRateLimit, getClientIp, rateLimitHeaders } from "@/lib/rate-limit"
 import { isValidEmail, isAllowedOrigin } from "@/lib/validation";
 import { signVerifyToken } from "@/lib/verify-token";
 import { fireRedditLead } from "@/lib/reddit-conversions-api";
+import { recordSignup } from "@/lib/recent-signups";
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY!;
 const FROM_EMAIL = process.env.FROM_EMAIL || "signal@gitdealflow.com";
@@ -188,6 +189,21 @@ export async function POST(request: Request) {
         { error: "Failed to send verification email" },
         { status: 500, headers },
       );
+    }
+
+    // Honest social proof: record the city/country of this real signup so the
+    // landing can show "an investor from {city} signed up" toasts. We capture
+    // geo here (direct browser request → accurate location; email-link clicks
+    // get proxied and would lie). Anonymous: city + country only, no email, no
+    // IP, no name. Best-effort — a cache hiccup must never break the subscribe.
+    try {
+      const city = decodeURIComponent(
+        request.headers.get("x-vercel-ip-city") || "",
+      ).trim();
+      const country = (request.headers.get("x-vercel-ip-country") || "").trim();
+      if (city) await recordSignup(city, country);
+    } catch (geoErr) {
+      console.error("[recent-signups] record failed:", geoErr);
     }
 
     // Reddit Conversions API — fire `Lead` server-side for paid Reddit

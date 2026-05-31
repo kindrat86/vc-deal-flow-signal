@@ -795,6 +795,85 @@
   </script>
 
 
+  <script>
+    // Real recent-signup social proof. Polls signals.gitdealflow.com for ACTUAL
+    // signups recorded at /api/subscribe (city + country, no PII) and shows a
+    // small toast for each. If the feed is empty (no real recent signups), it
+    // shows nothing — never a fabricated "someone from Paris". Fully inline-
+    // styled so it never depends on a purged utility class. window.__noProof=1
+    // disables it.
+    (function () {
+      if (window.__noProof) return;
+      var FEED = 'https://signals.gitdealflow.com/api/recent-signups';
+      var SHOW_MS = 6000, GAP_MS = 9000, MAX = 5;
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      function esc(s) { var d = document.createElement('div'); d.textContent = String(s == null ? '' : s); return d.innerHTML; }
+
+      function build() {
+        var mobile = window.innerWidth < 768;
+        var el = document.createElement('div');
+        el.setAttribute('role', 'status');
+        el.setAttribute('aria-live', 'polite');
+        el.style.cssText = [
+          'position:fixed', 'left:16px', 'z-index:60',
+          'bottom:' + (mobile ? '84px' : '20px'),
+          'max-width:330px', 'background:#0f172a', 'color:#e2e8f0',
+          'border:1px solid #334155', 'border-radius:12px',
+          'box-shadow:0 12px 32px rgba(0,0,0,.45)', 'padding:12px 14px',
+          'font:500 13px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif',
+          'display:flex', 'align-items:flex-start', 'gap:10px',
+          'opacity:0', 'transform:' + (reduce ? 'none' : 'translateY(12px)'),
+          'transition:opacity .35s ease, transform .35s ease', 'pointer-events:auto'
+        ].join(';');
+        document.body.appendChild(el);
+        return el;
+      }
+
+      function render(el, s) {
+        var place = esc(s.city) + (s.country ? ', ' + esc(s.country) : '');
+        el.innerHTML =
+          '<span style="flex:0 0 auto;width:8px;height:8px;border-radius:50%;background:#34d399;box-shadow:0 0 0 4px rgba(52,211,153,.18);margin-top:5px"></span>' +
+          '<span style="flex:1 1 auto"><span style="color:#fff;font-weight:700">An investor from ' + place + '</span> signed up for the Sunday email' +
+          '<span style="display:block;color:#94a3b8;font-size:12px;margin-top:2px">' + esc(s.ago) + ' &middot; verified GitHub-signal readers</span></span>' +
+          '<button aria-label="Dismiss" style="flex:0 0 auto;background:none;border:0;color:#64748b;font-size:18px;line-height:1;cursor:pointer;padding:0 2px">&times;</button>';
+        el.querySelector('button').addEventListener('click', function () { hide(el); window.__proofStop = true; });
+      }
+
+      function show(el) { el.style.opacity = '1'; el.style.transform = 'none'; }
+      function hide(el) { el.style.opacity = '0'; el.style.transform = reduce ? 'none' : 'translateY(12px)'; }
+
+      function start(list) {
+        if (!list || !list.length) return; // nothing real → show nothing
+        var el = build();
+        var queue = list.slice(0, MAX), i = 0;
+        function cycle() {
+          if (window.__proofStop) return;
+          render(el, queue[i % queue.length]);
+          show(el);
+          setTimeout(function () {
+            hide(el);
+            i++;
+            // one pass through the real list, then stop (no nagging loop)
+            if (i < queue.length) setTimeout(cycle, GAP_MS);
+          }, SHOW_MS);
+        }
+        cycle();
+      }
+
+      function load() {
+        try {
+          fetch(FEED, { credentials: 'omit' })
+            .then(function (r) { return r.ok ? r.json() : null; })
+            .then(function (d) { if (d && Array.isArray(d.signups)) start(d.signups); })
+            .catch(function () {});
+        } catch (e) {}
+      }
+
+      if ('requestIdleCallback' in window) requestIdleCallback(load, { timeout: 4000 });
+      else setTimeout(load, 3000);
+    })();
+  </script>
   <script src="/concierge.js" defer></script>
 </body>
 </html>
