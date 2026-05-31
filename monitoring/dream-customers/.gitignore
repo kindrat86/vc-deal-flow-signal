@@ -17,3 +17,14 @@ engagement-scratch.json.tmp
 # Local-only: PB token + creds for the launcher
 dashboard.config.js
 .env.local
+
+# Unattended cron auth token (CLAUDE_CODE_OAUTH_TOKEN) — never commit
+cron-auth.env
+*.bak-pre-authfix
+
+# Scraped data dumps & backups — operational only, never commit (PII/scrape risk)
+*.bak-sync*
+marcus-backup-*.json
+follow-graph-snapshot.json
+profile-stats.json
+data.json.bak*

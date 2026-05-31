@@ -16,7 +16,25 @@ set -o pipefail
 
 cd "$(dirname "$0")"
 
+# --- Unattended auth ---------------------------------------------------------
+# launchd background agents can't reliably unlock the macOS login Keychain, and
+# the interactive OAuth login token isn't persisted for headless runs, so the
+# claude CLI 401s without an explicit token. Load CLAUDE_CODE_OAUTH_TOKEN from
+# cron-auth.env (gitignored; see cron-auth.env.example — generate the value with
+# `claude setup-token`). `set -a` exports everything sourced so the token
+# reaches the claude subprocess.
+if [ -f cron-auth.env ]; then
+  set -a
+  . ./cron-auth.env
+  set +a
+fi
 ISO="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+if [ -z "${CLAUDE_CODE_OAUTH_TOKEN:-}" ]; then
+  echo "[${ISO}] WARN: CLAUDE_CODE_OAUTH_TOKEN not set (missing/empty cron-auth.env)." \
+       "Headless claude will 401. Run 'claude setup-token' and populate cron-auth.env." >&2
+fi
+# ----------------------------------------------------------------------------
+
 echo "[${ISO}] engagement cron starting"
 
 CLAUDE_BIN="${CLAUDE_BIN:-$HOME/.local/bin/claude}"

@@ -1,0 +1,15 @@
+{
+  "_STATUS": "DISABLED — DO NOT DISPATCH. Dedup check against email-api/outreach-sent.json (2026-05-30) found ALL four data-drop recipients were already cold-emailed TWICE (initial + follow-up). Re-sending would be a 3rd/4th touch and would damage the relationship + sender reputation. The cold newsletter/VC channel is SATURATED. The `entries` array has been emptied on purpose.",
+  "_dedup_evidence": {
+    "andre@earlybird.com": "SENT 2026-05-05 + follow-up 2026-05-12",
+    "andre@datadrivenvc.io": "SENT 2026-05-27 (3 days ago — DO NOT re-contact)",
+    "connie@strictlyvc.com": "SENT 2026-04-20 + follow-up 2026-04-27",
+    "packy@notboring.co": "SENT 2026-04-20 + follow-up 2026-04-27",
+    "pulse@pragmaticengineer.com": "SENT 2026-04-27 + follow-up 2026-04-29",
+    "eric@newcomer.co": "SENT 2026-05-22",
+    "mario@thegeneralist.com": "SENT 2026-05-21"
+  },
+  "_pivot": "Off-page authority via cold email is exhausted on this list. Use the channels that DON'T touch it: (1) badge-embed-outreach.md — GitHub issues/PRs to 24 companies, fresh channel, zero overlap, zero deliverability risk; (2) awesome-listicle-targets.md resource-page curators (Visible.vc, Qubit, Papermark — NONE are in outreach-sent.json, still fresh); (3) dataset distribution (Google Dataset Search, Zenodo DOI, OpenAlex) — no email at all, pure entity authority.",
+  "_reopen_condition": "Only re-contact a saturated name if THEY engage (reply/open-driven), or after a 60-90 day cooldown with a genuinely new hook (e.g. an accepted guest essay), routed through the existing pipeline's pacing.",
+  "entries": []
+}
