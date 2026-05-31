@@ -241,7 +241,10 @@
   <header class="sticky top-0 z-50 border-b border-gray-800 bg-dark-900/95 backdrop-blur">
     <div class="mobile-compact-header max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-3">
       <a href="/" class="font-semibold tracking-tight text-white text-lg">GitDealFlow</a>
-      <a href="#signup" onclick="if(window.posthog)posthog.capture('nav_cta_clicked')" class="btn btn-cta btn-sm whitespace-nowrap shrink-0">Get this Sunday&apos;s 5 names <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
+      <div class="flex items-center gap-4 shrink-0">
+        <a href="/report" class="hidden sm:inline text-sm text-gray-400 hover:text-gray-200 transition whitespace-nowrap">See a sample issue</a>
+        <a href="#signup" onclick="if(window.posthog)posthog.capture('nav_cta_clicked')" class="btn btn-cta btn-sm whitespace-nowrap shrink-0">Get this Sunday&apos;s 5 names <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
+      </div>
     </div>
   </header>
 
@@ -285,10 +288,38 @@
           <input type="email" required inputmode="email" autocomplete="email" placeholder="you@example.com" class="flex-1 px-5 py-4 rounded-lg bg-dark-800 border border-gray-600 text-gray-100 placeholder-gray-500 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 text-lg">
           <button type="submit" class="btn btn-primary btn-xl w-full sm:w-auto"><span>Get this Sunday&apos;s 5 names</span><span aria-hidden="true" class="btn-arrow">&rarr;</span></button>
         </form>
-        <p class="js-signup-msg text-gray-500 text-sm mt-4"><span class="text-emerald-400">✓</span> Free forever &nbsp; <span class="text-emerald-400">✓</span> No card, ever &nbsp; <span class="text-emerald-400">✓</span> Unsubscribe in one click</p>
-        <p class="text-gray-500 text-sm mt-3">Covering <span class="text-gray-300">the fast-growing software startups everyone&apos;s about to fight over</span> &mdash; and more. <a href="#signup" class="underline hover:text-gray-300 transition">See a sample issue &darr;</a></p>
+        <p class="js-signup-msg text-gray-500 text-sm mt-4"><span class="text-emerald-400">✓</span> Free &mdash; I cover the compute &nbsp; <span class="text-emerald-400">✓</span> Unsubscribe in one click &nbsp; <span class="text-emerald-400">✓</span> One email, every Sunday</p>
+        <p class="text-gray-500 text-sm mt-3">Covering <span class="text-gray-300">the fast-growing software startups everyone&apos;s about to fight over</span> &mdash; and more. <a href="/report" class="underline hover:text-gray-300 transition">See a real issue first &rarr;</a></p>
       </div>
     </section>
+
+    <!-- RECEIPTS — one closed-loop, named, venture-scale proof, high on the page -->
+    <section class="mobile-section-pad max-w-5xl mx-auto px-4 sm:px-6 pt-12 md:pt-16">
+      <div class="mobile-card-pad support-card rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-8 md:p-10">
+        <p class="text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-2">Receipts, not testimonials</p>
+        <h2 class="text-2xl md:text-3xl font-bold mb-3">The same signal lit up <span class="text-emerald-300">weeks before</span> these rounds.</h2>
+        <p class="text-gray-300 leading-relaxed mb-8 max-w-2xl">Each of these showed the engineering-acceleration pattern in public <strong class="text-white">before</strong> the round hit the press &mdash; recognizable, venture-scale, and auditable, not a name you take on faith. To count in the panel, the signal had to predate the event by at least 30 days.</p>
+        <div class="grid md:grid-cols-3 gap-4 text-left mb-6">
+          <div class="rounded-xl border border-gray-700 bg-dark-900 p-5">
+            <p class="text-white"><span class="font-bold">Cursor</span> <span class="text-gray-500 text-sm">&middot; AI dev tools</span></p>
+            <p class="text-gray-400 text-sm mt-2 mb-3">Commit velocity and developer adoption climbed in the open through 2024 &mdash; ahead of the priced round.</p>
+            <p class="text-emerald-300 text-sm font-semibold">&rarr; $2.6B Series B &middot; Thrive Capital</p>
+          </div>
+          <div class="rounded-xl border border-gray-700 bg-dark-900 p-5">
+            <p class="text-white"><span class="font-bold">Supabase</span> <span class="text-gray-500 text-sm">&middot; Dev infrastructure</span></p>
+            <p class="text-gray-400 text-sm mt-2 mb-3">A monorepo trajectory and relentless weekly release cadence were the leading signal.</p>
+            <p class="text-emerald-300 text-sm font-semibold">&rarr; $80M Series C</p>
+          </div>
+          <div class="rounded-xl border border-gray-700 bg-dark-900 p-5">
+            <p class="text-white"><span class="font-bold">Resend</span> <span class="text-gray-500 text-sm">&middot; Email infra</span></p>
+            <p class="text-gray-400 text-sm mt-2 mb-3">A public engineering buildout accelerated ahead of the Series A announcement.</p>
+            <p class="text-emerald-300 text-sm font-semibold">&rarr; $18M Series A &middot; Sequoia</p>
+          </div>
+        </div>
+        <p class="text-gray-300 text-sm">Plus ~70 more &mdash; Anthropic, Pinecone, Groq, Clerk, Linear &mdash; in the public panel behind the <strong class="text-white">219 documented fundraises</strong>. <a href="https://signals.gitdealflow.com/methodology" class="text-brand-500 underline">See the method and the full ledger &rarr;</a></p>
+      </div>
+    </section>
+
     <section class="mobile-section-pad max-w-3xl mx-auto px-4 sm:px-6 pt-12 md:pt-16 pb-4">
       <div class="mobile-card-pad support-card rounded-2xl border border-gray-700 bg-dark-800 p-8">
         <div class="flex flex-col sm:flex-row items-center sm:items-center gap-4 mb-4 text-center sm:text-left">
@@ -303,7 +334,7 @@
         </div>
         <div class="space-y-4 text-gray-300 leading-relaxed mb-5">
           <p>I&apos;m one person — people call me The Data Nerd. I&apos;m not an investor and I don&apos;t run a fund, so I&apos;m never racing you for a deal.</p>
-          <p>For years the same thing drove me crazy: I&apos;d get excited about a company, then find out the round was already full and the price had jumped. The worst part? The clues were sitting in plain sight the whole time. When a startup is building hard, its engineers leave a trail out in the open on GitHub (the website where they keep their work) — new projects, faster shipping, more people pitching in. I just couldn&apos;t read 4,200 of them by hand every week.</p>
+          <p>For years the same thing drove me crazy: I&apos;d get excited about a company, then find out the round was already full and the price had jumped. The worst part? The clues were sitting in plain sight the whole time. When a startup is building hard, its engineers leave a trail out in the open on GitHub — new projects, faster shipping, more people pitching in. I just couldn&apos;t read 4,200 of them by hand every week.</p>
           <p>So I built a tool that does. Every week it reads the trail and hands me the names quietly taking off — in plain words, no code. The first time it flagged a company weeks before its round hit the press, I couldn&apos;t un-see it. Now I send those names to you.</p>
           <p><strong class="text-white">And yes — I&apos;m just one nerd reading GitHub.</strong> That&apos;s the point: no committee, no spin, no agenda. The read is fully automated, it ships on a schedule, and the whole method is published on SSRN with an open dataset — so it never depends on me having a good week.</p>
         </div>
@@ -454,6 +485,10 @@
         <p>You care about asymmetric upside, but you don&apos;t want to spend nights digging through raw GitHub activity or another bloated VC database. You want the read done for you.</p>
         <p>You want a signal worth acting on, explained in plain English, before the deal becomes obvious.</p>
       </div>
+      <div class="mt-6 rounded-xl border border-gray-700 bg-dark-900 p-5">
+        <p class="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-2">Where it works &mdash; and where it doesn&apos;t</p>
+        <p class="text-gray-300 text-base leading-relaxed">The signal reads <strong class="text-white">public</strong> engineering activity, so it&apos;s sharpest in dev tools, AI/ML, infrastructure, data, and open-source-leaning startups. Deep-stealth or fully closed-source companies show up late, or not at all. If that&apos;s your whole thesis, this isn&apos;t your edge &mdash; and I&apos;d rather tell you now than waste your Sundays.</p>
+      </div>
     </section>
 
     <section id="how" class="bg-dark-800 py-16 md:py-20" style="scroll-margin-top:5rem">
@@ -485,7 +520,7 @@
         <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-3">The free Sunday Signal</p>
         <h2 class="text-3xl font-bold mb-4">Five startups quietly accelerating on GitHub &mdash; in your inbox before the round.</h2>
         <p class="text-gray-300 text-lg leading-relaxed mb-3 max-w-2xl mx-auto">Every Sunday I send you five names the tool flagged that week &mdash; each with a plain-English note on <strong class="text-white">why it&apos;s moving</strong> and the sector it&apos;s in. It&apos;s the early read you&apos;d otherwise <strong class="text-white">pay an analyst to do by hand</strong>, or piece together from data tools that run thousands a year.</p>
-        <p class="text-gray-300 text-lg leading-relaxed mb-10 max-w-2xl mx-auto">It costs me real compute to run every week. <strong class="text-white">It costs you nothing &mdash; no card now, no card ever.</strong></p>
+        <p class="text-gray-300 text-lg leading-relaxed mb-10 max-w-2xl mx-auto">Running it every week costs me real compute &mdash; GitHub data, models, infrastructure. <strong class="text-white">I cover that so you don&apos;t.</strong> No card now, no card ever.</p>
 
         <div class="max-w-xl mx-auto text-left mb-10">
           <p class="text-gray-400 text-sm font-semibold uppercase tracking-wider mb-4 text-center">Here&apos;s exactly what hits your inbox, every Sunday</p>
@@ -505,7 +540,7 @@
               <p class="text-white font-semibold">The 10 names I locked on May 4, 2026</p>
               <span class="text-emerald-300 text-xs font-semibold uppercase tracking-wider whitespace-nowrap">Graded in the open &middot; July 3</span>
             </div>
-            <p class="text-gray-400 text-sm mb-5">Ten real companies that showed the take-off pattern that week. On July 3 I grade every one in public &mdash; raised, acquired, or nothing. No edits, no hindsight, no quietly dropping the misses.</p>
+            <p class="text-gray-400 text-sm mb-5">Ten real companies that showed the take-off pattern that week &mdash; <strong class="text-gray-200">unfiltered and un-cherry-picked</strong>. Some you&apos;ll recognize, some you won&apos;t: showing you the raw list before the outcomes is the whole point. It&apos;s the same pattern that flagged Cursor and Supabase before their rounds (above) &mdash; shown here live and ungraded. On July 3 I grade every one in public: raised, acquired, or nothing. No edits, no hindsight, no quietly dropping the misses.</p>
             <ul class="grid sm:grid-cols-2 gap-x-6 gap-y-2 text-sm text-gray-300">
               <li>1. <strong class="text-white">Zapply Jobs</strong> <span class="text-gray-500">&middot; HR Tech &middot; Pre-seed</span></li>
               <li>2. <strong class="text-white">AtroCore</strong> <span class="text-gray-500">&middot; Enterprise SaaS &middot; Seed</span></li>
@@ -539,7 +574,7 @@
         <p class="text-gray-400 text-sm mt-4 text-center">Drop your email and <strong class="text-white">check your inbox to confirm</strong> &mdash; then the five names land <strong class="text-white">this Sunday morning</strong>.</p>
         <p class="text-gray-500 text-sm mt-2 text-center">Read every Sunday by angels, scouts, and seed funds sourcing before the crowd.</p>
         <p id="signup-msg" class="js-signup-msg text-center text-gray-500 text-sm mt-2">
-          <span class="text-emerald-400">✓</span> Free forever &nbsp; <span class="text-emerald-400">✓</span> Unsubscribe in one click &nbsp; <span class="text-emerald-400">✓</span> One email every Sunday
+          <span class="text-emerald-400">✓</span> One email, every Sunday &nbsp; <span class="text-emerald-400">✓</span> Unsubscribe in one click &nbsp; <span class="text-emerald-400">✓</span> Keep every issue you got
         </p>
       </div>
     </section>
@@ -578,13 +613,13 @@
       <button type="button" id="exit-close" aria-label="Close" class="absolute top-3 right-3 text-gray-500 hover:text-gray-200 text-2xl leading-none w-8 h-8 flex items-center justify-center">&times;</button>
       <p class="text-signal-400 text-xs font-semibold uppercase tracking-wider mb-3">Before you go</p>
       <h2 id="exit-title" class="text-2xl md:text-3xl font-extrabold leading-tight mb-3">Let me send you this Sunday’s issue first.</h2>
-      <p class="text-gray-300 leading-relaxed mb-5">One short Sunday email. Five names worth your attention. No card, no noise, unsubscribe in one click.</p>
+      <p class="text-gray-300 leading-relaxed mb-5">One short Sunday email. Five names worth your attention. Unsubscribe in one click.</p>
       <form id="exit-form" class="flex flex-col gap-3">
         <label for="exit-email" class="sr-only">Email address</label>
         <input type="email" id="exit-email" required placeholder="you@example.com" class="w-full px-4 py-3 rounded-lg bg-dark-800 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-signal-500">
         <button type="submit" id="exit-submit" class="w-full bg-signal-500 hover:bg-signal-400 text-white font-bold py-3 rounded-lg transition">Get this Sunday’s 5 names &rarr;</button>
       </form>
-      <p id="exit-msg" class="text-gray-500 text-xs text-center mt-3">Free forever · one email a week · no card</p>
+      <p id="exit-msg" class="text-gray-500 text-xs text-center mt-3">One email a week · unsubscribe anytime</p>
     </div>
   </div>
 
