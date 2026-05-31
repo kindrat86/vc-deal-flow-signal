@@ -280,6 +280,10 @@
   }
 
   function engPool() {
+    // Scoped to MY FOLLOWERS only (stage === "followers"). Every follower is
+    // listed — including those with zero recorded engagement — so this doubles
+    // as a follower roster ranked by inbound engagement. The "hide non-dream"
+    // toggle narrows to dream-customer followers; search filters within them.
     let pool = CONTACTS.filter((c) => c.stage === "followers");
     if (hideNonDream) pool = pool.filter((c) => c.dream_customer);
     if (filters.q) {
@@ -315,8 +319,8 @@
 
   function renderEngagement() {
     const el = document.getElementById("engagement");
-    const followers = CONTACTS.filter((c) => c.stage === "followers");
-    const dreamCount = followers.filter((c) => c.dream_customer).length;
+    const followersAll = CONTACTS.filter((c) => c.stage === "followers");
+    const engagedFollowers = followersAll.filter((c) => scoreOf(c.id) > 0).length;
     const pool = engPool();
 
     let rows = pool.map(engRow).join("");
@@ -325,7 +329,7 @@
     }
 
     el.innerHTML =
-      '<div class="eng-head"><b>' + dreamCount + "</b> dream-customer followers · <b>" + followers.length + "</b> followers total · points = 👍×1 + 🔁×3 + 💬×7</div>" +
+      '<div class="eng-head"><b>' + engagedFollowers + "</b> of <b>" + followersAll.length + "</b> followers have engaged · points = 👍×1 + 🔁×3 + 💬×7</div>" +
       '<table class="eng-table">' +
         "<thead><tr>" +
           "<th>X account</th>" +
