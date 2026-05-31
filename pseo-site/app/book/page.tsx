@@ -10,7 +10,7 @@ export const dynamic = "force-static";
 
 const STRIPE_BOOK_LINK =
   process.env.NEXT_PUBLIC_STRIPE_BOOK_LINK ||
-  "https://buy.stripe.com/dRm14m0WvbNCa6q4O00x208";
+  "https://buy.stripe.com/cNi5kCax52d29sy1by0x208";
 
 const PAGE_URL = "https://signals.gitdealflow.com/book";
 
