@@ -494,7 +494,12 @@
         </div>
         <p class="text-center text-gray-400 text-sm uppercase tracking-wider mb-1">Founding rate</p>
         <p class="text-center mb-2"><span class="text-4xl font-extrabold text-white">&euro;9.97</span><span class="text-gray-400">/mo</span></p>
-        <p class="text-center text-gray-500 text-sm mb-6">&euro;9.97/mo until June 30, then &euro;49/mo. Lock it now, keep it for life.</p>
+        <p class="text-center text-gray-500 text-sm mb-5">&euro;9.97/mo until June 30, then &euro;49/mo. Lock it now, keep it for life.</p>
+        <div id="founding-countdown" class="rounded-xl border border-signal-500/40 bg-signal-500/10 p-4 mb-6 text-center" data-deadline="2026-06-30T23:59:59Z">
+          <p class="text-signal-400 text-xs font-semibold uppercase tracking-wider mb-2">Founding rate ends June 30 &mdash; then it&apos;s &euro;49/mo</p>
+          <p class="text-white font-extrabold text-2xl tabular-nums" data-countdown>Ends June 30, 2026</p>
+          <p class="text-gray-400 text-xs mt-2">Lock &euro;9.97/mo now and it never changes while you stay subscribed.</p>
+        </div>
         <div class="rounded-xl border border-emerald-500/40 bg-emerald-500/10 p-5 mb-6">
           <p class="text-gray-200 leading-relaxed"><strong class="text-white">The early-deal guarantee.</strong> Run it for a full sourcing cycle. If it doesn&apos;t surface one name worth a real conversation in your sectors, email me and it&apos;s free. The risk is mine, not yours.</p>
         </div>
@@ -795,6 +800,30 @@
   </script>
 
 
+  <script>
+    // Real founding-rate countdown to a fixed deadline. No reset-on-visit games:
+    // it counts down to the actual date the rate goes from €9.97 to €49, then hides.
+    (function(){
+      var el = document.getElementById('founding-countdown');
+      if(!el) return;
+      var out = el.querySelector('[data-countdown]');
+      var deadline = new Date(el.getAttribute('data-deadline')).getTime();
+      if(isNaN(deadline)) return;
+      function pad(n){ return (n<10?'0':'')+n; }
+      var timer;
+      function tick(){
+        var diff = deadline - Date.now();
+        if(diff <= 0){ el.style.display='none'; if(timer) clearInterval(timer); return; }
+        var d = Math.floor(diff/86400000);
+        var h = Math.floor(diff%86400000/3600000);
+        var m = Math.floor(diff%3600000/60000);
+        var s = Math.floor(diff%60000/1000);
+        out.textContent = d+'d ' + pad(h)+'h ' + pad(m)+'m ' + pad(s)+'s';
+      }
+      tick();
+      timer = setInterval(tick, 1000);
+    })();
+  </script>
   <script src="/concierge.js" defer></script>
 </body>
 </html>
