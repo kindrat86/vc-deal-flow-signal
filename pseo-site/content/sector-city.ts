@@ -71,3 +71,36 @@ export function getSectorCity(sectorSlug: string, citySlug: string): SectorCityD
   if (!editorialMatch && !hqMatch) return null;
   return { sector, city };
 }
+
+/**
+ * True when this cell has ≥1 HQ-mapped company in the curated corpus, i.e.
+ * it carries proprietary local-intersection data rather than a purely
+ * templated editorial composition (city signal pattern × sector thesis).
+ */
+export function sectorCityHasLocalCompanies(
+  sectorSlug: string,
+  citySlug: string,
+): boolean {
+  return getCompaniesInSectorAndCity(sectorSlug, citySlug).length > 0;
+}
+
+/**
+ * Index-eligible sector × city pairs: only the HQ-backed cells.
+ *
+ * Editorial-only cells (keyword match but no HQ-mapped company) are the
+ * thin "made-for-search intersection" tail — their own copy admits "we do
+ * not currently document a {city}-HQ'd company in {sector}". On a
+ * low-authority domain those dilute crawl budget and site-quality without
+ * a realistic shot at indexation. They remain statically generated and
+ * internally linked (`noindex, follow`, see app/sector/[slug]/in/[city]/
+ * page.tsx) so they keep passing equity to /signal, /sector, /city and the
+ * region panels, and stay reachable for agents/MCP — they are just omitted
+ * from the sitemap and the index. Mirrors the /showdown near-duplicate
+ * treatment (see app/sitemap/[id]/route.ts). Fully reversible: swap this
+ * back to getAllSectorCityPairs() in the sitemap to re-list every cell.
+ */
+export function getIndexableSectorCityPairs(): SectorCityPair[] {
+  return getAllSectorCityPairs().filter(({ sector, city }) =>
+    sectorCityHasLocalCompanies(sector, city),
+  );
+}
