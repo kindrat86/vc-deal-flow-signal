@@ -107,10 +107,10 @@
 
         <!-- OTO Script #21 · beats 1-3: confirm the wise decision -> epiphany (Big Domino) -> bridge to the offer -->
         <div class="space-y-4 text-gray-300 text-lg leading-relaxed mb-8">
-          <p>You just got on the free list, and I meant every word of it: five names every Sunday, free forever, no card. That email is already on its way. Getting on it was the right call &mdash; keep it even if you read nothing else on this page.</p>
-          <p>But I&apos;d be a bad nerd if I didn&apos;t tell you what I found building this. <strong class="text-white">Five names is a taste, not the field.</strong> The first week I ran the full read, the tool didn&apos;t flag five companies accelerating in my sectors &mdash; it flagged sixty-one. I mailed myself the best five and quietly sat on the rest. Two of the names I left off raised inside a month. I&apos;d already done the work to find them. I just hadn&apos;t given myself the whole board.</p>
-          <p>That is the whole reason the Dashboard exists. When you&apos;re actually writing checks, you don&apos;t want my top five &mdash; you want <strong class="text-white">the entire field, re-ranked every week, in plain English</strong>, so the name you&apos;d have missed is the name <em>you</em> reach first. I read the engine; you read the verdict. You never touch a line of code.</p>
-          <p class="text-gray-400 text-base">If you&apos;ve ever heard about a round the week <em>after</em> it closed, you already know why I built this.</p>
+          <p id="oto-p1">You just got on the free list, and I meant every word of it: five names every Sunday, free forever, no card. That email is already on its way. Getting on it was the right call &mdash; keep it even if you read nothing else on this page.</p>
+          <p id="oto-p2">But I&apos;d be a bad nerd if I didn&apos;t tell you what I found building this. <strong class="text-white">Five names is a taste, not the field.</strong> The first week I ran the full read, the tool didn&apos;t flag five companies accelerating in my sectors &mdash; it flagged sixty-one. I mailed myself the best five and quietly sat on the rest. Two of the names I left off raised inside a month. I&apos;d already done the work to find them. I just hadn&apos;t given myself the whole board.</p>
+          <p id="oto-p3">That is the whole reason the Dashboard exists. When you&apos;re actually writing checks, you don&apos;t want my top five &mdash; you want <strong class="text-white">the entire field, re-ranked every week, in plain English</strong>, so the name you&apos;d have missed is the name <em>you</em> reach first. I read the engine; you read the verdict. You never touch a line of code.</p>
+          <p id="oto-trial" class="text-gray-400 text-base">If you&apos;ve ever heard about a round the week <em>after</em> it closed, you already know why I built this.</p>
         </div>
 
         <p class="text-signal-400 text-xs font-semibold uppercase tracking-wider mb-3">Here&apos;s the whole stack</p>
@@ -131,15 +131,15 @@
         <p class="text-center text-signal-400 font-semibold mb-1">More than 10x the value &mdash; before you count a single deal.</p>
         <p class="text-center text-gray-500 text-sm mb-6">Founding rate, locked for life while you stay subscribed.</p>
         <div class="rounded-xl border border-emerald-500/40 bg-emerald-500/10 p-5 mb-6">
-          <p class="text-gray-200 leading-relaxed"><strong class="text-white">The early-deal guarantee.</strong> Run it for one full sourcing cycle. If it doesn&apos;t surface a single name worth a real conversation in your sectors, email me and I&apos;ll refund every cent. The risk is mine; the cycle is yours to keep.</p>
+          <p id="oto-guarantee" class="text-gray-200 leading-relaxed"><strong class="text-white">The early-deal guarantee.</strong> Run it for one full sourcing cycle. If it doesn&apos;t surface a single name worth a real conversation in your sectors, email me and I&apos;ll refund every cent. The risk is mine; the cycle is yours to keep.</p>
         </div>
-        <p class="text-gray-400 text-sm text-center mb-2">Two honest reasons this is the moment to decide &mdash; and I&apos;ll never pretend a fake timer is ticking:</p>
+        <p id="oto-urgency-intro" class="text-gray-400 text-sm text-center mb-2">Two honest reasons this is the moment to decide &mdash; and I&apos;ll never pretend a fake timer is ticking:</p>
         <ul class="text-gray-400 text-sm max-w-xl mx-auto space-y-1.5 mb-6">
           <li class="flex items-start gap-2"><span class="text-signal-400 mt-0.5" aria-hidden="true">&middot;</span><span><strong class="text-white">The founding rate is a real cohort, not a sale.</strong> Join now and you keep &euro;9.97/mo for life. Everyone after the launch window pays &euro;49.</span></li>
           <li class="flex items-start gap-2"><span class="text-signal-400 mt-0.5" aria-hidden="true">&middot;</span><span><strong class="text-white">The names flagged this week are early this week.</strong> In a month, they&apos;re someone else&apos;s warm intro. The whole point is to be there before the round.</span></li>
         </ul>
         <div class="flex justify-center">
-          <a href="https://gitdealflow.com/dashboard" data-carry-email onclick="if(window.posthog)posthog.capture('offer_cta_clicked',{tier:'dashboard',placement:'thanks'})" class="btn btn-primary btn-xl w-full sm:w-auto">
+          <a href="https://gitdealflow.com/dashboard" data-carry-email onclick="if(window.posthog)posthog.capture('offer_cta_clicked',{tier:'dashboard',placement:'thanks',variant:window.__otoVariant||'oto_script'})" class="btn btn-primary btn-xl w-full sm:w-auto">
             <span>Lock &euro;9.97/mo &mdash; start the Dashboard</span>
             <span aria-hidden="true" class="btn-arrow">&rarr;</span>
           </a>
@@ -211,7 +211,7 @@
         <strong>Own the whole board</strong>
         <span>Founding rate &euro;9.97/mo &middot; locked for life</span>
       </div>
-      <a href="https://gitdealflow.com/dashboard" data-carry-email onclick="if(window.posthog)posthog.capture('offer_cta_clicked',{tier:'dashboard',placement:'thanks-sticky'})" class="btn btn-cta btn-sm">Lock it</a>
+      <a href="https://gitdealflow.com/dashboard" data-carry-email onclick="if(window.posthog)posthog.capture('offer_cta_clicked',{tier:'dashboard',placement:'thanks-sticky',variant:window.__otoVariant||'oto_script'})" class="btn btn-cta btn-sm">Lock it</a>
     </div>
   </div>
 
@@ -232,6 +232,41 @@
     (function(){
       function _init(){ if(/^https?:$/.test(location.protocol)) posthog.init('phc_lyZCgvTpicjLzAO3rY2GhxuX5WUc5jQjP8ZVwwJqauX', {api_host: 'https://eu.i.posthog.com', persistence: 'memory', person_profiles: 'identified_only'}); }
       if('requestIdleCallback' in window){requestIdleCallback(_init,{timeout:2500});} else {setTimeout(_init,2000);}
+    })();
+  </script>
+  <script>
+    /* A/B: /thanks OTO. Flag 'thanks-oto-script' (PostHog). Default DOM render = oto_script
+       (Brunson OTO Script #21 rewrite). control = the prior OTO, restored by swapping copy back.
+       QA without PostHog: append ?oto=control or ?oto=oto_script to the URL. */
+    (function(){
+      var FLAG='thanks-oto-script';
+      var CONTROL={
+        'oto-p1':"You just got on the free list, and I meant every word of it: five names every Sunday, free forever, no card. That email is already on its way to you.",
+        'oto-p2':"But I'd be a bad nerd if I didn't tell you what I learned building this. <strong class=\"text-white\">Five names is a taste, not the field.</strong> The first week I ran the full read, the tool didn't flag five companies accelerating in my sectors — it flagged sixty-one. I mailed myself the best five and quietly sat on the rest. Then two of the names I'd left off raised inside a month.",
+        'oto-p3':"That is the whole reason the Dashboard exists. When you're actually writing checks, you don't want my top five — you want <strong class=\"text-white\">the entire field, re-ranked every week</strong>, so the name you'd have missed is the name <em>you</em> reach first.",
+        'oto-guarantee':"<strong class=\"text-white\">The early-deal guarantee.</strong> Run it for a full sourcing cycle. If it doesn't surface one name worth a real conversation in your sectors, email me and it's free. The risk is mine, not yours.",
+        'oto-urgency-intro':"Two honest reasons not to wait — and I'll never pretend a fake timer is ticking:"
+      };
+      var applied=false;
+      function set(variant){
+        if(applied) return; applied=true;
+        window.__otoVariant=variant;
+        if(variant==='control'){
+          for(var id in CONTROL){var el=document.getElementById(id); if(el) el.innerHTML=CONTROL[id];}
+          var trial=document.getElementById('oto-trial'); if(trial) trial.style.display='none';
+        }
+        if(window.posthog&&posthog.capture) posthog.capture('oto_experiment_exposed',{variant:variant,placement:'thanks'});
+      }
+      var override=(new URLSearchParams(location.search).get('oto')||'').toLowerCase();
+      if(override==='control'||override==='oto_script'){ set(override); return; }
+      (function ready(){
+        if(window.posthog&&posthog.onFeatureFlags){
+          posthog.onFeatureFlags(function(){
+            var v=(posthog.getFeatureFlag)?posthog.getFeatureFlag(FLAG):null;
+            set(v==='control'?'control':'oto_script');
+          });
+        } else { setTimeout(ready,250); }
+      })();
     })();
   </script>
 </body>

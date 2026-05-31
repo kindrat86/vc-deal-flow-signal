@@ -138,3 +138,20 @@ fear-relief, added a **trial close**, sharpened the **guarantee** to a clean
 full-refund promise, and reframed the urgency intro from "reasons not to wait"
 to **"this is the moment to decide."** Conversion mechanics, classes, and the
 no-fabrication / no-fake-timer constraints are all preserved.
+
+## Shipping: an A/B test, not a blind swap
+
+You never replace a One Time Offer that's already converting on faith — you let
+buyers vote. So this rewrite ships as a PostHog A/B test, same machinery as the
+hero test in [#356](https://github.com/kindrat86/vc-deal-flow-signal/pull/356):
+
+- **Flag:** `thanks-oto-script` (multivariate, 50/50), tags `experiment,landing,apex`.
+- **control** — the prior OTO (post-[#357](https://github.com/kindrat86/vc-deal-flow-signal/pull/357)).
+- **oto_script** — this rewrite.
+
+The page renders `oto_script` by default and swaps the six differing elements
+back to control copy when the flag (or a `?oto=control` QA override) says so.
+Exposure fires once as `oto_experiment_exposed {variant}`; the win metric is
+`offer_cta_clicked {variant}`, now tagged on both the inline and sticky CTAs.
+Decide the winner on the funnel `oto_experiment_exposed → offer_cta_clicked`
+split by variant, then delete the loser's copy and the swap script.
