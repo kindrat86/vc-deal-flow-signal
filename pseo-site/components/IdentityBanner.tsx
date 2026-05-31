@@ -5,7 +5,9 @@ import Link from "next/link";
  *
  * The core move: pick ONE primary market (Wealth) and layer in the secondary
  * (Status) as identity transformation. The buyer doesn't just want a tool —
- * they want to *become* the partner who reads the code, not the deck.
+ * they want to *become* the investor who's early on purpose: the one who moves
+ * on a translated signal before the deck exists (avatar = Marcus, a non-coder
+ * dealmaker — see lib/data-nerd.ts tribe).
  *
  * Surfaces above ThreeDoorHero on the home page so the identity declaration
  * frames every door beneath it. Also reused on /identity for the long-form

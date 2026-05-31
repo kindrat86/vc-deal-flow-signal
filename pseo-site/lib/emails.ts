@@ -183,7 +183,7 @@ Engineering acceleration. Public, reproducible, code-side. Every great startup l
 <p><strong>3. External struggle, removed.</strong><br>
 You don't need partner-grade tooling. Harmonic, Tracxn, and Affinity are €1k–€10k/mo because they serve fund-grade procurement. Pull the sales motion out and the same data ladder runs at €9.97/mo. The category was priced wrong for you, not built wrong.</p>
 <p><strong>4. Internal struggle, removed.</strong><br>
-You don't need to become someone else to source. The lesson the network rule taught you was that you needed to turn into a partner-style human — coffees, calendar Tetris, social persuasion. The data-side path lets you stay the engineer who reads commit logs for fun. Identity stays intact. The signal does the introduction.</p>
+You don't need to become someone else to source. The fear the technical room plants is that you needed to become technical — read the code, hire a quant, borrow an engineer's afternoon. The data-side path lets you stay the dealmaker. Identity stays intact. The signal does the reading — and the introduction.</p>
 <p><strong>5. The frameworks (and where they live).</strong><br>
 Sunday digest. Wednesday filter. End-of-quarter sweep. The Acceleration Watch is the Sunday digest. The Dashboard is the Wednesday filter. The Sector Sweep is the end-of-quarter deep dive. Three rhythms, twelve minutes a week, methodology published. The shift is already wired into the product — you're not buying a tool, you're buying a cadence.</p>
 <p>If steps 1-4 read like the room you're standing in, step 5 is the door.</p>
@@ -1503,7 +1503,7 @@ export const BOOK_DRIP = [
 <p><strong>T-1</strong> — Velocity peaked, contributor count peaked, then both relaxed. The book calls this the "calm before announcement" — the team stops shipping for a week to clean up the demo branch. The stack doesn't dim; it just plateaus.</p>
 <p><strong>T-0</strong> — TechCrunch ran the headline. By that point the stack had been lit for thirty-eight days.</p>
 <p>The whole trace cost €0 in marginal data spend. Public commit graph, weekly cron, deterministic regression. The two-hour version of this analysis collapses to a fifteen-minute scan once the stack is wired up — chapters four through nine define each signal, chapter ten ties them into the scoring rubric.</p>
-<p>Day four, you'll get the unedited transcripts I promised — two developer-investors who run a version of this daily, names redacted at their request, operational detail intact.</p>
+<p>Day four, you'll get the unedited transcripts I promised — two early-stage investors who run a version of this daily, names redacted at their request, operational detail intact.</p>
 <p>Talk soon,<br>${FROM_NAME}</p>
 <p style="color:#64748b;font-size:14px;">P.S. The tool that ran this trace is the Dashboard — it's a tool, not a fund; I'm not investing alongside you, I just surface the startups heating up in your sectors and you make the calls. Weekly refresh, sector and stage filters, €9.97/mo founding-member: <a href="${SIGNALS}" style="color:#0ea5e9;">${SIGNALS}</a>.</p>
 `, "book-day1"),

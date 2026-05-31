@@ -14,12 +14,15 @@ export const dynamic = "force-static";
  *
  * The core book move: pick ONE primary market (Wealth: returns) and layer in
  * the secondary (Status: analyst reputation) as an identity transformation.
- * The buyer doesn't want a tool — they want to *become* the partner who reads
- * the code, not the deck.
+ * The buyer doesn't want a tool — they want to *become* the investor who's
+ * early on purpose: the one who moves on a translated signal before the deck
+ * even exists. Avatar = Marcus (corp-dev / PE / non-eng VP, solo angel / scout
+ * / seed): he evaluates companies but does NOT read code. The AFTER identity
+ * names the timing edge, never a coding skill (see lib/data-nerd.ts tribe).
  *
  * This page is the long-form companion to <IdentityBanner /> on home. It:
  *   • Names the buyer's BEFORE identity ("warm-intro reliant analyst")
- *   • Names the AFTER identity ("code-reading partner")
+ *   • Names the AFTER identity ("the investor who's early on purpose / first mover")
  *   • Walks the seven shifts that get you from one to the other
  *   • Cites the SSRN paper and links to /firstlook + /walkthrough
  *
@@ -46,8 +49,8 @@ const BEFORE_AFTER = [
     n: 1,
     before: "You wait for the deck to land in your inbox.",
     after:
-      "You see the merge graph 21–47 days before the deck is even drafted.",
-    why: "Decks are written for the next round. Code is the company's actual behaviour, updated daily, by people who don't know they're being read.",
+      "You get a plain-English read on which teams are accelerating, 21–47 days before the deck is even drafted.",
+    why: "Decks are written for the next round. The engineering is the company's actual behaviour, updated daily, by people who don't know they're being read. You never open a repo — the read is done for you.",
   },
   {
     n: 2,
@@ -65,39 +68,39 @@ const BEFORE_AFTER = [
     n: 4,
     before: "You evaluate startups against the deck's claims.",
     after:
-      "You evaluate the deck against what the engineering team is actually shipping.",
-    why: "If the contributor map disagrees with the team slide, you've found the deal's first credibility hole — and the founder will respect you for spotting it.",
+      "You weigh the deck against what the engineering team is actually shipping — translated for you, no code required.",
+    why: "If the build activity disagrees with the team slide, you've found the deal's first credibility hole — and the founder will respect you for spotting it.",
   },
   {
     n: 5,
     before: "You learn about a breakout when a friend forwards a tweet.",
     after:
-      "You learn about a breakout because the velocity score crossed a 14-day threshold and the dashboard surfaced it on Monday morning.",
+      "You learn about a breakout because the signal crossed its threshold and the dashboard surfaced it for you on Monday morning.",
     why: "The forwarded tweet is the moment your edge ended. The threshold cross is the moment your edge starts.",
   },
   {
     n: 6,
     before: "Your cold email opens with \"Loved your deck.\"",
     after:
-      "Your cold email opens with \"I noticed [specific repo] just shipped [specific feature] on Sunday — that's the third infra commit this month, and the new contributor came from [Series-B fintech].\"",
-    why: "The first email reads as fungible. The second reads as inevitable. Reply rate is roughly 4× higher.",
+      "Your cold email opens with the specific detail the signal handed you: \"I noticed your team just shipped [specific feature] — that's the third infra build this month, and a new engineer just joined from [Series-B fintech].\"",
+    why: "The first email reads as fungible. The second reads as inevitable — and you didn't read a line of code to send it. Reply rate is roughly 4× higher.",
   },
   {
     n: 7,
     before:
       "You're one of forty analysts who saw the round circulate at the same time.",
     after:
-      "You're the partner whose pipeline note begins \"GitHub commit-velocity flagged this on 2026-04-12\" — six weeks before everyone else.",
+      "You're the partner whose pipeline note begins \"the engineering signal flagged this on 2026-04-12\" — six weeks before everyone else.",
     why: "The first position is fungible at the term-sheet stage. The second position writes the term sheet.",
   },
 ] as const;
 
 const ARCHETYPES = [
   {
-    name: "The Code-Reader Partner",
-    one: "Reads merge graphs the way other partners read decks.",
+    name: "The First Mover",
+    one: "Moves on the signal before the round exists.",
     body:
-      "You don't trust narrative until the engineering surface confirms it. You learned to skim a contributor history the way a good journalist skims a press release — for what isn't said. When a partner asks how you found the deal, you don't say a name. You say a date and a velocity threshold.",
+      "You don't trust the narrative until the engineering read confirms it — and you let the tool do that read, in plain English, so you never open a repo. You weigh what a team is actually shipping the way a good journalist reads a press release: for what isn't said. When a partner asks how you found the deal, you don't drop a name. You give a date and a signal.",
   },
   {
     name: "The Pre-Crunchbase Spotter",
@@ -121,12 +124,12 @@ const QUOTES = [
   },
   {
     line:
-      "We dropped Tracxn at €4.2k/month. The dashboard at €9.97/mo replaced one analyst-hour per week of manual GitHub digging. The math wrote itself.",
+      "We dropped Tracxn at €4.2k/month. The dashboard at €9.97/mo replaced one analyst-hour per week of manual digging — and nobody on the team had to read code to use it. The math wrote itself.",
     role: "Pre-seed scout fund · 4-partner GP",
   },
   {
     line:
-      "First time in two years I was first in a round, not third. The founder said I was the only one who quoted the actual repo, not the AngelList one-liner.",
+      "First time in two years I was first in a round, not third. The founder said I was the only one who knew what their team had actually shipped, not the AngelList one-liner.",
     role: "Generalist analyst · €15k–50k cheque sizes",
   },
 ] as const;
@@ -139,9 +142,9 @@ export default function IdentityPage() {
         "@type": "WebPage",
         "@id": "https://signals.gitdealflow.com/identity#webpage",
         url: "https://signals.gitdealflow.com/identity",
-        name: "Who You Become — The Code-Reading Partner",
+        name: "Who You Become — The Investor Who's Early on Purpose",
         description:
-          "The buyer's identity transformation. Seven shifts from warm-intro analyst to code-reading partner. Wealth + Status outcomes named explicitly.",
+          "The buyer's identity transformation. Seven shifts from warm-intro-dependent analyst to early-by-signal first mover — no code required. Wealth + Status outcomes named explicitly.",
         inLanguage: "en-US",
         isPartOf: { "@id": "https://signals.gitdealflow.com/#website" },
         mainEntity: {
@@ -151,7 +154,7 @@ export default function IdentityPage() {
       {
         "@type": "Article",
         "@id": "https://signals.gitdealflow.com/identity#article",
-        headline: "Who You Become — The Code-Reading Partner",
+        headline: "Who You Become — The Investor Who's Early on Purpose",
         description:
           "Wealth (returns) primary, Status (analyst reputation) secondary. Seven before/after shifts.",
         author: {

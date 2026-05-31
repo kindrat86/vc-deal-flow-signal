@@ -49,7 +49,7 @@ const FALSE_BELIEFS: FalseBelief[] = [
       "Most VC tooling is built for partner-track GPs at funds with eight-figure data budgets. The default visual language of every dashboard reinforces that this is partner work.",
     breakLine:
       "The signal works without you reading a single line of code. The Acceleration Watch is the partner-track output WITHOUT the partner-track prerequisite — the contributor-quality + acceleration math runs once a week and lands as a ranked list.",
-    proof: { label: "/about/founder — what a developer-investor actually is", href: "/about/founder" },
+    proof: { label: "/about/founder — who this is actually for", href: "/about/founder" },
   },
   {
     pattern: "external",

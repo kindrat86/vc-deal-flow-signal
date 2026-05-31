@@ -34,7 +34,7 @@ export interface BookManifest {
 export const BOOK: BookManifest = {
   title: "The 7 GitHub Signals That Predict Series A Rounds",
   subtitle:
-    "How to read engineering acceleration weeks before the press release — a field manual for developer-investors",
+    "How to read engineering acceleration weeks before the press release — a field manual for investors who want to move first",
   authorName: "The Data Nerd",
   authorRole: "Founder, GitDealFlow",
   isbn: "979-8-9876543-1-7",

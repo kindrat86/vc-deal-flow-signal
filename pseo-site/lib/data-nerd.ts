@@ -68,16 +68,28 @@ export const DATA_NERD_ARCHETYPE = {
 /**
  * Tribe — what the character calls the readers who self-identify as members
  * of the movement. Brunson Expert Secrets Ch 3: the tribe needs a name the
- * member can wear. We don't pick the slur "VCs" because the buyer is
- * usually not a partner; we don't pick "angels" because the buyer is often
- * a fund principal too. "Developer-investor" is the signal-shaped label.
+ * member can wear.
+ *
+ * Avatar pivot (2026-05-30, canonical `brand/voice.md` §Avatar +
+ * `brunson/08-dream-customer.md`): the buyer is **Marcus** — a solo angel,
+ * scout, seed fund, corp-dev, or PE-operating-partner / non-engineer tech-VP
+ * who evaluates companies for a living but **does NOT read code**, whose core
+ * fear is "looking non-technical in a technical room," and who needs the
+ * engineering signal **translated into business language**. We retired the
+ * "developer-investor / code-reading partner" label (deprecated 2026-05-12):
+ * handing a non-coder a code-reader identity pokes his deepest fear instead of
+ * relieving it. The wearable label now names the *timing edge*, not a coding
+ * skill — "First Mover" (the one who reaches the founder before the round, on
+ * a signal someone else read for them). Per `marketing/messaging-guide.md`:
+ * "we surface the signal, you make the calls / you don't read code."
  */
 export const DATA_NERD_TRIBE = {
-  name: "Developer-Investors",
-  oneLine: "We read commit logs the way other investors read pitch decks.",
-  badge: "code-reading partner · developer-investor",
+  name: "First Movers",
+  oneLine:
+    "We move on the engineering signal before the round — without reading a line of code.",
+  badge: "first mover · early on signal, not on luck",
   body:
-    "The reader who nods through the polarity is a Developer-Investor — an engineer who occasionally writes a check (or a fund principal who used to ship code and never stopped reading it). The handle the reader earns is 'code-reading partner.' The product is built around that identity. The pricing is built around that identity. Every page on this site is built around that identity. If the label feels off, that's diagnostic — the product is probably wrong for you.",
+    "The reader who nods through the polarity is a First Mover — a solo angel, scout, seed fund, corp-dev or PE operator who evaluates companies for a living but doesn't read code and doesn't want to. The handle the reader earns is 'first mover': the investor who reaches the founder before the round, on a signal someone else translated into plain English. The product is built around that identity. The pricing is built around that identity. Every page on this site is built around that identity. If the label feels off — if you'd rather pull up the merge graph and run the regression yourself — that's diagnostic, and the product is probably wrong for you.",
 } as const;
 
 /**
@@ -158,9 +170,9 @@ export const DATA_NERD_VOICE_RULES = [
       "Never say 'a startup'. Say 'a three-founder fintech with one repo'. Never say 'a fund'. Say 'the partner at [redacted] who DM'd me about the fintech the morning after the announcement'. Specific scales; general dies.",
   },
   {
-    rule: "Code metaphors over business metaphors.",
+    rule: "Translate, don't dump — plain business English over code jargon.",
     body:
-      "We're talking to engineer-investors. 'Pre-cache the deal flow' lands. 'Synergize the funnel' doesn't. When in doubt, reach for a build pipeline, a regression coefficient, or a merge graph.",
+      "We're talking to Marcus: a dealmaker who evaluates companies but doesn't read code, and whose fear is looking non-technical in a technical room. The Data Nerd is an engineer, but he writes for a non-coder — he reaches for the plain-English image a corp-dev partner would use ('they're shipping far more than usual,' 'the team doubled overnight,' 'they're building the thing competitors will copy in a year'), never a merge graph or a regression coefficient as the load-bearing explanation. An occasional code metaphor is fine as flavour; it can never be the thing the reader has to decode. 'Synergize the funnel' is still banned — so is anything that makes the reader feel he should already know what a commit graph is.",
   },
   {
     rule: "Number, then claim. Never claim, then number.",

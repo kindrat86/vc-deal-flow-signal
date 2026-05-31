@@ -72,7 +72,7 @@ export const TEARDOWNS: CompetitorTeardown[] = [
         theirMechanic:
           "Multi-field form: company, role, AUM, fund stage, sourcing volume. Routes to a sales rep who books a discovery call within 1–3 business days.",
         brunsonNote:
-          "Classic high-ticket qualification gate — disqualifies non-fits early so the AE only takes calls with budget-holders. Costs them every developer-investor and angel.",
+          "Classic high-ticket qualification gate — disqualifies non-fits early so the AE only takes calls with budget-holders. Costs them every small-cheque buyer and angel.",
         ourMove:
           "€7 First Look Pass replaces the demo. Buyer picks a sector, gets a 24-hour written deep-dive — same outcome the demo would tease, delivered as a tangible asset.",
       },
@@ -116,7 +116,7 @@ export const TEARDOWNS: CompetitorTeardown[] = [
     whatTheyDoRight:
       "Team-pattern signals are a genuinely distinct lens — incorporation-stage and founder-pedigree data is hard to replicate, and the AE-led motion delivers personalised dashboards that feel bespoke to a fund's thesis.",
     whereTheyLeak:
-      "Every solo GP, angel, scout, and developer-investor below the institutional tier bounces at the demo gate. The funnel is engineered for the top 3% of buyers and ignores the long tail entirely.",
+      "Every solo GP, angel, scout, and small-cheque buyer below the institutional tier bounces at the demo gate. The funnel is engineered for the top 3% of buyers and ignores the long tail entirely.",
     ourMoveSummary:
       "We replace the demo with a €7 deliverable. Same value transfer, no calendar.",
     sources: [
@@ -189,7 +189,7 @@ export const TEARDOWNS: CompetitorTeardown[] = [
     whatTheyDoRight:
       "PitchBook's depth — comparables, valuation models, exit data — is genuinely reference-grade. The free industry reports are best-in-class lead magnets and earn their citations.",
     whereTheyLeak:
-      "The SDR cadence + custom-quote model is calibrated for funds with full procurement teams. Solo GPs, scouts, developer-investors, and emerging managers bounce because the buying motion doesn't match their org shape.",
+      "The SDR cadence + custom-quote model is calibrated for funds with full procurement teams. Solo GPs, scouts, operators, and emerging managers bounce because the buying motion doesn't match their org shape.",
     ourMoveSummary:
       "Public pricing, instant self-serve, async value delivery. Small buyers don't need to be sold — they need to be allowed.",
     sources: [
@@ -263,7 +263,7 @@ export const TEARDOWNS: CompetitorTeardown[] = [
     whatTheyDoRight:
       "The content moat is real and hard to copy — daily newsletter, quarterly reports, and category-defining 'State of X' authority. The platform is dragged uphill by the newsletter, not the other way around.",
     whereTheyLeak:
-      "The custom-quote model means a developer-investor with a €5k-50k check size cannot self-serve. They subscribe to the newsletter, never become a customer.",
+      "The custom-quote model means a small-cheque buyer with a €5k-50k check size cannot self-serve. They subscribe to the newsletter, never become a customer.",
     ourMoveSummary:
       "Same content strategy, narrower category, public pricing. The newsletter reader can pay €7 and become a customer the same day.",
     sources: [

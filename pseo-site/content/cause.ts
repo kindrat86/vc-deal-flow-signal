@@ -14,8 +14,9 @@
  * the rendered surfaces never do.
  *
  * Voice: matches lib/data-nerd.ts rules. Specific over general (Athens,
- * Lagos, Bangalore, Tallinn, São Paulo — not "emerging markets"). Code
- * metaphors when natural (merge graph, infrastructure repo, regression).
+ * Lagos, Bangalore, Tallinn, São Paulo — not "emerging markets"). Plain
+ * business English for the reader (Marcus doesn't read code): "shipping far
+ * more," "the team doubled" — not merge graphs as the load-bearing image.
  * Number, then claim. Admit limits in the same breath. No hype words.
  *
  * Single source of truth — re-imported from /manifesto, home, /identity,
@@ -29,7 +30,7 @@ export const EMOTIONAL_CAUSE_HEADLINE =
 
 export const EMOTIONAL_CAUSE_LINES = [
   "We're tired of watching three-founder teams in Athens, Lagos, Bangalore, Tallinn, and São Paulo get passed over because their cap table doesn't read the right Slack groups.",
-  "We're tired of watching a developer-investor pull up a GitHub org at 11 p.m. — see the commit graph triple, see four new contributors join, see the infrastructure repos spin up — and then watch the round get announced three weeks later, led by a fund whose only edge was a warm intro that arrived four days before the public news.",
+  "We're tired of watching an investor who spotted it early — a team suddenly shipping far more, four new engineers, new infrastructure appearing out of nowhere — get beaten to the round three weeks later by a fund whose only edge was a warm intro that arrived four days before the public news.",
   "We're tired of the lie that the best investments only flow through the people who can afford the right dinners.",
   "We're not building a tool. We're rebuilding the shape of who gets capital first.",
   "If you've ever closed a laptop and gone to bed because you weren't sure you'd earned the right to send a cold email — and three weeks later watched somebody else get into the round — this movement is for you.",

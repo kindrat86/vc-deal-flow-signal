@@ -14,15 +14,15 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title:
-    "100 voices, per platform — Reddit-100, HN-100, X-100 — the literal rosters that shape the conversation",
+    "Where the buyer reads, per platform — the X, Reddit, and Hacker News rosters",
   description:
-    "One mixed top-100 list isn't enough. We publish three platform-specific rosters — Reddit, Hacker News, and X — with engagement status and cadence rules for each.",
+    "Three platform rosters pointed at the corp-dev / PE / operator buyer: 100 business-of-tech, SaaS-metrics, PE/M&A and deals-media accounts on X, ~30 business communities on Reddit, and a thin read-only awareness map on Hacker News. Each entry status-flagged. Sized to where the buyer actually is — no padding.",
   alternates: { canonical: "/voices" },
   openGraph: {
     title:
-      "100 voices, per platform — Reddit-100, HN-100, X-100 — literal rosters",
+      "Where the buyer reads — X, Reddit, and Hacker News voice rosters",
     description:
-      "Three platform-specific top-100 lists: 100 subreddits, 100 HN attention slots, 100 X / Twitter accounts. Each entry status-flagged for engagement.",
+      "100 X accounts (analysts, SaaS-metrics, PE/M&A, deals-media, market-map), ~30 Reddit business communities, and a thin read-only HN map. Each entry status-flagged.",
     url: "https://signals.gitdealflow.com/voices",
     type: "article",
   },
@@ -45,9 +45,8 @@ export default function VoicesHubPage() {
       {
         "@type": "WebPage",
         "@id": "https://signals.gitdealflow.com/voices",
-        name: "100 voices, per platform — Reddit-100, HN-100, X-100",
-        description:
-          "Three platform-specific top-100 lists. 300 entries total. Each entry has an engagement-status flag and a public href.",
+        name: "Where the buyer reads — X, Reddit, and Hacker News rosters",
+        description: `Three platform rosters pointed at the corp-dev / PE / operator buyer. ${totalEntries} entries total, each with an engagement-status flag and a public href.`,
         speakable: {
           "@type": "SpeakableSpecification",
           cssSelector: ["h1", "h2", "[data-speakable]"],
@@ -65,23 +64,23 @@ export default function VoicesHubPage() {
           {
             "@type": "ListItem",
             position: 2,
-            name: "Voices (per-platform top-100)",
+            name: "Voices (per-platform rosters)",
             item: "https://signals.gitdealflow.com/voices",
           },
         ],
       },
       {
         "@type": "ItemList",
-        name: "Per-platform top-100 rosters",
+        name: "Per-platform voice rosters",
         numberOfItems: PLATFORM_LISTS.length,
         itemListElement: PLATFORM_LISTS.map((p, i) => ({
           "@type": "ListItem",
           position: i + 1,
-          name: `${p.label} top-100`,
+          name: `${p.label} roster`,
           item: {
             "@type": "WebPage",
             "@id": `https://signals.gitdealflow.com/voices/${p.slug}`,
-            name: `${p.label} — top 100 voices`,
+            name: `${p.label} — ${p.items.length} voices for the buyer`,
             description: p.tagline,
           },
         })),
@@ -108,38 +107,41 @@ export default function VoicesHubPage() {
               Home
             </Link>
             <span className="mx-2">/</span>
-            <span className="text-gray-400">Voices (per-platform top-100)</span>
+            <span className="text-gray-400">Voices (per-platform rosters)</span>
           </nav>
           <p className="text-sky-400 text-xs font-semibold uppercase tracking-wider">
-            One top-100 per platform · Literal rosters · 300 entries
+            One roster per platform · Sized to the buyer · {totalEntries} entries
           </p>
           <h1 className="text-3xl sm:text-5xl font-bold text-gray-100 leading-[1.1] tracking-tight">
-            100 voices,{" "}
-            <span className="text-sky-400">per platform</span>. Reddit-100,
-            HN-100, X-100.
+            Where the buyer actually reads,{" "}
+            <span className="text-sky-400">per platform</span>.
           </h1>
           <p
             className="text-gray-300 text-base sm:text-lg leading-relaxed"
             data-speakable
           >
-            One mixed top-100 list isn&rsquo;t enough. The discipline behind
-            this site&rsquo;s sales architecture is explicit: one top-100{" "}
-            <em>per platform</em>. Each platform has its own auto-mod, its own
-            cadence, its own way of removing pitches and rewarding signal.
-            Treating Reddit, HN, and X as one mixed list collapses that map.
+            One mixed list isn&rsquo;t enough — and neither is forcing a round
+            100 onto every platform. The buyer here is a corp-dev / PE /
+            operator who reads business surfaces, not dev channels. So each
+            roster is sized to where he actually is: a deep <em>100 on X</em>{" "}
+            (analysts, SaaS-metrics, PE/M&amp;A, deals-media, market-map), a
+            focused <em>~30 on Reddit</em>, and a deliberately thin,
+            read-only <em>awareness map on Hacker News</em> — because HN is a
+            builder surface, not his.
           </p>
           <p className="text-gray-300 text-base leading-relaxed">
-            So this page splits the master list at{" "}
+            These extend the master list at{" "}
             <Link
               href="/target-list"
               className="text-sky-300 underline decoration-dotted hover:text-sky-200"
             >
               /target-list
             </Link>{" "}
-            into three platform-specific top-100 rosters. Each entry is
-            status-flagged with the same scheme used everywhere else — engage,
-            watch, hold, read, blocked — so the page reads as a working
-            attention map, not a wishlist.
+            into platform-specific rosters. Each entry is status-flagged with
+            the same scheme used everywhere else — engage, watch, hold, read,
+            blocked — so the page reads as a working attention map, not a
+            wishlist. We don&rsquo;t pad a roster to a round number; honest
+            audience-fit beats a tidy 100.
           </p>
           <p className="text-gray-400 text-sm leading-relaxed border-l-2 border-slate-700 pl-4">
             Anonymity rule, restated: every entry is a public surface — a
@@ -190,7 +192,7 @@ export default function VoicesHubPage() {
                   </span>
                 </div>
                 <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug group-hover:text-sky-200 transition-colors">
-                  {p.label} — top 100 voices.
+                  {p.label} — {p.items.length} voices.
                 </h2>
                 <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
                   {p.tagline}

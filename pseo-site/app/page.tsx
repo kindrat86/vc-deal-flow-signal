@@ -1426,10 +1426,9 @@ export default function Home() {
               className="mt-[0.6rem] inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-amber-400"
             />
             <span>
-              <strong className="text-amber-300">If you stayed</strong> the
-              engineer who reads commit logs for fun — never had to turn into a
-              warm-intro-Tetris partner — and the signal still found the
-              founders before consensus did, would{" "}
+              <strong className="text-amber-300">If you never had to</strong>{" "}
+              read a line of code, hire a quant, or chase a warm intro — and the
+              signal still found the founders before consensus did, would{" "}
               <strong>€9.97/month</strong> be a fair trade?
             </span>
           </li>

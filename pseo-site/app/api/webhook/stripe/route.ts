@@ -225,7 +225,7 @@ function bookWelcomeEmail(email: string): { subject: string; html: string } {
 <p><strong>The three bonus emails arrive in this order:</strong></p>
 <ol style="padding-left:20px;">
 <li><strong>Tomorrow</strong> — a fully worked walkthrough of the most recent Series A announcement that the seven-signal stack would have caught, week-by-week, signal-by-signal.</li>
-<li><strong>Day 4</strong> — the unedited interview transcripts with two early-stage developer-investors who use the workflow daily, inline in this thread. Names redacted at their request, but the operational detail is intact.</li>
+<li><strong>Day 4</strong> — the unedited interview transcripts with two early-stage investors who run a version of this daily, inline in this thread. Names redacted at their request, but the operational detail is intact.</li>
 <li><strong>Day 7</strong> — the direct line. Reply to that email with any methodology question and I&rsquo;ll respond personally for thirty days from purchase.</li>
 </ol>
 <p>If anything in the book breaks for you, reply to this email. I read every message and the next edition folds in your correction with attribution.</p>
