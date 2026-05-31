@@ -133,6 +133,7 @@
   <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="stylesheet" href="/styles.css">
+  <script>document.documentElement.className += ' js';</script>
   <link rel="preconnect" href="https://signals.gitdealflow.com" crossorigin>
   <link rel="dns-prefetch" href="https://signals.gitdealflow.com">
   <link rel="dns-prefetch" href="https://eu.i.posthog.com">
@@ -233,6 +234,68 @@
       .mobile-sticky-cta .meta span { display: block; color: #94a3b8; font-size: 0.72rem; margin-top: 0.1rem; }
       .mobile-sticky-cta .btn { white-space: nowrap; padding-left: 1rem; padding-right: 1rem; }
     }
+
+    /* ===================== UX polish pass ===================== */
+    /* One conversion color: orange primary everywhere; suppress the pulse on
+       persistent chrome (nav + sticky bar) so only in-content CTAs breathe. */
+    .btn-no-pulse { animation: none !important; }
+
+    /* Benefit cards — horizontal (icon left, text right) on mobile: halves height. */
+    .benefit-text { display: flex; flex-direction: column; min-width: 0; }
+    @media (max-width: 639px) {
+      .benefit-grid { gap: 0.75rem; }
+      .benefit-card { flex-direction: row; align-items: flex-start; gap: 0.875rem; padding: 1rem 1.125rem; }
+      .benefit-ico { margin-bottom: 0; width: 2.25rem; height: 2.25rem; border-radius: 0.625rem; }
+      .benefit-ico svg { width: 20px; height: 20px; }
+      .benefit-title { margin-bottom: 0.2rem; }
+      .benefit-why { margin: 2rem auto 2.25rem; }
+    }
+
+    /* Contrast bump on benefit description (WCAG AA on the card background). */
+    .benefit-desc { color: #a8b3c2; }
+
+    /* Tighter desktop hero rhythm so the receipts section peeks above the fold. */
+    @media (min-width: 768px) {
+      .benefit-why { margin: 1.75rem auto 2.25rem; }
+    }
+
+    /* Balanced headline wrapping — no orphaned "raise." on small screens. */
+    .mobile-hero-title { text-wrap: balance; }
+
+    /* Receipts mini sparkline + lead-time marker. */
+    .receipt-spark { display: flex; align-items: center; gap: 0.5rem; margin: 0.85rem 0 0.15rem; }
+    .receipt-spark svg { display: block; flex: 0 0 auto; }
+    .receipt-spark .lead { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: #6ee7b7; }
+
+    /* Scroll-reveal entrance — only when JS is active and motion is allowed. */
+    @media (prefers-reduced-motion: no-preference) {
+      .js .reveal { opacity: 0; transform: translateY(16px); transition: opacity 220ms ease, transform 220ms ease; }
+      .js .reveal.in { opacity: 1; transform: none; }
+    }
+
+    /* Visible focus rings on links + disclosure summaries (dark theme loses them). */
+    a:focus-visible, summary:focus-visible {
+      outline: 2px solid #38bdf8; outline-offset: 3px; border-radius: 4px;
+    }
+
+    /* Polished loading state — stable width, accessible spinner. */
+    .btn[aria-busy="true"] { cursor: progress; opacity: 0.9; }
+    .btn-spinner {
+      width: 1rem; height: 1rem; border: 2px solid rgba(255,255,255,0.4);
+      border-top-color: #fff; border-radius: 50%; display: inline-block;
+      animation: btn-spin 0.6s linear infinite;
+    }
+    @keyframes btn-spin { to { transform: rotate(360deg); } }
+    @media (prefers-reduced-motion: reduce) { .btn-spinner { animation: none; } }
+
+    /* Sticky mobile CTA reveals only after the hero form scrolls out of view. */
+    @media (max-width: 639px) {
+      .mobile-sticky-cta { transform: translateY(115%); transition: transform 260ms cubic-bezier(0.4,0,0.2,1); pointer-events: none; }
+      .mobile-sticky-cta.is-visible { transform: translateY(0); pointer-events: auto; }
+    }
+    @media (max-width: 639px) and (prefers-reduced-motion: reduce) {
+      .mobile-sticky-cta { transition: none; }
+    }
   </style>
 </head>
 <body class="bg-dark-900 text-gray-100 font-sans antialiased">
@@ -241,8 +304,9 @@
   <header class="sticky top-0 z-50 border-b border-gray-800 bg-dark-900/95 backdrop-blur">
     <div class="mobile-compact-header max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-3">
       <a href="/" class="font-semibold tracking-tight text-white text-lg">GitDealFlow</a>
-      <div class="flex items-center gap-4 shrink-0">
-        <a href="#signup" onclick="if(window.posthog)posthog.capture('nav_cta_clicked')" class="btn btn-cta btn-sm whitespace-nowrap shrink-0">Get this Sunday&apos;s 5 names <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
+      <div class="flex items-center gap-3 sm:gap-4 shrink-0">
+        <a href="/report" target="_blank" rel="noopener" onclick="if(window.posthog)posthog.capture('nav_sample_clicked')" class="text-sm text-gray-300 hover:text-white underline underline-offset-4 whitespace-nowrap transition shrink-0">See a sample</a>
+        <a href="#signup" onclick="if(window.posthog)posthog.capture('nav_cta_clicked')" class="btn btn-primary btn-no-pulse btn-sm whitespace-nowrap shrink-0"><span class="sm:hidden">Get the 5 names</span><span class="hidden sm:inline">Get this Sunday&apos;s 5 names</span> <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
       </div>
     </div>
   </header>
@@ -250,10 +314,10 @@
   <main id="main-content">
     <section class="relative overflow-hidden">
       <div class="absolute inset-0 bg-gradient-to-br from-dark-900 via-dark-800 to-brand-900 opacity-80"></div>
-      <div class="mobile-hero-wrap relative max-w-4xl mx-auto px-4 sm:px-6 py-16 md:py-28 text-center">
-        <p class="text-brand-500 font-semibold text-sm uppercase tracking-wider mb-8">For angels, scouts &amp; seed funds</p>
+      <div class="mobile-hero-wrap relative max-w-4xl mx-auto px-4 sm:px-6 py-16 md:py-20 text-center">
+        <p class="text-brand-500 font-semibold text-sm uppercase tracking-wider mb-6">For angels, scouts &amp; seed funds</p>
 
-        <h1 class="mobile-hero-title text-4xl md:text-6xl font-extrabold leading-tight mb-10">See which startups are heating up before they raise.</h1>
+        <h1 class="mobile-hero-title text-4xl md:text-6xl font-extrabold leading-tight mb-8">See which startups are heating up before they raise.</h1>
 
         <!-- WHY — the benefits for you -->
         <div class="benefit-why">
@@ -262,18 +326,18 @@
           <div class="benefit-grid">
             <div class="benefit-card">
               <div class="benefit-ico"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke-width="1.6" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg></div>
-              <h3 class="benefit-title">Get in early &amp; cheap</h3>
-              <p class="benefit-desc">Reach the founder before the round fills up and the price jumps.</p>
+              <div class="benefit-text"><h3 class="benefit-title">Get in early &amp; cheap</h3>
+              <p class="benefit-desc">Reach the founder before the round fills up and the price jumps.</p></div>
             </div>
             <div class="benefit-card">
               <div class="benefit-ico"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke-width="1.6" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3v1.5M3 21v-6m0 0 2.77-.693a9 9 0 0 1 6.208.682l.108.054a9 9 0 0 0 6.086.71l3.114-.732a48.524 48.524 0 0 1-.005-10.499l-3.11.732a9 9 0 0 1-6.085-.711l-.108-.054a9 9 0 0 0-6.208-.682L3 4.5M3 15V4.5" /></svg></div>
-              <h3 class="benefit-title">Be first to the founder</h3>
-              <p class="benefit-desc">Talk to them before the crowd shows up — while they still have time for you.</p>
+              <div class="benefit-text"><h3 class="benefit-title">Be first to the founder</h3>
+              <p class="benefit-desc">Talk to them before the crowd shows up — while they still have time for you.</p></div>
             </div>
             <div class="benefit-card">
               <div class="benefit-ico"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke-width="1.6" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" /></svg></div>
-              <h3 class="benefit-title">No hard work for you</h3>
-              <p class="benefit-desc">I read the code and tell you why it&apos;s hot — in plain English, a few minutes a week.</p>
+              <div class="benefit-text"><h3 class="benefit-title">No hard work for you</h3>
+              <p class="benefit-desc">I read the code and tell you why it&apos;s hot — in plain English, a few minutes a week.</p></div>
             </div>
           </div>
         </div>
@@ -299,19 +363,31 @@
         <h2 class="text-2xl md:text-3xl font-bold mb-3">The same signal lit up <span class="text-emerald-300">weeks before</span> these rounds.</h2>
         <p class="text-gray-300 leading-relaxed mb-8 max-w-2xl">Each of these showed the engineering-acceleration pattern in public <strong class="text-white">before</strong> the round hit the press &mdash; recognizable, venture-scale, and auditable, not a name you take on faith. To count in the panel, the signal had to predate the event by at least 30 days.</p>
         <div class="grid md:grid-cols-3 gap-4 text-left mb-6">
-          <div class="rounded-xl border border-gray-700 bg-dark-900 p-5">
+          <div class="reveal rounded-xl border border-gray-700 bg-dark-900 p-5">
             <p class="text-white"><span class="font-bold">Cursor</span> <span class="text-gray-500 text-sm">&middot; AI dev tools</span></p>
             <p class="text-gray-400 text-sm mt-2 mb-3">Their engineers were shipping far more code, and more developers piled in &mdash; all in the open through 2024, ahead of the priced round.</p>
+            <div class="receipt-spark" aria-hidden="true">
+              <svg width="104" height="30" viewBox="0 0 104 30" fill="none"><polyline points="2,26 16,25 30,23 44,20 58,15 72,9 86,5 102,2" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="58" cy="15" r="3.4" fill="#ff6b1a" stroke="#0f172a" stroke-width="1.5"/><circle cx="102" cy="2" r="2.6" fill="#34d399"/></svg>
+              <span class="lead">Signal &#9650; &middot; weeks before</span>
+            </div>
             <p class="text-emerald-300 text-sm font-semibold">&rarr; $2.6B Series B &middot; Thrive Capital</p>
           </div>
-          <div class="rounded-xl border border-gray-700 bg-dark-900 p-5">
+          <div class="reveal rounded-xl border border-gray-700 bg-dark-900 p-5">
             <p class="text-white"><span class="font-bold">Supabase</span> <span class="text-gray-500 text-sm">&middot; Dev infrastructure</span></p>
             <p class="text-gray-400 text-sm mt-2 mb-3">A steady climb in code shipped, plus a relentless week-after-week release rhythm, was the leading signal.</p>
+            <div class="receipt-spark" aria-hidden="true">
+              <svg width="104" height="30" viewBox="0 0 104 30" fill="none"><polyline points="2,25 16,23 30,21 44,18 58,16 72,12 86,8 102,4" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="44" cy="18" r="3.4" fill="#ff6b1a" stroke="#0f172a" stroke-width="1.5"/><circle cx="102" cy="4" r="2.6" fill="#34d399"/></svg>
+              <span class="lead">Signal &#9650; &middot; weeks before</span>
+            </div>
             <p class="text-emerald-300 text-sm font-semibold">&rarr; $80M Series C</p>
           </div>
-          <div class="rounded-xl border border-gray-700 bg-dark-900 p-5">
+          <div class="reveal rounded-xl border border-gray-700 bg-dark-900 p-5">
             <p class="text-white"><span class="font-bold">Resend</span> <span class="text-gray-500 text-sm">&middot; Email infra</span></p>
             <p class="text-gray-400 text-sm mt-2 mb-3">A public engineering buildout accelerated ahead of the Series A announcement.</p>
+            <div class="receipt-spark" aria-hidden="true">
+              <svg width="104" height="30" viewBox="0 0 104 30" fill="none"><polyline points="2,27 16,26 30,26 44,24 58,21 72,14 86,7 102,3" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="58" cy="21" r="3.4" fill="#ff6b1a" stroke="#0f172a" stroke-width="1.5"/><circle cx="102" cy="3" r="2.6" fill="#34d399"/></svg>
+              <span class="lead">Signal &#9650; &middot; weeks before</span>
+            </div>
             <p class="text-emerald-300 text-sm font-semibold">&rarr; $18M Series A &middot; Sequoia</p>
           </div>
         </div>
@@ -320,7 +396,7 @@
     </section>
 
     <section class="mobile-section-pad max-w-3xl mx-auto px-4 sm:px-6 pt-12 md:pt-16 pb-4">
-      <div class="mobile-card-pad support-card rounded-2xl border border-gray-700 bg-dark-800 p-8">
+      <div class="reveal mobile-card-pad support-card rounded-2xl border border-gray-700 bg-dark-800 p-8">
         <div class="flex flex-col sm:flex-row items-center sm:items-center gap-4 mb-4 text-center sm:text-left">
           <picture>
             <source srcset="/data-nerd.webp" type="image/webp">
@@ -619,7 +695,7 @@
           <div class="mobile-cta-stack flex flex-col sm:flex-row gap-3">
             <label for="signup-email" class="sr-only">Email address</label>
             <input type="email" id="signup-email" placeholder="you@example.com" required aria-label="Email address" inputmode="email" autocomplete="email" class="flex-1 px-5 py-4 rounded-lg bg-dark-800 border border-gray-600 text-gray-100 placeholder-gray-500 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 text-lg">
-            <button type="submit" id="signup-btn" class="btn btn-cta btn-lg w-full sm:w-auto">Get this Sunday&apos;s 5 names <span aria-hidden="true" class="btn-arrow">&rarr;</span></button>
+            <button type="submit" id="signup-btn" class="btn btn-primary btn-lg w-full sm:w-auto">Get this Sunday&apos;s 5 names <span aria-hidden="true" class="btn-arrow">&rarr;</span></button>
           </div>
         </form>
         <p class="text-gray-400 text-sm mt-4 text-center">Drop your email and <strong class="text-white">check your inbox to confirm</strong> &mdash; then the five names land <strong class="text-white">this Sunday morning</strong>.</p>
@@ -667,7 +743,7 @@
       <p class="text-gray-300 leading-relaxed mb-5">One short Sunday email. Five names worth your attention. Unsubscribe in one click.</p>
       <form id="exit-form" class="flex flex-col gap-3">
         <label for="exit-email" class="sr-only">Email address</label>
-        <input type="email" id="exit-email" required placeholder="you@example.com" class="w-full px-4 py-3 rounded-lg bg-dark-800 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-signal-500">
+        <input type="email" id="exit-email" required inputmode="email" autocomplete="email" placeholder="you@example.com" class="w-full px-4 py-3 rounded-lg bg-dark-800 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-signal-500">
         <button type="submit" id="exit-submit" class="w-full bg-signal-500 hover:bg-signal-400 text-white font-bold py-3 rounded-lg transition">Get this Sunday’s 5 names &rarr;</button>
       </form>
       <p id="exit-msg" class="text-gray-500 text-xs text-center mt-3">One email a week · unsubscribe anytime</p>
@@ -691,7 +767,7 @@
         <strong>Get this Sunday&apos;s 5 names</strong>
         <span>Free · no card · 90-second read</span>
       </div>
-      <a href="#signup" onclick="if(window.posthog)posthog.capture('repeat_cta_clicked',{placement:'sticky_mobile'})" class="btn btn-cta btn-sm">Get it free</a>
+      <a href="#signup" onclick="if(window.posthog)posthog.capture('repeat_cta_clicked',{placement:'sticky_mobile'})" class="btn btn-primary btn-no-pulse btn-sm">Get it free</a>
     </div>
   </div>
 
@@ -740,7 +816,7 @@
         const email = (emailEl && emailEl.value || '').trim();
         if (!email) return;
         const orig = btn ? btn.innerHTML : '';
-        if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+        if (btn) { btn.disabled = true; btn.setAttribute('aria-busy', 'true'); btn.innerHTML = '<span class="btn-spinner" aria-hidden="true"></span><span>Sending&hellip;</span>'; }
         try {
           const attr = window.GDFattribution(form.getAttribute('data-source') || 'landing-page');
           const res = await fetch('https://signals.gitdealflow.com/api/subscribe', {
@@ -761,7 +837,7 @@
             msg.textContent = 'Something went wrong. Try again or email signal@gitdealflow.com';
             msg.className = 'js-signup-msg text-red-400 text-sm mt-4 text-center';
           }
-          if (btn) { btn.disabled = false; btn.innerHTML = orig; }
+          if (btn) { btn.disabled = false; btn.removeAttribute('aria-busy'); btn.innerHTML = orig; }
         }
       });
     });
@@ -787,11 +863,15 @@
         modal.classList.add('flex');
         if (window.posthog) posthog.capture('exit_modal_opened');
         try { localStorage.setItem('gd_exit_seen_at', String(Date.now())); } catch (e) {}
+        setTimeout(function () { try { emailEl.focus(); } catch (e) {} }, 60);
       }
       function closeModal() {
         modal.classList.add('hidden');
         modal.classList.remove('flex');
       }
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
+      });
       document.addEventListener('mouseout', function(e) {
         if (shown) return;
         if (e.clientY <= 0) openModal();
@@ -828,6 +908,43 @@
           btn.textContent = 'Get this Sunday’s 5 names →';
         }
       });
+    })();
+
+    // Scroll-reveal: fade/translate the receipts + founder cards into view once.
+    (function () {
+      var els = document.querySelectorAll('.reveal');
+      if (!els.length) return;
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce || !('IntersectionObserver' in window)) {
+        els.forEach(function (el) { el.classList.add('in'); });
+        return;
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) { entry.target.classList.add('in'); io.unobserve(entry.target); }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      els.forEach(function (el) { io.observe(el); });
+      // Safety net: never leave content hidden if the observer never fires.
+      setTimeout(function () { els.forEach(function (el) { el.classList.add('in'); }); }, 1800);
+    })();
+
+    // Sticky mobile CTA reveals only after the hero email form scrolls out of view,
+    // so it never competes with the in-hero form. Scroll-driven for reliability.
+    (function () {
+      var bar = document.querySelector('.mobile-sticky-cta');
+      var heroForm = document.querySelector('form.js-signup-form[data-source="hero"]');
+      if (!bar) return;
+      if (!heroForm) { bar.classList.add('is-visible'); return; }
+      var ticking = false;
+      function update() {
+        ticking = false;
+        bar.classList.toggle('is-visible', heroForm.getBoundingClientRect().bottom < 8);
+      }
+      function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll, { passive: true });
+      update();
     })();
   </script>
 
