@@ -218,7 +218,7 @@
         <a href="/dashboard" class="text-gray-400 text-sm hover:text-gray-100 transition">Dashboard</a>
         <a href="/insider" class="text-gray-400 text-sm hover:text-gray-100 transition">Insider</a>
       </nav>
-      <a href="https://signals.gitdealflow.com" class="btn btn-cta btn-sm whitespace-nowrap shrink-0">See the board <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
+      <a href="#signup" onclick="if(window.posthog)posthog.capture('nav_cta_clicked')" class="btn btn-cta btn-sm whitespace-nowrap shrink-0">Get the free email <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
     </div>
   </header>
 
@@ -257,12 +257,14 @@
         <p class="mobile-hero-title text-3xl md:text-5xl font-extrabold leading-tight text-signal-500 mb-4">I read their GitHub. You see them first.</p>
         <p class="mobile-hero-copy text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-8">I watch <strong class="text-white">4,200+ startups&apos; code</strong> and flag the ones taking off — <strong class="text-white">weeks before the round or the press</strong>.</p>
 
-        <div class="mobile-cta-stack flex justify-center">
-          <a href="#signup" onclick="if(window.posthog)posthog.capture('hero_cta_clicked',{target:'free_email'})" class="btn btn-primary btn-xl w-full sm:w-auto">
-            <span>Get this Sunday&apos;s 5 free names</span>
-            <span aria-hidden="true" class="btn-arrow">&rarr;</span>
-          </a>
-        </div>      </div>
+        <form class="js-signup-form mobile-cta-stack flex flex-col sm:flex-row gap-3 max-w-lg mx-auto" data-source="hero">
+          <label class="sr-only">Email address</label>
+          <input type="email" required inputmode="email" autocomplete="email" placeholder="you@example.com" class="flex-1 px-5 py-4 rounded-lg bg-dark-800 border border-gray-600 text-gray-100 placeholder-gray-500 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 text-lg">
+          <button type="submit" class="btn btn-primary btn-xl w-full sm:w-auto"><span>Get this Sunday&apos;s 5 names</span><span aria-hidden="true" class="btn-arrow">&rarr;</span></button>
+        </form>
+        <p class="js-signup-msg text-gray-500 text-sm mt-4"><span class="text-emerald-400">✓</span> Free forever &nbsp; <span class="text-emerald-400">✓</span> No card, ever &nbsp; <span class="text-emerald-400">✓</span> Unsubscribe in one click</p>
+        <p class="text-gray-500 text-sm mt-3">Covering <span class="text-gray-300">AI infra, dev tools, fintech, data, security &amp; devops</span> &mdash; and more. <a href="#signup" class="underline hover:text-gray-300 transition">See a sample issue &darr;</a></p>
+      </div>
     </section>
     <section class="mobile-section-pad max-w-3xl mx-auto px-4 sm:px-6 pt-12 md:pt-16 pb-4">
       <div class="mobile-card-pad support-card rounded-2xl border border-gray-700 bg-dark-800 p-8">
@@ -281,6 +283,7 @@
           <p><strong class="text-white">What it does:</strong> it spots brand-new companies that are starting to grow fast — early, before everyone else is talking about them.</p>
           <p><strong class="text-white">Why it matters:</strong> most people hear about a great company too late. By then the deal is full and the price has jumped. That always bugged me — the clues were there the whole time, I just couldn&apos;t read them all in time.</p>
           <p><strong class="text-white">How it works:</strong> when a company is building hard, its engineers leave clues out in the open on GitHub (the website where they keep their work). My tool reads those clues every week and hands you the names in plain words — so you can reach out early. A few minutes a week, not a whole night of digging.</p>
+          <p><strong class="text-white">&ldquo;One person&rdquo; doesn&apos;t mean fragile:</strong> the read is fully automated and ships on a schedule, and the method is published on SSRN with an open dataset. It doesn&apos;t depend on me having a good week.</p>
         </div>
         <ul class="space-y-3 text-sm text-gray-300 border-t border-gray-700 pt-5">
           <li><strong class="text-white">What it watches:</strong> which company teams are suddenly building a lot more</li>
@@ -289,6 +292,11 @@
         </ul>
       </div>
     </section>
+
+    <div class="mobile-section-pad max-w-3xl mx-auto px-4 sm:px-6 pb-8 text-center">
+      <a href="#signup" onclick="if(window.posthog)posthog.capture('repeat_cta_clicked',{placement:'after_story'})" class="btn btn-primary btn-lg w-full sm:w-auto"><span>Get this Sunday&apos;s 5 free names</span><span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
+    </div>
+
     <section class="mobile-section-pad max-w-5xl mx-auto px-4 sm:px-6 py-8">
       <div class="mobile-card-pad rounded-2xl border border-gray-800 bg-dark-800/70 p-6 md:p-8">
         <p class="text-signal-400 text-xs font-semibold uppercase tracking-wider mb-4">Verify the claim in three clicks</p>
@@ -344,33 +352,16 @@
       <p class="text-gray-400 text-center mt-8">It&apos;s not an upgrade to your database. It&apos;s the signal that sits <strong class="text-white">underneath</strong> it.</p>
     </section>
 
-    <section aria-label="Trust indicators" class="border-y border-gray-800 bg-dark-900/60">
-      <div class="mobile-section-pad mobile-stat-grid max-w-5xl mx-auto px-4 sm:px-6 py-10 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-        <div>
-          <p class="text-3xl font-extrabold text-white">4,200</p>
-          <p class="text-gray-500 text-xs mt-1 leading-relaxed">GitHub orgs monitored</p>
-        </div>
-        <div>
-          <p class="text-3xl font-extrabold text-white">219</p>
-          <p class="text-gray-500 text-xs mt-1 leading-relaxed">confirmed fundraises in the SSRN panel</p>
-        </div>
-        <div>
-          <p class="text-3xl font-extrabold text-white">21–47d</p>
-          <p class="text-gray-500 text-xs mt-1 leading-relaxed">lead-time window shown in the research</p>
-        </div>
-        <div>
-          <p class="text-3xl font-extrabold text-white">15 min</p>
-          <p class="text-gray-500 text-xs mt-1 leading-relaxed">a weekly scan, not a daily dashboard chore</p>
-        </div>
-      </div>
-    </section>
-
     <section class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 py-12">
       <div class="mobile-card-pad rounded-2xl border border-gray-800 bg-dark-800/70 p-8 md:p-10">
         <p class="text-signal-400 text-xs font-semibold uppercase tracking-wider mb-3">Proof, not promises</p>
         <h2 class="text-3xl font-bold mb-4">I&apos;d rather hand you the receipts than a wall of testimonials.</h2>
         <p class="text-gray-300 text-lg leading-relaxed mb-8">This is early and privacy-first, so you won&apos;t find a logo parade or paid quotes here. You get the thing most tools never show: the actual track record, public and auditable.</p>
-        <div class="grid md:grid-cols-3 gap-4 text-left mb-6">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-left mb-6">
+          <div class="rounded-xl border border-gray-700 bg-dark-900 p-5">
+            <p class="text-2xl font-extrabold text-white mb-1">4,200+</p>
+            <p class="text-gray-400 text-sm leading-relaxed">startups&apos; public GitHub activity scanned every week.</p>
+          </div>
           <div class="rounded-xl border border-gray-700 bg-dark-900 p-5">
             <p class="text-2xl font-extrabold text-white mb-1">219</p>
             <p class="text-gray-400 text-sm leading-relaxed">fundraises the engineering signal preceded, documented in the SSRN research panel.</p>
@@ -440,6 +431,10 @@
       </div>
     </section>
 
+    <div class="mobile-section-pad max-w-3xl mx-auto px-4 sm:px-6 pb-4 text-center">
+      <a href="#signup" onclick="if(window.posthog)posthog.capture('repeat_cta_clicked',{placement:'after_win'})" class="btn btn-primary btn-lg w-full sm:w-auto"><span>Start free &mdash; this Sunday&apos;s 5 names</span><span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
+    </div>
+
     <section class="mobile-section-pad max-w-3xl mx-auto px-4 sm:px-6 py-16 md:py-20">
       <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-3">Who it&apos;s for</p>
       <h2 class="text-3xl font-bold mb-5">Built for investors who want to be early, not analytical.</h2>
@@ -478,7 +473,7 @@
       <div class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 text-center">
         <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-3">The free Sunday Signal</p>
         <h2 class="text-3xl font-bold mb-4">Five startups quietly accelerating on GitHub &mdash; in your inbox before the round.</h2>
-        <p class="text-gray-300 text-lg leading-relaxed mb-3 max-w-2xl mx-auto">Every Sunday I send you five names the tool flagged that week &mdash; each with a plain-English note on <strong class="text-white">why it&apos;s moving</strong> and the sector it&apos;s in. The same early engineering read a data platform charges <strong class="text-white">$20,000 a year</strong> to approximate.</p>
+        <p class="text-gray-300 text-lg leading-relaxed mb-3 max-w-2xl mx-auto">Every Sunday I send you five names the tool flagged that week &mdash; each with a plain-English note on <strong class="text-white">why it&apos;s moving</strong> and the sector it&apos;s in. It&apos;s the early read you&apos;d otherwise <strong class="text-white">pay an analyst to do by hand</strong>, or piece together from data tools that run thousands a year.</p>
         <p class="text-gray-300 text-lg leading-relaxed mb-10 max-w-2xl mx-auto">It costs me real compute to run every week. <strong class="text-white">It costs you nothing &mdash; no card now, no card ever.</strong></p>
 
         <div class="max-w-xl mx-auto text-left mb-10">
@@ -492,15 +487,30 @@
           </ul>
         </div>
 
+        <div class="max-w-xl mx-auto mb-10 text-left">
+          <p class="text-gray-400 text-sm font-semibold uppercase tracking-wider mb-3 text-center">What a Sunday issue looks like</p>
+          <div class="rounded-2xl border border-gray-700 bg-dark-900 p-6">
+            <p class="text-white font-semibold mb-4">The Sunday Signal &mdash; 5 names this week</p>
+            <div class="space-y-4 text-sm">
+              <div><p class="text-white font-semibold">1. AI-infra company &middot; Seed</p><p class="text-gray-400">Contributor count +38% in three weeks, two new public repos. <span class="text-gray-300">Why it matters: a tiny team is suddenly shipping like a funded one.</span></p></div>
+              <div><p class="text-white font-semibold">2. Dev-tools company &middot; Pre-seed</p><p class="text-gray-400">Commit cadence doubled; first outside contributors appear. <span class="text-gray-300">Why: the build just went from nights-and-weekends to full-time.</span></p></div>
+              <div><p class="text-white font-semibold">3. Fintech company &middot; Seed</p><p class="text-gray-400">New payments-infra repo plus hiring-signal commits. <span class="text-gray-300">Why: building rails like this usually precedes a raise.</span></p></div>
+              <p class="text-gray-500">+ 2 more, each with its sector, stage, and the why.</p>
+            </div>
+          </div>
+          <p class="text-gray-600 text-xs mt-3 text-center">Illustrative example of the format &mdash; real names ship to subscribers every Sunday.</p>
+        </div>
+
         <span id="signup" aria-hidden="true"></span>
-        <form id="signup-form" class="max-w-lg mx-auto">
+        <form id="signup-form" data-source="footer" class="js-signup-form max-w-lg mx-auto">
           <div class="mobile-cta-stack flex flex-col sm:flex-row gap-3">
             <label for="signup-email" class="sr-only">Email address</label>
             <input type="email" id="signup-email" placeholder="you@example.com" required aria-label="Email address" inputmode="email" autocomplete="email" class="flex-1 px-5 py-4 rounded-lg bg-dark-800 border border-gray-600 text-gray-100 placeholder-gray-500 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 text-lg">
             <button type="submit" id="signup-btn" class="btn btn-cta btn-lg w-full sm:w-auto">Email me this Sunday&apos;s 5 names &mdash; free <span aria-hidden="true" class="btn-arrow">&rarr;</span></button>
           </div>
         </form>
-        <p id="signup-msg" class="text-center text-gray-500 text-sm mt-4">
+        <p class="text-gray-400 text-sm mt-4 text-center">The next issue goes out <strong class="text-white">this Sunday</strong>. Get on the list before it sends.</p>
+        <p id="signup-msg" class="js-signup-msg text-center text-gray-500 text-sm mt-2">
           <span class="text-emerald-400">✓</span> Free forever &nbsp; <span class="text-emerald-400">✓</span> Unsubscribe in one click &nbsp; <span class="text-emerald-400">✓</span> One email every Sunday
         </p>
       </div>
@@ -610,42 +620,41 @@
       }
     };
 
-    document.getElementById('signup-form').addEventListener('submit', async function(e) {
-      e.preventDefault();
-      const btn = document.getElementById('signup-btn');
-      const msg = document.getElementById('signup-msg');
-      const email = document.getElementById('signup-email').value.trim();
-      if (!email) return;
-      // Survey removed — email-only opt-in. Route defaults to the free watch.
-      const route = '';
-      const ROUTE_LABELS = {};
-      btn.disabled = true;
-      btn.textContent = 'Sending...';
-      try {
-        const attr = window.GDFattribution('landing-page');
-        const res = await fetch('https://signals.gitdealflow.com/api/subscribe', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(Object.assign({
-            email: email,
-            quiz_route: route,
-            quiz_route_label: ROUTE_LABELS[route] || ''
-          }, attr))
-        });
-        const data = await res.json();
-        if (data.ok) {
-          if (window.posthog) posthog.capture('signup_verify_sent', { route: route });
-          window.location.href = '/thanks';
-          return;
-        } else {
+    // Email-only opt-in, shared across every form on the page (hero + footer +
+    // any repeated CTA). Each form carries class js-signup-form, an email input,
+    // a submit button, and optionally a .js-signup-msg status line.
+    document.querySelectorAll('form.js-signup-form').forEach(function (form) {
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        const btn = form.querySelector('button[type="submit"]');
+        const msg = form.querySelector('.js-signup-msg') || (form.parentElement && form.parentElement.querySelector('.js-signup-msg'));
+        const emailEl = form.querySelector('input[type="email"]');
+        const email = (emailEl && emailEl.value || '').trim();
+        if (!email) return;
+        const orig = btn ? btn.innerHTML : '';
+        if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+        try {
+          const attr = window.GDFattribution(form.getAttribute('data-source') || 'landing-page');
+          const res = await fetch('https://signals.gitdealflow.com/api/subscribe', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(Object.assign({ email: email, quiz_route: '', quiz_route_label: '' }, attr))
+          });
+          const data = await res.json();
+          if (data.ok) {
+            if (window.posthog) posthog.capture('signup_verify_sent', { placement: form.getAttribute('data-source') || 'landing-page' });
+            window.location.href = '/thanks';
+            return;
+          }
           throw new Error(data.error || 'Failed');
+        } catch (err) {
+          if (msg) {
+            msg.textContent = 'Something went wrong. Try again or email signal@gitdealflow.com';
+            msg.className = 'js-signup-msg text-red-400 text-sm mt-4 text-center';
+          }
+          if (btn) { btn.disabled = false; btn.innerHTML = orig; }
         }
-      } catch (err) {
-        msg.textContent = 'Something went wrong. Try again or email signal@gitdealflow.com';
-        msg.className = 'text-red-400 text-sm mt-4 text-center';
-        btn.disabled = false;
-        btn.textContent = 'Email me this Sunday’s 5 names — free →';
-      }
+      });
     });
 
     (function(){
