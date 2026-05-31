@@ -326,52 +326,6 @@ export function RootIdentitySchema() {
         url: SITE,
         description:
           "Tracks GitHub commit-velocity, contributor-growth and repository-expansion signals across 4,200+ venture-backed startups; surfaces engineering-acceleration patterns 3–6 weeks before fundraise announcements. Delivered as a weekly free digest, a paid dashboard, an MCP server, an A2A endpoint, and a CSV/JSON dataset.",
-        hasOfferCatalog: {
-          "@type": "OfferCatalog",
-          name: "Delivery channels",
-          itemListElement: [
-            {
-              "@type": "Offer",
-              itemOffered: {
-                "@type": "Service",
-                name: "Weekly free Signal Digest (email)",
-                url: `${APEX}/#signup`,
-              },
-            },
-            {
-              "@type": "Offer",
-              itemOffered: {
-                "@type": "Service",
-                name: "Dashboard (paid, €9.97/mo)",
-                url: `${SITE}/dashboard`,
-              },
-            },
-            {
-              "@type": "Offer",
-              itemOffered: {
-                "@type": "Service",
-                name: "MCP server (free, no API key)",
-                url: `${SITE}/.well-known/agent-card.json`,
-              },
-            },
-            {
-              "@type": "Offer",
-              itemOffered: {
-                "@type": "Service",
-                name: "A2A agent endpoint",
-                url: `${SITE}/.well-known/agents.json`,
-              },
-            },
-            {
-              "@type": "Offer",
-              itemOffered: {
-                "@type": "Service",
-                name: "Open dataset (CC BY 4.0)",
-                url: `${SITE}/dataset`,
-              },
-            },
-          ],
-        },
         termsOfService: `${SITE}/legal/terms`,
       },
       {
