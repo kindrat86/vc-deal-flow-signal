@@ -38,6 +38,7 @@ import json
 import os
 import re
 import sys
+import urllib.error
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
@@ -104,7 +105,18 @@ def aggregate(samples: list[dict]) -> dict:
     """samples: list of {id,intent,answer,urls,flags}."""
     n = len(samples)
     if n == 0:
-        return {"n": 0}
+        # No answers collected (e.g. every API call failed). Return a fully-formed
+        # zero record so write_report never KeyErrors on a dead run.
+        return {
+            "n": 0,
+            "own_domain_citation_rate": 0.0,
+            "own_ecosystem_citation_rate": 0.0,
+            "brand_mention_rate": 0.0,
+            "surfaced_rate": 0.0,
+            "share_of_voice": 0.0,
+            "by_intent": {},
+            "by_query": {},
+        }
 
     def rate(key):
         return round(sum(1 for s in samples if s["flags"][key]) / n, 3)
@@ -144,13 +156,19 @@ def load_anthropic_key() -> str | None:
     key = os.environ.get("ANTHROPIC_API_KEY")
     if key:
         return key
-    env = HERE.parent / "tools" / ".env"
-    if env.exists():
-        for line in env.read_text().splitlines():
-            if line.startswith("ANTHROPIC_API_KEY="):
-                v = line.split("=", 1)[1].strip().strip('"').strip("'")
-                if v:
-                    return v
+    # Look in this checkout's tools/.env first, then fall back to the canonical
+    # main checkout (git worktrees don't carry the gitignored tools/.env).
+    candidates = [
+        HERE.parent / "tools" / ".env",
+        Path("/Users/sipi/launch-projects/vc-deal-flow-signal/tools/.env"),
+    ]
+    for env in candidates:
+        if env.exists():
+            for line in env.read_text().splitlines():
+                if line.startswith("ANTHROPIC_API_KEY="):
+                    v = line.split("=", 1)[1].strip().strip('"').strip("'")
+                    if v:
+                        return v
     return None
 
 
@@ -196,6 +214,16 @@ def run_anthropic(samples_per_query: int, model: str) -> tuple[str, list[dict]]:
         for i in range(samples_per_query):
             try:
                 text, urls = ask_anthropic(q["prompt"], key, model)
+            except urllib.error.HTTPError as e:
+                if e.code in (401, 403):
+                    sys.exit(
+                        f"\nAuth failed ({e.code}) on the Anthropic API — the key in "
+                        "tools/.env is invalid/revoked/truncated. Refresh "
+                        "ANTHROPIC_API_KEY (https://console.anthropic.com/settings/keys) "
+                        "and re-run. No partial run was logged."
+                    )
+                print(f"  ! {q['id']} sample {i}: {e}", file=sys.stderr)
+                continue
             except Exception as e:  # noqa: BLE001 - never let one query kill the run
                 print(f"  ! {q['id']} sample {i}: {e}", file=sys.stderr)
                 continue
