@@ -157,6 +157,27 @@ export default async function AlternativePage({ params }: PageProps) {
         about: alt.h1,
         description: `Feature comparison of ${alt.featureTable.tools.join(" vs ")} for startup deal sourcing.`,
       },
+      ...(alt.roundup
+        ? [
+            {
+              "@type": "ItemList",
+              name: alt.roundup.heading,
+              description: alt.roundup.intro,
+              numberOfItems: alt.roundup.tools.length,
+              itemListElement: alt.roundup.tools.map((tool, i) => ({
+                "@type": "ListItem",
+                position: i + 1,
+                item: {
+                  "@type": "SoftwareApplication",
+                  name: tool.name,
+                  applicationCategory: "BusinessApplication",
+                  url: tool.url,
+                  description: `${tool.signal}. Free tier: ${tool.free}. Best for: ${tool.bestFor}.`,
+                },
+              })),
+            },
+          ]
+        : []),
       {
         "@type": "BreadcrumbList",
         itemListElement: [
@@ -253,6 +274,58 @@ export default async function AlternativePage({ params }: PageProps) {
         <p className="text-gray-400 text-base leading-relaxed mb-10">
           {alt.intro}
         </p>
+
+        {alt.roundup && (
+          <section className="mb-12" aria-label={alt.roundup.heading}>
+            <h2 className="text-xl font-semibold text-gray-100 mb-3">
+              {alt.roundup.heading}
+            </h2>
+            <p className="text-gray-400 text-sm leading-relaxed mb-5">
+              {alt.roundup.intro}
+            </p>
+            <div className="overflow-x-auto rounded-lg border border-slate-800">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-slate-800 bg-slate-900/60">
+                    <th className="text-left text-gray-400 font-medium px-4 py-3">Tool</th>
+                    <th className="text-left text-gray-400 font-medium px-4 py-3">Free tier</th>
+                    <th className="text-left text-gray-400 font-medium px-4 py-3">Signal type</th>
+                    <th className="text-left text-gray-400 font-medium px-4 py-3">Best for</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {alt.roundup.tools.map((tool) => (
+                    <tr
+                      key={tool.name}
+                      className={`border-b border-slate-800/60 last:border-0 transition-colors ${
+                        tool.isUs ? "bg-sky-950/30" : "hover:bg-slate-800/40"
+                      }`}
+                    >
+                      <td className="px-4 py-3 font-medium">
+                        <a
+                          href={tool.url}
+                          rel={tool.isUs ? undefined : "nofollow noopener"}
+                          target={tool.isUs ? undefined : "_blank"}
+                          className={tool.isUs ? "text-sky-400" : "text-gray-200 hover:text-gray-100"}
+                        >
+                          {tool.name}
+                        </a>
+                        {tool.isUs && (
+                          <span className="ml-2 text-[10px] uppercase tracking-wider text-sky-500">
+                            this site
+                          </span>
+                        )}
+                      </td>
+                      <td className="px-4 py-3 text-gray-400">{tool.free}</td>
+                      <td className="px-4 py-3 text-gray-400">{tool.signal}</td>
+                      <td className="px-4 py-3 text-gray-400">{tool.bestFor}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
+        )}
 
         <div className="space-y-6 mb-10">
           {alt.sections.map((section) => (

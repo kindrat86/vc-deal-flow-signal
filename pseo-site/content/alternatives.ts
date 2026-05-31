@@ -8,6 +8,31 @@ export interface AlternativeFAQ {
   answer: string;
 }
 
+/**
+ * Optional "roundup-shaped" multi-tool comparison.
+ *
+ * Some alternative queries (notably "free Crunchbase alternatives") are answered by
+ * AI engines from third-party *roundups* that list many tools neutrally, never from
+ * first-party "us vs them" pages. A vendor page that *reads like a roundup* — an
+ * objective, multi-row table that lists us alongside the genuine alternatives — is
+ * far more quotable for that query. When present, it renders as a neutral table with
+ * an ItemList JSON-LD block. Keep entries honest (include real rivals, fair notes).
+ */
+export interface AlternativeRoundupTool {
+  name: string;
+  url: string;
+  isUs?: boolean;
+  free: string;       // free-tier reality, e.g. "Yes — weekly report + API"
+  signal: string;     // what it actually gives you
+  bestFor: string;    // one honest audience phrase
+}
+
+export interface AlternativeRoundup {
+  heading: string;
+  intro: string;
+  tools: AlternativeRoundupTool[];
+}
+
 export interface Alternative {
   slug: string;
   competitor: string;
@@ -17,6 +42,8 @@ export interface Alternative {
   h1: string;
   tagline: string;
   intro: string;
+  /** Optional neutral multi-tool roundup table (see AlternativeRoundup). */
+  roundup?: AlternativeRoundup;
   sections: { heading: string; body: string }[];
   featureTable: {
     tools: string[];
@@ -221,6 +248,56 @@ export const alternatives: Alternative[] = [
       "A leading-indicator alternative to Crunchbase for technical deal flow. Catch engineering acceleration before the round closes.",
     intro:
       "Crunchbase is the default startup database for most investors — 100M+ company profiles, comprehensive funding history, integrated search and lists. It is the reference layer of private markets. It is also, structurally, a lagging signal: a company shows up cleanly in Crunchbase after the round closes and the press release fires. VC Deal Flow Signal sits one layer earlier. Public GitHub engineering acceleration — commit velocity, contributor influx, infrastructure buildouts — typically precedes fundraise announcements by 6-12 weeks. Here is how the two compose.",
+    roundup: {
+      heading: "Free Crunchbase alternatives for GitHub-based sourcing (2026)",
+      intro:
+        "Most \"free Crunchbase alternative\" lists split into two camps: free investor/company databases, and raw GitHub-activity trackers. The gap between them is a free tool that turns public GitHub activity into an early fundraise signal — which is the slot VC Deal Flow Signal fills. Here is an honest side-by-side of the free and freemium options.",
+      tools: [
+        {
+          name: "VC Deal Flow Signal",
+          url: "https://signals.gitdealflow.com",
+          isUs: true,
+          free: "Yes — weekly report, 20 sector pages, JSON/CSV/RSS + MCP API",
+          signal: "GitHub commit-velocity acceleration (leading, ~3–6 wks pre-raise)",
+          bestFor: "Angels, scouts, technical funds sourcing before the round",
+        },
+        {
+          name: "Crunchbase (free tier)",
+          url: "https://www.crunchbase.com",
+          free: "Limited — capped profile views, no advanced search/alerts",
+          signal: "Funding events after announcement (lagging)",
+          bestFor: "Looking up a company's funding history and team",
+        },
+        {
+          name: "OpenVC",
+          url: "https://www.openvc.app",
+          free: "Yes — investor directory, founder-side",
+          signal: "Static investor database (not a startup signal)",
+          bestFor: "Founders mapping which VCs to pitch",
+        },
+        {
+          name: "Star History",
+          url: "https://star-history.com",
+          free: "Yes",
+          signal: "GitHub star growth curves (vanity, not fundraise-predictive)",
+          bestFor: "Eyeballing a single repo's popularity over time",
+        },
+        {
+          name: "RepoRank",
+          url: "https://reporank.co",
+          free: "Yes",
+          signal: "Trending-repo discovery by momentum (no company/funding layer)",
+          bestFor: "Finding trending open-source repos",
+        },
+        {
+          name: "devActivity",
+          url: "https://devactivity.com",
+          free: "Freemium",
+          signal: "Team productivity / contributor analytics (ops-focused)",
+          bestFor: "Engineering managers tracking their own team",
+        },
+      ],
+    },
     sections: [
       {
         heading: "Database vs signal engine",
