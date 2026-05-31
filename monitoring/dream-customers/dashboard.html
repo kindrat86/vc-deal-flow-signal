@@ -106,6 +106,7 @@
   .eng-table td.pts { color:#fbbf24; font-weight:700; }
   .eng-table td.pts.zero { color:#475569; }
   .nd-badge { font-size:9px; font-weight:700; letter-spacing:0.5px; padding:1px 6px; border-radius:4px; background:rgba(244,63,94,0.16); color:#fda4af; border:1px solid rgba(244,63,94,0.35); white-space:nowrap; }
+  .out-badge { font-size:9px; font-weight:700; letter-spacing:0.5px; padding:1px 6px; border-radius:4px; background:rgba(16,185,129,0.16); color:#6ee7b7; border:1px solid rgba(16,185,129,0.4); white-space:nowrap; }
   .eng-empty { text-align:center; color:#475569; padding:26px 12px; }
   @media (max-width:560px) {
     .eng-table th, .eng-table td { padding-left:8px; padding-right:8px; }
@@ -124,7 +125,7 @@
   </div>
   <div class="controls">
     <input type="search" id="q" placeholder="search name / handle / firm">
-    <label class="toggle"><input type="checkbox" id="hide-nondream"> hide non-dream</label>
+    <label class="toggle"><input type="checkbox" id="show-all"> show all followers</label>
     <button class="refresh" id="refresh">↻ refresh</button>
   </div>
 </header>
@@ -179,7 +180,7 @@
   let EVENTS_BY_CONTACT = {}; // { contactId: [events] }
   let activeContactId = null;
   let filters = { q: "" };
-  let hideNonDream = false;
+  let showAll = false; // default: dream customers only; checkbox reveals all followers
 
   // ---- API ----
   async function api(path, opts = {}) {
@@ -285,7 +286,7 @@
     // as a follower roster ranked by inbound engagement. The "hide non-dream"
     // toggle narrows to dream-customer followers; search filters within them.
     let pool = CONTACTS.filter((c) => c.stage === "followers");
-    if (hideNonDream) pool = pool.filter((c) => c.dream_customer);
+    if (!showAll) pool = pool.filter((c) => c.dream_customer);
     if (filters.q) {
       const q = filters.q.toLowerCase();
       pool = pool.filter((c) => (c.x_handle + " " + (c.display_name || "") + " " + (c.firm || "")).toLowerCase().includes(q));
@@ -300,12 +301,13 @@
     const pts = scoreOf(c.id);
     const hue = avatarHue(c.x_handle);
     const badge = c.dream_customer ? "" : ' <span class="nd-badge" title="Not a dream customer">NOT DREAM</span>';
+    const out = c.outreach ? ' <span class="out-badge" title="Outreach started">OUTREACH</span>' : "";
     return (
       '<tr data-id="' + c.id + '">' +
         '<td><div class="acct">' +
           '<span class="avatar" style="background:hsl(' + hue + ',55%,62%)">' + initial(c) + "</span>" +
           '<span class="who">' +
-            '<span class="nm">' + escapeHtml(c.display_name || c.x_handle) + badge + "</span>" +
+            '<span class="nm">' + escapeHtml(c.display_name || c.x_handle) + badge + out + "</span>" +
             '<a class="hd" href="https://twitter.com/' + encodeURIComponent(c.x_handle) + '" target="_blank" rel="noopener">@' + escapeHtml(c.x_handle) + "</a>" +
           "</span>" +
         "</div></td>" +
@@ -326,7 +328,7 @@
 
     let rows = pool.map(engRow).join("");
     if (!pool.length) {
-      rows = '<tr><td colspan="5" class="eng-empty">No followers to show' + (hideNonDream ? " (non-dream hidden)" : "") + ".</td></tr>";
+      rows = '<tr><td colspan="5" class="eng-empty">No ' + (showAll ? "followers" : "dream customers") + " to show.</td></tr>";
     }
 
     el.innerHTML =
@@ -446,7 +448,7 @@
 
   // Wire up filters
   document.getElementById("q").addEventListener("input", (e) => { filters.q = e.target.value; render(); });
-  document.getElementById("hide-nondream").addEventListener("change", (e) => { hideNonDream = e.target.checked; render(); });
+  document.getElementById("show-all").addEventListener("change", (e) => { showAll = e.target.checked; render(); });
   document.getElementById("refresh").addEventListener("click", load);
   document.getElementById("close").addEventListener("click", closeDrawer);
   document.getElementById("mask").addEventListener("click", closeDrawer);
