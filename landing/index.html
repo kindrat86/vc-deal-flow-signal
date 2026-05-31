@@ -629,6 +629,7 @@
           const data = await res.json();
           if (data.ok) {
             if (window.posthog) posthog.capture('signup_verify_sent', { placement: form.getAttribute('data-source') || 'landing-page' });
+            try { sessionStorage.setItem('gdf_email', email); } catch (e) {}
             window.location.href = '/thanks';
             return;
           }
@@ -695,6 +696,7 @@
           const data = await res.json();
           if (!data.ok) throw new Error(data.error || 'Failed');
           if (window.posthog) posthog.capture('exit_modal_submitted');
+          try { sessionStorage.setItem('gdf_email', email); } catch (e) {}
           window.location.href = '/thanks?route=F';
           return;
         } catch (err) {

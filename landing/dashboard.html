@@ -211,6 +211,19 @@
       }
     };
 
+    // Carry the email from the free opt-in (stored at /thanks → here, same origin)
+    // so the buyer never retypes it. Privacy-first: stays in sessionStorage, never the URL.
+    (function(){
+      try {
+        var carried = sessionStorage.getItem('gdf_email');
+        var field = document.getElementById('dashboard-email');
+        if (carried && field && !field.value) {
+          field.value = carried;
+          if (window.posthog) posthog.capture('checkout_email_prefilled', { tier: 'dashboard' });
+        }
+      } catch (e) {}
+    })();
+
     document.getElementById('dashboard-form').addEventListener('submit', function(e) {
       e.preventDefault();
       const btn = document.getElementById('dashboard-btn');
