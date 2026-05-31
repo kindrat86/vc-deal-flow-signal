@@ -108,7 +108,7 @@ export default function SignalDistribution({
               />
               <span className="text-gray-400">
                 {type}{" "}
-                <span className="text-gray-500">
+                <span className="text-gray-400">
                   ({count}, {Math.round((count / total) * 100)}%)
                 </span>
               </span>

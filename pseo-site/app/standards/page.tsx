@@ -379,8 +379,8 @@ export default function StandardsPage() {
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <nav className="text-xs text-gray-500 mb-6" aria-label="Breadcrumb">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <nav className="text-xs text-gray-400 mb-6" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300">
             Home
           </Link>
@@ -474,6 +474,167 @@ export default function StandardsPage() {
           );
         })}
 
+        <section className="mb-12" aria-labelledby="editorial-policies">
+          <h2
+            id="editorial-policies"
+            className="text-xl font-semibold text-white mb-4"
+          >
+            Editorial policies
+          </h2>
+          <p className="text-sm text-gray-300 mb-6 leading-relaxed" data-speakable>
+            The accountability policies a publisher is expected to state plainly.
+            These are the human-readable source for the{" "}
+            <code className="text-sky-300">publishingPrinciples</code>,{" "}
+            <code className="text-sky-300">noBylinesPolicy</code>,{" "}
+            <code className="text-sky-300">correctionsPolicy</code>,{" "}
+            <code className="text-sky-300">ownershipFundingInfo</code>,{" "}
+            <code className="text-sky-300">verificationFactCheckingPolicy</code>,{" "}
+            <code className="text-sky-300">unnamedSourcesPolicy</code>, and{" "}
+            <code className="text-sky-300">actionableFeedbackPolicy</code>{" "}
+            properties declared in this site&apos;s{" "}
+            <Link
+              href="/knowledge-graph.json"
+              className="text-sky-400 hover:text-sky-300"
+            >
+              Organization JSON-LD
+            </Link>
+            .
+          </p>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div
+              id="bylines"
+              className="scroll-mt-24 rounded-lg border border-slate-800 bg-slate-900/40 p-5"
+            >
+              <h3 className="text-base font-semibold text-white mb-2">
+                Bylines &amp; author identity
+              </h3>
+              <p className="text-sm text-gray-300 leading-relaxed">
+                Editorial work is published under the pseudonymous byline{" "}
+                <strong className="text-white">The Data Nerd</strong> by
+                deliberate policy, not omission. The methodology is the
+                protagonist; the operator stays anonymous on purpose. The
+                identity is nonetheless persistent and accountable: one{" "}
+                <a
+                  href="https://orcid.org/0009-0002-2222-4112"
+                  className="text-sky-400 hover:text-sky-300"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  ORCID iD
+                </a>
+                , one{" "}
+                <Link href="/about" className="text-sky-400 hover:text-sky-300">
+                  author profile
+                </Link>
+                , and a published, DOI-bearing{" "}
+                <Link
+                  href="/research"
+                  className="text-sky-400 hover:text-sky-300"
+                >
+                  methodology paper
+                </Link>{" "}
+                stand behind every claim. No claim depends on the author&apos;s
+                identity — each is traceable to the public dataset.
+              </p>
+            </div>
+
+            <div
+              id="ownership"
+              className="scroll-mt-24 rounded-lg border border-slate-800 bg-slate-900/40 p-5"
+            >
+              <h3 className="text-base font-semibold text-white mb-2">
+                Ownership &amp; funding
+              </h3>
+              <p className="text-sm text-gray-300 leading-relaxed">
+                Independently operated and self-funded by subscription and
+                dataset revenue — not affiliated with, owned by, or funded by
+                any incumbent VC platform, fund, or data vendor. Full ownership
+                and funding disclosure is published in the annual{" "}
+                <Link
+                  href="/transparency"
+                  className="text-sky-400 hover:text-sky-300"
+                >
+                  Transparency Report
+                </Link>
+                .
+              </p>
+            </div>
+
+            <div
+              id="ethics"
+              className="scroll-mt-24 rounded-lg border border-slate-800 bg-slate-900/40 p-5"
+            >
+              <h3 className="text-base font-semibold text-white mb-2">
+                Ethics &amp; sourcing
+              </h3>
+              <p
+                id="sourcing"
+                className="scroll-mt-24 text-sm text-gray-300 leading-relaxed"
+              >
+                Every signal is derived from <strong className="text-white">
+                  public
+                </strong>{" "}
+                GitHub activity. We use no private, scraped-behind-login, or
+                unnamed-source data, and we do not pay for tips. There are no
+                anonymous sources to protect because there are none — the inputs
+                are public and the transformation is documented in the{" "}
+                <Link
+                  href="/methodology"
+                  className="text-sky-400 hover:text-sky-300"
+                >
+                  methodology
+                </Link>
+                . Conflicts of interest (any position in a covered company) are
+                disclosed at point of coverage.
+              </p>
+            </div>
+
+            <div
+              id="feedback"
+              className="scroll-mt-24 rounded-lg border border-slate-800 bg-slate-900/40 p-5"
+            >
+              <h3 className="text-base font-semibold text-white mb-2">
+                Corrections &amp; feedback
+              </h3>
+              <p className="text-sm text-gray-300 leading-relaxed">
+                Spotted an error? Email{" "}
+                <a
+                  href="mailto:signal@gitdealflow.com"
+                  className="text-sky-400 hover:text-sky-300"
+                >
+                  signal@gitdealflow.com
+                </a>{" "}
+                or open a public{" "}
+                <a
+                  href="https://github.com/kindrat86/mcp-deal-flow-signal/issues"
+                  className="text-sky-400 hover:text-sky-300"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  GitHub issue
+                </a>
+                . Verification-driven fact-checking is documented in the{" "}
+                <Link
+                  href="/methodology"
+                  className="text-sky-400 hover:text-sky-300"
+                >
+                  methodology
+                </Link>
+                , and every accepted correction is logged publicly, with date
+                and rationale, in the{" "}
+                <Link
+                  href="/corrections"
+                  className="text-sky-400 hover:text-sky-300"
+                >
+                  corrections log
+                </Link>
+                .
+              </p>
+            </div>
+          </div>
+        </section>
+
         <section className="mb-12 rounded-lg border border-slate-800 bg-slate-900/40 p-6">
           <h2 className="text-lg font-semibold text-white mb-3">
             How to verify
@@ -543,7 +704,7 @@ export default function StandardsPage() {
           </ol>
         </section>
 
-        <p className="text-xs text-gray-500 text-center">
+        <p className="text-xs text-gray-400 text-center">
           See also:{" "}
           <Link href="/citation-guide" className="hover:text-gray-300">
             Citation guide
@@ -561,7 +722,7 @@ export default function StandardsPage() {
             Corrections policy &amp; log
           </Link>
         </p>
-      </main>
+      </div>
     </>
   );
 }

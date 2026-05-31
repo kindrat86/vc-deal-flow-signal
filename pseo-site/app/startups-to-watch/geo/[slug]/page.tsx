@@ -10,6 +10,8 @@ import {
 } from "@/lib/data";
 import StartupTable from "@/components/StartupTable";
 import CTABanner from "@/components/CTABanner";
+import { HreflangLinks } from "@/components/HreflangLinks";
+import { getHreflangLanguages } from "@/lib/hreflang";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -40,6 +42,7 @@ export async function generateMetadata({
       title,
       description,
       type: "article",
+      url: `/startups-to-watch/geo/${slug}`,
     },
     twitter: {
       card: "summary_large_image",
@@ -94,6 +97,19 @@ export default async function GeoSectorPage({ params }: PageProps) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": `https://signals.gitdealflow.com/startups-to-watch/geo/${slug}#webpage`,
+        url: `https://signals.gitdealflow.com/startups-to-watch/geo/${slug}`,
+        name: `${sector.name} Startups in ${geoName} to Watch, ${period.name}`,
+        description: `${sector.name} startups in ${geoName} ranked by engineering acceleration.`,
+        inLanguage: "en-US",
+        isAccessibleForFree: true,
+        speakable: {
+          "@type": "SpeakableSpecification",
+          cssSelector: ["[data-speakable]", "h1", "h2"],
+        },
+      },
       {
         "@type": "Article",
         headline: `${sector.name} Startups in ${geoName} to Watch, ${period.name}`,
@@ -150,6 +166,10 @@ export default async function GeoSectorPage({ params }: PageProps) {
 
   return (
     <>
+      <HreflangLinks
+        canonical={`https://signals.gitdealflow.com/startups-to-watch/geo/${slug}`}
+        languages={getHreflangLanguages(`/startups-to-watch/geo/${slug}`)}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -157,7 +177,7 @@ export default async function GeoSectorPage({ params }: PageProps) {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         {/* Breadcrumb */}
-        <nav className="mb-6 text-sm text-gray-500" aria-label="Breadcrumb">
+        <nav className="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300 transition-colors">
             All Sectors
           </Link>
@@ -246,7 +266,7 @@ export default async function GeoSectorPage({ params }: PageProps) {
                   <h3 className="text-gray-200 font-medium text-sm group-hover:text-sky-400 transition-colors mb-1">
                     {related.name}
                   </h3>
-                  <p className="text-gray-500 text-xs">
+                  <p className="text-gray-400 text-xs">
                     {related.startupCount} startups tracked &rarr;
                   </p>
                 </Link>

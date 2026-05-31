@@ -2,7 +2,7 @@
  * Data backing the /for-{framework} programmatic pages.
  *
  * Distinct from /a2a/{framework}: those pages are wire-it-up technical
- * how-tos. /for-{framework} pages are positioned for the developer-investor
+ * how-tos. /for-{framework} pages are positioned for the builder/investor
  * crossover: "you build with X, here's why GitDealFlow signals make your
  * agent worth running." Long-tail captures queries like
  * "vc signals for langchain", "alt-data for crewai agents",
@@ -490,7 +490,7 @@ for entry in archival:
     shortName: "Mastra",
     hook: "Type-safe VC signal agents shipped alongside your Next.js app.",
     narrative: [
-      "Mastra is the TypeScript agent framework you reach for when you already ship a Next.js or Hono app. It speaks the same Zod schemas, the same Vercel AI SDK primitives, the same edge-or-Node deployment story. For developer-investors, that means deal-flow features ship inside the same codebase as your portfolio dashboard, with the same type safety and the same deploy pipeline.",
+      "Mastra is the TypeScript agent framework you reach for when you already ship a Next.js or Hono app. It speaks the same Zod schemas, the same Vercel AI SDK primitives, the same edge-or-Node deployment story. That means deal-flow features can ship inside the same codebase as your portfolio dashboard, with the same type safety and the same deploy pipeline.",
       "Mastra's MCP support is first-class — drop the @gitdealflow/mcp-signal package into MCPClient and every Mastra agent in your project gets all five skills. The A2A fallback is pure fetch, edge-safe, no child processes — useful when you want a single Server Action to surface 'is this startup tracked?' for a logged-in user without spinning up a stdio server.",
     ],
     outcomes: [
@@ -646,7 +646,7 @@ export async function POST(req: Request) {
     shortName: "Vercel AI SDK",
     hook: "Ship VC signal features inside your Next.js app — Server Components, Route Handlers, Server Actions.",
     narrative: [
-      "The Vercel AI SDK is the default for AI features inside web apps. If you ship Next.js — and most developer-investors building portfolio tools do — the AI SDK is the path of least resistance from idea to production. generateText, streamText, and tool() compose with React Server Components, Route Handlers, Server Actions, and the AI Gateway out of the box.",
+      "The Vercel AI SDK is the default for AI features inside web apps. If you ship Next.js, the AI SDK is the path of least resistance from idea to production. generateText, streamText, and tool() compose with React Server Components, Route Handlers, Server Actions, and the AI Gateway out of the box.",
       "Drop GitDealFlow in as a single tool() with a Zod-validated input schema and your portfolio dashboard becomes deal-flow-aware. The MCP integration via experimental_createMCPClient gives you the same five skills with zero argument typing — useful for prototypes — but for production-shaped apps, the explicit tool() path is more debuggable and friendlier to TypeScript inference.",
     ],
     outcomes: [

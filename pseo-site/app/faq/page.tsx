@@ -14,6 +14,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/faq",
   },
+  openGraph: {
+    // F5 — absolute og:url (Next 16 drops relative og:url even with metadataBase).
+    url: "https://signals.gitdealflow.com/faq",
+    type: "website",
+  },
 };
 
 interface FAQEntry {
@@ -91,9 +96,23 @@ export default function FAQPage() {
     "@graph": [
       {
         "@type": "FAQPage",
+        "@id": "https://signals.gitdealflow.com/faq#faqpage",
+        url: "https://signals.gitdealflow.com/faq",
         name: "VC Deal Flow Signal — Frequently Asked Questions",
         description:
           "Answers to common questions about GitHub engineering signals, startup deal sourcing, and how investors use engineering acceleration data.",
+        inLanguage: "en-US",
+        isPartOf: { "@id": "https://signals.gitdealflow.com/#website" },
+        speakable: {
+          "@type": "SpeakableSpecification",
+          cssSelector: [
+            "[data-speakable]",
+            "h1",
+            "h2",
+            ".speakable",
+            "[data-agent-summary]",
+          ],
+        },
         mainEntity: allFaqs.map((faq) => ({
           "@type": "Question",
           name: faq.question,
@@ -135,7 +154,7 @@ export default function FAQPage() {
       />
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <nav className="mb-6 text-sm text-gray-500" aria-label="Breadcrumb">
+        <nav className="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300 transition-colors">
             All Sectors
           </Link>
@@ -146,15 +165,36 @@ export default function FAQPage() {
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-4 leading-tight">
           Frequently Asked Questions
         </h1>
-        <p className="text-gray-400 text-base leading-relaxed mb-4">
+        <p className="text-gray-400 text-base leading-relaxed mb-4" data-speakable>
           Answers to common questions about GitHub engineering signals, startup
           deal sourcing, commit velocity, and how investors use VC Deal Flow
           Signal. Currently tracking {activeSectors.length} sectors with data
-          refreshed weekly.
+          refreshed weekly. If you already know your question is proof, comparison,
+          or buyer-side fit, start with the sharper routes below.
         </p>
 
+        <section className="mb-10 rounded-2xl border border-sky-700/30 bg-sky-950/20 p-6 sm:p-8">
+          <p className="text-sky-300 text-xs font-semibold uppercase tracking-[0.14em] mb-2">
+            Start with the highest-intent routes
+          </p>
+          <p className="text-gray-300 text-sm leading-relaxed mb-4">
+            Use the FAQ when you want quick answers. But if your real question is proof, timing, or what to buy first, start with the sharper pages first.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/research" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-sky-600 text-white text-sm font-semibold hover:bg-sky-500 transition-colors">
+              Read the research panel →
+            </Link>
+            <Link href="/compare/crunchbase-alternative-for-angel-investors" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              Compare timing vs verification →
+            </Link>
+            <Link href="/buyers-guide" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              Read the buyer's guide →
+            </Link>
+          </div>
+        </section>
+
         {/* Quick stats for AI extraction */}
-        <div className="mb-10 flex flex-wrap gap-4 text-xs text-gray-500">
+        <div className="mb-10 flex flex-wrap gap-4 text-xs text-gray-400">
           <span>{activeSectors.length} sectors tracked</span>
           <span className="text-slate-700">|</span>
           <span>{allFaqs.length} questions answered</span>
@@ -180,7 +220,7 @@ export default function FAQPage() {
                   </span>
                 </summary>
                 <div className="px-5 pb-5">
-                  <p className="text-gray-400 text-sm leading-relaxed">
+                  <p className="text-gray-400 text-sm leading-relaxed" data-speakable>
                     {faq.answer}
                   </p>
                   <Link
@@ -213,7 +253,7 @@ export default function FAQPage() {
                   </span>
                 </summary>
                 <div className="px-5 pb-5">
-                  <p className="text-gray-400 text-sm leading-relaxed">
+                  <p className="text-gray-400 text-sm leading-relaxed" data-speakable>
                     {faq.answer}
                   </p>
                   <Link

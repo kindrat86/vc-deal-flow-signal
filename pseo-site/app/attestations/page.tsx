@@ -279,8 +279,8 @@ export default function AttestationsPage() {
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <nav className="text-xs text-gray-500 mb-6" aria-label="Breadcrumb">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <nav className="text-xs text-gray-400 mb-6" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300">
             Home
           </Link>
@@ -333,7 +333,7 @@ export default function AttestationsPage() {
                           >
                             <span dangerouslySetInnerHTML={{ __html: a.registry }} />
                           </a>
-                          <p className="text-xs text-gray-500 mt-1 leading-relaxed">
+                          <p className="text-xs text-gray-400 mt-1 leading-relaxed">
                             {a.verifiable}
                           </p>
                         </td>
@@ -343,7 +343,7 @@ export default function AttestationsPage() {
                         <td className="px-4 py-3 text-gray-300 w-1/4">
                           <span dangerouslySetInnerHTML={{ __html: a.status }} />
                         </td>
-                        <td className="px-4 py-3 text-xs font-mono text-gray-500">
+                        <td className="px-4 py-3 text-xs font-mono text-gray-400">
                           <time dateTime={a.attestedOn}>{a.attestedOn}</time>
                         </td>
                       </tr>
@@ -355,7 +355,7 @@ export default function AttestationsPage() {
           );
         })}
 
-        <p className="text-xs text-gray-500 text-center mt-10">
+        <p className="text-xs text-gray-400 text-center mt-10">
           See also:{" "}
           <Link href="/standards" className="hover:text-gray-300">
             Standards
@@ -399,7 +399,7 @@ export default function AttestationsPage() {
             </Link>
           </div>
         </div>
-      </main>
+      </div>
     </>
   );
 }

@@ -9,12 +9,12 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Which Tier Fits You? — 90-Second Avatar Quiz",
   description:
-    "Four questions, ninety seconds, and a routed recommendation. Tells you whether the Free Acceleration Watch, the €7 First Look Pass, or the €9.97/mo Dashboard is the right starting point for the way you write checks.",
+    "Five questions, ninety seconds, and a routed recommendation. Tells you whether you're a Solo Angel, Fund GP, or Family Office Analyst — and whether the Free Acceleration Watch, the €7 First Look Pass, the €9.97/mo Dashboard, the €97/mo Insider Circle, or the €1,997 Sector Sweep is the right starting point.",
   alternates: { canonical: "/quiz" },
   openGraph: {
     title: "Which VC Deal Flow Signal tier fits you?",
     description:
-      "4 questions, 90 seconds, routed recommendation. Free / €7 / €9.97 / €97.",
+      "5 questions, 90 seconds, routed archetype + tier. Solo Angel / Fund GP / Family Office.",
     url: "https://signals.gitdealflow.com/quiz",
     type: "article",
   },
@@ -68,21 +68,22 @@ export default function QuizPage() {
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
         <header className="space-y-3">
           <p className="text-sky-400 text-xs font-medium uppercase tracking-wider">
-            90 seconds · 4 questions · No email required
+            90 seconds · 5 questions · No email required to see the result
           </p>
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 leading-[1.1] tracking-tight">
-            Which tier actually fits the way you write checks?
+            Which tier and which archetype actually fit you?
           </h1>
           <p className="text-gray-300 text-base leading-relaxed">
-            Most people overpay for tools they barely use, or skip the one
-            that would have paid for itself the first month. Four questions
-            to find out which side you&rsquo;re on.
+            Most people overpay for tools they barely use, or skip the one that
+            would have paid for itself the first month. Four questions to size
+            the buying motion, one to name the archetype &mdash; Solo Angel,
+            Fund GP, or Family Office Analyst.
           </p>
         </header>
 
         <QuizForm />
 
-        <p className="text-gray-500 text-xs leading-relaxed border-t border-slate-800 pt-4">
+        <p className="text-gray-400 text-xs leading-relaxed border-t border-slate-800 pt-4">
           The answers stay in your browser — nothing is sent anywhere unless
           you click through to a checkout. No analytics events fire on the
           question screens.

@@ -1,0 +1,63 @@
+name: Speakable Guard
+
+# AEO regression guard — confirmed in the 2026-05-29 SEO/GEO/AEO audit.
+#
+# Every page's SpeakableSpecification.cssSelector must point at an element
+# actually rendered by the template (or a component it composes). If a
+# className/aria-label/data-* selector is renamed in the JSX but the matching
+# cssSelector is not updated, the JSON-LD still validates — it silently
+# degrades to matching only the generic <h1>, collapsing the speakable answer
+# to the bare page title. `scripts/verify-speakable.ts` resolves every
+# selector against the rendered-token corpus and fails on any spec whose
+# specific selectors all dangle.
+#
+# The same script runs in pseo-site/package.json `postbuild`, so a regression
+# also fails the Vercel deploy. This workflow is the *earlier* gate — it
+# catches the regression at PR time, before the deploy queue.
+
+on:
+  pull_request:
+    paths:
+      - "pseo-site/app/**"
+      - "pseo-site/components/**"
+      - "pseo-site/scripts/verify-speakable.ts"
+      - ".github/workflows/speakable-guard.yml"
+  push:
+    branches: [main]
+    paths:
+      - "pseo-site/app/**"
+      - "pseo-site/components/**"
+      - "pseo-site/scripts/verify-speakable.ts"
+      - ".github/workflows/speakable-guard.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: speakable-guard-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    defaults:
+      run:
+        working-directory: pseo-site
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: "npm"
+          cache-dependency-path: pseo-site/package-lock.json
+
+      - name: Install deps
+        run: npm ci --no-audit --no-fund
+
+      - name: Verify speakable selectors resolve
+        run: npm run verify:speakable

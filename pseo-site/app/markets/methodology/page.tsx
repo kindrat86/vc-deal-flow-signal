@@ -67,7 +67,7 @@ export default function MarketsMethodologyPage() {
       />
       <AgentMirrorLinks path="/markets/methodology" qaCategory="markets" />
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 prose-invert">
-        <nav className="text-xs text-gray-500 mb-6">
+        <nav className="text-xs text-gray-400 mb-6">
           <Link href="/" className="hover:text-sky-400">
             Home
           </Link>{" "}

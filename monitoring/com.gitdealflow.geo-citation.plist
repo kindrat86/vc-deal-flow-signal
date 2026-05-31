@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Runs from a STABLE runner dir, not the git checkout, so the weekly job is
+  independent of whatever branch the working tree happens to be on (worktrees
+  get auto-cleaned; the main checkout may be parked on a feature branch).
+  Install: see GEO-CITATION-README.md → "Install the weekly job".
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.gitdealflow.geo-citation</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/usr/bin/python3</string>
+        <string>/Users/sipi/Library/Application Support/gitdealflow-geo/geo-citation-probe.py</string>
+        <string>--samples</string>
+        <string>3</string>
+    </array>
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Weekday</key>
+        <integer>1</integer>
+        <key>Hour</key>
+        <integer>10</integer>
+        <key>Minute</key>
+        <integer>0</integer>
+    </dict>
+    <key>StandardOutPath</key>
+    <string>/Users/sipi/Library/Application Support/gitdealflow-geo/geo-citation.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/sipi/Library/Application Support/gitdealflow-geo/geo-citation.err</string>
+</dict>
+</plist>

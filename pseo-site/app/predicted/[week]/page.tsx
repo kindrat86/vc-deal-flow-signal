@@ -9,6 +9,7 @@ import {
   getPredictionWeek,
   fmtLongDate,
   isPredictionOutcomeHit,
+  buildClaimReviewItems,
   type PredictionOutcome,
 } from "@/lib/predictions";
 
@@ -65,7 +66,7 @@ const OUTCOME_TONE: Record<NonNullable<PredictionOutcome>, string> = {
   other_milestone: "text-amber-300 border-amber-500/40 bg-amber-500/10",
   no_event: "text-gray-400 border-slate-700 bg-slate-800",
   shutdown: "text-rose-400 border-rose-500/40 bg-rose-500/10",
-  excluded: "text-gray-500 border-slate-700 bg-slate-900",
+  excluded: "text-gray-400 border-slate-700 bg-slate-900",
 };
 
 export default async function PredictedWeekPage({ params }: RouteContext) {
@@ -81,45 +82,19 @@ export default async function PredictedWeekPage({ params }: RouteContext) {
   ).length;
   const pending = week.picks.filter((p) => p.outcome === null).length;
 
-  // ClaimReview entries — one per graded pick. Schema.org/ClaimReview is the
-  // closest standard type to a graded prediction: itemReviewed = the claim
-  // ("X will fundraise/acquire"), reviewRating = whether it resolved by the
-  // grading window. Pending picks emit Claim only (no Review yet).
-  const claimReviewItems = week.picks
-    .filter((p) => p.outcome !== null && p.outcome !== "excluded")
-    .map((p) => {
-      const isHit = isPredictionOutcomeHit(p.outcome);
-      return {
-        "@type": "ClaimReview",
-        url: `https://signals.gitdealflow.com/predicted/${week.slug}#pick-${p.rank}`,
-        datePublished: week.publishedAt,
-        author: {
-          "@type": "Organization",
-          name: "VC Deal Flow Signal",
-          url: "https://gitdealflow.com",
-        },
-        claimReviewed: `${p.displayName} engineering acceleration crossed signal threshold (${p.commitVelocityChange}) — likely to fundraise or be acquired within ${week.windowDays} days`,
-        itemReviewed: {
-          "@type": "Claim",
-          author: {
-            "@type": "Organization",
-            name: "VC Deal Flow Signal",
-          },
-          datePublished: week.publishedAt,
-          appearance: {
-            "@type": "OpinionNewsArticle",
-            url: `https://signals.gitdealflow.com/predicted/${week.slug}`,
-          },
-        },
-        reviewRating: {
-          "@type": "Rating",
-          ratingValue: isHit ? "5" : "1",
-          bestRating: "5",
-          worstRating: "1",
-          alternateName: isHit ? "True" : "Not validated",
-        },
-      };
-    });
+  // F4 — top-level ClaimReview blocks for every published pick
+  // (excluding outcome === "excluded" only). Uses Google's controlled
+  // fact-check vocabulary so resolved picks are rich-result eligible:
+  //   raised|acquired|ipo  → True       (5)
+  //   other_milestone      → Mixture    (3)
+  //   no_event|shutdown    → False      (1)
+  //   pending (null)       → Unproven   (0)
+  // ClaimReview blocks are spread directly into @graph — never nested under
+  // Article.review (durable rule: feedback_review_jsonld_must_be_top_level.md).
+  const claimReviewItems = buildClaimReviewItems(week, {
+    skipExcluded: true,
+    includePending: true,
+  });
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -207,7 +182,7 @@ export default async function PredictedWeekPage({ params }: RouteContext) {
       />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <nav className="mb-6 text-sm text-gray-500" aria-label="Breadcrumb">
+        <nav className="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300 transition-colors">
             All Sectors
           </Link>
@@ -330,7 +305,7 @@ export default async function PredictedWeekPage({ params }: RouteContext) {
                     ) : null}
                   </div>
                   {p.outcomeNotes ? (
-                    <p className="text-gray-500 text-xs italic mt-3">
+                    <p className="text-gray-400 text-xs italic mt-3">
                       Outcome note: {p.outcomeNotes}
                       {p.outcomeAt
                         ? ` (recorded ${fmtLongDate(p.outcomeAt)})`

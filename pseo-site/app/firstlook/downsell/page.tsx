@@ -66,6 +66,26 @@ export default async function FirstLookDownsellPage({ searchParams }: Props) {
         </p>
       </header>
 
+      <section className="rounded-xl border border-teal-500/30 bg-teal-500/5 p-5 sm:p-6 space-y-3">
+        <p className="text-teal-300 text-xs font-semibold uppercase tracking-wider">
+          If this still feels too early
+        </p>
+        <p className="text-gray-300 text-sm leading-relaxed">
+          You do not need to force the higher-touch step today. If you only need recurring visibility, Dashboard is the cleaner next move. If you still need more trust before any subscription, use the buyer's guide or the free digest instead.
+        </p>
+        <div className="flex flex-wrap gap-3 text-sm">
+          <Link href="/answers/what-do-i-actually-get-from-dashboard-each-week" className="text-teal-200 hover:text-teal-100 underline underline-offset-2">
+            See what Dashboard gives you
+          </Link>
+          <Link href="/buyers-guide" className="text-teal-200 hover:text-teal-100 underline underline-offset-2">
+            Read the buyer's guide
+          </Link>
+          <a href="https://gitdealflow.com/#signup" className="text-teal-200 hover:text-teal-100 underline underline-offset-2">
+            Get the free digest first
+          </a>
+        </div>
+      </section>
+
       {/* OTO #2 — Insider monthly with first-month discount.
           Subscription path: subscriptions.create with default_payment_method
           on the saved card and a one-shot coupon for the first invoice. */}
@@ -123,9 +143,9 @@ export default async function FirstLookDownsellPage({ searchParams }: Props) {
           sessionId={session.id}
           oto="insider_oto2"
           acceptHref="/firstlook/done"
-          declineHref="/firstlook/done"
+          declineHref="/firstlook/last-chance"
           acceptLabel={`Yes — start Insider for ${fmt(firstMonthAmount)} this month`}
-          declineLabel="No thanks, just deliver my First Look"
+          declineLabel="No thanks, see one final option"
           acceptToneClass="bg-teal-500 hover:bg-teal-400 text-slate-950"
         />
 

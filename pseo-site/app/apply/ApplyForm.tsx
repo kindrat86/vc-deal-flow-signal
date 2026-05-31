@@ -116,7 +116,7 @@ export default function ApplyForm() {
                 <span className="font-mono text-[11px] sm:text-xs font-bold text-emerald-300 uppercase tracking-wider">
                   {s.when}
                 </span>
-                <span className="text-[10px] uppercase tracking-wider font-semibold text-gray-500">
+                <span className="text-[10px] uppercase tracking-wider font-semibold text-gray-400">
                   {s.who}
                 </span>
               </div>
@@ -132,10 +132,10 @@ export default function ApplyForm() {
           <p className="text-gray-400 text-sm leading-relaxed">
             If you haven&rsquo;t already, the{" "}
             <a
-              href="/perfect-webinar"
+              href="/walkthrough"
               className="text-sky-400 hover:text-sky-300 underline decoration-dotted"
             >
-              12-minute Perfect Webinar
+              12-minute walkthrough
             </a>{" "}
             is the document I assume every Sharp applicant has read before
             the first quarterly call. It saves us the first ten minutes of
@@ -143,7 +143,7 @@ export default function ApplyForm() {
           </p>
         </div>
 
-        <p className="text-gray-500 text-xs leading-relaxed border-t border-emerald-900/40 pt-3">
+        <p className="text-gray-400 text-xs leading-relaxed border-t border-emerald-900/40 pt-3">
           If you don&rsquo;t see a reply by the end of the second business
           day, check spam, then reply to your most recent message from{" "}
           <code className="text-emerald-200 bg-emerald-900/40 px-1.5 py-0.5 rounded text-xs">
@@ -303,7 +303,7 @@ export default function ApplyForm() {
         </p>
       )}
 
-      <p className="text-gray-500 text-xs leading-relaxed">
+      <p className="text-gray-400 text-xs leading-relaxed">
         By submitting you agree the founder may reply to your email with a
         Stripe invoice or a decline. Your data is not added to any list,
         sold, or shared — it lives only in the application email until the

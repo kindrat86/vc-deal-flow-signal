@@ -4,12 +4,13 @@ import { BOOK } from "@/lib/book";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import TrialClose from "@/components/TrialClose";
 
 export const dynamic = "force-static";
 
 const STRIPE_BOOK_LINK =
   process.env.NEXT_PUBLIC_STRIPE_BOOK_LINK ||
-  "https://buy.stripe.com/dRm14m0WvbNCa6q4O00x208";
+  "https://buy.stripe.com/cNi5kCax52d29sy1by0x208";
 
 const PAGE_URL = "https://signals.gitdealflow.com/book";
 
@@ -93,7 +94,7 @@ const FAQS = [
   },
   {
     q: "What do I get with the €0.99 Kindle copy?",
-    a: "Identical content to the free downloads, but in the Amazon Kindle format with native syncing across Kindle apps and devices. The €0.99 also unlocks a sequence of three additional emails: a worked walkthrough of the latest Series A announcement that the methodology would have caught, a private link to the bonus interview with two early-stage developer-investors who use the workflow daily, and a direct line to me by email for any methodology questions.",
+    a: "Identical content to the free downloads, but in the Amazon Kindle format with native syncing across Kindle apps and devices. The €0.99 also unlocks a sequence of three additional emails: a worked walkthrough of the latest Series A announcement that the methodology would have caught, a private link to the bonus interview with two early readers who use the workflow daily, and a direct line to me by email for any methodology questions.",
   },
   {
     q: "How long does it take to read?",
@@ -156,6 +157,7 @@ export default function BookPage() {
             availability: "https://schema.org/InStock",
             price: "0.99",
             priceCurrency: "EUR",
+            priceValidUntil: "2026-12-31",
             url: STRIPE_BOOK_LINK,
             name: "Premium Kindle edition",
           },
@@ -246,21 +248,41 @@ export default function BookPage() {
               Read free online
             </Link>
           </div>
-          <p className="text-xs text-gray-500 pt-2">
+          <p className="text-xs text-gray-400 pt-2">
             ISBN {BOOK.isbn} · {BOOK.edition} · CC-BY-4.0 · Methodology indexed at{" "}
             <a
               href="https://ssrn.com/abstract=6606558"
-              className="text-emerald-400 hover:text-emerald-300"
+              className="text-emerald-400 hover:text-emerald-300 underline underline-offset-2"
             >
               SSRN abstract 6606558
             </a>
           </p>
         </header>
 
+        <section className="rounded-2xl border border-sky-700/30 bg-sky-950/20 p-6 sm:p-8 space-y-3">
+          <p className="text-sky-300 text-xs font-semibold uppercase tracking-[0.14em] mb-2">
+            Start with the highest-intent routes
+          </p>
+          <p className="text-gray-300 text-sm leading-relaxed mb-4">
+            Use the book when you want the full argument and the seven-signal framework. But if your real question is proof, timing, or what to buy first, start with the sharper pages first.
+          </p>
+          <div className="flex flex-wrap gap-3 justify-center">
+            <Link href="/research" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-sky-600 text-white text-sm font-semibold hover:bg-sky-500 transition-colors">
+              Read the research panel →
+            </Link>
+            <Link href="/compare/crunchbase-alternative-for-angel-investors" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              Compare timing vs verification →
+            </Link>
+            <Link href="/buyers-guide" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              Read the buyer's guide →
+            </Link>
+          </div>
+        </section>
+
         {/* The Big Domino — Brunson Perfect Webinar single-belief frame */}
         <section className="bg-gradient-to-br from-slate-900/80 via-slate-950 to-slate-950 border border-sky-900/40 rounded-xl p-6 sm:p-8 space-y-4">
           <p className="text-sky-300 text-xs font-semibold uppercase tracking-wider">
-            The Big Domino
+            The core claim
           </p>
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug">
             If reading public GitHub data can predict Series A rounds three to
@@ -275,6 +297,12 @@ export default function BookPage() {
             against the live leaderboard. Every claim falsifiable, every
             threshold a number, every example a public URL.
           </p>
+          <TrialClose tone="sky">
+            One claim, falsifiable, free to download. If the methodology
+            holds when you replicate it on a fresh laptop in 90 minutes —
+            does the rest of the deal-flow market reduce to a stack of
+            lagging indicators?
+          </TrialClose>
         </section>
 
         {/* What you'll learn */}
@@ -319,6 +347,11 @@ export default function BookPage() {
               </li>
             ))}
           </ul>
+          <TrialClose tone="amber">
+            104 pages, free PDF, €0.99 Kindle. If the price isn&rsquo;t the
+            question and the time-to-read is — would you rather start at
+            chapter one or skim the table of contents below first?
+          </TrialClose>
         </section>
 
         {/* Table of contents */}
@@ -341,13 +374,13 @@ export default function BookPage() {
                   </Link>
                   <p className="text-gray-400 text-sm mt-0.5">{c.subtitle}</p>
                 </div>
-                <span className="text-gray-500 text-xs flex-shrink-0">
+                <span className="text-gray-400 text-xs flex-shrink-0">
                   {c.estimatedReadMinutes} min
                 </span>
               </li>
             ))}
           </ol>
-          <p className="text-center text-sm text-gray-500 pt-2">
+          <p className="text-center text-sm text-gray-400 pt-2">
             <Link href="/book/read/introduction" className="text-sky-400 hover:text-sky-300">
               Start reading from the introduction →
             </Link>
@@ -382,7 +415,7 @@ export default function BookPage() {
               required
               autoComplete="email"
               placeholder="you@yourfund.vc"
-              className="flex-1 rounded-lg bg-slate-950 border border-slate-700 text-gray-100 placeholder:text-gray-500 px-4 py-3 focus:border-sky-500 focus:ring-1 focus:ring-sky-500 outline-none"
+              className="flex-1 rounded-lg bg-slate-950 border border-slate-700 text-gray-100 placeholder:text-gray-400 px-4 py-3 focus:border-sky-500 focus:ring-1 focus:ring-sky-500 outline-none"
             />
             <input type="hidden" name="utm_source" value="book-page" />
             <button
@@ -392,18 +425,18 @@ export default function BookPage() {
               Email me the book
             </button>
           </form>
-          <p className="text-xs text-gray-500">
+          <p className="text-xs text-gray-400">
             Direct download (no email):{" "}
-            <a className="text-sky-400 hover:text-sky-300" href="/downloads/seven-signals.pdf">
+            <a className="text-sky-400 hover:text-sky-300 underline underline-offset-2" href="/downloads/seven-signals.pdf">
               PDF
             </a>{" "}·{" "}
-            <a className="text-sky-400 hover:text-sky-300" href="/downloads/seven-signals.epub">
+            <a className="text-sky-400 hover:text-sky-300 underline underline-offset-2" href="/downloads/seven-signals.epub">
               EPUB
             </a>{" "}·{" "}
-            <a className="text-sky-400 hover:text-sky-300" href="/downloads/seven-signals.md">
+            <a className="text-sky-400 hover:text-sky-300 underline underline-offset-2" href="/downloads/seven-signals.md">
               Markdown
             </a>{" "}·{" "}
-            <a className="text-sky-400 hover:text-sky-300" href="/downloads/seven-signals.txt">
+            <a className="text-sky-400 hover:text-sky-300 underline underline-offset-2" href="/downloads/seven-signals.txt">
               Plain text
             </a>
           </p>
@@ -428,7 +461,7 @@ export default function BookPage() {
             </li>
             <li className="flex gap-3">
               <span className="text-amber-300 flex-shrink-0">✓</span>
-              <span>Bonus email 2: a private link to the unedited interview transcripts with two early-stage developer-investors who use the workflow daily</span>
+              <span>Bonus email 2: a private link to the unedited interview transcripts with two early readers who use the workflow daily</span>
             </li>
             <li className="flex gap-3">
               <span className="text-amber-300 flex-shrink-0">✓</span>
@@ -441,7 +474,7 @@ export default function BookPage() {
           >
             Get the Kindle copy — €0.99 one-time
           </a>
-          <p className="text-xs text-gray-500">
+          <p className="text-xs text-gray-400">
             Stripe checkout · receipt in your inbox · the bonus emails arrive
             over the following week.
           </p>
@@ -452,7 +485,7 @@ export default function BookPage() {
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 tracking-tight">
             Early reads
           </h2>
-          <p className="text-xs text-gray-500 italic">
+          <p className="text-xs text-gray-400 italic">
             Quoted with permission, names initialised at request.
           </p>
           <div className="grid sm:grid-cols-3 gap-4">
@@ -464,7 +497,7 @@ export default function BookPage() {
                 <p className="text-gray-200 text-sm leading-relaxed italic">
                   &ldquo;{r.text}&rdquo;
                 </p>
-                <p className="text-gray-500 text-xs">— {r.by}</p>
+                <p className="text-gray-400 text-xs">— {r.by}</p>
               </blockquote>
             ))}
           </div>
@@ -522,19 +555,19 @@ export default function BookPage() {
               Read online
             </Link>
           </div>
-          <p className="text-sm text-gray-500 max-w-xl mx-auto">
+          <p className="text-sm text-gray-400 max-w-xl mx-auto">
             Or skip the book and start with the free Monday-morning{" "}
-            <Link href="/" className="text-sky-400 hover:text-sky-300">
+            <Link href="/" className="text-sky-400 hover:text-sky-300 underline underline-offset-2">
               Signal Digest
             </Link>{" "}
             · the €9.97/mo{" "}
-            <Link href="/pricing" className="text-sky-400 hover:text-sky-300">
+            <Link href="/pricing" className="text-sky-400 hover:text-sky-300 underline underline-offset-2">
               Dashboard
             </Link>{" "}
             · or the SSRN-indexed{" "}
             <a
               href="https://ssrn.com/abstract=6606558"
-              className="text-emerald-400 hover:text-emerald-300"
+              className="text-emerald-400 hover:text-emerald-300 underline underline-offset-2"
             >
               methodology paper
             </a>

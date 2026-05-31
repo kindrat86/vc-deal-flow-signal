@@ -7,6 +7,10 @@ import Footer from "@/components/Footer";
 import LaunchBanner from "@/components/LaunchBanner";
 import PixelManager from "@/components/PixelManager";
 import { RootIdentitySchema } from "@/components/RootIdentitySchema";
+import WebVitalsReporter from "@/components/WebVitalsReporter";
+import GuidedConcierge from "@/components/GuidedConcierge";
+import CookieNotice from "@/components/CookieNotice";
+import { NotInEmbed } from "@/components/NotInEmbed";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
@@ -17,7 +21,7 @@ export const metadata: Metadata = {
     template: "%s | VC Deal Flow Signal",
   },
   description:
-    "Free weekly GitHub-momentum signal across 116+ venture-backed startups, ranked by 14-day commit velocity. SSRN-indexed methodology. Built for developer-investors, scout angels, and emerging fund managers.",
+    "Public engineering signals for earlier startup timing. Weekly rankings, proof pages, API access, and a reproducible methodology.",
   keywords: [
     "GitHub commit velocity",
     "venture capital alternative data",
@@ -122,6 +126,15 @@ export const metadata: Metadata = {
     "theme-color": "#0f172a",
     "color-scheme": "dark light",
     "referrer": "strict-origin-when-cross-origin",
+    // Per-page AI policy + content-license meta. Some LLM crawlers (Anthropic,
+    // OpenAI, Perplexity) read robot-meta tags AND a parallel "ai-policy" /
+    // "ai-content-license" pair. Both are emitted on every page so the
+    // attribution+license terms are unambiguous regardless of entry point.
+    "ai-policy": "https://signals.gitdealflow.com/.well-known/ai-policy.json",
+    "ai-content-license": "https://creativecommons.org/licenses/by/4.0/",
+    "ai-content-attribution":
+      "VC Deal Flow Signal (GitDealFlow) — https://signals.gitdealflow.com",
+    "ai-content-attribution-url": "https://signals.gitdealflow.com/about",
   },
 };
 
@@ -150,7 +163,11 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://api.github.com" />
         <link rel="dns-prefetch" href="https://avatars.githubusercontent.com" />
         <link rel="dns-prefetch" href="https://gitdealflow-pb.fly.dev" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* No preconnect to fonts.gstatic.com: next/font/google self-hosts the
+            Inter woff2 at build time under /_next/static/media (preloaded, same
+            origin). A gstatic preconnect would open an unused DNS+TLS handshake
+            and trip Lighthouse's "unused preconnect" diagnostic — there is no
+            runtime request to Google Fonts to warm. */}
 
         {/* Agent-discoverability hints — alternate machine-readable mirrors of
             the human site. Next 16's metadata.alternates.types only emits a
@@ -279,10 +296,67 @@ export default function RootLayout({
           href="https://signals.gitdealflow.com/.well-known/compliance.json"
           title="Compliance descriptor — GDPR / CCPA / SOC2 posture, subprocessors, DPA contact"
         />
+        {/* Content licensing for AI training, RAG, citation, fine-tuning.
+            `rel=license` is RFC 8288 standard; the JSON-typed alternates
+            add machine-readable use-mode permissions and exclusions.
+            Crawlers that respect TDM Reservation Protocol resolve the
+            JSON form via /.well-known/tdm-reservation.json's tdm-policy
+            field. F39 audit closed gap "no machine-readable AI license
+            file" / "no TDM Reservation Protocol" / "no GPC advertisement". */}
+        <link
+          rel="license"
+          href="https://creativecommons.org/licenses/by/4.0/"
+          title="Creative Commons Attribution 4.0 International"
+        />
+        <link
+          rel="describedby"
+          type="application/json"
+          href="https://signals.gitdealflow.com/.well-known/ai-content-license.json"
+          title="AI content license — training, inference, citation, fine-tune permissions"
+        />
+        <link
+          rel="describedby"
+          type="application/json"
+          href="https://signals.gitdealflow.com/.well-known/tdm-reservation.json"
+          title="W3C TDM Reservation Protocol — machine-readable opt-in for text-and-data-mining"
+        />
+        <link
+          rel="describedby"
+          type="application/json"
+          href="https://signals.gitdealflow.com/.well-known/gpc.json"
+          title="Global Privacy Control — publisher honors Sec-GPC: 1"
+        />
         <link
           rel="author"
           type="text/plain"
           href="https://signals.gitdealflow.com/humans.txt"
+        />
+        {/* F38 (2026-05-08) — explicit content license declaration. Surfaces
+            in Google Search Central reports as a structured trust signal and
+            is consumed by AI-content-licensing crawlers (CCC, Anthropic-Web,
+            etc.) without requiring JSON-LD parsing. */}
+        <link
+          rel="license"
+          href="https://creativecommons.org/licenses/by/4.0/"
+          title="CC BY 4.0 — site content, datasets, and JSON-LD output"
+        />
+        <link
+          rel="alternate"
+          type="text/html"
+          href="https://signals.gitdealflow.com/trust"
+          title="Trust Center — privacy, security, compliance hub"
+        />
+        <link
+          rel="alternate"
+          type="text/html"
+          href="https://signals.gitdealflow.com/privacy"
+          title="Privacy Policy"
+        />
+        <link
+          rel="alternate"
+          type="text/html"
+          href="https://signals.gitdealflow.com/terms"
+          title="Terms of Service"
         />
         {/* IndieWeb / IndieAuth verification. Each rel=me must be reciprocated
             on the destination profile to count as a verified identity link.
@@ -321,24 +395,43 @@ export default function RootLayout({
         <RootIdentitySchema />
       </head>
       <body className={`${inter.className} min-h-full flex flex-col bg-slate-950 text-gray-100`}>
-        <LaunchBanner />
-        <Header />
+        {/* Site chrome (Header, Footer, LaunchBanner, retargeting pixels,
+            PostHog/RefGrow, web-vitals beacon) is gated off on iframe-embed
+            surfaces — `/embed/<widget>/...` paths render only `<main>` so
+            the calculator widgets and mini-leaderboards fit inside a
+            Substack/Ghost/WordPress column without bleeding the site
+            chrome into the embedder. `/embed` (docs index) keeps its
+            chrome because users browse there standalone. Contract:
+            components/NotInEmbed.tsx. */}
+        <NotInEmbed>
+          <LaunchBanner />
+          <Header />
+        </NotInEmbed>
         <main className="flex-1">{children}</main>
-        <Footer />
-        <Script
-          id="posthog"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]);t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+" (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);posthog.init('phc_lyZCgvTpicjLzAO3rY2GhxuX5WUc5jQjP8ZVwwJqauX',{api_host:'https://eu.i.posthog.com',persistence:'memory',person_profiles:'identified_only',before_send:function(event){if(!event||!event.properties)return event;var SELF=/(^|\\.)gitdealflow\\.com$/i;var props=event.properties;function isSelf(host){if(!host)return false;try{return SELF.test(String(host).replace(/^https?:\\/\\//,'').split('/')[0]);}catch(e){return false;}}if(isSelf(props.$referring_domain)){props.$referrer='$direct';props.$referring_domain='$direct';}if(isSelf(props.$initial_referring_domain)){props.$initial_referrer='$direct';props.$initial_referring_domain='$direct';}return event;}});`,
-          }}
-        />
-        <Script
-          id="refgrow"
-          src="https://scripts.refgrowcdn.com/latest.js"
-          data-project-id="829"
-          strategy="afterInteractive"
-        />
-        <PixelManager />
+        <NotInEmbed>
+          <Footer />
+          <GuidedConcierge />
+          <Script
+            id="posthog"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]);t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+" (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);posthog.init('phc_lyZCgvTpicjLzAO3rY2GhxuX5WUc5jQjP8ZVwwJqauX',{api_host:'https://eu.i.posthog.com',persistence:'localStorage+cookie',cross_subdomain_cookie:true,respect_dnt:true,person_profiles:'identified_only',before_send:function(event){if(!event||!event.properties)return event;var SELF=/(^|\\.)gitdealflow\\.com$/i;var props=event.properties;function isSelf(host){if(!host)return false;try{return SELF.test(String(host).replace(/^https?:\\/\\//,'').split('/')[0]);}catch(e){return false;}}if(isSelf(props.$referring_domain)){props.$referrer='$direct';props.$referring_domain='$direct';}if(isSelf(props.$initial_referring_domain)){props.$initial_referrer='$direct';props.$initial_referring_domain='$direct';}return event;}});`,
+            }}
+          />
+          <Script
+            id="refgrow"
+            src="https://scripts.refgrowcdn.com/latest.js"
+            data-project-id="829"
+            strategy="afterInteractive"
+          />
+          <PixelManager />
+          {/* Core Web Vitals beacon — ships LCP/INP/CLS/FCP/TTFB to the
+              existing PostHog EU instance. Closes the audit gap "no CWV
+              measurement" (Performance: 75/100 → measurable). Honors GPC
+              and DNT, no new dependency. */}
+          <WebVitalsReporter />
+          <CookieNotice />
+        </NotInEmbed>
       </body>
     </html>
   );

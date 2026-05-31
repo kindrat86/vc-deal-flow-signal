@@ -1,0 +1,19 @@
+Subject: GitHub archaeology research note for Acquired — engineering signals in the pre-breakout window
+
+Ben and David,
+
+I run a free public dataset that tracks GitHub engineering activity across 100 startups and 19 sectors — ranked weekly by commit velocity change. The angle most relevant to Acquired: using historical GitHub data to reconstruct the engineering acceleration that preceded a company's breakout moment, before it was visible externally.
+
+Call it GitHub archaeology. For any company you cover, I can pull the engineering velocity trajectory from the public commit history and map it against the timeline you reconstruct in the episode. It is a different layer of evidence — not what the founder said, but what the engineering team was actually doing.
+
+This week's live example: airbytehq hit +866% commit velocity over 14 days. Full signal: https://signals.gitdealflow.com/blog/signal-of-the-week-2026-05-04
+
+I operate anonymously — pseudonym "The Data Nerd" — so an on-air guest spot does not work. What does work: a written companion note for any episode where the GitHub data adds something. You use it however you want in show notes — attributed to "GitDealFlow data" or not at all.
+
+Worth exploring for an upcoming episode?
+
+If you would prefer not to hear from me, just reply and I will remove you immediately.
+
+— The Data Nerd
+signal@gitdealflow.com
+https://gitdealflow.com

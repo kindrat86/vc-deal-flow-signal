@@ -53,7 +53,7 @@ export default function LeadTimeComparison() {
           Weeks before announcement (more is better)
         </text>
       </svg>
-      <figcaption className="mt-2 text-center text-gray-500 text-xs">
+      <figcaption className="mt-2 text-center text-gray-400 text-xs">
         GitHub engineering signals provide the longest lead time of any publicly
         available deal flow signal. Crunchbase data appears after rounds close.
       </figcaption>

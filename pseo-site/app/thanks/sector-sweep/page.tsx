@@ -3,6 +3,7 @@ import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import TelegramCTA from "@/components/TelegramCTA";
 
 export const dynamic = "force-static";
 
@@ -59,6 +60,26 @@ export default function ThanksSweep() {
           </p>
         </header>
 
+        <section className="rounded-xl border border-amber-500/30 bg-amber-500/5 p-5 sm:p-6 space-y-3">
+          <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider">
+            Best next move while the Sweep is being built
+          </p>
+          <p className="text-gray-300 text-sm leading-relaxed">
+            Do not leave this as a receipt page. While the custom report is in progress, the best use of your time is to sharpen the proof and the buyer-side framework that will help you use the Sweep well when it arrives.
+          </p>
+          <div className="flex flex-wrap gap-3 text-sm">
+            <Link href="/research" className="text-amber-200 hover:text-amber-100 underline underline-offset-2">
+              Read the research panel
+            </Link>
+            <Link href="/buyers-guide" className="text-amber-200 hover:text-amber-100 underline underline-offset-2">
+              Read the buyer's guide
+            </Link>
+            <Link href="/answers/when-should-i-use-dashboard-vs-insider" className="text-amber-200 hover:text-amber-100 underline underline-offset-2">
+              Decide if Insider is next
+            </Link>
+          </div>
+        </section>
+
         <ol className="space-y-4">
           {STEPS.map((s) => (
             <li
@@ -101,6 +122,11 @@ export default function ThanksSweep() {
             </Link>
           </p>
         </section>
+
+        {/* Brunson TS §3 Ch 11 — Sweep buyers wait 5–10 business days for
+            delivery. The public Telegram pinned during that window keeps
+            the signal-rhythm alive between purchase and delivery. */}
+        <TelegramCTA tone="amber" context="post-purchase" />
 
         <section className="bg-slate-900/40 border border-slate-800 rounded-lg p-5 space-y-2">
           <p className="text-gray-400 text-xs font-semibold uppercase tracking-wider">

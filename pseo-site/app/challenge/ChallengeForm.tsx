@@ -102,7 +102,7 @@ export default function ChallengeForm() {
       {status === "error" && errMsg ? (
         <p className="text-rose-400 text-xs mt-3">{errMsg}</p>
       ) : null}
-      <p className="text-gray-500 text-xs mt-4">
+      <p className="text-gray-400 text-xs mt-4">
         We send one confirmation email and seven daily emails. We never
         share your address. Unsubscribe by replying.
       </p>

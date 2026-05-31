@@ -16,7 +16,7 @@ export default function ShareBar({ title, url }: ShareBarProps) {
 
   return (
     <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-sm">
-      <span className="text-gray-500 text-xs font-medium uppercase tracking-wider">
+      <span className="text-gray-400 text-xs font-medium uppercase tracking-wider">
         Share
       </span>
       <a

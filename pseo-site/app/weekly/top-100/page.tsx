@@ -13,7 +13,7 @@ const SITE = "https://signals.gitdealflow.com";
 export const metadata: Metadata = {
   title: "Top 100 GitHub-Signal Startups — Weekly Index",
   description:
-    "Weekly ranked index of the 100 startups with the strongest GitHub engineering signals — composite of commit velocity change, contributor growth, raw scale, and team size.",
+    "Weekly index of the 100 startups with the strongest GitHub engineering signals, refreshed every Monday.",
   alternates: { canonical: "/weekly/top-100" },
   openGraph: {
     title: "Top 100 GitHub-Signal Startups — Weekly Index",
@@ -98,7 +98,7 @@ export default function Top100ArchivePage() {
       />
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <nav className="mb-6 text-sm text-gray-500" aria-label="Breadcrumb">
+        <nav className="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300 transition-colors">
             All Sectors
           </Link>
@@ -125,8 +125,22 @@ export default function Top100ArchivePage() {
           combines four capped components — commit velocity change, contributor
           growth, raw commit scale, and contributor count — so no single metric
           dominates. Refreshed every Monday from the same dataset that powers
-          the sector pages.
+          the sector pages. If your question is which startups are moving now,
+          this is the recurring shortlist page rather than a static startup
+          database.
         </p>
+
+        <section className="mb-8 rounded-2xl border border-amber-500/30 bg-amber-500/5 p-6 sm:p-8">
+          <p className="text-amber-300 text-xs font-semibold uppercase tracking-[0.14em] mb-2">
+            Quote-ready takeaway
+          </p>
+          <blockquote className="text-gray-100 text-lg leading-relaxed border-l-2 border-amber-400/60 pl-4">
+            The weekly Top 100 is not a verdict on the best startups. It is a shortlist of where public engineering momentum is concentrating right now.
+          </blockquote>
+          <p className="mt-4 text-xs text-gray-400 leading-relaxed">
+            If you cite this page externally, use the takeaway above with the page URL and the current edition date.
+          </p>
+        </section>
 
         <div className="rounded-xl border border-slate-800 bg-slate-900/50 p-5 mb-8 text-sm text-gray-400 leading-relaxed">
           <h2 className="text-gray-200 font-semibold text-base mb-2">
@@ -144,7 +158,7 @@ export default function Top100ArchivePage() {
         </div>
 
         {editions.length === 0 ? (
-          <p className="text-gray-500 text-sm">
+          <p className="text-gray-400 text-sm">
             No weekly indices published yet. The first index will appear after
             the next Monday data refresh.
           </p>
@@ -156,7 +170,7 @@ export default function Top100ArchivePage() {
                 href={`/weekly/top-100/${e.slug}`}
                 className="group block rounded-lg border border-slate-800 bg-slate-900 p-5 hover:border-slate-600 hover:bg-slate-800/60 transition-all"
               >
-                <p className="text-gray-500 text-xs mb-2">
+                <p className="text-gray-400 text-xs mb-2">
                   {e.monday
                     ? e.monday.toISOString().slice(0, 10)
                     : e.slug}
@@ -173,6 +187,41 @@ export default function Top100ArchivePage() {
             ))}
           </div>
         )}
+
+        <div className="mt-12 rounded-xl border border-amber-500/30 bg-amber-500/5 p-6 sm:p-8">
+          <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider mb-2 text-center">
+            Use this week’s movement
+          </p>
+          <h2 className="text-gray-100 font-semibold text-lg mb-2 text-center">
+            Turn the leaderboard into sourcing action
+          </h2>
+          <p className="text-gray-400 text-sm mb-5 max-w-2xl mx-auto text-center">
+            The ranking shows where engineering momentum is concentrating right now.
+            Use the answer layer, the research panel, and the buyer-side pages
+            to decide what to investigate next, what to ignore, and whether this
+            belongs in your sourcing workflow.
+          </p>
+          <div className="flex flex-wrap justify-center gap-3">
+            <Link href="/answers" className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-amber-400 text-slate-950 text-sm font-semibold hover:bg-amber-300 transition-colors">
+              Read the answers layer →
+            </Link>
+            <Link href="/research" className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg border border-slate-700 hover:border-slate-500 text-gray-200 text-sm font-medium transition-colors">
+              See the research panel →
+            </Link>
+            <Link href="/answers/how-to-turn-a-signal-into-a-watchlist" className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg border border-slate-700 hover:border-slate-500 text-gray-200 text-sm font-medium transition-colors">
+              Turn a signal into a watchlist →
+            </Link>
+            <Link href="/buyers-guide" className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg border border-slate-700 hover:border-slate-500 text-gray-200 text-sm font-medium transition-colors">
+              Read the buyer's guide →
+            </Link>
+            <Link href="/receipts" className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg border border-slate-700 hover:border-slate-500 text-gray-200 text-sm font-medium transition-colors">
+              Check your Scout Score →
+            </Link>
+            <Link href="/firstlook" className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg border border-slate-700 hover:border-slate-500 text-gray-200 text-sm font-medium transition-colors">
+              Get my First Look →
+            </Link>
+          </div>
+        </div>
 
         <div className="mt-12 rounded-xl border border-slate-800 bg-slate-900 p-6 sm:p-8 text-center">
           <h2 className="text-gray-100 font-semibold text-lg mb-2">

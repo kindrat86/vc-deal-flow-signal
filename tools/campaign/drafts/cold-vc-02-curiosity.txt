@@ -1,0 +1,17 @@
+TO: {{firstName}}@{{firm-domain}}
+FROM: signal@gitdealflow.com
+SUBJECT: One leading indicator most VC stacks miss
+
+Hi {{firstName}},
+
+Most deal-flow tools index trailing signals — funding rounds, hiring spikes, press. By then the round's priced.
+
+We built the inverse: a composite GitHub signal that fires 4-12 weeks before Series A. AUC 0.78, sourced from public commit / contributor / release telemetry, no founder PII. The math is in SSRN 6606558: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558
+
+Live index: https://signals.gitdealflow.com.
+
+If you want me to run the next 5 startups on your watchlist through it, send tickers — no charge, no pitch.
+
+The Data Nerd
+gitdealflow.com
+ssrn.com/abstract=6606558

@@ -60,8 +60,8 @@ export default function SignalsIndexPage() {
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <nav className="text-xs text-gray-500 mb-6" aria-label="Breadcrumb">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <nav className="text-xs text-gray-400 mb-6" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300">
             Home
           </Link>
@@ -79,8 +79,29 @@ export default function SignalsIndexPage() {
           The six atomic signal primitives. Each one is a single, well-defined
           measurement on public GitHub data with a stated formula, a stated
           decision rule, and the most common way it can mislead someone who
-          skips the methodology.
+          skips the methodology. If you already care more about proof, comparison,
+          or buyer-side fit than definitions, start with the sharper routes below.
         </p>
+
+        <section className="mb-10 rounded-2xl border border-sky-700/30 bg-sky-950/20 p-6 sm:p-8">
+          <p className="text-sky-300 text-xs font-semibold uppercase tracking-[0.14em] mb-2">
+            Start with the highest-intent routes
+          </p>
+          <p className="text-gray-300 text-sm leading-relaxed mb-4">
+            Use the signal vocabulary when you want definitions. But if your real question is proof, timing, or how the signal fits an investing workflow, start with the sharper pages first.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/research" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-sky-600 text-white text-sm font-semibold hover:bg-sky-500 transition-colors">
+              Read the research panel →
+            </Link>
+            <Link href="/answers/deal-flow-timing-vs-verification" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              Timing vs verification →
+            </Link>
+            <Link href="/buyers-guide" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              Read the buyer's guide →
+            </Link>
+          </div>
+        </section>
 
         <ul className="grid sm:grid-cols-2 gap-4">
           {PRIMITIVES.map((p) => (
@@ -95,7 +116,7 @@ export default function SignalsIndexPage() {
                 <h2 className="text-base font-semibold text-white mb-2">
                   {p.name}
                 </h2>
-                <p className="text-xs text-gray-500 leading-relaxed mb-2">
+                <p className="text-xs text-gray-400 leading-relaxed mb-2">
                   Window: {p.window}
                 </p>
                 <p className="text-sm text-gray-300 leading-relaxed line-clamp-3">
@@ -230,7 +251,7 @@ export default function SignalsIndexPage() {
           </ul>
         </section>
 
-        <p className="text-xs text-gray-500 text-center mt-10">
+        <p className="text-xs text-gray-400 text-center mt-10">
           See also:{" "}
           <Link href="/knowledge" className="hover:text-gray-300">
             Knowledge graph
@@ -252,7 +273,7 @@ export default function SignalsIndexPage() {
             Corrections
           </Link>
         </p>
-      </main>
+      </div>
     </>
   );
 }

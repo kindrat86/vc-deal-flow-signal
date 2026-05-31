@@ -32,6 +32,7 @@ export async function generateMetadata({
     openGraph: {
       title: `${fw.name} + GitDealFlow A2A`,
       description: `Crunchbase API: $20K/yr. GitDealFlow A2A: free. Plug ${fw.name} into our agent in 5 minutes.`,
+      url: `/a2a/${fw.slug}`,
     },
   };
 }
@@ -80,7 +81,7 @@ export default async function A2AFrameworkPage({ params }: PageProps) {
   };
 
   return (
-    <main style={{ maxWidth: 880, margin: "0 auto", padding: "32px 20px 80px" }}>
+    <div style={{ maxWidth: 880, margin: "0 auto", padding: "32px 20px 80px" }}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -272,7 +273,7 @@ export default async function A2AFrameworkPage({ params }: PageProps) {
           ))}
         </ul>
       </section>
-    </main>
+    </div>
   );
 }
 

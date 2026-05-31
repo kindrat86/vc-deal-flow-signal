@@ -5,6 +5,7 @@ import {
 } from "@/lib/data";
 import { posts } from "@/content/posts";
 import { agentQueries } from "@/content/agent-queries";
+import { videos, watchPageUrl } from "@/content/videos";
 
 export const dynamic = "force-static";
 export const revalidate = 3600;
@@ -83,6 +84,30 @@ export async function GET() {
       caption: q.description,
       title: q.h1,
     });
+  }
+
+  // Video thumbnails — both the maxres YouTube poster and the smaller hq
+  // fallback. Anchored to the canonical /watch/[slug] page so Google can
+  // join thumbnail → page → VideoObject.
+  for (const v of videos) {
+    const pageUrl =
+      v.slug === "mcp-claude-desktop-demo"
+        ? `${BASE_URL}/mcp-demo`
+        : watchPageUrl(v.slug);
+    entries.push({
+      pageUrl,
+      imageUrl: v.thumbnailMaxUrl,
+      caption: v.description,
+      title: v.title,
+    });
+    if (v.thumbnailUrl !== v.thumbnailMaxUrl) {
+      entries.push({
+        pageUrl,
+        imageUrl: v.thumbnailUrl,
+        caption: v.description,
+        title: `${v.title} (thumbnail)`,
+      });
+    }
   }
 
   // Group by pageUrl so each <url> gets all its <image:image> children

@@ -34,7 +34,7 @@ export async function generateMetadata({
   return {
     title,
     description,
-    openGraph: { title, description, type: "article" },
+    openGraph: { title, description, type: "article", url: `/startups-to-watch/region/${slug}` },
     twitter: { card: "summary_large_image", title, description },
     alternates: {
       canonical: `/startups-to-watch/region/${slug}`,
@@ -126,7 +126,7 @@ export default async function RegionPage({ params }: PageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        <nav className="mb-6 text-sm text-gray-500" aria-label="Breadcrumb">
+        <nav className="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300 transition-colors">
             All Sectors
           </Link>
@@ -165,7 +165,7 @@ export default async function RegionPage({ params }: PageProps) {
                 className="rounded-lg border border-slate-800 bg-slate-900 p-3 hover:border-slate-600 transition-colors"
               >
                 <p className="text-gray-200 text-sm font-medium">{s.name}</p>
-                <p className="text-gray-500 text-xs mt-0.5">
+                <p className="text-gray-400 text-xs mt-0.5">
                   {s.count} startup{s.count === 1 ? "" : "s"}
                 </p>
               </Link>

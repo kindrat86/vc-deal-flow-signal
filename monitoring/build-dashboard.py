@@ -22,7 +22,11 @@ PROJECT_DIR = os.path.dirname(SCRIPT_DIR)
 ENV_FILE = os.path.join(PROJECT_DIR, "email-api", ".env")
 OUT_FILE = os.path.join(SCRIPT_DIR, "dashboard.html")
 
-WINDOW_DAYS = 30
+# WINDOW_DAYS is computed dynamically from the earliest PostHog pageview so
+# visitor metrics span the project's entire lifetime, not a fixed 30-day window.
+# RECENT_DAYS stays fixed — the forecast baseline must always reflect the most
+# recent weekly rate, not an all-time average diluted by dormant early days.
+RECENT_DAYS = 30
 
 # Exclude the founder + tester accounts from all subscriber metrics.
 # Keep in sync with pseo-site/lib/excluded-emails.ts and email-api/excluded-emails.mjs.
@@ -70,11 +74,11 @@ CHANNELS = {
          "stat": "731 karma · 976 contribs · 18 followers",
          "note": "Top 5% Poster; 5y account age; 80 gold · 27 achievements; user-managed",
          "status": "active", "as_of": "2026-04-21"},
-        {"name": "LinkedIn", "handle": "company/gitdealflow",
-         "url": "https://www.linkedin.com/company/gitdealflow",
-         "stat": "1 follower · 55 imp (30d) · Post1 17% ER / Post2 5% ER",
-         "note": "Short video + link-in-comment = 3x engagement vs long-form (Post1 vs Post2). User handles all LinkedIn actions — Claude drafts + tracks stats only.",
-         "status": "active", "as_of": "2026-04-21"},
+        {"name": "LinkedIn", "handle": "VC Deal Flow Signal",
+         "url": "https://www.linkedin.com/company/113165009/",
+         "stat": "2 followers · 1,327 imp (30d, +245%) · 19 cmt · 2 react · 0 reposts · 22 pv / 10 uv · 0 search appearances",
+         "note": "Document/PDF carousel is the only format that converts: 31% CTR / 33% ER vs 0% CTR on image/text/poll. HackerNoon journalist visited — warm. 1 ICP follower (VC managing partner). Posting 2x/wk (Doc Wed, Poll Tue). No invite-to-follow per user rule. User handles all LinkedIn actions — Claude drafts + tracks stats only.",
+         "status": "active", "as_of": "2026-05-25"},
         {"name": "Product Hunt", "handle": "data_nerd",
          "url": "https://www.producthunt.com/@data_nerd",
          "stat": "0 followers · 18 following · 6-day streak",
@@ -424,10 +428,49 @@ def ph_query(hogql):
 # ---------------- Collect ----------------
 
 today = date.today()
-window_start = today - timedelta(days=WINDOW_DAYS - 1)
+recent_start = today - timedelta(days=RECENT_DAYS - 1)
+
+# Country filter is reused by every PostHog query — compute once up front so it
+# can also gate the earliest-event lookup below.
+excl_list = ",".join(f"'{c}'" for c in EXCLUDE_COUNTRIES)
+country_filter = (
+    f"AND coalesce(properties.$geoip_country_code, '') NOT IN ({excl_list})"
+    if excl_list else ""
+)
+
+# Probe PostHog for the earliest pageview so the dashboard window covers all
+# time. Falls back to a 30-day window if PostHog has no events yet / is
+# unreachable.
+first_event_q = ph_query(f"""
+SELECT min(toDate(timestamp)) as d
+FROM events
+WHERE event = '$pageview'
+  {country_filter}
+""")
+first_event_date = None
+if first_event_q and first_event_q.get("results") and first_event_q["results"]:
+    raw = first_event_q["results"][0][0]
+    if raw:
+        try:
+            first_event_date = date.fromisoformat(str(raw)[:10])
+        except Exception:
+            first_event_date = None
+
+if first_event_date and first_event_date <= today:
+    window_start = first_event_date
+    WINDOW_DAYS = (today - window_start).days + 1
+else:
+    WINDOW_DAYS = 30
+    window_start = today - timedelta(days=WINDOW_DAYS - 1)
+print(f"Window: {WINDOW_DAYS} days ({window_start} → {today})")
 
 print("Authenticating PocketBase...")
 token = pb_auth()
+if not token:
+    # Abort rather than overwrite dashboard.html with subscribers=0.
+    # A transient PB outage / DNS blip would otherwise wipe the last good snapshot.
+    sys.exit("FATAL: PocketBase auth failed — refusing to overwrite dashboard. "
+             "Check pocketbase is running at " + PB_URL + " and rerun.")
 subscribers, email_log = [], []
 email_sequences = []
 if token:
@@ -452,12 +495,7 @@ resend_emails = {
 print(f"  verified in Resend: {len(resend_emails)}")
 
 print("Querying PostHog...")
-# Build SQL fragment for excluded-country filter.
-excl_list = ",".join(f"'{c}'" for c in EXCLUDE_COUNTRIES)
-country_filter = (
-    f"AND coalesce(properties.$geoip_country_code, '') NOT IN ({excl_list})"
-    if excl_list else ""
-)
+# country_filter already built above (used by the earliest-event probe).
 
 pv_total = ph_query(f"""
 SELECT count() as pv, count(DISTINCT distinct_id) as uv
@@ -466,6 +504,35 @@ WHERE event = '$pageview'
   AND timestamp >= '{window_start.isoformat()}'
   {country_filter}
 """)
+
+# Engaged visitors = distinct_ids with ≥2 pageviews in the window. Single-pageview
+# visitors are dominated by social-link unfurl bots, search/AI crawlers, and
+# preview fetchers — none of which can convert. Gating the headline on this
+# stops 99%+ single-pv crawler traffic from inflating the visitor card.
+engaged_uv_q = ph_query(f"""
+SELECT count() FROM (
+  SELECT distinct_id, count() as pv
+  FROM events
+  WHERE event = '$pageview'
+    AND timestamp >= '{window_start.isoformat()}'
+    {country_filter}
+  GROUP BY distinct_id
+  HAVING pv >= 2
+)
+""")
+
+# Recent-window visitors — feeds forecast baseline so projections reflect the
+# current weekly rate, not an all-time average diluted by quiet early days.
+recent_uv_q = ph_query(f"""
+SELECT count(DISTINCT distinct_id) as uv
+FROM events
+WHERE event = '$pageview'
+  AND timestamp >= '{recent_start.isoformat()}'
+  {country_filter}
+""")
+recent_uv = 0
+if recent_uv_q and recent_uv_q.get("results") and recent_uv_q["results"]:
+    recent_uv = recent_uv_q["results"][0][0] or 0
 
 pv_daily = ph_query(f"""
 SELECT toDate(timestamp) as d, count(DISTINCT distinct_id) as uv
@@ -506,6 +573,7 @@ WHERE event = '$pageview'
   {country_filter}
 GROUP BY d, src
 ORDER BY d, uv DESC
+LIMIT 50000
 """)
 
 # Per-day UTM campaign attribution
@@ -523,6 +591,7 @@ WHERE event = '$pageview'
   {country_filter}
 GROUP BY d, utm_src, utm_med, utm_cmp
 ORDER BY d DESC, uv DESC
+LIMIT 50000
 """)
 
 # Per-day landing pages (entry path) — useful to pair with source data
@@ -536,6 +605,7 @@ WHERE event = '$pageview'
   {country_filter}
 GROUP BY d, p
 ORDER BY d, uv DESC
+LIMIT 50000
 """)
 
 # Decompose the "(direct)" bucket. For every pageview with no referring domain,
@@ -562,6 +632,7 @@ WHERE event = '$pageview'
   {country_filter}
 GROUP BY d, utm_src, utm_med, utm_cmp, ua, browser, os, device, path, country
 ORDER BY d DESC, uv DESC
+LIMIT 50000
 """)
 
 ph_countries = ph_query(f"""
@@ -627,6 +698,24 @@ sub_emails = {s.get("email", "").lower() for s in subscribers}
 verified = sub_emails & resend_emails
 unverified_in_pb = sub_emails - resend_emails
 
+# Real active subscribers = verified − unsubscribed − dashboard-only QA accounts.
+# sales@sipiteno.com is intentionally kept in EXCLUDED_EMAILS (sends still go to
+# it as a live QA inbox), but it shouldn't inflate the headline subscriber count.
+DASHBOARD_QA_EMAILS = {"sales@sipiteno.com"}
+unsubscribed_emails = set()
+_unsub_path = os.path.join(PROJECT_DIR, "pseo-site", "data", "unsubscribed-emails.json")
+try:
+    with open(_unsub_path) as _f:
+        unsubscribed_emails = {
+            (e.get("email") or "").lower()
+            for e in (json.load(_f).get("emails") or [])
+            if e.get("email")
+        }
+except FileNotFoundError:
+    pass
+active_subs_set = verified - unsubscribed_emails - DASHBOARD_QA_EMAILS
+active_subs_count = len(active_subs_set)
+
 # Email log aggregates — prefer Resend API (pSEO signup path doesn't write PB email_log)
 print("Fetching Resend email events...")
 resend_events = resend_email_events(window_start)
@@ -673,9 +762,13 @@ if pv_total and pv_total.get("results") and pv_total["results"]:
     total_pv = pv_total["results"][0][0] or 0
     total_uv = pv_total["results"][0][1] or 0
 
+engaged_uv = 0
+if engaged_uv_q and engaged_uv_q.get("results") and engaged_uv_q["results"]:
+    engaged_uv = engaged_uv_q["results"][0][0] or 0
+
 # Funnel
 funnel = [
-    {"label": f"Visitors ({WINDOW_DAYS}d)", "value": total_uv},
+    {"label": "Visitors (all time)", "value": total_uv},
     {"label": "Signups (all time)", "value": len(subscribers)},
     {"label": "Verified (Resend)", "value": len(verified)},
 ]
@@ -1243,13 +1336,14 @@ except Exception as e:
     print(f"  GSC: skipped ({e})")
 
 conversion_rate = round(100 * len(subscribers) / total_uv, 2) if total_uv else 0.0
+active_conversion_rate = round(100 * active_subs_count / total_uv, 2) if total_uv else 0.0
 
 # Paid subs (Dashboard or Insider tier, active status)
 paid_subs = sum(
     1 for s in subscribers
     if s.get("tier") in ("dashboard", "insider") and s.get("status") == "active"
 )
-paid_rate = round(100 * paid_subs / len(subscribers), 2) if subscribers else 0.0
+paid_rate = round(100 * paid_subs / active_subs_count, 2) if active_subs_count else 0.0
 
 # Determine benchmark tier + active row
 if total_uv < 100:
@@ -1265,8 +1359,8 @@ else:
 
 # Expected values against benchmark (using actual visitor count)
 expected_subs = int(round(total_uv * BENCHMARK_OPT_IN / 100)) if total_uv else 0
-expected_paid_lo = int(round(len(subscribers) * BENCHMARK_PAID_LO / 100))
-expected_paid_hi = int(round(len(subscribers) * BENCHMARK_PAID_HI / 100))
+expected_paid_lo = int(round(active_subs_count * BENCHMARK_PAID_LO / 100))
+expected_paid_hi = int(round(active_subs_count * BENCHMARK_PAID_HI / 100))
 
 def grade(actual, expected):
     """Return (status, delta_pct) where status ∈ {early, below, on-track, above}."""
@@ -1279,33 +1373,36 @@ def grade(actual, expected):
         return ("on-track", round((ratio - 1) * 100))
     return ("below", round((ratio - 1) * 100))
 
-opt_in_status, opt_in_delta = grade(len(subscribers), expected_subs)
-paid_status, paid_delta = ("early", 0) if len(subscribers) < 30 else grade(paid_subs, expected_paid_lo)
+opt_in_status, opt_in_delta = grade(active_subs_count, expected_subs)
+paid_status, paid_delta = ("early", 0) if active_subs_count < 30 else grade(paid_subs, expected_paid_lo)
 
 # Build verdict text
 if total_uv < 100:
     verdict_headline = "Too early — keep driving traffic"
     verdict_detail = (
-        f"You have {total_uv} visitors in the last {WINDOW_DAYS}d. "
+        f"You have {total_uv} visitors all-time. "
         f"Benchmarks assume at least 100 visitors before opt-in rate is meaningful. "
         f"Focus on Dream 100 seeding, not on conversion."
     )
 elif opt_in_status == "above":
-    verdict_headline = f"Opt-in is above benchmark ({conversion_rate}% vs 3% target)"
+    verdict_headline = f"Opt-in is above benchmark ({active_conversion_rate}% vs 3% target)"
     verdict_detail = f"You're converting visitors well. Scale traffic — the funnel works."
 elif opt_in_status == "on-track":
-    verdict_headline = f"Opt-in is near benchmark ({conversion_rate}% vs 3% target)"
+    verdict_headline = f"Opt-in is near benchmark ({active_conversion_rate}% vs 3% target)"
     verdict_detail = f"Within 50% of target. Tighten the hook/offer to close the gap."
 else:
-    verdict_headline = f"Opt-in is below benchmark ({conversion_rate}% vs 3% target)"
+    verdict_headline = f"Opt-in is below benchmark ({active_conversion_rate}% vs 3% target)"
     verdict_detail = (
-        f"Expected {expected_subs} subs from {total_uv} visitors; got {len(subscribers)}. "
-        f"The leak is in the hook, not the traffic. Revisit headline + email-gate offer."
+        f"Expected {expected_subs} active subs from {total_uv} visitors; got {active_subs_count}. "
+        f"Note: PostHog identity stitching was just fixed (2026-05-25); the {total_uv} visitor "
+        f"count is currently inflated by the prior per-pageview distinct_id reset and will "
+        f"normalize over 1–2 weeks. Re-evaluate the verdict then."
     )
 
 # ---------------- Forecast: weekly organic traffic, next 16 weeks ----------------
 # Per-channel ramp model. Each channel contributes independently; totals stack.
-# Numbers are calibrated to a developer-investor niche (small TAM, long-tail-heavy).
+# Numbers are calibrated to an angels / scouts / technical-operator niche
+# (small TAM, long-tail-heavy).
 # Scenario bands: low = 50% of mid (sandbox-extended / unfeatured), high = 1.7× mid
 # (Reddit AEO compounds + a single Tier-1 citation lands earlier than expected).
 #
@@ -1319,7 +1416,9 @@ FORECAST_WEEKS = 16
 
 # Anchor: current 30d visitor rate from PostHog → weekly equivalent.
 # Treated as already-flowing baseline that persists alongside ramping channels.
-baseline_weekly = round(total_uv / (WINDOW_DAYS / 7)) if total_uv else 0
+# Use the recent window (not all-time) so the projection reflects the current
+# rate rather than being dragged down by quiet days near launch.
+baseline_weekly = round(recent_uv / (RECENT_DAYS / 7)) if recent_uv else 0
 
 FORECAST_CHANNELS = [
     # key,    name,                                                         lag, ramp, mature, shape, [extras]
@@ -1449,7 +1548,7 @@ forecast_payload = {
         "Google sandbox: branded queries from w2–4, long-tail pSEO from w6, head terms w12+.",
         "AI engines (Perplexity/ChatGPT search/Claude/Poe) cite from w2, compound through w12.",
         "Bands: low = 50% mid (sandbox-extended), high = 170% mid (Tier-1 citation lands early).",
-        "Calibrated to developer-investor niche — small TAM, long-tail-heavy, Reddit/AEO-skewed.",
+        "Calibrated to angels / scouts / technical-operator niche — small TAM, long-tail-heavy, Reddit/AEO-skewed.",
     ],
 }
 
@@ -1458,11 +1557,15 @@ payload = {
     "window_days": WINDOW_DAYS,
     "kpis": {
         "visitors": total_uv,
+        "engaged_visitors": engaged_uv,
+        "window_start": window_start.isoformat(),
         "pageviews": total_pv,
         "signups": len(subscribers),
         "verified": len(verified),
         "unverified": len(unverified_in_pb),
+        "active_subscribers": active_subs_count,
         "conversion_rate": conversion_rate,
+        "active_conversion_rate": active_conversion_rate,
         "emails_sent": total_sent,
         "emails_scheduled": total_scheduled,
         "open_rate": open_rate,
@@ -1501,7 +1604,7 @@ payload = {
         "rows": BENCHMARK_ROWS,
         "active_idx": active_idx,
         "stage": bench_stage,
-        "actual_opt_in": conversion_rate,
+        "actual_opt_in": active_conversion_rate,
         "actual_paid_rate": paid_rate,
         "paid_subs": paid_subs,
         "expected_subs": expected_subs,
@@ -1579,17 +1682,16 @@ HTML = """<!DOCTYPE html>
 
 <h1>Subscriber Dashboard</h1>
 <div class="sub">
-  VC Deal Flow Signal · Window: last __WINDOW_DAYS__ days · Generated: <span id="gen"></span>
+  VC Deal Flow Signal · Window: all time (since __WINDOW_START__) · Generated: <span id="gen"></span>
   <div style="margin-top:4px;color:#475569;font-size:11px">
     Excluded: <span id="exc-countries"></span> traffic · <span id="exc-testers"></span> tester emails
   </div>
 </div>
 
 <div class="grid cols-4 row-group">
-  <div class="card kpi"><div class="num" id="k-visitors">—</div><div class="lbl">Visitors (30d)</div></div>
-  <div class="card kpi"><div class="num" id="k-signups">—</div><div class="lbl">Total signups</div></div>
-  <div class="card kpi"><div class="num" id="k-verified">—</div><div class="lbl">Verified (Resend)</div></div>
-  <div class="card kpi"><div class="num" id="k-conv">—</div><div class="lbl">Visitor → signup</div></div>
+  <div class="card kpi"><div class="num" id="k-visitors">—</div><div class="lbl">Visitors (since <span id="k-since">—</span>)</div></div>
+  <div class="card kpi"><div class="num" id="k-active">—</div><div class="lbl">Active subscribers</div></div>
+  <div class="card kpi"><div class="num" id="k-conv">—</div><div class="lbl">Visitor → active subscriber</div></div>
 </div>
 
 <div class="row-group">
@@ -1618,7 +1720,7 @@ HTML = """<!DOCTYPE html>
       <div>Stage: <strong id="b-stage"></strong></div>
       <div>Opt-in rate: <strong id="b-optin"></strong> (target 3%) <span id="b-optin-pill" class="pill"></span></div>
       <div>Expected subs from <span id="b-visitors"></span> visitors: <strong id="b-expected-subs"></strong></div>
-      <div>Actual subs: <strong id="b-actual-subs"></strong></div>
+      <div>Active subs: <strong id="b-actual-subs"></strong></div>
       <div style="margin-top:12px">Paid subs: <strong id="b-paid"></strong> · rate: <strong id="b-paid-rate"></strong> <span id="b-paid-pill" class="pill"></span></div>
       <div>Expected paid range: <strong id="b-expected-paid"></strong></div>
     </div>
@@ -1631,7 +1733,7 @@ HTML = """<!DOCTYPE html>
     <div id="funnel"></div>
   </div>
   <div class="card">
-    <h3>Signups & visitors — daily (last __WINDOW_DAYS__d)</h3>
+    <h3>Signups & visitors — daily (all time)</h3>
     <canvas id="dailyChart"></canvas>
   </div>
 </div>
@@ -1643,7 +1745,7 @@ HTML = """<!DOCTYPE html>
       <tbody id="sub-sources"></tbody></table>
   </div>
   <div class="card">
-    <h3>Traffic sources (PostHog · __WINDOW_DAYS__d total)</h3>
+    <h3>Traffic sources (PostHog · all time)</h3>
     <table><thead><tr><th>Referrer</th><th class="num">Pageviews</th></tr></thead>
       <tbody id="ph-sources"></tbody></table>
   </div>
@@ -1656,7 +1758,7 @@ HTML = """<!DOCTYPE html>
 </div>
 
 <div class="grid cols-4 row-group">
-  <div class="card kpi"><div class="num" id="src-direct">—</div><div class="lbl" style="color:#94a3b8">Direct (__WINDOW_DAYS__d)</div></div>
+  <div class="card kpi"><div class="num" id="src-direct">—</div><div class="lbl" style="color:#94a3b8">Direct (all time)</div></div>
   <div class="card kpi"><div class="num" id="src-search">—</div><div class="lbl" style="color:#0ea5e9">Search</div></div>
   <div class="card kpi"><div class="num" id="src-ai">—</div><div class="lbl" style="color:#22c55e">AI engines</div></div>
   <div class="card kpi"><div class="num" id="src-social">—</div><div class="lbl" style="color:#a855f7">Social</div></div>
@@ -1713,7 +1815,7 @@ HTML = """<!DOCTYPE html>
     </div>
     <div class="grid cols-2" style="gap:24px">
       <div>
-        <h4 style="font-size:11px;color:#64748b;letter-spacing:1px;margin:0 0 10px">__WINDOW_DAYS__-DAY TOTALS BY BUCKET</h4>
+        <h4 style="font-size:11px;color:#64748b;letter-spacing:1px;margin:0 0 10px">ALL-TIME TOTALS BY BUCKET</h4>
         <div style="max-height:340px;overflow-y:auto">
           <table>
             <thead>
@@ -1802,7 +1904,7 @@ HTML = """<!DOCTYPE html>
   </div>
 </div>
 
-<h1 style="margin-top:40px;font-size:20px">Google Search Console — last __WINDOW_DAYS__ days</h1>
+<h1 style="margin-top:40px;font-size:20px">Google Search Console — all time</h1>
 <div class="sub" id="gsc-status">—</div>
 
 <div class="grid cols-4 row-group">
@@ -2033,9 +2135,9 @@ document.getElementById('exc-testers').textContent = (D.excluded.testers || []).
 
 // KPIs
 document.getElementById('k-visitors').textContent = fmt(D.kpis.visitors);
-document.getElementById('k-signups').textContent = fmt(D.kpis.signups);
-document.getElementById('k-verified').textContent = fmt(D.kpis.verified);
-document.getElementById('k-conv').textContent = D.kpis.conversion_rate + '%';
+document.getElementById('k-since').textContent = D.kpis.window_start || '—';
+document.getElementById('k-active').textContent = fmt(D.kpis.active_subscribers);
+document.getElementById('k-conv').textContent = D.kpis.active_conversion_rate + '%';
 document.getElementById('e-sent').textContent = fmt(D.kpis.emails_sent);
 document.getElementById('e-sched').textContent = fmt(D.kpis.emails_scheduled || 0);
 document.getElementById('e-open').textContent = D.kpis.open_rate + '%';
@@ -2057,7 +2159,7 @@ document.getElementById('b-stage').textContent = B.stage;
 document.getElementById('b-optin').textContent = B.actual_opt_in + '%';
 document.getElementById('b-visitors').textContent = fmt(D.kpis.visitors);
 document.getElementById('b-expected-subs').textContent = fmt(B.expected_subs);
-document.getElementById('b-actual-subs').textContent = fmt(D.kpis.signups);
+document.getElementById('b-actual-subs').textContent = fmt(D.kpis.active_subscribers);
 document.getElementById('b-paid').textContent = fmt(B.paid_subs);
 document.getElementById('b-paid-rate').textContent = B.actual_paid_rate + '%';
 document.getElementById('b-expected-paid').textContent = B.expected_paid_lo + '–' + B.expected_paid_hi;
@@ -2746,9 +2848,25 @@ if (cData.length) {
 </html>
 """
 
-out = HTML.replace("__WINDOW_DAYS__", str(WINDOW_DAYS)).replace(
-    "__DATA__", json.dumps(payload, default=str)
+out = (
+    HTML
+    .replace("__WINDOW_DAYS__", str(WINDOW_DAYS))
+    .replace("__WINDOW_START__", window_start.isoformat())
+    .replace("__DATA__", json.dumps(payload, default=str))
 )
+
+# Guard: if PostHog was unreachable (e.g. launchd cron lost DNS), every PH-derived
+# field collapses to 0/empty and the dashboard looks like the site died. Preserve
+# the last good dashboard instead of overwriting it with zeros.
+ph_total_failed = pv_total is None
+if ph_total_failed and os.path.exists(OUT_FILE):
+    print(
+        f"\nSKIP write: PostHog unreachable (pv_total=None). "
+        f"Preserving existing {OUT_FILE}.",
+        file=sys.stderr,
+    )
+    sys.exit(0)
+
 with open(OUT_FILE, "w") as f:
     f.write(out)
 

@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { HreflangLinks } from "@/components/HreflangLinks";
+import { getHreflangLanguages } from "@/lib/hreflang";
 
 export const metadata: Metadata = {
   title: "Integrations — MCP, Telegram, Email, RSS, API",
   description:
     "Plug VC Deal Flow Signal into your existing workflow. MCP server for Claude and Cursor, Telegram channel, weekly email, JSON/CSV API, RSS feed, and Zapier.",
+  // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
   alternates: {
     canonical: "/integrations",
   },
@@ -252,6 +255,20 @@ export default function IntegrationsPage() {
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@type": "WebPage",
+        "@id": "https://signals.gitdealflow.com/integrations#webpage",
+        url: "https://signals.gitdealflow.com/integrations",
+        name: "Integrations — VC Deal Flow Signal",
+        description:
+          "MCP server, Telegram, email, RSS, JSON/CSV API, Zapier, and Chrome extension integrations.",
+        inLanguage: "en-US",
+        isAccessibleForFree: true,
+        speakable: {
+          "@type": "SpeakableSpecification",
+          cssSelector: ["[data-speakable]", "h1", "h2"],
+        },
+      },
+      {
         "@type": "CollectionPage",
         name: "VC Deal Flow Signal Integrations",
         description:
@@ -358,12 +375,16 @@ export default function IntegrationsPage() {
 
   return (
     <>
+      <HreflangLinks
+        canonical="https://signals.gitdealflow.com/integrations"
+        languages={getHreflangLanguages("/integrations")}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <nav className="mb-6 text-sm text-gray-500" aria-label="Breadcrumb">
+        <nav className="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300 transition-colors">
             All Sectors
           </Link>
@@ -377,8 +398,28 @@ export default function IntegrationsPage() {
         <p className="text-gray-400 text-base leading-relaxed mb-10 max-w-2xl">
           Plug VC Deal Flow Signal into your existing workflow. Nine ways to
           get engineering acceleration signals where you already work — AI
-          assistants, messaging, email, raw data, and automation.
+          assistants, messaging, email, raw data, and automation. If you already know your question is proof, buyer fit, or agent workflow, start with the sharper routes below.
         </p>
+
+        <section className="mb-10 rounded-2xl border border-sky-700/30 bg-sky-950/20 p-6 sm:p-8">
+          <p className="text-sky-300 text-xs font-semibold uppercase tracking-[0.14em] mb-2">
+            Start with the highest-intent routes
+          </p>
+          <p className="text-gray-300 text-sm leading-relaxed mb-4">
+            Use integrations when you need connection points. But if your real question is AI workflow fit, proof, or buyer-side evaluation, start with the sharper pages first.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/integrations/best-mcp-server-for-vc-research" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-sky-600 text-white text-sm font-semibold hover:bg-sky-500 transition-colors">
+              Best MCP server for VC research →
+            </Link>
+            <Link href="/research" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              Read the research panel →
+            </Link>
+            <Link href="/buyers-guide" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              Read the buyer's guide →
+            </Link>
+          </div>
+        </section>
 
         {categories.map((cat) => {
           const items = integrations.filter((i) => i.category === cat);
@@ -419,7 +460,7 @@ export default function IntegrationsPage() {
                       {i.docsHref && (
                         <Link
                           href={i.docsHref}
-                          className="text-gray-500 hover:text-gray-300 font-medium transition-colors"
+                          className="text-gray-400 hover:text-gray-300 font-medium transition-colors"
                         >
                           Docs
                         </Link>
@@ -461,6 +502,41 @@ export default function IntegrationsPage() {
           >
             See full pricing &rarr;
           </Link>
+        </div>
+
+        <div className="rounded-xl border border-emerald-700/40 bg-gradient-to-br from-emerald-950/20 via-slate-900 to-slate-950 p-6 sm:p-8 text-center mt-6">
+          <p className="text-emerald-300 text-xs font-semibold uppercase tracking-wider mb-2">
+            Pick the lane that matches your week
+          </p>
+          <h2 className="text-gray-100 font-semibold text-lg mb-2">
+            Integrations are the plumbing. Here&rsquo;s the next move.
+          </h2>
+          <p className="text-gray-300 text-sm mb-5 max-w-2xl mx-auto">
+            If you want one useful read each Sunday, start free. If you need a
+            sharper answer on a live sector question, use First Look. If you
+            want the weekly operating surface behind the integrations, go to the
+            Dashboard.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <Link
+              href="https://gitdealflow.com/#signup"
+              className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-sm font-semibold transition-colors"
+            >
+              Get the free Sunday issue →
+            </Link>
+            <Link
+              href="/firstlook"
+              className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg border border-slate-700 hover:border-slate-500 text-gray-200 text-sm font-medium transition-colors"
+            >
+              Get my First Look →
+            </Link>
+            <Link
+              href="/dashboard"
+              className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg border border-slate-700 hover:border-slate-500 text-gray-200 text-sm font-medium transition-colors"
+            >
+              See the Dashboard →
+            </Link>
+          </div>
         </div>
       </div>
     </>

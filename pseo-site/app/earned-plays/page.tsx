@@ -40,15 +40,15 @@ const PLAYS: Play[] = [
     what: "On Google-page-1 Reddit threads in r/venturecapital, r/AngelInvesting, r/MachineLearning, r/ExperiencedDevs, we contribute a substantive 200-350 word comment that compounds via AI Overview / ChatGPT / Perplexity citations.",
     why: "Reddit AEO is the highest-leverage Reddit layer — Google indexes top Reddit threads, and LLMs cite them in answers. A 350-word comment on a high-rank thread keeps producing for months.",
     rule: "Reply to top commenter not OP. Never edit after posting (cache busts re-cite). No em-dashes. Statements beat questions.",
-    link: { label: "/dream-100#communities — communities map", href: "/dream-100#communities" },
+    link: { label: "/target-list#communities — communities map", href: "/target-list#communities" },
   },
   {
     id: "devto",
     channel: "dev.to long-form",
     cadence: "Bi-weekly",
     format: "1,200–2,000 word essay with code or chart",
-    what: "Engineering-side essays on the methodology, on what GitHub-momentum reading actually looks like in practice, on tooling that overlaps with the developer-investor avatar.",
-    why: "dev.to is where the engineer-investor reads long-form. The platform's sub-tag system + Forem cross-pub + RSS pickup compound the long tail. Essays surface in their inbox via the daily digest.",
+    what: "Engineering-side essays on the methodology, on what GitHub-momentum reading actually looks like in practice, and on tooling that overlaps with readers who care about earlier startup signal.",
+    why: "dev.to is where long-form technical reading happens. The platform's sub-tag system + Forem cross-pub + RSS pickup compound the long tail. Essays surface in inboxes via the daily digest.",
     link: { label: "@gitdealflow on dev.to", href: "https://dev.to/gitdealflow", external: true },
   },
   {
@@ -67,7 +67,7 @@ const PLAYS: Play[] = [
     cadence: "Continuous (npm + GitHub releases)",
     format: "Free 6-tool MCP server, single-line install, agent-native",
     what: "@gitdealflow/mcp-signal on npm. Six read-only tools (get_top_movers, search_startups, get_signal, get_methodology, etc.). Free forever, never gated.",
-    why: "The developer-investor lives inside Claude Desktop and Cursor. We meet them there with read-only tools. Distribution-as-product: install is free, the data is the upsell.",
+    why: "If you already live inside Claude Desktop and Cursor, meeting you there with read-only tools is stronger than asking for another dashboard habit. Distribution-as-product: install is free, the data is the upsell.",
     rule: "Five core tools stay free forever. New paid tools are added alongside, never gate the existing ones (memory: feedback_free_mcp_never_gate.md).",
     link: { label: "/install — full instructions", href: "/install" },
   },
@@ -115,18 +115,18 @@ const PLAYS: Play[] = [
     cadence: "Continuous (every page ships with the mirrors)",
     format: "/md/<path>, agents.json, llms.txt, llms-full.txt, knowledge-graph.json",
     what: "Every public page has a markdown mirror at /md/<path>. agents.json, llms.txt + llms-full.txt corpus, OpenAPI 21 endpoints, knowledge-graph.json. Six redundant agent surfaces.",
-    why: "Half the readers in 2026 are agents. The agent that retrieves /md/dream-100 quotes us in the answer; the agent that retrieves the HTML version doesn't. Build for both.",
+    why: "Half the readers in 2026 are agents. The agent that retrieves /md/target-list quotes us in the answer; the agent that retrieves the HTML version doesn't. Build for both.",
     link: { label: "/distribution#agent-mirrors", href: "/distribution#agent-mirrors" },
   },
   {
     id: "linkedin-dream-100",
-    channel: "LinkedIn Dream 100 engagement",
+    channel: "LinkedIn top-100 engagement",
     cadence: "2x per week (Tue + Fri 14:00 EEST)",
-    format: "Company-page comments on Dream 100 posts (max 4/week)",
-    what: "Company page only (no founder personal account, anonymity rule). Substantive replies to Dream 100 LinkedIn posts that match our buyer's reading habits.",
+    format: "Company-page comments on top-100 posts (max 4/week)",
+    what: "Company page only (no founder personal account, anonymity rule). Substantive replies to top-100 LinkedIn posts that match our buyer's reading habits.",
     why: "LinkedIn algorithm rewards consistent commenting on the same network's posts. Comments compound; broadcast posts don't.",
     rule: "Company page only. First-comment self-tactic in 15 min: preempt skeptic + SSRN anchor + CTA URL on own line (memory: feedback_linkedin_self_comment_tactic.md).",
-    link: { label: "Dream 100 voices we read", href: "/dream-100" },
+    link: { label: "Top-100 voices we read", href: "/target-list" },
   },
 ];
 
@@ -148,7 +148,7 @@ export default function EarnedPlaysPage() {
         "@id": "https://signals.gitdealflow.com/earned-plays",
         name: "Earned Plays — the traffic playbook",
         description:
-          "Specific traffic plays we run on every earned channel — Reddit AEO, dev.to, Substack, MCP, federated social, SSRN, GitHub, Wikidata, agent-side mirrors, LinkedIn Dream 100.",
+          "Specific traffic plays we run on every earned channel — Reddit AEO, dev.to, Substack, MCP, federated social, SSRN, GitHub, Wikidata, agent-side mirrors, LinkedIn top-100.",
         speakable: {
           "@type": "SpeakableSpecification",
           cssSelector: ["h1", "h2"],
@@ -178,25 +178,44 @@ export default function EarnedPlaysPage() {
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
         <header className="space-y-4">
-          <nav aria-label="Breadcrumb" className="text-xs text-gray-500">
+          <nav aria-label="Breadcrumb" className="text-xs text-gray-400">
             <Link href="/" className="hover:text-gray-300">Home</Link>
             <span className="mx-2">/</span>
             <span className="text-gray-400">Earned Plays</span>
           </nav>
           <p className="text-emerald-400 text-xs font-semibold uppercase tracking-wider">
-            Traffic Secrets · Ch 4 — Working Way In · Applied
+            Working way in · Applied
           </p>
           <h1 className="text-3xl sm:text-5xl font-bold text-gray-100 leading-[1.1] tracking-tight">
             Ten earned plays. <span className="text-emerald-400">Specific cadence, specific format, specific reason.</span>
           </h1>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
-            Brunson&rsquo;s teaching on Working Way In: don&rsquo;t buy
-            traffic until you can earn it. Here&rsquo;s the actual
-            playbook we run, with the cadence we honour and the rules we
-            don&rsquo;t bend. If you&rsquo;re building something parallel,
+            Don&rsquo;t buy traffic until you can earn it. Here&rsquo;s the
+            actual playbook we run, with the cadence we honour and the rules
+            we don&rsquo;t bend. If you&rsquo;re building something parallel,
             you can fork this directly.
           </p>
         </header>
+
+        <section className="rounded-xl border border-emerald-700/30 bg-emerald-950/20 p-6 sm:p-8 space-y-3">
+          <p className="text-emerald-300 text-xs font-semibold uppercase tracking-[0.14em]">
+            Start with the highest-intent routes
+          </p>
+          <p className="text-gray-300 text-sm leading-relaxed">
+            Use this page if you want the full earned-distribution playbook. But if your real question is affiliate promotion, outreach targets, or a concrete partnership lane, start with the sharper routes first.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/affiliates" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-emerald-600 text-white text-sm font-semibold hover:bg-emerald-500 transition-colors">
+              Join the affiliate program →
+            </Link>
+            <Link href="/target-list" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              Open the target list →
+            </Link>
+            <Link href="/partners" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              See partner tracks →
+            </Link>
+          </div>
+        </section>
 
         <section className="space-y-5">
           {PLAYS.map((p, i) => (
@@ -212,13 +231,13 @@ export default function EarnedPlaysPage() {
                 <h2 className="text-xl sm:text-2xl font-bold text-gray-100 leading-snug">
                   {p.channel}
                 </h2>
-                <p className="text-gray-500 text-xs italic">
+                <p className="text-gray-400 text-xs italic">
                   Format: {p.format}
                 </p>
               </header>
               <div className="space-y-2 text-sm">
                 <p>
-                  <span className="text-gray-500 uppercase tracking-wider text-[10px] mr-2">
+                  <span className="text-gray-400 uppercase tracking-wider text-[10px] mr-2">
                     What
                   </span>
                   <span className="text-gray-300 leading-relaxed">
@@ -226,7 +245,7 @@ export default function EarnedPlaysPage() {
                   </span>
                 </p>
                 <p>
-                  <span className="text-gray-500 uppercase tracking-wider text-[10px] mr-2">
+                  <span className="text-gray-400 uppercase tracking-wider text-[10px] mr-2">
                     Why
                   </span>
                   <span className="text-gray-300 leading-relaxed">
@@ -278,10 +297,9 @@ export default function EarnedPlaysPage() {
             Six channels we&rsquo;re actively NOT on, and why.
           </h2>
           <p className="text-gray-300 text-base leading-relaxed">
-            Brunson&rsquo;s rule on channel selection: name what you cut
-            so visitors don&rsquo;t suggest it on a loop. Each cut is
-            durable — they&rsquo;re not on the &ldquo;maybe Q3&rdquo;
-            list, they&rsquo;re on the structurally-blocked list.
+            Name what you cut so visitors don&rsquo;t suggest it on a loop.
+            Each cut is durable — they&rsquo;re not on the &ldquo;maybe
+            Q3&rdquo; list, they&rsquo;re on the structurally-blocked list.
           </p>
           <ul className="space-y-2 pt-1">
             {NOT_PLAYING.map((np) => (
@@ -307,11 +325,10 @@ export default function EarnedPlaysPage() {
             Pick three plays, run them for a quarter, and only then add a fourth.
           </h2>
           <p className="text-gray-300 text-base leading-relaxed">
-            Brunson&rsquo;s rule for traffic: don&rsquo;t run all ten
-            channels at half-volume. Run three at full volume for ninety
-            days, measure, keep the two that compound, retire the third,
-            then add a fourth. Every play above had to earn its slot
-            against this same test.
+            Don&rsquo;t run all ten channels at half-volume. Run three at
+            full volume for ninety days, measure, keep the two that compound,
+            retire the third, then add a fourth. Every play above had to
+            earn its slot against this same test.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 pt-2">
             <Link
@@ -329,10 +346,8 @@ export default function EarnedPlaysPage() {
           </div>
         </section>
 
-        <p className="text-gray-500 text-xs leading-relaxed border-t border-slate-800 pt-6">
-          Earned-traffic playbook per <em>Traffic Secrets</em> Ch 4
-          (Working Way In) by Russell Brunson (2020). Used under
-          fair-use commentary.
+        <p className="text-gray-400 text-xs leading-relaxed border-t border-slate-800 pt-6">
+          Earned-traffic playbook drawn from direct-response sales canon.
         </p>
       </div>
     </>

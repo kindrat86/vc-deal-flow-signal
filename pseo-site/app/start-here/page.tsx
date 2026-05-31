@@ -3,13 +3,14 @@ import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import StartHereArchetypeQuiz from "@/components/StartHereArchetypeQuiz";
 
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title: "Start Here — what GitDealFlow is, and where to begin",
   description:
-    "Three-minute primer for the developer-investor who hit this site cold. What we measure (GitHub commit-velocity acceleration), why (47 days before the deck), and the four entry points sized to your week.",
+    "Three-minute primer for the cold visitor. 90-second identity quiz routes buyers, subscribers, and engineer-curious to the right next page. What we measure (GitHub commit-velocity acceleration), why (47 days before the deck), and the four entry points sized to your week.",
   alternates: { canonical: "/start-here" },
   openGraph: {
     title: "Start Here — GitDealFlow primer",
@@ -31,26 +32,34 @@ const PATHS = [
   },
   {
     minutes: "12 min",
-    label: "Read the Perfect Webinar",
-    desc: "The full epiphany — Big Domino, three objections collapsed, stack, and the four closes. Read it the way you'd read a long-form blog post.",
-    href: "/perfect-webinar",
+    label: "Read the walkthrough",
+    desc: "The full epiphany — core claim, three objections collapsed, stack, and the four closes. Read it the way you'd read a long-form blog post.",
+    href: "/walkthrough",
     badge: "Convinced you want to read more",
     color: "violet",
   },
   {
     minutes: "5 min",
-    label: "Read the 5-minute Perfect Webinar",
+    label: "Read the 5-minute walkthrough",
     desc: "Same argument, condensed to ~820 words. For the buyer who has 5, not 12.",
-    href: "/perfect-webinar/5min",
+    href: "/walkthrough/5min",
     badge: "Short on time",
     color: "amber",
   },
   {
     minutes: "90 sec",
-    label: "Take the routing quiz",
-    desc: "Four questions, then a routed recommendation. Most people overpay for tools they barely use, or skip the one that would have paid for itself.",
+    label: "Read the 90-second elevator",
+    desc: "The whole pitch in 250 words. One core claim, three objections, one stack, one close. For the buyer standing in line.",
+    href: "/walkthrough/90s",
+    badge: "90 seconds flat",
+    color: "emerald",
+  },
+  {
+    minutes: "90 sec",
+    label: "Take the price-tier quiz",
+    desc: "Four questions on check-size, thesis, time, and edge — routed to one of the four pricing tiers. Different from the identity quiz above; this one assumes you're already buying and just need the right rung.",
     href: "/quiz",
-    badge: "Not sure which tier",
+    badge: "Already buying — pick a tier",
     color: "indigo",
   },
 ] as const;
@@ -108,7 +117,7 @@ export default function StartHerePage() {
         "@id": "https://signals.gitdealflow.com/start-here",
         name: "Start Here — GitDealFlow primer",
         description:
-          "Three-minute primer for the developer-investor on what GitDealFlow is, what we measure, and where to begin.",
+          "Three-minute primer on what GitDealFlow is, what it measures, and where to begin.",
         speakable: {
           "@type": "SpeakableSpecification",
           cssSelector: ["h1", "h2"],
@@ -138,13 +147,13 @@ export default function StartHerePage() {
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
         <header className="space-y-4">
-          <nav aria-label="Breadcrumb" className="text-xs text-gray-500">
+          <nav aria-label="Breadcrumb" className="text-xs text-gray-400">
             <Link href="/" className="hover:text-gray-300">Home</Link>
             <span className="mx-2">/</span>
             <span className="text-gray-400">Start Here</span>
           </nav>
           <p className="text-emerald-400 text-xs font-semibold uppercase tracking-wider">
-            Traffic Secrets · Cool Traffic Onramp
+            Cold-traffic onramp
           </p>
           <h1 className="text-3xl sm:text-5xl font-bold text-gray-100 leading-[1.1] tracking-tight">
             Hi. <span className="text-emerald-400">Here&rsquo;s what this is</span> in three minutes.
@@ -180,12 +189,37 @@ export default function StartHerePage() {
             and the dataset is on Zenodo, CC BY 4.0.
           </p>
           <p className="text-gray-300 text-base leading-relaxed">
-            The buyer is the developer-investor — the engineer who reads
-            commit logs for fun and writes €5k–€50k checks on the side.
-            That&rsquo;s why pricing matches the buyer (€9.97/mo, not
-            €1,000/mo) and why we don&rsquo;t have a sales team.
+            This is priced for people who want earlier signal without an
+            enterprise contract. That&rsquo;s why the dashboard is €9.97/mo instead
+            of €1,000/mo, and why you can verify the methodology before anyone
+            tries to sell you harder.
           </p>
         </section>
+
+        <section className="rounded-xl border border-sky-700/30 bg-sky-950/20 p-6 sm:p-7 space-y-3">
+          <p className="text-sky-300 text-xs font-semibold uppercase tracking-wider">
+            What people usually ask next
+          </p>
+          <p className="text-gray-300 text-sm leading-relaxed">
+            If you already know your question, do not keep browsing. Start with the shortest page that answers it.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <Link href="/compare/crunchbase-alternative-for-angel-investors" className="rounded-xl border border-slate-800 bg-slate-900/70 p-4 hover:border-slate-600 transition-colors">
+              <p className="text-gray-100 font-semibold text-sm mb-1">Why not just use Crunchbase?</p>
+              <p className="text-gray-400 text-xs leading-relaxed">Start with the timing-vs-verification wedge.</p>
+            </Link>
+            <Link href="/research" className="rounded-xl border border-slate-800 bg-slate-900/70 p-4 hover:border-slate-600 transition-colors">
+              <p className="text-gray-100 font-semibold text-sm mb-1">Is there real proof?</p>
+              <p className="text-gray-400 text-xs leading-relaxed">Start with the public panel and evidence layer.</p>
+            </Link>
+            <Link href="/buyers-guide" className="rounded-xl border border-slate-800 bg-slate-900/70 p-4 hover:border-slate-600 transition-colors">
+              <p className="text-gray-100 font-semibold text-sm mb-1">What should I buy first?</p>
+              <p className="text-gray-400 text-xs leading-relaxed">Start with the buyer-side evaluation page.</p>
+            </Link>
+          </div>
+        </section>
+
+        <StartHereArchetypeQuiz />
 
         <section className="space-y-4">
           <h2 className="text-2xl font-bold text-gray-100">What you can do next, sized to your week</h2>
@@ -278,10 +312,10 @@ export default function StartHerePage() {
         <section className="space-y-3 border-t border-slate-800 pt-8">
           <h2 className="text-xl font-bold text-gray-100">If you want the long version</h2>
           <ul className="space-y-2 text-gray-300 text-sm leading-relaxed">
-            <li>→ <Link href="/origin" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">Origin</Link> — the Hero&rsquo;s Two Journeys story behind the product.</li>
+            <li>→ <Link href="/origin" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">Origin</Link> — the founder backstory behind the product.</li>
             <li>→ <Link href="/about/founder" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">About the founder</Link> — identity, parables, the polarity that drew you here.</li>
             <li>→ <Link href="/funnels" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">Funnel Hub</Link> — every entry point to the product, mapped on one page.</li>
-            <li>→ <Link href="/dream-100" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">Dream 100</Link> — the 100 voices we read on the engineering-signal frontier.</li>
+            <li>→ <Link href="/target-list" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">Top 100</Link> — the 100 voices we read on the engineering-signal frontier.</li>
             <li>→ <Link href="/distribution" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">Distribution</Link> — every channel where we publish + every feed we expose.</li>
             <li>→ <Link href="/manifesto" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">Manifesto</Link> — what we believe, what we&rsquo;re replacing, who&rsquo;s on the bus.</li>
             <li>→ <Link href="/roadmap" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">Roadmap</Link> — what&rsquo;s shipping next + what&rsquo;s on the public bet.</li>
@@ -289,12 +323,10 @@ export default function StartHerePage() {
           </ul>
         </section>
 
-        <p className="text-gray-500 text-xs leading-relaxed border-t border-slate-800 pt-6">
-          Built for cold visitors per <em>Traffic Secrets</em> Section 2 Ch
-          18 (Cool Traffic) by Russell Brunson (2020). The Cool Traffic
-          visitor doesn&rsquo;t know us yet — this page exists so they
-          don&rsquo;t have to fight the rest of the site to find a place to
-          land.
+        <p className="text-gray-400 text-xs leading-relaxed border-t border-slate-800 pt-6">
+          Built for cold visitors. The cold-traffic visitor doesn&rsquo;t
+          know us yet — this page exists so they don&rsquo;t have to fight
+          the rest of the site to find a place to land.
         </p>
       </div>
     </>

@@ -28,7 +28,7 @@ export default function AffiliatesPage() {
         url: "https://signals.gitdealflow.com/affiliates",
         name: "GitDealFlow Affiliate Program",
         description:
-          "20% lifetime commission on every paid referral. Promote VC Deal Flow Signal to developer-investors, emerging fund managers, and scout angels.",
+          "20% lifetime commission on every paid referral. Promote VC Deal Flow Signal to readers and communities that care about earlier startup signal, clearer timing, and less noise.",
         inLanguage: "en-US",
         isPartOf: { "@id": "https://signals.gitdealflow.com/#website" },
         speakable: {
@@ -134,7 +134,26 @@ export default function AffiliatesPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <nav className="mb-6 text-sm text-gray-500" aria-label="Breadcrumb">
+        <section className="mb-10 rounded-xl border border-sky-700/30 bg-sky-950/20 p-6 sm:p-8 space-y-3">
+          <p className="text-sky-300 text-xs font-semibold uppercase tracking-[0.14em]">
+            Start with the highest-intent routes
+          </p>
+          <p className="text-gray-300 text-sm leading-relaxed max-w-2xl">
+            Use this page if you want the full affiliate economics. But if your real question is swipe copy, proven distribution plays, or active partnership paths, start with the sharper routes first.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/affiliates/funnel-hack" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-sky-600 text-white text-sm font-semibold hover:bg-sky-500 transition-colors">
+              Open the swipe kit →
+            </Link>
+            <Link href="/earned-plays" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              Read earned plays →
+            </Link>
+            <Link href="/partners" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              See partner tracks →
+            </Link>
+          </div>
+        </section>
+        <nav className="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300 transition-colors">
             All Sectors
           </Link>
@@ -150,9 +169,9 @@ export default function AffiliatesPage() {
           data-agent-summary
         >
           A lifetime-recurring affiliate program for newsletter writers,
-          developer-investor influencers, and venture-tooling reviewers. €399
-          on every Sector Sweep referral. €19.40/mo on every Insider Circle
-          subscriber, for as long as they stay subscribed.
+          community operators, and venture-tooling reviewers whose readers care
+          about earlier startup signal. €399 on every Sector Sweep referral.
+          €19.40/mo on every Insider Circle subscriber, for as long as they stay subscribed.
         </p>
 
         <a
@@ -163,6 +182,60 @@ export default function AffiliatesPage() {
         >
           Join the program at gitdealflow.refgrow.com →
         </a>
+
+        {/* Affiliate program quick-nav. Three sub-pages live: Leaderboard
+            (top 10 earners, anonymized), Swipe Kit (6 clone-ready content
+            templates with the Sneaky Affiliate Funnel mechanic), and
+            Top Partners (50-publisher Dream-50 roster). */}
+        <nav
+          className="mb-12 grid grid-cols-1 sm:grid-cols-3 gap-3"
+          aria-label="Affiliate sub-pages"
+        >
+          <Link
+            href="/affiliates/leaderboard"
+            className="rounded-lg border border-slate-800 bg-slate-900/60 hover:border-amber-700/40 hover:bg-amber-950/10 p-4 transition-colors"
+          >
+            <p className="text-amber-300 text-xs font-medium uppercase tracking-wider mb-1">
+              Leaderboard
+            </p>
+            <p className="text-gray-100 text-sm font-semibold mb-1">
+              Top 10 earners
+            </p>
+            <p className="text-gray-400 text-xs leading-relaxed">
+              Anonymized monthly snapshot. €5,200+ Platinum, 11.3% top CVR.
+            </p>
+          </Link>
+          <Link
+            href="/affiliates/funnel-hack"
+            className="rounded-lg border border-slate-800 bg-slate-900/60 hover:border-emerald-700/40 hover:bg-emerald-950/10 p-4 transition-colors"
+          >
+            <p className="text-emerald-300 text-xs font-medium uppercase tracking-wider mb-1">
+              Swipe Kit
+            </p>
+            <p className="text-gray-100 text-sm font-semibold mb-1">
+              6 clone-ready templates
+            </p>
+            <p className="text-gray-400 text-xs leading-relaxed">
+              Tweet thread + LinkedIn + blog + newsletter + podcast + 3-email
+              sequence. Free book as bait, 60-day cookie.
+            </p>
+          </Link>
+          <Link
+            href="/affiliates/top-partners"
+            className="rounded-lg border border-slate-800 bg-slate-900/60 hover:border-sky-700/40 hover:bg-sky-950/10 p-4 transition-colors"
+          >
+            <p className="text-sky-300 text-xs font-medium uppercase tracking-wider mb-1">
+              Dream 50
+            </p>
+            <p className="text-gray-100 text-sm font-semibold mb-1">
+              Publishers we want
+            </p>
+            <p className="text-gray-400 text-xs leading-relaxed">
+              50 named newsletter writers, podcast hosts, communities — with
+              outreach status and pitch templates.
+            </p>
+          </Link>
+        </nav>
 
         <section className="mb-12" aria-label="Earnings examples">
           <h2 className="text-xl font-semibold text-gray-100 mb-4">
@@ -437,7 +510,7 @@ export default function AffiliatesPage() {
         {/* BRUNSON SWIPE KIT — added 2026-05-05 per Russell audit (Traffic #17). */}
         {/* Pre-written copy across 6 channels. Affiliates do zero writing. */}
         {/* ============================================================ */}
-        <section className="mb-12" aria-label="Brunson swipe kit">
+        <section className="mb-12" aria-label="Affiliate swipe kit">
           <h2 className="text-xl font-semibold text-gray-100 mb-3">
             The swipe kit — 6 channels, zero writing required
           </h2>
@@ -448,9 +521,9 @@ export default function AffiliatesPage() {
             already reads you. Replace <code className="bg-slate-800 text-sky-400 px-1.5 py-0.5 rounded text-xs">YOURLINK</code> with
             your unique referral URL from the Refgrow dashboard.
           </p>
-          <p className="text-gray-500 text-xs leading-relaxed mb-6">
+          <p className="text-gray-400 text-xs leading-relaxed mb-6">
             Run a newsletter, podcast, or community? Check the{" "}
-            <Link href="/affiliates/dream-50" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">
+            <Link href="/affiliates/top-partners" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">
               Dream 50 publisher roster
             </Link>{" "}
             — 50 named partners we&apos;d like to hear from, with the exact
@@ -465,7 +538,7 @@ export default function AffiliatesPage() {
             <pre className="text-gray-300 text-sm leading-relaxed whitespace-pre-wrap font-sans bg-slate-950 border border-slate-800 rounded p-4 mb-3">{`I keep telling people about this. GitDealFlow scans 4,200 GitHub orgs every Sunday and tells you which startups are accelerating before they raise. The pattern preceded 219 confirmed fundraises by 21–47 days in their SSRN paper.
 
 Free Sunday digest, no card: YOURLINK`}</pre>
-            <p className="text-gray-500 text-xs">~245 chars. Add the SSRN link if you have room. Pin if you have a small audience — the share rate compounds.</p>
+            <p className="text-gray-400 text-xs">~245 chars. Add the SSRN link if you have room. Pin if you have a small audience — the share rate compounds.</p>
           </div>
 
           {/* Newsletter recommendation */}
@@ -480,7 +553,7 @@ Every Sunday, the Data Nerd sends 5 startups whose GitHub commit velocity just s
 If you spend any time on alt-data for venture, this is the lowest-friction one I've found.
 
 Free Sunday digest → YOURLINK`}</pre>
-            <p className="text-gray-500 text-xs">Newsletter writers: drop this into a "what I'm reading" section. Conversion runs 3-7% on warm investor lists.</p>
+            <p className="text-gray-400 text-xs">Newsletter writers: drop this into a "what I'm reading" section. Conversion runs 3-7% on warm investor lists.</p>
           </div>
 
           {/* dev.to / Substack */}
@@ -495,7 +568,7 @@ Loved this post and want to find startups like the ones in it before they raise?
 If you write checks, scout for a fund, or just like watching engineering data, the digest is free forever: YOURLINK
 
 (Disclosure: affiliate link — costs you nothing, helps me keep writing.)`}</pre>
-            <p className="text-gray-500 text-xs">FTC-compliant disclosure included. Don&apos;t edit it out — it kills trust faster than it lifts conversion.</p>
+            <p className="text-gray-400 text-xs">FTC-compliant disclosure included. Don&apos;t edit it out — it kills trust faster than it lifts conversion.</p>
           </div>
 
           {/* Discord / Slack community */}
@@ -508,7 +581,7 @@ If you write checks, scout for a fund, or just like watching engineering data, t
 GitDealFlow tracks GitHub commit velocity across 4,200 startup orgs and surfaces the ones accelerating fast. The free Sunday digest gives you 5 names a week — they have a research paper on SSRN with 219 confirmed fundraises that the signal preceded by 21-47 days.
 
 free, no card, weekly email: YOURLINK`}</pre>
-            <p className="text-gray-500 text-xs">For #investors, #vc, #startups channels. Drop once per quarter per community max.</p>
+            <p className="text-gray-400 text-xs">For #investors, #vc, #startups channels. Drop once per quarter per community max.</p>
           </div>
 
           {/* Cold email — for established affiliates */}
@@ -529,7 +602,7 @@ I subscribed last week. Haven't pulled the trigger on anything yet but the names
 Sign up here if you want: YOURLINK
 
 [Your name]`}</pre>
-            <p className="text-gray-500 text-xs">Highest-converting channel for affiliates with small but real investor networks. Send to 5-10 close contacts, not 100.</p>
+            <p className="text-gray-400 text-xs">Highest-converting channel for affiliates with small but real investor networks. Send to 5-10 close contacts, not 100.</p>
           </div>
 
           {/* Reddit / IH */}
@@ -540,7 +613,7 @@ Sign up here if you want: YOURLINK
             <pre className="text-gray-300 text-sm leading-relaxed whitespace-pre-wrap font-sans bg-slate-950 border border-slate-800 rounded p-4 mb-3">{`On the question of finding startups before consensus: the cleanest leading indicator I've found is GitHub commit velocity. There's a service called VC Deal Flow Signal (search for it — username gives away free Sunday digest with 5 names/wk). They published an SSRN paper showing 219 confirmed fundraises were preceded by acceleration spikes by an average of 21-47 days.
 
 Not affiliated [or: affiliate disclosure required], just one of the cheapest sources of signal I've found.`}</pre>
-            <p className="text-gray-500 text-xs">For subs that auto-remove links (r/venturecapital, r/EntrepreneurRideAlong). Lower CTR but won&apos;t get auto-modded.</p>
+            <p className="text-gray-400 text-xs">For subs that auto-remove links (r/venturecapital, r/EntrepreneurRideAlong). Lower CTR but won&apos;t get auto-modded.</p>
           </div>
 
           {/* Brand assets */}

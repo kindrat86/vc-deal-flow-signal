@@ -1,0 +1,147 @@
+{
+  "created_at": "2026-05-24",
+  "theme": "wave-14-response-tracking",
+  "status_legend": [
+    "not-started",
+    "posted",
+    "replied",
+    "ignored",
+    "follow-up-due",
+    "escalated",
+    "skipped"
+  ],
+  "result_legend": [
+    "no-response",
+    "positive-signal",
+    "neutral",
+    "negative",
+    "asked-for-methodology",
+    "asked-for-sample",
+    "asked-for-difference-vs-crunchbase",
+    "asked-for-agent-integration",
+    "intro-offered",
+    "mention-detected"
+  ],
+  "targets": [
+    {
+      "priority": 1,
+      "target": "Fred Wilson / AVC comments",
+      "platform": "X / blog comments",
+      "core_page": "/answers/deal-flow-timing-vs-verification",
+      "status": "not-started",
+      "result": "no-response",
+      "thread_url": "",
+      "snippet_key": "timing-vs-verification-one-liner",
+      "follow_up_due": "",
+      "next_move": "Watch for sourcing / alt-data thread"
+    },
+    {
+      "priority": 1,
+      "target": "Hunter Walk",
+      "platform": "X",
+      "core_page": "/answers/deal-flow-timing-vs-verification",
+      "status": "not-started",
+      "result": "no-response",
+      "thread_url": "",
+      "snippet_key": "timing-vs-verification-reply",
+      "follow_up_due": "",
+      "next_move": "Watch for seed sourcing / founder-discovery thread"
+    },
+    {
+      "priority": 1,
+      "target": "Peter Walker",
+      "platform": "X / Carta ecosystem",
+      "core_page": "/answers/what-is-startup-engineering-momentum",
+      "status": "not-started",
+      "result": "no-response",
+      "thread_url": "",
+      "snippet_key": "engineering-momentum-distinction",
+      "follow_up_due": "",
+      "next_move": "Use under metrics / fundraising pattern post"
+    },
+    {
+      "priority": 1,
+      "target": "Gergely Orosz",
+      "platform": "X / newsletter comments",
+      "core_page": "/answers/how-angel-investors-use-github-signals",
+      "status": "not-started",
+      "result": "no-response",
+      "thread_url": "",
+      "snippet_key": "engineering-behavior-translation",
+      "follow_up_due": "",
+      "next_move": "Use under engineering-output / org-change post"
+    },
+    {
+      "priority": 2,
+      "target": "Packy McCormick",
+      "platform": "newsletter / X",
+      "core_page": "/answers/what-is-startup-engineering-momentum",
+      "status": "not-started",
+      "result": "no-response",
+      "thread_url": "",
+      "snippet_key": "category-thesis",
+      "follow_up_due": "",
+      "next_move": "Send short newsletter angle or reply on pattern-recognition thread"
+    },
+    {
+      "priority": 2,
+      "target": "Greg Isenberg",
+      "platform": "X / podcast / newsletter",
+      "core_page": "/answers/github-deal-flow-for-investors",
+      "status": "not-started",
+      "result": "no-response",
+      "thread_url": "",
+      "snippet_key": "github-becomes-deal-flow",
+      "follow_up_due": "",
+      "next_move": "Use under builder-investor crossover post"
+    },
+    {
+      "priority": 2,
+      "target": "Shaan Puri orbit",
+      "platform": "X",
+      "core_page": "https://gitdealflow.com/report",
+      "status": "not-started",
+      "result": "no-response",
+      "thread_url": "",
+      "snippet_key": "output-shape-proof",
+      "follow_up_due": "",
+      "next_move": "Use under workflow / curation / noise thread"
+    },
+    {
+      "priority": 2,
+      "target": "StrictlyVC / Term Sheet / Axios Pro Rata",
+      "platform": "email / pitch",
+      "core_page": "/answers/deal-flow-timing-vs-verification",
+      "status": "not-started",
+      "result": "no-response",
+      "thread_url": "",
+      "snippet_key": "media-one-link-pitch",
+      "follow_up_due": "",
+      "next_move": "Send one short pitch when relevant story window opens"
+    },
+    {
+      "priority": 2,
+      "target": "20VC / Full Ratchet / Invest Like the Best",
+      "platform": "email / guest angle",
+      "core_page": "/compare/best-alternative-data-tools-for-angel-investors",
+      "status": "not-started",
+      "result": "no-response",
+      "thread_url": "",
+      "snippet_key": "alt-data-category-framing",
+      "follow_up_due": "",
+      "next_move": "Send one-angle podcast pitch"
+    },
+    {
+      "priority": 1,
+      "target": "MCP / GitHub runtime threads",
+      "platform": "GitHub / directories",
+      "core_page": "/integrations/best-mcp-server-for-vc-research",
+      "status": "not-started",
+      "result": "no-response",
+      "thread_url": "",
+      "snippet_key": "mcp-fit-snippet",
+      "follow_up_due": "",
+      "next_move": "Reply only in context-rich threads"
+    }
+  ]
+}

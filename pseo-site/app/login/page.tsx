@@ -48,7 +48,7 @@ export default async function LoginPage() {
         </div>
 
         <div className="mt-8 text-center">
-          <p className="text-gray-500 text-sm mb-2">
+          <p className="text-gray-400 text-sm mb-2">
             Don&apos;t have a subscription yet?
           </p>
           <Link

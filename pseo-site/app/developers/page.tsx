@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { HreflangLinks } from "@/components/HreflangLinks";
+import { getHreflangLanguages } from "@/lib/hreflang";
 
 export const metadata: Metadata = {
   title: "Developers — Deal Flow API, MCP Server, JSON & CSV Endpoints",
   description:
-    "Developer documentation for VC Deal Flow Signal: MCP server tools, JSON/CSV API, OpenAPI schema, RSS feed, llms.txt, and webhook endpoints. Build deal flow automation on top of engineering signals.",
+    "Developer docs for GitDealFlow: MCP server, JSON/CSV API, OpenAPI, agent-ready startup-signal workflows, and routing into proof and buyer-side evaluation.",
+  // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
   alternates: {
     canonical: "/developers",
   },
@@ -14,6 +17,20 @@ export default function DevelopersPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://signals.gitdealflow.com/developers#webpage",
+        url: "https://signals.gitdealflow.com/developers",
+        name: "Developers — VC Deal Flow Signal API & MCP",
+        description:
+          "MCP server, JSON/CSV API, and OpenAPI schema for building deal flow automation on top of engineering acceleration signals.",
+        inLanguage: "en-US",
+        isAccessibleForFree: true,
+        speakable: {
+          "@type": "SpeakableSpecification",
+          cssSelector: ["[data-speakable]", "h1", "h2"],
+        },
+      },
       {
         "@type": "TechArticle",
         headline: "VC Deal Flow Signal Developer Documentation",
@@ -158,12 +175,16 @@ export default function DevelopersPage() {
 
   return (
     <>
+      <HreflangLinks
+        canonical="https://signals.gitdealflow.com/developers"
+        languages={getHreflangLanguages("/developers")}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <nav className="mb-6 text-sm text-gray-500" aria-label="Breadcrumb">
+        <nav className="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300 transition-colors">
             All Sectors
           </Link>
@@ -177,8 +198,39 @@ export default function DevelopersPage() {
         <p className="text-gray-400 text-base leading-relaxed mb-10 max-w-2xl">
           Three ways to build on top of VC Deal Flow Signal: an MCP server for
           AI assistants, raw JSON and CSV endpoints for automation, and an
-          OpenAPI schema for generating typed clients.
+          OpenAPI schema for generating typed clients. If you are here from an
+          AI or agent workflow, this page should take you from machine-readable
+          access into the proof and buyer pages that explain what the signal is worth.
         </p>
+
+        <section className="mb-10 rounded-2xl border border-amber-500/30 bg-amber-500/5 p-6 sm:p-8">
+          <p className="text-amber-300 text-xs font-semibold uppercase tracking-[0.14em] mb-2">
+            Start with the highest-intent routes
+          </p>
+          <p className="text-gray-300 text-sm leading-relaxed mb-4 max-w-2xl">
+            Use this page if you want the full developer surface. But if your real question is builder fit, install path, or per-request pricing, start with the sharper entry points first.
+          </p>
+          <div className="flex flex-wrap gap-3 mb-5">
+            <Link href="/for-builders" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-amber-500 text-slate-950 text-sm font-semibold hover:bg-amber-400 transition-colors">
+              Read the builder offer →
+            </Link>
+            <Link href="/install" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              Install the bookmarklet →
+            </Link>
+            <Link href="/agents/credits" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              See agent credits →
+            </Link>
+          </div>
+          <p className="text-amber-300 text-xs font-semibold uppercase tracking-[0.14em] mb-2">
+            Quote-ready takeaway
+          </p>
+          <blockquote className="text-gray-100 text-lg leading-relaxed border-l-2 border-amber-400/60 pl-4">
+            GitDealFlow is useful to developers because it exposes startup-signal data in machine-readable formats an agent can query directly without private API friction.
+          </blockquote>
+          <p className="mt-4 text-xs text-gray-400 leading-relaxed">
+            If you cite this page externally, use the takeaway above with the page URL and then route technical readers into the MCP or OpenAPI sections below.
+          </p>
+        </section>
 
         <section className="mb-12" aria-label="MCP server">
           <h2 className="text-xl font-semibold text-gray-100 mb-4">
@@ -252,9 +304,15 @@ export default function DevelopersPage() {
             </Link>
             <Link
               href="https://glama.ai/mcp/servers"
-              className="text-gray-500 hover:text-gray-300 font-medium transition-colors"
+              className="text-gray-400 hover:text-gray-300 font-medium transition-colors"
             >
               Glama listing
+            </Link>
+            <Link
+              href="/research"
+              className="text-gray-400 hover:text-gray-300 font-medium transition-colors"
+            >
+              Research panel
             </Link>
           </div>
         </section>
@@ -418,14 +476,30 @@ export default function DevelopersPage() {
           </h2>
           <p className="text-gray-400 text-sm mb-5">
             If you are integrating VC Deal Flow Signal into an investor tool,
-            CRM, or research workflow, the fastest way to get help is email.
+            CRM, or research workflow, the fastest way to get help is email. If
+            you still need human-facing proof before integrating, read the
+            research panel or the buyer's guide first.
           </p>
-          <Link
-            href="mailto:signal@gitdealflow.com"
-            className="inline-flex items-center justify-center px-5 py-2 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-medium transition-colors"
-          >
-            Email signal@gitdealflow.com
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <Link
+              href="mailto:signal@gitdealflow.com"
+              className="inline-flex items-center justify-center px-5 py-2 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-medium transition-colors"
+            >
+              Email signal@gitdealflow.com
+            </Link>
+            <Link
+              href="/research"
+              className="inline-flex items-center justify-center px-5 py-2 rounded-lg border border-slate-700 hover:border-slate-500 text-gray-200 text-sm font-medium transition-colors"
+            >
+              Read the research panel
+            </Link>
+            <Link
+              href="/buyers-guide"
+              className="inline-flex items-center justify-center px-5 py-2 rounded-lg border border-slate-700 hover:border-slate-500 text-gray-200 text-sm font-medium transition-colors"
+            >
+              Read the buyer's guide
+            </Link>
+          </div>
         </div>
       </div>
     </>

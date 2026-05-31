@@ -77,7 +77,7 @@ export default function Header() {
         </button>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-1">
+        <nav aria-label="Primary" className="hidden md:flex items-center gap-1">
           {NAV.map((item) => {
             const active = isActive(pathname, item.href);
             const isDashboard = item.href === "/dashboard";
@@ -110,7 +110,7 @@ export default function Header() {
 
       {/* Mobile menu */}
       {open && (
-        <nav className="md:hidden border-t border-slate-800 bg-slate-950 px-4 py-3 flex flex-col gap-0.5">
+        <nav aria-label="Mobile" className="md:hidden border-t border-slate-800 bg-slate-950 px-4 py-3 flex flex-col gap-0.5">
           {NAV.map((item) => {
             const active = isActive(pathname, item.href);
             const isDashboard = item.href === "/dashboard";

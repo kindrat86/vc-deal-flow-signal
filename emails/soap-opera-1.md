@@ -1,28 +1,28 @@
 ---
-subject: The deal flow signal hiding in plain sight
-preview: I watched a commit graph spike. Three weeks later, Series A.
+subject: See startups heating up before they raise
+preview: I watched a startup's engineering pick up. Three weeks later, Series A.
 delay_days_after_signup: 0
 ---
 
-Welcome to VC Deal Flow Signal.
+Welcome. First, the thing people ask me up front: I'm not a VC, and I'm not competing with you for deals. GitDealFlow is a tool. It watches startups' public GitHub engineering activity and flags the ones quietly heating up, in your sectors, before they're raising or in the press. You don't read code or crunch anything — it surfaces them, you just look.
 
-I want to tell you why I built this, because it starts with a mistake I kept making.
+Here's why I built it, because it starts with a mistake I kept making.
 
-I was tracking a small fintech startup. Nothing special on the surface. No press, no AngelList buzz, no warm intros circulating. But their GitHub told a different story.
+I was watching a small fintech startup. Nothing special on the surface. No press, no AngelList buzz, no warm intros circulating. But their GitHub told a different story.
 
-In two weeks, their commit velocity tripled. Four new contributors joined. They spun up three new infrastructure repos.
+In two weeks, their engineering output tripled. Four new contributors joined. They spun up three new infrastructure repos. They were clearly shipping faster.
 
 I flagged it in my notes.
 
 Three weeks later, they announced a $4M Series A led by a top-tier fund.
 
-The investors who got in had seen something I missed. Or maybe they just knew someone. That's when it clicked: the signal was right there in the commit graph the whole time. Public. Free. Updating in real time.
+The investors who got in had seen something I missed. Or maybe they just knew someone. That's when it clicked: the signal was right there in plain sight the whole time. Public. Free. Updating in real time.
 
 Nobody was reading it.
 
-So I built a system that does.
+So I built a tool that does.
 
-Every month, I'll send you the top startups showing unusual engineering acceleration. Commit velocity spikes, contributor surges, new infrastructure repos. The patterns that precede fundraises, product launches, and breakout moments.
+Every month, I'll send you the startups that are heating up early — shipping faster, pulling in new contributors, standing up new infrastructure. The kind of early engineering signal that tends to show up before fundraises, product launches, and breakout moments.
 
 Tomorrow, I want to challenge something you probably believe about your current deal flow.
 

@@ -1,0 +1,22 @@
+Subject: Private GitHub-signal pulls for FJ Labs portfolio — anonymous data collaboration
+
+Hi Fabrice,
+
+I run a free public dataset that tracks GitHub engineering activity across 100 startups and 19 sectors — ranked weekly by commit velocity acceleration. The thesis: a simultaneous spike in commits and active contributors is a reliable leading indicator of a fundraise or breakout launch, typically by 3-6 weeks.
+
+Current week: airbytehq hit +866% commit velocity over 14 days — 1,864 commits, 100 contributors. Full leaderboard: https://signals.gitdealflow.com
+
+Concrete proposal: each week I pull a private GitHub-signal report on any 20–50 companies you specify — portfolio monitoring, current diligence list, or competitive watch list. Output is a single PDF, 5–10 minutes to skim, covering commit velocity change, contributor delta, sustained-acceleration flags, and any deploy-frequency spikes.
+
+No cost. No public credit on either side. I operate anonymously as "The Data Nerd" so attribution is moot in both directions.
+
+Two reasons this might be worth a short reply: (1) FJ Labs' portfolio breadth means you have a signal-noise filtering problem that the public dashboard does not solve at scale; (2) the methodology evolves week to week, and direct feedback from a portfolio-scale operator would sharpen it materially in ways that public threads will not.
+
+Happy to send a sample report on any 5 companies of your choosing within 48 hours of a reply — purely as a concrete demonstration.
+
+If you would prefer not to hear from me, just reply and I will remove you immediately.
+
+Best,
+The Data Nerd
+signal@gitdealflow.com
+https://gitdealflow.com

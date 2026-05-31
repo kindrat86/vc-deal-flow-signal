@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "VC Term Highlighter — GitDealFlow Glossary",
+  "version": "0.1.1",
+  "description": "Highlights VC terms (SAFE, runway, burn multiple, magic number, …) on any page. Click a term to jump to the full definition on GitDealFlow.",
+  "homepage_url": "https://signals.gitdealflow.com/glossary",
+  "permissions": ["storage"],
+  "host_permissions": [],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "exclude_matches": [
+        "https://*.gitdealflow.com/*",
+        "https://gitdealflow.com/*"
+      ],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["glossary.json"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "VC Term Highlighter",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon-16.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  }
+}

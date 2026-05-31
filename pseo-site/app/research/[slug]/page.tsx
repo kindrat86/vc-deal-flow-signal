@@ -3,9 +3,16 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { FINDINGS, getFindingBySlug, getAllFindingSlugs } from "@/content/research-findings";
 import { getJaFindingBySlug } from "@/content/ja-research";
+import {
+  citationsForSection,
+  citationToJsonLd,
+} from "@/content/research-citations";
 import { getDataLastModified } from "@/lib/data";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import RelatedLinks from "@/components/RelatedLinks";
+import { getRelatedGroupsForFinding } from "@/lib/finding-related";
+import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 
 const SITE = "https://signals.gitdealflow.com";
 const SSRN_URL = "https://ssrn.com/abstract=6606558";
@@ -116,6 +123,16 @@ export default async function ResearchFindingPage({ params }: PageProps) {
       },
     }));
 
+  // External scholarly citations. Real, peer-reviewed prior work the SSRN
+  // paper builds on, mapped to this finding's section. Emitted as
+  // ScholarlyArticle entries inside citation[] so Google Scholar, Semantic
+  // Scholar, OpenAlex, and Connected Papers can wire this finding into the
+  // broader literature graph (F32 — extends ScholarlyArticle.citation[] with
+  // verifiable DOIs in top-tier venues).
+  const externalCitations = citationsForSection(finding.section).map(
+    citationToJsonLd,
+  );
+
   const articleJsonLd = {
     "@context": "https://schema.org",
     "@type": "ScholarlyArticle",
@@ -155,19 +172,10 @@ export default async function ResearchFindingPage({ params }: PageProps) {
         ],
       },
       ...siblingCitations,
+      ...externalCitations,
     ],
-    citationCount: siblingCitations.length + 1,
-    author: {
-      "@type": "Person",
-      "@id": `${SITE}/about#author`,
-      name: "The Data Nerd",
-      url: `${SITE}/about`,
-      sameAs: [
-        "https://orcid.org/0009-0002-2222-4112",
-        "https://x.com/data_nerd",
-        "https://github.com/kindrat86",
-      ],
-    },
+    citationCount: siblingCitations.length + externalCitations.length + 1,
+    author: DATA_NERD_AUTHOR_REF,
     publisher: {
       "@type": "Organization",
       "@id": "https://gitdealflow.com/#organization",
@@ -188,13 +196,7 @@ export default async function ResearchFindingPage({ params }: PageProps) {
       name: "VC Deal Flow Signal Editorial",
       url: `${SITE}/about`,
     },
-    accountablePerson: {
-      "@type": "Person",
-      "@id": `${SITE}/about#person`,
-      name: "The Data Nerd",
-      url: `${SITE}/about`,
-      sameAs: ["https://orcid.org/0009-0002-2222-4112"],
-    },
+    accountablePerson: DATA_NERD_AUTHOR_REF,
     creditText: `The Data Nerd, "${PAPER_TITLE}", VC Deal Flow Signal (GitDealFlow), 2026, DOI 10.2139/ssrn.6606558, CC BY 4.0.`,
     copyrightHolder: { "@id": "https://gitdealflow.com/#organization" },
     copyrightYear: 2026,
@@ -315,12 +317,7 @@ export default async function ResearchFindingPage({ params }: PageProps) {
             datePublished: "2026-04-19",
             appearance: SSRN_URL,
             firstAppearance: SSRN_URL,
-            author: {
-              "@type": "Person",
-              name: "The Data Nerd",
-              url: `${SITE}/about`,
-              sameAs: ["https://orcid.org/0009-0002-2222-4112"],
-            },
+            author: DATA_NERD_AUTHOR_REF,
           },
           author: {
             "@type": "Organization",
@@ -401,7 +398,7 @@ export default async function ResearchFindingPage({ params }: PageProps) {
           >
             {finding.title}
           </h1>
-          <p className="text-xs text-gray-500">
+          <p className="text-xs text-gray-400">
             From{" "}
             <a
               className="text-sky-400 hover:text-sky-300"
@@ -494,12 +491,65 @@ export default async function ResearchFindingPage({ params }: PageProps) {
               </a>
               .
             </li>
-            <li className="text-xs text-gray-500 pt-2 border-t border-slate-800">
+            <li className="text-xs text-gray-400 pt-2 border-t border-slate-800">
               On this site, &ldquo;engineering acceleration&rdquo; refers to a
               quantitative GitHub momentum signal — unrelated to startup
               accelerator programs (Y Combinator, Techstars, 500 Global).
             </li>
           </ul>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-lg font-semibold text-gray-100 mb-3">
+            References
+          </h2>
+          <p className="text-gray-400 text-xs mb-4">
+            Peer-reviewed prior work this finding builds on. Each citation
+            resolves to a DOI in a top-tier venue and appears in the
+            page&rsquo;s structured data as a{" "}
+            <code className="text-sky-400">ScholarlyArticle</code> citation
+            edge.{" "}
+            <a
+              className="text-sky-400 hover:text-sky-300"
+              href="/research/citations.bib"
+            >
+              Download all references as BibTeX
+            </a>
+            .
+          </p>
+          <ol className="text-gray-300 text-sm leading-relaxed space-y-3 list-decimal pl-5">
+            {citationsForSection(finding.section).map((c) => (
+              <li key={c.bibKey}>
+                <span className="text-gray-200">{c.authors.join(", ")}</span>
+                {" ("}
+                {c.year}
+                {"). "}
+                <a
+                  className="text-sky-400 hover:text-sky-300"
+                  href={c.url}
+                  target="_blank"
+                  rel="noopener"
+                >
+                  {c.headline}
+                </a>
+                . <em className="text-gray-400">{c.venue}</em>
+                {c.citeText ? `, ${c.citeText}` : ""}.{" "}
+                {c.doi ? (
+                  <span className="text-gray-500 text-xs">
+                    DOI:{" "}
+                    <a
+                      className="text-sky-500 hover:text-sky-400"
+                      href={`https://doi.org/${c.doi}`}
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      {c.doi}
+                    </a>
+                  </span>
+                ) : null}
+              </li>
+            ))}
+          </ol>
         </section>
 
         <section className="mb-10">
@@ -520,7 +570,7 @@ Retrieved from ${SITE}/research/${slug}`}
               href={`/research/${prev.slug}`}
               className="group block rounded-lg border border-slate-800 bg-slate-900 p-4 hover:border-slate-600 hover:bg-slate-800/60 transition-all"
             >
-              <p className="text-gray-500 text-xs mb-1">
+              <p className="text-gray-400 text-xs mb-1">
                 ← Finding {prev.n} of 30
               </p>
               <p className="text-gray-200 text-sm group-hover:text-sky-400 transition-colors">
@@ -535,7 +585,7 @@ Retrieved from ${SITE}/research/${slug}`}
               href={`/research/${next.slug}`}
               className="group block rounded-lg border border-slate-800 bg-slate-900 p-4 hover:border-slate-600 hover:bg-slate-800/60 transition-all sm:text-right"
             >
-              <p className="text-gray-500 text-xs mb-1">
+              <p className="text-gray-400 text-xs mb-1">
                 Finding {next.n} of 30 →
               </p>
               <p className="text-gray-200 text-sm group-hover:text-sky-400 transition-colors">

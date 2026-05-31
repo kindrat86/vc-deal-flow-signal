@@ -1,636 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- /perfect-webinar — Perfect Webinar text-VSL (Expert Secrets §10), shipped 2026-05-05 per Russell audit. Anonymity-compatible: text-only, no live event, no face. Stack at minute-60. -->
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The 47-Day Window — How GitHub Commit Velocity Predicts Series A Rounds | The Perfect Walkthrough</title>
-  <meta name="description" content="A 60-minute written walkthrough of the SSRN-published methodology: how engineering acceleration on GitHub precedes 219 confirmed fundraises by 21 to 47 days. Three secrets. One stack. Zero live calls.">
+  <title>The methodology walkthrough — GitDealFlow</title>
+  <meta name="description" content="A long-form written walkthrough of the GitDealFlow methodology. This is the deep proof page, not the first conversion step.">
   <link rel="canonical" href="https://gitdealflow.com/perfect-webinar" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-  <meta property="og:title" content="The 47-Day Window — Live Walkthrough by The Data Nerd" />
-  <meta property="og:description" content="60-minute written walkthrough of the SSRN methodology. Three secrets, one stack, no scheduled call." />
-  <meta property="og:type" content="article" />
+  <meta property="og:title" content="The methodology walkthrough — GitDealFlow" />
+  <meta property="og:description" content="A long-form written walkthrough of the GitDealFlow methodology and why the signal matters." />
+  <meta property="og:type" content="website" />
   <meta property="og:url" content="https://gitdealflow.com/perfect-webinar" />
-  <meta property="og:image" content="https://signals.gitdealflow.com/opengraph-image">
+  <meta property="og:image" content="https://signals.gitdealflow.com/opengraph-image" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@data_nerd" />
-  <meta name="twitter:image" content="https://signals.gitdealflow.com/opengraph-image">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Article",
-        "@id": "https://gitdealflow.com/perfect-webinar#article",
-        "headline": "The 47-Day Window — How GitHub Commit Velocity Predicts Series A Rounds",
-        "description": "A 60-minute written walkthrough of the SSRN-published methodology, structured as a Perfect Webinar: one big domino, three false-belief breakdowns, the stack, and the close.",
-        "url": "https://gitdealflow.com/perfect-webinar",
-        "author": { "@id": "https://signals.gitdealflow.com/about#person" },
-        "publisher": { "@id": "https://gitdealflow.com/#organization" },
-        "datePublished": "2026-05-05",
-        "dateModified": "2026-05-05",
-        "inLanguage": "en-US",
-        "isBasedOn": "https://ssrn.com/abstract=6606558",
-        "wordCount": "8400",
-        "timeRequired": "PT60M"
-      },
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://gitdealflow.com/" },
-          { "@type": "ListItem", "position": 2, "name": "Perfect Webinar", "item": "https://gitdealflow.com/perfect-webinar" }
-        ]
-      },
-      {
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Is this a live webinar?",
-            "acceptedAnswer": { "@type": "Answer", "text": "No. It's a 60-minute written walkthrough you read on your timeline. The Data Nerd ships in writing, not on Zoom — anonymity is part of the product. Re-readable, paste-able into your notes, no scheduling." }
-          },
-          {
-            "@type": "Question",
-            "name": "How long does it take?",
-            "acceptedAnswer": { "@type": "Answer", "text": "60 minutes if you read every word. 12 minutes if you skim the chapter clocks. Either way, you walk out with a working framework you can run on any GitHub org by Wednesday." }
-          },
-          {
-            "@type": "Question",
-            "name": "Do I have to buy anything?",
-            "acceptedAnswer": { "@type": "Answer", "text": "No. The walkthrough is free, the SSRN paper is free, the dataset on Zenodo is free, the MCP server is free. The Insider Circle stack at minute 60 is optional." }
-          }
-        ]
-      }
-    ]
-  }
-  </script>
+  <meta name="twitter:image" content="https://signals.gitdealflow.com/opengraph-image" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="stylesheet" href="/styles.css">
   <style>
-    html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
-    .chapter-clock { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.25rem 0.75rem; border-radius: 9999px; background: rgba(255,107,26,0.1); border: 1px solid rgba(255,107,26,0.25); color: #ff9966; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.05em; }
-    .trial-close { font-style: italic; color: #94a3b8; padding-left: 1rem; border-left: 2px solid rgba(255,107,26,0.4); margin: 2rem 0; }
-
-    /* Secret cards — three color-coded false-belief breakdowns */
-    .secret-card {
-      position: relative;
-      border-radius: 1rem;
-      padding: 2rem 2rem 1.5rem;
-      margin-bottom: 2rem;
-      border: 1px solid rgba(148, 163, 184, 0.12);
-      border-left-width: 4px;
-      transition: transform 200ms ease, box-shadow 200ms ease;
-      overflow: hidden;
-    }
-    .secret-card:hover { transform: translateY(-2px); box-shadow: 0 14px 40px -16px rgba(0,0,0,0.6); }
-    .secret-card::before {
-      content: ""; position: absolute; inset: 0;
-      background: linear-gradient(135deg, var(--secret-tint, rgba(56,189,248,0.06)) 0%, rgba(15,23,42,0) 60%);
-      pointer-events: none;
-    }
-    .secret-1 { --secret-tint: rgba(56, 189, 248, 0.10); border-left-color: rgb(56, 189, 248); background: linear-gradient(180deg, rgb(15,23,42) 0%, rgb(7,15,30) 100%); }
-    .secret-2 { --secret-tint: rgba(52, 211, 153, 0.10); border-left-color: rgb(52, 211, 153); background: linear-gradient(180deg, rgb(15,23,42) 0%, rgb(7,15,30) 100%); }
-    .secret-3 { --secret-tint: rgba(255, 138, 60, 0.10); border-left-color: rgb(255, 138, 60); background: linear-gradient(180deg, rgb(15,23,42) 0%, rgb(7,15,30) 100%); }
-
-    .secret-numeral {
-      flex-shrink: 0;
-      width: 3rem; height: 3rem;
-      border-radius: 9999px;
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 800; font-size: 1.25rem;
-      letter-spacing: -0.025em;
-    }
-    .secret-1 .secret-numeral { background: rgba(56,189,248,0.15); border: 1px solid rgba(56,189,248,0.45); color: rgb(125, 211, 252); }
-    .secret-2 .secret-numeral { background: rgba(52,211,153,0.15); border: 1px solid rgba(52,211,153,0.45); color: rgb(110, 231, 183); }
-    .secret-3 .secret-numeral { background: rgba(255,138,60,0.15); border: 1px solid rgba(255,138,60,0.45); color: rgb(255, 174, 122); }
-
-    .secret-eyebrow { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.25rem; }
-    .secret-1 .secret-eyebrow { color: rgb(125, 211, 252); }
-    .secret-2 .secret-eyebrow { color: rgb(110, 231, 183); }
-    .secret-3 .secret-eyebrow { color: rgb(255, 174, 122); }
-
-    .secret-list { position: relative; }
-    .secret-list dt {
-      display: inline-block;
-      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
-      padding: 0.2rem 0.55rem;
-      border-radius: 0.375rem;
-      margin-bottom: 0.45rem;
-    }
-    .secret-list dd { color: rgb(203, 213, 225); margin: 0 0 1.25rem; line-height: 1.7; font-size: 1.0625rem; }
-    .secret-list dd:last-child { margin-bottom: 0; }
-
-    .label-belief { background: rgba(148,163,184,0.10); color: rgb(148,163,184); border: 1px solid rgba(148,163,184,0.25); }
-    .secret-1 .label-break { background: rgba(56,189,248,0.12); color: rgb(125,211,252); border: 1px solid rgba(56,189,248,0.30); }
-    .secret-2 .label-break { background: rgba(52,211,153,0.12); color: rgb(110,231,183); border: 1px solid rgba(52,211,153,0.30); }
-    .secret-3 .label-break { background: rgba(255,138,60,0.12); color: rgb(255,174,122); border: 1px solid rgba(255,138,60,0.30); }
-    .label-proof { background: rgba(52,211,153,0.10); color: rgb(110,231,183); border: 1px solid rgba(52,211,153,0.28); }
-
-    .secret-trial {
-      margin-top: 1.25rem; padding-top: 1rem;
-      border-top: 1px solid rgba(148,163,184,0.12);
-      display: flex; align-items: flex-start; gap: 0.5rem;
-      color: rgb(148,163,184); font-style: italic; font-size: 0.95rem;
-    }
-    .secret-trial .check { font-style: normal; flex-shrink: 0; line-height: 1.4; }
-    .secret-1 .secret-trial .check { color: rgb(125,211,252); }
-    .secret-2 .secret-trial .check { color: rgb(110,231,183); }
-    .secret-3 .secret-trial .check { color: rgb(255,174,122); }
-
-    /* Price hero — minute-60 close card */
-    .price-hero {
-      position: relative;
-      margin: 0 auto 1.5rem;
-      max-width: 38rem;
-      background:
-        radial-gradient(1200px 360px at 50% -10%, rgba(255,138,60,0.10), transparent 60%),
-        linear-gradient(180deg, rgb(15,23,42) 0%, rgb(8,15,28) 100%);
-      border: 1px solid rgba(255,138,60,0.30);
-      border-radius: 1.25rem;
-      padding: 2.75rem 2rem 2rem;
-      box-shadow: 0 25px 60px -25px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.04);
-      overflow: hidden;
-    }
-    .price-hero::before {
-      content: ""; position: absolute; left: 50%; top: 0; transform: translate(-50%, -50%);
-      width: 320px; height: 320px;
-      background: radial-gradient(circle, rgba(255,138,60,0.18) 0%, transparent 60%);
-      pointer-events: none;
-    }
-    .price-ribbon {
-      position: absolute; top: 0; left: 50%; transform: translate(-50%, -50%);
-      background: linear-gradient(135deg, rgb(255,138,60), rgb(255,107,26));
-      color: white;
-      font-size: 0.65rem; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase;
-      padding: 0.4rem 1rem; border-radius: 9999px;
-      box-shadow: 0 6px 20px -6px rgba(255,107,26,0.6);
-      white-space: nowrap;
-    }
-
-    .price-rows { position: relative; display: flex; flex-direction: column; align-items: center; gap: 0.4rem; margin-bottom: 1rem; }
-    .price-strike-row { color: rgb(148,163,184); font-size: 0.95rem; }
-    .price-strike-row .strike { color: rgb(148,163,184); text-decoration: line-through; text-decoration-thickness: 1px; }
-
-    .price-now-row {
-      display: flex; align-items: baseline; gap: 0.5rem;
-      margin-top: 0.25rem;
-    }
-    .price-now-amount {
-      font-size: 3.25rem; line-height: 1; font-weight: 800; letter-spacing: -0.03em;
-      background: linear-gradient(180deg, rgb(255,255,255), rgb(203,213,225));
-      -webkit-background-clip: text; background-clip: text; color: transparent;
-    }
-    .price-now-cadence { color: rgb(203,213,225); font-size: 1rem; font-weight: 500; }
-    .price-yearly { color: rgb(100,116,139); font-size: 0.875rem; margin-top: 0.1rem; }
-
-    .price-save-pill {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      background: rgba(52,211,153,0.12);
-      border: 1px solid rgba(52,211,153,0.40);
-      color: rgb(110,231,183);
-      font-size: 0.875rem; font-weight: 700;
-      padding: 0.4rem 0.85rem; border-radius: 9999px;
-      margin-top: 0.85rem;
-    }
-    .price-save-pill::before { content: "⤓"; font-weight: 800; }
-
-    .price-locked {
-      display: inline-flex; align-items: center; gap: 0.45rem;
-      color: rgb(255,174,122);
-      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
-      margin: 1rem auto 1.5rem;
-      padding: 0.35rem 0.85rem;
-      background: rgba(255,138,60,0.08);
-      border: 1px solid rgba(255,138,60,0.30);
-      border-radius: 9999px;
-    }
-    .price-locked .lock { font-size: 0.85rem; }
-
-    .price-cta {
-      display: inline-flex; align-items: center; gap: 0.6rem;
-      background: linear-gradient(135deg, rgb(255,138,60) 0%, rgb(255,107,26) 100%);
-      color: white;
-      font-weight: 800; font-size: 1.0625rem; letter-spacing: -0.005em;
-      padding: 1rem 2.25rem;
-      border-radius: 0.75rem;
-      box-shadow: 0 12px 36px -10px rgba(255,107,26,0.55), inset 0 1px 0 rgba(255,255,255,0.25);
-      transition: transform 150ms ease, box-shadow 150ms ease;
-      text-decoration: none;
-    }
-    .price-cta:hover { transform: translateY(-1px); box-shadow: 0 18px 42px -10px rgba(255,107,26,0.65), inset 0 1px 0 rgba(255,255,255,0.3); }
-    .price-cta .arrow { transition: transform 150ms ease; }
-    .price-cta:hover .arrow { transform: translateX(3px); }
-
-    .price-trust {
-      display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 1rem;
-      margin-top: 1.5rem;
-      font-size: 0.75rem; color: rgb(148,163,184);
-    }
-    .price-trust .tcell { display: inline-flex; align-items: center; gap: 0.35rem; }
-    .price-trust .tcheck { color: rgb(110,231,183); font-weight: 800; }
-
-    @media (max-width: 480px) {
-      .price-hero { padding: 2.5rem 1.25rem 1.75rem; }
-      .price-now-amount { font-size: 2.75rem; }
-      .price-cta { padding: 0.9rem 1.5rem; font-size: 1rem; }
+    .mobile-cta-stack > * { width: 100%; }
+    .mobile-card, .mobile-step-card { transition: border-color 120ms ease, transform 120ms ease; }
+    .mobile-card:hover, .mobile-step-card:hover { border-color: rgba(14, 165, 233, 0.5); }
+    .mobile-sticky-cta { display: none; }
+    @media (min-width: 640px) { .mobile-cta-stack > * { width: auto; } }
+    @media (max-width: 639px) {
+      html { scroll-padding-top: 5rem; }
+      body { padding-bottom: 6rem; }
+      .mobile-compact-header { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+      .mobile-hero-wrap { padding-left: 1rem; padding-right: 1rem; padding-top: 4rem; padding-bottom: 4rem; }
+      .mobile-hero-title { font-size: 2rem; line-height: 1.1; }
+      .mobile-hero-copy { font-size: 1rem; line-height: 1.65; }
+      .mobile-main-pad { padding-left: 1rem; padding-right: 1rem; }
+      .mobile-section-pad { padding-left: 1rem; padding-right: 1rem; }
+      .mobile-card-pad { padding: 1.25rem; }
+      .mobile-grid-gap { gap: 1rem; }
+      .mobile-cta-stack .btn {
+        white-space: normal; text-align: center; line-height: 1.35;
+        padding-left: 1rem; padding-right: 1rem;
+      }
+      .mobile-sticky-cta {
+        position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; display: block;
+        padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom));
+        background: rgba(2, 6, 23, 0.94); backdrop-filter: blur(12px);
+        border-top: 1px solid rgba(71, 85, 105, 0.7);
+      }
+      .mobile-sticky-cta .inner { display: flex; align-items: center; gap: 0.75rem; max-width: 28rem; margin: 0 auto; }
+      .mobile-sticky-cta .meta { flex: 1; min-width: 0; }
+      .mobile-sticky-cta .meta strong { display: block; color: #fff; font-size: 0.95rem; line-height: 1.1; }
+      .mobile-sticky-cta .meta span { display: block; color: #94a3b8; font-size: 0.72rem; margin-top: 0.1rem; }
+      .mobile-sticky-cta .btn { white-space: nowrap; padding-left: 1rem; padding-right: 1rem; }
     }
   </style>
 </head>
 <body class="bg-dark-900 text-gray-100 font-sans antialiased">
-
-  <header class="border-b border-gray-800 bg-dark-900/80 backdrop-blur-sm sticky top-0 z-50">
-    <div class="max-w-3xl mx-auto px-6 h-14 flex items-center justify-between">
-      <a href="/" class="flex items-center gap-2 text-gray-100 font-semibold text-base tracking-tight hover:text-brand-500 transition">
-        <span aria-hidden="true" style="display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;border-radius:6px;background:linear-gradient(to bottom right,#0ea5e9,#4f46e5);color:#020617;font-size:11px;font-weight:700;box-shadow:0 1px 2px rgba(14,165,233,0.3);flex-shrink:0;line-height:1;">G</span>
-        <span>VC Deal Flow Signal</span>
-      </a>
-      <nav class="flex items-center gap-4">
-        <a href="/insider" class="text-gray-400 text-sm hover:text-gray-100 transition hidden md:inline">Insider Circle</a>
-        <a href="#faq" class="text-gray-400 text-sm hover:text-gray-100 transition hidden md:inline">FAQ</a>
-        <a href="#stack" class="text-sm bg-brand-600 hover:bg-brand-700 text-white px-3 py-1.5 rounded-md transition font-medium">Skip to The Stack</a>
+  <header class="sticky top-0 z-50 border-b border-gray-800 bg-dark-900/95 backdrop-blur">
+    <div class="mobile-compact-header max-w-5xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-3">
+      <a href="/" class="font-semibold tracking-tight text-white text-lg">GitDealFlow</a>
+      <nav class="hidden md:flex items-center gap-6">
+        <a href="/" class="text-gray-400 text-sm hover:text-gray-100 transition">Home</a>
+        <a href="https://signals.gitdealflow.com/methodology" class="text-gray-400 text-sm hover:text-gray-100 transition">Methodology</a>
+        <a href="/dashboard" class="text-gray-400 text-sm hover:text-gray-100 transition">Dashboard</a>
       </nav>
+      <a href="/#signup" class="btn btn-cta btn-sm whitespace-nowrap shrink-0"><span class="sm:hidden">Get it</span><span class="hidden sm:inline">Get the free Sunday email</span> <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
     </div>
   </header>
 
-  <main>
-
-  <!-- Hero — Big Domino -->
-  <section id="top" class="relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-br from-dark-900 via-dark-800 to-brand-900 opacity-80"></div>
-    <div class="relative max-w-3xl mx-auto px-6 py-24 text-center">
-      <nav aria-label="Breadcrumb" class="text-xs text-gray-500 mb-6">
-        <a href="/" class="hover:text-brand-500 transition">← Home</a>
-        <span class="mx-2 text-gray-700">/</span>
-        <span class="text-gray-400">Perfect Webinar</span>
-      </nav>
-      <p class="text-brand-500 font-semibold text-sm uppercase tracking-wider mb-4">A 60-minute written walkthrough &middot; By The Data Nerd</p>
-      <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-6">
-        The 47-Day Window:<br><span class="text-signal-500">How GitHub Commit Velocity Predicts Series A Rounds</span>
-      </h1>
-      <p class="text-lg text-gray-300 max-w-2xl mx-auto mb-8">
-        A walkthrough of the SSRN-published panel of <strong class="text-white">219 confirmed fundraises</strong>, the seven signals that preceded each one by 21 to 47 days, and the exact framework you can run yourself by Wednesday.
-      </p>
-      <p class="text-gray-500 text-sm mb-8">60 minutes. Five chapter clocks. No video, no Zoom, no signup-then-watch. Read on your timeline.</p>
-      <a href="#open" class="inline-block bg-brand-600 hover:bg-brand-700 text-white font-semibold px-8 py-4 rounded-lg text-lg transition">Start reading &darr;</a>
-    </div>
-  </section>
-
-  <!-- Open Loop -->
-  <section id="open" class="max-w-3xl mx-auto px-6 py-16">
-    <p class="chapter-clock mb-6">⏱ Minute 0 — The Open</p>
-    <p class="text-gray-300 text-lg leading-relaxed mb-6">
-      Hi — I'm <strong class="text-white">The Data Nerd.</strong> I'm a solo, bootstrapped, anonymous operator based in Cyprus. Over the next hour I'm going to walk you through three things:
-    </p>
-    <ol class="space-y-3 text-gray-300 text-lg leading-relaxed mb-8">
-      <li><strong class="text-white">First</strong> — the one belief about deal flow that, once it shifts, makes everything else click. (Minute 8.)</li>
-      <li><strong class="text-white">Second</strong> — the three reasons you've never used GitHub data, and why each one collapses under five minutes of math. (Minute 22.)</li>
-      <li><strong class="text-white">Third</strong> — the framework you can run on any startup tomorrow morning, plus the stack of tools that runs it across 4,200 startups in four seconds. (Minute 48.)</li>
-    </ol>
-    <p class="text-gray-300 text-lg leading-relaxed mb-6">
-      At the end I'll show you the Insider Circle stack — €9,429 of value bundled into €97/mo, founding-member pricing, locked forever. <strong class="text-white">If at the end you want in, you'll know.</strong> If at the end you want out, you keep the framework, the SSRN paper, and the free Sunday digest. Nothing changes on your end either way.
-    </p>
-    <p class="trial-close">Make sense so far? Good — let's go.</p>
-  </section>
-
-  <!-- The Big Domino -->
-  <section id="domino" class="bg-dark-800 py-16">
-    <div class="max-w-3xl mx-auto px-6">
-      <p class="chapter-clock mb-6">⏱ Minute 8 — The One Thing</p>
-      <h2 class="text-3xl font-bold mb-6">There is one belief that, if it shifts, makes the next 50 minutes obvious.</h2>
-      <p class="text-gray-300 text-lg leading-relaxed mb-5">
-        The belief is this:
-      </p>
-      <blockquote class="text-2xl text-white leading-snug font-bold border-l-4 border-signal-500 pl-6 my-8">
-        Crunchbase tells you the day they raised. Engineering acceleration on GitHub tells you 47 days before the deck.
-      </blockquote>
-      <p class="text-gray-300 text-lg leading-relaxed mb-5">
-        Hold that for a second. Because if it's true, then <em>every other belief</em> you have about deal flow has to update.
-      </p>
-      <p class="text-gray-300 text-lg leading-relaxed mb-5">
-        If a startup's engineering momentum is visible 21 to 47 days before the round closes, then your network isn't an edge — it's a tie. By the time the warm intro arrives, the deck is already circulating, the terms are forming, and you're competing on speed and reputation. Not on information.
-      </p>
-      <p class="text-gray-300 text-lg leading-relaxed mb-5">
-        And if the data is public — every commit, every contributor, every README change, timestamped in real time on api.github.com — then the only thing standing between you and a 47-day head start is <strong class="text-white">the lens that reads it for you.</strong>
-      </p>
-      <p class="text-gray-100 text-lg leading-relaxed font-semibold mb-6">
-        That lens is what I built. That's the entire story.
-      </p>
-      <p class="trial-close">If that lands — if you can see how a 47-day window changes how you source the next deal — keep reading. If it doesn't, the Sunday digest is still free and we'll let the data prove itself over a few weeks. Sound fair?</p>
-    </div>
-  </section>
-
-  <!-- Origin / Epiphany Bridge -->
-  <section id="origin" class="max-w-3xl mx-auto px-6 py-16">
-    <p class="chapter-clock mb-6">⏱ Minute 14 — Where this came from</p>
-    <h2 class="text-3xl font-bold mb-6">I almost shipped this as a personal spreadsheet.</h2>
-    <p class="text-gray-300 text-lg leading-relaxed mb-5">
-      A founder-friend of mine raised a Series A about a year ago. I'd been watching his GitHub org for months — commits tripled, contributors doubled, CI runs went 24/7 starting in January. I made a note in my journal: <em>"something is happening at this company."</em> I didn't email him. I didn't tell anyone. I just watched.
-    </p>
-    <p class="text-gray-300 text-lg leading-relaxed mb-5">
-      Four months later, the round was announced. I read the TechCrunch post and felt that very specific kind of stupid where you're not surprised but you're embarrassed.
-    </p>
-    <p class="text-gray-300 text-lg leading-relaxed mb-5">
-      So I went and looked. I pulled the GitHub orgs of every venture-backed startup that had announced a Series A in the previous twelve months. I built a script. I ran it overnight. By morning I had the dataset.
-    </p>
-    <p class="text-gray-300 text-lg leading-relaxed mb-5">
-      <strong class="text-white">219 startups. 219 fundraises. The pattern held in 7 out of 10 cases, with a 21-to-47-day lead time.</strong> That dataset is now the SSRN-published panel: <a href="https://ssrn.com/abstract=6606558" target="_blank" rel="noopener noreferrer" class="text-signal-500 hover:text-signal-400 underline decoration-dotted">ssrn.com/abstract=6606558</a>. Every row is reproducible from public GitHub data. The methodology is open. The dataset on Zenodo is downloadable. Nothing is proprietary.
-    </p>
-    <p class="text-gray-300 text-lg leading-relaxed mb-5 border-l-2 border-signal-500/40 pl-4 italic">
-      I almost left it as a personal spreadsheet. Then a friend who runs a $30M fund saw the data and asked me <span class="text-white not-italic">"why are you not selling this?"</span> I told him I'm not a quant fund and I don't have a sales team. He said <span class="text-white not-italic">"that's exactly why solo angels need it."</span> That's the conversation that turned the spreadsheet into this product.
-    </p>
-    <p class="text-gray-100 text-lg leading-relaxed font-semibold mb-6">
-      I'm not the smartest person in this room. I just noticed the signal first and built the lens.
-    </p>
-    <p class="trial-close">Still with me? Good — now let's break the three beliefs that keep most investors off this dataset.</p>
-  </section>
-
-  <!-- Three Secrets / False Belief Breakdowns -->
-  <section id="secrets" class="bg-dark-800 py-16">
-    <div class="max-w-3xl mx-auto px-6">
-      <p class="chapter-clock mb-6">⏱ Minute 22 — The Three Secrets</p>
-      <h2 class="text-3xl font-bold mb-8">The three reasons you haven't used GitHub data yet (and why each one collapses).</h2>
-
-      <!-- Secret 1: Vehicle -->
-      <article class="secret-card secret-1">
-        <header class="flex items-start gap-4 mb-6">
-          <div class="secret-numeral" aria-hidden="true">1</div>
-          <div class="flex-1 pt-1">
-            <p class="secret-eyebrow">Secret #1 &middot; The Vehicle Belief</p>
-            <h3 class="text-2xl md:text-[1.6rem] font-bold text-white leading-snug">&ldquo;GitHub is too noisy to be a real signal.&rdquo;</h3>
-          </div>
-        </header>
-        <dl class="secret-list">
-          <dt class="label-belief">The belief</dt>
-          <dd>100 million repos, 99% noise — bots, hackathons, abandoned forks. You&rsquo;d need a quant team to filter.</dd>
-          <dt class="label-break">The break</dt>
-          <dd>We don&rsquo;t read absolute numbers. We read <em>acceleration vs. baseline</em>. When a company&rsquo;s engineering velocity deviates sharply from its own 90-day average, that&rsquo;s not noise — it&rsquo;s a regime change. Bots don&rsquo;t sustain regime changes. Hackathons don&rsquo;t. Hires and product-market-fit do. The math is in the SSRN paper, page 14.</dd>
-          <dt class="label-proof">The proof</dt>
-          <dd>Across 219 funded rounds, the 14-day commit-velocity ratio above 1.5× preceded the announcement in 7 of 10 cases. Quant funds make billions parsing public SEC filings — same logic, different dataset.</dd>
-        </dl>
-        <p class="secret-trial"><span class="check" aria-hidden="true">✓</span><span>The vehicle works. Sound right?</span></p>
-      </article>
-
-      <!-- Secret 2: Internal -->
-      <article class="secret-card secret-2">
-        <header class="flex items-start gap-4 mb-6">
-          <div class="secret-numeral" aria-hidden="true">2</div>
-          <div class="flex-1 pt-1">
-            <p class="secret-eyebrow">Secret #2 &middot; The Internal Belief</p>
-            <h3 class="text-2xl md:text-[1.6rem] font-bold text-white leading-snug">&ldquo;I&rsquo;m not a quant — I wouldn&rsquo;t know what to do with raw engineering data.&rdquo;</h3>
-          </div>
-        </header>
-        <dl class="secret-list">
-          <dt class="label-belief">The belief</dt>
-          <dd>You opened a few founders&rsquo; GitHubs once. Saw a wall of green squares. Closed the tab. &ldquo;Not technical enough.&rdquo;</dd>
-          <dt class="label-break">The break</dt>
-          <dd>You won&rsquo;t see raw data. You&rsquo;ll see one line per startup: <em>&ldquo;Company X. Healthcare. Seed. +180% commit acceleration. 94 new contributors. Flagged 6 weeks ago. Still accelerating.&rdquo;</em> Then you reach out. If you&rsquo;ve ever sent a cold intro email to a founder, you already have every skill this requires.</dd>
-          <dt class="label-proof">The proof</dt>
-          <dd>800+ engineers and angels installed the free MCP server in the first 30 days. Most of them aren&rsquo;t quants. They&rsquo;re technical operators who know the difference between a green-square wall and a &ldquo;this team is shipping infrastructure.&rdquo;</dd>
-        </dl>
-        <p class="secret-trial"><span class="check" aria-hidden="true">✓</span><span>You don&rsquo;t need a quant team. You need the lens. Got it?</span></p>
-      </article>
-
-      <!-- Secret 3: External -->
-      <article class="secret-card secret-3">
-        <header class="flex items-start gap-4 mb-6">
-          <div class="secret-numeral" aria-hidden="true">3</div>
-          <div class="flex-1 pt-1">
-            <p class="secret-eyebrow">Secret #3 &middot; The External Belief</p>
-            <h3 class="text-2xl md:text-[1.6rem] font-bold text-white leading-snug">&ldquo;Public data can&rsquo;t give me an edge — everyone has access.&rdquo;</h3>
-          </div>
-        </header>
-        <dl class="secret-list">
-          <dt class="label-belief">The belief</dt>
-          <dd>If it&rsquo;s public, the market has already priced it in. Edges live in private data — Harmonic&rsquo;s enrichment, PitchBook&rsquo;s curated rounds, AngelList&rsquo;s syndicate flow.</dd>
-          <dt class="label-break">The break</dt>
-          <dd>Everyone has access to SEC filings. Quant funds still make billions parsing them faster. Everyone has access to satellite imagery. Hedge funds use it to count cars in parking lots and predict quarterly earnings. <strong class="text-white">The edge isn&rsquo;t exclusive data — the edge is reading what others ignore.</strong></dd>
-          <dt class="label-proof">The proof</dt>
-          <dd>Right now, zero institutional investor tools package GitHub commit velocity as a deal-flow signal. Harmonic doesn&rsquo;t. Dealroom doesn&rsquo;t. PitchBook doesn&rsquo;t. The data is public. The analysis layer didn&rsquo;t exist. That gap is your edge — and it stays your edge until the market catches up. We have a ~3-year window before the institutionals notice.</dd>
-        </dl>
-        <p class="secret-trial"><span class="check" aria-hidden="true">✓</span><span>If three world-class beliefs collapse in 26 minutes, the architecture works. Are you with me?</span></p>
-      </article>
-    </div>
-  </section>
-
-  <!-- The Framework -->
-  <section id="framework" class="max-w-3xl mx-auto px-6 py-16">
-    <p class="chapter-clock mb-6">⏱ Minute 48 — The Framework You Run Tomorrow</p>
-    <h2 class="text-3xl font-bold mb-6">Here's the whole thing, in seven signals.</h2>
-    <p class="text-gray-300 text-lg leading-relaxed mb-6">
-      You don't need this product to use this framework. You need 35 minutes a week and a cup of coffee. The seven signals from the SSRN paper:
-    </p>
-    <ol class="space-y-4 text-gray-300 text-lg leading-relaxed mb-8">
-      <li><strong class="text-white">1. Commit velocity (14d-vs-90d ratio).</strong> If a startup's last-14-day commit count is &gt;1.5x its 90-day average, the engineering team is accelerating. The simplest signal.</li>
-      <li><strong class="text-white">2. Contributor diversity (Gini at month -3).</strong> Funded rounds had Gini ~0.34. Unfunded had ~0.61. Distributed codebases close more rounds than concentrated ones.</li>
-      <li><strong class="text-white">3. Dependents graph.</strong> GitHub exposes every public repo that depends on this org's code. External adoption with no marketing spend = real product-market fit.</li>
-      <li><strong class="text-white">4. README freshness.</strong> Substantive README updates in the last 60 days correlate strongly with active fundraising. The README is the public pitch — founders tighten it before the raise.</li>
-      <li><strong class="text-white">5. New repo creation rate.</strong> Series A and B startups deploying capital build platform repos — SDKs, CLIs, internal services. Watch for the burst.</li>
-      <li><strong class="text-white">6. Issue-to-PR ratio.</strong> 1.5+ is healthy engagement. 0.7 means firefighting. The former gets funded; the latter gets bridged.</li>
-      <li><strong class="text-white">7. Composite score.</strong> Weighted blend of the above six. The actual ranking signal you act on.</li>
-    </ol>
-    <p class="text-gray-300 text-lg leading-relaxed mb-6">
-      You can run all seven manually on a single startup in about 35 minutes. You can run them on five startups a week if you set aside a Wednesday afternoon.
-    </p>
-    <p class="text-gray-100 text-lg leading-relaxed font-semibold mb-6">
-      Or you can run them across 4,200 venture-backed startup orgs in four seconds. Which is what the next section is about.
-    </p>
-    <p class="trial-close">Are you ready to see the stack? Good — let's go.</p>
-  </section>
-
-  <!-- The Stack — Insider Circle Close -->
-  <section id="stack" class="bg-dark-800 py-16">
-    <div class="max-w-3xl mx-auto px-6">
-      <p class="chapter-clock mb-6">⏱ Minute 60 — The Stack</p>
-      <h2 class="text-3xl font-bold mb-4">The Insider Circle — €9,429 of value, anchored.</h2>
-      <p class="text-gray-400 text-lg leading-relaxed mb-8">
-        This is the optional part. If everything above is enough — keep the framework, run it manually on a Wednesday afternoon, get the free Sunday digest. Genuinely no hard feelings.
-      </p>
-      <p class="text-gray-300 text-lg leading-relaxed mb-8">
-        If you want the seven signals running across 4,200 startups in four seconds, you want the Insider Circle. Here's the full stack, line by line:
-      </p>
-
-      <ul class="space-y-3 text-gray-300 mb-8">
-        <li class="flex items-start gap-3 bg-dark-900 border border-gray-700 rounded-lg p-4">
-          <span class="text-brand-500 font-bold flex-shrink-0">1.</span>
-          <div class="flex-1">
-            <strong class="text-white">Full Dashboard access</strong> — 109 startups across 19 sectors, ranked weekly by composite score, filterable by sector / stage / geography.
-            <span class="block text-gray-500 text-sm mt-1">Standalone value: <span class="line-through">€1,932/yr</span></span>
-          </div>
-        </li>
-        <li class="flex items-start gap-3 bg-dark-900 border border-gray-700 rounded-lg p-4">
-          <span class="text-brand-500 font-bold flex-shrink-0">2.</span>
-          <div class="flex-1">
-            <strong class="text-white">Private Investor Telegram Group</strong> — direct discussion with other Insider members, signal cross-references, monthly thesis check-ins.
-            <span class="block text-gray-500 text-sm mt-1">Standalone value: <span class="line-through">€1,200/yr</span></span>
-          </div>
-        </li>
-        <li class="flex items-start gap-3 bg-dark-900 border border-gray-700 rounded-lg p-4">
-          <span class="text-brand-500 font-bold flex-shrink-0">3.</span>
-          <div class="flex-1">
-            <strong class="text-white">Monthly Live Signal Briefing (text)</strong> — 12 issues/yr written deep-dive on the strongest sector signals, with transcripts.
-            <span class="block text-gray-500 text-sm mt-1">Standalone value: <span class="line-through">€2,400/yr</span></span>
-          </div>
-        </li>
-        <li class="flex items-start gap-3 bg-dark-900 border border-gray-700 rounded-lg p-4">
-          <span class="text-brand-500 font-bold flex-shrink-0">4.</span>
-          <div class="flex-1">
-            <strong class="text-white">Insider API access</strong> — JSON endpoints + bulk CSV pulls. Drop the data into your CRM, your notes, your portfolio dashboard.
-            <span class="block text-gray-500 text-sm mt-1">Standalone value: <span class="line-through">€1,200/yr</span></span>
-          </div>
-        </li>
-        <li class="flex items-start gap-3 bg-dark-900 border border-gray-700 rounded-lg p-4">
-          <span class="text-brand-500 font-bold flex-shrink-0">5.</span>
-          <div class="flex-1">
-            <strong class="text-white">Slack/Telegram spike alerts</strong> — push notifications when a watchlist company crosses your acceleration threshold.
-            <span class="block text-gray-500 text-sm mt-1">Standalone value: <span class="line-through">€600/yr</span></span>
-          </div>
-        </li>
-        <li class="flex items-start gap-3 bg-dark-900 border border-gray-700 rounded-lg p-4">
-          <span class="text-brand-500 font-bold flex-shrink-0">6.</span>
-          <div class="flex-1">
-            <strong class="text-white">Portfolio overlap detection</strong> — quarterly report on which Insider-tracked orgs share contributors with your portfolio companies.
-            <span class="block text-gray-500 text-sm mt-1">Standalone value: <span class="line-through">€600/yr</span></span>
-          </div>
-        </li>
-        <li class="flex items-start gap-3 bg-dark-900 border border-emerald-500/30 rounded-lg p-4">
-          <span class="text-emerald-400 font-bold flex-shrink-0">7.</span>
-          <div class="flex-1">
-            <strong class="text-white">BONUS:</strong> Quarterly trend briefing PDF — the four sectors that moved the most this quarter and why.
-            <span class="block text-gray-500 text-sm mt-1">Standalone value: <span class="line-through">€297/yr</span></span>
-          </div>
-        </li>
-        <li class="flex items-start gap-3 bg-dark-900 border border-emerald-500/30 rounded-lg p-4">
-          <span class="text-emerald-400 font-bold flex-shrink-0">8.</span>
-          <div class="flex-1">
-            <strong class="text-white">BONUS:</strong> Direct line to the founder — text/email any signal question, get a real-person response within 24 hours.
-            <span class="block text-gray-500 text-sm mt-1">Standalone value: <span class="line-through">€1,200/yr</span></span>
-          </div>
-        </li>
-      </ul>
-
-      <div class="price-hero text-center">
-        <span class="price-ribbon" aria-hidden="true">Founding Member</span>
-
-        <div class="price-rows">
-          <p class="price-strike-row">Total standalone value <span class="strike">€9,429/yr</span></p>
-          <div class="price-now-row">
-            <span class="price-now-amount">€97</span>
-            <span class="price-now-cadence">/ mo</span>
-          </div>
-          <p class="price-yearly">Billed monthly &middot; €1,164 / yr</p>
-          <span class="price-save-pill">Save €8,265 in year one</span>
-        </div>
-
-        <div class="price-locked">
-          <span class="lock" aria-hidden="true">🔒</span>
-          <span>Locked forever &middot; €197/mo after beta closes</span>
-        </div>
-
-        <a href="https://buy.stripe.com/4gM00ifRpcRG2069I40x202" onclick="if(window.posthog)posthog.capture('webinar_insider_close_clicked')" class="price-cta">
-          <span>Lock in €97/mo</span>
-          <span class="arrow" aria-hidden="true">→</span>
-        </a>
-
-        <div class="price-trust" role="list">
-          <span class="tcell" role="listitem"><span class="tcheck">✓</span> 60-day Signal-or-It&rsquo;s-Free</span>
-          <span class="tcell" role="listitem"><span class="tcheck">✓</span> Reply REFUND to any email</span>
-          <span class="tcell" role="listitem"><span class="tcheck">✓</span> No forms, no call</span>
+  <main class="mobile-main-pad">
+    <section class="relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-br from-dark-900 via-dark-800 to-brand-900 opacity-80"></div>
+      <div class="mobile-hero-wrap relative max-w-4xl mx-auto px-4 sm:px-6 py-16 md:py-28 text-center">
+        <p class="text-brand-500 font-semibold text-sm uppercase tracking-wider mb-4">Long-form proof page</p>
+        <h1 class="mobile-hero-title text-4xl md:text-6xl font-extrabold leading-tight mb-6">The deep methodology walkthrough for people who want the whole argument.</h1>
+        <p class="mobile-hero-copy text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8">This is not the first step if you just want the weekly shortlist. It exists for the reader who wants the full methodology, the signal logic, and the deeper case behind it.</p>
+        <div class="mobile-cta-stack flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="#open" class="btn btn-secondary btn-xl w-full sm:w-auto">Read the full case</a>
+          <a href="/#signup" class="btn btn-cta btn-xl w-full sm:w-auto">Send me the next Sunday issue</a>
         </div>
       </div>
-
-      <p class="trial-close">If the math works for you, that button is the move. If you want to start smaller, the <a href="https://buy.stripe.com/28E7sK48H04U8ou07u0x200" class="text-signal-500 hover:text-signal-400 underline decoration-dotted">€9.97/mo Dashboard</a> or the <a href="https://signals.gitdealflow.com/pricing#first-look-pass" class="text-signal-500 hover:text-signal-400 underline decoration-dotted">€7 First Look Pass</a> are both on the pricing page. If you want to keep watching for free, the <a href="/#signup" class="text-signal-500 hover:text-signal-400 underline decoration-dotted">Sunday digest</a> is yours forever. All three doors are open.</p>
-    </div>
-  </section>
-
-  <!-- Future Pace -->
-  <section id="future" class="max-w-3xl mx-auto px-6 py-16">
-    <p class="chapter-clock mb-6">⏱ Minute 65 — Future Pace</p>
-    <h2 class="text-3xl font-bold mb-6">August 2026, your inbox.</h2>
-    <p class="text-gray-300 text-lg leading-relaxed mb-5">
-      It's a Tuesday. A founder you flagged six weeks ago — when the Insider Telegram pinged her acceleration spike — replies to the email you sent that Monday morning.
-    </p>
-    <p class="text-gray-300 text-lg leading-relaxed mb-5">
-      Her message: <em class="text-white">"Hey — strange that you reached out. We start the seed round next week. How did you find us?"</em>
-    </p>
-    <p class="text-gray-300 text-lg leading-relaxed mb-5">
-      You answer with one sentence about the GitHub signal. She replies twenty minutes later: <em class="text-white">"Want to be on the call?"</em>
-    </p>
-    <p class="text-gray-100 text-lg leading-relaxed font-semibold mb-6">
-      That's the August conversation. Sourced from a Sunday digest in May. Decided in a Wednesday afternoon in June. Closed in August. The compounding is in the rhythm.
-    </p>
-  </section>
-
-  <!-- Closing -->
-  <section id="close" class="bg-dark-800 py-16">
-    <div class="max-w-3xl mx-auto px-6 text-center">
-      <p class="chapter-clock mb-6">⏱ Minute 68 — The End</p>
-      <p class="text-gray-300 text-lg leading-relaxed mb-6">
-        That's the walkthrough. You have the framework. You have the proof. You have the dataset link. The next move is yours.
-      </p>
-      <div class="flex flex-col md:flex-row gap-4 justify-center">
-        <a href="https://buy.stripe.com/4gM00ifRpcRG2069I40x202" class="inline-block bg-brand-600 hover:bg-brand-700 text-white font-semibold px-6 py-3 rounded-lg transition">Lock in Insider — €97/mo &rarr;</a>
-        <a href="/#pricing" class="inline-block border border-gray-700 hover:border-brand-500 text-gray-300 hover:text-brand-500 font-medium px-6 py-3 rounded-lg transition">See all 6 tiers</a>
-        <a href="/#signup" class="inline-block border border-gray-700 hover:border-emerald-500 text-gray-300 hover:text-emerald-400 font-medium px-6 py-3 rounded-lg transition">Free Sunday digest</a>
+    </section>
+    <section class="bg-dark-800 py-6 border-y border-gray-800" data-countdown-root data-countdown-key="gdf_timer_webinar">
+      <div class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 text-center">
+        <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-2">Urgency timer</p>
+        <p class="text-white font-semibold text-lg">Your methodology window closes in <span data-countdown-output class="text-signal-400">05:00</span></p>
+        <p class="text-gray-500 text-sm mt-1">You have five minutes to keep this long-form proof session active before it resets.</p>
       </div>
-      <p class="text-gray-500 text-sm mt-8 italic">— The Data Nerd</p>
-    </div>
-  </section>
+    </section>
+    <section class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 py-10">
+      <div class="mobile-card mobile-card-pad rounded-2xl border border-sky-500/30 bg-sky-500/10 p-8 text-left">
+        <p class="text-sky-300 text-xs font-semibold uppercase tracking-wider mb-3">Story</p>
+        <p class="text-gray-300 text-lg leading-relaxed">If the weekly shortlist makes you curious but not yet convinced, this is where you stay a little longer and decide whether the signal deserves a place in how you think.</p>
+      </div>
+    </section>
 
-  <!-- FAQ — was invisible (only in JSON-LD); render visibly -->
-  <section id="faq" class="max-w-3xl mx-auto px-6 py-16">
-    <h2 class="text-2xl font-bold mb-8 text-white">FAQ</h2>
-    <div class="space-y-6">
+
+
+    <section id="open" class="max-w-4xl mx-auto px-6 py-16 space-y-8">
       <div>
-        <h3 class="text-white font-semibold text-lg mb-2">Is this a live webinar?</h3>
-        <p class="text-gray-400 leading-relaxed">No. It's a 60-minute written walkthrough you read on your timeline. The Data Nerd ships in writing, not on Zoom — anonymity is part of the product. Re-readable, paste-able into your notes, no scheduling.</p>
+        <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-3">What this page is</p>
+        <h2 class="text-3xl font-bold mb-4">A written proof surface, not a conversion shortcut.</h2>
+        <p class="text-gray-300 text-lg leading-relaxed">Start on the apex if what you want is the weekly shortlist. Come here when you want the full thesis before you move.</p>
       </div>
-      <div>
-        <h3 class="text-white font-semibold text-lg mb-2">How long does it take?</h3>
-        <p class="text-gray-400 leading-relaxed">60 minutes if you read every word. 12 minutes if you skim the chapter clocks. Either way, you walk out with a working framework you can run on any GitHub org by Wednesday.</p>
-      </div>
-      <div>
-        <h3 class="text-white font-semibold text-lg mb-2">Do I have to buy anything?</h3>
-        <p class="text-gray-400 leading-relaxed">No. The walkthrough is free, the SSRN paper is free, the dataset on Zenodo is free, the MCP server is free. The Insider Circle stack at minute 60 is optional.</p>
-      </div>
-    </div>
-  </section>
 
-  <!-- Final CTA — never end on FAQ; close the loop. -->
-  <section class="border-t border-gray-800 py-12">
-    <div class="max-w-3xl mx-auto px-6 text-center">
-      <p class="text-gray-300 text-lg leading-relaxed mb-6">
-        Read this far? You already believe the signal works.
-      </p>
-      <div class="flex flex-col md:flex-row gap-3 justify-center">
-        <a href="https://buy.stripe.com/4gM00ifRpcRG2069I40x202" class="inline-block bg-brand-600 hover:bg-brand-700 text-white font-semibold px-6 py-3 rounded-lg transition">Lock in Insider — €97/mo &rarr;</a>
-        <a href="https://signals.gitdealflow.com/perfect-webinar#close" class="inline-block border border-gray-700 hover:border-signal-500 text-gray-300 hover:text-signal-400 font-medium px-6 py-3 rounded-lg transition">Smaller? Try €9.97/mo Dashboard</a>
+      <div class="mobile-card mobile-card-pad rounded-xl border border-gray-700 bg-dark-800 p-8">
+        <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-3">The core claim</p>
+        <h2 class="text-3xl font-bold mb-4">The signal matters because public engineering behavior often moves before the public story does.</h2>
+        <p class="text-gray-300 leading-relaxed mb-4">A simpler way to say it: read the public operating signal before the story hardens into a pitch.</p>
+        <p class="text-gray-300 leading-relaxed">That is the entire point of GitDealFlow. It turns deeper engineering behavior into a timing signal you can use without becoming an engineer yourself.</p>
       </div>
-      <p class="text-gray-500 text-xs mt-6">60-day Signal-or-It&rsquo;s-Free guarantee · Reply REFUND to any email · Locked forever</p>
-    </div>
-  </section>
 
+      <div class="mobile-card mobile-card-pad rounded-xl border border-gray-700 bg-dark-800 p-8">
+        <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-3">What to read next</p>
+        <h2 class="text-3xl font-bold mb-4">If you want the proof stack, use the proof stack directly.</h2>
+        <ul class="space-y-3 text-gray-300 leading-relaxed">
+          <li><strong class="text-white">Methodology:</strong> <a href="https://signals.gitdealflow.com/methodology" class="text-brand-500 underline">signals.gitdealflow.com/methodology</a></li>
+          <li><strong class="text-white">Dataset:</strong> Zenodo and the signals subdomain</li>
+          <li><strong class="text-white">Research anchor:</strong> <a href="https://ssrn.com/abstract=6606558" class="text-brand-500 underline">SSRN 6606558</a></li>
+          <li><strong class="text-white">Live discovery surface:</strong> <a href="https://signals.gitdealflow.com" class="text-brand-500 underline">signals.gitdealflow.com</a></li>
+        </ul>
+      </div>
+
+      <div class="mobile-card mobile-card-pad rounded-xl border border-gray-700 bg-dark-800 p-8">
+        <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-3">Where this page sits in the ladder</p>
+        <h2 class="text-3xl font-bold mb-4">This page supports conversion. It should not carry conversion alone.</h2>
+        <p class="text-gray-300 leading-relaxed mb-4">A giant all-in-one page forces too many decisions at once. The cleaner architecture is simple: apex for routing, dedicated offer pages for decisions, and a long-form page like this for deeper conviction when needed.</p>
+        <div class="mobile-cta-stack flex flex-col sm:flex-row gap-4">
+          <a href="/report" class="btn btn-secondary btn-md">See a sample issue</a>
+          <a href="/dashboard" class="btn btn-secondary btn-md">See the full field</a>
+          <a href="/insider" class="btn btn-secondary btn-md">See the inner circle</a>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer class="bg-dark-900 border-t border-gray-800 py-8">
-    <div class="max-w-3xl mx-auto px-6 text-center">
+  <footer class="border-t border-gray-800 bg-dark-900/80 py-12">
+    <div class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 text-center">
       <div class="flex flex-wrap justify-center gap-6 text-gray-500 text-sm mb-4">
         <a href="/" class="hover:text-gray-300">Home</a>
-        <a href="/insider" class="hover:text-gray-300">Insider VSL</a>
-        <a href="/sector-sweep" class="hover:text-gray-300">Sector Sweep</a>
-        <a href="https://signals.gitdealflow.com" class="hover:text-gray-300">Signals</a>
-        <a href="https://ssrn.com/abstract=6606558" class="hover:text-gray-300" target="_blank" rel="noopener">SSRN paper</a>
+        <a href="https://signals.gitdealflow.com/methodology" class="hover:text-gray-300">Methodology</a>
+        <a href="/report" class="hover:text-gray-300">Sample report</a>
+        <a href="/dashboard" class="hover:text-gray-300">Dashboard</a>
+        <a href="/privacy" class="hover:text-gray-300">Privacy</a>
       </div>
-      <p class="text-gray-600 text-xs">&copy; 2026 VC Deal Flow Signal. Walkthrough by The Data Nerd.</p>
+      <p class="text-gray-600 text-xs">GitDealFlow long-form methodology walkthrough</p>
     </div>
   </footer>
 
   <script>
-    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group setPersonProperties resetPersonProperties setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
-    if(/^https?:$/.test(location.protocol))posthog.init('phc_lyZCgvTpicjLzAO3rY2GhxuX5WUc5jQjP8ZVwwJqauX', {api_host: 'https://eu.i.posthog.com', persistence: 'memory', person_profiles: 'identified_only'});
-    if (window.posthog) { try { window.posthog.capture('perfect_webinar_viewed'); } catch(e){} }
+    (function(){
+      const root = document.querySelector('[data-countdown-root]');
+      if (!root) return;
+      const key = root.getAttribute('data-countdown-key') || 'gdf_timer';
+      const out = root.querySelector('[data-countdown-output]');
+      const durationMs = 5 * 60 * 1000;
+      let deadline;
+      try {
+        const stored = sessionStorage.getItem(key);
+        if (stored && Number(stored) > Date.now()) {
+          deadline = Number(stored);
+        } else {
+          deadline = Date.now() + durationMs;
+          sessionStorage.setItem(key, String(deadline));
+        }
+      } catch (e) {
+        deadline = Date.now() + durationMs;
+      }
+      function pad(n){ return n < 10 ? '0' + n : String(n); }
+      function tick(){
+        const left = Math.max(0, deadline - Date.now());
+        const total = Math.floor(left / 1000);
+        const m = Math.floor(total / 60);
+        const s = total % 60;
+        if (out) out.textContent = pad(m) + ':' + pad(s);
+        if (left <= 0) {
+          try { sessionStorage.removeItem(key); } catch (e) {}
+        }
+      }
+      tick();
+      setInterval(tick, 1000);
+    })();
   </script>
+
 </body>
 </html>

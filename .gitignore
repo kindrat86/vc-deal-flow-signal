@@ -4,6 +4,7 @@ node_modules/
 # Environment & secrets
 .env
 .env.*
+secrets/
 
 # Logs
 *.log
@@ -29,8 +30,22 @@ Thumbs.db
 email-api/outreach-*.json
 CREDENTIAL-ROTATION.md
 
+# Social engage runtime state (per-machine, mutated each post)
+tools/bluesky/state/
+tools/mastodon/state/
+tools/farcaster/state/
+
 # Build artifacts
 *.zip
 .claude/scheduled_tasks.lock
 .claude/settings.local.json
+.claude/worktrees/
 .env*.local
+
+# GSC service-account key (never commit)
+tools/.gsc-service-account.json
+tools/*gsc*service*account*.json
+# GSC OAuth client secret + refresh token (never commit)
+tools/.gsc-oauth-client.json
+tools/.gsc-oauth-token.json
+tools/client_secret*.json

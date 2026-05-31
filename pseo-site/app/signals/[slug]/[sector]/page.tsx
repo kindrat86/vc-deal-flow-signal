@@ -8,6 +8,7 @@ import {
 } from "@/lib/data";
 import StartupTable from "@/components/StartupTable";
 import CTABanner from "@/components/CTABanner";
+import FreshnessWatermark from "@/components/FreshnessWatermark";
 
 interface PageProps {
   params: Promise<{ slug: string; sector: string }>;
@@ -36,7 +37,7 @@ export async function generateMetadata({
   return {
     title,
     description,
-    openGraph: { title, description, type: "article" },
+    openGraph: { title, description, type: "article", url: `/signals/${slug}/${sector}` },
     twitter: { card: "summary_large_image", title, description },
     alternates: {
       canonical: `/signals/${slug}/${sector}`,
@@ -185,6 +186,12 @@ export default async function SignalSectorPage({ params }: PageProps) {
             {period.name}. {top.name} leads with {top.commitVelocity14d} commits
             over 14 days ({top.commitVelocityChange}). {signalDescription}
           </p>
+          <FreshnessWatermark
+            date={lastModified}
+            surface={`${sectorInfo.name} × ${signalName} data`}
+            variant="compact"
+            className="mt-3"
+          />
         </header>
 
         <section
@@ -209,6 +216,11 @@ export default async function SignalSectorPage({ params }: PageProps) {
             Sorted by commit velocity change (14-day window). Last updated{" "}
             {period.name}.
           </p>
+          <FreshnessWatermark
+            date={lastModified}
+            surface="Ranking data"
+            variant="full"
+          />
         </section>
 
         <section className="mb-12" aria-label="Call to action">

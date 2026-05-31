@@ -3,6 +3,7 @@ import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import TelegramCTA from "@/components/TelegramCTA";
 
 export const dynamic = "force-static";
 
@@ -76,6 +77,13 @@ export default function ThanksFirstLook() {
           </ol>
         </section>
 
+        {/* Brunson Traffic Secrets §3 Ch 11 ("After the Slap") — second
+            owned channel push. Public Telegram is the alarm to email's
+            briefing. Drops here while the buyer is on the highest-trust
+            page they'll see this week (just paid €7), so the ask cost is
+            near-zero. */}
+        <TelegramCTA tone="amber" context="post-purchase" />
+
         {/* Brunson DCS #14 Funnel Stacking + Secret 3 Ladder-to-Funnel
             ascension — the thanks page must force exactly one logical
             next move. Promote the Dashboard upgrade from a footnote link
@@ -101,13 +109,13 @@ export default function ThanksFirstLook() {
               Lock founding rate (€2.97 first month) →
             </Link>
             <Link
-              href="/perfect-webinar"
+              href="/walkthrough"
               className="inline-flex items-center justify-center gap-2 rounded-md border border-slate-700 bg-slate-900/60 hover:bg-slate-800/80 hover:border-slate-600 px-5 py-3 text-gray-200 text-sm font-medium transition-colors"
             >
               Read the 12-min walkthrough first
             </Link>
           </div>
-          <p className="text-gray-500 text-xs leading-relaxed pt-1">
+          <p className="text-gray-400 text-xs leading-relaxed pt-1">
             30-day Signal-or-It&rsquo;s-Free guarantee. Reply{" "}
             <code className="text-gray-400 bg-slate-900/60 px-1.5 py-0.5 rounded text-xs">
               REFUND

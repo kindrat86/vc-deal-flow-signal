@@ -40,7 +40,7 @@ export default function CTABanner() {
             </Link>
           </div>
         </div>
-        <p className="text-gray-500 text-xs mt-5 pt-5 border-t border-slate-800">
+        <p className="text-gray-400 text-xs mt-5 pt-5 border-t border-slate-800">
           Want the signal while you research?{" "}
           <a
             href="https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn"

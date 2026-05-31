@@ -6,7 +6,7 @@ type: seinfeld_broadcast
 
 New month, new signals.
 
-Here are 7 startups showing strong engineering acceleration patterns right now:
+Here are 7 startups heating up early on GitHub right now — shipping faster, pulling in new engineers:
 
 1. carlos-emr (Healthcare) - Commit velocity +199%, 94 contributors. Engineering hiring burst.
 2. dagger (Developer Tools) - Velocity +110%, 112 contributors. Deploy frequency spike.
@@ -18,6 +18,6 @@ Here are 7 startups showing strong engineering acceleration patterns right now:
 
 All numbers from public GitHub data, updated weekly.
 
-The free digest shows you the highlights. The full Dashboard shows you 60+ startups across 20 sectors with filters: https://gitdealflow.com/#pricing
+The free digest shows you the highlights. The full Dashboard surfaces 60+ startups across 20 sectors, filtered to your sectors — you just look: https://gitdealflow.com/#pricing
 
 The Data Nerd

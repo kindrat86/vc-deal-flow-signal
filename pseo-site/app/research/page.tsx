@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title:
     "GitHub Engineering Velocity for Venture-Backed Startups — 30 Findings (SSRN-Indexed)",
   description:
-    "Public research panel by VC Deal Flow Signal (GitDealFlow): 219 startup-period observations across 55 venture-backed startups in 20 sectors using GitHub commit-velocity data — code-side momentum, distinct from startup accelerator programs. Median 14-day commit velocity 71. Framework migration dominates (75%). Free dataset, CC BY 4.0.",
+    "SSRN-indexed research panel tracking GitHub engineering signals across 55 venture-backed startups in 20 sectors. Free dataset, 30 findings, CC BY 4.0.",
   // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
   alternates: { canonical: "/research" },
   openGraph: {
@@ -247,6 +247,60 @@ export default function ResearchPage() {
     ],
   };
 
+  // F37 (AEO audit): Quotation entries wrap the paper's two highest-conviction
+  // claim lines so LLMs can cite them as atomic units with full provenance.
+  const quotationJsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Quotation",
+        "@id": `${SITE}/research#quote-headline-finding`,
+        text:
+          "Median 14-day commit velocity across 55 venture-backed startups is 71 commits, with framework migration the dominant signal type at 75% of 219 startup-period observations. The full panel is published under CC BY 4.0 with no restrictions on commercial use.",
+        spokenByCharacter: {
+          "@type": "Person",
+          name: "The Data Nerd",
+          jobTitle: "Founder, VC Deal Flow Signal",
+        },
+        creator: {
+          "@type": "Organization",
+          name: "VC Deal Flow Signal",
+          url: "https://gitdealflow.com",
+        },
+        isPartOf: {
+          "@type": "ScholarlyArticle",
+          name: PAPER_TITLE,
+          url: SSRN_URL,
+        },
+        citation: "VC Deal Flow Signal — Research panel (signals.gitdealflow.com/research). SSRN: 6606558. Zenodo: 10.5281/zenodo.19650920.",
+        license: "https://creativecommons.org/licenses/by/4.0/",
+        inLanguage: "en",
+      },
+      {
+        "@type": "Quotation",
+        "@id": `${SITE}/research#quote-reproducibility`,
+        text:
+          "If a buyer can reproduce our regression in a notebook from the same public GitHub data, that buyer is the buyer who trusts us most. Reproducibility is not a constraint on the product — it is the product.",
+        spokenByCharacter: {
+          "@type": "Person",
+          name: "The Data Nerd",
+          jobTitle: "Founder, VC Deal Flow Signal",
+        },
+        creator: {
+          "@type": "Organization",
+          name: "VC Deal Flow Signal",
+          url: "https://gitdealflow.com",
+        },
+        isPartOf: {
+          "@type": "WebPage",
+          "@id": `${SITE}/manifesto#webpage`,
+        },
+        license: "https://creativecommons.org/licenses/by/4.0/",
+        inLanguage: "en",
+      },
+    ],
+  };
+
   return (
     <>
       <HreflangLinks
@@ -276,6 +330,10 @@ export default function ResearchPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(quotationJsonLd) }}
       />
       <script
         type="application/ld+json"
@@ -344,7 +402,9 @@ export default function ResearchPage() {
             <strong>20 sectors</strong>, spanning 5 quarters from Q2 2025
             through Q2 2026 (<strong>219 startup-period observations</strong>).
             Below: 30 atomic findings from the paper, each cited to its
-            section, each falsifiable against the public dataset.
+            section, each falsifiable against the public dataset. If your
+            question is whether GitHub activity can surface startup momentum
+            before a round gets crowded, this is the main evidence page.
           </p>
           <div
             data-speakable
@@ -503,6 +563,39 @@ export default function ResearchPage() {
           </p>
         </section>
 
+        <section className="mb-12 rounded-xl border border-amber-500/30 bg-amber-500/5 p-6 sm:p-8">
+          <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider mb-2">
+            Turn findings into action
+          </p>
+          <h2 className="text-gray-100 font-bold text-xl mb-3">
+            Use the evidence, then choose your next move.
+          </h2>
+          <p className="text-gray-300 text-sm leading-relaxed mb-5 max-w-2xl">
+            The panel tells you what tends to matter. If the question is still
+            early, start with the Sunday watchlist. If the thesis is already
+            live, move straight to a sharper sector pass. If you still need to
+            pressure-test the category, compare timing versus verification and
+            read the buyer's guide before committing to a heavier workflow.
+          </p>
+          <div className="flex flex-wrap gap-3 text-sm">
+            <Link href="https://gitdealflow.com/#signup" className="inline-flex items-center rounded-lg bg-amber-400 px-4 py-2 font-semibold text-slate-950 hover:bg-amber-300 transition-colors">
+              Get the free Sunday issue →
+            </Link>
+            <Link href="/firstlook" className="inline-flex items-center rounded-lg border border-slate-700 px-4 py-2 text-gray-200 hover:border-slate-500 hover:bg-slate-800/60 transition-colors">
+              Get my First Look →
+            </Link>
+            <Link href="/dashboard" className="inline-flex items-center rounded-lg border border-slate-700 px-4 py-2 text-gray-200 hover:border-slate-500 hover:bg-slate-800/60 transition-colors">
+              See the weekly operating surface →
+            </Link>
+            <Link href="/compare/crunchbase-alternative-for-angel-investors" className="inline-flex items-center rounded-lg border border-slate-700 px-4 py-2 text-gray-200 hover:border-slate-500 hover:bg-slate-800/60 transition-colors">
+              Compare timing vs verification →
+            </Link>
+            <Link href="/buyers-guide" className="inline-flex items-center rounded-lg border border-slate-700 px-4 py-2 text-gray-200 hover:border-slate-500 hover:bg-slate-800/60 transition-colors">
+              Read the buyer's guide →
+            </Link>
+          </div>
+        </section>
+
         <section className="text-center text-gray-400 text-sm">
           <p className="mb-2">
             Replication studies welcome.{" "}
@@ -556,10 +649,10 @@ function FindingRow({ finding }: { finding: Finding }) {
           </p>
         </div>
         <p className="text-gray-400 text-sm leading-relaxed mb-2 pl-9">
-          <span className="text-gray-500 italic">Why it matters: </span>
+          <span className="text-gray-400 italic">Why it matters: </span>
           {finding.why}
         </p>
-        <p className="text-gray-500 text-xs pl-9">
+        <p className="text-gray-400 text-xs pl-9">
           Source: {finding.section} · SSRN abstract=6606558 ·{" "}
           <span className="text-sky-500 group-hover:text-sky-400">
             View full finding →

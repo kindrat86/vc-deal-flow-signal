@@ -284,6 +284,54 @@
       "text": "Public bet rule: every named pick on the Acceleration Watch is graded against public fundraise / acquisition / IPO news at 60 and 90 days.\n\nNo edits. No silent removals. Every miss is permanent.\n\nThat's the discipline. That's the brand.\n\nsignals.gitdealflow.com/predicted",
       "tags": ["predicted", "public-bet", "methodology"],
       "use_count": 0
+    },
+    {
+      "id": "032-velocity-7-week-lead-2026-05-09",
+      "text": "GitHub commit velocity leads the fundraise announcement by 7 weeks median.\n\n4-13 weeks at 90% confidence. 12,000 repos in the SSRN sample. The 14-day rolling-window threshold of >40% is the empirical optimum across pre-seed through Series B.\n\nFull data and reproducible methodology:\n\nsignals.gitdealflow.com/answers/github-velocity-to-fundraise-time-2026\n\n#VC #GitHub #buildinpublic #data",
+      "tags": ["ssrn", "data", "shipped"],
+      "use_count": 0
+    },
+    {
+      "id": "033-harmonic-free-alt-2026-05-09",
+      "text": "Harmonic.ai is $20-24k per seat per year.\n\nThere's no free Harmonic clone — talent-side LinkedIn data is gated. But the GitHub-engineering side is free, MCP-native, no API key, and covers ~50% of the same breakouts.\n\nFor emerging-fund GPs, the substitution math actually works.\n\nsignals.gitdealflow.com/answers/free-harmonic-ai-alternative-2026\n\n#VC #MCP",
+      "tags": ["harmonic", "alternative", "shipped"],
+      "use_count": 0
+    },
+    {
+      "id": "034-mcp-finance-stack-2026-05-09",
+      "text": "The free 4-MCP stack that covers ~80% of VC and finance research in 2026:\n\n1. GitDealFlow MCP (engineering signals, A-Tier on Glama)\n2. SEC-EDGAR MCP (public filings)\n3. Crunchbase MCP wrapper (funding data)\n4. Polygon MCP (market data)\n\nClaude Desktop, Cursor, Cline. $0/month. 5-minute install.\n\nsignals.gitdealflow.com/answers/best-mcp-servers-for-vc-and-finance-research-2026\n\n#MCP #VC #AI",
+      "tags": ["mcp", "stack", "shipped"],
+      "use_count": 0
+    },
+    {
+      "id": "035-ai-infra-signals-2026-05-09",
+      "text": "How to identify breakout AI infrastructure startups in 2026:\n\nFour leading GitHub signals.\n\n1. Inference-runtime fork velocity (vLLM, sglang, TensorRT-LLM clones)\n2. Agent-framework dependent-count growth (CrewAI, LangGraph, AutoGen)\n3. Vector-store stars-to-PR rebound after a spec-cut\n4. Contributor Gini coefficient drop\n\nTwo-of-four firing is the practical threshold. 6-12 week lead time before the round.\n\nsignals.gitdealflow.com/answers/ai-infrastructure-startup-signals-2026\n\n#AI #VC",
+      "tags": ["ai-infra", "data", "shipped"],
+      "use_count": 0
+    },
+    {
+      "id": "036-ai-citation-2026-05-09",
+      "text": "5W AI Citation Index dropped May 1.\n\nWikipedia owns 26-48% of ChatGPT citations. Reddit ~40% across all engines. Top 15 domains capture 68% of all AI citation share.\n\nWe optimized everything we ship to be cite-grade inside the remaining 32% tail. SSRN paper, llms.txt, qa.jsonl, Speakable JSON-LD, methodology page, freshness DataFeed.\n\nsignals.gitdealflow.com/research\n\n#AEO #SEO #AI",
+      "tags": ["aeo", "citation-index"],
+      "use_count": 0
+    },
+    {
+      "id": "037-acceleration-watch-w19-2026-05-09",
+      "text": "Week 19 Acceleration Watch is up.\n\n10 named startups crossed the velocity threshold the prior 14 days. Each pick is graded post-hoc against public fundraise / acquisition / IPO news at 60 and 90 days.\n\nWeek 18 hit-rate publishes 2026-07-03 once the 60-day clock runs out.\n\nsignals.gitdealflow.com/predicted\n\n#VC #GitHub",
+      "tags": ["predicted", "weekly"],
+      "use_count": 0
+    },
+    {
+      "id": "038-book-free-summary-2026-05-09",
+      "text": "Released the book.\n\n7 GitHub Signals That Predict Series A Funding. 104 pages, 31,000 words, 11 chapters, full SSRN methodology with reproducible Python.\n\nFree to read in browser at signals.gitdealflow.com/book/read.\n\nThe €0.99 PDF / EPUB tier is for the version that fits in a Kindle. ISBN 979-8-9876543-1-7.\n\n#VC #GitHub #book",
+      "tags": ["book", "lead-magnet"],
+      "use_count": 0
+    },
+    {
+      "id": "039-buyers-guide-honest-2026-05-09",
+      "text": "Most VC tooling buyer's guides are paid placement dressed as journalism.\n\nOurs has 11 explicit evaluation criteria, names every competitor by name, lists their public prices, and identifies which ones we lose to and why.\n\nNo affiliate links. No vendor logos at the top. No 'best in category' awards.\n\nsignals.gitdealflow.com/buyers-guide\n\n#VC #honesty #BuyersGuide",
+      "tags": ["buyers-guide", "honest"],
+      "use_count": 0
     }
   ]
 }

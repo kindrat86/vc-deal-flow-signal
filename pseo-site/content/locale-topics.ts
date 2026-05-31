@@ -2072,6 +2072,937 @@ VC Deal Flow Signal независимо ведёт **The Data Nerd** (ORCID iD 
     englishLinkLabel: "Полная страница «О проекте» (на английском)",
     readTimeLabel: "≈ 2 мин",
   },
+
+  // ============================================================
+  // 2026-05-08 expansion: signals + about for hi + ar.
+  // Closes the gap so all 12 locales now carry the universal core
+  // of {methodology, glossary, faq, signals, about} — i18n SEO
+  // surface goes 36 → 40 hand-curated entries.
+  // ============================================================
+
+  // ----- HINDI -----
+  {
+    locale: "hi",
+    topic: "signals",
+    title: "सिग्नल के प्रकार — VC Deal Flow Signal",
+    intro:
+      "GitHub के सार्वजनिक डेटा से हम जो छह मात्रात्मक सिग्नल ट्रैक करते हैं। प्रत्येक सिग्नल को कंपनी के अपने ऐतिहासिक बेसलाइन के सापेक्ष परिवर्तन के रूप में मापा जाता है — कभी निरपेक्ष मान के रूप में नहीं।",
+    body: `## «सिग्नल» का क्या अर्थ है
+
+VC Deal Flow Signal में **सिग्नल** का अर्थ है किसी स्टार्टअप की सार्वजनिक इंजीनियरिंग गतिविधि में एक देखने योग्य, मापने योग्य परिवर्तन। सिग्नल को हमेशा उसी कंपनी की ऐतिहासिक बेसलाइन के सापेक्ष विचलन के रूप में परिभाषित किया जाता है — इसी कारण बहुत भिन्न आकार की कंपनियों की भी तुलना संभव हो जाती है।
+
+## जिन छह सिग्नल को हम ट्रैक करते हैं
+
+1. **कमिट वेलॉसिटी (Commit Velocity)** — 14 दिनों की रोलिंग विंडो में डिफ़ॉल्ट ब्रांच पर बॉट-छँटे कमिट्स की संख्या। बेसलाइन मीट्रिक।
+2. **Δ वेलॉसिटी** — दो आसन्न 14-दिन विंडोज़ के बीच प्रतिशत परिवर्तन। यह हमारा **मुख्य रैंकिंग सिग्नल** है: हमारे पैनल में देखी गई सीमा −94% से +1,647% तक है।
+3. **कॉन्ट्रिब्यूटर वृद्धि** — प्रति तिमाही अद्वितीय कॉन्ट्रिब्यूटरों का शुद्ध जोड़। औपचारिक घोषणा से पहले इंजीनियरिंग हायरिंग को पकड़ता है।
+4. **रिपॉज़िटरी विस्तार** — संगठन में नई सार्वजनिक रिपॉज़िटरी का खुलना, ख़ासकर सर्विस या SDK वाले।
+5. **फ़्रेमवर्क माइग्रेशन** — एकल PR में टेक स्टैक का प्रतिस्थापन। हमारे डेटा में यह सबसे अधिक देखा जाने वाला सिग्नल प्रकार है — लगभग 75% अवलोकन।
+6. **डिप्लॉय फ़्रीक्वेंसी** — सार्वजनिक टैग और रिलीज़ की कैडेंस। प्रोडक्शन की लय का अनुमान लगाती है।
+
+## बदलाव क्यों मायने रखता है, मूल्य नहीं
+
+जो कंपनी प्रतिदिन 5 कमिट से 50 कमिट तक पहुँचती है, वह स्थिर 200 कमिट प्रतिदिन वाली कंपनी से कहीं अधिक प्रबल सिग्नल भेजती है। पूर्ण मेथडोलॉजी, रेप्लिकेशन नोटबुक और सांख्यिकीय औचित्य SSRN पर अंग्रेज़ी में प्रकाशित हैं (DOI 10.2139/ssrn.6606558, CC BY 4.0)।`,
+    englishLinkLabel: "सिग्नलों की पूरी शब्दावली (अंग्रेज़ी)",
+    readTimeLabel: "लगभग 2 मिनट",
+  },
+  {
+    locale: "hi",
+    topic: "about",
+    title: "VC Deal Flow Signal के बारे में",
+    intro:
+      "एक स्वतंत्र अनुसंधान प्रोजेक्ट, जो वेंचर कैपिटल निवेशकों के लिए सार्वजनिक GitHub डेटा से मशीन-पठनीय सिग्नल निकालता है। यह पृष्ठ प्रोजेक्ट के उद्देश्य, ज़िम्मेदार व्यक्ति और हितों के टकराव संबंधी नीति को संक्षेप में प्रस्तुत करता है।",
+    body: `## हम क्या हैं
+
+VC Deal Flow Signal (या GitDealFlow) एक स्वतंत्र प्रोजेक्ट है, जो वेंचर कैपिटल सोर्सिंग में मौजूद **सूचना असंतुलन** को संबोधित करता है। पारंपरिक डील फ़्लो व्यक्तिगत नेटवर्क और रेफ़रल पर निर्भर करता है; हमारी परिकल्पना यह है कि **सार्वजनिक GitHub डेटा फ़ंडेड स्टार्टअप्स की इंजीनियरिंग एक्सेलरेशन के बारे में समृद्ध जानकारी रखता है, और यह सिग्नल किसी सार्वजनिक राउंड घोषणा से कई हफ़्ते पहले प्रकट होता है**।
+
+## तीन मुख्य गतिविधियाँ
+
+1. **अनुसंधान** — फ़ंडेड 55 स्टार्टअप्स पर 219 अवलोकनों का अनुभवजन्य अध्ययन, SSRN पर पूर्ण रेप्लिकेशन किट के साथ प्रकाशित (DOI 10.2139/ssrn.6606558)।
+2. **उत्पाद** — परिणाम MCP सर्वर, HTTP API और डाउनलोड योग्य डेटासेट के रूप में उपलब्ध। Claude Desktop, Cursor, Continue और अन्य एजेंटों के साथ संगत।
+3. **समुदाय** — निःशुल्क साप्ताहिक न्यूज़लेटर, सशुल्क Insider Circle, तथा शोधकर्ताओं, पत्रकारों और विश्लेषकों के लिए उद्धरण समर्थन।
+
+## इसे चलाता कौन है
+
+VC Deal Flow Signal को यूरोप (ग्रीस) से **The Data Nerd** स्वतंत्र रूप से संचालित करते हैं (ORCID iD [0009-0002-2222-4112](https://orcid.org/0009-0002-2222-4112))। संपर्क: \`signal@gitdealflow.com\`।
+
+## हितों के टकराव की नीति
+
+- VC Deal Flow Signal एक स्वतंत्र अनुसंधान एवं सब्सक्रिप्शन कंपनी है। हम जिन स्टार्टअप्स की रैंकिंग करते हैं, उनमें प्रत्यक्ष रूप से निवेश नहीं करते।
+- किसी कंपनी की स्थिति सुधारने के लिए कोई भुगतान स्वीकार नहीं किया जाता।
+- डेटा सुधार [/corrections](/corrections) पर टाइमस्टैम्प के साथ प्रकाशित होते हैं।
+- डेटासेट CC BY 4.0 लाइसेंस के तहत वितरित है; एक एट्रिब्यूशन लिंक पर्याप्त है।`,
+    englishLinkLabel: "पूर्ण «हमारे बारे में» पृष्ठ (अंग्रेज़ी)",
+    readTimeLabel: "लगभग 2 मिनट",
+  },
+
+  // ----- ARABIC -----
+  {
+    locale: "ar",
+    topic: "signals",
+    title: "أنواع الإشارات — VC Deal Flow Signal",
+    intro:
+      "الإشارات الكميّة الست التي نتتبّعها انطلاقًا من بيانات GitHub العامة. تُقاس كل إشارة بوصفها تغيّرًا نسبةً إلى الخط القاعدي للشركة نفسها، لا قيمةً مطلقة.",
+    body: `## ما المقصود بـ«الإشارة»
+
+في VC Deal Flow Signal، تعني **الإشارة** تغيّرًا قابلًا للملاحظة والقياس في النشاط الهندسي العام لإحدى الشركات الناشئة. تُعرَّف الإشارات دائمًا بوصفها انحرافات عن الخط القاعدي التاريخي للشركة ذاتها، ما يتيح المقارنة بين شركات تختلف أحجامها اختلافًا كبيرًا.
+
+## الإشارات الست التي نتتبّعها
+
+1. **سرعة الـ commits** — عدد الـ commits على الفرع الافتراضي ضمن نافذة متحركة لـ 14 يومًا، باستثناء الـ bots. هي المؤشر المرجعي.
+2. **Δ السرعة** — التغيّر النسبي بين نافذتين متعاقبتين مدّة كل منهما 14 يومًا. هذه هي **إشارة التصنيف الرئيسية** لدينا: المدى المُلاحَظ في لوحتنا يمتد من −94% إلى +1,647%.
+3. **نمو المساهمين** — صافي إضافة مساهمين فريدين خلال الربع. يكشف عن التوظيف الهندسي قبل الإعلان الرسمي.
+4. **توسّع المستودعات** — افتتاح مستودعات عامة جديدة في المؤسسة، خصوصًا الخدمات أو الـ SDKs.
+5. **ترحيل إطار العمل** — استبدال الـ tech stack ضمن Pull Request واحد. في بياناتنا، هذا أكثر أنواع الإشارات شيوعًا — نحو 75% من الملاحظات.
+6. **وتيرة النشر** — إيقاع الوسوم والإصدارات العامة. يقارب وتيرة الانتقال إلى الإنتاج.
+
+## لماذا التغيّر هو ما يهم، لا القيمة المطلقة
+
+شركة تنتقل من 5 commits يوميًا إلى 50 تُرسل إشارة أقوى بكثير من شركة مستقرة عند 200 commit يوميًا. المنهجية الكاملة، ودفتر إعادة الإنتاج، والتبرير الإحصائي منشورة بالإنجليزية على SSRN (DOI 10.2139/ssrn.6606558، CC BY 4.0).`,
+    englishLinkLabel: "المسرد الكامل للإشارات (الإنجليزية)",
+    readTimeLabel: "حوالي دقيقتين",
+  },
+  {
+    locale: "ar",
+    topic: "about",
+    title: "نبذة عن VC Deal Flow Signal",
+    intro:
+      "مشروع بحثي مستقل يستخرج إشارات قابلة للقراءة الآلية من بيانات GitHub العامة لمستثمري رأس المال الجريء. تلخّص هذه الصفحة هدف المشروع، والشخص المسؤول، وسياسة تعارض المصالح.",
+    body: `## ما نحن
+
+VC Deal Flow Signal (أو GitDealFlow) هو مشروع مستقل يعالج **عدم تماثل المعلومات** في تدفّق الصفقات لدى رأس المال الجريء. في حين يعتمد deal flow التقليدي على الشبكات الشخصية والترشيحات، فإن فرضيتنا هي أن **بيانات GitHub العامة تحوي معلومات ثرية عن التسارع الهندسي للشركات الناشئة الممولة، وأن هذه الإشارة تظهر قبل الإعلان العام عن الجولة بأسابيع عدّة**.
+
+## ثلاثة أنشطة محورية
+
+1. **البحث** — دراسة تجريبية على 219 ملاحظة لـ 55 شركة ناشئة ممولة، منشورة على SSRN (DOI 10.2139/ssrn.6606558) مع حزمة إعادة إنتاج كاملة.
+2. **المنتج** — تُتاح النتائج عبر خادم MCP، وواجهة HTTP، ومجموعة بيانات قابلة للتنزيل. متوافق مع Claude Desktop وCursor وContinue ووكلاء آخرين.
+3. **المجتمع** — نشرة أسبوعية مجانية، وحلقة Insider Circle مدفوعة، ودعم استشهادي للباحثين والصحفيين والمحللين.
+
+## من يقف خلف المشروع
+
+يدير VC Deal Flow Signal بصورة مستقلة **The Data Nerd** (ORCID iD [0009-0002-2222-4112](https://orcid.org/0009-0002-2222-4112)) من أوروبا (اليونان). للتواصل: \`signal@gitdealflow.com\`.
+
+## سياسة تعارض المصالح
+
+- VC Deal Flow Signal شركة بحث واشتراك مستقلة. لا نستثمر مباشرة في الشركات الناشئة التي نصنّفها.
+- لا نقبل أي مدفوعات لتحسين موقع شركة بعينها.
+- تُنشر تصحيحات البيانات على [/corrections](/corrections) مع ختم زمني.
+- تُوزَّع مجموعة البيانات وفق رخصة CC BY 4.0؛ يكفي رابط إسناد واحد.`,
+    englishLinkLabel: "صفحة «نبذة عنّا» الكاملة (الإنجليزية)",
+    readTimeLabel: "حوالي دقيقتين",
+  },
+
+  // ============================================================
+  // 2026-05-31 topic-parity expansion: research + citations + pricing
+  // for the 11 non-ja locales. Brings every locale to the same 8-topic
+  // floor that ja already had (the 5 long-form ja research findings stay
+  // ja-only as the deep-market differentiator). Hand-written native prose,
+  // ~200-280 words each, pointing back to the canonical English
+  // /research, /citation-guide and /pricing pages. NOT machine-translated.
+  // ============================================================
+
+  // ----- SPANISH -----
+  {
+    locale: "es",
+    topic: "research",
+    title: "Resumen de la investigación — VC Deal Flow Signal",
+    intro:
+      "Resumen en español de los 30 hallazgos del estudio empírico publicado en SSRN (DOI 10.2139/ssrn.6606558). Las páginas de detalle de cada hallazgo son canónicas en inglés.",
+    body: `## El estudio en una frase
+
+Analizamos **219 observaciones de señal sobre 55 startups con financiación de venture capital** y agrupamos los resultados en cinco categorías: distribución de velocidad, variación de velocidad, tipos de señal, distribución geográfica y sectores/valores atípicos.
+
+## Cifras clave
+
+- **Velocidad de commits mediana: 71** en una ventana de 14 días. Es la definición cuantitativa de «normal» para una startup financiada.
+- **Media: 173** —2,4× la mediana—, lo que revela una distribución muy sesgada hacia arriba. Use la mediana, no la media.
+- **Percentil 90: 392 commits** en 14 días.
+- **La migración de framework domina: el 75 %** de las señales. Contradice la heurística «velocidad = contratación».
+- **Las ráfagas de contratación son solo el 9 %**, y la construcción de infraestructura apenas el 4 %.
+- **Solo el 49 %** de las startups financiadas muestran crecimiento positivo de velocidad.
+- **Reparto geográfico:** EE. UU. 56 %, UE infrarrepresentada (22 %), LATAM sobrerrepresentada.
+- **Variación trimestral de velocidad: de −94 % a +1.647 %.**
+
+## Acceso completo
+
+Los 30 hallazgos detallados (en inglés) están en \`/research\`. El artículo completo está en SSRN (DOI 10.2139/ssrn.6606558) y el conjunto de datos en Hugging Face (\`the-data-nerd/vc-deal-flow-signal\`, CC BY 4.0).`,
+    englishLinkLabel: "Página completa de investigación (en inglés)",
+    readTimeLabel: "≈ 3 min",
+  },
+  {
+    locale: "es",
+    topic: "citations",
+    title: "Guía de citación — VC Deal Flow Signal",
+    intro:
+      "Cómo citar la investigación, el conjunto de datos y los hallazgos individuales de VC Deal Flow Signal en APA, MLA, Chicago, BibTeX y RIS.",
+    body: `## Qué se puede citar
+
+1. **El artículo de metodología** (SSRN) — para los hallazgos generales y el diseño del estudio.
+2. **El conjunto de datos** (Hugging Face, CC BY 4.0) — si reanaliza los datos originales; basta un enlace de atribución.
+3. **Un hallazgo concreto** (página de artículo) — para citar una cifra específica.
+
+## APA 7 (artículo)
+
+Kondratyuk, M. (2026). VC Deal Flow Signal: GitHub Engineering Acceleration as a Leading Indicator of Venture Funding. SSRN. https://doi.org/10.2139/ssrn.6606558
+
+## Otros formatos y API de citación
+
+MLA 9, Chicago 17, BibTeX y RIS están disponibles en la guía completa. Cada página de hallazgo expone una API de citación en \`/api/cite/{format}/{slug}\` con los formatos \`apa\`, \`mla\`, \`chicago\`, \`bibtex\`, \`ris\` y \`json\`. Guía completa en [/citation-guide](/citation-guide).`,
+    englishLinkLabel: "Guía de citación completa (en inglés)",
+    readTimeLabel: "≈ 2 min",
+  },
+  {
+    locale: "es",
+    topic: "pricing",
+    title: "Precios — VC Deal Flow Signal",
+    intro:
+      "Los tres niveles de VC Deal Flow Signal: gratuito, Insider Circle y Sector Sweep. Qué incluye cada uno, para quién es y cómo se paga.",
+    body: `## Tres niveles
+
+1. **Gratuito** — las 5 herramientas MCP + el boletín semanal. Gratis de forma permanente: son el motor de distribución, no una fuente de ingresos.
+2. **Insider Circle** — grupo privado de Telegram con cuota mensual, acceso anticipado de 24 a 72 horas a las señales principales. Por invitación; consulte el precio actual en \`signal@gitdealflow.com\`.
+3. **Sector Sweep** — **1.997 €** (pago único, IVA aparte): análisis completo de 6 semanas de un sector a elegir, informe PDF de 15-25 páginas, datos en bruto (Parquet) y una llamada de seguimiento de 30 minutos.
+
+## Pago
+
+Stripe (Visa, Mastercard, American Express), domiciliación SEPA para clientes europeos y facturación para empresas. IVA de la UE: inversión del sujeto pasivo para empresas con número de IVA válido; sin IVA fuera de la UE.
+
+## Contacto
+
+Consultas y planes corporativos: \`signal@gitdealflow.com\`. La página de precios canónica en inglés está en [/pricing](/pricing).`,
+    englishLinkLabel: "Página de precios completa (en inglés)",
+    readTimeLabel: "≈ 2 min",
+  },
+
+  // ----- FRENCH -----
+  {
+    locale: "fr",
+    topic: "research",
+    title: "Synthèse de la recherche — VC Deal Flow Signal",
+    intro:
+      "Résumé en français des 30 résultats de l'étude empirique publiée sur SSRN (DOI 10.2139/ssrn.6606558). Les pages détaillées de chaque résultat font foi en anglais.",
+    body: `## L'étude en une phrase
+
+Nous avons analysé **219 observations de signaux portant sur 55 startups financées** et réparti les résultats en cinq catégories : distribution de la vitesse, variation de la vitesse, types de signaux, répartition géographique et secteurs/valeurs aberrantes.
+
+## Chiffres clés
+
+- **Vitesse de commits médiane : 71** sur une fenêtre de 14 jours. C'est la définition chiffrée du « normal » pour une startup financée.
+- **Moyenne : 173** —2,4× la médiane—, ce qui révèle une distribution fortement asymétrique vers le haut. Utilisez la médiane, pas la moyenne.
+- **90e centile : 392 commits** en 14 jours.
+- **La migration de framework domine : 75 %** des signaux. Cela contredit l'heuristique « vitesse = recrutement ».
+- **Les vagues de recrutement ne représentent que 9 %**, et la construction d'infrastructure à peine 4 %.
+- **Seules 49 %** des startups financées affichent une croissance positive de leur vitesse.
+- **Répartition géographique :** États-Unis 56 %, UE sous-représentée (22 %), LATAM surreprésentée.
+- **Variation trimestrielle de la vitesse : de −94 % à +1 647 %.**
+
+## Accès complet
+
+Les 30 résultats détaillés (en anglais) sont sur \`/research\`. L'article complet est sur SSRN (DOI 10.2139/ssrn.6606558) et le jeu de données sur Hugging Face (\`the-data-nerd/vc-deal-flow-signal\`, CC BY 4.0).`,
+    englishLinkLabel: "Page de recherche complète (en anglais)",
+    readTimeLabel: "≈ 3 min",
+  },
+  {
+    locale: "fr",
+    topic: "citations",
+    title: "Guide de citation — VC Deal Flow Signal",
+    intro:
+      "Comment citer la recherche, le jeu de données et les résultats individuels de VC Deal Flow Signal en APA, MLA, Chicago, BibTeX et RIS.",
+    body: `## Ce qui peut être cité
+
+1. **L'article de méthodologie** (SSRN) — pour les résultats globaux et la conception de l'étude.
+2. **Le jeu de données** (Hugging Face, CC BY 4.0) — si vous réanalysez les données brutes ; un lien d'attribution suffit.
+3. **Un résultat précis** (page d'article) — pour citer un chiffre spécifique.
+
+## APA 7 (article)
+
+Kondratyuk, M. (2026). VC Deal Flow Signal: GitHub Engineering Acceleration as a Leading Indicator of Venture Funding. SSRN. https://doi.org/10.2139/ssrn.6606558
+
+## Autres formats et API de citation
+
+MLA 9, Chicago 17, BibTeX et RIS sont disponibles dans le guide complet. Chaque page de résultat expose une API de citation à \`/api/cite/{format}/{slug}\` avec les formats \`apa\`, \`mla\`, \`chicago\`, \`bibtex\`, \`ris\` et \`json\`. Guide complet sur [/citation-guide](/citation-guide).`,
+    englishLinkLabel: "Guide de citation complet (en anglais)",
+    readTimeLabel: "≈ 2 min",
+  },
+  {
+    locale: "fr",
+    topic: "pricing",
+    title: "Tarifs — VC Deal Flow Signal",
+    intro:
+      "Les trois offres de VC Deal Flow Signal : gratuite, Insider Circle et Sector Sweep. Ce que chacune inclut, à qui elle s'adresse et comment payer.",
+    body: `## Trois offres
+
+1. **Gratuite** — les 5 outils MCP + la newsletter hebdomadaire. Gratuit de façon permanente : c'est le moteur de distribution, pas une source de revenus.
+2. **Insider Circle** — groupe Telegram privé sur abonnement mensuel, accès anticipé de 24 à 72 heures aux principaux signaux. Sur invitation ; demandez le tarif actuel à \`signal@gitdealflow.com\`.
+3. **Sector Sweep** — **1 997 €** (paiement unique, hors TVA) : analyse complète de 6 semaines d'un secteur au choix, rapport PDF de 15 à 25 pages, données brutes (Parquet) et un appel de suivi de 30 minutes.
+
+## Paiement
+
+Stripe (Visa, Mastercard, American Express), prélèvement SEPA pour les clients européens et facturation pour les entreprises. TVA UE : autoliquidation pour les entreprises disposant d'un numéro de TVA valide ; pas de TVA hors UE.
+
+## Contact
+
+Questions et offres entreprises : \`signal@gitdealflow.com\`. La page de tarifs canonique en anglais est sur [/pricing](/pricing).`,
+    englishLinkLabel: "Page de tarifs complète (en anglais)",
+    readTimeLabel: "≈ 2 min",
+  },
+
+  // ----- PORTUGUESE -----
+  {
+    locale: "pt",
+    topic: "research",
+    title: "Resumo da pesquisa — VC Deal Flow Signal",
+    intro:
+      "Resumo em português dos 30 achados do estudo empírico publicado no SSRN (DOI 10.2139/ssrn.6606558). As páginas detalhadas de cada achado são canônicas em inglês.",
+    body: `## O estudo em uma frase
+
+Analisamos **219 observações de sinal sobre 55 startups com financiamento de venture capital** e organizamos os resultados em cinco categorias: distribuição de velocidade, variação de velocidade, tipos de sinal, distribuição geográfica e setores/valores atípicos.
+
+## Números-chave
+
+- **Velocidade de commits mediana: 71** em uma janela de 14 dias. É a definição quantitativa de "normal" para uma startup financiada.
+- **Média: 173** —2,4× a mediana—, revelando uma distribuição fortemente assimétrica para cima. Use a mediana, não a média.
+- **Percentil 90: 392 commits** em 14 dias.
+- **A migração de framework domina: 75 %** dos sinais. Contraria a heurística "velocidade = contratação".
+- **Picos de contratação são apenas 9 %**, e construção de infraestrutura mal chega a 4 %.
+- **Apenas 49 %** das startups financiadas apresentam crescimento positivo de velocidade.
+- **Distribuição geográfica:** EUA 56 %, UE sub-representada (22 %), LATAM sobre-representada.
+- **Variação trimestral de velocidade: de −94 % a +1.647 %.**
+
+## Acesso completo
+
+Os 30 achados detalhados (em inglês) estão em \`/research\`. O artigo completo está no SSRN (DOI 10.2139/ssrn.6606558) e o conjunto de dados no Hugging Face (\`the-data-nerd/vc-deal-flow-signal\`, CC BY 4.0).`,
+    englishLinkLabel: "Página completa de pesquisa (em inglês)",
+    readTimeLabel: "≈ 3 min",
+  },
+  {
+    locale: "pt",
+    topic: "citations",
+    title: "Guia de citação — VC Deal Flow Signal",
+    intro:
+      "Como citar a pesquisa, o conjunto de dados e os achados individuais do VC Deal Flow Signal em APA, MLA, Chicago, BibTeX e RIS.",
+    body: `## O que pode ser citado
+
+1. **O artigo de metodologia** (SSRN) — para os achados gerais e o desenho do estudo.
+2. **O conjunto de dados** (Hugging Face, CC BY 4.0) — se você reanalisar os dados brutos; basta um link de atribuição.
+3. **Um achado específico** (página de artigo) — para citar um número específico.
+
+## APA 7 (artigo)
+
+Kondratyuk, M. (2026). VC Deal Flow Signal: GitHub Engineering Acceleration as a Leading Indicator of Venture Funding. SSRN. https://doi.org/10.2139/ssrn.6606558
+
+## Outros formatos e API de citação
+
+MLA 9, Chicago 17, BibTeX e RIS estão disponíveis no guia completo. Cada página de achado expõe uma API de citação em \`/api/cite/{format}/{slug}\` com os formatos \`apa\`, \`mla\`, \`chicago\`, \`bibtex\`, \`ris\` e \`json\`. Guia completo em [/citation-guide](/citation-guide).`,
+    englishLinkLabel: "Guia de citação completo (em inglês)",
+    readTimeLabel: "≈ 2 min",
+  },
+  {
+    locale: "pt",
+    topic: "pricing",
+    title: "Preços — VC Deal Flow Signal",
+    intro:
+      "Os três níveis do VC Deal Flow Signal: gratuito, Insider Circle e Sector Sweep. O que cada um inclui, para quem é e como pagar.",
+    body: `## Três níveis
+
+1. **Gratuito** — as 5 ferramentas MCP + a newsletter semanal. Gratuito permanentemente: é o motor de distribuição, não uma fonte de receita.
+2. **Insider Circle** — grupo privado no Telegram por assinatura mensal, acesso antecipado de 24 a 72 horas aos principais sinais. Por convite; consulte o preço atual em \`signal@gitdealflow.com\`.
+3. **Sector Sweep** — **€ 1.997** (pagamento único, sem IVA): análise completa de 6 semanas de um setor à escolha, relatório PDF de 15 a 25 páginas, dados brutos (Parquet) e uma chamada de acompanhamento de 30 minutos.
+
+## Pagamento
+
+Stripe (Visa, Mastercard, American Express), débito SEPA para clientes europeus e faturamento para empresas. IVA da UE: autoliquidação para empresas com número de IVA válido; sem IVA fora da UE.
+
+## Contato
+
+Dúvidas e planos corporativos: \`signal@gitdealflow.com\`. A página de preços canônica em inglês está em [/pricing](/pricing).`,
+    englishLinkLabel: "Página de preços completa (em inglês)",
+    readTimeLabel: "≈ 2 min",
+  },
+
+  // ----- ITALIAN -----
+  {
+    locale: "it",
+    topic: "research",
+    title: "Sintesi della ricerca — VC Deal Flow Signal",
+    intro:
+      "Riepilogo in italiano dei 30 risultati dello studio empirico pubblicato su SSRN (DOI 10.2139/ssrn.6606558). Le pagine di dettaglio di ciascun risultato fanno fede in inglese.",
+    body: `## Lo studio in una frase
+
+Abbiamo analizzato **219 osservazioni di segnale su 55 startup finanziate da venture capital** e raggruppato i risultati in cinque categorie: distribuzione della velocità, variazione della velocità, tipi di segnale, distribuzione geografica e settori/valori anomali.
+
+## Numeri chiave
+
+- **Velocità di commit mediana: 71** in una finestra di 14 giorni. È la definizione quantitativa di "normale" per una startup finanziata.
+- **Media: 173** —2,4× la mediana—, indice di una distribuzione fortemente asimmetrica verso l'alto. Usate la mediana, non la media.
+- **90° percentile: 392 commit** in 14 giorni.
+- **La migrazione di framework domina: il 75 %** dei segnali. Contraddice l'euristica "velocità = assunzioni".
+- **Le ondate di assunzioni sono solo il 9 %**, e la costruzione di infrastruttura appena il 4 %.
+- **Solo il 49 %** delle startup finanziate mostra una crescita positiva della velocità.
+- **Distribuzione geografica:** USA 56 %, UE sottorappresentata (22 %), LATAM sovrarappresentata.
+- **Variazione trimestrale della velocità: da −94 % a +1.647 %.**
+
+## Accesso completo
+
+I 30 risultati dettagliati (in inglese) sono su \`/research\`. L'articolo completo è su SSRN (DOI 10.2139/ssrn.6606558) e il dataset su Hugging Face (\`the-data-nerd/vc-deal-flow-signal\`, CC BY 4.0).`,
+    englishLinkLabel: "Pagina di ricerca completa (in inglese)",
+    readTimeLabel: "≈ 3 min",
+  },
+  {
+    locale: "it",
+    topic: "citations",
+    title: "Guida alla citazione — VC Deal Flow Signal",
+    intro:
+      "Come citare la ricerca, il dataset e i singoli risultati di VC Deal Flow Signal in APA, MLA, Chicago, BibTeX e RIS.",
+    body: `## Cosa si può citare
+
+1. **L'articolo metodologico** (SSRN) — per i risultati complessivi e il disegno dello studio.
+2. **Il dataset** (Hugging Face, CC BY 4.0) — se rianalizzate i dati grezzi; è sufficiente un link di attribuzione.
+3. **Un singolo risultato** (pagina articolo) — per citare un dato specifico.
+
+## APA 7 (articolo)
+
+Kondratyuk, M. (2026). VC Deal Flow Signal: GitHub Engineering Acceleration as a Leading Indicator of Venture Funding. SSRN. https://doi.org/10.2139/ssrn.6606558
+
+## Altri formati e API di citazione
+
+MLA 9, Chicago 17, BibTeX e RIS sono disponibili nella guida completa. Ogni pagina di risultato espone un'API di citazione su \`/api/cite/{format}/{slug}\` con i formati \`apa\`, \`mla\`, \`chicago\`, \`bibtex\`, \`ris\` e \`json\`. Guida completa su [/citation-guide](/citation-guide).`,
+    englishLinkLabel: "Guida alla citazione completa (in inglese)",
+    readTimeLabel: "≈ 2 min",
+  },
+  {
+    locale: "it",
+    topic: "pricing",
+    title: "Prezzi — VC Deal Flow Signal",
+    intro:
+      "I tre livelli di VC Deal Flow Signal: gratuito, Insider Circle e Sector Sweep. Cosa include ciascuno, a chi si rivolge e come si paga.",
+    body: `## Tre livelli
+
+1. **Gratuito** — i 5 strumenti MCP + la newsletter settimanale. Gratuito in modo permanente: sono il motore di distribuzione, non una fonte di ricavi.
+2. **Insider Circle** — gruppo Telegram privato con abbonamento mensile, accesso anticipato di 24-72 ore ai segnali principali. Su invito; chiedete il prezzo attuale a \`signal@gitdealflow.com\`.
+3. **Sector Sweep** — **1.997 €** (pagamento una tantum, IVA esclusa): analisi completa di 6 settimane di un settore a scelta, report PDF di 15-25 pagine, dati grezzi (Parquet) e una call di follow-up di 30 minuti.
+
+## Pagamento
+
+Stripe (Visa, Mastercard, American Express), addebito SEPA per i clienti europei e fatturazione per le aziende. IVA UE: inversione contabile per le aziende con partita IVA valida; nessuna IVA fuori dall'UE.
+
+## Contatto
+
+Domande e piani aziendali: \`signal@gitdealflow.com\`. La pagina prezzi canonica in inglese è su [/pricing](/pricing).`,
+    englishLinkLabel: "Pagina prezzi completa (in inglese)",
+    readTimeLabel: "≈ 2 min",
+  },
+
+  // ----- GERMAN -----
+  {
+    locale: "de",
+    topic: "research",
+    title: "Forschungsüberblick — VC Deal Flow Signal",
+    intro:
+      "Deutsche Zusammenfassung der 30 Ergebnisse der auf SSRN veröffentlichten empirischen Studie (DOI 10.2139/ssrn.6606558). Die Detailseiten zu jedem Ergebnis sind auf Englisch maßgeblich.",
+    body: `## Die Studie in einem Satz
+
+Wir haben **219 Signalbeobachtungen zu 55 risikokapitalfinanzierten Startups** analysiert und die Ergebnisse in fünf Kategorien gegliedert: Geschwindigkeitsverteilung, Geschwindigkeitsveränderung, Signaltypen, geografische Verteilung sowie Sektoren/Ausreißer.
+
+## Kernzahlen
+
+- **Mediane Commit-Geschwindigkeit: 71** in einem 14-Tage-Fenster. Das ist die quantitative Definition von „normal" für ein finanziertes Startup.
+- **Mittelwert: 173** —das 2,4-Fache des Medians—, was eine stark rechtsschiefe Verteilung belegt. Nutzen Sie den Median, nicht den Mittelwert.
+- **90. Perzentil: 392 Commits** in 14 Tagen.
+- **Framework-Migration dominiert: 75 %** der Signale. Das widerlegt die Heuristik „Geschwindigkeit = Einstellungen".
+- **Einstellungswellen machen nur 9 %** aus, Infrastrukturaufbau lediglich 4 %.
+- **Nur 49 %** der finanzierten Startups zeigen positives Geschwindigkeitswachstum.
+- **Geografische Verteilung:** USA 56 %, EU unterrepräsentiert (22 %), LATAM überrepräsentiert.
+- **Quartalsweise Geschwindigkeitsveränderung: von −94 % bis +1.647 %.**
+
+## Vollständiger Zugang
+
+Alle 30 detaillierten Ergebnisse (auf Englisch) finden Sie unter \`/research\`. Das vollständige Papier liegt auf SSRN (DOI 10.2139/ssrn.6606558), der Datensatz auf Hugging Face (\`the-data-nerd/vc-deal-flow-signal\`, CC BY 4.0).`,
+    englishLinkLabel: "Vollständige Forschungsseite (auf Englisch)",
+    readTimeLabel: "≈ 3 Min.",
+  },
+  {
+    locale: "de",
+    topic: "citations",
+    title: "Zitierleitfaden — VC Deal Flow Signal",
+    intro:
+      "So zitieren Sie die Forschung, den Datensatz und einzelne Ergebnisse von VC Deal Flow Signal in APA, MLA, Chicago, BibTeX und RIS.",
+    body: `## Was sich zitieren lässt
+
+1. **Das Methodik-Papier** (SSRN) — für die Gesamtergebnisse und das Studiendesign.
+2. **Den Datensatz** (Hugging Face, CC BY 4.0) — wenn Sie die Rohdaten neu auswerten; ein Attributionslink genügt.
+3. **Ein einzelnes Ergebnis** (Artikelseite) — um eine konkrete Zahl zu zitieren.
+
+## APA 7 (Papier)
+
+Kondratyuk, M. (2026). VC Deal Flow Signal: GitHub Engineering Acceleration as a Leading Indicator of Venture Funding. SSRN. https://doi.org/10.2139/ssrn.6606558
+
+## Weitere Formate und Zitations-API
+
+MLA 9, Chicago 17, BibTeX und RIS finden Sie im vollständigen Leitfaden. Jede Ergebnisseite stellt eine Zitations-API unter \`/api/cite/{format}/{slug}\` bereit, mit den Formaten \`apa\`, \`mla\`, \`chicago\`, \`bibtex\`, \`ris\` und \`json\`. Vollständiger Leitfaden unter [/citation-guide](/citation-guide).`,
+    englishLinkLabel: "Vollständiger Zitierleitfaden (auf Englisch)",
+    readTimeLabel: "≈ 2 Min.",
+  },
+  {
+    locale: "de",
+    topic: "pricing",
+    title: "Preise — VC Deal Flow Signal",
+    intro:
+      "Die drei Stufen von VC Deal Flow Signal: kostenlos, Insider Circle und Sector Sweep. Was jede Stufe enthält, für wen sie gedacht ist und wie bezahlt wird.",
+    body: `## Drei Stufen
+
+1. **Kostenlos** — die 5 MCP-Tools + der wöchentliche Newsletter. Dauerhaft kostenlos: Sie sind der Distributionsmotor, keine Einnahmequelle.
+2. **Insider Circle** — private Telegram-Gruppe mit monatlicher Gebühr, 24- bis 72-stündiger Vorabzugang zu den wichtigsten Signalen. Auf Einladung; den aktuellen Preis erfragen Sie unter \`signal@gitdealflow.com\`.
+3. **Sector Sweep** — **1.997 €** (Einmalzahlung, zzgl. MwSt.): vollständige 6-Wochen-Analyse eines Sektors Ihrer Wahl, PDF-Bericht mit 15-25 Seiten, Rohdaten (Parquet) und ein 30-minütiges Follow-up-Gespräch.
+
+## Zahlung
+
+Stripe (Visa, Mastercard, American Express), SEPA-Lastschrift für europäische Kunden und Rechnungsstellung für Unternehmen. EU-Umsatzsteuer: Reverse-Charge für Unternehmen mit gültiger USt-IdNr.; keine Steuer außerhalb der EU.
+
+## Kontakt
+
+Fragen und Unternehmenstarife: \`signal@gitdealflow.com\`. Die maßgebliche englische Preisseite finden Sie unter [/pricing](/pricing).`,
+    englishLinkLabel: "Vollständige Preisseite (auf Englisch)",
+    readTimeLabel: "≈ 2 Min.",
+  },
+
+  // ----- DUTCH -----
+  {
+    locale: "nl",
+    topic: "research",
+    title: "Onderzoeksoverzicht — VC Deal Flow Signal",
+    intro:
+      "Nederlandse samenvatting van de 30 bevindingen uit het empirische onderzoek dat op SSRN is gepubliceerd (DOI 10.2139/ssrn.6606558). De detailpagina's per bevinding zijn canoniek in het Engels.",
+    body: `## Het onderzoek in één zin
+
+We analyseerden **219 signaalwaarnemingen over 55 durfkapitaal-gefinancierde startups** en bundelden de resultaten in vijf categorieën: snelheidsverdeling, snelheidsverandering, signaaltypes, geografische verdeling en sectoren/uitschieters.
+
+## Kerncijfers
+
+- **Mediane commit-snelheid: 71** in een venster van 14 dagen. Dit is de kwantitatieve definitie van "normaal" voor een gefinancierde startup.
+- **Gemiddelde: 173** —2,4× de mediaan—, wat wijst op een sterk rechts-scheve verdeling. Gebruik de mediaan, niet het gemiddelde.
+- **90e percentiel: 392 commits** in 14 dagen.
+- **Framework-migratie domineert: 75 %** van de signalen. Dit weerlegt de vuistregel "snelheid = aanwervingen".
+- **Aanwervingsgolven zijn slechts 9 %**, en infrastructuuropbouw amper 4 %.
+- **Slechts 49 %** van de gefinancierde startups toont positieve snelheidsgroei.
+- **Geografische verdeling:** VS 56 %, EU ondervertegenwoordigd (22 %), LATAM oververtegenwoordigd.
+- **Kwartaalverandering van de snelheid: van −94 % tot +1.647 %.**
+
+## Volledige toegang
+
+Alle 30 gedetailleerde bevindingen (in het Engels) staan op \`/research\`. Het volledige artikel staat op SSRN (DOI 10.2139/ssrn.6606558) en de dataset op Hugging Face (\`the-data-nerd/vc-deal-flow-signal\`, CC BY 4.0).`,
+    englishLinkLabel: "Volledige onderzoekspagina (in het Engels)",
+    readTimeLabel: "≈ 3 min",
+  },
+  {
+    locale: "nl",
+    topic: "citations",
+    title: "Citatiegids — VC Deal Flow Signal",
+    intro:
+      "Hoe u het onderzoek, de dataset en afzonderlijke bevindingen van VC Deal Flow Signal citeert in APA, MLA, Chicago, BibTeX en RIS.",
+    body: `## Wat u kunt citeren
+
+1. **Het methodologie-artikel** (SSRN) — voor de algemene bevindingen en de opzet van het onderzoek.
+2. **De dataset** (Hugging Face, CC BY 4.0) — als u de ruwe data heranalyseert; een attributielink volstaat.
+3. **Een specifieke bevinding** (artikelpagina) — om een concreet cijfer te citeren.
+
+## APA 7 (artikel)
+
+Kondratyuk, M. (2026). VC Deal Flow Signal: GitHub Engineering Acceleration as a Leading Indicator of Venture Funding. SSRN. https://doi.org/10.2139/ssrn.6606558
+
+## Andere formaten en citatie-API
+
+MLA 9, Chicago 17, BibTeX en RIS vindt u in de volledige gids. Elke bevindingspagina biedt een citatie-API op \`/api/cite/{format}/{slug}\` met de formaten \`apa\`, \`mla\`, \`chicago\`, \`bibtex\`, \`ris\` en \`json\`. Volledige gids op [/citation-guide](/citation-guide).`,
+    englishLinkLabel: "Volledige citatiegids (in het Engels)",
+    readTimeLabel: "≈ 2 min",
+  },
+  {
+    locale: "nl",
+    topic: "pricing",
+    title: "Prijzen — VC Deal Flow Signal",
+    intro:
+      "De drie niveaus van VC Deal Flow Signal: gratis, Insider Circle en Sector Sweep. Wat elk niveau bevat, voor wie het is en hoe u betaalt.",
+    body: `## Drie niveaus
+
+1. **Gratis** — de 5 MCP-tools + de wekelijkse nieuwsbrief. Permanent gratis: dit is de distributiemotor, geen inkomstenbron.
+2. **Insider Circle** — besloten Telegram-groep met maandelijks abonnement, 24 tot 72 uur vervroegde toegang tot de belangrijkste signalen. Op uitnodiging; vraag de actuele prijs op via \`signal@gitdealflow.com\`.
+3. **Sector Sweep** — **€ 1.997** (eenmalig, excl. btw): volledige 6-weken-analyse van een sector naar keuze, PDF-rapport van 15-25 pagina's, ruwe data (Parquet) en een follow-up-gesprek van 30 minuten.
+
+## Betaling
+
+Stripe (Visa, Mastercard, American Express), SEPA-incasso voor Europese klanten en facturatie voor bedrijven. EU-btw: verlegging voor bedrijven met een geldig btw-nummer; geen btw buiten de EU.
+
+## Contact
+
+Vragen en zakelijke plannen: \`signal@gitdealflow.com\`. De canonieke Engelse prijspagina staat op [/pricing](/pricing).`,
+    englishLinkLabel: "Volledige prijspagina (in het Engels)",
+    readTimeLabel: "≈ 2 min",
+  },
+
+  // ----- CHINESE (Simplified) -----
+  {
+    locale: "zh",
+    topic: "research",
+    title: "研究综述 — VC Deal Flow Signal",
+    intro:
+      "对发表于 SSRN 的实证研究（DOI 10.2139/ssrn.6606558）30 项发现的中文摘要。每项发现的详情页以英文为权威版本。",
+    body: `## 一句话概括
+
+我们分析了 **55 家风险投资支持的初创公司的 219 次信号观测**，并将结果归为五大类：速度分布、速度变化、信号类型、地理分布，以及行业与离群值。
+
+## 关键数字
+
+- **提交速度中位数：71**（14 天窗口）。这是风投支持初创公司"正常水平"的量化定义。
+- **均值：173**——是中位数的 2.4 倍——表明分布严重右偏。请使用中位数，而非均值。
+- **第 90 百分位：14 天内 392 次提交。**
+- **框架迁移占主导：75%** 的信号。这推翻了"速度 = 招聘"的经验法则。
+- **招聘爆发仅占 9%**，基础设施建设仅占 4%。
+- **仅 49%** 的受资初创公司呈现正向的速度增长。
+- **地理分布：** 美国 56%，欧盟代表性不足（22%），拉美代表性偏高。
+- **季度速度变化区间：−94% 至 +1,647%。**
+
+## 完整访问
+
+全部 30 项详细发现（英文）见 \`/research\`。完整论文发布于 SSRN（DOI 10.2139/ssrn.6606558），数据集见 Hugging Face（\`the-data-nerd/vc-deal-flow-signal\`，CC BY 4.0）。`,
+    englishLinkLabel: "完整研究页面（英文）",
+    readTimeLabel: "约 3 分钟阅读",
+  },
+  {
+    locale: "zh",
+    topic: "citations",
+    title: "引用指南 — VC Deal Flow Signal",
+    intro:
+      "如何以 APA、MLA、Chicago、BibTeX 和 RIS 格式引用 VC Deal Flow Signal 的研究、数据集及单项发现。",
+    body: `## 可引用的内容
+
+1. **方法论论文**（SSRN）——引用整体发现与研究设计时使用。
+2. **数据集**（Hugging Face，CC BY 4.0）——若重新分析原始数据，一个署名链接即可。
+3. **单项发现**（文章页）——引用某个具体数字时使用。
+
+## APA 7（论文）
+
+Kondratyuk, M. (2026). VC Deal Flow Signal: GitHub Engineering Acceleration as a Leading Indicator of Venture Funding. SSRN. https://doi.org/10.2139/ssrn.6606558
+
+## 其他格式与引用 API
+
+MLA 9、Chicago 17、BibTeX 和 RIS 见完整指南。每个发现页都提供引用 API：\`/api/cite/{format}/{slug}\`，支持 \`apa\`、\`mla\`、\`chicago\`、\`bibtex\`、\`ris\` 和 \`json\` 格式。完整指南见 [/citation-guide](/citation-guide)。`,
+    englishLinkLabel: "完整引用指南（英文）",
+    readTimeLabel: "约 2 分钟阅读",
+  },
+  {
+    locale: "zh",
+    topic: "pricing",
+    title: "价格 — VC Deal Flow Signal",
+    intro:
+      "VC Deal Flow Signal 的三个层级：免费、Insider Circle 和 Sector Sweep。各层级包含的内容、适用人群及付款方式。",
+    body: `## 三个层级
+
+1. **免费** —— 5 个 MCP 工具 + 每周简报。永久免费：它们是分发引擎，而非收入来源。
+2. **Insider Circle** —— 按月付费的私密 Telegram 群组，对核心信号提供 24 至 72 小时的抢先访问。仅限邀请；当前价格请咨询 \`signal@gitdealflow.com\`。
+3. **Sector Sweep** —— **1,997 欧元**（一次性，不含增值税）：对指定行业的完整 6 周分析、15-25 页 PDF 报告、原始数据（Parquet），以及一次 30 分钟的跟进通话。
+
+## 付款方式
+
+Stripe（Visa、Mastercard、American Express）、面向欧洲客户的 SEPA 直接扣款，以及面向企业的开票。欧盟增值税：持有效增值税号的企业适用反向征收；欧盟以外不收增值税。
+
+## 联系方式
+
+咨询与企业方案：\`signal@gitdealflow.com\`。英文版权威价格页见 [/pricing](/pricing)。`,
+    englishLinkLabel: "完整价格页面（英文）",
+    readTimeLabel: "约 2 分钟阅读",
+  },
+
+  // ----- KOREAN -----
+  {
+    locale: "ko",
+    topic: "research",
+    title: "연구 개요 — VC Deal Flow Signal",
+    intro:
+      "SSRN에 게재된 실증 연구(DOI 10.2139/ssrn.6606558)의 30개 발견을 한국어로 요약합니다. 각 발견의 상세 페이지는 영어가 정본입니다.",
+    body: `## 한 문장 요약
+
+벤처 투자를 받은 **55개 스타트업에 대한 219건의 시그널 관측**을 분석하여 결과를 다섯 가지 범주로 정리했습니다: 속도 분포, 속도 변화, 시그널 유형, 지리적 분포, 그리고 섹터·이상치입니다.
+
+## 핵심 수치
+
+- **커밋 속도 중앙값: 71**(14일 기준). 투자받은 스타트업의 "정상"을 정량적으로 정의하는 값입니다.
+- **평균: 173**—중앙값의 2.4배—로, 분포가 위쪽으로 크게 치우쳐 있음을 보여줍니다. 평균이 아니라 중앙값을 보십시오.
+- **90 백분위수: 14일간 392 커밋.**
+- **프레임워크 마이그레이션이 지배적: 시그널의 75%**. "속도 = 채용"이라는 통념을 반박합니다.
+- **채용 급증은 9%에 불과**하며, 인프라 구축은 겨우 4%입니다.
+- **투자받은 스타트업 중 49%만** 긍정적 속도 성장을 보입니다.
+- **지리적 분포:** 미국 56%, EU 과소대표(22%), 라틴아메리카 과대대표.
+- **분기별 속도 변화 범위: −94%에서 +1,647%.**
+
+## 전체 자료
+
+30개 발견의 상세 내용(영어)은 \`/research\`에 있습니다. 전체 논문은 SSRN(DOI 10.2139/ssrn.6606558), 데이터셋은 Hugging Face(\`the-data-nerd/vc-deal-flow-signal\`, CC BY 4.0)에서 확인할 수 있습니다.`,
+    englishLinkLabel: "전체 연구 페이지(영어)",
+    readTimeLabel: "약 3분 분량",
+  },
+  {
+    locale: "ko",
+    topic: "citations",
+    title: "인용 가이드 — VC Deal Flow Signal",
+    intro:
+      "VC Deal Flow Signal의 연구, 데이터셋, 개별 발견을 APA·MLA·Chicago·BibTeX·RIS 형식으로 인용하는 방법입니다.",
+    body: `## 무엇을 인용하는가
+
+1. **방법론 논문**(SSRN) — 전체 발견과 연구 설계를 인용할 때.
+2. **데이터셋**(Hugging Face, CC BY 4.0) — 원본 데이터를 재분석할 때. 출처 링크만 있으면 됩니다.
+3. **개별 발견**(아티클 페이지) — 특정 수치를 인용할 때.
+
+## APA 7(논문)
+
+Kondratyuk, M. (2026). VC Deal Flow Signal: GitHub Engineering Acceleration as a Leading Indicator of Venture Funding. SSRN. https://doi.org/10.2139/ssrn.6606558
+
+## 기타 형식 및 인용 API
+
+MLA 9, Chicago 17, BibTeX, RIS는 전체 가이드에서 제공합니다. 각 발견 페이지는 \`/api/cite/{format}/{slug}\` 인용 API를 제공하며 \`apa\`, \`mla\`, \`chicago\`, \`bibtex\`, \`ris\`, \`json\` 형식을 지원합니다. 전체 가이드는 [/citation-guide](/citation-guide)에 있습니다.`,
+    englishLinkLabel: "전체 인용 가이드(영어)",
+    readTimeLabel: "약 2분 분량",
+  },
+  {
+    locale: "ko",
+    topic: "pricing",
+    title: "가격 — VC Deal Flow Signal",
+    intro:
+      "VC Deal Flow Signal의 세 가지 등급: 무료, Insider Circle, Sector Sweep. 각 등급에 포함된 내용, 대상, 결제 방법을 안내합니다.",
+    body: `## 세 가지 등급
+
+1. **무료** — 5개 MCP 도구 + 주간 뉴스레터. 영구 무료입니다. 이는 수익원이 아니라 배포 엔진입니다.
+2. **Insider Circle** — 월 구독제 비공개 Telegram 그룹으로, 핵심 시그널에 24~72시간 선행 접근을 제공합니다. 초대제이며 현재 가격은 \`signal@gitdealflow.com\`으로 문의하십시오.
+3. **Sector Sweep** — **1,997유로**(1회성, VAT 별도): 지정 섹터에 대한 6주 전체 분석, 15~25페이지 PDF 보고서, 원본 데이터(Parquet), 30분 후속 통화 포함.
+
+## 결제 방법
+
+Stripe(Visa, Mastercard, American Express), 유럽 고객을 위한 SEPA 자동이체, 기업용 인보이스 발행. EU 부가세: 유효한 VAT 번호가 있는 기업은 리버스 차지 적용, EU 외 지역은 부가세 없음.
+
+## 문의
+
+문의 및 기업 플랜: \`signal@gitdealflow.com\`. 영어판 정본 가격 페이지는 [/pricing](/pricing)에 있습니다.`,
+    englishLinkLabel: "전체 가격 페이지(영어)",
+    readTimeLabel: "약 2분 분량",
+  },
+
+  // ----- HINDI -----
+  {
+    locale: "hi",
+    topic: "research",
+    title: "शोध सारांश — VC Deal Flow Signal",
+    intro:
+      "SSRN पर प्रकाशित अनुभवजन्य अध्ययन (DOI 10.2139/ssrn.6606558) के 30 निष्कर्षों का हिन्दी सारांश। प्रत्येक निष्कर्ष का विस्तृत पृष्ठ अंग्रेज़ी में आधिकारिक है।",
+    body: `## एक वाक्य में अध्ययन
+
+हमने **वेंचर-वित्तपोषित 55 स्टार्टअप्स पर 219 सिग्नल अवलोकनों** का विश्लेषण किया और परिणामों को पाँच श्रेणियों में बाँटा: वेलॉसिटी वितरण, वेलॉसिटी परिवर्तन, सिग्नल प्रकार, भौगोलिक वितरण, तथा सेक्टर एवं आउटलायर।
+
+## मुख्य आँकड़े
+
+- **माध्यिका कमिट वेलॉसिटी: 71** (14-दिन की विंडो में)। यह वित्तपोषित स्टार्टअप के लिए "सामान्य" की मात्रात्मक परिभाषा है।
+- **औसत: 173**—माध्यिका का 2.4 गुना—जो वितरण के ऊपर की ओर अत्यधिक झुकाव को दर्शाता है। औसत नहीं, माध्यिका देखें।
+- **90वाँ पर्सेंटाइल: 14 दिनों में 392 कमिट।**
+- **फ़्रेमवर्क माइग्रेशन प्रमुख है: 75%** सिग्नल। यह "वेलॉसिटी = भर्ती" की धारणा का खंडन करता है।
+- **भर्ती में उछाल केवल 9%** है, और इंफ्रास्ट्रक्चर निर्माण मात्र 4%।
+- **वित्तपोषित स्टार्टअप्स में से केवल 49%** सकारात्मक वेलॉसिटी वृद्धि दिखाते हैं।
+- **भौगोलिक वितरण:** अमेरिका 56%, EU कम प्रतिनिधित्व (22%), LATAM अधिक प्रतिनिधित्व।
+- **तिमाही वेलॉसिटी परिवर्तन: −94% से +1,647% तक।**
+
+## पूर्ण पहुँच
+
+सभी 30 विस्तृत निष्कर्ष (अंग्रेज़ी में) \`/research\` पर हैं। पूरा शोधपत्र SSRN (DOI 10.2139/ssrn.6606558) पर और डेटासेट Hugging Face (\`the-data-nerd/vc-deal-flow-signal\`, CC BY 4.0) पर उपलब्ध है।`,
+    englishLinkLabel: "पूर्ण शोध पृष्ठ (अंग्रेज़ी)",
+    readTimeLabel: "लगभग 3 मिनट",
+  },
+  {
+    locale: "hi",
+    topic: "citations",
+    title: "उद्धरण मार्गदर्शिका — VC Deal Flow Signal",
+    intro:
+      "VC Deal Flow Signal के शोध, डेटासेट और व्यक्तिगत निष्कर्षों को APA, MLA, Chicago, BibTeX और RIS में उद्धृत करने का तरीका।",
+    body: `## क्या उद्धृत करें
+
+1. **मेथडोलॉजी शोधपत्र** (SSRN) — समग्र निष्कर्षों और अध्ययन-संरचना के लिए।
+2. **डेटासेट** (Hugging Face, CC BY 4.0) — यदि आप कच्चे डेटा का पुनर्विश्लेषण करते हैं; एक एट्रिब्यूशन लिंक पर्याप्त है।
+3. **कोई विशिष्ट निष्कर्ष** (आर्टिकल पृष्ठ) — किसी विशेष आँकड़े को उद्धृत करने के लिए।
+
+## APA 7 (शोधपत्र)
+
+Kondratyuk, M. (2026). VC Deal Flow Signal: GitHub Engineering Acceleration as a Leading Indicator of Venture Funding. SSRN. https://doi.org/10.2139/ssrn.6606558
+
+## अन्य प्रारूप और उद्धरण API
+
+MLA 9, Chicago 17, BibTeX और RIS पूर्ण मार्गदर्शिका में उपलब्ध हैं। प्रत्येक निष्कर्ष पृष्ठ पर \`/api/cite/{format}/{slug}\` उद्धरण API है, जो \`apa\`, \`mla\`, \`chicago\`, \`bibtex\`, \`ris\` और \`json\` प्रारूपों का समर्थन करती है। पूर्ण मार्गदर्शिका [/citation-guide](/citation-guide) पर।`,
+    englishLinkLabel: "पूर्ण उद्धरण मार्गदर्शिका (अंग्रेज़ी)",
+    readTimeLabel: "लगभग 2 मिनट",
+  },
+  {
+    locale: "hi",
+    topic: "pricing",
+    title: "मूल्य निर्धारण — VC Deal Flow Signal",
+    intro:
+      "VC Deal Flow Signal के तीन स्तर: निःशुल्क, Insider Circle और Sector Sweep। हर स्तर में क्या शामिल है, किसके लिए है और भुगतान कैसे करें।",
+    body: `## तीन स्तर
+
+1. **निःशुल्क** — 5 MCP टूल + साप्ताहिक न्यूज़लेटर। स्थायी रूप से निःशुल्क: ये वितरण-इंजन हैं, आय का स्रोत नहीं।
+2. **Insider Circle** — मासिक शुल्क वाला निजी Telegram समूह, प्रमुख सिग्नलों तक 24 से 72 घंटे पहले पहुँच। केवल आमंत्रण द्वारा; वर्तमान मूल्य के लिए \`signal@gitdealflow.com\` पर संपर्क करें।
+3. **Sector Sweep** — **€1,997** (एकमुश्त, VAT अतिरिक्त): किसी चुने हुए सेक्टर का पूर्ण 6-सप्ताह विश्लेषण, 15-25 पृष्ठ की PDF रिपोर्ट, कच्चा डेटा (Parquet) और 30 मिनट की फ़ॉलो-अप कॉल।
+
+## भुगतान
+
+Stripe (Visa, Mastercard, American Express), यूरोपीय ग्राहकों के लिए SEPA डायरेक्ट डेबिट, और कंपनियों के लिए इनवॉइसिंग। EU VAT: वैध VAT नंबर वाली कंपनियों के लिए रिवर्स-चार्ज; EU के बाहर कोई VAT नहीं।
+
+## संपर्क
+
+प्रश्न और कॉर्पोरेट योजनाएँ: \`signal@gitdealflow.com\`। अंग्रेज़ी का आधिकारिक मूल्य पृष्ठ [/pricing](/pricing) पर है।`,
+    englishLinkLabel: "पूर्ण मूल्य पृष्ठ (अंग्रेज़ी)",
+    readTimeLabel: "लगभग 2 मिनट",
+  },
+
+  // ----- RUSSIAN -----
+  {
+    locale: "ru",
+    topic: "research",
+    title: "Обзор исследования — VC Deal Flow Signal",
+    intro:
+      "Краткое изложение на русском 30 результатов эмпирического исследования, опубликованного на SSRN (DOI 10.2139/ssrn.6606558). Подробные страницы каждого результата каноничны на английском.",
+    body: `## Исследование в одном предложении
+
+Мы проанализировали **219 наблюдений сигналов по 55 стартапам с венчурным финансированием** и распределили результаты по пяти категориям: распределение скорости, изменение скорости, типы сигналов, географическое распределение и секторы/выбросы.
+
+## Ключевые цифры
+
+- **Медианная скорость коммитов: 71** за 14-дневное окно. Это количественное определение «нормы» для финансируемого стартапа.
+- **Среднее: 173** —в 2,4 раза больше медианы—, что говорит о сильной правосторонней асимметрии. Используйте медиану, а не среднее.
+- **90-й перцентиль: 392 коммита** за 14 дней.
+- **Миграция фреймворков доминирует: 75 %** сигналов. Это опровергает эвристику «скорость = найм».
+- **Всплески найма составляют лишь 9 %**, а строительство инфраструктуры — всего 4 %.
+- **Лишь 49 %** финансируемых стартапов демонстрируют положительный рост скорости.
+- **Географическое распределение:** США 56 %, ЕС недопредставлен (22 %), Латинская Америка перепредставлена.
+- **Квартальное изменение скорости: от −94 % до +1 647 %.**
+
+## Полный доступ
+
+Все 30 подробных результатов (на английском) — на \`/research\`. Полная статья доступна на SSRN (DOI 10.2139/ssrn.6606558), а набор данных — на Hugging Face (\`the-data-nerd/vc-deal-flow-signal\`, CC BY 4.0).`,
+    englishLinkLabel: "Полная страница исследования (на английском)",
+    readTimeLabel: "≈ 3 мин",
+  },
+  {
+    locale: "ru",
+    topic: "citations",
+    title: "Руководство по цитированию — VC Deal Flow Signal",
+    intro:
+      "Как цитировать исследование, набор данных и отдельные результаты VC Deal Flow Signal в форматах APA, MLA, Chicago, BibTeX и RIS.",
+    body: `## Что можно цитировать
+
+1. **Методологическую статью** (SSRN) — для общих результатов и дизайна исследования.
+2. **Набор данных** (Hugging Face, CC BY 4.0) — при повторном анализе исходных данных; достаточно ссылки с указанием авторства.
+3. **Отдельный результат** (страница статьи) — чтобы сослаться на конкретную цифру.
+
+## APA 7 (статья)
+
+Kondratyuk, M. (2026). VC Deal Flow Signal: GitHub Engineering Acceleration as a Leading Indicator of Venture Funding. SSRN. https://doi.org/10.2139/ssrn.6606558
+
+## Другие форматы и API цитирования
+
+MLA 9, Chicago 17, BibTeX и RIS доступны в полном руководстве. Каждая страница результата предоставляет API цитирования по адресу \`/api/cite/{format}/{slug}\` с форматами \`apa\`, \`mla\`, \`chicago\`, \`bibtex\`, \`ris\` и \`json\`. Полное руководство — на [/citation-guide](/citation-guide).`,
+    englishLinkLabel: "Полное руководство по цитированию (на английском)",
+    readTimeLabel: "≈ 2 мин",
+  },
+  {
+    locale: "ru",
+    topic: "pricing",
+    title: "Цены — VC Deal Flow Signal",
+    intro:
+      "Три уровня VC Deal Flow Signal: бесплатный, Insider Circle и Sector Sweep. Что входит в каждый, для кого он и как оплачивать.",
+    body: `## Три уровня
+
+1. **Бесплатный** — 5 инструментов MCP + еженедельная рассылка. Бесплатно навсегда: это движок дистрибуции, а не источник дохода.
+2. **Insider Circle** — закрытая группа в Telegram с ежемесячной оплатой, доступ к ключевым сигналам на 24–72 часа раньше. По приглашению; текущую цену уточняйте по адресу \`signal@gitdealflow.com\`.
+3. **Sector Sweep** — **1 997 €** (разовый платёж, без НДС): полный 6-недельный анализ выбранного сектора, PDF-отчёт на 15–25 страниц, исходные данные (Parquet) и 30-минутный последующий звонок.
+
+## Оплата
+
+Stripe (Visa, Mastercard, American Express), прямое списание SEPA для клиентов из Европы и выставление счетов для компаний. НДС ЕС: обратное начисление для компаний с действительным номером НДС; за пределами ЕС НДС не взимается.
+
+## Контакты
+
+Вопросы и корпоративные тарифы: \`signal@gitdealflow.com\`. Каноническая англоязычная страница цен — на [/pricing](/pricing).`,
+    englishLinkLabel: "Полная страница цен (на английском)",
+    readTimeLabel: "≈ 2 мин",
+  },
+
+  // ----- ARABIC (rtl) -----
+  {
+    locale: "ar",
+    topic: "research",
+    title: "ملخّص البحث — VC Deal Flow Signal",
+    intro:
+      "ملخّص بالعربية لنتائج البحث التجريبي الثلاثين المنشور على SSRN (DOI 10.2139/ssrn.6606558). صفحات التفاصيل لكل نتيجة مرجعها الرسمي بالإنجليزية.",
+    body: `## البحث في جملة واحدة
+
+حلّلنا **219 ملاحظة إشارة عبر 55 شركة ناشئة مموّلة برأس مال مخاطر**، وصنّفنا النتائج في خمس فئات: توزيع السرعة، وتغيّر السرعة، وأنواع الإشارات، والتوزيع الجغرافي، والقطاعات والقيم الشاذّة.
+
+## الأرقام الرئيسية
+
+- **وسيط سرعة الـ commits: 71** خلال نافذة 14 يومًا. هذا هو التعريف الكمّي لِـ«الطبيعي» بالنسبة لشركة ناشئة مموّلة.
+- **المتوسط: 173** — أي 2.4 ضعف الوسيط — ما يكشف توزيعًا مائلًا بشدّة نحو الأعلى. استخدم الوسيط لا المتوسط.
+- **المئين التسعون: 392 commit** خلال 14 يومًا.
+- **هجرة الأطر البرمجية هي الغالبة: 75٪** من الإشارات. وهذا يدحض القاعدة الشائعة «السرعة = التوظيف».
+- **موجات التوظيف لا تمثّل سوى 9٪**، وبناء البنية التحتية بالكاد 4٪.
+- **49٪ فقط** من الشركات المموّلة تُظهر نموًّا إيجابيًا في السرعة.
+- **التوزيع الجغرافي:** الولايات المتحدة 56٪، والاتحاد الأوروبي ممثَّل تمثيلًا ناقصًا (22٪)، وأمريكا اللاتينية ممثَّلة تمثيلًا زائدًا.
+- **مدى تغيّر السرعة الفصلي: من −94٪ إلى +1٬647٪.**
+
+## الوصول الكامل
+
+النتائج الثلاثون التفصيلية (بالإنجليزية) متاحة على \`/research\`. الورقة الكاملة منشورة على SSRN (DOI 10.2139/ssrn.6606558)، ومجموعة البيانات على Hugging Face (\`the-data-nerd/vc-deal-flow-signal\`، رخصة CC BY 4.0).`,
+    englishLinkLabel: "صفحة البحث الكاملة (الإنجليزية)",
+    readTimeLabel: "حوالي 3 دقائق",
+  },
+  {
+    locale: "ar",
+    topic: "citations",
+    title: "دليل الاستشهاد — VC Deal Flow Signal",
+    intro:
+      "كيفية الاستشهاد ببحث VC Deal Flow Signal ومجموعة بياناته ونتائجه الفردية بصيغ APA وMLA وChicago وBibTeX وRIS.",
+    body: `## ماذا تستشهد به
+
+1. **ورقة المنهجية** (SSRN) — للنتائج الإجمالية وتصميم الدراسة.
+2. **مجموعة البيانات** (Hugging Face، رخصة CC BY 4.0) — إذا أعدت تحليل البيانات الأولية؛ يكفي رابط إسناد.
+3. **نتيجة محدّدة** (صفحة المقال) — للاستشهاد برقم بعينه.
+
+## APA 7 (الورقة)
+
+Kondratyuk, M. (2026). VC Deal Flow Signal: GitHub Engineering Acceleration as a Leading Indicator of Venture Funding. SSRN. https://doi.org/10.2139/ssrn.6606558
+
+## صيغ أخرى وواجهة استشهاد برمجية
+
+تتوفّر صيغ MLA 9 وChicago 17 وBibTeX وRIS في الدليل الكامل. تتيح كل صفحة نتيجة واجهة استشهاد برمجية على \`/api/cite/{format}/{slug}\` تدعم الصيغ \`apa\` و\`mla\` و\`chicago\` و\`bibtex\` و\`ris\` و\`json\`. الدليل الكامل على [/citation-guide](/citation-guide).`,
+    englishLinkLabel: "دليل الاستشهاد الكامل (الإنجليزية)",
+    readTimeLabel: "حوالي دقيقتين",
+  },
+  {
+    locale: "ar",
+    topic: "pricing",
+    title: "الأسعار — VC Deal Flow Signal",
+    intro:
+      "المستويات الثلاثة لـ VC Deal Flow Signal: المجاني، وInsider Circle، وSector Sweep. ما يتضمّنه كل مستوى، ولمن هو، وكيفية الدفع.",
+    body: `## ثلاثة مستويات
+
+1. **المجاني** — أدوات MCP الخمس + النشرة الأسبوعية. مجاني بشكل دائم: فهي محرّك توزيع لا مصدر دخل.
+2. **Insider Circle** — مجموعة Telegram خاصّة باشتراك شهري، مع وصول مبكر بمقدار 24 إلى 72 ساعة إلى أبرز الإشارات. بالدعوة فقط؛ للاستفسار عن السعر الحالي راسل \`signal@gitdealflow.com\`.
+3. **Sector Sweep** — **1٬997 يورو** (دفعة واحدة، باستثناء ضريبة القيمة المضافة): تحليل كامل لمدّة 6 أسابيع لقطاع تختاره، وتقرير PDF من 15 إلى 25 صفحة، وبيانات أولية (Parquet)، ومكالمة متابعة مدّتها 30 دقيقة.
+
+## الدفع
+
+Stripe (Visa وMastercard وAmerican Express)، والخصم المباشر SEPA للعملاء الأوروبيين، وإصدار الفواتير للشركات. ضريبة القيمة المضافة في الاتحاد الأوروبي: آلية الاحتساب العكسي للشركات التي تملك رقم ضريبة صالحًا؛ ولا ضريبة خارج الاتحاد الأوروبي.
+
+## التواصل
+
+الاستفسارات وخطط الشركات: \`signal@gitdealflow.com\`. صفحة الأسعار الرسمية بالإنجليزية على [/pricing](/pricing).`,
+    englishLinkLabel: "صفحة الأسعار الكاملة (الإنجليزية)",
+    readTimeLabel: "حوالي دقيقتين",
+  },
 ];
 
 export function getLocaleTopic(

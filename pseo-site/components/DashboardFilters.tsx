@@ -137,7 +137,7 @@ export default function DashboardFilters({
       {/* Filters */}
       <div className="mb-6 flex flex-wrap gap-3 items-end">
         <div className="w-full sm:flex-1 sm:min-w-[200px]">
-          <label className="block text-[10px] text-gray-500 uppercase tracking-wider mb-1">
+          <label className="block text-[10px] text-gray-400 uppercase tracking-wider mb-1">
             Search
           </label>
           <input
@@ -149,7 +149,7 @@ export default function DashboardFilters({
           />
         </div>
         <div>
-          <label className="block text-[10px] text-gray-500 uppercase tracking-wider mb-1">
+          <label className="block text-[10px] text-gray-400 uppercase tracking-wider mb-1">
             Sector
           </label>
           <select
@@ -166,7 +166,7 @@ export default function DashboardFilters({
           </select>
         </div>
         <div>
-          <label className="block text-[10px] text-gray-500 uppercase tracking-wider mb-1">
+          <label className="block text-[10px] text-gray-400 uppercase tracking-wider mb-1">
             Stage
           </label>
           <select
@@ -183,7 +183,7 @@ export default function DashboardFilters({
           </select>
         </div>
         <div>
-          <label className="block text-[10px] text-gray-500 uppercase tracking-wider mb-1">
+          <label className="block text-[10px] text-gray-400 uppercase tracking-wider mb-1">
             Geography
           </label>
           <select
@@ -200,7 +200,7 @@ export default function DashboardFilters({
           </select>
         </div>
         <div>
-          <label className="block text-[10px] text-gray-500 uppercase tracking-wider mb-1">
+          <label className="block text-[10px] text-gray-400 uppercase tracking-wider mb-1">
             Signal
           </label>
           <select
@@ -217,7 +217,7 @@ export default function DashboardFilters({
           </select>
         </div>
         <div>
-          <label className="block text-[10px] text-gray-500 uppercase tracking-wider mb-1">
+          <label className="block text-[10px] text-gray-400 uppercase tracking-wider mb-1">
             Sort by
           </label>
           <select
@@ -237,7 +237,7 @@ export default function DashboardFilters({
       {/* Action bar */}
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-4">
-          <p className="text-gray-500 text-xs">
+          <p className="text-gray-400 text-xs">
             Showing {filtered.length} of {startups.length} startups
             {sector || stage || geo || signal || search || watchedOnly ? " (filtered)" : ""}
           </p>
@@ -247,7 +247,7 @@ export default function DashboardFilters({
               className={`text-xs px-3 py-1 rounded-full border transition ${
                 watchedOnly
                   ? "bg-amber-500/15 text-amber-300 border-amber-500/30"
-                  : "text-gray-500 border-slate-700 hover:border-slate-500"
+                  : "text-gray-400 border-slate-700 hover:border-slate-500"
               }`}
             >
               {watchedOnly
@@ -346,7 +346,7 @@ export default function DashboardFilters({
                       <button
                         onClick={() => toggle(startup.name)}
                         className={`transition ${
-                          isWatched ? "text-amber-400" : "text-gray-700 hover:text-gray-500"
+                          isWatched ? "text-amber-400" : "text-gray-700 hover:text-gray-400"
                         }`}
                         title={isWatched ? "Remove from watchlist" : "Add to watchlist"}
                       >
@@ -356,7 +356,7 @@ export default function DashboardFilters({
                       </button>
                     </td>
                   )}
-                  <td className="px-4 py-3 text-gray-500 font-mono">
+                  <td className="px-4 py-3 text-gray-400 font-mono">
                     {rank}
                   </td>
                   <td className="px-4 py-3">
@@ -366,7 +366,7 @@ export default function DashboardFilters({
                     >
                       {startup.name}
                     </Link>
-                    <p className="text-gray-500 text-xs mt-0.5 max-w-xs truncate">
+                    <p className="text-gray-400 text-xs mt-0.5 max-w-xs truncate">
                       {startup.description}
                     </p>
                   </td>

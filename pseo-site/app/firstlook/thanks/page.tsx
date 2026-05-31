@@ -4,6 +4,8 @@ import { redirect } from "next/navigation";
 import { stripe } from "@/lib/stripe";
 import { OTO_TIERS } from "@/lib/stripe-tiers";
 import OneClickOtoButton from "@/components/OneClickOtoButton";
+import DeliveryCountdown from "@/components/DeliveryCountdown";
+import TelegramCTA from "@/components/TelegramCTA";
 
 export const dynamic = "force-dynamic";
 
@@ -65,6 +67,65 @@ export default async function FirstLookThanksPage({ searchParams }: Props) {
           (PDF + raw CSV) within 24 hours of your reply on weekdays.
         </p>
       </header>
+
+      <section className="rounded-xl border border-emerald-500/30 bg-emerald-500/5 p-5 sm:p-6 space-y-3">
+        <p className="text-emerald-300 text-xs font-semibold uppercase tracking-wider">
+          What to do while you wait
+        </p>
+        <p className="text-gray-300 text-sm leading-relaxed">
+          Your next best move is to keep the momentum alive, not to leave this as a receipt page. If you want proof, methodology, or a cleaner buyer-side framework before the report lands, use one of these now.
+        </p>
+        <div className="flex flex-wrap gap-3 text-sm">
+          <Link href="/research" className="text-emerald-200 hover:text-emerald-100 underline underline-offset-2">
+            Read the research panel
+          </Link>
+          <Link href="/buyers-guide" className="text-emerald-200 hover:text-emerald-100 underline underline-offset-2">
+            Read the buyer's guide
+          </Link>
+          <Link href="/compare/crunchbase-alternative-for-angel-investors" className="text-emerald-200 hover:text-emerald-100 underline underline-offset-2">
+            Compare timing vs verification
+          </Link>
+        </div>
+      </section>
+
+      {/* IDENTITY FRAME — Brunson Expert Secrets Ch 4 ("New Opportunity")
+          + DotCom Ch 13 ("Best Bait" identity-shaping). The bait isn't
+          just the artefact; it's the role the buyer steps into. After
+          payment, naming the role explicitly turns "I bought a PDF"
+          into "I'm a Sector Scout now." That single sentence is what
+          carries the buyer through the 14-day credit window. */}
+      <section
+        aria-label="Identity frame — what you just became"
+        className="rounded-xl border-2 border-violet-500/40 bg-gradient-to-br from-violet-950/30 via-slate-900 to-slate-950 p-5 sm:p-7 space-y-3"
+      >
+        <p className="text-violet-300 text-[10px] sm:text-xs font-semibold uppercase tracking-wider">
+          What you just became
+        </p>
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug">
+          You&rsquo;re a Sector Scout now.
+        </h2>
+        <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
+          Most investors source by deck and warm intro. Sector Scouts source
+          by code-side momentum 21–47 days before the deck lands. This is
+          the lane you just stepped into — your first deep dive arrives
+          tomorrow, the engine refreshes every Monday, and the credit
+          window keeps the door open to the live Dashboard for two weeks.
+        </p>
+        <p className="text-gray-400 text-sm leading-relaxed border-l-2 border-violet-700/50 pl-3 italic">
+          &ldquo;Trust the math, not me.&rdquo; The methodology is open;
+          the SSRN paper is at <code className="bg-slate-900 text-violet-200 px-1.5 py-0.5 rounded text-xs">ssrn.com/abstract=6606558</code>;
+          the regression code reproduces on the public Zenodo dataset. You
+          don&rsquo;t have to take anyone&rsquo;s word — you can re-run the
+          panel yourself.
+        </p>
+      </section>
+
+      {/* LIVE DELIVERY COUNTDOWN — Brunson Ch 13 + Expert Ch 21 (Fast 15).
+          A ticking clock turns the 24-hour SLA from a marketing claim
+          into a contract the buyer watches enforce itself. Anchored at
+          the moment of page load (proxy for payment confirmation, since
+          this page is only reached on a paid session). */}
+      <DeliveryCountdown />
 
       {/* OTO #1 — the heart of the cart funnel. The card was JUST captured
           with setup_future_usage=off_session, so this button charges the
@@ -134,6 +195,12 @@ export default async function FirstLookThanksPage({ searchParams }: Props) {
           First Look Pass.
         </p>
       </section>
+
+      {/* Brunson TS §3 Ch 11 — second owned channel push, sits AFTER the
+          OTO so it doesn't compete with the upsell. The buyer's already
+          past the upsell decision; Telegram is a free habit-anchor that
+          survives whichever way the OTO went. */}
+      <TelegramCTA tone="amber" context="post-purchase" />
 
       <p className="text-slate-600 text-xs leading-relaxed">
         Receipt: <code className="bg-slate-900 text-slate-400 px-1.5 py-0.5 rounded text-[11px]">{session.id}</code>

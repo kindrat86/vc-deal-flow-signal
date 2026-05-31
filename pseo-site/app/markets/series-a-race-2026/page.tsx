@@ -71,7 +71,7 @@ function CandidateRow({
     >
       <header className="flex flex-wrap items-baseline justify-between gap-3 mb-3">
         <div>
-          <p className="text-gray-500 text-xs font-mono mb-1">
+          <p className="text-gray-400 text-xs font-mono mb-1">
             #{rank} · {candidate.stage} · {candidate.sector}
           </p>
           <h3
@@ -85,7 +85,7 @@ function CandidateRow({
           <p className="text-3xl font-bold text-emerald-400 leading-none">
             {pctLabel(candidate.impliedProbability)}
           </p>
-          <p className="text-[10px] uppercase tracking-wider text-gray-500 mt-1">
+          <p className="text-[10px] uppercase tracking-wider text-gray-400 mt-1">
             implied probability
           </p>
         </div>
@@ -93,35 +93,35 @@ function CandidateRow({
       <div className="mb-4">{probabilityBar({ prob: candidate.impliedProbability })}</div>
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-sm mb-4">
         <div>
-          <p className="text-gray-500 text-[10px] uppercase tracking-wider mb-0.5">
+          <p className="text-gray-400 text-[10px] uppercase tracking-wider mb-0.5">
             Velocity 14d
           </p>
           <p className="text-gray-100 font-mono">
             {candidate.commitVelocity14d}{" "}
-            <span className="text-xs text-gray-500">
+            <span className="text-xs text-gray-400">
               ({candidate.commitVelocityChange})
             </span>
           </p>
         </div>
         <div>
-          <p className="text-gray-500 text-[10px] uppercase tracking-wider mb-0.5">
+          <p className="text-gray-400 text-[10px] uppercase tracking-wider mb-0.5">
             Contributors
           </p>
           <p className="text-gray-100 font-mono">
             {candidate.contributors}{" "}
-            <span className="text-xs text-gray-500">
+            <span className="text-xs text-gray-400">
               ({candidate.contributorGrowth})
             </span>
           </p>
         </div>
         <div>
-          <p className="text-gray-500 text-[10px] uppercase tracking-wider mb-0.5">
+          <p className="text-gray-400 text-[10px] uppercase tracking-wider mb-0.5">
             Signal
           </p>
           <SignalBadge type={candidate.signalType} />
         </div>
         <div>
-          <p className="text-gray-500 text-[10px] uppercase tracking-wider mb-0.5">
+          <p className="text-gray-400 text-[10px] uppercase tracking-wider mb-0.5">
             Links
           </p>
           <p className="text-xs flex flex-wrap gap-2">
@@ -155,7 +155,7 @@ function CandidateRow({
         </div>
       </div>
       <p className="text-sm text-gray-300 leading-relaxed">
-        <span className="text-gray-500 text-xs uppercase tracking-wider mr-2">
+        <span className="text-gray-400 text-xs uppercase tracking-wider mr-2">
           Why
         </span>
         {candidate.rationale}
@@ -310,7 +310,7 @@ export default async function SeriesARace2026Page() {
       />
       <AgentMirrorLinks path={`/markets/${SLUG}`} qaCategory="markets" />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <nav className="text-xs text-gray-500 mb-6">
+        <nav className="text-xs text-gray-400 mb-6">
           <Link href="/" className="hover:text-sky-400">
             Home
           </Link>{" "}
@@ -382,11 +382,11 @@ export default async function SeriesARace2026Page() {
               <h3 className="text-base font-semibold text-gray-300">
                 {market.noResolution.label}
               </h3>
-              <p className="text-2xl font-bold text-gray-500">
+              <p className="text-2xl font-bold text-gray-400">
                 {pctLabel(1 - totalCovered)}
               </p>
             </div>
-            <p className="text-xs text-gray-500">
+            <p className="text-xs text-gray-400">
               Residual probability that none of the five qualify by the
               resolution date.
             </p>
@@ -467,7 +467,7 @@ export default async function SeriesARace2026Page() {
           <pre className="text-xs bg-slate-950 border border-slate-800 rounded p-3 text-gray-300 font-mono whitespace-pre-wrap">
             {`VC Deal Flow Signal — ${market.shortName}.\nLive implied odds, signals.gitdealflow.com/markets/${SLUG}, ${asOf}.\nMachine-readable: signals.gitdealflow.com/api/markets/${SLUG}.json (CC BY 4.0).`}
           </pre>
-          <p className="text-xs text-gray-500 mt-3 leading-relaxed">
+          <p className="text-xs text-gray-400 mt-3 leading-relaxed">
             Press kit:{" "}
             <Link href="/press" className="text-sky-400 hover:underline">
               /press

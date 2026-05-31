@@ -2,11 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { allPosts as posts } from "@/content/posts";
 import PSEOFooterNav from "@/components/PSEOFooterNav";
+import { HreflangLinks } from "@/components/HreflangLinks";
+import { getHreflangLanguages } from "@/lib/hreflang";
 
 export const metadata: Metadata = {
   title: "Blog — VC Deal Flow Signal",
   description:
     "Insights on using GitHub engineering signals for startup investing. Practical guides for VCs and angel investors on reading engineering momentum as a leading indicator of traction.",
+  // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
   alternates: {
     canonical: "/blog",
   },
@@ -16,6 +19,20 @@ export default function BlogIndex() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://signals.gitdealflow.com/blog#webpage",
+        url: "https://signals.gitdealflow.com/blog",
+        name: "Signal Intelligence Blog — VC Deal Flow Signal",
+        description:
+          "Insights on using GitHub engineering signals for startup investing.",
+        inLanguage: "en-US",
+        isAccessibleForFree: true,
+        speakable: {
+          "@type": "SpeakableSpecification",
+          cssSelector: ["[data-speakable]", "h1", "h2"],
+        },
+      },
       {
         "@type": "CollectionPage",
         name: "Signal Intelligence Blog",
@@ -50,12 +67,16 @@ export default function BlogIndex() {
 
   return (
     <>
+      <HreflangLinks
+        canonical="https://signals.gitdealflow.com/blog"
+        languages={getHreflangLanguages("/blog")}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <nav className="mb-6 text-sm text-gray-500" aria-label="Breadcrumb">
+      <nav className="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">
         <Link href="/" className="hover:text-gray-300 transition-colors">
           All Sectors
         </Link>
@@ -69,8 +90,30 @@ export default function BlogIndex() {
       <p className="text-gray-400 text-base leading-relaxed mb-10">
         Practical guides on using GitHub engineering data for startup
         investing. How to read the signals, what patterns predict fundraises,
-        and how to build a data-driven deal flow practice.
+        and how to build a data-driven deal flow practice. If you are here for
+        proof, comparison, or buyer-side clarity rather than browsing essays,
+        start with the strongest routes below.
       </p>
+
+      <section className="mb-10 rounded-2xl border border-sky-700/30 bg-sky-950/20 p-6 sm:p-8">
+        <p className="text-sky-300 text-xs font-semibold uppercase tracking-[0.14em] mb-2">
+          Start with the highest-intent routes
+        </p>
+        <p className="text-gray-300 text-sm leading-relaxed mb-4">
+          Use the blog when you want depth. But if the real question is proof, timing, or what to buy first, start with a sharper page before diving into the archive.
+        </p>
+        <div className="flex flex-wrap gap-3">
+          <Link href="/research" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-sky-600 text-white text-sm font-semibold hover:bg-sky-500 transition-colors">
+            Read the research panel →
+          </Link>
+          <Link href="/compare/crunchbase-alternative-for-angel-investors" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+            Compare timing vs verification →
+          </Link>
+          <Link href="/buyers-guide" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+            Read the buyer's guide →
+          </Link>
+        </div>
+      </section>
 
       <div className="space-y-4">
         {posts.map((post) => (
@@ -79,7 +122,7 @@ export default function BlogIndex() {
             href={`/blog/${post.slug}`}
             className="group block rounded-lg border border-slate-800 bg-slate-900 p-6 hover:border-sky-600/50 hover:bg-slate-800/60 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-sky-500/10 transition-all"
           >
-            <p className="text-gray-500 text-xs mb-2 uppercase tracking-wider font-mono">
+            <p className="text-gray-400 text-xs mb-2 uppercase tracking-wider font-mono">
               {post.date}
             </p>
             <h2 className="text-gray-100 font-semibold text-lg sm:text-xl mb-2 group-hover:text-sky-400 transition-colors leading-snug tracking-tight">

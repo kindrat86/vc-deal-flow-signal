@@ -37,6 +37,7 @@ export async function generateMetadata({
       title,
       description,
       type: "article",
+      url: `/startup/${slug}`,
     },
     twitter: {
       card: "summary_large_image",
@@ -218,7 +219,7 @@ export default async function StartupPage({ params }: PageProps) {
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         {/* Breadcrumb */}
-        <nav className="mb-6 text-sm text-gray-500" aria-label="Breadcrumb">
+        <nav className="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300 transition-colors">
             All Sectors
           </Link>
@@ -335,7 +336,7 @@ export default async function StartupPage({ params }: PageProps) {
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             <div className="rounded-lg border border-slate-800 bg-slate-900 p-4">
-              <p className="text-gray-500 text-xs mb-1">
+              <p className="text-gray-400 text-xs mb-1">
                 Commit Velocity (14d)
               </p>
               <p className="text-gray-100 text-xl font-bold">
@@ -343,7 +344,7 @@ export default async function StartupPage({ params }: PageProps) {
               </p>
             </div>
             <div className="rounded-lg border border-slate-800 bg-slate-900 p-4">
-              <p className="text-gray-500 text-xs mb-1">Velocity Change</p>
+              <p className="text-gray-400 text-xs mb-1">Velocity Change</p>
               <p
                 className={`text-xl font-bold ${
                   latestVelNum > 0
@@ -357,16 +358,16 @@ export default async function StartupPage({ params }: PageProps) {
               </p>
             </div>
             <div className="rounded-lg border border-slate-800 bg-slate-900 p-4">
-              <p className="text-gray-500 text-xs mb-1">Contributors</p>
+              <p className="text-gray-400 text-xs mb-1">Contributors</p>
               <p className="text-gray-100 text-xl font-bold">
                 {latest.contributors}
               </p>
-              <p className="text-gray-500 text-xs mt-0.5">
+              <p className="text-gray-400 text-xs mt-0.5">
                 {latest.contributorGrowth} growth
               </p>
             </div>
             <div className="rounded-lg border border-slate-800 bg-slate-900 p-4">
-              <p className="text-gray-500 text-xs mb-1">New Repos (30d)</p>
+              <p className="text-gray-400 text-xs mb-1">New Repos (30d)</p>
               <p className="text-gray-100 text-xl font-bold">
                 {latest.newRepos}
               </p>
@@ -382,17 +383,17 @@ export default async function StartupPage({ params }: PageProps) {
               <span className="inline-block bg-signal-500/15 text-signal-300 text-[10px] font-bold uppercase tracking-[0.15em] px-2 py-1 rounded-full border border-signal-500/30">
                 Insider preview
               </span>
-              <p className="text-gray-500 text-xs">Free with email signup</p>
+              <p className="text-gray-400 text-xs">Free with email signup</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
               <div>
-                <p className="text-gray-500 text-xs mb-1">Predicted fundraise window</p>
+                <p className="text-gray-400 text-xs mb-1">Predicted fundraise window</p>
                 <p className="text-2xl font-bold text-signal-400 select-none filter blur-sm">
                   Q3 2026 (74 days ±21)
                 </p>
               </div>
               <div>
-                <p className="text-gray-500 text-xs mb-1">Estimated round size</p>
+                <p className="text-gray-400 text-xs mb-1">Estimated round size</p>
                 <p className="text-2xl font-bold text-signal-400 select-none filter blur-sm">
                   $4.2M – $7.8M Series A
                 </p>
@@ -409,7 +410,7 @@ export default async function StartupPage({ params }: PageProps) {
             >
               Unlock with email →
             </a>
-            <p className="text-gray-500 text-[10px] mt-3 italic">
+            <p className="text-gray-400 text-[10px] mt-3 italic">
               Predictions are model estimates from the SSRN-published methodology, not statements of
               fact. Cross-reference with primary sources before acting.
             </p>
@@ -425,7 +426,7 @@ export default async function StartupPage({ params }: PageProps) {
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="border-b border-slate-800 text-left text-gray-500 text-xs">
+                  <tr className="border-b border-slate-800 text-left text-gray-400 text-xs">
                     <th className="pb-2 pr-4 font-medium">Period</th>
                     <th className="pb-2 pr-4 font-medium">Velocity (14d)</th>
                     <th className="pb-2 pr-4 font-medium">Change</th>
@@ -615,7 +616,7 @@ export default async function StartupPage({ params }: PageProps) {
                   <h3 className="text-gray-200 font-medium text-sm group-hover:text-sky-400 transition-colors mb-1">
                     {sectorName}
                   </h3>
-                  <p className="text-gray-500 text-xs">
+                  <p className="text-gray-400 text-xs">
                     {entry.periodName} rankings &rarr;
                   </p>
                 </Link>

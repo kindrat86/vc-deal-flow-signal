@@ -108,12 +108,12 @@ export default async function LocaleLandingPage({ params }: PageProps) {
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <main
+      <div
         className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12"
         lang={l.code}
         dir={l.dir}
       >
-        <nav className="text-xs text-gray-500 mb-6" aria-label="Breadcrumb">
+        <nav className="text-xs text-gray-400 mb-6" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300" hrefLang="en">
             English ↩
           </Link>
@@ -158,7 +158,7 @@ export default async function LocaleLandingPage({ params }: PageProps) {
 
         {LOCALE_TOPICS.filter((t) => t.locale === locale).length > 0 ? (
           <section className="mb-10">
-            <p className="text-xs uppercase tracking-wider text-gray-500 mb-3">
+            <p className="text-xs uppercase tracking-wider text-gray-400 mb-3">
               {l.code === "zh"
                 ? "本地化页面"
                 : l.code === "ja"
@@ -188,7 +188,7 @@ export default async function LocaleLandingPage({ params }: PageProps) {
 
         {locale === "ja" && JA_FINDINGS.length > 0 ? (
           <section className="mb-10">
-            <p className="text-xs uppercase tracking-wider text-gray-500 mb-3">
+            <p className="text-xs uppercase tracking-wider text-gray-400 mb-3">
               日本語版の研究結果
             </p>
             <ul className="space-y-2 text-sm">
@@ -204,7 +204,7 @@ export default async function LocaleLandingPage({ params }: PageProps) {
                 </li>
               ))}
             </ul>
-            <p className="mt-3 text-xs text-gray-500">
+            <p className="mt-3 text-xs text-gray-400">
               他の 24 件は{" "}
               <Link
                 href="/research"
@@ -219,7 +219,7 @@ export default async function LocaleLandingPage({ params }: PageProps) {
         ) : null}
 
         <section className="mb-10">
-          <p className="text-xs uppercase tracking-wider text-gray-500 mb-3">
+          <p className="text-xs uppercase tracking-wider text-gray-400 mb-3">
             English canonical surfaces
           </p>
           <ul className="grid sm:grid-cols-2 gap-2 text-sm">
@@ -281,7 +281,7 @@ export default async function LocaleLandingPage({ params }: PageProps) {
           </ul>
         </section>
 
-        <p className="text-xs text-gray-500 text-center">
+        <p className="text-xs text-gray-400 text-center">
           {LOCALES.map((x, i) => (
             <span key={x.code}>
               {i > 0 ? <span className="mx-2">·</span> : null}
@@ -302,7 +302,7 @@ export default async function LocaleLandingPage({ params }: PageProps) {
             English
           </Link>
         </p>
-      </main>
+      </div>
     </>
   );
 }

@@ -23,12 +23,12 @@ export default function SocialProofBar({
     >
       <span className="flex items-center gap-1.5">
         <span className="text-gray-100 font-semibold tabular-nums">{startupCount}</span>
-        <span className="text-gray-500">venture-backed startups</span>
+        <span className="text-gray-400">venture-backed startups</span>
       </span>
       <Dot />
       <span className="flex items-center gap-1.5">
         <span className="text-gray-100 font-semibold tabular-nums">{sectorCount}</span>
-        <span className="text-gray-500">sectors</span>
+        <span className="text-gray-400">sectors</span>
       </span>
       <Dot />
       <a
@@ -49,7 +49,7 @@ export default function SocialProofBar({
         Free MCP for Claude / Cursor
       </a>
       <Dot />
-      <span className="text-gray-500 inline-flex items-center gap-1.5">
+      <span className="text-gray-400 inline-flex items-center gap-1.5">
         <span className="relative inline-flex h-1.5 w-1.5">
           <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400/60 opacity-75" />
           <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />

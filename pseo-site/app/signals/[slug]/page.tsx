@@ -9,6 +9,9 @@ import {
 } from "@/lib/data";
 import StartupTable from "@/components/StartupTable";
 import CTABanner from "@/components/CTABanner";
+import FreshnessWatermark from "@/components/FreshnessWatermark";
+import { HreflangLinks } from "@/components/HreflangLinks";
+import { getHreflangLanguages } from "@/lib/hreflang";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -35,7 +38,7 @@ export async function generateMetadata({
   return {
     title,
     description,
-    openGraph: { title, description, type: "article" },
+    openGraph: { title, description, type: "article", url: `/signals/${slug}` },
     twitter: { card: "summary_large_image", title, description },
     alternates: { canonical: `/signals/${slug}` },
   };
@@ -56,6 +59,19 @@ export default async function SignalTypePage({ params }: PageProps) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": `https://signals.gitdealflow.com/signals/${slug}#webpage`,
+        url: `https://signals.gitdealflow.com/signals/${slug}`,
+        name: `${signalData.name} Signal — Startups Showing ${signalData.name}, ${period.name}`,
+        description: signalData.description,
+        inLanguage: "en-US",
+        isAccessibleForFree: true,
+        speakable: {
+          "@type": "SpeakableSpecification",
+          cssSelector: ["[data-speakable]", "h1", "h2"],
+        },
+      },
       {
         "@type": "Article",
         headline: `${signalData.name} Signal — ${period.name}`,
@@ -135,6 +151,10 @@ export default async function SignalTypePage({ params }: PageProps) {
 
   return (
     <>
+      <HreflangLinks
+        canonical={`https://signals.gitdealflow.com/signals/${slug}`}
+        languages={getHreflangLanguages(`/signals/${slug}`)}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -142,7 +162,7 @@ export default async function SignalTypePage({ params }: PageProps) {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         {/* Breadcrumb */}
-        <nav className="mb-6 text-sm text-gray-500" aria-label="Breadcrumb">
+        <nav className="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300 transition-colors">
             All Sectors
           </Link>
@@ -226,6 +246,11 @@ export default async function SignalTypePage({ params }: PageProps) {
             Sorted by commit velocity change (14-day window, descending). Data
             last updated {period.name}.
           </p>
+          <FreshnessWatermark
+            date={lastModified}
+            surface={`${signalData.name} signal data`}
+            variant="full"
+          />
         </section>
 
         {/* CTA */}
@@ -289,7 +314,7 @@ export default async function SignalTypePage({ params }: PageProps) {
                 <h3 className="text-gray-200 font-medium text-sm group-hover:text-sky-400 transition-colors mb-1">
                   {s.name}
                 </h3>
-                <p className="text-gray-500 text-xs line-clamp-2">
+                <p className="text-gray-400 text-xs line-clamp-2">
                   {s.description}
                 </p>
               </Link>

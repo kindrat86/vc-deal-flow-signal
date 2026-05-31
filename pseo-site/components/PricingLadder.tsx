@@ -91,7 +91,7 @@ export default function PricingLadder() {
         <h2 className="text-gray-100 font-semibold text-2xl">
           Simple pricing. Free forever for the curious.
         </h2>
-        <p className="text-gray-500 text-xs">
+        <p className="text-gray-400 text-xs">
           Beta pricing — Dashboard goes to €49/mo and Insider to €197/mo after
           launch. Founders keep their price forever.
         </p>
@@ -137,7 +137,7 @@ export default function PricingLadder() {
                 <span className="text-gray-100 font-bold text-3xl tracking-tight">
                   {t.price}
                 </span>
-                <span className="text-gray-500 text-sm ml-1.5">{t.cadence}</span>
+                <span className="text-gray-400 text-sm ml-1.5">{t.cadence}</span>
               </div>
               <p className="text-gray-300 text-sm font-medium mb-4 leading-snug">
                 {t.pitch}
@@ -166,7 +166,7 @@ export default function PricingLadder() {
         })}
       </div>
 
-      <p className="text-gray-500 text-xs mt-4">
+      <p className="text-gray-400 text-xs mt-4">
         Or try the{" "}
         <Link href="https://gitdealflow.com/firstlook/sample" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">
           €7 First Look Pass
@@ -176,6 +176,67 @@ export default function PricingLadder() {
         It&rsquo;s Free&rdquo; refund</strong> on all paid tiers — reply to any
         email, no forms, no call.
       </p>
+
+      {/* Brunson Audit 2026-05-08 — Value Ladder ding fix. Show the
+          high-ticket continuity above €1,997 so the buyer can see where the
+          ladder actually goes. Async-only, anonymity-preserving. */}
+      <div className="mt-6 rounded-xl border border-violet-700/30 bg-gradient-to-br from-violet-950/20 to-slate-900 p-5">
+        <p className="text-violet-300 text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-2">
+          For active funds — high-ticket research partnerships
+        </p>
+        <h3 className="text-gray-100 font-semibold text-base mb-3 leading-snug">
+          The ladder doesn&rsquo;t stop at the Dashboard.
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
+          <Link
+            href="/pricing#sharp-tier"
+            className="rounded-lg border border-slate-800 bg-slate-900/60 p-3 hover:border-indigo-700/50 transition-colors"
+          >
+            <p className="text-indigo-400 text-xs font-mono">€4,970 / yr</p>
+            <p className="text-gray-100 font-semibold text-sm leading-tight mt-0.5">
+              Sharp Tier
+            </p>
+            <p className="text-gray-400 text-xs mt-1 leading-snug">
+              Application-gated. 8-fund cap.
+            </p>
+          </Link>
+          <Link
+            href="/methodology-partnership"
+            className="rounded-lg border border-slate-800 bg-slate-900/60 p-3 hover:border-violet-700/50 transition-colors"
+          >
+            <p className="text-violet-400 text-xs font-mono">€14,997 / yr</p>
+            <p className="text-gray-100 font-semibold text-sm leading-tight mt-0.5">
+              Methodology Partnership
+            </p>
+            <p className="text-gray-400 text-xs mt-1 leading-snug">
+              Done-with-you. 5-fund cap.
+            </p>
+          </Link>
+          <Link
+            href="/vault"
+            className="rounded-lg border border-slate-800 bg-slate-900/60 p-3 hover:border-amber-700/50 transition-colors"
+          >
+            <p className="text-amber-400 text-xs font-mono">€49,997 / yr</p>
+            <p className="text-gray-100 font-semibold text-sm leading-tight mt-0.5">
+              The Vault
+            </p>
+            <p className="text-gray-400 text-xs mt-1 leading-snug">
+              Methodology source. 2-fund cap.
+            </p>
+          </Link>
+        </div>
+        <p className="text-gray-500 text-xs mt-3 leading-relaxed">
+          All three are async-only — no live calls, no in-person attendance.
+          See the{" "}
+          <Link
+            href="/pricing"
+            className="text-violet-400 hover:text-violet-300 underline decoration-dotted"
+          >
+            full ten-rung ladder
+          </Link>{" "}
+          for application links and complete value stacks.
+        </p>
+      </div>
     </section>
   );
 }

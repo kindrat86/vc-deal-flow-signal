@@ -57,27 +57,45 @@ export default async function PressReleasePage({ params }: PageProps) {
         "@type": "NewsArticle",
         "@id": `${SITE}/press/${slug}#article`,
         headline: r.headline,
+        alternativeHeadline: r.subhead,
         description: r.subhead,
         articleSection: "Press release",
         articleBody: [r.lead, ...r.body, r.quote].join("\n\n"),
+        // Dateline mirrors the on-page wire prefix ("ATHENS, GR — …") so AI
+        // retrieval can recover origin/byline metadata without re-parsing
+        // the rendered HTML.
+        dateline: r.dateline,
+        inLanguage: "en-US",
+        isAccessibleForFree: true,
+        isFamilyFriendly: true,
+        license: "https://creativecommons.org/licenses/by/4.0/",
         datePublished: r.date,
         dateModified: r.date,
+        // Person byline (consistent with the on-page quote attribution
+        // "— The Data Nerd, founder of VC Deal Flow Signal"). Anchored
+        // to the same @id as the Person node in RootIdentitySchema so
+        // every NewsArticle resolves to the same author entity.
         author: {
-          "@type": "Organization",
-          name: "VC Deal Flow Signal",
-          url: "https://gitdealflow.com",
+          "@type": "Person",
+          "@id": `${SITE}/about#person`,
+          name: "The Data Nerd",
+          url: `${SITE}/about`,
+          jobTitle: "Founder, VC Deal Flow Signal",
         },
-        publisher: {
-          "@type": "Organization",
-          name: "VC Deal Flow Signal",
-          url: "https://gitdealflow.com",
-        },
+        publisher: { "@id": "https://gitdealflow.com/#organization" },
+        // Anchor every press release to the Newspaper umbrella so this
+        // page is recognisable as an entry in a registered publication
+        // rather than a free-floating Article. Resolved via @id from the
+        // RootIdentitySchema @graph.
+        isPartOf: { "@id": "https://gitdealflow.com/#newspaper" },
         mainEntityOfPage: `${SITE}/press/${slug}`,
-        copyrightHolder: {
-          "@type": "Organization",
-          name: "VC Deal Flow Signal",
-        },
-        copyrightNotice: "CC BY 4.0",
+        copyrightHolder: { "@id": "https://gitdealflow.com/#organization" },
+        copyrightYear: new Date(r.date).getUTCFullYear(),
+        copyrightNotice:
+          "© VC Deal Flow Signal (GitDealFlow). Released under CC BY 4.0 with attribution.",
+        ...(r.wireCategories && r.wireCategories.length > 0
+          ? { keywords: r.wireCategories.join(", ") }
+          : {}),
       },
       {
         "@type": "BreadcrumbList",
@@ -109,8 +127,8 @@ export default async function PressReleasePage({ params }: PageProps) {
       />
       <AgentMirrorLinks path={`/press/${slug}`} />
 
-      <main className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
-        <nav className="text-xs text-gray-500" aria-label="Breadcrumb">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
+        <nav className="text-xs text-gray-400" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300">
             Home
           </Link>
@@ -123,7 +141,7 @@ export default async function PressReleasePage({ params }: PageProps) {
         </nav>
 
         <header className="space-y-4 border-b border-slate-800 pb-6">
-          <p className="text-gray-500 text-xs font-mono uppercase tracking-wider">
+          <p className="text-gray-400 text-xs font-mono uppercase tracking-wider">
             {r.dateline} — {r.date}
           </p>
           <p className="text-emerald-400 text-xs font-semibold uppercase tracking-wider">
@@ -146,14 +164,14 @@ export default async function PressReleasePage({ params }: PageProps) {
           ))}
           <blockquote className="border-l-4 border-emerald-500/60 bg-slate-900/40 pl-5 py-3 my-6 italic text-gray-200">
             {r.quote}
-            <footer className="text-gray-500 text-sm not-italic mt-2">
+            <footer className="text-gray-400 text-sm not-italic mt-2">
               — The Data Nerd, founder of VC Deal Flow Signal
             </footer>
           </blockquote>
         </article>
 
         <section className="rounded-lg border border-slate-800 bg-slate-900/40 p-5 space-y-3">
-          <p className="text-gray-500 text-xs font-semibold uppercase tracking-wider">
+          <p className="text-gray-400 text-xs font-semibold uppercase tracking-wider">
             About VC Deal Flow Signal
           </p>
           <p className="text-gray-300 text-sm leading-relaxed">
@@ -162,7 +180,7 @@ export default async function PressReleasePage({ params }: PageProps) {
         </section>
 
         <section className="rounded-lg border border-slate-800 bg-slate-900/40 p-5 space-y-3">
-          <p className="text-gray-500 text-xs font-semibold uppercase tracking-wider">
+          <p className="text-gray-400 text-xs font-semibold uppercase tracking-wider">
             Press contact
           </p>
           <p className="text-gray-300 text-sm leading-relaxed">
@@ -180,12 +198,12 @@ export default async function PressReleasePage({ params }: PageProps) {
         </section>
 
         <section className="rounded-lg border border-slate-800 bg-slate-900/40 p-5 space-y-3">
-          <p className="text-gray-500 text-xs font-semibold uppercase tracking-wider">
+          <p className="text-gray-400 text-xs font-semibold uppercase tracking-wider">
             Wire metadata (for the desk filing this)
           </p>
           <div className="grid sm:grid-cols-2 gap-3 text-sm text-gray-300">
             <div>
-              <p className="text-gray-500 text-xs uppercase tracking-wider mb-1">
+              <p className="text-gray-400 text-xs uppercase tracking-wider mb-1">
                 Categories
               </p>
               <ul className="space-y-1">
@@ -195,7 +213,7 @@ export default async function PressReleasePage({ params }: PageProps) {
               </ul>
             </div>
             <div>
-              <p className="text-gray-500 text-xs uppercase tracking-wider mb-1">
+              <p className="text-gray-400 text-xs uppercase tracking-wider mb-1">
                 Suggested desks
               </p>
               <ul className="space-y-1 text-xs">
@@ -207,7 +225,7 @@ export default async function PressReleasePage({ params }: PageProps) {
           </div>
         </section>
 
-        <p className="text-gray-500 text-sm border-t border-slate-800 pt-5">
+        <p className="text-gray-400 text-sm border-t border-slate-800 pt-5">
           Back to the{" "}
           <Link
             href="/press"
@@ -224,7 +242,7 @@ export default async function PressReleasePage({ params }: PageProps) {
           </Link>
           .
         </p>
-      </main>
+      </div>
     </>
   );
 }

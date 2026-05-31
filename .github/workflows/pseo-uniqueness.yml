@@ -1,0 +1,86 @@
+name: pSEO Uniqueness Audit
+
+# Background — fix F24 in marketing/audit-fixes-2026-05-07.
+# Computes within-surface SimHash similarity across our programmatic
+# pSEO content (compare/, alternatives/, use-cases/, vs/) and fails the
+# job if too many entries are near-duplicates of each other.
+#
+# Runs on:
+#   - every PR that touches a programmatic surface
+#   - pushes to main (so the report gets regenerated and surfaced)
+#   - manually via workflow_dispatch
+#
+# The same script also runs as part of pseo-site/package.json `postbuild`,
+# which means a regression also fails the Vercel deploy (postbuild is part
+# of `npm run build`, so a non-zero exit fails the build). This workflow
+# is the *earlier* gate — it catches regressions at PR time before they
+# reach the deploy queue.
+
+on:
+  pull_request:
+    paths:
+      - "pseo-site/content/comparisons.ts"
+      - "pseo-site/content/alternatives.ts"
+      - "pseo-site/content/use-cases.ts"
+      - "pseo-site/content/competitor-vs.ts"
+      - "pseo-site/scripts/audit-pseo-uniqueness.ts"
+      - ".github/workflows/pseo-uniqueness.yml"
+  push:
+    branches: [main]
+    paths:
+      - "pseo-site/content/comparisons.ts"
+      - "pseo-site/content/alternatives.ts"
+      - "pseo-site/content/use-cases.ts"
+      - "pseo-site/content/competitor-vs.ts"
+      - "pseo-site/scripts/audit-pseo-uniqueness.ts"
+      - ".github/workflows/pseo-uniqueness.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: pseo-uniqueness-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    defaults:
+      run:
+        working-directory: pseo-site
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: "npm"
+          cache-dependency-path: pseo-site/package-lock.json
+
+      - name: Install deps
+        run: npm ci --no-audit --no-fund
+
+      - name: Run pSEO uniqueness audit
+        id: audit
+        env:
+          # Defaults (defined in the script) — surfaced here so the gate
+          # config is visible from the workflow file:
+          #   PSEO_AUDIT_HAMMING_DISTANCE=9   (≥85.9% body similarity)
+          #   PSEO_AUDIT_GLOBAL_THRESHOLD=5   (% of total entries flagged)
+          #   PSEO_AUDIT_REPORT_ONLY=false    (hard-fail by default)
+          PSEO_AUDIT_REPORT_ONLY: "false"
+        run: npm run audit:pseo
+
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pseo-uniqueness-report
+          path: pseo-site/data/audit/pseo-uniqueness-report.json
+          if-no-files-found: warn
+          retention-days: 30

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import SqueezeSuccess from "@/components/SqueezeSuccess";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -54,31 +55,7 @@ export default function SqueezeForm() {
   }
 
   if (status === "success") {
-    return (
-      <div className="rounded-xl border border-emerald-700/40 bg-emerald-950/30 p-6 sm:p-8 space-y-3">
-        <p className="text-emerald-300 text-xs font-semibold uppercase tracking-[0.14em]">
-          Check your inbox
-        </p>
-        <h2 className="text-gray-100 font-semibold text-2xl leading-tight">
-          One last step.
-        </h2>
-        <p className="text-gray-200 text-base leading-relaxed">
-          We just sent a confirmation link to{" "}
-          <strong className="text-emerald-200">{email}</strong>. Click
-          it and you&rsquo;ll get the first Sunday digest within 30
-          minutes — including this week&rsquo;s 5 breakout candidates
-          ranked by 14-day commit-velocity acceleration.
-        </p>
-        <p className="text-gray-400 text-sm leading-relaxed">
-          If you don&rsquo;t see it in 5 minutes, check spam / Promotions
-          tab. The sender is{" "}
-          <code className="text-emerald-200 bg-emerald-900/40 px-1.5 py-0.5 rounded text-xs">
-            signal@gitdealflow.com
-          </code>
-          .
-        </p>
-      </div>
-    );
+    return <SqueezeSuccess email={email} route={route} />;
   }
 
   const submitting = status === "submitting";
@@ -129,7 +106,7 @@ export default function SqueezeForm() {
           disabled={submitting}
           autoComplete="email"
           placeholder="you@yourfund.com"
-          className="block w-full rounded-md border border-slate-700 bg-slate-900 text-gray-100 text-base px-3 py-2.5 placeholder:text-gray-500 focus:border-sky-500 focus:ring-1 focus:ring-sky-500 disabled:opacity-50"
+          className="block w-full rounded-md border border-slate-700 bg-slate-900 text-gray-100 text-base px-3 py-2.5 placeholder:text-gray-400 focus:border-sky-500 focus:ring-1 focus:ring-sky-500 disabled:opacity-50"
         />
       </div>
       <button
@@ -139,7 +116,7 @@ export default function SqueezeForm() {
       >
         {submitting ? "Sending confirmation…" : "Send me Sunday's 5 →"}
       </button>
-      <p className="text-gray-500 text-xs leading-relaxed">
+      <p className="text-gray-400 text-xs leading-relaxed">
         Free forever. One email a week. Unsubscribe with one click. We
         never sell or share your email — see{" "}
         <a

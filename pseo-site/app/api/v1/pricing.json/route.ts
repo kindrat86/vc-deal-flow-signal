@@ -227,16 +227,83 @@ const tiers: PricingTier[] = [
     guarantee: "30-day Signal-or-It's-Free — full refund within 30 days",
     promoCode: null,
   },
+  // Brunson Audit 2026-05-08 — Value Ladder ding fix. The two rungs above
+  // €1,997: a done-with-you Methodology Partnership and the top-rung Vault
+  // (methodology source license + 72h signal head-start). Both async-only,
+  // anonymity-preserving, application-gated.
+  {
+    slug: "methodology-partnership",
+    name: "Methodology Partnership",
+    priceEur: 14997,
+    priceCadence: "yearly",
+    priceLabel: "€14,997/yr",
+    listPriceEur: 29997,
+    listPriceCadence: "yearly",
+    foundingMember: true,
+    applicationGated: true,
+    capacity: "5 funds in 2026",
+    oneLine:
+      "Done-with-you methodology engagement — custom panel construction trained on your fund's anonymized portfolio outcomes, bespoke 50-org watchlist with monthly rebuild, white-labeled fund subdomain, quarterly synthetic State-of-the-Engine talk, async-only methodology Q&A.",
+    forWho:
+      "Active VC funds with 5+ years of historical investment outcomes who want the regression trained on their portfolio — not the public 219-startup panel — and a fund-branded data feed integrated into their CRM.",
+    bullets: [
+      "Everything in Sharp Tier (€4,970/yr value)",
+      "Custom panel construction — fund-specific regression on your anonymized portfolio outcomes",
+      "Bespoke 50-org watchlist tuned to your written thesis, monthly rebuild",
+      "White-labeled fund subdomain — signal.yourfund.com",
+      "Quarterly synthetic State-of-the-Engine talk (4/yr) — 6-min Remotion video on your thesis",
+      "Async methodology Q&A — unlimited dedicated email channel, 24h weekday turn",
+      "Quarterly anonymized fund-as-case-study published to /press",
+      "Annual fund-only methodology brief (synthetic-voice walkthrough + 40-page PDF)",
+      "Founding-rate locked through end of 2027; capped at 5 funds in 2026",
+    ],
+    ctaLabel: "Apply for Methodology Partnership",
+    ctaHref: "https://signals.gitdealflow.com/methodology-partnership",
+    guarantee:
+      "Async-only, no live calls. 30-day pro-rata refund window from contract start.",
+    promoCode: null,
+  },
+  {
+    slug: "vault",
+    name: "The Vault",
+    priceEur: 49997,
+    priceCadence: "yearly",
+    priceLabel: "€49,997/yr",
+    listPriceEur: 99997,
+    listPriceCadence: "yearly",
+    foundingMember: true,
+    applicationGated: true,
+    capacity: "2 funds in 2026",
+    oneLine:
+      "Top rung. Methodology Partnership plus: co-development access to the panel-construction pipeline, pre-publication SSRN preview six months early, 72-hour signal head-start over the public Dashboard, methodology source repo (fund-only fork license), Signal-of-the-Quarter co-investment alerts.",
+    forWho:
+      "Funds intending to make GitHub-momentum signal a multi-year sourcing advantage — funds who want to own the methodology, not license the output. Most Vault funds enter via Methodology Partnership for 6–12 months first.",
+    bullets: [
+      "Everything in Methodology Partnership (€68,000+ stack value)",
+      "Co-development access to the panel-construction pipeline (~24 senior-engineering hours/mo equivalent)",
+      "Pre-publication SSRN preview — read next year's successor paper 6 months before public release",
+      "72-hour signal head-start — every flag delivered to Vault funds 72h before public Dashboard (~12 flags/yr)",
+      "Annual async methodology summit — 8-hour Remotion-rendered keynote + fund-branded artifacts",
+      "Methodology source repo — private fork, MIT-license to your fund only",
+      "Signal-of-the-Quarter co-investment alerts (4/yr deep written analyses)",
+      "Founding-rate locked through end of 2028; capped at 2 funds in 2026",
+    ],
+    ctaLabel: "Apply for the Vault",
+    ctaHref: "https://signals.gitdealflow.com/vault",
+    guarantee:
+      "Async-only, no live attendance. 30-day pro-rata refund window from contract start.",
+    promoCode: null,
+  },
 ];
 
 export async function GET() {
   const lastModified = getDataLastModified();
 
   const body = {
-    version: "1.0.0",
+    version: "1.1.0",
     name: "VC Deal Flow Signal — Pricing",
     description:
-      "Machine-readable pricing for VC Deal Flow Signal (GitDealFlow). Seven published tiers (free Signal Digest, €1 Tweet Teardown, €7 First Look Pass, €9.97/mo Dashboard Beta, €97/mo Insider Circle, €497/mo Sharp Tier, €1,997 Sector Sweep) with founding-member rates, application-gated Sharp Tier, and a 30-day Signal-or-It's-Free guarantee on every paid plan above €1. Designed for AI agents, MCP clients, and procurement automations that need pricing in JSON form.",
+      "Machine-readable pricing for VC Deal Flow Signal (GitDealFlow). Nine published priced tiers plus the free Signal Digest (Tweet Teardown €1, First Look Pass €7, Dashboard Beta €9.97/mo, Insider Circle €97/mo, Sharp Tier €4,970/yr, Sector Sweep €1,997 one-time, Methodology Partnership €14,997/yr, Vault €49,997/yr) with founding-member rates, application-gated Sharp Tier / Methodology Partnership / Vault, and a 30-day Signal-or-It's-Free guarantee on every paid plan above €1. The high-ticket research-partnership rungs (Methodology Partnership and Vault) are async-only and anonymity-preserving — no live calls, no in-person attendance. Designed for AI agents, MCP clients, and procurement automations that need pricing in JSON form.",
     site: SITE,
     canonicalHumanPage: `${SITE}/pricing`,
     license: {
@@ -291,6 +358,12 @@ export async function GET() {
         amountEur: 1997,
         windowDays: 60,
         note: "€1,997 credited toward Insider Circle if upgraded within 60 days — first ~20 months of Insider, paid.",
+      },
+      "methodology-partnership": {
+        creditsToward: ["vault"],
+        amountEur: 14997,
+        windowDays: 365,
+        note: "Methodology Partnership rate credited 1:1 (pro-rata) toward Vault rate on upgrade during the 12-month engagement.",
       },
     },
     foundingMemberPolicy: {

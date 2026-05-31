@@ -9,7 +9,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Where to find us — every channel, mirror, and feed",
   description:
-    "GitDealFlow on the open web: Substack, dev.to, RSS, MCP, npm, GitHub, Bluesky, Mastodon, Farcaster, ChatGPT GPT Store, SSRN, Zenodo, agents.json, OpenAPI, llms.txt. The full distribution map for the developer-investor.",
+    "GitDealFlow on the open web: RSS, MCP, GitHub, social mirrors, agent surfaces, SSRN, Zenodo, llms.txt, and OpenAPI. The full distribution map.",
   alternates: { canonical: "/distribution" },
   openGraph: {
     title: "Where to find us — distribution map",
@@ -130,8 +130,8 @@ const GROUPS: Group[] = [
     channels: [
       { name: "Bluesky — gitdealflow.bsky.social", what: "AT Protocol social. Custom feed-generator + label service. Posts mirror the Acceleration Watch.", href: "https://bsky.app/profile/gitdealflow.bsky.social", external: true },
       { name: "Mastodon — fosstodon.org/@gitdealflow", what: "ActivityPub. The fediverse-native distribution layer.", href: "https://fosstodon.org/@gitdealflow", external: true },
-      { name: "Farcaster — gitdealflow", what: "On-chain social via Neynar. Where the crypto-native developer-investor reads.", href: "https://warpcast.com/gitdealflow", external: true },
-      { name: "LinkedIn — GitDealFlow Company", what: "Company page (no founder personal account, anonymity rule). Long-form essays + Dream 100 engagement.", href: "https://www.linkedin.com/company/gitdealflow", external: true },
+      { name: "Farcaster — gitdealflow", what: "On-chain social via Neynar. Useful when the conversation is already happening in crypto-native circles.", href: "https://warpcast.com/gitdealflow", external: true },
+      { name: "LinkedIn — GitDealFlow Company", what: "Company page (no founder personal account, anonymity rule). Long-form essays + top-100 engagement.", href: "https://www.linkedin.com/company/gitdealflow", external: true },
     ],
   },
   {
@@ -216,25 +216,25 @@ export default function DistributionPage() {
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
         <header className="space-y-4">
-          <nav aria-label="Breadcrumb" className="text-xs text-gray-500">
+          <nav aria-label="Breadcrumb" className="text-xs text-gray-400">
             <Link href="/" className="hover:text-gray-300">Home</Link>
             <span className="mx-2">/</span>
             <span className="text-gray-400">Distribution</span>
           </nav>
           <p className="text-emerald-400 text-xs font-semibold uppercase tracking-wider">
-            Traffic Secrets, Section 1, Chapter 2 · Applied
+            Where they&rsquo;re hiding · Applied
           </p>
           <h1 className="text-3xl sm:text-5xl font-bold text-gray-100 leading-[1.1] tracking-tight">
             Where to find us. <span className="text-emerald-400">Every channel, every mirror.</span>
           </h1>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
-            Brunson&rsquo;s rule: your reader can&rsquo;t follow you on a
-            channel they don&rsquo;t know exists. So here&rsquo;s the full
-            map — every public surface where the GitDealFlow signal shows up,
-            grouped by what you&rsquo;re trying to do.
+            Your reader can&rsquo;t follow you on a channel they don&rsquo;t
+            know exists. So here&rsquo;s the full map — every public surface
+            where the GitDealFlow signal shows up, grouped by what you&rsquo;re
+            trying to do.
           </p>
           <p className="text-gray-300 text-base leading-relaxed">
-            First — <a href="#hiding" className="text-emerald-400 hover:text-emerald-300 underline decoration-dotted">where they&rsquo;re hiding</a>: the literal 10 forums, 10 substacks, and 10 GitHub orgs the developer-investor reads. Then: the eight surface groups we mirror to so we show up on each of them.
+            First — <a href="#hiding" className="text-emerald-400 hover:text-emerald-300 underline decoration-dotted">where the right attention already lives</a>: the forums, substacks, and GitHub orgs where this kind of signal gets noticed first. Then: the eight surface groups we mirror to so we show up wherever serious readers already are.
           </p>
           <p className="text-gray-300 text-base leading-relaxed">
             If you&rsquo;re building a portfolio agent, every machine-readable
@@ -244,29 +244,56 @@ export default function DistributionPage() {
             Farcaster. If you want the methodology, jump to{" "}
             <a href="#academic" className="text-emerald-400 hover:text-emerald-300 underline decoration-dotted">Academic & reproducibility</a>.
           </p>
+          <p className="text-gray-300 text-base leading-relaxed">
+            Want to see <em className="text-gray-200 not-italic">how</em> the
+            same product story gets re-framed for each surface? Twelve openers,
+            one signal:{" "}
+            <Link
+              href="/distribution/platform-hooks"
+              className="text-emerald-400 hover:text-emerald-300 underline decoration-dotted"
+            >
+              /distribution/platform-hooks
+            </Link>{" "}
+            documents the per-platform variants — Twitter / Reddit / Hacker
+            News / dev.to / Hashnode / Discord / LinkedIn / Email / AngelList
+            / Product Hunt / Indie Hackers / Telegram.
+          </p>
         </header>
+
+        <section className="rounded-xl border border-emerald-700/30 bg-emerald-950/20 p-6 sm:p-8 space-y-3">
+          <p className="text-emerald-300 text-xs font-semibold uppercase tracking-[0.14em] mb-2">
+            Start with the highest-intent routes
+          </p>
+          <p className="text-gray-300 text-sm leading-relaxed mb-4">
+            Use distribution when you want the map. But if your real question is proof, workflow, or buyer-side evaluation, start with the sharper pages first.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/research" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-emerald-500 text-slate-950 text-sm font-semibold hover:bg-emerald-400 transition-colors">
+              Read the research panel →
+            </Link>
+            <Link href="/use-cases" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              See investor workflows →
+            </Link>
+            <Link href="/buyers-guide" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              Read the buyer's guide →
+            </Link>
+          </div>
+        </section>
 
         <section
           id="hiding"
-          aria-label="Where the developer-investor is hiding"
+          aria-label="Where the right attention already lives"
           className="rounded-xl border border-emerald-700/40 bg-gradient-to-br from-emerald-950/30 via-slate-900 to-slate-950 p-6 sm:p-8 space-y-6 scroll-mt-20"
         >
           <div className="space-y-3">
             <p className="text-emerald-300 text-xs font-semibold uppercase tracking-wider">
-              The Secret Formula · Step 2: Where Are They Hiding · DotCom Secrets §1 + Traffic Secrets §1 Ch 2
+              The secret formula · Step 2: where the right attention already lives
             </p>
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug">
-              Where the developer-investor is hiding.
+              Where the right attention already lives.
             </h2>
             <p className="text-gray-300 text-base leading-relaxed">
-              Brunson&rsquo;s Secret Formula starts by naming the Dream
-              Customer, then asking <em>where they congregate</em>. Our
-              Dream Customer is the developer-investor — someone writing
-              €5k–€50k checks who reads commit logs for fun. Below is
-              the literal map: the 10 forums they browse, the 10
-              substacks they read, and the 10 GitHub orgs they watch.
-              Every surface group further down the page is a mirror
-              we&rsquo;ve built to show up wherever they already are.
+              Start by naming the problem, then ask where people who care about that problem already pay attention. Below is the literal map: forums, substacks, and GitHub orgs where earlier signal, technical momentum, and startup timing already get discussed. Every surface group further down the page is a mirror we built to show up there naturally.
             </p>
           </div>
 
@@ -275,7 +302,7 @@ export default function DistributionPage() {
               <h3 className="text-sm font-semibold text-emerald-300 uppercase tracking-wider">
                 10 forums
               </h3>
-              <p className="text-gray-500 text-[11px] leading-relaxed">
+              <p className="text-gray-400 text-[11px] leading-relaxed">
                 Where the comment threads are alive — engagement-side targets.
               </p>
               <ol className="text-gray-300 text-sm leading-relaxed space-y-1 list-decimal list-inside marker:text-emerald-500">
@@ -296,8 +323,8 @@ export default function DistributionPage() {
               <h3 className="text-sm font-semibold text-emerald-300 uppercase tracking-wider">
                 10 substacks
               </h3>
-              <p className="text-gray-500 text-[11px] leading-relaxed">
-                Where the long-form reading happens — Dream-100 mirror targets.
+              <p className="text-gray-400 text-[11px] leading-relaxed">
+                Where the long-form reading happens — top-100 mirror targets.
               </p>
               <ol className="text-gray-300 text-sm leading-relaxed space-y-1 list-decimal list-inside marker:text-emerald-500">
                 <li>The Pragmatic Engineer — Gergely Orosz</li>
@@ -317,7 +344,7 @@ export default function DistributionPage() {
               <h3 className="text-sm font-semibold text-emerald-300 uppercase tracking-wider">
                 10 GitHub orgs
               </h3>
-              <p className="text-gray-500 text-[11px] leading-relaxed">
+              <p className="text-gray-400 text-[11px] leading-relaxed">
                 Where the commit logs they read for fun ship from — bait-drop adjacency.
               </p>
               <ol className="text-gray-300 text-sm leading-relaxed space-y-1 list-decimal list-inside marker:text-emerald-500">
@@ -364,7 +391,7 @@ export default function DistributionPage() {
           aria-label="Sections"
           className="rounded-xl border border-slate-800 bg-slate-900/60 p-5 sm:p-6"
         >
-          <p className="text-gray-500 text-[10px] font-semibold uppercase tracking-wider mb-3">
+          <p className="text-gray-400 text-[10px] font-semibold uppercase tracking-wider mb-3">
             8 groups · jump to:
           </p>
           <ul className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-sm">
@@ -421,7 +448,7 @@ export default function DistributionPage() {
                       </Link>
                     )}
                     {c.cadence && (
-                      <span className="text-gray-500 text-[10px] font-medium uppercase tracking-wider">
+                      <span className="text-gray-400 text-[10px] font-medium uppercase tracking-wider">
                         {c.cadence}
                       </span>
                     )}
@@ -437,31 +464,29 @@ export default function DistributionPage() {
 
         <section className="rounded-xl border border-sky-700/40 bg-gradient-to-br from-sky-950/30 via-slate-900 to-slate-950 p-6 sm:p-8 space-y-3">
           <p className="text-sky-300 text-xs font-semibold uppercase tracking-wider">
-            Conversation Domination · Traffic Secrets Ch 12
+            Publishing where the buyer already is
           </p>
           <h2 className="text-xl sm:text-2xl font-bold text-gray-100">
             Why we&rsquo;re on this many surfaces.
           </h2>
           <p className="text-gray-300 text-base leading-relaxed">
-            Brunson teaches Conversation Domination as the third leg of
-            traffic — every reader has a different home, and you have to
-            show up on theirs, not yours. We do that on principle: the dev.to
-            reader, the Substack reader, the Bluesky reader, and the Claude
-            Desktop reader all have the same right to the signal.
+            Every reader has a different home, and you have to show up on
+            theirs, not yours. We do that on principle: the dev.to reader,
+            the Substack reader, the Bluesky reader, and the Claude Desktop
+            reader all have the same right to the signal.
           </p>
           <p className="text-gray-300 text-base leading-relaxed">
-            The Brunson half: distribution. The honest half: every surface
-            mirrors the same canonical data, with the same SSRN-grounded
-            methodology, with the same 30-day Signal-or-It&rsquo;s-Free
-            guarantee. We don&rsquo;t change the message per channel — we
-            change the medium.
+            The distribution half. The honest half: every surface mirrors
+            the same canonical data, with the same SSRN-grounded methodology,
+            with the same 30-day Signal-or-It&rsquo;s-Free guarantee. We
+            don&rsquo;t change the message per channel — we change the medium.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 pt-2">
             <Link
-              href="/dream-100"
+              href="/target-list"
               className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-sm transition-colors"
             >
-              Dream 100 (the other side of the map) →
+              Top 100 (the other side of the map) →
             </Link>
             <Link
               href="/funnels"
@@ -472,11 +497,10 @@ export default function DistributionPage() {
           </div>
         </section>
 
-        <p className="text-gray-500 text-xs leading-relaxed border-t border-slate-800 pt-6">
-          Distribution mapped per <em>Traffic Secrets</em> Section 1 (Where
-          Are They Hiding) and Section 2 Ch 12 (Conversation Domination), by
-          Russell Brunson (2020). Anonymity rule preserved: company-page
-          identity only, no individual founder content.
+        <p className="text-gray-400 text-xs leading-relaxed border-t border-slate-800 pt-6">
+          Distribution mapped from direct-response sales canon. Anonymity
+          rule preserved: company-page identity only, no individual founder
+          content.
         </p>
       </div>
     </>

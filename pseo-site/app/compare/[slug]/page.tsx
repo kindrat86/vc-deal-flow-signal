@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getComparison, getAllComparisonSlugs, type ComparisonFAQ } from "@/content/comparisons";
+import { getComparison, getAllComparisonSlugs, type ComparisonFAQ, type ComparisonLink } from "@/content/comparisons";
+import { getTeardownsForSlug } from "@/content/competitor-teardowns";
 import { getAllSectors, getCurrentPeriod, getDataLastModified } from "@/lib/data";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { FunnelTeardown } from "@/components/FunnelTeardown";
+import { HreflangLinks } from "@/components/HreflangLinks";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -16,6 +19,10 @@ export async function generateStaticParams() {
 export const dynamicParams = false;
 export const revalidate = 604800;
 
+function clampDescription(text: string, max = 155) {
+  return text.length > max ? `${text.slice(0, max - 3).trimEnd()}...` : text;
+}
+
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
@@ -25,16 +32,17 @@ export async function generateMetadata({
 
   return {
     title: comp.title,
-    description: comp.description,
+    description: clampDescription(comp.description),
     openGraph: {
       title: comp.title,
-      description: comp.description,
+      description: clampDescription(comp.description),
       type: "article",
+      url: `/compare/${slug}`,
     },
     twitter: {
       card: "summary_large_image",
       title: comp.title,
-      description: comp.description,
+      description: clampDescription(comp.description),
     },
     alternates: {
       canonical: `/compare/${slug}`,
@@ -54,6 +62,7 @@ export default async function ComparisonPage({ params }: PageProps) {
   const period = getCurrentPeriod();
   const lastModified = getDataLastModified();
   const pageUrl = `https://signals.gitdealflow.com/compare/${slug}`;
+  const teardowns = getTeardownsForSlug(slug);
   const relatedSectorData = comp.relatedSectors
     .map((rs) => {
       const sector = sectors.find((s) => s.slug === rs);
@@ -157,6 +166,22 @@ export default async function ComparisonPage({ params }: PageProps) {
             },
           ]
         : []),
+      // HowTo schema per teardown — describes the competitor's funnel
+      // architecture as ordered steps. Crawlable, agent-readable, and
+      // strengthens topical authority on the comparison surface.
+      ...teardowns.map((td) => ({
+        "@type": "HowTo",
+        name: `${td.competitor} funnel architecture`,
+        description: td.tagline,
+        about: { "@type": "Thing", name: td.competitor },
+        step: td.funnelArch.map((s, i) => ({
+          "@type": "HowToStep",
+          position: i + 1,
+          name: s.step.replace(/^\d+\s*[—-]\s*/, ""),
+          text: s.theirMechanic,
+          url: `${pageUrl}#teardown-${td.key}-step-${i + 1}`,
+        })),
+      })),
       {
         "@type": "Claim",
         text: comp.verdict,
@@ -183,6 +208,14 @@ export default async function ComparisonPage({ params }: PageProps) {
 
   return (
     <>
+      <HreflangLinks
+        canonical={pageUrl}
+        languages={{
+          en: pageUrl,
+          "en-US": pageUrl,
+          "x-default": pageUrl,
+        }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -230,31 +263,123 @@ export default async function ComparisonPage({ params }: PageProps) {
           ))}
         </div>
 
+        {/* Funnel teardowns — Brunson-style structural reverse-engineering
+            of competitor funnel architecture. Server-rendered, no JS. Renders
+            inline because per-page count is bounded (1–3) by SLUG_TO_TEARDOWN_KEYS. */}
+        {teardowns.length > 0 ? (
+          <section className="mb-12" aria-label="Competitor funnel teardowns">
+            <header className="mb-6">
+              <p className="text-xs font-medium uppercase tracking-[0.2em] text-amber-400/80 mb-2">
+                Reverse-Engineering the Funnels
+              </p>
+              <h2 className="text-2xl font-semibold text-gray-100 mb-3 leading-tight">
+                How {teardowns.length === 1 ? `${teardowns[0].competitor}'s funnel` : "each funnel"}{" "}
+                actually works
+              </h2>
+              <p className="text-gray-400 text-sm leading-relaxed max-w-3xl">
+                The fastest way to understand a market is to walk every step
+                of every competitor&rsquo;s funnel and name the conversion
+                mechanic. Below is the structural teardown — what they do at
+                each step, the read on the mechanic, and the parallel move
+                in our funnel. All sourced from publicly-observable, logged-
+                out surfaces.
+              </p>
+            </header>
+            {teardowns.map((td) => (
+              <FunnelTeardown key={td.key} teardown={td} />
+            ))}
+          </section>
+        ) : null}
+
         {/* Feature comparison table */}
         {comp.featureTable && (
-          <div className="overflow-x-auto rounded-lg border border-slate-800 mb-10">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b border-slate-800 bg-slate-900/60">
-                  <th className="text-left text-gray-400 font-medium px-4 py-3">Feature</th>
-                  {comp.featureTable.tools.map((tool) => (
-                    <th key={tool} className="text-left text-gray-400 font-medium px-4 py-3">{tool}</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {comp.featureTable.features.map((row) => (
-                  <tr key={row.feature} className="border-b border-slate-800/60 last:border-0 hover:bg-slate-800/40 transition-colors">
-                    <td className="px-4 py-3 text-gray-200 font-medium">{row.feature}</td>
+          <section className="mb-10" aria-label="Feature comparison">
+            <div className="sm:hidden space-y-4">
+              {comp.featureTable.features.map((row) => (
+                <div
+                  key={row.feature}
+                  className="rounded-lg border border-slate-800 bg-slate-900 p-4"
+                >
+                  <h3 className="text-gray-100 font-semibold text-sm mb-3">
+                    {row.feature}
+                  </h3>
+                  <div className="space-y-2">
                     {comp.featureTable!.tools.map((tool) => (
-                      <td key={tool} className="px-4 py-3 text-gray-400">{row.values[tool] ?? "—"}</td>
+                      <div
+                        key={tool}
+                        className="rounded-md border border-slate-800/80 bg-slate-950/60 px-3 py-2"
+                      >
+                        <p className="text-[11px] uppercase tracking-wide text-gray-500 mb-1">
+                          {tool}
+                        </p>
+                        <p className="text-sm leading-relaxed text-gray-300">
+                          {row.values[tool] ?? "—"}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="hidden sm:block overflow-x-auto rounded-lg border border-slate-800">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-slate-800 bg-slate-900/60">
+                    <th className="text-left text-gray-400 font-medium px-4 py-3">Feature</th>
+                    {comp.featureTable.tools.map((tool) => (
+                      <th key={tool} className="text-left text-gray-400 font-medium px-4 py-3">{tool}</th>
                     ))}
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                </thead>
+                <tbody>
+                  {comp.featureTable.features.map((row) => (
+                    <tr key={row.feature} className="border-b border-slate-800/60 last:border-0 hover:bg-slate-800/40 transition-colors align-top">
+                      <td className="px-4 py-3 text-gray-200 font-medium">{row.feature}</td>
+                      {comp.featureTable!.tools.map((tool) => (
+                        <td key={tool} className="px-4 py-3 text-gray-400 leading-relaxed">{row.values[tool] ?? "—"}</td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
         )}
+
+        {comp.proofLinks && comp.proofLinks.length > 0 ? (
+          <section className="mb-10 rounded-xl border border-slate-800 bg-slate-900/70 p-6 sm:p-8">
+            <h2 className="text-xl font-semibold text-gray-100 mb-3">
+              If you want to verify the claim
+            </h2>
+            <p className="text-gray-400 text-sm leading-relaxed mb-4">
+              The signal logic is public. Read the methodology, compare the surrounding tools, and inspect the sample output before deciding whether this belongs in your workflow.
+            </p>
+            <div className="flex flex-col gap-3">
+              {comp.proofLinks.map((link: ComparisonLink) => (
+                <Link
+                  key={link.url}
+                  href={link.url}
+                  className="text-sky-400 hover:text-sky-300 underline underline-offset-2 text-sm"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </section>
+        ) : null}
+
+        <section className="mb-10 rounded-xl border border-amber-500/30 bg-amber-500/5 p-6 sm:p-8">
+          <p className="text-amber-300 text-xs uppercase tracking-wider mb-2 font-semibold">
+            Quote-ready verdict
+          </p>
+          <blockquote className="text-gray-100 text-lg leading-relaxed border-l-2 border-amber-400/60 pl-4">
+            {comp.verdict}
+          </blockquote>
+          <p className="mt-4 text-xs text-gray-400 leading-relaxed">
+            If you cite or quote this comparison externally, use the verdict above with the page URL and link back to the full comparison.
+          </p>
+        </section>
 
         {/* Verdict */}
         <div className="verdict-block rounded-lg border border-sky-900/50 bg-sky-950/30 p-6 mb-12">
@@ -323,21 +448,56 @@ export default async function ComparisonPage({ params }: PageProps) {
           </section>
         )}
 
+        {comp.nextReadLinks && comp.nextReadLinks.length > 0 ? (
+          <section className="mb-10" aria-label="What to read next">
+            <h2 className="text-base font-semibold text-gray-300 mb-4">
+              What to read next
+            </h2>
+            <ul className="space-y-2">
+              {comp.nextReadLinks.map((link: ComparisonLink) => (
+                <li key={link.url}>
+                  <Link
+                    href={link.url}
+                    className="text-sky-400 hover:text-sky-300 underline underline-offset-2 text-sm"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ) : null}
+
         {/* CTA */}
         <div className="rounded-xl border border-slate-800 bg-slate-900 p-6 sm:p-8 text-center">
           <h2 className="text-gray-100 font-semibold text-lg mb-2">
-            Try the engineering signal approach
+            If the category is clear, pick the next lane.
           </h2>
           <p className="text-gray-400 text-sm mb-5 max-w-lg mx-auto">
-            Get this week's top 5 breakout startups ranked by
-            GitHub commit-velocity acceleration. Free, no spam.
+            Start free if you want one useful read each Sunday. Use First Look
+            if the thesis is already live. Keep the methodology one click away
+            if you still need to verify the claim.
           </p>
-          <Link
-            href="https://gitdealflow.com/#signup"
-            className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-sky-700 hover:bg-sky-600 text-white text-sm font-medium transition-colors"
-          >
-            Get the Report
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <Link
+              href="https://gitdealflow.com/#signup"
+              className="inline-flex w-full sm:w-auto items-center justify-center px-6 py-3 rounded-lg bg-sky-700 hover:bg-sky-600 text-white text-sm font-medium transition-colors"
+            >
+              Get the free Sunday issue →
+            </Link>
+            <Link
+              href="/firstlook"
+              className="inline-flex w-full sm:w-auto items-center justify-center px-6 py-3 rounded-lg border border-slate-700 hover:border-slate-500 text-gray-200 text-sm font-medium transition-colors"
+            >
+              Get my First Look →
+            </Link>
+            <Link
+              href="/methodology"
+              className="inline-flex w-full sm:w-auto items-center justify-center px-6 py-3 rounded-lg border border-slate-700 hover:border-slate-500 text-gray-200 text-sm font-medium transition-colors"
+            >
+              Read the methodology →
+            </Link>
+          </div>
         </div>
       </div>
     </>

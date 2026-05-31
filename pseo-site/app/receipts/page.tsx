@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title:
     "GitHub Scout Score (Free) — Grade Your Investment Taste from GitHub Stars",
   description:
-    "Free GitHub Scout Score tool. Grade any developer's taste from their public starring history against ~75 validated unicorns / big-funding / acquisitions. Paste a username, get a 0–100 Scout Score and shareable card in 8 seconds. No login.",
+    "Check your GitHub Scout Score for free and see how your stars map to startup taste, validated signals, and public engineering momentum.",
   alternates: { canonical: "/receipts" },
   keywords: [
     "github scout score",
@@ -80,6 +80,12 @@ export default function ReceiptsLandingPage() {
         url: "https://signals.gitdealflow.com/receipts",
         description:
           "Backwards-looking investment-taste validation: grade any public GitHub user's starring history against a curated panel of ~75 validated unicorn / big-funding / acquisition outcomes. Returns a 0–100 Scout Score, a five-tier rank (Curious → Oracle), and a shareable OG card. Same data exposed via /api/receipts/{username}, /api/badge/scout/{username}/svg, and the get_scout_receipts MCP tool.",
+        subjectOf: { "@id": "https://signals.gitdealflow.com/wins#dataset" },
+        isBasedOn: {
+          "@type": "CreativeWork",
+          "@id": "https://ssrn.com/abstract=6606558",
+          name: "SSRN preprint on GitHub engineering-acceleration signals as a leading indicator of venture-stage outcomes",
+        },
         hasOfferCatalog: {
           "@type": "OfferCatalog",
           name: "Scout Score outputs",
@@ -291,6 +297,26 @@ export default function ReceiptsLandingPage() {
 
         <section className="mb-12 rounded-xl border border-slate-800 bg-slate-900/50 p-6 sm:p-8">
           <h2 className="text-gray-100 font-bold text-xl mb-4">
+            If you want to verify the claim
+          </h2>
+          <p className="text-gray-400 text-sm leading-relaxed mb-4 max-w-2xl">
+            The scoring logic is public. Read the definition page, inspect the methodology, and place Scout Score inside the broader startup-signal stack before you decide how much weight to give it.
+          </p>
+          <div className="flex flex-col gap-3">
+            <Link href="/answers/what-is-a-github-scout-score" className="text-sky-400 hover:text-sky-300 underline underline-offset-2 text-sm">
+              What a GitHub Scout Score tells you
+            </Link>
+            <Link href="/methodology" className="text-sky-400 hover:text-sky-300 underline underline-offset-2 text-sm">
+              Read the methodology
+            </Link>
+            <Link href="/compare/best-startup-signal-tools-for-investors" className="text-sky-400 hover:text-sky-300 underline underline-offset-2 text-sm">
+              Best startup signal tools for investors
+            </Link>
+          </div>
+        </section>
+
+        <section className="mb-12 rounded-xl border border-slate-800 bg-slate-900/50 p-6 sm:p-8">
+          <h2 className="text-gray-100 font-bold text-xl mb-4">
             How the score works
           </h2>
           <ul className="space-y-3 text-gray-300 text-sm leading-relaxed">
@@ -385,6 +411,29 @@ export default function ReceiptsLandingPage() {
             </Link>{" "}
             and skip the form &mdash; it auto-renders any handle&rsquo;s live score.
           </p>
+        </section>
+
+        <section className="mt-12">
+          <h2 className="text-base font-semibold text-gray-300 mb-4">
+            What to read next
+          </h2>
+          <ul className="space-y-2">
+            <li>
+              <Link href="/answers/what-is-a-github-scout-score" className="text-sky-400 hover:text-sky-300 underline underline-offset-2 text-sm">
+                What a GitHub Scout Score tells you
+              </Link>
+            </li>
+            <li>
+              <Link href="/answers/what-is-startup-engineering-momentum" className="text-sky-400 hover:text-sky-300 underline underline-offset-2 text-sm">
+                What startup engineering momentum means
+              </Link>
+            </li>
+            <li>
+              <Link href="https://gitdealflow.com/report" className="text-sky-400 hover:text-sky-300 underline underline-offset-2 text-sm">
+                Read a sample Sunday watchlist
+              </Link>
+            </li>
+          </ul>
         </section>
       </div>
     </>

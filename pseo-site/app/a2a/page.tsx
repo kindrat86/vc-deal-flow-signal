@@ -95,7 +95,7 @@ export default function A2AHubPage() {
   };
 
   return (
-    <main style={{ maxWidth: 1000, margin: "0 auto", padding: "32px 20px 80px" }}>
+    <div style={{ maxWidth: 1000, margin: "0 auto", padding: "32px 20px 80px" }}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -311,6 +311,6 @@ export default function A2AHubPage() {
           .
         </p>
       </section>
-    </main>
+    </div>
   );
 }

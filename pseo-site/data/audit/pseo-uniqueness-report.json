@@ -1,0 +1,551 @@
+{
+  "generatedAt": "2026-05-29T21:57:35.282Z",
+  "config": {
+    "hammingThreshold": 9,
+    "globalThresholdPct": 5,
+    "reportOnly": false
+  },
+  "totals": {
+    "entries": 397,
+    "flagged": 0,
+    "flaggedPct": 0
+  },
+  "observational": {
+    "entries": 1838,
+    "flagged": 1700
+  },
+  "verdict": "PASS",
+  "surfaces": [
+    {
+      "name": "compare",
+      "basePath": "/compare",
+      "reportOnly": false,
+      "totalEntries": 45,
+      "flaggedEntries": 0,
+      "flaggedPct": 0,
+      "shingleCounts": {
+        "min": 290,
+        "max": 960,
+        "mean": 439
+      },
+      "pairs": []
+    },
+    {
+      "name": "alternatives",
+      "basePath": "/alternatives",
+      "reportOnly": false,
+      "totalEntries": 12,
+      "flaggedEntries": 0,
+      "flaggedPct": 0,
+      "shingleCounts": {
+        "min": 512,
+        "max": 821,
+        "mean": 639
+      },
+      "pairs": []
+    },
+    {
+      "name": "use-cases",
+      "basePath": "/use-cases",
+      "reportOnly": false,
+      "totalEntries": 12,
+      "flaggedEntries": 0,
+      "flaggedPct": 0,
+      "shingleCounts": {
+        "min": 428,
+        "max": 584,
+        "mean": 478
+      },
+      "pairs": []
+    },
+    {
+      "name": "vs",
+      "basePath": "/vs",
+      "reportOnly": false,
+      "totalEntries": 30,
+      "flaggedEntries": 0,
+      "flaggedPct": 0,
+      "shingleCounts": {
+        "min": 37,
+        "max": 63,
+        "mean": 49
+      },
+      "pairs": []
+    },
+    {
+      "name": "niche-down",
+      "basePath": "/niche-down",
+      "reportOnly": false,
+      "totalEntries": 200,
+      "flaggedEntries": 0,
+      "flaggedPct": 0,
+      "shingleCounts": {
+        "min": 63,
+        "max": 202,
+        "mean": 95
+      },
+      "pairs": []
+    },
+    {
+      "name": "from-stars-to-seed",
+      "basePath": "/from-stars-to-seed",
+      "reportOnly": false,
+      "totalEntries": 48,
+      "flaggedEntries": 0,
+      "flaggedPct": 0,
+      "shingleCounts": {
+        "min": 193,
+        "max": 413,
+        "mean": 250
+      },
+      "pairs": []
+    },
+    {
+      "name": "build-vs-invest",
+      "basePath": "/build-vs-invest",
+      "reportOnly": false,
+      "totalEntries": 20,
+      "flaggedEntries": 0,
+      "flaggedPct": 0,
+      "shingleCounts": {
+        "min": 234,
+        "max": 328,
+        "mean": 268
+      },
+      "pairs": []
+    },
+    {
+      "name": "solo-founder-tracker",
+      "basePath": "/solo-founder-tracker",
+      "reportOnly": false,
+      "totalEntries": 20,
+      "flaggedEntries": 0,
+      "flaggedPct": 0,
+      "shingleCounts": {
+        "min": 148,
+        "max": 232,
+        "mean": 187
+      },
+      "pairs": []
+    },
+    {
+      "name": "community-signal",
+      "basePath": "/community-signal",
+      "reportOnly": false,
+      "totalEntries": 10,
+      "flaggedEntries": 0,
+      "flaggedPct": 0,
+      "shingleCounts": {
+        "min": 283,
+        "max": 322,
+        "mean": 304
+      },
+      "pairs": []
+    },
+    {
+      "name": "signal",
+      "basePath": "/signal",
+      "reportOnly": true,
+      "totalEntries": 159,
+      "flaggedEntries": 79,
+      "flaggedPct": 49.7,
+      "shingleCounts": {
+        "min": 373,
+        "max": 425,
+        "mean": 397
+      },
+      "pairs": [
+        {
+          "a": "astro",
+          "b": "asana",
+          "hamming": 4,
+          "similarity": 93.8
+        },
+        {
+          "a": "stability-ai",
+          "b": "lambda-labs",
+          "hamming": 5,
+          "similarity": 92.2
+        },
+        {
+          "a": "openai",
+          "b": "circleci",
+          "hamming": 7,
+          "similarity": 89.1
+        },
+        {
+          "a": "cohere",
+          "b": "stability-ai",
+          "hamming": 7,
+          "similarity": 89.1
+        },
+        {
+          "a": "typesense",
+          "b": "clickup",
+          "hamming": 7,
+          "similarity": 89.1
+        },
+        {
+          "a": "ai21-labs",
+          "b": "bentoml",
+          "hamming": 7,
+          "similarity": 89.1
+        },
+        {
+          "a": "fivetran",
+          "b": "llamaindex",
+          "hamming": 7,
+          "similarity": 89.1
+        },
+        {
+          "a": "cohere",
+          "b": "twilio",
+          "hamming": 8,
+          "similarity": 87.5
+        },
+        {
+          "a": "cohere",
+          "b": "coinbase",
+          "hamming": 8,
+          "similarity": 87.5
+        },
+        {
+          "a": "huggingface",
+          "b": "typesense",
+          "hamming": 8,
+          "similarity": 87.5
+        },
+        {
+          "a": "hashicorp",
+          "b": "typesense",
+          "hamming": 8,
+          "similarity": 87.5
+        },
+        {
+          "a": "browserbase",
+          "b": "llamaindex",
+          "hamming": 8,
+          "similarity": 87.5
+        },
+        {
+          "a": "fly-io",
+          "b": "fermyon",
+          "hamming": 8,
+          "similarity": 87.5
+        },
+        {
+          "a": "planetscale",
+          "b": "cube",
+          "hamming": 8,
+          "similarity": 87.5
+        },
+        {
+          "a": "stytch",
+          "b": "pulumi",
+          "hamming": 8,
+          "similarity": 87.5
+        },
+        {
+          "a": "groq",
+          "b": "jina-ai",
+          "hamming": 8,
+          "similarity": 87.5
+        },
+        {
+          "a": "groq",
+          "b": "llamaindex",
+          "hamming": 8,
+          "similarity": 87.5
+        },
+        {
+          "a": "crewai",
+          "b": "lambda-labs",
+          "hamming": 8,
+          "similarity": 87.5
+        },
+        {
+          "a": "perplexity-ai",
+          "b": "typesense",
+          "hamming": 8,
+          "similarity": 87.5
+        },
+        {
+          "a": "perplexity-ai",
+          "b": "ai21-labs",
+          "hamming": 8,
+          "similarity": 87.5
+        }
+      ]
+    },
+    {
+      "name": "showdown",
+      "basePath": "/showdown",
+      "reportOnly": true,
+      "totalEntries": 1582,
+      "flaggedEntries": 1582,
+      "flaggedPct": 100,
+      "shingleCounts": {
+        "min": 748,
+        "max": 842,
+        "mean": 798
+      },
+      "pairs": [
+        {
+          "a": "huggingface-vs-lovable",
+          "b": "continue-vs-prisma",
+          "hamming": 0,
+          "similarity": 100
+        },
+        {
+          "a": "nuxt-vs-remotion",
+          "b": "nuxt-vs-ollama",
+          "hamming": 0,
+          "similarity": 100
+        },
+        {
+          "a": "honeycomb-vs-sentry",
+          "b": "arize-ai-vs-sentry",
+          "hamming": 1,
+          "similarity": 98.4
+        },
+        {
+          "a": "prisma-vs-stytch",
+          "b": "continue-vs-stytch",
+          "hamming": 1,
+          "similarity": 98.4
+        },
+        {
+          "a": "clerk-vs-ory",
+          "b": "inngest-vs-ory",
+          "hamming": 1,
+          "similarity": 98.4
+        },
+        {
+          "a": "astro-vs-trigger-dev",
+          "b": "astro-vs-circleci",
+          "hamming": 1,
+          "similarity": 98.4
+        },
+        {
+          "a": "continue-vs-inngest",
+          "b": "astro-vs-continue",
+          "hamming": 1,
+          "similarity": 98.4
+        },
+        {
+          "a": "circleci-vs-inngest",
+          "b": "astro-vs-circleci",
+          "hamming": 1,
+          "similarity": 98.4
+        },
+        {
+          "a": "pulumi-vs-stytch",
+          "b": "backstage-vs-stytch",
+          "hamming": 1,
+          "similarity": 98.4
+        },
+        {
+          "a": "ollama-vs-stytch",
+          "b": "deno-vs-twilio",
+          "hamming": 1,
+          "similarity": 98.4
+        },
+        {
+          "a": "fermyon-vs-netlify",
+          "b": "fermyon-vs-portainer",
+          "hamming": 1,
+          "similarity": 98.4
+        },
+        {
+          "a": "anyscale-vs-groq",
+          "b": "anyscale-vs-vllm",
+          "hamming": 1,
+          "similarity": 98.4
+        },
+        {
+          "a": "dust-tt-vs-stability-ai",
+          "b": "jina-ai-vs-stability-ai",
+          "hamming": 1,
+          "similarity": 98.4
+        },
+        {
+          "a": "continue-vs-cursor",
+          "b": "continue-vs-llamaindex",
+          "hamming": 1,
+          "similarity": 98.4
+        },
+        {
+          "a": "elevenlabs-vs-jina-ai",
+          "b": "jina-ai-vs-voyage-ai",
+          "hamming": 1,
+          "similarity": 98.4
+        },
+        {
+          "a": "pulumi-vs-weights-biases",
+          "b": "astro-vs-pulumi",
+          "hamming": 1,
+          "similarity": 98.4
+        },
+        {
+          "a": "ory-vs-sourcegraph",
+          "b": "ory-vs-tauri",
+          "hamming": 1,
+          "similarity": 98.4
+        },
+        {
+          "a": "qdrant-vs-timescale",
+          "b": "qdrant-vs-typesense",
+          "hamming": 1,
+          "similarity": 98.4
+        },
+        {
+          "a": "modular-vs-outerbounds",
+          "b": "codeium-vs-outerbounds",
+          "hamming": 1,
+          "similarity": 98.4
+        },
+        {
+          "a": "clerk-vs-vercel",
+          "b": "clerk-vs-tailwindcss",
+          "hamming": 2,
+          "similarity": 96.9
+        }
+      ]
+    },
+    {
+      "name": "sector-city",
+      "basePath": "/sector",
+      "reportOnly": true,
+      "totalEntries": 97,
+      "flaggedEntries": 39,
+      "flaggedPct": 40.2,
+      "shingleCounts": {
+        "min": 563,
+        "max": 16434,
+        "mean": 1382
+      },
+      "pairs": [
+        {
+          "a": "developer-tools/in/san-francisco",
+          "b": "infrastructure/in/san-francisco",
+          "hamming": 2,
+          "similarity": 96.9
+        },
+        {
+          "a": "ai-infra/in/san-francisco",
+          "b": "ai-ml/in/san-francisco",
+          "hamming": 4,
+          "similarity": 93.8
+        },
+        {
+          "a": "ai-ml/in/london",
+          "b": "fintech/in/san-francisco",
+          "hamming": 4,
+          "similarity": 93.8
+        },
+        {
+          "a": "ai-ml/in/san-francisco",
+          "b": "developer-tools/in/san-francisco",
+          "hamming": 4,
+          "similarity": 93.8
+        },
+        {
+          "a": "developer-tools/in/san-francisco",
+          "b": "database/in/san-francisco",
+          "hamming": 4,
+          "similarity": 93.8
+        },
+        {
+          "a": "developer-tools/in/new-york",
+          "b": "infrastructure/in/new-york",
+          "hamming": 4,
+          "similarity": 93.8
+        },
+        {
+          "a": "infrastructure/in/san-francisco",
+          "b": "database/in/san-francisco",
+          "hamming": 4,
+          "similarity": 93.8
+        },
+        {
+          "a": "ai-infra/in/san-francisco",
+          "b": "ai-ml/in/london",
+          "hamming": 5,
+          "similarity": 92.2
+        },
+        {
+          "a": "ai-infra/in/san-francisco",
+          "b": "fintech/in/san-francisco",
+          "hamming": 5,
+          "similarity": 92.2
+        },
+        {
+          "a": "developer-tools/in/san-francisco",
+          "b": "infrastructure/in/new-york",
+          "hamming": 5,
+          "similarity": 92.2
+        },
+        {
+          "a": "developer-tools/in/seattle",
+          "b": "infrastructure/in/seattle",
+          "hamming": 5,
+          "similarity": 92.2
+        },
+        {
+          "a": "infrastructure/in/amsterdam",
+          "b": "database/in/amsterdam",
+          "hamming": 5,
+          "similarity": 92.2
+        },
+        {
+          "a": "analytics/in/san-francisco",
+          "b": "productivity/in/san-francisco",
+          "hamming": 5,
+          "similarity": 92.2
+        },
+        {
+          "a": "ai-infra/in/san-francisco",
+          "b": "developer-tools/in/san-francisco",
+          "hamming": 6,
+          "similarity": 90.6
+        },
+        {
+          "a": "ai-infra/in/san-francisco",
+          "b": "developer-tools/in/seattle",
+          "hamming": 6,
+          "similarity": 90.6
+        },
+        {
+          "a": "ai-infra/in/san-francisco",
+          "b": "infrastructure/in/san-francisco",
+          "hamming": 6,
+          "similarity": 90.6
+        },
+        {
+          "a": "ai-infra/in/san-francisco",
+          "b": "database/in/san-francisco",
+          "hamming": 6,
+          "similarity": 90.6
+        },
+        {
+          "a": "ai-ml/in/san-francisco",
+          "b": "infrastructure/in/san-francisco",
+          "hamming": 6,
+          "similarity": 90.6
+        },
+        {
+          "a": "ai-ml/in/san-francisco",
+          "b": "database/in/san-francisco",
+          "hamming": 6,
+          "similarity": 90.6
+        },
+        {
+          "a": "ai-ml/in/new-york",
+          "b": "developer-tools/in/seattle",
+          "hamming": 6,
+          "similarity": 90.6
+        }
+      ]
+    }
+  ]
+}

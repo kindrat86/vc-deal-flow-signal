@@ -110,3 +110,7 @@
 ## What needs your hands later (one batched session, ~30 min)
 
 The handful of click-required items will be batched into a single `marketing/llm-marketplaces/USER-CLICKS.md` checklist when artifacts are ready. Auth-gated submissions only — most of which take <2 min each once the artifact is prepped.
+
+### Watcher transitions — 2026-05-27T18:14:05.822Z
+- **poe-vcdealflowscout**: live → accepted
+- **goose-extensions-vc-deal-flow-signal**: submitted → rejected (https://github.com/aaif-goose/goose/pull/8974)

@@ -2,11 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { comparisons } from "@/content/comparisons";
 import PSEOFooterNav from "@/components/PSEOFooterNav";
+import { HreflangLinks } from "@/components/HreflangLinks";
+import { getHreflangLanguages } from "@/lib/hreflang";
 
 export const metadata: Metadata = {
   title: "Compare Deal Flow Tools — VC Deal Flow Signal",
   description:
-    "Compare the best deal flow tools for investors: GitHub engineering signals, AI-powered sourcing, and startup databases. Find the right tool for your investment stage and strategy.",
+    "Compare the best deal flow tools for investors: GitHub engineering signals, AI-powered sourcing, startup databases, and buyer-side workflow choices. Find the right tool for timing, verification, and strategy.",
+  // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
   alternates: {
     canonical: "/compare",
   },
@@ -16,6 +19,20 @@ export default function CompareIndex() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://signals.gitdealflow.com/compare#webpage",
+        url: "https://signals.gitdealflow.com/compare",
+        name: "Compare Deal Flow Tools — VC Deal Flow Signal",
+        description:
+          "Side-by-side comparisons of deal flow and startup sourcing tools for investors.",
+        inLanguage: "en-US",
+        isAccessibleForFree: true,
+        speakable: {
+          "@type": "SpeakableSpecification",
+          cssSelector: ["[data-speakable]", "h1", "h2"],
+        },
+      },
       {
         "@type": "CollectionPage",
         name: "Compare Deal Flow Tools",
@@ -50,12 +67,16 @@ export default function CompareIndex() {
 
   return (
     <>
+      <HreflangLinks
+        canonical="https://signals.gitdealflow.com/compare"
+        languages={getHreflangLanguages("/compare")}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <nav className="mb-6 text-sm text-gray-500" aria-label="Breadcrumb">
+      <nav className="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">
         <Link href="/" className="hover:text-gray-300 transition-colors">
           All Sectors
         </Link>
@@ -69,8 +90,29 @@ export default function CompareIndex() {
       <p className="text-gray-400 text-base leading-relaxed mb-10">
         Side-by-side comparisons of deal flow and startup sourcing tools for
         investors. Which tools give you the earliest signal? Which fit your
-        stage and budget?
+        stage, budget, and workflow? If your question starts with "which tool
+        should I use first?" this is the compare layer.
       </p>
+
+      <section className="mb-10 rounded-2xl border border-amber-500/30 bg-amber-500/5 p-6 sm:p-8">
+        <p className="text-amber-300 text-xs font-semibold uppercase tracking-[0.14em] mb-2">
+          Start with the right comparison
+        </p>
+        <p className="text-gray-300 text-sm leading-relaxed mb-4">
+          Use the compare layer when the question is commercial, timing-sensitive, or stack-related. Then move into proof or buyer pages once the wedge is clear.
+        </p>
+        <div className="flex flex-wrap gap-3">
+          <Link href="/compare/crunchbase-alternative-for-angel-investors" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-amber-400 text-slate-950 text-sm font-semibold hover:bg-amber-300 transition-colors">
+            Compare timing vs verification →
+          </Link>
+          <Link href="/research" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+            Read the research panel →
+          </Link>
+          <Link href="/buyers-guide" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+            Read the buyer's guide →
+          </Link>
+        </div>
+      </section>
 
       <div className="space-y-6">
         {comparisons.map((comp) => (

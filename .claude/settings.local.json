@@ -61,7 +61,15 @@
       "Bash(curl -s -H \"User-Agent: Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36\" \"https://www.reddit.com/r/venturecapital/comments/1sivvvu.json?limit=10\")",
       "mcp__b09f4626-5f92-49b8-84ec-292a6869ec9b__dashboard-insights-run",
       "Bash(curl -s -H \"User-Agent: Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36\" \"https://www.reddit.com/r/Entrepreneur/comments/1snf896.json?limit=10\")",
-      "Bash(python3 -c \" import json,sys d=json.load\\(sys.stdin\\) post=d[0]['data']['children'][0]['data'] print\\('TITLE:', post['title']\\) print\\('BODY:', post.get\\('selftext',''\\)[:1000]\\) print\\(\\) print\\('=== TOP COMMENTS ==='\\) for c in d[1]['data']['children'][:8]: c=c['data'] if c.get\\('body'\\) and c['body'] not in ['[deleted]','[removed]']: print\\(f'[{c[\\\\\"score\\\\\"]}] {c[\\\\\"body\\\\\"][:400]}'\\) print\\(\\) \")"
+      "Bash(python3 -c \" import json,sys d=json.load\\(sys.stdin\\) post=d[0]['data']['children'][0]['data'] print\\('TITLE:', post['title']\\) print\\('BODY:', post.get\\('selftext',''\\)[:1000]\\) print\\(\\) print\\('=== TOP COMMENTS ==='\\) for c in d[1]['data']['children'][:8]: c=c['data'] if c.get\\('body'\\) and c['body'] not in ['[deleted]','[removed]']: print\\(f'[{c[\\\\\"score\\\\\"]}] {c[\\\\\"body\\\\\"][:400]}'\\) print\\(\\) \")",
+      "mcp__03ab5a56-b780-4bb4-8870-68dcbc0fb0dd__list_teams",
+      "mcp__03ab5a56-b780-4bb4-8870-68dcbc0fb0dd__list_projects",
+      "mcp__03ab5a56-b780-4bb4-8870-68dcbc0fb0dd__list_deployments",
+      "mcp__03ab5a56-b780-4bb4-8870-68dcbc0fb0dd__web_fetch_vercel_url",
+      "mcp__7c0eff71-0f32-4865-9bab-cd04c9759661__search_files",
+      "mcp__7c0eff71-0f32-4865-9bab-cd04c9759661__list_recent_files",
+      "mcp__7c0eff71-0f32-4865-9bab-cd04c9759661__read_file_content",
+      "mcp__7c0eff71-0f32-4865-9bab-cd04c9759661__create_file"
     ]
   }
 }

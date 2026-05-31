@@ -59,7 +59,7 @@ export default function LoginForm() {
           If <span className="text-gray-200 font-medium">{email}</span> has an active subscription,
           we just sent you a login link.
         </p>
-        <p className="text-gray-500 text-xs">The link expires in 15 minutes.</p>
+        <p className="text-gray-400 text-xs">The link expires in 15 minutes.</p>
         <button
           onClick={() => { setSent(false); setLoading(false); }}
           className="mt-6 text-sky-400 hover:text-sky-300 text-sm font-medium transition"
@@ -128,7 +128,7 @@ export default function LoginForm() {
         </button>
       </form>
 
-      <p className="text-gray-500 text-xs mt-4 text-center">
+      <p className="text-gray-400 text-xs mt-4 text-center">
         We&apos;ll email you a magic link — no password needed.
       </p>
     </div>

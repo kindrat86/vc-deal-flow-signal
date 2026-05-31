@@ -97,6 +97,26 @@ export default function InstallClient() {
         </p>
       </header>
 
+      <section className="mb-10 rounded-2xl border border-orange-500/30 bg-orange-500/5 p-6 sm:p-8">
+        <p className="text-orange-300 text-xs font-semibold uppercase tracking-[0.14em] mb-2">
+          Start with the highest-intent routes
+        </p>
+        <p className="text-gray-300 text-sm leading-relaxed mb-4 max-w-2xl">
+          Use this page if you want the zero-install bookmarklet path. But if your real question is browser extensions, developer docs, or agent pricing, start with the sharper routes first.
+        </p>
+        <div className="flex flex-wrap gap-3">
+          <Link href="/developers" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-orange-500 text-white text-sm font-semibold hover:bg-orange-400 transition-colors">
+            Read developer docs →
+          </Link>
+          <Link href="/badge-builder" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+            Build a repo badge →
+          </Link>
+          <Link href="/agents/credits" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+            See agent credits →
+          </Link>
+        </div>
+      </section>
+
       <BookmarkletDragSection href={BOOKMARKLET_HREF} />
 
       <section className="mb-10 rounded-2xl border border-slate-800 bg-slate-900/50 p-6 sm:p-8">
@@ -214,7 +234,7 @@ export default function InstallClient() {
         </a>
       </section>
 
-      <section className="mb-10 grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <section className="mb-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <Link
           href="/badge-builder"
           className="rounded-xl border border-slate-800 bg-slate-900/40 hover:bg-slate-900/70 p-5 transition group"
@@ -250,6 +270,19 @@ export default function InstallClient() {
           </p>
           <p className="text-base font-semibold text-gray-100 group-hover:text-white">
             Hover any GitHub repo or org for velocity →
+          </p>
+        </a>
+        <a
+          href="https://github.com/kindrat86/vc-deal-flow-signal/tree/main/chrome-extension-define"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="rounded-xl border border-slate-800 bg-slate-900/40 hover:bg-slate-900/70 p-5 transition group"
+        >
+          <p className="text-[10px] uppercase tracking-wider text-cyan-400 font-semibold mb-1">
+            Chrome Extension #3 — VC Term Highlighter
+          </p>
+          <p className="text-base font-semibold text-gray-100 group-hover:text-white">
+            Underline VC terms on any page →
           </p>
         </a>
       </section>

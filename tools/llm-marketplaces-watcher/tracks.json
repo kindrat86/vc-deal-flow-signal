@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastUpdated": "2026-05-02T22:48:00+03:00",
+  "lastUpdated": "2026-05-27T18:05:00+03:00",
   "_doc": "Each track is a submission to a third-party LLM marketplace or framework registry. The watcher polls each one (via email or GitHub) twice daily and updates 'status' when state changes. Add new tracks by appending to the 'tracks' array; the watcher picks them up on next run.",
   "tracks": [
     {
@@ -270,19 +270,15 @@
       "id": "goose-extensions-vc-deal-flow-signal",
       "name": "Block Goose extensions \u2014 vc-deal-flow-signal",
       "type": "github_issue",
-      "status": "submitted",
+      "status": "closed_moratorium",
       "submittedAt": "2026-05-03T12:30:00+03:00",
-      "repo": "aaif-goose/goose",
+      "repo": "block/goose",
       "issueNumber": 8974,
-      "url": "https://github.com/aaif-goose/goose/pull/8974",
+      "url": "https://github.com/block/goose/pull/8974",
       "acceptedSignals": [
         {
           "type": "issue_state",
           "value": "merged"
-        },
-        {
-          "type": "issue_state",
-          "value": "closed"
         },
         {
           "type": "label",
@@ -317,39 +313,31 @@
         {
           "type": "comment_contains",
           "value": "does not meet"
+        },
+        {
+          "type": "comment_contains",
+          "value": "not adding new MCP servers"
         }
       ],
-      "_note": "Adds entry to documentation/static/servers.json mirroring AgentQL/Tavily npx-stdio pattern. block/goose was renamed to aaif-goose/goose (43.7k stars). Watcher polls PR state \u2014 flips to 'accepted' on merge. Once merged, listing renders at goose-docs.ai/extensions."
+      "_note": "CLOSED 2026-05-12 by @DOsinga \u2014 Goose registry moratorium on new MCP server submissions while they design a more scalable extension library. Status 'closed_moratorium' = terminal until the new flow is announced. Watcher still polls so a future 'merging'/'lgtm' on the same PR (unlikely) or a related new issue will surface. Repo canonicalised from aaif-goose/goose to block/goose. Bug fixed: removed 'closed' from acceptedSignals \u2014 it would have flipped this PR to 'accepted' on next run since it's CLOSED unmerged."
     },
     {
       "id": "raycast-mcp-registry-vc-deal-flow-signal",
       "name": "Raycast MCP Registry \u2014 vc-deal-flow-signal",
       "type": "github_issue",
       "status": "submitted",
-      "submittedAt": "2026-05-03T12:35:00+03:00",
+      "submittedAt": "2026-05-27T17:42:00+03:00",
       "repo": "raycast/extensions",
-      "issueNumber": 27618,
-      "url": "https://github.com/raycast/extensions/pull/27618",
+      "issueNumber": 28376,
+      "url": "https://github.com/raycast/extensions/pull/28376",
       "acceptedSignals": [
         {
           "type": "issue_state",
           "value": "merged"
         },
         {
-          "type": "issue_state",
-          "value": "closed"
-        },
-        {
           "type": "label",
           "value": "merged"
-        },
-        {
-          "type": "comment_contains",
-          "value": "merging"
-        },
-        {
-          "type": "comment_contains",
-          "value": "approved"
         }
       ],
       "rejectedSignals": [
@@ -363,14 +351,20 @@
         },
         {
           "type": "comment_contains",
-          "value": "closing"
+          "value": "does not meet"
         },
         {
           "type": "comment_contains",
-          "value": "does not meet"
+          "value": "automatically closed due to inactivity"
         }
       ],
-      "_note": "PR appends entry to extensions/model-context-protocol-registry/src/registries/builtin/entries.ts mirroring brave-search/circleback npx pattern. Once merged, the entry surfaces in the Raycast MCP Registry browser extension on every Mac running v1.98+."
+      "keepalive": {
+        "afterDays": 6,
+        "minBumpGapDays": 6,
+        "comment": "Friendly bump \u2014 this PR is still ready for review, no changes since opened (+17/-0, 3 files), and CI is green. Happy to address any feedback. cc @pernielsentikaer @thomaspaulmann @nagauta",
+        "_doc": "Raycast's `raycastbot` auto-stales any PR with no activity for 7 days, then auto-closes after another 7. The previous PR #27618 died this way. keepalive triggers a bump comment if last activity > afterDays AND no prior bump in last minBumpGapDays."
+      },
+      "_note": "PR #28376 supersedes auto-stale'd #27618. Appends a single community entry to extensions/model-context-protocol-registry/src/registries/builtin/entries.ts (+12) + CHANGELOG.md (+4) + README.md row (+1). Matches Alai #27264 pattern. Bug fixed: removed 'closed' issue_state from acceptedSignals \u2014 predecessor #27618 closed unmerged via raycastbot stale, which would have incorrectly flipped to 'accepted' under the old config. Added 'automatically closed due to inactivity' as the explicit stale-close signal."
     }
   ],
   "_emailTrackTemplate": {

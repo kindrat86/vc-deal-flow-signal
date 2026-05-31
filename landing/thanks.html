@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>One click left — GitDealFlow</title>
+  <meta name="description" content="Confirm your email and keep the Sunday issue moving.">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+    .mobile-cta-stack > * { width: 100%; }
+    .mobile-card, .mobile-step-card { transition: border-color 120ms ease, transform 120ms ease; }
+    .mobile-card:hover, .mobile-step-card:hover { border-color: rgba(14, 165, 233, 0.5); }
+    .mobile-sticky-cta { display: none; }
+    @media (min-width: 640px) { .mobile-cta-stack > * { width: auto; } }
+    @media (max-width: 639px) {
+      html { scroll-padding-top: 5rem; }
+      body { padding-bottom: 6rem; }
+      .mobile-compact-header { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+      .mobile-hero-wrap { padding-left: 1rem; padding-right: 1rem; padding-top: 4rem; padding-bottom: 4rem; }
+      .mobile-hero-title { font-size: 2rem; line-height: 1.1; }
+      .mobile-hero-copy { font-size: 1rem; line-height: 1.65; }
+      .mobile-main-pad { padding-left: 1rem; padding-right: 1rem; }
+      .mobile-section-pad { padding-left: 1rem; padding-right: 1rem; }
+      .mobile-card-pad { padding: 1.25rem; }
+      .mobile-grid-gap { gap: 1rem; }
+      .mobile-cta-stack .btn {
+        white-space: normal; text-align: center; line-height: 1.35;
+        padding-left: 1rem; padding-right: 1rem;
+      }
+      .mobile-sticky-cta {
+        position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; display: block;
+        padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom));
+        background: rgba(2, 6, 23, 0.94); backdrop-filter: blur(12px);
+        border-top: 1px solid rgba(71, 85, 105, 0.7);
+      }
+      .mobile-sticky-cta .inner { display: flex; align-items: center; gap: 0.75rem; max-width: 28rem; margin: 0 auto; }
+      .mobile-sticky-cta .meta { flex: 1; min-width: 0; }
+      .mobile-sticky-cta .meta strong { display: block; color: #fff; font-size: 0.95rem; line-height: 1.1; }
+      .mobile-sticky-cta .meta span { display: block; color: #94a3b8; font-size: 0.72rem; margin-top: 0.1rem; }
+      .mobile-sticky-cta .btn { white-space: nowrap; padding-left: 1rem; padding-right: 1rem; }
+    }
+  </style>
+</head>
+<body class="bg-dark-900 text-gray-100 font-sans antialiased">
+  <header class="sticky top-0 z-50 border-b border-gray-800 bg-dark-900/95 backdrop-blur">
+    <div class="mobile-compact-header max-w-5xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-3">
+      <a href="/" class="font-semibold tracking-tight text-white text-lg">GitDealFlow</a>
+      <a href="/" class="text-sm text-gray-400 hover:text-gray-100 transition">Back to home</a>
+    </div>
+  </header>
+
+  <main class="mobile-main-pad max-w-5xl mx-auto px-4 sm:px-6 py-14 sm:py-24">
+    <section class="max-w-3xl mx-auto text-center mb-12 mobile-section-pad">
+      <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-3">One click left</p>
+      <h1 id="hero-title" class="text-4xl sm:text-5xl font-bold tracking-tight mb-6">You're in. Now confirm it.</h1>
+      <p id="hero-copy" class="text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto">Check your inbox and click the confirmation link. The next Sunday issue unlocks on the other side of that click.</p>
+    </section>
+
+    <section class="grid lg:grid-cols-[1.2fr_0.8fr] gap-8 items-start max-w-4xl mx-auto">
+      <div class="mobile-card mobile-card-pad rounded-3xl border border-gray-800 bg-dark-800/70 p-8 sm:p-10">
+        <p class="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-5">What to do now</p>
+        <div class="space-y-5">
+          <div>
+            <p class="text-white font-semibold mb-1">1. Open the email from The Data Nerd</p>
+            <p class="text-gray-400">If you do not see it in a minute, check Promotions or Spam. The subject line tells you your first issue is on the way.</p>
+          </div>
+          <div>
+            <p class="text-white font-semibold mb-1">2. Click the confirmation link</p>
+            <p class="text-gray-400">That confirms the signup and routes you into the right follow-up based on how you said you source deals.</p>
+          </div>
+          <div>
+            <p class="text-white font-semibold mb-1">3. Read the rest of this page while you wait</p>
+            <p id="route-guidance" class="text-gray-400">There&apos;s one thing I want to tell you before Sunday &mdash; it&apos;s right below.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mobile-card mobile-card-pad rounded-3xl border border-brand-500/30 bg-brand-950/20 p-8">
+        <p class="text-brand-300 text-xs font-semibold uppercase tracking-wider mb-4">Verify me while you wait</p>
+        <div class="space-y-4 mobile-cta-stack">
+          <a href="/report" class="btn btn-secondary btn-md w-full text-center">Read a sample issue</a>
+          <a href="https://signals.gitdealflow.com/methodology" class="btn btn-secondary btn-md w-full text-center">See the methodology</a>
+          <a id="bridge-link" href="/firstlook" class="btn btn-secondary btn-md w-full text-center">I already have a live thesis</a>
+        </div>
+        <p id="route-note" class="text-gray-400 text-sm mt-5 leading-relaxed">No logos, no paid quotes &mdash; just the open paper, the public dataset, and a real issue you can read before you trust a word I say.</p>
+      </div>
+    </section>
+
+    <section id="oto" class="max-w-3xl mx-auto mt-16 mobile-section-pad scroll-mt-24">
+      <div class="mobile-card-pad support-card rounded-3xl border border-signal-500/40 bg-dark-900 p-8 md:p-12">
+        <!-- Attractive character: keep the relationship going, first person -->
+        <div class="flex flex-col sm:flex-row items-center gap-4 mb-6 text-center sm:text-left">
+          <picture>
+            <source srcset="/data-nerd.webp" type="image/webp">
+            <img src="/data-nerd.png" alt="The Data Nerd" width="80" height="80" loading="lazy" decoding="async" class="w-24 h-24 rounded-full ring-2 ring-signal-500/40 shadow-2xl mx-auto sm:mx-0">
+          </picture>
+          <div>
+            <p class="text-signal-400 text-xs font-semibold uppercase tracking-wider mb-1">One honest note from The Data Nerd</p>
+            <h2 class="text-2xl sm:text-3xl font-bold leading-tight">Before Sunday, here&apos;s the one thing five names can&apos;t do for you.</h2>
+          </div>
+        </div>
+
+        <!-- Epiphany bridge: WHY the Dashboard exists, told like a person -->
+        <div class="space-y-4 text-gray-300 text-lg leading-relaxed mb-8">
+          <p>You just got on the free list, and I meant every word of it: five names every Sunday, free forever, no card. That email is already on its way to you.</p>
+          <p>But I&apos;d be a bad nerd if I didn&apos;t tell you what I learned building this. <strong class="text-white">Five names is a taste, not the field.</strong> The first week I ran the full read, the tool didn&apos;t flag five companies accelerating in my sectors &mdash; it flagged sixty-one. I mailed myself the best five and quietly sat on the rest. Then two of the names I&apos;d left off raised inside a month.</p>
+          <p>That is the whole reason the Dashboard exists. When you&apos;re actually writing checks, you don&apos;t want my top five &mdash; you want <strong class="text-white">the entire field, re-ranked every week</strong>, so the name you&apos;d have missed is the name <em>you</em> reach first.</p>
+        </div>
+
+        <p class="text-signal-400 text-xs font-semibold uppercase tracking-wider mb-3">Here&apos;s the whole stack &mdash; and what each piece would cost you anywhere else</p>
+        <ul class="space-y-3 text-gray-200 text-base sm:text-lg mb-6">
+          <li class="flex items-start justify-between gap-4"><span class="flex items-start gap-3"><span class="text-emerald-400 font-extrabold mt-0.5" aria-hidden="true">&check;</span><span class="flex-1"><strong class="text-white">60+ accelerating startups</strong> in your sectors, re-ranked every week</span></span><span class="text-gray-400 text-sm font-semibold whitespace-nowrap shrink-0">$199/mo</span></li>
+          <li class="flex items-start justify-between gap-4"><span class="flex items-start gap-3"><span class="text-emerald-400 font-extrabold mt-0.5" aria-hidden="true">&check;</span><span class="flex-1">A <strong class="text-white">plain-English signal note</strong> on every name (you never touch code)</span></span><span class="text-gray-400 text-sm font-semibold whitespace-nowrap shrink-0">$150/mo</span></li>
+          <li class="flex items-start justify-between gap-4"><span class="flex items-start gap-3"><span class="text-emerald-400 font-extrabold mt-0.5" aria-hidden="true">&check;</span><span class="flex-1"><strong class="text-white">Sector filters, full history, and CSV export</strong></span></span><span class="text-gray-400 text-sm font-semibold whitespace-nowrap shrink-0">$49/mo</span></li>
+          <li class="flex items-start justify-between gap-4"><span class="flex items-start gap-3"><span class="text-emerald-400 font-extrabold mt-0.5" aria-hidden="true">&check;</span><span class="flex-1">The <strong class="text-white">21-to-47-day lead-time edge</strong> on the whole field, not just five names</span></span><span class="text-emerald-300 text-sm font-semibold whitespace-nowrap shrink-0">one deal</span></li>
+          <li class="flex items-start justify-between gap-4"><span class="flex items-start gap-3"><span class="text-emerald-400 font-extrabold mt-0.5" aria-hidden="true">&check;</span><span class="flex-1">Open <strong class="text-white">methodology, dataset, and sample report</strong> &mdash; proof before you pay</span></span><span class="text-gray-400 text-sm font-semibold whitespace-nowrap shrink-0">free</span></li>
+          <li class="flex items-start justify-between gap-4"><span class="flex items-start gap-3"><span class="text-emerald-400 font-extrabold mt-0.5" aria-hidden="true">&check;</span><span class="flex-1"><strong class="text-white">Founding rate locked for life</strong> &mdash; &euro;9.97 instead of &euro;49, for as long as you stay</span></span><span class="text-gray-400 text-sm font-semibold whitespace-nowrap shrink-0">save &euro;39/mo</span></li>
+        </ul>
+        <div class="rounded-xl border border-signal-500/40 bg-dark-800 p-5 mb-6 text-center">
+          <p class="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-1">Total real-world value</p>
+          <p class="mb-3"><span class="text-2xl font-extrabold text-white">$400+/mo</span> <span class="text-gray-400">in data seats and analyst time you&apos;d pay for anywhere else</span></p>
+          <p class="text-gray-300 leading-relaxed">A single PitchBook seat alone runs <strong class="text-white">$20,000 a year</strong>. You get the one part that actually moves your returns &mdash; the early signal &mdash; for a rounding error.</p>
+        </div>
+        <p class="text-center text-gray-400 text-sm uppercase tracking-wider mb-1">Your price</p>
+        <p class="text-center mb-1"><span class="text-gray-500 line-through text-xl">&euro;49</span>&nbsp;&nbsp;<span class="text-4xl font-extrabold text-white">&euro;9.97</span><span class="text-gray-400">/mo</span></p>
+        <p class="text-center text-signal-400 font-semibold mb-1">More than 10x the value &mdash; before you count a single deal.</p>
+        <p class="text-center text-gray-500 text-sm mb-6">Founding rate, locked for life while you stay subscribed.</p>
+        <div class="rounded-xl border border-emerald-500/40 bg-emerald-500/10 p-5 mb-6">
+          <p class="text-gray-200 leading-relaxed"><strong class="text-white">The early-deal guarantee.</strong> Run it for a full sourcing cycle. If it doesn&apos;t surface one name worth a real conversation in your sectors, email me and it&apos;s free. The risk is mine, not yours.</p>
+        </div>
+        <p class="text-gray-400 text-sm text-center mb-2">Two honest reasons not to wait &mdash; and I&apos;ll never pretend a fake timer is ticking:</p>
+        <ul class="text-gray-400 text-sm max-w-xl mx-auto space-y-1.5 mb-6">
+          <li class="flex items-start gap-2"><span class="text-signal-400 mt-0.5" aria-hidden="true">&middot;</span><span><strong class="text-white">The founding rate is a real cohort, not a sale.</strong> Join now and you keep &euro;9.97/mo for life. Everyone after the launch window pays &euro;49.</span></li>
+          <li class="flex items-start gap-2"><span class="text-signal-400 mt-0.5" aria-hidden="true">&middot;</span><span><strong class="text-white">The names flagged this week are early this week.</strong> In a month, they&apos;re someone else&apos;s warm intro. The whole point is to be there before the round.</span></li>
+        </ul>
+        <div class="flex justify-center">
+          <a href="https://gitdealflow.com/dashboard" data-carry-email onclick="if(window.posthog)posthog.capture('offer_cta_clicked',{tier:'dashboard',placement:'thanks'})" class="btn btn-primary btn-xl w-full sm:w-auto">
+            <span>Lock &euro;9.97/mo &mdash; start the Dashboard</span>
+            <span aria-hidden="true" class="btn-arrow">&rarr;</span>
+          </a>
+        </div>
+        <p class="text-center text-gray-500 text-sm mt-4">I&apos;ll carry your email over so you don&apos;t retype it. Secure checkout on Stripe &middot; cancel anytime.</p>
+
+        <!-- The graceful no: a soft decline that keeps the relationship warm -->
+        <div class="mt-8 pt-6 border-t border-gray-800 text-center">
+          <p class="text-gray-300 leading-relaxed mb-1">Not ready? That&apos;s genuinely fine.</p>
+          <p class="text-gray-500 text-sm leading-relaxed max-w-xl mx-auto mb-3">Don&apos;t buy this if five names still covers your week. Buy it the week missing the right company would actually sting. Either way, I&apos;ll be in your inbox on Sunday &mdash; and I&apos;m not going anywhere.</p>
+          <a href="/report" class="text-signal-400 text-sm font-semibold hover:text-signal-300">Just read a sample issue first &rarr;</a>
+          <p class="text-gray-600 text-sm mt-6">&mdash; The Data Nerd</p>
+          <p class="text-gray-500 text-sm leading-relaxed max-w-xl mx-auto mt-2"><strong class="text-gray-400">P.S.</strong> The free Sunday email never goes away. The Dashboard is just the difference between watching five names and owning the whole board the week you decide to move.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script>
+    (function(){
+      const route = (new URLSearchParams(window.location.search).get('route') || 'F').toUpperCase();
+      const config = {
+        F: {
+          title: "You're in. Now confirm it.",
+          copy: "Check your inbox and click the confirmation link. The next Sunday issue unlocks on the other side of that click.",
+          guidance: "Read one sample issue now. You will know fast whether this belongs in your week.",
+          link: "/firstlook",
+          linkText: "I already have a live thesis",
+          note: "If you already know the question you want answered, do not wait for Sunday. Take the smaller paid step now."
+        },
+        T: {
+          title: "You're close. Confirm first, then test one live sector.",
+          copy: "Check your inbox and click the confirmation link. That keeps the free Sunday issue moving and makes the paid path cleaner.",
+          guidance: "You already signaled you want a live answer faster than the weekly issue. First Look is the natural next move once the email is confirmed.",
+          link: "/firstlook",
+          linkText: "Go back to First Look",
+          note: "You do not need to overthink it. Confirm the email, then decide whether one fast sector pass is worth €7."
+        },
+        D: {
+          title: "You're in. Confirm first, then decide if you want the full field.",
+          copy: "Check your inbox and click the confirmation link. That starts the Sunday rhythm and keeps your higher-intent follow-up clean.",
+          guidance: "You told me you want more than five names. Use the sample issue now, then decide whether Dashboard should become your weekly operating layer.",
+          link: "/dashboard",
+          linkText: "Go back to Dashboard",
+          note: "The right question is simple: do you just want five names, or do you want the whole field every week?"
+        },
+        I: {
+          title: "You're in. Confirm first, then decide how close you want to get.",
+          copy: "Check your inbox and click the confirmation link. That keeps the free signal moving while you decide whether you want the smaller room behind it.",
+          guidance: "Use the sample issue and methodology now. Then decide whether you want Dashboard, Insider, or a one-off Sweep.",
+          link: "/insider",
+          linkText: "Go back to Insider",
+          note: "If the pressure is already real, do not browse. Confirm the email, then choose the level of support you actually want."
+        }
+      };
+      const c = config[route] || config.F;
+      document.getElementById('hero-title').textContent = c.title;
+      document.getElementById('hero-copy').textContent = c.copy;
+      document.getElementById('route-guidance').textContent = c.guidance;
+      document.getElementById('bridge-link').href = c.link;
+      document.getElementById('bridge-link').textContent = c.linkText;
+      document.getElementById('route-note').textContent = c.note;
+      if (window.posthog) posthog.capture('signup_thanks_viewed', { route: route });
+    })();
+  </script>
+
+  <div class="mobile-sticky-cta" aria-hidden="false">
+    <div class="inner">
+      <div class="meta">
+        <strong>Own the whole board</strong>
+        <span>Founding rate &euro;9.97/mo &middot; locked for life</span>
+      </div>
+      <a href="https://gitdealflow.com/dashboard" data-carry-email onclick="if(window.posthog)posthog.capture('offer_cta_clicked',{tier:'dashboard',placement:'thanks-sticky'})" class="btn btn-cta btn-sm">Lock it</a>
+    </div>
+  </div>
+
+  <footer class="border-t border-gray-800 bg-dark-900/80 py-12 mt-8">
+    <div class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <div class="flex flex-wrap justify-center gap-6 text-gray-500 text-sm mb-4">
+        <a href="/" class="hover:text-gray-300">Home</a>
+        <a href="/report" class="hover:text-gray-300">Sample issue</a>
+        <a href="https://signals.gitdealflow.com/methodology" class="hover:text-gray-300">Methodology</a>
+        <a href="/privacy" class="hover:text-gray-300">Privacy</a>
+        <a href="/terms" class="hover:text-gray-300">Terms</a>
+      </div>
+      <p class="text-gray-600 text-xs">GitDealFlow</p>
+    </div>
+  </footer>
+  <script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split('.');2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement('script')).type='text/javascript',p.async=!0,p.src=s.api_host+'/static/array.js',(r=t.getElementsByTagName('script')[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a='posthog',u.people=u.people||[],u.toString=function(t){var e='posthog';return'posthog'!==a&&(e+='.'+a),t||(e+=' (stub)'),e},u.people.toString=function(){return u.toString(1)+'.people (stub)'},o='init capture register register_once register_for_session unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group setPersonProperties resetPersonProperties setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags'.split(' '),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    (function(){
+      function _init(){ if(/^https?:$/.test(location.protocol)) posthog.init('phc_lyZCgvTpicjLzAO3rY2GhxuX5WUc5jQjP8ZVwwJqauX', {api_host: 'https://eu.i.posthog.com', persistence: 'memory', person_profiles: 'identified_only'}); }
+      if('requestIdleCallback' in window){requestIdleCallback(_init,{timeout:2500});} else {setTimeout(_init,2000);}
+    })();
+  </script>
+</body>
+</html>

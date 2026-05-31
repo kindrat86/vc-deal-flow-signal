@@ -67,7 +67,7 @@ export default function SignalTimeline() {
           6-12 weeks lead time
         </text>
       </svg>
-      <figcaption className="mt-2 text-center text-gray-500 text-xs">
+      <figcaption className="mt-2 text-center text-gray-400 text-xs">
         Engineering acceleration signals typically appear 6-12 weeks before fundraise announcements.
         The optimal investor outreach window is weeks 2-4 after the signal is first detected.
       </figcaption>

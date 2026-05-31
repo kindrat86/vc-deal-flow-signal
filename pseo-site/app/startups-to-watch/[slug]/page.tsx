@@ -45,6 +45,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title,
       description,
       type: "article",
+      url: `/startups-to-watch/${slug}`,
     },
     twitter: {
       card: "summary_large_image",

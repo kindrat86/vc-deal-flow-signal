@@ -6,7 +6,13 @@ import {
   type Startup,
 } from "@/lib/data";
 import { slugify } from "@/lib/slugify";
+import { buildDossier } from "@/lib/diligence";
 import { bearerFromHeader, verifyToken } from "@/lib/oauth/jwt";
+import {
+  approvalUrlFor,
+  verifyApprovalToken,
+  type ApprovalVerifyError,
+} from "@/lib/mcp/share-approval-token";
 
 const BASE_URL = "https://signals.gitdealflow.com";
 const SERVER_NAME = "vc-deal-flow-signal";
@@ -290,6 +296,90 @@ const TOOLS = [
     annotations: READ_ONLY_ANNOTATIONS,
   },
   {
+    name: "get_diligence_dossier",
+    title: "Company Diligence Dossier",
+    description:
+      "Public-source diligence dossier for a company or entity in one cited object: who acquired it (M&A history), which funds publicly backed it, and its published engineering-acceleration signal. Use mid-diligence for 'who acquired X', 'which funds backed Y', 'what's the signal on Z'. Sources are press-release / SEC-filing / both-sides-disclosed only; returns found:false (an expected outcome, not an error) with honest notes when the entity is outside the tracked corpus — never guesses.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        company: {
+          type: "string",
+          minLength: 1,
+          maxLength: 100,
+          description:
+            "Company or entity name (target, acquirer, or tracked startup). Case-insensitive, normalization-tolerant.",
+          examples: ["Figma", "Supabase", "Broadcom", "Auth0"],
+        },
+      },
+      required: ["company"],
+      additionalProperties: false,
+    },
+    outputSchema: {
+      type: "object" as const,
+      properties: {
+        entity: { type: "string", description: "Resolved canonical entity name." },
+        found: {
+          type: "boolean",
+          description:
+            "True when at least one grounded fact exists; false is an expected outcome, not an error.",
+        },
+        acquiredBy: {
+          type: "array",
+          description: "Public acquisitions where this entity was the target.",
+          items: {
+            type: "object",
+            properties: {
+              acquirer: { type: "string" },
+              year: { type: "integer" },
+              announcedAmount: { type: "string" },
+              note: { type: "string" },
+              acquirerUrl: { type: "string", format: "uri" },
+            },
+          },
+        },
+        acquisitionsMade: {
+          type: "array",
+          description:
+            "If the entity is itself an acquirer: notable companies it has publicly bought.",
+          items: {
+            type: "object",
+            properties: {
+              target: { type: "string" },
+              year: { type: "integer" },
+              announcedAmount: { type: "string" },
+              note: { type: "string" },
+            },
+          },
+        },
+        backedBy: {
+          type: "array",
+          description:
+            "Funds in our tracked corpus that publicly disclosed backing this entity.",
+          items: {
+            type: "object",
+            properties: {
+              fund: { type: "string" },
+              fundUrl: { type: "string", format: "uri" },
+            },
+          },
+        },
+        signal: {
+          type: ["object", "null"],
+          description:
+            "Published engineering-acceleration signal, when the entity is in the tracked corpus.",
+        },
+        notes: {
+          type: "array",
+          description: "Plain-language notes on what is and isn't known.",
+          items: { type: "string" },
+        },
+      },
+      required: ["entity", "found"],
+    },
+    annotations: READ_ONLY_ANNOTATIONS,
+  },
+  {
     name: "get_scout_receipts",
     title: "Scout Score for GitHub User",
     description:
@@ -449,14 +539,17 @@ const TOOLS = [
       "- Posting on the user's behalf — this tool only composes the text + intent URLs. The user must click and confirm in the destination network.",
       "- Generating fake or speculative results — pass real data the agent received from another tool call.",
       "",
-      "BEHAVIOR:",
-      "- Read-only, idempotent, no side effects, no authentication.",
+      "BEHAVIOR (two-step approval flow, see `approval_token`):",
+      "- Step 1: call this tool with `summary` only. The server replies with an error (-32602) containing a `/share-approve?summary=...` URL the user must open.",
+      "- Step 2: the user reads the proposed summary on that page, clicks Approve, and pastes the resulting 10-minute token back into the chat. Retry the tool with `approval_token` filled in and the SAME `summary` verbatim.",
+      "- The token is bound to a hash of `summary`; if the agent rewrites the summary between approval and the retry, the call is rejected.",
       "- Composes platform-specific posts (Twitter ≤275 chars, Bluesky ≤295, Mastodon ≤495, LinkedIn ≤695, Telegram ≤995) with a consistent hook + insight + install URL.",
       "- Returns intent URLs (e.g. https://x.com/intent/post?text=...) so the user/agent can open the destination network with the post pre-filled.",
       "- Always includes the canonical install command `npx @gitdealflow/mcp-signal` and the SSRN paper link for credibility.",
       "",
       "PARAMETERS:",
       "- `summary` (string, required, 10-200 chars) — the one-line takeaway to share.",
+      "- `approval_token` (string, required after first call) — the 10-minute token returned by the /share-approve page.",
       "- `network` (string, optional) — 'twitter' | 'bluesky' | 'mastodon' | 'linkedin' | 'telegram' | 'all' (default: 'all').",
       "- `mention_handle` (boolean, optional, default false) — include @data_nerd attribution (twitter/bluesky/mastodon only).",
     ].join("\n"),
@@ -468,6 +561,13 @@ const TOOLS = [
           minLength: 10,
           maxLength: 200,
           description: "One-line takeaway (10-200 chars) the user wants to share.",
+        },
+        approval_token: {
+          type: "string",
+          minLength: 16,
+          maxLength: 512,
+          description:
+            "10-minute HMAC-signed token bound to a hash of `summary`. Obtain it by directing the user to https://signals.gitdealflow.com/share-approve?summary=<urlencoded-summary> — they review and click Approve, then paste the resulting token back. The first call with no token will return an error containing the exact URL to send the user to.",
         },
         network: {
           type: "string",
@@ -481,7 +581,7 @@ const TOOLS = [
           description: "Include @data_nerd attribution. Only applied to twitter/bluesky/mastodon.",
         },
       },
-      required: ["summary"],
+      required: ["summary", "approval_token"],
       additionalProperties: false,
     },
     outputSchema: {
@@ -504,6 +604,157 @@ const TOOLS = [
         methodologyUrl: { type: "string", format: "uri" },
       },
       required: ["posts", "installCommand", "methodologyUrl"],
+    },
+    annotations: READ_ONLY_ANNOTATIONS,
+  },
+  {
+    name: "predict_funding",
+    title: "Predict Funding Likelihood (with provenance)",
+    description: [
+      "Transparent, scored funding-likelihood claim for one tracked startup, with the full evidence chain and citable provenance. Instead of an opaque number, returns the score, every component that produced it, a confidence level, honest caveats, and links to the methodology + SSRN paper so the derivation can be cited.",
+      "",
+      "IS a deterministic heuristic over public GitHub engineering-acceleration signals; IS NOT an ML black box, a guarantee of any financing event, or based on private/cap-table data. The disclaimer is returned in every response.",
+      "",
+      "SCORING (also returned in evidence.scoreBreakdown): velocity ≤40 (saturates +300%), contributorGrowth ≤25 (saturates +200%), newRepos ≤15 (saturates 10), signalType ≤20 (Deploy frequency spike 20 / Engineering hiring burst 17 / Infrastructure buildout 14 / Framework migration 8). Total 0-100 → >=70 high, 45-69 elevated, 25-44 moderate, <25 low.",
+      "",
+      "PARAMETERS: { name } — display name or GitHub org slug (case-insensitive). On no match returns { found: false, suggestion } (expected, not an error).",
+    ].join("\n"),
+    inputSchema: {
+      type: "object",
+      properties: {
+        name: {
+          type: "string",
+          description: "Startup display name or GitHub org slug. Case-insensitive.",
+          minLength: 1,
+          maxLength: 100,
+        },
+      },
+      required: ["name"],
+      additionalProperties: false,
+    },
+    outputSchema: {
+      type: "object",
+      properties: {
+        found: { type: "boolean" },
+        company: { type: "object" },
+        prediction: {
+          type: "object",
+          properties: {
+            claim: { type: "string" },
+            raiseLikelihood: { type: "string", enum: ["high", "elevated", "moderate", "low"] },
+            accelerationScore: { type: "integer", minimum: 0, maximum: 100 },
+            estimatedWindow: { type: "string" },
+            confidence: { type: "string", enum: ["high", "moderate", "low"] },
+          },
+        },
+        evidence: { type: "object" },
+        caveats: { type: "array", items: { type: "string" } },
+        provenance: {
+          type: "object",
+          properties: {
+            methodologyUrl: { type: "string", format: "uri" },
+            researchPaperUrl: { type: "string", format: "uri" },
+            citation: { type: "string" },
+            source: { type: "string", format: "uri" },
+            period: { type: "string" },
+          },
+          required: ["methodologyUrl", "researchPaperUrl", "citation", "source"],
+        },
+        disclaimer: { type: "string" },
+        suggestion: { type: "string" },
+      },
+      required: ["found", "provenance", "disclaimer"],
+    },
+    annotations: READ_ONLY_ANNOTATIONS,
+  },
+  {
+    name: "shortlist_signals",
+    title: "Shortlist Strongest Signals",
+    description: [
+      "Return a ranked shortlist of the strongest engineering-acceleration signals matching a set of filters — the whole sourcing workflow in ONE call (e.g. 'the 5 strongest signals in fintech in the EU'). Scans the full tracked universe, scores each with the transparent engine (same scoring as predict_funding), filters, sorts by accelerationScore desc, returns the top `limit`.",
+      "",
+      "GEOGRAPHY IS REGION-LEVEL ONLY — values are US / EU / UK / APAC / LATAM / Canada / Unknown. City/country aliases ('NYC', 'New York', 'London', 'Berlin', 'Singapore') normalize up to the enclosing region and the response `notes` says so. There is no city-level filtering.",
+      "",
+      "PARAMETERS (all optional): sector (one of 20 slugs), geography (region token or alias), signalType (exact label), minAccelerationScore (0-100), minVelocityChangePct (integer percent), limit (1-25, default 5).",
+    ].join("\n"),
+    inputSchema: {
+      type: "object",
+      properties: {
+        sector: { type: "string", enum: [...SECTOR_SLUGS] },
+        geography: {
+          type: "string",
+          description:
+            "Region token (US/EU/UK/APAC/LATAM/Canada) or a city/country alias normalized up to the region.",
+        },
+        signalType: {
+          type: "string",
+          enum: [
+            "Deploy frequency spike",
+            "Engineering hiring burst",
+            "Infrastructure buildout",
+            "Framework migration",
+          ],
+        },
+        minAccelerationScore: { type: "integer", minimum: 0, maximum: 100 },
+        minVelocityChangePct: { type: "integer" },
+        limit: { type: "integer", minimum: 1, maximum: 25, default: 5 },
+      },
+      additionalProperties: false,
+    },
+    outputSchema: {
+      type: "object",
+      properties: {
+        query: { type: "object" },
+        period: { type: "string" },
+        consideredCount: { type: "integer" },
+        matchedCount: { type: "integer" },
+        results: { type: "array", items: { type: "object" } },
+        notes: { type: "array", items: { type: "string" } },
+        citation: { type: "string" },
+        source: { type: "string", format: "uri" },
+        methodologyUrl: { type: "string", format: "uri" },
+        disclaimer: { type: "string" },
+      },
+      required: ["query", "period", "matchedCount", "results", "citation"],
+    },
+    annotations: READ_ONLY_ANNOTATIONS,
+  },
+  {
+    name: "compare_signals",
+    title: "Compare Signals Head-to-Head",
+    description: [
+      "Score and rank 2-5 named startups side by side, returning each one's acceleration score, evidence, and raise-likelihood band plus a single recommendation for which warrants deeper diligence. Same transparent scoring as predict_funding / shortlist_signals.",
+      "",
+      "Names that don't resolve are returned in `notFound` (expected, not an error). The recommendation is computed only over resolved companies; if fewer than 2 resolve it explains that no comparison was possible.",
+      "",
+      "PARAMETERS: { names: string[] } — 2 to 5 display names or GitHub org slugs (case-insensitive).",
+    ].join("\n"),
+    inputSchema: {
+      type: "object",
+      properties: {
+        names: {
+          type: "array",
+          items: { type: "string", minLength: 1, maxLength: 100 },
+          minItems: 2,
+          maxItems: 5,
+        },
+      },
+      required: ["names"],
+      additionalProperties: false,
+    },
+    outputSchema: {
+      type: "object",
+      properties: {
+        period: { type: "string" },
+        compared: { type: "array", items: { type: "object" } },
+        notFound: { type: "array", items: { type: "string" } },
+        recommendation: { type: "string" },
+        citation: { type: "string" },
+        source: { type: "string", format: "uri" },
+        methodologyUrl: { type: "string", format: "uri" },
+        disclaimer: { type: "string" },
+      },
+      required: ["period", "compared", "recommendation", "citation"],
     },
     annotations: READ_ONLY_ANNOTATIONS,
   },
@@ -584,6 +835,24 @@ const PROMPTS = [
       { name: "name", description: "Startup display name or GitHub org slug.", required: true },
     ],
   },
+  {
+    name: "sourcing_session",
+    description:
+      "Run a full sourcing session in one pass — the corp-dev / scout workflow. Shortlists the strongest engineering-acceleration signals (optionally by sector/region), then attaches a transparent, citable funding-likelihood read to each pick. Pulls live data via shortlist_signals + predict_funding.",
+    arguments: [
+      { name: "sector", description: "Optional sector slug to focus the shortlist (e.g. 'ai-ml'). Omit to scan all.", required: false },
+      { name: "geography", description: "Optional region filter (US/EU/UK/APAC/LATAM/Canada). Aliases normalize up to the region.", required: false },
+      { name: "count", description: "How many companies to shortlist and score. Default 5.", required: false },
+    ],
+  },
+  {
+    name: "diligence_brief",
+    description:
+      "Assemble a cited one-page diligence brief for a named company: public-source dossier (M&A, backers, signal), a transparent funding-likelihood read with its evidence chain, and the methodology behind the score. Pulls live data via get_diligence_dossier + predict_funding + get_methodology.",
+    arguments: [
+      { name: "name", description: "Company display name or GitHub org slug.", required: true },
+    ],
+  },
 ];
 
 const FOOTER = "— Powered by gitdealflow.com";
@@ -612,6 +881,148 @@ function startupRow(s: Startup, rank: number, sectorName: string) {
 function getActiveSectors() {
   const period = getCurrentPeriod();
   return getAllSectors().filter((s) => s.periods[period.slug]);
+}
+
+// ---------------------------------------------------------------------------
+// Transparent scoring engine — shared by predict_funding / shortlist_signals /
+// compare_signals. Mirrors the stdio server (@gitdealflow/mcp-signal). Every
+// component and weight is returned in the response so the score is auditable.
+// ---------------------------------------------------------------------------
+const METHODOLOGY_URL = `${BASE_URL}/methodology`;
+const RESEARCH_PAPER_URL = "https://ssrn.com/abstract=6606558";
+const PREDICTION_DISCLAIMER =
+  "Derived solely from public GitHub engineering-acceleration signals (commit velocity, contributor growth, new-repo creation, signal classification). This is a transparent heuristic, NOT investment advice, NOT a guarantee of any financing event, and NOT based on private, cap-table, or revenue data. Every input is returned in the evidence chain so the score can be audited and cited. See the methodology and SSRN paper for the full derivation.";
+
+const SIGNAL_TYPE_WEIGHT: Record<string, number> = {
+  "deploy frequency spike": 20,
+  "engineering hiring burst": 17,
+  "infrastructure buildout": 14,
+  "framework migration": 8,
+  breakout: 20,
+  acceleration: 14,
+  steady: 6,
+  cooling: 0,
+};
+
+const GEO_REGIONS = ["US", "EU", "UK", "APAC", "LATAM", "Canada", "Unknown"] as const;
+const GEO_ALIASES: Record<string, string> = {
+  us: "US", usa: "US", "u.s.": "US", "u.s.a.": "US", america: "US",
+  "united states": "US", "north america": "US", "new york": "US", nyc: "US",
+  "san francisco": "US", sf: "US", "bay area": "US", "silicon valley": "US",
+  boston: "US", austin: "US", seattle: "US", "los angeles": "US", la: "US",
+  chicago: "US", denver: "US", miami: "US", california: "US",
+  eu: "EU", europe: "EU", european: "EU", germany: "EU", berlin: "EU",
+  france: "EU", paris: "EU", amsterdam: "EU", netherlands: "EU", spain: "EU",
+  sweden: "EU", stockholm: "EU", ireland: "EU", dublin: "EU", lisbon: "EU",
+  portugal: "EU", italy: "EU", poland: "EU", helsinki: "EU", finland: "EU",
+  uk: "UK", "united kingdom": "UK", britain: "UK", england: "UK", london: "UK",
+  scotland: "UK",
+  apac: "APAC", asia: "APAC", "asia-pacific": "APAC", singapore: "APAC",
+  india: "APAC", bangalore: "APAC", bengaluru: "APAC", china: "APAC",
+  japan: "APAC", tokyo: "APAC", australia: "APAC", sydney: "APAC", korea: "APAC",
+  canada: "Canada", toronto: "Canada", vancouver: "Canada", montreal: "Canada",
+  latam: "LATAM", "latin america": "LATAM", brazil: "LATAM", "são paulo": "LATAM",
+  mexico: "LATAM", argentina: "LATAM", chile: "LATAM", colombia: "LATAM",
+};
+
+function normalizeGeography(raw: string): { region: string | null; matchedAlias: boolean } {
+  const t = raw.trim().toLowerCase();
+  if (!t) return { region: null, matchedAlias: false };
+  const direct = GEO_REGIONS.find((r) => r.toLowerCase() === t);
+  if (direct) return { region: direct, matchedAlias: false };
+  if (GEO_ALIASES[t]) return { region: GEO_ALIASES[t], matchedAlias: true };
+  return { region: null, matchedAlias: false };
+}
+
+function parsePercent(raw: unknown): number | null {
+  const m = /^\s*([+-]?\d+(?:\.\d+)?)/.exec(String(raw ?? ""));
+  return m ? Number(m[1]) : null;
+}
+
+function clampNum(n: number, lo: number, hi: number): number {
+  return Math.max(lo, Math.min(hi, n));
+}
+
+interface ScoreBreakdown {
+  velocity: number;
+  contributorGrowth: number;
+  newRepos: number;
+  signalType: number;
+  total: number;
+}
+
+interface SignalScore {
+  accelerationScore: number;
+  raiseLikelihood: "high" | "elevated" | "moderate" | "low";
+  estimatedWindow: string;
+  confidence: "high" | "moderate" | "low";
+  breakdown: ScoreBreakdown;
+  velocityChangePct: number | null;
+  contributorGrowthPct: number | null;
+}
+
+function scoreStartup(s: Startup): SignalScore {
+  const vel = parsePercent(s.commitVelocityChange);
+  const cg = parsePercent(s.contributorGrowth);
+  const repos = Number.isFinite(s.newRepos) ? s.newRepos : 0;
+  const velocity = vel === null ? 0 : (clampNum(vel, 0, 300) / 300) * 40;
+  const contributorGrowth = cg === null ? 0 : (clampNum(cg, 0, 200) / 200) * 25;
+  const newRepos = (clampNum(repos, 0, 10) / 10) * 15;
+  const signalType = SIGNAL_TYPE_WEIGHT[(s.signalType ?? "").toLowerCase()] ?? 6;
+  const breakdown: ScoreBreakdown = {
+    velocity: Math.round(velocity * 10) / 10,
+    contributorGrowth: Math.round(contributorGrowth * 10) / 10,
+    newRepos: Math.round(newRepos * 10) / 10,
+    signalType,
+    total: 0,
+  };
+  const total = Math.round(velocity + contributorGrowth + newRepos + signalType);
+  breakdown.total = total;
+  const raiseLikelihood =
+    total >= 70 ? "high" : total >= 45 ? "elevated" : total >= 25 ? "moderate" : "low";
+  const estimatedWindow =
+    raiseLikelihood === "high"
+      ? "3-6 months (heuristic)"
+      : raiseLikelihood === "elevated"
+        ? "6-9 months (heuristic)"
+        : raiseLikelihood === "moderate"
+          ? "9-12 months (heuristic)"
+          : "12+ months or no near-term signal (heuristic)";
+  const missing = (vel === null ? 1 : 0) + (cg === null ? 1 : 0);
+  let confidence: "high" | "moderate" | "low" = "moderate";
+  if (missing === 0 && (s.contributors ?? 0) >= 5) confidence = "high";
+  if (missing >= 1 || (s.contributors ?? 0) < 3) confidence = "low";
+  return {
+    accelerationScore: total,
+    raiseLikelihood,
+    estimatedWindow,
+    confidence,
+    breakdown,
+    velocityChangePct: vel,
+    contributorGrowthPct: cg,
+  };
+}
+
+type UniverseRow = Startup & { sectorName: string; sectorSlug: string };
+
+function getUniverseWithSector(): { periodName: string; citation: string; rows: UniverseRow[] } {
+  const period = getCurrentPeriod();
+  const active = getActiveSectors();
+  const seen = new Set<string>();
+  const rows: UniverseRow[] = [];
+  for (const sector of active) {
+    for (const st of sector.periods[period.slug].startups) {
+      const key = slugify(st.name);
+      if (seen.has(key)) continue;
+      seen.add(key);
+      rows.push({ ...st, sectorName: sector.name, sectorSlug: sector.slug });
+    }
+  }
+  return {
+    periodName: period.name,
+    citation: `VC Deal Flow Signal (signals.gitdealflow.com), ${period.name} data.`,
+    rows,
+  };
 }
 
 function getTrendingPayload() {
@@ -797,9 +1208,19 @@ function rpcResult(id: JsonRpcId | undefined, result: unknown) {
   );
 }
 
-function rpcError(id: JsonRpcId | undefined, code: number, message: string) {
+function rpcError(
+  id: JsonRpcId | undefined,
+  code: number,
+  message: string,
+  data?: unknown,
+) {
+  // Per JSON-RPC 2.0 §5.1, `data` is an OPTIONAL value that contains
+  // additional information about the error. We use it for machine-readable
+  // hints (e.g. an `approval_url` for the share_result tool).
+  const error: { code: number; message: string; data?: unknown } = { code, message };
+  if (data !== undefined) error.data = data;
   return Response.json(
-    { jsonrpc: "2.0", id: id ?? null, error: { code, message } },
+    { jsonrpc: "2.0", id: id ?? null, error },
     {
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -862,6 +1283,59 @@ async function handleToolsCall(
       return rpcResult(id, {
         content: [{ type: "text", text }],
         structuredContent: structured,
+      });
+    }
+    case "get_diligence_dossier": {
+      const entity = String(args.company ?? args.entity ?? args.name ?? "").trim();
+      if (!entity) {
+        return rpcError(id, -32602, "Missing required parameter: company");
+      }
+      const d = buildDossier(entity);
+      const lines: string[] = [`Diligence dossier — ${d.entity}`, ``];
+      if (d.acquiredBy.length) {
+        lines.push(
+          `Acquired by: ${d.acquiredBy
+            .map(
+              (a) =>
+                `${a.acquirer} (${a.year}${a.announcedAmount ? `, ${a.announcedAmount}` : ""})`,
+            )
+            .join("; ")}`,
+        );
+      }
+      if (d.acquisitionsMade.length) {
+        lines.push(
+          `Notable acquisitions made: ${d.acquisitionsMade.length} (e.g. ${d.acquisitionsMade
+            .slice(0, 3)
+            .map((x) => x.target)
+            .join(", ")})`,
+        );
+      }
+      if (d.backedBy.length) {
+        lines.push(`Backed by: ${d.backedBy.map((b) => b.fund).join(", ")}`);
+      }
+      if (d.signal) {
+        lines.push(
+          `Engineering signal (published): ${d.signal.momentum} · ${d.signal.sector} · ${d.signal.stage}`,
+        );
+      }
+      if (!d.found) {
+        lines.push(
+          `No grounded facts — "${entity}" is outside the tracked corpus. We do not guess.`,
+        );
+      }
+      for (const n of d.notes) lines.push(``, n);
+      lines.push(``, FOOTER);
+      return rpcResult(id, {
+        content: [{ type: "text", text: lines.join("\n") }],
+        structuredContent: {
+          entity: d.entity,
+          found: d.found,
+          acquiredBy: d.acquiredBy,
+          acquisitionsMade: d.acquisitionsMade,
+          backedBy: d.backedBy,
+          signal: d.signal,
+          notes: d.notes,
+        },
       });
     }
     case "get_scout_receipts": {
@@ -994,9 +1468,44 @@ async function handleToolsCall(
       const summary = String(args.summary ?? "").trim();
       const network = String(args.network ?? "all").toLowerCase();
       const mentionHandle = Boolean(args.mention_handle ?? false);
+      const approvalToken = typeof args.approval_token === "string" ? args.approval_token.trim() : "";
       if (summary.length < 10 || summary.length > 200) {
         return rpcError(id, -32602, "summary must be 10-200 chars");
       }
+
+      // F21: gate composition behind explicit human approval. The agent must
+      // (a) send the user to /share-approve?summary=..., (b) the user clicks
+      // Approve, (c) the agent retries with the resulting `approval_token`.
+      if (!approvalToken) {
+        const url = approvalUrlFor(summary, BASE_URL);
+        return rpcError(
+          id,
+          -32602,
+          `share_result requires an explicit human approval. Ask the user to open this URL, click Approve, and paste the resulting token back. Then retry share_result with the SAME summary plus approval_token.\n\n${url}`,
+          { approval_required: true, approval_url: url, ttl_seconds: 600 },
+        );
+      }
+      const verdict = verifyApprovalToken(approvalToken, summary);
+      if (!verdict.ok) {
+        const explain: Record<ApprovalVerifyError, string> = {
+          missing: "approval_token is required",
+          malformed: "approval_token is malformed",
+          bad_signature: "approval_token signature did not verify",
+          wrong_kind: "approval_token is not a share_result token",
+          expired:
+            "approval_token has expired (10-minute TTL). Ask the user to re-approve at /share-approve.",
+          summary_mismatch:
+            "approval_token does not match this summary. The token is bound to a hash of the summary the user approved — pass the SAME summary verbatim, or re-approve with the new wording.",
+        };
+        const url = approvalUrlFor(summary, BASE_URL);
+        return rpcError(
+          id,
+          -32602,
+          `${explain[verdict.reason]} Re-approve at: ${url}`,
+          { approval_required: true, reason: verdict.reason, approval_url: url, ttl_seconds: 600 },
+        );
+      }
+
       const handleAttr = mentionHandle ? " (h/t @data_nerd)" : "";
       const installCommand = "npx @gitdealflow/mcp-signal";
       const methodologyUrl = `${BASE_URL}/methodology`;
@@ -1064,6 +1573,310 @@ async function handleToolsCall(
           },
         ],
         structuredContent: { posts, installCommand, methodologyUrl },
+      });
+    }
+    case "predict_funding": {
+      const inputName = String(args.name ?? "");
+      const { periodName, citation, rows } = getUniverseWithSector();
+      const target = slugify(inputName);
+      const match = rows.find((r) => slugify(r.name) === target);
+      const provenance = {
+        methodologyUrl: METHODOLOGY_URL,
+        researchPaperUrl: RESEARCH_PAPER_URL,
+        citation,
+        source: BASE_URL,
+        period: periodName,
+      };
+      if (!match) {
+        return rpcResult(id, {
+          content: [
+            {
+              type: "text",
+              text: `"${inputName}" is not in the tracked universe, so no signal-based prediction can be made. Use shortlist_signals or get_trending_startups to browse tracked companies, then retry with an exact name.\n\n${FOOTER}`,
+            },
+          ],
+          structuredContent: {
+            found: false,
+            suggestion:
+              "Not in the tracked universe. Browse via shortlist_signals or get_trending_startups, then retry with the exact name or GitHub org slug.",
+            provenance,
+            disclaimer: PREDICTION_DISCLAIMER,
+          },
+        });
+      }
+      const sc = scoreStartup(match);
+      const claim =
+        `Based on public GitHub engineering signals, ${match.name} shows ${sc.raiseLikelihood.toUpperCase()} near-term funding-round likelihood ` +
+        `(acceleration score ${sc.accelerationScore}/100, estimated window ${sc.estimatedWindow}), ` +
+        `driven by a ${match.commitVelocityChange} commit-velocity change` +
+        (match.signalType ? ` and a "${match.signalType}" signal` : "") +
+        `. Confidence: ${sc.confidence}. This is a transparent heuristic over open-source activity, not a guarantee.`;
+      const caveats: string[] = [
+        "Score reflects engineering acceleration only — it does not see funding rounds, revenue, cap table, or team.",
+        "The estimated window is a heuristic band, not a forecast date.",
+      ];
+      if (sc.confidence === "low") {
+        caveats.push(
+          "Low confidence: a key growth metric was unparseable or the contributor base is very small — treat the score as directional."
+        );
+      }
+      if ((match.geography ?? "Unknown") === "Unknown") {
+        caveats.push("Geography is Unknown for this company in the feed.");
+      }
+      const text = [
+        `${match.name} — Funding-Likelihood Prediction`,
+        ``,
+        claim,
+        ``,
+        `Evidence chain:`,
+        `- Signal type: ${match.signalType}`,
+        `- Commit velocity (14d): ${match.commitVelocity14d} (${match.commitVelocityChange})`,
+        `- Contributors: ${match.contributors} (${match.contributorGrowth})`,
+        `- New repos (30d): ${match.newRepos}`,
+        `- Score breakdown: velocity ${sc.breakdown.velocity} + contributorGrowth ${sc.breakdown.contributorGrowth} + newRepos ${sc.breakdown.newRepos} + signalType ${sc.breakdown.signalType} = ${sc.breakdown.total}/100`,
+        ``,
+        `Methodology: ${METHODOLOGY_URL}`,
+        `Research paper: ${RESEARCH_PAPER_URL}`,
+        `Citation: ${citation}`,
+        ``,
+        PREDICTION_DISCLAIMER,
+        ``,
+        FOOTER,
+      ].join("\n");
+      return rpcResult(id, {
+        content: [{ type: "text", text }],
+        structuredContent: {
+          found: true,
+          company: {
+            name: match.name,
+            sector: match.sectorName,
+            stage: match.stage,
+            geography: match.geography,
+            githubUrl: match.githubUrl,
+            ...(match.websiteUrl ? { websiteUrl: match.websiteUrl } : {}),
+            profileUrl: `${BASE_URL}/startup/${slugify(match.name)}`,
+          },
+          prediction: {
+            claim,
+            raiseLikelihood: sc.raiseLikelihood,
+            accelerationScore: sc.accelerationScore,
+            estimatedWindow: sc.estimatedWindow,
+            confidence: sc.confidence,
+          },
+          evidence: {
+            signalType: match.signalType,
+            commitVelocity14d: match.commitVelocity14d,
+            commitVelocityChange: match.commitVelocityChange,
+            contributors: match.contributors,
+            contributorGrowth: match.contributorGrowth,
+            newRepos: match.newRepos,
+            scoreBreakdown: sc.breakdown,
+          },
+          caveats,
+          provenance,
+          disclaimer: PREDICTION_DISCLAIMER,
+        },
+      });
+    }
+    case "shortlist_signals": {
+      const limit = clampNum(Math.floor(Number(args.limit ?? 5)), 1, 25);
+      const { periodName, citation, rows } = getUniverseWithSector();
+      const notes: string[] = [];
+
+      const sectorArg = typeof args.sector === "string" ? args.sector : undefined;
+      const signalTypeArg = typeof args.signalType === "string" ? args.signalType : undefined;
+      const geoArg = typeof args.geography === "string" ? args.geography : undefined;
+      const minScore = args.minAccelerationScore !== undefined ? Number(args.minAccelerationScore) : undefined;
+      const minVel = args.minVelocityChangePct !== undefined ? Number(args.minVelocityChangePct) : undefined;
+
+      let geoRegion: string | null = null;
+      if (geoArg && geoArg.trim()) {
+        const norm = normalizeGeography(geoArg);
+        geoRegion = norm.region;
+        if (!geoRegion) {
+          notes.push(
+            `Geography "${geoArg}" did not map to a known region (US/EU/UK/APAC/LATAM/Canada); geography filter was ignored.`
+          );
+        } else if (norm.matchedAlias) {
+          notes.push(
+            `Geography is region-level only — "${geoArg}" was normalized to "${geoRegion}". There is no city-level data in the feed.`
+          );
+        }
+      }
+      const sectorActive =
+        sectorArg && rows.some((r) => r.sectorSlug === sectorArg) ? sectorArg : null;
+      if (sectorArg && !sectorActive) {
+        notes.push(`Sector "${sectorArg}" not found or inactive; sector filter was ignored.`);
+      }
+
+      const consideredCount = rows.length;
+      let candidates = rows.map((r) => ({ row: r, score: scoreStartup(r) }));
+      if (sectorActive) candidates = candidates.filter((c) => c.row.sectorSlug === sectorActive);
+      if (geoRegion) candidates = candidates.filter((c) => c.row.geography === geoRegion);
+      if (signalTypeArg)
+        candidates = candidates.filter(
+          (c) => (c.row.signalType ?? "").toLowerCase() === signalTypeArg.toLowerCase()
+        );
+      if (minScore !== undefined && !Number.isNaN(minScore))
+        candidates = candidates.filter((c) => c.score.accelerationScore >= minScore);
+      if (minVel !== undefined && !Number.isNaN(minVel))
+        candidates = candidates.filter(
+          (c) => c.score.velocityChangePct !== null && c.score.velocityChangePct >= minVel
+        );
+
+      candidates.sort((x, y) => y.score.accelerationScore - x.score.accelerationScore);
+      const matchedCount = candidates.length;
+      const results = candidates.slice(0, limit).map((c, i) => ({
+        rank: i + 1,
+        name: c.row.name,
+        sector: c.row.sectorName,
+        stage: c.row.stage,
+        geography: c.row.geography,
+        accelerationScore: c.score.accelerationScore,
+        raiseLikelihood: c.score.raiseLikelihood,
+        signalType: c.row.signalType,
+        commitVelocityChange: c.row.commitVelocityChange,
+        contributorGrowth: c.row.contributorGrowth,
+        contributors: c.row.contributors,
+        newRepos: c.row.newRepos,
+        githubUrl: c.row.githubUrl,
+        profileUrl: `${BASE_URL}/startup/${slugify(c.row.name)}`,
+        rationale: `Score ${c.score.accelerationScore}/100 (${c.score.raiseLikelihood}) — ${c.row.commitVelocityChange} velocity, ${c.row.contributorGrowth} contributor growth, ${c.row.signalType}.`,
+      }));
+
+      const query = {
+        sector: sectorActive,
+        geography: geoRegion,
+        signalType: signalTypeArg ?? null,
+        minAccelerationScore: minScore ?? null,
+        minVelocityChangePct: minVel ?? null,
+        limit,
+      };
+      const lines = results.map(
+        (r) =>
+          `${r.rank}. ${r.name} (${r.sector}, ${r.geography}) — ${r.accelerationScore}/100 ${r.raiseLikelihood}, ${r.commitVelocityChange} velocity, ${r.signalType}`
+      );
+      const text = [
+        `Shortlist — strongest signals (${periodName})`,
+        `Filters: ${JSON.stringify(query)}`,
+        `${matchedCount} matched of ${consideredCount} tracked; showing top ${results.length}.`,
+        ``,
+        lines.join("\n") || "(no companies matched these filters)",
+        notes.length ? `\nNotes:\n- ${notes.join("\n- ")}` : "",
+        ``,
+        `Methodology: ${METHODOLOGY_URL}`,
+        `Citation: ${citation}`,
+        ``,
+        PREDICTION_DISCLAIMER,
+        ``,
+        FOOTER,
+      ]
+        .filter((l) => l !== "")
+        .join("\n");
+      return rpcResult(id, {
+        content: [{ type: "text", text }],
+        structuredContent: {
+          query,
+          period: periodName,
+          consideredCount,
+          matchedCount,
+          results,
+          notes,
+          citation,
+          source: BASE_URL,
+          methodologyUrl: METHODOLOGY_URL,
+          disclaimer: PREDICTION_DISCLAIMER,
+        },
+      });
+    }
+    case "compare_signals": {
+      const rawNames = Array.isArray(args.names) ? (args.names as unknown[]) : [];
+      const wanted = rawNames.map((n) => String(n)).filter((n) => n.trim().length > 0);
+      const { periodName, citation, rows } = getUniverseWithSector();
+
+      const compared: Array<Record<string, unknown>> = [];
+      const notFound: string[] = [];
+      for (const w of wanted) {
+        const target = slugify(w);
+        const match = rows.find((r) => slugify(r.name) === target);
+        if (!match) {
+          notFound.push(w);
+          continue;
+        }
+        const sc = scoreStartup(match);
+        compared.push({
+          name: match.name,
+          sector: match.sectorName,
+          stage: match.stage,
+          geography: match.geography,
+          accelerationScore: sc.accelerationScore,
+          raiseLikelihood: sc.raiseLikelihood,
+          confidence: sc.confidence,
+          signalType: match.signalType,
+          commitVelocityChange: match.commitVelocityChange,
+          contributorGrowth: match.contributorGrowth,
+          contributors: match.contributors,
+          newRepos: match.newRepos,
+          githubUrl: match.githubUrl,
+          scoreBreakdown: sc.breakdown,
+          _score: sc.accelerationScore,
+        });
+      }
+      compared.sort((x, y) => (y._score as number) - (x._score as number));
+      compared.forEach((c, i) => {
+        c.rank = i + 1;
+        delete c._score;
+      });
+
+      let recommendation: string;
+      if (compared.length < 2) {
+        recommendation =
+          compared.length === 0
+            ? "No comparison possible — none of the supplied names are in the tracked universe."
+            : `Only ${(compared[0] as { name: string }).name} resolved to a tracked company, so no head-to-head was possible. The others are not tracked.`;
+      } else {
+        const winner = compared[0] as { name: string; accelerationScore: number; raiseLikelihood: string };
+        const runnerUp = compared[1] as { name: string; accelerationScore: number };
+        const gap = winner.accelerationScore - runnerUp.accelerationScore;
+        recommendation =
+          gap >= 10
+            ? `${winner.name} warrants deeper diligence first — it leads on acceleration score (${winner.accelerationScore} vs ${runnerUp.accelerationScore}, ${winner.raiseLikelihood} likelihood), a clear ${gap}-point margin.`
+            : `${winner.name} edges ahead (${winner.accelerationScore} vs ${runnerUp.accelerationScore}), but the ${gap}-point margin is narrow — treat them as roughly comparable and diligence both.`;
+      }
+
+      const lines = compared.map(
+        (c) =>
+          `${c.rank}. ${c.name} (${c.sector}) — ${c.accelerationScore}/100 ${c.raiseLikelihood}, ${c.commitVelocityChange} velocity, ${c.signalType}`
+      );
+      const text = [
+        `Head-to-head signal comparison (${periodName})`,
+        ``,
+        lines.join("\n") || "(no tracked companies among the supplied names)",
+        notFound.length ? `\nNot tracked: ${notFound.join(", ")}` : "",
+        ``,
+        `Recommendation: ${recommendation}`,
+        ``,
+        `Methodology: ${METHODOLOGY_URL}`,
+        `Citation: ${citation}`,
+        ``,
+        PREDICTION_DISCLAIMER,
+        ``,
+        FOOTER,
+      ]
+        .filter((l) => l !== "")
+        .join("\n");
+      return rpcResult(id, {
+        content: [{ type: "text", text }],
+        structuredContent: {
+          period: periodName,
+          compared,
+          notFound,
+          recommendation,
+          citation,
+          source: BASE_URL,
+          methodologyUrl: METHODOLOGY_URL,
+          disclaimer: PREDICTION_DISCLAIMER,
+        },
       });
     }
     default:
@@ -1211,6 +2024,45 @@ function handlePromptGet(id: JsonRpcId | undefined, params: unknown) {
         "Step 3: Call `get_methodology` to interpret signalType correctly.",
         `Step 4: Optionally call \`search_startups_by_sector\` for 2-3 comparables.`,
         "Step 5: Sections: TL;DR, Engineering Signal Profile, Sector Context, Leading-Indicator Read, Open Questions.",
+      ].join("\n");
+      break;
+    }
+    case "sourcing_session": {
+      const sector = a.sector;
+      const geography = a.geography;
+      const count = a.count || "5";
+      const shortlistArgs = [
+        sector ? `sector="${sector}"` : null,
+        geography ? `geography="${geography}"` : null,
+        `limit=${count}`,
+      ]
+        .filter(Boolean)
+        .join(", ");
+      messageText = [
+        `You are running a sourcing session${sector ? ` for ${sector}` : ""}${geography ? ` in ${geography}` : ""} — a corp-dev / scout watchlist grounded in engineering-acceleration signals.`,
+        "",
+        `Step 1: Call \`shortlist_signals\` with ${shortlistArgs}. Returns the top ${count} companies ranked by acceleration score, each with a rationale.`,
+        "Step 2: Surface the `notes` from the response verbatim if present (e.g. geography normalized to a region) so the reader knows the filter semantics.",
+        "Step 3: For EACH shortlisted company, call `predict_funding` with its name to attach a funding-likelihood read (score, band, window, confidence) + evidence chain. Run in parallel.",
+        "Step 4: Produce a ranked watchlist: `<rank>. <name> (<sector>, <geography>) — accel <score>/100, raise likelihood <band> (<window>), conf <confidence>. <one-line rationale>.`",
+        "Step 5: Footer 'How to read this': heuristics over public GitHub activity, not investment advice; cite the methodology + SSRN links from predict_funding provenance.",
+        "",
+        "Tone: factual, terse, investor-grade. Use only what the tools return; never invent companies or numbers. If the shortlist is empty, say so and suggest loosening the filters.",
+      ].join("\n");
+      break;
+    }
+    case "diligence_brief": {
+      const companyName = a.name;
+      if (!companyName) return rpcError(id, -32602, "Missing required argument: name");
+      messageText = [
+        `You are assembling a one-page diligence brief for ${companyName}.`,
+        "",
+        `Step 1: Call \`get_diligence_dossier\` with name="${companyName}" for the public-source record (M&A history, backers, published signal). If not found, surface that and continue with the other tools.`,
+        `Step 2: Call \`predict_funding\` with name="${companyName}" for the scored funding-likelihood read + evidence chain.`,
+        "Step 3: Call `get_methodology` once to frame how the score was derived.",
+        "Step 4: Draft the brief (one page max): TL;DR; Public Record (acquirer/M&A with year + amount, backing funds — all cited); Funding-Likelihood Read (score/100, band, window, confidence) with the evidence chain; How the score was derived (one sentence); Open Questions (3-5).",
+        "",
+        "Tone: factual, investor-grade. Cite every claim to the tool that produced it. End with the methodology + SSRN provenance and the disclaimer that this is a heuristic over public data, not investment advice.",
       ].join("\n");
       break;
     }

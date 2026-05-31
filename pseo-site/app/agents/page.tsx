@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentSummary } from "@/components/AgentSummary";
+import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { getDataLastModified } from "@/lib/data";
 
 const SITE = "https://signals.gitdealflow.com";
@@ -251,6 +252,7 @@ export default function AgentsLandingPage() {
         description:
           "Free, no-auth agent surfaces: MCP server, A2A endpoint, NLWeb, function-calling API, OpenAPI 3.1, JSONL, embeddable badges, ChatGPT plugin, RFC 9727 api-catalog.",
         inLanguage: "en-US",
+        isAccessibleForFree: true,
         speakable: {
           "@type": "SpeakableSpecification",
           cssSelector: [".speakable", "h1", "[data-agent-summary]"],
@@ -273,6 +275,91 @@ export default function AgentsLandingPage() {
           name: "VC Deal Flow Signal",
           url: SITE,
         },
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": `${SITE}/agents#mcp-server`,
+        name: "@gitdealflow/mcp-signal",
+        applicationCategory: "DeveloperApplication",
+        operatingSystem: "Any (Node.js 20+)",
+        softwareVersion: "2",
+        downloadUrl: "https://www.npmjs.com/package/@gitdealflow/mcp-signal",
+        installUrl: "https://www.npmjs.com/package/@gitdealflow/mcp-signal",
+        softwareHelp: { "@type": "CreativeWork", url: `${SITE}/agents` },
+        description:
+          "Model Context Protocol server for VC Deal Flow Signal. Read-only tools for trending startups, sector signals, startup lookup, methodology, and weekly summaries. One-line npx install in any MCP host — Claude Desktop, Claude Code, Cursor, Windsurf, Zed, Cline. No API key.",
+        isAccessibleForFree: true,
+        offers: { "@type": "Offer", price: "0", priceCurrency: "EUR" },
+        provider: {
+          "@type": "Organization",
+          name: "VC Deal Flow Signal",
+          url: SITE,
+        },
+      },
+      {
+        "@type": "HowTo",
+        "@id": `${SITE}/agents#install-claude`,
+        name: "Install the VC Deal Flow Signal MCP server in Claude Desktop",
+        description:
+          "Add the free, no-auth @gitdealflow/mcp-signal MCP server to Claude Desktop or Claude Code in under two minutes.",
+        totalTime: "PT2M",
+        tool: [
+          { "@type": "HowToTool", name: "Claude Desktop or Claude Code" },
+          { "@type": "HowToTool", name: "Node.js 20+ (npx)" },
+        ],
+        step: [
+          {
+            "@type": "HowToStep",
+            position: 1,
+            name: "Open the MCP config file",
+            text: "Open ~/Library/Application Support/Claude/claude_desktop_config.json (Claude Desktop) or your MCP host's config file.",
+          },
+          {
+            "@type": "HowToStep",
+            position: 2,
+            name: "Add the server entry",
+            text: 'Under "mcpServers", add a "gitdealflow" entry with command "npx" and args ["-y", "@gitdealflow/mcp-signal"]. No API key or auth header is required.',
+          },
+          {
+            "@type": "HowToStep",
+            position: 3,
+            name: "Restart the host",
+            text: "Restart Claude Desktop. The read-only deal-flow signal tools become available immediately.",
+          },
+        ],
+      },
+      {
+        "@type": "ItemList",
+        "@id": `${SITE}/agents#surfaces`,
+        name: "VC Deal Flow Signal — machine-readable agent surfaces",
+        description:
+          "Every free, no-auth interface to the same CC-BY-4.0 deal-flow dataset: MCP, agent protocols, HTTP APIs, bulk data, embeddable badges, and discovery manifests.",
+        numberOfItems: surfaces.length,
+        itemListOrder: "https://schema.org/ItemListUnordered",
+        itemListElement: surfaces.map((s, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          name: s.name,
+          description: s.blurb,
+          ...(s.url ? { url: s.url } : {}),
+        })),
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "All Sectors",
+            item: SITE,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Agents",
+            item: `${SITE}/agents`,
+          },
+        ],
       },
       {
         "@type": "FAQPage",
@@ -320,6 +407,46 @@ export default function AgentsLandingPage() {
               text: "OpenAPI 3.1 lives at /api/openapi.json. It documents every callable route — signals.json, signals.csv, agent/tools, agent/call, a2a, nlweb, mcp/rpc, badge/scout/{username}/svg, badge/momentum/{org}/{repo}/svg. Importable into Postman, Insomnia, OpenAI function-calling, Anthropic tool-use, and Gemini function-calling SDKs.",
             },
           },
+          {
+            "@type": "Question",
+            name: "Does VC Deal Flow Signal support Microsoft NLWeb?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Yes. POST a natural-language query to /api/nlweb and it returns schema.org-typed JSON-LD answers. The endpoint conforms to the Microsoft NLWeb conversational contract, so any NLWeb-aware client can ask deal-flow questions and get structured, citable responses with no custom integration.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Can I embed a Scout Score or Commit Momentum badge in a README?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Yes. GET /api/badge/scout/{username}/svg renders a per-user GitHub Scout Score (0-100) as a shields.io-style SVG, and /api/badge/momentum/{org}/{repo}/svg renders a repo's commit-velocity tier (cold / warming / hot / breakout). Both are public, no-auth SVGs that drop straight into any README or web page. The badge builder at /badge-builder generates the markup.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "How can an agent runtime auto-discover every API in one request?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Fetch /.well-known/api-catalog. It is an RFC 9727 Linkset that lists every API description we publish — OpenAPI spec, MCP manifest, A2A AgentCard, function-calling tool schemas, and bulk-data exports — from a single canonical URL, so agent runtimes can enumerate the full capability surface without hard-coded paths.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Is there an llms.txt for LLM context windows?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Yes. /llms.txt is a concise context file and /llms-full.txt is the full version, with sector links, the blog index, FAQ, methodology, and a dataset summary. Most pillar pages also expose a Markdown mirror at /md/{path} (for example /md/agents) and a Q&A corpus at /qa.jsonl for RAG ingestion.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Is everything really free, and what is the paid tier?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "All 19 surfaces — MCP, A2A, NLWeb, function-calling, OpenAPI, JSON/CSV/JSONL exports, badges, and discovery manifests — are free forever with no API key, no credit card, and only polite per-IP origin limits. The only paid surface is the get_deep_signal tool (€0.19/call, 100 for €19), which returns a composite score, in-sector rank, plain-English thesis, top-3 comparables, and multi-period history. Misses charge nothing and credits never expire.",
+            },
+          },
         ],
       },
     ],
@@ -344,6 +471,7 @@ export default function AgentsLandingPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <AgentMirrorLinks path="/agents" />
 
       <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <nav className="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">
@@ -361,7 +489,7 @@ export default function AgentsLandingPage() {
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-3 leading-tight">
             Every way to reach VC Deal Flow Signal programmatically
           </h1>
-          <p className="text-xs text-gray-500 mb-3 leading-relaxed">
+          <p className="text-xs text-gray-400 mb-3 leading-relaxed">
             <strong className="text-gray-300">VC Deal Flow Signal (GitDealFlow)</strong>{" "}
             — Wikidata{" "}
             <a
@@ -541,7 +669,7 @@ export default function AgentsLandingPage() {
             </div>
           </div>
 
-          <p className="text-gray-500 text-xs leading-relaxed">
+          <p className="text-gray-400 text-xs leading-relaxed">
             The {surfaces.length} surfaces above remain free forever — credits
             only apply to <code className="text-emerald-400 font-mono">get_deep_signal</code>{" "}
             and the <code className="text-emerald-400 font-mono">/api/agent/deep-signal</code>{" "}

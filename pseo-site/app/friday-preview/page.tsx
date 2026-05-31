@@ -75,7 +75,7 @@ export default function FridayPreviewPage() {
         name: "Friday preview — Sunday's five, names redacted",
         url: "https://signals.gitdealflow.com/friday-preview",
         description:
-          "Brunson Best-Bait teaser surface — show the shape of the Sunday digest without revealing the names.",
+          "Right-shaped-bait teaser surface — show the shape of the Sunday digest without revealing the names.",
       },
       {
         "@type": "BreadcrumbList",
@@ -144,7 +144,7 @@ export default function FridayPreviewPage() {
                       #{i + 1}
                     </span>
                     <div className="min-w-0">
-                      <p className="font-mono text-gray-500 text-xs uppercase tracking-wider mb-1">
+                      <p className="font-mono text-gray-400 text-xs uppercase tracking-wider mb-1">
                         Org name
                       </p>
                       <p
@@ -166,7 +166,7 @@ export default function FridayPreviewPage() {
 
                 <dl className="grid grid-cols-2 sm:grid-cols-3 gap-3 text-sm pt-2 border-t border-slate-800">
                   <div>
-                    <dt className="text-gray-500 text-[11px] uppercase tracking-wider mb-0.5">
+                    <dt className="text-gray-400 text-[11px] uppercase tracking-wider mb-0.5">
                       Sector
                     </dt>
                     <dd className="text-gray-200 font-medium">
@@ -174,7 +174,7 @@ export default function FridayPreviewPage() {
                     </dd>
                   </div>
                   <div>
-                    <dt className="text-gray-500 text-[11px] uppercase tracking-wider mb-0.5">
+                    <dt className="text-gray-400 text-[11px] uppercase tracking-wider mb-0.5">
                       14-day velocity
                     </dt>
                     <dd className="text-amber-300 font-semibold">
@@ -182,7 +182,7 @@ export default function FridayPreviewPage() {
                     </dd>
                   </div>
                   <div>
-                    <dt className="text-gray-500 text-[11px] uppercase tracking-wider mb-0.5">
+                    <dt className="text-gray-400 text-[11px] uppercase tracking-wider mb-0.5">
                       Signal type
                     </dt>
                     <dd className="text-gray-200 font-medium">
@@ -200,7 +200,7 @@ export default function FridayPreviewPage() {
           className="space-y-4"
         >
           <div className="space-y-1">
-            <p className="text-gray-500 text-xs font-semibold uppercase tracking-wider">
+            <p className="text-gray-400 text-xs font-semibold uppercase tracking-wider">
               Get Sunday&rsquo;s actual names
             </p>
             <h2 className="text-xl sm:text-2xl font-bold text-gray-100">
@@ -221,16 +221,15 @@ export default function FridayPreviewPage() {
             Why redact?
           </p>
           <p className="text-gray-300 text-sm leading-relaxed">
-            Brunson&rsquo;s rule of bait: show enough to let the buyer
-            verify the value, but not so much that they no longer need to
-            consume the offer. The shape of the digest IS the value
-            preview — sector + stage + velocity-bucket + signal-type stack
-            is the engine&rsquo;s actual output. Names are the payload.
-            Trailer first, payload Sunday.
+            Show enough to let the buyer verify the value, but not so much
+            that they no longer need to consume the offer. The shape of the
+            digest IS the value preview — sector + stage + velocity-bucket +
+            signal-type stack is the engine&rsquo;s actual output. Names are
+            the payload. Trailer first, payload Sunday.
           </p>
         </aside>
 
-        <p className="text-gray-500 text-sm border-t border-slate-800 pt-5 leading-relaxed">
+        <p className="text-gray-400 text-sm border-t border-slate-800 pt-5 leading-relaxed">
           Want the full ranking now (not just five)?{" "}
           <Link
             href="/trending"

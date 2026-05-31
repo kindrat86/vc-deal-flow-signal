@@ -69,7 +69,7 @@ export default async function DashboardPage() {
       {/* Session bar */}
       <div className="mb-6 flex items-center justify-between rounded-lg border border-slate-800 bg-slate-900/60 px-4 py-2.5">
         <div className="flex items-center gap-3 text-sm">
-          <span className="text-gray-500">Logged in as</span>
+          <span className="text-gray-400">Logged in as</span>
           <span className="text-gray-200">{session.email}</span>
           <span
             className={`inline-block text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full ${
@@ -84,10 +84,10 @@ export default async function DashboardPage() {
         <div className="flex items-center gap-4">
           {isInsider && (
             <>
-              <Link href="/dashboard/watchlist" className="text-gray-500 hover:text-gray-300 text-xs transition">
+              <Link href="/dashboard/watchlist" className="text-gray-400 hover:text-gray-300 text-xs transition">
                 Watchlist
               </Link>
-              <Link href="/dashboard/api-keys" className="text-gray-500 hover:text-gray-300 text-xs transition">
+              <Link href="/dashboard/api-keys" className="text-gray-400 hover:text-gray-300 text-xs transition">
                 API Keys
               </Link>
             </>
@@ -97,7 +97,7 @@ export default async function DashboardPage() {
       </div>
 
       {/* Breadcrumb */}
-      <nav className="mb-6 text-sm text-gray-500" aria-label="Breadcrumb">
+      <nav className="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">
         <Link href="/" className="hover:text-gray-300 transition-colors">
           All Sectors
         </Link>

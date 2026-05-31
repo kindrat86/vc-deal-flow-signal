@@ -101,12 +101,15 @@ function startupCard(s: DigestStartup): string {
                                 <td class="tx-mut" style="color:${BRAND.textMut};font-size:12px;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;">${escape(s.sectorName)}</td>
                               </tr>
                             </table>
-                            <div class="tx-pri" style="color:${BRAND.textPri};font-size:18px;font-weight:700;letter-spacing:-0.01em;margin-top:10px;">${escape(s.name)}</div>
-                            <p class="tx-sec" style="margin:4px 0 0 0;color:${BRAND.textSec};font-size:14px;line-height:20px;">${escape(s.description)}</p>
+                            <div class="tx-pri" style="color:${BRAND.textPri};font-size:18px;font-weight:700;letter-spacing:-0.01em;margin-top:10px;">${escape(s.name)}</div>${
+                              s.description
+                                ? `\n                            <p class="tx-sec" style="margin:4px 0 0 0;color:${BRAND.textSec};font-size:14px;line-height:20px;">${escape(s.description)}</p>`
+                                : ""
+                            }
                           </td>
                           <td align="right" width="110" class="hide-sm" style="vertical-align:top;padding-left:16px;">
                             <div style="color:${BRAND.positive};font-size:22px;font-weight:800;letter-spacing:-0.01em;text-align:right;">${escape(s.commitVelocityChange)}</div>
-                            <div class="tx-mut" style="color:${BRAND.textMut};font-size:11px;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;text-align:right;margin-top:2px;">vs. baseline</div>
+                            <div class="tx-mut" style="color:${BRAND.textMut};font-size:11px;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;text-align:right;margin-top:2px;">vs. usual pace</div>
                           </td>
                         </tr>
                       </table>
@@ -117,12 +120,12 @@ function startupCard(s: DigestStartup): string {
                               <tr>
                                 <td style="background:rgba(14,165,233,0.12);color:${BRAND.accentLight};font-size:12px;font-weight:600;padding:4px 10px;border-radius:6px;border:1px solid rgba(14,165,233,0.3);">${escape(s.signalType)}</td>
                                 <td style="width:6px;">&nbsp;</td>
-                                <td class="tx-mut" style="color:${BRAND.textMut};font-size:12px;">${s.commitVelocity14d} commits · ${s.contributors} contributors · 14d</td>
+                                <td class="tx-mut" style="color:${BRAND.textMut};font-size:12px;">${s.commitVelocity14d} code updates · ${s.contributors} engineers · last 14 days</td>
                               </tr>
                             </table>
                           </td>
                           <td align="right" class="hide-sm">
-                            <span style="color:${BRAND.accent};font-size:13px;font-weight:600;">View signal &rarr;</span>
+                            <span style="color:${BRAND.accent};font-size:13px;font-weight:600;">See the details &rarr;</span>
                           </td>
                         </tr>
                       </table>
@@ -139,7 +142,7 @@ function sectorCard(s: DigestSector): string {
                     <div class="tx-mut" style="color:${BRAND.textMut};font-size:11px;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;">${escape(s.name)}</div>
                     <div class="tx-pri" style="color:${BRAND.textPri};font-size:20px;font-weight:700;margin-top:6px;">${escape(s.topStartup)}</div>
                     <div style="color:${BRAND.positive};font-size:13px;font-weight:600;margin-top:2px;">${escape(s.topChange)} top mover</div>
-                    <div class="tx-mut" style="color:${BRAND.textMut};font-size:12px;margin-top:8px;">${s.count} tracked &middot; avg ${s.avgVelocity} commits/14d</div>
+                    <div class="tx-mut" style="color:${BRAND.textMut};font-size:12px;margin-top:8px;">${s.count} startups &middot; ~${s.avgVelocity} code updates in 14 days</div>
                   </td>`;
 }
 
@@ -254,7 +257,7 @@ export function renderDigestEmail(data: DigestData, opts: DigestOptions = {}): s
           <tr>
             <td class="px-outer" style="padding:0 8px 16px 8px;">
               <h2 class="tx-pri" style="margin:0 0 4px 0;color:${BRAND.textPri};font-size:20px;font-weight:700;letter-spacing:-0.01em;">Top 5 Breakouts This Week</h2>
-              <p class="tx-mut" style="margin:0;color:${BRAND.textMut};font-size:13px;">Ranked by commit-velocity change vs. 30-day baseline.</p>
+              <p class="tx-mut" style="margin:0;color:${BRAND.textMut};font-size:13px;">Ranked by how much faster they're shipping than their normal pace.</p>
             </td>
           </tr>${data.topStartups.slice(0, 5).map(startupCard).join("")}
 
@@ -263,7 +266,7 @@ export function renderDigestEmail(data: DigestData, opts: DigestOptions = {}): s
           <tr>
             <td class="px-outer" style="padding:0 8px 16px 8px;">
               <h2 class="tx-pri" style="margin:0 0 4px 0;color:${BRAND.textPri};font-size:20px;font-weight:700;letter-spacing:-0.01em;">Hottest Sectors</h2>
-              <p class="tx-mut" style="margin:0;color:${BRAND.textMut};font-size:13px;">Where engineering capital is concentrating.</p>
+              <p class="tx-mut" style="margin:0;color:${BRAND.textMut};font-size:13px;">Where teams are building fastest right now.</p>
             </td>
           </tr>
           <tr>
@@ -284,15 +287,15 @@ export function renderDigestEmail(data: DigestData, opts: DigestOptions = {}): s
           <tr><td style="height:32px;line-height:32px;font-size:0;">&nbsp;</td></tr>
           <tr>
             <td align="center" class="px-outer" style="padding:0 8px;">
-              <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;">
                 <tr>
-                  <td align="center" style="background:${BRAND.accent};border-radius:10px;">
-                    <a href="https://signals.gitdealflow.com/trending" style="display:inline-block;padding:14px 28px;color:${BRAND.onAccent};font-size:15px;font-weight:700;letter-spacing:-0.01em;">Browse the full 60+ ranking &rarr;</a>
+                  <td align="center">
+                    <a href="https://signals.gitdealflow.com/trending" style="display:block;width:100%;box-sizing:border-box;background:${BRAND.accent};color:${BRAND.onAccent};font-weight:700;font-size:19px;line-height:1.2;letter-spacing:-0.01em;padding:18px 28px;border-radius:10px;text-decoration:none;text-align:center;box-shadow:0 4px 14px rgba(2,132,199,0.35);">Browse the full 60+ ranking &rarr;</a>
                   </td>
                 </tr>
               </table>
               <p class="tx-mut" style="margin:12px 0 0 0;color:${BRAND.textMut};font-size:13px;">
-                Want the deep dive? <a href="https://gitdealflow.com/#pricing" style="color:${BRAND.accentLight};font-weight:600;">Join the Insider Circle</a> for raw data, alerts, and the paid research stack.
+                Want the deep dive? <a href="https://gitdealflow.com/#pricing" style="color:${BRAND.accentLight};font-weight:600;">Join the Insider Circle</a> for the full numbers, real-time alerts, and the complete research tools.
               </p>
             </td>
           </tr>
@@ -303,8 +306,8 @@ export function renderDigestEmail(data: DigestData, opts: DigestOptions = {}): s
             <td class="bg-card brd px-outer" style="background:${BRAND.card};border:1px solid ${BRAND.border};border-radius:12px;padding:20px;">
               <div class="tx-mut" style="color:${BRAND.textMut};font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;">How we measure</div>
               <p class="tx-sec" style="margin:8px 0 0 0;color:${BRAND.textSec};font-size:14px;line-height:22px;">
-                We score commit velocity, contributor growth, and release cadence over a rolling 14-day window against each startup's own 30-day baseline. The startups at the top of this list have historically preceded fundraise announcements by 3&ndash;6 weeks.
-                <a href="https://signals.gitdealflow.com/methodology" style="color:${BRAND.accentLight};font-weight:600;">Full methodology &rarr;</a>
+                Each week we look at how fast a team is shipping code, how many engineers are pitching in, and how often they push out updates &mdash; over the last 14 days, against that startup's own normal pace. The names at the top of this list have historically started moving 3&ndash;6 weeks before a funding announcement.
+                <a href="https://signals.gitdealflow.com/methodology" style="color:${BRAND.accentLight};font-weight:600;">See exactly how &rarr;</a>
               </p>
             </td>
           </tr>

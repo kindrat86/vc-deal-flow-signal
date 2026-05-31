@@ -4,19 +4,20 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { DataNerdAudio } from "@/components/DataNerdAudio";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import ThreeCoreStoriesNav from "@/components/ThreeCoreStoriesNav";
 
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title:
-    "Origin — the Hero's Two Journeys behind VC Deal Flow Signal",
+    "Origin — Why Hearing About the Company Late Became the Problem",
   description:
-    "Why a developer who also writes angel checks decided that warm-intro deal flow was a structurally broken vehicle, and what replaced it. The full Russell Brunson Hero's Two Journeys arc — identity shift, three false beliefs collapsed, the new vehicle.",
+    "Why hearing about the company late became the real problem, and why public engineering movement became the earlier signal worth watching.",
   alternates: { canonical: "/origin" },
   openGraph: {
-    title: "Origin — VC Deal Flow Signal",
+    title: "Origin — Why the signal exists",
     description:
-      "The Hero's Two Journeys story: from warm-intro investor to GitHub-momentum investor, three false beliefs collapsed.",
+      "Why hearing about the company late became the problem, and what changed after that.",
     url: "https://signals.gitdealflow.com/origin",
     type: "article",
   },
@@ -29,15 +30,15 @@ export default function OriginPage() {
       {
         "@type": "Article",
         "@id": "https://signals.gitdealflow.com/origin#article",
-        headline: "Origin — the Hero's Two Journeys behind VC Deal Flow Signal",
+        headline: "Origin — why hearing about the company late became the problem",
         description:
-          "Why a developer who also writes angel checks decided that warm-intro deal flow was a structurally broken vehicle, and what replaced it.",
+          "Why hearing about the company late became the real problem, and why public engineering movement became the earlier signal worth watching.",
         url: "https://signals.gitdealflow.com/origin",
         datePublished: "2026-05-05T00:00:00.000Z",
         dateModified: "2026-05-05T00:00:00.000Z",
         author: {
           "@type": "Person",
-          "@id": "https://signals.gitdealflow.com/about#author",
+          "@id": "https://signals.gitdealflow.com/about#person",
           name: "The Data Nerd",
           url: "https://signals.gitdealflow.com/about/founder",
         },
@@ -50,6 +51,17 @@ export default function OriginPage() {
         speakable: {
           "@type": "SpeakableSpecification",
           cssSelector: ["[data-speakable]", "h1", "h2"],
+        },
+        // Brunson Expert Secrets Ch 8 (Hero's Two Journeys) — the founder's
+        // arc on this page is half of the work; the buyer's arc lives at
+        // /origin/your-journey. hasPart wires the symmetry into structured
+        // data so an LLM reading the schema sees the two arcs as one piece.
+        hasPart: {
+          "@type": "Article",
+          "@id":
+            "https://signals.gitdealflow.com/origin/your-journey#article",
+          name: "Your Journey — the buyer's arc",
+          url: "https://signals.gitdealflow.com/origin/your-journey",
         },
       },
       {
@@ -95,30 +107,43 @@ export default function OriginPage() {
 
         <header className="space-y-4">
           <p className="text-sky-400 text-xs font-medium uppercase tracking-wider">
-            Origin · Hero&rsquo;s Two Journeys · 8-minute read
+            Origin · 8-minute read
           </p>
           <h1
             className="text-3xl sm:text-5xl font-bold text-gray-100 leading-[1.05] tracking-tight"
             data-speakable
           >
-            I used to think deal flow was a network problem.{" "}
-            <span className="text-sky-400">
-              Then I watched a $4M Series A I should have been in.
-            </span>
+            You do not need a bigger network if the real problem is that the signal reached you too late.
           </h1>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed" data-speakable>
-            This is the long version. Russell Brunson calls it the Hero&rsquo;s
-            Two Journeys — the identity-shift story where you took the wrong
-            road first, three false beliefs broke one by one, and the new road
-            became the only road that made sense. Read it if you want to know
-            why I built this. Skip it if you just want the data.
+            This is the long version of why the signal exists. The old assumption was that better deals came from better introductions. The harder lesson was that public movement was already there earlier — it just wasn’t being read clearly enough to use.
           </p>
           <DataNerdAudio
             slug="origin"
-            label="Listen — The Data Nerd tells the Hero's Two Journeys"
+            label="Listen — The Data Nerd tells the origin story"
             subtitle="Synthetic voice (Cartesia). The same voice you'll hear on every YouTube short and every email-audio companion."
           />
         </header>
+
+        <section className="rounded-xl border border-sky-700/30 bg-sky-950/20 p-6 sm:p-8 space-y-3">
+          <p className="text-sky-300 text-xs font-semibold uppercase tracking-[0.14em]">
+            Start with the highest-intent routes
+          </p>
+          <p className="text-gray-300 text-sm leading-relaxed">
+            Read this page if you want the founder-level why. But if your real question is whether the signal holds up, where the timing edge comes from, or what to do with it next, use the sharper proof pages first.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/research" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-sky-600 text-white text-sm font-semibold hover:bg-sky-500 transition-colors">
+              Read the research panel →
+            </Link>
+            <Link href="/how-to-spot-startup-momentum-before-the-round-gets-crowded" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              Read the timing primer →
+            </Link>
+            <Link href="/buyers-guide" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              Read the buyer's guide →
+            </Link>
+          </div>
+        </section>
 
         {/* THE OLD JOURNEY */}
         <section className="space-y-4">
@@ -343,6 +368,35 @@ export default function OriginPage() {
             None of these doors are wrong. Pick the one that matches the way
             you actually want to buy.
           </p>
+
+          {/* Brunson Expert Secrets Ch 8 (Hero's Two Journeys) — the
+              founder's arc above is half of the work. The matching buyer's
+              arc lives at /origin/your-journey. Promoted to a dedicated
+              card above the CTAs so a reader who finished the founder
+              journey lands on their own arc next, not on a checkout. */}
+          <Link
+            href="/origin/your-journey"
+            className="block rounded-xl border border-sky-700/40 bg-gradient-to-br from-sky-950/30 via-slate-900 to-slate-950 p-5 sm:p-6 hover:border-sky-600 hover:from-sky-950/45 transition-colors group"
+          >
+            <p className="text-sky-300 text-[10px] font-semibold uppercase tracking-wider mb-2">
+              The matching arc · 10-minute read
+            </p>
+            <h3 className="text-gray-100 font-bold text-lg sm:text-xl leading-snug mb-2">
+              Now read{" "}
+              <span className="text-sky-400 group-hover:text-sky-300">
+                your journey
+              </span>
+              {" "}— the same arc, told from your seat.
+              <span aria-hidden className="ml-1 inline-block transition-transform group-hover:translate-x-0.5">→</span>
+            </h3>
+            <p className="text-gray-300 text-sm leading-relaxed">
+              The deal you&rsquo;ll never tell anyone about, the three false
+              beliefs you&rsquo;re holding without naming, the first concrete
+              move on a Sunday, and what you actually look like as an investor
+              six months in. Eight beats, mirrored against the eight beats above.
+            </p>
+          </Link>
+
           <ul className="text-gray-200 text-base leading-relaxed space-y-2 pl-1 pt-2">
             <li>
               →{" "}
@@ -384,7 +438,16 @@ export default function OriginPage() {
           </ul>
         </section>
 
-        <section className="border-t border-slate-800 pt-8 text-sm text-gray-500 leading-relaxed">
+        {/* Brunson Expert Secrets Ch 9 — The Three Core Stories.
+            Audit 2026-05-09 (Ch 9 push 94→100): replace the generic
+            "more reading" footer below with story-aware transition CTAs
+            that move the reader explicitly into the Vehicle and Identity
+            stories. The footer below is preserved for the secondary
+            references (founder page, walkthrough, /story post-mortem)
+            but the primary next-step is now the Three Core Stories nav. */}
+        <ThreeCoreStoriesNav current="origin" />
+
+        <section className="border-t border-slate-800 pt-8 text-sm text-gray-400 leading-relaxed">
           <p>
             More about who&rsquo;s writing this on{" "}
             <Link
@@ -395,10 +458,10 @@ export default function OriginPage() {
             </Link>
             . The shorter, lighter version of the same story is the{" "}
             <Link
-              href="/perfect-webinar"
+              href="/walkthrough"
               className="text-gray-400 hover:text-gray-200 underline decoration-dotted"
             >
-              12-minute Perfect Webinar
+              12-minute walkthrough
             </Link>
             . The launch-diary post-mortem (zero PH votes, what I learned) lives
             at{" "}

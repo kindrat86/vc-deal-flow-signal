@@ -1,0 +1,39 @@
+TO: [Quantitative VC newsletter author — research current authors before send; suggested targets in order: Sammy Abdullah / Blossom Street Ventures, Hunter Walk / Homebrew Substack, Charlie O'Donnell / Brooklyn Bridge Ventures, Tomasz Tunguz, Jamin Ball / Clouded Judgement]
+FROM: signal@gitdealflow.com
+SUBJECT: SSRN: GitHub commit velocity leads VC announcements by 7 weeks (n=12k)
+
+Hi,
+
+I run gitdealflow.com — an open-methodology research project on which public GitHub repository signals are leading indicators for institutional VC funding announcements. SSRN-published: abstract=6606558.
+
+Headline finding from the regression: a sustained commit-velocity spike (>40% over a 14-day rolling window vs. the prior 90-day baseline) precedes the public fundraise announcement by a median of 7 weeks. 90% confidence interval: 4-13 weeks. The window is consistent across pre-seed through Series B in a sample of 12,000+ public repos.
+
+Three other signals survive alongside velocity in the multi-variate regression:
+— Contributor-diversity Gini coefficient drops from ~0.7 to ~0.45 in the lead-up to institutional rounds
+— Stars-to-PR ratio rebound after a public spec-cut
+— Dependent-count growth on framework / library repos
+
+Two-of-four firing is the practical threshold; the false-positive rate at that threshold is ~22% in our sample.
+
+I think the result is interesting for your readership specifically because it's reproducible from public GitHub APIs alone (no proprietary telemetry, no API key gating), and because the lead-time window is wide enough to be practically useful for pre-announcement deal sourcing — not just retrospective curiosity.
+
+Three artifacts you can verify or fork:
+
+1. SSRN paper (open access): https://ssrn.com/abstract=6606558
+2. Methodology page with reproducible Python: https://signals.gitdealflow.com/methodology
+3. Live ranked watchlist with post-hoc grading at 60d / 90d: https://signals.gitdealflow.com/predicted
+
+Two other things that might be writeup-relevant:
+
+(a) The methodology is intentionally not productized as a closed-source feature. The MCP server (six tools, free, no API key) ships the same regression to anyone running Claude Desktop / Cursor / Cline. The commercial wedge is sector-specific deep-dives, not the core signal.
+
+(b) Every named pick on the live watchlist is graded against public fundraise / acquisition / IPO news at 60 and 90 days. Hits and misses are public, which means the false-positive rate is verifiable in real time, not just in the sample.
+
+If you're open to a 30-minute methodology walkthrough — async, async, or written follow-up — happy to oblige. If a writeup interests you, the dataset is yours to fork. If not, no follow-up.
+
+Best,
+The Data Nerd (anonymous-by-policy; happy to talk on Signal/Telegram if helpful)
+signal@gitdealflow.com
+SSRN: abstract=6606558
+
+P.S. Why you specifically: I read your archive on quantitative venture and the 6-12 week lead-time question is one you've raised before but no one (including me until this paper) had public empirical data on. This is the data, with full methodology.

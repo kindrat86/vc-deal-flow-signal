@@ -60,7 +60,7 @@ const STACK = [
 const FAQS = [
   {
     q: "Why €1?",
-    a: "Brunson rule: the €0-to-€7 jump is psychologically larger than the €7-to-€97 jump. €1 isn't margin — it's a buyer-threshold breaker. Once you've put a card on file at any price, the next purchase is no longer a first purchase. We'd rather you trial the signal at the lowest possible cost, see whether the output reads true on a startup you already know, and then decide if the €7 First Look Pass or the €9.97/mo Dashboard is worth a real budget line.",
+    a: "The €0-to-€7 jump is psychologically larger than the €7-to-€97 jump. €1 isn't margin — it's a buyer-threshold breaker. Once you've put a card on file at any price, the next purchase is no longer a first purchase. We'd rather you trial the signal at the lowest possible cost, see whether the output reads true on a startup you already know, and then decide if the €7 First Look Pass or the €9.97/mo Dashboard is worth a real budget line.",
   },
   {
     q: "What's the deliverable, exactly?",
@@ -94,6 +94,7 @@ export default function TeardownPage() {
           "@type": "Offer",
           price: "1.00",
           priceCurrency: "EUR",
+          priceValidUntil: "2026-12-31",
           availability: "https://schema.org/InStock",
           url: "https://signals.gitdealflow.com/teardown",
         },
@@ -214,7 +215,7 @@ export default function TeardownPage() {
               repos in 9 days; first PRs from a former Anthropic eng.
               Read: pre-fundraise hardening, expect press 4-6 weeks out.
             </p>
-            <p className="text-gray-500 text-xs italic">
+            <p className="text-gray-400 text-xs italic">
               Real format. Real numbers when you name a real org.
             </p>
           </div>
@@ -239,7 +240,7 @@ export default function TeardownPage() {
           >
             Buy the Teardown — €1 <span aria-hidden="true">→</span>
           </a>
-          <p className="text-gray-500 text-xs">
+          <p className="text-gray-400 text-xs">
             Already know you want the full sector deep dive?{" "}
             <Link
               href="/firstlook"
@@ -281,7 +282,7 @@ export default function TeardownPage() {
           className="border-l-2 border-slate-700 pl-4 py-1 space-y-1"
           aria-label="Downsell to free list"
         >
-          <p className="text-gray-500 text-[10px] sm:text-xs font-semibold uppercase tracking-wider">
+          <p className="text-gray-400 text-[10px] sm:text-xs font-semibold uppercase tracking-wider">
             Not ready for €1?
           </p>
           <p className="text-gray-400 text-sm leading-relaxed">
@@ -310,13 +311,13 @@ export default function TeardownPage() {
           ))}
         </section>
 
-        <p className="text-gray-500 text-sm border-t border-slate-800 pt-5">
+        <p className="text-gray-400 text-sm border-t border-slate-800 pt-5">
           Want the full pricing ladder?{" "}
           <Link
             href="/pricing"
             className="text-sky-400 hover:text-sky-300 underline decoration-dotted"
           >
-            See all seven tiers
+            See all ten tiers
           </Link>
           .
         </p>

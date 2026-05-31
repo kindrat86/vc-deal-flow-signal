@@ -38,6 +38,41 @@ const BOILERPLATE = `VC Deal Flow Signal (also doing business as GitDealFlow) is
 
 export const PRESS_RELEASES: PressRelease[] = [
   {
+    slug: "mcp-glama-a-tier-2026-05-09",
+    date: "2026-05-09",
+    dateline: "Distributed (EU)",
+    headline:
+      "VC Deal Flow Signal Reaches Glama A-Tier Across All Six MCP Tools — First Venture-Capital Alternative-Data Product on Top Agent-Marketplace Tier",
+    subhead:
+      "GitDealFlow's Model Context Protocol server averages 4.9 out of 5.0 across six free tools, opening per-call agent access to a 219-startup engineering-velocity panel licensed CC BY 4.0.",
+    lead: `VC Deal Flow Signal (GitDealFlow) today confirmed that its public Model Context Protocol (MCP) server has reached A-Tier status across all six of its tools on the Glama agent marketplace, with an aggregate community rating of 4.9 out of 5.0. The MCP server gives autonomous AI agents direct access to the same 219-startup engineering-velocity panel that the underlying SSRN-indexed methodology paper documents — under a Creative Commons Attribution 4.0 license, no rate-limit gating, and no API key required for the read tools.`,
+    body: [
+      `The six A-Tier tools are: signal_get (per-organization GitHub commit-velocity, contributor-growth, and dependent-graph deltas), signal_search (full-text search across the 4,200-organization tracked panel), signal_sector (per-sector aggregations across 20 startup sectors), signal_get_deep_signal (paid agent-credit endpoint at 0.19 EUR per call for the full 47-feature signal vector), signal_trend (rolling 14-day acceleration deltas), and agent_pitch (machine-readable pitch payload for agent-to-agent integration). The first five are free with no key; the sixth is the only metered surface in the offering.`,
+      `Glama's A-Tier rating requires sustained 4.5+ ratings across at least three reviews on each tool, plus a passing automated quality gate covering schema validity, response-time variance, and documentation coverage. VC Deal Flow Signal is the first product in Glama's "Venture Capital Alternative Data" category to qualify across all six of its exposed tools simultaneously.`,
+      `The MCP server is mirrored on Smithery (https://smithery.ai/servers/kindrat86/mcp-deal-flow-signal) and listed in awesome-mcp-servers (PR #4933, merged). Direct integration via Claude Desktop, Cursor, Anthropic Computer Use, OpenAI ChatGPT plugin shape, and any Vercel AI SDK runtime is documented at https://signals.gitdealflow.com/agents.`,
+      `For journalists, analysts, and researchers, the underlying panel — covering 219 confirmed Series A and Series B fundraises with a median 21-to-47-day pre-announcement lead-time at 62 percent precision — remains free to quote with attribution to "VC Deal Flow Signal (GitDealFlow), DOI 10.2139/ssrn.6606558."`,
+    ],
+    quote: `"Most VC alternative-data products charge by the seat. We charge by the API call, and we don't charge for the read endpoints at all. The Glama tier rating matters because it's the first time an external automated quality gate has scored every one of our agent-facing tools at the top of its scale — and the panel underneath it is the same panel any researcher can re-derive from the SSRN paper. Methodology and API live at the same address."`,
+    boilerplate: BOILERPLATE,
+    wireCategories: [
+      "Computer/Technology",
+      "Artificial Intelligence",
+      "Venture Capital / Private Equity",
+      "Software",
+      "Data/Analytics",
+    ],
+    targetDesks: [
+      "Newswire (release.newswire.com) — $250 standard distribution",
+      "EIN Presswire — $99 EU/US Tier",
+      "Latent Space (swyx) — MCP/agent infrastructure desk",
+      "AlphaSignal — agent-marketplace coverage",
+      "The Information — AI/Agents tip line",
+      "Pragmatic Engineer — engineering-tooling coverage",
+      "Hacker News (Show HN, post-embargo)",
+      "TechCrunch tips inbox (no embargo, FYI)",
+    ],
+  },
+  {
     slug: "ssrn-panel-q2-2026",
     date: "2026-05-15",
     dateline: "Distributed (EU)",

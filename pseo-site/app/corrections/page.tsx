@@ -154,8 +154,8 @@ export default function CorrectionsPage() {
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <nav className="text-xs text-gray-500 mb-6" aria-label="Breadcrumb">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <nav className="text-xs text-gray-400 mb-6" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300">
             Home
           </Link>
@@ -232,7 +232,7 @@ export default function CorrectionsPage() {
                 <div className="flex flex-wrap items-baseline gap-3 mb-2">
                   <time
                     dateTime={c.date}
-                    className="text-xs font-mono text-gray-500"
+                    className="text-xs font-mono text-gray-400"
                   >
                     {c.date}
                   </time>
@@ -262,17 +262,17 @@ export default function CorrectionsPage() {
                   )}
                 </div>
                 <p className="text-sm text-gray-300 leading-relaxed mb-2">
-                  <span className="text-gray-500">What changed:</span> {c.what}
+                  <span className="text-gray-400">What changed:</span> {c.what}
                 </p>
                 <p className="text-sm text-gray-400 leading-relaxed">
-                  <span className="text-gray-500">Why:</span> {c.why}
+                  <span className="text-gray-400">Why:</span> {c.why}
                 </p>
               </li>
             ))}
           </ol>
         </section>
 
-        <p className="text-xs text-gray-500 text-center mt-12">
+        <p className="text-xs text-gray-400 text-center mt-12">
           See also:{" "}
           <Link href="/standards" className="hover:text-gray-300">
             Standards
@@ -290,7 +290,7 @@ export default function CorrectionsPage() {
             Changelog
           </Link>
         </p>
-      </main>
+      </div>
     </>
   );
 }

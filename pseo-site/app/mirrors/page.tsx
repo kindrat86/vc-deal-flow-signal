@@ -237,8 +237,8 @@ export default function MirrorsPage() {
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <nav className="text-xs text-gray-500 mb-6" aria-label="Breadcrumb">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <nav className="text-xs text-gray-400 mb-6" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300">
             Home
           </Link>
@@ -289,7 +289,7 @@ export default function MirrorsPage() {
                           >
                             {m.registry}
                           </a>
-                          <p className="text-xs text-gray-500 font-mono mt-1 break-all">
+                          <p className="text-xs text-gray-400 font-mono mt-1 break-all">
                             {m.href.replace(/^https?:\/\//, "")}
                           </p>
                         </td>
@@ -308,7 +308,7 @@ export default function MirrorsPage() {
           );
         })}
 
-        <p className="text-xs text-gray-500 text-center mt-10">
+        <p className="text-xs text-gray-400 text-center mt-10">
           See also:{" "}
           <Link href="/attestations" className="hover:text-gray-300">
             Attestations
@@ -326,7 +326,7 @@ export default function MirrorsPage() {
             Press kit
           </Link>
         </p>
-      </main>
+      </div>
     </>
   );
 }

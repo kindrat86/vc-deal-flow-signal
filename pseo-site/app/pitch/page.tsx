@@ -219,13 +219,13 @@ export default function PitchPage() {
         </section>
 
         {/* DEEP DIVE LINK */}
-        <p className="text-center text-gray-500 text-sm pt-4">
+        <p className="text-center text-gray-400 text-sm pt-4">
           Want the long version? Read the{" "}
           <Link
-            href="/perfect-webinar"
+            href="/walkthrough"
             className="text-sky-400 hover:text-sky-300 underline decoration-dotted"
           >
-            12-minute Perfect Webinar
+            12-minute walkthrough
           </Link>{" "}
           — same case, three objections broken, full stack reveal.
         </p>

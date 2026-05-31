@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import { FalseBeliefBreaker } from "@/components/FalseBeliefBreaker";
 import { getHreflangLanguages } from "@/lib/hreflang";
 
 export const dynamic = "force-static";
@@ -9,7 +10,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Scorecard — Acceleration Watch grading at 60 and 90 days",
   description:
-    "Public scorecard of every Acceleration Watch pick. Grading rules, hit/miss/pending counts, lead-time measurement against fundraise announcements. Magic Bullet on a rolling cadence.",
+    "Public scorecard of every Acceleration Watch pick. Grading rules, hit/miss/pending counts, lead-time measurement against fundraise announcements. One-shot proof on a rolling cadence.",
   alternates: { canonical: "/scorecard" },
   openGraph: {
     title: "Scorecard — Acceleration Watch public grading",
@@ -125,24 +126,23 @@ export default function ScorecardPage() {
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
         <header className="space-y-4">
-          <nav aria-label="Breadcrumb" className="text-xs text-gray-500">
+          <nav aria-label="Breadcrumb" className="text-xs text-gray-400">
             <Link href="/" className="hover:text-gray-300">Home</Link>
             <span className="mx-2">/</span>
             <span className="text-gray-400">Scorecard</span>
           </nav>
           <p className="text-amber-400 text-xs font-semibold uppercase tracking-wider">
-            Expert Secrets · Ch 13 — Magic Bullet · Rolling cadence
+            One-shot proof · Rolling cadence
           </p>
           <h1 className="text-3xl sm:text-5xl font-bold text-gray-100 leading-[1.1] tracking-tight">
             Public scorecard. <span className="text-amber-400">Every pick, graded.</span>
           </h1>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
-            Brunson&rsquo;s teaching on the Magic Bullet: a single
-            demonstration is good, but a public, rolling, recurring
-            scorecard is the demonstration that compounds. Every
-            Acceleration Watch pick lands with a date, gets graded at
-            60 and 90 days, and stays on this page whether it Hit, Missed,
-            or is still Pending. No hiding the misses.
+            A single demonstration is good, but a public, rolling, recurring
+            scorecard is the demonstration that compounds. Every Acceleration
+            Watch pick lands with a date, gets graded at 60 and 90 days, and
+            stays on this page whether it Hit, Missed, or is still Pending.
+            No hiding the misses.
           </p>
         </header>
 
@@ -164,7 +164,7 @@ export default function ScorecardPage() {
         </section>
 
         <section className="rounded-xl border border-slate-800 bg-slate-900/60 p-5 sm:p-6">
-          <p className="text-gray-500 text-[10px] font-semibold uppercase tracking-wider mb-3">
+          <p className="text-gray-400 text-[10px] font-semibold uppercase tracking-wider mb-3">
             Cumulative · {totals.picks} picks across {SCORE_ROWS.length} weeks
           </p>
           <div className="grid grid-cols-3 gap-3">
@@ -181,7 +181,7 @@ export default function ScorecardPage() {
               <p className="text-sky-300 text-2xl font-bold tabular-nums mt-0.5">{totals.pending}</p>
             </div>
           </div>
-          <p className="text-gray-500 text-xs leading-relaxed mt-3 pt-3 border-t border-slate-800">
+          <p className="text-gray-400 text-xs leading-relaxed mt-3 pt-3 border-t border-slate-800">
             All current picks are still inside their 60d / 90d grading window
             (the Acceleration Watch published its first archived week 2026-04-27;
             the first 60d window opens 2026-06-26). Grading begins{" "}
@@ -193,7 +193,7 @@ export default function ScorecardPage() {
         <section className="space-y-4">
           <h2 className="text-2xl font-bold text-gray-100">Weekly rolls</h2>
           <table className="w-full text-sm">
-            <thead className="text-gray-500 text-[10px] uppercase tracking-wider">
+            <thead className="text-gray-400 text-[10px] uppercase tracking-wider">
               <tr className="border-b border-slate-800">
                 <th className="text-left py-2 pr-3 font-semibold">Week</th>
                 <th className="text-right py-2 px-2 font-semibold">Picks</th>
@@ -218,7 +218,7 @@ export default function ScorecardPage() {
                   <td className="py-3 px-2 text-right tabular-nums text-emerald-400">{r.hit}</td>
                   <td className="py-3 px-2 text-right tabular-nums text-rose-400">{r.miss}</td>
                   <td className="py-3 px-2 text-right tabular-nums text-sky-400">{r.pending}</td>
-                  <td className="py-3 pl-3 text-xs text-gray-500 leading-relaxed">{r.note}</td>
+                  <td className="py-3 pl-3 text-xs text-gray-400 leading-relaxed">{r.note}</td>
                 </tr>
               ))}
             </tbody>
@@ -240,15 +240,15 @@ export default function ScorecardPage() {
           </p>
           <dl className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-sm">
             <div className="rounded-lg border border-slate-700 bg-slate-900/60 p-3">
-              <dt className="text-gray-500 text-[10px] uppercase tracking-wider">Org</dt>
+              <dt className="text-gray-400 text-[10px] uppercase tracking-wider">Org</dt>
               <dd className="text-gray-200 leading-snug mt-1">{HISTORICAL_HIGHLIGHT.name}</dd>
             </div>
             <div className="rounded-lg border border-slate-700 bg-slate-900/60 p-3">
-              <dt className="text-gray-500 text-[10px] uppercase tracking-wider">Picked</dt>
+              <dt className="text-gray-400 text-[10px] uppercase tracking-wider">Picked</dt>
               <dd className="text-gray-200 leading-snug mt-1">{HISTORICAL_HIGHLIGHT.picked}</dd>
             </div>
             <div className="rounded-lg border border-slate-700 bg-slate-900/60 p-3">
-              <dt className="text-gray-500 text-[10px] uppercase tracking-wider">Graded (Hit)</dt>
+              <dt className="text-gray-400 text-[10px] uppercase tracking-wider">Graded (Hit)</dt>
               <dd className="text-gray-200 leading-snug mt-1">{HISTORICAL_HIGHLIGHT.graded}</dd>
             </div>
             <div className="rounded-lg border border-emerald-700/40 bg-emerald-950/20 p-3">
@@ -272,6 +272,16 @@ export default function ScorecardPage() {
             + Zenodo dataset (CC BY 4.0).
           </p>
         </section>
+
+        {/* FALSE BELIEFS — Brunson Expert Secrets Ch 13 (Identifying
+            False Beliefs / Buyer's Roadmap intro). Audit 2026-05-09
+            verdict: false-belief patterns "named" but as scattered prose.
+            This is the explicit table — three patterns (Vehicle /
+            Internal / External), three breaks, three receipts. The
+            scorecard page is the right home: the patterns most often
+            attach to the "is the signal real?" beat and the scorecard
+            is where readers come looking for that proof. */}
+        <FalseBeliefBreaker />
 
         <section className="rounded-xl border border-sky-700/40 bg-sky-950/15 p-6 sm:p-8 space-y-3">
           <p className="text-sky-300 text-xs font-semibold uppercase tracking-wider">
@@ -303,11 +313,9 @@ export default function ScorecardPage() {
           </div>
         </section>
 
-        <p className="text-gray-500 text-xs leading-relaxed border-t border-slate-800 pt-6">
-          Public-grading scorecard per <em>Expert Secrets</em> Ch 13
-          (Magic Bullet — rolling demonstration variant) +{" "}
-          <em>DotCom Secrets</em> Ch 22 (Magic Bullet) by Russell
-          Brunson. Used under fair-use commentary.
+        <p className="text-gray-400 text-xs leading-relaxed border-t border-slate-800 pt-6">
+          Public-grading scorecard drawn from direct-response sales canon —
+          a rolling-demonstration variant of the one-shot proof.
         </p>
       </div>
     </>

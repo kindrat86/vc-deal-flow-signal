@@ -3,20 +3,82 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>This Week's Top 5 Breakout Startups — VC Deal Flow Signal</title>
-  <meta name="description" content="The 5 startups showing the strongest engineering acceleration this week. Real GitHub data, ranked by commit velocity change.">
+  <title>Sample report — GitDealFlow built on VC Deal Flow Signal</title>
+  <meta name="description" content="See a sample report from GitDealFlow: the startups its signal flagged as heating up, with plain-English notes and direct links to the methodology and comparison proof. A tool for investors, not a fund." />
   <meta name="robots" content="noindex, nofollow">
   <link rel="canonical" href="https://gitdealflow.com/report" />
-  <meta property="og:title" content="This Week's Top 5 Breakout Startups — VC Deal Flow Signal" />
-  <meta property="og:description" content="The 5 startups showing the strongest engineering acceleration this week." />
+  <meta property="og:title" content="Sample report — GitDealFlow" />
+  <meta property="og:description" content="See what GitDealFlow surfaces before you sign up — the startups heating up early — and how it connects back to the VC Deal Flow Signal proof stack." />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://gitdealflow.com/report" />
+  <meta property="og:image" content="https://signals.gitdealflow.com/opengraph-image" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://gitdealflow.com/report#webpage",
+        "url": "https://gitdealflow.com/report",
+        "name": "Sample report — GitDealFlow built on VC Deal Flow Signal",
+        "description": "A sample report from GitDealFlow (a signal tool for investors, not a fund), backed by the VC Deal Flow Signal methodology and comparison proof pages.",
+        "isPartOf": { "@id": "https://gitdealflow.com/#website" },
+        "about": [
+          { "@id": "https://gitdealflow.com/#organization" },
+          { "@id": "https://signals.gitdealflow.com/methodology#article" }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://gitdealflow.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Sample report", "item": "https://gitdealflow.com/report" }
+        ]
+      }
+    ]
+  }
+  </script>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="stylesheet" href="/styles.css">
   <style>
-    html { scroll-behavior: smooth; }
+    .mobile-cta-stack > * { width: 100%; }
+    .mobile-card, .mobile-step-card { transition: border-color 120ms ease, transform 120ms ease; }
+    .mobile-card:hover, .mobile-step-card:hover { border-color: rgba(14, 165, 233, 0.5); }
+    .mobile-sticky-cta { display: none; }
+    @media (min-width: 640px) { .mobile-cta-stack > * { width: auto; } }
+    @media (max-width: 639px) {
+      html { scroll-padding-top: 5rem; }
+      body { padding-bottom: 6rem; }
+      .mobile-compact-header { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+      .mobile-hero-wrap { padding-left: 1rem; padding-right: 1rem; padding-top: 4rem; padding-bottom: 4rem; }
+      .mobile-hero-title { font-size: 2rem; line-height: 1.1; }
+      .mobile-hero-copy { font-size: 1rem; line-height: 1.65; }
+      .mobile-section-pad { padding-left: 1rem; padding-right: 1rem; }
+      .mobile-card-pad { padding: 1.25rem; }
+      .mobile-stat-grid { gap: 1rem; }
+      .mobile-grid-gap { gap: 1rem; }
+      .mobile-cta-stack .btn,
+      .mobile-form-stack .btn {
+        white-space: normal; text-align: center; line-height: 1.35;
+        padding-left: 1rem; padding-right: 1rem;
+      }
+      .mobile-sticky-cta {
+        position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; display: block;
+        padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom));
+        background: rgba(2, 6, 23, 0.94); backdrop-filter: blur(12px);
+        border-top: 1px solid rgba(71, 85, 105, 0.7);
+      }
+      .mobile-sticky-cta .inner { display: flex; align-items: center; gap: 0.75rem; max-width: 28rem; margin: 0 auto; }
+      .mobile-sticky-cta .meta { flex: 1; min-width: 0; }
+      .mobile-sticky-cta .meta strong { display: block; color: #fff; font-size: 0.95rem; line-height: 1.1; }
+      .mobile-sticky-cta .meta span { display: block; color: #94a3b8; font-size: 0.72rem; margin-top: 0.1rem; }
+      .mobile-sticky-cta .btn { white-space: nowrap; padding-left: 1rem; padding-right: 1rem; }
+    }
+  </style>
+  <style>
     .report-card { transition: border-color 0.2s; }
     .report-card:hover { border-color: rgb(14 165 233 / 0.5); }
     .rank-badge {
@@ -25,358 +87,161 @@
       border-radius: 9999px; font-weight: 800; font-size: 1rem;
       flex-shrink: 0;
     }
-    .signal-pill {
-      display: inline-flex; align-items: center; gap: 0.25rem;
-      font-size: 0.75rem; font-weight: 600; padding: 0.125rem 0.5rem;
-      border-radius: 9999px;
-    }
     .metric-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; text-align: center; }
     @media (min-width: 640px) { .metric-grid { grid-template-columns: repeat(4, 1fr); } }
-    .trajectory-bar { height: 4px; border-radius: 2px; background: rgba(55,65,81,0.5); overflow: hidden; }
-    .trajectory-fill { height: 100%; border-radius: 2px; }
   </style>
 </head>
 <body class="bg-dark-900 text-gray-100 font-sans antialiased">
-
-  <!-- Header -->
-  <header class="border-b border-gray-800 bg-dark-900/80 backdrop-blur-sm sticky top-0 z-50">
-    <div class="max-w-4xl mx-auto px-6 h-14 flex items-center justify-between">
-      <a href="/" class="flex items-center gap-2 text-gray-100 font-semibold text-base tracking-tight hover:text-brand-500 transition">
-        <span aria-hidden="true" style="display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;border-radius:6px;background:linear-gradient(to bottom right,#0ea5e9,#4f46e5);color:#020617;font-size:11px;font-weight:700;box-shadow:0 1px 2px rgba(14,165,233,0.3);flex-shrink:0;line-height:1;">G</span>
-        <span>VC Deal Flow Signal</span>
-      </a>
+  <header class="sticky top-0 z-50 border-b border-gray-800 bg-dark-900/95 backdrop-blur">
+    <div class="mobile-compact-header max-w-5xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-3">
+      <a href="/" class="font-semibold tracking-tight text-white text-lg">GitDealFlow</a>
       <nav class="hidden md:flex items-center gap-6">
-        <a href="https://signals.gitdealflow.com" class="text-gray-400 text-sm hover:text-gray-100 transition">All Sectors</a>
-        <a href="/#pricing" class="text-gray-400 text-sm hover:text-gray-100 transition">Pricing</a>
+        <a href="/" class="text-gray-400 text-sm hover:text-gray-100 transition">Home</a>
+        <a href="https://signals.gitdealflow.com" class="text-gray-400 text-sm hover:text-gray-100 transition">Signals</a>
+        <a href="/firstlook" class="text-gray-400 text-sm hover:text-gray-100 transition">First Look</a>
+        <a href="/dashboard" class="text-gray-400 text-sm hover:text-gray-100 transition">Dashboard</a>
       </nav>
+      <a href="/#signup" class="btn btn-cta btn-sm whitespace-nowrap shrink-0"><span class="sm:hidden">Get it</span><span class="hidden sm:inline">Get the free Sunday email</span> <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
     </div>
   </header>
 
   <main>
-
-  <!-- Report Header -->
-  <section class="relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-br from-dark-900 via-dark-800 to-brand-900 opacity-80"></div>
-    <div class="relative max-w-3xl mx-auto px-6 py-16 md:py-20">
-      <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:1.5rem">
-        <span class="signal-pill bg-brand-600 text-white">SIGNAL REPORT</span>
-        <span class="text-gray-500 text-xs">Week of April 14, 2026</span>
+    <section class="relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-br from-dark-900 via-dark-800 to-brand-900 opacity-80"></div>
+      <div class="relative max-w-4xl mx-auto px-6 py-16 md:py-20">
+        <div class="inline-flex items-center gap-2 rounded-full border border-brand-500/30 bg-brand-500/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-brand-300 mb-6">
+          <span>Sample report</span>
+          <span class="text-brand-500/60">·</span>
+          <span>What the free weekly email looks like</span>
+        </div>
+        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight mb-5">A simple read of what&apos;s heating up, not a wall of raw data.</h1>
+        <p class="text-lg text-gray-300 max-w-3xl mb-6"><strong class="text-white">GitDealFlow is a signal tool for investors — not a fund.</strong> This page shows the exact output: the startups its signal flagged as heating up early, in plain language, each with a short why-it-matters note.</p>
+        <div class="flex flex-wrap gap-4 text-sm text-gray-400">
+          <span><strong class="text-white">5</strong> names</span>
+          <span><strong class="text-white">1</strong> email</span>
+          <span><strong class="text-white">0</strong> card required</span>
+        </div>
       </div>
-      <h1 class="text-3xl md:text-4xl font-extrabold leading-tight mb-4">
-        This Week's Top 5 Breakout Startups
-      </h1>
-      <p class="text-lg text-gray-300 max-w-2xl mb-6">
-        These are the startups showing the highest engineering acceleration right now — ranked by commit velocity change from public GitHub data across 14 sectors and 33 tracked companies.
-      </p>
-      <div style="display:flex;gap:1.5rem;flex-wrap:wrap" class="text-sm text-gray-400">
-        <span><strong class="text-white">33</strong> startups tracked</span>
-        <span><strong class="text-white">14</strong> sectors analyzed</span>
-        <span><strong class="text-white">Q2 2026</strong> data</span>
+    </section>
+    <section class="max-w-4xl mx-auto px-6 py-8">
+      <div class="rounded-2xl border border-gray-800 bg-dark-800/70 p-6 md:p-8">
+        <p class="text-signal-400 text-xs font-semibold uppercase tracking-wider mb-4">Verify the sample fast</p>
+        <div class="grid md:grid-cols-3 gap-4 text-left">
+          <a href="https://signals.gitdealflow.com/methodology" class="rounded-xl border border-gray-700 bg-dark-900 p-5 hover:border-signal-500/50 transition">
+            <p class="text-white font-semibold mb-2">Methodology</p>
+            <p class="text-sm text-gray-400">See how the signal is built and what the SSRN panel actually measured.</p>
+          </a>
+          <a href="https://signals.gitdealflow.com/compare/best-alternative-data-tools-for-angel-investors" class="rounded-xl border border-gray-700 bg-dark-900 p-5 hover:border-signal-500/50 transition">
+            <p class="text-white font-semibold mb-2">Comparison</p>
+            <p class="text-sm text-gray-400">See where this stack helps earlier than the usual alternative-data surfaces.</p>
+          </a>
+          <a href="/" class="rounded-xl border border-gray-700 bg-dark-900 p-5 hover:border-signal-500/50 transition">
+            <p class="text-white font-semibold mb-2">Get the live Sunday issue</p>
+            <p class="text-sm text-gray-400">If the sample feels right, go straight back to the free weekly watchlist.</p>
+          </a>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+    <section class="max-w-4xl mx-auto px-6 py-10">
+      <div class="rounded-2xl border border-sky-500/30 bg-sky-500/10 p-8 text-left">
+        <p class="text-sky-300 text-xs font-semibold uppercase tracking-wider mb-3">Why this sample matters</p>
+        <p class="text-gray-300 text-lg leading-relaxed">If this feels calmer than the usual deal-flow firehose, that is the point. You should be able to read it quickly, keep the names that matter, and move on with your week.</p>
+      </div>
+    </section>
 
-  <!-- The 5 Startups -->
-  <section class="max-w-3xl mx-auto px-6 py-12">
 
-    <!-- #1 -->
-    <div class="report-card rounded-xl border border-gray-700 bg-dark-800 p-6 mb-6">
-      <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem">
-        <div class="rank-badge bg-brand-600 text-white">1</div>
-        <div style="flex:1">
-          <div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap">
-            <h2 class="text-xl font-bold">orbiternassp</h2>
-            <span class="text-gray-500 text-sm">Space Tech</span>
-            <span class="signal-pill bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">Deploy frequency spike</span>
-            <a href="https://nassp.space" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-brand-400 text-xs underline">Website &nearr;</a>
+
+    <section class="max-w-4xl mx-auto px-6 py-12 space-y-6">
+      <div class="report-card rounded-xl border border-gray-700 bg-dark-800 p-6">
+        <div class="flex items-center gap-4 mb-4">
+          <div class="rank-badge bg-brand-600 text-white">1</div>
+          <div class="flex-1">
+            <div class="flex items-center gap-3 flex-wrap">
+              <h2 class="text-xl font-bold">orbiternassp</h2>
+              <span class="text-gray-500 text-sm">Space Tech</span>
+              <span class="inline-flex text-xs font-semibold px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">Engineering momentum spike</span>
+            </div>
           </div>
         </div>
+        <div class="metric-grid mb-4">
+          <div><p class="text-2xl font-bold text-emerald-400">+329%</p><p class="text-gray-500 text-xs">Momentum change</p></div>
+          <div><p class="text-2xl font-bold text-white">30</p><p class="text-gray-500 text-xs">Commits (14d)</p></div>
+          <div><p class="text-2xl font-bold text-white">37</p><p class="text-gray-500 text-xs">Contributors</p></div>
+          <div><p class="text-2xl font-bold text-white">Growth</p><p class="text-gray-500 text-xs">Stage</p></div>
+        </div>
+        <p class="text-gray-300 text-sm leading-relaxed">Why it matters: the team’s public engineering footprint accelerated sharply in a short window. That usually means an internal change worth paying attention to before the outside narrative catches up.</p>
       </div>
-      <div class="metric-grid mb-4">
-        <div>
-          <p class="text-2xl font-bold text-emerald-400">+329%</p>
-          <p class="text-gray-500 text-xs">Velocity change</p>
-        </div>
-        <div>
-          <p class="text-2xl font-bold text-white">30</p>
-          <p class="text-gray-500 text-xs">Commits (14d)</p>
-        </div>
-        <div>
-          <p class="text-2xl font-bold text-white">37</p>
-          <p class="text-gray-500 text-xs">Contributors</p>
-        </div>
-        <div>
-          <p class="text-2xl font-bold text-white">Growth</p>
-          <p class="text-gray-500 text-xs">Stage</p>
-        </div>
-      </div>
-      <p class="text-gray-300 text-sm leading-relaxed mb-3">
-        A <strong class="text-white">+329% velocity spike</strong> from an aerospace engineering team is not normal background noise. This is the classic "deploy frequency spike" pattern — shipping cadence increased dramatically in a short window. In space tech, this often correlates with mission milestones, hardware-software integration phases, or preparation for a funding round to scale operations.
-      </p>
-      <p class="text-gray-500 text-xs">
-        Why it matters: Space tech companies with engineering surges of this magnitude have historically announced partnerships or funding within 4-8 weeks. The 37-contributor team suggests meaningful organizational investment, not a solo sprint.
-      </p>
-    </div>
 
-    <!-- #2 -->
-    <div class="report-card rounded-xl border border-gray-700 bg-dark-800 p-6 mb-6">
-      <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem">
-        <div class="rank-badge bg-brand-600 text-white">2</div>
-        <div style="flex:1">
-          <div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap">
-            <h2 class="text-xl font-bold">akto-api-security</h2>
-            <span class="text-gray-500 text-sm">Cybersecurity</span>
-            <span class="signal-pill bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">Sustained acceleration</span>
-            <a href="https://www.akto.io" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-brand-400 text-xs underline">Website &nearr;</a>
+      <div class="report-card rounded-xl border border-gray-700 bg-dark-800 p-6">
+        <div class="flex items-center gap-4 mb-4">
+          <div class="rank-badge bg-brand-600 text-white">2</div>
+          <div class="flex-1">
+            <div class="flex items-center gap-3 flex-wrap">
+              <h2 class="text-xl font-bold">akto-api-security</h2>
+              <span class="text-gray-500 text-sm">Cybersecurity</span>
+              <span class="inline-flex text-xs font-semibold px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">Sustained momentum</span>
+            </div>
           </div>
         </div>
+        <div class="metric-grid mb-4">
+          <div><p class="text-2xl font-bold text-emerald-400">+75%</p><p class="text-gray-500 text-xs">Momentum change</p></div>
+          <div><p class="text-2xl font-bold text-white">267</p><p class="text-gray-500 text-xs">Commits (14d)</p></div>
+          <div><p class="text-2xl font-bold text-white">53</p><p class="text-gray-500 text-xs">Contributors</p></div>
+          <div><p class="text-2xl font-bold text-white">US</p><p class="text-gray-500 text-xs">Geography</p></div>
+        </div>
+        <p class="text-gray-300 text-sm leading-relaxed">Why it matters: this is less about a one-week anomaly and more about a sustained high-output team still accelerating. That tends to matter more than one flashy spike.</p>
       </div>
-      <div class="metric-grid mb-4">
-        <div>
-          <p class="text-2xl font-bold text-emerald-400">+75%</p>
-          <p class="text-gray-500 text-xs">Velocity change</p>
-        </div>
-        <div>
-          <p class="text-2xl font-bold text-white">267</p>
-          <p class="text-gray-500 text-xs">Commits (14d)</p>
-        </div>
-        <div>
-          <p class="text-2xl font-bold text-white">53</p>
-          <p class="text-gray-500 text-xs">Contributors</p>
-        </div>
-        <div>
-          <p class="text-2xl font-bold text-white">US</p>
-          <p class="text-gray-500 text-xs">Geography</p>
-        </div>
-      </div>
-      <p class="text-gray-300 text-sm leading-relaxed mb-3">
-        Akto bills itself as "Instant API Security" and the engineering data backs it up. <strong class="text-white">267 commits in 14 days</strong> with a +75% acceleration is substantial — but what makes this signal especially strong is the multi-quarter trajectory. Last quarter they hit +141%. The acceleration isn't slowing down.
-      </p>
-      <div class="mb-3">
-        <p class="text-gray-500 text-xs mb-1">Velocity trend (last 4 quarters)</p>
-        <div style="display:flex;gap:0.25rem;align-items:end;height:2rem">
-          <div style="flex:1;background:rgba(52,211,153,0.2);height:20%;border-radius:2px"></div>
-          <div style="flex:1;background:rgba(52,211,153,0.4);height:50%;border-radius:2px"></div>
-          <div style="flex:1;background:rgba(52,211,153,0.7);height:90%;border-radius:2px"></div>
-          <div style="flex:1;background:rgba(52,211,153,1);height:70%;border-radius:2px"></div>
-        </div>
-        <div style="display:flex;gap:0.25rem" class="text-gray-600 text-xs mt-1">
-          <span style="flex:1">Q3 '25</span>
-          <span style="flex:1">Q4 '25</span>
-          <span style="flex:1">Q1 '26</span>
-          <span style="flex:1">Q2 '26</span>
-        </div>
-      </div>
-      <p class="text-gray-500 text-xs">
-        Why it matters: API security is one of the fastest-growing segments in cybersecurity. Multi-quarter sustained acceleration from a US-based company with 53 active contributors is a strong indicator of product-market fit being found and scaled.
-      </p>
-    </div>
 
-    <!-- #3 -->
-    <div class="report-card rounded-xl border border-gray-700 bg-dark-800 p-6 mb-6">
-      <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem">
-        <div class="rank-badge bg-brand-600 text-white">3</div>
-        <div style="flex:1">
-          <div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap">
-            <h2 class="text-xl font-bold">NDLANO</h2>
-            <a href="https://ndla.no" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-brand-400 text-xs underline ml-2">Website &nearr;</a>
-            <span class="text-gray-500 text-sm">EdTech</span>
-            <span class="signal-pill bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">Framework migration</span>
+      <div class="report-card rounded-xl border border-gray-700 bg-dark-800 p-6">
+        <div class="flex items-center gap-4 mb-4">
+          <div class="rank-badge bg-brand-600 text-white">3</div>
+          <div class="flex-1">
+            <div class="flex items-center gap-3 flex-wrap">
+              <h2 class="text-xl font-bold">NDLANO</h2>
+              <span class="text-gray-500 text-sm">EdTech</span>
+              <span class="inline-flex text-xs font-semibold px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">Platform rebuild</span>
+            </div>
           </div>
         </div>
+        <div class="metric-grid mb-4">
+          <div><p class="text-2xl font-bold text-emerald-400">+32%</p><p class="text-gray-500 text-xs">Momentum change</p></div>
+          <div><p class="text-2xl font-bold text-white">29</p><p class="text-gray-500 text-xs">Commits (14d)</p></div>
+          <div><p class="text-2xl font-bold text-white">38</p><p class="text-gray-500 text-xs">Contributors</p></div>
+          <div><p class="text-2xl font-bold text-white">EU</p><p class="text-gray-500 text-xs">Geography</p></div>
+        </div>
+        <p class="text-gray-300 text-sm leading-relaxed">Why it matters: not every useful signal is explosive. Sometimes the point is that a meaningful team is rebuilding core systems in public, which often precedes a bigger strategic move.</p>
       </div>
-      <div class="metric-grid mb-4">
-        <div>
-          <p class="text-2xl font-bold text-emerald-400">+32%</p>
-          <p class="text-gray-500 text-xs">Velocity change</p>
-        </div>
-        <div>
-          <p class="text-2xl font-bold text-white">29</p>
-          <p class="text-gray-500 text-xs">Commits (14d)</p>
-        </div>
-        <div>
-          <p class="text-2xl font-bold text-white">38</p>
-          <p class="text-gray-500 text-xs">Contributors</p>
-        </div>
-        <div>
-          <p class="text-2xl font-bold text-white">EU</p>
-          <p class="text-gray-500 text-xs">Geography</p>
-        </div>
-      </div>
-      <p class="text-gray-300 text-sm leading-relaxed mb-3">
-        NDLANO is a Norwegian digital learning platform backed by all Norwegian county municipalities. A <strong class="text-white">+32% acceleration with 38 contributors</strong> suggests a significant platform investment cycle. The "framework migration" signal indicates they're rebuilding core infrastructure — a pattern that often precedes major product launches or international expansion.
-      </p>
-      <p class="text-gray-500 text-xs">
-        Why it matters: Government-backed EdTech with real engineering momentum is rare. 38 contributors is a meaningful team size, and framework migrations of this velocity often signal upcoming procurement cycles or platform expansions that create partnership opportunities.
-      </p>
-    </div>
+    </section>
 
-    <!-- #4 -->
-    <div class="report-card rounded-xl border border-gray-700 bg-dark-800 p-6 mb-6">
-      <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem">
-        <div class="rank-badge bg-brand-600 text-white">4</div>
-        <div style="flex:1">
-          <div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap">
-            <h2 class="text-xl font-bold">bakaphp</h2>
-            <a href="https://kanvas.dev" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-brand-400 text-xs underline ml-2">Website &nearr;</a>
-            <span class="text-gray-500 text-sm">Social & Community</span>
-            <span class="signal-pill bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">Infrastructure buildout</span>
-          </div>
+    <section class="bg-dark-800 py-16 md:py-20">
+      <div class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 text-center">
+        <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-3">Where this page sits</p>
+        <h2 class="text-3xl font-bold mb-4">This page is a sample, not the whole proof library.</h2>
+        <p class="text-gray-300 text-lg leading-relaxed max-w-3xl mx-auto mb-8">If you want to verify the claim properly, use the same three proof surfaces every time: methodology, comparison, and this sample output. If that stack feels solid, go back to the apex and take the free Sunday email.</p>
+        <div class="mobile-cta-stack flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="https://signals.gitdealflow.com/compare/best-alternative-data-tools-for-angel-investors" class="btn btn-secondary btn-md w-full sm:w-auto">See which alternative-data stack helps you move earlier</a>
+          <a href="/#signup" class="btn btn-cta btn-md w-full sm:w-auto">Send me the next Sunday issue</a>
+        </div>
+        <div class="mt-6 flex flex-col sm:flex-row gap-4 justify-center text-left sm:text-center">
+          <a href="https://signals.gitdealflow.com/answers/what-is-startup-engineering-momentum" class="text-signal-400 hover:text-signal-300 underline underline-offset-2">What startup engineering momentum means</a>
+          <a href="https://signals.gitdealflow.com/answers/deal-flow-timing-vs-verification" class="text-signal-400 hover:text-signal-300 underline underline-offset-2">Timing and verification are not the same thing</a>
         </div>
       </div>
-      <div class="metric-grid mb-4">
-        <div>
-          <p class="text-2xl font-bold text-emerald-400">+12%</p>
-          <p class="text-gray-500 text-xs">Velocity change</p>
-        </div>
-        <div>
-          <p class="text-2xl font-bold text-white">504</p>
-          <p class="text-gray-500 text-xs">Commits (14d)</p>
-        </div>
-        <div>
-          <p class="text-2xl font-bold text-white">14</p>
-          <p class="text-gray-500 text-xs">Contributors</p>
-        </div>
-        <div>
-          <p class="text-2xl font-bold text-white">Growth</p>
-          <p class="text-gray-500 text-xs">Stage</p>
-        </div>
-      </div>
-      <p class="text-gray-300 text-sm leading-relaxed mb-3">
-        Don't let the +12% fool you — the absolute volume tells the real story. <strong class="text-white">504 commits in 14 days from a 14-person team</strong> is an extremely high per-developer output (36 commits per contributor). This is a team in full build mode. The acceleration on top of already-intense velocity suggests they're approaching a major release.
-      </p>
-      <p class="text-gray-500 text-xs">
-        Why it matters: High per-capita commit velocity is one of the strongest leading indicators of an imminent product launch. Small teams that sustain this output are typically weeks away from shipping something significant.
-      </p>
-    </div>
-
-    <!-- #5 -->
-    <div class="report-card rounded-xl border border-gray-700 bg-dark-800 p-6 mb-6">
-      <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem">
-        <div class="rank-badge bg-brand-600 text-white">5</div>
-        <div style="flex:1">
-          <div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap">
-            <h2 class="text-xl font-bold">third-culture-software</h2>
-            <a href="https://blog.thirdculturesoftware.com" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-brand-400 text-xs underline ml-2">Website &nearr;</a>
-            <span class="text-gray-500 text-sm">Healthcare</span>
-            <span class="signal-pill bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">Re-acceleration</span>
-          </div>
-        </div>
-      </div>
-      <div class="metric-grid mb-4">
-        <div>
-          <p class="text-2xl font-bold text-emerald-400">+10%</p>
-          <p class="text-gray-500 text-xs">Velocity change</p>
-        </div>
-        <div>
-          <p class="text-2xl font-bold text-white">11</p>
-          <p class="text-gray-500 text-xs">Commits (14d)</p>
-        </div>
-        <div>
-          <p class="text-2xl font-bold text-white">27</p>
-          <p class="text-gray-500 text-xs">Contributors</p>
-        </div>
-        <div>
-          <p class="text-2xl font-bold text-white">Series A/B</p>
-          <p class="text-gray-500 text-xs">Stage</p>
-        </div>
-      </div>
-      <p class="text-gray-300 text-sm leading-relaxed mb-3">
-        A Series A/B healthcare company with 27 contributors showing positive acceleration is worth flagging. Last quarter they spiked <strong class="text-white">+360%</strong> — this +10% suggests they've stabilized at a higher baseline rather than crashing back down. That's the "re-acceleration" pattern: the initial surge was real, and now they're sustaining it.
-      </p>
-      <div class="mb-3">
-        <p class="text-gray-500 text-xs mb-1">Velocity trend (last 3 quarters)</p>
-        <div style="display:flex;gap:0.25rem;align-items:end;height:2rem">
-          <div style="flex:1;background:rgba(52,211,153,0.2);height:15%;border-radius:2px"></div>
-          <div style="flex:1;background:rgba(52,211,153,0.8);height:100%;border-radius:2px"></div>
-          <div style="flex:1;background:rgba(52,211,153,0.6);height:55%;border-radius:2px"></div>
-        </div>
-        <div style="display:flex;gap:0.25rem" class="text-gray-600 text-xs mt-1">
-          <span style="flex:1">Q4 '25</span>
-          <span style="flex:1">Q1 '26</span>
-          <span style="flex:1">Q2 '26</span>
-        </div>
-      </div>
-      <p class="text-gray-500 text-xs">
-        Why it matters: Healthcare startups that show sustained engineering investment after a major spike are often deploying capital from a recent raise — or preparing for the next one. The 27-contributor count for a Series A/B company indicates meaningful team growth.
-      </p>
-    </div>
-
-  </section>
-
-  <!-- What This Means -->
-  <section class="bg-dark-800 py-12">
-    <div class="max-w-3xl mx-auto px-6">
-      <h2 class="text-2xl font-bold mb-6">What This Means for Investors</h2>
-      <div class="space-y-4 text-gray-300 text-base leading-relaxed">
-        <p>
-          The startups above are showing engineering momentum that has historically preceded fundraise announcements by 3-6 weeks. Three patterns to watch:
-        </p>
-        <div class="rounded-lg border border-gray-700 bg-dark-900 p-4">
-          <p class="text-white font-semibold text-sm mb-1">Space tech is heating up</p>
-          <p class="text-gray-400 text-sm">orbiternassp's +329% spike is the largest we've seen in the sector this quarter. Space tech engineering surges tend to cluster — when one company accelerates, others in the supply chain often follow within weeks.</p>
-        </div>
-        <div class="rounded-lg border border-gray-700 bg-dark-900 p-4">
-          <p class="text-white font-semibold text-sm mb-1">Cybersecurity remains the most consistently active sector</p>
-          <p class="text-gray-400 text-sm">5 tracked companies, 186 avg commits/14d. Akto's multi-quarter acceleration trend makes it the sector's standout. API security specifically is a growing wedge.</p>
-        </div>
-        <div class="rounded-lg border border-gray-700 bg-dark-900 p-4">
-          <p class="text-white font-semibold text-sm mb-1">Small teams with high velocity are the strongest signal</p>
-          <p class="text-gray-400 text-sm">bakaphp (504 commits, 14 contributors) has the highest per-capita output this week. When small teams sustain this intensity, a release or fundraise is usually imminent.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Upgrade CTA -->
-  <section class="max-w-3xl mx-auto px-6 py-16 text-center">
-    <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-4">You're seeing 5 of 33 tracked startups</p>
-    <h2 class="text-3xl font-bold mb-4">Want the Full Picture?</h2>
-    <p class="text-gray-400 mb-8 max-w-xl mx-auto">
-      This report covers the top 5. The Dashboard gives you all 33+ startups ranked across 20 sectors with filtering by stage, geography, and signal type — updated weekly.
-    </p>
-    <div class="flex flex-col sm:flex-row gap-4 justify-center mb-6">
-      <a href="/#pricing" class="inline-block bg-brand-600 hover:bg-brand-700 text-white font-semibold px-8 py-4 rounded-lg text-lg transition">See Dashboard Pricing</a>
-      <a href="https://signals.gitdealflow.com" class="inline-block border border-gray-500 hover:border-gray-300 text-gray-300 hover:text-white font-semibold px-8 py-4 rounded-lg text-lg transition">Browse All Sectors</a>
-    </div>
-    <p class="text-gray-600 text-xs">You'll keep getting this report weekly via email. Unsubscribe anytime.</p>
-  </section>
-
-  <!-- Methodology footnote -->
-  <section class="border-t border-gray-800 py-8">
-    <div class="max-w-3xl mx-auto px-6">
-      <p class="text-gray-500 text-xs leading-relaxed">
-        <strong class="text-gray-400">How this report is generated:</strong> We monitor public GitHub activity (commits, contributors, repositories) across startup organizations and measure acceleration — the rate of change in engineering velocity relative to each company's own baseline. Data is collected via the GitHub API and updated weekly. Commit velocity change compares the most recent 14-day window to the prior period. This is not investment advice. Engineering signals are leading indicators, not guarantees. Past acceleration patterns do not guarantee future fundraise outcomes.
-      </p>
-    </div>
-  </section>
-
+    </section>
   </main>
 
-  <!-- Footer -->
-  <footer class="bg-dark-900 border-t border-gray-800 py-8">
-    <div class="max-w-3xl mx-auto px-6 text-center">
+  <footer class="border-t border-gray-800 bg-dark-900/80 py-12">
+    <div class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 text-center">
       <div class="flex flex-wrap justify-center gap-6 text-gray-500 text-sm mb-4">
-        <a href="https://gitdealflow.com" class="hover:text-gray-300">Main Site</a>
-        <a href="https://signals.gitdealflow.com" class="hover:text-gray-300">Sector Signals</a>
-        <a href="https://t.me/gitdealflow" class="hover:text-gray-300">Telegram</a>
-        <a href="https://www.linkedin.com/company/gitdealflow" class="hover:text-gray-300">LinkedIn</a>
+        <a href="/" class="hover:text-gray-300">Home</a>
+        <a href="https://signals.gitdealflow.com" class="hover:text-gray-300">Signals</a>
+        <a href="/firstlook" class="hover:text-gray-300">First Look</a>
+        <a href="/dashboard" class="hover:text-gray-300">Dashboard</a>
         <a href="/privacy" class="hover:text-gray-300">Privacy</a>
-        <a href="/terms" class="hover:text-gray-300">Terms</a>
       </div>
-      <p class="text-gray-600 text-xs">&copy; 2026 VC Deal Flow Signal. All rights reserved.</p>
+      <p class="text-gray-600 text-xs">GitDealFlow sample report</p>
     </div>
   </footer>
-
-  <!-- PostHog -->
-  <script>
-    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group setPersonProperties resetPersonProperties setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
-    if(/^https?:$/.test(location.protocol))posthog.init('phc_lyZCgvTpicjLzAO3rY2GhxuX5WUc5jQjP8ZVwwJqauX', {api_host: 'https://eu.i.posthog.com', persistence: 'memory', person_profiles: 'identified_only'});
-    posthog.capture('report_viewed', { report: 'weekly-top-5', week: '2026-04-14' });
-  </script>
-
-  <!-- Retargeting pixels (Meta, Google, LinkedIn, X, TikTok, Reddit, Quora, Pinterest, Bing) — IDs in pixels.js -->
-  <script src="/pixels.js" async></script>
 
 </body>
 </html>

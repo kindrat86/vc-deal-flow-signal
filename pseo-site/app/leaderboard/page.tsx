@@ -168,6 +168,26 @@ export default async function LeaderboardPage() {
         </p>
       </header>
 
+      <section className="mb-8 rounded-xl border border-amber-700/30 bg-amber-950/20 p-6 sm:p-8 space-y-3">
+        <p className="text-amber-300 text-xs font-semibold uppercase tracking-[0.14em]">
+          Start with the highest-intent routes
+        </p>
+        <p className="text-gray-300 text-sm leading-relaxed max-w-2xl">
+          Use this page if you want the full scout ranking. But if your real question is making a prediction, reviewing past receipts, or joining the member-side scorecard system, start with the sharper routes first.
+        </p>
+        <div className="flex flex-wrap gap-3">
+          <Link href="/predict" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-amber-500 text-slate-950 text-sm font-semibold hover:bg-amber-400 transition-colors">
+            Make a prediction →
+          </Link>
+          <Link href="/receipts" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+            Read scout receipts →
+          </Link>
+          <Link href="/members" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+            See charter cohort →
+          </Link>
+        </div>
+      </section>
+
       {scouts.length === 0 ? (
         <section className="rounded-xl border border-slate-800 bg-slate-900/60 p-10 text-center">
           <p className="text-gray-400 text-sm mb-4">

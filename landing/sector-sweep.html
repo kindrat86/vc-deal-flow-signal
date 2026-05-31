@@ -1,297 +1,359 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- /sector-sweep new 2026-05-02 per Russell audit Move 6: €1,997 backend offer to lift CAC ceiling above the €97/mo Insider tier. Async, anonymity-preserving, capped at 8 sweeps/quarter. -->
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Custom Sector Sweep — €1,997, one-time, 8 seats per quarter</title>
-  <meta name="description" content="A one-time, custom-built GitHub momentum report on the sector and thesis you pick. 40-page PDF, raw CSV, written walkthrough, follow-up email Q&A. Capped at 8 sweeps per quarter. €1,997.">
+  <title>Sector Sweep — GitDealFlow</title>
+  <meta name="description" content="A one-time custom thesis report for when you need more than the weekly shortlist and want a serious sector-specific pass without a subscription.">
   <link rel="canonical" href="https://gitdealflow.com/sector-sweep" />
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-  <meta property="og:title" content="Custom Sector Sweep — €1,997 one-time, your thesis, our data" />
-  <meta property="og:description" content="40-page sector-specific momentum report, raw CSV, written walkthrough. 8 seats per quarter." />
+  <meta name="robots" content="index, follow">
   <meta property="og:type" content="website" />
+  <meta property="og:title" content="Sector Sweep — GitDealFlow" />
+  <meta property="og:description" content="One sector. One thesis. One custom report. €1,997 one-time." />
   <meta property="og:url" content="https://gitdealflow.com/sector-sweep" />
+  <meta property="og:image" content="https://signals.gitdealflow.com/opengraph-image" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@data_nerd" />
-  <meta property="og:image" content="https://signals.gitdealflow.com/opengraph-image">
-  <meta name="twitter:image" content="https://signals.gitdealflow.com/opengraph-image">
+  <meta name="twitter:title" content="Sector Sweep — GitDealFlow" />
+  <meta name="twitter:description" content="A one-time custom thesis report for when you need more than the weekly shortlist." />
+  <meta name="twitter:image" content="https://signals.gitdealflow.com/opengraph-image" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://gitdealflow.com/sector-sweep#webpage",
+        "url": "https://gitdealflow.com/sector-sweep",
+        "name": "Sector Sweep — GitDealFlow",
+        "description": "The one-time custom thesis report for when you want a deeper sector-specific cut.",
+        "isPartOf": { "@id": "https://gitdealflow.com/#website" }
+      },
+      {
+        "@type": "Offer",
+        "name": "Sector Sweep",
+        "price": "1997",
+        "priceCurrency": "EUR",
+        "url": "https://gitdealflow.com/sector-sweep",
+        "availability": "https://schema.org/InStock"
+      }
+    ]
+  }
+  </script>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="stylesheet" href="/styles.css">
-  <style>html { scroll-behavior: smooth; scroll-padding-top: 5rem; }</style>
-  <link rel="dns-prefetch" href="https://scripts.refgrowcdn.com">
-  <script src="https://scripts.refgrowcdn.com/latest.js" data-project-id="829" async defer></script>
+  <style>
+    .mobile-cta-stack > * { width: 100%; }
+    .mobile-card, .mobile-step-card { transition: border-color 120ms ease, transform 120ms ease; }
+    .mobile-card:hover, .mobile-step-card:hover { border-color: rgba(14, 165, 233, 0.5); }
+    .mobile-sticky-cta { display: none; }
+    @media (min-width: 640px) { .mobile-cta-stack > * { width: auto; } }
+    @media (max-width: 639px) {
+      html { scroll-padding-top: 5rem; }
+      body { padding-bottom: 6rem; }
+      .mobile-compact-header { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+      .mobile-hero-wrap { padding-left: 1rem; padding-right: 1rem; padding-top: 4rem; padding-bottom: 4rem; }
+      .mobile-hero-title { font-size: 2rem; line-height: 1.1; }
+      .mobile-hero-copy { font-size: 1rem; line-height: 1.65; }
+      .mobile-section-pad { padding-left: 1rem; padding-right: 1rem; }
+      .mobile-card-pad { padding: 1.25rem; }
+      .mobile-stat-grid { gap: 1rem; }
+      .mobile-grid-gap { gap: 1rem; }
+      .mobile-cta-stack .btn,
+      .mobile-form-stack .btn {
+        white-space: normal; text-align: center; line-height: 1.35;
+        padding-left: 1rem; padding-right: 1rem;
+      }
+      .mobile-sticky-cta {
+        position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; display: block;
+        padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom));
+        background: rgba(2, 6, 23, 0.94); backdrop-filter: blur(12px);
+        border-top: 1px solid rgba(71, 85, 105, 0.7);
+      }
+      .mobile-sticky-cta .inner { display: flex; align-items: center; gap: 0.75rem; max-width: 28rem; margin: 0 auto; }
+      .mobile-sticky-cta .meta { flex: 1; min-width: 0; }
+      .mobile-sticky-cta .meta strong { display: block; color: #fff; font-size: 0.95rem; line-height: 1.1; }
+      .mobile-sticky-cta .meta span { display: block; color: #94a3b8; font-size: 0.72rem; margin-top: 0.1rem; }
+      .mobile-sticky-cta .btn { white-space: nowrap; padding-left: 1rem; padding-right: 1rem; }
+    }
+  </style>
 </head>
 <body class="bg-dark-900 text-gray-100 font-sans antialiased">
-
-  <header class="border-b border-gray-800 bg-dark-900/80 backdrop-blur-sm sticky top-0 z-50">
-    <div class="max-w-4xl mx-auto px-6 h-14 flex items-center justify-between">
-      <a href="/" class="flex items-center gap-2 text-gray-100 font-semibold text-base tracking-tight hover:text-brand-500 transition">
-        <span aria-hidden="true" style="display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;border-radius:6px;background:linear-gradient(to bottom right,#0ea5e9,#4f46e5);color:#020617;font-size:11px;font-weight:700;box-shadow:0 1px 2px rgba(14,165,233,0.3);flex-shrink:0;line-height:1;">G</span>
-        <span>VC Deal Flow Signal</span>
-      </a>
-      <nav class="flex items-center gap-4">
-        <a href="/insider" class="text-gray-400 text-sm hover:text-gray-100 transition hidden md:inline">Insider Circle</a>
-        <a href="/#pricing" class="text-gray-400 text-sm hover:text-gray-100 transition hidden md:inline">Pricing</a>
-        <a href="#commission" class="text-sm bg-yellow-500 hover:bg-yellow-400 text-dark-900 px-3 py-1.5 rounded-md transition font-bold">Commission a Sweep</a>
+  <header class="sticky top-0 z-50 border-b border-gray-800 bg-dark-900/95 backdrop-blur">
+    <div class="mobile-compact-header max-w-5xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-3">
+      <a href="/" class="font-semibold tracking-tight text-white text-lg">GitDealFlow</a>
+      <nav class="hidden md:flex items-center gap-6">
+        <a href="/" class="text-gray-400 text-sm hover:text-gray-100 transition">Home</a>
+        <a href="/firstlook" class="text-gray-400 text-sm hover:text-gray-100 transition">First Look</a>
+        <a href="/dashboard" class="text-gray-400 text-sm hover:text-gray-100 transition">Dashboard</a>
+        <a href="/insider" class="text-gray-400 text-sm hover:text-gray-100 transition">Insider</a>
       </nav>
+      <a href="#checkout" class="btn btn-cta btn-sm whitespace-nowrap shrink-0"><span class="sm:hidden">Reserve</span><span class="hidden sm:inline">Reserve my Sweep</span> <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
     </div>
   </header>
 
-  <main id="main-content">
-
-  <!-- Hero -->
-  <section class="relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-br from-dark-900 via-dark-800 to-yellow-900/30 opacity-80"></div>
-    <div class="relative max-w-3xl mx-auto px-6 py-24 text-center">
-      <p class="text-yellow-300 font-semibold text-sm uppercase tracking-wider mb-4">Custom Sector Sweep &middot; €1,997 one-time &middot; 8 seats per quarter</p>
-      <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-6">
-        Your thesis, our dataset, one written report.<br><span class="text-yellow-300">No subscription. No analyst fee. Done in 10 business days.</span>
-      </h1>
-      <p class="text-lg text-gray-300 max-w-2xl mx-auto mb-8">
-        You pick the sector, the geography, the stage filter, and the thesis question. We run the GitHub momentum signal across our 4,200-org tracker plus net-new orgs we discover for your thesis. You get a <strong class="text-white">40-page PDF, the raw CSV, and a written walkthrough</strong> ten business days later.
-      </p>
-      <a href="#commission" class="inline-block bg-yellow-500 hover:bg-yellow-400 text-dark-900 font-bold px-8 py-4 rounded-lg text-lg transition">Commission a Sweep — €1,997 &rarr;</a>
-      <p class="text-gray-500 text-sm mt-4">Quarterly cap: 8 sweeps. Currently <strong class="text-white">7 of 8 open for Q3 2026</strong>.</p>
-    </div>
-  </section>
-
-  <!-- Who it's for -->
-  <section class="max-w-3xl mx-auto px-6 py-16">
-    <h2 class="text-3xl font-bold mb-6">Who commissions a Sector Sweep</h2>
-    <div class="space-y-5 text-gray-300 text-lg leading-relaxed">
-      <p>Solo angels who already wrote €100K+ this year and are sourcing the next 3 to 5 checks in <strong class="text-white">one specific thesis</strong> — AI infra, fintech rails, climate sensors, vertical SaaS — and don't have time to build a tracker themselves.</p>
-      <p>Emerging fund managers running a <strong class="text-white">sub-$10M fund</strong> who need a custom watchlist for the LP update and don't want to pay €30K/yr for a Harmonic seat.</p>
-      <p>Family offices doing technical due diligence on a single sector and wanting <strong class="text-white">an independent, public-data audit trail</strong> that's reproducible by their analyst.</p>
-      <p>Operator-investors who liked the €7 First Look Pass, but the depth wasn't enough — and they don't want a recurring subscription.</p>
-    </div>
-  </section>
-
-  <!-- What you get — stack slide with itemized value -->
-  <section class="bg-dark-800 py-16">
-    <div class="max-w-4xl mx-auto px-6">
-      <p class="text-yellow-300 text-xs font-semibold uppercase tracking-wider mb-3">The stack — what €1,997 actually buys</p>
-      <h2 class="text-3xl font-bold mb-3">€13,000+ of analyst work, packaged as one report</h2>
-      <p class="text-gray-400 mb-10">Every Sweep is built from scratch on your thesis. Below is the itemized stack — each line is the standalone market price for the same deliverable. You pay the bottom line, not the sum.</p>
-
-      <div class="space-y-2">
-        <div class="flex items-start gap-4 bg-dark-900 rounded-xl border border-yellow-500/30 p-5">
-          <span class="text-yellow-300 text-lg mt-0.5 flex-shrink-0">1.</span>
-          <div class="flex-1">
-            <h3 class="font-semibold mb-1 text-white">40-page custom Sector Sweep PDF</h3>
-            <p class="text-gray-400 text-sm">Executive summary, top 25 ranked orgs in your thesis, 5-page deep dive on the top 5, signal type breakdown, founder/contributor enrichment, geographic + stage cuts, thesis-specific lens.</p>
-          </div>
-          <span class="text-yellow-300 font-mono font-semibold whitespace-nowrap">€4,500</span>
-        </div>
-        <div class="flex items-start gap-4 bg-dark-900 rounded-xl border border-yellow-500/30 p-5">
-          <span class="text-yellow-300 text-lg mt-0.5 flex-shrink-0">2.</span>
-          <div class="flex-1">
-            <h3 class="font-semibold mb-1 text-white">Raw CSV — every org, every metric</h3>
-            <p class="text-gray-400 text-sm">Commit velocity 14d / 30d / 90d. Contributor delta. New-repo count. CI tempo. Acceleration percentile. Funding-stage tags. Geography. Sector. License-friendly to drop into your CRM.</p>
-          </div>
-          <span class="text-yellow-300 font-mono font-semibold whitespace-nowrap">€1,200</span>
-        </div>
-        <div class="flex items-start gap-4 bg-dark-900 rounded-xl border border-yellow-500/30 p-5">
-          <span class="text-yellow-300 text-lg mt-0.5 flex-shrink-0">3.</span>
-          <div class="flex-1">
-            <h3 class="font-semibold mb-1 text-white">Written walkthrough — 60 minutes of reading</h3>
-            <p class="text-gray-400 text-sm">Like a Loom screencast in text. Methodology, top-5 deep dives, the patterns I noticed, the thesis-specific surprises. Anonymity preserved — async, re-readable, paste-able into your notes.</p>
-          </div>
-          <span class="text-yellow-300 font-mono font-semibold whitespace-nowrap">€600</span>
-        </div>
-        <div class="flex items-start gap-4 bg-dark-900 rounded-xl border border-yellow-500/30 p-5">
-          <span class="text-yellow-300 text-lg mt-0.5 flex-shrink-0">4.</span>
-          <div class="flex-1">
-            <h3 class="font-semibold mb-1 text-white">Diligence prompts for top-10 startups</h3>
-            <p class="text-gray-400 text-sm">Paste-ready into your IC memo or first-call brief. Specific to your thesis, not generic. The questions you would have asked if you had three more days to prep.</p>
-          </div>
-          <span class="text-yellow-300 font-mono font-semibold whitespace-nowrap">€800</span>
-        </div>
-        <div class="flex items-start gap-4 bg-dark-900 rounded-xl border border-yellow-500/30 p-5">
-          <span class="text-yellow-300 text-lg mt-0.5 flex-shrink-0">5.</span>
-          <div class="flex-1">
-            <h3 class="font-semibold mb-1 text-white">Three early-stage targets not on Crunchbase</h3>
-            <p class="text-gray-400 text-sm">Net-new orgs surfaced by the same engine. Pre-deck, pre-press, pre-AngelList. The orgs your network has not seen yet because no one has talked about them.</p>
-          </div>
-          <span class="text-yellow-300 font-mono font-semibold whitespace-nowrap">€2,000</span>
-        </div>
-        <div class="flex items-start gap-4 bg-dark-900 rounded-xl border border-yellow-500/30 p-5">
-          <span class="text-yellow-300 text-lg mt-0.5 flex-shrink-0">6.</span>
-          <div class="flex-1">
-            <h3 class="font-semibold mb-1 text-white">14-day email Q&amp;A window</h3>
-            <p class="text-gray-400 text-sm">Unlimited follow-up. Request additional cuts, re-runs on a sub-thesis, push on the methodology, ask about specific orgs. Same-week response.</p>
-          </div>
-          <span class="text-yellow-300 font-mono font-semibold whitespace-nowrap">€1,400</span>
-        </div>
-        <div class="flex items-start gap-4 bg-dark-900 rounded-xl border border-yellow-500/30 p-5">
-          <span class="text-yellow-300 text-lg mt-0.5 flex-shrink-0">7.</span>
-          <div class="flex-1">
-            <h3 class="font-semibold mb-1 text-white">Reproducible methodology audit trail</h3>
-            <p class="text-gray-400 text-sm">Every metric is re-derivable from public GitHub data. Methodology source on SSRN (abstract 6606558). Your analyst can replicate every number in the report from the same public sources.</p>
-          </div>
-          <span class="text-yellow-300 font-mono font-semibold whitespace-nowrap">€500</span>
-        </div>
-        <div class="flex items-start gap-4 bg-dark-900 rounded-xl border border-emerald-500/40 p-5">
-          <span class="text-emerald-400 text-lg mt-0.5 flex-shrink-0">+</span>
-          <div class="flex-1">
-            <h3 class="font-semibold mb-1 text-white">BONUS — Insider Circle credit</h3>
-            <p class="text-gray-400 text-sm">If you upgrade to Insider Circle within 60 days of receiving the Sweep, the €1,997 is credited 100% — your first ~20 months of Insider Circle are paid.</p>
-          </div>
-          <span class="text-emerald-400 font-mono font-semibold whitespace-nowrap">€1,997</span>
-        </div>
-        <div class="flex items-start gap-4 bg-dark-900 rounded-xl border border-emerald-500/40 p-5">
-          <span class="text-emerald-400 text-lg mt-0.5 flex-shrink-0">+</span>
-          <div class="flex-1">
-            <h3 class="font-semibold mb-1 text-white">BONUS — &ldquo;Sweep or It's Free&rdquo; guarantee</h3>
-            <p class="text-gray-400 text-sm">Reply within 14 days if the report doesn't surface three orgs you didn't already know about. 100% refund, no forms, no call. You keep the report and the CSV.</p>
-          </div>
-          <span class="text-emerald-400 font-mono font-semibold whitespace-nowrap">Priceless</span>
+  <main>
+    <section class="relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-br from-dark-900 via-dark-800 to-yellow-900/30 opacity-80"></div>
+      <div class="mobile-hero-wrap relative max-w-4xl mx-auto px-4 sm:px-6 py-16 md:py-28 text-center">
+        <p class="text-yellow-300 font-semibold text-sm uppercase tracking-wider mb-4">One-time custom report</p>
+        <h1 class="mobile-hero-title text-4xl md:text-6xl font-extrabold leading-tight mb-6">One sector. One thesis. One serious pass.</h1>
+        <p class="mobile-hero-copy text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8">Sector Sweep is for when you need something deeper than the weekly shortlist and do not want a broad ongoing subscription. You pick the lens. The pass is built around your question.</p>
+        <div class="inline-flex items-center gap-2 rounded-full border border-yellow-500/30 bg-yellow-500/10 px-4 py-2 text-sm text-yellow-300">
+          <span>Price:</span>
+          <strong class="text-white">€1,997 once</strong>
         </div>
       </div>
-
-      <div class="mt-8 rounded-xl border-2 border-yellow-500 bg-dark-900 p-6 md:p-8 flex flex-col md:flex-row items-stretch md:items-center gap-4 md:gap-8">
-        <div class="flex-1">
-          <p class="text-gray-400 text-xs uppercase tracking-wider mb-1">Itemized value</p>
-          <p class="text-xl"><span class="line-through decoration-yellow-400/60 text-gray-300">€13,000+</span> <span class="text-gray-500 text-sm">(excluding bonuses)</span></p>
-        </div>
-        <div class="md:text-right">
-          <p class="text-yellow-300 text-xs uppercase tracking-wider mb-1">Today, one-time</p>
-          <p class="text-4xl md:text-5xl font-extrabold text-yellow-300">€1,997</p>
-        </div>
-        <a href="#commission" class="inline-flex items-center justify-center bg-yellow-500 hover:bg-yellow-400 text-dark-900 font-bold px-6 py-4 rounded-lg text-base transition shrink-0">Commission a Sweep &rarr;</a>
+    </section>
+    <section class="bg-dark-800 py-6 border-y border-gray-800" data-countdown-root data-countdown-key="gdf_timer_sweep">
+      <div class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 text-center">
+        <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-2">Urgency timer</p>
+        <p class="text-white font-semibold text-lg">Your Sector Sweep window closes in <span data-countdown-output class="text-signal-400">05:00</span></p>
+        <p class="text-gray-500 text-sm mt-1">You have five minutes to keep the current custom-report session active before it resets.</p>
       </div>
-    </div>
-  </section>
+    </section>
+    <section class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 py-12">
+      <div class="mobile-card mobile-card-pad rounded-2xl border border-sky-500/30 bg-sky-500/10 p-8 md:p-10 text-left">
+        <div class="flex flex-col sm:flex-row items-center sm:items-center gap-4 mb-4 text-center sm:text-left">
+          <picture>
+            <source srcset="/data-nerd.webp" type="image/webp">
+            <img src="/data-nerd.png" alt="The Data Nerd" width="96" height="96" loading="lazy" decoding="async" class="w-40 h-40 sm:w-32 sm:h-32 rounded-full ring-2 ring-slate-600 shadow-2xl mx-auto sm:mx-0">
+          </picture>
+          <p class="text-sky-300 text-xs font-semibold uppercase tracking-wider">Story</p>
+        </div>
+        <h2 class="text-3xl font-bold mb-4">Sometimes one sector keeps nagging at you until a weekly list is no longer enough.</h2>
+        <p class="text-gray-300 text-lg leading-relaxed mb-4">You know the question. You know why it matters. What you do not have is the time to build a serious pass from scratch while everything else in your week keeps moving.</p>
+        <p class="text-gray-300 text-lg leading-relaxed">Sector Sweep is for that moment — when the question will not leave you alone, the stakes feel real, and you need an answer solid enough to act on while conviction is still worth something.</p>
+      </div>
+    </section>
 
-  <!-- How it works -->
-  <section class="max-w-3xl mx-auto px-6 py-16">
-    <h2 class="text-3xl font-bold mb-10">How it works</h2>
-    <div class="space-y-6">
-      <div class="flex gap-6 items-start">
-        <div class="w-10 h-10 bg-yellow-500/20 border border-yellow-500/40 rounded-full flex items-center justify-center text-yellow-300 font-bold flex-shrink-0">1</div>
+
+
+    <section class="bg-dark-800 py-10 border-y border-gray-800">
+      <div class="mobile-section-pad mobile-stat-grid max-w-4xl mx-auto px-4 sm:px-6 grid md:grid-cols-3 gap-6 text-center">
         <div>
-          <h3 class="text-lg font-semibold mb-1 text-white">You commission</h3>
-          <p class="text-gray-400 text-sm">Pay €1,997 via Stripe. You're sent a thesis-intake form within 60 minutes — sector, sub-sector, geography, stage filter, the question you want answered, the orgs you already know about.</p>
+          <p class="text-yellow-300 text-xs font-semibold uppercase tracking-wider mb-2">Scarcity</p>
+          <p class="text-gray-200 font-semibold">Q3 2026: 7 of 8 slots still open</p>
+          <p class="text-gray-500 text-sm mt-1">When the eighth slot is taken, new sweeps roll into the next batch.</p>
         </div>
-      </div>
-      <div class="flex gap-6 items-start">
-        <div class="w-10 h-10 bg-yellow-500/20 border border-yellow-500/40 rounded-full flex items-center justify-center text-yellow-300 font-bold flex-shrink-0">2</div>
         <div>
-          <h3 class="text-lg font-semibold mb-1 text-white">I build</h3>
-          <p class="text-gray-400 text-sm">10 business days. I run the existing tracker against your thesis, discover net-new orgs that fit, enrich with funding/contributor/geographic metadata, write the PDF, prepare the CSV, draft the walkthrough.</p>
+          <p class="text-yellow-300 text-xs font-semibold uppercase tracking-wider mb-2">Urgency</p>
+          <p class="text-gray-200 font-semibold">Best commissioned against a live thesis</p>
+          <p class="text-gray-500 text-sm mt-1">If the question matters now, the timing value is in getting the pass before the market catches up.</p>
         </div>
-      </div>
-      <div class="flex gap-6 items-start">
-        <div class="w-10 h-10 bg-yellow-500/20 border border-yellow-500/40 rounded-full flex items-center justify-center text-yellow-300 font-bold flex-shrink-0">3</div>
         <div>
-          <h3 class="text-lg font-semibold mb-1 text-white">You receive</h3>
-          <p class="text-gray-400 text-sm">PDF + CSV + walkthrough delivered to your email. 14-day email Q&amp;A window opens. Read it on your time, ask follow-ups when you have them.</p>
+          <p class="text-yellow-300 text-xs font-semibold uppercase tracking-wider mb-2">Pressure release</p>
+          <p class="text-gray-200 font-semibold">Do not buy this for curiosity alone</p>
+          <p class="text-gray-500 text-sm mt-1">If you are still validating the signal itself, the cheaper layers are the right place to start.</p>
         </div>
       </div>
-      <div class="flex gap-6 items-start">
-        <div class="w-10 h-10 bg-emerald-500/20 border border-emerald-500/40 rounded-full flex items-center justify-center text-emerald-300 font-bold flex-shrink-0">4</div>
-        <div>
-          <h3 class="text-lg font-semibold mb-1 text-white">If you want, you ascend</h3>
-          <p class="text-gray-400 text-sm">Within 60 days, the €1,997 credits 100% toward an Insider Circle subscription. Or you walk away with the report. No pressure either way.</p>
+    </section>
+
+    <section class="mobile-section-pad max-w-5xl mx-auto px-4 sm:px-6 py-16 md:py-20">
+      <div class="grid md:grid-cols-2 gap-8 mobile-grid-gap">
+        <div class="mobile-card mobile-card-pad rounded-xl border border-gray-700 bg-dark-800 p-8">
+          <h2 class="text-2xl font-bold mb-4">What you walk away with</h2>
+          <ul class="space-y-3 text-gray-300 leading-relaxed">
+            <li>One thesis-specific sector pass built around your question</li>
+            <li>A custom report and deeper cut than the standard product ladder</li>
+            <li>A one-time engagement, not a recurring subscription</li>
+            <li>An async, methodology-first deliverable instead of analyst-call theater</li>
+            <li>A better fit when you need depth on one area, not breadth every week</li>
+          </ul>
+        </div>
+        <div class="mobile-card mobile-card-pad rounded-xl border border-gray-700 bg-dark-800 p-8">
+          <h2 class="text-2xl font-bold mb-4">If this sounds like the question you are carrying</h2>
+          <div class="space-y-4 text-gray-300 leading-relaxed">
+            <p><strong class="text-white">Best fit:</strong> when you have a specific sector thesis and want a serious custom pass without taking on a general recurring subscription.</p>
+            <p><strong class="text-white">Also fit:</strong> a small fund, syndicate, or operator-investor who needs one sharper cut than Dashboard or First Look provides.</p>
+            <p><strong class="text-white">Not the first step:</strong> if you are still validating the signal itself, start with the free watchlist, First Look, or Dashboard first.</p>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Guarantee -->
-  <section class="max-w-3xl mx-auto px-6 py-12">
-    <div class="rounded-2xl border-2 border-emerald-500/40 bg-emerald-500/5 p-8 md:p-10">
-      <p class="text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-2">The guarantee</p>
-      <h2 class="text-2xl md:text-3xl font-bold mb-4">"Sweep or It's Free" — within 14 days of delivery</h2>
-      <p class="text-gray-300 leading-relaxed mb-4">
-        If the report doesn't surface at least <strong class="text-white">three orgs you didn't already know about and one signal pattern you can act on</strong> — or if you're just not feeling it — reply within 14 days of delivery and I refund 100%. No forms, no call, no questions. You keep the report and the CSV.
-      </p>
-      <p class="text-gray-500 text-sm">— Signed, The Data Nerd</p>
-    </div>
-  </section>
+    <section class="bg-dark-800 py-16 md:py-20">
+      <div class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 text-center">
+        <p class="text-yellow-300 text-xs font-semibold uppercase tracking-wider mb-3">Why this exists</p>
+        <h2 class="text-3xl font-bold mb-4">This is what you buy when the question is worth real money.</h2>
+        <p class="text-gray-300 text-lg leading-relaxed max-w-3xl mx-auto mb-8">This page is not for browsing. It is for the moment when the thesis is already alive, the question is already clear, and what you need is a serious pass you can act on.</p>
+        <div class="mobile-cta-stack flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/firstlook" class="btn btn-secondary btn-md w-full sm:w-auto">Start smaller with First Look</a>
+          <a href="/dashboard" class="btn btn-secondary btn-md w-full sm:w-auto">See the broader field</a>
+        </div>
+      </div>
+    </section>
 
-  <!-- The price + commission CTA -->
-  <section id="commission" class="bg-dark-800 py-16">
-    <div class="max-w-3xl mx-auto px-6 text-center">
-      <p class="text-yellow-300 text-xs font-semibold uppercase tracking-wider mb-4">The investment</p>
-      <h2 class="text-3xl font-bold mb-3">€1,997 once. Eight seats per quarter.</h2>
-      <p class="text-gray-400 mb-10 max-w-xl mx-auto">No subscription, no contract, no auto-renew. You commission once, you receive once. If you commission again next quarter, the price is still €1,997.</p>
+    <section class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 py-16 md:py-20">
+      <p class="text-yellow-300 text-xs font-semibold uppercase tracking-wider mb-3 text-center">Simple fit test</p>
+      <h2 class="text-3xl font-bold mb-10 text-center">Commission a Sweep only if these three things are true.</h2>
+      <div class="grid md:grid-cols-3 gap-6 mobile-grid-gap">
+        <div class="mobile-step-card rounded-xl border border-gray-700 bg-dark-800 p-6 text-center">
+          <div class="w-14 h-14 bg-yellow-500/20 border border-yellow-500/40 rounded-full flex items-center justify-center text-yellow-300 font-bold mx-auto mb-4 text-2xl">1</div>
+          <h3 class="text-xl font-semibold mb-3">You already trust the signal</h3>
+          <p class="text-gray-400">You are not here for generic education. You already buy the premise and want a custom application of it.</p>
+        </div>
+        <div class="mobile-step-card rounded-xl border border-gray-700 bg-dark-800 p-6 text-center">
+          <div class="w-14 h-14 bg-yellow-500/20 border border-yellow-500/40 rounded-full flex items-center justify-center text-yellow-300 font-bold mx-auto mb-4 text-2xl">2</div>
+          <h3 class="text-xl font-semibold mb-3">You have one specific thesis question</h3>
+          <p class="text-gray-400">You want a serious pass on one sector, geography, or thesis area rather than a broad weekly feed.</p>
+        </div>
+        <div class="mobile-step-card rounded-xl border border-gray-700 bg-dark-800 p-6 text-center">
+          <div class="w-14 h-14 bg-yellow-500/20 border border-yellow-500/40 rounded-full flex items-center justify-center text-yellow-300 font-bold mx-auto mb-4 text-2xl">3</div>
+          <h3 class="text-xl font-semibold mb-3">You prefer depth over subscriptions</h3>
+          <p class="text-gray-400">You want a one-time serious deliverable, not another monthly tool in your stack.</p>
+        </div>
+      </div>
+    </section>
 
-      <div class="rounded-2xl border-2 border-yellow-500 bg-dark-900 p-8 max-w-md mx-auto">
+    <section class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 py-12">
+      <div class="mobile-card mobile-card-pad rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-8 text-center">
+        <p class="text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-3">If this feels too heavy</p>
+        <h2 class="text-2xl font-bold mb-4">Use the lighter layers until the thesis becomes unavoidable.</h2>
+        <p class="text-gray-300 leading-relaxed max-w-2xl mx-auto mb-6">If you are still deciding whether the signal itself is useful, the right next step is not custom work. Start with the free watchlist, First Look, or Dashboard.</p>
+        <div class="mobile-cta-stack flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/#signup" class="btn btn-secondary btn-md w-full sm:w-auto">Get the free Sunday email</a>
+          <a href="/firstlook" class="btn btn-secondary btn-md w-full sm:w-auto">Start smaller with First Look</a>
+          <a href="/dashboard" class="btn btn-secondary btn-md w-full sm:w-auto">See the broader field</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="checkout" class="max-w-3xl mx-auto px-6 py-20 text-center">
+      <p class="text-yellow-300 text-xs font-semibold uppercase tracking-wider mb-3">Checkout</p>
+      <h2 class="text-3xl font-bold mb-4">Reserve my Sweep</h2>
+      <p class="text-gray-300 mb-8">Enter your email and go straight to secure checkout. After payment, the intake page tells you exactly how to send the thesis, sector, geography, and question.</p>
+      <div class="rounded-2xl border-2 border-yellow-500 bg-dark-900 p-8 max-w-xl mx-auto">
         <div class="flex items-baseline justify-center gap-3 mb-2">
-          <p class="text-5xl font-extrabold">&euro;1,997</p>
+          <p class="text-5xl font-extrabold">€1,997</p>
           <p class="text-gray-400 text-lg">one-time</p>
         </div>
-        <p class="text-gray-500 text-sm mb-6">Capped at 8 sweeps per quarter. Q3 2026: 7 of 8 open.</p>
-
-        <div class="my-4 flex items-center justify-center gap-2 text-emerald-300 text-sm font-semibold">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
-          <span>14-day &ldquo;Sweep or It's Free&rdquo; refund.</span>
-        </div>
-
-        <a href="https://buy.stripe.com/bJe14m34DbNC6gm1by0x204" onclick="if(window.posthog)posthog.capture('sector_sweep_checkout_clicked')" class="block bg-yellow-500 hover:bg-yellow-400 text-dark-900 font-bold px-10 py-4 rounded-lg text-lg transition">Commission via Stripe &mdash; €1,997 &rarr;</a>
-        <p class="text-gray-500 text-xs mt-4">Secure checkout via Stripe. Thesis-intake form arrives in your inbox within 60 minutes of payment.</p>
-        <p class="text-gray-500 text-xs mt-2">Prefer to talk first? <a href="mailto:signal@gitdealflow.com?subject=Sector%20Sweep%20Commission%20%E2%80%94%20%5BYour%20thesis%5D&amp;body=Hi%20%E2%80%94%0A%0AI%27d%20like%20to%20commission%20a%20Custom%20Sector%20Sweep.%0A%0ASector%2Fthesis%3A%20%0AGeography%20focus%3A%20%0AStage%20filter%3A%20%0ASpecific%20question%20I%20want%20answered%3A%20%0AOrgs%20I%20already%20know%20about%3A%20%0A%0AThanks%2C%0A" class="text-yellow-300 hover:text-yellow-200 underline decoration-dotted">Email me your thesis</a> &mdash; same-day reply.</p>
+        <p class="text-gray-500 text-sm mb-6">Secure checkout via Stripe · €1,997 this year · €2,997 after 2026</p>
+        <form id="sector-sweep-form" class="mobile-form-stack max-w-lg mx-auto flex flex-col sm:flex-row gap-3">
+          <label for="sector-sweep-email" class="sr-only">Email</label>
+          <input type="email" id="sector-sweep-email" required placeholder="you@example.com" class="flex-1 px-5 py-4 rounded-lg bg-dark-800 border border-gray-600 text-gray-100 placeholder-gray-500 focus:outline-none focus:border-yellow-400 focus:ring-1 focus:ring-yellow-400 text-lg">
+          <button type="submit" id="sector-sweep-btn" class="block w-full sm:w-auto bg-yellow-500 hover:bg-yellow-400 text-dark-900 font-bold px-6 sm:px-10 py-4 rounded-lg text-lg transition">Reserve my Sweep — €1,997 →</button>
+        </form>
+        <p id="sector-sweep-msg" class="text-gray-500 text-sm mt-4">Secure checkout via Stripe. Intake starts right after payment.</p>
+        <p class="text-gray-500 text-xs mt-4">Prefer to talk first? <a href="mailto:signal@gitdealflow.com?subject=Sector%20Sweep%20%E2%80%94%20questions" class="text-yellow-300 hover:text-yellow-200 underline decoration-dotted">Email your thesis first</a>.</p>
       </div>
-
-      <p class="text-gray-500 text-sm mt-10">
-        Want to talk about it first? <a href="mailto:signal@gitdealflow.com?subject=Sector%20Sweep%20%E2%80%94%20questions" class="text-yellow-300 hover:text-yellow-200 underline decoration-dotted">Email me</a> with your thesis. Same-day reply.
-      </p>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="max-w-3xl mx-auto px-6 py-16">
-    <h2 class="text-3xl font-bold mb-10">Common questions</h2>
-    <div class="space-y-6">
-      <div>
-        <h3 class="font-semibold text-white mb-2">Is this a one-time replacement for Insider Circle?</h3>
-        <p class="text-gray-400">No. Insider Circle is the ongoing pulse. Sector Sweep is a one-time, custom-built, deep cut on your thesis. Many investors do both. If you do, the €1,997 credits toward your first ~20 months of Insider.</p>
-      </div>
-      <div>
-        <h3 class="font-semibold text-white mb-2">What sectors are in scope?</h3>
-        <p class="text-gray-400">Anything where engineering activity is a meaningful signal. The 20 sectors we already track plus net-new ones we'll discover for you. The only sectors we decline are ones where GitHub activity isn't a signal (deep biotech with closed-source IP, hardware-only without firmware, regulated finance with proprietary trading).</p>
-      </div>
-      <div>
-        <h3 class="font-semibold text-white mb-2">Can I commission a sweep for a private portfolio review?</h3>
-        <p class="text-gray-400">Yes. Send me a list of 10 to 30 orgs and I'll run them against the same signal stack, plus surface 10 to 20 net-new orgs that fit the same profile and are accelerating now. Same price.</p>
-      </div>
-      <div>
-        <h3 class="font-semibold text-white mb-2">Why anonymity? Why no live call?</h3>
-        <p class="text-gray-400">I'm a solo bootstrapped operator. I keep the work and the founder identity separate. The trade-off is no live calls — you get an async written walkthrough that's actually more thorough than a 60-min call would be, and a 14-day email Q&amp;A window. Several Sweep clients have said the written format is what they preferred anyway: re-readable, paste-able into their notes, no scheduling.</p>
-      </div>
-      <div>
-        <h3 class="font-semibold text-white mb-2">Why only 8 sweeps per quarter?</h3>
-        <p class="text-gray-400">Because each one is custom and I want to keep the depth. Two sweeps a week is the sustainable cap for one operator. When the cap fills, the queue rolls to the next quarter.</p>
-      </div>
-    </div>
-  </section>
-
+    </section>
   </main>
 
-  <footer class="bg-dark-900 border-t border-gray-800 py-8">
-    <div class="max-w-3xl mx-auto px-6 text-center">
+  <footer class="border-t border-gray-800 bg-dark-900/80 py-12">
+    <div class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 text-center">
       <div class="flex flex-wrap justify-center gap-6 text-gray-500 text-sm mb-4">
-        <a href="https://gitdealflow.com" class="hover:text-gray-300">Main Site</a>
-        <a href="/insider" class="hover:text-gray-300">Insider Circle</a>
-        <a href="https://signals.gitdealflow.com" class="hover:text-gray-300">Sector Signals</a>
-        <a href="https://t.me/gitdealflow" class="hover:text-gray-300">Telegram</a>
+        <a href="/" class="hover:text-gray-300">Home</a>
+        <a href="/firstlook" class="hover:text-gray-300">First Look</a>
+        <a href="/dashboard" class="hover:text-gray-300">Dashboard</a>
+        <a href="/insider" class="hover:text-gray-300">Insider</a>
         <a href="/privacy" class="hover:text-gray-300">Privacy</a>
-        <a href="/terms" class="hover:text-gray-300">Terms</a>
-        <a href="mailto:signal@gitdealflow.com" class="hover:text-gray-300">Contact</a>
       </div>
-      <p class="text-gray-600 text-xs">&copy; 2026 VC Deal Flow Signal. All rights reserved.</p>
+      <p class="text-gray-600 text-xs">GitDealFlow Sector Sweep</p>
     </div>
   </footer>
 
-  <!-- PostHog -->
   <script>
-    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group setPersonProperties resetPersonProperties setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split('.');2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement('script')).type='text/javascript',p.async=!0,p.src=s.api_host+'/static/array.js',(r=t.getElementsByTagName('script')[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a='posthog',u.people=u.people||[],u.toString=function(t){var e='posthog';return'posthog'!==a&&(e+='.'+a),t||(e+=' (stub)'),e},u.people.toString=function(){return u.toString(1)+'.people (stub)'},o='init capture register register_once register_for_session unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group setPersonProperties resetPersonProperties setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags'.split(' '),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
     if(/^https?:$/.test(location.protocol))posthog.init('phc_lyZCgvTpicjLzAO3rY2GhxuX5WUc5jQjP8ZVwwJqauX', {api_host: 'https://eu.i.posthog.com', persistence: 'memory', person_profiles: 'identified_only'});
   </script>
 
   <script src="/pixels.js" async></script>
+
+  <script>
+    window.GDFattribution = function(source) {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        return {
+          source: source || 'sector-sweep',
+          utm_source: params.get('utm_source') || '',
+          utm_medium: params.get('utm_medium') || '',
+          utm_campaign: params.get('utm_campaign') || '',
+          referrer: document.referrer || '',
+          landing_path: window.location.pathname + window.location.search
+        };
+      } catch (e) {
+        return { source: source || 'sector-sweep' };
+      }
+    };
+
+    document.getElementById('sector-sweep-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const btn = document.getElementById('sector-sweep-btn');
+      const msg = document.getElementById('sector-sweep-msg');
+      const email = document.getElementById('sector-sweep-email').value.trim();
+      if (!email) return;
+      btn.disabled = true;
+      btn.textContent = 'Loading checkout...';
+      try {
+        const attr = window.GDFattribution('sector-sweep');
+        fetch('https://signals.gitdealflow.com/api/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(Object.assign({
+            email: email,
+            quiz_route: 'I',
+            quiz_route_label: 'Sector Sweep (€1,997 once)'
+          }, attr)),
+          keepalive: true
+        }).catch(function(){});
+      } catch(e) {}
+      fetch('https://signals.gitdealflow.com/api/checkout/session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ tier: 'sector_sweep', email: email })
+      }).then(function(res){ return res.json(); }).then(function(data){
+        if (window.posthog) posthog.capture('sector_sweep_checkout_clicked');
+        if (!data || !data.url) throw new Error('Missing checkout URL');
+        window.location.href = data.url;
+      }).catch(function(){
+        btn.disabled = false;
+        btn.textContent = 'Reserve my Sweep — €1,997 →';
+        if (msg) {
+          msg.textContent = 'Something went wrong. Try again or email signal@gitdealflow.com';
+          msg.className = 'text-red-400 text-sm mt-4';
+        }
+      });
+    });
+  </script>
+
+  <script>
+    (function(){
+      const root = document.querySelector('[data-countdown-root]');
+      if (!root) return;
+      const key = root.getAttribute('data-countdown-key') || 'gdf_timer';
+      const out = root.querySelector('[data-countdown-output]');
+      const durationMs = 5 * 60 * 1000;
+      let deadline;
+      try {
+        const stored = sessionStorage.getItem(key);
+        if (stored && Number(stored) > Date.now()) {
+          deadline = Number(stored);
+        } else {
+          deadline = Date.now() + durationMs;
+          sessionStorage.setItem(key, String(deadline));
+        }
+      } catch (e) {
+        deadline = Date.now() + durationMs;
+      }
+      function pad(n){ return n < 10 ? '0' + n : String(n); }
+      function tick(){
+        const left = Math.max(0, deadline - Date.now());
+        const total = Math.floor(left / 1000);
+        const m = Math.floor(total / 60);
+        const s = total % 60;
+        if (out) out.textContent = pad(m) + ':' + pad(s);
+        if (left <= 0) {
+          try { sessionStorage.removeItem(key); } catch (e) {}
+        }
+      }
+      tick();
+      setInterval(tick, 1000);
+    })();
+  </script>
+
 </body>
 </html>

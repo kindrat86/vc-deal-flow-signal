@@ -23,7 +23,7 @@ function audioObjectJsonLd(slug: string, durationSec: number) {
     inLanguage: "en",
     creator: {
       "@type": "Person",
-      "@id": "https://signals.gitdealflow.com/about#author",
+      "@id": "https://signals.gitdealflow.com/about#person",
       name: "The Data Nerd",
       url: "https://signals.gitdealflow.com/about/founder",
     },
@@ -57,7 +57,7 @@ export function DataNerdAudio({
         <span className="text-sky-400 text-xs font-semibold uppercase tracking-wider">
           🎧 {label}
         </span>
-        <span className="text-gray-500 text-xs">· {durLabel}</span>
+        <span className="text-gray-400 text-xs">· {durLabel}</span>
       </div>
       <audio controls preload="none" className="w-full" src={src}>
         Your browser does not support audio playback.

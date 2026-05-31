@@ -38,11 +38,11 @@ const SHIPPED_Q2 = [
   { title: "Bluesky / Mastodon / Farcaster posters", desc: "Three federated networks wired with cross-posting infrastructure.", link: "/distribution#social" },
   { title: "1,060+ pSEO pages live", desc: "12 hreflang locales, /startup/[slug]/[period], /predicted/[week].", link: "/sitemap.xml" },
   { title: "OpenAPI 3.1 spec — 21 endpoints", desc: "Public agent contract for the GPT, the MCP server, and any third-party agent.", link: "/api/actions/openapi.json" },
-  { title: "Brunson Trilogy V4 — composite 89/100", desc: "Dream 100, Distribution map, 23 Building Blocks, Reverse-Eng teardown, Conversion Story script, 5-min Perfect Webinar.", link: "/funnels#building-blocks" },
+  { title: "Sales-canon V4 — composite 89/100", desc: "Top 100, Distribution map, 23 Building Blocks, Reverse-Eng teardown, Conversion Story script, 5-min walkthrough.", link: "/funnels#building-blocks" },
 ] as const;
 
 const IN_FLIGHT = [
-  { title: "Brunson Trilogy V5 — push to 92 ceiling", desc: "Start Here onramp, Decade-in-a-Day curriculum, Manifesto, Roadmap, Best Bait sharpener. Shipping in this same window.", link: "/start-here" },
+  { title: "Sales-canon V5 — push to 92 ceiling", desc: "Start Here onramp, Decade-in-a-Day curriculum, Manifesto, Roadmap, right-shaped-bait sharpener. Shipping in this same window.", link: "/start-here" },
   { title: "Sector coverage: 19 → 24 sectors", desc: "Adding climate-software, robotics-ops, identity-infra, healthtech-RWD, fintech-rails-EU. Q3 target.", link: "/methodology" },
   { title: "Smithery re-listing (HTTP-hosted MCP)", desc: "Wrapping our stdio MCP in an HTTP gateway so we&rsquo;re re-discoverable in the new Smithery model.", link: "/install" },
   { title: "Wikipedia entry (Wikidata anchor live)", desc: "Wikidata Q-number set; Wikipedia draft pending notability passes.", link: "/wikipedia" },
@@ -50,8 +50,8 @@ const IN_FLIGHT = [
 
 const ON_DECK = [
   { title: "Live A/B order-bump experimentation log", desc: "Public dashboard of the conversion experiments we run on /firstlook + /pricing." },
-  { title: "Long-Form Video Sales Letter (LFVSL)", desc: "Voiceover-only walkthrough of /perfect-webinar. Anonymity-rule preserves: synthetic narration, no founder face." },
-  { title: "Public scoreboard for past Acceleration Watch picks", desc: "Quarterly grading at 60d / 90d. Re-confirms the Magic Bullet (Expert Ch 13) on rolling cadence." },
+  { title: "Long-Form Video Sales Letter (LFVSL)", desc: "Voiceover-only walkthrough of /walkthrough. Anonymity-rule preserves: synthetic narration, no founder face." },
+  { title: "Public scoreboard for past Acceleration Watch picks", desc: "Quarterly grading at 60d / 90d. Re-confirms the one-shot proof on rolling cadence." },
   { title: "Insider Circle Telegram (private group)", desc: "Live for €97/mo subscribers. Spike alerts, monthly briefing, portfolio overlap." },
   { title: "Custom Sector Sweep — recurring Q4 rhythm", desc: "End-of-quarter deep dives on requested sectors, capped at 8 per quarter." },
 ] as const;
@@ -60,7 +60,7 @@ const CONSIDERING = [
   { title: "European-side data residency", desc: "Mirror dashboard + CSV in EU-hosted Postgres for GDPR-strict syndicates." },
   { title: "GitHub Actions integration", desc: "Push your portfolio orgs into a YAML, get a PR comment on weekly velocity changes." },
   { title: "Public funder map", desc: "Anonymized view of who&rsquo;s reading the Watch — by region, fund stage, focus." },
-  { title: "Multi-language /perfect-webinar variants", desc: "ja, de, fr-FR currently localised on /[locale]; expand to PW + 5min PW." },
+  { title: "Multi-language /walkthrough variants", desc: "ja, de, fr-FR currently localised on /[locale]; expand to PW + 5min PW." },
 ] as const;
 
 const CUT = [
@@ -181,22 +181,21 @@ export default function RoadmapPage() {
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
         <header className="space-y-4">
-          <nav aria-label="Breadcrumb" className="text-xs text-gray-500">
+          <nav aria-label="Breadcrumb" className="text-xs text-gray-400">
             <Link href="/" className="hover:text-gray-300">Home</Link>
             <span className="mx-2">/</span>
             <span className="text-gray-400">Roadmap</span>
           </nav>
           <p className="text-emerald-400 text-xs font-semibold uppercase tracking-wider">
-            Traffic Secrets Ch 19 · Pre-Launch · Live testing transparency
+            Pre-Launch · Live testing transparency
           </p>
           <h1 className="text-3xl sm:text-5xl font-bold text-gray-100 leading-[1.1] tracking-tight">
             What we&rsquo;ve shipped, <span className="text-emerald-400">what&rsquo;s next</span>, what we cut.
           </h1>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
-            Brunson&rsquo;s teaching on pre-launch and live testing: the
-            buyer who can see what you&rsquo;re working on next, and what
-            you cut and why, builds trust faster than the buyer who only
-            sees the polished marketing. This is our public bet.
+            The buyer who can see what you&rsquo;re working on next, and what
+            you cut and why, builds trust faster than the buyer who only sees
+            the polished marketing. This is our public bet.
           </p>
           <p className="text-gray-400 text-sm leading-relaxed border-l-2 border-slate-700 pl-4">
             Updated when something material ships, not on a calendar
@@ -209,7 +208,7 @@ export default function RoadmapPage() {
           aria-label="Sections"
           className="rounded-xl border border-slate-800 bg-slate-900/60 p-5 sm:p-6"
         >
-          <p className="text-gray-500 text-[10px] font-semibold uppercase tracking-wider mb-3">
+          <p className="text-gray-400 text-[10px] font-semibold uppercase tracking-wider mb-3">
             Five lanes · jump to:
           </p>
           <ul className="grid grid-cols-2 sm:grid-cols-5 gap-2 text-sm">
@@ -240,7 +239,7 @@ export default function RoadmapPage() {
         <Section
           id="on-deck"
           label="On deck — next quarter"
-          intro="Specced, sequenced, not yet started. Likely Q3-Q4 2026. Order may shift if a higher-leverage Brunson gap appears in the next monthly audit."
+          intro="Specced, sequenced, not yet started. Likely Q3-Q4 2026. Order may shift if a higher-leverage gap appears in the next monthly audit."
           items={ON_DECK}
           color="amber"
         />
@@ -248,7 +247,7 @@ export default function RoadmapPage() {
         <Section
           id="considering"
           label="Considering — exploration"
-          intro="Ideas with real-but-uncertain leverage. We&rsquo;ll commit when one of them clears the Brunson threshold (i.e. closes a chapter that scores below 80)."
+          intro="Ideas with real-but-uncertain leverage. We&rsquo;ll commit when one of them clears the audit threshold (i.e. closes a gap that scores below 80)."
           items={CONSIDERING}
           color="violet"
         />
@@ -291,11 +290,8 @@ export default function RoadmapPage() {
           </div>
         </section>
 
-        <p className="text-gray-500 text-xs leading-relaxed border-t border-slate-800 pt-6">
-          Public roadmap per <em>Traffic Secrets</em> Ch 19 (My Pre-Launch)
-          + <em>Expert Secrets</em> Ch 18 (Test Your Webinar Live —
-          transparency variant) by Russell Brunson. Used under fair-use
-          commentary.
+        <p className="text-gray-400 text-xs leading-relaxed border-t border-slate-800 pt-6">
+          Public roadmap drawn from direct-response sales canon.
         </p>
       </div>
     </>

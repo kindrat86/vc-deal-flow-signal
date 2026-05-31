@@ -91,6 +91,19 @@ export async function GET() {
         endpoint: `${SITE}/api/signals.json`,
         cache_seconds: 86400,
       },
+      community: {
+        // Brunson Expert Secrets §1 Ch 4 (Mass Movement Vehicle) — member-
+        // side ledger that pairs with /wins (startup-side ledger). Roster,
+        // pre-sorted leaderboard, aggregate cohort stats, public 60d/90d
+        // grading rules — all in one fetch.
+        endpoint: `${SITE}/api/v1/members.json`,
+        web_ui: `${SITE}/members`,
+        leaderboard: `${SITE}/members/leaderboard`,
+        apply: `${SITE}/members/join`,
+        cache_seconds: 3600,
+        anonymity_rule:
+          "Pseudonymous handles welcome under the same rule as @thedatanerd. Real name never required.",
+      },
       csv_panel: {
         endpoint: `${SITE}/api/signals.csv`,
         cache_seconds: 86400,

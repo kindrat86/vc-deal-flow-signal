@@ -12,9 +12,9 @@ By the time a warm intro reaches you, the founder has probably talked to 3 to 5 
 
 The deals that generate outsized returns are the ones where you arrive before consensus forms. Before the deck exists. Before the company is "hot."
 
-That's the window VC Deal Flow Signal opens.
+That's the window GitDealFlow opens — and it's a tool, not a fund, so it's working for you, not bidding against you.
 
-When a startup's engineering is accelerating but their fundraise hasn't started, there's a gap. Maybe 2 to 4 weeks. In that gap, you can reach out first. You can offer help before they need money. You can build a relationship before everyone else is trying to.
+When a startup is shipping faster but their fundraise hasn't started, there's a gap. Maybe 2 to 4 weeks. In that gap, you can reach out first. You can offer help before they need money. You can build a relationship before everyone else is trying to.
 
 Your network gets you to the table. This gets you there first.
 

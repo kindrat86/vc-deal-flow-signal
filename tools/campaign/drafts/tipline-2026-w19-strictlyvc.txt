@@ -1,0 +1,45 @@
+TO: tips@strictlyvc.com
+FROM: signal@gitdealflow.com
+SUBJECT: GitHub Momentum Index — week of May 4, 2026 — 5 movers
+
+Hi StrictlyVC team,
+
+Five startups whose engineering acceleration crossed our signal threshold the week of May 4, 2026 — the kind of pre-deck activity that usually shows up in your inbox 30+ days later.
+
+1. Zapply Jobs — US Pre-seed HR Tech.
+   Signal: Engineering hiring burst. +82% velocity over 14 days, 3 contributors.
+   Why it crossed: Pre-seed US jobs platform sustaining 1,694 commits over 14 days with the contributor signal pointing to a hiring burst. The combination of pre-seed stage and high commit volume is the textbook pre-seed-to-seed acceleration profile.
+   Repo: https://github.com/zapplyjobs
+
+2. AtroCore — EU Seed Enterprise SaaS.
+   Signal: Framework migration. +38% velocity over 14 days, 18 contributors.
+   Why it crossed: EU seed-stage configurable PIM/MDM platform with a sustained framework-migration signal. The +38% acceleration on 116 commits indicates production-grade refactor work — usually a Series A precursor in B2B SaaS.
+   Repo: https://github.com/atrocore
+
+3. Ever — US Growth HR Tech.
+   Signal: Deploy frequency spike. +854% velocity over 14 days, 79 contributors.
+   Why it crossed: Open-core ERP/HR platform showing a 9.5x acceleration over baseline with a contributor base of 79. A spike of this magnitude on a multi-product team usually maps to a release window or a customer-driven sprint.
+   Repo: https://github.com/ever-co
+
+4. Kanvas (BakaPHP) — LATAM Seed Enterprise SaaS.
+   Signal: Framework migration. +32% velocity over 14 days, 14 contributors.
+   Why it crossed: LATAM seed-stage commerce engine with one of the highest commit volumes in the seed cohort. 598 commits / 14d with a +32% delta indicates real customer-driven shipping rather than open-source maintenance.
+   Repo: https://github.com/bakaphp
+
+5. Janssen Project (Gluu) — US Growth Cybersecurity.
+   Signal: Framework migration. +77% velocity over 14 days, 100 contributors.
+   Why it crossed: Identity-and-access platform (Gluu spinout) with a +77% acceleration on a 100-contributor base. Framework migration in identity SaaS at this scale typically lines up with enterprise-tier launch or platform compliance work.
+   Repo: https://github.com/JanssenProject
+
+Full week (10 picks + grading window) — https://signals.gitdealflow.com/predicted/2026-w18
+Methodology — https://signals.gitdealflow.com/methodology
+Paper — ssrn.com/abstract=6606558
+Embed widget (top 5, auto-updating, CC BY 4.0) — https://signals.gitdealflow.com/embed/weekly
+JSON feed — https://signals.gitdealflow.com/predicted/feed.json
+
+Happy to walk through any of the five, or share the underlying repo-level data on request.
+
+— GitDealFlow Research
+   The Data Nerd · https://signals.gitdealflow.com/about
+
+(One-line provenance: signal threshold = 95th-percentile commit-velocity Δ over a rolling 14-day window across a 4,200-org venture-backed panel. Outcomes are graded post-hoc from public news; the 60-day window for this cohort closes July 3, 2026.)

@@ -59,12 +59,12 @@ Same `npx -y @gitdealflow/mcp-signal` runs in every stdio runtime below. Per-run
 | Claude Desktop | stdio | `claude_desktop_config.json` (above) |
 | Claude Code | stdio | `.mcp.json` (above) |
 | Cursor | stdio | Settings → MCP → +Add new MCP server → paste the JSON above; [cursor.directory listing](https://cursor.directory/plugins/vc-deal-flow-signal-mcp-1) (under review) |
-| Cline (VS Code) | stdio | Cline panel → ⚙ → Edit Config → paste JSON; [cline/mcp-marketplace#1491](https://github.com/cline/mcp-marketplace/issues/1491) (submitted) |
-| Block Goose | stdio | `goose session --with-extension "npx -y @gitdealflow/mcp-signal"`; [aaif-goose/goose#8974](https://github.com/aaif-goose/goose/pull/8974) (PR open) |
+| Cline (VS Code) | stdio | Cline panel → ⚙ → Edit Config → paste JSON; [cline/mcp-marketplace#1491](https://github.com/cline/mcp-marketplace/issues/1491) (open, awaiting review) |
+| Block Goose | stdio | `goose session --with-extension "npx -y @gitdealflow/mcp-signal"`; [block/goose#8974](https://github.com/block/goose/pull/8974) (closed — Goose registry moratorium 2026-05-12, pending new listing flow) |
 | OpenHands | stdio | `~/.openhands/mcp.json` paste-JSON, or `openhands mcp add ...` (no marketplace exists) |
 | Aider | stdio | `npx -y mcpm-aider add vc-deal-flow-signal --command "npx -y @gitdealflow/mcp-signal"` (Aider native MCP not yet shipped — bridge required) |
 | AiderDesk | stdio | Settings → Agent → MCP Servers → +Add → paste JSON |
-| Raycast | stdio | Manage MCP Servers → +Add Server → paste JSON; [raycast/extensions#27618](https://github.com/raycast/extensions/pull/27618) (PR open) |
+| Raycast | stdio | Manage MCP Servers → +Add Server → paste JSON; [raycast/extensions#28376](https://github.com/raycast/extensions/pull/28376) (open, Ready for Review; supersedes auto-stale'd #27618) |
 | Smithery one-click | streamable-http or stdio | [smithery.ai/server/kindrat86/vc-deal-flow-signal](https://smithery.ai/server/kindrat86/vc-deal-flow-signal) (Verified, 98/100) |
 | Mistral Le Chat | Streamable HTTP | Custom Connector at `https://signals.gitdealflow.com/api/mcp/rpc` |
 | ChatGPT GPT | OpenAPI Action | [GitHub VC Signal GPT](https://chatgpt.com/g/g-69f76b9b3b308191b6948bff20c0fbf8-github-vc-signal) — no install, paid ChatGPT plan required |
@@ -82,6 +82,15 @@ All tools are read-only, idempotent, and fetch live data from the public API (no
 | `get_startup_signal` | `name` (case-insensitive) | Full signal profile for one startup: velocity, contributors, repos, classification. |
 | `get_signals_summary` | — | Dataset snapshot — period, counts, refresh date, format URLs, citation. |
 | `get_methodology` | — | How signals are sourced, computed, and classified, with known limitations. |
+| `predict_funding` | `name` | Transparent, scored funding-likelihood claim for one startup — score, full evidence chain, confidence, caveats, and methodology + SSRN provenance so the number is citable, not opaque. |
+| `compare_signals` | `names` (2–5) | Head-to-head scored comparison of named startups, ranked, with a diligence recommendation. |
+| `shortlist_signals` | `sector?`, `geography?`, `signalType?`, `minAccelerationScore?`, `minVelocityChangePct?`, `limit?` | The whole sourcing workflow in one call — "5 strongest signals in fintech in the EU", ranked by acceleration score with a rationale each. |
+| `get_diligence_dossier` | `name` | Public-source diligence dossier for one company in a cited object — M&A history (acquirer, year, amount), funds that publicly backed it, and the published engineering-acceleration signal. |
+| `get_scout_receipts` | `github_username` | Scout Score (0–100) for a GitHub user from their public starring history vs. validated unicorns. |
+
+**Provenance, not opaque numbers.** `predict_funding`, `shortlist_signals`, and `compare_signals` use one transparent, deterministic scoring engine (velocity ≤40 + contributor-growth ≤25 + new-repos ≤15 + signal-class ≤20 = 0–100). Every input and weight is returned in the response so a downstream agent can audit and cite the score. Geography is region-level only (`US`/`EU`/`UK`/`APAC`/`LATAM`/`Canada`); city/country aliases normalize up to the region. These are heuristics over public GitHub activity — not investment advice and not a guarantee of any financing event.
+
+> Three paid agent tools (`research_company`, `compose_thesis`, `deep_dive_scan`) add enriched dossiers, thesis scaffolds, and multi-cohort sector scans for API-key holders — see [/pricing](https://signals.gitdealflow.com/pricing?utm_source=github&utm_medium=readme&utm_campaign=mcp_server).
 
 **Supported sectors:** `ai-ml`, `fintech`, `cybersecurity`, `developer-tools`, `healthcare`, `climate-tech`, `enterprise-saas`, `data-infrastructure`, `web3`, `robotics`, `edtech`, `ecommerce-infrastructure`, `supply-chain`, `legal-tech`, `hr-tech`, `proptech`, `agtech`, `gaming`, `space-tech`, `social-community`.
 

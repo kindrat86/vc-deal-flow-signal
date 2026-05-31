@@ -107,6 +107,14 @@ export default function WinsPage() {
     };
   }).filter((g) => g.items.length > 0);
 
+  // Date range covered by the ledger (used in Dataset.temporalCoverage).
+  const sortedDates = wins
+    .map((w) => w.event_date)
+    .filter(Boolean)
+    .sort();
+  const earliest = sortedDates[0] || "2020-01-01";
+  const latest = sortedDates[sortedDates.length - 1] || "2026-05-05";
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -117,7 +125,9 @@ export default function WinsPage() {
         description: `Public ledger of ${totalWins} venture-backed startups whose GitHub engineering acceleration matched the SSRN-published signal pattern (abstract id 6606558) before a documented funding event, acquisition, or breakout-adoption milestone. Sourced from public GitHub data and public funding news; CC BY 4.0.`,
         url: "https://signals.gitdealflow.com/wins",
         creator: { "@id": "https://gitdealflow.com/#organization" },
+        publisher: { "@id": "https://gitdealflow.com/#organization" },
         license: "https://creativecommons.org/licenses/by/4.0/",
+        isAccessibleForFree: true,
         keywords: [
           "venture capital",
           "deal flow",
@@ -127,19 +137,88 @@ export default function WinsPage() {
           "underwriting receipts",
         ],
         datePublished: "2026-05-05",
+        dateModified: latest,
+        temporalCoverage: `${earliest}/${latest}`,
+        variableMeasured: [
+          {
+            "@type": "PropertyValue",
+            name: "GitHub engineering acceleration",
+            description:
+              "14-day commit velocity acceleration with two-period confirmation, derived from public GitHub Archive data.",
+          },
+          {
+            "@type": "PropertyValue",
+            name: "Outcome event",
+            description:
+              "Public funding event, acquisition, or $1B-valuation milestone, sourced from Crunchbase, PitchBook, and public press releases.",
+          },
+          {
+            "@type": "PropertyValue",
+            name: "Outcome date",
+            description: "ISO 8601 date of the public outcome announcement.",
+          },
+          {
+            "@type": "PropertyValue",
+            name: "Tier weight",
+            description:
+              "Outcome-magnitude weight (50/70/90/100) used to rank entries; not signal-strength.",
+          },
+        ],
+        distribution: [
+          {
+            "@type": "DataDownload",
+            encodingFormat: "application/json",
+            contentUrl: "https://signals.gitdealflow.com/api/v1/dataset.jsonl",
+            name: "Full dataset (NDJSON)",
+          },
+          {
+            "@type": "DataDownload",
+            encodingFormat: "text/html",
+            contentUrl: "https://signals.gitdealflow.com/wins",
+            name: "Public ledger (this page)",
+          },
+        ],
+        citation: [
+          "https://ssrn.com/abstract=6606558",
+          "https://openalex.org/W7154916891",
+        ],
+        sameAs: ["https://ssrn.com/abstract=6606558"],
+        recordedIn: {
+          "@type": "CreativeWork",
+          "@id": "https://ssrn.com/abstract=6606558",
+          name: "SSRN preprint on GitHub engineering-acceleration signals as a leading indicator of venture-stage outcomes",
+        },
       },
       {
         "@type": "ItemList",
+        "@id": "https://signals.gitdealflow.com/wins#itemlist",
         name: "Validated underwriting receipts (sorted by event weight)",
+        description: `Full validated panel — ${totalWins} entries, ${uniqueOrgs} unique orgs.`,
         numberOfItems: totalWins,
         itemListOrder: "https://schema.org/ItemListOrderDescending",
-        itemListElement: wins.slice(0, 20).map((w, i) => ({
+        isPartOf: { "@id": "https://signals.gitdealflow.com/wins#dataset" },
+        itemListElement: wins.map((w, i) => ({
           "@type": "ListItem",
           position: i + 1,
           name: `${w.name} — ${w.event}`,
           url: `https://github.com/${w.repo}`,
           description: `${w.event} on ${w.event_date}. Tracked via ${w.repo}.`,
         })),
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://signals.gitdealflow.com/wins#webpage",
+        url: "https://signals.gitdealflow.com/wins",
+        name: "Underwriting Receipts — Public Ledger of Validated GitHub Signals",
+        primaryImageOfPage: {
+          "@type": "ImageObject",
+          url: "https://signals.gitdealflow.com/api/og/signal-card",
+        },
+        mainEntity: { "@id": "https://signals.gitdealflow.com/wins#dataset" },
+        speakable: {
+          "@type": "SpeakableSpecification",
+          cssSelector: ["h1", "h2", "[data-speakable]", "[data-agent-summary]"],
+        },
       },
       {
         "@type": "BreadcrumbList",
@@ -175,7 +254,7 @@ export default function WinsPage() {
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
         <header className="space-y-4">
-          <nav aria-label="Breadcrumb" className="text-xs text-gray-500">
+          <nav aria-label="Breadcrumb" className="text-xs text-gray-400">
             <Link href="/" className="hover:text-sky-400 transition-colors">
               ← Home
             </Link>
@@ -266,7 +345,7 @@ export default function WinsPage() {
             so the validation panel here is the validation panel everyone is
             graded against.
           </p>
-          <p className="text-gray-500 text-xs leading-relaxed pt-1 border-t border-slate-800">
+          <p className="text-gray-400 text-xs leading-relaxed pt-1 border-t border-slate-800">
             What this ledger is not: a claim that we predicted these
             outcomes for any specific investor at any specific time. The
             forward-looking artefact is the{" "}
@@ -311,7 +390,7 @@ export default function WinsPage() {
                         <p className="text-gray-100 text-base font-medium">
                           {w.name}
                         </p>
-                        <p className="text-gray-500 text-xs leading-relaxed mt-0.5 font-mono">
+                        <p className="text-gray-400 text-xs leading-relaxed mt-0.5 font-mono">
                           <a
                             href={`https://github.com/${w.repo}`}
                             target="_blank"
@@ -326,7 +405,7 @@ export default function WinsPage() {
                         <p className={`text-sm font-medium ${tn.text}`}>
                           {w.event}
                         </p>
-                        <p className="text-gray-500 text-xs tabular-nums">
+                        <p className="text-gray-400 text-xs tabular-nums">
                           {formatDate(w.event_date)}
                         </p>
                       </div>
@@ -368,6 +447,36 @@ export default function WinsPage() {
             >
               Free Sunday digest
             </a>
+          </div>
+        </section>
+
+        {/* Member-side companion ledger — Brunson Expert Secrets §1 Ch 4
+            (Mass Movement Vehicle). The receipts on this page are
+            *startup-side*; /members is *member-side*. Cross-link makes the
+            pairing explicit. */}
+        <section
+          aria-label="Member-side ledger"
+          className="rounded-xl border border-amber-700/40 bg-gradient-to-br from-amber-950/20 via-slate-900 to-slate-950 p-6 sm:p-8 space-y-3"
+        >
+          <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider">
+            The other ledger
+          </p>
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug">
+            Receipts above. <span className="text-amber-400">Members below.</span>
+          </h2>
+          <p className="text-gray-300 text-base leading-relaxed max-w-2xl">
+            The Charter Cohort is the member-side companion to this page —
+            the investors reading the signals that surface the wins above.
+            Public thesis. Public picks. Public scorecard. Pseudonymous
+            handles welcome under the same anonymity rules as the founder.
+          </p>
+          <div className="pt-1">
+            <Link
+              href="/members"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-amber-600 hover:bg-amber-500 text-white font-semibold text-sm shadow-lg shadow-amber-500/20 transition-colors"
+            >
+              See the Charter Cohort <span aria-hidden>→</span>
+            </Link>
           </div>
         </section>
 

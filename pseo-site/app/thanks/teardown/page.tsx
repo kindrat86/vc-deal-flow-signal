@@ -3,6 +3,7 @@ import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import TelegramCTA from "@/components/TelegramCTA";
 
 export const dynamic = "force-static";
 
@@ -38,6 +39,26 @@ export default function ThanksTeardown() {
           </p>
         </header>
 
+        <section className="rounded-xl border border-rose-500/30 bg-rose-500/5 p-5 sm:p-6 space-y-3">
+          <p className="text-rose-300 text-xs font-semibold uppercase tracking-wider">
+            Best next move while you wait
+          </p>
+          <p className="text-gray-300 text-sm leading-relaxed">
+            Do not leave this as a €1 receipt page. If the teardown already makes you curious about the wider signal, the best next move is to either step into the full First Look or understand the buyer-side logic first.
+          </p>
+          <div className="flex flex-wrap gap-3 text-sm">
+            <Link href="/firstlook" className="text-rose-200 hover:text-rose-100 underline underline-offset-2">
+              See the First Look Pass
+            </Link>
+            <Link href="/buyers-guide" className="text-rose-200 hover:text-rose-100 underline underline-offset-2">
+              Read the buyer's guide
+            </Link>
+            <Link href="/research" className="text-rose-200 hover:text-rose-100 underline underline-offset-2">
+              Read the research panel
+            </Link>
+          </div>
+        </section>
+
         <section className="bg-slate-900/60 border border-slate-800 rounded-lg p-5 space-y-3">
           <p className="text-gray-300 text-sm font-semibold">
             What to send back
@@ -50,7 +71,7 @@ export default function ThanksTeardown() {
               you&rsquo;re bullish, sceptical, or just curious.
             </li>
           </ul>
-          <p className="text-gray-500 text-xs leading-relaxed">
+          <p className="text-gray-400 text-xs leading-relaxed">
             If the org has no public GitHub footprint, you get an immediate
             €1 refund &mdash; no public commit data means no signal to read.
           </p>
@@ -78,6 +99,12 @@ export default function ThanksTeardown() {
             </li>
           </ol>
         </section>
+
+        {/* Brunson TS §3 Ch 11 — €1 buyers are the highest-velocity tier
+            of the value-ladder. Telegram is the lowest-friction next step
+            (no payment, no signup), keeping them inside the orbit while
+            the €7 upgrade decision processes. */}
+        <TelegramCTA tone="violet" context="post-purchase" />
 
         <section className="bg-slate-900/40 border border-slate-800 rounded-lg p-5 space-y-2">
           <p className="text-gray-400 text-xs font-semibold uppercase tracking-wider">

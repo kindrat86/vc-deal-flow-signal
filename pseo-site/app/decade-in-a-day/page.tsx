@@ -2,19 +2,20 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import { ThirtyDayQuickstart } from "@/components/ThirtyDayQuickstart";
 import { getHreflangLanguages } from "@/lib/hreflang";
 
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "A Decade in a Day — the developer-investor curriculum",
+  title: "A Decade in a Day — Twelve Lessons on Earlier Signal and Better Timing",
   description:
-    "Ten years of developer-investor education compressed into one Saturday. Twelve modules: identity, methodology, dream customer, funnel architecture, signal lens, ascension, traffic, agent-side distribution, ethics, scale.",
+    "Twelve lessons on timing, proof, workflow, and signal — compressed into one day for anyone who wants a clearer way to notice startup momentum earlier.",
   alternates: { canonical: "/decade-in-a-day" },
   openGraph: {
-    title: "A Decade in a Day — the developer-investor curriculum",
+    title: "A Decade in a Day — Twelve Lessons on Earlier Signal and Better Timing",
     description:
-      "Twelve modules. One Saturday. The curriculum we wish we'd had at the start.",
+      "Twelve lessons. One day. A practical path to earlier signal and clearer timing.",
     url: "https://signals.gitdealflow.com/decade-in-a-day",
     type: "article",
   },
@@ -36,9 +37,9 @@ const MODULES: Module[] = [
     title: "Identity — name the buyer you actually are",
     question: "Why does identity precede method?",
     content:
-      "If you decide you're a 'mini-VC' you'll buy fund-grade tooling and complain about the price. If you decide you're a 'developer-investor' the right tools, prices, and rhythm fall into place. Identity is upstream of every purchase decision. Brunson's Identity Close lives or dies on this naming.",
+      "If you name the problem clearly, the right tools, prices, and rhythm start making sense much faster. If you name the problem badly, you buy the wrong stack and then blame the price. That first naming move shapes everything that follows.",
     links: [
-      { label: "/about/founder — what a developer-investor is", href: "/about/founder" },
+      { label: "/about — why the signal exists", href: "/about" },
       { label: "Identity declaration on home", href: "/" },
       { label: "FOR / NOT FOR disqualifier", href: "/#disqualifier" },
     ],
@@ -64,21 +65,22 @@ const MODULES: Module[] = [
     content:
       "An engineer who reads commit logs for fun and writes €5k–€50k checks on the side, 5–40 angel checks a year, more curious about codebases than about pitch decks. Three thesis axes: AI infrastructure, dev tools, technical SaaS. The disqualifier is as important as the qualifier — Series-B+ partners with six-figure data budgets are not us.",
     links: [
-      { label: "/dream-100 — the 100 voices the buyer reads", href: "/dream-100" },
+      { label: "/target-list — the top 100 voices the buyer reads", href: "/target-list" },
       { label: "/funnels — every entry point sized to the buyer", href: "/funnels" },
     ],
   },
   {
     n: 4,
     minutes: 35,
-    title: "Funnel architecture — six rungs, one ladder",
-    question: "Why six tiers and not three?",
+    title: "Funnel architecture — six rungs, one ladder, one cadence",
+    question: "Why six tiers and not three? And why a monthly drop on top?",
     content:
-      "Free → €7 → €9.97 → €97 → €497 → €1,997. Every rung exists because the rung below it doesn't fit one specific check size or one specific cadence. Free is for cadence-builders. €7 is for thesis-testers. €9.97 is for the daily-rhythm buyer. €97 is for the syndicate. €497 is for the small fund. €1,997 is for the deep-dive on a single sector. The Brunson rule: never let a buyer leave at zero commitment when there's a free rung below.",
+      "Free → €7 → €9.97 → €97 → €497 → €1,997. Every rung exists because the rung below it doesn't fit one specific check size or one specific cadence. Free is for cadence-builders. €7 is for thesis-testers. €9.97 is for the daily-rhythm buyer. €97 is for the syndicate. €497 is for the small fund. €1,997 is for the deep-dive on a single sector. Never let a buyer leave at zero commitment when there's a free rung below. Above the rungs sits the continuity layer — a net-new monthly drop (sector deep-dive, methodology release, founder essay, or tool) that turns the paid tier from a tool subscription into an anticipation engine.",
     links: [
       { label: "/funnels — the value ladder visualised", href: "/funnels" },
-      { label: "/funnels#building-blocks — the 23 components", href: "/funnels#building-blocks" },
+      { label: "/funnels#building-blocks — the 25 components", href: "/funnels#building-blocks" },
       { label: "/pricing — the offer side", href: "/pricing" },
+      { label: "/continuity — the monthly Insider Drop calendar", href: "/continuity" },
     ],
   },
   {
@@ -87,7 +89,7 @@ const MODULES: Module[] = [
     title: "Reverse-engineering — what the leaders are optimising for",
     question: "How do you read a competitor's funnel?",
     content:
-      "Don't read their pricing. Read their lead form, their bridge page, their stack-claim, their close. Harmonic optimises for partner-budgets. Tracxn optimises for sector breadth. Affinity optimises for warm-intro routing. None of them optimise for the developer-investor — that's not a pricing-gap, it's an ICP-gap. The funnel-hack you ship is the one that fills the blind spot.",
+      "If you can explain the difference between timing and verification, the rest of the comparison work gets easier. Harmonic optimises for partner budgets. Tracxn optimises for sector breadth. Affinity optimises for warm-intro routing. The useful teardown is the one that shows which job they solve well — and which one they leave open.",
     links: [
       { label: "/funnels#reverse-engineering — full teardown", href: "/funnels#reverse-engineering" },
       { label: "/buyers-guide — buyer-side decision tree", href: "/buyers-guide" },
@@ -97,12 +99,12 @@ const MODULES: Module[] = [
   {
     n: 6,
     minutes: 30,
-    title: "The Big Domino — one belief that closes the buyer",
+    title: "The core claim — one belief that closes the buyer",
     question: "What's the single belief that, if held, makes everything else inevitable?",
     content:
       "If commit-velocity acceleration is the most leading public signal in venture capital, every other deal-flow source — pitch decks, AngelList, Crunchbase, warm intros — is a lagging indicator. The whole investing thesis falls or stands on whether that belief is true. Once you accept it, everything we sell follows automatically. If you don't accept it, no amount of stack will move you. Find this belief for your own product before you write copy.",
     links: [
-      { label: "/perfect-webinar — Big Domino + Three Objections", href: "/perfect-webinar" },
+      { label: "/walkthrough — core claim + Three Objections", href: "/walkthrough" },
       { label: "/pitch — the same belief in 90 seconds", href: "/pitch" },
     ],
   },
@@ -112,10 +114,10 @@ const MODULES: Module[] = [
     title: "The Conversion Story — five steps from belief to action",
     question: "Old way → new vehicle → external → internal → frameworks. Why this order?",
     content:
-      "Brunson's canonical script. (1) Name the old way the buyer was sold — for us, 'best deals come from your network.' (2) Reveal the new vehicle — engineering acceleration. (3) Remove the external struggle — you don't need fund-grade tooling. (4) Remove the internal struggle — you don't need to become a different person to source. (5) Show the frameworks — Sunday digest, Wednesday filter, end-of-quarter sweep. Each step is a beat the reader has to walk through; skip one and they bounce.",
+      "The canonical conversion script. (1) Name the old way the buyer was sold — for us, 'best deals come from your network.' (2) Reveal the new vehicle — engineering acceleration. (3) Remove the external struggle — you don't need fund-grade tooling. (4) Remove the internal struggle — you don't need to become a different person to source. (5) Show the frameworks — Sunday digest, Wednesday filter, end-of-quarter sweep. Each step is a beat the reader has to walk through; skip one and they bounce.",
     links: [
-      { label: "/perfect-webinar#conversion-story — full script", href: "/perfect-webinar#conversion-story" },
-      { label: "/perfect-webinar/5min — condensed version", href: "/perfect-webinar/5min" },
+      { label: "/walkthrough#conversion-story — full script", href: "/walkthrough#conversion-story" },
+      { label: "/walkthrough/5min — condensed version", href: "/walkthrough/5min" },
     ],
   },
   {
@@ -126,7 +128,7 @@ const MODULES: Module[] = [
     content:
       "Eight objects, each with a standalone value, totalling €1,728/yr. The buyer's brain anchors on the total. The price (€9.97/mo = €119.64/yr) becomes a 14× discount — which is the actual story. Stack order matters: the most desirable thing first, the bonus last. Never bury the dashboard inside the methodology vault. Lead with the thing the buyer wants most.",
     links: [
-      { label: "/perfect-webinar — the canonical 8-row stack", href: "/perfect-webinar" },
+      { label: "/walkthrough — the canonical 8-row stack", href: "/walkthrough" },
       { label: "/pricing — stack on the offer page", href: "/pricing" },
     ],
   },
@@ -138,7 +140,7 @@ const MODULES: Module[] = [
     content:
       "Money close fires for the spreadsheet buyer. Identity close fires for the engineer who's tired of pretending to be a partner. Pricing close fires for the rate-anchor — €1,728 retail vs €119.64 founding. Urgency close fires for the calendar — every Monday skipped is one 21–47-day window closed. Encore is the safety net for everyone — eight lines, the whole offer in one block, before the FAQ. One of the five always lands; you don't pick, you stack.",
     links: [
-      { label: "/perfect-webinar — four-close grid + encore", href: "/perfect-webinar" },
+      { label: "/walkthrough — four-close grid + encore", href: "/walkthrough" },
     ],
   },
   {
@@ -150,7 +152,7 @@ const MODULES: Module[] = [
       "Owned: email list (free Acceleration Watch), RSS, MCP server in the buyer's IDE. Earned: Reddit AEO, dev.to long-form, Substack mirror, federated social (Bluesky / Mastodon / Farcaster), academic SSRN citation. Paid: deferred under HOLD until earned-only proof. The reason isn't ideology, it's compounding — earned channels keep paying after you stop. Paid channels stop the day the budget does.",
     links: [
       { label: "/distribution — every channel mapped", href: "/distribution" },
-      { label: "/dream-100 — voices we read on each channel", href: "/dream-100" },
+      { label: "/target-list — top 100 voices we read on each channel", href: "/target-list" },
     ],
   },
   {
@@ -190,9 +192,9 @@ export default function DecadePage() {
       {
         "@type": "Course",
         "@id": "https://signals.gitdealflow.com/decade-in-a-day#course",
-        name: "A Decade in a Day — the developer-investor curriculum",
+        name: "A Decade in a Day — the earlier-signal curriculum",
         description:
-          "Twelve modules condensing ten years of developer-investor practice into one Saturday: identity, methodology, dream customer, funnel architecture, conversion story, stack, closes, traffic, agent-side distribution, and the ethical lines that don't move.",
+          "Twelve modules condensing ten years of earlier-signal practice into one Saturday: methodology, positioning, funnel architecture, conversion story, stack, closes, traffic, distribution, and the ethical lines that don't move.",
         provider: {
           "@type": "Organization",
           name: "GitDealFlow",
@@ -232,22 +234,22 @@ export default function DecadePage() {
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
         <header className="space-y-4">
-          <nav aria-label="Breadcrumb" className="text-xs text-gray-500">
+          <nav aria-label="Breadcrumb" className="text-xs text-gray-400">
             <Link href="/" className="hover:text-gray-300">Home</Link>
             <span className="mx-2">/</span>
             <span className="text-gray-400">A Decade in a Day</span>
           </nav>
           <p className="text-violet-400 text-xs font-semibold uppercase tracking-wider">
-            Expert Secrets · Ch 22 — A Decade in a Day · Applied
+            A decade in a day · Applied
           </p>
           <h1 className="text-3xl sm:text-5xl font-bold text-gray-100 leading-[1.1] tracking-tight">
-            Ten years of developer-investor practice — <span className="text-violet-400">in twelve modules</span>.
+            Ten years of earlier-signal practice — <span className="text-violet-400">in twelve modules</span>.
           </h1>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
-            Brunson&rsquo;s teaching: when a curriculum exists, you compress
-            a decade of practice into a Saturday. The reader doesn&rsquo;t
-            need to repeat your mistakes — they need the conclusions you
-            walked away with, in the order that made them inevitable.
+            When a curriculum exists, you compress a decade of practice into
+            a Saturday. The reader doesn&rsquo;t need to repeat your
+            mistakes — they need the conclusions you walked away with, in
+            the order that made them inevitable.
           </p>
           <p className="text-gray-300 text-base leading-relaxed">
             Twelve modules · {TOTAL_MIN} minutes total · designed to be read
@@ -262,7 +264,7 @@ export default function DecadePage() {
           aria-label="Module index"
           className="rounded-xl border border-slate-800 bg-slate-900/60 p-5 sm:p-6"
         >
-          <p className="text-gray-500 text-[10px] font-semibold uppercase tracking-wider mb-3">
+          <p className="text-gray-400 text-[10px] font-semibold uppercase tracking-wider mb-3">
             12 modules · {TOTAL_MIN} minutes · jump to:
           </p>
           <ol className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-sm">
@@ -273,7 +275,7 @@ export default function DecadePage() {
                   className="block px-3 py-1.5 rounded-md hover:bg-slate-800 text-violet-300 hover:text-violet-200 transition-colors"
                 >
                   {m.n}. {m.title}{" "}
-                  <span className="text-gray-500 text-xs ml-1">
+                  <span className="text-gray-400 text-xs ml-1">
                     {m.minutes}m
                   </span>
                 </a>
@@ -329,19 +331,27 @@ export default function DecadePage() {
           </section>
         ))}
 
+        {/* 30-day Quickstart — Brunson Expert Secrets Ch 22 (Decade in
+            a Day / Fast Implementation). Replaces the previous soft "pick
+            one module" block with a literal calendar — 30 dated beats,
+            week-by-week, tied to existing surfaces. Audit 2026-05-09
+            verdict on Ch 22 (score 92/100): "could add a more visible
+            '30-day quickstart' CTA on the page itself." */}
+        <ThirtyDayQuickstart />
+
         <section className="rounded-xl border border-amber-700/40 bg-gradient-to-br from-amber-950/20 via-slate-900 to-slate-950 p-6 sm:p-8 space-y-3">
           <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider">
-            What to do tomorrow
+            Or, if 30 days feels heavy
           </p>
           <h2 className="text-xl sm:text-2xl font-bold text-gray-100">
-            Don&rsquo;t print this. Pick one module and live in it for a week.
+            Pick Module 6 — the core claim — and live in it for a week.
           </h2>
           <p className="text-gray-300 text-base leading-relaxed">
-            Brunson&rsquo;s rule for compressed curricula: a Saturday-morning
-            read changes nothing if you don&rsquo;t pick a single beat to
-            embody. We&rsquo;d pick Module 6 — the Big Domino — and rewrite
-            it for whatever you&rsquo;re building this quarter. Once you have
-            your Big Domino, every other module re-reads in five minutes.
+            The 30-day quickstart above is the disciplined path. The
+            seven-day &ldquo;one module&rdquo; path is the soft path. Both
+            beat zero. Once you have your core claim re-written for
+            whatever you&rsquo;re building this quarter, every other
+            module re-reads in five minutes.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 pt-2">
             <a
@@ -359,10 +369,8 @@ export default function DecadePage() {
           </div>
         </section>
 
-        <p className="text-gray-500 text-xs leading-relaxed border-t border-slate-800 pt-6">
-          Curriculum compressed per <em>Expert Secrets</em> Ch 22 (A Decade
-          in a Day) by Russell Brunson (2017/2020). Used here under
-          fair-use commentary. Not affiliated with ClickFunnels.
+        <p className="text-gray-400 text-xs leading-relaxed border-t border-slate-800 pt-6">
+          Curriculum compressed from direct-response sales canon.
         </p>
       </div>
     </>

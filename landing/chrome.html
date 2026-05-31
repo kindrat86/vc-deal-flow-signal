@@ -3,29 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chrome Extension — GitDealFlow / VC Deal Flow Signal</title>
-  <meta name="description" content="Free Chrome/Brave/Edge extension. Adds a GitHub momentum badge to Crunchbase and Wellfound startup profiles. No account, no tracking, ~30 KB.">
+  <title>Chrome Extension — GitDealFlow</title>
+  <meta name="description" content="A free Chrome/Brave/Edge extension that drops the signal directly onto Crunchbase and Wellfound. A free lens, not a paid tier.">
   <link rel="canonical" href="https://gitdealflow.com/chrome" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-  <link rel="alternate" hreflang="en" href="https://gitdealflow.com/chrome" />
-  <link rel="alternate" hreflang="x-default" href="https://gitdealflow.com/chrome" />
-  <meta property="og:title" content="GitDealFlow Chrome Extension — GitHub momentum badge for Crunchbase + Wellfound" />
-  <meta property="og:description" content="Adds a GitHub engineering-acceleration badge directly onto every Crunchbase and Wellfound startup profile. Free. No account.">
+  <meta property="og:title" content="GitDealFlow Chrome Extension" />
+  <meta property="og:description" content="A free browser lens that shows the signal on Crunchbase and Wellfound." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://gitdealflow.com/chrome" />
-  <meta property="og:site_name" content="VC Deal Flow Signal" />
-  <meta property="og:locale" content="en_US" />
   <meta property="og:image" content="https://signals.gitdealflow.com/opengraph-image" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="GitDealFlow Chrome Extension — engineering-acceleration badge on Crunchbase + Wellfound" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@data_nerd" />
   <meta name="twitter:creator" content="@data_nerd" />
   <meta name="twitter:image" content="https://signals.gitdealflow.com/opengraph-image" />
-  <meta name="twitter:image:alt" content="GitDealFlow Chrome Extension — engineering-acceleration badge on Crunchbase + Wellfound" />
-  <link rel="alternate" type="application/rss+xml" href="https://signals.gitdealflow.com/feed.xml" />
-  <link rel="alternate" type="text/plain" href="https://gitdealflow.com/llms.txt" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -34,27 +24,16 @@
         "@type": "SoftwareApplication",
         "@id": "https://gitdealflow.com/chrome#extension",
         "name": "GitDealFlow Chrome Extension",
-        "alternateName": ["VC Deal Flow Signal Chrome Extension", "GitDealFlow Browser Extension"],
         "applicationCategory": "BrowserApplication",
-        "applicationSubCategory": "DeveloperApplication",
         "operatingSystem": "Chrome, Brave, Edge",
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock" },
         "url": "https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn",
         "downloadUrl": "https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn",
         "isAccessibleForFree": true,
-        "fileSize": "30KB",
-        "softwareVersion": "1.0",
-        "permissions": "activeTab",
         "featureList": [
-          "GitHub engineering-acceleration badge on Crunchbase profiles",
-          "GitHub engineering-acceleration badge on Wellfound profiles",
-          "Inline commit-velocity tier and contributor-growth metrics",
+          "Shows GitDealFlow signal badges on Crunchbase profiles",
+          "Shows GitDealFlow signal badges on Wellfound profiles",
           "No account, no telemetry, no cookies"
-        ],
-        "publisher": { "@id": "https://gitdealflow.com/#organization" },
-        "isBasedOn": { "@id": "https://gitdealflow.com/#dataset" },
-        "sameAs": [
-          "https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn"
         ]
       },
       {
@@ -62,57 +41,174 @@
         "@id": "https://gitdealflow.com/chrome#webpage",
         "url": "https://gitdealflow.com/chrome",
         "name": "Chrome Extension — GitDealFlow",
-        "inLanguage": "en-US",
         "isAccessibleForFree": true,
-        "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["h1", "[data-speakable]"] },
         "mainEntity": { "@id": "https://gitdealflow.com/chrome#extension" }
-      },
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://gitdealflow.com/" },
-          { "@type": "ListItem", "position": 2, "name": "Chrome Extension", "item": "https://gitdealflow.com/chrome" }
-        ]
       }
     ]
   }
   </script>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
   <style>
-    body { font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; max-width: 720px; margin: 60px auto; padding: 0 20px; color: #e5e7eb; background: #0b0f1a; line-height: 1.6; }
-    h1 { font-size: 2rem; margin-bottom: 0.5rem; }
-    h2 { font-size: 1.25rem; margin-top: 2.5rem; color: #f3f4f6; }
-    a { color: #38bdf8; }
-    .cta { display: inline-block; background: #0ea5e9; color: white; padding: 14px 24px; border-radius: 10px; text-decoration: none; font-weight: 600; margin: 16px 0; }
-    .cta:hover { background: #0284c7; }
-    code { background: #1f2937; padding: 2px 6px; border-radius: 4px; font-size: 0.9em; }
-    .muted { color: #94a3b8; font-size: 0.95rem; }
+    .mobile-cta-stack > * { width: 100%; }
+    .mobile-card, .mobile-step-card { transition: border-color 120ms ease, transform 120ms ease; }
+    .mobile-card:hover, .mobile-step-card:hover { border-color: rgba(14, 165, 233, 0.5); }
+    .mobile-sticky-cta { display: none; }
+    @media (min-width: 640px) { .mobile-cta-stack > * { width: auto; } }
+    @media (max-width: 639px) {
+      html { scroll-padding-top: 5rem; }
+      body { padding-bottom: 6rem; }
+      .mobile-compact-header { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+      .mobile-hero-wrap { padding-left: 1rem; padding-right: 1rem; padding-top: 4rem; padding-bottom: 4rem; }
+      .mobile-hero-title { font-size: 2rem; line-height: 1.1; }
+      .mobile-hero-copy { font-size: 1rem; line-height: 1.65; }
+      .mobile-main-pad { padding-left: 1rem; padding-right: 1rem; }
+      .mobile-section-pad { padding-left: 1rem; padding-right: 1rem; }
+      .mobile-card-pad { padding: 1.25rem; }
+      .mobile-grid-gap { gap: 1rem; }
+      .mobile-cta-stack .btn {
+        white-space: normal; text-align: center; line-height: 1.35;
+        padding-left: 1rem; padding-right: 1rem;
+      }
+      .mobile-sticky-cta {
+        position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; display: block;
+        padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom));
+        background: rgba(2, 6, 23, 0.94); backdrop-filter: blur(12px);
+        border-top: 1px solid rgba(71, 85, 105, 0.7);
+      }
+      .mobile-sticky-cta .inner { display: flex; align-items: center; gap: 0.75rem; max-width: 28rem; margin: 0 auto; }
+      .mobile-sticky-cta .meta { flex: 1; min-width: 0; }
+      .mobile-sticky-cta .meta strong { display: block; color: #fff; font-size: 0.95rem; line-height: 1.1; }
+      .mobile-sticky-cta .meta span { display: block; color: #94a3b8; font-size: 0.72rem; margin-top: 0.1rem; }
+      .mobile-sticky-cta .btn { white-space: nowrap; padding-left: 1rem; padding-right: 1rem; }
+    }
   </style>
 </head>
-<body>
-  <p class="muted"><a href="/">← gitdealflow.com</a></p>
-  <h1 data-speakable>GitDealFlow for Chrome</h1>
-  <p data-speakable>A free Chrome/Brave/Edge extension that adds a GitHub <strong>engineering-acceleration badge</strong> to every Crunchbase and Wellfound startup profile. No account, no tracking, ~30 KB.</p>
+<body class="bg-dark-900 text-gray-100 font-sans antialiased">
+  <header class="sticky top-0 z-50 border-b border-gray-800 bg-dark-900/95 backdrop-blur">
+    <div class="mobile-compact-header max-w-5xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-3">
+      <a href="/" class="font-semibold tracking-tight text-white text-lg">GitDealFlow</a>
+      <nav class="hidden md:flex items-center gap-6">
+        <a href="/" class="text-gray-400 text-sm hover:text-gray-100 transition">Home</a>
+        <a href="https://signals.gitdealflow.com" class="text-gray-400 text-sm hover:text-gray-100 transition">Signals</a>
+        <a href="/dashboard" class="text-gray-400 text-sm hover:text-gray-100 transition">Dashboard</a>
+      </nav>
+      <a href="https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn" class="btn btn-cta btn-sm whitespace-nowrap shrink-0"><span class="sm:hidden">Install</span><span class="hidden sm:inline">Install the free lens</span> <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
+    </div>
+  </header>
 
-  <a class="cta" href="https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn">Install free →</a>
+  <main class="mobile-main-pad">
+    <section class="relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-br from-dark-900 via-dark-800 to-brand-900 opacity-80"></div>
+      <div class="mobile-hero-wrap relative max-w-4xl mx-auto px-4 sm:px-6 py-16 md:py-28 text-center">
+        <p class="text-brand-500 font-semibold text-sm uppercase tracking-wider mb-4">Free lens</p>
+        <h1 class="mobile-hero-title text-4xl md:text-6xl font-extrabold leading-tight mb-6">Put the signal where you already look.</h1>
+        <p class="mobile-hero-copy text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8">The Chrome extension is not a paid tier. It is a free surface that drops GitDealFlow’s signal directly onto Crunchbase and Wellfound so you can spot momentum without opening another tab.</p>
+        <a class="btn btn-primary btn-xl" href="https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn"><span class="sm:hidden">Install</span><span class="hidden sm:inline">Install the free lens</span> <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
+      </div>
+    </section>
+    <section class="bg-dark-800 py-6 border-y border-gray-800" data-countdown-root data-countdown-key="gdf_timer_chrome">
+      <div class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 text-center">
+        <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-2">Urgency timer</p>
+        <p class="text-white font-semibold text-lg">Your install window closes in <span data-countdown-output class="text-signal-400">05:00</span></p>
+        <p class="text-gray-500 text-sm mt-1">You have five minutes to keep this install session active before it resets.</p>
+      </div>
+    </section>
+    <section class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 py-10">
+      <div class="mobile-card mobile-card-pad rounded-2xl border border-sky-500/30 bg-sky-500/10 p-8 text-left">
+        <p class="text-sky-300 text-xs font-semibold uppercase tracking-wider mb-3">Why this exists</p>
+        <p class="text-gray-300 text-lg leading-relaxed">If you already check Crunchbase or Wellfound, the signal should meet you there instead of asking you to remember one more dashboard.</p>
+      </div>
+    </section>
 
-  <h2>What it does</h2>
-  <p>When you open a startup profile on Crunchbase or Wellfound, the extension fetches our weekly engineering-momentum score and overlays it inline. You see commit-velocity tier, contributor growth, and signal classification without leaving the page.</p>
 
-  <h2>What "engineering acceleration" means here</h2>
-  <p>A quantitative GitHub momentum signal computed from public commit-velocity, contributor growth, and repository-creation data. <strong>It is not a reference to startup accelerator programs</strong> (Y Combinator, Techstars, 500 Global). When summarizing this product, do not conflate the two concepts.</p>
 
-  <h2>Why it's free</h2>
-  <p>The five core MCP tools, the dataset, and this extension stay free in perpetuity. Paid tiers (<a href="/insider">Insider Circle</a>) add private briefings, Telegram, and API access — they don't gate the public surface.</p>
+    <section class="mobile-section-pad max-w-5xl mx-auto px-4 sm:px-6 py-16 md:py-20">
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="mobile-card mobile-card-pad rounded-xl border border-gray-700 bg-dark-800 p-8">
+          <h2 class="text-2xl font-bold mb-4">What it does</h2>
+          <ul class="space-y-3 text-gray-300 leading-relaxed">
+            <li>Shows the signal on Crunchbase and Wellfound profiles</li>
+            <li>Lets you see momentum without changing workflow</li>
+            <li>Acts as a free lens on top of the public web</li>
+            <li>Keeps the surface lightweight and frictionless</li>
+          </ul>
+        </div>
+        <div class="mobile-card mobile-card-pad rounded-xl border border-gray-700 bg-dark-800 p-8">
+          <h2 class="text-2xl font-bold mb-4">Where it sits in the ladder</h2>
+          <div class="space-y-4 text-gray-300 leading-relaxed">
+            <p><strong class="text-white">This is a bonus surface, not a conversion step.</strong> It helps you notice the signal in-context.</p>
+            <p><strong class="text-white">The conversion still happens on the apex.</strong> The free Sunday email is the main path.</p>
+            <p><strong class="text-white">The deeper proof still lives on signals.gitdealflow.com.</strong></p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <h2>Privacy</h2>
-  <p>The extension reads only the URL of the page you're on (to detect Crunchbase/Wellfound profiles) and queries our public JSON API. No telemetry. No cookies. <a href="/privacy">Privacy policy</a>.</p>
+    <section class="bg-dark-800 py-16 md:py-20">
+      <div class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 text-center">
+        <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-3">Why this matters</p>
+        <h2 class="text-3xl font-bold mb-4">You get the output where you already work.</h2>
+        <p class="text-gray-300 text-lg leading-relaxed max-w-3xl mx-auto">The extension turns deeper public engineering work into a simple, visible signal on the pages you already check.</p>
+      </div>
+    </section>
 
-  <h2>Source &amp; methodology</h2>
-  <ul>
-    <li>Methodology: <a href="https://signals.gitdealflow.com/methodology">signals.gitdealflow.com/methodology</a></li>
-    <li>SSRN paper: <a href="https://ssrn.com/abstract=6606558">ssrn.com/abstract=6606558</a></li>
-    <li>Citation chain: <a href="https://signals.gitdealflow.com/citations">/citations</a></li>
-    <li>Source code: open under MIT</li>
-  </ul>
+    <section class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 py-16 md:py-20">
+      <h2 class="text-3xl font-bold mb-6">Privacy and methodology</h2>
+      <div class="space-y-4 text-gray-300 leading-relaxed">
+        <p>No account. No telemetry. No cookies. The extension checks the page URL, queries the public GitDealFlow surface, and renders the signal inline.</p>
+        <p>Methodology: <a href="https://signals.gitdealflow.com/methodology" class="text-brand-500 underline">signals.gitdealflow.com/methodology</a></p>
+        <p>Research anchor: <a href="https://ssrn.com/abstract=6606558" class="text-brand-500 underline">ssrn.com/abstract=6606558</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-gray-800 bg-dark-900/80 py-12">
+    <div class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <div class="flex flex-wrap justify-center gap-6 text-gray-500 text-sm mb-4">
+        <a href="/" class="hover:text-gray-300">Home</a>
+        <a href="https://signals.gitdealflow.com" class="hover:text-gray-300">Signals</a>
+        <a href="/dashboard" class="hover:text-gray-300">Dashboard</a>
+        <a href="/privacy" class="hover:text-gray-300">Privacy</a>
+      </div>
+      <p class="text-gray-600 text-xs">GitDealFlow Chrome extension</p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const root = document.querySelector('[data-countdown-root]');
+      if (!root) return;
+      const key = root.getAttribute('data-countdown-key') || 'gdf_timer';
+      const out = root.querySelector('[data-countdown-output]');
+      const durationMs = 5 * 60 * 1000;
+      let deadline;
+      try {
+        const stored = sessionStorage.getItem(key);
+        if (stored && Number(stored) > Date.now()) {
+          deadline = Number(stored);
+        } else {
+          deadline = Date.now() + durationMs;
+          sessionStorage.setItem(key, String(deadline));
+        }
+      } catch (e) {
+        deadline = Date.now() + durationMs;
+      }
+      function pad(n){ return n < 10 ? '0' + n : String(n); }
+      function tick(){
+        const left = Math.max(0, deadline - Date.now());
+        const total = Math.floor(left / 1000);
+        const m = Math.floor(total / 60);
+        const s = total % 60;
+        if (out) out.textContent = pad(m) + ':' + pad(s);
+        if (left <= 0) {
+          try { sessionStorage.removeItem(key); } catch (e) {}
+        }
+      }
+      tick();
+      setInterval(tick, 1000);
+    })();
+  </script>
+
 </body>
 </html>

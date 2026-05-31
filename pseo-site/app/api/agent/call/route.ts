@@ -3,9 +3,11 @@ import {
   getAllSectors,
   getCurrentPeriod,
   getSortedStartups,
+  getDataLastModified,
   type Startup,
 } from "@/lib/data";
 import { slugify } from "@/lib/slugify";
+import { buildDossier, dossierEnvelope } from "@/lib/diligence";
 
 const BASE_URL = "https://signals.gitdealflow.com";
 
@@ -194,6 +196,7 @@ export async function POST(request: NextRequest) {
           "get_trending_startups",
           "search_startups_by_sector",
           "get_startup_signal",
+          "get_diligence_dossier",
           "get_signals_summary",
           "get_methodology",
         ],
@@ -240,6 +243,22 @@ export async function POST(request: NextRequest) {
       return Response.json(summaryPayload(), {
         headers: { ...CORS_HEADERS, "Cache-Control": "no-store" },
       });
+
+    case "get_diligence_dossier": {
+      const entity = String(args.company ?? args.entity ?? args.name ?? "").trim();
+      if (!entity) {
+        return Response.json(
+          { error: "Missing required parameter: company" },
+          { status: 400, headers: CORS_HEADERS }
+        );
+      }
+      const asOf = getDataLastModified().toISOString().slice(0, 10);
+      const dossier = buildDossier(entity);
+      return Response.json(dossierEnvelope(dossier, entity, asOf), {
+        status: dossier.found ? 200 : 404,
+        headers: { ...CORS_HEADERS, "Cache-Control": "no-store" },
+      });
+    }
 
     case "get_scout_receipts": {
       const username = String(args.github_username ?? "").trim();

@@ -5,6 +5,8 @@ import {
   getLaunchBySlug,
   getAllLaunchSlugs,
   type Launch,
+  type LaunchStage,
+  type VideoCue,
 } from "@/content/launches";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
@@ -55,10 +57,106 @@ function CountdownLine({ launch }: { launch: Launch }) {
   );
 }
 
+const PLC_BADGE: Record<
+  LaunchStage["plc"],
+  { label: string; tone: string }
+> = {
+  "sideways-story": {
+    label: "Sideways Story",
+    tone: "border-sky-500/40 bg-sky-950/40 text-sky-200",
+  },
+  "ownership-experience": {
+    label: "Ownership Experience",
+    tone: "border-emerald-500/40 bg-emerald-950/40 text-emerald-200",
+  },
+  "internal-struggle": {
+    label: "Internal Struggle",
+    tone: "border-rose-500/40 bg-rose-950/40 text-rose-200",
+  },
+  "big-idea": {
+    label: "Big Idea — Open Cart",
+    tone: "border-amber-500/40 bg-amber-950/40 text-amber-200",
+  },
+};
+
+function VideoCueBlock({ cue }: { cue: VideoCue }) {
+  if (cue.kind === "youtube" && cue.youtubeId) {
+    const src = `https://www.youtube-nocookie.com/embed/${cue.youtubeId}?rel=0&modestbranding=1`;
+    return (
+      <figure className="rounded-xl border border-slate-800 bg-slate-950/60 overflow-hidden">
+        <div
+          className="relative w-full"
+          style={{ paddingBottom: "56.25%" }}
+        >
+          <iframe
+            src={src}
+            title={cue.title}
+            loading="lazy"
+            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+            className="absolute inset-0 w-full h-full"
+          />
+        </div>
+        <figcaption className="px-4 py-3 border-t border-slate-800 space-y-1">
+          <p className="text-gray-100 text-sm font-semibold">{cue.title}</p>
+          <p className="text-gray-400 text-xs leading-relaxed">{cue.caption}</p>
+        </figcaption>
+      </figure>
+    );
+  }
+
+  // kind === "scheduled" — render a placeholder card with the queue date.
+  // Synthetic-voice render lands on the scheduledFor date via the Stadium-Pitch
+  // GitHub Actions cron (Cartesia Theo + Remotion).
+  const dateLabel = cue.scheduledFor
+    ? new Date(cue.scheduledFor).toUTCString().replace(/ \d\d:\d\d:\d\d GMT/, "")
+    : "soon";
+  return (
+    <figure className="rounded-xl border border-dashed border-slate-700 bg-slate-950/40 px-5 py-6 space-y-3">
+      <div className="flex items-center gap-3">
+        <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-slate-700 bg-slate-900 text-slate-400 text-xs font-semibold">
+          ▶
+        </span>
+        <div className="space-y-0.5">
+          <p className="text-gray-100 text-sm font-semibold">{cue.title}</p>
+          <p className="text-slate-400 text-xs">
+            Synthetic walkthrough · {Math.round(cue.durationSeconds / 60)} min
+            · cued for {dateLabel}
+          </p>
+        </div>
+      </div>
+      <p className="text-gray-400 text-xs leading-relaxed">{cue.caption}</p>
+    </figure>
+  );
+}
+
 export default async function LaunchPage({ params }: PageProps) {
   const { slug } = await params;
   const launch = getLaunchBySlug(slug);
   if (!launch) notFound();
+
+  // VideoObject schema for every stage that has a youtube cue. Synthetic-only
+  // (kind === "scheduled") cues are intentionally not advertised in schema
+  // until the synthetic render is actually live, otherwise we publish a
+  // ContentURL we can't yet honour.
+  const videoObjects = launch.stages
+    .filter((s) => s.videoCue?.kind === "youtube" && s.videoCue.youtubeId)
+    .map((s) => {
+      const cue = s.videoCue!;
+      const id = cue.youtubeId!;
+      return {
+        "@type": "VideoObject",
+        "@id": `${SITE}/launch/${slug}#video-stage-${s.n}`,
+        name: cue.title,
+        description: cue.caption,
+        thumbnailUrl: `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`,
+        contentUrl: `https://www.youtube.com/watch?v=${id}`,
+        embedUrl: `https://www.youtube-nocookie.com/embed/${id}`,
+        uploadDate: "2026-05-06",
+        duration: `PT${cue.durationSeconds}S`,
+        inLanguage: "en-US",
+      };
+    });
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -70,7 +168,7 @@ export default async function LaunchPage({ params }: PageProps) {
         description: launch.hook,
         articleBody: launch.stages.map((s) => s.body.join("\n\n")).join("\n\n"),
         datePublished: "2026-05-06",
-        dateModified: "2026-05-06",
+        dateModified: "2026-05-08",
         author: {
           "@type": "Organization",
           name: "VC Deal Flow Signal",
@@ -89,13 +187,34 @@ export default async function LaunchPage({ params }: PageProps) {
         description: launch.abstract,
         offers: {
           "@type": "Offer",
-          price: "19",
+          price: String(launch.priceEUR),
           priceCurrency: "EUR",
           url: launch.buyUrl,
-          availability: "https://schema.org/InStock",
+          availability: launch.isOpen
+            ? "https://schema.org/InStock"
+            : "https://schema.org/Discontinued",
           priceValidUntil: launch.closesAt.slice(0, 10),
         },
       },
+      {
+        "@type": "HowTo",
+        "@id": `${SITE}/launch/${slug}#howto`,
+        name: `4-stage Product Launch Funnel — ${launch.headline}`,
+        description:
+          "Jeff Walker PLC sequence: Sideways Story → Ownership Experience → Internal Struggle → Big Idea (Open Cart).",
+        step: launch.stages.map((s) => ({
+          "@type": "HowToStep",
+          position: s.n,
+          name: PLC_BADGE[s.plc].label,
+          text: s.headline,
+          itemListElement: s.body.map((p, i) => ({
+            "@type": "HowToDirection",
+            position: i + 1,
+            text: p,
+          })),
+        })),
+      },
+      ...videoObjects,
       {
         "@type": "FAQPage",
         mainEntity: launch.faq.map((f) => ({
@@ -143,7 +262,7 @@ export default async function LaunchPage({ params }: PageProps) {
             </div>
           )}
           <p className="text-sky-400 text-xs font-medium uppercase tracking-wider">
-            Product Launch · 4-stage funnel · DotCom Secrets Ch 15
+            Product Launch · Jeff Walker PLF
           </p>
           <h1 className="text-3xl sm:text-5xl font-bold text-gray-100 leading-[1.1] tracking-tight">
             {launch.headline}
@@ -155,7 +274,7 @@ export default async function LaunchPage({ params }: PageProps) {
         </header>
 
         <section className="rounded-xl border border-slate-800 bg-slate-900/40 p-5 space-y-2">
-          <p className="text-gray-500 text-xs font-semibold uppercase tracking-wider">
+          <p className="text-gray-400 text-xs font-semibold uppercase tracking-wider">
             Abstract
           </p>
           <p className="text-gray-300 text-sm leading-relaxed">
@@ -163,27 +282,66 @@ export default async function LaunchPage({ params }: PageProps) {
           </p>
         </section>
 
-        <ol className="space-y-10 list-none pl-0">
-          {launch.stages.map((stage) => (
-            <li key={stage.n} className="space-y-4">
-              <div className="flex items-center gap-3">
-                <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-sky-500/40 bg-sky-950/40 text-sky-300 font-bold text-sm">
-                  {stage.n}
-                </span>
-                <p className="text-sky-300 text-xs font-semibold uppercase tracking-wider">
-                  {stage.caption}
-                </p>
-              </div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug">
-                {stage.headline}
-              </h2>
-              <div className="space-y-4 text-gray-300 text-base leading-relaxed">
-                {stage.body.map((p, i) => (
-                  <p key={i}>{p}</p>
-                ))}
-              </div>
-            </li>
-          ))}
+        <nav
+          aria-label="The four PLC stages"
+          className="rounded-xl border border-slate-800 bg-slate-950/30 p-4"
+        >
+          <p className="text-gray-400 text-[11px] font-semibold uppercase tracking-wider mb-3">
+            The four stages — Jeff Walker PLF
+          </p>
+          <ol className="grid grid-cols-2 sm:grid-cols-4 gap-2 list-none pl-0">
+            {launch.stages.map((s) => {
+              const badge = PLC_BADGE[s.plc];
+              return (
+                <li key={s.n}>
+                  <a
+                    href={`#stage-${s.n}`}
+                    className={`block rounded-lg border ${badge.tone} px-3 py-2 text-[11px] font-semibold leading-tight hover:brightness-125 transition`}
+                  >
+                    <span className="opacity-70">Stage {s.n}</span>
+                    <br />
+                    {badge.label}
+                  </a>
+                </li>
+              );
+            })}
+          </ol>
+        </nav>
+
+        <ol className="space-y-12 list-none pl-0">
+          {launch.stages.map((stage) => {
+            const badge = PLC_BADGE[stage.plc];
+            return (
+              <li
+                key={stage.n}
+                id={`stage-${stage.n}`}
+                className="space-y-5 scroll-mt-24"
+              >
+                <div className="flex flex-wrap items-center gap-3">
+                  <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-sky-500/40 bg-sky-950/40 text-sky-300 font-bold text-sm">
+                    {stage.n}
+                  </span>
+                  <span
+                    className={`inline-flex items-center rounded-full border ${badge.tone} px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider`}
+                  >
+                    {badge.label}
+                  </span>
+                  <p className="text-sky-300 text-xs font-semibold uppercase tracking-wider">
+                    {stage.caption}
+                  </p>
+                </div>
+                <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug">
+                  {stage.headline}
+                </h2>
+                {stage.videoCue && <VideoCueBlock cue={stage.videoCue} />}
+                <div className="space-y-4 text-gray-300 text-base leading-relaxed">
+                  {stage.body.map((p, i) => (
+                    <p key={i}>{p}</p>
+                  ))}
+                </div>
+              </li>
+            );
+          })}
         </ol>
 
         <section className="rounded-xl border border-amber-700/40 bg-gradient-to-br from-amber-950/30 via-slate-900 to-slate-950 p-6 sm:p-8 space-y-5">
@@ -208,7 +366,7 @@ export default async function LaunchPage({ params }: PageProps) {
                   <p className="text-gray-100 font-semibold text-sm">
                     {item.label}
                   </p>
-                  <p className="text-gray-500 text-xs font-mono shrink-0">
+                  <p className="text-gray-400 text-xs font-mono shrink-0">
                     {item.standalone}
                   </p>
                 </div>
@@ -226,7 +384,7 @@ export default async function LaunchPage({ params }: PageProps) {
               Launch price:{" "}
               <span className="text-amber-300">{launch.launchPrice}</span>
             </p>
-            <p className="text-gray-500 text-xs">
+            <p className="text-gray-400 text-xs">
               After window: {launch.postLaunchPrice}
             </p>
           </div>
@@ -238,7 +396,7 @@ export default async function LaunchPage({ params }: PageProps) {
               {launch.ctaLabel}
             </a>
           ) : (
-            <p className="text-gray-500 text-sm">
+            <p className="text-gray-400 text-sm">
               Launch window is closed. Standard pricing now applies — see{" "}
               <Link
                 href="/pricing"
@@ -261,7 +419,7 @@ export default async function LaunchPage({ params }: PageProps) {
           ))}
         </section>
 
-        <p className="text-gray-500 text-sm border-t border-slate-800 pt-5">
+        <p className="text-gray-400 text-sm border-t border-slate-800 pt-5">
           See every door into VC Deal Flow Signal at{" "}
           <Link
             href="/funnels"
@@ -271,10 +429,10 @@ export default async function LaunchPage({ params }: PageProps) {
           </Link>
           {" "}or read the{" "}
           <Link
-            href="/perfect-webinar"
+            href="/walkthrough"
             className="text-sky-400 hover:text-sky-300 underline decoration-dotted"
           >
-            12-minute Perfect Webinar
+            12-minute walkthrough
           </Link>
           .
         </p>

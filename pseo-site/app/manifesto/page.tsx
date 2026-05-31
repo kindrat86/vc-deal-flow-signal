@@ -1,119 +1,77 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
-
-export const dynamic = "force-static";
+import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 
 export const metadata: Metadata = {
-  title: "Manifesto — what GitDealFlow believes",
+  title: "What GitDealFlow Believes — and What It Refuses to Become",
   description:
-    "Seven pillars of the developer-investor movement: data over networks, code over decks, public over private, methodology over personality, ladder over lock-in, free over gated, anonymity over performance.",
+    "What GitDealFlow believes about timing, proof, and signal — and what it refuses to become while helping you move earlier with less noise.",
   alternates: { canonical: "/manifesto" },
   openGraph: {
-    title: "Manifesto — what GitDealFlow believes",
+    title: "What GitDealFlow believes",
     description:
-      "Seven pillars. The movement, the enemy, who's on the bus.",
+      "A direct statement of what GitDealFlow is trying to protect: trust, timing, clarity, and a signal that can be checked in public.",
     url: "https://signals.gitdealflow.com/manifesto",
     type: "article",
   },
 };
 
-const PILLARS = [
-  {
-    n: 1,
-    name: "Data over networks",
-    one: "The next generation of great investments will be found in data, not rolodex.",
-    body:
-      "The warm-intro economy has been running unchallenged for forty years. It rewards proximity to the right rolodex and punishes builders who happen to live three time zones from a partner&rsquo;s lunch table. Public, reproducible engineering data is the first credible challenge — not a replacement for relationships, but the first parallel sourcing channel that doesn&rsquo;t depend on them.",
-  },
-  {
-    n: 2,
-    name: "Code over decks",
-    one: "Engineering acceleration leads. The deck lags by 21 to 47 days.",
-    body:
-      "A pitch deck is a marketing artifact written for the next round. A merge graph is the company&rsquo;s actual behaviour, updated daily, by people who don&rsquo;t know they&rsquo;re being read. The deck tells you what the founder wants you to believe. The code tells you what the engineering team is actually shipping. We optimise for the second source.",
-  },
-  {
-    n: 3,
-    name: "Public over private",
-    one: "If we can&rsquo;t publish the methodology, we don&rsquo;t deserve the price.",
-    body:
-      "The SSRN paper, the Zenodo dataset, the regression code — all public, all CC BY 4.0. We sell the live aggregation, the rhythm, the dashboard, the agent integration. We don&rsquo;t sell secrecy. The buyer who can reproduce our regression in a notebook is the buyer who trusts us most.",
-  },
-  {
-    n: 4,
-    name: "Methodology over personality",
-    one: "The product is a dataset, not a personality.",
-    body:
-      "No podcasts, no founder-face content, no real-name signatures. The work has to stand on whether the signal is real, not on whether the person delivering it is charismatic. The anonymity rule is a constraint on us — and a credibility signal to the buyer. Cult of personality is the wrong moat for a measurement product.",
-  },
-  {
-    n: 5,
-    name: "Ladder over lock-in",
-    one: "Free is free forever. Founding-member is locked forever.",
-    body:
-      "The 5 core MCP tools are free forever — we ship new paid tools alongside them, never gate the existing ones. The Acceleration Watch stays free for as long as you stay subscribed. The €9.97/mo founding-member rate locks before the public hike to €49/mo. We never renegotiate retroactively. The ladder is real because the rungs hold.",
-  },
-  {
-    n: 6,
-    name: "Free over gated",
-    one: "Distribution is the moat. Friction is the leak.",
-    body:
-      "Every public surface has a markdown mirror at /md. Every page has an agent-card endpoint. The MCP server installs in one line. The OpenAPI spec is at a stable URL. We pay the cost of redundant discoverability so the reader, the agent, and the LLM all find us through the path that fits them. Gating these surfaces would buy a marginal point of conversion at the cost of being unfindable in 2026 retrieval.",
-  },
-  {
-    n: 7,
-    name: "Anonymity over performance",
-    one: "The line we don&rsquo;t cross to grow.",
-    body:
-      "Every quarter someone suggests we put a face on the brand to break through algorithmically. The answer is no — not because anonymity is precious, but because the moment we do, the methodology has to compete with the personality. A regression doesn&rsquo;t scale on charisma. The buyer who chooses us instead of a louder competitor is the buyer who values the same thing we do.",
-  },
+const BELIEFS = [
+  "You should be able to verify the claim in public.",
+  "You should get timing before you get theatre.",
+  "You should not need a louder dashboard just to feel informed.",
+  "A useful signal reduces second-guessing instead of multiplying tabs.",
+  "The right weekly read should leave you clearer, not busier.",
 ] as const;
 
-const ENEMY = {
-  name: "Warm-intro roulette",
-  what: "A sourcing system that rewards proximity to the right rolodex and punishes builders who happen to live three time zones away from a partner&rsquo;s lunch table. We&rsquo;re replacing that roulette with a public, reproducible, code-side signal anyone with curiosity can read.",
-};
+const REFUSALS = [
+  "We will not hide weak proof behind stronger branding.",
+  "We will not confuse more startup records with better timing.",
+  "We will not force you into a heavy workflow before the signal earns your trust.",
+  "We will not describe you from the outside when we can help you decide directly.",
+] as const;
 
-const ON_THE_BUS = [
-  "You write 5–40 angel checks a year and want one extra leading indicator your network can&rsquo;t give you.",
-  "You scout for a fund and need a Monday memo your principal respects, sourced from public, reproducible data.",
-  "You&rsquo;re a developer who occasionally writes a check and wants the cleanest 5-name digest in your inbox every Sunday.",
-  "You read a methodology paper before you trust a metric.",
-  "You build agents and want six read-only tools you can wire into Claude / Cursor in one line.",
-  "You believe code is more honest than copy.",
-];
-
-const NOT_ON_THE_BUS = [
-  "You&rsquo;re a Series-B+ partner with a six-figure data budget — Harmonic, Tracxn, Affinity are built for you.",
-  "You want a tool that screens code-quality or runs founder background checks.",
-  "You source exclusively from warm intros and don&rsquo;t want a cold path to founders.",
-  "You believe public data has no edge.",
-];
+const PILLARS = [
+  {
+    title: "Proof before performance",
+    body: "If the methodology cannot be checked, the claim is too expensive to trust. That is why the proof surface exists in public, not behind a sales process.",
+  },
+  {
+    title: "Timing before volume",
+    body: "A bigger list does not help if it arrives too late. The real edge is seeing what changed before the round starts feeling obvious.",
+  },
+  {
+    title: "Clarity before complexity",
+    body: "You should not need another heavy workflow just to get a better read. The signal should fit your week, not take it over.",
+  },
+  {
+    title: "Signal before consensus",
+    body: "The job is not to repeat what the market already knows. The job is to notice the public movement that matters before everyone starts citing the same company.",
+  },
+] as const;
 
 export default function ManifestoPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "WebPage",
-        "@id": "https://signals.gitdealflow.com/manifesto",
-        name: "Manifesto — what GitDealFlow believes",
+        "@type": "Article",
+        headline: "What GitDealFlow Believes — and What It Refuses to Become",
         description:
-          "Seven pillars of the developer-investor movement, named enemy, who&rsquo;s on the bus and who isn&rsquo;t.",
-        speakable: {
-          "@type": "SpeakableSpecification",
-          cssSelector: ["h1", "h2"],
+          "What GitDealFlow believes about timing, proof, and signal.",
+        author: {
+          "@type": "Person",
+          name: "The Data Nerd",
+          url: "https://signals.gitdealflow.com/about",
         },
-      },
-      {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: "https://signals.gitdealflow.com" },
-          { "@type": "ListItem", position: 2, name: "Manifesto", item: "https://signals.gitdealflow.com/manifesto" },
-        ],
+        publisher: {
+          "@type": "Organization",
+          name: "VC Deal Flow Signal",
+          url: "https://gitdealflow.com",
+        },
+        mainEntityOfPage: "https://signals.gitdealflow.com/manifesto",
       },
     ],
   };
@@ -131,138 +89,143 @@ export default function ManifestoPage() {
       <AgentMirrorLinks path="/manifesto" />
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
+        <nav aria-label="Breadcrumb" className="text-sm text-gray-400">
+          <Link href="/" className="hover:text-gray-300">Home</Link>
+          <span className="mx-2">/</span>
+          <span className="text-gray-400">Manifesto</span>
+        </nav>
+
         <header className="space-y-4">
-          <nav aria-label="Breadcrumb" className="text-xs text-gray-500">
-            <Link href="/" className="hover:text-gray-300">Home</Link>
-            <span className="mx-2">/</span>
-            <span className="text-gray-400">Manifesto</span>
-          </nav>
           <p className="text-amber-400 text-xs font-semibold uppercase tracking-wider">
-            Expert Secrets · Ch 5 — The Cult-ure of Your Movement · Applied
+            Manifesto
           </p>
-          <h1 className="text-3xl sm:text-5xl font-bold text-gray-100 leading-[1.1] tracking-tight">
-            Seven pillars. <span className="text-amber-400">One movement.</span>
+          <h1 className="text-3xl sm:text-5xl font-bold text-gray-100 leading-[1.08] tracking-tight">
+            You do not need another louder startup tool. You need a signal that stays honest when timing matters.
           </h1>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
-            Brunson&rsquo;s teaching on movement: name what you believe,
-            name the enemy, name who&rsquo;s on the bus. This is the
-            developer-investor movement, in three parts. If you nod through
-            it, you&rsquo;re one of us. If you don&rsquo;t, that&rsquo;s also
-            real information.
+            This page is the shortest honest version of what GitDealFlow is trying to protect.
+            If you care about earlier signal, public proof, and less noise, this should feel familiar.
+            If you want hype, theatre, or a bigger pile of startup records, it probably won’t.
           </p>
         </header>
 
-        <section className="space-y-5">
-          <h2 className="text-2xl font-bold text-gray-100">The seven pillars</h2>
-          <ol className="space-y-5">
-            {PILLARS.map((p) => (
-              <li
-                key={p.n}
-                className="rounded-xl border border-amber-700/30 bg-amber-950/10 p-5 sm:p-6 space-y-3"
-              >
-                <div className="flex items-baseline gap-3">
-                  <span className="text-amber-300 font-bold tabular-nums shrink-0 text-xl">
-                    {p.n}.
-                  </span>
-                  <h3 className="text-amber-200 font-bold text-lg sm:text-xl">
-                    {p.name}
-                  </h3>
-                </div>
-                <p
-                  className="text-gray-100 font-semibold text-base leading-relaxed"
-                  dangerouslySetInnerHTML={{ __html: p.one }}
-                />
-                <p
-                  className="text-gray-300 text-sm leading-relaxed pl-1"
-                  dangerouslySetInnerHTML={{ __html: p.body }}
-                />
-              </li>
-            ))}
-          </ol>
-        </section>
-
-        <section className="rounded-xl border border-rose-700/40 bg-gradient-to-br from-rose-950/20 via-slate-900 to-slate-950 p-6 sm:p-8 space-y-4">
-          <p className="text-rose-300 text-xs font-semibold uppercase tracking-wider">
-            The named enemy
+        <section className="rounded-xl border border-amber-700/30 bg-amber-950/20 p-6 sm:p-8 space-y-3">
+          <p className="text-amber-300 text-xs font-semibold uppercase tracking-[0.14em]">
+            Start with the highest-intent routes
           </p>
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug">
-            {ENEMY.name}
-          </h2>
-          <p
-            className="text-gray-300 text-base leading-relaxed"
-            dangerouslySetInnerHTML={{ __html: ENEMY.what }}
-          />
-        </section>
-
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="rounded-xl border border-emerald-700/40 bg-emerald-950/10 p-5 sm:p-6 space-y-3">
-            <p className="text-emerald-400 text-xs font-semibold uppercase tracking-wider">
-              On the bus
-            </p>
-            <h3 className="text-gray-100 font-bold text-lg">If this is you, you&rsquo;re one of us.</h3>
-            <ul className="space-y-2 text-gray-300 text-sm leading-relaxed">
-              {ON_THE_BUS.map((t, i) => (
-                <li key={i} className="flex gap-2">
-                  <span className="text-emerald-400 shrink-0">✓</span>
-                  <span dangerouslySetInnerHTML={{ __html: t }} />
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="rounded-xl border border-slate-800 bg-slate-900/40 p-5 sm:p-6 space-y-3">
-            <p className="text-rose-400 text-xs font-semibold uppercase tracking-wider">
-              Off the bus
-            </p>
-            <h3 className="text-gray-100 font-bold text-lg">If this is you, we&rsquo;re not for you — and that&rsquo;s honest.</h3>
-            <ul className="space-y-2 text-gray-300 text-sm leading-relaxed">
-              {NOT_ON_THE_BUS.map((t, i) => (
-                <li key={i} className="flex gap-2">
-                  <span className="text-rose-400 shrink-0">✗</span>
-                  <span dangerouslySetInnerHTML={{ __html: t }} />
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-
-        <section className="rounded-xl border border-sky-700/40 bg-sky-950/15 p-6 sm:p-8 space-y-3">
-          <p className="text-sky-300 text-xs font-semibold uppercase tracking-wider">
-            What to do with this
+          <p className="text-gray-300 text-sm leading-relaxed">
+            Use the manifesto when you want the belief system. But if your real question is proof, timing, or buyer-side fit, start with the sharper pages first.
           </p>
-          <h2 className="text-xl sm:text-2xl font-bold text-gray-100">
-            Don&rsquo;t share this manifesto. Live in one pillar for a quarter.
-          </h2>
-          <p className="text-gray-300 text-base leading-relaxed">
-            Pillars are easy to nod to and hard to embody. If you&rsquo;re
-            going to take one with you, take Pillar 3 — &ldquo;public over
-            private.&rdquo; Open the SSRN paper. Pull the Zenodo dataset
-            into a notebook. Re-run the regression. The hour you spend
-            doing that is the hour you stop being a reader and start being
-            on the bus.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 pt-2">
-            <a
-              href="https://ssrn.com/abstract=6606558"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-sm transition-colors"
-            >
-              Read the SSRN paper →
-            </a>
-            <Link
-              href="/decade-in-a-day"
-              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg border border-slate-700 bg-slate-800 hover:bg-slate-700 text-gray-100 font-semibold text-sm transition-colors"
-            >
-              Or take the curriculum →
+          <div className="flex flex-wrap gap-3">
+            <Link href="/research" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-amber-500 text-slate-950 text-sm font-semibold hover:bg-amber-400 transition-colors">
+              Read the research panel →
+            </Link>
+            <Link href="/compare/crunchbase-alternative-for-angel-investors" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              Compare timing vs verification →
+            </Link>
+            <Link href="/buyers-guide" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              Read the buyer's guide →
             </Link>
           </div>
         </section>
 
-        <p className="text-gray-500 text-xs leading-relaxed border-t border-slate-800 pt-6">
-          Movement framing per <em>Expert Secrets</em> Ch 5 (The Cult-ure
-          of Your Movement) by Russell Brunson (2017/2020). Used under
-          fair-use commentary.
-        </p>
+        <section className="rounded-xl border border-amber-700/30 bg-amber-950/20 p-6 sm:p-8 space-y-3">
+          <p className="text-amber-300 text-xs font-semibold uppercase tracking-[0.14em]">
+            Start with the highest-intent routes
+          </p>
+          <p className="text-gray-300 text-sm leading-relaxed">
+            Use the manifesto when you want the belief system. But if your real question is proof, timing, or buyer-side fit, start with the sharper pages first.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/research" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-amber-500 text-slate-950 text-sm font-semibold hover:bg-amber-400 transition-colors">
+              Read the research panel →
+            </Link>
+            <Link href="/compare/crunchbase-alternative-for-angel-investors" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              Compare timing vs verification →
+            </Link>
+            <Link href="/buyers-guide" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              Read the buyer's guide →
+            </Link>
+          </div>
+        </section>
+
+        <section className="rounded-xl border border-rose-700/40 bg-gradient-to-br from-rose-950/25 via-slate-900 to-slate-950 p-6 sm:p-8 space-y-5">
+          <p className="text-rose-300 text-xs font-semibold uppercase tracking-wider">
+            What we are tired of
+          </p>
+          <p className="text-gray-100 text-lg leading-relaxed border-l-2 border-rose-500/60 pl-4 italic">
+            Hearing about the company after the calm window is already gone.
+          </p>
+          <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
+            That is the moment this whole product pushes against: when the story is already public,
+            the databases are already updated, and you are being asked to react instead of notice.
+          </p>
+        </section>
+
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="rounded-xl border border-emerald-700/40 bg-gradient-to-br from-emerald-950/15 via-slate-900 to-slate-950 p-5 sm:p-6 space-y-3">
+            <p className="text-emerald-300 text-xs font-semibold uppercase tracking-wider">
+              What we believe
+            </p>
+            <ul className="space-y-3 text-gray-300 text-sm leading-relaxed">
+              {BELIEFS.map((line) => (
+                <li key={line} className="flex gap-2">
+                  <span className="text-emerald-400 shrink-0">→</span>
+                  <span>{line}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="rounded-xl border border-amber-700/40 bg-gradient-to-br from-amber-950/15 via-slate-900 to-slate-950 p-5 sm:p-6 space-y-3">
+            <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider">
+              What we refuse
+            </p>
+            <ul className="space-y-3 text-gray-300 text-sm leading-relaxed">
+              {REFUSALS.map((line) => (
+                <li key={line} className="flex gap-2">
+                  <span className="text-amber-400 shrink-0">✗</span>
+                  <span>{line}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        <section className="space-y-5">
+          <h2 className="text-2xl font-bold text-gray-100">The four pillars</h2>
+          <div className="space-y-4">
+            {PILLARS.map((p) => (
+              <article
+                key={p.title}
+                className="rounded-xl border border-amber-700/30 bg-amber-950/10 p-5 sm:p-6 space-y-2"
+              >
+                <h3 className="text-amber-200 font-bold text-lg sm:text-xl">{p.title}</h3>
+                <p className="text-gray-300 text-sm leading-relaxed">{p.body}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="rounded-xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8 space-y-4">
+          <p className="text-sky-300 text-xs font-semibold uppercase tracking-wider">
+            If this sounds right
+          </p>
+          <h2 className="text-2xl font-bold text-gray-100 leading-snug">
+            Start with the free issue. Then decide whether you want more than the shortlist.
+          </h2>
+          <p className="text-gray-300 text-base leading-relaxed">
+            The manifesto matters only if the output earns your trust.
+            Start with the weekly signal, or go straight to the pages that show the proof and the stack.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <Link href="https://gitdealflow.com/#signup" className="inline-flex items-center justify-center rounded-lg bg-sky-700 hover:bg-sky-600 text-white text-sm font-semibold px-5 py-3 transition-colors">
+              Get the free issue
+            </Link>
+            <Link href="/methodology" className="inline-flex items-center justify-center rounded-lg border border-slate-700 bg-slate-950/60 text-gray-200 hover:border-slate-600 text-sm font-semibold px-5 py-3 transition-colors">
+              Read the methodology
+            </Link>
+          </div>
+        </section>
       </div>
     </>
   );

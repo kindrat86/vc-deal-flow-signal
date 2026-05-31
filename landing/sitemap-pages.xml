@@ -2,19 +2,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://gitdealflow.com/</loc>
-    <lastmod>2026-05-02</lastmod>
+    <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://gitdealflow.com/insider</loc>
-    <lastmod>2026-05-02</lastmod>
+    <loc>https://gitdealflow.com/firstlook</loc>
+    <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://gitdealflow.com/dashboard</loc>
+    <lastmod>2026-05-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/insider</loc>
+    <lastmod>2026-05-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://gitdealflow.com/sector-sweep</loc>
-    <lastmod>2026-05-02</lastmod>
+    <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
@@ -28,7 +40,13 @@
     <loc>https://gitdealflow.com/perfect-webinar</loc>
     <lastmod>2026-05-07</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/report</loc>
+    <lastmod>2026-05-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://gitdealflow.com/privacy</loc>
@@ -44,19 +62,19 @@
   </url>
   <url>
     <loc>https://gitdealflow.com/llms.txt</loc>
-    <lastmod>2026-05-02</lastmod>
+    <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://gitdealflow.com/llms-full.txt</loc>
-    <lastmod>2026-05-02</lastmod>
+    <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://gitdealflow.com/ai.txt</loc>
-    <lastmod>2026-05-02</lastmod>
+    <lastmod>2026-05-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>

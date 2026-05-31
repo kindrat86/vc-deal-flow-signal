@@ -161,6 +161,16 @@ export async function GET(request: Request) {
       "Last-Modified": lastModified.toUTCString(),
       "X-Dataset-Version": DATASET_VERSION,
       "X-Dataset-License": "CC BY 4.0",
+      "X-Dataset-Citation": `VC Deal Flow Signal Q&A v${DATASET_VERSION}, CC BY 4.0. DOI: 10.5281/zenodo.19650920.`,
+      // RFC 8288 — points discovery agents at the JSON-LD Dataset, citation HTML page,
+      // canonical DOI, and the underlying signal dataset alternates.
+      Link: [
+        `<${BASE_URL}/#dataset>; rel="describedby"; type="application/ld+json"`,
+        `<${BASE_URL}/citations>; rel="describedby"; type="text/html"`,
+        `<https://doi.org/10.5281/zenodo.19650920>; rel="canonical"; type="application/ld+json"`,
+        `<${BASE_URL}/api/signals.json>; rel="alternate"; type="application/json"`,
+        `<${BASE_URL}/api/signals.csv>; rel="alternate"; type="text/csv"`,
+      ].join(", "),
     },
   });
 }

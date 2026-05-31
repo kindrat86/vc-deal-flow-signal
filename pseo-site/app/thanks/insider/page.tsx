@@ -3,6 +3,7 @@ import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import TelegramCTA from "@/components/TelegramCTA";
 
 export const dynamic = "force-static";
 
@@ -59,6 +60,26 @@ export default function ThanksInsider() {
           </p>
         </header>
 
+        <section className="rounded-xl border border-sky-500/30 bg-sky-500/5 p-5 sm:p-6 space-y-3">
+          <p className="text-sky-300 text-xs font-semibold uppercase tracking-wider">
+            Best next move this week
+          </p>
+          <p className="text-gray-300 text-sm leading-relaxed">
+            Do not leave this as a confirmation page. If you want to get value fast, use one page to understand the proof more deeply and one page to decide whether the next rung should be Sharp Tier or simply deeper use of Insider.
+          </p>
+          <div className="flex flex-wrap gap-3 text-sm">
+            <Link href="/research" className="text-sky-200 hover:text-sky-100 underline underline-offset-2">
+              Read the research panel
+            </Link>
+            <Link href="/answers/who-should-use-insider-instead-of-dashboard" className="text-sky-200 hover:text-sky-100 underline underline-offset-2">
+              Confirm Insider fit
+            </Link>
+            <Link href="/apply" className="text-sky-200 hover:text-sky-100 underline underline-offset-2">
+              See Sharp Tier next
+            </Link>
+          </div>
+        </section>
+
         <ol className="space-y-4">
           {STEPS.map((s) => (
             <li
@@ -98,6 +119,44 @@ export default function ThanksInsider() {
               REFUND
             </code>{" "}
             to any email if it doesn&rsquo;t deliver.
+          </p>
+        </section>
+
+        {/* Brunson TS §3 Ch 11 — Insider gets the PRIVATE Telegram
+            (manual invite within 4h). Public channel is the placeholder
+            while they wait, AND a forwardable surface for partners who
+            aren't on the paid tier yet. Two pipes for the one fund. */}
+        <section
+          aria-label="Public Telegram while the private invite ships"
+          className="rounded-xl border border-sky-700/30 bg-sky-950/10 p-5 space-y-3"
+        >
+          <p className="text-sky-300 text-[10px] sm:text-xs font-semibold uppercase tracking-wider">
+            While the private invite ships · public channel
+          </p>
+          <p className="text-gray-300 text-sm leading-relaxed">
+            The private Insider Circle Telegram is invite-only and ships
+            within four business hours. In the meantime, the public
+            channel —{" "}
+            <Link
+              href="https://t.me/gitdealflow"
+              rel="noopener noreferrer"
+              target="_blank"
+              className="text-sky-300 underline decoration-dotted"
+            >
+              t.me/gitdealflow
+            </Link>{" "}
+            — carries the Monday five-name drop and mid-week sector pings
+            (the same names you&rsquo;ll see 24h earlier in the private
+            group). Pin it, mute it, forward signals to partners. Two
+            pipes for the one fund.
+          </p>
+          <p>
+            <Link
+              href="/telegram"
+              className="text-sky-300 hover:text-sky-200 text-sm underline decoration-dotted"
+            >
+              Why a public Telegram (and not Slack)? →
+            </Link>
           </p>
         </section>
 

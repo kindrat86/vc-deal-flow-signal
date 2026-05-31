@@ -4,6 +4,8 @@ import { AgentSummary } from "@/components/AgentSummary";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import TrialClose from "@/components/TrialClose";
+import BuyerRoadmap from "@/components/BuyerRoadmap";
 
 export const dynamic = "force-static";
 
@@ -11,14 +13,14 @@ export const metadata: Metadata = {
   title:
     "Insider Circle — See Every Signal 24 Hours Before The Public · €97/mo",
   description:
-    "The Insider Circle Perfect Webinar. If the public Acceleration Watch publishes Mondays at 09:00 UTC, Insiders read the same names Sunday at 09:00 UTC. The single belief: in venture, edge is time, not research. Stack value €3,042/yr — founder rate €97/mo locked forever.",
+    "The Insider Circle walkthrough. If the public Acceleration Watch publishes Mondays at 09:00 UTC, Insiders read the same names Sunday at 09:00 UTC. The single belief: in venture, edge is time, not research. Stack value €4,206/yr — founder rate €97/mo locked forever.",
   alternates: {
     canonical: "/insider",
   },
   openGraph: {
     title: "Insider Circle — 24-Hour Lead Over The Free Tier",
     description:
-      "Same signal, 24h earlier. €97/mo founder rate, locked forever. Telegram + JSON/CSV API + custom watchlists + early-list. Stack value €3,042/yr.",
+      "Same signal, 24h earlier. €97/mo founder rate, locked forever. Telegram + JSON/CSV API + custom watchlists + early-list. Stack value €4,206/yr.",
     url: "https://signals.gitdealflow.com/insider",
     type: "article",
   },
@@ -66,6 +68,12 @@ const STACK_ITEMS = [
     standalone: "Bundled (€397/yr value)",
   },
   {
+    label: "Monthly Insider Drop — net-new artefact every first Tuesday",
+    description:
+      "Sector deep-dive, methodology release, founder essay, or shipping tool — on a four-format rotation. First Tuesday of every month, 09:00 UTC. PDF + CSV + code + chart pack delivered the day it ships. The continuity programme that turns the subscription from a tool into an anticipation engine. Twelve-month forward calendar at /continuity.",
+    standalone: "€1,164/yr (12 drops × €97 standalone value each)",
+  },
+  {
     label: "Direct Founder Line For Diligence Questions",
     description:
       "Reply to any briefing email or Telegram message. Same-day response on signal-quality questions, methodology clarifications, or 'is this org tracked' lookups. Not a sales channel — a research line.",
@@ -104,6 +112,10 @@ const FAQS = [
     q: "Can I downgrade to Dashboard if Insider is too much?",
     a: "Yes — one-click in the Stripe customer portal. The 30-day refund applies first, so if Insider isn't earning its keep, you reply REFUND and get the full €97 back rather than downgrading. After 30 days, downgrades are pro-rated against the current billing period.",
   },
+  {
+    q: "What's the Monthly Insider Drop and what do I actually get?",
+    a: "On the first Tuesday of every month at 09:00 UTC, every Insider gets a net-new artefact — on a four-format rotation: sector deep-dive (25-page PDF + CSV), methodology release (regression code + paper update), founder essay (4-6K-word post-mortem), or tool release (new MCP tool, API endpoint, or chart pack). Public sees the abstract; members get the full essay + member-only artefact bundle. Twelve-month forward calendar at /continuity. If a drop slips by 48 hours past its publish date, every Insider gets one month free automatically — that's how seriously the cadence is taken.",
+  },
 ] as const;
 
 export default function InsiderPage() {
@@ -116,7 +128,7 @@ export default function InsiderPage() {
         headline:
           "Insider Circle — See Every Signal 24 Hours Before The Public",
         description:
-          "If venture-investing edge is time rather than research, then a 24-hour lead on a list of 10 ranked engineering accelerations is the most leveraged €97/mo an active investor can spend. Stack value €3,042/yr.",
+          "If venture-investing edge is time rather than research, then a 24-hour lead on a list of 10 ranked engineering accelerations is the most leveraged €97/mo an active investor can spend. Stack value €4,206/yr.",
         url: "https://signals.gitdealflow.com/insider",
         datePublished: "2026-05-05T00:00:00.000Z",
         dateModified: "2026-05-05T00:00:00.000Z",
@@ -154,6 +166,7 @@ export default function InsiderPage() {
           "Monthly subscription at founding-member rate (€97/mo, locks for the lifetime of the subscription; list price €197/mo). Includes 24-hour lead on Acceleration Watch, private Telegram group, JSON/CSV API, custom watchlist, webhooks, founder line, and Dashboard Beta.",
         price: 97,
         priceCurrency: "EUR",
+        priceValidUntil: "2026-12-31",
         url: STRIPE_INSIDER,
         availability: "https://schema.org/InStock",
         category: "subscription",
@@ -201,7 +214,7 @@ export default function InsiderPage() {
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
         {/* HOOK */}
         <header className="space-y-4">
-          <nav aria-label="Breadcrumb" className="text-xs text-gray-500">
+          <nav aria-label="Breadcrumb" className="text-xs text-gray-400">
             <Link href="/" className="hover:text-sky-400 transition-colors">
               ← Home
             </Link>
@@ -233,9 +246,30 @@ export default function InsiderPage() {
             email and twenty-four hours of head-start. The Insider Circle is
             the tool that gives you the head-start. The next ten minutes
             explain why €97/mo is the most leveraged price in deal-flow
-            tooling.
+            tooling once recurring visibility already works and you need
+            recurring conviction support.
           </p>
         </header>
+
+        <section className="rounded-xl border border-emerald-500/30 bg-emerald-500/5 p-5 sm:p-6 space-y-3">
+          <p className="text-emerald-300 text-xs font-semibold uppercase tracking-wider">
+            Verify the claim before you buy
+          </p>
+          <p className="text-gray-300 text-sm leading-relaxed">
+            If you still need proof, compare logic, or buyer-side clarity before paying €97/mo, use the shortest page for that question first. Then come back when recurring visibility already feels useful and you want the tighter layer around the judgment.
+          </p>
+          <div className="flex flex-wrap gap-3 text-sm">
+            <Link href="/research" className="text-emerald-200 hover:text-emerald-100 underline underline-offset-2">
+              Read the research panel
+            </Link>
+            <Link href="/answers/when-should-i-use-dashboard-vs-insider" className="text-emerald-200 hover:text-emerald-100 underline underline-offset-2">
+              Choose Dashboard vs Insider
+            </Link>
+            <Link href="/buyers-guide" className="text-emerald-200 hover:text-emerald-100 underline underline-offset-2">
+              Read the buyer's guide
+            </Link>
+          </div>
+        </section>
 
         {/* STORY */}
         <section
@@ -269,6 +303,11 @@ export default function InsiderPage() {
             That&rsquo;s the only reason the Insider Circle exists. To send
             the same list one work-day earlier.
           </p>
+          <TrialClose tone="emerald">
+            One Tuesday too late closes a round. If a single Sunday-instead-
+            of-Monday cycle lands you the meeting before the four-other-
+            investors line forms — has €97/mo already justified itself?
+          </TrialClose>
         </section>
 
         {/* BIG DOMINO */}
@@ -277,7 +316,7 @@ export default function InsiderPage() {
           className="bg-gradient-to-br from-emerald-950/40 via-slate-900 to-slate-950 border border-emerald-700/40 rounded-xl p-6 sm:p-8 space-y-4 scroll-mt-20"
         >
           <p className="text-emerald-300 text-xs font-semibold uppercase tracking-wider">
-            The big domino
+            The core claim
           </p>
           <h2
             className="text-2xl sm:text-4xl font-bold text-gray-100 leading-tight tracking-tight"
@@ -295,6 +334,12 @@ export default function InsiderPage() {
             product. Three secrets follow — each is one objection to that
             belief, and each gets broken.
           </p>
+          <TrialClose tone="emerald">
+            Edge is time, not research. If that single sentence reads as
+            true, does the rest of the page reduce to whether €97/mo is
+            cheaper than the time you&rsquo;re currently spending on
+            sourcing?
+          </TrialClose>
         </section>
 
         {/* THREE SECRETS */}
@@ -384,6 +429,12 @@ export default function InsiderPage() {
               pipeline, not the methodology.
             </p>
           </div>
+
+          <TrialClose tone="indigo">
+            Three objections, three breakdowns, methodology open at SSRN. If
+            none of those three was the real objection — what is? (That
+            answer is the one to keep handy as the stack lands.)
+          </TrialClose>
         </section>
 
         {/* THE SHIFT */}
@@ -412,6 +463,11 @@ export default function InsiderPage() {
             custom watchlist, the founder line — is a tool that makes the
             Sunday-evening rhythm easier.
           </p>
+          <TrialClose tone="amber">
+            Sunday 09:15 in bed, two cold emails scheduled for Monday 07:30,
+            Tuesday a meeting or a polite no. If that rhythm replaced the
+            Sunday-night sourcing block you do anyway — would you swap?
+          </TrialClose>
         </section>
 
         {/* THE STACK */}
@@ -425,7 +481,7 @@ export default function InsiderPage() {
               <span className="text-emerald-400">€97/mo</span>.
             </h2>
             <p className="text-gray-400 text-sm">
-              Eight items. €3,042/yr standalone value. Founding-member price
+              Nine items. €4,206/yr standalone value. Founding-member price
               locked forever.
             </p>
           </div>
@@ -462,7 +518,7 @@ export default function InsiderPage() {
                           </span>
                         )}
                       </p>
-                      <p className="text-gray-500 text-xs whitespace-nowrap">
+                      <p className="text-gray-400 text-xs whitespace-nowrap">
                         Standalone:{" "}
                         <span className="text-emerald-400">
                           {item.standalone}
@@ -482,7 +538,7 @@ export default function InsiderPage() {
           <div className="border-t border-slate-700 pt-6 space-y-3">
             <div className="flex items-baseline justify-between text-gray-400 text-sm">
               <span>Total standalone value</span>
-              <span className="line-through">€3,042/yr</span>
+              <span className="line-through">€4,206/yr</span>
             </div>
             <div className="flex items-baseline justify-between text-gray-400 text-sm">
               <span>Post-launch retail (Insider at €197/mo)</span>
@@ -492,12 +548,17 @@ export default function InsiderPage() {
               <span>Founding-member price, locked forever</span>
               <span className="text-emerald-400">€97/mo</span>
             </div>
-            <p className="text-gray-500 text-xs">
+            <p className="text-gray-400 text-xs">
               That is €1,164/year, or roughly the cost of one missed warm
               intro. The price stays €97 for as long as you stay subscribed,
               even after the public hike to €197/mo.
             </p>
           </div>
+          <TrialClose tone="violet">
+            €4,206/yr standalone at €97/mo founding rate, locked through the
+            public hike to €197. If the lock itself is the asset — would you
+            rather wake up on the founding rate or the post-launch rate?
+          </TrialClose>
         </section>
 
         {/* GUARANTEE */}
@@ -519,6 +580,11 @@ export default function InsiderPage() {
             Your Telegram seat is removed at next month boundary. No exit
             interview, no &ldquo;wait, let me show you one more thing.&rdquo;
           </p>
+          <TrialClose tone="rose">
+            Worst case: 30 days, you keep what you read, the €97 lands back
+            on your card. Where else does the &ldquo;keep the asset, get the
+            money back&rdquo; downside profile exist for an investor tool?
+          </TrialClose>
         </section>
 
         {/* TRIAL CLOSES */}
@@ -548,10 +614,9 @@ export default function InsiderPage() {
             <li className="flex items-start gap-3">
               <span className="text-emerald-400 font-bold shrink-0">3.</span>
               <span>
-                If you are a developer-investor still figuring out the rhythm,
-                start on Dashboard at €9.97/mo. Insider becomes the obvious
-                upgrade the first time you wake up Monday and realise the
-                public list dropped while you were on a plane.
+                If you are still deciding whether the weekly shortlist is enough,
+                start on Dashboard at €9.97/mo. Move up when you want more context,
+                more signal support, and less second-guessing around the call.
               </span>
             </li>
           </ul>
@@ -624,14 +689,10 @@ export default function InsiderPage() {
                 Identity close
               </p>
               <h3 className="text-gray-100 font-semibold text-base">
-                Insiders read commit logs on Sunday. Everyone else reads decks
-                on Tuesday.
+                Start with Dashboard when the shortlist feels useful. Move here when you want more than the shortlist.
               </h3>
               <p className="text-gray-300 text-sm leading-relaxed">
-                Dashboard is the tool for a developer-investor. Insider is the
-                tool for a developer-investor who has decided they want to
-                arrive at fundraises before the rest of the market. Same
-                identity, sharper version.
+                Dashboard is the weekly field. Insider is the layer you add when you want more context, more access, and a steadier signal rhythm around the decisions that matter.
               </p>
             </div>
 
@@ -641,7 +702,7 @@ export default function InsiderPage() {
                 Pricing close
               </p>
               <h3 className="text-gray-100 font-semibold text-base">
-                The stack is €3,042/yr. You pay €1,164.
+                The stack is €4,206/yr. You pay €1,164.
               </h3>
               <p className="text-gray-300 text-sm leading-relaxed">
                 We could charge €197/mo and the math would still work. The
@@ -702,13 +763,13 @@ export default function InsiderPage() {
               Or start with Dashboard at €9.97/mo
             </a>
           </div>
-          <p className="text-gray-500 text-xs pt-2">
+          <p className="text-gray-400 text-xs pt-2">
             Or read the full case in the{" "}
             <Link
-              href="/perfect-webinar"
+              href="/walkthrough"
               className="text-emerald-400 hover:text-emerald-300 underline decoration-dotted"
             >
-              Dashboard Perfect Webinar
+              Dashboard walkthrough
             </Link>{" "}
             first — Insider includes everything in Dashboard.
           </p>
@@ -734,7 +795,7 @@ export default function InsiderPage() {
             One more time, in one block
           </p>
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug">
-            Here&rsquo;s the entire offer in eight lines.
+            Here&rsquo;s the entire offer in nine lines.
           </h2>
           <ul className="space-y-2 text-gray-200 text-base leading-relaxed">
             <li className="flex gap-3">
@@ -794,6 +855,21 @@ export default function InsiderPage() {
             <li className="flex gap-3">
               <span className="text-amber-400 shrink-0 font-bold">→</span>
               <span>
+                Monthly Insider Drop — first Tuesday of every month, 09:00
+                UTC, a net-new sector deep-dive, methodology release, founder
+                essay, or shipping tool. Twelve-month forward calendar at{" "}
+                <Link
+                  href="/continuity"
+                  className="text-amber-300 underline decoration-dotted hover:text-amber-200"
+                >
+                  /continuity
+                </Link>
+                .
+              </span>
+            </li>
+            <li className="flex gap-3">
+              <span className="text-amber-400 shrink-0 font-bold">→</span>
+              <span>
                 30-day Signal-or-It&rsquo;s-Free guarantee. Founding-member
                 price <strong className="text-amber-300">locked forever</strong> at
                 €97/mo. Public hike to €197/mo lands the day a regulated
@@ -803,7 +879,7 @@ export default function InsiderPage() {
           </ul>
           <div className="border-t border-amber-700/30 pt-4 mt-4 flex items-baseline justify-between text-base">
             <span className="text-gray-300">Standalone value of the stack</span>
-            <span className="text-emerald-400 font-bold">€3,042/yr</span>
+            <span className="text-emerald-400 font-bold">€4,206/yr</span>
           </div>
           <div className="flex items-baseline justify-between text-2xl font-bold">
             <span className="text-gray-100">Your founding-member rate</span>
@@ -811,7 +887,48 @@ export default function InsiderPage() {
           </div>
         </section>
 
+        {/* BUYER ROADMAP — Brunson Expert Secrets Ch 18. Four-beat
+            calendar (Today → Sunday+6 → first Tuesday → Day 90→1yr) so
+            the €97/mo reads as a vehicle on a calendar, not a recurring
+            charge. Sits between the Encore and the Final CTA so the
+            arc is the last thing the buyer reads before clicking. */}
+        <BuyerRoadmap tier="insider" />
+
         {/* FINAL CTA */}
+        <aside
+          className="border-l-2 border-slate-700/60 pl-4 py-1 space-y-2"
+          aria-label="If this feels too early"
+        >
+          <p className="text-slate-300 text-[10px] sm:text-xs font-semibold uppercase tracking-wider">
+            If this feels too early
+          </p>
+          <p className="text-gray-400 text-sm leading-relaxed">
+            Start with the free digest if you still need more repetitions before paying.
+            Use Dashboard if the signal already feels real but you only need the recurring
+            weekly surface, not the tighter support layer.
+          </p>
+          <div className="flex flex-wrap gap-3 text-sm">
+            <a
+              href={SIGNUP_URL}
+              className="text-emerald-300 hover:text-emerald-200 underline decoration-dotted underline-offset-2"
+            >
+              Get the free digest first
+            </a>
+            <Link
+              href="/answers/what-do-i-actually-get-from-dashboard-each-week"
+              className="text-emerald-300 hover:text-emerald-200 underline decoration-dotted underline-offset-2"
+            >
+              See what Dashboard gives you
+            </Link>
+            <Link
+              href="/buyers-guide"
+              className="text-emerald-300 hover:text-emerald-200 underline decoration-dotted underline-offset-2"
+            >
+              Read the buyer's guide
+            </Link>
+          </div>
+        </aside>
+
         <section className="border-t border-slate-800 pt-10 text-center space-y-4">
           <p className="text-gray-300 text-base leading-relaxed">
             Read this far? You already believe the 24-hour lead is real.
@@ -830,13 +947,13 @@ export default function InsiderPage() {
               Free digest first
             </a>
           </div>
-          <p className="text-gray-500 text-xs">
+          <p className="text-gray-400 text-xs">
             30-day Signal-or-It&rsquo;s-Free guarantee · Reply REFUND for full refund
           </p>
         </section>
 
         <AgentSummary
-          tldr="Insider Circle is the €97/mo (founding-member rate, locked forever; list €197/mo) tier of VC Deal Flow Signal. The single thing it sells is a 24-hour lead on the public Acceleration Watch — Insiders receive the same ten ranked startups Sunday at 09:00 UTC that the public list publishes Monday at 09:00 UTC. Stack also includes everything in Dashboard Beta, a closed Insider Telegram with founder briefings and threads, an authenticated API (/api/v1/insider/* + bulk CSV), custom thesis-aligned watchlist, webhook delivery on threshold triggers, and a direct founder line for diligence questions. €3,042/yr standalone value. 30-day Signal-or-It's-Free guarantee, reply REFUND."
+          tldr="Insider Circle is the €97/mo (founding-member rate, locked forever; list €197/mo) tier of VC Deal Flow Signal. The single thing it sells is a 24-hour lead on the public Acceleration Watch — Insiders receive the same ten ranked startups Sunday at 09:00 UTC that the public list publishes Monday at 09:00 UTC. Stack also includes everything in Dashboard Beta, a closed Insider Telegram with founder briefings and threads, an authenticated API (/api/v1/insider/* + bulk CSV), custom thesis-aligned watchlist, webhook delivery on threshold triggers, and a direct founder line for diligence questions. €4,206/yr standalone value. 30-day Signal-or-It's-Free guarantee, reply REFUND."
           pageUrl="https://signals.gitdealflow.com/insider"
           asOf="2026-05-05"
           citeAs="VC Deal Flow Signal — Insider Circle (signals.gitdealflow.com/insider)."
@@ -861,6 +978,33 @@ export default function InsiderPage() {
             },
           ]}
         />
+
+        <div aria-hidden="true" className="md:hidden h-20" />
+      </div>
+
+      <div
+        aria-label="Sticky insider bar (mobile)"
+        className="fixed bottom-0 inset-x-0 md:hidden z-40 border-t border-emerald-500/40 bg-slate-950/95 backdrop-blur-sm shadow-[0_-4px_20px_rgba(16,185,129,0.15)]"
+      >
+        <div className="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
+          <div className="space-y-0.5 min-w-0">
+            <p className="text-emerald-300 text-[10px] font-semibold uppercase tracking-wider">
+              Insider · founder rate
+            </p>
+            <p className="text-gray-100 font-bold text-lg tabular-nums leading-none">
+              €97
+              <span className="text-gray-400 text-[10px] font-medium ml-1.5 uppercase tracking-wider">
+                /mo
+              </span>
+            </p>
+          </div>
+          <a
+            href={STRIPE_INSIDER}
+            className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-sm px-4 py-2.5 shadow-md"
+          >
+            Join →
+          </a>
+        </div>
       </div>
     </>
   );
