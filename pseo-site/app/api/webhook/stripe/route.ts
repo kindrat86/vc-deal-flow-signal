@@ -64,7 +64,7 @@ function dashboardWelcomeEmail(email: string): { subject: string; html: string }
 <li>Updated weekly with fresh GitHub data</li>
 <li>Priority access to new features</li>
 </ul>
-<p style="margin:24px 0;"><a href="https://signals.gitdealflow.com/login" style="display:inline-block;background:#0284c7;color:#fff;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:600;">Access Your Dashboard</a></p>
+<p style="margin:24px 0;"><a href="https://signals.gitdealflow.com/login" style="display:block;width:100%;box-sizing:border-box;background:#0284c7;color:#fff;font-weight:700;font-size:19px;line-height:1.2;padding:18px 28px;border-radius:10px;text-decoration:none;text-align:center;box-shadow:0 4px 14px rgba(2,132,199,0.35);">Access Your Dashboard</a></p>
 <p>Log in with this email address (${escapeHtml(email)}) — we'll send you a magic link, no password needed.</p>
 <p>Questions? Just reply to this email.</p>
 <p style="margin-top:28px;padding:16px 18px;background:#f0f9ff;border-left:3px solid #0284c7;border-radius:4px;font-size:14px;line-height:1.6;color:#0c4a6e;">
@@ -107,7 +107,7 @@ function insiderWelcomeEmail(email: string): { subject: string; html: string } {
 <li><strong>Access your Dashboard:</strong> <a href="https://signals.gitdealflow.com/login" style="color:#0ea5e9;">Log in here</a> with ${escapeHtml(email)}</li>
 ${telegramLine}
 </ol>
-<p style="margin:24px 0;"><a href="https://signals.gitdealflow.com/login" style="display:inline-block;background:#0284c7;color:#fff;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:600;">Access Your Dashboard</a></p>
+<p style="margin:24px 0;"><a href="https://signals.gitdealflow.com/login" style="display:block;width:100%;box-sizing:border-box;background:#0284c7;color:#fff;font-weight:700;font-size:19px;line-height:1.2;padding:18px 28px;border-radius:10px;text-decoration:none;text-align:center;box-shadow:0 4px 14px rgba(2,132,199,0.35);">Access Your Dashboard</a></p>
 <p>I'll reach out personally within 24 hours to learn what sectors and stages you care about most.</p>
 <p style="margin-top:28px;padding:16px 18px;background:#fef3c7;border-left:3px solid #d97706;border-radius:4px;font-size:14px;line-height:1.6;color:#78350f;">
 <strong>Investing seven-figure cheques into a defined sector?</strong> The next rung is <a href="mailto:signal@gitdealflow.com?subject=Sharp%20Tier%20Application%20%E2%80%94%20%5BYour%20Fund%5D" style="color:#d97706;font-weight:600;">Sharp Tier</a> (€497/mo or €4,970/yr — saves two months) — adds quarterly portfolio review call, white-labeled <code>/api/v1/sharp/&lt;your-fund&gt;</code> data feed, custom thesis-aligned watchlist co-built with me, same-day signal questions (typically &lt;4h), data-room exports for LP updates, all future paid MCP tools included. <strong>Capped at 8 funds in 2026 — applications reviewed within 48h.</strong> Or grab a one-off <a href="https://gitdealflow.com/sector-sweep?utm_source=email&amp;utm_medium=insider-welcome&amp;utm_campaign=sector-sweep" style="color:#d97706;font-weight:600;">Custom Sector Sweep</a> (€1,997 one-time) for a single thesis cycle.
@@ -216,12 +216,10 @@ function bookWelcomeEmail(email: string): { subject: string; html: string } {
 <div style="font-size:16px;line-height:1.7;color:#1e293b;">
 <p>The €0.99 hit. Thank you for buying the book.</p>
 <p>Your downloads:</p>
-<table cellpadding="0" cellspacing="0" border="0" style="margin:16px 0;">
-<tr>
-<td style="padding-right:8px;padding-bottom:8px;"><a href="https://signals.gitdealflow.com/downloads/seven-signals.pdf" style="display:inline-block;background:#0284c7;color:#ffffff;font-weight:600;font-size:15px;padding:11px 22px;border-radius:8px;text-decoration:none;">PDF</a></td>
-<td style="padding-right:8px;padding-bottom:8px;"><a href="https://signals.gitdealflow.com/downloads/seven-signals.epub" style="display:inline-block;background:#0284c7;color:#ffffff;font-weight:600;font-size:15px;padding:11px 22px;border-radius:8px;text-decoration:none;">EPUB (Kindle)</a></td>
-<td style="padding-right:8px;padding-bottom:8px;"><a href="https://signals.gitdealflow.com/downloads/seven-signals.md" style="display:inline-block;background:#475569;color:#ffffff;font-weight:600;font-size:14px;padding:9px 18px;border-radius:8px;text-decoration:none;">Markdown</a></td>
-</tr>
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;margin:16px 0;">
+<tr><td style="padding-bottom:10px;"><a href="https://signals.gitdealflow.com/downloads/seven-signals.pdf" style="display:block;width:100%;box-sizing:border-box;background:#0284c7;color:#ffffff;font-weight:700;font-size:19px;line-height:1.2;padding:18px 28px;border-radius:10px;text-decoration:none;text-align:center;box-shadow:0 4px 14px rgba(2,132,199,0.35);">PDF</a></td></tr>
+<tr><td style="padding-bottom:10px;"><a href="https://signals.gitdealflow.com/downloads/seven-signals.epub" style="display:block;width:100%;box-sizing:border-box;background:#0284c7;color:#ffffff;font-weight:700;font-size:19px;line-height:1.2;padding:18px 28px;border-radius:10px;text-decoration:none;text-align:center;box-shadow:0 4px 14px rgba(2,132,199,0.35);">EPUB (Kindle)</a></td></tr>
+<tr><td><a href="https://signals.gitdealflow.com/downloads/seven-signals.md" style="display:block;width:100%;box-sizing:border-box;background:#475569;color:#ffffff;font-weight:700;font-size:19px;line-height:1.2;padding:18px 28px;border-radius:10px;text-decoration:none;text-align:center;box-shadow:0 4px 14px rgba(71,85,105,0.35);">Markdown</a></td></tr>
 </table>
 <p>To read on Kindle: tap the EPUB link on your Kindle device or app, or email it to your kindle.com address. Most Kindle apps now accept EPUB natively; if yours doesn&rsquo;t, drop the file into <a href="https://www.amazon.com/sendtokindle" style="color:#0ea5e9;">Send to Kindle</a> and it will sync within minutes.</p>
 <p><strong>The three bonus emails arrive in this order:</strong></p>

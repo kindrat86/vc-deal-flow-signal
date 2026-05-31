@@ -32,7 +32,7 @@ function wrap(title: string, body: string, dashboardUrl: string) {
 <div style="font-size:16px;line-height:1.7;color:#1e293b;">
 ${body}
 <div style="text-align:center;margin:32px 0;">
-<a href="${dashboardUrl}" style="display:inline-block;background:#0284c7;color:#ffffff;font-weight:600;font-size:15px;padding:12px 28px;border-radius:8px;text-decoration:none;">Open your scout dashboard</a>
+<a href="${dashboardUrl}" style="display:block;width:100%;box-sizing:border-box;background:#0284c7;color:#ffffff;font-weight:700;font-size:19px;line-height:1.2;padding:18px 28px;border-radius:10px;text-decoration:none;text-align:center;box-shadow:0 4px 14px rgba(2,132,199,0.35);">Open your scout dashboard</a>
 </div>
 </div>
 <div style="margin-top:40px;padding-top:20px;border-top:1px solid #e2e8f0;font-size:12px;color:#94a3b8;">

@@ -80,7 +80,7 @@ export async function POST(request: NextRequest) {
 <div style="margin-bottom:24px;"><strong style="color:#0ea5e9;font-size:14px;letter-spacing:1px;">VC DEAL FLOW SIGNAL</strong></div>
 <div style="font-size:16px;line-height:1.7;color:#1e293b;">
 <p>Click the button below to log in to your dashboard:</p>
-<p style="margin:24px 0;"><a href="${magicLink}" style="display:inline-block;background:#0284c7;color:#fff;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:600;">Log In to Dashboard</a></p>
+<p style="margin:24px 0;"><a href="${magicLink}" style="display:block;width:100%;box-sizing:border-box;background:#0284c7;color:#fff;font-weight:700;font-size:19px;line-height:1.2;padding:18px 28px;border-radius:10px;text-decoration:none;text-align:center;box-shadow:0 4px 14px rgba(2,132,199,0.35);">Log In to Dashboard</a></p>
 <p style="color:#64748b;font-size:14px;">This link expires in 15 minutes. If you didn't request this, you can ignore this email.</p>
 </div>
 </div></body></html>`,

@@ -113,7 +113,7 @@ function htmlBody() {
 <p style="margin-top:0;font-size:14px;color:#64748b;letter-spacing:1px;font-weight:600;">SECTOR SWEEP</p>
 <p style="margin-bottom:8px;">If you want a single-sector deep-dive &mdash; one sector, top 30 startups, full GitHub signal data, custom angle for your thesis &mdash; I run those as one-off Sector Sweeps.</p>
 <p style="margin:8px 0;">EUR 1,997 one-time. Includes commit-velocity timeline (24 months), contributor cohort analysis, and a ranked 30-startup shortlist with signal type per company.</p>
-<p style="margin-top:16px;"><a href="${STRIPE}" style="display:inline-block;background:#0284c7;color:#ffffff;font-weight:600;font-size:14px;padding:10px 20px;border-radius:6px;text-decoration:none;">Run a Sector Sweep &rarr;</a></p>
+<p style="margin-top:16px;"><a href="${STRIPE}" style="display:block;width:100%;box-sizing:border-box;background:#0284c7;color:#ffffff;font-weight:700;font-size:19px;line-height:1.2;padding:18px 28px;border-radius:10px;text-decoration:none;text-align:center;box-shadow:0 4px 14px rgba(2,132,199,0.35);">Run a Sector Sweep &rarr;</a></p>
 </div>
 
 <p style="margin-top:32px;">&mdash; The Data Nerd</p>

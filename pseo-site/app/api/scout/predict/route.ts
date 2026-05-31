@@ -80,7 +80,7 @@ function confirmationHtml(opts: {
 ${safeRat ? `<p style="margin:12px 0 0;color:#64748b;font-size:14px;font-style:italic;">&ldquo;${safeRat}&rdquo;</p>` : ""}
 </div>
 <div style="text-align:center;margin:32px 0;">
-<a href="${dashboardUrl}" style="display:inline-block;background:#0284c7;color:#ffffff;font-weight:600;font-size:15px;padding:12px 28px;border-radius:8px;text-decoration:none;">Open your scout dashboard →</a>
+<a href="${dashboardUrl}" style="display:block;width:100%;box-sizing:border-box;background:#0284c7;color:#ffffff;font-weight:700;font-size:19px;line-height:1.2;padding:18px 28px;border-radius:10px;text-decoration:none;text-align:center;box-shadow:0 4px 14px rgba(2,132,199,0.35);">Open your scout dashboard →</a>
 </div>
 <p style="color:#334155;">Your public profile: <a href="${profileUrl}" style="color:#0ea5e9;text-decoration:none;">${profileUrl.replace(/^https?:\/\//, "")}</a></p>
 <p style="color:#334155;">You have used <strong>${predictionsThisMonth}</strong> of your <strong>${monthlyLimit}</strong> predictions this month (${remaining} remaining). ${tier === "free" ? `Upgrade to Dashboard (EUR 9.97/mo) for 10 predictions per month.` : ""}</p>

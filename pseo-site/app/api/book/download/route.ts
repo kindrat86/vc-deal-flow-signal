@@ -41,23 +41,19 @@ function downloadEmailHtml(email: string): string {
 <div style="font-size:16px;line-height:1.7;color:#1e293b;">
 <p>Your copy of <strong>The 7 GitHub Signals That Predict Series A Rounds</strong> is below.</p>
 
-<table cellpadding="0" cellspacing="0" border="0" style="margin:24px 0;">
-<tr>
-<td style="padding-right:8px;padding-bottom:8px;">
-<a href="${SITE_URL}/downloads/seven-signals.pdf" style="display:inline-block;background:#0284c7;color:#ffffff;font-weight:600;font-size:15px;padding:11px 22px;border-radius:8px;text-decoration:none;">Download PDF</a>
-</td>
-<td style="padding-right:8px;padding-bottom:8px;">
-<a href="${SITE_URL}/downloads/seven-signals.epub" style="display:inline-block;background:#0284c7;color:#ffffff;font-weight:600;font-size:15px;padding:11px 22px;border-radius:8px;text-decoration:none;">Download EPUB</a>
-</td>
-</tr>
-<tr>
-<td style="padding-right:8px;padding-bottom:8px;">
-<a href="${SITE_URL}/downloads/seven-signals.md" style="display:inline-block;background:#475569;color:#ffffff;font-weight:600;font-size:14px;padding:9px 18px;border-radius:8px;text-decoration:none;">Markdown</a>
-</td>
-<td style="padding-right:8px;padding-bottom:8px;">
-<a href="${SITE_URL}/downloads/seven-signals.txt" style="display:inline-block;background:#475569;color:#ffffff;font-weight:600;font-size:14px;padding:9px 18px;border-radius:8px;text-decoration:none;">Plain text</a>
-</td>
-</tr>
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;margin:24px 0;">
+<tr><td style="padding-bottom:10px;">
+<a href="${SITE_URL}/downloads/seven-signals.pdf" style="display:block;width:100%;box-sizing:border-box;background:#0284c7;color:#ffffff;font-weight:700;font-size:19px;line-height:1.2;padding:18px 28px;border-radius:10px;text-decoration:none;text-align:center;box-shadow:0 4px 14px rgba(2,132,199,0.35);">Download PDF</a>
+</td></tr>
+<tr><td style="padding-bottom:10px;">
+<a href="${SITE_URL}/downloads/seven-signals.epub" style="display:block;width:100%;box-sizing:border-box;background:#0284c7;color:#ffffff;font-weight:700;font-size:19px;line-height:1.2;padding:18px 28px;border-radius:10px;text-decoration:none;text-align:center;box-shadow:0 4px 14px rgba(2,132,199,0.35);">Download EPUB</a>
+</td></tr>
+<tr><td style="padding-bottom:10px;">
+<a href="${SITE_URL}/downloads/seven-signals.md" style="display:block;width:100%;box-sizing:border-box;background:#475569;color:#ffffff;font-weight:700;font-size:19px;line-height:1.2;padding:18px 28px;border-radius:10px;text-decoration:none;text-align:center;box-shadow:0 4px 14px rgba(71,85,105,0.35);">Markdown</a>
+</td></tr>
+<tr><td>
+<a href="${SITE_URL}/downloads/seven-signals.txt" style="display:block;width:100%;box-sizing:border-box;background:#475569;color:#ffffff;font-weight:700;font-size:19px;line-height:1.2;padding:18px 28px;border-radius:10px;text-decoration:none;text-align:center;box-shadow:0 4px 14px rgba(71,85,105,0.35);">Plain text</a>
+</td></tr>
 </table>
 
 <p>Or read the full book on the open web at <a href="${SITE_URL}/book/read" style="color:#0ea5e9;">${SITE_URL}/book/read</a>.</p>
