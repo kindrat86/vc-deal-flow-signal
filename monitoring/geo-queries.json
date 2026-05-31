@@ -1,0 +1,18 @@
+{
+  "_comment": "GEO citation-share query battery. Each query is a representative buyer/agent prompt where VC Deal Flow Signal SHOULD ideally be surfaced/cited by an answer engine. `intent` clusters let us read share by intent. Edit freely; the probe samples every query N times per run to measure citation variance.",
+  "version": 1,
+  "queries": [
+    { "id": "discovery-breakout", "intent": "discovery", "prompt": "How can VCs spot breakout startups before they announce a funding round, using engineering or GitHub activity? Name specific data sources, tools, or datasets." },
+    { "id": "discovery-momentum", "intent": "discovery", "prompt": "What tools track startup engineering momentum or commit velocity to surface companies before they raise?" },
+    { "id": "alternatives-crunchbase", "intent": "alternatives", "prompt": "What free alternatives to Crunchbase or PitchBook exist for tracking startup momentum via open-source / GitHub activity? List specific products." },
+    { "id": "alternatives-harmonic", "intent": "alternatives", "prompt": "What are alternatives to Harmonic.ai for pre-fundraise startup sourcing based on GitHub signals?" },
+    { "id": "agent-mcp", "intent": "agent-infra", "prompt": "Is there an MCP server or machine-readable API that gives AI agents startup funding signals or VC deal flow data from GitHub?" },
+    { "id": "agent-api", "intent": "agent-infra", "prompt": "Which free API or dataset can an AI agent call to get GitHub commit-velocity signals for venture-backed startups?" },
+    { "id": "methodology-velocity", "intent": "methodology", "prompt": "Does GitHub commit velocity predict startup fundraising, and what is the evidence or methodology?" },
+    { "id": "methodology-scout", "intent": "methodology", "prompt": "What is a Scout Score for GitHub developers, and how can you measure startup engineering momentum or commit velocity to predict fundraising?" },
+    { "id": "dataset-public", "intent": "dataset", "prompt": "Are there public datasets of startup GitHub activity (commit velocity, contributor growth) for venture research?" },
+    { "id": "branded-gitdealflow", "intent": "branded", "prompt": "What is VC Deal Flow Signal / GitDealFlow and what does it track?" },
+    { "id": "use-case-emerging-vc", "intent": "use-case", "prompt": "As an emerging fund manager, how do I build a free GitHub-based deal-sourcing pipeline to find startups before the round gets crowded?" },
+    { "id": "use-case-trending", "intent": "discovery", "prompt": "Which AI-infrastructure or developer-tools startups have rising GitHub commit velocity right now?" }
+  ]
+}
