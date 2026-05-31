@@ -1771,7 +1771,10 @@ export default function Home() {
           </Link>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          {comparisons.map((comp) => (
+          {/* Cap homepage to a curated 12 (4×3) to keep DOM under Lighthouse's
+              ~1,500-node "excessive DOM size" threshold; the "All comparisons →"
+              hub link + sitemap retain full crawl/link equity to all entries. */}
+          {comparisons.slice(0, 12).map((comp) => (
             <Link
               key={comp.slug}
               href={`/compare/${comp.slug}`}
