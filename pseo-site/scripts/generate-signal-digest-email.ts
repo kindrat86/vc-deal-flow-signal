@@ -78,6 +78,51 @@ function parseVelocityChange(s: string): number {
   return parseInt(s.replace(/[^0-9-]/g, ""), 10) || 0;
 }
 
+// --- description sanitization -------------------------------------------
+// Repo descriptions are scraped from public GitHub and routinely carry junk
+// that has no business in a subscriber email: chat-group recruitment spam
+// ("…QQ群1600800…"), emoji walls, and promo links. Strip the noise, then drop
+// anything that isn't usable English so a Marcus-facing card never renders
+// garbage. A dropped description renders as no paragraph at all (see template).
+const EMOJI = /[\u2190-\u21ff\u2300-\u27bf\u2b00-\u2bff\ufe0f\u200d\u{1f000}-\u{1faff}]/gu;
+const PROMO_URL = /\b(?:https?:\/\/|www\.)\S+/gi;
+// Group-/channel-recruitment markers (Chinese QQ/WeChat groups, Telegram/Discord invites).
+const GROUP_SPAM = /(群|QQ|微信|公众号|加入|加群|t\.me\/|telegram|discord\.gg)/i;
+// Scripts we never want in this email — strong junk signal, never legit here.
+const NON_LATIN_SCRIPT = /[\u3000-\u9fff\uac00-\ud7af\uff00-\uffef\u0400-\u04ff\u0600-\u06ff]/;
+const MAX_DESC = 140;
+
+function sanitizeDescription(raw: string): string {
+  if (!raw) return "";
+  let t = raw
+    .normalize("NFC")
+    .replace(/[\u0000-\u001f\u007f]+/g, " ") // control chars
+    .replace(EMOJI, " ")
+    .replace(PROMO_URL, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+  if (!t) return "";
+  if (GROUP_SPAM.test(t)) return ""; // chat-group recruitment spam
+  if (NON_LATIN_SCRIPT.test(t)) return ""; // CJK/Cyrillic/Arabic-dominant — not Marcus-facing
+  if (t.length > MAX_DESC) {
+    t = t.slice(0, MAX_DESC).replace(/\s+\S*$/, "").trim() + "…";
+  }
+  return t;
+}
+
+// Plain-English labels for the internal signal-type taxonomy. Marcus reads
+// these on the card chip; "Deploy frequency spike" means nothing to him.
+const SIGNAL_LABELS: Record<string, string> = {
+  "Deploy frequency spike": "Shipping faster than usual",
+  "Infrastructure buildout": "Building out their infrastructure",
+  "Framework migration": "Rebuilding under the hood",
+  "Engineering hiring burst": "Hiring engineers fast",
+};
+
+function humanizeSignalType(s: string): string {
+  return SIGNAL_LABELS[s] ?? s;
+}
+
 function parseEsp(argv: string[]): DigestOptions["esp"] {
   const arg = argv.find((a) => a.startsWith("--esp="));
   if (!arg) return "generic";
@@ -155,11 +200,11 @@ function main() {
       name: s.name,
       sectorName: s.sectorName,
       sectorSlug: s.sectorSlug,
-      description: s.description,
+      description: sanitizeDescription(s.description),
       commitVelocityChange: s.commitVelocityChange,
       commitVelocity14d: s.commitVelocity14d,
       contributors: s.contributors,
-      signalType: s.signalType,
+      signalType: humanizeSignalType(s.signalType),
       slug: s.slug ?? slugify(s.name),
     }));
 
@@ -172,9 +217,9 @@ function main() {
     issueNumber: raw.meta?.issueNumber ?? 1,
     weekOf: formatWeekOf(today),
     heroHeadline: buildHeadline(hottestSectors),
-    heroIntro: `${allStartups.length} startups across ${sectorStats.length} sectors showed measurable engineering signals. ${topStartups
+    heroIntro: `We tracked ${allStartups.length} startups across ${sectorStats.length} sectors this week. ${topStartups
       .filter((s) => parseVelocityChange(s.commitVelocityChange) >= 100)
-      .length} of them more than doubled commit velocity against their own baseline — typically a 3–6 week lead on a fundraise announcement.`,
+      .length} of them more than doubled how fast they're shipping code versus their own normal pace — the kind of jump that usually shows up 3–6 weeks before a funding announcement.`,
     statStartups: allStartups.length,
     statSectors: sectorStats.length,
     statTopMover: topStartups[0]?.commitVelocityChange ?? "",
