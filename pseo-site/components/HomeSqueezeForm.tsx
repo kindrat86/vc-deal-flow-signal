@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import SqueezeSuccess from "@/components/SqueezeSuccess";
 
 // Brunson DotCom Secrets Ch 14 — Lead "Squeeze" Funnels.
 // Russell-Brunson HSO audit 2026-05-08 flagged that the home hero
@@ -62,31 +63,7 @@ export default function HomeSqueezeForm() {
   }
 
   if (status === "success") {
-    return (
-      <div className="rounded-xl border border-emerald-700/40 bg-emerald-950/30 p-6 sm:p-8 space-y-3">
-        <p className="text-emerald-300 text-xs font-semibold uppercase tracking-[0.14em]">
-          Check your inbox
-        </p>
-        <h3 className="text-gray-100 font-semibold text-2xl leading-tight">
-          One last step.
-        </h3>
-        <p className="text-gray-200 text-base leading-relaxed">
-          We just sent a confirmation link to{" "}
-          <strong className="text-emerald-200">{email}</strong>. Click
-          it and you&rsquo;ll get the first Sunday digest within 30
-          minutes — including this week&rsquo;s 5 breakout candidates
-          ranked by 14-day commit-velocity acceleration.
-        </p>
-        <p className="text-gray-400 text-sm leading-relaxed">
-          If you don&rsquo;t see it in 5 minutes, check spam / Promotions
-          tab. The sender is{" "}
-          <code className="text-emerald-200 bg-emerald-900/40 px-1.5 py-0.5 rounded text-xs">
-            signal@gitdealflow.com
-          </code>
-          .
-        </p>
-      </div>
-    );
+    return <SqueezeSuccess email={email} route={route} />;
   }
 
   const submitting = status === "submitting";

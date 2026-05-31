@@ -21,7 +21,7 @@ function verificationEmailHtml(
       ? "Confirm your email — your 7-Day Reset starts immediately"
       : cohort === "launch"
         ? "Confirm your email — launch sequence starts in 30 minutes"
-        : "Your report is ready.";
+        : "There's a deal in here I missed by one night's sleep.";
   const body =
     cohort === "challenge"
       ? `<p>Click below to confirm your email and start the 7-Day Deal Flow Reset Challenge.</p>
@@ -29,7 +29,9 @@ function verificationEmailHtml(
       : cohort === "launch"
         ? `<p>Click below to confirm your email and start the Agent Credits launch sequence.</p>
 <p>Five emails over ten days: Stage 1 the problem, Stage 2 why current fixes fail, Stage 3 what I shipped, Stage 4 cart open, Stage 5 last call. Cart closes May 20 at 23:59 UTC.</p>`
-        : `<p>Click the button below to confirm your email and get instant access to <strong>This Week's Top 5 Breakout Startups</strong> — with real GitHub acceleration data on the fastest-moving companies right now.</p>`;
+        : `<p>A few years ago I was watching a quiet fintech startup. No press, no warm intros circulating — but their public GitHub lit up in two weeks. Four new contributors. Three new repos. I flagged it, then closed my laptop and went to bed.</p>
+<p>Three weeks later they raised a $4M Series A. The investors who got in had seen exactly what I'd seen. They just didn't talk themselves out of it.</p>
+<p>That's the night that made me build this. Confirm your email below and the first thing you'll read is the whole story — plus <strong>This Week's Top 5 Breakout Startups</strong>, the names showing the same engineering acceleration right now, 21 to 47 days before the deck circulates.</p>`;
   const cta =
     cohort === "challenge"
       ? "Start the Challenge"
@@ -173,7 +175,7 @@ export async function POST(request: Request) {
             ? "Confirm your email — your 7-Day Reset starts now"
             : cohort === "launch"
               ? "Confirm your email — Agent Credits launch starts now"
-              : "Confirm your email — your report is ready",
+              : "Confirm to unlock your 5 (and the deal I missed)",
         html: verificationEmailHtml(verifyUrl, cohort),
         headers: {
           "List-Unsubscribe": `<mailto:${FROM_EMAIL}?subject=unsubscribe>`,

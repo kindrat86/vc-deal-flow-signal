@@ -51,9 +51,10 @@ export default function HomeSqueeze() {
           arrives.
         </h2>
         <p className="text-gray-400 text-sm sm:text-base leading-relaxed max-w-2xl">
-          Two boxes. Twenty seconds. The same engineering signal that
-          preceded 219 confirmed Series A rounds in our SSRN-published
-          panel — delivered to your inbox every Monday at 09:00 UTC.
+          You reach out while the round is still 47 days away — not after
+          the deck is circulating. It&rsquo;s the same engineering signal
+          that preceded 219 confirmed Series A rounds in our SSRN-published
+          panel. Two boxes, twenty seconds, free forever.
         </p>
       </div>
 
