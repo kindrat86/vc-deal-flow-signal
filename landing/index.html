@@ -166,6 +166,36 @@
     .qual-card-text { display: flex; flex-direction: column; line-height: 1.25; }
     .qual-card-title { font-weight: 600; font-size: 0.95rem; color: #f1f5f9; }
     .qual-card-sub { font-size: 0.78rem; color: #94a3b8; margin-top: 1px; }
+    /* "Why it's good for you" benefit block (hero) */
+    .benefit-why { margin: 2.5rem auto 3rem; max-width: 54rem; }
+    .benefit-eyebrow {
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: #38bdf8; margin-bottom: 0.5rem;
+    }
+    .benefit-h2 {
+      font-size: 1.5rem; line-height: 1.2; font-weight: 700;
+      color: #f1f5f9; margin-bottom: 1.75rem;
+    }
+    @media (min-width: 768px) { .benefit-h2 { font-size: 1.875rem; } }
+    .benefit-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; text-align: left; }
+    @media (min-width: 768px) {
+      .benefit-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+    }
+    .benefit-card {
+      display: flex; flex-direction: column; align-items: flex-start;
+      padding: 1.5rem; border-radius: 1rem;
+      border: 1px solid #334155; background-color: rgba(30, 41, 59, 0.6);
+      transition: border-color 150ms ease, transform 150ms ease;
+    }
+    .benefit-card:hover { border-color: rgba(14, 165, 233, 0.5); transform: translateY(-2px); }
+    .benefit-ico {
+      display: inline-flex; align-items: center; justify-content: center;
+      flex: 0 0 auto; width: 2.75rem; height: 2.75rem;
+      border-radius: 0.75rem; margin-bottom: 1rem;
+      background-color: rgba(14, 165, 233, 0.12); color: #38bdf8;
+    }
+    .benefit-title { font-size: 1.0625rem; font-weight: 600; color: #f8fafc; margin-bottom: 0.375rem; }
+    .benefit-desc { font-size: 0.9rem; line-height: 1.55; color: #94a3b8; }
     .proof-card, .support-card, .step-card { transition: border-color 120ms ease, transform 120ms ease; }
     .proof-card:hover, .support-card:hover, .step-card:hover { border-color: rgba(14, 165, 233, 0.5); }
     .mobile-cta-stack > * { width: 100%; }
