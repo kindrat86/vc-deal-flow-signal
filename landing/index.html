@@ -296,6 +296,14 @@
     @media (max-width: 639px) and (prefers-reduced-motion: reduce) {
       .mobile-sticky-cta { transition: none; }
     }
+    /* A/B hero layout (flag: landing-hero-layout). Default render = form_first. */
+    .hero-flow { display: flex; flex-direction: column; }
+    .hero-flow > .hero-how { order: 1; }
+    .hero-flow > .hero-benefits { order: 2; }
+    .hero-flow.hero-control > .hero-how { order: 2; }
+    .hero-flow.hero-control > .hero-benefits { order: 1; margin-bottom: 2rem; }
+    .hero-flow.hero-control .hero-kicker { font-size: 1.875rem; line-height: 1.1; }
+    @media (min-width: 768px) { .hero-flow.hero-control .hero-kicker { font-size: 3rem; } }
   </style>
 </head>
 <body class="bg-dark-900 text-gray-100 font-sans antialiased">
@@ -318,8 +326,10 @@
 
         <h1 class="mobile-hero-title text-4xl md:text-6xl font-extrabold leading-tight mb-6">See which startups are heating up before they raise.</h1>
 
-        <!-- HOW + form (A/B variant: single hook, then capture above the fold) -->
-        <p class="text-xl md:text-2xl font-bold leading-tight text-signal-500 mb-3">I read their GitHub. You see them first.</p>
+        <!-- A/B hero flow: order toggled by PostHog flag 'landing-hero-layout' (default render = form_first) -->
+        <div id="hero-flow" class="hero-flow">
+        <div class="hero-how">
+        <p class="hero-kicker text-xl md:text-2xl font-bold leading-tight text-signal-500 mb-3">I read their GitHub. You see them first.</p>
         <p class="mobile-hero-copy text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-8">I watch <strong class="text-white">what 4,200+ startups are quietly building</strong> and flag the ones taking off — <strong class="text-white">weeks before the round or the press</strong>.</p>
 
         <form class="js-signup-form mobile-cta-stack flex flex-col sm:flex-row gap-3 max-w-lg mx-auto" data-source="hero">
@@ -329,9 +339,10 @@
         </form>
         <p class="js-signup-msg text-gray-500 text-sm mt-4"><span class="text-emerald-400">✓</span> Free &mdash; I cover the compute &nbsp; <span class="text-emerald-400">✓</span> Unsubscribe in one click &nbsp; <span class="text-emerald-400">✓</span> One email, every Sunday</p>
         <p class="text-gray-500 text-sm mt-3">Covering <span class="text-gray-300">the fast-growing software startups everyone&apos;s about to fight over</span> &mdash; and more. <a href="/report" target="_blank" rel="noopener" class="underline hover:text-gray-300 transition">See a real issue first &rarr;</a></p>
+        </div><!-- /.hero-how -->
 
-        <!-- WHY — the benefits, demoted below the form for the A/B variant -->
-        <div class="benefit-why benefit-why-demoted">
+        <!-- WHY — the benefits (order toggled by the flag; below the form in form_first) -->
+        <div class="benefit-why benefit-why-demoted hero-benefits">
           <p class="benefit-eyebrow">Why it&apos;s good for you</p>
           <h2 class="benefit-h2">What you get by seeing it first</h2>
           <div class="benefit-grid">
@@ -353,6 +364,7 @@
           </div>
         </div>
 
+        </div><!-- /.hero-flow -->
       </div>
     </section>
 
@@ -827,7 +839,7 @@
           });
           const data = await res.json();
           if (data.ok) {
-            if (window.posthog) posthog.capture('signup_verify_sent', { placement: form.getAttribute('data-source') || 'landing-page' });
+            if (window.posthog) posthog.capture('signup_verify_sent', { placement: form.getAttribute('data-source') || 'landing-page', hero_variant: window.__heroVariant || 'unknown' });
             try { sessionStorage.setItem('gdf_email', email); } catch (e) {}
             window.location.href = '/thanks';
             return;
@@ -954,6 +966,8 @@
     (function(){
       function _init(){ if(/^https?:$/.test(location.protocol)) posthog.init('phc_lyZCgvTpicjLzAO3rY2GhxuX5WUc5jQjP8ZVwwJqauX', {api_host: 'https://eu.i.posthog.com', persistence: 'memory', person_profiles: 'identified_only'}); }
       if('requestIdleCallback' in window){requestIdleCallback(_init,{timeout:2500});} else {setTimeout(_init,2000);}
+      /* A/B hero layout: read flag landing-hero-layout, toggle order, fire exposure */
+      (function(){var F='landing-hero-layout';function apply(){try{var v=(window.posthog&&posthog.getFeatureFlag)?posthog.getFeatureFlag(F):null;var variant=(v==='control')?'control':'form_first';window.__heroVariant=variant;var flow=document.getElementById('hero-flow');if(flow){flow.classList.toggle('hero-control',variant==='control');flow.setAttribute('data-hero-variant',variant);}if(!window.__heroExposed){window.__heroExposed=true;if(window.posthog&&posthog.capture)posthog.capture('hero_experiment_exposed',{variant:variant});}}catch(e){}}function ready(){if(window.posthog&&posthog.onFeatureFlags){posthog.onFeatureFlags(apply);}else{setTimeout(ready,250);}}ready();})();
     })();
   </script>
 
