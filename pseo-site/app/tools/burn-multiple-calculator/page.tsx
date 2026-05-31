@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { BurnMultipleCalculator } from "@/components/BurnMultipleCalculator";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import EmbedThisCard from "@/components/EmbedThisCard";
 import { HreflangLinks } from "@/components/HreflangLinks";
 
 const SITE = "https://signals.gitdealflow.com";
@@ -364,6 +365,13 @@ export default function BurnMultiplePage() {
             </Link>
           </div>
         </div>
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+        <div className="rounded-lg border border-slate-800 bg-slate-900 p-6">
+          <h2 className="text-lg font-semibold text-gray-100 mb-2">Embed this calculator</h2>
+          <p className="text-sm text-gray-400 leading-relaxed">Drop the live burn multiple calculator into a newsletter, blog, or portal. The snippet ships a visible source credit linking back here.</p>
+          <EmbedThisCard embedPath="/embed/tools/burn-multiple-calculator" sourcePath="/tools/burn-multiple-calculator" label="Burn Multiple Calculator" height={520} />
+        </div>
+      </div>
       </div>
     </>
   );
