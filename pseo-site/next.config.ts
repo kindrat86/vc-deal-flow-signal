@@ -1,27 +1,367 @@
-import type { NextConfig } from 'next';
+import type { NextConfig } from "next";
+import * as path from "node:path";
 
 const nextConfig: NextConfig = {
+  // Pin turbopack root to this package so worktree builds (and any nested
+  // checkout layout) don't drift to a parent lockfile. Harmless on Vercel —
+  // the production root resolves to the same directory.
+  turbopack: {
+    root: path.resolve(__dirname),
+  },
+  async rewrites() {
+    // Extension-stripped aliases for /api/v1/* — generic agents that infer
+    // REST conventions and strip ".json" from URLs hit 404 without these.
+    // Each alias is a routing-layer rewrite (NOT alias-via-import — that
+    // pattern silently breaks under force-static; see Pass VIII memo).
+    const v1Aliases = [
+      { from: "/api/v1/signals", to: "/api/v1/signals.json" },
+      { from: "/api/v1/agents", to: "/api/v1/agents.json" },
+      { from: "/api/v1/answers", to: "/api/v1/answers.json" },
+      { from: "/api/v1/changelog", to: "/api/v1/changelog.json" },
+      { from: "/api/v1/faq", to: "/api/v1/faq.json" },
+      { from: "/api/v1/glossary", to: "/api/v1/glossary.json" },
+      { from: "/api/v1/methodology", to: "/api/v1/methodology.json" },
+      { from: "/api/v1/openapi", to: "/api/v1/openapi.json" },
+      { from: "/api/v1/pricing", to: "/api/v1/pricing.json" },
+      { from: "/api/v1/uptime", to: "/api/v1/uptime.json" },
+      { from: "/api/v1/citations", to: "/api/v1/citations.json" },
+      { from: "/api/v1/dataset", to: "/api/v1/dataset.jsonl" },
+      // Charter Cohort 2026 — Brunson Expert Secrets §1 Ch 4 (Mass
+      // Movement Vehicle) + DCS Ch 13 (Best Bait, agent-side). Mirrors
+      // /members hub as JSON for crawlers, agents, and MCP hosts.
+      { from: "/api/v1/members", to: "/api/v1/members.json" },
+      // Platform-native opener variants — Brunson Traffic Secrets §1
+      // Ch 3 (Hook, Story, Offer × Hidden Campaign). Twelve openers
+      // resolving the universal product story per platform. Backs the
+      // /distribution/platform-hooks HTML surface and is consumed by
+      // the daily-briefing pipeline + agent retrieval.
+      { from: "/api/v1/platform-hooks", to: "/api/v1/platform-hooks.json" },
+      // Playbooks — operator how-tos shipped 2026-05-22. Same shape as
+      // /api/v1/answers; mirrors content/playbooks.ts into a JSON corpus
+      // for RAG ingestion alongside the answers corpus.
+      { from: "/api/v1/playbooks", to: "/api/v1/playbooks.json" },
+    ].map(({ from, to }) => ({ source: from, destination: to }));
+
+    return [
+      {
+        source: "/.well-known/llms.txt",
+        destination: "/llms.txt",
+      },
+      {
+        source: "/AGENTS.md",
+        destination: "/agents.md",
+      },
+      {
+        source: "/openapi.json",
+        destination: "/api/openapi.json",
+      },
+      {
+        source: "/.well-known/llms-full.txt",
+        destination: "/llms-full.txt",
+      },
+      {
+        source: "/.well-known/qa.jsonl",
+        destination: "/qa.jsonl",
+      },
+      ...v1Aliases,
+    ];
+  },
+
+  async redirects() {
+    return [
+      {
+        source: "/perfect-webinar/5min",
+        destination: "/walkthrough/5min",
+        permanent: true,
+      },
+      {
+        source: "/perfect-webinar/90s",
+        destination: "/walkthrough/90s",
+        permanent: true,
+      },
+      {
+        source: "/perfect-webinar/quick",
+        destination: "/walkthrough/quick",
+        permanent: true,
+      },
+      {
+        source: "/perfect-webinar",
+        destination: "/walkthrough",
+        permanent: true,
+      },
+      {
+        source: "/dream-100",
+        destination: "/target-list",
+        permanent: true,
+      },
+      {
+        source: "/affiliates/dream-50",
+        destination: "/affiliates/top-partners",
+        permanent: true,
+      },
+      {
+        source: "/summit/big-domino-engineering-acceleration",
+        destination: "/summit/core-claim-engineering-acceleration",
+        permanent: true,
+      },
+      {
+        source: "/summit/icp-engineering-dream-100-by-github",
+        destination: "/summit/icp-engineering-target-list-by-github",
+        permanent: true,
+      },
+      {
+        source: "/summit/stadium-pitch-falsifiable-predictions",
+        destination: "/summit/state-of-engine-falsifiable-predictions",
+        permanent: true,
+      },
+      {
+        source: "/startups-to-watch/:sector([a-z0-9-]+)-q2-2025",
+        destination: "/startups-to-watch/:sector-q3-2025",
+        permanent: true,
+      },
+      {
+        source: "/icon",
+        destination: "/icon.png",
+        permanent: true,
+      },
+      {
+        source: "/apple-icon",
+        destination: "/apple-icon.png",
+        permanent: true,
+      },
+      {
+        source: "/signals/commit-velocity",
+        destination: "/signals/define/commit-velocity",
+        permanent: true,
+      },
+      {
+        source: "/signals/commit-velocity-change",
+        destination: "/signals/define/commit-velocity-change",
+        permanent: true,
+      },
+      {
+        source: "/signals/contributor-growth",
+        destination: "/signals/define/contributor-growth",
+        permanent: true,
+      },
+      {
+        source: "/startups-to-watch",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/signals/engineering-hiring-burst",
+        destination: "/signals/define/engineering-hiring-burst",
+        permanent: true,
+      },
+      {
+        source: "/integrations/best-mcp-server-for-vc-research",
+        destination: "/answers/best-mcp-server-for-vc-research",
+        permanent: true,
+      },
+    ];
+  },
+
   async headers() {
     return [
       {
-        source: '/:path*.html',
+        source: "/(.*)",
         headers: [
           {
-            key: 'Cache-Control',
-            value: 'public, max-age=0, s-maxage=300, stale-while-revalidate=86400',
+            key: "X-Content-Type-Options",
+            value: "nosniff",
           },
           {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff',
+            key: "X-Frame-Options",
+            value: "DENY",
           },
-          ...(process.env.NODE_ENV === 'production'
-            ? [
-                {
-                  key: 'Strict-Transport-Security',
-                  value: 'max-age=63072000; includeSubDomains; preload',
-                },
-              ]
-            : []),
+          {
+            key: "Referrer-Policy",
+            value: "strict-origin-when-cross-origin",
+          },
+          {
+            key: "Permissions-Policy",
+            value: "camera=(), microphone=(), geolocation=()",
+          },
+          {
+            key: "Strict-Transport-Security",
+            value: "max-age=63072000; includeSubDomains; preload",
+          },
+          {
+            key: "Content-Security-Policy",
+            value: [
+              "default-src 'self'",
+              "script-src 'self' 'unsafe-inline' https://eu.i.posthog.com https://eu-assets.i.posthog.com",
+              "style-src 'self' 'unsafe-inline'",
+              "img-src 'self' data: https:",
+              "font-src 'self'",
+              "connect-src 'self' https://eu.i.posthog.com https://eu.posthog.com https://eu-assets.i.posthog.com https://api.resend.com",
+              "frame-ancestors 'none'",
+            ].join("; "),
+          },
+        ],
+      },
+      // SWR Cache-Control for non-API HTML (PR #96): edge serves hot copies
+      // for 5 min and stale (background-revalidated) copies for up to a day.
+      // Excludes /api/* (handlers set their own policy) and /_next/* (immutable).
+      {
+        source: "/((?!api/|_next/).*)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=0, s-maxage=300, stale-while-revalidate=86400",
+          },
+        ],
+      },
+      // Auth-gated subtrees must never hit a shared CDN node — override SWR
+      // with private no-store. Each prefix needs an exact + wildcard match.
+      { source: "/account", headers: [{ key: "Cache-Control", value: "private, no-cache, no-store, max-age=0, must-revalidate" }] },
+      { source: "/account/:path*", headers: [{ key: "Cache-Control", value: "private, no-cache, no-store, max-age=0, must-revalidate" }] },
+      { source: "/dashboard", headers: [{ key: "Cache-Control", value: "private, no-cache, no-store, max-age=0, must-revalidate" }] },
+      { source: "/dashboard/:path*", headers: [{ key: "Cache-Control", value: "private, no-cache, no-store, max-age=0, must-revalidate" }] },
+      { source: "/login", headers: [{ key: "Cache-Control", value: "private, no-cache, no-store, max-age=0, must-revalidate" }] },
+      { source: "/login/:path*", headers: [{ key: "Cache-Control", value: "private, no-cache, no-store, max-age=0, must-revalidate" }] },
+      // Iframe-friendly embed surfaces — re-open framing for the public
+      // embed widgets so newsletter authors / blog writers can drop them
+      // into Substack, Ghost, WordPress, etc. The route handlers also set
+      // these headers on their Responses (belt + braces); this entry is
+      // the deterministic site-config-level override.
+      //
+      // Listed AFTER the catch-all so Next merges + later-wins overrides
+      // X-Frame-Options and CSP frame-ancestors. Other security headers
+      // (HSTS, nosniff, Referrer-Policy, Permissions-Policy) inherit
+      // unchanged.
+      {
+        source: "/embed/weekly",
+        headers: [
+          {
+            key: "X-Frame-Options",
+            value: "ALLOWALL",
+          },
+          {
+            key: "Content-Security-Policy",
+            value: [
+              "default-src 'self'",
+              "script-src 'self' 'unsafe-inline'",
+              "style-src 'self' 'unsafe-inline'",
+              "img-src 'self' data: https:",
+              "font-src 'self'",
+              "connect-src 'self'",
+              "frame-ancestors *",
+            ].join("; "),
+          },
+          {
+            key: "Access-Control-Allow-Origin",
+            value: "*",
+          },
+        ],
+      },
+      {
+        source: "/embed/leaderboard/:slug*",
+        headers: [
+          {
+            key: "X-Frame-Options",
+            value: "ALLOWALL",
+          },
+          {
+            key: "Content-Security-Policy",
+            value: [
+              "default-src 'self'",
+              "script-src 'self' 'unsafe-inline'",
+              "style-src 'self' 'unsafe-inline'",
+              "img-src 'self' data: https:",
+              "font-src 'self'",
+              "connect-src 'self'",
+              "frame-ancestors *",
+            ].join("; "),
+          },
+          {
+            key: "Access-Control-Allow-Origin",
+            value: "*",
+          },
+        ],
+      },
+      // Glossary definition embeds — paste-able iframe card for any of
+      // the 84 /define/<term> entries. Tech blogs (Substack, Ghost,
+      // WordPress, Notion handbooks) that mention a VC term drop a
+      // single <iframe src="https://signals.gitdealflow.com/embed/define/<term>">
+      // and get a definition card with CC BY 4.0 attribution baked into
+      // the asset. generateStaticParams fans out over glossaryTerms.
+      {
+        source: "/embed/define/:term*",
+        headers: [
+          {
+            key: "X-Frame-Options",
+            value: "ALLOWALL",
+          },
+          {
+            key: "Content-Security-Policy",
+            value: [
+              "default-src 'self'",
+              "script-src 'self' 'unsafe-inline'",
+              "style-src 'self' 'unsafe-inline'",
+              "img-src 'self' data: https:",
+              "font-src 'self'",
+              "connect-src 'self'",
+              "frame-ancestors *",
+            ].join("; "),
+          },
+          {
+            key: "Access-Control-Allow-Origin",
+            value: "*",
+          },
+        ],
+      },
+      // Calculator embed widgets — same iframe-friendly contract as the
+      // mini-leaderboard. Operator newsletters (Lenny's, FirstRound,
+      // Sacra), founder blogs, and incubator portals drop a single
+      // <iframe src="https://signals.gitdealflow.com/embed/tools/<slug>">
+      // and get a working calculator with persistent attribution. Each
+      // of the 8 /tools/<slug> calcs has a matching /embed/tools/<slug>
+      // route via generateStaticParams.
+      {
+        source: "/embed/tools/:slug*",
+        headers: [
+          {
+            key: "X-Frame-Options",
+            value: "ALLOWALL",
+          },
+          {
+            key: "Content-Security-Policy",
+            value: [
+              "default-src 'self'",
+              "script-src 'self' 'unsafe-inline'",
+              "style-src 'self' 'unsafe-inline'",
+              "img-src 'self' data: https:",
+              "font-src 'self' data:",
+              "connect-src 'self'",
+              "frame-ancestors *",
+            ].join("; "),
+          },
+          {
+            key: "Access-Control-Allow-Origin",
+            value: "*",
+          },
+        ],
+      },
+      // /embed.js — small loader that creates the iframe + listens for
+      // the postMessage height handshake from <EmbedAutoHeight/>. Served
+      // from the same origin so it can be `<script src=>`'d cross-origin
+      // by embedder sites (Substack, Ghost, WordPress, Notion). The
+      // route handler caches it aggressively at the CDN; this entry
+      // makes the cross-origin fetch + correct Content-Type explicit.
+      {
+        source: "/embed.js",
+        headers: [
+          {
+            key: "Access-Control-Allow-Origin",
+            value: "*",
+          },
+          {
+            key: "Cache-Control",
+            value:
+              "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800",
+          },
         ],
       },
     ];
