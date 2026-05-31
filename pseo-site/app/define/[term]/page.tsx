@@ -11,6 +11,7 @@ import {
 } from "@/lib/glossary-categories";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import EmbedThisCard from "@/components/EmbedThisCard";
 
 const SITE = "https://signals.gitdealflow.com";
 const SSRN_URL = "https://ssrn.com/abstract=6606558";
@@ -354,6 +355,12 @@ export default async function DefineTermPage({ params }: PageProps) {
           <pre className="text-xs font-mono text-gray-300 bg-slate-950/60 rounded p-4 overflow-x-auto whitespace-pre-wrap">
             {`The Data Nerd. "${t.term}." VC Deal Flow Signal Glossary, ${pageUrl}.`}
           </pre>
+          <EmbedThisCard
+            embedPath={`/embed/define/${term}`}
+            sourcePath={`/define/${term}`}
+            label={t.term}
+            height={200}
+          />
         </section>
 
         <div className="rounded-xl border border-slate-800 bg-slate-900 p-6 sm:p-8 text-center">

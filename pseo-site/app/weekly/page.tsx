@@ -4,6 +4,7 @@ import { allPosts } from "@/content/posts";
 import PSEOFooterNav from "@/components/PSEOFooterNav";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import EmbedThisCard from "@/components/EmbedThisCard";
 
 export const metadata: Metadata = {
   title: "Weekly Signal Reports — Engineering Acceleration Archive",
@@ -141,6 +142,23 @@ export default function WeeklyArchivePage() {
             ))}
           </div>
         )}
+
+        <section className="mt-10 rounded-lg border border-slate-800 bg-slate-900 p-6">
+          <h2 className="text-lg font-semibold text-gray-100 mb-2">
+            Embed the live leaderboard
+          </h2>
+          <p className="text-sm text-gray-400 leading-relaxed">
+            Newsletters, founder blogs, and incubator portals can drop the live
+            weekly Top 10 into any post. The snippet ships a visible source
+            credit linking back here.
+          </p>
+          <EmbedThisCard
+            embedPath="/embed/weekly"
+            sourcePath="/weekly"
+            label="Weekly Signal"
+            height={560}
+          />
+        </section>
 
         <PSEOFooterNav excludeHrefs={["/weekly"]} />
 
