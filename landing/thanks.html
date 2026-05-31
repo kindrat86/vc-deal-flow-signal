@@ -12,11 +12,152 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="stylesheet" href="/styles.css">
   <style>
+    /* ====================================================================
+       /thanks — world-class UI layer (presentation only).
+       Every word, id, link, data-attribute and inline handler is unchanged.
+       The site ships a pre-built, purged styles.css with no build step on
+       deploy, so new Tailwind utilities can't compile — all new styling is
+       self-contained here, the same pattern the page already used.
+       ==================================================================== */
+    :root {
+      --signal-500: #ff6b1a;
+      --signal-400: #ff8c4d;
+      --brand-500:  #0ea5e9;
+      --brand-400:  #38bdf8;
+      --emerald:    #10b981;
+      --focus:      #ff8c4d;
+    }
+
+    /* ---- Atmosphere: layered backdrop instead of one flat fill ---- */
+    body.bg-dark-900 {
+      background-color: #0b1020;
+      background-image:
+        radial-gradient(58rem 40rem at 50% -16rem, rgba(255, 107, 26, 0.11), transparent 62%),
+        radial-gradient(48rem 38rem at 100% 4%, rgba(14, 165, 233, 0.08), transparent 56%),
+        radial-gradient(52rem 44rem at 0% 102%, rgba(14, 165, 233, 0.07), transparent 56%),
+        linear-gradient(180deg, #0b1020 0%, #0c1326 100%);
+      background-attachment: fixed;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    ::selection { background: rgba(255, 107, 26, 0.30); color: #fff; }
+
+    /* ---- Typography: stop awkward wraps, tighten display type ---- */
+    h1, h2 { text-wrap: balance; }
+    p { text-wrap: pretty; }
+    #hero-title { letter-spacing: -0.03em; }
+    h2 { letter-spacing: -0.02em; }
+
+    /* ---- Header: hairline depth + readable blur ---- */
+    header { box-shadow: 0 1px 0 rgba(148, 163, 184, 0.06); }
+
+    /* ---- Keyboard accessibility: visible focus on every link ---- */
+    a:focus-visible {
+      outline: 2px solid var(--focus); outline-offset: 3px;
+      border-radius: 6px;
+    }
+
+    /* ---- Hero eyebrow → status pill with a live dot ---- */
+    .eyebrow-pill {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.32rem 0.72rem; border-radius: 999px;
+      background: rgba(14, 165, 233, 0.10);
+      border: 1px solid rgba(14, 165, 233, 0.32);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    }
+    .eyebrow-pill::before {
+      content: ""; width: 0.45rem; height: 0.45rem; border-radius: 999px;
+      background: var(--brand-400);
+      box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.16);
+    }
+
+    /* ---- Card surfaces: subtle top highlight + real elevation ---- */
+    .mobile-card, .support-card {
+      transition: border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+    }
+    .mobile-card {
+      background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.028), rgba(255, 255, 255, 0));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 24px 60px -38px rgba(0, 0, 0, 0.85);
+    }
+    @media (hover: hover) {
+      .mobile-card:hover {
+        transform: translateY(-3px);
+        border-color: rgba(14, 165, 233, 0.5);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 32px 72px -34px rgba(0, 0, 0, 0.9);
+      }
+    }
+
+    /* ---- The OTO card: the page's centerpiece ---- */
+    .support-card {
+      position: relative; isolation: isolate;
+      border-color: rgba(255, 107, 26, 0.42) !important;
+      background:
+        radial-gradient(40rem 22rem at 50% -3rem, rgba(255, 107, 26, 0.12), transparent 70%),
+        linear-gradient(180deg, rgba(30, 41, 59, 0.55), rgba(13, 19, 35, 0.92)) !important;
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.07),
+        0 44px 100px -54px rgba(255, 107, 26, 0.45),
+        0 34px 90px -46px rgba(0, 0, 0, 0.92);
+    }
+    .support-card img { box-shadow: 0 12px 34px -10px rgba(255, 107, 26, 0.5); }
+
+    /* ---- "Verify me" secondary buttons (btn-secondary was never defined) ---- */
+    .btn-secondary {
+      background: rgba(15, 23, 42, 0.58);
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.045);
+      color: #e2e8f0;
+    }
+    .btn-secondary:hover {
+      background: rgba(30, 41, 59, 0.9);
+      border-color: rgba(14, 165, 233, 0.55);
+      color: #fff;
+    }
+
+    /* ---- "What to do now" → quiet timeline rail ---- */
+    .step-list > div { position: relative; padding-left: 1.15rem; }
+    .step-list > div::before {
+      content: ""; position: absolute; left: 0; top: 0.2rem; bottom: 0.2rem;
+      width: 2px; border-radius: 2px;
+      background: linear-gradient(180deg, var(--brand-500), rgba(14, 165, 233, 0.12));
+    }
+
+    /* ---- Value stack: circular check chips + row rhythm ---- */
+    .value-stack > li { padding: 0.1rem 0; }
+    .value-stack > li > span:first-child {
+      flex: none; display: inline-flex; align-items: center; justify-content: center;
+      width: 1.55rem; height: 1.55rem; margin-top: 0.05rem;
+      border-radius: 999px; font-size: 0.82rem; line-height: 1;
+      color: var(--emerald);
+      background: rgba(16, 185, 129, 0.14);
+      box-shadow: inset 0 0 0 1px rgba(16, 185, 129, 0.4);
+    }
+
+    /* ---- Comparison + guarantee callouts ---- */
+    .compare-box {
+      background: linear-gradient(180deg, rgba(30, 41, 59, 0.92), rgba(15, 23, 42, 0.92)) !important;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    }
+    .guarantee-box {
+      background: rgba(16, 185, 129, 0.09) !important;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 24px 60px -46px rgba(16, 185, 129, 0.7);
+    }
+
+    /* ---- Price: let the founding rate carry the glow ---- */
+    .price-amount { text-shadow: 0 8px 32px rgba(255, 107, 26, 0.28); }
+
+    /* ---- Tasteful entrance (base stays visible if motion is off) ---- */
+    @keyframes thx-reveal { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+    .reveal   { animation: thx-reveal 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; }
+    .reveal-2 { animation-delay: 0.09s; }
+    .reveal-3 { animation-delay: 0.18s; }
+
+    /* ====================================================================
+       Preserved mobile layout rules (+ a few refinements)
+       ==================================================================== */
     .mobile-cta-stack > * { width: 100%; }
-    .mobile-card, .mobile-step-card { transition: border-color 120ms ease, transform 120ms ease; }
-    .mobile-card:hover, .mobile-step-card:hover { border-color: rgba(14, 165, 233, 0.5); }
     .mobile-sticky-cta { display: none; }
-    @media (min-width: 640px) { .mobile-cta-stack > * { width: auto; } }
+    @media (min-width: 640px) { html { scroll-behavior: smooth; } .mobile-cta-stack > * { width: auto; } }
     @media (max-width: 639px) {
       html { scroll-padding-top: 5rem; }
       body { padding-bottom: 6rem; }
@@ -35,14 +176,26 @@
       .mobile-sticky-cta {
         position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; display: block;
         padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom));
-        background: rgba(2, 6, 23, 0.94); backdrop-filter: blur(12px);
+        background: rgba(2, 6, 23, 0.94); backdrop-filter: blur(14px);
         border-top: 1px solid rgba(71, 85, 105, 0.7);
+        box-shadow: 0 -18px 40px -28px rgba(0, 0, 0, 0.9);
+      }
+      .mobile-sticky-cta::before {
+        content: ""; position: absolute; top: -1px; left: 0; right: 0; height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(255, 107, 26, 0.5), transparent);
       }
       .mobile-sticky-cta .inner { display: flex; align-items: center; gap: 0.75rem; max-width: 28rem; margin: 0 auto; }
       .mobile-sticky-cta .meta { flex: 1; min-width: 0; }
       .mobile-sticky-cta .meta strong { display: block; color: #fff; font-size: 0.95rem; line-height: 1.1; }
       .mobile-sticky-cta .meta span { display: block; color: #94a3b8; font-size: 0.72rem; margin-top: 0.1rem; }
       .mobile-sticky-cta .btn { white-space: nowrap; padding-left: 1rem; padding-right: 1rem; }
+    }
+
+    /* ---- Respect reduced-motion ---- */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal, .reveal-2, .reveal-3 { animation: none !important; }
+      .mobile-card, .support-card { transition: none !important; }
     }
   </style>
 </head>
@@ -55,16 +208,16 @@
   </header>
 
   <main class="mobile-main-pad max-w-5xl mx-auto px-4 sm:px-6 py-14 sm:py-24">
-    <section class="max-w-3xl mx-auto text-center mb-12 mobile-section-pad">
-      <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-3">One click left</p>
+    <section class="max-w-3xl mx-auto text-center mb-12 mobile-section-pad reveal">
+      <p class="eyebrow-pill text-brand-500 text-xs font-semibold uppercase tracking-wider mb-3">One click left</p>
       <h1 id="hero-title" class="text-4xl sm:text-5xl font-bold tracking-tight mb-6">You're in. Now confirm it.</h1>
       <p id="hero-copy" class="text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto">Check your inbox and click the confirmation link. The next Sunday issue unlocks on the other side of that click.</p>
     </section>
 
-    <section class="grid lg:grid-cols-[1.2fr_0.8fr] gap-8 items-start max-w-4xl mx-auto">
+    <section class="grid lg:grid-cols-[1.2fr_0.8fr] gap-8 items-start max-w-4xl mx-auto reveal reveal-2">
       <div class="mobile-card mobile-card-pad rounded-3xl border border-gray-800 bg-dark-800/70 p-8 sm:p-10">
         <p class="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-5">What to do now</p>
-        <div class="space-y-5">
+        <div class="space-y-5 step-list">
           <div>
             <p class="text-white font-semibold mb-1">1. Open the email from The Data Nerd</p>
             <p class="text-gray-400">If you do not see it in a minute, check Promotions or Spam. The subject line tells you your first issue is on the way.</p>
@@ -114,7 +267,7 @@
         </div>
 
         <p class="text-signal-400 text-xs font-semibold uppercase tracking-wider mb-3">Here&apos;s the whole stack</p>
-        <ul class="space-y-3 text-gray-200 text-base sm:text-lg mb-6">
+        <ul class="value-stack space-y-3 text-gray-200 text-base sm:text-lg mb-6">
           <li class="flex items-start gap-3"><span class="text-emerald-400 font-extrabold mt-0.5" aria-hidden="true">&check;</span><span class="flex-1"><strong class="text-white">60+ accelerating startups</strong> in your sectors, re-ranked every week</span></li>
           <li class="flex items-start gap-3"><span class="text-emerald-400 font-extrabold mt-0.5" aria-hidden="true">&check;</span><span class="flex-1">A <strong class="text-white">plain-English signal note</strong> on every name (you never touch code)</span></li>
           <li class="flex items-start gap-3"><span class="text-emerald-400 font-extrabold mt-0.5" aria-hidden="true">&check;</span><span class="flex-1"><strong class="text-white">Sector filters, full history, and CSV export</strong></span></li>
@@ -122,15 +275,15 @@
           <li class="flex items-start gap-3"><span class="text-emerald-400 font-extrabold mt-0.5" aria-hidden="true">&check;</span><span class="flex-1">Open <strong class="text-white">methodology, dataset, and sample report</strong> &mdash; proof before you pay</span></li>
           <li class="flex items-start gap-3"><span class="text-emerald-400 font-extrabold mt-0.5" aria-hidden="true">&check;</span><span class="flex-1"><strong class="text-white">Founding rate locked for life</strong> &mdash; &euro;9.97 instead of &euro;49, for as long as you stay</span></li>
         </ul>
-        <div class="rounded-xl border border-signal-500/40 bg-dark-800 p-5 mb-6 text-center">
+        <div class="compare-box rounded-xl border border-signal-500/40 bg-dark-800 p-5 mb-6 text-center">
           <p class="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-1">The only comparison that matters</p>
           <p class="text-gray-300 leading-relaxed">A single <strong class="text-white">PitchBook seat runs $20,000 a year</strong>. You get the one part that actually moves your returns, the early signal, for <strong class="text-white">&euro;9.97/mo</strong> &mdash; and you can read the methodology, the dataset, and a full sample issue before you pay a cent.</p>
         </div>
         <p class="text-center text-gray-400 text-sm uppercase tracking-wider mb-1">Your price</p>
-        <p class="text-center mb-1"><span class="text-gray-500 line-through text-xl">&euro;49</span>&nbsp;&nbsp;<span class="text-4xl font-extrabold text-white">&euro;9.97</span><span class="text-gray-400">/mo</span></p>
+        <p class="text-center mb-1"><span class="text-gray-500 line-through text-xl">&euro;49</span>&nbsp;&nbsp;<span class="price-amount text-4xl font-extrabold text-white">&euro;9.97</span><span class="text-gray-400">/mo</span></p>
         <p class="text-center text-signal-400 font-semibold mb-1">More than 10x the value &mdash; before you count a single deal.</p>
         <p class="text-center text-gray-500 text-sm mb-6">Founding rate, locked for life while you stay subscribed.</p>
-        <div class="rounded-xl border border-emerald-500/40 bg-emerald-500/10 p-5 mb-6">
+        <div class="guarantee-box rounded-xl border border-emerald-500/40 bg-emerald-500/10 p-5 mb-6">
           <p id="oto-guarantee" class="text-gray-200 leading-relaxed"><strong class="text-white">The early-deal guarantee.</strong> Run it for one full sourcing cycle. If it doesn&apos;t surface a single name worth a real conversation in your sectors, email me and I&apos;ll refund every cent. The risk is mine; the cycle is yours to keep.</p>
         </div>
         <p id="oto-urgency-intro" class="text-gray-400 text-sm text-center mb-2">Two honest reasons this is the moment to decide &mdash; and I&apos;ll never pretend a fake timer is ticking:</p>
