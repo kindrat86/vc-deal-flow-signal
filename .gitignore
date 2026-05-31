@@ -30,6 +30,11 @@ Thumbs.db
 email-api/outreach-*.json
 CREDENTIAL-ROTATION.md
 
+# Social engage runtime state (per-machine, mutated each post)
+tools/bluesky/state/
+tools/mastodon/state/
+tools/farcaster/state/
+
 # Build artifacts
 *.zip
 .claude/scheduled_tasks.lock
