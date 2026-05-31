@@ -170,7 +170,7 @@ async function createContact(url, token, handle) {
       discovered_via: "engagement-scrape",
       segment: "",
       confidence: "",
-      stage: "",
+      stage: "sourced",
       dream_customer: false,
     },
   });

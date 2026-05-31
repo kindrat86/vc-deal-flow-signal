@@ -11,7 +11,22 @@ set -o pipefail
 
 cd "$(dirname "$0")"
 
+# --- Unattended auth (see run-engagement.sh for the full rationale) ----------
+# Load CLAUDE_CODE_OAUTH_TOKEN from cron-auth.env (gitignored) so the headless
+# claude CLI authenticates under launchd. Generate the token with
+# `claude setup-token`; see cron-auth.env.example.
+if [ -f cron-auth.env ]; then
+  set -a
+  . ./cron-auth.env
+  set +a
+fi
 ISO="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+if [ -z "${CLAUDE_CODE_OAUTH_TOKEN:-}" ]; then
+  echo "[${ISO}] WARN: CLAUDE_CODE_OAUTH_TOKEN not set (missing/empty cron-auth.env)." \
+       "Headless claude will 401. Run 'claude setup-token' and populate cron-auth.env." >&2
+fi
+# ----------------------------------------------------------------------------
+
 echo "[${ISO}] dream-customers cron starting"
 
 # Locate the Claude CLI. Use the user-installed path explicitly so launchd's
@@ -26,9 +41,6 @@ fi
 # inherits the user's global Chrome MCP via ~/.claude/settings.json.
 PROMPT_FILE="$(pwd)/cron-prompt.md"
 
-# Fire the session. --dangerously-skip-permissions only if launchd can't
-# show the permission prompt anyway — uncomment if your settings.json gates
-# tool calls behind interactive approval.
 "${CLAUDE_BIN}" \
   -p "$(cat "${PROMPT_FILE}")" \
   --output-format text \
