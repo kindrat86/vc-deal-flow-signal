@@ -172,7 +172,16 @@ export function RootIdentitySchema() {
         ],
       },
       {
-        "@type": "Organization",
+        // Dual-typed Organization + NewsMediaOrganization. The
+        // NewsMediaOrganization subtype makes the publisher-accountability
+        // properties below (publishingPrinciples, correctionsPolicy,
+        // noBylinesPolicy, ownershipFundingInfo, …) domain-valid — these are
+        // the E-E-A-T "who is accountable" signals Google documents for
+        // publishers. Same @id, so every cross-page reference still collapses
+        // into one entity. noBylinesPolicy is the load-bearing one: it states
+        // the pseudonymous byline is a *declared editorial policy*, not a
+        // missing-author trust gap.
+        "@type": ["Organization", "NewsMediaOrganization"],
         "@id": `${APEX}/#organization`,
         // additionalType points at the Wikidata QID for "business" — gives
         // the Knowledge Graph a typed anchor distinct from generic
@@ -276,6 +285,22 @@ export function RootIdentitySchema() {
           "startup engineering acceleration",
           "open-source contributor-growth analytics",
         ],
+        // ── Publisher accountability (Google E-E-A-T / NewsMediaOrganization) ──
+        // Each points to a live page that *actually states* the policy, so the
+        // claim is verifiable, not decorative. These convert a pseudonymous
+        // operator into an accountable publisher in the entity graph.
+        publishingPrinciples: `${SITE}/standards`,
+        correctionsPolicy: `${SITE}/corrections`,
+        actionableFeedbackPolicy: `${SITE}/standards#feedback`,
+        ownershipFundingInfo: `${SITE}/transparency`,
+        ethicsPolicy: `${SITE}/standards#ethics`,
+        // noBylinesPolicy: states that the pseudonymous "The Data Nerd" byline
+        // is a deliberate editorial policy (methodology is the protagonist),
+        // and that every claim remains traceable to the public dataset.
+        noBylinesPolicy: `${SITE}/standards#bylines`,
+        verificationFactCheckingPolicy: `${SITE}/methodology`,
+        unnamedSourcesPolicy: `${SITE}/standards#sourcing`,
+        missionCoveragePrioritiesPolicy: `${SITE}/methodology`,
         founder: { "@id": `${SITE}/about#person` },
       },
       {
@@ -310,6 +335,84 @@ export function RootIdentitySchema() {
           "https://dev.to/the_data_nerd",
           "https://huggingface.co/the-data-nerd",
         ],
+        // Topical authority for the author entity — mirrors the Organization
+        // knowsAbout so AI engines resolve "who wrote this" to a domain expert.
+        knowsAbout: [
+          "GitHub commit velocity",
+          "venture capital alternative data",
+          "alternative data for venture sourcing",
+          "open-source contributor-growth analytics",
+          "longitudinal startup engineering measurement",
+        ],
+        // Verifiable credentials only — no fabricated degrees or affiliations.
+        // Each is independently checkable via the linked persistent identifier.
+        hasCredential: [
+          {
+            "@type": "EducationalOccupationalCredential",
+            credentialCategory: "Published research",
+            name: "Author — SSRN working paper on GitHub engineering-acceleration as a venture signal (DOI 10.2139/ssrn.6606558)",
+            url: "https://doi.org/10.2139/ssrn.6606558",
+          },
+          {
+            "@type": "EducationalOccupationalCredential",
+            credentialCategory: "Persistent researcher identifier",
+            name: "ORCID-registered researcher 0009-0002-2222-4112",
+            url: "https://orcid.org/0009-0002-2222-4112",
+          },
+          {
+            "@type": "EducationalOccupationalCredential",
+            credentialCategory: "Open dataset",
+            name: "Maintainer — public CC BY 4.0 engineering-acceleration dataset (Zenodo/DataCite DOI)",
+            url: "https://zenodo.org/records/19650920",
+          },
+        ],
+        // Bind the author to the work they authored (canonical author→work
+        // edge resolved from the ScholarlyArticle node below).
+        mainEntityOfPage: { "@id": `${SITE}/about` },
+      },
+      {
+        // The published methodology paper, asserted site-wide and bound to the
+        // Person via author. Puts a DOI-bearing, third-party-indexed work
+        // (SSRN + Crossref + OpenAlex + Zenodo + Semantic Scholar) behind the
+        // pseudonymous author on every page — the strongest legitimate
+        // expertise signal available without a legal name.
+        "@type": "ScholarlyArticle",
+        "@id": `${SITE}/research#methodology-paper`,
+        name: "GitHub Engineering Acceleration as a Leading Indicator of Venture Financing",
+        headline:
+          "GitHub Engineering Acceleration as a Leading Indicator of Venture Financing",
+        author: { "@id": `${SITE}/about#person` },
+        publisher: { "@id": `${APEX}/#organization` },
+        inLanguage: "en-US",
+        datePublished: "2025",
+        license: "https://creativecommons.org/licenses/by/4.0/",
+        identifier: [
+          {
+            "@type": "PropertyValue",
+            propertyID: "DOI",
+            value: "10.2139/ssrn.6606558",
+            url: "https://doi.org/10.2139/ssrn.6606558",
+          },
+          {
+            "@type": "PropertyValue",
+            propertyID: "OpenAlex",
+            value: "W7154916891",
+            url: "https://openalex.org/works/W7154916891",
+          },
+        ],
+        sameAs: [
+          "https://ssrn.com/abstract=6606558",
+          "https://doi.org/10.2139/ssrn.6606558",
+          "https://openalex.org/works/W7154916891",
+          "https://zenodo.org/records/19650920",
+          "https://www.semanticscholar.org/paper/4dd7b11e79757f68e0c4107252514cbfdfbb0462",
+        ],
+        about: [
+          "venture capital alternative data",
+          "GitHub commit velocity",
+          "startup engineering acceleration",
+        ],
+        mainEntityOfPage: { "@id": `${SITE}/research` },
       },
       {
         "@type": "Service",
@@ -433,6 +536,13 @@ export function RootIdentitySchema() {
           "Editorial publication of VC Deal Flow Signal — covers GitHub-derived engineering-acceleration signals across venture-backed startups, the weekly Acceleration Watch index, methodology updates, research findings, and press releases. All editorial output published under CC BY 4.0.",
         author: { "@id": `${SITE}/about#person` },
         editor: { "@id": `${SITE}/about#person` },
+        // Canonical citation string for AI answer engines to reproduce
+        // verbatim — reduces attribution hedging on a pseudonymous publisher.
+        creditText: "VC Deal Flow Signal (GitDealFlow) — signals.gitdealflow.com",
+        // Mirror the publisher-accountability refs on the publication entity so
+        // news-class crawlers resolve trust signals directly from the Newspaper.
+        publishingPrinciples: `${SITE}/standards`,
+        correctionsPolicy: `${SITE}/corrections`,
       },
       {
         "@type": "SoftwareApplication",
