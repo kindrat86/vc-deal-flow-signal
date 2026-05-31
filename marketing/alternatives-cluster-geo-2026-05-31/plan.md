@@ -42,16 +42,24 @@ Track 1, now with the exact surfaces named and a way to measure success.
 
 ## Target surfaces, tiered by (yield ÷ effort)
 
-### Tier A — self-serve directories (no gatekeeper, do first, this week)
-Crowd/Wiki-style; we can list ourselves. AI engines cite them heavily for
-"alternatives" queries because they're structured comparison data.
+### Tier A — self-serve directories — ⚠️ CORE ONES ALREADY LIVE (verified 2026-05-31)
 
-| Surface | Why | Asset | Mechanic |
-|---|---|---|---|
-| **AlternativeTo.net** | Canonical "alternatives to X" graph; cited by ChatGPT/Perplexity for alt queries | `assets/alternativeto-listing.md` | Submit as alternative to Crunchbase, PitchBook, Harmonic, Tracxn, Dealroom, CB Insights. Free account. |
-| **SaaSHub** | "X alternatives" pages rank + get AI-pulled | reuse listing copy | Submit product + tag as alt to the 6 above |
-| **Product Hunt → Alternatives tab** | Existing launch can carry an alternatives tab; high DR | reuse | Add "alternatives" on the listing |
-| **SourceForge/Slashdot "compare"** | Comparison graph, do-follow | reuse | Free vendor listing |
+**Do NOT resubmit** AlternativeTo or SaaSHub — they've been live since 2026-05-22/24
+(see memory: `project_alternativeto.md`, `project_saashub.md`, `reference_skip_list.md`).
+Per the standing division of labor, every directory submission is behind a login gate →
+**the user submits; the agent only drafts.** So Tier A reduces to *incremental* moves on
+the listings that already exist, plus the two not-yet-done directories.
+
+| Surface | Status | Incremental action (USER — login-gated) |
+|---|---|---|
+| **AlternativeTo.net** | ✅ LIVE (alt to Crunchbase, PitchBook, CB Insights, Harmonic, Tracxn) | (a) **add Dealroom + Affinity** as alt-to mappings (currently missing); (b) **get upvotes** — listing has 0 likes so it doesn't rank; (c) add screenshots. |
+| **SaaSHub** | ✅ LIVE (alt to Crunchbase, PitchBook, Harmonic, Tracxn, CB Insights) | add product video + screenshots for "featured" review; add Dealroom + Affinity tags. |
+| **Product Hunt** | ✅ Launched 2026-05-18 | ensure the listing's "Alternatives" tab maps the 6 competitors. |
+| **SourceForge "Compare"** | ⬜ NOT done | free vendor listing + comparison rows vs Crunchbase/PitchBook. New, do-follow. |
+| **Slashdot (Business Software)** | ⬜ NOT done | mirrors SourceForge graph; same listing. |
+| ~~G2 / Capterra~~ | ❌ abandoned | require business verification (vendor email + phone) — skip. |
+
+Full dedup'd, ready-to-act checklist with copy: **`assets/directory-actions.md`**.
 
 ### Tier B — listicle inclusion outreach (1 email each, highest authority yield)
 Get added to the roundups the probe caught the engines citing. One concise pitch each;
@@ -104,15 +112,20 @@ Widen the read once live: add `alternatives-pitchbook` + `alternatives-free-gith
 
 ---
 
-## This week's concrete checklist (operator)
+## This week's concrete checklist (operator) — DEDUP'D against what's already live
 
-- [ ] AlternativeTo account → submit VC Deal Flow Signal as alternative to Crunchbase,
-      PitchBook, Harmonic, Tracxn, Dealroom, CB Insights (`assets/alternativeto-listing.md`).
-- [ ] Same listing on SaaSHub + SourceForge compare.
-- [ ] Send the 4 listicle-inclusion emails (`assets/listicle-outreach-email.md`).
+- [ ] **AlternativeTo** (existing listing, login `data-nerd-gdf`): add **Dealroom + Affinity**
+      as alt-to mappings; get a handful of **upvotes** (0 today → not ranking). Do NOT create a new listing.
+- [ ] **SourceForge + Slashdot** "Compare" — the two directories NOT yet done. New do-follow
+      listings (`assets/directory-actions.md` has copy).
+- [ ] **SaaSHub** (existing): add screenshots/video for "featured" review; add Dealroom/Affinity tags.
+- [ ] Send the listicle-inclusion emails (`assets/listicle-outreach-email.md`) — the real authority lever.
 - [ ] Push awesome-list branches; ping operator for the cross-fork PRs.
 - [ ] (Optional, separate PR) add the roundup-shaped `/alternatives` hub table.
-- [ ] Re-run probe in 2 weeks (manual ingest, or automated once the key is refreshed).
+- [ ] Re-run probe in 2 weeks (auto once the Anthropic key is refreshed; else manual ingest).
+
+> Note: `assets/alternativeto-listing.md` copy is retained as reference for the
+> incremental edits, **not** for a fresh submission (the listing already exists).
 
 ## Blocker logged
 Automated probe provider (Anthropic) is down: `ANTHROPIC_API_KEY` in `tools/.env` is a
