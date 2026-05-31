@@ -1,6 +1,23 @@
 # Alternatives-Cluster GEO Campaign — Execution Plan
 **Created 2026-05-31 · Sub-campaign of the Off-Page Authority Program · Owner: operator**
 
+> ## ⚠️ RETARGETED 2026-05-31 PM — read this first
+> The original framing below (written off the You.com baseline) said the whole
+> "alternatives" cluster is 0%. A second engine (Anthropic claude-sonnet-4-5, n=36)
+> **corrected that.** Per-query truth across both engines:
+>
+> | Query | You.com | Anthropic |
+> |---|---|---|
+> | `alternatives-harmonic` | — | **67% / 67%** ✅ already winning |
+> | `alternatives-crunchbase` | 0% / 0% | **0% / 0%** 🔴 the one real gap |
+>
+> **The gap is the "Crunchbase alternative" framing specifically — not the cluster.**
+> All execution has moved to `assets/directory-actions.md` and the **variant CB** email
+> in `assets/listicle-outreach-email.md`, both retargeted to that single query. The
+> sections below are kept for context but the per-competitor target list is superseded by
+> `directory-actions.md`. (Also: do NOT chase `use-case-trending` — 0% on Anthropic is a
+> freshness limit, not authority.)
+
 ## Why this campaign exists (the data, not a hunch)
 
 The GEO citation probe (`monitoring/geo-citation-probe.py`) measured a hard gap.
