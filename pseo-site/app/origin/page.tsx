@@ -165,10 +165,13 @@ export default function OriginPage() {
           </p>
           <p className="text-gray-300 text-base leading-relaxed">
             For ten years that worked, kind of. I got into a few good rounds. I
-            missed dozens. I told myself the misses were because I lived in
-            Athens, not San Francisco; because I didn&rsquo;t go to enough
-            dinners; because my network wasn&rsquo;t senior enough. The
-            obvious explanations.
+            missed dozens. And here&rsquo;s the part I don&rsquo;t dress up:
+            I&rsquo;m useless in a room. I&rsquo;d rather read a commit history
+            than work a conference. So I told myself the misses were geography
+            (Athens, not San Francisco), or not enough dinners, or a network
+            that wasn&rsquo;t senior enough. The obvious explanations, and the
+            flattering ones, because every one of them pointed outward, at the
+            room I wasn&rsquo;t in, instead of at the way I was sourcing.
           </p>
           <p className="text-gray-300 text-base leading-relaxed">
             They were the wrong explanations. The real one took a small fintech

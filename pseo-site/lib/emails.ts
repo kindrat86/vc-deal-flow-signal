@@ -95,6 +95,7 @@ export const SOAP_OPERA_EMAILS = [
     html: wrap(`
 <p>Welcome. Here's the one-line version of what you just signed up for: a tool that shows you startups heating up in your sectors, before they raise or hit the press.</p>
 <p>Let me be clear up front about what this is, because people get confused: it's a tool, not a fund. I'm not a VC, I'm not competing with you for the deal. I built the system so you can see the same early signal I do — you just look, you don't crunch anything.</p>
+<p>Quick on me, because it matters for what follows: I'm an engineer who writes the occasional small angel cheque out of Athens, not a fund out of San Francisco. No partner network, no demo-day badge, and honestly I'm useless in a room — I'd rather read a commit history than work a conference. For years that meant I heard about the good companies a week too late, same as you probably do.</p>
 <p>I want to tell you why I built it, because it starts with a deal I missed.</p>
 <p>I was tracking a small fintech startup. Nothing on the surface — no press, no AngelList buzz, no warm intros circulating. But their public GitHub told a different story.</p>
 <p>In two weeks, their engineering picked up sharply. Four new contributors joined. They spun up three new infrastructure repos. The team was clearly shipping faster.</p>
