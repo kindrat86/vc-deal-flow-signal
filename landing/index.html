@@ -111,7 +111,7 @@
             "name": "What is the first thing I should do?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Browse the live signal board at signals.gitdealflow.com to see what's accelerating now. If it's useful, the Dashboard and Insider tiers go deeper; a free weekly email is there if you'd rather start light."
+              "text": "Subscribe to the free Sunday email: five startups accelerating on GitHub, each with sector, stage, and a plain-English note on why it's moving. No card. You can also browse the live signal board at signals.gitdealflow.com anytime, and the Dashboard and Insider tiers go deeper if you want history and exports later."
             }
           },
           {
@@ -523,6 +523,11 @@
           <p class="text-gray-300 text-center mt-4"><strong class="text-white">Subscribe and watch me be right or wrong, in real time.</strong></p>
         </div>
 
+        <div class="max-w-2xl mx-auto mb-6 text-center">
+          <p class="text-gray-300 leading-relaxed">The board shows everything, all at once. The <strong class="text-white">Sunday email is the read done for you</strong>: the five names that broke out this week, ranked, with the plain-English why, pushed to you &mdash; so you never have to remember to check.</p>
+          <p class="text-gray-400 mt-3">This Sunday&apos;s five are <strong class="text-white">already locked</strong>. The only way to see them is to be on the list when it sends.</p>
+        </div>
+
         <span id="signup" aria-hidden="true"></span>
         <form id="signup-form" data-source="footer" class="js-signup-form max-w-lg mx-auto">
           <div class="mobile-cta-stack flex flex-col sm:flex-row gap-3">
@@ -531,7 +536,8 @@
             <button type="submit" id="signup-btn" class="btn btn-cta btn-lg w-full sm:w-auto">Get this Sunday&apos;s 5 names <span aria-hidden="true" class="btn-arrow">&rarr;</span></button>
           </div>
         </form>
-        <p class="text-gray-400 text-sm mt-4 text-center">The next issue goes out <strong class="text-white">this Sunday</strong>. Get on the list before it sends.</p>
+        <p class="text-gray-400 text-sm mt-4 text-center">Drop your email and <strong class="text-white">check your inbox to confirm</strong> &mdash; then the five names land <strong class="text-white">this Sunday morning</strong>.</p>
+        <p class="text-gray-500 text-sm mt-2 text-center">Read every Sunday by angels, scouts, and seed funds sourcing before the crowd.</p>
         <p id="signup-msg" class="js-signup-msg text-center text-gray-500 text-sm mt-2">
           <span class="text-emerald-400">✓</span> Free forever &nbsp; <span class="text-emerald-400">✓</span> Unsubscribe in one click &nbsp; <span class="text-emerald-400">✓</span> One email every Sunday
         </p>
@@ -560,7 +566,7 @@
             <span class="text-white font-semibold text-base md:text-lg">What do I actually get?</span>
             <span class="flex-shrink-0 text-signal-500 text-2xl leading-none transition-transform group-open:rotate-45" aria-hidden="true">+</span>
           </summary>
-          <div class="px-6 pb-5 text-gray-300 leading-relaxed">The live signal board (browse what&apos;s accelerating now, filter by sector), plus an optional free weekly email with five flagged names. Dashboard and Insider tiers add deeper filters, history, and exports.</div>
+          <div class="px-6 pb-5 text-gray-300 leading-relaxed">A free email every Sunday with five startups accelerating on GitHub &mdash; each with its sector, stage, and a plain-English note on why it&apos;s moving. That&apos;s the whole free offer: no card, one click to unsubscribe. (There&apos;s also a live board, and deeper Dashboard and Insider tiers if you ever want history and exports &mdash; but the Sunday email is where everyone starts.)</div>
         </details>
       </div>
     </section>
@@ -596,10 +602,10 @@
   <div class="mobile-sticky-cta" aria-hidden="false">
     <div class="inner">
       <div class="meta">
-        <strong>See what’s heating up now</strong>
-        <span>Today’s accelerating startups</span>
+        <strong>Get this Sunday&apos;s 5 names</strong>
+        <span>Free · no card · 90-second read</span>
       </div>
-      <a href="https://signals.gitdealflow.com" class="btn btn-cta btn-sm">Open</a>
+      <a href="#signup" onclick="if(window.posthog)posthog.capture('repeat_cta_clicked',{placement:'sticky_mobile'})" class="btn btn-cta btn-sm">Get it free</a>
     </div>
   </div>
 
