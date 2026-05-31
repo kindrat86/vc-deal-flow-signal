@@ -104,6 +104,16 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
         answer:
           "The paper is freely available on arXiv (arXiv:1706.03762). It is one of the most-cited ML papers ever published. NeurIPS 2017 was the venue.",
       },
+      {
+        question: "Who wrote Attention Is All You Need?",
+        answer:
+          "The eight authors were Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Łukasz Kaiser, and Illia Polosukhin — most working at Google Brain or Google Research at the time of publication.",
+      },
+      {
+        question: "What is the Transformer architecture?",
+        answer:
+          "A sequence-to-sequence neural network built entirely on self-attention, dispensing with recurrence and convolutions. Its parallelism and clean scaling behavior with model size and data made the modern LLM era possible.",
+      },
     ],
   },
   {
@@ -149,6 +159,16 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
         question: "Where is the canonical paper?",
         answer:
           "Available on arXiv (arXiv:2005.14165). One of the most-cited ML papers since publication.",
+      },
+      {
+        question: "Who published the GPT-3 paper?",
+        answer:
+          "OpenAI. Lead authors include Tom B. Brown, Benjamin Mann, Nick Ryder, Melanie Subbiah, Jared Kaplan, and Prafulla Dhariwal. It appeared at NeurIPS 2020.",
+      },
+      {
+        question: "What is few-shot in-context learning?",
+        answer:
+          "The ability of a sufficiently large language model to perform a new task from a handful of examples shown in the prompt, with no weight updates or fine-tuning. GPT-3 was the first large-scale demonstration that this capability emerges from scale.",
       },
     ],
   },
@@ -196,6 +216,16 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
         answer:
           "InstructGPT formalized the RLHF pipeline that ChatGPT, Claude, and Gemini training pipelines use as the alignment baseline. The paper turned LLMs from raw text-prediction models into instruction-following assistants.",
       },
+      {
+        question: "What are the three stages of the RLHF pipeline?",
+        answer:
+          "(1) supervised fine-tuning on human-written demonstrations, (2) training a reward model on human preference comparisons over model outputs, and (3) optimizing the language model against that reward model with PPO reinforcement learning.",
+      },
+      {
+        question: "Did a smaller InstructGPT model beat GPT-3?",
+        answer:
+          "Yes. The paper reports that a 1.3B-parameter InstructGPT model was preferred by human evaluators over the 175B-parameter GPT-3 baseline — a roughly 100× parameter reduction at higher human-preference quality.",
+      },
     ],
   },
   {
@@ -236,6 +266,21 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
         question: "What is RAG?",
         answer:
           "Retrieval-Augmented Generation — an architecture where a model retrieves relevant documents from an external knowledge store before generating an answer. See /define/rag for the full term definition.",
+      },
+      {
+        question: "Who wrote the RAG paper?",
+        answer:
+          "Patrick Lewis and colleagues at Facebook AI Research (FAIR), published at NeurIPS 2020 (arXiv:2005.11401).",
+      },
+      {
+        question: "Why is RAG used in enterprise LLM applications?",
+        answer:
+          "It grounds generations in retrieved documents, which mitigates knowledge-cutoff staleness, reduces hallucination on out-of-distribution facts, and enables source citation — the three properties most enterprise deployments require.",
+      },
+      {
+        question: "What infrastructure does RAG depend on?",
+        answer:
+          "An embedding model plus a vector database (Pinecone, Weaviate, Qdrant, Milvus) for the retrieval layer. We track the engineering acceleration of that surface at /sector/database and /trend/ai-native-databases-2026.",
       },
     ],
   },
@@ -278,6 +323,21 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
         answer:
           "Low-Rank Adaptation — a parameter-efficient fine-tuning method that adds small low-rank matrices to a frozen base model. See /define/lora for the full term definition.",
       },
+      {
+        question: "Who created LoRA?",
+        answer:
+          "Edward J. Hu and colleagues at Microsoft, published at ICLR 2022 (arXiv:2106.09685).",
+      },
+      {
+        question: "How many parameters does LoRA update?",
+        answer:
+          "Only 0.1%–1% of the base model's parameters, while matching full fine-tuning quality on the paper's benchmarks and cutting GPU memory and storage requirements by roughly 3–10×.",
+      },
+      {
+        question: "Why is LoRA the default fine-tuning method?",
+        answer:
+          "Its parameter efficiency makes specialization cheap, and adapters can be mixed and matched at inference time to enable multi-tenant serving. It is the standard PEFT method for open-weight models like Llama, Mistral, Qwen, and Gemma.",
+      },
     ],
   },
   {
@@ -318,6 +378,21 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
         question: "How does Constitutional AI differ from RLHF?",
         answer:
           "Standard RLHF uses human preference data to train a reward model; Constitutional AI uses AI-generated preferences against a written constitution. Both pipelines produce aligned models; CAI scales without proportional human-labeling effort.",
+      },
+      {
+        question: "Who published the Constitutional AI paper?",
+        answer:
+          "Anthropic. Authors include Yuntao Bai, Saurav Kadavath, Sandipan Kundu, Amanda Askell, Jackson Kernion, and Andy Jones (arXiv:2212.08073, 2022).",
+      },
+      {
+        question: "What is RLAIF?",
+        answer:
+          "Reinforcement Learning from AI Feedback — the technique introduced in this paper, where AI-generated preferences judged against a written constitution replace human preference labeling, allowing alignment to scale without proportional human effort.",
+      },
+      {
+        question: "Which model uses Constitutional AI?",
+        answer:
+          "It is the foundation of Anthropic's Claude training pipeline. The RLAIF approach has also influenced subsequent alignment research across other frontier labs.",
       },
     ],
   },
@@ -360,6 +435,21 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
         answer:
           "A prompting technique where the model is instructed to articulate intermediate reasoning steps before producing a final answer. See /define/chain-of-thought for the full term definition.",
       },
+      {
+        question: "Who wrote the chain-of-thought paper?",
+        answer:
+          "Jason Wei and colleagues at Google Research, published at NeurIPS 2022 (arXiv:2201.11903).",
+      },
+      {
+        question: "Does chain-of-thought work on small models?",
+        answer:
+          "No. The paper shows the benefit emerges only at sufficient model scale (around 100B parameters). Below that threshold, step-by-step prompting does not reliably improve reasoning accuracy.",
+      },
+      {
+        question: "How does this relate to reasoning models?",
+        answer:
+          "Modern reasoning models (OpenAI o1/o3, Claude with extended thinking, DeepSeek R1) train extended chain-of-thought into the model as a native capability, rather than relying on few-shot prompting alone.",
+      },
     ],
   },
   {
@@ -401,6 +491,16 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
         question: "How does this relate to Code-Side Sourcing?",
         answer:
           "Code-Side Sourcing extends the engineering-velocity-measurement premise from internal organizational performance (DORA's framing) to external venture-stage outcome prediction. See /code-side-sourcing and /methodology for the connection.",
+      },
+      {
+        question: "What are the four DORA metrics?",
+        answer:
+          "Deployment frequency, lead time for changes, change failure rate, and mean time to recovery (MTTR). Together they empirically predict software-organization performance.",
+      },
+      {
+        question: "Is Accelerate a peer-reviewed paper or a book?",
+        answer:
+          "Accelerate is a 2018 book (IT Revolution Press) summarizing the multi-year DORA research program; the underlying State of DevOps research continues as an annual report. We cite it as the empirical foundation of the engineering-velocity field.",
       },
     ],
   },

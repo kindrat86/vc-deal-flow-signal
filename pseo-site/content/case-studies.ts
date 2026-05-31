@@ -150,6 +150,23 @@ export const CASE_STUDIES: CaseStudy[] = [
       "Per-company /signal pages should always be cross-referenced against /sector and /trend pages before drawing conclusions.",
       "The /showdown side-by-side surface is the highest-leverage page for shortlist construction.",
     ],
+    extraFaqs: [
+      {
+        question: "How long did it take to build the acquisition shortlist?",
+        answer:
+          "In this composite scenario, the Corp Dev director moved from sector-level scouting to a 4-target shortlist in about 3 days, presenting to leadership on day 4 — inside a 90-day window before competitive bidding hardened pricing.",
+      },
+      {
+        question: "Which pages does Corp Dev use to build an acquisition shortlist?",
+        answer:
+          "The workflow runs /sector/[slug] for category framing, /signal/[slug] for per-company engineering momentum, /showdown/[a]-vs-[b] for side-by-side comparison, /trend/[slug] to validate category leadership, and /city/[slug] to filter for integration constraints.",
+      },
+      {
+        question: "Does engineering-signal data replace strategic-fit analysis?",
+        answer:
+          "No. It accelerates the shortlist phase but is paired with the acquirer's own M&A pattern (see /acquirer/[platform]). Strategic fit, integration cost, and approach order are still assessed separately.",
+      },
+    ],
   }),
   build({
     slug: "pe-operating-partner-portfolio-benchmark",
@@ -200,6 +217,23 @@ export const CASE_STUDIES: CaseStudy[] = [
       "Cross-portfolio expertise sharing is one of the highest-ROI PE Operating Partner moves — engineering signals make the case for which connections to broker.",
       "The /trend leaderboards are essential context — peer-relative positioning matters more than absolute engineering velocity numbers.",
     ],
+    extraFaqs: [
+      {
+        question: "How does a PE Operating Partner benchmark portfolio engineering velocity?",
+        answer:
+          "By comparing a portfolio company's /signal page against its closest public peers in the relevant /sector hub, positioning it on the category /trend leaderboard, then acting via cross-portfolio expertise sharing rather than waiting for a board escalation.",
+      },
+      {
+        question: "What was the outcome of the benchmarking in this scenario?",
+        answer:
+          "The portfolio company shipped its first AI-native feature (vector search) within 6 weeks after a cross-portfolio CTO call, and the Operating Partner preempted a potential investment-committee escalation at the next quarterly review.",
+      },
+      {
+        question: "Why use engineering signals proactively rather than retroactively?",
+        answer:
+          "Surfacing an engineering slowdown before it becomes a board-level concern is far higher-value than diagnosing it afterward. Peer-relative /trend positioning matters more than a company's absolute velocity numbers in isolation.",
+      },
+    ],
   }),
   build({
     slug: "emerging-manager-pre-round-sourcing",
@@ -248,6 +282,23 @@ export const CASE_STUDIES: CaseStudy[] = [
       "Engineering-signal sourcing is the rare sourcing channel where being smaller and faster is the structural advantage.",
       "Outreach grounded in the engineering-acceleration data converts 5-7x baseline cold-outreach response rates.",
       "Monday-morning weekly cadence is the highest-leverage time-block for emerging-manager sourcing teams.",
+    ],
+    extraFaqs: [
+      {
+        question: "How does an emerging manager source pre-round with a two-person team?",
+        answer:
+          "A weekly Monday First Look digest review filters by sector and stage for engineering acceleration above a +50% threshold; each flagged candidate is deep-dived on /signal/[slug] before founder outreach. The cadence, not headcount, is the engine.",
+      },
+      {
+        question: "What reply rate did engineering-grounded outreach achieve?",
+        answer:
+          "In this composite, outreach referencing specific contributor-count acceleration (for example, 'your contributor count went from 8 to 23 in 4 weeks') drew roughly 35% reply rates versus a ~5% cold-warm baseline — a 5–7× lift.",
+      },
+      {
+        question: "How many investments did the thesis produce?",
+        answer:
+          "9 closes over 12 months, 7 of them first surfaced via engineering-acceleration signals; 3 of the rounds became oversubscribed after larger funds (a16z, Sequoia, Index Ventures) followed in, validating the pre-round sourcing thesis.",
+      },
     ],
   }),
   build({
@@ -298,6 +349,23 @@ export const CASE_STUDIES: CaseStudy[] = [
       "Engineering-signal data translates well to non-engineer executive audiences because the data is independently sourced and publicly verifiable.",
       "Vendor consolidation arguments benefit from objective third-party benchmark data — internal CRMs and engineering opinions alone are not enough.",
       "The /showdown side-by-side surface is especially valuable for vendor-consolidation work.",
+    ],
+    extraFaqs: [
+      {
+        question: "How can a non-engineer VP justify a vendor-consolidation decision?",
+        answer:
+          "By grounding it in independently sourced, publicly verifiable engineering-velocity data from /signal and /showdown pages. Because the data is third-party and public, non-engineer executive peers accept it without an engineering-team-level technical debate.",
+      },
+      {
+        question: "What was the spend impact in this scenario?",
+        answer:
+          "Consolidating 4 observability vendors to 2 (Datadog plus Sentry) produced about $1.2M in annual savings — a 27% platform-spend reduction that held up at the following quarterly review without challenge.",
+      },
+      {
+        question: "Which page is most useful for vendor consolidation?",
+        answer:
+          "The /showdown side-by-side surface, which exposes engineering-organization-shape differences — for example Datadog's sustained breadth across 300+ public repos versus Honeycomb's deeper focus on a narrower trace-exploration surface.",
+      },
     ],
   }),
   build({
@@ -352,6 +420,23 @@ export const CASE_STUDIES: CaseStudy[] = [
       "Competitive-landscape slides grounded in publicly observable engineering data are far more credible than self-asserted 'we're ahead' claims.",
       "Investor target lists built from public fund-thesis data convert at meaningfully higher rates than untargeted outreach.",
     ],
+    extraFaqs: [
+      {
+        question: "How does a founder map competitors before a Series A?",
+        answer:
+          "By positioning on the relevant /trend leaderboard, deep-diving each competitor's /signal page, and validating differentiation across axes (stage, momentum, contributor density, language bias) with /showdown pages — then lifting that framing into the deck's competitive-landscape slide.",
+      },
+      {
+        question: "How did engineering-grounded positioning affect the raise?",
+        answer:
+          "In this composite the founder closed a Series A in 11 weeks, with 6 of 7 contacted funds taking meetings (versus 1 of 11 on a prior attempt) and a final round oversubscribed by about 1.6×.",
+      },
+      {
+        question: "Why is engineering-signal data symmetric for founders?",
+        answer:
+          "The same publicly observable data an investor uses to evaluate a startup can be used by the founder to map the competitive landscape and pre-empt the 'how are you different from X' question with verifiable evidence rather than assertion.",
+      },
+    ],
   }),
   build({
     slug: "researcher-empirical-methodology-citation",
@@ -404,6 +489,23 @@ export const CASE_STUDIES: CaseStudy[] = [
       "Researchers strongly prefer DOI-backed archive citations (Zenodo) for long-term stability over commercial-platform-only URLs.",
       "Programmatic API access plus a clean MCP server enables LLM-augmented research workflows that accelerate replication studies.",
     ],
+    extraFaqs: [
+      {
+        question: "Is the dataset citable for academic work?",
+        answer:
+          "Yes. The corpus is published under CC BY 4.0 with a Zenodo DOI (10.5281/zenodo.19650920) and an accompanying SSRN preprint. BibTeX, APA, and Chicago citation formats are available at /citation-guide.",
+      },
+      {
+        question: "How can researchers access the data programmatically?",
+        answer:
+          "Via the /dataset endpoint (JSON, JSONL, CSV), the /api/v1 endpoints documented at /developers and /api/openapi.json, and a public read-only MCP server for LLM-augmented research workflows.",
+      },
+      {
+        question: "What did the replication in this scenario find?",
+        answer:
+          "An independent random sample of 200 venture-backed startups confirmed that the 3–6-week engineering-acceleration leading-indicator window held in a different sub-sample — which became one of the paper's headline contributions.",
+      },
+    ],
   }),
   build({
     slug: "journalist-trend-story-grounding",
@@ -453,6 +555,23 @@ export const CASE_STUDIES: CaseStudy[] = [
       "Independent, citable, public-data-sourced engineering data is uniquely valuable to journalism because it bypasses the PR-coordination cycle.",
       "Per-company /signal pages should be the citation target — they have the most direct evidence on the engineering-acceleration claim.",
       "Methodology and SSRN-paper citations elevate trade-press stories to the level of grounded research-backed reporting.",
+    ],
+    extraFaqs: [
+      {
+        question: "How can a journalist ground a sector story without PR coordination?",
+        answer:
+          "By citing publicly verifiable /signal and /trend pages and linking /methodology in the footnotes. Every claim traces to an independent public GitHub source, which bypasses the PR-coordination cycle that softens conventional sector coverage.",
+      },
+      {
+        question: "How many citations did the story use in this scenario?",
+        answer:
+          "The published feature carried 14 inline citations to VC Deal Flow Signal URLs and 3 deep-links to /signal pages, and drew zero correction requests from the companies named.",
+      },
+      {
+        question: "Which page is the right citation target?",
+        answer:
+          "Per-company /signal pages, which carry the most direct evidence on the engineering-acceleration claim. Linking /methodology and the SSRN paper adds the research-backed credibility that elevates the reporting.",
+      },
     ],
   }),
   build({
@@ -504,6 +623,23 @@ export const CASE_STUDIES: CaseStudy[] = [
       "Engineering-signal data is uniquely useful in board-level strategy reviews because the data is independently sourced and translates well to non-engineer executive audiences.",
       "Year-in-review and trend-leaderboard pages provide the editorial context that grounds M&A capacity allocation arguments.",
       "Peer-acquirer benchmarking via /acquirer/[competitor] pages is one of the highest-leverage moves for Corp Dev strategy.",
+    ],
+    extraFaqs: [
+      {
+        question: "How does Corp Dev prepare a board sector-strategy review?",
+        answer:
+          "Scan all tracked sectors at /sector, contextualize with /year-in-review, deep-dive the top sectors' /trend leaderboards, and benchmark M&A pace against peers via /acquirer/[competitor] pages before forming a forward-looking recommendation.",
+      },
+      {
+        question: "What did the board approve in this scenario?",
+        answer:
+          "The recommended allocation of $1.8B of $3B M&A capacity toward AI infrastructure and agentic AI over 12 months. Within 6 months the company closed 3 acquisitions, all surfaced through the signal-grounded scanning process.",
+      },
+      {
+        question: "Why does engineering-signal data work for board audiences?",
+        answer:
+          "It is independently sourced and publicly verifiable, so it translates cleanly to non-engineer executives and directors. /year-in-review and /trend pages supply the editorial context that grounds capacity-allocation arguments.",
+      },
     ],
   }),
 ];
