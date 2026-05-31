@@ -18,6 +18,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { YouTubePoster } from "@/components/YouTubePoster";
 import {
   videos,
   getVideoBySlug,
@@ -261,13 +262,11 @@ export default async function WatchPage({
           className={`${aspectClass} w-full overflow-hidden rounded-xl bg-black border border-slate-800 shadow-2xl`}
         >
           {v.youtubeId ? (
-            <iframe
+            <YouTubePoster
+              thumbnailMaxUrl={v.thumbnailMaxUrl}
+              thumbnailUrl={v.thumbnailUrl}
+              watchUrl={publicUrl(v)}
               title={v.title}
-              src={embedUrl(v)}
-              allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture; web-share"
-              allowFullScreen
-              loading="lazy"
-              className="w-full h-full border-0"
             />
           ) : v.contentUrl ? (
             <video

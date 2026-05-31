@@ -23,6 +23,7 @@ import {
   publicUrl,
   type SiteVideo,
 } from "@/content/videos";
+import { YouTubePoster } from "@/components/YouTubePoster";
 
 const SITE = "https://signals.gitdealflow.com";
 const APEX = "https://gitdealflow.com";
@@ -123,13 +124,11 @@ export function VideoEmbedBlock({
         className={`${aspectClass} overflow-hidden rounded-xl bg-black border border-slate-800 shadow-2xl`}
       >
         {v.youtubeId ? (
-          <iframe
+          <YouTubePoster
+            thumbnailMaxUrl={v.thumbnailMaxUrl}
+            thumbnailUrl={v.thumbnailUrl}
+            watchUrl={publicUrl(v)}
             title={v.title}
-            src={embedUrl(v)}
-            allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture; web-share"
-            allowFullScreen
-            loading="lazy"
-            className="w-full h-full border-0"
           />
         ) : v.contentUrl ? (
           <video
