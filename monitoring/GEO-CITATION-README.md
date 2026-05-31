@@ -1,8 +1,8 @@
 # GEO Citation-Share Tracking
 
 Closes the one open gap in our GEO posture: on-page GEO (llms.txt, corpus feeds,
-MCP / A2A / NLWeb, schema) is maxed, but **GEO success is downstream and was
-unverifiable from our side.** This harness instruments it — so "are answer engines
+MCP / A2A / NLWeb, schema) is maxed, but GEO *success* is downstream and was
+unverifiable from our side. This harness instruments it — so "are answer engines
 actually citing us?" becomes a tracked number with a trend, not a guess.
 
 ## Files
@@ -55,21 +55,35 @@ Each is rolled up overall, **by intent cluster**, and **by query**.
 
 ### What the baseline tells us to do next
 1. **Attack the `alternatives` cluster** — highest commercial intent, 0% citation.
-   Our `/alternatives/crunchbase`, `/alternatives/harmonic-ai`, `/alternatives/pitchbook`
-   pages exist but aren't being pulled. Likely off-page authority + listicle
-   placement (VC Beast, vcbeast.com-style roundups) rather than more on-page schema.
+   For "X alternatives" queries, answer engines cite third-party *roundups*, not
+   first-party comparison pages, so the lever is off-page placement. Campaign:
+   `marketing/alternatives-cluster-geo-2026-05-31/`.
 2. **Stabilize `discovery`** — the flip-flop means we're on the bubble; a little more
    authority should convert it to a reliable cite.
 3. Keep `methodology` + `agent-infra` defended (they're at ceiling).
 
-This reframes the audit's −4: GEO is now **instrumented**, and the data points the
-next unit of work (on-page + off-page) at the `alternatives` cluster specifically.
-
 ## Install the weekly job
 
+**Status: INSTALLED 2026-05-31** (`launchctl list | grep geo-citation` → registered).
+
+The job runs from a **stable runner dir** (`~/Library/Application Support/gitdealflow-geo/`),
+not the git checkout — so it survives worktree cleanup and doesn't depend on which
+branch the main checkout is parked on. To (re)install or update after editing the probe:
+
 ```bash
+RUN="$HOME/Library/Application Support/gitdealflow-geo"
+mkdir -p "$RUN"
+cp monitoring/geo-citation-probe.py monitoring/geo-queries.json \
+   monitoring/geo-baseline-2026-05-31.json "$RUN/"
 cp monitoring/com.gitdealflow.geo-citation.plist ~/Library/LaunchAgents/
-launchctl load ~/Library/LaunchAgents/com.gitdealflow.geo-citation.plist
+launchctl unload ~/Library/LaunchAgents/com.gitdealflow.geo-citation.plist 2>/dev/null
+launchctl load   ~/Library/LaunchAgents/com.gitdealflow.geo-citation.plist
 ```
 
+Schedule: Mondays 10:00 local (after the Monday data refresh), `--samples 3`.
 Runs locally (not deployed to Vercel — consumes the Anthropic API, no secrets shipped).
+
+> ⚠️ The scheduled run will **fail-fast** until `ANTHROPIC_API_KEY` in `tools/.env`
+> is refreshed (the current value is a 23-char truncated placeholder → 401). The
+> harness exits cleanly on auth failure without corrupting the log. Until then,
+> refresh the baseline manually via `--provider manual --ingest <dump>`.
