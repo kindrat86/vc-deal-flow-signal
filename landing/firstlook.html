@@ -69,18 +69,18 @@
       <div class="mobile-hero-wrap relative max-w-4xl mx-auto px-4 sm:px-6 py-16 md:py-28 text-center">
         <p class="text-brand-500 font-semibold text-sm uppercase tracking-wider mb-4">Lowest-friction paid step</p>
         <h1 class="mobile-hero-title text-4xl md:text-6xl font-extrabold leading-tight mb-6">One sector. One deep dive. One day.</h1>
-        <p class="mobile-hero-copy text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8">Use First Look when you want to test the signal on one thesis before talking yourself into a subscription.</p>
+        <p class="mobile-hero-copy text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8">Use First Look when you want to test the signal on one thesis — a ranked shortlist for one sector, in plain English, without borrowing an engineer's afternoon — before you talk yourself into a subscription.</p>
         <div class="inline-flex items-center gap-2 rounded-full border border-signal-500/30 bg-signal-500/10 px-4 py-2 text-sm text-signal-300">
           <span>Price:</span>
           <strong class="text-white">€7 once</strong>
         </div>
       </div>
     </section>
-    <section class="bg-dark-800 py-6 border-y border-gray-800" data-countdown-root data-countdown-key="gdf_timer_firstlook">
+    <section class="bg-dark-800 py-6 border-y border-gray-800">
       <div class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 text-center">
-        <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-2">Urgency timer</p>
-        <p class="text-white font-semibold text-lg">Your First Look session closes in <span data-countdown-output class="text-signal-400">05:00</span></p>
-        <p class="text-gray-500 text-sm mt-1">You have five minutes to keep this 24-hour turnaround window attached to this session.</p>
+        <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-2">The honest version of urgency</p>
+        <p class="text-white font-semibold text-lg">€7 once. Your dive lands within 24 hours.</p>
+        <p class="text-gray-500 text-sm mt-1">I won't fake a countdown at you. The only clock that matters is your own: if the thesis is live this week, that's when a 24-hour answer is worth most. And if you upgrade to Dashboard within 14 days, the €7 comes off — so a "no" today costs you nothing.</p>
       </div>
     </section>
     <section class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 py-12">
@@ -90,11 +90,11 @@
             <source srcset="/data-nerd.webp" type="image/webp">
             <img src="/data-nerd.png" alt="The Data Nerd" width="64" height="64" loading="lazy" decoding="async" class="w-40 h-40 sm:w-32 sm:h-32 rounded-full ring-2 ring-slate-600 shadow-2xl mx-auto sm:mx-0">
           </picture>
-          <p class="text-sky-300 text-xs font-semibold uppercase tracking-wider">Story</p>
+          <p class="text-sky-300 text-xs font-semibold uppercase tracking-wider">Why I built this — The Data Nerd</p>
         </div>
-        <h2 class="text-3xl font-bold mb-4">You have probably had a sector thesis sit in your notes for weeks.</h2>
-        <p class="text-gray-300 text-lg leading-relaxed mb-4">You save a market map, bookmark three companies, tell yourself you will come back on Sunday, and then the week takes over. First Look exists for that exact moment.</p>
-        <p class="text-gray-300 text-lg leading-relaxed">Instead of carrying that question around for another week, you get a sharper answer while the question still has heat — and you get to feel the relief of finally knowing where to look next.</p>
+        <h2 class="text-3xl font-bold mb-4">You've had a sector thesis sitting in your notes for weeks. I built First Look for exactly that.</h2>
+        <p class="text-gray-300 text-lg leading-relaxed mb-4">You save a market map, bookmark three companies, tell yourself you'll come back on Sunday — and then the week takes over. I know the feeling from the other side: I'm an engineer, not a dealmaker, and honestly I'm useless in a room. I'd rather read a commit history than work a conference. So the only way I ever learned who was accelerating was to read the repos myself.</p>
+        <p class="text-gray-300 text-lg leading-relaxed">That's the whole deal here. You don't read code — that's my job. Give me one sector and I'll spend the next day reading the public engineering activity across it, then hand you back a ranked shortlist in plain English — the kind of read you can take into a meeting and sound early, not technical. One thesis, one clean answer, while the question still has heat.</p>
       </div>
     </section>
 
@@ -135,7 +135,7 @@
           <h2 class="text-2xl font-bold mb-4">If this already feels familiar</h2>
           <div class="space-y-4 text-gray-300 leading-relaxed">
             <p><strong class="text-white">Best fit:</strong> when you like the Sunday rhythm but want one thesis-specific test before going deeper.</p>
-            <p><strong class="text-white">Not necessary:</strong> if you are happy with the free watchlist and not yet writing checks regularly.</p>
+            <p><strong class="text-white">Not necessary:</strong> if the free watchlist is enough and you're not yet sizing up companies often enough for a missed one to sting.</p>
             <p><strong class="text-white">If you already know you need the broader field:</strong> go straight to <a href="/dashboard" class="text-brand-500 underline">Dashboard</a>.</p>
           </div>
         </div>
@@ -240,40 +240,8 @@
     });
   </script>
 
-  <script>
-    (function(){
-      const root = document.querySelector('[data-countdown-root]');
-      if (!root) return;
-      const key = root.getAttribute('data-countdown-key') || 'gdf_timer';
-      const out = root.querySelector('[data-countdown-output]');
-      const durationMs = 5 * 60 * 1000;
-      let deadline;
-      try {
-        const stored = sessionStorage.getItem(key);
-        if (stored && Number(stored) > Date.now()) {
-          deadline = Number(stored);
-        } else {
-          deadline = Date.now() + durationMs;
-          sessionStorage.setItem(key, String(deadline));
-        }
-      } catch (e) {
-        deadline = Date.now() + durationMs;
-      }
-      function pad(n){ return n < 10 ? '0' + n : String(n); }
-      function tick(){
-        const left = Math.max(0, deadline - Date.now());
-        const total = Math.floor(left / 1000);
-        const m = Math.floor(total / 60);
-        const s = total % 60;
-        if (out) out.textContent = pad(m) + ':' + pad(s);
-        if (left <= 0) {
-          try { sessionStorage.removeItem(key); } catch (e) {}
-        }
-      }
-      tick();
-      setInterval(tick, 1000);
-    })();
-  </script>
+  <!-- Honest urgency only: real 24-hour turnaround + 14-day Dashboard credit. No fake per-session countdown. -->
+
 
 </body>
 </html>

@@ -108,11 +108,11 @@
         </div>
       </div>
     </section>
-    <section class="bg-dark-800 py-6 border-y border-gray-800" data-countdown-root data-countdown-key="gdf_timer_sweep">
+    <section class="bg-dark-800 py-6 border-y border-gray-800">
       <div class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 text-center">
-        <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-2">Urgency timer</p>
-        <p class="text-white font-semibold text-lg">Your Sector Sweep window closes in <span data-countdown-output class="text-signal-400">05:00</span></p>
-        <p class="text-gray-500 text-sm mt-1">You have five minutes to keep the current custom-report session active before it resets.</p>
+        <p class="text-yellow-300 text-xs font-semibold uppercase tracking-wider mb-2">The honest version of urgency</p>
+        <p class="text-white font-semibold text-lg">€1,997 this year — and the batch holds 8 sweeps at a time.</p>
+        <p class="text-gray-500 text-sm mt-1">I won't fake a countdown at you. The real limits are the ones worth knowing: this year's rate is €1,997 (it steps to €2,997 after 2026), and each batch holds 8 sweeps — 7 of 8 are open right now. When the eighth is taken, new sweeps roll to the next batch. The clock that actually matters is your thesis: a sweep is worth most before the market catches up.</p>
       </div>
     </section>
     <section class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 py-12">
@@ -122,11 +122,11 @@
             <source srcset="/data-nerd.webp" type="image/webp">
             <img src="/data-nerd.png" alt="The Data Nerd" width="96" height="96" loading="lazy" decoding="async" class="w-40 h-40 sm:w-32 sm:h-32 rounded-full ring-2 ring-slate-600 shadow-2xl mx-auto sm:mx-0">
           </picture>
-          <p class="text-sky-300 text-xs font-semibold uppercase tracking-wider">Story</p>
+          <p class="text-sky-300 text-xs font-semibold uppercase tracking-wider">Why I built this — The Data Nerd</p>
         </div>
-        <h2 class="text-3xl font-bold mb-4">Sometimes one sector keeps nagging at you until a weekly list is no longer enough.</h2>
-        <p class="text-gray-300 text-lg leading-relaxed mb-4">You know the question. You know why it matters. What you do not have is the time to build a serious pass from scratch while everything else in your week keeps moving.</p>
-        <p class="text-gray-300 text-lg leading-relaxed">Sector Sweep is for that moment — when the question will not leave you alone, the stakes feel real, and you need an answer solid enough to act on while conviction is still worth something.</p>
+        <h2 class="text-3xl font-bold mb-4">Sometimes one sector keeps nagging at you until a weekly list isn't enough.</h2>
+        <p class="text-gray-300 text-lg leading-relaxed mb-4">You know the question. You know why it matters. What you don't have is a spare week to build a serious pass from scratch while everything else keeps moving. I do have that week — reading repos is the one thing I'm good at. I'm an engineer, not a dealmaker; I'm useless in a room and I won't sell you on a call. What I'll do is disappear into the public engineering activity across your one sector and come back with the work.</p>
+        <p class="text-gray-300 text-lg leading-relaxed">That's the deal. You bring the thesis; I bring the read. You don't touch a line of code and you don't staff an analyst — I go deep across the sector and hand back a custom, methodology-first pass in plain English, the kind you can act on while conviction is still worth something. One question, answered seriously, on the record.</p>
       </div>
     </section>
 
@@ -168,7 +168,7 @@
           <h2 class="text-2xl font-bold mb-4">If this sounds like the question you are carrying</h2>
           <div class="space-y-4 text-gray-300 leading-relaxed">
             <p><strong class="text-white">Best fit:</strong> when you have a specific sector thesis and want a serious custom pass without taking on a general recurring subscription.</p>
-            <p><strong class="text-white">Also fit:</strong> a small fund, syndicate, or operator-investor who needs one sharper cut than Dashboard or First Look provides.</p>
+            <p><strong class="text-white">Also fit:</strong> a small fund, syndicate, corp-dev team, or PE operator who needs one sharper cut — a build-vs-buy read or a sector map — than Dashboard or First Look provides.</p>
             <p><strong class="text-white">Not the first step:</strong> if you are still validating the signal itself, start with the free watchlist, First Look, or Dashboard first.</p>
           </div>
         </div>
@@ -320,40 +320,8 @@
     });
   </script>
 
-  <script>
-    (function(){
-      const root = document.querySelector('[data-countdown-root]');
-      if (!root) return;
-      const key = root.getAttribute('data-countdown-key') || 'gdf_timer';
-      const out = root.querySelector('[data-countdown-output]');
-      const durationMs = 5 * 60 * 1000;
-      let deadline;
-      try {
-        const stored = sessionStorage.getItem(key);
-        if (stored && Number(stored) > Date.now()) {
-          deadline = Number(stored);
-        } else {
-          deadline = Date.now() + durationMs;
-          sessionStorage.setItem(key, String(deadline));
-        }
-      } catch (e) {
-        deadline = Date.now() + durationMs;
-      }
-      function pad(n){ return n < 10 ? '0' + n : String(n); }
-      function tick(){
-        const left = Math.max(0, deadline - Date.now());
-        const total = Math.floor(left / 1000);
-        const m = Math.floor(total / 60);
-        const s = total % 60;
-        if (out) out.textContent = pad(m) + ':' + pad(s);
-        if (left <= 0) {
-          try { sessionStorage.removeItem(key); } catch (e) {}
-        }
-      }
-      tick();
-      setInterval(tick, 1000);
-    })();
-  </script>
+  <!-- Honest urgency only: real 8-slot batch cap + dated price step (€1,997 this year → €2,997 after 2026). No fake per-session countdown. -->
+
 
 </body>
 </html>

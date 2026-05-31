@@ -108,11 +108,11 @@
         </div>
       </div>
     </section>
-    <section class="bg-dark-800 py-6 border-y border-gray-800" data-countdown-root data-countdown-key="gdf_timer_insider">
+    <section class="bg-dark-800 py-6 border-y border-gray-800">
       <div class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 text-center">
-        <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-2">Urgency timer</p>
-        <p class="text-white font-semibold text-lg">Your Insider window closes in <span data-countdown-output class="text-signal-400">05:00</span></p>
-        <p class="text-gray-500 text-sm mt-1">You have five minutes to keep the current founding-rate session active before it resets.</p>
+        <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-2">The honest version of scarcity</p>
+        <p class="text-white font-semibold text-lg">€97/mo founding rate — and the room is capped at ~50 seats.</p>
+        <p class="text-gray-500 text-sm mt-1">No five-minute timer that resets when you refresh. The real limits are simpler: lock in before June 30 and you keep €97/mo while you stay — new members pay €197 after. And the circle is capped at ~50 active seats; when it fills, new buyers move to a waitlist. Both are real, and neither resets.</p>
       </div>
     </section>
     <section class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 py-12">
@@ -122,11 +122,11 @@
             <source srcset="/data-nerd.webp" type="image/webp">
             <img src="/data-nerd.png" alt="The Data Nerd" width="96" height="96" loading="lazy" decoding="async" class="w-40 h-40 sm:w-32 sm:h-32 rounded-full ring-2 ring-slate-600 shadow-2xl mx-auto sm:mx-0">
           </picture>
-          <p class="text-sky-300 text-xs font-semibold uppercase tracking-wider">Story</p>
+          <p class="text-sky-300 text-xs font-semibold uppercase tracking-wider">Why I built this — The Data Nerd</p>
         </div>
-        <h2 class="text-3xl font-bold mb-4">At some point the problem is not the list. It is the loneliness of making the call alone.</h2>
-        <p class="text-gray-300 text-lg leading-relaxed mb-4">You already know the signal works. What you want now is a tighter rhythm, better context, and a room where you do not have to carry the decision alone.</p>
-        <p class="text-gray-300 text-lg leading-relaxed">Insider is for when trust matters as much as information — when you want the signal surrounded by calm, serious conversation and you want to feel steadier when the decision gets real.</p>
+        <h2 class="text-3xl font-bold mb-4">At some point the problem isn't the list. It's making the call alone.</h2>
+        <p class="text-gray-300 text-lg leading-relaxed mb-4">By the time Insider makes sense, you already trust the signal. What you want now is a tighter rhythm, better context, and a room where you don't carry the decision alone. Here's my honest part of it: I'm the anonymous engineer behind the regression — I won't do video, I won't take a discovery call, and I'm useless at working a room. What I will do is show up in this one, in writing, every month.</p>
+        <p class="text-gray-300 text-lg leading-relaxed">That's the trade. You don't read code — I do that, and I translate it into plain English. You don't have to host the room — I bring the monthly read, the context, and a small circle of people making the same kind of calls you are. You stay the one who decides; I stay the one who keeps the signal honest. Insider is for when trust matters as much as information.</p>
       </div>
     </section>
 
@@ -142,7 +142,7 @@
         <div>
           <p class="text-signal-300 text-xs font-semibold uppercase tracking-wider mb-2">Urgency</p>
           <p class="text-gray-200 font-semibold">Useful only when your cadence is already real</p>
-          <p class="text-gray-500 text-sm mt-1">If you are already writing checks, waiting mostly delays the operating rhythm you actually need.</p>
+          <p class="text-gray-500 text-sm mt-1">If your deal cadence is already real, waiting mostly delays the operating rhythm you actually need.</p>
         </div>
         <div>
           <p class="text-signal-300 text-xs font-semibold uppercase tracking-wider mb-2">Pressure release</p>
@@ -167,7 +167,7 @@
         <div class="mobile-card mobile-card-pad rounded-xl border border-gray-700 bg-dark-800 p-8">
           <h2 class="text-2xl font-bold mb-4">If this sounds like the pressure you are carrying</h2>
           <div class="space-y-4 text-gray-300 leading-relaxed">
-            <p><strong class="text-white">Best fit:</strong> after you are already writing checks consistently and want an ongoing inner layer, not just a ranked list.</p>
+            <p><strong class="text-white">Best fit:</strong> after you're already sourcing and deciding on deals regularly — angel, scout, fund, corp-dev, or PE — and want an ongoing inner layer, not just a ranked list.</p>
             <p><strong class="text-white">Also fit:</strong> scouts, syndicates, and small funds who want a more collaborative operating rhythm around the signal.</p>
             <p><strong class="text-white">Not the first step:</strong> if you are still deciding whether the signal fits your thesis, start with the free watchlist or Dashboard first.</p>
           </div>
@@ -198,8 +198,8 @@
         </div>
         <div class="mobile-step-card rounded-xl border border-gray-700 bg-dark-800 p-6 text-center">
           <div class="w-14 h-14 bg-brand-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">2</div>
-          <h3 class="text-xl font-semibold mb-3">You are actively writing checks</h3>
-          <p class="text-gray-400">The free list is no longer enough because your sourcing rhythm is already real.</p>
+          <h3 class="text-xl font-semibold mb-3">Your deal cadence is already real</h3>
+          <p class="text-gray-400">The free list is no longer enough because you're sourcing, screening, or diligencing on a real rhythm — not deciding whether to start.</p>
         </div>
         <div class="mobile-step-card rounded-xl border border-gray-700 bg-dark-800 p-6 text-center">
           <div class="w-14 h-14 bg-brand-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">3</div>
@@ -303,40 +303,8 @@
     });
   </script>
 
-  <script>
-    (function(){
-      const root = document.querySelector('[data-countdown-root]');
-      if (!root) return;
-      const key = root.getAttribute('data-countdown-key') || 'gdf_timer';
-      const out = root.querySelector('[data-countdown-output]');
-      const durationMs = 5 * 60 * 1000;
-      let deadline;
-      try {
-        const stored = sessionStorage.getItem(key);
-        if (stored && Number(stored) > Date.now()) {
-          deadline = Number(stored);
-        } else {
-          deadline = Date.now() + durationMs;
-          sessionStorage.setItem(key, String(deadline));
-        }
-      } catch (e) {
-        deadline = Date.now() + durationMs;
-      }
-      function pad(n){ return n < 10 ? '0' + n : String(n); }
-      function tick(){
-        const left = Math.max(0, deadline - Date.now());
-        const total = Math.floor(left / 1000);
-        const m = Math.floor(total / 60);
-        const s = total % 60;
-        if (out) out.textContent = pad(m) + ':' + pad(s);
-        if (left <= 0) {
-          try { sessionStorage.removeItem(key); } catch (e) {}
-        }
-      }
-      tick();
-      setInterval(tick, 1000);
-    })();
-  </script>
+  <!-- Honest scarcity only: real June 30 founding-rate deadline + ~50-seat circle cap. No fake per-session countdown. -->
+
 
 </body>
 </html>
