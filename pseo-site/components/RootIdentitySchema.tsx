@@ -176,8 +176,14 @@ export function RootIdentitySchema() {
         "@id": `${APEX}/#organization`,
         // additionalType points at the Wikidata QID for "business" — gives
         // the Knowledge Graph a typed anchor distinct from generic
-        // schema:Organization. Pair with identifier[wikidata] below.
-        additionalType: "https://www.wikidata.org/wiki/Q4830453",
+        // schema:Organization. The schema.org NewsMediaOrganization type is
+        // declared alongside it so the publisher-accountability properties
+        // below (correctionsPolicy, ethicsPolicy, noBylinesPolicy, …) are
+        // interpreted against the type that formally defines them.
+        additionalType: [
+          "https://www.wikidata.org/wiki/Q4830453",
+          "https://schema.org/NewsMediaOrganization",
+        ],
         name: ORG_NAME_MULTILINGUAL,
         description: ORG_DESC_MULTILINGUAL,
         legalName: "VC Deal Flow Signal (GitDealFlow)",
@@ -276,6 +282,22 @@ export function RootIdentitySchema() {
           "startup engineering acceleration",
           "open-source contributor-growth analytics",
         ],
+        // Publisher-accountability signals (schema.org NewsMediaOrganization /
+        // Organization trust properties). These give Google's news-trust
+        // system and LLM answer engines a standards-based way to verify the
+        // publisher is policy-governed and accountable even though the founder
+        // publishes under a stable pseudonym ("The Data Nerd"). Each points at
+        // an existing on-domain policy page. noBylinesPolicy + unnamedSourcesPolicy
+        // explicitly document the pseudonymous-byline / public-GitHub-data-only
+        // posture, so retrieval engines have an authoritative statement to cite
+        // instead of hedging on attribution.
+        publishingPrinciples: `${SITE}/methodology`,
+        correctionsPolicy: `${SITE}/corrections`,
+        actionableFeedbackPolicy: `${SITE}/corrections`,
+        ownershipFundingInfo: `${SITE}/transparency`,
+        ethicsPolicy: `${SITE}/standards`,
+        unnamedSourcesPolicy: `${SITE}/data-sources`,
+        noBylinesPolicy: `${SITE}/about`,
         founder: { "@id": `${SITE}/about#person` },
       },
       {
@@ -433,6 +455,15 @@ export function RootIdentitySchema() {
           "Editorial publication of VC Deal Flow Signal — covers GitHub-derived engineering-acceleration signals across venture-backed startups, the weekly Acceleration Watch index, methodology updates, research findings, and press releases. All editorial output published under CC BY 4.0.",
         author: { "@id": `${SITE}/about#person` },
         editor: { "@id": `${SITE}/about#person` },
+        // Publisher-accountability + ready-made attribution on the editorial
+        // entity itself. creditText gives AI answer engines a canonical
+        // citation string to reproduce verbatim (reduces attribution hedging);
+        // the policy refs mirror the Organization node so news-class crawlers
+        // resolve trust signals directly from the publication.
+        creditText:
+          "VC Deal Flow Signal (GitDealFlow) — signals.gitdealflow.com",
+        publishingPrinciples: `${SITE}/methodology`,
+        correctionsPolicy: `${SITE}/corrections`,
       },
       {
         "@type": "SoftwareApplication",
