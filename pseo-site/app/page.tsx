@@ -354,57 +354,18 @@ export default function Home() {
         },
       },
       {
+        // Page-unique LIVE metrics only. These counters are contributed
+        // to the canonical SoftwareApplication entity (/#software), which
+        // <RootIdentitySchema/> already emits authoritatively on every
+        // page (carrying name, applicationCategory, the full offers list
+        // incl. Insider, featureList, Wikidata identifier, and the Glama
+        // aggregateRating). Sharing that @id merges these stats onto the
+        // canonical node instead of re-declaring a second, anonymous app
+        // entity — the old node duplicated the layout's name/offers/
+        // featureList in BOTH the ld+json tag and the RSC flight payload
+        // (~2 KB ×2) and left schema parsers with two competing apps.
         "@type": "SoftwareApplication",
-        name: "VC Deal Flow Signal",
-        applicationCategory: "BusinessApplication",
-        applicationSubCategory: "Deal Flow & Sourcing",
-        operatingSystem: "Web, MCP, Email, RSS, Telegram",
-        url: "https://gitdealflow.com",
-        description:
-          "Engineering-acceleration signal engine for venture capital deal flow. Weekly report of breakout startups ranked by GitHub commit velocity, contributor growth, and infrastructure buildouts.",
-        offers: [
-          {
-            "@type": "Offer",
-            name: "Free Signal Report",
-            price: "0",
-            priceCurrency: "EUR",
-            availability: "https://schema.org/InStock",
-            description:
-              "Weekly email with 5 breakout startups ranked by GitHub engineering acceleration. No credit card required.",
-            url: "https://gitdealflow.com/#signup",
-          },
-          {
-            "@type": "Offer",
-            name: "Dashboard (Beta)",
-            price: "9.97",
-            priceCurrency: "EUR",
-            priceValidUntil: "2026-12-31",
-            availability: "https://schema.org/InStock",
-            description:
-              "Full dashboard access: 85+ ranked startups per week, filters by sector, stage, and geography, MCP server access, CSV export.",
-            url: "https://signals.gitdealflow.com/dashboard",
-            priceSpecification: {
-              "@type": "UnitPriceSpecification",
-              price: "9.97",
-              priceCurrency: "EUR",
-              unitCode: "MON",
-              billingIncrement: 1,
-              referenceQuantity: {
-                "@type": "QuantitativeValue",
-                value: 1,
-                unitCode: "MON",
-              },
-            },
-          },
-        ],
-        featureList: [
-          "Weekly GitHub engineering acceleration signals",
-          "85+ startups ranked every Monday",
-          "20 technical sector clusters",
-          "MCP server for Claude, Cursor, Windsurf",
-          "JSON / CSV / RSS / Telegram / Email delivery",
-          "Chrome extension for Crunchbase, AngelList, PitchBook",
-        ],
+        "@id": "https://signals.gitdealflow.com/#software",
         interactionStatistic: [
           {
             "@type": "InteractionCounter",
@@ -421,15 +382,10 @@ export default function Home() {
             userInteractionCount: sectors.filter((s) => s.periods[period.slug]).length,
           },
         ],
-        provider: {
-          "@type": "Organization",
-          name: "VC Deal Flow Signal",
-          url: "https://gitdealflow.com",
-        },
       },
       {
         "@type": "Service",
-        "@id": "https://signals.gitdealflow.com#service",
+        "@id": "https://signals.gitdealflow.com/#service",
         name: "VC Deal Flow Signal — Engineering Acceleration Tracking",
         serviceType: "Venture Capital Deal Sourcing — Alternative Data",
         provider: {
