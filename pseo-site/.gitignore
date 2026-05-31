@@ -45,3 +45,9 @@ next-env.d.ts
 # small and stable enough to commit).
 /data/a11y/
 
+# Email opt-out / suppression PII — must NEVER be committed (CAN-SPAM / GDPR).
+# Opt-out state lives in Resend (source of truth) → mirrored to PocketBase
+# `subscribers`. See scripts/suppress-unsubscribes.mjs.
+/data/unsubscribed-emails.json
+/data/*-emails.json
+
