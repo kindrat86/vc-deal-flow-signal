@@ -24,14 +24,14 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title:
-    "Top 100 — the publications, communities, and orgs worth paying attention to",
+    "Top 100 — the publications, communities, and research desks worth paying attention to",
   description:
-    "100 named publications, communities, GitHub orgs, podcasts, datasets, and company pages worth watching if you care about earlier startup signal, clearer timing, and less noise.",
+    "100 named publications, communities, market-map desks, deal newsletters, research, podcasts, datasets, and company pages worth watching if you care about earlier startup signal, clearer timing, and less noise.",
   alternates: { canonical: "/target-list" },
   openGraph: {
     title: "Top 100 — the voices worth paying attention to",
     description:
-      "A practical roster of 100 publications, communities, and orgs worth watching when you care about earlier startup signal and clearer timing.",
+      "A practical roster of 100 publications, communities, and research desks worth watching when you care about earlier startup signal and clearer timing.",
     url: "https://signals.gitdealflow.com/target-list",
     type: "article",
   },
@@ -145,7 +145,7 @@ export default function Dream100Page() {
         "@id": "https://signals.gitdealflow.com/target-list",
         name: "Top 100 — the voices worth paying attention to",
         description:
-          "100 named publications, communities, GitHub orgs, podcasts, datasets, and company pages worth watching when you care about earlier startup signal, clearer timing, and less noise.",
+          "100 named publications, communities, market-map desks, deal newsletters, research, podcasts, datasets, and company pages worth watching when you care about earlier startup signal, clearer timing, and less noise.",
         speakable: {
           "@type": "SpeakableSpecification",
           cssSelector: ["h1", "h2", "[data-speakable]"],
@@ -205,7 +205,7 @@ export default function Dream100Page() {
             Top 100 · Applied · priority-ranked
           </p>
           <h1 className="text-3xl sm:text-5xl font-bold text-gray-100 leading-[1.1] tracking-tight">
-            The Top 100 — the <span className="text-sky-400">publications, communities, and orgs</span>
+            The Top 100 — the <span className="text-sky-400">publications, communities, and research desks</span>
             worth paying attention to.
           </h1>
           <p
@@ -313,8 +313,9 @@ export default function Dream100Page() {
               </dt>
               <dd className="text-gray-400 leading-relaxed text-[13px]">
                 How realistic it is for us to be present given (a) anonymity
-                rule, (b) agent-native footprint, (c) channel bans / auto-mod
-                limits. Caps low for podcasts, high for MCP.
+                rule, (b) the data-desk / market-map play (offering a
+                complementary, translated signal), (c) channel norms. Caps low
+                for podcasts and PE firms, higher for the deal-data desks.
               </dd>
             </div>
           </dl>
@@ -534,22 +535,25 @@ export default function Dream100Page() {
             above that.
           </p>
           <p className="text-gray-300 text-base leading-relaxed">
-            On the Reddit side: comment-only on{" "}
+            The weekly outreach is the{" "}
             <code className="text-sky-300 bg-slate-900 px-1 py-0.5 rounded text-xs">
-              r/venturecapital
-            </code>{" "}
-            (auto-mod removes main posts that name a product), 40-55 words,
-            Twitter-tight, no em-dashes. Hacker News is currently on{" "}
-            <code className="text-amber-300 bg-slate-900 px-1 py-0.5 rounded text-xs">
-              hold
-            </code>{" "}
-            — the account is blocked from submitting / commenting; we publish
-            here transparently rather than hide the gap.
+              engage
+            </code>
+            -tagged market-map and deal-data desks — CB Insights, PitchBook,
+            Sacra and the rest. The pitch is always the same: a complementary,
+            business-framed signal angle they don&rsquo;t already cover. Every
+            touch is translated into &ldquo;who&rsquo;s accelerating, stalling,
+            or worth a meeting&rdquo; — never raw commits, never quant jargon.
           </p>
           <p className="text-gray-300 text-base leading-relaxed">
-            Federated triple-mirror — Bluesky / Mastodon / Farcaster — runs
-            on the same Tue / Fri pulse. Each post lives at its native URL,
-            cross-quoted on Substack Notes, never astroturfed.
+            On the community side we read and contribute in plain business
+            language inside the operator and PE rooms — SaaStr, Pavilion, ACG
+            chapters, the GP / LP groups. Practitioner forums like{" "}
+            <code className="text-amber-300 bg-slate-900 px-1 py-0.5 rounded text-xs">
+              r/PrivateEquity
+            </code>{" "}
+            are read-leaning: they&rsquo;re wary of vendor self-promotion, so we
+            contribute, we don&rsquo;t broadcast.
           </p>
         </section>
 

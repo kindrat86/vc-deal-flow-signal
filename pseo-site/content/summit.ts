@@ -135,7 +135,7 @@ export const TALKS: SummitTalk[] = [
     notes: [
       "Most alternative-data products treat methodology as a trade secret. We argue the opposite. A measurement product is only as credible as the methodology behind it, and a closed methodology is a methodology no one can challenge. Closed methodology compounds error. Open methodology compounds trust.",
       "The walkthrough is concrete. Every signal definition is on /signals. Every formula is on /methodology. The regression code that produced the 21-to-47-day lead-time numbers is in the SSRN-indexed source. The supporting dataset is mirrored to Zenodo, Hugging Face, Kaggle, and Data.world — four redundant academic-grade hosts. Anyone with curiosity, a laptop, and an internet connection can reproduce the entire panel from scratch in under two hours.",
-      "The economic logic is also straightforward. Our buyers are developer-investors who write €5k–€50k checks. They don't trust marketing copy. They trust code. By publishing the regression, we let them stress-test our claims on their own data, in their own notebook, at their own pace. The buyer who can reproduce our regression is the buyer who trusts us most. The buyer who can't be bothered will use Harmonic instead — and that's fine, because we're not trying to win every buyer, we're trying to win the right buyer.",
+      "The economic logic is also straightforward. Our buyers are investors who write €5k–€50k checks and don't take claims on faith. They trust the open method over marketing copy. By publishing the methodology and the dataset, we let them — or anyone they trust — verify it, not because they'll run the regression themselves. The buyer who can see the method is open is the buyer who trusts us most. The buyer who'd rather not look will use Harmonic instead — and that's fine, because we're not trying to win every buyer, we're trying to win the right buyer.",
       "We close with the seven explicit non-claims. We do not claim causation. We do not claim universality. We do not claim the signal works in every sector. We do not claim 100 percent precision. We do not claim our sample is unbiased. We do not claim the methodology is final. We do not claim there are no false positives. Stating bounded scope improves credibility, not the reverse.",
     ],
     relatedRoutes: [
@@ -704,7 +704,7 @@ export const TALKS: SummitTalk[] = [
     abstract:
       "The summit closes with the manifesto. Seven pillars: data over networks, code over decks, public over private, methodology over personality, ladder over lock-in, free over gated, anonymity over performance. One named enemy: warm-intro roulette. One line we don't cross: putting a face on the brand.",
     takeaways: [
-      "The seven pillars of the developer-investor movement",
+      "The seven pillars of the movement",
       "Why anonymity over performance is the line we don't cross",
       "How to know if you're on the bus — three filters",
       "Where to start: today, this week, this month",

@@ -413,7 +413,7 @@ agent = client.agents.create(
     name="vc_scout",
     memory_blocks=[
         {"label": "persona", "value": "I am a VC analyst that tracks engineering acceleration across 985+ startups. I remember every startup I've seen and refine my thesis over time."},
-        {"label": "human", "value": "The user is a developer-investor writing angel checks."},
+        {"label": "human", "value": "The user is an investor or dealmaker who writes angel checks but doesn't read code."},
     ],
     tool_ids=[tool.id],
     model="openai/gpt-5.4",

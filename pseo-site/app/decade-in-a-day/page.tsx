@@ -63,7 +63,7 @@ const MODULES: Module[] = [
     title: "Dream customer — name the people, not the segment",
     question: "Who is this for, in 30 seconds?",
     content:
-      "An engineer who reads commit logs for fun and writes €5k–€50k checks on the side, 5–40 angel checks a year, more curious about codebases than about pitch decks. Three thesis axes: AI infrastructure, dev tools, technical SaaS. The disqualifier is as important as the qualifier — Series-B+ partners with six-figure data budgets are not us.",
+      "A dealmaker who evaluates companies but doesn't read code — solo angel, scout, seed fund, corp-dev, or PE operator writing €5k–€50k checks (or building an acquisition shortlist), 5–40 calls a year, who wants the engineering read translated, not raw. Three thesis axes: AI infrastructure, dev tools, technical SaaS. The disqualifier is as important as the qualifier — Series-B+ partners with six-figure data budgets are not us.",
     links: [
       { label: "/target-list — the top 100 voices the buyer reads", href: "/target-list" },
       { label: "/funnels — every entry point sized to the buyer", href: "/funnels" },

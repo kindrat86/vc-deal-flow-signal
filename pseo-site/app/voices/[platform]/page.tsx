@@ -16,9 +16,10 @@ import {
 
 export const dynamic = "force-static";
 
-// Build-time sanity check: every list must hold exactly its declared count.
-// If a future edit drifts a roster off 100, the build catches it here rather
-// than letting a malformed list ship.
+// Build-time sanity check: every list must hold exactly its declared count
+// (X=100, Reddit=30, HN=20 — sized to where the buyer actually is). If a
+// future edit drifts a roster off its `expected`, the build catches it here
+// rather than letting a malformed list ship.
 assertPlatformCounts();
 
 export function generateStaticParams() {
@@ -41,11 +42,11 @@ export async function generateMetadata({
     };
   }
   return {
-    title: `${list.label} top 100 — ${list.tagline}`,
+    title: `${list.label} — ${list.items.length} voices · ${list.tagline}`,
     description: `${list.intro} Cadence: ${list.cadence}`,
     alternates: { canonical: `/voices/${list.slug}` },
     openGraph: {
-      title: `${list.label} — top 100 voices`,
+      title: `${list.label} — ${list.items.length} voices for the buyer`,
       description: list.tagline,
       url: `https://signals.gitdealflow.com/voices/${list.slug}`,
       type: "article",
@@ -82,7 +83,7 @@ export default async function PlatformVoicesPage({ params }: PageProps) {
       {
         "@type": "WebPage",
         "@id": `https://signals.gitdealflow.com/voices/${list.slug}`,
-        name: `${list.label} — top 100 voices`,
+        name: `${list.label} — ${list.items.length} voices for the buyer`,
         description: list.tagline,
         speakable: {
           "@type": "SpeakableSpecification",
@@ -107,14 +108,14 @@ export default async function PlatformVoicesPage({ params }: PageProps) {
           {
             "@type": "ListItem",
             position: 3,
-            name: `${list.label} top-100`,
+            name: `${list.label} roster`,
             item: `https://signals.gitdealflow.com/voices/${list.slug}`,
           },
         ],
       },
       {
         "@type": "ItemList",
-        name: `${list.label} — top 100 voices`,
+        name: `${list.label} — ${list.items.length} voices for the buyer`,
         numberOfItems: list.items.length,
         itemListOrder: "https://schema.org/ItemListOrderAscending",
         itemListElement: list.items.map((v, i) => ({
@@ -155,14 +156,14 @@ export default async function PlatformVoicesPage({ params }: PageProps) {
               Voices
             </Link>
             <span className="mx-2">/</span>
-            <span className="text-gray-400">{list.label} top-100</span>
+            <span className="text-gray-400">{list.label} roster</span>
           </nav>
           <p className="text-sky-400 text-xs font-semibold uppercase tracking-wider">
-            {list.label} · 100 entries · platform-specific
+            {list.label} · {list.items.length} entries · platform-specific
           </p>
           <h1 className="text-3xl sm:text-5xl font-bold text-gray-100 leading-[1.1] tracking-tight">
-            {list.label} — top{" "}
-            <span className="text-sky-400">100 voices</span>.
+            {list.label} —{" "}
+            <span className="text-sky-400">{list.items.length} voices</span>.
           </h1>
           <p
             className="text-gray-300 text-base sm:text-lg leading-relaxed"
@@ -222,13 +223,13 @@ export default async function PlatformVoicesPage({ params }: PageProps) {
           </ul>
         </section>
 
-        <section aria-label={`${list.label} top 100 voices`} className="space-y-3">
+        <section aria-label={`${list.label} voices roster`} className="space-y-3">
           <header className="space-y-2 border-l-4 border-sky-600 pl-5">
             <p className="text-sky-400 text-[10px] font-semibold uppercase tracking-wider">
               The literal roster
             </p>
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug">
-              100 entries — numbered, status-flagged, linked.
+              {list.items.length} entries — numbered, status-flagged, linked.
             </h2>
             <p className="text-gray-400 text-sm leading-relaxed">
               Sorted by attention priority (top of list = most active surface).
@@ -307,7 +308,7 @@ export default async function PlatformVoicesPage({ params }: PageProps) {
                     href={`/voices/${p.slug}`}
                     className="block px-3 py-2 rounded-md bg-slate-800/60 hover:bg-slate-800 text-sky-300 hover:text-sky-200 transition-colors"
                   >
-                    {p.label} — top 100 →
+                    {p.label} — {p.items.length} →
                   </Link>
                 </li>
               ),

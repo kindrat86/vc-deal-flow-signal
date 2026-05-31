@@ -1,18 +1,33 @@
 /**
- * Platform-specific top-100 rosters.
+ * Platform-specific voice rosters — rebuilt for Marcus (2026-05-31).
  *
- * The /target-list page is one mixed roster of 100 voices across 10 categories.
- * That works as the master ICP-scored list, but the direct-response sales canon
- * teaches "one top-100 list PER PLATFORM" — 100 subreddits, 100 X accounts,
- * 100 HN attention slots — each with its own infiltration cadence, status
- * coding, and link of record.
+ * Source of truth for the X roster: `marketing/dream-100-marcus-x.md` (the
+ * Marcus Dream 100, derived from `brand/voice.md` §Avatar +
+ * `brunson/08-dream-customer.md`). Marcus is a corp-dev / PE-operating-partner /
+ * non-engineer tech-VP (also reads as a solo angel / scout / seed) who does NOT
+ * read code and needs the engineering signal translated into business language.
+ * So these rosters point at BUSINESS-language surfaces — analysts, SaaS/cloud
+ * metrics, PE/M&A operators, deals-media, market-map/category analysts — NOT the
+ * OSS-maintainer / dev-Twitter / Show-HN channels of the retired developer-
+ * investor avatar.
  *
- * This file is the platform-specific layer underneath /target-list. Pages at
- * /voices, /voices/reddit, /voices/hacker-news, /voices/twitter render this
- * data. Each entry stays anonymity-rule compliant — public handles, public
+ * Honest counts, not padded rosters. Marcus's footprint is lopsided: X is his
+ * home (100 accounts, sourced + flagged). Reddit is thinner (~30 business/PE/
+ * SaaS/finance communities). Hacker News is barely Marcus's surface at all — it
+ * stays as a small READ-ONLY awareness map of fundraise / M&A ground-truth
+ * threads, never an engagement roster. We don't pad to a round 100 with shaky
+ * entries (same discipline the Dream-100 source used).
+ *
+ * Handle accuracy: several brand/firm handles are best-guesses flagged via the
+ * `note` field ("Handle unverified — confirm before outreach"), carried over
+ * from the `(confirm)` marks in the source. Verify before loading into
+ * `tools/dream100-mention-radar/`.
+ *
+ * Pages at /voices, /voices/reddit, /voices/hacker-news, /voices/twitter render
+ * this data. Every entry is anonymity-rule compliant — public handles, public
  * URLs, no individuals we track inside the paid product.
  *
- * Last refreshed: 2026-05-09.
+ * Last refreshed: 2026-05-31.
  */
 
 export type VoiceStatus =
@@ -60,12 +75,12 @@ export const PLATFORM_STATUS_META: Record<
 > = {
   engage: {
     short: "Engage",
-    long: "Active engagement layer — we comment, post, or integrate.",
+    long: "Active engagement layer — we reply with a translated data point or pitch a complementary data angle.",
     tone: "emerald",
   },
   watch: {
     short: "Watch",
-    long: "Monitoring only — we read the signal, don't post.",
+    long: "Monitoring — we read the signal and reply only when one translated data point genuinely fits.",
     tone: "sky",
   },
   hold: {
@@ -75,7 +90,7 @@ export const PLATFORM_STATUS_META: Record<
   },
   read: {
     short: "Read",
-    long: "Read-only consumption. No engagement layer (or we choose not to).",
+    long: "Read-only consumption. Awareness and ground-truth, no engagement layer.",
     tone: "slate",
   },
   blocked: {
@@ -85,388 +100,201 @@ export const PLATFORM_STATUS_META: Record<
   },
 };
 
-// ────────────────────────────────────────────────────────────────────────────
-// REDDIT — 100 subreddits (developer-investor adjacent)
-// ────────────────────────────────────────────────────────────────────────────
-
-const REDDIT_VOICES: PlatformVoice[] = [
-  // Top tier — comment-only or active engage layer (Tier 1)
-  { name: "r/venturecapital", what: "VC-side reality. Comment-only — auto-mod removes any post that names a product.", href: "https://reddit.com/r/venturecapital", status: "engage", note: "Comments-only. Hero posts auto-removed." },
-  { name: "r/AngelInvesting", what: "Angel-side avatar. Developer-investor lives here.", href: "https://reddit.com/r/AngelInvesting", status: "engage" },
-  { name: "r/startups", what: "General founder community. We engage on data-question threads.", href: "https://reddit.com/r/startups", status: "engage" },
-  { name: "r/SaaS", what: "SaaS founder reality. Pricing, ARR, churn threads convert to dashboard interest.", href: "https://reddit.com/r/SaaS", status: "engage" },
-  { name: "r/ExperiencedDevs", what: "Senior-engineer take on the orgs we track from outside.", href: "https://reddit.com/r/ExperiencedDevs", status: "watch" },
-  { name: "r/programming", what: "Default tech-news firehose. Slow-engage, high-attention.", href: "https://reddit.com/r/programming", status: "watch" },
-  { name: "r/MachineLearning", what: "Where ML papers and infrastructure orgs first surface.", href: "https://reddit.com/r/MachineLearning", status: "watch" },
-  { name: "r/LocalLLaMA", what: "On-device-AI infrastructure. Engineering-first audience.", href: "https://reddit.com/r/LocalLLaMA", status: "engage" },
-  { name: "r/dataengineering", what: "Data-platform stack threads. High GitHub-org overlap.", href: "https://reddit.com/r/dataengineering", status: "watch" },
-  { name: "r/devops", what: "Infrastructure-as-code, observability, platform engineering.", href: "https://reddit.com/r/devops", status: "watch" },
-
-  // Tier 2 — engineering surface
-  { name: "r/webdev", what: "Frontend-leaning practitioner audience.", href: "https://reddit.com/r/webdev", status: "watch" },
-  { name: "r/javascript", what: "JS-ecosystem firehose. Library / framework adoption signal.", href: "https://reddit.com/r/javascript", status: "watch" },
-  { name: "r/typescript", what: "TS-specific community. Devtool / framework adoption surface.", href: "https://reddit.com/r/typescript", status: "watch" },
-  { name: "r/reactjs", what: "React community — half of our dataset's frontend orgs land here.", href: "https://reddit.com/r/reactjs", status: "watch" },
-  { name: "r/nextjs", what: "Next.js community. Vercel-orbit orgs surface here first.", href: "https://reddit.com/r/nextjs", status: "watch" },
-  { name: "r/node", what: "Node.js / runtime ecosystem.", href: "https://reddit.com/r/node", status: "watch" },
-  { name: "r/golang", what: "Go community. Infra / cloud-native orgs.", href: "https://reddit.com/r/golang", status: "watch" },
-  { name: "r/rust", what: "Rust community. Systems / wasm / crypto orgs.", href: "https://reddit.com/r/rust", status: "watch" },
-  { name: "r/Python", what: "Python community. Data / ML / scripting practitioner audience.", href: "https://reddit.com/r/Python", status: "watch" },
-  { name: "r/elixir", what: "Elixir / Phoenix community. Smaller, high-signal.", href: "https://reddit.com/r/elixir", status: "watch" },
-
-  // Tier 2 — investor / fundraising
-  { name: "r/Entrepreneur", what: "Generalist founder community. Comment-only on data-driven threads.", href: "https://reddit.com/r/Entrepreneur", status: "watch" },
-  { name: "r/EntrepreneurRideAlong", what: "Build-in-public threads. Useful avatar reads.", href: "https://reddit.com/r/EntrepreneurRideAlong", status: "watch" },
-  { name: "r/smallbusiness", what: "Outside-VC bootstrap-side counterweight.", href: "https://reddit.com/r/smallbusiness", status: "read" },
-  { name: "r/Investments", what: "Public-market overlap with private-side avatar.", href: "https://reddit.com/r/Investments", status: "read" },
-  { name: "r/SecurityAnalysis", what: "Buy-side discipline. Pattern memory.", href: "https://reddit.com/r/SecurityAnalysis", status: "read" },
-  { name: "r/financialindependence", what: "Personal-finance angel-investor crossover.", href: "https://reddit.com/r/financialindependence", status: "read" },
-  { name: "r/personalfinance", what: "Mass-market personal-finance.", href: "https://reddit.com/r/personalfinance", status: "read" },
-  { name: "r/quant", what: "Quant-finance crowd. Math-side overlap with our methodology buyers.", href: "https://reddit.com/r/quant", status: "watch" },
-  { name: "r/algotrading", what: "Quant practitioner audience.", href: "https://reddit.com/r/algotrading", status: "watch" },
-  { name: "r/PrivateEquity", what: "PE audience. Adjacent buyer-archetype.", href: "https://reddit.com/r/PrivateEquity", status: "read" },
-
-  // Tier 3 — broad tech / AI
-  { name: "r/artificial", what: "Generalist AI conversation.", href: "https://reddit.com/r/artificial", status: "watch" },
-  { name: "r/ChatGPT", what: "Mass-AI awareness. Useful for tone calibration.", href: "https://reddit.com/r/ChatGPT", status: "read" },
-  { name: "r/ClaudeAI", what: "Claude / MCP user community.", href: "https://reddit.com/r/ClaudeAI", status: "engage" },
-  { name: "r/OpenAI", what: "OpenAI ecosystem audience.", href: "https://reddit.com/r/OpenAI", status: "watch" },
-  { name: "r/singularity", what: "Frontier-AI sentiment. Watch for thesis flip.", href: "https://reddit.com/r/singularity", status: "read" },
-  { name: "r/learnmachinelearning", what: "Beginner-to-intermediate ML audience.", href: "https://reddit.com/r/learnmachinelearning", status: "read" },
-  { name: "r/MLQuestions", what: "Q&A surface. Useful for canonical answers.", href: "https://reddit.com/r/MLQuestions", status: "read" },
-  { name: "r/StableDiffusion", what: "Diffusion-model practitioner audience.", href: "https://reddit.com/r/StableDiffusion", status: "read" },
-  { name: "r/datasets", what: "Public-data hub. Cross-references our methodology.", href: "https://reddit.com/r/datasets", status: "watch" },
-  { name: "r/datascience", what: "Data-science practitioner audience.", href: "https://reddit.com/r/datascience", status: "watch" },
-
-  // Tier 3 — devtools / infrastructure
-  { name: "r/kubernetes", what: "K8s practitioner audience.", href: "https://reddit.com/r/kubernetes", status: "watch" },
-  { name: "r/docker", what: "Containers community.", href: "https://reddit.com/r/docker", status: "read" },
-  { name: "r/aws", what: "AWS-customer audience. Cross-confirms cloud-native bets.", href: "https://reddit.com/r/aws", status: "read" },
-  { name: "r/gcp", what: "GCP-customer audience.", href: "https://reddit.com/r/gcp", status: "read" },
-  { name: "r/AZURE", what: "Azure-customer audience.", href: "https://reddit.com/r/AZURE", status: "read" },
-  { name: "r/selfhosted", what: "Self-host community. On-prem / privacy-first orgs.", href: "https://reddit.com/r/selfhosted", status: "read" },
-  { name: "r/homelab", what: "Hardware-side hobbyist audience.", href: "https://reddit.com/r/homelab", status: "read" },
-  { name: "r/sysadmin", what: "Ops-side practitioner audience.", href: "https://reddit.com/r/sysadmin", status: "read" },
-  { name: "r/linux", what: "Linux user community. Distro / tooling adoption signal.", href: "https://reddit.com/r/linux", status: "read" },
-  { name: "r/opensource", what: "Open-source maintainership audience.", href: "https://reddit.com/r/opensource", status: "watch" },
-
-  // Tier 3 — product / startup adjacency
-  { name: "r/SideProject", what: "Hobby-build to startup pipeline.", href: "https://reddit.com/r/SideProject", status: "watch" },
-  { name: "r/IndieHackers", what: "Bootstrapper economics — different ladder, same dataset.", href: "https://reddit.com/r/IndieHackers", status: "engage" },
-  { name: "r/microsaas", what: "Niche SaaS founder audience.", href: "https://reddit.com/r/microsaas", status: "read" },
-  { name: "r/startup_resources", what: "Founder-resources thread surface.", href: "https://reddit.com/r/startup_resources", status: "read" },
-  { name: "r/ycombinator", what: "YC-cohort audience. Adjacent to our pattern memory.", href: "https://reddit.com/r/ycombinator", status: "watch" },
-  { name: "r/cscareerquestions", what: "Engineer-career-decision audience. Compensation / equity threads.", href: "https://reddit.com/r/cscareerquestions", status: "read" },
-  { name: "r/cscareerquestionsEU", what: "European engineer-investor avatar concentration.", href: "https://reddit.com/r/cscareerquestionsEU", status: "read" },
-  { name: "r/freelance", what: "Freelance-engineer audience. Some angel-investor overlap.", href: "https://reddit.com/r/freelance", status: "read" },
-
-  // Tier 3 — sector-specific
-  { name: "r/CryptoCurrency", what: "Crypto / Web3 sentiment.", href: "https://reddit.com/r/CryptoCurrency", status: "read" },
-  { name: "r/ethdev", what: "Ethereum-dev community. On-chain orgs.", href: "https://reddit.com/r/ethdev", status: "watch" },
-  { name: "r/solidity", what: "Solidity-dev audience.", href: "https://reddit.com/r/solidity", status: "watch" },
-  { name: "r/CryptoTechnology", what: "Crypto-infra technical audience.", href: "https://reddit.com/r/CryptoTechnology", status: "watch" },
-  { name: "r/fintech", what: "Fintech-side news + threads.", href: "https://reddit.com/r/fintech", status: "watch" },
-  { name: "r/cybersecurity", what: "Security-side practitioner audience. SecOps orgs.", href: "https://reddit.com/r/cybersecurity", status: "read" },
-  { name: "r/netsec", what: "Higher-signal security audience.", href: "https://reddit.com/r/netsec", status: "watch" },
-  { name: "r/climatetech", what: "Climate-tech founder community. Sector overlap.", href: "https://reddit.com/r/climatetech", status: "read" },
-  { name: "r/bioinformatics", what: "Bio + dev overlap. Niche but high-signal.", href: "https://reddit.com/r/bioinformatics", status: "read" },
-  { name: "r/robotics", what: "Hardware-leaning founder audience.", href: "https://reddit.com/r/robotics", status: "read" },
-
-  // Tier 3 — niche communities
-  { name: "r/SoftwareEngineering", what: "Generalist engineering discussion.", href: "https://reddit.com/r/SoftwareEngineering", status: "read" },
-  { name: "r/coding", what: "Code-level technical thread surface.", href: "https://reddit.com/r/coding", status: "read" },
-  { name: "r/programmingmemes", what: "Cultural pulse.", href: "https://reddit.com/r/ProgrammerHumor", status: "read" },
-  { name: "r/ExperiencedFounders", what: "Founder-experience trade.", href: "https://reddit.com/r/ExperiencedFounders", status: "read" },
-  { name: "r/Buttcoin", what: "Crypto-skepticism counterweight.", href: "https://reddit.com/r/Buttcoin", status: "read" },
-  { name: "r/sysadminjobs", what: "Hiring-side ops / infrastructure threads.", href: "https://reddit.com/r/sysadminjobs", status: "read" },
-  { name: "r/ITManagers", what: "Buyer-side enterprise IT.", href: "https://reddit.com/r/ITManagers", status: "read" },
-  { name: "r/csbooks", what: "Book/resource recs adjacent to our reading list.", href: "https://reddit.com/r/csbooks", status: "read" },
-
-  // Tier 3 — meta and adjacent
-  { name: "r/coolgithubprojects", what: "Curation thread that pre-prints our dataset.", href: "https://reddit.com/r/coolgithubprojects", status: "watch" },
-  { name: "r/github", what: "GitHub-platform-specific community.", href: "https://reddit.com/r/github", status: "watch" },
-  { name: "r/git", what: "Tooling-level git audience.", href: "https://reddit.com/r/git", status: "read" },
-  { name: "r/vim", what: "Power-user editor crowd.", href: "https://reddit.com/r/vim", status: "read" },
-  { name: "r/neovim", what: "Modern-editor practitioner audience.", href: "https://reddit.com/r/neovim", status: "read" },
-  { name: "r/emacs", what: "Editor-power-user audience.", href: "https://reddit.com/r/emacs", status: "read" },
-  { name: "r/vscode", what: "Default-editor user audience.", href: "https://reddit.com/r/vscode", status: "read" },
-  { name: "r/JetBrains", what: "JetBrains-IDE practitioner audience.", href: "https://reddit.com/r/Jetbrains", status: "read" },
-
-  // Tier 3 — geographic / language
-  { name: "r/europetech", what: "Europe-tech-scene audience. Geographic match for our base.", href: "https://reddit.com/r/europe", status: "read" },
-  { name: "r/germany", what: "DACH founder audience.", href: "https://reddit.com/r/germany", status: "read" },
-  { name: "r/uktech", what: "UK tech audience.", href: "https://reddit.com/r/UnitedKingdom", status: "read" },
-  { name: "r/india", what: "India tech-startup ecosystem.", href: "https://reddit.com/r/india", status: "read" },
-  { name: "r/india_startups", what: "Indian startup audience.", href: "https://reddit.com/r/IndiaInvestments", status: "read" },
-  { name: "r/AskComputerScience", what: "CS-Q&A. Pattern memory only.", href: "https://reddit.com/r/AskComputerScience", status: "read" },
-  { name: "r/computerscience", what: "Academic-leaning audience.", href: "https://reddit.com/r/computerscience", status: "read" },
-
-  // Tier 3 — extras to round to 100
-  { name: "r/agile", what: "Process / methodology audience.", href: "https://reddit.com/r/agile", status: "read" },
-  { name: "r/projectmanagement", what: "PM-side audience. Buyer adjacency.", href: "https://reddit.com/r/projectmanagement", status: "read" },
-  { name: "r/productivity", what: "Tool-stack curiosity audience.", href: "https://reddit.com/r/productivity", status: "read" },
-  { name: "r/DataHoarder", what: "Archive-and-share niche audience.", href: "https://reddit.com/r/DataHoarder", status: "read" },
-  { name: "r/AskStatistics", what: "Stats Q&A. Cross-reference for methodology.", href: "https://reddit.com/r/AskStatistics", status: "read" },
-  { name: "r/statistics", what: "Stats-practitioner audience.", href: "https://reddit.com/r/statistics", status: "read" },
-  { name: "r/Database", what: "DB-design practitioner audience.", href: "https://reddit.com/r/Database", status: "read" },
-  { name: "r/PostgreSQL", what: "Postgres community. Neon / Supabase orbit.", href: "https://reddit.com/r/PostgreSQL", status: "watch" },
-  { name: "r/redis", what: "Redis user community.", href: "https://reddit.com/r/redis", status: "read" },
-];
+const CONFIRM_NOTE = "Handle unverified — confirm before outreach.";
 
 // ────────────────────────────────────────────────────────────────────────────
-// HACKER NEWS — 100 attention slots (categories, leaders, search lanes)
-// ────────────────────────────────────────────────────────────────────────────
-
-const HACKER_NEWS_VOICES: PlatformVoice[] = [
-  // Front-page categories — the real "voices" of HN
-  { name: "Show HN: dev-tool launches", what: "Where new orgs first surface to engineer-investor traffic.", href: "https://news.ycombinator.com/show", status: "watch", note: "Account currently blocked from posting (per memory). Read-only at the moment." },
-  { name: "Show HN: AI infrastructure", what: "Where new agent / inference / model orgs land first.", href: "https://hn.algolia.com/?q=Show+HN+AI", status: "watch" },
-  { name: "Show HN: data tooling", what: "Data-platform launches. Lineage / dbt / catalog orgs.", href: "https://hn.algolia.com/?q=Show+HN+data", status: "watch" },
-  { name: "Show HN: developer tools", what: "Generic devtool launch surface.", href: "https://hn.algolia.com/?q=Show+HN+developer+tool", status: "watch" },
-  { name: "Show HN: open-source", what: "Open-source launches. Highest GitHub-org-spike correlation.", href: "https://hn.algolia.com/?q=Show+HN+open+source", status: "watch" },
-  { name: "Ask HN: hiring threads", what: "Monthly 'who is hiring' surface. Hiring-wave proxy.", href: "https://hn.algolia.com/?q=Ask+HN+who+is+hiring", status: "read" },
-  { name: "Ask HN: who wants to be hired", what: "Engineer-side counterpart to hiring threads.", href: "https://hn.algolia.com/?q=Ask+HN+who+wants+to+be+hired", status: "read" },
-  { name: "Ask HN: freelancer? seeking freelancer?", what: "Contractor-side market signal.", href: "https://hn.algolia.com/?q=Ask+HN+freelancer", status: "read" },
-  { name: "Tell HN: meta-discussion", what: "Platform-itself discussion. Useful for tone calibration.", href: "https://hn.algolia.com/?q=Tell+HN", status: "read" },
-  { name: "Launch HN: YC-cohort launches", what: "Where YC-cohort orgs introduce themselves to HN.", href: "https://hn.algolia.com/?q=Launch+HN", status: "watch" },
-
-  // Topic-clustered watch threads
-  { name: "Topic: Postgres / Postgres-extensions", what: "DB-momentum threads — Neon / Supabase / Postgres.AI cohort.", href: "https://hn.algolia.com/?q=Postgres", status: "watch" },
-  { name: "Topic: MCP / Model Context Protocol", what: "MCP ecosystem chatter. Our category.", href: "https://hn.algolia.com/?q=MCP", status: "engage" },
-  { name: "Topic: Anthropic Claude releases", what: "Claude / Sonnet / Opus release threads.", href: "https://hn.algolia.com/?q=Claude+Anthropic", status: "watch" },
-  { name: "Topic: OpenAI o-series releases", what: "OpenAI release-cycle threads.", href: "https://hn.algolia.com/?q=OpenAI+o", status: "watch" },
-  { name: "Topic: Vercel / Next.js", what: "Frontend-platform threads. Vercel-orbit ecosystem.", href: "https://hn.algolia.com/?q=Vercel", status: "watch" },
-  { name: "Topic: Cloudflare", what: "Edge-platform threads.", href: "https://hn.algolia.com/?q=Cloudflare", status: "watch" },
-  { name: "Topic: Hugging Face", what: "Model-hub launches and dataset releases.", href: "https://hn.algolia.com/?q=Hugging+Face", status: "watch" },
-  { name: "Topic: Y Combinator", what: "YC-related threads — alumni, demo day, batch lists.", href: "https://hn.algolia.com/?q=Y+Combinator", status: "watch" },
-  { name: "Topic: Series A / fundraise news", what: "Fundraise announcements. Our prediction ground truth.", href: "https://hn.algolia.com/?q=Series+A", status: "read" },
-  { name: "Topic: Series B / late-stage", what: "Later-stage rounds. Pattern memory.", href: "https://hn.algolia.com/?q=Series+B", status: "read" },
-
-  // Sector-specific topic feeds
-  { name: "Topic: AI inference / LLM serving", what: "Inference-infra orgs surface here first.", href: "https://hn.algolia.com/?q=LLM+inference", status: "watch" },
-  { name: "Topic: vector databases", what: "Pinecone / Weaviate / Qdrant / Lance ecosystem.", href: "https://hn.algolia.com/?q=vector+database", status: "watch" },
-  { name: "Topic: agent frameworks", what: "Agent-framework launches and comparisons.", href: "https://hn.algolia.com/?q=agent+framework", status: "watch" },
-  { name: "Topic: open-source models", what: "Open-weight model releases.", href: "https://hn.algolia.com/?q=open+source+model", status: "watch" },
-  { name: "Topic: dev-tool funding", what: "Devtool fundraises — our Series-A prediction surface.", href: "https://hn.algolia.com/?q=dev+tool+raised", status: "read" },
-  { name: "Topic: code search / repo tooling", what: "Sourcegraph / Greptile / similar orgs.", href: "https://hn.algolia.com/?q=code+search", status: "watch" },
-  { name: "Topic: observability / OpenTelemetry", what: "Observability-platform threads.", href: "https://hn.algolia.com/?q=OpenTelemetry", status: "watch" },
-  { name: "Topic: developer experience (DX)", what: "DX-focused tooling threads.", href: "https://hn.algolia.com/?q=developer+experience", status: "watch" },
-  { name: "Topic: edge compute", what: "Edge-platform threads. Cloudflare / Fly / Vercel orbit.", href: "https://hn.algolia.com/?q=edge+compute", status: "watch" },
-  { name: "Topic: WASM / WebAssembly", what: "WASM-runtime threads.", href: "https://hn.algolia.com/?q=WebAssembly", status: "watch" },
-
-  // Author / contributor archetypes (anonymous-respecting)
-  { name: "HN top-100 commenters (rolling 90d)", what: "High-karma archetype set. Read for tone, never reply directly.", href: "https://news.ycombinator.com/leaders", status: "read" },
-  { name: "HN top-stories (rolling 30d)", what: "Front-page rotation pattern. Time-of-week / time-of-day signal.", href: "https://news.ycombinator.com/news", status: "read" },
-  { name: "HN top of all time", what: "Pattern memory — what front-pages over decades.", href: "https://news.ycombinator.com/?p=2", status: "read" },
-  { name: "HN classic stories", what: "Top-of-all-time archive. Tone reference.", href: "https://news.ycombinator.com/best", status: "read" },
-  { name: "HN ask top-stories", what: "Highest-engagement Ask HN threads.", href: "https://news.ycombinator.com/ask", status: "read" },
-  { name: "HN show top-stories", what: "Highest-engagement Show HN threads.", href: "https://news.ycombinator.com/show", status: "watch" },
-  { name: "HN newest (firehose)", what: "Real-time submissions. Pre-front-page ranking signal.", href: "https://news.ycombinator.com/newest", status: "read" },
-  { name: "HN active threads", what: "Comment-velocity surface. What's heating up now.", href: "https://news.ycombinator.com/active", status: "read" },
-  { name: "HN job listings", what: "YC-portfolio hiring map. Hiring-velocity proxy.", href: "https://news.ycombinator.com/jobs", status: "read" },
-  { name: "HN classic Ask HN: 'do not start a startup unless...'", what: "Founder-archetype primer.", href: "https://hn.algolia.com/?q=do+not+start+a+startup", status: "read" },
-
-  // Search-lane saved queries
-  { name: "Algolia: 'GitHub commit velocity'", what: "Pattern memory for our category-naming.", href: "https://hn.algolia.com/?q=GitHub+commit+velocity", status: "read" },
-  { name: "Algolia: 'engineering metrics'", what: "Metric-design discussion lane.", href: "https://hn.algolia.com/?q=engineering+metrics", status: "read" },
-  { name: "Algolia: 'developer productivity'", what: "DX / engineering-productivity threads.", href: "https://hn.algolia.com/?q=developer+productivity", status: "read" },
-  { name: "Algolia: 'open source business model'", what: "OSS-monetisation threads. Commercialisation pattern.", href: "https://hn.algolia.com/?q=open+source+business+model", status: "read" },
-  { name: "Algolia: 'venture capital'", what: "VC-discussion lane on HN. Watch for thesis flips.", href: "https://hn.algolia.com/?q=venture+capital", status: "read" },
-  { name: "Algolia: 'angel investing'", what: "Angel-investor avatar threads.", href: "https://hn.algolia.com/?q=angel+investing", status: "read" },
-  { name: "Algolia: 'side project'", what: "Side-project threads. Hobby-to-startup pipeline.", href: "https://hn.algolia.com/?q=side+project", status: "read" },
-  { name: "Algolia: 'startup ideas'", what: "Idea-generation threads. Tone reference.", href: "https://hn.algolia.com/?q=startup+ideas", status: "read" },
-  { name: "Algolia: 'developer tools market'", what: "Devtool-market sizing discussions.", href: "https://hn.algolia.com/?q=developer+tools+market", status: "read" },
-  { name: "Algolia: 'Series A predict'", what: "Anyone discussing prediction methodology — pattern memory.", href: "https://hn.algolia.com/?q=Series+A+predict", status: "read" },
-
-  // Curated YC archives
-  { name: "YC: Startup School posts", what: "Curated startup-school content surface.", href: "https://www.startupschool.org", status: "read" },
-  { name: "YC: company-list on HN", what: "Live YC alumni list — back-checks our predictions.", href: "https://news.ycombinator.com/yc.html", status: "watch" },
-  { name: "YC W26 / S26 / W25 / S25 batch threads", what: "Batch-launch threads. Engineering-velocity confirmation.", href: "https://hn.algolia.com/?q=YC+W26", status: "watch" },
-  { name: "YC: Demo Day recaps", what: "Cohort-by-cohort demo-day recap threads.", href: "https://hn.algolia.com/?q=Demo+Day", status: "read" },
-
-  // Meta / community
-  { name: "HN best-of-the-week emails", what: "Weekly digest. Catches what the daily firehose misses.", href: "https://www.hndigest.com", status: "read" },
-  { name: "HN best-of newsletter (kale.am)", what: "Curated weekly recap.", href: "https://www.hndigest.com", status: "read" },
-  { name: "HN-comments newsletter", what: "Comment-thread highlights.", href: "https://hnplaylist.com", status: "read" },
-  { name: "HN.algolia API", what: "Programmatic search. Drives our HN-thread monitor.", href: "https://hn.algolia.com/api", status: "engage" },
-  { name: "HN public API", what: "Items / users / max-id endpoints.", href: "https://github.com/HackerNews/API", status: "engage" },
-  { name: "HN BigQuery dataset", what: "Full-history HN data. Cross-references our methodology.", href: "https://console.cloud.google.com/marketplace/details/y-combinator/hacker-news", status: "read" },
-  { name: "HN clones / mirrors (e.g. Hckrnews.com)", what: "Alternative front-pages. Different ranking surfaces.", href: "https://hckrnews.com", status: "read" },
-  { name: "HN front-page archive (refind)", what: "Refind's HN-discovery layer.", href: "https://refind.com", status: "read" },
-  { name: "HN classic 'what are you working on'", what: "Recurring side-project thread.", href: "https://hn.algolia.com/?q=what+are+you+working+on", status: "read" },
-  { name: "HN end-of-year retros", what: "Annual reflection threads.", href: "https://hn.algolia.com/?q=year+in+review", status: "read" },
-
-  // Adjacent feeds — pattern correlated with HN attention
-  { name: "Hacker Newsletter (weekly digest)", what: "Email-side curation. Catches threads we missed.", href: "https://www.hackernewsletter.com", status: "read" },
-  { name: "Console.dev devtool digest", what: "Devtool-curation digest. HN-adjacent attention layer.", href: "https://console.dev", status: "watch" },
-  { name: "Devtools.fyi", what: "Independent devtool review. HN-adjacent reach.", href: "https://devtools.fyi", status: "watch" },
-  { name: "Dev.to top-30 daily", what: "Dev.to trending. Cross-pollinates with HN attention.", href: "https://dev.to/top/week", status: "engage" },
-  { name: "Lobsters", what: "Smaller, higher-signal HN-alternative.", href: "https://lobste.rs", status: "watch" },
-  { name: "Tildes", what: "HN-style discussion alternative. Smaller but high-signal.", href: "https://tildes.net", status: "read" },
-  { name: "DataTau", what: "Data-science HN-clone. Sector-specific attention.", href: "https://www.datatau.net", status: "read" },
-  { name: "Developer Town (HN-like)", what: "Devtool-specific HN-clone.", href: "https://devtown.io", status: "read" },
-  { name: "Medium top engineering tag", what: "Medium-side counterweight to HN attention.", href: "https://medium.com/tag/engineering", status: "read" },
-  { name: "Substack top stories", what: "Cross-platform attention layer.", href: "https://substack.com/inbox", status: "read" },
-
-  // Specialty HN saved queries
-  { name: "Algolia: 'commit graph'", what: "Anyone analysing commit graphs publicly.", href: "https://hn.algolia.com/?q=commit+graph", status: "read" },
-  { name: "Algolia: 'GitHub stars vs adoption'", what: "Star-count debate threads — pattern memory.", href: "https://hn.algolia.com/?q=GitHub+stars+adoption", status: "read" },
-  { name: "Algolia: 'reproducible research'", what: "Reproducibility threads — adjacent positioning.", href: "https://hn.algolia.com/?q=reproducible+research", status: "read" },
-  { name: "Algolia: 'code is the data'", what: "Phrase-level pattern memory.", href: "https://hn.algolia.com/?q=code+is+the+data", status: "read" },
-  { name: "Algolia: 'public dataset'", what: "Dataset-release threads. Cross-confirms our methodology.", href: "https://hn.algolia.com/?q=public+dataset", status: "read" },
-  { name: "Algolia: 'agent native'", what: "Agent-native discussion lane.", href: "https://hn.algolia.com/?q=agent+native", status: "read" },
-  { name: "Algolia: 'developer-investor'", what: "Avatar-naming pattern memory.", href: "https://hn.algolia.com/?q=developer+investor", status: "read" },
-  { name: "Algolia: 'Series A data'", what: "Series A data-driven discussion threads.", href: "https://hn.algolia.com/?q=Series+A+data", status: "read" },
-  { name: "Algolia: 'GitHub trending'", what: "GitHub trending-related discussions.", href: "https://hn.algolia.com/?q=GitHub+trending", status: "read" },
-
-  // Rounding to 100
-  { name: "Algolia: 'open-source maintainer'", what: "Maintainer-economics threads.", href: "https://hn.algolia.com/?q=open+source+maintainer", status: "read" },
-  { name: "Algolia: 'engineering management'", what: "EM-side threads. Adjacent buyer-archetype.", href: "https://hn.algolia.com/?q=engineering+management", status: "read" },
-  { name: "Algolia: 'CTO advice'", what: "CTO-archetype threads.", href: "https://hn.algolia.com/?q=CTO+advice", status: "read" },
-  { name: "Algolia: 'first 10 engineers'", what: "Hiring-velocity-narrative threads.", href: "https://hn.algolia.com/?q=first+10+engineers", status: "read" },
-  { name: "Algolia: 'pricing strategy'", what: "Pricing-strategy threads. Cross-references our pricing audit.", href: "https://hn.algolia.com/?q=pricing+strategy", status: "read" },
-  { name: "Algolia: 'public benchmark'", what: "Benchmark-discussion lane.", href: "https://hn.algolia.com/?q=public+benchmark", status: "read" },
-  { name: "Algolia: 'bus factor'", what: "Bus-factor / contributor-diversity discussions.", href: "https://hn.algolia.com/?q=bus+factor", status: "read" },
-  { name: "Algolia: 'monorepo'", what: "Monorepo-strategy threads.", href: "https://hn.algolia.com/?q=monorepo", status: "read" },
-
-  { name: "HN polls (annual)", what: "Editor / OS / language polls. Decade-pattern memory.", href: "https://news.ycombinator.com/polls", status: "read" },
-  { name: "HN classics archive", what: "Editor's hand-picked timeless threads.", href: "https://news.ycombinator.com/best", status: "read" },
-  { name: "HN moderator notes", what: "Where dang's tone-rules surface.", href: "https://news.ycombinator.com/from?site=ycombinator.com", status: "read" },
-  { name: "HN guidelines", what: "Comment-quality north star.", href: "https://news.ycombinator.com/newsguidelines.html", status: "read" },
-  { name: "HN FAQ", what: "Platform-rules pattern memory.", href: "https://news.ycombinator.com/newsfaq.html", status: "read" },
-  { name: "HN show submissions guidance", what: "Show HN-specific format rules.", href: "https://news.ycombinator.com/showhn.html", status: "read" },
-  { name: "HN job-posting guidelines", what: "Hiring-thread tone rules.", href: "https://news.ycombinator.com/jobsfaq.html", status: "read" },
-  { name: "HN account info / second-chance pool", what: "Front-page algorithm pattern memory.", href: "https://news.ycombinator.com/secondchance.html", status: "read" },
-  { name: "Sacred-HN list (alternate ranking)", what: "Alternative top-of-time ranking.", href: "https://hckrnews.com/?p=alltime", status: "read" },
-];
-
-// ────────────────────────────────────────────────────────────────────────────
-// X / TWITTER — 100 accounts (engineer-investor adjacent, public)
+// X / TWITTER — 100 accounts that hold Marcus's attention
+// Buckets from marketing/dream-100-marcus-x.md: A business-of-tech analysts,
+// B SaaS/cloud metrics, D PE/M&A operators, F market-map/data desks (Tier 1);
+// C VC "who's hot" commentary, E deals-media (Tier 2). engage = data desks /
+// benchmark orgs / deals desks we actively pitch or reply to with translated
+// data; watch = T1 analysts/operators we monitor and selectively reply to;
+// read = mega-reach, big media orgs, and T2 awareness accounts.
 // ────────────────────────────────────────────────────────────────────────────
 
 const TWITTER_VOICES: PlatformVoice[] = [
-  // Tier 1 — operator-investors (developer-investor avatar concentration)
-  { name: "@paulg", what: "YC founder. Founder-archetype tone north star. Read; never reply.", href: "https://x.com/paulg", status: "read" },
-  { name: "@sama", what: "Frontier-AI narrative. Read.", href: "https://x.com/sama", status: "read" },
-  { name: "@dhh", what: "Counter-narrative on engineering and capital. Pattern memory.", href: "https://x.com/dhh", status: "read" },
-  { name: "@patrickc", what: "Stripe founder. Reads code — our exact avatar.", href: "https://x.com/patrickc", status: "read" },
-  { name: "@gergelyorosz", what: "Pragmatic Engineer author. Engineering-org reality at scale.", href: "https://x.com/GergelyOrosz", status: "read", note: "We read; we never reply (anonymity rule on personal accounts)." },
-  { name: "@lennysan", what: "Lenny's Newsletter. Product / growth / hiring discipline.", href: "https://x.com/lennysan", status: "read" },
-  { name: "@stratechery", what: "Ben Thompson. Aggregation-theory / strategy discipline.", href: "https://x.com/stratechery", status: "read" },
-  { name: "@packym", what: "Not Boring. Capital narratives.", href: "https://x.com/packyM", status: "read" },
-  { name: "@swyx", what: "Devtool-investor crossover. Avatar concentration.", href: "https://x.com/swyx", status: "read" },
-  { name: "@simonw", what: "Simon Willison. Builds in public on AI tooling.", href: "https://x.com/simonw", status: "read" },
+  // F — Market-map / deal-data / category-analyst desks (Tier 1) — most direct path to Marcus
+  { name: "@cbinsights", what: "CB Insights — market maps / deal data for corp-dev. Pitch a complementary acceleration chart.", href: "https://x.com/cbinsights", status: "engage", note: CONFIRM_NOTE },
+  { name: "@PitchBook", what: "PitchBook — PE/VC deal data, corp-dev-native. Offer an angle they don't cover.", href: "https://x.com/PitchBook", status: "engage", note: CONFIRM_NOTE },
+  { name: "@crunchbase", what: "Crunchbase — company/deal data. Complementary pre-announce acceleration signal.", href: "https://x.com/crunchbase", status: "engage", note: CONFIRM_NOTE },
+  { name: "@sacra_inc", what: "Sacra — private-company research for buyers. Translated-data partnership.", href: "https://x.com/sacra_inc", status: "engage", note: CONFIRM_NOTE },
+  { name: "@public_comps", what: "Public Comps — SaaS comps for PE/corp-dev. Pair acceleration with comps.", href: "https://x.com/public_comps", status: "engage", note: CONFIRM_NOTE },
+  { name: "@meritechcapital", what: "Meritech — SaaS comps data, widely used by buyers. Complementary data.", href: "https://x.com/meritechcapital", status: "engage", note: CONFIRM_NOTE },
+  { name: "@tracxn", what: "Tracxn — private-market deal data. Complementary signal angle.", href: "https://x.com/tracxn", status: "engage", note: CONFIRM_NOTE },
+  { name: "@Dealroomco", what: "Dealroom — market intelligence for buyers. Data-angle pitch.", href: "https://x.com/Dealroomco", status: "engage", note: CONFIRM_NOTE },
+  { name: "@ContraryRes", what: "Contrary Research — private-company memos. Translated signal source.", href: "https://x.com/ContraryRes", status: "engage", note: CONFIRM_NOTE },
+  { name: "@Gartner_inc", what: "Gartner — category analysts; the 'worth a meeting' lens. Category-momentum view.", href: "https://x.com/Gartner_inc", status: "watch", note: CONFIRM_NOTE },
+  { name: "@forrester", what: "Forrester — enterprise category analysis. Data-contribution angle.", href: "https://x.com/forrester", status: "watch", note: CONFIRM_NOTE },
+  { name: "@bessemervp", what: "Bessemer — State of the Cloud benchmarks. Cite their index with our data.", href: "https://x.com/bessemervp", status: "watch", note: CONFIRM_NOTE },
+  { name: "@battery_ventures", what: "Battery — OpenCloud enterprise benchmark reports. Complementary benchmark.", href: "https://x.com/battery_ventures", status: "watch", note: CONFIRM_NOTE },
+  { name: "@scalevp", what: "Scale Venture Partners — SaaS metrics benchmarks. Benchmark angle.", href: "https://x.com/scalevp", status: "watch", note: CONFIRM_NOTE },
+  { name: "@iconiqcapital", what: "ICONIQ Growth — GTM/SaaS benchmarks for PE/corp-dev. Translated contribution.", href: "https://x.com/iconiqcapital", status: "watch", note: CONFIRM_NOTE },
+  { name: "@SapphireVC", what: "Sapphire Ventures — enterprise benchmark reports. Benchmark partnership.", href: "https://x.com/SapphireVC", status: "watch", note: CONFIRM_NOTE },
 
-  // Tier 1 — VC operators
-  { name: "@elad", what: "Elad Gil. Operator-investor concentration.", href: "https://x.com/eladgil", status: "read" },
-  { name: "@chamath", what: "Macro / capital-narrative.", href: "https://x.com/chamath", status: "read" },
-  { name: "@bgurley", what: "Bill Gurley. Bench-marker discipline.", href: "https://x.com/bgurley", status: "read" },
-  { name: "@FoundersFund", what: "FF firm-side voice.", href: "https://x.com/foundersfund", status: "read" },
-  { name: "@a16z", what: "a16z firm-side. Aggregator of our category.", href: "https://x.com/a16z", status: "read" },
-  { name: "@sequoia", what: "Sequoia firm-side.", href: "https://x.com/sequoia", status: "read" },
-  { name: "@indexventures", what: "Index Ventures. Euro-tier mainstay.", href: "https://x.com/indexventures", status: "read" },
-  { name: "@ycombinator", what: "YC firm-side. Demo-day cadence.", href: "https://x.com/ycombinator", status: "read" },
-  { name: "@FirstRound", what: "First Round. Engineering-ops content.", href: "https://x.com/firstround", status: "read" },
-  { name: "@Bessemer", what: "Bessemer. Cloud-cred publisher.", href: "https://x.com/bessemerVP", status: "read" },
+  // E — Tech-dealmaking journalists & media (Tier 2) — data-exclusive pitch targets
+  { name: "@danprimack", what: "Dan Primack — Axios Pro Rata. The M&A/deals newsletter; offer an exclusive translated data point.", href: "https://x.com/danprimack", status: "engage" },
+  { name: "@EricNewcomer", what: "Eric Newcomer — Newcomer. VC/deals insider; be a source on pre-announce traction.", href: "https://x.com/EricNewcomer", status: "engage" },
+  { name: "@TheInformation", what: "The Information — premium deal/tech reporting. Data-exclusive pitch.", href: "https://x.com/TheInformation", status: "engage", note: CONFIRM_NOTE },
+  { name: "@StrictlyVC", what: "StrictlyVC — daily VC/deals audience. Guest data piece.", href: "https://x.com/StrictlyVC", status: "engage", note: CONFIRM_NOTE },
+  { name: "@AxiosProRata", what: "Axios Pro Rata (newsletter) — the deals desk. Recurring data sidebar pitch.", href: "https://x.com/AxiosProRata", status: "engage", note: CONFIRM_NOTE },
+  { name: "@FortuneMagazine", what: "Fortune — Term Sheet M&A/deals newsletter. Data point for a mention.", href: "https://x.com/FortuneMagazine", status: "engage", note: CONFIRM_NOTE },
+  { name: "@kateclarktweets", what: "Kate Clark — deals reporter. Translated-signal source.", href: "https://x.com/kateclarktweets", status: "watch", note: CONFIRM_NOTE },
+  { name: "@teddyschleifer", what: "Teddy Schleifer — Puck. Money/deals reporting; source on a deal trend.", href: "https://x.com/teddyschleifer", status: "watch", note: CONFIRM_NOTE },
+  { name: "@bizcarson", what: "Biz Carson — startup/deals reporter. Translated-data source.", href: "https://x.com/bizcarson", status: "watch", note: CONFIRM_NOTE },
+  { name: "@Lessin", what: "Jessica Lessin — The Information. Deal-media leadership; data exclusive.", href: "https://x.com/Lessin", status: "watch", note: CONFIRM_NOTE },
+  { name: "@PuckNews", what: "Puck — business/money insider audience. Source on a deal trend.", href: "https://x.com/PuckNews", status: "watch", note: CONFIRM_NOTE },
+  { name: "@business", what: "Bloomberg — M&A/markets reach. Data-story pitch (high bar).", href: "https://x.com/business", status: "read", note: CONFIRM_NOTE },
+  { name: "@WSJ", what: "WSJ (Pro / Deals) — corp-dev/PE readership. Exclusive data only.", href: "https://x.com/WSJ", status: "read", note: CONFIRM_NOTE },
+  { name: "@axios", what: "Axios — business/tech deal coverage. Pro Rata data angle.", href: "https://x.com/axios", status: "read", note: CONFIRM_NOTE },
+  { name: "@TechCrunch", what: "TechCrunch — funding/deal coverage. Trend-data source.", href: "https://x.com/TechCrunch", status: "read", note: CONFIRM_NOTE },
+  { name: "@CNBC", what: "CNBC — markets/deals, exec audience. Translated trend data.", href: "https://x.com/CNBC", status: "read", note: CONFIRM_NOTE },
 
-  // Tier 1 — devtool / infra founders
-  { name: "@vercel", what: "Vercel firm-side.", href: "https://x.com/vercel", status: "engage" },
-  { name: "@rauchg", what: "Guillermo Rauch. Vercel-orbit founder voice.", href: "https://x.com/rauchg", status: "read" },
-  { name: "@supabase", what: "Supabase firm-side.", href: "https://x.com/supabase", status: "engage" },
-  { name: "@kiwicopple", what: "Supabase founder. Engineering-velocity narratives.", href: "https://x.com/kiwicopple", status: "read" },
-  { name: "@neondatabase", what: "Neon firm-side.", href: "https://x.com/neondatabase", status: "engage" },
-  { name: "@huggingface", what: "Hugging Face firm-side.", href: "https://x.com/huggingface", status: "engage" },
-  { name: "@AnthropicAI", what: "Anthropic firm-side.", href: "https://x.com/AnthropicAI", status: "watch" },
-  { name: "@OpenAI", what: "OpenAI firm-side.", href: "https://x.com/OpenAI", status: "watch" },
-  { name: "@LangChainAI", what: "LangChain firm-side.", href: "https://x.com/LangChainAI", status: "engage" },
-  { name: "@cloudflare", what: "Cloudflare firm-side.", href: "https://x.com/Cloudflare", status: "watch" },
+  // B — SaaS / cloud metrics & GTM benchmark voices (Tier 1)
+  { name: "@jaminball", what: "Jamin Ball — Clouded Judgement. Public-SaaS metrics; corp-dev/PE bible. Pair our signal with his comps.", href: "https://x.com/jaminball", status: "engage" },
+  { name: "@kyle_poyar", what: "Kyle Poyar — Growth Unhinged. GTM/PLG benchmarks for operators. Translated benchmark cut.", href: "https://x.com/kyle_poyar", status: "engage" },
+  { name: "@SaaStr", what: "SaaStr (org) — the SaaS-exec watering hole. Data contribution to a SaaStr piece.", href: "https://x.com/SaaStr", status: "engage", note: CONFIRM_NOTE },
+  { name: "@peterwalker99", what: "Peter Walker — Carta. Startup/market data, business-framed. Complementary acceleration data.", href: "https://x.com/peterwalker99", status: "engage" },
+  { name: "@jasonlk", what: "Jason Lemkin — SaaStr. SaaS business to a massive exec audience. 'Worth a meeting' framing.", href: "https://x.com/jasonlk", status: "watch" },
+  { name: "@hnshah", what: "Hiten Shah — SaaS metrics/products. Business-framed signal.", href: "https://x.com/hnshah", status: "watch" },
+  { name: "@patticus", what: "Patrick Campbell — ex-ProfitWell. Pricing/retention metrics. Translated traction angle.", href: "https://x.com/patticus", status: "watch" },
+  { name: "@lennysan", what: "Lenny Rachitsky — product/business to the operators who buy. Shortlist-style insight.", href: "https://x.com/lennysan", status: "watch" },
+  { name: "@gokulr", what: "Gokul Rajaram — board/operator, corp-dev adjacent. High-bar translated data.", href: "https://x.com/gokulr", status: "watch" },
+  { name: "@davegerhardt", what: "Dave Gerhardt — Exit Five. B2B exec/marketing audience. Business-language signal.", href: "https://x.com/davegerhardt", status: "watch" },
+  { name: "@bbalfour", what: "Brian Balfour — Reforge. Growth strategy for operators. Benchmark angle.", href: "https://x.com/bbalfour", status: "watch" },
+  { name: "@aprildunford", what: "April Dunford — positioning/category for buyers. 'Which category is heating up' framing.", href: "https://x.com/aprildunford", status: "watch", note: CONFIRM_NOTE },
+  { name: "@TheSaaSCFO", what: "Ben Murray — The SaaS CFO. SaaS metrics for finance/corp-dev. Translated metric angle.", href: "https://x.com/TheSaaSCFO", status: "watch", note: CONFIRM_NOTE },
+  { name: "@David_Cancel", what: "David Cancel — Drift. B2B exec operator. Translated trend data.", href: "https://x.com/David_Cancel", status: "read", note: CONFIRM_NOTE },
+  { name: "@andrewchen", what: "Andrew Chen — a16z. Growth business essays. Translated-data engagement.", href: "https://x.com/andrewchen", status: "read" },
+  { name: "@tomloverro", what: "Tom Loverro — IVP. Macro/SaaS market commentary. Deal-relevant data point.", href: "https://x.com/tomloverro", status: "read", note: CONFIRM_NOTE },
 
-  // Tier 2 — engineering-investor practitioners
-  { name: "@danielgross", what: "Daniel Gross. Operator-investor.", href: "https://x.com/danielgross", status: "read" },
-  { name: "@nat", what: "Nat Friedman. Developer-investor archetype.", href: "https://x.com/natfriedman", status: "read" },
-  { name: "@sarahcat21", what: "Sarah Tavel. Investor-side product taste.", href: "https://x.com/sarahcat21", status: "read" },
-  { name: "@balajis", what: "Balaji. Frontier-narrative.", href: "https://x.com/balajis", status: "read" },
-  { name: "@nikitabier", what: "Operator-investor.", href: "https://x.com/nikitabier", status: "read" },
-  { name: "@levie", what: "Aaron Levie. Operator-side narrative.", href: "https://x.com/levie", status: "read" },
-  { name: "@semil", what: "Semil Shah. Seed-stage operator-investor.", href: "https://x.com/semil", status: "read" },
-  { name: "@pmarca", what: "Marc Andreessen. Macro narrative.", href: "https://x.com/pmarca", status: "read" },
-  { name: "@HarryStebbings", what: "20VC host. Operators-on-cap-tables.", href: "https://x.com/HarryStebbings", status: "read" },
+  // A — Business-of-tech analysts & strategists (Tier 1) — Marcus's reading diet
+  { name: "@ttunguz", what: "Tomasz Tunguz — Theory Ventures. Data-driven SaaS/cloud posts. Provide a benchmark cut he'd reshare.", href: "https://x.com/ttunguz", status: "engage" },
+  { name: "@auren", what: "Auren Hoffman — World of DaaS. Data-as-a-business; corp-dev/PE audience. Translated dataset angle.", href: "https://x.com/auren", status: "engage" },
+  { name: "@mattturck", what: "Matt Turck — FirstMark (MAD landscape). Market-map thinking for buyers. Category-momentum view.", href: "https://x.com/mattturck", status: "engage", note: CONFIRM_NOTE },
+  { name: "@benthompson", what: "Ben Thompson — Stratechery. The canonical tech→business translator; corp-dev/PE read him daily.", href: "https://x.com/benthompson", status: "watch" },
+  { name: "@packyM", what: "Packy McCormick — Not Boring. Strategy narratives for investor/operator readers.", href: "https://x.com/packyM", status: "watch" },
+  { name: "@mariodgabriele", what: "Mario Gabriele — The Generalist. Long-form company/strategy analysis.", href: "https://x.com/mariodgabriele", status: "watch", note: CONFIRM_NOTE },
+  { name: "@benedictevans", what: "Benedict Evans — macro tech analysis for execs/boards.", href: "https://x.com/benedictevans", status: "watch" },
+  { name: "@asymco", what: "Horace Dediu — disruption/business analysis.", href: "https://x.com/asymco", status: "watch" },
+  { name: "@ByrneHobart", what: "Byrne Hobart — The Diff. Finance × tech for sophisticated allocators. Deal-relevant data point.", href: "https://x.com/ByrneHobart", status: "watch" },
+  { name: "@eladgil", what: "Elad Gil — High Growth Handbook. Operator/board business framing.", href: "https://x.com/eladgil", status: "watch" },
+  { name: "@danshipper", what: "Dan Shipper — Every. AI-for-operators, business lens.", href: "https://x.com/danshipper", status: "watch", note: CONFIRM_NOTE },
+  { name: "@sarahtavel", what: "Sarah Tavel — Benchmark. Marketplace/business essays.", href: "https://x.com/sarahtavel", status: "watch" },
+  { name: "@hunterwalk", what: "Hunter Walk — Homebrew. Business-of-startups commentary. Shortlist-style reply.", href: "https://x.com/hunterwalk", status: "watch" },
+  { name: "@ericstromberg", what: "Eric Stromberg — Bedrock. Business memos for allocators.", href: "https://x.com/ericstromberg", status: "watch", note: CONFIRM_NOTE },
+  { name: "@nbashaw", what: "Nathan Baschez — Every/Lex. Business-of-software writing.", href: "https://x.com/nbashaw", status: "watch", note: CONFIRM_NOTE },
+  { name: "@profgalloway", what: "Scott Galloway — business-of-tech to a huge exec audience. Read; mega-reach.", href: "https://x.com/profgalloway", status: "read" },
+  { name: "@om", what: "Om Malik — veteran tech-business analyst. Read.", href: "https://x.com/om", status: "read" },
+  { name: "@cdixon", what: "Chris Dixon — a16z. Big-audience business essays. Read.", href: "https://x.com/cdixon", status: "read" },
 
-  // Tier 2 — devtool-adjacent operators
-  { name: "@theo", what: "Theo. Devtool-influencer audience.", href: "https://x.com/theo", status: "read" },
-  { name: "@DanAbramov", what: "Dan Abramov. React-orbit voice.", href: "https://x.com/dan_abramov", status: "read" },
-  { name: "@addyosmani", what: "Frontend-perf voice.", href: "https://x.com/addyosmani", status: "read" },
-  { name: "@kentcdodds", what: "Kent C. Dodds. Frontend-educator voice.", href: "https://x.com/kentcdodds", status: "read" },
-  { name: "@taylorotwell", what: "Laravel founder. Solo-founder narrative.", href: "https://x.com/taylorotwell", status: "read" },
-  { name: "@zachleat", what: "Zach Leatherman. 11ty / static-site voice.", href: "https://x.com/zachleat", status: "read" },
-  { name: "@levelsio", what: "Pieter Levels. Solo-founder build-in-public archetype.", href: "https://x.com/levelsio", status: "read" },
-  { name: "@MKBHD", what: "Tone-calibration only. Mass-tech audience.", href: "https://x.com/MKBHD", status: "read" },
-  { name: "@krishnan", what: "Krishnan Ganesh. Builder-investor.", href: "https://x.com/kgsubbu", status: "read" },
+  // D — PE / M&A / acquisitions / holdco & public-markets operators (Tier 1) — Marcus's professional neighborhood
+  { name: "@patrick_oshag", what: "Patrick O'Shaughnessy — Colossus. Sophisticated investor/PE audience. Offer a translated dataset angle.", href: "https://x.com/patrick_oshag", status: "engage" },
+  { name: "@QuartrApp", what: "Quartr — IR/earnings business intel. Translated data partnership angle.", href: "https://x.com/QuartrApp", status: "engage", note: CONFIRM_NOTE },
+  { name: "@TheTranscript_", what: "The Transcript — earnings-call business signal. Complementary private-co signal.", href: "https://x.com/TheTranscript_", status: "engage", note: CONFIRM_NOTE },
+  { name: "@awilkinson", what: "Andrew Wilkinson — Tiny. Acquisitions/holdco; corp-dev mindset. 'Who's worth acquiring' framing.", href: "https://x.com/awilkinson", status: "watch" },
+  { name: "@sweatystartup", what: "Nick Huber — acquisitions/operating audience. Translated traction signal.", href: "https://x.com/sweatystartup", status: "watch" },
+  { name: "@bgurley", what: "Bill Gurley — Benchmark. Deal/market commentary, exec-trusted. High-bar translated data.", href: "https://x.com/bgurley", status: "watch" },
+  { name: "@brad_gerstner", what: "Brad Gerstner — Altimeter. Growth/public-markets; corp-dev relevant. Deal-relevant data.", href: "https://x.com/brad_gerstner", status: "watch" },
+  { name: "@jefflonsdale", what: "Joe Lonsdale — 8VC. Enterprise/PE-adjacent. Business-language data.", href: "https://x.com/jefflonsdale", status: "watch", note: CONFIRM_NOTE },
+  { name: "@mjmauboussin", what: "Michael Mauboussin — valuation/strategy; PE/corp-dev gold. Data on durable advantage.", href: "https://x.com/mjmauboussin", status: "watch", note: CONFIRM_NOTE },
+  { name: "@10kdiver", what: "10-K Diver — financial analysis for operators. Plain-English signal explainer.", href: "https://x.com/10kdiver", status: "watch" },
+  { name: "@morganhousel", what: "Morgan Housel — Collab Fund. Finance/business, broad trust. Business-framed insight.", href: "https://x.com/morganhousel", status: "watch" },
+  { name: "@modestproposal1", what: "Modest Proposal — public-markets/business analysis. Deal-relevant data.", href: "https://x.com/modestproposal1", status: "watch" },
+  { name: "@TSOH_Investing", what: "Alex Morris — company business analysis. Translated traction angle.", href: "https://x.com/TSOH_Investing", status: "watch", note: CONFIRM_NOTE },
+  { name: "@jposhaughnessy", what: "Jim O'Shaughnessy — Infinite Loops. Markets/business; operator audience.", href: "https://x.com/jposhaughnessy", status: "watch", note: CONFIRM_NOTE },
+  { name: "@fabricegrinda", what: "Fabrice Grinda — FJ Labs. M&A/marketplace dealmaking. 'Worth a look' data.", href: "https://x.com/fabricegrinda", status: "watch" },
+  { name: "@rohitkrishnan", what: "Rohit Krishnan — Strange Loop Canon. Business strategy essays. Translated trend data.", href: "https://x.com/rohitkrishnan", status: "watch", note: CONFIRM_NOTE },
+  { name: "@APompliano", what: "Anthony Pompliano — markets/deals; broad reach. Business-framed signal.", href: "https://x.com/APompliano", status: "read" },
+  { name: "@chamath", what: "Chamath Palihapitiya — deals/PE-ish business takes. Read; mega-reach.", href: "https://x.com/chamath", status: "read" },
 
-  // Tier 2 — capital narrative
-  { name: "@mattturck", what: "Matt Turck. ML-stack / data investor.", href: "https://x.com/mattturck", status: "read" },
-  { name: "@ljin18", what: "Li Jin. Creator-economy / passion-economy.", href: "https://x.com/ljin18", status: "read" },
-  { name: "@a16zcrypto", what: "Crypto-side a16z.", href: "https://x.com/a16zcrypto", status: "read" },
-  { name: "@kevinrose", what: "Operator-investor.", href: "https://x.com/kevinrose", status: "read" },
-  { name: "@leigh_marie", what: "Leigh Marie Braswell. Engineering-side investor.", href: "https://x.com/leigh_marie", status: "read" },
-  { name: "@erikbern", what: "Modal founder. Engineering-investor archetype.", href: "https://x.com/bernhardsson", status: "read" },
-  { name: "@jdorfman", what: "JD Dorfman. Open-source community organiser.", href: "https://x.com/jdorfman", status: "read" },
-  { name: "@LoganBartlett", what: "Logan Bartlett. Operator-investor.", href: "https://x.com/loganbartlett", status: "read" },
-  // Tier 2 — research / methodology
-  { name: "@ID_AA_Carmack", what: "John Carmack. Engineering-rigor north star.", href: "https://x.com/ID_AA_Carmack", status: "read" },
-  { name: "@karpathy", what: "Andrej Karpathy. ML-engineering-explainer voice.", href: "https://x.com/karpathy", status: "read" },
-  { name: "@GoogleResearch", what: "Research-firm-side.", href: "https://x.com/GoogleResearch", status: "read" },
-  { name: "@MetaAI", what: "Meta-AI-firm-side.", href: "https://x.com/MetaAI", status: "read" },
-  { name: "@deepmind", what: "DeepMind firm-side.", href: "https://x.com/GoogleDeepMind", status: "read" },
-  { name: "@AnthropicResearch", what: "Anthropic research-side.", href: "https://x.com/AnthropicAI", status: "read" },
-  { name: "@OpenAIResearch", what: "OpenAI research-side.", href: "https://x.com/openai", status: "read" },
-  { name: "@nlpguide", what: "NLP / ML methodology.", href: "https://x.com/nlpguide", status: "read" },
-  { name: "@hardmaru", what: "David Ha. Research-engineer voice.", href: "https://x.com/hardmaru", status: "read" },
+  // C — VC / growth investors posting "who's hot" commentary (Tier 2) — awareness, looser fit
+  { name: "@msuster", what: "Mark Suster — Upfront. VC business essays. Translated-data engagement.", href: "https://x.com/msuster", status: "watch" },
+  { name: "@semil", what: "Semil Shah — Haystack. Early-stage business commentary. Translated signal.", href: "https://x.com/semil", status: "watch" },
+  { name: "@loganbartlett", what: "Logan Bartlett — Redpoint. Market/deal commentary + pod. Deal-relevant data.", href: "https://x.com/loganbartlett", status: "watch", note: CONFIRM_NOTE },
+  { name: "@eriktorenberg", what: "Erik Torenberg — Turpentine. Business-pod network. Feed a translated data segment.", href: "https://x.com/eriktorenberg", status: "watch" },
+  { name: "@jason", what: "Jason Calacanis — deals/startup business, huge reach. Business-framed signal.", href: "https://x.com/jason", status: "read" },
+  { name: "@rabois", what: "Keith Rabois — operator/deal takes. High-bar data only.", href: "https://x.com/rabois", status: "read" },
+  { name: "@bhorowitz", what: "Ben Horowitz — a16z. Business-of-building audience. Translated angle.", href: "https://x.com/bhorowitz", status: "read" },
+  { name: "@pmarca", what: "Marc Andreessen — mega-reach business/tech takes. High-bar only.", href: "https://x.com/pmarca", status: "read" },
+  { name: "@fdestin", what: "Fred Destin — Stride. VC business commentary (EU). Business-framed data.", href: "https://x.com/fdestin", status: "read", note: CONFIRM_NOTE },
+  { name: "@bryce", what: "Bryce Roberts — business-of-funding takes. Shortlist framing.", href: "https://x.com/bryce", status: "read", note: CONFIRM_NOTE },
+  { name: "@a16z", what: "a16z (firm) — enterprise/business research reach. Cite their thesis with our data.", href: "https://x.com/a16z", status: "read", note: CONFIRM_NOTE },
+  { name: "@sequoia", what: "Sequoia (firm) — market-defining business content. Complementary data.", href: "https://x.com/sequoia", status: "read", note: CONFIRM_NOTE },
+  { name: "@GoogleVentures", what: "GV (firm) — enterprise deal audience. Translated angle.", href: "https://x.com/GoogleVentures", status: "read", note: CONFIRM_NOTE },
+  { name: "@Greylock", what: "Greylock (firm) — enterprise/business reach. Data contribution.", href: "https://x.com/Greylock", status: "read", note: CONFIRM_NOTE },
+  { name: "@IVP", what: "IVP (firm) — growth-stage deal audience. Benchmark angle.", href: "https://x.com/IVP", status: "read", note: CONFIRM_NOTE },
+  { name: "@generalcatalyst", what: "General Catalyst (firm) — enterprise/health/deal reach. Translated data.", href: "https://x.com/generalcatalyst", status: "read", note: CONFIRM_NOTE },
+];
 
-  // Tier 2 — community / educators
-  { name: "@svpino", what: "Santiago Valdarrama. ML-educator.", href: "https://x.com/svpino", status: "read" },
-  { name: "@_ScottCondron", what: "Scott Condron. ML-engineer-investor crossover.", href: "https://x.com/_scottcondron", status: "read" },
-  { name: "@ClementDelangue", what: "Clem from Hugging Face. AI-narrative.", href: "https://x.com/ClementDelangue", status: "read" },
-  { name: "@brian_lovin", what: "Brian Lovin. Designer-engineer.", href: "https://x.com/brian_lovin", status: "read" },
-  { name: "@charity_majors", what: "Charity Majors. Observability / engineering-leadership.", href: "https://x.com/mipsytipsy", status: "read" },
-  { name: "@b0rk", what: "Julia Evans. Engineering-explainer voice.", href: "https://x.com/b0rk", status: "read" },
+// ────────────────────────────────────────────────────────────────────────────
+// REDDIT — ~30 business / PE / SaaS / finance communities where Marcus reads
+// Marcus is thinner on Reddit than on X, and he is NOT in the dev subs the
+// retired avatar lived in. These are the buy-side / corp-dev / operator /
+// SaaS-business communities. Engagement is comment-only and rare — Reddit
+// auto-mods anything that smells like a product pitch on the finance/VC subs.
+// ────────────────────────────────────────────────────────────────────────────
 
-  // Tier 2 — VC firm comms
-  { name: "@Greylock", what: "Greylock firm-side.", href: "https://x.com/greylockvc", status: "read" },
-  { name: "@accel", what: "Accel firm-side.", href: "https://x.com/Accel", status: "read" },
-  { name: "@lightspeed", what: "Lightspeed firm-side.", href: "https://x.com/lightspeedvp", status: "read" },
-  { name: "@Khoslaventures", what: "Khosla firm-side.", href: "https://x.com/khoslaventures", status: "read" },
-  { name: "@CRV", what: "CRV firm-side.", href: "https://x.com/CRV", status: "read" },
-  { name: "@USV", what: "Union Square Ventures firm-side.", href: "https://x.com/usv", status: "read" },
-  { name: "@8vc", what: "8VC firm-side.", href: "https://x.com/8vc", status: "read" },
-  { name: "@Founders", what: "Founders' Fund firm-side.", href: "https://x.com/foundersfund", status: "read" },
-  { name: "@HVC", what: "Heavybit firm-side. Devtool-orbit.", href: "https://x.com/heavybit", status: "read" },
-  { name: "@matrixpartners", what: "Matrix Partners firm-side.", href: "https://x.com/matrixpartners", status: "read" },
+const REDDIT_VOICES: PlatformVoice[] = [
+  { name: "r/PrivateEquity", what: "Marcus's literal professional neighborhood — PE/operating-partner buyers. Comment-only.", href: "https://reddit.com/r/PrivateEquity", status: "engage", note: "Comment-only. Product names auto-removed." },
+  { name: "r/venturecapital", what: "What's getting funded and valued. Comment-only on data-question threads.", href: "https://reddit.com/r/venturecapital", status: "engage", note: "Comment-only. Hero posts auto-removed." },
+  { name: "r/SaaS", what: "SaaS-business reality — traction-vs-hype, ARR, churn threads. Comment-only.", href: "https://reddit.com/r/SaaS", status: "engage" },
+  { name: "r/investmentbanking", what: "M&A / deal-side diligence crowd. Adjacent to corp-dev buyers.", href: "https://reddit.com/r/investmentbanking", status: "watch" },
+  { name: "r/CorporateFinance", what: "Corp-dev / FP&A / finance professionals — Marcus's coworkers.", href: "https://reddit.com/r/CorporateFinance", status: "watch", note: CONFIRM_NOTE },
+  { name: "r/SecurityAnalysis", what: "Buy-side diligence discipline. Pattern memory for 'is this real traction.'", href: "https://reddit.com/r/SecurityAnalysis", status: "watch" },
+  { name: "r/startups", what: "The companies Marcus evaluates, in their own words.", href: "https://reddit.com/r/startups", status: "watch" },
+  { name: "r/ycombinator", what: "Cohort + 'who's hot' signal. Adjacent to our pattern memory.", href: "https://reddit.com/r/ycombinator", status: "watch" },
+  { name: "r/fintech", what: "A sector Marcus actively evaluates. News + traction threads.", href: "https://reddit.com/r/fintech", status: "watch" },
+  { name: "r/AngelInvesting", what: "Solo-angel buyers (the small-cheque end of the avatar).", href: "https://reddit.com/r/AngelInvesting", status: "watch" },
+  { name: "r/investing", what: "Broad markets. Awareness + tone calibration.", href: "https://reddit.com/r/investing", status: "read" },
+  { name: "r/ValueInvesting", what: "Valuation discipline. Buy-side pattern memory.", href: "https://reddit.com/r/ValueInvesting", status: "read" },
+  { name: "r/stocks", what: "Public-markets awareness. What names are in the conversation.", href: "https://reddit.com/r/stocks", status: "read" },
+  { name: "r/FinancialCareers", what: "Finance/IB/PE professional audience. Avatar concentration.", href: "https://reddit.com/r/FinancialCareers", status: "read" },
+  { name: "r/Entrepreneur", what: "Generalist founder/operator community. Awareness only.", href: "https://reddit.com/r/Entrepreneur", status: "read" },
+  { name: "r/business", what: "Broad business audience. Awareness.", href: "https://reddit.com/r/business", status: "read" },
+  { name: "r/Economics", what: "Macro context for the deal environment.", href: "https://reddit.com/r/Economics", status: "read" },
+  { name: "r/MBA", what: "Business-decision-maker audience. Corp-dev / consulting adjacency.", href: "https://reddit.com/r/MBA", status: "read" },
+  { name: "r/consulting", what: "Strategy / corp-dev adjacency. Buyer-archetype reads.", href: "https://reddit.com/r/consulting", status: "read" },
+  { name: "r/technology", what: "Mass-tech sector awareness — what's breaking into the mainstream.", href: "https://reddit.com/r/technology", status: "read" },
+  { name: "r/artificial", what: "AI-sector heat. Which names are 'worth a meeting' this quarter.", href: "https://reddit.com/r/artificial", status: "read" },
+  { name: "r/MachineLearning", what: "AI/ML sector awareness (read-only — not an engagement sub for Marcus).", href: "https://reddit.com/r/MachineLearning", status: "read" },
+  { name: "r/cybersecurity", what: "A sector Marcus evaluates. SecOps-company awareness.", href: "https://reddit.com/r/cybersecurity", status: "read" },
+  { name: "r/ITManagers", what: "Enterprise-buyer adjacency. What budget-holders actually adopt.", href: "https://reddit.com/r/ITManagers", status: "read" },
+  { name: "r/projectmanagement", what: "Operator adjacency. Tool-adoption signal.", href: "https://reddit.com/r/projectmanagement", status: "read" },
+  { name: "r/smallbusiness", what: "Bootstrap / outside-VC counterweight. Awareness.", href: "https://reddit.com/r/smallbusiness", status: "read" },
+  { name: "r/EntrepreneurRideAlong", what: "Build-in-public threads. Useful traction-vs-hype reads.", href: "https://reddit.com/r/EntrepreneurRideAlong", status: "read" },
+  { name: "r/financialindependence", what: "Personal-finance / angel-investor crossover.", href: "https://reddit.com/r/financialindependence", status: "read" },
+  { name: "r/SaaSMarketing", what: "GTM/SaaS-business audience. Awareness of go-to-market signal.", href: "https://reddit.com/r/SaaSMarketing", status: "read", note: CONFIRM_NOTE },
+  { name: "r/Entrepreneurship", what: "Founder/operator audience. Awareness, low engagement.", href: "https://reddit.com/r/Entrepreneurship", status: "read", note: CONFIRM_NOTE },
+];
 
-  // Tier 3 — wider engineering-narrative voices
-  { name: "@kelseyhightower", what: "Kelsey Hightower. Cloud-native voice.", href: "https://x.com/kelseyhightower", status: "read" },
-  { name: "@QuinnyPig", what: "Corey Quinn. Cloud-economics.", href: "https://x.com/QuinnyPig", status: "read" },
-  { name: "@vboykis", what: "Vicki Boykis. ML-engineering-investor.", href: "https://x.com/vboykis", status: "read" },
-  { name: "@Blakeir", what: "Blake Robbins. Dev-tools-adjacent investor.", href: "https://x.com/blakeir", status: "read" },
+// ────────────────────────────────────────────────────────────────────────────
+// HACKER NEWS — a thin READ-ONLY awareness map (NOT a Marcus engagement roster)
+// Honest framing: HN is a builder/founder surface. Marcus (corp-dev / PE /
+// non-eng-VP) barely lives here. We read it for fundraise / M&A / traction
+// ground-truth, never to engage. No padding to 100 — that would be fiction.
+// ────────────────────────────────────────────────────────────────────────────
 
-  // Tier 3 — round to 100
-  { name: "@joshu", what: "Josh Schachter. Operator-investor.", href: "https://x.com/joshu", status: "read" },
-  { name: "@geoffreylitt", what: "Geoffrey Litt. Tools-for-thought voice.", href: "https://x.com/geoffreylitt", status: "read" },
-  { name: "@fchollet", what: "Francois Chollet. ML-engineering voice.", href: "https://x.com/fchollet", status: "read" },
-  { name: "@yoavgo", what: "Yoav Goldberg. NLP research.", href: "https://x.com/yoavgo", status: "read" },
-  { name: "@osanseviero", what: "Omar Sanseviero. Hugging Face / OS-AI voice.", href: "https://x.com/osanseviero", status: "read" },
-  { name: "@_jasonwei", what: "Jason Wei. ML-research voice.", href: "https://x.com/_jasonwei", status: "read" },
-
-  // Tier 3 — devtool / DevRel adjacent (round to 100)
-  { name: "@dabit3", what: "Nader Dabit. Web3 / serverless devtool DevRel.", href: "https://x.com/dabit3", status: "read" },
-  { name: "@cassidoo", what: "Cassidy Williams. DevRel / engineering-educator voice.", href: "https://x.com/cassidoo", status: "read" },
-  { name: "@gunnarmorling", what: "Gunnar Morling. Data-platform engineering.", href: "https://x.com/gunnarmorling", status: "read" },
-  { name: "@tef_ebooks", what: "Tef. Distributed-systems engineering voice.", href: "https://x.com/tef_ebooks", status: "read" },
-  { name: "@tylerneylon", what: "Tyler Neylon. Math-engineering crossover.", href: "https://x.com/tylerneylon", status: "read" },
-  { name: "@_msw_", what: "Matt Wood. AWS / data-engineering.", href: "https://x.com/_msw_", status: "read" },
-  { name: "@hwchase17", what: "Harrison Chase. LangChain founder.", href: "https://x.com/hwchase17", status: "read" },
-  { name: "@jxnlco", what: "Jason Liu. ML-engineering / instructor library.", href: "https://x.com/jxnlco", status: "read" },
-  { name: "@JeffDean", what: "Jeff Dean. Google research / engineering.", href: "https://x.com/JeffDean", status: "read" },
+const HACKER_NEWS_VOICES: PlatformVoice[] = [
+  { name: "Topic: Series A / fundraise news", what: "Fundraise announcements — ground truth for 'did the signal precede the round.'", href: "https://hn.algolia.com/?q=Series+A", status: "read" },
+  { name: "Topic: Series B / late-stage", what: "Later-stage rounds. Pattern memory.", href: "https://hn.algolia.com/?q=Series+B", status: "read" },
+  { name: "Algolia: 'acquired by'", what: "Acquisition announcements — Marcus's outcome of record.", href: "https://hn.algolia.com/?q=acquired+by", status: "read" },
+  { name: "Algolia: 'raised $'", what: "Funding-event firehose. Cross-confirms our predictions.", href: "https://hn.algolia.com/?q=raised", status: "read" },
+  { name: "Launch HN: YC-cohort launches", what: "Where YC companies introduce themselves — early 'worth a meeting' reads.", href: "https://hn.algolia.com/?q=Launch+HN", status: "read" },
+  { name: "Topic: Y Combinator / Demo Day", what: "Cohort validation signal. Who's getting attention this batch.", href: "https://hn.algolia.com/?q=Demo+Day", status: "read" },
+  { name: "Ask HN: who is hiring (monthly)", what: "Hiring waves — a traction proxy Marcus cares about (team doubling).", href: "https://hn.algolia.com/?q=Ask+HN+who+is+hiring", status: "read" },
+  { name: "Topic: enterprise software", what: "Enterprise-SaaS conversation. Sector awareness for buyers.", href: "https://hn.algolia.com/?q=enterprise+software", status: "read" },
+  { name: "Topic: AI infrastructure", what: "AI-infra sector heat — which categories are accelerating.", href: "https://hn.algolia.com/?q=AI+infrastructure", status: "watch" },
+  { name: "Topic: valuation / multiples", what: "Valuation debate threads. Buy-side pattern memory.", href: "https://hn.algolia.com/?q=valuation+multiple", status: "read" },
+  { name: "Algolia: 'product-market fit'", what: "PMF discussion — how operators judge real traction.", href: "https://hn.algolia.com/?q=product+market+fit", status: "read" },
+  { name: "Algolia: 'go to market'", what: "GTM threads. Translates to 'is this scaling' for a buyer.", href: "https://hn.algolia.com/?q=go+to+market", status: "read" },
+  { name: "Topic: IPO / public markets", what: "Exit-environment context for corp-dev/PE.", href: "https://hn.algolia.com/?q=IPO", status: "read" },
+  { name: "HN front-page (rolling 30d)", what: "What's breaking out into broad attention this month.", href: "https://news.ycombinator.com/news", status: "read" },
+  { name: "HN newest (firehose)", what: "Pre-front-page submissions — earliest awareness layer.", href: "https://news.ycombinator.com/newest", status: "read" },
+  { name: "Topic: SaaS metrics / ARR", what: "Public ARR/retention discussion. Traction-vs-hype reads.", href: "https://hn.algolia.com/?q=ARR", status: "read" },
+  { name: "Algolia: 'revenue multiple'", what: "Comp/valuation threads. Corp-dev/PE pattern memory.", href: "https://hn.algolia.com/?q=revenue+multiple", status: "read" },
+  { name: "Topic: vector databases / agents (sector)", what: "AI-sector subcategory heat. Awareness of breakout categories.", href: "https://hn.algolia.com/?q=vector+database", status: "read" },
+  { name: "YC: company list on HN", what: "Live YC alumni list — back-checks our predictions.", href: "https://news.ycombinator.com/yc.html", status: "read" },
+  { name: "HN 'state of' annual reports", what: "Annual sector retrospectives. Decade-pattern context.", href: "https://hn.algolia.com/?q=state+of", status: "read" },
 ];
 
 // ────────────────────────────────────────────────────────────────────────────
@@ -475,43 +303,46 @@ const TWITTER_VOICES: PlatformVoice[] = [
 
 export const PLATFORM_LISTS: PlatformList[] = [
   {
+    slug: "twitter",
+    label: "X / Twitter",
+    tagline:
+      "100 X accounts that hold Marcus's attention — analysts, SaaS-metrics, PE/M&A, deals-media, market-map.",
+    intro:
+      "X is where Marcus reads. Not dev Twitter — the business-of-tech analysts, SaaS/cloud-metrics voices, PE/M&A operators, deals journalists, and market-map analysts he uses to decide who's worth a meeting. We engage the data desks and benchmark voices with a complementary, translated data point; we monitor the analysts and reply only when one plain-English signal genuinely fits. Never raw commits, never quant jargon.",
+    cadence:
+      "Read daily. 3–5 replies a day on the engage/watch accounts, each carrying ONE translated data point ('Company X's engineering activity is accelerating faster than its category — worth a look,' + link). Pitch the market-map / data desks (Bucket F) and deals newsletters (Bucket E) a complementary, translated data angle. The company account is the only voice — no founder face, name, or DMs.",
+    rule:
+      "Anonymity rule: no founder face / voice / name. Lead with the job — a credible, plain-English shortlist — never with code or quant framing. Several handles are flagged unverified; confirm before any outreach.",
+    expected: 100,
+    items: TWITTER_VOICES,
+  },
+  {
     slug: "reddit",
     label: "Reddit",
-    tagline: "100 subreddits where the developer-investor's audience already lives.",
+    tagline:
+      "~30 business, PE, SaaS, and finance communities where corp-dev and operator buyers actually read.",
     intro:
-      "Reddit's auto-mod removes any post that names a product on the venture-side subs. So this list is engagement-by-comment-only — never main-post pitches. Top-down by ICP fit.",
+      "Marcus is thinner on Reddit than on X, and he is NOT in the dev subs the old avatar lived in. This is the buy-side neighborhood — PE, venture, corp-dev/finance, SaaS-business, and the sectors he evaluates. Engagement is comment-only and rare: the finance and VC subs auto-remove anything that names a product, so we comment with a translated data point on a real question or we just read.",
     cadence:
-      "Comment-only on the top-tier engage subs. 40-55 words, no em-dashes, no URLs in the first comment. Twice a week, ceiling of four replies.",
+      "Comment-only on the engage subs (r/PrivateEquity, r/venturecapital, r/SaaS), and only when a translated data point answers a real question. 40–55 words, no URL in the first comment, ceiling of two comments a week. Everything else is read/watch.",
     rule:
-      "Never main-post on r/venturecapital / r/AngelInvesting / r/startups — auto-mod will remove the post and shadowban the account. Comment-only, on threads where data answers a real question.",
-    expected: 100,
+      "Never main-post on the finance/VC subs — auto-mod removes it and shadowbans the account. No raw commits or quant jargon anywhere. Honest scope: this roster is intentionally short — Marcus's real Reddit footprint is small.",
+    expected: 30,
     items: REDDIT_VOICES,
   },
   {
     slug: "hacker-news",
     label: "Hacker News",
-    tagline: "100 HN attention slots — categories, search lanes, leaderboards, adjacent feeds.",
+    tagline:
+      "A thin, read-only awareness map — HN is a builder surface, not Marcus's home.",
     intro:
-      "HN doesn't have 100 'voices' the way Reddit does — it has attention slots. Each slot here is a category (Show HN: AI infra), a saved Algolia search lane, a leaderboard surface, or an adjacent digest. Together they form the literal HN attention map.",
+      "Honest framing: Hacker News is a builder/founder crowd, not where corp-dev / PE / non-engineer-VP buyers live. We don't pretend Marcus is here. This short roster is read-only ground truth — fundraise, M&A, hiring-wave, and sector-heat threads that confirm whether the engineering signal preceded the round. No engagement layer, no padding to 100.",
     cadence:
-      "Account is currently on hold (blocked from submitting / commenting). Read-only across all 100 slots until the account ban resolves. Search-lane monitoring runs daily; front-page archive runs weekly.",
+      "Read-only. Daily search-lane monitoring on the fundraise / M&A / hiring lanes; weekly skim of the front-page archive for sector heat. We do not post or comment as the brand on HN — it isn't Marcus's surface.",
     rule:
-      "When the ban resolves: never submit a top-level Show HN of our own product. Submit only data-ground-truth artefacts (CC BY 4.0 dataset, SSRN paper, methodology doc). Comments allowed on any thread that asks a real engineering-velocity question.",
-    expected: 100,
+      "No engagement. HN stays a ground-truth and awareness map only. If a Marcus-relevant business thread ever warrants a translated data point, it goes out as a one-off, never as a campaign.",
+    expected: 20,
     items: HACKER_NEWS_VOICES,
-  },
-  {
-    slug: "twitter",
-    label: "X / Twitter",
-    tagline: "100 X / Twitter accounts — VCs, devtool founders, engineering-investors.",
-    intro:
-      "We read; we don't broadcast. Anonymity rule. Our company account posts own-product threads on Tuesdays and Fridays; we never @-reply individuals. The 100 accounts here are read-of-record, not engagement targets.",
-    cadence:
-      "Read daily. Post own-product threads twice a week. Quote-tweet only when the original post is a public artefact (firm-side fund news, public dataset release). Never reply to individual founders / investors directly.",
-    rule:
-      "Anonymity rule: no founder face / voice / name. Synthetic narration only. Read; never engage personally. The company account is the only voice — individual founders' personal accounts stay separate.",
-    expected: 100,
-    items: TWITTER_VOICES,
   },
 ];
 

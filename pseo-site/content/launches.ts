@@ -142,7 +142,7 @@ export const LAUNCHES: Launch[] = [
         body: [
           "Spend two minutes inside Claude or Cursor with an MCP server attached and the future is obvious. Agents don’t scroll dashboards. They issue tool calls. They scrape, score, decide, and ship a memo before you finish your coffee.",
           "Every signal-data product on the market still bills humans by the seat — €99/month, $299/month, €497/month — assuming a partner clicks through pages. None of them have a credit-meter that an agent can spend against.",
-          "The result is the absurd status quo: an AI scout running on a developer-investor’s laptop pays €97 for a full Insider Circle subscription it consumes in 11 minutes of Sunday-morning research, then idles for six days. The data product has no way to charge proportionally, so it overcharges or undercharges depending on the day.",
+          "The result is the absurd status quo: an AI scout running on a small-cheque investor’s laptop pays €97 for a full Insider Circle subscription it consumes in 11 minutes of Sunday-morning research, then idles for six days. The data product has no way to charge proportionally, so it overcharges or undercharges depending on the day.",
         ],
         videoCue: {
           kind: "youtube",
@@ -235,7 +235,7 @@ export const LAUNCHES: Launch[] = [
     headline:
       "Founding-100 — €9.97/mo locked forever, before the public rate climbs to €49/mo.",
     hook:
-      "100 founding-member spots for the developer-investor writing €5k–€50k checks. Not a discount, not a coupon — a permanent rate that holds even as the public price doubles, then quadruples.",
+      "100 founding-member spots for the investor writing €5k–€50k checks. Not a discount, not a coupon — a permanent rate that holds even as the public price doubles, then quadruples.",
     abstract:
       "Founding-100 is the rate seat for the first 100 paying members of GitDealFlow. €9.97/month, locked for the lifetime of the subscription. Includes the live Dashboard, weekly Acceleration Watch, monthly Sector Deep-Dive PDF, both Chrome extensions, and the free MCP server. After 100 spots fill, the public rate is €49/month for new buyers. Founding members keep €9.97 forever — through company growth, price hikes, and feature expansion.",
     stack: [
@@ -278,10 +278,10 @@ export const LAUNCHES: Launch[] = [
         plc: "sideways-story",
         caption: "Stage 1 · Sideways Story · The Opportunity",
         headline:
-          "There’s a class of developer-investor that the data-product market simply doesn’t price for.",
+          "There’s a class of investor that the data-product market simply doesn’t price for.",
         body: [
           "Look at the deal-flow tool prices. Harmonic starts at €1,000/month per seat. Affinity is enterprise-only. Tracxn is in the same range. Crunchbase Pro is €99/month and doesn’t track engineering signals at all.",
-          "All four are priced for institutional buyers — partners at funds with six-figure data budgets, signing 12-month contracts. None of them are priced for the developer-investor writing €5k–€50k checks out of personal capital, who needs the same engineering-velocity signal but consumes it on Sunday afternoons, not in eight-person partner meetings.",
+          "All four are priced for institutional buyers — partners at funds with six-figure data budgets, signing 12-month contracts. None of them are priced for the investor writing €5k–€50k checks out of personal capital, who needs the same engineering-velocity signal but consumes it on Sunday afternoons, not in eight-person partner meetings.",
           "Founding-100 is the rate seat that admits this buyer exists. €9.97/month. The price isn’t a discount — it’s the right number for the consumption shape. The opportunity is to lock it before the public rate (€49/month) catches up to where the institutional tools sit.",
         ],
         videoCue: {
@@ -290,7 +290,7 @@ export const LAUNCHES: Launch[] = [
           title: "The €9.97 tier nobody else priced for",
           durationSeconds: 90,
           caption:
-            "Why every other tool skipped the developer-investor segment.",
+            "Why every other tool skipped the small-cheque investor segment.",
         },
       },
       {

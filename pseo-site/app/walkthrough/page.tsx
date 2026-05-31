@@ -646,11 +646,11 @@ export default function PerfectWebinarPage() {
                 You don&rsquo;t need to become someone else to source.
               </p>
               <p className="text-gray-300 text-sm leading-relaxed">
-                The lesson the network rule taught you was that you needed to
-                turn into a partner-style human — coffees, calendar Tetris,
-                socially-aware persuasion. The data-side path lets you stay
-                the engineer who reads commit logs for fun. Identity stays
-                intact. The signal does the introduction.
+                The fear the technical room plants is that you needed to become
+                technical — read the code, hire a quant, borrow an
+                engineer&rsquo;s afternoon. The data-side path lets you stay the
+                dealmaker. Identity stays intact. The signal does the reading —
+                and the introduction.
               </p>
             </li>
             <li className="rounded-xl border border-violet-700/40 bg-violet-950/15 p-5 sm:p-6 space-y-2">
