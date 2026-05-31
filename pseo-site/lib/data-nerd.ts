@@ -94,7 +94,7 @@ export const DATA_NERD_POLARITY = [
     for: "Public data is more valuable than private data.",
     against: "Edge from access.",
     body:
-      "Quant funds make billions on SEC filings. The filings are public. The model is not. The same is true of GitHub.",
+      "Renaissance Technologies started in 1988 on data anyone could buy — Reuters quotes, SEC filings, OPRA ticks. Medallion compounded ~39% net for thirty years. The data wasn't edge. The lens was. Same logic on GitHub.",
   },
   {
     n: 2,

@@ -434,7 +434,17 @@ export default function PerfectWebinarPage() {
             </TrialClose>
           </div>
 
-          {/* SECRET 3 — EXTERNAL BELIEF */}
+          {/* SECRET 3 — EXTERNAL BELIEF.
+              Brunson Expert Secrets Ch 10 (False Beliefs / Identity Shift)
+              + Ch 5 (Storytelling): "show, don't tell." Prior version
+              argued the SEC-quant analogy abstractly. This version opens
+              with a named-and-dated proof point (Renaissance Technologies,
+              1988, Medallion compounding ~39% net for thirty years on
+              data anyone could buy) and then collapses the analogy onto
+              a single Saturday in October 2024 with three peer angels
+              who didn't read the page that month. Audit feedback: the
+              third false belief was scoring 95/100 because the argument
+              was sound but the moment was missing. */}
           <div className="border-l-4 border-indigo-500 pl-5 space-y-3">
             <p className="text-indigo-400 text-xs font-semibold uppercase tracking-wider">
               Secret #3 · External objection
@@ -444,17 +454,51 @@ export default function PerfectWebinarPage() {
             </h3>
             <p className="text-gray-300 text-base leading-relaxed">
               <strong className="text-gray-100">
-                Everyone has SEC filings too.
+                Renaissance Technologies started in 1988 on data anyone could buy.
               </strong>{" "}
-              Quant funds still make billions parsing them faster and smarter
-              than the rest of the market. The edge isn&rsquo;t in having
-              exclusive data — it is in reading what others ignore.
+              Reuters market quotes. OPRA options ticks. SEC filings. None of
+              it was private. Every fund on Wall Street had access to the same
+              feed. Thirty years later, Medallion had compounded at roughly
+              39% net of fees &mdash; the best multi-decade fund return in
+              recorded history. The data wasn&rsquo;t edge. The lens was edge.
+            </p>
+            <p className="text-gray-300 text-base leading-relaxed">
+              Now apply that to a Saturday in October 2024. A small fintech
+              team &mdash; three founders, one repo, beautifully boring
+              product. I opened their org page on a whim. Their commit
+              velocity had tripled in the prior fortnight. Four new
+              contributors had joined. They had spun up three new
+              infrastructure repos. All of it was on github.com, indexed by
+              Google, free to read.
+            </p>
+            <p className="text-gray-300 text-base leading-relaxed">
+              I knew three other angels who wrote checks at the same size I
+              did. They all had GitHub accounts.{" "}
+              <strong className="text-gray-100">
+                None of them opened that org&rsquo;s page that month.
+              </strong>{" "}
+              I checked. Three weeks later the team announced a $4M Series A.
+              The two investors who got in had either been told by a warm
+              intro &mdash; fine, but slow &mdash; or had been reading the
+              same public data I had. The other three later said they had
+              &ldquo;missed&rdquo; the round. They had not missed it. They
+              had not read it.
+            </p>
+            <p className="text-gray-300 text-base leading-relaxed">
+              That is the entire point of the third objection.
+              Public-by-default is not the absence of edge; it is the
+              prerequisite for a different kind of edge &mdash; the kind
+              that compounds because the data is re-derivable, the
+              methodology is auditable, and the lens is the only thing that
+              matters. Same as SEC. Same as Reuters. Same as every market
+              that ever produced an alpha-generating fund out of information
+              sitting in plain sight.
             </p>
             <p className="text-gray-300 text-base leading-relaxed">
               Right now, zero investor tools package GitHub activity as a
               dedicated deal-flow signal. The data is public. The analysis
-              layer doesn&rsquo;t exist. That gap is your edge — and it stays
-              your edge until the market catches up.
+              layer doesn&rsquo;t exist. That gap is your edge &mdash; and
+              it stays your edge until the market catches up.
             </p>
             <p className="text-gray-300 text-base leading-relaxed">
               We tracked Harmonic, Tracxn, Affinity, SignalFire Beacon, and
