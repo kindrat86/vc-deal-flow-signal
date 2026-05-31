@@ -3,7 +3,6 @@ import Link from "next/link";
 import SignalBadge from "@/components/SignalBadge";
 import ShareBar from "@/components/ShareBar";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
-import { VideoEmbedBlock } from "@/components/VideoEmbedBlock";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { DEFAULT_HREFLANG_LANGUAGES } from "@/lib/hreflang";
 import {
@@ -221,11 +220,6 @@ export default function PredictedPage() {
             .
           </p>
         </header>
-
-        {/* VEO anchor — Engineering Acceleration Watch explainer video */}
-        <section className="mb-10">
-          <VideoEmbedBlock slug="engineering-acceleration-watch" variant="full" />
-        </section>
 
         {/* Public scorecard */}
         <section
