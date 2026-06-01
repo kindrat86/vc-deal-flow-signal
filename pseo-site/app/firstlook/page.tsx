@@ -552,7 +552,7 @@ export default function FirstLookPage() {
                 Your cart price
               </p>
               <p className="text-amber-100 text-sm leading-snug pt-0.5">
-                {Math.round((TOTAL_VALUE - 7) / 7)}× return at retail. One coffee.
+                One sector, fully worked — for less than a coffee.
               </p>
             </div>
             <p className="text-amber-300 font-bold text-3xl sm:text-4xl tabular-nums">
@@ -627,8 +627,8 @@ export default function FirstLookPage() {
                 Read it. Hate it. Reply REFUND. Keep everything.
               </h3>
               <p className="text-gray-300 text-sm leading-relaxed">
-                If the deep dive isn&rsquo;t a 30× retail-value return on €7,
-                reply <code className="bg-slate-900 text-emerald-200 px-1.5 py-0.5 rounded text-xs">REFUND</code>{" "}
+                If the deep dive doesn&rsquo;t surface at least one startup
+                you&rsquo;d otherwise have missed, reply <code className="bg-slate-900 text-emerald-200 px-1.5 py-0.5 rounded text-xs">REFUND</code>{" "}
                 inside 30 days — refund hits your card in one business day, no
                 questions, no clawback. We&rsquo;ve issued two refunds in three
                 years. The guarantee exists because we&rsquo;d rather lose €7

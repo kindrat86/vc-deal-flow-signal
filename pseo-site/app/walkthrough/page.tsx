@@ -267,6 +267,12 @@ export default function PerfectWebinarPage() {
             objections will be addressed. One uncomfortable conclusion will
             follow. And one specific, sub-€10/mo tool will let you act on it.
           </p>
+          <p className="text-gray-400 text-sm leading-relaxed border-l-2 border-sky-500/40 pl-4">
+            You don&rsquo;t need to read code. We translate the engineering
+            movement into plain business language — &ldquo;this team is
+            suddenly shipping far more than usual&rdquo; — so the read is done
+            for you.
+          </p>
           <DataNerdAudio
             slug="walkthrough-prologue"
             label="Press play — 90-second prologue, narrated by The Data Nerd"

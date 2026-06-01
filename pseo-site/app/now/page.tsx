@@ -293,6 +293,49 @@ export default function NowPage() {
           </ol>
         </section>
 
+        {/* WHERE TO FOLLOW THE WORK — calm revenue path that keeps the
+            "status, not face" cadence. Free digest is the primary action;
+            the paid surfaces are a soft, optional next step. */}
+        <section className="rounded-xl border border-slate-800 bg-slate-900/40 p-5 sm:p-6 space-y-3">
+          <p className="text-emerald-300 text-xs font-semibold uppercase tracking-wider">
+            07 · Where to follow the work
+          </p>
+          <h2 className="text-xl font-bold text-gray-100">
+            The status is public. The signal has a price.
+          </h2>
+          <p className="text-gray-300 text-sm leading-relaxed">
+            If this rhythm is worth following, the broadcast version is the
+            free Sunday{" "}
+            <a
+              href="https://gitdealflow.com/#signup"
+              rel="noopener noreferrer"
+              className="text-emerald-300 hover:text-emerald-200 underline decoration-dotted font-semibold"
+            >
+              Acceleration Watch
+            </a>{" "}
+            — one email a week, the sharpest acceleration break, no code
+            required to read it. Start there.
+          </p>
+          <p className="text-gray-400 text-sm leading-relaxed">
+            When you want to go deeper than the digest: the{" "}
+            <Link
+              href="/firstlook"
+              className="text-sky-300 hover:text-sky-200 underline decoration-dotted"
+            >
+              €7 First Look
+            </Link>{" "}
+            is one full sector dive you keep, and{" "}
+            <Link
+              href="/pricing"
+              className="text-sky-300 hover:text-sky-200 underline decoration-dotted"
+            >
+              the pricing page
+            </Link>{" "}
+            lays out the rest of the ladder. No rush — the free digest is the
+            honest place to decide whether the rest is worth it.
+          </p>
+        </section>
+
         {/* CHARACTER + TRIBE FOOTER — link the live status to the wider
             character bible so readers landing from a share have the
             anchor. */}

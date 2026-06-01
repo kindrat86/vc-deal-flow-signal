@@ -174,6 +174,17 @@ export default function ContinuityHubPage() {
             release, founder essay, or shipping tool on the first Tuesday of
             every month. Public gets the abstract. Members get the artefact.
           </p>
+          <div className="flex flex-wrap items-center gap-3 pt-1">
+            <a
+              href={STRIPE_INSIDER}
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-semibold text-sm transition-colors"
+            >
+              Lock the €97/mo Insider rate <span aria-hidden="true">→</span>
+            </a>
+            <span className="text-gray-500 text-xs leading-relaxed">
+              Already in? The artefact lands the day it ships, plus every prior drop.
+            </span>
+          </div>
         </header>
 
         {/* THE CADENCE RULE — the contract */}

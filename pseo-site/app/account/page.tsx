@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { defineMetadata } from "@/lib/metadata";
 import AccountBalanceClient from "./AccountBalanceClient";
 
@@ -13,5 +14,18 @@ export const metadata = defineMetadata({
 });
 
 export default function AccountPage() {
-  return <AccountBalanceClient />;
+  return (
+    <>
+      <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 text-sm text-gray-400">
+        Not here for agent credits?{" "}
+        <Link
+          href="/pricing"
+          className="text-sky-400 hover:text-sky-300 underline-offset-2 hover:underline"
+        >
+          See the plans →
+        </Link>
+      </div>
+      <AccountBalanceClient />
+    </>
+  );
 }

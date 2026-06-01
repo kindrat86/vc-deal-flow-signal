@@ -351,6 +351,45 @@ export default function VaultPage() {
             charge. Most accepted Vault funds enter via the Methodology
             Partnership first.
           </p>
+          <div className="rounded-lg border border-amber-700/40 bg-slate-900/50 p-4 space-y-2">
+            <p className="text-amber-300 text-[10px] sm:text-xs font-semibold uppercase tracking-wider">
+              De-risk before you apply
+            </p>
+            <p className="text-gray-300 text-sm leading-relaxed">
+              You don&rsquo;t have to take the track record on faith, and you
+              don&rsquo;t need to read a line of code to check it. Read the{" "}
+              <Link
+                href="/methodology"
+                className="text-amber-400 hover:text-amber-300 underline decoration-dotted"
+              >
+                methodology
+              </Link>
+              , the{" "}
+              <Link
+                href="/wins"
+                className="text-amber-400 hover:text-amber-300 underline decoration-dotted"
+              >
+                receipts on /wins
+              </Link>
+              , and the{" "}
+              <Link
+                href="/research"
+                className="text-amber-400 hover:text-amber-300 underline decoration-dotted"
+              >
+                SSRN research
+              </Link>{" "}
+              before you commit a euro.
+            </p>
+            <p className="text-gray-400 text-sm leading-relaxed">
+              The 30-day Signal-or-It&rsquo;s-Free guarantee applies to your
+              first month, the same as every tier: if the signal doesn&rsquo;t
+              surface a fund-relevant company in the first 30 days, the first
+              month is free. To be accurate, this is a month-one guarantee, not
+              a refund of the full annual fee &mdash; the front-end tiers and
+              the early verification above exist precisely so you can confirm
+              fit before the annual commitment.
+            </p>
+          </div>
           <a
             href={APPLY_MAILTO}
             className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-amber-600 hover:bg-amber-500 text-white font-semibold transition-colors shadow-sm shadow-amber-500/30"
