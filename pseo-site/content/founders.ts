@@ -362,6 +362,37 @@ export const founders: Founder[] = [
     notable: "Edward is a long-running PyTorch core engineer. Public blog and conference talks anchor his public identity.",
     sameAs: ["https://twitter.com/ezyang", "https://blog.ezyang.com"],
   }),
+
+  // --- Gaming infrastructure — Heroic Labs (Nakama) co-founders ---
+  // All three self-publish "Founder of @heroiclabs" on their GitHub profiles
+  // and are the top public contributors to the Nakama open-source game server.
+  build({
+    handle: "zyro",
+    name: "Andrei Mihu",
+    role: "Co-founder, Heroic Labs",
+    affiliation: "Heroic Labs (Nakama open-source game server)",
+    publicSource: "https://andreimihu.com",
+    notable: "Andrei is the most active contributor to Nakama, the open-source game backend (github.com/heroiclabs/nakama). Self-published GitHub identity (@zyro) and personal site.",
+    sameAs: ["https://github.com/zyro", "https://andreimihu.com"],
+  }),
+  build({
+    handle: "novabyte",
+    name: "Chris Molozian",
+    role: "Co-founder, Heroic Labs",
+    affiliation: "Heroic Labs (Nakama open-source game server)",
+    publicSource: "https://cmoz.me",
+    notable: "Chris is a co-author of Nakama, the open-source game backend, and writes on distributed systems. Self-published GitHub identity (@novabyte) and personal site.",
+    sameAs: ["https://github.com/novabyte", "https://cmoz.me"],
+  }),
+  build({
+    handle: "mofirouz",
+    name: "Mo Firouz",
+    role: "Co-founder, Heroic Labs",
+    affiliation: "Heroic Labs (Nakama open-source game server)",
+    publicSource: "https://mofirouz.com",
+    notable: "Mo co-founded Heroic Labs and contributes to Nakama, focusing on scalable, fault-tolerant distributed systems. Self-published GitHub identity (@mofirouz) and personal site.",
+    sameAs: ["https://github.com/mofirouz", "https://mofirouz.com"],
+  }),
 ];
 
 export function getFounder(handle: string): Founder | undefined {

@@ -51,6 +51,12 @@ function build(s: {
   why: string;
   glossary: string[];
   fundSectors: string[];
+  /**
+   * Whether this sector has a scraped /stage/[stage]/[sector] leaderboard
+   * (lib/data.ts). Defaults to true. Set false for curated-only sectors with
+   * no scraped coverage (e.g. gaming) so the FAQ doesn't point at a dead route.
+   */
+  scrapedLeaderboard?: boolean;
 }): Sector {
   const companyCount = companies.filter((c) => c.sector === s.slug).length;
   const fundCount = funds.filter((f) =>
@@ -81,7 +87,7 @@ function build(s: {
       },
       {
         question: `Is this an exhaustive list?`,
-        answer: `No. This is a curated seed corpus, not a Crunchbase-scale database. We add companies, funds, and founders deliberately when they meet our public-source threshold (self-published GitHub handle, public thesis, well-documented role). For the full open-source coverage of every ${s.name.toLowerCase()} startup we score, see /stage/[stage]/${s.slug} — the scraped leaderboard.`,
+        answer: `No. This is a curated seed corpus, not a Crunchbase-scale database. We add companies, funds, and founders deliberately when they meet our public-source threshold (self-published GitHub handle, public thesis, well-documented role).${s.scrapedLeaderboard === false ? "" : ` For the full open-source coverage of every ${s.name.toLowerCase()} startup we score, see /stage/[stage]/${s.slug} — the scraped leaderboard.`}`,
       },
     ],
     glossaryTokens: s.glossary,
@@ -169,6 +175,7 @@ export const sectors: Sector[] = [
     why: "Gaming is hit-driven and hard to read at the studio level, but gaming infrastructure underwrites like developer tools: the engineering signal is integration breadth (new engine SDKs, new platform adapters) and sustained backend commit velocity rather than a single launch spike. Corp Dev teams and gaming-native funds use this hub to track the picks-and-shovels layer — backends, multiplayer, and orchestration — where deal mechanics resemble dev tools, not content bets. We deliberately exclude studios, where signals are dominated by release calendars.",
     glossary: ["gaming", "multiplayer", "matchmaking", "netcode", "game server", "game engine", "live-ops"],
     fundSectors: ["gaming"],
+    scrapedLeaderboard: false,
   }),
 ];
 
