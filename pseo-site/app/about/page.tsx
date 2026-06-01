@@ -3,7 +3,13 @@ import Link from "next/link";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import PSEOFooterNav from "@/components/PSEOFooterNav";
-import { DATA_NERD_PERSON_SCHEMA, DATA_NERD_AUTHOR_ID } from "@/lib/data-nerd";
+import { DataNerdSignoff } from "@/components/DataNerdSignoff";
+import {
+  DATA_NERD_PERSON_SCHEMA,
+  DATA_NERD_AUTHOR_ID,
+  DATA_NERD_BIO_MEDIUM,
+  DATA_NERD_TRIBE,
+} from "@/lib/data-nerd";
 
 export const metadata: Metadata = {
   title: "About VC Deal Flow Signal — Why It Exists and Why You Might Trust It",
@@ -125,6 +131,21 @@ export default function AboutPage() {
             how can you check that without taking a vendor’s word for it?
           </p>
         </header>
+
+        <section className="rounded-2xl border border-amber-700/30 bg-gradient-to-br from-amber-950/15 via-slate-900 to-slate-950 p-6 sm:p-8 space-y-4">
+          <p className="text-amber-300 text-xs font-semibold uppercase tracking-[0.14em]">
+            Who is behind this
+          </p>
+          <p className="text-gray-200 text-base leading-relaxed">
+            {DATA_NERD_BIO_MEDIUM}
+          </p>
+          <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
+            Here is the part that matters most for you: you never read a line of
+            code — the read is done for you. The whole job is to turn what engineers
+            are doing in public into plain business English you can act on. {DATA_NERD_TRIBE.oneLine}
+          </p>
+          <DataNerdSignoff variant="default" />
+        </section>
 
         <section className="rounded-2xl border border-sky-700/30 bg-sky-950/20 p-6 sm:p-8 space-y-3">
           <p className="text-sky-300 text-xs font-semibold uppercase tracking-[0.14em]">
