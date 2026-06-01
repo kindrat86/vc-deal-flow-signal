@@ -59,7 +59,7 @@ export default function LaunchBanner() {
       className="relative bg-gradient-to-r from-sky-900 to-sky-800 text-sky-100 border-b border-sky-700 px-10 py-2.5 text-center text-xs sm:text-sm leading-snug"
     >
       <a
-        href="https://gitdealflow.com/#pricing"
+        href="/pricing"
         onClick={onClick}
         className="text-amber-100 font-semibold no-underline hover:underline"
       >

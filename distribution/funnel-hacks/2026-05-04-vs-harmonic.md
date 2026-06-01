@@ -50,6 +50,6 @@ Harmonic isn't going anywhere — the tier-1 fund segment is theirs. But the seg
 
 ---
 
-If you're a developer-investor or emerging fund manager: the [free Signal Digest](https://gitdealflow.com/#signup) ships every Sunday with 5 ranked startups. The [Dashboard](https://gitdealflow.com/#pricing) at €9.97/mo is the founding-member rate, locked forever. The full ranking is at [signals.gitdealflow.com/trending](https://signals.gitdealflow.com/trending).
+If you're a developer-investor or emerging fund manager: the [free Signal Digest](https://gitdealflow.com/#signup) ships every Sunday with 5 ranked startups. The [Dashboard](https://gitdealflow.com/dashboard) at €9.97/mo is the founding-member rate, locked forever. The full ranking is at [signals.gitdealflow.com/trending](https://signals.gitdealflow.com/trending).
 
 — The Data Nerd, [gitdealflow.com](https://gitdealflow.com)
