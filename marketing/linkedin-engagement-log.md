@@ -119,3 +119,8 @@
 - Own-post reply reminder: Friday May 29 was a scheduled post day (Tue/Wed/Thu/Fri cadence) — schedule file still missing; check linkedin.com/company/gitdealflow/posts manually and reply within 2h
 - Targets: Jenny Fielding, Ryan Hoover, Eric Bahn
 - Drafts saved above for copy-paste
+
+## 2026-06-01
+- Own-post reply reminder: none (Sunday May 31 is not a scheduled post day)
+- Targets: Eric Bahn, Charles Hudson, Beezer Clarkson
+- Drafts saved above for copy-paste
