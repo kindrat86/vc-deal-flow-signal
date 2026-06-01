@@ -228,19 +228,21 @@ export default function SectorSweepPage() {
           </p>
         </header>
 
-        {/* TWO DOORS */}
+        {/* PRIMARY CTA — the 7-minute brief is the one dominant path; the
+            direct-Stripe option is demoted to a small secondary text link
+            directly beneath it so a ready buyer can still pay now. */}
         <section
-          aria-label="Two doors — brief setter or direct buy"
-          className="grid grid-cols-1 md:grid-cols-2 gap-4"
+          aria-label="Submit the brief — or pay direct"
+          className="space-y-3"
         >
           <a
             href="#brief"
             className="rounded-xl border border-amber-700/40 bg-gradient-to-br from-amber-950/30 via-slate-900 to-slate-950 p-6 hover:border-amber-500 transition-colors space-y-2 block"
           >
             <p className="text-amber-300 text-[10px] font-semibold uppercase tracking-wider">
-              Door 1 · Recommended
+              Recommended
             </p>
-            <h2 className="text-lg font-bold text-gray-100">
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-100">
               Submit the 7-minute brief →
             </h2>
             <p className="text-sm text-gray-400 leading-relaxed">
@@ -251,29 +253,27 @@ export default function SectorSweepPage() {
               described.
             </p>
           </a>
-          <a
-            href={STRIPE_DIRECT_BUY}
-            className="rounded-xl border border-slate-700 bg-slate-900/40 p-6 hover:border-slate-500 transition-colors space-y-2 block"
-          >
-            <p className="text-slate-400 text-[10px] font-semibold uppercase tracking-wider">
-              Door 2 · Skip the brief
-            </p>
-            <h2 className="text-lg font-bold text-gray-100">
-              Pay €1,997 direct via Stripe →
-            </h2>
-            <p className="text-sm text-gray-400 leading-relaxed">
-              Already know your sector and want to commit. Stripe Checkout
-              opens, you pay, the intake form for sector + thesis lands in
-              your inbox within five minutes, and the 14-day delivery clock
-              starts the moment we receive your reply.
-            </p>
-          </a>
+          <p className="text-sm text-gray-400">
+            Already know your sector and want to commit now?{" "}
+            <a
+              href={STRIPE_DIRECT_BUY}
+              className="text-gray-300 hover:text-gray-100 underline decoration-dotted"
+            >
+              Skip the brief and pay €1,997 direct via Stripe →
+            </a>{" "}
+            <span className="text-gray-500">
+              (Stripe Checkout opens; the sector + thesis intake lands in your
+              inbox within five minutes, and the 14-day delivery clock starts
+              when we receive your reply.)
+            </span>
+          </p>
         </section>
 
         <TrialClose tone="amber">
-          Two doors, no calendar invite, no live commitment either way.
-          Before you read a single line of the stack — does the shape of
-          those two doors already feel like the right shape for how you buy?
+          One brief, no calendar invite, no live commitment — and a direct
+          buy link right there if you&rsquo;d rather just commit. Before you
+          read a single line of the stack — does that already feel like the
+          right shape for how you buy?
         </TrialClose>
 
         {/* STACK */}
@@ -496,22 +496,23 @@ export default function SectorSweepPage() {
         {/* TRIAL CLOSE STACK */}
         <section className="space-y-3 border-t border-slate-800 pt-8">
           <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider">
-            07 · Two paths from here
+            07 · From here
           </p>
-          <div className="flex flex-col sm:flex-row gap-3">
-            <a
-              href="#brief"
-              className="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-base transition-colors"
-            >
-              Submit the 7-minute brief →
-            </a>
+          <a
+            href="#brief"
+            className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-base transition-colors w-full sm:w-auto"
+          >
+            Submit the 7-minute brief →
+          </a>
+          <p className="text-gray-400 text-sm">
+            Or{" "}
             <a
               href={STRIPE_DIRECT_BUY}
-              className="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg border border-slate-600 bg-slate-800 hover:bg-slate-700 text-gray-100 font-semibold text-base transition-colors"
+              className="text-gray-300 hover:text-gray-100 underline decoration-dotted"
             >
-              Or skip the brief — €1,997 direct →
+              skip the brief and pay €1,997 direct →
             </a>
-          </div>
+          </p>
           <p className="text-gray-400 text-xs">
             Or test on one sector for{" "}
             <Link

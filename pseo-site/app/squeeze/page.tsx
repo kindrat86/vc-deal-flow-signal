@@ -90,9 +90,9 @@ export default function SqueezePage() {
               <span>
                 <strong className="text-amber-300">Reaches your
                 inbox 21–47 days before</strong> the founder&rsquo;s
-                deck reaches it. The window where you can write a
-                3-line code-observation email and get a 4× reply rate
-                vs. the deck-question approach.
+                deck reaches it. The window where a short, specific
+                note actually gets read — before forty other inboxes
+                light up with the same deck.
               </span>
             </li>
             <li className="flex gap-3">

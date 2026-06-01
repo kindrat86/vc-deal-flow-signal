@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { defineMetadata } from "@/lib/metadata";
+import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import { TrustPageOutro } from "@/components/TrustPageOutro";
 
 export const metadata = defineMetadata({
   title: "Subprocessors",
@@ -131,6 +133,7 @@ export default function SubprocessorsPage() {
       })),
       encoding: { "@type": "MediaObject", contentUrl: `${SITE}/.well-known/subprocessors.json`, encodingFormat: "application/json" },
     },
+    author: DATA_NERD_AUTHOR_REF,
     publisher: { "@type": "Organization", "@id": "https://gitdealflow.com/#organization" },
   };
 
@@ -144,6 +147,13 @@ export default function SubprocessorsPage() {
           Every third-party processor we engage. Ordered by data-sensitivity tier. We will email all paid subscribers at least 30 days before adding a new subprocessor that processes subscriber PII.
         </p>
       </header>
+
+      <section className="mb-8 rounded-xl border border-sky-700/30 bg-sky-950/20 p-5 sm:p-6">
+        <p className="text-sky-300 text-xs font-semibold uppercase tracking-[0.14em] mb-2">For the buyer doing diligence</p>
+        <p className="text-gray-200 text-sm leading-relaxed max-w-3xl">
+          Procurement asks for this so they can check every vendor in one place — so here it is: each processor, what it touches, its region, its certifications, and a direct link to its DPA. No digging, no engineer required. The two flags that matter for most reviews: <strong>card data lives only at Stripe (PCI-DSS L1)</strong> and <strong>analytics carry no PII</strong>.
+        </p>
+      </section>
 
       <section className="mb-8 rounded-xl border border-emerald-700/30 bg-emerald-950/20 p-5 sm:p-6 space-y-3">
         <p className="text-emerald-300 text-xs font-semibold uppercase tracking-[0.14em]">
@@ -212,6 +222,8 @@ export default function SubprocessorsPage() {
           </tbody>
         </table>
       </div>
+
+      <TrustPageOutro acNote="I publish the whole list — including the vendors that gave me a worse deal — for the same reason I publish the misses on the scorecard. A vendor who hides the list is a vendor with something to hide." />
 
       <footer className="mt-8 pt-6 border-t border-slate-800 text-sm text-gray-400 leading-relaxed">
         Machine-readable: <Link href="/.well-known/subprocessors.json" className="text-emerald-400 hover:underline">/.well-known/subprocessors.json</Link>. Companion docs: <Link href="/dpa" className="text-sky-400 hover:underline">/dpa</Link>, <Link href="/.well-known/compliance.json" className="text-emerald-400 hover:underline">/.well-known/compliance.json</Link>. Questions: <a className="text-sky-400 hover:underline" href="mailto:signal@gitdealflow.com">signal@gitdealflow.com</a>.

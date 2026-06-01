@@ -3,7 +3,13 @@ import Link from "next/link";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
-import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import { DataNerdSignoff } from "@/components/DataNerdSignoff";
+import { DATA_NERD_TRIBE, DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import {
+  EMOTIONAL_CAUSE_KICKER,
+  EMOTIONAL_CAUSE_HEADLINE,
+  EMOTIONAL_CAUSE_LINES,
+} from "@/content/cause";
 
 export const metadata: Metadata = {
   title: "What GitDealFlow Believes — and What It Refuses to Become",
@@ -126,26 +132,6 @@ export default function ManifestoPage() {
           </div>
         </section>
 
-        <section className="rounded-xl border border-amber-700/30 bg-amber-950/20 p-6 sm:p-8 space-y-3">
-          <p className="text-amber-300 text-xs font-semibold uppercase tracking-[0.14em]">
-            Start with the highest-intent routes
-          </p>
-          <p className="text-gray-300 text-sm leading-relaxed">
-            Use the manifesto when you want the belief system. But if your real question is proof, timing, or buyer-side fit, start with the sharper pages first.
-          </p>
-          <div className="flex flex-wrap gap-3">
-            <Link href="/research" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-amber-500 text-slate-950 text-sm font-semibold hover:bg-amber-400 transition-colors">
-              Read the research panel →
-            </Link>
-            <Link href="/compare/crunchbase-alternative-for-angel-investors" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
-              Compare timing vs verification →
-            </Link>
-            <Link href="/buyers-guide" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
-              Read the buyer's guide →
-            </Link>
-          </div>
-        </section>
-
         <section className="rounded-xl border border-rose-700/40 bg-gradient-to-br from-rose-950/25 via-slate-900 to-slate-950 p-6 sm:p-8 space-y-5">
           <p className="text-rose-300 text-xs font-semibold uppercase tracking-wider">
             What we are tired of
@@ -156,6 +142,13 @@ export default function ManifestoPage() {
           <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
             That is the moment this whole product pushes against: when the story is already public,
             the databases are already updated, and you are being asked to react instead of notice.
+          </p>
+          <p className="text-gray-200 text-sm sm:text-base leading-relaxed border-l-2 border-rose-500/60 pl-4">
+            So here is what we stand against, by name: the warm-intro funnel, where the best deals
+            only flow to the people who can afford the right dinners. The consensus deal-flow
+            industry that sells six-figure data subscriptions to six-person funds and calls proximity
+            a methodology. Being three time zones from a partner&rsquo;s lunch table should not be the
+            price of admission to a round.
           </p>
         </section>
 
@@ -203,6 +196,26 @@ export default function ManifestoPage() {
           </div>
         </section>
 
+        <section className="rounded-xl border border-rose-700/30 bg-gradient-to-br from-rose-950/15 via-slate-900 to-slate-950 p-6 sm:p-8 space-y-4">
+          <p className="text-rose-300 text-xs font-semibold uppercase tracking-wider">
+            {EMOTIONAL_CAUSE_KICKER}
+          </p>
+          <h2 className="text-2xl font-bold text-gray-100 leading-snug">
+            {EMOTIONAL_CAUSE_HEADLINE}
+          </h2>
+          <div className="space-y-3">
+            {EMOTIONAL_CAUSE_LINES.map((line) => (
+              <p key={line} className="text-gray-300 text-sm sm:text-base leading-relaxed">
+                {line}
+              </p>
+            ))}
+          </div>
+          <p className="text-gray-200 text-sm sm:text-base leading-relaxed border-l-2 border-rose-500/60 pl-4">
+            There is a name for the reader who nods through all of this. You are a First Mover, and
+            this is the creed: {DATA_NERD_TRIBE.oneLine}
+          </p>
+        </section>
+
         <section className="rounded-xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8 space-y-4">
           <p className="text-sky-300 text-xs font-semibold uppercase tracking-wider">
             If this sounds right
@@ -223,6 +236,8 @@ export default function ManifestoPage() {
             </Link>
           </div>
         </section>
+
+        <DataNerdSignoff variant="long" />
       </div>
     </>
   );

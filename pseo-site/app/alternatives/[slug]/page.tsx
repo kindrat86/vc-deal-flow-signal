@@ -7,6 +7,7 @@ import { getAllSectors, getCurrentPeriod, getDataLastModified } from "@/lib/data
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import SeoCta from "@/components/SeoCta";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -499,6 +500,13 @@ export default async function AlternativePage({ params }: PageProps) {
           >
             Get the Report
           </Link>
+        </div>
+
+        <div className="mt-6">
+          <SeoCta
+            secondary={{ label: "Test one sector — First Look €7", href: "/firstlook" }}
+            signoffIndex={1}
+          />
         </div>
       </div>
     </>

@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 };
 
 const STACK = [
-  { label: "20 talks across 5 days — synthetic narration, anonymous-by-design", value: "€0 free during the live window" },
+  { label: "20 talks, released on a rolling basis — synthetic narration, anonymous-by-design", value: "€0 free for 24h after each talk airs" },
   { label: "Full transcripts of every talk (PDF + markdown)", value: "€97 with All-Access Pass" },
   { label: "Slide decks and chart packs from every talk", value: "€97 with All-Access Pass" },
   { label: "219-startup backtest CSV (the dataset behind the panel)", value: "€297 standalone, included with All-Access" },
@@ -128,7 +128,7 @@ export default function SummitPage() {
         {/* Hero — the squeeze */}
         <header className="space-y-5">
           <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider">
-            5 days · 20 talks · Free during the live window
+            20 talks · released on a rolling basis · free for 24h after each airs
           </p>
           <h1 className="text-4xl sm:text-5xl font-bold text-gray-100 leading-[1.05] tracking-tight">
             The new playbook for sourcing venture deals from public engineering data.
@@ -142,9 +142,9 @@ export default function SummitPage() {
             same pipeline that ships the Acceleration Watch.
           </p>
           <p className="text-sm text-gray-400 leading-relaxed">
-            <strong className="text-gray-300">{totalTalks} talks</strong> ·{" "}
-            5 days, Mon 19 May → Fri 23 May 2026 ·{" "}
-            <strong className="text-gray-300">€0 during the live window</strong> ·
+            <strong className="text-gray-300">{totalTalks} talks</strong>, released on a rolling basis ·{" "}
+            register to get each one as it drops ·{" "}
+            <strong className="text-gray-300">€0 for 24 hours after each talk airs</strong> ·
             All-Access Pass for lifetime replays + transcripts + 219-startup backtest CSV ·{" "}
             <Link href="/summit/all-access" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">
               €{SUMMIT.allAccessPrice} one-time
@@ -161,8 +161,10 @@ export default function SummitPage() {
             Register your Free Pass
           </h2>
           <p className="text-sm text-gray-300 leading-relaxed">
-            One email per day during the summit telling you which talk just
-            unlocked. Free. Unsubscribe in one click. We use the same{" "}
+            Talks air on a rolling basis. Register and we email you the moment
+            each one unlocks — free to watch for 24 hours after it airs. No
+            code required to follow along. Unsubscribe in one click. We use the
+            same{" "}
             <Link href="/methodology" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">
               published methodology
             </Link>{" "}
@@ -195,10 +197,10 @@ export default function SummitPage() {
             </button>
           </form>
           <p className="text-xs text-gray-400 leading-relaxed">
-            By registering, you opt in to summit emails (one per day during
-            the live window) and the weekly Acceleration Watch digest. Both
-            unsubscribe in one click. Anonymity-preserving — we never publish
-            attendee lists.
+            By registering, you opt in to summit emails (one each time a talk
+            unlocks) and the weekly Acceleration Watch digest. Both unsubscribe
+            in one click. Anonymity-preserving — we never publish attendee
+            lists.
           </p>
         </section>
 

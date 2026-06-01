@@ -4,6 +4,7 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 
 export const dynamic = "force-static";
 
@@ -166,20 +167,20 @@ export default function PitchPage() {
               </span>
             </li>
             <li className="flex items-start gap-3">
+              <span className="text-amber-400 font-bold shrink-0">→</span>
+              <span>
+                <strong className="text-gray-100">€7 First Look.</strong> One
+                sector deep-dive in 24 hours. Credited toward the Dashboard if
+                you upgrade in 14 days.
+              </span>
+            </li>
+            <li className="flex items-start gap-3">
               <span className="text-sky-400 font-bold shrink-0">→</span>
               <span>
                 <strong className="text-gray-100">€9.97/mo Dashboard.</strong>{" "}
                 109 startups, 19 sectors, full filters, 219-startup backtest
                 CSV, monthly Sector Deep Dive PDF. Founding-member price
                 locked forever.
-              </span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="text-amber-400 font-bold shrink-0">→</span>
-              <span>
-                <strong className="text-gray-100">€7 First Look.</strong> One
-                sector deep-dive in 24 hours. Credited toward Dashboard if
-                you upgrade in 14 days.
               </span>
             </li>
           </ul>
@@ -226,6 +227,10 @@ export default function PitchPage() {
           </Link>{" "}
           — same case, three objections broken, full stack reveal.
         </p>
+
+        <div className="flex justify-center pt-2">
+          <DataNerdSignoff variant="compact" />
+        </div>
       </div>
     </>
   );

@@ -243,6 +243,38 @@ export default function NicheDownHubPage() {
           </div>
         </section>
 
+        <section
+          className="rounded-xl border border-sky-700/40 bg-gradient-to-br from-sky-950/20 via-slate-900 to-slate-950 p-6 sm:p-8 space-y-3"
+          aria-label="Get the weekly signal"
+        >
+          <p className="text-sky-300 text-xs font-semibold uppercase tracking-wider">
+            Get the weekly signal
+          </p>
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-100">
+            Want the named companies moving inside these niches?
+          </h2>
+          <p className="text-gray-300 text-base leading-relaxed">
+            The map above is the category view. The weekly Acceleration Watch
+            emails you the specific companies whose engineering is accelerating
+            right now — ranked, in plain English, no code required. Free to
+            start. Or test one sector for €7.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3 pt-2">
+            <a
+              href="https://gitdealflow.com/#signup"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-sm transition-colors"
+            >
+              Get the free Acceleration Watch →
+            </a>
+            <Link
+              href="/firstlook"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg border border-slate-700 bg-slate-800 hover:bg-slate-700 text-gray-100 font-semibold text-sm transition-colors"
+            >
+              Test one sector for €7 →
+            </Link>
+          </div>
+        </section>
+
         <p className="text-gray-400 text-xs leading-relaxed border-t border-slate-800 pt-6">
           Last refreshed: this surface is regenerated from{" "}
           <code className="text-gray-300">content/niches.ts</code> on every

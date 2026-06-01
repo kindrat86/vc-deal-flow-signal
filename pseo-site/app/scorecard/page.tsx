@@ -3,6 +3,8 @@ import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { FalseBeliefBreaker } from "@/components/FalseBeliefBreaker";
+import { PlainEnglishNote } from "@/components/PlainEnglishNote";
+import { TrustConversionBlock } from "@/components/TrustConversionBlock";
 import { getHreflangLanguages } from "@/lib/hreflang";
 
 export const dynamic = "force-static";
@@ -190,6 +192,41 @@ export default function ScorecardPage() {
           </p>
         </section>
 
+        <PlainEnglishNote title="How to read this">
+          <p>
+            <strong className="text-gray-200">Hit</strong> means the startup we
+            named announced a fundraise, or sustained 4×+ engineering
+            acceleration, inside the grading window — the call paid off.{" "}
+            <strong className="text-gray-200">Miss</strong> means neither
+            happened: no raise, and the activity dropped back to baseline. We
+            show the misses too.{" "}
+            <strong className="text-gray-200">Pending</strong> means the
+            grading window is still open — the pick is made, the clock is
+            running, and we have not earned the right to claim it either way yet.
+          </p>
+          <p>
+            Right now every row is Pending because the first window only opens
+            2026-06-26. That is honest, not weak: a forward pick is only worth
+            anything if it was dated before the outcome was known.
+          </p>
+        </PlainEnglishNote>
+
+        <section className="rounded-xl border border-slate-800 bg-slate-900/40 p-5 sm:p-6 space-y-2">
+          <p className="text-gray-300 text-sm leading-relaxed">
+            These are the forward picks, still grading out. If you want proof
+            you can check today, the backwards-looking receipts are already
+            public — named orgs, dated engineering events, dated fundraise
+            announcements — on{" "}
+            <Link
+              href="/wins"
+              className="text-amber-300 hover:text-amber-200 underline decoration-dotted"
+            >
+              the wins page
+            </Link>
+            .
+          </p>
+        </section>
+
         <section className="space-y-4">
           <h2 className="text-2xl font-bold text-gray-100">Weekly rolls</h2>
           <table className="w-full text-sm">
@@ -317,6 +354,11 @@ export default function ScorecardPage() {
           Public-grading scorecard drawn from direct-response sales canon —
           a rolling-demonstration variant of the one-shot proof.
         </p>
+
+        <TrustConversionBlock
+          dominant="firstlook"
+          context="Want to watch a pick grade out on your own sector? Start one."
+        />
       </div>
     </>
   );

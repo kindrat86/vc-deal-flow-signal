@@ -128,6 +128,22 @@ export default async function DashboardPage() {
         </p>
       </header>
 
+      {/* Upgrade nudge (Dashboard tier only) */}
+      {!isInsider && (
+        <div className="mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 rounded-lg border border-amber-500/30 bg-amber-950/15 px-4 py-3">
+          <p className="text-sm text-gray-300 leading-relaxed">
+            <span className="text-amber-300 font-semibold">Get this list 24 hours earlier</span>
+            {" "}+ the private investor room. Same ranked list, more lead time — €97/mo.
+          </p>
+          <Link
+            href="/insider"
+            className="inline-flex shrink-0 items-center justify-center gap-1.5 rounded-lg border border-amber-500/40 bg-amber-500/10 hover:bg-amber-500/20 text-amber-200 hover:text-amber-100 font-semibold text-sm px-4 py-2 transition-colors"
+          >
+            Insider Circle <span aria-hidden="true">→</span>
+          </Link>
+        </div>
+      )}
+
       {/* Client-side filter + table */}
       <DashboardFilters
         startups={sorted}

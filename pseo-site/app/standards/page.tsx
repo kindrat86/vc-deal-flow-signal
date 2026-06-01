@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import { TrustPageOutro } from "@/components/TrustPageOutro";
 
 const SITE = "https://signals.gitdealflow.com";
 
@@ -327,6 +329,7 @@ export default function StandardsPage() {
         url: `${SITE}/standards`,
         inLanguage: "en-US",
         isPartOf: { "@id": `${SITE}/#website` },
+        author: DATA_NERD_AUTHOR_REF,
         about: {
           "@type": "Thing",
           name: "Open standards for venture-data interoperability",
@@ -409,6 +412,13 @@ export default function StandardsPage() {
             web of data is built on. Every row below is a public spec you can
             validate this site against — open the spec URL, hit the &quot;applied
             at&quot; endpoint, and check the output.
+          </p>
+          <p className="mt-3">
+            <strong className="text-white">For a non-technical buyer,</strong> the
+            takeaway is simpler: you don&apos;t have to take our word for anything.
+            Every claim on this site resolves to a public spec or a public dataset
+            your firm&apos;s engineer can validate in an afternoon — and you can hand
+            this page to them without reading a line of it yourself.
           </p>
         </div>
 
@@ -704,7 +714,9 @@ export default function StandardsPage() {
           </ol>
         </section>
 
-        <p className="text-xs text-gray-400 text-center">
+        <TrustPageOutro acNote="E-E-A-T isn't a headshot and a LinkedIn — it's whether a stranger can check your claims without trusting you. Every row on this page is something you can validate yourself. Trust the math, not me." />
+
+        <p className="text-xs text-gray-400 text-center mt-12">
           See also:{" "}
           <Link href="/citation-guide" className="hover:text-gray-300">
             Citation guide

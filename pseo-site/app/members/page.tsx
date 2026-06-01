@@ -131,6 +131,8 @@ export default function MembersPage() {
             Charter Cohort 2026 — <span className="text-amber-400">25 seats.</span>
           </h1>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed max-w-2xl">
+            The Charter Cohort just opened. The first investors to claim a
+            public seat are the founding members — <strong>{remaining} of {CHARTER_COHORT_TOTAL_SEATS} seats open.</strong>{" "}
             <Link
               href="/wins"
               className="text-amber-400 hover:text-amber-300 underline decoration-dotted"
@@ -197,11 +199,15 @@ export default function MembersPage() {
           </div>
           <div className="mt-5 pt-5 border-t border-amber-800/30">
             <p className="text-gray-300 text-sm leading-relaxed">
-              The Charter Cohort caps at {CHARTER_COHORT_TOTAL_SEATS} for 2026.
-              Each seat ships a public profile page (this site, indexed by
-              search engines and agent crawlers), inclusion in the Sunday
-              Insider briefing, and a co-author byline on any methodology
-              update the cohort participates in.{" "}
+              <strong className="text-gray-100">The board is empty because the cohort just opened.</strong>{" "}
+              Every one of the {CHARTER_COHORT_TOTAL_SEATS} seats is still a
+              founding seat — the people who claim them now are the names the
+              later cohort reads. The Charter Cohort caps at{" "}
+              {CHARTER_COHORT_TOTAL_SEATS} for 2026. Each seat ships a public
+              profile page (this site, indexed by search engines and agent
+              crawlers), inclusion in the Sunday Insider briefing, and a
+              co-author byline on any methodology update the cohort
+              participates in.{" "}
               <Link
                 href="/members/join"
                 className="text-amber-400 hover:text-amber-300 underline"

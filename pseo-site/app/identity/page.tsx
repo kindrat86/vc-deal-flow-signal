@@ -6,6 +6,7 @@ import { getHreflangLanguages } from "@/lib/hreflang";
 import IdentityBanner from "@/components/IdentityBanner";
 import { EMOTIONAL_CAUSE_LINES } from "@/content/cause";
 import ThreeCoreStoriesNav from "@/components/ThreeCoreStoriesNav";
+import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 
 export const dynamic = "force-static";
 
@@ -157,11 +158,7 @@ export default function IdentityPage() {
         headline: "Who You Become — The Investor Who's Early on Purpose",
         description:
           "Wealth (returns) primary, Status (analyst reputation) secondary. Seven before/after shifts.",
-        author: {
-          "@type": "Organization",
-          name: "VC Deal Flow Signal",
-          url: "https://gitdealflow.com",
-        },
+        author: DATA_NERD_AUTHOR_REF,
         publisher: {
           "@type": "Organization",
           name: "VC Deal Flow Signal",

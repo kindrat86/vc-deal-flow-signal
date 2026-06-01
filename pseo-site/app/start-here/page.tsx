@@ -221,8 +221,39 @@ export default function StartHerePage() {
 
         <StartHereArchetypeQuiz />
 
+        <section aria-label="Primary next step" className="space-y-3">
+          <div className="rounded-2xl border border-emerald-600/50 bg-gradient-to-br from-emerald-950/30 via-slate-900 to-slate-950 p-6 sm:p-8 space-y-3">
+            <p className="text-emerald-300 text-xs font-semibold uppercase tracking-wider">
+              Start here · free forever
+            </p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug">
+              If you only do one thing: get the free Acceleration Watch.
+            </h2>
+            <p className="text-gray-300 text-base leading-relaxed">
+              Five startups every Monday — the ones whose public code shipped
+              harder than last week. Sector-tagged, 6-week historical context.
+              No card, no code required to read it. It&rsquo;s the lowest-risk
+              way to see whether the signal is worth more of your time.
+            </p>
+            <a
+              href="https://gitdealflow.com/#signup"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-base font-bold px-6 py-3 rounded-lg transition-colors"
+            >
+              Get the free Acceleration Watch →
+            </a>
+          </div>
+        </section>
+
         <section className="space-y-4">
-          <h2 className="text-2xl font-bold text-gray-100">What you can do next, sized to your week</h2>
+          <h2 className="text-lg font-semibold text-gray-200">
+            Or, depending on the time you have…
+          </h2>
+          <p className="text-gray-400 text-sm leading-relaxed">
+            Not ready to subscribe yet? Read first. Each of these is the same
+            argument at a different length — pick the one that fits your week.
+          </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {PATHS.map((p) => (
               <Link
@@ -245,9 +276,16 @@ export default function StartHerePage() {
         </section>
 
         <section className="space-y-4">
-          <h2 className="text-2xl font-bold text-gray-100">If you already know what you want, jump in</h2>
+          <h2 className="text-lg font-semibold text-gray-200">
+            Or, if you already know you want a paid tier, jump in
+          </h2>
+          <p className="text-gray-400 text-sm leading-relaxed">
+            Want more than the weekly email? Here are the paid doors.
+            There&rsquo;s no wrong one — only doors sized to different check
+            sizes. None of them require you to read code.
+          </p>
           <ul className="space-y-3">
-            {ENTRY_POINTS.map((e) => {
+            {ENTRY_POINTS.filter((e) => !e.external).map((e) => {
               const c = COLOR_MAP[e.color];
               return (
                 <li

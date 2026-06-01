@@ -136,7 +136,7 @@ export default function FounderHubPage() {
             5 breakout startups every Sunday, ranked by GitHub engineering signals. Free.
           </p>
           <Link
-            href="https://gitdealflow.com/firstlook?ref=founder-hub"
+            href="/firstlook?ref=founder-hub"
             className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-sky-700 hover:bg-sky-600 text-white text-sm font-medium transition-colors"
           >
             Get the Report

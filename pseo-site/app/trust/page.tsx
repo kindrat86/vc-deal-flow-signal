@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { defineMetadata } from "@/lib/metadata";
+import { TrustConversionBlock } from "@/components/TrustConversionBlock";
 
 export const metadata = defineMetadata({
   title: "Trust Center — Privacy, Security, Compliance & Transparency",
@@ -212,6 +213,12 @@ export default function TrustPage() {
           <Link href="/subprocessors" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
             Review subprocessors →
           </Link>
+          <Link href="/methodology" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+            How the signal works →
+          </Link>
+          <Link href="/wins" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+            See the receipts →
+          </Link>
         </div>
       </section>
 
@@ -252,6 +259,12 @@ export default function TrustPage() {
           </section>
         ))}
       </div>
+
+      <TrustConversionBlock
+        className="mt-12"
+        dominant="digest"
+        context="Cleared the trust review? Here's the next step."
+      />
 
       <footer className="mt-12 pt-6 border-t border-slate-800 text-sm text-gray-400 leading-relaxed">
         Questions or DPA requests:{" "}

@@ -7,6 +7,7 @@ import {
   parseBestSectorSlug,
   getDataLastModified,
 } from "@/lib/data";
+import SeoCta from "@/components/SeoCta";
 
 export const metadata: Metadata = {
   title: "Best Startups by Sector — Engineering Acceleration Rankings (2026)",
@@ -186,6 +187,8 @@ export default function BestIndex() {
             </Link>
           </div>
         </div>
+
+        <SeoCta signoffIndex={1} className="mt-12" />
       </div>
     </>
   );

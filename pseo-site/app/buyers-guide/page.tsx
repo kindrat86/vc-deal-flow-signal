@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import PSEOFooterNav from "@/components/PSEOFooterNav";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import { TrustConversionBlock } from "@/components/TrustConversionBlock";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 
@@ -274,6 +275,11 @@ export default function BuyersGuidePage() {
             ))}
           </div>
         </section>
+
+        <TrustConversionBlock
+          dominant="firstlook"
+          context="Done evaluating? This is the lightest real way to see the signal on your thesis."
+        />
 
         <PSEOFooterNav />
       </div>

@@ -4,6 +4,7 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { glossaryTerms, type GlossaryTerm } from "@/content/glossary";
+import SeoCta from "@/components/SeoCta";
 
 export const metadata: Metadata = {
   title: "Glossary — VC Deal Flow Signal Terms & Definitions",
@@ -184,7 +185,7 @@ export default function GlossaryPage() {
             Read VC content anywhere · don&rsquo;t come back here for every term
           </p>
           <p className="text-gray-300 text-sm leading-relaxed mb-4">
-            Install the <strong className="text-gray-100">VC Term Highlighter</strong> Chrome extension. It underlines every term in this glossary — SAFE, ARR, burn multiple, magic number, all 84 — on any article you read. Hover for the definition, click to jump back here. No telemetry, no remote calls.
+            Install the <strong className="text-gray-100">VC Term Highlighter</strong> Chrome extension. It underlines every term in this glossary — SAFE, ARR, burn multiple, magic number, all {terms.length} — on any article you read. Hover for the definition, click to jump back here. No telemetry, no remote calls.
           </p>
           <div className="flex flex-wrap gap-3">
             <a
@@ -250,28 +251,11 @@ export default function GlossaryPage() {
         </div>
 
         {/* CTA */}
-        <div className="mt-12 rounded-xl border border-slate-800 bg-slate-900 p-6 sm:p-8 text-center">
-          <h2 className="text-gray-100 font-semibold text-lg mb-2">
-            See these signals in action
-          </h2>
-          <p className="text-gray-400 text-sm mb-5 max-w-lg mx-auto">
-            Browse startup rankings across 20 sectors, or read our
-            methodology for the full technical breakdown.
-          </p>
-          <div className="flex justify-center gap-3">
-            <Link
-              href="/"
-              className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-medium transition-colors"
-            >
-              Browse Sectors
-            </Link>
-            <Link
-              href="/methodology"
-              className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 hover:border-slate-500 text-gray-300 text-sm font-medium transition-colors"
-            >
-              Read Methodology
-            </Link>
-          </div>
+        <div className="mt-12">
+          <SeoCta
+            secondary={{ label: "Browse sectors", href: "/" }}
+            signoffIndex={2}
+          />
         </div>
       </div>
     </>

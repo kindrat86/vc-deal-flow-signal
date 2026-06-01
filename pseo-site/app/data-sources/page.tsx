@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllSectors, getCurrentPeriod, getDataLastModified } from "@/lib/data";
+import { PlainEnglishNote } from "@/components/PlainEnglishNote";
+import { TrustConversionBlock } from "@/components/TrustConversionBlock";
 
 export const metadata: Metadata = {
   title: "Data Sources — Where VC Deal Flow Signal's Data Comes From",
@@ -330,6 +332,36 @@ export default function DataSourcesPage() {
           </div>
         </div>
 
+        <PlainEnglishNote title="What the numbers mean" className="mb-12">
+          <p>
+            Three numbers show up across the site and they are{" "}
+            <em>not</em> the same thing — don&apos;t let anyone conflate them:
+          </p>
+          <ul className="list-disc pl-5 space-y-1.5">
+            <li>
+              <strong className="text-gray-200">~4,200 organisations scanned every week</strong>{" "}
+              — the full universe of venture-backed GitHub orgs we look at. This
+              is the haystack, not the picks.
+            </li>
+            <li>
+              <strong className="text-gray-200">~85+ ranked and surfaced each week</strong>{" "}
+              — the much smaller set that actually shows unusual acceleration and
+              makes it into the Dashboard. This is what you read.
+            </li>
+            <li>
+              <strong className="text-gray-200">219 confirmed fundraises</strong>{" "}
+              — the historical panel behind the published research (SSRN, n=219),
+              used to test whether the signal leads real rounds. This is the
+              proof, not the live feed.
+            </li>
+          </ul>
+          <p>
+            Scanned universe, weekly shortlist, and research panel are three
+            different layers. You never sift the 4,200 yourself — we do, and hand
+            you the shortlist.
+          </p>
+        </PlainEnglishNote>
+
         <section className="mb-12" aria-label="Data sources">
           <h2 className="text-xl font-semibold text-gray-100 mb-6">Sources</h2>
           <div className="space-y-4">
@@ -475,6 +507,12 @@ export default function DataSourcesPage() {
             </Link>
           </div>
         </div>
+
+        <TrustConversionBlock
+          dominant="firstlook"
+          context="You've seen exactly where the data comes from. The next step is seeing the shortlist it produces on a sector you care about."
+          className="mt-12"
+        />
       </div>
     </>
   );

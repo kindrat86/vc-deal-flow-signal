@@ -220,7 +220,7 @@ export default function FounderPage() {
               SSRN
             </a>{" "}
             uses my real name behind a Sipiteno Ltd. corporate veil; everything
-            on this site uses initials. I don&rsquo;t do podcasts, I don&rsquo;t
+            on this site uses a handle. I don&rsquo;t do podcasts, I don&rsquo;t
             do video interviews, I don&rsquo;t do photos. The signal is the
             product. I&rsquo;m the person who computes it.
           </p>
@@ -241,8 +241,10 @@ export default function FounderPage() {
             was structurally underestimated by the consensus. I was going to
             write the email. I never did. Two weeks later their commit velocity
             tripled, four new contributors joined, three new infrastructure
-            repos spun up. Three weeks after that they announced a $4M Series A
-            led by a top-tier fund.
+            repos spun up. In plain English: they were suddenly shipping far
+            more than usual, the team doubled overnight, and they&rsquo;d
+            started building the thing competitors copy in a year. Three weeks
+            after that they announced a $4M Series A led by a top-tier fund.
           </p>
           <p className="text-gray-300 text-base leading-relaxed">
             The angle bothered me for a month. Every signal I needed was public.
@@ -251,7 +253,8 @@ export default function FounderPage() {
             real time. The investors who got in had either (a) been told by a
             warm intro, which is fine but slow, or (b) been watching the same
             data I had access to and acting faster. I built this product because
-            I was tired of being in column (a) and one quarter late.
+            I was tired of being in column (a) and one quarter late. You never
+            read a line of code — the read is done for you.
           </p>
         </section>
 
@@ -398,7 +401,7 @@ export default function FounderPage() {
               </strong>{" "}
               Anonymity is non-negotiable. If your firm requires named
               attribution on every paper or photo on every LinkedIn post,
-              I&rsquo;m the wrong vendor. The founder using initials is what
+              I&rsquo;m the wrong vendor. The handle is what
               lets me say uncomfortable things about how the consensus
               deal-flow industry works.
             </li>

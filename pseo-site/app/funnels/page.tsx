@@ -313,6 +313,35 @@ export default function FunnelHubPage() {
           </p>
         </section>
 
+        <section
+          aria-label="Not sure which door"
+          className="max-w-3xl rounded-xl border border-emerald-700/40 bg-emerald-950/15 p-5 sm:p-6 space-y-2"
+        >
+          <p className="text-emerald-300 text-xs font-semibold uppercase tracking-wider">
+            Not sure which door — and you don&rsquo;t read code?
+          </p>
+          <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
+            That&rsquo;s most people, and none of these require you to read code.
+            Start with the{" "}
+            <a
+              href="https://gitdealflow.com/#signup"
+              rel="noopener noreferrer"
+              className="text-emerald-300 hover:text-emerald-200 underline decoration-dotted font-medium"
+            >
+              free Sunday digest
+            </a>{" "}
+            — five startups a week, in plain English. If a specific question is
+            already costing you a meeting, test{" "}
+            <Link
+              href="/firstlook"
+              className="text-amber-300 hover:text-amber-200 underline decoration-dotted font-medium"
+            >
+              one sector for €7
+            </Link>{" "}
+            before you commit to anything monthly.
+          </p>
+        </section>
+
         <section className="space-y-5">
           <h2 className="text-xl font-bold text-gray-100">All 10 funnels</h2>
           <div className="grid grid-cols-1 gap-4">
@@ -452,13 +481,35 @@ export default function FunnelHubPage() {
           </p>
         </section>
 
+        {/* BUILDER-META BOUNDARY — everything below this divider is for people
+            building funnels, not buying the product. A buyer (Marcus) should
+            feel free to stop here; the doors above are all he needs. */}
+        <section
+          aria-label="For funnel builders"
+          className="border-t-2 border-slate-700 pt-10 space-y-2"
+        >
+          <p className="text-slate-400 text-xs font-semibold uppercase tracking-wider">
+            For funnel builders · how this site is built
+          </p>
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug">
+            Everything below is build-notes, not a buying decision.
+          </h2>
+          <p className="text-gray-400 text-sm sm:text-base leading-relaxed max-w-3xl">
+            If you came to evaluate the product, you&rsquo;re done — pick a door
+            above. The rest of this page is for marketers reverse-engineering how
+            the site itself is assembled: the component map and the
+            competitor-teardown method. Nothing here is something you need to
+            read or understand to use the signal.
+          </p>
+        </section>
+
         {/* 23 BUILDING BLOCKS — Brunson DotCom Secrets Ch 11. The architecture
             page that explains every component used to build any funnel on this
             site, mapped 1:1 to the chapters of the workbook. */}
         <section
           id="building-blocks"
           aria-label="The 26 building blocks of a funnel"
-          className="border-t border-slate-800 pt-10 space-y-5 scroll-mt-20"
+          className="pt-2 space-y-5 scroll-mt-20"
         >
           <header className="space-y-2">
             <p className="text-violet-400 text-xs font-semibold uppercase tracking-wider">

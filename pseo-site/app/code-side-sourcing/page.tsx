@@ -85,13 +85,13 @@ const FIRST_PRINCIPLES = [
   },
   {
     n: 2,
-    title: "Two-period confirmation over single-period spike",
-    body: "Hackathon weeks, launch sprints, and onboarding bursts all produce single-period commit spikes that mean nothing. Code-Side Sourcing requires the breakout to persist into a second 14-day window before it counts as actionable. This single rule eliminates the dominant source of false positives.",
+    title: "Confirm it twice before it counts",
+    body: "A one-off busy week — a hackathon, a launch sprint, a new-hire onboarding burst — means nothing on its own. The acceleration has to show up again in a second two-week window before it counts as a real signal (we call this two-period confirmation). This single rule eliminates the dominant source of false alarms.",
   },
   {
     n: 3,
-    title: "Contributor breadth over hero-developer noise",
-    body: "A Gini coefficient on the commit distribution separates broad-team acceleration (Gini &lt; 0.30, the strongest predictor) from a single hero developer carrying the team (Gini &gt; 0.70, mostly noise). Acceleration alone is half a signal — acceleration plus contributor breadth is the full signal.",
+    title: "The whole team speeding up, not one star engineer",
+    body: "There is a difference between a broad team all pushing harder — the strongest predictor — and a single star engineer carrying everyone else, which is mostly noise. We measure how evenly the work is spread across contributors (using a standard inequality measure, the Gini coefficient) and only count the broad-team case. Acceleration alone is half a signal; acceleration plus a broad team is the full signal.",
   },
   {
     n: 4,
@@ -310,6 +310,36 @@ export default function CodeSideSourcingPage() {
             site that previously said &ldquo;alternative data&rdquo; or
             &ldquo;code-side momentum&rdquo; now points here.
           </p>
+
+          {/* REFRAME / REASSURANCE — the most important line on the page.
+              "Code-Side" describes where the signal originates, not anything
+              the reader has to do. Buyer is corp-dev / PE / angel who does
+              not read code. Reuses the reassurance phrasing + the creed. */}
+          <div
+            data-speakable
+            className="rounded-xl border border-emerald-700/40 bg-emerald-950/20 p-5 sm:p-6 space-y-2"
+          >
+            <p className="text-emerald-300 text-xs font-semibold uppercase tracking-wider">
+              You do not have to read code
+            </p>
+            <p className="text-gray-200 text-base sm:text-lg leading-relaxed font-medium">
+              &ldquo;Code-Side&rdquo; refers to where the <em>signal</em> comes
+              from — the engineering work — not to anything you have to do. You
+              never read a line of code; the read is done for you. The output
+              is plain business English: a named company, why it&rsquo;s
+              moving, and how long you likely have before the round.
+            </p>
+            <p className="text-gray-400 text-sm leading-relaxed">
+              The creed is one line:{" "}
+              <em className="text-gray-300">
+                &ldquo;We move on the engineering signal before the round —
+                without reading a line of code.&rdquo;
+              </em>{" "}
+              If you&rsquo;re a solo angel, scout, seed fund, corp-dev or PE
+              operator who evaluates companies for a living but doesn&rsquo;t
+              want to pull up a merge graph, this category was built for you.
+            </p>
+          </div>
         </header>
 
         {/* FORMAL DEFINITION */}
@@ -536,16 +566,32 @@ export default function CodeSideSourcingPage() {
             The category is named. The reference implementation is shipping.
           </h2>
           <p className="text-gray-300 text-base leading-relaxed max-w-xl mx-auto">
-            Start at the free Sunday digest. If the cadence fits the way you
-            source, the rest of the ladder is two clicks away.
+            Start at the free Sunday digest. Or skip the wait: see the signal
+            on a sector you already know for €7, or run the live dashboard for
+            €9.97/mo. You never read a line of code — the read is done for you.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
-            <a
-              href="https://gitdealflow.com/#signup"
+            <Link
+              href="/firstlook"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-rose-600 hover:bg-rose-500 text-white font-semibold text-base shadow-lg shadow-rose-500/30 transition-colors"
+            >
+              See one sector for €7{" "}
+              <span aria-hidden="true">→</span>
+            </Link>
+            <Link
+              href="/pricing"
               className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-semibold text-base shadow-lg shadow-sky-500/30 transition-colors"
             >
-              Get the free Acceleration Watch{" "}
+              Run the dashboard — €9.97/mo{" "}
               <span aria-hidden="true">→</span>
+            </Link>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <a
+              href="https://gitdealflow.com/#signup"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg border border-slate-700 bg-slate-800 hover:bg-slate-700 text-gray-100 font-semibold text-base transition-colors"
+            >
+              Or start free with the Sunday digest
             </a>
             <Link
               href="/walkthrough"

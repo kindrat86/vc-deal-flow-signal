@@ -246,17 +246,19 @@ export default function DecadePage() {
             Ten years of earlier-signal practice — <span className="text-violet-400">in twelve modules</span>.
           </h1>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
-            When a curriculum exists, you compress a decade of practice into
-            a Saturday. The reader doesn&rsquo;t need to repeat your
-            mistakes — they need the conclusions you walked away with, in
-            the order that made them inevitable.
+            This is for the First Mover: a dealmaker who evaluates companies but
+            doesn&rsquo;t read code — corp-dev, PE, an angel, a scout, a seed
+            fund. You never read a line of code — the read is done for you. What
+            you get here is the practice behind it: how to notice startup
+            momentum earlier, and act on it before the round, in plain business
+            English.
           </p>
           <p className="text-gray-300 text-base leading-relaxed">
             Twelve modules · {TOTAL_MIN} minutes total · designed to be read
             in one sitting on a Saturday morning, or in chunks across a
-            week. Skip the modules you already lived through. The links at
-            the end of each module take you to the live page where the
-            module&rsquo;s teaching is wired into the product.
+            week. Skip the modules you already know. Each module ends with
+            links to the live page where its idea is wired into the product,
+            so you can see it in action, not just read about it.
           </p>
         </header>
 

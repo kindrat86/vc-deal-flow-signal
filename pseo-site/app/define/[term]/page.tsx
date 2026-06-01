@@ -13,6 +13,7 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import EmbedThisCard from "@/components/EmbedThisCard";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import SeoCta from "@/components/SeoCta";
 
 const SITE = "https://signals.gitdealflow.com";
 const SSRN_URL = "https://ssrn.com/abstract=6606558";
@@ -358,29 +359,12 @@ export default async function DefineTermPage({ params }: PageProps) {
           />
         </section>
 
-        <div className="rounded-xl border border-slate-800 bg-slate-900 p-6 sm:p-8 text-center">
-          <h2 className="text-gray-100 font-semibold text-lg mb-2">
-            See the signals in action
-          </h2>
-          <p className="text-gray-400 text-sm mb-5 max-w-lg mx-auto">
-            Browse this week&apos;s top startups ranked by engineering
-            acceleration. Free, no signup required.
-          </p>
-          <div className="flex justify-center gap-3 flex-wrap">
-            <Link
-              href="/"
-              className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-medium transition-colors"
-            >
-              Browse Signals
-            </Link>
-            <Link
-              href="/glossary"
-              className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 hover:border-slate-500 text-gray-300 text-sm font-medium transition-colors"
-            >
-              All Definitions
-            </Link>
-          </div>
-        </div>
+        <SeoCta
+          heading={`Now see ${t.term} in live signal data`}
+          blurb={`The free Acceleration Watch turns terms like ${t.term} into five named, accelerating startups every Sunday — translated into plain English, 21 to 47 days before the deck circulates. No code-reading, no card.`}
+          secondary={{ label: "Browse this week's signals", href: "/" }}
+          signoffIndex={3}
+        />
       </div>
     </>
   );

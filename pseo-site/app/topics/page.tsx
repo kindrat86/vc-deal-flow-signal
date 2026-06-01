@@ -3,6 +3,7 @@ import Link from "next/link";
 import { pillars, getPostsInPillar } from "@/content/pillars";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import SeoCta from "@/components/SeoCta";
 
 export const metadata: Metadata = {
   title: "Topics — VC Deal Flow Signal",
@@ -122,6 +123,8 @@ export default function TopicsIndexPage() {
             </Link>
           ))}
         </div>
+
+        <SeoCta signoffIndex={2} className="mt-12" />
       </div>
     </>
   );

@@ -81,6 +81,18 @@ export default function QuizPage() {
           </p>
         </header>
 
+        <div className="rounded-xl border border-sky-700/40 bg-sky-950/15 p-4 sm:p-5">
+          <p className="text-sky-300 text-[10px] font-semibold uppercase tracking-wider mb-1.5">
+            What you&rsquo;ll get
+          </p>
+          <p className="text-gray-300 text-sm leading-relaxed">
+            5 questions, about 90 seconds, no email needed to see the result.
+            At the end you get the tier and the archetype that fit your check
+            size and cadence — one named recommendation with a one-line reason,
+            not a sales page. No code required to read any of it.
+          </p>
+        </div>
+
         <QuizForm />
 
         <p className="text-gray-400 text-xs leading-relaxed border-t border-slate-800 pt-4">
