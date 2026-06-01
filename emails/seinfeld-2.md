@@ -22,7 +22,7 @@ Is it a fundraise? A product launch? A major hire push? The signal doesn't tell 
 
 The tool flags this pattern automatically across 60+ startups in 20 sectors, in your lane — you don't crunch anything, you just look. Browse the live data: https://signals.gitdealflow.com
 
-Upgrade for the full filtered view: EUR 9.97/mo early access pricing: https://gitdealflow.com/#pricing
+Upgrade for the full filtered view: EUR 9.97/mo early access pricing: https://gitdealflow.com/dashboard
 
 The Data Nerd
 

@@ -33,7 +33,7 @@ export default function CTABanner() {
               <span aria-hidden="true">→</span>
             </Link>
             <Link
-              href="https://gitdealflow.com/#pricing"
+              href="https://gitdealflow.com/dashboard"
               className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-600 hover:border-slate-400 hover:bg-slate-800/40 text-gray-200 hover:text-white text-sm font-medium transition-colors"
             >
               Unlock the Dashboard
