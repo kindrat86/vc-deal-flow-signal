@@ -12,6 +12,7 @@ import {
   getAllGeoPageSlugs,
 } from "@/lib/data";
 import StartupTable from "@/components/StartupTable";
+import CuriosityGate from "@/components/CuriosityGate";
 import CTABanner from "@/components/CTABanner";
 import ShareBar from "@/components/ShareBar";
 import VelocityBar from "@/components/charts/VelocityBar";
@@ -272,6 +273,18 @@ export default async function SectorPage({ params }: PageProps) {
             highlighted. Data last updated {period.name}.
           </p>
         </section>
+
+        {sortedStartups[0] && (
+          <section className="mb-10" aria-label="Projected signal preview">
+            <CuriosityGate
+              change={sortedStartups[0].commitVelocityChange}
+              signalType={sortedStartups[0].signalType}
+              entityName={sortedStartups[0].name}
+              otherCount={sortedStartups.length - 1}
+              contextLabel={`${sector.name} startups this period`}
+            />
+          </section>
+        )}
 
         {/* CTA */}
         <section className="mb-12" aria-label="Call to action">

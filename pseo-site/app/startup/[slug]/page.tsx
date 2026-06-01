@@ -7,6 +7,7 @@ import {
   getCurrentPeriod,
 } from "@/lib/data";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import CuriosityGate from "@/components/CuriosityGate";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -86,26 +87,8 @@ export default async function StartupPage({ params }: PageProps) {
     MENA: "Middle East & North Africa",
     Unknown: "Not specified",
   };
-  // Per-startup, honest projections for the curiosity-gate below. Derived
-  // from THIS org's real acceleration + signal type and the SSRN lead-time
-  // finding (median 31d, IQR 21-47d) — so the blurred row VARIES per startup
-  // instead of showing one hardcoded placeholder. Labeled a model estimate.
-  const leadWindow =
-    latestVelNum >= 200
-      ? "≈21-day lead window"
-      : latestVelNum >= 100
-        ? "≈31-day lead window"
-        : latestVelNum >= 25
-          ? "≈47-day lead window"
-          : "no active window";
-  const projectedMilestone =
-    latest.signalType === "Engineering hiring burst"
-      ? "Team expansion / round prep"
-      : latest.signalType === "Infrastructure buildout"
-        ? "Major product milestone"
-        : latest.signalType === "Deploy frequency spike"
-          ? "Public launch / release"
-          : "Platform or stack transition";
+  // Curiosity-gate projections are computed inside <CuriosityGate/> from this
+  // org's real signal (lib/projection.ts) — kept DRY with the list templates.
   const trackedCount = getAllStartupSlugs().length;
 
   const geoLabel = geoNames[profile.latestGeography] || profile.latestGeography;
@@ -396,48 +379,14 @@ export default async function StartupPage({ params }: PageProps) {
             </div>
           </div>
 
-          {/* Russell-fixes round 2, 2026-05-05 — Dealroom-style curiosity-gap row.
-              Renders a static-visual "Predicted fundraise window" + "Estimated round size" row
-              with the actual numbers blurred until the visitor signs up at /#signup. The
-              email signup is the gate; the blur is the lift. */}
-          <div className="mt-4 rounded-lg border-2 border-signal-500/30 bg-gradient-to-br from-signal-500/[0.03] to-slate-900 p-5">
-            <div className="flex items-center gap-2 mb-3">
-              <span className="inline-block bg-signal-500/15 text-signal-300 text-[10px] font-bold uppercase tracking-[0.15em] px-2 py-1 rounded-full border border-signal-500/30">
-                Insider preview
-              </span>
-              <p className="text-gray-400 text-xs">Free with email signup</p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-              <div>
-                <p className="text-gray-400 text-xs mb-1">Projected lead-time window</p>
-                <p className="text-2xl font-bold text-signal-400 select-none filter blur-sm">
-                  {leadWindow}
-                </p>
-              </div>
-              <div>
-                <p className="text-gray-400 text-xs mb-1">Projected next milestone</p>
-                <p className="text-2xl font-bold text-signal-400 select-none filter blur-sm">
-                  {projectedMilestone}
-                </p>
-              </div>
-            </div>
-            <p className="text-gray-400 text-sm leading-relaxed mb-4">
-              The free Sunday digest puts {profile.name} in context against the other{" "}
-              {trackedCount - 1} startups we track — 14-day acceleration deltas, contributor
-              maps, and the top three names not on Crunchbase yet. Five names every Sunday, no
-              card, no code-reading.
-            </p>
-            <a
-              href="https://gitdealflow.com/#signup"
-              className="inline-flex items-center gap-2 rounded-lg bg-signal-500 hover:bg-signal-400 active:bg-signal-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-signal-500/30 transition-all hover:-translate-y-0.5"
-            >
-              Unlock with email →
-            </a>
-            <p className="text-gray-400 text-[10px] mt-3 italic">
-              Predictions are model estimates from the SSRN-published methodology, not statements of
-              fact. Cross-reference with primary sources before acting.
-            </p>
-          </div>
+          <CuriosityGate
+            change={latest.commitVelocityChange}
+            signalType={latest.signalType}
+            entityName={profile.name}
+            otherCount={trackedCount - 1}
+            contextLabel="startups we track"
+            className="mt-4"
+          />
         </section>
 
         {/* Historical timeline */}

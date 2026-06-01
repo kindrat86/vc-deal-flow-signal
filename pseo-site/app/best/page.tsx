@@ -120,26 +120,6 @@ export default function BestIndex() {
           .
         </p>
 
-        <section className="mb-10 rounded-2xl border border-sky-700/30 bg-sky-950/20 p-6 sm:p-8">
-          <p className="text-sky-300 text-xs font-semibold uppercase tracking-[0.14em] mb-2">
-            Start with the highest-intent routes
-          </p>
-          <p className="text-gray-300 text-sm leading-relaxed mb-4">
-            Use the sector lists when you want breadth. But if your real question is proof, timing, or how to use the shortlist once you find a name, start with the sharper pages first.
-          </p>
-          <div className="flex flex-wrap gap-3">
-            <Link href="/research" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-sky-600 text-white text-sm font-semibold hover:bg-sky-500 transition-colors">
-              Read the research panel →
-            </Link>
-            <Link href="/compare/crunchbase-alternative-for-angel-investors" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
-              Compare timing vs verification →
-            </Link>
-            <Link href="/answers/how-to-turn-a-signal-into-a-watchlist" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
-              Turn a signal into a watchlist →
-            </Link>
-          </div>
-        </section>
-
         <div className="grid sm:grid-cols-2 gap-3">
           {items.map((it) => (
             <Link
@@ -187,6 +167,27 @@ export default function BestIndex() {
             </Link>
           </div>
         </div>
+
+        {/* "More reading" routes — demoted below the lists (was above them) */}
+        <section className="mb-10 rounded-2xl border border-sky-700/30 bg-sky-950/20 p-6 sm:p-8">
+          <p className="text-sky-300 text-xs font-semibold uppercase tracking-[0.14em] mb-2">
+            Start with the highest-intent routes
+          </p>
+          <p className="text-gray-300 text-sm leading-relaxed mb-4">
+            Use the sector lists when you want breadth. But if your real question is proof, timing, or how to use the shortlist once you find a name, start with the sharper pages first.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/research" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-sky-600 text-white text-sm font-semibold hover:bg-sky-500 transition-colors">
+              Read the research panel →
+            </Link>
+            <Link href="/compare/crunchbase-alternative-for-angel-investors" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              Compare timing vs verification →
+            </Link>
+            <Link href="/answers/how-to-turn-a-signal-into-a-watchlist" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              Turn a signal into a watchlist →
+            </Link>
+          </div>
+        </section>
 
         <SeoCta signoffIndex={1} className="mt-12" />
       </div>
