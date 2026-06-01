@@ -23,7 +23,7 @@ But their GitHub activity tells a story:
 That's your free five. The full Dashboard has 95+ more across 20 sectors, filterable by stage and geography. You don't crunch anything — it surfaces them, you just look.
 
 Browse the live rankings: https://signals.gitdealflow.com
-Upgrade to the Dashboard: https://gitdealflow.com/#pricing
+Upgrade to the Dashboard: https://gitdealflow.com/dashboard
 
 The Data Nerd
 
