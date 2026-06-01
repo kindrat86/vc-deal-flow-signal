@@ -295,7 +295,7 @@ export function renderDigestEmail(data: DigestData, opts: DigestOptions = {}): s
                 </tr>
               </table>
               <p class="tx-mut" style="margin:12px 0 0 0;color:${BRAND.textMut};font-size:13px;">
-                Want the deep dive? <a href="https://gitdealflow.com/dashboard" style="color:${BRAND.accentLight};font-weight:600;">Join the Insider Circle</a> for the full numbers, real-time alerts, and the complete research tools.
+                Want the deep dive? <a href="https://gitdealflow.com/insider" style="color:${BRAND.accentLight};font-weight:600;">Join the Insider Circle</a> for the full numbers, real-time alerts, and the complete research tools.
               </p>
             </td>
           </tr>

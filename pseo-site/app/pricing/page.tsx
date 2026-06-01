@@ -625,19 +625,19 @@ export default function PricingPage() {
             {
               claim:
                 "Second-cheapest paid product is the €7 First Look Pass — a one-time full sector deep dive delivered within 24 hours, with the €7 credited toward Dashboard if you upgrade within 14 days.",
-              sourceUrl: "https://gitdealflow.com/#firstlook",
+              sourceUrl: "https://gitdealflow.com/firstlook",
               sourceLabel: "First Look Pass",
             },
             {
               claim:
                 "Founding-member rates (€9.97/mo Dashboard, €97/mo Insider) lock in for the lifetime of the subscription; list prices are €49/mo and €197/mo respectively.",
-              sourceUrl: "https://gitdealflow.com/#pricing",
-              sourceLabel: "Apex pricing block",
+              sourceUrl: "https://gitdealflow.com/dashboard",
+              sourceLabel: "Dashboard founding rate",
             },
             {
               claim:
                 "Every paid tier ships with a 30-day Signal-or-It's-Free guarantee — full refund within 30 days if the signal does not surface a startup you find genuinely interesting.",
-              sourceUrl: "https://gitdealflow.com/#guarantee",
+              sourceUrl: "https://signals.gitdealflow.com/pricing#guarantee",
               sourceLabel: "Guarantee",
             },
           ]}
@@ -1182,7 +1182,7 @@ export default function PricingPage() {
         </section>
 
         {/* Guarantee */}
-        <section className="mb-12 rounded-lg border border-emerald-800 bg-emerald-950/20 p-6">
+        <section id="guarantee" className="mb-12 rounded-lg border border-emerald-800 bg-emerald-950/20 p-6">
           <h2 className="text-xl font-semibold text-emerald-300 mb-3">
             Signal or It&rsquo;s Free — 30-day guarantee
           </h2>

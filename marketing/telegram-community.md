@@ -20,8 +20,8 @@ What happens here:
 
 Want more?
 - Free weekly digest (5 startups): https://gitdealflow.com
-- Pro dashboard (60+ startups, filters, enrichment): EUR 9.97/mo at https://gitdealflow.com/#pricing
-- Insider Circle (private group, live briefings, API): EUR 97/mo at https://gitdealflow.com/#pricing
+- Pro dashboard (60+ startups, filters, enrichment): EUR 9.97/mo at https://gitdealflow.com/dashboard
+- Insider Circle (private group, live briefings, API): EUR 97/mo at https://gitdealflow.com/insider
 
 Want to discuss signals with other investors? Join the Insider Circle for the private group.
 
