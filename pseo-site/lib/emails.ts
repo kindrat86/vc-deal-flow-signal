@@ -106,7 +106,7 @@ export const SOAP_OPERA_EMAILS = [
 <p>Every Sunday from here on, I'll send you five startups in your sectors that are quietly taking off — teams shipping faster, contributors piling in, new infrastructure going up. The patterns that tend to show up 21 to 47 days before the deck circulates.</p>
 <p>Tomorrow, I want to challenge something you probably believe about whether public engineering data is even worth reading. Most of the people you trust on this are wrong, and the reason they're wrong is also why your current deal flow looks the way it does.</p>
 <p>Talk soon,<br>${FROM_NAME}</p>
-<p style="color:#64748b;font-size:14px;">P.S. If you want the full panel — 209 ranked orgs, filters by sector and stage, weekly refresh — the Dashboard is €9.97/mo founding-member, locked forever, closes when the cohort fills: <a href="${SITE}/#pricing" style="color:#0ea5e9;">${SITE}/#pricing</a></p>
+<p style="color:#64748b;font-size:14px;">P.S. If you want the full panel — 209 ranked orgs, filters by sector and stage, weekly refresh — the Dashboard is €9.97/mo founding-member, locked forever, closes when the cohort fills: <a href="${SITE}/dashboard" style="color:#0ea5e9;">${SITE}/dashboard</a></p>
 <p style="color:#64748b;font-size:14px;">P.P.S. The full methodology is published as an SSRN preprint (n=219, peer-reviewable): <a href="https://ssrn.com/abstract=6606558" style="color:#0ea5e9;">ssrn.com/abstract=6606558</a>. Read it before tomorrow's email and you'll see what's coming.</p>
 `),
   },
@@ -244,7 +244,7 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
 <p>One is a narrative. The other is behavior.</p>
 <p>The 8-object stack — Dashboard, 219-startup Backtest CSV, monthly Sector Deep-Dive PDF, <a href="https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn" style="color:#0ea5e9;">Chrome Extension #1 (Crunchbase + Wellfound badge)</a>, <a href="https://chromewebstore.google.com/detail/vc-github-lookup-%E2%80%94-startu/plgngijmloeljfkenecdkhiblcfcbblm" style="color:#0ea5e9;">Chrome Extension #2 (VC GitHub Lookup — hover any repo)</a>, Claude MCP Server, async Watchlist Build, Methodology Vault — totals €1,980 of standalone value. Founding-member price €9.97/mo, locked forever, 60-day no-questions refund.</p>
 <p><strong>Founding-member window closes May 15</strong> or at 30 signups, whichever comes first. After that, the Dashboard goes to €49/mo permanently.</p>
-<p><a href="${SITE}/#pricing" style="color:#0ea5e9;font-weight:600;">Lock in founding price &rarr;</a></p>
+<p><a href="${SITE}/dashboard" style="color:#0ea5e9;font-weight:600;">Lock in founding price &rarr;</a></p>
 <p>If the free digest is enough for now, that's fine too. You'll keep getting it every Sunday.</p>
 <p>Talk soon,<br>${FROM_NAME}</p>
 <p style="color:#64748b;font-size:14px;">P.S. Tomorrow I'll send you the 12-minute walkthrough of the Insider Circle — different rung, different reader. I send it once and never push it again.</p>
@@ -375,7 +375,7 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
 <p>The deck didn't show any of that. The deck couldn't show any of that — it's not a thing that fits on a slide. The data was on github.com the whole time. Free. Public. Indexed by Google. I just hadn't looked.</p>
 <p>That's the gap this product exists for. Not "use this instead of decks" — use this <em>before</em> the deck arrives, so when the deck does, you already know the company's shape.</p>
 <p>Talk soon —<br>${FROM_NAME}</p>
-<p style="color:#64748b;font-size:14px;">P.S. The dashboard ranks the same kind of pre-deck signals across 209 venture-backed orgs every Monday. €9.97/mo founding price, locked forever: <a href="${SITE}/#pricing" style="color:#0ea5e9;">${SITE}/#pricing</a></p>
+<p style="color:#64748b;font-size:14px;">P.S. The dashboard ranks the same kind of pre-deck signals across 209 venture-backed orgs every Monday. €9.97/mo founding price, locked forever: <a href="${SITE}/dashboard" style="color:#0ea5e9;">${SITE}/dashboard</a></p>
 `),
   },
 
@@ -441,7 +441,7 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
 <p>If the dashboard fits the way you source deals — the live ranked panel, the 219-startup backtest CSV, the monthly sector deep-dive PDF, the methodology source, the 30-day Signal-or-It's-Free guarantee — that's the rung where the math works for most readers. €9.97 × 12 is €119.64 for the year. One missed angel cheque pays it back forty times over.</p>
 <p>If it doesn't fit, no problem. The free digest stays. The 30-day welcome sequence ends here, the rhythm continues. You'll get a Sunday digest this weekend like always.</p>
 <p>Talk soon —<br>${FROM_NAME}</p>
-<p style="color:#64748b;font-size:14px;">P.S. Founding-price checkout: <a href="${SITE}/#pricing" style="color:#0ea5e9;">${SITE}/#pricing</a> · Quiz if you're unsure which tier fits: <a href="${SIGNALS}/quiz" style="color:#0ea5e9;">${SIGNALS}/quiz</a> · See every door: <a href="${SIGNALS}/funnels" style="color:#0ea5e9;">${SIGNALS}/funnels</a></p>
+<p style="color:#64748b;font-size:14px;">P.S. Founding-price checkout: <a href="${SITE}/dashboard" style="color:#0ea5e9;">${SITE}/dashboard</a> · Quiz if you're unsure which tier fits: <a href="${SIGNALS}/quiz" style="color:#0ea5e9;">${SIGNALS}/quiz</a> · See every door: <a href="${SIGNALS}/funnels" style="color:#0ea5e9;">${SIGNALS}/funnels</a></p>
 `),
   },
 
@@ -1913,7 +1913,7 @@ const D60_T: SoapOperaEmail = {
 <p>The credit-back loop is the part to keep in mind for later: 100% of the &euro;1,997 credits to Insider Circle if you upgrade within 60 days. So if you ever do graduate to a fund-tier rhythm, the Sweep is a free Insider on-ramp with a deep artefact attached.</p>
 <p>For now: the &euro;7 First Look + &euro;9.97/mo Dashboard remain the two rungs that match your cadence. The Sweep is a future option, not a current pitch. The free digest stays free regardless. Sunday hits as usual this weekend.</p>
 <p>Talk soon &mdash;<br>${FROM_NAME}</p>
-<p style="color:#64748b;font-size:14px;">P.S. Sweep details if curious: <a href="${SIGNALS}/pricing#sector-sweep-stack" style="color:#0ea5e9;">${SIGNALS}/pricing#sector-sweep-stack</a> &middot; The Dashboard remains the right next rung for the way you write checks: <a href="${SITE}/#pricing" style="color:#0ea5e9;">${SITE}/#pricing</a></p>
+<p style="color:#64748b;font-size:14px;">P.S. Sweep details if curious: <a href="${SIGNALS}/pricing#sector-sweep-stack" style="color:#0ea5e9;">${SIGNALS}/pricing#sector-sweep-stack</a> &middot; The Dashboard remains the right next rung for the way you write checks: <a href="${SITE}/dashboard" style="color:#0ea5e9;">${SITE}/dashboard</a></p>
 `),
 };
 

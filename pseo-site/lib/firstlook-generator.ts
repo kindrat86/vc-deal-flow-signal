@@ -180,7 +180,7 @@ If you're allocating real capital into one sector and need this depth across the
 - **Custom Sector Sweep** (€1,997 one-time) — every venture-backed startup in one sector you pick, engineering acceleration ranked over four quarters, diligence prompts on each top-10 name, three early-stage targets not yet on Crunchbase or PitchBook. Written report in 7 business days, 30-minute clarifications call after delivery. Detail: https://gitdealflow.com/sector-sweep?utm_source=email&utm_medium=firstlook-delivery&utm_campaign=sector-sweep · Commission: https://buy.stripe.com/bJe14m34DbNC6gm1by0x204
 
 If you want this every week, across all 20 sectors, with filters and the live dashboard:
-- **Dashboard** (€9.97/mo founding-member, locked forever) — https://gitdealflow.com/#pricing?utm_source=email&utm_medium=firstlook-delivery&utm_campaign=dashboard
+- **Dashboard** (€9.97/mo founding-member, locked forever) — https://gitdealflow.com/dashboard?utm_source=email&utm_medium=firstlook-delivery&utm_campaign=dashboard
 - Reply to your confirmation email with **"credit me"** and your €7 First Look Pass is credited toward your first month.
 
 If you want a different sector or a follow-up on a specific name, just reply.
