@@ -19,6 +19,7 @@ import { Resend } from "resend";
 import { readFileSync, existsSync } from "fs";
 import { resolve, dirname, join } from "path";
 import { fileURLToPath } from "url";
+import { createHmac, randomBytes } from "crypto";
 import { isExcluded } from "./excluded-emails.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -40,7 +41,8 @@ try {
   console.error("Warning: could not load .env:", e.message);
 }
 
-const { RESEND_API_KEY, PB_URL, PB_EMAIL, PB_PASSWORD, FROM_EMAIL, FROM_NAME } = process.env;
+const { RESEND_API_KEY, PB_URL, PB_EMAIL, PB_PASSWORD, FROM_EMAIL, FROM_NAME, VERIFY_SECRET } = process.env;
+const SITE_URL = process.env.SITE_URL || "https://signals.gitdealflow.com";
 if (!RESEND_API_KEY || !FROM_EMAIL || !FROM_NAME) {
   console.error("Missing required env: RESEND_API_KEY, FROM_EMAIL, FROM_NAME");
   process.exit(1);
@@ -83,6 +85,41 @@ const EMAIL_KEY = `digest-${DATE}`;
 const FROM = `${FROM_NAME} <${FROM_EMAIL}>`;
 const UNSUB_MAILTO = `<mailto:${FROM_EMAIL}?subject=Unsubscribe>`;
 
+// One-click HTTPS unsubscribe (RFC 8058). Mints the same v2 signed token as
+// pseo-site/lib/verify-token.ts (purpose "unsubscribe"), which /api/unsubscribe
+// on signals verifies before flipping the Resend contact to unsubscribed:true.
+// Falls back to mailto-only if VERIFY_SECRET is absent, so a misconfigured env
+// degrades to prior behavior instead of breaking the broadcast.
+function b64url(buf) {
+  return Buffer.from(buf)
+    .toString("base64")
+    .replace(/\+/g, "-")
+    .replace(/\//g, "_")
+    .replace(/=+$/, "");
+}
+function unsubscribeUrl(email) {
+  // ~10y TTL — an unsubscribe link must not expire in any practical timeframe.
+  const ttlMs = 10 * 365 * 86_400 * 1000;
+  const payload = {
+    e: String(email).toLowerCase(),
+    p: "unsubscribe",
+    x: Date.now() + ttlMs,
+    n: randomBytes(8).toString("hex"),
+  };
+  const body = b64url(JSON.stringify(payload));
+  const sig = createHmac("sha256", VERIFY_SECRET).update(body).digest("hex");
+  return `${SITE_URL}/api/unsubscribe?token=${encodeURIComponent(`${body}.${sig}`)}`;
+}
+function unsubHeaders(email) {
+  const listUnsubscribe = VERIFY_SECRET
+    ? `<${unsubscribeUrl(email)}>, ${UNSUB_MAILTO}`
+    : UNSUB_MAILTO;
+  return {
+    "List-Unsubscribe": listUnsubscribe,
+    "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
+  };
+}
+
 // --- test mode: send one copy to --to and exit ---
 if (TEST_TO) {
   if (!SEND) {
@@ -99,10 +136,7 @@ if (TEST_TO) {
     to: TEST_TO,
     subject,
     html,
-    headers: {
-      "List-Unsubscribe": UNSUB_MAILTO,
-      "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
-    },
+    headers: unsubHeaders(TEST_TO),
   });
   console.log(JSON.stringify(result, null, 2));
   process.exit(0);
@@ -202,10 +236,7 @@ for (const sub of queue) {
       to: sub.email,
       subject,
       html,
-      headers: {
-        "List-Unsubscribe": UNSUB_MAILTO,
-        "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
-      },
+      headers: unsubHeaders(sub.email),
     });
 
     await pb("/api/collections/email_log/records", {
