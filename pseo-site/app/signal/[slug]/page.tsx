@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { companies, getCompany, getAllCompanySlugs } from "@/content/companies";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -57,12 +58,7 @@ export default async function CompanySignalPage({ params }: PageProps) {
         "@type": "Article",
         headline: c.title,
         description: c.metaDescription,
-        author: {
-          "@type": "Person",
-          name: "The Data Nerd",
-          url: "https://signals.gitdealflow.com/about",
-          jobTitle: "Founder, VC Deal Flow Signal",
-        },
+        author: DATA_NERD_AUTHOR_REF,
         publisher: {
           "@type": "Organization",
           name: "VC Deal Flow Signal",

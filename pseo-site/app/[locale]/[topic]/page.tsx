@@ -9,6 +9,7 @@ import {
 import { LOCALES, getLocaleByCode } from "@/content/locales";
 import { topicEnPath } from "@/lib/hreflang";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 
 const SITE = "https://signals.gitdealflow.com";
 
@@ -220,11 +221,7 @@ export default async function LocaleTopicPage({ params }: PageProps) {
     url: `${SITE}/${locale}/${topic}`,
     inLanguage: locale,
     isPartOf: { "@id": `${SITE}/#website` },
-    author: {
-      "@type": "Person",
-      "@id": `${SITE}/about#person`,
-      name: "The Data Nerd",
-    },
+    author: DATA_NERD_AUTHOR_REF,
     publisher: { "@id": "https://gitdealflow.com/#organization" },
     license: "https://creativecommons.org/licenses/by/4.0/",
     speakable: {

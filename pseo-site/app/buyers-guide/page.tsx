@@ -3,6 +3,7 @@ import Link from "next/link";
 import PSEOFooterNav from "@/components/PSEOFooterNav";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 
 export const metadata: Metadata = {
   title:
@@ -68,11 +69,7 @@ export default function BuyersGuidePage() {
         headline: "How to Evaluate a Deal-Flow Tool Without Wasting a Demo",
         description:
           "A direct buyer-side guide to evaluating startup discovery tools.",
-        author: {
-          "@type": "Person",
-          name: "The Data Nerd",
-          url: "https://signals.gitdealflow.com/about",
-        },
+        author: DATA_NERD_AUTHOR_REF,
         publisher: {
           "@type": "Organization",
           name: "VC Deal Flow Signal",

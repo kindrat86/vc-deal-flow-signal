@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 
 export const dynamic = "force-static";
 
@@ -81,11 +82,7 @@ export default function StartupMomentumGuidePage() {
         headline: "How to Spot Startup Momentum Before the Round Gets Crowded",
         description:
           "A direct guide to spotting startup momentum before the round feels obvious.",
-        author: {
-          "@type": "Person",
-          name: "The Data Nerd",
-          url: "https://signals.gitdealflow.com/about",
-        },
+        author: DATA_NERD_AUTHOR_REF,
         publisher: {
           "@type": "Organization",
           name: "VC Deal Flow Signal",

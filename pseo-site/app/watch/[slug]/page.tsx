@@ -29,6 +29,7 @@ import {
   publicUrl,
   type SiteVideo,
 } from "@/content/videos";
+import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 
 const SITE = "https://signals.gitdealflow.com";
 const APEX = "https://gitdealflow.com";
@@ -143,12 +144,7 @@ function buildVideoJsonLd(v: SiteVideo) {
             url: `${SITE}/icon.png`,
           },
         },
-        creator: {
-          "@type": "Person",
-          name: "The Data Nerd",
-          url: `${SITE}/about/founder`,
-          identifier: "https://orcid.org/0009-0002-2222-4112",
-        },
+        creator: DATA_NERD_AUTHOR_REF,
         hasPart: clips,
         potentialAction: {
           "@type": "SeekToAction",

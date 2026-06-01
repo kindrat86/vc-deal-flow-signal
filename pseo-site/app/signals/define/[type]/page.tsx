@@ -8,6 +8,7 @@ import {
 } from "@/content/signal-primitives";
 import { getFindingBySlug } from "@/content/research-findings";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 
 const SITE = "https://signals.gitdealflow.com";
 const SSRN_URL = "https://ssrn.com/abstract=6606558";
@@ -101,13 +102,7 @@ export default async function SignalPrimitivePage({ params }: PageProps) {
         about: { "@id": `${SITE}/signals/define/${type}#term` },
         proficiencyLevel: "Expert",
         dependencies: "Public GitHub REST + GraphQL API",
-        author: {
-          "@type": "Person",
-          "@id": `${SITE}/about#person`,
-          name: "The Data Nerd",
-          url: `${SITE}/about`,
-          sameAs: ["https://orcid.org/0009-0002-2222-4112"],
-        },
+        author: DATA_NERD_AUTHOR_REF,
         publisher: { "@id": "https://gitdealflow.com/#organization" },
         license: "https://creativecommons.org/licenses/by/4.0/",
         speakable: {

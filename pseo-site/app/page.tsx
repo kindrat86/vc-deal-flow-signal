@@ -30,7 +30,7 @@ import CharterCohortBlock from "@/components/CharterCohortBlock";
 import { DataNerdPolarityCard } from "@/components/DataNerdPolarityCard";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import TrialClose from "@/components/TrialClose";
-import { DATA_NERD_ORCID } from "@/lib/data-nerd";
+import { DATA_NERD_ORCID, DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 import {
   EMOTIONAL_CAUSE_KICKER,
   EMOTIONAL_CAUSE_LINES,
@@ -333,11 +333,7 @@ export default function Home() {
           name: "A Longitudinal Panel of GitHub Engineering Velocity for Venture-Backed Startups",
           headline:
             "A Longitudinal Panel of GitHub Engineering Velocity for Venture-Backed Startups",
-          author: {
-            "@type": "Person",
-            name: "The Data Nerd",
-            sameAs: "https://orcid.org/0009-0002-2222-4112",
-          },
+          author: DATA_NERD_AUTHOR_REF,
           datePublished: "2026-04",
           publisher: {
             "@type": "Organization",

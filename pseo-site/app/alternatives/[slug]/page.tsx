@@ -6,6 +6,7 @@ import { useCases } from "@/content/use-cases";
 import { getAllSectors, getCurrentPeriod, getDataLastModified } from "@/lib/data";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -77,12 +78,7 @@ export default async function AlternativePage({ params }: PageProps) {
         "@type": "Article",
         headline: alt.title,
         description: alt.description,
-        author: {
-          "@type": "Person",
-          name: "The Data Nerd",
-          url: "https://signals.gitdealflow.com/about",
-          jobTitle: "Founder, VC Deal Flow Signal",
-        },
+        author: DATA_NERD_AUTHOR_REF,
         publisher: {
           "@type": "Organization",
           name: "VC Deal Flow Signal",
@@ -95,11 +91,7 @@ export default async function AlternativePage({ params }: PageProps) {
       },
       {
         "@type": "Review",
-        author: {
-          "@type": "Person",
-          name: "The Data Nerd",
-          url: "https://signals.gitdealflow.com/about",
-        },
+        author: DATA_NERD_AUTHOR_REF,
         reviewBody: alt.verdict,
         reviewRating: {
           "@type": "Rating",
@@ -216,11 +208,7 @@ export default async function AlternativePage({ params }: PageProps) {
         "@type": "Claim",
         text: alt.verdict,
         about: alt.h1,
-        author: {
-          "@type": "Person",
-          name: "The Data Nerd",
-          url: "https://signals.gitdealflow.com/about",
-        },
+        author: DATA_NERD_AUTHOR_REF,
         firstAppearance: {
           "@type": "CreativeWork",
           url: pageUrl,

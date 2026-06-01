@@ -4,7 +4,7 @@ import { AgentSummary } from "@/components/AgentSummary";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
-import { DATA_NERD_NAME } from "@/lib/data-nerd";
+import { DATA_NERD_NAME, DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 import { getHreflangLanguages } from "@/lib/hreflang";
 
 export const dynamic = "force-static";
@@ -110,12 +110,7 @@ export default function ForBuildersPage() {
         url: "https://signals.gitdealflow.com/for-builders",
         datePublished: "2026-05-05T00:00:00.000Z",
         dateModified: "2026-05-05T00:00:00.000Z",
-        author: {
-          "@type": "Person",
-          "@id": "https://signals.gitdealflow.com/about#person",
-          name: "The Data Nerd",
-          url: "https://signals.gitdealflow.com/about",
-        },
+        author: DATA_NERD_AUTHOR_REF,
         publisher: {
           "@type": "Organization",
           "@id": "https://gitdealflow.com/#organization",

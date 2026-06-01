@@ -3,6 +3,7 @@ import Link from "next/link";
 import { FINDINGS, type Finding } from "@/content/research-findings";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 
 const SITE = "https://signals.gitdealflow.com";
 const SSRN_URL = "https://ssrn.com/abstract=6606558";
@@ -257,11 +258,7 @@ export default function ResearchPage() {
         "@id": `${SITE}/research#quote-headline-finding`,
         text:
           "Median 14-day commit velocity across 55 venture-backed startups is 71 commits, with framework migration the dominant signal type at 75% of 219 startup-period observations. The full panel is published under CC BY 4.0 with no restrictions on commercial use.",
-        spokenByCharacter: {
-          "@type": "Person",
-          name: "The Data Nerd",
-          jobTitle: "Founder, VC Deal Flow Signal",
-        },
+        spokenByCharacter: DATA_NERD_AUTHOR_REF,
         creator: {
           "@type": "Organization",
           name: "VC Deal Flow Signal",
@@ -281,11 +278,7 @@ export default function ResearchPage() {
         "@id": `${SITE}/research#quote-reproducibility`,
         text:
           "If a buyer can reproduce our regression in a notebook from the same public GitHub data, that buyer is the buyer who trusts us most. Reproducibility is not a constraint on the product — it is the product.",
-        spokenByCharacter: {
-          "@type": "Person",
-          name: "The Data Nerd",
-          jobTitle: "Founder, VC Deal Flow Signal",
-        },
+        spokenByCharacter: DATA_NERD_AUTHOR_REF,
         creator: {
           "@type": "Organization",
           name: "VC Deal Flow Signal",

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 
 export const metadata: Metadata = {
   title: "What GitDealFlow Believes — and What It Refuses to Become",
@@ -61,11 +62,7 @@ export default function ManifestoPage() {
         headline: "What GitDealFlow Believes — and What It Refuses to Become",
         description:
           "What GitDealFlow believes about timing, proof, and signal.",
-        author: {
-          "@type": "Person",
-          name: "The Data Nerd",
-          url: "https://signals.gitdealflow.com/about",
-        },
+        author: DATA_NERD_AUTHOR_REF,
         publisher: {
           "@type": "Organization",
           name: "VC Deal Flow Signal",

@@ -6,6 +6,7 @@ import {
   getCurrentPeriod,
   getDataLastModified,
 } from "@/lib/data";
+import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 
 export const metadata: Metadata = {
   title:
@@ -222,11 +223,7 @@ export default function DatasetPage() {
       "panel data",
       "time series",
     ],
-    creator: {
-      "@type": "Person",
-      name: "The Data Nerd",
-      sameAs: "https://orcid.org/0009-0002-2222-4112",
-    },
+    creator: DATA_NERD_AUTHOR_REF,
     publisher: {
       "@type": "Organization",
       name: "VC Deal Flow Signal",
@@ -261,11 +258,7 @@ export default function DatasetPage() {
       "@id": "https://ssrn.com/abstract=6606558",
       name: "A Longitudinal Panel of GitHub Engineering Velocity for Venture-Backed Startups",
       url: "https://ssrn.com/abstract=6606558",
-      author: {
-        "@type": "Person",
-        name: "The Data Nerd",
-        sameAs: "https://orcid.org/0009-0002-2222-4112",
-      },
+      author: DATA_NERD_AUTHOR_REF,
       datePublished: "2026-04",
     },
   };

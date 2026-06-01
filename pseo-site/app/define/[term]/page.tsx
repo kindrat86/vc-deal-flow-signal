@@ -12,6 +12,7 @@ import {
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import EmbedThisCard from "@/components/EmbedThisCard";
+import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 
 const SITE = "https://signals.gitdealflow.com";
 const SSRN_URL = "https://ssrn.com/abstract=6606558";
@@ -140,13 +141,7 @@ export default async function DefineTermPage({ params }: PageProps) {
         inLanguage: "en-US",
         about: { "@id": `${pageUrl}#term` },
         articleSection: categoryMeta.label,
-        author: {
-          "@type": "Person",
-          "@id": `${SITE}/about#person`,
-          name: "The Data Nerd",
-          url: `${SITE}/about`,
-          sameAs: ["https://orcid.org/0009-0002-2222-4112"],
-        },
+        author: DATA_NERD_AUTHOR_REF,
         publisher: {
           "@type": "Organization",
           "@id": "https://gitdealflow.com/#organization",

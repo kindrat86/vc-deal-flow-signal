@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 
 const SITE = "https://signals.gitdealflow.com";
 const TITLE = "Best MCP Server for VC Research | VC Deal Flow Signal";
@@ -47,11 +48,7 @@ export default function BestMcpServerForVcResearchPage() {
         "@type": "Article",
         headline: TITLE,
         description: DESCRIPTION,
-        author: {
-          "@type": "Person",
-          name: "The Data Nerd",
-          url: `${SITE}/about`,
-        },
+        author: DATA_NERD_AUTHOR_REF,
         publisher: {
           "@type": "Organization",
           name: "VC Deal Flow Signal",
