@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentSummary } from "@/components/AgentSummary";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import { getDataLastModified } from "@/lib/data";
 
 const SITE = "https://signals.gitdealflow.com";
@@ -444,7 +445,7 @@ export default function AgentsLandingPage() {
             name: "Is everything really free, and what is the paid tier?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "All 19 surfaces — MCP, A2A, NLWeb, function-calling, OpenAPI, JSON/CSV/JSONL exports, badges, and discovery manifests — are free forever with no API key, no credit card, and only polite per-IP origin limits. The only paid surface is the get_deep_signal tool (€0.19/call, 100 for €19), which returns a composite score, in-sector rank, plain-English thesis, top-3 comparables, and multi-period history. Misses charge nothing and credits never expire.",
+              text: `All ${surfaces.length} surfaces — MCP, A2A, NLWeb, function-calling, OpenAPI, JSON/CSV/JSONL exports, badges, and discovery manifests — are free forever with no API key, no credit card, and only polite per-IP origin limits. The only paid surface is the get_deep_signal tool (€0.19/call, 100 for €19), which returns a composite score, in-sector rank, plain-English thesis, top-3 comparables, and multi-period history. Misses charge nothing and credits never expire.`,
             },
           },
         ],
@@ -539,6 +540,23 @@ export default function AgentsLandingPage() {
             </Link>{" "}
             for the new <code className="text-emerald-400 font-mono">get_deep_signal</code>{" "}
             tool. The free {surfaces.length} surfaces above stay free forever.
+          </p>
+          <p className="text-gray-500 text-xs leading-relaxed max-w-2xl mt-3">
+            Not wiring an agent? Get the human read —{" "}
+            <a
+              href="https://gitdealflow.com/#signup"
+              className="text-gray-400 hover:text-gray-200 underline-offset-2 hover:underline"
+            >
+              free Sunday digest
+            </a>{" "}
+            ·{" "}
+            <Link
+              href="/firstlook"
+              className="text-gray-400 hover:text-gray-200 underline-offset-2 hover:underline"
+            >
+              First Look
+            </Link>
+            .
           </p>
         </header>
 
@@ -719,6 +737,10 @@ export default function AgentsLandingPage() {
             . Dataset license: CC-BY 4.0.
           </p>
         </section>
+
+        <div className="mb-10">
+          <DataNerdSignoff variant="compact" catchphraseIndex={1} />
+        </div>
 
         <section aria-label="Related answer pages">
           <h2 className="text-base font-semibold text-gray-300 mb-3">

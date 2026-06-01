@@ -4,6 +4,7 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
+import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 
 export const dynamic = "force-static";
 
@@ -223,12 +224,7 @@ export default function CodeSideSourcingPage() {
         url: `${SITE}/code-side-sourcing`,
         datePublished: "2026-05-09T00:00:00.000Z",
         dateModified: "2026-05-09T00:00:00.000Z",
-        author: {
-          "@type": "Person",
-          "@id": `${SITE}/about#person`,
-          name: "The Data Nerd",
-          url: `${SITE}/about`,
-        },
+        author: DATA_NERD_AUTHOR_REF,
         publisher: {
           "@type": "Organization",
           "@id": "https://gitdealflow.com/#organization",

@@ -6,6 +6,7 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import TrialClose from "@/components/TrialClose";
 import BuyerRoadmap from "@/components/BuyerRoadmap";
+import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 
 export const dynamic = "force-static";
 
@@ -132,12 +133,7 @@ export default function InsiderPage() {
         url: "https://signals.gitdealflow.com/insider",
         datePublished: "2026-05-05T00:00:00.000Z",
         dateModified: "2026-05-05T00:00:00.000Z",
-        author: {
-          "@type": "Person",
-          "@id": "https://signals.gitdealflow.com/about#person",
-          name: "The Data Nerd",
-          url: "https://signals.gitdealflow.com/about",
-        },
+        author: DATA_NERD_AUTHOR_REF,
         publisher: {
           "@type": "Organization",
           "@id": "https://gitdealflow.com/#organization",

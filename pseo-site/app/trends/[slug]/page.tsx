@@ -9,6 +9,7 @@ import {
 } from "@/lib/data";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -84,11 +85,7 @@ export default async function TrendPage({ params }: PageProps) {
         "@type": "Article",
         headline: `${sector.name}: ${periodA.name} vs ${periodB.name}`,
         description: `Period-over-period engineering acceleration trend for ${sector.name.toLowerCase()} startups.`,
-        author: {
-          "@type": "Person",
-          name: "The Data Nerd",
-          url: "https://signals.gitdealflow.com/about",
-        },
+        author: DATA_NERD_AUTHOR_REF,
         publisher: {
           "@type": "Organization",
           name: "VC Deal Flow Signal",

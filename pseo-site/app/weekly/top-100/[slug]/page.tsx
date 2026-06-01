@@ -8,6 +8,7 @@ import {
   isoWeekToMonday,
 } from "@/lib/top-100";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 
 const SITE = "https://signals.gitdealflow.com";
 
@@ -107,11 +108,7 @@ export default async function Top100WeeklyPage({ params }: PageProps) {
         headline: `Top 100 GitHub-Signal Startups — ${label}`,
         datePublished: dateIso,
         dateModified: dateIso,
-        author: {
-          "@type": "Person",
-          name: "The Data Nerd",
-          url: `${SITE}/about`,
-        },
+        author: DATA_NERD_AUTHOR_REF,
         publisher: {
           "@type": "Organization",
           name: "VC Deal Flow Signal",

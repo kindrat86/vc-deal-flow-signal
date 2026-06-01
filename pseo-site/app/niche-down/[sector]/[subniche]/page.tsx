@@ -14,6 +14,7 @@ import {
   type DealVelocity,
 } from "@/content/niches";
 import { getDataLastModified } from "@/lib/data";
+import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 
 const SITE = "https://signals.gitdealflow.com";
 
@@ -90,11 +91,7 @@ export default async function NicheLeafPage({ params }: PageProps) {
         url,
         datePublished: lastModified,
         dateModified: lastModified,
-        author: {
-          "@type": "Person",
-          name: "The Data Nerd",
-          url: `${SITE}/about`,
-        },
+        author: DATA_NERD_AUTHOR_REF,
         publisher: {
           "@type": "Organization",
           name: "VC Deal Flow Signal",

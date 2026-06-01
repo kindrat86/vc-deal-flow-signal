@@ -11,6 +11,7 @@ import {
   type ContinuityDrop,
   type DropFormat,
 } from "@/content/continuity-drops";
+import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 
 export const dynamic = "force-static";
 
@@ -94,12 +95,7 @@ function buildJsonLd(drop: ContinuityDrop) {
         datePublished: drop.publishDate,
         dateModified: drop.publishDate,
         articleSection: FORMAT_LABELS[drop.format],
-        author: {
-          "@type": "Person",
-          "@id": `${SITE}/about#person`,
-          name: "The Data Nerd",
-          url: `${SITE}/about/founder`,
-        },
+        author: DATA_NERD_AUTHOR_REF,
         publisher: {
           "@type": "Organization",
           "@id": "https://gitdealflow.com/#organization",

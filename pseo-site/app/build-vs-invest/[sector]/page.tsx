@@ -16,7 +16,9 @@ import {
 } from "@/lib/data";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 
 interface PageProps {
   params: Promise<{ sector: string }>;
@@ -131,12 +133,7 @@ function buildJsonLd(entry: BuildVsInvestSector, lastModifiedIso: string) {
         datePublished: lastModifiedIso,
         dateModified: lastModifiedIso,
         inLanguage: "en",
-        author: {
-          "@type": "Person",
-          name: "The Data Nerd",
-          url: `${SITE}/about`,
-          jobTitle: "Founder, VC Deal Flow Signal",
-        },
+        author: DATA_NERD_AUTHOR_REF,
         publisher: {
           "@type": "Organization",
           name: "VC Deal Flow Signal",
@@ -200,11 +197,7 @@ function buildJsonLd(entry: BuildVsInvestSector, lastModifiedIso: string) {
         "@type": "Claim",
         text: entry.headline,
         about: `${entry.name} — build-vs-invest verdict`,
-        author: {
-          "@type": "Person",
-          name: "The Data Nerd",
-          url: `${SITE}/about`,
-        },
+        author: DATA_NERD_AUTHOR_REF,
         firstAppearance: {
           "@type": "CreativeWork",
           url,
@@ -618,6 +611,79 @@ export default async function BuildVsInvestSectorPage({ params }: PageProps) {
             </Link>
           </div>
         </section>
+
+        {/* Escalation ladder — for the reader who's already decided to act */}
+        <section
+          aria-label="Go deeper on this sector"
+          className="rounded-xl border border-sky-700/30 bg-sky-950/10 p-5 sm:p-6 space-y-5"
+        >
+          <div className="space-y-2">
+            <p className="text-sky-300 text-[10px] font-semibold uppercase tracking-wider">
+              When the verdict isn&rsquo;t enough
+            </p>
+            <h2 className="text-lg sm:text-xl font-bold text-gray-100">
+              You read the quadrant. Now you want the names.
+            </h2>
+            <p className="text-gray-300 text-sm leading-relaxed">
+              The free Monday email tells you which way the wind is blowing.
+              If {entry.name.toLowerCase()} is the call you&rsquo;re weighing this
+              quarter, two faster moves: pull the live teardown on this one
+              sector, or watch every sector week over week so you see the team
+              pulling ahead before it shows up in someone&rsquo;s deck.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 gap-4">
+            <div className="rounded-lg border border-slate-800 bg-slate-900/60 p-4 sm:p-5 flex flex-col gap-3">
+              <div className="flex items-baseline justify-between gap-2">
+                <p className="text-gray-100 font-semibold text-sm">
+                  Pressure-test one sector
+                </p>
+                <p className="text-gray-100 font-bold text-sm tabular-nums">
+                  €7
+                </p>
+              </div>
+              <p className="text-gray-400 text-xs leading-relaxed flex-1">
+                One sector, one teardown, one sitting. The same read your
+                analyst would spend an afternoon on — who&rsquo;s shipping like
+                they&rsquo;re about to raise, and who just looks busy. Cheaper
+                than the coffee you&rsquo;d buy to ask around.
+              </p>
+              <Link
+                href="https://gitdealflow.com/firstlook"
+                className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-gray-100 font-semibold text-sm transition-colors"
+              >
+                Test one sector — €7 →
+              </Link>
+            </div>
+
+            <div className="rounded-lg border border-sky-600/40 bg-sky-950/20 p-4 sm:p-5 flex flex-col gap-3">
+              <div className="flex items-baseline justify-between gap-2">
+                <p className="text-gray-100 font-semibold text-sm">
+                  Watch it move every week
+                </p>
+                <p className="text-gray-100 font-bold text-sm tabular-nums">
+                  €9.97<span className="text-slate-400 text-xs font-medium">/mo</span>
+                </p>
+              </div>
+              <p className="text-gray-400 text-xs leading-relaxed flex-1">
+                The standing dashboard across every sector we track — so the
+                team that quietly doubled overnight lands in front of you, not
+                in front of the partner who beat you to the term sheet. The deck
+                lags the work by 21 to 47 days; this is where you spend that
+                head start.
+              </p>
+              <Link
+                href="https://gitdealflow.com/dashboard"
+                className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-sm transition-colors"
+              >
+                Get the dashboard — €9.97/mo →
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        <DataNerdSignoff variant="long" catchphraseIndex={3} />
       </div>
     </>
   );

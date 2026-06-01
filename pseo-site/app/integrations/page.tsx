@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 
 export const metadata: Metadata = {
   title: "Integrations — MCP, Telegram, Email, RSS, API",
@@ -397,35 +398,49 @@ export default function IntegrationsPage() {
         </h1>
         <p className="text-gray-400 text-base leading-relaxed mb-10 max-w-2xl">
           Plug VC Deal Flow Signal into your existing workflow. Nine ways to
-          get engineering acceleration signals where you already work — AI
-          assistants, messaging, email, raw data, and automation. If you already know your question is proof, buyer fit, or agent workflow, start with the sharper routes below.
+          get the weekly engineering signal where you already work — your inbox,
+          Telegram, your feed reader, your CRM, and (if you build with AI) your
+          assistant or agent. Most people never touch code; pick a no-setup lane
+          below.
         </p>
 
         <section className="mb-10 rounded-2xl border border-sky-700/30 bg-sky-950/20 p-6 sm:p-8">
           <p className="text-sky-300 text-xs font-semibold uppercase tracking-[0.14em] mb-2">
-            Start with the highest-intent routes
+            Most people start here — no setup
           </p>
           <p className="text-gray-300 text-sm leading-relaxed mb-4">
-            Use integrations when you need connection points. But if your real question is AI workflow fit, proof, or buyer-side evaluation, start with the sharper pages first.
+            You don&apos;t need to touch code to get the signal. Have it land
+            where you already work: your inbox each Monday, a Telegram channel,
+            your feed reader, or piped straight into Affinity, HubSpot, or
+            Salesforce. Pick a lane and you&apos;re done.
           </p>
           <div className="flex flex-wrap gap-3">
-            <Link href="/integrations/best-mcp-server-for-vc-research" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-sky-600 text-white text-sm font-semibold hover:bg-sky-500 transition-colors">
-              Best MCP server for VC research →
+            <Link href="https://gitdealflow.com/#signup" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-sky-600 text-white text-sm font-semibold hover:bg-sky-500 transition-colors">
+              Get it by email every Monday →
             </Link>
-            <Link href="/research" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
-              Read the research panel →
+            <Link href="https://t.me/gitdealflow" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              Follow the Telegram channel →
             </Link>
-            <Link href="/buyers-guide" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
-              Read the buyer's guide →
+            <Link href="https://signals.gitdealflow.com/feed.xml" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              Add the RSS feed →
+            </Link>
+            <Link href="#Automation" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
+              Pipe it into your CRM (Zapier) →
             </Link>
           </div>
+          <p className="text-gray-500 text-xs leading-relaxed mt-5 pt-4 border-t border-slate-800/60">
+            Building with AI? Optional, for engineers and agent builders:{" "}
+            <Link href="/integrations/best-mcp-server-for-vc-research" className="text-sky-400 hover:text-sky-300 font-medium underline decoration-dotted">
+              wire the signal into Claude, Cursor, or an agent via the MCP server →
+            </Link>
+          </p>
         </section>
 
         {categories.map((cat) => {
           const items = integrations.filter((i) => i.category === cat);
           if (items.length === 0) return null;
           return (
-            <section key={cat} className="mb-12" aria-label={`${cat} integrations`}>
+            <section key={cat} id={cat} className="mb-12 scroll-mt-20" aria-label={`${cat} integrations`}>
               <h2 className="text-xs font-medium text-sky-500 uppercase tracking-wider mb-4">
                 {cat}
               </h2>
@@ -494,7 +509,7 @@ export default function IntegrationsPage() {
             What does it cost?
           </h2>
           <p className="text-gray-300 text-sm mb-5 max-w-lg mx-auto">
-            Free weekly digest plus a free MCP server (five read-only tools, never gated). Paid tiers from &euro;7 one-time to &euro;1,997 one-time, with founding-member rates on the recurring plans.
+            Free weekly digest plus a free MCP server (six read-only tools, never gated). Paid tiers from &euro;7 one-time to &euro;1,997 one-time, with founding-member rates on the recurring plans.
           </p>
           <Link
             href="/pricing"
@@ -538,6 +553,8 @@ export default function IntegrationsPage() {
             </Link>
           </div>
         </div>
+
+        <DataNerdSignoff variant="long" catchphraseIndex={3} className="mt-6" />
       </div>
     </>
   );

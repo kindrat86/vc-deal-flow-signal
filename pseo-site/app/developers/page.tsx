@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import { DataNerdSignoff } from "@/components/DataNerdSignoff";
+import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 
 export const metadata: Metadata = {
   title: "Developers — Deal Flow API, MCP Server, JSON & CSV Endpoints",
@@ -36,11 +38,7 @@ export default function DevelopersPage() {
         headline: "VC Deal Flow Signal Developer Documentation",
         description:
           "MCP server, JSON/CSV API, and OpenAPI schema for building deal flow automation on top of engineering acceleration signals.",
-        author: {
-          "@type": "Person",
-          name: "The Data Nerd",
-          url: "https://signals.gitdealflow.com/about",
-        },
+        author: DATA_NERD_AUTHOR_REF,
         publisher: {
           "@type": "Organization",
           name: "VC Deal Flow Signal",
@@ -62,7 +60,7 @@ export default function DevelopersPage() {
         runtimePlatform: "Node.js 20+",
         codeRepository: "https://www.npmjs.com/package/@gitdealflow/mcp-signal",
         description:
-          "MCP server for VC Deal Flow Signal. Five tools for trending startups, sector signals, startup lookup, methodology, and weekly summaries.",
+          "MCP server for VC Deal Flow Signal. Six free read tools: get_trending_startups, search_startups_by_sector, get_startup_signal, get_signals_summary, get_scout_receipts, and get_methodology.",
       },
       {
         "@type": "BreadcrumbList",
@@ -289,10 +287,23 @@ export default function DevelopersPage() {
                 <p className="text-gray-400 mt-1">Filter startups by sector (AI/ML, enterprise SaaS, fintech, dev tools, etc.).</p>
               </div>
               <div>
+                <code className="text-emerald-400 font-mono">get_scout_receipts</code>
+                <p className="text-gray-400 mt-1">Score a developer&rsquo;s public taste: which now-validated companies they backed early, before everyone else noticed.</p>
+              </div>
+              <div>
                 <code className="text-emerald-400 font-mono">get_methodology</code>
                 <p className="text-gray-400 mt-1">Full methodology: data sources, metric definitions, and signal classification rules.</p>
               </div>
             </div>
+            <p className="text-gray-500 text-xs mt-4">
+              Six read tools, free forever. The paid{" "}
+              <code className="text-emerald-400 font-mono">get_deep_signal</code>{" "}
+              tool (scored, memo-grade output) is separate — see{" "}
+              <Link href="/agents/credits" className="text-sky-400 hover:text-sky-300">
+                agent credits
+              </Link>{" "}
+              below.
+            </p>
           </div>
 
           <div className="flex gap-3 text-sm">
@@ -500,6 +511,10 @@ export default function DevelopersPage() {
               Read the buyer's guide
             </Link>
           </div>
+        </div>
+
+        <div className="mt-8">
+          <DataNerdSignoff variant="compact" catchphraseIndex={4} />
         </div>
       </div>
     </>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 
@@ -112,7 +113,7 @@ const GROUPS: Group[] = [
     id: "mcp",
     label: "MCP & developer integrations",
     intro:
-      "The agent-native surface. Eight tools. Free forever (the five core tools — see memory rule). Drop into Claude Desktop, Cursor, or any MCP-compatible client.",
+      "The agent-native surface. Six free read tools, free forever. Drop into Claude Desktop, Cursor, or any MCP-compatible client.",
     channels: [
       { name: "npm — @gitdealflow/mcp-signal", what: "The official MCP server. Install with one line: npx @gitdealflow/mcp-signal.", href: "https://www.npmjs.com/package/@gitdealflow/mcp-signal", external: true },
       { name: "GitHub — gitdealflow", what: "Source code, issue tracker, public roadmap.", href: "https://github.com/gitdealflow", external: true },
@@ -222,19 +223,34 @@ export default function DistributionPage() {
             <span className="text-gray-400">Distribution</span>
           </nav>
           <p className="text-emerald-400 text-xs font-semibold uppercase tracking-wider">
-            Where they&rsquo;re hiding · Applied
+            Find &amp; follow · Every surface
           </p>
           <h1 className="text-3xl sm:text-5xl font-bold text-gray-100 leading-[1.1] tracking-tight">
             Where to find us. <span className="text-emerald-400">Every channel, every mirror.</span>
           </h1>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
-            Your reader can&rsquo;t follow you on a channel they don&rsquo;t
-            know exists. So here&rsquo;s the full map — every public surface
-            where the GitDealFlow signal shows up, grouped by what you&rsquo;re
-            trying to do.
+            Where to find and follow us — on whatever surface fits how you
+            already read. Here&rsquo;s the full map: every public place the
+            GitDealFlow signal shows up, grouped so you can pick your channel
+            and get the same weekly read wherever you already are.
           </p>
           <p className="text-gray-300 text-base leading-relaxed">
-            First — <a href="#hiding" className="text-emerald-400 hover:text-emerald-300 underline decoration-dotted">where the right attention already lives</a>: the forums, substacks, and GitHub orgs where this kind of signal gets noticed first. Then: the eight surface groups we mirror to so we show up wherever serious readers already are.
+            New here? The fastest start is the{" "}
+            <a
+              href="https://gitdealflow.com/#signup"
+              className="text-emerald-400 hover:text-emerald-300 underline decoration-dotted"
+            >
+              free Sunday digest
+            </a>{" "}
+            — five accelerating teams in your inbox every week, no card. Want
+            to know how to read the signal before you subscribe? Start with the{" "}
+            <Link
+              href="/buyers-guide"
+              className="text-emerald-400 hover:text-emerald-300 underline decoration-dotted"
+            >
+              buyer&rsquo;s guide
+            </Link>
+            .
           </p>
           <p className="text-gray-300 text-base leading-relaxed">
             If you&rsquo;re building a portfolio agent, every machine-readable
@@ -287,13 +303,18 @@ export default function DistributionPage() {
         >
           <div className="space-y-3">
             <p className="text-emerald-300 text-xs font-semibold uppercase tracking-wider">
-              The secret formula · Step 2: where the right attention already lives
+              Where this conversation already happens
             </p>
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug">
-              Where the right attention already lives.
+              Where this kind of signal already gets discussed.
             </h2>
             <p className="text-gray-300 text-base leading-relaxed">
-              Start by naming the problem, then ask where people who care about that problem already pay attention. Below is the literal map: forums, substacks, and GitHub orgs where earlier signal, technical momentum, and startup timing already get discussed. Every surface group further down the page is a mirror we built to show up there naturally.
+              If early technical momentum and startup timing is what you care
+              about, here&rsquo;s where that conversation already lives —
+              forums, newsletters, and the engineering orgs people watch for
+              fun. Useful as a reading list of its own. Every surface group
+              further down the page is somewhere we publish so you can pick up
+              the same read in whichever of these you already spend time.
             </p>
           </div>
 
@@ -303,7 +324,7 @@ export default function DistributionPage() {
                 10 forums
               </h3>
               <p className="text-gray-400 text-[11px] leading-relaxed">
-                Where the comment threads are alive — engagement-side targets.
+                Where the threads on this stay alive and worth reading.
               </p>
               <ol className="text-gray-300 text-sm leading-relaxed space-y-1 list-decimal list-inside marker:text-emerald-500">
                 <li>Hacker News</li>
@@ -321,10 +342,10 @@ export default function DistributionPage() {
 
             <div className="space-y-2 rounded-lg border border-emerald-900/40 bg-slate-950/50 p-4">
               <h3 className="text-sm font-semibold text-emerald-300 uppercase tracking-wider">
-                10 substacks
+                10 newsletters
               </h3>
               <p className="text-gray-400 text-[11px] leading-relaxed">
-                Where the long-form reading happens — top-100 mirror targets.
+                Where the long-form thinking on this gets published.
               </p>
               <ol className="text-gray-300 text-sm leading-relaxed space-y-1 list-decimal list-inside marker:text-emerald-500">
                 <li>The Pragmatic Engineer — Gergely Orosz</li>
@@ -345,7 +366,7 @@ export default function DistributionPage() {
                 10 GitHub orgs
               </h3>
               <p className="text-gray-400 text-[11px] leading-relaxed">
-                Where the commit logs they read for fun ship from — bait-drop adjacency.
+                The engineering orgs people watch for fun — the kind of shipping this signal tracks.
               </p>
               <ol className="text-gray-300 text-sm leading-relaxed space-y-1 list-decimal list-inside marker:text-emerald-500">
                 <li>vercel</li>
@@ -363,10 +384,10 @@ export default function DistributionPage() {
           </div>
 
           <p className="text-gray-400 text-sm leading-relaxed border-t border-emerald-900/40 pt-4">
-            Bait per surface differs — a Lobste.rs methodology drop, a
-            Substack Acceleration Watch, an MCP install on the Cursor feed,
-            a /predicted citation in a Pragmatic Engineer reply — but every
-            path lands on the same SSRN paper{" "}
+            What you see on each surface is shaped to fit it — a methodology
+            note on Lobste.rs, the weekly Acceleration Watch on Substack, the
+            one-line MCP install on the Cursor feed — but every one points back
+            to the same SSRN paper{" "}
             <a
               href="https://ssrn.com/abstract=6606558"
               target="_blank"
@@ -496,6 +517,8 @@ export default function DistributionPage() {
             </Link>
           </div>
         </section>
+
+        <DataNerdSignoff variant="compact" className="mt-2" />
 
         <p className="text-gray-400 text-xs leading-relaxed border-t border-slate-800 pt-6">
           Distribution mapped from direct-response sales canon. Anonymity

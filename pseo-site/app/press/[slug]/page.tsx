@@ -7,6 +7,7 @@ import {
 } from "@/content/press-releases";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 
 const SITE = "https://signals.gitdealflow.com";
 
@@ -75,13 +76,7 @@ export default async function PressReleasePage({ params }: PageProps) {
         // "— The Data Nerd, founder of VC Deal Flow Signal"). Anchored
         // to the same @id as the Person node in RootIdentitySchema so
         // every NewsArticle resolves to the same author entity.
-        author: {
-          "@type": "Person",
-          "@id": `${SITE}/about#person`,
-          name: "The Data Nerd",
-          url: `${SITE}/about`,
-          jobTitle: "Founder, VC Deal Flow Signal",
-        },
+        author: DATA_NERD_AUTHOR_REF,
         publisher: { "@id": "https://gitdealflow.com/#organization" },
         // Anchor every press release to the Newspaper umbrella so this
         // page is recognisable as an entry in a registered publication

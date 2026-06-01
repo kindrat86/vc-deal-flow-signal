@@ -9,6 +9,7 @@ import {
 import { getDataLastModified } from "@/lib/data";
 import { AgentSummary } from "@/components/AgentSummary";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -383,6 +384,20 @@ export default async function PlaybookPage({ params }: PageProps) {
           >
             {p.ctaLabel} →
           </Link>
+          {p.builderAside && (
+            <p className="mt-5 text-xs text-slate-400 leading-relaxed">
+              <span className="font-semibold text-slate-300">
+                If you build agents:
+              </span>{" "}
+              {p.builderAside.text}{" "}
+              <a
+                href={p.builderAside.url}
+                className="text-sky-400 hover:text-sky-300 underline underline-offset-2 decoration-dotted font-semibold"
+              >
+                {p.builderAside.label} →
+              </a>
+            </p>
+          )}
         </section>
 
         <section className="mb-12" aria-label="Frequently asked questions">
@@ -428,6 +443,15 @@ export default async function PlaybookPage({ params }: PageProps) {
             </ul>
           </section>
         )}
+
+        <section className="mt-12" aria-label="Who wrote this playbook">
+          <p className="text-gray-400 text-sm leading-relaxed mb-4">
+            The rubric above is the same one I run on the operating side every
+            week. I keep my name off it on purpose — the edge is in the timing,
+            not the messenger. Trust the math, not me.
+          </p>
+          <DataNerdSignoff />
+        </section>
       </article>
     </>
   );

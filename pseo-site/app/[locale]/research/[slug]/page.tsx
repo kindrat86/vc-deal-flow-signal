@@ -22,6 +22,7 @@ import {
 } from "@/content/ja-research";
 import { getFindingBySlug } from "@/content/research-findings";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 
 const SITE = "https://signals.gitdealflow.com";
 const SSRN_URL = "https://ssrn.com/abstract=6606558";
@@ -247,12 +248,7 @@ export default async function LocaleResearchPage({ params }: PageProps) {
             name: PAPER_TITLE_EN,
           },
         },
-        author: {
-          "@type": "Person",
-          "@id": `${SITE}/about#person`,
-          name: "The Data Nerd",
-          identifier: "https://orcid.org/0009-0002-2222-4112",
-        },
+        author: DATA_NERD_AUTHOR_REF,
         publisher: { "@id": "https://gitdealflow.com/#organization" },
         license: "https://creativecommons.org/licenses/by/4.0/",
         speakable: {
