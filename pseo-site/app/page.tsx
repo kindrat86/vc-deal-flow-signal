@@ -30,6 +30,8 @@ import CharterCohortBlock from "@/components/CharterCohortBlock";
 import { DataNerdPolarityCard } from "@/components/DataNerdPolarityCard";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import TrialClose from "@/components/TrialClose";
+import { VideoEmbedBlock } from "@/components/VideoEmbedBlock";
+import { DATA_NERD_ORCID } from "@/lib/data-nerd";
 import {
   EMOTIONAL_CAUSE_KICKER,
   EMOTIONAL_CAUSE_LINES,
@@ -707,9 +709,10 @@ export default function Home() {
         >
           <span aria-hidden className="mt-[1px] sm:mt-0">→</span>
           <span className="leading-snug">
-            If you write <span className="tabular-nums">€5k–€50k</span>
-            checks and want a calmer signal before the round gets obvious,
-            you are in the right place.
+            If you evaluate companies for a living — angel, scout, seed
+            fund, corp-dev or PE — and want a calmer signal before the round
+            gets obvious, you are in the right place.{" "}
+            <span className="text-emerald-300/80">No code-reading required.</span>
           </span>
         </p>
 
@@ -775,28 +778,14 @@ export default function Home() {
         </p>
       </header>
 
-      <section className="rounded-2xl border border-sky-700/40 bg-gradient-to-br from-sky-950/20 via-slate-900 to-slate-950 p-5 sm:p-6 space-y-3">
-        <p className="text-sky-300 text-xs font-semibold uppercase tracking-wider">
-          Start here if the site feels large
-        </p>
-        <p className="text-gray-300 text-sm leading-relaxed">
-          The best first page depends on the question. If you are comparing against Crunchbase, start with the wedge. If you need proof, start with research. If you want buyer-side clarity, start with the guide.
-        </p>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-          <Link href="/compare/crunchbase-alternative-for-angel-investors" className="rounded-xl border border-slate-800 bg-slate-900/70 p-4 hover:border-slate-600 transition-colors">
-            <p className="text-gray-100 font-semibold text-sm mb-1">Why not just use Crunchbase?</p>
-            <p className="text-gray-400 text-xs leading-relaxed">Start with the timing-vs-verification wedge.</p>
-          </Link>
-          <Link href="/research" className="rounded-xl border border-slate-800 bg-slate-900/70 p-4 hover:border-slate-600 transition-colors">
-            <p className="text-gray-100 font-semibold text-sm mb-1">Show me the proof</p>
-            <p className="text-gray-400 text-xs leading-relaxed">Start with the public panel and methodology layer.</p>
-          </Link>
-          <Link href="/buyers-guide" className="rounded-xl border border-slate-800 bg-slate-900/70 p-4 hover:border-slate-600 transition-colors">
-            <p className="text-gray-100 font-semibold text-sm mb-1">What should I buy first?</p>
-            <p className="text-gray-400 text-xs leading-relaxed">Start with the buyer-side evaluation page.</p>
-          </Link>
-        </div>
-      </section>
+      {/* Brunson "one funnel, one offer" fix (2026-06-01): removed the early
+          "Start here if the site feels large" 3-card router that sat here.
+          It dumped three exits immediately after the hook, before any belief
+          was built or the free email was offered — the #1 conversion drag.
+          The site now keeps exactly ONE human routing block (the "Where to
+          start" Free/Faster/Method lanes lower down, free as the default);
+          the bottom "Where to go next" grid is a post-decision SEO hub, not a
+          third start-router. Hero now flows straight into the story. */}
 
       {/* Brunson Expert Secrets §2 Ch 5 — Storytelling. Audit 2026-05-09
           flagged Ch 5 at 95/100 because the Day 0 / Day 14 / Day 21 / Day 25
@@ -825,6 +814,27 @@ export default function Home() {
         startupCount={totalTracked}
         sectorCount={activeSectorCount}
       />
+
+      {/* Plain-English framing above the live movers (2026-06-01). Marcus —
+          corp-dev / PE / non-engineer VP, whose fear is "looking
+          non-technical in a technical room" — hits the business translation
+          BEFORE any velocity / contributor / deploy chips, so the numbers
+          read as receipts, not a test he has to pass. Voice rule from
+          lib/data-nerd.ts: "translate, don't dump." */}
+      <div className="rounded-xl border border-emerald-700/30 bg-emerald-950/15 px-5 py-4 sm:px-6">
+        <p className="text-emerald-300 text-[11px] font-semibold uppercase tracking-wider mb-1.5">
+          In plain English
+        </p>
+        <p className="text-gray-200 text-sm sm:text-[15px] leading-relaxed">
+          These are the teams that suddenly started shipping far more than
+          their own normal this week — more engineers, more infrastructure,
+          more activity than usual.{" "}
+          <span className="text-gray-400">
+            You don&rsquo;t read the code; we translate the movement into
+            business language. The numbers on each card are the receipts.
+          </span>
+        </p>
+      </div>
 
       {/* Live hero — top 3 movers this week. Greg audit: "embed a live,
           breathing thing at the top." */}
@@ -899,23 +909,37 @@ export default function Home() {
           — is a lagging indicator.
         </h2>
         <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
-          Read the long version on the{" "}
+          Watch the three-minute version below — hook, the one belief, the
+          three objections, the stack, the close. Prefer to read? The{" "}
           <Link
             href="/walkthrough"
             className="text-sky-400 hover:text-sky-300 underline decoration-dotted"
           >
             12-minute walkthrough
           </Link>
-          {" "}or the{" "}
+          {" "}and the{" "}
           <Link
             href="/pitch"
             className="text-sky-400 hover:text-sky-300 underline decoration-dotted"
           >
             90-second pitch
           </Link>
-          . Three objections, three breakdowns, the SSRN panel that proves the
-          21-to-47-day lead time.
+          {" "}cover the same SSRN panel that proves the 21-to-47-day lead time.
         </p>
+      </section>
+
+      {/* Embedded VSL — Brunson Perfect Webinar, on-page (2026-06-01). Fixes
+          the "VSL is one click away" dock: the highest-converting mechanism
+          now plays ON the page, right where belief is being built. The
+          walkthrough-vsl asset (real, CC BY 4.0, synthetic-voice — anonymity
+          safe) is chaptered exactly to the Perfect Webinar arc: Hook → core
+          belief → three objections → the stack → close + guarantee. Click-to-
+          load poster (YouTubePoster) keeps it off the critical-render path. */}
+      <section aria-label="Watch the 3-minute pitch" className="my-8">
+        <p className="text-sky-300 text-xs font-semibold uppercase tracking-wider mb-3 text-center">
+          The 3-minute pitch · hook → belief → objections → stack → close
+        </p>
+        <VideoEmbedBlock slug="walkthrough-vsl" variant="full" />
       </section>
 
       {/* Three Secrets — the false-belief breakdowns surfaced directly
@@ -1062,6 +1086,54 @@ export default function Home() {
           15 instead. Compact, links to /data-nerd for the long version. */}
       <DataNerdPolarityCard />
 
+      {/* Institutional-trust beat (2026-06-01). The polarity card above
+          asserts "anonymity is a credibility signal" — true for the indie
+          reader, but a procurement problem for Marcus, who has to defend a
+          vendor to an investment committee. This converts the anonymity from
+          an intimacy ceiling into a credentialed, IC-ready signal: anonymous
+          handle, NOT an anonymous track record. Fixes the "anonymity =
+          institutional-trust problem" + Brunson "anti-personality" docks
+          without breaking the anonymity pillar (no face/name/voice added —
+          only the already-published ORCID + SSRN + CC BY 4.0 credentials). */}
+      <section
+        aria-label="Anonymous handle, credentialed methodology"
+        className="my-8 rounded-xl border border-sky-700/30 bg-gradient-to-br from-sky-950/25 via-slate-900 to-slate-950 p-6 sm:p-7"
+      >
+        <p className="text-sky-300 text-xs font-semibold uppercase tracking-wider mb-2">
+          Anonymous handle — not an anonymous track record
+        </p>
+        <p className="text-gray-200 text-sm sm:text-base leading-relaxed">
+          You can take this to an investment committee without taking a
+          personality with it. The handle is pseudonymous on purpose; the
+          <strong className="text-gray-100"> methodology is credentialed and
+          auditable</strong> — an SSRN-indexed paper (n=219), a persistent
+          ORCID (<span className="font-mono text-sky-300 tabular-nums">{DATA_NERD_ORCID}</span>),
+          and the full regression released CC BY 4.0 so your own team can
+          reproduce every number before you commit a euro. Your committee buys
+          the math, not the messenger.
+        </p>
+        <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-xs">
+          <Link
+            href="/methodology"
+            className="text-sky-400 hover:text-sky-300 underline decoration-dotted font-medium"
+          >
+            Read the methodology →
+          </Link>
+          <Link
+            href="/reproducibility"
+            className="text-sky-400 hover:text-sky-300 underline decoration-dotted font-medium"
+          >
+            Reproduce the panel →
+          </Link>
+          <Link
+            href="/citations"
+            className="text-sky-400 hover:text-sky-300 underline decoration-dotted font-medium"
+          >
+            Verify the credentials →
+          </Link>
+        </div>
+      </section>
+
       {/* AgentSummary kept for AI extractability — visually de-emphasized
           via wrapper since the live SignalLeader now plays the human-facing
           TL;DR role. */}
@@ -1187,10 +1259,10 @@ export default function Home() {
           week.
         </h2>
         <p className="text-gray-300 text-base leading-relaxed max-w-3xl">
-          If you just want one calm read every Sunday, start there. If you need
-          names faster because a question is already live, take the faster lane.
-          If you need something your team can reuse, start with the methodology.
-          Same signal. Different urgency.
+          <strong className="text-gray-100">Most people should start free</strong>{" "}
+          — one calm read every Sunday. The other two lanes are only for when a
+          live question is already costing you, or your team needs a method it
+          can defend. Same signal. Different urgency.
         </p>
       </section>
 
@@ -1198,7 +1270,10 @@ export default function Home() {
         aria-label="Three ways to start"
         className="my-12 grid grid-cols-1 gap-5 md:grid-cols-3"
       >
-        <article className="flex flex-col gap-4 rounded-2xl border border-sky-500/20 bg-slate-950/40 p-6">
+        <article className="relative flex flex-col gap-4 rounded-2xl border border-sky-500/60 ring-1 ring-sky-500/30 bg-gradient-to-b from-sky-950/40 to-slate-950/40 p-6 shadow-lg shadow-sky-500/10">
+          <span className="absolute -top-2.5 left-6 inline-flex items-center gap-1 rounded bg-sky-500 px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-950 shadow-sm shadow-sky-500/30">
+            <span aria-hidden="true">★</span> Most start here
+          </span>
           <div className="space-y-2">
             <span className="inline-flex items-center rounded-full border border-sky-400/30 bg-sky-500/10 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-sky-200">
               Start free
@@ -1323,8 +1398,10 @@ export default function Home() {
             <li className="flex gap-3">
               <span aria-hidden className="mt-[0.55rem] inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-400/70" />
               <span>
-                You&rsquo;re a developer who occasionally writes checks and
-                wants the cleanest 5-name digest in your inbox every Sunday.
+                You sit in corp-dev, PE, or as a non-engineer tech VP — you
+                evaluate companies for a living, don&rsquo;t read code
+                yourself, and want the engineering signal in plain business
+                English.
               </span>
             </li>
             <li className="flex gap-3">
@@ -1782,9 +1859,14 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Brunson DCS Ch 7 — Attractive Character signoff at page-end. Links
-          to /data-nerd character bible and /about/founder backstory. */}
-      <DataNerdSignoff variant="default" />
+      {/* Brunson DCS Ch 7 — Attractive Character signoff at page-end. Upgraded
+          default → "long" (2026-06-01) to give the Charismatic Leader more
+          presence at the final CTA: the medium first-person bio + a
+          catchphrase, so the page closes on a voice, not a logo. Counters the
+          "anonymity leaves AC-driven conversion on the table" dock while
+          staying anonymity-safe (sigma sigil, no face/name/voice). Links to
+          /data-nerd character bible and /about/founder backstory. */}
+      <DataNerdSignoff variant="long" />
 
     </div>
     </>
