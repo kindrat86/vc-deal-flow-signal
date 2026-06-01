@@ -70,6 +70,13 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        // Consolidated the duplicate €1 teardown product into /teardown
+        // (2026-06-01). /tweet-teardown/thanks stays for in-flight purchases.
+        source: "/tweet-teardown",
+        destination: "/teardown",
+        permanent: true,
+      },
+      {
         source: "/perfect-webinar/5min",
         destination: "/walkthrough/5min",
         permanent: true,

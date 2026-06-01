@@ -85,11 +85,7 @@ export default function ResearchPage() {
     headline: PAPER_TITLE,
     description:
       "A longitudinal panel of GitHub engineering velocity signals across 55 venture-backed startups in 20 sectors.",
-    author: {
-      "@type": "Organization",
-      name: "VC Deal Flow Signal",
-      url: "https://gitdealflow.com",
-    },
+    author: DATA_NERD_AUTHOR_REF,
     datePublished: "2026-04-19",
     inLanguage: "en",
     license: "https://creativecommons.org/licenses/by/4.0/",
@@ -587,23 +583,20 @@ export default function ResearchPage() {
             pressure-test the category, compare timing versus verification and
             read the buyer's guide before committing to a heavier workflow.
           </p>
-          <div className="flex flex-wrap gap-3 text-sm">
+          <div className="flex flex-wrap items-center gap-3 text-sm">
             <Link href="https://gitdealflow.com/#signup" className="inline-flex items-center rounded-lg bg-amber-400 px-4 py-2 font-semibold text-slate-950 hover:bg-amber-300 transition-colors">
               Get the free Sunday issue →
             </Link>
             <Link href="/firstlook" className="inline-flex items-center rounded-lg border border-slate-700 px-4 py-2 text-gray-200 hover:border-slate-500 hover:bg-slate-800/60 transition-colors">
-              Get my First Look →
-            </Link>
-            <Link href="/dashboard" className="inline-flex items-center rounded-lg border border-slate-700 px-4 py-2 text-gray-200 hover:border-slate-500 hover:bg-slate-800/60 transition-colors">
-              See the weekly operating surface →
-            </Link>
-            <Link href="/compare/crunchbase-alternative-for-angel-investors" className="inline-flex items-center rounded-lg border border-slate-700 px-4 py-2 text-gray-200 hover:border-slate-500 hover:bg-slate-800/60 transition-colors">
-              Compare timing vs verification →
-            </Link>
-            <Link href="/buyers-guide" className="inline-flex items-center rounded-lg border border-slate-700 px-4 py-2 text-gray-200 hover:border-slate-500 hover:bg-slate-800/60 transition-colors">
-              Read the buyer's guide →
+              Get my First Look (€7) →
             </Link>
           </div>
+          <p className="mt-3 text-xs text-gray-400 leading-relaxed">
+            Already further along? See the{" "}
+            <Link href="/dashboard" className="text-sky-400 hover:text-sky-300 underline">weekly operating surface</Link>,{" "}
+            <Link href="/compare/crunchbase-alternative-for-angel-investors" className="text-sky-400 hover:text-sky-300 underline">timing vs verification</Link>, or the{" "}
+            <Link href="/buyers-guide" className="text-sky-400 hover:text-sky-300 underline">buyer&rsquo;s guide</Link>.
+          </p>
         </section>
 
         <section className="text-center text-gray-400 text-sm">

@@ -10,6 +10,7 @@ import { LOCALES, getLocaleByCode } from "@/content/locales";
 import { topicEnPath } from "@/lib/hreflang";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 
 const SITE = "https://signals.gitdealflow.com";
 
@@ -290,6 +291,23 @@ export default async function LocaleTopicPage({ params }: PageProps) {
         <article className="mb-10">
           <RenderBody body={t.body} />
         </article>
+
+        <section
+          className="rounded-xl border border-sky-900/50 bg-sky-950/20 p-5 mb-8"
+          aria-label="Subscribe"
+        >
+          <a
+            href="https://gitdealflow.com/#signup"
+            hrefLang="en"
+            className="inline-flex items-center px-5 py-2.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-medium"
+          >
+            <span
+              dangerouslySetInnerHTML={{ __html: localeMeta.signalReportLabel }}
+            />
+          </a>
+        </section>
+
+        <DataNerdSignoff variant="compact" className="mb-8" />
 
         {englishCanonical ? (
           <div className="rounded-lg border border-slate-800 bg-slate-900/40 p-5 mb-8 text-sm">

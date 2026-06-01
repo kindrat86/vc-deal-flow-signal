@@ -406,17 +406,17 @@ export default function OriginPage() {
             </p>
           </Link>
 
-          <ul className="text-gray-200 text-base leading-relaxed space-y-2 pl-1 pt-2">
-            <li>
-              →{" "}
-              <a
-                href="https://gitdealflow.com/#signup"
-                rel="noopener noreferrer"
-                className="text-emerald-400 hover:text-emerald-300 underline decoration-dotted font-medium"
-              >
-                Subscribe to the Acceleration Watch (free, weekly)
-              </a>
-            </li>
+          <a
+            href="https://gitdealflow.com/#signup"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center mt-2 px-6 py-3 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold transition-colors"
+          >
+            Subscribe to the Acceleration Watch — free, weekly →
+          </a>
+          <p className="text-gray-400 text-xs pt-3 pl-1">
+            One door is enough to start. The rest are here when you want them:
+          </p>
+          <ul className="text-gray-300 text-sm leading-relaxed space-y-2 pl-1 pt-2">
             <li>
               →{" "}
               <Link

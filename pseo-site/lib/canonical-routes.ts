@@ -34,7 +34,7 @@ export const CANONICAL_PROD_ROUTES = [
   // Brunson Value Ladder rungs
   "/book",
   "/book/read",
-  "/tweet-teardown",
+  "/teardown",
   "/agents/credits",
   "/insider",
   "/pricing",

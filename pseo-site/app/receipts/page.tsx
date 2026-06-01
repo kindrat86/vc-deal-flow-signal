@@ -384,27 +384,8 @@ export default function ReceiptsLandingPage() {
           </Link>
         </section>
 
-        <section className="mb-12 rounded-xl border border-sky-500/30 bg-sky-500/5 p-6 sm:p-8">
-          <p className="text-sky-400 text-xs font-semibold uppercase tracking-wider mb-2">
-            Open prediction market
-          </p>
-          <h2 className="text-gray-100 font-bold text-xl mb-3">
-            Series A Race 2026 — which 5 startups raises first by EOY?
-          </h2>
-          <p className="text-gray-400 text-sm leading-relaxed mb-5 max-w-2xl">
-            Live implied odds for 5 high-signal early-stage startups, derived
-            from GitHub commit-velocity. Resolves Dec 31, 2026 on first
-            publicly disclosed Series A. Public methodology, public resolver,
-            machine-readable JSON. Free, no real money — we publish the
-            question, not the trades.
-          </p>
-          <Link
-            href="/markets/series-a-race-2026"
-            className="inline-flex items-center px-5 py-2.5 rounded-lg bg-sky-700 hover:bg-sky-600 text-white text-sm font-medium transition-colors"
-          >
-            See the live odds →
-          </Link>
-        </section>
+        {/* Series A Race market promo demoted to a link in "What to read next"
+            below — one-funnel: the free Scout tool + digest stay dominant. */}
 
         <section className="text-center text-xs text-gray-400">
           <p>
@@ -449,6 +430,11 @@ export default function ReceiptsLandingPage() {
             <li>
               <Link href="https://gitdealflow.com/report" className="text-sky-400 hover:text-sky-300 underline underline-offset-2 text-sm">
                 Read a sample Sunday watchlist
+              </Link>
+            </li>
+            <li>
+              <Link href="/markets/series-a-race-2026" className="text-sky-400 hover:text-sky-300 underline underline-offset-2 text-sm">
+                Series A Race 2026 — live implied odds
               </Link>
             </li>
           </ul>
