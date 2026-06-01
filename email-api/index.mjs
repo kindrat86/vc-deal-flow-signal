@@ -378,7 +378,7 @@ function wrapEmailHtml(bodyHtml) {
     </div>
     <div style="margin-top:40px; padding-top:20px; border-top:1px solid #e2e8f0; font-size:12px; color:#94a3b8;">
       <p>You're receiving this because you signed up at <a href="https://gitdealflow.com" style="color:#0ea5e9;">gitdealflow.com</a></p>
-      <p><a href="https://gitdealflow.com" style="color:#0ea5e9;">Visit Dashboard</a> · To unsubscribe, reply to this email with "unsubscribe" or <a href="mailto:signal@gitdealflow.com?subject=Unsubscribe" style="color:#0ea5e9;">click here</a>.</p>
+      <p><a href="https://gitdealflow.com/dashboard" style="color:#0ea5e9;">Visit Dashboard</a> · To unsubscribe, reply to this email with "unsubscribe" or <a href="mailto:signal@gitdealflow.com?subject=Unsubscribe" style="color:#0ea5e9;">click here</a>.</p>
     </div>
   </div>
 </body>

@@ -124,7 +124,7 @@ const MCP_HTML = `<!DOCTYPE html>
 
 <div style="margin-top:40px;padding-top:20px;border-top:1px solid #e2e8f0;font-size:12px;color:#94a3b8;">
 <p>You're receiving this because you requested the MCP setup guide at <a href="https://gitdealflow.com" style="color:#0ea5e9;">gitdealflow.com</a></p>
-<p><a href="https://gitdealflow.com" style="color:#0ea5e9;">Visit Dashboard</a> &middot; <a href="https://www.npmjs.com/package/@gitdealflow/mcp-signal" style="color:#0ea5e9;">npm Package</a> &middot; <a href="mailto:signal@gitdealflow.com" style="color:#0ea5e9;">Reply to unsubscribe</a></p>
+<p><a href="https://gitdealflow.com/dashboard" style="color:#0ea5e9;">Visit Dashboard</a> &middot; <a href="https://www.npmjs.com/package/@gitdealflow/mcp-signal" style="color:#0ea5e9;">npm Package</a> &middot; <a href="mailto:signal@gitdealflow.com" style="color:#0ea5e9;">Reply to unsubscribe</a></p>
 </div>
 
 </div>
