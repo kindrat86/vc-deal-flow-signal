@@ -64,7 +64,7 @@
         <a href="/firstlook" class="text-gray-400 text-sm hover:text-gray-100 transition">First Look</a>
         <a href="/insider" class="text-gray-400 text-sm hover:text-gray-100 transition">Insider</a>
       </nav>
-      <a href="#checkout" class="btn btn-cta btn-sm whitespace-nowrap shrink-0"><span class="sm:hidden">Lock €9.97</span><span class="hidden sm:inline">Lock €9.97/mo</span> <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
+      <button type="button" data-checkout class="btn btn-cta btn-sm whitespace-nowrap shrink-0"><span class="sm:hidden">Lock €9.97</span><span class="hidden sm:inline">Lock €9.97/mo</span> <span aria-hidden="true" class="btn-arrow">&rarr;</span></button>
     </div>
   </header>
 
@@ -77,7 +77,7 @@
         <h1 class="mobile-hero-title text-4xl md:text-6xl font-extrabold leading-tight mb-6">See the whole ranked field every week &mdash; weeks before the round, or the press.</h1>
         <p class="mobile-hero-copy text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8">The free Sunday email gives you five names. Dashboard is the full ranked field beneath it &mdash; 60+ startups across 20 sectors, refreshed weekly, in plain English. You never read code: each name lands with a one-line reason it's moving &mdash; the kind you can drop in front of your team and sound early, not technical. Built for the moment a shortlist stops being enough.</p>
         <div class="mobile-cta-stack flex flex-col sm:flex-row gap-3 justify-center items-center mb-5">
-          <a href="#checkout" class="btn btn-cta btn-lg w-full sm:w-auto">Lock €9.97/mo &rarr;</a>
+          <button type="button" data-checkout class="btn btn-cta btn-lg w-full sm:w-auto">Lock €9.97/mo &rarr;</button>
           <a href="/report" class="btn btn-secondary btn-md w-full sm:w-auto">See a sample issue first</a>
         </div>
         <p class="text-gray-400 text-sm">Founding rate &mdash; locked for life while you stay. Cancel in one click. Read the methodology before you pay a cent.</p>
@@ -183,7 +183,7 @@
           </div>
         </div>
         <div class="text-center mt-8">
-          <a href="#checkout" class="btn btn-cta btn-lg w-full sm:w-auto">Lock €9.97/mo &rarr;</a>
+          <button type="button" data-checkout class="btn btn-cta btn-lg w-full sm:w-auto">Lock €9.97/mo &rarr;</button>
           <p class="text-gray-500 text-sm mt-3">Locked for life while you stay &middot; cancel in one click &middot; €49/mo for members who join after June 30</p>
         </div>
       </div>
@@ -212,8 +212,18 @@
         <a href="/report" class="btn btn-secondary btn-md w-full sm:w-auto">See a sample issue</a>
         <a href="https://signals.gitdealflow.com" class="btn btn-secondary btn-md w-full sm:w-auto">Browse the live signal</a>
       </div>
-      <!-- When you have real founding-member quotes, drop a testimonial band here.
-           Keep them attributed and real — the honesty is the whole brand. -->
+      <!-- Honest social proof: NO invented quotes — that's the brand. This band turns
+           the absence of testimonials into a trust signal. When you have a REAL,
+           attributed founding-member quote, uncomment the <figure> slot below and fill it. -->
+      <div class="mobile-card mobile-card-pad rounded-2xl border border-gray-700 bg-dark-900/60 p-8 md:p-10 mt-12 max-w-3xl mx-auto text-center">
+        <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-3">Why there are no testimonials on this page</p>
+        <p class="text-gray-300 text-lg leading-relaxed">I could write five glowing quotes and sign them with initials. I won't &mdash; you can't check those, and checking is the entire point. So instead of asking you to trust strangers, I hand you what you can verify yourself: the methodology on SSRN, the open dataset with a DOI, a full sample issue, and the live signal surface. When founding members go on the record, their words land right here &mdash; named, dated, real. Until then, the work is the proof.</p>
+        <!-- REAL-QUOTE SLOT — uncomment and fill ONLY with an attributed quote you have permission to publish:
+        <figure class="mt-8 border-t border-gray-700 pt-8">
+          <blockquote class="text-gray-200 text-lg leading-relaxed">&ldquo;Real quote here.&rdquo;</blockquote>
+          <figcaption class="text-gray-400 text-sm mt-3">&mdash; Real Name, Role, Firm</figcaption>
+        </figure>
+        -->
     </section>
 
     <!-- ============ RISK REVERSAL · remove the "I'll come back" exit ============ -->
@@ -222,8 +232,8 @@
         <div class="mobile-card mobile-card-pad rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-8 md:p-10 text-center">
           <p class="text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-3">The risk is on me, not you</p>
           <h2 class="text-3xl font-bold mb-4">€9.97 and a one-click exit. There's nothing to trap you here.</h2>
-          <p class="text-gray-300 text-lg leading-relaxed max-w-2xl mx-auto mb-6">This is a month-to-month subscription, not a contract. No call to cancel, no dark-pattern hoops &mdash; one click in Stripe and you're done, keeping anything you've already downloaded. Try the next issue. If the full field doesn't earn its ten minutes, leave, and you've risked less than a coffee. Stay, and your founding €9.97 never goes up.</p>
-          <a href="#checkout" class="btn btn-cta btn-md w-full sm:w-auto">Start Dashboard &mdash; €9.97/mo &rarr;</a>
+          <p class="text-gray-300 text-lg leading-relaxed max-w-2xl mx-auto mb-6">This is a month-to-month subscription, not a contract. No call to cancel, no dark-pattern hoops &mdash; one click in Stripe and you're done, keeping anything you've already downloaded. And there's a human behind it: reply to any issue and you'll get a written answer from me &mdash; in batches, never instant, but never a bot. Try the next issue. If the full field doesn't earn its ten minutes, reply within 30 days and I'll refund the month &mdash; no maze, no retention call. Stay, and your founding €9.97 never goes up.</p>
+          <button type="button" data-checkout class="btn btn-cta btn-md w-full sm:w-auto">Start Dashboard &mdash; €9.97/mo &rarr;</button>
         </div>
       </div>
     </section>
@@ -269,6 +279,10 @@
             <p class="text-gray-300 leading-relaxed mt-3">Locked for as long as you stay subscribed. Members who join after June 30 pay €49/mo for the same data. If you lock in now and never cancel, you never see €49.</p>
           </details>
           <details class="mobile-card rounded-xl border border-gray-700 bg-dark-900/60 p-5">
+            <summary class="cursor-pointer font-semibold text-white">€9.97 feels too cheap to be serious. What's the catch?</summary>
+            <p class="text-gray-300 leading-relaxed mt-3">No catch &mdash; the price is a distribution choice, not a quality signal. A PitchBook seat runs upward of $20k a year and still won't flag engineering acceleration; this reads a leading indicator the terminals don't track, and I'd rather have a thousand readers who tell five friends than ten enterprise contracts. The methodology behind the €9.97 issue is the same one published on SSRN. The founding rate is locked for life precisely because the goal is reach, not margin.</p>
+          </details>
+          <details class="mobile-card rounded-xl border border-gray-700 bg-dark-900/60 p-5">
             <summary class="cursor-pointer font-semibold text-white">How do I cancel if it's not for me?</summary>
             <p class="text-gray-300 leading-relaxed mt-3">One click in the Stripe portal. No email, no call, no retention maze. You keep anything you've already downloaded.</p>
           </details>
@@ -280,23 +294,8 @@
       </div>
     </section>
 
-    <!-- ============ CHECKOUT · restate the stack, then ask ============ -->
-    <section id="checkout" class="max-w-3xl mx-auto px-6 py-20 text-center">
-      <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-3">Start Dashboard</p>
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">The full field, every week, for €9.97 &mdash; locked for life.</h2>
-      <p class="text-gray-300 max-w-xl mx-auto mb-5">Picture next Monday. Someone in the room asks what's worth a look &mdash; and you put a name on the table nobody's mentioned yet, with a one-line reason it's moving, weeks before it lands in anyone else's inbox. You look early, not technical. That's the whole job of the field below.</p>
-      <p class="text-gray-300 max-w-xl mx-auto mb-3">60+ ranked startups across 20 sectors &middot; plain-English signal &middot; sortable to your thesis &middot; methodology and dataset included &middot; founding rate locked while you stay &middot; cancel in one click.</p>
-      <p class="text-gray-500 mb-8">Enter your email and go straight to Stripe. I prefill it and tag the attribution so the upgrade path stays clean.</p>
-      <form id="dashboard-form" class="mobile-form-stack max-w-lg mx-auto flex flex-col sm:flex-row gap-3">
-        <label for="dashboard-email" class="sr-only">Email</label>
-        <input type="email" id="dashboard-email" required placeholder="you@example.com" class="flex-1 px-5 py-4 rounded-lg bg-dark-800 border border-gray-600 text-gray-100 placeholder-gray-500 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 text-lg">
-        <button type="submit" id="dashboard-btn" class="btn btn-cta btn-lg w-full sm:w-auto">Lock €9.97/mo &rarr;</button>
-      </form>
-      <p id="dashboard-msg" class="text-gray-500 text-sm mt-4">€9.97/mo until June 30 &middot; then €49/mo for new members &middot; cancel anytime &middot; secure checkout via Stripe</p>
-    </section>
-
-    <!-- ============ TAKEAWAY CLOSE · honest off-ramp (kept — it's the character) ============ -->
-    <section class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 pb-20">
+    <!-- ============ TAKEAWAY CLOSE · honest off-ramp BEFORE the final ask ============ -->
+    <section class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 py-12 md:py-16">
       <div class="mobile-card mobile-card-pad rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-8 text-center">
         <p class="text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-3">And if this still feels too early</p>
         <h2 class="text-2xl font-bold mb-4">Stay with the lighter layer until the pain is real.</h2>
@@ -307,6 +306,16 @@
         </div>
       </div>
     </section>
+
+    <!-- ============ CHECKOUT · the final ask (page ends on the CTA, not the exit) ============ -->
+    <section id="checkout" class="max-w-3xl mx-auto px-6 py-20 text-center">
+      <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-3">Start Dashboard</p>
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">The full field, every week, for €9.97 &mdash; locked for life.</h2>
+      <p class="text-gray-300 max-w-xl mx-auto mb-5">Picture next Monday. Someone in the room asks what's worth a look &mdash; and you put a name on the table nobody's mentioned yet, with a one-line reason it's moving, weeks before it lands in anyone else's inbox. You look early, not technical. That's the whole job of the field below.</p>
+      <p class="text-gray-300 max-w-xl mx-auto mb-8">60+ ranked startups across 20 sectors &middot; plain-English signal &middot; sortable to your thesis &middot; methodology and dataset included &middot; founding rate locked while you stay &middot; cancel in one click.</p>
+      <button type="button" data-checkout class="btn btn-cta btn-lg w-full sm:w-auto">Lock €9.97/mo &rarr;</button>
+      <p id="checkout-msg" class="text-gray-500 text-sm mt-4">One click to secure Stripe checkout &middot; enter your email there &middot; €9.97/mo until June 30, then €49/mo for new members &middot; cancel anytime</p>
+    </section>
   </main>
 
   <!-- Mobile sticky CTA -->
@@ -316,7 +325,7 @@
         <strong>€9.97/mo &middot; founding rate</strong>
         <span>Locked for life &middot; cancel in one click</span>
       </div>
-      <a href="#checkout" class="btn btn-cta btn-sm">Lock it in &rarr;</a>
+      <button type="button" data-checkout class="btn btn-cta btn-sm">Lock it in &rarr;</button>
     </div>
   </div>
 
@@ -334,71 +343,49 @@
   </footer>
 
   <script>
-    window.GDFattribution = function(source) {
+    // Attribution → a compact, ASCII-safe variant tag (<=32 chars) that the
+    // checkout API round-trips into Stripe metadata. Email is NOT collected here
+    // anymore: Stripe collects it on its own secure checkout page, so nothing
+    // gates the buy. One click → Stripe.
+    function gdfVariant() {
       try {
-        const params = new URLSearchParams(window.location.search);
-        return {
-          source: source || 'dashboard',
-          utm_source: params.get('utm_source') || '',
-          utm_medium: params.get('utm_medium') || '',
-          utm_campaign: params.get('utm_campaign') || '',
-          referrer: document.referrer || '',
-          landing_path: window.location.pathname + window.location.search
-        };
-      } catch (e) {
-        return { source: source || 'dashboard' };
-      }
-    };
+        var p = new URLSearchParams(window.location.search);
+        var raw = p.get('utm_campaign') || p.get('utm_source') || 'dashboard';
+        return (raw.replace(/[^a-zA-Z0-9_.-]/g, '').slice(0, 32)) || 'dashboard';
+      } catch (e) { return 'dashboard'; }
+    }
 
-    // Carry the email from the free opt-in (stored at /thanks → here, same origin)
-    // so the buyer never retypes it. Privacy-first: stays in sessionStorage, never the URL.
-    (function(){
-      try {
-        var carried = sessionStorage.getItem('gdf_email');
-        var field = document.getElementById('dashboard-email');
-        if (carried && field && !field.value) {
-          field.value = carried;
-          if (window.posthog) posthog.capture('checkout_email_prefilled', { tier: 'dashboard' });
-        }
-      } catch (e) {}
-    })();
-
-    document.getElementById('dashboard-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const btn = document.getElementById('dashboard-btn');
-      const email = document.getElementById('dashboard-email').value.trim();
-      if (!email) return;
-      btn.disabled = true;
-      btn.textContent = 'Loading checkout...';
-      try {
-        const attr = window.GDFattribution('dashboard');
-        fetch('https://signals.gitdealflow.com/api/subscribe', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(Object.assign({
-            email: email,
-            quiz_route: 'D',
-            quiz_route_label: 'Dashboard (€9.97/mo)'
-          }, attr)),
-          keepalive: true
-        }).catch(function(){});
-      } catch(e) {}
+    var gdfCheckoutPending = false;
+    function startCheckout(trigger) {
+      if (gdfCheckoutPending) return;
+      gdfCheckoutPending = true;
+      var original = trigger ? trigger.innerHTML : null;
+      if (trigger) { trigger.setAttribute('aria-busy', 'true'); trigger.innerHTML = 'Opening secure checkout&hellip;'; }
+      if (window.posthog) { try { posthog.capture('checkout_started', { tier: 'dashboard' }); } catch (e) {} }
       fetch('https://signals.gitdealflow.com/api/checkout/session', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({ tier: 'dashboard', email: email })
+        body: JSON.stringify({ tier: 'dashboard', variant: gdfVariant() })
       }).then(function(res){ return res.json(); }).then(function(data){
         if (!data || !data.url) throw new Error('Missing checkout URL');
         window.location.href = data.url;
       }).catch(function(){
-        btn.disabled = false;
-        btn.textContent = 'Lock €9.97/mo →';
-        const msg = document.getElementById('dashboard-msg');
+        gdfCheckoutPending = false;
+        if (trigger && original !== null) { trigger.removeAttribute('aria-busy'); trigger.innerHTML = original; }
+        var msg = document.getElementById('checkout-msg');
         if (msg) {
-          msg.textContent = 'Something went wrong. Try again or email signal@gitdealflow.com';
+          msg.textContent = 'Something went wrong opening checkout. Try again, or email signal@gitdealflow.com';
           msg.className = 'text-red-400 text-sm mt-4';
         }
       });
+    }
+
+    // Every buy button on the page carries data-checkout → one click straight to Stripe.
+    document.addEventListener('click', function(e) {
+      var t = e.target.closest('[data-checkout]');
+      if (!t) return;
+      e.preventDefault();
+      startCheckout(t);
     });
   </script>
 
