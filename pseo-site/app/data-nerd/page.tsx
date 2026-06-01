@@ -3,6 +3,7 @@ import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import SeoCta from "@/components/SeoCta";
 import {
   DATA_NERD_NAME,
   DATA_NERD_TAGLINE,
@@ -543,6 +544,14 @@ export default function DataNerdPage() {
             ))}
           </ol>
         </section>
+
+        <SeoCta
+          heading="If the voice landed, the cheapest next step is the free Sunday issue"
+          blurb="Five breakout startups every Sunday — the engineering signal translated into plain English, 21 to 47 days before the deck circulates. No code-reading, no card."
+          secondary={{ label: "Or test one sector — First Look €7 →", href: "/firstlook" }}
+          signoff={false}
+          className="mb-6"
+        />
 
         <section className="rounded-xl border border-sky-700/40 bg-sky-950/15 p-6 sm:p-8 space-y-3">
           <p className="text-sky-300 text-xs font-semibold uppercase tracking-wider">

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { founders } from "@/content/founders";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import SeoCta from "@/components/SeoCta";
 
 export const metadata: Metadata = {
   title: "Founders & Public Engineering Profiles — VC Deal Flow Signal",
@@ -108,6 +109,20 @@ export default function FounderHubPage() {
           .
         </p>
 
+        <div className="mb-10 rounded-lg border border-amber-700/30 bg-amber-950/10 p-4 text-sm leading-relaxed text-gray-300">
+          Looking for the person behind{" "}
+          <strong className="text-gray-100">The Data Nerd</strong>? That story — the
+          origin, the parables, the audio — lives at{" "}
+          <Link
+            href="/about/founder"
+            className="text-amber-300 hover:text-amber-200 underline decoration-dotted font-semibold"
+          >
+            /about/founder
+          </Link>
+          . This page is something else: the public engineering profiles we track,
+          read for you in plain English.
+        </div>
+
         <section className="mb-12" aria-label="Profiles">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {founders.map((p) => (
@@ -128,20 +143,11 @@ export default function FounderHubPage() {
           </div>
         </section>
 
-        <div className="rounded-xl border border-slate-800 bg-slate-900 p-6 sm:p-8 text-center">
-          <h2 className="text-gray-100 font-semibold text-lg mb-2">
-            Track engineering acceleration weekly
-          </h2>
-          <p className="text-gray-400 text-sm mb-5 max-w-lg mx-auto">
-            5 breakout startups every Sunday, ranked by GitHub engineering signals. Free.
-          </p>
-          <Link
-            href="/firstlook?ref=founder-hub"
-            className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-sky-700 hover:bg-sky-600 text-white text-sm font-medium transition-colors"
-          >
-            Get the Report
-          </Link>
-        </div>
+        <SeoCta
+          heading="Track engineering acceleration weekly — without reading a line of code"
+          blurb="Five breakout startups every Sunday, ranked by the engineering signal and translated into plain English — 21 to 47 days before the deck circulates. Free, no card."
+          secondary={{ label: "Or test one sector — First Look €7 →", href: "/firstlook?ref=founder-hub" }}
+        />
       </div>
     </>
   );

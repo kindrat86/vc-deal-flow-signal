@@ -16,6 +16,11 @@ export const metadata: Metadata = {
   description:
     "GitDealFlow's anonymous social mascot — character bible, voice rules, content pillars, posting cadence across Twitter/Instagram/LinkedIn/Facebook/TikTok/YouTube. Synthetic voice (Cartesia Theo) + abstract avatar; founder identity stays private.",
   alternates: { canonical: "/data-nerd/social" },
+  // Internal social-ops playbook (pillars, cadence, sample posts). Noindex:
+  // it's an internal reference and its jargon-dense sample copy contradicts the
+  // public "you never read a line of code" promise — keep it out of cold search
+  // so Marcus never lands here. (Audit 2026-06-01.)
+  robots: { index: false, follow: true },
   openGraph: {
     title: "The Data Nerd — GitDealFlow's social mascot",
     description:

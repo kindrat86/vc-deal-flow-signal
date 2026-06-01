@@ -4,6 +4,7 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { DATA_NERD_NAME, DATA_NERD_PARABLES } from "@/lib/data-nerd";
+import SeoCta from "@/components/SeoCta";
 
 export const dynamic = "force-static";
 
@@ -174,6 +175,13 @@ export default function ParablesIndexPage() {
             </li>
           ))}
         </ol>
+
+        <SeoCta
+          heading="The parables make the case. The Sunday issue is the proof."
+          blurb="Five breakout startups every Sunday — the engineering signal translated into plain English, 21 to 47 days before the deck circulates. No code-reading, no card."
+          secondary={{ label: "Or test one sector — First Look €7 →", href: "/firstlook" }}
+          className="mt-4"
+        />
 
         <section className="border-t border-slate-800 pt-8 space-y-3">
           <p className="text-gray-400 text-sm leading-relaxed">
