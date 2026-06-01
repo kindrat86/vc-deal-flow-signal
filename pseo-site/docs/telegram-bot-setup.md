@@ -92,6 +92,57 @@ If something is off, hit `GET https://signals.gitdealflow.com/api/telegram` — 
 
 All numeric args accept `5m`, `500k`, `1.5B`, `1,500,000` etc.
 
+## Channel broadcasting — Signal of the Week (cron)
+
+The bot posts the weekly **Signal of the Week** to the existing public
+channel **`@gitdealflow`** (`https://t.me/gitdealflow`). This is a Vercel
+Cron job — server-side, no laptop required:
+
+- **Route:** `pseo-site/app/api/cron/telegram-signal/route.ts`
+- **Builder:** `pseo-site/lib/telegram/signal-of-the-week.ts` (renders the
+  post from `getTopMoversThisWeek(1)` — the current #1 mover)
+- **Schedule:** Mondays 13:00 UTC (`vercel.json` → `crons`)
+- **Target:** `TELEGRAM_CHANNEL_ID` = `@gitdealflow`
+
+> Historical note: earlier autonomous posts to `@gitdealflow` were sent by
+> driving the **native Telegram desktop app** as the channel owner's account
+> (see `marketing/daily-briefing-2026-04-19.md`). That path needed the desktop
+> app running + physical clicks and was duplicate-prone. This cron replaces it
+> with the bot token server-side — which is why the bot must be a channel
+> admin (a bot can only post to a channel it administers).
+
+### One-time setup
+
+1. **Add the bot as a channel admin.** In Telegram, open `@gitdealflow` →
+   *Manage Channel* → *Administrators* → *Add Admin* → search
+   `@gitdealflow_bot` → enable **Post Messages** → save. (One-time, ~30s.)
+2. **Set the env var** (project `pseo-site`):
+
+   ```sh
+   cd pseo-site
+   echo "@gitdealflow" | vercel env add TELEGRAM_CHANNEL_ID production
+   ```
+
+   `CRON_SECRET` and `TELEGRAM_BOT_TOKEN` are already set (the other crons and
+   the webhook use them). Redeploy so the new env var takes effect — Vercel
+   registers the cron from `vercel.json` automatically on deploy.
+
+### Test surfaces
+
+```sh
+# 1. Render only — no auth, no send. Returns the post JSON.
+curl "https://signals.gitdealflow.com/api/cron/telegram-signal?dry=1"
+
+# 2. Live send to YOURSELF (DM the bot once first so it can message you),
+#    overriding the channel. Requires the cron secret.
+curl -H "Authorization: Bearer $CRON_SECRET" \
+  "https://signals.gitdealflow.com/api/cron/telegram-signal?chat=<your_chat_id>"
+```
+
+The Monday cron posts to `TELEGRAM_CHANNEL_ID` automatically. If no startup
+clears the 30-commit floor that week, the route returns
+`{ mode: "skipped", reason: "no-mover" }` instead of posting an empty signal.
+
 ## Architecture notes
 
 - **No external deps.** Raw `fetch` against `api.telegram.org`. `@modelcontextprotocol/sdk`-style minimalism.

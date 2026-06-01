@@ -9,6 +9,10 @@
       "schedule": "0 14 * * *"
     },
     {
+      "path": "/api/cron/telegram-signal",
+      "schedule": "0 13 * * 1"
+    },
+    {
       "path": "/api/cron/route-canary",
       "schedule": "13 6 * * *"
     }
