@@ -162,6 +162,14 @@ export const sectors: Sector[] = [
     glossary: ["productivity", "collaboration", "document", "knowledge", "team", "workflow"],
     fundSectors: ["enterprise-saas", "consumer"],
   }),
+  build({
+    slug: "gaming",
+    name: "Gaming Infrastructure",
+    short: "Game backends, multiplayer servers, server orchestration, cross-game avatars, and the live-ops layer beneath studios.",
+    why: "Gaming is hit-driven and hard to read at the studio level, but gaming infrastructure underwrites like developer tools: the engineering signal is integration breadth (new engine SDKs, new platform adapters) and sustained backend commit velocity rather than a single launch spike. Corp Dev teams and gaming-native funds use this hub to track the picks-and-shovels layer — backends, multiplayer, and orchestration — where deal mechanics resemble dev tools, not content bets. We deliberately exclude studios, where signals are dominated by release calendars.",
+    glossary: ["gaming", "multiplayer", "matchmaking", "netcode", "game server", "game engine", "live-ops"],
+    fundSectors: ["gaming"],
+  }),
 ];
 
 export function getAllSectorSlugs(): string[] {

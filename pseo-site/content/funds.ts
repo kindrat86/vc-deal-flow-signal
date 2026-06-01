@@ -106,7 +106,7 @@ export const funds: Fund[] = [
     hq: "Menlo Park",
     stage: "seed through growth across multiple verticals",
     thesis: "a16z publishes vertical-specific theses — American Dynamism, AI, Crypto, Bio + Health, Consumer, Games, Enterprise, Fintech. The general partner pool is sector-specialized; each vertical has its own publishing cadence and sourcing surface.",
-    related: ["ai-ml", "developer-tools", "infrastructure", "fintech", "consumer"],
+    related: ["ai-ml", "developer-tools", "infrastructure", "fintech", "consumer", "gaming"],
     what: "a16z combines breadth of vertical funds with a high-volume operator-content strategy — their blog and podcast network is itself a deal-flow surface.",
   }),
   build({
@@ -539,6 +539,38 @@ export const funds: Fund[] = [
     thesis: "Lux Capital (Josh Wolfe) publishes a deep-tech, frontier-science thesis — quantum, robotics, defense tech, healthcare AI, frontier ML. The most concentrated deep-tech fund of meaningful size.",
     related: ["ai-ml", "ai-infra", "frontier-tech", "defense", "biotech"],
     what: "Lux Capital is the dominant deep-tech VC; their portfolio anchors much of the frontier-science and defense-tech venture landscape.",
+  }),
+
+  // --- Gaming / interactive-entertainment funds ---
+  build({
+    slug: "konvoy",
+    name: "Konvoy Ventures",
+    homepage: "https://www.konvoy.vc",
+    hq: "Denver",
+    stage: "pre-seed through Series A, gaming and interactive entertainment",
+    thesis: "Konvoy is a thesis-driven firm investing in the platforms and technologies of interactive entertainment — game infrastructure, tooling, and the engine/runtime layer beneath studios. The team publishes a weekly gaming-industry newsletter that doubles as a public sourcing surface.",
+    related: ["gaming", "infrastructure", "developer-tools"],
+    what: "Konvoy is one of the most prolific dedicated gaming VCs, leading early rounds in game-infrastructure companies (Edgegap among them) and writing detailed public thesis material on the category.",
+  }),
+  build({
+    slug: "bitkraft",
+    name: "BITKRAFT Ventures",
+    homepage: "https://www.bitkraft.vc",
+    hq: "Denver",
+    stage: "seed through Series B, gaming and synthetic reality",
+    thesis: "BITKRAFT invests across gaming, interactive media, and immersive technology under a \"Synthetic Reality\" thesis — the convergence of physical and digital worlds. Founded by ESL co-founder Jens Hilgers, the firm spans game infrastructure, content, and platform layers.",
+    related: ["gaming", "infrastructure"],
+    what: "BITKRAFT is one of the largest gaming-native investment platforms, leading rounds in game-infrastructure companies (Beamable among them) with 130+ portfolio companies globally.",
+  }),
+  build({
+    slug: "makers-fund",
+    name: "Makers Fund",
+    homepage: "https://www.makersfund.com",
+    hq: "San Francisco",
+    stage: "pre-seed through Series A, interactive entertainment",
+    thesis: "Makers Fund backs builders of the future of interactive entertainment — games, content, platforms, and ecosystem technologies — with a thesis centered on the intersection of creativity, technology, and community. Global presence across San Francisco, London, Tokyo, and Singapore.",
+    related: ["gaming", "infrastructure"],
+    what: "Makers Fund is a dedicated interactive-entertainment VC with over $1B AUM, investing from product inception through global scaling across the games stack.",
   }),
 ];
 
