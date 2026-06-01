@@ -6,6 +6,8 @@ import { LiveReplayBar } from "@/components/LiveReplayBar";
 import { DoorsClosingBanner } from "@/components/DoorsClosingBanner";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { getReplayWindowSnapshot } from "@/lib/replay-window";
+import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import WalkthroughVariantTracker from "@/components/WalkthroughVariantTracker";
 import WalkthroughCtaLink from "@/components/WalkthroughCtaLink";
 
@@ -62,11 +64,7 @@ export default function NinetySecondWalkthroughPage() {
         url: "https://signals.gitdealflow.com/walkthrough/90s",
         datePublished: "2026-05-09T00:00:00.000Z",
         dateModified: "2026-05-09T00:00:00.000Z",
-        author: {
-          "@type": "Organization",
-          name: "GitDealFlow",
-          url: "https://signals.gitdealflow.com",
-        },
+        author: DATA_NERD_AUTHOR_REF,
         publisher: {
           "@type": "Organization",
           name: "GitDealFlow",
@@ -287,6 +285,8 @@ export default function NinetySecondWalkthroughPage() {
           </Link>{" "}
           adds the origin, the conversion-story, the encore, the FAQ.
         </p>
+
+        <DataNerdSignoff variant="compact" className="mt-8" />
       </div>
     </>
   );

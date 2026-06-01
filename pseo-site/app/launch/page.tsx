@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { LAUNCHES, type PLCStage } from "@/content/launches";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 
 const SITE = "https://signals.gitdealflow.com";
 
@@ -245,6 +246,8 @@ export default function LaunchIndex() {
           </Link>
           .
         </p>
+
+        <DataNerdSignoff variant="default" className="mt-12" />
       </div>
     </>
   );

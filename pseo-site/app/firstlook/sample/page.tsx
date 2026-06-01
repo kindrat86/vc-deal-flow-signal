@@ -3,6 +3,7 @@ import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 
 export const dynamic = "force-static";
 
@@ -390,6 +391,8 @@ export default function FirstLookSamplePage() {
             €7 returns inside one business day, you keep the PDF + CSV.
           </p>
         </section>
+
+        <DataNerdSignoff variant="compact" className="mt-8" />
       </div>
     </>
   );

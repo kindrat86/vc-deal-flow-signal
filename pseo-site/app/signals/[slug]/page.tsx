@@ -8,10 +8,11 @@ import {
   getDataLastModified,
 } from "@/lib/data";
 import StartupTable from "@/components/StartupTable";
-import CTABanner from "@/components/CTABanner";
+import SeoCta from "@/components/SeoCta";
 import FreshnessWatermark from "@/components/FreshnessWatermark";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -76,11 +77,7 @@ export default async function SignalTypePage({ params }: PageProps) {
         "@type": "Article",
         headline: `${signalData.name} Signal — ${period.name}`,
         description: signalData.description,
-        author: {
-          "@type": "Organization",
-          name: "VC Deal Flow Signal",
-          url: "https://gitdealflow.com",
-        },
+        author: DATA_NERD_AUTHOR_REF,
         publisher: {
           "@type": "Organization",
           name: "VC Deal Flow Signal",
@@ -255,7 +252,7 @@ export default async function SignalTypePage({ params }: PageProps) {
 
         {/* CTA */}
         <section className="mb-12" aria-label="Call to action">
-          <CTABanner />
+          <SeoCta secondary={{ label: "Unlock the Dashboard", href: "https://gitdealflow.com/dashboard" }} />
         </section>
 
         {/* FAQ */}

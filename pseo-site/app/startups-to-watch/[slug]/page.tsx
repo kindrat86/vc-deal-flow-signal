@@ -13,11 +13,12 @@ import {
 } from "@/lib/data";
 import StartupTable from "@/components/StartupTable";
 import CuriosityGate from "@/components/CuriosityGate";
-import CTABanner from "@/components/CTABanner";
+import SeoCta from "@/components/SeoCta";
 import ShareBar from "@/components/ShareBar";
 import VelocityBar from "@/components/charts/VelocityBar";
 import SignalDistribution from "@/components/charts/SignalDistribution";
 import CrossAxisNav from "@/components/CrossAxisNav";
+import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -84,11 +85,7 @@ export default async function SectorPage({ params }: PageProps) {
         "@type": "Article",
         headline: `${sector.name} Startups to Watch, ${period.name}`,
         description: sector.description,
-        author: {
-          "@type": "Organization",
-          name: "VC Deal Flow Signal",
-          url: "https://gitdealflow.com",
-        },
+        author: DATA_NERD_AUTHOR_REF,
         publisher: {
           "@type": "Organization",
           name: "VC Deal Flow Signal",
@@ -288,9 +285,9 @@ export default async function SectorPage({ params }: PageProps) {
 
         {/* CTA */}
         <section className="mb-12" aria-label="Call to action">
-          <CTABanner
+          <SeoCta
             heading={`The full ranked ${sector.name} list updates every week — get it free`}
-            primaryLabel="Get the free Sunday issue"
+            secondary={{ label: "Unlock the Dashboard", href: "https://gitdealflow.com/dashboard" }}
           />
         </section>
 

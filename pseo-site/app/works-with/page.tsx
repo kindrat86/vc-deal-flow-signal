@@ -7,6 +7,7 @@ import {
   type ToolCategory,
 } from "@/content/works-with";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import SeoCta from "@/components/SeoCta";
 
 export const metadata: Metadata = {
   title: `Works with — CRM & Workflow Integrations | VC Deal Flow Signal`,
@@ -164,21 +165,7 @@ export default function WorksWithHubPage() {
           );
         })}
 
-        <div className="mt-8 rounded-xl border border-slate-800 bg-slate-900 p-6 sm:p-8 text-center">
-          <h2 className="text-gray-100 font-semibold text-lg mb-2">
-            Need a custom integration?
-          </h2>
-          <p className="text-gray-400 text-sm mb-4">
-            Most CRMs and automation tools work via our public API, Zapier, webhooks, or
-            CSV. For native integrations, scope a custom path during onboarding.
-          </p>
-          <Link
-            href="/firstlook"
-            className="inline-block rounded-md bg-sky-500 px-5 py-2 text-sm font-semibold text-white hover:bg-sky-400 transition-colors"
-          >
-            Request a Demo
-          </Link>
-        </div>
+        <SeoCta className="mt-8" />
       </div>
     </>
   );

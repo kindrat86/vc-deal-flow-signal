@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import SeoCta from "@/components/SeoCta";
 
 /**
  * /wikidata — Knowledge Panel claim landing.
@@ -589,6 +590,8 @@ export default function WikidataClaimPage() {
             </li>
           </ul>
         </section>
+
+        <SeoCta className="mt-10" />
 
         <p className="text-xs text-gray-400 text-center mt-10">
           See also:{" "}

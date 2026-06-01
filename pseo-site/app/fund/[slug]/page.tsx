@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { funds, getFund, getAllFundSlugs } from "@/content/funds";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import SeoCta from "@/components/SeoCta";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 
 interface PageProps {
@@ -239,20 +240,7 @@ export default async function FundPage({ params }: PageProps) {
           </div>
         </section>
 
-        <div className="rounded-xl border border-slate-800 bg-slate-900 p-6 sm:p-8 text-center">
-          <h2 className="text-gray-100 font-semibold text-lg mb-2">
-            Build your own engineering-signal watchlist
-          </h2>
-          <p className="text-gray-400 text-sm mb-5 max-w-lg mx-auto">
-            See which startups in your sector are accelerating on GitHub before their next round. Free weekly report.
-          </p>
-          <Link
-            href={`https://gitdealflow.com/firstlook?ref=fund-${slug}`}
-            className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-sky-700 hover:bg-sky-600 text-white text-sm font-medium transition-colors"
-          >
-            Get the Report
-          </Link>
-        </div>
+        <SeoCta secondary={{ label: "See a €7 First Look sample", href: "/firstlook" }} />
       </div>
     </>
   );

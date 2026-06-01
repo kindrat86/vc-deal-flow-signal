@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import SeoCta from "@/components/SeoCta";
 import {
   getAllNichePairs,
   getNiche,
@@ -250,6 +251,8 @@ export default async function NicheLeafPage({ params }: PageProps) {
             ))}
           </dl>
         </section>
+
+        <SeoCta className="mt-10" />
 
         {adjacent.length > 0 && (
           <section

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import { CHALLENGE_DAYS } from "@/content/challenge-curriculum";
 
 export const metadata: Metadata = {
@@ -363,6 +364,8 @@ export default function ChallengeDonePage() {
             ssrn.com/abstract=6606558
           </a>
         </p>
+
+        <DataNerdSignoff variant="compact" className="mt-8" />
       </div>
     </>
   );

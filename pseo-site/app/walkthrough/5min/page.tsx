@@ -7,6 +7,8 @@ import { LiveReplayBar } from "@/components/LiveReplayBar";
 import { DoorsClosingBanner } from "@/components/DoorsClosingBanner";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { getReplayWindowSnapshot } from "@/lib/replay-window";
+import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import TrialClose from "@/components/TrialClose";
 import WalkthroughVariantTracker from "@/components/WalkthroughVariantTracker";
 import WalkthroughCtaLink from "@/components/WalkthroughCtaLink";
@@ -54,11 +56,7 @@ export default function FiveMinPerfectWebinarPage() {
         url: "https://signals.gitdealflow.com/walkthrough/5min",
         datePublished: "2026-05-05T00:00:00.000Z",
         dateModified: "2026-05-05T00:00:00.000Z",
-        author: {
-          "@type": "Organization",
-          name: "GitDealFlow",
-          url: "https://signals.gitdealflow.com",
-        },
+        author: DATA_NERD_AUTHOR_REF,
         publisher: {
           "@type": "Organization",
           name: "GitDealFlow",
@@ -309,6 +307,8 @@ export default function FiveMinPerfectWebinarPage() {
           adds the origin story, the discovery moment, the conversion-story
           script, the encore close, and the FAQ. Same argument, more depth.
         </p>
+
+        <DataNerdSignoff variant="compact" className="mt-8" />
       </div>
     </>
   );

@@ -7,9 +7,9 @@ import {
   getCompetitorVsPair,
 } from "@/content/competitor-vs";
 import { getDataLastModified } from "@/lib/data";
-import CTABanner from "@/components/CTABanner";
+import SeoCta from "@/components/SeoCta";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
-import { DataNerdSignoff } from "@/components/DataNerdSignoff";
+import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -92,7 +92,7 @@ export default async function VsPage({ params }: PageProps) {
         "@type": "Article",
         headline: `${a.name} vs ${b.name} — Deal Flow Platform Comparison`,
         description: `Head-to-head comparison of ${a.name} and ${b.name} for VC deal sourcing.`,
-        author: { "@type": "Organization", name: "VC Deal Flow Signal", url: "https://gitdealflow.com" },
+        author: DATA_NERD_AUTHOR_REF,
         publisher: { "@type": "Organization", name: "VC Deal Flow Signal", url: "https://gitdealflow.com" },
         datePublished: lastModified.toISOString().slice(0, 10),
         dateModified: lastModified.toISOString().slice(0, 10),
@@ -231,11 +231,10 @@ export default async function VsPage({ params }: PageProps) {
         </section>
 
         <section className="mb-12" aria-label="Call to action">
-          <CTABanner
+          <SeoCta
             heading={`Skip the ${a.name}-vs-${b.name} debate — see who's actually shipping`}
-            primaryLabel="Get the free Sunday issue"
+            secondary={{ label: "Unlock the Dashboard", href: "https://gitdealflow.com/dashboard" }}
           />
-          <DataNerdSignoff variant="compact" className="mt-5" />
         </section>
 
         <section className="mb-12" aria-label="Frequently asked questions">

@@ -6,7 +6,7 @@ import { TrustConversionBlock } from "@/components/TrustConversionBlock";
 
 export const metadata: Metadata = {
   title: "Case Studies — Workflow Walkthroughs | VC Deal Flow Signal",
-  description: `${CASE_STUDIES.length} narrative workflow case studies showing how Marcus 100 buyer personas use VC Deal Flow Signal end-to-end. Illustrative composite scenarios with full step-by-step walkthroughs.`,
+  description: `${CASE_STUDIES.length} narrative workflow case studies showing how corp-dev, PE, and VC dealmakers use VC Deal Flow Signal end-to-end. Illustrative composite scenarios with full step-by-step walkthroughs.`,
   alternates: { canonical: "/case-study" },
   openGraph: {
     title: "Case Studies — VC Deal Flow Signal",
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Case Studies — VC Deal Flow Signal",
-    description: "Workflow walkthroughs for Marcus 100 buyer personas.",
+    description: "Workflow walkthroughs for corp-dev, PE, and VC dealmakers.",
   },
 };
 
@@ -34,7 +34,7 @@ export default function CaseStudyHubPage() {
         "@type": "CollectionPage",
         url: PAGE_URL,
         name: "Case Studies — Workflow Walkthroughs",
-        description: `${CASE_STUDIES.length} narrative workflow case studies for Marcus 100 buyer personas.`,
+        description: `${CASE_STUDIES.length} narrative workflow case studies for corp-dev, PE, and VC dealmakers.`,
         isPartOf: {
           "@type": "WebSite",
           name: "VC Deal Flow Signal",
@@ -96,11 +96,11 @@ export default function CaseStudyHubPage() {
           Case Studies
         </h1>
         <p className="text-sky-400 text-base leading-relaxed mb-6 font-medium">
-          {CASE_STUDIES.length} workflow walkthroughs for Marcus 100 buyer personas.
+          {CASE_STUDIES.length} workflow walkthroughs for corp-dev, PE, and VC dealmakers.
         </p>
         <p className="text-gray-400 text-base leading-relaxed mb-10">
-          Each case study is an illustrative composite scenario showing how one Marcus
-          100 buyer persona uses the VC Deal Flow Signal surface end-to-end. Names and
+          Each case study is an illustrative composite scenario showing how one
+          non-technical dealmaker uses the VC Deal Flow Signal surface end-to-end. Names and
           specific deal details are omitted by design — the structure of the workflow
           (which URLs the persona uses, which questions they ask, which action they
           take) is the representative element. Designed to show buyers exactly how the

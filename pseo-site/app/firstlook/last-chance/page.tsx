@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { stripe } from "@/lib/stripe";
 import { OTO_TIERS } from "@/lib/stripe-tiers";
 import OneClickOtoButton from "@/components/OneClickOtoButton";
+import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 
 export const dynamic = "force-dynamic";
 
@@ -204,6 +205,8 @@ export default async function FirstLookLastChancePage({ searchParams }: Props) {
         </Link>
         .
       </p>
+
+      <DataNerdSignoff variant="compact" className="mt-8" />
     </div>
   );
 }

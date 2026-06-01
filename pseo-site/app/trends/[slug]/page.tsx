@@ -10,6 +10,7 @@ import {
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import SeoCta from "@/components/SeoCta";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -242,6 +243,8 @@ export default async function TrendPage({ params }: PageProps) {
             </div>
           </div>
         </section>
+
+        <SeoCta className="mb-10" />
 
         {/* Links to full rankings */}
         <section className="mb-10">

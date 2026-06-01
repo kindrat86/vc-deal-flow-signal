@@ -8,6 +8,7 @@ import {
 } from "@/content/research-papers";
 import { glossaryTerms } from "@/content/glossary";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import SeoCta from "@/components/SeoCta";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -249,6 +250,8 @@ export default async function ResearchPaperPage({ params }: PageProps) {
             ))}
           </div>
         </section>
+
+        <SeoCta className="mb-12" />
 
         <section className="mb-12" aria-label="Other research papers">
           <h2 className="text-lg font-semibold text-gray-100 mb-4">

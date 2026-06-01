@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import { SUMMIT, summitDays } from "@/content/summit";
 
 const SITE = "https://signals.gitdealflow.com";
@@ -104,6 +105,8 @@ export default function SummitThanksPage() {
             </li>
           </ul>
         </section>
+
+        <DataNerdSignoff variant="compact" className="mt-8" />
       </div>
     </>
   );

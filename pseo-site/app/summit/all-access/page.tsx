@@ -3,6 +3,7 @@ import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import { SUMMIT, TALKS } from "@/content/summit";
 
 const SITE = "https://signals.gitdealflow.com";
@@ -210,6 +211,8 @@ export default function AllAccessPage() {
           </Link>
           .
         </p>
+
+        <DataNerdSignoff variant="compact" className="mt-8" />
       </div>
     </>
   );

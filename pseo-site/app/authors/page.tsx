@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllAuthors } from "@/content/authors";
 import { allPosts as posts } from "@/content/posts";
+import SeoCta from "@/components/SeoCta";
 
 const BASE_URL = "https://signals.gitdealflow.com";
 
@@ -98,6 +99,8 @@ export default function AuthorsIndexPage() {
             );
           })}
         </div>
+
+        <SeoCta className="mt-10" />
       </div>
     </>
   );

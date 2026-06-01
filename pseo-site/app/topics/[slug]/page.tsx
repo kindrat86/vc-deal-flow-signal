@@ -6,6 +6,7 @@ import { posts as allPosts, type BlogPost } from "@/content/posts";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import SeoCta from "@/components/SeoCta";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -267,6 +268,8 @@ export default async function TopicHubPage({ params }: PageProps) {
             Get the Report
           </Link>
         </div>
+
+        <SeoCta className="mt-10" />
       </div>
     </>
   );

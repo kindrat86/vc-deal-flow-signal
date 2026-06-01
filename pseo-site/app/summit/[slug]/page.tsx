@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import {
   getTalkBySlug,
   getAllTalkSlugs,
@@ -352,6 +353,8 @@ export default async function SummitTalkPage({ params }: PageProps) {
           </Link>
           .
         </p>
+
+        <DataNerdSignoff variant="compact" className="mt-8" />
       </div>
     </>
   );

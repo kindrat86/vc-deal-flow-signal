@@ -4,6 +4,7 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import TelegramCTA from "@/components/TelegramCTA";
+import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 
 export const dynamic = "force-static";
 
@@ -103,7 +104,7 @@ export default function ThanksFirstLook() {
           </p>
           <div className="flex flex-col sm:flex-row gap-3 pt-1">
             <Link
-              href="/#pricing"
+              href="/dashboard"
               className="inline-flex items-center justify-center gap-2 rounded-md bg-sky-600 hover:bg-sky-500 px-5 py-3 text-white text-base font-semibold transition-colors shadow-sm shadow-sky-500/30"
             >
               Lock founding rate (€2.97 first month) →
@@ -124,6 +125,8 @@ export default function ThanksFirstLook() {
             questions, you keep the deep dive.
           </p>
         </section>
+
+        <DataNerdSignoff variant="compact" className="mt-8" />
       </div>
     </>
   );

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import SeoCta from "@/components/SeoCta";
 
 const SITE = "https://signals.gitdealflow.com";
 
@@ -307,6 +308,8 @@ export default function MirrorsPage() {
             </section>
           );
         })}
+
+        <SeoCta className="mt-10" />
 
         <p className="text-xs text-gray-400 text-center mt-10">
           See also:{" "}

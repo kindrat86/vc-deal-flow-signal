@@ -4,6 +4,7 @@ import { agentQueries } from "@/content/agent-queries";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { DEFAULT_HREFLANG_LANGUAGES } from "@/lib/hreflang";
+import SeoCta from "@/components/SeoCta";
 
 const SITE = "https://signals.gitdealflow.com";
 
@@ -156,6 +157,8 @@ export default function AnswersIndexPage() {
             </li>
           ))}
         </ul>
+
+        <SeoCta className="mt-10" />
       </div>
     </>
   );

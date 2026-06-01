@@ -299,7 +299,7 @@ export default function DataNerdPage() {
             04 · Six parables
           </p>
           <h2 className="text-2xl font-bold text-gray-100">
-            Stories I tell to explain why code-side signals work.
+            Stories I tell to explain why engineering signals work.
           </h2>
           <p className="text-gray-400 text-sm leading-relaxed">
             Every core claim needs a parable that makes it feel obvious. These

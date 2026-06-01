@@ -8,6 +8,8 @@ import {
 } from "@/content/acquirers";
 import { getSector, getCompaniesInSector } from "@/content/sectors";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import SeoCta from "@/components/SeoCta";
+import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -89,11 +91,7 @@ export default async function AcquirerPage({ params }: PageProps) {
         "@type": "Article",
         headline: `${a.name} Acquisitions & M&A Pattern`,
         description: a.metaDescription,
-        author: {
-          "@type": "Organization",
-          name: "VC Deal Flow Signal",
-          url: "https://gitdealflow.com",
-        },
+        author: DATA_NERD_AUTHOR_REF,
         publisher: {
           "@type": "Organization",
           name: "VC Deal Flow Signal",
@@ -349,21 +347,7 @@ export default async function AcquirerPage({ params }: PageProps) {
           </div>
         </section>
 
-        <div className="rounded-xl border border-slate-800 bg-slate-900 p-6 sm:p-8 text-center">
-          <h2 className="text-gray-100 font-semibold text-lg mb-2">
-            Get engineering signals on {a.name}'s focus sectors
-          </h2>
-          <p className="text-gray-400 text-sm mb-4">
-            Weekly digest of {a.focusSectors.slice(0, 3).join(", ")} momentum, surfaced 3
-            to 6 weeks before announcements.
-          </p>
-          <Link
-            href="/firstlook"
-            className="inline-block rounded-md bg-sky-500 px-5 py-2 text-sm font-semibold text-white hover:bg-sky-400 transition-colors"
-          >
-            See First Look
-          </Link>
-        </div>
+        <SeoCta secondary={{ label: "See a €7 First Look sample", href: "/firstlook" }} />
       </div>
     </>
   );

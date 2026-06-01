@@ -9,6 +9,8 @@ import {
   categoryLabel,
 } from "@/content/works-with";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import SeoCta from "@/components/SeoCta";
+import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -56,11 +58,7 @@ export default async function WorksWithPage({ params }: PageProps) {
         "@type": "Article",
         headline: tool.h1,
         description: tool.metaDescription,
-        author: {
-          "@type": "Organization",
-          name: "VC Deal Flow Signal",
-          url: "https://gitdealflow.com",
-        },
+        author: DATA_NERD_AUTHOR_REF,
         publisher: {
           "@type": "Organization",
           name: "VC Deal Flow Signal",
@@ -290,21 +288,7 @@ export default async function WorksWithPage({ params }: PageProps) {
           </section>
         )}
 
-        <div className="rounded-xl border border-slate-800 bg-slate-900 p-6 sm:p-8 text-center">
-          <h2 className="text-gray-100 font-semibold text-lg mb-2">
-            Get the {tool.name} integration scoped
-          </h2>
-          <p className="text-gray-400 text-sm mb-4">
-            Talk through your {tool.name} workflow needs and get a tailored integration
-            plan during onboarding.
-          </p>
-          <Link
-            href="/firstlook"
-            className="inline-block rounded-md bg-sky-500 px-5 py-2 text-sm font-semibold text-white hover:bg-sky-400 transition-colors"
-          >
-            Request a Demo
-          </Link>
-        </div>
+        <SeoCta secondary={{ label: "See a €7 First Look sample", href: "/firstlook" }} />
       </div>
     </>
   );

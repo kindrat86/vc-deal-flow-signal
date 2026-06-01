@@ -7,6 +7,7 @@ import {
   getFoundersInSector,
 } from "@/content/sectors";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import SeoCta from "@/components/SeoCta";
 
 export const metadata: Metadata = {
   title: "Sector Hubs — Engineering Signals & VC Deal Flow | VC Deal Flow Signal",
@@ -151,20 +152,7 @@ export default function SectorHubIndexPage() {
           ))}
         </div>
 
-        <div className="mt-12 rounded-xl border border-slate-800 bg-slate-900 p-6 sm:p-8 text-center">
-          <h2 className="text-gray-100 font-semibold text-lg mb-2">
-            Get the weekly engineering signal
-          </h2>
-          <p className="text-gray-400 text-sm mb-4">
-            Sector-filtered momentum, 3 to 6 weeks before the announcement.
-          </p>
-          <Link
-            href="/firstlook"
-            className="inline-block rounded-md bg-sky-500 px-5 py-2 text-sm font-semibold text-white hover:bg-sky-400 transition-colors"
-          >
-            See First Look
-          </Link>
-        </div>
+        <SeoCta className="mt-12" />
       </div>
     </>
   );

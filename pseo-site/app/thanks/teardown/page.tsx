@@ -4,6 +4,7 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import TelegramCTA from "@/components/TelegramCTA";
+import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 
 export const dynamic = "force-static";
 
@@ -124,6 +125,8 @@ export default function ThanksTeardown() {
             </Link>
           </p>
         </section>
+
+        <DataNerdSignoff variant="compact" className="mt-8" />
       </div>
     </>
   );

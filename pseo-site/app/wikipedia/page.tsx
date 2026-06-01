@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { FINDINGS } from "@/content/research-findings";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import SeoCta from "@/components/SeoCta";
 
 const SITE = "https://signals.gitdealflow.com";
 const SSRN_URL = "https://ssrn.com/abstract=6606558";
@@ -298,6 +299,8 @@ export default function WikipediaPage() {
             slug.
           </p>
         </section>
+
+        <SeoCta className="mt-10" />
 
         <p className="text-xs text-gray-400 text-center mt-10">
           See also:{" "}

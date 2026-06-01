@@ -3,6 +3,7 @@ import Link from "next/link";
 import { AgentSummary } from "@/components/AgentSummary";
 import { getDataLastModified } from "@/lib/data";
 import PSEOFooterNav from "@/components/PSEOFooterNav";
+import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 
@@ -414,6 +415,8 @@ export default function EnterprisePage() {
         </p>
 
         <PSEOFooterNav />
+
+        <DataNerdSignoff variant="default" className="mt-12" />
       </div>
     </>
   );
