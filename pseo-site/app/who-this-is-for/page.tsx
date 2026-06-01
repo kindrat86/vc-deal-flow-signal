@@ -3,6 +3,7 @@ import Link from "next/link";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 
 export const dynamic = "force-static";
 
@@ -130,10 +131,17 @@ export default function WhoThisIsForPage() {
             Pick the layer that fits the way you source right now.
           </h1>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed max-w-3xl">
-            You do not need to read a persona page to know where to start. You
-            need one honest decision: do you want a free weekly signal, a fast
-            answer on one sector, the full field every week, or a deeper custom
-            cut because the question is already expensive?
+            This is for the First Mover: the dealmaker who evaluates companies
+            but doesn&rsquo;t read code — corp-dev, PE, angel, scout, or a seed
+            fund. You move on the engineering signal before the round, without
+            reading a line of code. You never read a line of code — the read is
+            done for you, in plain business English.
+          </p>
+          <p className="text-gray-300 text-base sm:text-lg leading-relaxed max-w-3xl">
+            So the only honest decision left is which layer fits the way you
+            source right now: a free weekly signal, a fast answer on one sector,
+            the full field every week, or a deeper custom cut because the
+            question is already expensive?
           </p>
         </header>
 
@@ -197,6 +205,8 @@ export default function WhoThisIsForPage() {
             <span aria-hidden="true">→</span>
           </Link>
         </section>
+
+        <DataNerdSignoff variant="compact" />
       </div>
     </>
   );

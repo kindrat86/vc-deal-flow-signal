@@ -203,6 +203,12 @@ export default function OriginPage() {
             warm-intro network was talking about them. Nobody on AngelList had
             posted about them. They were not, in any sense, on the radar yet.
           </p>
+          <p className="text-gray-400 text-sm leading-relaxed italic">
+            In plain terms: they were suddenly shipping far more than usual, the
+            team had roughly doubled overnight, and they&rsquo;d started building
+            the thing competitors would copy in a year. No code-reading required
+            to see it.
+          </p>
           <p className="text-gray-300 text-base leading-relaxed">
             Three weeks later they announced a $4M Series A led by a top-tier
             fund. The investors who got in had either been told by a warm
@@ -270,7 +276,8 @@ export default function OriginPage() {
             </strong>, the noise drops out and the regime changes show up. We
             ran the regression on 219 startups. The 21-to-47-day lead time
             held. SSRN-indexed it. The lens existed. Nobody had built the
-            product around it.
+            product around it. And the part that matters for you: you never read
+            a line of code — the read is done for you.
           </p>
         </section>
 
@@ -308,7 +315,7 @@ export default function OriginPage() {
             06 · The new journey
           </p>
           <h2 className="text-2xl font-bold text-gray-100">
-            From warm-intro investor to GitHub-momentum investor.
+            From warm-intro investor to First Mover.
           </h2>
           <p className="text-gray-300 text-base leading-relaxed">
             I built the system over six months. The first version was a single
@@ -316,8 +323,8 @@ export default function OriginPage() {
             and emailed me the top five. I used it for myself. Sent the founder
             of #2 a three-line email about a specific repo file. He replied
             inside an hour. We talked the next week. I wrote a small cheque
-            two weeks before he started raising. That sequence — code-side
-            observation → specific email → reply → meeting → cheque <em className="not-italic">
+            two weeks before he started raising. That sequence — engineering
+            signal → specific email → reply → meeting → cheque <em className="not-italic">
               before
             </em> the deck — became the new shape of how I source deals.
           </p>
@@ -341,12 +348,15 @@ export default function OriginPage() {
           </h2>
           <p className="text-gray-300 text-base leading-relaxed">
             The shift isn&rsquo;t tactical. It&rsquo;s identity. A
-            warm-intro investor optimises for who they know. A code-side
-            investor optimises for what they read. The first compounds with
-            seniority and dinners. The second compounds with rhythm and
-            tooling. They feel different from the inside. The second one
-            scales without your physical presence in any room. That&rsquo;s
-            the move I want my readers to make.
+            warm-intro investor optimises for who they know. A{" "}
+            <strong className="text-gray-100">First Mover</strong> optimises for
+            what the engineering is doing — translated into plain English, no
+            code required. The first compounds with seniority and dinners. The
+            second compounds with rhythm and tooling. They feel different from
+            the inside. The second one scales without your physical presence in
+            any room. We move on the engineering signal before the round —
+            without reading a line of code. That&rsquo;s the move I want my
+            readers to make.
           </p>
         </section>
 

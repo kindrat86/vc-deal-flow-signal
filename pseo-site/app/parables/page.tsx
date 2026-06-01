@@ -7,6 +7,19 @@ import { DATA_NERD_NAME, DATA_NERD_PARABLES } from "@/lib/data-nerd";
 
 export const dynamic = "force-static";
 
+// Two parables resolve on raw engineering jargon in their punchline
+// ("monorepo migration" / "off-by-one in the contributor-deduplication
+// step"). For the non-coding reader (corp-dev / PE / angel), a one-line
+// plain-English gloss is rendered after the lesson so the point lands
+// without code. Keyed by slug; lib/data-nerd.ts is the source of truth
+// and is left untouched.
+const PARABLE_PLAIN_GLOSS: Record<string, string> = {
+  "wrong-reader":
+    "In plain terms: the model briefly mistook a big internal code cleanup for real momentum — and a reader caught the false alarm before we did.",
+  "tuesday-regression":
+    "In plain terms: one late-night change quietly broke the math, so a few wrong names reached the top of the list — readers flagged it, and the whole fix was made public the same week.",
+};
+
 // Brunson Expert Secrets Ch 5 (Storytelling) + DCS Ch 7 (Attractive
 // Character): every core claim needs a parable that makes it feel
 // obvious. The /data-nerd character bible already lists the six
@@ -114,6 +127,13 @@ export default function ParablesIndexPage() {
             flow. Each one has its own page — pick the one that fits
             your reader and send the URL.
           </p>
+          <p className="text-gray-400 text-sm leading-relaxed border-l-2 border-amber-700/40 pl-4">
+            These are for the <strong className="text-amber-200">First Mover</strong> —
+            the investor who reaches the founder before the round. The creed
+            is one line: <em>&ldquo;We move on the engineering signal before
+            the round — without reading a line of code.&rdquo;</em> You never
+            read a line of code; the read is done for you.
+          </p>
         </header>
 
         <ol className="space-y-5">
@@ -140,6 +160,11 @@ export default function ParablesIndexPage() {
                 <strong className="text-emerald-300">Lesson:</strong>{" "}
                 {p.lesson}
               </p>
+              {PARABLE_PLAIN_GLOSS[p.slug] && (
+                <p className="text-gray-400 text-sm leading-relaxed italic">
+                  {PARABLE_PLAIN_GLOSS[p.slug]}
+                </p>
+              )}
               <Link
                 href={`/parables/${p.slug}`}
                 className="inline-flex items-center gap-1 text-sm font-bold text-amber-300 hover:text-amber-200 underline decoration-dotted"

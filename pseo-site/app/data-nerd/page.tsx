@@ -158,6 +158,39 @@ export default function DataNerdPage() {
           </p>
         </section>
 
+        {/* READER FRAMING — plain-English reassurance for the non-coding
+            buyer (Marcus) BEFORE the dense character canon begins. The bible
+            below is engineering-heavy by design; this box tells the reader
+            they never have to decode it. Reuses the verbatim reassurance +
+            tribe creed from lib/data-nerd. Additive scaffolding only. */}
+        <section className="rounded-xl border border-sky-700/40 bg-sky-950/15 p-5 sm:p-6 space-y-3">
+          <p className="text-sky-300 text-[10px] font-semibold uppercase tracking-wider">
+            Before you read on
+          </p>
+          <h2 className="text-xl font-bold text-gray-100">
+            You never read a line of code — the read is done for you.
+          </h2>
+          <p className="text-gray-300 text-sm leading-relaxed">
+            This is the character bible, so it gets engineering-heavy below —
+            merge graphs, regressions, contributor de-duplication, the lot.
+            That&rsquo;s the engine. You only ever see the translated read.
+            The creed of the people this is built for:{" "}
+            <span className="text-sky-200 italic">
+              &ldquo;{DATA_NERD_TRIBE.oneLine}&rdquo;
+            </span>
+          </p>
+          <p className="text-gray-300 text-sm leading-relaxed">
+            So when a section gets technical, that&rsquo;s the machinery
+            talking, not a quiz. Where the jargon runs thickest you&rsquo;ll
+            see a{" "}
+            <span className="text-sky-200 font-semibold">
+              In plain English:
+            </span>{" "}
+            line that says the same thing the way a corp-dev partner would
+            say it across a table.
+          </p>
+        </section>
+
         {/* ARCHETYPE — declares which of the four canonical character
             archetypes this character occupies. The reader places the voice
             on a recognisable map before reading another paragraph. */}
@@ -246,6 +279,15 @@ export default function DataNerdPage() {
                 <p className="text-gray-300 text-sm leading-relaxed pl-6">
                   {p.body}
                 </p>
+                {p.n === 2 && (
+                  <p className="text-sky-200 text-sm leading-relaxed pl-6 border-l-2 border-sky-700/40 ml-0">
+                    <span className="font-semibold">In plain English:</span>{" "}
+                    the deck is what a company says about itself for the next
+                    fundraise; what its engineers actually ship every day is
+                    the truer story. You watch the work, not the pitch — and
+                    you never have to open the work yourself.
+                  </p>
+                )}
               </li>
             ))}
           </ul>
@@ -294,6 +336,27 @@ export default function DataNerdPage() {
                   <strong className="text-emerald-300">Lesson:</strong>{" "}
                   {p.lesson}
                 </p>
+                {p.slug === "wrong-reader" && (
+                  <p className="text-sky-200 text-sm leading-relaxed border-l-2 border-sky-700/40 pl-4">
+                    <span className="font-semibold">In plain English:</span>{" "}
+                    the team looked like it had suddenly tripled its output —
+                    but it was just two teams&rsquo; work getting merged into
+                    one place, not real new momentum. A reader who knew the
+                    company caught it; we fixed the blind spot, and our
+                    false-alarm rate dropped.
+                  </p>
+                )}
+                {p.slug === "tuesday-regression" && (
+                  <p className="text-sky-200 text-sm leading-relaxed border-l-2 border-sky-700/40 pl-4">
+                    <span className="font-semibold">In plain English:</span>{" "}
+                    I tinkered with how the scoring works, broke it, and
+                    Wednesday&rsquo;s list put three companies on top that
+                    didn&rsquo;t belong there. Readers told me; I traced it to
+                    one small counting bug, fixed it, and posted exactly what
+                    went wrong in public. You only ever saw the corrected
+                    list and the post-mortem.
+                  </p>
+                )}
                 <p className="text-xs">
                   <Link
                     href={`/parables/${p.slug}`}
