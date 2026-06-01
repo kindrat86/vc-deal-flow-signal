@@ -5,6 +5,7 @@ import PSEOFooterNav from "@/components/PSEOFooterNav";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import EmbedThisCard from "@/components/EmbedThisCard";
+import SeoCta from "@/components/SeoCta";
 
 export const metadata: Metadata = {
   title: "Weekly Signal Reports — Engineering Acceleration Archive",
@@ -162,21 +163,7 @@ export default function WeeklyArchivePage() {
 
         <PSEOFooterNav excludeHrefs={["/weekly"]} />
 
-        <div className="mt-12 rounded-xl border border-slate-800 bg-slate-900 p-6 sm:p-8 text-center">
-          <h2 className="text-gray-100 font-semibold text-lg mb-2">
-            Get each report in your inbox
-          </h2>
-          <p className="text-gray-400 text-sm mb-5 max-w-lg mx-auto">
-            The weekly report plus sector highlights delivered every Monday.
-            Free, no spam.
-          </p>
-          <Link
-            href="https://gitdealflow.com/#signup"
-            className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-medium transition-colors"
-          >
-            Get the Report
-          </Link>
-        </div>
+        <SeoCta signoffIndex={3} className="mt-12" />
       </div>
     </>
   );

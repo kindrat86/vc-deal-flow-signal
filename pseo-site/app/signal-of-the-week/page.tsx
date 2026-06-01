@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { allPosts } from "@/content/posts";
+import SeoCta from "@/components/SeoCta";
 
 export const metadata: Metadata = {
   title: "Signal of the Week – Weekly Startup Engineering Acceleration Deep Dive",
@@ -189,29 +190,21 @@ export default function SignalOfTheWeekArchivePage() {
           </div>
         </div>
 
-        <div className="mt-12 rounded-xl border border-slate-800 bg-slate-900 p-6 sm:p-8 text-center">
-          <h2 className="text-gray-100 font-semibold text-lg mb-2">
-            Get each edition in your inbox
-          </h2>
-          <p className="text-gray-400 text-sm mb-5 max-w-lg mx-auto">
-            Signal of the Week every Monday. Free, no spam. Or install the MCP
-            server and ask Claude / Cursor directly.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Link
-              href="https://gitdealflow.com/#signup"
-              className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-sky-700 hover:bg-sky-600 text-white text-sm font-medium transition-colors"
-            >
-              Subscribe to Signal Digest
-            </Link>
-            <Link
-              href="https://github.com/kindrat86/mcp-deal-flow-signal"
-              className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg border border-slate-700 hover:border-slate-500 text-gray-200 text-sm font-medium transition-colors"
-            >
-              Install MCP Server
-            </Link>
-          </div>
-        </div>
+        <SeoCta
+          heading="Get Signal of the Week in your inbox"
+          signoffIndex={5}
+          className="mt-12"
+        />
+        <p className="mt-4 text-center text-xs text-gray-500">
+          Building with AI tools?{" "}
+          <Link
+            href="https://github.com/kindrat86/mcp-deal-flow-signal"
+            className="text-gray-400 hover:text-gray-300 underline decoration-dotted"
+          >
+            Install the MCP server
+          </Link>{" "}
+          to query the same data from Claude or Cursor.
+        </p>
       </div>
     </>
   );

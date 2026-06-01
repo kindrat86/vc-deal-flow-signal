@@ -3,6 +3,7 @@ import Link from "next/link";
 import { listLeaderboard, type Scout } from "@/lib/pocketbase";
 import { makeShareIntents } from "@/lib/share-url";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import SeoCta from "@/components/SeoCta";
 
 // Token must be minted at request time with the RUNTIME SHARE_TOKEN_SECRET,
 // not at build time with the local-machine secret, or /share/[token] and
@@ -314,6 +315,13 @@ export default async function LeaderboardPage() {
           Start predicting →
         </Link>
       </section>
+
+      <div className="mt-10">
+        <SeoCta
+          heading="Rather read the signal than play? Get the free Sunday issue"
+          signoffIndex={4}
+        />
+      </div>
     </div>
     </>
   );

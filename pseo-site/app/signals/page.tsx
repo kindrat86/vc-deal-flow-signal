@@ -4,6 +4,7 @@ import { PRIMITIVES } from "@/content/signal-primitives";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import SeoCta from "@/components/SeoCta";
 
 const SITE = "https://signals.gitdealflow.com";
 
@@ -250,6 +251,8 @@ export default function SignalsIndexPage() {
             </li>
           </ul>
         </section>
+
+        <SeoCta signoffIndex={4} className="mt-12" />
 
         <p className="text-xs text-gray-400 text-center mt-10">
           See also:{" "}

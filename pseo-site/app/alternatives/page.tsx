@@ -3,6 +3,7 @@ import Link from "next/link";
 import { alternatives } from "@/content/alternatives";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import SeoCta from "@/components/SeoCta";
 
 export const metadata: Metadata = {
   title: "Alternatives to Harmonic.ai, Dealroom, Crunchbase & Forager.ai",
@@ -166,6 +167,13 @@ export default function AlternativesIndex() {
             See full pricing &rarr;
           </Link>
         </section>
+
+        <div className="mt-10">
+          <SeoCta
+            secondary={{ label: "Test one sector — First Look €7", href: "/firstlook" }}
+            signoffIndex={0}
+          />
+        </div>
       </div>
     </>
   );
