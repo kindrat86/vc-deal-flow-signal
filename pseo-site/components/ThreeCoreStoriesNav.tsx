@@ -68,7 +68,7 @@ const IDENTITY: StoryCard = {
   href: "/identity",
   eyebrow: "The Identity",
   title: "Who you become if the vehicle works.",
-  body: "Seven before/after shifts. From warm-intro reliant analyst to the partner who reads the merge graph 21–47 days before the deck circulates.",
+  body: "Seven before/after shifts. From warm-intro-reliant analyst to the First Mover who gets the engineering signal — translated into plain English, 21–47 days before the deck circulates. No code-reading required.",
   tone: "violet",
 };
 

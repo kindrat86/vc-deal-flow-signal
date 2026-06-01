@@ -9,6 +9,7 @@ import {
   DATA_NERD_PARABLES,
   DATA_NERD_TRIBE,
 } from "@/lib/data-nerd";
+import SeoCta from "@/components/SeoCta";
 
 export const dynamic = "force-static";
 // Block requests for slugs not pre-rendered at build time. Brunson DCS
@@ -236,6 +237,12 @@ export default async function ParablePage({ params }: { params: Params }) {
             </Link>
           )}
         </nav>
+
+        <SeoCta
+          heading="One parable landed. The Sunday issue is where the pattern pays off."
+          blurb="Five breakout startups every Sunday — the engineering signal in plain English, 21 to 47 days before the deck circulates. No code-reading, no card."
+          className="mt-2"
+        />
 
         <section className="border-t border-slate-800 pt-8 space-y-3 text-sm">
           <p className="text-gray-400 leading-relaxed">

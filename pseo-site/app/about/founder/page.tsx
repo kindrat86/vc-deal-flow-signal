@@ -143,16 +143,16 @@ export default function FounderPage() {
           <p className="text-gray-300 text-sm leading-relaxed">
             Use this page if you need to judge the person behind the signal. But if your real question is methodology, origin, or buyer-side evaluation, start with the proof stack first.
           </p>
-          <div className="flex flex-wrap gap-3">
-            <Link href="/origin" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-sky-600 text-white text-sm font-semibold hover:bg-sky-500 transition-colors">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+            <Link href="/origin" className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-sky-600 text-white text-sm font-semibold hover:bg-sky-500 transition-colors">
               Read the origin story →
             </Link>
-            <Link href="/research" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
-              Read the research panel →
-            </Link>
-            <Link href="/buyers-guide" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
-              Read the buyer's guide →
-            </Link>
+            <span className="text-sm text-gray-400">
+              or go straight to the{" "}
+              <Link href="/research" className="text-gray-300 hover:text-gray-100 underline decoration-dotted font-medium">research panel</Link>
+              {" · "}
+              <Link href="/buyers-guide" className="text-gray-300 hover:text-gray-100 underline decoration-dotted font-medium">buyer&rsquo;s guide</Link>
+            </span>
           </div>
         </section>
 

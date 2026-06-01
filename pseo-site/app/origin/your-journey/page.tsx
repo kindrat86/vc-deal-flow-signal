@@ -198,9 +198,9 @@ export default function YourJourneyPage() {
             You source deals the way you were taught to source them.
           </h2>
           <p className="text-gray-300 text-base leading-relaxed">
-            You&rsquo;re an engineer, or you used to be one, or you&rsquo;re
-            close enough to engineers that you can read a pull request without
-            squinting. Somewhere along the way you started writing small
+            You evaluate companies for a living. Maybe you trained as an
+            engineer; maybe you never wrote a line and just work alongside
+            them. Somewhere along the way you started writing small
             cheques — €5K, €10K, occasionally €25K — into devtools, AI infra,
             developer-shaped SaaS. The thesis was the obvious one: I know
             technical founders, I can recognise good code, I&rsquo;ll see good
@@ -450,8 +450,9 @@ export default function YourJourneyPage() {
           </p>
           <p className="text-gray-300 text-base leading-relaxed">
             The shift isn&rsquo;t a tactic. It&rsquo;s identity. The
-            warm-intro investor optimises for who they know. The code-side
-            investor optimises for what they read. The first compounds with
+            warm-intro investor optimises for who they know. The First Mover
+            optimises for what the engineering is actually doing — read for them,
+            in plain English. The first compounds with
             seniority and dinners. The second compounds with rhythm and
             tooling. They feel different from the inside. The second one
             scales without your physical presence in any room. That&rsquo;s

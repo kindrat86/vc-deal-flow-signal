@@ -147,26 +147,6 @@ export default function AboutPage() {
           <DataNerdSignoff variant="default" />
         </section>
 
-        <section className="rounded-2xl border border-sky-700/30 bg-sky-950/20 p-6 sm:p-8 space-y-3">
-          <p className="text-sky-300 text-xs font-semibold uppercase tracking-[0.14em]">
-            Start with the highest-intent routes
-          </p>
-          <p className="text-gray-300 text-sm leading-relaxed">
-            Use this page when you want the why. But if your real question is proof, timing, or buyer-side fit, start with the sharper pages first.
-          </p>
-          <div className="flex flex-wrap gap-3">
-            <Link href="/research" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-sky-600 text-white text-sm font-semibold hover:bg-sky-500 transition-colors">
-              Read the research panel →
-            </Link>
-            <Link href="/compare/crunchbase-alternative-for-angel-investors" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
-              Compare timing vs verification →
-            </Link>
-            <Link href="/buyers-guide" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
-              Read the buyer's guide →
-            </Link>
-          </div>
-        </section>
-
         <section className="rounded-2xl border border-slate-800 bg-slate-900 p-6 sm:p-8 space-y-4">
           <p className="text-gray-400 text-xs font-semibold uppercase tracking-[0.14em]">
             What you are looking at
@@ -202,30 +182,25 @@ export default function AboutPage() {
             Best next step
           </p>
           <h2 className="text-xl sm:text-2xl font-bold text-gray-100 leading-snug">
-            Start with the proof, then decide whether you want the weekly signal.
+            Start with the free Sunday issue. Let the signal earn the next step.
           </h2>
           <p className="text-gray-300 text-base leading-relaxed max-w-3xl">
-            If you want to verify the claim, go to the methodology or compare the stack.
-            If you want to feel the output, start with the free Sunday issue.
+            One short issue is enough to tell you whether this deserves more of your
+            trust — five breakout startups, in plain English, no code-reading and no
+            card. Prefer to verify the claim first? The methodology is public.
           </p>
-          <div className="flex flex-col sm:flex-row gap-3">
-            <Link
-              href="/methodology"
-              className="inline-flex items-center justify-center px-5 py-3 rounded-lg bg-sky-700 hover:bg-sky-600 text-white text-sm font-semibold transition-colors"
-            >
-              Read the methodology
-            </Link>
-            <Link
-              href="/compare/best-alternative-data-tools-for-angel-investors"
-              className="inline-flex items-center justify-center px-5 py-3 rounded-lg border border-slate-700 bg-slate-950/60 text-gray-200 hover:border-slate-600 transition-colors text-sm font-semibold"
-            >
-              Compare the stack
-            </Link>
+          <div className="flex flex-col sm:flex-row sm:items-center gap-4">
             <Link
               href="https://gitdealflow.com/#signup"
-              className="inline-flex items-center justify-center px-5 py-3 rounded-lg border border-amber-600/50 bg-amber-500/10 text-amber-200 hover:bg-amber-500/20 transition-colors text-sm font-semibold"
+              className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-signal-500 hover:bg-signal-400 text-white text-sm font-semibold shadow-sm shadow-signal-500/30 transition-colors"
             >
-              Get the free issue
+              Get the free Sunday issue →
+            </Link>
+            <Link
+              href="/methodology"
+              className="text-sm font-medium text-gray-400 hover:text-gray-200 underline decoration-dotted"
+            >
+              Prefer to verify first? Read the methodology →
             </Link>
           </div>
         </section>
