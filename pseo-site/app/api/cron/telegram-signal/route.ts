@@ -1,7 +1,7 @@
 /**
  * Signal of the Week — Telegram channel broadcast cron.
  *
- * Invoked by Vercel Cron every Monday (see vercel.json). Builds the weekly
+ * Invoked by Vercel Cron every Sunday (see vercel.json). Builds the weekly
  * "Signal of the Week" post from the current #1 mover
  * (getTopMoversThisWeek(1)) and posts it to the free Telegram channel via the
  * bot. Automates the manual cadence documented in

@@ -101,7 +101,7 @@ Cron job — server-side, no laptop required:
 - **Route:** `pseo-site/app/api/cron/telegram-signal/route.ts`
 - **Builder:** `pseo-site/lib/telegram/signal-of-the-week.ts` (renders the
   post from `getTopMoversThisWeek(1)` — the current #1 mover)
-- **Schedule:** Mondays 13:00 UTC (`vercel.json` → `crons`)
+- **Schedule:** Sundays 13:00 UTC (`vercel.json` → `crons`)
 - **Target:** `TELEGRAM_CHANNEL_ID` = `@gitdealflow`
 
 > Historical note: earlier autonomous posts to `@gitdealflow` were sent by
@@ -139,7 +139,7 @@ curl -H "Authorization: Bearer $CRON_SECRET" \
   "https://signals.gitdealflow.com/api/cron/telegram-signal?chat=<your_chat_id>"
 ```
 
-The Monday cron posts to `TELEGRAM_CHANNEL_ID` automatically. If no startup
+The Sunday cron posts to `TELEGRAM_CHANNEL_ID` automatically. If no startup
 clears the 30-commit floor that week, the route returns
 `{ mode: "skipped", reason: "no-mover" }` instead of posting an empty signal.
 
