@@ -130,7 +130,7 @@ export default function FundHubPage() {
             See which startups in your sector are accelerating on GitHub before their next round. Free weekly report.
           </p>
           <Link
-            href="https://gitdealflow.com/firstlook?ref=fund-hub"
+            href="https://gitdealflow.com/#signup"
             className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-sky-700 hover:bg-sky-600 text-white text-sm font-medium transition-colors"
           >
             Get the Report
