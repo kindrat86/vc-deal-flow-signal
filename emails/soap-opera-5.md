@@ -29,7 +29,7 @@ One is a narrative. The other is behavior.
 
 See the live data: https://signals.gitdealflow.com
 
-Upgrade to the full Dashboard: https://gitdealflow.com/#pricing
+Upgrade to the full Dashboard: https://gitdealflow.com/dashboard
 
 If the free digest is enough for now, that's fine too. You'll keep getting it every month.
 
