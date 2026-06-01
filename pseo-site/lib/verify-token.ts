@@ -38,7 +38,7 @@ export function verifyToken(email: string, token: string): boolean {
 // rotating the global secret.
 // ---------------------------------------------------------------------------
 
-export type VerifyPurpose = "verify-subscribe" | "scout-dashboard";
+export type VerifyPurpose = "verify-subscribe" | "scout-dashboard" | "unsubscribe";
 
 interface VerifyPayload {
   e: string; // email (lowercased)
