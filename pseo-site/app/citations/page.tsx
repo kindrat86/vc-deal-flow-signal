@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { TrustConversionBlock } from "@/components/TrustConversionBlock";
 
 const SITE = "https://signals.gitdealflow.com";
 const APEX = "https://gitdealflow.com";
@@ -521,6 +522,12 @@ Retrieved from https://signals.gitdealflow.com/research`}
             — we&rsquo;ll add the link and refresh the schema.
           </p>
         </section>
+
+        <TrustConversionBlock
+          className="mt-10"
+          dominant="digest"
+          context="Citing us? You can also just read the weekly signal."
+        />
       </div>
     </>
   );

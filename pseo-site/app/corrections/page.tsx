@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { DataNerdSignoff } from "@/components/DataNerdSignoff";
+import { TrustConversionBlock } from "@/components/TrustConversionBlock";
 
 const SITE = "https://signals.gitdealflow.com";
 
@@ -174,6 +176,11 @@ export default function CorrectionsPage() {
           schema appears here within seven days of the fix landing in
           production — with the date, the surface, what changed, and why.
         </p>
+        <p className="text-base text-gray-400 mb-10 leading-relaxed border-l-2 border-amber-700/40 pl-4 max-w-3xl">
+          The honest move is to publish the limit before you find it. This log
+          exists so you can audit every change we&rsquo;ve ever made — not the
+          ones we&rsquo;d have picked to show you.
+        </p>
 
         <section className="mb-10 rounded-lg border border-slate-800 bg-slate-900/40 p-6">
           <h2 className="text-lg font-semibold text-white mb-3">Policy</h2>
@@ -290,6 +297,17 @@ export default function CorrectionsPage() {
             Changelog
           </Link>
         </p>
+
+        <div className="mt-12">
+          <DataNerdSignoff variant="default" />
+        </div>
+
+        <div className="mt-8">
+          <TrustConversionBlock
+            dominant="digest"
+            context="This is how we stay honest. Here's the weekly read it backs."
+          />
+        </div>
       </div>
     </>
   );

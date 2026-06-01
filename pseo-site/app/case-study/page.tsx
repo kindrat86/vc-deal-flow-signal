@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CASE_STUDIES } from "@/content/case-studies";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import { TrustConversionBlock } from "@/components/TrustConversionBlock";
 
 export const metadata: Metadata = {
   title: "Case Studies — Workflow Walkthroughs | VC Deal Flow Signal",
@@ -105,6 +106,15 @@ export default function CaseStudyHubPage() {
           take) is the representative element. Designed to show buyers exactly how the
           product works for their role.
         </p>
+        <p className="text-gray-400 text-sm leading-relaxed mb-10">
+          These walkthroughs are illustrative composites. The named, dated
+          receipts — real orgs and the engineering events that preceded their
+          rounds — live on{" "}
+          <Link href="/wins" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">
+            the wins page
+          </Link>
+          .
+        </p>
 
         <div className="space-y-4">
           {CASE_STUDIES.map((cs) => (
@@ -131,14 +141,22 @@ export default function CaseStudyHubPage() {
             Try a workflow for your team
           </h2>
           <p className="text-gray-400 text-sm mb-4">
-            Onboarding includes a role-matched guided walkthrough.
+            No call to book — run the same workflow on a sector you already care
+            about for €7.
           </p>
           <Link
             href="/firstlook"
             className="inline-block rounded-md bg-sky-500 px-5 py-2 text-sm font-semibold text-white hover:bg-sky-400 transition-colors"
           >
-            Request a Demo
+            See it on your sector — €7 First Look
           </Link>
+        </div>
+
+        <div className="mt-10">
+          <TrustConversionBlock
+            dominant="firstlook"
+            context="These are workflows. Run one on your real sector."
+          />
         </div>
       </div>
     </>

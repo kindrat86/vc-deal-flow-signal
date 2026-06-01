@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { defineMetadata } from "@/lib/metadata";
+import { TrustConversionBlock } from "@/components/TrustConversionBlock";
 
 export const metadata = defineMetadata({
   title: "Annual Transparency Report",
@@ -100,6 +101,12 @@ export default function TransparencyPage() {
           Machine-readable mirror: <Link href="/.well-known/transparency.json" className="text-emerald-400 hover:underline">/.well-known/transparency.json</Link>. Companion surfaces: <Link href="/disclosure" className="text-sky-400 hover:underline">/disclosure</Link>, <Link href="/security" className="text-sky-400 hover:underline">/security</Link>, <Link href="/.well-known/compliance.json" className="text-emerald-400 hover:underline">/.well-known/compliance.json</Link>.
         </div>
       </section>
+
+      <TrustConversionBlock
+        className="mt-10"
+        dominant="digest"
+        context="This is the integrity record. Here's the product it backs."
+      />
 
       <footer className="mt-10 pt-6 border-t border-slate-800 text-sm text-gray-400">
         License: <a href="https://creativecommons.org/licenses/by/4.0/" className="text-sky-400 hover:underline">CC BY 4.0</a>. Trust hub: <Link href="/trust" className="text-sky-400 hover:underline">/trust</Link>.

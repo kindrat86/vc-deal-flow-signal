@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { buildUptimeManifest, type ComponentStatus } from "@/lib/uptime";
+import { TrustConversionBlock } from "@/components/TrustConversionBlock";
 
 // Server-rendered each request so the timestamps + active-incident array
 // are always live. The underlying data is computed by lib/uptime.ts and
@@ -244,6 +245,12 @@ export default function UptimePage() {
             Last generated: {new Date(m.generatedAt).toUTCString()}
           </p>
         </section>
+
+        <TrustConversionBlock
+          className="mt-12"
+          dominant="digest"
+          context="The engine's been up. Here's what it produces."
+        />
       </main>
     </>
   );

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { RESEARCH_PAPERS } from "@/content/research-papers";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import { TrustConversionBlock } from "@/components/TrustConversionBlock";
 
 export const metadata: Metadata = {
   title: "Research Papers — External Academic References | VC Deal Flow Signal",
@@ -149,6 +150,12 @@ export default function ResearchPaperHubPage() {
             Read /methodology
           </Link>
         </div>
+
+        <TrustConversionBlock
+          className="mt-10"
+          dominant="digest"
+          context="These are the papers behind the method. Here's the method in action."
+        />
       </div>
     </>
   );

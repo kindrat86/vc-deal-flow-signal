@@ -3,6 +3,8 @@ import Link from "next/link";
 import { FINDINGS, type Finding } from "@/content/research-findings";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import { PlainEnglishNote } from "@/components/PlainEnglishNote";
+import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 
 const SITE = "https://signals.gitdealflow.com";
 const SSRN_URL = "https://ssrn.com/abstract=6606558";
@@ -430,6 +432,19 @@ export default function ResearchPage() {
               <em>doi.org/10.2139/ssrn.6606558</em>.
             </p>
           </div>
+          <PlainEnglishNote className="mb-6 max-w-3xl">
+            <p>
+              Plain version of the lead finding: startups whose public
+              engineering visibly speeds up tend to announce a raise about{" "}
+              <strong className="text-gray-200">three to six weeks later</strong>.
+              The acceleration shows up first; the funding headline follows.
+            </p>
+            <p>
+              You read a ranked shortlist, not a regression. No statistics, no
+              code — the math below is here so anyone who wants to can check our
+              work, not because you have to run it.
+            </p>
+          </PlainEnglishNote>
           <div className="flex flex-wrap gap-3">
             <a
               href={SSRN_URL}
@@ -562,6 +577,8 @@ export default function ResearchPage() {
             OpenAIRE (propagating) · Google Scholar (propagating).
           </p>
         </section>
+
+        <DataNerdSignoff variant="default" className="mb-12" />
 
         <section className="mb-12 rounded-xl border border-amber-500/30 bg-amber-500/5 p-6 sm:p-8">
           <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider mb-2">
