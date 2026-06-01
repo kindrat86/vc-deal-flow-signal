@@ -9,6 +9,7 @@ import {
 import { getDataLastModified } from "@/lib/data";
 import CTABanner from "@/components/CTABanner";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -234,6 +235,7 @@ export default async function VsPage({ params }: PageProps) {
             heading={`Skip the ${a.name}-vs-${b.name} debate — see who's actually shipping`}
             primaryLabel="Get the free Sunday issue"
           />
+          <DataNerdSignoff variant="compact" className="mt-5" />
         </section>
 
         <section className="mb-12" aria-label="Frequently asked questions">

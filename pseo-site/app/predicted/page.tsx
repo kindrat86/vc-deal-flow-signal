@@ -5,6 +5,7 @@ import ShareBar from "@/components/ShareBar";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { DEFAULT_HREFLANG_LANGUAGES } from "@/lib/hreflang";
+import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import {
   getCurrentPredictionWeek,
   getAllPredictionWeeks,
@@ -525,6 +526,7 @@ export default function PredictedPage() {
               Commission a Sector Sweep — €1,997
             </Link>
           </div>
+          <DataNerdSignoff variant="compact" className="mt-6" />
         </div>
 
         <p className="mt-8 text-xs text-gray-400 text-center">

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { competitors, getAllCompetitorVsSlugs } from "@/content/competitor-vs";
+import SeoCta from "@/components/SeoCta";
 
 export const metadata: Metadata = {
   title: "Deal Flow Tool Comparisons (VS) — VC Deal Flow Signal",
@@ -176,6 +177,8 @@ export default function VsIndex() {
             </Link>
           </div>
         </div>
+
+        <SeoCta className="mt-12" signoffIndex={4} />
       </div>
     </>
   );

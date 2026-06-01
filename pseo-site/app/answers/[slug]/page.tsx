@@ -10,6 +10,7 @@ import {
 import { getDataLastModified } from "@/lib/data";
 import { AgentSummary } from "@/components/AgentSummary";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -400,6 +401,7 @@ export default async function AnswerPage({ params }: PageProps) {
             </Link>
             .
           </p>
+          <DataNerdSignoff variant="compact" className="mt-6" />
         </section>
 
         <section className="mb-12" aria-label="Frequently asked questions">

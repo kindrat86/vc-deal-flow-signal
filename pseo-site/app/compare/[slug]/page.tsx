@@ -8,6 +8,7 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { FunnelTeardown } from "@/components/FunnelTeardown";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import SeoCta from "@/components/SeoCta";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -447,37 +448,18 @@ export default async function ComparisonPage({ params }: PageProps) {
           </section>
         ) : null}
 
-        {/* CTA */}
-        <div className="rounded-xl border border-slate-800 bg-slate-900 p-6 sm:p-8 text-center">
-          <h2 className="text-gray-100 font-semibold text-lg mb-2">
-            If the category is clear, pick the next lane.
-          </h2>
-          <p className="text-gray-400 text-sm mb-5 max-w-lg mx-auto">
-            Start free if you want one useful read each Sunday. Use First Look
-            if the thesis is already live. Keep the methodology one click away
-            if you still need to verify the claim.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Link
-              href="https://gitdealflow.com/#signup"
-              className="inline-flex w-full sm:w-auto items-center justify-center px-6 py-3 rounded-lg bg-sky-700 hover:bg-sky-600 text-white text-sm font-medium transition-colors"
-            >
-              Get the free Sunday issue →
-            </Link>
-            <Link
-              href="/firstlook"
-              className="inline-flex w-full sm:w-auto items-center justify-center px-6 py-3 rounded-lg border border-slate-700 hover:border-slate-500 text-gray-200 text-sm font-medium transition-colors"
-            >
-              Get my First Look →
-            </Link>
-            <Link
-              href="/methodology"
-              className="inline-flex w-full sm:w-auto items-center justify-center px-6 py-3 rounded-lg border border-slate-700 hover:border-slate-500 text-gray-200 text-sm font-medium transition-colors"
-            >
-              Read the methodology →
-            </Link>
-          </div>
-        </div>
+        {/* CTA — free digest primary, First Look secondary, AC signoff; methodology demoted to a text link */}
+        <SeoCta
+          heading="Skip the debate — see who's actually shipping"
+          signoffIndex={6}
+          secondary={{ label: "Test one sector — First Look (€7) →", href: "/firstlook" }}
+        />
+        <p className="mt-3 text-center text-xs text-gray-500">
+          Still verifying the claim?{" "}
+          <Link href="/methodology" className="text-sky-400 hover:text-sky-300 underline">
+            Read the methodology →
+          </Link>
+        </p>
       </div>
     </>
   );

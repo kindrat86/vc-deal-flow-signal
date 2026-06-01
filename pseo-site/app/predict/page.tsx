@@ -11,6 +11,7 @@ import SignalBadge from "@/components/SignalBadge";
 import PredictForm from "./PredictForm";
 import ScoutCallForm from "./ScoutCallForm";
 import { AgentSummary } from "@/components/AgentSummary";
+import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 
 export const metadata: Metadata = {
   title: "Predict Startup Breakouts — Free GitHub Signal + Scout Game",
@@ -504,6 +505,8 @@ export default async function PredictPage({
             Open badge builder &rarr;
           </Link>
         </section>
+
+        <DataNerdSignoff variant="compact" className="mt-12" />
       </div>
     </>
   );
