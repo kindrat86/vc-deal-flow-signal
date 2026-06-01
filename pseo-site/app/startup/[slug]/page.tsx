@@ -86,6 +86,28 @@ export default async function StartupPage({ params }: PageProps) {
     MENA: "Middle East & North Africa",
     Unknown: "Not specified",
   };
+  // Per-startup, honest projections for the curiosity-gate below. Derived
+  // from THIS org's real acceleration + signal type and the SSRN lead-time
+  // finding (median 31d, IQR 21-47d) — so the blurred row VARIES per startup
+  // instead of showing one hardcoded placeholder. Labeled a model estimate.
+  const leadWindow =
+    latestVelNum >= 200
+      ? "≈21-day lead window"
+      : latestVelNum >= 100
+        ? "≈31-day lead window"
+        : latestVelNum >= 25
+          ? "≈47-day lead window"
+          : "no active window";
+  const projectedMilestone =
+    latest.signalType === "Engineering hiring burst"
+      ? "Team expansion / round prep"
+      : latest.signalType === "Infrastructure buildout"
+        ? "Major product milestone"
+        : latest.signalType === "Deploy frequency spike"
+          ? "Public launch / release"
+          : "Platform or stack transition";
+  const trackedCount = getAllStartupSlugs().length;
+
   const geoLabel = geoNames[profile.latestGeography] || profile.latestGeography;
 
   // Generate FAQs
@@ -387,22 +409,23 @@ export default async function StartupPage({ params }: PageProps) {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
               <div>
-                <p className="text-gray-400 text-xs mb-1">Predicted fundraise window</p>
+                <p className="text-gray-400 text-xs mb-1">Projected lead-time window</p>
                 <p className="text-2xl font-bold text-signal-400 select-none filter blur-sm">
-                  Q3 2026 (74 days ±21)
+                  {leadWindow}
                 </p>
               </div>
               <div>
-                <p className="text-gray-400 text-xs mb-1">Estimated round size</p>
+                <p className="text-gray-400 text-xs mb-1">Projected next milestone</p>
                 <p className="text-2xl font-bold text-signal-400 select-none filter blur-sm">
-                  $4.2M – $7.8M Series A
+                  {projectedMilestone}
                 </p>
               </div>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed mb-4">
-              Free Sunday digest unlocks both of these for {profile.name} and the other 108 startups
-              we track — plus 14-day acceleration deltas, contributor maps, and the top 3 names not on
-              Crunchbase yet. Five names every Sunday, no card.
+              The free Sunday digest puts {profile.name} in context against the other{" "}
+              {trackedCount - 1} startups we track — 14-day acceleration deltas, contributor
+              maps, and the top three names not on Crunchbase yet. Five names every Sunday, no
+              card, no code-reading.
             </p>
             <a
               href="https://gitdealflow.com/#signup"

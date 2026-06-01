@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import SignalBadge from "@/components/SignalBadge";
 import ShareBar from "@/components/ShareBar";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import SeoCta from "@/components/SeoCta";
 import {
   getAllPredictionWeekSlugs,
   getPredictionWeek,
@@ -319,6 +320,13 @@ export default async function PredictedWeekPage({ params }: RouteContext) {
         </ol>
 
         <div className="mt-12">
+          <SeoCta
+            heading="Get next week's picks before they're public"
+            signoffIndex={2}
+          />
+        </div>
+
+        <div className="mt-8">
           <Link
             href="/predicted"
             className="text-sky-400 hover:text-sky-300 underline decoration-dotted text-sm"

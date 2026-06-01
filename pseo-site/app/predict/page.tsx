@@ -173,7 +173,7 @@ export default async function PredictPage({
             name: "How many predictions can I make per month?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Free tier: 3 predictions per month. Insider Circle (EUR 19/month): 10 predictions per month. First 100 scouts to make a prediction receive a permanent Founder Scout badge.",
+              text: "Free tier: 3 predictions per month. First 100 scouts to make a prediction receive a permanent Founder Scout badge. The Insider Circle (EUR 97/month) adds the 24-hour-early Acceleration Watch and the private member briefing.",
             },
           },
         ],
@@ -269,7 +269,7 @@ export default async function PredictPage({
                 <span className="text-gray-100 font-medium">
                   Live breakout signal
                 </span>{" "}
-                for any GitHub org, scored against 20 sectors. Value if priced separately: <span className="font-mono text-emerald-400">$29</span>.
+                for any GitHub org, scored against 20 sectors.
               </span>
             </li>
             <li className="flex items-start gap-2">
@@ -278,7 +278,7 @@ export default async function PredictPage({
                 <span className="text-gray-100 font-medium">
                   Free Weekly Signal Report
                 </span>{" "}
-                mailed every Monday — 10 breakout-tagged startups with raw GitHub metrics. <span className="font-mono text-emerald-400">$49/mo</span> value.
+                mailed every Monday — 10 breakout-tagged startups with raw GitHub metrics.
               </span>
             </li>
             <li className="flex items-start gap-2">
@@ -287,7 +287,7 @@ export default async function PredictPage({
                 <span className="text-gray-100 font-medium">
                   Public scout profile
                 </span>{" "}
-                at <code className="text-sky-400">/s/[handle]</code> — shareable track record, auto-resolved calls, reputation ladder. <span className="font-mono text-emerald-400">$19/mo</span> value.
+                at <code className="text-sky-400">/s/[handle]</code> — shareable track record, auto-resolved calls, reputation ladder.
               </span>
             </li>
             <li className="flex items-start gap-2">
@@ -296,7 +296,7 @@ export default async function PredictPage({
                 <span className="text-gray-100 font-medium">
                   MCP + Chrome extension
                 </span>{" "}
-                for Claude / Cursor / any IDE plus Crunchbase + AngelList badges. <span className="font-mono text-emerald-400">$29/mo</span> value.
+                for Claude / Cursor / any IDE plus Crunchbase + AngelList badges.
               </span>
             </li>
             <li className="flex items-start gap-2">
@@ -328,10 +328,8 @@ export default async function PredictPage({
             </li>
           </ul>
           <p className="mt-4 text-xs text-gray-400">
-            Total stack value if billed separately:{" "}
-            <span className="text-gray-300 font-mono">$126+/mo</span>. Your
-            price today: <span className="text-emerald-400 font-mono">$0</span>.
-            Paste an org below to unlock.
+            All of it free, no card. Paste an org below to see its live breakout
+            signal — then make your own call.
           </p>
         </section>
 

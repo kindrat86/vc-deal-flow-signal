@@ -11,6 +11,7 @@ import StartupTable from "@/components/StartupTable";
 import VelocityBar from "@/components/charts/VelocityBar";
 import SignalDistribution from "@/components/charts/SignalDistribution";
 import PSEOFooterNav from "@/components/PSEOFooterNav";
+import SeoCta from "@/components/SeoCta";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 
@@ -308,21 +309,7 @@ export default function TrendingPage() {
         <PSEOFooterNav excludeHrefs={["/trending"]} />
 
         {/* CTA */}
-        <div className="rounded-xl border border-slate-800 bg-slate-900 p-6 sm:p-8 text-center">
-          <h2 className="text-gray-100 font-semibold text-lg mb-2">
-            Get these signals weekly
-          </h2>
-          <p className="text-gray-400 text-sm mb-5 max-w-lg mx-auto">
-            Get the top breakout startups across all sectors delivered to
-            your inbox every week. Free, no spam.
-          </p>
-          <Link
-            href="https://gitdealflow.com/#signup"
-            className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-medium transition-colors"
-          >
-            Get the Report
-          </Link>
-        </div>
+        <SeoCta signoffIndex={3} className="mt-10" />
       </div>
     </>
   );

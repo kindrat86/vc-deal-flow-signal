@@ -4,6 +4,7 @@ import { AgentSummary } from "@/components/AgentSummary";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import SeoCta from "@/components/SeoCta";
 import CrystalBallForm from "./CrystalBallForm";
 
 export const dynamic = "force-static";
@@ -276,6 +277,9 @@ export default function CrystalBallPage() {
               Sorted by submission date. Manually graded as outcomes resolve.
             </p>
           </div>
+          <p className="text-amber-300/90 text-xs leading-relaxed rounded-lg border border-amber-500/30 bg-amber-500/5 px-3 py-2">
+            Illustrative seed entries — the founding cohort is still filling. These show how a graded pick reads once an outcome resolves; your own picks appear here after you submit.
+          </p>
           <ul className="rounded-xl border border-slate-800 overflow-hidden divide-y divide-slate-800">
             {SEEDED_PICKS.map((pick, i) => (
               <li
@@ -388,6 +392,11 @@ export default function CrystalBallPage() {
             </Link>
           </div>
         </section>
+
+        <SeoCta
+          heading="Prefer we do the watching? Get five picks every Sunday"
+          signoffIndex={3}
+        />
 
         <AgentSummary
           tldr="The Crystal Ball is a free public forecasting game. Forecasters submit a GitHub org and predict that the org will publicly announce a funding round within 90 days. Picks are post-hoc graded against TechCrunch, company blog, Crunchbase, and SEC. The leaderboard ranks by hit rate weighted by lead time. Founding cohort capped at 1,000; founding badge is permanent and unlocks a 50% discount on a Sector Sweep after 5+ hits."

@@ -4,6 +4,7 @@ import { getAllMarkets, pctLabel } from "@/lib/markets";
 import { getDataLastModified } from "@/lib/data";
 import { AgentSummary } from "@/components/AgentSummary";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import SeoCta from "@/components/SeoCta";
 
 export const dynamic = "force-static";
 
@@ -187,6 +188,8 @@ export default async function MarketsIndexPage() {
             </Link>
           </p>
         </section>
+
+        <SeoCta signoffIndex={0} className="mt-12" />
       </div>
     </>
   );

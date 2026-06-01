@@ -9,6 +9,7 @@ import {
 } from "@/content/cities";
 import { getCompaniesInCity } from "@/content/company-locations";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import SeoCta from "@/components/SeoCta";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -377,21 +378,11 @@ export default async function CityPage({ params }: PageProps) {
           </section>
         )}
 
-        <div className="rounded-xl border border-slate-800 bg-slate-900 p-6 sm:p-8 text-center">
-          <h2 className="text-gray-100 font-semibold text-lg mb-2">
-            Get the weekly engineering signal for {REGION_LABELS[city.region]}
-          </h2>
-          <p className="text-gray-400 text-sm mb-4">
-            Engineering acceleration in your region, surfaced 3 to 6 weeks before the
-            announcement.
-          </p>
-          <Link
-            href="/firstlook"
-            className="inline-block rounded-md bg-sky-500 px-5 py-2 text-sm font-semibold text-white hover:bg-sky-400 transition-colors"
-          >
-            See First Look
-          </Link>
-        </div>
+        <SeoCta
+          heading={`Get the weekly engineering signal for ${REGION_LABELS[city.region]}`}
+          secondary={{ label: "See First Look (€7)", href: "/firstlook" }}
+          signoffIndex={1}
+        />
       </div>
     </>
   );

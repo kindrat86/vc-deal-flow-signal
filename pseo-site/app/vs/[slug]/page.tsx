@@ -230,7 +230,10 @@ export default async function VsPage({ params }: PageProps) {
         </section>
 
         <section className="mb-12" aria-label="Call to action">
-          <CTABanner />
+          <CTABanner
+            heading={`Skip the ${a.name}-vs-${b.name} debate — see who's actually shipping`}
+            primaryLabel="Get the free Sunday issue"
+          />
         </section>
 
         <section className="mb-12" aria-label="Frequently asked questions">

@@ -275,7 +275,10 @@ export default async function SectorPage({ params }: PageProps) {
 
         {/* CTA */}
         <section className="mb-12" aria-label="Call to action">
-          <CTABanner />
+          <CTABanner
+            heading={`The full ranked ${sector.name} list updates every week — get it free`}
+            primaryLabel="Get the free Sunday issue"
+          />
         </section>
 
         {/* Cross-axis exploration (best/trends/signals/stage) */}

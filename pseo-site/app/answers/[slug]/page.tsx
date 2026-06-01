@@ -375,32 +375,31 @@ export default async function AnswerPage({ params }: PageProps) {
             question is already expensive, use First Look. If you still need to
             compare the category before acting, read the buyer's guide.
           </p>
-          <div className="flex flex-wrap justify-center gap-3">
+          <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3">
             <Link
               href="https://gitdealflow.com/#signup"
-              className="inline-flex items-center px-6 py-2.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-medium transition-colors"
+              className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-signal-500 hover:bg-signal-400 text-white text-sm font-semibold transition-colors shadow-sm shadow-signal-500/30"
             >
               Get the free Sunday issue →
             </Link>
             <Link
-              href="/firstlook"
-              className="inline-flex items-center px-6 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 hover:bg-slate-800/60 text-sm font-medium transition-colors"
-            >
-              Get my First Look →
-            </Link>
-            <Link
-              href="/buyers-guide"
-              className="inline-flex items-center px-6 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 hover:bg-slate-800/60 text-sm font-medium transition-colors"
-            >
-              Read the buyer's guide →
-            </Link>
-            <Link
               href={q.ctaUrl}
-              className="inline-flex items-center px-6 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 hover:bg-slate-800/60 text-sm font-medium transition-colors"
+              className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 hover:bg-slate-800/60 text-sm font-medium transition-colors"
             >
               {q.ctaLabel} →
             </Link>
           </div>
+          <p className="text-gray-500 text-xs mt-4">
+            Already comparing tools? Read the{" "}
+            <Link href="/buyers-guide" className="text-sky-400 hover:text-sky-300 underline">
+              buyer&apos;s guide
+            </Link>{" "}
+            or test one sector with{" "}
+            <Link href="/firstlook" className="text-sky-400 hover:text-sky-300 underline">
+              First Look (€7)
+            </Link>
+            .
+          </p>
         </section>
 
         <section className="mb-12" aria-label="Frequently asked questions">
