@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { defineMetadata } from "@/lib/metadata";
+import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import { TrustPageOutro } from "@/components/TrustPageOutro";
 
 export const metadata = defineMetadata({
   title: "Security Overview",
@@ -20,6 +22,7 @@ export default function SecurityPage() {
     inLanguage: "en-US",
     isAccessibleForFree: true,
     license: "https://creativecommons.org/licenses/by/4.0/",
+    author: DATA_NERD_AUTHOR_REF,
     publisher: { "@type": "Organization", "@id": "https://gitdealflow.com/#organization" },
   };
 
@@ -33,6 +36,13 @@ export default function SecurityPage() {
           Public-data-only architecture means most of our security surface is small by design: we never see card numbers, never store passwords, and never collect sensitive personal categories. The controls below cover what we <em>do</em> handle: subscriber email, Stripe customer IDs, share tokens, and our own admin tooling.
         </p>
       </header>
+
+      <section className="mb-8 rounded-xl border border-sky-700/30 bg-sky-950/20 p-5 sm:p-6">
+        <p className="text-sky-300 text-xs font-semibold uppercase tracking-[0.14em] mb-2">For the buyer doing diligence</p>
+        <p className="text-gray-200 text-sm leading-relaxed">
+          Not technical? Here&apos;s the only sentence your IC needs: because we rank <strong>public</strong> GitHub data, we never hold your card, your password, or anything sensitive — so the worst case of a breach is an email list, and even that is encrypted and EU-hosted. The detail below is for your security reviewer; you don&apos;t need to read it to clear us.
+        </p>
+      </section>
 
       <section className="mb-8 rounded-xl border border-emerald-700/30 bg-emerald-950/20 p-5 sm:p-6 space-y-3">
         <p className="text-emerald-300 text-xs font-semibold uppercase tracking-[0.14em]">
@@ -112,6 +122,8 @@ export default function SecurityPage() {
           </ul>
         </div>
       </section>
+
+      <TrustPageOutro acNote="The smallest attack surface is the data you never collected. We rank public companies, store no card and no password, so the worst thing anyone could steal here is an email list — encrypted, EU-hosted, and not for sale. That's not a security budget; it's a design decision." />
 
       <footer className="mt-10 pt-6 border-t border-slate-800 text-sm text-gray-400">
         Report a vulnerability: <a className="text-sky-400 hover:underline" href="mailto:signal@gitdealflow.com?subject=Security%20disclosure">signal@gitdealflow.com</a>. Trust hub: <Link href="/trust" className="text-sky-400 hover:underline">/trust</Link>.

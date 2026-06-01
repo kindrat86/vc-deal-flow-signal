@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { defineMetadata } from "@/lib/metadata";
+import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import { TrustPageOutro } from "@/components/TrustPageOutro";
 
 export const metadata = defineMetadata({
   title: "Privacy Policy",
@@ -30,6 +32,7 @@ export default function PrivacyPage() {
       version: "2026-05-08.f38",
       license: "https://creativecommons.org/licenses/by/4.0/",
     },
+    author: DATA_NERD_AUTHOR_REF,
     publisher: { "@type": "Organization", "@id": "https://gitdealflow.com/#organization" },
   };
 
@@ -41,6 +44,13 @@ export default function PrivacyPage() {
         <h1 className="text-4xl font-bold text-gray-100 mb-3 leading-tight">Privacy Policy</h1>
         <p className="text-gray-400 text-sm">Effective {EFFECTIVE} · Plain English first, precise terms below.</p>
       </header>
+
+      <section className="mb-8 rounded-xl border border-sky-700/30 bg-sky-950/20 p-5 sm:p-6">
+        <p className="text-sky-300 text-xs font-semibold uppercase tracking-[0.14em] mb-2">For the buyer doing diligence</p>
+        <p className="text-gray-200 text-sm leading-relaxed">
+          Reviewing us for an investment committee or a procurement checklist? The one-line version: <strong>we rank public companies, not people</strong> — the only personal data we hold on <em>you</em> is the email you opted in with. No card numbers, no tracking pixels, nothing sold. Forward this page to legal; you won&apos;t need an engineer to clear it.
+        </p>
+      </section>
 
       <section className="mb-8 rounded-xl border border-emerald-700/30 bg-emerald-950/20 p-5 sm:p-6 space-y-3">
         <p className="text-emerald-300 text-xs font-semibold uppercase tracking-[0.14em]">
@@ -121,6 +131,8 @@ export default function PrivacyPage() {
         <h2 className="text-xl font-semibold text-gray-100">10 · Supervisory authority</h2>
         <p>If you believe we have mishandled your data, you may complain to your local data protection authority. Our default supervisory authority is the Hellenic Data Protection Authority (HDPA), since the operator is based in Greece.</p>
       </section>
+
+      <TrustPageOutro acNote="I hold as little of your data as the product can survive on. The same instinct that keeps my face off this site keeps your inbox off everyone else's: the less I keep, the less anyone can ever take, sell, or leak. We rank public companies — not you." />
 
       <footer className="mt-10 pt-6 border-t border-slate-800 text-sm text-gray-400">
         License: <a href="https://creativecommons.org/licenses/by/4.0/" className="text-sky-400 hover:underline">CC BY 4.0</a>. Contact: <a href="mailto:signal@gitdealflow.com" className="text-sky-400 hover:underline">signal@gitdealflow.com</a>. Trust hub: <Link href="/trust" className="text-sky-400 hover:underline">/trust</Link>.

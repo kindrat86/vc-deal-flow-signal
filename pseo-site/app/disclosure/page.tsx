@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { defineMetadata } from "@/lib/metadata";
+import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import { TrustPageOutro } from "@/components/TrustPageOutro";
 
 export const metadata = defineMetadata({
   title: "Coordinated Vulnerability Disclosure",
@@ -26,6 +28,7 @@ export default function DisclosurePage() {
       license: "https://creativecommons.org/licenses/by/4.0/",
       encoding: { "@type": "MediaObject", contentUrl: `${SITE}/.well-known/disclosure.json`, encodingFormat: "application/json" },
     },
+    author: DATA_NERD_AUTHOR_REF,
     publisher: { "@type": "Organization", "@id": "https://gitdealflow.com/#organization" },
   };
 
@@ -39,6 +42,13 @@ export default function DisclosurePage() {
           We follow the <a className="text-sky-400 hover:underline" href="https://github.com/disclose/disclose.io/blob/master/data/core-terms.md">disclose.io core terms</a>. If you find a security issue affecting VC Deal Flow Signal in good faith and follow this policy, we will not pursue legal action.
         </p>
       </header>
+
+      <section className="mb-8 rounded-xl border border-sky-700/30 bg-sky-950/20 p-5 sm:p-6">
+        <p className="text-sky-300 text-xs font-semibold uppercase tracking-[0.14em] mb-2">Why a buyer should care</p>
+        <p className="text-gray-200 text-sm leading-relaxed">
+          You may never report a bug — but the existence of this page is the signal: a vendor that publishes a real disclosure policy, a safe harbor, named scope, and response SLAs is a vendor that has already thought about what happens when something breaks. Most six-person data shops haven&apos;t.
+        </p>
+      </section>
 
       <section className="mb-8 rounded-xl border border-emerald-700/30 bg-emerald-950/20 p-5 sm:p-6 space-y-3">
         <p className="text-emerald-300 text-xs font-semibold uppercase tracking-[0.14em]">
@@ -141,6 +151,8 @@ export default function DisclosurePage() {
           </ul>
         </div>
       </section>
+
+      <TrustPageOutro acNote="I publish my methodology's misses every Tuesday. If you find a hole in the site, I'll treat it the same way: acknowledged fast, fixed in the open, credited if you want it. Same discipline, different surface." />
 
       <footer className="mt-10 pt-6 border-t border-slate-800 text-sm text-gray-400">
         Machine-readable: <Link href="/.well-known/disclosure.json" className="text-emerald-400 hover:underline">/.well-known/disclosure.json</Link>, <Link href="/.well-known/security.txt" className="text-sky-400 hover:underline">/.well-known/security.txt</Link>. Trust hub: <Link href="/trust" className="text-sky-400 hover:underline">/trust</Link>.

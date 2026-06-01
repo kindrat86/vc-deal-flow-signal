@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { defineMetadata } from "@/lib/metadata";
+import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import { TrustPageOutro } from "@/components/TrustPageOutro";
 
 export const metadata = defineMetadata({
   title: "Terms of Service",
@@ -30,6 +32,7 @@ export default function TermsPage() {
       version: "2026-05-08.f38",
       license: "https://creativecommons.org/licenses/by/4.0/",
     },
+    author: DATA_NERD_AUTHOR_REF,
     publisher: { "@type": "Organization", "@id": "https://gitdealflow.com/#organization" },
   };
 
@@ -41,6 +44,13 @@ export default function TermsPage() {
         <h1 className="text-4xl font-bold text-gray-100 mb-3 leading-tight">Terms of Service</h1>
         <p className="text-gray-400 text-sm">Effective {EFFECTIVE}.</p>
       </header>
+
+      <section className="mb-8 rounded-xl border border-sky-700/30 bg-sky-950/20 p-5 sm:p-6">
+        <p className="text-sky-300 text-xs font-semibold uppercase tracking-[0.14em] mb-2">For the buyer doing diligence</p>
+        <p className="text-gray-200 text-sm leading-relaxed">
+          Two lines decide this for most buyers: <strong>paid tiers are billed by Stripe and cancel in one click</strong>, and the signal is <strong>research output, not investment advice</strong>. Everything below is the standard wrapper around those two facts — no engineer required to read it.
+        </p>
+      </section>
 
       <section className="mb-8 rounded-xl border border-emerald-500/30 bg-emerald-500/5 p-5">
         <h2 className="text-emerald-300 font-semibold mb-3">The short version</h2>
@@ -90,6 +100,8 @@ export default function TermsPage() {
         <h2 className="text-xl font-semibold text-gray-100">10 · Contact + changes</h2>
         <p>Questions: <a className="text-sky-400 hover:underline" href="mailto:signal@gitdealflow.com">signal@gitdealflow.com</a>. We will email all subscribers at least 30 days before any material change to these Terms; minor edits (typos, link updates) ship without notice. Version history at <Link href="/changelog" className="text-sky-400 hover:underline">/changelog</Link>.</p>
       </section>
+
+      <TrustPageOutro acNote="I sell a signal, not a promise. That's why the terms are short, the liability is capped, the advice disclaimer is loud, and the exit is one click. If the math stops being useful, you leave — I'd rather lose the subscription than bury the off-ramp." />
 
       <footer className="mt-10 pt-6 border-t border-slate-800 text-sm text-gray-400">
         License: <a href="https://creativecommons.org/licenses/by/4.0/" className="text-sky-400 hover:underline">CC BY 4.0</a>. Trust hub: <Link href="/trust" className="text-sky-400 hover:underline">/trust</Link>.
