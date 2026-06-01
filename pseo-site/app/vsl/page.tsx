@@ -171,11 +171,25 @@ export default function VslPage() {
             ) : (
               <div className="flex h-full w-full flex-col items-center justify-center gap-4 px-6 text-center">
                 <div className="text-amber-400 text-xs uppercase tracking-[0.2em] font-bold">
-                  Video render in progress
+                  Written version below while the video finishes
                 </div>
                 <p className="text-slate-200 text-lg font-semibold max-w-md">
-                  The synthetic-voice render is queued. The full transcript below is the same arc — read it in 12 minutes.
+                  The whole case is written out below in plain English — the same arc as the video. Most readers prefer it: you can skim it in 10 minutes and jump straight to the offer.
                 </p>
+                <div className="flex flex-wrap items-center justify-center gap-3 pt-1">
+                  <a
+                    href="#read"
+                    className="inline-flex items-center gap-1 rounded-lg bg-amber-500 px-4 py-2 text-sm font-bold text-slate-900 hover:bg-amber-400 transition"
+                  >
+                    Prefer to read? Here&rsquo;s the 10-minute case →
+                  </a>
+                  <a
+                    href="#offer"
+                    className="inline-flex items-center gap-1 rounded-lg border border-slate-600 px-4 py-2 text-sm font-semibold text-slate-200 hover:border-slate-400 transition"
+                  >
+                    Skip to the offer →
+                  </a>
+                </div>
                 <p className="text-slate-400 text-sm">
                   Anonymity rule: synthetic voice (Cartesia Theo) only. No founder face, voice, or name.
                 </p>
@@ -207,11 +221,17 @@ export default function VslPage() {
           <p className="text-xs text-slate-500">
             30-Day Signal-or-It&rsquo;s-Free Guarantee · Cancel anytime · Founding rate locked forever
           </p>
+          <p className="text-sm text-slate-600 leading-relaxed border-l-2 border-amber-300 pl-3">
+            <span className="font-semibold text-slate-700">No code required.</span>{" "}
+            You never read a line of it. We do the reading and hand you the
+            plain-English verdict — &ldquo;this team is suddenly shipping far
+            more than usual,&rdquo; not a screen of statistics.
+          </p>
         </header>
 
         {/* HOOK — Brunson rule: hook hard, lead with curiosity. */}
         {hookScene ? (
-          <section className="space-y-3 rounded-2xl border border-amber-200 bg-amber-50/60 p-6 sm:p-8">
+          <section id="read" className="scroll-mt-20 space-y-3 rounded-2xl border border-amber-200 bg-amber-50/60 p-6 sm:p-8">
             <h2 className="text-xs uppercase tracking-[0.18em] text-amber-700 font-bold">
               Hook · 0:00
             </h2>
@@ -441,7 +461,7 @@ export default function VslPage() {
 
         {/* THREE DOORS CTA — Brunson DotCom §1 Ch 2 (Value Ladder, all rungs visible). */}
         {ctaScene ? (
-          <section className="space-y-5 rounded-2xl border-2 border-emerald-300 bg-emerald-50/40 p-6 sm:p-8" data-speakable>
+          <section id="offer" className="scroll-mt-20 space-y-5 rounded-2xl border-2 border-emerald-300 bg-emerald-50/40 p-6 sm:p-8" data-speakable>
             <div className="space-y-1">
               <p className="text-xs uppercase tracking-[0.18em] font-bold text-emerald-700">
                 Three doors

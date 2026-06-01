@@ -16,9 +16,6 @@ export const metadata: Metadata = {
   },
 };
 
-const SHARP_APPLY_URL =
-  "mailto:signal@gitdealflow.com?subject=Sharp%20Tier%20Application%20%E2%80%94%20%5BYour%20Fund%5D&body=Hi%20%E2%80%94%0A%0AFund%2Fsyndicate%20name%3A%20%0AAUM%20or%20deals%2Fyear%3A%20%0AThesis%20focus%3A%20%0AHow%20you%20heard%20about%20us%3A%20%0A%0AOne%20thing%20you%27d%20want%20the%20quarterly%20review%20call%20to%20cover%3A%20%0A%0AThanks%2C%0A";
-
 const ENTERPRISE_CONTACT_URL =
   "mailto:signal@gitdealflow.com?subject=Enterprise%20Engagement%20%E2%80%94%20%5BYour%20Fund%5D&body=Hi%20%E2%80%94%0A%0AFund%20name%3A%20%0AAUM%3A%20%0AStandard%20deals%2Fyear%3A%20%0AThesis%2Fsectors%3A%20%0A%0AScope%20of%20interest%20%28pick%20any%29%3A%0A-%20White-label%20fund-branded%20UI%0A-%20Dedicated%20Slack%20channel%0A-%20On-call%20diligence%20support%20for%20active%20fundraises%0A-%20Custom%20sector%20coverage%20expansion%0A-%20Multi-seat%20Sharp%20Tier%20%28beyond%20single-fund%20cap%29%0A%0AThanks%2C%0A";
 
@@ -292,12 +289,22 @@ export default function EnterprisePage() {
               </div>
             ))}
           </div>
-          <a
-            href={SHARP_APPLY_URL}
+          <Link
+            href="/apply"
             className="inline-block bg-yellow-500 hover:bg-yellow-400 text-dark-900 font-semibold px-5 py-2.5 rounded-md transition-colors text-sm"
           >
             Apply for Sharp Tier &rarr;
-          </a>
+          </Link>
+          <p className="text-gray-400 text-xs mt-3">
+            Sharp Tier &rarr; apply in 2 minutes at{" "}
+            <Link
+              href="/apply"
+              className="text-yellow-200 hover:text-yellow-100 underline decoration-dotted"
+            >
+              /apply
+            </Link>
+            . Need a fully-scoped custom engagement? Email us below.
+          </p>
         </section>
 
         {/* Custom enterprise scope */}

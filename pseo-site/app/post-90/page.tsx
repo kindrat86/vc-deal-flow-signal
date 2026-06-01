@@ -230,6 +230,31 @@ export default function Post90Page() {
           </div>
         </header>
 
+        {/* Newcomer on-ramp — cold/SEO arrivals aren't at Day 90 yet.
+            Give them a free entry point instead of a dead-end. */}
+        <section className="rounded-lg border border-gray-800 bg-slate-900/40 p-5 sm:p-6 space-y-2">
+          <p className="text-sky-400 text-xs font-semibold uppercase tracking-wider font-mono">
+            New here?
+          </p>
+          <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
+            Not at Day 90 yet? This page is the cohort home for readers who
+            already finished the 90-day rhythm. Start with the free Sunday
+            digest —{" "}
+            <a
+              href="https://gitdealflow.com/#signup"
+              rel="noopener noreferrer"
+              className="text-amber-400 hover:underline font-semibold"
+            >
+              subscribe to the Acceleration Watch
+            </a>{" "}
+            — or read{" "}
+            <Link href="/start-here" className="text-amber-400 hover:underline font-semibold">
+              /start-here
+            </Link>{" "}
+            for the full picture first. No code required.
+          </p>
+        </section>
+
         {/* Three rituals — the actual environment shift, listed plainly. */}
         <section className="space-y-6">
           <h2 className="text-xl font-bold text-gray-100" data-speakable>

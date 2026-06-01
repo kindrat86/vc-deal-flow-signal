@@ -228,25 +228,29 @@ export default function BookPage() {
           <p className="text-lg sm:text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
             {BOOK.subtitle}.
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center pt-4">
+          <div className="flex flex-col items-center gap-3 pt-4">
             <Link
               href="#download"
-              className="inline-flex items-center justify-center rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-semibold px-6 py-3 transition-colors"
+              className="inline-flex items-center justify-center rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-lg px-8 py-4 shadow-lg shadow-sky-500/20 transition-colors"
             >
-              Get the free PDF + EPUB
+              Get the free PDF + EPUB →
             </Link>
-            <a
-              href={STRIPE_BOOK_LINK}
-              className="inline-flex items-center justify-center rounded-lg border border-amber-500/60 hover:border-amber-400 text-amber-200 hover:text-amber-100 font-semibold px-6 py-3 transition-colors"
-            >
-              Get the €0.99 Kindle copy
-            </a>
-            <Link
-              href="/book/read/introduction"
-              className="inline-flex items-center justify-center rounded-lg border border-slate-700 hover:border-slate-500 text-gray-300 hover:text-gray-100 font-semibold px-6 py-3 transition-colors"
-            >
-              Read free online
-            </Link>
+            <p className="text-sm text-gray-400">
+              or{" "}
+              <Link
+                href="/book/read/introduction"
+                className="text-gray-300 hover:text-sky-300 underline underline-offset-2"
+              >
+                read it free online
+              </Link>{" "}
+              ·{" "}
+              <a
+                href={STRIPE_BOOK_LINK}
+                className="text-amber-300 hover:text-amber-200 underline underline-offset-2"
+              >
+                €0.99 Kindle copy
+              </a>
+            </p>
           </div>
           <p className="text-xs text-gray-400 pt-2">
             ISBN {BOOK.isbn} · {BOOK.edition} · CC-BY-4.0 · Methodology indexed at{" "}

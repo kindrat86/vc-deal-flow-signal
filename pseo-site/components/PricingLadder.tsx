@@ -32,13 +32,13 @@ const TIERS: readonly Tier[] = [
     name: "Dashboard",
     price: "€9.97",
     cadence: "per month",
-    pitch: "8-object stack — €1,932 of value, 60-day refund.",
+    pitch: "8-object stack — €1,728 of value, 30-day Signal-or-It's-Free refund.",
     bullets: [
       "Sunday Digest, Full Dashboard (85+ startups, 20 sectors)",
       "219-startup Backtest CSV (the SSRN dataset)",
       "Monthly Sector Deep Dive PDF (your pick)",
       "Chrome Extension + Claude MCP + Async Watchlist Build",
-      "60-day no-questions refund. Reply to refund.",
+      "30-day Signal-or-It's-Free refund. Reply REFUND.",
     ],
     cta: "Lock in founder price",
     href: "https://buy.stripe.com/28E7sK48H04U8ou07u0x200",
@@ -55,7 +55,7 @@ const TIERS: readonly Tier[] = [
       "Insider API + Slack/Telegram Spike Alerts",
       "Quarterly Trend Briefing PDF + Portfolio Overlap report",
       "Direct line to the founder (text/email)",
-      "60-day no-questions refund.",
+      "30-day Signal-or-It's-Free refund.",
     ],
     cta: "Join the Insider Circle",
     href: "https://buy.stripe.com/4gM00ifRpcRG2069I40x202",
@@ -172,9 +172,9 @@ export default function PricingLadder() {
           €7 First Look Pass
         </Link>{" "}
         — one sector deep-dive, one-time payment, ahead of the next weekly
-        digest. <strong className="text-emerald-400">60-day &ldquo;Signal or
-        It&rsquo;s Free&rdquo; refund</strong> on all paid tiers — reply to any
-        email, no forms, no call.
+        digest. <strong className="text-emerald-400">30-day &ldquo;Signal or
+        It&rsquo;s Free&rdquo; refund</strong> on all paid tiers — reply REFUND
+        to any email, no forms, no call.
       </p>
 
       {/* Brunson Audit 2026-05-08 — Value Ladder ding fix. Show the

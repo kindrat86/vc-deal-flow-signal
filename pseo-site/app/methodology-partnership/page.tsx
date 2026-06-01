@@ -356,6 +356,40 @@ export default function MethodologyPartnershipPage() {
             decline reason. The application is free and never auto-converts
             to a charge.
           </p>
+          <div className="rounded-lg border border-violet-700/40 bg-slate-900/50 p-4 space-y-2">
+            <p className="text-violet-300 text-[10px] sm:text-xs font-semibold uppercase tracking-wider">
+              Verify before you commit
+            </p>
+            <p className="text-gray-300 text-sm leading-relaxed">
+              This is a jump up from the €1,997 Sweep, so check the track
+              record first &mdash; you don&rsquo;t need to read any code to do
+              it. The{" "}
+              <Link
+                href="/wins"
+                className="text-violet-400 hover:text-violet-300 underline decoration-dotted"
+              >
+                receipts on /wins
+              </Link>
+              , the{" "}
+              <Link
+                href="/research"
+                className="text-violet-400 hover:text-violet-300 underline decoration-dotted"
+              >
+                SSRN panel on /research
+              </Link>
+              , and the{" "}
+              <Link
+                href="/methodology"
+                className="text-violet-400 hover:text-violet-300 underline decoration-dotted"
+              >
+                methodology
+              </Link>{" "}
+              are all public. The 30-day Signal-or-It&rsquo;s-Free guarantee
+              applies to your first month, the same as every tier: if the
+              signal doesn&rsquo;t surface a fund-relevant company in the first
+              30 days, the first month is free.
+            </p>
+          </div>
           <a
             href={APPLY_MAILTO}
             className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-violet-600 hover:bg-violet-500 text-white font-semibold transition-colors shadow-sm shadow-violet-500/30"

@@ -154,6 +154,19 @@ export default function ApplyPage() {
             funds in 2026 because the call time is real. Application
             reviewed within 48 business hours.
           </p>
+          <p className="text-gray-400 text-sm leading-relaxed">
+            This is the <span className="text-gray-200 font-medium">Sharp Tier</span>{" "}
+            application. For a fully-scoped custom enterprise engagement
+            (white-label UI, dedicated Slack, on-call diligence, multi-seat),
+            see{" "}
+            <Link
+              href="/enterprise"
+              className="text-purple-300 hover:text-purple-200 underline decoration-dotted"
+            >
+              /enterprise
+            </Link>
+            .
+          </p>
           <SharpScarcityBadge variant="default" showCta={false} />
         </header>
 

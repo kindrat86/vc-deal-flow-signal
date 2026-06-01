@@ -95,7 +95,7 @@ export default function AffiliatesPage() {
             name: "When do I get paid?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Monthly payouts via Stripe, with a €50 minimum payout threshold. Earnings are held for 60 days from the conversion date to align with our customer refund window — this protects both sides from clawbacks if a customer cancels.",
+              text: "Monthly payouts via Stripe, with a €50 minimum payout threshold. Earnings are held for 60 days from the conversion date — twice the 30-day customer refund window — so a clawback is impossible if a customer cancels.",
             },
           },
           {
@@ -249,7 +249,7 @@ export default function AffiliatesPage() {
               <p className="text-3xl font-bold text-emerald-400 mb-1">€399</p>
               <p className="text-gray-400 text-sm">
                 20% of €1,997 per referred sale. Paid out the month after the
-                customer&apos;s 60-day refund window closes.
+                60-day payout hold clears.
               </p>
             </div>
             <div className="rounded-lg border border-slate-800 bg-slate-900 p-6">
@@ -320,7 +320,7 @@ export default function AffiliatesPage() {
                     Hold period
                   </td>
                   <td className="px-6 py-4 text-gray-100">
-                    60 days (matches the Insider Circle refund window)
+                    60 days (twice the 30-day customer refund window)
                   </td>
                 </tr>
               </tbody>
@@ -666,9 +666,9 @@ Not affiliated [or: affiliate disclosure required], just one of the cheapest sou
               </h3>
               <p className="text-gray-400 text-sm leading-relaxed">
                 Monthly via Stripe, with a €50 minimum payout threshold.
-                Earnings are held for 60 days from the conversion date to align
-                with our customer refund window — this protects both sides
-                from clawbacks if a customer cancels.
+                Earnings are held for 60 days from the conversion date —
+                twice the 30-day customer refund window — so a clawback is
+                impossible if a customer cancels.
               </p>
             </div>
 

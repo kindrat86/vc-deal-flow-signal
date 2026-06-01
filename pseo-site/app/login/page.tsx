@@ -52,10 +52,10 @@ export default async function LoginPage() {
             Don&apos;t have a subscription yet?
           </p>
           <Link
-            href="/pricing"
+            href="/firstlook"
             className="inline-flex items-center gap-1 text-sky-400 hover:text-sky-300 text-sm font-medium transition-colors"
           >
-            See pricing plans <span aria-hidden="true">→</span>
+            Test one sector for €7 <span aria-hidden="true">→</span>
           </Link>
         </div>
       </div>

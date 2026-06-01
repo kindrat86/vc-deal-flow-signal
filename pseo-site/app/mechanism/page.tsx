@@ -45,6 +45,8 @@ const FORMULA_STEPS = [
     title: "Compute percentage delta against the prior 14-day window",
     detail:
       "Each organization is measured against its own historical baseline, not the population. A 100% delta means the team doubled its merge cadence relative to its own prior fortnight. Cross-org comparison is meaningless; self-comparison is the whole point.",
+    plain:
+      "In plain terms: we compare a team to its own normal, not to other teams. A 100% jump means they shipped twice as much code as their usual fortnight — the kind of step-change that happens right before a raise.",
   },
   {
     n: 3,
@@ -57,12 +59,16 @@ const FORMULA_STEPS = [
     title: "Score contributor concentration with the Gini coefficient",
     detail:
       "The Gini coefficient of commit distribution across contributors over the same 14-day window. Below 0.30 = broad team participation. Above 0.70 = a single hero developer. High velocity with low concentration is the strongest single composite predictor in the SSRN panel — orgs meeting both conditions are 3.4× more likely to announce a Series A within 60 days than orgs with high velocity alone.",
+    plain:
+      "In plain terms: the Gini coefficient is just a fairness score for who is doing the work — is this a whole team accelerating, or one person doing everything? A real team accelerating is a far stronger buy signal than a single hero coder, and we only flag the team pattern.",
   },
   {
     n: 5,
     title: "Classify the breakout into one of four signal types",
     detail:
       "Engineering Hiring Burst (≥50% contributor growth), Infrastructure Buildout (≥3 new public repos in 30 days), Deploy Frequency Spike (≥150% velocity), or Framework Migration (general acceleration that fits none of the above). Each type carries a distinct fundraise-lead-time distribution, so the classification is not cosmetic — it is the prediction.",
+    plain:
+      "In plain terms: we tell you which kind of move it is — they just hired a wave of engineers, they're building scaling infrastructure, they're shipping to production far faster, or they're re-platforming. Each kind tends to lead a raise by a different amount of time, so the label is also the timing estimate.",
   },
 ] as const;
 
@@ -272,6 +278,17 @@ export default function MechanismPage() {
           execute it.
         </p>
 
+        <p className="text-sm text-slate-300 mb-8 leading-relaxed rounded-xl border border-slate-800 bg-slate-900/40 p-5">
+          <span className="font-semibold text-slate-100">You do not need to read code to use this.</span>{" "}
+          The steps below are how we do the reading — you never run any of it.
+          The signal arrives already translated into plain business language:
+          &ldquo;this team is shipping far more than usual,&rdquo; &ldquo;the
+          engineering team roughly doubled overnight,&rdquo; &ldquo;they just
+          stood up the infrastructure a company builds right before it scales.&rdquo;
+          The formula is published below for the few buyers who want to audit
+          it. Most never look at it — they read the verdict, not the math.
+        </p>
+
         <section className="mb-10 rounded-2xl border border-amber-700/30 bg-amber-950/20 p-6 sm:p-8 space-y-3">
           <p className="text-amber-300 text-xs font-semibold uppercase tracking-[0.14em]">
             Start with the highest-intent routes
@@ -317,9 +334,19 @@ export default function MechanismPage() {
                 <p className="text-slate-400 text-sm leading-relaxed">
                   {step.detail}
                 </p>
+                {"plain" in step && step.plain ? (
+                  <p className="text-slate-300 text-sm leading-relaxed mt-3 border-l-2 border-emerald-700/50 pl-3">
+                    {step.plain}
+                  </p>
+                ) : null}
               </li>
             ))}
           </ol>
+          <p className="text-xs text-slate-500 mt-4 leading-relaxed">
+            The green lines are the plain-English read of each step — what it
+            means for the deal, not how the code runs. You never touch the
+            code; you read the verdict.
+          </p>
         </section>
 
         <section aria-label="Sophistication ladder" className="mb-12">
@@ -383,6 +410,13 @@ export default function MechanismPage() {
             tests that, if any of them fail, would force us to retract the
             corresponding part of the mechanism. We publish them so the
             buyer can run them.
+          </p>
+          <p className="text-xs text-slate-400 mb-6 leading-relaxed rounded-lg border border-slate-800 bg-slate-900/40 p-4">
+            This section is for the buyer who wants to check our work, or hand
+            it to an analyst who will. If the statistics below are not your
+            language, that is fine — nothing here is something you have to run.
+            In one sentence: each test is a way to prove the signal is real and
+            not luck, and we publish them precisely because we expect them to hold.
           </p>
           <ul className="space-y-4">
             {FALSIFIABILITY.map((f) => (

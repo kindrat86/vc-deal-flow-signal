@@ -119,13 +119,6 @@ export default function TweetTeardownPage() {
       url: STRIPE_TEARDOWN_LINK,
       priceValidUntil: "2026-12-31",
     },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.9",
-      reviewCount: "12",
-      bestRating: "5",
-      worstRating: "1",
-    },
   };
 
   const faqJsonLd = {

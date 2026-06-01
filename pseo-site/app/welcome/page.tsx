@@ -108,6 +108,29 @@ export default async function WelcomePage() {
         </ul>
       </div>
 
+      {/* Dashboard → Insider upsell (Dashboard tier only) */}
+      {!isInsider && (
+        <div className="rounded-xl border border-amber-500/30 bg-amber-950/15 p-6 sm:p-7 mb-6">
+          <p className="text-amber-300 text-[10px] font-semibold uppercase tracking-wider mb-2">
+            Optional upgrade
+          </p>
+          <h2 className="text-lg font-semibold text-gray-100 mb-2">
+            Want the same ranked list 24 hours earlier?
+          </h2>
+          <p className="text-gray-300 text-sm leading-relaxed mb-4">
+            The Insider Circle gets the weekly list a day ahead of the Dashboard,
+            plus the private investor room. No code required — same list, more
+            lead time. €97/mo.
+          </p>
+          <Link
+            href="/insider"
+            className="inline-flex items-center gap-1.5 text-amber-300 hover:text-amber-200 text-sm font-semibold transition-colors"
+          >
+            See the Insider Circle <span aria-hidden="true">→</span>
+          </Link>
+        </div>
+      )}
+
       {/* Next steps */}
       <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-6 sm:p-7 mb-10">
         <h2 className="text-lg font-semibold text-gray-100 mb-4">
