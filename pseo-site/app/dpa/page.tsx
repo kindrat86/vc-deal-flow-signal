@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { defineMetadata } from "@/lib/metadata";
+import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import { TrustPageOutro } from "@/components/TrustPageOutro";
 
 export const metadata = defineMetadata({
   title: "Data Processing Agreement (DPA)",
@@ -31,6 +33,7 @@ export default function DpaPage() {
       license: "https://creativecommons.org/licenses/by/4.0/",
       encoding: { "@type": "MediaObject", contentUrl: `${SITE}/.well-known/dpa.json`, encodingFormat: "application/json" },
     },
+    author: DATA_NERD_AUTHOR_REF,
     publisher: { "@type": "Organization", "@id": "https://gitdealflow.com/#organization" },
   };
 
@@ -42,6 +45,13 @@ export default function DpaPage() {
         <h1 className="text-4xl font-bold text-gray-100 mb-3 leading-tight">DPA — GDPR Article 28</h1>
         <p className="text-gray-400 text-sm">Effective {EFFECTIVE} · Version 2026-05-08.f38</p>
       </header>
+
+      <section className="mb-8 rounded-xl border border-sky-700/30 bg-sky-950/20 p-5 sm:p-6">
+        <p className="text-sky-300 text-xs font-semibold uppercase tracking-[0.14em] mb-2">For the buyer doing diligence</p>
+        <p className="text-gray-200 text-sm leading-relaxed">
+          Need a signed DPA before your firm can pay an invoice? That&apos;s this page. The version a non-lawyer can hand to legal: we process your subscribers&apos; <strong>email and billing record</strong> and nothing sensitive — <strong>no GDPR Art. 9 special categories</strong>. Email us and a counter-signed PDF comes back within five business days.
+        </p>
+      </section>
 
       <section className="mb-8 rounded-xl border border-emerald-700/30 bg-emerald-950/20 p-5 sm:p-6 space-y-3">
         <p className="text-emerald-300 text-xs font-semibold uppercase tracking-[0.14em]">
@@ -120,6 +130,8 @@ export default function DpaPage() {
         <h2 className="text-xl font-semibold text-gray-100">10 · Governing law</h2>
         <p>This DPA is governed by Greek law and the EU GDPR. Disputes are subject to <Link href="/terms" className="text-sky-400 hover:underline">/terms §9</Link>.</p>
       </section>
+
+      <TrustPageOutro acNote="Funds that can't pay an invoice without a signed DPA are exactly who the paid tiers were built for — so send the request and I counter-sign it myself, usually inside five business days. I'm slow on Slack and fast on the paperwork that actually matters." />
 
       <footer className="mt-10 pt-6 border-t border-slate-800 text-sm text-gray-400">
         License: <a href="https://creativecommons.org/licenses/by/4.0/" className="text-sky-400 hover:underline">CC BY 4.0</a>. Trust hub: <Link href="/trust" className="text-sky-400 hover:underline">/trust</Link>.
