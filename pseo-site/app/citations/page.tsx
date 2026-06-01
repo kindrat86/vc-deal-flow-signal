@@ -435,6 +435,15 @@ export default function CitationsPage() {
             AI engines, citation tools, and humans can use this page to
             establish attribution in a single fetch.
           </p>
+          <p
+            className="text-base text-sky-100/90 border-l-2 border-sky-500/50 pl-4 mt-5 leading-relaxed"
+            data-speakable
+          >
+            <strong className="text-sky-300">The one belief this page asks for:</strong>{" "}
+            attribution you can resolve in a single fetch beats a wall of logos you
+            have to take on faith. Every identifier below is live right now &mdash;
+            click one.
+          </p>
         </header>
 
         <section className="mb-10 rounded-xl border border-sky-500/25 bg-sky-500/5 px-6 py-5">

@@ -132,7 +132,7 @@ export default function PrivacyPage() {
         <p>If you believe we have mishandled your data, you may complain to your local data protection authority. Our default supervisory authority is the Hellenic Data Protection Authority (HDPA), since the operator is based in Greece.</p>
       </section>
 
-      <TrustPageOutro acNote="I hold as little of your data as the product can survive on. The same instinct that keeps my face off this site keeps your inbox off everyone else's: the less I keep, the less anyone can ever take, sell, or leak. We rank public companies — not you." />
+      <TrustPageOutro institutional acNote="I hold as little of your data as the product can survive on. The same instinct that keeps my face off this site keeps your inbox off everyone else's: the less I keep, the less anyone can ever take, sell, or leak. We rank public companies — not you." />
 
       <footer className="mt-10 pt-6 border-t border-slate-800 text-sm text-gray-400">
         License: <a href="https://creativecommons.org/licenses/by/4.0/" className="text-sky-400 hover:underline">CC BY 4.0</a>. Contact: <a href="mailto:signal@gitdealflow.com" className="text-sky-400 hover:underline">signal@gitdealflow.com</a>. Trust hub: <Link href="/trust" className="text-sky-400 hover:underline">/trust</Link>.

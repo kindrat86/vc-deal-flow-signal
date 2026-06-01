@@ -123,7 +123,7 @@ export default function SecurityPage() {
         </div>
       </section>
 
-      <TrustPageOutro acNote="The smallest attack surface is the data you never collected. We rank public companies, store no card and no password, so the worst thing anyone could steal here is an email list — encrypted, EU-hosted, and not for sale. That's not a security budget; it's a design decision." />
+      <TrustPageOutro institutional acNote="The smallest attack surface is the data you never collected. We rank public companies, store no card and no password, so the worst thing anyone could steal here is an email list — encrypted, EU-hosted, and not for sale. That's not a security budget; it's a design decision." />
 
       <footer className="mt-10 pt-6 border-t border-slate-800 text-sm text-gray-400">
         Report a vulnerability: <a className="text-sky-400 hover:underline" href="mailto:signal@gitdealflow.com?subject=Security%20disclosure">signal@gitdealflow.com</a>. Trust hub: <Link href="/trust" className="text-sky-400 hover:underline">/trust</Link>.
