@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getSession } from "@/lib/auth";
+import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 
 export const metadata: Metadata = {
   title: "Welcome — VC Deal Flow Signal",
@@ -193,6 +194,8 @@ export default async function WelcomePage() {
           Free Telegram Channel
         </Link>
       </div>
+
+      <DataNerdSignoff variant="compact" className="mt-8" />
     </div>
   );
 }

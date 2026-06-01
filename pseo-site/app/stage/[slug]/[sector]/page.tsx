@@ -7,8 +7,9 @@ import {
   getDataLastModified,
 } from "@/lib/data";
 import StartupTable from "@/components/StartupTable";
-import CTABanner from "@/components/CTABanner";
+import SeoCta from "@/components/SeoCta";
 import FreshnessWatermark from "@/components/FreshnessWatermark";
+import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 
 interface PageProps {
   params: Promise<{ slug: string; sector: string }>;
@@ -92,11 +93,7 @@ export default async function StageSectorPage({ params }: PageProps) {
         "@type": "Article",
         headline: `${stageName} ${sectorInfo.name} Startups — Engineering Acceleration (${period.name})`,
         description: stageDescription,
-        author: {
-          "@type": "Organization",
-          name: "VC Deal Flow Signal",
-          url: "https://gitdealflow.com",
-        },
+        author: DATA_NERD_AUTHOR_REF,
         publisher: {
           "@type": "Organization",
           name: "VC Deal Flow Signal",
@@ -231,7 +228,7 @@ export default async function StageSectorPage({ params }: PageProps) {
         </section>
 
         <section className="mb-12" aria-label="Call to action">
-          <CTABanner />
+          <SeoCta secondary={{ label: "Unlock the Dashboard", href: "https://gitdealflow.com/dashboard" }} />
         </section>
 
         <section

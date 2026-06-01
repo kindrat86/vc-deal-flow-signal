@@ -10,8 +10,9 @@ import {
   getRelatedSectors,
 } from "@/lib/data";
 import StartupTable from "@/components/StartupTable";
-import CTABanner from "@/components/CTABanner";
+import SeoCta from "@/components/SeoCta";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -67,11 +68,7 @@ export default async function BestSectorPage({ params }: PageProps) {
         "@type": "Article",
         headline: `Best ${sector.name} Startups ${year}`,
         description: `The best ${sectorLower} startups in ${year} ranked by engineering acceleration.`,
-        author: {
-          "@type": "Organization",
-          name: "VC Deal Flow Signal",
-          url: "https://gitdealflow.com",
-        },
+        author: DATA_NERD_AUTHOR_REF,
         publisher: {
           "@type": "Organization",
           name: "VC Deal Flow Signal",
@@ -235,7 +232,7 @@ export default async function BestSectorPage({ params }: PageProps) {
         </section>
 
         <section className="mb-12" aria-label="Call to action">
-          <CTABanner />
+          <SeoCta secondary={{ label: "Unlock the Dashboard", href: "https://gitdealflow.com/dashboard" }} />
         </section>
 
         {/* FAQ */}

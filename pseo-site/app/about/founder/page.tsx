@@ -264,7 +264,7 @@ export default function FounderPage() {
             03 · Three parables
           </p>
           <h2 className="text-2xl font-bold text-gray-100">
-            Stories I tell to explain why code-side signals work.
+            Stories I tell to explain why engineering signals work.
           </h2>
 
           <div className="space-y-5">

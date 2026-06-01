@@ -4,6 +4,7 @@ import { BOOK } from "@/lib/book";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 
 export const dynamic = "force-static";
 
@@ -147,6 +148,8 @@ export default function BookThanksPage() {
           </a>
           .
         </p>
+
+        <DataNerdSignoff variant="compact" className="mt-8" />
       </div>
     </>
   );

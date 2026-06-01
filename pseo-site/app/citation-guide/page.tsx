@@ -3,6 +3,7 @@ import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import SeoCta from "@/components/SeoCta";
 
 const SITE = "https://signals.gitdealflow.com";
 const SSRN_URL = "https://ssrn.com/abstract=6606558";
@@ -318,6 +319,8 @@ export default function CitationGuidePage() {
         Found a citation that should be added or corrected? Email{" "}
         <a href="mailto:signal@gitdealflow.com">signal@gitdealflow.com</a>.
       </p>
+
+      <SeoCta className="mt-10 not-prose" />
     </article>
   );
 }

@@ -108,7 +108,7 @@ export default async function FirstLookDonePage({ searchParams }: Props) {
           One ask, then we&rsquo;re out of your inbox
         </p>
         <h2 className="text-gray-100 font-bold text-base sm:text-lg leading-snug">
-          Know one investor who reads code before decks?
+          Know one investor who moves on the engineering signal before the round?
         </h2>
         <p className="text-gray-400 text-sm leading-relaxed">
           That&rsquo;s our buyer. If a name comes to mind, the share link

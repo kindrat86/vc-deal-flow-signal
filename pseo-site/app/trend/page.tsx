@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { TRENDS } from "@/content/trend-leaderboards";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import SeoCta from "@/components/SeoCta";
 
 export const metadata: Metadata = {
   title: "Trends — Engineering Signal Leaderboards (2026) | VC Deal Flow Signal",
@@ -129,20 +130,7 @@ export default function TrendHubPage() {
           ))}
         </div>
 
-        <div className="mt-12 rounded-xl border border-slate-800 bg-slate-900 p-6 sm:p-8 text-center">
-          <h2 className="text-gray-100 font-semibold text-lg mb-2">
-            Get the weekly engineering signal
-          </h2>
-          <p className="text-gray-400 text-sm mb-4">
-            Trend-filtered acceleration, 3 to 6 weeks before announcements.
-          </p>
-          <Link
-            href="/firstlook"
-            className="inline-block rounded-md bg-sky-500 px-5 py-2 text-sm font-semibold text-white hover:bg-sky-400 transition-colors"
-          >
-            See First Look
-          </Link>
-        </div>
+        <SeoCta className="mt-12" />
       </div>
     </>
   );

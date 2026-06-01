@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 
 export const metadata: Metadata = {
   title:
@@ -117,6 +118,8 @@ export default function ChallengeStartedPage() {
         </code>
         .
       </p>
+
+      <DataNerdSignoff variant="compact" className="mt-8" />
     </div>
   );
 }

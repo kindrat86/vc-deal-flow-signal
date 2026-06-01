@@ -3,6 +3,7 @@ import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 
 export const dynamic = "force-static";
 
@@ -37,64 +38,58 @@ const APPLY_MAILTO =
 const PRICE_LABEL = "€14,997 / year";
 const PRICE_NUMBER = "14997.00";
 
+// Honesty rule (canon: lib/data-nerd.ts polarity #4 + #5; no fabricated value
+// stacks): the deliverables below are real, but we do NOT attach invented
+// per-line euro "values" or a struck-through stack total. The price is anchored
+// to two REAL comparisons (productised Sharp Tier, name-brand consultancy quote)
+// in the price box and FAQ instead.
 const STACK = [
   {
-    label: "Everything in Sharp Tier (€4,970/yr value)",
-    value: 4970,
+    label: "Everything in Sharp Tier",
     detail:
       "Quarterly portfolio review brief (async), custom thesis-aligned watchlist, white-labeled API endpoint, methodology source code access, same-day signal questions, data-room exports formatted for LP updates. The full Sharp Tier deliverable, included.",
   },
   {
     label: "Custom Panel Construction — your fund's regression model",
-    value: 18000,
     detail:
-      "Send your fund's anonymized historical investment outcomes (wins, misses, exits, write-offs). We re-train the panel-construction pipeline on your portfolio and return a fund-specific lead-time model that scores future GitHub-momentum events against your fund's actual returns curve. Standalone analyst-hour equivalent: 120 hours at €150/hr.",
+      "Send your fund's anonymized historical investment outcomes (wins, misses, exits, write-offs). We re-train the panel-construction pipeline on your portfolio and return a fund-specific lead-time model that scores future GitHub-momentum events against your fund's actual returns curve.",
   },
   {
     label: "Bespoke 50-Org Watchlist — monthly rebuild",
-    value: 12000,
     detail:
-      "Beyond the 109-startup public Dashboard. A 50-org watchlist tuned to your written thesis, rebuilt the first Monday of every month against the live signal feed and pushed to your inbox plus Slack/Discord webhook. Equivalent to 80 hours/yr of senior analyst sourcing time.",
+      "Beyond the 109-startup public Dashboard. A 50-org watchlist tuned to your written thesis, rebuilt the first Monday of every month against the live signal feed and pushed to your inbox plus Slack/Discord webhook.",
   },
   {
     label: "White-Labeled Fund Subdomain — signal.yourfund.com",
-    value: 6000,
     detail:
       "Your fund's subdomain returns the same dataset behind your auth, with your brand. Drop into your CRM (Affinity, Attio, Salesforce), internal dashboards, deal-screening tool, or LP reports. Includes uptime SLA matching the public Dashboard.",
   },
   {
     label: "Quarterly Synthetic Founder Talk — fund-specific",
-    value: 8000,
     detail:
       "Four times a year, we render a 6-minute Remotion-built synthetic-voice video on your fund's specific thesis: where the engineering data is heading, what the regression flagged in your watchlist, and one falsifiable prediction for the next quarter. Anonymity-preserving (no founder face), shareable internally for IC prep.",
   },
   {
     label: "Async Methodology Q&A — dedicated channel",
-    value: 10800,
     detail:
-      "Unlimited written methodology questions via a dedicated email channel. 24-hour weekday turn. Replaces the live-call SLA with an async equivalent — covers signal interpretation, regression questions, methodology forks, and write-up review. ~6 senior analyst hours per month at €150/hr.",
+      "Unlimited written methodology questions via a dedicated email channel. 24-hour weekday turn. Replaces the live-call SLA with an async equivalent — covers signal interpretation, regression questions, methodology forks, and write-up review.",
   },
   {
     label: "Quarterly Anonymized Case Study — published",
-    value: 3200,
     detail:
       "Each quarter, we co-author a case study using your fund as the (anonymized, attribution-optional) example, published to /press and submitted to industry newsletters. Fund-as-publisher move — your thesis becomes part of the public record without exposing your fund identity. Optional opt-in to named attribution.",
   },
   {
     label: "Annual Methodology Brief — fund-only",
-    value: 5000,
     detail:
       "Once a year, a 30-minute synthetic-voice walkthrough plus 40-page PDF brief covering: panel re-construction, regression coefficients with confidence intervals, signal-type performance over twelve months, and the year-ahead methodology roadmap. Distributed only to Methodology Partnership funds.",
   },
   {
     label: "Founding-rate lock — through end of 2027",
-    value: 14997,
     detail:
       "The Methodology Partnership rate goes to €29,997/yr after 2026. Funds joining in 2026 keep €14,997/yr through the end of 2027 as long as the partnership stays active. The rate is a relationship anchor, not a discount window.",
   },
 ] as const;
-
-const TOTAL_VALUE = STACK.reduce((s, x) => s + x.value, 0);
 
 const FAQS = [
   {
@@ -182,18 +177,12 @@ export default function MethodologyPartnershipPage() {
         "@type": "ItemList",
         "@id":
           "https://signals.gitdealflow.com/methodology-partnership#stack",
-        name: "Methodology Partnership — value stack",
-        itemListOrder: "https://schema.org/ItemListOrderDescending",
+        name: "Methodology Partnership — what's included",
         numberOfItems: STACK.length,
         itemListElement: STACK.map((s, i) => ({
           "@type": "ListItem",
           position: i + 1,
           name: s.label,
-          item: {
-            "@type": "Offer",
-            price: s.value.toFixed(2),
-            priceCurrency: "EUR",
-          },
         })),
       },
       {
@@ -291,31 +280,23 @@ export default function MethodologyPartnershipPage() {
           aria-labelledby="stack-heading"
           className="space-y-4"
         >
-          <div className="flex items-baseline justify-between flex-wrap gap-2">
-            <h2
-              id="stack-heading"
-              className="text-gray-100 font-semibold text-2xl"
-            >
-              What&rsquo;s in the partnership
-            </h2>
-            <p className="text-violet-400 text-sm font-mono">
-              Total stack value: €{TOTAL_VALUE.toLocaleString("en-US")} / year
-            </p>
-          </div>
+          <h2
+            id="stack-heading"
+            className="text-gray-100 font-semibold text-2xl"
+          >
+            What&rsquo;s in the partnership
+          </h2>
           <ol className="space-y-4">
             {STACK.map((item, i) => (
               <li
                 key={item.label}
                 className="rounded-xl border border-slate-800 bg-slate-900/60 p-5"
               >
-                <div className="flex items-baseline justify-between gap-3 mb-2 flex-wrap">
+                <div className="mb-2">
                   <h3 className="text-gray-100 font-semibold text-base sm:text-lg leading-snug">
                     <span className="text-violet-400 mr-2">{i + 1}.</span>
                     {item.label}
                   </h3>
-                  <span className="text-violet-300 text-sm font-mono shrink-0">
-                    €{item.value.toLocaleString("en-US")}
-                  </span>
                 </div>
                 <p className="text-gray-400 text-sm leading-relaxed">
                   {item.detail}
@@ -325,17 +306,24 @@ export default function MethodologyPartnershipPage() {
           </ol>
           <div className="rounded-xl border border-violet-600/40 bg-gradient-to-br from-violet-950/40 to-slate-900 p-5 sm:p-6">
             <p className="text-gray-400 text-xs uppercase tracking-wider font-semibold mb-1">
-              Total value
+              The price
             </p>
-            <p className="text-gray-100 text-2xl font-bold mb-2 line-through opacity-60">
-              €{TOTAL_VALUE.toLocaleString("en-US")} / year
-            </p>
-            <p className="text-violet-400 text-3xl font-bold mb-1">
+            <p className="text-violet-400 text-3xl font-bold mb-2">
               {PRICE_LABEL}
             </p>
-            <p className="text-gray-400 text-xs">
-              Founding-rate, locked through end of 2027. Going to €29,997/yr
-              for funds joining 2027+.
+            <p className="text-gray-400 text-sm leading-relaxed">
+              No invented &ldquo;stack value&rdquo; &mdash; the price is anchored
+              to two real comparisons. The productised{" "}
+              <Link
+                href="/pricing#sharp-tier"
+                className="text-violet-400 hover:text-violet-300 underline decoration-dotted"
+              >
+                Sharp Tier
+              </Link>{" "}
+              is €4,970/yr with no custom regression; equivalent
+              fund-as-case-study work from a name-brand methodology consultancy
+              quotes €60,000&ndash;€120,000/yr. Founding rate locked through end
+              of 2027, then €29,997/yr.
             </p>
           </div>
         </section>
@@ -458,6 +446,8 @@ export default function MethodologyPartnershipPage() {
             .
           </p>
         </nav>
+
+        <DataNerdSignoff variant="long" />
       </div>
     </>
   );

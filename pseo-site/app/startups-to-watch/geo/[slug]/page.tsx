@@ -9,9 +9,10 @@ import {
   getRelatedSectors,
 } from "@/lib/data";
 import StartupTable from "@/components/StartupTable";
-import CTABanner from "@/components/CTABanner";
+import SeoCta from "@/components/SeoCta";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -114,11 +115,7 @@ export default async function GeoSectorPage({ params }: PageProps) {
         "@type": "Article",
         headline: `${sector.name} Startups in ${geoName} to Watch, ${period.name}`,
         description: `${sector.name} startups in ${geoName} ranked by engineering acceleration.`,
-        author: {
-          "@type": "Organization",
-          name: "VC Deal Flow Signal",
-          url: "https://gitdealflow.com",
-        },
+        author: DATA_NERD_AUTHOR_REF,
         publisher: {
           "@type": "Organization",
           name: "VC Deal Flow Signal",
@@ -225,7 +222,7 @@ export default async function GeoSectorPage({ params }: PageProps) {
 
         {/* CTA */}
         <section className="mb-12" aria-label="Call to action">
-          <CTABanner />
+          <SeoCta secondary={{ label: "Unlock the Dashboard", href: "https://gitdealflow.com/dashboard" }} />
         </section>
 
         {/* FAQ section */}

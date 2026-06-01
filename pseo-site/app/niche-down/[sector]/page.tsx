@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import SeoCta from "@/components/SeoCta";
 import {
   nicheSectors,
   getNicheSector,
@@ -213,6 +214,8 @@ export default async function NicheSectorPage({ params }: PageProps) {
             built&rdquo; layer above it.
           </p>
         </section>
+
+        <SeoCta className="mt-10" />
 
         <section
           className="rounded-xl border border-sky-700/40 bg-gradient-to-br from-sky-950/20 via-slate-900 to-slate-950 p-6 sm:p-8 space-y-3"

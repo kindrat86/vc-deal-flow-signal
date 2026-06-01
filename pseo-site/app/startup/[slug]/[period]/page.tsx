@@ -7,6 +7,7 @@ import {
   getDataLastModified,
 } from "@/lib/data";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 
 interface PageProps {
   params: Promise<{ slug: string; period: string }>;
@@ -80,12 +81,7 @@ export default async function StartupPeriodPage({ params }: PageProps) {
         inLanguage: "en-US",
         isAccessibleForFree: true,
         license: "https://creativecommons.org/licenses/by/4.0/",
-        author: {
-          "@type": "Organization",
-          "@id": "https://gitdealflow.com/#organization",
-          name: "VC Deal Flow Signal",
-          url: "https://gitdealflow.com",
-        },
+        author: DATA_NERD_AUTHOR_REF,
         publisher: {
           "@type": "Organization",
           "@id": "https://gitdealflow.com/#organization",

@@ -277,7 +277,7 @@ export default function BuiltWithPage() {
               24h, ETag-revalidated hourly. No outage on your README.
             </li>
             <li>
-              Free MCP access to all five read tools, forever. No signup, no
+              Free MCP access to all six read tools, forever. No signup, no
               key, no telemetry on calls.
             </li>
             <li>
@@ -303,7 +303,7 @@ export default function BuiltWithPage() {
 
         <section className="mb-12">
           <h2 className="text-xl font-semibold text-white mb-4">
-            The five free-tier MCP tools
+            The six free-tier MCP tools
           </h2>
           <p className="text-sm text-gray-300 mb-4">
             These six tools are tier-zero — free, no signup, no rate limit on

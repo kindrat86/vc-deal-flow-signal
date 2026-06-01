@@ -3,6 +3,7 @@ import Link from "next/link";
 import { starsCases } from "@/content/from-stars-to-seed";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import { DEFAULT_HREFLANG_LANGUAGES } from "@/lib/hreflang";
 
 export const dynamic = "force-static";
@@ -264,6 +265,8 @@ export default function FromStarsToSeedIndexPage() {
           </Link>
           .
         </p>
+
+        <DataNerdSignoff variant="default" className="mt-12" />
       </div>
     </>
   );

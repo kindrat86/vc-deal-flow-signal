@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { LOCALES } from "@/content/locales";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import SeoCta from "@/components/SeoCta";
 
 const SITE = "https://signals.gitdealflow.com";
 
@@ -172,6 +173,8 @@ export default function TranslationsPage() {
             </li>
           </ul>
         </section>
+
+        <SeoCta className="mt-10 mb-10" />
 
         <p className="text-xs text-gray-400 text-center">
           See also:{" "}

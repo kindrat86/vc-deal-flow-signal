@@ -7,7 +7,8 @@ import {
   getDataLastModified,
 } from "@/lib/data";
 import StartupTable from "@/components/StartupTable";
-import CTABanner from "@/components/CTABanner";
+import SeoCta from "@/components/SeoCta";
+import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -80,7 +81,7 @@ export default async function RegionPage({ params }: PageProps) {
         "@type": "Article",
         headline: `${geoName} Startups to Watch — ${period.name}`,
         description: `All tracked startups in ${geoName} ranked by engineering acceleration.`,
-        author: { "@type": "Organization", name: "VC Deal Flow Signal", url: "https://gitdealflow.com" },
+        author: DATA_NERD_AUTHOR_REF,
         publisher: { "@type": "Organization", name: "VC Deal Flow Signal", url: "https://gitdealflow.com" },
         datePublished: lastModified.toISOString().slice(0, 10),
         dateModified: lastModified.toISOString().slice(0, 10),
@@ -185,7 +186,7 @@ export default async function RegionPage({ params }: PageProps) {
         </section>
 
         <section className="mb-12" aria-label="Call to action">
-          <CTABanner />
+          <SeoCta secondary={{ label: "Unlock the Dashboard", href: "https://gitdealflow.com/dashboard" }} />
         </section>
 
         <section className="mb-12 max-w-3xl" aria-label="Frequently asked questions">

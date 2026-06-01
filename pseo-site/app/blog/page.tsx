@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { allPosts as posts } from "@/content/posts";
 import PSEOFooterNav from "@/components/PSEOFooterNav";
+import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 
@@ -139,6 +140,8 @@ export default function BlogIndex() {
       </div>
 
       <PSEOFooterNav excludeHrefs={["/blog"]} />
+
+      <DataNerdSignoff variant="default" className="mt-12" />
     </div>
     </>
   );

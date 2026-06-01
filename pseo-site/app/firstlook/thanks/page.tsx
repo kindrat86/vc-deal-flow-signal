@@ -106,7 +106,8 @@ export default async function FirstLookThanksPage({ searchParams }: Props) {
         </h2>
         <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
           Most investors source by deck and warm intro. Sector Scouts source
-          by code-side momentum 21–47 days before the deck lands. This is
+          on the engineering signal — translated to plain English — 21–47 days
+          before the deck lands. This is
           the lane you just stepped into — your first deep dive arrives
           tomorrow, the engine refreshes every Monday, and the credit
           window keeps the door open to the live Dashboard for two weeks.

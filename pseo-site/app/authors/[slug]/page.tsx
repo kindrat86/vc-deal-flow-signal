@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { authors, getAllAuthors } from "@/content/authors";
 import { allPosts as posts } from "@/content/posts";
+import SeoCta from "@/components/SeoCta";
 
 const BASE_URL = "https://signals.gitdealflow.com";
 
@@ -212,6 +213,8 @@ export default async function AuthorPage({
             </ul>
           </section>
         )}
+
+        <SeoCta className="mt-10" />
       </div>
     </>
   );
