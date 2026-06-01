@@ -9,6 +9,7 @@ import {
 import { getFindingBySlug } from "@/content/research-findings";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import SeoCta from "@/components/SeoCta";
 
 const SITE = "https://signals.gitdealflow.com";
 const SSRN_URL = "https://ssrn.com/abstract=6606558";
@@ -294,6 +295,8 @@ export default async function SignalPrimitivePage({ params }: PageProps) {
             .
           </p>
         </section>
+
+        <SeoCta className="mt-10" signoffIndex={7} />
       </div>
     </>
   );

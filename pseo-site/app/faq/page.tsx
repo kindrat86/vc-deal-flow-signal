@@ -4,7 +4,7 @@ import { posts } from "@/content/posts";
 import { getAllSectors, getCurrentPeriod } from "@/lib/data";
 import PSEOFooterNav from "@/components/PSEOFooterNav";
 import { HreflangLinks } from "@/components/HreflangLinks";
-import { TrustConversionBlock } from "@/components/TrustConversionBlock";
+import SeoCta from "@/components/SeoCta";
 import { getHreflangLanguages } from "@/lib/hreflang";
 
 export const metadata: Metadata = {
@@ -271,40 +271,14 @@ export default function FAQPage() {
 
         <PSEOFooterNav excludeHrefs={["/faq"]} />
 
-        {/* CTA */}
-        <div className="mt-12 rounded-xl border border-slate-800 bg-slate-900 p-6 sm:p-8 text-center">
-          <h2 className="text-gray-100 font-semibold text-lg mb-2">
-            Still have questions?
-          </h2>
-          <p className="text-gray-400 text-sm mb-5 max-w-lg mx-auto">
-            Browse the sector rankings to see engineering signals in action, or
-            read the methodology for the full technical breakdown.
-          </p>
-          <div className="flex flex-wrap justify-center gap-3">
-            <Link
-              href="/"
-              className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-medium transition-colors"
-            >
-              Browse Sectors
-            </Link>
-            <Link
-              href="/methodology"
-              className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 hover:border-slate-500 text-gray-300 text-sm font-medium transition-colors"
-            >
-              Read Methodology
-            </Link>
-            <Link
-              href="/pricing"
-              className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 hover:border-slate-500 text-gray-300 text-sm font-medium transition-colors"
-            >
-              See Pricing
-            </Link>
-          </div>
-        </div>
-
-        <TrustConversionBlock
-          dominant="firstlook"
-          context="Still deciding? Test it on your own sector."
+        {/* CTA — single funnel: free digest primary, First Look secondary, AC signoff */}
+        <SeoCta
+          className="mt-12"
+          signoffIndex={5}
+          secondary={{
+            label: "Still deciding? Test one sector — First Look (€7) →",
+            href: "/firstlook",
+          }}
         />
       </div>
     </>

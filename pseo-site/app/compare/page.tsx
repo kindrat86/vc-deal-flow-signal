@@ -4,6 +4,7 @@ import { comparisons } from "@/content/comparisons";
 import PSEOFooterNav from "@/components/PSEOFooterNav";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import SeoCta from "@/components/SeoCta";
 
 export const metadata: Metadata = {
   title: "Compare Deal Flow Tools — VC Deal Flow Signal",
@@ -133,6 +134,8 @@ export default function CompareIndex() {
           </Link>
         ))}
       </div>
+
+      <SeoCta className="mt-12 mb-10" signoffIndex={5} />
 
       <PSEOFooterNav excludeHrefs={["/compare"]} />
     </div>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { companies } from "@/content/companies";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import SeoCta from "@/components/SeoCta";
 
 export const metadata: Metadata = {
   title: "Company GitHub Signals — VC Deal Flow Signal",
@@ -135,20 +136,7 @@ export default function SignalHubPage() {
           );
         })}
 
-        <div className="rounded-xl border border-slate-800 bg-slate-900 p-6 sm:p-8 text-center mt-12">
-          <h2 className="text-gray-100 font-semibold text-lg mb-2">
-            Get the weekly engineering signal
-          </h2>
-          <p className="text-gray-400 text-sm mb-5 max-w-lg mx-auto">
-            5 breakout startups every Sunday, ranked by GitHub engineering acceleration. Free, no spam.
-          </p>
-          <Link
-            href="https://gitdealflow.com/#signup"
-            className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-sky-700 hover:bg-sky-600 text-white text-sm font-medium transition-colors"
-          >
-            Get the free Sunday issue →
-          </Link>
-        </div>
+        <SeoCta className="mt-12" signoffIndex={2} />
       </div>
     </>
   );

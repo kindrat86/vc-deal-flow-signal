@@ -8,6 +8,7 @@ import {
 } from "@/lib/glossary-categories";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import SeoCta from "@/components/SeoCta";
 
 const SITE = "https://signals.gitdealflow.com";
 const PAGE_URL = `${SITE}/define`;
@@ -198,29 +199,7 @@ export default function DefineIndexPage() {
           ))}
         </div>
 
-        <div className="mt-12 rounded-xl border border-slate-800 bg-slate-900 p-6 sm:p-8 text-center">
-          <h2 className="text-gray-100 font-semibold text-lg mb-2">
-            See the signals in action
-          </h2>
-          <p className="text-gray-400 text-sm mb-5 max-w-lg mx-auto">
-            Browse this week&apos;s top startups ranked by engineering
-            acceleration.
-          </p>
-          <div className="flex justify-center gap-3 flex-wrap">
-            <Link
-              href="/"
-              className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-medium transition-colors"
-            >
-              Browse Signals
-            </Link>
-            <Link
-              href="/methodology"
-              className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 hover:border-slate-500 text-gray-300 text-sm font-medium transition-colors"
-            >
-              Read Methodology
-            </Link>
-          </div>
-        </div>
+        <SeoCta className="mt-12" signoffIndex={1} />
       </div>
     </>
   );
