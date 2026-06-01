@@ -126,7 +126,7 @@ const tiers: Tier[] = [
       "No PDF, no CSV, no call — pure signal compression",
     ],
     ctaLabel: "Buy the Teardown — €1",
-    ctaHref: "/tweet-teardown",
+    ctaHref: "/teardown",
     highlight: false,
   },
   {

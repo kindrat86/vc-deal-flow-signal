@@ -201,25 +201,18 @@ export default function Top100ArchivePage() {
             to decide what to investigate next, what to ignore, and whether this
             belongs in your sourcing workflow.
           </p>
-          <div className="flex flex-wrap justify-center gap-3">
+          <div className="flex flex-col items-center gap-4">
             <Link href="/answers" className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-amber-400 text-slate-950 text-sm font-semibold hover:bg-amber-300 transition-colors">
               Read the answers layer →
             </Link>
-            <Link href="/research" className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg border border-slate-700 hover:border-slate-500 text-gray-200 text-sm font-medium transition-colors">
-              See the research panel →
-            </Link>
-            <Link href="/answers/how-to-turn-a-signal-into-a-watchlist" className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg border border-slate-700 hover:border-slate-500 text-gray-200 text-sm font-medium transition-colors">
-              Turn a signal into a watchlist →
-            </Link>
-            <Link href="/buyers-guide" className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg border border-slate-700 hover:border-slate-500 text-gray-200 text-sm font-medium transition-colors">
-              Read the buyer's guide →
-            </Link>
-            <Link href="/receipts" className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg border border-slate-700 hover:border-slate-500 text-gray-200 text-sm font-medium transition-colors">
-              Check your Scout Score →
-            </Link>
-            <Link href="/firstlook" className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg border border-slate-700 hover:border-slate-500 text-gray-200 text-sm font-medium transition-colors">
-              Get my First Look →
-            </Link>
+            <p className="text-xs text-gray-400 text-center leading-relaxed max-w-xl">
+              Or go deeper:{" "}
+              <Link href="/research" className="text-sky-400 hover:text-sky-300 underline">the research panel</Link>,{" "}
+              <Link href="/answers/how-to-turn-a-signal-into-a-watchlist" className="text-sky-400 hover:text-sky-300 underline">turn a signal into a watchlist</Link>,{" "}
+              <Link href="/buyers-guide" className="text-sky-400 hover:text-sky-300 underline">the buyer&rsquo;s guide</Link>,{" "}
+              <Link href="/receipts" className="text-sky-400 hover:text-sky-300 underline">your Scout Score</Link>, or a{" "}
+              <Link href="/firstlook" className="text-sky-400 hover:text-sky-300 underline">€7 First Look</Link>.
+            </p>
           </div>
         </div>
 

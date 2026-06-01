@@ -9,6 +9,7 @@ import {
 import { LOCALE_TOPICS } from "@/content/locale-topics";
 import { JA_FINDINGS } from "@/content/ja-research";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 
 const SITE = "https://signals.gitdealflow.com";
 const SSRN_URL = "https://ssrn.com/abstract=6606558";
@@ -280,6 +281,8 @@ export default async function LocaleLandingPage({ params }: PageProps) {
             </li>
           </ul>
         </section>
+
+        <DataNerdSignoff variant="compact" className="mt-4 mb-8" />
 
         <p className="text-xs text-gray-400 text-center">
           {LOCALES.map((x, i) => (

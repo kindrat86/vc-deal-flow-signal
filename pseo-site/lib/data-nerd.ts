@@ -342,24 +342,24 @@ export const DATA_NERD_TOUCHPOINTS = [
  * anonymity-compatible character beat: status, not face.
  */
 export const DATA_NERD_NOW = {
-  asOf: "2026-05-09",
-  weekISO: "2026-W19",
+  asOf: "2026-06-01",
+  weekISO: "2026-W23",
   shipping: [
-    "Pushing Expert Secrets Ch 1 (the Charismatic Leader chapter) from 78 → ~90 by surfacing identity archetype, eight polarities, /now status, /parables index.",
-    "Watching the /predicted week-19 picks for the first 60-day grading window — first Hits or Misses become public on /scorecard at T+60.",
-    "Fixing two GSC alternate-canonical edge cases on /md mirror routes flagged in the Friday console pull.",
+    "Shipped a full conversion pass on signals.gitdealflow.com: killed a fabricated value-stack on /methodology-partnership, fixed the 'free → €7' link mismatches, and put the voice (and the right author tag) back on ~75 programmatic pages that had started reading like faceless SEO.",
+    "Right behind it: localized the subscribe prompt on the non-English pages, cut the multi-button clutter on /research, /receipts, /origin and the weekly Top-100 down to one clear next step, and folded the duplicate tweet-teardown product back into /teardown.",
+    "On the data side: unsubscribes now propagate to the subscriber store, and the Sunday digest carries a one-click HTTPS unsubscribe header.",
   ],
   reading: [
-    "'The Pattern on the Stone' — Daniel Hillis. Re-read for the chapter on signal-to-noise in computation; lifting one passage into the May 2026 /state-of-github address.",
-    "Series A teardowns from Q1 2026 — pulling three for the next /press release on the 219-startup panel update.",
+    "Reader replies from the two daily batches — still the cheapest place the next methodology fix comes from.",
+    "The conversion-audit backlog: which faceless surfaces still need the plain-English, no-code-required treatment.",
   ],
   blocked: [
-    "Synthetic-voice render for /walkthrough/replay — Cartesia voice file ships, Remotion compose stalls on Node 24 build container; investigating before next weekly.",
+    "Auto-refreshing this /now page from real commit activity. Until that's built, the page only stays current if I update it by hand — which is exactly the kind of thing this section exists to admit.",
   ],
   parkingLot: [
-    "/dream-100 public list — 100 named developer-investors mapped to the channels we'd want to surface on. Drafted in /target-list, not yet on the open web.",
-    "/walkthrough/5min A/B test against a 90-second variant — both written, neither shipped to live traffic yet.",
-    "Member-visible /wins/[handle] surface — turn the founder-curated Wins ledger into a member-public profile per consenting subscriber.",
+    "The long tail of the conversion audit: the i18n depth pass and the remaining CTA-sprawl trims on secondary pages.",
+    "Grading the first 60-day windows on the public /predicted picks as they come due on /scorecard.",
+    "A member-public /wins/[handle] profile per consenting subscriber — drafted, still not shipped.",
   ],
   rhythm: {
     monday: "Sunday digest goes out · /predicted refresh",
