@@ -30,7 +30,6 @@ import CharterCohortBlock from "@/components/CharterCohortBlock";
 import { DataNerdPolarityCard } from "@/components/DataNerdPolarityCard";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import TrialClose from "@/components/TrialClose";
-import { VideoEmbedBlock } from "@/components/VideoEmbedBlock";
 import { DATA_NERD_ORCID } from "@/lib/data-nerd";
 import {
   EMOTIONAL_CAUSE_KICKER,
@@ -909,38 +908,34 @@ export default function Home() {
           — is a lagging indicator.
         </h2>
         <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
-          Watch the three-minute version below — hook, the one belief, the
-          three objections, the stack, the close. Prefer to read? The{" "}
+          Read the long version on the{" "}
           <Link
             href="/walkthrough"
             className="text-sky-400 hover:text-sky-300 underline decoration-dotted"
           >
             12-minute walkthrough
           </Link>
-          {" "}and the{" "}
+          {" "}or the{" "}
           <Link
             href="/pitch"
             className="text-sky-400 hover:text-sky-300 underline decoration-dotted"
           >
             90-second pitch
           </Link>
-          {" "}cover the same SSRN panel that proves the 21-to-47-day lead time.
+          . Three objections, three breakdowns, the SSRN panel that proves the
+          21-to-47-day lead time.
         </p>
       </section>
 
-      {/* Embedded VSL — Brunson Perfect Webinar, on-page (2026-06-01). Fixes
-          the "VSL is one click away" dock: the highest-converting mechanism
-          now plays ON the page, right where belief is being built. The
-          walkthrough-vsl asset (real, CC BY 4.0, synthetic-voice — anonymity
-          safe) is chaptered exactly to the Perfect Webinar arc: Hook → core
-          belief → three objections → the stack → close + guarantee. Click-to-
-          load poster (YouTubePoster) keeps it off the critical-render path. */}
-      <section aria-label="Watch the 3-minute pitch" className="my-8">
-        <p className="text-sky-300 text-xs font-semibold uppercase tracking-wider mb-3 text-center">
-          The 3-minute pitch · hook → belief → objections → stack → close
-        </p>
-        <VideoEmbedBlock slug="walkthrough-vsl" variant="full" />
-      </section>
+      {/* Embedded VSL removed 2026-06-01 — the walkthrough-vsl recording was
+          poor quality, so it's pulled from the homepage until a better cut is
+          ready (owner will revisit). The asset still lives in
+          content/videos.ts and is used on /walkthrough + /predicted. To
+          restore: re-add `import { VideoEmbedBlock } from
+          "@/components/VideoEmbedBlock";` and a <section> rendering
+          <VideoEmbedBlock slug="walkthrough-vsl" variant="full" /> here, and
+          point the Big Domino paragraph above back at "watch the version
+          below". */}
 
       {/* Three Secrets — the false-belief breakdowns surfaced directly
           after the Big Domino so the reader's three objections collapse
