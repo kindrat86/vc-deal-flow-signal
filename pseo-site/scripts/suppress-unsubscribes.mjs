@@ -147,13 +147,16 @@ async function pbMarkUnsubscribed(token, email) {
   ).then((r) => (r.ok ? r.json() : { items: [] }));
   const rec = found.items?.[0];
   if (!rec) return "not-in-pb";
-  if (rec.status === "unsubscribed") return "already";
+  // PB status enum is active|churned|paused — there is NO 'unsubscribed' value
+  // (writing it returns HTTP 400). An opt-out is represented as 'churned', which
+  // the weekly digest (filter status='active') excludes.
+  if (rec.status === "churned") return "already";
   const res = await fetch(
     `${POCKETBASE_URL}/api/collections/subscribers/records/${rec.id}`,
     {
       method: "PATCH",
       headers: { Authorization: token, "Content-Type": "application/json" },
-      body: JSON.stringify({ status: "unsubscribed" }),
+      body: JSON.stringify({ status: "churned" }),
     }
   );
   return res.ok ? "updated" : `pb-error-${res.status}`;
@@ -173,7 +176,7 @@ async function main() {
 
   for (const email of emails) {
     if (!SEND) {
-      console.log(`  would suppress  ${mask(email)}  (Resend unsubscribed:true${pbToken ? " + PB status:unsubscribed" : ""})`);
+      console.log(`  would suppress  ${mask(email)}  (Resend unsubscribed:true${pbToken ? " + PB status:churned" : ""})`);
       continue;
     }
     // Resend: update the contact by email → unsubscribed:true (idempotent).
