@@ -19,7 +19,11 @@ set -euo pipefail
 export HOME="/Users/sipi"
 export PATH="/opt/homebrew/opt/node@22/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
-PROJECT_DIR="/Users/sipi/launch-projects/vc-deal-flow-signal"
+# Self-locating: PROJECT_DIR = repo root (parent of this script's monitoring/ dir),
+# so the cron operates on whatever checkout this wrapper lives in (e.g. the dedicated
+# gdf-main worktree pinned to origin/main) rather than a hardcoded path.
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 LOG="$PROJECT_DIR/monitoring/weekly-digest.log"
 
 DRY_RUN=0
