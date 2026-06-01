@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { TrustPageOutro } from "@/components/TrustPageOutro";
 
 const SITE = "https://signals.gitdealflow.com";
 
@@ -302,6 +303,16 @@ export default function AttestationsPage() {
           link resolves.
         </p>
 
+        <p
+          className="text-base sm:text-lg text-sky-100/90 border-l-2 border-sky-500/50 pl-4 mb-10 leading-relaxed"
+          data-speakable
+        >
+          <strong className="text-sky-300">The one belief this page asks for:</strong>{" "}
+          a claim you can verify yourself in one click isn&rsquo;t trust &mdash;
+          it&rsquo;s a fact. Every registry below is a third party we don&rsquo;t
+          control: click any row and it resolves, or it wouldn&rsquo;t be on this page.
+        </p>
+
         {GROUPS.map((group) => {
           const items = ATTESTATIONS.filter((a) => a.group === group);
           if (items.length === 0) return null;
@@ -374,31 +385,7 @@ export default function AttestationsPage() {
           </Link>
         </p>
 
-        <div className="mt-10 rounded-lg border border-sky-800 bg-sky-950/20 p-6 text-center">
-          <h2 className="text-base font-semibold text-sky-200 mb-2">
-            Trust verified &mdash; ready to subscribe?
-          </h2>
-          <p className="text-gray-300 text-sm mb-4 max-w-2xl mx-auto">
-            Six pricing tiers from a free weekly digest to a &euro;4,970/yr
-            Sharp Tier for active funds. Founding-member rates lock in for
-            the lifetime of the subscription. 30-day Signal-or-It&rsquo;s-Free
-            guarantee on every paid plan.
-          </p>
-          <div className="flex flex-wrap gap-3 justify-center">
-            <Link
-              href="/pricing"
-              className="inline-block bg-sky-600 hover:bg-sky-500 text-white text-sm font-semibold px-4 py-2 rounded-md transition-colors"
-            >
-              See pricing &rarr;
-            </Link>
-            <Link
-              href="/buyers-guide"
-              className="inline-block border border-slate-700 hover:border-slate-500 text-gray-200 text-sm font-semibold px-4 py-2 rounded-md transition-colors"
-            >
-              Read the buyers guide
-            </Link>
-          </div>
-        </div>
+        <TrustPageOutro institutional acNote="I keep my face off this site, so I can't ask you to trust me — only to check me. Every row above is a third party I don't control saying the same thing: the paper, the dataset, the identifiers are real. If a registry ever delisted us, this table would say so — I'd rather lose the row than fake it." />
       </div>
     </>
   );

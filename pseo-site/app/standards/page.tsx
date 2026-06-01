@@ -404,6 +404,16 @@ export default function StandardsPage() {
           conformance to standards we do not implement.
         </p>
 
+        <p
+          className="text-base sm:text-lg text-sky-100/90 border-l-2 border-sky-500/50 pl-4 mb-8 leading-relaxed"
+          data-speakable
+        >
+          <strong className="text-sky-300">The one belief this page asks for:</strong>{" "}
+          a standard you can&rsquo;t independently check is just a badge. Every spec
+          below links to the canonical source and to the exact surface here that
+          implements it &mdash; so your engineer can confirm it without taking our word.
+        </p>
+
         <div className="rounded-lg border border-slate-800 bg-slate-900/40 p-5 mb-10 text-sm text-gray-300">
           <p>
             <strong className="text-white">Why this page exists.</strong>{" "}

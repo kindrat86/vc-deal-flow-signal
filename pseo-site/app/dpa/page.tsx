@@ -131,7 +131,7 @@ export default function DpaPage() {
         <p>This DPA is governed by Greek law and the EU GDPR. Disputes are subject to <Link href="/terms" className="text-sky-400 hover:underline">/terms §9</Link>.</p>
       </section>
 
-      <TrustPageOutro acNote="Funds that can't pay an invoice without a signed DPA are exactly who the paid tiers were built for — so send the request and I counter-sign it myself, usually inside five business days. I'm slow on Slack and fast on the paperwork that actually matters." />
+      <TrustPageOutro institutional acNote="Funds that can't pay an invoice without a signed DPA are exactly who the paid tiers were built for — so send the request and I counter-sign it myself, usually inside five business days. I'm slow on Slack and fast on the paperwork that actually matters." />
 
       <footer className="mt-10 pt-6 border-t border-slate-800 text-sm text-gray-400">
         License: <a href="https://creativecommons.org/licenses/by/4.0/" className="text-sky-400 hover:underline">CC BY 4.0</a>. Trust hub: <Link href="/trust" className="text-sky-400 hover:underline">/trust</Link>.
