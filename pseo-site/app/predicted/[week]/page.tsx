@@ -5,6 +5,7 @@ import SignalBadge from "@/components/SignalBadge";
 import ShareBar from "@/components/ShareBar";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import SeoCta from "@/components/SeoCta";
+import CuriosityGate from "@/components/CuriosityGate";
 import {
   getAllPredictionWeekSlugs,
   getPredictionWeek,
@@ -318,6 +319,17 @@ export default async function PredictedWeekPage({ params }: RouteContext) {
             </li>
           ))}
         </ol>
+
+        {week.picks[0] && (
+          <CuriosityGate
+            change={week.picks[0].commitVelocityChange}
+            signalType={week.picks[0].signalType}
+            entityName={week.picks[0].displayName}
+            otherCount={week.picks.length - 1}
+            contextLabel="picks this week"
+            className="mt-10"
+          />
+        )}
 
         <div className="mt-12">
           <SeoCta
