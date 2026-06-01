@@ -31,6 +31,25 @@ DRY_RUN=0
 
 log() { echo "$(date '+%Y-%m-%d %H:%M:%S %Z') | $*" | tee -a "$LOG"; }
 
+# Auto-sync this dedicated worktree to latest origin/main before any work, so the
+# Sunday run always uses current code (no manual edits live here — safe to reset).
+# Best-effort: a fetch failure just proceeds with the current checkout. The whole
+# unit is a brace-group followed by exec, so bash fully parses it before `git reset`
+# can rewrite this file mid-run; we then re-exec the updated wrapper exactly once
+# (WEEKLY_DIGEST_SYNCED guards against an infinite loop).
+{
+  if [[ "${WEEKLY_DIGEST_SYNCED:-}" != "1" ]]; then
+    if git -C "$PROJECT_DIR" fetch origin --quiet \
+       && git -C "$PROJECT_DIR" reset --hard origin/main >/dev/null 2>&1; then
+      log "sync: $PROJECT_DIR @ origin/main ($(git -C "$PROJECT_DIR" rev-parse --short HEAD))"
+    else
+      log "sync: FAILED — proceeding with current checkout"
+    fi
+    export WEEKLY_DIGEST_SYNCED=1
+    exec /bin/bash "$SCRIPT_DIR/run-weekly-digest.sh" "$@"
+  fi
+}
+
 log "=== weekly digest start (dry_run=$DRY_RUN) ==="
 
 cd "$PROJECT_DIR/pseo-site"
