@@ -65,6 +65,17 @@ export interface Playbook {
   /** Primary CTA URL (relative or absolute). */
   ctaUrl: string;
   ctaLabel: string;
+  /**
+   * Optional "if you build agents" aside — demoted developer/agent path
+   * (e.g. a raw JSON endpoint) that should NOT be the primary Marcus CTA but
+   * is worth keeping for the builder audience. Rendered as a small note, never
+   * the headline button.
+   */
+  builderAside?: {
+    text: string;
+    url: string;
+    label: string;
+  };
   /** Related playbook slugs. */
   related: string[];
   /** SEO keywords for meta tag. */
@@ -658,11 +669,11 @@ The 10-movers-per-week shape is intentional: small enough that you actually ship
     ],
     steps: [
       {
-        name: "Friday 9am — pull the top-10 weekly movers",
-        text: "Fetch `https://signals.gitdealflow.com/api/v1/signals.json?sort=delta&limit=10`. The `delta` sort surfaces the repos whose composite score moved the most this week vs last week. You'll get a mix of new entrants and accelerators.",
+        name: "Friday 9am — get this week's top-10 movers",
+        text: "The free Sunday digest already lands the ten teams whose engineering momentum moved the most this week — a mix of brand-new entrants and accelerators, ranked and written up. That's your raw material; no spreadsheet, no setup. (If you build agents: the same list is one unauthenticated JSON pull — see the small aside under the steps.)",
         timeRequired: "PT10M",
-        toolUrl: "https://signals.gitdealflow.com/api/v1/signals.json?sort=delta&limit=10",
-        toolLabel: "Pull the weekly movers",
+        toolUrl: "https://gitdealflow.com/#signup",
+        toolLabel: "Get the free weekly movers digest",
       },
       {
         name: "Friday 9:15 — open all 10 in tabs",
@@ -720,8 +731,13 @@ The 10-movers-per-week shape is intentional: small enough that you actually ship
         a: "The opposite happens in practice. Publishing your pattern-matching publicly attracts founders to send you their own deals (so they show up in your newsletter), which is exactly the inbound flywheel you want.",
       },
     ],
-    ctaUrl: "/api/v1/signals.json?sort=delta&limit=10",
-    ctaLabel: "Pull this week's top-10 movers",
+    ctaUrl: "https://gitdealflow.com/#signup",
+    ctaLabel: "Get this week's top-10 movers — free Sunday digest",
+    builderAside: {
+      text: "Prefer to wire it into your own stack? The same top-10 movers are one unauthenticated JSON pull (sort=delta, limit=10), free and refreshed every Monday.",
+      url: "https://signals.gitdealflow.com/api/v1/signals.json?sort=delta&limit=10",
+      label: "Raw signals feed (JSON)",
+    },
     related: [
       "how-to-source-10-dev-tool-deals-in-a-week",
       "how-to-read-a-github-trendline-like-a-partner",

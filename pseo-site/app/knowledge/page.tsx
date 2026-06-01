@@ -4,6 +4,7 @@ import { PRIMITIVES } from "@/content/signal-primitives";
 import { pillars } from "@/content/pillars";
 import { FINDINGS } from "@/content/research-findings";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 
 const SITE = "https://signals.gitdealflow.com";
 const SSRN_URL = "https://ssrn.com/abstract=6606558";
@@ -214,6 +215,77 @@ export default function KnowledgePage() {
             </section>
           ))}
         </div>
+
+        <section
+          className="mt-12 rounded-lg border border-slate-800 bg-slate-900/40 p-6 sm:p-7"
+          aria-label="Where to go next"
+        >
+          <h2 className="text-xl font-semibold text-white mb-1">
+            You&rsquo;ve seen the map. Pick a door.
+          </h2>
+          <p className="text-sm text-gray-300 mb-6 leading-relaxed">
+            This page is the index, not the destination. Two ways in,
+            depending on what you came for.
+          </p>
+          <div className="grid gap-4 md:grid-cols-2">
+            <div className="rounded-lg border border-slate-800 bg-slate-950/40 p-5">
+              <p className="text-amber-300 text-[10px] font-semibold uppercase tracking-wider mb-2">
+                You&rsquo;re wiring this into something
+              </p>
+              <p className="text-sm text-gray-300 mb-4 leading-relaxed">
+                Pull the signal straight into your agent, model, or
+                pipeline. Endpoints, the MCP server, and the developer
+                quickstart all live here.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                <Link
+                  href="/agents"
+                  className="inline-flex items-center gap-1 rounded border border-sky-700 bg-sky-900/30 px-3 py-2 text-sm font-semibold text-sky-300 hover:bg-sky-900/50 hover:text-sky-200"
+                >
+                  Agents &amp; API →
+                </Link>
+                <Link
+                  href="/developers"
+                  className="inline-flex items-center gap-1 rounded border border-slate-700 px-3 py-2 text-sm font-semibold text-gray-300 hover:border-slate-600 hover:text-gray-100"
+                >
+                  Developer quickstart →
+                </Link>
+              </div>
+            </div>
+            <div className="rounded-lg border border-slate-800 bg-slate-950/40 p-5">
+              <p className="text-amber-300 text-[10px] font-semibold uppercase tracking-wider mb-2">
+                You&rsquo;re here to spot deals earlier
+              </p>
+              <p className="text-sm text-gray-300 mb-4 leading-relaxed">
+                Skip the taxonomy. See how this turns into a timing edge
+                you can act on — read the buyer&rsquo;s guide, or just get
+                the free Sunday read and decide for yourself.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                <Link
+                  href="/buyers-guide"
+                  className="inline-flex items-center gap-1 rounded border border-sky-700 bg-sky-900/30 px-3 py-2 text-sm font-semibold text-sky-300 hover:bg-sky-900/50 hover:text-sky-200"
+                >
+                  Read the buyer&rsquo;s guide →
+                </Link>
+                <a
+                  href="https://gitdealflow.com/#signup"
+                  className="inline-flex items-center gap-1 rounded border border-slate-700 px-3 py-2 text-sm font-semibold text-gray-300 hover:border-slate-600 hover:text-gray-100"
+                >
+                  Free Sunday digest →
+                </a>
+                <Link
+                  href="/firstlook"
+                  className="inline-flex items-center gap-1 rounded border border-slate-700 px-3 py-2 text-sm font-semibold text-gray-300 hover:border-slate-600 hover:text-gray-100"
+                >
+                  €7 First Look →
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <DataNerdSignoff variant="compact" className="mt-8" />
 
         <p className="text-xs text-gray-400 text-center mt-12">
           Cross-graph entity:{" "}

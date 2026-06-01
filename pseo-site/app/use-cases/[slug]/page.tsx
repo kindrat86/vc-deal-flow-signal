@@ -5,10 +5,25 @@ import { getUseCase, getAllUseCaseSlugs, type UseCaseFAQ } from "@/content/use-c
 import { getAlternative } from "@/content/alternatives";
 import { getAllSectors, getCurrentPeriod, getDataLastModified } from "@/lib/data";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
+
+/**
+ * Diligence-grade personas evaluate a specific company for a living, on a
+ * deadline — they get a paid escalation (test it on their thesis this week,
+ * then keep the panel open) on top of the free Sunday signal. The other
+ * personas (browsers/scouts) stay on the free-first floor.
+ */
+const DILIGENCE_GRADE_SLUGS = new Set([
+  "due-diligence",
+  "lp-research",
+  "fund-of-funds",
+  "solo-gps",
+  "corporate-vc",
+]);
 
 export async function generateStaticParams() {
   return getAllUseCaseSlugs().map((slug) => ({ slug }));
@@ -56,6 +71,7 @@ export default async function UseCasePage({ params }: PageProps) {
   const period = getCurrentPeriod();
   const lastModified = getDataLastModified();
   const pageUrl = `https://signals.gitdealflow.com/use-cases/${slug}`;
+  const isDiligenceGrade = DILIGENCE_GRADE_SLUGS.has(slug);
 
   const relatedSectorData = uc.relatedSectors
     .map((rs) => {
@@ -331,6 +347,65 @@ export default async function UseCasePage({ params }: PageProps) {
           >
             Get the Report
           </Link>
+        </div>
+
+        {isDiligenceGrade && (
+          <section
+            className="mt-6 rounded-xl border border-amber-700/40 bg-gradient-to-br from-amber-950/15 via-slate-900 to-slate-950 p-6 sm:p-8"
+            aria-label="When you have a live name on your desk"
+          >
+            <p className="text-[10px] font-semibold text-amber-300 uppercase tracking-wider mb-2">
+              When you have a live name on your desk
+            </p>
+            <h2 className="text-gray-100 font-semibold text-lg mb-2">
+              The free email is the watchlist. This is the answer on one company.
+            </h2>
+            <p className="text-gray-400 text-sm mb-6 max-w-xl leading-relaxed">
+              The Monday email tells you who&rsquo;s moving across the market. When a
+              specific company lands on your desk and you need a read before the
+              call, you don&rsquo;t want to wait for Monday. Two ways to go deeper —
+              still no code to read, still plain-English answers you can paste into
+              a memo.
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <Link
+                href="/firstlook"
+                className="group block rounded-lg border border-amber-700/40 bg-slate-900/60 p-5 hover:border-amber-500/60 transition-all"
+              >
+                <p className="text-xs font-medium text-amber-300 uppercase tracking-wider mb-1">
+                  First Look · €7 once
+                </p>
+                <h3 className="text-gray-100 font-semibold text-sm mb-1.5 group-hover:text-amber-200 transition-colors">
+                  Test it on your own thesis this week
+                </h3>
+                <p className="text-gray-400 text-xs leading-relaxed">
+                  Point it at one company you&rsquo;re actually looking at. A single
+                  written read on whether the team is genuinely accelerating — for
+                  less than the coffee on a partner call.
+                </p>
+              </Link>
+              <Link
+                href="/dashboard"
+                className="group block rounded-lg border border-sky-800/60 bg-slate-900/60 p-5 hover:border-sky-500/60 transition-all"
+              >
+                <p className="text-xs font-medium text-sky-400 uppercase tracking-wider mb-1">
+                  Dashboard · €9.97/mo
+                </p>
+                <h3 className="text-gray-100 font-semibold text-sm mb-1.5 group-hover:text-sky-300 transition-colors">
+                  Keep the panel open for every name you touch
+                </h3>
+                <p className="text-gray-400 text-xs leading-relaxed">
+                  Pull any company, see how its pace stacks up against its peers,
+                  and back your memo with a number instead of a hunch. The whole
+                  diligence pass in the time it used to take to schedule one.
+                </p>
+              </Link>
+            </div>
+          </section>
+        )}
+
+        <div className="mt-8 flex justify-center">
+          <DataNerdSignoff variant="compact" catchphraseIndex={2} />
         </div>
       </div>
     </>

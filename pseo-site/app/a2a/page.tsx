@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { A2A_FRAMEWORKS } from "@/lib/a2a-frameworks";
+import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 
 export const metadata: Metadata = {
   title: "GitDealFlow A2A — Free Startup Signals for Your AI Agent",
@@ -281,6 +282,69 @@ export default function A2AHubPage() {
         </p>
       </section>
 
+      <section
+        style={{
+          padding: 28,
+          border: "1px solid #e2e8f0",
+          borderRadius: 16,
+          background: "#f8fafc",
+          marginBottom: 48,
+        }}
+      >
+        <h2 style={{ fontSize: 22, color: "#0f172a", letterSpacing: -0.3, margin: 0 }}>
+          When your agent wants the deep signal
+        </h2>
+        <p style={{ color: "#475569", marginTop: 12, lineHeight: 1.7, fontSize: 15 }}>
+          The five A2A skills above stay free, forever, no auth. When you wire the signal into a
+          production agent and want the full per-startup deep read on every call, there is a paid
+          lane built for machines:{" "}
+          <strong style={{ color: "#0f172a" }}>€19 for 100 deep-signal calls (€0.19 each)</strong>.
+          Pay with a credit pack, or pay per call in USDC on Base via x402 — no contract, no sales
+          call, credits never expire.
+        </p>
+        <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 20 }}>
+          <Link
+            href="/agents/credits"
+            style={{
+              padding: "12px 20px",
+              borderRadius: 10,
+              background: "#0ea5e9",
+              color: "#fff",
+              fontSize: 14,
+              fontWeight: 700,
+              textDecoration: "none",
+            }}
+          >
+            Get agent credits — €19 / 100 calls →
+          </Link>
+          <Link
+            href="/for-builders"
+            style={{
+              padding: "12px 20px",
+              borderRadius: 10,
+              border: "1px solid #cbd5e1",
+              color: "#475569",
+              fontSize: 14,
+              fontWeight: 700,
+              textDecoration: "none",
+            }}
+          >
+            For builders: the full picture →
+          </Link>
+        </div>
+        <p style={{ color: "#64748b", fontSize: 13.5, marginTop: 18, lineHeight: 1.6 }}>
+          Not wiring an agent? You are a human who invests.{" "}
+          <Link href="/#signup" style={{ color: "#0ea5e9", fontWeight: 600 }}>
+            Get the free Sunday digest
+          </Link>{" "}
+          or{" "}
+          <Link href="/firstlook" style={{ color: "#0ea5e9", fontWeight: 600 }}>
+            grab a €7 First Look
+          </Link>{" "}
+          — same signals, read for you instead of your code.
+        </p>
+      </section>
+
       <section style={{ marginBottom: 32, fontSize: 15, color: "#475569" }}>
         <h2 style={{ fontSize: 22, color: "#0f172a", letterSpacing: -0.3 }}>What is A2A?</h2>
         <p style={{ marginTop: 12, lineHeight: 1.7 }}>
@@ -311,6 +375,10 @@ export default function A2AHubPage() {
           .
         </p>
       </section>
+
+      <div style={{ marginTop: 8 }}>
+        <DataNerdSignoff variant="compact" />
+      </div>
     </div>
   );
 }

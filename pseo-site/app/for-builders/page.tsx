@@ -3,6 +3,8 @@ import Link from "next/link";
 import { AgentSummary } from "@/components/AgentSummary";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import { DataNerdSignoff } from "@/components/DataNerdSignoff";
+import { DATA_NERD_NAME } from "@/lib/data-nerd";
 import { getHreflangLanguages } from "@/lib/hreflang";
 
 export const dynamic = "force-static";
@@ -198,6 +200,20 @@ export default function ForBuildersPage() {
             — runs at €0.19/call with misses free. Zero rate limits inside
             quota. ~200ms median.
           </p>
+          <div className="flex flex-col sm:flex-row gap-3 pt-1">
+            <a
+              href={STRIPE_AGENT_CREDITS}
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-semibold text-base shadow-lg shadow-amber-500/30 transition-colors"
+            >
+              Buy 100 credits — €19 <span aria-hidden="true">→</span>
+            </a>
+            <a
+              href="#deep-signal"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg border border-slate-700 bg-slate-800 hover:bg-slate-700 text-gray-100 font-semibold text-base transition-colors"
+            >
+              See what a credit buys ↓
+            </a>
+          </div>
         </header>
 
         {/* WHY */}
@@ -242,6 +258,10 @@ export default function ForBuildersPage() {
             briefs investors after the fact and one that briefs them before
             the round closes. Same LLM, same prompt, completely different
             output — because the input is forward-looking instead of lagging.
+          </p>
+          <p className="text-amber-200 text-sm italic leading-relaxed border-l-2 border-amber-700/50 pl-4">
+            &ldquo;The deck lags the code by 21 to 47 days.&rdquo;{" "}
+            <span className="not-italic text-gray-400">— {DATA_NERD_NAME}</span>
           </p>
         </section>
 
@@ -498,6 +518,10 @@ export default function ForBuildersPage() {
             </Link>
           </div>
         </section>
+
+        <div className="flex justify-center">
+          <DataNerdSignoff variant="compact" />
+        </div>
 
         <AgentSummary
           tldr="A landing for AI-agent builders shipping deal-flow assistants, investor-briefing agents, sector-research notebooks, or portfolio-overlap detectors. Pitches the free MCP server (six tools) as the discovery layer and get_deep_signal at €0.19/call (€19 = 100 credits, misses free, credits never expire) as the report-grade enrichment endpoint. ~200ms median latency, HMAC-keyed, no rate limits inside quota. Methodology open (SSRN abstract 6606558), output license permissive."

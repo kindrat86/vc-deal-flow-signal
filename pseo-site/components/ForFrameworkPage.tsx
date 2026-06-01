@@ -10,6 +10,7 @@
  */
 import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import {
   FRAMEWORKS,
   type FrameworkPositioning,
@@ -394,6 +395,53 @@ export function ForFrameworkPage({ framework: f }: Props) {
           </ul>
         </section>
 
+        <section className="mb-12" aria-labelledby="upgrade">
+          <h2
+            id="upgrade"
+            className="text-xs font-medium text-sky-500 uppercase tracking-wider mb-4"
+          >
+            When the free signal isn&rsquo;t enough
+          </h2>
+          <div className="rounded-xl border border-emerald-900/50 bg-emerald-950/20 p-6 sm:p-8">
+            <p className="text-gray-300 text-base leading-relaxed mb-2 max-w-2xl">
+              The A2A and MCP endpoints above are free and ungated — that&rsquo;s
+              where every {f.name} agent should start. When you need report-grade
+              enrichment on a named startup, the deep signal runs at{" "}
+              <span className="text-emerald-300 font-semibold">
+                €0.19 / call
+              </span>{" "}
+              — €19 buys 100 credits, credits never expire, and a miss (an org we
+              don&rsquo;t track) is free.
+            </p>
+            <p className="text-gray-400 text-sm leading-relaxed mb-6 max-w-2xl">
+              Prefer to pay per call with no API key? The same endpoint speaks{" "}
+              <a
+                href="https://x402.org"
+                className="text-emerald-300 hover:text-emerald-200 font-medium underline decoration-dotted"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                x402
+              </a>{" "}
+              — settle in USDC on Base, $0.19/call, no signup.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Link
+                href="/agents/credits"
+                className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold transition-colors"
+              >
+                Buy 100 credits — €19 <span aria-hidden="true">&nbsp;→</span>
+              </Link>
+              <Link
+                href="/for-builders"
+                className="inline-flex items-center justify-center px-6 py-3 rounded-lg border border-emerald-700 bg-transparent hover:border-emerald-500 text-emerald-200 text-sm font-semibold transition-colors"
+              >
+                See the builder offer <span aria-hidden="true">→</span>
+              </Link>
+            </div>
+          </div>
+        </section>
+
         <div className="rounded-xl border border-slate-800 bg-slate-900 p-6 sm:p-8 text-center">
           <h2 className="text-gray-100 font-semibold text-lg mb-2">
             Stuck on the wire-up?
@@ -411,6 +459,10 @@ export function ForFrameworkPage({ framework: f }: Props) {
           >
             Email support
           </Link>
+        </div>
+
+        <div className="mt-8 flex justify-center">
+          <DataNerdSignoff variant="compact" />
         </div>
       </div>
     </>

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 
 function escapeHtmlAttr(s: string): string {
   return s
@@ -287,6 +288,35 @@ export default function InstallClient() {
         </a>
       </section>
 
+      <section className="mb-10 rounded-2xl border border-orange-500/30 bg-gradient-to-br from-orange-500/10 to-rose-500/5 p-6 sm:p-8">
+        <p className="text-orange-300 text-xs font-semibold uppercase tracking-[0.14em] mb-2">
+          Prefer the whole field ranked for you?
+        </p>
+        <h2 className="text-xl font-bold text-gray-100 mb-2">
+          No install. Open one short read and the teams pulling ahead this
+          week are already sorted to the top.
+        </h2>
+        <p className="text-gray-300 text-sm leading-relaxed mb-4 max-w-2xl">
+          The bookmarklet is great when you already have a name to check. If you
+          want the call made for you instead &mdash; the standouts surfaced,
+          ranked, and explained in plain business language &mdash; start here.
+        </p>
+        <div className="flex flex-wrap gap-3">
+          <Link
+            href="/firstlook"
+            className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-orange-500 text-white text-sm font-semibold hover:bg-orange-400 transition-colors"
+          >
+            First Look &mdash; one ranked dossier, &euro;7 &rarr;
+          </Link>
+          <a
+            href="https://gitdealflow.com/#signup"
+            className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium"
+          >
+            Or the free Sunday digest &rarr;
+          </a>
+        </div>
+      </section>
+
       <section className="text-center text-xs text-gray-300 leading-relaxed">
         <p>
           The bookmarklet is vanilla JavaScript. It only runs when you click
@@ -294,6 +324,10 @@ export default function InstallClient() {
           opens a popup. No background scripts, no telemetry, no install state.
         </p>
       </section>
+
+      <div className="mt-10">
+        <DataNerdSignoff variant="compact" />
+      </div>
     </div>
   );
 }

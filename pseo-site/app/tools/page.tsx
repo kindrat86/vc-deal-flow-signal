@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 
 const SITE = "https://signals.gitdealflow.com";
 const PAGE_URL = `${SITE}/tools`;
@@ -221,6 +222,28 @@ export default function ToolsIndexPage() {
           ))}
         </ul>
 
+        <section className="mt-10 rounded-2xl border border-sky-900/50 bg-gradient-to-br from-sky-950/40 via-slate-900 to-slate-900 p-6 sm:p-8">
+          <p className="text-xs uppercase tracking-wider text-sky-400 font-medium mb-2">
+            The number is only as good as the company you run it on
+          </p>
+          <h2 className="text-gray-100 font-semibold text-lg sm:text-xl mb-2 leading-snug">
+            These calculators tell you how good a company is. The Dashboard tells
+            you which ones to look at first.
+          </h2>
+          <p className="text-gray-300 text-sm leading-relaxed mb-5 max-w-2xl">
+            Run a burn multiple or a dilution stack on a company you already
+            found. The live Dashboard flips it around: it surfaces the teams that
+            are quietly shipping far more than usual right now — the ones worth
+            putting through these tools weeks before they show up in a deck.
+          </p>
+          <Link
+            href="/dashboard"
+            className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-semibold transition-colors"
+          >
+            See who&apos;s accelerating now — Dashboard, €9.97/mo →
+          </Link>
+        </section>
+
         <section className="mt-12 rounded-xl border border-slate-800 bg-slate-900 p-6 sm:p-8">
           <h2 className="text-gray-100 font-semibold text-lg mb-3">
             More tools coming
@@ -232,28 +255,44 @@ export default function ToolsIndexPage() {
             fastest way to ask is through the Sunday digest.
           </p>
           <Link
-            href="/firstlook"
+            href="/#signup"
             className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-medium transition-colors"
           >
             Get the Sunday digest
           </Link>
         </section>
 
-        <div className="mt-12 rounded-xl border border-slate-800 bg-slate-900 p-6 sm:p-8 text-center">
-          <h2 className="text-gray-100 font-semibold text-lg mb-2">
-            See this week&apos;s breakout startups
+        <div className="mt-12 rounded-2xl border border-slate-800 bg-slate-900 p-6 sm:p-8 text-center">
+          <h2 className="text-gray-100 font-semibold text-lg sm:text-xl mb-2">
+            Now see which startups are actually accelerating →
           </h2>
-          <p className="text-gray-400 text-sm mb-5 max-w-lg mx-auto">
-            VC Deal Flow Signal ranks startups by GitHub engineering
-            acceleration.
+          <p className="text-gray-400 text-sm mb-6 max-w-xl mx-auto leading-relaxed">
+            The math above describes a company. We track which companies are
+            pulling ahead — the teams shipping far more than usual, the ones that
+            tend to surface in a fundraise three to seven weeks later. Start free,
+            or grab one full breakdown for €7.
           </p>
-          <Link
-            href="/"
-            className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-medium transition-colors"
-          >
-            Browse Signals
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
+            <Link
+              href="/#signup"
+              className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-semibold transition-colors w-full sm:w-auto"
+            >
+              Free Sunday digest →
+            </Link>
+            <Link
+              href="/firstlook"
+              className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 bg-slate-800 hover:bg-slate-700 text-gray-100 text-sm font-semibold transition-colors w-full sm:w-auto"
+            >
+              One full First Look — €7 →
+            </Link>
+          </div>
         </div>
+
+        <DataNerdSignoff
+          variant="compact"
+          catchphraseIndex={3}
+          className="mt-8"
+        />
       </div>
     </>
   );

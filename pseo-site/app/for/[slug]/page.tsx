@@ -7,6 +7,20 @@ import {
   getPersona,
 } from "@/content/personas";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import { DataNerdSignoff } from "@/components/DataNerdSignoff";
+
+/**
+ * Higher-intent buyer personas who evaluate companies for a living and have
+ * budget — they get an ascension next step (paid Dashboard + Insider) beside
+ * the free digest / First Look, not just the top-of-funnel options. Founders,
+ * researchers, and journalists keep their own non-sales CTA and are excluded.
+ */
+const ASCENSION_SLUGS = new Set([
+  "corp-dev",
+  "pe-operating-partners",
+  "tech-vps",
+  "emerging-managers",
+]);
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -43,6 +57,7 @@ export default async function PersonaPage({ params }: PageProps) {
 
   const pageUrl = `https://signals.gitdealflow.com/for/${slug}`;
   const otherPersonas = PERSONAS.filter((o) => o.slug !== slug);
+  const showAscension = ASCENSION_SLUGS.has(slug);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -214,6 +229,84 @@ export default async function PersonaPage({ params }: PageProps) {
           </div>
         </section>
 
+        {showAscension && (
+          <section className="mb-12" aria-label="Pick your next step">
+            <h2 className="text-xl font-semibold text-gray-100 mb-2">
+              Pick the depth that fits {persona.shortName}
+            </h2>
+            <p className="text-gray-400 text-sm leading-relaxed mb-5">
+              Start free on Sunday. Move up only when the timing edge is paying
+              for itself — most {persona.shortName} land on the weekly seat, a
+              few who run a full pipeline take the room.
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <Link
+                href="/firstlook"
+                className="group block rounded-lg border border-slate-800 bg-slate-900 p-5 hover:border-sky-700 transition-all"
+              >
+                <p className="text-[10px] uppercase tracking-wider text-gray-500 mb-1">
+                  One-time · €7
+                </p>
+                <h3 className="text-gray-100 font-semibold text-sm group-hover:text-sky-300 transition-colors mb-1">
+                  First Look
+                </h3>
+                <p className="text-gray-400 text-xs leading-relaxed">
+                  One full sample brief, translated into plain business
+                  language. See exactly what a week of the signal reads like
+                  before you commit to anything.
+                </p>
+              </Link>
+              <Link
+                href="/dashboard"
+                className="group block rounded-lg border border-sky-800/60 bg-sky-950/30 p-5 hover:border-sky-500 transition-all"
+              >
+                <p className="text-[10px] uppercase tracking-wider text-sky-400/80 mb-1">
+                  Most popular · €9.97/mo
+                </p>
+                <h3 className="text-gray-100 font-semibold text-sm group-hover:text-sky-300 transition-colors mb-1">
+                  The Dashboard
+                </h3>
+                <p className="text-gray-300 text-xs leading-relaxed">
+                  The live board, refreshed weekly, filtered to your sectors.
+                  See which teams are suddenly shipping far more than usual —
+                  weeks before the round is on anyone&rsquo;s desk.
+                </p>
+              </Link>
+              <Link
+                href="/insider"
+                className="group block rounded-lg border border-amber-700/50 bg-amber-950/20 p-5 hover:border-amber-500 transition-all"
+              >
+                <p className="text-[10px] uppercase tracking-wider text-amber-400/80 mb-1">
+                  For the full pipeline · €97/mo
+                </p>
+                <h3 className="text-gray-100 font-semibold text-sm group-hover:text-amber-200 transition-colors mb-1">
+                  Insider Circle
+                </h3>
+                <p className="text-gray-300 text-xs leading-relaxed">
+                  Everything in the Dashboard, plus the private room where the
+                  earliest movers get the names first and the reasoning behind
+                  each one — written so you can repeat it in the meeting.
+                </p>
+              </Link>
+              <Link
+                href="/#signup"
+                className="group block rounded-lg border border-slate-800 bg-slate-950 p-5 hover:border-slate-600 transition-all"
+              >
+                <p className="text-[10px] uppercase tracking-wider text-gray-500 mb-1">
+                  Free · forever
+                </p>
+                <h3 className="text-gray-200 font-semibold text-sm group-hover:text-gray-100 transition-colors mb-1">
+                  Sunday digest
+                </h3>
+                <p className="text-gray-400 text-xs leading-relaxed">
+                  Not ready to pay? The free weekly email lands every Sunday.
+                  Start there and upgrade when the head start earns its keep.
+                </p>
+              </Link>
+            </div>
+          </section>
+        )}
+
         <section className="mb-12" aria-label="Frequently asked questions">
           <h2 className="text-xl font-semibold text-gray-100 mb-6">
             Frequently Asked Questions
@@ -255,6 +348,8 @@ export default async function PersonaPage({ params }: PageProps) {
             ))}
           </div>
         </section>
+
+        <DataNerdSignoff variant="long" catchphraseIndex={3} className="mb-12" />
 
         <div className="rounded-xl border border-slate-800 bg-slate-900 p-6 sm:p-8 text-center">
           <h2 className="text-gray-100 font-semibold text-lg mb-2">

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 
 const APEX = "https://gitdealflow.com";
 const SIGNALS = "https://signals.gitdealflow.com";
@@ -129,8 +130,15 @@ export default function McpDemoPage() {
           {VIDEO_TITLE}
         </h1>
 
-        <p className="text-lg text-slate-300 speakable mb-8">
+        <p className="text-lg text-slate-300 speakable mb-4">
           {VIDEO_DESCRIPTION}
+        </p>
+
+        <p className="text-base text-slate-300 mb-8">
+          In plain terms: it tells you which companies are quietly building far
+          more than usual — the teams about to break out — and flags them weeks
+          before the round shows up in a deck. You ask in your own words; it
+          answers with the names and the timing.
         </p>
 
         <figure className="rounded-xl overflow-hidden border border-slate-800 bg-black shadow-2xl">
@@ -174,12 +182,27 @@ export default function McpDemoPage() {
             <p className="text-slate-200 text-sm mb-3">
               Six MCP tools, free forever. No API key required to install.
             </p>
-            <Link
-              href="/install"
-              className="inline-block rounded bg-sky-500 hover:bg-sky-400 text-slate-950 font-semibold px-4 py-2 text-sm"
-            >
-              Installation guide
-            </Link>
+            <pre className="mb-3 overflow-x-auto rounded bg-black/60 border border-slate-800 px-3 py-2 text-xs text-emerald-300">
+              <code>npx -y @gitdealflow/mcp-signal</code>
+            </pre>
+            <div className="flex flex-wrap gap-2">
+              <Link
+                href="/install"
+                className="inline-block rounded bg-sky-500 hover:bg-sky-400 text-slate-950 font-semibold px-4 py-2 text-sm"
+              >
+                Install in one line →
+              </Link>
+              <Link
+                href="/agents/credits"
+                className="inline-block rounded border border-emerald-500/50 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-200 font-semibold px-4 py-2 text-sm"
+              >
+                Buy 100 agent credits — €19 →
+              </Link>
+            </div>
+            <p className="mt-3 text-xs text-slate-400">
+              Wiring this into an agent? Credits are €0.19/call (x402 / USDC on
+              Base) — the deep-signal tool the free six don&apos;t cover.
+            </p>
           </div>
         </section>
 
@@ -208,6 +231,33 @@ export default function McpDemoPage() {
             </li>
           </ul>
         </section>
+
+        <section className="mt-10 rounded-xl border border-slate-800 bg-slate-900/40 p-6">
+          <h2 className="text-base font-semibold text-slate-100 mb-2">
+            Prefer a read you don&apos;t have to wire up?
+          </h2>
+          <p className="text-sm text-slate-300 mb-4">
+            You don&apos;t need to install anything to get the signal. We&apos;ll
+            translate the week&apos;s movers into plain English and send them to
+            your inbox — no config, no command line.
+          </p>
+          <div className="flex flex-wrap gap-2">
+            <a
+              href="https://gitdealflow.com/#signup"
+              className="inline-block rounded bg-amber-500 hover:bg-amber-400 text-slate-950 font-semibold px-4 py-2 text-sm"
+            >
+              Get the free Sunday digest →
+            </a>
+            <Link
+              href="/firstlook"
+              className="inline-block rounded border border-slate-700 bg-slate-800/60 hover:bg-slate-800 text-slate-100 font-semibold px-4 py-2 text-sm"
+            >
+              First Look — €7 →
+            </Link>
+          </div>
+        </section>
+
+        <DataNerdSignoff variant="compact" catchphraseIndex={3} className="mt-10" />
       </div>
     </div>
   );
