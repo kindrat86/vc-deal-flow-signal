@@ -3,6 +3,7 @@ import Link from "next/link";
 import ReceiptsForm from "./ReceiptsForm";
 import { AgentSummary } from "@/components/AgentSummary";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { TrustConversionBlock } from "@/components/TrustConversionBlock";
 import { getDataLastModified } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -268,6 +269,16 @@ export default function ReceiptsLandingPage() {
           ))}
         </section>
 
+        <section className="mb-12 rounded-xl border border-amber-700/40 bg-amber-950/10 p-6 sm:p-8">
+          <p className="text-gray-300 text-sm leading-relaxed max-w-2xl">
+            No personal GitHub starring history to score? That&rsquo;s fine
+            &mdash; you don&rsquo;t need one to use the product. The Scout Score
+            is a side door for developers who already star repos. The product
+            itself reads the signal for you, in plain business English. You
+            never open GitHub.
+          </p>
+        </section>
+
         <AgentSummary
           tldr="GitHub Receipts is a free, no-login tool that grades any developer's GitHub starring history against a curated database of ~75 validated unicorns. Paste a username, get a Scout Score (0-100), a rank from Curious to Oracle, and a shareable 1200×630 OG card. Same data is available via /api/receipts/{username}, an embeddable SVG badge, and the get_scout_receipts MCP tool."
           pageUrl="https://signals.gitdealflow.com/receipts"
@@ -412,6 +423,13 @@ export default function ReceiptsLandingPage() {
             and skip the form &mdash; it auto-renders any handle&rsquo;s live score.
           </p>
         </section>
+
+        <div className="mt-12">
+          <TrustConversionBlock
+            dominant="digest"
+            context="No GitHub stars to score? You don't need them — we read the signal for you."
+          />
+        </div>
 
         <section className="mt-12">
           <h2 className="text-base font-semibold text-gray-300 mb-4">

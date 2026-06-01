@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { PlainEnglishNote } from "@/components/PlainEnglishNote";
+import { TrustConversionBlock } from "@/components/TrustConversionBlock";
 
 const SITE = "https://signals.gitdealflow.com";
 const SSRN_URL = "https://ssrn.com/abstract=6606558";
@@ -215,6 +217,36 @@ export default function ReproducibilityPage() {
           </ul>
         </section>
 
+        <PlainEnglishNote
+          title="Don't write code? You still get the proof"
+          className="mb-10"
+        >
+          <p>
+            The steps below are for analysts who want to re-run the numbers
+            themselves in a terminal. You don&apos;t have to. Every number here
+            is independently reproducible <em>and</em> published in plain
+            business English elsewhere on the site.
+          </p>
+          <p>
+            If you never touch a command line, read{" "}
+            <Link
+              href="/wins"
+              className="text-emerald-300 hover:text-emerald-200 underline decoration-dotted font-medium"
+            >
+              /wins
+            </Link>{" "}
+            for the receipts — calls we made and what happened next — and{" "}
+            <Link
+              href="/scorecard"
+              className="text-emerald-300 hover:text-emerald-200 underline decoration-dotted font-medium"
+            >
+              /scorecard
+            </Link>{" "}
+            for our picks graded after the fact. You can audit the claim without
+            touching code.
+          </p>
+        </PlainEnglishNote>
+
         <ol className="space-y-8">
           {STEPS.map((s) => (
             <li
@@ -284,6 +316,12 @@ export default function ReproducibilityPage() {
             </li>
           </ul>
         </section>
+
+        <TrustConversionBlock
+          dominant="firstlook"
+          context="The proof is reproducible whether or not you run the terminal. Either way, the next step is seeing it on your own sector."
+          className="mt-12"
+        />
 
         <p className="text-xs text-gray-400 text-center mt-10">
           See also:{" "}

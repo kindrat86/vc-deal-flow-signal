@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentSummary } from "@/components/AgentSummary";
+import { PlainEnglishNote } from "@/components/PlainEnglishNote";
+import { TrustConversionBlock } from "@/components/TrustConversionBlock";
 import { getDataLastModified } from "@/lib/data";
 import PSEOFooterNav from "@/components/PSEOFooterNav";
 import { HreflangLinks } from "@/components/HreflangLinks";
@@ -509,6 +511,23 @@ export default function MethodologyPage() {
                 90-day extension of the panel (next refresh: Q3 2026).
               </p>
             </div>
+
+            <PlainEnglishNote>
+              <p>
+                In dealmaker terms: a startup whose engineering is both speeding
+                up <em>and</em> spreading across more people — not one hero
+                developer doing everything — is roughly{" "}
+                <strong className="text-gray-200">3.4× more likely</strong> to
+                raise a Series A within 60 days than a team that&apos;s just
+                shipping fast off one person.
+              </p>
+              <p>
+                You don&apos;t compute anything. We flag the teams that look like
+                a real, broad-based build-out — the ones that look like a
+                company hiring engineers and scaling, not a solo project on a
+                hot streak — and you make the call.
+              </p>
+            </PlainEnglishNote>
           </div>
         </section>
 
@@ -656,6 +675,12 @@ export default function MethodologyPage() {
             </Link>
           </div>
         </section>
+
+        <TrustConversionBlock
+          dominant="firstlook"
+          context="You just read how the signal is computed. The honest next step is to see it run on a sector you actually source."
+          className="mb-10"
+        />
 
         <PSEOFooterNav excludeHrefs={["/methodology"]} />
 

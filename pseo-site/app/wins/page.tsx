@@ -3,6 +3,7 @@ import Link from "next/link";
 import validatedWins from "@/lib/validated-wins.json";
 import { AgentSummary } from "@/components/AgentSummary";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 
@@ -280,6 +281,11 @@ export default function WinsPage() {
             &ldquo;Investor at top fund.&rdquo; Just the org, the repo, the
             event, and the date.
           </p>
+          <p className="text-gray-400 text-sm sm:text-base leading-relaxed max-w-3xl border-l-2 border-amber-700/40 pl-4">
+            I don&rsquo;t run testimonials. A quote from a happy customer proves
+            someone liked me; a dated, named, public event proves the signal
+            fired. Trust the math, not me.
+          </p>
         </header>
 
         {/* Stat strip */}
@@ -416,6 +422,8 @@ export default function WinsPage() {
             </section>
           );
         })}
+
+        <DataNerdSignoff variant="long" />
 
         {/* CTA */}
         <section className="border-t border-slate-800 pt-10 space-y-4">

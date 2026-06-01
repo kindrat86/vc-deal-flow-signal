@@ -13,6 +13,7 @@ import {
 import { ACQUIRERS } from "@/content/acquirers";
 import { companies } from "@/content/companies";
 import { getInvestorsForCompany } from "@/content/fund-portfolio";
+import { TrustConversionBlock } from "@/components/TrustConversionBlock";
 
 const SITE = "https://signals.gitdealflow.com";
 
@@ -429,6 +430,12 @@ export default function DiligencePage() {
             </Link>
           </div>
         </section>
+
+        <TrustConversionBlock
+          className="mt-10"
+          dominant="digest"
+          context="Not wiring an agent? Get the same answers as a weekly read."
+        />
       </div>
     </>
   );
