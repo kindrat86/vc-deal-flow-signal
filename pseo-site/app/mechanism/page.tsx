@@ -214,7 +214,7 @@ export default function MechanismPage() {
           url: "https://gitdealflow.com",
         },
         claimReviewed:
-          "Commit-velocity acceleration leads venture fundraise announcements by a median of 31 days (21–47 day interquartile range).",
+          "Our hypothesis: commit-velocity acceleration leads venture fundraise announcements by a few weeks (validated openly on /scorecard, not yet established).",
         itemReviewed: {
           "@type": "Claim",
           appearance:

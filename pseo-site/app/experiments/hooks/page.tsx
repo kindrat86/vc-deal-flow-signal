@@ -39,7 +39,7 @@ const HOOKS: HookTest[] = [
   {
     id: "47-days",
     hook:
-      '"GitHub commit velocity preceded 219 confirmed fundraises by 21–47 days."',
+      '"GitHub commit velocity preceded 219 startup-period observations by 21–47 days."',
     channel: "Email subject + home hero + Twitter pinned",
     surface: "Apex / squeeze",
     date: "2026-04 → present",

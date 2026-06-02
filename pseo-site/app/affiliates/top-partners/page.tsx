@@ -320,7 +320,7 @@ Hi [Name],
 
 Big fan of [Newsletter] — [specific recent piece reference].
 
-I run GitDealFlow. Short version: we scan ~4,200 venture-backed startup GitHub orgs every Sunday and surface the ones whose engineering velocity just spiked. The methodology is on SSRN with a panel of 219 confirmed fundraises that the signal preceded by 21–47 days. Free Sunday digest, 5 names a week.
+I run GitDealFlow. Short version: we scan ~4,200 venture-backed startup GitHub orgs every Sunday and surface the ones whose engineering velocity just spiked. The methodology is on SSRN with a panel of 219 startup-period observations that the signal preceded by 21–47 days. Free Sunday digest, 5 names a week.
 
 I don't want a paid placement. I want a one-time recommendation block in a future issue, only if your readers are the kind of people who would actually use this — readers who care about earlier startup signal, clearer timing, and proof they can inspect.
 
@@ -339,7 +339,7 @@ gitdealflow.com/methodology`}</pre>
 
 Hi [Name],
 
-I'd like to pitch a guest segment on [Show], not as the founder of GitDealFlow but as the author of an SSRN paper that tracked 219 confirmed fundraises and found GitHub commit-velocity acceleration preceded the round announcement by 21–47 days.
+I'd like to pitch a guest segment on [Show], not as the founder of GitDealFlow but as the author of an SSRN paper that tracked 219 startup-period observations and found GitHub commit-velocity acceleration preceded the round announcement by 21–47 days.
 
 The pitch is the methodology, not the product. 12 minutes, three concrete examples (which we can pre-clear with the orgs), and a takeaway your audience can apply themselves without subscribing to anything.
 

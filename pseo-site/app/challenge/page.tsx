@@ -91,7 +91,7 @@ export default function ChallengePage() {
         "@type": "Course",
         name: "30-Day Deal Flow Reset Challenge",
         description:
-          "Free 30-day email course building a real sourcing system from public GitHub data. Week 1 teaches the 7 atomic signals (drawn from the SSRN-published panel of 219 confirmed venture rounds). Weeks 2-4 apply the framework, build a continuous watchlist, and operationalize alerts plus MCP integration. ~10 minutes per day; the framework stays yours either way.",
+          "Free 30-day email course building a real sourcing system from public GitHub data. Week 1 teaches the 7 atomic signals (drawn from the SSRN-published panel of 219 startup-period observations). Weeks 2-4 apply the framework, build a continuous watchlist, and operationalize alerts plus MCP integration. ~10 minutes per day; the framework stays yours either way.",
         provider: {
           "@type": "Organization",
           name: "VC Deal Flow Signal",
@@ -169,7 +169,7 @@ export default function ChallengePage() {
             name: "What's the source of the methodology?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "The seven Week-1 signals are drawn from a panel analysis of 219 confirmed venture rounds, published as 'GitHub Signals as Leading Indicators of Venture Fundraising' on SSRN (abstract id 6606558). Weeks 2-4 (Apply, Synthesize, Operationalize) extend that framework into the operational practice an investor would build around it — calibration, watchlist cadence, alerting, custom weights, MCP-server integration.",
+              text: "The seven Week-1 signals are drawn from a panel analysis of 219 startup-period observations, published as 'GitHub Signals as Leading Indicators of Venture Fundraising' on SSRN (abstract id 6606558). Weeks 2-4 (Apply, Synthesize, Operationalize) extend that framework into the operational practice an investor would build around it — calibration, watchlist cadence, alerting, custom weights, MCP-server integration.",
             },
           },
           {
@@ -231,7 +231,7 @@ export default function ChallengePage() {
             Week 3. Alerts, MCP integration, and a custom-weighted composite in
             Week 4. End the month with an operational sourcing system that runs
             in ~25 minutes a week — drawn from the SSRN-published methodology
-            covering 219 confirmed venture rounds.
+            covering 219 startup-period observations.
           </p>
           <p className="text-gray-400 text-sm leading-relaxed">
             By Day 31 you&rsquo;ll have a watchlist, a personal heuristic for
@@ -482,7 +482,7 @@ export default function ChallengePage() {
                 Where is the methodology from?
               </h3>
               <p className="text-gray-400 text-sm leading-relaxed">
-                Panel analysis of 219 confirmed venture rounds, published as{" "}
+                Panel analysis of 219 startup-period observations, published as{" "}
                 <em>
                   GitHub Signals as Leading Indicators of Venture Fundraising
                 </em>{" "}

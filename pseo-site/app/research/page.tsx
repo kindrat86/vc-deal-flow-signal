@@ -371,7 +371,7 @@ export default function ResearchPage() {
             },
             teaches: [
               "How GitHub commit velocity, contributor growth, and infrastructure-buildout patterns serve as leading indicators of venture fundraises",
-              "How to interpret precision and recall metrics on a 219-startup validation panel",
+              "How to interpret precision and recall metrics on a 219-observation descriptive panel",
               "How to compose engineering-acceleration signals with funding-history context for sourcing workflows",
               "How to cite the methodology in LP reports and deal memos",
             ],

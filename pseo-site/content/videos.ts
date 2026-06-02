@@ -81,7 +81,7 @@ export const videos: SiteVideo[] = [
     title:
       "GitHub Commit Velocity Predicts Series A 30 Days Early — Engineering Acceleration Watch",
     description:
-      "By the time a startup hits Crunchbase, every other VC sees it the same morning. Engineering Acceleration Watch ships every Monday with the venture-backed startups whose GitHub commit velocity is accelerating sharpest — typically 21 to 47 days before the Series A announcement, based on a longitudinal panel of 219 confirmed fundraises (SSRN-indexed methodology, CC BY 4.0).",
+      "By the time a startup hits Crunchbase, every other VC sees it the same morning. Engineering Acceleration Watch ships every Monday with the venture-backed startups whose GitHub commit velocity is accelerating sharpest — typically 21 to 47 days before the Series A announcement, based on a longitudinal panel of 219 startup-period observations (SSRN-indexed methodology, CC BY 4.0).",
     uploadDate: "2026-05-05T00:00:00+00:00",
     durationSeconds: 90,
     format: "landscape",
@@ -127,7 +127,7 @@ export const videos: SiteVideo[] = [
     title:
       "How To Spot a Series A 47 Days Before the Deck — 3-Minute VSL (GitDealFlow)",
     description:
-      "The 3-minute version of the walkthrough — the long version takes 12 minutes, this one cuts to the single belief. If commit-velocity acceleration is the most leading public signal in venture capital, then every other deal-flow source — pitch decks, AngelList, Crunchbase, warm intros — is a lagging indicator. SSRN-indexed panel of 219 confirmed Series A and Series B fundraises is the empirical basis.",
+      "The 3-minute version of the walkthrough — the long version takes 12 minutes, this one cuts to the single belief. If commit-velocity acceleration is the most leading public signal in venture capital, then every other deal-flow source — pitch decks, AngelList, Crunchbase, warm intros — is a lagging indicator. SSRN-indexed panel of 219 startup-period observations is the empirical basis.",
     uploadDate: "2026-05-06T00:00:00+00:00",
     durationSeconds: 180,
     format: "landscape",
@@ -221,7 +221,7 @@ export const videos: SiteVideo[] = [
     title:
       "Engineering Acceleration Watch — Week of 2026-05-05 — sonic-pi-net +999%",
     description:
-      "This week's biggest engineering accelerator: sonic-pi-net (Growth). Commit velocity +999% over 14 days — deploy-frequency spike pattern. Across the SSRN-indexed panel of 219 confirmed Series A and Series B fundraises, this profile has historically preceded the announcement by 21–47 days. Crunchbase, AngelList, warm intros — all lagging.",
+      "This week's biggest engineering accelerator: sonic-pi-net (Growth). Commit velocity +999% over 14 days — deploy-frequency spike pattern. Across the SSRN-indexed panel of 219 startup-period observations, this profile has historically preceded the announcement by 21–47 days. Crunchbase, AngelList, warm intros — all lagging.",
     uploadDate: "2026-05-05T23:36:31+00:00",
     durationSeconds: 60,
     format: "landscape",

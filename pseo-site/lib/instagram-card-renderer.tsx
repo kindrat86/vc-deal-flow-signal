@@ -405,7 +405,7 @@ function SignalOfTheWeekCard({ slug }: { slug: string }): ReactElement {
           }}
         >
           <div style={{ display: "flex", fontSize: 22, color: PALETTE.muted }}>
-            Hit rate over trailing 18 months
+            Scorecard status (graded in public)
           </div>
           <div
             style={{
@@ -414,11 +414,11 @@ function SignalOfTheWeekCard({ slug }: { slug: string }): ReactElement {
               gap: "16px",
             }}
           >
-            <div style={{ display: "flex", fontSize: 110, fontWeight: 800, color: PALETTE.brand }}>
-              62%
+            <div style={{ display: "flex", fontSize: 92, fontWeight: 800, color: PALETTE.brand }}>
+              0/0/30
             </div>
             <div style={{ display: "flex", fontSize: 24, color: PALETTE.muted }}>
-              of weekly picks raised within 90 days
+              picks graded openly on /scorecard (pending)
             </div>
           </div>
         </div>

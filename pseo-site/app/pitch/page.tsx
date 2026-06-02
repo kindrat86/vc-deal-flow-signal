@@ -133,11 +133,12 @@ export default function PitchPage() {
           </p>
           <div className="bg-slate-900/60 border border-slate-700 rounded-xl p-5 space-y-2 text-gray-200 text-base leading-relaxed">
             <p>
-              <strong className="text-gray-100">219 startups.</strong> Five
-              quarters. Companies showing a 2× contributor spike inside a
-              14-day window preceded their fundraise announcement by a{" "}
-              <strong className="text-sky-300">median 31 days</strong> — IQR
-              21 to 47.
+              <strong className="text-gray-100">219 startup-period
+              observations.</strong> Five quarters. Our hypothesis: companies
+              showing a 2× contributor spike inside a 14-day window precede
+              their fundraise announcement by{" "}
+              <strong className="text-sky-300">a few weeks</strong> — validated
+              openly on /scorecard, not yet established.
             </p>
             <p className="text-gray-400 text-sm">
               SSRN-published preprint, full panel + regression code at{" "}

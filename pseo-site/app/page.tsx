@@ -767,7 +767,7 @@ export default function Home() {
           >
             3.4× Series-A lift
           </a>{" "}
-          in the SSRN panel of 219 confirmed fundraises (median lead time 21–47
+          in the SSRN panel of 219 startup-period observations (median lead time 21–47
           days). It is a tool, not a fund — we surface the signal, you make the
           calls. Free to browse, built to give you a clearer read before the round gets obvious.
         </p>

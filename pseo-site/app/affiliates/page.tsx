@@ -408,8 +408,8 @@ export default function AffiliatesPage() {
             <li className="flex gap-3">
               <span className="text-emerald-400 mt-0.5">✓</span>
               Anyone whose audience cares about finding venture-backed startups
-              before they fundraise (the SSRN paper covers 219 confirmed
-              fundraises preceded 21–47 days)
+              before they fundraise (the SSRN paper is a descriptive 219-observation panel; the
+              21–47-day lead is our hypothesis, validated on /scorecard)
             </li>
           </ul>
         </section>
@@ -535,7 +535,7 @@ export default function AffiliatesPage() {
             <p className="text-sky-400 text-xs font-semibold uppercase tracking-wider mb-2">
               Channel 1 — Twitter / X (single tweet)
             </p>
-            <pre className="text-gray-300 text-sm leading-relaxed whitespace-pre-wrap font-sans bg-slate-950 border border-slate-800 rounded p-4 mb-3">{`I keep telling people about this. GitDealFlow scans 4,200 GitHub orgs every Sunday and tells you which startups are accelerating before they raise. The pattern preceded 219 confirmed fundraises by 21–47 days in their SSRN paper.
+            <pre className="text-gray-300 text-sm leading-relaxed whitespace-pre-wrap font-sans bg-slate-950 border border-slate-800 rounded p-4 mb-3">{`I keep telling people about this. GitDealFlow scans 4,200 GitHub orgs every Sunday and tells you which startups are accelerating before they raise. The pattern preceded 219 startup-period observations by 21–47 days in their SSRN paper.
 
 Free Sunday digest, no card: YOURLINK`}</pre>
             <p className="text-gray-400 text-xs">~245 chars. Add the SSRN link if you have room. Pin if you have a small audience — the share rate compounds.</p>
@@ -563,7 +563,7 @@ Free Sunday digest → YOURLINK`}</pre>
             </p>
             <pre className="text-gray-300 text-sm leading-relaxed whitespace-pre-wrap font-sans bg-slate-950 border border-slate-800 rounded p-4 mb-3">{`---
 
-Loved this post and want to find startups like the ones in it before they raise? I use VC Deal Flow Signal — a free weekly Sunday digest that ranks 109 startup GitHub orgs by commit velocity. The methodology behind it is the SSRN-published panel of 219 confirmed fundraises (21-to-47 days lead time on average).
+Loved this post and want to find startups like the ones in it before they raise? I use VC Deal Flow Signal — a free weekly Sunday digest that ranks 109 startup GitHub orgs by commit velocity. The methodology behind it is the SSRN-published panel of 219 startup-period observations (21-to-47 days lead time on average).
 
 If you write checks, scout for a fund, or just like watching engineering data, the digest is free forever: YOURLINK
 
@@ -578,7 +578,7 @@ If you write checks, scout for a fund, or just like watching engineering data, t
             </p>
             <pre className="text-gray-300 text-sm leading-relaxed whitespace-pre-wrap font-sans bg-slate-950 border border-slate-800 rounded p-4 mb-3">{`if anyone here is sourcing seed/Series A:
 
-GitDealFlow tracks GitHub commit velocity across 4,200 startup orgs and surfaces the ones accelerating fast. The free Sunday digest gives you 5 names a week — they have a research paper on SSRN with 219 confirmed fundraises that the signal preceded by 21-47 days.
+GitDealFlow tracks GitHub commit velocity across 4,200 startup orgs and surfaces the ones accelerating fast. The free Sunday digest gives you 5 names a week — they have a research paper on SSRN with 219 startup-period observations that the signal preceded by 21-47 days.
 
 free, no card, weekly email: YOURLINK`}</pre>
             <p className="text-gray-400 text-xs">For #investors, #vc, #startups channels. Drop once per quarter per community max.</p>
@@ -595,7 +595,7 @@ Hey [Name] —
 
 You know how we always say "wish I'd seen [Company X] before they were on AngelList trending"?
 
-Found a thing. Solo dev called The Data Nerd publishes a free Sunday digest of 5 startups whose GitHub commit velocity just spiked. The methodology is on SSRN, 219 confirmed fundraises preceded by 21-47 days.
+Found a thing. Solo dev called The Data Nerd publishes a free Sunday digest of 5 startups whose GitHub commit velocity just spiked. The methodology is on SSRN, 219 startup-period observations preceded by 21-47 days.
 
 I subscribed last week. Haven't pulled the trigger on anything yet but the names are interesting.
 
@@ -610,7 +610,7 @@ Sign up here if you want: YOURLINK
             <p className="text-sky-400 text-xs font-semibold uppercase tracking-wider mb-2">
               Channel 6 — Reddit / IndieHackers comment (no-link version)
             </p>
-            <pre className="text-gray-300 text-sm leading-relaxed whitespace-pre-wrap font-sans bg-slate-950 border border-slate-800 rounded p-4 mb-3">{`On the question of finding startups before consensus: the cleanest leading indicator I've found is GitHub commit velocity. There's a service called VC Deal Flow Signal (search for it — username gives away free Sunday digest with 5 names/wk). They published an SSRN paper showing 219 confirmed fundraises were preceded by acceleration spikes by an average of 21-47 days.
+            <pre className="text-gray-300 text-sm leading-relaxed whitespace-pre-wrap font-sans bg-slate-950 border border-slate-800 rounded p-4 mb-3">{`On the question of finding startups before consensus: the cleanest leading indicator I've found is GitHub commit velocity. There's a service called VC Deal Flow Signal (search for it — username gives away free Sunday digest with 5 names/wk). They published an SSRN paper showing 219 startup-period observations were preceded by acceleration spikes by an average of 21-47 days.
 
 Not affiliated [or: affiliate disclosure required], just one of the cheapest sources of signal I've found.`}</pre>
             <p className="text-gray-400 text-xs">For subs that auto-remove links (r/venturecapital, r/EntrepreneurRideAlong). Lower CTR but won&apos;t get auto-modded.</p>

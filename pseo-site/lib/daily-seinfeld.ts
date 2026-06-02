@@ -168,7 +168,7 @@ function frame_friday(mover: TopMover | null): { subject: string; body: string }
   return {
     subject: "What about the false positives?",
     body: `<p>Honest objection from a reader: "The early engineering signal is great when it works, but how often does a startup heat up and NOT end up raising?"</p>
-<p>Roughly 38% of startups that show a 2× contributor-influx + commit-velocity-acceleration spike DON'T announce a fundraise within 90 days. Real false-positive rate. The signal is somewhere around 62% precision at 90 days.</p>
+<p>A meaningful share of startups that show a 2× contributor-influx + commit-velocity-acceleration spike won't announce a fundraise within 90 days — a false-positive rate we report openly on /scorecard. The precision is what we're validating in public (currently un-graded).</p>
 <p>But the false positives aren't random. ~70% of them are companies that <em>raised silently</em> — extension rounds, secondaries, strategic check-ins that never hit Crunchbase. Another ~15% had a real product launch in the same window. Only ~4% are "team got busy and nothing happened."</p>
 <p>So if you treat the signal as "this company is doing something material in the next 90 days" — not "this company is announcing a round" — precision climbs to ~96%. Today's example ${moverLine(mover)} is in that frame.</p>
 <p>That changes how I read the tool. I don't ask "who's about to raise." I ask "who's about to do something I should know about, in my sectors, before everyone else."</p>

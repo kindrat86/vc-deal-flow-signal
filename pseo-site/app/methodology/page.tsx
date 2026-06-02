@@ -236,7 +236,7 @@ export default function MethodologyPage() {
         "@type": "LearningResource",
         name: "How to Measure Startup Engineering Acceleration from GitHub Public Data",
         description:
-          "A free, openly published methodology for tracking GitHub commit velocity, contributor growth, and infrastructure-buildout patterns as leading indicators of venture fundraises. Includes the validation panel of 219 confirmed fundraises.",
+          "A free, openly published methodology for tracking GitHub commit velocity, contributor growth, and infrastructure-buildout patterns as leading indicators of venture fundraises. Includes the validation panel of 219 startup-period observations.",
         url: "https://signals.gitdealflow.com/methodology",
         learningResourceType: "Methodology",
         educationalLevel: "Professional",

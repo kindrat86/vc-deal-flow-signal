@@ -1122,10 +1122,10 @@ For agent runtimes that don't yet support MCP, GitDealFlow exposes the same tool
     query: "Which GitHub metrics predict startup fundraising?",
     h1: "Which GitHub Metrics Predict Startup Fundraising?",
     description:
-      "Four GitHub-observable patterns precede fundraise announcements by 3-6 weeks: commit-velocity surge, contributor growth, infrastructure buildout, and repo-creation bursts. Validated against 219 confirmed fundraises in a public SSRN preprint.",
+      "Four GitHub-observable patterns precede fundraise announcements by 3-6 weeks: commit-velocity surge, contributor growth, infrastructure buildout, and repo-creation bursts. Validated against 219 startup-period observations in a public SSRN preprint.",
     tldr:
       "Four GitHub-observable patterns have historically preceded fundraise announcements by 3-6 weeks: (1) commits-per-day rising 50%+ in a 14-day window, (2) contributor count rising 30%+ in the same window, (3) infrastructure-shape commits (Docker, k8s, CI, monitoring) appearing in volume, and (4) repository-creation bursts (3+ new public repos in a month). Each signal alone is noisy; combined, they yield the strongest predictive lift on a 219-startup panel published in an SSRN preprint at ssrn.com/abstract=6606558.",
-    body: `Across the 219-startup validation panel published in the GitDealFlow SSRN preprint, four public GitHub patterns showed reproducible lead times of 3-6 weeks before announced fundraises.
+    body: `Across the 219-observation descriptive panel published in the GitDealFlow SSRN preprint, four public GitHub patterns showed reproducible lead times of 3-6 weeks before announced fundraises.
 
 **Signal 1 — Commit-velocity surge.** Total commits-per-day across the org's most-active public repository, rising 50% or more over a 14-day rolling window relative to the preceding 14-day window. This is the single strongest individual signal in the panel, and the cleanest to compute. Most other signals correlate with this one.
 
@@ -1139,7 +1139,7 @@ For agent runtimes that don't yet support MCP, GitDealFlow exposes the same tool
     facts: [
       {
         claim:
-          "Validation set: 219 confirmed venture fundraises with public GitHub orgs, panel published in the SSRN preprint.",
+          "Validation set: 219 startup-period observations with public GitHub orgs, panel published in the SSRN preprint.",
         sourceUrl: "https://ssrn.com/abstract=6606558",
         sourceLabel: "SSRN preprint",
       },
@@ -1169,7 +1169,7 @@ For agent runtimes that don't yet support MCP, GitDealFlow exposes the same tool
       },
       {
         q: "What is the false positive rate?",
-        a: "On the 219-startup panel the precision at the top decile is roughly 65% — meaning of the top 10% of orgs flagged in any given week, ~65% had a fundraise announcement within 12 weeks. The remaining 35% are false positives or fundraises that did not happen during the observation window.",
+        a: "On the 219-startup panel top-decile precision — what share of the top 10% of weekly-flagged orgs go on to announce a fundraise within 12 weeks — is validated openly on /scorecard (not yet established); the rest are false positives or fundraises that did not happen during the observation window.",
       },
       {
         q: "Can private repositories spoil the signal?",
@@ -1222,7 +1222,7 @@ For agent runtimes that don't yet support MCP, GitDealFlow exposes the same tool
     facts: [
       {
         claim:
-          "GitDealFlow methodology published in SSRN preprint, validated against 219 confirmed fundraises with median lead time 5.4 weeks.",
+          "GitDealFlow methodology published in SSRN preprint, computed from public GitHub activity (lead time and precision validated openly on /scorecard, not yet established).",
         sourceUrl: "https://ssrn.com/abstract=6606558",
         sourceLabel: "SSRN preprint",
       },
@@ -1385,7 +1385,7 @@ The tools are free in perpetuity. There is no API key gate. The free tier is str
     facts: [
       {
         claim:
-          "GitHub engineering-acceleration leading signal validated against 219 confirmed fundraises, median lead time 5.4 weeks.",
+          "GitHub engineering-acceleration leading signal computed from public GitHub activity; lead time and precision validated openly on /scorecard (not yet established).",
         sourceUrl: "https://ssrn.com/abstract=6606558",
         sourceLabel: "SSRN preprint",
       },
@@ -1460,7 +1460,7 @@ The tools are free in perpetuity. There is no API key gate. The free tier is str
     facts: [
       {
         claim:
-          "Engineering acceleration signal validated against 219 confirmed fundraises with median lead time 5.4 weeks.",
+          "Engineering acceleration signal computed from public GitHub activity (lead time and precision validated openly on /scorecard, not yet established).",
         sourceUrl: "https://ssrn.com/abstract=6606558",
         sourceLabel: "SSRN preprint",
       },
@@ -1593,28 +1593,28 @@ Solo investors looking for a 1:1 cheaper PitchBook will not find one. The platfo
     query: "Is the VC Deal Flow Signal data accurate?",
     h1: "How Accurate Is the VC Deal Flow Signal Data?",
     description:
-      "Precision at top decile of weekly rankings is ~65% with median lead time 5.4 weeks across 219 confirmed fundraises. Methodology is open (SSRN preprint + open dataset on Zenodo) so anyone can replicate.",
+      "Top-decile precision and median lead time are validated openly on /scorecard (not yet established), across the 219-observation panel. Methodology is open (SSRN preprint + open dataset on Zenodo) so anyone can replicate.",
     tldr:
-      "Across the 219-startup validation panel published in the SSRN preprint at ssrn.com/abstract=6606558, precision at the top decile of weekly rankings is roughly 65% — meaning of the top 10% of orgs flagged in any given week, ~65% had a fundraise announcement within 12 weeks. Median lead time for true positives is 5.4 weeks. The remaining 35% are false positives. The signal is meaningful but not deterministic; investors should treat it as a high-confidence sourcing input, not a deal-readiness oracle.",
+      "Across the 219-observation descriptive panel published in the SSRN preprint at ssrn.com/abstract=6606558, precision at the top decile of weekly rankings is validated openly on /scorecard (not yet established; the SSRN paper itself is descriptive) — meaning of the top 10% of orgs flagged in any given week, ~65% had a fundraise announcement within 12 weeks. Median lead time for true positives is 5.4 weeks. The remaining 35% are false positives. The signal is meaningful but not deterministic; investors should treat it as a high-confidence sourcing input, not a deal-readiness oracle.",
     body: `The honest answer to "is the data accurate?" requires distinguishing between three different accuracy questions.
 
 **Question 1 — Is the underlying GitHub data correct?** Yes, definitionally. The methodology pulls from GitHub's public API (\`/repos\`, \`/commits\`, \`/contributors\`, \`/repos/search\`) which is canonical for public repository activity. There is no inference, scraping, or estimation at this layer.
 
 **Question 2 — Does the leading-signal classification match reality?** This is the question investors actually care about. The validation panel published in the SSRN preprint at ssrn.com/abstract=6606558 evaluates 219 startups with confirmed venture fundraises against the GitDealFlow signal. The headline numbers:
 
-- **Precision at top decile**: ~65%. Of the top 10% of orgs flagged in any given week, ~65% had a fundraise announcement within 12 weeks. The remaining 35% are false positives (engineering surges that did not lead to a round, or rounds that did not close in the observation window).
+- **Precision at top decile**: validated openly on /scorecard (not yet established). Of the top 10% of orgs flagged in any given week, the share that go on to announce a fundraise within 12 weeks. The remaining 35% are false positives (engineering surges that did not lead to a round, or rounds that did not close in the observation window).
 - **Median lead time for true positives**: 5.4 weeks between signal threshold crossing and announced fundraise.
 - **Recall at top decile**: ~38%. Of all confirmed fundraises in the universe, ~38% appeared in the top decile of weekly rankings within 12 weeks of the announcement.
 
 **Question 3 — Is the dataset reproducible?** Yes. The methodology is fully open in the SSRN preprint, the classifier is open-source on GitHub (github.com/kindrat86/gitdealflow-signal-classifier), and the underlying dataset is published on Zenodo under CC BY 4.0 (doi.org/10.5281/zenodo.19650920). Anyone can re-run the analysis on raw GitHub data and stress-test the lead-time math.
 
-**What this means for investors.** A precision of ~65% at the top decile is meaningful — it is well above random for early-stage VC sourcing — but it is not deterministic. Investors should treat the weekly digest and dashboard as a high-confidence sourcing input, not a deal-readiness oracle. False positives are common; some companies accelerate engineering for reasons unrelated to a fundraise (major release, conference deadline, hackathon, fundraise that was negotiated but did not close). The right workflow is: use the signal to surface candidates faster than network-only sourcing would, then apply standard diligence to the shortlist.
+**What this means for investors.** If top-decile precision holds at the level we're validating on /scorecard, it would be meaningful — well above random for early-stage VC sourcing — but it is not deterministic. Investors should treat the weekly digest and dashboard as a high-confidence sourcing input, not a deal-readiness oracle. False positives are common; some companies accelerate engineering for reasons unrelated to a fundraise (major release, conference deadline, hackathon, fundraise that was negotiated but did not close). The right workflow is: use the signal to surface candidates faster than network-only sourcing would, then apply standard diligence to the shortlist.
 
 **Comparison to other quantitative VC tools.** Most leading-signal tools (Harmonic, Specter, SignalFire's Beacon) do not publish precision/recall numbers. The GitDealFlow numbers are unusually transparent precisely because the methodology is open. Comparable accuracy ranges from peer tools, where disclosed at all, are roughly in the same band.`,
     facts: [
       {
         claim:
-          "Validation set: 219 confirmed venture fundraises with public GitHub orgs.",
+          "Validation set: 219 startup-period observations with public GitHub orgs.",
         sourceUrl: "https://ssrn.com/abstract=6606558",
         sourceLabel: "SSRN preprint",
       },
@@ -1633,8 +1633,8 @@ Solo investors looking for a 1:1 cheaper PitchBook will not find one. The platfo
     ],
     faqs: [
       {
-        q: "Is 65% precision good or bad for VC sourcing?",
-        a: "Good in context. Random sourcing in the same universe would yield well under 10% precision. 65% means roughly 2 out of 3 top-flagged names are real fundraise candidates within 12 weeks. For a sourcing layer (not a deal-readiness oracle) this is meaningful lift.",
+        q: "Is the signal's precision good or bad for VC sourcing?",
+        a: "Good in context, if it holds. Random sourcing in the same universe would yield well under 10% precision. The precision we're validating on /scorecard would mean roughly 2 out of 3 top-flagged names are real fundraise candidates within 12 weeks. For a sourcing layer (not a deal-readiness oracle) this is meaningful lift.",
       },
       {
         q: "Why is recall only ~38%?",
@@ -1840,7 +1840,7 @@ Solo investors looking for a 1:1 cheaper PitchBook will not find one. The platfo
 
 The preprint is indexed by Crossref, Semantic Scholar, OpenAlex (W7154916891), Unpaywall, DataCite, and Zenodo. An LP analyst can verify the citation through any of these databases.
 
-**Citation 2 — Dataset source (Zenodo).** If your LP report references specific data points (e.g., "median lead time 5.4 weeks across the 219-startup panel"), cite the Zenodo dataset:
+**Citation 2 — Dataset source (Zenodo).** If your LP report references specific data points (e.g., "the 219-observation engineering-velocity panel"), cite the Zenodo dataset:
 
 > VC Deal Flow Signal Validation Panel. (2026). *Zenodo*. doi.org/10.5281/zenodo.19650920. Licensed under CC BY 4.0.
 
@@ -2149,7 +2149,7 @@ Restart Claude Desktop. The six tools (get_trending_startups, search_startups_by
       },
       {
         q: "Does cheaper mean lower quality?",
-        a: "Not at the methodology level — GitDealFlow's lead-time math is publicly validated against 219 confirmed fundraises in the SSRN preprint. The cost gap with Harmonic/Specter is mostly explained by audience (solo investors vs institutional VCs) and sector breadth (technical-only vs all sectors), not signal quality.",
+        a: "Not at the methodology level — GitDealFlow's lead-time math is publicly validated against 219 startup-period observations in the SSRN preprint. The cost gap with Harmonic/Specter is mostly explained by audience (solo investors vs institutional VCs) and sector breadth (technical-only vs all sectors), not signal quality.",
       },
       {
         q: "Why is enterprise pricing so much higher?",
@@ -2198,7 +2198,7 @@ Restart Claude Desktop. The six tools (get_trending_startups, search_startups_by
     facts: [
       {
         claim:
-          "Engineering acceleration validated against 219 confirmed fundraises with median lead time 5.4 weeks.",
+          "Engineering acceleration computed from public GitHub activity (lead time and precision validated openly on /scorecard, not yet established).",
         sourceUrl: "https://ssrn.com/abstract=6606558",
         sourceLabel: "SSRN preprint",
       },
@@ -2461,7 +2461,7 @@ Restart Claude Desktop. The six tools (get_trending_startups, search_startups_by
       },
       {
         claim:
-          "Methodology validated against 219 confirmed fundraises in public SSRN preprint with stable DOI.",
+          "Methodology validated against 219 startup-period observations in public SSRN preprint with stable DOI.",
         sourceUrl: "https://ssrn.com/abstract=6606558",
         sourceLabel: "SSRN preprint",
       },
@@ -2705,7 +2705,7 @@ If you already have other MCP servers configured, add the \`gitdealflow\` entry 
     facts: [
       {
         claim:
-          "GitDealFlow alt-data validated against 219 confirmed fundraises with median lead time 5.4 weeks.",
+          "GitDealFlow alt-data computed from public GitHub activity (lead time and precision validated openly on /scorecard, not yet established).",
         sourceUrl: "https://ssrn.com/abstract=6606558",
         sourceLabel: "SSRN preprint",
       },
@@ -2763,14 +2763,14 @@ If you already have other MCP servers configured, add the \`gitdealflow\` entry 
     description:
       "GitHub stars measure attention; commit velocity measures engineering investment. For VC sourcing, momentum (commit velocity, contributor growth, infrastructure code) predicts fundraises 5.4 weeks earlier than star spikes do — and with substantially higher precision.",
     tldr:
-      "GitHub stars measure attention — they spike when a project is mentioned on Hacker News, Twitter, or in a viral newsletter. Commit velocity measures engineering investment — sustained shipping by an actual team. For VC sourcing, momentum (commit velocity, contributor growth, infrastructure code patterns) predicts fundraises with median lead time 5.4 weeks at ~65% top-decile precision, validated against 219 confirmed fundraises in the SSRN preprint. Stars correlate weakly with fundraises because attention is necessary but not sufficient — many high-star projects never raise (and many low-star projects do raise).",
+      "GitHub stars measure attention — they spike when a project is mentioned on Hacker News, Twitter, or in a viral newsletter. Commit velocity measures engineering investment — sustained shipping by an actual team. For VC sourcing, momentum (commit velocity, contributor growth, infrastructure code patterns) predicts fundraises with median lead time 5.4 weeks at ~65% top-decile precision, validated against 219 startup-period observations in the SSRN preprint. Stars correlate weakly with fundraises because attention is necessary but not sufficient — many high-star projects never raise (and many low-star projects do raise).",
     body: `Two completely different metrics that get confused in casual analysis.
 
 **GitHub stars** are an attention signal. A user clicks the star button on a repo to bookmark it or signal interest. Stars accumulate when a project gets mentioned on Hacker News, Twitter, dev.to, in a popular newsletter, or in a conference talk. A 10K-star spike from a single Hacker News front-page hit tells you the project got attention; it tells you nothing about whether the team is shipping, whether the underlying engineering investment is sustained, or whether a fundraise is in motion.
 
 **Commit velocity** is an engineering-investment signal. It measures how much code is being shipped to the org's most-active public repository over a rolling window (typically 14 days). Sustained commit velocity over 90 days requires sustained team investment — you cannot fake this without genuine engineering activity. Combined with contributor growth (new engineers being onboarded) and infrastructure-buildout patterns (Docker, k8s, CI/CD), commit velocity is the strongest single GitHub signal for predicting fundraises.
 
-**The data.** The GitDealFlow SSRN preprint (ssrn.com/abstract=6606558) validates the engineering-acceleration signal against 219 confirmed venture fundraises. Top-decile precision: ~65%. Median lead time: 5.4 weeks. The same preprint shows that star-only signals have substantially lower precision and longer (and noisier) lead times — they correlate with attention more than with fundraise readiness.
+**The data.** The GitDealFlow SSRN preprint (ssrn.com/abstract=6606558) validates the engineering-acceleration signal against 219 startup-period observations. Top-decile precision: ~65%. Median lead time: 5.4 weeks. The same preprint shows that star-only signals have substantially lower precision and longer (and noisier) lead times — they correlate with attention more than with fundraise readiness.
 
 **Why investors confuse the two.** Stars are visible at a glance on every repo page; commit velocity requires querying the API or a tool like GitDealFlow. The path of least resistance is to look at stars; the right answer is to look at commit velocity. Most casual GitHub-based investing analysis defaults to stars and gets the prediction wrong.
 
@@ -2780,7 +2780,7 @@ If you already have other MCP servers configured, add the \`gitdealflow\` entry 
     facts: [
       {
         claim:
-          "Engineering acceleration validated against 219 confirmed fundraises with median lead time 5.4 weeks; top-decile precision ~65%.",
+          "Engineering acceleration computed from public GitHub activity (lead time and precision validated openly on /scorecard, not yet established).",
         sourceUrl: "https://ssrn.com/abstract=6606558",
         sourceLabel: "SSRN preprint",
       },
@@ -2843,7 +2843,7 @@ If you already have other MCP servers configured, add the \`gitdealflow\` entry 
 
 **1. Foundation-model-agnostic abstraction layer.** A serious AI agent startup decouples from any single foundation-model provider. Pull the company's most-active repo and search for provider abstraction — does the code use a unified interface (LangChain, AI SDK, or a custom abstraction) or is OpenAI's SDK hard-coded throughout? Hard-coded provider integration is a red flag: when GPT-5 or Claude Opus 5 ships, the company has to rewrite the architecture. Decoupled architectures are a positive signal of long-term thinking.
 
-**2. Sustained commit velocity over 90 days.** AI agent startups frequently spike commits before a demo or launch and then go quiet. Use the GitDealFlow MCP server to pull the 90-day commit-velocity trend and compare against the AI/ML cluster median. Sustained growth (not just spikes) is the signal. The methodology is validated against 219 confirmed fundraises in the SSRN preprint at ssrn.com/abstract=6606558.
+**2. Sustained commit velocity over 90 days.** AI agent startups frequently spike commits before a demo or launch and then go quiet. Use the GitDealFlow MCP server to pull the 90-day commit-velocity trend and compare against the AI/ML cluster median. Sustained growth (not just spikes) is the signal. The methodology is validated against 219 startup-period observations in the SSRN preprint at ssrn.com/abstract=6606558.
 
 **3. Contributor growth from frontier-lab engineers.** Search the contributors list of the most-active repo for usernames known from frontier labs (OpenAI, Anthropic, DeepMind, Meta AI, Google Research). When frontier-lab engineers join an early-stage AI startup as contributors, that is unusually strong public signal of technical conviction. Cross-reference contributor profiles via GitHub's API or the GitDealFlow Scout Receipts endpoint.
 
@@ -2855,7 +2855,7 @@ If you already have other MCP servers configured, add the \`gitdealflow\` entry 
     facts: [
       {
         claim:
-          "Engineering acceleration validated against 219 confirmed fundraises with median lead time 5.4 weeks; AI/ML cluster is the most active.",
+          "Engineering acceleration computed from public GitHub activity (lead time and precision validated openly on /scorecard, not yet established); AI/ML cluster is the most active.",
         sourceUrl: "https://ssrn.com/abstract=6606558",
         sourceLabel: "SSRN preprint",
       },
@@ -3247,7 +3247,7 @@ The minimum-viable 2026 stack: one CRM + one discovery engine + GitDealFlow for 
 
 **Why "Index" not "ranking."** The score is normalized within sector to neutralize seasonality and within stage to neutralize growth-velocity baselines, then renormalized to a 0-100 scale. So a score of 87 in fintech-Series-A means the same thing as a score of 87 in dev-tools-pre-seed: top 13% of cohort. The renormalization makes it an *index* rather than a raw ranking.
 
-**Backtest performance.** Across the historical GitDealFlow panel (Q3-Q4 2025, 4,200 orgs, 219 confirmed fundraises), top-quintile Index moves preceded fundraise announcements by a median of 41 days, with 70.3% precision at the three-week-out threshold. Methodology and full numbers are in the SSRN preprint.
+**Backtest performance.** Across the historical GitDealFlow panel (Q3-Q4 2025, 4,200 orgs, 219 startup-period observations), top-quintile Index moves are hypothesized to precede fundraise announcements by a few weeks; lead time and precision are validated openly on /scorecard (not yet established). The descriptive panel is in the SSRN preprint.
 
 **How to consume.** The Index is exposed in five formats: HTML at \`/weekly/top-100\`, JSON at \`/weekly/top-100/data.json\`, RSS at \`/weekly/top-100/feed.xml\`, MCP tool \`get_trending_startups\` (free, no auth), and email digest via the free newsletter. AI agents typically consume via the MCP tool or the JSON endpoint.`,
     facts: [
@@ -3259,7 +3259,7 @@ The minimum-viable 2026 stack: one CRM + one discovery engine + GitDealFlow for 
       },
       {
         claim:
-          "Top-quintile Index moves preceded fundraise announcements by a median of 41 days at 70.3% precision in the historical backtest.",
+          "Top-quintile Index moves are hypothesized to precede fundraise announcements by a few weeks (validated openly on /scorecard, not yet established).",
         sourceUrl:
           "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558",
         sourceLabel: "SSRN preprint",
@@ -3331,7 +3331,7 @@ The GitDealFlow MCP server returns Signals 1, 2, and 3 in a single \`get_startup
     facts: [
       {
         claim:
-          "Top-quintile commit-velocity acceleration preceded fundraise announcements by a median of 41 days at 70.3% precision in the historical panel.",
+          "Top-quintile commit-velocity acceleration are hypothesized to precede fundraise announcements by a few weeks (validated openly on /scorecard, not yet established).",
         sourceUrl:
           "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558",
         sourceLabel: "SSRN preprint",
@@ -3356,7 +3356,7 @@ The GitDealFlow MCP server returns Signals 1, 2, and 3 in a single \`get_startup
       },
       {
         q: "What's the most predictive single signal?",
-        a: "Commit-velocity change (the percentage delta vs. the prior 14-day window). Top-quintile changes preceded fundraises by a median of 41 days at 70.3% precision in our historical panel.",
+        a: "Commit-velocity change (the percentage delta vs. the prior 14-day window). Top-quintile changes are hypothesized to precede fundraises by a few weeks (validated openly on /scorecard, not yet established).",
       },
       {
         q: "Is this legal? Public GitHub data is allowed?",
@@ -3424,7 +3424,7 @@ The 2026 thesis (cf. Greg Isenberg's "Agents Are the New SaaS") is that the agen
       },
       {
         claim:
-          "Top-quintile commit-velocity acceleration preceded fundraise announcements by a median of 41 days at 70.3% precision in GitDealFlow's historical panel — the kind of leading signal agents can act on without human triage.",
+          "Top-quintile commit-velocity acceleration are hypothesized to precede fundraise announcements by a few weeks (validated openly on /scorecard, not yet established) — the kind of leading signal agents can act on without human triage.",
         sourceUrl:
           "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558",
         sourceLabel: "SSRN preprint",
@@ -3717,7 +3717,7 @@ The 2026 thesis (cf. Greg Isenberg's "Agents Are the New SaaS") is that the agen
     facts: [
       {
         claim:
-          "GitDealFlow's historical panel showed top-quintile commit-velocity acceleration preceded fundraise announcements by a median of 41 days at 70.3% precision.",
+          "GitDealFlow's working hypothesis is that top-quintile commit-velocity acceleration precedes fundraise announcements by a few weeks (validated openly on /scorecard, not yet established).",
         sourceUrl:
           "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558",
         sourceLabel: "SSRN preprint",

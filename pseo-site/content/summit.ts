@@ -311,25 +311,25 @@ export const TALKS: SummitTalk[] = [
     order: 4,
     dayCaption: "Day 2 — Methodology · Inside the Engine",
     title: "False Positives, Honestly: The 38% That Doesn't Raise (And Why)",
-    subtitle: "Of every 100 organizations we flag, 38 don't raise. Here's the post-mortem on why — and what it tells you about the signal.",
+    subtitle: "Some flagged organizations don't raise. Here's how we'll report precision and the false-positive breakdown honestly on the scorecard — and what it tells you about the signal.",
     speaker: "The Data Nerd",
     speakerRole: "Founder, VC Deal Flow Signal",
     abstract:
-      "Of every 100 organizations our signal flags, 38 don't raise. We did the post-mortem. About 70 percent of those 'misses' raised silently — extension rounds, secondaries, strategic check-ins not on Crunchbase. About 15 percent had a major product launch. Only 4 percent had no material event.",
+      "Some flagged organizations don't raise on the public timeline. Our hypothesis for the false-positive breakdown — to be quantified openly on the scorecard — is that most are silent rounds (extensions, secondaries, strategic check-ins off Crunchbase), some are major product launches, and only a small fraction are genuine no-events.",
     takeaways: [
-      "62 percent precision at the 90-day horizon — what that actually means",
-      "70 percent of false positives raised silently (off-Crunchbase)",
-      "15 percent had a major product launch instead of a fundraise",
-      "Only 4 percent of false positives represent organizations with no material event",
+      "How we report precision honestly on the scorecard (and why 'misses' are often Crunchbase blind spots)",
+      "Most 'misses' are likely silent rounds, off-Crunchbase — to be quantified on the scorecard",
+      "Some flagged orgs ship a major product instead of raising",
+      "Genuine no-events should be the smallest bucket — the scorecard will show the real split",
     ],
     duration: "19 min",
     airAt: "2026-05-20T17:00:00Z",
     freeWindowHours: 24,
     notes: [
-      "Every quantitative product owes its buyers a precision number and a false-positive post-mortem. Ours: 62 percent precision at the 90-day horizon. That means of every 100 organizations the signal flags, 62 close a publicly-announced fundraise within 90 days, and 38 don't. The honest question is — what happens to those 38?",
-      "We did the post-mortem on the most recent 100 false positives in our panel. Of the 38 that didn't raise on the public timeline, 27 raised silently. That means an extension round, a secondary, a strategic check-in, or an SAFE that never made it to Crunchbase. Crunchbase coverage is increasingly leaky — the gap between what's actually happening in venture and what's publicly indexed has widened sharply since 2024. So our 'false positive' is often Crunchbase's blind spot.",
+      "Every quantitative product owes its buyers a precision number and a false-positive post-mortem — ours is reported openly on the scorecard as picks grade (un-graded so far). The honest question we're built around: when the signal flags an org that doesn't raise on the public timeline, what happened? We publish the misses rather than hide them.",
+      "Our hypothesis (to be quantified openly on the scorecard) is that most flagged orgs that don't raise on the public timeline raised silently. That means an extension round, a secondary, a strategic check-in, or an SAFE that never made it to Crunchbase. Crunchbase coverage is increasingly leaky — the gap between what's actually happening in venture and what's publicly indexed has widened sharply since 2024. So our 'false positive' is often Crunchbase's blind spot.",
       "Six of the 38 had a major product launch in the same 90-day window. That's a different kind of true positive — the engineering acceleration was real and predicted a real event, just not a fundraise. For some buyers (corp-dev, partnerships, sales), product launches are more actionable than fundraises anyway. The signal still has economic value for them.",
-      "Four of the 38 had no material event we could detect within 90 days. That's the genuine miss. Four percent of our flags are noise. We name it explicitly because we'd rather a buyer trust the bounded scope than discover the noise floor by accident. The buyer who sees a 4 percent noise rate and decides they can live with it is the buyer who's read this slide.",
+      "A small fraction will be genuine misses — orgs with no material event we can detect within 90 days. That noise floor is what we'll quantify openly on the scorecard. We name it explicitly because we'd rather a buyer trust the bounded scope than discover the noise floor by accident. The buyer who sees a 4 percent noise rate and decides they can live with it is the buyer who's read this slide.",
     ],
     relatedRoutes: [
       { label: "Methodology — full precision/recall", href: "/methodology" },
@@ -382,7 +382,7 @@ export const TALKS: SummitTalk[] = [
     abstract:
       "Dev-tools companies dogfood GitHub by definition. Their codebase, their issue tracker, and their community engagement all live on the same surface we measure. The result: dev-tools is the cleanest signal in the panel. We walk through the Q1 2026 cohort.",
     takeaways: [
-      "Why dev-tools is the highest-precision sector in the panel (74%)",
+      "Why dev-tools is likely the highest-precision sector (the product is also the signal source)",
       "The Q1 2026 cohort: 9 named orgs, 8 of which announced inside 60 days",
       "The 'CI-first' pattern: rapid issue triage + sharp commit acceleration",
       "How to use community-engagement velocity as a confidence multiplier",
@@ -391,7 +391,7 @@ export const TALKS: SummitTalk[] = [
     airAt: "2026-05-21T15:00:00Z",
     freeWindowHours: 24,
     notes: [
-      "Dev-tools is the cleanest sector in our panel because the product is also the source of the signal. Dev-tools companies dogfood their own product on GitHub — they use GitHub Issues for bug tracking, GitHub Discussions for community, GitHub Actions for CI, and they ship in public. Every signal we measure is amplified in this sector. That's why precision in dev-tools is 74 percent versus the panel-wide 62 percent.",
+      "Dev-tools is the cleanest sector in our panel because the product is also the source of the signal. Dev-tools companies dogfood their own product on GitHub — they use GitHub Issues for bug tracking, GitHub Discussions for community, GitHub Actions for CI, and they ship in public. Every signal we measure is amplified in this sector. That's why we expect precision to be highest in dev-tools — something the scorecard will show per sector as it grades.",
       "The Q1 2026 dev-tools cohort included 9 named orgs that flagged the composite signal. Eight of the nine announced a fundraise within 60 days. The pattern is consistent: the founding team is two-to-four senior engineers with strong open-source contribution histories, the codebase is published from day one, the product is meaningfully usable as soon as the README is published, and community engagement (issue replies, PR reviews, discussion threads) ramps in lockstep with commit velocity.",
       "The CI-first pattern is the dominant signature. Dev-tools teams invest disproportionately in their own CI/CD infrastructure — they ship green tests obsessively, they triage issues within hours, and they treat GitHub Actions like a first-party product feature. When a dev-tools org goes from 24-hour issue triage to 4-hour issue triage in a 30-day window, that's almost always a hiring + fundraise signal.",
       "The confidence multiplier we use in dev-tools is community-engagement velocity. The number of unique community members who interact with the project (file an issue, review a PR, post in discussions) per 30-day window. When community-engagement velocity rises 2× alongside commit-velocity, our internal confidence on the fundraise signal goes from 70 percent to 89 percent.",
@@ -414,7 +414,7 @@ export const TALKS: SummitTalk[] = [
     abstract:
       "Climate tech is the hardest sector to read because hardware-heavy companies do less in public. But when the signal does fire, the lead time is the longest in the panel — a median 58 days. We unpack the calibration and the cohort.",
     takeaways: [
-      "Why climate-tech precision is lower (51%) but lead time is longer (58-day median)",
+      "Why climate-tech is likely our weakest sector (hardware-heavy, less public) with a longer expected lead",
       "The 'simulation-first' pattern: heavy compute, sparse open-source, sudden velocity spike",
       "How to integrate patent filings as a complementary signal",
       "The Q1 2026 cohort: 6 named orgs, 4 announced",
@@ -423,8 +423,8 @@ export const TALKS: SummitTalk[] = [
     airAt: "2026-05-21T16:00:00Z",
     freeWindowHours: 24,
     notes: [
-      "Climate tech is the sector where our signal works least well — and that's worth being honest about. Precision is 51 percent versus the panel-wide 62 percent, primarily because climate-tech companies are hardware-heavy and do less of their engineering in public repositories. A battery-chemistry team or a direct-air-capture team often has a small public-facing tools repo and a much larger private engineering codebase we never see.",
-      "The trade-off is that when the signal does fire in climate-tech, the lead time is the longest in the panel — a median 58 days versus the panel-wide 31 days. The reason is structural: climate-tech fundraises are slower, more diligence-heavy, and more sensitive to government grant cycles. So when our signal catches a real climate-tech fundraise, it tends to catch it earlier in the lifecycle.",
+      "Climate tech is the sector where our signal works least well — and that's worth being honest about. We expect this to be our weakest sector, primarily because climate-tech companies are hardware-heavy and do less of their engineering in public repositories. A battery-chemistry team or a direct-air-capture team often has a small public-facing tools repo and a much larger private engineering codebase we never see.",
+      "The trade-off is that when the signal does fire in climate-tech, the lead time may be the longest in the panel. The reason is structural: climate-tech fundraises are slower, more diligence-heavy, and more sensitive to government grant cycles. So when our signal catches a real climate-tech fundraise, it tends to catch it earlier in the lifecycle.",
       "The dominant pattern is the simulation-first team. A founding team builds a custom simulation framework (battery-cell modeling, atmospheric chemistry, grid optimization) and publishes it as a tools repo. Commit velocity is sparse for 6–12 months, then spikes sharply when the team is preparing for a major demo or fundraise milestone. The spike is often accompanied by a flurry of patent filings, which we don't measure directly but recommend integrating as a secondary signal.",
       "The Q1 2026 cohort included 6 named climate-tech orgs that flagged the composite signal. Four of them announced a fundraise within the 90-day window. Two are still pending — climate-tech timelines are slow enough that 'still pending' is consistent with a true positive. We'll know more by Q3.",
     ],

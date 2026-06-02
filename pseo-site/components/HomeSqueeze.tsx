@@ -53,7 +53,7 @@ export default function HomeSqueeze() {
         <p className="text-gray-400 text-sm sm:text-base leading-relaxed max-w-2xl">
           You reach out while the round is still 47 days away — not after
           the deck is circulating. It&rsquo;s the same engineering signal
-          that preceded 219 confirmed Series A rounds in our SSRN-published
+          that preceded 219 startup-period observations in our SSRN-published
           panel. Two boxes, twenty seconds, free forever.
         </p>
       </div>
