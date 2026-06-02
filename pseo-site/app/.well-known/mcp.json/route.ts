@@ -8,6 +8,13 @@
  */
 
 import { NextResponse } from "next/server";
+import {
+  MCP_TOOLS,
+  MCP_TOOL_COUNT,
+  MCP_PAID_PRICE,
+  MCP_PAID_PURCHASE_URL,
+  MCP_PROMPT_NAMES,
+} from "@/lib/mcp-tools";
 
 export const dynamic = "force-static";
 export const runtime = "nodejs";
@@ -17,8 +24,7 @@ export async function GET() {
     {
       name: "vc-deal-flow-signal",
       displayName: "VC Deal Flow Signal",
-      description:
-        "GitHub momentum tracking for venture deal flow. Find startups whose engineering is accelerating before they raise. Seven read-only tools across 20 sectors of venture-backed startups, refreshed weekly.",
+      description: `GitHub momentum tracking for venture deal flow. Find startups whose engineering is accelerating before they raise. ${MCP_TOOL_COUNT} read-only tools (1 metered) across 20 sectors of venture-backed startups, refreshed weekly.`,
       version: "1.5.4",
       vendor: {
         name: "GitDealFlow",
@@ -62,74 +68,25 @@ export async function GET() {
         npx: "npx -y @gitdealflow/mcp-signal",
         registry: "io.github.kindrat86/vc-deal-flow-signal",
       },
-      tools: [
-        {
-          name: "get_trending_startups",
-          description:
-            "Top 20 startups by engineering acceleration across all 20 sectors for the current weekly period.",
-          readOnly: true,
-          idempotent: true,
-        },
-        {
-          name: "search_startups_by_sector",
-          description:
-            "Every tracked startup within a sector, ranked by engineering acceleration.",
-          readOnly: true,
-          idempotent: true,
-        },
-        {
-          name: "get_startup_signal",
-          description:
-            "Full engineering-acceleration profile for a single startup, by display name or GitHub org slug.",
-          readOnly: true,
-          idempotent: true,
-        },
-        {
-          name: "get_signals_summary",
-          description:
-            "Period, sector and startup counts, last refresh, citation, and direct URLs to machine-readable formats.",
-          readOnly: true,
-          idempotent: true,
-        },
-        {
-          name: "get_scout_receipts",
-          description:
-            "Compute a Scout Score (0-100) for a GitHub user from their starring history vs validated unicorns.",
-          readOnly: true,
-          idempotent: true,
-        },
-        {
-          name: "get_methodology",
-          description:
-            "Full methodology document covering data sources, signal classification, refresh cadence, and known limitations.",
-          readOnly: true,
-          idempotent: true,
-        },
-        {
-          name: "get_diligence_dossier",
-          description:
-            "Public-source diligence dossier for a company or entity: who acquired it (M&A history), which funds publicly backed it, and its published engineering signal. Returns found:false with an honest note when outside the tracked corpus — never guesses.",
-          readOnly: true,
-          idempotent: true,
-        },
-        {
-          name: "get_deep_signal",
-          description:
-            "PAID per-request (€0.19/call, 100 credits = €19 at https://signals.gitdealflow.com/agents/credits). Returns enriched signal: composite score, sector percentile, plain-English thesis, comparables, and history. Requires Authorization: Bearer gdf_v2.cus_xxx.<hmac>. Misses are free; only matches charge.",
-          readOnly: true,
-          idempotent: true,
-          paid: true,
-          pricePerCall: { amount: "0.19", currency: "EUR" },
-          purchaseUrl: "https://signals.gitdealflow.com/agents/credits",
-        },
-      ],
-      prompts: [
-        "weekly_digest",
-        "sector_deep_dive",
-        "find_dark_horse",
-        "compare_startups",
-        "acceleration_memo",
-      ],
+      // Derived from the canonical catalog so this list, the prose count above,
+      // and what tools/list returns can never drift. See lib/mcp-tools.ts.
+      tools: MCP_TOOLS.map((t) => ({
+        name: t.name,
+        description: t.description,
+        readOnly: t.readOnly,
+        idempotent: true,
+        ...(t.paid
+          ? {
+              paid: true,
+              pricePerCall: {
+                amount: MCP_PAID_PRICE.amount,
+                currency: MCP_PAID_PRICE.currency,
+              },
+              purchaseUrl: MCP_PAID_PURCHASE_URL,
+            }
+          : {}),
+      })),
+      prompts: MCP_PROMPT_NAMES,
       privacy: {
         piiCollected: false,
         dataStored: false,

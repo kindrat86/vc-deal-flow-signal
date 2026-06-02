@@ -680,7 +680,7 @@ export const comparisons: Comparison[] = [
     sections: [
       {
         heading: "VC Deal Flow Signal MCP — engineering signals in your IDE",
-        body: "The Model Context Protocol server (npm: @gitdealflow/mcp-signal) plugs directly into Claude Desktop, Cursor, Continue, and any MCP-compatible runtime. Six tools — get_trending_startups, get_signals_summary, get_startup_detail, get_sector_overview, get_velocity_change, search_startups — give you commit-velocity rankings inside the same surface where you read code. For developer-investors, this collapses the discovery loop: see a signal fire while you are reviewing a pull request and pull the company up without leaving the editor. Free forever (the five core MCP tools never gate). Dashboard at EUR 9.97/month adds the full 140 ranked panel.",
+        body: "The Model Context Protocol server (npm: @gitdealflow/mcp-signal) plugs directly into Claude Desktop, Cursor, Continue, and any MCP-compatible runtime. 12 tools — get_trending_startups, search_startups_by_sector, get_startup_signal, get_signals_summary, get_diligence_dossier, get_scout_receipts, get_methodology, get_deep_signal, share_result, predict_funding, shortlist_signals, compare_signals — give you commit-velocity rankings inside the same surface where you read code. For developer-investors, this collapses the discovery loop: see a signal fire while you are reviewing a pull request and pull the company up without leaving the editor. Free forever (the 11 free MCP tools never gate). Dashboard at EUR 9.97/month adds the full 140 ranked panel.",
       },
       {
         heading: "GitHub Copilot or Claude Code — due-diligence speed-up",

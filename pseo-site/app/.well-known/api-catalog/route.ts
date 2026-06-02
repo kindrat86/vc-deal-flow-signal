@@ -32,7 +32,7 @@ export async function GET() {
             href: `${SITE}/.well-known/mcp.json`,
             type: "application/json",
             title:
-              "MCP discovery manifest — six tools, three resources, two templates, five prompts",
+              "MCP discovery manifest — 12 tools, three resources, two templates, seven prompts",
           },
           {
             href: `${SITE}/.well-known/agent-card.json`,

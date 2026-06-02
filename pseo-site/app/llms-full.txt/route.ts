@@ -147,7 +147,7 @@ Full methodology: ${BASE_URL}/methodology
 
 VC Deal Flow Signal has eight published pricing tiers:
 
-1. **Signal Digest — Free forever.** Weekly email with five startups ranked by GitHub engineering acceleration. Free MCP server (six read-only tools) bundled, never gated.
+1. **Signal Digest — Free forever.** Weekly email with five startups ranked by GitHub engineering acceleration. Free MCP server (11 free read-only tools) bundled, never gated.
 2. **Tweet Teardown — €1 one-time.** Buyer-threshold breaker between Free and €7 — name one venture-backed startup, get a tweet-length (≤280 char) GitHub-momentum teardown within 24h, hand-written by the founder. Three sentences: signal classification + 14-day acceleration delta + the kicker insight. No PDF, no CSV, no call. €1 credited toward First Look Pass if upgraded within 7 days. Auto-refunds if the named org has no public GitHub data. The €0-to-€7 psychological gap is larger than the €7-to-€97 gap, and €1 is the smallest viable charge that converts a free reader into a paying customer.
 3. **First Look Pass — €7 one-time.** Full sector deep dive on whichever sector you pick — momentum table, contributor maps, top three breakouts not yet on Crunchbase. Delivered within 24 hours. €7 credited toward Dashboard if you upgrade within 14 days. Will go to €19 after launch.
 4. **Dashboard Beta — €9.97/month** (founding-member rate; list price €49/month). ${totalStartups} startups ranked across ${activeSectors.length} sectors, refreshed weekly, with sector filters and five-quarter historical comparison.

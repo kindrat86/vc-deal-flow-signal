@@ -422,7 +422,7 @@ const SURFACES: Surface[] = [
     format: "application/json",
     category: "agent",
     description:
-      "Streamable MCP JSON-RPC 2.0 endpoint — 7 free tools + 1 paid (x402 €0.19 USDC)",
+      "Streamable MCP JSON-RPC 2.0 endpoint — 11 free tools + 1 paid (x402 €0.19 USDC)",
     endpoints: [
       ep({
         method: "POST",

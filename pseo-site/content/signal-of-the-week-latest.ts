@@ -2,19 +2,19 @@
 import type { BlogPost } from "./posts";
 
 export const signalOfTheWeek: BlogPost = {
-  "slug": "signal-of-the-week-2026-05-04",
-  "title": "Signal of the Week: airbytehq (Data Infrastructure) – +866% commit velocity",
-  "description": "airbytehq is the #1 engineering acceleration mover this week across 100 tracked startups in 19 sectors. Commit velocity is up +866% over 14 days on a baseline of 1864 commits with 100 contributors. Signal: Deploy frequency spike.",
-  "summary": "airbytehq, a Growth-stage data infrastructure startup based in US, is the top engineering-acceleration mover this week across 100 tracked startups. Commit velocity is +866% over 14 days with 100 contributors active. The signal type is deploy frequency spike – historically a fundraise predictor 3-6 weeks out.",
-  "date": "2026-05-04",
-  "body": "airbytehq is the #1 engineering-acceleration mover this week across 100 tracked startups in 19 sectors. Commit velocity is +866% over 14 days, off a baseline of 1864 commits with 100 contributors actively shipping. The dominant signal type is deploy frequency spike – historically a 3-6 week leading indicator of fundraise announcements.\n\n[airbyte.io](https://airbyte.io) · [GitHub](https://github.com/airbytehq)\n\n## The Signal\n\nairbytehq (Growth-stage), based in US, operates in data infrastructure: Simple & extensible open-source data integration\n\nOver the last two weeks, we measured:\n\n- Commit velocity: 1864 commits over 14 days, a change of +866% versus the trailing baseline.\n- Contributors: 100 active contributors with +49% growth.\n- New repositories: 0 in the current period.\n- Classification: Deploy frequency spike.\n\nFor context, the median tracked startup this period runs at roughly 85 commits/14d with flat or negative velocity change. airbytehq is running well above the median with a strongly positive acceleration profile.\n\n## Why This Matters for Investors\n\nEngineering acceleration is the earliest publicly available fundraise signal we track. In our data, a sustained +866%-or-greater commit velocity change over a 14-day window precedes an announced round by 3-6 weeks on average. The signal compresses further (to 2-4 weeks) when the signal type is \"Deploy frequency spike\", which is what we see here.\n\nThe implication for data infrastructure investors: airbytehq is likely in the weeks-2-to-4 window of a ramp that will show up in TechCrunch 6-8 weeks from now. This is the window where warm-intro investors still have access to the founder, before the round is competitive.\n\nWe are not saying airbytehq is fundraising. We are saying the engineering pattern is consistent with companies that fundraise on this kind of timeline.\n\n## How to Verify\n\nEvery number above is reproducible from public GitHub data. The CSV for this week's full dataset (100 startups across 19 sectors) is available at [signals.gitdealflow.com/data-sources](https://signals.gitdealflow.com/data-sources). Methodology is at [signals.gitdealflow.com/methodology](https://signals.gitdealflow.com/methodology).\n\nTo ask Claude or Cursor about this company directly, install the MCP server: `npm install -g @gitdealflow/mcp-signal`. Then ask: \"Show me the GitDealFlow signal for airbytehq.\"\n\n## Citation\n\nIf you use this in a newsletter, podcast, or research note, we suggest:\n\n> \"GitDealFlow Signal of the Week, Q2 2026 – airbytehq shows +866% commit velocity change over 14 days (signals.gitdealflow.com/blog/signal-of-the-week-2026-05-04).\"\n\nNo permission required. Attribution appreciated.\n\n## Get the Next One\n\nThe Signal of the Week ships every Monday, free, non-gated. [Subscribe to the Signal Digest](https://gitdealflow.com/#signup) to get it in your inbox, or [install the MCP server](https://github.com/kindrat86/mcp-deal-flow-signal) and ask Claude/Cursor directly.",
+  "slug": "signal-of-the-week-2026-06-01",
+  "title": "Signal of the Week: greenbone (Cybersecurity) – +130% commit velocity",
+  "description": "greenbone is the #1 engineering acceleration mover this week across 140 tracked startups in 20 sectors. Commit velocity is up +130% over 14 days on a baseline of 76 commits with 46 contributors. Signal: Framework migration.",
+  "summary": "greenbone, a Series A/B-stage cybersecurity startup based in EU, is the top engineering-acceleration mover this week across 140 tracked startups. Commit velocity is +130% over 14 days with 46 contributors active. The signal type is framework migration – historically a fundraise predictor 3-6 weeks out.",
+  "date": "2026-06-01",
+  "body": "greenbone is the #1 engineering-acceleration mover this week across 140 tracked startups in 20 sectors. Commit velocity is +130% over 14 days, off a baseline of 76 commits with 46 contributors actively shipping. The dominant signal type is framework migration – historically a 3-6 week leading indicator of fundraise announcements.\n\n[greenbone.net](https://greenbone.net) · [GitHub](https://github.com/greenbone)\n\n## The Signal\n\ngreenbone (Series A/B-stage), based in EU, operates in cybersecurity: Open Source Vulnerability Management\n\nOver the last two weeks, we measured:\n\n- Commit velocity: 76 commits over 14 days, a change of +130% versus the trailing baseline.\n- Contributors: 46 active contributors with +9% growth.\n- New repositories: 1 in the current period.\n- Classification: Framework migration.\n\nFor context, the median tracked startup this period runs at roughly 85 commits/14d with flat or negative velocity change. greenbone is running above the median with a strongly positive acceleration profile.\n\n## Why This Matters for Investors\n\nEngineering acceleration is the earliest publicly available fundraise signal we track. In our data, a sustained +130%-or-greater commit velocity change over a 14-day window precedes an announced round by 3-6 weeks on average. The signal compresses further (to 2-4 weeks) when the signal type is \"Framework migration\", which is what we see here.\n\nThe implication for cybersecurity investors: greenbone is likely in the weeks-2-to-4 window of a ramp that will show up in TechCrunch 6-8 weeks from now. This is the window where warm-intro investors still have access to the founder, before the round is competitive.\n\nWe are not saying greenbone is fundraising. We are saying the engineering pattern is consistent with companies that fundraise on this kind of timeline.\n\n## How to Verify\n\nEvery number above is reproducible from public GitHub data. The CSV for this week's full dataset (140 startups across 20 sectors) is available at [signals.gitdealflow.com/data-sources](https://signals.gitdealflow.com/data-sources). Methodology is at [signals.gitdealflow.com/methodology](https://signals.gitdealflow.com/methodology).\n\nTo ask Claude or Cursor about this company directly, install the MCP server: `npm install -g @gitdealflow/mcp-signal`. Then ask: \"Show me the GitDealFlow signal for greenbone.\"\n\n## Citation\n\nIf you use this in a newsletter, podcast, or research note, we suggest:\n\n> \"GitDealFlow Signal of the Week, Q2 2026 – greenbone shows +130% commit velocity change over 14 days (signals.gitdealflow.com/blog/signal-of-the-week-2026-06-01).\"\n\nNo permission required. Attribution appreciated.\n\n## Get the Next One\n\nThe Signal of the Week ships every Monday, free, non-gated. [Subscribe to the Signal Digest](https://gitdealflow.com/#signup) to get it in your inbox, or [install the MCP server](https://github.com/kindrat86/mcp-deal-flow-signal) and ask Claude/Cursor directly.",
   "relatedSectors": [
-    "data-infrastructure"
+    "cybersecurity"
   ],
   "faqs": [
     {
-      "question": "Why is airbytehq flagged as Signal of the Week?",
-      "answer": "airbytehq had the highest investor-narrative score this week – a composite of commit velocity change (+866%), contributor count (100), new repositories (0), and sector investor fit. The signal type is Deploy frequency spike, which historically precedes fundraise announcements by 3-6 weeks."
+      "question": "Why is greenbone flagged as Signal of the Week?",
+      "answer": "greenbone had the highest investor-narrative score this week – a composite of commit velocity change (+130%), contributor count (46), new repositories (1), and sector investor fit. The signal type is Framework migration, which historically precedes fundraise announcements by 3-6 weeks."
     },
     {
       "question": "Is this investment advice?",
@@ -22,27 +22,27 @@ export const signalOfTheWeek: BlogPost = {
     },
     {
       "question": "How do I cite Signal of the Week in my work?",
-      "answer": "We suggest: \"GitDealFlow Signal of the Week, Q2 2026 – airbytehq shows +866% commit velocity change over 14 days.\" Link to signals.gitdealflow.com/blog/signal-of-the-week-2026-05-04. No permission required; attribution appreciated."
+      "answer": "We suggest: \"GitDealFlow Signal of the Week, Q2 2026 – greenbone shows +130% commit velocity change over 14 days.\" Link to signals.gitdealflow.com/blog/signal-of-the-week-2026-06-01. No permission required; attribution appreciated."
     }
   ],
   "keyStats": [
     {
-      "value": "+866%",
+      "value": "+130%",
       "label": "Commit velocity change",
       "context": "14-day vs. baseline"
     },
     {
-      "value": "1864",
+      "value": "76",
       "label": "Commits / 14 days",
       "context": "Absolute activity"
     },
     {
-      "value": "100",
+      "value": "46",
       "label": "Contributors",
       "context": "Active engineers"
     },
     {
-      "value": "Deploy frequency spike",
+      "value": "Framework migration",
       "label": "Signal type",
       "context": "Dominant pattern"
     }
