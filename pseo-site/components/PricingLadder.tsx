@@ -34,7 +34,7 @@ const TIERS: readonly Tier[] = [
     cadence: "per month",
     pitch: "8-object stack — €1,728 of value, 30-day Signal-or-It's-Free refund.",
     bullets: [
-      "Sunday Digest, Full Dashboard (85+ startups, 20 sectors)",
+      "Sunday Digest, Full Dashboard (140 startups, 20 sectors)",
       "219-startup Backtest CSV (the SSRN dataset)",
       "Monthly Sector Deep Dive PDF (your pick)",
       "Chrome Extension + Claude MCP + Async Watchlist Build",

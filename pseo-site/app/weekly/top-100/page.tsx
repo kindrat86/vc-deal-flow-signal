@@ -55,7 +55,7 @@ export default function Top100ArchivePage() {
         "@id": `${SITE}/weekly/top-100#collection`,
         name: "Top 100 GitHub-Signal Startups — Weekly Index",
         description:
-          "Weekly ranked index of the 100 startups with the strongest GitHub engineering signals across 19 sectors.",
+          "Weekly ranked index of the 100 startups with the strongest GitHub engineering signals across 20 sectors.",
         url: `${SITE}/weekly/top-100`,
         inLanguage: "en-US",
         speakable: {
@@ -118,10 +118,10 @@ export default function Top100ArchivePage() {
         </h1>
         <p
           className="text-gray-400 text-base leading-relaxed mb-8 speakable"
-          data-agent-summary="A weekly composite leaderboard of the 100 startups with the strongest GitHub engineering signals across 19 sectors. The Signal Score combines commit velocity change, contributor growth, raw commit scale, and contributor count, with each component capped to prevent any single metric from dominating."
+          data-agent-summary="A weekly composite leaderboard of the 100 startups with the strongest GitHub engineering signals across 20 sectors. The Signal Score combines commit velocity change, contributor growth, raw commit scale, and contributor count, with each component capped to prevent any single metric from dominating."
         >
           A weekly composite leaderboard of the 100 startups with the strongest
-          GitHub engineering signals across 19 sectors. The Signal Score
+          GitHub engineering signals across 20 sectors. The Signal Score
           combines four capped components — commit velocity change, contributor
           growth, raw commit scale, and contributor count — so no single metric
           dominates. Refreshed every Monday from the same dataset that powers

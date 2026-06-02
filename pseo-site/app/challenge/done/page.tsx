@@ -48,7 +48,7 @@ const RUNGS = [
     headline:
       "The 7-signal composite, computed continuously across 4,200 startup orgs.",
     deliverables: [
-      "109 venture-backed startups ranked by 14-day commit-velocity acceleration, refreshed every Monday at 06:00 UTC",
+      "140 venture-backed startups ranked by 14-day commit-velocity acceleration, refreshed every Monday at 06:00 UTC",
       "Filter by sector, stage, geography",
       "The 219-startup backtest CSV — five quarters of historical signal-to-fundraise pairs",
       "Two free Chrome extensions (Crunchbase + Wellfound badge; VC GitHub Lookup)",

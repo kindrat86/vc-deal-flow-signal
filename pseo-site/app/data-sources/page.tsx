@@ -344,7 +344,7 @@ export default function DataSourcesPage() {
               is the haystack, not the picks.
             </li>
             <li>
-              <strong className="text-gray-200">~85+ ranked and surfaced each week</strong>{" "}
+              <strong className="text-gray-200">140 ranked and surfaced each week</strong>{" "}
               — the much smaller set that actually shows unusual acceleration and
               makes it into the Dashboard. This is what you read.
             </li>

@@ -57,7 +57,7 @@ const STACK = [
   {
     label: "Bespoke 50-Org Watchlist — monthly rebuild",
     detail:
-      "Beyond the 109-startup public Dashboard. A 50-org watchlist tuned to your written thesis, rebuilt the first Monday of every month against the live signal feed and pushed to your inbox plus Slack/Discord webhook.",
+      "Beyond the 140-startup public Dashboard. A 50-org watchlist tuned to your written thesis, rebuilt the first Monday of every month against the live signal feed and pushed to your inbox plus Slack/Discord webhook.",
   },
   {
     label: "White-Labeled Fund Subdomain — signal.yourfund.com",

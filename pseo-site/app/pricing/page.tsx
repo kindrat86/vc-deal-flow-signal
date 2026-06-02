@@ -158,11 +158,11 @@ const tiers: Tier[] = [
     priceCadence: "/mo",
     rrpLabel: "Going to €49/mo permanently",
     oneLine:
-      "109 startups ranked across 19 sectors, refreshed weekly, with sector filters and historical period comparisons.",
+      "140 startups ranked across 20 sectors, refreshed weekly, with sector filters and historical period comparisons.",
     forWho:
       "Use this if five names are no longer enough and you want the full field every week.",
     bullets: [
-      "109 ranked startups across 19 sectors, refreshed weekly",
+      "140 ranked startups across 20 sectors, refreshed weekly",
       "Sector filters with five-quarter historical comparison",
       "All four signal types per startup (hiring burst, shipping sprint, infrastructure buildout, platform migration)",
       "Watchlists and saved filters",
@@ -303,7 +303,7 @@ const tiers: Tier[] = [
 const faqs: { q: string; a: string }[] = [
   {
     q: "How much does VC Deal Flow Signal cost?",
-    a: "Pricing has ten tiers. The Signal Digest is free forever — a weekly email with five ranked startups. The Book is €0.99 one-time (or free PDF/EPUB) for the 104-page operational field manual on the seven public-data signals that precede Series A rounds. The Tweet Teardown is €1 one-time and delivers a tweet-length (≤280 char) momentum teardown of one startup you name, hand-written by the founder, within 24 hours. The First Look Pass is €7 one-time and delivers a full sector deep dive within 24 hours. The Dashboard Beta is €9.97 per month at founding-member pricing (going to €49 per month permanently) and ranks 109 startups across 19 sectors with weekly refresh. The Insider Circle is €97 per month at founding-member pricing (going to €197 per month) and adds a private Telegram group, custom watchlists, and JSON / CSV API access. The Sharp Tier is €497 per month or €4,970 per year for active funds and syndicates — quarterly portfolio review brief, custom thesis-aligned watchlist co-built with the fund, white-labeled API endpoint at /api/v1/sharp/<your-fund>, methodology source code access, application-gated and capped at 8 funds in 2026. The Custom Sector Sweep is €1,997 one-time for a written report on one sector of your choice. The Methodology Partnership is €14,997 per year (founding rate, going to €29,997 per year for funds joining 2027+) and runs a custom regression on the fund's anonymized portfolio outcomes, ships a bespoke 50-org watchlist with monthly rebuild, runs a white-labeled fund subdomain at signal.yourfund.com, and includes a quarterly synthetic founder talk and async-only methodology Q&A — capped at 5 funds in 2026. The Vault is €49,997 per year (founding rate, going to €99,997 per year for funds joining 2027+) and adds co-development access to the panel-construction pipeline, pre-publication SSRN preview six months early, 72-hour signal head-start over the public Dashboard, an annual async methodology summit, methodology source repo on a fund-only fork license, and Signal-of-the-Quarter co-investment alerts — capped at 2 funds in 2026. The Methodology Partnership and Vault are async-only and anonymity-preserving — no live calls, no in-person attendance. The free MCP server for Claude / Cursor / Windsurf is bundled with every tier including the free one and will never be gated.",
+    a: "Pricing has ten tiers. The Signal Digest is free forever — a weekly email with five ranked startups. The Book is €0.99 one-time (or free PDF/EPUB) for the 104-page operational field manual on the seven public-data signals that precede Series A rounds. The Tweet Teardown is €1 one-time and delivers a tweet-length (≤280 char) momentum teardown of one startup you name, hand-written by the founder, within 24 hours. The First Look Pass is €7 one-time and delivers a full sector deep dive within 24 hours. The Dashboard Beta is €9.97 per month at founding-member pricing (going to €49 per month permanently) and ranks 140 startups across 20 sectors with weekly refresh. The Insider Circle is €97 per month at founding-member pricing (going to €197 per month) and adds a private Telegram group, custom watchlists, and JSON / CSV API access. The Sharp Tier is €497 per month or €4,970 per year for active funds and syndicates — quarterly portfolio review brief, custom thesis-aligned watchlist co-built with the fund, white-labeled API endpoint at /api/v1/sharp/<your-fund>, methodology source code access, application-gated and capped at 8 funds in 2026. The Custom Sector Sweep is €1,997 one-time for a written report on one sector of your choice. The Methodology Partnership is €14,997 per year (founding rate, going to €29,997 per year for funds joining 2027+) and runs a custom regression on the fund's anonymized portfolio outcomes, ships a bespoke 50-org watchlist with monthly rebuild, runs a white-labeled fund subdomain at signal.yourfund.com, and includes a quarterly synthetic founder talk and async-only methodology Q&A — capped at 5 funds in 2026. The Vault is €49,997 per year (founding rate, going to €99,997 per year for funds joining 2027+) and adds co-development access to the panel-construction pipeline, pre-publication SSRN preview six months early, 72-hour signal head-start over the public Dashboard, an annual async methodology summit, methodology source repo on a fund-only fork license, and Signal-of-the-Quarter co-investment alerts — capped at 2 funds in 2026. The Methodology Partnership and Vault are async-only and anonymity-preserving — no live calls, no in-person attendance. The free MCP server for Claude / Cursor / Windsurf is bundled with every tier including the free one and will never be gated.",
   },
   {
     q: "Why is there a €1 tier?",
@@ -327,7 +327,7 @@ const faqs: { q: string; a: string }[] = [
   },
   {
     q: "How does the Sector Sweep differ from Dashboard?",
-    a: "Dashboard is a live ranking across 19 sectors, refreshed weekly, that you keep open during deal-flow review. Sector Sweep is a one-time written report on a single sector you pick — every venture-backed startup in that sector ranked over the past four quarters, with diligence prompts on the top ten and three early-stage targets not yet on Crunchbase. Sweep is for funds who want a deeper, narrative-led analysis on a defined thesis without committing to a recurring subscription. Many funds use both: Dashboard for ongoing review, Sweep for thesis-anchored deep dives.",
+    a: "Dashboard is a live ranking across 20 sectors, refreshed weekly, that you keep open during deal-flow review. Sector Sweep is a one-time written report on a single sector you pick — every venture-backed startup in that sector ranked over the past four quarters, with diligence prompts on the top ten and three early-stage targets not yet on Crunchbase. Sweep is for funds who want a deeper, narrative-led analysis on a defined thesis without committing to a recurring subscription. Many funds use both: Dashboard for ongoing review, Sweep for thesis-anchored deep dives.",
   },
   {
     q: "Can I cancel anytime?",
@@ -606,7 +606,7 @@ export default function PricingPage() {
         </div>
 
         <AgentSummary
-          tldr="VC Deal Flow Signal (GitDealFlow) has seven pricing tiers: a free weekly Signal Digest with five ranked startups, a €1 one-time Tweet Teardown (tweet-length GitHub-momentum read on one startup the buyer names — buyer-threshold breaker between Free and €7), a €7 one-time First Look Pass for a sector deep dive, a €9.97/mo Dashboard Beta covering 109 startups across 19 sectors at founding-member rates, a €97/mo Insider Circle adding private Telegram + JSON/CSV API at founding-member rates, a €497/mo Sharp Tier for active funds with quarterly review calls + custom watchlists + white-labeled API + methodology source code (application-gated, capped at 8 funds in 2026), and a €1,997 one-time Custom Sector Sweep written report. The free MCP server (five read-only tools) is bundled with every tier including the free one and will never be gated. Every paid tier ships with a 30-day Signal-or-It's-Free guarantee."
+          tldr="VC Deal Flow Signal (GitDealFlow) has seven pricing tiers: a free weekly Signal Digest with five ranked startups, a €1 one-time Tweet Teardown (tweet-length GitHub-momentum read on one startup the buyer names — buyer-threshold breaker between Free and €7), a €7 one-time First Look Pass for a sector deep dive, a €9.97/mo Dashboard Beta covering 140 startups across 20 sectors at founding-member rates, a €97/mo Insider Circle adding private Telegram + JSON/CSV API at founding-member rates, a €497/mo Sharp Tier for active funds with quarterly review calls + custom watchlists + white-labeled API + methodology source code (application-gated, capped at 8 funds in 2026), and a €1,997 one-time Custom Sector Sweep written report. The free MCP server (five read-only tools) is bundled with every tier including the free one and will never be gated. Every paid tier ships with a 30-day Signal-or-It's-Free guarantee."
           pageUrl="https://signals.gitdealflow.com/pricing"
           asOf={asOf}
           citeAs="VC Deal Flow Signal — Pricing (signals.gitdealflow.com/pricing), retrieved Q2 2026."
@@ -813,7 +813,7 @@ export default function PricingPage() {
               {
                 label: "The Live Dashboard",
                 detail:
-                  "109 venture-backed startups ranked by 14-day commit-velocity acceleration, refreshed every Monday at 06:00 UTC. Filter by sector, stage, geography.",
+                  "140 venture-backed startups ranked by 14-day commit-velocity acceleration, refreshed every Monday at 06:00 UTC. Filter by sector, stage, geography.",
                 value: "€348/yr",
               },
               {
