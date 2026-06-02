@@ -86,27 +86,27 @@
     {
       "id": "proof",
       "kind": "magic-bullet",
-      "vo": "Here is what we actually proved. Two hundred nineteen venture-backed startups, across nineteen sectors and five quarterly periods. Companies that registered a two-times contributor spike inside a fourteen-day window preceded their fundraise announcements by a median of thirty-one days, with an interquartile range of twenty-one to forty-seven days. Precision at the thirty-day window — sixty-two percent. The false positives are mostly silent rounds that did not get press, not nothing-happened. Every number I just said is re-derivable from public GitHub data. The regression code is on Zenodo. The full preprint is on SSRN. CC-BY-4-point-zero. You can replicate the panel in an afternoon. Still with me?",
+      "vo": "Here's our core claim — and how we test it in the open. Two hundred nineteen GitHub engineering-velocity observations, across nineteen sectors and five quarterly periods, all openly published. Our claim is that a two-times contributor spike inside a fourteen-day window precedes a startup's fundraise by a few weeks. Here's the honest part: that published dataset is descriptive — it does not yet carry the funding labels that would prove the lead time, so we validate the claim live, in public, on the scorecard. Every velocity number is re-derivable from public GitHub data. The regression code is on Zenodo, the preprint on SSRN, CC-BY-4-point-zero — and we are inviting exactly that funding-join replication. You can pull the panel in an afternoon. Still with me?",
       "durationHint": 54,
       "data": {
-        "title": "What the SSRN paper actually shows",
+        "title": "Our core claim — tested in the open",
         "beats": [
           {
             "day": "Day 1",
-            "label": "219 confirmed fundraises",
+            "label": "219 published observations",
             "detail": "19 sectors, 5 quarterly periods.",
             "win": false
           },
           {
             "day": "Day 2",
-            "label": "Median lead: 31 days",
-            "detail": "21–47 day interquartile range.",
+            "label": "Claim: a few weeks' lead",
+            "detail": "Our hypothesis — validated live on /scorecard.",
             "win": false
           },
           {
             "day": "Day 3",
-            "label": "62% precision",
-            "detail": "Mostly silent rounds, not no-events.",
+            "label": "Proof: graded in public",
+            "detail": "0 hit / 0 miss / 30 pending on /scorecard.",
             "win": false
           },
           {
@@ -269,8 +269,8 @@
       "a": "Yes — Cartesia 'Theo'. Anonymity rule: no founder face, voice, or name. Synthetic TTS keeps the methodology in front and the personality out of the way."
     },
     {
-      "q": "What's the proof for the 21–47 day lead band?",
-      "a": "An SSRN-published longitudinal panel of 219 venture-backed startups across 19 sectors and 5 quarterly periods. Median pre-deck lead time of 31 days, IQR 21–47. Precision at the 30-day window: 62%. The full panel and regression code are on Zenodo (CC-BY-4.0). Replicate it in an afternoon."
+      "q": "Where does the 21–47 day lead band come from?",
+      "a": "The SSRN/Zenodo panel (219 GitHub engineering-velocity observations, 19 sectors, 5 quarterly periods, CC-BY-4.0) is descriptive — it deliberately carries no funding-event labels, so it does not by itself prove a lead band. The 21–47 day window is our working hypothesis; we validate it in the open on /scorecard (currently un-graded) and invite replication joining the panel to funding data. Pull the panel and regression code in an afternoon."
     },
     {
       "q": "Why €9.97/mo when comparable tools cost €1,000+/mo?",

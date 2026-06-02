@@ -85,12 +85,12 @@ export const TALKS: SummitTalk[] = [
     day: 1,
     order: 1,
     dayCaption: "Day 1 — Foundations · The Acceleration Era",
-    title: "The Core Claim: Why Engineering Acceleration Leads VC by 31 Days",
+    title: "The Core Claim: Engineering Acceleration as a Leading Signal for VC",
     subtitle: "If commit-velocity is the most leading public signal in venture capital, every other deal-flow source is a lagging indicator.",
     speaker: "The Data Nerd",
     speakerRole: "Founder, VC Deal Flow Signal · ORCID 0009-0002-2222-4112",
     abstract:
-      "The opening talk lays out the single belief the entire summit hinges on. We walk through the SSRN longitudinal panel of 219 venture-backed startups and show why a 14-day commit-velocity acceleration precedes Series A announcements by a median 31 days, with a 21-to-47-day interquartile range.",
+      "The opening talk lays out the single belief the entire summit hinges on. We walk through the openly published panel of 219 GitHub engineering-velocity observations, state our core claim — that a 14-day commit-velocity acceleration precedes Series A announcements by a few weeks — and show exactly how we're validating it in the open on the public scorecard.",
     takeaways: [
       "The single falsifiable claim: GitHub commit-velocity acceleration leads fundraise by 21–47 days",
       "Why pitch decks, AngelList, Crunchbase, and warm intros are lagging by definition",
@@ -102,7 +102,7 @@ export const TALKS: SummitTalk[] = [
     freeWindowHours: 24,
     notes: [
       "This is the core claim — the single belief that, if true, makes everything else fall. Ours is one sentence: GitHub commit-velocity acceleration is the most leading public signal in venture capital. If that's true, every other sourcing surface — pitch decks, AngelList, Crunchbase, warm intros — is downstream. If it's false, we have nothing to sell. The whole product, the whole methodology, the whole summit collapses on that single empirical claim.",
-      "The empirical foundation is a longitudinal panel of 219 venture-backed startups across 19 sectors and five quarterly observation periods, indexed on SSRN under DOI 10.2139/ssrn.6606558 and released CC BY 4.0. Companies that registered a 2× contributor influx coupled with a 14-day commit-velocity acceleration preceded fundraise announcements by a median 31 days, with a 21-to-47-day interquartile range. Precision at the 90-day horizon is 62 percent.",
+      "The descriptive foundation is a longitudinal panel of 219 GitHub engineering-velocity observations across 19 sectors and five quarterly periods, indexed on SSRN under DOI 10.2139/ssrn.6606558 and released CC BY 4.0. Stated plainly: that published dataset is descriptive and carries no funding-event labels — it invites exactly the funding-join replication our claim depends on. The claim itself — that a 2× contributor influx coupled with a 14-day commit-velocity acceleration precedes fundraise announcements by a few weeks — is our working hypothesis, validated transparently (and still un-graded) on the public scorecard, not a result reported in the dataset paper.",
       "The point of opening with this is simple. If you don't accept the core claim, the next 19 talks are noise — interesting tactics on a wrong premise. If you do accept it, then the next 19 talks become a sourcing operating system. So the rest of Day 1 is spent making the core claim unfalsifiable: the methodology walkthrough, the open-source regression code, the named limitations. By the end of Day 1, every objection has a public answer.",
       "We close with a thought experiment. If the warm-intro economy worked, fundraises would distribute uniformly across founders. They don't — they cluster around the 8 percent of partners with the deepest rolodexes. Code, by contrast, is published the same week regardless of which time zone you live in. That asymmetry is the structural opportunity the core claim points at.",
     ],

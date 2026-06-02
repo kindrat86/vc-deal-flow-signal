@@ -154,13 +154,13 @@ Install on Claude Desktop, Claude Code, or any MCP host with one command — see
 
 **Step 3 — Signal classification.** Classify each org into one of four signal types: *engineering hiring burst* (contributor growth >50%), *infrastructure buildout* (3+ new repos in 30 days), *deploy frequency spike* (commit velocity up 150%+ vs. baseline), or *framework migration* (general acceleration not fitting the other categories).
 
-**Step 4 — Rank.** Sort by commit-velocity change. The top quintile of the ranking has historically preceded venture fundraise announcements by three to six weeks.
+**Step 4 — Rank.** Sort by commit-velocity change. The top quintile of the ranking is — by our working hypothesis, validated openly on /scorecard — expected to precede venture fundraise announcements by roughly three to six weeks.
 
 You don't have to build this yourself. The GitDealFlow public dataset (\`/api/signals.json\`) returns the full panel — all sectors, all periods, all signals. The methodology page documents the exact filters and thresholds.`,
     facts: [
       {
         claim:
-          "Engineering acceleration as measured by commit-velocity change has preceded fundraise announcements by three to six weeks across the historical dataset.",
+          "Engineering acceleration as measured by commit-velocity change is hypothesized to precede fundraise announcements by roughly three to six weeks — a claim we validate openly on /scorecard, not yet established.",
         sourceUrl: "https://signals.gitdealflow.com/methodology",
         sourceLabel: "Methodology",
       },
@@ -246,7 +246,7 @@ Output formats: the MCP returns structured JSON. For agent runtimes that don't s
     faqs: [
       {
         q: "Is fundraise data included in the GitDealFlow MCP?",
-        a: "Direct fundraise events are not part of the public dataset. The MCP returns engineering-acceleration signals that have historically preceded fundraise announcements by three to six weeks. For confirmed fundraise events, pair the GitDealFlow MCP with a Crunchbase or PitchBook MCP.",
+        a: "Direct fundraise events are not part of the public dataset. The MCP returns engineering-acceleration signals that we hypothesize precede fundraise announcements by roughly three to six weeks (validated openly on /scorecard). For confirmed fundraise events, pair the GitDealFlow MCP with a Crunchbase or PitchBook MCP.",
       },
       {
         q: "How is this different from Crunchbase or PitchBook MCPs?",
@@ -438,7 +438,7 @@ For a single-fetch RAG context payload, see \`/ai.json\` and \`/llms-full.txt\`.
       },
       {
         claim:
-          "Engineering acceleration as measured by commit-velocity change has historically preceded fundraise announcements by 3–6 weeks.",
+          "Engineering acceleration as measured by commit-velocity change is hypothesized to precede fundraise announcements by 3–6 weeks (validated openly on /scorecard).",
         sourceUrl: "https://signals.gitdealflow.com/methodology",
         sourceLabel: "Methodology",
       },

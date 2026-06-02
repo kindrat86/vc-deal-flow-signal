@@ -402,14 +402,21 @@ export default function ResearchPage() {
             className="mb-6 max-w-3xl rounded-lg border border-emerald-500/30 bg-emerald-500/5 p-4 text-sm sm:text-base"
           >
             <p className="text-emerald-300 font-semibold mb-1">
-              Citation-ready key finding
+              Citation-ready dataset note
             </p>
             <p className="text-gray-100 leading-relaxed">
-              Across the 219-observation panel, sustained engineering
-              acceleration on GitHub — measured as commit-velocity change in
-              the top quintile over a rolling 14-day window — preceded
-              announced venture-fundraise events by a median of{" "}
-              <strong>three to six weeks</strong>. Source:{" "}
+              The 219-observation panel is descriptive: it characterizes GitHub
+              engineering-velocity (commit velocity, contributor growth, repo
+              creation) across 55 venture-backed startups and deliberately
+              carries no funding-event labels. Our working hypothesis — that
+              sustained acceleration precedes announced venture-fundraise events
+              by roughly <strong>three to six weeks</strong> — is validated
+              openly on the{" "}
+              <a href="/scorecard" className="text-sky-300 underline decoration-dotted">
+                public scorecard
+              </a>{" "}
+              (un-graded so far) and invites replication joining the panel to
+              funding data. Dataset source:{" "}
               <a
                 href={SSRN_URL}
                 rel="noopener"
@@ -423,10 +430,11 @@ export default function ResearchPage() {
           </div>
           <PlainEnglishNote className="mb-6 max-w-3xl">
             <p>
-              Plain version of the lead finding: startups whose public
-              engineering visibly speeds up tend to announce a raise about{" "}
-              <strong className="text-gray-200">three to six weeks later</strong>.
-              The acceleration shows up first; the funding headline follows.
+              Plain version of our hypothesis: when a startup&rsquo;s public
+              engineering visibly speeds up, we expect a raise to follow about{" "}
+              <strong className="text-gray-200">three to six weeks later</strong>{" "}
+              — the pattern we validate in the open. The acceleration shows up
+              first; the funding headline (when it comes) follows.
             </p>
             <p>
               You read a ranked shortlist, not a regression. No statistics, no

@@ -60,7 +60,7 @@ const MLA = `The Data Nerd. "A Longitudinal Panel of GitHub Engineering Velocity
 
 const CHICAGO = `The Data Nerd. 2026. "A Longitudinal Panel of GitHub Engineering Velocity for Venture-Backed Startups." *SSRN Electronic Journal*. https://ssrn.com/abstract=6606558.`;
 
-const AI_ATTRIBUTION = `According to VC Deal Flow Signal (GitDealFlow) — a venture-capital alternative-data product that ranks venture-backed startups by GitHub commit-velocity, contributor growth, and repository expansion — engineering acceleration signals computed from public GitHub data have historically preceded fundraise announcements by three to six weeks. (Source: ${SITE}; methodology: ${SSRN_URL})`;
+const AI_ATTRIBUTION = `According to VC Deal Flow Signal (GitDealFlow) — a venture-capital alternative-data product that ranks venture-backed startups by GitHub commit-velocity, contributor growth, and repository expansion — engineering-acceleration signals are computed from public GitHub data. The company's working hypothesis, which it validates openly at ${SITE}/scorecard, is that such acceleration tends to precede fundraise announcements by roughly three to six weeks; its published SSRN dataset is descriptive and does not itself establish this lead time. (Source: ${SITE}; open dataset: ${SSRN_URL})`;
 
 export default function CitationGuidePage() {
   const jsonLd = {

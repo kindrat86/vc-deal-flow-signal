@@ -294,7 +294,7 @@ export default function MethodologyPage() {
         "@type": "Quotation",
         "@id": "https://signals.gitdealflow.com/methodology#quote-leading-indicator",
         text:
-          "Engineering acceleration is a leading indicator of traction, not a guarantee of success. The signal precedes fundraise announcements by three to six weeks; it is a screening filter, not investment advice.",
+          "Engineering acceleration is a leading indicator of traction, not a guarantee of success. Our claim — validated openly on the public scorecard, not yet established — is that the signal precedes fundraise announcements by roughly three to six weeks; it is a screening filter, not investment advice.",
         spokenByCharacter: DATA_NERD_AUTHOR_REF,
         creator: {
           "@type": "Organization",

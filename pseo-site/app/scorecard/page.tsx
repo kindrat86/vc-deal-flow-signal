@@ -47,7 +47,7 @@ const RULES = [
   {
     n: 5,
     title: "Lead-time distribution, not single-point claim",
-    body: "The headline 21–47 day claim is the IQR of the SSRN n=219 panel. The scorecard reports each Hit's actual lead-time (days from T-0 to public fundraise announcement), and rolls them into a quarterly distribution at the bottom.",
+    body: "The headline 21–47 day lead-time is our claim under test — NOT a result of the SSRN dataset paper, which is descriptive and carries no funding-event labels. This scorecard is where we actually validate it: each Hit's real lead-time (days from T-0 to public fundraise announcement), rolled into a quarterly distribution at the bottom.",
   },
 ];
 
@@ -64,7 +64,7 @@ const HISTORICAL_HIGHLIGHT = {
   picked: "T-31 (acceleration percentile crossed 95th)",
   graded: "T+0 (Series A announced — $4M)",
   leadtime: "31 days",
-  context: "One of the 219 paired observations in the SSRN methodology paper. Contributor count went 3 → 7 in 14 days, two of the new contributors traceable to senior engineers from a Series B incumbent. Marketing site swapped from Notion to custom Next.js at T-7. The fundraise announcement landed in week T 0.",
+  context: "An illustrative historical example (not drawn from the SSRN dataset paper, which carries no funding-event labels). Contributor count went 3 → 7 in 14 days, two of the new contributors traceable to senior engineers from a Series B incumbent. Marketing site swapped from Notion to custom Next.js at T-7. The fundraise announcement landed in week T 0.",
 };
 
 export default function ScorecardPage() {
