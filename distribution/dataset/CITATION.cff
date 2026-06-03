@@ -28,12 +28,23 @@ keywords:
   - alternative-data
   - panel-data
   - deal-flow
+# Cite the SSRN paper when this dataset is used, so dataset citations accrue to
+# the peer-citable work (the dataset stays independently citable via the DOIs above).
 preferred-citation:
-  type: dataset
+  type: article
   title: "A Longitudinal Panel of GitHub Engineering Velocity for Venture-Backed Startups: Dataset and Early Observations"
   authors:
     - name: "The Data Nerd"
       affiliation: "VC Deal Flow Signal"
   year: 2026
-  doi: "10.5281/zenodo.19650920"
-  url: "https://zenodo.org/records/19650920"
+  doi: "10.2139/ssrn.6606558"
+  url: "https://ssrn.com/abstract=6606558"
+references:
+  - type: data
+    title: "VC Deal Flow Signal — Startup Engineering Acceleration Dataset"
+    authors:
+      - name: "The Data Nerd"
+        affiliation: "VC Deal Flow Signal"
+    year: 2026
+    doi: "10.5281/zenodo.19650920"
+    url: "https://zenodo.org/records/19650920"
