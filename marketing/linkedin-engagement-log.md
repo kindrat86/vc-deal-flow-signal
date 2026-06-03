@@ -124,3 +124,8 @@
 - Own-post reply reminder: none (Sunday May 31 is not a scheduled post day)
 - Targets: Eric Bahn, Charles Hudson, Beezer Clarkson
 - Drafts saved above for copy-paste
+
+## 2026-06-03
+- Own-post reply reminder: Tuesday Jun 2 was a scheduled post day (Tue/Wed/Thu/Fri cadence) — schedule file still missing; check linkedin.com/company/gitdealflow/posts manually and reply within 2h
+- Targets: Beezer Clarkson, Will Larson, Lenny Rachitsky
+- Drafts saved above for copy-paste
