@@ -349,7 +349,7 @@ export default function DataSourcesPage() {
               makes it into the Dashboard. This is what you read.
             </li>
             <li>
-              <strong className="text-gray-200">219 confirmed fundraises</strong>{" "}
+              <strong className="text-gray-200">219 startup-period observations</strong>{" "}
               — the historical panel behind the published research (SSRN, n=219),
               used to test whether the signal leads real rounds. This is the
               proof, not the live feed.

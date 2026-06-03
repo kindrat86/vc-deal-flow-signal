@@ -5,8 +5,9 @@
  * Every output is a pure function of data ALREADY shown on the page —
  * a startup's own commit-velocity acceleration and its classified signal
  * type. Nothing is invented:
- *   - the lead-time window is bucketed against the SSRN panel finding
- *     (median 31 days, IQR 21-47 days before the announced round);
+ *   - the lead-time window is bucketed against our working lead-time
+ *     hypothesis (~31-day median, 21-47d band) — under live validation on
+ *     /scorecard, NOT a result of the descriptive SSRN dataset paper;
  *   - the next milestone is the documented meaning of the signal type.
  * Both render blurred + labeled "model estimate" — the curiosity is the
  * gate, the honesty is the label.
@@ -19,7 +20,7 @@ export function accelPct(change: string | number): number {
   return Number.isFinite(n) ? n : 0;
 }
 
-/** Lead-time bucket anchored to the SSRN 21-47d finding. Varies per org. */
+/** Lead-time bucket anchored to our 21-47d working hypothesis (see /scorecard). Varies per org. */
 export function projectedLeadWindow(change: string | number): string {
   const a = accelPct(change);
   if (a >= 200) return "≈21-day lead window";

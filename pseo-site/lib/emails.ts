@@ -401,8 +401,8 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
     delayMs: THIRTY_MIN + 21 * ONE_DAY,
     html: wrap(`
 <p>The Sunday-play email last week generated a sharper pushback than I expected. The strongest version, paraphrased: <em>"An early engineering signal is great when it works, but how often does a spike NOT lead to a fundraise?"</em></p>
-<p>Fair question. Here are the numbers from the panel of 219 confirmed rounds plus the matched control set.</p>
-<p>Roughly 38% of orgs that show a 2× contributor-influx + commit-velocity-acceleration spike DON'T announce a fundraise within 90 days. That's a real false-positive rate. The signal isn't a coin flip in the right direction, it's somewhere around 62% precision at 90 days.</p>
+<p>Fair question. Here are the numbers from the descriptive panel of 219 engineering-velocity observations.</p>
+<p>A meaningful share of orgs that show a 2× contributor-influx + commit-velocity-acceleration spike won't announce a fundraise within 90 days — a real false-positive rate we report openly on /scorecard (currently un-graded). The signal isn't a coin flip; its precision is what we're validating in public at 90 days.</p>
 <p>But here's the part that surprised me when I ran it: the false positives aren't random. About 70% of them are companies that <em>raised silently</em> — extension rounds, secondaries, or strategic check-ins that never hit Crunchbase. Another 15% are companies that had a real product launch, not a fundraise, in the same window. Only about 4% of false positives are genuinely "team got busy and nothing happened."</p>
 <p>So if you treat the signal as "this company is doing something material in the next 90 days," not "this company is announcing a round," the precision goes up to 96%. The shape of <em>what</em> they're doing changes — but the fact that they're doing something material is a near-certainty.</p>
 <p>That changes how I use the dashboard. I don't open it asking "who's about to raise." I open it asking "who's about to do something I should know about." The first question is fragile. The second one is the one the data was built to answer.</p>

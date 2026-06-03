@@ -22,7 +22,7 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title:
-    "How to Spot a Series A 47 Days Before the Deck Lands — 12-Minute Walkthrough",
+    "How to Spot a Series A Weeks Before the Deck Lands — 12-Minute Walkthrough",
   description:
     "See why public engineering acceleration can give you earlier startup timing. Three objections, direct proof, and the weekly signal stack behind it.",
   alternates: {
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title:
-      "How to Spot a Series A 47 Days Before the Deck Lands",
+      "How to Spot a Series A Weeks Before the Deck Lands",
     description:
       "If commit-velocity acceleration is the most leading signal in VC, every other deal-flow tool becomes a lagging indicator. Here is the proof.",
     url: "https://signals.gitdealflow.com/walkthrough",
@@ -50,9 +50,9 @@ const STACK_ITEMS = [
     standalone: "€348/yr",
   },
   {
-    label: "The 219-Startup Backtest CSV",
+    label: "The 219-Observation Panel CSV",
     description:
-      "Five quarters of historical signal-to-fundraise pairs. The full dataset behind the 21–47-day lead-time claim. Yours to load into a notebook and replicate.",
+      "Five quarters of the descriptive engineering-velocity panel (no funding-event labels) — the dataset behind our 21–47-day lead-time hypothesis, ready to join to funding data and replicate yourself in a notebook.",
     standalone: "€297 one-time",
   },
   {
@@ -92,7 +92,7 @@ const STACK_ITEMS = [
   {
     label: "Methodology Vault",
     description:
-      "The full SSRN preprint, every signal definition, the regression code that produced the lead-time numbers. Open by default — the vault is the unlock to the source data.",
+      "The full SSRN preprint, every signal definition, the regression code behind the methodology. Open by default — the vault is the unlock to the source data.",
     standalone: "€0 — published",
   },
   {
@@ -113,8 +113,8 @@ const FAQS = [
     a: "If GitHub commit-velocity acceleration is the most leading public signal in venture capital, then every other deal-flow source — pitch decks, AngelList, Crunchbase, warm intros — is a lagging indicator. The whole investing thesis falls or stands on whether that single belief is true.",
   },
   {
-    q: "What proof do you have for the 21–47 day lead time?",
-    a: "An SSRN-published longitudinal panel of 219 venture-backed startups across 19 sectors, five quarterly periods. Companies that registered a 2× contributor spike inside a 14-day window preceded fundraise announcements by a median of 31 days, with a 21–47 day interquartile range. The full panel + regression code is at signals.gitdealflow.com/research and the preprint is at ssrn.com/abstract=6606558.",
+    q: "Where does the 21–47 day lead claim come from?",
+    a: "The SSRN/Zenodo panel (219 GitHub engineering-velocity observations, 19 sectors, five quarterly periods) is descriptive — it deliberately carries no funding-event labels, so it does not by itself prove a lead band. Our working hypothesis is that a 2× contributor spike inside a 14-day window precedes fundraise announcements by a few weeks; we validate that openly on /scorecard (currently un-graded). The full panel + regression code is at signals.gitdealflow.com/research and the preprint is at ssrn.com/abstract=6606558.",
   },
   {
     q: "Why €9.97/mo when comparable tools cost €1,000/mo?",
@@ -141,7 +141,7 @@ export default function PerfectWebinarPage() {
         "@type": "Article",
         "@id": "https://signals.gitdealflow.com/walkthrough#article",
         headline:
-          "How to Spot a Series A 47 Days Before the Deck Lands",
+          "How to Spot a Series A Weeks Before the Deck Lands",
         description:
           "See why public engineering acceleration can give you earlier startup timing. Three objections, direct proof, and the weekly signal stack behind it.",
         url: "https://signals.gitdealflow.com/walkthrough",
@@ -382,9 +382,10 @@ export default function PerfectWebinarPage() {
               found product-market fit. They are preparing to launch.
             </p>
             <p className="text-gray-300 text-base leading-relaxed">
-              In the SSRN-published 219-startup panel, a 2× contributor spike
-              inside a 14-day window preceded a fundraise announcement by a
-              median of 31 days. Same dataset, replicate the regression
+              The SSRN-published 219-observation panel is descriptive (no
+              funding labels); our hypothesis — that a 2× contributor spike
+              inside a 14-day window precedes a fundraise by a few weeks — is
+              validated openly on /scorecard. Same dataset, replicate the regression
               yourself at{" "}
               <Link
                 href="/research"
@@ -1028,7 +1029,7 @@ export default function PerfectWebinarPage() {
                 The window is the lead time, not the discount.
               </h3>
               <p className="text-gray-300 text-sm leading-relaxed">
-                The signal preceded fundraises by 21–47 days. Every Monday
+                Our hypothesis is that the signal precedes fundraises by 21–47 days (validated openly on /scorecard). Every Monday
                 you skip is a 21-to-47-day window that closes on five
                 specific names. The discount lock is real — €9.97 vs €49 —
                 but the harder scarcity is the deal flow, not the price.
@@ -1300,7 +1301,7 @@ export default function PerfectWebinarPage() {
           facts={[
             {
               claim:
-                "Median lead time from 2× contributor spike (14-day window) to fundraise announcement is 31 days, IQR 21–47 days, across 219 startups.",
+                "Median lead time from a 2× contributor spike (14-day window) to a fundraise announcement is our hypothesis (a few weeks), validated openly on /scorecard — not yet established; the SSRN panel itself is descriptive (219 observations, no funding labels).",
               sourceUrl: "https://ssrn.com/abstract=6606558",
               sourceLabel: "SSRN preprint",
             },

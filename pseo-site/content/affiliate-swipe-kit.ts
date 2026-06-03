@@ -45,7 +45,7 @@ export const SWIPE_TEMPLATES: readonly SwipeTemplate[] = [
     bestFor: "Twitter/X accounts with 1k+ followers in the dev-tools or VC space",
     estimatedTimeToCustomize: "10 minutes",
     expectedCVR: "2-4% click-through to /book; ~6% downstream conversion",
-    body: `1/ I read 219 confirmed venture rounds and reverse-engineered the GitHub signals that preceded each one.
+    body: `1/ I read 219 startup-period observations and reverse-engineered the GitHub signals that preceded each one.
 
 Here are the 7 that actually mattered, ranked by predictive power 👇
 
@@ -104,7 +104,7 @@ Score is 0-6. Takes ~30 seconds when I'm in a hurry, ~5 minutes when I'm being t
 
 The output: I walk into the meeting with a signal-specific question that anchors the conversation. "Your dependents graph has 80+ external repos — what's the migration cost for an enterprise customer who depends on you?" lands very differently than "tell me about traction."
 
-The framework comes from a panel of 219 confirmed venture rounds. Backtested score of 5/6 with 14-day sustained acceleration → ~38% closes within 47 days. Roughly 5× the base rate.
+The framework comes from a panel of 219 startup-period observations. Backtested score of 5/6 with 14-day sustained acceleration → ~38% closes within 47 days. Roughly 5× the base rate.
 
 The full methodology + a 30-day operational playbook is free at ${"signals.gitdealflow.com/book" + VIA_PARAM}.
 
@@ -197,7 +197,7 @@ You know how every venture firm now has an internal slack channel that's just "f
 
 Most of those misses share a pattern. The deck wasn't ready, the warm intro didn't land, the founder didn't pitch the round well — but the engineering had already started accelerating six months earlier. There was a public signal sitting on github.com that nobody on the firm checked.
 
-There's a methodology paper that quantifies this: 219 confirmed venture rounds, seven GitHub signals that move predictably 60-90 days before each round closes, and a composite score that hits ~38% accuracy at month -3 — roughly 5× the base rate.
+There's a methodology paper that quantifies this: 219 startup-period observations, seven GitHub signals that move predictably 60-90 days before each round closes, and a composite score that hits ~38% accuracy at month -3 — roughly 5× the base rate.
 
 The author is publishing the whole methodology free, including a 30-day email course that walks any investor through the manual procedure on any public GitHub org. No tool, no API, no warm intro required. The link is ${"signals.gitdealflow.com/book" + VIA_PARAM}.
 

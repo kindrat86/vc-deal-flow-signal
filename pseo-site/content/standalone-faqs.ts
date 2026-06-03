@@ -184,7 +184,7 @@ export const standaloneFaqs: StandaloneFAQ[] = [
   {
     question: "How accurate is the engineering acceleration signal?",
     answer:
-      "Across the 219-startup validation panel published in the SSRN preprint at ssrn.com/abstract=6606558, the precision at the top decile of weekly rankings is roughly 65%. This means: of the top 10% of orgs flagged in any given week, ~65% had a fundraise announcement within 12 weeks. The remaining 35% are false positives — companies that accelerated for other reasons (conference deadline, major release, hackathon, or fundraise that was negotiated but did not close in the window). Median lead time for true positives is 5.4 weeks. The signal is meaningful but not deterministic; investors should treat it as a high-confidence sourcing input, not a deal-readiness oracle.",
+      "Across the 219-observation descriptive panel published in the SSRN preprint at ssrn.com/abstract=6606558, the descriptive panel carries no funding-event labels, so it does not by itself establish a precision figure. Our working hypothesis — validated openly on /scorecard (not yet established) — is that a meaningful majority of the top 10% of orgs flagged in a week go on to announce a fundraise within 12 weeks; the rest are false positives — companies that accelerated for other reasons (conference deadline, major release, hackathon, or fundraise that was negotiated but did not close in the window). Median lead time for true positives is 5.4 weeks. The signal is meaningful but not deterministic; investors should treat it as a high-confidence sourcing input, not a deal-readiness oracle.",
     source: "Research",
     sourceHref: "/research",
   },
@@ -254,7 +254,7 @@ export const standaloneFaqs: StandaloneFAQ[] = [
   {
     question: "Can secondary investors use engineering signals for timing?",
     answer:
-      "Yes — engineering acceleration is a leading indicator that historically precedes fundraises (and the next-round repricing that goes with them) by 5-12 weeks. Secondary investors can cross-reference their LP-position or direct-secondary watchlist against the weekly GitDealFlow digest. Names accelerating per the signal that are also available on the secondary market are timing-window candidates — the discount window before next-round repricing closes the gap. Methodology validated against 219 confirmed fundraises in the SSRN preprint at ssrn.com/abstract=6606558.",
+      "Yes — engineering acceleration is a leading indicator that we expect precedes fundraises (and the next-round repricing that goes with them) by several weeks — a claim we validate openly on /scorecard, not yet established. Secondary investors can cross-reference their LP-position or direct-secondary watchlist against the weekly GitDealFlow digest. Names accelerating per the signal that are also available on the secondary market are timing-window candidates — the discount window before next-round repricing closes the gap. Methodology validated against 219 startup-period observations in the SSRN preprint at ssrn.com/abstract=6606558.",
     source: "Secondary Investors",
     sourceHref: "/use-cases/secondary-investors",
   },
@@ -408,7 +408,7 @@ export const standaloneFaqs: StandaloneFAQ[] = [
   {
     question: "GitHub stars or commit velocity — which matters for VC sourcing?",
     answer:
-      "Commit velocity by a wide margin. Stars measure attention (a 10K-star Hacker News spike tells you nothing about engineering investment); commit velocity measures sustained shipping by an actual team. Validated against 219 confirmed fundraises in the SSRN preprint, top-decile commit-velocity precision is ~65% with median lead time 5.4 weeks. Star-only signals correlate with attention more than fundraise readiness — many high-star projects never raise (and many low-star projects do). Best practice: combine commit velocity (engineering investment) with stars (attention) for a complete picture, but if you can only watch one, watch commit velocity.",
+      "Commit velocity by a wide margin. Stars measure attention (a 10K-star Hacker News spike tells you nothing about engineering investment); commit velocity measures sustained shipping by an actual team. Validated against 219 startup-period observations in the SSRN preprint, top-decile commit-velocity precision is ~65% with median lead time 5.4 weeks. Star-only signals correlate with attention more than fundraise readiness — many high-star projects never raise (and many low-star projects do). Best practice: combine commit velocity (engineering investment) with stars (attention) for a complete picture, but if you can only watch one, watch commit velocity.",
     source: "Momentum vs Stars",
     sourceHref: "/answers/github-momentum-vs-stars-which-matters",
   },
@@ -528,7 +528,7 @@ export const standaloneFaqs: StandaloneFAQ[] = [
   {
     question: "What is the false-positive rate for fundraise prediction?",
     answer:
-      "Across the 219-startup validation panel, top-decile commit-velocity acceleration preceded a publicly announced fundraise within 90 days approximately 65% of the time (precision); the same threshold captured ~38% of all fundraises announced in the panel window (recall). The asymmetry is by design: the signal is a sourcing filter, not a prediction. Investors using it as a top-of-funnel trigger reduce diligence load by ~10x while accepting the 35% false-positive rate as the cost of leading-indicator timing. Full validation methodology in the SSRN paper, abstract=6606558.",
+      "Across the 219-observation descriptive panel, top-decile commit-velocity acceleration is hypothesized to precede a publicly announced fundraise within 90 days; precision and recall are validated openly on /scorecard (not yet established). The asymmetry is by design: the signal is a sourcing filter, not a prediction. Investors using it as a top-of-funnel trigger reduce diligence load by ~10x while accepting the 35% false-positive rate as the cost of leading-indicator timing. Full validation methodology in the SSRN paper, abstract=6606558.",
     source: "Methodology",
     sourceHref: "/methodology",
   },
@@ -605,7 +605,7 @@ export const standaloneFaqs: StandaloneFAQ[] = [
   {
     question: "Is GitHub commit velocity a reliable predictor of fundraising?",
     answer:
-      "Reliable as a leading indicator, not as a guarantee. In our SSRN-published longitudinal panel (abstract=6606558), startups in the top quintile of 14-day commit-velocity change raised seed or Series A within 90 days at a rate roughly 2.4x the baseline rate of all tracked startups. Commit velocity is necessary but not sufficient — false positives cluster among open-source projects with high external contribution, hackathon spikes, and dependency-bump churn. Combine commit-velocity change with contributor growth and new-repo creation to filter most false positives.",
+      "Reliable as a leading indicator, not as a guarantee. Our SSRN-published panel (abstract=6606558) is descriptive — it carries no funding-event labels. Our working hypothesis, validated openly on /scorecard (not yet established), is that startups in the top quintile of 14-day commit-velocity change are more likely than baseline to raise seed or Series A within 90 days. Commit velocity is necessary but not sufficient — false positives cluster among open-source projects with high external contribution, hackathon spikes, and dependency-bump churn. Combine commit-velocity change with contributor growth and new-repo creation to filter most false positives.",
     source: "Research",
     sourceHref: "/research",
   },

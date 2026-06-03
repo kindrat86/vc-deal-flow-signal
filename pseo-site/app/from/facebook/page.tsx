@@ -74,8 +74,8 @@ const PROOF_POINTS = [
   },
   {
     label: "Hit rate at 90 days",
-    value: "62%",
-    detail: "Predicted-vs-actual on the live leaderboard",
+    value: "live",
+    detail: "Graded openly on the public scorecard (currently un-graded)",
   },
   {
     label: "Cost to verify",

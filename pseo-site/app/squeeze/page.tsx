@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title:
     "5 breakout startups, every Sunday — 47 days before the deck arrives",
   description:
-    "One email a week. Five startups ranked by 14-day GitHub commit-velocity acceleration. Free forever. The same engineering signal that preceded 219 confirmed Series A rounds in our SSRN-published panel.",
+    "One email a week. Five startups ranked by 14-day GitHub commit-velocity acceleration. Free forever. The same engineering signal that preceded 219 startup-period observations in our SSRN-published panel.",
   alternates: { canonical: "/squeeze" },
   openGraph: {
     title: "5 breakout startups, every Sunday — 47 days before the deck arrives",

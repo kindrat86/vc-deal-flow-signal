@@ -61,7 +61,7 @@ function findingEntry(
   title        = {${safe(title)}},
   author       = {The Data Nerd},
   year         = {2026},
-  howpublished = {SSRN finding ${group}.${n}},
+  howpublished = {VC Deal Flow Signal research note ${group}.${n}},
   url          = {https://signals.gitdealflow.com/research/${slug}},
   note         = {Section ${safe(section)}. Source: \\url{https://ssrn.com/abstract=6606558}. Claim: ${safe(claim)}},
   keywords     = {github, commit velocity, engineering acceleration, finding-${group.toLowerCase()}},
