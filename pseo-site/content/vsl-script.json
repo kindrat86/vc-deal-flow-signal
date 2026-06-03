@@ -154,7 +154,7 @@
       "durationHint": 90,
       "data": {
         "items": [
-          { "name": "Live Dashboard", "detail": "109 ranked startups, refreshed every Monday", "value": "€348/yr" },
+          { "name": "Live Dashboard", "detail": "140 ranked startups, refreshed every Monday", "value": "€348/yr" },
           { "name": "219-Startup Backtest CSV", "detail": "Every panel row, regression-ready", "value": "€297" },
           { "name": "Monthly Sector Deep-Dive PDF", "detail": "12 pages, your sector, every month", "value": "€588/yr" },
           { "name": "Two Free Chrome Extensions", "detail": "Crunchbase badge + GitHub Lookup", "value": "€198/yr" },

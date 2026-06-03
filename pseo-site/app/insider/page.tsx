@@ -41,7 +41,7 @@ const STACK_ITEMS = [
   {
     label: "Everything in Dashboard Beta",
     description:
-      "109 venture-backed startups across 19 sectors, refreshed every Monday 06:00 UTC. Sector filters. Five-quarter historical comparison. Watchlists. Both Chrome extensions. Free MCP forever.",
+      "140 venture-backed startups across 20 sectors, refreshed every Monday 06:00 UTC. Sector filters. Five-quarter historical comparison. Watchlists. Both Chrome extensions. Free MCP forever.",
     standalone: "€348/yr",
   },
   {
@@ -844,7 +844,7 @@ export default function InsiderPage() {
             <li className="flex gap-3">
               <span className="text-amber-400 shrink-0 font-bold">→</span>
               <span>
-                Everything in Dashboard Beta — 109 startups, 19 sectors,
+                Everything in Dashboard Beta — 140 startups, 20 sectors,
                 weekly refresh, both Chrome extensions, free MCP forever.
               </span>
             </li>

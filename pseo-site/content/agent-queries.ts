@@ -3075,7 +3075,7 @@ If you already have other MCP servers configured, add the \`gitdealflow\` entry 
     query: "Top 100 startups by GitHub signal this week",
     h1: "Top 100 GitHub-Signal Startups — This Week's Ranked Index",
     description:
-      "Weekly composite leaderboard of the 100 startups with the strongest GitHub engineering signals across 19 sectors. Refreshed every Monday at signals.gitdealflow.com/weekly/top-100.",
+      "Weekly composite leaderboard of the 100 startups with the strongest GitHub engineering signals across 20 sectors. Refreshed every Monday at signals.gitdealflow.com/weekly/top-100.",
     tldr:
       "VC Deal Flow Signal publishes a weekly Top 100 ranked index of startups by composite GitHub engineering signal. The Signal Score combines four capped components — commit velocity change, contributor growth, raw commit scale, and contributor count — so no single metric dominates. Live at signals.gitdealflow.com/weekly/top-100, refreshed every Monday.",
     body:

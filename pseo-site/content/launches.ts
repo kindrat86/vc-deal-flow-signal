@@ -240,7 +240,7 @@ export const LAUNCHES: Launch[] = [
       "Founding-100 is the rate seat for the first 100 paying members of GitDealFlow. €9.97/month, locked for the lifetime of the subscription. Includes the live Dashboard, weekly Acceleration Watch, monthly Sector Deep-Dive PDF, both Chrome extensions, and the free MCP server. After 100 spots fill, the public rate is €49/month for new buyers. Founding members keep €9.97 forever — through company growth, price hikes, and feature expansion.",
     stack: [
       {
-        label: "Live Dashboard — 109 venture-backed startups, refreshed weekly",
+        label: "Live Dashboard — 140 venture-backed startups, refreshed weekly",
         standalone: "€348/yr",
       },
       {
@@ -467,7 +467,7 @@ export const LAUNCHES: Launch[] = [
         body: [
           "‘Is a weekend really enough depth?’ Honest answer: depth depends on what you’re after. If you want a 60-page McKinsey-style narrative on the regulatory landscape and the macro cycle, no — that’s a three-week consultancy engagement. If you want the actual list of 8 companies you should be writing checks at right now, sorted by the signal that leads fundraise announcements by 21–47 days — that’s a weekend of compute, and the artifact is more accurate than the three-week version because it’s computed, not opined.",
           "‘How do you avoid hallucinating breakouts?’ Two-period confirmation rule. A breakout candidate has to register a 2× contributor spike in two consecutive 14-day windows before it lands on the list. Single-window spikes are filtered out as noise. We also include a false-positive caveat list — the candidates that almost made the cut but didn’t pass the two-period filter. You see what we excluded and why.",
-          "‘What if my sector isn’t covered?’ We track 19 sectors. The full list is at /weekly. If you want a sector outside that universe, email signal@gitdealflow.com before checkout — we may extend to your sector for the cohort, or refund. We don’t sell sweeps for sectors we can’t actually run the panel on.",
+          "‘What if my sector isn’t covered?’ We track 20 sectors. The full list is at /weekly. If you want a sector outside that universe, email signal@gitdealflow.com before checkout — we may extend to your sector for the cohort, or refund. We don’t sell sweeps for sectors we can’t actually run the panel on.",
           "‘Is the €1,797 refundable?’ Yes — if zero of the breakouts in our list register a fundraise within 90 days of delivery, we refund or credit toward the next quarter at your choice. The 90-day window is the median lead-time floor; missing it entirely means the panel didn’t fire and you shouldn’t pay for the artifact.",
         ],
         videoCue: {

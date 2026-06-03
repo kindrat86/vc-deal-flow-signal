@@ -46,7 +46,7 @@ const STACK_ITEMS = [
   {
     label: "The Live Dashboard",
     description:
-      "109 venture-backed startups ranked by 14-day commit-velocity acceleration, refreshed every Monday at 06:00 UTC. Filter by sector, stage, geography. The same data the SSRN paper was built on.",
+      "140 venture-backed startups ranked by 14-day commit-velocity acceleration, refreshed every Monday at 06:00 UTC. Filter by sector, stage, geography. The same data the SSRN paper was built on.",
     standalone: "€348/yr",
   },
   {

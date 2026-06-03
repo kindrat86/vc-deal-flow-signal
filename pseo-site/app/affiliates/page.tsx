@@ -563,7 +563,7 @@ Free Sunday digest → YOURLINK`}</pre>
             </p>
             <pre className="text-gray-300 text-sm leading-relaxed whitespace-pre-wrap font-sans bg-slate-950 border border-slate-800 rounded p-4 mb-3">{`---
 
-Loved this post and want to find startups like the ones in it before they raise? I use VC Deal Flow Signal — a free weekly Sunday digest that ranks 109 startup GitHub orgs by commit velocity. The methodology behind it is the SSRN-published panel of 219 confirmed fundraises (21-to-47 days lead time on average).
+Loved this post and want to find startups like the ones in it before they raise? I use VC Deal Flow Signal — a free weekly Sunday digest that ranks 140 startup GitHub orgs by commit velocity. The methodology behind it is the SSRN-published panel of 219 confirmed fundraises (21-to-47 days lead time on average).
 
 If you write checks, scout for a fund, or just like watching engineering data, the digest is free forever: YOURLINK
 

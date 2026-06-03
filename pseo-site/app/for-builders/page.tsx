@@ -41,7 +41,7 @@ const STRIPE_AGENT_CREDITS =
 const FREE_TOOLS = [
   {
     name: "get_trending_startups",
-    desc: "Top N startups across all 19 sectors, ranked by 14-day commit-velocity acceleration.",
+    desc: "Top N startups across all 20 sectors, ranked by 14-day commit-velocity acceleration.",
   },
   {
     name: "search_startups_by_sector",
@@ -538,7 +538,7 @@ export default function ForBuildersPage() {
             },
             {
               claim:
-                "Universe size is 4,200 venture-backed GitHub orgs across 19 sectors; methodology is open at SSRN abstract 6606558 with Zenodo dataset mirror.",
+                "Universe size is 4,200 venture-backed GitHub orgs across 20 sectors; methodology is open at SSRN abstract 6606558 with Zenodo dataset mirror.",
               sourceUrl: "https://ssrn.com/abstract=6606558",
               sourceLabel: "SSRN preprint",
             },

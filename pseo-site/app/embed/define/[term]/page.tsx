@@ -19,7 +19,7 @@ import { EmbedAutoHeight } from "@/components/EmbedAutoHeight";
  *
  * Net new traffic mechanism: each embed on a third-party domain is a
  * branded impression + a backlink to /define/[term]. Definitions are
- * the highest-fanout artifact we ship (84 terms across 4 categories);
+ * the highest-fanout artifact we ship (135 terms across 4 categories);
  * this turns each one into a paste-able widget that lives on other
  * properties without us having to ask for the link.
  */

@@ -23,7 +23,7 @@ const DEFAULT_BLURB = (
 );
 
 export default function CTABanner({
-  heading = "See the full ranked list of 85+ startups across all sectors",
+  heading = "See the full ranked list of 140 startups across all sectors",
   blurb,
   primaryLabel = "Get the Report",
   primaryHref = "https://gitdealflow.com/#signup",

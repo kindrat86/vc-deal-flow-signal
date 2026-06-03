@@ -587,7 +587,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       {
         label: "Sector-wide scan",
         description:
-          "Started at /sector to scan all 9 tracked sectors. Identified the 3 with strongest engineering acceleration over the trailing 6 months (AI infra, agentic AI frameworks, developer tools).",
+          "Started at /sector to scan all 10 tracked sectors. Identified the 3 with strongest engineering acceleration over the trailing 6 months (AI infra, agentic AI frameworks, developer tools).",
         primaryPath: "/sector",
       },
       {

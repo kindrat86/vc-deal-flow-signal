@@ -51,7 +51,7 @@ export const useCases: UseCase[] = [
       {
         step: 2,
         name: "Filter by your sector focus",
-        body: "Open the Dashboard (EUR 9.97/mo beta) and filter 85+ ranked startups by AI/ML, enterprise SaaS, dev tools, fintech, or any of 20 sectors. Layer on stage and geography if you focus geographically.",
+        body: "Open the Dashboard (EUR 9.97/mo beta) and filter 140 ranked startups by AI/ML, enterprise SaaS, dev tools, fintech, or any of 20 sectors. Layer on stage and geography if you focus geographically.",
       },
       {
         step: 3,
@@ -108,7 +108,7 @@ export const useCases: UseCase[] = [
       {
         step: 2,
         name: "Filter Dashboard by fund thesis",
-        body: "Filter 85+ weekly startups to your fund's specific sectors, stages, and geographies. Export the filtered list to CSV for sharing with partners.",
+        body: "Filter 140 weekly startups to your fund's specific sectors, stages, and geographies. Export the filtered list to CSV for sharing with partners.",
       },
       {
         step: 3,
@@ -127,7 +127,7 @@ export const useCases: UseCase[] = [
       },
     ],
     metrics: [
-      { label: "Weekly ranked startups", value: "85+ on Dashboard" },
+      { label: "Weekly ranked startups", value: "140 on Dashboard" },
       { label: "Sectors in single feed", value: "20 technical clusters" },
       { label: "Typical lead time", value: "6-12 weeks pre-fundraise" },
       { label: "Per-seat cost", value: "EUR 9.97/mo (beta)" },
