@@ -41,7 +41,7 @@ The voices that translate engineering/tech into business strategy — exactly Ma
 |---|--------|-----|------------------|--------------|
 | 1 | @benthompson | Ben Thompson — Stratechery | The canonical tech→business translator; corp-dev/PE read him daily | Offer a business-framed data angle for a Stratechery thesis |
 | 2 | @packyM | Packy McCormick — Not Boring | Strategy narratives for investor/operator readers | Provide a "who's accelerating" chart he'd cite |
-| 3 | @mariodgabriele `(confirm)` | Mario Gabriele — The Generalist | Long-form company/strategy analysis | Co-data a sector deep-dive (translated, not raw) |
+| 3 | @mariogabriele | Mario Gabriele — The Generalist | Long-form company/strategy analysis | Co-data a sector deep-dive (translated, not raw) |
 | 4 | @benedictevans | Benedict Evans | Macro tech analysis for execs/boards | Reply with a business-language signal on his charts |
 | 5 | @profgalloway | Scott Galloway | Business-of-tech to a huge exec audience | Surface a "winner vs hype" framing |
 | 6 | @asymco | Horace Dediu | Disruption/business analysis | Translated trend data |
@@ -75,7 +75,7 @@ Corp-dev and PE operating partners live on metrics and benchmarks — "is this r
 | 26 | @SaaStr `(confirm)` | SaaStr (org) | The SaaS-exec watering hole | Data contribution to a SaaStr piece |
 | 27 | @davegerhardt | Dave Gerhardt — Exit Five | B2B exec/marketing audience | Business-language signal |
 | 28 | @peterwalker99 | Peter Walker — Carta | Startup/market data, business-framed | Complementary acceleration data |
-| 29 | @David_Cancel `(confirm)` | David Cancel — Drift | B2B exec operator | Translated trend data |
+| 29 | @dcancel | David Cancel — Drift | B2B exec operator | Translated trend data |
 | 30 | @bbalfour | Brian Balfour — Reforge | Growth strategy for operators | Benchmark angle |
 | 31 | @andrewchen | Andrew Chen — a16z | Growth business essays | Translated data engagement |
 | 32 | @aprildunford `(confirm)` | April Dunford | Positioning/category for buyers | "Which category is heating up" framing |
@@ -104,9 +104,9 @@ This is Marcus's literal professional neighborhood: people who buy, operate, and
 | 47 | @TSOH_Investing `(confirm)` | Alex Morris | Company business analysis | Translated traction angle |
 | 48 | @jposhaughnessy `(confirm)` | Jim O'Shaughnessy — Infinite Loops | Markets/business; operator audience | Business framing |
 | 49 | @TheTranscript_ `(confirm)` | The Transcript | Earnings-call business signal | Complementary private-co signal |
-| 50 | @QuartrApp `(confirm)` | Quartr | IR/earnings business intel | Translated data partnership angle |
+| 50 | @Quartr_App | Quartr | IR/earnings business intel | Translated data partnership angle |
 | 51 | @fabricegrinda | Fabrice Grinda — FJ Labs | M&A/marketplace dealmaking | "Worth a look" data |
-| 52 | @rohitkrishnan `(confirm)` | Rohit Krishnan — Strange Loop Canon | Business strategy essays | Translated trend data |
+| 52 | @krishnanrohit | Rohit Krishnan — Strange Loop Canon | Business strategy essays | Translated trend data |
 
 ---
 
@@ -127,8 +127,8 @@ Marcus watches these to see what's getting funded and validated. High reach, loo
 | 62 | @bryce `(confirm)` | Bryce Roberts | Business-of-funding takes | Shortlist framing |
 | 63 | @a16z `(confirm)` | a16z (firm) | Enterprise/business research reach | Cite their thesis with our data |
 | 64 | @sequoia `(confirm)` | Sequoia (firm) | Market-defining business content | Complementary data |
-| 65 | @GoogleVentures `(confirm)` | GV (firm) | Enterprise deal audience | Translated angle |
-| 66 | @Greylock `(confirm)` | Greylock (firm) | Enterprise/business reach | Data contribution |
+| 65 | @GVteam | GV (firm) | Enterprise deal audience | Translated angle |
+| 66 | @GreylockVC | Greylock (firm) | Enterprise/business reach | Data contribution |
 | 67 | @IVP `(confirm)` | IVP (firm) | Growth-stage deal audience | Benchmark angle |
 | 68 | @generalcatalyst `(confirm)` | General Catalyst (firm) | Enterprise/health/deal reach | Translated data |
 
@@ -152,7 +152,7 @@ Where Marcus tracks who's raising, merging, and getting acquired. Earned mention
 | 79 | @TechCrunch `(confirm)` | TechCrunch | Funding/deal coverage | Trend data source |
 | 80 | @FortuneMagazine `(confirm)` | Fortune — Term Sheet | M&A/deals newsletter | Data point for a mention |
 | 81 | @CNBC `(confirm)` | CNBC | Markets/deals, exec audience | Translated trend data |
-| 82 | @Lessin `(confirm)` | Jessica Lessin — The Information | Deal-media leadership | Data exclusive |
+| 82 | @Jessicalessin | Jessica Lessin — The Information | Deal-media leadership | Data exclusive |
 | 83 | @PuckNews `(confirm)` | Puck | Business/money insider audience | Source on a deal trend |
 | 84 | @AxiosProRata `(confirm)` | Axios Pro Rata (newsletter) | The deals desk | Recurring data sidebar pitch |
 
@@ -169,13 +169,13 @@ The tools and analysts Marcus uses to *build a shortlist*. Showing up as a compl
 | 88 | @Gartner_inc `(confirm)` | Gartner | Category analysts; "worth a meeting" lens | Translated category-momentum view |
 | 89 | @forrester `(confirm)` | Forrester | Enterprise category analysis | Data contribution angle |
 | 90 | @tracxn `(confirm)` | Tracxn | Private-market deal data | Complementary signal |
-| 91 | @sacra_inc `(confirm)` | Sacra | Private-company research for buyers | Translated data partnership |
-| 92 | @public_comps `(confirm)` | Public Comps | SaaS comps for PE/corp-dev | Pair acceleration with comps |
+| 91 | @sacrainc | Sacra | Private-company research for buyers | Translated data partnership |
+| 92 | @publiccomps | Public Comps | SaaS comps for PE/corp-dev | Pair acceleration with comps |
 | 93 | @meritechcapital `(confirm)` | Meritech | SaaS comps data, widely used | Complementary data |
 | 94 | @Dealroomco `(confirm)` | Dealroom | Market intelligence for buyers | Data angle pitch |
-| 95 | @ContraryRes `(confirm)` | Contrary Research | Private-company memos | Translated signal source |
+| 95 | @Contrary_Res | Contrary Research | Private-company memos | Translated signal source |
 | 96 | @bessemervp `(confirm)` | Bessemer — State of the Cloud | Cloud business benchmarks | Cite their index with our data |
-| 97 | @battery_ventures `(confirm)` | Battery — OpenCloud | Enterprise benchmark reports | Complementary benchmark |
+| 97 | @BatteryVentures | Battery — OpenCloud | Enterprise benchmark reports | Complementary benchmark |
 | 98 | @scalevp `(confirm)` | Scale Venture Partners | SaaS metrics benchmarks | Benchmark angle |
 | 99 | @iconiqcapital `(confirm)` | ICONIQ Growth | GTM/SaaS benchmarks for PE/corp-dev | Translated data contribution |
 | 100 | @SapphireVC `(confirm)` | Sapphire Ventures | Enterprise benchmark reports | Benchmark partnership angle |
