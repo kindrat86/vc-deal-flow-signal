@@ -139,3 +139,8 @@
 - Own-post reply reminder: none (Saturday Jun 6 is not a scheduled post day)
 - Targets: Jason Calacanis, Mario Gabriele, Elizabeth Yin
 - Drafts saved above for copy-paste
+
+## 2026-06-08
+- Own-post reply reminder: none (Sunday Jun 7 is not a scheduled post day)
+- Targets: Mario Gabriele, Elizabeth Yin, Hunter Walk
+- Drafts saved above for copy-paste
