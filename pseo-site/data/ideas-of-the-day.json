@@ -2038,6 +2038,53 @@
         }
       ],
       "publishedAt": "2026-06-08T09:00:00Z"
+    },
+    {
+      "date": "2026-06-09",
+      "slug": "2026-06-09",
+      "headline": "The healthcare opening hiding in a +0% infrastructure buildout",
+      "hook": "Growth healthcare teams shipping 3 commits in 14 days at +0% aren't just building product — they're broadcasting the infra-buildout that usually precedes a raise.",
+      "repo": {
+        "name": "ballerina-platform",
+        "githubUrl": "https://github.com/ballerina-platform",
+        "stage": "Growth",
+        "geography": "Unknown",
+        "sector": "Healthcare",
+        "sectorSlug": "healthcare",
+        "signalType": "Infrastructure buildout",
+        "commitVelocity14d": 3,
+        "commitVelocityChange": "+0%",
+        "contributors": 100,
+        "contributorGrowth": "+0%",
+        "newRepos": 3,
+        "description": ""
+      },
+      "ideaThesis": "Healthcare has a buyer who is also a builder. The category incumbents shipped for an ops/HR/finance lead; the next wave ships for the engineer running that function. Read the repo: infrastructure buildout, growth team, 100 contributors. That's the shape of a team that crosses the next funding line on engineering output, not enterprise sales — and the gap they leave is the wedge for an indie or two-founder tool that does one job better than the suite they're inside of.",
+      "buildAngles": [
+        "EHR/court/contract export tool — the part that vendors refuse to expose. Read-only, audit-trail-first.",
+        "Compliance-as-a-tool for one narrow workflow; sell the artifact (signed PDF, attestation) not the platform.",
+        "Verification layer that sits between the AI and the system of record; the engineer-buyer is your first 100 customers."
+      ],
+      "distributionPlay": "Lead with a credible benchmark or audit — a single PDF that names what the existing tools miss. Send it to two industry newsletters before posting it anywhere social.",
+      "signalReading": [
+        {
+          "metric": "3 commits / 14 days",
+          "reading": "Low absolute volume. The signal is the change-in-change, not the raw count — see the next metric."
+        },
+        {
+          "metric": "+0% commit-velocity change",
+          "reading": "Trend is still accelerating, not peaking. A positive change-in-change is the leading edge of the curve, not the back of it."
+        },
+        {
+          "metric": "100 contributors (+0%)",
+          "reading": "Mature contributor base. The opportunity is less in displacing them and more in serving the engineers who depend on them."
+        },
+        {
+          "metric": "3 new repos in window",
+          "reading": "New repository creation is the classic platform-expansion signal — a team carving the next product surface out of the same codebase. The seam between the old repo and the new one is where a single-purpose external tool lives."
+        }
+      ],
+      "publishedAt": "2026-06-09T09:00:00Z"
     }
   ]
 }
