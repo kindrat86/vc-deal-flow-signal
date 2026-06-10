@@ -1,0 +1,62 @@
+name: Deploy pSEO site to Vercel
+
+# Restores the "updated weekly" promise without any local machine.
+# The discover-startups workflow commits fresh data daily at 06:03 UTC;
+# this deploy bakes it into the live site every Monday, plus on demand.
+# vercel deploy needs --archive=tgz: the site has too many files for the
+# default per-file manifest (hits the 10 MB request limit).
+
+on:
+  schedule:
+    - cron: "0 7 * * 1" # Mondays 07:00 UTC, after the 06:03 data commit
+  workflow_dispatch: {}
+
+concurrency:
+  group: deploy-pseo
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: pseo-site
+    env:
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: pseo-site/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Pull Vercel project settings + production env
+        run: npx vercel pull --yes --environment production --token "$VERCEL_TOKEN"
+
+      - name: Build
+        run: npx vercel build --prod --yes --token "$VERCEL_TOKEN"
+
+      - name: Deploy prebuilt output to production
+        run: npx vercel deploy --prebuilt --prod --yes --archive=tgz --token "$VERCEL_TOKEN"
+
+      - name: Verify production freshness
+        run: |
+          sleep 10
+          curl -sf https://signals.gitdealflow.com/api/health.json | tee /tmp/health.json
+          python3 - <<'EOF'
+          import json, datetime, sys
+          h = json.load(open("/tmp/health.json"))
+          built = datetime.datetime.fromisoformat(h["buildTime"].replace("Z", "+00:00"))
+          age_min = (datetime.datetime.now(datetime.timezone.utc) - built).total_seconds() / 60
+          assert age_min < 60, f"buildTime is {age_min:.0f} min old — alias did not update"
+          assert h["status"] == "ok", h
+          print(f"OK: live build is {age_min:.0f} min old")
+          EOF
