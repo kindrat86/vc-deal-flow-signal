@@ -2085,6 +2085,49 @@
         }
       ],
       "publishedAt": "2026-06-09T09:00:00Z"
+    },
+    {
+      "date": "2026-06-10",
+      "slug": "2026-06-10",
+      "headline": "The data infrastructure reset hiding in a -12% framework migration",
+      "hook": "Growth data infrastructure teams cooling to 23 commits over 14 days (-12%) are showing the framework-migration pattern — a recoverable dip, not a flatline, and the natural moment to build the next adjacent tool.",
+      "repo": {
+        "name": "opensearch-project",
+        "githubUrl": "https://github.com/opensearch-project",
+        "stage": "Growth",
+        "geography": "Unknown",
+        "sector": "Data Infrastructure",
+        "sectorSlug": "data-infrastructure",
+        "signalType": "Framework migration",
+        "commitVelocity14d": 23,
+        "commitVelocityChange": "-12%",
+        "contributors": 100,
+        "contributorGrowth": "+0%",
+        "newRepos": 0,
+        "description": "OpenSearch is a community-driven, Apache 2.0-licensed open source search and analytics suite that makes it easy to inges"
+      },
+      "ideaThesis": "Data Infrastructure has a buyer who is also a builder. The category incumbents shipped for an ops/HR/finance lead; the next wave ships for the engineer running that function. Read the repo: framework migration, growth team, 100 contributors. That's the shape of a team that crosses the next funding line on engineering output, not enterprise sales — and the gap they leave is the wedge for an indie or two-founder tool that does one job better than the suite they're inside of.",
+      "buildAngles": [
+        "Single-purpose CLI that does one job the incumbent's dashboard hides — agent eval, prompt diff, tool-call replay.",
+        "VS Code extension that surfaces the live signal inside the editor; no marketing site needed for the first 1,000 installs.",
+        "Pay-per-run hosted endpoint for one stage of the data infrastructure pipeline; treat it as a tool other agents call, not a SaaS humans browse to."
+      ],
+      "distributionPlay": "Drop it as a free CLI install into r/LocalLLaMA + the underrated 'Show HN' Friday slot. The first 100 stars on a tightly-scoped dev tool routinely turn into the first 10 paying customers.",
+      "signalReading": [
+        {
+          "metric": "23 commits / 14 days",
+          "reading": "Low absolute volume. The signal is the change-in-change, not the raw count — see the next metric."
+        },
+        {
+          "metric": "-12% commit-velocity change",
+          "reading": "Cooling. Often a deliberate slowdown for refactor, rebrand, or hiring — read alongside the next two lines before calling it a decline."
+        },
+        {
+          "metric": "100 contributors (+0%)",
+          "reading": "Mature contributor base. The opportunity is less in displacing them and more in serving the engineers who depend on them."
+        }
+      ],
+      "publishedAt": "2026-06-10T09:00:00Z"
     }
   ]
 }
