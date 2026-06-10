@@ -991,7 +991,12 @@ def _rates(email):
     }
 
 
-recent = sorted(subscribers, key=sort_key, reverse=True)[:100]
+# Active subscribers only — unsubscribed outreach addresses and unconfirmed
+# signups buried the handful of real readers in noise.
+recent = sorted(
+    (s for s in subscribers if (s.get("status") or "active") == "active"),
+    key=sort_key, reverse=True,
+)[:100]
 recent_rows = [
     {
         "email": s.get("email", ""),
@@ -2060,7 +2065,7 @@ HTML = """<!DOCTYPE html>
     </div>
   </div>
   <div class="card">
-    <h3>All known emails — Resend source of truth (latest 100)</h3>
+    <h3>Active subscribers — Resend source of truth</h3>
     <table><thead><tr><th>Email</th><th>Signed up</th><th>Status</th><th class="num">Sent</th><th class="num">Open</th><th class="num">Click</th><th>Sequence</th></tr></thead>
       <tbody id="recent"></tbody></table>
   </div>
