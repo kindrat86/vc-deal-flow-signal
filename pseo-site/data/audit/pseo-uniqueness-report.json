@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-29T21:57:35.282Z",
+  "generatedAt": "2026-06-10T05:37:18.241Z",
   "config": {
     "hammingThreshold": 9,
     "globalThresholdPct": 5,
@@ -11,8 +11,8 @@
     "flaggedPct": 0
   },
   "observational": {
-    "entries": 1838,
-    "flagged": 1700
+    "entries": 1859,
+    "flagged": 1718
   },
   "verdict": "PASS",
   "surfaces": [
@@ -39,8 +39,8 @@
       "flaggedPct": 0,
       "shingleCounts": {
         "min": 512,
-        "max": 821,
-        "mean": 639
+        "max": 1012,
+        "mean": 655
       },
       "pairs": []
     },
@@ -146,12 +146,12 @@
       "name": "signal",
       "basePath": "/signal",
       "reportOnly": true,
-      "totalEntries": 159,
-      "flaggedEntries": 79,
+      "totalEntries": 165,
+      "flaggedEntries": 82,
       "flaggedPct": 49.7,
       "shingleCounts": {
         "min": 373,
-        "max": 425,
+        "max": 431,
         "mean": 397
       },
       "pairs": [
@@ -168,6 +168,12 @@
           "similarity": 92.2
         },
         {
+          "a": "typesense",
+          "b": "airbyte",
+          "hamming": 6,
+          "similarity": 90.6
+        },
+        {
           "a": "openai",
           "b": "circleci",
           "hamming": 7,
@@ -176,6 +182,12 @@
         {
           "a": "cohere",
           "b": "stability-ai",
+          "hamming": 7,
+          "similarity": 89.1
+        },
+        {
+          "a": "huggingface",
+          "b": "typesense",
           "hamming": 7,
           "similarity": 89.1
         },
@@ -206,12 +218,6 @@
         {
           "a": "cohere",
           "b": "coinbase",
-          "hamming": 8,
-          "similarity": 87.5
-        },
-        {
-          "a": "huggingface",
-          "b": "typesense",
           "hamming": 8,
           "similarity": 87.5
         },
@@ -268,12 +274,6 @@
           "b": "typesense",
           "hamming": 8,
           "similarity": 87.5
-        },
-        {
-          "a": "perplexity-ai",
-          "b": "ai21-labs",
-          "hamming": 8,
-          "similarity": 87.5
         }
       ]
     },
@@ -281,8 +281,8 @@
       "name": "showdown",
       "basePath": "/showdown",
       "reportOnly": true,
-      "totalEntries": 1582,
-      "flaggedEntries": 1582,
+      "totalEntries": 1597,
+      "flaggedEntries": 1597,
       "flaggedPct": 100,
       "shingleCounts": {
         "min": 748,
@@ -301,6 +301,12 @@
           "b": "nuxt-vs-ollama",
           "hamming": 0,
           "similarity": 100
+        },
+        {
+          "a": "anthropic-vs-langchain",
+          "b": "langchain-vs-letta-ai",
+          "hamming": 1,
+          "similarity": 98.4
         },
         {
           "a": "honeycomb-vs-sentry",
@@ -375,6 +381,18 @@
           "similarity": 98.4
         },
         {
+          "a": "langchain-vs-mastra",
+          "b": "elevenlabs-vs-mastra",
+          "hamming": 1,
+          "similarity": 98.4
+        },
+        {
+          "a": "elevenlabs-vs-langchain",
+          "b": "elevenlabs-vs-letta-ai",
+          "hamming": 1,
+          "similarity": 98.4
+        },
+        {
           "a": "elevenlabs-vs-jina-ai",
           "b": "jina-ai-vs-voyage-ai",
           "hamming": 1,
@@ -391,24 +409,6 @@
           "b": "ory-vs-tauri",
           "hamming": 1,
           "similarity": 98.4
-        },
-        {
-          "a": "qdrant-vs-timescale",
-          "b": "qdrant-vs-typesense",
-          "hamming": 1,
-          "similarity": 98.4
-        },
-        {
-          "a": "modular-vs-outerbounds",
-          "b": "codeium-vs-outerbounds",
-          "hamming": 1,
-          "similarity": 98.4
-        },
-        {
-          "a": "clerk-vs-vercel",
-          "b": "clerk-vs-tailwindcss",
-          "hamming": 2,
-          "similarity": 96.9
         }
       ]
     },
@@ -434,18 +434,18 @@
         {
           "a": "ai-infra/in/san-francisco",
           "b": "ai-ml/in/san-francisco",
-          "hamming": 4,
-          "similarity": 93.8
-        },
-        {
-          "a": "ai-ml/in/london",
-          "b": "fintech/in/san-francisco",
-          "hamming": 4,
-          "similarity": 93.8
+          "hamming": 3,
+          "similarity": 95.3
         },
         {
           "a": "ai-ml/in/san-francisco",
           "b": "developer-tools/in/san-francisco",
+          "hamming": 3,
+          "similarity": 95.3
+        },
+        {
+          "a": "ai-ml/in/london",
+          "b": "fintech/in/san-francisco",
           "hamming": 4,
           "similarity": 93.8
         },
@@ -458,6 +458,12 @@
         {
           "a": "developer-tools/in/new-york",
           "b": "infrastructure/in/new-york",
+          "hamming": 4,
+          "similarity": 93.8
+        },
+        {
+          "a": "infrastructure/in/amsterdam",
+          "b": "database/in/amsterdam",
           "hamming": 4,
           "similarity": 93.8
         },
@@ -480,6 +486,18 @@
           "similarity": 92.2
         },
         {
+          "a": "ai-ml/in/san-francisco",
+          "b": "infrastructure/in/san-francisco",
+          "hamming": 5,
+          "similarity": 92.2
+        },
+        {
+          "a": "ai-ml/in/san-francisco",
+          "b": "database/in/san-francisco",
+          "hamming": 5,
+          "similarity": 92.2
+        },
+        {
           "a": "developer-tools/in/san-francisco",
           "b": "infrastructure/in/new-york",
           "hamming": 5,
@@ -488,12 +506,6 @@
         {
           "a": "developer-tools/in/seattle",
           "b": "infrastructure/in/seattle",
-          "hamming": 5,
-          "similarity": 92.2
-        },
-        {
-          "a": "infrastructure/in/amsterdam",
-          "b": "database/in/amsterdam",
           "hamming": 5,
           "similarity": 92.2
         },
@@ -528,20 +540,8 @@
           "similarity": 90.6
         },
         {
-          "a": "ai-ml/in/san-francisco",
-          "b": "infrastructure/in/san-francisco",
-          "hamming": 6,
-          "similarity": 90.6
-        },
-        {
-          "a": "ai-ml/in/san-francisco",
-          "b": "database/in/san-francisco",
-          "hamming": 6,
-          "similarity": 90.6
-        },
-        {
-          "a": "ai-ml/in/new-york",
-          "b": "developer-tools/in/seattle",
+          "a": "ai-ml/in/london",
+          "b": "ai-ml/in/new-york",
           "hamming": 6,
           "similarity": 90.6
         }

@@ -1,6 +1,6 @@
 # The 7 GitHub Signals That Predict Series A Rounds
 
-*How to read engineering acceleration weeks before the press release — a field manual for developer-investors*
+*How to read engineering acceleration weeks before the press release — a field manual for investors who want to move first*
 
 By The Data Nerd, Founder, GitDealFlow
 

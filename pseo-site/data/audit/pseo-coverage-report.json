@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-29T21:57:47.744Z",
+  "generatedAt": "2026-06-10T05:37:18.549Z",
   "minCellSize": 3,
   "surfaces": [
     {
@@ -538,7 +538,7 @@
     }
   ],
   "localeTopicCoverage": {
-    "totalEntries": 63,
+    "totalEntries": 96,
     "universalCore": [
       "methodology",
       "glossary",

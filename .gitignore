@@ -49,3 +49,4 @@ tools/*gsc*service*account*.json
 tools/.gsc-oauth-client.json
 tools/.gsc-oauth-token.json
 tools/client_secret*.json
+.env*
