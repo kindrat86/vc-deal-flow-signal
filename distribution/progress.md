@@ -67,17 +67,16 @@
 
 ### Hacker News
 - [x] Show HN posted: https://news.ycombinator.com/item?id=47775439
-- [ ] Founder comment (use text from distribution/hackernews-post.md)
-- [ ] Monitor and reply to comments
+- [x] ~~Founder comment~~ DROPPED 2026-06-10 — the April thread is dead; commenting now does nothing.
+- [ ] NEW Show HN (different angle: the open dataset / MCP server), 2+ weeks after deploys are automated. HN allows re-submissions with a new angle.
 
 ### LinkedIn
-- [ ] Post ready in distribution/linkedin-post.md
-- [ ] Post it
-- BLOCKED: User has not decided whether to use personal LinkedIn for this project.
+- [x] Decision unblocked 2026-06-10 — see distribution/linkedin-decision-brief.md.
+  Recommendation: no personal LinkedIn (anonymity policy); company page only after first paying customer.
 
 ### Reddit
-- [ ] Draft posts for r/venturecapital, r/startups, r/SaaS
-- [ ] Post them
+- [x] Drafts ready 2026-06-10: distribution/reddit-community-posts.md (r/SaaS → r/startups → r/venturecapital order)
+- [ ] Post them (1 sub per day, not in the same week as MCP posts)
 
 ### Product Hunt
 - [ ] Save for 2-3 weeks when more traction
@@ -94,11 +93,11 @@
 | distribution/profile-pic.png | Profile pic (PNG, 800px) |
 | distribution/progress.md | This file |
 
-## Next Actions
-1. Pin Twitter launch thread
-2. Post HN founder comment
-3. Post LinkedIn post
-4. Generate 7 days of daily tweets from startup data
-5. Draft Reddit posts (r/venturecapital, r/startups)
-6. Engage with VC accounts on Twitter daily
-7. Product Hunt prep (week 3)
+## Next Actions (refreshed 2026-06-10)
+1. Restore site freshness: Vercel login on the Mac mini → redeploy → automate deploys via GitHub Actions (data is fresh in git, prod is stuck at Jun 2)
+2. Post the week's tweets: distribution/daily-tweets-2026-06-w2.md (one/day, generated from Jun 9 data)
+3. Post Reddit drafts: distribution/reddit-community-posts.md (r/SaaS day 1 → r/startups day 3 → r/venturecapital day 5)
+4. Pin Twitter launch thread (still unpinned)
+5. Engage with VC accounts on Twitter daily (Dream-100 radar already surfaces mentions 4×/day — act on them)
+6. New Show HN (dataset/MCP angle) after deploys automated
+7. Product Hunt prep — only after a week of nonzero traffic
