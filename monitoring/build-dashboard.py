@@ -518,6 +518,69 @@ resend_emails = {
 }
 print(f"  verified in Resend: {len(resend_emails)}")
 
+# The PB `subscribers`/`email_log` collections died with the old local
+# PocketBase — the Fly instance only hosts scout collections. Resend is now the
+# source of truth for emails, so when PB returns nothing we synthesize
+# subscriber records from (a) audience contacts (= verified signups, with
+# attribution packed into first_name by /api/verify) and (b) recipients of
+# verification emails that never confirmed (status "unconfirmed").
+ATTR_MARKER = "gdf-attr-v1:"
+
+
+def _unpack_attr(first_name):
+    if not first_name or not str(first_name).startswith(ATTR_MARKER):
+        return {}
+    try:
+        return json.loads(str(first_name)[len(ATTR_MARKER):])
+    except Exception:
+        return {}
+
+
+resend_events = []
+if not subscribers and resend_contacts:
+    print("  PB subscribers empty — synthesizing from Resend...")
+    for c in resend_contacts:
+        em = (c.get("email") or "").lower()
+        if not em or em in EXCLUDED_EMAILS:
+            continue
+        attr = _unpack_attr(c.get("first_name"))
+        subscribers.append({
+            "id": c.get("id") or em,
+            "email": em,
+            "created": (c.get("created_at") or "").replace("T", " "),
+            "source": attr.get("source") or attr.get("utm_source") or "unknown",
+            "tier": "free",
+            "status": "unsubscribed" if c.get("unsubscribed") else "active",
+        })
+    # Unconfirmed signups: got a "Confirm ..." email but never landed in the
+    # audience. Visible in Resend events only.
+    resend_events = resend_email_events(window_start)
+    print(f"  resend events fetched: {len(resend_events)}")
+    audience_all = {(c.get("email") or "").lower() for c in resend_contacts}
+    seen_unconfirmed = {}
+    for e in resend_events:
+        subj = (e.get("subject") or "").strip()
+        if not subj.startswith("Confirm"):
+            continue
+        recipients = e.get("to") or []
+        em = (recipients[0] if recipients else "").lower()
+        if not em or em in EXCLUDED_EMAILS or em in audience_all:
+            continue
+        ts = (e.get("created_at") or "").replace("T", " ")
+        if em not in seen_unconfirmed or ts < seen_unconfirmed[em]:
+            seen_unconfirmed[em] = ts
+    for em, ts in seen_unconfirmed.items():
+        subscribers.append({
+            "id": em,
+            "email": em,
+            "created": ts,
+            "source": "unknown",
+            "tier": "free",
+            "status": "unconfirmed",
+        })
+    print(f"  synthesized subscribers: {len(subscribers)} "
+          f"({len(seen_unconfirmed)} unconfirmed)")
+
 print("Querying PostHog...")
 # country_filter already built above (used by the earliest-event probe).
 
@@ -741,9 +804,10 @@ active_subs_set = verified - unsubscribed_emails - DASHBOARD_QA_EMAILS
 active_subs_count = len(active_subs_set)
 
 # Email log aggregates — prefer Resend API (pSEO signup path doesn't write PB email_log)
-print("Fetching Resend email events...")
-resend_events = resend_email_events(window_start)
-print(f"  resend events fetched: {len(resend_events)}")
+if not resend_events:  # may already be fetched by the Resend-synthesis block above
+    print("Fetching Resend email events...")
+    resend_events = resend_email_events(window_start)
+    print(f"  resend events fetched: {len(resend_events)}")
 
 email_status = Counter()
 email_source = "none"
@@ -902,10 +966,12 @@ def _rates(email):
     }
 
 
-recent = sorted(subscribers, key=sort_key, reverse=True)[:30]
+recent = sorted(subscribers, key=sort_key, reverse=True)[:100]
 recent_rows = [
     {
         "email": s.get("email", ""),
+        "created": (s.get("created") or "")[:10],
+        "status": s.get("status") or "active",
         "verified": s.get("email", "").lower() in resend_emails,
         "sequence": per_sub_sequence.get(s.get("id"), "—"),
         **_rates((s.get("email") or "").lower()),
@@ -1969,8 +2035,8 @@ HTML = """<!DOCTYPE html>
     </div>
   </div>
   <div class="card">
-    <h3>Per-subscriber engagement (latest 30)</h3>
-    <table><thead><tr><th>Email</th><th class="num">Sent</th><th>Verified</th><th class="num">Open</th><th class="num">Click</th><th>Sequence</th></tr></thead>
+    <h3>All known emails — Resend source of truth (latest 100)</h3>
+    <table><thead><tr><th>Email</th><th>Signed up</th><th>Status</th><th class="num">Sent</th><th class="num">Open</th><th class="num">Click</th><th>Sequence</th></tr></thead>
       <tbody id="recent"></tbody></table>
   </div>
 </div>
@@ -2251,8 +2317,9 @@ tbl('statuses',   D.statuses,   [r => `<td>${r.k}</td>`, r => `<td class="num">$
 tbl('email-status', D.email_status, [r => `<td>${r.k}</td>`, r => `<td class="num">${fmt(r.n)}</td>`]);
 tbl('recent', D.recent, [
   r => `<td>${r.email}</td>`,
+  r => `<td>${r.created || '—'}</td>`,
+  r => `<td><span class="pill ${r.status === 'active' ? 'ok' : 'warn'}">${r.status}${r.status === 'active' && r.verified ? ' · verified' : ''}</span></td>`,
   r => `<td class="num">${fmt(r.emails_sent)}</td>`,
-  r => `<td><span class="pill ${r.verified ? 'ok' : 'warn'}">${r.verified ? 'verified' : 'pending'}</span></td>`,
   r => `<td class="num">${r.open_rate}%</td>`,
   r => `<td class="num">${r.click_rate}%</td>`,
   r => `<td>${r.sequence}</td>`,
