@@ -46,6 +46,31 @@ BOT_EMAILS = {
     "shannon-pool-1777015174929-94zulc@deltajohnsons.com",
 }
 EXCLUDED_EMAILS = TESTER_EMAILS | BOT_EMAILS
+
+# Dashboard-only pattern filter (does NOT affect production sends — that list
+# lives in pseo-site/lib/excluded-emails.ts). Catches QA/probe/test addresses
+# that were never added to the static sets above:
+#   - local part containing test / probe / regression (testerweiyi@, test@test.com,
+#     qualifier-route-probe*@, regression-regular@)
+#   - disposable/QA domains: mailinator, *.resend.app probes
+#   - the founder's own inboxes/domains: sipiteno.com (incl. the sales@ QA inbox),
+#     omilia.com, gitdealflow.com
+import re as _re
+
+_TESTER_LOCAL = _re.compile(r"(test|probe|regression)", _re.I)
+_TESTER_DOMAIN = _re.compile(
+    r"(^|\.)(mailinator\.com|resend\.app|sipiteno\.com|omilia\.com|gitdealflow\.com)$", _re.I
+)
+
+
+def is_excluded_email(em):
+    em = (em or "").lower()
+    if not em or em in EXCLUDED_EMAILS:
+        return bool(em) and em in EXCLUDED_EMAILS
+    local, _, domain = em.partition("@")
+    return bool(_TESTER_LOCAL.search(local) or _TESTER_DOMAIN.search(domain))
+
+
 # Exclude founder's country from PostHog traffic (self-traffic noise).
 EXCLUDE_COUNTRIES = {"GR"}
 
@@ -504,8 +529,8 @@ if token:
 raw_sub_count, raw_log_count = len(subscribers), len(email_log)
 
 # Filter testers + bots out of subscribers + email_log (by subscriber relation).
-tester_ids = {s["id"] for s in subscribers if (s.get("email") or "").lower() in EXCLUDED_EMAILS}
-subscribers = [s for s in subscribers if (s.get("email") or "").lower() not in EXCLUDED_EMAILS]
+tester_ids = {s["id"] for s in subscribers if is_excluded_email(s.get("email"))}
+subscribers = [s for s in subscribers if not is_excluded_email(s.get("email"))]
 email_log = [e for e in email_log if e.get("subscriber") not in tester_ids]
 print(f"  subscribers: {len(subscribers)} (excluded {raw_sub_count - len(subscribers)} testers+bots)"
       f", email_log: {len(email_log)} (excluded {raw_log_count - len(email_log)})")
@@ -514,7 +539,7 @@ print("Fetching Resend audience...")
 resend_contacts = resend_audience_contacts()
 resend_emails = {
     c["email"].lower() for c in resend_contacts
-    if not c.get("unsubscribed") and c["email"].lower() not in EXCLUDED_EMAILS
+    if not c.get("unsubscribed") and not is_excluded_email(c["email"])
 }
 print(f"  verified in Resend: {len(resend_emails)}")
 
@@ -541,7 +566,7 @@ if not subscribers and resend_contacts:
     print("  PB subscribers empty — synthesizing from Resend...")
     for c in resend_contacts:
         em = (c.get("email") or "").lower()
-        if not em or em in EXCLUDED_EMAILS:
+        if not em or is_excluded_email(em):
             continue
         attr = _unpack_attr(c.get("first_name"))
         subscribers.append({
@@ -564,7 +589,7 @@ if not subscribers and resend_contacts:
             continue
         recipients = e.get("to") or []
         em = (recipients[0] if recipients else "").lower()
-        if not em or em in EXCLUDED_EMAILS or em in audience_all:
+        if not em or is_excluded_email(em) or em in audience_all:
             continue
         ts = (e.get("created_at") or "").replace("T", " ")
         if em not in seen_unconfirmed or ts < seen_unconfirmed[em]:
@@ -819,7 +844,7 @@ if resend_events:
     for e in resend_events:
         recipients = e.get("to") or []
         to = (recipients[0] if recipients else "").lower()
-        if to in EXCLUDED_EMAILS:
+        if is_excluded_email(to):
             continue
         if subscriber_emails and to not in subscriber_emails:
             continue
