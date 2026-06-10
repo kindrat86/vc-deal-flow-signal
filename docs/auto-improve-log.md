@@ -54,6 +54,34 @@ health.json ok; /showdown/* → 308 /compare; A2A message/send routes
 "Show me AI/ML startups" → search_startups_by_sector with completed Task;
 tasks/get unknown id → -32001.
 
+## 2026-06-10 (evening) — off-page execution run (manual, user-authorized "do everything")
+
+**Badge-embed outreach UNBLOCKED and STARTED.** /api/badge/signal/[slug]/svg (PR #289)
+is live — verified drizzle/e2b/langfuse/trigger-dev/inngest all render "accelerating".
+Filed first batch of 5 gift-style issues (exact bodies from badge-issue-bodies.md,
+one-touch rule, NO follow-ups):
+- drizzle-team/drizzle-orm#5870 · triggerdotdev/trigger.dev#3895 · inngest/inngest#4381
+- e2b-dev/E2B#1417 · langfuse/langfuse#14176
+Next runs: file remaining Tier-1/2 targets in batches of ≤5 per day (spam-pattern
+safety), tracking which get badge embeds. NEVER re-touch a company already issued.
+
+**Awesome-list:** branch pushed to fork; cross-fork PR still blocked by token (404).
+One-click submit: https://github.com/wong2/awesome-mcp-servers/compare/main...kindrat86:awesome-mcp-servers-wong2:add-vc-deal-flow-signal?expand=1
+
+**Curator emails (Visible.vc/Qubit/Papermark) NOT sent:** no published email addresses
+(contact forms/Intercom only); guessed addresses risk bounces on the warmed
+signal@gitdealflow.com domain. Needs human: find/confirm addresses or use forms.
+Cold Tier-1 list remains SATURATED — per 05-30 dedup, do NOT re-send (3rd-touch cap).
+
+**GA4 (user approved ToS acceptance, UK):** account "GitDealFlow" + property
+"GitDealFlow Web" (EUR, GMT) created up to the ToS modal; Chrome extension
+disconnected before the accept click. Resume: analytics.google.com wizard →
+accept ToS + GDPR DPA → web data stream for https://gitdealflow.com → put
+G-XXXX measurement id into landing/pixels.js GA4 slot → vercel deploy landing.
+
+**Bluesky:** bsky.app not logged in in Chrome; password entry is human-only.
+Needs: user logs in → app password → gh secret set BSKY_HANDLE/BSKY_APP_PASSWORD.
+
 **Known issues for next runs:**
 - IndexNow post-build submit returned HTTP 400 (2,806 URLs) — investigate
   payload/key validity.
