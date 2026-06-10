@@ -12,6 +12,7 @@ import {
 } from "@/content/sectors";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import SeoCta from "@/components/SeoCta";
+import SignalDisclaimer from "@/components/SignalDisclaimer";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -84,7 +85,7 @@ export default async function SectorHubPage({ params }: PageProps) {
         },
         speakable: {
           "@type": "SpeakableSpecification",
-          cssSelector: ["h1", ".tagline", ".what-we-track"],
+          cssSelector: ["[data-speakable]", "h1", ".tagline", ".what-we-track"],
         },
       },
       {
@@ -167,10 +168,11 @@ export default async function SectorHubPage({ params }: PageProps) {
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-4 leading-tight">
           {s.h1}
         </h1>
-        <p className="tagline text-sky-400 text-base leading-relaxed mb-6 font-medium">
+        <p data-speakable className="tagline text-sky-400 text-base leading-relaxed mb-6 font-medium">
           {s.tagline}
         </p>
-        <p className="text-gray-400 text-base leading-relaxed mb-10">{s.intro}</p>
+        <p className="text-gray-400 text-base leading-relaxed mb-3">{s.intro}</p>
+        <SignalDisclaimer className="mb-10" />
 
         <div className="grid grid-cols-3 gap-4 mb-10">
           <div className="rounded-lg border border-slate-800 bg-slate-900 p-4 text-center">

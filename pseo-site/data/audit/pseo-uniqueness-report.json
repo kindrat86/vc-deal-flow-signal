@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-10T05:37:18.241Z",
+  "generatedAt": "2026-06-10T19:03:54.858Z",
   "config": {
     "hammingThreshold": 9,
     "globalThresholdPct": 5,
@@ -11,8 +11,8 @@
     "flaggedPct": 0
   },
   "observational": {
-    "entries": 1859,
-    "flagged": 1718
+    "entries": 262,
+    "flagged": 121
   },
   "verdict": "PASS",
   "surfaces": [
@@ -274,141 +274,6 @@
           "b": "typesense",
           "hamming": 8,
           "similarity": 87.5
-        }
-      ]
-    },
-    {
-      "name": "showdown",
-      "basePath": "/showdown",
-      "reportOnly": true,
-      "totalEntries": 1597,
-      "flaggedEntries": 1597,
-      "flaggedPct": 100,
-      "shingleCounts": {
-        "min": 748,
-        "max": 842,
-        "mean": 798
-      },
-      "pairs": [
-        {
-          "a": "huggingface-vs-lovable",
-          "b": "continue-vs-prisma",
-          "hamming": 0,
-          "similarity": 100
-        },
-        {
-          "a": "nuxt-vs-remotion",
-          "b": "nuxt-vs-ollama",
-          "hamming": 0,
-          "similarity": 100
-        },
-        {
-          "a": "anthropic-vs-langchain",
-          "b": "langchain-vs-letta-ai",
-          "hamming": 1,
-          "similarity": 98.4
-        },
-        {
-          "a": "honeycomb-vs-sentry",
-          "b": "arize-ai-vs-sentry",
-          "hamming": 1,
-          "similarity": 98.4
-        },
-        {
-          "a": "prisma-vs-stytch",
-          "b": "continue-vs-stytch",
-          "hamming": 1,
-          "similarity": 98.4
-        },
-        {
-          "a": "clerk-vs-ory",
-          "b": "inngest-vs-ory",
-          "hamming": 1,
-          "similarity": 98.4
-        },
-        {
-          "a": "astro-vs-trigger-dev",
-          "b": "astro-vs-circleci",
-          "hamming": 1,
-          "similarity": 98.4
-        },
-        {
-          "a": "continue-vs-inngest",
-          "b": "astro-vs-continue",
-          "hamming": 1,
-          "similarity": 98.4
-        },
-        {
-          "a": "circleci-vs-inngest",
-          "b": "astro-vs-circleci",
-          "hamming": 1,
-          "similarity": 98.4
-        },
-        {
-          "a": "pulumi-vs-stytch",
-          "b": "backstage-vs-stytch",
-          "hamming": 1,
-          "similarity": 98.4
-        },
-        {
-          "a": "ollama-vs-stytch",
-          "b": "deno-vs-twilio",
-          "hamming": 1,
-          "similarity": 98.4
-        },
-        {
-          "a": "fermyon-vs-netlify",
-          "b": "fermyon-vs-portainer",
-          "hamming": 1,
-          "similarity": 98.4
-        },
-        {
-          "a": "anyscale-vs-groq",
-          "b": "anyscale-vs-vllm",
-          "hamming": 1,
-          "similarity": 98.4
-        },
-        {
-          "a": "dust-tt-vs-stability-ai",
-          "b": "jina-ai-vs-stability-ai",
-          "hamming": 1,
-          "similarity": 98.4
-        },
-        {
-          "a": "continue-vs-cursor",
-          "b": "continue-vs-llamaindex",
-          "hamming": 1,
-          "similarity": 98.4
-        },
-        {
-          "a": "langchain-vs-mastra",
-          "b": "elevenlabs-vs-mastra",
-          "hamming": 1,
-          "similarity": 98.4
-        },
-        {
-          "a": "elevenlabs-vs-langchain",
-          "b": "elevenlabs-vs-letta-ai",
-          "hamming": 1,
-          "similarity": 98.4
-        },
-        {
-          "a": "elevenlabs-vs-jina-ai",
-          "b": "jina-ai-vs-voyage-ai",
-          "hamming": 1,
-          "similarity": 98.4
-        },
-        {
-          "a": "pulumi-vs-weights-biases",
-          "b": "astro-vs-pulumi",
-          "hamming": 1,
-          "similarity": 98.4
-        },
-        {
-          "a": "ory-vs-sourcegraph",
-          "b": "ory-vs-tauri",
-          "hamming": 1,
-          "similarity": 98.4
         }
       ]
     },

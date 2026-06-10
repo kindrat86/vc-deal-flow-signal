@@ -73,7 +73,7 @@ export default async function CompanySignalPage({ params }: PageProps) {
         },
         speakable: {
           "@type": "SpeakableSpecification",
-          cssSelector: ["h1", ".signal-summary", ".tagline"],
+          cssSelector: ["[data-speakable]", "h1", ".signal-summary", ".tagline"],
         },
       },
       {
@@ -151,7 +151,7 @@ export default async function CompanySignalPage({ params }: PageProps) {
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-4 leading-tight">
           {c.h1}
         </h1>
-        <p className="tagline text-sky-400 text-base leading-relaxed mb-6 font-medium">
+        <p data-speakable className="tagline text-sky-400 text-base leading-relaxed mb-6 font-medium">
           {c.tagline}
         </p>
         <p className="text-gray-400 text-base leading-relaxed mb-10">{c.intro}</p>

@@ -40,7 +40,6 @@ import { nicheSectors } from "../content/niches";
 import { buildVsInvestSectors } from "../content/build-vs-invest";
 import { SOLO_FOUNDER_SECTORS } from "../content/solo-founder-tracker";
 import { COMMUNITY_GROUPS } from "../content/community-signal";
-import { getAllShowdownSlugs, getShowdownPair } from "../content/showdowns";
 import { getAllSectorCityPairs, getSectorCity } from "../content/sector-city";
 import { getCompaniesInSectorAndCity } from "../content/company-locations";
 import { companies } from "../content/companies";
@@ -65,7 +64,7 @@ interface Surface {
   /**
    * When true, the surface is MEASURED and reported but does NOT count
    * toward the build-gating global FAIL threshold. Used for combinatorial
-   * and entity-template families (showdown, sector×city, signal) whose
+   * and entity-template families (sector×city, signal) whose
    * cross-page overlap is structural — driven by the shared `companies.ts`
    * editorial template, not by a per-page authoring defect. Their fix is a
    * product/content decision (rewrite per-entity editorial, noindex thin
@@ -263,17 +262,11 @@ const SURFACES: Surface[] = [
     reportOnly: true,
     entries: companies.map((c) => buildEntry(c.slug, c)),
   },
-  {
-    // /showdown/[slug] — company-vs-company pairs, the LARGEST combinatorial
-    // family. Body = both companies' full data objects.
-    name: "showdown",
-    basePath: "/showdown",
-    reportOnly: true,
-    entries: getAllShowdownSlugs().flatMap((slug) => {
-      const pair = getShowdownPair(slug);
-      return pair ? [buildEntry(slug, { a: pair.a, b: pair.b })] : [];
-    }),
-  },
+  // NOTE: the /showdown/[slug] family (company-vs-company pairs, formerly the
+  // largest combinatorial family at ~1,582 pages) was removed entirely in
+  // 2026-06 after this audit flagged 100% of its leaves as near-duplicates.
+  // The route, content module (content/showdowns.ts), sitemap/llms/entities
+  // references, and internal links are gone; /showdown/* now redirects.
   {
     // /sector/[slug]/in/[city] — sector × city crossings. The 2026-05-28
     // thin-page analysis named these the highest-risk combinatorial cells.

@@ -384,15 +384,10 @@ export async function GET(_req: Request, ctx: RouteContext) {
         changefreq: "monthly",
         priority: 0.7,
       })),
-      // /showdown hub stays in the sitemap (genuine listing page). The per-pair
-      // /showdown/[slug] LEAVES are intentionally NOT enumerated here: they carry
-      // `robots: noindex,follow` (app/showdown/[slug]/page.tsx) because the uniqueness
-      // audit flags 100% of them as near-duplicates. Submitting noindexed URLs in a
-      // sitemap is a crawl-trust smell, so the two changes ship together. The leaves
-      // remain reachable via internal links + generateStaticParams for agent/MCP value.
-      // Reversible: restore the getAllShowdownSlugs() spread to re-list them.
-      // See marketing/seo-authority-and-indexation-2026-05-30.md.
-      { url: `${BASE_URL}/showdown`, lastmod, changefreq: "weekly", priority: 0.75 },
+      // NOTE: the /showdown family (hub + ~1,582 per-pair leaves) was removed
+      // entirely in 2026-06 — the uniqueness audit flagged 100% of leaves as
+      // near-duplicates, so the route no longer exists and nothing is listed
+      // here. /showdown/* redirects to the canonical comparison surfaces.
       { url: `${BASE_URL}/acquirer`, lastmod, changefreq: "weekly", priority: 0.85 },
       ...getAllAcquirerSlugs().map((slug) => ({
         url: `${BASE_URL}/acquirer/${slug}`,
@@ -406,7 +401,7 @@ export async function GET(_req: Request, ctx: RouteContext) {
       // editorial-only cells are the thin made-for-search tail — they carry
       // `robots: noindex,follow` (app/sector/[slug]/in/[city]/page.tsx) and are
       // omitted here so crawl budget + site quality concentrate on
-      // differentiated pages. Same treatment as /showdown above. The leaves
+      // differentiated pages. The leaves
       // stay statically generated + internally linked for agent/MCP value.
       // Reversible: swap getIndexableSectorCityPairs() → getAllSectorCityPairs().
       ...getIndexableSectorCityPairs().map(({ sector, city }) => ({

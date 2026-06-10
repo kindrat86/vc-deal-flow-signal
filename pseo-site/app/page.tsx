@@ -66,6 +66,8 @@ const PILLAR_LINKS = [
   { href: "/startups-to-watch", label: "Startups to watch", sub: "By sector + region", icon: "🌍" },
   { href: "/signals", label: "Signal taxonomy", sub: "Every signal type", icon: "🏷️" },
   { href: "/alternatives", label: "Alternatives", sub: "vs Harmonic, Affinity, Tracxn", icon: "⚖️" },
+  { href: "/answers", label: "Answers", sub: "Direct answers to buyer-side sourcing questions", icon: "💬" },
+  { href: "/compare", label: "Compare", sub: "Side-by-side tool comparisons", icon: "🆚" },
   { href: "/glossary", label: "Glossary", sub: "Defined terms", icon: "📖" },
   { href: "/faq", label: "FAQ", sub: "60+ answers", icon: "❓" },
   { href: "/research", label: "Research panel", sub: "30 SSRN findings", icon: "🔬" },

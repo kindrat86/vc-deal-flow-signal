@@ -3,7 +3,7 @@
  *
  * Each persona is one of the Marcus 100 buyer roles. The page maps
  * the existing pSEO surface (711+ pages across /signal, /sector,
- * /city, /showdown, /acquirer, /fund, /trend, /works-with,
+ * /city, /acquirer, /fund, /trend, /works-with,
  * /year-in-review) to that persona's specific workflows.
  *
  * URL convention: distinct from existing /for-builders, /for-crewai,
@@ -90,9 +90,9 @@ export const PERSONAS: Persona[] = [
       {
         name: "Side-by-side target comparison",
         description:
-          "For acquisition shortlists in the same sector, the /showdown pages render full side-by-side engineering-signal comparisons. Stage, momentum, public repos, language bias — useful as a first-pass screen before deep due diligence.",
-        primaryPath: "/showdown",
-        secondaryPaths: ["/showdown/anthropic-vs-openai", "/showdown/modal-vs-replicate"],
+          "For acquisition shortlists in the same sector, open the candidates' /signal pages side by side for a full engineering-signal comparison. Stage, momentum, public repos, language bias — useful as a first-pass screen before deep due diligence.",
+        primaryPath: "/signal",
+        secondaryPaths: ["/signal/anthropic", "/signal/modal"],
       },
       {
         name: "Year-in-review M&A landscape briefings",
@@ -157,7 +157,7 @@ export const PERSONAS: Persona[] = [
         description:
           "Compare your portfolio companies' engineering velocity to category-leading public peers via the /signal entity pages. Useful for quarterly portfolio review and for identifying portfolio companies that need engineering-organization investment.",
         primaryPath: "/signal",
-        secondaryPaths: ["/showdown", "/trend"],
+        secondaryPaths: ["/sector", "/trend"],
       },
       {
         name: "Fund-level concentration via portfolio rollups",
@@ -209,16 +209,16 @@ export const PERSONAS: Persona[] = [
       {
         name: "Vendor consolidation scouting",
         description:
-          "When evaluating which vendor to standardize on in a category (auth, observability, database, dev tools, etc.), the /sector and /showdown pages give a publicly observable engineering-velocity comparison. Vendors with sustained acceleration are likely to consolidate the category long-term.",
-        primaryPath: "/showdown",
-        secondaryPaths: ["/sector", "/works-with"],
+          "When evaluating which vendor to standardize on in a category (auth, observability, database, dev tools, etc.), the /sector hubs and per-vendor /signal pages give a publicly observable engineering-velocity comparison. Vendors with sustained acceleration are likely to consolidate the category long-term.",
+        primaryPath: "/sector",
+        secondaryPaths: ["/signal", "/works-with"],
       },
       {
         name: "Competitive engineering benchmarking",
         description:
           "Compare your company's engineering acceleration to direct public competitors via /signal entity pages. Useful for board presentations defending engineering headcount, advocating for platform investments, or modeling competitive timelines.",
         primaryPath: "/signal",
-        secondaryPaths: ["/showdown", "/trend"],
+        secondaryPaths: ["/sector", "/trend"],
       },
       {
         name: "Acquisition-rumor verification",
@@ -229,7 +229,7 @@ export const PERSONAS: Persona[] = [
       },
     ],
     quickStart: [
-      { label: "Vendor showdowns", path: "/showdown" },
+      { label: "Sector vendor hubs", path: "/sector" },
       { label: "Per-vendor signal pages", path: "/signal" },
       { label: "Trend leaderboards", path: "/trend" },
     ],
@@ -331,9 +331,9 @@ export const PERSONAS: Persona[] = [
       {
         name: "Competitive landscape scoping",
         description:
-          "Before raising, use /sector and /showdown pages to map who's ahead in your category, what engineering investment they've made, and how your team's velocity compares. Brings objectivity to the 'we're ahead' or 'we're behind' framing during fundraise conversations.",
+          "Before raising, use /sector and /signal pages to map who's ahead in your category, what engineering investment they've made, and how your team's velocity compares. Brings objectivity to the 'we're ahead' or 'we're behind' framing during fundraise conversations.",
         primaryPath: "/sector",
-        secondaryPaths: ["/showdown", "/trend"],
+        secondaryPaths: ["/signal", "/trend"],
       },
       {
         name: "Investor target identification",

@@ -95,8 +95,9 @@ export function sectorCityHasLocalCompanies(
  * internally linked (`noindex, follow`, see app/sector/[slug]/in/[city]/
  * page.tsx) so they keep passing equity to /signal, /sector, /city and the
  * region panels, and stay reachable for agents/MCP — they are just omitted
- * from the sitemap and the index. Mirrors the /showdown near-duplicate
- * treatment (see app/sitemap/[id]/route.ts). Fully reversible: swap this
+ * from the sitemap and the index. (The /showdown family that pioneered this
+ * treatment was removed entirely in 2026-06 — 100% near-duplicate leaves.)
+ * Fully reversible: swap this
  * back to getAllSectorCityPairs() in the sitemap to re-list every cell.
  */
 export function getIndexableSectorCityPairs(): SectorCityPair[] {

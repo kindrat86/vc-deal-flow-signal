@@ -166,6 +166,21 @@ const nextConfig: NextConfig = {
         destination: "/answers/best-mcp-server-for-vc-research",
         permanent: true,
       },
+      // Showdown family removed 2026-06-10: ~1,582 statically generated
+      // company-pair pages were 100% near-duplicates (audit:pseo) and
+      // already noindexed. Slugs don't map 1:1 to /vs (different
+      // namespace: tracked-company pairs vs competitor tools), so old
+      // leaves consolidate into the /compare hub.
+      {
+        source: "/showdown",
+        destination: "/compare",
+        permanent: true,
+      },
+      {
+        source: "/showdown/:slug",
+        destination: "/compare",
+        permanent: true,
+      },
     ];
   },
 
@@ -228,6 +243,18 @@ const nextConfig: NextConfig = {
       { source: "/dashboard/:path*", headers: [{ key: "Cache-Control", value: "private, no-cache, no-store, max-age=0, must-revalidate" }] },
       { source: "/login", headers: [{ key: "Cache-Control", value: "private, no-cache, no-store, max-age=0, must-revalidate" }] },
       { source: "/login/:path*", headers: [{ key: "Cache-Control", value: "private, no-cache, no-store, max-age=0, must-revalidate" }] },
+      // API responses are data surfaces for agents/integrations, not SERP
+      // candidates. noindex keeps raw JSON/CSV out of search results while
+      // leaving crawl + fetch access fully open (AI crawlers still read them).
+      {
+        source: "/api/:path*",
+        headers: [
+          {
+            key: "X-Robots-Tag",
+            value: "noindex",
+          },
+        ],
+      },
       // Iframe-friendly embed surfaces — re-open framing for the public
       // embed widgets so newsletter authors / blog writers can drop them
       // into Substack, Ghost, WordPress, etc. The route handlers also set

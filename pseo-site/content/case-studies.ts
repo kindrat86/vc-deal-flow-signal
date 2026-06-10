@@ -124,9 +124,9 @@ export const CASE_STUDIES: CaseStudy[] = [
       {
         label: "Side-by-side comparison",
         description:
-          "For top 4 candidates, used /showdown/[a]-vs-[b] pages to compare stage, momentum, public repos, and language bias side-by-side. Surfaced engineering-team-shape differences that affected integration cost models.",
-        primaryPath: "/showdown",
-        supportingPaths: ["/showdown/modal-vs-replicate"],
+          "For top 4 candidates, compared /signal/[slug] pages side by side on stage, momentum, public repos, and language bias. Surfaced engineering-team-shape differences that affected integration cost models.",
+        primaryPath: "/signal",
+        supportingPaths: ["/signal/modal", "/signal/replicate"],
       },
       {
         label: "Trend cross-reference",
@@ -148,7 +148,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     lessons: [
       "Engineering-signal data is most useful when paired with the acquirer's own M&A pattern — it accelerates the shortlist phase but does not replace strategic fit analysis.",
       "Per-company /signal pages should always be cross-referenced against /sector and /trend pages before drawing conclusions.",
-      "The /showdown side-by-side surface is the highest-leverage page for shortlist construction.",
+      "Reading candidate /signal pages side by side is the highest-leverage step for shortlist construction.",
     ],
     extraFaqs: [
       {
@@ -159,7 +159,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       {
         question: "Which pages does Corp Dev use to build an acquisition shortlist?",
         answer:
-          "The workflow runs /sector/[slug] for category framing, /signal/[slug] for per-company engineering momentum, /showdown/[a]-vs-[b] for side-by-side comparison, /trend/[slug] to validate category leadership, and /city/[slug] to filter for integration constraints.",
+          "The workflow runs /sector/[slug] for category framing, /signal/[slug] for per-company engineering momentum and side-by-side comparison, /trend/[slug] to validate category leadership, and /city/[slug] to filter for integration constraints.",
       },
       {
         question: "Does engineering-signal data replace strategic-fit analysis?",
@@ -321,8 +321,8 @@ export const CASE_STUDIES: CaseStudy[] = [
       {
         label: "Side-by-side decision matrix",
         description:
-          "Used /showdown/datadog-vs-honeycomb and adjacent showdowns to surface engineering-organization-shape differences. Datadog showed sustained breadth across 300+ public repos; Honeycomb showed deeper focus on a narrower trace-exploration surface.",
-        primaryPath: "/showdown/datadog-vs-honeycomb",
+          "Compared /signal/datadog and /signal/honeycomb side by side to surface engineering-organization-shape differences. Datadog showed sustained breadth across 300+ public repos; Honeycomb showed deeper focus on a narrower trace-exploration surface.",
+        primaryPath: "/signal/datadog",
       },
       {
         label: "Trend leaderboard context",
@@ -348,13 +348,13 @@ export const CASE_STUDIES: CaseStudy[] = [
     lessons: [
       "Engineering-signal data translates well to non-engineer executive audiences because the data is independently sourced and publicly verifiable.",
       "Vendor consolidation arguments benefit from objective third-party benchmark data — internal CRMs and engineering opinions alone are not enough.",
-      "The /showdown side-by-side surface is especially valuable for vendor-consolidation work.",
+      "Side-by-side /signal comparisons are especially valuable for vendor-consolidation work.",
     ],
     extraFaqs: [
       {
         question: "How can a non-engineer VP justify a vendor-consolidation decision?",
         answer:
-          "By grounding it in independently sourced, publicly verifiable engineering-velocity data from /signal and /showdown pages. Because the data is third-party and public, non-engineer executive peers accept it without an engineering-team-level technical debate.",
+          "By grounding it in independently sourced, publicly verifiable engineering-velocity data from /signal pages. Because the data is third-party and public, non-engineer executive peers accept it without an engineering-team-level technical debate.",
       },
       {
         question: "What was the spend impact in this scenario?",
@@ -364,7 +364,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       {
         question: "Which page is most useful for vendor consolidation?",
         answer:
-          "The /showdown side-by-side surface, which exposes engineering-organization-shape differences — for example Datadog's sustained breadth across 300+ public repos versus Honeycomb's deeper focus on a narrower trace-exploration surface.",
+          "Side-by-side /signal pages, which expose engineering-organization-shape differences — for example Datadog's sustained breadth across 300+ public repos versus Honeycomb's deeper focus on a narrower trace-exploration surface.",
       },
     ],
   }),
@@ -395,8 +395,8 @@ export const CASE_STUDIES: CaseStudy[] = [
       {
         label: "Side-by-side competitive table",
         description:
-          "Used /showdown/[a]-vs-[b] pages to validate the differentiation story across multiple axes (stage, momentum, language bias, contributor density). Lifted the framing for the competitive-landscape slide in the fundraise deck.",
-        primaryPath: "/showdown",
+          "Compared competitor /signal pages side by side to validate the differentiation story across multiple axes (stage, momentum, language bias, contributor density). Lifted the framing for the competitive-landscape slide in the fundraise deck.",
+        primaryPath: "/signal",
       },
       {
         label: "Investor target identification",
@@ -424,7 +424,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       {
         question: "How does a founder map competitors before a Series A?",
         answer:
-          "By positioning on the relevant /trend leaderboard, deep-diving each competitor's /signal page, and validating differentiation across axes (stage, momentum, contributor density, language bias) with /showdown pages — then lifting that framing into the deck's competitive-landscape slide.",
+          "By positioning on the relevant /trend leaderboard, deep-diving each competitor's /signal page, and validating differentiation across axes (stage, momentum, contributor density, language bias) with side-by-side /signal comparisons — then lifting that framing into the deck's competitive-landscape slide.",
       },
       {
         question: "How did engineering-grounded positioning affect the raise?",
@@ -539,8 +539,8 @@ export const CASE_STUDIES: CaseStudy[] = [
       {
         label: "Side-by-side comparison",
         description:
-          "Used /showdown/groq-vs-modal and adjacent pages to surface engineering-organization-shape differences. Lifted comparison numbers into the story's middle section.",
-        primaryPath: "/showdown/groq-vs-modal",
+          "Compared /signal/groq and /signal/modal side by side to surface engineering-organization-shape differences. Lifted comparison numbers into the story's middle section.",
+        primaryPath: "/signal/groq",
       },
       {
         label: "Verification + publication",

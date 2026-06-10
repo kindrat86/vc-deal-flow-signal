@@ -9,6 +9,7 @@ import { FunnelTeardown } from "@/components/FunnelTeardown";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 import SeoCta from "@/components/SeoCta";
+import SignalDisclaimer from "@/components/SignalDisclaimer";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -92,7 +93,7 @@ export default async function ComparisonPage({ params }: PageProps) {
         },
         speakable: {
           "@type": "SpeakableSpecification",
-          cssSelector: ["h1", ".verdict-block"],
+          cssSelector: ["[data-speakable]", "h1", ".verdict-block"],
         },
       },
       {
@@ -231,9 +232,17 @@ export default async function ComparisonPage({ params }: PageProps) {
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-4 leading-tight">
           {comp.h1}
         </h1>
-        <p className="text-gray-400 text-base leading-relaxed mb-10">
+        <p data-speakable className="text-gray-400 text-base leading-relaxed mb-3">
           {comp.intro}
         </p>
+        <p className="text-xs text-gray-500 mb-1">
+          Data refreshed:{" "}
+          {lastModified.toLocaleDateString("en-US", {
+            month: "long",
+            year: "numeric",
+          })}
+        </p>
+        <SignalDisclaimer className="mb-10" />
 
         {/* Sections */}
         <div className="space-y-6 mb-10">

@@ -1,0 +1,78 @@
+name: Social — Bluesky auto-post
+
+# Posts the oldest unused entry from tools/bluesky/post-queue.json via
+# tools/bluesky/engage.mjs. Two crons ~6.5h apart respect the queue's
+# max_per_day=2 / min_gap_minutes=240 rules. The script also honors the
+# tools/campaign/HOLD halt file and exits 0 when nothing is eligible.
+#
+# Requires repo secrets BSKY_HANDLE and BSKY_APP_PASSWORD. When they are
+# absent the job succeeds as a no-op (secrets can't be read in a job-level
+# `if`, so a step maps them to env and gates the rest via an output).
+on:
+  schedule:
+    - cron: "17 9 * * *"
+    - cron: "43 15 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: social-bluesky
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      BSKY_HANDLE: ${{ secrets.BSKY_HANDLE }}
+      BSKY_APP_PASSWORD: ${{ secrets.BSKY_APP_PASSWORD }}
+
+    steps:
+      - name: Check Bluesky secrets
+        id: creds
+        run: |
+          if [ -n "$BSKY_HANDLE" ] && [ -n "$BSKY_APP_PASSWORD" ]; then
+            echo "ok=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+            echo "BSKY_HANDLE / BSKY_APP_PASSWORD secrets not set — skipping (no-op)."
+          fi
+
+      - uses: actions/checkout@v4
+        if: steps.creds.outputs.ok == 'true'
+
+      - uses: actions/setup-node@v4
+        if: steps.creds.outputs.ok == 'true'
+        with:
+          node-version: "22"
+
+      - name: Install @atproto/api
+        if: steps.creds.outputs.ok == 'true'
+        # No package.json at repo root or in tools/ provides @atproto/api,
+        # so install it ad hoc at the workspace root; engage.mjs resolves it
+        # from tools/bluesky/ via the usual upward node_modules walk.
+        run: npm install --prefix "$GITHUB_WORKSPACE" --no-save --no-audit --no-fund @atproto/api
+
+      - name: Post to Bluesky
+        if: steps.creds.outputs.ok == 'true'
+        run: node tools/bluesky/engage.mjs
+
+      - name: Commit and push if queue changed
+        if: steps.creds.outputs.ok == 'true'
+        # tools/bluesky/state/ is gitignored (per-machine runtime state), so
+        # only the queue mutation (use_count / last_used) is committed.
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add tools/bluesky/post-queue.json
+          if git diff --cached --quiet; then
+            echo "Queue unchanged (HOLD, rules, or empty queue) — nothing to commit."
+          else
+            git commit -m "data: bluesky post published (queue use_count updated)
+
+          Automated via .github/workflows/social-bluesky.yml."
+            git push
+            echo "Committed and pushed."
+          fi

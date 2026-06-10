@@ -323,13 +323,6 @@ const PROJECTS: Entity[] = [
       "Editorial city pages for 41 venture hubs across Europe, North America, Asia-Pacific, Latin America, and MEA. Each leaf maps notable engineering orgs, active VC anchors, sector mix, and the local commit-cadence pattern. One leaf per city under /city/[slug].",
   },
   {
-    name: "Showdowns Index",
-    type: "CollectionPage",
-    url: `${SITE}/showdown`,
-    description:
-      "Side-by-side engineering-signal comparisons between curated tracked companies. Same-sector pairs only. Independent — no affiliation with the compared orgs. One leaf per pair under /showdown/[a-vs-b].",
-  },
-  {
     name: "Acquirers Index",
     type: "CollectionPage",
     url: `${SITE}/acquirer`,

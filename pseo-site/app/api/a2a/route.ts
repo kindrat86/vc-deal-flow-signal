@@ -465,38 +465,142 @@ const KNOWN_SKILLS = new Set([
   "get_launch_status",
 ]);
 
+// Words that must never be treated as a startup/sector candidate even if a
+// tracked entity happens to collide with them.
+const TEXT_STOPWORDS = new Set([
+  "the", "and", "this", "that", "week", "month", "show", "what", "whats",
+  "who", "whos", "are", "you", "your", "should", "look", "right", "now",
+  "startup", "startups", "company", "companies", "signal", "signals",
+  "trending", "top", "hot", "breakout", "new", "best", "list", "tell",
+  "about", "please", "github", "deal", "flow", "deal-flow", "sector",
+  "sectors", "watch", "picks", "moving", "with", "from", "into", "for",
+]);
+
+/** Slugified single words and adjacent-word bigrams from the prompt text. */
+function candidateTokens(text: string): string[] {
+  const words = text
+    .split(/\s+/)
+    .map((w) => slugify(w))
+    .filter(Boolean);
+  const out: string[] = [];
+  for (let i = 0; i < words.length; i++) {
+    out.push(words[i]);
+    if (i + 1 < words.length) out.push(`${words[i]}-${words[i + 1]}`);
+  }
+  return out;
+}
+
+/** Slugs of every startup tracked in the current period. */
+function knownStartupSlugs(): Set<string> {
+  const period = getCurrentPeriod();
+  const out = new Set<string>();
+  for (const sector of getAllSectors()) {
+    const snap = sector.periods[period.slug];
+    if (!snap) continue;
+    for (const st of snap.startups) out.add(slugify(st.name));
+  }
+  return out;
+}
+
+/** Active sector slugs + slugified display names + alias keys. */
+function knownSectorTokens(): Set<string> {
+  const period = getCurrentPeriod();
+  const out = new Set<string>();
+  for (const sector of getAllSectors()) {
+    if (!sector.periods[period.slug]) continue;
+    out.add(sector.slug);
+    out.add(slugify(sector.name));
+  }
+  for (const alias of Object.keys(SECTOR_ALIASES)) out.add(alias);
+  return out;
+}
+
 function inferSkillFromText(text: string): SkillInvocation | null {
   const t = text.toLowerCase();
+
+  // 1. Launch / install / integration intent.
   if (
-    /(product\s*hunt|producthunt|\bph\b|launch|launching|live\s+today|upvote)/.test(
+    /(product\s*hunt|producthunt|\bph\b|launch|live\s+today|upvote|\binstall|\bmcp\b|claude|cursor|support\s+you)/.test(
       t
     )
   ) {
     return { skillId: "get_launch_status", args: {} };
   }
-  if (/method|how.*calcul|breakout.*mean|trust|how.*work/.test(t)) {
+
+  // 2. Methodology / trust intent.
+  if (
+    /method|how.*calculat|how.*comput|breakout.*mean|\btrust\b|limitation|how.*work/.test(
+      t
+    )
+  ) {
     return { skillId: "get_methodology", args: {} };
   }
-  if (/summary|fresh|cite|citation|csv|download|how many sector/.test(t)) {
+
+  // 3. Dataset meta intent.
+  if (
+    /summary|\bfresh|\bcite\b|citation|\bcsv\b|download|how many sector|what is this (service|site|dataset|agent|data)|update frequen|\brss\b|openapi/.test(
+      t
+    )
+  ) {
     return { skillId: "get_signals_summary", args: {} };
   }
-  const sectorPattern = /(?:in|for|about)\s+([a-z][a-z\- /]{2,40})/i.exec(text);
-  if (sectorPattern) {
-    return {
-      skillId: "search_startups_by_sector",
-      args: { sector: sectorPattern[1].trim() },
-    };
+
+  const candidates = candidateTokens(text);
+
+  // 4. Exact tracked-startup mention ("Tell me about Roboflow",
+  //    "Is Modular trending") — checked before sectors so a company name
+  //    can never be mistaken for a sector.
+  const startups = knownStartupSlugs();
+  for (const c of candidates) {
+    if (c.length >= 3 && !TEXT_STOPWORDS.has(c) && startups.has(c)) {
+      return { skillId: "get_startup_signal", args: { name: c } };
+    }
   }
-  const lookupPattern = /(?:about|tell me about|profile|signal for|lookup)\s+([A-Za-z][\w \-.]{1,80})/i.exec(text);
-  if (lookupPattern) {
-    return {
-      skillId: "get_startup_signal",
-      args: { name: lookupPattern[1].trim() },
-    };
+
+  // 5. Known sector mention ("Cybersecurity deal flow", "Show me AI/ML
+  //    startups", "Climate-tech picks", "Who's moving in fintech").
+  const sectorTokens = knownSectorTokens();
+  for (const c of candidates) {
+    if (!TEXT_STOPWORDS.has(c) && sectorTokens.has(c)) {
+      return { skillId: "search_startups_by_sector", args: { sector: c } };
+    }
   }
-  if (/trending|top|hot|breakout|who.*watch/.test(t)) {
+
+  // 6. Explicit lookup phrasing for names outside the tracked universe —
+  //    returns the honest found:false payload ("What's Supabase's signal",
+  //    "Lookup SkyPilot").
+  const lookup =
+    /(?:tell me about|look\s?up|profile (?:for|of)|signal (?:for|of))\s+([A-Za-z][\w .-]{1,60})/i.exec(
+      text
+    ) ||
+    /what(?:'|’)?s\s+([A-Za-z][\w.-]{1,40})(?:'|’)s\s+signal/i.exec(
+      text
+    ) ||
+    /\bis\s+([A-Za-z][\w.-]{1,40})\s+(?:trending|hot|accelerating)/i.exec(text);
+  if (lookup) {
+    return { skillId: "get_startup_signal", args: { name: lookup[1].trim() } };
+  }
+
+  // 7. Trending intent ("Top breakout companies", "Who's hot in deal flow").
+  if (/trending|\btop\b|\bhot\b|breakout|watch|momentum|accelerat|rising|deal.?flow/.test(t)) {
     return { skillId: "get_trending_startups", args: {} };
   }
+
+  // 8. "in <sector>" / "for <sector>" phrasing with an unrecognized sector —
+  //    route to sector search so the caller gets availableSectors back.
+  const sectorPhrase = /(?:\bin|\bfor)\s+([a-z][a-z/-]{2,30})/i.exec(text);
+  if (sectorPhrase) {
+    return {
+      skillId: "search_startups_by_sector",
+      args: { sector: sectorPhrase[1].trim() },
+    };
+  }
+
+  // 9. Generic startup-browsing fallback ("What startups should I look at").
+  if (/startup|compan|invest|portfolio/.test(t)) {
+    return { skillId: "get_trending_startups", args: {} };
+  }
+
   return null;
 }
 
@@ -549,45 +653,57 @@ function extractInvocation(message: Message): SkillInvocation | null {
   return null;
 }
 
-function buildTask(invocation: SkillInvocation | null, result: unknown, contextId: string) {
+function buildTask(invocation: SkillInvocation, result: unknown, contextId: string) {
   const taskId = randomUUID();
-  const summaryText =
-    invocation && KNOWN_SKILLS.has(invocation.skillId)
-      ? `Skill ${invocation.skillId} completed.`
-      : "Could not infer a skill from the request. Pass a `data` part with `{ skill: '<id>', args: {...} }` or include a clear text prompt. See https://signals.gitdealflow.com/.well-known/agent-card.json for available skills.";
-
-  const artifacts = invocation
-    ? [
-        {
-          artifactId: randomUUID(),
-          name: invocation.skillId,
-          parts: [
-            { kind: "data" as const, data: result as Record<string, unknown> },
-            {
-              kind: "text" as const,
-              text: JSON.stringify(result, null, 2),
-            },
-          ],
-        },
-      ]
-    : [];
-
   return {
     id: taskId,
     contextId,
     status: {
-      state: invocation ? "completed" : "failed",
+      state: "completed" as const,
       message: {
+        kind: "message" as const,
         role: "agent" as const,
-        parts: [{ kind: "text" as const, text: summaryText }],
+        parts: [
+          {
+            kind: "text" as const,
+            text: `Skill ${invocation.skillId} completed. Structured results are in the task artifact (data part).`,
+          },
+        ],
         messageId: randomUUID(),
         contextId,
         taskId,
       },
       timestamp: new Date().toISOString(),
     },
-    artifacts,
+    artifacts: [
+      {
+        artifactId: randomUUID(),
+        name: invocation.skillId,
+        parts: [
+          { kind: "data" as const, data: result as Record<string, unknown> },
+          { kind: "text" as const, text: JSON.stringify(result, null, 2) },
+        ],
+      },
+    ],
     kind: "task" as const,
+  };
+}
+
+/** Direct agent Message reply (A2A allows message/send to return Message | Task). */
+function buildAgentMessage(
+  text: string,
+  contextId: string,
+  data?: Record<string, unknown>
+) {
+  return {
+    kind: "message" as const,
+    role: "agent" as const,
+    messageId: randomUUID(),
+    contextId,
+    parts: [
+      { kind: "text" as const, text },
+      ...(data ? [{ kind: "data" as const, data }] : []),
+    ],
   };
 }
 
@@ -599,10 +715,48 @@ async function handleMessageSend(id: JsonRpcId | undefined, params: unknown) {
   const contextId = p.message.contextId ?? randomUUID();
   const invocation = extractInvocation(p.message);
   if (!invocation) {
-    return jsonRpcResult(id, buildTask(null, null, contextId));
+    return jsonRpcResult(
+      id,
+      buildAgentMessage(
+        "Could not infer a skill from the request. Pass a `data` part with `{ skill: '<id>', args: {...} }` or include a clear text prompt. See https://signals.gitdealflow.com/.well-known/agent-card.json for available skills.",
+        contextId,
+        { availableSkills: [...KNOWN_SKILLS] }
+      )
+    );
   }
   const result = await dispatchSkill(invocation);
   return jsonRpcResult(id, buildTask(invocation, result, contextId));
+}
+
+/**
+ * tasks/get + tasks/cancel for a stateless synchronous agent.
+ *
+ * Every task this agent runs completes inside the message/send response and
+ * is NOT persisted, so any id presented later is by definition unknown or
+ * expired -> A2A TaskNotFoundError (-32001). We don't fake a task store.
+ */
+function handleTasksGet(id: JsonRpcId | undefined, params: unknown) {
+  const p = params as { id?: unknown } | undefined;
+  if (!p || typeof p.id !== "string" || p.id.length === 0) {
+    return jsonRpcError(id, -32602, "Invalid params: expected { id: string }");
+  }
+  return jsonRpcError(
+    id,
+    -32001,
+    `Task not found: ${p.id}. This agent executes synchronously — every task reaches a terminal state inside the message/send response and is not persisted for later retrieval.`
+  );
+}
+
+function handleTasksCancel(id: JsonRpcId | undefined, params: unknown) {
+  const p = params as { id?: unknown } | undefined;
+  if (!p || typeof p.id !== "string" || p.id.length === 0) {
+    return jsonRpcError(id, -32602, "Invalid params: expected { id: string }");
+  }
+  return jsonRpcError(
+    id,
+    -32001,
+    `Task not found: ${p.id}. This agent executes synchronously — tasks complete before the message/send response returns, so there is never an in-flight task to cancel.`
+  );
 }
 
 export async function GET() {
@@ -612,7 +766,7 @@ export async function GET() {
       service: "GitDealFlow A2A Agent",
       protocolVersion: PROTOCOL_VERSION,
       transport: "JSONRPC",
-      methods: ["message/send"],
+      methods: ["message/send", "tasks/get", "tasks/cancel"],
       agentCard: `${BASE_URL}/.well-known/agent-card.json`,
       docs: `${BASE_URL}/developers`,
       note: "POST JSON-RPC 2.0 requests here. Send GET to fetch this descriptor.",
@@ -658,22 +812,33 @@ export async function POST(request: NextRequest) {
     case "message/send":
       return handleMessageSend(body.id, body.params);
     case "tasks/get":
-      return jsonRpcError(
-        body.id,
-        -32004,
-        "Tasks are not persisted by this stub agent. message/send returns terminal state synchronously."
-      );
+      return handleTasksGet(body.id, body.params);
     case "tasks/cancel":
+      return handleTasksCancel(body.id, body.params);
+    case "message/stream":
+    case "tasks/resubscribe":
+      // UnsupportedOperationError: AgentCard declares capabilities.streaming=false.
       return jsonRpcError(
         body.id,
         -32004,
-        "Tasks are not persisted by this stub agent."
+        `This operation is not supported: ${body.method}. Streaming is disabled (AgentCard capabilities.streaming=false). Use message/send — all skills complete synchronously.`
+      );
+    case "tasks/pushNotificationConfig/set":
+    case "tasks/pushNotificationConfig/get":
+    case "tasks/pushNotificationConfig/list":
+    case "tasks/pushNotificationConfig/delete":
+      // PushNotificationNotSupportedError: capabilities.pushNotifications=false.
+      return jsonRpcError(
+        body.id,
+        -32003,
+        "Push Notification is not supported (AgentCard capabilities.pushNotifications=false). All skills complete synchronously inside the message/send response."
       );
     case "agent/getAuthenticatedExtendedCard":
+      // AuthenticatedExtendedCardNotConfiguredError: the public card is complete.
       return jsonRpcError(
         body.id,
-        -32601,
-        "Authenticated extended card not supported. Fetch the public AgentCard at /.well-known/agent-card.json."
+        -32007,
+        "Authenticated Extended Card is not configured (AgentCard supportsAuthenticatedExtendedCard=false). The public card at /.well-known/agent-card.json is the complete card."
       );
     default:
       return jsonRpcError(body.id, -32601, `Method not found: ${body.method}`);

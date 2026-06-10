@@ -32,9 +32,8 @@ const HOLD_FILE = resolve(REPO_ROOT, "tools/campaign/HOLD");
 const DRY_RUN = process.argv.includes("--dry-run");
 
 function loadEnv() {
-  if (!existsSync(ENV_FILE)) {
-    throw new Error(`No env file at ${ENV_FILE}`);
-  }
+  // Headless/CI: no tools/.env — rely on process.env (e.g. GitHub Actions secrets).
+  if (!existsSync(ENV_FILE)) return;
   for (const line of readFileSync(ENV_FILE, "utf-8").split("\n")) {
     const trimmed = line.trim();
     if (!trimmed || trimmed.startsWith("#")) continue;
@@ -79,7 +78,7 @@ async function main() {
   const handle = process.env.BSKY_HANDLE;
   const password = process.env.BSKY_APP_PASSWORD;
   if (!handle || !password) {
-    throw new Error("BSKY_HANDLE / BSKY_APP_PASSWORD not set in tools/.env");
+    throw new Error("BSKY_HANDLE / BSKY_APP_PASSWORD not set (tools/.env or environment)");
   }
 
   const queue = loadJson(QUEUE_FILE, null);

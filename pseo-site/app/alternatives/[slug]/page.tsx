@@ -8,6 +8,7 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 import SeoCta from "@/components/SeoCta";
+import SignalDisclaimer from "@/components/SignalDisclaimer";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -87,7 +88,7 @@ export default async function AlternativePage({ params }: PageProps) {
         },
         speakable: {
           "@type": "SpeakableSpecification",
-          cssSelector: ["h1", ".verdict-block", ".tagline"],
+          cssSelector: ["[data-speakable]", "h1", ".verdict-block", ".tagline"],
         },
       },
       {
@@ -257,12 +258,20 @@ export default async function AlternativePage({ params }: PageProps) {
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-4 leading-tight">
           {alt.h1}
         </h1>
-        <p className="tagline text-sky-400 text-base leading-relaxed mb-6 font-medium">
+        <p data-speakable className="tagline text-sky-400 text-base leading-relaxed mb-6 font-medium">
           {alt.tagline}
         </p>
-        <p className="text-gray-400 text-base leading-relaxed mb-10">
+        <p className="text-gray-400 text-base leading-relaxed mb-3">
           {alt.intro}
         </p>
+        <p className="text-xs text-gray-500 mb-1">
+          Data refreshed:{" "}
+          {lastModified.toLocaleDateString("en-US", {
+            month: "long",
+            year: "numeric",
+          })}
+        </p>
+        <SignalDisclaimer className="mb-10" />
 
         {alt.roundup && (
           <section className="mb-12" aria-label={alt.roundup.heading}>

@@ -21,13 +21,6 @@ const NOINDEX_PREFIXES = [
   "/welcome",
   "/dashboard",
   "/login",
-  // /showdown/[slug] leaves are templated near-duplicates (100% flagged by the
-  // uniqueness audit). The page also emits `robots: noindex,follow` in metadata,
-  // but the default `X-Robots-Tag: index, follow` header would override that meta —
-  // so the prefix must live here too for the header to read `noindex, follow`.
-  // Trailing slash is deliberate: the `/showdown` hub (no slash) stays indexable.
-  // See marketing/seo-authority-and-indexation-2026-05-30.md.
-  "/showdown/",
 ];
 
 function shouldNoindex(pathname: string): boolean {
