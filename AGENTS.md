@@ -70,7 +70,8 @@ Live AgentCard at `https://signals.gitdealflow.com/.well-known/agent-card.json` 
 
 ## Working in this repo
 
-- Two Vercel projects: `vc-deal-flow-signal` (pSEO site, signals.gitdealflow.com) and `vc-deal-flow-signal-landing` (apex). Neither is git-linked — deploy via CLI: `vercel build --prod && vercel deploy --prebuilt --prod --yes`.
+- Two Vercel projects (team `sales-3429s-projects`): `pseo-site` (signals.gitdealflow.com) and `landing` (apex gitdealflow.com). Neither is git-linked. pSEO deploys run weekly via `.github/workflows/deploy-pseo.yml` (manual fallback: `vercel build --prod && vercel deploy --prebuilt --prod --yes --archive=tgz` — `--archive=tgz` is required, the file manifest exceeds the 10 MB API limit). A separate project named `vc-deal-flow-signal` exists in the same team but is NOT this site — it receives small automated deploys from a cloud agent.
+- When setting Vercel env vars from a shell, use `printf '%s' "$VAL" | vercel env add NAME production` — `echo` appends a newline that silently corrupts the secret (this broke RESEND/STRIPE keys in project env on 2026-06-08; fixed 2026-06-10).
 - pSEO project rejects non-team commit authors. Use the project owner's git identity.
 - The 5 MCP tools are free in perpetuity — never gate them. Add new paid tools on top instead.
 
