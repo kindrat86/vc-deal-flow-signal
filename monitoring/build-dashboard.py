@@ -341,12 +341,16 @@ def http(url, method="GET", data=None, headers=None):
 # ---------------- PocketBase ----------------
 
 def pb_auth():
-    r = http(
-        f"{PB_URL}/api/collections/_superusers/auth-with-password",
-        method="POST",
-        data={"identity": PB_EMAIL, "password": PB_PASSWORD},
-    )
-    return r.get("token") if r else None
+    # PB >= 0.23 exposes _superusers; the Fly instance is older and uses /api/admins.
+    for path in (
+        "/api/collections/_superusers/auth-with-password",
+        "/api/admins/auth-with-password",
+    ):
+        r = http(f"{PB_URL}{path}", method="POST",
+                 data={"identity": PB_EMAIL, "password": PB_PASSWORD})
+        if r and r.get("token"):
+            return r["token"]
+    return None
 
 
 def pb_fetch_all(token, collection):
@@ -414,8 +418,28 @@ def resend_email_events(window_start_date):
 
 # ---------------- PostHog ----------------
 
+PH_CACHE_FILE = os.path.join(SCRIPT_DIR, "ph-mcp-cache.json")
+
+
 def ph_query(hogql):
+    # No personal API key on this machine: fall back to a query-result cache
+    # populated out-of-band (e.g. via the PostHog MCP). Unknown queries are
+    # recorded under __pending__ so the operator can run them and refill the
+    # cache, then rerun this script.
     if not PH_API_KEY or not PH_PROJECT:
+        try:
+            with open(PH_CACHE_FILE) as f:
+                cache = json.load(f)
+        except Exception:
+            cache = {}
+        key = " ".join(hogql.split())
+        if key in cache:
+            return cache[key]
+        pending = cache.setdefault("__pending__", [])
+        if key not in pending:
+            pending.append(key)
+        with open(PH_CACHE_FILE, "w") as f:
+            json.dump(cache, f, indent=1)
         return None
     return http(
         f"{PH_HOST}/api/environments/{PH_PROJECT}/query/",
