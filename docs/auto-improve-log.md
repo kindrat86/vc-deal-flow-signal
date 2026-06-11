@@ -82,6 +82,28 @@ G-XXXX measurement id into landing/pixels.js GA4 slot → vercel deploy landing.
 **Bluesky:** bsky.app not logged in in Chrome; password entry is human-only.
 Needs: user logs in → app password → gh secret set BSKY_HANDLE/BSKY_APP_PASSWORD.
 
+## 2026-06-11 (midday) — manual cycle run ("запускай", user-triggered in main session)
+
+**Why manual:** both scheduled tasks froze on unapproved permission prompts
+(02:06 improve run + 09:12 dashboard run stuck "running"; user must open them
+once and Allow — approvals then persist on the task).
+
+**Badge issues batch 2 of ~5 filed** (10/24 total now):
+browserbase/stagehand#2238 · tursodatabase/libsql#2250 · continuedev/continue#12601
+· ollama/ollama#16678 · Helicone/helicone#5693. All 5 verified rendering
+"accelerating" pre-send. Next batches: remaining Tier-1/2 (shadcn via
+Discussion only — avoid issue noise on huge repos).
+
+**IndexNow root cause FIXED + deployed (run 27345171059, success):** the
+<key>.txt existed only on the apex — signals.gitdealflow.com served 404, so
+every IndexNow batch was rejected; local builds also sent empty key (env
+unset) → HTTP 400. Now: public/22df...36.txt added (verified 200 live) +
+script defaults to the public key. NOTE: the postbuild submit in the NEXT
+deploy is the first one that can succeed (key file went live with this one).
+Check the deploy log next run — expect HTTP 200.
+
+**Dashboard refreshed manually** (hourly task frozen — same permission issue).
+
 **Known issues for next runs:**
 - IndexNow post-build submit returned HTTP 400 (2,806 URLs) — investigate
   payload/key validity.
