@@ -1,5 +1,7 @@
 {
- "__pending__": [],
+ "__pending__": [
+  "SELECT count(DISTINCT distinct_id) as uv FROM events WHERE event = '$pageview' AND timestamp >= '2026-05-13' AND coalesce(properties.$geoip_country_code, '') NOT IN ('GR')"
+ ],
  "SELECT min(toDate(timestamp)) as d FROM events WHERE event = '$pageview' AND coalesce(properties.$geoip_country_code, '') NOT IN ('GR')": {
   "results": [
    [
