@@ -10,7 +10,13 @@
  */
 
 const BASE_URL = "https://signals.gitdealflow.com";
-const INDEXNOW_KEY = process.env.INDEXNOW_KEY || "";
+// IndexNow keys are public by design (the protocol serves them at
+// /<key>.txt), so the env var is just an override. The default must match
+// public/22dfd6f8f816469b8c216bc7eaf8b936.txt — without that file on THIS
+// host every submission is rejected (key existed only on the apex until
+// 2026-06-11, which is why submissions returned 400/403).
+const INDEXNOW_KEY =
+  process.env.INDEXNOW_KEY || "22dfd6f8f816469b8c216bc7eaf8b936";
 
 async function main() {
   // Only run on Vercel production deploys
