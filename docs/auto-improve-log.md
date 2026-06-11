@@ -104,6 +104,26 @@ Check the deploy log next run — expect HTTP 200.
 
 **Dashboard refreshed manually** (hourly task frozen — same permission issue).
 
+## 2026-06-11 (afternoon) — manual cycle #2 ("запусти цикл", main session)
+
+**Badge issues batch 3 filed** (15/24 total): mastra-ai/mastra#17824 ·
+letta-ai/letta#3365 · crewAIInc/crewAI#6119 · typesense/typesense#2953 ·
+duckdb/duckdb#23221. All verified "accelerating" pre-send (Letta's slug is
+`letta-ai`, not `letta`). Dedupe check added to the process: `gh search
+issues --repo <r> --author kindrat86` must return 0 before filing — keep
+doing this every batch (protects against the scheduled session double-filing).
+Remaining Tier-1: shadcn (Discussion only, NOT an issue — needs GraphQL or
+human), SigNoz, Inngest done… next batch from ranked list rows 18-24.
+
+**IndexNow VERIFIED WORKING:** deploy 27346961396 (success, health ok) ran the
+first postbuild submit with the key file live → `IndexNow response: HTTP 200
+(3227 URLs submitted)`. Closes the "investigate IndexNow 400" item below.
+
+**Scheduled improve session note:** after the user approved the first
+permission batch it advanced briefly and froze again at 12:26Z (likely a
+deeper tool approval — Agent/WebSearch). If it never completes, its approvals
+still accumulate on the task; the 20:00 run will tell.
+
 **Known issues for next runs:**
 - IndexNow post-build submit returned HTTP 400 (2,806 URLs) — investigate
   payload/key validity.
