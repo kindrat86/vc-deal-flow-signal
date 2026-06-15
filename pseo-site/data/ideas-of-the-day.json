@@ -2304,6 +2304,53 @@
         }
       ],
       "publishedAt": "2026-06-14T09:00:00Z"
+    },
+    {
+      "date": "2026-06-15",
+      "slug": "2026-06-15",
+      "headline": "The e-commerce infrastructure opening hiding in a +100% infrastructure buildout",
+      "hook": "Pre-seed e-commerce infrastructure teams shipping 2 commits in 14 days at +100% aren't just building product — they're broadcasting the infra-buildout that usually precedes a raise.",
+      "repo": {
+        "name": "graycoreio",
+        "githubUrl": "https://github.com/graycoreio",
+        "stage": "Pre-seed",
+        "geography": "US",
+        "sector": "E-commerce Infrastructure",
+        "sectorSlug": "ecommerce-infrastructure",
+        "signalType": "Infrastructure buildout",
+        "commitVelocity14d": 2,
+        "commitVelocityChange": "+100%",
+        "contributors": 3,
+        "contributorGrowth": "+0%",
+        "newRepos": 5,
+        "description": "Graycore, LLC - let's make the internet a better place."
+      },
+      "ideaThesis": "E-commerce Infrastructure has a buyer who is also a builder. The category incumbents shipped for an ops/HR/finance lead; the next wave ships for the engineer running that function. Read the repo: infrastructure buildout, pre-seed team, 3 contributors. That's the shape of a team that crosses the next funding line on engineering output, not enterprise sales — and the gap they leave is the wedge for an indie or two-founder tool that does one job better than the suite they're inside of.",
+      "buildAngles": [
+        "Single-screen replacement for one feature the incumbent buried three menus deep.",
+        "Browser extension that pulls the signal onto the dashboard the buyer already uses.",
+        "Pay-per-call hosted endpoint that does one narrow job other tools can chain into."
+      ],
+      "distributionPlay": "Pick the one subreddit or category page where the engineer-buyer already reads. Post the artifact (dataset, demo, methodology) not the product page; reply with the product link only when asked.",
+      "signalReading": [
+        {
+          "metric": "2 commits / 14 days",
+          "reading": "Low absolute volume. The signal is the change-in-change, not the raw count — see the next metric."
+        },
+        {
+          "metric": "+100% commit-velocity change",
+          "reading": "Trend is still accelerating, not peaking. A positive change-in-change is the leading edge of the curve, not the back of it."
+        },
+        {
+          "metric": "3 contributors (+0%)",
+          "reading": "Founding-team-still-coding signal. Hiring will be the next-cycle move; ATS / sourcing tools are the natural wedge."
+        },
+        {
+          "metric": "5 new repos in window",
+          "reading": "New repository creation is the classic platform-expansion signal — a team carving the next product surface out of the same codebase. The seam between the old repo and the new one is where a single-purpose external tool lives."
+        }
+      ],
+      "publishedAt": "2026-06-15T09:00:00Z"
     }
   ]
 }
