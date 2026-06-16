@@ -2351,6 +2351,53 @@
         }
       ],
       "publishedAt": "2026-06-15T09:00:00Z"
+    },
+    {
+      "date": "2026-06-16",
+      "slug": "2026-06-16",
+      "headline": "The ai & machine learning opening hiding in a +35% framework migration",
+      "hook": "Growth ai & machine learning teams shipping 62 commits in 14 days at +35% aren't just building product — they're broadcasting the framework-migration that usually precedes a raise.",
+      "repo": {
+        "name": "inception-project",
+        "githubUrl": "https://github.com/inception-project",
+        "stage": "Growth",
+        "geography": "EU",
+        "sector": "AI & Machine Learning",
+        "sectorSlug": "ai-ml",
+        "signalType": "Framework migration",
+        "commitVelocity14d": 62,
+        "commitVelocityChange": "+35%",
+        "contributors": 60,
+        "contributorGrowth": "+3%",
+        "newRepos": 1,
+        "description": ""
+      },
+      "ideaThesis": "AI & Machine Learning has a buyer who is also a builder. The category incumbents shipped for an ops/HR/finance lead; the next wave ships for the engineer running that function. Read the repo: framework migration, growth team, 60 contributors. That's the shape of a team that crosses the next funding line on engineering output, not enterprise sales — and the gap they leave is the wedge for an indie or two-founder tool that does one job better than the suite they're inside of.",
+      "buildAngles": [
+        "Single-purpose CLI that does one job the incumbent's dashboard hides — agent eval, prompt diff, tool-call replay.",
+        "VS Code extension that surfaces the live signal inside the editor; no marketing site needed for the first 1,000 installs.",
+        "Pay-per-run hosted endpoint for one stage of the ai & machine learning pipeline; treat it as a tool other agents call, not a SaaS humans browse to."
+      ],
+      "distributionPlay": "Drop it as a free CLI install into r/LocalLLaMA + the underrated 'Show HN' Friday slot. The first 100 stars on a tightly-scoped dev tool routinely turn into the first 10 paying customers.",
+      "signalReading": [
+        {
+          "metric": "62 commits / 14 days",
+          "reading": "Maintenance-level cadence. The story isn't the volume; it's whatever else moved alongside it."
+        },
+        {
+          "metric": "+35% commit-velocity change",
+          "reading": "Trend is still accelerating, not peaking. A positive change-in-change is the leading edge of the curve, not the back of it."
+        },
+        {
+          "metric": "60 contributors (+3%)",
+          "reading": "Mature contributor base. The opportunity is less in displacing them and more in serving the engineers who depend on them."
+        },
+        {
+          "metric": "1 new repos in window",
+          "reading": "New repository creation is the classic platform-expansion signal — a team carving the next product surface out of the same codebase. The seam between the old repo and the new one is where a single-purpose external tool lives."
+        }
+      ],
+      "publishedAt": "2026-06-16T09:00:00Z"
     }
   ]
 }
