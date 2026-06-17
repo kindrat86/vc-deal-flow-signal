@@ -2398,6 +2398,49 @@
         }
       ],
       "publishedAt": "2026-06-16T09:00:00Z"
+    },
+    {
+      "date": "2026-06-17",
+      "slug": "2026-06-17",
+      "headline": "The climate tech reset hiding in a -92% framework migration",
+      "hook": "Series A/B climate tech teams cooling to 2 commits over 14 days (-92%) are showing the framework-migration pattern — a recoverable dip, not a flatline, and the natural moment to build the next adjacent tool.",
+      "repo": {
+        "name": "nco",
+        "githubUrl": "https://github.com/nco",
+        "stage": "Series A/B",
+        "geography": "Unknown",
+        "sector": "Climate Tech",
+        "sectorSlug": "climate-tech",
+        "signalType": "Framework migration",
+        "commitVelocity14d": 2,
+        "commitVelocityChange": "-92%",
+        "contributors": 25,
+        "contributorGrowth": "+0%",
+        "newRepos": 0,
+        "description": ""
+      },
+      "ideaThesis": "Climate Tech has a buyer who is also a builder. The category incumbents shipped for an ops/HR/finance lead; the next wave ships for the engineer running that function. Read the repo: framework migration, series a/b team, 25 contributors. That's the shape of a team that crosses the next funding line on engineering output, not enterprise sales — and the gap they leave is the wedge for an indie or two-founder tool that does one job better than the suite they're inside of.",
+      "buildAngles": [
+        "Hardware-adjacent SaaS — schedule, audit, certify. The incumbents own the device; you own the workflow.",
+        "Open data pipeline for the slow part of the climate tech cycle (carbon, supply chain, ag). Sell the cleaning, not the raw feed.",
+        "Procurement-side B2B tool — the buyer is technical, the budget is corporate, the product is one screen."
+      ],
+      "distributionPlay": "Find the climate tech subreddit (or the LinkedIn equivalent if Reddit thin); post the dataset, not the product. Lead with the artifact you can show, the link to it sits in the second comment.",
+      "signalReading": [
+        {
+          "metric": "2 commits / 14 days",
+          "reading": "Low absolute volume. The signal is the change-in-change, not the raw count — see the next metric."
+        },
+        {
+          "metric": "-92% commit-velocity change",
+          "reading": "Cooling. Often a deliberate slowdown for refactor, rebrand, or hiring — read alongside the next two lines before calling it a decline."
+        },
+        {
+          "metric": "25 contributors (+0%)",
+          "reading": "Small core team — likely seed-funded with focused velocity. The opportunity is adjacent tooling that augments the small team."
+        }
+      ],
+      "publishedAt": "2026-06-17T09:00:00Z"
     }
   ]
 }
