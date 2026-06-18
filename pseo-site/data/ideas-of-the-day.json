@@ -2441,6 +2441,49 @@
         }
       ],
       "publishedAt": "2026-06-17T09:00:00Z"
+    },
+    {
+      "date": "2026-06-18",
+      "slug": "2026-06-18",
+      "headline": "The web3 reset hiding in a -12% engineering hiring burst",
+      "hook": "Seed web3 teams cooling to 14 commits over 14 days (-12%) are showing the hiring-burst pattern — a recoverable dip, not a flatline, and the natural moment to build the next adjacent tool.",
+      "repo": {
+        "name": "rango-exchange",
+        "githubUrl": "https://github.com/rango-exchange",
+        "stage": "Seed",
+        "geography": "Unknown",
+        "sector": "Web3",
+        "sectorSlug": "web3",
+        "signalType": "Engineering hiring burst",
+        "commitVelocity14d": 14,
+        "commitVelocityChange": "-12%",
+        "contributors": 16,
+        "contributorGrowth": "+132%",
+        "newRepos": 0,
+        "description": "Decentralized CrossChain DEX & Bridge Aggregator"
+      },
+      "ideaThesis": "Web3 has a buyer who is also a builder. The category incumbents shipped for an ops/HR/finance lead; the next wave ships for the engineer running that function. Read the repo: engineering hiring burst, seed team, 16 contributors. That's the shape of a team that crosses the next funding line on engineering output, not enterprise sales — and the gap they leave is the wedge for an indie or two-founder tool that does one job better than the suite they're inside of.",
+      "buildAngles": [
+        "Compliance-adjacent middleware — the part of the stack the incumbent won't ship because the support cost is too high.",
+        "Read-only analytics layer over the existing web3 data sources; sell the dashboard, not the integration.",
+        "Embedded widget for the engineer-buyer at a Series A — drop-in, single-script, replaces a quarter of a Salesforce instance."
+      ],
+      "distributionPlay": "Publish a public read-only demo with one anonymised customer's data; share the demo URL in the Indie Hackers fintech category and pitch one fintech podcast as a case study, not a product.",
+      "signalReading": [
+        {
+          "metric": "14 commits / 14 days",
+          "reading": "Low absolute volume. The signal is the change-in-change, not the raw count — see the next metric."
+        },
+        {
+          "metric": "-12% commit-velocity change",
+          "reading": "Cooling. Often a deliberate slowdown for refactor, rebrand, or hiring — read alongside the next two lines before calling it a decline."
+        },
+        {
+          "metric": "16 contributors (+132%)",
+          "reading": "Small core team — likely seed-funded with focused velocity. The opportunity is adjacent tooling that augments the small team."
+        }
+      ],
+      "publishedAt": "2026-06-18T09:00:00Z"
     }
   ]
 }
