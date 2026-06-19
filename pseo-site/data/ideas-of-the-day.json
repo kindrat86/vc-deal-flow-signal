@@ -2484,6 +2484,53 @@
         }
       ],
       "publishedAt": "2026-06-18T09:00:00Z"
+    },
+    {
+      "date": "2026-06-19",
+      "slug": "2026-06-19",
+      "headline": "The edtech reset hiding in a -76% infrastructure buildout",
+      "hook": "Seed edtech teams cooling to 20 commits over 14 days (-76%) are showing the infra-buildout pattern — a recoverable dip, not a flatline, and the natural moment to build the next adjacent tool.",
+      "repo": {
+        "name": "flatironinstitute",
+        "githubUrl": "https://github.com/flatironinstitute",
+        "stage": "Seed",
+        "geography": "US",
+        "sector": "EdTech",
+        "sectorSlug": "edtech",
+        "signalType": "Infrastructure buildout",
+        "commitVelocity14d": 20,
+        "commitVelocityChange": "-76%",
+        "contributors": 14,
+        "contributorGrowth": "+0%",
+        "newRepos": 3,
+        "description": "@SimonsFoundation"
+      },
+      "ideaThesis": "EdTech has a buyer who is also a builder. The category incumbents shipped for an ops/HR/finance lead; the next wave ships for the engineer running that function. Read the repo: infrastructure buildout, seed team, 14 contributors. That's the shape of a team that crosses the next funding line on engineering output, not enterprise sales — and the gap they leave is the wedge for an indie or two-founder tool that does one job better than the suite they're inside of.",
+      "buildAngles": [
+        "Sourcing tool for engineering managers — Slack-native, signal-pulled by sector, no SaaS dashboard.",
+        "Read-only overlay on the incumbent ATS — bring engineering signals (GitHub activity, dependency adoption) onto candidate cards.",
+        "Drip-tool for technical recruiting that writes its own outreach from public commit signals."
+      ],
+      "distributionPlay": "Free Chrome extension into r/recruiting and r/cscareerquestions for the first 1,000 installs. Both subs allow free tools if you don't pitch — frame it as data, not product.",
+      "signalReading": [
+        {
+          "metric": "20 commits / 14 days",
+          "reading": "Low absolute volume. The signal is the change-in-change, not the raw count — see the next metric."
+        },
+        {
+          "metric": "-76% commit-velocity change",
+          "reading": "Cooling. Often a deliberate slowdown for refactor, rebrand, or hiring — read alongside the next two lines before calling it a decline."
+        },
+        {
+          "metric": "14 contributors (+0%)",
+          "reading": "Small core team — likely seed-funded with focused velocity. The opportunity is adjacent tooling that augments the small team."
+        },
+        {
+          "metric": "3 new repos in window",
+          "reading": "New repository creation is the classic platform-expansion signal — a team carving the next product surface out of the same codebase. The seam between the old repo and the new one is where a single-purpose external tool lives."
+        }
+      ],
+      "publishedAt": "2026-06-19T09:00:00Z"
     }
   ]
 }
