@@ -2531,6 +2531,53 @@
         }
       ],
       "publishedAt": "2026-06-19T09:00:00Z"
+    },
+    {
+      "date": "2026-06-20",
+      "slug": "2026-06-20",
+      "headline": "The e-commerce infrastructure reset hiding in a -66% infrastructure buildout",
+      "hook": "Seed e-commerce infrastructure teams cooling to 26 commits over 14 days (-66%) are showing the infra-buildout pattern — a recoverable dip, not a flatline, and the natural moment to build the next adjacent tool.",
+      "repo": {
+        "name": "tempoxyz",
+        "githubUrl": "https://github.com/tempoxyz",
+        "stage": "Seed",
+        "geography": "Unknown",
+        "sector": "E-commerce Infrastructure",
+        "sectorSlug": "ecommerce-infrastructure",
+        "signalType": "Infrastructure buildout",
+        "commitVelocity14d": 26,
+        "commitVelocityChange": "-66%",
+        "contributors": 16,
+        "contributorGrowth": "+0%",
+        "newRepos": 5,
+        "description": "Tempo is the blockchain designed for payments."
+      },
+      "ideaThesis": "E-commerce Infrastructure has a buyer who is also a builder. The category incumbents shipped for an ops/HR/finance lead; the next wave ships for the engineer running that function. Read the repo: infrastructure buildout, seed team, 16 contributors. That's the shape of a team that crosses the next funding line on engineering output, not enterprise sales — and the gap they leave is the wedge for an indie or two-founder tool that does one job better than the suite they're inside of.",
+      "buildAngles": [
+        "Single-screen replacement for one feature the incumbent buried three menus deep.",
+        "Browser extension that pulls the signal onto the dashboard the buyer already uses.",
+        "Pay-per-call hosted endpoint that does one narrow job other tools can chain into."
+      ],
+      "distributionPlay": "Pick the one subreddit or category page where the engineer-buyer already reads. Post the artifact (dataset, demo, methodology) not the product page; reply with the product link only when asked.",
+      "signalReading": [
+        {
+          "metric": "26 commits / 14 days",
+          "reading": "Low absolute volume. The signal is the change-in-change, not the raw count — see the next metric."
+        },
+        {
+          "metric": "-66% commit-velocity change",
+          "reading": "Cooling. Often a deliberate slowdown for refactor, rebrand, or hiring — read alongside the next two lines before calling it a decline."
+        },
+        {
+          "metric": "16 contributors (+0%)",
+          "reading": "Small core team — likely seed-funded with focused velocity. The opportunity is adjacent tooling that augments the small team."
+        },
+        {
+          "metric": "5 new repos in window",
+          "reading": "New repository creation is the classic platform-expansion signal — a team carving the next product surface out of the same codebase. The seam between the old repo and the new one is where a single-purpose external tool lives."
+        }
+      ],
+      "publishedAt": "2026-06-20T09:00:00Z"
     }
   ]
 }
