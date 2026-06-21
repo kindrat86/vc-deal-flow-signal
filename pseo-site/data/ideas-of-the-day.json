@@ -2578,6 +2578,49 @@
         }
       ],
       "publishedAt": "2026-06-20T09:00:00Z"
+    },
+    {
+      "date": "2026-06-21",
+      "slug": "2026-06-21",
+      "headline": "The ai & machine learning reset hiding in a -18% framework migration",
+      "hook": "Growth ai & machine learning teams cooling to 430 commits over 14 days (-18%) are showing the framework-migration pattern — a recoverable dip, not a flatline, and the natural moment to build the next adjacent tool.",
+      "repo": {
+        "name": "modular",
+        "githubUrl": "https://github.com/modular",
+        "stage": "Growth",
+        "geography": "US",
+        "sector": "AI & Machine Learning",
+        "sectorSlug": "ai-ml",
+        "signalType": "Framework migration",
+        "commitVelocity14d": 430,
+        "commitVelocityChange": "-18%",
+        "contributors": 100,
+        "contributorGrowth": "+0%",
+        "newRepos": 0,
+        "description": "Modular is an integrated, composable suite of tools that simplifies your AI infrastructure so your team can develop, dep"
+      },
+      "ideaThesis": "AI & Machine Learning has a buyer who is also a builder. The category incumbents shipped for an ops/HR/finance lead; the next wave ships for the engineer running that function. Read the repo: framework migration, growth team, 100 contributors. That's the shape of a team that crosses the next funding line on engineering output, not enterprise sales — and the gap they leave is the wedge for an indie or two-founder tool that does one job better than the suite they're inside of.",
+      "buildAngles": [
+        "Single-purpose CLI that does one job the incumbent's dashboard hides — agent eval, prompt diff, tool-call replay.",
+        "VS Code extension that surfaces the live signal inside the editor; no marketing site needed for the first 1,000 installs.",
+        "Pay-per-run hosted endpoint for one stage of the ai & machine learning pipeline; treat it as a tool other agents call, not a SaaS humans browse to."
+      ],
+      "distributionPlay": "Drop it as a free CLI install into r/LocalLLaMA + the underrated 'Show HN' Friday slot. The first 100 stars on a tightly-scoped dev tool routinely turn into the first 10 paying customers.",
+      "signalReading": [
+        {
+          "metric": "430 commits / 14 days",
+          "reading": "Healthy mid-stage build pace — above ambient noise, below frenzy. Read as steady-state hiring without a burst."
+        },
+        {
+          "metric": "-18% commit-velocity change",
+          "reading": "Cooling. Often a deliberate slowdown for refactor, rebrand, or hiring — read alongside the next two lines before calling it a decline."
+        },
+        {
+          "metric": "100 contributors (+0%)",
+          "reading": "Mature contributor base. The opportunity is less in displacing them and more in serving the engineers who depend on them."
+        }
+      ],
+      "publishedAt": "2026-06-21T09:00:00Z"
     }
   ]
 }
