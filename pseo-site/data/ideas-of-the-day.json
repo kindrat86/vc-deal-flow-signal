@@ -2621,6 +2621,53 @@
         }
       ],
       "publishedAt": "2026-06-21T09:00:00Z"
+    },
+    {
+      "date": "2026-06-22",
+      "slug": "2026-06-22",
+      "headline": "The climate tech reset hiding in a -1% framework migration",
+      "hook": "Growth climate tech teams cooling to 97 commits over 14 days (-1%) are showing the framework-migration pattern — a recoverable dip, not a flatline, and the natural moment to build the next adjacent tool.",
+      "repo": {
+        "name": "carbon-design-system",
+        "githubUrl": "https://github.com/carbon-design-system",
+        "stage": "Growth",
+        "geography": "US",
+        "sector": "Climate Tech",
+        "sectorSlug": "climate-tech",
+        "signalType": "Framework migration",
+        "commitVelocity14d": 97,
+        "commitVelocityChange": "-1%",
+        "contributors": 100,
+        "contributorGrowth": "+9%",
+        "newRepos": 1,
+        "description": "An open-source design system built by IBM."
+      },
+      "ideaThesis": "Climate Tech has a buyer who is also a builder. The category incumbents shipped for an ops/HR/finance lead; the next wave ships for the engineer running that function. Read the repo: framework migration, growth team, 100 contributors. That's the shape of a team that crosses the next funding line on engineering output, not enterprise sales — and the gap they leave is the wedge for an indie or two-founder tool that does one job better than the suite they're inside of.",
+      "buildAngles": [
+        "Hardware-adjacent SaaS — schedule, audit, certify. The incumbents own the device; you own the workflow.",
+        "Open data pipeline for the slow part of the climate tech cycle (carbon, supply chain, ag). Sell the cleaning, not the raw feed.",
+        "Procurement-side B2B tool — the buyer is technical, the budget is corporate, the product is one screen."
+      ],
+      "distributionPlay": "Find the climate tech subreddit (or the LinkedIn equivalent if Reddit thin); post the dataset, not the product. Lead with the artifact you can show, the link to it sits in the second comment.",
+      "signalReading": [
+        {
+          "metric": "97 commits / 14 days",
+          "reading": "Maintenance-level cadence. The story isn't the volume; it's whatever else moved alongside it."
+        },
+        {
+          "metric": "-1% commit-velocity change",
+          "reading": "Cooling. Often a deliberate slowdown for refactor, rebrand, or hiring — read alongside the next two lines before calling it a decline."
+        },
+        {
+          "metric": "100 contributors (+9%)",
+          "reading": "Mature contributor base. The opportunity is less in displacing them and more in serving the engineers who depend on them."
+        },
+        {
+          "metric": "1 new repos in window",
+          "reading": "New repository creation is the classic platform-expansion signal — a team carving the next product surface out of the same codebase. The seam between the old repo and the new one is where a single-purpose external tool lives."
+        }
+      ],
+      "publishedAt": "2026-06-22T09:00:00Z"
     }
   ]
 }
