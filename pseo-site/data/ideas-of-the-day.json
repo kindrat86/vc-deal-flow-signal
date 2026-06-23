@@ -2668,6 +2668,49 @@
         }
       ],
       "publishedAt": "2026-06-22T09:00:00Z"
+    },
+    {
+      "date": "2026-06-23",
+      "slug": "2026-06-23",
+      "headline": "The healthcare reset hiding in a -86% framework migration",
+      "hook": "Series A/B healthcare teams cooling to 56 commits over 14 days (-86%) are showing the framework-migration pattern — a recoverable dip, not a flatline, and the natural moment to build the next adjacent tool.",
+      "repo": {
+        "name": "masslight",
+        "githubUrl": "https://github.com/masslight",
+        "stage": "Series A/B",
+        "geography": "Unknown",
+        "sector": "Healthcare",
+        "sectorSlug": "healthcare",
+        "signalType": "Framework migration",
+        "commitVelocity14d": 56,
+        "commitVelocityChange": "-86%",
+        "contributors": 27,
+        "contributorGrowth": "+0%",
+        "newRepos": 0,
+        "description": ""
+      },
+      "ideaThesis": "Healthcare has a buyer who is also a builder. The category incumbents shipped for an ops/HR/finance lead; the next wave ships for the engineer running that function. Read the repo: framework migration, series a/b team, 27 contributors. That's the shape of a team that crosses the next funding line on engineering output, not enterprise sales — and the gap they leave is the wedge for an indie or two-founder tool that does one job better than the suite they're inside of.",
+      "buildAngles": [
+        "EHR/court/contract export tool — the part that vendors refuse to expose. Read-only, audit-trail-first.",
+        "Compliance-as-a-tool for one narrow workflow; sell the artifact (signed PDF, attestation) not the platform.",
+        "Verification layer that sits between the AI and the system of record; the engineer-buyer is your first 100 customers."
+      ],
+      "distributionPlay": "Lead with a credible benchmark or audit — a single PDF that names what the existing tools miss. Send it to two industry newsletters before posting it anywhere social.",
+      "signalReading": [
+        {
+          "metric": "56 commits / 14 days",
+          "reading": "Maintenance-level cadence. The story isn't the volume; it's whatever else moved alongside it."
+        },
+        {
+          "metric": "-86% commit-velocity change",
+          "reading": "Cooling. Often a deliberate slowdown for refactor, rebrand, or hiring — read alongside the next two lines before calling it a decline."
+        },
+        {
+          "metric": "27 contributors (+0%)",
+          "reading": "Small core team — likely seed-funded with focused velocity. The opportunity is adjacent tooling that augments the small team."
+        }
+      ],
+      "publishedAt": "2026-06-23T09:00:00Z"
     }
   ]
 }
