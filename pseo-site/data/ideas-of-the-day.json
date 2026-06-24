@@ -2711,6 +2711,49 @@
         }
       ],
       "publishedAt": "2026-06-23T09:00:00Z"
+    },
+    {
+      "date": "2026-06-24",
+      "slug": "2026-06-24",
+      "headline": "The supply chain opening hiding in a +150% deploy frequency spike",
+      "hook": "Series A/B supply chain teams shipping 5 commits in 14 days at +150% aren't just building product — they're broadcasting the deploy-frequency that usually precedes a raise.",
+      "repo": {
+        "name": "gosqasorg",
+        "githubUrl": "https://github.com/gosqasorg",
+        "stage": "Series A/B",
+        "geography": "Unknown",
+        "sector": "Supply Chain",
+        "sectorSlug": "supply-chain",
+        "signalType": "Deploy frequency spike",
+        "commitVelocity14d": 5,
+        "commitVelocityChange": "+150%",
+        "contributors": 24,
+        "contributorGrowth": "+0%",
+        "newRepos": 0,
+        "description": "Global Open Source Quality Assurance System"
+      },
+      "ideaThesis": "Supply Chain has a buyer who is also a builder. The category incumbents shipped for an ops/HR/finance lead; the next wave ships for the engineer running that function. Read the repo: deploy frequency spike, series a/b team, 24 contributors. That's the shape of a team that crosses the next funding line on engineering output, not enterprise sales — and the gap they leave is the wedge for an indie or two-founder tool that does one job better than the suite they're inside of.",
+      "buildAngles": [
+        "Hardware-adjacent SaaS — schedule, audit, certify. The incumbents own the device; you own the workflow.",
+        "Open data pipeline for the slow part of the supply chain cycle (carbon, supply chain, ag). Sell the cleaning, not the raw feed.",
+        "Procurement-side B2B tool — the buyer is technical, the budget is corporate, the product is one screen."
+      ],
+      "distributionPlay": "Find the supply chain subreddit (or the LinkedIn equivalent if Reddit thin); post the dataset, not the product. Lead with the artifact you can show, the link to it sits in the second comment.",
+      "signalReading": [
+        {
+          "metric": "5 commits / 14 days",
+          "reading": "Low absolute volume. The signal is the change-in-change, not the raw count — see the next metric."
+        },
+        {
+          "metric": "+150% commit-velocity change",
+          "reading": "Trend is still accelerating, not peaking. A positive change-in-change is the leading edge of the curve, not the back of it."
+        },
+        {
+          "metric": "24 contributors (+0%)",
+          "reading": "Small core team — likely seed-funded with focused velocity. The opportunity is adjacent tooling that augments the small team."
+        }
+      ],
+      "publishedAt": "2026-06-24T09:00:00Z"
     }
   ]
 }
