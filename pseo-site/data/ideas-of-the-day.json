@@ -2848,6 +2848,49 @@
         }
       ],
       "publishedAt": "2026-06-26T09:00:00Z"
+    },
+    {
+      "date": "2026-06-27",
+      "slug": "2026-06-27",
+      "headline": "The e-commerce infrastructure opening hiding in a +75% framework migration",
+      "hook": "Seed e-commerce infrastructure teams shipping 7 commits in 14 days at +75% aren't just building product — they're broadcasting the framework-migration that usually precedes a raise.",
+      "repo": {
+        "name": "ishgroup",
+        "githubUrl": "https://github.com/ishgroup",
+        "stage": "Seed",
+        "geography": "Unknown",
+        "sector": "E-commerce Infrastructure",
+        "sectorSlug": "ecommerce-infrastructure",
+        "signalType": "Framework migration",
+        "commitVelocity14d": 7,
+        "commitVelocityChange": "+75%",
+        "contributors": 13,
+        "contributorGrowth": "+0%",
+        "newRepos": 0,
+        "description": ""
+      },
+      "ideaThesis": "E-commerce Infrastructure has a buyer who is also a builder. The category incumbents shipped for an ops/HR/finance lead; the next wave ships for the engineer running that function. Read the repo: framework migration, seed team, 13 contributors. That's the shape of a team that crosses the next funding line on engineering output, not enterprise sales — and the gap they leave is the wedge for an indie or two-founder tool that does one job better than the suite they're inside of.",
+      "buildAngles": [
+        "Single-screen replacement for one feature the incumbent buried three menus deep.",
+        "Browser extension that pulls the signal onto the dashboard the buyer already uses.",
+        "Pay-per-call hosted endpoint that does one narrow job other tools can chain into."
+      ],
+      "distributionPlay": "Pick the one subreddit or category page where the engineer-buyer already reads. Post the artifact (dataset, demo, methodology) not the product page; reply with the product link only when asked.",
+      "signalReading": [
+        {
+          "metric": "7 commits / 14 days",
+          "reading": "Low absolute volume. The signal is the change-in-change, not the raw count — see the next metric."
+        },
+        {
+          "metric": "+75% commit-velocity change",
+          "reading": "Trend is still accelerating, not peaking. A positive change-in-change is the leading edge of the curve, not the back of it."
+        },
+        {
+          "metric": "13 contributors (+0%)",
+          "reading": "Small core team — likely seed-funded with focused velocity. The opportunity is adjacent tooling that augments the small team."
+        }
+      ],
+      "publishedAt": "2026-06-27T09:00:00Z"
     }
   ]
 }
