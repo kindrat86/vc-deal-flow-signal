@@ -2934,6 +2934,53 @@
         }
       ],
       "publishedAt": "2026-06-28T09:00:00Z"
+    },
+    {
+      "date": "2026-06-29",
+      "slug": "2026-06-29",
+      "headline": "The healthcare reset hiding in a -92% infrastructure buildout",
+      "hook": "Growth healthcare teams cooling to 4 commits over 14 days (-92%) are showing the infra-buildout pattern — a recoverable dip, not a flatline, and the natural moment to build the next adjacent tool.",
+      "repo": {
+        "name": "ohcnetwork",
+        "githubUrl": "https://github.com/ohcnetwork",
+        "stage": "Growth",
+        "geography": "APAC",
+        "sector": "Healthcare",
+        "sectorSlug": "healthcare",
+        "signalType": "Infrastructure buildout",
+        "commitVelocity14d": 4,
+        "commitVelocityChange": "-92%",
+        "contributors": 100,
+        "contributorGrowth": "+0%",
+        "newRepos": 8,
+        "description": "Opensource Public Utility | Open Healthcare Network"
+      },
+      "ideaThesis": "Healthcare has a buyer who is also a builder. The category incumbents shipped for an ops/HR/finance lead; the next wave ships for the engineer running that function. Read the repo: infrastructure buildout, growth team, 100 contributors. That's the shape of a team that crosses the next funding line on engineering output, not enterprise sales — and the gap they leave is the wedge for an indie or two-founder tool that does one job better than the suite they're inside of.",
+      "buildAngles": [
+        "EHR/court/contract export tool — the part that vendors refuse to expose. Read-only, audit-trail-first.",
+        "Compliance-as-a-tool for one narrow workflow; sell the artifact (signed PDF, attestation) not the platform.",
+        "Verification layer that sits between the AI and the system of record; the engineer-buyer is your first 100 customers."
+      ],
+      "distributionPlay": "Lead with a credible benchmark or audit — a single PDF that names what the existing tools miss. Send it to two industry newsletters before posting it anywhere social.",
+      "signalReading": [
+        {
+          "metric": "4 commits / 14 days",
+          "reading": "Low absolute volume. The signal is the change-in-change, not the raw count — see the next metric."
+        },
+        {
+          "metric": "-92% commit-velocity change",
+          "reading": "Cooling. Often a deliberate slowdown for refactor, rebrand, or hiring — read alongside the next two lines before calling it a decline."
+        },
+        {
+          "metric": "100 contributors (+0%)",
+          "reading": "Mature contributor base. The opportunity is less in displacing them and more in serving the engineers who depend on them."
+        },
+        {
+          "metric": "8 new repos in window",
+          "reading": "New repository creation is the classic platform-expansion signal — a team carving the next product surface out of the same codebase. The seam between the old repo and the new one is where a single-purpose external tool lives."
+        }
+      ],
+      "publishedAt": "2026-06-29T09:00:00Z"
     }
   ]
 }
