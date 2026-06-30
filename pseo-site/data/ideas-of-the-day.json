@@ -2981,6 +2981,49 @@
         }
       ],
       "publishedAt": "2026-06-29T09:00:00Z"
+    },
+    {
+      "date": "2026-06-30",
+      "slug": "2026-06-30",
+      "headline": "The cybersecurity opening hiding in a +25% framework migration",
+      "hook": "Growth cybersecurity teams shipping 25 commits in 14 days at +25% aren't just building product — they're broadcasting the framework-migration that usually precedes a raise.",
+      "repo": {
+        "name": "dependency-check",
+        "githubUrl": "https://github.com/dependency-check",
+        "stage": "Growth",
+        "geography": "Unknown",
+        "sector": "Cybersecurity",
+        "sectorSlug": "cybersecurity",
+        "signalType": "Framework migration",
+        "commitVelocity14d": 25,
+        "commitVelocityChange": "+25%",
+        "contributors": 100,
+        "contributorGrowth": "+0%",
+        "newRepos": 0,
+        "description": ""
+      },
+      "ideaThesis": "Cybersecurity has a buyer who is also a builder. The category incumbents shipped for an ops/HR/finance lead; the next wave ships for the engineer running that function. Read the repo: framework migration, growth team, 100 contributors. That's the shape of a team that crosses the next funding line on engineering output, not enterprise sales — and the gap they leave is the wedge for an indie or two-founder tool that does one job better than the suite they're inside of.",
+      "buildAngles": [
+        "Single-table replacement for one screen of the incumbent cybersecurity suite. Sell the export, not the storage.",
+        "Browser extension that overlays signal data on the existing cybersecurity dashboards the buyer already uses.",
+        "Lightweight monitoring + alerting for one specific failure mode — narrower than the platform, deeper on the one job."
+      ],
+      "distributionPlay": "Publish a 'state of cybersecurity engineering' weekly digest derived from the same data; the digest becomes the first sales channel and an SEO surface at the same time.",
+      "signalReading": [
+        {
+          "metric": "25 commits / 14 days",
+          "reading": "Low absolute volume. The signal is the change-in-change, not the raw count — see the next metric."
+        },
+        {
+          "metric": "+25% commit-velocity change",
+          "reading": "Trend is still accelerating, not peaking. A positive change-in-change is the leading edge of the curve, not the back of it."
+        },
+        {
+          "metric": "100 contributors (+0%)",
+          "reading": "Mature contributor base. The opportunity is less in displacing them and more in serving the engineers who depend on them."
+        }
+      ],
+      "publishedAt": "2026-06-30T09:00:00Z"
     }
   ]
 }
