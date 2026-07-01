@@ -1,9 +1,14 @@
 {
   "periods": [
     {
+      "slug": "q3-2026",
+      "name": "Q3 2026",
+      "current": true
+    },
+    {
       "slug": "q2-2026",
       "name": "Q2 2026",
-      "current": true
+      "current": false
     },
     {
       "slug": "q1-2026",
@@ -18,11 +23,6 @@
     {
       "slug": "q3-2025",
       "name": "Q3 2025",
-      "current": false
-    },
-    {
-      "slug": "q2-2025",
-      "name": "Q2 2025",
       "current": false
     }
   ],
