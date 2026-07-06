@@ -28,8 +28,7 @@ import {
 } from "@/lib/corpus";
 
 export const runtime = "nodejs";
-export const dynamic = "force-static";
-export const revalidate = 86400;
+export const dynamic = "force-dynamic";
 
 export async function GET() {
   const snapshot = buildCorpusSnapshot();

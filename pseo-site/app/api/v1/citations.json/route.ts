@@ -14,9 +14,8 @@
 
 import { FINDINGS } from "@/content/research-findings";
 
-export const dynamic = "force-static";
+export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
-export const revalidate = 86400;
 
 const SITE = "https://signals.gitdealflow.com";
 const FORMATS = ["bibtex", "ris", "apa", "mla", "chicago", "wikipedia"] as const;

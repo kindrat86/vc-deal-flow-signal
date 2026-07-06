@@ -18,8 +18,7 @@ import {
 } from "@/content/social-mascot";
 import { SOCIAL_BATCH, BATCH_META } from "@/content/social-content-batch";
 
-export const dynamic = "force-static";
-export const revalidate = 3600;
+export const dynamic = "force-dynamic";
 
 const SITE = "https://signals.gitdealflow.com";
 

@@ -25,8 +25,7 @@ import {
   SWIPE_KIT_META,
 } from "@/content/affiliate-swipe-kit";
 
-export const dynamic = "force-static";
-export const revalidate = 3600;
+export const dynamic = "force-dynamic";
 
 const SITE = "https://signals.gitdealflow.com";
 const PORTAL_URL = "https://gitdealflow.refgrow.com";

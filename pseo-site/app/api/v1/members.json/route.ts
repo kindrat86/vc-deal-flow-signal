@@ -26,8 +26,7 @@ import {
   type CharterMember,
 } from "@/content/charter-cohort";
 
-export const dynamic = "force-static";
-export const revalidate = 3600;
+export const dynamic = "force-dynamic";
 
 const SITE = "https://signals.gitdealflow.com";
 

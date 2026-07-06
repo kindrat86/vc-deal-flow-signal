@@ -11,9 +11,8 @@
 
 import { glossaryTerms } from "@/content/glossary";
 
-export const dynamic = "force-static";
+export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
-export const revalidate = 86400;
 
 const SITE = "https://signals.gitdealflow.com";
 

@@ -9,9 +9,8 @@
 
 import { GET as ApiOpenapiJson } from "@/app/api/openapi.json/route";
 
-export const dynamic = "force-static";
+export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
-export const revalidate = 3600;
 
 const SITE = "https://signals.gitdealflow.com";
 
