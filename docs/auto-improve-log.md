@@ -129,3 +129,117 @@ still accumulate on the task; the 20:00 run will tell.
   payload/key validity.
 - Otterly/GEO probe launchd job needs a fresh ANTHROPIC_API_KEY (tools/.env
   absent on this machine).
+
+## 2026-07-02 — Brunson-Architect + Isenberg max-improve session (user-triggered, main session)
+
+**FIRST PAYING CUSTOMER (found in audit):** sarah.qlwang@gmail.com — First Look
+€7 + Dashboard €9.97/mo (active since 06-30 02:50 UTC). Automated welcomes
+delivered; personal welcome DRAFTED (monitoring/drafts/) — human must send +
+check inbox for her First Look sector reply (deliverable possibly overdue).
+
+**Emergency fix — triple drip:** /api/verify scheduled the full welcome
+sequence on every confirmed entry; she had it queued 3× plus 4 pitches for
+products she already owns. Cancelled 31 scheduled sends via Resend API; added
+per-email drip dedup nonce (namespace `drip-scheduled`) in /api/verify.
+
+**Founding-window integrity (Brunson):** deadline June 30 passed but checkout
+still charged €9.97/€97. Enforced the printed post-founding prices: Dashboard
+€49/mo (€490/yr), Insider €197/mo (€1,970/yr) — stripe-tiers.ts, TIER_BY_AMOUNT,
+insider OTO (lookup insider_monthly_v2), 4 new payment links created, old ones
+deactivated post-deploy. Copy sweep across pseo-site app/components/content,
+lib/emails.ts, landing HTML (3 parallel agents), leaderboard script, mastodon
+queue (3 pending posts). Grandfathered subs untouched.
+
+**Isenberg "sell the work" fix:** First Look €7 now auto-fulfills — checkout
+custom field `sector` → webhook → lib/firstlook-generator (was dead code,
+imported nowhere) → ranked .md + .csv attached via Resend; miss → reply-based
+fallback + admin alert with sector answer.
+
+**June 11 traffic spike explained:** badge-outreach GitHub issues (batches
+06-10/11) → repo watchers/bots hit exactly those /signal/* pages. Not organic;
+but also proof badge outreach drives visits.
+
+## 2026-07-06 (16:00Z) — scheduled auto-improve: API/badge 404-poisoning fix
+
+**Scores (post-fix state · Δ vs 06-10 baseline):** Technical SEO 70 (↓ sitemap
+family broken, see below) · On-page 87 (=) · Off-page 60 (=) · pSEO 70 (↓ stale
+sitemap) · AEO 82 (recovered from ~40 during outage) · GEO 79 (=) · AIO 86 (recovered) ·
+E-E-A-T 72 (=) · SMO 70 (=) · CRO 71 (=) · ASO 35 (=). The AEO/AIO numbers are
+"recovered": the agent data surfaces were live-404 for most of each deploy cycle
+before this run — see root cause.
+
+**CRITICAL FIX — Vercel edge 404-poisoning of extension-path route handlers
+(deployed, run 28805270154 success, buildTime 2026-07-06T16:11:42Z, health ok).**
+Audit found the ENTIRE `/api/v1/*` agent surface + `/api/health.json`,
+`/api/schema.json`, `/api/catalog.json`, `/api/corpus.json`, `/api/corpus.jsonl`,
+`/api/openapi.json`, and the badge SVG `/api/badge/signal/[slug]/svg` were all
+live-404 (`x-vercel-cache: HIT`, `x-matched-path: /404`, age ≈ time-since-deploy).
+Impact: (1) every badge embedded in the ~24 outreach OSS repos was a BROKEN IMAGE;
+(2) uptime monitors pointed at health.json saw the service DOWN; (3) the AEO/agent
+data surfaces (a core product pillar) were unreachable ~23h/day.
+- Root cause: route handlers whose pathname ends in a file extension, declared
+  `dynamic = "force-static"` + `revalidate = N`, get their edge cache poisoned to
+  a 404 by Vercel after the FIRST background revalidation (~2h post-deploy). Proof:
+  `/api/openapi.json` and `/api/schema.json` ship byte-identical config yet served
+  200 vs 404, both cache HITs. The deploy pipeline's own health-check passes only
+  because it runs inside the 60s window before the first revalidation — so this hid
+  from every prior green deploy.
+- Fix (commit 76a10b9, 20 route files): `force-static`+`revalidate` → `force-dynamic`,
+  matching `/api/signals.json` and `/api/changelog.json` — the two routes that stay
+  reliably 200 on this deployment (both dynamic). CDN caching preserved via each
+  route's existing `s-maxage`/`stale-while-revalidate` Response header, so economics
+  are unchanged. Badge route also dropped `generateStaticParams`/`dynamicParams`
+  (incompatible with force-dynamic; GET already renders any slug on demand).
+- Verified live post-deploy: all 12 `/api/v1/*.json` + health/schema/catalog/corpus/
+  openapi + badge `/svg` now return 200 with `x-matched-path` = the real route (not
+  /404) and `x-vercel-cache: MISS` (function-rendered). health.json = status ok, fresh
+  buildTime. No regressions: signals.json/changelog.json/llms.txt/homepage still 200.
+- NOTE for next run: the true test is that they STAY 200 after the ~2h revalidation
+  window. The poisoning MECHANISM is structurally removed (no more static-revalidation),
+  and these now match the proven-reliable signals.json config, so confidence is high —
+  but re-curl the set next run to confirm they didn't regress.
+
+**Build verification:** `npx tsc --noEmit` clean; `verify-speakable` OK. Deliberately
+did NOT run local `npm run build` — its `prebuild` regenerates signal-report-latest.ts
+et al. and would have clobbered the large uncommitted WIP in the tree (below), and
+`postbuild` fires IndexNow/WebSub. Relied on tsc + the hermetic GitHub Actions build
+(alias only promotes on success).
+
+**⚠️ NEEDS HUMAN — large uncommitted WIP in the Mac-mini working tree (99 files, NOT
+on GitHub, NOT deployed).** The tree carries a substantive, deliberate-looking WIP set
+from the 07-02 session that was never committed:
+- Pricing **founding-window REOPEN** through 2026-09-30 at €9.97/€97 (lib/stripe.ts adds
+  4900/19700 tiers as "post-founding"; lib/stripe-tiers, v1/pricing.json body, landing
+  llms.txt, many pages/components). This CONTRADICTS the committed state (which enforced
+  €49/€197 post-June-30). Live site still serves the committed €49/€197 logic.
+- Weekly report refresh to 2026-07-02 (content/signal-report-latest.ts, 221 startups).
+- ~95 other modified files (landing HTML, emails.ts, monitoring/, mastodon queue, audit
+  reports) + 9 untracked.
+This run committed ONLY the 20 API route fixes (pricing.json handled via patch-staging
+to grab just the render-mode hunk, leaving the pricing-copy WIP untouched) and this log.
+Human must decide: review + commit + deploy the founding-window/pricing WIP, or discard
+it. Until then the pricing strategy in the tree is NOT live.
+
+**BLOCKED / DEFERRED — sitemap family is broken (TOP PRIORITY next run, needs clean tree):**
+- `/sitemap.xml` serves a STALE `<urlset>` (289 URLs, all lastmod frozen 2026-06-10)
+  despite weekly deploys — not the `<sitemapindex>` the current `app/sitemap.xml/route.ts`
+  code emits. Strong smell of an `app/sitemap.ts` (metadata route) vs `app/sitemap.xml/route.ts`
+  collision, plus the same force-static dotted-path staleness.
+- `/sitemap-index.xml`, every child `/sitemap/{core,high-intent,sectors,crossings,startups,
+  content}.xml`, `/news-sitemap.xml`, `/sitemap-images.xml`, `/sitemap-i18n.xml` → ALL 404.
+  So the index the route points at is dead; only the stale 06-10 urlset keeps 289 URLs
+  discoverable. Did NOT touch sitemaps this run: high de-indexation risk, needs the routing
+  conflict resolved + verification a 2h-poison test can't give inside one run.
+- Hypothesis to test next run: apply the same force-static→force-dynamic conversion to the
+  sitemap child routes AND resolve the sitemap.xml source conflict.
+
+**BLOCKED — `.well-known` 404s (same bug family, investigate next run):**
+`/.well-known/mcp.json` (has BOTH a public/.well-known/mcp.json file AND a route.ts —
+a shadow conflict), `/.well-known/agent.json`, `/.well-known/freshness.json` (builds as
+dynamic ƒ yet 404s), `/.well-known/discover.json`, `/.well-known/security.txt` → all 404.
+`/.well-known/ai-plugin.json` is the only one 200.
+
+**Still blocked on human (unchanged from prior runs):** retargeting pixel IDs; BSKY_HANDLE/
+BSKY_APP_PASSWORD; GA4 measurement id (wizard stalled at ToS); Otterly/GEO probe
+ANTHROPIC_API_KEY; guest-essay/curator outbound (human-only); Wikipedia autoconfirm;
+named advisory board (cannot fabricate).
