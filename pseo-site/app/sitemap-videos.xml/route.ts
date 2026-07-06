@@ -13,8 +13,7 @@
 
 import { videos, watchPageUrl, publicUrl } from "@/content/videos";
 
-export const dynamic = "force-static";
-export const revalidate = 86400;
+export const dynamic = "force-dynamic";
 
 const APEX = "https://gitdealflow.com";
 

@@ -7,8 +7,7 @@ import { posts } from "@/content/posts";
 import { agentQueries } from "@/content/agent-queries";
 import { videos, watchPageUrl } from "@/content/videos";
 
-export const dynamic = "force-static";
-export const revalidate = 3600;
+export const dynamic = "force-dynamic";
 
 const BASE_URL = "https://signals.gitdealflow.com";
 

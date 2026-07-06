@@ -16,8 +16,7 @@ import { startupIdeas } from "@/content/startup-ideas";
 
 const SITE = "https://signals.gitdealflow.com";
 
-export const dynamic = "force-static";
-export const revalidate = 3600;
+export const dynamic = "force-dynamic";
 
 export async function GET() {
   const urls: string[] = [];

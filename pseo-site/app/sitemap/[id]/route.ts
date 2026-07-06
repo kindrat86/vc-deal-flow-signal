@@ -87,15 +87,14 @@ interface RouteContext {
   params: Promise<{ id: string }>;
 }
 
-export const dynamic = "force-static";
-export const dynamicParams = false;
-export const revalidate = 3600;
-
-export function generateStaticParams() {
-  return ["core", "sectors", "crossings", "startups", "content", "high-intent"].map((id) => ({
-    id: `${id}.xml`,
-  }));
-}
+// force-dynamic (not force-static+revalidate): dotted-path route handlers
+// under this config get their Vercel edge cache non-deterministically
+// poisoned to a 404 after the first background revalidation (~2h post-deploy),
+// which took the entire /sitemap/*.xml child set offline between deploys.
+// Matches the /api/*.json fix (commit 76a10b9). CDN caching is preserved by
+// the per-response s-maxage/stale-while-revalidate Cache-Control header.
+// Unknown ids self-404 in GET below, so no static-params whitelist is needed.
+export const dynamic = "force-dynamic";
 
 export async function GET(_req: Request, ctx: RouteContext) {
   const { id: rawId } = await ctx.params;

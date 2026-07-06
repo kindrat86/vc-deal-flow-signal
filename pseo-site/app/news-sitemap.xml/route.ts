@@ -3,8 +3,7 @@ import { PRESS_RELEASES } from "@/content/press-releases";
 import { getAllPredictionWeeks } from "@/lib/predictions";
 import { getAllIdeas } from "@/lib/ideas-of-the-day";
 
-export const dynamic = "force-static";
-export const revalidate = 3600;
+export const dynamic = "force-dynamic";
 
 const BASE_URL = "https://signals.gitdealflow.com";
 const PUBLICATION_NAME = "VC Deal Flow Signal";

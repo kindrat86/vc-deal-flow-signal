@@ -1,7 +1,6 @@
 import { getDataLastModified } from "@/lib/data";
 
-export const dynamic = "force-static";
-export const revalidate = 3600;
+export const dynamic = "force-dynamic";
 
 const BASE_URL = "https://signals.gitdealflow.com";
 const SITEMAPS = ["core", "high-intent", "sectors", "crossings", "startups", "content"];

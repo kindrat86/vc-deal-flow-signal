@@ -13,7 +13,7 @@
 import { getI18nSitemapEntries } from "@/lib/hreflang";
 import { getDataLastModified } from "@/lib/data";
 
-export const dynamic = "force-static";
+export const dynamic = "force-dynamic";
 
 export async function GET() {
   const lastmod = getDataLastModified().toISOString();
