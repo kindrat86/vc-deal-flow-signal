@@ -243,3 +243,86 @@ dynamic ƒ yet 404s), `/.well-known/discover.json`, `/.well-known/security.txt` 
 BSKY_APP_PASSWORD; GA4 measurement id (wizard stalled at ToS); Otterly/GEO probe
 ANTHROPIC_API_KEY; guest-essay/curator outbound (human-only); Wikipedia autoconfirm;
 named advisory board (cannot fabricate).
+
+## 2026-07-06 (21:22Z) — scheduled auto-improve: harden the sitemap family vs Vercel 404-poisoning
+
+**Scores (Δ vs 07-06 16:00Z run):** Technical SEO 82 (↑12 — sitemap family
+recovered to a live, fresh `<sitemapindex>` + now structurally immune to
+re-poisoning) · On-page 87 (=) · Off-page 60 (=) · pSEO 80 (↑10 — crawl-discovery
+surface healthy + hardened) · AEO 84 (↑2) · GEO 79 (=) · AIO 88 (↑2, recovered
+to baseline) · E-E-A-T 72 (=) · SMO 70 (=) · CRO 71 (=) · ASO 35 (=).
+
+**Audit finding — the prior run's #1 priority (sitemap family) had ALREADY
+RECOVERED by this run.** Full curl sweep at 20:34Z (≈4h20m after the 16:11Z
+deploy, i.e. WELL past the ~2h revalidation-poisoning window) showed EVERY
+surface the prior run flagged as broken now 200 + fresh: `/sitemap.xml` served a
+proper `<sitemapindex>` (9 children, lastmod = request time), all six
+`/sitemap/*.xml` children 200, all `.well-known/*` 200, and the entire prior-run
+API fix (12 `/api/*.json` + badge) still 200 with `x-vercel-cache: MISS`. So the
+prior 404s were cleared by the 16:11Z deploy and did NOT recur this cycle. The
+prior fix (commit 76a10b9) held.
+
+**FIX SHIPPED (deploy run 28823636454 success, buildTime 2026-07-06T21:22:49Z,
+health ok) — commit 54a0b7c, 7 sitemap route files converted force-static →
+force-dynamic.** Rationale: although the sitemap family was momentarily healthy,
+all 7 route handlers still shipped the EXACT `dynamic = "force-static"` +
+`revalidate = N` config that the prior run *proved* (two byte-identical routes,
+one 200 / one 404, both cache HITs) gets non-deterministically edge-cache-poisoned
+to a 404 ~2h post-deploy. On a ~6-hourly + weekly deploy cadence that is a
+standing de-indexation-roulette on the site's PRIMARY crawl-discovery surface.
+Converting them to the proven-immune dynamic config (matching the already-hardened
+`/api/*.json`, `/api/signals.json`, `/api/changelog.json`) structurally removes
+the recurrence risk.
+- Files: `app/sitemap.xml/route.ts`, `app/news-sitemap.xml/route.ts`,
+  `app/sitemap-i18n.xml/route.ts`, `app/sitemap-videos.xml/route.ts`,
+  `app/sitemap-images.xml/route.ts`, `app/sitemap.txt/route.ts`,
+  `app/sitemap/[id]/route.ts`.
+- `/sitemap/[id]` additionally dropped `generateStaticParams` +
+  `dynamicParams = false`. Safe because the GET handler already returns
+  `new Response("Not Found", { status: 404 })` for unknown ids (verified the
+  `else` branch at line ~746 before editing) — so valid ids render identically,
+  invalid ids still 404, and there is no risk of unbounded indexable URLs.
+- CDN economics unchanged: every route keeps its `s-maxage`/`stale-while-revalidate`
+  Cache-Control header, so the edge still caches responses; force-dynamic only
+  changes render mode, not cacheability. (Vercel spend cap $30 — no impact.)
+- Verified live post-deploy: all 12 sitemap URLs 200 + `x-vercel-cache: MISS`
+  (function-rendered), `/sitemap.xml` fresh `<sitemapindex>` (lastmod 21:22:50Z),
+  `/sitemap/bogus.xml` → 404. No regressions: homepage, 12 `/api/*` +
+  badge, llms.txt, robots.txt, `.well-known/{mcp,ai-plugin}.json` all still 200.
+
+**Build/verify:** `npx tsc --noEmit` clean (exit 0). Render-mode-only change (no
+new imports, no GET-body logic change), so `verify-speakable` + `audit:pseo`
+guards are unaffected — and both passed inside the hermetic CI build (green
+"Build" step). Deliberately did NOT run local `npm run build` (its prebuild would
+clobber the 89-file uncommitted WIP tree, below). Staged ONLY the 7 route files
+via explicit `git add`; the WIP tree stayed untouched (89 files before and after,
+preserved through a `--rebase --autostash` when the push raced a dream100 radar
+commit).
+
+**NOTE for next run — remaining latent force-static dotted routes (~86).** After
+this run, ~86 route handlers still ship `force-static` + `revalidate` (feeds:
+rss/atom/feed.xml/feed.json; `.well-known/*` beyond the ai-plugin/mcp pair;
+llms/llms-full/llms-search; misc `.json/.txt/.ics/.svg`). Same theoretical
+poisoning risk, but they were ALL 200 this cycle and did not recur, so this run
+scoped the fix to the highest-severity surface (indexation/sitemaps) rather than
+sweeping all 86 blind — a 90-file render-mode sweep can't be safely local-built
+against the dirty WIP tree, and the empirical evidence (one clean cycle) doesn't
+justify the blast radius. Recommend the next run, ON A CLEAN TREE, convert the
+remaining dotted routes in one reviewed batch (can `npm run build` to fully
+verify) and also fold in the 3 WIP-entangled route files skipped this run
+(`.well-known/discover.json`, `llms.txt`, `llms-full.txt`).
+
+**⚠️ STILL NEEDS HUMAN — 89-file uncommitted WIP tree (unchanged, NOT deployed).**
+The 07-02-session WIP is still sitting in the Mac-mini working tree and still NOT
+on GitHub: pricing **founding-window REOPEN** to 2026-09-30 at €9.97/€97 (which
+CONTRADICTS the committed/live €49/€197 logic), the 2026-07-02 weekly report
+refresh (221 startups), plus ~85 other landing/emails/monitoring/mastodon edits.
+The live site still serves the committed €49/€197 pricing. Human must review +
+commit/deploy or discard this WIP; until then the pricing WIP is NOT live and
+blocks clean-tree work (like the full route sweep above).
+
+**Still blocked on human (unchanged):** retargeting pixel IDs; BSKY_HANDLE/
+BSKY_APP_PASSWORD (social-bluesky workflow); GA4 measurement id (wizard stalled
+at ToS); Otterly/GEO probe ANTHROPIC_API_KEY (tools/.env absent); IndexNow HTTP
+400 on post-build submit; guest-essay/curator outbound (human-only); Wikipedia
+autoconfirm; named advisory board (cannot fabricate).
