@@ -3247,6 +3247,49 @@
         }
       ],
       "publishedAt": "2026-07-05T09:00:00Z"
+    },
+    {
+      "date": "2026-07-06",
+      "slug": "2026-07-06",
+      "headline": "The web3 opening hiding in a +3% framework migration",
+      "hook": "Growth web3 teams shipping 31 commits in 14 days at +3% aren't just building product — they're broadcasting the framework-migration that usually precedes a raise.",
+      "repo": {
+        "name": "gnolang",
+        "githubUrl": "https://github.com/gnolang",
+        "stage": "Growth",
+        "geography": "Unknown",
+        "sector": "Web3",
+        "sectorSlug": "web3",
+        "signalType": "Framework migration",
+        "commitVelocity14d": 31,
+        "commitVelocityChange": "+3%",
+        "contributors": 100,
+        "contributorGrowth": "+0%",
+        "newRepos": 0,
+        "description": "Gno: An interpreted, stack-based Go virtual machine to build succinct and composable apps + gno.land: a blockchain for t"
+      },
+      "ideaThesis": "Web3 has a buyer who is also a builder. The category incumbents shipped for an ops/HR/finance lead; the next wave ships for the engineer running that function. Read the repo: framework migration, growth team, 100 contributors. That's the shape of a team that crosses the next funding line on engineering output, not enterprise sales — and the gap they leave is the wedge for an indie or two-founder tool that does one job better than the suite they're inside of.",
+      "buildAngles": [
+        "Compliance-adjacent middleware — the part of the stack the incumbent won't ship because the support cost is too high.",
+        "Read-only analytics layer over the existing web3 data sources; sell the dashboard, not the integration.",
+        "Embedded widget for the engineer-buyer at a Series A — drop-in, single-script, replaces a quarter of a Salesforce instance."
+      ],
+      "distributionPlay": "Publish a public read-only demo with one anonymised customer's data; share the demo URL in the Indie Hackers fintech category and pitch one fintech podcast as a case study, not a product.",
+      "signalReading": [
+        {
+          "metric": "31 commits / 14 days",
+          "reading": "Low absolute volume. The signal is the change-in-change, not the raw count — see the next metric."
+        },
+        {
+          "metric": "+3% commit-velocity change",
+          "reading": "Trend is still accelerating, not peaking. A positive change-in-change is the leading edge of the curve, not the back of it."
+        },
+        {
+          "metric": "100 contributors (+0%)",
+          "reading": "Mature contributor base. The opportunity is less in displacing them and more in serving the engineers who depend on them."
+        }
+      ],
+      "publishedAt": "2026-07-06T09:00:00Z"
     }
   ]
 }
