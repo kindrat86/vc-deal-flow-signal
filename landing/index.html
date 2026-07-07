@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GitDealFlow — See startups heating up before they raise · a signal tool for investors</title>
-  <meta name="description" content="GitDealFlow reads startups' public GitHub engineering activity and flags the ones accelerating in your sectors, weeks before the round or the press. A tool for investors, not a fund. No code-reading required.">
+  <title>GitDealFlow — See Startups Heating Up Before They Raise</title>
+  <meta name="description" content="GitDealFlow flags startups accelerating on GitHub, weeks before the round or the press. A signal tool for investors — not a fund. No code-reading required.">
   <meta name="author" content="The Data Nerd" />
   <link rel="canonical" href="https://gitdealflow.com/" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
@@ -18,8 +18,8 @@
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="GitDealFlow" />
-  <meta property="og:title" content="GitDealFlow — See startups heating up before they raise · a signal tool for investors" />
-  <meta property="og:description" content="A signal tool for investors, not a fund. It reads startups' public GitHub engineering activity and flags the ones accelerating in your sectors, before the round or the press." />
+  <meta property="og:title" content="GitDealFlow — See Startups Heating Up Before They Raise" />
+  <meta property="og:description" content="A signal tool for investors, not a fund. It flags startups accelerating on GitHub, weeks before the round or the press." />
   <meta property="og:url" content="https://gitdealflow.com/" />
   <meta property="og:image" content="https://signals.gitdealflow.com/opengraph-image" />
   <meta property="og:image:width" content="1200" />
@@ -29,8 +29,8 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@data_nerd" />
   <meta name="twitter:creator" content="@data_nerd" />
-  <meta name="twitter:title" content="GitDealFlow — See startups heating up before they raise · a signal tool for investors" />
-  <meta name="twitter:description" content="A signal tool for investors, not a fund. Reads startups' public GitHub engineering activity to flag the ones accelerating in your sectors, before the round." />
+  <meta name="twitter:title" content="GitDealFlow — See Startups Heating Up Before They Raise" />
+  <meta name="twitter:description" content="A signal tool for investors, not a fund. Flags startups accelerating on GitHub, before the round." />
   <meta name="twitter:image" content="https://signals.gitdealflow.com/opengraph-image" />
 
   <script type="application/ld+json">
@@ -127,176 +127,191 @@
     ]
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "GitDealFlow", "item": "https://gitdealflow.com/" }
+    ]
+  }
+  </script>
 
+  <meta name="theme-color" content="#0f172a" />
+  <meta name="color-scheme" content="dark" />
+  <link rel="manifest" href="/manifest.webmanifest" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="preload" href="/styles.css" as="style">
   <link rel="stylesheet" href="/styles.css">
   <script>document.documentElement.className += ' js';</script>
   <link rel="preconnect" href="https://signals.gitdealflow.com" crossorigin>
+  <link rel="preconnect" href="https://eu.i.posthog.com" crossorigin>
+  <link rel="preconnect" href="https://scripts.refgrowcdn.com" crossorigin>
   <link rel="dns-prefetch" href="https://signals.gitdealflow.com">
   <link rel="dns-prefetch" href="https://eu.i.posthog.com">
   <link rel="dns-prefetch" href="https://scripts.refgrowcdn.com">
   <script src="https://scripts.refgrowcdn.com/latest.js" data-project-id="829" async defer></script>
   <style>
-    html { scroll-padding-top: 6rem; }
+    /* ============================================================
+       UiKit v2 — World-class UI/UX for gitdealflow.com
+       Principles: mobile-first, 8px grid, accessible, performant
+       ============================================================ */
+
+    /* Root-level rhythm + safe zones */
+    html { scroll-padding-top: 5rem; }
     @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
-    #signup { display: block; height: 0; scroll-margin-top: 5rem; }
-    .qual-grid { display: grid; grid-template-columns: 1fr; gap: 0.625rem; }
-    @media (min-width: 640px) { .qual-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; } }
+    #signup { display: block; height: 0; scroll-margin-top: 4.5rem; }
+    body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
+
+    /* ========================= QUALIFICATION CARDS ========================= */
+    .qual-grid { display: grid; grid-template-columns: 1fr; gap: 0.5rem; }
+    @media (min-width: 640px) { .qual-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.625rem; } }
     .qual-card {
       position: relative; display: flex; align-items: center; gap: 0.75rem;
-      padding: 0.875rem 1rem; min-height: 56px;
-      border-radius: 0.625rem; border: 1px solid #4b5563;
+      padding: 0.75rem 0.875rem; min-height: 52px;
+      border-radius: 0.75rem; border: 1px solid #475569;
       background-color: #1e293b; color: #e5e7eb; cursor: pointer;
-      transition: border-color 120ms ease, background-color 120ms ease, transform 120ms ease;
+      transition: border-color 140ms cubic-bezier(0.4,0,0.2,1),
+                  background-color 140ms cubic-bezier(0.4,0,0.2,1),
+                  transform 120ms cubic-bezier(0.34,1.56,0.64,1),
+                  box-shadow 140ms ease;
       -webkit-tap-highlight-color: transparent;
+      user-select: none;
     }
-    .qual-card:hover { border-color: #6b7280; background-color: #243144; }
-    .qual-card:active { transform: scale(0.99); }
+    .qual-card:hover { border-color: #64748b; background-color: #243144; box-shadow: 0 2px 8px rgba(0,0,0,.2); }
+    .qual-card:active { transform: scale(0.97); }
     .qual-card input[type="radio"] {
       flex: 0 0 auto; appearance: none; -webkit-appearance: none;
       width: 1.125rem; height: 1.125rem; border-radius: 9999px;
-      border: 2px solid #6b7280; background-color: transparent;
+      border: 2px solid #64748b; background-color: transparent;
       display: inline-block; cursor: pointer; margin: 0;
+      transition: border-color 120ms ease, background-color 120ms ease, box-shadow 120ms ease;
     }
-    .qual-card input[type="radio"]:checked { border-color: #0ea5e9; background-color: #0ea5e9; box-shadow: inset 0 0 0 3px #1e293b; }
-    .qual-card:has(input[type="radio"]:checked) { border-color: #0ea5e9; background-color: rgba(14, 165, 233, 0.10); }
+    .qual-card input[type="radio"]:checked {
+      border-color: #0ea5e9; background-color: #0ea5e9;
+      box-shadow: inset 0 0 0 3px #1e293b;
+    }
+    .qual-card:has(input[type="radio"]:checked) {
+      border-color: #0ea5e9;
+      background-color: rgba(14, 165, 233, 0.10);
+      box-shadow: 0 0 0 1px rgba(14, 165, 233, 0.3);
+    }
     .qual-card input[type="radio"]:focus-visible { outline: 2px solid #0ea5e9; outline-offset: 2px; }
-    .qual-card-text { display: flex; flex-direction: column; line-height: 1.25; }
-    .qual-card-title { font-weight: 600; font-size: 0.95rem; color: #f1f5f9; }
-    .qual-card-sub { font-size: 0.78rem; color: #94a3b8; margin-top: 1px; }
-    /* "Why it's good for you" benefit block (hero) */
-    .benefit-why { margin: 2.5rem auto 3rem; max-width: 54rem; }
+    .qual-card-text { display: flex; flex-direction: column; line-height: 1.2; }
+    .qual-card-title { font-weight: 600; font-size: 0.9rem; color: #f1f5f9; }
+    .qual-card-sub { font-size: 0.75rem; color: #94a3b8; margin-top: 1px; }
+
+    /* ========================= BENEFIT BLOCK (Hero) ========================= */
+    .benefit-why { margin: 2rem auto 2.5rem; max-width: 54rem; }
     .benefit-eyebrow {
-      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em;
-      text-transform: uppercase; color: #38bdf8; margin-bottom: 0.5rem;
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: #38bdf8; margin-bottom: 0.4rem;
     }
     .benefit-h2 {
-      font-size: 1.5rem; line-height: 1.2; font-weight: 700;
-      color: #f1f5f9; margin-bottom: 1.75rem;
+      font-size: 1.35rem; line-height: 1.25; font-weight: 700;
+      color: #f1f5f9; margin-bottom: 1.5rem;
     }
-    @media (min-width: 768px) { .benefit-h2 { font-size: 1.875rem; } }
-    .benefit-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; text-align: left; }
+    @media (min-width: 768px) { .benefit-h2 { font-size: 1.75rem; } }
+    .benefit-grid { display: grid; grid-template-columns: 1fr; gap: 0.75rem; text-align: left; }
     @media (min-width: 768px) {
-      .benefit-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+      .benefit-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
     }
     .benefit-card {
       display: flex; flex-direction: column; align-items: flex-start;
-      padding: 1.5rem; border-radius: 1rem;
+      padding: 1.25rem; border-radius: 1rem;
       border: 1px solid #334155; background-color: rgba(30, 41, 59, 0.6);
-      transition: border-color 150ms ease, transform 150ms ease;
+      transition: border-color 180ms cubic-bezier(0.4,0,0.2,1),
+                  transform 180ms cubic-bezier(0.34,1.56,0.64,1),
+                  box-shadow 180ms ease;
     }
-    .benefit-card:hover { border-color: rgba(14, 165, 233, 0.5); transform: translateY(-2px); }
+    .benefit-card:hover {
+      border-color: rgba(14, 165, 233, 0.5);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,0,0,.25);
+    }
     .benefit-ico {
       display: inline-flex; align-items: center; justify-content: center;
-      flex: 0 0 auto; width: 2.75rem; height: 2.75rem;
-      border-radius: 0.75rem; margin-bottom: 1rem;
+      flex: 0 0 auto; width: 2.5rem; height: 2.5rem;
+      border-radius: 0.75rem; margin-bottom: 0.75rem;
       background-color: rgba(14, 165, 233, 0.12); color: #38bdf8;
+      transition: transform 180ms ease;
     }
-    .benefit-title { font-size: 1.0625rem; font-weight: 600; color: #f8fafc; margin-bottom: 0.375rem; }
-    .benefit-desc { font-size: 0.9rem; line-height: 1.55; color: #94a3b8; }
-    .proof-card, .support-card, .step-card { transition: border-color 120ms ease, transform 120ms ease; }
-    .proof-card:hover, .support-card:hover, .step-card:hover { border-color: rgba(14, 165, 233, 0.5); }
+    .benefit-card:hover .benefit-ico { transform: scale(1.08); }
+    .benefit-text { display: flex; flex-direction: column; min-width: 0; }
+    .benefit-title { font-size: 1rem; font-weight: 600; color: #f8fafc; margin-bottom: 0.25rem; }
+    .benefit-desc { font-size: 0.85rem; line-height: 1.55; color: #a8b3c2; }
+
+    @media (max-width: 639px) {
+      .benefit-grid { gap: 0.625rem; }
+      .benefit-card { flex-direction: row; align-items: flex-start; gap: 0.75rem; padding: 0.875rem 1rem; }
+      .benefit-ico { margin-bottom: 0; width: 2.125rem; height: 2.125rem; border-radius: 0.5rem; }
+      .benefit-ico svg { width: 18px; height: 18px; }
+      .benefit-title { margin-bottom: 0.1rem; font-size: 0.925rem; }
+      .benefit-desc { font-size: 0.8rem; }
+      .benefit-why { margin: 1.5rem auto 1.75rem; }
+    }
+
+    /* ========================= CARD UNIFORMS ========================= */
+    .proof-card, .support-card, .step-card {
+      transition: border-color 160ms cubic-bezier(0.4,0,0.2,1),
+                  transform 160ms cubic-bezier(0.34,1.56,0.64,1),
+                  box-shadow 160ms ease;
+    }
+    .proof-card:hover, .support-card:hover, .step-card:hover {
+      border-color: rgba(14, 165, 233, 0.5);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,.2);
+    }
+
+    /* ========================= MOBILE SYSTEMS ========================= */
     .mobile-cta-stack > * { width: 100%; }
     .mobile-sticky-cta { display: none; }
     @media (min-width: 640px) { .mobile-cta-stack > * { width: auto; } }
+
     @media (max-width: 639px) {
-      html { scroll-padding-top: 5rem; }
+      html { scroll-padding-top: 4.5rem; }
       body { padding-bottom: 6rem; }
-      .mobile-compact-header { padding-top: 0.75rem; padding-bottom: 0.75rem; }
-      .mobile-hero-wrap { padding-left: 1rem; padding-right: 1rem; padding-top: 4rem; padding-bottom: 4rem; }
-      .mobile-hero-title { font-size: 2rem; line-height: 1.1; }
-      .mobile-hero-copy { font-size: 1rem; line-height: 1.65; }
+      .mobile-compact-header { padding-top: 0.625rem; padding-bottom: 0.625rem; }
+      .mobile-hero-wrap { padding-left: 1rem; padding-right: 1rem; padding-top: 3rem; padding-bottom: 3rem; }
+      .mobile-hero-title { font-size: 1.875rem; line-height: 1.1; text-wrap: balance; }
+      .mobile-hero-copy { font-size: 0.95rem; line-height: 1.6; }
       .mobile-section-pad { padding-left: 1rem; padding-right: 1rem; }
-      .mobile-card-pad { padding: 1.25rem; }
-      .mobile-proof-grid { gap: 0.75rem; }
-      .mobile-proof-grid .proof-card { padding: 1rem; border-radius: 0.875rem; }
-      .mobile-stat-grid { gap: 1rem; }
-      .mobile-steps-grid { gap: 1rem; }
-      .qual-card { min-height: 62px; padding: 0.95rem 1rem; }
+      .mobile-card-pad { padding: 1.125rem; }
+      .mobile-proof-grid { gap: 0.625rem; }
+      .mobile-proof-grid .proof-card { padding: 0.875rem; border-radius: 0.75rem; }
+      .mobile-stat-grid { gap: 0.75rem; }
+      .mobile-steps-grid { gap: 0.75rem; }
+      .qual-card { min-height: 56px; padding: 0.75rem 0.875rem; }
       .mobile-cta-stack .btn {
-        white-space: normal; text-align: center; line-height: 1.35;
-        padding-left: 1rem; padding-right: 1rem;
+        white-space: normal; text-align: center; line-height: 1.3;
+        padding-left: 0.875rem; padding-right: 0.875rem;
       }
       .mobile-sticky-cta {
         position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; display: block;
-        padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom));
+        padding: 0.625rem 0.875rem calc(0.625rem + env(safe-area-inset-bottom));
         background: rgba(2, 6, 23, 0.94); backdrop-filter: blur(12px);
         border-top: 1px solid rgba(71, 85, 105, 0.7);
+        transform: translateY(115%);
+        transition: transform 280ms cubic-bezier(0.4,0,0.2,1);
+        pointer-events: none;
       }
+      .mobile-sticky-cta.is-visible { transform: translateY(0); pointer-events: auto; }
       .mobile-sticky-cta .inner {
-        display: flex; align-items: center; gap: 0.75rem; max-width: 28rem; margin: 0 auto;
+        display: flex; align-items: center; gap: 0.625rem; max-width: 28rem; margin: 0 auto;
       }
       .mobile-sticky-cta .meta { flex: 1; min-width: 0; }
-      .mobile-sticky-cta .meta strong { display: block; color: #fff; font-size: 0.95rem; line-height: 1.1; }
-      .mobile-sticky-cta .meta span { display: block; color: #94a3b8; font-size: 0.72rem; margin-top: 0.1rem; }
-      .mobile-sticky-cta .btn { white-space: nowrap; padding-left: 1rem; padding-right: 1rem; }
-    }
-
-    /* ===================== UX polish pass ===================== */
-    /* One conversion color: orange primary everywhere; suppress the pulse on
-       persistent chrome (nav + sticky bar) so only in-content CTAs breathe. */
-    .btn-no-pulse { animation: none !important; }
-
-    /* Benefit cards — horizontal (icon left, text right) on mobile: halves height. */
-    .benefit-text { display: flex; flex-direction: column; min-width: 0; }
-    @media (max-width: 639px) {
-      .benefit-grid { gap: 0.75rem; }
-      .benefit-card { flex-direction: row; align-items: flex-start; gap: 0.875rem; padding: 1rem 1.125rem; }
-      .benefit-ico { margin-bottom: 0; width: 2.25rem; height: 2.25rem; border-radius: 0.625rem; }
-      .benefit-ico svg { width: 20px; height: 20px; }
-      .benefit-title { margin-bottom: 0.2rem; }
-      .benefit-why { margin: 2rem auto 2.25rem; }
-    }
-
-    /* Contrast bump on benefit description (WCAG AA on the card background). */
-    .benefit-desc { color: #a8b3c2; }
-
-    /* Tighter desktop hero rhythm so the receipts section peeks above the fold. */
-    @media (min-width: 768px) {
-      .benefit-why { margin: 1.75rem auto 2.25rem; }
-    }
-
-    /* Balanced headline wrapping — no orphaned "raise." on small screens. */
-    .mobile-hero-title { text-wrap: balance; }
-
-    /* Receipts mini sparkline + lead-time marker. */
-    .receipt-spark { display: flex; align-items: center; gap: 0.5rem; margin: 0.85rem 0 0.15rem; }
-    .receipt-spark svg { display: block; flex: 0 0 auto; }
-    .receipt-spark .lead { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: #6ee7b7; }
-
-    /* Scroll-reveal entrance — only when JS is active and motion is allowed. */
-    @media (prefers-reduced-motion: no-preference) {
-      .js .reveal { opacity: 0; transform: translateY(16px); transition: opacity 220ms ease, transform 220ms ease; }
-      .js .reveal.in { opacity: 1; transform: none; }
-    }
-
-    /* Visible focus rings on links + disclosure summaries (dark theme loses them). */
-    a:focus-visible, summary:focus-visible {
-      outline: 2px solid #38bdf8; outline-offset: 3px; border-radius: 4px;
-    }
-
-    /* Polished loading state — stable width, accessible spinner. */
-    .btn[aria-busy="true"] { cursor: progress; opacity: 0.9; }
-    .btn-spinner {
-      width: 1rem; height: 1rem; border: 2px solid rgba(255,255,255,0.4);
-      border-top-color: #fff; border-radius: 50%; display: inline-block;
-      animation: btn-spin 0.6s linear infinite;
-    }
-    @keyframes btn-spin { to { transform: rotate(360deg); } }
-    @media (prefers-reduced-motion: reduce) { .btn-spinner { animation: none; } }
-
-    /* Sticky mobile CTA reveals only after the hero form scrolls out of view. */
-    @media (max-width: 639px) {
-      .mobile-sticky-cta { transform: translateY(115%); transition: transform 260ms cubic-bezier(0.4,0,0.2,1); pointer-events: none; }
-      .mobile-sticky-cta.is-visible { transform: translateY(0); pointer-events: auto; }
+      .mobile-sticky-cta .meta strong { display: block; color: #fff; font-size: 0.875rem; line-height: 1.15; }
+      .mobile-sticky-cta .meta span { display: block; color: #94a3b8; font-size: 0.68rem; margin-top: 0.1rem; }
+      .mobile-sticky-cta .btn { white-space: nowrap; padding-left: 0.875rem; padding-right: 0.875rem; }
     }
     @media (max-width: 639px) and (prefers-reduced-motion: reduce) {
       .mobile-sticky-cta { transition: none; }
     }
-    /* A/B hero layout (flag: landing-hero-layout). Default render = form_first. */
+
+    /* ========================= HERO FLOW (A/B) ========================= */
     .hero-flow { display: flex; flex-direction: column; }
     .hero-flow > .hero-how { order: 1; }
     .hero-flow > .hero-benefits { order: 2; }
@@ -304,6 +319,101 @@
     .hero-flow.hero-control > .hero-benefits { order: 1; margin-bottom: 2rem; }
     .hero-flow.hero-control .hero-kicker { font-size: 1.875rem; line-height: 1.1; }
     @media (min-width: 768px) { .hero-flow.hero-control .hero-kicker { font-size: 3rem; } }
+
+    /* ========================= RECEIPT SPARKLINES ========================= */
+    .receipt-spark { display: flex; align-items: center; gap: 0.5rem; margin: 0.75rem 0 0.1rem; }
+    .receipt-spark svg { display: block; flex: 0 0 auto; }
+    .receipt-spark .lead { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #6ee7b7; }
+
+    /* ========================= SCROLL REVEAL ========================= */
+    @media (prefers-reduced-motion: no-preference) {
+      .js .reveal { opacity: 0; transform: translateY(12px); transition: opacity 260ms cubic-bezier(0.4,0,0.2,1), transform 260ms cubic-bezier(0.4,0,0.2,1); }
+      .js .reveal.in { opacity: 1; transform: none; }
+      .js .reveal:nth-child(2) { transition-delay: 80ms; }
+      .js .reveal:nth-child(3) { transition-delay: 160ms; }
+    }
+
+    /* ========================= FOCUS RINGS ========================= */
+    a:focus-visible, summary:focus-visible, button:focus-visible, [tabindex]:focus-visible {
+      outline: 2px solid #38bdf8; outline-offset: 3px; border-radius: 4px;
+    }
+
+    /* ========================= LOADING / SPINNER ========================= */
+    .btn[aria-busy="true"] { cursor: progress; opacity: 0.85; }
+    .btn-spinner {
+      width: 1rem; height: 1rem; border: 2px solid rgba(255,255,255,0.35);
+      border-top-color: #fff; border-radius: 50%; display: inline-block;
+      animation: btn-spin 0.6s linear infinite;
+      flex-shrink: 0;
+    }
+    @keyframes btn-spin { to { transform: rotate(360deg); } }
+    @media (prefers-reduced-motion: reduce) { .btn-spinner { animation: none; } }
+
+    /* ========================= PULSE CONTROL ========================= */
+    .btn-no-pulse { animation: none !important; }
+
+    /* ========================= DETAILS/ACCORDION POLISH ========================= */
+    details summary::-webkit-details-marker { display: none; }
+    details[open] .accordion-plus { transform: rotate(45deg); }
+    .accordion-plus { transition: transform 200ms ease; }
+
+    /* ========================= GRADIENT TEXT ========================= */
+    .gradient-text {
+      background: linear-gradient(135deg, #ff6b1a 0%, #ff8c4d 50%, #fbbf24 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ========================= CARD GLOW OUTLINE ========================= */
+    .card-glow {
+      position: relative; isolation: isolate;
+    }
+    .card-glow::before {
+      content: ''; position: absolute; inset: -1px; z-index: -1;
+      border-radius: inherit;
+      background: conic-gradient(from 0deg at 50% 50%, transparent, rgba(14,165,233,0.15), transparent, rgba(255,107,26,0.15), transparent);
+      opacity: 0; transition: opacity 400ms ease;
+    }
+    .card-glow:hover::before { opacity: 1; }
+
+    /* ========================= SKELETON LOADING ========================= */
+    .skeleton {
+      background: linear-gradient(90deg, #1e293b 25%, #243144 50%, #1e293b 75%);
+      background-size: 200% 100%;
+      animation: skeleton-shimmer 1.5s ease-in-out infinite;
+      border-radius: 0.5rem;
+    }
+    @keyframes skeleton-shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+    @media (prefers-reduced-motion: reduce) { .skeleton { animation: none; background: #1e293b; } }
+
+    /* ========================= CTA HOVER MAGIC ========================= */
+    .btn-cta-glow {
+      position: relative; overflow: hidden;
+    }
+    .btn-cta-glow::after {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.15), transparent 60%);
+      opacity: 0; transition: opacity 300ms ease; pointer-events: none;
+    }
+    .btn-cta-glow:hover::after { opacity: 1; }
+
+    /* ========================= INDUSTRY LOGO TICKER ========================= */
+    @keyframes ticker-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .ticker-track { animation: ticker-scroll 30s linear infinite; }
+    .ticker-track:hover { animation-play-state: paused; }
+
+    /* ========================= STEP NUMBER BADGE (How it works) ========================= */
+    .step-badge {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 3rem; height: 3rem; border-radius: 9999px;
+      background: linear-gradient(135deg, #0ea5e9, #0284c7);
+      color: #fff; font-size: 1.125rem; font-weight: 700;
+      margin-bottom: 0.75rem;
+      box-shadow: 0 4px 12px rgba(14,165,233,.3);
+      transition: transform 200ms cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .step-card:hover .step-badge { transform: scale(1.1); }
   </style>
 </head>
 <body class="bg-dark-900 text-gray-100 font-sans antialiased">
@@ -324,12 +434,31 @@
       <div class="mobile-hero-wrap relative max-w-4xl mx-auto px-4 sm:px-6 py-16 md:py-20 text-center">
         <p class="text-brand-500 font-semibold text-sm uppercase tracking-wider mb-6">For angels, scouts &amp; seed funds</p>
 
-        <h1 class="mobile-hero-title text-4xl md:text-6xl font-extrabold leading-tight mb-6">See which startups are heating up before they raise.</h1>
+        <!-- COST OF DELAY BADGE (Expert Secrets Ch 16) — opportunity cost of waiting, made explicit -->
+        <div class="inline-flex items-center gap-3 rounded-full border border-amber-500/30 bg-amber-500/10 px-4 py-2 mb-6 animate-fade-in-up" style="animation-delay:0.1s">
+          <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse shrink-0"></span>
+          <span class="text-amber-200 text-xs font-medium">Every Sunday you wait is a round you'll hear about a week too late. That gap is your whole edge.</span>
+        </div>
+
+        <h1 class="mobile-hero-title text-4xl md:text-6xl font-extrabold leading-tight mb-4 animate-fade-in-up">The <span class="gradient-text">Velocity Verdict</span> — see which startups are heating up before they raise.</h1>
+
+        <!-- C3PO hook ladder (Traffic Secrets Ch.5): Who / What / Where / When / Why / How —
+             one line each, scannable, so the dream customer self-selects in 3 seconds. -->
+        <div class="max-w-2xl mx-auto mb-8">
+          <ul class="text-left text-base md:text-lg space-y-2.5" style="list-style:none;padding:0;">
+            <li class="flex items-start gap-3 animate-fade-in-up" style="animation-delay:0.2s"><span class="text-signal-500 font-extrabold mt-0.5 shrink-0 w-16">Who</span><span class="text-gray-200"><strong class="text-white">Angels, scouts &amp; seed funds</strong> who want to reach a founder before the round exists.</span></li>
+            <li class="flex items-start gap-3 animate-fade-in-up" style="animation-delay:0.25s"><span class="text-signal-500 font-extrabold mt-0.5 shrink-0 w-16">What</span><span class="text-gray-200">Five startups <strong class="text-white">accelerating on GitHub</strong>, in plain English &mdash; no code.</span></li>
+            <li class="flex items-start gap-3 animate-fade-in-up" style="animation-delay:0.3s"><span class="text-signal-500 font-extrabold mt-0.5 shrink-0 w-16">Where</span><span class="text-gray-200">In your inbox, every <strong class="text-white">Sunday</strong> morning. Read it in 90 seconds.</span></li>
+            <li class="flex items-start gap-3 animate-fade-in-up" style="animation-delay:0.35s"><span class="text-signal-500 font-extrabold mt-0.5 shrink-0 w-16">When</span><span class="text-gray-200"><strong class="text-white">21 to 47 days</strong> before the round hits the press.</span></li>
+            <li class="flex items-start gap-3 animate-fade-in-up" style="animation-delay:0.4s"><span class="text-signal-500 font-extrabold mt-0.5 shrink-0 w-16">Why</span><span class="text-gray-200">Because by the time it&rsquo;s &ldquo;obvious,&rdquo; the allocation is gone and the price has jumped.</span></li>
+            <li class="flex items-start gap-3 animate-fade-in-up" style="animation-delay:0.45s"><span class="text-signal-500 font-extrabold mt-0.5 shrink-0 w-16">How</span><span class="text-gray-200">The methodology is <strong class="text-white">open</strong>, published on SSRN, auditable line by line.</span></li>
+          </ul>
+        </div>
 
         <!-- A/B hero flow: order toggled by PostHog flag 'landing-hero-layout' (default render = form_first) -->
         <div id="hero-flow" class="hero-flow">
         <div class="hero-how">
-        <p class="hero-kicker text-xl md:text-2xl font-bold leading-tight text-signal-500 mb-3">I read their GitHub. You see them first.</p>
+        <p class="hero-kicker text-base md:text-lg font-semibold leading-tight text-signal-400 mb-1"><span class="text-gray-400">Three signals that together predict a fundraise:</span> velocity surge &middot; contributor spike &middot; infrastructure buildout</p>
         <p class="mobile-hero-copy text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-8">I watch <strong class="text-white">what 4,200+ startups are quietly building</strong> and flag the ones taking off — <strong class="text-white">weeks before the round or the press</strong>.</p>
 
         <form class="js-signup-form mobile-cta-stack flex flex-col sm:flex-row gap-3 max-w-lg mx-auto" data-source="hero">
@@ -338,7 +467,74 @@
           <button type="submit" class="btn btn-primary btn-xl w-full sm:w-auto"><span>Get this Sunday&apos;s 5 names</span><span aria-hidden="true" class="btn-arrow">&rarr;</span></button>
         </form>
         <p class="js-signup-msg text-gray-500 text-sm mt-4"><span class="text-emerald-400">✓</span> Free &mdash; I cover the compute &nbsp; <span class="text-emerald-400">✓</span> Unsubscribe in one click &nbsp; <span class="text-emerald-400">✓</span> One email, every Sunday</p>
-        <p class="text-gray-500 text-sm mt-3">Covering <span class="text-gray-300">the fast-growing software startups everyone&apos;s about to fight over</span> &mdash; and more. <a href="/report" target="_blank" rel="noopener" class="underline hover:text-gray-300 transition">See a real issue first &rarr;</a></p>
+
+        <!-- 3-STEP ACTION PATH (Expert Secrets Ch 17 — Call to Adventure) -->
+        <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-xs text-gray-500 max-w-2xl mx-auto mt-5 mb-2">
+          <span class="flex items-center gap-2">
+            <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-brand-500/20 text-brand-400 text-[10px] font-bold">1</span>
+            Get this Sunday's 5 names (90s)
+          </span>
+          <span class="flex items-center gap-2">
+            <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-brand-500/20 text-brand-400 text-[10px] font-bold">2</span>
+            Confirm your email &amp; read the issue
+          </span>
+          <span class="flex items-center gap-2">
+            <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-brand-500/20 text-brand-400 text-[10px] font-bold">3</span>
+            Reach the founder before the round
+          </span>
+        </div>
+
+        <p class="text-gray-500 text-sm mt-3">Covering <span class="text-gray-300">the fast-growing software startups everyone&apos;s about to fight over</span> &mdash; and more. <a href="/report" target="_blank" rel="noopener" class="underline hover:text-gray-300 transition">See a real issue first &rarr;</a> <span class="text-gray-600 mx-2">&middot;</span> <a href="/perfect-webinar" class="underline hover:text-gray-300 transition">Watch the 12-minute walkthrough &rarr;</a></p>
+
+        <!-- Brunson Ch 17 — Qualification quiz (squeeze-page style): segments ICP without blocking the free opt-in -->
+        <div id="hero-quiz" class="max-w-2xl mx-auto mt-8 pt-6 border-t border-gray-700/50">
+          <p class="text-gray-400 text-xs font-semibold uppercase tracking-wider text-center mb-3">Not sure yet? Tell me your lane &mdash; I&apos;ll tailor your first issue.</p>
+          <div class="qual-grid" role="radiogroup" aria-label="Select your investor profile">
+            <label class="qual-card">
+              <input type="radio" name="qual_question" value="angel" form="signup-form-quiz">
+              <div class="qual-card-text">
+                <span class="qual-card-title">Angel investor</span>
+                <span class="qual-card-sub">Writing personal checks, sourcing outside a fund</span>
+              </div>
+            </label>
+            <label class="qual-card">
+              <input type="radio" name="qual_question" value="scout" form="signup-form-quiz">
+              <div class="qual-card-text">
+                <span class="qual-card-title">Scout / syndicate lead</span>
+                <span class="qual-card-sub">Sourcing deal flow for a larger firm or network</span>
+              </div>
+            </label>
+            <label class="qual-card">
+              <input type="radio" name="qual_question" value="fund" form="signup-form-quiz">
+              <div class="qual-card-text">
+                <span class="qual-card-title">Seed fund / VC</span>
+                <span class="qual-card-sub">Professional allocator with institutional LP capital</span>
+              </div>
+            </label>
+            <label class="qual-card">
+              <input type="radio" name="qual_question" value="corpdev" form="signup-form-quiz">
+              <div class="qual-card-text">
+                <span class="qual-card-title">Corporate development</span>
+                <span class="qual-card-sub">Evaluating companies for M&A or strategic investment</span>
+              </div>
+            </label>
+            <label class="qual-card">
+              <input type="radio" name="qual_question" value="builder" form="signup-form-quiz">
+              <div class="qual-card-text">
+                <span class="qual-card-title">Builder / operator</span>
+                <span class="qual-card-sub">Running a startup, reading the competitive landscape</span>
+              </div>
+            </label>
+            <label class="qual-card">
+              <input type="radio" name="qual_question" value="other" form="signup-form-quiz">
+              <div class="qual-card-text">
+                <span class="qual-card-title">Other curious mind</span>
+                <span class="qual-card-sub">Data nerd, academic, journalist, just exploring</span>
+              </div>
+            </label>
+          </div>
+          <p class="text-gray-500 text-xs text-center mt-3">Pick one, then subscribe above &mdash; I&apos;ll use it to tune the issue you get first.</p>
+        </div>
         </div><!-- /.hero-how -->
 
         <!-- WHY — the benefits (order toggled by the flag; below the form in form_first) -->
@@ -630,26 +826,101 @@
       </div>
     </section>
 
+    <!-- ==================== BRUNSON VALUE LADDER (Ch 13) — pricing tiers on the front page ==================== -->
+    <section class="mobile-section-pad max-w-5xl mx-auto px-4 sm:px-6 py-16 md:py-20">
+      <p class="text-signal-400 text-xs font-semibold uppercase tracking-wider text-center mb-3">The value ladder</p>
+      <h2 class="text-3xl font-bold text-center mb-3">Three ways to be early. Start free, go deeper when you&rsquo;re ready.</h2>
+      <p class="text-gray-400 text-center max-w-xl mx-auto mb-10">From a 90-second Sunday read to a full sector sweep with a private call &mdash; each rung adds depth without adding noise.</p>
+      <div class="grid md:grid-cols-3 gap-5">
+        <div class="rounded-2xl border border-gray-700 bg-dark-900 p-6 md:p-8 text-center flex flex-col">
+          <p class="text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-2">Free</p>
+          <p class="text-2xl font-bold text-white mb-1">Sunday Signal</p>
+          <p class="text-gray-400 text-sm mb-4">5 names &middot; 90-second read &middot; sector + stage + why</p>
+          <ul class="text-left text-gray-300 text-sm space-y-2 mb-6 flex-1">
+            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>5 startups accelerating on GitHub, every Sunday</span></li>
+            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>Plain-English note on each &mdash; never read code</span></li>
+            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>Unsubscribe in one click, keep every issue</span></li>
+          </ul>
+          <a href="#signup" class="btn btn-primary btn-md w-full">Get it free</a>
+        </div>
+        <div class="rounded-2xl border border-brand-500/40 bg-brand-500/10 p-6 md:p-8 text-center flex flex-col relative card-glow">
+          <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Popular</span>
+          <p class="text-brand-400 text-xs font-semibold uppercase tracking-wider mb-2">Dashboard</p>
+          <p class="text-2xl font-bold text-white mb-1">&euro;9.97<span class="text-gray-500 text-sm font-normal">/mo</span></p>
+          <p class="text-gray-400 text-sm mb-4">Full ranked field, filtered by sector</p>
+          <ul class="text-left text-gray-300 text-sm space-y-2 mb-6 flex-1">
+            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>50+ startups ranked by engineering acceleration</span></li>
+            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>Filter by sector, stage, geography</span></li>
+            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>Funding data &amp; team size enrichment</span></li>
+            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>Founding rate locked for life</span></li>
+          </ul>
+          <a href="/dashboard" class="btn btn-secondary btn-md w-full">Start Dashboard &rarr;</a>
+        </div>
+        <div class="rounded-2xl border border-gray-700 bg-dark-900 p-6 md:p-8 text-center flex flex-col">
+          <p class="text-signal-400 text-xs font-semibold uppercase tracking-wider mb-2">Insider Circle</p>
+          <p class="text-2xl font-bold text-white mb-1">&euro;97<span class="text-gray-500 text-sm font-normal">/mo</span></p>
+          <p class="text-gray-400 text-sm mb-4">Custom watchlists, alerts, API, briefings</p>
+          <ul class="text-left text-gray-300 text-sm space-y-2 mb-6 flex-1">
+            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>Everything in Dashboard</span></li>
+            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>Custom watchlists + real-time Slack alerts</span></li>
+            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>API access &amp; deeper enrichment</span></li>
+            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>Quarterly trend briefings</span></li>
+            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>~50 seat cap &middot; founding rate</span></li>
+          </ul>
+          <a href="/insider" class="btn btn-secondary btn-md w-full">Join Insider</a>
+        </div>
+      </div>
+    </section>
+
     <section id="how" class="bg-dark-800 py-16 md:py-20" style="scroll-margin-top:5rem">
       <div class="mobile-section-pad max-w-5xl mx-auto px-4 sm:px-6">
         <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider text-center mb-3">How it works</p>
         <h2 class="text-3xl font-bold text-center mb-12">Three steps. No code, no quant work.</h2>
         <div class="mobile-steps-grid grid md:grid-cols-3 gap-8 text-center">
           <div class="step-card rounded-xl border border-gray-700 bg-dark-900 p-6 md:p-8">
-            <div class="w-14 h-14 bg-brand-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">1</div>
-            <h3 class="text-xl font-semibold mb-3">I read the signal</h3>
+          <div class="step-badge">1</div>
+          <h3 class="text-xl font-semibold mb-3">I read the signal</h3>
             <p class="text-gray-400">I watch what 4,200+ startups are building out in the open: how fast they&apos;re shipping, how many engineers are pitching in, and the new projects they start. The whole engine lives on signals.gitdealflow.com.</p>
           </div>
           <div class="step-card rounded-xl border border-gray-700 bg-dark-900 p-6 md:p-8">
-            <div class="w-14 h-14 bg-brand-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">2</div>
-            <h3 class="text-xl font-semibold mb-3">I flag what&apos;s accelerating</h3>
+          <div class="step-badge">2</div>
+          <h3 class="text-xl font-semibold mb-3">I flag what&apos;s accelerating</h3>
             <p class="text-gray-400">The tool surfaces the startups breaking out in your sectors, before the round or the press, each with a plain-English note on why.</p>
           </div>
           <div class="step-card rounded-xl border border-gray-700 bg-dark-900 p-6 md:p-8">
-            <div class="w-14 h-14 bg-brand-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">3</div>
-            <h3 class="text-xl font-semibold mb-3">You move first</h3>
+          <div class="step-badge">3</div>
+          <h3 class="text-xl font-semibold mb-3">You move first</h3>
             <p class="text-gray-400">Open the board, pick the names in your lane, and reach the founders while the window is still quiet.</p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Brunson ES6 — The First Movers Manifesto (Future-Based Cause / Movement) -->
+    <section class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 py-16 md:py-20">
+      <div class="rounded-2xl border border-brand-500/30 bg-brand-500/5 p-8 md:p-12 text-center">
+        <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-4">The movement — join the First Movers</p>
+        <p class="text-2xl md:text-3xl font-bold text-white mb-4">&ldquo;We believe the next generation of great investments will be found in data, not networks.&rdquo;</p>
+        <p class="text-gray-300 text-lg leading-relaxed max-w-2xl mx-auto mb-6">Our mission: make engineering momentum visible to every investor, not just the ones with the right connections. A world where capital finds builders faster is a world where better products get built.</p>
+        <div class="grid sm:grid-cols-3 gap-4 text-left max-w-2xl mx-auto mb-6">
+          <div class="rounded-xl border border-gray-700 bg-dark-900 p-4">
+            <p class="text-white font-semibold mb-1">First to the signal</p>
+            <p class="text-gray-400 text-sm">You see the commit curve before the press release. That&rsquo;s the whole edge.</p>
+          </div>
+          <div class="rounded-xl border border-gray-700 bg-dark-900 p-4">
+            <p class="text-white font-semibold mb-1">Independent of network</p>
+            <p class="text-gray-400 text-sm">No introductions needed. The signal is public. You just have to look.</p>
+          </div>
+          <div class="rounded-xl border border-gray-700 bg-dark-900 p-4">
+            <p class="text-white font-semibold mb-1">Honest methodology</p>
+            <p class="text-gray-400 text-sm">Open dataset, open paper. I get calls wrong in public. That&rsquo;s the point.</p>
+          </div>
+        </div>
+        <div class="rounded-lg bg-dark-900/50 p-5 max-w-xl mx-auto border border-gray-800">
+          <p class="text-gray-300 text-base italic">&ldquo;First Movers don&rsquo;t wait for the warm intro. They read the commit history. You&rsquo;re one Sunday away from being one of them.&rdquo;</p>
+        </div>
+        <div class="mt-6 text-center">
+          <a href="#signup" onclick="if(window.posthog)posthog.capture('repeat_cta_clicked',{placement:'manifesto'})" class="btn btn-primary btn-lg w-full sm:w-auto"><span>Join the First Movers &rarr;</span></a>
         </div>
       </div>
     </section>
@@ -725,21 +996,21 @@
         <details class="group rounded-xl border border-gray-700 bg-dark-800 hover:border-gray-600 transition">
           <summary class="cursor-pointer list-none flex items-start justify-between gap-4 px-6 py-5 select-none">
             <span class="text-white font-semibold text-base md:text-lg">Do I need to read code or be technical?</span>
-            <span class="flex-shrink-0 text-signal-500 text-2xl leading-none transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+            <span class="flex-shrink-0 text-signal-500 text-2xl leading-none transition-transform duration-200 group-open:rotate-45 accordion-plus" aria-hidden="true">+</span>
           </summary>
           <div class="px-6 pb-5 text-gray-300 leading-relaxed">No. GitDealFlow does the technical reading for you. Every startup comes with its sector, stage, and a plain-English note on why it&apos;s taking off. You never touch code.</div>
         </details>
         <details class="group rounded-xl border border-gray-700 bg-dark-800 hover:border-gray-600 transition">
           <summary class="cursor-pointer list-none flex items-start justify-between gap-4 px-6 py-5 select-none">
             <span class="text-white font-semibold text-base md:text-lg">Where can I verify that this is real?</span>
-            <span class="flex-shrink-0 text-signal-500 text-2xl leading-none transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+            <span class="flex-shrink-0 text-signal-500 text-2xl leading-none transition-transform duration-200 group-open:rotate-45 accordion-plus" aria-hidden="true">+</span>
           </summary>
           <div class="px-6 pb-5 text-gray-300 leading-relaxed">Scroll up to the &ldquo;Verify the claim in three clicks&rdquo; section: the methodology, the comparison, and a sample report all open there in a new tab, so you can check every number without losing your place here. That is enough to tell you whether the claim is real.</div>
         </details>
         <details class="group rounded-xl border border-gray-700 bg-dark-800 hover:border-gray-600 transition">
           <summary class="cursor-pointer list-none flex items-start justify-between gap-4 px-6 py-5 select-none">
             <span class="text-white font-semibold text-base md:text-lg">What do I actually get?</span>
-            <span class="flex-shrink-0 text-signal-500 text-2xl leading-none transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+            <span class="flex-shrink-0 text-signal-500 text-2xl leading-none transition-transform duration-200 group-open:rotate-45 accordion-plus" aria-hidden="true">+</span>
           </summary>
           <div class="px-6 pb-5 text-gray-300 leading-relaxed">A free email every Sunday with five startups accelerating on GitHub &mdash; each with its sector, stage, and a plain-English note on why it&apos;s moving. That&apos;s the whole free offer: no card, one click to unsubscribe. (There&apos;s also a live board, and deeper Dashboard and Insider tiers if you ever want history and exports &mdash; but the Sunday email is where everyone starts.)</div>
         </details>
@@ -767,6 +1038,11 @@
     <div class="mobile-section-pad max-w-5xl mx-auto px-4 sm:px-6 text-center">
       <p class="text-gray-300 mb-2 font-semibold">GitDealFlow is a deal-flow signal tool for investors — not a fund. It reads startups&apos; public GitHub engineering activity to flag the ones accelerating early.</p>
       <div class="flex flex-wrap justify-center gap-6 text-gray-500 text-sm mb-5">
+        <a href="/cheatsheet" class="hover:text-gray-300">Free cheat sheet</a>
+        <a href="/perfect-webinar" class="hover:text-gray-300">Walkthrough</a>
+        <a href="/dream-100" class="hover:text-gray-300">Dream 100</a>
+        <a href="/partners" class="hover:text-gray-300">Partners</a>
+        <a href="/content-strategy" class="hover:text-gray-300">Content Strategy</a>
         <a href="/privacy" class="hover:text-gray-300">Privacy</a>
         <a href="/terms" class="hover:text-gray-300">Terms</a>
       </div>
@@ -832,10 +1108,14 @@
         if (btn) { btn.disabled = true; btn.setAttribute('aria-busy', 'true'); btn.innerHTML = '<span class="btn-spinner" aria-hidden="true"></span><span>Sending&hellip;</span>'; }
         try {
           const attr = window.GDFattribution(form.getAttribute('data-source') || 'landing-page');
+          // Brunson Ch 17 — read quiz selection from hero qualification radios
+          var quizVal = '';
+          var quizRadio = document.querySelector('input[name="qual_question"]:checked');
+          if (quizRadio) quizVal = quizRadio.value;
           const res = await fetch('https://signals.gitdealflow.com/api/subscribe', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(Object.assign({ email: email, quiz_route: '', quiz_route_label: '' }, attr))
+            body: JSON.stringify(Object.assign({ email: email, quiz_route: quizVal || '', quiz_route_label: '' }, attr))
           });
           const data = await res.json();
           if (data.ok) {
@@ -959,6 +1239,19 @@
       window.addEventListener('resize', onScroll, { passive: true });
       update();
     })();
+
+    // Cursor-follow glow on primary CTAs (desktop only for performance)
+    (function () {
+      if (window.matchMedia('(pointer: coarse)').matches) return;
+      document.querySelectorAll('.btn-primary').forEach(function (btn) {
+        btn.classList.add('btn-cta-glow');
+        btn.addEventListener('mousemove', function (e) {
+          var rect = btn.getBoundingClientRect();
+          btn.style.setProperty('--mouse-x', ((e.clientX - rect.left) / rect.width * 100) + '%');
+          btn.style.setProperty('--mouse-y', ((e.clientY - rect.top) / rect.height * 100) + '%');
+        });
+      });
+    })();
   </script>
 
   <script>
@@ -1058,6 +1351,5 @@
       else setTimeout(load, 3000);
     })();
   </script>
-  <script src="/concierge.js" defer></script>
 </body>
 </html>
