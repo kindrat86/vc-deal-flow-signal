@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard — GitDealFlow</title>
-  <meta name="description" content="The full ranked field for people who size up companies before the round. 60+ startups across 20 sectors, refreshed weekly in plain English, for €9.97/mo founding price. No code reading. Cancel in one click.">
+  <meta name="description" content="The full ranked field: 60+ startups across 20 sectors, refreshed weekly in plain English, for €9.97/mo. No code reading. Cancel in one click.">
   <link rel="canonical" href="https://gitdealflow.com/dashboard" />
   <meta name="robots" content="index, follow">
   <meta property="og:type" content="website" />
@@ -12,6 +12,53 @@
   <meta property="og:description" content="The full ranked field for people who size up companies before the round: 60+ startups, 20 sectors, plain English, no code reading. €9.97/mo founding rate, locked for life. Cancel anytime." />
   <meta property="og:url" content="https://gitdealflow.com/dashboard" />
   <meta property="og:image" content="https://signals.gitdealflow.com/opengraph-image" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@data_nerd" />
+  <meta name="twitter:title" content="Dashboard — GitDealFlow" />
+  <meta name="twitter:description" content="60+ startups across 20 sectors, refreshed weekly in plain English. €9.97/mo founding rate, locked for life. Cancel anytime." />
+  <meta name="twitter:image" content="https://signals.gitdealflow.com/opengraph-image" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Product",
+        "name": "GitDealFlow Dashboard",
+        "description": "The full ranked field: 60+ startups across 20 sectors, refreshed weekly in plain English. A signal tool for investors, not a fund.",
+        "brand": { "@type": "Brand", "name": "GitDealFlow" },
+        "url": "https://gitdealflow.com/dashboard",
+        "offers": {
+          "@type": "Offer",
+          "price": "9.97",
+          "priceCurrency": "EUR",
+          "availability": "https://schema.org/InStock",
+          "url": "https://gitdealflow.com/dashboard",
+          "seller": { "@type": "Organization", "name": "GitDealFlow", "url": "https://gitdealflow.com" }
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What does the GitDealFlow Dashboard include?",
+            "acceptedAnswer": { "@type": "Answer", "text": "The full ranked field of 60+ startups across 20 sectors, refreshed weekly. Each startup is ranked by GitHub engineering acceleration with plain-English notes explaining the signal. No code reading required." }
+          },
+          {
+            "@type": "Question",
+            "name": "How much does the Dashboard cost?",
+            "acceptedAnswer": { "@type": "Answer", "text": "€9.97/month founding rate, locked for life. Cancel in one click at any time." }
+          },
+          {
+            "@type": "Question",
+            "name": "How often is the data refreshed?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Weekly. GitDealFlow reads public GitHub engineering activity — commit velocity, contributor growth, and repository expansion — across startup GitHub organizations and updates rankings every week." }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/styles.css">
   <style>
@@ -53,6 +100,20 @@
       .mobile-sticky-cta .btn { white-space: nowrap; padding-left: 1rem; padding-right: 1rem; }
     }
   </style>
+  <meta name="theme-color" content="#0f172a" />
+  <meta name="color-scheme" content="dark" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="preload" href="/styles.css" as="style">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://gitdealflow.com/" },
+      { "@type": "ListItem", "position": 2, "name": "GitDealFlow Dashboard", "item": "https://gitdealflow.com/dashboard" }
+    ]
+  }
+  </script>
 </head>
 <body class="bg-dark-900 text-gray-100 font-sans antialiased">
   <header class="sticky top-0 z-50 border-b border-gray-800 bg-dark-900/95 backdrop-blur">
@@ -321,10 +382,20 @@
       </div>
     </section>
 
+    <!-- ============ WHAT HAPPENS IF YOU DO NOTHING (DotCom Secrets Ch 21) ============ -->
+    <section class="bg-dark-800 py-12 border-y border-gray-800">
+      <div class="max-w-2xl mx-auto px-4 sm:px-6 text-center">
+        <div class="rounded-xl border border-gray-700 bg-dark-900 p-6 md:p-7">
+          <p class="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-3">What happens if you do nothing?</p>
+          <p class="text-gray-300 leading-relaxed">Nothing changes. You keep hearing about the great rounds the week <em>after</em> they close. <strong class="text-white">Six months from now</strong>, you'll be in the same spot — sourcing from the same databases, the same warm intros, the same lagging signals &mdash; except the founding rate will be gone (€49/mo instead of €9.97), and you'll wish you'd locked it in when you had the chance. The names that accelerated this week will be someone else's allocation by then.</p>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ CHECKOUT · the final ask (page ends on the CTA, not the exit) ============ -->
     <section id="checkout" class="max-w-3xl mx-auto px-6 py-20 text-center">
       <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-3">Start Dashboard</p>
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">The full field, every week, for €9.97 &mdash; locked for life.</h2>
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">The full field, every week, for €9.97 — locked for life.</h2>
       <p class="text-gray-300 max-w-xl mx-auto mb-5">Picture next Monday. Someone in the room asks what's worth a look &mdash; and you put a name on the table nobody's mentioned yet, with a one-line reason it's moving, weeks before it lands in anyone else's inbox. You look early, not technical. That's the whole job of the field below.</p>
       <p class="text-gray-300 max-w-xl mx-auto mb-8">60+ ranked startups across 20 sectors &middot; plain-English signal &middot; sortable to your thesis &middot; methodology and dataset included &middot; founding rate locked while you stay &middot; cancel in one click.</p>
       <button type="button" data-checkout class="btn btn-cta btn-lg w-full sm:w-auto">Lock €9.97/mo &rarr;</button>
