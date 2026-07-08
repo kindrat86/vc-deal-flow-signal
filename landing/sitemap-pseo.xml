@@ -116,6 +116,21 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://gitdealflow.com/integrations/gitdealflow-for-affinity-crm</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/integrations/gitdealflow-for-airtable</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/integrations/gitdealflow-for-notion</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://gitdealflow.com/learn/how-to-find-startups-before-they-raise</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -137,6 +152,21 @@
   </url>
   <url>
     <loc>https://gitdealflow.com/new-york</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/pricing/cb-insights-pricing-vs-gitdealflow</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/pricing/crunchbase-pricing-vs-gitdealflow</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/pricing/pitchbook-pricing-vs-gitdealflow</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
