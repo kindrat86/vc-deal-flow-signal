@@ -2,10 +2,10 @@
 import type { BlogPost } from "./posts";
 
 export const signalReport: BlogPost = {
-  "slug": "weekly-signal-report-2026-07-07",
+  "slug": "weekly-signal-report-2026-07-08",
   "title": "Weekly Signal Report — Q3 2026",
   "description": "This week's top 10 startups by engineering acceleration across 0 sectors. undefined leads with undefined commit velocity change. Data from 0 tracked startups.",
-  "date": "2026-07-07",
+  "date": "2026-07-08",
   "body": "This is the automated weekly signal report from VC Deal Flow Signal. We track GitHub engineering acceleration across 0 startup sectors and rank them by commit velocity change — the rate at which engineering activity is accelerating relative to baseline.\n\nThis report covers Q3 2026. 0 startups across 0 sectors showed measurable engineering signals.\n\n## Top 10 Startups by Engineering Acceleration\n\nThese are the startups showing the highest commit velocity change this period — the ones where engineering activity is accelerating fastest relative to their own baseline.\n\n\n\n## Hottest Sectors\n\n\n\n## Signal Breakdown\n\nAcross all 0 tracked startups: .\n\n## Geography\n\nTop regions by startup count: .\n\n## What This Means for Investors\n\nThe startups at the top of this list are showing engineering momentum that has historically preceded fundraise announcements by three to six weeks. If you invest in any of the sectors covered here, these are the names to research this week.\n\nBrowse the full sector rankings for detailed data on every tracked startup. Or subscribe to the Signal Digest to get this report in your inbox every week.",
   "relatedSectors": [],
   "faqs": []

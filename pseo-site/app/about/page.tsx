@@ -7,6 +7,7 @@ import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import {
   DATA_NERD_PERSON_SCHEMA,
   DATA_NERD_AUTHOR_ID,
+  DATA_NERD_AUTHOR_REF,
   DATA_NERD_BIO_MEDIUM,
   DATA_NERD_TRIBE,
 } from "@/lib/data-nerd";
@@ -73,6 +74,46 @@ export default function AboutPage() {
       // rather than a dangling reference. Pseudonymous by design; the handle
       // resolves to persistent external identity, never a real name.
       DATA_NERD_PERSON_SCHEMA,
+      {
+        "@type": "Organization",
+        "@id": "https://gitdealflow.com/#organization",
+        name: "VC Deal Flow Signal",
+        alternateName: "GitDealFlow",
+        url: "https://signals.gitdealflow.com",
+        description:
+          "Public dataset of startup engineering acceleration, derived from public GitHub activity. Tracks commit velocity, contributor growth, and repository expansion across ~400 startup GitHub orgs in 20 sectors.",
+        foundingDate: "2026",
+        email: "signal@gitdealflow.com",
+        sameAs: [
+          "https://www.wikidata.org/wiki/Q139376302",
+          "https://x.com/data_nerd",
+          "https://github.com/kindrat86",
+        ],
+        contactPoint: {
+          "@type": "ContactPoint",
+          contactType: "customer support",
+          email: "signal@gitdealflow.com",
+          url: "https://signals.gitdealflow.com/about",
+        },
+        founder: DATA_NERD_AUTHOR_REF,
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "All Sectors",
+            item: "https://signals.gitdealflow.com",
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "About",
+            item: "https://signals.gitdealflow.com/about",
+          },
+        ],
+      },
       {
         "@type": "FAQPage",
         mainEntity: [
