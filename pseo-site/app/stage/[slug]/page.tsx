@@ -154,6 +154,31 @@ export default async function StagePage({ params }: PageProps) {
             startups across {sectorBreakdown.length} sectors. {top.name} leads
             with {top.commitVelocity14d} commits over 14 days ({top.commitVelocityChange}).
           </p>
+
+          <div
+            className="mt-6 rounded-lg border border-slate-800 bg-slate-900/60 p-4"
+            aria-label="TL;DR"
+          >
+            <p className="text-xs font-semibold text-sky-400 uppercase tracking-wider mb-2">
+              TL;DR
+            </p>
+            <p className="text-gray-300 text-sm leading-relaxed">
+              We rank {startups.length} {name.toLowerCase()} startups by GitHub
+              engineering acceleration for {period.name}. {top.name} tops the list
+              at {top.commitVelocity14d} commits per 14-day window ({top.commitVelocityChange}),
+              against a cohort average of {avgVelocity} commits. The most common
+              breakout pattern this period is &ldquo;{topSignal[0]}&rdquo;. Rankings
+              refresh weekly and every number links back to a public GitHub source.
+            </p>
+          </div>
+
+          <p className="mt-4 text-gray-400 text-sm leading-relaxed" aria-label="Definition">
+            <strong className="text-gray-200">Commit velocity</strong> is the number of
+            commits a startup&rsquo;s public repositories receive over a rolling 14-day
+            window, used here as a proxy for engineering throughput. A rising
+            velocity paired with contributor growth is the earliest public signal
+            that a {name.toLowerCase()} team is scaling ahead of a fundraise.
+          </p>
         </header>
 
         <section className="mb-10 rounded-lg border border-sky-900/50 bg-sky-950/30 p-5 max-w-3xl" aria-label="Investor insight">
