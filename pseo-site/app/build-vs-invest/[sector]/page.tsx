@@ -333,6 +333,39 @@ export default async function BuildVsInvestSectorPage({ params }: PageProps) {
           </p>
         </header>
 
+        <section
+          aria-label="TL;DR"
+          className="max-w-3xl mb-8 rounded-lg border border-slate-800 bg-slate-900/60 p-4"
+        >
+          <p className="text-xs font-semibold text-sky-400 uppercase tracking-wider mb-2">
+            TL;DR — {entry.name}
+          </p>
+          <p className="text-gray-300 text-sm leading-relaxed">
+            {entry.headline}
+          </p>
+          <p className="mt-2 text-gray-400 text-xs">
+            Quadrant: <strong className="text-gray-200">{meta.label}</strong>
+            {" "}— {meta.explanation}. Last updated{" "}
+            {lastModified.toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
+            .
+          </p>
+        </section>
+
+        <p className="text-gray-400 text-sm leading-relaxed mb-6 max-w-3xl" aria-label="Definition">
+          <strong className="text-gray-200">Build-vs-invest scoring</strong>{" "}
+          measures engineering cost-to-velocity ratio across GitHub
+          organizations: a sector where high commit velocity co-occurs with low
+          cost-per-commit is a <em className="text-gray-300">build</em>{" "}
+          signal (founder-addressable); high velocity with high cost is a{" "}
+          <em className="text-gray-300">fund</em> signal (capital-intensive,
+          institutional). All scores are derived from the SSRN panel dataset
+          and update with each weekly data refresh.
+        </p>
+
         {/* Score panel + 2×2 cell highlight */}
         <section
           aria-label="Scoring panel"

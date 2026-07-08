@@ -412,6 +412,38 @@ export default async function ResearchFindingPage({ params }: PageProps) {
           </p>
         </header>
 
+        <section
+          aria-label="TL;DR"
+          className="mb-8 rounded-lg border border-slate-800 bg-slate-900/60 p-4"
+        >
+          <p className="text-xs font-semibold text-sky-400 uppercase tracking-wider mb-2">
+            TL;DR — Finding {finding.n} of 30
+          </p>
+          <p className="text-gray-300 text-sm leading-relaxed">
+            {finding.claim}
+          </p>
+          <p className="text-gray-400 text-xs mt-1">
+            Section {finding.section} · CC BY 4.0 · from the{" "}
+            <a
+              className="text-sky-400 hover:text-sky-300"
+              href={SSRN_URL}
+              target="_blank"
+              rel="noopener"
+            >
+              SSRN paper (DOI: 10.2139/ssrn.6606558)
+            </a>
+          </p>
+        </section>
+
+        <p className="text-gray-400 text-sm leading-relaxed mb-6" aria-label="Definition">
+          <strong className="text-gray-200">Commit velocity</strong> is a
+          14-day rolling count of commits to a startup&rsquo;s most active
+          public repository — the earliest public signal of engineering
+          throughput before a fundraise announcement. All 30 findings in this
+          series are derived from the SSRN panel dataset of ~400 tracked
+          startup GitHub organizations.
+        </p>
+
         <section className="mb-10 rounded-xl border border-sky-500/25 bg-sky-500/5 px-6 py-5">
           <p className="text-sky-300 text-xs uppercase tracking-wider font-semibold mb-3">
             The finding

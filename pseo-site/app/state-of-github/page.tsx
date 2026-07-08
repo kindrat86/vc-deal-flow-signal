@@ -263,6 +263,28 @@ export default function StateOfGitHubPage() {
           </p>
         </header>
 
+        <section
+          aria-label="TL;DR"
+          className="max-w-3xl mx-auto mb-10 rounded-lg border border-emerald-800/40 bg-emerald-950/30 p-5"
+        >
+          <p className="text-xs font-semibold text-emerald-400 uppercase tracking-wider mb-2">
+            TL;DR — {latest.month}
+          </p>
+          <p className="text-gray-300 text-sm leading-relaxed">
+            {latest.summary}
+          </p>
+          <p className="text-gray-400 text-xs mt-2">
+            {latest.publishDate} · the first Wednesday of every month at
+            09:00 UTC · full methodology and data at{" "}
+            <Link
+              href="/methodology"
+              className="text-sky-400 hover:text-sky-300 underline decoration-dotted"
+            >
+              /methodology
+            </Link>
+          </p>
+        </section>
+
         {latest.videoId ? (
           <section
             className="rounded-xl border border-emerald-500/30 bg-emerald-950/20 p-5 space-y-3"

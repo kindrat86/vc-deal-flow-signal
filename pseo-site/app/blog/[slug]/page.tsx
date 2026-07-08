@@ -482,7 +482,8 @@ export default async function BlogPostPage({ params }: PageProps) {
         <article>
           <header className="mb-8">
             <div className="flex items-center gap-3 text-sm text-gray-400 mb-3">
-              <Link href={author.url} className="hover:text-gray-300 transition-colors font-medium">
+              <span>By </span>
+              <Link href={author.url} rel="author" className="hover:text-gray-300 transition-colors font-medium">
                 {author.name}
               </Link>
               <span className="text-slate-700">|</span>

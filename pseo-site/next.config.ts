@@ -49,7 +49,11 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/AGENTS.md",
-        destination: "/agents.md",
+        destination: "/agents",
+      },
+      {
+        source: "/agents.md",
+        destination: "/agents",
       },
       {
         source: "/openapi.json",
