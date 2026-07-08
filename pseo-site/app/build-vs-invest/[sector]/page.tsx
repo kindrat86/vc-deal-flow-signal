@@ -345,7 +345,7 @@ export default async function BuildVsInvestSectorPage({ params }: PageProps) {
           </p>
           <p className="mt-2 text-gray-400 text-xs">
             Quadrant: <strong className="text-gray-200">{meta.label}</strong>
-            {" "}— {meta.explanation}. Last updated{" "}
+            {" "}— {meta.description}. Last updated{" "}
             {lastModified.toLocaleDateString("en-US", {
               year: "numeric",
               month: "long",
