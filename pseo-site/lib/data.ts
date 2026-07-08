@@ -529,43 +529,54 @@ export function getStagePageData(slug: string): StagePageData | null {
   const stageDef = STAGE_DEFINITIONS.find((s) => s.slug === slug);
   if (!stageDef) return null;
 
-  const period = getCurrentPeriod();
-  const startups: StagePageData["startups"] = [];
-  const sectorCounts: Record<string, { name: string; slug: string; count: number }> = {};
+  // If the current period has no matching startups (e.g. fresh period rollover
+  // before the discover-startups pipeline has populated stage data), fall back
+  // through prior periods so the page always serves real content instead of a
+  // not-found boundary. Returns null only when zero periods have any data.
+  const periods = data.periods;
+  const currentPeriod = getCurrentPeriod();
+  const periodOrder = [currentPeriod, ...periods.filter((p) => p !== currentPeriod)];
 
-  for (const sector of data.sectors) {
-    const snapshot = sector.periods[period.slug];
-    if (!snapshot) continue;
-    const matching = snapshot.startups.filter((s) =>
-      (stageDef.match as readonly string[]).some((m) => s.stage === m || s.stage.includes(m))
-    );
-    if (matching.length === 0) continue;
+  for (const period of periodOrder) {
+    const startups: StagePageData["startups"] = [];
+    const sectorCounts: Record<string, { name: string; slug: string; count: number }> = {};
 
-    sectorCounts[sector.slug] = {
-      name: sector.name,
-      slug: `${sector.slug}-${period.slug}`,
-      count: matching.length,
-    };
-    for (const s of matching) {
-      startups.push({ ...s, sectorName: sector.name, sectorSlug: sector.slug });
+    for (const sector of data.sectors) {
+      const snapshot = sector.periods[period.slug];
+      if (!snapshot) continue;
+      const matching = snapshot.startups.filter((s) =>
+        (stageDef.match as readonly string[]).some((m) => s.stage === m || s.stage.includes(m))
+      );
+      if (matching.length === 0) continue;
+
+      sectorCounts[sector.slug] = {
+        name: sector.name,
+        slug: `${sector.slug}-${period.slug}`,
+        count: matching.length,
+      };
+      for (const s of matching) {
+        startups.push({ ...s, sectorName: sector.name, sectorSlug: sector.slug });
+      }
     }
+
+    if (startups.length === 0) continue; // try next period
+
+    const sectorBreakdown = Object.values(sectorCounts).sort(
+      (a, b) => b.count - a.count
+    );
+
+    return {
+      slug: stageDef.slug,
+      name: stageDef.name,
+      description: stageDef.description,
+      investorInsight: stageDef.investorInsight,
+      startups: getSortedStartups(startups) as StagePageData["startups"],
+      sectorBreakdown,
+      period,
+    };
   }
 
-  if (startups.length === 0) return null;
-
-  const sectorBreakdown = Object.values(sectorCounts).sort(
-    (a, b) => b.count - a.count
-  );
-
-  return {
-    slug: stageDef.slug,
-    name: stageDef.name,
-    description: stageDef.description,
-    investorInsight: stageDef.investorInsight,
-    startups: getSortedStartups(startups) as StagePageData["startups"],
-    sectorBreakdown,
-    period,
-  };
+  return null; // genuinely no data in any period
 }
 
 // ---------------------------------------------------------------------------
