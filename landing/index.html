@@ -449,15 +449,15 @@
   <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:bg-brand-500 focus:text-white focus:px-4 focus:py-2 focus:rounded focus:shadow-lg">Skip to main content</a>
 
   <header class="sticky top-0 z-50 border-b border-gray-800 bg-dark-900/95 backdrop-blur">
-    <div class="mobile-compact-header max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-3">
+    <nav class="mobile-compact-header max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-3" aria-label="Primary navigation">
       <a href="/" class="font-semibold tracking-tight text-white text-lg">GitDealFlow</a>
       <div class="flex items-center gap-4 shrink-0">
         <a href="#signup" onclick="if(window.posthog)posthog.capture('nav_cta_clicked')" class="btn btn-primary btn-no-pulse btn-sm whitespace-nowrap shrink-0"><span class="sm:hidden">Get the 5 names</span><span class="hidden sm:inline">Get this Sunday&apos;s 5 names</span> <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
       </div>
-    </div>
+    </nav>
   </header>
 
-  <main id="main-content">
+  <main id="main-content" aria-label="Main content">
     <section class="relative overflow-hidden">
       <div class="absolute inset-0 bg-gradient-to-br from-dark-900 via-dark-800 to-brand-900 opacity-80"></div>
       <div class="mobile-hero-wrap relative max-w-4xl mx-auto px-4 sm:px-6 py-16 md:py-20 text-center">
