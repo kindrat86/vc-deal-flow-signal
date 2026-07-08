@@ -149,7 +149,13 @@
   ],
   "redirects": [
     {
-      "source": "https://www.signals.gitdealflow.com/(.*)",
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.signals.gitdealflow.com"
+        }
+      ],
       "destination": "https://signals.gitdealflow.com/$1",
       "permanent": true
     }
