@@ -1,7 +1,7 @@
 {
   "_comment": "Dedup state for the mention radar. Each entry: {url, firstSeen}. Append-only — never delete; rows here mean 'already in log'. Maintained by scan.mjs and log-mention.mjs.",
   "version": 1,
-  "lastRun": 1783706876387,
+  "lastRun": 1783719301339,
   "seen": [
     {
       "url": "https://github.com/run-llama/llama_index/issues/21632",
