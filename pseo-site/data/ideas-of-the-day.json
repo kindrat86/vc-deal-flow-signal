@@ -3517,6 +3517,49 @@
         }
       ],
       "publishedAt": "2026-07-11T09:00:00Z"
+    },
+    {
+      "date": "2026-07-12",
+      "slug": "2026-07-12",
+      "headline": "The web3 opening hiding in a +999% engineering hiring burst",
+      "hook": "Pre-seed web3 teams shipping 18 commits in 14 days at +999% aren't just building product — they're broadcasting the hiring-burst that usually precedes a raise.",
+      "repo": {
+        "name": "StrobeLabs",
+        "githubUrl": "https://github.com/StrobeLabs",
+        "stage": "Pre-seed",
+        "geography": "Unknown",
+        "sector": "Web3",
+        "sectorSlug": "web3",
+        "signalType": "Engineering hiring burst",
+        "commitVelocity14d": 18,
+        "commitVelocityChange": "+999%",
+        "contributors": 3,
+        "contributorGrowth": "+350%",
+        "newRepos": 0,
+        "description": ""
+      },
+      "ideaThesis": "Web3 has a buyer who is also a builder. The category incumbents shipped for an ops/HR/finance lead; the next wave ships for the engineer running that function. Read the repo: engineering hiring burst, pre-seed team, 3 contributors. That's the shape of a team that crosses the next funding line on engineering output, not enterprise sales — and the gap they leave is the wedge for an indie or two-founder tool that does one job better than the suite they're inside of.",
+      "buildAngles": [
+        "Compliance-adjacent middleware — the part of the stack the incumbent won't ship because the support cost is too high.",
+        "Read-only analytics layer over the existing web3 data sources; sell the dashboard, not the integration.",
+        "Embedded widget for the engineer-buyer at a Series A — drop-in, single-script, replaces a quarter of a Salesforce instance."
+      ],
+      "distributionPlay": "Publish a public read-only demo with one anonymised customer's data; share the demo URL in the Indie Hackers fintech category and pitch one fintech podcast as a case study, not a product.",
+      "signalReading": [
+        {
+          "metric": "18 commits / 14 days",
+          "reading": "Low absolute volume. The signal is the change-in-change, not the raw count — see the next metric."
+        },
+        {
+          "metric": "+999% commit-velocity change",
+          "reading": "Trend is still accelerating, not peaking. A positive change-in-change is the leading edge of the curve, not the back of it."
+        },
+        {
+          "metric": "3 contributors (+350%)",
+          "reading": "Founding-team-still-coding signal. Hiring will be the next-cycle move; ATS / sourcing tools are the natural wedge."
+        }
+      ],
+      "publishedAt": "2026-07-12T09:00:00Z"
     }
   ]
 }
