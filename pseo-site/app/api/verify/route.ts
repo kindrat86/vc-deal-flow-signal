@@ -12,7 +12,7 @@ import {
 } from "@/lib/emails";
 import { isExcluded } from "@/lib/excluded-emails";
 import { isNonceUsed, markNonceUsed } from "@/lib/runtime-cache";
-import { listUnsubscribeHeaders } from "@/lib/list-unsubscribe";
+import { listUnsubscribeHeaders, injectUnsubscribeLink } from "@/lib/list-unsubscribe";
 import { pickAudienceId } from "@/lib/resend-audience";
 
 // Single-use tracking for v2 verify-subscribe nonces. Once a v2 token's nonce
@@ -283,7 +283,7 @@ export async function GET(request: Request) {
           from: `${FROM_NAME} <${FROM_EMAIL}>`,
           to: email,
           subject: soapEmail.subject,
-          html: soapEmail.html,
+          html: injectUnsubscribeLink(soapEmail.html, email),
           scheduled_at: sendAt,
           headers: listUnsubscribeHeaders(email),
         }),

@@ -340,3 +340,15 @@ autoconfirm; named advisory board (cannot fabricate).
 - **Mobile UX:** ux.css unlinked from index (was hiding the portrait img!), 44px tap targets (.btn-sm override appended to styles.css + input.css — PRESERVE on rebuild), sticky CTAs on firstlook/sector-sweep/insider, exit-intent modals + inline capture on all money pages (sources: <page>-exit/<page>-inline), PostHog init added to dashboard/firstlook/insider.
 - **Stripe links:** payment-links.md rewritten with browser-verified table. FOUR retired founding-rate links are still active in Stripe and need HUMAN deactivation in the dashboard (listed in stripe/payment-links.md).
 - **Loop guidance:** keep €49/€197 canon; guarantee canon = 30-day Signal-or-It's-Free everywhere (First Look 14-day window is the *upgrade credit* window, never "refund"); no fake scarcity (sector-sweep live slot counts removed on purpose — do not re-add).
+
+## 2026-07-13 ~21:30Z — CRITICAL follow-up: landing CSP was killing all conversions
+
+User reported dead email capture + Stripe buttons. Root cause: landing
+vercel.json CSP `connect-src 'self' https://*.posthog.com` blocked every
+browser fetch to signals.gitdealflow.com (subscribe forms, exit modals,
+checkout-session calls). Fixed by appending https://signals.gitdealflow.com
+to connect-src (commit 3dd5fc6) + redeploy. Verified live end-to-end in a
+real browser: form submit → /thanks, checkout button → checkout.stripe.com
+at €49/mo. NOTE for future CSP edits: any new third-party the landing JS
+calls must be added to connect-src, and returning visitors can hold the old
+document (and its CSP) in browser cache for up to max-age=3600.

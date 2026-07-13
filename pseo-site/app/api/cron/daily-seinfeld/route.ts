@@ -27,6 +27,7 @@ import { NextResponse } from "next/server";
 import { getTopMoversThisWeek } from "@/lib/data";
 import { buildDailySeinfeld, FROM_EMAIL } from "@/lib/daily-seinfeld";
 import { pickAudienceId } from "@/lib/resend-audience";
+import { listUnsubscribeHeaders, injectUnsubscribeLink } from "@/lib/list-unsubscribe";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 60;
@@ -107,9 +108,12 @@ export async function GET(req: Request): Promise<Response> {
         from: FROM_EMAIL,
         to: [to],
         subject: email.subject,
-        html: email.html,
+        html: injectUnsubscribeLink(email.html, to),
         text: email.text,
-        headers: { "X-Entity-Ref-ID": `daily-seinfeld-test-${Date.now()}` },
+        headers: {
+          "X-Entity-Ref-ID": `daily-seinfeld-test-${Date.now()}`,
+          ...listUnsubscribeHeaders(to),
+        },
       }),
     });
     const body = (await sendRes.json()) as ResendErrorBody & { id?: string };
@@ -149,7 +153,12 @@ export async function GET(req: Request): Promise<Response> {
       audience_id: audienceId,
       from: FROM_EMAIL,
       subject: email.subject,
-      html: email.html,
+      // {{{RESEND_UNSUBSCRIBE_URL}}} — Resend swaps in a per-recipient
+      // one-click unsubscribe URL on broadcast sends.
+      html: email.html.replace(
+        /<a\s+href="mailto:signals?@gitdealflow\.com[^"]*"([^>]*)>([^<]*nsubscribe[^<]*)<\/a>/gi,
+        '<a href="{{{RESEND_UNSUBSCRIBE_URL}}}"$1>Unsubscribe in one click</a>',
+      ),
       name: `daily-seinfeld-${today.toISOString().slice(0, 10)}-${email.frame}`,
       reply_to: ["signals@gitdealflow.com"],
     }),

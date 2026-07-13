@@ -59,6 +59,44 @@ async function suppress(email: string): Promise<boolean> {
   return false;
 }
 
+/**
+ * Best-effort: cancel drip emails already queued via Resend `scheduled_at`
+ * for this recipient, so an unsubscribe stops the sequence immediately
+ * instead of after the queued sends drain. Scans the recent-sends list
+ * (ample at current volume); anything it misses is still suppressed from
+ * future drip-sender/broadcast sends by the contact flag.
+ */
+async function cancelQueued(email: string): Promise<number> {
+  try {
+    const res = await fetch("https://api.resend.com/emails?limit=100", {
+      headers: { Authorization: `Bearer ${RESEND_API_KEY}` },
+    });
+    if (!res.ok) return 0;
+    const body = (await res.json()) as {
+      data?: Array<{ id: string; to?: string[]; last_event?: string }>;
+    };
+    const queued = (body.data ?? []).filter(
+      (e) =>
+        e.last_event === "scheduled" &&
+        (e.to ?? []).some((t) => t.toLowerCase() === email.toLowerCase()),
+    );
+    let cancelled = 0;
+    for (const e of queued) {
+      const c = await fetch(`https://api.resend.com/emails/${e.id}/cancel`, {
+        method: "POST",
+        headers: { Authorization: `Bearer ${RESEND_API_KEY}` },
+      });
+      if (c.ok) cancelled++;
+    }
+    if (cancelled > 0)
+      console.info(`[unsubscribe] cancelled ${cancelled} queued emails for ${email}`);
+    return cancelled;
+  } catch (err) {
+    console.warn("[unsubscribe] cancelQueued failed", err);
+    return 0;
+  }
+}
+
 function emailFromRequest(request: Request): string | null {
   const token = new URL(request.url).searchParams.get("token") || "";
   const v = verifyVerifyToken(token, "unsubscribe");
@@ -69,8 +107,10 @@ function emailFromRequest(request: Request): string | null {
 // success; a bad/expired token is logged and treated as a no-op.
 export async function POST(request: Request) {
   const email = emailFromRequest(request);
-  if (email) await suppress(email);
-  else console.warn("[unsubscribe] POST with invalid/expired token");
+  if (email) {
+    await suppress(email);
+    await cancelQueued(email);
+  } else console.warn("[unsubscribe] POST with invalid/expired token");
   return new NextResponse(null, { status: 200 });
 }
 
@@ -78,6 +118,7 @@ export async function POST(request: Request) {
 export async function GET(request: Request) {
   const email = emailFromRequest(request);
   const ok = email ? await suppress(email) : false;
+  if (ok && email) await cancelQueued(email);
   return new NextResponse(confirmationHtml(ok), {
     status: 200,
     headers: { "Content-Type": "text/html; charset=utf-8" },

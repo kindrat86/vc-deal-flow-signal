@@ -10,6 +10,7 @@
 
 import "server-only";
 import { isExcluded } from "@/lib/excluded-emails";
+import { listUnsubscribeHeaders, injectUnsubscribeLink } from "@/lib/list-unsubscribe";
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY!;
 const FROM_EMAIL = process.env.FROM_EMAIL || "signals@gitdealflow.com";
@@ -150,12 +151,9 @@ async function sendScheduled(opts: {
       from: `${FROM_NAME} <${FROM_EMAIL}>`,
       to: opts.to,
       subject: opts.subject,
-      html: opts.html,
+      html: injectUnsubscribeLink(opts.html, opts.to),
       scheduled_at: opts.scheduledAtIso,
-      headers: {
-        "List-Unsubscribe": `<mailto:${FROM_EMAIL}?subject=unsubscribe>`,
-        "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
-      },
+      headers: listUnsubscribeHeaders(opts.to),
     }),
   }).catch((err) => {
     console.warn("Soap-opera schedule failed:", err);

@@ -4,6 +4,7 @@ import { isValidEmail, isAllowedOrigin } from "@/lib/validation";
 import { signVerifyToken } from "@/lib/verify-token";
 import { fireRedditLead } from "@/lib/reddit-conversions-api";
 import { recordSignup } from "@/lib/recent-signups";
+import { listUnsubscribeHeaders, injectUnsubscribeLink } from "@/lib/list-unsubscribe";
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY!;
 const FROM_EMAIL = process.env.FROM_EMAIL || "signals@gitdealflow.com";
@@ -234,10 +235,7 @@ export async function POST(request: Request) {
               ? "Confirm your email — Agent Credits launch starts now"
               : "Confirm to unlock your 5 (and the deal I missed)",
         html: verificationEmailHtml(verifyUrl, cohort),
-        headers: {
-          "List-Unsubscribe": `<mailto:${FROM_EMAIL}?subject=unsubscribe>`,
-          "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
-        },
+        headers: listUnsubscribeHeaders(email),
       }),
     });
 

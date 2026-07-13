@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { checkRateLimit, getClientIp, rateLimitHeaders } from "@/lib/rate-limit";
 import { isValidEmail, isAllowedOrigin } from "@/lib/validation";
+import { listUnsubscribeHeaders, injectUnsubscribeLink } from "@/lib/list-unsubscribe";
 
 /**
  * /api/crystal-ball/submit — receives Crystal Ball game submissions.
@@ -215,7 +216,8 @@ export async function POST(request: Request) {
           from: `${FROM_NAME} <${FROM_EMAIL}>`,
           to: email,
           subject: `Pick received — github.com/${org} (90-day window)`,
-          html: userHtml,
+          html: injectUnsubscribeLink(userHtml, email),
+          headers: listUnsubscribeHeaders(email),
         }),
       }),
     ]);

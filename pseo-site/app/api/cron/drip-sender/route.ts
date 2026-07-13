@@ -29,6 +29,7 @@
 
 import { NextResponse } from "next/server";
 import { pickAudienceId } from "@/lib/resend-audience";
+import { listUnsubscribeHeaders, injectUnsubscribeLink } from "@/lib/list-unsubscribe";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -87,11 +88,8 @@ async function sendEmail(
       from: `${FROM_NAME} <${FROM_EMAIL}>`,
       to,
       subject,
-      html,
-      headers: {
-        "List-Unsubscribe": `<mailto:${FROM_EMAIL}?subject=unsubscribe>`,
-        "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
-      },
+      html: injectUnsubscribeLink(html, to),
+      headers: listUnsubscribeHeaders(to),
     }),
   });
   return res.ok;

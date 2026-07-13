@@ -1,4 +1,5 @@
 import "server-only";
+import { listUnsubscribeHeaders, injectUnsubscribeLink } from "@/lib/list-unsubscribe";
 
 /**
  * Sector Sweep — heat-building Setter sequence.
@@ -510,11 +511,8 @@ export async function scheduleSetterSequence(
         to: inputs.email,
         reply_to: SETTER_FROM_EMAIL,
         subject: item.subject,
-        html: item.html,
-        headers: {
-          "List-Unsubscribe": `<mailto:${SETTER_FROM_EMAIL}?subject=unsubscribe>`,
-          "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
-        },
+        html: injectUnsubscribeLink(item.html, inputs.email),
+        headers: listUnsubscribeHeaders(inputs.email),
       };
       if (!isInstant) {
         payload.scheduled_at = item.at.toISOString();

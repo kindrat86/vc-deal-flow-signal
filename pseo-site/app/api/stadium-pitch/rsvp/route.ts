@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { isValidEmail } from "@/lib/validation";
 import { isExcluded } from "@/lib/excluded-emails";
 import { checkRateLimit, getClientIp, rateLimitHeaders } from "@/lib/rate-limit";
+import { listUnsubscribeHeaders, injectUnsubscribeLink } from "@/lib/list-unsubscribe";
 import {
   getActiveReminders,
   getNextDropTime,
@@ -187,11 +188,8 @@ export async function POST(request: Request) {
         from: `${FROM_NAME} <${FROM_EMAIL}>`,
         to: email,
         subject: d.subject,
-        html: d.html,
-        headers: {
-          "List-Unsubscribe": `<mailto:${FROM_EMAIL}?subject=unsubscribe>`,
-          "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
-        },
+        html: injectUnsubscribeLink(d.html, email),
+        headers: listUnsubscribeHeaders(email),
         tags: [
           { name: "campaign", value: "stadium-pitch-rsvp" },
           { name: "source", value: source },

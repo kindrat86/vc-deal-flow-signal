@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSession } from "@/lib/auth";
 import { checkRateLimit, getClientIp, rateLimitHeaders } from "@/lib/rate-limit";
+import { listUnsubscribeHeaders } from "@/lib/list-unsubscribe";
 
 const FROM_EMAIL = process.env.FROM_EMAIL || "signals@gitdealflow.com";
 const FROM_NAME = process.env.FROM_NAME || "The Data Nerd";
@@ -81,6 +82,7 @@ export async function POST(request: NextRequest) {
       from: `${FROM_NAME} <${FROM_EMAIL}>`,
       to: email,
       subject: "Watchlist alerts enabled",
+      headers: listUnsubscribeHeaders(email),
       html: `<!DOCTYPE html>
 <html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head>
 <body style="margin:0;padding:0;background:#f8fafc;color:#1e293b;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
