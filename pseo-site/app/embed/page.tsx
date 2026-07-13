@@ -346,10 +346,10 @@ export default function EmbedPage() {
               No API key required for any surface. If you build something
               with these, drop a link to{" "}
               <a
-                href="mailto:signal@gitdealflow.com"
+                href="mailto:signals@gitdealflow.com"
                 className="text-sky-400 hover:text-sky-300"
               >
-                signal@gitdealflow.com
+                signals@gitdealflow.com
               </a>{" "}
               — we&apos;ll feature it on{" "}
               <Link href="/mirrors" className="text-sky-400 hover:text-sky-300">

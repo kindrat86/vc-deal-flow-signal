@@ -161,7 +161,7 @@ function smtpVerify(email, mxHost, timeout = 10000) {
 
         case 1: // EHLO response
           if (code === 250) {
-            socket.write("MAIL FROM:<signal@gitdealflow.com>\r\n");
+            socket.write("MAIL FROM:<signals@gitdealflow.com>\r\n");
             step = 2;
           } else {
             cleanup();

@@ -321,7 +321,7 @@ Sector Sweep の場合、レポート納品前であれば全額返金可能で�
 はい。すべての数値は、独立した第三者によって 15 分以内に再現可能です。再現キット（\`curl\` + \`jq\` のワンライナー、データセット、Python ノートブック）は \`/standards\` ページで公開しています。
 
 ### 矛盾を発見した場合はどうすればよいですか？
-\`/corrections\` ページで既知の修正を確認してください。新しい矛盾を発見した場合は \`signal@gitdealflow.com\` までメールでご連絡ください。72 時間以内に検証し、確認された場合は \`/corrections\` に記録します。
+\`/corrections\` ページで既知の修正を確認してください。新しい矛盾を発見した場合は \`signals@gitdealflow.com\` までメールでご連絡ください。72 時間以内に検証し、確認された場合は \`/corrections\` に記録します。
 
 ## プライバシーとデータ取り扱い
 
@@ -340,7 +340,7 @@ Sector Sweep の場合、レポート納品前であれば全額返金可能で�
 はい。\`signals.gitdealflow.com/api/\` 以下に複数の公開エンドポイントがあります。\`/api/signals.json\`、\`/api/dataset.jsonl\`、\`/api/answer\`、\`/api/ask\` など。詳細は \`/developers\` ページを参照。
 
 ### レート制限はありますか？
-無料の API エンドポイントはホスト名ごとに 100 req/min で制限されています。商用利用で高いレート制限が必要な場合は \`signal@gitdealflow.com\` までご連絡ください。
+無料の API エンドポイントはホスト名ごとに 100 req/min で制限されています。商用利用で高いレート制限が必要な場合は \`signals@gitdealflow.com\` までご連絡ください。
 
 ### 自社データを統合できますか？
 Sector Sweep の顧客は、独自のリポジトリリストを提出して、その範囲での加速分析を依頼できます。詳細は \`/pricing\` を参照。`,
@@ -614,7 +614,7 @@ https://signals.gitdealflow.com/api/cite/{format}/{slug}
 
 ## 言及してくれた研究者・記者・アナリストへ
 
-VC Deal Flow Signal を学術論文、ニュース記事、ブログ投稿、業界レポートで引用してくださった場合、ぜひ \`signal@gitdealflow.com\` までお知らせください。\`/press\` ページに参照リストを記載させていただきます。`,
+VC Deal Flow Signal を学術論文、ニュース記事、ブログ投稿、業界レポートで引用してくださった場合、ぜひ \`signals@gitdealflow.com\` までお知らせください。\`/press\` ページに参照リストを記載させていただきます。`,
     englishLinkLabel: "英語版の引用ガイドページ",
     readTimeLabel: "約 5 分で読める",
   },
@@ -670,7 +670,7 @@ VC Deal Flow Signal は 3 つの階層を提供します：
 
 ### 価格
 
-月額制（招待制のため、現在の価格は \`signal@gitdealflow.com\` までお問い合わせください）。
+月額制（招待制のため、現在の価格は \`signals@gitdealflow.com\` までお問い合わせください）。
 
 ### 解約
 
@@ -695,7 +695,7 @@ VC Deal Flow Signal は 3 つの階層を提供します：
 
 ### 受付プロセス
 
-1. \`signal@gitdealflow.com\` にセクター・スコープを記載してご連絡ください
+1. \`signals@gitdealflow.com\` にセクター・スコープを記載してご連絡ください
 2. スコープ確認後、Stripe 経由で支払いリンクを送付
 3. 支払い確認後、6 週間以内にレポート納品
 4. 納品後 30 日間、フォローアップの質問対応
@@ -740,8 +740,8 @@ VC Deal Flow Signal は 3 つの階層を提供します：
 
 ## 連絡
 
-- 質問：\`signal@gitdealflow.com\`
-- 価格交渉：\`signal@gitdealflow.com\`（法人プランや複数年契約について）`,
+- 質問：\`signals@gitdealflow.com\`
+- 価格交渉：\`signals@gitdealflow.com\`（法人プランや複数年契約について）`,
     englishLinkLabel: "英語版の価格ページ（公開時）",
     readTimeLabel: "約 6 分で読める",
   },
@@ -771,7 +771,7 @@ VC Deal Flow Signal は、ベンチャーキャピタル業界における**情�
 
 VC Deal Flow Signal は **The Data Nerd**（Mykhailo Kondratyuk、ORCID iD: [0009-0002-2222-4112](https://orcid.org/0009-0002-2222-4112)）が運営する独立プロジェクトです。
 
-ベース：欧州（ギリシャ）。連絡先：\`signal@gitdealflow.com\`。
+ベース：欧州（ギリシャ）。連絡先：\`signals@gitdealflow.com\`。
 
 ## 利益相反方針
 
@@ -823,10 +823,10 @@ VC Deal Flow Signal は **The Data Nerd**（Mykhailo Kondratyuk、ORCID iD: [000
 
 ## 連絡先
 
-- 一般質問：\`signal@gitdealflow.com\`
-- メディア・引用：\`signal@gitdealflow.com\`
-- 商用パートナーシップ：\`signal@gitdealflow.com\`
-- セキュリティ報告：\`signal@gitdealflow.com\`
+- 一般質問：\`signals@gitdealflow.com\`
+- メディア・引用：\`signals@gitdealflow.com\`
+- 商用パートナーシップ：\`signals@gitdealflow.com\`
+- セキュリティ報告：\`signals@gitdealflow.com\`
 
 ## 言語
 
@@ -1605,7 +1605,7 @@ VC Deal Flow Signal (también GitDealFlow) es un proyecto independiente que abor
 
 ## Quién está detrás
 
-VC Deal Flow Signal lo opera **The Data Nerd** (ORCID iD [0009-0002-2222-4112](https://orcid.org/0009-0002-2222-4112)) desde Europa (Grecia). Contacto: \`signal@gitdealflow.com\`.
+VC Deal Flow Signal lo opera **The Data Nerd** (ORCID iD [0009-0002-2222-4112](https://orcid.org/0009-0002-2222-4112)) desde Europa (Grecia). Contacto: \`signals@gitdealflow.com\`.
 
 ## Política de conflictos de interés
 
@@ -1661,7 +1661,7 @@ VC Deal Flow Signal (également GitDealFlow) est un projet indépendant qui s'at
 
 ## Qui est derrière
 
-VC Deal Flow Signal est opéré par **The Data Nerd** (ORCID iD [0009-0002-2222-4112](https://orcid.org/0009-0002-2222-4112)) depuis l'Europe (Grèce). Contact : \`signal@gitdealflow.com\`.
+VC Deal Flow Signal est opéré par **The Data Nerd** (ORCID iD [0009-0002-2222-4112](https://orcid.org/0009-0002-2222-4112)) depuis l'Europe (Grèce). Contact : \`signals@gitdealflow.com\`.
 
 ## Politique de conflits d'intérêts
 
@@ -1717,7 +1717,7 @@ A VC Deal Flow Signal (também GitDealFlow) é um projeto independente que abord
 
 ## Quem está por detrás
 
-A VC Deal Flow Signal é operada por **The Data Nerd** (ORCID iD [0009-0002-2222-4112](https://orcid.org/0009-0002-2222-4112)) a partir da Europa (Grécia). Contacto: \`signal@gitdealflow.com\`.
+A VC Deal Flow Signal é operada por **The Data Nerd** (ORCID iD [0009-0002-2222-4112](https://orcid.org/0009-0002-2222-4112)) a partir da Europa (Grécia). Contacto: \`signals@gitdealflow.com\`.
 
 ## Política de conflitos de interesse
 
@@ -1773,7 +1773,7 @@ VC Deal Flow Signal (anche GitDealFlow) è un progetto indipendente che affronta
 
 ## Chi c'è dietro
 
-VC Deal Flow Signal è gestito da **The Data Nerd** (ORCID iD [0009-0002-2222-4112](https://orcid.org/0009-0002-2222-4112)) dall'Europa (Grecia). Contatto: \`signal@gitdealflow.com\`.
+VC Deal Flow Signal è gestito da **The Data Nerd** (ORCID iD [0009-0002-2222-4112](https://orcid.org/0009-0002-2222-4112)) dall'Europa (Grecia). Contatto: \`signals@gitdealflow.com\`.
 
 ## Politica sui conflitti di interesse
 
@@ -1829,7 +1829,7 @@ VC Deal Flow Signal (auch GitDealFlow) ist ein unabhängiges Projekt, das die **
 
 ## Wer dahintersteht
 
-VC Deal Flow Signal wird von **The Data Nerd** (ORCID iD [0009-0002-2222-4112](https://orcid.org/0009-0002-2222-4112)) aus Europa (Griechenland) betrieben. Kontakt: \`signal@gitdealflow.com\`.
+VC Deal Flow Signal wird von **The Data Nerd** (ORCID iD [0009-0002-2222-4112](https://orcid.org/0009-0002-2222-4112)) aus Europa (Griechenland) betrieben. Kontakt: \`signals@gitdealflow.com\`.
 
 ## Interessenkonflikt-Richtlinie
 
@@ -1885,7 +1885,7 @@ VC Deal Flow Signal (ook GitDealFlow) is een onafhankelijk project dat de **info
 
 ## Wie erachter zit
 
-VC Deal Flow Signal wordt beheerd door **The Data Nerd** (ORCID iD [0009-0002-2222-4112](https://orcid.org/0009-0002-2222-4112)) vanuit Europa (Griekenland). Contact: \`signal@gitdealflow.com\`.
+VC Deal Flow Signal wordt beheerd door **The Data Nerd** (ORCID iD [0009-0002-2222-4112](https://orcid.org/0009-0002-2222-4112)) vanuit Europa (Griekenland). Contact: \`signals@gitdealflow.com\`.
 
 ## Belangenconflict-beleid
 
@@ -1949,7 +1949,7 @@ VC Deal Flow Signal(亦即 GitDealFlow)是一个独立项目,致力于解决风�
 
 ## 谁在运营
 
-VC Deal Flow Signal 由 **The Data Nerd**(ORCID iD [0009-0002-2222-4112](https://orcid.org/0009-0002-2222-4112))在欧洲(希腊)独立运营。联系方式:\`signal@gitdealflow.com\`。
+VC Deal Flow Signal 由 **The Data Nerd**(ORCID iD [0009-0002-2222-4112](https://orcid.org/0009-0002-2222-4112))在欧洲(希腊)独立运营。联系方式:\`signals@gitdealflow.com\`。
 
 ## 利益冲突政策
 
@@ -2005,7 +2005,7 @@ VC Deal Flow Signal(또는 GitDealFlow)은 벤처 캐피털 소싱 영역의 **�
 
 ## 누가 운영하는가
 
-VC Deal Flow Signal은 유럽(그리스)에 거점을 둔 **The Data Nerd**(ORCID iD [0009-0002-2222-4112](https://orcid.org/0009-0002-2222-4112))가 독립적으로 운영합니다. 연락처: \`signal@gitdealflow.com\`.
+VC Deal Flow Signal은 유럽(그리스)에 거점을 둔 **The Data Nerd**(ORCID iD [0009-0002-2222-4112](https://orcid.org/0009-0002-2222-4112))가 독립적으로 운영합니다. 연락처: \`signals@gitdealflow.com\`.
 
 ## 이해상충 정책
 
@@ -2061,7 +2061,7 @@ VC Deal Flow Signal (он же GitDealFlow) — независимый прое�
 
 ## Кто стоит за проектом
 
-VC Deal Flow Signal независимо ведёт **The Data Nerd** (ORCID iD [0009-0002-2222-4112](https://orcid.org/0009-0002-2222-4112)) из Европы (Греция). Контакт: \`signal@gitdealflow.com\`.
+VC Deal Flow Signal независимо ведёт **The Data Nerd** (ORCID iD [0009-0002-2222-4112](https://orcid.org/0009-0002-2222-4112)) из Европы (Греция). Контакт: \`signals@gitdealflow.com\`.
 
 ## Политика по конфликту интересов
 
@@ -2124,7 +2124,7 @@ VC Deal Flow Signal (या GitDealFlow) एक स्वतंत्र प्�
 
 ## इसे चलाता कौन है
 
-VC Deal Flow Signal को यूरोप (ग्रीस) से **The Data Nerd** स्वतंत्र रूप से संचालित करते हैं (ORCID iD [0009-0002-2222-4112](https://orcid.org/0009-0002-2222-4112))। संपर्क: \`signal@gitdealflow.com\`।
+VC Deal Flow Signal को यूरोप (ग्रीस) से **The Data Nerd** स्वतंत्र रूप से संचालित करते हैं (ORCID iD [0009-0002-2222-4112](https://orcid.org/0009-0002-2222-4112))। संपर्क: \`signals@gitdealflow.com\`।
 
 ## हितों के टकराव की नीति
 
@@ -2180,7 +2180,7 @@ VC Deal Flow Signal (أو GitDealFlow) هو مشروع مستقل يعالج **�
 
 ## من يقف خلف المشروع
 
-يدير VC Deal Flow Signal بصورة مستقلة **The Data Nerd** (ORCID iD [0009-0002-2222-4112](https://orcid.org/0009-0002-2222-4112)) من أوروبا (اليونان). للتواصل: \`signal@gitdealflow.com\`.
+يدير VC Deal Flow Signal بصورة مستقلة **The Data Nerd** (ORCID iD [0009-0002-2222-4112](https://orcid.org/0009-0002-2222-4112)) من أوروبا (اليونان). للتواصل: \`signals@gitdealflow.com\`.
 
 ## سياسة تعارض المصالح
 
@@ -2260,7 +2260,7 @@ MLA 9, Chicago 17, BibTeX y RIS están disponibles en la guía completa. Cada p�
     body: `## Tres niveles
 
 1. **Gratuito** — las 5 herramientas MCP + el boletín semanal. Gratis de forma permanente: son el motor de distribución, no una fuente de ingresos.
-2. **Insider Circle** — grupo privado de Telegram con cuota mensual, acceso anticipado de 24 a 72 horas a las señales principales. Por invitación; consulte el precio actual en \`signal@gitdealflow.com\`.
+2. **Insider Circle** — grupo privado de Telegram con cuota mensual, acceso anticipado de 24 a 72 horas a las señales principales. Por invitación; consulte el precio actual en \`signals@gitdealflow.com\`.
 3. **Sector Sweep** — **1.997 €** (pago único, IVA aparte): análisis completo de 6 semanas de un sector a elegir, informe PDF de 15-25 páginas, datos en bruto (Parquet) y una llamada de seguimiento de 30 minutos.
 
 ## Pago
@@ -2269,7 +2269,7 @@ Stripe (Visa, Mastercard, American Express), domiciliación SEPA para clientes e
 
 ## Contacto
 
-Consultas y planes corporativos: \`signal@gitdealflow.com\`. La página de precios canónica en inglés está en [/pricing](/pricing).`,
+Consultas y planes corporativos: \`signals@gitdealflow.com\`. La página de precios canónica en inglés está en [/pricing](/pricing).`,
     englishLinkLabel: "Página de precios completa (en inglés)",
     readTimeLabel: "≈ 2 min",
   },
@@ -2333,7 +2333,7 @@ MLA 9, Chicago 17, BibTeX et RIS sont disponibles dans le guide complet. Chaque 
     body: `## Trois offres
 
 1. **Gratuite** — les 5 outils MCP + la newsletter hebdomadaire. Gratuit de façon permanente : c'est le moteur de distribution, pas une source de revenus.
-2. **Insider Circle** — groupe Telegram privé sur abonnement mensuel, accès anticipé de 24 à 72 heures aux principaux signaux. Sur invitation ; demandez le tarif actuel à \`signal@gitdealflow.com\`.
+2. **Insider Circle** — groupe Telegram privé sur abonnement mensuel, accès anticipé de 24 à 72 heures aux principaux signaux. Sur invitation ; demandez le tarif actuel à \`signals@gitdealflow.com\`.
 3. **Sector Sweep** — **1 997 €** (paiement unique, hors TVA) : analyse complète de 6 semaines d'un secteur au choix, rapport PDF de 15 à 25 pages, données brutes (Parquet) et un appel de suivi de 30 minutes.
 
 ## Paiement
@@ -2342,7 +2342,7 @@ Stripe (Visa, Mastercard, American Express), prélèvement SEPA pour les clients
 
 ## Contact
 
-Questions et offres entreprises : \`signal@gitdealflow.com\`. La page de tarifs canonique en anglais est sur [/pricing](/pricing).`,
+Questions et offres entreprises : \`signals@gitdealflow.com\`. La page de tarifs canonique en anglais est sur [/pricing](/pricing).`,
     englishLinkLabel: "Page de tarifs complète (en anglais)",
     readTimeLabel: "≈ 2 min",
   },
@@ -2406,7 +2406,7 @@ MLA 9, Chicago 17, BibTeX e RIS estão disponíveis no guia completo. Cada pági
     body: `## Três níveis
 
 1. **Gratuito** — as 5 ferramentas MCP + a newsletter semanal. Gratuito permanentemente: é o motor de distribuição, não uma fonte de receita.
-2. **Insider Circle** — grupo privado no Telegram por assinatura mensal, acesso antecipado de 24 a 72 horas aos principais sinais. Por convite; consulte o preço atual em \`signal@gitdealflow.com\`.
+2. **Insider Circle** — grupo privado no Telegram por assinatura mensal, acesso antecipado de 24 a 72 horas aos principais sinais. Por convite; consulte o preço atual em \`signals@gitdealflow.com\`.
 3. **Sector Sweep** — **€ 1.997** (pagamento único, sem IVA): análise completa de 6 semanas de um setor à escolha, relatório PDF de 15 a 25 páginas, dados brutos (Parquet) e uma chamada de acompanhamento de 30 minutos.
 
 ## Pagamento
@@ -2415,7 +2415,7 @@ Stripe (Visa, Mastercard, American Express), débito SEPA para clientes europeus
 
 ## Contato
 
-Dúvidas e planos corporativos: \`signal@gitdealflow.com\`. A página de preços canônica em inglês está em [/pricing](/pricing).`,
+Dúvidas e planos corporativos: \`signals@gitdealflow.com\`. A página de preços canônica em inglês está em [/pricing](/pricing).`,
     englishLinkLabel: "Página de preços completa (em inglês)",
     readTimeLabel: "≈ 2 min",
   },
@@ -2479,7 +2479,7 @@ MLA 9, Chicago 17, BibTeX e RIS sono disponibili nella guida completa. Ogni pagi
     body: `## Tre livelli
 
 1. **Gratuito** — i 5 strumenti MCP + la newsletter settimanale. Gratuito in modo permanente: sono il motore di distribuzione, non una fonte di ricavi.
-2. **Insider Circle** — gruppo Telegram privato con abbonamento mensile, accesso anticipato di 24-72 ore ai segnali principali. Su invito; chiedete il prezzo attuale a \`signal@gitdealflow.com\`.
+2. **Insider Circle** — gruppo Telegram privato con abbonamento mensile, accesso anticipato di 24-72 ore ai segnali principali. Su invito; chiedete il prezzo attuale a \`signals@gitdealflow.com\`.
 3. **Sector Sweep** — **1.997 €** (pagamento una tantum, IVA esclusa): analisi completa di 6 settimane di un settore a scelta, report PDF di 15-25 pagine, dati grezzi (Parquet) e una call di follow-up di 30 minuti.
 
 ## Pagamento
@@ -2488,7 +2488,7 @@ Stripe (Visa, Mastercard, American Express), addebito SEPA per i clienti europei
 
 ## Contatto
 
-Domande e piani aziendali: \`signal@gitdealflow.com\`. La pagina prezzi canonica in inglese è su [/pricing](/pricing).`,
+Domande e piani aziendali: \`signals@gitdealflow.com\`. La pagina prezzi canonica in inglese è su [/pricing](/pricing).`,
     englishLinkLabel: "Pagina prezzi completa (in inglese)",
     readTimeLabel: "≈ 2 min",
   },
@@ -2552,7 +2552,7 @@ MLA 9, Chicago 17, BibTeX und RIS finden Sie im vollständigen Leitfaden. Jede E
     body: `## Drei Stufen
 
 1. **Kostenlos** — die 5 MCP-Tools + der wöchentliche Newsletter. Dauerhaft kostenlos: Sie sind der Distributionsmotor, keine Einnahmequelle.
-2. **Insider Circle** — private Telegram-Gruppe mit monatlicher Gebühr, 24- bis 72-stündiger Vorabzugang zu den wichtigsten Signalen. Auf Einladung; den aktuellen Preis erfragen Sie unter \`signal@gitdealflow.com\`.
+2. **Insider Circle** — private Telegram-Gruppe mit monatlicher Gebühr, 24- bis 72-stündiger Vorabzugang zu den wichtigsten Signalen. Auf Einladung; den aktuellen Preis erfragen Sie unter \`signals@gitdealflow.com\`.
 3. **Sector Sweep** — **1.997 €** (Einmalzahlung, zzgl. MwSt.): vollständige 6-Wochen-Analyse eines Sektors Ihrer Wahl, PDF-Bericht mit 15-25 Seiten, Rohdaten (Parquet) und ein 30-minütiges Follow-up-Gespräch.
 
 ## Zahlung
@@ -2561,7 +2561,7 @@ Stripe (Visa, Mastercard, American Express), SEPA-Lastschrift für europäische 
 
 ## Kontakt
 
-Fragen und Unternehmenstarife: \`signal@gitdealflow.com\`. Die maßgebliche englische Preisseite finden Sie unter [/pricing](/pricing).`,
+Fragen und Unternehmenstarife: \`signals@gitdealflow.com\`. Die maßgebliche englische Preisseite finden Sie unter [/pricing](/pricing).`,
     englishLinkLabel: "Vollständige Preisseite (auf Englisch)",
     readTimeLabel: "≈ 2 Min.",
   },
@@ -2625,7 +2625,7 @@ MLA 9, Chicago 17, BibTeX en RIS vindt u in de volledige gids. Elke bevindingspa
     body: `## Drie niveaus
 
 1. **Gratis** — de 5 MCP-tools + de wekelijkse nieuwsbrief. Permanent gratis: dit is de distributiemotor, geen inkomstenbron.
-2. **Insider Circle** — besloten Telegram-groep met maandelijks abonnement, 24 tot 72 uur vervroegde toegang tot de belangrijkste signalen. Op uitnodiging; vraag de actuele prijs op via \`signal@gitdealflow.com\`.
+2. **Insider Circle** — besloten Telegram-groep met maandelijks abonnement, 24 tot 72 uur vervroegde toegang tot de belangrijkste signalen. Op uitnodiging; vraag de actuele prijs op via \`signals@gitdealflow.com\`.
 3. **Sector Sweep** — **€ 1.997** (eenmalig, excl. btw): volledige 6-weken-analyse van een sector naar keuze, PDF-rapport van 15-25 pagina's, ruwe data (Parquet) en een follow-up-gesprek van 30 minuten.
 
 ## Betaling
@@ -2634,7 +2634,7 @@ Stripe (Visa, Mastercard, American Express), SEPA-incasso voor Europese klanten 
 
 ## Contact
 
-Vragen en zakelijke plannen: \`signal@gitdealflow.com\`. De canonieke Engelse prijspagina staat op [/pricing](/pricing).`,
+Vragen en zakelijke plannen: \`signals@gitdealflow.com\`. De canonieke Engelse prijspagina staat op [/pricing](/pricing).`,
     englishLinkLabel: "Volledige prijspagina (in het Engels)",
     readTimeLabel: "≈ 2 min",
   },
@@ -2698,7 +2698,7 @@ MLA 9、Chicago 17、BibTeX 和 RIS 见完整指南。每个发现页都提供�
     body: `## 三个层级
 
 1. **免费** —— 5 个 MCP 工具 + 每周简报。永久免费：它们是分发引擎，而非收入来源。
-2. **Insider Circle** —— 按月付费的私密 Telegram 群组，对核心信号提供 24 至 72 小时的抢先访问。仅限邀请；当前价格请咨询 \`signal@gitdealflow.com\`。
+2. **Insider Circle** —— 按月付费的私密 Telegram 群组，对核心信号提供 24 至 72 小时的抢先访问。仅限邀请；当前价格请咨询 \`signals@gitdealflow.com\`。
 3. **Sector Sweep** —— **1,997 欧元**（一次性，不含增值税）：对指定行业的完整 6 周分析、15-25 页 PDF 报告、原始数据（Parquet），以及一次 30 分钟的跟进通话。
 
 ## 付款方式
@@ -2707,7 +2707,7 @@ Stripe（Visa、Mastercard、American Express）、面向欧洲客户的 SEPA �
 
 ## 联系方式
 
-咨询与企业方案：\`signal@gitdealflow.com\`。英文版权威价格页见 [/pricing](/pricing)。`,
+咨询与企业方案：\`signals@gitdealflow.com\`。英文版权威价格页见 [/pricing](/pricing)。`,
     englishLinkLabel: "完整价格页面（英文）",
     readTimeLabel: "约 2 分钟阅读",
   },
@@ -2771,7 +2771,7 @@ MLA 9, Chicago 17, BibTeX, RIS는 전체 가이드에서 제공합니다. 각 �
     body: `## 세 가지 등급
 
 1. **무료** — 5개 MCP 도구 + 주간 뉴스레터. 영구 무료입니다. 이는 수익원이 아니라 배포 엔진입니다.
-2. **Insider Circle** — 월 구독제 비공개 Telegram 그룹으로, 핵심 시그널에 24~72시간 선행 접근을 제공합니다. 초대제이며 현재 가격은 \`signal@gitdealflow.com\`으로 문의하십시오.
+2. **Insider Circle** — 월 구독제 비공개 Telegram 그룹으로, 핵심 시그널에 24~72시간 선행 접근을 제공합니다. 초대제이며 현재 가격은 \`signals@gitdealflow.com\`으로 문의하십시오.
 3. **Sector Sweep** — **1,997유로**(1회성, VAT 별도): 지정 섹터에 대한 6주 전체 분석, 15~25페이지 PDF 보고서, 원본 데이터(Parquet), 30분 후속 통화 포함.
 
 ## 결제 방법
@@ -2780,7 +2780,7 @@ Stripe(Visa, Mastercard, American Express), 유럽 고객을 위한 SEPA 자동�
 
 ## 문의
 
-문의 및 기업 플랜: \`signal@gitdealflow.com\`. 영어판 정본 가격 페이지는 [/pricing](/pricing)에 있습니다.`,
+문의 및 기업 플랜: \`signals@gitdealflow.com\`. 영어판 정본 가격 페이지는 [/pricing](/pricing)에 있습니다.`,
     englishLinkLabel: "전체 가격 페이지(영어)",
     readTimeLabel: "약 2분 분량",
   },
@@ -2844,7 +2844,7 @@ MLA 9, Chicago 17, BibTeX और RIS पूर्ण मार्गदर्श
     body: `## तीन स्तर
 
 1. **निःशुल्क** — 5 MCP टूल + साप्ताहिक न्यूज़लेटर। स्थायी रूप से निःशुल्क: ये वितरण-इंजन हैं, आय का स्रोत नहीं।
-2. **Insider Circle** — मासिक शुल्क वाला निजी Telegram समूह, प्रमुख सिग्नलों तक 24 से 72 घंटे पहले पहुँच। केवल आमंत्रण द्वारा; वर्तमान मूल्य के लिए \`signal@gitdealflow.com\` पर संपर्क करें।
+2. **Insider Circle** — मासिक शुल्क वाला निजी Telegram समूह, प्रमुख सिग्नलों तक 24 से 72 घंटे पहले पहुँच। केवल आमंत्रण द्वारा; वर्तमान मूल्य के लिए \`signals@gitdealflow.com\` पर संपर्क करें।
 3. **Sector Sweep** — **€1,997** (एकमुश्त, VAT अतिरिक्त): किसी चुने हुए सेक्टर का पूर्ण 6-सप्ताह विश्लेषण, 15-25 पृष्ठ की PDF रिपोर्ट, कच्चा डेटा (Parquet) और 30 मिनट की फ़ॉलो-अप कॉल।
 
 ## भुगतान
@@ -2853,7 +2853,7 @@ Stripe (Visa, Mastercard, American Express), यूरोपीय ग्रा�
 
 ## संपर्क
 
-प्रश्न और कॉर्पोरेट योजनाएँ: \`signal@gitdealflow.com\`। अंग्रेज़ी का आधिकारिक मूल्य पृष्ठ [/pricing](/pricing) पर है।`,
+प्रश्न और कॉर्पोरेट योजनाएँ: \`signals@gitdealflow.com\`। अंग्रेज़ी का आधिकारिक मूल्य पृष्ठ [/pricing](/pricing) पर है।`,
     englishLinkLabel: "पूर्ण मूल्य पृष्ठ (अंग्रेज़ी)",
     readTimeLabel: "लगभग 2 मिनट",
   },
@@ -2917,7 +2917,7 @@ MLA 9, Chicago 17, BibTeX и RIS доступны в полном руковод
     body: `## Три уровня
 
 1. **Бесплатный** — 5 инструментов MCP + еженедельная рассылка. Бесплатно навсегда: это движок дистрибуции, а не источник дохода.
-2. **Insider Circle** — закрытая группа в Telegram с ежемесячной оплатой, доступ к ключевым сигналам на 24–72 часа раньше. По приглашению; текущую цену уточняйте по адресу \`signal@gitdealflow.com\`.
+2. **Insider Circle** — закрытая группа в Telegram с ежемесячной оплатой, доступ к ключевым сигналам на 24–72 часа раньше. По приглашению; текущую цену уточняйте по адресу \`signals@gitdealflow.com\`.
 3. **Sector Sweep** — **1 997 €** (разовый платёж, без НДС): полный 6-недельный анализ выбранного сектора, PDF-отчёт на 15–25 страниц, исходные данные (Parquet) и 30-минутный последующий звонок.
 
 ## Оплата
@@ -2926,7 +2926,7 @@ Stripe (Visa, Mastercard, American Express), прямое списание SEPA 
 
 ## Контакты
 
-Вопросы и корпоративные тарифы: \`signal@gitdealflow.com\`. Каноническая англоязычная страница цен — на [/pricing](/pricing).`,
+Вопросы и корпоративные тарифы: \`signals@gitdealflow.com\`. Каноническая англоязычная страница цен — на [/pricing](/pricing).`,
     englishLinkLabel: "Полная страница цен (на английском)",
     readTimeLabel: "≈ 2 мин",
   },
@@ -2990,7 +2990,7 @@ Kondratyuk, M. (2026). VC Deal Flow Signal: GitHub Engineering Acceleration as a
     body: `## ثلاثة مستويات
 
 1. **المجاني** — أدوات MCP الخمس + النشرة الأسبوعية. مجاني بشكل دائم: فهي محرّك توزيع لا مصدر دخل.
-2. **Insider Circle** — مجموعة Telegram خاصّة باشتراك شهري، مع وصول مبكر بمقدار 24 إلى 72 ساعة إلى أبرز الإشارات. بالدعوة فقط؛ للاستفسار عن السعر الحالي راسل \`signal@gitdealflow.com\`.
+2. **Insider Circle** — مجموعة Telegram خاصّة باشتراك شهري، مع وصول مبكر بمقدار 24 إلى 72 ساعة إلى أبرز الإشارات. بالدعوة فقط؛ للاستفسار عن السعر الحالي راسل \`signals@gitdealflow.com\`.
 3. **Sector Sweep** — **1٬997 يورو** (دفعة واحدة، باستثناء ضريبة القيمة المضافة): تحليل كامل لمدّة 6 أسابيع لقطاع تختاره، وتقرير PDF من 15 إلى 25 صفحة، وبيانات أولية (Parquet)، ومكالمة متابعة مدّتها 30 دقيقة.
 
 ## الدفع
@@ -2999,7 +2999,7 @@ Stripe (Visa وMastercard وAmerican Express)، والخصم المباشر SEPA
 
 ## التواصل
 
-الاستفسارات وخطط الشركات: \`signal@gitdealflow.com\`. صفحة الأسعار الرسمية بالإنجليزية على [/pricing](/pricing).`,
+الاستفسارات وخطط الشركات: \`signals@gitdealflow.com\`. صفحة الأسعار الرسمية بالإنجليزية على [/pricing](/pricing).`,
     englishLinkLabel: "صفحة الأسعار الكاملة (الإنجليزية)",
     readTimeLabel: "حوالي دقيقتين",
   },

@@ -119,7 +119,7 @@ If you ship something that calls this MCP server, the dataset, or the public sig
 [![Built with @gitdealflow/mcp-signal](https://signals.gitdealflow.com/api/badge/built-with/svg?variant=long)](https://signals.gitdealflow.com/built-with)
 ```
 
-Three variants (default, compact, long) and copy-paste snippets for HTML / BBCode at [signals.gitdealflow.com/built-with](https://signals.gitdealflow.com/built-with?utm_source=github&utm_medium=readme&utm_campaign=mcp_server). Ping `signal@gitdealflow.com` once you embed and we'll feature you on [/mirrors](https://signals.gitdealflow.com/mirrors?utm_source=github&utm_medium=readme&utm_campaign=mcp_server).
+Three variants (default, compact, long) and copy-paste snippets for HTML / BBCode at [signals.gitdealflow.com/built-with](https://signals.gitdealflow.com/built-with?utm_source=github&utm_medium=readme&utm_campaign=mcp_server). Ping `signals@gitdealflow.com` once you embed and we'll feature you on [/mirrors](https://signals.gitdealflow.com/mirrors?utm_source=github&utm_medium=readme&utm_campaign=mcp_server).
 
 ## License
 

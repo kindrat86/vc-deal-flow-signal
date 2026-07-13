@@ -11,11 +11,13 @@ import { signVerifyToken } from "@/lib/verify-token";
 import { scheduleSoapOperaForNewScout } from "@/lib/soap-opera-scout";
 import { isExcluded } from "@/lib/excluded-emails";
 import { makeShareUrl } from "@/lib/share-url";
+import { listUnsubscribeHeaders } from "@/lib/list-unsubscribe";
+import { pickAudienceId } from "@/lib/resend-audience";
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY!;
-const FROM_EMAIL = process.env.FROM_EMAIL || "signal@gitdealflow.com";
+const FROM_EMAIL = process.env.FROM_EMAIL || "signals@gitdealflow.com";
 const FROM_NAME = process.env.FROM_NAME || "The Data Nerd";
-const ADMIN_EMAIL = process.env.ADMIN_EMAIL || "signal@gitdealflow.com";
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL || "signals@gitdealflow.com";
 const SITE_URL = process.env.SITE_URL || "https://signals.gitdealflow.com";
 
 function escapeHtml(str: string): string {
@@ -29,6 +31,55 @@ function escapeHtml(str: string): string {
 
 function isValidGithubOrg(org: string): boolean {
   return /^[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,38}[a-zA-Z0-9])?(?:\/[a-zA-Z0-9._-]+)?$/.test(org);
+}
+
+/**
+ * Add the scout to the Resend audience with source attribution so they
+ * receive future digests/broadcasts — previously scouts only ever got the
+ * scout-specific emails and fell out of the general list. On already-exists,
+ * PATCH unsubscribed:false to re-activate. Best-effort.
+ */
+async function addToAudience(email: string) {
+  if (!RESEND_API_KEY || isExcluded(email)) return;
+  try {
+    const audRes = await fetch("https://api.resend.com/audiences", {
+      headers: { Authorization: `Bearer ${RESEND_API_KEY}` },
+    });
+    if (!audRes.ok) return;
+    const audiences = await audRes.json();
+    const audienceId: string | undefined = pickAudienceId(audiences);
+    if (!audienceId) return;
+    const res = await fetch(
+      `https://api.resend.com/audiences/${audienceId}/contacts`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${RESEND_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          first_name: "gdf-attr-v1:" + JSON.stringify({ source: "scout-predict" }),
+          unsubscribed: false,
+        }),
+      },
+    );
+    if (!res.ok) {
+      await fetch(
+        `https://api.resend.com/audiences/${audienceId}/contacts/${encodeURIComponent(email)}`,
+        {
+          method: "PATCH",
+          headers: {
+            Authorization: `Bearer ${RESEND_API_KEY}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ unsubscribed: false }),
+        },
+      );
+    }
+  } catch (err) {
+    console.error("[scout/predict] audience-add failed:", err);
+  }
 }
 
 function confirmationHtml(opts: {
@@ -250,10 +301,7 @@ export async function POST(request: Request) {
             isFounder: scout.founder_scout,
             isFirstPrediction: created,
           }),
-          headers: {
-            "List-Unsubscribe": `<mailto:${FROM_EMAIL}?subject=unsubscribe>`,
-            "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
-          },
+          headers: listUnsubscribeHeaders(email),
         }),
       });
 
@@ -297,6 +345,9 @@ export async function POST(request: Request) {
 
       await Promise.all([userMail, adminMail, schedulePromise]);
     }
+
+    // Keep scouts on the general list too (digests, broadcasts).
+    await addToAudience(email);
 
     const shareUrl = makeShareUrl({ sharer: scout.handle, kind: "predict" });
 

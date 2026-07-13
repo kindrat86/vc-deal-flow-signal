@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #020617;
+  /* Brand-aligned with gitdealflow.com landing (slate-900 #0f172a). */
+  --background: #0f172a;
   --foreground: #f1f5f9;
 }
 
@@ -57,7 +58,7 @@ body {
 *::-webkit-scrollbar-thumb {
   background: #334155;
   border-radius: 999px;
-  border: 2px solid #020617;
+  border: 2px solid #0f172a;
 }
 *::-webkit-scrollbar-thumb:hover {
   background: #475569;

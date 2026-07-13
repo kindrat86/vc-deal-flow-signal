@@ -213,7 +213,7 @@ export default function Home() {
           "@type": "Organization",
           name: "VC Deal Flow Signal",
           url: "https://gitdealflow.com",
-          email: "signal@gitdealflow.com",
+          email: "signals@gitdealflow.com",
           sameAs: [
             "https://www.linkedin.com/company/gitdealflow",
             "https://www.wikidata.org/wiki/Q139376302",

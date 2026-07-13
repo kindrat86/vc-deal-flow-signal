@@ -1,10 +1,24 @@
 import { NextResponse } from "next/server";
 import { checkRateLimit, getClientIp, rateLimitHeaders } from "@/lib/rate-limit";
 import { isValidEmail, isAllowedOrigin } from "@/lib/validation";
+import { SOAP_OPERA_EMAILS } from "@/lib/emails";
+import { isExcluded } from "@/lib/excluded-emails";
+import { isNonceUsed, markNonceUsed } from "@/lib/runtime-cache";
+import { listUnsubscribeHeaders } from "@/lib/list-unsubscribe";
+import { pickAudienceId } from "@/lib/resend-audience";
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY!;
-const FROM_EMAIL = process.env.FROM_EMAIL || "signal@gitdealflow.com";
+const FROM_EMAIL = process.env.FROM_EMAIL || "signals@gitdealflow.com";
 const FROM_NAME = process.env.FROM_NAME || "The Data Nerd";
+
+// Shared per-email Soap Opera enrollment dedup (same namespace as
+// /api/verify and /api/book/download) so an MCP-guide requester who also
+// subscribed elsewhere isn't double-enrolled.
+const SOS_ENROLLED_NAMESPACE = "sos-enrolled";
+const SOS_ENROLLED_TTL_SECONDS = 180 * 86_400;
+
+// Resend rejects scheduled_at >30 days out (422) — mirror verify's split.
+const MAX_SCHEDULE_MS = 29 * 24 * 60 * 60 * 1000;
 
 // ---------- MCP Installation Guide Email ----------
 const MCP_SUBJECT = "Your MCP setup guide — talk to your deal flow in 2 minutes";
@@ -124,7 +138,7 @@ const MCP_HTML = `<!DOCTYPE html>
 
 <div style="margin-top:40px;padding-top:20px;border-top:1px solid #e2e8f0;font-size:12px;color:#94a3b8;">
 <p>You're receiving this because you requested the MCP setup guide at <a href="https://gitdealflow.com" style="color:#0ea5e9;">gitdealflow.com</a></p>
-<p><a href="https://gitdealflow.com/dashboard" style="color:#0ea5e9;">Visit Dashboard</a> &middot; <a href="https://www.npmjs.com/package/@gitdealflow/mcp-signal" style="color:#0ea5e9;">npm Package</a> &middot; <a href="mailto:signal@gitdealflow.com" style="color:#0ea5e9;">Reply to unsubscribe</a></p>
+<p><a href="https://gitdealflow.com/dashboard" style="color:#0ea5e9;">Visit Dashboard</a> &middot; <a href="https://www.npmjs.com/package/@gitdealflow/mcp-signal" style="color:#0ea5e9;">npm Package</a> &middot; <a href="mailto:signals@gitdealflow.com" style="color:#0ea5e9;">Reply to unsubscribe</a></p>
 </div>
 
 </div>
@@ -175,7 +189,15 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Email service not configured" }, { status: 500, headers });
     }
 
-    // 1. Add to Resend audience (starts soap opera sequence)
+    // Tester / bot suppression — same policy as /api/verify.
+    if (isExcluded(email)) {
+      console.log(`[subscribe-mcp] suppressed excluded address: ${email}`);
+      return NextResponse.json({ ok: true, message: "Guide sent" }, { headers });
+    }
+
+    // 1. Add to Resend audience with source attribution. NOTE: the audience
+    //    add alone does NOT start any sequence — the Soap Opera drip is
+    //    explicitly scheduled in step 3 below.
     const audienceRes = await fetch("https://api.resend.com/audiences", {
       method: "GET",
       headers: { Authorization: `Bearer ${RESEND_API_KEY}` },
@@ -185,7 +207,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Email service error" }, { status: 500, headers });
     }
     const audiences = await audienceRes.json();
-    let audienceId = audiences.data?.[0]?.id;
+    let audienceId = pickAudienceId(audiences);
 
     if (!audienceId) {
       const createRes = await fetch("https://api.resend.com/audiences", {
@@ -208,12 +230,26 @@ export async function POST(request: Request) {
       },
       body: JSON.stringify({
         email,
-        first_name: body.name || "",
+        // gdf-attr-v1 attribution bridge (same as /api/verify) — the
+        // laptop-side sync decodes this; a bare display name would break it.
+        first_name: "gdf-attr-v1:" + JSON.stringify({ source: "subscribe-mcp" }),
         unsubscribed: false,
       }),
     });
     if (!contactRes.ok) {
-      console.error("Failed to add contact:", await contactRes.text());
+      // Already a contact — re-activate so a previously-unsubscribed
+      // requester actually receives the guide follow-ups again.
+      await fetch(
+        `https://api.resend.com/audiences/${audienceId}/contacts/${encodeURIComponent(email)}`,
+        {
+          method: "PATCH",
+          headers: {
+            Authorization: `Bearer ${RESEND_API_KEY}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ unsubscribed: false }),
+        },
+      );
     }
 
     // 2. Send MCP installation guide email
@@ -228,14 +264,90 @@ export async function POST(request: Request) {
         to: email,
         subject: MCP_SUBJECT,
         html: MCP_HTML,
-        headers: {
-          "List-Unsubscribe": `<mailto:${FROM_EMAIL}?subject=unsubscribe>`,
-          "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
-        },
+        headers: listUnsubscribeHeaders(email),
       }),
     });
     if (!emailRes.ok) {
       console.error("Failed to send MCP guide email:", await emailRes.text());
+    }
+
+    // 3. Actually enroll the Soap Opera Sequence (the guide email promises
+    //    "Tomorrow I'll share the story…" — before this block existed nothing
+    //    ever followed). Same pattern as /api/verify: Day-0 is skipped (the
+    //    guide fills that slot), ≤29d scheduled via scheduled_at, the rest
+    //    stored as drip_plan for /api/cron/drip-sender. Per-email nonce so
+    //    repeat requests / prior subscribes don't double-enroll.
+    if (await isNonceUsed(SOS_ENROLLED_NAMESPACE, email)) {
+      console.log(`[subscribe-mcp] ${email} already enrolled — skipping drip`);
+    } else {
+      await markNonceUsed(SOS_ENROLLED_NAMESPACE, email, SOS_ENROLLED_TTL_SECONDS);
+      const now = Date.now();
+      const sequence = SOAP_OPERA_EMAILS.slice(1);
+      const immediate = sequence.filter((e) => e.delayMs <= MAX_SCHEDULE_MS);
+      const deferred = sequence.filter((e) => e.delayMs > MAX_SCHEDULE_MS);
+
+      for (const soapEmail of immediate) {
+        const sendAt = new Date(now + soapEmail.delayMs).toISOString();
+        try {
+          const res = await fetch("https://api.resend.com/emails", {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${RESEND_API_KEY}`,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              from: `${FROM_NAME} <${FROM_EMAIL}>`,
+              to: email,
+              subject: soapEmail.subject,
+              html: soapEmail.html,
+              scheduled_at: sendAt,
+              headers: listUnsubscribeHeaders(email),
+            }),
+          });
+          if (!res.ok) {
+            console.error(
+              `[subscribe-mcp] failed to schedule "${soapEmail.subject}" for ${email}:`,
+              await res.text(),
+            );
+          }
+        } catch (err) {
+          console.error(
+            `[subscribe-mcp] error scheduling "${soapEmail.subject}" for ${email}:`,
+            err,
+          );
+        }
+      }
+
+      if (deferred.length > 0 && audienceId) {
+        const dripPlan = deferred.map((e) => ({
+          d: Math.round(e.delayMs / (24 * 60 * 60 * 1000)),
+          s: e.subject,
+          h: e.html,
+        }));
+        try {
+          await fetch(
+            `https://api.resend.com/audiences/${audienceId}/contacts/${encodeURIComponent(email)}`,
+            {
+              method: "PATCH",
+              headers: {
+                Authorization: `Bearer ${RESEND_API_KEY}`,
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                properties: {
+                  drip_plan: JSON.stringify(dripPlan),
+                  drip_sent: "",
+                },
+              }),
+            },
+          );
+          console.log(
+            `[subscribe-mcp] stored ${deferred.length} deferred drip emails for ${email}`,
+          );
+        } catch (err) {
+          console.error("[subscribe-mcp] failed to store deferred drip plan:", err);
+        }
+      }
     }
 
     return NextResponse.json({ ok: true, message: "Guide sent" }, { headers });

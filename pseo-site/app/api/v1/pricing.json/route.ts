@@ -113,13 +113,13 @@ const tiers: PricingTier[] = [
   },
   {
     slug: "dashboard-beta",
-    name: "Dashboard Beta",
-    priceEur: 9.97,
+    name: "Dashboard",
+    priceEur: 49,
     priceCadence: "monthly",
-    priceLabel: "€9.97/mo",
-    listPriceEur: 49,
-    listPriceCadence: "monthly",
-    foundingMember: true,
+    priceLabel: "€49/mo (or €490/yr)",
+    listPriceEur: null,
+    listPriceCadence: null,
+    foundingMember: false,
     applicationGated: false,
     capacity: null,
     oneLine:
@@ -133,20 +133,20 @@ const tiers: PricingTier[] = [
       "Watchlists and saved filters",
       "Free Chrome extensions — Crunchbase + Wellfound badge and GitHub-native hover lookup",
     ],
-    ctaLabel: "Lock In Founding Price",
-    ctaHref: "https://buy.stripe.com/28E7sK48H04U8ou07u0x200",
+    ctaLabel: "Start Dashboard — €49/mo",
+    ctaHref: "https://buy.stripe.com/4gMbJ07kTaJy7kqg6s0x20b",
     guarantee: "30-day Signal-or-It's-Free — full refund within 30 days",
     promoCode: "PH50OFF",
   },
   {
     slug: "insider-circle",
     name: "Insider Circle",
-    priceEur: 97,
+    priceEur: 197,
     priceCadence: "monthly",
-    priceLabel: "€97/mo",
-    listPriceEur: 197,
-    listPriceCadence: "monthly",
-    foundingMember: true,
+    priceLabel: "€197/mo (or €1,970/yr)",
+    listPriceEur: null,
+    listPriceCadence: null,
+    foundingMember: false,
     applicationGated: false,
     capacity: null,
     oneLine:
@@ -162,7 +162,7 @@ const tiers: PricingTier[] = [
       "Direct line to the founder for diligence questions",
     ],
     ctaLabel: "Join the Insider Circle",
-    ctaHref: "https://buy.stripe.com/4gM00ifRpcRG2069I40x202",
+    ctaHref: "https://buy.stripe.com/bJeaEWfRpcRG6gm2fC0x20d",
     guarantee: "30-day Signal-or-It's-Free — full refund within 30 days",
     promoCode: "PH50OFF",
   },
@@ -194,7 +194,7 @@ const tiers: PricingTier[] = [
     ],
     ctaLabel: "Apply for Sharp Tier",
     ctaHref:
-      "mailto:signal@gitdealflow.com?subject=Sharp%20Tier%20Application%20%E2%80%94%20%5BYour%20Fund%5D",
+      "mailto:signals@gitdealflow.com?subject=Sharp%20Tier%20Application%20%E2%80%94%20%5BYour%20Fund%5D",
     guarantee: "30-day Signal-or-It's-Free — full refund within 30 days",
     promoCode: null,
   },
@@ -299,10 +299,10 @@ export async function GET() {
   const lastModified = getDataLastModified();
 
   const body = {
-    version: "1.1.0",
+    version: "1.2.0",
     name: "VC Deal Flow Signal — Pricing",
     description:
-      "Machine-readable pricing for VC Deal Flow Signal (GitDealFlow). Nine published priced tiers plus the free Signal Digest (Tweet Teardown €1, First Look Pass €7, Dashboard Beta €9.97/mo, Insider Circle €97/mo, Sharp Tier €4,970/yr, Sector Sweep €1,997 one-time, Methodology Partnership €14,997/yr, Vault €49,997/yr) with founding-member rates, application-gated Sharp Tier / Methodology Partnership / Vault, and a 30-day Signal-or-It's-Free guarantee on every paid plan above €1. The high-ticket research-partnership rungs (Methodology Partnership and Vault) are async-only and anonymity-preserving — no live calls, no in-person attendance. Designed for AI agents, MCP clients, and procurement automations that need pricing in JSON form.",
+      "Machine-readable pricing for VC Deal Flow Signal (GitDealFlow). Nine published priced tiers plus the free Signal Digest (Tweet Teardown €1, First Look Pass €7, Dashboard €49/mo, Insider Circle €197/mo, Sharp Tier €4,970/yr, Sector Sweep €1,997 one-time, Methodology Partnership €14,997/yr, Vault €49,997/yr) — the founding cohort closed 2026-06-30 and founding members keep their original rates for life — with application-gated Sharp Tier / Methodology Partnership / Vault, and a 30-day Signal-or-It's-Free guarantee on every paid plan above €1. The high-ticket research-partnership rungs (Methodology Partnership and Vault) are async-only and anonymity-preserving — no live calls, no in-person attendance. Designed for AI agents, MCP clients, and procurement automations that need pricing in JSON form.",
     site: SITE,
     canonicalHumanPage: `${SITE}/pricing`,
     license: {
@@ -314,7 +314,7 @@ export async function GET() {
     citation:
       "VC Deal Flow Signal — Pricing (signals.gitdealflow.com/pricing), retrieved Q2 2026.",
     contact: {
-      email: "signal@gitdealflow.com",
+      email: "signals@gitdealflow.com",
       preferredFormat: "email-only",
     },
     currency: "EUR",
@@ -380,7 +380,7 @@ export async function GET() {
     enterprise: {
       tier: "sharp-tier",
       applicationUrl:
-        "mailto:signal@gitdealflow.com?subject=Sharp%20Tier%20Application%20%E2%80%94%20%5BYour%20Fund%5D",
+        "mailto:signals@gitdealflow.com?subject=Sharp%20Tier%20Application%20%E2%80%94%20%5BYour%20Fund%5D",
       capacityRemaining: "8 funds capped in 2026; applications reviewed within 48h",
       humanPage: `${SITE}/enterprise`,
     },

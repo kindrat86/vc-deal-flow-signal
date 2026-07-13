@@ -83,7 +83,7 @@ export default function AboutPage() {
         description:
           "Public dataset of startup engineering acceleration, derived from public GitHub activity. Tracks commit velocity, contributor growth, and repository expansion across ~400 startup GitHub orgs in 20 sectors.",
         foundingDate: "2026",
-        email: "signal@gitdealflow.com",
+        email: "signals@gitdealflow.com",
         sameAs: [
           "https://www.wikidata.org/wiki/Q139376302",
           "https://x.com/data_nerd",
@@ -92,7 +92,7 @@ export default function AboutPage() {
         contactPoint: {
           "@type": "ContactPoint",
           contactType: "customer support",
-          email: "signal@gitdealflow.com",
+          email: "signals@gitdealflow.com",
           url: "https://signals.gitdealflow.com/about",
         },
         founder: DATA_NERD_AUTHOR_REF,

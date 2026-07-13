@@ -190,10 +190,10 @@ export const useCases: UseCase[] = [
       { label: "Benchmark cost", value: "EUR 9.97/mo (beta)" },
     ],
     faqs: [
-      { question: "Can I get a custom historical signal export?", answer: "Yes — email signal@gitdealflow.com with the date range and sector focus. The beta tier access includes custom exports for LP use cases on request." },
+      { question: "Can I get a custom historical signal export?", answer: "Yes — email signals@gitdealflow.com with the date range and sector focus. The beta tier access includes custom exports for LP use cases on request." },
       { question: "How do I handle GPs that invest in non-technical sectors?", answer: "The signal only covers technical startups with public GitHub activity. For consumer, healthtech, or services GPs, the overlap score is structurally low and not meaningful. Use the signal only for peer groups where the sector mix is comparable." },
       { question: "Is the signal biased toward open-source companies?", answer: "The signal measures any public GitHub activity — both open-source projects and companies with public infrastructure repos, public API repos, or public SDKs. It is biased toward technical startups that do any of their engineering work in public, which is the majority of modern SaaS and dev tools but a minority of closed-source B2B." },
-      { question: "Can you help us build a custom LP benchmark?", answer: "Yes. The data is available in machine-readable formats; email signal@gitdealflow.com for scoped help building a custom benchmark or GP scoring model. The product team is small but direct." },
+      { question: "Can you help us build a custom LP benchmark?", answer: "Yes. The data is available in machine-readable formats; email signals@gitdealflow.com for scoped help building a custom benchmark or GP scoring model. The product team is small but direct." },
     ],
     relatedSectors: ["ai-ml", "enterprise-saas", "fintech"],
     relatedAlternatives: ["dealroom", "harmonic-ai"],

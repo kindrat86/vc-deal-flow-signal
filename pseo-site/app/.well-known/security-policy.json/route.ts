@@ -27,7 +27,7 @@ export async function GET() {
     "@type": "WebSite",
     name: "VC Deal Flow Signal",
     url: SITE,
-    contact: "mailto:signal@gitdealflow.com",
+    contact: "mailto:signals@gitdealflow.com",
     expires: expiresOneYearFromBuild(),
     preferredLanguages: ["en"],
     canonical: `${SITE}/.well-known/security.txt`,

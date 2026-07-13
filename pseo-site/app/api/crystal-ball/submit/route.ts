@@ -6,15 +6,15 @@ import { isValidEmail, isAllowedOrigin } from "@/lib/validation";
  * /api/crystal-ball/submit — receives Crystal Ball game submissions.
  *
  * Pattern mirrors /api/sharp-application: validate, rate-limit per IP,
- * email signal@gitdealflow.com via Resend for human moderation. No DB
+ * email signals@gitdealflow.com via Resend for human moderation. No DB
  * write — picks land in inbox, are reviewed within 24h, and seeded into
  * lib/crystal-ball-picks.json (or similar) by the maintainer if accepted.
  */
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY!;
-const FROM_EMAIL = process.env.FROM_EMAIL || "signal@gitdealflow.com";
+const FROM_EMAIL = process.env.FROM_EMAIL || "signals@gitdealflow.com";
 const FROM_NAME = process.env.FROM_NAME || "The Data Nerd";
-const TO_EMAIL = "signal@gitdealflow.com";
+const TO_EMAIL = "signals@gitdealflow.com";
 
 function clip(v: unknown, max: number): string {
   return typeof v === "string" ? v.slice(0, max).trim() : "";
@@ -85,7 +85,7 @@ function confirmEmailHtml(handle: string, org: string, graderDueAt: string): str
 </div>
 <div style="margin-top:40px;padding-top:20px;border-top:1px solid #e2e8f0;font-size:12px;color:#94a3b8;">
 <p>You're receiving this because you submitted to the Crystal Ball game at signals.gitdealflow.com/crystal-ball.</p>
-<p><a href="mailto:signal@gitdealflow.com" style="color:#0ea5e9;">Reply to withdraw</a></p>
+<p><a href="mailto:signals@gitdealflow.com" style="color:#0ea5e9;">Reply to withdraw</a></p>
 </div>
 </div>
 </body>
@@ -121,7 +121,7 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         error:
-          "One pick per email per week. Come back next Monday — or email signal@gitdealflow.com if your previous pick was rejected.",
+          "One pick per email per week. Come back next Monday — or email signals@gitdealflow.com if your previous pick was rejected.",
       },
       { status: 429, headers: { ...headers, ...rateLimitHeaders(rl) } },
     );
@@ -224,7 +224,7 @@ export async function POST(request: Request) {
       const errText = await modRes.text();
       console.error("Crystal Ball moderation email failed:", errText);
       return NextResponse.json(
-        { error: "Failed to deliver pick — please email signal@gitdealflow.com directly" },
+        { error: "Failed to deliver pick — please email signals@gitdealflow.com directly" },
         { status: 500, headers },
       );
     }
@@ -243,7 +243,7 @@ export async function POST(request: Request) {
   } catch (err) {
     console.error("Crystal Ball submit error:", err);
     return NextResponse.json(
-      { error: "Something went wrong — please email signal@gitdealflow.com directly" },
+      { error: "Something went wrong — please email signals@gitdealflow.com directly" },
       { status: 500, headers },
     );
   }

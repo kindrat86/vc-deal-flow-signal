@@ -110,7 +110,7 @@ const FAQS = [
   },
   {
     q: "Can I republish or quote from the book?",
-    a: "Yes. The book is licensed CC-BY-4.0 — quote freely with attribution to The Data Nerd / GitDealFlow. If you want to republish a full chapter on your own newsletter or blog, drop me a note at signal@gitdealflow.com first; I am almost always happy to say yes and will sometimes have a mildly improved version that has not yet been folded into the public PDF.",
+    a: "Yes. The book is licensed CC-BY-4.0 — quote freely with attribution to The Data Nerd / GitDealFlow. If you want to republish a full chapter on your own newsletter or blog, drop me a note at signals@gitdealflow.com first; I am almost always happy to say yes and will sometimes have a mildly improved version that has not yet been folded into the public PDF.",
   },
 ];
 

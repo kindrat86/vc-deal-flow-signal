@@ -226,7 +226,7 @@ export default function SubprocessorsPage() {
       <TrustPageOutro acNote="I publish the whole list — including the vendors that gave me a worse deal — for the same reason I publish the misses on the scorecard. A vendor who hides the list is a vendor with something to hide." />
 
       <footer className="mt-8 pt-6 border-t border-slate-800 text-sm text-gray-400 leading-relaxed">
-        Machine-readable: <Link href="/.well-known/subprocessors.json" className="text-emerald-400 hover:underline">/.well-known/subprocessors.json</Link>. Companion docs: <Link href="/dpa" className="text-sky-400 hover:underline">/dpa</Link>, <Link href="/.well-known/compliance.json" className="text-emerald-400 hover:underline">/.well-known/compliance.json</Link>. Questions: <a className="text-sky-400 hover:underline" href="mailto:signal@gitdealflow.com">signal@gitdealflow.com</a>.
+        Machine-readable: <Link href="/.well-known/subprocessors.json" className="text-emerald-400 hover:underline">/.well-known/subprocessors.json</Link>. Companion docs: <Link href="/dpa" className="text-sky-400 hover:underline">/dpa</Link>, <Link href="/.well-known/compliance.json" className="text-emerald-400 hover:underline">/.well-known/compliance.json</Link>. Questions: <a className="text-sky-400 hover:underline" href="mailto:signals@gitdealflow.com">signals@gitdealflow.com</a>.
       </footer>
     </article>
   );

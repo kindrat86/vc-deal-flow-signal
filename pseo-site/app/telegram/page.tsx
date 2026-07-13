@@ -75,7 +75,7 @@ const FAQS = [
   },
   {
     q: "Will the channel send me DMs?",
-    a: "No. The channel is broadcast-only. The founder never DMs subscribers from the channel. The only way to reach the founder directly is via the Insider Circle private group (paid) or signal@gitdealflow.com (anyone).",
+    a: "No. The channel is broadcast-only. The founder never DMs subscribers from the channel. The only way to reach the founder directly is via the Insider Circle private group (paid) or signals@gitdealflow.com (anyone).",
   },
   {
     q: "Can I forward channel posts to my partners?",

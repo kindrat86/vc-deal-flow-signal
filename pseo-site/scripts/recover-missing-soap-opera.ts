@@ -12,7 +12,7 @@
 import { SOAP_OPERA_EMAILS } from "../lib/emails";
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
-const FROM_EMAIL = process.env.FROM_EMAIL || "signal@gitdealflow.com";
+const FROM_EMAIL = process.env.FROM_EMAIL || "signals@gitdealflow.com";
 const FROM_NAME = process.env.FROM_NAME || "The Data Nerd";
 const RECIPIENT = process.env.RECIPIENT;
 const ANCHOR = process.env.VERIFY_ANCHOR_UTC;

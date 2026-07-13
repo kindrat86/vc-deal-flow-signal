@@ -326,3 +326,17 @@ BSKY_APP_PASSWORD (social-bluesky workflow); GA4 measurement id (wizard stalled
 at ToS); Otterly/GEO probe ANTHROPIC_API_KEY (tools/.env absent); IndexNow HTTP
 400 on post-build submit; guest-essay/curator outbound (human-only); Wikipedia
 autoconfirm; named advisory board (cannot fabricate).
+
+## 2026-07-13 ~20:30Z — Conversion overhaul (user-requested, Claude session)
+
+**Scope:** full Brunson conversion pass + broken links + sender identity, both sites.
+
+- **Pricing integrity shipped repo-wide:** landing dashboard/index/thanks/partners/funnel-math and pseo pricing.json now sell €49/€197 (founding €9.97/€97 referenced only as the closed cohort's kept promise). Countdown on /dashboard renders a designed "window closed June 30" state.
+- **Sender identity:** signal@ → signals@gitdealflow.com across all active code/copy (FROM_EMAIL env in Vercel already set). Old signal@ kept in excluded-emails; catch-all forward covers inbound. Do NOT reintroduce signal@.
+- **CRITICAL infra fix:** Resend team now hosts 3 audiences (VoiceLogPro/UnlockSaaS/GitDealFlow since Jul 3); `audiences.data[0]` picked the WRONG one — daily-seinfeld broadcasts Jul 5–13 went to VoiceLogPro's list. All 13 resolution sites now use lib/resend-audience.ts (env RESEND_AUDIENCE_ID pinned in Vercel = GitDealFlow audience 0fe4d821…). Old audience 72449700 (General) is gone — 404.
+- **New landing pages:** /pricing (all rungs, anchors #dashboard etc. — drip emails link here) and /brand (affiliates promise). New €1 Tweet Teardown rung on homepage ladder.
+- **Email pipeline:** /api/apply now EXISTS (was 404 — €1,997 applications silently dropped); Stripe buyers audience-added via webhook; verify PATCHes unsubscribed:false for re-subscribers + per-email SOS dedup; book-download 29d split; summit double-opt-in; /agents/credits/sample page (manual key fulfillment — watch signals@ inbox); weekly digest script reads Resend audience (PB dead).
+- **Broken links fixed:** /md/* over-advertising gated (16 404s), 4 GitHub slugs in validated-wins, dev.to/SaaSHub fabricated anchors removed, Kaggle → thedatanerd2026 dataset, a2a-protocol.org, unpaywall ?email=, Chrome Web Store links for private-repo paths.
+- **Mobile UX:** ux.css unlinked from index (was hiding the portrait img!), 44px tap targets (.btn-sm override appended to styles.css + input.css — PRESERVE on rebuild), sticky CTAs on firstlook/sector-sweep/insider, exit-intent modals + inline capture on all money pages (sources: <page>-exit/<page>-inline), PostHog init added to dashboard/firstlook/insider.
+- **Stripe links:** payment-links.md rewritten with browser-verified table. FOUR retired founding-rate links are still active in Stripe and need HUMAN deactivation in the dashboard (listed in stripe/payment-links.md).
+- **Loop guidance:** keep €49/€197 canon; guarantee canon = 30-day Signal-or-It's-Free everywhere (First Look 14-day window is the *upgrade credit* window, never "refund"); no fake scarcity (sector-sweep live slot counts removed on purpose — do not re-add).

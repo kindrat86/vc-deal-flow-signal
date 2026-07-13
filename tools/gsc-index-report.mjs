@@ -23,7 +23,7 @@
  *   GSC's "Add user" UI rejects service-account emails, and a domain property
  *   (sc-domain:) cannot grant Owner to a service account — so SA auth 403s with
  *   "You do not own this site." The reliable path is OAuth2 as the verified
- *   owner (signal@gitdealflow.com):
+ *   owner (signals@gitdealflow.com):
  *     1. Run:  node tools/gsc-oauth-setup.mjs   (see that file's header for the
  *        ~3-min Cloud Console "Desktop app" OAuth client setup).
  *     2. Run:  node tools/gsc-index-report.mjs --all

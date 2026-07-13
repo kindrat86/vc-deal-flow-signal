@@ -269,10 +269,10 @@ export default function TrustPage() {
       <footer className="mt-12 pt-6 border-t border-slate-800 text-sm text-gray-400 leading-relaxed">
         Questions or DPA requests:{" "}
         <a
-          href="mailto:signal@gitdealflow.com"
+          href="mailto:signals@gitdealflow.com"
           className="text-sky-400 hover:text-sky-300 underline-offset-2 hover:underline"
         >
-          signal@gitdealflow.com
+          signals@gitdealflow.com
         </a>
         . All written documents on this site are licensed under{" "}
         <a

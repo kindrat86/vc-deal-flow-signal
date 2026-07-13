@@ -1,5 +1,5 @@
 TO: [Quantitative VC newsletter author — research current authors before send; suggested targets in order: Sammy Abdullah / Blossom Street Ventures, Hunter Walk / Homebrew Substack, Charlie O'Donnell / Brooklyn Bridge Ventures, Tomasz Tunguz, Jamin Ball / Clouded Judgement]
-FROM: signal@gitdealflow.com
+FROM: signals@gitdealflow.com
 SUBJECT: SSRN: GitHub commit velocity leads VC announcements by 7 weeks (n=12k)
 
 Hi,
@@ -33,7 +33,7 @@ If you're open to a 30-minute methodology walkthrough — async, async, or writt
 
 Best,
 The Data Nerd (anonymous-by-policy; happy to talk on Signal/Telegram if helpful)
-signal@gitdealflow.com
+signals@gitdealflow.com
 SSRN: abstract=6606558
 
 P.S. Why you specifically: I read your archive on quantitative venture and the 6-12 week lead-time question is one you've raised before but no one (including me until this paper) had public empirical data on. This is the data, with full methodology.

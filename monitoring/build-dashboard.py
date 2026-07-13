@@ -36,7 +36,7 @@ TESTER_EMAILS = {
     "test@example.com",
     "mkondratyuk86@gmail.com",
     "maryan.kondratyuk@quickstarter.ai",
-    "signal@gitdealflow.com",
+    "signals@gitdealflow.com",
     "escape@invisibleexit.com",
 }
 # Disposable / scanner inboxes — verified by crawlers, not humans.

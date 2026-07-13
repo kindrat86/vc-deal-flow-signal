@@ -2174,3 +2174,20 @@ video {
     grid-template-columns: 1.2fr 0.8fr;
   }
 }
+
+/* ============================================================
+   TAP-TARGET OVERRIDES (appended 2026-07-13)
+   .btn-sm buttons (header/nav/inline pills) were shorter than the
+   44px minimum touch target. Give them a floor everywhere, and
+   extra vertical padding on touch devices. Mirrored in input.css
+   under @layer components so a future Tailwind rebuild keeps them.
+   ============================================================ */
+.btn-sm {
+  min-height: 2.75rem;
+}
+@media (pointer: coarse) {
+  .btn-sm {
+    padding-top: .625rem;
+    padding-bottom: .625rem;
+  }
+}

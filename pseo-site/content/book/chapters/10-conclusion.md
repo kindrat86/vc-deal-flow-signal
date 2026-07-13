@@ -54,7 +54,7 @@ If that succeeds — even partially — then the kind of deal flow that landed o
 
 If this book is useful to you, please tell another investor about it. Word-of-mouth is the only meaningful distribution channel for a book like this; there is no advertising budget. The free PDF and EPUB downloads at `gitdealflow.com/book` are sized to be sent as an email attachment without scaring anyone's spam filter.
 
-If a chapter is wrong, or a threshold is poorly calibrated, or a methodology step does not reproduce, please write to `signal@gitdealflow.com`. The next edition will fold in your correction with attribution. The methodology is meant to be improved over time, not preserved as scripture.
+If a chapter is wrong, or a threshold is poorly calibrated, or a methodology step does not reproduce, please write to `signals@gitdealflow.com`. The next edition will fold in your correction with attribution. The methodology is meant to be improved over time, not preserved as scripture.
 
 If you read the book, run the workflow, and close a deal that you can attribute even partially to a signal in here, write and tell me. I will not publish the deal — anonymity is a foundational rule of this project — but the count of attribution-positive deals is the only metric I track that matters, and I will be grateful for the data point.
 

@@ -44,7 +44,7 @@ export async function GET() {
         "",
         "Citation: VC Deal Flow Signal (signals.gitdealflow.com), refreshed weekly. Methodology: SSRN preprint 6606558.",
       ].join("\n"),
-      contact: { name: "The Data Nerd", email: "signal@gitdealflow.com" },
+      contact: { name: "The Data Nerd", email: "signals@gitdealflow.com" },
       license: { name: "Free with attribution", url: `${BASE_URL}/terms` },
       "x-openai-isConsequential": false,
     },

@@ -16,7 +16,7 @@ import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 export const dynamic = "force-static";
 
 const SITE = "https://signals.gitdealflow.com";
-const STRIPE_INSIDER = "https://buy.stripe.com/4gM00ifRpcRG2069I40x202";
+const STRIPE_INSIDER = "https://buy.stripe.com/bJeaEWfRpcRG6gm2fC0x20d";
 
 /**
  * /continuity/[slug] — individual Insider Drop page.

@@ -167,7 +167,7 @@ const STANDARDS: Standard[] = [
   {
     group: "API & agents",
     name: "A2A Protocol (Agent2Agent)",
-    spec: "https://a2aproject.dev/",
+    spec: "https://a2a-protocol.org/",
     appliedAt: "/api/a2a + /.well-known/agent-card.json",
     appliedHref: "/.well-known/agent-card.json",
     note: "AgentCard discovery endpoint and JSON-RPC stub conforming to the A2A v0.1 spec.",
@@ -191,7 +191,7 @@ const STANDARDS: Standard[] = [
   {
     group: "API & agents",
     name: "OpenSearch Description Format",
-    spec: "http://www.opensearch.org/Specifications/OpenSearch/1.1",
+    spec: "https://github.com/dewitt/opensearch",
     appliedAt: "/opensearch.xml",
     appliedHref: "/opensearch.xml",
     note: "Browser address-bar search engine descriptor; also referenced from <link rel=\"search\">.",
@@ -237,7 +237,7 @@ const STANDARDS: Standard[] = [
     name: "WebFinger (RFC 7033)",
     spec: "https://www.rfc-editor.org/rfc/rfc7033",
     appliedAt: "/.well-known/webfinger",
-    appliedHref: "/.well-known/webfinger?resource=acct:signal@gitdealflow.com",
+    appliedHref: "/.well-known/webfinger?resource=acct:signals@gitdealflow.com",
     note: "JRD descriptor enables Mastodon, Lemmy, and IndieWeb crawlers to resolve canonical entity metadata.",
   },
   {
@@ -620,10 +620,10 @@ export default function StandardsPage() {
               <p className="text-sm text-gray-300 leading-relaxed">
                 Spotted an error? Email{" "}
                 <a
-                  href="mailto:signal@gitdealflow.com"
+                  href="mailto:signals@gitdealflow.com"
                   className="text-sky-400 hover:text-sky-300"
                 >
-                  signal@gitdealflow.com
+                  signals@gitdealflow.com
                 </a>{" "}
                 or open a public{" "}
                 <a
@@ -707,10 +707,10 @@ export default function StandardsPage() {
               </a>
               {" "}or email{" "}
               <a
-                href="mailto:signal@gitdealflow.com"
+                href="mailto:signals@gitdealflow.com"
                 className="text-sky-400 hover:text-sky-300"
               >
-                signal@gitdealflow.com
+                signals@gitdealflow.com
               </a>
               . Documented fixes go in the public{" "}
               <Link

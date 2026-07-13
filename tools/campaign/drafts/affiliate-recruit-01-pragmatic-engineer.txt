@@ -1,5 +1,5 @@
 TO: gergely@pragmaticengineer.com
-FROM: signal@gitdealflow.com
+FROM: signals@gitdealflow.com
 SUBJECT: Affiliate idea for The Pragmatic Engineer — 20% lifetime, dev-investor angle
 
 Hi Gergely,

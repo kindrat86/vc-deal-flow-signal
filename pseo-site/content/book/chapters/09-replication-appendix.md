@@ -315,7 +315,7 @@ If your numbers feel directionally off — much higher or much lower than the le
 
 **Rate-limit exhaustion.** If you have run the script several times and exhausted your hourly quota, the API will start returning 403s. Wait an hour and re-run.
 
-If your numbers feel directionally right but you want to validate against the live leaderboard, write to `signal@gitdealflow.com` with your numbers and I will pull the corresponding leaderboard score for that week and you can compare.
+If your numbers feel directionally right but you want to validate against the live leaderboard, write to `signals@gitdealflow.com` with your numbers and I will pull the corresponding leaderboard score for that week and you can compare.
 
 We are at minute ninety. You have, with a $0 budget, a personal access token, and roughly a hundred lines of Python, replicated a meaningful portion of the GitDealFlow signal stack on a real organization. You can now run this against any organization on GitHub. You have also verified that the methodology is real — you computed the numbers yourself from raw public data, and the numbers match the published methodology.
 

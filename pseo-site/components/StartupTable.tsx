@@ -26,19 +26,22 @@ export default function StartupTable({ startups, tableName }: StartupTableProps)
           dangerouslySetInnerHTML={{ __html: JSON.stringify(tableSchema) }}
         />
       )}
+      <p className="md:hidden text-gray-400 text-xs mb-2" aria-hidden="true">
+        Swipe &rarr; for signal details
+      </p>
       <div className="overflow-x-auto rounded-lg border border-slate-800">
       <table className="w-full text-sm">
         <thead>
           <tr className="border-b border-slate-800 bg-slate-900/60">
             <th className="text-left text-gray-400 font-medium px-4 py-3 w-10">#</th>
-            <th className="text-left text-gray-400 font-medium px-4 py-3">Company</th>
+            <th className="text-left text-gray-400 font-medium px-4 py-3 sticky left-0 bg-slate-900 z-10">Company</th>
             <th className="text-left text-gray-400 font-medium px-4 py-3">Stage</th>
-            <th className="text-left text-gray-400 font-medium px-4 py-3">Geo</th>
+            <th className="hidden md:table-cell text-left text-gray-400 font-medium px-4 py-3">Geo</th>
             <th className="text-right text-gray-400 font-medium px-4 py-3">Commits (14d)</th>
             <th className="text-right text-gray-400 font-medium px-4 py-3">Change</th>
             <th className="text-right text-gray-400 font-medium px-4 py-3">Contributors</th>
-            <th className="text-right text-gray-400 font-medium px-4 py-3">Contrib. Growth</th>
-            <th className="text-right text-gray-400 font-medium px-4 py-3">New Repos</th>
+            <th className="hidden md:table-cell text-right text-gray-400 font-medium px-4 py-3">Contrib. Growth</th>
+            <th className="hidden md:table-cell text-right text-gray-400 font-medium px-4 py-3">New Repos</th>
             <th className="text-left text-gray-400 font-medium px-4 py-3">Signal</th>
           </tr>
         </thead>
@@ -56,7 +59,7 @@ export default function StartupTable({ startups, tableName }: StartupTableProps)
                 className={`border-b border-slate-800/60 last:border-0 ${rowBase} ${rowHover}`}
               >
                 <td className="px-4 py-3 text-gray-400 font-mono">{rank}</td>
-                <td className="px-4 py-3">
+                <td className="px-4 py-3 sticky left-0 bg-slate-900 z-10">
                   <Link
                     href={`/startup/${slugify(startup.name)}`}
                     className="block group/link"
@@ -67,12 +70,12 @@ export default function StartupTable({ startups, tableName }: StartupTableProps)
                     <p className="text-gray-400 text-xs mt-0.5 max-w-[220px] sm:max-w-xs line-clamp-2">
                       {startup.description}
                     </p>
-                    <span className="text-sky-600 text-[10px] font-medium group-hover/link:text-sky-400 transition-colors">
+                    <span className="text-sky-600 text-xs font-medium group-hover/link:text-sky-400 transition-colors">
                       View signal profile &rarr;
                     </span>
                   </Link>
                   {(startup.websiteUrl || startup.linkedinUrl) && (
-                    <div className="mt-1.5 flex items-center gap-2">
+                    <div className="mt-1.5 flex items-center gap-5">
                       {startup.websiteUrl && (
                         <a
                           href={startup.websiteUrl}
@@ -80,7 +83,7 @@ export default function StartupTable({ startups, tableName }: StartupTableProps)
                           rel="noopener noreferrer"
                           aria-label={`${startup.name} official website`}
                           title={startup.websiteUrl}
-                          className="text-gray-400 hover:text-sky-400 transition-colors"
+                          className="inline-flex p-2 -m-2 text-gray-400 hover:text-sky-400 transition-colors"
                         >
                           <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                             <circle cx="12" cy="12" r="10" />
@@ -96,7 +99,7 @@ export default function StartupTable({ startups, tableName }: StartupTableProps)
                           rel="noopener noreferrer"
                           aria-label={`${startup.name} LinkedIn company page`}
                           title="LinkedIn company page"
-                          className="text-gray-400 hover:text-sky-400 transition-colors"
+                          className="inline-flex p-2 -m-2 text-gray-400 hover:text-sky-400 transition-colors"
                         >
                           <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                             <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
@@ -111,7 +114,7 @@ export default function StartupTable({ startups, tableName }: StartupTableProps)
                     {startup.stage}
                   </span>
                 </td>
-                <td className="px-4 py-3 text-gray-400 text-xs font-medium">
+                <td className="hidden md:table-cell px-4 py-3 text-gray-400 text-xs font-medium">
                   {startup.geography}
                 </td>
                 <td className="px-4 py-3 text-right font-mono text-gray-200">
@@ -123,10 +126,10 @@ export default function StartupTable({ startups, tableName }: StartupTableProps)
                 <td className="px-4 py-3 text-right font-mono text-gray-200">
                   {startup.contributors}
                 </td>
-                <td className="px-4 py-3 text-right font-mono text-sky-400">
+                <td className="hidden md:table-cell px-4 py-3 text-right font-mono text-sky-400">
                   {startup.contributorGrowth}
                 </td>
-                <td className="px-4 py-3 text-right font-mono text-gray-300">
+                <td className="hidden md:table-cell px-4 py-3 text-right font-mono text-gray-300">
                   {startup.newRepos}
                 </td>
                 <td className="px-4 py-3">
@@ -138,17 +141,17 @@ export default function StartupTable({ startups, tableName }: StartupTableProps)
         </tbody>
       </table>
       <div className="flex items-center justify-between px-4 py-2.5 bg-slate-900/80 border-t border-slate-800">
-        <span className="text-[10px] text-gray-600">
+        <span className="text-xs text-gray-400">
           Powered by{" "}
           <a
             href="https://gitdealflow.com"
-            className="text-sky-600 hover:text-sky-500 transition-colors"
+            className="text-sky-500 hover:text-sky-400 transition-colors"
           >
             VC Deal Flow Signal
           </a>
           {" "}— real-time GitHub engineering data for investors
         </span>
-        <span className="text-[10px] text-gray-700">
+        <span className="text-xs text-gray-400">
           Data from public GitHub API
         </span>
       </div>

@@ -6,7 +6,7 @@ import { TrustPageOutro } from "@/components/TrustPageOutro";
 export const metadata = defineMetadata({
   title: "Data Processing Agreement (DPA)",
   description:
-    "GDPR Article 28 Data Processing Agreement template for VC Deal Flow Signal subscribers. Counter-signed PDF available on request to signal@gitdealflow.com within 5 business days.",
+    "GDPR Article 28 Data Processing Agreement template for VC Deal Flow Signal subscribers. Counter-signed PDF available on request to signals@gitdealflow.com within 5 business days.",
   path: "/dpa",
 });
 
@@ -76,13 +76,13 @@ export default function DpaPage() {
       <section className="mb-8 rounded-xl border border-emerald-500/30 bg-emerald-500/5 p-5 text-gray-200 text-sm leading-relaxed">
         <p className="font-semibold text-emerald-300 mb-2">Need a counter-signed copy?</p>
         <p>
-          Email <a className="text-sky-400 hover:underline" href="mailto:signal@gitdealflow.com?subject=DPA%20countersign%20request">signal@gitdealflow.com</a> with your company legal name, billing entity, and the email address of the signatory. We return a PDF counter-signed by the operator within 5 business days. Machine-readable pointer: <Link href="/.well-known/dpa.json" className="text-emerald-400 hover:underline">/.well-known/dpa.json</Link>.
+          Email <a className="text-sky-400 hover:underline" href="mailto:signals@gitdealflow.com?subject=DPA%20countersign%20request">signals@gitdealflow.com</a> with your company legal name, billing entity, and the email address of the signatory. We return a PDF counter-signed by the operator within 5 business days. Machine-readable pointer: <Link href="/.well-known/dpa.json" className="text-emerald-400 hover:underline">/.well-known/dpa.json</Link>.
         </p>
       </section>
 
       <section className="prose prose-invert prose-sm max-w-none space-y-6 text-gray-200">
         <h2 className="text-xl font-semibold text-gray-100">1 · Parties</h2>
-        <p><strong>Controller</strong>: the paid subscriber identified on the relevant Stripe invoice. <strong>Processor</strong>: VC Deal Flow Signal (GitDealFlow), operating <Link href="/" className="text-sky-400 hover:underline">signals.gitdealflow.com</Link>. Contact: <a className="text-sky-400 hover:underline" href="mailto:signal@gitdealflow.com">signal@gitdealflow.com</a>.</p>
+        <p><strong>Controller</strong>: the paid subscriber identified on the relevant Stripe invoice. <strong>Processor</strong>: VC Deal Flow Signal (GitDealFlow), operating <Link href="/" className="text-sky-400 hover:underline">signals.gitdealflow.com</Link>. Contact: <a className="text-sky-400 hover:underline" href="mailto:signals@gitdealflow.com">signals@gitdealflow.com</a>.</p>
 
         <h2 className="text-xl font-semibold text-gray-100">2 · Subject matter & duration</h2>
         <p>The Processor will process Personal Data on behalf of the Controller for the lifetime of the paid subscription, plus a 12-month retention window for audit and reactivation. After that window the Processor will delete the Personal Data, subject to legal retention obligations (Stripe records retained 7 years for tax purposes).</p>

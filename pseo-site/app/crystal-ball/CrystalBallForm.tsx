@@ -66,7 +66,7 @@ export default function CrystalBallForm() {
       setMessage(
         err instanceof Error
           ? err.message
-          : "Something went wrong — please email signal@gitdealflow.com directly.",
+          : "Something went wrong — please email signals@gitdealflow.com directly.",
       );
     }
   }

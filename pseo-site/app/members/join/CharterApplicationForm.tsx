@@ -11,7 +11,7 @@ import Link from "next/link";
  * of the phone-close, anonymity-preserving.
  *
  * Posts to /api/charter-application; the founder receives the application
- * via Resend at signal@gitdealflow.com and replies within 48 hours.
+ * via Resend at signals@gitdealflow.com and replies within 48 hours.
  */
 
 interface FormState {
@@ -107,7 +107,7 @@ export default function CharterApplicationForm({ initialArchetype }: Props) {
         <p className="text-gray-300 text-base leading-relaxed">
           You&rsquo;ll hear back inside 48 business hours. The reply comes from{" "}
           <code className="text-emerald-300 bg-slate-950/50 px-1.5 py-0.5 rounded text-sm">
-            signal@gitdealflow.com
+            signals@gitdealflow.com
           </code>{" "}
           — add it to your contacts so the draft profile doesn&rsquo;t hit
           Promotions.
@@ -284,10 +284,10 @@ export default function CharterApplicationForm({ initialArchetype }: Props) {
         >
           {errMsg}. You can also email{" "}
           <a
-            href="mailto:signal@gitdealflow.com"
+            href="mailto:signals@gitdealflow.com"
             className="text-rose-200 underline"
           >
-            signal@gitdealflow.com
+            signals@gitdealflow.com
           </a>{" "}
           directly.
         </p>

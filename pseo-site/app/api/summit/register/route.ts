@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { isValidEmail } from "@/lib/validation";
 import { isExcluded } from "@/lib/excluded-emails";
+import { getClientIp } from "@/lib/rate-limit";
 
 /**
  * Summit Free Pass registration endpoint — Brunson DotCom Ch 16 (Summit Funnel).
@@ -9,21 +10,20 @@ import { isExcluded } from "@/lib/excluded-emails";
  *  - application/x-www-form-urlencoded (HTML form POST from /summit#register)
  *  - application/json (programmatic registration from agent integrations)
  *
- * The summit registration is a Resend audience-add tagged with utm_campaign=
- * summit-2026-05. The existing /api/verify drip catches the cohort, and the
- * standard SOAP_OPERA + CHALLENGE sequences resume on Day 0 — we don't need
- * a separate summit-specific drip because the summit landing copy + the
- * per-day talk-unlock cron (separate cron) carries the cohort-specific
- * communication.
+ * Registration is routed through the standard double-opt-in pipeline: an
+ * internal POST to /api/subscribe with source:"summit-register" sends the
+ * verification email, and the /api/verify click performs the Resend
+ * audience-add AND schedules the Soap Opera Sequence (29-day split +
+ * deferred drip_plan). Previously this endpoint did a single-opt-in
+ * audience-add with NO sequence — the comment claiming /api/verify "catches
+ * the cohort" was false, because nothing ever sent the verify email.
  *
- * On success, redirects to /summit/thanks. On invalid email, redirects back
- * to /summit#register with an error query param so the form can re-render
- * with a message (the page itself only renders the static squeeze; the
- * error UI is acceptable as a soft fallback).
+ * On success, redirects to /summit/thanks (registrant must click the
+ * confirmation email to finish). On invalid email, redirects back to
+ * /summit#register with an error query param.
  */
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
-const RESEND_AUDIENCE_ID = process.env.RESEND_AUDIENCE_ID;
 const SITE_URL = process.env.SITE_URL || "https://signals.gitdealflow.com";
 
 export const runtime = "nodejs";
@@ -59,51 +59,50 @@ async function parsePayload(req: Request): Promise<RegisterPayload> {
   };
 }
 
-async function addToAudience(payload: RegisterPayload): Promise<{ ok: boolean; reason?: string }> {
-  if (!RESEND_API_KEY || !RESEND_AUDIENCE_ID) {
-    // Soft-fail when env not wired — the form still redirects to /thanks.
-    // Real audience-add happens in /api/verify which has the full token
-    // + nonce + double-opt-in flow. This endpoint is the lighter "register"
-    // surface for the summit; the full DOI happens via the verify email.
-    return { ok: true, reason: "no-resend-config" };
+async function startDoubleOptIn(
+  payload: RegisterPayload,
+  clientIp: string,
+): Promise<{ ok: boolean; reason?: string }> {
+  if (!RESEND_API_KEY) {
+    // Hard-fail when env not wired: without Resend there is no verification
+    // email, no audience-add, and no sequence — pretending success would
+    // silently drop the registrant.
+    return { ok: false, reason: "no-resend-config" };
   }
 
-  // Resend audiences API — POST /audiences/{id}/contacts
-  // https://resend.com/docs/api-reference/audiences/add-contact
+  // Internal POST to /api/subscribe — the canonical capture pipeline. It
+  // sends the double-opt-in verification email; the /api/verify click then
+  // does the audience-add (with gdf-attr-v1 attribution) and schedules the
+  // Soap Opera Sequence with the 29-day immediate/deferred split.
   try {
-    const res = await fetch(
-      `https://api.resend.com/audiences/${RESEND_AUDIENCE_ID}/contacts`,
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${RESEND_API_KEY}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: payload.email,
-          // Pack attribution into first_name (consistent with /api/verify
-          // pattern). The hourly Resend → PocketBase sync recognises the
-          // "gdf-attr-v1:" marker and decodes it.
-          first_name:
-            "gdf-attr-v1:" +
-            JSON.stringify({
-              source: "summit-register",
-              utm_source: payload.utm_source,
-              utm_medium: payload.utm_medium,
-              utm_campaign: payload.utm_campaign,
-              referrer: payload.referrer || "",
-            }),
-          unsubscribed: false,
-        }),
-      }
-    );
+    const res = await fetch(`${SITE_URL}/api/subscribe`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        // Forward the real client IP so /api/subscribe rate-limits the
+        // registrant, not this server-side hop.
+        ...(clientIp && clientIp !== "unknown"
+          ? { "x-forwarded-for": clientIp }
+          : {}),
+      },
+      body: JSON.stringify({
+        email: payload.email,
+        source: "summit-register",
+        utm_source: payload.utm_source || "summit",
+        utm_medium: payload.utm_medium || "organic",
+        utm_campaign: payload.utm_campaign || "summit-2026-05",
+        referrer: payload.referrer || "",
+        landing_path: "/summit",
+      }),
+    });
     if (!res.ok) {
       const txt = await res.text().catch(() => "");
-      // 422 typically means contact already exists — count as success.
-      if (res.status === 422) return { ok: true, reason: "already-exists" };
-      return { ok: false, reason: `resend-${res.status}: ${txt.slice(0, 200)}` };
+      return {
+        ok: false,
+        reason: `subscribe-${res.status}: ${txt.slice(0, 200)}`,
+      };
     }
-    return { ok: true };
+    return { ok: true, reason: "verification-email-sent" };
   } catch (err) {
     return {
       ok: false,
@@ -132,7 +131,7 @@ export async function POST(req: Request) {
   }
 
   const ct = req.headers.get("content-type") || "";
-  const result = await addToAudience(payload);
+  const result = await startDoubleOptIn(payload, getClientIp(req));
 
   if (ct.includes("application/json")) {
     return NextResponse.json(
@@ -143,7 +142,7 @@ export async function POST(req: Request) {
 
   // HTML form POST → redirect to thanks page on success, back to form on failure.
   if (!result.ok) {
-    console.error("[summit/register] audience-add failed", {
+    console.error("[summit/register] double-opt-in dispatch failed", {
       reason: result.reason,
       utm_campaign: payload.utm_campaign,
     });
@@ -168,7 +167,8 @@ export async function GET() {
       method: "POST",
       body: "email (required), utm_source, utm_medium, utm_campaign, referrer",
       contentType: "application/x-www-form-urlencoded or application/json",
-      success: "303 redirect to /summit/thanks (form), or 200 JSON {ok:true}",
+      success:
+        "303 redirect to /summit/thanks (form), or 200 JSON {ok:true}. Sends a double-opt-in verification email; confirmation finishes registration.",
     },
     { status: 200 }
   );

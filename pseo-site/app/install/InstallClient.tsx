@@ -274,7 +274,7 @@ export default function InstallClient() {
           </p>
         </a>
         <a
-          href="https://github.com/kindrat86/vc-deal-flow-signal/tree/main/chrome-extension-define"
+          href="https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn"
           target="_blank"
           rel="noopener noreferrer"
           className="rounded-xl border border-slate-800 bg-slate-900/40 hover:bg-slate-900/70 p-5 transition group"

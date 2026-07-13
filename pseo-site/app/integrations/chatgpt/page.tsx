@@ -102,7 +102,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: "Will the GPT hallucinate startups?",
-    a: "The system prompt explicitly forbids inventing startups. When you ask about a company not in the tracked universe of ~400, the Action returns status: 'no_data' and the GPT surfaces a CTA pointing to signals.gitdealflow.com. If you spot any hallucinations, email signal@gitdealflow.com — we'll tighten the instructions.",
+    a: "The system prompt explicitly forbids inventing startups. When you ask about a company not in the tracked universe of ~400, the Action returns status: 'no_data' and the GPT surfaces a CTA pointing to signals.gitdealflow.com. If you spot any hallucinations, email signals@gitdealflow.com — we'll tighten the instructions.",
   },
   {
     q: "Can I use the same data without ChatGPT?",
@@ -441,12 +441,12 @@ export default function ChatGPTIntegrationPage() {
             Stuck or hit a hallucination?
           </h2>
           <p className="text-gray-400 text-sm mb-5 max-w-lg mx-auto">
-            Email signal@gitdealflow.com with the prompt that broke it — replies
+            Email signals@gitdealflow.com with the prompt that broke it — replies
             within 24 hours, EU business time. The system prompt is tightened
             iteratively from real failures.
           </p>
           <Link
-            href="mailto:signal@gitdealflow.com?subject=ChatGPT%20GPT%20feedback"
+            href="mailto:signals@gitdealflow.com?subject=ChatGPT%20GPT%20feedback"
             className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-medium transition-colors"
           >
             Email feedback

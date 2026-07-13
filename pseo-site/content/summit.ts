@@ -67,15 +67,16 @@ export const SUMMIT = {
   tagline: "Five days. Twenty talks. The new playbook for sourcing venture deals from public engineering data.",
   startsAt: "2026-05-19T14:00:00Z",
   endsAt: "2026-05-23T22:00:00Z",
-  /** All-Access Pass price + Stripe link. */
+  /** All-Access Pass price. Checkout runs through /api/checkout/session
+   *  (tier=summit) — the old buy.stripe.com payment link no longer exists
+   *  in the Stripe account and sent every buyer to an error page. */
   allAccessPrice: 97,
   allAccessCurrency: "EUR",
-  /** Stripe payment link for the All-Access Pass.
-   *  Substituted at runtime via NEXT_PUBLIC_STRIPE_SUMMIT_LINK env var. */
-  allAccessStripeLink: "https://buy.stripe.com/00g7sK48H04U2447TS0x205",
-  /** Order bump on the All-Access checkout — Sector Sweep one-time. */
-  orderBumpLabel: "Sector Sweep — €1,500 off (€1,797 → €297)",
-  orderBumpStripeLink: "https://buy.stripe.com/bJe14m34DbNC6gm1by0x204",
+  /** ENTRY_TIERS key consumed by /api/checkout/session. */
+  allAccessCheckoutTier: "summit",
+  /** In-cart order bump (BUMPS key) — Sector Sweep at the summit rate. */
+  orderBumpKey: "summit_sector_sweep",
+  orderBumpLabel: "Custom Sector Sweep — €297 summit rate (standalone €1,997)",
 } as const;
 
 export const TALKS: SummitTalk[] = [

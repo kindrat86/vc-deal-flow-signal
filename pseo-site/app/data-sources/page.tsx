@@ -267,7 +267,7 @@ export default function DataSourcesPage() {
             name: "Does the data feed integrate with our internal data warehouse?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Yes. The API returns ranked signals as JSON and many funds pipe weekly snapshots into Snowflake, BigQuery, or PostgreSQL for cross-referencing with internal CRM, portfolio analytics, and partnership data. The MCP server makes the same data available to AI agents in Claude Desktop, Claude Code, and Cursor. The CSV endpoint feeds Data.world auto-sync. Email signal@gitdealflow.com for custom integration help.",
+              text: "Yes. The API returns ranked signals as JSON and many funds pipe weekly snapshots into Snowflake, BigQuery, or PostgreSQL for cross-referencing with internal CRM, portfolio analytics, and partnership data. The MCP server makes the same data available to AI agents in Claude Desktop, Claude Code, and Cursor. The CSV endpoint feeds Data.world auto-sync. Email signals@gitdealflow.com for custom integration help.",
             },
           },
         ],
@@ -485,7 +485,7 @@ export default function DataSourcesPage() {
           </h2>
           <p className="text-gray-400 text-sm mb-5">
             For methodology questions, custom historical exports, or LP-grade
-            benchmarking requests, email signal@gitdealflow.com. The full
+            benchmarking requests, email signals@gitdealflow.com. The full
             methodology is at{" "}
             <Link href="/methodology" className="text-sky-400 hover:text-sky-300">
               /methodology

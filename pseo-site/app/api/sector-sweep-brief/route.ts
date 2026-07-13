@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { checkRateLimit, getClientIp, rateLimitHeaders } from "@/lib/rate-limit";
 import { isValidEmail, isAllowedOrigin } from "@/lib/validation";
+import { isExcluded } from "@/lib/excluded-emails";
+import { pickAudienceId } from "@/lib/resend-audience";
 import {
   computeReplyDeadline,
   generateSampleToc,
@@ -12,7 +14,7 @@ import {
  * (Application Funnel) + Expert Secrets Ch 16 (The Setter / Magic Script).
  *
  * Receives the 5-question Sector Sweep brief from /sector-sweep, validates,
- * emails the brief to signal@gitdealflow.com so The Data Nerd (Closer) can
+ * emails the brief to signals@gitdealflow.com so The Data Nerd (Closer) can
  * draft the human reply, AND schedules a 4-step heat-building Setter drip
  * to the prospect that closes the "async-only loses heat" gap flagged in
  * the Brunson Trilogy audit (Ch 16, 90→100).
@@ -39,12 +41,61 @@ import {
  */
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY!;
-const FROM_EMAIL = process.env.FROM_EMAIL || "signal@gitdealflow.com";
+const FROM_EMAIL = process.env.FROM_EMAIL || "signals@gitdealflow.com";
 const FROM_NAME = process.env.FROM_NAME || "The Data Nerd";
-const TO_EMAIL = "signal@gitdealflow.com";
+const TO_EMAIL = "signals@gitdealflow.com";
 
 function clip(v: unknown, max: number): string {
   return typeof v === "string" ? v.slice(0, max).trim() : "";
+}
+
+/**
+ * Add the prospect to the Resend audience with source attribution so a
+ * non-buying brief-submitter still receives future digests/broadcasts. On
+ * already-exists, PATCH unsubscribed:false to re-activate. Best-effort.
+ */
+async function addToAudience(email: string) {
+  if (!RESEND_API_KEY || isExcluded(email)) return;
+  try {
+    const audRes = await fetch("https://api.resend.com/audiences", {
+      headers: { Authorization: `Bearer ${RESEND_API_KEY}` },
+    });
+    if (!audRes.ok) return;
+    const audiences = await audRes.json();
+    const audienceId: string | undefined = pickAudienceId(audiences);
+    if (!audienceId) return;
+    const res = await fetch(
+      `https://api.resend.com/audiences/${audienceId}/contacts`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${RESEND_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          first_name:
+            "gdf-attr-v1:" + JSON.stringify({ source: "sector-sweep-brief" }),
+          unsubscribed: false,
+        }),
+      },
+    );
+    if (!res.ok) {
+      await fetch(
+        `https://api.resend.com/audiences/${audienceId}/contacts/${encodeURIComponent(email)}`,
+        {
+          method: "PATCH",
+          headers: {
+            Authorization: `Bearer ${RESEND_API_KEY}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ unsubscribed: false }),
+        },
+      );
+    }
+  } catch (err) {
+    console.error("[sector-sweep-brief] audience-add failed:", err);
+  }
 }
 
 function escapeHtml(s: string): string {
@@ -143,7 +194,7 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         error:
-          "Too many briefs. Please email signal@gitdealflow.com directly with the same answers.",
+          "Too many briefs. Please email signals@gitdealflow.com directly with the same answers.",
       },
       { status: 429, headers: { ...headers, ...rateLimitHeaders(rl) } },
     );
@@ -228,11 +279,14 @@ export async function POST(request: Request) {
       return NextResponse.json(
         {
           error:
-            "Failed to deliver brief — please email signal@gitdealflow.com directly with the same answers",
+            "Failed to deliver brief — please email signals@gitdealflow.com directly with the same answers",
         },
         { status: 500, headers },
       );
     }
+
+    // Keep the prospect on the list for future sends, not just this brief.
+    await addToAudience(email);
 
     // Brunson Setter heat-build — schedule the 4-step drip to the prospect.
     // Computed once here so the response payload, the T+0 ack, and the
@@ -255,7 +309,7 @@ export async function POST(request: Request) {
     );
     if (setterResult.failed > 0) {
       // Log but do NOT fail the request — the internal brief has already
-      // landed at signal@gitdealflow.com so the human reply path still
+      // landed at signals@gitdealflow.com so the human reply path still
       // works even if the heat-build drip partially failed. The Closer
       // can recover by replying earlier than the deadline.
       console.error(
@@ -290,7 +344,7 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         error:
-          "Server error — please email signal@gitdealflow.com directly with the same answers",
+          "Server error — please email signals@gitdealflow.com directly with the same answers",
       },
       { status: 500, headers },
     );

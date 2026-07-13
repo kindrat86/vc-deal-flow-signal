@@ -50,7 +50,7 @@ Briefly:
   5. This policy does not exempt us from honoring valid GDPR / CCPA
      access, deletion, or opt-out requests — those operate independently.
 
-Contact for DNT-related questions: signal@gitdealflow.com
+Contact for DNT-related questions: signals@gitdealflow.com
 Reachable at: https://signals.gitdealflow.com/privacy
 
 Last updated: ${new Date().toISOString().slice(0, 10)}

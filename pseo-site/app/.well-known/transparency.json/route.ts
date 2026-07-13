@@ -98,11 +98,11 @@ export async function GET() {
           notifyAffectedUserUnless:
             "Notification is prohibited by court order or there is a clear and imminent risk of physical harm",
           mediumOfNotification: "email to subscriber address on file",
-          appealsContact: "signal@gitdealflow.com",
+          appealsContact: "signals@gitdealflow.com",
         },
         contentTakedownPolicy: {
           framework: ["DMCA", "GDPR Art. 17 (right to erasure)", "EU Digital Services Act"],
-          contact: "signal@gitdealflow.com",
+          contact: "signals@gitdealflow.com",
           medianResponseTimeHours: 72,
         },
       },

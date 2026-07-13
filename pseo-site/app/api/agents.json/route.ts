@@ -28,7 +28,7 @@ export async function GET() {
     },
     citation: "VC Deal Flow Signal (signals.gitdealflow.com), Q2 2026 data.",
     contact: {
-      email: "signal@gitdealflow.com",
+      email: "signals@gitdealflow.com",
       telegram: "https://t.me/gitdealflow",
       twitter: "https://x.com/data_nerd",
     },

@@ -11,7 +11,7 @@ export async function GET() {
       version: "1.4.0",
       description:
         "Unified OpenAPI 3.1 + MCP descriptor for startup engineering-acceleration data. Documents the public REST surface (signals, answers, citations, badges, deep signals, scout receipts, prediction markets) AND the MCP server tools, resources, prompts. Operations that have an MCP analog carry an `x-mcp-tool` vendor extension; the full MCP server is enumerated under the top-level `x-mcp-server` block. Default rate limits are declared at the `info.x-rate-limit` level; operations that override the default carry their own `x-rate-limit` block. CC BY 4.0 attribution. No auth required for free endpoints; the paid Deep Signal endpoint uses a per-request credit-pack key delivered after Stripe checkout, OR x402 USDC pay-per-call on Base.",
-      contact: { email: "signal@gitdealflow.com" },
+      contact: { email: "signals@gitdealflow.com" },
       license: {
         name: "Free with attribution (CC BY 4.0)",
         url: "https://creativecommons.org/licenses/by/4.0/",

@@ -12,7 +12,7 @@ export const dynamic = "force-static";
 // Every deliverable is async, licensable, and reproducible.
 
 const APPLY_MAILTO =
-  "mailto:signal@gitdealflow.com" +
+  "mailto:signals@gitdealflow.com" +
   "?subject=" +
   encodeURIComponent("Vault — application") +
   "&body=" +
@@ -398,7 +398,7 @@ export default function VaultPage() {
           </a>
           <p className="text-gray-400 text-xs">
             Mail goes to{" "}
-            <code className="text-gray-300">signal@gitdealflow.com</code>.
+            <code className="text-gray-300">signals@gitdealflow.com</code>.
             Subject and body are pre-filled with the Vault diligence template.
           </p>
         </section>

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * GSC OAuth2 setup — one-time consent flow to authorize a REAL verified owner
- * (signal@gitdealflow.com) for the Search Console URL Inspection API.
+ * (signals@gitdealflow.com) for the Search Console URL Inspection API.
  *
  * WHY THIS EXISTS: GSC's "Add user" UI only accepts real Google Account emails,
  * not service-account emails (*.iam.gserviceaccount.com), and a domain property
@@ -17,14 +17,14 @@
  *   1. Cloud Console (project gitdealflow-monitoring) → APIs & Services →
  *      Credentials → Create Credentials → OAuth client ID.
  *        • If prompted, configure the OAuth consent screen first:
- *          User type "External", add signal@gitdealflow.com as a Test user
+ *          User type "External", add signals@gitdealflow.com as a Test user
  *          (Testing mode is fine — refresh tokens issued in Testing for a
  *          Google-owned scope do not expire as long as the app stays in use).
  *        • Application type: **Desktop app**.
  *   2. Download the JSON → save it to:  tools/.gsc-oauth-client.json
  *      (gitignored). It looks like { "installed": { "client_id": …, … } }.
  *   3. Run:  node tools/gsc-oauth-setup.mjs
- *      A browser opens. Sign in AS signal@gitdealflow.com (the verified owner)
+ *      A browser opens. Sign in AS signals@gitdealflow.com (the verified owner)
  *      and approve read-only Search Console access.
  *   4. The refresh token is written to tools/.gsc-oauth-token.json (gitignored).
  *      Then run:  node tools/gsc-index-report.mjs
@@ -182,6 +182,6 @@ server.listen(0, "127.0.0.1", () => {
   console.log(`Listening on ${redirectUri} for the consent redirect.\n`);
   console.log(`Opening your browser. If it doesn't open, paste this URL:\n`);
   console.log(`  ${authUrl}\n`);
-  console.log(`Sign in AS the verified owner (signal@gitdealflow.com) and approve.\n`);
+  console.log(`Sign in AS the verified owner (signals@gitdealflow.com) and approve.\n`);
   openBrowser(authUrl);
 });

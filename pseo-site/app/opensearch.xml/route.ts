@@ -36,7 +36,7 @@ export async function GET() {
        template="${SITE}/opensearch.xml"/>
   <moz:SearchForm>${SITE}/</moz:SearchForm>
   <Developer>The Data Nerd</Developer>
-  <Contact>signal@gitdealflow.com</Contact>
+  <Contact>signals@gitdealflow.com</Contact>
   <Tags>vc startups github investors deal-flow alternative-data</Tags>
   <Attribution>VC Deal Flow Signal (GitDealFlow). Wikidata Q139376302. CC BY 4.0.</Attribution>
   <SyndicationRight>open</SyndicationRight>

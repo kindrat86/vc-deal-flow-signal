@@ -118,3 +118,20 @@
     .animate-cta-pulse { animation: none !important; }
   }
 }
+
+/* ============================================================
+   TAP-TARGET OVERRIDES (mirror of the block appended to the
+   prebuilt styles.css on 2026-07-13) — keep .btn-sm at a 44px
+   minimum touch target so a future Tailwind rebuild preserves it.
+   ============================================================ */
+@layer components {
+  .btn-sm {
+    min-height: 2.75rem;
+  }
+  @media (pointer: coarse) {
+    .btn-sm {
+      padding-top: .625rem;
+      padding-bottom: .625rem;
+    }
+  }
+}

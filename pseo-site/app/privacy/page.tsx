@@ -80,13 +80,13 @@ export default function PrivacyPage() {
           <li><strong>Paid subscribers</strong> add a Stripe customer ID; Stripe handles payment data — we never see card numbers.</li>
           <li><strong>Pseudonymous analytics</strong> via PostHog EU. We set <em>one</em> first-party cookie on <code className="text-emerald-400">.gitdealflow.com</code> so the same visitor isn&apos;t double-counted across pages — no third-party trackers. We honor <Link href="/.well-known/dnt-policy.txt" className="text-sky-400 hover:underline">DNT: 1</Link> and Global Privacy Control by auto-opting-out.</li>
           <li><strong>No selling, no behavioural advertising,</strong> ever. CCPA "do-not-sell" is moot — there's nothing to sell.</li>
-          <li><strong>Email <a className="text-sky-400 hover:underline" href="mailto:signal@gitdealflow.com">signal@gitdealflow.com</a></strong> for access, deletion, or DPA execution.</li>
+          <li><strong>Email <a className="text-sky-400 hover:underline" href="mailto:signals@gitdealflow.com">signals@gitdealflow.com</a></strong> for access, deletion, or DPA execution.</li>
         </ul>
       </section>
 
       <section className="prose prose-invert prose-sm max-w-none space-y-6 text-gray-200">
         <h2 className="text-xl font-semibold text-gray-100 mt-8">1 · Who we are</h2>
-        <p>VC Deal Flow Signal (also "GitDealFlow", "we") operates the website at <Link href="/" className="text-sky-400 hover:underline">signals.gitdealflow.com</Link>, the dashboard, the MCP server <code className="text-emerald-400">@gitdealflow/mcp-signal</code>, the Chrome extension, and the weekly email digest. Contact: <a className="text-sky-400 hover:underline" href="mailto:signal@gitdealflow.com">signal@gitdealflow.com</a>. Founder identity and contact details: <Link href="/about" className="text-sky-400 hover:underline">/about</Link>.</p>
+        <p>VC Deal Flow Signal (also "GitDealFlow", "we") operates the website at <Link href="/" className="text-sky-400 hover:underline">signals.gitdealflow.com</Link>, the dashboard, the MCP server <code className="text-emerald-400">@gitdealflow/mcp-signal</code>, the Chrome extension, and the weekly email digest. Contact: <a className="text-sky-400 hover:underline" href="mailto:signals@gitdealflow.com">signals@gitdealflow.com</a>. Founder identity and contact details: <Link href="/about" className="text-sky-400 hover:underline">/about</Link>.</p>
 
         <h2 className="text-xl font-semibold text-gray-100">2 · What we collect</h2>
         <p>Three categories, each with a different basis under GDPR Art. 6:</p>
@@ -120,7 +120,7 @@ export default function PrivacyPage() {
         </ul>
 
         <h2 className="text-xl font-semibold text-gray-100">7 · Your rights</h2>
-        <p>Under GDPR / UK-GDPR / CCPA you can ask us to access, correct, port, restrict, or delete your data. Email <a className="text-sky-400 hover:underline" href="mailto:signal@gitdealflow.com">signal@gitdealflow.com</a> with the address you signed up under; we'll respond within 30 days (typically 5 business days). Free unsubscribe is one click in any email footer.</p>
+        <p>Under GDPR / UK-GDPR / CCPA you can ask us to access, correct, port, restrict, or delete your data. Email <a className="text-sky-400 hover:underline" href="mailto:signals@gitdealflow.com">signals@gitdealflow.com</a> with the address you signed up under; we'll respond within 30 days (typically 5 business days). Free unsubscribe is one click in any email footer.</p>
 
         <h2 className="text-xl font-semibold text-gray-100">8 · Security</h2>
         <p>HSTS preload, CSP, strict TLS, MFA on every admin tool. Vulnerability disclosure program at <Link href="/disclosure" className="text-sky-400 hover:underline">/disclosure</Link>; security contact in <Link href="/.well-known/security.txt" className="text-sky-400 hover:underline">/.well-known/security.txt</Link>. Breach notification SLA is 72 hours per GDPR Art. 33.</p>
@@ -135,7 +135,7 @@ export default function PrivacyPage() {
       <TrustPageOutro institutional acNote="I hold as little of your data as the product can survive on. The same instinct that keeps my face off this site keeps your inbox off everyone else's: the less I keep, the less anyone can ever take, sell, or leak. We rank public companies — not you." />
 
       <footer className="mt-10 pt-6 border-t border-slate-800 text-sm text-gray-400">
-        License: <a href="https://creativecommons.org/licenses/by/4.0/" className="text-sky-400 hover:underline">CC BY 4.0</a>. Contact: <a href="mailto:signal@gitdealflow.com" className="text-sky-400 hover:underline">signal@gitdealflow.com</a>. Trust hub: <Link href="/trust" className="text-sky-400 hover:underline">/trust</Link>.
+        License: <a href="https://creativecommons.org/licenses/by/4.0/" className="text-sky-400 hover:underline">CC BY 4.0</a>. Contact: <a href="mailto:signals@gitdealflow.com" className="text-sky-400 hover:underline">signals@gitdealflow.com</a>. Trust hub: <Link href="/trust" className="text-sky-400 hover:underline">/trust</Link>.
       </footer>
     </article>
   );

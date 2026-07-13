@@ -1,5 +1,5 @@
 TO: {{firstName}}@{{firm-domain}}
-FROM: signal@gitdealflow.com
+FROM: signals@gitdealflow.com
 SUBJECT: Free Scout Score on 5 startups for {{firm}}
 
 Hi {{firstName}},

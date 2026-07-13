@@ -6,9 +6,12 @@ import { generateApiKeyV2 } from "@/lib/api-key";
 import { BOOK_DRIP, FIRSTLOOK_REACTIVATION_DRIP } from "@/lib/emails";
 import { isNonceUsed, markNonceUsed } from "@/lib/runtime-cache";
 import { fireRedditPurchase } from "@/lib/reddit-conversions-api";
+import { listUnsubscribeHeaders } from "@/lib/list-unsubscribe";
+import { isExcluded } from "@/lib/excluded-emails";
+import { pickAudienceId } from "@/lib/resend-audience";
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY!;
-const FROM_EMAIL = process.env.FROM_EMAIL || "signal@gitdealflow.com";
+const FROM_EMAIL = process.env.FROM_EMAIL || "signals@gitdealflow.com";
 const FROM_NAME = process.env.FROM_NAME || "The Data Nerd";
 const WEBHOOK_SECRET = process.env.STRIPE_WEBHOOK_SECRET!;
 const TELEGRAM_INSIDER_INVITE = process.env.TELEGRAM_INSIDER_INVITE || "";
@@ -31,7 +34,12 @@ function escapeHtml(str: string): string {
     .replace(/'/g, "&#39;");
 }
 
-async function sendEmail(to: string, subject: string, html: string) {
+async function sendEmail(
+  to: string,
+  subject: string,
+  html: string,
+  opts: { subscriberFacing?: boolean } = {},
+) {
   await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
@@ -43,8 +51,63 @@ async function sendEmail(to: string, subject: string, html: string) {
       to,
       subject,
       html,
+      // Buyer-facing sends carry RFC 8058 List-Unsubscribe (HTTPS one-click +
+      // mailto). Admin notifications to our own inbox don't — a one-click on
+      // those would suppress the founder's contact.
+      ...(opts.subscriberFacing ? { headers: listUnsubscribeHeaders(to) } : {}),
     }),
   });
+}
+
+/**
+ * Add a Stripe buyer to the Resend audience so they receive future digests
+ * and broadcasts. Attribution is packed into `first_name` with the standard
+ * gdf-attr-v1 marker (source: "stripe-<tier>"). If the contact already
+ * exists (e.g. they subscribed before buying), PATCH `unsubscribed:false` so
+ * a previously-unsubscribed buyer re-enters the list — buyers must never
+ * silently fall out. Best-effort: a Resend hiccup must not 5xx the webhook.
+ */
+async function addBuyerToAudience(email: string, source: string) {
+  if (!RESEND_API_KEY || isExcluded(email)) return;
+  try {
+    const audRes = await fetch("https://api.resend.com/audiences", {
+      headers: { Authorization: `Bearer ${RESEND_API_KEY}` },
+    });
+    if (!audRes.ok) return;
+    const audiences = await audRes.json();
+    const audienceId: string | undefined = pickAudienceId(audiences);
+    if (!audienceId) return;
+    const res = await fetch(
+      `https://api.resend.com/audiences/${audienceId}/contacts`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${RESEND_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          first_name: "gdf-attr-v1:" + JSON.stringify({ source }),
+          unsubscribed: false,
+        }),
+      },
+    );
+    if (!res.ok) {
+      await fetch(
+        `https://api.resend.com/audiences/${audienceId}/contacts/${encodeURIComponent(email)}`,
+        {
+          method: "PATCH",
+          headers: {
+            Authorization: `Bearer ${RESEND_API_KEY}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ unsubscribed: false }),
+        },
+      );
+    }
+  } catch (err) {
+    console.error(`[stripe-webhook] audience-add failed for ${email}:`, err);
+  }
 }
 
 function dashboardWelcomeEmail(email: string): { subject: string; html: string } {
@@ -110,7 +173,7 @@ ${telegramLine}
 <p style="margin:24px 0;"><a href="https://signals.gitdealflow.com/login" style="display:block;width:100%;box-sizing:border-box;background:#0284c7;color:#fff;font-weight:700;font-size:19px;line-height:1.2;padding:18px 28px;border-radius:10px;text-decoration:none;text-align:center;box-shadow:0 4px 14px rgba(2,132,199,0.35);">Access Your Dashboard</a></p>
 <p>I'll reach out personally within 24 hours to learn what sectors and stages you care about most.</p>
 <p style="margin-top:28px;padding:16px 18px;background:#fef3c7;border-left:3px solid #d97706;border-radius:4px;font-size:14px;line-height:1.6;color:#78350f;">
-<strong>Investing seven-figure cheques into a defined sector?</strong> The next rung is <a href="mailto:signal@gitdealflow.com?subject=Sharp%20Tier%20Application%20%E2%80%94%20%5BYour%20Fund%5D" style="color:#d97706;font-weight:600;">Sharp Tier</a> (€497/mo or €4,970/yr — saves two months) — adds quarterly portfolio review call, white-labeled <code>/api/v1/sharp/&lt;your-fund&gt;</code> data feed, custom thesis-aligned watchlist co-built with me, same-day signal questions (typically &lt;4h), data-room exports for LP updates, all future paid MCP tools included. <strong>Capped at 8 funds in 2026 — applications reviewed within 48h.</strong> Or grab a one-off <a href="https://gitdealflow.com/sector-sweep?utm_source=email&amp;utm_medium=insider-welcome&amp;utm_campaign=sector-sweep" style="color:#d97706;font-weight:600;">Custom Sector Sweep</a> (€1,997 one-time) for a single thesis cycle.
+<strong>Investing seven-figure cheques into a defined sector?</strong> The next rung is <a href="mailto:signals@gitdealflow.com?subject=Sharp%20Tier%20Application%20%E2%80%94%20%5BYour%20Fund%5D" style="color:#d97706;font-weight:600;">Sharp Tier</a> (€497/mo or €4,970/yr — saves two months) — adds quarterly portfolio review call, white-labeled <code>/api/v1/sharp/&lt;your-fund&gt;</code> data feed, custom thesis-aligned watchlist co-built with me, same-day signal questions (typically &lt;4h), data-room exports for LP updates, all future paid MCP tools included. <strong>Capped at 8 funds in 2026 — applications reviewed within 48h.</strong> Or grab a one-off <a href="https://gitdealflow.com/sector-sweep?utm_source=email&amp;utm_medium=insider-welcome&amp;utm_campaign=sector-sweep" style="color:#d97706;font-weight:600;">Custom Sector Sweep</a> (€1,997 one-time) for a single thesis cycle.
 </p>
 <p>— The Data Nerd</p>
 </div>
@@ -149,7 +212,7 @@ function sectorSweepWelcomeEmail(email: string): { subject: string; html: string
 <p>If you want to upgrade to Insider Circle within 60 days of delivery, the €1,997 credits 100% — your first ~20 months of Insider are paid.</p>
 <p>The "Sweep or It's Free" 14-day refund applies after delivery.</p>
 <p style="margin-top:28px;padding:16px 18px;background:#fef3c7;border-left:3px solid #d97706;border-radius:4px;font-size:14px;line-height:1.6;color:#78350f;">
-<strong>If your fund needs this on a quarterly cadence, not a one-off?</strong> The apex tier is <a href="mailto:signal@gitdealflow.com?subject=Sharp%20Tier%20Application%20%E2%80%94%20%5BYour%20Fund%5D" style="color:#d97706;font-weight:600;">Sharp Tier</a> (€497/mo or €4,970/yr) — quarterly portfolio review call, white-labeled <code>/api/v1/sharp/&lt;your-fund&gt;</code> data feed, custom watchlist co-built with me, same-day questions (&lt;4h), data-room exports for LP updates. <strong>Capped at 8 funds in 2026, applications reviewed in 48h.</strong> The €1,997 from this Sweep counts toward your first two months if you're approved.
+<strong>If your fund needs this on a quarterly cadence, not a one-off?</strong> The apex tier is <a href="mailto:signals@gitdealflow.com?subject=Sharp%20Tier%20Application%20%E2%80%94%20%5BYour%20Fund%5D" style="color:#d97706;font-weight:600;">Sharp Tier</a> (€497/mo or €4,970/yr) — quarterly portfolio review call, white-labeled <code>/api/v1/sharp/&lt;your-fund&gt;</code> data feed, custom watchlist co-built with me, same-day questions (&lt;4h), data-room exports for LP updates. <strong>Capped at 8 funds in 2026, applications reviewed in 48h.</strong> The €1,997 from this Sweep counts toward your first two months if you're approved.
 </p>
 <p>— The Data Nerd</p>
 </div>
@@ -391,10 +454,16 @@ export async function POST(request: NextRequest) {
     }
 
     try {
-      await sendEmail(email, welcomeEmail.subject, welcomeEmail.html);
+      await sendEmail(email, welcomeEmail.subject, welcomeEmail.html, {
+        subscriberFacing: true,
+      });
     } catch (err) {
       console.error("Failed to send welcome email:", err);
     }
+
+    // Buyers must not fall out of the list — add (or re-activate) the buyer
+    // on the Resend audience with stripe-tier attribution.
+    await addBuyerToAudience(email, `stripe-${tier}`);
 
     // Book buyers: queue the +1d / +4d / +7d follow-ups promised in the
     // welcome email. Best-effort — a Resend hiccup must not 5xx out of this
@@ -417,10 +486,7 @@ export async function POST(request: NextRequest) {
               subject: drip.subject,
               html: drip.html,
               scheduled_at: sendAt,
-              headers: {
-                "List-Unsubscribe": `<mailto:${FROM_EMAIL}?subject=unsubscribe>`,
-                "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
-              },
+              headers: listUnsubscribeHeaders(email),
             }),
           });
           if (!res.ok) {
@@ -461,10 +527,7 @@ export async function POST(request: NextRequest) {
               subject: drip.subject,
               html: drip.html,
               scheduled_at: sendAt,
-              headers: {
-                "List-Unsubscribe": `<mailto:${FROM_EMAIL}?subject=unsubscribe>`,
-                "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
-              },
+              headers: listUnsubscribeHeaders(email),
             }),
           });
           if (!res.ok) {
@@ -486,7 +549,7 @@ export async function POST(request: NextRequest) {
     // Notify admin
     try {
       await sendEmail(
-        "signal@gitdealflow.com",
+        "signals@gitdealflow.com",
         `New ${tier} subscriber: ${email}`,
         `<p><strong>New paying subscriber!</strong></p>
 <p>Email: ${escapeHtml(email)}</p>
@@ -620,13 +683,17 @@ async function dispatchOtoWelcome(email: string, oto: string | undefined, ref: s
     return;
   }
   try {
-    await sendEmail(email, welcomeEmail.subject, welcomeEmail.html);
+    await sendEmail(email, welcomeEmail.subject, welcomeEmail.html, {
+      subscriberFacing: true,
+    });
   } catch (err) {
     console.error("oto welcome send failed:", err);
   }
+  // OTO buyers must not fall out of the list either.
+  await addBuyerToAudience(email, `stripe-${oto}`);
   try {
     await sendEmail(
-      "signal@gitdealflow.com",
+      "signals@gitdealflow.com",
       `OTO upsell taken: ${oto} · ${email}`,
       `<p><strong>OTO upsell.</strong></p>
 <p>Email: ${escapeHtml(email)}</p>

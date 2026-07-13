@@ -287,10 +287,10 @@ export default function BuiltWithPage() {
               </Link>{" "}
               once you ping{" "}
               <a
-                href="mailto:signal@gitdealflow.com"
+                href="mailto:signals@gitdealflow.com"
                 className="text-sky-400 hover:text-sky-300"
               >
-                signal@gitdealflow.com
+                signals@gitdealflow.com
               </a>{" "}
               with a link to your project. Mutual backlink.
             </li>

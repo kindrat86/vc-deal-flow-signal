@@ -558,10 +558,10 @@ export default function YourJourneyPage() {
             . The two arcs are designed to be read against each other. If
             you&rsquo;ve read both and want to talk, I read every reply to{" "}
             <a
-              href="mailto:signal@gitdealflow.com"
+              href="mailto:signals@gitdealflow.com"
               className="text-gray-400 hover:text-gray-200 underline decoration-dotted"
             >
-              signal@gitdealflow.com
+              signals@gitdealflow.com
             </a>
             . I won&rsquo;t reply with a sales pitch. I&rsquo;ll reply with
             the specific data on the deal you almost wrote, if you tell me

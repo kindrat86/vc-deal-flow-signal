@@ -18,7 +18,7 @@
 
 ### Domain + Email
 - [x] Buy domain: gitdealflow.com (Namecheap)
-- [x] Set up Zoho Mail: signal@gitdealflow.com
+- [x] Set up Zoho Mail: signals@gitdealflow.com
 - [x] Add DNS records (Zoho MX/SPF/DKIM) in Namecheap
 - [x] Connect custom domain to Vercel (gitdealflow.com → landing, signals.gitdealflow.com → pSEO)
 

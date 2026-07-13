@@ -30,18 +30,18 @@ export const metadata: Metadata = {
   },
 };
 
-const STRIPE_DASHBOARD = "https://buy.stripe.com/28E7sK48H04U8ou07u0x200";
-const STRIPE_INSIDER = "https://buy.stripe.com/4gM00ifRpcRG2069I40x202";
+const STRIPE_DASHBOARD = "https://buy.stripe.com/4gMbJ07kTaJy7kqg6s0x20b";
+const STRIPE_INSIDER = "https://buy.stripe.com/bJeaEWfRpcRG6gm2fC0x20d";
 const STRIPE_SWEEP = "https://buy.stripe.com/bJe14m34DbNC6gm1by0x204";
 // `||` not `??` — Vercel env entries can be empty strings, which `??`
 // would NOT replace. We want the hardcoded canonical URL whenever the
 // env var is missing OR empty.
 const STRIPE_DASHBOARD_ANNUAL =
   process.env.NEXT_PUBLIC_STRIPE_DASHBOARD_ANNUAL_LINK ||
-  "https://buy.stripe.com/aFa28qgVt3h65ci8E00x206";
+  "https://buy.stripe.com/aFa5kC34DeZOawC6vS0x20c";
 const STRIPE_INSIDER_ANNUAL =
   process.env.NEXT_PUBLIC_STRIPE_INSIDER_ANNUAL_LINK ||
-  "https://buy.stripe.com/9B628q8oX7xmcEK9I40x207";
+  "https://buy.stripe.com/cNieVc34DbNCcEK2fC0x20e";
 const SIGNUP_URL = "https://gitdealflow.com/#signup";
 // Sharp Tier — application-gated, capped at 8 funds in 2026. The mailto includes a structured intake template so the reply is immediate-prioritised.
 // Russell audit 2026-05-05 PM: replaced mailto: with a proper application
@@ -1135,10 +1135,10 @@ export default function PricingPage() {
             One-click Stripe checkout above. If you&rsquo;re already on
             monthly and want to switch, email{" "}
             <a
-              href="mailto:signal@gitdealflow.com?subject=Switch%20to%20annual"
+              href="mailto:signals@gitdealflow.com?subject=Switch%20to%20annual"
               className="text-sky-400 hover:text-sky-300 underline"
             >
-              signal@gitdealflow.com
+              signals@gitdealflow.com
             </a>{" "}
             — we credit the unused portion of the current month toward
             the annual term.

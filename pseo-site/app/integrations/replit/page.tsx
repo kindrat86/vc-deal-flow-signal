@@ -66,7 +66,7 @@ const FAQ = [
   },
   {
     q: "Can I post a Replit Bounty asking the community to build something with this MCP?",
-    a: "Yes. Replit Bounties accepts task posts where the deliverable is a working Repl. We pin community bounties (eg. 'Build a Replit Agent that drafts a deal memo from get_startup_signal') in the GitDealFlow community thread. Reach out at signal@gitdealflow.com to co-fund a bounty — we match up to USD 100 per accepted bounty.",
+    a: "Yes. Replit Bounties accepts task posts where the deliverable is a working Repl. We pin community bounties (eg. 'Build a Replit Agent that drafts a deal memo from get_startup_signal') in the GitDealFlow community thread. Reach out at signals@gitdealflow.com to co-fund a bounty — we match up to USD 100 per accepted bounty.",
   },
   {
     q: "Do I need a GitHub account to use the Run on Replit button?",
@@ -315,8 +315,8 @@ export default function ReplitIntegrationPage() {
             </ul>
             <p className="text-xs text-gray-500">
               To propose a bounty or co-fund an existing one, email{" "}
-              <a href="mailto:signal@gitdealflow.com" className="text-orange-400 hover:underline">
-                signal@gitdealflow.com
+              <a href="mailto:signals@gitdealflow.com" className="text-orange-400 hover:underline">
+                signals@gitdealflow.com
               </a>{" "}
               with the deliverable + your wallet/Stripe handle. We post the bounty on
               Replit Bounties under our handle and credit accepted Repls in the next

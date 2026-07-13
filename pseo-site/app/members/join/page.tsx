@@ -139,10 +139,10 @@ export default async function MembersJoinPage(ctx: RouteContext) {
           <p>
             Prefer email?{" "}
             <a
-              href="mailto:signal@gitdealflow.com?subject=Charter%20Cohort%20Application"
+              href="mailto:signals@gitdealflow.com?subject=Charter%20Cohort%20Application"
               className="text-amber-400 hover:text-amber-300 underline decoration-dotted"
             >
-              signal@gitdealflow.com
+              signals@gitdealflow.com
             </a>{" "}
             with the same fields works too.
           </p>

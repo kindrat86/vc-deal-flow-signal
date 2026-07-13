@@ -94,7 +94,6 @@ export default function InstagramPillarPage() {
         "https://www.instagram.com/thedatanerd",
         "https://x.com/data_nerd",
         "https://github.com/kindrat86",
-        "https://dev.to/the_data_nerd",
       ],
     },
     isPartOf: {

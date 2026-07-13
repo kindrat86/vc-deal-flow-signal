@@ -3,7 +3,7 @@
  *
  * Curls every entry in CANONICAL_PROD_ROUTES against the live prod
  * alias (https://signals.gitdealflow.com) and verifies each returns
- * 2xx. Any non-2xx triggers a Resend email to signal@gitdealflow.com
+ * 2xx. Any non-2xx triggers a Resend email to signals@gitdealflow.com
  * with the regression list.
  *
  * Why this exists — `feedback_unmerged_branch_overwrites_prod.md`.
@@ -43,7 +43,7 @@ export const dynamic = "force-dynamic";
 export const maxDuration = 60;
 
 const PROD_ORIGIN = "https://signals.gitdealflow.com";
-const ALERT_TO = "signal@gitdealflow.com";
+const ALERT_TO = "signals@gitdealflow.com";
 const ALERT_FROM = "Route Canary <canary@gitdealflow.com>";
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const CRON_SECRET = process.env.CRON_SECRET;

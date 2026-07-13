@@ -147,7 +147,7 @@ export default function DevelopersPage() {
             name: "Can I use the data in commercial products?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Yes. The published dataset is released under CC-BY-4.0, which permits commercial use with attribution. The API is intended for both individual investors and commercial pipelines feeding into fund infrastructure. Larger commercial customers should contact signal@gitdealflow.com to discuss volume pricing and SLA terms beyond the standard Insider Circle tier.",
+              text: "Yes. The published dataset is released under CC-BY-4.0, which permits commercial use with attribution. The API is intended for both individual investors and commercial pipelines feeding into fund infrastructure. Larger commercial customers should contact signals@gitdealflow.com to discuss volume pricing and SLA terms beyond the standard Insider Circle tier.",
             },
           },
           {
@@ -465,7 +465,7 @@ export default function DevelopersPage() {
                 </Link>
                 . Redistribution as a competing product or reselling the raw
                 dataset requires written permission — contact
-                signal@gitdealflow.com.
+                signals@gitdealflow.com.
               </p>
             </div>
             <div>
@@ -493,10 +493,10 @@ export default function DevelopersPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-3">
             <Link
-              href="mailto:signal@gitdealflow.com"
+              href="mailto:signals@gitdealflow.com"
               className="inline-flex items-center justify-center px-5 py-2 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-medium transition-colors"
             >
-              Email signal@gitdealflow.com
+              Email signals@gitdealflow.com
             </Link>
             <Link
               href="/research"

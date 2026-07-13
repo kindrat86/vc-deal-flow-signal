@@ -49,7 +49,7 @@ export const SETTER_NAME = "Methodology Lead";
 export const CLOSER_NAME = "The Data Nerd";
 
 export const SETTER_FROM_EMAIL =
-  process.env.FROM_EMAIL || "signal@gitdealflow.com";
+  process.env.FROM_EMAIL || "signals@gitdealflow.com";
 
 /* -----------------------------------------------------------------------
  * Reply-deadline computation.

@@ -23,7 +23,7 @@ export async function GET() {
 # Report security issues by email. We aim to acknowledge within 72 hours.
 # Please do not file public GitHub issues for security findings.
 
-Contact: mailto:signal@gitdealflow.com
+Contact: mailto:signals@gitdealflow.com
 Expires: ${expiresOneYearFromBuild()}
 Preferred-Languages: en
 Canonical: ${SITE}/.well-known/security.txt

@@ -6,7 +6,7 @@ import { fireRedditLead } from "@/lib/reddit-conversions-api";
 import { recordSignup } from "@/lib/recent-signups";
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY!;
-const FROM_EMAIL = process.env.FROM_EMAIL || "signal@gitdealflow.com";
+const FROM_EMAIL = process.env.FROM_EMAIL || "signals@gitdealflow.com";
 const FROM_NAME = process.env.FROM_NAME || "The Data Nerd";
 
 const VERIFY_BASE_URL =
@@ -143,6 +143,13 @@ export async function POST(request: Request) {
 
   try {
     const body = await request.json();
+
+    // Honeypot: landing forms include a visually-hidden "website" field.
+    // Bots that fill it get a fake success and no side effects.
+    if (typeof body.website === "string" && body.website.trim() !== "") {
+      return NextResponse.json({ ok: true }, { headers });
+    }
+
     const email = (body.email || "").trim().toLowerCase();
 
     if (!email || !isValidEmail(email)) {

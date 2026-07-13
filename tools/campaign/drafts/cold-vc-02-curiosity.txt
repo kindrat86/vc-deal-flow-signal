@@ -1,5 +1,5 @@
 TO: {{firstName}}@{{firm-domain}}
-FROM: signal@gitdealflow.com
+FROM: signals@gitdealflow.com
 SUBJECT: One leading indicator most VC stacks miss
 
 Hi {{firstName}},

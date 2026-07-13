@@ -171,7 +171,7 @@ export default function SectorSweepBriefForm() {
           If you don&rsquo;t see the instant ack within five minutes, check
           your spam folder for messages from{" "}
           <code className="bg-slate-800 px-1 py-0.5 rounded">
-            signal@gitdealflow.com
+            signals@gitdealflow.com
           </code>
           , or reply to your most recent Acceleration Watch digest with the
           word &ldquo;BRIEF&rdquo; — that loops the same inbox. The Setter
@@ -352,7 +352,7 @@ export default function SectorSweepBriefForm() {
       {status === "error" && (
         <div className="rounded-lg border border-rose-700 bg-rose-950/30 p-3 text-rose-300 text-sm">
           {errMsg ||
-            "Something went wrong submitting the brief. Email signal@gitdealflow.com directly with the same answers and we&rsquo;ll respond inside 24 hours."}
+            "Something went wrong submitting the brief. Email signals@gitdealflow.com directly with the same answers and we&rsquo;ll respond inside 24 hours."}
         </div>
       )}
 
@@ -365,7 +365,7 @@ export default function SectorSweepBriefForm() {
       </button>
 
       <p className="text-gray-500 text-xs leading-relaxed">
-        By submitting you agree the brief lands at signal@gitdealflow.com
+        By submitting you agree the brief lands at signals@gitdealflow.com
         and is used solely to write the fit assessment + buy-link reply.
         No mailing-list opt-in, no analytics tracking on this form. Reply
         STOP to any future email if you do end up on the Acceleration Watch

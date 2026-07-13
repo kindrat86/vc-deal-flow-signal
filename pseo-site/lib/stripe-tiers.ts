@@ -2,7 +2,12 @@ import "server-only";
 import { stripe } from "@/lib/stripe";
 import type Stripe from "stripe";
 
-export type EntryTierKey = "firstlook" | "dashboard" | "insider" | "sector_sweep";
+export type EntryTierKey =
+  | "firstlook"
+  | "dashboard"
+  | "insider"
+  | "sector_sweep"
+  | "summit";
 
 export type OtoKey =
   | "sector_sweep_oto1"
@@ -14,7 +19,10 @@ export type OtoKey =
 // (post-purchase) — this happens IN-cart, before card capture, so the
 // bumped checkout sets up the saved card for OTOs the same way the base
 // cart does.
-export type BumpKey = "methodology_vault" | "dashboard_playbook";
+export type BumpKey =
+  | "methodology_vault"
+  | "dashboard_playbook"
+  | "summit_sector_sweep";
 
 export type BumpConfig = {
   productName: string;
@@ -70,18 +78,18 @@ export const ENTRY_TIERS: Record<EntryTierKey, EntryTierConfig> = {
   dashboard: {
     mode: "subscription",
     productName: "Dashboard",
-    unitAmount: 997,
+    unitAmount: 4900,
     currency: "eur",
     interval: "month",
     successUrl: "/dashboard-thanks?session_id={CHECKOUT_SESSION_ID}",
     cancelUrl: "/dashboard?cancelled=1",
     description:
-      "Weekly ranked field for active angel sourcing. Founding rate locked at €9.97/mo.",
+      "Weekly ranked field for active angel sourcing. Cancel anytime.",
   },
   insider: {
     mode: "subscription",
     productName: "Insider Circle",
-    unitAmount: 9700,
+    unitAmount: 19700,
     currency: "eur",
     interval: "month",
     successUrl: "/insider-thanks?session_id={CHECKOUT_SESSION_ID}",
@@ -99,6 +107,16 @@ export const ENTRY_TIERS: Record<EntryTierKey, EntryTierConfig> = {
     description:
       "One sector. One thesis. One serious custom pass you can act on.",
   },
+  summit: {
+    mode: "payment",
+    productName: "VC Engineering Acceleration Summit — All-Access Pass",
+    unitAmount: 9700,
+    currency: "eur",
+    successUrl: "/summit/thanks?session_id={CHECKOUT_SESSION_ID}",
+    cancelUrl: "/summit/all-access?cancelled=1",
+    description:
+      "Lifetime access to all 20 summit talks, full transcripts, slide decks, and the 219-startup backtest CSV.",
+  },
 };
 
 export const OTO_TIERS: Record<OtoKey, OtoConfig> = {
@@ -114,14 +132,16 @@ export const OTO_TIERS: Record<OtoKey, OtoConfig> = {
   insider_oto2: {
     kind: "subscription",
     productName: "Insider Circle",
-    unitAmount: 9700,
+    unitAmount: 19700,
     currency: "eur",
     interval: "month",
-    lookupKey: "insider_monthly_v1",
+    // v2 lookup key — v1 resolves to the retired €97/mo founding price in
+    // Stripe; reusing it would silently charge the old amount.
+    lookupKey: "insider_monthly_v2_197",
     firstInvoiceCouponAmountOff: 2000,
     firstInvoiceCouponLookupKey: "insider_firstlook_oto_first_month_off_v1",
     description:
-      "Private investor Telegram, monthly briefing call, custom watchlists, API access, direct line to me. €97/mo — €20 off the first month from this offer only.",
+      "Private investor Telegram, monthly briefing call, custom watchlists, API access, direct line to me. €197/mo — €20 off the first month from this offer only.",
     welcomeSubject: "Welcome to the Insider Circle",
   },
   // Brunson DotCom Ch 18 — last-chance OTO. Surface ONLY after the buyer
@@ -151,7 +171,7 @@ export const BUMPS: Record<BumpKey, BumpConfig> = {
     unitAmount: 1900,
     currency: "eur",
     description:
-      "The 38-page Methodology Vault PDF — SSRN preprint + private commentary on every signal definition, every regression coefficient, and the three confounders the public paper does not name. Delivered as an instant download link in your First Look intake email.",
+      "The 38-page Methodology Vault PDF — the SSRN methodology operationalized: annotated commentary on every signal definition and regression coefficient, plus ready-to-run checklists for the three confounder checks, so you apply the paper instead of re-deriving it. Delivered as an instant download link in your First Look intake email.",
   },
   // Brunson DotCom Ch 14 — Dashboard order bump. Works for BOTH payment
   // and subscription tiers: on payment it becomes a second line_item; on
@@ -162,6 +182,16 @@ export const BUMPS: Record<BumpKey, BumpConfig> = {
     currency: "eur",
     description:
       "42-page PDF: how to turn the weekly field into a sourcing workflow — the 15-minute Monday ritual, the 3-question diligence filter, the sector rotation calendar, and the tracking template for first-touch outreach. Instant download link in your welcome email. Normally €47 — add it now for €7.",
+  },
+  // Brunson Summit playbook — in-cart bump on the All-Access Pass. Deep
+  // discount honors the €297 summit-attendee rate advertised on
+  // /summit/all-access (standalone Sector Sweep sells at €1,997).
+  summit_sector_sweep: {
+    productName: "Custom Sector Sweep — Summit Attendee Rate",
+    unitAmount: 29700,
+    currency: "eur",
+    description:
+      "One full sector deep-dive on a sector of your choice — top 25 ranked GitHub orgs, contributor maps, three pre-Crunchbase breakouts, raw CSV, and a 14-page written walkthrough. €297 summit-attendee rate (standalone €1,997).",
   },
 };
 

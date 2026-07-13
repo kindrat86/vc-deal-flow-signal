@@ -1982,7 +1982,7 @@ The preprint is indexed by Crossref, Semantic Scholar, OpenAlex (W7154916891), U
       },
       {
         q: "Can I request a new cluster?",
-        a: "Yes — email signal@gitdealflow.com with the proposed cluster name, the GitHub topic patterns that define it, and 5-10 example startups. New clusters are added quarterly when there is consistent signal volume.",
+        a: "Yes — email signals@gitdealflow.com with the proposed cluster name, the GitHub topic patterns that define it, and 5-10 example startups. New clusters are added quarterly when there is consistent signal volume.",
       },
       {
         q: "How are international startups covered?",

@@ -88,7 +88,7 @@ rm pseo-site/data/unsubscribed-emails.json   # gitignored; no longer drives anyt
 
 ## 5. Prevent recurrence (manual opt-outs)
 
-Manual unsubscribes today come in as replies to `mailto:signal@gitdealflow.com
+Manual unsubscribes today come in as replies to `mailto:signals@gitdealflow.com
 ?subject=Unsubscribe` (the `List-Unsubscribe` header on every send). There is no
 automated handler for those — they were being hand-added to the flat file.
 Follow-up: either wire a one-click `List-Unsubscribe-Post` URL to the existing

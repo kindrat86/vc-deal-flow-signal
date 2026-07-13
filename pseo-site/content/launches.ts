@@ -216,7 +216,7 @@ export const LAUNCHES: Launch[] = [
       },
       {
         q: "Is this rate-limited?",
-        a: "Soft rate limit at 60 calls/minute per API key. Above that, you queue (no errors, just wait). If you have a sustained-throughput use case above that ceiling, email signal@gitdealflow.com and we’ll provision a higher key for the same per-call price.",
+        a: "Soft rate limit at 60 calls/minute per API key. Above that, you queue (no errors, just wait). If you have a sustained-throughput use case above that ceiling, email signals@gitdealflow.com and we’ll provision a higher key for the same per-call price.",
       },
       {
         q: "Do credits expire?",
@@ -346,7 +346,7 @@ export const LAUNCHES: Launch[] = [
         ],
       },
     ],
-    buyUrl: "https://buy.stripe.com/28E7sK48H04U8ou07u0x200",
+    buyUrl: "https://buy.stripe.com/4gMbJ07kTaJy7kqg6s0x20b",
     ctaLabel: "Lock €9.97/mo — claim a founding spot →",
     cohort: "launch-founding-100",
     faq: [
@@ -467,7 +467,7 @@ export const LAUNCHES: Launch[] = [
         body: [
           "‘Is a weekend really enough depth?’ Honest answer: depth depends on what you’re after. If you want a 60-page McKinsey-style narrative on the regulatory landscape and the macro cycle, no — that’s a three-week consultancy engagement. If you want the actual list of 8 companies you should be writing checks at right now, sorted by the signal that leads fundraise announcements by 21–47 days — that’s a weekend of compute, and the artifact is more accurate than the three-week version because it’s computed, not opined.",
           "‘How do you avoid hallucinating breakouts?’ Two-period confirmation rule. A breakout candidate has to register a 2× contributor spike in two consecutive 14-day windows before it lands on the list. Single-window spikes are filtered out as noise. We also include a false-positive caveat list — the candidates that almost made the cut but didn’t pass the two-period filter. You see what we excluded and why.",
-          "‘What if my sector isn’t covered?’ We track 20 sectors. The full list is at /weekly. If you want a sector outside that universe, email signal@gitdealflow.com before checkout — we may extend to your sector for the cohort, or refund. We don’t sell sweeps for sectors we can’t actually run the panel on.",
+          "‘What if my sector isn’t covered?’ We track 20 sectors. The full list is at /weekly. If you want a sector outside that universe, email signals@gitdealflow.com before checkout — we may extend to your sector for the cohort, or refund. We don’t sell sweeps for sectors we can’t actually run the panel on.",
           "‘Is the €1,797 refundable?’ Yes — if zero of the breakouts in our list register a fundraise within 90 days of delivery, we refund or credit toward the next quarter at your choice. The 90-day window is the median lead-time floor; missing it entirely means the panel didn’t fire and you shouldn’t pay for the artifact.",
         ],
         videoCue: {
@@ -502,7 +502,7 @@ export const LAUNCHES: Launch[] = [
       },
       {
         q: "Can I pick a sector that isn’t in your 19?",
-        a: "Email signal@gitdealflow.com before checkout. We may extend to your sector for the cohort if the universe of GitHub orgs is mappable in time. If we can’t, we’ll tell you before charging — no charge for sectors we can’t run.",
+        a: "Email signals@gitdealflow.com before checkout. We may extend to your sector for the cohort if the universe of GitHub orgs is mappable in time. If we can’t, we’ll tell you before charging — no charge for sectors we can’t run.",
       },
       {
         q: "What format do I get the breakouts in?",

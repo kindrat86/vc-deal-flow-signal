@@ -27,7 +27,7 @@ export async function GET() {
       ],
     },
     contact: {
-      email: "signal@gitdealflow.com",
+      email: "signals@gitdealflow.com",
       url: "https://signals.gitdealflow.com/about",
     },
     search: {

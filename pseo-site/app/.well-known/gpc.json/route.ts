@@ -32,7 +32,7 @@ export async function GET() {
       version: 1,
       policy: `${BASE_URL}/privacy`,
       compliance: `${BASE_URL}/.well-known/compliance.json`,
-      contact: "signal@gitdealflow.com",
+      contact: "signals@gitdealflow.com",
     },
     {
       headers: {

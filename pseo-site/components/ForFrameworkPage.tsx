@@ -447,12 +447,12 @@ export function ForFrameworkPage({ framework: f }: Props) {
             Stuck on the wire-up?
           </h2>
           <p className="text-gray-400 text-sm mb-5 max-w-lg mx-auto">
-            Email signal@gitdealflow.com — replies within 24 hours, EU business
+            Email signals@gitdealflow.com — replies within 24 hours, EU business
             time. Include the framework name and the error in the message body
             and a snippet of your tool definition.
           </p>
           <Link
-            href={`mailto:signal@gitdealflow.com?subject=${encodeURIComponent(
+            href={`mailto:signals@gitdealflow.com?subject=${encodeURIComponent(
               `${f.name} integration help`,
             )}`}
             className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-medium transition-colors"

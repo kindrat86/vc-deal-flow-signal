@@ -378,12 +378,12 @@ export default function MistralIntegrationPage() {
             Stuck on the install?
           </h2>
           <p className="text-gray-400 text-sm mb-5 max-w-lg mx-auto">
-            Email signal@gitdealflow.com — replies within 24 hours, EU business
+            Email signals@gitdealflow.com — replies within 24 hours, EU business
             time. Common gotchas (workspace admin rights, server URL trailing
             slash, Mistral region) are documented in the FAQ above.
           </p>
           <Link
-            href="mailto:signal@gitdealflow.com?subject=Mistral%20Le%20Chat%20MCP%20install%20help"
+            href="mailto:signals@gitdealflow.com?subject=Mistral%20Le%20Chat%20MCP%20install%20help"
             className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-medium transition-colors"
           >
             Email support

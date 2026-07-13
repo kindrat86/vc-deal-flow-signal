@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   },
 };
 
-const STRIPE_DASHBOARD = "https://buy.stripe.com/28E7sK48H04U8ou07u0x200";
+const STRIPE_DASHBOARD = "https://buy.stripe.com/4gMbJ07kTaJy7kqg6s0x20b";
 const SIGNUP_URL = "https://gitdealflow.com/#signup";
 const FIRST_LOOK_URL = "/pricing#first-look-pass";
 

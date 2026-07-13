@@ -1,5 +1,5 @@
 TO: {{firstName}}@{{newsletter-domain}}
-FROM: signal@gitdealflow.com
+FROM: signals@gitdealflow.com
 SUBJECT: New SSRN — GitHub commits as a leading indicator for VC pricing
 
 Hi {{firstName}},

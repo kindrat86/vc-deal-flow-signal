@@ -28,7 +28,7 @@ export const dynamic = "force-static";
 // Word count target: 240–280 words excluding nav/breadcrumbs/CTAs.
 // Reading speed assumption: 200 wpm = ~75 seconds at 250 words.
 
-const STRIPE_DASHBOARD = "https://buy.stripe.com/28E7sK48H04U8ou07u0x200";
+const STRIPE_DASHBOARD = "https://buy.stripe.com/4gMbJ07kTaJy7kqg6s0x20b";
 const SIGNUP_URL = "https://gitdealflow.com/#signup";
 const WORD_COUNT = 250;
 const READ_SECONDS = 90;

@@ -26,7 +26,7 @@ export async function GET() {
         name: "VC Deal Flow Signal (GitDealFlow)",
         url: BASE_URL,
         operator: "GitDealFlow",
-        contact: "signal@gitdealflow.com",
+        contact: "signals@gitdealflow.com",
         security: `${BASE_URL}/.well-known/security.txt`,
         privacyPolicy: `${BASE_URL}/.well-known/ai-policy.json`,
       },
@@ -52,9 +52,9 @@ export async function GET() {
         processors: ["Stripe (payments)", "Resend (transactional email)", "Vercel (hosting)"],
         legalBasis:
           "Legitimate interest for public-data processing (Art. 6(1)(f)); contract for paid subscribers (Art. 6(1)(b))",
-        dpa: "Available on request from signal@gitdealflow.com",
+        dpa: "Available on request from signals@gitdealflow.com",
         dataResidency: ["EU (Vercel fra1, primary)", "US (Vercel iad1, failover)"],
-        rightsContact: "signal@gitdealflow.com",
+        rightsContact: "signals@gitdealflow.com",
         retentionDefaults: {
           subscriberEmail: "Until unsubscribe + 12 months",
           stripeCustomerRecord: "Lifetime of subscription + 7 years (tax law)",
@@ -116,17 +116,17 @@ export async function GET() {
       // Incident response
       incidentResponse: {
         breachNotificationSla: "72 hours from confirmed breach (GDPR Art. 33)",
-        responseEmail: "signal@gitdealflow.com",
+        responseEmail: "signals@gitdealflow.com",
         publicLog: `${BASE_URL}/corrections`,
         statusPage: BASE_URL,
       },
 
       // Vendor-questionnaire shortcuts
       enterprise: {
-        contractsAndDpa: "signal@gitdealflow.com",
+        contractsAndDpa: "signals@gitdealflow.com",
         ssoOptions: "Available on Sharp Tier (€497/mo) and custom enterprise scopes",
         offboarding:
-          "Self-serve at /account or by emailing signal@gitdealflow.com. Subscriber data deleted within 30 days; Stripe records retained per tax law.",
+          "Self-serve at /account or by emailing signals@gitdealflow.com. Subscriber data deleted within 30 days; Stripe records retained per tax law.",
       },
 
       // Document version

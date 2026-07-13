@@ -57,7 +57,7 @@ export default function ChallengeForm() {
           15 minutes. If you don&rsquo;t see it within a minute, check spam
           and add{" "}
           <code className="text-emerald-200 bg-emerald-900/40 px-1 rounded">
-            signal@gitdealflow.com
+            signals@gitdealflow.com
           </code>{" "}
           to your address book.
         </p>

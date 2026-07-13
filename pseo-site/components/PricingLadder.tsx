@@ -1,5 +1,14 @@
 import Link from "next/link";
 
+// Annual checkout links come from env so Stripe link rotation never needs a
+// code change; fallbacks are the live links verified 2026-07-13.
+const STRIPE_DASHBOARD_ANNUAL =
+  process.env.NEXT_PUBLIC_STRIPE_DASHBOARD_ANNUAL_LINK ||
+  "https://buy.stripe.com/aFa5kC34DeZOawC6vS0x20c";
+const STRIPE_INSIDER_ANNUAL =
+  process.env.NEXT_PUBLIC_STRIPE_INSIDER_ANNUAL_LINK ||
+  "https://buy.stripe.com/cNieVc34DbNCcEK2fC0x20e";
+
 interface Tier {
   name: string;
   price: string;
@@ -8,6 +17,8 @@ interface Tier {
   bullets: readonly string[];
   cta: string;
   href: string;
+  annualHref?: string;
+  annualLabel?: string;
   external?: boolean;
   highlight?: boolean;
 }
@@ -30,24 +41,26 @@ const TIERS: readonly Tier[] = [
   },
   {
     name: "Dashboard",
-    price: "€9.97",
+    price: "€49",
     cadence: "per month",
-    pitch: "8-object stack — €1,728 of value, 30-day Signal-or-It's-Free refund.",
+    pitch: "8-object stack — €1,728 of value, 30-day Signal-or-It's-Free guarantee.",
     bullets: [
       "Sunday Digest, Full Dashboard (140 startups, 20 sectors)",
       "219-startup Backtest CSV (the SSRN dataset)",
       "Monthly Sector Deep Dive PDF (your pick)",
       "Chrome Extension + Claude MCP + Async Watchlist Build",
-      "30-day Signal-or-It's-Free refund. Reply REFUND.",
+      "30-day Signal-or-It's-Free guarantee. Email me, every cent back.",
     ],
-    cta: "Lock in founder price",
-    href: "https://buy.stripe.com/28E7sK48H04U8ou07u0x200",
+    cta: "Start the Dashboard",
+    href: "https://buy.stripe.com/4gMbJ07kTaJy7kqg6s0x20b",
+    annualHref: STRIPE_DASHBOARD_ANNUAL,
+    annualLabel: "or €490/yr — 2 months free",
     external: true,
     highlight: true,
   },
   {
     name: "Insider Circle",
-    price: "€97",
+    price: "€197",
     cadence: "per month",
     pitch: "Everything in Dashboard + 8-object Insider stack.",
     bullets: [
@@ -55,10 +68,12 @@ const TIERS: readonly Tier[] = [
       "Insider API + Slack/Telegram Spike Alerts",
       "Quarterly Trend Briefing PDF + Portfolio Overlap report",
       "Direct line to the founder (text/email)",
-      "30-day Signal-or-It's-Free refund.",
+      "30-day Signal-or-It's-Free guarantee.",
     ],
     cta: "Join the Insider Circle",
-    href: "https://buy.stripe.com/4gM00ifRpcRG2069I40x202",
+    href: "https://buy.stripe.com/bJeaEWfRpcRG6gm2fC0x20d",
+    annualHref: STRIPE_INSIDER_ANNUAL,
+    annualLabel: "or €1,970/yr — 2 months free",
     external: true,
   },
 ];
@@ -92,8 +107,8 @@ export default function PricingLadder() {
           Simple pricing. Free forever for the curious.
         </h2>
         <p className="text-gray-400 text-xs">
-          Beta pricing — Dashboard goes to €49/mo and Insider to €197/mo after
-          launch. Founders keep their price forever.
+          The founding window closed June 30 — exactly as promised. Founding
+          members keep their price for life.
         </p>
       </div>
       <p className="text-gray-400 text-sm mb-6 max-w-3xl">
@@ -107,7 +122,7 @@ export default function PricingLadder() {
             ? "border-sky-500/70 ring-1 ring-sky-500/30 bg-gradient-to-b from-sky-950/40 to-slate-900 shadow-lg shadow-sky-500/10"
             : "border-slate-800 bg-slate-900";
           const ctaClasses = t.highlight
-            ? "bg-sky-600 hover:bg-sky-500 text-white shadow-sm shadow-sky-500/30"
+            ? "bg-[#ff6b1a] hover:bg-[#ff8c4d] text-slate-950 shadow-sm shadow-[#ff6b1a]/30"
             : "bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white";
           const Wrapper = ({ children }: { children: React.ReactNode }) =>
             t.external ? (
@@ -161,6 +176,14 @@ export default function PricingLadder() {
                   <span aria-hidden="true">→</span>
                 </span>
               </Wrapper>
+              {t.annualHref && t.annualLabel && (
+                <a
+                  href={t.annualHref}
+                  className="mt-2 inline-flex justify-center text-xs text-sky-400 hover:text-sky-300 underline decoration-dotted underline-offset-2"
+                >
+                  {t.annualLabel}
+                </a>
+              )}
             </div>
           );
         })}
@@ -168,20 +191,20 @@ export default function PricingLadder() {
 
       <p className="text-gray-400 text-xs mt-4">
         Or try the{" "}
-        <Link href="https://gitdealflow.com/firstlook/sample" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">
+        <Link href="https://signals.gitdealflow.com/firstlook/sample" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">
           €7 First Look Pass
         </Link>{" "}
         — one sector deep-dive, one-time payment, ahead of the next weekly
-        digest. <strong className="text-emerald-400">30-day &ldquo;Signal or
-        It&rsquo;s Free&rdquo; refund</strong> on all paid tiers — reply REFUND
-        to any email, no forms, no call.
+        digest. <strong className="text-emerald-400">30-day Signal-or-It&rsquo;s-Free
+        guarantee</strong>: any paid rung, 30 days, email me, every cent back.
+        No forms, no survey.
       </p>
 
       {/* Brunson Audit 2026-05-08 — Value Ladder ding fix. Show the
           high-ticket continuity above €1,997 so the buyer can see where the
           ladder actually goes. Async-only, anonymity-preserving. */}
       <div className="mt-6 rounded-xl border border-violet-700/30 bg-gradient-to-br from-violet-950/20 to-slate-900 p-5">
-        <p className="text-violet-300 text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-2">
+        <p className="text-violet-300 text-xs font-semibold uppercase tracking-wider mb-2">
           For active funds — high-ticket research partnerships
         </p>
         <h3 className="text-gray-100 font-semibold text-base mb-3 leading-snug">

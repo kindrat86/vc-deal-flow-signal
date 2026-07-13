@@ -6,7 +6,7 @@ import { isValidEmail, isAllowedOrigin } from "@/lib/validation";
  * /api/sharp-application — Russell audit fix 2026-05-05 (DotCom Secrets §23).
  *
  * Receives the Sharp Tier (€497/mo, capped 8 funds/yr) application from
- * landing/apply/index.html, validates, and emails it to signal@gitdealflow.com
+ * landing/apply/index.html, validates, and emails it to signals@gitdealflow.com
  * via Resend so the founder can review + reply within 48h.
  *
  * Anonymity-preserving: no live call mandate, no DB write — the email is the
@@ -16,9 +16,9 @@ import { isValidEmail, isAllowedOrigin } from "@/lib/validation";
  */
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY!;
-const FROM_EMAIL = process.env.FROM_EMAIL || "signal@gitdealflow.com";
+const FROM_EMAIL = process.env.FROM_EMAIL || "signals@gitdealflow.com";
 const FROM_NAME = process.env.FROM_NAME || "The Data Nerd";
-const TO_EMAIL = "signal@gitdealflow.com";
+const TO_EMAIL = "signals@gitdealflow.com";
 
 function clip(v: unknown, max: number): string {
   return typeof v === "string" ? v.slice(0, max).trim() : "";
@@ -115,7 +115,7 @@ export async function POST(request: Request) {
   const rl = checkRateLimit(`sharp-application:${ip}`, 2, 3600_000);
   if (!rl.allowed) {
     return NextResponse.json(
-      { error: "Too many applications. Please email signal@gitdealflow.com directly." },
+      { error: "Too many applications. Please email signals@gitdealflow.com directly." },
       { status: 429, headers: { ...headers, ...rateLimitHeaders(rl) } },
     );
   }
@@ -204,7 +204,7 @@ export async function POST(request: Request) {
       const errText = await emailRes.text();
       console.error("Failed to send Sharp application email:", errText);
       return NextResponse.json(
-        { error: "Failed to deliver application — please email signal@gitdealflow.com directly" },
+        { error: "Failed to deliver application — please email signals@gitdealflow.com directly" },
         { status: 500, headers },
       );
     }
@@ -220,7 +220,7 @@ export async function POST(request: Request) {
   } catch (err) {
     console.error("Sharp application error:", err);
     return NextResponse.json(
-      { error: "Something went wrong — please email signal@gitdealflow.com directly" },
+      { error: "Something went wrong — please email signals@gitdealflow.com directly" },
       { status: 500, headers },
     );
   }

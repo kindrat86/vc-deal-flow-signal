@@ -189,7 +189,7 @@ export default function GlossaryPage() {
           </p>
           <div className="flex flex-wrap gap-3">
             <a
-              href="https://github.com/kindrat86/vc-deal-flow-signal/tree/main/chrome-extension-define"
+              href="https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-cyan-600 text-white text-sm font-semibold hover:bg-cyan-500 transition-colors"

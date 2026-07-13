@@ -12,6 +12,8 @@ import {
 } from "@/lib/emails";
 import { isExcluded } from "@/lib/excluded-emails";
 import { isNonceUsed, markNonceUsed } from "@/lib/runtime-cache";
+import { listUnsubscribeHeaders } from "@/lib/list-unsubscribe";
+import { pickAudienceId } from "@/lib/resend-audience";
 
 // Single-use tracking for v2 verify-subscribe nonces. Once a v2 token's nonce
 // is consumed, any replay (link prefetcher, leaked URL replay) becomes a
@@ -22,8 +24,20 @@ import { isNonceUsed, markNonceUsed } from "@/lib/runtime-cache";
 const VERIFY_NONCE_NAMESPACE = "verify-nonce";
 const VERIFY_NONCE_TTL_SECONDS = 30 * 86_400; // matches v2 token 30-day TTL
 
+// Per-EMAIL sequence dedup, on top of the per-TOKEN nonce above. A visitor
+// who subscribes twice gets two different v2 tokens — both single-use, but
+// clicking both would enroll the same inbox in the Soap Opera Sequence twice.
+// We mark the email itself once the sequence is scheduled; ~180d TTL covers
+// the longest sequence span (Day 0–180) with the whole drip arc. A user who
+// unsubscribes and later legitimately re-subscribes inside that window is
+// re-activated on the audience (PATCH unsubscribed:false below) so digests
+// and broadcasts resume — but the already-seen drip sequence is NOT queued a
+// second time, which is the sane behavior for a returning subscriber.
+const SOS_ENROLLED_NAMESPACE = "sos-enrolled";
+const SOS_ENROLLED_TTL_SECONDS = 180 * 86_400;
+
 const RESEND_API_KEY = process.env.RESEND_API_KEY!;
-const FROM_EMAIL = process.env.FROM_EMAIL || "signal@gitdealflow.com";
+const FROM_EMAIL = process.env.FROM_EMAIL || "signals@gitdealflow.com";
 const FROM_NAME = process.env.FROM_NAME || "The Data Nerd";
 const REPORT_URL = process.env.REPORT_URL || "https://gitdealflow.com/report";
 const SITE_URL = process.env.SITE_URL || "https://signals.gitdealflow.com";
@@ -145,7 +159,7 @@ export async function GET(request: Request) {
     });
     if (audienceRes.ok) {
       const audiences = await audienceRes.json();
-      let audienceId = audiences.data?.[0]?.id;
+      let audienceId = pickAudienceId(audiences);
 
       if (!audienceId) {
         const createRes = await fetch("https://api.resend.com/audiences", {
@@ -168,7 +182,7 @@ export async function GET(request: Request) {
         contactBody.first_name = packedAttribution;
       }
 
-      await fetch(
+      const contactRes = await fetch(
         `https://api.resend.com/audiences/${audienceId}/contacts`,
         {
           method: "POST",
@@ -179,6 +193,22 @@ export async function GET(request: Request) {
           body: JSON.stringify(contactBody),
         },
       );
+      if (!contactRes.ok) {
+        // Contact already exists — this is a RE-subscriber. If they had
+        // previously unsubscribed, the POST above did not flip them back;
+        // PATCH unsubscribed:false so they actually receive emails again.
+        await fetch(
+          `https://api.resend.com/audiences/${audienceId}/contacts/${encodeURIComponent(email)}`,
+          {
+            method: "PATCH",
+            headers: {
+              Authorization: `Bearer ${RESEND_API_KEY}`,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ unsubscribed: false }),
+          },
+        );
+      }
     }
   } catch (err) {
     console.error("Failed to add contact to audience:", err);
@@ -224,11 +254,23 @@ export async function GET(request: Request) {
     else deferred.push(e);
   }
 
+  // Per-email dedup: a double-subscribe (two verification emails, both
+  // clicked) must not double-enroll the inbox in the sequence. Mark BEFORE
+  // scheduling so a concurrent second click can't race past the check. The
+  // audience add + unsubscribed:false re-activation above already ran, so a
+  // legitimate re-subscriber is back on the list for digests either way.
+  const alreadyEnrolled = await isNonceUsed(SOS_ENROLLED_NAMESPACE, email);
+  if (!alreadyEnrolled) {
+    await markNonceUsed(SOS_ENROLLED_NAMESPACE, email, SOS_ENROLLED_TTL_SECONDS);
+  }
+  const toScheduleNow = alreadyEnrolled ? [] : immediate;
+  const toDefer = alreadyEnrolled ? [] : deferred;
+
   console.log(
-    `[verify] dispatch email=${email} cohort=${cohortParam || "default"} route=${route || "none"} total=${sequence.length} immediate=${immediate.length} deferred=${deferred.length}`,
+    `[verify] dispatch email=${email} cohort=${cohortParam || "default"} route=${route || "none"} total=${sequence.length} immediate=${immediate.length} deferred=${deferred.length}${alreadyEnrolled ? " (already enrolled — skipping drip schedule)" : ""}`,
   );
 
-  for (const soapEmail of immediate) {
+  for (const soapEmail of toScheduleNow) {
     const sendAt = new Date(now + soapEmail.delayMs).toISOString();
     try {
       const res = await fetch("https://api.resend.com/emails", {
@@ -243,10 +285,7 @@ export async function GET(request: Request) {
           subject: soapEmail.subject,
           html: soapEmail.html,
           scheduled_at: sendAt,
-          headers: {
-            "List-Unsubscribe": `<mailto:${FROM_EMAIL}?subject=unsubscribe>`,
-            "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
-          },
+          headers: listUnsubscribeHeaders(email),
         }),
       });
       if (!res.ok) {
@@ -268,8 +307,8 @@ export async function GET(request: Request) {
   // can deliver them when the time comes. We pack the plan into a compact
   // JSON and store it in the contact's `properties.drip` field, keyed by
   // the delay-in-days so the cron can match on days-since-signup.
-  if (deferred.length > 0) {
-    const dripPlan = deferred.map((e) => ({
+  if (toDefer.length > 0) {
+    const dripPlan = toDefer.map((e) => ({
       d: Math.round(e.delayMs / (24 * 60 * 60 * 1000)), // delay in days
       s: e.subject,
       h: e.html,
@@ -281,7 +320,7 @@ export async function GET(request: Request) {
       });
       if (audienceRes.ok) {
         const audiences = await audienceRes.json();
-        const audienceId = audiences.data?.[0]?.id;
+        const audienceId = pickAudienceId(audiences);
         if (audienceId) {
           await fetch(
             `https://api.resend.com/audiences/${audienceId}/contacts/${encodeURIComponent(email)}`,
@@ -300,7 +339,7 @@ export async function GET(request: Request) {
             },
           );
           console.log(
-            `[verify] stored ${deferred.length} deferred drip emails for ${email}`,
+            `[verify] stored ${toDefer.length} deferred drip emails for ${email}`,
           );
         }
       }

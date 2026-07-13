@@ -256,7 +256,7 @@ const CHANNEL_BRANDING = {
     "🔗 " + SIGNALS + "/funnels         — every product door (free → €1,997)",
     "🔗 " + SSRN + "  — SSRN paper",
     "",
-    "Founder: The Data Nerd (anonymous, ORCID 0009-0002-2222-4112). Email: signal@gitdealflow.com.",
+    "Founder: The Data Nerd (anonymous, ORCID 0009-0002-2222-4112). Email: signals@gitdealflow.com.",
     "",
     "Every video on this channel is narrated by The Data Nerd — a single Cartesia synthetic voice that you'll also hear on the website's page narrations (" + SIGNALS + "/about/founder, /story, /origin, /perfect-webinar) and in the audio companion at the top of every Sunday email. Same voice, every surface. The face stays anonymous; the voice is consistent on purpose.",
     "",

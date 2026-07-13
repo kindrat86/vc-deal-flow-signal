@@ -113,6 +113,7 @@ export default function HomeSqueezeForm() {
           onChange={(e) => setEmail(e.target.value)}
           disabled={submitting}
           autoComplete="email"
+          enterKeyHint="send"
           placeholder="you@yourfund.com"
           className="block w-full rounded-md border border-slate-700 bg-slate-900 text-gray-100 text-base px-3 py-2.5 placeholder:text-gray-400 focus:border-sky-500 focus:ring-1 focus:ring-sky-500 disabled:opacity-50"
         />
@@ -120,7 +121,7 @@ export default function HomeSqueezeForm() {
       <button
         type="submit"
         disabled={submitting || !email || !route}
-        className="w-full inline-flex items-center justify-center gap-2 rounded-md bg-sky-600 hover:bg-sky-500 disabled:opacity-50 disabled:cursor-not-allowed px-5 py-3.5 text-white text-base font-semibold transition-colors shadow-sm shadow-sky-500/30"
+        className="w-full inline-flex items-center justify-center gap-2 rounded-md bg-[#ff6b1a] hover:bg-[#ff8c4d] disabled:opacity-50 disabled:cursor-not-allowed px-5 py-3.5 text-slate-950 text-base font-semibold transition-colors shadow-sm shadow-[#ff6b1a]/30"
       >
         {submitting ? "Sending confirmation…" : "Send me Sunday's 5 →"}
       </button>

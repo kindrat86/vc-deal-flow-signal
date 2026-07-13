@@ -1509,7 +1509,7 @@ If your numbers feel directionally off — much higher or much lower than the le
 
 **Rate-limit exhaustion.** If you have run the script several times and exhausted your hourly quota, the API will start returning 403s. Wait an hour and re-run.
 
-If your numbers feel directionally right but you want to validate against the live leaderboard, write to `signal@gitdealflow.com` with your numbers and I will pull the corresponding leaderboard score for that week and you can compare.
+If your numbers feel directionally right but you want to validate against the live leaderboard, write to `signals@gitdealflow.com` with your numbers and I will pull the corresponding leaderboard score for that week and you can compare.
 
 We are at minute ninety. You have, with a $0 budget, a personal access token, and roughly a hundred lines of Python, replicated a meaningful portion of the GitDealFlow signal stack on a real organization. You can now run this against any organization on GitHub. You have also verified that the methodology is real — you computed the numbers yourself from raw public data, and the numbers match the published methodology.
 
@@ -1576,7 +1576,7 @@ If that succeeds — even partially — then the kind of deal flow that landed o
 
 If this book is useful to you, please tell another investor about it. Word-of-mouth is the only meaningful distribution channel for a book like this; there is no advertising budget. The free PDF and EPUB downloads at `gitdealflow.com/book` are sized to be sent as an email attachment without scaring anyone's spam filter.
 
-If a chapter is wrong, or a threshold is poorly calibrated, or a methodology step does not reproduce, please write to `signal@gitdealflow.com`. The next edition will fold in your correction with attribution. The methodology is meant to be improved over time, not preserved as scripture.
+If a chapter is wrong, or a threshold is poorly calibrated, or a methodology step does not reproduce, please write to `signals@gitdealflow.com`. The next edition will fold in your correction with attribution. The methodology is meant to be improved over time, not preserved as scripture.
 
 If you read the book, run the workflow, and close a deal that you can attribute even partially to a signal in here, write and tell me. I will not publish the deal — anonymity is a foundational rule of this project — but the count of attribution-positive deals is the only metric I track that matters, and I will be grateful for the data point.
 

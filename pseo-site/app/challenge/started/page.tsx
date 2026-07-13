@@ -109,7 +109,7 @@ export default function ChallengeStartedPage() {
         If Day 1 doesn&rsquo;t arrive within 30 minutes, check your spam folder
         and add{" "}
         <code className="bg-slate-800 px-1 rounded text-gray-300">
-          signal@gitdealflow.com
+          signals@gitdealflow.com
         </code>{" "}
         to your address book. To unsubscribe at any point, reply to any email
         with the word{" "}

@@ -28,6 +28,7 @@
  */
 
 import { NextResponse } from "next/server";
+import { pickAudienceId } from "@/lib/resend-audience";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -35,7 +36,7 @@ export const maxDuration = 60;
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const CRON_SECRET = process.env.CRON_SECRET;
-const FROM_EMAIL = process.env.FROM_EMAIL || "signal@gitdealflow.com";
+const FROM_EMAIL = process.env.FROM_EMAIL || "signals@gitdealflow.com";
 const FROM_NAME = process.env.FROM_NAME || "The Data Nerd";
 
 interface DripEntry {
@@ -58,7 +59,7 @@ async function getAudienceId(): Promise<string | null> {
   });
   if (!res.ok) return null;
   const body = await res.json();
-  return body.data?.[0]?.id ?? null;
+  return pickAudienceId(body) ?? null;
 }
 
 async function getAllContacts(audienceId: string): Promise<ResendContact[]> {

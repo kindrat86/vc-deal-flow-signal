@@ -74,8 +74,8 @@ export default function DisclosurePage() {
         <p className="font-semibold mb-2">Quick path</p>
         <ol className="list-decimal list-outside ml-5 space-y-1">
           <li>Email{" "}
-            <a className="text-sky-400 hover:underline" href="mailto:signal@gitdealflow.com?subject=Security%20disclosure">
-              signal@gitdealflow.com
+            <a className="text-sky-400 hover:underline" href="mailto:signals@gitdealflow.com?subject=Security%20disclosure">
+              signals@gitdealflow.com
             </a>{" "}
             with subject prefix &quot;[security]&quot;.
           </li>

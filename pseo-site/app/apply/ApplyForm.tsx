@@ -77,7 +77,7 @@ export default function ApplyForm() {
       {
         when: "Now",
         who: "Pipeline",
-        what: "Your application was logged and forwarded to the founder's review queue. You'll see a confirmation email in the next 5 minutes from signal@gitdealflow.com — that one is automated, the human reply is not.",
+        what: "Your application was logged and forwarded to the founder's review queue. You'll see a confirmation email in the next 5 minutes from signals@gitdealflow.com — that one is automated, the human reply is not.",
       },
       {
         when: "Within 12 hours",
@@ -147,7 +147,7 @@ export default function ApplyForm() {
           If you don&rsquo;t see a reply by the end of the second business
           day, check spam, then reply to your most recent message from{" "}
           <code className="text-emerald-200 bg-emerald-900/40 px-1.5 py-0.5 rounded text-xs">
-            signal@gitdealflow.com
+            signals@gitdealflow.com
           </code>{" "}
           with the word <em>bump</em> to surface it. No application has gone
           un-replied; if yours is the first, it&rsquo;s a delivery issue, not
@@ -294,10 +294,10 @@ export default function ApplyForm() {
         <p className="text-rose-300 text-sm" role="alert">
           Couldn&rsquo;t submit: {errMsg}. Reply directly to{" "}
           <a
-            href="mailto:signal@gitdealflow.com?subject=Sharp%20Tier%20Application"
+            href="mailto:signals@gitdealflow.com?subject=Sharp%20Tier%20Application"
             className="underline decoration-dotted"
           >
-            signal@gitdealflow.com
+            signals@gitdealflow.com
           </a>{" "}
           if this persists.
         </p>

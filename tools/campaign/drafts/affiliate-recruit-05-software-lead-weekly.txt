@@ -1,5 +1,5 @@
 TO: oren@softwareleadweekly.com
-FROM: signal@gitdealflow.com
+FROM: signals@gitdealflow.com
 SUBJECT: Affiliate idea — engineering-leader → angel pipeline — GitDealFlow
 
 Hi Oren,

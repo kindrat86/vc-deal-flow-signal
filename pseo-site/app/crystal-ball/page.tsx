@@ -71,7 +71,7 @@ const SEEDED_PICKS: {
   },
   {
     handle: "@oracle_alt",
-    pick: "github.com/turso/libsql",
+    pick: "github.com/tursodatabase/libsql",
     outcome: "Pending — grading 2026-08-04",
     outcomeDate: "2026-08-04",
     status: "pending",

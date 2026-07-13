@@ -93,7 +93,7 @@ export async function GET() {
         commercialBulkRedistribution: {
           allow: false,
           notes:
-            "Repackaging the full corpus or substantial subsets thereof for sale or sublicensing requires written permission. Contact signal@gitdealflow.com.",
+            "Repackaging the full corpus or substantial subsets thereof for sale or sublicensing requires written permission. Contact signals@gitdealflow.com.",
         },
         impersonation: {
           allow: false,
@@ -124,8 +124,8 @@ export async function GET() {
         humansTxt: `${BASE_URL}/humans.txt`,
       },
       contact: {
-        general: "signal@gitdealflow.com",
-        commercial: "signal@gitdealflow.com",
+        general: "signals@gitdealflow.com",
+        commercial: "signals@gitdealflow.com",
         legal: "legal@gitdealflow.com",
       },
       lastUpdated: new Date().toISOString().slice(0, 10),

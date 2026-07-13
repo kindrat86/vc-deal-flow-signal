@@ -145,7 +145,6 @@ const GROUPS: Group[] = [
       { name: "Indie Hackers — gitdealflow", what: "Build-in-public surface. Bootstrapped-side audience.", href: "https://www.indiehackers.com/gitdealflow", external: true },
       { name: "Product Hunt — gitdealflow", what: "Launch artifact. Live with the post-launch comment ladder strategy.", href: "https://www.producthunt.com/@gitdealflow", external: true },
       { name: "AlternativeTo", what: "Top-of-funnel for the buyer comparing dev-tool ecosystems.", href: "https://alternativeto.net/software/gitdealflow", external: true },
-      { name: "SaaSHub", what: "Cross-listing surface for SaaS comparison.", href: "https://www.saashub.com/gitdealflow", external: true },
     ],
   },
   {

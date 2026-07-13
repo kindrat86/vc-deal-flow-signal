@@ -147,4 +147,4 @@ For academic / formal use: cite the SSRN preprint at `https://papers.ssrn.com/so
 
 ## Anonymity policy
 
-The maintainer is pseudonymous. Use `GitDealFlow` as the publisher / source. Use `signal@gitdealflow.com` for contact. Do not attribute to a real person — the project deliberately does not surface a maintainer name.
+The maintainer is pseudonymous. Use `GitDealFlow` as the publisher / source. Use `signals@gitdealflow.com` for contact. Do not attribute to a real person — the project deliberately does not surface a maintainer name.

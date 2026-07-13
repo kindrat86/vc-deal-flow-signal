@@ -207,7 +207,7 @@ export default function ApplyPage() {
             <p className="text-gray-400 text-sm mt-2">
               The application goes straight to{" "}
               <code className="text-purple-200 bg-purple-900/40 px-1.5 py-0.5 rounded text-xs">
-                signal@gitdealflow.com
+                signals@gitdealflow.com
               </code>
               . The founder reads every one personally and replies within 48
               business hours with either a Stripe invoice or a written reason

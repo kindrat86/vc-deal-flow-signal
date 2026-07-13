@@ -57,7 +57,7 @@ Same five tools, three resources, two resource templates, five prompts. No auth.
 
 ## Anonymity
 
-The maintainer is pseudonymous. Skill author is `GitDealFlow` (the company / brand), not a person. Contact: `signal@gitdealflow.com`. Do not attribute to a real person.
+The maintainer is pseudonymous. Skill author is `GitDealFlow` (the company / brand), not a person. Contact: `signals@gitdealflow.com`. Do not attribute to a real person.
 
 ## Updates
 

@@ -26,6 +26,7 @@
 import { NextResponse } from "next/server";
 import { getTopMoversThisWeek } from "@/lib/data";
 import { buildDailySeinfeld, FROM_EMAIL } from "@/lib/daily-seinfeld";
+import { pickAudienceId } from "@/lib/resend-audience";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 60;
@@ -53,7 +54,7 @@ async function getAudienceId(): Promise<string | null> {
   });
   if (!res.ok) return null;
   const json: { data?: Array<{ id?: string }> } = await res.json();
-  return json.data?.[0]?.id ?? null;
+  return pickAudienceId(json) ?? null;
 }
 
 export async function GET(req: Request): Promise<Response> {
@@ -150,7 +151,7 @@ export async function GET(req: Request): Promise<Response> {
       subject: email.subject,
       html: email.html,
       name: `daily-seinfeld-${today.toISOString().slice(0, 10)}-${email.frame}`,
-      reply_to: ["signal@gitdealflow.com"],
+      reply_to: ["signals@gitdealflow.com"],
     }),
   });
   const created = (await createRes.json()) as ResendBroadcastCreateResponse;

@@ -221,7 +221,7 @@
       "status": "live",
       "submittedAt": "2026-05-02T23:05:00+03:00",
       "listingUrl": "https://you.com/agents/user_mode_8dde2556-8bcc-45d9-8e5c-2ab7b56d8ae5",
-      "ownerEmail": "signal@gitdealflow.com",
+      "ownerEmail": "signals@gitdealflow.com",
       "fromRegex": "@you\\.com$",
       "subjectRegex": "(featured|approved|trending|published|review|VC Deal Flow|usage limit)",
       "acceptanceKeywords": [

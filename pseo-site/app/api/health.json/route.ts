@@ -35,7 +35,7 @@ export async function GET() {
       mcp: "ok",
       datasets: "ok",
     },
-    uptimeContact: "signal@gitdealflow.com",
+    uptimeContact: "signals@gitdealflow.com",
   };
 
   return new Response(JSON.stringify(body, null, 2), {

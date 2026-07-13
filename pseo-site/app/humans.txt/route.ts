@@ -38,7 +38,7 @@ export async function GET() {
 
 /* CONTACT */
 
-  Email: signal@gitdealflow.com
+  Email: signals@gitdealflow.com
   Security: ${SITE}/.well-known/security.txt
   AI policy: ${SITE}/.well-known/ai-policy.json
 `;

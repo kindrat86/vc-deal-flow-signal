@@ -1,5 +1,5 @@
 TO: hello@console.dev
-FROM: signal@gitdealflow.com
+FROM: signals@gitdealflow.com
 SUBJECT: Devtool review candidate + affiliate program — GitDealFlow MCP (A-Tier on Glama)
 
 Hi David,

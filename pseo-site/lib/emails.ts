@@ -76,7 +76,7 @@ ${body}
 </div>
 <div style="margin-top:40px;padding-top:20px;border-top:1px solid #e2e8f0;font-size:12px;color:#94a3b8;">
 <p>You're receiving this because you signed up at <a href="${SITE}" style="color:#0ea5e9;">gitdealflow.com</a></p>
-<p><a href="${SIGNALS}" style="color:#0ea5e9;">Browse Signals</a> · <a href="mailto:signal@gitdealflow.com" style="color:#0ea5e9;">Reply to unsubscribe</a></p>
+<p><a href="${SIGNALS}" style="color:#0ea5e9;">Browse Signals</a> · <a href="mailto:signals@gitdealflow.com" style="color:#0ea5e9;">Reply to unsubscribe</a></p>
 </div>
 </div>
 </body>
@@ -483,7 +483,7 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
 <p>Two — the 30-day Signal-or-It's-Free guarantee covers the Sweep itself. If we don't surface three orgs you didn't already know about, reply REFUND.</p>
 <p>If your thesis is genuinely focused on one sector this quarter — AI infra, dev tools, fintech rails, vertical SaaS, climate, whatever — this is the artefact that compresses three weeks of analyst work into one weekend of reading. Email me with the sector you want covered and I'll send back a tailored proposal in 24 hours.</p>
 <p>Talk soon —<br>${FROM_NAME}</p>
-<p style="color:#64748b;font-size:14px;">P.S. Email <a href="mailto:signal@gitdealflow.com?subject=Sector%20Sweep" style="color:#0ea5e9;">signal@gitdealflow.com</a> with subject "Sector Sweep" and the sector. We confirm the spec inside one business day.</p>
+<p style="color:#64748b;font-size:14px;">P.S. Email <a href="mailto:signals@gitdealflow.com?subject=Sector%20Sweep" style="color:#0ea5e9;">signals@gitdealflow.com</a> with subject "Sector Sweep" and the sector. We confirm the spec inside one business day.</p>
 `),
   },
 
@@ -1730,7 +1730,7 @@ const D30_I: SoapOperaEmail = {
 <p>The math at fund scale: one founder per quarter that you reached because you had a Sunday-night head-start, at a €5k–€50k angel range with even a 3× exit on one in five, lands somewhere between €15k and €150k of expected value per head-start. €97/mo is €1,164/yr. The numbers don't work the other way.</p>
 <p>The free Sunday digest stays free regardless. The 30-day welcome ends here, the rhythm continues. Sunday hits as usual this weekend.</p>
 <p>Talk soon —<br>${FROM_NAME}</p>
-<p style="color:#64748b;font-size:14px;">P.S. Insider founding rate (€97/mo, 24h lead, closed Telegram): <a href="${SIGNALS}/insider" style="color:#0ea5e9;">${SIGNALS}/insider</a> · Sector Sweep (€1,997, 7 of 8 Q3 slots open): <a href="${SIGNALS}/sector-sweep" style="color:#0ea5e9;">${SIGNALS}/sector-sweep</a> · Email <a href="mailto:signal@gitdealflow.com?subject=Sector%20Sweep" style="color:#0ea5e9;">signal@gitdealflow.com</a> with the sector and the spec lands in your inbox inside one business day.</p>
+<p style="color:#64748b;font-size:14px;">P.S. Insider founding rate (€97/mo, 24h lead, closed Telegram): <a href="${SIGNALS}/insider" style="color:#0ea5e9;">${SIGNALS}/insider</a> · Sector Sweep (€1,997, 7 of 8 Q3 slots open): <a href="${SIGNALS}/sector-sweep" style="color:#0ea5e9;">${SIGNALS}/sector-sweep</a> · Email <a href="mailto:signals@gitdealflow.com?subject=Sector%20Sweep" style="color:#0ea5e9;">signals@gitdealflow.com</a> with the sector and the spec lands in your inbox inside one business day.</p>
 `),
 };
 
@@ -1838,7 +1838,7 @@ const D5_I: SoapOperaEmail = {
 <p>Tomorrow I'll address the trust problem head-on &mdash; "I've been reading email from someone who signs as 'The Data Nerd' and doesn't put a face on the website" &mdash; because at your tier that's a legitimate ask, and I'd rather answer it explicitly than have it sit in your head until D90.</p>
 <p>Insider Circle case (12-minute walkthrough): <a href="${SIGNALS}/insider" style="color:#0ea5e9;font-weight:600;">${SIGNALS}/insider</a></p>
 <p>Talk soon,<br>${FROM_NAME}</p>
-<p style="color:#64748b;font-size:14px;">P.S. The Sector Sweep (&euro;1,997 one-time, capped 8/quarter, 100% credit toward Insider) is the right artefact if your fund needs IC-memo material on a specific sector before the Insider subscription decision. Send the sector to <a href="mailto:signal@gitdealflow.com?subject=Sector%20Sweep" style="color:#0ea5e9;">signal@gitdealflow.com</a> and the spec lands inside one business day.</p>
+<p style="color:#64748b;font-size:14px;">P.S. The Sector Sweep (&euro;1,997 one-time, capped 8/quarter, 100% credit toward Insider) is the right artefact if your fund needs IC-memo material on a specific sector before the Insider subscription decision. Send the sector to <a href="mailto:signals@gitdealflow.com?subject=Sector%20Sweep" style="color:#0ea5e9;">signals@gitdealflow.com</a> and the spec lands inside one business day.</p>
 `),
 };
 
@@ -1889,7 +1889,7 @@ const D45_I: SoapOperaEmail = {
 <p>Two reasons to consider it now, specifically:</p>
 <p>One &mdash; the &euro;1,997 is 100% credited to Insider Circle if you upgrade within 60 days of receiving the Sweep. That's roughly your first 20 months of Insider, paid in full. Operationally: if your fund is going to subscribe to Insider anyway, the Sweep is a free upgrade with a one-time deep artefact attached.</p>
 <p>Two &mdash; the 30-day Signal-or-It's-Free guarantee covers the Sweep itself. If we don't surface three orgs you didn't already know about, reply REFUND. No forms, no calls, no questions.</p>
-<p>If your fund's thesis is genuinely focused on one sector this quarter &mdash; AI infra, dev tools, fintech rails, vertical SaaS, climate &mdash; this is the artefact that compresses three weeks of analyst work into one weekend of reading. Email <a href="mailto:signal@gitdealflow.com?subject=Sector%20Sweep" style="color:#0ea5e9;">signal@gitdealflow.com</a> with the sector and we confirm the spec inside one business day.</p>
+<p>If your fund's thesis is genuinely focused on one sector this quarter &mdash; AI infra, dev tools, fintech rails, vertical SaaS, climate &mdash; this is the artefact that compresses three weeks of analyst work into one weekend of reading. Email <a href="mailto:signals@gitdealflow.com?subject=Sector%20Sweep" style="color:#0ea5e9;">signals@gitdealflow.com</a> with the sector and we confirm the spec inside one business day.</p>
 <p>If Insider Circle isn't running yet either &mdash; the founding-rate window (&euro;97/mo, locked for the lifetime of the subscription) is still open. The 24-hour Sunday lead is the operating leverage; everything else is plumbing.</p>
 <p>Talk soon &mdash;<br>${FROM_NAME}</p>
 <p style="color:#64748b;font-size:14px;">P.S. Insider Circle (&euro;97/mo, 24h lead, closed Telegram, ~30 fund-tier subscribers): <a href="${SIGNALS}/insider" style="color:#0ea5e9;">${SIGNALS}/insider</a> &middot; Sector Sweep stack itemised: <a href="${SIGNALS}/pricing#sector-sweep-stack" style="color:#0ea5e9;">${SIGNALS}/pricing#sector-sweep-stack</a></p>

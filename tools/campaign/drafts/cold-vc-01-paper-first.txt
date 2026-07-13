@@ -1,5 +1,5 @@
 TO: {{firstName}}@{{firm-domain}}
-FROM: signal@gitdealflow.com
+FROM: signals@gitdealflow.com
 SUBJECT: Engineering acceleration as a Series A leading indicator
 
 Hi {{firstName}},

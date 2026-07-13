@@ -72,7 +72,7 @@ export default function PressPage() {
         mainEntity: {
           "@type": "ContactPoint",
           contactType: "press",
-          email: "signal@gitdealflow.com",
+          email: "signals@gitdealflow.com",
           availableLanguage: ["en"],
           areaServed: "Worldwide",
         },
@@ -359,7 +359,7 @@ export default function PressPage() {
               briefings:
             </p>
             <p className="text-base text-sky-400 mt-2">
-              <a href="mailto:signal@gitdealflow.com">signal@gitdealflow.com</a>
+              <a href="mailto:signals@gitdealflow.com">signals@gitdealflow.com</a>
             </p>
             <p className="text-xs text-gray-400 mt-3">
               Founder is fully anonymous (handle: The Data Nerd, ORCID

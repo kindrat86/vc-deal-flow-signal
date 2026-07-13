@@ -39,7 +39,7 @@ export async function GET() {
 
       controller: {
         legalName: "VC Deal Flow Signal (GitDealFlow)",
-        contact: "signal@gitdealflow.com",
+        contact: "signals@gitdealflow.com",
         rolesScope: [
           "Controller for subscriber email, Stripe customer ID, share tokens, scout-session metadata",
           "Processor (none) — we engage no upstream controllers",
@@ -51,8 +51,8 @@ export async function GET() {
         url: `${SITE}/dpa`,
         format: "text/html",
         signedFormat:
-          "On request — emailing signal@gitdealflow.com with company legal name returns a counter-signed PDF within 5 business days",
-        countersignContact: "signal@gitdealflow.com",
+          "On request — emailing signals@gitdealflow.com with company legal name returns a counter-signed PDF within 5 business days",
+        countersignContact: "signals@gitdealflow.com",
         appliesTo: [
           "Insider Tier (€97/mo)",
           "Sharp Tier (€497/mo)",

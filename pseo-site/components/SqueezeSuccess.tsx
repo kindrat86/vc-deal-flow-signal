@@ -143,7 +143,7 @@ export default function SqueezeSuccess({
           Don&rsquo;t see it in 5 minutes? Check spam / Promotions and
           whitelist{" "}
           <code className="text-emerald-200 bg-emerald-900/40 px-1.5 py-0.5 rounded text-xs">
-            signal@gitdealflow.com
+            signals@gitdealflow.com
           </code>
           .
         </p>

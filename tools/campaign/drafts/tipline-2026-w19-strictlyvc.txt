@@ -1,5 +1,5 @@
 TO: tips@strictlyvc.com
-FROM: signal@gitdealflow.com
+FROM: signals@gitdealflow.com
 SUBJECT: GitHub Momentum Index — week of May 4, 2026 — 5 movers
 
 Hi StrictlyVC team,

@@ -611,10 +611,10 @@ export default function ResearchPage() {
           <p className="mb-2">
             Replication studies welcome.{" "}
             <a
-              href="mailto:signal@gitdealflow.com"
+              href="mailto:signals@gitdealflow.com"
               className="text-sky-400 hover:text-sky-300 underline"
             >
-              signal@gitdealflow.com
+              signals@gitdealflow.com
             </a>{" "}
             for co-authorship on funding-event joins.
           </p>

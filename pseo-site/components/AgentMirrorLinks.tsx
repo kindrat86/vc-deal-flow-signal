@@ -10,6 +10,8 @@
  * doesn't expose <head> from a child page, so emitting from the body is the
  * pragmatic option.
  */
+import { supportsMdMirror } from "@/lib/md-mirror";
+
 const SITE = "https://signals.gitdealflow.com";
 
 interface Props {
@@ -21,18 +23,21 @@ interface Props {
 
 export function AgentMirrorLinks({ path, qaCategory }: Props) {
   const cleanPath = path.startsWith("/") ? path : `/${path}`;
+  const hasMdMirror = supportsMdMirror(cleanPath);
   const mdHref = `${SITE}/md${cleanPath}`;
   const qaHref = qaCategory
     ? `${SITE}/qa.jsonl?category=${encodeURIComponent(qaCategory)}`
     : `${SITE}/qa.jsonl`;
   return (
     <>
-      <link
-        rel="alternate"
-        type="text/markdown"
-        href={mdHref}
-        title={`Markdown mirror of ${cleanPath}`}
-      />
+      {hasMdMirror && (
+        <link
+          rel="alternate"
+          type="text/markdown"
+          href={mdHref}
+          title={`Markdown mirror of ${cleanPath}`}
+        />
+      )}
       <link
         rel="alternate"
         type="application/x-ndjson"

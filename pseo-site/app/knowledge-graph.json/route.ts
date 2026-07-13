@@ -106,7 +106,7 @@ export async function GET() {
         alternateName: ["GitDealFlow", "VC Deal Flow Signal (GitDealFlow)"],
         url: APEX,
         foundingDate: "2025",
-        email: "signal@gitdealflow.com",
+        email: "signals@gitdealflow.com",
         sameAs: [
           "https://www.wikidata.org/wiki/Q139376302",
           "https://www.crunchbase.com/organization/gitdealflow",
@@ -118,7 +118,6 @@ export async function GET() {
           "https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn",
           "https://www.producthunt.com/products/vc-deal-flow-signal",
           "https://www.g2.com/products/vc-deal-flow-signal/reviews",
-          "https://www.saashub.com/vc-deal-flow-signal",
           "https://alternativeto.net/software/vc-deal-flow-signal/",
         ],
         knowsAbout: [
@@ -149,7 +148,6 @@ export async function GET() {
           "https://github.com/kindrat86",
           "https://news.ycombinator.com/user?id=the_data_nerd",
           "https://www.indiehackers.com/The_Data_Nerd",
-          "https://dev.to/the_data_nerd",
         ],
       },
       // ─── Methodology paper (SSRN) ─────────────────────────────────────────
@@ -199,7 +197,7 @@ export async function GET() {
         url: SITE,
         identifier: SITE,
         sameAs: [
-          "https://kaggle.com/datasets/thedatanerd/vc-deal-flow-signal",
+          "https://www.kaggle.com/datasets/thedatanerd2026/vc-deal-flow-signal",
           "https://zenodo.org/records/19650920",
         ],
         license: "https://creativecommons.org/licenses/by/4.0/",

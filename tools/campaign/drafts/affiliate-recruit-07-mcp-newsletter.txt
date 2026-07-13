@@ -1,5 +1,5 @@
 TO: [author of any active MCP-focused newsletter — research before send]
-FROM: signal@gitdealflow.com
+FROM: signals@gitdealflow.com
 SUBJECT: Affiliate — GitDealFlow MCP (one of the higher-ranked A-Tier servers on Glama)
 
 Hi,

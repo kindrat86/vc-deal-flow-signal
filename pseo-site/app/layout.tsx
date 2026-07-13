@@ -270,7 +270,7 @@ export default function RootLayout({
         <link
           rel="alternate"
           type="application/jrd+json"
-          href="https://signals.gitdealflow.com/.well-known/webfinger?resource=acct:signal@gitdealflow.com"
+          href="https://signals.gitdealflow.com/.well-known/webfinger?resource=acct:signals@gitdealflow.com"
           title="WebFinger (RFC 7033)"
         />
         <link
@@ -370,7 +370,7 @@ export default function RootLayout({
         <link rel="me" href="https://www.linkedin.com/company/gitdealflow" />
         <link rel="me" href="https://www.npmjs.com/~thedatanerd" />
         <link rel="me" href="https://t.me/gitdealflow" />
-        <link rel="me" href="mailto:signal@gitdealflow.com" />
+        <link rel="me" href="mailto:signals@gitdealflow.com" />
         {/* Site-wide hreflang removed: every page-level emission via
             <HreflangLinks/> is now authoritative and contextual. Layout-level
             entries pointed to root for every page, conflicting with the

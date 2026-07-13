@@ -81,8 +81,8 @@ ${cats}
     <description>Wire-ready press releases from VC Deal Flow Signal (GitDealFlow). Engineering acceleration signals for venture capital. CC BY 4.0.</description>
     <language>en-US</language>
     <copyright>CC BY 4.0 — VC Deal Flow Signal</copyright>
-    <managingEditor>signal@gitdealflow.com (The Data Nerd)</managingEditor>
-    <webMaster>signal@gitdealflow.com (The Data Nerd)</webMaster>
+    <managingEditor>signals@gitdealflow.com (The Data Nerd)</managingEditor>
+    <webMaster>signals@gitdealflow.com (The Data Nerd)</webMaster>
     <lastBuildDate>${lastBuild}</lastBuildDate>
     <pubDate>${lastBuild}</pubDate>
     <generator>VC Deal Flow Signal press distribution</generator>

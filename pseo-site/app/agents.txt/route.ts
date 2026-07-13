@@ -138,7 +138,7 @@ export async function GET() {
   lines.push(``);
   lines.push(`Site: https://signals.gitdealflow.com`);
   lines.push(`Publisher: VC Deal Flow Signal (GitDealFlow)`);
-  lines.push(`Contact: mailto:signal@gitdealflow.com`);
+  lines.push(`Contact: mailto:signals@gitdealflow.com`);
   lines.push(`Wikidata: https://www.wikidata.org/wiki/Q139376302`);
   lines.push(`ORCID: https://orcid.org/0009-0002-2222-4112`);
   lines.push(`SSRN: https://ssrn.com/abstract=6606558`);

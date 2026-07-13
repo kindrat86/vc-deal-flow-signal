@@ -121,10 +121,10 @@ export default async function AgentCreditsPage({
                 <p className="text-emerald-100/60 text-xs leading-relaxed">
                   Didn&rsquo;t get it within 2 minutes? Check spam, then email{" "}
                   <a
-                    href="mailto:signal@gitdealflow.com"
+                    href="mailto:signals@gitdealflow.com"
                     className="text-emerald-200 hover:text-emerald-100 underline"
                   >
-                    signal@gitdealflow.com
+                    signals@gitdealflow.com
                   </a>{" "}
                   with your Stripe receipt — keys are deterministic, we can
                   resend without re-charging.
@@ -528,10 +528,10 @@ const r = await fetchWithPayment(
               <dd className="text-gray-400 leading-relaxed">
                 Email{" "}
                 <a
-                  href="mailto:signal@gitdealflow.com"
+                  href="mailto:signals@gitdealflow.com"
                   className="text-sky-400 hover:text-sky-300"
                 >
-                  signal@gitdealflow.com
+                  signals@gitdealflow.com
                 </a>{" "}
                 for 1k+ packs or volume rates.
               </dd>

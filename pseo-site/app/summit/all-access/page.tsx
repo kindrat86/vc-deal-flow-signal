@@ -137,39 +137,36 @@ export default function AllAccessPage() {
               Your price: €{SUMMIT.allAccessPrice} one-time.
             </p>
           </div>
-          <a
-            href={SUMMIT.allAccessStripeLink}
-            className="block w-full rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold px-6 py-4 transition-colors text-center text-lg"
-          >
-            Get the All-Access Pass — €{SUMMIT.allAccessPrice}
-          </a>
-          <p className="text-xs text-gray-400 text-center">
-            Stripe checkout · Card or Apple/Google Pay · 30-day refund · No subscription
-          </p>
-        </section>
-
-        {/* Order bump — Sector Sweep */}
-        <section className="rounded-xl border border-amber-700/40 bg-gradient-to-br from-amber-950/30 via-slate-900 to-slate-950 p-6 sm:p-8 space-y-4">
-          <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider">
-            Summit-week order bump
-          </p>
-          <h2 className="text-xl font-bold text-gray-100">
-            Sector Sweep — €1,500 off, summit-attendees only.
-          </h2>
-          <p className="text-sm text-gray-300 leading-relaxed">
-            One full sector deep-dive on a sector of your choice — top 25
-            ranked GitHub orgs, contributor maps, three pre-Crunchbase
-            breakouts, raw CSV, and a 14-page written walkthrough. €297 for
-            summit attendees only (€1,500 off the standard €1,797 price).
-            Available alongside the All-Access Pass at checkout, or directly
-            below.
-          </p>
-          <a
-            href={SUMMIT.orderBumpStripeLink}
-            className="inline-block rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-semibold px-5 py-2.5 transition-colors"
-          >
-            Add Sector Sweep — €297 →
-          </a>
+          <form method="POST" action="/api/checkout/session" className="space-y-4">
+            <input type="hidden" name="tier" value={SUMMIT.allAccessCheckoutTier} />
+            {/* Brunson in-cart order bump — checkbox adds the Sector Sweep
+                as a second line item in the same Stripe checkout. */}
+            <label className="flex items-start gap-3 rounded-lg border-2 border-dashed border-amber-500/60 bg-amber-950/20 p-4 cursor-pointer">
+              <input
+                type="checkbox"
+                name="bump"
+                value={SUMMIT.orderBumpKey}
+                className="mt-1 h-5 w-5 shrink-0 accent-amber-500"
+              />
+              <span className="text-sm text-gray-200 leading-snug">
+                <span className="font-bold text-amber-300">
+                  Yes — add the {SUMMIT.orderBumpLabel}.
+                </span>{" "}
+                One full sector deep-dive of your choice: top 25 ranked GitHub
+                orgs, contributor maps, three pre-Crunchbase breakouts, raw
+                CSV, and a 14-page written walkthrough. Summit attendees only.
+              </span>
+            </label>
+            <button
+              type="submit"
+              className="block w-full rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold px-6 py-4 transition-colors text-center text-lg min-h-[56px]"
+            >
+              Get the All-Access Pass — €{SUMMIT.allAccessPrice}
+            </button>
+            <p className="text-xs text-gray-400 text-center">
+              Stripe checkout · Card or Apple/Google Pay · 30-day refund · No subscription
+            </p>
+          </form>
         </section>
 
         {/* Talks list */}

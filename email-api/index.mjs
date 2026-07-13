@@ -1,3 +1,37 @@
+/* ==========================================================================
+ * DEPRECATED — DO NOT RUN, DO NOT RESURRECT.
+ *
+ * This legacy local subscribe server writes to a PocketBase "subscribers" /
+ * "email_sequences" / "email_log" schema that NO LONGER EXISTS (the local PB
+ * was deleted; the fly PB hosts only the scout leaderboard). Every request
+ * it serves would 500, and any email it captured would be silently dropped.
+ *
+ * The live pipeline replaced all of it:
+ *   • Subscribe:     POST https://signals.gitdealflow.com/api/subscribe
+ *                    (pseo-site/app/api/subscribe/route.ts — double-opt-in)
+ *   • Drip sending:  Resend scheduled_at + /api/cron/drip-sender
+ *   • Unsubscribe:   https://signals.gitdealflow.com/api/unsubscribe
+ *   • Weekly digest: ./send-weekly-digest.mjs (reads the Resend audience)
+ *
+ * The process exits immediately below so a stale launchd/pm2 entry can't
+ * quietly boot a dead endpoint.
+ * ========================================================================== */
+
+console.error(
+  [
+    "",
+    "*** email-api/index.mjs is DEPRECATED and refuses to start. ***",
+    "",
+    "It posts to a deleted PocketBase schema — captured emails would be lost.",
+    "Use the live pipeline instead:",
+    "  Subscribe:     POST https://signals.gitdealflow.com/api/subscribe",
+    "  Weekly digest: node email-api/send-weekly-digest.mjs",
+    "",
+  ].join("\n"),
+);
+process.exit(1);
+
+// eslint-disable-next-line no-unreachable
 import { serve } from "@hono/node-server";
 import { Hono } from "hono";
 import { cors } from "hono/cors";
@@ -195,7 +229,7 @@ app.post("/subscribe", async (c) => {
   // Notify admin of new subscriber (fire and forget)
   resend.emails.send({
     from: `${FROM_NAME} <${FROM_EMAIL}>`,
-    to: "signal@gitdealflow.com",
+    to: "signals@gitdealflow.com",
     subject: `New subscriber: ${email}`,
     html: `<p><strong>New signup on gitdealflow.com</strong></p>
 <p>Email: ${escapeHtml(email)}</p>
@@ -219,7 +253,7 @@ app.post("/subscribe", async (c) => {
         subject: welcomeEmail.subject,
         html: wrapEmailHtml(welcomeEmail.body_html),
         headers: {
-          "List-Unsubscribe": "<mailto:signal@gitdealflow.com?subject=Unsubscribe>",
+          "List-Unsubscribe": "<mailto:signals@gitdealflow.com?subject=Unsubscribe>",
           "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
         },
       });
@@ -319,7 +353,7 @@ app.post("/cron/send-emails", async (c) => {
         subject: nextEmail.subject,
         html: wrapEmailHtml(nextEmail.body_html),
         headers: {
-          "List-Unsubscribe": "<mailto:signal@gitdealflow.com?subject=Unsubscribe>",
+          "List-Unsubscribe": "<mailto:signals@gitdealflow.com?subject=Unsubscribe>",
           "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
         },
       });
@@ -378,7 +412,7 @@ function wrapEmailHtml(bodyHtml) {
     </div>
     <div style="margin-top:40px; padding-top:20px; border-top:1px solid #e2e8f0; font-size:12px; color:#94a3b8;">
       <p>You're receiving this because you signed up at <a href="https://gitdealflow.com" style="color:#0ea5e9;">gitdealflow.com</a></p>
-      <p><a href="https://gitdealflow.com/dashboard" style="color:#0ea5e9;">Visit Dashboard</a> · To unsubscribe, reply to this email with "unsubscribe" or <a href="mailto:signal@gitdealflow.com?subject=Unsubscribe" style="color:#0ea5e9;">click here</a>.</p>
+      <p><a href="https://gitdealflow.com/dashboard" style="color:#0ea5e9;">Visit Dashboard</a> · To unsubscribe, reply to this email with "unsubscribe" or <a href="mailto:signals@gitdealflow.com?subject=Unsubscribe" style="color:#0ea5e9;">click here</a>.</p>
     </div>
   </div>
 </body>

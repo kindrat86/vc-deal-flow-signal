@@ -317,7 +317,7 @@ export default function CitationGuidePage() {
 
       <p className="mt-8 text-sm text-gray-400">
         Found a citation that should be added or corrected? Email{" "}
-        <a href="mailto:signal@gitdealflow.com">signal@gitdealflow.com</a>.
+        <a href="mailto:signals@gitdealflow.com">signals@gitdealflow.com</a>.
       </p>
 
       <SeoCta className="mt-10 not-prose" />

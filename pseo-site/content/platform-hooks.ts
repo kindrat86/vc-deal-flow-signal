@@ -217,7 +217,7 @@ export const PLATFORM_HOOKS: PlatformHook[] = [
       "≤100 words. Plain text. One link. Signature includes SSRN DOI as the credibility anchor.",
     timing: "Tue–Thu 09:00–11:00 partner-local time (Mon and Fri have 30% lower open rates).",
     rule: "Never start with 'Hope this finds you well.' Never CC. Never attach. Pace ≤2 sends/day per Mailreach warm-up rule.",
-    handle: "signal@gitdealflow.com",
+    handle: "signals@gitdealflow.com",
   },
   {
     slug: "angellist",

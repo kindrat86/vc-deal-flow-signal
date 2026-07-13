@@ -200,7 +200,7 @@ export async function GET() {
       },
       P968: {
         label: "email",
-        value: "signal@gitdealflow.com",
+        value: "signals@gitdealflow.com",
       },
       P1581: {
         label: "official blog",
@@ -245,7 +245,6 @@ export async function GET() {
       "https://www.npmjs.com/package/@gitdealflow/mcp-signal",
       "https://www.producthunt.com/products/vc-deal-flow-signal",
       "https://www.g2.com/products/vc-deal-flow-signal/reviews",
-      "https://www.saashub.com/vc-deal-flow-signal",
       "https://alternativeto.net/software/vc-deal-flow-signal/",
       "https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn",
       "https://chromewebstore.google.com/detail/vc-github-lookup-%E2%80%94-startu/plgngijmloeljfkenecdkhiblcfcbblm",
@@ -255,7 +254,7 @@ export async function GET() {
       "https://zenodo.org/records/19650920",
       "https://www.semanticscholar.org/paper/4dd7b11e79757f68e0c4107252514cbfdfbb0462",
       "https://www.connectedpapers.com/main/4dd7b11e79757f68e0c4107252514cbfdfbb0462",
-      "https://kaggle.com/datasets/thedatanerd/vc-deal-flow-signal",
+      "https://www.kaggle.com/datasets/thedatanerd2026/vc-deal-flow-signal",
       "https://huggingface.co/datasets/the-data-nerd/vc-deal-flow-signal",
       "https://huggingface.co/spaces/the-data-nerd/vc-deal-flow-explorer",
       "https://huggingface.co/spaces/the-data-nerd/vc-deal-flow-deepseek",

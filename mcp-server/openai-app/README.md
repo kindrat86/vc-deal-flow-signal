@@ -19,7 +19,7 @@ The ChatGPT App points at the HTTP transport. Both transports speak the same JSO
 
 The Apps Console is UI-driven. The maintainer (anonymity-safe — submit under the `GitDealFlow` company name, not a personal account) does the submission once. Future updates are versioned in this directory and re-submitted.
 
-1. Sign in at https://platform.openai.com/apps with the GitDealFlow account (`signal@gitdealflow.com`).
+1. Sign in at https://platform.openai.com/apps with the GitDealFlow account (`signals@gitdealflow.com`).
 2. **Create app** → choose **MCP connector**.
 3. Paste the connector URL: `https://signals.gitdealflow.com/api/mcp/rpc`.
    - Console will fetch `/api/mcp/rpc` (GET) and `/.well-known/mcp.json` to validate the manifest.
@@ -77,7 +77,7 @@ All five should return valid responses with no `error` field.
 ## Anonymity
 
 - Publisher = `GitDealFlow` (company), never a person.
-- Contact email = `signal@gitdealflow.com`.
+- Contact email = `signals@gitdealflow.com`.
 - All discoverability URLs use the `gitdealflow.com` domain.
 - Apps Console listing must not expose maintainer real name in any field — the `manifest.json:publisher.name` is the canonical surface.
 

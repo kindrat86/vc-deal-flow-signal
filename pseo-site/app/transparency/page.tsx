@@ -93,7 +93,7 @@ export default function TransparencyPage() {
             <li>We notify the affected user before complying — unless prohibited by court order or there is a clear and imminent risk of physical harm.</li>
             <li>Median content-takedown response time: 72 hours. Frameworks honored: DMCA, GDPR Art. 17 (right to erasure), EU Digital Services Act.</li>
             <li>Breach notification SLA: 72 hours from confirmed breach (GDPR Art. 33).</li>
-            <li>Law-enforcement contact appeals: <a className="text-sky-400 hover:underline" href="mailto:signal@gitdealflow.com?subject=Data%20request%20appeal">signal@gitdealflow.com</a>.</li>
+            <li>Law-enforcement contact appeals: <a className="text-sky-400 hover:underline" href="mailto:signals@gitdealflow.com?subject=Data%20request%20appeal">signals@gitdealflow.com</a>.</li>
           </ul>
         </div>
 

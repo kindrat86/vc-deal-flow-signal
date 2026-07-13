@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getSession } from "@/lib/auth";
 import { checkRateLimit, getClientIp, rateLimitHeaders } from "@/lib/rate-limit";
 
-const FROM_EMAIL = process.env.FROM_EMAIL || "signal@gitdealflow.com";
+const FROM_EMAIL = process.env.FROM_EMAIL || "signals@gitdealflow.com";
 const FROM_NAME = process.env.FROM_NAME || "The Data Nerd";
 
 /** HTML-escape a string to prevent XSS in email templates */
@@ -60,7 +60,7 @@ export async function POST(request: NextRequest) {
     },
     body: JSON.stringify({
       from: `${FROM_NAME} <${FROM_EMAIL}>`,
-      to: "signal@gitdealflow.com",
+      to: "signals@gitdealflow.com",
       subject: `Watchlist alert request: ${escapeHtml(email)}`,
       html: `<p><strong>Insider watchlist alert request</strong></p>
 <p>Email: ${escapeHtml(email)}</p>

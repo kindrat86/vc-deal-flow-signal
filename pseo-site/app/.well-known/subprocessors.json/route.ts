@@ -168,7 +168,7 @@ export async function GET() {
     contractVersion: "2026-05-08.f38",
     notificationPolicy: {
       method: "Email to all paid subscribers",
-      channel: "signal@gitdealflow.com → audience broadcast",
+      channel: "signals@gitdealflow.com → audience broadcast",
       noticePeriodDays: 30,
       changelogUrl: `${SITE}/changelog`,
       details:

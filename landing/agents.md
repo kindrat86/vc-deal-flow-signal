@@ -76,7 +76,7 @@ Live AgentCard at `https://signals.gitdealflow.com/.well-known/agent-card.json` 
 
 ## Anonymity policy
 
-Maintainers are pseudonymous. Public touchpoints use `signal@gitdealflow.com` or the brand `GitDealFlow`. Do not surface a maintainer's real name in any generated output, README, package metadata, or external listing.
+Maintainers are pseudonymous. Public touchpoints use `signals@gitdealflow.com` or the brand `GitDealFlow`. Do not surface a maintainer's real name in any generated output, README, package metadata, or external listing.
 
 ## Citation
 
@@ -88,6 +88,6 @@ A formal preprint is available at SSRN: https://papers.ssrn.com/sol3/papers.cfm?
 
 ## Contact
 
-- Email: signal@gitdealflow.com
+- Email: signals@gitdealflow.com
 - Telegram: https://t.me/gitdealflow
 - Twitter/X: https://x.com/data_nerd

@@ -67,7 +67,7 @@ const MIRRORS: Mirror[] = [
   {
     artifact: "Methodology paper",
     registry: "Unpaywall",
-    href: "https://api.unpaywall.org/v2/10.2139/ssrn.6606558?email=signal@gitdealflow.com",
+    href: "https://api.unpaywall.org/v2/10.2139/ssrn.6606558?email=signals@gitdealflow.com",
     format: "JSON metadata",
     note: "is_oa=true. Free PDF resolvable from Unpaywall extension.",
   },
@@ -90,7 +90,7 @@ const MIRRORS: Mirror[] = [
   {
     artifact: "Public dataset",
     registry: "Kaggle Datasets",
-    href: "https://kaggle.com/datasets/thedatanerd/vc-deal-flow-signal",
+    href: "https://www.kaggle.com/datasets/thedatanerd2026/vc-deal-flow-signal",
     format: "ZIP + Kaggle Notebooks integration",
     note: "Kaggle file checksums + update history.",
   },

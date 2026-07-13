@@ -1,5 +1,5 @@
 TO: hello@devtools.fyi
-FROM: signal@gitdealflow.com
+FROM: signals@gitdealflow.com
 SUBJECT: Affiliate program — GitDealFlow MCP (5 free tools, A-Tier Glama)
 
 Hi,

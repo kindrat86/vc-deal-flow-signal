@@ -4,6 +4,9 @@ import { isExcluded } from "@/lib/excluded-emails";
 import { checkRateLimit, getClientIp, rateLimitHeaders } from "@/lib/rate-limit";
 import { signVerifyToken } from "@/lib/verify-token";
 import { SOAP_OPERA_EMAILS } from "@/lib/emails";
+import { isNonceUsed, markNonceUsed } from "@/lib/runtime-cache";
+import { listUnsubscribeHeaders } from "@/lib/list-unsubscribe";
+import { pickAudienceId } from "@/lib/resend-audience";
 
 /**
  * Book download endpoint. Accepts a POST with `email` (form-encoded or JSON),
@@ -17,10 +20,23 @@ import { SOAP_OPERA_EMAILS } from "@/lib/emails";
  * audience build matches every other capture surface.
  */
 const RESEND_API_KEY = process.env.RESEND_API_KEY!;
-const FROM_EMAIL = process.env.FROM_EMAIL || "signal@gitdealflow.com";
+const FROM_EMAIL = process.env.FROM_EMAIL || "signals@gitdealflow.com";
 const FROM_NAME = process.env.FROM_NAME || "The Data Nerd";
 const SITE_URL =
   process.env.SITE_URL || "https://signals.gitdealflow.com";
+
+// Shared with /api/verify: per-EMAIL Soap Opera enrollment dedup. A repeat
+// download (or a book download after a landing-page subscribe) must re-send
+// the download links but must NOT re-queue the drip sequence. Same
+// namespace/key as verify so the two capture surfaces dedup against each
+// other, not just themselves.
+const SOS_ENROLLED_NAMESPACE = "sos-enrolled";
+const SOS_ENROLLED_TTL_SECONDS = 180 * 86_400;
+
+// Resend rejects scheduled_at more than 30 days out (422). Mirror verify's
+// split: ≤29d scheduled now, the rest stored as a drip_plan the
+// /api/cron/drip-sender daily cron delivers.
+const MAX_SCHEDULE_MS = 29 * 24 * 60 * 60 * 1000;
 
 function escapeHtml(s: string): string {
   return s
@@ -101,23 +117,38 @@ async function sendImmediate(
       tags: [
         { name: "campaign", value: utmCampaign },
       ],
-      headers: {
-        "List-Unsubscribe": `<mailto:${FROM_EMAIL}?subject=unsubscribe>`,
-        "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
-      },
+      headers: listUnsubscribeHeaders(email),
     }),
   });
   return res.ok;
 }
 
-async function scheduleSoapOpera(email: string): Promise<void> {
+/**
+ * Queue the Soap Opera drip with the same 29-day split as /api/verify:
+ * emails inside Resend's scheduling horizon go out via `scheduled_at`;
+ * everything beyond it is stored as `drip_plan`/`drip_sent` contact
+ * properties that /api/cron/drip-sender reads daily. Before the split,
+ * every email past Day 29 was silently rejected by Resend (422).
+ */
+async function scheduleSoapOpera(
+  email: string,
+  audienceId: string | null,
+): Promise<void> {
   const now = Date.now();
   // Skip Day-0 (we just sent the download email which serves the same role)
   // and start from Day-1 onward.
-  for (const e of SOAP_OPERA_EMAILS.slice(1)) {
+  const sequence = SOAP_OPERA_EMAILS.slice(1);
+  const immediate: typeof sequence = [];
+  const deferred: typeof sequence = [];
+  for (const e of sequence) {
+    if (e.delayMs <= MAX_SCHEDULE_MS) immediate.push(e);
+    else deferred.push(e);
+  }
+
+  for (const e of immediate) {
     const scheduledAt = new Date(now + e.delayMs).toISOString();
     try {
-      await fetch("https://api.resend.com/emails", {
+      const res = await fetch("https://api.resend.com/emails", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${RESEND_API_KEY}`,
@@ -130,27 +161,68 @@ async function scheduleSoapOpera(email: string): Promise<void> {
           html: e.html,
           scheduled_at: scheduledAt,
           tags: [{ name: "campaign", value: "book-funnel-drip" }],
-          headers: {
-            "List-Unsubscribe": `<mailto:${FROM_EMAIL}?subject=unsubscribe>`,
-            "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
-          },
+          headers: listUnsubscribeHeaders(email),
         }),
       });
+      if (!res.ok) {
+        console.error(
+          `Failed to schedule drip "${e.subject}" for ${email}:`,
+          await res.text(),
+        );
+      }
     } catch (err) {
       console.error("Failed to schedule drip:", err);
     }
   }
+
+  // Store the deferred remainder on the contact — same shape drip-sender
+  // reads ({d: days, s: subject, h: html}). Needs the audience contact to
+  // exist (addToAudience runs first in the POST handler).
+  if (deferred.length > 0 && audienceId) {
+    const dripPlan = deferred.map((e) => ({
+      d: Math.round(e.delayMs / (24 * 60 * 60 * 1000)),
+      s: e.subject,
+      h: e.html,
+    }));
+    try {
+      await fetch(
+        `https://api.resend.com/audiences/${audienceId}/contacts/${encodeURIComponent(email)}`,
+        {
+          method: "PATCH",
+          headers: {
+            Authorization: `Bearer ${RESEND_API_KEY}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            properties: {
+              drip_plan: JSON.stringify(dripPlan),
+              drip_sent: "",
+            },
+          }),
+        },
+      );
+      console.log(
+        `[book-download] stored ${deferred.length} deferred drip emails for ${email}`,
+      );
+    } catch (err) {
+      console.error("[book-download] failed to store deferred drip plan:", err);
+    }
+  } else if (deferred.length > 0) {
+    console.error(
+      `[book-download] no audience id — ${deferred.length} deferred drip emails NOT stored for ${email}`,
+    );
+  }
 }
 
-async function addToAudience(email: string): Promise<void> {
-  if (!RESEND_API_KEY) return;
+async function addToAudience(email: string): Promise<string | null> {
+  if (!RESEND_API_KEY) return null;
   try {
     const audRes = await fetch("https://api.resend.com/audiences", {
       headers: { Authorization: `Bearer ${RESEND_API_KEY}` },
     });
-    if (!audRes.ok) return;
+    if (!audRes.ok) return null;
     const audiences = await audRes.json();
-    let audienceId: string | undefined = audiences.data?.[0]?.id;
+    let audienceId: string | undefined = pickAudienceId(audiences);
     if (!audienceId) {
       const createRes = await fetch("https://api.resend.com/audiences", {
         method: "POST",
@@ -160,25 +232,45 @@ async function addToAudience(email: string): Promise<void> {
         },
         body: JSON.stringify({ name: "VC Deal Flow Subscribers" }),
       });
-      if (!createRes.ok) return;
+      if (!createRes.ok) return null;
       const created = await createRes.json();
       audienceId = created.id || created.data?.id;
     }
-    if (!audienceId) return;
-    await fetch(`https://api.resend.com/audiences/${audienceId}/contacts`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${RESEND_API_KEY}`,
-        "Content-Type": "application/json",
+    if (!audienceId) return null;
+    const res = await fetch(
+      `https://api.resend.com/audiences/${audienceId}/contacts`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${RESEND_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          first_name: "gdf-attr-v1:" + JSON.stringify({ source: "book-page" }),
+          unsubscribed: false,
+        }),
       },
-      body: JSON.stringify({
-        email,
-        first_name: "gdf-attr-v1:" + JSON.stringify({ source: "book-page" }),
-        unsubscribed: false,
-      }),
-    });
+    );
+    if (!res.ok) {
+      // Already a contact (re-download / prior subscriber) — re-activate so
+      // a previously-unsubscribed reader who asks for the book again gets it.
+      await fetch(
+        `https://api.resend.com/audiences/${audienceId}/contacts/${encodeURIComponent(email)}`,
+        {
+          method: "PATCH",
+          headers: {
+            Authorization: `Bearer ${RESEND_API_KEY}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ unsubscribed: false }),
+        },
+      );
+    }
+    return audienceId;
   } catch (err) {
     console.error("addToAudience failed:", err);
+    return null;
   }
 }
 
@@ -233,8 +325,8 @@ export async function POST(req: NextRequest) {
     ttlSeconds: 30 * 86_400,
   });
 
-  // Send the download email and start the drip in parallel — but only if the
-  // address isn't on the testers/bots exclusion list (memory feedback rule).
+  // Send the download email and start the drip — but only if the address
+  // isn't on the testers/bots exclusion list (memory feedback rule).
   if (!isExcluded(email)) {
     await sendImmediate(
       email,
@@ -242,10 +334,30 @@ export async function POST(req: NextRequest) {
       downloadEmailHtml(email),
       "book-funnel-download",
     );
-    // Audience-add and drip schedule are best-effort; failures shouldn't
-    // block the user-facing redirect.
-    addToAudience(email).catch(() => {});
-    scheduleSoapOpera(email).catch(() => {});
+    // Audience-add + drip schedule are best-effort; failures shouldn't block
+    // the user-facing redirect. The audience add must run BEFORE the drip
+    // schedule so the deferred drip_plan has a contact to attach to.
+    try {
+      const audienceId = await addToAudience(email);
+      // Per-email dedup: repeat downloads re-send the links above but must
+      // not re-queue the drip. Mark before scheduling to close the
+      // double-submit race. Shared namespace with /api/verify so a reader
+      // who already got the sequence via the landing page isn't re-enrolled.
+      if (await isNonceUsed(SOS_ENROLLED_NAMESPACE, email)) {
+        console.log(
+          `book-download: ${email} already enrolled in drip, skipping re-queue`,
+        );
+      } else {
+        await markNonceUsed(
+          SOS_ENROLLED_NAMESPACE,
+          email,
+          SOS_ENROLLED_TTL_SECONDS,
+        );
+        await scheduleSoapOpera(email, audienceId);
+      }
+    } catch (err) {
+      console.error("book-download: audience/drip enrollment failed:", err);
+    }
   } else {
     console.log(`book-download: ${email} is excluded, skipping send`);
   }

@@ -145,9 +145,9 @@ export function generateTastePersonality(result: ScoutScoreResult): string {
   }
 
   // Categorize wins
-  const aiOrgs = new Set(["anthropics", "openai", "huggingface", "langchain-ai", "mistralai", "stability-ai", "togethercomputer", "groq", "modal-labs", "replicate", "ollama", "comfyanonymous", "BerriAI", "lobehub", "open-webui", "All-Hands-AI", "tinygrad", "ggml-org", "stitionai", "microsoft"]);
-  const dbOrgs = new Set(["supabase", "planetscale", "neondatabase", "turso", "pinecone-io", "weaviate", "qdrant", "prisma", "drizzle-team", "mage-ai", "dagsterio", "dbt-labs", "airbytehq", "apache"]);
-  const devToolsOrgs = new Set(["vercel", "withastro", "oven-sh", "trpc", "linear", "getcursor", "shadcn-ui", "colinhacks", "remotion-dev", "BuilderIO", "denoland", "tauri-apps", "trigger-dev", "inngest", "resend", "clerk", "get-convex", "calcom", "appsmithorg"]);
+  const aiOrgs = new Set(["anthropics", "openai", "huggingface", "langchain-ai", "mistralai", "CompVis", "togethercomputer", "groq", "modal-labs", "replicate", "ollama", "comfyanonymous", "BerriAI", "lobehub", "open-webui", "All-Hands-AI", "tinygrad", "ggml-org", "stitionai", "microsoft"]);
+  const dbOrgs = new Set(["supabase", "planetscale", "neondatabase", "tursodatabase", "pinecone-io", "weaviate", "qdrant", "prisma", "drizzle-team", "mage-ai", "dagster-io", "dbt-labs", "airbytehq", "apache"]);
+  const devToolsOrgs = new Set(["vercel", "withastro", "oven-sh", "trpc", "linear", "getcursor", "shadcn-ui", "colinhacks", "remotion-dev", "BuilderIO", "denoland", "tauri-apps", "triggerdotdev", "inngest", "resend", "clerk", "get-convex", "calcom", "appsmithorg"]);
   const opsOrgs = new Set(["getsentry", "grafana", "PostHog", "n8n-io", "windmill-labs", "ToolJet", "coollabsio", "AppFlowy-IO", "hasura", "strapi", "sanity-io", "encode", "vapor", "replit", "stripe"]);
 
   const counts = { ai: 0, db: 0, devtools: 0, ops: 0, other: 0 };

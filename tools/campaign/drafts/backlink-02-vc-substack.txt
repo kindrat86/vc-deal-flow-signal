@@ -1,5 +1,5 @@
 TO: {{firstName}}@{{substack-domain}}
-FROM: signal@gitdealflow.com
+FROM: signals@gitdealflow.com
 SUBJECT: GitHub commits → Series A timing — data, not anecdote
 
 Hi {{firstName}},

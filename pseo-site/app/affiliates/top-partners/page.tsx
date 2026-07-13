@@ -301,10 +301,10 @@ export default function Dream50Page() {
             send. If you&apos;re on this list and you&apos;d rather skip the
             outreach pleasantries and go direct, the email is{" "}
             <a
-              href="mailto:signal@gitdealflow.com?subject=Dream%2050%20%E2%80%94%20I%27m%20on%20your%20list"
+              href="mailto:signals@gitdealflow.com?subject=Dream%2050%20%E2%80%94%20I%27m%20on%20your%20list"
               className="text-sky-400 hover:text-sky-300 underline decoration-dotted"
             >
-              signal@gitdealflow.com
+              signals@gitdealflow.com
             </a>{" "}
             with subject &quot;Dream 50 — I&apos;m on your list.&quot;
           </p>

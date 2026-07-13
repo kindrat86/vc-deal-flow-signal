@@ -27,8 +27,8 @@
   ],
   "destination_url": "https://gitdealflow.com",
   "stripe_links": {
-    "pro": "https://buy.stripe.com/28E7sK48H04U8ou07u0x200",
-    "insider": "https://buy.stripe.com/4gM00ifRpcRG2069I40x202"
+    "pro": "https://buy.stripe.com/4gMbJ07kTaJy7kqg6s0x20b",
+    "insider": "https://buy.stripe.com/bJeaEWfRpcRG6gm2fC0x20d"
   },
   "tone_voice": "The Data Nerd. Obsessive about signals others ignore. Leads with data or a surprising observation, never with hype. Uses specific numbers instead of vague claims. Admits uncertainty when the signal is ambiguous. Never pitches, always shows. Curious, precise, slightly contrarian.",
   "opportunity_switch": "Old way: paying for intent data from vendors who sell the same list to everyone. New way: reading free, public GitHub data that nobody else packages for investors.",

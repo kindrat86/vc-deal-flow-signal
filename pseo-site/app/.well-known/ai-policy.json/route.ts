@@ -124,7 +124,7 @@ export async function GET() {
         content: "https://creativecommons.org/licenses/by/4.0/",
         attributionRequired: true,
         commercialBulkRedistribution: "prohibited without permission",
-        contactForCommercial: "signal@gitdealflow.com",
+        contactForCommercial: "signals@gitdealflow.com",
       },
       refreshCadence: {
         data: "weekly (Monday ~09:00 UTC)",

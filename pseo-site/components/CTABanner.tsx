@@ -18,7 +18,8 @@ const DEFAULT_BLURB = (
   <>
     Get the free weekly engineering-acceleration rankings, or unlock the full
     Dashboard for real-time tracking, sector filters, and founder contact data.
-    Beta pricing: <span className="text-gray-200 font-medium">€9.97/mo</span>.
+    Dashboard: <span className="text-gray-200 font-medium">€49/mo</span> — 30-day
+    Signal-or-It&rsquo;s-Free guarantee.
   </>
 );
 
@@ -54,7 +55,7 @@ export default function CTABanner({
           <div className="flex flex-col sm:flex-row gap-3 shrink-0">
             <Link
               href={primaryHref}
-              className="inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-semibold transition-colors shadow-sm shadow-sky-500/30"
+              className="inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-lg bg-[#ff6b1a] hover:bg-[#ff8c4d] text-slate-950 text-sm font-semibold transition-colors shadow-sm shadow-[#ff6b1a]/30"
             >
               {primaryLabel}
               <span aria-hidden="true">→</span>

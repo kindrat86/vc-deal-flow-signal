@@ -142,9 +142,9 @@ export default function BookThanksPage() {
           Questions? Reply to any email or write to{" "}
           <a
             className="text-sky-400 hover:text-sky-300"
-            href="mailto:signal@gitdealflow.com"
+            href="mailto:signals@gitdealflow.com"
           >
-            signal@gitdealflow.com
+            signals@gitdealflow.com
           </a>
           .
         </p>

@@ -39,7 +39,7 @@ export async function GET(request: Request) {
     licenseShort: "CC BY 4.0",
     citation: `VC Deal Flow Signal (signals.gitdealflow.com), ${currentPeriod.name} Q&A dataset v${DATASET_VERSION}. DOI: https://ssrn.com/abstract=6606558.`,
     source: BASE_URL,
-    contact: "signal@gitdealflow.com",
+    contact: "signals@gitdealflow.com",
     schema: ["question", "answer", "source", "sourceUrl", "category"],
     categories: ["general", "blog", "sector", "signal-type"],
   };

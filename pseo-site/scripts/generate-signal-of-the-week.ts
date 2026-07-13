@@ -449,7 +449,7 @@ Template:
 >
 > – Data Nerd, gitdealflow.com
 
-Send via signal@gitdealflow.com (Zoho, warmed). Do not chase. One shot per target per week.
+Send via signals@gitdealflow.com (Zoho, warmed). Do not chase. One shot per target per week.
 
 ---
 

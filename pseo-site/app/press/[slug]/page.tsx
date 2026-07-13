@@ -180,10 +180,10 @@ export default async function PressReleasePage({ params }: PageProps) {
           </p>
           <p className="text-gray-300 text-sm leading-relaxed">
             <a
-              href="mailto:signal@gitdealflow.com"
+              href="mailto:signals@gitdealflow.com"
               className="text-sky-400 hover:text-sky-300"
             >
-              signal@gitdealflow.com
+              signals@gitdealflow.com
             </a>
             <br />
             Founder is anonymous (handle: The Data Nerd, ORCID

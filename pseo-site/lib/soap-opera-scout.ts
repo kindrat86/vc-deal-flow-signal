@@ -12,7 +12,7 @@ import "server-only";
 import { isExcluded } from "@/lib/excluded-emails";
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY!;
-const FROM_EMAIL = process.env.FROM_EMAIL || "signal@gitdealflow.com";
+const FROM_EMAIL = process.env.FROM_EMAIL || "signals@gitdealflow.com";
 const FROM_NAME = process.env.FROM_NAME || "The Data Nerd";
 const SITE_URL = process.env.SITE_URL || "https://signals.gitdealflow.com";
 

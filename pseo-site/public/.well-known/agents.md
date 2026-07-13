@@ -119,6 +119,6 @@ SSRN preprint: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558
 
 ## Contact
 
-- Email: signal@gitdealflow.com
+- Email: signals@gitdealflow.com
 - Telegram: https://t.me/gitdealflow
 - Twitter/X: https://x.com/data_nerd

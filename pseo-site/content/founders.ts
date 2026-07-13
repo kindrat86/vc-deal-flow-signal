@@ -380,9 +380,9 @@ export const founders: Founder[] = [
     name: "Chris Molozian",
     role: "Co-founder, Heroic Labs",
     affiliation: "Heroic Labs (Nakama open-source game server)",
-    publicSource: "https://cmoz.me",
-    notable: "Chris is a co-author of Nakama, the open-source game backend, and writes on distributed systems. Self-published GitHub identity (@novabyte) and personal site.",
-    sameAs: ["https://github.com/novabyte", "https://cmoz.me"],
+    publicSource: "https://github.com/novabyte",
+    notable: "Chris is a co-author of Nakama, the open-source game backend, and writes on distributed systems. Self-published GitHub identity (@novabyte).",
+    sameAs: ["https://github.com/novabyte"],
   }),
   build({
     handle: "mofirouz",

@@ -1,12 +1,13 @@
 import { NextResponse } from "next/server";
 import { verifyVerifyToken } from "@/lib/verify-token";
+import { pickAudienceId } from "@/lib/resend-audience";
 
 // Mutating endpoint — never cache, run on Node (mirrors app/api/recent-signups).
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY!;
-const FROM_EMAIL = process.env.FROM_EMAIL || "signal@gitdealflow.com";
+const FROM_EMAIL = process.env.FROM_EMAIL || "signals@gitdealflow.com";
 
 /**
  * HTTPS one-click unsubscribe (RFC 8058). Mail clients (Gmail, Apple Mail) POST
@@ -27,7 +28,7 @@ async function resolveAudienceId(): Promise<string | null> {
   });
   if (!res.ok) return null;
   const body = await res.json();
-  return body.data?.[0]?.id ?? null;
+  return pickAudienceId(body) ?? null;
 }
 
 /** Mark a contact unsubscribed in Resend (idempotent). 404 = not in audience,

@@ -320,7 +320,7 @@ export const DATA_NERD_TOUCHPOINTS = [
   },
   {
     surface: "Reply-to inbox",
-    where: "signal@gitdealflow.com",
+    where: "signals@gitdealflow.com",
     how: "Same handle. Two daily reply batches. No call-scheduling links.",
   },
 ] as const;
@@ -477,7 +477,6 @@ export const DATA_NERD_AUTHOR_SAMEAS = [
   "https://x.com/data_nerd",
   "https://news.ycombinator.com/user?id=the_data_nerd",
   "https://www.indiehackers.com/The_Data_Nerd",
-  "https://dev.to/the_data_nerd",
   "https://signals.gitdealflow.com/citations",
   "https://signals.gitdealflow.com/about/founder",
   "https://signals.gitdealflow.com/origin",

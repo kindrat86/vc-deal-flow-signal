@@ -13,7 +13,7 @@ export const dynamic = "force-static";
 // deliverable is async and licensable.
 
 const APPLY_MAILTO =
-  "mailto:signal@gitdealflow.com" +
+  "mailto:signals@gitdealflow.com" +
   "?subject=" +
   encodeURIComponent("Methodology Partnership — application") +
   "&body=" +
@@ -386,7 +386,7 @@ export default function MethodologyPartnershipPage() {
           </a>
           <p className="text-gray-400 text-xs">
             Mail goes to{" "}
-            <code className="text-gray-300">signal@gitdealflow.com</code>.
+            <code className="text-gray-300">signals@gitdealflow.com</code>.
             Subject and body are pre-filled with the diligence template.
           </p>
         </section>

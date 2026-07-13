@@ -10,7 +10,7 @@ LOG_FILE="$DIR/monitor.log"
 # Load Resend credentials from email-api .env (safe parsing, no eval)
 RESEND_API_KEY=$(grep '^RESEND_API_KEY=' "$PROJECT/email-api/.env" | cut -d= -f2- | tr -d '"'"'"')
 FROM_EMAIL=$(grep '^FROM_EMAIL=' "$PROJECT/email-api/.env" | cut -d= -f2- | tr -d '"'"'"')
-ALERT_TO="${FROM_EMAIL:-signal@gitdealflow.com}"
+ALERT_TO="${FROM_EMAIL:-signals@gitdealflow.com}"
 
 TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
 FAILURES=()

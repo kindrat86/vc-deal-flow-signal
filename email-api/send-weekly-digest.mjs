@@ -2,13 +2,20 @@
 /**
  * Send the weekly Signal Digest to all active subscribers.
  *
- * Dry-run by default. Pass --send to actually fire. Logs every send to the
- * PocketBase email_log collection with email_key="digest-<date>" so re-running
- * the same day is idempotent (skips already-sent subscribers).
+ * Recipient source: the Resend audience (GET /audiences/{id}/contacts),
+ * skipping `unsubscribed: true` contacts and the excluded-emails skip-list.
+ * The old PocketBase "subscribers" collection this script used to read no
+ * longer exists — Resend is the source of truth for the list.
+ *
+ * Dry-run by default. Pass --send to actually fire. Every successful send is
+ * appended to a local sent-log file (sent-log/digest-<date>.json) so
+ * re-running the same day is idempotent (already-sent recipients are
+ * skipped). Sends are also tagged in Resend (email_key=digest-<date>) for
+ * dashboard-side auditing.
  *
  * Usage:
  *   node send-weekly-digest.mjs                                 # dry-run, counts subs
- *   node send-weekly-digest.mjs --to you@example.com            # send one test copy
+ *   node send-weekly-digest.mjs --to you@example.com --send     # send one test copy
  *   node send-weekly-digest.mjs --limit 5 --send                # send to first 5 active subs
  *   node send-weekly-digest.mjs --send                          # broadcast to all active subs
  *   node send-weekly-digest.mjs --date 2026-04-19 --send        # pin a specific digest issue
@@ -16,7 +23,12 @@
  */
 
 import { Resend } from "resend";
-import { readFileSync, existsSync } from "fs";
+import {
+  readFileSync,
+  writeFileSync,
+  existsSync,
+  mkdirSync,
+} from "fs";
 import { resolve, dirname, join } from "path";
 import { fileURLToPath } from "url";
 import { createHmac, randomBytes } from "crypto";
@@ -41,7 +53,7 @@ try {
   console.error("Warning: could not load .env:", e.message);
 }
 
-const { RESEND_API_KEY, PB_URL, PB_EMAIL, PB_PASSWORD, FROM_EMAIL, FROM_NAME, VERIFY_SECRET } = process.env;
+const { RESEND_API_KEY, FROM_EMAIL, FROM_NAME, VERIFY_SECRET } = process.env;
 const SITE_URL = process.env.SITE_URL || "https://signals.gitdealflow.com";
 if (!RESEND_API_KEY || !FROM_EMAIL || !FROM_NAME) {
   console.error("Missing required env: RESEND_API_KEY, FROM_EMAIL, FROM_NAME");
@@ -120,6 +132,8 @@ function unsubHeaders(email) {
   };
 }
 
+const resend = new Resend(RESEND_API_KEY);
+
 // --- test mode: send one copy to --to and exit ---
 if (TEST_TO) {
   if (!SEND) {
@@ -130,92 +144,85 @@ if (TEST_TO) {
     console.log(`\nPass --send to actually fire.`);
     process.exit(0);
   }
-  const resend = new Resend(RESEND_API_KEY);
   const result = await resend.emails.send({
     from: FROM,
     to: TEST_TO,
     subject,
     html,
+    tags: [{ name: "email_key", value: EMAIL_KEY }],
     headers: unsubHeaders(TEST_TO),
   });
   console.log(JSON.stringify(result, null, 2));
   process.exit(0);
 }
 
-// --- PocketBase: fetch active subscribers + already-sent set ---
-if (!PB_URL || !PB_EMAIL || !PB_PASSWORD) {
-  console.error("Missing PB_URL / PB_EMAIL / PB_PASSWORD in .env (needed for broadcast).");
-  console.error("Use --to <email> to send a single test copy without PocketBase.");
-  process.exit(1);
-}
-
-async function pbAuth() {
-  const res = await fetch(`${PB_URL}/api/collections/_superusers/auth-with-password`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ identity: PB_EMAIL, password: PB_PASSWORD }),
+// --- Resend audience: fetch all contacts ---
+async function resendApi(path) {
+  const res = await fetch(`https://api.resend.com${path}`, {
+    headers: { Authorization: `Bearer ${RESEND_API_KEY}` },
   });
-  if (!res.ok) throw new Error(`PB auth failed: ${res.status} ${await res.text()}`);
-  const data = await res.json();
-  return data.token;
-}
-
-const pbToken = await pbAuth();
-async function pb(path, init = {}) {
-  const res = await fetch(`${PB_URL}${path}`, {
-    ...init,
-    headers: { Authorization: pbToken, "Content-Type": "application/json", ...(init.headers || {}) },
-  });
-  if (!res.ok) throw new Error(`PB ${init.method || "GET"} ${path} failed: ${res.status} ${await res.text()}`);
+  if (!res.ok) {
+    throw new Error(`Resend GET ${path} failed: ${res.status} ${await res.text()}`);
+  }
   return res.json();
 }
 
-async function fetchAllActive() {
-  const out = [];
-  let page = 1;
-  while (true) {
-    const res = await pb(`/api/collections/subscribers/records?filter=(status='active')&perPage=100&page=${page}`);
-    out.push(...(res.items || []));
-    if (!res.items || res.items.length < 100) break;
-    page++;
-  }
-  return out;
+async function resolveAudienceId() {
+  if (process.env.RESEND_AUDIENCE_ID) return process.env.RESEND_AUDIENCE_ID;
+  const body = await resendApi("/audiences");
+  const id = body.data?.[0]?.id;
+  if (!id) throw new Error("No Resend audience found (and RESEND_AUDIENCE_ID not set).");
+  return id;
 }
 
-async function alreadySentIds() {
-  const out = new Set();
-  let page = 1;
-  while (true) {
-    const res = await pb(
-      `/api/collections/email_log/records?filter=(email_key='${EMAIL_KEY}' %26%26 status='sent')&perPage=100&page=${page}`
-    );
-    for (const row of res.items || []) out.add(row.subscriber);
-    if (!res.items || res.items.length < 100) break;
-    page++;
-  }
-  return out;
+async function fetchAllContacts(audienceId) {
+  const body = await resendApi(`/audiences/${audienceId}/contacts`);
+  return body.data ?? [];
 }
 
-const [subs, sent] = await Promise.all([fetchAllActive(), alreadySentIds()]);
-const excludedHits = subs.filter((s) => isExcluded(s.email)).map((s) => s.email);
+// --- local sent-log: per-date idempotency (replaces the PB email_log) ---
+const SENT_LOG_DIR = join(__dirname, "sent-log");
+const SENT_LOG_FILE = join(SENT_LOG_DIR, `${EMAIL_KEY}.json`);
+
+function loadSentLog() {
+  try {
+    return new Set(JSON.parse(readFileSync(SENT_LOG_FILE, "utf-8")));
+  } catch {
+    return new Set();
+  }
+}
+function saveSentLog(set) {
+  mkdirSync(SENT_LOG_DIR, { recursive: true });
+  writeFileSync(SENT_LOG_FILE, JSON.stringify([...set].sort(), null, 2));
+}
+
+const audienceId = await resolveAudienceId();
+const contacts = await fetchAllContacts(audienceId);
+const sentLog = loadSentLog();
+
+const active = contacts.filter((c) => !c.unsubscribed);
+const excludedHits = active.filter((c) => isExcluded(c.email)).map((c) => c.email);
 if (excludedHits.length) {
   console.log(`Skipping ${excludedHits.length} excluded address(es): ${excludedHits.join(", ")}`);
 }
-let queue = subs.filter((s) => !sent.has(s.id) && !isExcluded(s.email));
+let queue = active.filter(
+  (c) => !isExcluded(c.email) && !sentLog.has(String(c.email).toLowerCase()),
+);
 if (LIMIT > 0) queue = queue.slice(0, LIMIT);
 
 console.log(`Digest file: ${FILE}`);
 console.log(`Subject:     ${subject}`);
 console.log(`Email key:   ${EMAIL_KEY}`);
-console.log(`Active subs: ${subs.length}`);
-console.log(`Already sent this issue: ${sent.size}`);
+console.log(`Audience:    ${audienceId}`);
+console.log(`Contacts:    ${contacts.length} total, ${active.length} active (not unsubscribed)`);
+console.log(`Already sent this issue (local log): ${sentLog.size}`);
 console.log(`Queued to send: ${queue.length}${LIMIT ? ` (capped by --limit ${LIMIT})` : ""}`);
 if (queue.length) {
-  console.log(`First few:   ${queue.slice(0, 5).map((s) => s.email).join(", ")}`);
+  console.log(`First few:   ${queue.slice(0, 5).map((c) => c.email).join(", ")}`);
 }
 
 if (!SEND) {
-  console.log(`\n[DRY-RUN] Pass --send to actually fire. Re-runs are idempotent per email_key.`);
+  console.log(`\n[DRY-RUN] Pass --send to actually fire. Re-runs are idempotent per ${SENT_LOG_FILE}.`);
   process.exit(0);
 }
 
@@ -225,31 +232,24 @@ if (queue.length === 0) {
 }
 
 // --- broadcast ---
-const resend = new Resend(RESEND_API_KEY);
 let okCount = 0;
 let errCount = 0;
 
-for (const sub of queue) {
+for (const contact of queue) {
   try {
     const result = await resend.emails.send({
       from: FROM,
-      to: sub.email,
+      to: contact.email,
       subject,
       html,
-      headers: unsubHeaders(sub.email),
+      tags: [{ name: "email_key", value: EMAIL_KEY }],
+      headers: unsubHeaders(contact.email),
     });
+    if (result.error) throw new Error(result.error.message || String(result.error));
 
-    await pb("/api/collections/email_log/records", {
-      method: "POST",
-      body: JSON.stringify({
-        subscriber: sub.id,
-        email_key: EMAIL_KEY,
-        subject,
-        resend_id: result.data?.id ?? "",
-        status: "sent",
-        sent_at: new Date().toISOString(),
-      }),
-    });
+    // Persist after every success so a crash mid-broadcast stays idempotent.
+    sentLog.add(String(contact.email).toLowerCase());
+    saveSentLog(sentLog);
 
     okCount++;
     if (okCount % 10 === 0) console.log(`  sent ${okCount}/${queue.length}`);
@@ -257,19 +257,8 @@ for (const sub of queue) {
     await new Promise((r) => setTimeout(r, 150));
   } catch (err) {
     errCount++;
-    console.error(`  FAILED ${sub.email}: ${err.message}`);
-    try {
-      await pb("/api/collections/email_log/records", {
-        method: "POST",
-        body: JSON.stringify({
-          subscriber: sub.id,
-          email_key: EMAIL_KEY,
-          subject,
-          status: "failed",
-        }),
-      });
-    } catch {}
+    console.error(`  FAILED ${contact.email}: ${err.message}`);
   }
 }
 
-console.log(`\nDone. sent=${okCount} failed=${errCount} skipped=${sent.size} total_active=${subs.length}`);
+console.log(`\nDone. sent=${okCount} failed=${errCount} previously_sent=${sentLog.size - okCount} total_active=${active.length}`);

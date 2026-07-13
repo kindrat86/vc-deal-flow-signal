@@ -1,5 +1,5 @@
 TO: {{firstName}}@{{podcast-domain}}
-FROM: signal@gitdealflow.com
+FROM: signals@gitdealflow.com
 SUBJECT: Possible guest finding — public dev signals as VC alpha
 
 Hi {{firstName}},

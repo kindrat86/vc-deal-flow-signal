@@ -195,6 +195,7 @@
       <p class="text-yellow-300 font-semibold text-sm uppercase tracking-wider mb-3">Application — Sector Sweep</p>
       <h1 class="text-3xl md:text-5xl font-extrabold leading-tight mb-4">Tell me your thesis first.</h1>
       <p class="text-lg text-gray-300 leading-relaxed max-w-2xl mx-auto">If the engineering signal is there across your sector, I'll send you a payment link within 24 hours. If it isn't, I'll tell you that too &mdash; before you spend a cent. <strong class="text-white">&euro;1,997 is too much to spend blind.</strong></p>
+      <p class="mt-4 text-sm"><a href="/pricing" class="text-gray-400 underline hover:text-gray-300 transition">Compare all tiers</a></p>
     </section>
 
     <!-- Progress indicator -->
@@ -217,12 +218,12 @@
         <div class="space-y-5">
           <div>
             <label class="form-label" for="f-name">Your name</label>
-            <input type="text" id="f-name" name="name" class="form-input" placeholder="Jane Investor" required>
+            <input type="text" id="f-name" name="name" class="form-input" placeholder="Jane Investor" autocomplete="name" enterkeyhint="next" required>
           </div>
 
           <div>
             <label class="form-label" for="f-email">Email <span class="text-gray-500 font-normal">(I reply to this within 24h)</span></label>
-            <input type="email" id="f-email" name="email" class="form-input" placeholder="jane@fund.com" required>
+            <input type="email" id="f-email" name="email" class="form-input" placeholder="jane@fund.com" autocomplete="email" inputmode="email" required>
           </div>
 
           <div>
@@ -349,7 +350,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="text-emerald-400"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
             <p class="text-emerald-300 text-xs font-bold uppercase tracking-wider">The Risk Is Mine</p>
           </div>
-          <p class="text-gray-300 leading-relaxed text-sm">Apply first. I review before you pay. If the signal isn't there, you never see a checkout page. If it is and you commission the sweep, the deliverable is guaranteed &mdash; or every cent comes back.</p>
+          <p class="text-gray-300 leading-relaxed text-sm">Apply first. I review before you pay. If the signal isn't there, you never see a checkout page. If it is and you commission the sweep, it's covered by the 30-day Signal-or-It's-Free guarantee &mdash; any paid rung, 30 days, email me, every cent back. No forms, no survey.</p>
         </div>
 
         <div class="flex flex-col sm:flex-row justify-between gap-3 pt-2">
@@ -357,6 +358,7 @@
           <button type="submit" class="btn btn-primary btn-lg"><span>Submit application</span><span aria-hidden="true" class="btn-arrow">&rarr;</span></button>
         </div>
         <p class="text-gray-500 text-sm text-center mt-4">I reply within 24 hours. No card required to apply.</p>
+        <p id="apply-fallback-msg" class="hidden text-yellow-300 text-sm text-center mt-4 leading-relaxed" role="alert"></p>
       </div>
     </form>
 
@@ -380,6 +382,21 @@
       <p class="text-gray-400 leading-relaxed max-w-lg mx-auto mb-5">Same signal, lighter pass. If it proves useful, a Sweep is the natural next step when the thesis gets serious.</p>
       <a href="/firstlook" class="btn btn-secondary btn-md">Try First Look &rarr;</a>
     </section>
+
+    <!-- Inline free-email capture (above footer) -->
+    <section class="mobile-section-pad max-w-3xl mx-auto px-4 sm:px-6 py-10 text-center">
+      <div class="rounded-2xl border border-gray-700 bg-dark-800/70 p-6">
+        <h2 class="text-xl font-bold mb-2">Get the free Sunday email first</h2>
+        <p class="text-gray-400 text-sm mb-4 max-w-lg mx-auto">Still weighing it up? Watch the signal work for free — five accelerating startups every Sunday, in plain English. Apply when the thesis is ready.</p>
+        <form class="gdf-inline-form mobile-cta-stack flex flex-col sm:flex-row gap-3 max-w-lg mx-auto" data-source="apply-inline">
+          <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;height:0;width:0;opacity:0">
+          <label for="inline-email" class="sr-only">Email address</label>
+          <input type="email" id="inline-email" required inputmode="email" autocomplete="email" placeholder="you@example.com" class="form-input flex-1">
+          <button type="submit" class="btn btn-primary btn-md w-full sm:w-auto">Get this Sunday&rsquo;s 5 names &rarr;</button>
+        </form>
+        <p class="gdf-inline-msg text-gray-500 text-xs mt-3">One email a week · unsubscribe anytime</p>
+      </div>
+    </section>
   </main>
 
   <div class="mobile-sticky-cta" aria-hidden="false">
@@ -389,6 +406,24 @@
         <span>&euro;1,997 &middot; reviewed before you pay</span>
       </div>
       <button type="button" class="btn btn-cta btn-sm" onclick="document.getElementById('apply-form').scrollIntoView({behavior:'smooth'})">Start</button>
+    </div>
+  </div>
+
+  <!-- Exit-intent email capture -->
+  <div id="exit-modal" class="hidden fixed inset-0 z-[70] items-center justify-center px-4" role="dialog" aria-modal="true" aria-labelledby="exit-title">
+    <div id="exit-backdrop" class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+    <div class="relative w-full max-w-lg rounded-2xl border border-signal-500/40 bg-dark-900 p-6 md:p-8 shadow-2xl">
+      <button type="button" id="exit-close" aria-label="Close" class="absolute top-3 right-3 text-gray-500 hover:text-gray-200 text-2xl leading-none w-8 h-8 flex items-center justify-center">&times;</button>
+      <p class="text-signal-400 text-xs font-semibold uppercase tracking-wider mb-3">Before you go</p>
+      <h2 id="exit-title" class="text-2xl md:text-3xl font-extrabold leading-tight mb-3">Thesis not ready? Keep the signal warm.</h2>
+      <p class="text-gray-300 leading-relaxed mb-5">The application will still be here. Meanwhile the free Sunday email gives you five accelerating startups a week, in plain English &mdash; a low-stakes way to watch the methodology work.</p>
+      <form id="exit-form" class="flex flex-col gap-3">
+        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;height:0;width:0;opacity:0">
+        <label for="exit-email" class="sr-only">Email address</label>
+        <input type="email" id="exit-email" required inputmode="email" autocomplete="email" placeholder="you@example.com" class="form-input w-full">
+        <button type="submit" id="exit-submit" class="w-full bg-signal-500 hover:bg-signal-400 text-white font-bold py-3 rounded-lg transition">Get this Sunday&rsquo;s 5 names &rarr;</button>
+      </form>
+      <p id="exit-msg" class="text-gray-500 text-xs text-center mt-3">One email a week · unsubscribe anytime</p>
     </div>
   </div>
 
@@ -510,8 +545,15 @@
     function mailtoFallback(name, email, role, sector, geo, question, checkSize) {
       var subject = 'Sector Sweep Application — ' + name;
       var body = 'Name: ' + name + '\nEmail: ' + email + '\nRole: ' + role + '\nSector: ' + sector + '\nGeography: ' + geo + '\nCheck size: ' + checkSize + '\n\nQuestion:\n' + question;
-      window.location.href = 'mailto:signal@gitdealflow.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-      showSuccess(email);
+      window.location.href = 'mailto:signals@gitdealflow.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+      // Do NOT show the success screen — the application has not reached me yet.
+      var fb = document.getElementById('apply-fallback-msg');
+      if (fb) {
+        fb.textContent = "The form couldn't reach me — an email draft just opened; press Send, or write signals@gitdealflow.com directly.";
+        fb.classList.remove('hidden');
+        fb.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      if (window.posthog) { try { posthog.capture('sector_sweep_application_mailto_fallback'); } catch (e) {} }
     }
 
     function showSuccess(email) {
@@ -524,6 +566,120 @@
       var sticky = document.querySelector('.mobile-sticky-cta');
       if (sticky) sticky.style.display = 'none';
     }
+  </script>
+
+  <script>
+    // Exit-intent + inline email capture → /api/subscribe (source-tagged, honeypot-guarded)
+    (function () {
+      function gdfAttr(source) {
+        try {
+          var p = new URLSearchParams(window.location.search);
+          return {
+            source: source,
+            utm_source: p.get('utm_source') || '',
+            utm_medium: p.get('utm_medium') || '',
+            utm_campaign: p.get('utm_campaign') || '',
+            referrer: document.referrer || '',
+            landing_path: window.location.pathname + window.location.search
+          };
+        } catch (e) { return { source: source }; }
+      }
+      function subscribe(email, source) {
+        return fetch('https://signals.gitdealflow.com/api/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(Object.assign({ email: email }, gdfAttr(source)))
+        }).then(function (res) { return res.json(); });
+      }
+
+      // Inline "free Sunday email" form(s)
+      document.querySelectorAll('form.gdf-inline-form').forEach(function (form) {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var hp = form.querySelector('input[name="website"]');
+          if (hp && hp.value) { window.location.href = '/thanks'; return; }
+          var emailEl = form.querySelector('input[type="email"]');
+          var email = (emailEl && emailEl.value || '').trim();
+          if (!email) return;
+          var btn = form.querySelector('button[type="submit"]');
+          var msg = form.parentElement && form.parentElement.querySelector('.gdf-inline-msg');
+          var orig = btn ? btn.innerHTML : '';
+          if (btn) { btn.disabled = true; btn.setAttribute('aria-busy', 'true'); btn.innerHTML = 'Sending&hellip;'; }
+          var source = form.getAttribute('data-source') || 'apply-inline';
+          subscribe(email, source).then(function (data) {
+            if (!data || !data.ok) throw new Error((data && data.error) || 'Failed');
+            if (window.posthog) { try { posthog.capture('signup_verify_sent', { placement: source }); } catch (err) {} }
+            try { sessionStorage.setItem('gdf_email', email); } catch (err) {}
+            window.location.href = '/thanks';
+          }).catch(function () {
+            if (msg) { msg.textContent = 'Something went wrong. Try again or email signals@gitdealflow.com'; msg.className = 'gdf-inline-msg text-red-400 text-xs mt-3'; }
+            if (btn) { btn.disabled = false; btn.removeAttribute('aria-busy'); btn.innerHTML = orig; }
+          });
+        });
+      });
+
+      // Exit-intent modal (with scroll lock)
+      var modal = document.getElementById('exit-modal');
+      var closeBtn = document.getElementById('exit-close');
+      var backdrop = document.getElementById('exit-backdrop');
+      var form = document.getElementById('exit-form');
+      var emailEl = document.getElementById('exit-email');
+      var btn = document.getElementById('exit-submit');
+      var msg = document.getElementById('exit-msg');
+      if (!modal || !form) return;
+      var shown = false;
+      try {
+        var ts = localStorage.getItem('gd_exit_seen_at');
+        if (ts && Date.now() - parseInt(ts, 10) < 7 * 24 * 60 * 60 * 1000) shown = true;
+      } catch (e) {}
+      function openModal() {
+        if (shown) return;
+        // Don't interrupt someone who just submitted an application.
+        var success = document.getElementById('apply-success');
+        if (success && !success.classList.contains('hidden')) return;
+        shown = true;
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+        if (window.posthog) { try { posthog.capture('exit_modal_opened', { page: 'apply' }); } catch (e) {} }
+        try { localStorage.setItem('gd_exit_seen_at', String(Date.now())); } catch (e) {}
+        setTimeout(function () { try { emailEl.focus(); } catch (e) {} }, 60);
+      }
+      function closeModal() {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = '';
+      }
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
+      });
+      document.addEventListener('mouseout', function (e) {
+        if (shown) return;
+        if (e.clientY <= 0) openModal();
+      });
+      closeBtn.addEventListener('click', closeModal);
+      backdrop.addEventListener('click', closeModal);
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var hp = form.querySelector('input[name="website"]');
+        if (hp && hp.value) { window.location.href = '/thanks'; return; }
+        var email = emailEl.value.trim();
+        if (!email) return;
+        btn.disabled = true;
+        btn.textContent = 'Sending...';
+        subscribe(email, 'apply-exit').then(function (data) {
+          if (!data || !data.ok) throw new Error((data && data.error) || 'Failed');
+          if (window.posthog) { try { posthog.capture('exit_modal_submitted', { page: 'apply' }); } catch (err) {} }
+          try { sessionStorage.setItem('gdf_email', email); } catch (err) {}
+          window.location.href = '/thanks';
+        }).catch(function () {
+          msg.textContent = 'Something went wrong. Try again or email signals@gitdealflow.com';
+          msg.className = 'text-red-400 text-xs text-center mt-3';
+          btn.disabled = false;
+          btn.textContent = 'Get this Sunday’s 5 names →';
+        });
+      });
+    })();
   </script>
 
   <script>

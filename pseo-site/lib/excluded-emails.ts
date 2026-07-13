@@ -18,6 +18,9 @@ export const TESTER_EMAILS: ReadonlySet<string> = new Set([
   "test@example.com",
   "mkondratyuk86@gmail.com",
   "maryan.kondratyuk@quickstarter.ai",
+  "signals@gitdealflow.com",
+  // Pre-swap sender identity (renamed signal@ → signals@ 2026-07). The old
+  // self-address still exists on legacy contacts/forwards — keep BOTH excluded.
   "signal@gitdealflow.com",
   "escape@invisibleexit.com",
 ]);

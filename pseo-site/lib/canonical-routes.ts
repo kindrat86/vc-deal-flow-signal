@@ -4,7 +4,7 @@
  *
  * The route-canary cron (app/api/cron/route-canary/route.ts) curls
  * every entry in this list once a day. Any non-2xx triggers a Resend
- * email alert to signal@gitdealflow.com.
+ * email alert to signals@gitdealflow.com.
  *
  * Single source of truth — when a new Brunson surface ships, add the
  * path here so the canary catches future silent rollbacks.

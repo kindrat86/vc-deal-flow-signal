@@ -42,7 +42,7 @@ export async function GET() {
         version: "1.0",
         program_name: "VC Deal Flow Signal Coordinated Disclosure",
         program_url: `${SITE}/disclosure`,
-        contact_email: "signal@gitdealflow.com",
+        contact_email: "signals@gitdealflow.com",
         contact_form_url: `${SITE}/disclosure`,
         encryption_key_url: null,
         languages: ["en"],

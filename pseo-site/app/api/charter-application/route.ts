@@ -10,16 +10,16 @@ import { isValidEmail, isAllowedOrigin } from "@/lib/validation";
  * behind a 5-field written application. Same async-only pattern as
  * /api/sharp-application — no DB write, the email IS the record.
  *
- * The founder receives the application via Resend at signal@gitdealflow.com
+ * The founder receives the application via Resend at signals@gitdealflow.com
  * and replies within 48 business hours with a draft profile to confirm.
  *
  * Anonymity rule: pseudonymous handles welcome, real name never required.
  */
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY!;
-const FROM_EMAIL = process.env.FROM_EMAIL || "signal@gitdealflow.com";
+const FROM_EMAIL = process.env.FROM_EMAIL || "signals@gitdealflow.com";
 const FROM_NAME = process.env.FROM_NAME || "The Data Nerd";
-const TO_EMAIL = "signal@gitdealflow.com";
+const TO_EMAIL = "signals@gitdealflow.com";
 
 function clip(v: unknown, max: number): string {
   return typeof v === "string" ? v.slice(0, max).trim() : "";
@@ -105,7 +105,7 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         error:
-          "Too many applications. Please email signal@gitdealflow.com directly.",
+          "Too many applications. Please email signals@gitdealflow.com directly.",
       },
       { status: 429, headers: { ...headers, ...rateLimitHeaders(rl) } },
     );
@@ -188,7 +188,7 @@ export async function POST(request: Request) {
       return NextResponse.json(
         {
           error:
-            "Failed to deliver application — please email signal@gitdealflow.com directly",
+            "Failed to deliver application — please email signals@gitdealflow.com directly",
         },
         { status: 500, headers },
       );
@@ -207,7 +207,7 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         error:
-          "Something went wrong — please email signal@gitdealflow.com directly",
+          "Something went wrong — please email signals@gitdealflow.com directly",
       },
       { status: 500, headers },
     );

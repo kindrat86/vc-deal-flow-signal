@@ -1,5 +1,5 @@
 TO: dan@tldr.tech
-FROM: signal@gitdealflow.com
+FROM: signals@gitdealflow.com
 SUBJECT: Sponsored slot — TLDR Founders / Dev — 20% lifetime affiliate or flat sponsorship
 
 Hi Dan,

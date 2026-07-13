@@ -5,7 +5,7 @@ import { checkRateLimit, getClientIp, rateLimitHeaders } from "@/lib/rate-limit"
 import { isValidEmail, isAllowedOrigin } from "@/lib/validation";
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY!;
-const FROM_EMAIL = process.env.FROM_EMAIL || "signal@gitdealflow.com";
+const FROM_EMAIL = process.env.FROM_EMAIL || "signals@gitdealflow.com";
 const FROM_NAME = process.env.FROM_NAME || "The Data Nerd";
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://signals.gitdealflow.com";
 

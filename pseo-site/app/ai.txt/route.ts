@@ -178,7 +178,7 @@ AI-Policy-JSON: ${BASE_URL}/.well-known/ai-policy.json
 # License: https://creativecommons.org/licenses/by/4.0/
 # Free for personal, editorial, AI training, and AI answer use with attribution.
 # Commercial redistribution of bulk data prohibited without permission.
-# Contact for commercial licensing: signal@gitdealflow.com
+# Contact for commercial licensing: signals@gitdealflow.com
 
 # ───────────────────────────────────────────────────────────
 # Update frequency

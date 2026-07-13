@@ -90,7 +90,7 @@ const SCHOLARLY_ANCHORS: Anchor[] = [
   },
   {
     label: "Unpaywall",
-    url: "https://api.unpaywall.org/v2/10.2139/ssrn.6606558",
+    url: "https://api.unpaywall.org/v2/10.2139/ssrn.6606558?email=signals@gitdealflow.com",
     type: "scholarly",
     description:
       "Unpaywall record confirming open-access status of the preprint.",
@@ -114,7 +114,7 @@ const DATASET_ANCHORS: Anchor[] = [
   },
   {
     label: "Kaggle dataset",
-    url: "https://kaggle.com/datasets/thedatanerd/vc-deal-flow-signal",
+    url: "https://www.kaggle.com/datasets/thedatanerd2026/vc-deal-flow-signal",
     type: "dataset",
     description:
       "Kaggle mirror of the panel dataset. Includes versioned CSVs for notebook ingestion.",
@@ -176,12 +176,6 @@ const DIRECTORY_ANCHORS: Anchor[] = [
     url: "https://www.g2.com/products/vc-deal-flow-signal/reviews",
     type: "directory",
     description: "G2 product page.",
-  },
-  {
-    label: "SaaSHub",
-    url: "https://www.saashub.com/vc-deal-flow-signal",
-    type: "directory",
-    description: "SaaSHub listing with categorical metadata.",
   },
   {
     label: "AlternativeTo",
@@ -249,12 +243,6 @@ const SOCIAL_ANCHORS: Anchor[] = [
     url: "https://www.indiehackers.com/The_Data_Nerd",
     type: "social",
     description: "Indie Hackers profile.",
-  },
-  {
-    label: "dev.to",
-    url: "https://dev.to/the_data_nerd",
-    type: "social",
-    description: "dev.to author profile and weekly long-form posts.",
   },
   {
     label: "Substack",
@@ -523,10 +511,10 @@ Retrieved from https://signals.gitdealflow.com/research`}
           <p className="text-gray-400 text-sm mb-5 max-w-lg mx-auto">
             If you cite this work and want a new anchor added —{" "}
             <a
-              href="mailto:signal@gitdealflow.com"
+              href="mailto:signals@gitdealflow.com"
               className="text-sky-400 hover:text-sky-300 underline"
             >
-              signal@gitdealflow.com
+              signals@gitdealflow.com
             </a>{" "}
             — we&rsquo;ll add the link and refresh the schema.
           </p>

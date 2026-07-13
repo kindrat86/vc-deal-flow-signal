@@ -493,7 +493,7 @@ export const standaloneFaqs: StandaloneFAQ[] = [
   {
     question: "Does the API have rate limits?",
     answer:
-      "The free public endpoints — /api/signals.json, /api/signals.csv, /api/openapi.json, /api/agent/tools, /api/a2a, /api/nlweb, /api/mcp/rpc, /api/badge/scout/*, /api/badge/momentum/* — are served with CDN caching (s-maxage=3600, stale-while-revalidate=86400) and are free of rate limits at retail volume. Sustained over 60 requests/minute from a single IP triggers a soft cap; contact signal@gitdealflow.com for higher-throughput agent traffic. The MCP server (npx @gitdealflow/mcp-signal) inherits the same backend and works without any API key.",
+      "The free public endpoints — /api/signals.json, /api/signals.csv, /api/openapi.json, /api/agent/tools, /api/a2a, /api/nlweb, /api/mcp/rpc, /api/badge/scout/*, /api/badge/momentum/* — are served with CDN caching (s-maxage=3600, stale-while-revalidate=86400) and are free of rate limits at retail volume. Sustained over 60 requests/minute from a single IP triggers a soft cap; contact signals@gitdealflow.com for higher-throughput agent traffic. The MCP server (npx @gitdealflow/mcp-signal) inherits the same backend and works without any API key.",
     source: "Developers",
     sourceHref: "/developers",
   },

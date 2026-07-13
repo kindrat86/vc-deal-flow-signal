@@ -622,7 +622,7 @@ Not affiliated [or: affiliate disclosure required], just one of the cheapest sou
             <ul className="text-gray-300 text-sm space-y-1.5 leading-relaxed">
               <li>• Logo + wordmark + dark/light variants: <a href="https://gitdealflow.com/brand" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">gitdealflow.com/brand</a></li>
               <li>• OG image (1200×630): <a href="https://signals.gitdealflow.com/opengraph-image" className="text-sky-400 hover:text-sky-300 underline decoration-dotted" target="_blank" rel="noopener">signals.gitdealflow.com/opengraph-image</a></li>
-              <li>• Sample digest screenshot: <a href="https://gitdealflow.com/firstlook/sample" className="text-sky-400 hover:text-sky-300 underline decoration-dotted" target="_blank" rel="noopener">gitdealflow.com/firstlook/sample</a></li>
+              <li>• Sample digest screenshot: <a href="https://signals.gitdealflow.com/firstlook/sample" className="text-sky-400 hover:text-sky-300 underline decoration-dotted" target="_blank" rel="noopener">signals.gitdealflow.com/firstlook/sample</a></li>
               <li>• MCP demo video (24s, silent): <a href="https://gitdealflow.com/mcp-demo.mp4" className="text-sky-400 hover:text-sky-300 underline decoration-dotted" target="_blank" rel="noopener">/mcp-demo.mp4</a></li>
               <li>• SSRN paper (the credibility anchor): <a href="https://ssrn.com/abstract=6606558" className="text-sky-400 hover:text-sky-300 underline decoration-dotted" target="_blank" rel="noopener">ssrn.com/abstract=6606558</a></li>
             </ul>

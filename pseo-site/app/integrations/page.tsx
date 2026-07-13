@@ -117,7 +117,7 @@ const integrations: Integration[] = [
     status: "beta",
     href: "https://zapier.com/",
     category: "Automation",
-    setup: "Private invite during beta — email signal@gitdealflow.com",
+    setup: "Private invite during beta — email signals@gitdealflow.com",
   },
   {
     slug: "chrome-extension",
@@ -340,7 +340,7 @@ export default function IntegrationsPage() {
             name: "Can I pipe signals into Affinity, HubSpot, or Salesforce?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Yes. The JSON API is designed to be wired into any CRM through Zapier, n8n, or direct API calls. Most funds use a weekly cron that pulls the latest signals, dedupes against existing CRM records, and creates new opportunities or enrichment events for matched companies. Email signal@gitdealflow.com if you want a worked example for your specific CRM.",
+              text: "Yes. The JSON API is designed to be wired into any CRM through Zapier, n8n, or direct API calls. Most funds use a weekly cron that pulls the latest signals, dedupes against existing CRM records, and creates new opportunities or enrichment events for matched companies. Email signals@gitdealflow.com if you want a worked example for your specific CRM.",
             },
           },
           {
@@ -493,10 +493,10 @@ export default function IntegrationsPage() {
             Want an integration that isn&apos;t here?
           </h2>
           <p className="text-gray-400 text-sm mb-5 max-w-lg mx-auto">
-            Slack, Microsoft Teams, Discord webhook, n8n node, or something custom — email signal@gitdealflow.com and it will get prioritised.
+            Slack, Microsoft Teams, Discord webhook, n8n node, or something custom — email signals@gitdealflow.com and it will get prioritised.
           </p>
           <Link
-            href="mailto:signal@gitdealflow.com"
+            href="mailto:signals@gitdealflow.com"
             className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-medium transition-colors"
           >
             Request an integration

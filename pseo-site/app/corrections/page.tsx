@@ -206,10 +206,10 @@ export default function CorrectionsPage() {
             <li>
               To report something we have wrong, email{" "}
               <a
-                href="mailto:signal@gitdealflow.com"
+                href="mailto:signals@gitdealflow.com"
                 className="text-sky-400 hover:text-sky-300"
               >
-                signal@gitdealflow.com
+                signals@gitdealflow.com
               </a>{" "}
               or open an issue on{" "}
               <a

@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { after } from "next/server";
 import { isNonceUsed, markNonceUsed } from "@/lib/runtime-cache";
+import { isExcluded } from "@/lib/excluded-emails";
+import { pickAudienceId } from "@/lib/resend-audience";
 
 // Sector pre-capture endpoint — Brunson DotCom Secrets Ch 13 ("Best Bait")
 // reactivation lever. The /firstlook page asks "which sector?" *before*
@@ -20,9 +22,9 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY || "";
-const FROM_EMAIL = process.env.FROM_EMAIL || "signal@gitdealflow.com";
+const FROM_EMAIL = process.env.FROM_EMAIL || "signals@gitdealflow.com";
 const FROM_NAME = process.env.FROM_NAME || "The Data Nerd";
-const ADMIN_EMAIL = "signal@gitdealflow.com";
+const ADMIN_EMAIL = "signals@gitdealflow.com";
 
 // 19 tracked sectors as of 2026-05. Match the firstlook welcome email
 // (lib emails.ts firstLookWelcomeEmail) so the sector key is shared.
@@ -89,6 +91,57 @@ async function notifyAdmin(email: string, sector: string, source: string) {
   }
 }
 
+/**
+ * Add the intent-capture email to the Resend audience with source
+ * attribution (packed into first_name, gdf-attr-v1 bridge) so non-buyers
+ * still receive future digests/broadcasts. On already-exists, PATCH
+ * unsubscribed:false to re-activate. Best-effort.
+ */
+async function addToAudience(email: string, sector: string) {
+  if (!RESEND_API_KEY || isExcluded(email)) return;
+  try {
+    const audRes = await fetch("https://api.resend.com/audiences", {
+      headers: { Authorization: `Bearer ${RESEND_API_KEY}` },
+    });
+    if (!audRes.ok) return;
+    const audiences = await audRes.json();
+    const audienceId: string | undefined = pickAudienceId(audiences);
+    if (!audienceId) return;
+    const res = await fetch(
+      `https://api.resend.com/audiences/${audienceId}/contacts`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${RESEND_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          first_name:
+            "gdf-attr-v1:" +
+            JSON.stringify({ source: "firstlook-intent", utm_campaign: sector }),
+          unsubscribed: false,
+        }),
+      },
+    );
+    if (!res.ok) {
+      await fetch(
+        `https://api.resend.com/audiences/${audienceId}/contacts/${encodeURIComponent(email)}`,
+        {
+          method: "PATCH",
+          headers: {
+            Authorization: `Bearer ${RESEND_API_KEY}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ unsubscribed: false }),
+        },
+      );
+    }
+  } catch (err) {
+    console.error("[firstlook-intent] audience-add failed:", err);
+  }
+}
+
 export async function POST(req: NextRequest) {
   let body: unknown;
   try {
@@ -138,11 +191,12 @@ export async function POST(req: NextRequest) {
   }
   await markNonceUsed(INTENT_NAMESPACE, nonce, INTENT_TTL_SECONDS);
 
-  // Defer the admin notification so the response returns immediately. The
-  // visitor sees "captured" inside one round-trip; Resend can take its time.
-  // `after()` runs post-response on Vercel Fluid Compute.
+  // Defer the admin notification + audience-add so the response returns
+  // immediately. The visitor sees "captured" inside one round-trip; Resend
+  // can take its time. `after()` runs post-response on Vercel Fluid Compute.
   after(async () => {
     await notifyAdmin(email, sector, sourceStr);
+    await addToAudience(email.toLowerCase(), sector);
   });
 
   return NextResponse.json({

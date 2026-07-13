@@ -48,7 +48,7 @@ export default function Header() {
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
         <Link
-          href="https://gitdealflow.com"
+          href="/"
           className="flex items-center gap-2 text-gray-100 font-semibold text-base tracking-tight hover:text-sky-400 transition-colors"
         >
           <span
@@ -57,12 +57,15 @@ export default function Header() {
           >
             G
           </span>
-          <span>VC Deal Flow Signal</span>
+          <span>GitDealFlow</span>
+          <span className="rounded bg-slate-800 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-sky-400">
+            signals
+          </span>
         </Link>
 
-        {/* Hamburger button — mobile only */}
+        {/* Hamburger button — mobile only. p-3 pads the 20px icon to a 44px hit area. */}
         <button
-          className="md:hidden text-gray-300 hover:text-white p-1.5 -mr-1.5 rounded-md hover:bg-slate-800/60 transition-colors"
+          className="md:hidden text-gray-300 hover:text-white p-3 -mr-2 rounded-md hover:bg-slate-800/60 transition-colors"
           onClick={() => setOpen(!open)}
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
@@ -100,7 +103,7 @@ export default function Header() {
           })}
           <Link
             href="https://gitdealflow.com/#signup"
-            className="ml-2 inline-flex items-center gap-1 text-sm bg-sky-600 hover:bg-sky-500 text-white px-3 py-1.5 rounded-md transition-colors font-medium shadow-sm shadow-sky-500/20"
+            className="ml-2 inline-flex items-center gap-1 text-sm bg-[#ff6b1a] hover:bg-[#ff8c4d] text-slate-950 px-3 py-1.5 rounded-md transition-colors font-semibold shadow-sm shadow-[#ff6b1a]/30"
           >
             See This Week&rsquo;s Signals
             <span aria-hidden="true">→</span>
@@ -135,7 +138,7 @@ export default function Header() {
           <Link
             href="https://gitdealflow.com/#signup"
             onClick={() => setOpen(false)}
-            className="mt-2 inline-flex items-center justify-center gap-1 text-sm bg-sky-600 hover:bg-sky-500 text-white px-3 py-2.5 rounded-md transition-colors font-medium"
+            className="mt-2 inline-flex items-center justify-center gap-1 text-sm bg-[#ff6b1a] hover:bg-[#ff8c4d] text-slate-950 px-3 py-2.5 rounded-md transition-colors font-semibold"
           >
             See This Week&rsquo;s Signals
             <span aria-hidden="true">→</span>

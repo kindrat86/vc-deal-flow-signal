@@ -50,7 +50,7 @@ const DRAFTS_DIR = resolve(REPO_ROOT, "tools/campaign/drafts");
 const HOLD_PATH = resolve(REPO_ROOT, "tools/campaign/HOLD");
 
 const SITE = "https://signals.gitdealflow.com";
-const FROM = "signal@gitdealflow.com";
+const FROM = "signals@gitdealflow.com";
 const SSRN = "ssrn.com/abstract=6606558";
 
 /** Outlets we tip. Each gets a tailored intro that fits the desk's beat. */

@@ -444,7 +444,7 @@ export default function SectorSweepPage() {
           <p className="text-gray-400 text-sm leading-relaxed">
             We use this to write the fit assessment + draft the tailored
             table of contents. No tracking pixels, no auto-charge, no add-to-
-            CRM. The brief lands in <code className="bg-slate-800 px-1.5 py-0.5 rounded text-amber-300 text-xs">signal@gitdealflow.com</code>{" "}
+            CRM. The brief lands in <code className="bg-slate-800 px-1.5 py-0.5 rounded text-amber-300 text-xs">signals@gitdealflow.com</code>{" "}
             and stays there until we reply to you directly.
           </p>
           <SectorSweepBriefForm />

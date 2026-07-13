@@ -98,7 +98,7 @@ const ATTESTATIONS: Attestation[] = [
     group: "Academic",
     registry: "Unpaywall",
     identifier: "via Crossref DOI",
-    href: "https://api.unpaywall.org/v2/10.2139/ssrn.6606558?email=signal@gitdealflow.com",
+    href: "https://api.unpaywall.org/v2/10.2139/ssrn.6606558?email=signals@gitdealflow.com",
     status: "Indexed as open-access",
     attestedOn: "2026-04-26",
     verifiable: "Unpaywall API returns is_oa=true with the SSRN PDF URL.",
@@ -166,8 +166,8 @@ const ATTESTATIONS: Attestation[] = [
   {
     group: "Distribution",
     registry: "Kaggle Datasets",
-    identifier: "thedatanerd/vc-deal-flow-signal",
-    href: "https://kaggle.com/datasets/thedatanerd/vc-deal-flow-signal",
+    identifier: "thedatanerd2026/vc-deal-flow-signal",
+    href: "https://www.kaggle.com/datasets/thedatanerd2026/vc-deal-flow-signal",
     status: "Published",
     attestedOn: "2026-04-26",
     verifiable: "Dataset is downloadable; Kaggle exposes file checksums and update history.",
@@ -200,15 +200,6 @@ const ATTESTATIONS: Attestation[] = [
     status: "Listed",
     attestedOn: "2026-04-25",
     verifiable: "Listing carries community-submitted comparisons + alternative suggestions.",
-  },
-  {
-    group: "Review &amp; directory",
-    registry: "SaaSHub",
-    identifier: "vc-deal-flow-signal",
-    href: "https://www.saashub.com/vc-deal-flow-signal",
-    status: "Listed",
-    attestedOn: "2026-04-25",
-    verifiable: "Listing carries category, alternatives, and external review links.",
   },
 ];
 

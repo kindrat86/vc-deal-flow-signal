@@ -2716,7 +2716,7 @@ Or just open [/badge-builder](https://signals.gitdealflow.com/badge-builder), pa
       {
         question: "Is the underlying paper peer-reviewed?",
         answer:
-          "Not yet. The methodology is openly published on SSRN (abstract=6606558), CC BY 4.0, and is auto-indexed by Crossref, OpenAlex (W7154916891), Semantic Scholar, Unpaywall, and DataCite. The dataset has a permanent DOI on Zenodo (10.5281/zenodo.19650920). Replication studies are welcome — signal@gitdealflow.com for co-authorship on funding-event joins.",
+          "Not yet. The methodology is openly published on SSRN (abstract=6606558), CC BY 4.0, and is auto-indexed by Crossref, OpenAlex (W7154916891), Semantic Scholar, Unpaywall, and DataCite. The dataset has a permanent DOI on Zenodo (10.5281/zenodo.19650920). Replication studies are welcome — signals@gitdealflow.com for co-authorship on funding-event joins.",
       },
     ],
     references: [
@@ -2777,7 +2777,7 @@ The /research index page now links each finding to its sub-page. The homepage ca
 
 The Data Nerd (2026). "30 Research Findings, Now One Page Each." VC Deal Flow Signal blog. Retrieved from https://signals.gitdealflow.com/blog/30-research-findings-now-one-page-each.
 
-Replication studies welcome. signal@gitdealflow.com for co-authorship on funding-event joins.`,
+Replication studies welcome. signals@gitdealflow.com for co-authorship on funding-event joins.`,
   },
 ];
 

@@ -102,8 +102,8 @@ const PROPERTIES: { p: string; label: string; value: string; href?: string }[] =
     {
       p: "P968",
       label: "email",
-      value: "signal@gitdealflow.com",
-      href: "mailto:signal@gitdealflow.com",
+      value: "signals@gitdealflow.com",
+      href: "mailto:signals@gitdealflow.com",
     },
     {
       p: "P1581",

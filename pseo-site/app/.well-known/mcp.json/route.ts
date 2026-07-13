@@ -29,7 +29,7 @@ export async function GET() {
       vendor: {
         name: "GitDealFlow",
         url: "https://gitdealflow.com",
-        email: "signal@gitdealflow.com",
+        email: "signals@gitdealflow.com",
       },
       license: "MIT",
       homepage: "https://signals.gitdealflow.com",

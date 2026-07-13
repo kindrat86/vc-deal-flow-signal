@@ -69,7 +69,7 @@ function wrap(body: string, footer = true): string {
   const footerHtml = footer
     ? `<div style="margin-top:32px;padding-top:16px;border-top:1px solid #e2e8f0;font-size:12px;color:#94a3b8;">
 <p>You're getting this because you signed up at <a href="${SITE}" style="color:#0ea5e9;">gitdealflow.com</a>.</p>
-<p><a href="${SIGNALS}" style="color:#0ea5e9;">Browse signals</a> · <a href="mailto:signal@gitdealflow.com" style="color:#0ea5e9;">Reply to unsubscribe</a></p>
+<p><a href="${SIGNALS}" style="color:#0ea5e9;">Browse signals</a> · <a href="mailto:signals@gitdealflow.com" style="color:#0ea5e9;">Reply to unsubscribe</a></p>
 </div>`
     : "";
   return `<!DOCTYPE html>
@@ -230,4 +230,4 @@ export function buildDailySeinfeld(
   };
 }
 
-export const FROM_EMAIL = `${FROM_NAME} <signal@gitdealflow.com>`;
+export const FROM_EMAIL = `${FROM_NAME} <signals@gitdealflow.com>`;

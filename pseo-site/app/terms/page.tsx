@@ -80,7 +80,7 @@ export default function TermsPage() {
         </ul>
 
         <h2 className="text-xl font-semibold text-gray-100">4 · Paid tiers</h2>
-        <p>Insider (€97/mo), Sharp (€497/mo), Sector Sweep (€1,997 one-time) and Agent Credits (€19 / 100 calls) are billed by Stripe. Refund policy: 14-day no-questions-asked for monthly subscriptions; one-time products refundable for 30 days if no significant value has been consumed (we read Stripe usage logs). Cancel any time from <Link href="/account" className="text-sky-400 hover:underline">/account</Link> or by emailing <a className="text-sky-400 hover:underline" href="mailto:signal@gitdealflow.com">signal@gitdealflow.com</a>.</p>
+        <p>Insider (€97/mo), Sharp (€497/mo), Sector Sweep (€1,997 one-time) and Agent Credits (€19 / 100 calls) are billed by Stripe. Refund policy: 14-day no-questions-asked for monthly subscriptions; one-time products refundable for 30 days if no significant value has been consumed (we read Stripe usage logs). Cancel any time from <Link href="/account" className="text-sky-400 hover:underline">/account</Link> or by emailing <a className="text-sky-400 hover:underline" href="mailto:signals@gitdealflow.com">signals@gitdealflow.com</a>.</p>
 
         <h2 className="text-xl font-semibold text-gray-100">5 · No investment advice</h2>
         <p>VC Deal Flow Signal is research-grade alternative-data output, not personalised financial or investment advice. Past commit-velocity and contributor-growth patterns do not guarantee future fundraise outcomes. You are solely responsible for any investment decision.</p>
@@ -98,7 +98,7 @@ export default function TermsPage() {
         <p>Greek law governs. Exclusive venue: courts of Athens. EU consumers retain mandatory consumer-protection rights and Brussels I jurisdiction options.</p>
 
         <h2 className="text-xl font-semibold text-gray-100">10 · Contact + changes</h2>
-        <p>Questions: <a className="text-sky-400 hover:underline" href="mailto:signal@gitdealflow.com">signal@gitdealflow.com</a>. We will email all subscribers at least 30 days before any material change to these Terms; minor edits (typos, link updates) ship without notice. Version history at <Link href="/changelog" className="text-sky-400 hover:underline">/changelog</Link>.</p>
+        <p>Questions: <a className="text-sky-400 hover:underline" href="mailto:signals@gitdealflow.com">signals@gitdealflow.com</a>. We will email all subscribers at least 30 days before any material change to these Terms; minor edits (typos, link updates) ship without notice. Version history at <Link href="/changelog" className="text-sky-400 hover:underline">/changelog</Link>.</p>
       </section>
 
       <TrustPageOutro institutional acNote="I sell a signal, not a promise. That's why the terms are short, the liability is capped, the advice disclaimer is loud, and the exit is one click. If the math stops being useful, you leave — I'd rather lose the subscription than bury the off-ramp." />

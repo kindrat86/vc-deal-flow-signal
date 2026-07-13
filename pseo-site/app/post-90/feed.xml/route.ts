@@ -184,7 +184,7 @@ export async function GET() {
     <itunes:summary>${escape(CHANNEL_DESC)}</itunes:summary>
     <itunes:owner>
       <itunes:name>VC Deal Flow Signal</itunes:name>
-      <itunes:email>signal@gitdealflow.com</itunes:email>
+      <itunes:email>signals@gitdealflow.com</itunes:email>
     </itunes:owner>
     <itunes:image href="${SITE}/icon.png" />
     <itunes:explicit>false</itunes:explicit>

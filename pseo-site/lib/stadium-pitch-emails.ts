@@ -15,7 +15,7 @@ import { formatDropTimeUtc, formatMonthLabel } from "./stadium-pitch-schedule";
 
 const SITE_SIGNALS = "https://signals.gitdealflow.com";
 const SITE_APEX = "https://gitdealflow.com";
-const FROM_EMAIL = process.env.FROM_EMAIL || "signal@gitdealflow.com";
+const FROM_EMAIL = process.env.FROM_EMAIL || "signals@gitdealflow.com";
 
 interface BuildArgs {
   dropTimeIso: string;
