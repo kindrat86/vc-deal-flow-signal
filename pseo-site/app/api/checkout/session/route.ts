@@ -111,14 +111,16 @@ export async function POST(req: NextRequest) {
   const cfg = ENTRY_TIERS[tier];
   const origin = req.headers.get("origin") || SITE_ORIGIN;
 
-  // Brunson DotCom Ch 18 — additive order bump. The bump is a SECOND line
-  // item, not a price swap. AOV lifts without disrupting the OTO ladder
-  // that follows on /firstlook/thanks.
+  // Brunson DotCom Ch 14/18 — additive order bump. The bump is a SECOND
+  // purchasable item, not a price swap. AOV lifts without disrupting the
+  // OTO ladder that follows on /firstlook/thanks.
   //
-  // The line_items shape is inferred from the SessionCreateParams the
-  // Stripe SDK expects below — annotating Stripe.Checkout.SessionCreateParams.LineItem
-  // explicitly is brittle because the Checkout namespace re-exports
-  // SessionCreateParams as a type-alias-only, dropping nested member types.
+  // For `payment` mode: bump becomes a second line_item alongside the
+  // base product — both are one-time charges.
+  //
+  // For `subscription` mode: bump becomes an add_invoice_item on the
+  // FIRST invoice only (Stripe won't allow mixing one-time line_items
+  // with recurring ones in subscription mode).
   const baseLineItem = {
     quantity: 1,
     price_data: {
@@ -132,21 +134,38 @@ export async function POST(req: NextRequest) {
     },
   } as const;
 
-  const bumpLineItem = bump
-    ? ({
-        quantity: 1,
-        price_data: {
-          currency: BUMPS[bump].currency,
-          unit_amount: BUMPS[bump].unitAmount,
+  // Build the bump price data once (only when a valid bump was requested).
+  // We reuse this for both payment-mode line_items and subscription-mode
+  // add_invoice_items — the shape is identical.
+  const validBump: BumpKey | null = bump;
+  const bumpPriceData =
+    validBump !== null
+      ? {
+          currency: BUMPS[validBump].currency,
+          unit_amount: BUMPS[validBump].unitAmount,
           product_data: {
-            name: BUMPS[bump].productName,
-            description: BUMPS[bump].description,
+            name: BUMPS[validBump].productName,
+            description: BUMPS[validBump].description,
           },
-        },
-      } as const)
-    : null;
+        }
+      : null;
+
+  // payment mode → bump is a second line_item
+  const bumpLineItem =
+    bumpPriceData && cfg.mode === "payment"
+      ? ({ quantity: 1, price_data: bumpPriceData } as const)
+      : null;
 
   const lineItems = bumpLineItem ? [baseLineItem, bumpLineItem] : [baseLineItem];
+
+  // subscription mode → bump is an add_invoice_item on the first invoice
+  const bumpInvoiceItem =
+    bumpPriceData && cfg.mode === "subscription"
+      ? {
+          price_data: bumpPriceData,
+          quantity: 1 as const,
+        }
+      : null;
 
   // Round-trip metadata. The thank-you page reads `bump` to acknowledge the
   // upgrade explicitly; analytics pipelines read `variant` to attribute
@@ -181,7 +200,15 @@ export async function POST(req: NextRequest) {
         metadata,
       };
     } else {
-      sessionParams.subscription_data = { metadata };
+      sessionParams.subscription_data = {
+        metadata,
+        // Brunson Ch 14 — order bump on subscription mode: charge the
+        // bump once on the first invoice, then the recurring price
+        // continues normally on subsequent invoices.
+        ...(bumpInvoiceItem
+          ? { add_invoice_items: [bumpInvoiceItem] }
+          : {}),
+      };
     }
 
     session = await stripe.checkout.sessions.create(sessionParams);

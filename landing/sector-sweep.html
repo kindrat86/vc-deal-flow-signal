@@ -134,7 +134,7 @@
         <a href="/dashboard" class="text-gray-400 text-sm hover:text-gray-100 transition">Dashboard</a>
         <a href="/insider" class="text-gray-400 text-sm hover:text-gray-100 transition">Insider</a>
       </nav>
-      <button type="button" data-checkout class="btn btn-cta btn-sm whitespace-nowrap shrink-0"><span class="sm:hidden">Reserve</span><span class="hidden sm:inline">Reserve my Sweep</span> <span aria-hidden="true" class="btn-arrow">&rarr;</span></button>
+      <a href="/apply" class="btn btn-cta btn-sm whitespace-nowrap shrink-0"><span class="sm:hidden">Apply</span><span class="hidden sm:inline">Apply for a Sweep</span> <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
     </div>
   </header>
 
@@ -277,18 +277,18 @@
     </section>
 
     <section id="checkout" class="max-w-3xl mx-auto px-6 py-20 text-center">
-      <p class="text-yellow-300 text-xs font-semibold uppercase tracking-wider mb-3">Checkout</p>
-      <h2 class="text-3xl font-bold mb-4">Reserve my Sweep</h2>
-      <p class="text-gray-300 mb-8">One click to secure Stripe checkout &mdash; you'll enter your email there. After payment, the intake page tells you exactly how to send the thesis, sector, geography, and question.</p>
+      <p class="text-yellow-300 text-xs font-semibold uppercase tracking-wider mb-3">Apply first</p>
+      <h2 class="text-3xl font-bold mb-4">Tell me your thesis before you pay.</h2>
+      <p class="text-gray-300 mb-8 max-w-xl mx-auto">At &euro;1,997 you should be skeptical, and I want you to be. Apply with your thesis and question &mdash; I'll read the signal across your sector and reply within 24 hours. If it's there, I send you a private payment link. If it isn't, I tell you before you spend a cent.</p>
       <div class="rounded-2xl border-2 border-yellow-500 bg-dark-900 p-8 max-w-xl mx-auto">
         <div class="flex items-baseline justify-center gap-3 mb-2">
-          <p class="text-5xl font-extrabold">€1,997</p>
+          <p class="text-5xl font-extrabold">&euro;1,997</p>
           <p class="text-gray-400 text-lg">one-time</p>
         </div>
-        <p class="text-gray-500 text-sm mb-6">Secure checkout via Stripe · €1,997 this year · €2,997 after 2026</p>
-        <button type="button" data-checkout class="block w-full sm:w-auto mx-auto bg-yellow-500 hover:bg-yellow-400 text-dark-900 font-bold px-6 sm:px-10 py-4 rounded-lg text-lg transition">Reserve my Sweep — €1,997 →</button>
-        <p id="sector-sweep-msg" class="text-gray-500 text-sm mt-4">Secure checkout via Stripe. Intake starts right after payment.</p>
-        <p class="text-gray-500 text-xs mt-4">Prefer to talk first? <a href="mailto:signal@gitdealflow.com?subject=Sector%20Sweep%20%E2%80%94%20questions" class="text-yellow-300 hover:text-yellow-200 underline decoration-dotted">Email your thesis first</a>.</p>
+        <p class="text-gray-500 text-sm mb-6">7-day custom report &middot; &euro;1,997 this year &middot; &euro;2,997 after 2026 &middot; 7 of 8 slots open</p>
+        <a href="/apply" onclick="if(window.posthog)posthog.capture('sector_sweep_apply_clicked',{placement:'checkout_section'})" class="block w-full sm:w-auto mx-auto bg-yellow-500 hover:bg-yellow-400 text-dark-900 font-bold px-6 sm:px-10 py-4 rounded-lg text-lg transition">Apply for a Sweep &rarr;</a>
+        <p class="text-gray-500 text-sm mt-4">No card required to apply. I review your thesis before sending a payment link.</p>
+        <p class="text-gray-500 text-xs mt-4">Prefer to talk first? <a href="mailto:signal@gitdealflow.com?subject=Sector%20Sweep%20%E2%80%94%20questions" class="text-yellow-300 hover:text-yellow-200 underline decoration-dotted">Email me directly</a>.</p>
       </div>
     </section>
   </main>

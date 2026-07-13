@@ -498,6 +498,202 @@ export const PERSONAS: Persona[] = [
     ctaPath: "/dataset",
     ctaLabel: "Browse the Open Dataset",
   },
+  {
+    slug: "angel-investors",
+    name: "Angel Investors",
+    shortName: "Angels",
+    title: "GitHub Engineering Signals for Angel Investors — Find Pre-Seed Breakouts Early",
+    metaDescription:
+      "Angel investors use public GitHub commit velocity to spot pre-seed startups accelerating 3-6 weeks before a fundraise. Free dataset, weekly rankings, no signup.",
+    h1: "GitHub Engineering Signals for Angel Investors",
+    tagline:
+      "Spot pre-seed breakouts 3-6 weeks before the round gets crowded — using public GitHub commit velocity as the earliest engineering-momentum signal.",
+    intro:
+      "Angel investors need signals before the round gets crowded. Commit velocity is the earliest public indicator of engineering momentum — visible weeks before pitch decks circulate, press hits, or SEC filings appear. VC Deal Flow Signal tracks 400+ startups across 20 sectors, refreshed weekly.",
+    workflows: [
+      {
+        name: "Pre-seed breakout detection",
+        description: "Filter the signal panel for startups with commit-velocity acceleration above the sector median. These are the earliest breakout candidates — the ones that haven't appeared in any press yet.",
+        primaryPath: "/signal",
+        secondaryPaths: ["/stage/pre-seed", "/signal/hiring-burst"],
+      },
+      {
+        name: "Scout Score for deal screening",
+        description: "Compute a 0-100 Scout Score for any GitHub username based on their starring history vs. ~75 validated unicorns. Useful for evaluating founder taste and pattern-matching ability before writing a cheque.",
+        primaryPath: "/receipts",
+        secondaryPaths: ["/receipts"],
+      },
+      {
+        name: "Free weekly Sunday digest",
+        description: "Join the Telegram channel for 5 hand-picked breakout startups every Sunday — free, no email required. Perfect for angels who want a Monday-morning sourcing agenda.",
+        primaryPath: "/telegram",
+        secondaryPaths: ["/telegram"],
+      },
+    ],
+    quickStart: [
+      { label: "Pre-seed rankings", path: "/stage/pre-seed" },
+      { label: "Scout Score checker", path: "/receipts" },
+      { label: "Sunday digest", path: "/telegram" },
+    ],
+    whyEngineeringSignals:
+      "Angels live on speed and access. Engineering signals fire 3-6 weeks before institutional funds see the deck. For angels, that head start is the difference between getting into a round at terms you negotiate vs. terms set by a competitive process.",
+    whatItDoesNotSolve:
+      "Engineering signals don't replace founder conversations, reference checks, or market-thesis validation. They are a sourcing and screening signal — not a diligence tool. Use them to find candidates faster, not to make final investment decisions.",
+    faqs: [
+      { question: "What GitHub signals are relevant for angel investors?", answer: "Commit velocity (14-day rolling commits to the most active public repo), contributor growth (new organizational committers), and signal type classification (breakout, acceleration, steady, cooling). These are the earliest publicly observable indicators of engineering momentum." },
+      { question: "How often is the data refreshed?", answer: "Every Monday at approximately 09:00 UTC. The 14-day rolling window resets weekly." },
+      { question: "Is this free for angels?", answer: "Yes. The dataset, API, MCP server, and weekly rankings are free forever. No signup required." },
+    ],
+    ctaPath: "/telegram",
+    ctaLabel: "Get the Free Sunday Digest",
+  },
+  {
+    slug: "venture-scouts",
+    name: "Venture Scouts",
+    shortName: "Scouts",
+    title: "Deal Flow Sourcing for Venture Scouts — GitHub Momentum as a Lead Indicator",
+    metaDescription:
+      "Venture scouts use GitHub engineering acceleration to find startups before partners do. Free weekly rankings across 20 sectors, MCP server for Claude Desktop.",
+    h1: "Deal Flow Sourcing for Venture Scouts",
+    tagline:
+      "Use GitHub engineering acceleration to surface deals before the partners you scout for do — with a reproducible, data-driven sourcing edge.",
+    intro:
+      "Scouts live on speed and pattern recognition. The startups that show engineering acceleration today are the ones partners see decks for in six weeks. VC Deal Flow Signal gives scouts a reproducible, data-driven sourcing edge — free, with an MCP server that plugs directly into Claude Desktop for natural-language deal screening.",
+    workflows: [
+      {
+        name: "Natural-language deal screening",
+        description: "Install the MCP server in Claude Desktop and ask 'which fintech startups are accelerating this week?' — Claude queries the live dataset and returns ranked results.",
+        primaryPath: "/developers",
+        secondaryPaths: ["/developers"],
+      },
+      {
+        name: "Sector-filtered sourcing lists",
+        description: "Generate weekly sourcing lists by sector, sorted by commit-velocity change. Each /sector hub lists 5-15 curated companies with one-click deep dives.",
+        primaryPath: "/sector",
+        secondaryPaths: ["/sector/fintech", "/sector/ai-ml"],
+      },
+      {
+        name: "Scout Score for founder evaluation",
+        description: "Compute a 0-100 Scout Score from any founder's GitHub starring history. Higher scores correlate with validated unicorn-taste patterns.",
+        primaryPath: "/receipts",
+        secondaryPaths: ["/receipts"],
+      },
+    ],
+    quickStart: [
+      { label: "Install MCP server", path: "/developers" },
+      { label: "Sector rankings", path: "/sector" },
+      { label: "Scout Score", path: "/receipts" },
+    ],
+    whyEngineeringSignals:
+      "Scouts need to bring deal flow to partners faster than the partner's own network surfaces it. Code-side sourcing is the rare channel where a scout's GitHub literacy is the differentiator — partners without technical depth can't replicate this sourcing motion.",
+    whatItDoesNotSolve:
+      "Engineering signals don't solve partner relationship management or fund politics. They are a sourcing-quality signal, not an internal-advocacy tool.",
+    faqs: [
+      { question: "How does the MCP server work for deal screening?", answer: "Install @gitdealflow/mcp-signal via npx in Claude Desktop. Then ask natural-language questions like 'which cybersecurity startups had a hiring burst this week?' and Claude queries the live dataset." },
+      { question: "Can I use this to build a deal-flow tracker?", answer: "Yes. The JSON API (/api/signals.json) and CSV export are free, no auth. Pull them into Notion, Airtable, or any CRM." },
+      { question: "Is this free for scouts?", answer: "Yes — all free. The MCP server, dataset, API, and weekly rankings are free forever." },
+    ],
+    ctaPath: "/developers",
+    ctaLabel: "Install the MCP Server",
+  },
+  {
+    slug: "solo-gps",
+    name: "Solo GPs",
+    shortName: "Solo GPs",
+    title: "Deal Flow Tools for Solo GPs — GitHub Signals Before the Deck Arrives",
+    metaDescription:
+      "Solo general partners use public GitHub momentum data to source deals before institutional rounds. Free dataset, CSV export, API access.",
+    h1: "Deal Flow Tools for Solo GPs",
+    tagline:
+      "Level the playing field against established funds with a single dataset that surfaces breakout startups across 20 sectors every week.",
+    intro:
+      "Solo GPs don't have a sourcing team. GitHub engineering signals level the playing field — a single dataset that surfaces breakout startups across 20 sectors every week, before the round is live. No expensive Bloomberg terminal, no analyst subscriptions. Just public code, measured.",
+    workflows: [
+      {
+        name: "Full dataset export for CRM pipeline",
+        description: "Export the complete signal dataset as JSON, CSV, or NDJSON. Plug into your own pipeline or CRM — Affinity, HubSpot, Notion, or a custom dashboard.",
+        primaryPath: "/dataset",
+        secondaryPaths: ["/dataset", "/api/openapi.json"],
+      },
+      {
+        name: "Custom sector deep-dive reports",
+        description: "Order a deep written report on any one sector — the Custom Sector Sweep includes per-company engineering profiles, trajectory analysis, and fundraise-window predictions.",
+        primaryPath: "/firstlook",
+        secondaryPaths: ["/firstlook"],
+      },
+      {
+        name: "API access for automated dashboards",
+        description: "Build automated deal-flow dashboards with the OpenAPI 3.1 spec. No auth required — just fetch the JSON endpoint on a schedule.",
+        primaryPath: "/developers",
+        secondaryPaths: ["/developers", "/api/openapi.json"],
+      },
+    ],
+    quickStart: [
+      { label: "Export dataset", path: "/dataset" },
+      { label: "API docs", path: "/developers" },
+      { label: "Sector sweep", path: "/firstlook" },
+    ],
+    whyEngineeringSignals:
+      "Solo GPs compete against firms with 20-person sourcing teams. Code-side sourcing turns a solo operator's GitHub literacy into a structural advantage — the same data that a 20-person team would spend weeks collecting is available as a single weekly export.",
+    whatItDoesNotSolve:
+      "Engineering signals don't replace investment judgment, portfolio management, or LP relations. They are a sourcing accelerator, not a full investing platform.",
+    faqs: [
+      { question: "Can I export the dataset into my own pipeline?", answer: "Yes. JSON, CSV, and NDJSON exports are free at /dataset. The OpenAPI spec at /api/openapi.json documents all endpoints." },
+      { question: "How accurate is the stage classification?", answer: "Stage is estimated from contributor count, team-size enrichment data, and funding history where publicly available. See /methodology for the full classification methodology." },
+      { question: "Is there a paid tier for solo GPs?", answer: "The dataset and API are free. The Custom Sector Sweep (€1,997 once) and Insider Circle (€97/month) are additive paid offerings." },
+    ],
+    ctaPath: "/dataset",
+    ctaLabel: "Export the Dataset",
+  },
+  {
+    slug: "family-offices",
+    name: "Family Offices",
+    shortName: "Family Offices",
+    title: "Startup Engineering Momentum Data for Family Offices — Quantitative Venture Sourcing",
+    metaDescription:
+      "Family offices use GitHub commit velocity as a quantitative pre-fundraise signal. Free weekly rankings, SSRN-validated methodology, CC BY 4.0 dataset.",
+    h1: "Quantitative Venture Sourcing for Family Offices",
+    tagline:
+      "Reproducible, defensible sourcing signals for investment committees — grounded in a longitudinal panel with an SSRN preprint and CC BY 4.0 dataset.",
+    intro:
+      "Family offices need reproducible, defensible sourcing signals — not vibes. VC Deal Flow Signal provides a longitudinal panel of GitHub engineering velocity, validated against 30 atomic findings in an SSRN preprint. Every metric links back to a public GitHub source.",
+    workflows: [
+      {
+        name: "Investment-committee-grade methodology",
+        description: "The SSRN preprint (DOI: 10.2139/ssrn.6606558) documents the empirical relationship between commit-velocity and fundraise timing. Citation-ready for IC memos.",
+        primaryPath: "/methodology",
+        secondaryPaths: ["/methodology", "/citation-guide"],
+      },
+      {
+        name: "Open dataset for internal analysis",
+        description: "The full dataset is CC BY 4.0 licensed — no vendor lock-in, no subscription dependency. Download as CSV/JSON for internal analysis or archive.",
+        primaryPath: "/dataset",
+        secondaryPaths: ["/dataset"],
+      },
+      {
+        name: "30 peer-reviewable research findings",
+        description: "The /research pages document 30 atomic findings with external scholarly citations. Each finding is independently verifiable and links to its source data.",
+        primaryPath: "/research",
+        secondaryPaths: ["/research"],
+      },
+    ],
+    quickStart: [
+      { label: "Published methodology", path: "/methodology" },
+      { label: "Open dataset", path: "/dataset" },
+      { label: "Research findings", path: "/research" },
+    ],
+    whyEngineeringSignals:
+      "Family offices answer to investment committees that demand reproducible, defensible sourcing methodology. The SSRN preprint, CC BY 4.0 license, and documented methodology satisfy IC due-diligence requirements that proprietary data products (Crunchbase, PitchBook) cannot match — because those products gate replication behind enterprise licenses.",
+    whatItDoesNotSolve:
+      "Engineering signals don't address non-technical investments (real estate, consumer brands, services). They are most powerful at the SaaS / infrastructure / developer-tools intersection where GitHub activity is a meaningful proxy for company momentum.",
+    faqs: [
+      { question: "Can we cite this in investment committee materials?", answer: "Yes. The SSRN paper (DOI: 10.2139/ssrn.6606558) is citation-ready. CC BY 4.0 explicitly permits internal IC use with attribution." },
+      { question: "How is this different from PitchBook?", answer: "PitchBook documents what happened (after the fact). We document what's about to happen (3-6 weeks before). Complementary, not competitive." },
+      { question: "Is the dataset suitable for quantitative analysis?", answer: "Yes. JSON, CSV, NDJSON formats with documented schema. Weekly time series available for longitudinal analysis." },
+    ],
+    ctaPath: "/methodology",
+    ctaLabel: "Read the Methodology",
+  },
 ];
 
 export function getAllPersonaSlugs(): string[] {

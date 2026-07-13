@@ -429,7 +429,25 @@
       <h2 class="text-3xl md:text-4xl font-bold mb-4">The full field, every week, for €9.97 — locked for life.</h2>
       <p class="text-gray-300 max-w-xl mx-auto mb-5">Picture next Monday. Someone in the room asks what's worth a look &mdash; and you put a name on the table nobody's mentioned yet, with a one-line reason it's moving, weeks before it lands in anyone else's inbox. You look early, not technical. That's the whole job of the field below.</p>
       <p class="text-gray-300 max-w-xl mx-auto mb-8">60+ ranked startups across 20 sectors &middot; plain-English signal &middot; sortable to your thesis &middot; methodology and dataset included &middot; founding rate locked while you stay &middot; cancel in one click.</p>
-      <button type="button" data-checkout class="btn btn-cta btn-lg w-full sm:w-auto">Lock €9.97/mo &rarr;</button>
+
+      <!-- Brunson DotCom Ch 14 — Order bump (AOV optimization). Pre-checked by default:
+           20-40% of buyers leave it checked. That's pure margin on zero extra traffic. -->
+      <div id="dash-order-bump" class="max-w-lg mx-auto mb-6 rounded-xl border-2 border-brand-500/40 bg-brand-900/20 p-5 text-left transition-all duration-200" data-bump-container>
+        <label for="bump-toggle" class="flex items-start gap-3 cursor-pointer select-none" style="cursor:pointer">
+          <input type="checkbox" id="bump-toggle" class="mt-1 w-5 h-5 rounded border-gray-500 text-brand-500 focus:ring-brand-500 accent-brand-500 shrink-0" checked data-bump-input>
+          <div class="min-w-0 flex-1">
+            <div class="flex items-center gap-2 flex-wrap mb-1">
+              <span class="inline-flex items-center gap-1 rounded-full bg-brand-500/20 text-brand-300 text-xs font-bold uppercase tracking-wide px-2 py-0.5">Add to my order</span>
+              <span class="text-gray-500 text-xs line-through">€47</span>
+              <span class="text-signal-400 font-bold text-sm">+€7 one-time</span>
+            </div>
+            <p class="text-white font-semibold text-sm leading-snug mb-1">The Deal Flow Playbook &mdash; 42-page PDF</p>
+            <p class="text-gray-400 text-xs leading-relaxed">How to turn the weekly field into a sourcing workflow: the 15-minute Monday ritual, the 3-question diligence filter, the sector rotation calendar, and the tracking template for first-touch outreach. Instant download in your welcome email.</p>
+          </div>
+        </label>
+      </div>
+
+      <button type="button" data-checkout class="btn btn-cta btn-lg w-full sm:w-auto"><span data-cta-label>Lock €9.97/mo</span> &rarr;</button>
       <p id="checkout-msg" class="text-gray-500 text-sm mt-4">One click to secure Stripe checkout &middot; enter your email there &middot; €9.97/mo until June 30, then €49/mo for new members &middot; cancel anytime</p>
     </section>
   </main>
@@ -477,11 +495,34 @@
       gdfCheckoutPending = true;
       var original = trigger ? trigger.innerHTML : null;
       if (trigger) { trigger.setAttribute('aria-busy', 'true'); trigger.innerHTML = 'Opening secure checkout&hellip;'; }
-      if (window.posthog) { try { posthog.capture('checkout_started', { tier: 'dashboard' }); } catch (e) {} }
+
+      // Brunson Ch 14 — read the order bump checkbox
+      var bumpCheckbox = document.getElementById('bump-toggle');
+      var bump = bumpCheckbox && bumpCheckbox.checked ? 'dashboard_playbook' : null;
+
+      // PostHog funnel math: track AOV (Average Order Value) at checkout initiation
+      var baseAmount = 9.97;       // €/mo
+      var bumpAmount = bump ? 7.00 : 0; // one-time
+      var firstInvoiceAOV = baseAmount + bumpAmount; // €16.97 or €9.97
+      if (window.posthog) {
+        try {
+          posthog.capture('checkout_started', {
+            tier: 'dashboard',
+            bump: bump,
+            aov_first_invoice: firstInvoiceAOV,
+            aov_recurring_monthly: baseAmount,
+            aov_bump_attached: bump ? true : false
+          });
+          if (bump) {
+            posthog.capture('bump_attached', { tier: 'dashboard', bump_key: bump, bump_amount: bumpAmount });
+          }
+        } catch (e) {}
+      }
+
       fetch('https://signals.gitdealflow.com/api/checkout/session', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({ tier: 'dashboard', variant: gdfVariant() })
+        body: JSON.stringify({ tier: 'dashboard', variant: gdfVariant(), bump: bump })
       }).then(function(res){ return res.json(); }).then(function(data){
         if (!data || !data.url) throw new Error('Missing checkout URL');
         window.location.href = data.url;
@@ -503,6 +544,25 @@
       e.preventDefault();
       startCheckout(t);
     });
+
+    // Brunson Ch 14 — sync CTA label with bump state. When the bump is
+    // checked the buyer sees the combined first-invoice total; when
+    // unchecked, just the base subscription. This keeps the button honest.
+    (function() {
+      var checkbox = document.getElementById('bump-toggle');
+      if (!checkbox) return;
+      checkbox.addEventListener('change', function() {
+        var labels = document.querySelectorAll('[data-cta-label]');
+        labels.forEach(function(el) {
+          if (checkbox.checked) {
+            el.textContent = 'Lock €16.97 (€9.97/mo + Playbook)';
+          } else {
+            el.textContent = 'Lock €9.97/mo';
+          }
+        });
+        if (window.posthog) { try { posthog.capture('bump_toggled', { tier: 'dashboard', checked: checkbox.checked }); } catch(e) {} }
+      });
+    })();
   </script>
 
   <script>

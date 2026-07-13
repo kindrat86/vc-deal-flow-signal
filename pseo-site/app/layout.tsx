@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import LaunchBanner from "@/components/LaunchBanner";
 import PixelManager from "@/components/PixelManager";
 import { RootIdentitySchema } from "@/components/RootIdentitySchema";
+import BreadcrumbsSchema from "@/components/BreadcrumbsSchema";
 import WebVitalsReporter from "@/components/WebVitalsReporter";
 import GuidedConcierge from "@/components/GuidedConcierge";
 import CookieNotice from "@/components/CookieNotice";
@@ -393,6 +394,7 @@ export default function RootLayout({
           title="Multi-result fuzzy answer search"
         />
         <RootIdentitySchema />
+        <BreadcrumbsSchema />
       </head>
       <body className={`${inter.className} min-h-full flex flex-col bg-slate-950 text-gray-100`}>
         {/* Site chrome (Header, Footer, LaunchBanner, retargeting pixels,

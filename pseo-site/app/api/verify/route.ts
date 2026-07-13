@@ -210,11 +210,25 @@ export async function GET(request: Request) {
               : route === "I"
                 ? SOAP_OPERA_I
                 : SOAP_OPERA_EMAILS;
-  console.log(
-    `[verify] dispatch email=${email} cohort=${cohortParam || "default"} route=${route || "none"} count=${sequence.length}`,
-  );
+  // Resend's scheduled_at API rejects anything more than 30 days in the
+  // future (returns 422). Emails within the window are scheduled now; emails
+  // beyond it are stored as a deferred plan on the contact's `properties`
+  // and picked up by the /api/cron/drip-sender daily cron.
+  const MAX_SCHEDULE_MS = 29 * 24 * 60 * 60 * 1000; // 29 days, safety margin
   const now = Date.now();
-  for (const soapEmail of sequence) {
+
+  const immediate: typeof sequence = [];
+  const deferred: typeof sequence = [];
+  for (const e of sequence) {
+    if (e.delayMs <= MAX_SCHEDULE_MS) immediate.push(e);
+    else deferred.push(e);
+  }
+
+  console.log(
+    `[verify] dispatch email=${email} cohort=${cohortParam || "default"} route=${route || "none"} total=${sequence.length} immediate=${immediate.length} deferred=${deferred.length}`,
+  );
+
+  for (const soapEmail of immediate) {
     const sendAt = new Date(now + soapEmail.delayMs).toISOString();
     try {
       const res = await fetch("https://api.resend.com/emails", {
@@ -247,6 +261,51 @@ export async function GET(request: Request) {
         `Error scheduling "${soapEmail.subject}" for ${email}:`,
         err,
       );
+    }
+  }
+
+  // Store the deferred email plan on the contact so the drip-sender cron
+  // can deliver them when the time comes. We pack the plan into a compact
+  // JSON and store it in the contact's `properties.drip` field, keyed by
+  // the delay-in-days so the cron can match on days-since-signup.
+  if (deferred.length > 0) {
+    const dripPlan = deferred.map((e) => ({
+      d: Math.round(e.delayMs / (24 * 60 * 60 * 1000)), // delay in days
+      s: e.subject,
+      h: e.html,
+    }));
+    try {
+      // Resolve audience + contact ID, then PATCH properties
+      const audienceRes = await fetch("https://api.resend.com/audiences", {
+        headers: { Authorization: `Bearer ${RESEND_API_KEY}` },
+      });
+      if (audienceRes.ok) {
+        const audiences = await audienceRes.json();
+        const audienceId = audiences.data?.[0]?.id;
+        if (audienceId) {
+          await fetch(
+            `https://api.resend.com/audiences/${audienceId}/contacts/${encodeURIComponent(email)}`,
+            {
+              method: "PATCH",
+              headers: {
+                Authorization: `Bearer ${RESEND_API_KEY}`,
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                properties: {
+                  drip_plan: JSON.stringify(dripPlan),
+                  drip_sent: "", // comma-separated list of days already sent
+                },
+              }),
+            },
+          );
+          console.log(
+            `[verify] stored ${deferred.length} deferred drip emails for ${email}`,
+          );
+        }
+      }
+    } catch (err) {
+      console.error(`[verify] failed to store deferred drip plan:`, err);
     }
   }
 

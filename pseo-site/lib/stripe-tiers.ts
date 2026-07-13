@@ -14,7 +14,7 @@ export type OtoKey =
 // (post-purchase) — this happens IN-cart, before card capture, so the
 // bumped checkout sets up the saved card for OTOs the same way the base
 // cart does.
-export type BumpKey = "methodology_vault";
+export type BumpKey = "methodology_vault" | "dashboard_playbook";
 
 export type BumpConfig = {
   productName: string;
@@ -141,10 +141,10 @@ export const OTO_TIERS: Record<OtoKey, OtoConfig> = {
   },
 };
 
-// True Brunson order-bump — added IN-cart on /firstlook BEFORE Stripe
-// capture, so the saved card flows through the same setup_future_usage
-// path the base €7 does. The bump is a separate Checkout line item, not a
-// price swap. Lifts AOV without disrupting the OTO ladder.
+// True Brunson order-bump — added IN-cart BEFORE Stripe capture, so the
+// saved card flows through the same setup_future_usage path the base
+// product does. Each bump is a separate Checkout line item / invoice
+// item, not a price swap. Lifts AOV without disrupting the OTO ladder.
 export const BUMPS: Record<BumpKey, BumpConfig> = {
   methodology_vault: {
     productName: "Methodology Vault — full PDF",
@@ -152,6 +152,16 @@ export const BUMPS: Record<BumpKey, BumpConfig> = {
     currency: "eur",
     description:
       "The 38-page Methodology Vault PDF — SSRN preprint + private commentary on every signal definition, every regression coefficient, and the three confounders the public paper does not name. Delivered as an instant download link in your First Look intake email.",
+  },
+  // Brunson DotCom Ch 14 — Dashboard order bump. Works for BOTH payment
+  // and subscription tiers: on payment it becomes a second line_item; on
+  // subscription it becomes an add_invoice_item on the first invoice.
+  dashboard_playbook: {
+    productName: "The Deal Flow Playbook — 42-page PDF",
+    unitAmount: 700,
+    currency: "eur",
+    description:
+      "42-page PDF: how to turn the weekly field into a sourcing workflow — the 15-minute Monday ritual, the 3-question diligence filter, the sector rotation calendar, and the tracking template for first-touch outreach. Instant download link in your welcome email. Normally €47 — add it now for €7.",
   },
 };
 
