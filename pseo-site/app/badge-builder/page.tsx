@@ -3,7 +3,6 @@ import Link from "next/link";
 import startupsData from "@/data/startups.json";
 import { getAllSectors, getCurrentPeriod } from "@/lib/data";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
-import { HreflangLinks } from "@/components/HreflangLinks";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 
 const SITE = "https://signals.gitdealflow.com";
@@ -110,7 +109,6 @@ export default function BadgeBuilderPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <AgentMirrorLinks path="/badge-builder" qaCategory="badge" />
-      <HreflangLinks />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <nav className="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gray-300 transition-colors">
