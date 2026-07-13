@@ -3560,6 +3560,53 @@
         }
       ],
       "publishedAt": "2026-07-12T09:00:00Z"
+    },
+    {
+      "date": "2026-07-13",
+      "slug": "2026-07-13",
+      "headline": "The web3 opening hiding in a +13% infrastructure buildout",
+      "hook": "Series A/B web3 teams shipping 80 commits in 14 days at +13% aren't just building product — they're broadcasting the infra-buildout that usually precedes a raise.",
+      "repo": {
+        "name": "ar-io",
+        "githubUrl": "https://github.com/ar-io",
+        "stage": "Series A/B",
+        "geography": "Unknown",
+        "sector": "Web3",
+        "sectorSlug": "web3",
+        "signalType": "Infrastructure buildout",
+        "commitVelocity14d": 80,
+        "commitVelocityChange": "+13%",
+        "contributors": 25,
+        "contributorGrowth": "+0%",
+        "newRepos": 4,
+        "description": "All source code for ar.io; the global network, protocol, and currency that enables the permaweb."
+      },
+      "ideaThesis": "Web3 has a buyer who is also a builder. The category incumbents shipped for an ops/HR/finance lead; the next wave ships for the engineer running that function. Read the repo: infrastructure buildout, series a/b team, 25 contributors. That's the shape of a team that crosses the next funding line on engineering output, not enterprise sales — and the gap they leave is the wedge for an indie or two-founder tool that does one job better than the suite they're inside of.",
+      "buildAngles": [
+        "Compliance-adjacent middleware — the part of the stack the incumbent won't ship because the support cost is too high.",
+        "Read-only analytics layer over the existing web3 data sources; sell the dashboard, not the integration.",
+        "Embedded widget for the engineer-buyer at a Series A — drop-in, single-script, replaces a quarter of a Salesforce instance."
+      ],
+      "distributionPlay": "Publish a public read-only demo with one anonymised customer's data; share the demo URL in the Indie Hackers fintech category and pitch one fintech podcast as a case study, not a product.",
+      "signalReading": [
+        {
+          "metric": "80 commits / 14 days",
+          "reading": "Maintenance-level cadence. The story isn't the volume; it's whatever else moved alongside it."
+        },
+        {
+          "metric": "+13% commit-velocity change",
+          "reading": "Trend is still accelerating, not peaking. A positive change-in-change is the leading edge of the curve, not the back of it."
+        },
+        {
+          "metric": "25 contributors (+0%)",
+          "reading": "Small core team — likely seed-funded with focused velocity. The opportunity is adjacent tooling that augments the small team."
+        },
+        {
+          "metric": "4 new repos in window",
+          "reading": "New repository creation is the classic platform-expansion signal — a team carving the next product surface out of the same codebase. The seam between the old repo and the new one is where a single-purpose external tool lives."
+        }
+      ],
+      "publishedAt": "2026-07-13T09:00:00Z"
     }
   ]
 }
