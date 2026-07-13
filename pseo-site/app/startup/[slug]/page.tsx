@@ -595,6 +595,34 @@ export default async function StartupPage({ params }: PageProps) {
           </div>
         </section>
 
+        {/* Badge embed CTA — viral growth: every startup can embed a badge */}
+        <section className="mb-12 rounded-xl border border-sky-900/40 bg-sky-950/20 p-6">
+          <div className="flex items-center gap-2 mb-3">
+            <img
+              src={`/api/badge/${slug}`}
+              alt={`${profile.name} engineering momentum badge`}
+              className="h-7"
+              loading="lazy"
+            />
+          </div>
+          <h2 className="text-lg font-semibold text-gray-100 mb-2">
+            Show this badge on your README
+          </h2>
+          <p className="text-gray-400 text-sm leading-relaxed mb-3">
+            Free, auto-updating SVG badge for {profile.name}. Embeds in GitHub
+            READMEs, websites, and pitch decks.
+          </p>
+          <pre className="rounded-lg bg-slate-950 border border-slate-800 p-3 text-xs text-gray-300 overflow-x-auto">
+            <code>{`[![momentum](https://signals.gitdealflow.com/api/badge/${slug})](https://signals.gitdealflow.com/badge-builder)`}</code>
+          </pre>
+          <Link
+            href="/badge-builder"
+            className="inline-block mt-3 text-sky-400 hover:text-sky-300 text-sm font-medium underline decoration-dotted"
+          >
+            See all badge styles →
+          </Link>
+        </section>
+
         {/* CTA */}
         <SeoCta secondary={{ label: "See a €7 First Look sample", href: "/firstlook" }} />
       </div>
