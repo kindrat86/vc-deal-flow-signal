@@ -77,9 +77,9 @@ const GROUPS: Group[] = [
         external: true,
       },
       {
-        name: "dev.to — @gitdealflow",
-        what: "Long-form engineering-side essays. Where the methodology gets explained, not pitched.",
-        href: "https://dev.to/gitdealflow",
+        name: "Hugging Face — the-data-nerd",
+        what: "Datasets, methodology artifacts, and long-form cards where the ML crowd already lives.",
+        href: "https://huggingface.co/the-data-nerd",
         cadence: "Bi-weekly",
         external: true,
       },
@@ -116,7 +116,7 @@ const GROUPS: Group[] = [
       "The agent-native surface. Six free read tools, free forever. Drop into Claude Desktop, Cursor, or any MCP-compatible client.",
     channels: [
       { name: "npm — @gitdealflow/mcp-signal", what: "The official MCP server. Install with one line: npx @gitdealflow/mcp-signal.", href: "https://www.npmjs.com/package/@gitdealflow/mcp-signal", external: true },
-      { name: "GitHub — gitdealflow", what: "Source code, issue tracker, public roadmap.", href: "https://github.com/gitdealflow", external: true },
+      { name: "GitHub — mcp-deal-flow-signal", what: "Source code, issue tracker, public roadmap.", href: "https://github.com/kindrat86/mcp-deal-flow-signal", external: true },
       { name: "Install instructions", what: "Step-by-step for Claude / Cursor / Mastra / LangChain / CrewAI / Letta / Vercel AI SDK.", href: "/install" },
       { name: "MCP Demo", what: "Live demonstration page. Watch the tools fire against real data.", href: "/mcp-demo" },
       { name: "OpenAPI viewer", what: "Browseable API documentation, agent-friendly.", href: "/api/actions/openapi.json" },
@@ -129,8 +129,6 @@ const GROUPS: Group[] = [
     intro:
       "Three federated networks. Posts cross-mirror via WebSub + ActivityPub-side bridges. Anonymity rule: company-page identity only.",
     channels: [
-      { name: "Bluesky — gitdealflow.bsky.social", what: "AT Protocol social. Custom feed-generator + label service. Posts mirror the Acceleration Watch.", href: "https://bsky.app/profile/gitdealflow.bsky.social", external: true },
-      { name: "Mastodon — fosstodon.org/@gitdealflow", what: "ActivityPub. The fediverse-native distribution layer.", href: "https://fosstodon.org/@gitdealflow", external: true },
       { name: "Farcaster — gitdealflow", what: "On-chain social via Neynar. Useful when the conversation is already happening in crypto-native circles.", href: "https://warpcast.com/gitdealflow", external: true },
       { name: "LinkedIn — GitDealFlow Company", what: "Company page (no founder personal account, anonymity rule). Long-form essays + top-100 engagement.", href: "https://www.linkedin.com/company/gitdealflow", external: true },
     ],
@@ -154,7 +152,7 @@ const GROUPS: Group[] = [
       "What makes the signal honest. Every prediction is reproducible against the SSRN paper + Zenodo dataset.",
     channels: [
       { name: "SSRN paper — abstract=6606558", what: "Methodology paper. n=219 paired observations, lead-time 21–47 days IQR. The grounding citation for every claim on the site.", href: "https://ssrn.com/abstract=6606558", external: true },
-      { name: "Zenodo dataset", what: "CC BY 4.0. Reproducible. The exact data behind the regression in the SSRN paper.", href: "https://zenodo.org/records/gitdealflow-dataset", external: true },
+      { name: "Hugging Face dataset — vc-deal-flow-signal", what: "CC BY 4.0. Reproducible. The exact data behind the regression in the SSRN paper.", href: "https://huggingface.co/datasets/the-data-nerd/vc-deal-flow-signal", external: true },
       { name: "Methodology page", what: "Plain-English walkthrough of the regression, the panel construction, and the false-positive controls.", href: "/methodology" },
       { name: "Citation guide", what: "BibTeX, APA, Chicago. For academic / industry-report citations.", href: "/citation-guide" },
       { name: "Reproducibility page", what: "Step-by-step: clone the dataset, run the notebook, replicate the regression.", href: "/reproducibility" },

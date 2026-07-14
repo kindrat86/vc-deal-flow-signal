@@ -33,7 +33,7 @@ export const authors: Record<string, Author> = {
     sameAs: [
       "https://x.com/data_nerd",
       "https://www.linkedin.com/company/gitdealflow",
-      "https://github.com/gitdealflow",
+      "https://huggingface.co/the-data-nerd",
       "https://orcid.org/0009-0002-2222-4112",
       "https://ssrn.com/abstract=6606558",
     ],
