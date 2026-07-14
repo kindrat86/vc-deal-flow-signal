@@ -3607,6 +3607,49 @@
         }
       ],
       "publishedAt": "2026-07-13T09:00:00Z"
+    },
+    {
+      "date": "2026-07-14",
+      "slug": "2026-07-14",
+      "headline": "The gaming reset hiding in a -17% engineering hiring burst",
+      "hook": "Series A/B gaming teams cooling to 5 commits over 14 days (-17%) are showing the hiring-burst pattern — a recoverable dip, not a flatline, and the natural moment to build the next adjacent tool.",
+      "repo": {
+        "name": "NBlood",
+        "githubUrl": "https://github.com/NBlood",
+        "stage": "Series A/B",
+        "geography": "Unknown",
+        "sector": "Gaming",
+        "sectorSlug": "gaming",
+        "signalType": "Engineering hiring burst",
+        "commitVelocity14d": 5,
+        "commitVelocityChange": "-17%",
+        "contributors": 45,
+        "contributorGrowth": "+400%",
+        "newRepos": 0,
+        "description": "Reverse-engineered ports of Build games using EDuke32 engine technology and development principles (NBlood/Rednukem/PCEx"
+      },
+      "ideaThesis": "Gaming has a buyer who is also a builder. The category incumbents shipped for an ops/HR/finance lead; the next wave ships for the engineer running that function. Read the repo: engineering hiring burst, series a/b team, 45 contributors. That's the shape of a team that crosses the next funding line on engineering output, not enterprise sales — and the gap they leave is the wedge for an indie or two-founder tool that does one job better than the suite they're inside of.",
+      "buildAngles": [
+        "Creator-side dashboard that pulls live engagement signals from the underlying platform; sell the slice, not the platform.",
+        "Discord/Slack-native bot that surfaces a community's own signal (top contributors, top threads, top movers) on a daily schedule.",
+        "One-click 'state of my channel' artifact — public URL the creator can share on their own audience."
+      ],
+      "distributionPlay": "Live-build it on a small Discord (1k-5k members) for two weeks; the community becomes both QA and first wave. Skip Twitter until the demo URL has its own retention curve.",
+      "signalReading": [
+        {
+          "metric": "5 commits / 14 days",
+          "reading": "Low absolute volume. The signal is the change-in-change, not the raw count — see the next metric."
+        },
+        {
+          "metric": "-17% commit-velocity change",
+          "reading": "Cooling. Often a deliberate slowdown for refactor, rebrand, or hiring — read alongside the next two lines before calling it a decline."
+        },
+        {
+          "metric": "45 contributors (+400%)",
+          "reading": "Mature contributor base. The opportunity is less in displacing them and more in serving the engineers who depend on them."
+        }
+      ],
+      "publishedAt": "2026-07-14T09:00:00Z"
     }
   ]
 }
