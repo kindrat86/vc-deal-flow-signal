@@ -427,9 +427,12 @@ Actions read/write permission). `deploy-pseo.yml` triggers ONLY on Monday 07:00Z
 cron + `workflow_dispatch` (no push trigger), and `VERCEL_TOKEN` is a CI secret
 not held locally. So this run committed + pushed the change to `main`; it will
 bake into production on the **next Monday cron (2026-07-20)** — or sooner if a
-human dispatches `deploy-pseo.yml` or if Vercel's git-integration auto-deploys on
-push (buildTime was fresh mid-week today, which hints at push-triggered deploys,
-but I could NOT confirm the mechanism). **NEEDS HUMAN (new):** grant the gh PAT
+human dispatches `deploy-pseo.yml`. **Verified push does NOT auto-deploy:** polled
+`/api/health.json` buildTime + live `/sitemap/core.xml` ~5min after the push —
+buildTime stayed frozen at 07:09:22Z (a pre-push build) and the 3 benchmark URLs
+are still absent from the live sitemap. So Vercel git-integration is NOT wired to
+auto-deploy on push to main; the change is staged on `main` and will go live only
+on the Monday cron or a manual dispatch. **NEEDS HUMAN (new):** grant the gh PAT
 `actions: read+write` on kindrat86/vc-deal-flow-signal so future scheduled runs
 can trigger + watch deploys, OR confirm whether push-to-main auto-deploys via
 Vercel git-integration (if so, update the task's deploy instructions — the
