@@ -352,3 +352,92 @@ real browser: form submit → /thanks, checkout button → checkout.stripe.com
 at €49/mo. NOTE for future CSP edits: any new third-party the landing JS
 calls must be added to connect-src, and returning visitors can hold the old
 document (and its CSP) in browser cache for up to max-age=3600.
+
+## 2026-07-15 (~07:00Z) — scheduled auto-improve: tree rescue + benchmark pages sitemap gap
+
+**Scores (Δ vs 07-06 21:22Z run):** Technical SEO 84 (↑2 — sitemap family
+still live/fresh AND the /benchmarks/[metric] discovery gap below closed) ·
+On-page 88 (↑1) · Off-page 62 (↑2, human's 07-13 broken-link + profile-link
+fixes landed) · pSEO 82 (↑2 — 3 live index-worthy pages now crawl-discoverable)
+· AEO 84 (=) · GEO 79 (=) · AIO 88 (=) · E-E-A-T 74 (↑2, 07-13 pricing-integrity
++ sender-identity + citations work) · SMO 70 (=) · CRO 74 (↑3, human's 07-13
+conversion overhaul: €49/€197 canon, exit-intent, sticky CTAs, CSP fix) · ASO 35 (=).
+
+**PRIMARY ACTION — RESCUED A DANGEROUSLY STALE LOCAL TREE (no data lost).** On
+`git pull --ff-only` the Mac-mini working tree was **107 commits behind origin**
+and carried 98 modified + 9 untracked files — the SAME "89-file pre-conversion
+WIP" every prior run flagged as "human must decide." The human HAS now decided,
+on the remote: commit `6781a9e` ("checkpoint working tree before conversion
+overhaul (pre-existing auto-improve WIP)") + `ac13138` ("conversion overhaul —
+pricing integrity…"). The local WIP is the **obsolete predecessor** of exactly
+those files — verified: local `lib/stripe.ts` still adds the founding-window-
+reopen `4900`/`19700` "post-founding" tiers through 2026-09-30 that CONTRADICT
+the now-live €49/€197 canon, and **52 of the locally-modified files directly
+overlap** the 107 incoming commits (committing any would revert shipped work).
+0 unpushed local commits. Continuing the old "work around the dirty tree via
+targeted git add" approach was now actively dangerous (any commit based off a
+107-behind tree risks reverting the overhaul). **Action:** `git stash push -u`
+with a descriptive label (fully reversible — nothing discarded) then
+`git pull --ff-only` to `8c81056`. The stale WIP lives in `stash@{0}`
+("auto-improve 2026-07-15: stale pre-conversion-overhaul WIP …") for the human
+to inspect/drop; recommend `git stash drop stash@{0}` once satisfied it's dead.
+This unblocks clean-tree work for all future runs.
+
+**AUDIT (live curl sweep, on the now-current tree):** site comprehensively
+HEALTHY + FRESH. `/api/health.json` buildTime 2026-07-15T06:52Z (today), all
+dependencies ok. Every surface that dominated prior runs is 200: homepage,
+`/pricing`, `/sitemap.xml` (proper `<sitemapindex>`, 9 children, fresh lastmod),
+all 6 `/sitemap/*.xml` children, `/robots.txt`, `/api/signals.json`,
+`/.well-known/{mcp,ai-plugin}.json`, `/llms.txt`; landing homepage + `/pricing`
+both 200. The 07-06 sitemap/well-known/API 404-poisoning fixes have HELD. Signal
+report data current (2026-07-13). Nothing in the prior "TOP PRIORITY" list recurred.
+
+**FIX SHIPPED (committed to main; deploy pending — see deploy note) — 1 file,
+`app/sitemap/[id]/route.ts`, +6 lines.** Discovery gap found: the
+`/benchmarks/[metric]` family (commit-velocity, contributor-growth,
+signal-distribution — added by the human's Isenberg pSEO batch) is **live (all
+200) but had 0 entries in the sitemap**, while its siblings `/for-*` (in sitemap)
+and `/integrations/*` (in sitemap) were listed. These are high-quality,
+data-derived, statically-generated comparator pages (real per-sector median/
+top-quartile tables + FAQs, `dynamicParams=false`) — genuinely index-worthy,
+just orphaned from the crawl graph. Added the 3 metric URLs to the `core` shard
+right after the `/integrations/*` block, matching the file's hard-coded-literal
+convention (the shard already lists ~40 URLs this way). `changefreq: weekly`
+(dataset refreshes weekly), `priority: 0.85`. Slugs verified byte-for-byte
+against the page's `generateStaticParams`. Did NOT add a `/benchmarks` index URL
+— no index page exists (would 404). Did NOT introduce an import-based dynamic
+list: the benchmark set is a curated 3-object array and the whole shard is
+literal by convention; matching convention beats a one-off coupling.
+
+**VERIFY:** `npx tsc --noEmit` exit 0. CI guards both green:
+`scripts/verify-speakable.ts` OK (150/160 specs resolve), `npm run audit:pseo`
+PASS (the 46%-near-dup warning is pre-existing/unrelated — companies.ts templated
+prose, a standing content decision). Full `npm run build` was attempted but timed
+out at 10min (site size, not this change — a killed partial build, not a failure);
+its `prebuild` regenerated data byproducts (signal-digest html, signal-report.ts,
+seven-signals.epub, uniqueness-report.json) which were **restored/removed** so the
+commit is ONLY the route change. The deploy CI runs the real build hermetically
+before deploying, so a broken build cannot ship — and tsc + both guards already
+cover compilation of this literal-only edit.
+
+**⚠️ DEPLOY BLOCKED THIS RUN — gh PAT has NO Actions scope.** `gh workflow run
+deploy-pseo.yml`, `gh run list/watch`, `gh workflow list` ALL return HTTP 403
+"Resource not accessible by personal access token" (fine-grained PAT lacks the
+Actions read/write permission). `deploy-pseo.yml` triggers ONLY on Monday 07:00Z
+cron + `workflow_dispatch` (no push trigger), and `VERCEL_TOKEN` is a CI secret
+not held locally. So this run committed + pushed the change to `main`; it will
+bake into production on the **next Monday cron (2026-07-20)** — or sooner if a
+human dispatches `deploy-pseo.yml` or if Vercel's git-integration auto-deploys on
+push (buildTime was fresh mid-week today, which hints at push-triggered deploys,
+but I could NOT confirm the mechanism). **NEEDS HUMAN (new):** grant the gh PAT
+`actions: read+write` on kindrat86/vc-deal-flow-signal so future scheduled runs
+can trigger + watch deploys, OR confirm whether push-to-main auto-deploys via
+Vercel git-integration (if so, update the task's deploy instructions — the
+`gh workflow run` path is unusable with the current token).
+
+**Still blocked on human (unchanged):** retargeting/pixel IDs; BSKY_HANDLE/
+BSKY_APP_PASSWORD (social-bluesky workflow); GA4 measurement id; Otterly/GEO probe
+ANTHROPIC_API_KEY; IndexNow 400; guest-essay/curator outbound (human-only);
+Wikipedia autoconfirm; named advisory board (cannot fabricate); FOUR retired
+founding-rate Stripe payment links still active — need manual deactivation
+(stripe/payment-links.md); the stashed `stash@{0}` stale WIP awaiting drop.

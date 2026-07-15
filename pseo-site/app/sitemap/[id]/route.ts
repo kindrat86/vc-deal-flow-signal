@@ -196,6 +196,12 @@ export async function GET(_req: Request, ctx: RouteContext) {
       { url: `${BASE_URL}/integrations/chatgpt`, lastmod, changefreq: "monthly", priority: 0.85 },
       { url: `${BASE_URL}/integrations/agent-runtimes`, lastmod, changefreq: "monthly", priority: 0.85 },
       { url: `${BASE_URL}/integrations/best-mcp-server-for-vc-research`, lastmod, changefreq: "weekly", priority: 0.9 },
+      // Sector benchmark comparators — data-derived, refreshed weekly with the dataset.
+      // Live static pages under /benchmarks/[metric] (no index page); slugs mirror the
+      // curated BENCHMARKS set in app/benchmarks/[metric]/page.tsx (added 2026-07-15).
+      { url: `${BASE_URL}/benchmarks/commit-velocity`, lastmod, changefreq: "weekly", priority: 0.85 },
+      { url: `${BASE_URL}/benchmarks/contributor-growth`, lastmod, changefreq: "weekly", priority: 0.85 },
+      { url: `${BASE_URL}/benchmarks/signal-distribution`, lastmod, changefreq: "weekly", priority: 0.85 },
       // Programmatic /for-{framework} dev-investor crossover surfaces (2026-05-03)
       { url: `${BASE_URL}/for-langchain`, lastmod, changefreq: "monthly", priority: 0.8 },
       { url: `${BASE_URL}/for-crewai`, lastmod, changefreq: "monthly", priority: 0.8 },
