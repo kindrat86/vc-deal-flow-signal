@@ -197,12 +197,30 @@
     </section>
 
     <section class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 py-16 md:py-20">
-      <h2 class="text-3xl font-bold mb-6">Privacy and methodology</h2>
+      <h2 class="text-3xl font-bold mb-6">How does the extension work?</h2>
+      <p class="text-gray-300 leading-relaxed mb-6">When you open a company profile on Crunchbase or Wellfound, the extension reads the company slug from the page URL, queries the public signal API at signals.gitdealflow.com, and renders a small badge inline showing whether that company's GitHub engineering activity is accelerating. If the company isn't in the tracked set, the badge says so — no guessing, no scores invented on the spot.</p>
+      <div class="overflow-x-auto mb-6">
+        <table class="w-full text-left text-sm text-gray-300 border border-gray-700 rounded-lg">
+          <tbody>
+            <tr class="border-b border-gray-800"><th scope="row" class="py-2.5 px-4 font-semibold text-white w-56">Current version</th><td class="py-2.5 px-4">0.1.0 (Manifest V3)</td></tr>
+            <tr class="border-b border-gray-800"><th scope="row" class="py-2.5 px-4 font-semibold text-white">Chrome permissions requested</th><td class="py-2.5 px-4">0 — the permissions list in the manifest is empty</td></tr>
+            <tr class="border-b border-gray-800"><th scope="row" class="py-2.5 px-4 font-semibold text-white">Host access</th><td class="py-2.5 px-4">1 host only: signals.gitdealflow.com (the public API)</td></tr>
+            <tr class="border-b border-gray-800"><th scope="row" class="py-2.5 px-4 font-semibold text-white">Runs on</th><td class="py-2.5 px-4">crunchbase.com/organization/* and wellfound.com/company/* pages, after the page finishes loading</td></tr>
+            <tr><th scope="row" class="py-2.5 px-4 font-semibold text-white">Data source</th><td class="py-2.5 px-4">The same public GitHub-activity signal that powers the Sunday email</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h2 class="text-3xl font-bold mb-6 mt-12">Which sites does it support?</h2>
+      <p class="text-gray-300 leading-relaxed mb-4">Two, deliberately: Crunchbase organization profiles and Wellfound company profiles. Those are the pages investors already have open when a name crosses their desk. The content script is scoped to exactly those URL patterns in the manifest, so it stays inert everywhere else in your browser.</p>
+      <h2 class="text-3xl font-bold mb-6 mt-12">Does it cost anything or need an account?</h2>
+      <p class="text-gray-300 leading-relaxed mb-4">No. The extension is free, has no paid tier of its own, and requires no sign-up. It is a distribution surface for the signal, not a product gate. The paid GitDealFlow tiers live on the <a href="/pricing" class="text-brand-500 underline">pricing page</a> and are entirely separate from the extension.</p>
+      <h2 class="text-3xl font-bold mb-6 mt-12">Privacy and methodology</h2>
       <div class="space-y-4 text-gray-300 leading-relaxed">
         <p>No account. No telemetry. No cookies. The extension checks the page URL, queries the public GitDealFlow surface, and renders the signal inline.</p>
         <p>Methodology: <a href="https://signals.gitdealflow.com/methodology" class="text-brand-500 underline">signals.gitdealflow.com/methodology</a></p>
         <p>Research anchor: <a href="https://ssrn.com/abstract=6606558" class="text-brand-500 underline">ssrn.com/abstract=6606558</a></p>
       </div>
+      <p class="text-gray-500 text-sm mt-8 pt-4 border-t border-gray-800">By <a rel="author" href="https://signals.gitdealflow.com/data-nerd" class="text-gray-400 hover:text-gray-300 underline">Data Nerd</a>, the pseudonymous analyst behind the VC Deal Flow Signal · Last updated: 2026-07-17</p>
     </section>
   </main>
 
