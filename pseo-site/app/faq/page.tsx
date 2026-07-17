@@ -174,6 +174,22 @@ export default function FAQPage() {
           or buyer-side fit, start with the sharper routes below.
         </p>
 
+        <aside
+          className="mb-10 rounded-xl border border-sky-500/25 bg-sky-500/5 px-5 py-4"
+          aria-label="At a glance"
+        >
+          <h2 className="text-xs font-semibold text-sky-400 uppercase tracking-wider mb-2">
+            At a glance
+          </h2>
+          <p className="text-sky-100 text-sm leading-relaxed">
+            TL;DR — {allFaqs.length} questions answered on this page. The
+            short version of almost all of them: the signal ranks startups
+            by change in 14-day GitHub commit velocity, uses only public data,
+            and has historically moved three to six weeks before fundraise
+            announcements.
+          </p>
+        </aside>
+
         <section className="mb-10 rounded-2xl border border-sky-700/30 bg-sky-950/20 p-6 sm:p-8">
           <p className="text-sky-300 text-xs font-semibold uppercase tracking-[0.14em] mb-2">
             Start with the highest-intent routes

@@ -232,6 +232,17 @@ export default async function ComparisonPage({ params }: PageProps) {
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-4 leading-tight">
           {comp.h1}
         </h1>
+        <aside
+          className="mb-4 rounded-xl border border-sky-500/25 bg-sky-500/5 px-5 py-4"
+          aria-label="At a glance"
+        >
+          <h2 className="text-xs font-semibold text-sky-400 uppercase tracking-wider mb-2">
+            At a glance
+          </h2>
+          <p data-speakable className="text-sky-100 text-sm leading-relaxed">
+            TL;DR — {comp.verdict}
+          </p>
+        </aside>
         <p data-speakable className="text-gray-400 text-base leading-relaxed mb-3">
           {comp.intro}
         </p>

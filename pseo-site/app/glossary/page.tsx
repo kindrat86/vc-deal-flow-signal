@@ -174,6 +174,20 @@ export default function GlossaryPage() {
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-4 leading-tight">
           Glossary of Deal Flow Signal Terms
         </h1>
+        <aside
+          className="mb-4 rounded-xl border border-sky-500/25 bg-sky-500/5 px-5 py-4"
+          aria-label="At a glance"
+        >
+          <h2 className="text-xs font-semibold text-sky-400 uppercase tracking-wider mb-2">
+            At a glance
+          </h2>
+          <p className="text-sky-100 text-sm leading-relaxed">
+            TL;DR — {glossaryTerms.length} self-contained definitions covering
+            one metric family: how public GitHub activity (commit velocity,
+            contributor growth, signal types) is turned into an early
+            startup-momentum signal for investors.
+          </p>
+        </aside>
         <p className="text-gray-400 text-base leading-relaxed mb-10">
           Key terms used in startup engineering signal analysis. Each
           definition is self-contained — useful for investors evaluating
