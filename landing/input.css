@@ -33,17 +33,33 @@
   .btn-lg  { @apply px-7     py-3.5   text-base rounded-xl; }
   .btn-xl  { @apply px-10 md:px-12 py-4 md:py-5 text-base md:text-lg rounded-2xl; }
 
+  /* Dark text on signal-orange: 6.27:1 contrast (white was 2.85:1, WCAG fail) */
   .btn-primary {
-    @apply bg-signal-500 hover:bg-signal-400 active:bg-signal-600
+    @apply relative bg-signal-500 hover:bg-signal-400 active:bg-signal-600
+           text-dark-900
            shadow-[0_12px_32px_rgba(255,107,26,0.35)]
            hover:shadow-[0_18px_44px_rgba(255,107,26,0.55)]
            ring-white/20 hover:ring-white/30
-           focus-visible:ring-signal-400
-           animate-cta-pulse;
+           focus-visible:ring-signal-400;
   }
+  /* Pulse lives on a pseudo-element animating only opacity/transform
+     (compositor-driven) — box-shadow keyframes repainted every frame. */
+  .btn-primary::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: 0 0 0 10px rgba(255, 107, 26, 0.45);
+    opacity: 0;
+    pointer-events: none;
+    animation: cta-ring 2.4s ease-out infinite;
+  }
+  .btn-no-pulse { animation: none !important; }
+  .btn-no-pulse::after { animation: none !important; opacity: 0 !important; }
 
+  /* brand-700 base: 5.93:1 with white text (brand-600 was 4.10:1) */
   .btn-cta {
-    @apply bg-brand-600 hover:bg-brand-500 active:bg-brand-700
+    @apply bg-brand-700 hover:bg-brand-600 active:bg-brand-800
            shadow-[0_8px_24px_rgba(2,132,199,0.35)]
            hover:shadow-[0_12px_32px_rgba(2,132,199,0.55)]
            ring-white/15
@@ -113,9 +129,18 @@
   }
   .sticky-cta.is-visible { transform: translateY(0); }
 
-  /* Reduce CTA-pulse motion preference */
+  /* Reduce motion preference — cover every decorative animation */
   @media (prefers-reduced-motion: reduce) {
-    .animate-cta-pulse { animation: none !important; }
+    .animate-cta-pulse,
+    .btn-primary::after,
+    .animate-pulse,
+    .animate-fade-in-up,
+    .animate-glow-subtle,
+    .animate-slide-up,
+    .animate-scale-in {
+      animation: none !important;
+    }
+    .btn-primary::after { opacity: 0 !important; }
   }
 }
 
@@ -134,4 +159,11 @@
       padding-bottom: .625rem;
     }
   }
+}
+
+/* Expanding-ring pulse for .btn-primary::after (opacity/transform only) */
+@keyframes cta-ring {
+  0%   { opacity: 0.5; transform: scale(0.985); }
+  60%  { opacity: 0;   transform: scale(1.08); }
+  100% { opacity: 0;   transform: scale(1.08); }
 }

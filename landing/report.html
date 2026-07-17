@@ -75,12 +75,19 @@
         padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom));
         background: rgba(2, 6, 23, 0.94); backdrop-filter: blur(12px);
         border-top: 1px solid rgba(71, 85, 105, 0.7);
+        transform: translateY(115%);
+        transition: transform 280ms cubic-bezier(0.4,0,0.2,1);
+        pointer-events: none;
       }
+      .mobile-sticky-cta.is-visible { transform: translateY(0); pointer-events: auto; }
       .mobile-sticky-cta .inner { display: flex; align-items: center; gap: 0.75rem; max-width: 28rem; margin: 0 auto; }
       .mobile-sticky-cta .meta { flex: 1; min-width: 0; }
       .mobile-sticky-cta .meta strong { display: block; color: #fff; font-size: 0.95rem; line-height: 1.1; }
       .mobile-sticky-cta .meta span { display: block; color: #94a3b8; font-size: 0.72rem; margin-top: 0.1rem; }
       .mobile-sticky-cta .btn { white-space: nowrap; padding-left: 1rem; padding-right: 1rem; }
+    }
+    @media (max-width: 639px) and (prefers-reduced-motion: reduce) {
+      .mobile-sticky-cta { transition: none; }
     }
   </style>
   <style>
@@ -92,7 +99,7 @@
       border-radius: 9999px; font-weight: 800; font-size: 1rem;
       flex-shrink: 0;
     }
-    .metric-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; text-align: center; }
+    .metric-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; text-align: center; }
     @media (min-width: 640px) { .metric-grid { grid-template-columns: repeat(4, 1fr); } }
   </style>
   <meta name="theme-color" content="#0f172a" />
@@ -130,20 +137,36 @@
 <!-- Traffic-Readiness JSON-LD org+website schema -->
 </head>
 <body class="bg-dark-900 text-gray-100 font-sans antialiased">
-  <header class="sticky top-0 z-50 border-b border-gray-800 bg-dark-900/95 backdrop-blur">
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[60] focus:px-4 focus:py-2 focus:bg-dark-800 focus:text-white focus:rounded-lg">Skip to main content</a>
+  <header class="relative sticky top-0 z-50 border-b border-gray-800 bg-dark-900/95 backdrop-blur">
     <div class="mobile-compact-header max-w-5xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-3">
       <a href="/" class="font-semibold tracking-tight text-white text-lg">GitDealFlow</a>
-      <nav class="hidden md:flex items-center gap-6">
-        <a href="/" class="text-gray-400 text-sm hover:text-gray-100 transition">Home</a>
-        <a href="https://signals.gitdealflow.com" class="text-gray-400 text-sm hover:text-gray-100 transition">Signals</a>
-        <a href="/firstlook" class="text-gray-400 text-sm hover:text-gray-100 transition">First Look</a>
-        <a href="/dashboard" class="text-gray-400 text-sm hover:text-gray-100 transition">Dashboard</a>
+      <nav aria-label="Primary navigation" class="hidden md:flex items-center gap-5 text-sm font-medium text-gray-300">
+        <a href="/" class="hover:text-white transition-colors">Home</a>
+        <a href="https://signals.gitdealflow.com" class="hover:text-white transition-colors">Signals</a>
+        <a href="/firstlook" class="hover:text-white transition-colors">First Look</a>
+        <a href="/dashboard" class="hover:text-white transition-colors">Dashboard</a>
+        <a href="/insider" class="hover:text-white transition-colors">Insider</a>
+        <a href="/pricing" class="hover:text-white transition-colors">Pricing</a>
       </nav>
       <a href="/#signup" class="btn btn-cta btn-sm whitespace-nowrap shrink-0"><span class="sm:hidden">Get it</span><span class="hidden sm:inline">Get the free Sunday email</span> <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
+      <button type="button" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu" class="md:hidden inline-flex items-center justify-center w-11 h-11 shrink-0 rounded-lg text-gray-300 hover:text-white ring-1 ring-white/10 transition-colors">
+        <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+    <div id="mobile-nav" hidden class="md:hidden absolute top-full inset-x-0 z-50 border-b border-white/10 bg-dark-900 shadow-2xl">
+      <nav aria-label="Mobile navigation" class="flex flex-col px-4 py-2">
+        <a href="/" class="py-3 min-h-[44px] flex items-center border-b border-white/5 text-gray-200 hover:text-white">Home</a>
+        <a href="https://signals.gitdealflow.com" class="py-3 min-h-[44px] flex items-center border-b border-white/5 text-gray-200 hover:text-white">Signals</a>
+        <a href="/firstlook" class="py-3 min-h-[44px] flex items-center border-b border-white/5 text-gray-200 hover:text-white">First Look</a>
+        <a href="/dashboard" class="py-3 min-h-[44px] flex items-center border-b border-white/5 text-gray-200 hover:text-white">Dashboard</a>
+        <a href="/insider" class="py-3 min-h-[44px] flex items-center border-b border-white/5 text-gray-200 hover:text-white">Insider</a>
+        <a href="/pricing" class="py-3 min-h-[44px] flex items-center text-gray-200 hover:text-white">Pricing</a>
+      </nav>
     </div>
   </header>
 
-  <main>
+  <main id="main-content">
     <section class="relative overflow-hidden">
       <div class="absolute inset-0 bg-gradient-to-br from-dark-900 via-dark-800 to-brand-900 opacity-80"></div>
       <div class="relative max-w-4xl mx-auto px-6 py-16 md:py-20">
@@ -270,6 +293,8 @@
     </section>
   </main>
 
+  <div class="mobile-sticky-cta" role="region" aria-label="Free Sunday email"><div class="inner"><div class="meta"><strong>Free Sunday email</strong><span>5 names, plain English</span></div><a href="/#signup" class="btn btn-cta btn-sm">Get it &rarr;</a></div></div>
+
   <footer class="border-t border-gray-800 bg-dark-900/80 py-12">
     <div class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 text-center">
       <div class="flex flex-wrap justify-center gap-6 text-gray-500 text-sm mb-4">
@@ -279,9 +304,35 @@
         <a href="/dashboard" class="hover:text-gray-300">Dashboard</a>
         <a href="/privacy" class="hover:text-gray-300">Privacy</a>
       </div>
-      <p class="text-gray-600 text-xs">GitDealFlow sample report</p>
+      <p class="text-gray-400 text-xs">GitDealFlow sample report &middot; &copy; 2026 GitDealFlow &middot; signals@gitdealflow.com</p>
     </div>
   </footer>
 
+  <script>
+(function(){var t=document.querySelector('[data-nav-toggle]'),p=document.getElementById('mobile-nav');if(!t||!p)return;function set(o){t.setAttribute('aria-expanded',String(o));t.setAttribute('aria-label',o?'Close menu':'Open menu');p.hidden=!o;}
+t.addEventListener('click',function(){set(t.getAttribute('aria-expanded')!=='true');});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&t.getAttribute('aria-expanded')==='true'){set(false);t.focus();}});})();
+  </script>
+  <script>
+    // Sticky mobile CTA reveals only after the hero scrolls out of view. Scroll-driven for reliability.
+    (function () {
+      var bar = document.querySelector('.mobile-sticky-cta');
+      if (!bar) return;
+      var hero = document.querySelector('main > section');
+      bar.inert = true;
+      if (!hero) { bar.classList.add('is-visible'); bar.inert = false; return; }
+      var ticking = false;
+      function update() {
+        ticking = false;
+        var show = hero.getBoundingClientRect().bottom < 8;
+        bar.classList.toggle('is-visible', show);
+        bar.inert = !show;
+      }
+      function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll, { passive: true });
+      update();
+    })();
+  </script>
 </body>
 </html>

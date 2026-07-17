@@ -10,6 +10,8 @@
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta name="theme-color" content="#0f172a">
+  <meta name="color-scheme" content="dark">
   <link rel="stylesheet" href="/styles.css">
   <style>
     /* ====================================================================
@@ -220,6 +222,7 @@
 <!-- Traffic-Readiness JSON-LD org+website schema -->
 </head>
 <body class="bg-dark-900 text-gray-100 font-sans antialiased">
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[60] focus:px-4 focus:py-2 focus:bg-dark-800 focus:text-white focus:rounded-lg">Skip to main content</a>
   <header class="sticky top-0 z-50 border-b border-gray-800 bg-dark-900/95 backdrop-blur">
     <div class="mobile-compact-header max-w-5xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-3">
       <a href="/" class="font-semibold tracking-tight text-white text-lg">GitDealFlow</a>
@@ -227,7 +230,7 @@
     </div>
   </header>
 
-  <main class="mobile-main-pad max-w-5xl mx-auto px-4 sm:px-6 py-14 sm:py-24">
+  <main id="main-content" class="mobile-main-pad max-w-5xl mx-auto px-4 sm:px-6 py-14 sm:py-24">
     <section class="max-w-3xl mx-auto text-center mb-12 mobile-section-pad reveal">
       <p class="eyebrow-pill text-brand-500 text-xs font-semibold uppercase tracking-wider mb-3">One click left</p>
       <h1 id="hero-title" class="text-4xl sm:text-5xl font-bold tracking-tight mb-6">You're in. Now confirm it.</h1>
@@ -270,7 +273,7 @@
         <div class="flex flex-col sm:flex-row items-center gap-4 mb-6 text-center sm:text-left">
           <picture>
             <source srcset="/data-nerd.webp" type="image/webp">
-            <img src="/data-nerd.png" alt="The Data Nerd" width="80" height="80" loading="lazy" decoding="async" class="w-24 h-24 rounded-full ring-2 ring-signal-500/40 shadow-2xl mx-auto sm:mx-0">
+            <img src="/data-nerd.png" alt="The Data Nerd" width="160" height="160" loading="lazy" decoding="async" class="w-24 h-24 rounded-full ring-2 ring-signal-500/40 shadow-2xl mx-auto sm:mx-0">
           </picture>
           <div>
             <p class="text-signal-400 text-xs font-semibold uppercase tracking-wider mb-1">One honest note from The Data Nerd</p>
@@ -397,7 +400,7 @@
         <a href="/privacy" class="hover:text-gray-300">Privacy</a>
         <a href="/terms" class="hover:text-gray-300">Terms</a>
       </div>
-      <p class="text-gray-600 text-xs">GitDealFlow</p>
+      <p class="text-gray-500 text-xs">&copy; 2026 GitDealFlow &middot; signals@gitdealflow.com</p>
     </div>
   </footer>
   <script>

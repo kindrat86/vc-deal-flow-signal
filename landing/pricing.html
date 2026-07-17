@@ -92,6 +92,8 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
+  <link rel="manifest" href="/manifest.webmanifest">
   <link rel="preload" href="/styles.css" as="style">
   <link rel="stylesheet" href="/styles.css">
   <link rel="preconnect" href="https://signals.gitdealflow.com" crossorigin>
@@ -121,7 +123,7 @@
     .tier-price small { font-size: 0.95rem; font-weight: 600; color: #94a3b8; }
     .tier-badge {
       position: absolute; top: -0.8rem; left: 1.5rem;
-      background: #0ea5e9; color: #fff; font-size: 0.68rem; font-weight: 700;
+      background: #0ea5e9; color: #0f172a; font-size: 0.68rem; font-weight: 700;
       letter-spacing: 0.06em; text-transform: uppercase;
       padding: 0.25rem 0.6rem; border-radius: 9999px;
     }
@@ -132,28 +134,65 @@
     .tier-annual a { color: #38bdf8; text-decoration: underline; }
     .tier-annual a:hover { color: #7dd3fc; }
     .tier-note { font-size: 0.8rem; color: #64748b; margin-top: 0.75rem; }
+    .mobile-sticky-cta { display: none; }
 
     @media (max-width: 639px) {
+      body { padding-bottom: 6rem; }
       .mobile-compact-header { padding-top: 0.75rem; padding-bottom: 0.75rem; }
       .mobile-hero-wrap { padding-left: 1rem; padding-right: 1rem; padding-top: 3rem; padding-bottom: 3rem; }
       .mobile-hero-title { font-size: 2rem; line-height: 1.1; }
       .mobile-section-pad { padding-left: 1rem; padding-right: 1rem; }
       .tier-card { padding: 1.25rem; }
       .tier-cta-stack .btn { display: flex; width: 100%; white-space: normal; text-align: center; line-height: 1.35; }
+      #dashboard { order: -1; }
+      .mobile-sticky-cta {
+        position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; display: block;
+        padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom));
+        background: rgba(2, 6, 23, 0.94); backdrop-filter: blur(12px);
+        border-top: 1px solid rgba(71, 85, 105, 0.7);
+        transform: translateY(115%);
+        transition: transform 280ms cubic-bezier(0.4,0,0.2,1);
+        pointer-events: none;
+      }
+      .mobile-sticky-cta.is-visible { transform: translateY(0); pointer-events: auto; }
+      .mobile-sticky-cta .inner { display: flex; align-items: center; gap: 0.75rem; max-width: 28rem; margin: 0 auto; }
+      .mobile-sticky-cta .meta { flex: 1; min-width: 0; }
+      .mobile-sticky-cta .meta strong { display: block; color: #fff; font-size: 0.95rem; line-height: 1.1; }
+      .mobile-sticky-cta .meta span { display: block; color: #94a3b8; font-size: 0.72rem; margin-top: 0.1rem; }
+      .mobile-sticky-cta .btn { white-space: nowrap; padding-left: 1rem; padding-right: 1rem; }
+    }
+    @media (max-width: 639px) and (prefers-reduced-motion: reduce) {
+      .mobile-sticky-cta { transition: none; }
     }
   </style>
 </head>
 <body class="bg-dark-900 text-gray-100 font-sans antialiased">
-  <header class="sticky top-0 z-50 border-b border-gray-800 bg-dark-900/95 backdrop-blur">
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[60] focus:px-4 focus:py-2 focus:bg-dark-800 focus:text-white focus:rounded-lg">Skip to main content</a>
+  <header class="relative sticky top-0 z-50 border-b border-gray-800 bg-dark-900/95 backdrop-blur">
     <div class="mobile-compact-header max-w-5xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-3">
       <a href="/" class="font-semibold tracking-tight text-white text-lg">GitDealFlow</a>
-      <nav class="hidden md:flex items-center gap-6" aria-label="Primary navigation">
-        <a href="/" class="text-gray-400 text-sm hover:text-gray-100 transition">Home</a>
-        <a href="https://signals.gitdealflow.com" class="text-gray-400 text-sm hover:text-gray-100 transition">Signals</a>
-        <a href="/firstlook" class="text-gray-400 text-sm hover:text-gray-100 transition">First Look</a>
-        <a href="/insider" class="text-gray-400 text-sm hover:text-gray-100 transition">Insider</a>
+      <nav aria-label="Primary navigation" class="hidden md:flex items-center gap-5 text-sm font-medium text-gray-300">
+        <a href="/" class="hover:text-white transition-colors">Home</a>
+        <a href="https://signals.gitdealflow.com" class="hover:text-white transition-colors">Signals</a>
+        <a href="/firstlook" class="hover:text-white transition-colors">First Look</a>
+        <a href="/dashboard" class="hover:text-white transition-colors">Dashboard</a>
+        <a href="/insider" class="hover:text-white transition-colors">Insider</a>
+        <a href="/pricing" class="hover:text-white transition-colors">Pricing</a>
       </nav>
       <a href="#dashboard" onclick="if(window.posthog)posthog.capture('pricing_nav_cta_clicked')" class="btn btn-cta btn-sm whitespace-nowrap shrink-0"><span class="sm:hidden">Dashboard €49</span><span class="hidden sm:inline">Dashboard &mdash; €49/mo</span> <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
+      <button type="button" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu" class="md:hidden inline-flex items-center justify-center w-11 h-11 shrink-0 rounded-lg text-gray-300 hover:text-white ring-1 ring-white/10 transition-colors">
+        <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+    <div id="mobile-nav" hidden class="md:hidden absolute top-full inset-x-0 z-50 border-b border-white/10 bg-dark-900 shadow-2xl">
+      <nav aria-label="Mobile navigation" class="flex flex-col px-4 py-2">
+        <a href="/" class="py-3 min-h-[44px] flex items-center border-b border-white/5 text-gray-200 hover:text-white">Home</a>
+        <a href="https://signals.gitdealflow.com" class="py-3 min-h-[44px] flex items-center border-b border-white/5 text-gray-200 hover:text-white">Signals</a>
+        <a href="/firstlook" class="py-3 min-h-[44px] flex items-center border-b border-white/5 text-gray-200 hover:text-white">First Look</a>
+        <a href="/dashboard" class="py-3 min-h-[44px] flex items-center border-b border-white/5 text-gray-200 hover:text-white">Dashboard</a>
+        <a href="/insider" class="py-3 min-h-[44px] flex items-center border-b border-white/5 text-gray-200 hover:text-white">Insider</a>
+        <a href="/pricing" class="py-3 min-h-[44px] flex items-center text-gray-200 hover:text-white">Pricing</a>
+      </nav>
     </div>
   </header>
 
@@ -165,7 +204,7 @@
         <p class="text-brand-500 font-semibold text-sm uppercase tracking-wider mb-4">VC Deal Flow Signal &middot; one ladder, no surprises</p>
         <h1 class="mobile-hero-title text-4xl md:text-5xl font-extrabold leading-tight mb-4">Pricing that climbs with your conviction.</h1>
         <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed mb-6">Start free every Sunday. Pay €1 to test my judgment. Go deeper only when the signal has already earned it. Every paid rung carries the same 30-day guarantee.</p>
-        <p class="text-gray-500 text-sm">All prices in EUR. Cancel subscriptions in one click. No calls, no &ldquo;contact sales&rdquo; &mdash; except where the work is genuinely custom.</p>
+        <p class="text-gray-400 text-sm">All prices in EUR. Cancel subscriptions in one click. No calls, no &ldquo;contact sales&rdquo; &mdash; except where the work is genuinely custom.</p>
       </div>
     </section>
 
@@ -185,9 +224,9 @@
           </ul>
           <form class="js-signup-form flex flex-col gap-3" data-source="pricing">
             <label class="sr-only" for="pricing-email">Email address</label>
-            <input type="email" id="pricing-email" required inputmode="email" autocomplete="email" placeholder="you@example.com" class="w-full px-4 py-3 rounded-lg bg-dark-800 border border-gray-600 text-gray-100 placeholder-gray-500 focus:outline-none focus:border-brand-500">
+            <input type="email" id="pricing-email" required inputmode="email" autocomplete="email" placeholder="you@example.com" class="w-full px-4 py-3 rounded-lg bg-dark-800 border border-gray-600 text-gray-100 placeholder-gray-400 focus:outline-none focus:border-brand-500">
             <button type="submit" class="btn btn-primary btn-md w-full">Get this Sunday&apos;s 5 names <span aria-hidden="true" class="btn-arrow">&rarr;</span></button>
-            <p class="js-signup-msg text-gray-500 text-xs">Free &mdash; I cover the compute. One email, every Sunday.</p>
+            <p class="js-signup-msg text-gray-400 text-xs" role="status">Free &mdash; I cover the compute. One email, every Sunday.</p>
           </form>
         </article>
 
@@ -208,13 +247,13 @@
 
         <!-- FIRST LOOK -->
         <article id="firstlook" class="tier-card">
-          <p class="tier-eyebrow">One week inside</p>
+          <p class="tier-eyebrow">One sector. One deep dive. One day.</p>
           <h2 class="text-xl font-bold text-white mb-1">First Look Pass</h2>
           <p class="tier-price">€7 <small>one-time</small></p>
           <ul class="tier-list">
-            <li>Seven days of the full ranked field &mdash; everything Dashboard subscribers see</li>
-            <li>Plain-English acceleration notes on 60+ startups across 20 sectors</li>
-            <li>14-day upgrade-credit window: your €7 counts toward Dashboard if you upgrade</li>
+            <li>Pick one sector you&apos;re sizing up &mdash; I deep-dive its public GitHub signal</li>
+            <li>A ranked shortlist of who&apos;s actually accelerating, in plain English, back in 24 hours</li>
+            <li>14-day upgrade-credit window: your €7 comes off your first Dashboard month</li>
           </ul>
           <div class="tier-cta-stack">
             <a href="/firstlook" onclick="if(window.posthog)posthog.capture('pricing_cta_clicked',{tier:'firstlook'})" class="btn btn-secondary btn-md">See the First Look Pass <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
@@ -245,9 +284,9 @@
           <h2 class="text-xl font-bold text-white mb-1">Insider Circle</h2>
           <p class="tier-price">€197<small>/mo</small></p>
           <ul class="tier-list">
-            <li>Everything in Dashboard, plus the earliest and deepest cut of the signal</li>
-            <li>Exports and the data beneath the rankings &mdash; take it into your own model</li>
-            <li>Direct line to me: ask about any name on the board</li>
+            <li>Everything in Dashboard, plus private discussion with the circle</li>
+            <li>Monthly briefings and a steadier deal-flow rhythm</li>
+            <li>The room is capped at ~50 seats</li>
           </ul>
           <div class="tier-cta-stack">
             <a href="/insider" onclick="if(window.posthog)posthog.capture('pricing_cta_clicked',{tier:'insider'})" class="btn btn-secondary btn-md">See the Insider Circle <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
@@ -290,7 +329,7 @@
         <p class="text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-2">The guarantee, in full</p>
         <h2 class="text-2xl md:text-3xl font-bold mb-3">30 days, Signal-or-It&apos;s-Free &mdash; on every paid rung.</h2>
         <p class="text-gray-300 leading-relaxed max-w-2xl mx-auto">Any paid rung, 30 days, email me, every cent back. No forms, no survey. If the signal hasn&apos;t earned its price inside a month, I don&apos;t want your money.</p>
-        <p class="text-gray-500 text-sm mt-4">First Look also carries a separate 14-day upgrade-credit window: your €7 counts toward Dashboard if you step up within two weeks.</p>
+        <p class="text-gray-400 text-sm mt-4">First Look also carries a separate 14-day upgrade-credit window: your €7 counts toward Dashboard if you step up within two weeks.</p>
       </div>
     </section>
 
@@ -304,10 +343,21 @@
     </section>
   </main>
 
+  <!-- Mobile sticky CTA -->
+  <div class="mobile-sticky-cta" aria-hidden="true" inert>
+    <div class="inner">
+      <div class="meta">
+        <strong>Dashboard &mdash; €49/mo</strong>
+        <span>Most popular &middot; cancel anytime</span>
+      </div>
+      <a href="#dashboard" onclick="if(window.posthog)posthog.capture('pricing_sticky_cta_clicked',{tier:'dashboard'})" class="btn btn-cta btn-sm">See tier &rarr;</a>
+    </div>
+  </div>
+
   <footer class="border-t border-gray-800 bg-dark-900/80 py-12">
     <div class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 text-center">
       <p class="text-gray-300 mb-4 font-semibold">GitDealFlow is a deal-flow signal tool for investors &mdash; not a fund.</p>
-      <div class="flex flex-wrap justify-center gap-6 text-gray-500 text-sm mb-4">
+      <div class="flex flex-wrap justify-center gap-6 text-gray-400 text-sm mb-4">
         <a href="/" class="hover:text-gray-300">Home</a>
         <a href="/firstlook" class="hover:text-gray-300">First Look</a>
         <a href="/dashboard" class="hover:text-gray-300">Dashboard</a>
@@ -316,7 +366,7 @@
         <a href="/privacy" class="hover:text-gray-300">Privacy</a>
         <a href="/terms" class="hover:text-gray-300">Terms</a>
       </div>
-      <p class="text-gray-600 text-xs">&copy; 2026 GitDealFlow. Questions? signals@gitdealflow.com &mdash; a human (the same one) answers.</p>
+      <p class="text-gray-400 text-xs">&copy; 2026 GitDealFlow. Questions? signals@gitdealflow.com &mdash; a human (the same one) answers.</p>
     </div>
   </footer>
 
@@ -404,6 +454,37 @@
     (function(){
       function _load(){var s=document.createElement('script');s.src='/pixels.js';s.async=true;document.head.appendChild(s);}
       if('requestIdleCallback' in window){requestIdleCallback(_load,{timeout:3000});} else {setTimeout(_load,2500);}
+    })();
+  </script>
+
+  <script>
+(function(){var t=document.querySelector('[data-nav-toggle]'),p=document.getElementById('mobile-nav');if(!t||!p)return;function set(o){t.setAttribute('aria-expanded',String(o));t.setAttribute('aria-label',o?'Close menu':'Open menu');p.hidden=!o;}
+t.addEventListener('click',function(){set(t.getAttribute('aria-expanded')!=='true');});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&t.getAttribute('aria-expanded')==='true'){set(false);t.focus();}});})();
+  </script>
+
+  <script>
+    // Sticky mobile CTA reveals only after the hero scrolls out of view,
+    // so it never competes with the hero copy. Scroll-driven for reliability.
+    (function () {
+      var bar = document.querySelector('.mobile-sticky-cta');
+      if (!bar) return;
+      var hero = document.querySelector('.mobile-hero-wrap');
+      function set(on) {
+        bar.classList.toggle('is-visible', on);
+        bar.setAttribute('aria-hidden', on ? 'false' : 'true');
+        if (on) { bar.removeAttribute('inert'); } else { bar.setAttribute('inert', ''); }
+      }
+      if (!hero) { set(true); return; }
+      var ticking = false;
+      function update() {
+        ticking = false;
+        set(hero.getBoundingClientRect().bottom < 8);
+      }
+      function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll, { passive: true });
+      update();
     })();
   </script>
 </body>

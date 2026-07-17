@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>See Which Startups Are Heating Up 21–47 Days Before the Round — the Velocity Verdict | GitDealFlow</title>
   <meta name="description" content="The Velocity Verdict: GitDealFlow flags startups accelerating on GitHub 21–47 days before the round. A signal tool for investors — not a fund. No code-reading required.">
   <meta name="author" content="The Data Nerd" />
@@ -156,11 +156,8 @@
   <script>document.documentElement.className += ' js';</script>
   <link rel="preconnect" href="https://signals.gitdealflow.com" crossorigin>
   <link rel="preconnect" href="https://eu.i.posthog.com" crossorigin>
-  <link rel="preconnect" href="https://scripts.refgrowcdn.com" crossorigin>
   <link rel="dns-prefetch" href="https://signals.gitdealflow.com">
   <link rel="dns-prefetch" href="https://eu.i.posthog.com">
-  <link rel="dns-prefetch" href="https://scripts.refgrowcdn.com">
-  <script src="https://scripts.refgrowcdn.com/latest.js" data-project-id="829" async defer></script>
   <style>
     /* ============================================================
        UiKit v2 — World-class UI/UX for gitdealflow.com
@@ -190,7 +187,9 @@
       -webkit-tap-highlight-color: transparent;
       user-select: none;
     }
-    .qual-card:hover { border-color: #64748b; background-color: #243144; box-shadow: 0 2px 8px rgba(0,0,0,.2); }
+    @media (hover: hover) {
+      .qual-card:hover { border-color: #64748b; background-color: #243144; box-shadow: 0 2px 8px rgba(0,0,0,.2); }
+    }
     .qual-card:active { transform: scale(0.97); }
     .qual-card input[type="radio"] {
       flex: 0 0 auto; appearance: none; -webkit-appearance: none;
@@ -216,7 +215,7 @@
     /* ========================= BENEFIT BLOCK (Hero) ========================= */
     .benefit-why { margin: 2rem auto 2.5rem; max-width: 54rem; }
     .benefit-eyebrow {
-      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em;
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em;
       text-transform: uppercase; color: #38bdf8; margin-bottom: 0.4rem;
     }
     .benefit-h2 {
@@ -236,10 +235,13 @@
                   transform 180ms cubic-bezier(0.34,1.56,0.64,1),
                   box-shadow 180ms ease;
     }
-    .benefit-card:hover {
-      border-color: rgba(14, 165, 233, 0.5);
-      transform: translateY(-3px);
-      box-shadow: 0 8px 24px rgba(0,0,0,.25);
+    @media (hover: hover) {
+      .benefit-card:hover {
+        border-color: rgba(14, 165, 233, 0.5);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 24px rgba(0,0,0,.25);
+      }
+      .benefit-card:hover .benefit-ico { transform: scale(1.08); }
     }
     .benefit-ico {
       display: inline-flex; align-items: center; justify-content: center;
@@ -248,7 +250,6 @@
       background-color: rgba(14, 165, 233, 0.12); color: #38bdf8;
       transition: transform 180ms ease;
     }
-    .benefit-card:hover .benefit-ico { transform: scale(1.08); }
     .benefit-text { display: flex; flex-direction: column; min-width: 0; }
     .benefit-title { font-size: 1rem; font-weight: 600; color: #f8fafc; margin-bottom: 0.25rem; }
     .benefit-desc { font-size: 0.85rem; line-height: 1.55; color: #a8b3c2; }
@@ -269,10 +270,12 @@
                   transform 160ms cubic-bezier(0.34,1.56,0.64,1),
                   box-shadow 160ms ease;
     }
-    .proof-card:hover, .support-card:hover, .step-card:hover {
-      border-color: rgba(14, 165, 233, 0.5);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0,0,0,.2);
+    @media (hover: hover) {
+      .proof-card:hover, .support-card:hover, .step-card:hover {
+        border-color: rgba(14, 165, 233, 0.5);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0,0,0,.2);
+      }
     }
 
     /* ========================= MOBILE SYSTEMS ========================= */
@@ -304,16 +307,19 @@
         background: rgba(2, 6, 23, 0.94); backdrop-filter: blur(12px);
         border-top: 1px solid rgba(71, 85, 105, 0.7);
         transform: translateY(115%);
-        transition: transform 280ms cubic-bezier(0.4,0,0.2,1);
+        visibility: hidden;
+        transition: transform 280ms cubic-bezier(0.4,0,0.2,1), visibility 0s linear 280ms;
         pointer-events: none;
       }
-      .mobile-sticky-cta.is-visible { transform: translateY(0); pointer-events: auto; }
+      .mobile-sticky-cta.is-visible { transform: translateY(0); visibility: visible; transition-delay: 0s; pointer-events: auto; }
       .mobile-sticky-cta .inner {
         display: flex; align-items: center; gap: 0.625rem; max-width: 28rem; margin: 0 auto;
       }
       .mobile-sticky-cta .meta { flex: 1; min-width: 0; }
       .mobile-sticky-cta .meta strong { display: block; color: #fff; font-size: 0.875rem; line-height: 1.15; }
-      .mobile-sticky-cta .meta span { display: block; color: #94a3b8; font-size: 0.68rem; margin-top: 0.1rem; }
+      .mobile-sticky-cta .meta span { display: block; color: #94a3b8; font-size: 0.75rem; margin-top: 0.1rem; }
+      .cost-delay-badge { border-radius: 0.875rem; align-items: flex-start; text-align: left; }
+      .cost-delay-badge > span:first-child { margin-top: 5px; }
       .mobile-sticky-cta .btn { white-space: nowrap; padding-left: 0.875rem; padding-right: 0.875rem; }
     }
     @media (max-width: 639px) and (prefers-reduced-motion: reduce) {
@@ -332,7 +338,7 @@
     /* ========================= RECEIPT SPARKLINES ========================= */
     .receipt-spark { display: flex; align-items: center; gap: 0.5rem; margin: 0.75rem 0 0.1rem; }
     .receipt-spark svg { display: block; flex: 0 0 auto; }
-    .receipt-spark .lead { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #6ee7b7; }
+    .receipt-spark .lead { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #6ee7b7; }
 
     /* ========================= SCROLL REVEAL ========================= */
     @media (prefers-reduced-motion: no-preference) {
@@ -350,16 +356,13 @@
     /* ========================= LOADING / SPINNER ========================= */
     .btn[aria-busy="true"] { cursor: progress; opacity: 0.85; }
     .btn-spinner {
-      width: 1rem; height: 1rem; border: 2px solid rgba(255,255,255,0.35);
-      border-top-color: #fff; border-radius: 50%; display: inline-block;
+      width: 1rem; height: 1rem; border: 2px solid rgba(15,23,42,0.35);
+      border-top-color: #0f172a; border-radius: 50%; display: inline-block;
       animation: btn-spin 0.6s linear infinite;
       flex-shrink: 0;
     }
     @keyframes btn-spin { to { transform: rotate(360deg); } }
     @media (prefers-reduced-motion: reduce) { .btn-spinner { animation: none; } }
-
-    /* ========================= PULSE CONTROL ========================= */
-    .btn-no-pulse { animation: none !important; }
 
     /* ========================= DETAILS/ACCORDION POLISH ========================= */
     details summary::-webkit-details-marker { display: none; }
@@ -407,11 +410,6 @@
     }
     .btn-cta-glow:hover::after { opacity: 1; }
 
-    /* ========================= INDUSTRY LOGO TICKER ========================= */
-    @keyframes ticker-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-    .ticker-track { animation: ticker-scroll 30s linear infinite; }
-    .ticker-track:hover { animation-play-state: paused; }
-
     /* ========================= STEP NUMBER BADGE (How it works) ========================= */
     .step-badge {
       display: inline-flex; align-items: center; justify-content: center;
@@ -457,13 +455,34 @@
 <body class="bg-dark-900 text-gray-100 font-sans antialiased">
   <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:bg-brand-500 focus:text-white focus:px-4 focus:py-2 focus:rounded focus:shadow-lg">Skip to main content</a>
 
-  <header class="sticky top-0 z-50 border-b border-gray-800 bg-dark-900/95 backdrop-blur">
-    <nav class="mobile-compact-header max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-3" aria-label="Primary navigation">
+  <header class="relative sticky top-0 z-50 border-b border-gray-800 bg-dark-900/95 backdrop-blur">
+    <div class="mobile-compact-header max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-3">
       <a href="/" class="font-semibold tracking-tight text-white text-lg">GitDealFlow</a>
+      <nav aria-label="Primary navigation" class="hidden md:flex items-center gap-5 text-sm font-medium text-gray-300">
+        <a href="/" class="hover:text-white transition-colors">Home</a>
+        <a href="https://signals.gitdealflow.com" class="hover:text-white transition-colors">Signals</a>
+        <a href="/firstlook" class="hover:text-white transition-colors">First Look</a>
+        <a href="/dashboard" class="hover:text-white transition-colors">Dashboard</a>
+        <a href="/insider" class="hover:text-white transition-colors">Insider</a>
+        <a href="/pricing" class="hover:text-white transition-colors">Pricing</a>
+      </nav>
       <div class="flex items-center gap-4 shrink-0">
-        <a href="#signup" onclick="if(window.posthog)posthog.capture('nav_cta_clicked')" class="btn btn-primary btn-no-pulse btn-sm whitespace-nowrap shrink-0"><span class="sm:hidden">Get the 5 names</span><span class="hidden sm:inline">Get this Sunday&apos;s 5 names</span> <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
+        <a href="#signup-hero" onclick="if(window.posthog)posthog.capture('nav_cta_clicked')" class="btn btn-primary btn-no-pulse btn-sm whitespace-nowrap shrink-0"><span class="sm:hidden">Get the 5 names</span><span class="hidden sm:inline">Get this Sunday&apos;s 5 names</span> <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
+        <button type="button" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu" class="md:hidden inline-flex items-center justify-center w-11 h-11 shrink-0 rounded-lg text-gray-300 hover:text-white ring-1 ring-white/10 transition-colors">
+          <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
       </div>
-    </nav>
+    </div>
+    <div id="mobile-nav" hidden class="md:hidden absolute top-full inset-x-0 z-50 border-b border-white/10 bg-dark-900 shadow-2xl">
+      <nav aria-label="Mobile navigation" class="flex flex-col px-4 py-2">
+        <a href="/" class="py-3 min-h-[44px] flex items-center border-b border-white/5 text-gray-200 hover:text-white">Home</a>
+        <a href="https://signals.gitdealflow.com" class="py-3 min-h-[44px] flex items-center border-b border-white/5 text-gray-200 hover:text-white">Signals</a>
+        <a href="/firstlook" class="py-3 min-h-[44px] flex items-center border-b border-white/5 text-gray-200 hover:text-white">First Look</a>
+        <a href="/dashboard" class="py-3 min-h-[44px] flex items-center border-b border-white/5 text-gray-200 hover:text-white">Dashboard</a>
+        <a href="/insider" class="py-3 min-h-[44px] flex items-center border-b border-white/5 text-gray-200 hover:text-white">Insider</a>
+        <a href="/pricing" class="py-3 min-h-[44px] flex items-center text-gray-200 hover:text-white">Pricing</a>
+      </nav>
+    </div>
   </header>
 
   <main id="main-content" aria-label="Main content">
@@ -473,7 +492,7 @@
         <p class="text-brand-500 font-semibold text-sm uppercase tracking-wider mb-6">For angels who source outside a fund &mdash; and the scouts &amp; seed funds who serve them</p>
 
         <!-- COST OF DELAY BADGE (Expert Secrets Ch 16) — opportunity cost of waiting, made explicit -->
-        <div class="inline-flex items-center gap-3 rounded-full border border-amber-500/30 bg-amber-500/10 px-4 py-2 mb-6 animate-fade-in-up" style="animation-delay:0.1s">
+        <div class="cost-delay-badge inline-flex items-center gap-3 rounded-full border border-amber-500/30 bg-amber-500/10 px-4 py-2 mb-6 animate-fade-in-up" style="animation-delay:0.1s">
           <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse shrink-0"></span>
           <span class="text-amber-200 text-xs font-medium">Every Sunday you wait is a round you'll hear about a week too late. That gap is your whole edge.</span>
         </div>
@@ -489,12 +508,12 @@
 
         <div id="hero-flow" class="hero-flow">
         <div class="hero-how">
-        <form class="js-signup-form mobile-cta-stack flex flex-col sm:flex-row gap-3 max-w-lg mx-auto" data-source="hero">
-          <label class="sr-only">Email address</label>
-          <input type="email" required inputmode="email" autocomplete="email" enterkeyhint="send" placeholder="you@example.com" class="flex-1 px-5 py-4 rounded-lg bg-dark-800 border border-gray-600 text-gray-100 placeholder-gray-500 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 text-lg">
+        <form id="signup-hero" style="scroll-margin-top:5rem" class="js-signup-form mobile-cta-stack flex flex-col sm:flex-row gap-3 max-w-lg mx-auto" data-source="hero">
+          <label for="hero-email" class="sr-only">Email address</label>
+          <input type="email" id="hero-email" required inputmode="email" autocomplete="email" enterkeyhint="send" placeholder="you@example.com" class="flex-1 px-5 py-4 rounded-lg bg-dark-800 border border-gray-600 text-gray-100 placeholder-gray-400 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 text-lg">
           <button type="submit" class="btn btn-primary btn-xl w-full sm:w-auto"><span>Get this Sunday&apos;s 5 names</span><span aria-hidden="true" class="btn-arrow">&rarr;</span></button>
         </form>
-        <p class="js-signup-msg text-gray-400 text-sm mt-4"><span class="text-emerald-400">✓</span> Free &mdash; I cover the compute &nbsp; <span class="text-emerald-400">✓</span> Unsubscribe in one click &nbsp; <span class="text-emerald-400">✓</span> One email, every Sunday</p>
+        <p role="status" class="js-signup-msg text-gray-400 text-sm mt-4"><span class="text-emerald-400">✓</span> Free &mdash; I cover the compute &nbsp; <span class="text-emerald-400">✓</span> Unsubscribe in one click &nbsp; <span class="text-emerald-400">✓</span> One email, every Sunday</p>
 
         <p class="hero-kicker text-base md:text-lg font-semibold leading-tight text-signal-400 mt-6 mb-6"><span class="text-gray-400">Three signals that together predict a fundraise:</span> velocity surge &middot; contributor spike &middot; infrastructure buildout</p>
 
@@ -510,20 +529,20 @@
         <!-- 3-STEP ACTION PATH (Expert Secrets Ch 17 — Call to Adventure) -->
         <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-xs text-gray-400 max-w-2xl mx-auto mt-5 mb-2">
           <span class="flex items-center gap-2">
-            <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-brand-500/20 text-brand-400 text-[10px] font-bold">1</span>
+            <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-brand-500/20 text-brand-400 text-[11px] font-bold">1</span>
             Get this Sunday's 5 names (90s)
           </span>
           <span class="flex items-center gap-2">
-            <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-brand-500/20 text-brand-400 text-[10px] font-bold">2</span>
+            <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-brand-500/20 text-brand-400 text-[11px] font-bold">2</span>
             Confirm your email &amp; read the issue
           </span>
           <span class="flex items-center gap-2">
-            <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-brand-500/20 text-brand-400 text-[10px] font-bold">3</span>
+            <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-brand-500/20 text-brand-400 text-[11px] font-bold">3</span>
             Reach the founder before the round
           </span>
         </div>
 
-        <p class="text-gray-400 text-sm mt-3">Covering <span class="text-gray-300">the fast-growing software startups everyone&apos;s about to fight over</span> &mdash; and more. <a href="/report" target="_blank" rel="noopener" class="underline hover:text-gray-300 transition">See a real issue first &rarr;</a> <span class="text-gray-600 mx-2">&middot;</span> <a href="/perfect-webinar" class="underline hover:text-gray-300 transition">Watch the 12-minute walkthrough &rarr;</a></p>
+        <p class="text-gray-400 text-sm mt-3">Covering <span class="text-gray-300">the fast-growing software startups everyone&apos;s about to fight over</span> &mdash; and more. <a href="/report" class="underline hover:text-gray-300 transition">See a real issue first &rarr;</a> <span class="text-gray-600 mx-2">&middot;</span> <a href="/perfect-webinar" class="underline hover:text-gray-300 transition">Watch the 12-minute walkthrough &rarr;</a></p>
 
         <!-- Brunson Ch 17 — Qualification quiz (squeeze-page style): segments ICP without blocking the free opt-in -->
         <div id="hero-quiz" class="max-w-2xl mx-auto mt-8 pt-6 border-t border-gray-700/50">
@@ -572,7 +591,7 @@
               </div>
             </label>
           </div>
-          <p class="text-gray-400 text-xs text-center mt-3">Pick one, then subscribe above &mdash; I&apos;ll use it to tune the issue you get first.</p>
+          <p class="text-gray-400 text-xs text-center mt-3">Pick one &mdash; I&apos;ll take you to the signup and tune your first issue to it.</p>
         </div>
         </div><!-- /.hero-how -->
 
@@ -638,7 +657,7 @@
             <p class="text-emerald-300 text-sm font-semibold">&rarr; $18M Series A &middot; Sequoia</p>
           </div>
         </div>
-        <p class="text-gray-300 text-sm">Plus ~70 more &mdash; Anthropic, Pinecone, Groq, Clerk, Linear &mdash; in the public panel behind the <strong class="text-white">219 documented fundraises</strong>. <a href="https://signals.gitdealflow.com/methodology" target="_blank" rel="noopener" class="text-brand-500 underline">See the method and the full ledger &rarr;</a></p>
+        <p class="text-gray-300 text-sm">Plus ~70 more &mdash; Anthropic, Pinecone, Groq, Clerk, Linear &mdash; in the public panel behind the <strong class="text-white">219 documented fundraises</strong>. <a href="https://signals.gitdealflow.com/methodology" target="_blank" rel="noopener" class="text-brand-500 underline">See the method and the full ledger &rarr;<span class="sr-only"> (opens in a new tab)</span></a></p>
       </div>
 
       <!-- RESULT TIMELINE (DotCom Secrets Ch.4 — "Result"): visualizes the unique outcome.
@@ -648,12 +667,12 @@
         <p class="text-signal-400 text-xs font-semibold uppercase tracking-wider text-center mb-5">The head start, visualized</p>
         <div class="relative max-w-3xl mx-auto">
           <!-- Timeline track -->
-          <div class="relative h-2 rounded-full bg-dark-700 mb-6">
+          <div class="relative hidden sm:block h-2 rounded-full bg-dark-700 mb-6">
             <div class="absolute left-0 top-0 h-2 rounded-full bg-gradient-to-r from-signal-500 to-emerald-400" style="width:38%"></div>
             <div class="absolute left-[38%] top-0 h-2 rounded-full bg-gradient-to-r from-emerald-400 via-amber-400 to-red-400/60" style="width:62%"></div>
           </div>
           <!-- Markers -->
-          <div class="grid grid-cols-3 gap-2 text-center">
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-2 text-center">
             <div class="text-left">
               <div class="inline-flex items-center gap-1.5 mb-1">
                 <span class="w-2.5 h-2.5 rounded-full bg-signal-400 ring-2 ring-dark-900"></span>
@@ -661,14 +680,14 @@
               </div>
               <p class="text-gray-400 text-xs leading-snug">Commit velocity surges. Contributors spike. Infra buildout begins &mdash; all public on GitHub.</p>
             </div>
-            <div class="text-center">
+            <div class="text-left sm:text-center">
               <div class="inline-flex items-center gap-1.5 mb-1">
                 <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 ring-2 ring-dark-900"></span>
                 <span class="text-emerald-300 text-xs font-bold uppercase tracking-wider">21&ndash;47 days later</span>
               </div>
               <p class="text-gray-400 text-xs leading-snug">The round is announced. The press covers it. <strong class="text-white">Your edge is gone.</strong></p>
             </div>
-            <div class="text-right">
+            <div class="text-left sm:text-right">
               <div class="inline-flex items-center gap-1.5 mb-1">
                 <span class="w-2.5 h-2.5 rounded-full bg-red-400/60 ring-2 ring-dark-900"></span>
                 <span class="text-red-300 text-xs font-bold uppercase tracking-wider">The crowd arrives</span>
@@ -686,7 +705,7 @@
         <div class="flex flex-col sm:flex-row items-center sm:items-center gap-4 mb-4 text-center sm:text-left">
           <picture>
             <source srcset="/data-nerd.webp" type="image/webp">
-            <img src="/data-nerd.png" alt="The Data Nerd" width="72" height="72" loading="lazy" decoding="async" class="w-40 h-40 sm:w-32 sm:h-32 rounded-full ring-2 ring-slate-600 shadow-2xl mx-auto sm:mx-0">
+            <img src="/data-nerd.png" alt="The Data Nerd" width="160" height="160" loading="lazy" decoding="async" class="w-28 h-28 sm:w-32 sm:h-32 rounded-full ring-2 ring-slate-600 shadow-2xl mx-auto sm:mx-0">
           </picture>
           <div>
             <p class="text-signal-400 text-xs font-semibold uppercase tracking-wider mb-1">Built by The Data Nerd</p>
@@ -698,7 +717,7 @@
           <p>For ten years I wrote those cheques out of Athens, not San Francisco. No partner network, no demo-day badge, and honestly I&apos;m useless in a room — I&apos;d rather read a commit history than work a conference. So I heard about the good companies the same way you do: a week too late, after the round was full and the price had jumped. That part actually stung.</p>
           <p>Then in 2024 I watched a small fintech team I almost emailed — three founders, one repo, no press, no warm intros circulating. Two weeks later their engineers were suddenly shipping far more: commit activity tripled, new contributors piled in, new infrastructure appeared out of nowhere. Three weeks after that, a $4M Series A led by a top-tier fund. Every clue had been sitting in the open on GitHub (the website where engineers keep their work) the whole time. I couldn&apos;t un-see it.</p>
           <p>So I built a tool that reads that trail across 4,200+ startups every week and hands me the names quietly taking off — in plain words, no code. Now I send those names to you.</p>
-          <p><strong class="text-white">And yes — I&apos;m just one nerd reading GitHub.</strong> That&apos;s the point: no committee, no spin, no agenda. The read is fully automated, it ships on a schedule, and the whole method is published on SSRN with an open dataset — so it never depends on me having a good week. <a href="https://signals.gitdealflow.com/origin" target="_blank" rel="noopener" class="underline hover:text-gray-200 transition">The full origin story, the six parables, and the open methodology &rarr;</a></p>
+          <p><strong class="text-white">And yes — I&apos;m just one nerd reading GitHub.</strong> That&apos;s the point: no committee, no spin, no agenda. The read is fully automated, it ships on a schedule, and the whole method is published on SSRN with an open dataset — so it never depends on me having a good week. <a href="https://signals.gitdealflow.com/origin" target="_blank" rel="noopener" class="underline hover:text-gray-200 transition">The full origin story, the six parables, and the open methodology &rarr;<span class="sr-only"> (opens in a new tab)</span></a></p>
         </div>
         <ul class="space-y-3 text-sm text-gray-300 border-t border-gray-700 pt-5">
           <li><strong class="text-white">What it watches:</strong> which company teams are suddenly building a lot more</li>
@@ -740,19 +759,19 @@
       <a href="#signup" onclick="if(window.posthog)posthog.capture('repeat_cta_clicked',{placement:'after_story'})" class="btn btn-primary btn-lg w-full sm:w-auto"><span>Get this Sunday&apos;s 5 names</span><span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
     </div>
 
-    <section class="mobile-section-pad max-w-5xl mx-auto px-4 sm:px-6 py-8">
+    <section id="verify" class="mobile-section-pad max-w-5xl mx-auto px-4 sm:px-6 py-8" style="scroll-margin-top:5rem">
       <div class="mobile-card-pad rounded-2xl border border-gray-800 bg-dark-800/70 p-6 md:p-8">
         <p class="text-signal-400 text-xs font-semibold uppercase tracking-wider mb-4">Verify the claim in three clicks</p>
         <div class="mobile-proof-grid grid md:grid-cols-3 gap-4 text-left">
           <a href="https://signals.gitdealflow.com/methodology" target="_blank" rel="noopener" class="proof-card rounded-xl border border-gray-700 bg-dark-900 p-5 hover:border-signal-500/50 transition">
-            <p class="text-white font-semibold mb-2">Methodology</p>
+            <p class="text-white font-semibold mb-2">Methodology<span class="sr-only"> (opens in a new tab)</span></p>
             <p class="text-sm text-gray-400">Read how the signal works, what the SSRN panel measured, and why the lead-time claim exists.</p>
           </a>
           <a href="https://signals.gitdealflow.com/compare/best-alternative-data-tools-for-angel-investors" target="_blank" rel="noopener" class="proof-card rounded-xl border border-gray-700 bg-dark-900 p-5 hover:border-signal-500/50 transition">
-            <p class="text-white font-semibold mb-2">Comparison</p>
+            <p class="text-white font-semibold mb-2">Comparison<span class="sr-only"> (opens in a new tab)</span></p>
             <p class="text-sm text-gray-400">See where GitDealFlow fits versus other alternative-data tools when timing matters more than noise.</p>
           </a>
-          <a href="/report" target="_blank" rel="noopener" class="proof-card rounded-xl border border-gray-700 bg-dark-900 p-5 hover:border-signal-500/50 transition">
+          <a href="/report" class="proof-card rounded-xl border border-gray-700 bg-dark-900 p-5 hover:border-signal-500/50 transition">
             <p class="text-white font-semibold mb-2">Sample report</p>
             <p class="text-sm text-gray-400">See the exact output shape — names, signals, and plain-English notes — before you sign up for anything.</p>
           </a>
@@ -798,7 +817,7 @@
           <div class="bg-brand-500/5 px-6 md:px-8 py-4 md:py-5 border-b border-gray-700/50 flex items-center gap-3">
             <span class="inline-flex items-center justify-center w-9 h-9 md:w-10 md:h-10 rounded-xl bg-brand-500/20 text-brand-400 font-bold text-sm shrink-0">1</span>
             <div>
-              <p class="text-[10px] md:text-xs font-bold text-brand-400 uppercase tracking-widest">The Vehicle</p>
+              <p class="text-[11px] md:text-xs font-bold text-brand-400 uppercase tracking-widest">The Vehicle</p>
               <h3 class="text-lg md:text-xl font-bold text-white">&ldquo;My network just isn&apos;t good enough.&rdquo;</h3>
             </div>
           </div>
@@ -818,7 +837,7 @@
           <div class="bg-signal-500/5 px-6 md:px-8 py-4 md:py-5 border-b border-gray-700/50 flex items-center gap-3">
             <span class="inline-flex items-center justify-center w-9 h-9 md:w-10 md:h-10 rounded-xl bg-signal-500/20 text-signal-400 font-bold text-sm shrink-0">2</span>
             <div>
-              <p class="text-[10px] md:text-xs font-bold text-signal-400 uppercase tracking-widest">Internal Belief</p>
+              <p class="text-[11px] md:text-xs font-bold text-signal-400 uppercase tracking-widest">Internal Belief</p>
               <h3 class="text-lg md:text-xl font-bold text-white">&ldquo;I can&apos;t read code. I&apos;m not technical enough.&rdquo;</h3>
             </div>
           </div>
@@ -838,7 +857,7 @@
           <div class="bg-emerald-500/5 px-6 md:px-8 py-4 md:py-5 border-b border-gray-700/50 flex items-center gap-3">
             <span class="inline-flex items-center justify-center w-9 h-9 md:w-10 md:h-10 rounded-xl bg-emerald-500/20 text-emerald-400 font-bold text-sm shrink-0">3</span>
             <div>
-              <p class="text-[10px] md:text-xs font-bold text-emerald-400 uppercase tracking-widest">External Belief</p>
+              <p class="text-[11px] md:text-xs font-bold text-emerald-400 uppercase tracking-widest">External Belief</p>
               <h3 class="text-lg md:text-xl font-bold text-white">&ldquo;Even if I spot it early, the big fund will take the allocation.&rdquo;</h3>
             </div>
           </div>
@@ -850,6 +869,20 @@
             <div class="space-y-2 md:pl-2">
               <span class="text-xs md:text-sm font-bold text-emerald-400">&check; The Epiphany</span>
               <p class="text-sm md:text-base text-gray-200 leading-relaxed">The whole point of a 21&ndash;47 day head start is that you reach the founder <strong class="text-white">before there&apos;s a round to fight over</strong>. While they&apos;re still heads-down shipping, you&apos;re the one investor who noticed. That&apos;s when a founder takes the call, remembers your name, and saves you room.</p>
+            </div>
+          </div>
+          <div class="grid md:grid-cols-3 gap-4 text-left px-6 md:px-8 pb-6 md:pb-8">
+            <div class="rounded-xl border border-gray-700 bg-dark-900 p-5">
+              <p class="text-sky-400 text-xs font-semibold uppercase tracking-wider mb-2">Week 0</p>
+              <p class="text-gray-300 text-sm leading-relaxed">The tool flags the signal. You reach out while the founder still has time to talk.</p>
+            </div>
+            <div class="rounded-xl border border-gray-700 bg-dark-900 p-5">
+              <p class="text-sky-400 text-xs font-semibold uppercase tracking-wider mb-2">Weeks 1&ndash;4</p>
+              <p class="text-gray-300 text-sm leading-relaxed">You build the relationship while you&apos;re the only investor in the room. No competition, no noise.</p>
+            </div>
+            <div class="rounded-xl border border-gray-700 bg-dark-900 p-5">
+              <p class="text-emerald-300 text-xs font-semibold uppercase tracking-wider mb-2">Round opens</p>
+              <p class="text-gray-300 text-sm leading-relaxed">You&apos;re already in. Better price, real allocation, no scramble against ten other term sheets.</p>
             </div>
           </div>
         </div>
@@ -881,51 +914,6 @@
           <div class="rounded-xl border border-gray-700 bg-dark-900 p-5">
             <p class="text-2xl font-extrabold text-white mb-1">Open</p>
             <p class="text-gray-400 text-sm leading-relaxed">dataset and methodology on SSRN and Zenodo &mdash; check every call yourself.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="mobile-section-pad max-w-5xl mx-auto px-4 sm:px-6 py-12">
-      <div class="mobile-card-pad support-card rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-8 md:p-10">
-        <p class="text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-3">Why investors use it</p>
-        <div class="grid md:grid-cols-3 gap-6 text-left">
-          <div>
-            <h3 class="text-lg font-semibold text-white mb-2">You see it earlier</h3>
-            <p class="text-gray-300 text-sm leading-relaxed">Engineering activity moves before the round and before the press. You reach founders while the window is still quiet, not after the deal is crowded.</p>
-          </div>
-          <div>
-            <h3 class="text-lg font-semibold text-white mb-2">You stay the investor, not the analyst</h3>
-            <p class="text-gray-300 text-sm leading-relaxed">No code, no dashboards to babysit, no borrowing an engineer&apos;s afternoon. Each name arrives with its sector, stage, and a plain-English reason it&apos;s accelerating &mdash; the kind of line you can drop in front of your deal team and sound early, not technical.</p>
-          </div>
-          <div>
-            <h3 class="text-lg font-semibold text-white mb-2">It&apos;s provable, not a black box</h3>
-            <p class="text-gray-300 text-sm leading-relaxed">No &ldquo;trust me.&rdquo; The lead-time claim is backed by an SSRN paper, a public dataset, and an open methodology you can read in full.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 py-12">
-      <div class="mobile-card-pad support-card rounded-2xl border border-sky-500/30 bg-sky-500/10 p-8 md:p-10">
-        <p class="text-sky-400 text-xs font-semibold uppercase tracking-wider mb-3">&ldquo;But can I actually win the deal?&rdquo;</p>
-        <h2 class="text-3xl font-bold mb-4">Seeing it early is exactly how a small check beats a big fund.</h2>
-        <div class="space-y-4 text-gray-300 text-lg leading-relaxed mb-8">
-          <p>Here&apos;s the fear: you spot a company early, then a brand-name fund takes the allocation anyway. But that only happens <strong class="text-white">after</strong> a round is hot. The whole point of a head start measured in weeks is that you get there <strong class="text-white">before</strong> there&apos;s a round to fight over.</p>
-          <p>When you reach a founder while they&apos;re still heads-down shipping, you&apos;re not bidding against ten term sheets. You&apos;re the one investor who noticed before the press did. That&apos;s when a founder takes the call, remembers your name, and saves you room when the round opens.</p>
-        </div>
-        <div class="grid md:grid-cols-3 gap-4 text-left">
-          <div class="rounded-xl border border-gray-700 bg-dark-900 p-5">
-            <p class="text-sky-400 text-xs font-semibold uppercase tracking-wider mb-2">Week 0</p>
-            <p class="text-gray-300 text-sm leading-relaxed">The tool flags the signal. You reach out while the founder still has time to talk.</p>
-          </div>
-          <div class="rounded-xl border border-gray-700 bg-dark-900 p-5">
-            <p class="text-sky-400 text-xs font-semibold uppercase tracking-wider mb-2">Weeks 1&ndash;4</p>
-            <p class="text-gray-300 text-sm leading-relaxed">You build the relationship while you&apos;re the only investor in the room. No competition, no noise.</p>
-          </div>
-          <div class="rounded-xl border border-gray-700 bg-dark-900 p-5">
-            <p class="text-emerald-300 text-xs font-semibold uppercase tracking-wider mb-2">Round opens</p>
-            <p class="text-gray-300 text-sm leading-relaxed">You&apos;re already in. Better price, real allocation, no scramble against ten other term sheets.</p>
           </div>
         </div>
       </div>
@@ -983,6 +971,10 @@
     <style>
       /* Scoped 5-rung ladder grid — not in compiled styles.css, so self-contained */
       .ladder-grid{display:grid;grid-template-columns:1fr;gap:1.25rem}
+      @media(max-width:639px){
+        .ladder-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:1rem;padding-bottom:.5rem}
+        .ladder-grid>.ladder-card{flex:0 0 85%;scroll-snap-align:center}
+      }
       @media(min-width:640px){.ladder-grid{grid-template-columns:repeat(2,1fr)}}
       @media(min-width:1024px){.ladder-grid{grid-template-columns:repeat(3,1fr)}}
       @media(min-width:1280px){.ladder-grid{grid-template-columns:repeat(6,1fr);align-items:stretch}}
@@ -1012,129 +1004,6 @@
       /* Rung label tagline */
       .rung-label{font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.35rem}
     </style>
-    <section id="ladder" class="mobile-section-pad max-w-7xl mx-auto px-4 sm:px-6 py-16 md:py-20" style="scroll-margin-top:5rem">
-      <span id="pricing" aria-hidden="true"></span>
-      <p class="text-signal-400 text-xs font-semibold uppercase tracking-wider text-center mb-3">The value ladder</p>
-      <h2 class="text-3xl font-bold text-center mb-3">Six ways to be early. Start free, climb when you&rsquo;re ready.</h2>
-      <p class="text-gray-400 text-center max-w-2xl mx-auto mb-6">From a 90-second Sunday read to a custom thesis report with a private call &mdash; each rung adds depth without adding noise. No rung is locked &mdash; start wherever your week demands.</p>
-      <div class="ladder-progress" aria-hidden="true">
-        <span class="active"></span><span class="active"></span><span class="active"></span><span class="active"></span><span class="active"></span><span class="active"></span>
-      </div>
-      <div class="ladder-grid">
-        <!-- RUNG 1: FREE — the bait (Ch 1 "Free + Shipping" analogue) -->
-        <div class="ladder-card rounded-2xl border border-gray-700 bg-dark-900 p-5 md:p-6 text-center flex flex-col">
-          <span class="rung-num rung-1">1</span>
-          <p class="rung-label text-emerald-400">📋 Discover</p>
-          <p class="text-xl font-bold text-white mb-1">Sunday Signal</p>
-          <p class="text-2xl font-extrabold text-white mb-1">Free</p>
-          <p class="text-gray-400 text-xs mb-4">5 names &middot; 90-second read &middot; forever</p>
-          <ul class="text-left text-gray-300 text-sm space-y-2 mb-5 flex-1">
-            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>5 startups accelerating on GitHub, every Sunday</span></li>
-            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>Plain-English note on each &mdash; never read code</span></li>
-            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>Unsubscribe in one click, keep every issue</span></li>
-          </ul>
-          <a href="#signup" onclick="if(window.posthog)posthog.capture('ladder_cta_clicked',{rung:1,tier:'free',placement:'value_ladder'})" class="btn btn-primary btn-md w-full">Get it free</a>
-        </div>
-
-        <!-- RUNG 2: €1 TWEET TEARDOWN — the micro-commitment between free and First Look -->
-        <div class="ladder-card rounded-2xl border border-gray-700 bg-dark-900 p-5 md:p-6 text-center flex flex-col">
-          <span class="rung-num rung-td">2</span>
-          <p class="rung-label" style="color:#fb7185">🔍 Name a startup</p>
-          <p class="text-xl font-bold text-white mb-1">Tweet Teardown</p>
-          <p class="text-2xl font-extrabold text-white mb-1">&euro;1<span class="text-gray-400 text-sm font-normal"> once</span></p>
-          <p class="text-gray-400 text-xs mb-4">One named startup &middot; tweet-length &middot; 24h</p>
-          <ul class="text-left text-gray-300 text-sm space-y-2 mb-5 flex-1">
-            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span><strong class="text-white">One named startup</strong> &mdash; you pick it</span></li>
-            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>One tweet-length <strong class="text-white">GitHub-momentum teardown</strong></span></li>
-            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>24h delivery</span></li>
-            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span><strong class="text-white">&euro;1 credits</strong> toward First Look within 7 days</span></li>
-          </ul>
-          <a href="https://buy.stripe.com/bJe5kC48H2d2cEKg6s0x209" onclick="if(window.posthog)posthog.capture('ladder_cta_clicked',{rung:2,tier:'teardown',placement:'value_ladder'})" class="btn btn-secondary btn-md w-full">Get a Teardown &rarr;</a>
-        </div>
-
-        <!-- RUNG 3: TRIPWIRE / SLO (Ch 12) — the buyer-identity shift. €7 credited toward Dashboard. -->
-        <div class="ladder-card ladder-tripwire rounded-2xl border p-5 md:p-6 text-center flex flex-col">
-          <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-signal-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider whitespace-nowrap">⚡ First buyer step</span>
-          <span class="rung-num rung-2" style="margin-top:.5rem">3</span>
-          <p class="rung-label text-signal-400">⚡ Test the signal</p>
-          <p class="text-xl font-bold text-white mb-1">First Look Pass</p>
-          <p class="text-2xl font-extrabold text-white mb-1">&euro;7<span class="text-gray-400 text-sm font-normal"> once</span></p>
-          <p class="text-gray-400 text-xs mb-4">One sector &middot; 24-hour deep dive &middot; one-time</p>
-          <ul class="text-left text-gray-300 text-sm space-y-2 mb-5 flex-1">
-            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>Full deep dive on <strong class="text-white">your sector</strong>, ranked shortlist in 24h</span></li>
-            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>Plain-English &mdash; you never touch code</span></li>
-            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span><strong class="text-white">&euro;7 credited</strong> toward Dashboard if you upgrade in 14 days</span></li>
-            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>Not useful? 30 days, email me, every cent back</span></li>
-          </ul>
-          <a href="/firstlook" onclick="if(window.posthog)posthog.capture('ladder_cta_clicked',{rung:3,tier:'firstlook',placement:'value_ladder'})" class="btn btn-cta btn-md w-full">Get my First Look &rarr;</a>
-        </div>
-
-        <!-- RUNG 4: CORE OFFER (Ch 1 "Core Offer") — Dashboard. The main subscription. -->
-        <div class="ladder-card ladder-core rounded-2xl border p-5 md:p-6 text-center flex flex-col">
-          <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Most popular</span>
-          <span class="rung-num rung-3" style="margin-top:.5rem">4</span>
-          <p class="rung-label text-brand-400">🔭 Operate weekly</p>
-          <p class="text-xl font-bold text-white mb-1">Dashboard</p>
-          <p class="text-2xl font-extrabold text-white mb-1">&euro;49<span class="text-gray-400 text-sm font-normal">/mo</span></p>
-          <p class="text-gray-400 text-xs mb-4">Full ranked field &middot; 50+ startups &middot; weekly re-rank</p>
-          <ul class="text-left text-gray-300 text-sm space-y-2 mb-5 flex-1">
-            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>50+ startups ranked by engineering acceleration</span></li>
-            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>Filter by sector, stage, geography</span></li>
-            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>Funding data &amp; team size enrichment</span></li>
-            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>CSV export + full history</span></li>
-          </ul>
-          <a href="/dashboard" onclick="if(window.posthog)posthog.capture('ladder_cta_clicked',{rung:4,tier:'dashboard',placement:'value_ladder'})" class="btn btn-primary btn-md w-full">Start Dashboard &rarr;</a>
-        </div>
-
-        <!-- RUNG 5: PROFIT MAXIMIZER (Ch 1 "Profit Maximizer") — Insider Circle -->
-        <div class="ladder-card rounded-2xl border p-5 md:p-6 text-center flex flex-col" style="border-color:rgba(168,85,247,.28);background:linear-gradient(180deg,rgba(30,16,45,.5),rgba(15,23,42,.9))">
-          <span class="rung-num rung-4">5</span>
-          <p class="rung-label" style="color:#c084fc">🤝 Stay close</p>
-          <p class="text-xl font-bold text-white mb-1">Insider Circle</p>
-          <p class="text-2xl font-extrabold text-white mb-1">&euro;197<span class="text-gray-400 text-sm font-normal">/mo</span></p>
-          <p class="text-gray-400 text-xs mb-4">Watchlists &middot; alerts &middot; API &middot; ~50 seat cap</p>
-          <ul class="text-left text-gray-300 text-sm space-y-2 mb-5 flex-1">
-            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>Everything in Dashboard</span></li>
-            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>Custom watchlists + real-time Slack alerts</span></li>
-            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>API access &amp; deeper enrichment</span></li>
-            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>Quarterly trend briefings</span></li>
-          </ul>
-          <a href="/insider" onclick="if(window.posthog)posthog.capture('ladder_cta_clicked',{rung:5,tier:'insider',placement:'value_ladder'})" class="btn btn-secondary btn-md w-full">Join Insider</a>
-        </div>
-
-        <!-- RUNG 6: HIGH-TICKET BACKEND (Ch 1 "Return Path" / Ch 9 "Backend Funnel") — Sector Sweep -->
-        <div class="ladder-card ladder-apex rounded-2xl border p-5 md:p-6 text-center flex flex-col">
-          <span class="rung-num rung-5">6</span>
-          <p class="rung-label" style="color:#fbbf24">🎯 Go custom</p>
-          <p class="text-xl font-bold text-white mb-1">Sector Sweep</p>
-          <p class="text-2xl font-extrabold text-white mb-1">&euro;1,997<span class="text-gray-400 text-sm font-normal"> once</span></p>
-          <p class="text-gray-400 text-xs mb-4">Custom thesis report &middot; private call &middot; one-time</p>
-          <ul class="text-left text-gray-300 text-sm space-y-2 mb-5 flex-1">
-            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>Full custom report on <strong class="text-white">your thesis</strong></span></li>
-            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>Private call with the Data Nerd</span></li>
-            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>Ranked shortlist + raw signal data</span></li>
-            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>For funds &amp; scouts running a live process</span></li>
-          </ul>
-          <a href="/sector-sweep" onclick="if(window.posthog)posthog.capture('ladder_cta_clicked',{rung:6,tier:'sector_sweep',placement:'value_ladder'})" class="btn btn-secondary btn-md w-full">Explore Sector Sweep</a>
-        </div>
-      </div>
-
-      <!-- BRUNSON ANCHOR NOTE (Ch 18 Value Stack principle) — the €1,997 rung makes €49/mo feel obvious -->
-      <div class="mt-6 max-w-3xl mx-auto text-center">
-        <p class="text-gray-400 text-sm leading-relaxed"><strong class="text-gray-300">How the ladder works:</strong> Start free &mdash; no card, ever. A &euro;1 Tweet Teardown tests the read on one named startup; First Look tests the signal on one sector for &euro;7 (14-day upgrade credit window toward Dashboard). Dashboard is the weekly operating layer. Insider adds alerts and API. Sector Sweep is the one-time custom report when you need a deeper answer than any feed can give. <strong class="text-white">Every paid rung is covered by the 30-day guarantee below.</strong></p>
-        <p class="text-gray-400 text-sm leading-relaxed mt-3">Founding cohort closed June 30 &mdash; exactly as promised. Members who moved keep &euro;9.97 for life. When I set the next deadline, you&apos;ll know I mean it.</p>
-      </div>
-
-      <!-- BRUNSON RISK REVERSAL (Ch 11) — guarantee on all paid tiers -->
-      <div class="mt-6 max-w-2xl mx-auto rounded-2xl border border-emerald-500/30 bg-emerald-500/5 p-6 md:p-8 text-center">
-        <div class="flex items-center justify-center gap-2 mb-3">
-          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="text-emerald-400" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
-          <p class="text-emerald-300 text-xs font-bold uppercase tracking-wider">The Risk Is Mine, Not Yours</p>
-        </div>
-        <p class="text-gray-200 leading-relaxed text-base">Start on the free Sunday Signal &mdash; no card, ever. Every paid rung (Tweet Teardown, First Look, Dashboard, Insider, or Sector Sweep) carries the 30-day Signal-or-It&apos;s-Free guarantee: <strong class="text-white">any paid rung, 30 days, email me, every cent back. No forms, no survey.</strong> The risk is entirely on my side of the table.</p>
-      </div>
-    </section>
-
     <section id="how" class="bg-dark-800 py-16 md:py-20" style="scroll-margin-top:5rem">
       <div class="mobile-section-pad max-w-5xl mx-auto px-4 sm:px-6">
         <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider text-center mb-3">How it works</p>
@@ -1156,6 +1025,130 @@
             <p class="text-gray-400">Open the board, pick the names in your lane, and reach the founders while the window is still quiet.</p>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section id="ladder" class="mobile-section-pad max-w-7xl mx-auto px-4 sm:px-6 py-16 md:py-20" style="scroll-margin-top:5rem">
+      <span id="pricing" aria-hidden="true"></span>
+      <p class="text-signal-400 text-xs font-semibold uppercase tracking-wider text-center mb-3">The value ladder</p>
+      <h2 class="text-3xl font-bold text-center mb-3">Six ways to be early. Start free, climb when you&rsquo;re ready.</h2>
+      <p class="text-gray-400 text-center max-w-2xl mx-auto mb-6">From a 90-second Sunday read to a custom thesis report with a private call &mdash; each rung adds depth without adding noise. No rung is locked &mdash; start wherever your week demands.</p>
+      <div class="ladder-progress" aria-hidden="true">
+        <span class="active"></span><span class="active"></span><span class="active"></span><span class="active"></span><span class="active"></span><span class="active"></span>
+      </div>
+      <p class="sm:hidden text-gray-500 text-xs text-center mb-3">Swipe to compare &rarr;</p>
+      <div class="ladder-grid">
+        <!-- RUNG 1: FREE — the bait (Ch 1 "Free + Shipping" analogue) -->
+        <div class="ladder-card rounded-2xl border border-gray-700 bg-dark-900 p-5 md:p-6 text-center flex flex-col">
+          <span class="rung-num rung-1">1</span>
+          <p class="rung-label text-emerald-400"><span aria-hidden="true">📋</span> Discover</p>
+          <p class="text-xl font-bold text-white mb-1">Sunday Signal</p>
+          <p class="text-2xl font-extrabold text-white mb-1">Free</p>
+          <p class="text-gray-400 text-xs mb-4">5 names &middot; 90-second read &middot; forever</p>
+          <ul class="text-left text-gray-300 text-sm space-y-2 mb-5 flex-1">
+            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>5 startups accelerating on GitHub, every Sunday</span></li>
+            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>Plain-English note on each &mdash; never read code</span></li>
+            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>Unsubscribe in one click, keep every issue</span></li>
+          </ul>
+          <a href="#signup" onclick="if(window.posthog)posthog.capture('ladder_cta_clicked',{rung:1,tier:'free',placement:'value_ladder'})" class="btn btn-primary btn-md w-full">Get it free</a>
+        </div>
+
+        <!-- RUNG 2: €1 TWEET TEARDOWN — the micro-commitment between free and First Look -->
+        <div class="ladder-card rounded-2xl border border-gray-700 bg-dark-900 p-5 md:p-6 text-center flex flex-col">
+          <span class="rung-num rung-td">2</span>
+          <p class="rung-label" style="color:#fb7185"><span aria-hidden="true">🔍</span> Name a startup</p>
+          <p class="text-xl font-bold text-white mb-1">Tweet Teardown</p>
+          <p class="text-2xl font-extrabold text-white mb-1">&euro;1<span class="text-gray-400 text-sm font-normal"> once</span></p>
+          <p class="text-gray-400 text-xs mb-4">One named startup &middot; tweet-length &middot; 24h</p>
+          <ul class="text-left text-gray-300 text-sm space-y-2 mb-5 flex-1">
+            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span><strong class="text-white">One named startup</strong> &mdash; you pick it</span></li>
+            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>One tweet-length <strong class="text-white">GitHub-momentum teardown</strong></span></li>
+            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>24h delivery</span></li>
+            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span><strong class="text-white">&euro;1 credits</strong> toward First Look within 7 days</span></li>
+          </ul>
+          <a href="https://buy.stripe.com/bJe5kC48H2d2cEKg6s0x209" onclick="if(window.posthog)posthog.capture('ladder_cta_clicked',{rung:2,tier:'teardown',placement:'value_ladder'})" class="btn btn-secondary btn-md w-full">Get a Teardown &rarr;</a>
+        </div>
+
+        <!-- RUNG 3: TRIPWIRE / SLO (Ch 12) — the buyer-identity shift. €7 credited toward Dashboard. -->
+        <div class="ladder-card ladder-tripwire rounded-2xl border p-5 md:p-6 text-center flex flex-col">
+          <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-signal-500 text-dark-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider whitespace-nowrap"><span aria-hidden="true">⚡</span> First buyer step</span>
+          <span class="rung-num rung-2" style="margin-top:.5rem">3</span>
+          <p class="rung-label text-signal-400"><span aria-hidden="true">⚡</span> Test the signal</p>
+          <p class="text-xl font-bold text-white mb-1">First Look Pass</p>
+          <p class="text-2xl font-extrabold text-white mb-1">&euro;7<span class="text-gray-400 text-sm font-normal"> once</span></p>
+          <p class="text-gray-400 text-xs mb-4">One sector &middot; 24-hour deep dive &middot; one-time</p>
+          <ul class="text-left text-gray-300 text-sm space-y-2 mb-5 flex-1">
+            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>Full deep dive on <strong class="text-white">your sector</strong>, ranked shortlist in 24h</span></li>
+            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>Plain-English &mdash; you never touch code</span></li>
+            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span><strong class="text-white">&euro;7 credited</strong> toward Dashboard if you upgrade in 14 days</span></li>
+            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>Not useful? 30 days, email me, every cent back</span></li>
+          </ul>
+          <a href="/firstlook" onclick="if(window.posthog)posthog.capture('ladder_cta_clicked',{rung:3,tier:'firstlook',placement:'value_ladder'})" class="btn btn-cta btn-md w-full">Get my First Look &rarr;</a>
+        </div>
+
+        <!-- RUNG 4: CORE OFFER (Ch 1 "Core Offer") — Dashboard. The main subscription. -->
+        <div class="ladder-card ladder-core rounded-2xl border p-5 md:p-6 text-center flex flex-col">
+          <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand-500 text-dark-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Most popular</span>
+          <span class="rung-num rung-3" style="margin-top:.5rem">4</span>
+          <p class="rung-label text-brand-400"><span aria-hidden="true">🔭</span> Operate weekly</p>
+          <p class="text-xl font-bold text-white mb-1">Dashboard</p>
+          <p class="text-2xl font-extrabold text-white mb-1">&euro;49<span class="text-gray-400 text-sm font-normal">/mo</span></p>
+          <p class="text-gray-400 text-xs mb-4">Full ranked field &middot; 60+ startups across 20 sectors &middot; weekly re-rank</p>
+          <ul class="text-left text-gray-300 text-sm space-y-2 mb-5 flex-1">
+            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>60+ startups across 20 sectors, ranked by engineering acceleration</span></li>
+            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>Filter by sector, stage, geography</span></li>
+            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>Funding data &amp; team size enrichment</span></li>
+            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>CSV export + full history</span></li>
+          </ul>
+          <a href="/dashboard" onclick="if(window.posthog)posthog.capture('ladder_cta_clicked',{rung:4,tier:'dashboard',placement:'value_ladder'})" class="btn btn-primary btn-md w-full">Start Dashboard &rarr;</a>
+        </div>
+
+        <!-- RUNG 5: PROFIT MAXIMIZER (Ch 1 "Profit Maximizer") — Insider Circle -->
+        <div class="ladder-card rounded-2xl border p-5 md:p-6 text-center flex flex-col" style="border-color:rgba(168,85,247,.28);background:linear-gradient(180deg,rgba(30,16,45,.5),rgba(15,23,42,.9))">
+          <span class="rung-num rung-4">5</span>
+          <p class="rung-label" style="color:#c084fc"><span aria-hidden="true">🤝</span> Stay close</p>
+          <p class="text-xl font-bold text-white mb-1">Insider Circle</p>
+          <p class="text-2xl font-extrabold text-white mb-1">&euro;197<span class="text-gray-400 text-sm font-normal">/mo</span></p>
+          <p class="text-gray-400 text-xs mb-4">Private discussion &middot; monthly briefings &middot; ~50 seat cap</p>
+          <ul class="text-left text-gray-300 text-sm space-y-2 mb-5 flex-1">
+            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>Everything in Dashboard</span></li>
+            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>Private discussion with fellow first movers</span></li>
+            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>Monthly briefings and a steadier deal-flow rhythm</span></li>
+            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>~50 seats, kept deliberately small</span></li>
+          </ul>
+          <a href="/insider" onclick="if(window.posthog)posthog.capture('ladder_cta_clicked',{rung:5,tier:'insider',placement:'value_ladder'})" class="btn btn-secondary btn-md w-full">Join Insider</a>
+        </div>
+
+        <!-- RUNG 6: HIGH-TICKET BACKEND (Ch 1 "Return Path" / Ch 9 "Backend Funnel") — Sector Sweep -->
+        <div class="ladder-card ladder-apex rounded-2xl border p-5 md:p-6 text-center flex flex-col">
+          <span class="rung-num rung-5">6</span>
+          <p class="rung-label" style="color:#fbbf24"><span aria-hidden="true">🎯</span> Go custom</p>
+          <p class="text-xl font-bold text-white mb-1">Sector Sweep</p>
+          <p class="text-2xl font-extrabold text-white mb-1">&euro;1,997<span class="text-gray-400 text-sm font-normal"> once</span></p>
+          <p class="text-gray-400 text-xs mb-4">Custom thesis report &middot; private call &middot; one-time</p>
+          <ul class="text-left text-gray-300 text-sm space-y-2 mb-5 flex-1">
+            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>Full custom report on <strong class="text-white">your thesis</strong></span></li>
+            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>Private call with the Data Nerd</span></li>
+            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>Ranked shortlist + raw signal data</span></li>
+            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>For funds &amp; scouts running a live process</span></li>
+          </ul>
+          <a href="/sector-sweep" onclick="if(window.posthog)posthog.capture('ladder_cta_clicked',{rung:6,tier:'sector_sweep',placement:'value_ladder'})" class="btn btn-secondary btn-md w-full">Explore Sector Sweep</a>
+        </div>
+      </div>
+
+      <!-- BRUNSON ANCHOR NOTE (Ch 18 Value Stack principle) — the €1,997 rung makes €49/mo feel obvious -->
+      <div class="mt-6 max-w-3xl mx-auto text-center">
+        <p class="text-gray-400 text-sm leading-relaxed"><strong class="text-gray-300">How the ladder works:</strong> Start free &mdash; no card, ever. A &euro;1 Tweet Teardown tests the read on one named startup; First Look tests the signal on one sector for &euro;7 (14-day upgrade credit window toward Dashboard). Dashboard is the weekly operating layer. Insider adds private discussion and monthly briefings. Sector Sweep is the one-time custom report when you need a deeper answer than any feed can give. <strong class="text-white">Every paid rung is covered by the 30-day guarantee below.</strong></p>
+        <p class="text-gray-400 text-sm leading-relaxed mt-3">Founding cohort closed June 30 &mdash; exactly as promised. Members who moved keep &euro;9.97 for life. When I set the next deadline, you&apos;ll know I mean it.</p>
+      </div>
+
+      <!-- BRUNSON RISK REVERSAL (Ch 11) — guarantee on all paid tiers -->
+      <div class="mt-6 max-w-2xl mx-auto rounded-2xl border border-emerald-500/30 bg-emerald-500/5 p-6 md:p-8 text-center">
+        <div class="flex items-center justify-center gap-2 mb-3">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="text-emerald-400" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
+          <p class="text-emerald-300 text-xs font-bold uppercase tracking-wider">The Risk Is Mine, Not Yours</p>
+        </div>
+        <p class="text-gray-200 leading-relaxed text-base">Start on the free Sunday Signal &mdash; no card, ever. Every paid rung (Tweet Teardown, First Look, Dashboard, Insider, or Sector Sweep) carries the 30-day Signal-or-It&apos;s-Free guarantee: <strong class="text-white">any paid rung, 30 days, email me, every cent back. No forms, no survey.</strong> The risk is entirely on my side of the table.</p>
       </div>
     </section>
 
@@ -1227,7 +1220,7 @@
               <li>9. <strong class="text-white">Third Culture Software</strong> <span class="text-gray-400">&middot; Healthcare &middot; Series A/B</span></li>
               <li>10. <strong class="text-white">Lonero</strong> <span class="text-gray-400">&middot; Enterprise SaaS &middot; Seed</span></li>
             </ul>
-            <p class="text-gray-400 text-xs mt-5">Public and timestamped at <a href="https://signals.gitdealflow.com/predicted" target="_blank" rel="noopener" class="text-brand-500 underline">signals.gitdealflow.com/predicted</a>. Naming a company means its public building activity matched my pattern &mdash; not that it is raising. Not investment advice.</p>
+            <p class="text-gray-400 text-xs mt-5">Public and timestamped at <a href="https://signals.gitdealflow.com/predicted" target="_blank" rel="noopener" class="text-brand-500 underline">signals.gitdealflow.com/predicted<span class="sr-only"> (opens in a new tab)</span></a>. Naming a company means its public building activity matched my pattern &mdash; not that it is raising. Not investment advice.</p>
           </div>
           <p class="text-gray-300 text-center mt-4"><strong class="text-white">Subscribe and watch me be right or wrong, in real time.</strong></p>
         </div>
@@ -1241,13 +1234,13 @@
         <form id="signup-form" data-source="footer" class="js-signup-form max-w-lg mx-auto">
           <div class="mobile-cta-stack flex flex-col sm:flex-row gap-3">
             <label for="signup-email" class="sr-only">Email address</label>
-            <input type="email" id="signup-email" placeholder="you@example.com" required aria-label="Email address" inputmode="email" autocomplete="email" enterkeyhint="send" class="flex-1 px-5 py-4 rounded-lg bg-dark-800 border border-gray-600 text-gray-100 placeholder-gray-500 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 text-lg">
+            <input type="email" id="signup-email" placeholder="you@example.com" required aria-label="Email address" inputmode="email" autocomplete="email" enterkeyhint="send" class="flex-1 px-5 py-4 rounded-lg bg-dark-800 border border-gray-600 text-gray-100 placeholder-gray-400 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 text-lg">
             <button type="submit" id="signup-btn" class="btn btn-primary btn-lg w-full sm:w-auto">Get this Sunday&apos;s 5 names <span aria-hidden="true" class="btn-arrow">&rarr;</span></button>
           </div>
         </form>
         <p class="text-gray-400 text-sm mt-4 text-center">Drop your email and <strong class="text-white">check your inbox to confirm</strong> &mdash; then the five names land <strong class="text-white">this Sunday morning</strong>.</p>
         <p class="text-gray-400 text-sm mt-2 text-center">Read every Sunday by angels, scouts, and seed funds sourcing before the crowd.</p>
-        <p id="signup-msg" class="js-signup-msg text-center text-gray-400 text-sm mt-2">
+        <p id="signup-msg" role="status" class="js-signup-msg text-center text-gray-400 text-sm mt-2">
           <span class="text-emerald-400">✓</span> One email, every Sunday &nbsp; <span class="text-emerald-400">✓</span> Unsubscribe in one click &nbsp; <span class="text-emerald-400">✓</span> Keep every issue you got
         </p>
       </div>
@@ -1268,7 +1261,7 @@
             <span class="text-white font-semibold text-base md:text-lg">Where can I verify that this is real?</span>
             <span class="flex-shrink-0 text-signal-500 text-2xl leading-none transition-transform duration-200 group-open:rotate-45 accordion-plus" aria-hidden="true">+</span>
           </summary>
-          <div class="px-6 pb-5 text-gray-300 leading-relaxed">Scroll up to the &ldquo;Verify the claim in three clicks&rdquo; section: the methodology, the comparison, and a sample report all open there in a new tab, so you can check every number without losing your place here. That is enough to tell you whether the claim is real.</div>
+          <div class="px-6 pb-5 text-gray-300 leading-relaxed">Jump to the <a href="#verify" class="text-brand-500 underline">&ldquo;Verify the claim in three clicks&rdquo; section</a>: the methodology, the comparison, and a sample report all live there, so you can check every number without losing your place here. That is enough to tell you whether the claim is real.</div>
         </details>
         <details class="group rounded-xl border border-gray-700 bg-dark-800 hover:border-gray-600 transition">
           <summary class="cursor-pointer list-none flex items-start justify-between gap-4 px-6 py-5 select-none">
@@ -1284,16 +1277,16 @@
   <div id="exit-modal" class="hidden fixed inset-0 z-[70] items-center justify-center px-4" role="dialog" aria-modal="true" aria-labelledby="exit-title">
     <div id="exit-backdrop" class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
     <div class="relative w-full max-w-lg rounded-2xl border border-signal-500/40 bg-dark-900 p-6 md:p-8 shadow-2xl">
-      <button type="button" id="exit-close" aria-label="Close" class="absolute top-3 right-3 text-gray-500 hover:text-gray-200 text-2xl leading-none w-8 h-8 flex items-center justify-center">&times;</button>
+      <button type="button" id="exit-close" aria-label="Close" class="absolute top-3 right-3 text-gray-500 hover:text-gray-200 text-2xl leading-none w-11 h-11 flex items-center justify-center">&times;</button>
       <p class="text-signal-400 text-xs font-semibold uppercase tracking-wider mb-3">Before you go</p>
       <h2 id="exit-title" class="text-2xl md:text-3xl font-extrabold leading-tight mb-3">Let me send you this Sunday’s issue first.</h2>
       <p class="text-gray-300 leading-relaxed mb-5">One short Sunday email. Five names worth your attention. Unsubscribe in one click.</p>
       <form id="exit-form" class="flex flex-col gap-3">
         <label for="exit-email" class="sr-only">Email address</label>
-        <input type="email" id="exit-email" required inputmode="email" autocomplete="email" enterkeyhint="send" placeholder="you@example.com" class="w-full px-4 py-3 rounded-lg bg-dark-800 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-signal-500">
-        <button type="submit" id="exit-submit" class="w-full bg-signal-500 hover:bg-signal-400 text-white font-bold py-3 rounded-lg transition">Get this Sunday’s 5 names &rarr;</button>
+        <input type="email" id="exit-email" required inputmode="email" autocomplete="email" enterkeyhint="send" placeholder="you@example.com" class="w-full px-4 py-3 rounded-lg bg-dark-800 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:border-signal-500">
+        <button type="submit" id="exit-submit" class="w-full bg-signal-500 hover:bg-signal-400 text-dark-900 font-bold py-3 rounded-lg transition">Get this Sunday’s 5 names &rarr;</button>
       </form>
-      <p id="exit-msg" class="text-gray-400 text-xs text-center mt-3">One email a week · unsubscribe anytime</p>
+      <p id="exit-msg" role="status" class="text-gray-400 text-xs text-center mt-3">One email a week · unsubscribe anytime</p>
     </div>
   </div>
 
@@ -1301,42 +1294,45 @@
     <div class="mobile-section-pad max-w-5xl mx-auto px-4 sm:px-6 text-center">
       <p class="text-gray-300 mb-2 font-semibold">GitDealFlow is a deal-flow signal tool for investors — not a fund. It reads startups&apos; public GitHub engineering activity to flag the ones accelerating early.</p>
       <div class="flex flex-wrap justify-center gap-6 text-gray-400 text-sm mb-5">
-        <a href="/cheatsheet" class="hover:text-gray-300">Free cheat sheet</a>
-        <a href="/perfect-webinar" class="hover:text-gray-300">Walkthrough</a>
-        <a href="/dream-100" class="hover:text-gray-300">Dream 100</a>
-        <a href="/partners" class="hover:text-gray-300">Partners</a>
-        <a href="/content-strategy" class="hover:text-gray-300">Content Strategy</a>
-        <a href="/privacy" class="hover:text-gray-300">Privacy</a>
-        <a href="/terms" class="hover:text-gray-300">Terms</a>
+        <a href="/pricing" class="py-2 inline-block hover:text-gray-300">Pricing</a>
+        <a href="/firstlook" class="py-2 inline-block hover:text-gray-300">First Look</a>
+        <a href="/dashboard" class="py-2 inline-block hover:text-gray-300">Dashboard</a>
+        <a href="/insider" class="py-2 inline-block hover:text-gray-300">Insider</a>
+        <a href="/sector-sweep" class="py-2 inline-block hover:text-gray-300">Sector Sweep</a>
+        <a href="/cheatsheet" class="py-2 inline-block hover:text-gray-300">Free cheat sheet</a>
+        <a href="/perfect-webinar" class="py-2 inline-block hover:text-gray-300">Walkthrough</a>
+        <a href="/partners" class="py-2 inline-block hover:text-gray-300">Partners</a>
+        <a href="/privacy" class="py-2 inline-block hover:text-gray-300">Privacy</a>
+        <a href="/terms" class="py-2 inline-block hover:text-gray-300">Terms</a>
       </div>
       <!-- CONGREGATION BAR (moved from hero) — where the first movers already gather -->
       <div class="mb-5">
         <p class="text-gray-400 text-xs font-semibold uppercase tracking-wider text-center mb-3">Where the first movers already gather</p>
         <div class="flex flex-wrap items-center justify-center gap-3">
-          <a href="https://t.me/gitdealflow" rel="me" class="inline-flex items-center gap-2 rounded-lg border border-gray-700 bg-dark-800/80 px-3.5 py-2 text-sm text-gray-300 hover:border-signal-500/50 hover:text-white transition" onclick="if(window.posthog)posthog.capture('congregation_click',{platform:'telegram'})">
+          <a href="https://t.me/gitdealflow" rel="me" class="inline-flex items-center gap-2 rounded-lg border border-gray-700 bg-dark-800/80 px-3.5 py-2.5 min-h-[44px] text-sm text-gray-300 hover:border-signal-500/50 hover:text-white transition" onclick="if(window.posthog)posthog.capture('congregation_click',{platform:'telegram'})">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.329-.913.489-1.302.481-.428-.009-1.252-.242-1.865-.442-.751-.244-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
             Telegram channel
           </a>
-          <a href="https://x.com/data_nerd" rel="me" class="inline-flex items-center gap-2 rounded-lg border border-gray-700 bg-dark-800/80 px-3.5 py-2 text-sm text-gray-300 hover:border-signal-500/50 hover:text-white transition" onclick="if(window.posthog)posthog.capture('congregation_click',{platform:'x'})">
+          <a href="https://x.com/data_nerd" rel="me" class="inline-flex items-center gap-2 rounded-lg border border-gray-700 bg-dark-800/80 px-3.5 py-2.5 min-h-[44px] text-sm text-gray-300 hover:border-signal-500/50 hover:text-white transition" onclick="if(window.posthog)posthog.capture('congregation_click',{platform:'x'})">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
             X / Twitter
           </a>
-          <a href="https://github.com/kindrat86" rel="me" class="inline-flex items-center gap-2 rounded-lg border border-gray-700 bg-dark-800/80 px-3.5 py-2 text-sm text-gray-300 hover:border-signal-500/50 hover:text-white transition" onclick="if(window.posthog)posthog.capture('congregation_click',{platform:'github'})">
+          <a href="https://github.com/kindrat86" rel="me" class="inline-flex items-center gap-2 rounded-lg border border-gray-700 bg-dark-800/80 px-3.5 py-2.5 min-h-[44px] text-sm text-gray-300 hover:border-signal-500/50 hover:text-white transition" onclick="if(window.posthog)posthog.capture('congregation_click',{platform:'github'})">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
             GitHub
           </a>
-          <a href="https://signals.gitdealflow.com/feed.xml" class="inline-flex items-center gap-2 rounded-lg border border-gray-700 bg-dark-800/80 px-3.5 py-2 text-sm text-gray-300 hover:border-signal-500/50 hover:text-white transition" onclick="if(window.posthog)posthog.capture('congregation_click',{platform:'rss'})">
+          <a href="https://signals.gitdealflow.com/feed.xml" class="inline-flex items-center gap-2 rounded-lg border border-gray-700 bg-dark-800/80 px-3.5 py-2.5 min-h-[44px] text-sm text-gray-300 hover:border-signal-500/50 hover:text-white transition" onclick="if(window.posthog)posthog.capture('congregation_click',{platform:'rss'})">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.199 24C19.199 13.467 10.533 4.8 0 4.8V0c13.165 0 24 10.835 24 24h-4.801zM3.291 17.415c1.814 0 3.293 1.479 3.293 3.295 0 1.813-1.485 3.29-3.301 3.29C1.47 24 0 22.526 0 20.71s1.475-3.294 3.291-3.295zM15.909 24h-4.665c0-6.169-5.075-11.245-11.244-11.245V8.09c8.727 0 15.909 7.184 15.909 15.91z"/></svg>
             RSS digest
           </a>
         </div>
         <p class="text-gray-400 text-xs text-center mt-2">No algorithm, no feed games. The Sunday email is the primary signal &mdash; the rest is where the conversation happens.</p>
       </div>
-      <p class="text-gray-600 text-xs">&copy; 2026 GitDealFlow. Proof surfaces live on signals.gitdealflow.com.</p>
+      <p class="text-gray-400 text-xs">&copy; 2026 GitDealFlow. Proof surfaces live on signals.gitdealflow.com.</p>
     </div>
   </footer>
 
-  <div class="mobile-sticky-cta" aria-hidden="false">
+  <div class="mobile-sticky-cta" inert>
     <div class="inner">
       <div class="meta">
         <strong>Get this Sunday&apos;s 5 names</strong>
@@ -1421,6 +1417,22 @@
       });
     });
 
+    // Brunson Ch 17 — role picker: capture the selection, then take the visitor
+    // straight to the hero signup form so the pick leads to an action.
+    document.querySelectorAll('input[name="qual_question"]').forEach(function (radio) {
+      radio.addEventListener('change', function () {
+        if (!radio.checked) return;
+        if (window.posthog) posthog.capture('qual_selected', { role: radio.value });
+        var emailEl = document.getElementById('hero-email');
+        if (emailEl) {
+          try { emailEl.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (e) {}
+          setTimeout(function () {
+            try { emailEl.focus({ preventScroll: true }); } catch (e) { try { emailEl.focus(); } catch (_) {} }
+          }, 350);
+        }
+      });
+    });
+
     (function(){
       const modal = document.getElementById('exit-modal');
       const closeBtn = document.getElementById('exit-close');
@@ -1436,9 +1448,11 @@
         if (ts && Date.now() - parseInt(ts, 10) < 7 * 24 * 60 * 60 * 1000) shown = true;
       } catch (e) {}
       var prevOverflow = '';
+      var lastFocus = null;
       function openModal() {
         if (shown) return;
         shown = true;
+        lastFocus = document.activeElement;
         modal.classList.remove('hidden');
         modal.classList.add('flex');
         prevOverflow = document.body.style.overflow;
@@ -1451,6 +1465,7 @@
         modal.classList.add('hidden');
         modal.classList.remove('flex');
         document.body.style.overflow = prevOverflow; // restore scroll
+        lastFocus && lastFocus.focus && lastFocus.focus();
       }
       document.addEventListener('keydown', function (e) {
         if (modal.classList.contains('hidden')) return;
@@ -1487,7 +1502,7 @@
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(Object.assign({
               email: email,
-              quiz_route: 'F',
+              quiz_route: document.querySelector('input[name="qual_question"]:checked')?.value || 'F',
               quiz_route_label: 'Free Acceleration Watch'
             }, attr))
           });
@@ -1531,11 +1546,13 @@
       var bar = document.querySelector('.mobile-sticky-cta');
       var heroForm = document.querySelector('form.js-signup-form[data-source="hero"]');
       if (!bar) return;
-      if (!heroForm) { bar.classList.add('is-visible'); return; }
+      if (!heroForm) { bar.classList.add('is-visible'); bar.removeAttribute('inert'); return; }
       var ticking = false;
       function update() {
         ticking = false;
-        bar.classList.toggle('is-visible', heroForm.getBoundingClientRect().bottom < 8);
+        var visible = heroForm.getBoundingClientRect().bottom < 8;
+        bar.classList.toggle('is-visible', visible);
+        bar.toggleAttribute('inert', !visible);
       }
       function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
       window.addEventListener('scroll', onScroll, { passive: true });
@@ -1616,7 +1633,7 @@
           '<span style="flex:0 0 auto;width:8px;height:8px;border-radius:50%;background:#34d399;box-shadow:0 0 0 4px rgba(52,211,153,.18);margin-top:5px"></span>' +
           '<span style="flex:1 1 auto"><span style="color:#fff;font-weight:700">An investor from ' + place + '</span> signed up for the Sunday email' +
           '<span style="display:block;color:#94a3b8;font-size:12px;margin-top:2px">' + esc(s.ago) + ' &middot; verified GitHub-signal readers</span></span>' +
-          '<button aria-label="Dismiss" style="flex:0 0 auto;background:none;border:0;color:#64748b;font-size:18px;line-height:1;cursor:pointer;padding:0 2px">&times;</button>';
+          '<button aria-label="Dismiss" style="flex:0 0 auto;background:none;border:0;color:#64748b;font-size:18px;line-height:1;cursor:pointer;padding:10px 12px;margin:-10px -12px 0 0">&times;</button>';
         el.querySelector('button').addEventListener('click', function () { hide(el); window.__proofStop = true; });
       }
 
@@ -1653,6 +1670,11 @@
       if ('requestIdleCallback' in window) requestIdleCallback(load, { timeout: 4000 });
       else setTimeout(load, 3000);
     })();
+  </script>
+  <script>
+(function(){var t=document.querySelector('[data-nav-toggle]'),p=document.getElementById('mobile-nav');if(!t||!p)return;function set(o){t.setAttribute('aria-expanded',String(o));t.setAttribute('aria-label',o?'Close menu':'Open menu');p.hidden=!o;}
+t.addEventListener('click',function(){set(t.getAttribute('aria-expanded')!=='true');});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&t.getAttribute('aria-expanded')==='true'){set(false);t.focus();}});})();
   </script>
 </body>
 </html>

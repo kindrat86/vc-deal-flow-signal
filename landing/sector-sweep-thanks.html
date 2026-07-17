@@ -10,6 +10,8 @@
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta name="theme-color" content="#0f172a">
+  <meta name="color-scheme" content="dark">
   <link rel="stylesheet" href="/styles.css">
   <style>
     .mobile-cta-stack > * { width: 100%; }
@@ -76,6 +78,7 @@
 <!-- Traffic-Readiness JSON-LD org+website schema -->
 </head>
 <body class="bg-dark-900 text-gray-100 font-sans antialiased">
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[60] focus:px-4 focus:py-2 focus:bg-dark-800 focus:text-white focus:rounded-lg">Skip to main content</a>
   <header class="sticky top-0 z-50 border-b border-gray-800 bg-dark-900/95 backdrop-blur">
     <div class="mobile-compact-header max-w-5xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-3">
       <a href="/" class="font-semibold tracking-tight text-white text-lg">GitDealFlow</a>
@@ -83,7 +86,7 @@
     </div>
   </header>
 
-  <main class="mobile-main-pad max-w-4xl mx-auto px-4 sm:px-6 py-14 sm:py-24">
+  <main id="main-content" class="mobile-main-pad max-w-4xl mx-auto px-4 sm:px-6 py-14 sm:py-24">
     <section class="text-center mb-12 mobile-section-pad">
       <p class="text-yellow-300 text-xs font-semibold uppercase tracking-wider mb-3">Payment confirmed</p>
       <h1 class="text-4xl sm:text-5xl font-bold tracking-tight mb-6">Your slot is reserved.</h1>

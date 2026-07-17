@@ -82,8 +82,8 @@
     .mobile-cta-stack > * { width: 100%; }
     .mobile-sticky-cta { display: none; }
     @media (min-width: 640px) { .mobile-cta-stack > * { width: auto; } }
+    html { scroll-padding-top: 5rem; }
     @media (max-width: 639px) {
-      html { scroll-padding-top: 5rem; }
       body { padding-bottom: 6rem; }
       .mobile-compact-header { padding-top: 0.75rem; padding-bottom: 0.75rem; }
       .mobile-hero-wrap { padding-left: 1rem; padding-right: 1rem; padding-top: 4rem; padding-bottom: 4rem; }
@@ -151,7 +151,7 @@
     .radio-card .rc-label { font-weight: 600; color: #f1f5f9; font-size: 0.95rem; }
     .radio-card .rc-desc { color: #94a3b8; font-size: 0.85rem; margin-top: 0.15rem; }
 
-    .form-hint { color: #64748b; font-size: 0.8rem; margin-top: 0.35rem; }
+    .form-hint { color: #94a3b8; font-size: 0.8rem; margin-top: 0.35rem; }
 
     /* Value stack on the review step */
     .value-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; padding: 0.6rem 0; border-bottom: 1px solid rgba(148,163,184,0.08); }
@@ -160,7 +160,7 @@
     .value-row .vr-price { color: #94a3b8; font-size: 0.9rem; white-space: nowrap; }
     .value-total { display: flex; justify-content: space-between; align-items: baseline; padding-top: 1rem; margin-top: 0.5rem; border-top: 2px solid rgba(148,163,184,0.15); }
     .value-total .vt-label { color: #94a3b8; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; }
-    .value-total .vt-amount { color: #64748b; font-size: 1.1rem; text-decoration: line-through; }
+    .value-total .vt-amount { color: #94a3b8; font-size: 1.1rem; text-decoration: line-through; }
     .value-price { display: flex; justify-content: space-between; align-items: baseline; padding-top: 0.5rem; }
     .value-price .vp-label { color: var(--gold); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; }
     .value-price .vp-amount { color: #fff; font-size: 1.75rem; font-weight: 800; }
@@ -177,19 +177,36 @@
   </style>
 </head>
 <body class="bg-dark-900 text-gray-100 font-sans antialiased">
-  <header class="sticky top-0 z-50 border-b border-gray-800 bg-dark-900/95 backdrop-blur">
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[60] focus:px-4 focus:py-2 focus:bg-dark-800 focus:text-white focus:rounded-lg">Skip to main content</a>
+  <header class="relative sticky top-0 z-50 border-b border-gray-800 bg-dark-900/95 backdrop-blur">
     <div class="mobile-compact-header max-w-5xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-3">
       <a href="/" class="font-semibold tracking-tight text-white text-lg">GitDealFlow</a>
-      <nav class="hidden md:flex items-center gap-6">
-        <a href="/" class="text-gray-400 text-sm hover:text-gray-100 transition">Home</a>
-        <a href="/sector-sweep" class="text-gray-400 text-sm hover:text-gray-100 transition">Sector Sweep</a>
-        <a href="/dashboard" class="text-gray-400 text-sm hover:text-gray-100 transition">Dashboard</a>
+      <nav aria-label="Primary navigation" class="hidden md:flex items-center gap-5 text-sm font-medium text-gray-300">
+        <a href="/" class="hover:text-white transition-colors">Home</a>
+        <a href="https://signals.gitdealflow.com" class="hover:text-white transition-colors">Signals</a>
+        <a href="/firstlook" class="hover:text-white transition-colors">First Look</a>
+        <a href="/dashboard" class="hover:text-white transition-colors">Dashboard</a>
+        <a href="/insider" class="hover:text-white transition-colors">Insider</a>
+        <a href="/pricing" class="hover:text-white transition-colors">Pricing</a>
       </nav>
       <a href="/sector-sweep" class="text-gray-400 text-sm hover:text-gray-100 transition shrink-0">Back to Sweep</a>
+      <button type="button" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu" class="md:hidden inline-flex items-center justify-center w-11 h-11 shrink-0 rounded-lg text-gray-300 hover:text-white ring-1 ring-white/10 transition-colors">
+        <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+    <div id="mobile-nav" hidden class="md:hidden absolute top-full inset-x-0 z-50 border-b border-white/10 bg-dark-900 shadow-2xl">
+      <nav aria-label="Mobile navigation" class="flex flex-col px-4 py-2">
+        <a href="/" class="py-3 min-h-[44px] flex items-center border-b border-white/5 text-gray-200 hover:text-white">Home</a>
+        <a href="https://signals.gitdealflow.com" class="py-3 min-h-[44px] flex items-center border-b border-white/5 text-gray-200 hover:text-white">Signals</a>
+        <a href="/firstlook" class="py-3 min-h-[44px] flex items-center border-b border-white/5 text-gray-200 hover:text-white">First Look</a>
+        <a href="/dashboard" class="py-3 min-h-[44px] flex items-center border-b border-white/5 text-gray-200 hover:text-white">Dashboard</a>
+        <a href="/insider" class="py-3 min-h-[44px] flex items-center border-b border-white/5 text-gray-200 hover:text-white">Insider</a>
+        <a href="/pricing" class="py-3 min-h-[44px] flex items-center text-gray-200 hover:text-white">Pricing</a>
+      </nav>
     </div>
   </header>
 
-  <main class="mobile-main-pad max-w-3xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
+  <main id="main-content" class="mobile-main-pad max-w-3xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
     <!-- Header -->
     <section class="text-center mb-10">
       <p class="text-yellow-300 font-semibold text-sm uppercase tracking-wider mb-3">Application — Sector Sweep</p>
@@ -208,7 +225,7 @@
     </div>
 
     <!-- ============ MULTI-STEP APPLICATION FORM ============ -->
-    <form id="apply-form" class="rounded-3xl border border-gray-700 bg-dark-800/70 p-6 sm:p-10">
+    <form id="apply-form" novalidate class="rounded-3xl border border-gray-700 bg-dark-800/70 p-6 sm:p-10">
 
       <!-- ===== STEP 1: Who you are + what you're looking for ===== -->
       <div class="step-panel active" data-panel="1">
@@ -222,12 +239,12 @@
           </div>
 
           <div>
-            <label class="form-label" for="f-email">Email <span class="text-gray-500 font-normal">(I reply to this within 24h)</span></label>
-            <input type="email" id="f-email" name="email" class="form-input" placeholder="jane@fund.com" autocomplete="email" inputmode="email" required>
+            <label class="form-label" for="f-email">Email <span class="text-gray-400 font-normal">(I reply to this within 24h)</span></label>
+            <input type="email" id="f-email" name="email" class="form-input" placeholder="jane@fund.com" autocomplete="email" inputmode="email" enterkeyhint="next" required>
           </div>
 
-          <div>
-            <label class="form-label">Which best describes you?</label>
+          <fieldset>
+            <legend class="form-label">Which best describes you?</legend>
             <div class="radio-group" id="role-group">
               <label class="radio-card">
                 <input type="radio" name="role" value="angel" required>
@@ -250,7 +267,8 @@
                 <div><div class="rc-label">Family office</div><div class="rc-desc">Direct investing from a family office</div></div>
               </label>
             </div>
-          </div>
+            <p id="role-error" hidden class="text-red-400 text-sm mt-2" role="alert">Please select one option to continue.</p>
+          </fieldset>
 
           <div class="flex justify-end pt-2">
             <button type="button" class="btn btn-cta btn-lg" onclick="nextStep(1)">Continue &rarr;</button>
@@ -283,7 +301,7 @@
           </div>
 
           <div>
-            <label class="form-label" for="f-geo">Geography focus <span class="text-gray-500 font-normal">(optional)</span></label>
+            <label class="form-label" for="f-geo">Geography focus <span class="text-gray-400 font-normal">(optional)</span></label>
             <input type="text" id="f-geo" name="geography" class="form-input" placeholder="e.g. EU, US, LatAm, global">
           </div>
 
@@ -294,7 +312,7 @@
           </div>
 
           <div>
-            <label class="form-label" for="f-check-size">Typical check size <span class="text-gray-500 font-normal">(helps me calibrate the pass)</span></label>
+            <label class="form-label" for="f-check-size">Typical check size <span class="text-gray-400 font-normal">(helps me calibrate the pass)</span></label>
             <select id="f-check-size" name="check_size" class="form-select">
               <option value="">Select&hellip;</option>
               <option value="25-100k">$25K&ndash;$100K</option>
@@ -357,7 +375,7 @@
           <button type="button" class="btn btn-secondary btn-lg" onclick="prevStep(3)">&larr; Back</button>
           <button type="submit" class="btn btn-primary btn-lg"><span>Submit application</span><span aria-hidden="true" class="btn-arrow">&rarr;</span></button>
         </div>
-        <p class="text-gray-500 text-sm text-center mt-4">I reply within 24 hours. No card required to apply.</p>
+        <p class="text-gray-400 text-sm text-center mt-4">I reply within 24 hours. No card required to apply.</p>
         <p id="apply-fallback-msg" class="hidden text-yellow-300 text-sm text-center mt-4 leading-relaxed" role="alert"></p>
       </div>
     </form>
@@ -394,7 +412,7 @@
           <input type="email" id="inline-email" required inputmode="email" autocomplete="email" placeholder="you@example.com" class="form-input flex-1">
           <button type="submit" class="btn btn-primary btn-md w-full sm:w-auto">Get this Sunday&rsquo;s 5 names &rarr;</button>
         </form>
-        <p class="gdf-inline-msg text-gray-500 text-xs mt-3">One email a week · unsubscribe anytime</p>
+        <p class="gdf-inline-msg text-gray-400 text-xs mt-3" role="status">One email a week · unsubscribe anytime</p>
       </div>
     </section>
   </main>
@@ -413,7 +431,7 @@
   <div id="exit-modal" class="hidden fixed inset-0 z-[70] items-center justify-center px-4" role="dialog" aria-modal="true" aria-labelledby="exit-title">
     <div id="exit-backdrop" class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
     <div class="relative w-full max-w-lg rounded-2xl border border-signal-500/40 bg-dark-900 p-6 md:p-8 shadow-2xl">
-      <button type="button" id="exit-close" aria-label="Close" class="absolute top-3 right-3 text-gray-500 hover:text-gray-200 text-2xl leading-none w-8 h-8 flex items-center justify-center">&times;</button>
+      <button type="button" id="exit-close" aria-label="Close" class="absolute top-3 right-3 text-gray-500 hover:text-gray-200 text-2xl leading-none w-11 h-11 flex items-center justify-center">&times;</button>
       <p class="text-signal-400 text-xs font-semibold uppercase tracking-wider mb-3">Before you go</p>
       <h2 id="exit-title" class="text-2xl md:text-3xl font-extrabold leading-tight mb-3">Thesis not ready? Keep the signal warm.</h2>
       <p class="text-gray-300 leading-relaxed mb-5">The application will still be here. Meanwhile the free Sunday email gives you five accelerating startups a week, in plain English &mdash; a low-stakes way to watch the methodology work.</p>
@@ -421,21 +439,21 @@
         <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;height:0;width:0;opacity:0">
         <label for="exit-email" class="sr-only">Email address</label>
         <input type="email" id="exit-email" required inputmode="email" autocomplete="email" placeholder="you@example.com" class="form-input w-full">
-        <button type="submit" id="exit-submit" class="w-full bg-signal-500 hover:bg-signal-400 text-white font-bold py-3 rounded-lg transition">Get this Sunday&rsquo;s 5 names &rarr;</button>
+        <button type="submit" id="exit-submit" class="w-full bg-signal-500 hover:bg-signal-400 text-dark-900 font-bold py-3 rounded-lg transition">Get this Sunday&rsquo;s 5 names &rarr;</button>
       </form>
-      <p id="exit-msg" class="text-gray-500 text-xs text-center mt-3">One email a week · unsubscribe anytime</p>
+      <p id="exit-msg" class="text-gray-400 text-xs text-center mt-3" role="status">One email a week · unsubscribe anytime</p>
     </div>
   </div>
 
   <footer class="border-t border-gray-800 bg-dark-900/80 py-12 mt-8">
     <div class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 text-center">
-      <div class="flex flex-wrap justify-center gap-6 text-gray-500 text-sm mb-4">
+      <div class="flex flex-wrap justify-center gap-6 text-gray-400 text-sm mb-4">
         <a href="/" class="hover:text-gray-300">Home</a>
         <a href="/sector-sweep" class="hover:text-gray-300">Sector Sweep</a>
         <a href="/dashboard" class="hover:text-gray-300">Dashboard</a>
         <a href="/privacy" class="hover:text-gray-300">Privacy</a>
       </div>
-      <p class="text-gray-600 text-xs">GitDealFlow &middot; Sector Sweep Application</p>
+      <p class="text-gray-400 text-xs">GitDealFlow &middot; Sector Sweep Application</p>
     </div>
   </footer>
 
@@ -461,30 +479,71 @@
       updateProgress(step);
       // Scroll to form top on step change
       document.getElementById('apply-form').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // Move focus to the new step's heading so screen readers announce it
+      var heading = document.querySelector('[data-panel="' + step + '"] h2');
+      if (heading) {
+        heading.setAttribute('tabindex', '-1');
+        try { heading.focus({ preventScroll: true }); } catch (e) { heading.focus(); }
+      }
+    }
+
+    function setFieldError(field, message) {
+      var errId = (field.id || field.name) + '-error';
+      var el = document.getElementById(errId);
+      if (message) {
+        field.setAttribute('aria-invalid', 'true');
+        field.setAttribute('aria-describedby', errId);
+        if (!el) {
+          el = document.createElement('p');
+          el.id = errId;
+          el.className = 'text-red-400 text-sm mt-2';
+          el.setAttribute('role', 'alert');
+          field.insertAdjacentElement('afterend', el);
+        }
+        el.textContent = message;
+        el.hidden = false;
+      } else {
+        field.removeAttribute('aria-invalid');
+        if (el) el.hidden = true;
+      }
     }
 
     function validateStep(step) {
       var panel = document.querySelector('[data-panel="' + step + '"]');
+      var ok = true;
+      var firstBad = null;
       var required = panel.querySelectorAll('[required]');
       for (var i = 0; i < required.length; i++) {
-        if (!required[i].value || !required[i].value.trim()) {
-          required[i].focus();
-          required[i].style.borderColor = 'rgba(239, 68, 68, 0.6)';
-          return false;
+        var field = required[i];
+        if (field.type === 'radio') continue; // handled as a group below
+        var empty = !field.value || !field.value.trim();
+        var badEmail = !empty && field.type === 'email' && field.checkValidity && !field.checkValidity();
+        if (empty || badEmail) {
+          field.style.borderColor = 'rgba(239, 68, 68, 0.6)';
+          setFieldError(field, empty ? 'This field is required.' : 'Please enter a valid email address.');
+          if (!firstBad) firstBad = field;
+          ok = false;
+        } else {
+          field.style.borderColor = '';
+          setFieldError(field, '');
         }
-        required[i].style.borderColor = '';
       }
       // Validate radio groups
       var radios = panel.querySelectorAll('input[type="radio"][required]');
       if (radios.length) {
         var name = radios[0].name;
         var checked = panel.querySelector('input[name="' + name + '"]:checked');
+        var roleError = document.getElementById('role-error');
         if (!checked) {
-          alert('Please select one option to continue.');
-          return false;
+          if (roleError) roleError.hidden = false;
+          if (!firstBad) firstBad = radios[0];
+          ok = false;
+        } else if (roleError) {
+          roleError.hidden = true;
         }
       }
-      return true;
+      if (firstBad) firstBad.focus();
+      return ok;
     }
 
     function nextStep(from) {
@@ -507,7 +566,17 @@
       radio.addEventListener('change', function() {
         document.querySelectorAll('.radio-card').forEach(function(c) { c.classList.remove('selected'); });
         this.closest('.radio-card').classList.add('selected');
+        var roleError = document.getElementById('role-error');
+        if (roleError) roleError.hidden = true;
       });
+    });
+
+    /* Enter should advance the step, not submit the whole form early */
+    document.getElementById('apply-form').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' && e.target && e.target.tagName !== 'TEXTAREA' && currentStep < 3) {
+        e.preventDefault();
+        nextStep(currentStep);
+      }
     });
 
     /* Form submission — sends to the checkout API's application endpoint,
@@ -515,6 +584,9 @@
        so we build a mailto fallback that carries all fields. */
     document.getElementById('apply-form').addEventListener('submit', function(e) {
       e.preventDefault();
+      // Re-validate earlier steps before sending (novalidate disables native checks)
+      if (!validateStep(1)) { currentStep = 1; showPanel(1); return; }
+      if (!validateStep(2)) { currentStep = 2; showPanel(2); return; }
       var name = document.getElementById('f-name').value.trim();
       var email = document.getElementById('f-email').value.trim();
       var role = document.querySelector('input[name="role"]:checked') ? document.querySelector('input[name="role"]:checked').value : '';
@@ -632,12 +704,14 @@
         var ts = localStorage.getItem('gd_exit_seen_at');
         if (ts && Date.now() - parseInt(ts, 10) < 7 * 24 * 60 * 60 * 1000) shown = true;
       } catch (e) {}
+      var prevFocus = null;
       function openModal() {
         if (shown) return;
         // Don't interrupt someone who just submitted an application.
         var success = document.getElementById('apply-success');
         if (success && !success.classList.contains('hidden')) return;
         shown = true;
+        prevFocus = document.activeElement;
         modal.classList.remove('hidden');
         modal.classList.add('flex');
         document.body.style.overflow = 'hidden';
@@ -649,9 +723,23 @@
         modal.classList.add('hidden');
         modal.classList.remove('flex');
         document.body.style.overflow = '';
+        if (prevFocus && prevFocus.focus) { try { prevFocus.focus(); } catch (e) {} }
       }
       document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
+        if (modal.classList.contains('hidden')) return;
+        if (e.key === 'Escape') { closeModal(); return; }
+        if (e.key === 'Tab') {
+          // Simple focus trap: keep Tab cycling inside the modal while open
+          var focusables = modal.querySelectorAll('button, input, [href]');
+          if (!focusables.length) return;
+          var first = focusables[0];
+          var last = focusables[focusables.length - 1];
+          if (e.shiftKey && (document.activeElement === first || !modal.contains(document.activeElement))) {
+            e.preventDefault(); last.focus();
+          } else if (!e.shiftKey && (document.activeElement === last || !modal.contains(document.activeElement))) {
+            e.preventDefault(); first.focus();
+          }
+        }
       });
       document.addEventListener('mouseout', function (e) {
         if (shown) return;
@@ -688,6 +776,12 @@
       function _init(){ if(/^https?:$/.test(location.protocol)) posthog.init('phc_lyZCgvTpicjLzAO3rY2GhxuX5WUc5jQjP8ZVwwJqauX', {api_host: 'https://eu.i.posthog.com', persistence: 'memory', person_profiles: 'identified_only'}); }
       if('requestIdleCallback' in window){requestIdleCallback(_init,{timeout:2500});} else {setTimeout(_init,2000);}
     })();
+  </script>
+
+  <script>
+(function(){var t=document.querySelector('[data-nav-toggle]'),p=document.getElementById('mobile-nav');if(!t||!p)return;function set(o){t.setAttribute('aria-expanded',String(o));t.setAttribute('aria-label',o?'Close menu':'Open menu');p.hidden=!o;}
+t.addEventListener('click',function(){set(t.getAttribute('aria-expanded')!=='true');});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&t.getAttribute('aria-expanded')==='true'){set(false);t.focus();}});})();
   </script>
 </body>
 </html>
