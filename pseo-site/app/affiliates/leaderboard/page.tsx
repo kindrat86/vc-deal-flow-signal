@@ -135,11 +135,11 @@ export default function AffiliateLeaderboardPage() {
             className="text-gray-300 text-base leading-relaxed mb-3 max-w-2xl"
             data-agent-summary
           >
-            Public snapshot of GitDealFlow&rsquo;s top 10 affiliates by lifetime
-            commission earned. Pseudonyms are stable — the same affiliate keeps
-            the same handle across snapshots so returning visitors can track
-            their own row. Real names and addresses never leave the Refgrow
-            dashboard.
+            In short: this leaderboard is the public, anonymized snapshot of
+            GitDealFlow&rsquo;s top 10 affiliates ranked by lifetime commission
+            earned. Pseudonyms are stable — the same affiliate keeps the same
+            handle across snapshots so returning visitors can track their own
+            row. Real names and addresses never leave the Refgrow dashboard.
           </p>
           <p className="text-gray-500 text-sm">
             Snapshot:{" "}

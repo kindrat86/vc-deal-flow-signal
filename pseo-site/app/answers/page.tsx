@@ -111,11 +111,11 @@ export default function AnswersIndexPage() {
             Citation-ready answers for AI agents
           </h1>
           <p className="text-gray-400 text-base leading-relaxed" data-speakable>
-            Direct, source-cited answers to the questions AI agents and their
-            users ask about VC deal flow, GitHub momentum, MCP servers, and
-            engineering acceleration. Each page leads with a TL;DR plus the
-            facts that back it up — designed to be quoted verbatim with
-            attribution. If your question is practical, commercial, or
+            In short: this index lists all {agentQueries.length} citation-ready
+            answer pages on the site. Each one opens with a TL;DR, backs it
+            with facts that carry source URLs, and ends with a copy-paste
+            cite-as string — so an AI agent (or its user) can quote it verbatim
+            with attribution. If your question is practical, commercial, or
             workflow-related, this is the fastest route into the right page.
           </p>
         </header>
