@@ -48,6 +48,9 @@ export default function SectorIntent({
   const [sector, setSector] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
+  // Honeypot — hidden from humans; bots that fill it get a silent fake
+  // success from the API (mirrors the subscribe form's "website" field).
+  const [website, setWebsite] = useState("");
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -66,7 +69,7 @@ export default function SectorIntent({
       const res = await fetch("/api/firstlook/intent", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, sector, source }),
+        body: JSON.stringify({ email, sector, source, website }),
       });
       const data = await res.json();
       if (!res.ok || !data.ok) {
@@ -191,6 +194,20 @@ export default function SectorIntent({
               field at Stripe lets you note the cross-sector cut and we
               pivot the report accordingly.
             </p>
+          </div>
+
+          {/* Honeypot — hidden from humans, bots fill it and get ignored */}
+          <div className="hidden" aria-hidden="true">
+            <label htmlFor="firstlook-intent-website">Website</label>
+            <input
+              id="firstlook-intent-website"
+              name="website"
+              type="text"
+              tabIndex={-1}
+              autoComplete="off"
+              value={website}
+              onChange={(e) => setWebsite(e.target.value)}
+            />
           </div>
 
           {status === "error" && message ? (

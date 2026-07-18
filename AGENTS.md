@@ -64,7 +64,7 @@ Live AgentCard at `https://signals.gitdealflow.com/.well-known/agent-card.json` 
 | `pseo-site/` | Next.js App Router site at signals.gitdealflow.com. **Read `pseo-site/AGENTS.md` before editing — it's a Next.js 16 project with breaking changes.** |
 | `pseo-site/app/api/a2a/route.ts` | A2A JSON-RPC 2.0 stub endpoint. |
 | `pseo-site/public/.well-known/` | `agent-card.json`, `ai-plugin.json`, `mcp.json`, `agents.md`. |
-| `landing/` | Static marketing site at gitdealflow.com (vanilla HTML/CSS, deployed as `vc-deal-flow-signal-landing` on Vercel). |
+| `landing/` | Static marketing site at gitdealflow.com (vanilla HTML/CSS, deployed as Vercel project `landing` (prj_M3iknyIgZ8JMxPZzEPTWdSjm4l3E) — NOT the stale `vc-deal-flow-signal-landing`). |
 | `landing/llms.txt`, `landing/llms-full.txt` | Agent-readable product reference (81L + 224L). |
 | `chrome-extension/` | Manifest V3 extension that injects momentum badges on Crunchbase + Wellfound. |
 
