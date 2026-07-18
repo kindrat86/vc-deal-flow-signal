@@ -33,6 +33,8 @@ export async function GET() {
     <atom:link href="${BASE_URL}/feed.xml" rel="self" type="application/rss+xml"/>
     <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub"/>
     <atom:link href="https://pubsubhubbub.superfeedr.com/" rel="hub"/>
+    <atom:link href="https://websubhub.com/" rel="hub"/>
+    <atom:link href="${BASE_URL}/feed.json" rel="alternate" type="application/json"/>
     <lastBuildDate>${getDataLastModified().toUTCString()}</lastBuildDate>
 ${items}
   </channel>

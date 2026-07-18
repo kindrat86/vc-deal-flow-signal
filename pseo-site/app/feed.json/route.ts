@@ -149,6 +149,11 @@ export async function GET() {
       },
       catalog: `${BASE_URL}/.well-known/feeds.json`,
     },
+    _hubs: [
+      "https://pubsubhubbub.appspot.com/",
+      "https://pubsubhubbub.superfeedr.com/",
+      "https://websubhub.com/",
+    ],
   };
 
   return new Response(JSON.stringify(feed, null, 2), {
