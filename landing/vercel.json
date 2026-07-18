@@ -7,6 +7,14 @@
       "destination": "https://signals.gitdealflow.com/feed.xml"
     },
     {
+      "source": "/knowledge-graph.json",
+      "destination": "https://signals.gitdealflow.com/knowledge-graph.json"
+    },
+    {
+      "source": "/qa.jsonl",
+      "destination": "https://signals.gitdealflow.com/qa.jsonl"
+    },
+    {
       "source": "/.well-known/llms.txt",
       "destination": "https://signals.gitdealflow.com/.well-known/llms.txt"
     },
