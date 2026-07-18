@@ -5,7 +5,7 @@
     ],
     "target": {
       "namespace": "web",
-      "site": "https://gitdealflow.com"
+      "site": "https://signals.gitdealflow.com"
     }
   }
 ]

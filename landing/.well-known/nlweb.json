@@ -1,0 +1,16 @@
+{
+  "name": "GitDealFlow",
+  "description": "Real-time startup acquisition and funding tracker. Monitor deal flow, track acquirers, and spot market trends before the news breaks.",
+  "url": "https://gitdealflow.com",
+  "api": {
+    "type": "nlweb",
+    "version": "0.1",
+    "endpoint": "https://gitdealflow.com/answers/"
+  },
+  "feeds": [
+    {
+      "type": "jsonfeed",
+      "url": "https://gitdealflow.com/answers/feed.json"
+    }
+  ]
+}

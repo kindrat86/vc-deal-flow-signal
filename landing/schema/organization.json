@@ -1,0 +1,27 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://gitdealflow.com/#organization",
+  "name": "GitDealFlow",
+  "url": "https://gitdealflow.com",
+  "description": "Real-time startup acquisition and funding tracker. Monitor deal flow, track acquirers, and spot market trends before the news breaks.",
+  "sameAs": [
+    "https://signals.gitdealflow.com",
+    "https://invisibleexit.com",
+    "https://sipiteno.com",
+    "https://unlocksaas.com",
+    "https://voicelogpro.com",
+    "https://carshake.online",
+    "https://churnlens.site",
+    "https://sanctionsai.dev",
+    "https://sipi.bot"
+  ],
+  "knowsAbout": [
+    "Data & Analytics",
+    "SaaS",
+    "AI Agents",
+    "Startup Growth"
+  ],
+  "logo": "https://gitdealflow.com/og.png",
+  "foundingDate": "2024"
+}

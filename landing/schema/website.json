@@ -1,0 +1,12 @@
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://gitdealflow.com/#website",
+  "name": "GitDealFlow",
+  "url": "https://gitdealflow.com",
+  "description": "Track startup acquisitions & funding rounds",
+  "publisher": {
+    "@id": "https://gitdealflow.com/#organization"
+  },
+  "inLanguage": "en"
+}

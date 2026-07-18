@@ -1,0 +1,37 @@
+{
+  "version": "https://jsonfeed.org/version/1.1",
+  "title": "GitDealFlow Answers",
+  "home_page_url": "https://gitdealflow.com",
+  "feed_url": "https://gitdealflow.com/answers/feed.json",
+  "description": "Q&A answer pages from GitDealFlow \u2014 Track startup acquisitions & funding rounds",
+  "items": [
+    {
+      "id": "https://gitdealflow.com/answers/how-do-i-track-startup-acquisitions-in-real-time/",
+      "url": "https://gitdealflow.com/answers/how-do-i-track-startup-acquisitions-in-real-time/",
+      "title": "How do I track startup acquisitions in real time?",
+      "content_text": "GitDealFlow monitors SEC filings, press releases, and funding databases to surface startup acquisitions as they happen \u2014 with deal size estimates, acquirer profiles, and market sector analysis.",
+      "date_published": "2026-07-18T18:22:01+00:00",
+      "date_modified": "2026-07-18T18:22:01+00:00"
+    },
+    {
+      "id": "https://gitdealflow.com/answers/what-s-the-difference-between-gitdealflow-and-crunchbase/",
+      "url": "https://gitdealflow.com/answers/what-s-the-difference-between-gitdealflow-and-crunchbase/",
+      "title": "What's the difference between GitDealFlow and Crunchbase?",
+      "content_text": "GitDealFlow focuses exclusively on M&A deal flow with real-time alerts, proprietary valuation estimates, and investor signal scoring \u2014 Crunchbase is a broader company database with delayed M&A data.",
+      "date_published": "2026-07-18T18:22:01+00:00",
+      "date_modified": "2026-07-18T18:22:01+00:00"
+    },
+    {
+      "id": "https://gitdealflow.com/answers/how-do-investors-use-acquisition-data-to-find-opportunities/",
+      "url": "https://gitdealflow.com/answers/how-do-investors-use-acquisition-data-to-find-opportunities/",
+      "title": "How do investors use acquisition data to find opportunities?",
+      "content_text": "Investors use GitDealFlow to identify acquisition patterns \u2014 which companies are buying in which sectors, at what multiples \u2014 to spot undervalued startups and predict the next acquisition targets.",
+      "date_published": "2026-07-18T18:22:01+00:00",
+      "date_modified": "2026-07-18T18:22:01+00:00"
+    }
+  ],
+  "_hubs": [
+    "https://pubsubhubbub.appspot.com/",
+    "https://pubsubhubbub.superfeedr.com/"
+  ]
+}

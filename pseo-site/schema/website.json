@@ -1,0 +1,12 @@
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://signals.gitdealflow.com/#website",
+  "name": "Signals by GitDealFlow",
+  "url": "https://signals.gitdealflow.com",
+  "description": "AI-powered startup investment signals",
+  "publisher": {
+    "@id": "https://signals.gitdealflow.com/#organization"
+  },
+  "inLanguage": "en"
+}

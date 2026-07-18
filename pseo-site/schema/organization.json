@@ -1,0 +1,27 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://signals.gitdealflow.com/#organization",
+  "name": "Signals by GitDealFlow",
+  "url": "https://signals.gitdealflow.com",
+  "description": "AI-driven startup scoring and investment signals. Proprietary algorithms rank early-stage companies on momentum, team quality, and market fit.",
+  "sameAs": [
+    "https://gitdealflow.com",
+    "https://invisibleexit.com",
+    "https://sipiteno.com",
+    "https://unlocksaas.com",
+    "https://voicelogpro.com",
+    "https://carshake.online",
+    "https://churnlens.site",
+    "https://sanctionsai.dev",
+    "https://sipi.bot"
+  ],
+  "knowsAbout": [
+    "AI & Investing",
+    "SaaS",
+    "AI Agents",
+    "Startup Growth"
+  ],
+  "logo": "https://signals.gitdealflow.com/og.png",
+  "foundingDate": "2024"
+}
