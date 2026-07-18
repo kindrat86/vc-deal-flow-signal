@@ -2,10 +2,6 @@ import type { NextConfig } from "next";
 import * as path from "node:path";
 
 const nextConfig: NextConfig = {
-  // TEMP (IndexNow deploy 2026-07-18): skip type-check + lint to avoid
-  // OOM during local build under memory pressure. Revert after deploy.
-  typescript: { ignoreBuildErrors: true },
-  eslint: { ignoreDuringBuilds: true },
   // Pin turbopack root to this package so worktree builds (and any nested
   // checkout layout) don't drift to a parent lockfile. Harmless on Vercel —
   // the production root resolves to the same directory.
