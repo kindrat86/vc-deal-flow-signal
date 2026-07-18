@@ -5,12 +5,12 @@
   "api": {
     "type": "nlweb",
     "version": "0.1",
-    "endpoint": "https://gitdealflow.com/answers/"
+    "endpoint": "https://gitdealflow.com/api/nlweb"
   },
   "feeds": [
     {
       "type": "jsonfeed",
-      "url": "https://gitdealflow.com/answers/feed.json"
+      "url": "https://gitdealflow.com/feed.json"
     }
   ]
 }

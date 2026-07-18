@@ -49,10 +49,6 @@
       "destination": "https://signals.gitdealflow.com/.well-known/agent-card.json"
     },
     {
-      "source": "/.well-known/mcp.json",
-      "destination": "https://signals.gitdealflow.com/.well-known/mcp.json"
-    },
-    {
       "source": "/.well-known/openapi.json",
       "destination": "https://signals.gitdealflow.com/.well-known/openapi.json"
     },

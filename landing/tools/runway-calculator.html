@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Startup Runway Calculator — Months of Cash Left & Funding Deadline | GitDealFlow</title>
+<meta name="description" content="Free startup runway calculator. Enter your cash on hand and monthly burn rate to see exactly how many months of runway you have, the date your cash runs out, and an urgency indicator for when to start fundraising." />
+<meta name="author" content="GitDealFlow" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://gitdealflow.com/tools/runway-calculator.html" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="GitDealFlow" />
+<meta property="og:title" content="Startup Runway Calculator — Months of Cash Left" />
+<meta property="og:description" content="Calculate startup runway from cash on hand and monthly burn. Free instant result with funding deadline date." />
+<meta property="og:url" content="https://gitdealflow.com/tools/runway-calculator.html" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<style>
+  :root { --bg:#0f172a; --bg-card:#1e293b; --bg-input:#0f1d36; --text:#e2e8f0; --text-muted:#94a3b8; --accent:#8b5cf6; --accent-hover:#a78bfa; --accent-dim:rgba(139,92,246,0.15); --success:#10b981; --warning:#f59e0b; --danger:#ef4444; --border:#334155; --radius:12px; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:var(--bg); color:var(--text); line-height:1.6; min-height:100vh; -webkit-font-smoothing:antialiased; }
+  .container { max-width:920px; margin:0 auto; padding:24px 20px 80px; }
+  .header { text-align:center; margin-bottom:32px; }
+  .header h1 { font-size:clamp(1.75rem,4vw,2.5rem); font-weight:700; background:linear-gradient(135deg,#a78bfa,#8b5cf6); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:12px; line-height:1.2; }
+  .header p { color:var(--text-muted); font-size:1.05rem; max-width:640px; margin:0 auto; }
+  .card { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:28px; margin-bottom:24px; }
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:20px; }
+  .form-group { margin-bottom:20px; }
+  .form-group label { display:block; font-weight:600; margin-bottom:8px; font-size:0.95rem; }
+  .form-group .hint { color:var(--text-muted); font-size:0.85rem; font-weight:400; margin-top:4px; }
+  .input-wrap { position:relative; }
+  .input-wrap::before { content:"$"; position:absolute; left:14px; top:50%; transform:translateY(-50%); color:var(--text-muted); font-weight:600; }
+  .input-wrap input { padding-left:30px; }
+  input[type="number"] { width:100%; background:var(--bg-input); border:1px solid var(--border); color:var(--text); padding:12px 16px; border-radius:8px; font-size:1rem; font-family:inherit; transition:border-color 0.15s, box-shadow 0.15s; }
+  input[type="number"]:focus { outline:none; border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-dim); }
+  .btn { display:inline-block; background:var(--accent); color:white; border:none; padding:14px 32px; border-radius:8px; font-size:1rem; font-weight:600; cursor:pointer; font-family:inherit; transition:background 0.15s, transform 0.05s; width:100%; }
+  .btn:hover { background:var(--accent-hover); }
+  .btn:active { transform:translateY(1px); }
+  .results { display:none; }
+  .results.show { display:block; animation:fade 0.3s ease; }
+  @keyframes fade { from{opacity:0;transform:translateY(8px);} to{opacity:1;transform:translateY(0);} }
+  .urgency-banner { border-radius:var(--radius); padding:28px; text-align:center; margin-bottom:20px; }
+  .urgency-banner.green { background:linear-gradient(135deg,rgba(16,185,129,0.2),rgba(16,185,129,0.05)); border:1px solid rgba(16,185,129,0.3); }
+  .urgency-banner.yellow { background:linear-gradient(135deg,rgba(245,158,11,0.2),rgba(245,158,11,0.05)); border:1px solid rgba(245,158,11,0.3); }
+  .urgency-banner.red { background:linear-gradient(135deg,rgba(239,68,68,0.2),rgba(239,68,68,0.05)); border:1px solid rgba(239,68,68,0.3); }
+  .urgency-banner .runway-months { font-size:3.2rem; font-weight:800; line-height:1; }
+  .urgency-banner.green .runway-months { color:var(--success); }
+  .urgency-banner.yellow .runway-months { color:var(--warning); }
+  .urgency-banner.red .runway-months { color:var(--danger); }
+  .urgency-banner .label { color:var(--text-muted); font-size:0.9rem; text-transform:uppercase; letter-spacing:0.05em; }
+  .urgency-banner .verdict { font-size:1.2rem; font-weight:600; margin-top:10px; }
+  .stat-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:14px; }
+  .stat { background:var(--bg-input); padding:16px; border-radius:8px; border-left:3px solid var(--accent); }
+  .stat .label { color:var(--text-muted); font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em; }
+  .stat .value { font-size:1.3rem; font-weight:700; margin-top:4px; }
+  .timeline { margin-top:20px; }
+  .timeline-bar { position:relative; height:60px; background:var(--bg-input); border-radius:8px; overflow:hidden; margin-top:8px; }
+  .timeline-fill { position:absolute; left:0; top:0; bottom:0; background:linear-gradient(90deg,var(--success),var(--warning),var(--danger)); border-radius:8px; transition:width 0.6s ease; }
+  .timeline-marker { position:absolute; top:0; bottom:0; width:2px; background:white; }
+  .timeline-label { position:absolute; top:50%; transform:translate(-50%,-50%); font-size:0.75rem; font-weight:600; color:white; text-shadow:0 1px 3px rgba(0,0,0,0.6); }
+  .recommendations { background:var(--bg-input); border-radius:8px; padding:20px; margin-top:16px; }
+  .recommendations ul { list-style:none; }
+  .recommendations li { padding:6px 0 6px 24px; position:relative; color:var(--text-muted); }
+  .recommendations li::before { content:"→"; position:absolute; left:0; color:var(--accent); font-weight:700; }
+  .faq details { border-bottom:1px solid var(--border); padding:14px 0; }
+  .faq summary { cursor:pointer; font-weight:600; font-size:1rem; list-style:none; display:flex; justify-content:space-between; align-items:center; }
+  .faq summary::after { content:"+"; font-size:1.4rem; color:var(--accent); font-weight:300; }
+  .faq details[open] summary::after { content:"−"; }
+  .faq summary::-webkit-details-marker { display:none; }
+  .faq p { color:var(--text-muted); margin-top:10px; font-size:0.95rem; }
+  .footer { text-align:center; padding:32px 0 0; border-top:1px solid var(--border); margin-top:40px; color:var(--text-muted); font-size:0.9rem; }
+  .footer a { color:var(--accent); text-decoration:none; font-weight:600; }
+  .footer a:hover { text-decoration:underline; }
+  .back-link { display:inline-block; margin-bottom:20px; color:var(--text-muted); text-decoration:none; font-size:0.9rem; }
+  .back-link:hover { color:var(--accent); }
+  @media (max-width:600px) { .form-row { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <a href="/tools/" class="back-link">← All Tools</a>
+  <div class="header">
+    <h1>Startup Runway Calculator</h1>
+    <p>How many months of cash do you actually have left? Enter your cash on hand and monthly burn rate to see your runway, the exact date your cash runs out, and whether you need to start fundraising now.</p>
+  </div>
+
+  <div class="card">
+    <div class="form-row">
+      <div class="form-group">
+        <label for="cash">Cash on Hand</label>
+        <div class="input-wrap"><input type="number" id="cash" min="0" step="1000" value="500000" /></div>
+        <div class="hint">Total unrestricted cash + equivalents in the bank today.</div>
+      </div>
+      <div class="form-group">
+        <label for="burn">Monthly Net Burn</label>
+        <div class="input-wrap"><input type="number" id="burn" min="0" step="500" value="40000" /></div>
+        <div class="hint">Monthly expenses minus monthly revenue (gross burn − revenue).</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="mrr">Current MRR <span style="color:var(--text-muted);font-weight:400;">(optional)</span></label>
+      <div class="input-wrap"><input type="number" id="mrr" min="0" step="500" value="10000" /></div>
+      <div class="hint">Monthly recurring revenue. Used to model MRR growth extending your runway.</div>
+    </div>
+    <button class="btn" onclick="calculate()">Calculate Runway</button>
+  </div>
+
+  <div id="results" class="results">
+    <div id="urgencyBanner" class="urgency-banner">
+      <div class="label">Months of Runway</div>
+      <div class="runway-months" id="runwayMonths">—</div>
+      <div class="verdict" id="verdict">—</div>
+    </div>
+    <div class="card">
+      <div class="stat-grid">
+        <div class="stat"><div class="label">Cash Out Date</div><div class="value" id="cashOutDate">—</div></div>
+        <div class="stat"><div class="label">Start Fundraising By</div><div class="value" id="raiseByDate">—</div></div>
+        <div class="stat"><div class="label">Total Burn</div><div class="value" id="burnDisplay">—</div></div>
+        <div class="stat"><div class="label">Gross Margin</div><div class="value" id="margin">—</div></div>
+      </div>
+      <div class="timeline">
+        <h4 style="margin-bottom:4px;">Runway Timeline</h4>
+        <div class="timeline-bar">
+          <div class="timeline-fill" id="timelineFill" style="width:0%;"></div>
+          <div class="timeline-marker" id="raiseMarker" style="left:0%;"></div>
+          <div class="timeline-label" id="raiseLabel" style="left:0%;">Raise by</div>
+          <div class="timeline-label" id="outLabel" style="left:100%;">Out of cash</div>
+        </div>
+      </div>
+      <div class="recommendations">
+        <h4>What to do next</h4>
+        <ul id="recs"></ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card faq">
+    <h3 style="margin-bottom:8px;">Frequently Asked Questions</h3>
+    <details>
+      <summary>How is startup runway calculated?</summary>
+      <p>Runway = Cash on Hand ÷ Monthly Net Burn. If you have $500k in the bank and burn $40k/month net, your runway is 12.5 months. Net burn = gross monthly expenses minus monthly revenue.</p>
+    </details>
+    <details>
+      <summary>When should I start fundraising?</summary>
+      <p>Raise when you have 9–12 months of runway left. A typical seed/Series A round takes 3–6 months from first pitch to wired cash, and investors get nervous when founders are visibly desperate. Starting at 12 months gives you leverage to walk away from bad terms.</p>
+    </details>
+    <details>
+      <summary>What's a "good" runway?</summary>
+      <p>Post-fund-raise, VCs expect 18–24 months of runway — enough to hit the milestones that justify the next round. Below 12 months is a yellow flag. Below 6 months is a crisis: you have weeks to close or cut burn hard.</p>
+    </details>
+  </div>
+
+  <div class="footer">
+    <p>Powered by <a href="https://gitdealflow.com/">GitDealFlow</a> — see which startups are accelerating on GitHub 21–47 days before the round.</p>
+  </div>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"WebApplication",
+      "name":"Startup Runway Calculator",
+      "url":"https://gitdealflow.com/tools/runway-calculator.html",
+      "applicationCategory":"FinanceApplication",
+      "operatingSystem":"Any",
+      "browserRequirements":"Requires JavaScript",
+      "description":"Calculate startup runway from cash on hand and monthly burn rate. Shows months of cash left, cash-out date, and fundraising urgency.",
+      "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
+      "publisher":{"@type":"Organization","name":"GitDealFlow","url":"https://gitdealflow.com"}
+    },
+    {
+      "@type":"FAQPage",
+      "mainEntity":[
+        {"@type":"Question","name":"How is startup runway calculated?","acceptedAnswer":{"@type":"Answer","text":"Runway = Cash on Hand divided by Monthly Net Burn. $500k cash with $40k/month net burn = 12.5 months runway."}},
+        {"@type":"Question","name":"When should I start fundraising?","acceptedAnswer":{"@type":"Answer","text":"Raise when you have 9-12 months of runway left. A typical round takes 3-6 months from first pitch to wired cash."}},
+        {"@type":"Question","name":"What is a good runway?","acceptedAnswer":{"@type":"Answer","text":"Post-fund-raise, VCs expect 18-24 months of runway. Below 12 months is a yellow flag. Below 6 months is a crisis."}}
+      ]
+    }
+  ]
+}
+</script>
+
+<script>
+function fmtMoney(n) {
+  if (!isFinite(n)) return "—";
+  const abs = Math.abs(n);
+  if (abs >= 1e6) return "$" + (n/1e6).toFixed(2) + "M";
+  if (abs >= 1e3) return "$" + (n/1e3).toFixed(1) + "k";
+  return "$" + n.toFixed(0);
+}
+function fmtDate(d) {
+  return d.toLocaleDateString("en-US", { year:"numeric", month:"short", day:"numeric" });
+}
+
+function calculate() {
+  const cash = parseFloat(document.getElementById("cash").value) || 0;
+  const burn = parseFloat(document.getElementById("burn").value) || 0;
+  const mrr = parseFloat(document.getElementById("mrr").value) || 0;
+
+  if (cash <= 0) { alert("Please enter your cash on hand."); return; }
+  if (burn <= 0) { alert("Please enter your monthly net burn (must be > 0)."); return; }
+
+  const months = cash / burn;
+  const today = new Date();
+  const cashOut = new Date(today);
+  cashOut.setMonth(cashOut.getMonth() + Math.floor(months));
+  cashOut.setDate(cashOut.getDate() + Math.round((months % 1) * 30));
+
+  // Start fundraising at 12 months of runway remaining (or immediately if runway < 12)
+  const raiseStartMonths = Math.max(0, months - 12);
+  const raiseBy = new Date(today);
+  raiseBy.setMonth(raiseBy.getMonth() + Math.floor(raiseStartMonths));
+
+  // Urgency tier
+  let tier = "green", verdict = "";
+  if (months >= 18) { tier = "green"; verdict = "Healthy — you have room to execute."; }
+  else if (months >= 12) { tier = "green"; verdict = "Solid, but start your next raise now."; }
+  else if (months >= 6) { tier = "yellow"; verdict = "Yellow zone — fundraising is your top priority."; }
+  else { tier = "red"; verdict = "Critical — cut burn and raise immediately."; }
+
+  document.getElementById("runwayMonths").textContent = months.toFixed(1);
+  document.getElementById("urgencyBanner").className = "urgency-banner " + tier;
+  document.getElementById("verdict").textContent = verdict;
+  document.getElementById("cashOutDate").textContent = fmtDate(cashOut);
+  document.getElementById("raiseByDate").textContent = months < 12 ? "Now" : fmtDate(raiseBy);
+  document.getElementById("burnDisplay").textContent = fmtMoney(burn) + "/mo";
+  const margin = burn > 0 ? ((mrr / (burn + mrr)) * 100) : 0;
+  // gross burn = burn + mrr (since burn is net)
+  document.getElementById("margin").textContent = mrr > 0 ? margin.toFixed(0) + "%" : "n/a";
+
+  // Timeline (cap visualization at 24 months)
+  const visualMonths = Math.min(months, 24);
+  const pct = (visualMonths / 24) * 100;
+  document.getElementById("timelineFill").style.width = pct + "%";
+  const raisePct = (raiseStartMonths / 24) * 100;
+  document.getElementById("raiseMarker").style.left = Math.min(raisePct, pct) + "%";
+  document.getElementById("raiseLabel").style.left = Math.min(Math.max(raisePct, 8), 92) + "%";
+  document.getElementById("outLabel").style.left = Math.min(pct, 92) + "%";
+
+  // Recommendations
+  const recs = [];
+  if (months >= 18) {
+    recs.push("You have a healthy cushion. Focus 90% on growth, 10% on investor updates.");
+    recs.push("Start soft fundraising conversations at the 14-month mark to maintain leverage.");
+  } else if (months >= 12) {
+    recs.push("Begin your raise now — a typical round takes 3–6 months to close.");
+    recs.push("Prepare your data room, update your deck, and warm up your top 20 investors.");
+  } else if (months >= 6) {
+    recs.push("Fundraising is now your full-time job. Founder must own it personally.");
+    recs.push("Cut all non-essential spend. Extend runway by 2–3 months as insurance.");
+    recs.push("If you have MRR growth, lead with that metric to deflect the burn question.");
+  } else {
+    recs.push("Emergency mode: cut burn to the bone today. Salary cuts, deferred payments, halt hiring.");
+    recs.push("Pursue a bridge or extension round — even $250k buys 2–3 months.");
+    recs.push("If no path to cash in 60 days, plan an orderly wind-down or acquisition.");
+  }
+  if (mrr > 0) {
+    const breakEvenBurn = burn - mrr;
+    if (breakEvenBurn <= 0) recs.push("Your MRR already covers net burn — you're effectively profitable. Reinvest the surplus.");
+    else {
+      const monthsToBreakEven = Math.ceil(cash / Math.max(1, breakEvenBurn * 0.7));
+      recs.push("If MRR grows 30%/mo, you reach break-even in roughly " + monthsToBreakEven + " months.");
+    }
+  }
+  document.getElementById("recs").innerHTML = recs.map(r => "<li>" + r + "</li>").join("");
+
+  document.getElementById("results").classList.add("show");
+}
+</script>
+</body>
+</html>
