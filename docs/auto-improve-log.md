@@ -748,15 +748,43 @@ reports `UNKNOWN` for in-flight deploys — use `vercel ls pseo-site --prod` (sh
 deps ok); homepage cache turned over (`age:0`). The redirect-in-sitemap fix's
 score credit is now earned live: Technical SEO 85, pSEO 83, AEO 85.
 
-**NEEDS HUMAN (top item is now the binding delivery constraint):**
-1. **STOP the concurrent-deploy pileup on the pseo prod project.** 5+ automated
-   `vercel deploy --prod` loops now race on one project (this task + the Hermes
-   `~/.hermes/scripts/aeo-deploy-retry.sh` + others), which is why deploys stick
-   at UNKNOWN and prod lags commits. Pick ONE deployer (recommend: this task's
-   canonical `main` checkout) and retire/disable the rest — especially the Hermes
-   `aeo-deploy-retry.sh` retry loop and any swarm deploy from `~/Downloads/gitdealflow`.
-   Until then, every pipeline's fixes (incl. this run's 0fbfb485) land only
-   whenever a deploy happens to win the race.
+**UPDATE (~15:10Z — REDUNDANT DEPLOYERS RETIRED, user-instructed).** Audited
+every mechanism that can deploy pseo prod and retired the redundant ones, leaving
+exactly one routine deployer:
+- **`deploy-pseo.yml` Monday-cron → RETIRED (the concrete recurring redundant
+  deployer).** Its `schedule: "0 7 * * 1"` fired **server-side on GitHub** every
+  Monday using repo `VERCEL_*` secrets — the PAT 403 only blocked *manual*
+  dispatch, not the scheduled cron, so it was silently racing a second pseo prod
+  deploy weekly. Removed the `schedule:` trigger (kept `workflow_dispatch` as
+  break-glass) in commit 3b9ad750 AND `gh workflow disable` succeeded → GitHub now
+  reports it `disabled_manually`. Doubly retired.
+- **Kept (NOT redundant):** `canary-deadmans-switch.yml` deploys only under
+  `if: failure()` (self-heals prod on a detected outage) — a safety net, left
+  intact. The Hermes cron `AEO deploy retry` (`b81bca66e84b`, every 30m) deploys
+  the 3 *static* sites churnlens/carshake/voicelogpro — NOT pseo — and is
+  idempotent (goes silent once all 3 are live); it's their legitimate deployer,
+  left intact (it only adds to the account-wide build-slot pressure, it is not a
+  pseo duplicate).
+- **Already dormant:** the two Hermes crons that once deployed gitdealflow —
+  `portfolio-warehouse-sync-and-deploy` (deb479388ba2) and `portfolio-traffic-
+  rotation` (dbb86c331b60) — are both `enabled: False`. No launchd/cron/running
+  process targets the swarm checkout. Only ONE Claude scheduled task exists
+  (this one). Net: pseo now has a single routine deployer = this task's `main`
+  checkout.
+- **Remaining redundancy VECTOR (dormant, needs a human, NOT safe to auto-remove):**
+  `~/Downloads/gitdealflow/pseo-site/.vercel/` is still linked to the SAME pseo
+  project (`prj_s0JL6C4uFTmt83OnzAZDgeMDnlaU`), so if any Hermes SEO-swarm agent
+  is ever pointed at that checkout it can still deploy pseo prod. I did not delete
+  the checkout (may hold unpushed swarm work; destructive) nor unlink `.vercel`
+  (a non-interactive `vercel deploy --yes` there would just auto-relink to
+  `pseo-site` by folder name, so unlinking doesn't actually neuter it). Human
+  action: either remove/relocate `~/Downloads/gitdealflow` once confirmed fully
+  merged into `main`, or ensure no swarm agent runs `vercel deploy` from it.
+
+**NEEDS HUMAN:**
+1. Remove/relocate the dormant `~/Downloads/gitdealflow` swarm checkout (see the
+   redundancy-vector note above) — the last remaining way a second pseo deploy
+   could appear. Low urgency (nothing schedules it today).
 - Minor: `/feed.json` (blog) lacks a `hubs` array while `/rss.xml` advertises 3
   WebSub hubs — JSON Feed 1.1 supports `hubs` for parity. Left unfixed this cycle
   (low ROI, avoid churn); noted for a future run.
