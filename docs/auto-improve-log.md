@@ -444,3 +444,122 @@ ANTHROPIC_API_KEY; IndexNow 400; guest-essay/curator outbound (human-only);
 Wikipedia autoconfirm; named advisory board (cannot fabricate); FOUR retired
 founding-rate Stripe payment links still active — need manual deactivation
 (stripe/payment-links.md); the stashed `stash@{0}` stale WIP awaiting drop.
+
+## 2026-07-18 (~11:10Z) — scheduled auto-improve: DEPLOY-PATH TRUTH — production is NOT driven by main
+
+**Headline (supersedes the 07-15 run's deploy assumptions): committing to
+`main` does NOT ship to the pseo production site, and it has not for days. A
+second, uncoordinated deploy pipeline (the Hermes SEO-swarm) owns pseo
+production, deploying a divergent, 4-day-stale, GitHub-unpushed local branch
+via the Vercel CLI.** No code changed this cycle and NOTHING was deployed — the
+correct, safe action was to diagnose and escalate, not to churn `main` (which
+can't reach prod) or force a `main` deploy (which would revert the swarm's live
+work and race an in-flight deploy). Details below; several prior-run beliefs are
+corrected.
+
+**CORRECTION 1 — `health.json` buildTime is NOT a deploy-freshness signal.** The
+07-15 run read a "fresh" buildTime and concluded a build had happened. But
+`pseo-site/app/api/health.json/route.ts` computes `buildTime = new
+Date().toISOString()` at REQUEST time (line 24), so it is *always* "now" and says
+nothing about which commit is deployed. Do not trust it again. To check
+deployed-code freshness, diff a real code-derived surface (e.g. whether
+`/sitemap/core.xml` contains the `/benchmarks/*` URLs added in fa88fe6) against
+`main`, or use `vercel ls pseo-site --prod` / `vercel inspect`.
+
+**CORRECTION 2 — the 07-15 benchmark-sitemap fix (fa88fe6) is still NOT live, and
+won't be via the assumed path.** `/benchmarks/{commit-velocity,contributor-growth,
+signal-distribution}` all serve 200 (pages exist, from fb5b64d) but are ABSENT
+from live `/sitemap/core.xml` (cache MISS, freshly rendered — so it's the deployed
+code, not caching). The fix sits on `main` and `main` doesn't deploy to pseo. Not
+re-attempted this cycle (can't deploy safely — see below).
+
+**ROOT CAUSE — two divergent tracks, one production project, no coordination:**
+- **Track A (this task):** commits to `main` in `~/Downloads/vc-deal-flow-signal`;
+  intended deploy = `gh workflow run deploy-pseo.yml`. **Still HTTP 403** today —
+  the fine-grained PAT has no Actions scope (confirmed again 2026-07-18). The
+  workflow only triggers on a Monday 07:00Z cron + `workflow_dispatch`, and there
+  is **no push-to-deploy git integration** on this Vercel project. So Track A's
+  `main` commits (07-06 sitemap hardening, 07-15 benchmark URLs, etc.) have been
+  accumulating on `main` UNDEPLOYED.
+- **Track B (Hermes SEO-swarm, owns prod):** a live Hermes agent works a SECOND
+  checkout of the SAME repo at `~/Downloads/gitdealflow`, on daily branches
+  `growth/<date>-signals-gitdealflow`, and deploys to pseo production directly:
+  observed running `cd ~/Downloads/gitdealflow/pseo-site && vercel deploy --prod
+  --yes` (pid 37991, as user sipiteno). This — not `deploy-pseo.yml` — is what
+  actually updates https://signals.gitdealflow.com.
+
+**WHY PROD IS ~4 DAYS STALE (the concrete, fixable defect): the Hermes checkout
+`~/Downloads/gitdealflow` last fetched on Jul 14 06:50 and is 33 commits behind
+origin/main** (its local AND cached `origin/main` are both frozen at `982aacc`,
+2026-07-14). The swarm cuts each daily `growth/*` branch from that STALE 07-14
+base, so every branch it builds and ships to prod is missing 4+ days of `main`
+— including fa88fe6. `growth/2026-07-17-signals-gitdealflow` (HEAD `bb030b0`) =
+`982aacc` + 13 of the swarm's own SEO commits (hreflang×178, definition blocks,
+"At a glance" TL;DRs, answer-first openers, E-E-A-T bylines, `/report`
+indexable, `/startups-to-watch` hub, thin-page expansions). It is a genuine
+DIVERGENCE from `main`, not a superset: `main` has the benchmark-sitemap fix +
+landing overhaul the growth base lacks; the growth branch has 13 SEO commits
+`main` lacks. Reconciling them is a human judgment call (which track is canonical?).
+
+**OTHER RISKS OBSERVED:**
+- `growth/2026-07-17-signals-gitdealflow` is **LOCAL-ONLY — not pushed to origin**
+  (older `growth/2026-07-07`, `-08` branches ARE on GitHub, so the usual cadence
+  pushes them; today's hasn't yet). Its 13 SEO commits are currently unbacked-up
+  outside the Mac mini + whatever's baked into a prod bundle.
+- A Hermes `vercel deploy --prod` has been **running/stuck ~2h** (deployment
+  `2520s0ddh`, status UNKNOWN, created 09:08 EEST). Last SUCCESSFUL prod deploy
+  was 9h ago (`in9cwxwoy`, Ready, 02:25 EEST); the live homepage is served from
+  ~8.4h-old edge cache (`age: 30362`, x-vercel-cache HIT). Did NOT touch the
+  Hermes process — it's another agent's in-flight work.
+- Live prod is internally inconsistent with BOTH branches: benchmark pages 200 but
+  their sitemap entries absent (not on `main`'s deployed state), and `/report` +
+  `/chrome` are 404 despite the growth branch making them indexable/expanded
+  (not on growth HEAD's deployed state either). Live ≈ some older growth commit.
+
+**AUDIT (live curl sweep, 2026-07-18):** core surfaces HEALTHY. `/api/health.json`
+status ok, all deps ok. Homepage, `/pricing`, `/sitemap.xml` (proper
+`<sitemapindex>`, 9 children), all 6 `/sitemap/*` children, `/robots.txt`,
+`/api/signals.json`, `/.well-known/{mcp,ai-plugin}.json`, `/llms.txt` all 200.
+The prior 404-poisoning fixes have held. The ONLY live-content gaps are the
+delivery artifacts above (stale prod ≠ current main/growth), not authoring bugs.
+
+**Scores (Δ vs 07-15; live-state, deliberately conservative — the binding
+constraint this cycle is DELIVERY, not content):** Technical SEO 82 (↓2 — the
+benchmark-sitemap fix credited as "shipped" on 07-15 is in fact NOT live;
+correcting the record) · On-page 88 (=) · Off-page 62 (=) · pSEO 82 (=) · AEO 84
+(=) · GEO 79 (=) · AIO 88 (=) · E-E-A-T 74 (=) · SMO 70 (=) · CRO 74 (=) · ASO 35
+(=). Note: the swarm's growth-branch SEO work (hreflang, definition blocks, EEAT
+bylines) would lift AEO/E-E-A-T meaningfully IF/WHEN it lands live+stable and is
+reconciled with main — currently it's neither fully live nor merged.
+
+**DEPLOYED THIS RUN: nothing** (by design — see headline). **Code changed: none**
+(any `main` change can't reach prod, and an empty cycle beats churn per the task's
+diminishing-returns rule). Only this log entry was committed to `main`.
+
+**NEEDS HUMAN (this run's escalations — the top items are now BLOCKING all
+Track-A value):**
+1. **Decide the pseo deploy source of truth.** Two pipelines target one prod
+   project with no coordination. Either (a) make the Hermes swarm the canonical
+   deployer AND have it `git fetch && rebase/merge origin/main` each cycle (fixes
+   the 4-day staleness + lets Track-A `main` fixes ride along), or (b) fix
+   Track-A's own deploy and stop the swarm from deploying, or (c) formalize a
+   merge: swarm opens a PR `growth/* → main`, main is the only deployer.
+2. **Refresh the Hermes checkout NOW:** `cd ~/Downloads/gitdealflow && git fetch
+   origin` — it's stuck at a Jul-14 view of `origin/main` (33 commits behind).
+   Until this happens, prod ships 07-14 content no matter what the swarm does.
+3. **Back up today's growth work:** `growth/2026-07-17-signals-gitdealflow`
+   (13 commits, HEAD bb030b0) is local-only — push it to origin (or open its PR)
+   so it isn't lost.
+4. **Grant the gh PAT `actions: read+write`** on kindrat86/vc-deal-flow-signal so
+   scheduled runs can trigger/watch `deploy-pseo.yml` — OR retire that path in
+   favor of decision #1 and update this task's DEPLOY step (the `gh workflow run`
+   instructions are currently unusable).
+5. A Hermes `vercel deploy --prod` (`2520s0ddh`) has been stuck ~2h (UNKNOWN) —
+   worth a human glance at the Vercel dashboard / the swarm agent's health.
+
+**Still blocked on human (carried forward, unchanged):** retargeting/pixel IDs;
+BSKY_HANDLE/BSKY_APP_PASSWORD (social-bluesky); GA4 measurement id; Otterly/GEO
+probe ANTHROPIC_API_KEY; IndexNow 400; guest-essay/curator outbound (human-only);
+Wikipedia autoconfirm; named advisory board (cannot fabricate); FOUR retired
+founding-rate Stripe payment links still active — manual deactivation
+(stripe/payment-links.md); the stashed `stash@{0}` stale WIP awaiting drop.
