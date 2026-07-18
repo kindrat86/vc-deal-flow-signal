@@ -706,21 +706,37 @@ near-dup observation is the known, non-blocking content/index-strategy item,
 unchanged). Build-generated artifacts (`-latest` reports, audit JSON timestamps,
 deterministic epub) were reverted so the commit is the route fix only.
 
-**Scores (Δ vs 07-18 11:10Z; live-state):** Technical SEO 85 (↑3 — benchmark
-sitemap fix now genuinely live + redirect-in-sitemap defect removed) · On-page 88
-(=) · Off-page 62 (=) · pSEO 83 (↑1 — cleaner crawl surface) · AEO 85 (↑1 —
-answer-URL now canonical in high-intent shard) · GEO 79 (=) · AIO 88 (=) ·
-E-E-A-T 74 (=) · SMO 70 (=) · CRO 74 (=) · ASO 35 (=).
+**Scores (Δ vs 07-18 11:10Z):** the benchmark-sitemap fix IS confirmed live this
+cycle → Technical SEO 84 (↑2). The redirect-in-sitemap fix is committed+pushed to
+main but NOT yet live (deploy jammed — see below), so its credit is deferred:
+Technical SEO reaches 85 and pSEO/AEO tick +1 each **once the deploy lands**.
+Live-state now: Technical SEO 84 · On-page 88 · Off-page 62 · pSEO 82 · AEO 84 ·
+GEO 79 · AIO 88 · E-E-A-T 74 · SMO 70 · CRO 74 · ASO 35.
 
-**DEPLOYED THIS RUN:** `app/sitemap/[id]/route.ts` fix → `main` → `vercel deploy
---prod` (see commit). **Code changed:** 1 file (`app/sitemap/[id]/route.ts`),
-net −4 redirecting URL entries.
+**DEPLOYED THIS RUN — code committed+pushed to `main` (0fbfb485); prod deploy
+NOT yet confirmed live.** `app/sitemap/[id]/route.ts` fix, net −4 redirecting URL
+entries. `vercel deploy --prod` was attempted from the canonical checkout but is
+**stuck at status UNKNOWN** — a live `ps` showed **5+ concurrent `vercel deploy
+--prod` processes** piled up on the one prod project (this task + the Hermes
+`~/.hermes/scripts/aeo-deploy-retry.sh` retry loop + others at 11:44/13:50/14:28/
+14:37), and Vercel is jamming them all (only ~half of recent prod deploys reach
+Ready; `a0p7ng8xv` did, 6m, 45m ago). I did **not** spawn another deploy — that
+would worsen the pileup. The fix is on `main` (the canonical source), so it lands
+on the next successful prod build from any of these pipelines. Verified live
+sitemap still shows the 4 redirect URLs at close-of-run (delivery pending). **Next
+cycle MUST re-verify:** `curl -s https://signals.gitdealflow.com/sitemap/high-intent.xml
+| grep -c integrations/best-mcp` should be 0 and `…| grep -c answers/best-mcp`
+should be 1; if still stale, the concurrent-deploy pileup is the cause.
 
-**NEEDS HUMAN (carried forward, trimmed — delivery items now resolved):**
-- Retire the Hermes SEO-swarm's *independent* pseo deploy (from
-  `~/Downloads/gitdealflow`) now that this checkout is the canonical deployer —
-  two deployers on one prod project is still a latent race even though the branch
-  content is reconciled. (Human decision; low urgency.)
+**NEEDS HUMAN (top item is now the binding delivery constraint):**
+1. **STOP the concurrent-deploy pileup on the pseo prod project.** 5+ automated
+   `vercel deploy --prod` loops now race on one project (this task + the Hermes
+   `~/.hermes/scripts/aeo-deploy-retry.sh` + others), which is why deploys stick
+   at UNKNOWN and prod lags commits. Pick ONE deployer (recommend: this task's
+   canonical `main` checkout) and retire/disable the rest — especially the Hermes
+   `aeo-deploy-retry.sh` retry loop and any swarm deploy from `~/Downloads/gitdealflow`.
+   Until then, every pipeline's fixes (incl. this run's 0fbfb485) land only
+   whenever a deploy happens to win the race.
 - Minor: `/feed.json` (blog) lacks a `hubs` array while `/rss.xml` advertises 3
   WebSub hubs — JSON Feed 1.1 supports `hubs` for parity. Left unfixed this cycle
   (low ROI, avoid churn); noted for a future run.
