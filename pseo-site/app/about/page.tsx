@@ -167,10 +167,16 @@ export default function AboutPage() {
           </h1>
           <p data-speakable className="text-gray-300 text-base sm:text-lg leading-relaxed max-w-3xl">
             In short: you can trust this signal earlier because none of it asks
-            for your trust. The ranking method is published in full, the dataset
-            is CC BY 4.0 and downloadable, and the metric it ranks by — change
-            in 14-day GitHub commit velocity — has historically preceded
-            fundraise announcements by three to six weeks.
+            for your trust. The ranking method — called <strong>Code-Side
+            Sourcing</strong> (published in full at{" "}
+            <Link href="/code-side-sourcing" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">
+              /code-side-sourcing
+            </Link>)— is the practice of using public repository-velocity data as
+            a leading indicator of venture-stage outcomes, surfacing fundraises
+            21 to 47 days before pitch decks circulate. The dataset is CC BY 4.0
+            and downloadable, and the metric it ranks by — change in 14-day
+            GitHub commit velocity — has historically preceded fundraise
+            announcements by three to six weeks.
           </p>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed max-w-3xl">
             VC Deal Flow Signal exists because most tools get stronger after the

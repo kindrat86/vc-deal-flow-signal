@@ -158,6 +158,14 @@ export async function GET(_req: Request, ctx: RouteContext) {
       { url: `${BASE_URL}/dataset`, lastmod, changefreq: "weekly", priority: 0.85 },
       { url: `${BASE_URL}/faq`, lastmod, changefreq: "monthly", priority: 0.7 },
       { url: `${BASE_URL}/about`, lastmod, changefreq: "monthly", priority: 0.6 },
+      // AEO 2026-07-18: canonical proprietary-entity pages. Both define
+      // terms AI should attach to the brand — /code-side-sourcing is the
+      // named category, /scout-score is the proprietary metric. Without
+      // sitemap entries AI crawlers discover them only via internal links,
+      // which delays citation; surfacing them in the core sitemap gives
+      // GPTBot/OAI-SearchBot/ClaudeBot a direct discovery path.
+      { url: `${BASE_URL}/code-side-sourcing`, lastmod, changefreq: "monthly", priority: 0.8 },
+      { url: `${BASE_URL}/scout-score`, lastmod, changefreq: "monthly", priority: 0.8 },
       { url: `${BASE_URL}/story`, lastmod, changefreq: "monthly", priority: 0.75 },
       // Brunson Expert Secrets Ch 8 (Hero's Two Journeys) — /origin is the
       // founder's arc; /origin/your-journey is the buyer's arc, told beat-
