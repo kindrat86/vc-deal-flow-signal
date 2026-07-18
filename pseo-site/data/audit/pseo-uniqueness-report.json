@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-07-18T12:06:30.052Z",
+  "generatedAt": "2026-07-18T14:49:48.470Z",
   "config": {
     "hammingThreshold": 9,
     "globalThresholdPct": 5,
     "reportOnly": false
   },
   "totals": {
-    "entries": 397,
+    "entries": 401,
     "flagged": 0,
     "flaggedPct": 0
   },
@@ -20,13 +20,13 @@
       "name": "compare",
       "basePath": "/compare",
       "reportOnly": false,
-      "totalEntries": 45,
+      "totalEntries": 46,
       "flaggedEntries": 0,
       "flaggedPct": 0,
       "shingleCounts": {
         "min": 290,
         "max": 960,
-        "mean": 439
+        "mean": 444
       },
       "pairs": []
     },
@@ -62,7 +62,7 @@
       "name": "vs",
       "basePath": "/vs",
       "reportOnly": false,
-      "totalEntries": 30,
+      "totalEntries": 33,
       "flaggedEntries": 0,
       "flaggedPct": 0,
       "shingleCounts": {

@@ -276,6 +276,7 @@ export function RootIdentitySchema() {
           "https://huggingface.co/datasets/the-data-nerd/vc-deal-flow-signal",
           "https://huggingface.co/spaces/the-data-nerd/vc-deal-flow-explorer",
           "https://huggingface.co/spaces/the-data-nerd/vc-deal-flow-deepseek",
+          "https://glama.ai/mcp/servers/kindrat86/mcp-deal-flow-signal",
         ],
         knowsAbout: [
           "GitHub commit velocity",
