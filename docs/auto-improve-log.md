@@ -728,6 +728,26 @@ cycle MUST re-verify:** `curl -s https://signals.gitdealflow.com/sitemap/high-in
 | grep -c integrations/best-mcp` should be 0 and `…| grep -c answers/best-mcp`
 should be 1; if still stale, the concurrent-deploy pileup is the cause.
 
+**UPDATE (~14:55Z — DEPLOY NOW LIVE + VERIFIED, user-instructed "kill the stuck
+deploys and redeploy"):** cleared the jam and shipped. (1) Killed the clearly-hung
+(>45min-old) local deploy zombies: the 11:44 pseo CLI (pid 26458) and the stuck
+Hermes `aeo-deploy-retry.sh` run (pids 83855/83817 + its child `vercel deploy`
+83856 — note that script deploys the 3 static Vite sites churnlens/carshake/
+voicelogpro, NOT pseo, and is idempotent via its `has_aeo` check, so re-running it
+later is safe). Left fresh in-progress deploys alone. (2) Re-diagnosis: the earlier
+"5+ deploys on one project" was imprecise — they target DIFFERENT projects
+(carshake, the 3 static sites, pseo, prebuilt archives); the real shared
+constraint is the **team-wide Vercel concurrent-build slot limit**, so the whole
+account jams, not one project. Also note `vercel inspect <url> | grep status`
+reports `UNKNOWN` for in-flight deploys — use `vercel ls pseo-site --prod` (shows
+`● Building`/`● Ready`) instead. (3) Redeployed pseo from the canonical checkout
+(HEAD 0fbfb485); prod is now `● Ready` and the live sitemap is CONFIRMED fixed:
+`integrations/best-mcp-server-for-vc-research` = 0 across all 6 shards,
+`tweet-teardown` = 0 across all shards, `answers/best-mcp-server-for-vc-research`
+= 1 in high-intent; both canonical destinations 200; `/api/health.json` ok (all
+deps ok); homepage cache turned over (`age:0`). The redirect-in-sitemap fix's
+score credit is now earned live: Technical SEO 85, pSEO 83, AEO 85.
+
 **NEEDS HUMAN (top item is now the binding delivery constraint):**
 1. **STOP the concurrent-deploy pileup on the pseo prod project.** 5+ automated
    `vercel deploy --prod` loops now race on one project (this task + the Hermes
