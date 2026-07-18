@@ -4,6 +4,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ReadingProgressBar from "@/components/ReadingProgressBar";
+import BackToTop from "@/components/BackToTop";
 import LaunchBanner from "@/components/LaunchBanner";
 import PixelManager from "@/components/PixelManager";
 import { RootIdentitySchema } from "@/components/RootIdentitySchema";
@@ -397,6 +399,7 @@ export default function RootLayout({
         <BreadcrumbsSchema />
       </head>
       <body className={`${inter.className} min-h-full flex flex-col bg-slate-950 text-gray-100`}>
+        <ReadingProgressBar />
         {/* Site chrome (Header, Footer, LaunchBanner, retargeting pixels,
             PostHog/RefGrow, web-vitals beacon) is gated off on iframe-embed
             surfaces — `/embed/<widget>/...` paths render only `<main>` so
@@ -433,6 +436,7 @@ export default function RootLayout({
               and DNT, no new dependency. */}
           <WebVitalsReporter />
           <CookieNotice />
+          <BackToTop />
         </NotInEmbed>
       </body>
     </html>

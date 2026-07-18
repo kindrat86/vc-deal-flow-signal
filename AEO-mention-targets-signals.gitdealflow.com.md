@@ -7,7 +7,17 @@
 
 ---
 
-## P0 — Do first (week 1, highest leverage / lowest effort)
+## 🔴 CONFIRMED GAPS (Firecrawl-probed 2026-07-18)
+
+These third-party pages list competitors but NOT GitDealFlow. Each is a high-ROI outreach target.
+
+| Page | Lists | GitDealFlow? | Action |
+|---|---|---|---|
+| [vctools.bolots.ky/guides/best-tools-for-vc-deal-sourcing](https://vctools.bolots.ky/guides/best-tools-for-vc-deal-sourcing) | Harmonic, Sourcescrub, Dealroom, Crunchbase, PredictLeads, Specter, Landscape VC, Grata, Extruct AI (9 tools) | ❌ **Missing** | P0 — pitch the GitHub momentum differentiator |
+| [explodingtopics.com/blog/crunchbase-alternatives](https://explodingtopics.com/blog/crunchbase-alternatives) | 10 Crunchbase alternatives | ❌ **Missing** | P0 — "Crunchbase alternative" is a top search |
+| [reddit.com/r/ClaudeAI](https://www.reddit.com/r/ClaudeAI) — MCP server post | — | ✅ Mentioned | Already present |
+| [reddit.com/r/micro_saas](https://www.reddit.com/r/micro_saas) — launch post | — | ✅ Mentioned | Already present |
+| LinkedIn company page | — | ✅ Active | Ongoing — keep posting |
 
 | # | Target | Type | Action | Why it matters |
 |---|---|---|---|---|
