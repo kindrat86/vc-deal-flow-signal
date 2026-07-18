@@ -1,0 +1,16 @@
+sector,startups_tracked,avg_commit_velocity_weekly,median_team_size,breakout_signals_q2,avg_time_to_fundraise_weeks,top_org_by_velocity
+Fintech,58,187,4.2,12,6.4,Stripe
+AI-ML,82,312,5.1,28,5.2,Anthropic
+DevTools,45,164,3.8,9,7.1,Vercel
+HealthTech,38,98,4.5,6,8.3,Kinsley
+ClimateTech,31,76,3.9,5,9.2,Terra
+Cybersecurity,42,143,4.1,8,6.8,Wiz
+EdTech,25,52,3.2,3,10.5,Duolingo
+LegalTech,18,67,3.6,4,8.7,Ironclad
+PropTech,22,44,3.4,2,11.2,BuildOps
+HRTech,35,88,3.7,7,7.4,Rippling
+SupplyChain,28,71,4.0,5,8.1,Flexport
+Gaming,33,124,5.3,11,6.9,Epic Games
+BioTech,20,39,4.8,3,12.0,Recursion
+InsurTech,16,55,3.5,4,7.9,Lemonade
+Defense,14,92,4.3,6,6.5,Anduril

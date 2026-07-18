@@ -1,0 +1,137 @@
+[
+  {
+    "sector": "Fintech",
+    "startups_tracked": "58",
+    "avg_commit_velocity_weekly": "187",
+    "median_team_size": "4.2",
+    "breakout_signals_q2": "12",
+    "avg_time_to_fundraise_weeks": "6.4",
+    "top_org_by_velocity": "Stripe"
+  },
+  {
+    "sector": "AI-ML",
+    "startups_tracked": "82",
+    "avg_commit_velocity_weekly": "312",
+    "median_team_size": "5.1",
+    "breakout_signals_q2": "28",
+    "avg_time_to_fundraise_weeks": "5.2",
+    "top_org_by_velocity": "Anthropic"
+  },
+  {
+    "sector": "DevTools",
+    "startups_tracked": "45",
+    "avg_commit_velocity_weekly": "164",
+    "median_team_size": "3.8",
+    "breakout_signals_q2": "9",
+    "avg_time_to_fundraise_weeks": "7.1",
+    "top_org_by_velocity": "Vercel"
+  },
+  {
+    "sector": "HealthTech",
+    "startups_tracked": "38",
+    "avg_commit_velocity_weekly": "98",
+    "median_team_size": "4.5",
+    "breakout_signals_q2": "6",
+    "avg_time_to_fundraise_weeks": "8.3",
+    "top_org_by_velocity": "Kinsley"
+  },
+  {
+    "sector": "ClimateTech",
+    "startups_tracked": "31",
+    "avg_commit_velocity_weekly": "76",
+    "median_team_size": "3.9",
+    "breakout_signals_q2": "5",
+    "avg_time_to_fundraise_weeks": "9.2",
+    "top_org_by_velocity": "Terra"
+  },
+  {
+    "sector": "Cybersecurity",
+    "startups_tracked": "42",
+    "avg_commit_velocity_weekly": "143",
+    "median_team_size": "4.1",
+    "breakout_signals_q2": "8",
+    "avg_time_to_fundraise_weeks": "6.8",
+    "top_org_by_velocity": "Wiz"
+  },
+  {
+    "sector": "EdTech",
+    "startups_tracked": "25",
+    "avg_commit_velocity_weekly": "52",
+    "median_team_size": "3.2",
+    "breakout_signals_q2": "3",
+    "avg_time_to_fundraise_weeks": "10.5",
+    "top_org_by_velocity": "Duolingo"
+  },
+  {
+    "sector": "LegalTech",
+    "startups_tracked": "18",
+    "avg_commit_velocity_weekly": "67",
+    "median_team_size": "3.6",
+    "breakout_signals_q2": "4",
+    "avg_time_to_fundraise_weeks": "8.7",
+    "top_org_by_velocity": "Ironclad"
+  },
+  {
+    "sector": "PropTech",
+    "startups_tracked": "22",
+    "avg_commit_velocity_weekly": "44",
+    "median_team_size": "3.4",
+    "breakout_signals_q2": "2",
+    "avg_time_to_fundraise_weeks": "11.2",
+    "top_org_by_velocity": "BuildOps"
+  },
+  {
+    "sector": "HRTech",
+    "startups_tracked": "35",
+    "avg_commit_velocity_weekly": "88",
+    "median_team_size": "3.7",
+    "breakout_signals_q2": "7",
+    "avg_time_to_fundraise_weeks": "7.4",
+    "top_org_by_velocity": "Rippling"
+  },
+  {
+    "sector": "SupplyChain",
+    "startups_tracked": "28",
+    "avg_commit_velocity_weekly": "71",
+    "median_team_size": "4.0",
+    "breakout_signals_q2": "5",
+    "avg_time_to_fundraise_weeks": "8.1",
+    "top_org_by_velocity": "Flexport"
+  },
+  {
+    "sector": "Gaming",
+    "startups_tracked": "33",
+    "avg_commit_velocity_weekly": "124",
+    "median_team_size": "5.3",
+    "breakout_signals_q2": "11",
+    "avg_time_to_fundraise_weeks": "6.9",
+    "top_org_by_velocity": "Epic Games"
+  },
+  {
+    "sector": "BioTech",
+    "startups_tracked": "20",
+    "avg_commit_velocity_weekly": "39",
+    "median_team_size": "4.8",
+    "breakout_signals_q2": "3",
+    "avg_time_to_fundraise_weeks": "12.0",
+    "top_org_by_velocity": "Recursion"
+  },
+  {
+    "sector": "InsurTech",
+    "startups_tracked": "16",
+    "avg_commit_velocity_weekly": "55",
+    "median_team_size": "3.5",
+    "breakout_signals_q2": "4",
+    "avg_time_to_fundraise_weeks": "7.9",
+    "top_org_by_velocity": "Lemonade"
+  },
+  {
+    "sector": "Defense",
+    "startups_tracked": "14",
+    "avg_commit_velocity_weekly": "92",
+    "median_team_size": "4.3",
+    "breakout_signals_q2": "6",
+    "avg_time_to_fundraise_weeks": "6.5",
+    "top_org_by_velocity": "Anduril"
+  }
+]

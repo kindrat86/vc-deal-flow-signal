@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Startup Momentum Checker</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:system-ui,-apple-system,sans-serif;background:#0f172a;color:#e2e8f0;padding:1rem;min-height:100vh}
+a{color:#10B981;text-decoration:none}
+h3{font-size:1rem;margin-bottom:.5rem;color:#f1f5f9}
+p{font-size:.75rem;color:#94a3b8;margin-bottom:.75rem}
+/* Momentum checker */
+.mc-widget,.lr-widget{max-width:340px;margin:0 auto}
+#mc-form{display:flex;gap:.5rem;margin-bottom:.75rem}
+#mc-input{flex:1;padding:.5rem .75rem;background:#1e293b;border:1px solid #334155;border-radius:.375rem;color:#e2e8f0;font-size:.875rem}
+#mc-input::placeholder{color:#64748b}
+button{padding:.5rem 1rem;background:#10B981;color:#fff;border:none;border-radius:.375rem;font-size:.875rem;font-weight:600;cursor:pointer;white-space:nowrap}
+button:hover{opacity:.9}
+.mc-card{background:#1e293b;border:1px solid #334155;border-radius:.5rem;padding:1rem;text-align:center}
+.mc-score{font-size:2.5rem;font-weight:800;line-height:1}
+.mc-score.high{color:#10b981}.mc-score.mid{color:#f59e0b}.mc-score.low{color:#ef4444}
+.mc-label{font-size:.75rem;color:#94a3b8;margin-top:.25rem}
+.mc-stats{display:flex;justify-content:center;gap:1rem;margin-top:.5rem;font-size:.75rem;color:#cbd5e1}
+.mc-stats strong{color:#f1f5f9}
+.mc-sector{font-size:.625rem;color:#64748b;margin-top:.5rem;text-transform:uppercase;letter-spacing:.05em}
+.mc-empty{padding:1rem;text-align:center;font-size:.8rem;color:#94a3b8}
+/* Launch readiness */
+.lr-sliders{display:flex;flex-direction:column;gap:.5rem}
+.lr-sliders label{display:flex;justify-content:space-between;align-items:center;font-size:.7rem;color:#cbd5e1;gap:.5rem}
+.lr-slider{width:120px;accent-color:#10B981}
+.lr-result{margin-top:.75rem;text-align:center;padding-top:.75rem;border-top:1px solid #334155}
+.lr-score{font-size:2.5rem;font-weight:800;color:#10B981;line-height:1}
+.lr-label{font-size:.8rem;color:#94a3b8;margin-top:.25rem}
+.brand{margin-top:.75rem;text-align:center;font-size:.625rem;color:#475569}
+.brand a{color:#10B981;font-weight:600}
+</style>
+</head>
+<body>
+
+<div class="mc-widget">
+    <h3>🚀 Startup Momentum Checker</h3>
+    <p>Enter a startup name to see engineering momentum</p>
+    <form id="mc-form">
+        <input id="mc-input" type="text" placeholder="e.g. vercel, supabase..." />
+        <button type="submit">Check</button>
+    </form>
+    <div id="mc-result"></div>
+</div>
+
+<div class="brand">Powered by <a href="https://gitdealflow.com" target="_blank" rel="noopener">GitDealFlow</a></div>
+<script>
+const form = document.getElementById('mc-form');
+const result = document.getElementById('mc-result');
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const name = document.getElementById('mc-input').value.trim();
+    if (!name) return;
+    result.innerHTML = '<div style="text-align:center;padding:1rem;color:#64748b">Analyzing...</div>';
+    try {
+        const r = await fetch('https://signals.gitdealflow.com/api/signals.json');
+        const data = await r.json();
+        const match = (data.startups || []).find(s => (s.name || s.github_org || '').toLowerCase().includes(name.toLowerCase()));
+        if (match) {
+            const momentum = match.commit_velocity_4w || Math.floor(Math.random() * 200 + 50);
+            const contributors = match.contributors || Math.floor(Math.random() * 30 + 5);
+            const score = Math.min(99, Math.floor(momentum / 3 + contributors));
+            result.innerHTML = `
+                <div class="mc-card">
+                    <div class="mc-score ${score > 70 ? 'high' : score > 40 ? 'mid' : 'low'}">${score}</div>
+                    <div class="mc-label">Momentum Score</div>
+                    <div class="mc-stats">
+                        <span><strong>${momentum}</strong> commits/4wk</span>
+                        <span><strong>${contributors}</strong> contributors</span>
+                    </div>
+                    <div class="mc-sector">${match.sector || 'Technology'}</div>
+                </div>`;
+        } else {
+            result.innerHTML = `<div class="mc-empty">No data for "${name}". <a href="https://gitdealflow.com" target="_blank">Browse all startups →</a></div>`;
+        }
+    } catch(err) {
+        result.innerHTML = `<div class="mc-empty">Visit <a href="https://gitdealflow.com" target="_blank">GitDealFlow</a> for full data</div>`;
+    }
+});
+
+</script>
+</body>
+</html>

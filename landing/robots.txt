@@ -2,6 +2,11 @@ User-agent: *
 Allow: /
 
 # AI Search Crawlers — explicitly allowed
+max-image-preview:large
+max-video-preview:-1
+max-snippet:-1
+max-image-render:Standard
+
 User-agent: GPTBot
 Allow: /
 
@@ -61,3 +66,6 @@ Sitemap: https://signals.gitdealflow.com/sitemap.xml
 # AgentCard: https://signals.gitdealflow.com/.well-known/agent-card.json
 
 Sitemap: https://gitdealflow.com/sitemap-index.xml
+
+# Image sitemap for Google Images indexing
+Sitemap: https://gitdealflow.com/image-sitemap.xml
