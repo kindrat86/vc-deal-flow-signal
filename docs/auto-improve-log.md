@@ -1,6 +1,89 @@
 # Auto-improve log
 
 Append-only log of the 6-hourly autonomous audit→improve→deploy loop
+
+## 2026-07-18 (~08:15Z) — scheduled auto-improve: SHIPPED a landing SEO fix via the INDEPENDENT deploy path (orphaned pSEO sitemap wired in)
+
+**Headline: the pseo main-vs-Hermes-growth delivery split (fully diagnosed in
+the 11:10Z run) is UNCHANGED and remains human-blocked — so instead of re-churning
+`main` (which still can't reach pseo prod), this cycle found and fixed a real,
+high-ROI defect on the LANDING site (gitdealflow.com), which deploys via a
+separate, self-contained Vercel path I can drive myself. Fix is live+verified.**
+
+**WHAT SHIPPED (landing/, deployed via `vercel deploy --prod` as sipiteno →
+project `landing`, dpl_CLo4mEvusPNP8toHQLWjL4a8DxS9, READY):**
+1. **Orphaned pSEO sitemap wired into discovery.** `landing/sitemap-pseo.xml`
+   (50 pSEO URLs — 20 city/vertical landing pages: amsterdam, austin, berlin,
+   fintech-startups, san-francisco, … + children) was **served live (200) but
+   referenced by NOTHING**: not the sitemap index (`sitemap.xml` listed only
+   sitemap-pages.xml + the signals sitemap), not robots.txt, not anywhere in the
+   repo (`grep -rl` empty). So all 20 city/vertical landing pages — all
+   `index,follow`, self-canonical, real 5.6–6.6KB content, live 200 — were
+   **undiscoverable via sitemap crawling.** Added `sitemap-pseo.xml` as a child of
+   the sitemap index. VERIFIED live: index now lists it (application/xml, 200).
+2. **Refreshed stale `sitemap-pages.xml` lastmods.** All 17 core-page entries were
+   stamped 2026-07-06 (15) or 2026-04-19 (2) despite the 07-17 world-class overhaul
+   (f791bd9) having modified every one. Corrected each `<lastmod>` to its TRUE git
+   commit date (11 pages → 07-17, perfect-webinar/dream-100/content-strategy →
+   07-09, llms/llms-full/ai.txt → 07-13) and bumped the index entry to 07-17, so
+   engines re-crawl the overhauled content instead of treating it as 11 days stale.
+   Dates are per-file git truth, not fabricated. VERIFIED live (homepage lastmod
+   now 07-17).
+
+All three sitemaps `xmllint`-clean. Commit `bf710de` on `main` (pushed); landing
+deployed via CLI (only landing/ changed, so no pseo pipeline involved).
+
+**AUDIT (live curl sweep, 08:07Z) — pseo core surfaces still HEALTHY:**
+`/api/health.json` ok, homepage, `/sitemap.xml` (valid index, 9 children),
+`/sitemap/*`, `/robots.txt`, `/api/signals.json`, `/.well-known/{mcp,ai-plugin}.json`,
+`/llms.txt`, `/benchmarks/commit-velocity` all 200. `/report` still 404 (growth
+branch made it indexable; not live). Benchmark URLs STILL absent from live
+`/sitemap/core.xml` (fa88fe6 still not deployed — pseo main path dead).
+
+**DELIVERY SPLIT — status re-verified, UNCHANGED (still human-blocked):**
+- gh Actions PAT still **HTTP 403** on kindrat86/vc-deal-flow-signal (no Actions
+  scope) — `deploy-pseo.yml` still untriggerable; Track-A `main` still can't reach
+  pseo prod.
+- Hermes checkout `~/Downloads/gitdealflow` still on stale
+  `growth/2026-07-17-signals-gitdealflow` (HEAD bb030b0), now **34 commits behind
+  origin/main** (I ran `git fetch origin` there — updated its cached origin/main to
+  abfcb97, but did NOT touch its working branch / rebase; the swarm owns it).
+- The same stuck `vercel deploy --prod` (pid 37991, from the gitdealflow checkout)
+  is **still running** and pseo prod homepage still serves ~8.5h-old edge cache
+  (age ~30662) — no new pseo build has landed. Did not touch it (another agent's).
+
+**Scores (Δ vs 07-18 11:10Z; landing fixes now live, pseo delivery unchanged):**
+Technical SEO **85 (↑3** — 50 orphaned URLs restored to sitemap discovery; stale
+lastmods corrected) · On-page 88 (=) · Off-page 62 (=) · pSEO **84 (↑2** — landing
+city/vertical pSEO pages now crawlable via index) · AEO 84 (=) · GEO 79 (=) · AIO
+88 (=) · E-E-A-T 74 (=) · SMO 70 (=) · CRO 74 (=) · ASO 35 (=).
+
+**DEPLOYED THIS RUN: landing** (sitemap index + sitemap-pages.xml), live+verified.
+**pseo: nothing** (delivery still blocked; adding to `main` would only accumulate
+undeployed — avoided per diminishing-returns rule).
+
+**NEEDS HUMAN (carried forward — the pseo delivery items are still BLOCKING all
+Track-A pseo value):**
+1. **Decide the pseo deploy source of truth** (two pipelines, one prod project, no
+   coordination). Options unchanged from 11:10Z run: (a) make the Hermes swarm
+   canonical AND have it `git fetch && rebase origin/main` each cycle; (b) fix
+   Track-A deploy + stop swarm deploying; (c) swarm opens PR `growth/* → main`,
+   main is sole deployer.
+2. **Refresh + reconcile the Hermes checkout** `~/Downloads/gitdealflow` (34 behind
+   origin/main; its daily growth branches are cut from a stale 07-14 base, so pseo
+   prod ships ~4-day-old content no matter what the swarm does).
+3. **Back up `growth/2026-07-17-signals-gitdealflow`** (13 SEO commits, local-only,
+   still not pushed to origin).
+4. **Grant the gh PAT `actions:read+write`** on kindrat86/vc-deal-flow-signal (or
+   retire the `gh workflow run deploy-pseo.yml` deploy step — currently unusable).
+5. Stuck Hermes `vercel deploy --prod` (pid 37991) — worth a human glance / kill.
+
+**Still blocked on human (unchanged):** retargeting/pixel IDs; BSKY_HANDLE/
+BSKY_APP_PASSWORD (social-bluesky); GA4 measurement id; Otterly/GEO probe
+ANTHROPIC_API_KEY; IndexNow 400; guest-essay/curator outbound (human-only);
+Wikipedia autoconfirm; named advisory board (cannot fabricate); FOUR retired
+founding-rate Stripe payment links still active — manual deactivation
+(stripe/payment-links.md); the stashed `stash@{0}` stale WIP awaiting drop.
 (scheduled task `gitdealflow-audit-improve-deploy` on the Mac mini).
 Each run MUST read this before changing anything: never redo or revert
 prior entries, never regenerate removed surfaces, keep prior judgment calls.
