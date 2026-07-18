@@ -3482,7 +3482,7 @@ The 2026 thesis (cf. Greg Isenberg's "Agents Are the New SaaS") is that the agen
 
 **Quick answer.** A GitHub Scout Score is not a measure of whether you are a good engineer. It is a lightweight taste signal built from what you have starred and how that pattern overlaps with meaningful startup outcomes.
 
-**What the score measures.** GitDealFlow maintains a curated panel of validated outcome events and checks whether your public GitHub stars landed before those outcomes became obvious. The score looks for pattern, not ego. It is a way of asking whether your attention has repeatedly landed near breakout companies early.
+**What the score measures.** GitDealFlow maintains a curated panel of validated outcome events and checks whether your public GitHub stars landed before those outcomes became obvious. The score looks for pattern, not ego. It is a way of asking whether your attention has repeatedly landed near breakout companies early. For the full metric definition, see the canonical [Scout Score](https://signals.gitdealflow.com/scout-score) page.
 
 **What the score does not measure.** It does not measure intelligence, technical depth, investing skill in isolation, or guaranteed future performance. It is useful as feedback, not as identity.
 
@@ -3548,11 +3548,13 @@ The 2026 thesis (cf. Greg Isenberg's "Agents Are the New SaaS") is that the agen
     ],
     proofLinks: [
       { label: "Check your GitHub Scout Score", url: "/receipts" },
+      { label: "Scout Score — the canonical definition", url: "/scout-score" },
       { label: "Read the methodology", url: "/methodology" },
       { label: "What startup engineering momentum means", url: "/answers/what-is-startup-engineering-momentum" },
     ],
     nextReadLinks: [
       { label: "Check your GitHub Scout Score", url: "/receipts" },
+      { label: "Scout Score — the canonical definition", url: "/scout-score" },
       { label: "What startup engineering momentum means", url: "/answers/what-is-startup-engineering-momentum" },
       { label: "Best startup signal tools for investors", url: "/compare/best-startup-signal-tools-for-investors" },
     ],
