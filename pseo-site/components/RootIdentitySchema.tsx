@@ -189,6 +189,8 @@ export function RootIdentitySchema() {
         additionalType: "https://www.wikidata.org/wiki/Q4830453",
         name: ORG_NAME_MULTILINGUAL,
         description: ORG_DESC_MULTILINGUAL,
+        disambiguatingDescription:
+          "VC Deal Flow Signal (GitDealFlow) is an agent-native, pseudonymous engineering-velocity signal dataset derived from public GitHub data. It tracks commit velocity, contributor growth, and repository expansion across venture-backed startups, surfacing fundraises 3–6 weeks before pitch decks circulate. It is NOT a VC fund, accelerator program, startup database (Crunchbase, PitchBook, CB Insights), investment recommendation platform, or affiliate-marketing service. The product is exposed via MCP, A2A, NLWeb, and OpenAPI — designed for AI agents, VC analysts, and quantitative researchers who query it programmatically without a human dashboard.",
         legalName: "VC Deal Flow Signal (GitDealFlow)",
         alternateName: ["GitDealFlow", "VC Deal Flow Signal (GitDealFlow)"],
         url: APEX,

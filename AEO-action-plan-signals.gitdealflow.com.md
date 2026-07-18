@@ -29,10 +29,11 @@ This site is in the **top ~2% of technical AEO maturity** I've audited. Everythi
 
 | What we checked | Result | Status |
 |---|---|---|
-| `/scout-score` page | **404 → BUILT** — canonical `/scout-score` page shipped with `DefinedTerm` + `DefinedTermSet` + `TechArticle` + `FAQPage` JSON-LD. Local build passes, page prerenders as static content, all schema types verified live. | ✅ Built (2026-07-18) |
-| `VideoObject` on `/watch` per-video pages | **✅ Perfect** — YouTube `VideoObject` + `Clip[]` chapters + `SeekToAction` + transcript on every `/watch/[slug]` | Already done |
-| `/watch` index page | **No `VideoObject`** — correct, it's an index/catalog page linking to 5 schema-rich video pages | Not a bug |
-| "Code-Side Sourcing" mentions on `/about` | **0 mentions → FIXED** — hero paragraph names "Code-Side Sourcing" as proprietary category with link | ✅ Fixed |
+| `/scout-score` page | **404 → BUILT** — canonical page with `DefinedTerm` + `DefinedTermSet` + `TechArticle` + `FAQPage` | ✅ Built (2026-07-18) |
+| `VideoObject` on `/watch` per-video pages | **✅ Perfect** — YouTube `VideoObject` + `Clip[]` + `SeekToAction` + transcript on every `/watch/[slug]` | Already done |
+| "Code-Side Sourcing" on `/about` | **0 → 2 mentions** — hero paragraph names proprietary category with link | ✅ Fixed |
+| **Canonical AI-description block** on `/about` | **Did not exist → BUILT** — data-speakable block supplies exact one-paragraph summary for AI quoting | ✅ Built (commit pending deploy) |
+| Self-served `aggregateRating` | **Was on every page → REMOVED** — 3 emitters, Google spam risk eliminated | ✅ Fixed |
 | `/alternatives/crunchbase`, `/alternatives/harmonic-ai`, `/alternatives/pitchbook`, `/alternatives/tracxn` | **All HTTP 200** ✅ Already shipped | No action needed |
 | YouTube channel | **4 videos** live with full metadata, chapters, tags, descriptions | Already done |
 | **Self-served `aggregateRating`** (Module 3.4 check 5) | **Was on every page + contradictory count on /integrations/cursor → REMOVED** | ✅ Fixed (commit `83ae5e92`) — see below |
