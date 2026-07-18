@@ -2155,7 +2155,7 @@ function generateVsComparison(a: Competitor, b: Competitor): Comparison {
   const slug = `${a.slug}-vs-${b.slug}`;
   return {
     slug,
-    title: `${a.name} vs ${b.name} for Deal Sourcing (2026)`,
+    title: `${a.name} vs ${b.name} for Deal Sourcing`,
     description: `Compare ${a.name} and ${b.name} for startup deal sourcing: lead time, pricing, coverage, and investor fit.`,
     h1: `${a.name} vs ${b.name}`,
     intro: `${a.name} is a ${a.type.toLowerCase()}. ${b.name} is a ${b.type.toLowerCase()}. Both help investors find deals, but through fundamentally different mechanisms. Here is how they compare across the dimensions that matter most for deal sourcing.`,
