@@ -1,14 +1,19 @@
 name: Deploy pSEO site to Vercel
 
-# Restores the "updated weekly" promise without any local machine.
-# The discover-startups workflow commits fresh data daily at 06:03 UTC;
-# this deploy bakes it into the live site every Monday, plus on demand.
+# RETIRED 2026-07-18 — the weekly Monday cron is disabled. `main` is now the
+# single source of truth for pseo and is deployed directly from the canonical
+# local checkout (~/Downloads/vc-deal-flow-signal/pseo-site → `vercel deploy
+# --prod`, project pseo-site) by the gitdealflow-audit-improve-deploy task.
+# This workflow's server-side Monday cron was a REDUNDANT second deployer that
+# raced the canonical path and contributed to the team-wide concurrent-build
+# jam. The `schedule:` trigger is removed; `workflow_dispatch` is kept only as
+# a manual break-glass path (note: it also needs the PAT to carry an `actions`
+# scope, which it currently lacks). Do NOT re-add the cron without also
+# retiring one of the two deployers — one prod project, one deployer.
 # vercel deploy needs --archive=tgz: the site has too many files for the
 # default per-file manifest (hits the 10 MB request limit).
 
 on:
-  schedule:
-    - cron: "0 7 * * 1" # Mondays 07:00 UTC, after the 06:03 data commit
   workflow_dispatch: {}
 
 concurrency:
