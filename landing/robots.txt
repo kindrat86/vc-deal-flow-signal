@@ -32,6 +32,18 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
+User-agent: Anthropic-AI
+Allow: /
+
+User-agent: Cohere-AI
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
 Sitemap: https://gitdealflow.com/sitemap.xml
 Sitemap: https://signals.gitdealflow.com/sitemap.xml
 
