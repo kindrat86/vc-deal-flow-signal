@@ -2,7 +2,11 @@
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
     <loc>https://gitdealflow.com/sitemap-pages.xml</loc>
-    <lastmod>2026-07-06</lastmod>
+    <lastmod>2026-07-17</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://gitdealflow.com/sitemap-pseo.xml</loc>
+    <lastmod>2026-07-17</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://signals.gitdealflow.com/sitemap.xml</loc>
