@@ -231,9 +231,9 @@ export default async function SectorPage({ params }: PageProps) {
         {keyTakeaway && (
           <section className="mb-8" aria-label="Key takeaway">
             <div className="rounded-lg border border-sky-900/50 bg-sky-950/30 p-5">
-              <p className="text-xs font-medium text-sky-400 uppercase tracking-wider mb-2">
-                Key Takeaway
-              </p>
+              <h2 className="text-xs font-medium text-sky-400 uppercase tracking-wider mb-2">
+                Key takeaways — at a glance
+              </h2>
               <p className="text-gray-300 text-sm leading-relaxed">
                 {keyTakeaway}
               </p>

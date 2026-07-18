@@ -96,6 +96,15 @@ export default function AlternativesIndex() {
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-4 leading-tight">
           VC Deal Flow Signal Alternatives
         </h1>
+        <p className="text-gray-300 text-base leading-relaxed mb-4">
+          In short: the alternatives compared here are the tools investors
+          already use — PitchBook, CB Insights, Dealroom, Harmonic.ai, and
+          Crunchbase alerts — and the honest difference is timing. Those tools
+          are strongest at verification after a round is public; VC Deal Flow
+          Signal ranks startups by change in 14-day GitHub commit velocity, a
+          code-side signal that has historically moved three to six weeks
+          before fundraise announcements.
+        </p>
         <p className="text-gray-400 text-base leading-relaxed mb-10">
           Head-to-head alternatives to the most common deal flow tools investors
           already use. Each comparison covers signal philosophy, lead time,

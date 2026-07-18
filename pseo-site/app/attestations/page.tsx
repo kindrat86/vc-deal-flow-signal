@@ -287,8 +287,9 @@ export default function AttestationsPage() {
           className="text-lg text-gray-300 mb-10 leading-relaxed"
           data-speakable
         >
-          Every third-party registry, indexer, and review platform that has
-          independently verified VC Deal Flow Signal — with the identifier
+          In short: the {ATTESTATIONS.length} rows on this page are every
+          third-party registry, indexer, and review platform that has
+          independently verified VC Deal Flow Signal — each with the identifier
           they assigned, the date of attestation, and a one-click verifiable
           URL. We do not list pending reviews here. If a row appears, the
           link resolves.

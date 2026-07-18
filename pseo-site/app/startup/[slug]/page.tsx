@@ -320,6 +320,15 @@ export default async function StartupPage({ params }: PageProps) {
               {trendLabel &&
                 `Trend vs. prior quarter: ${trendLabel.toLowerCase()} (was ${prevEntry?.commitVelocityChange} in ${prevEntry?.periodName}).`}
             </p>
+            <p className="mt-3 text-gray-400 text-xs leading-relaxed">
+              <dfn className="not-italic font-medium text-gray-300">
+                Engineering acceleration
+              </dfn>{" "}
+              is a sustained rise in a startup&apos;s public GitHub output —
+              commits, contributors, new repositories — relative to its own
+              baseline. It is a quantitative signal computed from public data,
+              unrelated to accelerator programs.
+            </p>
             <p className="mt-3 text-gray-600 text-xs">
               Data sourced from public GitHub activity.{" "}
               <Link

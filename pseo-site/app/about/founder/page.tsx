@@ -125,6 +125,14 @@ export default function FounderPage() {
             </span>
           </h1>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed" data-speakable>
+            In short: The Data Nerd is the pseudonymous engineer-investor who
+            built VC Deal Flow Signal and wrote its methodology paper on SSRN.
+            The anonymity is deliberate — the signal is meant to be judged on
+            reproducible public data, not on a name — so identity here means
+            persistent public anchors (the SSRN author page, ORCID, and
+            verified handles), not a face.
+          </p>
+          <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
             This is the page where you find out who I am, why I built this,
             and whether I&rsquo;m the kind of person you want signal from.
             Skim the headers if you&rsquo;re in a hurry.

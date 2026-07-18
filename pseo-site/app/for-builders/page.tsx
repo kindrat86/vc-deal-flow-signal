@@ -220,7 +220,7 @@ export default function ForBuildersPage() {
             Use this page when you want the builder-specific offer. But if your real question is proof, MCP workflow fit, or buyer-side evaluation, start with the sharper pages first.
           </p>
           <div className="flex flex-wrap gap-3">
-            <Link href="/integrations/best-mcp-server-for-vc-research" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-amber-500 text-slate-950 text-sm font-semibold hover:bg-amber-400 transition-colors">
+            <Link href="/answers/best-mcp-server-for-vc-research" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-amber-500 text-slate-950 text-sm font-semibold hover:bg-amber-400 transition-colors">
               Best MCP server for VC research →
             </Link>
             <Link href="/research" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">

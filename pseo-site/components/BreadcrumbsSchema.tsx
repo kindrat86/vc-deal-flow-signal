@@ -1,11 +1,21 @@
-import { headers } from "next/headers";
+"use client";
+
+import { usePathname } from "next/navigation";
 
 const BASE_URL = "https://signals.gitdealflow.com";
 
 /**
  * Site-wide BreadcrumbList JSON-LD. Renders on every page through the root
- * layout, derived from the request pathname injected by `proxy.ts` as the
- * `x-pathname` header.
+ * layout, derived from the route pathname via `usePathname()`.
+ *
+ * Client component ON PURPOSE (audit 2026-07-18): the previous server-side
+ * implementation awaited `headers()` to read the proxy-injected `x-pathname`
+ * header, which opted EVERY page into per-request dynamic rendering — all
+ * ISR/`revalidate` exports were silently dead and each hit was a billable
+ * serverless SSR with `private, no-store` caching. `usePathname()` resolves
+ * at prerender time for static/ISR routes (the concrete path is known for
+ * every `generateStaticParams` page), so the JSON-LD still lands in the
+ * server-rendered HTML while pages stay static/edge-cacheable.
  *
  * Audit 2026-05-08 closed the "No site-wide BreadcrumbList component" gap:
  * pages previously emitted ad-hoc breadcrumbs only in stage/sector hubs.
@@ -123,17 +133,18 @@ function labelForSegment(segment: string): string {
   }
 }
 
-export default async function BreadcrumbsSchema() {
-  const h = await headers();
-  // proxy.ts injects x-pathname for HTML page requests. Fall back to "/" if
-  // the header is absent (e.g. during prerender of the homepage during build).
-  const pathname = h.get("x-pathname") ?? "/";
+export default function BreadcrumbsSchema() {
+  // Route pathname (no query/hash). Fall back to "/" defensively — App Router
+  // always provides a value, but the Pages-Router compat type is nullable.
+  const pathname = usePathname() ?? "/";
 
   // Skip homepage — a single-item BreadcrumbList is redundant with the
   // sitelink/Organization graph already emitted by RootIdentitySchema.
   if (pathname === "/" || pathname === "") return null;
 
-  // Skip API/asset/internal paths.
+  // Skip API/asset/internal paths, plus Next internals such as the
+  // prerendered /_not-found shell.
+  if (pathname.startsWith("/_")) return null;
   if (SKIP_PREFIXES.some((prefix) => pathname.startsWith(prefix))) return null;
 
   // Strip query/hash if any made it into the header.

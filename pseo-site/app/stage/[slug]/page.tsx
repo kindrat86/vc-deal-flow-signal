@@ -159,9 +159,9 @@ export default async function StagePage({ params }: PageProps) {
             className="mt-6 rounded-lg border border-slate-800 bg-slate-900/60 p-4"
             aria-label="TL;DR"
           >
-            <p className="text-xs font-semibold text-sky-400 uppercase tracking-wider mb-2">
-              TL;DR
-            </p>
+            <h2 className="text-xs font-semibold text-sky-400 uppercase tracking-wider mb-2">
+              TL;DR — At a glance
+            </h2>
             <p className="text-gray-300 text-sm leading-relaxed">
               We rank {startups.length} {name.toLowerCase()} startups by GitHub
               engineering acceleration for {period.name}. {top.name} tops the list

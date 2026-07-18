@@ -66,18 +66,43 @@ export const LOCALE_TOPICS: LocaleTopic[] = [
     body: `## 三个核心信号
 
 1. **提交速率（Commit Velocity）**：14 天滚动窗口内默认分支的提交数量。是基线指标。
-2. **提交速率变化（Δ Velocity）**：相邻两个 14 天窗口的百分比变化。这是排名信号 —— 持续加速通常在融资公告前 3-6 周出现。
-3. **贡献者增长（Contributor Growth）**：6 周窗口内独立提交者数量的变化。指示团队扩张。
+2. **提交速率变化（Δ Velocity）**：相邻两个 14 天窗口的百分比变化。这是排名信号 —— 持续加速通常在融资公告前 3-6 周出现。例如：本期 40 次提交、上期 20 次，即 +100% 的速率变化。
+3. **贡献者增长（Contributor Growth）**：6 周窗口内独立提交者数量相对前一个 6 周窗口的变化。指示团队扩张。
 
-## 数据来源
+## 数据管道
 
-仅使用公开的 GitHub REST + GraphQL API。数据集以 CC BY 4.0 许可开放下载。机器人账号（Renovate、Dependabot、github-actions[bot] 等）按句柄后缀自动剔除。
+主数据源为 GitHub API v3。管道先通过 \`search/repositories\` 端点在 20 个行业主题簇（如 \`machine-learning\`、\`fintech\`、\`cybersecurity\`）中发现活跃的初创组织，再按组织拉取 \`stats/commit_activity\`（52 周历史，两个连续周求和得到 14 天数值）与 \`contributors\` 端点的数据。
+
+**过滤规则**：剔除大型科技公司（Google、Microsoft、Meta 等）与大型开源基金会，目标覆盖 Pre-seed 至 Series B 阶段的公司。地理区域取自 GitHub 组织资料页的 location 字段，映射为 US / UK / EU / APAC / Canada / LATAM / MENA 七个大区。
+
+## 信号分类
+
+每个组织按驱动加速的指标被归入四种信号类型之一：
+
+| 信号类型 | 判定阈值 |
+| --- | --- |
+| Engineering hiring burst（工程招聘潮） | 贡献者增长率超过 50% |
+| Infrastructure buildout（基础设施建设） | 30 天内新建仓库 ≥ 3 个 |
+| Deploy frequency spike（部署频率激增） | 提交速率上升 ≥ 150% |
+| Framework migration（框架迁移） | 不属于以上三类的普遍加速 |
+
+## 3.4× 复合发现
+
+在 SSRN 论文的 219 起已确认融资样本中，最具预测力的复合指标是：14 天提交速率加速 **加上** 低头部贡献者集中度（同窗口基尼系数低于 0.30）。同时满足两个条件的组织，60 天内宣布 Series A 的可能性是仅有高加速组织的 **3.4 倍** —— 速率重要，速率的"形状"更重要。
+
+## 数据来源与更新
+
+仅使用公开的 GitHub REST + GraphQL API。数据集以 CC BY 4.0 许可开放下载。机器人账号（Renovate、Dependabot、github-actions[bot] 等）按句柄后缀自动剔除。数据每周一早晨刷新：重拉最近 52 周提交历史、重算全部指标、重建行业排名。
+
+## 已知局限
+
+部分初创公司的代码主要在私有仓库，本信号只覆盖公开工程活动；提交量不等于代码质量（通过对比自身基线而非绝对值来缓解）；工程加速是牵引力的领先指标，不构成投资建议。
 
 ## 验证
 
 任何外部分析师可在 15 分钟内复现已发表的所有数字。复现工具包提供 \`curl\` + \`jq\` 单行命令。`,
     englishLinkLabel: "完整方法论 (英文)",
-    readTimeLabel: "约 3 分钟阅读",
+    readTimeLabel: "约 5 分钟阅读",
   },
   {
     locale: "zh",

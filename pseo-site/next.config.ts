@@ -170,6 +170,16 @@ const nextConfig: NextConfig = {
         destination: "/answers/best-mcp-server-for-vc-research",
         permanent: true,
       },
+      {
+        // /free was a soft-404: the homepage CTA "Get the Sunday issue"
+        // linked here, but no route file existed — Next.js served the 404
+        // page body with a 200 status + self-canonical, creating a
+        // duplicate of the homepage title (audit C5) and an indexable
+        // soft-404 (audit T6). Redirect to the actual free weekly issue.
+        source: "/free",
+        destination: "/predicted",
+        permanent: true,
+      },
       // Showdown family removed 2026-06-10: ~1,582 statically generated
       // company-pair pages were 100% near-duplicates (audit:pseo) and
       // already noindexed. Slugs don't map 1:1 to /vs (different

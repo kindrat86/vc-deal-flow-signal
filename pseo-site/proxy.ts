@@ -66,9 +66,12 @@ function isCanonicalOrAllowedHost(host: string | null): boolean {
  *   depth on top of Vercel's domain-level redirect (see memory entry
  *   `feedback_vercel_json_host_redirect_unreliable.md` — the platform-level
  *   rule has historically silently failed; this is the layer that survives).
- * - `x-pathname: <pathname>` — forwarded request header consumed by the
- *   site-wide `<BreadcrumbsSchema/>` server component to emit BreadcrumbList
- *   JSON-LD from the layout (closes audit gap "No site-wide BreadcrumbList").
+ * - `x-pathname: <pathname>` — forwarded request header available to server
+ *   components that need the resolved path. NOTE: `<BreadcrumbsSchema/>` no
+ *   longer reads it — awaiting `headers()` in the root layout forced every
+ *   page into per-request dynamic rendering (audit 2026-07-18); breadcrumbs
+ *   now derive the path client-side via `usePathname()`. Do NOT reintroduce
+ *   a `headers()` read in the layout tree.
  * - `Link: <canonical>; rel="canonical"` — explicit canonical for crawlers
  *   that skip HTML parsing (Google, Bing do read this).
  * - `X-Robots-Tag: index, follow` — belt-and-suspenders indexing directive.
@@ -150,10 +153,11 @@ export function proxy(request: NextRequest) {
   const queryOverride = request.nextUrl.searchParams.get("format") === "agent";
   const agentBotToken = detectedBot ?? (queryOverride ? "manual" : null);
 
-  // Always forward the resolved pathname so layout-level server components
-  // (notably <BreadcrumbsSchema/>) can build URL-derived JSON-LD without
-  // their own access to NextRequest. Combined with the agent-bot header when
-  // present.
+  // Always forward the resolved pathname so route-level server components
+  // can read it without their own access to NextRequest. Layout-level
+  // components must NOT consume it via headers() — that forces site-wide
+  // dynamic rendering (see BreadcrumbsSchema, now usePathname-based).
+  // Combined with the agent-bot header when present.
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set("x-pathname", pathname);
 

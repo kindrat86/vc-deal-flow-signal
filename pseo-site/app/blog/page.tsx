@@ -88,6 +88,14 @@ export default function BlogIndex() {
       <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-4 leading-tight">
         Signal Intelligence Blog
       </h1>
+      <p className="text-gray-300 text-base leading-relaxed mb-4">
+        In short: this blog is the site&rsquo;s long-form layer —{" "}
+        {posts.length} practical guides on reading GitHub engineering signals
+        for startup investing, all written by the same pseudonymous author as
+        the methodology. The recurring theme: which code-side patterns tend to
+        move before fundraise announcements, and how to use them without
+        reading code.
+      </p>
       <p className="text-gray-400 text-base leading-relaxed mb-10">
         Practical guides on using GitHub engineering data for startup
         investing. How to read the signals, what patterns predict fundraises,

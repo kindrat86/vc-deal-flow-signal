@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { after } from "next/server";
+import { checkRateLimit, getClientIp, rateLimitHeaders } from "@/lib/rate-limit";
+import { isAllowedOrigin } from "@/lib/validation";
 import { isNonceUsed, markNonceUsed } from "@/lib/runtime-cache";
 import { isExcluded } from "@/lib/excluded-emails";
 import { pickAudienceId } from "@/lib/resend-audience";
@@ -143,6 +145,26 @@ async function addToAudience(email: string, sector: string) {
 }
 
 export async function POST(req: NextRequest) {
+  // Guards mirror app/api/subscribe/route.ts (audit 2026-07-18): this route
+  // fires an admin email + Resend audience write, so it needs the same
+  // origin allowlist, per-IP rate limit, and honeypot — the 7-day dedup
+  // nonce below stays as the secondary guard.
+  if (!isAllowedOrigin(req)) {
+    return NextResponse.json(
+      { ok: false, error: "forbidden" },
+      { status: 403 },
+    );
+  }
+
+  const ip = getClientIp(req);
+  const rl = checkRateLimit(`firstlook-intent:${ip}`, 5, 60_000);
+  if (!rl.allowed) {
+    return NextResponse.json(
+      { ok: false, error: "rate_limited" },
+      { status: 429, headers: rateLimitHeaders(rl) },
+    );
+  }
+
   let body: unknown;
   try {
     body = await req.json();
@@ -153,11 +175,18 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const { email, sector, source } = (body || {}) as {
+  const { email, sector, source, website } = (body || {}) as {
     email?: unknown;
     sector?: unknown;
     source?: unknown;
+    website?: unknown;
   };
+
+  // Honeypot: the /firstlook form includes a visually-hidden "website" field.
+  // Bots that fill it get a fake success and no side effects.
+  if (typeof website === "string" && website.trim() !== "") {
+    return NextResponse.json({ ok: true });
+  }
 
   if (typeof email !== "string" || !EMAIL_RX.test(email) || email.length > 200) {
     return NextResponse.json(

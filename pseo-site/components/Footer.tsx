@@ -126,8 +126,9 @@ export default function Footer() {
         </div>
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-6 mt-6 border-t border-slate-800">
           <p className="text-gray-400 text-sm max-w-md leading-relaxed">
-            VC Deal Flow Signal tracks GitHub engineering acceleration as a
-            leading indicator of startup momentum. Data is updated weekly.
+            VC Deal Flow Signal is a free public dataset that tracks GitHub
+            engineering acceleration as a leading indicator of startup
+            momentum. Data is updated weekly.
           </p>
           <nav aria-label="Footer — Legal" className="flex flex-wrap items-center gap-4 text-sm text-gray-400">
             <Link href="https://gitdealflow.com" className="hover:text-gray-300 transition-colors">Main Site</Link>
