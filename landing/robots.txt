@@ -49,7 +49,7 @@ Allow: /
 User-agent: Bytespider
 Allow: /
 
-Sitemap: https://gitdealflow.com/sitemap.xml
+Sitemap: https://gitdealflow.com/sitemap-index.xml
 Sitemap: https://signals.gitdealflow.com/sitemap.xml
 
 # AI agent discovery files
