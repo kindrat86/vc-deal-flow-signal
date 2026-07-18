@@ -2459,7 +2459,7 @@ export const starsCases: StarsCase[] = [
     raiseDate: "2024-07-15",
     leadInvestor: "Andreessen Horowitz",
     timeToMoney: "LLM proxy adoption + multi-provider tooling led the seed",
-    headline: "LiteLLM — LLM proxy to a $5M a16z seed",
+    headline: "LiteLLM: LLM Proxy to a $5M a16z Seed",
     tagline:
       "LiteLLM became the default multi-provider LLM proxy before a16z led the $5M seed.",
     tldr:
