@@ -230,6 +230,27 @@ export const competitors: Record<string, CompetitorInfo> = {
       "No individual-investor SaaS access",
     ],
   },
+  "fund-momentum": {
+    key: "fund-momentum",
+    name: "Fund Momentum",
+    url: "https://github.com/schneidavie/fundmomentum",
+    tagline: "MCP server for investor-side VC fund signals — match startups to active funds.",
+    signalType: "Fund/investor-side signals (GP activity, deployment status, thesis)",
+    leadTime: "Current fund data (no fundraise-prediction lead time)",
+    pricing: "Free API manifest; Starter $49/mo, Pro $299/mo, Agent $0.01/call, Enterprise custom",
+    coverage: "960+ active VC funds (raised since Sept 2024)",
+    freeTier: "API manifest only",
+    strengths: [
+      "Deep investor-side data — 960+ active funds, GP signals, partner theses",
+      "Native MCP server, queryable directly from Claude or Cursor",
+      "Usage-based Agent tier ($0.01/call) fits automated agent workflows",
+    ],
+    weaknesses: [
+      "Fund-side only — surfaces which funds are active, not which companies are about to raise",
+      "No fundraise-prediction lead time; it reflects current fund data",
+      "Proprietary API (not open-source); no company-level engineering signal",
+    ],
+  },
 };
 
 /**
@@ -237,6 +258,27 @@ export const competitors: Record<string, CompetitorInfo> = {
  * Each entry produces /vs/{a}-vs-{b} with a dedicated template.
  */
 export const competitorVsPairs: CompetitorVs[] = [
+  {
+    slug: "fund-momentum-vs-harmonic-ai",
+    a: "fund-momentum",
+    b: "harmonic-ai",
+    verdict:
+      "Both are AI-accessible sourcing tools that read opposite sides of the market: Fund Momentum profiles the 960+ active VC funds (who is deploying, into what thesis), while Harmonic.ai pattern-matches founding teams at incorporation. Neither measures what a company is actually building right now — for engineering-acceleration lead time before a round, pair either with a code-side signal like VC Deal Flow Signal.",
+  },
+  {
+    slug: "fund-momentum-vs-forager-ai",
+    a: "fund-momentum",
+    b: "forager-ai",
+    verdict:
+      "Fund Momentum indexes the investor side (fund activity, GP theses); Forager.ai indexes the company side via web, social, and hiring NLP signals. Fund Momentum answers 'which funds are active for this thesis'; Forager answers 'which companies are showing growth chatter'. Both are current-state reads — for a leading engineering signal ahead of the round, add VC Deal Flow Signal.",
+  },
+  {
+    slug: "fund-momentum-vs-crunchbase",
+    a: "fund-momentum",
+    b: "crunchbase",
+    verdict:
+      "Crunchbase is a broad post-announcement company database; Fund Momentum is a narrow, MCP-native index of active VC funds and their deployment signals. Crunchbase tells you what already happened; Fund Momentum tells you which investors are moving now. Neither predicts a company's fundraise — that gap is exactly what engineering-momentum signals fill.",
+  },
   {
     slug: "harmonic-ai-vs-dealroom",
     a: "harmonic-ai",

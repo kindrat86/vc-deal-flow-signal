@@ -33,6 +33,72 @@ export interface Comparison {
 
 export const comparisons: Comparison[] = [
   {
+    slug: "vc-deal-flow-signal-vs-fund-momentum",
+    title: "VC Deal Flow Signal vs Fund Momentum for VC Deal Sourcing",
+    description:
+      "Compare VC Deal Flow Signal and Fund Momentum: engineering-momentum signals on companies vs investor-side signals on VC funds, lead time, MCP access, and pricing.",
+    h1: "VC Deal Flow Signal vs Fund Momentum",
+    intro:
+      "VC Deal Flow Signal and Fund Momentum are both MCP-native tools an AI assistant can query for venture sourcing, but they read opposite sides of the market. Fund Momentum profiles active VC funds — who is deploying capital and into what thesis. VC Deal Flow Signal tracks the companies themselves, measuring real-time GitHub engineering acceleration to flag startups weeks before they raise. They answer different questions, and for most sourcing workflows they are complementary rather than substitutes.",
+    sections: [
+      {
+        heading: "What each one signals",
+        body: "Fund Momentum is investor-side: it indexes 960+ active VC funds and surfaces GP activity, deployment status, partner backgrounds, and thesis tags. It answers 'which investors are active for this kind of company right now?' VC Deal Flow Signal is company-side: it tracks commit velocity, contributor growth, and repository expansion from public GitHub data to answer 'which companies are building at an accelerating pace right now?' One maps the capital; the other maps the momentum.",
+      },
+      {
+        heading: "Lead time",
+        body: "Fund Momentum reflects current fund data — it makes no fundraise-prediction or lead-time claim; it tells you the present state of the investor landscape. VC Deal Flow Signal is explicitly a leading indicator: engineering acceleration typically shows up 3–6 weeks (and historically up to 6–12 weeks) before a round is announced. If your goal is to reach a company before the round is priced, the code-side signal is the one with lead time.",
+      },
+      {
+        heading: "Access and openness",
+        body: "Both expose a Model Context Protocol server, so either can be wired into Claude Desktop, Claude Code, or Cursor. Fund Momentum is a proprietary authenticated API (X-API-Key), with a free API manifest and paid call tiers. VC Deal Flow Signal publishes an open-source MCP server and a free weekly Signal Report, with a low-cost dashboard for full rankings — a lighter lift for a solo angel, scout, or emerging manager to try.",
+      },
+      {
+        heading: "Pricing",
+        body: "Fund Momentum runs a usage model: free API manifest, Starter at $49/month (1,000 calls), Pro at $299/month (10,000 calls), an Agent tier at $0.01/call with no subscription, and custom Enterprise. VC Deal Flow Signal offers a free Signal Report and a dashboard at EUR 9.97/month during beta, plus the open-source MCP for self-hosting. For low-volume individual sourcing, VC Deal Flow Signal is the cheaper entry; for high-volume automated fund research, Fund Momentum's per-call Agent tier scales differently.",
+      },
+      {
+        heading: "Which to use",
+        body: "Use Fund Momentum when the question is about capital — which funds are deploying, which GPs fit a thesis, who to approach for a co-invest. Use VC Deal Flow Signal when the question is about companies — which technical startups are accelerating and likely to raise soon. Many sourcing teams run both: Fund Momentum to map the investor side and VC Deal Flow Signal to catch the company-side inflection first.",
+      },
+    ],
+    featureTable: {
+      tools: ["VC Deal Flow Signal", "Fund Momentum"],
+      features: [
+        { feature: "Signal side", values: { "VC Deal Flow Signal": "Company (engineering momentum)", "Fund Momentum": "Investor (VC fund activity)" } },
+        { feature: "Lead time", values: { "VC Deal Flow Signal": "3–6 weeks before raise", "Fund Momentum": "Current data (no lead time)" } },
+        { feature: "MCP server", values: { "VC Deal Flow Signal": "Yes (open-source)", "Fund Momentum": "Yes (proprietary API)" } },
+        { feature: "Coverage", values: { "VC Deal Flow Signal": "20 sectors, public GitHub", "Fund Momentum": "960+ active VC funds" } },
+        { feature: "Entry pricing", values: { "VC Deal Flow Signal": "Free / EUR 9.97/mo", "Fund Momentum": "Free manifest / $49/mo" } },
+        { feature: "Best for", values: { "VC Deal Flow Signal": "Finding companies before the round", "Fund Momentum": "Mapping which funds are active" } },
+      ],
+    },
+    verdict:
+      "These are complementary, not competing. Fund Momentum is the better index of the investor side — active funds, GP theses, deployment status. VC Deal Flow Signal is the only one of the two with a leading, company-side signal: engineering acceleration weeks before a fundraise. If you have to pick one for pre-round sourcing of technical startups, pick the code-side signal; if you're mapping capital, pick Fund Momentum. Most serious sourcing stacks use both.",
+    relatedSectors: ["developer-tools", "data-infrastructure", "ai-ml"],
+    faqs: [
+      {
+        question: "Is Fund Momentum a competitor to VC Deal Flow Signal?",
+        answer:
+          "Only loosely. Fund Momentum signals investor-side activity across 960+ VC funds; VC Deal Flow Signal signals company-side engineering momentum to predict fundraises. They read opposite sides of a deal and are most useful together.",
+      },
+      {
+        question: "Which one gives earlier warning of a fundraise?",
+        answer:
+          "VC Deal Flow Signal. It is a leading indicator — engineering acceleration typically precedes a round by 3–6 weeks. Fund Momentum reflects current fund data and makes no lead-time claim.",
+      },
+      {
+        question: "Can I use both from an AI assistant?",
+        answer:
+          "Yes. Both ship a Model Context Protocol server, so Claude or Cursor can query Fund Momentum for active funds and VC Deal Flow Signal for accelerating companies in the same workflow.",
+      },
+    ],
+    proofLinks: [
+      { label: "Read the methodology", url: "/methodology" },
+      { label: "VC Deal Flow Signal MCP server", url: "/mcp" },
+    ],
+  },
+  {
     slug: "best-deal-flow-tools-angel-investors",
     title: "Best Deal Flow Tools for Angel Investors (2026)",
     description:
