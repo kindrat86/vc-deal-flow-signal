@@ -781,10 +781,30 @@ exactly one routine deployer:
   action: either remove/relocate `~/Downloads/gitdealflow` once confirmed fully
   merged into `main`, or ensure no swarm agent runs `vercel deploy` from it.
 
+**UPDATE (~15:25Z — swarm checkout REMOVED, user-instructed):** `~/Downloads/
+gitdealflow` (the 2nd checkout Vercel-linked to the same pseo project) was
+`rm -rf`'d, closing the last redundant-pseo-deploy vector. It was NOT fully
+merged (contradicting the earlier "remove once merged" precondition), so a full
+verified backup was taken FIRST — it held ~25 unpushed commits (local `main`
+ahead 2: f36b018 AEO proxy + 9207bc7 Fund-Momentum pages; local-only branches
+`growth/2026-07-17-signals-gitdealflow` 13 commits, `growth/2026-07-17-gitdealflow`
+8, +2 with 1 each) plus uncommitted working-tree files. Backup:
+**`~/gitdealflow-swarm-backup-2026-07-18.bundle`** (26M, `git bundle --all`,
+verified "complete history", 310 refs incl. `refs/stash` of the uncommitted
+files). Restore via `git clone <bundle> <dir>`. No process was actively using
+the checkout (the transient PIDs seen were the audit's own lsof/git children,
+which inherited the checkout as cwd); nothing recreated the dir after removal.
+
 **NEEDS HUMAN:**
-1. Remove/relocate the dormant `~/Downloads/gitdealflow` swarm checkout (see the
-   redundancy-vector note above) — the last remaining way a second pseo deploy
-   could appear. Low urgency (nothing schedules it today).
+1. **Update the Hermes SEO-swarm skills that still point pseo deploys at the
+   removed `~/Downloads/gitdealflow`** — `~/.hermes/skills/isenberg-pseo/SKILL.md`
+   L531 (`cd ~/Downloads/gitdealflow/pseo-site && vercel deploy …`) + refs in
+   `isenberg-pseo/references/portfolio-domain-inventory.md`, `devops/saas-deploy-
+   ops/...`, `organic-growth-engine/...`. A swarm agent running those now ERRORS
+   on the pseo step (fails safe — no redundant deploy), but the docs are stale.
+   Fix = drop the pseo-deploy step from those skills (pseo is owned by this task's
+   canonical checkout). NOT auto-edited: separate system + whether the swarm
+   should ever deploy pseo is a human call.
 - Minor: `/feed.json` (blog) lacks a `hubs` array while `/rss.xml` advertises 3
   WebSub hubs — JSON Feed 1.1 supports `hubs` for parity. Left unfixed this cycle
   (low ROI, avoid churn); noted for a future run.
