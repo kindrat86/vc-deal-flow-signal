@@ -137,14 +137,14 @@ const jsonLd = {
         ],
       },
     },
-    {
-      "@type": "SoftwareApplication",
-      name: "VC Deal Flow Signal MCP server (Cursor)",
-      operatingSystem: "Cursor v0.45+",
-      applicationCategory: "DeveloperApplication",
-      offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-      aggregateRating: { "@type": "AggregateRating", ratingValue: "4.9", reviewCount: "12" },
-    },
+    // AEO 2026-07-18: removed duplicate SoftwareApplication + fabricated
+    // aggregateRating(reviewCount:12) that previously sat here. The node
+    // contradicted the 6-count on the rest of the site, had no third-party
+    // attribution, and Google treats self-served aggregateRating as
+    // structured-data spam (manual-action risk). The canonical
+    // SoftwareApplication node lives in components/RootIdentitySchema.tsx
+    // and is emitted site-wide. Restore here ONLY with a real review body
+    // (Trustpilot/G2/Capterra) backing the rating. Tracked in AEO-action-plan.
     {
       "@type": "HowTo",
       name: "How to install VC Deal Flow Signal in Cursor",

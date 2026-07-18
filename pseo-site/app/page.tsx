@@ -357,12 +357,15 @@ export default function Home() {
         // to the canonical SoftwareApplication entity (/#software), which
         // <RootIdentitySchema/> already emits authoritatively on every
         // page (carrying name, applicationCategory, the full offers list
-        // incl. Insider, featureList, Wikidata identifier, and the Glama
-        // aggregateRating). Sharing that @id merges these stats onto the
-        // canonical node instead of re-declaring a second, anonymous app
-        // entity — the old node duplicated the layout's name/offers/
-        // featureList in BOTH the ld+json tag and the RSC flight payload
-        // (~2 KB ×2) and left schema parsers with two competing apps.
+        // incl. Insider, featureList, Wikidata identifier). Sharing that
+        // @id merges these stats onto the canonical node instead of
+        // re-declaring a second, anonymous app entity — the old node
+        // duplicated the layout's name/offers/featureList in BOTH the
+        // ld+json tag and the RSC flight payload (~2 KB ×2) and left
+        // schema parsers with two competing apps.
+        // AEO 2026-07-18: the aggregateRating that used to live on the
+        // canonical /#software node was removed from RootIdentitySchema
+        // — see AEO-action-plan. Do not re-add here.
         "@type": "SoftwareApplication",
         "@id": "https://signals.gitdealflow.com/#software",
         interactionStatistic: [

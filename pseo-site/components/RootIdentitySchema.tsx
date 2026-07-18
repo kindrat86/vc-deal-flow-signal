@@ -566,28 +566,18 @@ export function RootIdentitySchema() {
           "A2A agent endpoint",
           "Free weekly signal report",
         ],
-        // Third-party rating from the Glama MCP catalog A-Tier listing
-        // (https://glama.ai/mcp/servers/kindrat86/mcp-deal-flow-signal).
-        // Glama publishes per-tool quality scores; the listing aggregates
-        // six tools at 4.9/5.0. Surfacing this as schema:AggregateRating
-        // on the SoftwareApplication node gives Google's Knowledge Graph
-        // and AI Overviews a verifiable third-party quality signal beyond
-        // self-claims. authoredBy attribute pins the rating origin so
-        // validators don't mistake it for a self-rating.
-        aggregateRating: {
-          "@type": "AggregateRating",
-          ratingValue: "4.9",
-          bestRating: "5",
-          worstRating: "1",
-          ratingCount: 6,
-          reviewCount: 6,
-          author: {
-            "@type": "Organization",
-            name: "Glama",
-            url: "https://glama.ai",
-          },
-          url: "https://glama.ai/mcp/servers/kindrat86/mcp-deal-flow-signal",
-        },
+        // AEO 2026-07-18: aggregateRating removed.
+        // Reason: per Ahrefs AEO Module 3.4 check 5, a self-served
+        // aggregateRating with no corresponding syndicated third-party
+        // review body (Trustpilot / G2 Free / Capterra) is a Google
+        // structured-data spam violation (manual-action risk) AND an
+        // AI-trust signal degrader. The rating was attributed to Glama
+        // (a real MCP directory) but ratingCount:6 is below Google's
+        // practical threshold and the canonical Glama URL form
+        // /@kindrat86/... returns 404 (only non-@ variant resolves).
+        // Restore ONLY after reviews exist on a real third-party review
+        // platform AND markup the syndicated feed rather than this
+        // self-emitted node. Tracked in AEO-action-plan.
       },
     ],
   };
