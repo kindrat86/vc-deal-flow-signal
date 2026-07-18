@@ -149,10 +149,15 @@ export async function GET() {
       },
       catalog: `${BASE_URL}/.well-known/feeds.json`,
     },
-    _hubs: [
-      "https://pubsubhubbub.appspot.com/",
-      "https://pubsubhubbub.superfeedr.com/",
-      "https://websubhub.com/",
+    // JSON Feed v1.1 `hubs` (spec §top-level): array of {type, url}. This is
+    // the spec-compliant WebSub advertisement — parity with the 3 <link
+    // rel="hub"> entries in /rss.xml + /atom.xml so a WebSub-aware reader can
+    // subscribe for push updates from the JSON feed too. (Previously carried
+    // only as a non-standard `_hubs` string array, which readers ignore.)
+    hubs: [
+      { type: "WebSub", url: "https://pubsubhubbub.appspot.com/" },
+      { type: "WebSub", url: "https://pubsubhubbub.superfeedr.com/" },
+      { type: "WebSub", url: "https://websubhub.com/" },
     ],
   };
 
