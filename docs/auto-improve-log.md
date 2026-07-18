@@ -646,3 +646,87 @@ probe ANTHROPIC_API_KEY; IndexNow 400; guest-essay/curator outbound (human-only)
 Wikipedia autoconfirm; named advisory board (cannot fabricate); FOUR retired
 founding-rate Stripe payment links still active — manual deactivation
 (stripe/payment-links.md); the stashed `stash@{0}` stale WIP awaiting drop.
+
+## 2026-07-18 (~11:20Z) — scheduled auto-improve: DELIVERY UNBLOCKED + fixed redirect-URLs-in-sitemap defect (4 entries, 2 slugs)
+
+**Headline: the deploy split that blocked the last 3 runs is RESOLVED. This
+task's checkout (`~/Downloads/vc-deal-flow-signal/pseo-site`) is now linked to
+Vercel project `pseo-site` (prj_s0JL6C4uFTmt83OnzAZDgeMDnlaU) and deploys prod
+directly via `vercel deploy --prod`; `main` is now the single source of truth
+(the growth-branch SEO work was reconciled into main in 4d5e26df). The 07-15
+benchmark-sitemap fix is now LIVE. With delivery working, this cycle found and
+fixed a real crawl-hygiene defect: the sitemap was listing 308-redirecting URLs.**
+
+**DELIVERY STATE (corrects the last 3 runs' escalations):**
+- `pseo-site/.vercel/project.json` → project `pseo-site`; the task's canonical
+  deploy path (`vercel deploy --prod --yes` from `pseo-site/`) is proven working.
+- `/benchmarks/{commit-velocity,contributor-growth,signal-distribution}` are now
+  in live `/sitemap/core.xml` (were absent in the 07-18 11:10Z run) → fa88fe6 /
+  the 07-15 fix is finally live. Homepage edge cache is fresh (`age` ~7min at
+  audit time), confirming recent real deploys are turning the cache over.
+- Needs-human items #1–#3 from the 11:10Z run (decide deploy source of truth /
+  refresh Hermes checkout / back up growth branch) are effectively resolved by
+  the reconcile-onto-main commit + this checkout becoming the canonical deployer.
+  Item #4 (grant gh PAT `actions` scope) is now MOOT — the CLI path replaces the
+  retired `deploy-pseo.yml`.
+
+**AUDIT (live curl sweep, 2026-07-18 ~11:15Z):** core surfaces HEALTHY.
+`/api/health.json` status ok, all deps ok. Homepage, `/pricing`, `/sitemap.xml`
+(proper `<sitemapindex>`, 9 children), all `/sitemap/*` children, `/robots.txt`
+(per-AI-bot allow blocks intact: GPTBot, ChatGPT-User, etc.), `/llms.txt`,
+`/api/signals.json`, `/.well-known/{mcp,ai-plugin}.json`, `/feed.json` (valid
+JSON Feed 1.1), `/rss.xml` (WebSub: 3 `rel=hub` links present) all 200. New
+syndication commits (WebSub hubs + JSON Feed, bc642d5c/dcdd2faa) verified live.
+
+**DEFECT FOUND & FIXED — redirect (308) URLs listed in the XML sitemap.** A
+sitemap should only list canonical 200 URLs; listing a URL that 308-redirects
+wastes crawl budget and is a soft signal-quality issue (Google follows it but
+flags it in Coverage as "Page with redirect"). Two slugs, 4 stale entries in
+`app/sitemap/[id]/route.ts`, all confirmed against `next.config.ts` redirects:
+- `/integrations/best-mcp-server-for-vc-research` → 308 → `/answers/best-mcp-server-for-vc-research`.
+  Listed 3× (core shard, content shard, high-intent shard). The canonical
+  `/answers/…` URL is already emitted by the `agentQueries` map (content shard)
+  and the slug is in `HIGH_INTENT_ANSWER_SLUGS`. Fix: high-intent shard entry
+  repointed to the canonical `/answers/…` (matches its 8 sibling answer slugs,
+  priority 0.95); the stray core- and content-shard redirect entries removed
+  (canonical already covered — no URL loses coverage).
+- `/tweet-teardown` → 308 → `/teardown`. Listed 1× (content shard). Canonical
+  `/teardown` (200) is already listed above it. Fix: redirect entry removed.
+
+Verified: 0 redirecting-URL emissions remain in the route; a full cross-check of
+every `next.config.ts` redirect `source` against all 6 live sitemap shards
+(3,600 URLs) found NO other redirect-in-sitemap cases (the `/startups-to-watch/*`
+and `-q2-2025` matches were false positives — the redirects are on the exact
+bare path / a specific quarter that isn't emitted). `/answers/best-mcp-server-for-vc-research`
+and `/teardown` both confirmed 200.
+
+**VERIFY:** `npx tsc --noEmit` clean; `npm run build` (VERCEL=1) succeeds; both
+CI guards pass — `verify-speakable` OK (159 specs), `audit:pseo` PASS (the 46%
+near-dup observation is the known, non-blocking content/index-strategy item,
+unchanged). Build-generated artifacts (`-latest` reports, audit JSON timestamps,
+deterministic epub) were reverted so the commit is the route fix only.
+
+**Scores (Δ vs 07-18 11:10Z; live-state):** Technical SEO 85 (↑3 — benchmark
+sitemap fix now genuinely live + redirect-in-sitemap defect removed) · On-page 88
+(=) · Off-page 62 (=) · pSEO 83 (↑1 — cleaner crawl surface) · AEO 85 (↑1 —
+answer-URL now canonical in high-intent shard) · GEO 79 (=) · AIO 88 (=) ·
+E-E-A-T 74 (=) · SMO 70 (=) · CRO 74 (=) · ASO 35 (=).
+
+**DEPLOYED THIS RUN:** `app/sitemap/[id]/route.ts` fix → `main` → `vercel deploy
+--prod` (see commit). **Code changed:** 1 file (`app/sitemap/[id]/route.ts`),
+net −4 redirecting URL entries.
+
+**NEEDS HUMAN (carried forward, trimmed — delivery items now resolved):**
+- Retire the Hermes SEO-swarm's *independent* pseo deploy (from
+  `~/Downloads/gitdealflow`) now that this checkout is the canonical deployer —
+  two deployers on one prod project is still a latent race even though the branch
+  content is reconciled. (Human decision; low urgency.)
+- Minor: `/feed.json` (blog) lacks a `hubs` array while `/rss.xml` advertises 3
+  WebSub hubs — JSON Feed 1.1 supports `hubs` for parity. Left unfixed this cycle
+  (low ROI, avoid churn); noted for a future run.
+- Unchanged blocked items: retargeting/pixel IDs; BSKY_HANDLE/BSKY_APP_PASSWORD
+  (social-bluesky); GA4 measurement id; Otterly/GEO probe ANTHROPIC_API_KEY;
+  IndexNow 400; guest-essay/curator outbound (human-only); Wikipedia autoconfirm;
+  named advisory board (cannot fabricate); FOUR retired founding-rate Stripe
+  payment links still active — manual deactivation (stripe/payment-links.md);
+  the stashed `stash@{0}` stale WIP awaiting drop.

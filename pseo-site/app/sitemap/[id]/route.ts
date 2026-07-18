@@ -133,7 +133,8 @@ export async function GET(_req: Request, ctx: RouteContext) {
       { url: `${BASE_URL}/book/read/replication-appendix`, lastmod, changefreq: "monthly", priority: 0.8 },
       { url: `${BASE_URL}/book/read/conclusion`, lastmod, changefreq: "monthly", priority: 0.8 },
       // Tweet Teardown — €1 micro-tripwire (Brunson DCS Ch 18, 2026-05-06).
-      { url: `${BASE_URL}/tweet-teardown`, lastmod, changefreq: "monthly", priority: 0.85 },
+      // Canonical URL is /teardown (listed above); /tweet-teardown 308-redirects
+      // there (next.config.ts), so it must not appear in the sitemap.
       // Walkthrough — three lengths of the same Perfect Webinar argument
       // (Brunson Expert Secrets §3 Ch 15 — Webinar Variations). The 90s
       // and 5min variants are A/B-tested via /walkthrough/quick (router
@@ -195,7 +196,9 @@ export async function GET(_req: Request, ctx: RouteContext) {
       { url: `${BASE_URL}/integrations/mistral`, lastmod, changefreq: "monthly", priority: 0.75 },
       { url: `${BASE_URL}/integrations/chatgpt`, lastmod, changefreq: "monthly", priority: 0.85 },
       { url: `${BASE_URL}/integrations/agent-runtimes`, lastmod, changefreq: "monthly", priority: 0.85 },
-      { url: `${BASE_URL}/integrations/best-mcp-server-for-vc-research`, lastmod, changefreq: "weekly", priority: 0.9 },
+      // (/integrations/best-mcp-server-for-vc-research 308-redirects to
+      //  /answers/best-mcp-server-for-vc-research — canonical URL is emitted in
+      //  the high-intent + content shards via agentQueries, so it's not listed here.)
       // Sector benchmark comparators — data-derived, refreshed weekly with the dataset.
       // Live static pages under /benchmarks/[metric] (no index page); slugs mirror the
       // curated BENCHMARKS set in app/benchmarks/[metric]/page.tsx (added 2026-07-15).
@@ -591,7 +594,8 @@ export async function GET(_req: Request, ctx: RouteContext) {
         changefreq: "monthly",
         priority: 0.8,
       })),
-      { url: `${BASE_URL}/integrations/best-mcp-server-for-vc-research`, lastmod, changefreq: "weekly", priority: 0.9 },
+      // /answers/best-mcp-server-for-vc-research is already emitted above by the
+      // agentQueries map (the old /integrations/ variant here was a 308 redirect).
       ...getAllCompetitorVsSlugs().map((slug) => ({
         url: `${BASE_URL}/vs/${slug}`,
         lastmod,
@@ -732,7 +736,9 @@ export async function GET(_req: Request, ctx: RouteContext) {
   } else if (id === "high-intent") {
     entries = [
       { url: `${BASE_URL}/how-to-spot-startup-momentum-before-the-round-gets-crowded`, lastmod, changefreq: "weekly", priority: 1.0 },
-      { url: `${BASE_URL}/integrations/best-mcp-server-for-vc-research`, lastmod, changefreq: "weekly", priority: 0.95 },
+      // Canonical /answers/ URL (the /integrations/ variant 308-redirects here);
+      // slug lives in HIGH_INTENT_ANSWER_SLUGS alongside the eight below.
+      { url: `${BASE_URL}/answers/best-mcp-server-for-vc-research`, lastmod, changefreq: "weekly", priority: 0.95 },
       { url: `${BASE_URL}/answers/what-is-startup-engineering-momentum`, lastmod, changefreq: "weekly", priority: 0.95 },
       { url: `${BASE_URL}/answers/deal-flow-timing-vs-verification`, lastmod, changefreq: "weekly", priority: 0.95 },
       { url: `${BASE_URL}/answers/how-angel-investors-use-github-signals`, lastmod, changefreq: "weekly", priority: 0.9 },
