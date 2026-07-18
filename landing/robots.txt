@@ -65,7 +65,4 @@ Sitemap: https://signals.gitdealflow.com/sitemap.xml
 # MCP: https://signals.gitdealflow.com/.well-known/mcp.json
 # AgentCard: https://signals.gitdealflow.com/.well-known/agent-card.json
 
-Sitemap: https://gitdealflow.com/sitemap-index.xml
-
-# Image sitemap for Google Images indexing
 Sitemap: https://gitdealflow.com/image-sitemap.xml
