@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1",
+  "name": "gitdealflow",
+  "displayName": "GitDealFlow",
+  "description": "Track startup engineering acceleration from public GitHub data. Discover high-momentum startups before they announce funding.",
+  "homepageUrl": "https://gitdealflow.com/mcp",
+  "contactEmail": "sales@sipiteno.com",
+  "publisher": {
+    "name": "GitDealFlow",
+    "url": "https://gitdealflow.com"
+  },
+  "endpoints": {
+    "streamableHttp": "https://gitdealflow.com/api/mcp"
+  },
+  "transports": [
+    "streamable-http"
+  ],
+  "capabilities": {
+    "tools": true,
+    "prompts": false,
+    "resources": false
+  },
+  "tools": [
+    {
+      "name": "search_startups",
+      "summary": "Search tracked startups by sector, city, or keyword."
+    },
+    {
+      "name": "get_startup_signal",
+      "summary": "Get engineering momentum signal for a specific startup."
+    },
+    {
+      "name": "list_sectors",
+      "summary": "List all tracked sectors with startup counts."
+    },
+    {
+      "name": "list_cities",
+      "summary": "List all tracked cities with startup counts."
+    }
+  ]
+}
