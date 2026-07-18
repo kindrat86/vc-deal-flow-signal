@@ -1298,6 +1298,45 @@
       </div>
     </section>
 
+    <!-- Brunson DotCom Ch 2/Expert Ch 3: What Happens If You Do Nothing —
+         The cost-of-inaction section. Russell's rule: show the prospect their
+         life 6 months from now on BOTH paths. The contrast creates urgency
+         without a countdown timer. -->
+    <section class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 py-16 md:py-20 border-t border-gray-800">
+      <p class="text-amber-400 text-xs font-semibold uppercase tracking-wider text-center mb-4">The honest version of what&rsquo;s at stake</p>
+      <h2 class="text-3xl font-bold text-center mb-10">Two futures. One Sunday email. Your choice.</h2>
+      <div class="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+        <!-- Timeline A: Do Nothing -->
+        <div class="rounded-2xl border border-red-500/20 bg-red-500/5 p-6 md:p-8">
+          <p class="text-red-400 text-xs font-semibold uppercase tracking-wider mb-3">If you do nothing</p>
+          <p class="text-lg font-bold text-white mb-4">The next six months look a lot like the last six.</p>
+          <ul class="space-y-3 text-gray-300 text-sm leading-relaxed">
+            <li class="flex items-start gap-2"><span class="text-red-400 shrink-0 mt-0.5">&times;</span><span>You hear about the great rounds the <strong class="text-gray-200">week after they close</strong> — from the press, from Twitter, from the same people everyone follows.</span></li>
+            <li class="flex items-start gap-2"><span class="text-red-400 shrink-0 mt-0.5">&times;</span><span>The deals where you <strong class="text-gray-200">could have been first</strong> go to someone who reached out 21 days earlier — while you were still waiting for the intro.</span></li>
+            <li class="flex items-start gap-2"><span class="text-red-400 shrink-0 mt-0.5">&times;</span><span>Your sourcing rhythm is the same: databases, warm intros, and hoping someone tips you off <strong class="text-gray-200">before the round fills</strong>.</span></li>
+            <li class="flex items-start gap-2"><span class="text-red-400 shrink-0 mt-0.5">&times;</span><span>Six months from now you&rsquo;re in the same chair, reading the same newsletters, <strong class="text-gray-200">one Sunday away from changing that</strong> — same as today.</span></li>
+          </ul>
+          <p class="text-red-300/80 text-xs mt-5 italic">The only difference between six months from now and today is 24 Sundays you didn&rsquo;t get the names.</p>
+        </div>
+        <!-- Timeline B: Subscribe -->
+        <div class="rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-6 md:p-8">
+          <p class="text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-3">If you subscribe today</p>
+          <p class="text-lg font-bold text-white mb-4">In six months, being early is just how you source.</p>
+          <ul class="space-y-3 text-gray-300 text-sm leading-relaxed">
+            <li class="flex items-start gap-2"><span class="text-emerald-400 shrink-0 mt-0.5">&check;</span><span>This Sunday: five names land. You read them in 90 seconds, <strong class="text-gray-200">flag one in your lane</strong>, close the laptop.</span></li>
+            <li class="flex items-start gap-2"><span class="text-emerald-400 shrink-0 mt-0.5">&check;</span><span>Month 1: You&rsquo;ve sent three &ldquo;saw your commits&rdquo; emails <strong class="text-gray-200">while everyone else waited for the intro</strong>.</span></li>
+            <li class="flex items-start gap-2"><span class="text-emerald-400 shrink-0 mt-0.5">&check;</span><span>Month 3: Two founders know you as the investor <strong class="text-gray-200">who reached out before the round existed</strong>. That reputation compounds.</span></li>
+            <li class="flex items-start gap-2"><span class="text-emerald-400 shrink-0 mt-0.5">&check;</span><span>Month 6: Getting the engineering read before everyone else is <strong class="text-gray-200">just how you source now</strong> — no code, no databases, no waiting.</span></li>
+          </ul>
+          <p class="text-emerald-300/80 text-xs mt-5 italic">The cost of this future: one email address. The cost of the other: every deal you hear about late.</p>
+        </div>
+      </div>
+      <p class="text-center text-gray-400 text-sm mt-8 max-w-lg mx-auto">This isn&rsquo;t a sales page trick. <strong class="text-white">Not acting is a decision too</strong> — it just happens to be the one that keeps you where you are. The Sunday email is free. The only real risk is staying late.</p>
+      <div class="text-center mt-6">
+        <a href="#signup" onclick="if(window.posthog)posthog.capture('repeat_cta_clicked',{placement:'do_nothing'})" class="btn btn-primary btn-lg w-full sm:w-auto">Get this Sunday&rsquo;s 5 names &mdash; free &rarr;</a>
+      </div>
+    </section>
+
     <section class="bg-dark-800 py-16 md:py-20">
       <div class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 text-center">
         <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-3">The free Sunday Signal</p>
@@ -1604,6 +1643,17 @@
         if (shown) return;
         if (e.clientY <= 0) openModal();
       });
+      // Mobile exit-intent: rapid scroll-up after 35%+ depth signals abandonment
+      (function(){
+        var lastY = 0, rapidUp = false, scrollDepthMet = false;
+        window.addEventListener('scroll', function(){
+          var y = window.scrollY;
+          var docH = document.documentElement.scrollHeight - window.innerHeight;
+          if (docH > 0 && y / docH >= 0.35) scrollDepthMet = true;
+          if (scrollDepthMet && y < lastY - 200 && !shown) { rapidUp = true; openModal(); }
+          lastY = y;
+        }, {passive: true});
+      })();
       closeBtn.addEventListener('click', closeModal);
       backdrop.addEventListener('click', closeModal);
       form.addEventListener('submit', async function(e) {

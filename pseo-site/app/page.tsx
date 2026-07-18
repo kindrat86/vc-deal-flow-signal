@@ -802,6 +802,71 @@ export default function Home() {
           product. */}
       <HomeStoryMoment />
 
+      {/* Brunson Traffic Secrets Ch 5 + Expert Secrets Ch 10-11 —
+          Hook-Story-Offer named framework. AEO audit 2026-07-18: the page
+          follows HSO implicitly (Hook in H1 → Story via HomeStoryMoment →
+          Offer via HomeOfferStack below) but the framework was never NAMED
+          or made visible to the visitor. Brunson teaches that named
+          frameworks are IP — this 3-column badge makes the implicit
+          explicit, lifting Expert Secrets Ch 10-11 (named frameworks)
+          and Traffic Secrets Ch 5 (HSO). Compact, skimmable, with the
+          same colors used in the Three Secrets grid further down for
+          visual consistency. */}
+      <section
+        aria-label="Hook-Story-Offer — how every page is built"
+        className="my-8 rounded-xl border border-sky-700/30 bg-gradient-to-br from-sky-950/20 via-slate-900 to-slate-950 p-5 sm:p-6"
+      >
+        <p className="text-sky-300 text-[11px] font-semibold uppercase tracking-wider mb-3">
+          Every page on this site follows one framework
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="border-l-4 border-sky-500 bg-slate-900/60 p-4 rounded-r-lg">
+            <p className="text-sky-400 text-[11px] font-semibold uppercase tracking-wider mb-1.5">
+              1 · Hook
+            </p>
+            <h3 className="text-gray-100 font-semibold text-sm mb-1.5">
+              Grab your attention in one sentence.
+            </h3>
+            <p className="text-gray-400 text-xs leading-relaxed">
+              The headline above is the Hook — &ldquo;47 days before the deck.&rdquo;
+              It names a specific, measurable gap every investor feels. No
+              jargon, no fluff, no &ldquo;revolutionary platform.&rdquo;
+            </p>
+          </div>
+          <div className="border-l-4 border-emerald-500 bg-slate-900/60 p-4 rounded-r-lg">
+            <p className="text-emerald-400 text-[11px] font-semibold uppercase tracking-wider mb-1.5">
+              2 · Story
+            </p>
+            <h3 className="text-gray-100 font-semibold text-sm mb-1.5">
+              Keep your attention with a true moment.
+            </h3>
+            <p className="text-gray-400 text-xs leading-relaxed">
+              The block above this banner is the Story — a Saturday morning, a
+              laptop, a fintech&rsquo;s GitHub lighting up. Stories carry truth
+              better than feature lists ever can.
+            </p>
+          </div>
+          <div className="border-l-4 border-indigo-500 bg-slate-900/60 p-4 rounded-r-lg">
+            <p className="text-indigo-400 text-[11px] font-semibold uppercase tracking-wider mb-1.5">
+              3 · Offer
+            </p>
+            <h3 className="text-gray-100 font-semibold text-sm mb-1.5">
+              Convert your attention into action.
+            </h3>
+            <p className="text-gray-400 text-xs leading-relaxed">
+              Every page ends with a clear next step — a free Sunday digest, a
+              paid dashboard, or a methodology deep-dive. The Offer is always an
+              honest value exchange, never a pitch.
+            </p>
+          </div>
+        </div>
+        <p className="text-gray-500 text-xs mt-4 leading-relaxed">
+          Russell Brunson calls this the Hook-Story-Offer framework
+          (Traffic Secrets, Ch 5). We apply it to every page on this site
+          — so even the free content respects your attention.
+        </p>
+      </section>
+
       {/* Brunson Expert Secrets Ch 7 + Ch 9 — 5-step Epiphany Bridge.
           HSO audit 2026-05-08: full Hero's Two Journeys lives at /origin
           (8-min read) but the home reader who never clicks through never
@@ -1536,6 +1601,25 @@ export default function Home() {
           are — would you let the right rung pick itself?
         </TrialClose>
       </section>
+
+      {/* Brunson funnel hub cross-link (AEO audit 2026-07-18). The /funnels
+          page maps every entry point in tiered Value Ladder form, but the
+          homepage never mentioned it. This small badge gives the visitor a
+          one-click map of all the funnels on one page — the Brunson
+          equivalent of a site map for the buying decision. */}
+      <div className="my-6 rounded-lg border border-sky-700/20 bg-sky-950/15 px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+        <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
+          <span className="text-sky-400 font-semibold">Funnel Hub</span>
+          {" "}— every entry point on one page. Free watch, dashboard, Insider
+          tiers, sector sweeps, quiz, walkthrough, and the 4-stage launch funnel.
+        </p>
+        <Link
+          href="/funnels"
+          className="shrink-0 inline-flex items-center gap-1.5 text-xs font-semibold text-sky-400 hover:text-sky-300 transition-colors"
+        >
+          See all funnels <span aria-hidden="true">→</span>
+        </Link>
+      </div>
 
       {/* Pricing ladder — visible on homepage so buyers don't have to hunt for
           the price. Greg audit: anchor on Insider, sell the middle tier. */}

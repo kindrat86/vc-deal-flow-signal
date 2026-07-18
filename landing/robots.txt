@@ -2,10 +2,7 @@ User-agent: *
 Allow: /
 
 # AI Search Crawlers — explicitly allowed
-max-image-preview:large
-max-video-preview:-1
-max-snippet:-1
-max-image-render:Standard
+# (X-Robots-Tag header handles preview/snippet directives for all crawlers)
 
 User-agent: GPTBot
 Allow: /

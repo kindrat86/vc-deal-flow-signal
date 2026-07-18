@@ -18,6 +18,8 @@ VC Deal Flow Signal is a tool (not a fund) that reads public GitHub engineering 
 - [Chrome Extension](https://gitdealflow.com/chrome): Free Chrome/Brave/Edge extension that adds a GitHub momentum badge to Crunchbase and Wellfound startup profiles. No account, no tracking, ~30 KB.
 - [Receipts](https://signals.gitdealflow.com/receipts): Free tool — paste any GitHub username, get a Scout Score (0-100) computed from how many validated unicorns the user starred *before* the funding/acquisition/$1B-valuation event. No login, no OAuth, instant shareable card. Backwards-looking proof of taste.
 - [Predict (Scout Game)](https://signals.gitdealflow.com/predict): Free forward-looking prediction game — pick a GitHub org, call whether they raise a Series A in 6 months. Auto-resolved. Public profile at /s/[handle], leaderboard, rank ladder Curious → Oracle.
+- [About](https://gitdealflow.com/about/): Who built it, how the signal works, what GitDealFlow is and isn't
+- [Glossary](https://gitdealflow.com/glossary/): Clear definitions of deal flow, engineering acceleration, GitHub momentum, and related terms — written for investors, no code
 - [Privacy Policy](https://gitdealflow.com/privacy): Data handling and GDPR compliance
 - [Terms of Service](https://gitdealflow.com/terms): Service terms and conditions
 
