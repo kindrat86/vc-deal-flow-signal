@@ -5,6 +5,10 @@
   "trailingSlash": false,
   "rewrites": [
     {
+      "source": "/mcp",
+      "destination": "/mcp.html"
+    },
+    {
       "source": "/embed",
       "destination": "/embed.html"
     },
