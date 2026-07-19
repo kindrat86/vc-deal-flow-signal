@@ -2153,10 +2153,25 @@ const competitors: Competitor[] = [
 
 function generateVsComparison(a: Competitor, b: Competitor): Comparison {
   const slug = `${a.slug}-vs-${b.slug}`;
+  // Title template appends " | VC Deal Flow Signal" (23 chars).
+  // Keep the raw title ≤46 chars (rendered ≤69) using a word-boundary clamp so
+  // longer competitor-name pairs never break Bing's 70-char title threshold.
+  const rawTitle = `${a.name} vs ${b.name}: Deal Sourcing`;
+  let title = rawTitle;
+  if (title.length > 46) {
+    const cut = rawTitle.slice(0, 46);
+    title = /\s/.test(rawTitle.slice(46, 47))
+      ? cut
+      : cut.slice(0, cut.lastIndexOf(" ")).trim();
+    if (!title || title.length < Math.min(a.name.length, 20)) {
+      // Fallback: drop the ": Deal Sourcing" suffix entirely.
+      title = `${a.name} vs ${b.name}`;
+    }
+  }
   return {
     slug,
-    title: `${a.name} vs ${b.name}: Deal Sourcing`,
-    description: `Compare ${a.name} and ${b.name} for startup deal sourcing: lead time, pricing, coverage, and investor fit.`,
+    title,
+    description: `Compare ${a.name} and ${b.name} for startup deal sourcing: signal lead time, pricing tiers, market coverage, and the investor fit each tool is built for.`,
     h1: `${a.name} vs ${b.name}`,
     intro: `${a.name} is a ${a.type.toLowerCase()}. ${b.name} is a ${b.type.toLowerCase()}. Both help investors find deals, but through fundamentally different mechanisms. Here is how they compare across the dimensions that matter most for deal sourcing.`,
     sections: [

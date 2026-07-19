@@ -24,6 +24,10 @@ export async function generateStaticParams() {
 export const dynamicParams = false;
 export const revalidate = 604800;
 
+function clampDescription(text: string, max = 155) {
+  return text.length > max ? `${text.slice(0, max - 3).trimEnd()}...` : text;
+}
+
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
@@ -32,21 +36,22 @@ export async function generateMetadata({
   if (!c) return {};
 
   const url = `${SITE}/from-stars-to-seed/${slug}`;
+  const description = clampDescription(c.tagline);
   return {
     title: c.headline,
-    description: c.tagline,
+    description,
     keywords: c.keywords.join(", "),
     alternates: { canonical: `/from-stars-to-seed/${slug}` },
     openGraph: {
       title: c.headline,
-      description: c.tagline,
+      description,
       url,
       type: "article",
     },
     twitter: {
       card: "summary_large_image",
       title: c.headline,
-      description: c.tagline,
+      description,
     },
   };
 }
