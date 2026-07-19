@@ -220,6 +220,35 @@ export default function EmbedPage() {
           name: e.name,
         })),
       },
+      // WebApplication nodes for the 8 embeddable calculators — these are the
+      // primary embeddable software surfaces. Adding explicit SoftwareApplication /
+      // WebApplication JSON-LD lets AI answer engines (Perplexity, ChatGPT,
+      // Bing Copilot) and app directories (Futurepedia, TAAFT) index each tool
+      // as a distinct application with its own URL, lifting the AUTHORITY pillar
+      // and discovery beyond link-only references.
+      ...CALCULATOR_EMBEDS.map((e) => {
+        const slug = e.href.split("/embed/tools/")[1];
+        return {
+          "@type": "WebApplication",
+          "@id": `${e.href}#webapp`,
+          name: e.name,
+          url: e.href,
+          description: e.description,
+          applicationCategory: "FinanceApplication",
+          operatingSystem: "Any (web browser)",
+          browserRequirements: "Requires JavaScript",
+          offers: {
+            "@type": "Offer",
+            price: "0",
+            priceCurrency: "USD",
+          },
+          license:
+            "https://creativecommons.org/licenses/by/4.0/",
+          publisher: { "@id": `${SITE}/#website` },
+          isAccessibleForFree: true,
+          installUrl: e.example,
+        };
+      }),
     ],
   };
 
