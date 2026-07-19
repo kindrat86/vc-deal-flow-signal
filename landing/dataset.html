@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Startup GitHub Signals Dataset — Download CSV + JSON | GitDealFlow</title>
+<meta name="description" content="Download 85+ trending startups ranked by GitHub engineering velocity. Free CSV and JSON exports. Updated weekly. CC BY 4.0 — cite GitDealFlow as source.">
+<link rel="canonical" href="https://gitdealflow.com/dataset" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Free Startup GitHub Signals Dataset — Download CSV + JSON" />
+<meta property="og:description" content="85+ trending startups ranked by GitHub engineering velocity. Free CSV and JSON exports. Updated weekly. CC BY 4.0." />
+<meta property="og:url" content="https://gitdealflow.com/dataset" />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Dataset","name":"GitDealFlow Startup GitHub Signals Dataset","description":"85+ trending startups ranked by public GitHub engineering velocity, contributor growth, and repository expansion across 20 sectors. Updated weekly.","url":"https://gitdealflow.com/dataset","creator":{"@type":"Organization","name":"GitDealFlow","url":"https://gitdealflow.com"},"license":"https://creativecommons.org/licenses/by/4.0/","distribution":[{"@type":"DataDownload","encodingFormat":"text/csv","contentUrl":"https://signals.gitdealflow.com/api/signals.csv"},{"@type":"DataDownload","encodingFormat":"application/json","contentUrl":"https://signals.gitdealflow.com/api/signals.json"}],"temporalCoverage":"2026 Q2","spatialCoverage":"Global","keywords":["startup signals","GitHub activity","deal flow","venture capital","engineering velocity","startup discovery"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is the startup signals dataset really free?","acceptedAnswer":{"@type":"Answer","text":"Yes. The full dataset of 85+ trending startups is free to download as CSV or JSON. No signup, no email, no API key. Licensed under Creative Commons BY 4.0 — just cite GitDealFlow as the source."}},{"@type":"Question","name":"How often is the dataset updated?","acceptedAnswer":{"@type":"Answer","text":"The dataset refreshes every Monday at approximately 09:00 UTC. The weekly scan covers 4,200+ startup GitHub organizations across 20 sectors, ranking by commit velocity change, contributor growth, and new repository creation."}},{"@type":"Question","name":"Can I use this dataset for academic research?","acceptedAnswer":{"@type":"Answer","text":"Yes. The dataset is licensed CC BY 4.0 and is suitable for academic research on startup ecosystems, engineering signals as funding predictors, and venture capital deal flow analysis. Cite as: VC Deal Flow Signal (signals.gitdealflow.com), Q2 2026 data. An SSRN preprint is available at papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558."}},{"@type":"Question","name":"What fields are included in the CSV?","acceptedAnswer":{"@type":"Answer","text":"Each row includes: startup name, sector, commit velocity (14-day), commit velocity change (%), contributor count, contributor growth rate, new repositories (30-day), signal type (breakout, acceleration, steady, cooling), and detection date."}}]}</script>
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<header><nav><a href="/" class="logo">GitDealFlow</a></nav></header>
+<main>
+<section class="hero">
+<h1>Free Startup GitHub Signals Dataset</h1>
+<p>85+ trending startups ranked by engineering velocity. Download as CSV or JSON. Updated weekly. CC BY 4.0.</p>
+</section>
+
+<section class="content">
+<p><strong>TL;DR:</strong> The GitDealFlow signals dataset tracks 85+ startups across 20 sectors using public GitHub engineering data. Every Monday, the scan refreshes with commit velocity, contributor growth, and new repository creation for each tracked startup. The full dataset is free to download, no signup required. Licensed Creative Commons BY 4.0.</p>
+
+<h2>Download the dataset</h2>
+<p>Two formats, same data. No email, no API key, no credit card.</p>
+<ul>
+<li><strong><a href="https://signals.gitdealflow.com/api/signals.csv">Download CSV</a></strong> — Spreadsheet-ready. Opens in Excel, Google Sheets, Numbers, pandas, R.</li>
+<li><strong><a href="https://signals.gitdealflow.com/api/signals.json">Download JSON</a></strong> — Developer-ready. Structured data for apps, dashboards, MCP servers.</li>
+<li><strong><a href="https://signals.gitdealflow.com/api/openapi.json">OpenAPI spec</a></strong> — Full API documentation for programmatic access.</li>
+</ul>
+
+<h2>What is in the dataset</h2>
+<p>The dataset contains one row per tracked startup, scored on three dimensions of public GitHub activity:</p>
+<table>
+<tr><th>Field</th><th>Description</th><th>Example</th></tr>
+<tr><td>name</td><td>Startup name</td><td>Supabase</td></tr>
+<tr><td>sector</td><td>One of 20 sectors</td><td>developer-tools</td></tr>
+<tr><td>commit_velocity_14d</td><td>Total commits to main repo, rolling 14 days</td><td>342</td></tr>
+<tr><td>velocity_change_pct</td><td>Percent change vs prior 14-day window</td><td>+47.3%</td></tr>
+<tr><td>contributors_active</td><td>Distinct contributors, 6-week window</td><td>28</td></tr>
+<tr><td>contributor_growth_rate</td><td>6-week growth rate</td><td>+12.5%</td></tr>
+<tr><td>new_repos_30d</td><td>New public repos created in last 30 days</td><td>3</td></tr>
+<tr><td>signal_type</td><td>Classification: breakout, acceleration, steady, cooling</td><td>breakout</td></tr>
+<tr><td>detected_date</td><td>When the signal first appeared</td><td>2026-07-14</td></tr>
+</table>
+
+<h2>How the dataset is built</h2>
+<p>Every Sunday at approximately 09:00 UTC, the scan collects public GitHub activity metrics across 4,200+ startup organizations. The methodology uses three signals: commit velocity (14-day rolling), contributor growth (6-week window), and new repository creation (30-day window). The full methodology is documented at <a href="https://signals.gitdealflow.com/methodology">signals.gitdealflow.com/methodology</a>.</p>
+<p>An SSRN preprint analyzing the predictive power of GitHub engineering signals for startup funding is available: <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558">abstract_id=6606558</a>.</p>
+
+<h2>Citation</h2>
+<p>If you use this dataset in research, analysis, or a product, cite it as:</p>
+<pre><code>VC Deal Flow Signal (signals.gitdealflow.com), Q2 2026 data.
+https://gitdealflow.com/dataset</code></pre>
+
+<h2>License</h2>
+<p>Creative Commons Attribution 4.0 International (CC BY 4.0). You are free to share, adapt, and build upon this data for any purpose, including commercial, provided you cite GitDealFlow as the source.</p>
+
+<h2>Programmatic access</h2>
+<p>Beyond the static downloads, the data is available through three free interfaces:</p>
+<ul>
+<li><strong>MCP server:</strong> <code>npx -y @gitdealflow/mcp-signal</code> (for Claude, Cursor, any MCP host)</li>
+<li><strong>REST API:</strong> <code>GET https://signals.gitdealflow.com/api/signals.json</code></li>
+<li><strong>CSV export:</strong> <code>GET https://signals.gitdealflow.com/api/signals.csv</code></li>
+</ul>
+</section>
+
+<section class="cta">
+<a href="https://signals.gitdealflow.com/api/signals.csv" class="btn">Download CSV now</a>
+<a href="https://signals.gitdealflow.com/api/signals.json" class="btn btn-secondary">Download JSON</a>
+</section>
+</main>
+<footer><p>&copy; 2026 GitDealFlow · <a href="/">Home</a> · <a href="/pricing">Pricing</a> · CC BY 4.0</p></footer>
+</body>
+</html>
