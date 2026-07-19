@@ -914,3 +914,127 @@ mentions/citations, which are human/outreach-gated, not code.)
   deactivation, stripe/payment-links.md); stale Hermes SEO-swarm *doc* refs to
   the removed `~/Downloads/gitdealflow` path; the stashed `stash@{0}` stale WIP
   awaiting drop.
+
+## 2026-07-19 (~13:20Z) — scheduled auto-improve: 4 structured-data correctness fixes SHIPPED + LIVE-VERIFIED (entity @id reconciliation, fabricated-rating removal, persona author, video sitemap)
+
+**Headline: a focused Explore audit of the pSEO codebase surfaced four verified,
+in-repo structured-data defects the parallel sessions hadn't touched — two are
+graph-consistency wins, one is a Google structured-data POLICY-VIOLATION removal
+(manual-action risk), one is a robots/sitemap inconsistency. All committed to
+`main` (1109887c), deployed to pseo prod, and confirmed live.**
+
+**RECONCILE (pre-work).** `git pull --ff-only` clean (already up to date; main is
+canonical). Working tree carried only build artifacts (audit JSON timestamps +
+deterministic epub) + an untracked landing domain-verification token file
+(`landing/7e74219f…​.txt`, content == filename hash — not mine, left untracked);
+reverted the artifacts so commits stay code-only.
+
+**AUDIT.** Live health all 200 (`/`, `/llms.txt`, `/sitemap.xml`,
+`/api/signals.json`, `/.well-known/mcp.json`, `/api/health.json` deps all ok,
+`/scout-score`, `/about`, `/feed.json`, `/rss.xml`; landing 200). robots clean.
+llms.txt exhaustive (1740 lines, every agent endpoint present). WebSearch tool
+unavailable this session (model-config error) — relied on curl. A read-only
+Explore audit returned 4 findings; all 4 verified against source and shipped.
+(Also independently spotted: content-sitemap `lastmod` is a single uniform
+build-time value on all 1154 URLs incl. evergreen leaves — a real lastmod-
+inflation smell; NOT fixed this cycle because a correct fix needs per-page
+content-change dates / evergreen-vs-data-driven split in an 810-line central
+route — deferred as a dedicated pass, see below.)
+
+**SHIPPED (commit 1109887c, 18 files, deploy dpl_3oUmv5Fq34Uo51PhqaGvytj5wkcG ● Ready):**
+1. **Entity `@id` reconciliation across the dynamic pSEO clusters + 11 static
+   leaves.** `best/vs/compare/for/alternatives` `page.tsx` emitted Article
+   `publisher` (+ best's Dataset `creator`/`publisher`, + alternatives' self
+   `SoftwareApplication`) as bare, un-`@id`'d Organizations named "VC Deal Flow
+   Signal" — duplicate anonymous entities that never collapse into the canonical
+   `RootIdentitySchema` nodes (`https://gitdealflow.com/#organization`,
+   `https://signals.gitdealflow.com/#software`, rendered site-wide via layout).
+   Repo-wide the audit measured 157 files emitting the bare node vs only 70
+   referencing `#organization`. Pointed them all at the canonical `@id`s (bare
+   `{ "@id": … }` refs, matching the topic/blog convention — the full node is on
+   every page). The 11 static `public/{learn,vs,for}/*.html` leaves (name
+   "GitDealFlow Signals", also un-`@id`'d — the finding DEFERRED last cycle as
+   "generator-owned") were reconciled directly: publisher → canonical Org
+   `@id`+name "VC Deal Flow Signal"; author → canonical Data Nerd Person
+   `@id https://signals.gitdealflow.com/about#person`. LIVE-VERIFIED: dynamic
+   `/alternatives/harmonic-ai` now shows canonical Org `@id` + software `@id`, no
+   bare dup; static origin (`/learn/scout-score-guide.html`, cache MISS) shows the
+   reconciled author/publisher. → **GEO 79→80** (entity consolidation across the
+   bulk of the site) + **E-E-A-T 74→75** (static leaves now attributed to the
+   credentialed persona). NOTE the static-leaf fix is in-repo only; the SHARED
+   generator (`~/.growth-engine/isenberg-pseo-round16.py:49`, template reused by
+   voicelogpro/churnlens/carshake) can't be safely hardcoded with gitdealflow's
+   persona/org `@id` — a durable generator fix needs per-site `@id` config
+   (needs-human; see below). A bare-regen of those 11 files would revert this.
+2. **E-E-A-T: `/for/[slug]` persona pages had `author` as an Organization**, not
+   `DATA_NERD_AUTHOR_REF` — violating the repo's own AGENTS.md rule that every
+   author reconciles to the ORCID/SSRN-credentialed Person `@id`. Every sibling
+   cluster (best/vs/compare/alternatives) already complied; the persona cluster
+   had regressed. Fixed + added the import. LIVE-VERIFIED: `/for/venture-scouts`
+   author now `@id …/about#person`.
+3. **STRUCTURED-DATA POLICY: removed fabricated self-served star ratings.**
+   `compare` + `alternatives` emitted a `Review` (authored by our own persona)
+   whose `reviewRating.ratingValue` was derived from ARTICLE thoroughness ("N
+   dimensions analyzed"), not a genuine assessment of the reviewed competitor —
+   the exact self-served-rating spam class the team already removed for
+   `aggregateRating` (documented manual-action risk, RootIdentitySchema.tsx
+   :572-583). Stripped `reviewRating` (kept the editorial `reviewBody`/
+   `itemReviewed`). Also removed the fabricated `<video:rating>5.0</video:rating>`
+   (+ `view_count 0`) from the video sitemap. LIVE-VERIFIED: alternatives page
+   `reviewRating`=0; `/sitemap-videos.xml` `<video:rating>`=0. → risk removal
+   (a manual action here would suppress rich results site-wide).
+4. **Sitemap consistency: `/sitemap.xml` index omitted `sitemap-videos.xml`**
+   though robots.txt declares it (robots.ts:120) and it renders 8 real videos.
+   Added the shard. LIVE-VERIFIED: index now lists `sitemap-videos.xml`. → video
+   discovery for crawlers that treat the index as source-of-truth.
+
+**VERIFY.** `npx tsc --noEmit` clean (ignoring stale `.next/types`); `VERCEL=1
+npm run build` OK (✓ compiled, 5179 static pages); both CI guards pass —
+verify-speakable OK (160 specs, 150 resolve, unchanged), audit:pseo PASS (the 46%
+near-dup observation is the known non-blocking content/index item, unchanged).
+Build artifacts reverted so the commit is code-only.
+
+**DEPLOY.** Pushed `main` (f617f4e4→1109887c). Deployed pseo from the canonical
+checkout `~/Downloads/vc-deal-flow-signal/pseo-site` (`vercel deploy --prod --yes
+--no-wait`, authed sipiteno, project pseo-site); polled `vercel inspect` to
+`● Ready`. Close-of-run live: `/api/health.json` ok (all deps ok), homepage
+`age: 0` (edge turned over), all 4 dynamic/sitemap fixes confirmed live. The
+static `/learn/*` CLEAN-URL path briefly served a pre-deploy edge HIT
+(s-maxage=3600) — but the new deployment ORIGIN is correct (the explicit
+`/learn/scout-score-guide.html` key returned MISS + the reconciled markup), so
+those paths auto-revalidate within ≤1h. No action needed.
+
+**Scores (this cycle):** Technical SEO **86** (↑1, sitemap-index consistency +
+structured-data policy compliance) · On-page 88 · Off-page 62 · pSEO 84 · AEO 85 ·
+GEO **80** (↑1, `@id` entity consolidation across best/vs/compare/for/alternatives)
+· AIO 89 · E-E-A-T **75** (↑1, persona + static-leaf author reconciliation to the
+credentialed Person) · SMO 70 · CRO 74 · ASO 35. (Off-page 62 remains the
+standing bottleneck — off-site mentions/citations, human/outreach-gated.)
+
+**DEFERRED / NEEDS HUMAN (new this cycle):**
+- **Durable static-leaf fix needs a SHARED-generator change.** The 11
+  `public/{learn,vs,for}/*.html` files are emitted by
+  `~/.growth-engine/isenberg-pseo-round16.py` (template at :49), which is REUSED
+  across voicelogpro/churnlens/carshake — so gitdealflow's Data Nerd Person `@id`
+  and org `@id` can't be hardcoded there without corrupting other sites. A durable
+  fix adds optional per-site `author_id`/`org_id` fields to each site's config
+  dict and threads them into the template (with a safe fallback to current
+  behavior). Until then, a bare-regen of those files reverts fix #1's static
+  portion. (Human/dedicated-pass; do NOT bare-regen — memory: regen strips
+  PostHog/hreflang/internal-links.)
+- **Content-sitemap `lastmod` inflation:** all 1154 content-shard URLs carry one
+  identical build-time `lastmod` (`getDataLastModified()`), incl. evergreen
+  learn/vs/book leaves — Google distrusts uniform build-time lastmod and can
+  ignore it site-wide. Fix = give evergreen leaves a stable content-revision
+  lastmod (git mtime or a curated constant) while keeping build-time only on
+  genuinely data-driven shards (startups/trending). Medium-touch on an 810-line
+  central route; deferred to avoid a risky partial change this cycle.
+- **`/for/[slug]` has no co-located `opengraph-image.tsx`** (siblings all do) →
+  persona pages fall back to the generic root OG image. Real, lower ROI; next cycle.
+- Unchanged blocked items (accumulated): retargeting/pixel IDs;
+  BSKY_HANDLE/BSKY_APP_PASSWORD (social-bluesky); GA4 measurement id;
+  Otterly/GEO-probe ANTHROPIC_API_KEY; IndexNow 400; guest-essay/curator outbound
+  (human-only); Wikipedia autoconfirm; named advisory board (cannot fabricate);
+  FOUR retired founding-rate Stripe payment links still active (manual
+  deactivation, stripe/payment-links.md); stale Hermes SEO-swarm *doc* refs to the
+  removed `~/Downloads/gitdealflow` path; the stashed `stash@{0}` stale WIP.
