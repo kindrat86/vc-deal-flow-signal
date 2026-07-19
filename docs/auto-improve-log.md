@@ -1137,3 +1137,24 @@ E-E-A-T 75 · SMO 70 · CRO 74 · ASO 35.
   ANTHROPIC_API_KEY; IndexNow 400; guest-essay/curator outbound (human-only);
   Wikipedia autoconfirm; named advisory board (cannot fabricate); FOUR retired
   founding-rate Stripe payment links still active; stale `stash@{0}` WIP.
+
+**FINAL STATE / CORRECTION (end of run).** While finalizing, origin/main advanced
+by **7 commits from the swarm's OWN checkout** (`~/Downloads/gitdealflow`) — real
+committed work (Trusted-Types crash fix, `/vs/tracxn`+`/vs/crunchbase` redirect
+fixes, mobile-UI pSEO fixes, dream100 radar, stats-footer links). Verified
+**origin/main's committed code is CLEAN of the sender regression** (only
+`excluded-emails.ts` lists the retired `signal@`; `subscribe/route.ts` sender =
+`signals@`) — the regression lived ONLY in THIS canonical checkout's stale
+uncommitted leftover, not in any committed/deployed code. So this checkout is not
+the swarm's live worktree; its uncommitted batch was stale leftover.
+RESOLUTION (revised from the "left uncommitted in worktree" wording above): I
+**stashed the entire stale batch → `stash@{0}`** (message: "2026-07-20 stale
+uncommitted swarm batch (sender regression neutralized in-stash); needs human
+review") — fully recoverable, with the sender already corrected inside the stash.
+This un-wedged the checkout (a stale unmerged conflict was blocking all git ops),
+let me rebase this log entry cleanly onto origin/main, and left the worktree
+**clean and in sync with origin/main** (pushed `0f7105e6`) so nothing can
+accidentally deploy the untrusted batch. **HUMAN: the batch to review is in
+`git stash show -p stash@{0}`, NOT the worktree** — vet the ad-pixel IDs +
+content rewrites there before ever applying/deploying it. (Prior stale stashes:
+`stash@{1}`, `stash@{2}`.)
