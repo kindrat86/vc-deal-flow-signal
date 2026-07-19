@@ -11,7 +11,9 @@ import {
 import { allPosts as posts } from "@/content/posts";
 import { comparisons } from "@/content/comparisons";
 import { FINDINGS as RESEARCH_FINDINGS } from "@/content/research-findings";
-import { standaloneFaqs } from "@/content/standalone-faqs";
+// standaloneFaqs removed from homepage JSON-LD — FAQPage schema now lives
+// only on /faq where it belongs (saved ~9KB on homepage payload).
+// import { standaloneFaqs } from "@/content/standalone-faqs";
 import { AgentSummary } from "@/components/AgentSummary";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
@@ -648,25 +650,6 @@ export default function Home() {
           "@type": "VirtualLocation",
           url: "https://signals.gitdealflow.com",
         },
-      },
-      {
-        "@type": "FAQPage",
-        "@id": "https://signals.gitdealflow.com/#faq",
-        url: "https://signals.gitdealflow.com",
-        inLanguage: "en-US",
-        about: { "@id": "https://gitdealflow.com/#organization" },
-        isPartOf: { "@id": "https://signals.gitdealflow.com/#website" },
-        mainEntity: standaloneFaqs.slice(0, 12).map((f) => ({
-          "@type": "Question",
-          name: f.question,
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: f.answer,
-            url: f.sourceHref.startsWith("http")
-              ? f.sourceHref
-              : `https://signals.gitdealflow.com${f.sourceHref}`,
-          },
-        })),
       },
     ],
   };

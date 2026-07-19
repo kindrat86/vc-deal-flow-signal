@@ -26,89 +26,17 @@ const APEX = "https://gitdealflow.com";
  * by Accept-Language. The English entry is canonical; all others are
  * hand-checked native renderings (same source as content/locales.ts).
  */
-const ORG_NAME_MULTILINGUAL = [
-  { "@value": "VC Deal Flow Signal", "@language": "en" },
-  { "@value": "VC Deal Flow Signal", "@language": "zh" },
-  { "@value": "VC Deal Flow Signal", "@language": "ja" },
-  { "@value": "VC Deal Flow Signal", "@language": "de" },
-  { "@value": "VC Deal Flow Signal", "@language": "es" },
-  { "@value": "VC Deal Flow Signal", "@language": "fr" },
-  { "@value": "VC Deal Flow Signal", "@language": "pt" },
-  { "@value": "VC Deal Flow Signal", "@language": "ko" },
-  { "@value": "VC Deal Flow Signal", "@language": "hi" },
-  { "@value": "VC Deal Flow Signal", "@language": "ru" },
-  { "@value": "VC Deal Flow Signal", "@language": "it" },
-  { "@value": "VC Deal Flow Signal", "@language": "nl" },
-  { "@value": "VC Deal Flow Signal", "@language": "ar" },
-];
+const ORG_NAME = "VC Deal Flow Signal";
+// ORG_NAME_MULTILINGUAL (13-language array, ~500B) replaced with single English
+// string — the full multilingual labels are preserved in /knowledge-graph.json
+// and /.well-known/entity.jsonld. Saves ~2.5KB per page load (this component
+// renders in the root layout on every page). AEO 2026-07-19.
 
-const ORG_DESC_MULTILINGUAL = [
-  {
-    "@value":
-      "GitHub commit-velocity tracking across venture-backed startups. Code-side momentum signals from public GitHub data.",
-    "@language": "en",
-  },
-  {
-    "@value":
-      "通过追踪 GitHub 公开数据中的提交速率、贡献者增长和仓库扩张，识别处于工程加速期的初创公司。",
-    "@language": "zh",
-  },
-  {
-    "@value":
-      "公開された GitHub データからコミット速度、コントリビューター増加、リポジトリ拡張を追跡し、エンジニアリング加速期にあるスタートアップを特定します。",
-    "@language": "ja",
-  },
-  {
-    "@value":
-      "Erkennung von Startups in einer Phase beschleunigter Engineering-Aktivität anhand von Commit-Geschwindigkeit, Mitwirkenden-Wachstum und Repository-Erweiterung aus öffentlichen GitHub-Daten.",
-    "@language": "de",
-  },
-  {
-    "@value":
-      "Identifica startups en una fase de aceleración de ingeniería midiendo la velocidad de commits, el crecimiento de colaboradores y la expansión de repositorios a partir de datos públicos de GitHub.",
-    "@language": "es",
-  },
-  {
-    "@value":
-      "Identifie les startups en accélération technique en mesurant la vélocité des commits, la croissance des contributeurs et l'expansion des dépôts à partir de données GitHub publiques.",
-    "@language": "fr",
-  },
-  {
-    "@value":
-      "Identifica startups em fase de aceleração de engenharia medindo velocidade de commits, crescimento de contribuidores e expansão de repositórios a partir de dados públicos do GitHub.",
-    "@language": "pt",
-  },
-  {
-    "@value":
-      "GitHub 공개 데이터에서 커밋 속도, 기여자 증가, 저장소 확장을 추적하여 엔지니어링 가속 단계에 있는 스타트업을 식별합니다.",
-    "@language": "ko",
-  },
-  {
-    "@value":
-      "सार्वजनिक GitHub डेटा से कमिट वेलॉसिटी, कॉन्ट्रिब्यूटर वृद्धि और रिपॉज़िटरी विस्तार को ट्रैक करके इंजीनियरिंग एक्सेलरेशन चरण में मौजूद स्टार्टअप्स की पहचान करता है।",
-    "@language": "hi",
-  },
-  {
-    "@value":
-      "Выявляет стартапы в фазе ускорения инженерной разработки, отслеживая скорость коммитов, рост числа участников и расширение репозиториев в публичных данных GitHub.",
-    "@language": "ru",
-  },
-  {
-    "@value":
-      "Identifica le startup in una fase di accelerazione tecnica misurando la velocità dei commit, la crescita dei contributori e l'espansione dei repository a partire dai dati pubblici di GitHub.",
-    "@language": "it",
-  },
-  {
-    "@value":
-      "Identificeert startups in een fase van versnelde engineering door commit-snelheid, groei van bijdragers en repository-uitbreiding in publieke GitHub-data te volgen.",
-    "@language": "nl",
-  },
-  {
-    "@value":
-      "تحديد الشركات الناشئة التي تمر بمرحلة تسارع هندسي من خلال تتبع سرعة الـ commits ونمو المساهمين وتوسع المستودعات في بيانات GitHub العامة.",
-    "@language": "ar",
-  },
-];
+const ORG_DESC =
+  "GitHub commit-velocity tracking across venture-backed startups. Code-side momentum signals from public GitHub data.";
+// ORG_DESC_MULTILINGUAL (13-language array, ~3KB) replaced with single English
+// string — full multilingual descriptions preserved in /knowledge-graph.json.
+// Saves ~2.5KB per page. AEO 2026-07-19.
 
 const ALL_AVAILABLE_LANGUAGES = [
   "en",
@@ -187,8 +115,8 @@ export function RootIdentitySchema() {
         // the Knowledge Graph a typed anchor distinct from generic
         // schema:Organization. Pair with identifier[wikidata] below.
         additionalType: "https://www.wikidata.org/wiki/Q4830453",
-        name: ORG_NAME_MULTILINGUAL,
-        description: ORG_DESC_MULTILINGUAL,
+        name: ORG_NAME,
+        description: ORG_DESC,
         disambiguatingDescription:
           "VC Deal Flow Signal (GitDealFlow) is an agent-native, pseudonymous engineering-velocity signal dataset derived from public GitHub data. It tracks commit velocity, contributor growth, and repository expansion across venture-backed startups, surfacing fundraises 3–6 weeks before pitch decks circulate. It is NOT a VC fund, accelerator program, startup database (Crunchbase, PitchBook, CB Insights), investment recommendation platform, or affiliate-marketing service. The product is exposed via MCP, A2A, NLWeb, and OpenAPI — designed for AI agents, VC analysts, and quantitative researchers who query it programmatically without a human dashboard.",
         legalName: "VC Deal Flow Signal (GitDealFlow)",
