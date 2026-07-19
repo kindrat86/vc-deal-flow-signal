@@ -272,6 +272,33 @@ const nextConfig: NextConfig = {
       // Iframe-friendly embed surfaces — re-open framing for the public
       // embed widgets so newsletter authors / blog writers can drop them
       // into Substack, Ghost, WordPress, etc. The route handlers also set
+      // ── Embed widget farm — catch-all for all /embed/* paths ──
+      // Covers: portfolio-network, 7 calculators, define glossary, and
+      // any future embeddable widgets. After the global catch-all so
+      // later-wins header merging applies frame-ancestors * correctly.
+      {
+        source: "/embed/:path*",
+        headers: [
+          {
+            key: "X-Frame-Options",
+            value: "ALLOWALL",
+          },
+          {
+            key: "Content-Security-Policy",
+            value: [
+              "default-src 'self'",
+              "script-src 'self' 'unsafe-inline'",
+              "style-src 'self' 'unsafe-inline'",
+              "img-src 'self' data: https:",
+              "font-src 'self'",
+              "connect-src 'self'",
+              "frame-ancestors *",
+              "object-src 'none'",
+              "base-uri 'self'",
+            ].join("; "),
+          },
+        ],
+      },
       // these headers on their Responses (belt + braces); this entry is
       // the deterministic site-config-level override.
       //
