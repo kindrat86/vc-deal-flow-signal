@@ -74,6 +74,20 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        // Legacy pSEO generator once shadowed the real /alternatives/[slug]
+        // pages with a bare-slug static file at /vs/tracxn (removed
+        // 2026-07-20 — see predeploy audit). Redirect the old inbound
+        // links/backlinks to the real page instead of 404ing.
+        source: "/vs/tracxn",
+        destination: "/alternatives/tracxn",
+        permanent: true,
+      },
+      {
+        source: "/vs/crunchbase",
+        destination: "/alternatives/crunchbase",
+        permanent: true,
+      },
+      {
         // Consolidated the duplicate €1 teardown product into /teardown
         // (2026-06-01). /tweet-teardown/thanks stays for in-flight purchases.
         source: "/tweet-teardown",
