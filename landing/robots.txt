@@ -4,6 +4,11 @@ Allow: /
 # AI Search Crawlers — explicitly allowed
 # (X-Robots-Tag header handles preview/snippet directives for all crawlers)
 
+max-image-preview:large
+max-video-preview:-1
+max-snippet:-1
+max-image-render:Standard
+
 User-agent: GPTBot
 Allow: /
 
