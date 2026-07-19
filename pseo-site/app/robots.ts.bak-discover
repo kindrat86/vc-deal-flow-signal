@@ -1,4 +1,6 @@
-import type { MetadataRoute } from "next";
+# Stale file — replaced by static public/robots.txt for Google Discover support.
+# The MetadataRoute.Robots type doesn't support max-image-preview/max-video-preview/max-snippet.
+# Static file at public/robots.txt now serves all directives.
 
 const BASE_URL = "https://signals.gitdealflow.com";
 
