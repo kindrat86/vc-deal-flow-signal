@@ -86,11 +86,7 @@ export default async function ComparisonPage({ params }: PageProps) {
         headline: comp.title,
         description: comp.description,
         author: DATA_NERD_AUTHOR_REF,
-        publisher: {
-          "@type": "Organization",
-          name: "VC Deal Flow Signal",
-          url: "https://gitdealflow.com",
-        },
+        publisher: { "@id": "https://gitdealflow.com/#organization" },
         speakable: {
           "@type": "SpeakableSpecification",
           cssSelector: ["[data-speakable]", "h1", ".verdict-block"],
@@ -100,13 +96,6 @@ export default async function ComparisonPage({ params }: PageProps) {
         "@type": "Review",
         author: DATA_NERD_AUTHOR_REF,
         reviewBody: comp.verdict,
-        reviewRating: {
-          "@type": "Rating",
-          ratingValue: comp.sections.length >= 5 ? 4.5 : 4,
-          bestRating: 5,
-          worstRating: 1,
-          ratingExplanation: `Comparison depth: ${comp.sections.length} dimensions analyzed${comp.featureTable ? ", structured feature table included" : ""}.`,
-        },
         itemReviewed: {
           "@type": "SoftwareApplication",
           name: comp.h1,

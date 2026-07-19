@@ -81,11 +81,7 @@ export default async function AlternativePage({ params }: PageProps) {
         headline: alt.title,
         description: alt.description,
         author: DATA_NERD_AUTHOR_REF,
-        publisher: {
-          "@type": "Organization",
-          name: "VC Deal Flow Signal",
-          url: "https://gitdealflow.com",
-        },
+        publisher: { "@id": "https://gitdealflow.com/#organization" },
         speakable: {
           "@type": "SpeakableSpecification",
           cssSelector: ["[data-speakable]", "h1", ".verdict-block", ".tagline"],
@@ -95,13 +91,6 @@ export default async function AlternativePage({ params }: PageProps) {
         "@type": "Review",
         author: DATA_NERD_AUTHOR_REF,
         reviewBody: alt.verdict,
-        reviewRating: {
-          "@type": "Rating",
-          ratingValue: 4.5,
-          bestRating: 5,
-          worstRating: 1,
-          ratingExplanation: `Structured comparison across ${alt.sections.length} dimensions plus feature table.`,
-        },
         itemReviewed: {
           "@type": "SoftwareApplication",
           name: alt.competitor,
@@ -111,6 +100,7 @@ export default async function AlternativePage({ params }: PageProps) {
       },
       {
         "@type": "SoftwareApplication",
+        "@id": "https://signals.gitdealflow.com/#software",
         name: "VC Deal Flow Signal",
         applicationCategory: "BusinessApplication",
         operatingSystem: "Web, MCP, Email, RSS, Telegram",

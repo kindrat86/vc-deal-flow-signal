@@ -14,6 +14,7 @@ export async function GET() {
     ),
     `  <sitemap>\n    <loc>${BASE_URL}/news-sitemap.xml</loc>\n    <lastmod>${new Date().toISOString()}</lastmod>\n  </sitemap>`,
     `  <sitemap>\n    <loc>${BASE_URL}/sitemap-images.xml</loc>\n    <lastmod>${lastModified}</lastmod>\n  </sitemap>`,
+    `  <sitemap>\n    <loc>${BASE_URL}/sitemap-videos.xml</loc>\n    <lastmod>${lastModified}</lastmod>\n  </sitemap>`,
     `  <sitemap>\n    <loc>${BASE_URL}/sitemap-i18n.xml</loc>\n    <lastmod>${lastModified}</lastmod>\n  </sitemap>`,
   ].join("\n");
 

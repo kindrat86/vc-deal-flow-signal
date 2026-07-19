@@ -93,7 +93,7 @@ export default async function VsPage({ params }: PageProps) {
         headline: `${a.name} vs ${b.name} — Deal Flow Platform Comparison`,
         description: `Head-to-head comparison of ${a.name} and ${b.name} for VC deal sourcing.`,
         author: DATA_NERD_AUTHOR_REF,
-        publisher: { "@type": "Organization", name: "VC Deal Flow Signal", url: "https://gitdealflow.com" },
+        publisher: { "@id": "https://gitdealflow.com/#organization" },
         datePublished: lastModified.toISOString().slice(0, 10),
         dateModified: lastModified.toISOString().slice(0, 10),
         about: [

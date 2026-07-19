@@ -67,8 +67,6 @@ ${tags}
       <video:requires_subscription>no</video:requires_subscription>
       <video:platform relationship="allow">web mobile tv</video:platform>
       <video:price currency="USD">0.00</video:price>
-      <video:rating>5.0</video:rating>
-      <video:view_count>0</video:view_count>
       <video:expiration_date>2099-12-31T23:59:59+00:00</video:expiration_date>
     </video:video>
   </url>`;

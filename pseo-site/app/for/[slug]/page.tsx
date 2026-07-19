@@ -8,6 +8,7 @@ import {
 } from "@/content/personas";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
+import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 
 /**
  * Higher-intent buyer personas who evaluate companies for a living and have
@@ -66,16 +67,8 @@ export default async function PersonaPage({ params }: PageProps) {
         "@type": "Article",
         headline: persona.h1,
         description: persona.metaDescription,
-        author: {
-          "@type": "Organization",
-          name: "VC Deal Flow Signal",
-          url: "https://gitdealflow.com",
-        },
-        publisher: {
-          "@type": "Organization",
-          name: "VC Deal Flow Signal",
-          url: "https://gitdealflow.com",
-        },
+        author: DATA_NERD_AUTHOR_REF,
+        publisher: { "@id": "https://gitdealflow.com/#organization" },
         audience: {
           "@type": "Audience",
           audienceType: persona.name,

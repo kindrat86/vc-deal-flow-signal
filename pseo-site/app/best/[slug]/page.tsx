@@ -69,11 +69,7 @@ export default async function BestSectorPage({ params }: PageProps) {
         headline: `Best ${sector.name} Startups ${year}`,
         description: `The best ${sectorLower} startups in ${year} ranked by engineering acceleration.`,
         author: DATA_NERD_AUTHOR_REF,
-        publisher: {
-          "@type": "Organization",
-          name: "VC Deal Flow Signal",
-          url: "https://gitdealflow.com",
-        },
+        publisher: { "@id": "https://gitdealflow.com/#organization" },
         dateModified: lastModified.toISOString().slice(0, 10),
         speakable: {
           "@type": "SpeakableSpecification",
@@ -129,16 +125,8 @@ export default async function BestSectorPage({ params }: PageProps) {
         temporalCoverage: period.name,
         isAccessibleForFree: true,
         license: "https://creativecommons.org/licenses/by/4.0/",
-        creator: {
-          "@type": "Organization",
-          name: "VC Deal Flow Signal",
-          url: "https://gitdealflow.com",
-        },
-        publisher: {
-          "@type": "Organization",
-          name: "VC Deal Flow Signal",
-          url: "https://gitdealflow.com",
-        },
+        creator: { "@id": "https://gitdealflow.com/#organization" },
+        publisher: { "@id": "https://gitdealflow.com/#organization" },
         variableMeasured: [
           { "@type": "PropertyValue", name: "Commit Velocity Change", description: "Percentage change in 14-day commit volume vs. prior period" },
           { "@type": "PropertyValue", name: "Contributors", description: "Unique contributors to the most active public repository" },
