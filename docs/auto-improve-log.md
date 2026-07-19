@@ -1158,3 +1158,41 @@ accidentally deploy the untrusted batch. **HUMAN: the batch to review is in
 `git stash show -p stash@{0}`, NOT the worktree** — vet the ad-pixel IDs +
 content rewrites there before ever applying/deploying it. (Prior stale stashes:
 `stash@{1}`, `stash@{2}`.)
+
+**⚠️ CORRECTION — I WAS WRONG ABOUT THE "SENDER REGRESSION" (same run, after
+memory surfaced).** The `signals@`→`signal@` change in the batch is **NOT a
+regression — it is the owner's DELIBERATE 2026-07-19 sender change**, already
+LIVE and verified (per project memory `gitdealflow-email-identity`, updated
+2026-07-19: owner reverted the sender to the singular `signal@gitdealflow.com`;
+the real switch is the Vercel `FROM_EMAIL` env on pseo-site = `signal@`, and the
+code default-fallbacks were meant to follow). **Dispositive corroboration:** the
+same batch adds exactly the `BCC: sales@sipiteno.com` self-copy on the SOS
+sequence that memory attributes to that identical 07-19 owner change. I over-
+trusted the (now-stale) `excluded-emails.ts` comment ("renamed signal@ →
+signals@ 2026-07"), which predates the 07-19 re-revert, and mislabeled owner
+work as a swarm bug. Apologies for the noise in the two commits above.
+
+**NO HARM DONE (verified):** I DEPLOYED NOTHING (only these docs/log commits).
+Production is unchanged — it sends from `signal@` via the Vercel `FROM_EMAIL` env
+(owner intent, live since 07-19); `health.json uptimeContact: signals@` is a
+SEPARATE display field, not the send identity. origin/main's committed code
+default is still `signals@` (untouched by me — the owner's 07-19 code-default
+flip was applied via env + left uncommitted in this checkout, never committed to
+origin). So committed code and production both sit exactly where they were.
+
+**STASH FIDELITY NOTE:** `stash@{0}` faithfully preserves the batch EXCEPT that I
+had (erroneously, before the correction) flipped the email-file sender defaults
+back `signal@`→`signals@`. So the stash's ~24 email files currently read the
+`signals@` default; the BCC additions and everything else are intact/as-found.
+This is immaterial to runtime (prod is env-driven = `signal@`), but if the human
+commits the batch's source, RE-SET the code defaults to `signal@` to match the
+live owner intent (or just re-run the 07-19 change). I did NOT unilaterally
+commit the sender-default flip — that source-vs-env alignment is the owner's call
+and is already live; leaving it for human finalization.
+
+**Still genuinely needs-human review in `stash@{0}` (unchanged):** the ad-pixel
+IDs of unknown provenance in `landing/index.html` (Meta/Reddit/LinkedIn) and the
+large glossary/for content rewrites — those remain unverified and were never my
+work. Net for this cycle: **no code shipped, no deploy, production healthy;** the
+only durable output is this (corrected) log + a memory note so future cycles
+don't re-flag the owner's `signal@` sender as a regression.
