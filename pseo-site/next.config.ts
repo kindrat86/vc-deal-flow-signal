@@ -233,7 +233,17 @@ const nextConfig: NextConfig = {
               "font-src 'self'",
               "connect-src 'self' https://eu.i.posthog.com https://eu.posthog.com https://eu-assets.i.posthog.com https://api.resend.com https://scripts.refgrowcdn.com",
               "frame-ancestors 'none'",
+              "upgrade-insecure-requests",
+              "require-trusted-types-for 'script'",
             ].join("; "),
+          },
+          {
+            key: "Cross-Origin-Opener-Policy",
+            value: "same-origin",
+          },
+          {
+            key: "Cross-Origin-Embedder-Policy",
+            value: "credentialless",
           },
         ],
       },
