@@ -302,7 +302,7 @@ export default async function MemberProfilePage(ctx: RouteContext) {
             Public scorecard
           </h2>
           <div className="rounded-xl border border-slate-800 bg-slate-900/40 p-5 sm:p-6 space-y-4">
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
               <div>
                 <p className="text-gray-500 text-[10px] uppercase tracking-wider font-semibold mb-1">
                   Hits

@@ -172,7 +172,7 @@ export default async function YearInReviewPage({ params }: PageProps) {
           {y.overview}
         </p>
 
-        <div className="grid grid-cols-3 gap-3 mb-10">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-10">
           <div className="rounded-lg border border-slate-800 bg-slate-900 p-4 text-center">
             <p className="text-2xl font-bold text-sky-400">{companies.length}</p>
             <p className="text-xs text-gray-400 mt-1">Companies of the year</p>

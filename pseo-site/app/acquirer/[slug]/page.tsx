@@ -188,7 +188,7 @@ export default async function AcquirerPage({ params }: PageProps) {
         </p>
         <p className="text-gray-400 text-base leading-relaxed mb-10">{a.intro}</p>
 
-        <div className="grid grid-cols-3 gap-4 mb-10">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-10">
           <div className="rounded-lg border border-slate-800 bg-slate-900 p-4 text-center">
             <p className="text-2xl font-bold text-sky-400">
               {a.notableAcquisitions.length}

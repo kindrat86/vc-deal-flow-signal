@@ -169,7 +169,7 @@ export default function ScorecardPage() {
           <p className="text-gray-400 text-[10px] font-semibold uppercase tracking-wider mb-3">
             Cumulative · {totals.picks} picks across {SCORE_ROWS.length} weeks
           </p>
-          <div className="grid grid-cols-3 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
             <div className="rounded-lg border border-emerald-700/40 bg-emerald-950/15 p-3">
               <p className="text-emerald-300 text-[10px] font-semibold uppercase tracking-wider">Hit</p>
               <p className="text-emerald-300 text-2xl font-bold tabular-nums mt-0.5">{totals.hit}</p>

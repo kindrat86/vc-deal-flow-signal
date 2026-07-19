@@ -214,7 +214,7 @@ export default async function PredictedWeekPage({ params }: RouteContext) {
         </header>
 
         <section className="mb-8 rounded-xl border border-slate-800 bg-slate-900 p-5">
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
             <div>
               <div className="text-2xl font-bold text-gray-100">{hits}</div>
               <div className="text-xs text-gray-400 mt-1">Hits</div>

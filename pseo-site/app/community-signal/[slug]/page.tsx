@@ -276,7 +276,7 @@ export default async function CommunityGroupPage({ params }: PageProps) {
             <p className="text-gray-400 text-[10px] font-semibold uppercase tracking-wider mb-3">
               Yield breakdown · {g.items.length} rooms
             </p>
-            <ul className="grid grid-cols-3 gap-3 text-sm">
+            <ul className="grid grid-cols-2 sm:grid-cols-3 gap-3 text-sm">
               {ORDERED_YIELDS.map((y) => (
                 <li
                   key={y}
