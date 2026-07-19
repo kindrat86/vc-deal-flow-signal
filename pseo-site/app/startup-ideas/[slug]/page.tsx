@@ -29,6 +29,18 @@ export async function generateStaticParams() {
 export const dynamicParams = false;
 export const revalidate = 604800;
 
+function buildIdeaDescription(idea: StartupIdea): string {
+  // Prefer the editorial `metaDescription` when it's already SERP-length
+  // (>=120); otherwise fall back to the richer `oneLiner`. Clamp to 155 so the
+  // description lands in the 150-155 sweet spot without SERP truncation.
+  const source =
+    idea.metaDescription && idea.metaDescription.length >= 120
+      ? idea.metaDescription
+      : idea.oneLiner;
+  if (source.length <= 155) return source;
+  return `${source.slice(0, 152).trimEnd()}...`;
+}
+
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
@@ -36,21 +48,22 @@ export async function generateMetadata({
   const idea = getStartupIdeaBySlug(slug);
   if (!idea) return {};
 
+  const description = buildIdeaDescription(idea);
   return {
     title: idea.title,
-    description: idea.metaDescription,
+    description,
     keywords: idea.keywords.join(", "),
     alternates: { canonical: `/startup-ideas/${slug}` },
     openGraph: {
       title: idea.title,
-      description: idea.metaDescription,
+      description,
       url: `${SITE}/startup-ideas/${slug}`,
       type: "article",
     },
     twitter: {
       card: "summary_large_image",
       title: idea.title,
-      description: idea.metaDescription,
+      description,
     },
   };
 }

@@ -796,9 +796,9 @@ export const startupIdeas: StartupIdea[] = [
   {
     slug: "vertical-ai-construction",
     category: "Vertical AI",
-    title: "Vertical AI for construction: the agent that reads the blueprint",
+    title: "Vertical AI for construction: blueprint agent",
     metaDescription:
-      "Vertical AI for construction PMs — buildable in 2026 with three repos showing the pattern.",
+      "Vertical AI for construction PMs reads PDF blueprints, extracts quantity takeoffs, flags spec discrepancies, and drafts RFIs — a buildable 2026 wedge targeting 50,000 mid-market GCs underserved by Procore, with three repos already showing the pattern.",
     oneLiner:
       "Construction PMs spend half their day on takeoffs, RFIs, and submittal review. The AI that does all three from a PDF blueprint wins the small-and-mid-market GC.",
     whyNow:
@@ -1174,9 +1174,9 @@ export const startupIdeas: StartupIdea[] = [
   {
     slug: "infra-cost-optimizers",
     category: "Dev Tools",
-    title: "Infra cost optimizers: the agent that runs in your AWS bill",
+    title: "Infra cost optimizers: agent in AWS bill",
     metaDescription:
-      "Infra cost optimization is a wedge market — buildable in 2026.",
+      "Infra cost optimizers read AWS, GCP, and Azure bills, find idle instances and oversized RDS, and open a Terraform fix PR — a buildable 2026 FinOps wedge for series-B teams, with three OSS repos already showing the pattern.",
     oneLiner:
       "Every engineering team overspends on cloud by 30%+. The agent that reads the bill, identifies the waste, and ships a PR to fix it wins the FinOps long tail.",
     whyNow:
@@ -1840,9 +1840,9 @@ export const startupIdeas: StartupIdea[] = [
   {
     slug: "open-source-funding-platforms",
     category: "Open Source / Community",
-    title: "Open-source funding platforms: the GitHub Sponsors alternative",
+    title: "Open-source funding platforms: B2B OSS wedge",
     metaDescription:
-      "Open-source funding platforms — buildable in 2026 with three repos showing the velocity pattern.",
+      "Open-source funding platforms turn 'we use this library' into a one-click B2B subscription with invoice and impact reporting — a buildable 2026 wedge with three OSS repos already showing the velocity pattern.",
     oneLiner:
       "GitHub Sponsors solved the consumer wedge. The B2B wedge — companies paying for the OSS they depend on, with attribution and impact reporting — is open.",
     whyNow:

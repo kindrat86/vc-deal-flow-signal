@@ -1301,9 +1301,9 @@ export const starsCases: StarsCase[] = [
     leadInvestor: "Series D at $6B",
     timeToMoney:
       "Star count alone underwrote the round; sustained acceleration over 8 years",
-    headline: "Grafana — OSS dashboards to a $240M Series D at $6B",
+    headline: "Grafana: OSS dashboards to a $240M Series D",
     tagline:
-      "Grafana's repo crossed 55K stars before the $240M Series D priced at a $6B valuation.",
+      "Grafana's repo crossed 55K stars and hundreds of community plugins compounded its reach before the $240M Series D priced at a $6B valuation in April 2022 — a multi-year star-count signal that any sourcing system could read.",
     tldr:
       "grafana/grafana is one of the most-starred dev-tool repos ever. The Series D in April 2022 at $6B was an unsurprising priced confirmation of a category-leading OSS platform.",
     narrative: [
@@ -1350,9 +1350,9 @@ export const starsCases: StarsCase[] = [
     leadInvestor: "Series D at $4.2B",
     timeToMoney:
       "Conference + community signal led the Series D by quarters",
-    headline: "dbt Labs — data transformation to a $222M Series D at $4.2B",
+    headline: "dbt Labs: data transformation, $222M Series D",
     tagline:
-      "dbt's OSS transformation engine plus dbt Cloud subscriptions priced the $222M Series D at $4.2B.",
+      "dbt's OSS transformation engine plus dbt Cloud subscriptions and the Coalesce community conference combined into a multi-surface OSS-to-SaaS flywheel that priced the $222M Series D at a $4.2B valuation in February 2022.",
     tldr:
       "dbt-labs/dbt-core was the OSS engine that anchored a hosted SaaS (dbt Cloud) and a growing community (Coalesce conference). The Series D in February 2022 at $4.2B was the priced confirmation.",
     narrative: [
@@ -1398,9 +1398,9 @@ export const starsCases: StarsCase[] = [
     raiseDate: "2021-12-13",
     leadInvestor: "Series B at $1.5B",
     timeToMoney: "Connector growth led the Series B by quarters",
-    headline: "Airbyte — OSS ETL connectors to a $150M Series B at $1.5B",
+    headline: "Airbyte: OSS ETL to a $150M Series B",
     tagline:
-      "Airbyte's connector library proliferation led the $150M Series B at $1.5B.",
+      "Airbyte's open-source connector library crossed 100+ entries with steady community submissions through 2021, a measurable coverage signal that underwrote the aggressive $150M Series B at a $1.5B valuation in December.",
     tldr:
       "airbytehq/airbyte's value lived in connector count — by late 2021 the catalog had crossed 100+ open-source connectors, a leading signal for the $150M Series B that closed at $1.5B in December.",
     narrative: [
@@ -1446,9 +1446,9 @@ export const starsCases: StarsCase[] = [
     raiseDate: "2021-12-08",
     leadInvestor: "Series A",
     timeToMoney: "Star slope and Zapier-alternative tutorial density",
-    headline: "n8n — OSS workflow automation to a $12M Series A",
+    headline: "n8n: OSS workflow automation, $12M Series A",
     tagline:
-      "n8n's Zapier-alternative positioning and OSS workflow engine led the $12M Series A in late 2021.",
+      "n8n's self-hosted Zapier-alternative positioning compounded through 2021 with a growing community template library and rising tutorial density, pricing the $12M Series A in December 2021 as the default category pick.",
     tldr:
       "n8n-io/n8n grew steadily through 2021 as the leading OSS Zapier alternative. The $12M Series A in December was the priced confirmation.",
     narrative: [
@@ -2363,9 +2363,9 @@ export const starsCases: StarsCase[] = [
     raiseDate: "2024-09-01",
     leadInvestor: "Reported Series A",
     timeToMoney: "Star slope + local-LLM tutorial density led the round",
-    headline: "Ollama — local LLM runtime to a reported Series A",
+    headline: "Ollama: local LLM runtime to Series A",
     tagline:
-      "Ollama crossed 50K stars and became the default local LLM runtime before its reported Series A.",
+      "Ollama crossed 50K stars and became the default local LLM runtime cited in nearly every open-weights tutorial before its reported Series A in mid-2024 — the star slope and tutorial-default signal had been visible for three quarters.",
     tldr:
       "ollama/ollama grew through 2023 and 2024 as the easiest way to run open-weights models locally. By mid-2024 the repo had 50K+ stars and a reported Series A.",
     narrative: [
@@ -2411,9 +2411,9 @@ export const starsCases: StarsCase[] = [
     raiseDate: "2025-01-08",
     leadInvestor: "Andreessen Horowitz",
     timeToMoney: "Node-based UI dominance in image-gen + workflow sharing density",
-    headline: "ComfyUI — node-based image-gen UI to a $17M a16z seed",
+    headline: "ComfyUI: node image-gen UI to a $17M seed",
     tagline:
-      "ComfyUI became the default node-based UI for AI image generation before a16z led the $17M seed.",
+      "ComfyUI became the default node-based UI for AI image generation as tens of thousands of public workflows flooded Reddit and Civitai, signaling community-locked adoption before a16z led the $17M seed in January 2025.",
     tldr:
       "comfyanonymous/ComfyUI grew explosively through 2023-2024 as the most flexible node-based UI for Stable Diffusion and successor models. The $17M a16z seed in January 2025 was the priced confirmation.",
     narrative: [
@@ -2461,7 +2461,7 @@ export const starsCases: StarsCase[] = [
     timeToMoney: "LLM proxy adoption + multi-provider tooling led the seed",
     headline: "LiteLLM: LLM Proxy to a $5M a16z Seed",
     tagline:
-      "LiteLLM became the default multi-provider LLM proxy before a16z led the $5M seed.",
+      "LiteLLM became the default multi-provider LLM proxy as enterprise teams juggled 100+ providers, locking in route-based telemetry and usage controls before a16z led the $5M seed in July 2024 — the category-utility signal had been visible for two quarters.",
     tldr:
       "BerriAI/litellm gave developers a single API across 100+ LLM providers. By mid-2024 it had 7K+ stars and growing enterprise interest. a16z led the $5M seed in July 2024.",
     narrative: [
