@@ -1,0 +1,16 @@
+{
+  "name": "Signals by GitDealFlow",
+  "description": "AI-driven startup scoring and investment signals. Proprietary algorithms rank early-stage companies on momentum, team quality, and market fit.",
+  "url": "https://signals.gitdealflow.com",
+  "api": {
+    "type": "nlweb",
+    "version": "0.1",
+    "endpoint": "https://signals.gitdealflow.com/answers/"
+  },
+  "feeds": [
+    {
+      "type": "jsonfeed",
+      "url": "https://signals.gitdealflow.com/answers/feed.json"
+    }
+  ]
+}
