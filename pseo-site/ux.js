@@ -40,7 +40,7 @@
     var btn = document.createElement('button');
     btn.id = 'ux-back-to-top';
     btn.setAttribute('aria-label', 'Back to top');
-    btn.innerHTML = '↑';
+    btn.textContent = '↑';
     btn.title = 'Back to top';
     document.body.appendChild(btn);
 
@@ -376,11 +376,17 @@
     var toast = document.createElement('div');
     toast.className = 'ux-toast ux-toast--' + type;
     var icons = { success: '✓', warning: '⚠', danger: '✕', primary: 'ℹ' };
-    toast.innerHTML = '<span class="ux-toast__icon">' + (icons[type] || 'ℹ') + '</span><span>' + message + '</span>';
+    var iconSpan = document.createElement('span');
+    iconSpan.className = 'ux-toast__icon';
+    iconSpan.textContent = icons[type] || 'ℹ';
+    var messageSpan = document.createElement('span');
+    messageSpan.textContent = message;
+    toast.appendChild(iconSpan);
+    toast.appendChild(messageSpan);
     var close = document.createElement('button');
     close.className = 'ux-toast__close';
     close.setAttribute('aria-label', 'Dismiss');
-    close.innerHTML = '×';
+    close.textContent = '×';
     toast.appendChild(close);
     c.appendChild(toast);
 

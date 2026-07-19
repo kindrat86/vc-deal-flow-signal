@@ -161,6 +161,17 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full">
       <head>
+        {/* CSP sends `require-trusted-types-for 'script'` but ships no policy,
+            so any legacy innerHTML/script-src string assignment (ux.js, some
+            vendor loaders) throws instead of running. Must be the first
+            script in <head> — no defer/async — so it registers before
+            anything else executes. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "if(window.trustedTypes&&trustedTypes.createPolicy){trustedTypes.createPolicy('default',{createHTML:function(s){return s;},createScript:function(s){return s;},createScriptURL:function(s){return s;}});}",
+          }}
+        />
         {/* Performance: connect early to high-traffic third parties. */}
         <link rel="preconnect" href="https://eu.i.posthog.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://eu-assets.i.posthog.com" />
