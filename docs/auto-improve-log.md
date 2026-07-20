@@ -1278,3 +1278,116 @@ measurement id; Otterly/GEO-probe ANTHROPIC_API_KEY; IndexNow 400; guest-essay/
 curator outbound (human-only); Wikipedia autoconfirm; named advisory board (cannot
 fabricate); FOUR retired founding-rate Stripe links still active; 4 stale stashes
 (`stash@{0}..{3}`) piling up — human should triage/drop them.
+
+## 2026-07-20 (~14:55Z) — scheduled auto-improve: 2 discoverability fixes SHIPPED + LIVE-VERIFIED (OG-image 404 on 100+ pages; 2 new tool pages canonical+sitemap) — after fixing a broken Vercel project link
+
+**Headline:** unlike the two prior 07-20 cycles (both verify-only / no-deploy due to
+the swarm race), this cycle found two real, high-ROI defects, fixed them, and
+shipped to production on BOTH sites — but only after discovering and repairing a
+**broken/drifted `.vercel` project link** that first sent the deploys to orphan
+projects (see DEPLOY note below — important for future cycles).
+
+**AUDIT (read-only + 2 parallel Explore agents).** Production healthy going in
+(all key URLs 200, robots.txt AI-bot access clean, health `status: ok`). Scored vs
+the 07-20 00:00Z baseline; two fresh defects surfaced (both introduced by
+swarm commits shipped earlier today) plus a confirmed pre-existing OG defect:
+
+1. **OG-image 404 on 100+ non-co-located pages** (`lib/metadata.ts`). `defineMetadata`
+   hard-coded `${canonical}/opengraph-image` as the default OG/Twitter image. That
+   URL only 200s on the ~33 routes that co-locate an `opengraph-image.tsx`; on the
+   100+ routes without one (ALL trust/legal/E-E-A-T pages — `/privacy`, `/terms`,
+   `/security`, `/trust`, `/about`, `/disclosure`, `/transparency`, `/subprocessors`,
+   `/dpa`, `/standards`, `/corrections`, `/reproducibility`, `/attestations` … plus
+   most hubs) it **404'd** — every social/Slack/AI share of those pages showed a
+   broken image. Setting `images` explicitly also SUPPRESSED Next's file-convention
+   inheritance so those pages never fell back to the root card. **Live-confirmed**
+   404 on `/privacy/opengraph-image`, `/terms/opengraph-image`, etc. (root
+   `/opengraph-image` = 200).
+2. **Two brand-new static tool pages** (shipped today by the swarm) with a
+   canonical-to-redirect defect + orphaning: `public/tools/scout-score/index.html`
+   and `landing/tools/investment-calculator/index.html` set `canonical` + `og:url`
+   (+ JSON-LD `url`, + the embed-iframe src on the calculator) to the **trailing-slash**
+   form, which **308-redirects** to the real 200 URL. Both were also in NO sitemap
+   and had no internal link — reachable only by a crawler stumbling into a cross-link.
+
+Skipped (verified false): the agent-flagged "dead `Sitemap:` line in robots.txt"
+(`/image-sitemap.xml`) — that route **200s** (a real static file in `public/`); the
+line is merely redundant with `sitemap-images.xml`, not broken. Not touched.
+
+**IMPROVE (2 fixes, both safe, non-regressive):**
+- `pseo-site/lib/metadata.ts` — only pin an OG image when the caller passes an
+  explicit override; otherwise omit it and let Next's file-convention inheritance
+  supply the route's own co-located card (33 routes keep their rich cards) or the
+  inherited root `/opengraph-image`. Chose this over the agent's "change the default
+  to root" suggestion, which would have REGRESSED all 33 co-located routes (their
+  `${canonical}/opengraph-image` currently resolves correctly). **Build-verified**
+  in `.next`: `/agents` keeps its own card, `/methodology` inherits the root image,
+  trust pages no longer emit a 404 image. `verify-metadata` guard unaffected (checks
+  export presence only). All prebuild guards PASS (uniqueness, speakable, mcp-catalog,
+  coverage).
+- Canonical/og:url/JSON-LD/embed URLs on both tool pages → the slashless 200 form;
+  added `tools/scout-score` to the pseo `content` sitemap shard (static-leaves array,
+  same documented pattern as the `/learn` + `/vs` static leaves) and
+  `tools/investment-calculator` to `landing/sitemap-pages.xml`.
+
+Files: `pseo-site/lib/metadata.ts`, `pseo-site/app/sitemap/[id]/route.ts`,
+`pseo-site/public/tools/scout-score/index.html`,
+`landing/tools/investment-calculator/index.html`, `landing/sitemap-pages.xml`.
+Commit `60299be2` (pushed to main). NOTE: staged only these 5 files — the untracked
+`email-api/` operational scripts (live Resend key) were left alone; reverted the
+build-regenerated `seven-signals.epub` artifact.
+
+**VERIFY.** `npx tsc --noEmit` clean; full local `npm run build` clean (Compiled OK,
+5424 static pages, every prebuild/postbuild guard PASS). Live post-deploy (cache-
+busted): scout-score canonical = slashless 200 URL ✓, in `/sitemap/content.xml` ✓;
+`/privacy` no longer emits the 404 `og:image` ✓; `/agents` co-located card intact ✓;
+`/methodology` og:image = root ✓; both tool pages 200 ✓; landing
+`investment-calculator` canonical fixed + in `sitemap-pages.xml` ✓; health `ok`.
+
+**DEPLOY — ⚠️ THE CANONICAL DEPLOY LINK WAS BROKEN (fixed this cycle; future cycles must check).**
+The task's "proven working path" assumes `pseo-site/.vercel` is linked to project
+`pseo-site` (`prj_s0JL6C4uFTmt83OnzAZDgeMDnlaU`). **That link was GONE** — there was
+no `.vercel/` dir at all in `~/Downloads/vc-deal-flow-signal/pseo-site`, so the first
+`vercel deploy --prod` auto-created an ORPHAN deployment in a project named
+`vc-deal-flow-signal` that does NOT serve `signals.gitdealflow.com` (the domain is on
+project `pseo-site`). Same trap on landing: `landing/.vercel` was linked to
+`vc-deal-flow-signal-landing`, NOT the live `landing` project that serves
+`gitdealflow.com`. Resolution: re-linked both (`vercel link --yes --project pseo-site`
+→ `prj_s0JL...`; `vercel link --yes --project landing` → `prj_M3iknyIgZ8JMxPZzEPTWdSjm4l3E`)
+and redeployed. Both then went live on the correct domains (verified via
+`vercel inspect <domain>` → deployment 6m old, READY). **Future cycles: run
+`vercel inspect signals.gitdealflow.com` / `gitdealflow.com` and confirm the local
+`.vercel/project.json` matches BEFORE trusting a `--prod` deploy.**
+
+**Scores (Δ vs 07-20 00:00Z):** Technical SEO 86→**87** (2 orphaned indexable pages
+sitemapped + canonical-to-redirect fixed) · On-page 88→**89** (100+ pages no longer
+emit a 404 OG image) · Off-page 62 · pSEO 84→**85** · AEO 85 · GEO 80 · AIO 89→**90**
+(clean share cards for AI surfaces) · E-E-A-T 75→**76** (trust pages now share
+cleanly) · SMO 70 · CRO 74 · ASO 35.
+
+**NEEDS HUMAN (new this cycle):**
+- **The `.vercel` project links keep drifting/vanishing** in this checkout (pseo link
+  deleted entirely; landing link pointing at the wrong `vc-deal-flow-signal-landing`
+  project). Something — a swarm step, a `git clean`, or the stash churn — is wiping
+  them between cycles. Pin them (commit a `.vercel/project.json`? add to a setup
+  step?) so autonomous deploys don't silently ship to orphan projects. I re-linked
+  both this cycle but the fix won't persist if the wiper runs again.
+- Optional OG follow-up: non-co-located pages now cleanly emit NO og:image (some
+  inherit the root card, inconsistently — a Next-fork quirk). To GUARANTEE the root
+  branded card on every such page (rather than "no image"), either co-locate an
+  `opengraph-image` higher in the tree or pass an explicit `ogImage` override. Strict
+  improvement already shipped (404 → clean); this would make it optimal.
+
+**Unchanged accumulated blocked items:** durable static-leaf `@id` generator fix;
+content-sitemap uniform build-time `lastmod` (agent re-flagged — reserve
+`getDataLastModified()` for data-driven leaves, fixed date for evergreen; still a
+larger change deferred); duplicate URLs across sitemap shards (`high-intent` re-lists
+`content`/`core` URLs — clean correctness fix, deferred); glossary hub doesn't link
+its `/define/[term]` spokes + duplicates definitions (content agent's top find —
+larger restructure, deferred); reversed `/vs` duplicate pairs
+(`affinity-vs-harmonic-ai`↔`harmonic-ai-vs-affinity`, `crunchbase-vs-cb-insights`↔
+`cb-insights-vs-crunchbase` — set canonical to one direction, deferred);
+BSKY_HANDLE/BSKY_APP_PASSWORD; GA4 measurement id; Otterly/GEO-probe
+ANTHROPIC_API_KEY; IndexNow 400/422; guest-essay/curator outbound (human-only);
+Wikipedia autoconfirm; named advisory board (cannot fabricate); FOUR retired
+founding-rate Stripe links still active; 4 stale stashes (`stash@{0}..{3}`).
