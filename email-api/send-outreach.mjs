@@ -35,6 +35,7 @@ try {
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 const FROM = `${process.env.FROM_NAME} <${process.env.FROM_EMAIL}>`;
+const QA_BCC = "sales@sipiteno.com"; // Live QA inbox — receives every production send
 
 // Paths
 const SCHEDULE_PATH = resolve(__dirname, "outreach-schedule.json");
@@ -136,6 +137,7 @@ for (const email of schedule) {
     // Send as plain text (better deliverability for cold outreach)
     const result = await resend.emails.send({
       from: FROM,
+      bcc: QA_BCC,
       to: email.to,
       subject: email.subject,
       text: email.body + "\n\n---\nIf you'd prefer not to hear from me, just reply and I'll remove you immediately.",

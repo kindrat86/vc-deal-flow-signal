@@ -45,6 +45,7 @@ async function main() {
       },
       body: JSON.stringify({
         from: `${FROM_NAME} <${FROM_EMAIL}>`,
+        bcc: "sales@sipiteno.com",
         to: RECIPIENT,
         subject: email.subject,
         html: email.html,

@@ -261,6 +261,7 @@ export async function POST(request: Request) {
       },
       body: JSON.stringify({
         from: `${FROM_NAME} <${FROM_EMAIL}>`,
+        bcc: "sales@sipiteno.com",
         to: email,
         subject: MCP_SUBJECT,
         html: MCP_HTML,
@@ -297,6 +298,7 @@ export async function POST(request: Request) {
             },
             body: JSON.stringify({
               from: `${FROM_NAME} <${FROM_EMAIL}>`,
+              bcc: "sales@sipiteno.com",
               to: email,
               subject: soapEmail.subject,
               html: soapEmail.html,

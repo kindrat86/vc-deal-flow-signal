@@ -281,6 +281,7 @@ export async function GET(request: Request) {
         },
         body: JSON.stringify({
           from: `${FROM_NAME} <${FROM_EMAIL}>`,
+          bcc: "sales@sipiteno.com",
           to: email,
           subject: soapEmail.subject,
           html: injectUnsubscribeLink(soapEmail.html, email),

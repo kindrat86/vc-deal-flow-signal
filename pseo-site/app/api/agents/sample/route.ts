@@ -103,6 +103,7 @@ async function notifyAdmin(email: string, useCase: string, ip: string) {
       },
       body: JSON.stringify({
         from: `${FROM_NAME} <${FROM_EMAIL}>`,
+        bcc: "sales@sipiteno.com",
         to: ADMIN_EMAIL,
         reply_to: email,
         subject: `[agent sample] 5-call key request — ${email}`,

@@ -283,6 +283,7 @@ export async function POST(request: Request) {
         },
         body: JSON.stringify({
           from: `${FROM_NAME} <${FROM_EMAIL}>`,
+          bcc: "sales@sipiteno.com",
           to: email,
           subject: created
             ? `Welcome scout — your first call locked in (${githubOrg})`
@@ -313,6 +314,7 @@ export async function POST(request: Request) {
         },
         body: JSON.stringify({
           from: `${FROM_NAME} <${FROM_EMAIL}>`,
+          bcc: "sales@sipiteno.com",
           to: ADMIN_EMAIL,
           subject: `[scout] ${scout.handle} · ${githubOrg} · ${prediction.toUpperCase()} @ ${confidence}%${
             created ? " · NEW" : ""

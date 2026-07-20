@@ -508,6 +508,7 @@ export async function scheduleSetterSequence(
       const isInstant = item.at.getTime() <= now + 5_000;
       const payload: Record<string, unknown> = {
         from: fromHeader,
+        bcc: "sales@sipiteno.com",
         to: inputs.email,
         reply_to: SETTER_FROM_EMAIL,
         subject: item.subject,

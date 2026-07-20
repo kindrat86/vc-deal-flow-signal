@@ -266,6 +266,7 @@ export async function POST(request: Request) {
       },
       body: JSON.stringify({
         from: `${FROM_NAME} <${FROM_EMAIL}>`,
+        bcc: "sales@sipiteno.com",
         to: TO_EMAIL,
         reply_to: email,
         subject: `[Sector Sweep Brief] ${contact_name} — ${sector.slice(0, 60)}`,

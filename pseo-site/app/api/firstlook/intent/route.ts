@@ -78,6 +78,7 @@ async function notifyAdmin(email: string, sector: string, source: string) {
       },
       body: JSON.stringify({
         from: `${FROM_NAME} <${FROM_EMAIL}>`,
+        bcc: "sales@sipiteno.com",
         to: ADMIN_EMAIL,
         subject: `First Look intent — ${sector} (${email})`,
         html: `<p><strong>New First Look sector intent</strong></p>

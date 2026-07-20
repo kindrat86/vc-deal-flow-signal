@@ -149,6 +149,7 @@ async function sendScheduled(opts: {
     },
     body: JSON.stringify({
       from: `${FROM_NAME} <${FROM_EMAIL}>`,
+      bcc: "sales@sipiteno.com",
       to: opts.to,
       subject: opts.subject,
       html: injectUnsubscribeLink(opts.html, opts.to),

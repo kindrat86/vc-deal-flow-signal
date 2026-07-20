@@ -48,6 +48,7 @@ async function sendEmail(
     },
     body: JSON.stringify({
       from: `${FROM_NAME} <${FROM_EMAIL}>`,
+      bcc: "sales@sipiteno.com",
       to,
       subject,
       html,
@@ -482,6 +483,7 @@ export async function POST(request: NextRequest) {
             },
             body: JSON.stringify({
               from: `${FROM_NAME} <${FROM_EMAIL}>`,
+              bcc: "sales@sipiteno.com",
               to: email,
               subject: drip.subject,
               html: drip.html,
@@ -523,6 +525,7 @@ export async function POST(request: NextRequest) {
             },
             body: JSON.stringify({
               from: `${FROM_NAME} <${FROM_EMAIL}>`,
+              bcc: "sales@sipiteno.com",
               to: email,
               subject: drip.subject,
               html: drip.html,

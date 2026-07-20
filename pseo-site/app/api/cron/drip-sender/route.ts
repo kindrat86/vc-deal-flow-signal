@@ -86,6 +86,7 @@ async function sendEmail(
     },
     body: JSON.stringify({
       from: `${FROM_NAME} <${FROM_EMAIL}>`,
+      bcc: "sales@sipiteno.com",
       to,
       subject,
       html: injectUnsubscribeLink(html, to),

@@ -200,6 +200,7 @@ export async function POST(request: Request) {
         },
         body: JSON.stringify({
           from: `${FROM_NAME} <${FROM_EMAIL}>`,
+          bcc: "sales@sipiteno.com",
           to: TO_EMAIL,
           reply_to: email,
           subject: `[Crystal Ball] ${handle} — github.com/${org}`,
@@ -214,6 +215,7 @@ export async function POST(request: Request) {
         },
         body: JSON.stringify({
           from: `${FROM_NAME} <${FROM_EMAIL}>`,
+          bcc: "sales@sipiteno.com",
           to: email,
           subject: `Pick received — github.com/${org} (90-day window)`,
           html: injectUnsubscribeLink(userHtml, email),

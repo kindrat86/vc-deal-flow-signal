@@ -106,6 +106,7 @@ export async function GET(req: Request): Promise<Response> {
       },
       body: JSON.stringify({
         from: FROM_EMAIL,
+        bcc: "sales@sipiteno.com",
         to: [to],
         subject: email.subject,
         html: injectUnsubscribeLink(email.html, to),

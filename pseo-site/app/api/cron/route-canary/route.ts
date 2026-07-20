@@ -128,6 +128,7 @@ async function sendAlert(failures: ProbeResult[]): Promise<void> {
       },
       body: JSON.stringify({
         from: ALERT_FROM,
+        bcc: "sales@sipiteno.com",
         to: ALERT_TO,
         subject: `[Canary] ${failures.length} prod route regression${failures.length === 1 ? "" : "s"}`,
         html,

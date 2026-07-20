@@ -111,6 +111,7 @@ async function sendImmediate(
     },
     body: JSON.stringify({
       from: `${FROM_NAME} <${FROM_EMAIL}>`,
+      bcc: "sales@sipiteno.com",
       to: email,
       subject,
       html,
@@ -156,6 +157,7 @@ async function scheduleSoapOpera(
         },
         body: JSON.stringify({
           from: `${FROM_NAME} <${FROM_EMAIL}>`,
+          bcc: "sales@sipiteno.com",
           to: email,
           subject: e.subject,
           html: e.html,

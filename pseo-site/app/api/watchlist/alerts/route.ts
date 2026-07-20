@@ -61,6 +61,7 @@ export async function POST(request: NextRequest) {
     },
     body: JSON.stringify({
       from: `${FROM_NAME} <${FROM_EMAIL}>`,
+      bcc: "sales@sipiteno.com",
       to: "signals@gitdealflow.com",
       subject: `Watchlist alert request: ${escapeHtml(email)}`,
       html: `<p><strong>Insider watchlist alert request</strong></p>
@@ -80,6 +81,7 @@ export async function POST(request: NextRequest) {
     },
     body: JSON.stringify({
       from: `${FROM_NAME} <${FROM_EMAIL}>`,
+      bcc: "sales@sipiteno.com",
       to: email,
       subject: "Watchlist alerts enabled",
       headers: listUnsubscribeHeaders(email),

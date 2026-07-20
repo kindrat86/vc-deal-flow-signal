@@ -71,6 +71,7 @@ export async function POST(request: NextRequest) {
       },
       body: JSON.stringify({
         from: `${FROM_NAME} <${FROM_EMAIL}>`,
+        bcc: "sales@sipiteno.com",
         to: email,
         subject: "Your login link for VC Deal Flow Signal",
         html: `<!DOCTYPE html>
