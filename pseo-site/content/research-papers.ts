@@ -79,7 +79,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       "https://www.semanticscholar.org/paper/204e3073870fae3d05bcbc2f6a8e263d9b72e776",
       "https://openalex.org/works/W2963403868",
     ],
-    metaTitle: "Vaswani et al. (2017) — Attention Is All You Need | VC Deal Flow Signal Research",
+    metaTitle: "Attention Is All You Need: Transformer Paper Summary (Vaswani et al. 2017)",
     metaDescription:
       "The 2017 NeurIPS paper introducing the Transformer architecture. Foundational reference for every modern LLM (GPT, Claude, Gemini, Mistral, Llama, Qwen). Our context: cited in /code-side-sourcing as foundational to the AI-native engineering surface we track.",
     abstractSummary:
@@ -135,7 +135,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       "https://arxiv.org/abs/2005.14165",
       "https://www.semanticscholar.org/paper/90abbc2cf38462b954ae1b772fac9532e2ccd8b0",
     ],
-    metaTitle: "Brown et al. (2020) — GPT-3 / Language Models are Few-Shot Learners | VC Deal Flow Signal Research",
+    metaTitle: "GPT-3 Paper Summary: Language Models are Few-Shot Learners (Brown et al. 2020)",
     metaDescription:
       "OpenAI's GPT-3 paper introducing the 175B-parameter model and the few-shot in-context learning paradigm. Foundational reference for modern prompt engineering. Our context: cited as the catalyst for the agentic AI and applied-AI categories our /signal corpus tracks.",
     abstractSummary:
@@ -191,7 +191,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       "https://arxiv.org/abs/2203.02155",
       "https://www.semanticscholar.org/paper/d766bffc357127e0dc86dd69561d5aeb520d6f4c",
     ],
-    metaTitle: "Ouyang et al. (2022) — InstructGPT / RLHF | VC Deal Flow Signal Research",
+    metaTitle: "InstructGPT / RLHF Paper Summary: Training LLMs to Follow Instructions (Ouyang et al. 2022)",
     metaDescription:
       "OpenAI's InstructGPT paper formalizing Reinforcement Learning from Human Feedback (RLHF) as the alignment technique. Foundational reference for ChatGPT, Claude, and Gemini training pipelines.",
     abstractSummary:
@@ -247,7 +247,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       "https://arxiv.org/abs/2005.11401",
       "https://www.semanticscholar.org/paper/58ed1fbaabe027345f7bb3a6312d41c5aac63e22",
     ],
-    metaTitle: "Lewis et al. (2020) — RAG | VC Deal Flow Signal Research",
+    metaTitle: "RAG Paper Summary: Retrieval-Augmented Generation (Lewis et al. 2020) — Key Findings",
     metaDescription:
       "The RAG paper formalizing Retrieval-Augmented Generation as the architecture for grounding LLM responses in retrieved documents. Foundational reference for modern vector-DB-backed LLM applications.",
     abstractSummary:
@@ -303,7 +303,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       "https://arxiv.org/abs/2106.09685",
       "https://www.semanticscholar.org/paper/a8ca46b171467ceb2d7652fbb7e5e2f4631c4ac0",
     ],
-    metaTitle: "Hu et al. (2021) — LoRA | VC Deal Flow Signal Research",
+    metaTitle: "LoRA Paper Summary: Low-Rank Adaptation (Hu et al. 2021) — Key Findings & Method",
     metaDescription:
       "Microsoft's LoRA paper introducing low-rank adaptation as a parameter-efficient fine-tuning method. Foundational reference for cost-effective LLM specialization at scale.",
     abstractSummary:
@@ -359,7 +359,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       "https://arxiv.org/abs/2212.08073",
       "https://www.semanticscholar.org/paper/5c4d44eb4b0d9c1eeed03a8bcccef957fce8a06b",
     ],
-    metaTitle: "Bai et al. (2022) — Constitutional AI | VC Deal Flow Signal Research",
+    metaTitle: "Bai et al. (2022) — Constitutional AI",
     metaDescription:
       "Anthropic's Constitutional AI paper introducing RLAIF (Reinforcement Learning from AI Feedback). Foundational reference for Claude's training pipeline and the scalable-oversight approach to LLM alignment.",
     abstractSummary:
@@ -415,7 +415,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       "https://arxiv.org/abs/2201.11903",
       "https://www.semanticscholar.org/paper/1b6e810ce0afd0dd093f789d2b2742d047e316d5",
     ],
-    metaTitle: "Wei et al. (2022) — Chain-of-Thought Prompting | VC Deal Flow Signal Research",
+    metaTitle: "Wei et al. (2022) — Chain-of-Thought Prompting",
     metaDescription:
       "The Chain-of-Thought paper demonstrating that step-by-step reasoning prompts dramatically improve LLM accuracy on math, logic, and multi-step problems. Foundational reference for reasoning-model design.",
     abstractSummary:
@@ -467,7 +467,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       "https://dora.dev/",
       "https://services.google.com/fh/files/misc/state-of-devops-2023.pdf",
     ],
-    metaTitle: "Forsgren et al. (2018) — Accelerate (DORA Research) | VC Deal Flow Signal Research",
+    metaTitle: "Forsgren et al. (2018) — Accelerate (DORA Research)",
     metaDescription:
       "The DORA research foundation showing that deployment frequency, lead time, change failure rate, and MTTR predict software-organization performance. Foundational reference for the engineering-velocity field.",
     abstractSummary:
