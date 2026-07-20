@@ -1391,3 +1391,110 @@ BSKY_HANDLE/BSKY_APP_PASSWORD; GA4 measurement id; Otterly/GEO-probe
 ANTHROPIC_API_KEY; IndexNow 400/422; guest-essay/curator outbound (human-only);
 Wikipedia autoconfirm; named advisory board (cannot fabricate); FOUR retired
 founding-rate Stripe links still active; 4 stale stashes (`stash@{0}..{3}`).
+
+## 2026-07-20 (~17:40Z) — scheduled auto-improve: 3 discoverability correctness fixes SHIPPED + LIVE-VERIFIED (reversed /vs canonical consolidation; de-orphaned the /define glossary cluster; dropped 2 redirecting URLs from the sitemap)
+
+**Headline:** clean, high-confidence cycle. Two parallel Explore audits over the
+codebase (sitemap/canonical correctness + internal-linking/content-structure) plus
+live checks surfaced three real, safe, defensible defects. All three fixed, built,
+deployed to production `pseo-site`, and verified live. `.vercel` links were INTACT
+this cycle (pseo → prj_s0JL…, landing → prj_M3ik…) — no drift/re-link needed, unlike
+the 14:55Z cycle.
+
+**AUDIT.** Production healthy going in (all 6 key URLs 200, health `ok`, robots
+clean). Confirmed three deferred/fresh defects with file:line + live evidence:
+
+1. **Reversed /vs duplicate pairs (duplicate content).** Both orderings of two
+   comparisons were live AND self-canonicalizing — near-identical pages competing
+   for the same intent: `harmonic-ai-vs-affinity` ↔ `affinity-vs-harmonic-ai` and
+   `cb-insights-vs-crunchbase` ↔ `crunchbase-vs-cb-insights` (the cb-insights pair
+   was freshly introduced today by swarm commit `6872ec19`). Both directions built
+   (generateStaticParams over all slugs), both `canonical: /vs/${slug}`, both in the
+   content sitemap. Exactly 2 reversed pairs across 37 slugs (verified programmatically).
+2. **/define glossary cluster orphaned (internal-linking).** The `/define` index hub
+   and its ~130 `/define/[term]` spoke pages were reachable ONLY via the XML sitemap.
+   The site's best-linked vocabulary page — `/glossary` (in Header/Footer/homepage) —
+   DUPLICATED the definitions but passed ZERO internal-link equity to the spokes
+   (its cards used same-page `#anchor` links only; grep found zero `href="/define/"`).
+3. **Sitemap advertised 2 permanently-redirecting URLs.** `route.ts` still listed
+   `vs/crunchbase` + `vs/tracxn` as sitemap leaves, but their static files were
+   removed 2026-07-20 and `next.config.ts` now 308-redirects both to
+   `/alternatives/{crunchbase,tracxn}` (live-confirmed 308; targets already sitemapped
+   via getAllAlternativeSlugs). Submitting redirecting URLs in a sitemap is a defect.
+
+**IMPROVE (3 fixes, all safe/non-regressive):**
+- `content/competitor-vs.ts` — added `VS_CANONICAL_OVERRIDE` (reverse-alias → primary),
+  `getCanonicalVsSlug()`, `getCanonicalCompetitorVsSlugs()`. Canonical direction =
+  the higher-search-volume brand named first (Affinity, Crunchbase), which is also the
+  earlier-authored slug. Reverse aliases now canonical → primary, and are dropped from
+  the sitemap + the "Other comparisons" internal-link widget. Alias URLs still render
+  (crawlable) — consolidation, not deletion, so inbound links to either ordering resolve.
+- `app/vs/[slug]/page.tsx` — canonical + og:url → `getCanonicalVsSlug(slug)`; "Other
+  comparisons" widget → `getCanonicalCompetitorVsSlugs()` (internal links point only to
+  canonical direction). `generateStaticParams` unchanged (both orderings still build).
+- `app/glossary/page.tsx` — added an "Open term page →" `<Link href={/define/${t.id}}>`
+  on every definition card (direct equity to all ~130 spokes) + a "See all N terms
+  grouped by topic →" link to the `/define` index hub (de-orphans the index too).
+- `app/sitemap/[id]/route.ts` — `getAllCompetitorVsSlugs` → `getCanonicalCompetitorVsSlugs`
+  (import + usage); removed the `vs/crunchbase` + `vs/tracxn` leaf entries.
+
+Chose canonical CONSOLIDATION over deleting a direction (keeps both user-facing URLs
+working) and over restructuring the /glossary↔/define duplicate-content overlap (that
+remains deferred — a medium change needing a canonical-strategy decision; adding the
+links does not worsen it).
+
+**VERIFY.** `npx tsc --noEmit` clean; full local `npm run build` clean (Compiled OK,
+5396 static pages; every prebuild/postbuild guard PASS — uniqueness ✅, speakable ✅,
+coverage, mcp-catalog). Confirmed in `.next` before deploy: alias-page canonicals →
+primary, glossary emits /define spoke + hub links. Post-deploy live (cache-busted):
+health `ok` + buildTime 17:39Z (fresh) + homepage edge age reset ✓; `/vs/harmonic-ai-vs-affinity`
+& `/vs/cb-insights-vs-crunchbase` canonical → their primary ✓; both aliases now ABSENT
+from `/sitemap/content.xml`, both primaries PRESENT ✓; `vs/crunchbase`/`vs/tracxn` gone
+from sitemap but still 308 ✓; `/glossary` now emits 129 unique `/define/` spoke links
++ 1 `/define` hub link (was 0) ✓.
+
+**DEPLOY.** Committed `2bca9b6b` (4 source files only; build-regenerated data/audit
+artifacts + `seven-signals.epub` left unstaged/reverted; untracked `email-api/`
+operational scripts untouched), pushed to main. Deployed via canonical path
+`cd pseo-site && vercel deploy --prod --yes` → project `pseo-site`
+(prj_s0JL…, confirmed via `vercel inspect signals.gitdealflow.com` BEFORE deploy per
+14:55Z guidance). Build ran clean on Vercel (prebuild skipped github-fetch under
+$VERCEL, all guards PASS), CLI promoted to production, exit 0. Landing NOT touched
+this cycle (no landing/ changes).
+
+**Scores (Δ vs 07-20 14:55Z):** Technical SEO 87→**88** (2 reversed-alias + 2
+redirecting URLs removed from sitemap; duplicate-content consolidated onto one
+canonical direction) · On-page 89 · Off-page 62 · pSEO 85→**87** (~130 orphaned
+/define spoke pages now internally linked from the site's best-linked hub — real
+crawl-equity distribution) · AEO 85 · GEO 80 · AIO 90 · E-E-A-T 76 · SMO 70 · CRO 74 ·
+ASO 35.
+
+**NEEDS HUMAN / still blocked (carried forward; re-confirmed present this cycle where noted):**
+- **Static-leaf JSON-LD @id (re-confirmed STILL PRESENT):** served `public/learn/*/index.html`
+  + `public/tools/scout-score/index.html` emit a primary node with NO durable `@id`
+  (bare-URL `mainEntityOfPage`, no `#article`/`#webpage` fragment) and an
+  `author: Organization "GitDealFlow Signals"` with no `@id` — violating the AGENTS.md
+  rule that every author reconcile to `about#person`. The sibling flat `.html` files
+  are correct; the two representations disagree. Fix belongs in whatever generates the
+  static leaves (not hand-edits). Deferred (generator change).
+- **/glossary ↔ /define/[term] duplicate content (medium, deferred):** the same
+  definition renders verbatim on both, both self-canonical. This cycle only WIRED the
+  links (de-orphan); resolving the duplication needs a canonical-strategy decision
+  (canonical /glossary#anchor → /define/[term], or noindex one surface).
+- **Duplicate URLs across sitemap shards (confirmed still present):** the `high-intent`
+  shard re-lists 14/15 of its URLs already in `content`/`core` (conflicting priorities
+  0.9/0.9/1.0 on the same URL). Clean-up = own each URL in one shard, or retire the
+  redundant high-intent shard. Deferred (structural, priority-semantics call).
+- **Content-sitemap uniform build-time lastmod (confirmed still present):** every
+  evergreen page gets the dataset mtime as lastmod — churny freshness signal. Reserve
+  `getDataLastModified()` for data-driven leaves, fixed date for evergreen. Deferred.
+- Unchanged: BSKY_HANDLE/BSKY_APP_PASSWORD (social-bluesky workflow); GA4 measurement
+  id; Otterly/GEO-probe ANTHROPIC_API_KEY; IndexNow HTTP 422 (re-observed this build,
+  4356 URLs); guest-essay/curator outbound (human-only); Wikipedia autoconfirm; named
+  advisory board (cannot fabricate); FOUR retired founding-rate Stripe links still
+  active; stale stashes piling up (human should triage/drop).
+- **RESOLVED this cycle:** reversed /vs duplicate pairs; /define orphan cluster; 2
+  redirecting sitemap URLs.
+- **Note (not a regression):** the local `npm run build` postbuild fired IndexNow +
+  WebSub pings against the CURRENTLY-live sitemap/feeds (site's own automated infra, not
+  outreach) — an unavoidable side effect of the required local build verification.
