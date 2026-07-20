@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VC Deal Flow Signal Benchmarks: 269 Startups Tracked (2026) — GitDealFlow</title>
+<meta name="description" content="Aggregate engineering signal data for 269 startups across 15 sectors. Commit velocity, contributor growth, signal type distribution. Free CSV download, CC BY 4.0.">
+<link rel="canonical" href="https://signals.gitdealflow.com/data/vc-signal-benchmarks">
+<meta property="og:title" content="VC Deal Flow Signal Benchmarks: 269 Startups (2026)">
+<meta property="og:description" content="Engineering signal data for 269 startups across 15 sectors. Free CSV.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://signals.gitdealflow.com/data/vc-signal-benchmarks">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "VC Deal Flow Signal Benchmarks Q2 2026",
+  "description": "Aggregate engineering signal data for 269 venture-backed startups across 15 sectors. Includes commit velocity, contributor growth statistics, signal type distribution, and sector-level activity rankings. Updated weekly from public GitHub activity.",
+  "url": "https://signals.gitdealflow.com/data/vc-signal-benchmarks",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "datePublished": "2026-07-19",
+  "dateModified": "2026-07-19",
+  "temporalCoverage": "2026-Q2",
+  "creator": {
+    "@type": "Organization",
+    "name": "GitDealFlow",
+    "url": "https://signals.gitdealflow.com",
+    "sameAs": ["https://gitdealflow.com", "https://www.linkedin.com/company/gitdealflow"]
+  },
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/csv",
+      "contentUrl": "https://signals.gitdealflow.com/api/signals.csv"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": "https://signals.gitdealflow.com/api/signals.json"
+    }
+  ],
+  "isAccessibleForFree": true
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How many startups does GitDealFlow track?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "GitDealFlow tracks 269 venture-backed startups across 15 sectors by analyzing public GitHub commit activity weekly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the most common engineering signal before a fundraise?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A deploy frequency spike — a sudden surge in commit velocity — preceded 68% of announced fundraises by 3 to 6 weeks."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which sector has the most tracked startups?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Web3 leads with 28 tracked startups, followed by Data Infrastructure (25), EdTech (21), and Enterprise SaaS (21)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the VC Deal Flow Signal dataset free to use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The full dataset is free under CC BY 4.0. Download the CSV or JSON from the API, or access it programmatically via the MCP server."
+      }
+    }
+  ]
+}
+</script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: system-ui, -apple-system, sans-serif; background: #0a0a0a; color: #f5f5f5; line-height: 1.6; }
+  .container { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem; }
+  h1 { font-size: 2rem; margin-bottom: 0.5rem; color: #fff; }
+  h2 { font-size: 1.3rem; margin: 2rem 0 1rem; color: #e0e0e0; border-bottom: 1px solid #333; padding-bottom: 0.5rem; }
+  .lede { font-size: 1.1rem; color: #aaa; margin-bottom: 2rem; }
+  .quick-answer { background: #1a1a2e; border: 1px solid #333; border-radius: 8px; padding: 1.25rem; margin: 1.5rem 0; }
+  .quick-answer strong { color: #4fc3f7; }
+  .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+  .stat-card { background: #1a1a2e; border: 1px solid #333; border-radius: 8px; padding: 1.25rem; text-align: center; }
+  .stat-card .number { font-size: 2rem; font-weight: 700; color: #4fc3f7; }
+  .stat-card .label { font-size: 0.85rem; color: #888; margin-top: 0.25rem; }
+  table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
+  th { background: #1a1a2e; text-align: left; padding: 0.7rem; border-bottom: 2px solid #333; color: #4fc3f7; font-size: 0.85rem; }
+  td { padding: 0.5rem 0.7rem; border-bottom: 1px solid #222; }
+  tr:hover td { background: #111; }
+  .csv-btn { display: inline-block; background: #4fc3f7; color: #0a0a0a; padding: 0.75rem 1.5rem; border-radius: 6px; text-decoration: none; font-weight: 600; margin: 1rem 0.5rem 1rem 0; }
+  .csv-btn:hover { background: #81d4fa; }
+  .cite-block { background: #111; border: 1px solid #333; border-radius: 8px; padding: 1.25rem; margin: 2rem 0; font-family: monospace; font-size: 0.85rem; }
+  .cite-block h3 { color: #4fc3f7; font-family: system-ui; margin-bottom: 0.75rem; }
+  .footer-links { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid #333; color: #666; font-size: 0.85rem; }
+  .footer-links a { color: #4fc3f7; text-decoration: none; }
+  .bar { display: inline-block; height: 8px; background: #4fc3f7; border-radius: 4px; vertical-align: middle; margin-left: 0.5rem; }
+  @media (max-width: 600px) { h1 { font-size: 1.5rem; } .stats-grid { grid-template-columns: 1fr 1fr; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>VC Deal Flow Signal Benchmarks: 269 Startups (Q2 2026)</h1>
+<p class="lede">Aggregate engineering signal data for 269 venture-backed startups tracked across 15 sectors. Commit velocity, contributor growth patterns, and signal type distribution. Updated weekly from public GitHub activity. <strong>CC BY 4.0</strong> — free to use and cite.</p>
+
+<div class="quick-answer">
+<strong>Quick answer:</strong> GitDealFlow tracks 269 VC-backed startups across 15 sectors by analyzing public GitHub commit activity. The top 5 sectors by tracked startups are Web3 (28), Data Infrastructure (25), EdTech (21), Enterprise SaaS (21), and Healthcare (20). The most common engineering signal is "framework migration" (42% of startups), followed by "engineering hiring burst" (19%) and "deploy frequency spike" (13%). A breakout signal — a sudden surge in commit velocity — preceded 68% of announced fundraises by 3 to 6 weeks.
+</div>
+
+<div class="stats-grid">
+<div class="stat-card"><div class="number">269</div><div class="label">Startups Tracked</div></div>
+<div class="stat-card"><div class="number">15</div><div class="label">Sectors</div></div>
+<div class="stat-card"><div class="number">~400</div><div class="label">GitHub Orgs Monitored</div></div>
+<div class="stat-card"><div class="number">68%</div><div class="label">Signal-to-Fundraise Rate</div></div>
+</div>
+
+<a href="/api/signals.csv" class="csv-btn">Download CSV (269 startups)</a>
+<a href="/api/signals.json" class="csv-btn" style="background:#333;color:#4fc3f7">Download JSON</a>
+
+<h2>Startups by Sector</h2>
+
+<table>
+<thead><tr><th>Sector</th><th>Startups</th><th>Share</th><th>Activity</th></tr></thead>
+<tbody>
+<tr><td>Web3</td><td>28</td><td>10.4%</td><td><span class="bar" style="width:100px"></span></td></tr>
+<tr><td>Data Infrastructure</td><td>25</td><td>9.3%</td><td><span class="bar" style="width:89px"></span></td></tr>
+<tr><td>EdTech</td><td>21</td><td>7.8%</td><td><span class="bar" style="width:75px"></span></td></tr>
+<tr><td>Enterprise SaaS</td><td>21</td><td>7.8%</td><td><span class="bar" style="width:75px"></span></td></tr>
+<tr><td>Healthcare</td><td>20</td><td>7.4%</td><td><span class="bar" style="width:71px"></span></td></tr>
+<tr><td>Social & Community</td><td>19</td><td>7.1%</td><td><span class="bar" style="width:68px"></span></td></tr>
+<tr><td>Space Tech</td><td>18</td><td>6.7%</td><td><span class="bar" style="width:64px"></span></td></tr>
+<tr><td>E-commerce Infra</td><td>17</td><td>6.3%</td><td><span class="bar" style="width:61px"></span></td></tr>
+<tr><td>Robotics</td><td>17</td><td>6.3%</td><td><span class="bar" style="width:61px"></span></td></tr>
+<tr><td>Gaming</td><td>17</td><td>6.3%</td><td><span class="bar" style="width:61px"></span></td></tr>
+<tr><td>Supply Chain</td><td>14</td><td>5.2%</td><td><span class="bar" style="width:50px"></span></td></tr>
+<tr><td>AI/ML</td><td>13</td><td>4.8%</td><td><span class="bar" style="width:46px"></span></td></tr>
+<tr><td>Cybersecurity</td><td>13</td><td>4.8%</td><td><span class="bar" style="width:46px"></span></td></tr>
+<tr><td>AgTech</td><td>13</td><td>4.8%</td><td><span class="bar" style="width:46px"></span></td></tr>
+<tr><td>Developer Tools</td><td>13</td><td>4.8%</td><td><span class="bar" style="width:46px"></span></td></tr>
+</tbody>
+</table>
+
+<h2>Signal Type Distribution</h2>
+<table>
+<thead><tr><th>Signal Type</th><th>Count</th><th>Share</th><th>What It Means</th></tr></thead>
+<tbody>
+<tr><td>Framework migration</td><td>114</td><td>42.4%</td><td>Active refactoring — team is investing in tech debt or scaling architecture</td></tr>
+<tr><td>Engineering hiring burst</td><td>51</td><td>19.0%</td><td>Rapid contributor growth — likely post-raise team scaling</td></tr>
+<tr><td>Deploy frequency spike</td><td>35</td><td>13.0%</td><td>Sudden acceleration in shipping — product launch or pre-launch push</td></tr>
+<tr><td>Infrastructure buildout</td><td>14</td><td>5.2%</td><td>New repos, CI/CD setup — platform foundation stage</td></tr>
+</tbody>
+</table>
+
+<h2>How the Signals Work</h2>
+<p>GitDealFlow sweeps approximately 400 candidate startup GitHub organizations every Sunday. For each startup, it computes five metrics from public activity:</p>
+<ol style="margin:1rem 0 1rem 1.5rem; color:#ccc">
+  <li style="margin:0.5rem 0"><strong>Commit Velocity (14d):</strong> Total commits to the most active public repo over a rolling 14-day window.</li>
+  <li style="margin:0.5rem 0"><strong>Velocity Change:</strong> Percentage change versus the prior 14-day period. This is the primary ranking signal.</li>
+  <li style="margin:0.5rem 0"><strong>Contributor Count:</strong> Distinct GitHub contributors in the last 6 weeks.</li>
+  <li style="margin:0.5rem 0"><strong>Contributor Growth:</strong> 6-week growth rate in unique contributors.</li>
+  <li style="margin:0.5rem 0"><strong>New Repositories:</strong> Public repos created in the last 30 days.</li>
+</ol>
+<p>The signal types: <strong>breakout</strong> (sudden surge, highest predictive value for fundraises), <strong>acceleration</strong> (sustained growth), <strong>steady</strong> (healthy baseline), and <strong>cooling</strong> (declining activity). The methodology is documented in full at <a href="https://signals.gitdealflow.com/methodology" style="color:#4fc3f7">signals.gitdealflow.com/methodology</a> and in the SSRN preprint (DOI forthcoming).</p>
+
+<h2>Use Cases for This Data</h2>
+<p><strong>Venture capital:</strong> Identify breakout engineering teams 3 to 6 weeks before announced fundraises. Filter by sector to focus on your thesis.</p>
+<p><strong>Journalists and analysts:</strong> Track sector-level engineering activity trends. Which sectors are accelerating? Which are cooling?</p>
+<p><strong>Startup founders:</strong> Benchmark your own GitHub activity against funded competitors in your sector.</p>
+<p><strong>Developer advocates and PMs:</strong> Find fast-growing open-source projects in your domain for partnership or integration.</p>
+<p>Access the full dataset programmatically via the <a href="/api/signals.json" style="color:#4fc3f7">JSON API</a>, <a href="/api/signals.csv" style="color:#4fc3f7">CSV export</a>, or <a href="/api/openapi.json" style="color:#4fc3f7">OpenAPI spec</a>. The MCP server (<code>npx -y @gitdealflow/mcp-signal</code>) gives AI agents direct access to the same data.</p>
+
+<div class="cite-block">
+<h3>Cite This Data</h3>
+<p>GitDealFlow. (2026). <em>VC Deal Flow Signal Benchmarks Q2 2026</em> [Dataset]. https://signals.gitdealflow.com/data/vc-signal-benchmarks</p>
+<p style="margin-top:0.5rem">BibTeX: @misc{gitdealflow2026signals, title={VC Deal Flow Signal Benchmarks Q2 2026}, author={GitDealFlow}, year={2026}, url={https://signals.gitdealflow.com/data/vc-signal-benchmarks} }</p>
+<p style="margin-top:0.5rem">SSRN preprint: <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558" style="color:#4fc3f7">papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558</a></p>
+</div>
+
+<div class="footer-links">
+<p><a href="https://gitdealflow.com">GitDealFlow Home</a> — GitHub-signal-based deal flow intelligence for angel investors and VC scouts.</p>
+<p style="margin-top:1rem">Data licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Updated weekly. July 2026.</p>
+</div>
+
+</div>
+</body>
+</html>

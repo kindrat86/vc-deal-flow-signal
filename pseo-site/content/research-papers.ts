@@ -504,6 +504,70 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       },
     ],
   },
+  {
+    slug: "shazeer-2017-mixture-of-experts",
+    title: "Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer",
+    year: 2017,
+    venue: "ICLR 2017",
+    authors: [
+      { name: "Noam Shazeer", affiliation: "Google Brain" },
+      { name: "Azalia Mirhoseini", affiliation: "Google Brain" },
+      { name: "Krzysztof Maziarz", affiliation: "Google Brain" },
+      { name: "Andy Davis", affiliation: "Google Brain" },
+      { name: "Quoc Le", affiliation: "Google Brain" },
+      { name: "Geoffrey Hinton", affiliation: "Google Brain" },
+      { name: "Jeff Dean", affiliation: "Google Brain" },
+    ],
+    arxiv: "1701.06538",
+    semanticScholar: "3a07552649a9d04e10293aa4f895f959bf8f3d1d",
+    sameAs: [
+      "https://arxiv.org/abs/1701.06538",
+      "https://www.semanticscholar.org/paper/3a07552649a9d04e10293aa4f895f959bf8f3d1d",
+      "https://openalex.org/works/W2740393300",
+    ],
+    metaTitle: "Mixture of Experts Paper Summary (Shazeer et al. 2017) — Key Findings",
+    metaDescription:
+      "The foundational Mixture of Experts paper showing sparsely-gated MoE layers scale to trillion-parameter models. Basis for Mixtral, GShard, and Switch Transformer. Summary and key findings.",
+    abstractSummary:
+      "Introduces a sparsely-gated mixture-of-experts (MoE) layer for deep neural networks that achieves over 1,000x improvement in model capacity with minimal computational overhead. A trainable gating network routes each input to a small subset of expert sub-networks, enabling models with billions of parameters while keeping inference compute tractable. The architecture achieved state-of-the-art results on language modeling and machine translation benchmarks.",
+    ourContext:
+      "Mixture of Experts is the architectural foundation behind the most efficient frontier AI models (Mixtral 8x7B, DeepSeek MoE, GShard). For venture analysis, MoE adoption signals a startup's engineering sophistication: teams deploying MoE architectures achieve better cost-per-token economics, which directly impacts gross margin and unit economics. We track MoE adoption patterns in open-source AI startups as a momentum signal.",
+    keyFindings: [
+      "Sparsely-gated MoE layers achieve 1,000x+ capacity increase with only 6-7% compute overhead by activating only a subset of experts per input.",
+      "A trainable gating network learns to route inputs to the most relevant experts, balancing load across the network automatically.",
+      "Models with up to 137 billion parameters were trained efficiently, establishing the viability of trillion-parameter architectures.",
+      "MoE enables conditional computation: model capacity scales with parameters but inference cost scales only with active experts.",
+      "The batch-domain penalty for load balancing ensures no single expert becomes a bottleneck, a technique still used in modern MoE implementations.",
+    ],
+    relatedGlossaryIds: ["compute-efficiency", "model-capacity", "conditional-computation"],
+    faqs: [
+      {
+        question: "What is Mixture of Experts (MoE)?",
+        answer:
+          "A neural network architecture where multiple expert sub-networks specialize in different parts of the input space. A gating network routes each input to only the most relevant experts, allowing the model to have many parameters (high capacity) while keeping inference compute low (only a few experts activate per input).",
+      },
+      {
+        question: "Who wrote the original Mixture of Experts paper?",
+        answer:
+          "Noam Shazeer, Azalia Mirhoseini, Krzysztof Maziarz, Andy Davis, Quoc Le, Geoffrey Hinton, and Jeff Dean at Google Brain, published at ICLR 2017 (arXiv:1701.06538).",
+      },
+      {
+        question: "How does MoE reduce inference cost?",
+        answer:
+          "In a sparsely-gated MoE layer, only 1-2 experts (out of potentially hundreds) are activated for any single input. This means model capacity can be 137 billion parameters while inference compute resembles a much smaller dense model, because only the activated experts process the input.",
+      },
+      {
+        question: "Which modern models use Mixture of Experts?",
+        answer:
+          "Mixtral 8x7B (Mistral AI), DeepSeek MoE, GShard, Switch Transformer, and reportedly GPT-4 all use MoE architectures. The technique enables frontier-scale models at a fraction of dense-model compute cost.",
+      },
+      {
+        question: "Why does MoE matter for AI startups?",
+        answer:
+          "MoE architecture directly improves the cost-per-token ratio, which is the dominant cost driver for LLM-based products. Startups that deploy MoE efficiently can achieve 3-10x better gross margins compared to dense-model approaches, making them more attractive from a unit economics standpoint.",
+      },
+    ],
+  },
 ];
 
 export function getAllResearchPaperSlugs(): string[] {

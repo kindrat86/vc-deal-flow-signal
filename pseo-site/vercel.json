@@ -1,4 +1,10 @@
 {
+  "rewrites": [
+    {
+      "source": "/related-tools",
+      "destination": "/related-tools.html"
+    }
+  ],
   "crons": [
     {
       "path": "/api/cron/rebuild",
