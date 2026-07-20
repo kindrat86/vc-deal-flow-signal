@@ -359,7 +359,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       "https://arxiv.org/abs/2212.08073",
       "https://www.semanticscholar.org/paper/5c4d44eb4b0d9c1eeed03a8bcccef957fce8a06b",
     ],
-    metaTitle: "Bai et al. (2022) — Constitutional AI",
+    metaTitle: "Constitutional AI Paper Summary (Bai et al. 2022) — Key Findings & Method",
     metaDescription:
       "Anthropic's Constitutional AI paper introducing RLAIF (Reinforcement Learning from AI Feedback). Foundational reference for Claude's training pipeline and the scalable-oversight approach to LLM alignment.",
     abstractSummary:
@@ -415,7 +415,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       "https://arxiv.org/abs/2201.11903",
       "https://www.semanticscholar.org/paper/1b6e810ce0afd0dd093f789d2b2742d047e316d5",
     ],
-    metaTitle: "Wei et al. (2022) — Chain-of-Thought Prompting",
+    metaTitle: "Chain-of-Thought Prompting Paper Summary (Wei et al. 2022) — Key Findings",
     metaDescription:
       "The Chain-of-Thought paper demonstrating that step-by-step reasoning prompts dramatically improve LLM accuracy on math, logic, and multi-step problems. Foundational reference for reasoning-model design.",
     abstractSummary:
@@ -467,7 +467,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       "https://dora.dev/",
       "https://services.google.com/fh/files/misc/state-of-devops-2023.pdf",
     ],
-    metaTitle: "Forsgren et al. (2018) — Accelerate (DORA Research)",
+    metaTitle: "Accelerate / DORA Research Summary (Forsgren et al. 2018) — Key Metrics",
     metaDescription:
       "The DORA research foundation showing that deployment frequency, lead time, change failure rate, and MTTR predict software-organization performance. Foundational reference for the engineering-velocity field.",
     abstractSummary:
