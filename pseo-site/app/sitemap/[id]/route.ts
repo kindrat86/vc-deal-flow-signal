@@ -630,6 +630,13 @@ export async function GET(_req: Request, ctx: RouteContext) {
         "learn/how-to-use-startup-signals-api",
         "vs/crunchbase",
         "vs/tracxn",
+        // Interactive Scout Score checker — hand-authored static tool under
+        // public/tools/scout-score/ (shipped 2026-07-20). Same orphan class as
+        // the /learn and /vs static leaves above: not emitted by any content/*
+        // map, so without this entry it was in no sitemap and reachable only by
+        // a crawler stumbling into a cross-link. Served at the no-slash URL
+        // (the trailing-slash form 308-redirects), so list it slashless.
+        "tools/scout-score",
       ].map((path) => ({
         url: `${BASE_URL}/${path}`,
         lastmod,

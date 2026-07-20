@@ -84,7 +84,18 @@ function absoluteUrl(path: string): string {
  */
 export function defineMetadata(input: DefineMetadataInput): Metadata {
   const canonical = absoluteUrl(input.path);
-  const ogImage = input.ogImage ?? `${canonical.replace(/\/$/, "")}/opengraph-image`;
+  // OG/Twitter image resolution (audit 2026-07-20):
+  // Previously this hard-coded `${canonical}/opengraph-image` as the default,
+  // which only 200s on the ~33 routes that co-locate an `opengraph-image.tsx`.
+  // On the 100+ routes without one (all trust/legal/E-E-A-T + most hubs),
+  // that URL 404'd — every social / Slack / AI share of those pages showed a
+  // broken image. Setting `openGraph.images` explicitly also SUPPRESSED
+  // Next.js's file-convention inheritance, so those pages never fell back to
+  // the root `app/opengraph-image`. Fix: only pin an image when the caller
+  // passes an explicit override; otherwise omit it and let the file convention
+  // supply the correct image — the route's own co-located card where present,
+  // else the inherited root `/opengraph-image`.
+  const ogImage = input.ogImage;
   const meta: Metadata = {
     title: input.title,
     description: input.description,
@@ -100,7 +111,7 @@ export function defineMetadata(input: DefineMetadataInput): Metadata {
       url: canonical,
       siteName: SITE_NAME,
       type: "website",
-      images: [{ url: ogImage }],
+      ...(ogImage ? { images: [{ url: ogImage }] } : {}),
       ...(input.modifiedAt ? { modifiedTime: input.modifiedAt } : {}),
     },
     twitter: {
@@ -108,7 +119,7 @@ export function defineMetadata(input: DefineMetadataInput): Metadata {
       site: "@data_nerd",
       title: input.twitterTitle ?? input.title,
       description: input.twitterDescription ?? input.description,
-      images: [ogImage],
+      ...(ogImage ? { images: [ogImage] } : {}),
     },
   };
 
