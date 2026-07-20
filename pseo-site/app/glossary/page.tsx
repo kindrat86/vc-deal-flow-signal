@@ -256,6 +256,12 @@ export default function GlossaryPage() {
               >
                 {t.definition}
               </p>
+              <Link
+                href={`/define/${t.id}`}
+                className="mt-3 inline-block text-sky-400 text-sm font-medium hover:text-sky-300 transition-colors"
+              >
+                Open term page →
+              </Link>
               <link
                 itemProp="url"
                 href={`https://signals.gitdealflow.com/glossary#${t.id}`}
@@ -263,6 +269,18 @@ export default function GlossaryPage() {
             </div>
           ))}
         </div>
+
+        {/* Sister hub — de-orphans the category-grouped /define index (and the
+            individual term pages it links) from this well-linked page. */}
+        <p className="mt-10 text-sm text-gray-400">
+          Prefer to browse by category?{" "}
+          <Link
+            href="/define"
+            className="text-sky-400 font-medium hover:text-sky-300 transition-colors"
+          >
+            See all {terms.length} terms grouped by topic →
+          </Link>
+        </p>
 
         {/* CTA */}
         <div className="mt-12">

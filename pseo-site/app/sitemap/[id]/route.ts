@@ -18,7 +18,7 @@ import { getAllPostSlugs } from "@/content/posts";
 import { getAllComparisonSlugs } from "@/content/comparisons";
 import { getAllAlternativeSlugs } from "@/content/alternatives";
 import { getAllUseCaseSlugs } from "@/content/use-cases";
-import { getAllCompetitorVsSlugs } from "@/content/competitor-vs";
+import { getCanonicalCompetitorVsSlugs } from "@/content/competitor-vs";
 import { getAllBuildVsInvestSlugs } from "@/content/build-vs-invest";
 import { getAllCompanySlugs } from "@/content/companies";
 import { getAllFundSlugs } from "@/content/funds";
@@ -604,7 +604,9 @@ export async function GET(_req: Request, ctx: RouteContext) {
       })),
       // /answers/best-mcp-server-for-vc-research is already emitted above by the
       // agentQueries map (the old /integrations/ variant here was a 308 redirect).
-      ...getAllCompetitorVsSlugs().map((slug) => ({
+      // Canonical direction only — reverse-alias slugs (VS_CANONICAL_OVERRIDE)
+      // canonical to their primary, so they must NOT be advertised here.
+      ...getCanonicalCompetitorVsSlugs().map((slug) => ({
         url: `${BASE_URL}/vs/${slug}`,
         lastmod,
         changefreq: "monthly",
@@ -628,8 +630,11 @@ export async function GET(_req: Request, ctx: RouteContext) {
         "learn/how-to-evaluate-engineering-velocity",
         "learn/how-to-build-a-startup-watchlist",
         "learn/how-to-use-startup-signals-api",
-        "vs/crunchbase",
-        "vs/tracxn",
+        // NOTE: /vs/crunchbase and /vs/tracxn were dropped 2026-07-20 — their
+        // static public/vs/* files were removed and next.config.ts now
+        // 308-redirects both to /alternatives/{crunchbase,tracxn} (already
+        // emitted via getAllAlternativeSlugs). A sitemap must not advertise
+        // permanently-redirecting URLs.
         // Interactive Scout Score checker — hand-authored static tool under
         // public/tools/scout-score/ (shipped 2026-07-20). Same orphan class as
         // the /learn and /vs static leaves above: not emitted by any content/*

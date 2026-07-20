@@ -549,3 +549,27 @@ export function getCompetitorVsPair(slug: string): CompetitorVs | undefined {
 export function getAllCompetitorVsSlugs(): string[] {
   return competitorVsPairs.map((p) => p.slug);
 }
+
+// Reverse-duplicate comparisons: both orderings exist as separate slugs but each
+// pair is the same head-to-head (near-identical content). Both self-canonicalizing
+// created duplicate-content competition. Consolidate ranking signal onto ONE
+// canonical direction (keep the higher-search-volume brand named first, which is
+// also the earlier-authored slug) and treat the reverse as a crawlable alias:
+// canonical -> primary, excluded from the sitemap and internal cross-links.
+export const VS_CANONICAL_OVERRIDE: Record<string, string> = {
+  "harmonic-ai-vs-affinity": "affinity-vs-harmonic-ai",
+  "cb-insights-vs-crunchbase": "crunchbase-vs-cb-insights",
+};
+
+// The canonical slug for a comparison (itself, unless it is a reverse alias).
+export function getCanonicalVsSlug(slug: string): string {
+  return VS_CANONICAL_OVERRIDE[slug] ?? slug;
+}
+
+// Comparison slugs minus the reverse aliases — the set to advertise in the
+// sitemap and internal "other comparisons" links (one URL per head-to-head).
+export function getCanonicalCompetitorVsSlugs(): string[] {
+  return competitorVsPairs
+    .map((p) => p.slug)
+    .filter((slug) => !(slug in VS_CANONICAL_OVERRIDE));
+}

@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import {
   competitors,
   getAllCompetitorVsSlugs,
+  getCanonicalCompetitorVsSlugs,
+  getCanonicalVsSlug,
   getCompetitorVsPair,
 } from "@/content/competitor-vs";
 import { getDataLastModified } from "@/lib/data";
@@ -39,10 +41,17 @@ export async function generateMetadata({
   return {
     title,
     description,
-    openGraph: { title, description, type: "article", url: `/vs/${slug}` },
+    openGraph: {
+      title,
+      description,
+      type: "article",
+      url: `/vs/${getCanonicalVsSlug(slug)}`,
+    },
     twitter: { card: "summary_large_image", title, description },
     alternates: {
-      canonical: `/vs/${slug}`,
+      // Reverse-alias slugs consolidate onto the canonical direction; primary
+      // slugs remain self-canonical.
+      canonical: `/vs/${getCanonicalVsSlug(slug)}`,
     },
   };
 }
@@ -259,8 +268,8 @@ export default async function VsPage({ params }: PageProps) {
             Other head-to-head comparisons
           </h2>
           <div className="flex flex-wrap gap-2">
-            {getAllCompetitorVsSlugs()
-              .filter((s) => s !== slug)
+            {getCanonicalCompetitorVsSlugs()
+              .filter((s) => s !== getCanonicalVsSlug(slug))
               .slice(0, 8)
               .map((s) => {
                 const p = getCompetitorVsPair(s);
