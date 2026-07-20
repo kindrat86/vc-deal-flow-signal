@@ -251,6 +251,29 @@ export const competitors: Record<string, CompetitorInfo> = {
       "Proprietary API (not open-source); no company-level engineering signal",
     ],
   },
+  "cb-insights": {
+    key: "cb-insights",
+    name: "CB Insights",
+    url: "https://www.cbinsights.com",
+    tagline: "Market intelligence platform with Mosaic scoring and industry analytics.",
+    signalType: "Mosaic Score, industry analytics, market sizing",
+    leadTime: "Mixed (leading + laging)",
+    pricing: "Enterprise ($35k+/yr)",
+    coverage: "Full private market across all sectors",
+    freeTier: "No free tier",
+    strengths: [
+      "Mosaic Score predicts company health and growth trajectory",
+      "Deep industry analytics and market-sizing reports",
+      "Strong for strategic research and identifying market trends",
+      "Tracks emerging tech categories with curated research briefs",
+    ],
+    weaknesses: [
+      "Enterprise pricing ($35k+/yr) excludes solo angels and small funds",
+      "Mosaic Score is proprietary and opaque (you trust the model)",
+      "Broad market intelligence, not deal-flow-specific sourcing",
+      "No engineering-momentum or code-level signals",
+    ],
+  },
 };
 
 /**
@@ -488,6 +511,34 @@ export const competitorVsPairs: CompetitorVs[] = [
     b: "affinity",
     verdict:
       "Harmonic.ai is a sourcing tool — it brings new companies to your attention; Affinity is a relationship-intelligence CRM — it organises and optimises the network you already have. They are complements, not alternatives. Institutional VCs typically run both: Harmonic to expand the funnel, Affinity to manage and convert it.",
+  },
+  {
+    slug: "crunchbase-vs-cb-insights",
+    a: "crunchbase",
+    b: "cb-insights",
+    verdict:
+      "Crunchbase is a startup database best for company verification and basic research. CB Insights is a market intelligence platform with Mosaic scoring, industry analytics, and strategic research. Crunchbase costs $49/mo and is accessible to individual investors. CB Insights costs $35k+/yr and is built for institutional research teams. For deal sourcing with a budget, Crunchbase plus a leading-signal tool like VC Deal Flow Signal covers most individual-investor workflows.",
+  },
+  {
+    slug: "pitchbook-vs-cb-insights",
+    a: "pitchbook",
+    b: "cb-insights",
+    verdict:
+      "PitchBook is institutional-grade private-markets data ($20k+/yr) with deep fund, LP, and valuation data. CB Insights is market intelligence ($35k+/yr) with Mosaic scoring and industry analytics. PitchBook is stronger for due diligence and portfolio management. CB Insights is stronger for market research and trend identification. Both are enterprise-priced. For sourcing at a fraction of the cost, pair a leading engineering-momentum signal like VC Deal Flow Signal with Crunchbase for verification.",
+  },
+  {
+    slug: "cb-insights-vs-crunchbase",
+    a: "cb-insights",
+    b: "crunchbase",
+    verdict:
+      "CB Insights provides proprietary Mosaic Scores, industry analytics, and research briefs for $35k+/yr. Crunchbase provides a comprehensive startup database for $49/mo. CB Insights is built for institutional strategy teams. Crunchbase is accessible to individual investors and scouts. For most solo investors and small funds, Crunchbase plus a free leading-signal tool like VC Deal Flow Signal covers the same workflow at a fraction of the cost.",
+  },
+  {
+    slug: "harmonic-ai-vs-cb-insights",
+    a: "harmonic-ai",
+    b: "cb-insights",
+    verdict:
+      "Harmonic.ai uses AI to pattern-match founding teams at incorporation. CB Insights uses Mosaic scoring and market analytics for strategic research. Harmonic is sourcing-focused (find companies early). CB Insights is research-focused (understand markets and trends). Both are enterprise-priced. For individual investors, a code-side momentum signal like VC Deal Flow Signal catches the same companies at the engineering-acceleration phase.",
   },
 ];
 
