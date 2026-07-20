@@ -1196,3 +1196,85 @@ large glossary/for content rewrites — those remain unverified and were never m
 work. Net for this cycle: **no code shipped, no deploy, production healthy;** the
 only durable output is this (corrected) log + a memory note so future cycles
 don't re-flag the owner's `signal@` sender as a regression.
+
+---
+
+## 2026-07-20T14:41Z — audit + verify only; NO deploy (deferred to in-flight Hermes swarm cycle)
+
+**Decision: no deploy, no commit of code this cycle — by design.** The Hermes SEO
+swarm is *actively cycling on this exact checkout right now* (`next build` PID
+85786 running in `pseo-site/` mid-run; a sibling Hermes agent mid-`flyctl deploy`
+on agentmail). My own `npm run build` was **refused** with "Another next build
+process is already running" — direct proof of the live race. The swarm deploys
+`pseo-site` **from this same working tree**, so the good uncommitted changes below
+will ship via the swarm's own in-flight deploy regardless of whether I deploy —
+my deploying would add ZERO incremental SEO benefit over the swarm's deploy while
+adding real duplicate-deploy/race risk. Per step-7 ("empty improvement > churn"),
+skipped deploy. Left the working tree exactly as the swarm had it (reverted only
+the 3 data artifacts my own prebuild step regenerated: startups.json + 2 audit
+reports — they rebuild on any build).
+
+**VERIFIED the swarm's uncommitted working-tree changes are legitimate, high-ROI
+SEO hygiene (not the questionable prior "stale batch"):**
+- `pseo-site/lib/metadata.ts` — **OG-image 404 fix (genuinely high-ROI).** Old
+  code hard-coded `${canonical}/opengraph-image` as the default OG/Twitter image,
+  which only 200s on the 33 routes with a co-located `opengraph-image.tsx`; on the
+  many routes without one — `/trust`, `/privacy`, `/terms`, `/security`,
+  `/disclosure`, `/dpa`, `/subprocessors`, `/transparency`, `/account`, `/for/*` —
+  it 404'd (broken card on every social/Slack/AI share) AND suppressed Next's
+  file-convention inheritance. Fix omits `images` unless an explicit override is
+  passed, letting the convention supply the co-located card where present else the
+  inherited root `app/opengraph-image.tsx` (confirmed present). Resolves the
+  long-standing "`/for/[slug]` missing OG image" needs-human item.
+- `pseo-site/app/sitemap/[id]/route.ts` — adds `tools/scout-score` static leaf to
+  the sitemap (was orphaned, in no map). Correct slashless URL (slash form 308s).
+- `pseo-site/public/tools/scout-score/index.html` + `landing/tools/investment-calculator/index.html`
+  — canonical + og:url + embed-iframe trailing-slash normalization to the actual
+  served (slashless) URL.
+- `landing/sitemap-pages.xml` — adds `/tools/investment-calculator`.
+- `public/downloads/seven-signals.epub` — binary rebuild artifact (swarm).
+
+`npx tsc --noEmit` = **exit 0** (clean). Could NOT complete `npm run build` (race,
+above); build correctness of these changes is the swarm's to confirm on its deploy.
+
+**Live audit — production HEALTHY (all 200):** `/api/health.json` status ok
+(deps sitemap/openapi/mcp/datasets all ok), `/`, `/llms.txt`, `/sitemap.xml`,
+`/api/signals.json`, `/.well-known/mcp.json`, `/tools/scout-score`; landing `/` +
+`/tools/investment-calculator` 200. Note: `health.json buildTime` is request-time,
+NOT a deploy signal (it equals "now" on every fetch).
+
+**Swarm work shipped since last cycle (origin advanced 0f7105e6→e6c30593, 16
+commits):** interactive scout-score checker + investment calculator, 4 new `/vs/`
+pages + CB Insights competitor, MoE (Shazeer 2017) content asset, CTR paper-title
+rewrites, stronger Permissions-Policy (7→10), weekly YouTube Acceleration Watch,
+dream100 radar, `BCC sales@sipiteno.com` on all 31 Resend send points.
+
+**Scores (current observed prod, reflecting swarm's shipped work; deltas vs 07-20 prior):**
+Technical SEO 87 (+1, Permissions-Policy + sitemap completeness) · On-page 88 · Off-page 62 ·
+pSEO 85 (+1, 4 new /vs/ + CB Insights + 2 interactive tools) · AEO 85 · GEO 80 ·
+AIO 89 · E-E-A-T 75 · SMO 70 · CRO 74 · ASO 35. (OG-image fix will nudge AIO/social
+sharing once the swarm deploys it — pending in the working tree.)
+
+**⚠️ NEEDS HUMAN — NEW & URGENT this cycle:**
+- **AN OUTBOUND WEEKLY DIGEST EMAIL WENT OUT TODAY (2026-07-20) to 13 real
+  recipients** via the swarm's new untracked `email-api/send-weekly-signal-digest.sh`
+  (hardcoded PRO Resend key, FROM `signal@gitdealflow.com`, BCC sales@sipiteno.com,
+  audience `1ddf358e`). Recipients logged in `email-api/sent-log/digest-2026-07-20.json`
+  include real investors (jbash@insightpartners.com, nick@finality.capital,
+  shubham.korde@joinef.com, jeffrey.paine@gmail.com) and the first paying customer
+  (sarah.qlwang@gmail.com). This was done autonomously by the swarm — NOT by this
+  audit cycle (I never send outbound). Cannot be unsent. **Confirm this send was
+  intended and the recipient list is correct-consent; the swarm now sends real
+  email to real investors on its own — decide whether that automation should run
+  unattended.** The script + sent-log are untracked and were left untouched.
+- **The Hermes swarm and this scheduled audit both operate on this checkout,
+  causing a live build/deploy race** (my build was blocked today). Retiring the
+  swarm's independent pseo deploy (or coordinating a lock) remains a human decision
+  and is now actively costing cycles.
+
+**Unchanged accumulated blocked items:** durable static-leaf `@id` generator fix;
+content-sitemap uniform build-time `lastmod`; BSKY_HANDLE/BSKY_APP_PASSWORD; GA4
+measurement id; Otterly/GEO-probe ANTHROPIC_API_KEY; IndexNow 400; guest-essay/
+curator outbound (human-only); Wikipedia autoconfirm; named advisory board (cannot
+fabricate); FOUR retired founding-rate Stripe links still active; 4 stale stashes
+(`stash@{0}..{3}`) piling up — human should triage/drop them.
