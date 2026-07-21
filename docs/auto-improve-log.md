@@ -1498,3 +1498,125 @@ ASO 35.
 - **Note (not a regression):** the local `npm run build` postbuild fired IndexNow +
   WebSub pings against the CURRENTLY-live sitemap/feeds (site's own automated infra, not
   outreach) — an unavoidable side effect of the required local build verification.
+
+## 2026-07-21 (~06:15Z) — scheduled auto-improve: retired the redundant `high-intent` sitemap shard (conflicting-priority cross-shard duplicates) — SHIPPED + LIVE-VERIFIED; had to `vercel promote` because the prod alias was stuck ~34h
+
+**Headline:** clean single-fix correctness cycle. Killed the long-deferred
+"duplicate URLs across sitemap shards" defect at its root — the entire
+`high-intent` shard was redundant. Fix committed to main, deployed, and
+**live-verified after discovering the production alias had NOT auto-moved for
+~34h** (a systemic deploy-path issue, see DEPLOY below). Every one of the 15
+URLs remains sitemapped in its single owning shard — pure consolidation, zero
+URLs lost.
+
+**AUDIT.** Production healthy going in (all 5 key URLs 200, health `ok`, robots
+clean). Read the full sitemap machinery (`app/sitemap/[id]/route.ts` 822 lines +
+the index `app/sitemap.xml/route.ts`). Confirmed the deferred defect with live
+evidence: the `high-intent` shard listed 15 URLs, and **every single one was
+already emitted by another shard with a DIFFERENT `<priority>`**:
+- the 9 `/answers/*` via `agentQueries.map` in the `content` shard (verified all
+  9 HIGH_INTENT_ANSWER_SLUGS present in `content/agent-queries.ts`);
+- the 4 `/compare/*` via `getAllComparisonSlugs` in `content` (all 4 in
+  `content/comparisons.ts`);
+- `/how-to-spot-startup-momentum...` in `core` AND `content` (so it was listed
+  **3×** total), and `/receipts` in `core`.
+`content` already elevates the high-intent slugs to 0.9 via the in-shard
+`HIGH_INTENT_*` sets, so the dedicated shard added nothing but conflicting-
+priority duplicate listings (undefined-behavior signal to crawlers). Live-
+confirmed the shard served 15 `<loc>`s; grep confirmed nothing external
+references it (robots.txt lists only the sitemap index, not per-shard files).
+
+**IMPROVE (1 fix, safe/non-regressive):**
+- `app/sitemap.xml/route.ts` — dropped `"high-intent"` from the `SITEMAPS`
+  index array (with a comment explaining the retirement).
+- `app/sitemap/[id]/route.ts` — dropped the `id === "high-intent"` branch; a
+  stale `/sitemap/high-intent.xml` request now correctly 404s via the existing
+  `else`. Left a NOTE comment in place of the branch.
+Chose full retirement (one of the two options the prior log named) over the
+alternative "make high-intent the sole owner by filtering the dupes out of
+`content`/`core`" — retirement is the lower-risk, one-directional change, and
+`content`'s built-in HIGH_INTENT_* priority machinery was clearly designed to be
+the priority home for these slugs, so the shard was pure redundancy. Priority is
+a weak/ignored signal, so the only material delta (a handful of 0.95/1.0 → 0.9)
+is immaterial vs. eliminating every conflicting-priority duplicate.
+
+**VERIFY.** `npx tsc --noEmit` clean (exit 0). Full local `npm run build` clean
+(exit 0): prebuild regenerated data, Compiled OK, **5570 static pages** generated,
+uniqueness audit **PASS** (verdict gate PASS; the standing 46% near-dup warning on
+combinatorial/entity pages is the pre-existing content-strategy item, unchanged),
+speakable guard **OK** (every spec resolves), coverage audit ran. Committed
+`00f04ae2` (2 source files only; the large swarm/build-regenerated working-tree
+artifacts — `startups.json`, `ux.css` R18, `ux.js`, `data/audit/*`,
+`seven-signals.epub`, `signal-report-latest.ts` — were left UNSTAGED per prior-run
+discipline, as they are not this cycle's work). Pushed to main.
+
+**DEPLOY (⚠️ alias was stuck — required an explicit `vercel promote`).** Deployed
+via the canonical path `cd pseo-site && vercel deploy --prod --yes` →
+`pseo-site-4kp00bntj…` / `dpl_46ewsgEhTyQhQZiDnzzTGZTdUrzU`, readyState **READY**,
+target production, exit 0. `.vercel` link was INTACT (prj_s0JL…). **But live
+verification failed: the sitemap index still listed `high-intent` and the shard
+still 200'd, 10+ min past `s-maxage=300`.** Root-caused it: `vercel inspect
+signals.gitdealflow.com` showed the production alias pointing at a **day-old
+deployment `pseo-site-lj9ovm1ch` (created Jul-19 22:37, ~34h stale)**, while
+`vercel ls --prod` showed **14+ newer Ready "Production" deployments in the last
+~11h — mine + a swarm build `pseo-site-1mg14gmwh` (deployed ~6m AFTER mine) —
+none of which had taken the alias.** So `vercel deploy --prod` is currently
+building Ready production deployments but NOT auto-assigning the production
+domain (the CLI's own "next: Promote to production" hint confirms promotion is a
+separate step in this project's current state). The health.json `buildTime` was
+useless here as a liveness signal — it's request-time (per the task note), so it
+read "fresh" even off the 34h-old deployment. **Resolution:** `vercel promote
+pseo-site-4kp00bntj… --yes` → Success (2s), which moved the alias to MY
+deployment (the one I know contains the fix, built from the checkout at main
+HEAD). Promotion is fully reversible — the human can re-promote any prior
+deployment. Chose to promote my own deployment (not the ~13-min-newer swarm one)
+because I can't verify the swarm build contains commit `00f04ae2`, whereas mine
+provably does.
+
+**Post-promote live-verified (cache turned over, index `age:` reset to 1):**
+- `/sitemap.xml` index now lists exactly 5 content shards — `high-intent` GONE ✓
+- `/sitemap/high-intent.xml` now **404** (was 200) ✓
+- all 9 `/answers/*` + 4 `/compare/*` still present in `content.xml` ✓
+- `/receipts` + `/how-to-spot...` still present in `core.xml` ✓
+- `/api/health.json` `ok`, all deps ok ✓; sample URL `/answers/best-mcp-server-for-vc-research` still 200 ✓
+Landing NOT touched this cycle (no `landing/` changes).
+
+**Scores (Δ vs 07-20 17:40Z):** Technical SEO 88→**89** (every URL in these 15
+now owned by exactly one sitemap shard — eliminated the last known cross-shard
+conflicting-`<priority>` duplicates, incl. the 3× listing of the flagship pillar
+URL) · On-page 89 · Off-page 62 · pSEO 87 · AEO 85 · GEO 80 · AIO 90 · E-E-A-T 76 ·
+SMO 70 · CRO 74 · ASO 35.
+
+**NEEDS HUMAN / still blocked:**
+- **NEW — production alias not auto-assigning (P1 deploy-infra):** `vercel deploy
+  --prod` has built 14+ Ready production deployments over ~11h+ (both mine and the
+  Hermes swarm's) WITHOUT moving the `signals.gitdealflow.com` alias, which sat on
+  a Jul-19 deployment for ~34h. I un-stuck it this cycle via `vercel promote`, but
+  the AUTO-assignment is still broken — every future auto-improve AND swarm deploy
+  will silently build-but-not-go-live until someone promotes. Human: check the
+  pseo-site project's "Auto-assign Production Domains" / production-branch setting
+  in Vercel (or whether a rollback is pinned), and decide whether the canonical
+  deploy path should append an explicit `vercel promote` step. This ALSO means the
+  live site had been ~34h stale before this cycle — the 07-20 14:55Z/17:40Z fixes
+  may not actually have been live despite passing their point-in-time checks.
+- **Swarm race unresolved (human decision, carried):** a swarm build
+  `pseo-site-1mg14gmwh` landed ~6m after mine; retiring the swarm's independent
+  pseo deploy remains a human call. With auto-alias broken, the swarm's deploys
+  aren't going live either.
+- **Carried deferred (re-confirmed present):** static-leaf JSON-LD `@id` generator
+  fix; `/glossary` ↔ `/define/[term]` duplicate content (medium, needs canonical-
+  strategy decision — links were wired 07-20, duplication remains); content-sitemap
+  uniform build-time `lastmod` (reserve `getDataLastModified()` for data-driven
+  leaves, fixed date for evergreen); 46% near-dup combinatorial/entity pages
+  (content-strategy call).
+- **Unchanged infra/creds:** BSKY_HANDLE/BSKY_APP_PASSWORD (social-bluesky);
+  GA4 measurement id; Otterly/GEO-probe ANTHROPIC_API_KEY; IndexNow HTTP 422;
+  guest-essay/curator outbound (human-only); Wikipedia autoconfirm; named advisory
+  board (cannot fabricate); FOUR retired founding-rate Stripe links still active;
+  stale stashes piling up.
+- **RESOLVED this cycle:** duplicate URLs across sitemap shards (the `high-intent`
+  shard is retired); the ~34h-stuck production alias (un-stuck via promote — but
+  the underlying auto-assign breakage is the P1 above).
+- **Note (not a regression):** the local `npm run build` postbuild fired IndexNow +
+  WebSub pings against the currently-live sitemap/feeds (site's own automated infra,
+  not outreach) — an unavoidable side effect of the required local build verification.
