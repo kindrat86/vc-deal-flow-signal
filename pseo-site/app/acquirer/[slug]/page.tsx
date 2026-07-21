@@ -10,6 +10,8 @@ import { getSector, getCompaniesInSector } from "@/content/sectors";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import SeoCta from "@/components/SeoCta";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import RelatedLinks from "@/components/RelatedLinks";
+import { getRelatedGroups } from "@/lib/related-links";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -38,6 +40,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function AcquirerPage({ params }: PageProps) {
   const { slug } = await params;
+  const pathname = `/acquirer/${slug}`;
   const a = getAcquirer(slug);
 
   if (!a) {
@@ -348,6 +351,7 @@ export default async function AcquirerPage({ params }: PageProps) {
         </section>
 
         <SeoCta secondary={{ label: "See a €7 First Look sample", href: "/firstlook" }} />
+        <RelatedLinks groups={getRelatedGroups(pathname)} heading="Related views" />
       </div>
     </>
   );

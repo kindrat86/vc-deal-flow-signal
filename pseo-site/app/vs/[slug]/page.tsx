@@ -10,6 +10,8 @@ import { getDataLastModified } from "@/lib/data";
 import SeoCta from "@/components/SeoCta";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import RelatedLinks from "@/components/RelatedLinks";
+import { getRelatedGroups } from "@/lib/related-links";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -49,6 +51,7 @@ export async function generateMetadata({
 
 export default async function VsPage({ params }: PageProps) {
   const { slug } = await params;
+  const pathname = `/vs/${slug}`;
   const pair = getCompetitorVsPair(slug);
   if (!pair) notFound();
 
@@ -280,6 +283,7 @@ export default async function VsPage({ params }: PageProps) {
               })}
           </div>
         </section>
+        <RelatedLinks groups={getRelatedGroups(pathname)} heading="Related views" />
       </div>
     </>
   );

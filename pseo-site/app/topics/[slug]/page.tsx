@@ -7,6 +7,8 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import SeoCta from "@/components/SeoCta";
+import RelatedLinks from "@/components/RelatedLinks";
+import { getRelatedGroups } from "@/lib/related-links";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -57,6 +59,7 @@ function getPostsForPillar(pillar: Pillar): BlogPost[] {
 
 export default async function TopicHubPage({ params }: PageProps) {
   const { slug } = await params;
+  const pathname = `/topics/${slug}`;
   const pillar = pillars[slug];
 
   if (!pillar) {
@@ -270,6 +273,7 @@ export default async function TopicHubPage({ params }: PageProps) {
         </div>
 
         <SeoCta className="mt-10" />
+        <RelatedLinks groups={getRelatedGroups(pathname)} heading="Related views" />
       </div>
     </>
   );

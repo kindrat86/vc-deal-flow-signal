@@ -14,6 +14,8 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import EmbedThisCard from "@/components/EmbedThisCard";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 import SeoCta from "@/components/SeoCta";
+import RelatedLinks from "@/components/RelatedLinks";
+import { getRelatedGroups } from "@/lib/related-links";
 
 const SITE = "https://signals.gitdealflow.com";
 const SSRN_URL = "https://ssrn.com/abstract=6606558";
@@ -88,6 +90,7 @@ export async function generateMetadata({
 
 export default async function DefineTermPage({ params }: PageProps) {
   const { term } = await params;
+  const pathname = `/define/${term}`;
   const t = getTerm(term);
   if (!t) notFound();
 
@@ -365,6 +368,7 @@ export default async function DefineTermPage({ params }: PageProps) {
           secondary={{ label: "Browse this week's signals", href: "/" }}
           signoffIndex={3}
         />
+        <RelatedLinks groups={getRelatedGroups(pathname)} heading="Related views" />
       </div>
     </>
   );
