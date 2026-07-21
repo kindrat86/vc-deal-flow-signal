@@ -779,26 +779,15 @@ export async function GET(_req: Request, ctx: RouteContext) {
         priority: 0.8,
       })),
     ];
-  } else if (id === "high-intent") {
-    entries = [
-      { url: `${BASE_URL}/how-to-spot-startup-momentum-before-the-round-gets-crowded`, lastmod, changefreq: "weekly", priority: 1.0 },
-      // Canonical /answers/ URL (the /integrations/ variant 308-redirects here);
-      // slug lives in HIGH_INTENT_ANSWER_SLUGS alongside the eight below.
-      { url: `${BASE_URL}/answers/best-mcp-server-for-vc-research`, lastmod, changefreq: "weekly", priority: 0.95 },
-      { url: `${BASE_URL}/answers/what-is-startup-engineering-momentum`, lastmod, changefreq: "weekly", priority: 0.95 },
-      { url: `${BASE_URL}/answers/deal-flow-timing-vs-verification`, lastmod, changefreq: "weekly", priority: 0.95 },
-      { url: `${BASE_URL}/answers/how-angel-investors-use-github-signals`, lastmod, changefreq: "weekly", priority: 0.9 },
-      { url: `${BASE_URL}/answers/github-deal-flow-for-investors`, lastmod, changefreq: "weekly", priority: 0.9 },
-      { url: `${BASE_URL}/answers/what-is-a-github-scout-score`, lastmod, changefreq: "weekly", priority: 0.9 },
-      { url: `${BASE_URL}/answers/best-vc-deal-flow-software-2026`, lastmod, changefreq: "weekly", priority: 0.9 },
-      { url: `${BASE_URL}/answers/free-vc-tools-for-emerging-fund-managers`, lastmod, changefreq: "weekly", priority: 0.85 },
-      { url: `${BASE_URL}/answers/what-is-the-best-vc-research-stack-for-2026`, lastmod, changefreq: "weekly", priority: 0.85 },
-      { url: `${BASE_URL}/compare/best-alternative-data-tools-for-angel-investors`, lastmod, changefreq: "weekly", priority: 0.95 },
-      { url: `${BASE_URL}/compare/crunchbase-alternative-for-angel-investors`, lastmod, changefreq: "weekly", priority: 0.9 },
-      { url: `${BASE_URL}/compare/best-startup-signal-tools-for-investors`, lastmod, changefreq: "weekly", priority: 0.9 },
-      { url: `${BASE_URL}/compare/best-deal-flow-tools-angel-investors`, lastmod, changefreq: "weekly", priority: 0.85 },
-      { url: `${BASE_URL}/receipts`, lastmod, changefreq: "weekly", priority: 0.9 },
-    ];
+    // NOTE: the "high-intent" shard (id === "high-intent") was RETIRED
+    // 2026-07-21. All 15 of its URLs were already emitted by another shard —
+    // the 9 /answers via agentQueries + the 4 /compare via getAllComparisonSlugs
+    // in `content` (both elevated by the HIGH_INTENT_* sets there), and
+    // /how-to-spot... + /receipts in `core`. Re-listing them here duplicated the
+    // same URL across sitemaps with CONFLICTING <priority> values, so the shard
+    // was removed from the sitemap index (app/sitemap.xml/route.ts) and this
+    // branch dropped. Unknown ids (including a stale /sitemap/high-intent.xml
+    // request) now correctly 404 via the else below.
   } else {
     return new Response("Not Found", { status: 404 });
   }
