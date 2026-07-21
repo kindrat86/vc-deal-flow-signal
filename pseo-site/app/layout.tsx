@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Inter } from "next/font/google";
+import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -16,6 +16,15 @@ import CookieNotice from "@/components/CookieNotice";
 import { NotInEmbed } from "@/components/NotInEmbed";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
+
+// Display face for headings — gives the UI character instead of Inter
+// everywhere. Exposed as --font-display and applied to h1–h3 in globals.css.
+const display = Space_Grotesk({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  display: "swap",
+  variable: "--font-display",
+});
 
 export const metadata: Metadata = {
   title: {
@@ -159,7 +168,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full">
+    <html lang="en" className={`h-full ${display.variable}`}>
       <head>
         {/* CSP sends `require-trusted-types-for 'script'` but ships no policy,
             so any legacy innerHTML/script-src string assignment (ux.js, some

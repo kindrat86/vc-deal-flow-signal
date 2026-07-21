@@ -670,7 +670,7 @@ export default function Home() {
           previous H1 ("Startup Engineering Signals by Sector") was a filename,
           not a hook. New copy names the job-to-be-done and surfaces SSRN /
           live data as proof above the fold. */}
-      <header className="max-w-3xl">
+      <header className="max-w-3xl mx-auto">
         <p className="text-sky-400 text-xs font-medium mb-3 uppercase tracking-wider">
           {period.name} Edition · Updated {asOf}
         </p>

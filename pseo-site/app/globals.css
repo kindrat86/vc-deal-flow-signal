@@ -266,3 +266,50 @@ body {
     break-before: page;
   }
 }
+
+/* ===========================================================================
+   World-class UI polish + owner-mandated centering (2026-07-21).
+   Global, low-risk upgrades applied across every page. KEEP the centering —
+   the owner explicitly wants all text centered site-wide and stable.
+   =========================================================================== */
+
+/* Owner request: center ALL text on EVERY page. Do not revert. */
+body { text-align: center; }
+main, main * { text-align: center !important; }
+/* Exception: code / preformatted blocks stay left-aligned for readability. */
+main pre, main pre *, main code, main code * { text-align: left !important; }
+
+/* Display face for headings — real character beyond Inter-everywhere. */
+h1, h2, h3, .font-display {
+  font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+h1 { letter-spacing: -0.03em; }
+p, li { text-wrap: pretty; }
+:where(dd, [class*="tabular"]) { font-variant-numeric: tabular-nums; }
+
+/* Comfortable reading measure for centered long-form copy. */
+main p { max-width: 72ch; margin-left: auto; margin-right: auto; }
+
+/* Smooth in-page scrolling + stable iOS text sizing. */
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+/* Ambient depth — one soft brand glow at the top of the page. */
+body {
+  background:
+    radial-gradient(1100px circle at 50% -80px, rgba(56, 189, 248, 0.08), transparent 60%),
+    var(--background);
+}
+
+/* Interactive feel — smooth transitions + a physical press on controls. */
+a, button, [role="button"], summary, input, select, textarea {
+  transition: color 0.18s ease, background-color 0.18s ease,
+    border-color 0.18s ease, box-shadow 0.2s ease, transform 0.12s ease;
+}
+button:active, [role="button"]:active { transform: scale(0.985); }
+
+/* Mobile hardening — media never overflows; code scrolls in place. */
+img, video, canvas { max-width: 100%; height: auto; }
+svg { max-width: 100%; }
+main pre { max-width: 100%; overflow-x: auto; }
