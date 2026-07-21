@@ -13,6 +13,13 @@
       "content_text": "Key statistics on startup acquisitions, median deal sizes, time-to-exit, and acquisition multiples. Compiled from public market reports and industry data.",
       "date_published": "2026-07-20T00:00:00Z",
       "date_modified": "2026-07-20T00:00:00Z"
+    },
+    {
+      "id": "https://gitdealflow.com/data/momentum-index/",
+      "url": "https://gitdealflow.com/data/momentum-index/",
+      "title": "GitHub Startup Momentum Index",
+      "content_text": "Weekly momentum ranking of notable startup and developer-tool GitHub repositories, computed from public GitHub engineering-activity signals. Free, CC BY 4.0.",
+      "date_published": "2026-07-21T00:00:00Z"
     }
   ]
 }

@@ -1,0 +1,15 @@
+{
+  "note": "Seed list for the GitHub Startup Momentum Index. Real public repos only. Owner may edit/extend. One API call per repo — keep <=50 unless GITHUB_TOKEN is set.",
+  "repos": [
+    "vercel/next.js", "supabase/supabase", "calcom/cal.com", "PostHog/posthog",
+    "denoland/deno", "oven-sh/bun", "tauri-apps/tauri", "langchain-ai/langchain",
+    "run-llama/llama_index", "appwrite/appwrite", "nocodb/nocodb", "twentyhq/twenty",
+    "medusajs/medusa", "novuhq/novu", "triggerdotdev/trigger.dev", "windmill-labs/windmill",
+    "unkeyed/unkey", "documenso/documenso", "formbricks/formbricks", "pocketbase/pocketbase",
+    "go-gitea/gitea", "coollabsio/coolify", "immich-app/immich", "plausible/analytics",
+    "umami-software/umami", "n8n-io/n8n", "directus/directus", "strapi/strapi",
+    "meilisearch/meilisearch", "qdrant/qdrant", "weaviate/weaviate", "chroma-core/chroma",
+    "mindsdb/mindsdb", "ollama/ollama", "activepieces/activepieces", "typesense/typesense",
+    "hoppscotch/hoppscotch", "appsmithorg/appsmith", "refinedev/refine", "cline/cline"
+  ]
+}
