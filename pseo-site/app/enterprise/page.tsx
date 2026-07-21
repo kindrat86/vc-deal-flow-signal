@@ -213,7 +213,7 @@ export default function EnterprisePage() {
           Enterprise — VC Deal Flow Signal for Funds
         </h1>
 
-        <p className="text-gray-400 text-base leading-relaxed mb-6">
+        <p className="text-gray-400 text-base leading-relaxed mb-6 text-center">
           Two paths for active funds: the application-gated{" "}
           <strong className="text-gray-200">Sharp Tier</strong> at &euro;497
           per month (&euro;4,970 per year saves two months &mdash; capped at 8

@@ -670,7 +670,7 @@ export default function Home() {
           previous H1 ("Startup Engineering Signals by Sector") was a filename,
           not a hook. New copy names the job-to-be-done and surfaces SSRN /
           live data as proof above the fold. */}
-      <header className="max-w-3xl mx-auto">
+      <header className="max-w-3xl mx-auto text-center">
         <p className="text-sky-400 text-xs font-medium mb-3 uppercase tracking-wider">
           {period.name} Edition · Updated {asOf}
         </p>
@@ -688,14 +688,14 @@ export default function Home() {
             not 1,100 lines down where the longer disqualifier lives. */}
         <p
           aria-label="Start here if"
-          className="inline-flex items-start sm:items-center gap-2 mb-5 rounded-full border border-emerald-500/30 bg-emerald-950/30 px-3 py-1.5 text-[11px] sm:text-xs font-medium text-emerald-200/95"
+          className="inline-flex items-start sm:items-center gap-2 mb-5 rounded-full border border-sky-500/30 bg-sky-950/40 px-3 py-1.5 text-[11px] sm:text-xs font-medium text-sky-100/95"
         >
           <span aria-hidden className="mt-[1px] sm:mt-0">→</span>
           <span className="leading-snug">
             If you evaluate companies for a living — angel, scout, seed
             fund, corp-dev or PE — and want a calmer signal before the round
             gets obvious, you are in the right place.{" "}
-            <span className="text-emerald-300/80">No code-reading required.</span>
+            <span className="text-sky-300/90">No code-reading required.</span>
           </span>
         </p>
 
@@ -708,9 +708,9 @@ export default function Home() {
             H1 and subhead so the result is the first number a reader sees. */}
         <dl
           aria-label="Headline results from the SSRN panel"
-          className="grid grid-cols-3 gap-3 sm:gap-4 mb-5 rounded-xl border border-sky-700/40 bg-gradient-to-br from-sky-950/40 via-slate-900 to-slate-950 p-4 sm:p-5"
+          className="grid grid-cols-1 min-[440px]:grid-cols-3 gap-3 sm:gap-4 mb-5 rounded-xl border border-sky-700/40 bg-gradient-to-br from-sky-950/40 via-slate-900 to-slate-950 p-4 sm:p-5"
         >
-          <div className="text-center sm:text-left">
+          <div className="text-center">
             <dt className="text-[10px] sm:text-xs uppercase tracking-wider text-sky-300/80 font-semibold mb-1">
               Series A within 60d
             </dt>
@@ -721,7 +721,7 @@ export default function Home() {
               more likely vs. velocity alone
             </dd>
           </div>
-          <div className="text-center sm:text-left border-l border-slate-800 pl-3 sm:pl-4">
+          <div className="text-center min-[440px]:border-l border-slate-800 min-[440px]:pl-3 sm:pl-4">
             <dt className="text-[10px] sm:text-xs uppercase tracking-wider text-sky-300/80 font-semibold mb-1">
               Median lead time
             </dt>
@@ -732,7 +732,7 @@ export default function Home() {
               before the round announces
             </dd>
           </div>
-          <div className="text-center sm:text-left border-l border-slate-800 pl-3 sm:pl-4">
+          <div className="text-center min-[440px]:border-l border-slate-800 min-[440px]:pl-3 sm:pl-4">
             <dt className="text-[10px] sm:text-xs uppercase tracking-wider text-sky-300/80 font-semibold mb-1">
               Panel size
             </dt>

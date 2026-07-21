@@ -268,16 +268,15 @@ body {
 }
 
 /* ===========================================================================
-   World-class UI polish + owner-mandated centering (2026-07-21).
-   Global, low-risk upgrades applied across every page. KEEP the centering —
-   the owner explicitly wants all text centered site-wide and stable.
+   World-class UI polish (2026-07-21, owner-approved).
+   Global, low-risk upgrades applied across every page.
    =========================================================================== */
 
-/* Owner request: center ALL text on EVERY page. Do not revert. */
-body { text-align: center; }
-main, main * { text-align: center !important; }
-/* Exception: code / preformatted blocks stay left-aligned for readability. */
-main pre, main pre *, main code, main code * { text-align: left !important; }
+/* Alignment: headings & heroes centered, long-form body left-aligned for
+   readability (owner approved this over the earlier center-everything rule).
+   Hero sections opt back into centering with `text-center` on their wrapper. */
+body { text-align: left; }
+main h1, main h2, main h3 { text-align: center; }
 
 /* Display face for headings — real character beyond Inter-everywhere. */
 h1, h2, h3, .font-display {

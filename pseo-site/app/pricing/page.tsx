@@ -539,7 +539,7 @@ export default function PricingPage() {
           Pricing — Free Forever, €1 to Try, €7 to Test, €9.97 to Subscribe, €497 for Funds
         </h1>
 
-        <p className="text-gray-400 text-base leading-relaxed mb-3">
+        <p className="text-gray-400 text-base leading-relaxed mb-3 text-center">
           Start with the lightest useful step, then go deeper only if the question justifies it. The free Signal
           Digest and the free MCP server are the distribution magnet — they
           will never be gated. The €1 Tweet Teardown is the threshold
