@@ -473,7 +473,7 @@
         <a href="/pricing" class="hover:text-gray-300">Pricing</a>
         <a href="/privacy" class="hover:text-gray-300">Privacy</a>
       </div>
-      <p class="text-gray-400 text-xs">&copy; 2026 GitDealFlow &middot; signals@gitdealflow.com &middot; GitDealFlow Dashboard</p>
+      <p class="text-gray-400 text-xs">&copy; 2026 GitDealFlow &middot; signal@gitdealflow.com &middot; GitDealFlow Dashboard</p>
     </div>
   </footer>
 
@@ -532,7 +532,7 @@
         if (trigger && original !== null) { trigger.removeAttribute('aria-busy'); trigger.innerHTML = original; }
         var msg = document.getElementById('checkout-msg');
         if (msg) {
-          msg.textContent = 'Something went wrong opening checkout. Try again, or email signals@gitdealflow.com';
+          msg.textContent = 'Something went wrong opening checkout. Try again, or email signal@gitdealflow.com';
           msg.className = 'text-red-400 text-sm mt-4';
         }
       });
@@ -637,7 +637,7 @@
           try { sessionStorage.setItem('gdf_email', email); } catch (err) {}
           window.location.href = '/thanks?route=D';
         }).catch(function () {
-          msg.textContent = 'Something went wrong. Try again or email signals@gitdealflow.com';
+          msg.textContent = 'Something went wrong. Try again or email signal@gitdealflow.com';
           msg.className = 'text-red-400 text-xs mt-3';
           btn.disabled = false; btn.removeAttribute('aria-busy'); btn.innerHTML = orig;
         });

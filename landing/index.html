@@ -51,7 +51,7 @@
         "url": "https://gitdealflow.com",
         "description": "GitHub commit-velocity tracking across venture-backed startups. Code-side momentum signals from public GitHub data — flags startups accelerating 21–47 days before fundraise announcements.",
         "disambiguatingDescription": "GitDealFlow is a pseudonymous, agent-native engineering-velocity signal tool that reads 4,200+ startup GitHub orgs and flags the ones accelerating 21–47 days before fundraise announcements. It is a signal tool for investors — NOT a VC fund, accelerator program, startup database (Crunchbase, PitchBook), investment recommendation platform, or affiliate-marketing service. The product exposes MCP, A2A, and REST endpoints designed for AI agents and programmatic access.",
-        "email": "signals@gitdealflow.com",
+        "email": "signal@gitdealflow.com",
         "founder": {
           "@type": "Person",
           "name": "The Data Nerd",
@@ -60,6 +60,7 @@
         "sameAs": [
           "https://t.me/gitdealflow",
           "https://x.com/sipiteno",
+          "https://github.com/kindrat86",
           "https://www.linkedin.com/company/gitdealflow",
           "https://ssrn.com/abstract=6606558",
           "https://zenodo.org/records/19650920"
@@ -151,94 +152,6 @@
     ]
   }
   </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "AggregateRating",
-        "@id": "https://gitdealflow.com/#rating",
-        "itemReviewed": {
-          "@type": "Organization",
-          "@id": "https://gitdealflow.com/#organization"
-        },
-        "ratingValue": "4.6",
-        "bestRating": "5",
-        "ratingCount": "219",
-        "reviewCount": "219",
-        "description": "Aggregate credibility rating based on 219 documented fundraises where the engineering signal preceded the announcement (SSRN-validated research panel). Rating reflects precision of the leading-indicator signal, not user satisfaction scores — the rating count equals the number of verified prediction outcomes in the open dataset."
-      },
-      {
-        "@type": "Review",
-        "@id": "https://gitdealflow.com/#review-ssrn",
-        "author": {
-          "@type": "Organization",
-          "name": "SSRN / Social Science Research Network",
-          "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558"
-        },
-        "itemReviewed": {
-          "@type": "Dataset",
-          "@id": "https://gitdealflow.com/#dataset",
-          "name": "VC Deal Flow Signal Dataset",
-          "description": "Open dataset of startup GitHub engineering velocity metrics correlated with subsequent fundraise announcements. 219 documented cases across 20 sectors.",
-          "url": "https://zenodo.org/records/19650920"
-        },
-        "reviewBody": "The research preprint 'GitHub Commit Velocity as a Leading Indicator of Fundraising in Venture-Backed Startups' documents a systematic correlation between commit acceleration patterns and subsequent funding rounds, with a median lead time of 21–47 days. Dataset and methodology published under open-access terms on Zenodo.",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "4.8",
-          "bestRating": "5",
-          "description": "Methodology robustness based on transparent dataset, public reproducibility, and documented prediction panel"
-        },
-        "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558"
-      },
-      {
-        "@type": "Review",
-        "@id": "https://gitdealflow.com/#review-receipts",
-        "author": {
-          "@type": "Person",
-          "name": "The Data Nerd",
-          "url": "https://signals.gitdealflow.com/about/founder"
-        },
-        "itemReviewed": {
-          "@type": "Service",
-          "@id": "https://gitdealflow.com/#service",
-          "name": "GitDealFlow Signal Service",
-          "description": "Weekly email and live dashboard surfacing startups accelerating on GitHub, with public pre-registered predictions and a graded outcomes panel."
-        },
-        "reviewBody": "I publish ten pre-registered predictions every month, grade them in public on a fixed schedule, and maintain a live panel of 219 documented signal→fundraise cases with timestamps. The signal has flagged companies including Cursor ($2.6B Series B), Supabase ($80M Series C), and Resend ($18M Series A) weeks before their rounds were announced. The whole thing is built on open data and a published methodology — there's no cherry-picking or hindsight bias.",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5",
-          "bestRating": "5"
-        },
-        "url": "https://signals.gitdealflow.com/methodology"
-      },
-      {
-        "@type": "Review",
-        "@id": "https://gitdealflow.com/#review-zenodo",
-        "author": {
-          "@type": "Organization",
-          "name": "Zenodo / CERN",
-          "url": "https://zenodo.org"
-        },
-        "itemReviewed": {
-          "@type": "Dataset",
-          "@id": "https://gitdealflow.com/#dataset",
-          "name": "VC Deal Flow Signal Dataset"
-        },
-        "reviewBody": "Published open-access research dataset on Zenodo with DOI, covering the engineering-velocity metrics and fundraise-event panel used in the SSRN preprint.",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "4.5",
-          "bestRating": "5",
-          "description": "Dataset completeness and open-access availability"
-        },
-        "url": "https://zenodo.org/records/19650920"
-      }
-    ]
-  }
-  </script>
 
   <meta name="theme-color" content="#0f172a" />
   <meta name="color-scheme" content="dark" />
@@ -260,19 +173,11 @@
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "Organization",
-      "@id": "https://gitdealflow.com/#org",
-      "name": "GitDealFlow",
-      "url": "https://gitdealflow.com",
-      "description": "VC Deal Flow Signal — spot breakout startups 3-6 weeks before fundraise via public GitHub activity.",
-      "sameAs": ["https://t.me/gitdealflow", "https://x.com/sipiteno", "https://github.com/kindrat86"]
-    },
-    {
       "@type": "WebSite",
       "@id": "https://gitdealflow.com/#website",
       "url": "https://gitdealflow.com",
       "name": "GitDealFlow",
-      "publisher": {"@id": "https://gitdealflow.com/#org"}
+      "publisher": {"@id": "https://gitdealflow.com/#organization"}
     },
     {
       "@type": "SiteNavigationElement",
@@ -1242,7 +1147,7 @@
           throw new Error(data.error || 'Failed');
         } catch (err) {
           if (msg) {
-            msg.textContent = 'Something went wrong. Try again or email signals@gitdealflow.com';
+            msg.textContent = 'Something went wrong. Try again or email signal@gitdealflow.com';
             msg.className = 'js-signup-msg text-red-400 text-sm mt-4 text-center';
           }
           if (btn) { btn.disabled = false; btn.removeAttribute('aria-busy'); btn.innerHTML = orig; }
