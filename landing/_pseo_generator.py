@@ -27,9 +27,20 @@ def head(title, desc, path, schema_blocks=""):
 <meta property="og:description" content="{desc}">
 <meta property="og:url" content="{url}">
 <meta property="og:site_name" content="GitDealFlow">
+<meta property="og:image" content="https://signals.gitdealflow.com/opengraph-image">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://signals.gitdealflow.com/opengraph-image">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<link rel="alternate" hreflang="en" href="{url}">
+<link rel="alternate" hreflang="x-default" href="{url}">
 <link rel="alternate" type="text/plain" title="LLMs.txt" href="{CANONICAL}/llms.txt">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="GitDealFlow">
 {schema_blocks}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

@@ -4,11 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>About GitDealFlow — The Signal Behind the Velocity Verdict</title>
-  <meta name="description" content="GitDealFlow is a deal-flow signal tool built by one engineer (The Data Nerd) that reads public GitHub activity across 4,200+ startups and flags the ones accelerating 21-47 days before the round.">
+    <link rel="alternate" hreflang="en" href="https://gitdealflow.com/about">
+    <link rel="alternate" hreflang="es" href="https://gitdealflow.com/es/about">
+    <link rel="alternate" hreflang="de" href="https://gitdealflow.com/de/about">
+    <link rel="alternate" hreflang="x-default" href="https://gitdealflow.com/about"><meta name="description" content="GitDealFlow is a deal-flow signal tool built by one engineer (The Data Nerd) that reads public GitHub activity across 4,200+ startups and flags the ones accelerating 21-47 days before the round.">
   <meta name="author" content="The Data Nerd">
   <link rel="canonical" href="https://gitdealflow.com/about/">
   <meta name="robots" content="index, follow">
   <link rel="alternate" type="text/plain" title="LLMs.txt" href="https://gitdealflow.com/llms.txt">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="GitDealFlow">
   
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="GitDealFlow">
@@ -28,13 +36,44 @@
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@type": "Person",
+        "@id": "https://gitdealflow.com/about/#person",
+        "name": "The Data Nerd",
+        "alternateName": "Data Nerd",
+        "url": "https://gitdealflow.com/about/",
+        "description": "Engineer and occasional angel investor based in Athens, not San Francisco. Built GitDealFlow in 2024 after watching a small fintech team accelerate on GitHub weeks before their Series A — and realizing every clue had been sitting in the open.",
+        "jobTitle": "Engineer & Angel Investor",
+        "affiliation": {
+          "@type": "Organization",
+          "@id": "https://gitdealflow.com/#organization",
+          "name": "GitDealFlow"
+        },
+        "knowsAbout": [
+          "Deal flow signals",
+          "Startup engineering metrics",
+          "GitHub analytics",
+          "Venture capital",
+          "Commit velocity analysis",
+          "Alternative data for private markets"
+        ],
+        "sameAs": [
+          "https://x.com/data_nerd",
+          "https://www.wikidata.org/wiki/Q139376302",
+          "https://t.me/gitdealflow"
+        ]
+      },
+      {
         "@type": "AboutPage",
         "@id": "https://gitdealflow.com/about/#webpage",
         "name": "About GitDealFlow",
         "url": "https://gitdealflow.com/about/",
         "description": "GitDealFlow is a deal-flow signal tool built by one engineer (The Data Nerd) that reads public GitHub activity across 4,200+ startups and flags the ones accelerating 21-47 days before the round.",
         "isPartOf": {"@id": "https://gitdealflow.com/#website"},
-        "about": {"@id": "https://gitdealflow.com/#organization"}
+        "about": [
+          {"@id": "https://gitdealflow.com/#organization"},
+          {"@id": "https://gitdealflow.com/about/#person"}
+        ],
+        "author": {"@id": "https://gitdealflow.com/about/#person"}
       },
       {
         "@type": "BreadcrumbList",

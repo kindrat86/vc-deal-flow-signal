@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+  <title>First Look — One Sector, 24 Hours | GitDealFlow</title>
+  <meta name="description" content="Get a full deep-dive on your sector — ranked shortlist in 24 hours. Plain English, no code. €7 credited toward Dashboard.">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="GitDealFlow">
+  <meta name="theme-color" content="#0f172a"><meta name="color-scheme" content="dark">
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+    :root {
+      --signal-500: #ff6b1a;
+      --signal-400: #ff8c4d;
+      --brand-500: #0ea5e9;
+      --brand-400: #38bdf8;
+      --emerald: #10b981;
+      --amber: #f59e0b;
+      --focus: #ff8c4d;
+    }
+    body {
+      background-color: #0b1020;
+      background-image: radial-gradient(58rem 40rem at 50% -16rem, rgba(245,158,11,.08), transparent 62%), radial-gradient(48rem 38rem at 100% 4%, rgba(14,165,233,.06), transparent 56%), linear-gradient(180deg,#0b1020 0%,#0c1326 100%);
+      background-attachment: fixed;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    ::selection { background:rgba(245,158,11,.3); color:#fff; }
+    h1,h2 { text-wrap:balance; }
+    p { text-wrap:pretty; }
+    a:focus-visible { outline:2px solid var(--focus); outline-offset:3px; border-radius:6px; }
+
+    .eyebrow-pill {
+      display:inline-flex; align-items:center; gap:.5rem;
+      padding:.32rem .72rem; border-radius:999px;
+      background:rgba(245,158,11,.1); border:1px solid rgba(245,158,11,.32);
+    }
+    .eyebrow-pill::before {
+      content:""; width:.45rem; height:.45rem; border-radius:999px;
+      background:var(--amber); box-shadow:0 0 0 4px rgba(245,158,11,.16);
+    }
+
+    .card {
+      background:linear-gradient(180deg,rgba(255,255,255,.028),rgba(255,255,255,0));
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 24px 60px -38px rgba(0,0,0,.85);
+    }
+    .guarantee-box {
+      background:rgba(16,185,129,.09);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 24px 60px -46px rgba(16,185,129,.7);
+    }
+
+    /* GET vs LOSE grid */
+    .get-lose-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+    @media(max-width:639px) { .get-lose-grid { grid-template-columns:1fr; } }
+
+    @keyframes reveal { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:none} }
+    .reveal { animation:reveal .6s cubic-bezier(.22,1,.36,1) both; }
+    .reveal-2 { animation-delay:.09s; }
+    .reveal-3 { animation-delay:.18s; }
+
+    @media(max-width:639px) {
+      body { padding-bottom:6rem; }
+      .mobile-hero-wrap { padding:2.5rem 1rem 2rem; }
+      .mobile-hero-title { font-size:1.625rem; line-height:1.15; }
+      .mobile-sticky-cta {
+        position:fixed; left:0; right:0; bottom:0; z-index:60;
+        padding:.75rem 1rem calc(.75rem + env(safe-area-inset-bottom));
+        background:rgba(2,6,23,.94); backdrop-filter:blur(14px);
+        border-top:1px solid rgba(71,85,105,.7);
+        display:block;
+      }
+      .mobile-sticky-cta .inner { display:flex; align-items:center; gap:.75rem; max-width:28rem; margin:0 auto; }
+      .mobile-sticky-cta .meta { flex:1; min-width:0; }
+    }
+    @media(prefers-reduced-motion:reduce) {
+      .reveal,.reveal-2,.reveal-3 { animation:none!important; }
+    }
+  </style>
+</head>
+<body class="bg-dark-900 text-gray-100 font-sans antialiased">
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[60] focus:px-4 focus:py-2 focus:bg-dark-800 focus:text-white focus:rounded-lg">Skip to main content</a>
+
+  <header class="sticky top-0 z-50 border-b border-gray-800 bg-dark-900/95 backdrop-blur">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-3">
+      <a href="/" class="font-semibold tracking-tight text-white text-lg">GitDealFlow</a>
+      <span class="text-xs text-gray-500">First Look &middot; &euro;7 once</span>
+    </div>
+  </header>
+
+  <main id="main-content" class="max-w-2xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
+
+    <!-- DOWNSELL HEADER — acknowledge the objection -->
+    <section class="text-center mb-8 mobile-hero-wrap reveal">
+      <p class="eyebrow-pill text-amber-400 text-xs font-semibold uppercase tracking-wider mb-3 mx-auto" style="width:fit-content">I understand</p>
+      <h1 class="mobile-hero-title text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
+        &euro;49/mo is a commitment.<br><span class="text-amber-400">Test the signal for &euro;7.</span>
+      </h1>
+      <p class="text-lg text-gray-300 leading-relaxed">
+        One sector. One deep dive. 24 hours. If the names impress you, the &euro;7 credits toward Dashboard. If they don't, you're out a coffee &mdash; and you learned something about your thesis.
+      </p>
+    </section>
+
+    <!-- GET vs LOSE comparison grid (Brunson Ch 15 pattern) -->
+    <section class="mb-8 reveal reveal-2">
+      <div class="get-lose-grid">
+        <!-- GET column -->
+        <div class="card rounded-xl border border-emerald-500/30 bg-emerald-500/5 p-5 sm:p-6">
+          <p class="text-emerald-400 text-xs font-bold uppercase tracking-wider mb-4">&check; You still get</p>
+          <ul class="space-y-2.5 text-sm text-gray-300">
+            <li class="flex gap-2"><span class="text-emerald-400 shrink-0">&check;</span> Full deep dive on <strong class="text-white">one sector you pick</strong></li>
+            <li class="flex gap-2"><span class="text-emerald-400 shrink-0">&check;</span> Ranked shortlist delivered <strong class="text-white">in 24 hours</strong></li>
+            <li class="flex gap-2"><span class="text-emerald-400 shrink-0">&check;</span> Plain-English signal notes — <strong class="text-white">no code, ever</strong></li>
+            <li class="flex gap-2"><span class="text-emerald-400 shrink-0">&check;</span> &euro;7 credited toward Dashboard <strong class="text-white">within 14 days</strong></li>
+            <li class="flex gap-2"><span class="text-emerald-400 shrink-0">&check;</span> <strong class="text-white">30-day money-back guarantee</strong></li>
+          </ul>
+        </div>
+
+        <!-- LOSE column -->
+        <div class="card rounded-xl border border-red-500/20 bg-red-500/5 p-5 sm:p-6">
+          <p class="text-red-400 text-xs font-bold uppercase tracking-wider mb-4">&times; You lose (vs Dashboard)</p>
+          <ul class="space-y-2.5 text-sm text-gray-500">
+            <li class="flex gap-2"><span class="text-red-400 shrink-0">&times;</span> <span class="line-through">60+ startups across 20 sectors</span></li>
+            <li class="flex gap-2"><span class="text-red-400 shrink-0">&times;</span> <span class="line-through">Weekly re-ranks + full history</span></li>
+            <li class="flex gap-2"><span class="text-red-400 shrink-0">&times;</span> <span class="line-through">CSV export + funding data enrichment</span></li>
+            <li class="flex gap-2"><span class="text-red-400 shrink-0">&times;</span> <span class="line-through">Sector & stage filters</span></li>
+            <li class="flex gap-2"><span class="text-red-400 shrink-0">&times;</span> <span class="line-through">Weekly operating rhythm</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICE -->
+    <section class="text-center mb-6 reveal reveal-2">
+      <div class="card rounded-xl border border-amber-500/40 bg-dark-800/70 p-6 sm:p-8 mb-6">
+        <p class="text-gray-400 text-xs uppercase tracking-wider mb-1">Your price</p>
+        <p class="text-2xl text-gray-500 line-through mb-1">&euro;49/mo Dashboard</p>
+        <p class="mb-1"><span class="text-4xl font-extrabold text-amber-400">&euro;7</span><span class="text-gray-400"> once</span></p>
+        <p class="text-amber-400/70 font-semibold text-sm mb-3">Credited toward Dashboard if you upgrade in 14 days</p>
+        <a href="https://buy.stripe.com/bJe5kC48H2d2cEKg6s0x209" onclick="if(window.posthog)posthog.capture('firstlook_cta',{placement:'downsell'})" class="inline-block bg-amber-500 text-dark-900 font-bold px-8 py-4 rounded-xl text-lg hover:bg-amber-400 transition shadow-xl shadow-amber-500/20">
+          Get my First Look &mdash; &euro;7 &rarr;
+        </a>
+        <p class="text-gray-500 text-xs mt-3">Secure checkout on Stripe &middot; 24-hour delivery</p>
+      </div>
+
+      <!-- Guarantee -->
+      <div class="guarantee-box rounded-xl border border-emerald-500/40 p-4 mb-6">
+        <p class="text-emerald-300 text-xs font-bold uppercase tracking-wider mb-1">The risk is mine</p>
+        <p class="text-gray-300 text-sm leading-relaxed">Not useful? 30 days, email me, every cent back. No forms, no survey. You keep the report either way.</p>
+      </div>
+
+      <!-- Soft decline — keep relationship warm -->
+      <div class="pt-6 border-t border-gray-800">
+        <p class="text-gray-400 text-sm mb-2">Not even &euro;7? That's fine — the free Sunday email is still yours.</p>
+        <a href="/report" class="text-gray-500 hover:text-gray-300 text-sm">Read a sample issue first &rarr;</a>
+        <p class="mt-3"><a href="/dashboard" class="text-signal-400 text-sm font-semibold hover:text-signal-300">Actually, show me the full Dashboard &rarr;</a></p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- STICKY MOBILE CTA -->
+  <div class="mobile-sticky-cta">
+    <div class="inner">
+      <div class="meta">
+        <strong>Test the signal for &euro;7</strong>
+        <span>One sector &middot; 24-hour delivery</span>
+      </div>
+      <a href="https://buy.stripe.com/bJe5kC48H2d2cEKg6s0x209" onclick="if(window.posthog)posthog.capture('firstlook_cta_sticky',{placement:'downsell'})" class="btn btn-cta btn-sm">Get it</a>
+    </div>
+  </div>
+
+  <footer class="border-t border-gray-800 bg-dark-900/80 py-12 mt-8">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <div class="flex flex-wrap justify-center gap-6 text-gray-500 text-sm mb-4">
+        <a href="/" class="hover:text-gray-300">Home</a>
+        <a href="/report" class="hover:text-gray-300">Sample issue</a>
+        <a href="https://signals.gitdealflow.com/methodology" class="hover:text-gray-300">Methodology</a>
+        <a href="/privacy" class="hover:text-gray-300">Privacy</a>
+        <a href="/terms" class="hover:text-gray-300">Terms</a>
+      </div>
+      <p class="text-gray-500 text-xs">&copy; 2026 GitDealFlow &middot; signals@gitdealflow.com</p>
+    </div>
+  </footer>
+
+  <script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split('.');2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement('script')).type='text/javascript',p.async=!0,p.src=s.api_host+'/static/array.js',(r=t.getElementsByTagName('script')[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a='posthog',u.people=u.people||[],u.toString=function(t){var e='posthog';return'posthog'!==a&&(e+='.'+a),t||(e+=' (stub)'),e},u.people.toString=function(){return u.toString(1)+'.people (stub)'},o='init capture register register_once register_for_session unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group setPersonProperties resetPersonProperties setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags'.split(' '),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    (function(){function _init(){if(/^https?:$/.test(location.protocol))posthog.init('phc_lyZCgvTpicjLzAO3rY2GhxuX5WUc5jQjP8ZVwwJqauX',{api_host:'https://eu.i.posthog.com',persistence:'memory',person_profiles:'identified_only'});}if('requestIdleCallback' in window){requestIdleCallback(_init,{timeout:2500});}else{setTimeout(_init,2000);}})();
+  </script>
+</body>
+</html>

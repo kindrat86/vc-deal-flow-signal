@@ -4,7 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Sample report — GitDealFlow built on VC Deal Flow Signal</title>
-  <meta name="description" content="See a sample GitDealFlow report: startups the signal flagged as heating up, with plain-English notes. A tool for investors, not a fund." />
+    <link rel="alternate" hreflang="en" href="https://gitdealflow.com/report">
+    <link rel="alternate" hreflang="es" href="https://gitdealflow.com/es/report">
+    <link rel="alternate" hreflang="de" href="https://gitdealflow.com/de/report">
+    <link rel="alternate" hreflang="x-default" href="https://gitdealflow.com/report"><meta name="description" content="See a sample GitDealFlow report: startups the signal flagged as heating up, with plain-English notes. A tool for investors, not a fund." />
   <meta name="robots" content="noindex, nofollow">
   <link rel="canonical" href="https://gitdealflow.com/report" />
   <meta property="og:title" content="Sample report — GitDealFlow" />
@@ -48,65 +51,12 @@
   <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="stylesheet" href="/styles.css">
-  <style>
-    .mobile-cta-stack > * { width: 100%; }
-    .mobile-card, .mobile-step-card { transition: border-color 120ms ease, transform 120ms ease; }
-    .mobile-card:hover, .mobile-step-card:hover { border-color: rgba(14, 165, 233, 0.5); }
-    .mobile-sticky-cta { display: none; }
-    @media (min-width: 640px) { .mobile-cta-stack > * { width: auto; } }
-    @media (max-width: 639px) {
-      html { scroll-padding-top: 5rem; }
-      body { padding-bottom: 6rem; }
-      .mobile-compact-header { padding-top: 0.75rem; padding-bottom: 0.75rem; }
-      .mobile-hero-wrap { padding-left: 1rem; padding-right: 1rem; padding-top: 4rem; padding-bottom: 4rem; }
-      .mobile-hero-title { font-size: 2rem; line-height: 1.1; }
-      .mobile-hero-copy { font-size: 1rem; line-height: 1.65; }
-      .mobile-section-pad { padding-left: 1rem; padding-right: 1rem; }
-      .mobile-card-pad { padding: 1.25rem; }
-      .mobile-stat-grid { gap: 1rem; }
-      .mobile-grid-gap { gap: 1rem; }
-      .mobile-cta-stack .btn,
-      .mobile-form-stack .btn {
-        white-space: normal; text-align: center; line-height: 1.35;
-        padding-left: 1rem; padding-right: 1rem;
-      }
-      .mobile-sticky-cta {
-        position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; display: block;
-        padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom));
-        background: rgba(2, 6, 23, 0.94); backdrop-filter: blur(12px);
-        border-top: 1px solid rgba(71, 85, 105, 0.7);
-        transform: translateY(115%);
-        transition: transform 280ms cubic-bezier(0.4,0,0.2,1);
-        pointer-events: none;
-      }
-      .mobile-sticky-cta.is-visible { transform: translateY(0); pointer-events: auto; }
-      .mobile-sticky-cta .inner { display: flex; align-items: center; gap: 0.75rem; max-width: 28rem; margin: 0 auto; }
-      .mobile-sticky-cta .meta { flex: 1; min-width: 0; }
-      .mobile-sticky-cta .meta strong { display: block; color: #fff; font-size: 0.95rem; line-height: 1.1; }
-      .mobile-sticky-cta .meta span { display: block; color: #94a3b8; font-size: 0.72rem; margin-top: 0.1rem; }
-      .mobile-sticky-cta .btn { white-space: nowrap; padding-left: 1rem; padding-right: 1rem; }
-    }
-    @media (max-width: 639px) and (prefers-reduced-motion: reduce) {
-      .mobile-sticky-cta { transition: none; }
-    }
-  </style>
-  <style>
-    .report-card { transition: border-color 0.2s; }
-    .report-card:hover { border-color: rgb(14 165 233 / 0.5); }
-    .rank-badge {
-      width: 2.5rem; height: 2.5rem;
-      display: flex; align-items: center; justify-content: center;
-      border-radius: 9999px; font-weight: 800; font-size: 1rem;
-      flex-shrink: 0;
-    }
-    .metric-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; text-align: center; }
-    @media (min-width: 640px) { .metric-grid { grid-template-columns: repeat(4, 1fr); } }
-  </style>
+
   <meta name="theme-color" content="#0f172a" />
   <meta name="color-scheme" content="dark" />
   <link rel="manifest" href="/manifest.webmanifest" />
   <link rel="preload" href="/styles.css" as="style">
-<!-- Traffic-Readiness JSON-LD org+website schema -->
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -134,10 +84,10 @@
   ]
 }
 </script>
-<!-- Traffic-Readiness JSON-LD org+website schema -->
+
 <link rel="stylesheet" href="/ux.css">
     <script src="/ux.js" defer></script>
-  </head>
+  <link rel="stylesheet" href="/inline.css"></head>
 <body class="bg-dark-900 text-gray-100 font-sans antialiased">
   <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[60] focus:px-4 focus:py-2 focus:bg-dark-800 focus:text-white focus:rounded-lg">Skip to main content</a>
   <header class="relative sticky top-0 z-50 border-b border-gray-800 bg-dark-900/95 backdrop-blur">
@@ -213,8 +163,6 @@
         <p class="text-gray-300 text-lg leading-relaxed">If this feels calmer than the usual deal-flow firehose, that is the point. You should be able to read it quickly, keep the names that matter, and move on with your week.</p>
       </div>
     </section>
-
-
 
     <section class="max-w-4xl mx-auto px-6 py-12 space-y-6">
       <div class="report-card rounded-xl border border-gray-700 bg-dark-800 p-6">
@@ -336,7 +284,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'&&t.getAttrib
       update();
     })();
   </script>
-<!-- BRUNSON TRUST BAR — idempotency:trust-bar-v1 -->
+
 <section class="brunson-trust-bar" style="background:linear-gradient(135deg, #0f172a, #1e293b);color:#e8eaed;padding:40px 24px;margin:60px 0 0;border-top:3px solid #00d4aa;text-align:center;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
   <div style="max-width:900px;margin:0 auto">
     <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:28px;margin-bottom:28px">
@@ -350,6 +298,6 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'&&t.getAttrib
     <p style="margin-top:18px;font-size:.78rem;color:#6b7178">🛡️ Verify the claim in three clicks or you do not pay. Founding price locked.</p>
   </div>
 </section>
-<!-- /BRUNSON TRUST BAR -->
+
 </body>
 </html>

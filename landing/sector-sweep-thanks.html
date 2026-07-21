@@ -10,43 +10,14 @@
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="GitDealFlow">
   <meta name="theme-color" content="#ffffff"><meta name="color-scheme" content="light">
   <link rel="stylesheet" href="/styles.css">
-  <style>
-    .mobile-cta-stack > * { width: 100%; }
-    .mobile-card, .mobile-step-card { transition: border-color 120ms ease, transform 120ms ease; }
-    .mobile-card:hover, .mobile-step-card:hover { border-color: rgba(14, 165, 233, 0.5); }
-    .mobile-sticky-cta { display: none; }
-    @media (min-width: 640px) { .mobile-cta-stack > * { width: auto; } }
-    @media (max-width: 639px) {
-      html { scroll-padding-top: 5rem; }
-      body { padding-bottom: 6rem; }
-      .mobile-compact-header { padding-top: 0.75rem; padding-bottom: 0.75rem; }
-      .mobile-hero-wrap { padding-left: 1rem; padding-right: 1rem; padding-top: 4rem; padding-bottom: 4rem; }
-      .mobile-hero-title { font-size: 2rem; line-height: 1.1; }
-      .mobile-hero-copy { font-size: 1rem; line-height: 1.65; }
-      .mobile-main-pad { padding-left: 1rem; padding-right: 1rem; }
-      .mobile-section-pad { padding-left: 1rem; padding-right: 1rem; }
-      .mobile-card-pad { padding: 1.25rem; }
-      .mobile-grid-gap { gap: 1rem; }
-      .mobile-cta-stack .btn {
-        white-space: normal; text-align: center; line-height: 1.35;
-        padding-left: 1rem; padding-right: 1rem;
-      }
-      .mobile-sticky-cta {
-        position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; display: block;
-        padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom));
-        background: rgba(2, 6, 23, 0.94); backdrop-filter: blur(12px);
-        border-top: 1px solid rgba(71, 85, 105, 0.7);
-      }
-      .mobile-sticky-cta .inner { display: flex; align-items: center; gap: 0.75rem; max-width: 28rem; margin: 0 auto; }
-      .mobile-sticky-cta .meta { flex: 1; min-width: 0; }
-      .mobile-sticky-cta .meta strong { display: block; color: #fff; font-size: 0.95rem; line-height: 1.1; }
-      .mobile-sticky-cta .meta span { display: block; color: #94a3b8; font-size: 0.72rem; margin-top: 0.1rem; }
-      .mobile-sticky-cta .btn { white-space: nowrap; padding-left: 1rem; padding-right: 1rem; }
-    }
-  </style>
-<!-- Traffic-Readiness JSON-LD org+website schema -->
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -74,10 +45,10 @@
   ]
 }
 </script>
-<!-- Traffic-Readiness JSON-LD org+website schema -->
+
 <link rel="stylesheet" href="/ux.css">
     <script src="/ux.js" defer></script>
-  </head>
+  <link rel="stylesheet" href="/inline.css"></head>
 <body class="bg-dark-900 text-gray-100 font-sans antialiased">
   <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[60] focus:px-4 focus:py-2 focus:bg-dark-800 focus:text-white focus:rounded-lg">Skip to main content</a>
   <header class="sticky top-0 z-50 border-b border-gray-800 bg-dark-900/95 backdrop-blur">
@@ -151,7 +122,7 @@
       if('requestIdleCallback' in window){requestIdleCallback(_init,{timeout:2500});} else {setTimeout(_init,2000);}
     })();
   </script>
-<!-- BRUNSON TRUST BAR — idempotency:trust-bar-v1 -->
+
 <section class="brunson-trust-bar" style="background:linear-gradient(135deg, #0f172a, #1e293b);color:#e8eaed;padding:40px 24px;margin:60px 0 0;border-top:3px solid #00d4aa;text-align:center;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
   <div style="max-width:900px;margin:0 auto">
     <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:28px;margin-bottom:28px">
@@ -165,6 +136,6 @@
     <p style="margin-top:18px;font-size:.78rem;color:#6b7178">🛡️ Verify the claim in three clicks or you do not pay. Founding price locked.</p>
   </div>
 </section>
-<!-- /BRUNSON TRUST BAR -->
+
 </body>
 </html>

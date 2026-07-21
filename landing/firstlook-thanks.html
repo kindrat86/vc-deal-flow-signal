@@ -10,122 +10,17 @@
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="GitDealFlow">
   <meta name="theme-color" content="#ffffff"><meta name="color-scheme" content="light">
   <link rel="stylesheet" href="/styles.css">
-  <style>
-    /* ====================================================================
-       /firstlook-thanks — OTO: Dashboard upsell (Brunson Ch 15)
-       One Time Offer: the buyer just paid €7. This page offers Dashboard
-       (€49/mo) with the €7 credited via the 14-day upgrade credit window.
-       Value stack + honest urgency + downsell.
-       ==================================================================== */
-    :root {
-      --signal-500: #ff6b1a;
-      --signal-400: #ff8c4d;
-      --brand-500: #0ea5e9;
-      --brand-400: #38bdf8;
-      --emerald: #10b981;
-      --focus: #ff8c4d;
-    }
 
-    body.bg-dark-900 {
-      background-color: #0b1020;
-      background-image:
-        radial-gradient(58rem 40rem at 50% -16rem, rgba(255, 107, 26, 0.11), transparent 62%),
-        radial-gradient(48rem 38rem at 100% 4%, rgba(14, 165, 233, 0.08), transparent 56%),
-        linear-gradient(180deg, #0b1020 0%, #0c1326 100%);
-      background-attachment: fixed;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-    }
-
-    ::selection { background: rgba(255, 107, 26, 0.30); color: #fff; }
-    h1, h2 { text-wrap: balance; }
-    p { text-wrap: pretty; }
-
-    a:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; border-radius: 6px; }
-
-    .mobile-cta-stack > * { width: 100%; }
-    .mobile-sticky-cta { display: none; }
-    @media (min-width: 640px) { .mobile-cta-stack > * { width: auto; } }
-    @media (max-width: 639px) {
-      html { scroll-padding-top: 5rem; }
-      body { padding-bottom: 6rem; }
-      .mobile-compact-header { padding-top: 0.75rem; padding-bottom: 0.75rem; }
-      .mobile-hero-title { font-size: 2rem; line-height: 1.1; }
-      .mobile-main-pad { padding-left: 1rem; padding-right: 1rem; }
-      .mobile-section-pad { padding-left: 1rem; padding-right: 1rem; }
-      .mobile-card-pad { padding: 1.25rem; }
-      .mobile-cta-stack .btn { white-space: normal; text-align: center; line-height: 1.35; padding-left: 1rem; padding-right: 1rem; }
-      .mobile-sticky-cta {
-        position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; display: block;
-        padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom));
-        background: rgba(2, 6, 23, 0.94); backdrop-filter: blur(14px);
-        border-top: 1px solid rgba(71, 85, 105, 0.7);
-        box-shadow: 0 -18px 40px -28px rgba(0, 0, 0, 0.9);
-      }
-      .mobile-sticky-cta .inner { display: flex; align-items: center; gap: 0.75rem; max-width: 28rem; margin: 0 auto; }
-      .mobile-sticky-cta .meta { flex: 1; min-width: 0; }
-      .mobile-sticky-cta .meta strong { display: block; color: #fff; font-size: 0.95rem; line-height: 1.1; }
-      .mobile-sticky-cta .meta span { display: block; color: #94a3b8; font-size: 0.72rem; margin-top: 0.1rem; }
-      .mobile-sticky-cta .btn { white-space: nowrap; padding-left: 1rem; padding-right: 1rem; }
-    }
-
-    /* OTO card */
-    .oto-card {
-      position: relative; isolation: isolate;
-      border-color: rgba(255, 107, 26, 0.42) !important;
-      background:
-        radial-gradient(40rem 22rem at 50% -3rem, rgba(255, 107, 26, 0.12), transparent 70%),
-        linear-gradient(180deg, rgba(30, 41, 59, 0.55), rgba(13, 19, 35, 0.92)) !important;
-      box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.07),
-        0 44px 100px -54px rgba(255, 107, 26, 0.45),
-        0 34px 90px -46px rgba(0, 0, 0, 0.92);
-    }
-
-    /* Value stack rows */
-    .value-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; padding: 0.6rem 0; border-bottom: 1px solid rgba(148,163,184,0.08); }
-    .value-row:last-child { border-bottom: none; }
-    .value-row .vr-item { color: #cbd5e1; font-size: 0.95rem; }
-    .value-row .vr-price { color: #94a3b8; font-size: 0.9rem; white-space: nowrap; }
-    .value-total { display: flex; justify-content: space-between; align-items: baseline; padding-top: 1rem; margin-top: 0.5rem; border-top: 2px solid rgba(148,163,184,0.15); }
-    .value-total .vt-label { color: #94a3b8; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; }
-    .value-total .vt-amount { color: #64748b; font-size: 1.1rem; text-decoration: line-through; }
-    .value-price { display: flex; justify-content: space-between; align-items: baseline; padding-top: 0.5rem; }
-    .value-price .vp-label { color: var(--signal-400); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; }
-    .value-price .vp-amount { color: #fff; font-size: 1.75rem; font-weight: 800; text-shadow: 0 8px 32px rgba(255,107,26,0.28); }
-
-    .compare-box {
-      background: linear-gradient(180deg, rgba(30, 41, 59, 0.92), rgba(15, 23, 42, 0.92)) !important;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
-    }
-
-    .guarantee-box {
-      background: rgba(16, 185, 129, 0.09) !important;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 24px 60px -46px rgba(16, 185, 129, 0.7);
-    }
-
-    /* Urgency badge */
-    .urgency-badge {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      padding: 0.4rem 0.8rem; border-radius: 999px;
-      background: rgba(255, 107, 26, 0.12); border: 1px solid rgba(255, 107, 26, 0.3);
-      color: var(--signal-400); font-size: 0.8rem; font-weight: 600;
-    }
-
-    @keyframes oto-reveal { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
-    .reveal   { animation: oto-reveal 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; }
-    .reveal-2 { animation-delay: 0.09s; }
-    .reveal-3 { animation-delay: 0.18s; }
-
-    @media (prefers-reduced-motion: reduce) {
-      .reveal, .reveal-2, .reveal-3 { animation: none !important; }
-    }
-  </style>
 <link rel="stylesheet" href="/ux.css">
     <script src="/ux.js" defer></script>
-  </head>
+  <link rel="stylesheet" href="/inline.css"></head>
 <body class="bg-dark-900 text-gray-100 font-sans antialiased">
   <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[60] focus:px-4 focus:py-2 focus:bg-dark-800 focus:text-white focus:rounded-lg">Skip to main content</a>
   <header class="sticky top-0 z-50 border-b border-gray-800 bg-dark-900/95 backdrop-blur">
@@ -136,7 +31,7 @@
   </header>
 
   <main id="main-content" class="mobile-main-pad max-w-5xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
-    <!-- Confirmation -->
+
     <section class="max-w-3xl mx-auto text-center mb-12 mobile-section-pad reveal">
       <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-emerald-500/15 border border-emerald-500/40 mb-4">
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="text-emerald-400"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
@@ -146,15 +41,13 @@
       <p class="text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto">The receipt is in your inbox. Expect the sector pass within 24 hours. But before you close this tab&hellip;</p>
     </section>
 
-    <!-- ============ OTO: Dashboard upsell ============ -->
     <section id="oto" class="max-w-3xl mx-auto mobile-section-pad scroll-mt-24 reveal reveal-2">
       <div class="mobile-card-pad oto-card rounded-3xl border border-signal-500/40 bg-dark-900 p-8 md:p-12">
-        <!-- OTO header -->
+
         <div class="text-center mb-6">
           <span class="urgency-badge"><span>&#9888;</span> One-time offer &mdash; only on this page</span>
         </div>
 
-        <!-- Attractive Character: first person -->
         <div class="flex flex-col sm:flex-row items-center gap-4 mb-6 text-center sm:text-left">
           <picture>
             <source srcset="/data-nerd.webp" type="image/webp">
@@ -166,14 +59,12 @@
           </div>
         </div>
 
-        <!-- OTO Script beats: confirm → epiphany → bridge -->
         <div class="space-y-4 text-gray-300 text-lg leading-relaxed mb-8">
           <p>You just did the smart thing &mdash; you tested the signal on one sector for &euro;7 instead of guessing. That pass is being built now, and you'll have it in 24 hours.</p>
           <p>But here's what I learned building this: <strong class="text-white">one sector is a snapshot. The value is in seeing the whole field re-rank every week.</strong> The week I ran the full read for myself, the tool flagged sixty-one companies &mdash; not five. Two of the ones I sat on raised inside a month.</p>
           <p>If you upgrade to Dashboard <strong class="text-white">right now, while I'm building your pass</strong>, two things happen:</p>
         </div>
 
-        <!-- Value stack (Brunson Ch 18) -->
         <div class="rounded-xl border border-gray-600 bg-dark-900/60 p-5 mb-6">
           <p class="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-3">Your Dashboard &mdash; what's inside</p>
           <div class="value-row"><span class="vr-item"><strong class="text-white">60+ startups</strong> ranked by engineering acceleration, every week</span><span class="vr-price">&euro;588/yr value</span></div>
@@ -189,25 +80,21 @@
         <p class="text-center text-signal-400 font-semibold mb-1">Every euro you just spent comes back &mdash; and you get the entire field every week.</p>
         <p class="text-center text-gray-500 text-sm mb-6">Cancel in one click. 30-day Signal-or-It's-Free.</p>
 
-        <!-- Comparison anchor (Brunson Ch 18) -->
         <div class="compare-box rounded-xl border border-signal-500/40 bg-dark-800 p-5 mb-6 text-center">
           <p class="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-1">The only comparison that matters</p>
           <p class="text-gray-300 leading-relaxed">A single <strong class="text-white">PitchBook seat runs $20,000 a year</strong>. You get the part that actually moves your returns &mdash; the early signal &mdash; for <strong class="text-white">&euro;42 this month</strong>.</p>
         </div>
 
-        <!-- Guarantee -->
         <div class="guarantee-box rounded-xl border border-emerald-500/40 bg-emerald-500/10 p-5 mb-6">
           <p class="text-gray-200 leading-relaxed"><strong class="text-white">30-day Signal-or-It's-Free.</strong> Any paid rung, 30 days, email me, every cent back. No forms, no survey. The risk is mine; the cycle is yours to keep.</p>
         </div>
 
-        <!-- Urgency (honest, not fake countdown) -->
         <p class="text-gray-400 text-sm text-center mb-2">Two honest reasons this is the moment:</p>
         <ul class="text-gray-400 text-sm max-w-xl mx-auto space-y-1.5 mb-6">
           <li class="flex items-start gap-2"><span class="text-signal-400 mt-0.5" aria-hidden="true">&middot;</span><span><strong class="text-white">Your &euro;7 upgrade credit window is real and dated.</strong> It runs 14 days from your First Look purchase. After that, Dashboard is the full &euro;49/mo from day one.</span></li>
           <li class="flex items-start gap-2"><span class="text-signal-400 mt-0.5" aria-hidden="true">&middot;</span><span><strong class="text-white">Deadlines here hold.</strong> The founding window closed June 30 &mdash; exactly as promised, no extensions. This credit window is just as real.</span></li>
         </ul>
 
-        <!-- CTA -->
         <div class="flex justify-center">
           <a href="https://gitdealflow.com/dashboard?utm_source=firstlook_thanks&utm_medium=oto" data-carry-email onclick="if(window.posthog)posthog.capture('offer_cta_clicked',{tier:'dashboard',placement:'firstlook_thanks_oto'})" class="btn btn-primary btn-xl w-full sm:w-auto">
             <span>Yes &mdash; add Dashboard &mdash; &euro;42 first month with my &euro;7 credit</span>
@@ -216,7 +103,6 @@
         </div>
         <p class="text-center text-gray-500 text-sm mt-4">I'll carry your email over. Secure checkout on Stripe &middot; cancel anytime &middot; &euro;7 credited off invoice one (reply &ldquo;credit&rdquo; to your intake email).</p>
 
-        <!-- Graceful decline / downsell (Brunson Ch 15) -->
         <div class="mt-8 pt-6 border-t border-gray-800 text-center">
           <p class="text-gray-300 leading-relaxed mb-1">No rush? That's genuinely fine.</p>
           <p class="text-gray-500 text-sm leading-relaxed max-w-xl mx-auto mb-3">Read your First Look when it lands. Your &euro;7 upgrade credit window stays open for 14 days &mdash; after that, Dashboard is &euro;49/mo without the credit.</p>
@@ -258,7 +144,7 @@
     })();
     if(window.posthog) posthog.capture('firstlook_thanks_viewed', { variant: 'oto_dashboard_upsell' });
   </script>
-<!-- BRUNSON TRUST BAR — idempotency:trust-bar-v1 -->
+
 <section class="brunson-trust-bar" style="background:linear-gradient(135deg, #0f172a, #1e293b);color:#e8eaed;padding:40px 24px;margin:60px 0 0;border-top:3px solid #00d4aa;text-align:center;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
   <div style="max-width:900px;margin:0 auto">
     <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:28px;margin-bottom:28px">
@@ -272,6 +158,6 @@
     <p style="margin-top:18px;font-size:.78rem;color:#6b7178">🛡️ Verify the claim in three clicks or you do not pay. Founding price locked.</p>
   </div>
 </section>
-<!-- /BRUNSON TRUST BAR -->
+
 </body>
 </html>

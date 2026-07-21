@@ -66,45 +66,7 @@
   <link rel="preconnect" href="https://signals.gitdealflow.com" crossorigin>
   <link rel="preconnect" href="https://eu.i.posthog.com" crossorigin>
   <link rel="stylesheet" href="/styles.css">
-  <style>
-    .mobile-cta-stack > * { width: 100%; }
-    .mobile-card, .mobile-step-card { transition: border-color 120ms ease, transform 120ms ease; }
-    .mobile-card:hover, .mobile-step-card:hover { border-color: rgba(14, 165, 233, 0.5); }
-    .mobile-sticky-cta { display: none; }
-    .stack-row { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; padding: 0.85rem 0; border-bottom: 1px dashed rgba(71, 85, 105, 0.5); }
-    .stack-row:last-child { border-bottom: 0; }
-    .stack-row .val { color: #94a3b8; font-variant-numeric: tabular-nums; white-space: nowrap; }
-    @media (min-width: 640px) { .mobile-cta-stack > * { width: auto; } }
-    @media (max-width: 639px) {
-      html { scroll-padding-top: 5rem; }
-      body { padding-bottom: 6rem; }
-      .mobile-compact-header { padding-top: 0.75rem; padding-bottom: 0.75rem; }
-      .mobile-hero-wrap { padding-left: 1rem; padding-right: 1rem; padding-top: 4rem; padding-bottom: 4rem; }
-      .mobile-hero-title { font-size: 2rem; line-height: 1.1; }
-      .mobile-hero-copy { font-size: 1rem; line-height: 1.65; }
-      .mobile-section-pad { padding-left: 1rem; padding-right: 1rem; }
-      .mobile-card-pad { padding: 1.25rem; }
-      .mobile-stat-grid { gap: 1rem; }
-      .mobile-grid-gap { gap: 1rem; }
-      .stack-row { font-size: 0.95rem; }
-      .mobile-cta-stack .btn,
-      .mobile-form-stack .btn {
-        white-space: normal; text-align: center; line-height: 1.35;
-        padding-left: 1rem; padding-right: 1rem;
-      }
-      .mobile-sticky-cta {
-        position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; display: block;
-        padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom));
-        background: rgba(2, 6, 23, 0.94); backdrop-filter: blur(12px);
-        border-top: 1px solid rgba(71, 85, 105, 0.7);
-      }
-      .mobile-sticky-cta .inner { display: flex; align-items: center; gap: 0.75rem; max-width: 28rem; margin: 0 auto; }
-      .mobile-sticky-cta .meta { flex: 1; min-width: 0; }
-      .mobile-sticky-cta .meta strong { display: block; color: #fff; font-size: 0.95rem; line-height: 1.1; }
-      .mobile-sticky-cta .meta span { display: block; color: #94a3b8; font-size: 0.72rem; margin-top: 0.1rem; }
-      .mobile-sticky-cta .btn { white-space: nowrap; padding-left: 1rem; padding-right: 1rem; }
-    }
-  </style>
+
   <meta name="theme-color" content="#0f172a" />
   <meta name="color-scheme" content="dark" />
   <link rel="manifest" href="/manifest.webmanifest" />
@@ -118,7 +80,7 @@
     ]
   }
   </script>
-<!-- Traffic-Readiness JSON-LD org+website schema -->
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -146,10 +108,10 @@
   ]
 }
 </script>
-<!-- Traffic-Readiness JSON-LD org+website schema -->
+
 <link rel="stylesheet" href="/ux.css">
     <script src="/ux.js" defer></script>
-  </head>
+  <link rel="stylesheet" href="/inline.css"></head>
 <body class="bg-dark-900 text-gray-100 font-sans antialiased">
   <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[60] focus:px-4 focus:py-2 focus:bg-dark-800 focus:text-white focus:rounded-lg">Skip to main content</a>
   <header class="relative sticky top-0 z-50 border-b border-gray-800 bg-dark-900/95 backdrop-blur">
@@ -181,7 +143,7 @@
   </header>
 
   <main id="main-content">
-    <!-- ============ HERO · HOOK + offer in view + first CTA ============ -->
+
     <section class="relative overflow-hidden">
       <div class="absolute inset-0 bg-gradient-to-br from-dark-900 via-dark-800 to-brand-900 opacity-80"></div>
       <div class="mobile-hero-wrap relative max-w-4xl mx-auto px-4 sm:px-6 py-16 md:py-28 text-center">
@@ -200,7 +162,6 @@
       </div>
     </section>
 
-    <!-- ============ KEPT PROMISE · the June 30 deadline held — that's the trust asset ============ -->
     <section class="bg-dark-800 py-6 border-y border-gray-800" data-deadline-root>
       <div class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 text-center" data-deadline-band>
         <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-2">A kept promise beats a countdown</p>
@@ -209,7 +170,6 @@
       </div>
     </section>
 
-    <!-- ============ EPIPHANY BRIDGE · the origin aha (attractive character) ============ -->
     <section class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 py-12 md:py-16">
       <div class="mobile-card mobile-card-pad rounded-2xl border border-sky-500/30 bg-sky-500/10 p-8 md:p-10 text-left">
         <div class="flex flex-col sm:flex-row items-center sm:items-center gap-4 mb-6 text-center sm:text-left">
@@ -230,7 +190,6 @@
       </div>
     </section>
 
-    <!-- ============ BIG DOMINO · the one belief everything rests on ============ -->
     <section class="bg-dark-800 py-14 md:py-16 border-y border-gray-800">
       <div class="mobile-section-pad max-w-3xl mx-auto px-4 sm:px-6 text-center">
         <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-3">The only thing you have to believe</p>
@@ -239,7 +198,6 @@
       </div>
     </section>
 
-    <!-- ============ 3 SECRETS · break the false beliefs ============ -->
     <section class="mobile-section-pad max-w-5xl mx-auto px-4 sm:px-6 py-16 md:py-20">
       <p class="text-center text-brand-500 text-xs font-semibold uppercase tracking-wider mb-3">The three reasons people hesitate &mdash; and why each one doesn't hold</p>
       <h2 class="text-center text-3xl font-bold mb-10">You've probably already thought one of these.</h2>
@@ -259,7 +217,6 @@
       </div>
     </section>
 
-    <!-- ============ THE STACK · offer with value anchoring, price revealed last ============ -->
     <section class="bg-dark-800 py-16 md:py-20 border-y border-gray-800">
       <div class="mobile-section-pad max-w-3xl mx-auto px-4 sm:px-6">
         <p class="text-center text-brand-500 text-xs font-semibold uppercase tracking-wider mb-3">Everything you get every week</p>
@@ -306,7 +263,6 @@
       </div>
     </section>
 
-    <!-- ============ PROOF · real, verifiable credibility (no invented quotes) ============ -->
     <section class="mobile-section-pad max-w-5xl mx-auto px-4 sm:px-6 py-16 md:py-20">
       <p class="text-center text-brand-500 text-xs font-semibold uppercase tracking-wider mb-3">You don't have to take my word for any of it</p>
       <h2 class="text-center text-3xl font-bold mb-10">The proof is public before the product asks for trust.</h2>
@@ -324,7 +280,7 @@
           <p class="text-gray-400 text-sm leading-relaxed">False-positive rate &mdash; measured and published, not buried. Every weekly pick is graded <a href="https://signals.gitdealflow.com/scorecard" class="text-brand-500 underline">in public on the scorecard</a>, Hit or Miss, at 60 and 90 days.</p>
         </div>
       </div>
-      <!-- Role-matched walkthroughs — illustrative composites, NOT testimonials (honest by design) -->
+
       <div class="mb-12">
         <p class="text-center text-gray-300 text-lg leading-relaxed max-w-2xl mx-auto mb-6">Want to see it work in your seat, not mine? Step-by-step walkthroughs by role &mdash; illustrative composites, not customer quotes &mdash; showing exactly how the field gets used:</p>
         <div class="grid md:grid-cols-3 gap-6 mobile-grid-gap">
@@ -347,22 +303,14 @@
         <a href="/report" class="btn btn-secondary btn-md w-full sm:w-auto">See a sample issue</a>
         <a href="https://signals.gitdealflow.com" class="btn btn-secondary btn-md w-full sm:w-auto">Browse the live signal</a>
       </div>
-      <!-- Honest social proof: NO invented quotes — that's the brand. This band turns
-           the absence of testimonials into a trust signal. When you have a REAL,
-           attributed founding-member quote, uncomment the <figure> slot below and fill it. -->
+
       <div class="mobile-card mobile-card-pad rounded-2xl border border-gray-700 bg-dark-900/60 p-8 md:p-10 mt-12 max-w-3xl mx-auto text-center">
         <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-3">Why there are no testimonials on this page</p>
         <p class="text-gray-300 text-lg leading-relaxed">I could write five glowing quotes and sign them with initials. I won't &mdash; you can't check those, and checking is the entire point. So instead of asking you to trust strangers, I hand you what you can verify yourself: the methodology on SSRN, the open dataset with a DOI, a full sample issue, and the live signal surface. When founding members go on the record, their words land right here &mdash; named, dated, real. Until then, the work is the proof.</p>
-        <!-- REAL-QUOTE SLOT — uncomment and fill ONLY with an attributed quote you have permission to publish:
-        <figure class="mt-8 border-t border-gray-700 pt-8">
-          <blockquote class="text-gray-200 text-lg leading-relaxed">&ldquo;Real quote here.&rdquo;</blockquote>
-          <figcaption class="text-gray-400 text-sm mt-3">&mdash; Real Name, Role, Firm</figcaption>
-        </figure>
-        -->
+
       </div>
     </section>
 
-    <!-- ============ RISK REVERSAL · remove the "I'll come back" exit ============ -->
     <section class="bg-dark-800 py-16 md:py-20 border-y border-gray-800">
       <div class="mobile-section-pad max-w-3xl mx-auto px-4 sm:px-6">
         <div class="mobile-card mobile-card-pad rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-8 md:p-10 text-center">
@@ -375,7 +323,6 @@
       </div>
     </section>
 
-    <!-- ============ QUALIFY · takeaway posture (kept — it's the brand) ============ -->
     <section class="mobile-section-pad max-w-5xl mx-auto px-4 sm:px-6 py-16 md:py-20">
       <div class="grid md:grid-cols-2 gap-8 mobile-grid-gap">
         <div class="mobile-card mobile-card-pad rounded-xl border border-gray-700 bg-dark-800 p-8">
@@ -398,7 +345,6 @@
       </div>
     </section>
 
-    <!-- ============ FAQ · objection handling ============ -->
     <section class="bg-dark-800 py-16 md:py-20 border-y border-gray-800">
       <div class="mobile-section-pad max-w-3xl mx-auto px-4 sm:px-6">
         <h2 class="text-center text-3xl font-bold mb-10">The questions I'd ask before paying.</h2>
@@ -439,7 +385,6 @@
       </div>
     </section>
 
-    <!-- ============ WHAT HAPPENS IF YOU DO NOTHING (DotCom Secrets Ch 21) ============ -->
     <section class="bg-dark-800 py-12 border-y border-gray-800">
       <div class="max-w-2xl mx-auto px-4 sm:px-6 text-center">
         <div class="rounded-xl border border-gray-700 bg-dark-900 p-6 md:p-7">
@@ -449,15 +394,12 @@
       </div>
     </section>
 
-    <!-- ============ CHECKOUT · the final ask (page ends on the CTA, not the exit) ============ -->
     <section id="checkout" class="max-w-3xl mx-auto px-6 py-20 text-center">
       <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-3">Start Dashboard</p>
       <h2 class="text-3xl md:text-4xl font-bold mb-4">The full field, every week, for €49/mo.</h2>
       <p class="text-gray-300 max-w-xl mx-auto mb-5">Picture next Monday. Someone in the room asks what's worth a look &mdash; and you put a name on the table nobody's mentioned yet, with a one-line reason it's moving, weeks before it lands in anyone else's inbox. You look early, not technical. That's the whole job of the field below.</p>
       <p class="text-gray-300 max-w-xl mx-auto mb-8">60+ ranked startups across 20 sectors &middot; plain-English signal &middot; sortable to your thesis &middot; methodology and dataset included &middot; cancel in one click.</p>
 
-      <!-- Brunson DotCom Ch 14 — Order bump (AOV optimization). Unchecked by
-           default: the buyer opts in deliberately, the CTA label stays honest. -->
       <div id="dash-order-bump" class="max-w-lg mx-auto mb-6 rounded-xl border-2 border-brand-500/40 bg-brand-900/20 p-5 text-left transition-all duration-200" data-bump-container>
         <label for="bump-toggle" class="flex items-start gap-3 cursor-pointer select-none" style="cursor:pointer">
           <input type="checkbox" id="bump-toggle" class="mt-1 w-5 h-5 rounded border-gray-500 text-brand-500 focus:ring-brand-500 accent-brand-500 shrink-0" data-bump-input>
@@ -476,13 +418,11 @@
       <button type="button" data-checkout class="btn btn-cta btn-lg w-full sm:w-auto"><span data-cta-label>Start Dashboard &mdash; €49/mo</span> &rarr;</button>
       <p id="checkout-msg" role="status" class="text-gray-400 text-sm mt-4">One click to secure Stripe checkout &middot; enter your email there &middot; €49/mo &middot; cancel anytime</p>
 
-      <!-- Canonical guarantee — same promise on every paid rung -->
       <div class="max-w-lg mx-auto mt-6 rounded-xl border border-emerald-500/40 bg-emerald-500/10 p-5 text-left">
         <p class="text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-2">30-day Signal-or-It's-Free</p>
         <p class="text-gray-200 leading-relaxed">Any paid rung, 30 days, email me, every cent back. No forms, no survey.</p>
       </div>
 
-      <!-- Inline safety-net capture: the free rung for buyers who aren't ready -->
       <div class="max-w-lg mx-auto mt-10 rounded-xl border border-gray-700 bg-dark-800 p-6 text-left">
         <p class="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-2">Still deciding?</p>
         <p class="text-gray-300 text-sm leading-relaxed mb-4">Get the free Sunday email &mdash; five names, no card. Judge the signal before you pay for the field.</p>
@@ -496,7 +436,6 @@
     </section>
   </main>
 
-  <!-- Exit-intent: downsell to the free rung instead of losing the visitor -->
   <div id="exit-modal" class="hidden fixed inset-0 z-[70] items-center justify-center px-4" role="dialog" aria-modal="true" aria-labelledby="exit-title">
     <div id="exit-backdrop" class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
     <div class="relative w-full max-w-lg rounded-2xl border border-signal-500/40 bg-dark-900 p-6 md:p-8 shadow-2xl">
@@ -513,7 +452,6 @@
     </div>
   </div>
 
-  <!-- Mobile sticky CTA -->
   <div class="mobile-sticky-cta" aria-hidden="false">
     <div class="inner">
       <div class="meta">
@@ -804,7 +742,6 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'&&t.getAttrib
   </script>
   <script>document.addEventListener('pointerdown',function(e){if(e.target&&e.target.closest&&e.target.closest('[data-checkout]')&&!window.__gdfWarm){window.__gdfWarm=1;try{fetch('https://signals.gitdealflow.com/api/health.json',{mode:'no-cors'});}catch(_){}}},{passive:true,capture:true});</script>
 
-<!-- BRUNSON TRUST BAR — idempotency:trust-bar-v1 -->
 <section class="brunson-trust-bar" style="background:linear-gradient(135deg, #0f172a, #1e293b);color:#e8eaed;padding:40px 24px;margin:60px 0 0;border-top:3px solid #00d4aa;text-align:center;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
   <div style="max-width:900px;margin:0 auto">
     <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:28px;margin-bottom:28px">
@@ -818,6 +755,6 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'&&t.getAttrib
     <p style="margin-top:18px;font-size:.78rem;color:#6b7178">🛡️ Verify the claim in three clicks or you do not pay. Founding price locked.</p>
   </div>
 </section>
-<!-- /BRUNSON TRUST BAR -->
+
 </body>
 </html>

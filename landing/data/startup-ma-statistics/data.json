@@ -1,0 +1,47 @@
+[
+  {
+    "label": "Global startup M&A deal volume (2025)",
+    "value": "~8,400 deals",
+    "source": "Crunchbase Global M&A Report 2025"
+  },
+  {
+    "label": "Median acquisition price (seed-stage startups)",
+    "value": "$12M",
+    "source": "PitchBook-NVCA Venture Monitor Q4 2025"
+  },
+  {
+    "label": "Median acquisition price (Series A startups)",
+    "value": "$45M",
+    "source": "PitchBook-NVCA Venture Monitor Q4 2025"
+  },
+  {
+    "label": "Median time from founding to exit",
+    "value": "7.2 years",
+    "source": "PitchBook Venture-backed Exit Report 2025"
+  },
+  {
+    "label": "% of exits that are acquisitions (vs IPOs)",
+    "value": "91%",
+    "source": "PitchBook-NVCA Venture Monitor Q4 2025"
+  },
+  {
+    "label": "Median revenue multiple at acquisition (SaaS)",
+    "value": "8.4x",
+    "source": "Software Equity Group M&A Report 2025"
+  },
+  {
+    "label": "Tech acquirer share of total M&A volume",
+    "value": "38%",
+    "source": "CB Insights Tech M&A Report 2025"
+  },
+  {
+    "label": "Share of acquisitions under $100M",
+    "value": "72%",
+    "source": "PitchBook M&A Report 2025"
+  },
+  {
+    "label": "Average deal due diligence period",
+    "value": "90 days",
+    "source": "DealRoom M&A Process Survey 2025"
+  }
+]

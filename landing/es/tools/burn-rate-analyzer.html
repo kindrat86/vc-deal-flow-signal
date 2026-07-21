@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Burn Rate Analyzer — Net Burn, Growth Projection & Efficiency | GitDealFlow</title>
+    <link rel="alternate" hreflang="en" href="https://gitdealflow.com/tools/burn-rate-analyzer">
+    <link rel="alternate" hreflang="es" href="https://gitdealflow.com/es/tools/burn-rate-analyzer">
+    <link rel="alternate" hreflang="de" href="https://gitdealflow.com/de/tools/burn-rate-analyzer">
+    <link rel="alternate" hreflang="x-default" href="https://gitdealflow.com/tools/burn-rate-analyzer"><meta name="description" content="Free startup burn rate analyzer. Enter MRR, churn, and monthly expenses to see your true net burn, growth trajectory, and 12-month cash projection. Spot the burn multiple and Magic Number that VCs actually look at." />
+<meta name="author" content="GitDealFlow" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://gitdealflow.com/es/tools/burn-rate-analyzer" />
+<link rel="manifest" href="/site.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="GitDealFlow">
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="GitDealFlow" />
+<meta property="og:title" content="Burn Rate Analyzer — Net Burn, Growth Projection & Efficiency | GitDealFlow" />
+<meta property="og:description" content="Free startup burn rate analyzer. Enter MRR, churn, and monthly expenses to see your true net burn, growth trajectory, and 12-month cash projection. Spot the burn multiple and Magic Number that VCs actually look at." />
+<meta property="og:url" content="https://gitdealflow.com/es/tools/burn-rate-analyzer" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<style>
+  :root { --bg:#0f172a; --bg-card:#1e293b; --bg-input:#0f1d36; --text:#e2e8f0; --text-muted:#94a3b8; --accent:#8b5cf6; --accent-hover:#a78bfa; --accent-dim:rgba(139,92,246,0.15); --success:#10b981; --warning:#f59e0b; --danger:#ef4444; --border:#334155; --radius:12px; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:var(--bg); color:var(--text); line-height:1.6; min-height:100vh; -webkit-font-smoothing:antialiased; }
+  .container { max-width:960px; margin:0 auto; padding:24px 20px 80px; }
+  .header { text-align:center; margin-bottom:32px; }
+  .header h1 { font-size:clamp(1.75rem,4vw,2.5rem); font-weight:700; background:linear-gradient(135deg,#a78bfa,#8b5cf6); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:12px; line-height:1.2; }
+  .header p { color:var(--text-muted); font-size:1.05rem; max-width:660px; margin:0 auto; }
+  .card { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:28px; margin-bottom:24px; }
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .form-group { margin-bottom:20px; }
+  .form-group label { display:block; font-weight:600; margin-bottom:8px; font-size:0.95rem; }
+  .form-group .hint { color:var(--text-muted); font-size:0.85rem; font-weight:400; margin-top:4px; }
+  .input-wrap { position:relative; }
+  .input-wrap::before { content:"$"; position:absolute; left:14px; top:50%; transform:translateY(-50%); color:var(--text-muted); font-weight:600; }
+  .input-wrap input { padding-left:30px; }
+  .input-wrap.pct::before { content:"%"; }
+  .input-wrap.pct input { padding-left:28px; }
+  input[type="number"] { width:100%; background:var(--bg-input); border:1px solid var(--border); color:var(--text); padding:12px 16px; border-radius:8px; font-size:1rem; font-family:inherit; transition:border-color 0.15s, box-shadow 0.15s; }
+  input[type="number"]:focus { outline:none; border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-dim); }
+  .btn { display:inline-block; background:var(--accent); color:white; border:none; padding:14px 32px; border-radius:8px; font-size:1rem; font-weight:600; cursor:pointer; font-family:inherit; transition:background 0.15s, transform 0.05s; width:100%; }
+  .btn:hover { background:var(--accent-hover); }
+  .btn:active { transform:translateY(1px); }
+  .results { display:none; }
+  .results.show { display:block; animation:fade 0.3s ease; }
+  @keyframes fade { from{opacity:0;transform:translateY(8px);} to{opacity:1;transform:translateY(0);} }
+  .stat-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:14px; margin-bottom:20px; }
+  .stat { background:var(--bg-input); padding:16px; border-radius:8px; border-left:3px solid var(--accent); }
+  .stat.good { border-left-color:var(--success); }
+  .stat.warn { border-left-color:var(--warning); }
+  .stat.bad { border-left-color:var(--danger); }
+  .stat .label { color:var(--text-muted); font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em; }
+  .stat .value { font-size:1.4rem; font-weight:700; margin-top:4px; }
+  .stat .sub { color:var(--text-muted); font-size:0.78rem; margin-top:2px; }
+  .chart-card { padding:24px; }
+  .chart-area { height:200px; background:var(--bg-input); border-radius:8px; position:relative; overflow:hidden; margin-top:12px; }
+  .chart-bars { display:flex; align-items:flex-end; justify-content:space-between; height:100%; padding:0 8px 0 8px; gap:4px; }
+  .chart-col { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%; gap:4px; }
+  .chart-col .bar { width:100%; max-width:32px; border-radius:4px 4px 0 0; transition:height 0.6s ease; min-height:2px; }
+  .chart-col .lbl { font-size:0.65rem; color:var(--text-muted); }
+  .chart-legend { display:flex; gap:16px; margin-top:12px; font-size:0.85rem; color:var(--text-muted); flex-wrap:wrap; }
+  .chart-legend span { display:inline-flex; align-items:center; gap:6px; }
+  .chart-legend i { width:10px; height:10px; border-radius:2px; display:inline-block; }
+  .insight { background:var(--bg-input); border-radius:8px; padding:18px; margin-top:16px; border-left:3px solid var(--accent); }
+  .insight h4 { margin-bottom:8px; }
+  .insight p { color:var(--text-muted); font-size:0.92rem; }
+  .faq details { border-bottom:1px solid var(--border); padding:14px 0; }
+  .faq summary { cursor:pointer; font-weight:600; font-size:1rem; list-style:none; display:flex; justify-content:space-between; align-items:center; }
+  .faq summary::after { content:"+"; font-size:1.4rem; color:var(--accent); font-weight:300; }
+  .faq details[open] summary::after { content:"−"; }
+  .faq summary::-webkit-details-marker { display:none; }
+  .faq p { color:var(--text-muted); margin-top:10px; font-size:0.95rem; }
+  .footer { text-align:center; padding:32px 0 0; border-top:1px solid var(--border); margin-top:40px; color:var(--text-muted); font-size:0.9rem; }
+  .footer a { color:var(--accent); text-decoration:none; font-weight:600; }
+  .footer a:hover { text-decoration:underline; }
+  .back-link { display:inline-block; margin-bottom:20px; color:var(--text-muted); text-decoration:none; font-size:0.9rem; }
+  .back-link:hover { color:var(--accent); }
+  @media (max-width:600px) { .form-row { grid-template-columns:1fr; } .chart-col .lbl { font-size:0.55rem; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <a href="/tools/" class="back-link">← All Tools</a>
+  <div class="header">
+    <h1>Burn Rate Analyzer</h1>
+    <p>See your true net burn and what it means for the next 12 months. Enter MRR, churn, and monthly expenses — we'll project your cash trajectory, burn multiple, and the SaaS Magic Number that investors care about.</p>
+  </div>
+
+  <div class="card">
+    <div class="form-row">
+      <div class="form-group">
+        <label for="mrr">Current MRR</label>
+        <div class="input-wrap"><input type="number" id="mrr" min="0" step="500" value="25000" /></div>
+        <div class="hint">Monthly recurring revenue this month.</div>
+      </div>
+      <div class="form-group">
+        <label for="prevMrr">MRR Last Month</label>
+        <div class="input-wrap"><input type="number" id="prevMrr" min="0" step="500" value="21000" /></div>
+        <div class="hint">Used to calculate your real growth rate.</div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="churn">Monthly Churn Rate</label>
+        <div class="input-wrap pct"><input type="number" id="churn" min="0" max="50" step="0.1" value="3" /></div>
+        <div class="hint">Percentage of MRR lost to cancellations each month.</div>
+      </div>
+      <div class="form-group">
+        <label for="expenses">Monthly Operating Expenses</label>
+        <div class="input-wrap"><input type="number" id="expenses" min="0" step="500" value="60000" /></div>
+        <div class="hint">Salaries, infra, tools, marketing — total monthly spend.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="cash">Cash on Hand</label>
+      <div class="input-wrap"><input type="number" id="cash" min="0" step="10000" value="800000" /></div>
+      <div class="hint">Used for the 12-month cash projection.</div>
+    </div>
+    <button class="btn" onclick="analyze()">Analyze Burn Rate</button>
+  </div>
+
+  <div id="results" class="results">
+    <div class="card">
+      <div class="stat-grid">
+        <div class="stat" id="netBurnStat">
+          <div class="label">Net Burn</div>
+          <div class="value" id="netBurn">—</div>
+          <div class="sub" id="netBurnSub">—</div>
+        </div>
+        <div class="stat" id="growthStat">
+          <div class="label">MRR Growth</div>
+          <div class="value" id="growth">—</div>
+          <div class="sub" id="growthSub">—</div>
+        </div>
+        <div class="stat" id="burnMultStat">
+          <div class="label">Burn Multiple</div>
+          <div class="value" id="burnMultiple">—</div>
+          <div class="sub">Net burn ÷ net new ARR</div>
+        </div>
+        <div class="stat" id="magicStat">
+          <div class="label">Magic Number</div>
+          <div class="value" id="magicNumber">—</div>
+          <div class="sub">ARR growth ÷ S&amp;M spend</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card chart-card">
+      <h4>12-Month Cash Projection</h4>
+      <div class="chart-area">
+        <div class="chart-bars" id="cashChart"></div>
+      </div>
+      <div class="chart-legend">
+        <span><i style="background:var(--accent);"></i> Cash remaining</span>
+        <span><i style="background:var(--success);"></i> MRR</span>
+        <span style="margin-left:auto;" id="cashOutLegend"></span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="insight" id="insightBox">
+        <h4>What this means</h4>
+        <p id="insightText">—</p>
+      </div>
+      <div class="stat-grid" style="margin-top:16px;">
+        <div class="stat"><div class="label">Gross Burn</div><div class="value" id="grossBurn">—</div></div>
+        <div class="stat"><div class="label">Net New MRR/mo</div><div class="value" id="netNewMrr">—</div></div>
+        <div class="stat"><div class="label">Runway</div><div class="value" id="runway">—</div></div>
+        <div class="stat"><div class="label">Break-even MRR</div><div class="value" id="breakEven">—</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card faq">
+    <h3 style="margin-bottom:8px;">Frequently Asked Questions</h3>
+    <details>
+      <summary>What is the burn multiple and why do VCs care?</summary>
+      <p>Burn Multiple = Net Burn ÷ Net New ARR. It measures capital efficiency — how many dollars you burn for each dollar of new recurring revenue. David Sacks popularized it in 2020. Under 1.0 is exceptional, 1–1.5 is good, 2+ is a red flag, 3+ means you're burning cash faster than you're growing.</p>
+    </details>
+    <details>
+      <summary>What's a good SaaS Magic Number?</summary>
+      <p>Magic Number = (Quarterly ARR growth × 4) ÷ (Sales &amp; Marketing spend over the prior quarter). Above 1.0 means you should pour more fuel on growth; 0.5–1.0 is healthy; below 0.5 suggests your sales engine is inefficient. This tool estimates an annualized version.</p>
+    </details>
+    <details>
+      <summary>What counts as "net burn"?</summary>
+      <p>Net burn = total monthly operating expenses (gross burn) minus recognized revenue. If you spend $60k/mo and collect $25k MRR, your net burn is $35k/mo. That's the rate at which cash actually leaves the bank.</p>
+    </details>
+  </div>
+
+  <div class="footer">
+    <p>Powered by <a href="https://gitdealflow.com/">GitDealFlow</a> — see which startups are accelerating on GitHub 21–47 days before the round.</p>
+  </div>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"WebApplication",
+      "name":"Burn Rate Analyzer",
+      "url":"https://gitdealflow.com/es/tools/burn-rate-analyzer.html",
+      "applicationCategory":"FinanceApplication",
+      "operatingSystem":"Any",
+      "browserRequirements":"Requires JavaScript",
+      "description":"Analyze startup burn rate, net burn, burn multiple, Magic Number, and 12-month cash projection from MRR, churn, and expenses.",
+      "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
+      "publisher":{"@type":"Organization","name":"GitDealFlow","url":"https://gitdealflow.com"}
+    },
+    {
+      "@type":"FAQPage",
+      "mainEntity":[
+        {"@type":"Question","name":"What is the burn multiple?","acceptedAnswer":{"@type":"Answer","text":"Burn Multiple = Net Burn divided by Net New ARR. Under 1.0 is exceptional, 1-1.5 is good, 2+ is a red flag. It measures capital efficiency."}},
+        {"@type":"Question","name":"What is a good SaaS Magic Number?","acceptedAnswer":{"@type":"Answer","text":"Above 1.0 means pour more fuel on growth. 0.5-1.0 is healthy. Below 0.5 suggests your sales engine is inefficient."}},
+        {"@type":"Question","name":"What counts as net burn?","acceptedAnswer":{"@type":"Answer","text":"Net burn = total monthly operating expenses minus recognized revenue. Spend $60k, collect $25k MRR, net burn is $35k/mo."}}
+      ]
+    }
+  ]
+}
+</script>
+
+<script>
+function fmtMoney(n) {
+  const abs = Math.abs(n);
+  if (abs >= 1e6) return "$" + (n/1e6).toFixed(2) + "M";
+  if (abs >= 1e3) return "$" + (n/1e3).toFixed(1) + "k";
+  return "$" + n.toFixed(0);
+}
+function fmtPct(n) { return (n*100).toFixed(1) + "%"; }
+
+function analyze() {
+  const mrr = parseFloat(document.getElementById("mrr").value) || 0;
+  const prevMrr = parseFloat(document.getElementById("prevMrr").value) || 0;
+  const churnPct = parseFloat(document.getElementById("churn").value) || 0;
+  const expenses = parseFloat(document.getElementById("expenses").value) || 0;
+  const cash = parseFloat(document.getElementById("cash").value) || 0;
+
+  if (mrr <= 0 && expenses <= 0) { alert("Please enter your MRR and monthly expenses."); return; }
+
+  const churnRate = churnPct / 100;
+  const grossBurn = expenses;
+  const netBurn = Math.max(0, expenses - mrr);
+  const growthAbs = mrr - prevMrr;
+  const growthRate = prevMrr > 0 ? growthAbs / prevMrr : 0;
+  const netNewMrr = growthAbs; // signed
+  const netNewArr = netNewMrr * 12;
+  const burnMultiple = netNewArr > 0 ? (netBurn * 12) / netNewArr : null;
+  // Estimated Magic Number: assume S&M ~ 40% of expenses
+  const smSpend = expenses * 0.4;
+  const arrGrowth = netNewArr; // annualized
+  const magicNumber = smSpend > 0 ? arrGrowth / (smSpend * 12) : null;
+
+  // Stat cards
+  const netBurnEl = document.getElementById("netBurnStat");
+  netBurnEl.className = "stat " + (netBurn === 0 ? "good" : netBurn <= expenses * 0.4 ? "warn" : "bad");
+  document.getElementById("netBurn").textContent = fmtMoney(netBurn) + "/mo";
+  document.getElementById("netBurnSub").textContent = netBurn === 0 ? "Break-even" : "Cash leaving the bank";
+
+  const growthEl = document.getElementById("growthStat");
+  growthEl.className = "stat " + (growthRate >= 0.1 ? "good" : growthRate >= 0.03 ? "warn" : "bad");
+  document.getElementById("growth").textContent = fmtPct(growthRate);
+  document.getElementById("growthSub").textContent = growthRate >= 0.15 ? "Hypergrowth" : growthRate >= 0.08 ? "Strong" : growthRate >= 0.03 ? "Steady" : "Slow";
+
+  const bmEl = document.getElementById("burnMultStat");
+  let bmTier = "good";
+  if (burnMultiple === null) bmTier = "bad";
+  else if (burnMultiple > 2) bmTier = "bad";
+  else if (burnMultiple > 1.5) bmTier = "warn";
+  bmEl.className = "stat " + bmTier;
+  document.getElementById("burnMultiple").textContent = burnMultiple !== null ? burnMultiple.toFixed(2) : "n/a";
+
+  const magicEl = document.getElementById("magicStat");
+  let mnTier = "good";
+  if (magicNumber === null) mnTier = "bad";
+  else if (magicNumber < 0.5) mnTier = "bad";
+  else if (magicNumber < 0.75) mnTier = "warn";
+  magicEl.className = "stat " + mnTier;
+  document.getElementById("magicNumber").textContent = magicNumber !== null ? magicNumber.toFixed(2) : "n/a";
+
+  document.getElementById("grossBurn").textContent = fmtMoney(grossBurn) + "/mo";
+  document.getElementById("netNewMrr").textContent = (netNewMrr >= 0 ? "+" : "") + fmtMoney(netNewMrr);
+  const runway = netBurn > 0 ? (cash / netBurn) : Infinity;
+  document.getElementById("runway").textContent = isFinite(runway) ? runway.toFixed(1) + " mo" : "∞ (profitable)";
+  document.getElementById("breakEven").textContent = fmtMoney(expenses) + "/mo";
+
+  // 12-month projection
+  const months = 12;
+  let cashCurve = [cash];
+  let mrrCurve = [mrr];
+  let curCash = cash, curMrr = mrr;
+  let cashOutMonth = null;
+  // Assume growth rate continues but degrades 20%/year (decay)
+  for (let i = 1; i <= months; i++) {
+    const decay = Math.pow(0.95, i - 1);
+    const projectedGrowth = growthAbs * decay;
+    curMrr = Math.max(0, curMrr + projectedGrowth - curMrr * churnRate);
+    const projectedBurn = Math.max(0, expenses - curMrr);
+    curCash -= projectedBurn;
+    if (curCash <= 0 && cashOutMonth === null) cashOutMonth = i;
+    cashCurve.push(curCash);
+    mrrCurve.push(curMrr);
+  }
+  const maxVal = Math.max(...cashCurve, ...mrrCurve.map(v => v * 4), 1);
+  let chartHtml = "";
+  for (let i = 0; i <= months; i++) {
+    const cashH = Math.max(2, (Math.max(0, cashCurve[i]) / maxVal) * 100);
+    const mrrH = Math.max(2, (mrrCurve[i] / maxVal) * 100 * 4);
+    const isOut = cashCurve[i] <= 0;
+    chartHtml += '<div class="chart-col">';
+    chartHtml += '<div class="bar" style="height:' + mrrH + '%; background:var(--success); opacity:0.7;"></div>';
+    chartHtml += '<div class="bar" style="height:' + cashH + '%; background:' + (isOut ? "var(--danger)" : "var(--accent)") + ';"></div>';
+    chartHtml += '<div class="lbl">M' + i + '</div>';
+    chartHtml += '</div>';
+  }
+  document.getElementById("cashChart").innerHTML = chartHtml;
+  document.getElementById("cashOutLegend").innerHTML = cashOutMonth !== null ? '⚠️ Cash out at month ' + cashOutMonth : '✓ Cash positive through M12';
+
+  // Insight
+  let insight = "";
+  if (netBurn === 0) {
+    insight = "You're at break-even — every dollar of MRR growth drops straight to the bottom line. This is the moment to decide: bank the profit or reinvest aggressively into growth.";
+  } else if (burnMultiple !== null && burnMultiple < 1) {
+    insight = "Capital-efficient growth. Burn multiple of " + burnMultiple.toFixed(2) + " is excellent — you add new ARR faster than you burn. Keep the pedal down.";
+  } else if (burnMultiple !== null && burnMultiple < 2) {
+    insight = "Reasonable efficiency. Burn multiple of " + burnMultiple.toFixed(2) + " is in the acceptable range, but if growth slows the burn will look worse. Watch churn closely.";
+  } else if (burnMultiple !== null) {
+    insight = "Inefficient burn. Burn multiple of " + burnMultiple.toFixed(2) + " means you spend more than " + burnMultiple.toFixed(0) + "× each new ARR dollar. Fix CAC or cut spend before raising on these metrics.";
+  } else {
+    insight = "MRR is flat or shrinking. Focus on the underlying growth engine before worrying about burn efficiency — no amount of cost cutting fixes a product that isn't growing.";
+  }
+  if (cashOutMonth !== null && cashOutMonth <= 6) {
+    insight += " CRITICAL: at current trajectory you run out of cash in month " + cashOutMonth + ". Cut burn immediately and start a bridge round.";
+  }
+  document.getElementById("insightText").textContent = insight;
+
+  document.getElementById("results").classList.add("show");
+}
+</script>
+</body>
+</html>

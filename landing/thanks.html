@@ -10,187 +10,14 @@
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="GitDealFlow">
   <meta name="theme-color" content="#ffffff"><meta name="color-scheme" content="light">
   <link rel="stylesheet" href="/styles.css">
-  <style>
-    /* ====================================================================
-       /thanks — world-class UI layer (presentation only).
-       Every word, id, link, data-attribute and inline handler is unchanged.
-       The site ships a pre-built, purged styles.css with no build step on
-       deploy, so new Tailwind utilities can't compile — all new styling is
-       self-contained here, the same pattern the page already used.
-       ==================================================================== */
-    :root {
-      --signal-500: #ff6b1a;
-      --signal-400: #ff8c4d;
-      --brand-500:  #0ea5e9;
-      --brand-400:  #38bdf8;
-      --emerald:    #10b981;
-      --focus:      #ff8c4d;
-    }
 
-    /* ---- Atmosphere: layered backdrop instead of one flat fill ---- */
-    body.bg-dark-900 {
-      background-color: #0b1020;
-      background-image:
-        radial-gradient(58rem 40rem at 50% -16rem, rgba(255, 107, 26, 0.11), transparent 62%),
-        radial-gradient(48rem 38rem at 100% 4%, rgba(14, 165, 233, 0.08), transparent 56%),
-        radial-gradient(52rem 44rem at 0% 102%, rgba(14, 165, 233, 0.07), transparent 56%),
-        linear-gradient(180deg, #0b1020 0%, #0c1326 100%);
-      background-attachment: fixed;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-    }
-    ::selection { background: rgba(255, 107, 26, 0.30); color: #fff; }
-
-    /* ---- Typography: stop awkward wraps, tighten display type ---- */
-    h1, h2 { text-wrap: balance; }
-    p { text-wrap: pretty; }
-    #hero-title { letter-spacing: -0.03em; }
-    h2 { letter-spacing: -0.02em; }
-
-    /* ---- Header: hairline depth + readable blur ---- */
-    header { box-shadow: 0 1px 0 rgba(148, 163, 184, 0.06); }
-
-    /* ---- Keyboard accessibility: visible focus on every link ---- */
-    a:focus-visible {
-      outline: 2px solid var(--focus); outline-offset: 3px;
-      border-radius: 6px;
-    }
-
-    /* ---- Hero eyebrow → status pill with a live dot ---- */
-    .eyebrow-pill {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      padding: 0.32rem 0.72rem; border-radius: 999px;
-      background: rgba(14, 165, 233, 0.10);
-      border: 1px solid rgba(14, 165, 233, 0.32);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
-    }
-    .eyebrow-pill::before {
-      content: ""; width: 0.45rem; height: 0.45rem; border-radius: 999px;
-      background: var(--brand-400);
-      box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.16);
-    }
-
-    /* ---- Card surfaces: subtle top highlight + real elevation ---- */
-    .mobile-card, .support-card {
-      transition: border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
-    }
-    .mobile-card {
-      background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.028), rgba(255, 255, 255, 0));
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 24px 60px -38px rgba(0, 0, 0, 0.85);
-    }
-    @media (hover: hover) {
-      .mobile-card:hover {
-        transform: translateY(-3px);
-        border-color: rgba(14, 165, 233, 0.5);
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 32px 72px -34px rgba(0, 0, 0, 0.9);
-      }
-    }
-
-    /* ---- The OTO card: the page's centerpiece ---- */
-    .support-card {
-      position: relative; isolation: isolate;
-      border-color: rgba(255, 107, 26, 0.42) !important;
-      background:
-        radial-gradient(40rem 22rem at 50% -3rem, rgba(255, 107, 26, 0.12), transparent 70%),
-        linear-gradient(180deg, rgba(30, 41, 59, 0.55), rgba(13, 19, 35, 0.92)) !important;
-      box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.07),
-        0 44px 100px -54px rgba(255, 107, 26, 0.45),
-        0 34px 90px -46px rgba(0, 0, 0, 0.92);
-    }
-    .support-card img { box-shadow: 0 12px 34px -10px rgba(255, 107, 26, 0.5); }
-
-    /* .btn-secondary is now defined globally in input.css (compiled into styles.css) —
-       inline def removed to keep a single source of truth. */
-
-    /* ---- "What to do now" → quiet timeline rail ---- */
-    .step-list > div { position: relative; padding-left: 1.15rem; }
-    .step-list > div::before {
-      content: ""; position: absolute; left: 0; top: 0.2rem; bottom: 0.2rem;
-      width: 2px; border-radius: 2px;
-      background: linear-gradient(180deg, var(--brand-500), rgba(14, 165, 233, 0.12));
-    }
-
-    /* ---- Value stack: circular check chips + row rhythm ---- */
-    .value-stack > li { padding: 0.1rem 0; }
-    .value-stack > li > span:first-child {
-      flex: none; display: inline-flex; align-items: center; justify-content: center;
-      width: 1.55rem; height: 1.55rem; margin-top: 0.05rem;
-      border-radius: 999px; font-size: 0.82rem; line-height: 1;
-      color: var(--emerald);
-      background: rgba(16, 185, 129, 0.14);
-      box-shadow: inset 0 0 0 1px rgba(16, 185, 129, 0.4);
-    }
-
-    /* ---- Comparison + guarantee callouts ---- */
-    .compare-box {
-      background: linear-gradient(180deg, rgba(30, 41, 59, 0.92), rgba(15, 23, 42, 0.92)) !important;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
-    }
-    .guarantee-box {
-      background: rgba(16, 185, 129, 0.09) !important;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 24px 60px -46px rgba(16, 185, 129, 0.7);
-    }
-
-    /* ---- Price: let the rate carry the glow ---- */
-    .price-amount { text-shadow: 0 8px 32px rgba(255, 107, 26, 0.28); }
-
-    /* ---- Tasteful entrance (base stays visible if motion is off) ---- */
-    @keyframes thx-reveal { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
-    .reveal   { animation: thx-reveal 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; }
-    .reveal-2 { animation-delay: 0.09s; }
-    .reveal-3 { animation-delay: 0.18s; }
-
-    /* ====================================================================
-       Preserved mobile layout rules (+ a few refinements)
-       ==================================================================== */
-    .mobile-cta-stack > * { width: 100%; }
-    .mobile-sticky-cta { display: none; }
-    @media (min-width: 640px) { html { scroll-behavior: smooth; } .mobile-cta-stack > * { width: auto; } }
-    @media (max-width: 639px) {
-      html { scroll-padding-top: 5rem; }
-      body { padding-bottom: 6rem; }
-      .mobile-compact-header { padding-top: 0.75rem; padding-bottom: 0.75rem; }
-      .mobile-hero-wrap { padding-left: 1rem; padding-right: 1rem; padding-top: 4rem; padding-bottom: 4rem; }
-      .mobile-hero-title { font-size: 2rem; line-height: 1.1; }
-      .mobile-hero-copy { font-size: 1rem; line-height: 1.65; }
-      .mobile-main-pad { padding-left: 1rem; padding-right: 1rem; }
-      .mobile-section-pad { padding-left: 1rem; padding-right: 1rem; }
-      .mobile-card-pad { padding: 1.25rem; }
-      .mobile-grid-gap { gap: 1rem; }
-      .mobile-cta-stack .btn,
-      .btn-xl.w-full {
-        white-space: normal; text-align: center; line-height: 1.35;
-        padding-left: 1rem; padding-right: 1rem;
-      }
-      .mobile-sticky-cta {
-        position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; display: block;
-        padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom));
-        background: rgba(2, 6, 23, 0.94); backdrop-filter: blur(14px);
-        border-top: 1px solid rgba(71, 85, 105, 0.7);
-        box-shadow: 0 -18px 40px -28px rgba(0, 0, 0, 0.9);
-      }
-      .mobile-sticky-cta::before {
-        content: ""; position: absolute; top: -1px; left: 0; right: 0; height: 1px;
-        background: linear-gradient(90deg, transparent, rgba(255, 107, 26, 0.5), transparent);
-      }
-      .mobile-sticky-cta .inner { display: flex; align-items: center; gap: 0.75rem; max-width: 28rem; margin: 0 auto; }
-      .mobile-sticky-cta .meta { flex: 1; min-width: 0; }
-      .mobile-sticky-cta .meta strong { display: block; color: #fff; font-size: 0.95rem; line-height: 1.1; }
-      .mobile-sticky-cta .meta span { display: block; color: #94a3b8; font-size: 0.72rem; margin-top: 0.1rem; }
-      .mobile-sticky-cta .btn { white-space: nowrap; padding-left: 1rem; padding-right: 1rem; }
-    }
-
-    /* ---- Respect reduced-motion ---- */
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      .reveal, .reveal-2, .reveal-3 { animation: none !important; }
-      .mobile-card, .support-card { transition: none !important; }
-    }
-  </style>
-<!-- Traffic-Readiness JSON-LD org+website schema -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -218,10 +45,10 @@
   ]
 }
 </script>
-<!-- Traffic-Readiness JSON-LD org+website schema -->
+
 <link rel="stylesheet" href="/ux.css">
     <script src="/ux.js" defer></script>
-  </head>
+  <link rel="stylesheet" href="/inline.css"></head>
 <body class="bg-dark-900 text-gray-100 font-sans antialiased">
   <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[60] focus:px-4 focus:py-2 focus:bg-dark-800 focus:text-white focus:rounded-lg">Skip to main content</a>
   <header class="sticky top-0 z-50 border-b border-gray-800 bg-dark-900/95 backdrop-blur">
@@ -270,7 +97,7 @@
 
     <section id="oto" class="max-w-3xl mx-auto mt-16 mobile-section-pad scroll-mt-24">
       <div class="mobile-card-pad support-card rounded-3xl border border-signal-500/40 bg-dark-900 p-8 md:p-12">
-        <!-- Attractive character: keep the relationship going, first person -->
+
         <div class="flex flex-col sm:flex-row items-center gap-4 mb-6 text-center sm:text-left">
           <picture>
             <source srcset="/data-nerd.webp" type="image/webp">
@@ -282,7 +109,6 @@
           </div>
         </div>
 
-        <!-- OTO Script #21 · beats 1-3: confirm the wise decision -> epiphany (Big Domino) -> bridge to the offer -->
         <div class="space-y-4 text-gray-300 text-lg leading-relaxed mb-8">
           <p id="oto-p1">You just got on the free list, and I meant every word of it: five names every Sunday, free forever, no card. That email is already on its way. Getting on it was the right call &mdash; keep it even if you read nothing else on this page.</p>
           <p id="oto-p2">But I&apos;d be a bad nerd if I didn&apos;t tell you what I found building this. <strong class="text-white">Five names is a taste, not the field.</strong> The first week I ran the full read, the tool didn&apos;t flag five companies accelerating in my sectors &mdash; it flagged sixty-one. I mailed myself the best five and quietly sat on the rest. Two of the names I left off raised inside a month. I&apos;d already done the work to find them. I just hadn&apos;t given myself the whole board.</p>
@@ -323,7 +149,6 @@
         </div>
         <p class="text-center text-gray-500 text-sm mt-4">I&apos;ll carry your email over so you don&apos;t retype it. Secure checkout on Stripe &middot; cancel anytime.</p>
 
-        <!-- The graceful no: a soft decline that keeps the relationship warm -->
         <div class="mt-8 pt-6 border-t border-gray-800 text-center">
           <p class="text-gray-300 leading-relaxed mb-1">Not ready? That&apos;s genuinely fine.</p>
           <p class="text-gray-500 text-sm leading-relaxed max-w-xl mx-auto mb-3">Don&apos;t buy this if five names still covers your week. Buy it the week missing the right company would actually sting. Either way, I&apos;ll be in your inbox on Sunday &mdash; and I&apos;m not going anywhere.</p>
@@ -446,20 +271,20 @@
       })();
     })();
   </script>
-<!-- BRUNSON TRUST BAR — idempotency:trust-bar-v1 -->
+
 <section class="brunson-trust-bar" style="background:linear-gradient(135deg, #0f172a, #1e293b);color:#e8eaed;padding:40px 24px;margin:60px 0 0;border-top:3px solid #00d4aa;text-align:center;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
   <div style="max-width:900px;margin:0 auto">
     <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:28px;margin-bottom:28px">
       <div><span style="font-size:1.6rem;font-weight:700;color:#00d4aa">21–47</span><br><span style="font-size:.82rem;color:#94a3b8">Days earlier</span></div>
       <div><span style="font-size:1.6rem;font-weight:700;color:#00d4aa">47</span><br><span style="font-size:.82rem;color:#94a3b8">Days before deck</span></div>
       <div><span style="font-size:1.6rem;font-weight:700;color:#00d4aa">3</span><br><span style="font-size:.82rem;color:#94a3b8">Clicks to verify</span></div>
-      <div><span style="font-size:1.6rem;font-weight:700;color:#00d4aa">€5</span><br><span style="font-size:.82rem;color:#94a3b8">First teardown</span></div>
+      <div><span style="font-size:1.6rem;font-weight:700;color:#00d4aa">€1</span><br><span style="font-size:.82rem;color:#94a3b8">First teardown</span></div>
     </div>
     <p style="font-size:1.05rem;margin-bottom:24px;color:#cbd5e1">Every deal you hear about late already had a signal 3 weeks ago. Stop being last.</p>
     <a href="https://gitdealflow.com/#get-teardown" style="display:inline-block;background:linear-gradient(135deg,#00d4aa,#2deec0);color:#04130e;padding:14px 32px;border-radius:12px;font-weight:700;text-decoration:none;font-size:.95rem;box-shadow:0 8px 24px -10px rgba(0,212,170,.5)">Get a Teardown →</a>
     <p style="margin-top:18px;font-size:.78rem;color:#6b7178">🛡️ Verify the claim in three clicks or you do not pay. Founding price locked.</p>
   </div>
 </section>
-<!-- /BRUNSON TRUST BAR -->
+
 </body>
 </html>

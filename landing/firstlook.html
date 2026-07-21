@@ -66,41 +66,7 @@
   <link rel="preconnect" href="https://signals.gitdealflow.com" crossorigin>
   <link rel="preconnect" href="https://eu.i.posthog.com" crossorigin>
   <link rel="stylesheet" href="/styles.css">
-  <style>
-    .mobile-cta-stack > * { width: 100%; }
-    .mobile-card, .mobile-step-card { transition: border-color 120ms ease, transform 120ms ease; }
-    .mobile-card:hover, .mobile-step-card:hover { border-color: rgba(14, 165, 233, 0.5); }
-    .mobile-sticky-cta { display: none; }
-    @media (min-width: 640px) { .mobile-cta-stack > * { width: auto; } }
-    @media (max-width: 639px) {
-      html { scroll-padding-top: 5rem; }
-      body { padding-bottom: 6rem; }
-      .mobile-compact-header { padding-top: 0.75rem; padding-bottom: 0.75rem; }
-      .mobile-hero-wrap { padding-left: 1rem; padding-right: 1rem; padding-top: 4rem; padding-bottom: 4rem; }
-      .mobile-hero-title { font-size: 2rem; line-height: 1.1; }
-      .mobile-hero-copy { font-size: 1rem; line-height: 1.65; }
-      .mobile-section-pad { padding-left: 1rem; padding-right: 1rem; }
-      .mobile-card-pad { padding: 1.25rem; }
-      .mobile-stat-grid { gap: 1rem; }
-      .mobile-grid-gap { gap: 1rem; }
-      .mobile-cta-stack .btn,
-      .mobile-form-stack .btn {
-        white-space: normal; text-align: center; line-height: 1.35;
-        padding-left: 1rem; padding-right: 1rem;
-      }
-      .mobile-sticky-cta {
-        position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; display: block;
-        padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom));
-        background: rgba(2, 6, 23, 0.94); backdrop-filter: blur(12px);
-        border-top: 1px solid rgba(71, 85, 105, 0.7);
-      }
-      .mobile-sticky-cta .inner { display: flex; align-items: center; gap: 0.75rem; max-width: 28rem; margin: 0 auto; }
-      .mobile-sticky-cta .meta { flex: 1; min-width: 0; }
-      .mobile-sticky-cta .meta strong { display: block; color: #fff; font-size: 0.95rem; line-height: 1.1; }
-      .mobile-sticky-cta .meta span { display: block; color: #94a3b8; font-size: 0.72rem; margin-top: 0.1rem; }
-      .mobile-sticky-cta .btn { white-space: nowrap; padding-left: 1rem; padding-right: 1rem; }
-    }
-  </style>
+
   <meta name="theme-color" content="#0f172a" />
   <meta name="color-scheme" content="dark" />
   <link rel="manifest" href="/manifest.webmanifest" />
@@ -114,7 +80,7 @@
     ]
   }
   </script>
-<!-- Traffic-Readiness JSON-LD org+website schema -->
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -142,10 +108,10 @@
   ]
 }
 </script>
-<!-- Traffic-Readiness JSON-LD org+website schema -->
+
 <link rel="stylesheet" href="/ux.css">
     <script src="/ux.js" defer></script>
-  </head>
+  <link rel="stylesheet" href="/inline.css"></head>
 <body class="bg-dark-900 text-gray-100 font-sans antialiased">
   <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[60] focus:px-4 focus:py-2 focus:bg-dark-800 focus:text-white focus:rounded-lg">Skip to main content</a>
   <header class="relative sticky top-0 z-50 border-b border-gray-800 bg-dark-900/95 backdrop-blur">
@@ -217,8 +183,6 @@
         <p class="text-gray-300 text-lg leading-relaxed">That's the whole deal here. You don't read code — that's my job. Give me one sector and I'll spend the next day reading the public engineering activity across it, then hand you back a ranked shortlist in plain English — the kind of read you can take into a meeting and sound early, not technical. That's what a <strong class="text-white">First Mover</strong> does: reach the founder before the round, on a signal someone else already read for you. One thesis, one clean answer, while the question still has heat.</p>
       </div>
     </section>
-
-
 
     <section class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 py-4">
       <div class="mobile-card mobile-card-pad rounded-2xl border border-gray-700 bg-dark-900/60 p-8">
@@ -317,13 +281,11 @@
       </div>
     </section>
 
-    <!-- ======================== BRUNSON ORDER BUMP (Ch 18) — methodology vault ======================== -->
     <section id="checkout" class="max-w-3xl mx-auto px-6 py-20 text-center">
       <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-3">Checkout</p>
       <h2 class="text-3xl font-bold mb-4">Buy First Look</h2>
       <p class="text-gray-300 mb-8">One click to secure Stripe checkout &mdash; you'll enter your email and choose your sector there.</p>
 
-      <!-- Order bump: methodology vault (€19 add-on, Brunson Ch 18) -->
       <div id="fl-order-bump" class="max-w-lg mx-auto mb-6 rounded-xl border border-gray-600 bg-dark-800 p-4 text-left">
         <label for="bump-toggle" class="flex items-start gap-3 cursor-pointer select-none" style="cursor:pointer">
           <input type="checkbox" id="bump-toggle" class="mt-1 w-5 h-5 rounded border-gray-500 text-brand-500 focus:ring-brand-500 accent-brand-500 shrink-0">
@@ -338,7 +300,6 @@
       <p id="firstlook-msg" class="text-gray-500 text-sm mt-4">€7 once · secure checkout via Stripe</p>
     </section>
 
-    <!-- Inline free-email capture (above footer) -->
     <section class="mobile-section-pad max-w-3xl mx-auto px-4 sm:px-6 pb-8 text-center">
       <div class="rounded-2xl border border-gray-700 bg-dark-800 p-6 md:p-8">
         <h2 class="text-xl font-bold mb-2">Get the free Sunday email first</h2>
@@ -354,7 +315,6 @@
     </section>
   </main>
 
-  <!-- Mobile sticky CTA -->
   <div class="mobile-sticky-cta" aria-hidden="false">
     <div class="inner">
       <div class="meta">
@@ -365,7 +325,6 @@
     </div>
   </div>
 
-  <!-- Exit-intent email capture -->
   <div id="exit-modal" class="hidden fixed inset-0 z-[70] items-center justify-center px-4" role="dialog" aria-modal="true" aria-labelledby="exit-title">
     <div id="exit-backdrop" class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
     <div class="relative w-full max-w-lg rounded-2xl border border-signal-500/40 bg-dark-900 p-6 md:p-8 shadow-2xl">
@@ -620,10 +579,6 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'&&t.getAttrib
     })();
   </script>
 
-  <!-- Honest urgency only: real 24-hour turnaround + 14-day upgrade credit window toward Dashboard. No fake per-session countdown. -->
-
-
-<!-- BRUNSON TRUST BAR — idempotency:trust-bar-v1 -->
 <section class="brunson-trust-bar" style="background:linear-gradient(135deg, #0f172a, #1e293b);color:#e8eaed;padding:40px 24px;margin:60px 0 0;border-top:3px solid #00d4aa;text-align:center;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
   <div style="max-width:900px;margin:0 auto">
     <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:28px;margin-bottom:28px">
@@ -637,6 +592,6 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'&&t.getAttrib
     <p style="margin-top:18px;font-size:.78rem;color:#6b7178">🛡️ Verify the claim in three clicks or you do not pay. Founding price locked.</p>
   </div>
 </section>
-<!-- /BRUNSON TRUST BAR -->
+
 </body>
 </html>

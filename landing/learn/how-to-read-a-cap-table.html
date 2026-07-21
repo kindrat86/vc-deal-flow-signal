@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ffffff">
+<meta name="color-scheme" content="light">
+<title>How to Read a Cap Table Like a VC</title>
+<link rel="alternate" hreflang="en" href="https://gitdealflow.com/learn/how-to-read-a-cap-table">
+<link rel="alternate" hreflang="x-default" href="https://gitdealflow.com/learn/how-to-read-a-cap-table">
+<meta name="description" content="A cap table (capitalization table) shows who owns what in a startup. Here's how to read one like a VC — founders, investors, option pools, and dilution sce">
+<link rel="canonical" href="https://gitdealflow.com/learn/how-to-read-a-cap-table">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Read a Cap Table Like a VC">
+<meta property="og:description" content="A cap table (capitalization table) shows who owns what in a startup. Here's how to read one like a VC — founders, investors, option pools, and dilution sce">
+<meta property="og:url" content="https://gitdealflow.com/learn/how-to-read-a-cap-table">
+<meta property="og:site_name" content="GitDealFlow">
+<meta property="og:image" content="https://signals.gitdealflow.com/opengraph-image">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://signals.gitdealflow.com/opengraph-image">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What's a healthy cap table look like?","acceptedAnswer":{"@type":"Answer","text":"Founders: 50-70%, Option pool: 10-20%, Investors: 20-40% post-seed. Clean, no outstanding convertible instruments. GitDealFlow's momentum data helps justify better cap table terms."}},{"@type":"Question","name":"How often should founders update the cap table?","acceptedAnswer":{"@type":"Answer","text":"After every transaction: fundraise, option grant, option exercise, or conversion. A stale cap table is a legal and financial risk."}},{"@type":"Question","name":"What tools are used for cap table management?","acceptedAnswer":{"@type":"Answer","text":"Pulley, Carta, Shareworks, and LTSE Equity. Most use Carta. GitDealFlow's engineering data complements cap table analysis by showing whether the team delivering the cap table value is performing."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://gitdealflow.com/"},{"@type":"ListItem","position":2,"name":"Learn","item":"https://gitdealflow.com/learn/"},{"@type":"ListItem","position":3,"name":"How to Read a Cap Table Like a VC","item":"https://gitdealflow.com/learn/how-to-read-a-cap-table"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"How to Read a Cap Table Like a VC","description":"A cap table (capitalization table) shows who owns what in a startup. Here's how to read one like a VC \u2014 founders, investors, option pools, and dilution scenarios.","author":{"@type":"Organization","name":"GitDealFlow","url":"https://gitdealflow.com"},"publisher":{"@type":"Organization","name":"GitDealFlow","url":"https://gitdealflow.com"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://gitdealflow.com/learn/how-to-read-a-cap-table"},"datePublished":"2026-07-21","dateModified":"2026-07-21"}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+body{background:#fff;color:#1a1a1a;font-family:-apple-system,system-ui,sans-serif;line-height:1.7;max-width:760px;margin:0 auto;padding:0 20px 60px}
+.hero h1{font-size:2em;font-weight:800;margin:1.5em 0 .5em;line-height:1.2;color:#1a1a1a}
+.content p{margin-bottom:1em;color:#333}
+.content ul{line-height:1.9;color:#333}
+footer{max-width:760px;margin:0 auto;padding:1rem 20px;color:#6b7280;font-size:.85rem;border-top:1px solid #e5e7eb}
+</style>
+</head>
+<body>
+<header style="border-bottom:1px solid #1f2937;background:#0f172a">
+<nav style="max-width:1100px;margin:0 auto;padding:1rem 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap">
+<a href="/" style="color:#f1f5f9;font-weight:700;font-size:1.1rem;text-decoration:none;min-height:44px;display:inline-flex;align-items:center">GitDealFlow</a>
+<div style="display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap">
+<a href="/#ladder" style="color:#cbd5e1;text-decoration:none;font-size:.9rem;min-height:44px;display:inline-flex;align-items:center">Pricing</a>
+<a href="/#signup" style="background:#00d4aa;color:#04130e;padding:.6rem 1.1rem;border-radius:.5rem;font-weight:700;font-size:.9rem;text-decoration:none;min-height:44px;display:inline-flex;align-items:center">Get free signal</a>
+</div>
+</nav>
+</header>
+<main>
+<section class="hero"><h1>How to Read a Cap Table Like a VC</h1></section>
+<section class="content"><h2 style="font-size:1.4em;font-weight:700;margin-top:2rem;margin-bottom:.8em;border-bottom:2px solid #e5e7eb;padding-bottom:.3rem">What a Cap Table Tells You</h2>
+<p>A cap table reveals the ownership structure of a startup: common shares (founders, employees), preferred shares (investors), and the option pool (reserved for future hires).</p>
+<p>The cap table tells you who controls the company, how much dilution future rounds will cause, and whether the company has raised too much or too little.</p>
+<p>GitDealFlow's engineering data adds a dynamic layer: startups with rising commit velocity and a clean cap table (reasonable founder ownership, no toxic terms) are the strongest investment candidates.</p>
+<h2 style="font-size:1.4em;font-weight:700;margin-top:2rem;margin-bottom:.8em;border-bottom:2px solid #e5e7eb;padding-bottom:.3rem">Key Cap Table Metrics</h2>
+<p>Founder ownership: should be 50-70% post-seed. Below 40% is a red flag.</p>
+<p>Option pool: 10-20% total. If it's been mostly granted, future hiring will require a new pool (which means dilution).</p>
+<p>Investor ownership: 20-40% post-Series A. Too much investor ownership means the cap is stacked against new investors.</p>
+<p>Convertible instruments: SAFEs, notes, and warrants that haven't converted yet complicate the cap table. Request a 'fully diluted' view.</p>
+<h2 style="font-size:1.4em;font-weight:700;margin-top:2rem;margin-bottom:.8em;border-bottom:2px solid #e5e7eb;padding-bottom:.3rem">Red Flags on a Cap Table</h2>
+<p>Excessive founder dilution (<40% before Series A) suggests either over-raising or weak negotiating.</p>
+<p>Too many angel investors (15+ on the cap table) makes future rounds complicated.</p>
+<p>Aggressive liquidation preferences (2x+) can mean employees and founders see nothing in a modest exit.</p>
+
+<section class="faq" style="margin-top:40px">
+<h2 style="font-size:1.4em;font-weight:700;margin-bottom:20px;border-bottom:2px solid #e5e7eb;padding-bottom:.3rem">Frequently Asked Questions</h2>
+            <details style="margin-bottom:.75rem;border:1px solid #e5e7eb;border-radius:.5rem;padding:.75rem 1rem"><summary style="font-weight:600;cursor:pointer;color:#1a1a1a">What's a healthy cap table look like?</summary><p style="color:#333;margin-top:.5em">Founders: 50-70%, Option pool: 10-20%, Investors: 20-40% post-seed. Clean, no outstanding convertible instruments. GitDealFlow's momentum data helps justify better cap table terms.</p></details>
+            <details style="margin-bottom:.75rem;border:1px solid #e5e7eb;border-radius:.5rem;padding:.75rem 1rem"><summary style="font-weight:600;cursor:pointer;color:#1a1a1a">How often should founders update the cap table?</summary><p style="color:#333;margin-top:.5em">After every transaction: fundraise, option grant, option exercise, or conversion. A stale cap table is a legal and financial risk.</p></details>
+            <details style="margin-bottom:.75rem;border:1px solid #e5e7eb;border-radius:.5rem;padding:.75rem 1rem"><summary style="font-weight:600;cursor:pointer;color:#1a1a1a">What tools are used for cap table management?</summary><p style="color:#333;margin-top:.5em">Pulley, Carta, Shareworks, and LTSE Equity. Most use Carta. GitDealFlow's engineering data complements cap table analysis by showing whether the team delivering the cap table value is performing.</p></details>
+</section>
+<section class="cta" style="text-align:center;padding:2rem 1rem">
+<a href="/#ladder" style="display:inline-block;background:#00d4aa;color:#04130e;padding:.9rem 1.75rem;border-radius:.75rem;font-weight:700;font-size:1rem;text-decoration:none;min-height:44px">See pricing &amp; start tracking &rarr;</a>
+</section>
+</section>
+</main>
+
+<section style="margin-top:40px;padding-top:20px;border-top:1px solid #e0e0e0">
+<h3 style="font-size:1.1em;font-weight:700;margin-bottom:12px">Related pages</h3>
+<ul style="list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px">
+<li><a href="https://gitdealflow.com/learn/how-to-calculate-startup-valuation" style="color:#0066cc">How to Calculate Startup Valuation</a></li>
+<li><a href="https://gitdealflow.com/learn/how-to-evaluate-a-pitch-deck" style="color:#0066cc">How to Evaluate a Pitch Deck</a></li>
+<li><a href="https://gitdealflow.com/learn/how-to-build-an-investment-thesis" style="color:#0066cc">How to Build an Investment Thesis</a></li>
+<li><a href="https://gitdealflow.com/learn/how-to-do-reference-calls" style="color:#0066cc">How to Do Reference Calls</a></li>
+</ul>
+</section>
+<footer><p>&copy; 2026 GitDealFlow</p></footer>
+</body>
+</html>
