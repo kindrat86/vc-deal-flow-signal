@@ -180,7 +180,12 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://gitdealflow-pb.fly.dev" />
         {/* R16 world-class UX layer — shared design system across portfolio */}
         <link rel="stylesheet" href="/ux.css" />
-        <script src="/ux.js" defer />
+        {/* ux.js REMOVED 2026-07-21: it calls document.body.prepend/appendChild on
+            load, which mutates the DOM before React (App Router) hydrates. That
+            hydration mismatch made React wipe the SSR content → blank white page.
+            The static portfolio sites tolerate it (no React); this Next.js app
+            does not. Native Next styling is complete without it. Do NOT re-add
+            /ux.js here — the swarm R18 rollout must exclude this Next.js site. */}
         {/* No preconnect to fonts.gstatic.com: next/font/google self-hosts the
             Inter woff2 at build time under /_next/static/media (preloaded, same
             origin). A gstatic preconnect would open an unused DNS+TLS handshake
