@@ -3916,6 +3916,49 @@
         }
       ],
       "publishedAt": "2026-07-20T09:00:00Z"
+    },
+    {
+      "date": "2026-07-21",
+      "slug": "2026-07-21",
+      "headline": "The enterprise saas opening hiding in a +200% deploy frequency spike",
+      "hook": "Growth enterprise saas teams shipping 3 commits in 14 days at +200% aren't just building product — they're broadcasting the deploy-frequency that usually precedes a raise.",
+      "repo": {
+        "name": "archtechx",
+        "githubUrl": "https://github.com/archtechx",
+        "stage": "Growth",
+        "geography": "Unknown",
+        "sector": "Enterprise SaaS",
+        "sectorSlug": "enterprise-saas",
+        "signalType": "Deploy frequency spike",
+        "commitVelocity14d": 3,
+        "commitVelocityChange": "+200%",
+        "contributors": 71,
+        "contributorGrowth": "+13%",
+        "newRepos": 0,
+        "description": "Meticulously architected web applications."
+      },
+      "ideaThesis": "Enterprise SaaS has a buyer who is also a builder. The category incumbents shipped for an ops/HR/finance lead; the next wave ships for the engineer running that function. Read the repo: deploy frequency spike, growth team, 71 contributors. That's the shape of a team that crosses the next funding line on engineering output, not enterprise sales — and the gap they leave is the wedge for an indie or two-founder tool that does one job better than the suite they're inside of.",
+      "buildAngles": [
+        "Sourcing tool for engineering managers — Slack-native, signal-pulled by sector, no SaaS dashboard.",
+        "Read-only overlay on the incumbent ATS — bring engineering signals (GitHub activity, dependency adoption) onto candidate cards.",
+        "Drip-tool for technical recruiting that writes its own outreach from public commit signals."
+      ],
+      "distributionPlay": "Free Chrome extension into r/recruiting and r/cscareerquestions for the first 1,000 installs. Both subs allow free tools if you don't pitch — frame it as data, not product.",
+      "signalReading": [
+        {
+          "metric": "3 commits / 14 days",
+          "reading": "Low absolute volume. The signal is the change-in-change, not the raw count — see the next metric."
+        },
+        {
+          "metric": "+200% commit-velocity change",
+          "reading": "Trend is still accelerating, not peaking. A positive change-in-change is the leading edge of the curve, not the back of it."
+        },
+        {
+          "metric": "71 contributors (+13%)",
+          "reading": "Mature contributor base. The opportunity is less in displacing them and more in serving the engineers who depend on them."
+        }
+      ],
+      "publishedAt": "2026-07-21T09:00:00Z"
     }
   ]
 }
