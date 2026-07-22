@@ -52,7 +52,7 @@ export default function ThanksDashboard() {
             Payment confirmed · Welcome to the Dashboard
           </p>
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 leading-[1.1] tracking-tight">
-            You&rsquo;re in. €9.97/mo, locked forever.
+            You&rsquo;re in. €49/mo, locked forever.
           </h1>
           <p className="text-gray-300 text-base leading-relaxed">
             The receipt is in your inbox. So is a magic-link login. Three
@@ -126,7 +126,7 @@ export default function ThanksDashboard() {
 
         <section className="bg-slate-900/40 border border-slate-800 rounded-lg p-5 space-y-2">
           <p className="text-gray-400 text-xs font-semibold uppercase tracking-wider">
-            What unlocks at €97/mo (Insider Circle)
+            What unlocks at €197/mo (Insider Circle)
           </p>
           <p className="text-gray-300 text-sm leading-relaxed">
             Private investor Telegram, monthly live briefings, Slack/Telegram

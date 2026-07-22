@@ -240,7 +240,7 @@ export default function ToolsIndexPage() {
             href="/dashboard"
             className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-semibold transition-colors"
           >
-            See who&apos;s accelerating now — Dashboard, €9.97/mo →
+            See who&apos;s accelerating now — Dashboard, €49/mo →
           </Link>
         </section>
 

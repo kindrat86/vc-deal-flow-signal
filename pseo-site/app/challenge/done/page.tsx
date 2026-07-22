@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title:
     "You finished the 30-Day Reset — what's next | VC Deal Flow Signal",
   description:
-    "Graduation page for the 30-Day Deal Flow Reset Challenge. Three optional ways to keep using the system: free Sunday digest, €9.97/mo Dashboard, €1,997 one-time Sector Sweep. The framework + your watchlist + custom weights stay yours either way.",
+    "Graduation page for the 30-Day Deal Flow Reset Challenge. Three optional ways to keep using the system: free Sunday digest, €49/mo Dashboard, €1,997 one-time Sector Sweep. The framework + your watchlist + custom weights stay yours either way.",
   alternates: { canonical: "/challenge/done" },
   robots: { index: true, follow: true },
   openGraph: {
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 // Stack-Slide close for the Day-30 graduation. Three rungs of the value
 // ladder — free, founding-rate Dashboard, one-time Sector Sweep — each
 // priced against the standalone retail equivalent. Total stacked retail
-// anchors the €9.97/mo founding-rate ask at ~50× value-to-price.
+// anchors the €49/mo founding-rate ask at ~50× value-to-price.
 const RUNGS = [
   {
     rung: "Rung 0",
@@ -44,7 +44,7 @@ const RUNGS = [
   {
     rung: "Rung 1",
     name: "Dashboard",
-    price: "€9.97/mo founding rate",
+    price: "€49/mo founding rate",
     headline:
       "The 7-signal composite, computed continuously across 4,200 startup orgs.",
     deliverables: [
@@ -113,7 +113,7 @@ export default function ChallengeDonePage() {
         "@type": "WebPage",
         name: "You finished the 30-Day Deal Flow Reset",
         description:
-          "Graduation page with three optional next steps after the 30-day Challenge: free Sunday digest, founding-rate Dashboard at €9.97/mo, or a one-time Sector Sweep at €1,997.",
+          "Graduation page with three optional next steps after the 30-day Challenge: free Sunday digest, founding-rate Dashboard at €49/mo, or a one-time Sector Sweep at €1,997.",
         url: "https://signals.gitdealflow.com/challenge/done",
         isPartOf: {
           "@type": "Course",

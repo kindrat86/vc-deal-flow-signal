@@ -28,6 +28,7 @@ import EpiphanyBridgeCondensed from "@/components/EpiphanyBridgeCondensed";
 import HomeStoryMoment from "@/components/HomeStoryMoment";
 import HomeOfferStack from "@/components/HomeOfferStack";
 import CharterCohortBlock from "@/components/CharterCohortBlock";
+import HeroCtaButton from "@/components/HeroCtaButton";
 
 import { DataNerdPolarityCard } from "@/components/DataNerdPolarityCard";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
@@ -759,6 +760,9 @@ export default function Home() {
           days). It is a tool, not a fund — we surface the signal, you make the
           calls. Free to browse, built to give you a clearer read before the round gets obvious.
         </p>
+        <div className="mt-5">
+          <HeroCtaButton />
+        </div>
       </header>
 
       {/* Brunson "one funnel, one offer" fix (2026-06-01): removed the early
@@ -1111,7 +1115,7 @@ export default function Home() {
           on /firstlook + /walkthrough but the home reader (who never
           clicks through) saw price tiers without value anchors. Eight
           stack lines, anchored against standalone equivalents, total
-          €1,728 vs €9.97/mo founding rate. Risk-reversal sticker
+          €1,728 vs €49/mo founding rate. Risk-reversal sticker
           (30-day guarantee) included as final stack line. */}
       <HomeOfferStack />
 
@@ -1538,7 +1542,7 @@ export default function Home() {
               the same ten ranked startups changed{" "}
               <em>one</em> cheque you write in the next 12 months — at a €5k–€50k
               angel range with a 3× exit on one in five — would that head-start
-              be worth <strong>€97/month</strong>?
+              be worth <strong>€197/month</strong>?
             </span>
           </li>
           <li className="flex gap-3">
@@ -1550,7 +1554,7 @@ export default function Home() {
               <strong className="text-amber-300">If you never had to</strong>{" "}
               read a line of code, hire a quant, or chase a warm intro — and the
               signal still found the founders before consensus did, would{" "}
-              <strong>€9.97/month</strong> be a fair trade?
+              <strong>€49/month</strong> be a fair trade?
             </span>
           </li>
           <li className="flex gap-3">
@@ -1561,7 +1565,7 @@ export default function Home() {
             <span>
               <strong className="text-amber-300">If the founding rate</strong>{" "}
               locks forever for everyone who joins before the cohort closes —
-              and the public price is already scheduled to step to €29/€197
+              and the public price is already scheduled to step to €49/€197
               after — does the cost of waiting one more week feel{" "}
               <em>cheaper</em> than the cost of locking in tonight?
             </span>
@@ -1579,7 +1583,7 @@ export default function Home() {
           is the right rhythm for now — no upgrade pressure, ever.
         </p>
         <TrialClose tone="violet">
-          A free rung, a €7 rung, a €9.97/mo rung, all the way up to a
+          A free rung, a €7 rung, a €49/mo rung, all the way up to a
           €49,997/yr rung. If even one of those fits where you actually
           are — would you let the right rung pick itself?
         </TrialClose>

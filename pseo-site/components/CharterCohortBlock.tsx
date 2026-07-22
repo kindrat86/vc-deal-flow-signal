@@ -97,7 +97,7 @@ export default function CharterCohortBlock() {
             See all 25 seats
           </Link>
           <p className="text-gray-500 text-xs leading-relaxed sm:ml-auto sm:text-right">
-            {claimed} claimed · {remaining} open · 48-hour written review
+            {claimed > 0 ? `${claimed} claimed · ` : ""}{remaining} seats open · 48-hour written review
           </p>
         </div>
       </div>

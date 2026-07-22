@@ -174,7 +174,7 @@ export default async function PredictPage({
             name: "How many predictions can I make per month?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Free tier: 3 predictions per month. First 100 scouts to make a prediction receive a permanent Founder Scout badge. The Insider Circle (EUR 97/month) adds the 24-hour-early Acceleration Watch and the private member briefing.",
+              text: "Free tier: 3 predictions per month. First 100 scouts to make a prediction receive a permanent Founder Scout badge. The Insider Circle (EUR 197/month) adds the 24-hour-early Acceleration Watch and the private member briefing.",
             },
           },
         ],

@@ -134,7 +134,7 @@ ${safeRat ? `<p style="margin:12px 0 0;color:#64748b;font-size:14px;font-style:i
 <a href="${dashboardUrl}" style="display:block;width:100%;box-sizing:border-box;background:#0284c7;color:#ffffff;font-weight:700;font-size:19px;line-height:1.2;padding:18px 28px;border-radius:10px;text-decoration:none;text-align:center;box-shadow:0 4px 14px rgba(2,132,199,0.35);">Open your scout dashboard →</a>
 </div>
 <p style="color:#334155;">Your public profile: <a href="${profileUrl}" style="color:#0ea5e9;text-decoration:none;">${profileUrl.replace(/^https?:\/\//, "")}</a></p>
-<p style="color:#334155;">You have used <strong>${predictionsThisMonth}</strong> of your <strong>${monthlyLimit}</strong> predictions this month (${remaining} remaining). ${tier === "free" ? `Upgrade to Dashboard (EUR 9.97/mo) for 10 predictions per month.` : ""}</p>
+<p style="color:#334155;">You have used <strong>${predictionsThisMonth}</strong> of your <strong>${monthlyLimit}</strong> predictions this month (${remaining} remaining). ${tier === "free" ? `Upgrade to Dashboard (EUR 49/mo) for 10 predictions per month.` : ""}</p>
 <p style="color:#334155;">We resolve your call automatically when the round is announced or the 6-month window closes. Right calls earn points and move you up the rank ladder.</p>
 </div>
 <div style="margin-top:40px;padding-top:20px;border-top:1px solid #e2e8f0;font-size:12px;color:#94a3b8;">
@@ -240,7 +240,7 @@ export async function POST(request: Request) {
         {
           error:
             scout.tier === "free"
-              ? `Monthly cap reached: ${limit} predictions. Upgrade to Dashboard (EUR 9.97/mo) for 10 per month, or wait until next month.`
+              ? `Monthly cap reached: ${limit} predictions. Upgrade to Dashboard (EUR 49/mo) for 10 per month, or wait until next month.`
               : `Monthly cap reached: ${limit} predictions. Next month resets your allowance.`,
           tier: scout.tier,
           limit,

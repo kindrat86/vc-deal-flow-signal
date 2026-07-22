@@ -362,7 +362,7 @@ export default function FounderPage() {
             </li>
             <li>
               <strong className="text-gray-100">
-                €9.97/mo is a feature, not a price ceiling.
+                €49/mo is a feature, not a price ceiling.
               </strong>{" "}
               The founding price is locked forever for everyone who joins
               before the cohort closes. I&rsquo;d rather have a thousand

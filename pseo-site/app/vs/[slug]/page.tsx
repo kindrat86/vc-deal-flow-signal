@@ -100,7 +100,7 @@ export default async function VsPage({ params }: PageProps) {
     },
     {
       question: `Which is better for individual angels and scouts — ${a.name} or ${b.name}?`,
-      answer: `For individual angels and scouts, pricing usually decides. ${a.name} costs ${a.pricing.toLowerCase()}; ${b.name} costs ${b.pricing.toLowerCase()}. Neither is specifically designed for individual investors — VC Deal Flow Signal's EUR 9.97/mo Dashboard is often a better fit for that persona. If budget isn't a constraint, pick based on lead time and coverage.`,
+      answer: `For individual angels and scouts, pricing usually decides. ${a.name} costs ${a.pricing.toLowerCase()}; ${b.name} costs ${b.pricing.toLowerCase()}. Neither is specifically designed for individual investors — VC Deal Flow Signal's EUR 49/mo Dashboard is often a better fit for that persona. If budget isn't a constraint, pick based on lead time and coverage.`,
     },
     {
       question: `Can you use ${a.name} and ${b.name} together?`,
@@ -108,7 +108,7 @@ export default async function VsPage({ params }: PageProps) {
     },
     {
       question: `Is there a cheaper alternative to ${a.name} and ${b.name}?`,
-      answer: `For technical-sector investors, VC Deal Flow Signal offers GitHub commit-velocity acceleration signals (6-12 weeks pre-fundraise) at EUR 9.97/mo during beta — far below ${a.name} and ${b.name} pricing. It's narrower in coverage (technical startups with public GitHub activity) but delivers the earliest leading signal in the market for that niche.`,
+      answer: `For technical-sector investors, VC Deal Flow Signal offers GitHub commit-velocity acceleration signals (6-12 weeks pre-fundraise) at EUR 49/mo during beta — far below ${a.name} and ${b.name} pricing. It's narrower in coverage (technical startups with public GitHub activity) but delivers the earliest leading signal in the market for that niche.`,
     },
   ];
 

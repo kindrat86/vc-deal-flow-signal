@@ -141,7 +141,7 @@ const DELIVERABLES = [
   },
   {
     name: "Live Dashboard",
-    cadence: "€9.97/mo founding",
+    cadence: "€49/mo founding",
     what: "109+ ranked orgs across 20 sectors, refreshed Mondays 06:00 UTC. Sector filters, watchlists, the full acceleration ranking — the operational surface for a fund running Code-Side Sourcing as a weekly motion.",
     href: "/pricing",
   },
@@ -184,7 +184,7 @@ const FAQS = [
   },
   {
     q: "Can a Code-Side Sourcing pipeline be built without subscribing?",
-    a: "Yes. The methodology is published under CC BY 4.0 — anyone can build their own pipeline. The SSRN paper, Zenodo dataset, and regression code are all open. The reason most practitioners subscribe is operational: building and maintaining the pipeline is engineering work that competes with investment work, and €9.97/mo is materially cheaper than the engineer-hour cost of self-hosting it.",
+    a: "Yes. The methodology is published under CC BY 4.0 — anyone can build their own pipeline. The SSRN paper, Zenodo dataset, and regression code are all open. The reason most practitioners subscribe is operational: building and maintaining the pipeline is engineering work that competes with investment work, and €49/mo is materially cheaper than the engineer-hour cost of self-hosting it.",
   },
   {
     q: "Is the category defensible if the data is public?",
@@ -568,7 +568,7 @@ export default function CodeSideSourcingPage() {
           <p className="text-gray-300 text-base leading-relaxed max-w-xl mx-auto">
             Start at the free Sunday digest. Or skip the wait: see the signal
             on a sector you already know for €7, or run the live dashboard for
-            €9.97/mo. You never read a line of code — the read is done for you.
+            €49/mo. You never read a line of code — the read is done for you.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
             <Link
@@ -582,7 +582,7 @@ export default function CodeSideSourcingPage() {
               href="/pricing"
               className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-semibold text-base shadow-lg shadow-sky-500/30 transition-colors"
             >
-              Run the dashboard — €9.97/mo{" "}
+              Run the dashboard — €49/mo{" "}
               <span aria-hidden="true">→</span>
             </Link>
           </div>

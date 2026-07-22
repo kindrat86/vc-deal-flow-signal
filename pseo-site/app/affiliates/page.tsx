@@ -66,7 +66,7 @@ export default function AffiliatesPage() {
           "@type": "Offer",
           name: "20% lifetime recurring commission",
           description:
-            "20% commission on every paid referral, lifetime. €399 on each €1,997 Sector Sweep. €19.40/mo on each €97/mo Insider Circle subscription, for the lifetime of the subscription.",
+            "20% commission on every paid referral, lifetime. €399 on each €1,997 Sector Sweep. €19.40/mo on each €197/mo Insider Circle subscription, for the lifetime of the subscription.",
           priceCurrency: "EUR",
         },
         areaServed: "Worldwide",
@@ -79,7 +79,7 @@ export default function AffiliatesPage() {
             name: "What's the commission rate?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "20% of every paid referral, for the lifetime of the customer's subscription. €399 on each €1,997 Sector Sweep one-time sale. €19.40/mo on each €97/mo Insider Circle subscription, every month for as long as the customer stays subscribed.",
+              text: "20% of every paid referral, for the lifetime of the customer's subscription. €399 on each €1,997 Sector Sweep one-time sale. €19.40/mo on each €197/mo Insider Circle subscription, every month for as long as the customer stays subscribed.",
             },
           },
           {
@@ -260,7 +260,7 @@ export default function AffiliatesPage() {
                 €19.40<span className="text-base text-gray-400">/mo</span>
               </p>
               <p className="text-gray-400 text-sm">
-                20% of €97/mo for the full lifetime of the subscription. 10
+                20% of €197/mo for the full lifetime of the subscription. 10
                 referred subscribers = €194/mo recurring, forever.
               </p>
             </div>
@@ -642,7 +642,7 @@ Not affiliated [or: affiliate disclosure required], just one of the cheapest sou
               <p className="text-gray-400 text-sm leading-relaxed">
                 20% of every paid referral, for the lifetime of the
                 customer&apos;s subscription. €399 on each €1,997 Sector Sweep
-                one-time sale. €19.40/mo on each €97/mo Insider Circle
+                one-time sale. €19.40/mo on each €197/mo Insider Circle
                 subscription, every month for as long as the customer stays
                 subscribed.
               </p>
@@ -678,7 +678,7 @@ Not affiliated [or: affiliate disclosure required], just one of the cheapest sou
               </h3>
               <p className="text-gray-400 text-sm leading-relaxed">
                 Both paid tiers: €1,997 one-time Sector Sweep (custom-built
-                40-page sector report) and €97/mo recurring Insider Circle
+                40-page sector report) and €197/mo recurring Insider Circle
                 (8-object stack including the weekly digest, dataset access,
                 and research walkthroughs). The free Signal Digest is also
                 attribution-eligible — if a free subscriber later upgrades,

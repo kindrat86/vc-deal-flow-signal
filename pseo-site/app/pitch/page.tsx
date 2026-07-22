@@ -178,7 +178,7 @@ export default function PitchPage() {
             <li className="flex items-start gap-3">
               <span className="text-sky-400 font-bold shrink-0">→</span>
               <span>
-                <strong className="text-gray-100">€9.97/mo Dashboard.</strong>{" "}
+                <strong className="text-gray-100">€49/mo Dashboard.</strong>{" "}
                 140 startups, 20 sectors, full filters, 219-startup backtest
                 CSV, monthly Sector Deep Dive PDF. Founding-member price
                 locked forever.
@@ -206,7 +206,7 @@ export default function PitchPage() {
               href={STRIPE_DASHBOARD}
               className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-semibold text-sm shadow-lg shadow-sky-500/30 transition-colors"
             >
-              Lock €9.97/mo founder price <span aria-hidden="true">→</span>
+              Lock Dashboard — €49/mo <span aria-hidden="true">→</span>
             </a>
             <a
               href={SIGNUP_URL}

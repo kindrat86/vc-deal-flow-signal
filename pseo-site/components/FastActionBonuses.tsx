@@ -34,9 +34,9 @@ const FAST_ACTION_BONUSES = [
     value: "€1,797 → same week",
   },
   {
-    label: "Bonus #2 — Founding-rate ratchet (€9.97 anchored to today)",
+    label: "Bonus #2 — Founding-rate ratchet (€49 anchored to today)",
     detail:
-      "Lock now and the €9.97/mo rate is contractually anchored to your checkout date. Even if next cohort opens at €19/mo or the public price hits €49/mo, your seat doesn't move. Lock-in is dated to entry, not to tenure.",
+      "Lock now and the €49/mo rate is contractually anchored to your checkout date. Even if next cohort opens at €19/mo or the public price hits €49/mo, your seat doesn't move. Lock-in is dated to entry, not to tenure.",
     value: "€39/mo saved year-1",
   },
   {
@@ -67,7 +67,7 @@ export function FastActionBonuses({ initialWindow, signupUrl = "https://gitdealf
           Cart closed · This cohort
         </p>
         <h2 className="text-xl sm:text-2xl font-bold text-gray-100 leading-snug">
-          The €9.97 founding-member checkout is paused until Monday 06:00 UTC.
+          The €49 founding-member checkout is paused until Monday 06:00 UTC.
         </h2>
         <p className="text-gray-300 text-sm leading-relaxed">
           Live replays open Monday 06:00 UTC and close Thursday 23:59 UTC,
@@ -110,7 +110,7 @@ export function FastActionBonuses({ initialWindow, signupUrl = "https://gitdealf
           Last hours · Doors closing tonight
         </p>
         <h2 className="text-xl sm:text-2xl font-bold text-gray-100 leading-snug">
-          Cart closes Thursday 23:59 UTC. The €9.97 link goes to a
+          Cart closes Thursday 23:59 UTC. The €49 link goes to a
           waitlist page until Monday.
         </h2>
         <p className="text-gray-300 text-sm leading-relaxed">

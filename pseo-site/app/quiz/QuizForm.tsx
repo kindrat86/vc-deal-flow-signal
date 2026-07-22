@@ -102,15 +102,15 @@ const RESULTS = {
     secondary: { label: "Compare all tiers", href: "/pricing" },
   },
   D: {
-    title: "Dashboard Beta — €9.97/mo, founder price locked forever.",
-    eyebrow: "Dashboard Beta · €9.97/mo",
-    body: "You write enough checks and have a sharp enough thesis that the full ranked dashboard pays for itself the first time it surfaces a name you didn't already see. €9.97/mo is the founding-member rate — it stays €9.97 even after the public hike to €49/mo. Read the 12-minute walkthrough before you click if you want the full case.",
-    cta: { label: "Lock €9.97/mo founder price", href: "https://buy.stripe.com/4gMbJ07kTaJy7kqg6s0x20b", external: true },
+    title: "Dashboard Beta — €49/mo, founder price locked forever.",
+    eyebrow: "Dashboard Beta · €49/mo",
+    body: "You write enough checks and have a sharp enough thesis that the full ranked dashboard pays for itself the first time it surfaces a name you didn't already see. €49/mo is the founding-member rate — it stays €49 even after the public hike to €49/mo. Read the 12-minute walkthrough before you click if you want the full case.",
+    cta: { label: "Lock €49/mo founder price", href: "https://buy.stripe.com/4gMbJ07kTaJy7kqg6s0x20b", external: true },
     secondary: { label: "Read the 12-minute case first", href: "/walkthrough" },
   },
   I: {
     title: "Insider Circle — or the €1,997 Sector Sweep, depending on what you need first.",
-    eyebrow: "Insider Circle · €97/mo  ·  or  ·  Sector Sweep · €1,997 once",
+    eyebrow: "Insider Circle · €197/mo  ·  or  ·  Sector Sweep · €1,997 once",
     body: "You're operating at the volume where the API, custom watchlists, and Slack/Telegram alerts start to matter. If you want a one-time deep-dive built around your specific thesis before subscribing, the €1,997 Custom Sector Sweep is the right entry — €1,997 of it credits to Insider if you upgrade within 60 days.",
     cta: { label: "See the Insider case (24h lead)", href: "/insider", external: false },
     secondary: { label: "Or commission a Sector Sweep", href: "/pricing#sector-sweep-stack" },
@@ -127,9 +127,9 @@ function tally(answers: AnswerKey[]): keyof typeof RESULTS {
 
 const RESULT_TIER_LABELS: Record<keyof typeof RESULTS, string> = {
   F: "Free Acceleration Watch",
-  D: "Dashboard Beta (€9.97/mo)",
+  D: "Dashboard Beta (€49/mo)",
   T: "First Look Pass (€7 once)",
-  I: "Insider Circle (€97/mo) / Sector Sweep (€1,997 once)",
+  I: "Insider Circle (€197/mo) / Sector Sweep (€1,997 once)",
 };
 
 // Brunson Quiz Funnel transparency — show the user the tier-specific drip

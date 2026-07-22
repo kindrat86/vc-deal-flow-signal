@@ -125,11 +125,6 @@ const QUOTES = [
   },
   {
     line:
-      "We dropped Tracxn at €4.2k/month. The dashboard at €9.97/mo replaced one analyst-hour per week of manual digging — and nobody on the team had to read code to use it. The math wrote itself.",
-    role: "Pre-seed scout fund · 4-partner GP",
-  },
-  {
-    line:
       "First time in two years I was first in a round, not third. The founder said I was the only one who knew what their team had actually shipped, not the AngelList one-liner.",
     role: "Generalist analyst · €15k–50k cheque sizes",
   },

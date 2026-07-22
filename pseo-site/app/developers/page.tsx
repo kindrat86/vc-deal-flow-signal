@@ -99,7 +99,7 @@ export default function DevelopersPage() {
             name: "How do I access the VC Deal Flow Signal API?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "The basic JSON endpoints are publicly accessible at signals.gitdealflow.com — for example signals.json returns the current weekly ranked signals, weekly returns a summary, and methodology returns the data dictionary. No authentication is required for the basic tier. For higher-volume commercial access, the Insider Circle tier (EUR 97/month) provides elevated rate limits and webhook delivery.",
+              text: "The basic JSON endpoints are publicly accessible at signals.gitdealflow.com — for example signals.json returns the current weekly ranked signals, weekly returns a summary, and methodology returns the data dictionary. No authentication is required for the basic tier. For higher-volume commercial access, the Insider Circle tier (EUR 197/month) provides elevated rate limits and webhook delivery.",
             },
           },
           {

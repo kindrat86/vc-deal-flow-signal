@@ -14,8 +14,8 @@
  * surface so the buyer reads it the same way every time.
  *
  * Server Component — pure presentation, no client state. Variants:
- *   tier="dashboard"     — €9.97/mo, Signal-or-It's-Free
- *   tier="insider"       — €97/mo,  Signal-or-It's-Free
+ *   tier="dashboard"     — €49/mo, Signal-or-It's-Free
+ *   tier="insider"       — €197/mo,  Signal-or-It's-Free
  *   tier="sharp"         — €497/mo, Signal-or-It's-Free
  *   tier="sector-sweep"  — €1,997 once, Three-Orgs-or-Refund
  *   tier="firstlook"     — €7 once, no-questions
@@ -58,7 +58,7 @@ const SPEC: Record<RiskReversalTier, PromiseSpec> = {
   dashboard: {
     promise:
       "If, in your first 30 days, the Acceleration Watch doesn't surface a startup you find genuinely interesting — defined as one you'd have wanted to know about earlier — full refund.",
-    stake: "€9.97/mo",
+    stake: "€49/mo",
     process:
       "Reply REFUND to any system email. Full payment back inside two business days. No exit interview, no 'wait, let me show you one more thing'.",
     receipt:
@@ -68,7 +68,7 @@ const SPEC: Record<RiskReversalTier, PromiseSpec> = {
   insider: {
     promise:
       "If, in your first 30 days, the private Telegram + JSON/CSV API don't earn the seat — measured by you, against your own thesis — full refund.",
-    stake: "€97/mo",
+    stake: "€197/mo",
     process:
       "Reply REFUND to any Insider email. Full payment back inside two business days. The MCP server stays free regardless of refund decision.",
     receipt:

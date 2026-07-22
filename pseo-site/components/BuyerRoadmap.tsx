@@ -27,8 +27,8 @@ import Link from "next/link";
 
 export type RoadmapTier =
   | "firstlook" // €7 tripwire
-  | "dashboard" // €9.97/mo
-  | "insider" // €97/mo
+  | "dashboard" // €49/mo
+  | "insider" // €197/mo
   | "sharp" // €497/mo, application
   | "sector-sweep"; // €1,997 one-time
 
@@ -67,7 +67,7 @@ const BEATS_BY_TIER: Record<RoadmapTier, readonly RoadmapBeat[]> = {
   dashboard: [
     {
       when: "Today",
-      what: "Lock €9.97/mo founding price. Stripe checkout, one click, founding rate locked for the lifetime of the subscription.",
+      what: "Lock €49/mo founding price. Stripe checkout, one click, founding rate locked for the lifetime of the subscription.",
       why: "Public list-price launches at €49/mo the day a regulated investor tool reviews us. The lock is a hedge against that day.",
     },
     {
@@ -89,7 +89,7 @@ const BEATS_BY_TIER: Record<RoadmapTier, readonly RoadmapBeat[]> = {
   insider: [
     {
       when: "Today",
-      what: "Lock €97/mo founding rate (going to €197/mo). Telegram invite + API key sent within the hour.",
+      what: "Lock €197/mo founding rate (going to €197/mo). Telegram invite + API key sent within the hour.",
       why: "The 24-hour lead starts the next Sunday. Until then you have Dashboard access + the Telegram thread for the most recent briefing.",
     },
     {
@@ -156,8 +156,8 @@ const BEATS_BY_TIER: Record<RoadmapTier, readonly RoadmapBeat[]> = {
 
 const TIER_LABELS: Record<RoadmapTier, string> = {
   firstlook: "First Look Pass · €7",
-  dashboard: "Dashboard · €9.97/mo",
-  insider: "Insider Circle · €97/mo",
+  dashboard: "Dashboard · €49/mo",
+  insider: "Insider Circle · €197/mo",
   sharp: "Sharp Tier · €497/mo",
   "sector-sweep": "Sector Sweep · €1,997",
 };

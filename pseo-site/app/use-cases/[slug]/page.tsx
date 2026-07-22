@@ -385,7 +385,7 @@ export default async function UseCasePage({ params }: PageProps) {
                 className="group block rounded-lg border border-sky-800/60 bg-slate-900/60 p-5 hover:border-sky-500/60 transition-all"
               >
                 <p className="text-xs font-medium text-sky-400 uppercase tracking-wider mb-1">
-                  Dashboard · €9.97/mo
+                  Dashboard · €49/mo
                 </p>
                 <h3 className="text-gray-100 font-semibold text-sm mb-1.5 group-hover:text-sky-300 transition-colors">
                   Keep the panel open for every name you touch

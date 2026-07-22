@@ -90,7 +90,7 @@ const REVIEWS = [
 const FAQS = [
   {
     q: "Why is the book free? What's the catch?",
-    a: "Three reasons. First, the methodology is already public — the SSRN preprint at abstract id 6606558 contains the formal version. The book is the operational version of the same work. Second, free distribution is the point: the more readers run the workflow, the better the methodology gets, because every reader who finds a false-positive pattern reports it back and we fold it into the next edition. Third, this is a marketing motion — readers who get value from the book are the ones who eventually subscribe to the €9.97/mo Dashboard, and a book that closes that loop pays for itself in three subscribers.",
+    a: "Three reasons. First, the methodology is already public — the SSRN preprint at abstract id 6606558 contains the formal version. The book is the operational version of the same work. Second, free distribution is the point: the more readers run the workflow, the better the methodology gets, because every reader who finds a false-positive pattern reports it back and we fold it into the next edition. Third, this is a marketing motion — readers who get value from the book are the ones who eventually subscribe to the €49/mo Dashboard, and a book that closes that loop pays for itself in three subscribers.",
   },
   {
     q: "What do I get with the €0.99 Kindle copy?",
@@ -564,7 +564,7 @@ export default function BookPage() {
             <Link href="/" className="text-sky-400 hover:text-sky-300 underline underline-offset-2">
               Signal Digest
             </Link>{" "}
-            · the €9.97/mo{" "}
+            · the €49/mo{" "}
             <Link href="/pricing" className="text-sky-400 hover:text-sky-300 underline underline-offset-2">
               Dashboard
             </Link>{" "}

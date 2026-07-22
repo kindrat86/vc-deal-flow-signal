@@ -99,7 +99,7 @@ export default function ThanksFirstLook() {
             Dashboard subscriber, lock the founding rate now. Your €7
             credit applies — the first month bills{" "}
             <strong className="text-sky-200">€2.97</strong> instead of
-            €9.97. Founding rate is locked forever; public price steps
+            €49  Founding rate is locked forever; public price steps
             to €49/mo at launch.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 pt-1">

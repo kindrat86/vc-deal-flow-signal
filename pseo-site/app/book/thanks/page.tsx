@@ -102,7 +102,7 @@ export default function BookThanksPage() {
             broken out per startup.
           </p>
           <p className="text-gray-300 text-base leading-relaxed">
-            Founding-member rate of <strong className="text-sky-200">€9.97/mo locked in
+            Founding-member rate of <strong className="text-sky-200">€49/mo locked in
             forever</strong> — set when the Dashboard launched, never raised for
             existing subscribers.
           </p>
@@ -110,7 +110,7 @@ export default function BookThanksPage() {
             href="/pricing#dashboard-beta"
             className="inline-flex items-center justify-center w-full sm:w-auto rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-semibold px-6 py-3 transition-colors"
           >
-            Lock in €9.97/mo Dashboard →
+            Lock in €49/mo Dashboard →
           </Link>
         </section>
 

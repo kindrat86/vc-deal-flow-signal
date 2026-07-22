@@ -249,7 +249,7 @@ export default async function ContinuityDropPage({
                 href={STRIPE_INSIDER}
                 className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-semibold text-sm transition-colors"
               >
-                Lock €97/mo Insider — get this drop the day it lands
+                Lock €197/mo Insider — get this drop the day it lands
               </a>
             </div>
           </section>
@@ -290,7 +290,7 @@ export default async function ContinuityDropPage({
             className="rounded-xl border border-amber-700/50 bg-gradient-to-br from-amber-950/20 via-slate-900 to-slate-950 p-6 sm:p-8 space-y-4"
           >
             <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider">
-              Member-only artefact · Insider Circle (€97/mo) and above
+              Member-only artefact · Insider Circle (€197/mo) and above
             </p>
             <h2 className="text-xl sm:text-2xl font-bold text-gray-100 leading-snug">
               {drop.artefact.label}
@@ -306,7 +306,7 @@ export default async function ContinuityDropPage({
                 href={STRIPE_INSIDER}
                 className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-semibold text-sm transition-colors"
               >
-                Lock €97/mo to download <span aria-hidden="true">→</span>
+                Lock €197/mo to download <span aria-hidden="true">→</span>
               </a>
               <Link
                 href="/insider"

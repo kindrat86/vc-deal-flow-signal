@@ -89,7 +89,7 @@ const ON_THE_BUS = [
 ];
 
 const NOT_ON_THE_BUS = [
-  "You need a recurring weekly feed — that's the Dashboard (€9.97/mo). The Sweep is a one-off.",
+  "You need a recurring weekly feed — that's the Dashboard (€49/mo). The Sweep is a one-off.",
   "You require a scheduled phone call to make the buy decision — anonymity rule, async-only commitment.",
   "You're sourcing across more than three sectors — at that breadth, the Dashboard subscription is the right rung, not a Sweep.",
   "You want the Sweep to include warm intros to founders — we don't have that relationship inventory; we surface the org and the signal, you decide on outreach.",

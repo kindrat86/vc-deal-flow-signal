@@ -45,8 +45,8 @@ export default async function WelcomePage() {
       <p className="inline-flex items-center gap-1.5 mb-10 rounded-md border border-emerald-700/40 bg-emerald-950/30 px-3 py-1.5 text-emerald-300 text-sm font-medium">
         <span aria-hidden="true">🔒</span>
         {isInsider
-          ? "Beta price of €97/mo locked in forever."
-          : "Early access price of €9.97/mo locked in forever."}
+          ? "Beta price of €197/mo locked in forever."
+          : "Early access price of €49/mo locked in forever."}
       </p>
 
       {/* What's included */}
@@ -121,7 +121,7 @@ export default async function WelcomePage() {
           <p className="text-gray-300 text-sm leading-relaxed mb-4">
             The Insider Circle gets the weekly list a day ahead of the Dashboard,
             plus the private investor room. No code required — same list, more
-            lead time. €97/mo.
+            lead time. €197/mo.
           </p>
           <Link
             href="/insider"

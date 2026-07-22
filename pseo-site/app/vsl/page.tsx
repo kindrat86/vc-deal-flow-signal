@@ -22,7 +22,7 @@ const VIDEO_DURATION_ISO = "PT10M30S"; // sum of scene VOs at ~150wpm + animatio
 export const metadata: Metadata = {
   title: script.headline + " — Video Sales Letter",
   description:
-    "10-minute video sales letter. Single belief: GitHub commit-velocity acceleration is the most leading public signal in venture capital. 219-startup SSRN panel, 21–47 day median pre-deck lead band. €9.97/mo founding rate. Free Sunday digest. €7 First Look Pass.",
+    "10-minute video sales letter. Single belief: GitHub commit-velocity acceleration is the most leading public signal in venture capital. 219-startup SSRN panel, 21–47 day median pre-deck lead band. €49/mo founding rate. Free Sunday digest. €7 First Look Pass.",
   alternates: { canonical: "/vsl" },
   openGraph: {
     title: script.headline,
@@ -209,7 +209,7 @@ export default function VslPage() {
               href="/pricing"
               className="inline-flex items-center gap-2 rounded-lg bg-emerald-600 px-5 py-3 text-base font-bold text-white hover:bg-emerald-500 transition"
             >
-              Dashboard €9.97/mo →
+              Dashboard €49/mo →
             </Link>
             <a
               href="https://gitdealflow.com/#signup"
@@ -375,7 +375,7 @@ export default function VslPage() {
                 The stack
               </p>
               <h2 className="text-2xl font-bold tracking-tight text-slate-900">
-                What €9.97/mo gets you.
+                What €49/mo gets you.
               </h2>
             </div>
             <div className="space-y-2">
@@ -501,7 +501,7 @@ export default function VslPage() {
                 <p className="text-xs font-bold uppercase tracking-wider text-emerald-700">
                   Door #3
                 </p>
-                <p className="text-2xl font-bold text-slate-900 mt-1">€9.97/mo</p>
+                <p className="text-2xl font-bold text-slate-900 mt-1">€49/mo</p>
                 <p className="text-sm font-semibold text-slate-700 mt-2">Dashboard</p>
                 <p className="text-xs text-slate-500 mt-1">Founding rate. Locked forever.</p>
               </Link>
@@ -529,7 +529,7 @@ export default function VslPage() {
                   <p className="text-base text-slate-900">
                     <span className="font-bold text-emerald-700 mr-2">If</span>
                     {b.label.replace(/^If\s+/i, "")} —{" "}
-                    <span className="italic text-slate-600">would the €9.97/mo be worth it?</span>
+                    <span className="italic text-slate-600">would the €49/mo be worth it?</span>
                   </p>
                 </div>
               ))}

@@ -352,7 +352,7 @@ export default function FirstLookPage() {
             <span className="text-amber-400">Get the full deep dive in 24 hours.</span>
           </h1>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
-            Most investors won&rsquo;t pay €9.97/mo for a tool they
+            Most investors won&rsquo;t pay €49/mo for a tool they
             haven&rsquo;t tested on their actual thesis. Fair. The First Look
             Pass exists for that exact gap. €7, one-time, no subscription —
             and €7 of credit if you upgrade. If your real question is narrow,
@@ -876,7 +876,7 @@ export default function FirstLookPage() {
             </Link>{" "}
             (private Telegram + spike alerts + monthly briefing) at{" "}
             <strong className="text-gray-100">€77 for the first month</strong>{" "}
-            — €20 off the standard €97. The invite expires when the next
+            — €20 off the standard €197. The invite expires when the next
             Monday digest goes out, and never re-appears at this price.
             Decline it and your €7 First Look Pass still works exactly the
             same way.

@@ -68,7 +68,7 @@ const FUNNELS: Funnel[] = [
     price: "Free, 90 seconds",
     hook: "Four questions, then a routed recommendation — most people overpay or skip the tier that would have paid for itself.",
     who: "Visitors unsure which tier fits their check size and cadence.",
-    offer: "Routed to Free / €7 / €9.97 / €97 with a one-line reason for the match.",
+    offer: "Routed to Free / €7 / €49 / €197 with a one-line reason for the match.",
     cta: "Take the quiz",
     color: "indigo",
   },
@@ -149,10 +149,10 @@ const FUNNELS: Funnel[] = [
     activitySlug: "dashboard",
     href: "/pricing",
     tier: "Core ascension",
-    price: "€9.97/mo founding price (locked forever)",
+    price: "€49/mo founding price (locked forever)",
     hook: "The full live dashboard, refreshed every Monday at 06:00 UTC.",
     who: "Active angel investors, GP scouts, syndicate leads.",
-    offer: "8-item stack: live dashboard, 219-startup backtest CSV, monthly sector deep-dive PDF, two free Chrome extensions, free MCP server, async watchlist build, methodology vault, 30-day Signal-or-It's-Free guarantee. €1,728/yr standalone value at €9.97/mo.",
+    offer: "8-item stack: live dashboard, 219-startup backtest CSV, monthly sector deep-dive PDF, two free Chrome extensions, free MCP server, async watchlist build, methodology vault, 30-day Signal-or-It's-Free guarantee. €1,728/yr standalone value at €49/mo.",
     cta: "Lock the founding price",
     color: "sky",
   },
@@ -161,7 +161,7 @@ const FUNNELS: Funnel[] = [
     activitySlug: "insider",
     href: "/pricing#insider-circle",
     tier: "Mid-ladder",
-    price: "€97/mo",
+    price: "€197/mo",
     hook: "Private investor Telegram + monthly live briefing + Slack/Telegram spike alerts.",
     who: "Funds and syndicates who want the signal earlier than Monday's email.",
     offer: "Everything in Dashboard + JSON/CSV API + spike alerts + monthly briefing call + portfolio overlap report + quarterly trend PDF.",
@@ -306,7 +306,7 @@ export default function FunnelHubPage() {
           </p>
           <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
             Free if you&rsquo;re browsing. €7 if you want the data on your thesis.
-            €9.97/mo if you want the full live dashboard. €97 if you want it earlier
+            €49/mo if you want the full live dashboard. €197 if you want it earlier
             than Monday. €497 if your fund needs custom integration. €1,997 if you
             want one written sector report and you&rsquo;re done. There&rsquo;s no
             wrong door — only doors that fit different check sizes.
@@ -391,12 +391,12 @@ export default function FunnelHubPage() {
               tests whether the data fits your thesis.
             </li>
             <li>
-              <span className="text-sky-400 font-mono text-xs mr-2">[€9.97/mo]</span>
+              <span className="text-sky-400 font-mono text-xs mr-2">[€49/mo]</span>
               <strong className="text-gray-100">Dashboard</strong> — daily-rhythm tool,
               the founding price is locked forever.
             </li>
             <li>
-              <span className="text-teal-400 font-mono text-xs mr-2">[€97/mo]</span>
+              <span className="text-teal-400 font-mono text-xs mr-2">[€197/mo]</span>
               <strong className="text-gray-100">Insider Circle</strong> — earlier
               signal, private community, monthly briefing.
             </li>
@@ -662,7 +662,7 @@ export default function FunnelHubPage() {
               partner at a fund. We don&rsquo;t reverse-engineer their pricing
               — we reverse-engineer their <em>blind spot</em>. The
               smaller check-writer wanting earlier signal isn&rsquo;t their
-              ICP. We built the funnel for that buyer instead — €9.97/mo,
+              ICP. We built the funnel for that buyer instead — €49/mo,
               self-serve, agent-readable, methodology-published. Same data
               economy, different ladder.
             </p>

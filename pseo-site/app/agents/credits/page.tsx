@@ -497,7 +497,7 @@ const r = await fetchWithPayment(
             </div>
             <div>
               <dt className="text-gray-100 font-semibold mb-1">
-                Is this related to the €9.97 Dashboard?
+                Is this related to the €49 Dashboard?
               </dt>
               <dd className="text-gray-400 leading-relaxed">
                 No. The Dashboard is a human-facing weekly subscription. Agent

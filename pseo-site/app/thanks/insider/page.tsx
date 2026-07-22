@@ -52,7 +52,7 @@ export default function ThanksInsider() {
             Payment confirmed · Welcome to the Insider Circle
           </p>
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 leading-[1.1] tracking-tight">
-            You&rsquo;re in. €97/mo founder price, locked forever.
+            You&rsquo;re in. €197/mo founder price, locked forever.
           </h1>
           <p className="text-gray-300 text-base leading-relaxed">
             The Insider Circle is small by design. Three things to set up in

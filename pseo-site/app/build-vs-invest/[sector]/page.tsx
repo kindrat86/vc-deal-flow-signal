@@ -690,7 +690,7 @@ export default async function BuildVsInvestSectorPage({ params }: PageProps) {
                   Watch it move every week
                 </p>
                 <p className="text-gray-100 font-bold text-sm tabular-nums">
-                  €9.97<span className="text-slate-400 text-xs font-medium">/mo</span>
+                  €49<span className="text-slate-400 text-xs font-medium">/mo</span>
                 </p>
               </div>
               <p className="text-gray-400 text-xs leading-relaxed flex-1">
@@ -704,7 +704,7 @@ export default async function BuildVsInvestSectorPage({ params }: PageProps) {
                 href="https://gitdealflow.com/dashboard"
                 className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-sm transition-colors"
               >
-                Get the dashboard — €9.97/mo →
+                Get the dashboard — €49/mo →
               </Link>
             </div>
           </div>

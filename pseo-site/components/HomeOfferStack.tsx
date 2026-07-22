@@ -64,7 +64,7 @@ const PRICED_TOTAL = STACK.reduce((sum, item) => sum + item.priced, 0);
 export default function HomeOfferStack() {
   return (
     <section
-      aria-label="What 9.97 EUR per month unlocks — the priced stack"
+      aria-label="What the Dashboard unlocks — the priced stack"
       className="rounded-2xl border border-emerald-700/40 bg-gradient-to-br from-emerald-950/30 via-slate-900 to-slate-950 p-6 sm:p-8"
     >
       <div className="max-w-3xl">
@@ -74,7 +74,7 @@ export default function HomeOfferStack() {
         <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 mb-3 leading-tight tracking-tight">
           €{PRICED_TOTAL.toLocaleString()} of priced artefacts.{" "}
           <span className="text-emerald-400">
-            €9.97 / month, locked forever.
+            €49 / month.
           </span>
         </h2>
         <p className="text-gray-400 text-sm sm:text-base mb-6 leading-relaxed">
@@ -115,7 +115,7 @@ export default function HomeOfferStack() {
               You pay
             </dt>
             <dd className="text-emerald-300 text-2xl sm:text-3xl font-bold tabular-nums">
-              €9.97
+              €49
               <span className="text-emerald-400/70 text-sm font-normal">
                 /mo
               </span>
