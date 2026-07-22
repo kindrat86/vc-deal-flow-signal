@@ -88,7 +88,7 @@ td{color:#94a3b8}
 .cta-box h2{margin:0 0 8px}
 .cta-box p{margin:0 0 20px;color:#94a3b8}
 .btn{display:inline-block;background:#ff6b1a;color:#fff;padding:12px 28px;border-radius:10px;text-decoration:none;font-weight:600;font-size:.95rem}
-a{color:#ff6b1a;text-decoration:none}
+a:not([class*="btn"]):not([class*="bg-"]):not([role="button"]){color:#ff6b1a;text-decoration:none}
 .swipe-box{background:#1e293b;border:1px solid #334155;border-radius:12px;padding:20px;margin:16px 0}
 .swipe-box h3{margin:0 0 12px;font-size:.95rem;color:#e2e8f0}
 .swipe-box div{background:#0f172a;border:1px solid #1e293b;border-radius:8px;padding:14px;font-size:.85rem;color:#64748b;line-height:1.7;font-style:italic}
@@ -497,7 +497,7 @@ h1{font-size:2em;font-weight:800;margin:1.5em 0 .25em;line-height:1.2;color:#1a1
 .dataset-card h2{font-size:1.1rem;margin:0 0 .25rem;color:#1a1a1a}
 .dataset-card .domain{font-size:.8rem;color:#00d4aa;font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.5rem}
 .dataset-card .desc{font-size:.9rem;color:#555;margin-bottom:.75rem}
-.dataset-card a{color:#2563eb;text-decoration:none;font-weight:600;font-size:.9rem}
+.dataset-card a:not([class*="btn"]):not([class*="bg-"]):not([role="button"]){color:#2563eb;text-decoration:none;font-weight:600;font-size:.9rem}
 .dataset-card a:hover{text-decoration:underline}
 .cta{background:#0f172a;color:#fff;padding:2rem;border-radius:10px;text-align:center;margin:3rem 0}
 .cta h2{color:#00d4aa;margin:0 0 .5rem}
@@ -522,7 +522,7 @@ h2{font-size:1.3em;font-weight:700;color:#f1f5f9;margin:36px 0 12px}
 .cta-box p{margin:0 0 20px;color:#94a3b8}
 .btn{display:inline-block;background:#ff6b1a;color:#fff;padding:12px 28px;border-radius:10px;text-decoration:none;font-weight:600;font-size:.95rem;transition:transform .1s}
 .btn:hover{transform:translateY(-1px)}
-a{color:#ff6b1a;text-decoration:none}
+a:not([class*="btn"]):not([class*="bg-"]):not([role="button"]){color:#ff6b1a;text-decoration:none}
 a:hover{text-decoration:underline}
 .note{color:#64748b;font-size:.85rem;text-align:center;margin:40px 0}
 @media(max-width:640px){.tier-box ul{columns:1}}
@@ -1064,7 +1064,7 @@ h1{font-size:1.8rem;margin-bottom:0.5rem}
 h2{font-size:1.3rem;margin-top:2rem;border-bottom:2px solid #e0e0e0;padding-bottom:0.3rem}
 code,pre{font-family:'SF Mono',Fira Code,monospace;font-size:0.9rem}
 pre{background:#f5f5f5;padding:1rem;border-radius:8px;overflow-x-auto;border:1px solid #e0e0e0}
-a{color:#0066cc}
+a:not([class*="btn"]):not([class*="bg-"]):not([role="button"]){color:#0066cc
 .badge{display:inline-block;background:#0066cc;color:white;padding:0.25rem 0.75rem;border-radius:999px;font-size:0.8rem;font-weight:600;margin-bottom:1rem}
 ul{padding-left:1.5rem} li{margin-bottom:0.5rem}
 
