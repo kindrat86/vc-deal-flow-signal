@@ -364,6 +364,8 @@
         <p role="status" class="js-signup-msg text-gray-400 text-sm mt-4"><span class="text-emerald-400">✓</span> Free &mdash; I cover the compute &nbsp; <span class="text-emerald-400">✓</span> Unsubscribe in one click &nbsp; <span class="text-emerald-400">✓</span> One email, every Sunday</p>
         <p class="text-signal-400 text-xs font-semibold mt-2">This Sunday&apos;s five are already locked. Be on the list when it sends.</p>
 
+        <p class="text-gray-500 text-sm mt-2"><a href="https://buy.stripe.com/bJe5kC48H2d2cEKg6s0x209" onclick="if(window.posthog)posthog.capture('hero_teardown_link_clicked')" class="text-signal-400 underline hover:text-signal-300">Not ready for the list? Get a &euro;1 Tweet Teardown &rarr;</a></p>
+
         <p class="hero-kicker text-base md:text-lg font-semibold leading-tight text-signal-400 mt-6 mb-6"><span class="text-gray-400">Three signals that together predict a fundraise:</span> velocity surge &middot; contributor spike &middot; infrastructure buildout</p>
 
         <div class="max-w-2xl mx-auto mb-6">
@@ -1141,7 +1143,7 @@
           if (data.ok) {
             if (window.posthog) posthog.capture('signup_verify_sent', { placement: form.getAttribute('data-source') || 'landing-page', hero_variant: window.__heroVariant || 'unknown' });
             try { sessionStorage.setItem('gdf_email', email); } catch (e) {}
-            window.location.href = '/dashboard';
+            window.location.href = '/subscribe-thanks';
             return;
           }
           throw new Error(data.error || 'Failed');
@@ -1324,13 +1326,8 @@
   </script>
 
   <script>
-    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split('.');2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement('script')).type='text/javascript',p.async=!0,p.src=s.api_host+'/static/array.js',(r=t.getElementsByTagName('script')[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a='posthog',u.people=u.people||[],u.toString=function(t){var e='posthog';return'posthog'!==a&&(e+='.'+a),t||(e+=' (stub)'),e},u.people.toString=function(){return u.toString(1)+'.people (stub)'},o='init capture register register_once register_for_session unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group setPersonProperties resetPersonProperties setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags'.split(' '),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
-    (function(){
-      function _init(){ if(/^https?:$/.test(location.protocol)) posthog.init('phc_lyZCgvTpicjLzAO3rY2GhxuX5WUc5jQjP8ZVwwJqauX', {api_host: 'https://eu.i.posthog.com', persistence: 'memory', person_profiles: 'identified_only'}); }
-      if('requestIdleCallback' in window){requestIdleCallback(_init,{timeout:2500});} else {setTimeout(_init,2000);}
-      /* A/B hero layout: read flag landing-hero-layout, toggle order, fire exposure */
-      (function(){var F='landing-hero-layout';function apply(){try{var v=(window.posthog&&posthog.getFeatureFlag)?posthog.getFeatureFlag(F):null;var variant=(v==='control')?'control':'form_first';window.__heroVariant=variant;var flow=document.getElementById('hero-flow');if(flow){flow.classList.toggle('hero-control',variant==='control');flow.setAttribute('data-hero-variant',variant);}if(!window.__heroExposed){window.__heroExposed=true;if(window.posthog&&posthog.capture)posthog.capture('hero_experiment_exposed',{variant:variant});}}catch(e){}}function ready(){if(window.posthog&&posthog.onFeatureFlags){posthog.onFeatureFlags(apply);}else{setTimeout(ready,250);}}ready();})();
-    })();
+    /* A/B hero layout: read flag landing-hero-layout, toggle order, fire exposure */
+    (function(){var F='landing-hero-layout';function apply(){try{var v=(window.posthog&&posthog.getFeatureFlag)?posthog.getFeatureFlag(F):null;var variant=(v==='control')?'control':'form_first';window.__heroVariant=variant;var flow=document.getElementById('hero-flow');if(flow){flow.classList.toggle('hero-control',variant==='control');flow.setAttribute('data-hero-variant',variant);}if(!window.__heroExposed){window.__heroExposed=true;if(window.posthog&&posthog.capture)posthog.capture('hero_experiment_exposed',{variant:variant});}}catch(e){}}function ready(){if(window.posthog&&posthog.onFeatureFlags){posthog.onFeatureFlags(apply);}else{setTimeout(ready,250);}}ready();})();
   </script>
 
   <script>
