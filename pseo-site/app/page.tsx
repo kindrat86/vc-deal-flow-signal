@@ -212,22 +212,8 @@ export default function Home() {
           "funding prediction",
           "panel data",
         ],
-        creator: {
-          "@type": "Organization",
-          name: "VC Deal Flow Signal",
-          url: "https://gitdealflow.com",
-          email: "signals@gitdealflow.com",
-          sameAs: [
-            "https://www.linkedin.com/company/gitdealflow",
-            "https://www.wikidata.org/wiki/Q139376302",
-            "https://www.crunchbase.com/organization/gitdealflow",
-          ],
-        },
-        publisher: {
-          "@type": "Organization",
-          name: "VC Deal Flow Signal",
-          url: "https://gitdealflow.com",
-        },
+        creator: {"@id": "https://gitdealflow.com/#organization"},
+        publisher: {"@id": "https://gitdealflow.com/#organization"},
         includedInDataCatalog: [
           {
             "@type": "DataCatalog",
@@ -393,11 +379,7 @@ export default function Home() {
         "@id": "https://signals.gitdealflow.com/#service",
         name: "VC Deal Flow Signal — Engineering Acceleration Tracking",
         serviceType: "Venture Capital Deal Sourcing — Alternative Data",
-        provider: {
-          "@type": "Organization",
-          name: "VC Deal Flow Signal",
-          url: "https://gitdealflow.com",
-        },
+        provider: {"@id": "https://gitdealflow.com/#organization"},
         areaServed: {
           "@type": "Place",
           name: "Global",
@@ -567,11 +549,7 @@ export default function Home() {
         // lastReviewed lets AIO surfaces (Google AI Overviews) treat this
         // page's data as evergreen-but-monitored.
         lastReviewed: getDataLastModified().toISOString().slice(0, 10),
-        reviewedBy: {
-          "@type": "Organization",
-          name: "VC Deal Flow Signal",
-          url: "https://gitdealflow.com",
-        },
+        reviewedBy: {"@id": "https://gitdealflow.com/#organization"},
       },
       {
         "@type": "WebAPI",
@@ -581,11 +559,7 @@ export default function Home() {
           "Free, no-auth public API surface for AI agents and automation. Includes JSON / CSV exports, per-startup signal lookup, MCP server (stdio + Streamable HTTP), A2A JSON-RPC endpoint, NLWeb conversational endpoint, function-calling tool definitions for OpenAI / Anthropic / Gemini SDKs, and embeddable SVG badges. OpenAPI 3.1 spec describes every callable route.",
         documentation: "https://signals.gitdealflow.com/api/openapi.json",
         termsOfService: "https://signals.gitdealflow.com/ai.txt",
-        provider: {
-          "@type": "Organization",
-          name: "VC Deal Flow Signal",
-          url: "https://gitdealflow.com",
-        },
+        provider: {"@id": "https://gitdealflow.com/#organization"},
         endpointURL: [
           "https://signals.gitdealflow.com/api/signals.json",
           "https://signals.gitdealflow.com/api/signals.csv",
@@ -641,11 +615,7 @@ export default function Home() {
           byDay: "https://schema.org/Monday",
           startTime: "09:00",
         },
-        organizer: {
-          "@type": "Organization",
-          name: "VC Deal Flow Signal",
-          url: "https://gitdealflow.com",
-        },
+        organizer: {"@id": "https://gitdealflow.com/#organization"},
         eventAttendanceMode: "https://schema.org/OnlineEventAttendanceMode",
         location: {
           "@type": "VirtualLocation",
@@ -699,6 +669,23 @@ export default function Home() {
             <span className="text-sky-300/90">No code-reading required.</span>
           </span>
         </p>
+
+        {/* TL;DR block — extractable summary for AI agents and busy readers.
+            Centered heading (per style system), left-aligned body text.
+            Reuses facts already on the page — no invented numbers. */}
+        <section
+          className="mb-6 rounded-lg border border-slate-800 bg-slate-900/70 px-5 py-4"
+          data-agent-summary=""
+          aria-label="TL;DR summary"
+        >
+          <h2 className="text-base font-semibold text-sky-400 mb-2 text-center">
+            TL;DR — What this is in two sentences
+          </h2>
+          <p className="text-sm text-gray-300 leading-relaxed text-left">
+            VC Deal Flow Signal tracks GitHub commit velocity, contributor growth, and repository expansion across ~400 venture-backed startup GitHub orgs in 20 sectors.
+            Our SSRN-indexed panel shows high-acceleration orgs with low contributor concentration (Gini &lt; 0.30) are 3.4× more likely to announce a Series A within 60 days — the signal arrives roughly 3–6 weeks before the round feels obvious.
+          </p>
+        </section>
 
         {/* Brunson Secret Formula §1 fix (audit 2026-05-06): "Define result
             in numerical terms above the fold." The 3.4× lift is the

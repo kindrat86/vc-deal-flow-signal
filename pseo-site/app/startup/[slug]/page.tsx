@@ -10,6 +10,8 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import CuriosityGate from "@/components/CuriosityGate";
 import SeoCta from "@/components/SeoCta";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import RelatedLinks from "@/components/RelatedLinks";
+import { getDefaultRelatedGroups } from "@/lib/related-links";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -635,6 +637,8 @@ export default async function StartupPage({ params }: PageProps) {
         {/* CTA */}
         <SeoCta secondary={{ label: "See a €7 First Look sample", href: "/firstlook" }} />
       </div>
+
+      <RelatedLinks groups={getDefaultRelatedGroups()} />
     </>
   );
 }

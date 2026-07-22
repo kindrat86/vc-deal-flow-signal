@@ -11,6 +11,8 @@ import { getDataLastModified } from "@/lib/data";
 import { AgentSummary } from "@/components/AgentSummary";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
+import RelatedLinks from "@/components/RelatedLinks";
+import { getDefaultRelatedGroups } from "@/lib/related-links";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -458,6 +460,8 @@ export default async function AnswerPage({ params }: PageProps) {
           </section>
         ) : null}
       </article>
+
+      <RelatedLinks groups={getDefaultRelatedGroups()} />
     </>
   );
 }

@@ -10,6 +10,8 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 import SeoCta from "@/components/SeoCta";
 import SignalDisclaimer from "@/components/SignalDisclaimer";
+import RelatedLinks from "@/components/RelatedLinks";
+import { getDefaultRelatedGroups } from "@/lib/related-links";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -470,6 +472,8 @@ export default async function ComparisonPage({ params }: PageProps) {
           </Link>
         </p>
       </div>
+
+      <RelatedLinks groups={getDefaultRelatedGroups()} />
     </>
   );
 }

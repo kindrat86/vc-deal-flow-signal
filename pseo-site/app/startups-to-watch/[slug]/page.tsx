@@ -13,6 +13,8 @@ import {
 } from "@/lib/data";
 import StartupTable from "@/components/StartupTable";
 import CuriosityGate from "@/components/CuriosityGate";
+import RelatedLinks from "@/components/RelatedLinks";
+import { getDefaultRelatedGroups } from "@/lib/related-links";
 import SeoCta from "@/components/SeoCta";
 import ShareBar from "@/components/ShareBar";
 import VelocityBar from "@/components/charts/VelocityBar";
@@ -402,6 +404,8 @@ export default async function SectorPage({ params }: PageProps) {
           </section>
         )}
       </div>
+
+      <RelatedLinks groups={getDefaultRelatedGroups()} />
     </>
   );
 }

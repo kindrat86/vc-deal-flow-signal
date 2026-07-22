@@ -11,6 +11,8 @@ import figureRegistry from "@/components/figures";
 import StatCallout from "@/components/StatCallout";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import SeoCta from "@/components/SeoCta";
+import RelatedLinks from "@/components/RelatedLinks";
+import { getDefaultRelatedGroups } from "@/lib/related-links";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -703,6 +705,8 @@ export default async function BlogPostPage({ params }: PageProps) {
 
         {/* CTA */}
         <SeoCta signoffIndex={4} className="mt-12" />
+
+        <RelatedLinks groups={getDefaultRelatedGroups()} />
       </div>
     </>
   );
