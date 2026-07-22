@@ -123,7 +123,7 @@ function frame_monday(mover: TopMover | null): { subject: string; body: string }
     body: `<p>Quick one. GitDealFlow is a tool, not a fund — it just surfaces startups heating up on GitHub in your sectors before they raise, and you look.</p>
 <p>One the tool flagged today is ${moverLine(mover)}.</p>
 <p>If you want to peek: open their org and read the most-recently-edited repo's README. Eight people sharing the work reads very differently from one developer doing most of it — and only one of those shapes tends to lead to a Series A inside 60 days (3.4× more likely, see <a href="${SIGNALS}/methodology#3-4x-finding" style="color:#0ea5e9;">/methodology</a>). You don't crunch anything — the tool surfaces it, you make the call.</p>
-<p>If you want the full list — filtered by sector, stage, geography — the Dashboard is at <a href="${SITE}/dashboard" style="color:#0ea5e9;">€9.97/mo founding rate</a>.</p>
+<p>If you want the full list — filtered by sector, stage, geography — the Dashboard is at <a href="${SITE}/dashboard" style="color:#0ea5e9;">€49/mo founding rate</a>.</p>
 <p>Talk soon —<br>${FROM_NAME}</p>`,
   };
 }

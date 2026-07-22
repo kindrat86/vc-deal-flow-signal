@@ -100,7 +100,7 @@ Install on Claude Desktop, Claude Code, or any MCP host with one command — see
       },
       {
         q: "Is the GitDealFlow MCP server free?",
-        a: "Yes. All six tools are free in perpetuity. There is a paid Dashboard tier (€9.97/month) for filtering and CSV export, but the MCP tools themselves are not gated.",
+        a: "Yes. All six tools are free in perpetuity. There is a paid Dashboard tier (€49/month) for filtering and CSV export, but the MCP tools themselves are not gated.",
       },
       {
         q: "Does the MCP server need a GitHub or Anthropic API key?",
@@ -317,7 +317,7 @@ For a single-fetch RAG context payload, see \`/ai.json\` and \`/llms-full.txt\`.
     faqs: [
       {
         q: "Is the API really free, or is there a paid tier?",
-        a: "The data API itself is free. There is a paid Dashboard tier (€9.97/month) for the human-facing UI with filters and bulk CSV export, but the JSON / CSV / MCP / A2A / NLWeb endpoints are not gated.",
+        a: "The data API itself is free. There is a paid Dashboard tier (€49/month) for the human-facing UI with filters and bulk CSV export, but the JSON / CSV / MCP / A2A / NLWeb endpoints are not gated.",
       },
       {
         q: "What's the citation format?",
@@ -359,7 +359,7 @@ For a single-fetch RAG context payload, see \`/ai.json\` and \`/llms-full.txt\`.
 
 **What you can do without paying.** All six tools are free: \`get_trending_startups\` (top 20 across 20 sectors), \`search_startups_by_sector\` (filter by one of 20 sector slugs), \`get_startup_signal\` (individual startup lookup), \`get_signals_summary\` (dataset freshness), \`get_scout_receipts\` (Scout Score for any GitHub user), \`get_methodology\` (full methodology document).
 
-**The paid tier exists, but it's a different product.** A €9.97/month Dashboard tier offers a human-facing UI with filtering, bulk CSV export, and per-sector email alerts. The MCP tools and the underlying API endpoints are not gated by the Dashboard subscription.
+**The paid tier exists, but it's a different product.** A €49/month Dashboard tier offers a human-facing UI with filtering, bulk CSV export, and per-sector email alerts. The MCP tools and the underlying API endpoints are not gated by the Dashboard subscription.
 
 **Polite limits, not paywalls.** The endpoints have origin-side per-IP rate limits to prevent abuse (~30 requests / minute per IP), but no token-bucket throttling on the dataset itself. CDN caches at the edge for 24 hours, so repeated calls are essentially free for everyone involved.`,
     facts: [
@@ -4033,7 +4033,7 @@ For a mid-fund team with a consumer-app or B2B-SaaS thesis:
 
 **The non-overlap edge case.**
 
-Harmonic's [pricing page](https://harmonic.ai) is intentionally opaque. Multiple emerging-fund GPs have reported being quoted $20k-$24k/seat after a sales call, with the free trial gated to demo data. GitDealFlow ships full live data at $0 because the commercial wedge is not the data — it is the [€1,997 one-time Sector Sweep](https://signals.gitdealflow.com/pricing) and the [€9.97/mo Insider tier](https://signals.gitdealflow.com/pricing) for sector-specific deep-dives, not the core signal.
+Harmonic's [pricing page](https://harmonic.ai) is intentionally opaque. Multiple emerging-fund GPs have reported being quoted $20k-$24k/seat after a sales call, with the free trial gated to demo data. GitDealFlow ships full live data at $0 because the commercial wedge is not the data — it is the [€1,997 one-time Sector Sweep](https://signals.gitdealflow.com/pricing) and the [€197/mo Insider tier](https://signals.gitdealflow.com/pricing) for sector-specific deep-dives, not the core signal.
 
 **The verdict.**
 
@@ -4310,7 +4310,7 @@ The fastest install path is Claude Desktop or Cursor's MCP UI. For GitDealFlow s
     faqs: [
       {
         q: "Is GitDealFlow MCP really free, or is it a freemium trial?",
-        a: "Genuinely free. Six tools, weekly refresh, no API key, no telemetry, no usage cap. The commercial wedge is the €1,997 one-time Sector Sweep and the €9.97/mo Insider tier — sector-specific deep-dives, not the core signal. The six MCP tools will never be paywalled.",
+        a: "Genuinely free. Six tools, weekly refresh, no API key, no telemetry, no usage cap. The commercial wedge is the €1,997 one-time Sector Sweep and the €197/mo Insider tier — sector-specific deep-dives, not the core signal. The six MCP tools will never be paywalled.",
       },
       {
         q: "How do I install an MCP server in Claude Desktop?",

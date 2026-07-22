@@ -344,7 +344,7 @@ export function buildAckEmail(i: SetterEmailInputs): {
 ${escapeHtml(thesisClip)}
 </blockquote>
 
-<p>That's the spine the assessment is built around. We'll either confirm the Sweep is the right vehicle for that thesis, or tell you it isn't (and which rung is — usually the €9.97/mo Dashboard if the answer is "you need recurring, not one-shot"). The "don't buy this" note is real. We turn down maybe 1 in 4 briefs.</p>
+<p>That's the spine the assessment is built around. We'll either confirm the Sweep is the right vehicle for that thesis, or tell you it isn't (and which rung is — usually the €49/mo Dashboard if the answer is "you need recurring, not one-shot"). The "don't buy this" note is real. We turn down maybe 1 in 4 briefs.</p>
 
 <p style="margin-top:24px;"><strong style="color:#1e293b;">A sample shape of the deliverable, tailored to the sector you typed.</strong> The full PDF expands each line below into 2–4 pages with the actual orgs, charts, and contributor maps. This is what the table of contents will look like:</p>
 
@@ -453,7 +453,7 @@ export function buildFollowUpEmail(i: SetterEmailInputs): {
 <p>If the assessment landed and you're moving, ignore this. If the assessment landed and you're sitting on it, here's the question I'd want answered before deciding:</p>
 
 <blockquote style="margin:18px 0;padding:16px 20px;background:#ecfdf5;border-left:4px solid #10b981;color:#065f46;font-size:15px;line-height:1.6;border-radius:4px;">
-What would you act on inside the next 30 days if the three pre-Crunchbase breakouts in the deliverable matched your thesis exactly? If the honest answer is "nothing concrete" — the Dashboard at €9.97/mo is probably the right rung. If the honest answer is "I'd send three first-meeting emails on Monday" — the €1,997 Sweep is the cheap version of an analyst hire.
+What would you act on inside the next 30 days if the three pre-Crunchbase breakouts in the deliverable matched your thesis exactly? If the honest answer is "nothing concrete" — the Dashboard at €49/mo is probably the right rung. If the honest answer is "I'd send three first-meeting emails on Monday" — the €1,997 Sweep is the cheap version of an analyst hire.
 </blockquote>
 
 <p>That's the trade. Both rungs exist; both are real. Reply with one word — <strong>SWEEP</strong>, <strong>DASHBOARD</strong>, or <strong>NEITHER</strong> — and ${escapeHtml(CLOSER_NAME)} will route you accordingly. No call required.</p>
