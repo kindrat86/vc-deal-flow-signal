@@ -3959,6 +3959,53 @@
         }
       ],
       "publishedAt": "2026-07-21T09:00:00Z"
+    },
+    {
+      "date": "2026-07-22",
+      "slug": "2026-07-22",
+      "headline": "The gaming opening hiding in a +0% engineering hiring burst",
+      "hook": "Pre-seed gaming teams shipping 1 commits in 14 days at +0% aren't just building product — they're broadcasting the hiring-burst that usually precedes a raise.",
+      "repo": {
+        "name": "LacledesLAN",
+        "githubUrl": "https://github.com/LacledesLAN",
+        "stage": "Pre-seed",
+        "geography": "Unknown",
+        "sector": "Gaming",
+        "sectorSlug": "gaming",
+        "signalType": "Engineering hiring burst",
+        "commitVelocity14d": 1,
+        "commitVelocityChange": "+0%",
+        "contributors": 3,
+        "contributorGrowth": "+50%",
+        "newRepos": 2,
+        "description": "A Saint Louis Charity LAN Party Group"
+      },
+      "ideaThesis": "Gaming has a buyer who is also a builder. The category incumbents shipped for an ops/HR/finance lead; the next wave ships for the engineer running that function. Read the repo: engineering hiring burst, pre-seed team, 3 contributors. That's the shape of a team that crosses the next funding line on engineering output, not enterprise sales — and the gap they leave is the wedge for an indie or two-founder tool that does one job better than the suite they're inside of.",
+      "buildAngles": [
+        "Creator-side dashboard that pulls live engagement signals from the underlying platform; sell the slice, not the platform.",
+        "Discord/Slack-native bot that surfaces a community's own signal (top contributors, top threads, top movers) on a daily schedule.",
+        "One-click 'state of my channel' artifact — public URL the creator can share on their own audience."
+      ],
+      "distributionPlay": "Live-build it on a small Discord (1k-5k members) for two weeks; the community becomes both QA and first wave. Skip Twitter until the demo URL has its own retention curve.",
+      "signalReading": [
+        {
+          "metric": "1 commits / 14 days",
+          "reading": "Low absolute volume. The signal is the change-in-change, not the raw count — see the next metric."
+        },
+        {
+          "metric": "+0% commit-velocity change",
+          "reading": "Trend is still accelerating, not peaking. A positive change-in-change is the leading edge of the curve, not the back of it."
+        },
+        {
+          "metric": "3 contributors (+50%)",
+          "reading": "Founding-team-still-coding signal. Hiring will be the next-cycle move; ATS / sourcing tools are the natural wedge."
+        },
+        {
+          "metric": "2 new repos in window",
+          "reading": "New repository creation is the classic platform-expansion signal — a team carving the next product surface out of the same codebase. The seam between the old repo and the new one is where a single-purpose external tool lives."
+        }
+      ],
+      "publishedAt": "2026-07-22T09:00:00Z"
     }
   ]
 }
