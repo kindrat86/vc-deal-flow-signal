@@ -142,7 +142,7 @@ export const LAUNCHES: Launch[] = [
         body: [
           "Spend two minutes inside Claude or Cursor with an MCP server attached and the future is obvious. Agents don’t scroll dashboards. They issue tool calls. They scrape, score, decide, and ship a memo before you finish your coffee.",
           "Every signal-data product on the market still bills humans by the seat — €99/month, $299/month, €497/month — assuming a partner clicks through pages. None of them have a credit-meter that an agent can spend against.",
-          "The result is the absurd status quo: an AI scout running on a small-cheque investor’s laptop pays €97 for a full Insider Circle subscription it consumes in 11 minutes of Sunday-morning research, then idles for six days. The data product has no way to charge proportionally, so it overcharges or undercharges depending on the day.",
+          "The result is the absurd status quo: an AI scout running on a small-cheque investor’s laptop pays €197 for a full Insider Circle subscription it consumes in 11 minutes of Sunday-morning research, then idles for six days. The data product has no way to charge proportionally, so it overcharges or undercharges depending on the day.",
         ],
         videoCue: {
           kind: "youtube",
@@ -233,11 +233,11 @@ export const LAUNCHES: Launch[] = [
     isOpen: true,
     closesAt: "2026-06-30T23:59:00Z",
     headline:
-      "Founding-100 — €9.97/mo locked forever, before the public rate climbs to €49/mo.",
+      "Founding-100 — €49/mo locked forever, before the public rate climbs to €49/mo.",
     hook:
       "100 founding-member spots for the investor writing €5k–€50k checks. Not a discount, not a coupon — a permanent rate that holds even as the public price doubles, then quadruples.",
     abstract:
-      "Founding-100 is the rate seat for the first 100 paying members of GitDealFlow. €9.97/month, locked for the lifetime of the subscription. Includes the live Dashboard, weekly Acceleration Watch, monthly Sector Deep-Dive PDF, both Chrome extensions, and the free MCP server. After 100 spots fill, the public rate is €49/month for new buyers. Founding members keep €9.97 forever — through company growth, price hikes, and feature expansion.",
+      "Founding-100 is the rate seat for the first 100 paying members of GitDealFlow. €49/month, locked for the lifetime of the subscription. Includes the live Dashboard, weekly Acceleration Watch, monthly Sector Deep-Dive PDF, both Chrome extensions, and the free MCP server. After 100 spots fill, the public rate is €49/month for new buyers. Founding members keep €9.97 forever — through company growth, price hikes, and feature expansion.",
     stack: [
       {
         label: "Live Dashboard — 140 venture-backed startups, refreshed weekly",
@@ -264,12 +264,12 @@ export const LAUNCHES: Launch[] = [
         standalone: "€0 — bundled with every tier",
       },
       {
-        label: "Founding-member rate locked forever (€9.97/mo, no renegotiation)",
+        label: "Founding-member rate locked forever (€49/mo, no renegotiation)",
         standalone: "€468/yr of permanent margin",
       },
     ],
     standaloneTotal: "€1,602/yr of standalone value",
-    launchPrice: "€9.97/month — locked forever for the first 100 buyers",
+    launchPrice: "€49/month — locked forever for the first 100 buyers",
     postLaunchPrice: "€49/month for new buyers after the 100 cap fills",
     priceEUR: 10,
     stages: [
@@ -282,7 +282,7 @@ export const LAUNCHES: Launch[] = [
         body: [
           "Look at the deal-flow tool prices. Harmonic starts at €1,000/month per seat. Affinity is enterprise-only. Tracxn is in the same range. Crunchbase Pro is €99/month and doesn’t track engineering signals at all.",
           "All four are priced for institutional buyers — partners at funds with six-figure data budgets, signing 12-month contracts. None of them are priced for the investor writing €5k–€50k checks out of personal capital, who needs the same engineering-velocity signal but consumes it on Sunday afternoons, not in eight-person partner meetings.",
-          "Founding-100 is the rate seat that admits this buyer exists. €9.97/month. The price isn’t a discount — it’s the right number for the consumption shape. The opportunity is to lock it before the public rate (€49/month) catches up to where the institutional tools sit.",
+          "Founding-100 is the rate seat that admits this buyer exists. €49/month. The price isn’t a discount — it’s the right number for the consumption shape. The opportunity is to lock it before the public rate (€49/month) catches up to where the institutional tools sit.",
         ],
         videoCue: {
           kind: "youtube",
@@ -302,7 +302,7 @@ export const LAUNCHES: Launch[] = [
         body: [
           "Picture the rhythm. Monday at 06:00 UTC the Acceleration Watch arrives in your inbox. Top 10 movers across every tracked sector. You skim, mark two, archive the rest.",
           "Sunday morning you open the Dashboard. You filter by your two sectors. Six orgs are accelerating. You hover with the Crunchbase extension, see the velocity score, decide whether two of the six are worth a 30-minute write-up. By 11am you have a watchlist for the week — or a pre-Crunchbase outreach you’re sending Monday morning, three weeks ahead of every fund.",
-          "That’s the loop the €9.97/mo seat buys. It’s not a workflow you have to schedule — it’s a rhythm you fall into. The deep-dive PDF arrives the first Monday of every month, which keeps a calendar pin on the routine. The two Chrome extensions mean the velocity score is one hover away on every Crunchbase profile and Wellfound search.",
+          "That’s the loop the €49/mo seat buys. It’s not a workflow you have to schedule — it’s a rhythm you fall into. The deep-dive PDF arrives the first Monday of every month, which keeps a calendar pin on the routine. The two Chrome extensions mean the velocity score is one hover away on every Crunchbase profile and Wellfound search.",
         ],
         videoCue: {
           kind: "youtube",
@@ -338,16 +338,16 @@ export const LAUNCHES: Launch[] = [
         plc: "big-idea",
         caption: "Stage 4 · Big Idea · Open Cart",
         headline:
-          "23 of 100 spots taken. €9.97/month. Locked the day you subscribe, for as long as you stay subscribed.",
+          "23 of 100 spots taken. €49/month. Locked the day you subscribe, for as long as you stay subscribed.",
         body: [
           "Open until 100 spots fill or June 30 — whichever comes first. The counter at the top of /pricing is live (Stripe webhook → SHARP_2026_TAKEN), so the spot count is real, not a marketing prop.",
-          "The math: 100 founding members at €9.97/month is €11,964/year of recurring revenue. That funds the GitHub-API layer, the regression compute, the dataset hosting, and one part-time analyst on monthly deep-dives. Above 100, the same operations stretch — which is why the public rate climbs.",
+          "The math: 100 founding members at €49/month is €11,964/year of recurring revenue. That funds the GitHub-API layer, the regression compute, the dataset hosting, and one part-time analyst on monthly deep-dives. Above 100, the same operations stretch — which is why the public rate climbs.",
           "If the rhythm above (Monday digest, Sunday dashboard, monthly PDF, hover-extensions) maps to how you already source, the €9.97 lock is the cheapest decision on this page. If it doesn’t map, the free Acceleration Watch stays free and you lose nothing by skipping. The ladder is real. The rungs hold. Founding-member is the rung that closes when 100 fills.",
         ],
       },
     ],
     buyUrl: "https://buy.stripe.com/4gMbJ07kTaJy7kqg6s0x20b",
-    ctaLabel: "Lock €9.97/mo — claim a founding spot →",
+    ctaLabel: "Lock €49/mo — claim a founding spot →",
     cohort: "launch-founding-100",
     faq: [
       {
@@ -356,11 +356,11 @@ export const LAUNCHES: Launch[] = [
       },
       {
         q: "Can I upgrade later to a higher tier?",
-        a: "Yes. Insider Circle (€77/mo, 6 free MCP tools + private Telegram + spike alerts) and Sector Sweep (€1,797 weekend deep-dive) are both available to founding members at no special discount — same price as everyone else. The €9.97/mo lock applies only to the founding-member tier itself.",
+        a: "Yes. Insider Circle (€77/mo, 6 free MCP tools + private Telegram + spike alerts) and Sector Sweep (€1,797 weekend deep-dive) are both available to founding members at no special discount — same price as everyone else. The €49/mo lock applies only to the founding-member tier itself.",
       },
       {
         q: "What happens if I cancel and resubscribe?",
-        a: "You pay the public rate at the time of resubscription. The €9.97/mo is locked while your subscription is continuous — gaps reset the lock. This is standard SaaS founder-rate practice and is what makes the lock economically honest.",
+        a: "You pay the public rate at the time of resubscription. The €49/mo is locked while your subscription is continuous — gaps reset the lock. This is standard SaaS founder-rate practice and is what makes the lock economically honest.",
       },
       {
         q: "Are agent users on this tier?",
@@ -488,7 +488,7 @@ export const LAUNCHES: Launch[] = [
         body: [
           "Cohort opens now and closes June 14 at midnight UTC, or earlier if all 8 spots fill. After the cohort closes, the standard Sector Sweep rate is €2,497 and runs are scheduled monthly with one buyer at a time. The €1,797 cohort price is the only way in at this rate.",
           "At checkout you pick the sector. The 19 currently-tracked sectors are: AI infrastructure, AI agents, developer tools, climate tech, biotech, fintech, cybersecurity, robotics, edge compute, vertical SaaS, gaming, creator tools, healthcare, defense tech, mobility, supply chain, vector databases, MLOps, observability. Email if you want a different sector run for the cohort.",
-          "If a Sector Sweep is the right shape for you, this is the cheapest sector landscape you’re going to find that holds up under reproducibility. If it isn’t, the free Acceleration Watch and the €9.97 founding-member rate stay where they are. Sector Sweep is the rung above founding-member; it doesn’t replace it.",
+          "If a Sector Sweep is the right shape for you, this is the cheapest sector landscape you’re going to find that holds up under reproducibility. If it isn’t, the free Acceleration Watch and the €49 founding-member rate stay where they are. Sector Sweep is the rung above founding-member; it doesn’t replace it.",
         ],
       },
     ],

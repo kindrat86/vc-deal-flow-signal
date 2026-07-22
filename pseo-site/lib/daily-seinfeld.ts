@@ -193,7 +193,7 @@ function frame_sunday(mover: TopMover | null): { subject: string; body: string }
     subject: "A startup heating up early — early look tomorrow",
     body: `<p>Sunday note, Monday delivery.</p>
 <p>The free email goes out Mondays at 09:00 UTC — the startups the tool flagged as heating up early in your sectors, before they raise. The one at the top right now is ${moverLine(mover)}.</p>
-<p>If you'd like them 24 hours ahead of everyone else, that's the only thing the Insider Sunday briefing actually sells: the same startups, sent Sunday at 09:00 UTC instead of Monday. €97/mo founder rate, locked forever. <a href="${SIGNALS}/insider" style="color:#0ea5e9;">${SIGNALS}/insider</a>.</p>
+<p>If you'd like them 24 hours ahead of everyone else, that's the only thing the Insider Sunday briefing actually sells: the same startups, sent Sunday at 09:00 UTC instead of Monday. €197/mo founder rate, locked forever. <a href="${SIGNALS}/insider" style="color:#0ea5e9;">${SIGNALS}/insider</a>.</p>
 <p>If you'd rather just keep reading the free version, that's exactly what hits your inbox tomorrow morning. No upgrade pressure.</p>
 <p>Talk tomorrow —<br>${FROM_NAME}</p>`,
   };

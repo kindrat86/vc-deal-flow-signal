@@ -798,7 +798,7 @@ export const CHALLENGE_DAYS: readonly ChallengeDay[] = [
     slug: "pre-graduation",
     phase: "operationalize",
     title: "Pre-graduation — which rung makes sense?",
-    oneLine: "Free, €9.97/mo, or €1,997 — match the rung to the actual usage pattern from the last 30 days.",
+    oneLine: "Free, €49/mo, or €1,997 — match the rung to the actual usage pattern from the last 30 days.",
     whyItMatters:
       "Tomorrow is graduation. Today is the honest pre-conversation: based on the last 29 days, which rung — if any — actually fits the pattern? If you ran the manual procedure once a week, free Sunday digest is the right level. If you wanted to monitor 30+ orgs, the Dashboard is the right level. If one sector is heating up and you can't sweep it manually, the Sector Sweep is the right level.",
     procedure: [
@@ -812,7 +812,7 @@ export const CHALLENGE_DAYS: readonly ChallengeDay[] = [
     edgeCase:
       "Some readers find the free Sunday digest is correct, full stop — the manual rhythm is enough and the upgrade is FOMO. That's a valid outcome. The framework is yours either way.",
     bonus:
-      "The Dashboard's founding rate (€9.97/mo) locks for life. If usage data points to Dashboard, the founding-rate clock is the only thing that makes the timing matter — pricing reverts after the 2026 cohort closes.",
+      "The Dashboard's founding rate (€49/mo) locks for life. If usage data points to Dashboard, the founding-rate clock is the only thing that makes the timing matter — pricing reverts after the 2026 cohort closes.",
     yesterdayRecap:
       "Yesterday you committed to the Sunday rhythm. Today: the rung-selection conversation, before tomorrow's graduation pitch.",
     tomorrowTeaser:

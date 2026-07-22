@@ -82,7 +82,7 @@ export const ARCHETYPES: readonly Archetype[] = [
     },
     rampTier: {
       name: "Dashboard",
-      price: "€9.97/mo",
+      price: "€49/mo",
       href: "/pricing",
     },
     entryCta: {
@@ -91,7 +91,7 @@ export const ARCHETYPES: readonly Archetype[] = [
       external: true,
     },
     rampCta: {
-      label: "Or jump to the €9.97/mo Dashboard",
+      label: "Or jump to the €49/mo Dashboard",
       href: "/pricing",
     },
     whatBuys: [
@@ -121,7 +121,7 @@ export const ARCHETYPES: readonly Archetype[] = [
     ],
     entryTier: {
       name: "Insider Circle",
-      price: "€97/mo",
+      price: "€197/mo",
       href: "/insider",
     },
     rampTier: {
