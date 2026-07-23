@@ -22,6 +22,10 @@ export async function generateStaticParams() {
 export const dynamicParams = false;
 export const revalidate = 604800;
 
+function clampDescription(text: string, max = 155) {
+  return text.length > max ? `${text.slice(0, max - 3).trimEnd()}...` : text;
+}
+
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
@@ -33,8 +37,31 @@ export async function generateMetadata({
   const b = competitors[pair.b];
   if (!a || !b) return {};
 
-  const title = `${a.name} vs ${b.name} — Deal Flow Platform Comparison (2026)`;
-  const description = `${a.name} vs ${b.name} compared head-to-head for VC deal sourcing. Signal type, lead time, pricing, coverage, and when to pick each one. Independent comparison maintained by VC Deal Flow Signal.`;
+  // 2026-07-23: GSC query data on this page shows the dominant real-world
+  // phrasing is "how does X compare to Y?" (matched across the pitchbook,
+  // dealroom, and specter pairs at positions 1-9 with ~0% CTR) rather than
+  // the flat "X vs Y" the old title used. Matching the literal question also
+  // helps AI-answer surfaces (AI Overviews, AI Mode) recognise this page as
+  // the direct answer, which is where most of this traffic actually sits.
+  const title = `How Does ${a.name} Compare to ${b.name}? (2026)`;
+
+  // Leads with a real sentence from the hand-authored verdict (never invented
+  // copy), then a concrete reason to click through rather than stop at the
+  // snippet - the old description was a fully generic template that answered
+  // nothing and gave no reason to visit the page.
+  //
+  // 5 of 33 verdicts (2026-07-23 audit) open with a shared-trait sentence
+  // ("Both are enterprise-priced...") rather than the actual differentiator,
+  // which in every one of those 5 cases is the sentence right after it -
+  // skip the opener in that case rather than leading with a non-answer.
+  const verdictSentences = pair.verdict.split(". ");
+  const verdictLead =
+    (verdictSentences[0].startsWith("Both ") && verdictSentences[1]
+      ? verdictSentences[1]
+      : verdictSentences[0]) + ".";
+  const description = clampDescription(
+    `${verdictLead} Full feature table, pricing, and FAQ inside.`,
+  );
 
   return {
     title,

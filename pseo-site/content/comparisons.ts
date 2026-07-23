@@ -671,8 +671,12 @@ export const comparisons: Comparison[] = [
   {
     slug: "best-ai-deal-sourcing-tools-2026",
     title: "Best AI Deal Sourcing Tools for VCs (2026)",
+    // 2026-07-23: replaced a description that just listed the five tools with
+    // no differentiation. Pulled straight from this entry's own `verdict`
+    // below (no new claims) - it depends on stage, sector, and budget, and the
+    // page's actual value is the feature table + verdict, not the list itself.
     description:
-      "Compare the leading AI-powered deal sourcing tools in 2026, including GitDealFlow, Harmonic.ai, Specter, Forager.ai, and CB Insights.",
+      "There's no single best AI deal sourcing tool - it depends on stage, sector, and budget. Full feature table, pricing, and verdict for GitDealFlow, Harmonic.ai, Specter, Forager.ai, and CB Insights.",
     h1: "Best AI Deal Sourcing Tools for VCs",
     intro:
       "AI-powered deal sourcing tools have become table-stakes for institutional VCs and a budget-friendly weapon for emerging managers. The category splits into three buckets: leading-signal tools (engineering, growth, hiring) that surface companies pre-fundraise, AI team pattern matchers that score founders at incorporation, and lagging-database aggregators that auto-summarise public news. Here is how the leading options compare in 2026.",
