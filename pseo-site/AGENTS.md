@@ -27,3 +27,14 @@ real name/face/voice (anonymity is a design pillar — see `lib/data-nerd.ts`);
 only add a `sameAs` URL that is already published and vetted in `/citations`.
 Wikidata `Q139376302` is the *brand* entity — it belongs on the
 Organization node, never on the Person.
+
+# Деплой і граблі (signals.gitdealflow.com)
+
+- Live source = гілка `worldclass-signals` через worktree, НЕ main
+- Домен ALIAS-PINNED: `vercel --prod` НЕ оновлює live — треба `vercel alias` на новий деплой
+- CSP `require-trusted-types-for` → React-сайт стає ПОРОЖНІМ без Trusted Types policy (fix у commit 22d6de1c). Це протилежний фікс до gitdealflow/churnlens PostHog-кейсу
+- `/ux.js` у layout.tsx блank-скринив сайт (App Router hydration wipe) — видалено, НЕ повертати; ux.css можна
+- Headings/heroes ЦЕНТРОВАНІ, body-текст ЛІВОРУЧ — свідома система вирівнювання
+- Auto-deploy loop ВИМКНЕНО навмисно — не вмикати
+- Верифікація ТІЛЬКИ скріншотом: curl 200 вже приховував порожню сторінку
+- Гейти деплою: чисте дерево, clean-tree gate; перед правками перевір `ps aux | grep hermes` (сворм-гонки)
