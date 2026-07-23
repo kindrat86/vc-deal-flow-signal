@@ -60,6 +60,40 @@ export default function HomeSqueeze() {
 
       <HomeSqueezeForm />
 
+      {/* Honest social proof — real sample issue thumbnail */}
+      <div className="flex flex-col sm:flex-row items-start gap-4 rounded-lg border border-slate-800 bg-slate-900/40 p-4">
+        <a
+          href="https://gitdealflow.com/report"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="shrink-0 block w-full sm:w-40 rounded-md overflow-hidden border border-slate-700 hover:border-sky-600/50 transition-colors"
+        >
+          <img
+            src="/report-thumbnail.png"
+            alt="Screenshot of the free sample Sunday issue"
+            className="w-full h-auto block"
+            loading="lazy"
+          />
+        </a>
+        <div className="min-w-0">
+          <p className="text-gray-200 text-sm font-medium mb-1">
+            This is the real thing.
+          </p>
+          <p className="text-gray-400 text-xs leading-relaxed mb-2">
+            Click to see a sample report — the 5-startup format you'll get
+            every Sunday, with plain-English notes on the engineering signal.
+          </p>
+          <a
+            href="https://gitdealflow.com/report"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 text-sky-400 hover:text-sky-300 text-xs font-medium underline decoration-dotted underline-offset-2"
+          >
+            View sample issue →
+          </a>
+        </div>
+      </div>
+
       {/* Tertiary exits — visibly subordinate. Smaller type, no color
           accents, single-line cards. The visitor who's not ready for
           email still has somewhere to go, but the gravity is the form. */}

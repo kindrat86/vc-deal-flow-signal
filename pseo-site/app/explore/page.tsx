@@ -8,6 +8,7 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import RelatedLinks from "@/components/RelatedLinks";
 import { getDefaultRelatedGroups } from "@/lib/related-links";
+import InlineSubscribe from "@/components/InlineSubscribe";
 
 const SITE = "https://signals.gitdealflow.com";
 
@@ -32,11 +33,10 @@ export default function ExplorePage() {
   return (
     <>
       <HreflangLinks
-        hrefLang="en-US"
-        href="https://signals.gitdealflow.com/explore"
-        path="/explore"
+        canonical="https://signals.gitdealflow.com/explore"
+        languages={{"en-US": "https://signals.gitdealflow.com/explore"}}
       />
-      <AgentMirrorLinks path="/explore" title="Explore the Signal Network — VC Deal Flow Signal" />
+      <AgentMirrorLinks path="/explore" />
       <main className="max-w-5xl mx-auto px-4 py-12">
         <h1 className="text-3xl font-bold text-gray-100 mb-2 text-center">
           Explore the Signal Network
@@ -149,6 +149,11 @@ export default function ExplorePage() {
             ))}
           </div>
         </section>
+
+        {/* Inline email capture — capture readers browsing the sitemap */}
+        <div className="mb-12">
+          <InlineSubscribe template="explore" />
+        </div>
 
         <RelatedLinks groups={getDefaultRelatedGroups()} />
       </main>

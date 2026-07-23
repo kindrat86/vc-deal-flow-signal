@@ -55,6 +55,15 @@ export default function HomeSqueezeForm() {
         const text = await res.text().catch(() => "");
         throw new Error(text || `HTTP ${res.status}`);
       }
+
+      // Fire PostHog custom event
+      if (typeof window !== "undefined" && (window as any).posthog) {
+        (window as any).posthog.capture("signals_home_subscribed", {
+          source: "home",
+          route,
+        });
+      }
+
       setStatus("success");
     } catch (err) {
       setStatus("error");
