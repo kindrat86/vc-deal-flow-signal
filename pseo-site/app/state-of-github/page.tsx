@@ -49,7 +49,7 @@ const ADDRESSES: ReadonlyArray<{
     slug: "may-2026",
     month: "May 2026",
     publishDate: "2026-05-06",
-    videoId: null,
+    videoId: "3TCVXMdw2L8",
     title:
       "AI-Native Devtools Are the Loudest Sector of 2026. Verifiable Compute Is the Most Consequential.",
     summary:
