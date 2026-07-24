@@ -218,14 +218,11 @@ export default function WikidataClaimPage() {
         author: { "@id": `${APEX}/#organization` },
         datePublished: "2026-05-09",
         itemReviewed: {
-          "@type": "Thing",
-          name: "VC Deal Flow Signal",
-          identifier: {
-            "@type": "PropertyValue",
-            propertyID: "wikidata",
-            value: QID,
-            url: WIKIDATA_URL,
-          },
+          "@type": "Claim",
+          author: { "@id": `${APEX}/#organization` },
+          datePublished: "2026-05-09",
+          appearance: `${SITE}/wikidata`,
+          firstAppearance: WIKIDATA_URL,
         },
         reviewRating: {
           "@type": "Rating",
