@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title:
     "Pricing — Start free, go deeper only when you need it | VC Deal Flow Signal",
   description:
-    "VC Deal Flow Signal pricing — start free, test one sector, move to the full field, or go deeper only when the question justifies it. Founding-member rates locked. 30-day Signal-or-It's-Free guarantee on every paid plan above €1.",
+    "VC Deal Flow Signal pricing — start free, test one sector, move to the full field, or go deeper only when the question justifies it. 30-day Signal-or-It's-Free guarantee on every paid plan above €1.",
   alternates: {
     canonical: "/pricing",
   },
@@ -156,7 +156,7 @@ const tiers: Tier[] = [
     name: "Dashboard Beta",
     priceLabel: "€49",
     priceCadence: "/mo",
-    rrpLabel: "Going to €49/mo permanently",
+    rrpLabel: "Founding rate €9.97/mo — window closed 2026-06-30",
     oneLine:
       "140 startups ranked across 20 sectors, refreshed weekly, with sector filters and historical period comparisons.",
     forWho:
@@ -169,7 +169,7 @@ const tiers: Tier[] = [
       "Free Chrome extensions — Crunchbase + Wellfound badge and GitHub-native hover lookup",
       "30-day Signal-or-It's-Free guarantee",
     ],
-    ctaLabel: "Lock In Founding Price",
+    ctaLabel: "Get the Dashboard",
     ctaHref: STRIPE_DASHBOARD,
     highlight: true,
   },
@@ -178,7 +178,7 @@ const tiers: Tier[] = [
     name: "Insider Circle",
     priceLabel: "€197",
     priceCadence: "/mo",
-    rrpLabel: "Going to €197/mo permanently",
+    rrpLabel: "Founding rate €97/mo — window closed 2026-06-30",
     oneLine:
       "Private Telegram group, live briefings, custom watchlists, JSON API, and bulk CSV pulls — every part of the signal that doesn't fit a public dashboard.",
     forWho:
@@ -303,7 +303,7 @@ const tiers: Tier[] = [
 const faqs: { q: string; a: string }[] = [
   {
     q: "How much does VC Deal Flow Signal cost?",
-    a: "Pricing has ten tiers. The Signal Digest is free forever — a weekly email with five ranked startups. The Book is €0.99 one-time (or free PDF/EPUB) for the 104-page operational field manual on the seven public-data signals that precede Series A rounds. The Tweet Teardown is €1 one-time and delivers a tweet-length (≤280 char) momentum teardown of one startup you name, hand-written by the founder, within 24 hours. The First Look Pass is €7 one-time and delivers a full sector deep dive within 24 hours. The Dashboard Beta is €49 per month at founding-member pricing (going to €49 per month permanently) and ranks 140 startups across 20 sectors with weekly refresh. The Insider Circle is €197 per month at founding-member pricing (going to €197 per month) and adds a private Telegram group, custom watchlists, and JSON / CSV API access. The Sharp Tier is €497 per month or €4,970 per year for active funds and syndicates — quarterly portfolio review brief, custom thesis-aligned watchlist co-built with the fund, white-labeled API endpoint at /api/v1/sharp/<your-fund>, methodology source code access, application-gated and capped at 8 funds in 2026. The Custom Sector Sweep is €1,997 one-time for a written report on one sector of your choice. The Methodology Partnership is €14,997 per year (founding rate, going to €29,997 per year for funds joining 2027+) and runs a custom regression on the fund's anonymized portfolio outcomes, ships a bespoke 50-org watchlist with monthly rebuild, runs a white-labeled fund subdomain at signal.yourfund.com, and includes a quarterly synthetic founder talk and async-only methodology Q&A — capped at 5 funds in 2026. The Vault is €49,997 per year (founding rate, going to €99,997 per year for funds joining 2027+) and adds co-development access to the panel-construction pipeline, pre-publication SSRN preview six months early, 72-hour signal head-start over the public Dashboard, an annual async methodology summit, methodology source repo on a fund-only fork license, and Signal-of-the-Quarter co-investment alerts — capped at 2 funds in 2026. The Methodology Partnership and Vault are async-only and anonymity-preserving — no live calls, no in-person attendance. The free MCP server for Claude / Cursor / Windsurf is bundled with every tier including the free one and will never be gated.",
+    a: "Pricing has ten tiers. The Signal Digest is free forever — a weekly email with five ranked startups. The Book is €0.99 one-time (or free PDF/EPUB) for the 104-page operational field manual on the seven public-data signals that precede Series A rounds. The Tweet Teardown is €1 one-time and delivers a tweet-length (≤280 char) momentum teardown of one startup you name, hand-written by the founder, within 24 hours. The First Look Pass is €7 one-time and delivers a full sector deep dive within 24 hours. The Dashboard Beta is €49 per month (the €9.97/mo founding rate closed 2026-06-30; existing founding members keep it for life) and ranks 140 startups across 20 sectors with weekly refresh. The Insider Circle is €197 per month (founding rate was €97/mo, same closed cohort) and adds a private Telegram group, custom watchlists, and JSON / CSV API access. The Sharp Tier is €497 per month or €4,970 per year for active funds and syndicates — quarterly portfolio review brief, custom thesis-aligned watchlist co-built with the fund, white-labeled API endpoint at /api/v1/sharp/<your-fund>, methodology source code access, application-gated and capped at 8 funds in 2026. The Custom Sector Sweep is €1,997 one-time for a written report on one sector of your choice. The Methodology Partnership is €14,997 per year (founding rate, going to €29,997 per year for funds joining 2027+) and runs a custom regression on the fund's anonymized portfolio outcomes, ships a bespoke 50-org watchlist with monthly rebuild, runs a white-labeled fund subdomain at signal.yourfund.com, and includes a quarterly synthetic founder talk and async-only methodology Q&A — capped at 5 funds in 2026. The Vault is €49,997 per year (founding rate, going to €99,997 per year for funds joining 2027+) and adds co-development access to the panel-construction pipeline, pre-publication SSRN preview six months early, 72-hour signal head-start over the public Dashboard, an annual async methodology summit, methodology source repo on a fund-only fork license, and Signal-of-the-Quarter co-investment alerts — capped at 2 funds in 2026. The Methodology Partnership and Vault are async-only and anonymity-preserving — no live calls, no in-person attendance. The free MCP server for Claude / Cursor / Windsurf is bundled with every tier including the free one and will never be gated.",
   },
   {
     q: "Why is there a €1 tier?",
@@ -319,7 +319,7 @@ const faqs: { q: string; a: string }[] = [
   },
   {
     q: "What is founding-member pricing?",
-    a: "Founding-member pricing is the discounted launch rate on Dashboard Beta (€49 per month versus the €49 per month list price) and Insider Circle (€197 per month versus the €197 per month list price). Founding-member rates lock in for the lifetime of the subscription as long as the subscription stays active. Once we exit beta, list prices apply to new sign-ups; founding members keep their original rate. There is no minimum commitment — month-to-month, cancel anytime.",
+    a: "Founding-member pricing was the discounted launch rate on Dashboard Beta (€9.97 per month) and Insider Circle (€97 per month), locked for the lifetime of the subscription as long as it stays active. The founding window closed 2026-06-30. Everyone who signed up before that date keeps their original rate for as long as they stay subscribed; new sign-ups pay the list price — €49 per month for Dashboard, €197 per month for Insider. There is no minimum commitment on either — month-to-month, cancel anytime.",
   },
   {
     q: "What is the Signal-or-It's-Free guarantee?",
@@ -527,7 +527,7 @@ export default function PricingPage() {
           <code className="rounded bg-amber-900/40 px-1.5 py-0.5 text-amber-100 font-semibold">
             PH50OFF
           </code>{" "}
-          at Stripe checkout. Stacks on top of founding-member pricing.
+          at Stripe checkout.
         </div>
 
         {/* Sharp Tier scarcity — public counter, updated when funds sign */}
@@ -543,9 +543,10 @@ export default function PricingPage() {
           Start with the lightest useful step, then go deeper only if the question justifies it. The free Signal
           Digest and the free MCP server are the distribution magnet — they
           will never be gated. The €1 Tweet Teardown is the threshold
-          breaker between Free and €7. Dashboard at €49 per month and
-          Insider Circle at €197 per month are at founding-member rates and
-          lock in for the lifetime of the subscription. Sharp Tier at €497
+          breaker between Free and €7. Dashboard is €49 per month and
+          Insider Circle is €197 per month (founding members who joined
+          before 2026-06-30 keep €9.97 and €97 respectively for life).
+          Sharp Tier at €497
           per month is the dedicated landing for active funds; it is
           application-gated and capped at 8 funds in 2026. Every paid tier
           ships with a 30-day Signal-or-It&rsquo;s-Free guarantee. If your real
@@ -606,7 +607,7 @@ export default function PricingPage() {
         </div>
 
         <AgentSummary
-          tldr="VC Deal Flow Signal (GitDealFlow) has seven pricing tiers: a free weekly Signal Digest with five ranked startups, a €1 one-time Tweet Teardown (tweet-length GitHub-momentum read on one startup the buyer names — buyer-threshold breaker between Free and €7), a €7 one-time First Look Pass for a sector deep dive, a €49/mo Dashboard Beta covering 140 startups across 20 sectors at founding-member rates, a €197/mo Insider Circle adding private Telegram + JSON/CSV API at founding-member rates, a €497/mo Sharp Tier for active funds with quarterly review calls + custom watchlists + white-labeled API + methodology source code (application-gated, capped at 8 funds in 2026), and a €1,997 one-time Custom Sector Sweep written report. The free MCP server (five read-only tools) is bundled with every tier including the free one and will never be gated. Every paid tier ships with a 30-day Signal-or-It's-Free guarantee."
+          tldr="VC Deal Flow Signal (GitDealFlow) has seven pricing tiers: a free weekly Signal Digest with five ranked startups, a €1 one-time Tweet Teardown (tweet-length GitHub-momentum read on one startup the buyer names — buyer-threshold breaker between Free and €7), a €7 one-time First Look Pass for a sector deep dive, a €49/mo Dashboard Beta covering 140 startups across 20 sectors, a €197/mo Insider Circle adding private Telegram + JSON/CSV API, a €497/mo Sharp Tier for active funds with quarterly review calls + custom watchlists + white-labeled API + methodology source code (application-gated, capped at 8 funds in 2026), and a €1,997 one-time Custom Sector Sweep written report. A founding-member rate (€9.97/mo Dashboard, €97/mo Insider) closed 2026-06-30 and applies only to subscribers who joined before that date. The free MCP server (five read-only tools) is bundled with every tier including the free one and will never be gated. Every paid tier ships with a 30-day Signal-or-It's-Free guarantee."
           pageUrl="https://signals.gitdealflow.com/pricing"
           asOf={asOf}
           citeAs="VC Deal Flow Signal — Pricing (signals.gitdealflow.com/pricing), retrieved Q2 2026."
@@ -631,9 +632,9 @@ export default function PricingPage() {
             },
             {
               claim:
-                "Founding-member rates (€49/mo Dashboard, €197/mo Insider) lock in for the lifetime of the subscription; list prices are €49/mo and €197/mo respectively.",
+                "Current list prices are €49/mo Dashboard and €197/mo Insider Circle. A founding-member rate (€9.97/mo Dashboard, €97/mo Insider) closed 2026-06-30; subscribers who joined before that date keep it for the lifetime of their subscription.",
               sourceUrl: "https://gitdealflow.com/dashboard",
-              sourceLabel: "Dashboard founding rate",
+              sourceLabel: "Dashboard pricing",
             },
             {
               claim:
@@ -800,13 +801,13 @@ export default function PricingPage() {
             Dashboard Beta — what €49/mo actually buys
           </p>
           <h2 className="text-2xl font-bold text-gray-100 mb-2">
-            €1,728/yr of standalone value, locked at the founder price
+            €1,728/yr of standalone value for €49/mo
           </h2>
           <p className="text-gray-400 text-sm mb-6 max-w-2xl">
             Each row below is the standalone market price for the same
-            deliverable from a comparable tool. You pay the bottom line, and
-            the founder price stays €49/mo for as long as you stay
-            subscribed — even after the public launch hike to €49/mo.
+            deliverable from a comparable tool. You pay the bottom line.
+            Founding members who joined before 2026-06-30 keep the closed
+            €9.97/mo founding rate for as long as they stay subscribed.
           </p>
           <ul className="divide-y divide-sky-900/30 mb-6 border border-sky-900/30 rounded-lg overflow-hidden">
             {[
@@ -919,7 +920,7 @@ export default function PricingPage() {
             </div>
             <div className="text-left sm:text-right">
               <p className="text-sky-300 text-xs uppercase tracking-wider mb-1">
-                Founder price, locked forever
+                Current rate
               </p>
               <p className="text-3xl font-bold text-sky-200">€49/mo</p>
             </div>
@@ -927,15 +928,14 @@ export default function PricingPage() {
               href={STRIPE_DASHBOARD}
               className="inline-flex items-center justify-center px-5 py-3 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-semibold text-sm shadow-lg shadow-sky-500/20 transition-all"
             >
-              Lock founder price →
+              Get the Dashboard →
             </a>
           </div>
           <p className="text-gray-400 text-xs mt-3">
-            €119.64/year. Roughly the cost of one missed seed deal. The price
-            stays €49 for as long as you stay subscribed.
+            €588/year. Roughly the cost of one missed seed deal.
           </p>
           <TrialClose tone="emerald">
-            €119.64/yr against the expected value of one cheque you wrote
+            €588/yr against the expected value of one cheque you wrote
             because you got there first. Has the math already closed?
           </TrialClose>
         </section>
@@ -1083,12 +1083,11 @@ export default function PricingPage() {
             Annual plans · save 17% on monthly
           </p>
           <h2 className="text-2xl font-bold text-gray-100 mb-3">
-            Pay yearly. Lock the founder rate twice over.
+            Pay yearly. Save two months.
           </h2>
           <p className="text-gray-400 text-sm mb-5 max-w-2xl">
-            Both founding-member tiers offer an annual option that saves
-            roughly two months versus the monthly rate. Annual subscribers
-            keep the founder lock indefinitely <em>and</em> are insulated
+            Both Dashboard and Insider offer an annual option that saves
+            roughly two months versus the monthly rate, and are insulated
             from any future price change for the entire term.
           </p>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5">
@@ -1097,18 +1096,18 @@ export default function PricingPage() {
                 Dashboard Beta — Annual
               </p>
               <p className="text-gray-400 text-sm">
-                <span className="text-2xl font-bold text-sky-300">€99</span>
-                <span className="text-gray-400">/yr · saves €20.64 vs €49 12</span>
+                <span className="text-2xl font-bold text-sky-300">€490</span>
+                <span className="text-gray-400">/yr · saves €98 vs €49×12</span>
               </p>
               <p className="text-gray-400 text-xs leading-relaxed">
                 Same dashboard, same MCP, same guarantee. Renews at the
-                same €99/yr rate as long as the subscription stays active.
+                same €490/yr rate as long as the subscription stays active.
               </p>
               <a
                 href={STRIPE_DASHBOARD_ANNUAL}
                 className="inline-flex items-center justify-center px-3 py-2 rounded-md bg-sky-600 hover:bg-sky-500 text-white text-xs font-semibold transition-colors"
               >
-                Lock €99/yr →
+                Get Dashboard annual →
               </a>
             </li>
             <li className="rounded-lg border border-slate-800 bg-slate-900/40 p-4 space-y-2">
@@ -1116,8 +1115,8 @@ export default function PricingPage() {
                 Insider Circle — Annual
               </p>
               <p className="text-gray-400 text-sm">
-                <span className="text-2xl font-bold text-emerald-300">€970</span>
-                <span className="text-gray-400">/yr · saves €194 vs €197×12</span>
+                <span className="text-2xl font-bold text-emerald-300">€1,970</span>
+                <span className="text-gray-400">/yr · saves €394 vs €197×12</span>
               </p>
               <p className="text-gray-400 text-xs leading-relaxed">
                 Telegram + 24h lead + API + custom watchlist. Two months
@@ -1127,7 +1126,7 @@ export default function PricingPage() {
                 href={STRIPE_INSIDER_ANNUAL}
                 className="inline-flex items-center justify-center px-3 py-2 rounded-md bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold transition-colors"
               >
-                Lock €970/yr →
+                Get Insider annual →
               </a>
             </li>
           </ul>
