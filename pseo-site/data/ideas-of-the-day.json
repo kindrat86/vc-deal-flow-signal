@@ -4049,6 +4049,49 @@
         }
       ],
       "publishedAt": "2026-07-23T09:00:00Z"
+    },
+    {
+      "date": "2026-07-24",
+      "slug": "2026-07-24",
+      "headline": "The space tech opening hiding in a +4% framework migration",
+      "hook": "Pre-seed space tech teams shipping 52 commits in 14 days at +4% aren't just building product — they're broadcasting the framework-migration that usually precedes a raise.",
+      "repo": {
+        "name": "open-space-collective",
+        "githubUrl": "https://github.com/open-space-collective",
+        "stage": "Pre-seed",
+        "geography": "Unknown",
+        "sector": "Space Tech",
+        "sectorSlug": "space-tech",
+        "signalType": "Framework migration",
+        "commitVelocity14d": 52,
+        "commitVelocityChange": "+4%",
+        "contributors": 5,
+        "contributorGrowth": "+0%",
+        "newRepos": 0,
+        "description": "Collaborative space."
+      },
+      "ideaThesis": "Space Tech has a buyer who is also a builder. The category incumbents shipped for an ops/HR/finance lead; the next wave ships for the engineer running that function. Read the repo: framework migration, pre-seed team, 5 contributors. That's the shape of a team that crosses the next funding line on engineering output, not enterprise sales — and the gap they leave is the wedge for an indie or two-founder tool that does one job better than the suite they're inside of.",
+      "buildAngles": [
+        "Simulation-side tool that the hardware vendor won't ship — let the user pre-flight the expensive run.",
+        "Data-cleanup pipeline for the messy telemetry the space tech platform refuses to fix at source.",
+        "Procurement-side intelligence layer — who's shipping what in the space tech stack, scored weekly."
+      ],
+      "distributionPlay": "Lead with a reproducible benchmark and a one-page methodology; the audience is small but each reader is high-leverage. One newsletter feature is worth more than 10 generic launch posts.",
+      "signalReading": [
+        {
+          "metric": "52 commits / 14 days",
+          "reading": "Maintenance-level cadence. The story isn't the volume; it's whatever else moved alongside it."
+        },
+        {
+          "metric": "+4% commit-velocity change",
+          "reading": "Trend is still accelerating, not peaking. A positive change-in-change is the leading edge of the curve, not the back of it."
+        },
+        {
+          "metric": "5 contributors (+0%)",
+          "reading": "Founding-team-still-coding signal. Hiring will be the next-cycle move; ATS / sourcing tools are the natural wedge."
+        }
+      ],
+      "publishedAt": "2026-07-24T09:00:00Z"
     }
   ]
 }
