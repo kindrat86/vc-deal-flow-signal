@@ -582,6 +582,40 @@ export async function POST(request: NextRequest) {
     } catch (capiErr) {
       console.error("[reddit-capi] Purchase dispatch error:", capiErr);
     }
+
+    // Server-side PostHog capture — this webhook fired zero analytics
+    // before. Mirrors the Reddit CAPI call above: fire-and-forget, wrapped
+    // so a PostHog-side failure never 5xxs the webhook (Stripe would retry
+    // → double-credit). distinct_id is the buyer's email (no client-side
+    // distinct_id is threaded through checkout metadata here yet, so this
+    // doesn't join the pre-purchase funnel — same gap as before, just no
+    // longer completely dark).
+    try {
+      const utm = (fullSession.metadata || {}) as Record<string, string>;
+      const amountEUR = (fullSession.amount_total || 0) / 100;
+      await fetch("https://eu.i.posthog.com/capture/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          api_key: "phc_lyZCgvTpicjLzAO3rY2GhxuX5WUc5jQjP8ZVwwJqauX",
+          event: "purchase_completed",
+          distinct_id: email,
+          properties: {
+            $host: "signals.gitdealflow.com",
+            product: "gitdealflow",
+            tier,
+            amount_eur: amountEUR,
+            stripe_session_id: session.id,
+            stripe_event_id: event.id,
+            utm_source: utm.utm_source,
+            utm_campaign: utm.utm_campaign,
+            utm_content: utm.utm_content,
+          },
+        }),
+      });
+    } catch (phErr) {
+      console.error("[posthog] purchase_completed capture failed:", phErr);
+    }
   }
 
   // One-click OTO purchases come through as PaymentIntents (one-time, e.g.
