@@ -671,7 +671,7 @@ export const comparisons: Comparison[] = [
   {
     slug: "best-ai-deal-sourcing-tools-2026",
     title: "Best AI Deal Sourcing Tools for VCs (2026)",
-    // 2026-07-23: replaced a description that just listed the five tools with
+    // 2026-07-23: replaced a description that just listed every tool with
     // no differentiation. Pulled straight from this entry's own `verdict`
     // below (no new claims) - it depends on stage, sector, and budget, and the
     // page's actual value is the feature table + verdict, not the list itself.
