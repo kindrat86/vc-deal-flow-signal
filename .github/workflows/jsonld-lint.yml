@@ -47,6 +47,13 @@ jobs:
         run: npm ci --no-audit --no-fund
 
       - name: Build
+        env:
+          # prebuild's fetch-github-data.ts skips the live GitHub API fetch
+          # (which needs a token this workflow doesn't have) and reuses the
+          # already-committed data whenever $VERCEL is set — same as a real
+          # Vercel build. This CI check only needs the rendered JSON-LD, not
+          # fresh startup data.
+          VERCEL: "1"
         run: npm run build
 
       - name: Validate JSON-LD (statically generated pages)
