@@ -1,0 +1,53 @@
+name: JSON-LD Lint
+
+# Blocks on any invalid <script type="application/ld+json"> block (unparsable
+# JSON, missing @context/@type). Added 2026-07-24 as part of a portfolio-wide
+# structured-data sweep (no bugs found here yet, but no guard rail existed).
+#
+# Two jobs:
+#   - landing:   gitdealflow.com is plain static HTML — scans source directly.
+#   - pseo-site: signals.gitdealflow.com is Next.js — builds first, then
+#     scans the statically-generated .next/server/app output. If the build
+#     starts failing here for missing secrets, mirror the env setup used by
+#     deploy-pseo.yml / speakable-guard.yml for this same package.json.
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: jsonld-lint-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  landing:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate JSON-LD (landing/)
+        run: python3 scripts/validate_jsonld.py landing
+
+  pseo-site:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: pseo-site
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: pseo-site/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Build
+        run: npm run build
+
+      - name: Validate JSON-LD (statically generated pages)
+        run: python3 ../scripts/validate_jsonld.py .next/server/app
