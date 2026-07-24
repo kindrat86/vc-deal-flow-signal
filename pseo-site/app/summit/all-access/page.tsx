@@ -40,12 +40,13 @@ export default function AllAccessPage() {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "Product",
+        "@type": "SoftwareApplication",
         "@id": `${SITE}/summit/all-access#product`,
         name: "VC Engineering Acceleration Summit — All-Access Pass",
         description:
           "Lifetime replays of all 20 anonymous-by-design summit talks, full transcripts, slide decks, and the 219-startup backtest CSV.",
-        brand: { "@id": "https://gitdealflow.com/#organization" },
+        applicationCategory: "BusinessApplication",
+        operatingSystem: "Web",
         offers: {
           "@type": "Offer",
           price: String(SUMMIT.allAccessPrice),

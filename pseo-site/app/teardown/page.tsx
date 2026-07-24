@@ -85,11 +85,13 @@ export default function TeardownPage() {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "Product",
+        "@type": "SoftwareApplication",
         "@id": "https://signals.gitdealflow.com/teardown#product",
         name: "Tweet Teardown",
         description:
           "€1 one-time micro-tripwire — a tweet-length (≤280 char) GitHub-momentum teardown of one startup you name, written by the founder and delivered within 24 hours.",
+        applicationCategory: "BusinessApplication",
+        operatingSystem: "Web",
         offers: {
           "@type": "Offer",
           price: "1.00",

@@ -236,12 +236,13 @@ export default function FirstLookPage() {
         },
       },
       {
-        "@type": "Product",
+        "@type": "SoftwareApplication",
         "@id": "https://signals.gitdealflow.com/firstlook#product",
         name: "First Look Pass",
         description:
           "€7 one-time tripwire — a sector-specific written deep dive on GitHub momentum, delivered within 24 hours.",
-        brand: { "@type": "Brand", name: "GitDealFlow" },
+        applicationCategory: "BusinessApplication",
+        operatingSystem: "Web",
         offers: {
           "@type": "AggregateOffer",
           priceCurrency: "EUR",

@@ -182,9 +182,11 @@ export default async function LaunchPage({ params }: PageProps) {
         mainEntityOfPage: `${SITE}/launch/${slug}`,
       },
       {
-        "@type": "Product",
+        "@type": "SoftwareApplication",
         name: launch.headline,
         description: launch.abstract,
+        applicationCategory: "BusinessApplication",
+        operatingSystem: "Web",
         offers: {
           "@type": "Offer",
           price: String(launch.priceEUR),
