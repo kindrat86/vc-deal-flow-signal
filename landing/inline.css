@@ -1618,3 +1618,21 @@ header nav a[aria-current="page"],
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
 }
+
+/* ── Missing `lg:` display utilities (MK 2026-07-24) ────────────────
+   styles.css is a purged/prebuilt Tailwind bundle: only utility classes
+   actually present in the source at the last build get compiled in.
+   `lg:*` was never used before, so `.lg\:hidden` / `.lg\:inline-flex`
+   etc. were silently no-ops. !important is required because ux.css's
+   `a.btn` selector (specificity 0,1,1) already beats a plain `.hidden`
+   class (0,1,0) regardless of source order — without it, elements like
+   the header's annual-price button stay visible at every width. */
+@media (max-width: 1023.98px) {
+  .lg\:inline-flex, .lg\:inline, .lg\:flex { display: none !important; }
+}
+@media (min-width: 1024px) {
+  .lg\:hidden { display: none !important; }
+  .lg\:inline { display: inline !important; }
+  .lg\:inline-flex { display: inline-flex !important; }
+  .lg\:flex { display: flex !important; }
+}
