@@ -92,16 +92,11 @@ export default async function ComparisonPage({ params }: PageProps) {
           cssSelector: ["[data-speakable]", "h1", ".verdict-block"],
         },
       },
-      {
-        "@type": "Review",
-        author: DATA_NERD_AUTHOR_REF,
-        reviewBody: comp.verdict,
-        itemReviewed: {
-          "@type": "SoftwareApplication",
-          name: comp.h1,
-          applicationCategory: "BusinessApplication",
-        },
-      },
+      // AEO 2026-07-24: Review node removed. GSC flagged "Invalid object
+      // type for field itemReviewed" — comp.h1 is a vs./listicle title
+      // ("X vs Y", "Best N tools for..."), never a single reviewed item,
+      // which Google's Review-snippet spec requires. The verdict is
+      // already carried validly by the Claim node below (about: comp.h1).
       ...(comp.featureTable
         ? [
             {
