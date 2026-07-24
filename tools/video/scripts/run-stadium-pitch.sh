@@ -48,10 +48,12 @@ echo "▸ background music"
 node scripts/03-music.mjs vsl-3min || echo "  (music failed, continuing without)"
 
 echo "▸ Remotion render"
-npx remotion render src/index.ts Vsl3min out/vsl-3min/stadium-pitch.mp4
+# 05-youtube-upload.mjs reads out/${slug}/${slug}.mp4 — name accordingly.
+npx remotion render src/index.ts Vsl3min out/vsl-3min/vsl-3min.mp4
 
 echo "▸ thumbnail render"
-npx remotion still src/index.ts ThumbnailVsl out/thumbnail-stadium-pitch.jpg \
+# 05-youtube-upload.mjs prefers out/thumbnail-${slug}.jpg.
+npx remotion still src/index.ts ThumbnailVsl out/thumbnail-vsl-3min.jpg \
   --image-format=jpeg --jpeg-quality=92
 
 echo "▸ upload to YouTube"
