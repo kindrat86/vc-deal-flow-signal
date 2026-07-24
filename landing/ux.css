@@ -853,6 +853,30 @@ body.nav-open { overflow: hidden; }
 }
 [data-nav-toggle] { flex: 0 0 auto; }
 
+/* ── 44b. ICON-ONLY BUTTON REPAIR (MK UI/UX 2026-07-24) ────────────
+   The touch-target rule (§5) applies `padding: .625rem 1.25rem` to every
+   <button>. On an icon-only square button (hamburger, close, etc.) that
+   20px horizontal padding leaves only ~4px of content inside a 44px box,
+   collapsing the glyph to an invisible sliver. Measured 4px on the mobile
+   hamburger portfolio-wide. Zero the horizontal padding for icon buttons
+   and stop the icon flex-shrinking. Unlayered so it beats Tailwind's
+   layered w-11/p-* utilities (which otherwise lose to §5). */
+[data-nav-toggle],
+.ux-icon-btn,
+button[aria-label]:has(> svg:only-child),
+a[aria-label]:has(> svg:only-child) {
+  padding-left: 0;
+  padding-right: 0;
+}
+[data-nav-toggle] > svg,
+.ux-icon-btn > svg,
+button[aria-label] > svg:only-child,
+a[aria-label] > svg:only-child {
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+}
+
 /* ── CONVERSION REPAIR 2026-07-22 ──────────────────────────────
    Tailwind v4 emits utilities inside @layer utilities. Unlayered
    rules in this file beat ANY layered rule regardless of specificity,
