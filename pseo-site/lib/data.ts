@@ -1179,6 +1179,68 @@ export function getAllStageSignalPairs(): { stage: string; signal: string }[] {
 }
 
 // ---------------------------------------------------------------------------
+// New-this-quarter pages (/startups-to-watch/new/{sector})
+// ---------------------------------------------------------------------------
+//
+// Set-difference of the current period's tracked names against the
+// immediately preceding period, per sector. `data.periods` is authored
+// newest-first (current period is always index 0), so the "previous"
+// period is simply index 1 — no date parsing needed.
+//
+// "New" means newly ENTERED THE TRACKED INDEX this quarter, not newly
+// founded — copy must say "newly tracked" / "entered the radar", never
+// imply incorporation date. Sectors missing either snapshot are skipped
+// entirely (never backfilled or guessed).
+
+export interface NewThisPeriodPageData {
+  sector: Sector;
+  currentPeriod: Period;
+  previousPeriod: Period;
+  newStartups: Startup[];
+  returningCount: number;
+}
+
+function getPreviousPeriod(): Period | null {
+  return data.periods.length > 1 ? data.periods[1] : null;
+}
+
+export function getNewThisPeriodData(
+  sectorSlug: string
+): NewThisPeriodPageData | null {
+  const sector = data.sectors.find((s) => s.slug === sectorSlug);
+  if (!sector) return null;
+  const currentPeriod = getCurrentPeriod();
+  const previousPeriod = getPreviousPeriod();
+  if (!previousPeriod) return null;
+
+  const currentSnap = sector.periods[currentPeriod.slug];
+  const previousSnap = sector.periods[previousPeriod.slug];
+  if (!currentSnap || !previousSnap) return null;
+
+  const previousNames = new Set(previousSnap.startups.map((s) => s.name));
+  const newStartups = currentSnap.startups.filter(
+    (s) => !previousNames.has(s.name)
+  );
+  if (newStartups.length < MIN_PSEO_CELL_SIZE) return null;
+
+  return {
+    sector,
+    currentPeriod,
+    previousPeriod,
+    newStartups: getSortedStartups(newStartups),
+    returningCount: currentSnap.startups.length - newStartups.length,
+  };
+}
+
+export function getAllNewThisPeriodSlugs(): string[] {
+  const slugs: string[] = [];
+  for (const sector of data.sectors) {
+    if (getNewThisPeriodData(sector.slug)) slugs.push(sector.slug);
+  }
+  return slugs;
+}
+
+// ---------------------------------------------------------------------------
 // Stage × period sitemap entries (/stage/{stage}-{period})
 // ---------------------------------------------------------------------------
 

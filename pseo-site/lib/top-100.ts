@@ -102,3 +102,108 @@ export function isoWeekToMonday(slug: string): Date | null {
   target.setUTCDate(week1Monday.getUTCDate() + (week - 1) * 7);
   return target;
 }
+
+// ---------------------------------------------------------------------------
+// Week-over-week movers (/weekly/top-100/{slug}/movers)
+// ---------------------------------------------------------------------------
+//
+// Diffs a week's ranking against the immediately preceding snapshot file
+// (by sort order of `getAllTop100Slugs()`, not by parsing the ISO week
+// number — this stays correct even across a missed week). Matches rows by
+// `name` since ranks change but org identity doesn't. Every rendered field
+// (prevRank, newRank, delta, velocity, sector) comes straight from the two
+// week files — no fabrication, no interpolation for gaps.
+
+/** Minimum combined mover count (climbers + fallers + new entrants) required
+ * to publish a week's movers page — mirrors MIN_PSEO_CELL_SIZE (3) used
+ * elsewhere for Cartesian pSEO cells, applied here to a single family. */
+const MIN_MOVERS_CELL_SIZE = 3;
+
+export interface Top100Mover extends Top100Row {
+  previousRank: number;
+  rankDelta: number; // positive = climbed (lower rank number), negative = fell
+}
+
+export interface Top100MoversData {
+  slug: string;
+  weekLabel: string;
+  previousSlug: string;
+  previousWeekLabel: string;
+  climbers: Top100Mover[];
+  fallers: Top100Mover[];
+  newEntrants: Top100Row[];
+  droppedOut: Top100Row[];
+}
+
+/** The snapshot slug immediately preceding `slug`, or null if `slug` is the
+ * oldest snapshot on file (or unknown). */
+export function getPreviousTop100Slug(slug: string): string | null {
+  const slugs = getAllTop100Slugs(); // newest-first
+  const idx = slugs.indexOf(slug);
+  if (idx === -1 || idx === slugs.length - 1) return null;
+  return slugs[idx + 1];
+}
+
+export function getTop100Movers(slug: string): Top100MoversData | null {
+  const current = getTop100(slug);
+  if (!current) return null;
+  const previousSlug = getPreviousTop100Slug(slug);
+  if (!previousSlug) return null;
+  const previous = getTop100(previousSlug);
+  if (!previous) return null;
+
+  const prevByName = new Map(previous.rankings.map((r) => [r.name, r]));
+  const currByName = new Map(current.rankings.map((r) => [r.name, r]));
+
+  const climbers: Top100Mover[] = [];
+  const fallers: Top100Mover[] = [];
+  const newEntrants: Top100Row[] = [];
+
+  for (const row of current.rankings) {
+    const prevRow = prevByName.get(row.name);
+    if (!prevRow) {
+      newEntrants.push(row);
+      continue;
+    }
+    const rankDelta = prevRow.rank - row.rank; // positive = climbed
+    if (rankDelta > 0) {
+      climbers.push({ ...row, previousRank: prevRow.rank, rankDelta });
+    } else if (rankDelta < 0) {
+      fallers.push({ ...row, previousRank: prevRow.rank, rankDelta });
+    }
+  }
+
+  const droppedOut: Top100Row[] = previous.rankings.filter(
+    (r) => !currByName.has(r.name)
+  );
+
+  climbers.sort((a, b) => b.rankDelta - a.rankDelta);
+  fallers.sort((a, b) => a.rankDelta - b.rankDelta);
+
+  return {
+    slug,
+    weekLabel: formatIsoWeekLabel(slug),
+    previousSlug,
+    previousWeekLabel: formatIsoWeekLabel(previousSlug),
+    climbers,
+    fallers,
+    newEntrants,
+    droppedOut,
+  };
+}
+
+/** Slugs eligible for a /movers page: has a previous snapshot AND the
+ * combined climbers+fallers+newEntrants count clears the thin-content
+ * floor. Computed generically off whatever week files exist on disk —
+ * never hardcodes specific ISO weeks. */
+export function getAllTop100MoverSlugs(): string[] {
+  const slugs: string[] = [];
+  for (const slug of getAllTop100Slugs()) {
+    const d = getTop100Movers(slug);
+    if (!d) continue;
+    if (d.climbers.length + d.fallers.length + d.newEntrants.length >= MIN_MOVERS_CELL_SIZE) {
+      slugs.push(slug);
+    }
+  }
+  return slugs;
+}

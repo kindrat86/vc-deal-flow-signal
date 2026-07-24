@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getAllSectors, getCurrentPeriod } from "@/lib/data";
+import { getAllSectors, getCurrentPeriod, getAllNewThisPeriodSlugs } from "@/lib/data";
 import { comparisons } from "@/content/comparisons";
 import { posts } from "@/content/posts";
 import { FINDINGS } from "@/content/research-findings";
@@ -9,6 +9,8 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import RelatedLinks from "@/components/RelatedLinks";
 import { getDefaultRelatedGroups } from "@/lib/related-links";
 import InlineSubscribe from "@/components/InlineSubscribe";
+import { getAllIdeaSectorSlugs } from "@/lib/startup-ideas";
+import { getAllTop100MoverSlugs, formatIsoWeekLabel } from "@/lib/top-100";
 
 const SITE = "https://signals.gitdealflow.com";
 
@@ -29,6 +31,10 @@ export default function ExplorePage() {
   const sectors = getAllSectors();
   const period = getCurrentPeriod();
   const activeSectors = sectors.filter((s) => s.periods[period.slug]);
+  const sectorsByName = new Map(sectors.map((s) => [s.slug, s.name]));
+  const newThisQuarterSlugs = getAllNewThisPeriodSlugs();
+  const ideaSectorSlugs = getAllIdeaSectorSlugs();
+  const moverWeekSlugs = getAllTop100MoverSlugs();
 
   return (
     <>
@@ -120,6 +126,66 @@ export default function ExplorePage() {
             ))}
           </div>
         </section>
+
+        {/* New-this-quarter cohorts (2026-07-24) */}
+        {newThisQuarterSlugs.length > 0 && (
+          <section className="mb-12">
+            <h2 className="text-xl font-semibold text-gray-100 mb-4">
+              New this quarter ({newThisQuarterSlugs.length})
+            </h2>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+              {newThisQuarterSlugs.map((slug) => (
+                <Link
+                  key={slug}
+                  href={`/startups-to-watch/new/${slug}`}
+                  className="rounded-lg border border-slate-800 bg-slate-900 p-3 text-sm text-gray-300 hover:border-sky-600/50 hover:text-sky-400 transition-colors"
+                >
+                  New {sectorsByName.get(slug) ?? slug}
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Startup ideas by sector (2026-07-24) */}
+        {ideaSectorSlugs.length > 0 && (
+          <section className="mb-12">
+            <h2 className="text-xl font-semibold text-gray-100 mb-4">
+              Startup ideas by sector ({ideaSectorSlugs.length})
+            </h2>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+              {ideaSectorSlugs.map((slug) => (
+                <Link
+                  key={slug}
+                  href={`/startup-ideas/sector/${slug}`}
+                  className="rounded-lg border border-slate-800 bg-slate-900 p-3 text-sm text-gray-300 hover:border-sky-600/50 hover:text-sky-400 transition-colors"
+                >
+                  {sectorsByName.get(slug) ?? slug} ideas
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Weekly Top 100 movers (2026-07-24) */}
+        {moverWeekSlugs.length > 0 && (
+          <section className="mb-12">
+            <h2 className="text-xl font-semibold text-gray-100 mb-4">
+              Weekly Top 100 movers ({moverWeekSlugs.length})
+            </h2>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+              {moverWeekSlugs.map((slug) => (
+                <Link
+                  key={slug}
+                  href={`/weekly/top-100/${slug}/movers`}
+                  className="rounded-lg border border-slate-800 bg-slate-900 p-3 text-sm text-gray-300 hover:border-sky-600/50 hover:text-sky-400 transition-colors"
+                >
+                  {formatIsoWeekLabel(slug)} movers
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* Key hubs */}
         <section className="mb-12">

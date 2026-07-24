@@ -53,7 +53,10 @@ type Period = { slug: string; name: string; current?: boolean };
 type Sector = {
   slug: string;
   name: string;
-  periods: Record<string, { startups: { stage: string; signalType: string }[] }>;
+  periods: Record<
+    string,
+    { startups: { name: string; stage: string; signalType: string }[] }
+  >;
 };
 
 interface CellRecord {
@@ -183,6 +186,35 @@ function auditStageSignal(): SurfaceReport {
   return summarise("/stage/[stage]/signal/[signal]", cells);
 }
 
+// Mirrors getNewThisPeriodData()/getAllNewThisPeriodSlugs() in lib/data.ts
+// (2026-07-24). `dataset.periods` is authored newest-first, so index 0 is
+// current and index 1 is the immediately preceding period — same
+// convention as the canonical getter. Kept in sync manually.
+function auditNewThisPeriod(): SurfaceReport {
+  const cells: CellRecord[] = [];
+  const previousPeriod = dataset.periods[1];
+  if (!previousPeriod) return summarise("/startups-to-watch/new/[sector]", cells);
+
+  for (const sector of dataset.sectors) {
+    const currentSnap = sector.periods[currentPeriod.slug];
+    const previousSnap = sector.periods[previousPeriod.slug];
+    if (!currentSnap || !previousSnap) continue;
+    const previousNames = new Set(previousSnap.startups.map((s) => s.name));
+    const count = currentSnap.startups.filter(
+      (s) => !previousNames.has(s.name),
+    ).length;
+    if (count === 0) continue;
+    const status = count >= MIN_PSEO_CELL_SIZE ? "included" : "suppressed";
+    cells.push({
+      cellKey: sector.slug,
+      cellSize: count,
+      status,
+      reason: status === "suppressed" ? "below MIN_PSEO_CELL_SIZE" : undefined,
+    });
+  }
+  return summarise("/startups-to-watch/new/[sector]", cells);
+}
+
 function auditLocaleTopics(): FullReport["localeTopicCoverage"] {
   const universalCore = ["methodology", "glossary", "faq", "signals", "about"];
   const allLocales = [
@@ -233,7 +265,12 @@ function summarise(name: string, cells: CellRecord[]): SurfaceReport {
 // ---------- main ----------
 
 function main() {
-  const surfaces = [auditStageSector(), auditSignalSector(), auditStageSignal()];
+  const surfaces = [
+    auditStageSector(),
+    auditSignalSector(),
+    auditStageSignal(),
+    auditNewThisPeriod(),
+  ];
   const localeTopicCoverage = auditLocaleTopics();
 
   const totalCells = surfaces.reduce((s, r) => s + r.total, 0);

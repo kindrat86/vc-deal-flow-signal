@@ -11,8 +11,13 @@
  */
 
 import "server-only";
-import { getAllSectors, getCurrentPeriod, type Startup } from "@/lib/data";
-import type { StartupIdea } from "@/content/startup-ideas";
+import {
+  getAllSectors,
+  getCurrentPeriod,
+  MIN_PSEO_CELL_SIZE,
+  type Startup,
+} from "@/lib/data";
+import { startupIdeas, type StartupIdea } from "@/content/startup-ideas";
 
 export interface MatchedStartup extends Startup {
   sectorName: string;
@@ -114,4 +119,40 @@ export function countIdeasWithLiveMatches(ideas: StartupIdea[]): number {
     if (getStartupsForIdea(idea, 1).length > 0) n++;
   }
   return n;
+}
+
+// ---------------------------------------------------------------------------
+// Sector rollups (/startup-ideas/sector/{sector})
+// ---------------------------------------------------------------------------
+//
+// The hub at /startup-ideas already groups ideas by editorial `category`
+// (AI-Native SaaS, Dev Tools, ...). This is a different, data-grounded cut:
+// group by the sector(s) each idea's `matchSignal.sectorSlugs` targets, so
+// "web3 startup ideas" / "ai startup ideas" head-term searches land on a
+// dedicated page instead of only the flat hub. An idea can appear under
+// more than one sector when matchSignal declares more than one — that's
+// intentional (the idea genuinely spans both), not duplication of a single
+// canonical concept. Each listing here is an excerpt (oneLiner only) that
+// links to the single canonical /startup-ideas/[slug] page — the full
+// build-today / seed-pattern / FAQ content lives there exactly once.
+
+/** Ideas whose matchSignal targets the given sector, stable-sorted by slug
+ * so page output doesn't reorder between builds. */
+export function getIdeasBySector(sectorSlug: string): StartupIdea[] {
+  return startupIdeas
+    .filter((idea) => idea.matchSignal.sectorSlugs.includes(sectorSlug))
+    .sort((a, b) => a.slug.localeCompare(b.slug));
+}
+
+/** Sector slugs with enough authored ideas to clear the thin-content floor
+ * (same MIN_PSEO_CELL_SIZE threshold used by every other Cartesian pSEO
+ * surface on the site). */
+export function getAllIdeaSectorSlugs(): string[] {
+  const slugs: string[] = [];
+  for (const sector of getAllSectors()) {
+    if (getIdeasBySector(sector.slug).length >= MIN_PSEO_CELL_SIZE) {
+      slugs.push(sector.slug);
+    }
+  }
+  return slugs;
 }

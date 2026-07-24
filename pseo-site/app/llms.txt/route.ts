@@ -1,5 +1,7 @@
 import { createHash } from "node:crypto";
-import { getAllSectors, getCurrentPeriod, getAllPeriods, getAllStartupSlugs, getStartupProfile, getDataLastModified, SIGNAL_TYPES } from "@/lib/data";
+import { getAllSectors, getCurrentPeriod, getAllPeriods, getAllStartupSlugs, getStartupProfile, getDataLastModified, SIGNAL_TYPES, getAllNewThisPeriodSlugs } from "@/lib/data";
+import { getAllIdeaSectorSlugs } from "@/lib/startup-ideas";
+import { getAllTop100MoverSlugs, formatIsoWeekLabel } from "@/lib/top-100";
 import { posts } from "@/content/posts";
 import { comparisons } from "@/content/comparisons";
 import { standaloneFaqs } from "@/content/standalone-faqs";
@@ -37,6 +39,14 @@ export async function GET(request: Request) {
     .map(
       (s) =>
         `- [${s.name} Startups to Watch](${BASE_URL}/startups-to-watch/${s.slug}-${period.slug}): Top startups in ${s.name.toLowerCase()} ranked by GitHub engineering acceleration, ${period.name}`
+    )
+    .join("\n");
+
+  const sectorNameBySlug = new Map(sectors.map((s) => [s.slug, s.name]));
+  const newThisPeriodLinks = getAllNewThisPeriodSlugs()
+    .map(
+      (slug) =>
+        `- [New ${sectorNameBySlug.get(slug) ?? slug} Startups](${BASE_URL}/startups-to-watch/new/${slug}): Set-difference of tracked orgs vs the prior period — newly entered the GitHub signal panel in ${period.name}.`
     )
     .join("\n");
 
@@ -139,6 +149,12 @@ ${activeSectors.length} sectors tracked, ${totalStartups} startup signals, ${all
 
 ${sectorLinks}
 
+## New This Quarter (2026-07-24)
+
+Per-sector set-difference against the immediately prior period — organizations newly present in the current-period GitHub signal panel. "New" means newly tracked, not necessarily newly founded.
+
+${newThisPeriodLinks}
+
 ## Blog Posts
 
 ${blogLinks}
@@ -210,6 +226,7 @@ ${activeSectors.map((s) => {
 - [Top 100 GitHub-Signal Startups — Weekly Index](${BASE_URL}/weekly/top-100): Weekly composite leaderboard of all 100 tracked startups ranked by Signal Score (capped composite of velocity change %, contributor growth %, raw commit scale, contributor count). Refreshed every Monday.
 - [Top 100 latest JSON](${BASE_URL}/weekly/top-100/data.json): Machine-readable JSON of the latest weekly Top-100 ranking. CC-BY-4.0. Includes per-startup signal score, raw metrics, sector cross-listing, and a citation string. Per-week archive at /weekly/top-100/<isoweek>/data.json.
 - [Top 100 RSS feed](${BASE_URL}/weekly/top-100/feed.xml): RSS 2.0 feed listing every weekly Top-100 edition. One item per ISO-week edition with TL;DR description.
+${getAllTop100MoverSlugs().map((slug) => `- [Top 100 Movers — ${formatIsoWeekLabel(slug)}](${BASE_URL}/weekly/top-100/${slug}/movers): Week-over-week rank climbers, fallers, and new entrants, diffed against the prior weekly snapshot.`).join("\n")}
 
 ## Pillar-segmented agent indexes
 
@@ -278,6 +295,7 @@ Programmatic "buildable opportunity" pages — one slug per niche, each paired w
 
 - [Startup ideas index](${BASE_URL}/startup-ideas): Browse all ${startupIdeas.length} ideas, grouped by category (AI-Native SaaS, Agent Infrastructure, Vertical AI, Dev Tools, Data Infrastructure, Multimodal, Vibe-Coding / Micro-SaaS, Climate & Niche, Open Source / Community).
 ${startupIdeas.map((i) => `- [${i.title}](${BASE_URL}/startup-ideas/${i.slug}): ${i.oneLiner.split(".")[0]}.`).join("\n")}
+${getAllIdeaSectorSlugs().map((slug) => `- [${sectorNameBySlug.get(slug) ?? slug} Startup Ideas](${BASE_URL}/startup-ideas/sector/${slug}): Same idea corpus, grouped by data sector instead of editorial category.`).join("\n")}
 
 ## Use Cases by Investor Persona
 

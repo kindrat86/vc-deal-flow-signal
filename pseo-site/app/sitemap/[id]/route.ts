@@ -13,6 +13,7 @@ import {
   getAllSignalSectorPairs,
   getAllStageSignalPairs,
   getAllStartupPeriodPairs,
+  getAllNewThisPeriodSlugs,
 } from "@/lib/data";
 import { getAllPostSlugs } from "@/content/posts";
 import { getAllComparisonSlugs } from "@/content/comparisons";
@@ -42,6 +43,7 @@ import {
   getAllNichePairs as getAllNicheDownPairs,
 } from "@/content/niches";
 import { startupIdeas } from "@/content/startup-ideas";
+import { getAllIdeaSectorSlugs } from "@/lib/startup-ideas";
 import { playbooks } from "@/content/playbooks";
 import { getAllIdeaSlugs } from "@/lib/ideas-of-the-day";
 import { starsCases } from "@/content/from-stars-to-seed";
@@ -51,7 +53,7 @@ import { SOLO_FOUNDER_SECTORS } from "@/content/solo-founder-tracker";
 import { LOCALES } from "@/content/locales";
 import { COMMUNITY_GROUPS } from "@/content/community-signal";
 import { getMarketSlugs } from "@/lib/markets";
-import { getAllTop100Slugs } from "@/lib/top-100";
+import { getAllTop100Slugs, getAllTop100MoverSlugs } from "@/lib/top-100";
 import { getAllPredictionWeekSlugs } from "@/lib/predictions";
 import { DATA_NERD_PARABLES } from "@/lib/data-nerd";
 
@@ -193,6 +195,16 @@ export async function GET(_req: Request, ctx: RouteContext) {
           priority: 0.65,
         },
       ]),
+      // Week-over-week movers (2026-07-24) — climbers/fallers/new-entrants
+      // diffed against the immediately preceding snapshot. Only emitted for
+      // weeks with a prior snapshot on file and enough movement to clear
+      // the thin-content floor (getAllTop100MoverSlugs()).
+      ...getAllTop100MoverSlugs().map((slug) => ({
+        url: `${BASE_URL}/weekly/top-100/${slug}/movers`,
+        lastmod,
+        changefreq: "weekly" as const,
+        priority: 0.75,
+      })),
       { url: `${BASE_URL}/signal-of-the-week`, lastmod, changefreq: "weekly", priority: 0.8 },
       // Idea of the Day — perma-URL surface (always serves today's pick).
       // Daily cadence on the hub itself; archived dated children live in
@@ -510,6 +522,23 @@ export async function GET(_req: Request, ctx: RouteContext) {
       })),
       ...getAllStageSignalPairs().map(({ stage, signal }) => ({
         url: `${BASE_URL}/stage/${stage}/signal/${signal}`,
+        lastmod,
+        changefreq: "weekly",
+        priority: 0.7,
+      })),
+      // New-this-quarter cohorts (2026-07-24) — set-difference of tracked
+      // orgs vs the prior period, per sector. Gated by MIN_PSEO_CELL_SIZE
+      // in getAllNewThisPeriodSlugs(), same as every other crossing here.
+      ...getAllNewThisPeriodSlugs().map((sector) => ({
+        url: `${BASE_URL}/startups-to-watch/new/${sector}`,
+        lastmod,
+        changefreq: "weekly",
+        priority: 0.7,
+      })),
+      // Startup-ideas sector rollups (2026-07-24) — data-grounded cut of
+      // the existing /startup-ideas corpus by matchSignal.sectorSlugs.
+      ...getAllIdeaSectorSlugs().map((sector) => ({
+        url: `${BASE_URL}/startup-ideas/sector/${sector}`,
         lastmod,
         changefreq: "weekly",
         priority: 0.7,
