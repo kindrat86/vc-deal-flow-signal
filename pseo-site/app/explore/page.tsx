@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getAllSectors, getCurrentPeriod, getAllNewThisPeriodSlugs } from "@/lib/data";
+import { getAllSectors, getCurrentPeriod, getAllNewThisPeriodSlugs, getAllStageGeoPairs } from "@/lib/data";
 import { comparisons } from "@/content/comparisons";
 import { posts } from "@/content/posts";
 import { FINDINGS } from "@/content/research-findings";
@@ -35,6 +35,7 @@ export default function ExplorePage() {
   const newThisQuarterSlugs = getAllNewThisPeriodSlugs();
   const ideaSectorSlugs = getAllIdeaSectorSlugs();
   const moverWeekSlugs = getAllTop100MoverSlugs();
+  const stageGeoPairs = getAllStageGeoPairs();
 
   return (
     <>
@@ -181,6 +182,31 @@ export default function ExplorePage() {
                   className="rounded-lg border border-slate-800 bg-slate-900 p-3 text-sm text-gray-300 hover:border-sky-600/50 hover:text-sky-400 transition-colors"
                 >
                   {formatIsoWeekLabel(slug)} movers
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Stage x geography (2026-07-25) */}
+        {stageGeoPairs.length > 0 && (
+          <section className="mb-12">
+            <h2 className="text-xl font-semibold text-gray-100 mb-4">
+              Stage by region ({stageGeoPairs.length})
+            </h2>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+              {stageGeoPairs.map(({ stage, geo, stageName, geoName, count }) => (
+                <Link
+                  key={`${stage}-${geo}`}
+                  href={`/stage/${stage}/in/${geo}`}
+                  className="rounded-lg border border-slate-800 bg-slate-900 p-3 text-sm text-gray-300 hover:border-sky-600/50 hover:text-sky-400 transition-colors"
+                >
+                  <span className="font-medium">
+                    {stageName} in {geoName}
+                  </span>
+                  <span className="block text-xs text-gray-500 mt-1">
+                    {count} startups
+                  </span>
                 </Link>
               ))}
             </div>

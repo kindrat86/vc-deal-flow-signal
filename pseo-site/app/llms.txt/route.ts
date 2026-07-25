@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { getAllSectors, getCurrentPeriod, getAllPeriods, getAllStartupSlugs, getStartupProfile, getDataLastModified, SIGNAL_TYPES, getAllNewThisPeriodSlugs } from "@/lib/data";
+import { getAllSectors, getCurrentPeriod, getAllPeriods, getAllStartupSlugs, getStartupProfile, getDataLastModified, SIGNAL_TYPES, getAllNewThisPeriodSlugs, getAllStageGeoPairs } from "@/lib/data";
 import { getAllIdeaSectorSlugs } from "@/lib/startup-ideas";
 import { getAllTop100MoverSlugs, formatIsoWeekLabel } from "@/lib/top-100";
 import { posts } from "@/content/posts";
@@ -227,6 +227,12 @@ ${activeSectors.map((s) => {
 - [Top 100 latest JSON](${BASE_URL}/weekly/top-100/data.json): Machine-readable JSON of the latest weekly Top-100 ranking. CC-BY-4.0. Includes per-startup signal score, raw metrics, sector cross-listing, and a citation string. Per-week archive at /weekly/top-100/<isoweek>/data.json.
 - [Top 100 RSS feed](${BASE_URL}/weekly/top-100/feed.xml): RSS 2.0 feed listing every weekly Top-100 edition. One item per ISO-week edition with TL;DR description.
 ${getAllTop100MoverSlugs().map((slug) => `- [Top 100 Movers — ${formatIsoWeekLabel(slug)}](${BASE_URL}/weekly/top-100/${slug}/movers): Week-over-week rank climbers, fallers, and new entrants, diffed against the prior weekly snapshot.`).join("\n")}
+
+## Stage by region
+
+Investor-sourcing views crossing funding stage with geography. Region is a coarse classification (US, Europe, APAC, UK, Canada, LATAM, MENA) from public GitHub org metadata — not city-level. Startups with undetermined region are excluded, never inferred.
+
+${getAllStageGeoPairs().map(({ stage, geo, stageName, geoName, count }) => `- [${stageName} Startups in ${geoName}](${BASE_URL}/stage/${stage}/in/${geo}): ${count} ${stageName.toLowerCase()}-stage ${geoName} startups ranked by GitHub engineering acceleration.`).join("\n")}
 
 ## Pillar-segmented agent indexes
 

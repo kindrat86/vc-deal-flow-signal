@@ -137,6 +137,47 @@ function auditStageSector(): SurfaceReport {
   return summarise("/stage/[stage]/[sector]", cells);
 }
 
+// Mirrors GEO_DEFINITIONS in lib/data.ts (kept in sync manually, same rule as
+// STAGE_SLUGS above). Rows whose geography is "Unknown" match no entry here
+// and are therefore excluded from every cell — that exclusion is deliberate,
+// not an oversight: region is never inferred.
+const GEO_SLUGS: { slug: string; match: string }[] = [
+  { slug: "us", match: "US" },
+  { slug: "uk", match: "UK" },
+  { slug: "europe", match: "EU" },
+  { slug: "apac", match: "APAC" },
+  { slug: "canada", match: "Canada" },
+  { slug: "latam", match: "LATAM" },
+  { slug: "mena", match: "MENA" },
+];
+
+function auditStageGeo(): SurfaceReport {
+  const cells: CellRecord[] = [];
+  for (const stageDef of STAGE_SLUGS) {
+    for (const geoDef of GEO_SLUGS) {
+      let count = 0;
+      for (const sector of dataset.sectors) {
+        const snapshot = sector.periods[currentPeriod.slug];
+        if (!snapshot) continue;
+        count += snapshot.startups.filter(
+          (s) =>
+            s.geography === geoDef.match &&
+            stageMatches(s.stage, stageDef.match),
+        ).length;
+      }
+      if (count === 0) continue;
+      const status = count >= MIN_PSEO_CELL_SIZE ? "included" : "suppressed";
+      cells.push({
+        cellKey: `${stageDef.slug}/${geoDef.slug}`,
+        cellSize: count,
+        status,
+        reason: status === "suppressed" ? "below MIN_PSEO_CELL_SIZE" : undefined,
+      });
+    }
+  }
+  return summarise("/stage/[stage]/in/[geo]", cells);
+}
+
 function auditSignalSector(): SurfaceReport {
   const cells: CellRecord[] = [];
   for (const signalDef of SIGNAL_TYPES) {
@@ -267,6 +308,7 @@ function summarise(name: string, cells: CellRecord[]): SurfaceReport {
 function main() {
   const surfaces = [
     auditStageSector(),
+    auditStageGeo(),
     auditSignalSector(),
     auditStageSignal(),
     auditNewThisPeriod(),

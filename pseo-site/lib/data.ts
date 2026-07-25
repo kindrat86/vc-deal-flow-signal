@@ -1241,6 +1241,114 @@ export function getAllNewThisPeriodSlugs(): string[] {
 }
 
 // ---------------------------------------------------------------------------
+// Stage × geography pages (/stage/{stage}/in/{geo})
+// ---------------------------------------------------------------------------
+
+export interface StageGeoPageData {
+  stageSlug: string;
+  stageName: string;
+  stageDescription: string;
+  stageInvestorInsight: string;
+  geoSlug: string;
+  geoName: string;
+  period: Period;
+  startups: (Startup & { sectorName: string; sectorSlug: string })[];
+  sectorBreakdown: { name: string; slug: string; count: number }[];
+}
+
+/**
+ * Stage × geography rollup — the one axis pair the geo surfaces never covered.
+ *
+ * Existing geo routes are `{sector}-{geo}-{period}` (/startups-to-watch/geo)
+ * and `{geo}-{period}` (/startups-to-watch/region); neither crosses stage.
+ * Targets investor-sourcing queries ("seed stage startups Europe").
+ *
+ * Geography is a coarse region enum, never a city — copy must say
+ * "US-based", not invent a metro. Rows whose geography is "Unknown" are
+ * excluded outright rather than guessed (majority of the panel is Unknown).
+ */
+export function getStageGeoData(
+  stageSlug: string,
+  geoSlug: string
+): StageGeoPageData | null {
+  const stageDef = STAGE_DEFINITIONS.find((s) => s.slug === stageSlug);
+  if (!stageDef) return null;
+  const geoDef = GEO_DEFINITIONS.find((g) => g.slug === geoSlug);
+  if (!geoDef) return null;
+
+  const period = getCurrentPeriod();
+  const startups: StageGeoPageData["startups"] = [];
+  const sectorCounts: Record<string, { name: string; slug: string; count: number }> = {};
+
+  for (const sector of data.sectors) {
+    const snapshot = sector.periods[period.slug];
+    if (!snapshot) continue;
+    const matching = snapshot.startups.filter(
+      (s) =>
+        s.geography === geoDef.match &&
+        (stageDef.match as readonly string[]).some(
+          (m) => s.stage === m || s.stage.includes(m)
+        )
+    );
+    if (matching.length === 0) continue;
+
+    sectorCounts[sector.slug] = {
+      name: sector.name,
+      slug: `${sector.slug}-${period.slug}`,
+      count: matching.length,
+    };
+    for (const s of matching) {
+      startups.push({ ...s, sectorName: sector.name, sectorSlug: sector.slug });
+    }
+  }
+
+  if (startups.length < MIN_PSEO_CELL_SIZE) return null;
+
+  return {
+    stageSlug: stageDef.slug,
+    stageName: stageDef.name,
+    stageDescription: stageDef.description,
+    stageInvestorInsight: stageDef.investorInsight,
+    geoSlug: geoDef.slug,
+    geoName: geoDef.name,
+    period,
+    startups: getSortedStartups(startups) as StageGeoPageData["startups"],
+    sectorBreakdown: Object.values(sectorCounts).sort((a, b) => b.count - a.count),
+  };
+}
+
+export function getAllStageGeoPairs(): {
+  stage: string;
+  geo: string;
+  stageName: string;
+  geoName: string;
+  count: number;
+}[] {
+  const pairs: {
+    stage: string;
+    geo: string;
+    stageName: string;
+    geoName: string;
+    count: number;
+  }[] = [];
+  for (const stageDef of STAGE_DEFINITIONS) {
+    for (const geoDef of GEO_DEFINITIONS) {
+      const d = getStageGeoData(stageDef.slug, geoDef.slug);
+      if (d) {
+        pairs.push({
+          stage: stageDef.slug,
+          geo: geoDef.slug,
+          stageName: stageDef.name,
+          geoName: geoDef.name,
+          count: d.startups.length,
+        });
+      }
+    }
+  }
+  return pairs.sort((a, b) => b.count - a.count);
+}
+
+// ---------------------------------------------------------------------------
 // Stage × period sitemap entries (/stage/{stage}-{period})
 // ---------------------------------------------------------------------------
 

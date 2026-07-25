@@ -12,6 +12,7 @@ import {
   getAllStageSectorPairs,
   getAllSignalSectorPairs,
   getAllStageSignalPairs,
+  getAllStageGeoPairs,
   getAllStartupPeriodPairs,
   getAllNewThisPeriodSlugs,
 } from "@/lib/data";
@@ -510,6 +511,12 @@ export async function GET(_req: Request, ctx: RouteContext) {
       })),
       ...getAllStageSectorPairs().map(({ stage, sector }) => ({
         url: `${BASE_URL}/stage/${stage}/${sector}`,
+        lastmod,
+        changefreq: "weekly",
+        priority: 0.7,
+      })),
+      ...getAllStageGeoPairs().map(({ stage, geo }) => ({
+        url: `${BASE_URL}/stage/${stage}/in/${geo}`,
         lastmod,
         changefreq: "weekly",
         priority: 0.7,
