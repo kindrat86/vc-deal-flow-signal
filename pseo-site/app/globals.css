@@ -18,6 +18,25 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  text-align: center;
+}
+
+/* Centre all text on every page (owner request, reaffirmed 2026-07-25).
+   This supersedes the earlier "headings centred, body left" system — do not
+   thrash back without the owner asking. Note that centring the text is only
+   half of it: the boxes have to be centred too, see the CENTERED PAGE COLUMN
+   REPAIR / CENTERED TEXT BOX REPAIR notes in public/ux.css. */
+main,
+main * {
+  text-align: center !important;
+}
+
+/* Code and preformatted blocks stay left — centring them destroys them. */
+main pre,
+main pre *,
+main code,
+main code * {
+  text-align: left !important;
 }
 
 /* Honor reduced-motion for any decorative animation. */
