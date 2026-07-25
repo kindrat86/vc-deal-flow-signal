@@ -211,7 +211,7 @@ function sectorSweepWelcomeEmail(email: string): { subject: string; html: string
 <li>14-day email Q&amp;A window after delivery</li>
 </ul>
 <p>If you want to upgrade to Insider Circle within 60 days of delivery, the €1,997 credits 100% — your first ~20 months of Insider are paid.</p>
-<p>The "Sweep or It's Free" 14-day refund applies after delivery.</p>
+<p>The "Sweep or It's Free" 30-day refund applies after delivery — reply REFUND to this email.</p>
 <p style="margin-top:28px;padding:16px 18px;background:#fef3c7;border-left:3px solid #d97706;border-radius:4px;font-size:14px;line-height:1.6;color:#78350f;">
 <strong>If your fund needs this on a quarterly cadence, not a one-off?</strong> The apex tier is <a href="mailto:signals@gitdealflow.com?subject=Sharp%20Tier%20Application%20%E2%80%94%20%5BYour%20Fund%5D" style="color:#d97706;font-weight:600;">Sharp Tier</a> (€497/mo or €4,970/yr) — quarterly portfolio review call, white-labeled <code>/api/v1/sharp/&lt;your-fund&gt;</code> data feed, custom watchlist co-built with me, same-day questions (&lt;4h), data-room exports for LP updates. <strong>Capped at 8 funds in 2026, applications reviewed in 48h.</strong> The €1,997 from this Sweep counts toward your first two months if you're approved.
 </p>
