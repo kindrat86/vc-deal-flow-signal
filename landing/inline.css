@@ -1640,9 +1640,12 @@ header nav a[aria-current="page"],
    `.mobile-cta-stack > * { width: 100% }` (20 copies above) also matched
    the sr-only <label> inside the signup form, inflating it from 1px to the
    full form width. Being position:absolute with white-space:nowrap, it then
-   pushed the document to 404px against a 375px viewport — i.e. every mobile
-   visitor got a sideways-scrolling page, and the fixed sticky CTA stretched
-   to the same wrong width. Re-assert the standard visually-hidden box; the
+   pushed the document to 404px against a 375px viewport. `body` has
+   overflow-x:hidden, so this never became a sideways-scrolling page — the
+   visible damage was that the *fixed* sticky CTA sized itself to that wrong
+   404px, laying its contents out to x=388 and clipping ~13px of the CTA
+   button off-screen on every phone. Measured after the fix: bar 375px,
+   contents end at 359. Re-assert the standard visually-hidden box; the
    child selector outranks `.mobile-cta-stack > *`, so it holds regardless of
    source order. Never let a layout rule set width on .sr-only. */
 .sr-only,
