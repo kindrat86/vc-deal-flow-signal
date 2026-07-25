@@ -151,9 +151,47 @@ export default async function ResearchPaperPage({ params }: PageProps) {
           {paper.authors.map((a) => a.name).join(", ")}
         </p>
         {authorAffiliations.length > 0 && (
-          <p className="text-gray-500 text-xs leading-relaxed mb-10">
+          <p className="text-gray-500 text-xs leading-relaxed mb-6">
             {authorAffiliations.join(" · ")}
           </p>
+        )}
+
+        {/* Read the paper.
+            These pages rank on page 1 for the papers themselves and drew 17,884
+            impressions in 28 days at a 0.02% CTR -- they promised a summary and
+            offered no route to the source. The arxiv/doi/sameAs fields were
+            already in content/research-papers.ts; nothing rendered them. */}
+        {(paper.arxiv || paper.doi || paper.sameAs?.length > 0) && (
+          <div className="mb-10 flex flex-wrap items-center gap-3 text-sm">
+            <span className="text-gray-500">Read the paper:</span>
+            {paper.arxiv && (
+              <a
+                href={`https://arxiv.org/abs/${paper.arxiv}`}
+                rel="noopener"
+                className="text-sky-400 underline underline-offset-2 hover:text-sky-300 transition-colors"
+              >
+                arXiv:{paper.arxiv}
+              </a>
+            )}
+            {paper.doi && (
+              <a
+                href={`https://doi.org/${paper.doi}`}
+                rel="noopener"
+                className="text-sky-400 underline underline-offset-2 hover:text-sky-300 transition-colors"
+              >
+                DOI
+              </a>
+            )}
+            {paper.semanticScholar && (
+              <a
+                href={`https://www.semanticscholar.org/paper/${paper.semanticScholar}`}
+                rel="noopener"
+                className="text-sky-400 underline underline-offset-2 hover:text-sky-300 transition-colors"
+              >
+                Semantic Scholar
+              </a>
+            )}
+          </div>
         )}
 
         <section className="mb-10" aria-label="Abstract summary">
