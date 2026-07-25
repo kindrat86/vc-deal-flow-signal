@@ -450,12 +450,12 @@
 
         <div id="hero-flow" class="hero-flow">
         <div class="hero-how">
-        <form id="signup-hero" style="scroll-margin-top:5rem" class="js-signup-form mobile-cta-stack flex flex-col sm:flex-row gap-3 max-w-lg mx-auto" data-source="hero">
+        <form id="signup-hero" method="post" style="scroll-margin-top:5rem" class="js-signup-form mobile-cta-stack flex flex-col sm:flex-row gap-3 max-w-lg mx-auto" data-source="hero">
           <label for="hero-email" class="sr-only">Email address</label>
-          <input type="email" id="hero-email" required inputmode="email" autocomplete="email" enterkeyhint="send" placeholder="you@example.com" class="flex-1 px-5 py-4 rounded-lg bg-dark-800 border border-gray-600 text-gray-100 placeholder-gray-400 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 text-lg">
+          <input type="email" name="email" id="hero-email" required inputmode="email" autocomplete="email" enterkeyhint="send" placeholder="you@example.com" class="flex-1 px-5 py-4 rounded-lg bg-dark-800 border border-gray-600 text-gray-100 placeholder-gray-400 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 text-lg" aria-describedby="index-signup-msg-1">
           <button type="submit" class="btn btn-primary btn-xl w-full sm:w-auto"><span>Get this Sunday&apos;s 5 names</span><span aria-hidden="true" class="btn-arrow">&rarr;</span></button>
         </form>
-        <p role="status" class="js-signup-msg text-gray-400 text-sm mt-4"><span class="text-emerald-400">✓</span> Free, I cover the compute &nbsp; <span class="text-emerald-400">✓</span> Unsubscribe in one click &nbsp; <span class="text-emerald-400">✓</span> One email, every Sunday</p>
+        <p role="status" class="js-signup-msg text-gray-400 text-sm mt-4" id="index-signup-msg-1"><span class="text-emerald-400">✓</span> Free, I cover the compute &nbsp; <span class="text-emerald-400">✓</span> Unsubscribe in one click &nbsp; <span class="text-emerald-400">✓</span> One email, every Sunday</p>
         <p class="text-signal-400 text-xs font-semibold mt-2">This Sunday&apos;s five are already locked. Be on the list when it sends.</p>
 
         <p class="text-gray-400 text-sm mt-2"><a href="https://buy.stripe.com/bJe5kC48H2d2cEKg6s0x209" onclick="if(window.posthog)posthog.capture('hero_teardown_link_clicked')" class="text-signal-400 underline hover:text-signal-300">Not ready for the list? Get a &euro;1 Tweet Teardown &rarr;</a></p>
@@ -1073,10 +1073,10 @@
         </div>
 
         <span id="signup" aria-hidden="true"></span>
-        <form id="signup-form" data-source="footer" class="js-signup-form max-w-lg mx-auto">
+        <form id="signup-form" method="post" data-source="footer" class="js-signup-form max-w-lg mx-auto">
           <div class="mobile-cta-stack flex flex-col sm:flex-row gap-3">
             <label for="signup-email" class="sr-only">Email address</label>
-            <input type="email" id="signup-email" placeholder="you@example.com" required aria-label="Email address" inputmode="email" autocomplete="email" enterkeyhint="send" class="flex-1 px-5 py-4 rounded-lg bg-dark-800 border border-gray-600 text-gray-100 placeholder-gray-400 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 text-lg">
+            <input type="email" name="email" id="signup-email" placeholder="you@example.com" required aria-label="Email address" inputmode="email" autocomplete="email" enterkeyhint="send" class="flex-1 px-5 py-4 rounded-lg bg-dark-800 border border-gray-600 text-gray-100 placeholder-gray-400 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 text-lg" aria-describedby="signup-msg">
             <button type="submit" id="signup-btn" class="btn btn-primary btn-lg w-full sm:w-auto">Get this Sunday&apos;s 5 names <span aria-hidden="true" class="btn-arrow">&rarr;</span></button>
           </div>
         </form>
@@ -1123,9 +1123,9 @@
       <p class="text-signal-400 text-xs font-semibold uppercase tracking-wider mb-3">Before you go</p>
       <h2 id="exit-title" class="text-2xl md:text-3xl font-extrabold leading-tight mb-3">Let me send you this Sunday’s issue first.</h2>
       <p class="text-gray-300 leading-relaxed mb-5">One short Sunday email. Five names worth your attention. Unsubscribe in one click.</p>
-      <form id="exit-form" class="flex flex-col gap-3">
+      <form id="exit-form" method="post" class="flex flex-col gap-3">
         <label for="exit-email" class="sr-only">Email address</label>
-        <input type="email" id="exit-email" required inputmode="email" autocomplete="email" enterkeyhint="send" placeholder="you@example.com" class="w-full px-4 py-3 rounded-lg bg-dark-800 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:border-signal-500">
+        <input type="email" name="email" id="exit-email" required inputmode="email" autocomplete="email" enterkeyhint="send" placeholder="you@example.com" class="w-full px-4 py-3 rounded-lg bg-dark-800 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:border-signal-500">
         <button type="submit" id="exit-submit" class="w-full bg-signal-500 hover:bg-signal-400 text-dark-900 font-bold py-3 rounded-lg transition">Get this Sunday’s 5 names &rarr;</button>
       </form>
       <p id="exit-msg" role="status" class="text-gray-400 text-xs text-center mt-3">One email a week · unsubscribe anytime</p>
@@ -1295,6 +1295,9 @@
         } catch (err) {
           if (msg) {
             msg.textContent = 'Something went wrong. Try again or email signal@gitdealflow.com';
+            msg.setAttribute('role', 'alert');
+            var invalidField = msg.id && document.querySelector('[aria-describedby="' + msg.id + '"]');
+            if (invalidField) invalidField.setAttribute('aria-invalid', 'true');
             msg.className = 'js-signup-msg text-red-400 text-sm mt-4 text-center';
           }
           if (btn) { btn.disabled = false; btn.removeAttribute('aria-busy'); btn.innerHTML = orig; }
@@ -1411,6 +1414,9 @@
           return;
         } catch (err) {
           msg.textContent = 'Something went wrong. Try the main signup form instead.';
+          msg.setAttribute('role', 'alert');
+          var invalidField = msg.id && document.querySelector('[aria-describedby="' + msg.id + '"]');
+          if (invalidField) invalidField.setAttribute('aria-invalid', 'true');
           msg.className = 'text-red-400 text-xs text-center mt-3';
           btn.disabled = false;
           btn.textContent = 'Get this Sunday’s 5 names →';
