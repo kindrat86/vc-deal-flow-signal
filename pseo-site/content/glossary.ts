@@ -129,7 +129,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     term: "AEO (Answer Engine Optimization)",
     id: "aeo",
     definition:
-      "Structuring content so that answer engines — Google's People-Also-Ask, Reddit pull-quotes, Quora top answers, ChatGPT search results, Perplexity citations — can extract a complete, self-contained answer in 40–80 words. AEO emphasises FAQPage and QAPage schema, atomic question-answer blocks, and explicit source attribution. VC Deal Flow Signal publishes a 200+ Q&A dataset at /qa.jsonl as an AEO surface for both human readers and retrieval pipelines.",
+      "Structuring content so that answer engines — Google's People-Also-Ask, Reddit pull-quotes, Quora top answers, ChatGPT search results, Perplexity citations — can extract a complete, self-contained answer in 40–80 words. AEO emphasises FAQPage schema (QAPage is only valid where users submit answers), atomic question-answer blocks, and explicit source attribution. VC Deal Flow Signal publishes a 200+ Q&A dataset at /qa.jsonl as an AEO surface for both human readers and retrieval pipelines.",
   },
   {
     term: "AIO (AI Overview Optimization)",
@@ -159,7 +159,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     term: "QAPage Schema",
     id: "qapage-schema",
     definition:
-      "A Schema.org type that marks a page where one primary question receives one accepted answer (with optional suggested answers). QAPage is distinct from FAQPage — QAPage describes the page itself as a single Q&A, FAQPage describes a list of supplementary Q&As. Google treats QAPage as a separate rich-result family in AI Overviews. VC Deal Flow Signal uses QAPage on every /answers/[slug] route and FAQPage on the same pages for additional related questions.",
+      "A Schema.org type for a page where one question collects answers from users — a forum or community Q&A thread. Google's requirements are explicit: \"Users must be able to submit answers to the question. Don't use QAPage markup for content that has only one answer for a given question with no way for users to add alternative answers,\" and it names an FAQ page written by the site itself, a blog post that answers a question, and an essay that answers a question as invalid uses. Publisher-authored answer pages therefore belong in FAQPage, not QAPage, no matter how single-question they look. VC Deal Flow Signal uses FAQPage on every /answers/[slug] route — the primary question first, related questions after — and carries no QAPage anywhere.",
   },
   {
     term: "HowTo Schema",

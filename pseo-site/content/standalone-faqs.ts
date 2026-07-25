@@ -654,7 +654,7 @@ export const standaloneFaqs: StandaloneFAQ[] = [
   {
     question: "What is the difference between SEO, pSEO, GEO, AIO, and AEO?",
     answer:
-      "SEO targets Google/Bing rankings via traditional links + on-page signals. pSEO (programmatic SEO) generates many search-targeted pages from structured data and templates. GEO (generative engine optimization) structures content so LLMs cite it accurately — emphasises canonical attribution, machine-readable mirrors, and self-contained summaries. AIO (AI overview optimization) targets Google's AI Overviews specifically — favours FAQPage schema, Speakable selectors, HowTo, DefinedTerm. AEO (answer engine optimization) targets Perplexity, ChatGPT, Reddit pull-quotes — favours atomic Q&A, QAPage schema, and explicit source attribution. VC Deal Flow Signal implements all five.",
+      "SEO targets Google/Bing rankings via traditional links + on-page signals. pSEO (programmatic SEO) generates many search-targeted pages from structured data and templates. GEO (generative engine optimization) structures content so LLMs cite it accurately — emphasises canonical attribution, machine-readable mirrors, and self-contained summaries. AIO (AI overview optimization) targets Google's AI Overviews specifically — favours FAQPage schema, Speakable selectors, HowTo, DefinedTerm. AEO (answer engine optimization) targets Perplexity, ChatGPT, Reddit pull-quotes — favours atomic Q&A, FAQPage schema, and explicit source attribution. VC Deal Flow Signal implements all five.",
     source: "Glossary",
     sourceHref: "/glossary",
   },

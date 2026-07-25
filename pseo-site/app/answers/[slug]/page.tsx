@@ -13,6 +13,7 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import RelatedLinks from "@/components/RelatedLinks";
 import { getDefaultRelatedGroups } from "@/lib/related-links";
+import InlineSubscribe from "@/components/InlineSubscribe";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -120,39 +121,6 @@ function buildJsonLd(q: AgentQuery): object {
         },
       },
       {
-        // QAPage describes the page itself (one primary question and its
-        // answer). Distinct from FAQPage below which lists supplementary
-        // FAQs. Google treats QAPage as a separate rich-result type with
-        // its own Q&A snippet treatment in AI Overviews.
-        "@type": "QAPage",
-        "@id": `${url}#qapage`,
-        url,
-        datePublished: lastModifiedIso,
-        dateModified: lastModifiedIso,
-        mainEntity: {
-          "@type": "Question",
-          "@id": `${url}#question`,
-          name: q.h1,
-          text: q.h1,
-          answerCount: 1,
-          dateCreated: lastModifiedIso,
-          acceptedAnswer: {
-            "@type": "Answer",
-            "@id": `${url}#answer`,
-            text: q.tldr,
-            url,
-            datePublished: lastModifiedIso,
-            dateModified: lastModifiedIso,
-            inLanguage: "en-US",
-            author: {
-              "@type": "Organization",
-              name: "VC Deal Flow Signal",
-              url: SITE,
-            },
-          },
-        },
-      },
-      {
         // AskAction: machine-actionable hint that this question can be
         // re-asked programmatically against /api/answer (single best) or
         // /api/ask (top-N). Voice assistants and AI Overviews use AskAction
@@ -200,15 +168,63 @@ function buildJsonLd(q: AgentQuery): object {
         ],
       },
       {
+        // ONE FAQPage carries the page's primary question AND the supplementary
+        // FAQs. There used to be a separate QAPage node above for the primary
+        // Q&A; that was invalid. Google: "Don't use QAPage markup for content
+        // that has only one answer for a given question with no way for users to
+        // add alternative answers," and it names "an FAQ page written by the site
+        // itself" as an invalid use — which is what these pages are. GSC reports
+        // the mismatch as missing answerCount / author / upvoteCount /
+        // datePublished; supplying those keeps markup Google calls invalid and
+        // `upvoteCount: 0` fabricates engagement. Do NOT re-add a QAPage node.
+        //
+        // The primary Question/Answer keeps its `#question` / `#answer` @ids —
+        // the AskAction node below references them by @id, so renaming or
+        // dropping them would leave those pointers dangling.
         "@type": "FAQPage",
-        mainEntity: q.faqs.map((f) => ({
-          "@type": "Question",
-          name: f.q,
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: f.a,
+        "@id": `${url}#faq`,
+        url,
+        name: q.h1,
+        datePublished: lastModifiedIso,
+        dateModified: lastModifiedIso,
+        author: {
+          "@type": "Organization",
+          name: "VC Deal Flow Signal",
+          url: SITE,
+        },
+        publisher: { "@id": `${SITE}/#organization` },
+        mainEntity: [
+          {
+            "@type": "Question",
+            "@id": `${url}#question`,
+            name: q.h1,
+            text: q.h1,
+            dateCreated: lastModifiedIso,
+            acceptedAnswer: {
+              "@type": "Answer",
+              "@id": `${url}#answer`,
+              text: q.tldr,
+              url,
+              datePublished: lastModifiedIso,
+              dateModified: lastModifiedIso,
+              inLanguage: "en-US",
+              author: {
+                "@type": "Organization",
+                name: "VC Deal Flow Signal",
+                url: SITE,
+              },
+            },
           },
-        })),
+          ...q.faqs.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: f.a,
+              url,
+            },
+          })),
+        ],
       },
       {
         "@type": "WebAPI",
@@ -462,6 +478,10 @@ export default async function AnswerPage({ params }: PageProps) {
       </article>
 
       <RelatedLinks groups={getDefaultRelatedGroups()} />
+
+      <div className="mt-10">
+        <InlineSubscribe template="answers" />
+      </div>
     </>
   );
 }

@@ -69,7 +69,7 @@ const PATHS = [
   "/citation-guide",
   // Predicted / weekly cadence (Periodical schema)
   "/predicted",
-  // Q&A (QAPage + Speakable)
+  // Q&A (FAQPage + Speakable)
   "/answers",
   "/answers/what-is-a-github-scout-score",
   // Content surfaces
