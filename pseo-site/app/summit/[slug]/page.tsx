@@ -262,7 +262,7 @@ export default async function SummitTalkPage({ params }: PageProps) {
               <p className="text-sm text-gray-400 leading-relaxed">
                 Get the All-Access Pass for lifetime replays of every talk,
                 full transcripts (PDF + markdown), slide decks, and the
-                219-startup backtest CSV.
+                219-startup panel dataset.
               </p>
               <Link
                 href="/summit/all-access"

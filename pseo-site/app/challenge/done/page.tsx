@@ -50,7 +50,7 @@ const RUNGS = [
     deliverables: [
       "140 venture-backed startups ranked by 14-day commit-velocity acceleration, refreshed every Monday at 06:00 UTC",
       "Filter by sector, stage, geography",
-      "The 219-startup backtest CSV — five quarters of historical signal-to-fundraise pairs",
+      "The 219-startup panel dataset — five quarters of historical signal-to-fundraise pairs",
       "Two free Chrome extensions (Crunchbase + Wellfound badge; VC GitHub Lookup)",
       "Free MCP server with 6 read-only tools (Claude, Cursor, Windsurf, any MCP host)",
       "30-day Signal-or-It's-Free guarantee — reply REFUND, no questions",
