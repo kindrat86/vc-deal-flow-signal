@@ -1636,3 +1636,24 @@ header nav a[aria-current="page"],
   .lg\:inline-flex { display: inline-flex !important; }
   .lg\:flex { display: flex !important; }
 }
+/* ── Visually-hidden guard (MK UI/UX 2026-07-25) ────────────────────
+   `.mobile-cta-stack > * { width: 100% }` (20 copies above) also matched
+   the sr-only <label> inside the signup form, inflating it from 1px to the
+   full form width. Being position:absolute with white-space:nowrap, it then
+   pushed the document to 404px against a 375px viewport — i.e. every mobile
+   visitor got a sideways-scrolling page, and the fixed sticky CTA stretched
+   to the same wrong width. Re-assert the standard visually-hidden box; the
+   child selector outranks `.mobile-cta-stack > *`, so it holds regardless of
+   source order. Never let a layout rule set width on .sr-only. */
+.sr-only,
+.mobile-cta-stack > .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
