@@ -521,28 +521,33 @@ export default function Home() {
             name: "Harmonic.ai",
             sameAs: ["https://harmonic.ai"],
           },
+          // These three are third-party tools we merely name. They stay
+          // `Thing` — a product-eligible @type (SoftwareApplication and
+          // friends) carrying none of offers/review/aggregateRating is a
+          // CRITICAL GSC "Product snippets" error: "Either 'offers', 'review'
+          // or 'aggregateRating' should be specified." We can state no honest
+          // offer for Cursor and won't invent a rating, so the entity value
+          // lives in name + sameAs instead. Do NOT restore the app types.
           {
-            "@type": "SoftwareApplication",
+            "@type": "Thing",
             name: "Model Context Protocol (MCP)",
-            applicationCategory: "DeveloperApplication",
-            operatingSystem: "Cross-platform (stdio, Streamable HTTP)",
+            description:
+              "Open protocol for tool-calling LLM clients (stdio, Streamable HTTP).",
             sameAs: [
               "https://modelcontextprotocol.io",
               "https://github.com/modelcontextprotocol",
             ],
           },
           {
-            "@type": "SoftwareApplication",
+            "@type": "Thing",
             name: "Claude Desktop",
-            applicationCategory: "DeveloperApplication",
-            operatingSystem: "macOS, Windows",
+            description: "MCP-capable LLM client for macOS and Windows.",
             sameAs: ["https://www.anthropic.com/claude"],
           },
           {
-            "@type": "SoftwareApplication",
+            "@type": "Thing",
             name: "Cursor",
-            applicationCategory: "DeveloperApplication",
-            operatingSystem: "macOS, Windows, Linux",
+            description: "MCP-capable code editor for macOS, Windows, Linux.",
             sameAs: ["https://cursor.com"],
           },
         ],
