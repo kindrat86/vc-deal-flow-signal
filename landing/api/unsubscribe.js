@@ -60,14 +60,41 @@ export default async function handler(req, res) {
   if (!email) return sendPage(res, "error", "This unsubscribe link is missing an email address.");
   if (!EMAIL_RE.test(email)) return sendPage(res, "error", "That does not look like a valid email address.");
 
-  const signed = validToken(email, token, process.env.UNSUB_SECRET);
-  if (isHead || (req.method === "GET" && !signed)) return confirmPage(res, email, requested);
-
+  // SELF-HEALING HANDOFF. RESEND_API_KEY is not set on this Vercel project, so this
+  // handler cannot reach Resend at all — and links carrying ?email=&audience= are
+  // already sitting in recipients' inboxes, so they cannot be fixed by changing the
+  // sender. Rather than telling those people to email support, hand off to
+  // sipiteno.com/api/unsubscribe: the deliberate "universal" endpoint, which DOES
+  // have the key and accepts the audience as a parameter (verified live — it reaches
+  // Resend and never itself redirects, so there is no loop).
+  //
+  // 307 preserves the method, so an RFC 8058 one-click POST stays a POST.
+  //
+  // This path disappears the moment the key is set here:
+  //     vercel env add RESEND_API_KEY production
+  //     vercel env add RESEND_AUDIENCE_ID production
+  // so it is a bridge, not an architecture. It deliberately runs BEFORE the
+  // confirmation page so the whole flow happens on one host instead of bouncing
+  // branding mid-way.
   const key = process.env.RESEND_API_KEY;
+  if (!key && UUID_RE.test(requested)) {
+    const q = new URLSearchParams({ email, audience: requested });
+    if (token) q.set("t", token);
+    res.setHeader("Location", `https://sipiteno.com/api/unsubscribe?${q.toString()}`);
+    res.status(307).end();
+    return;
+  }
+
   if (!key) {
+    // No key AND no usable audience (the handoff above needs one). Say so NOW rather
+    // than rendering a confirm page whose button leads to this same dead end — a
+    // two-step failure is worse than an immediate one.
     return sendPage(res, "error",
       `The unsubscribe service is temporarily unavailable. Email ${SUPPORT} and we will remove you by hand.`);
   }
+
+  const signed = validToken(email, token, process.env.UNSUB_SECRET);
+  if (isHead || (req.method === "GET" && !signed)) return confirmPage(res, email, requested);
 
   // Only a well-formed audience id is accepted, and only as an override of this
   // site's own audience — never as an arbitrary path segment.
