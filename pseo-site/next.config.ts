@@ -247,6 +247,14 @@ const nextConfig: NextConfig = {
               "font-src 'self'",
               "connect-src 'self' https://eu.i.posthog.com https://eu.posthog.com https://eu-assets.i.posthog.com https://api.resend.com https://scripts.refgrowcdn.com",
               "frame-ancestors 'none'",
+              // Added 2026-07-25 (portfolio audit): this was the only site in the
+              // portfolio missing both. object-src blocks <object>/<embed> plugin
+              // vectors the other directives do not cover, and base-uri stops an
+              // injected <base> tag re-pointing every relative URL on the page —
+              // which would defeat the script-src allowlist above by making
+              // "self"-relative script paths resolve to an attacker host.
+              "object-src 'none'",
+              "base-uri 'self'",
               "upgrade-insecure-requests",
               "require-trusted-types-for 'script'",
             ].join("; "),
@@ -258,6 +266,26 @@ const nextConfig: NextConfig = {
           {
             key: "Cross-Origin-Embedder-Policy",
             value: "credentialless",
+          },
+        ],
+      },
+      // Ticker embed — allow framing from any origin (embeddable widget)
+      // Must come AFTER the global /(.*) rule so it overrides frame-ancestors.
+      {
+        source: "/ticker/embed",
+        headers: [
+          {
+            key: "Content-Security-Policy",
+            value: "frame-ancestors *; default-src 'self'; script-src 'self' 'unsafe-inline' https://eu.i.posthog.com https://eu-assets.i.posthog.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://signals.gitdealflow.com",
+          },
+        ],
+      },
+      {
+        source: "/ticker/embed/:path*",
+        headers: [
+          {
+            key: "Content-Security-Policy",
+            value: "frame-ancestors *; default-src 'self'; script-src 'self' 'unsafe-inline' https://eu.i.posthog.com https://eu-assets.i.posthog.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://signals.gitdealflow.com",
           },
         ],
       },
