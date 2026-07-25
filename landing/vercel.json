@@ -1,6 +1,6 @@
 {
   "outputDirectory": ".",
-  "buildCommand": null,
+  "buildCommand": "node scripts/verify-jsonld.mjs .",
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
