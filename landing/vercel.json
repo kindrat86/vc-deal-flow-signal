@@ -243,7 +243,7 @@
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://*.posthog.com; connect-src 'self' https://*.posthog.com https://signals.gitdealflow.com; frame-ancestors 'self' https: https://sipi.bot https://*.gitdealflow.com"
+          "value": "default-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://*.posthog.com; connect-src 'self' https://api.github.com https://*.posthog.com https://signals.gitdealflow.com; frame-ancestors 'self' https: https://sipi.bot https://*.gitdealflow.com"
         },
         {
           "key": "Cross-Origin-Embedder-Policy",

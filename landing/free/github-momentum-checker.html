@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GitHub Momentum Checker — Score Any Startup's Engineering Activity Live | GitDealFlow</title>
+<link rel="alternate" hreflang="en" href="https://gitdealflow.com/free/github-momentum-checker">
+<link rel="alternate" hreflang="x-default" href="https://gitdealflow.com/free/github-momentum-checker">
+<meta name="description" content="Run the GitDealFlow Momentum Score on any GitHub org or repo, live from the public GitHub API. Commit acceleration, contributor growth, bus factor and repository expansion — the engineering signals that move weeks before a fundraise. Free, no signup, nothing stored." />
+<meta name="author" content="GitDealFlow" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://gitdealflow.com/free/github-momentum-checker" />
+<link rel="manifest" href="/site.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="GitDealFlow">
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="GitDealFlow" />
+<meta property="og:title" content="GitHub Momentum Checker — score any startup's engineering activity" />
+<meta property="og:description" content="Commit acceleration, contributor growth, bus factor and repo expansion for any GitHub org — live from the public API. Free, no signup." />
+<meta property="og:url" content="https://gitdealflow.com/free/github-momentum-checker" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","@id":"https://gitdealflow.com/free/github-momentum-checker#webapp","name":"GitHub Momentum Checker — GitDealFlow","url":"https://gitdealflow.com/free/github-momentum-checker","applicationCategory":"BusinessApplication","operatingSystem":"Web","browserRequirements":"Requires JavaScript. Reads the public GitHub REST API directly from your browser.","isAccessibleForFree":true,"featureList":["Momentum Score using the published GitDealFlow methodology","Commit acceleration: last 4 weeks against the prior 12-week baseline","Contributor growth and newly active contributors","Bus factor — share of commits from the single top contributor","Repository expansion across an organisation","52-week commit history sparkline","Markdown summary for a deal memo"],"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://gitdealflow.com/#organization"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://gitdealflow.com/"},{"@type":"ListItem","position":2,"name":"Free Tools","item":"https://gitdealflow.com/free"},{"@type":"ListItem","position":3,"name":"GitHub Momentum Checker","item":"https://gitdealflow.com/free/github-momentum-checker"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"How to check a startup's GitHub engineering momentum","totalTime":"PT1M","step":[{"@type":"HowToStep","position":1,"name":"Enter an org or repository","text":"Type a GitHub organisation (for example vercel) or a single repository (for example vercel/next.js). An organisation is scored across its three most recently pushed repositories."},{"@type":"HowToStep","position":2,"name":"Read the acceleration signal","text":"Commit volume over the last four weeks is compared against the mean weekly volume of the twelve weeks before it. A ratio above roughly 1.3 means engineering output is genuinely accelerating rather than merely being large."},{"@type":"HowToStep","position":3,"name":"Check who is doing the work","text":"Contributor growth shows whether new people are joining the codebase. Bus factor shows what share of commits comes from one person — high concentration is a risk regardless of how fast the repo is moving."},{"@type":"HowToStep","position":4,"name":"Compare against the public index","text":"The Momentum Score uses the same published formula as the GitDealFlow Momentum Index, so a result is directly comparable to the tracked companies there."}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Where does the data come from?","acceptedAnswer":{"@type":"Answer","text":"The public GitHub REST API, called directly from your browser. Nothing is proxied through GitDealFlow and no result is stored. Only public repository metadata is read — stars, last push date, weekly commit counts and contributor statistics. Private repositories are not accessible and no authentication is used."}},
+{"@type":"Question","name":"How is the Momentum Score calculated?","acceptedAnswer":{"@type":"Answer","text":"It uses the same published formula as the GitDealFlow Momentum Index: traction is 100 x log10(stars+1)/5, recency is a piecewise score on days since the last push, and the score is 0.40 x traction + 0.35 x recency + 0.25 x velocity. The index computes velocity from week-over-week star growth using its own stored history; a one-off check has no history, so this tool substitutes commit acceleration measured from GitHub's 52-week commit series, and labels which velocity term was used."}},
+{"@type":"Question","name":"What is commit acceleration and why does it matter more than commit volume?","acceptedAnswer":{"@type":"Answer","text":"Acceleration is mean weekly commits over the last four weeks divided by the mean over the twelve weeks before that. A large, mature repository can produce a lot of commits every week without changing pace; acceleration isolates the change. A ratio above roughly 1.3 means the team has genuinely stepped up output, which is the pattern that tends to precede hiring and fundraising rather than follow it."}},
+{"@type":"Question","name":"What is bus factor here?","acceptedAnswer":{"@type":"Answer","text":"The share of the last year's commits authored by the single most active contributor. Above roughly 60% the codebase depends heavily on one person, which is a diligence question regardless of how fast the repository is moving. It is computed from GitHub's contributor statistics, which cover the top 100 contributors."}},
+{"@type":"Question","name":"Why did I get a rate-limit message?","acceptedAnswer":{"@type":"Answer","text":"GitHub allows 60 unauthenticated API requests per hour per IP address, and each check spends three to six of them. The remaining allowance is displayed after every check. The limit resets hourly; this tool deliberately does not ask for a personal access token."}},
+{"@type":"Question","name":"Is a high Momentum Score investment advice?","acceptedAnswer":{"@type":"Answer","text":"No. The Momentum Score reflects public software-engineering activity only. It is not investment advice, a valuation, or a recommendation to buy, sell, or fund any company. Engineering activity is one leading indicator among many and says nothing about revenue, retention, market or team quality."}}]}</script>
+
+<style>
+  :root { --bg:#0f172a; --bg-card:#1e293b; --bg-input:#0f1d36; --text:#e2e8f0; --text-muted:#94a3b8; --accent:#8b5cf6; --accent-hover:#a78bfa; --accent-dim:rgba(139,92,246,0.15); --success:#10b981; --warning:#f59e0b; --danger:#ef4444; --border:#334155; --radius:12px; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:var(--bg); color:var(--text); line-height:1.6; min-height:100vh; -webkit-font-smoothing:antialiased; }
+  .container { max-width:960px; margin:0 auto; padding:24px 20px 80px; }
+  .back-link { color:var(--text-muted); text-decoration:none; font-size:.9rem; display:inline-block; margin-bottom:18px; min-height:44px; line-height:44px; }
+  .back-link:hover { color:var(--accent-hover); }
+  .header { text-align:center; margin-bottom:28px; }
+  .header h1 { font-size:clamp(1.75rem,4vw,2.5rem); font-weight:700; background:linear-gradient(135deg,#a78bfa,#8b5cf6); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:12px; line-height:1.2; }
+  .header p { color:var(--text-muted); font-size:1.05rem; max-width:680px; margin:0 auto; }
+  .card { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:24px; margin-bottom:22px; }
+  h2 { font-size:1.3rem; margin:34px 0 12px; }
+  h3 { font-size:1.05rem; margin:0 0 6px; }
+  p { margin-bottom:1em; }
+  a { color:var(--accent-hover); }
+  .searchrow { display:flex; gap:10px; flex-wrap:wrap; }
+  input[type="text"] { flex:1 1 260px; background:var(--bg-input); border:1px solid var(--border); color:var(--text); padding:13px 16px; border-radius:8px; font-size:1rem; font-family:inherit; min-height:48px; }
+  input[type="text"]:focus { outline:none; border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-dim); }
+  button { font:inherit; font-size:.98rem; font-weight:600; padding:13px 22px; min-height:48px; border-radius:8px; border:1px solid var(--accent); background:var(--accent); color:#fff; cursor:pointer; }
+  button:hover { background:var(--accent-hover); border-color:var(--accent-hover); }
+  button.ghost { background:transparent; color:var(--accent-hover); }
+  button.ghost:hover { background:var(--accent-dim); }
+  button:disabled { opacity:.55; cursor:not-allowed; }
+  .chips { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+  .chip { background:var(--bg-input); border:1px solid var(--border); color:var(--text-muted); border-radius:20px; padding:7px 14px; font-size:.85rem; cursor:pointer; min-height:38px; }
+  .chip:hover { border-color:var(--accent); color:var(--text); }
+  .privacy { display:flex; gap:10px; align-items:flex-start; background:rgba(16,185,129,.08); border:1px solid rgba(16,185,129,.3); border-radius:10px; padding:12px 14px; font-size:.9rem; margin-bottom:20px; }
+  .privacy strong { color:var(--success); }
+  .scorebox { display:flex; flex-wrap:wrap; gap:22px; align-items:center; }
+  .dial { width:112px; height:112px; border-radius:16px; display:flex; flex-direction:column; align-items:center; justify-content:center; flex:0 0 auto; }
+  .dial b { font-size:2.5rem; line-height:1; font-weight:700; color:#fff; }
+  .dial span { font-size:.72rem; text-transform:uppercase; letter-spacing:.06em; color:rgba(255,255,255,.85); margin-top:3px; }
+  .smeta { flex:1 1 280px; min-width:250px; }
+  .smeta h2 { margin:0 0 5px; font-size:1.25rem; }
+  .smeta p { margin:0; color:var(--text-muted); font-size:.94rem; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px; }
+  .sig { background:var(--bg-card); border:1px solid var(--border); border-radius:12px; padding:15px 17px; }
+  .sig .v { font-size:1.7rem; font-weight:700; line-height:1.15; margin:5px 0 2px; font-variant-numeric:tabular-nums; }
+  .sig .lbl { font-size:.82rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:.05em; }
+  .sig p { font-size:.87rem; color:var(--text-muted); margin:6px 0 0; }
+  .tag { display:inline-block; font-size:.72rem; font-weight:700; text-transform:uppercase; letter-spacing:.05em; padding:3px 9px; border-radius:20px; margin-top:8px; }
+  .t-hot { background:rgba(16,185,129,.16); color:#34d399; }
+  .t-warm { background:rgba(139,92,246,.18); color:var(--accent-hover); }
+  .t-flat { background:rgba(148,163,184,.16); color:var(--text-muted); }
+  .t-cold { background:rgba(239,68,68,.16); color:#f87171; }
+  .t-risk { background:rgba(245,158,11,.16); color:#fbbf24; }
+  .find { border-left:4px solid var(--border); padding:10px 0 10px 13px; margin-bottom:12px; }
+  .find.hi { border-color:#34d399; } .find.rk { border-color:#fbbf24; } .find.lo { border-color:var(--accent); }
+  .find b { display:block; font-size:.98rem; }
+  .find span { font-size:.89rem; color:var(--text-muted); }
+  .chart { overflow-x:auto; margin-bottom:1em; }
+  .chart svg { display:block; min-width:520px; max-width:100%; height:auto; }
+  table { border-collapse:collapse; width:100%; font-size:.92rem; margin-bottom:1em; }
+  th,td { border:1px solid var(--border); padding:8px 10px; text-align:left; }
+  th { background:var(--bg-input); font-weight:600; }
+  td.num,th.num { text-align:right; font-variant-numeric:tabular-nums; }
+  .msg { border-radius:8px; padding:12px 14px; font-size:.92rem; margin-bottom:14px; }
+  .msg.err { background:rgba(239,68,68,.1); border:1px solid rgba(239,68,68,.35); color:#fca5a5; }
+  .msg.info { background:rgba(139,92,246,.1); border:1px solid rgba(139,92,246,.32); color:#c4b5fd; }
+  .note { font-size:.85rem; color:var(--text-muted); margin:-.4em 0 1.2em; }
+  details { border:1px solid var(--border); border-radius:10px; padding:12px 14px; margin-bottom:9px; background:var(--bg-card); }
+  summary { cursor:pointer; font-weight:600; }
+  details[open] summary { margin-bottom:8px; }
+  code { background:var(--bg-input); padding:2px 5px; border-radius:4px; font-size:.88em; }
+  .hidden { display:none !important; }
+  footer { margin-top:46px; padding-top:20px; border-top:1px solid var(--border); color:var(--text-muted); font-size:.85rem; }
+  @media(max-width:640px){ .dial{width:92px;height:92px} .dial b{font-size:2rem} }
+</style>
+</head>
+<body>
+<div class="container">
+  <a href="/free" class="back-link">← All free tools</a>
+
+  <div class="header">
+    <h1>GitHub Momentum Checker</h1>
+    <p>Run the GitDealFlow Momentum Score on any public GitHub organisation or repository, live from the GitHub API. Commit acceleration, contributor growth, bus factor and repository expansion — the engineering signals that move before the round, not after it.</p>
+  </div>
+
+  <div class="privacy">
+    <span aria-hidden="true">🔒</span>
+    <div><strong>Read-only and unproxied.</strong> Your browser calls <code>api.github.com</code> directly. Nothing is routed through GitDealFlow, nothing is stored, and no token is requested — only public repository data is read. Check it in your network panel.</div>
+  </div>
+
+  <div class="card">
+    <label for="q" style="display:block;font-weight:600;margin-bottom:8px">Organisation or repository</label>
+    <div class="searchrow">
+      <input type="text" id="q" placeholder="vercel   or   vercel/next.js" autocomplete="off" spellcheck="false" />
+      <button type="button" id="go">Check momentum</button>
+    </div>
+    <div class="chips" id="chips"></div>
+    <p class="note" id="rl" style="margin-top:14px"></p>
+  </div>
+
+  <div id="messages"></div>
+  <div id="results" class="hidden"></div>
+  <div id="exportrow" class="chips hidden" style="margin-bottom:24px">
+    <button type="button" class="ghost" id="copy-md">Copy Markdown summary</button>
+    <button type="button" class="ghost" id="copy-link">Copy link to this check</button>
+  </div>
+
+  <h2>What this measures</h2>
+  <p>GitDealFlow's premise is that engineering activity is a leading indicator: a team ships harder before it raises, and that shows up in public commit history weeks before a press release. This tool runs that read on demand for any public org or repo, using the same score as the <a href="/data/momentum-index">public Momentum Index</a> so results are directly comparable.</p>
+
+  <details><summary>Momentum Score — the published formula</summary>
+  <p>Identical to the one the Momentum Index publishes:</p>
+  <p><code>traction = 100 × log10(stars + 1) / 5</code> — 100,000 stars maps to 100.<br>
+  <code>recency</code> — piecewise on days since the last push: ≤2 days → 100, ≤7 → 88, ≤30 → 68, ≤90 → 40, ≤180 → 22, otherwise 8.<br>
+  <code>SCORE = round(0.40 × traction + 0.35 × recency + 0.25 × velocity)</code></p>
+  <p>The index computes <code>velocity</code> from week-over-week star growth against its own stored snapshots. A one-off check of an arbitrary repository has no such history, so this tool substitutes <b>commit acceleration</b> — derived from GitHub's 52-week commit series, which needs no history at all — and states on the result which velocity term was used. Where the index would fall back to traction, the substitute is strictly more informative: star growth is an audience signal, commit acceleration is an engineering one, and the site's whole thesis is that the engineering signal moves first.</p></details>
+
+  <details><summary>Commit acceleration</summary>
+  <p><code>acceleration = (mean weekly commits, last 4 weeks) ÷ (mean weekly commits, the 12 weeks before that)</code>, from <code>/stats/commit_activity</code>.</p>
+  <p>Volume alone rewards large mature projects that are not changing pace. Acceleration isolates the change in tempo. Above ~1.3 the team has genuinely stepped up; below ~0.7 output is decaying, which on a well-known repository is often the more interesting finding.</p></details>
+
+  <details><summary>Contributor growth and bus factor</summary>
+  <p>From <code>/stats/contributors</code> (top 100 contributors, weekly history). <b>Active contributors</b> are those with at least one commit in the last 8 weeks. <b>New contributors</b> are those whose first-ever commit week falls in the last 12 weeks — a team that is hiring shows up here before it shows up on LinkedIn. <b>Bus factor</b> is the share of the last 52 weeks' commits authored by the single most active contributor; above ~60% the project is one person, which is a diligence question no matter how fast it moves.</p></details>
+
+  <details><summary>Repository expansion (organisation checks)</summary>
+  <p>For an organisation, the three most recently pushed public repositories are scored and the org's public repo list is summarised: how many were created in the last twelve months and how many were pushed in the last thirty days. A company spinning up new public repos is usually building surface area — new SDKs, integrations, docs sites — which tends to accompany a commercial push.</p>
+  <p>Only three repositories are fetched per organisation check, to stay inside GitHub's unauthenticated budget of 60 requests per hour. The count is stated in the result rather than silently truncated.</p></details>
+
+  <details><summary>Limits worth knowing before you rely on it</summary>
+  <p>Public activity only: private monorepos, GitLab, and companies that develop in the open only for a thin SDK will all read low. Contributor statistics cover the top 100 contributors. GitHub's <code>/stats/*</code> endpoints compute asynchronously and occasionally return "not ready" on a first call for a very large repository — retry. And the obvious one: many excellent companies have almost no public code, so a low score is evidence of absence of a public signal, not evidence of absence of momentum.</p></details>
+
+  <h2>Frequently asked questions</h2>
+  <details><summary>Where does the data come from?</summary><p>The public GitHub REST API, called directly from your browser. Nothing is proxied through GitDealFlow and no result is stored. Only public repository metadata is read — stars, last push date, weekly commit counts and contributor statistics. Private repositories are not accessible and no authentication is used.</p></details>
+  <details><summary>Why did I get a rate-limit message?</summary><p>GitHub allows 60 unauthenticated API requests per hour per IP, and each check spends three to six. The remaining allowance is shown after every check and the limit resets hourly. This tool deliberately does not ask for a personal access token — pasting credentials into a third-party page is a habit worth not building.</p></details>
+  <details><summary>Is a high Momentum Score investment advice?</summary><p>No. The Momentum Score reflects public software-engineering activity only. It is not investment advice, a valuation, or a recommendation to buy, sell, or fund any company. It is one leading indicator and says nothing about revenue, retention, market or team.</p></details>
+  <details><summary>How does this relate to the paid signal?</summary><p>This checks one name at a time, when you think to check it. The <a href="/">weekly signal</a> watches 4,200+ organisations continuously and tells you which ones changed — the difference between looking something up and being told where to look.</p></details>
+
+  <h2>Related</h2>
+  <p><a href="/data/momentum-index">The public Momentum Index</a> · <a href="/free">All free tools</a> · <a href="/tools">Startup calculators</a> · <a href="/free/free-startup-signal-checker">Startup signal checklist</a> · <a href="/free/free-vc-deal-flow-tracker">VC deal-flow tracker</a></p>
+
+  <footer>
+    <p>© 2026 GitDealFlow — engineering-activity signals for investors. GitDealFlow is a signal tool, not a fund and not a VC.</p>
+    <p style="margin-top:8px">The Momentum Score reflects public software-engineering activity only. It is not investment advice, a valuation, or a recommendation to buy, sell, or fund any company.</p>
+  </footer>
+</div>
+
+<script>
+(function(){
+"use strict";
+var API="https://api.github.com";
+var DISCLAIMER="The Momentum Score reflects public software-engineering activity only. It is not investment advice, a valuation, or a recommendation to buy, sell, or fund any company.";
+var $=function(s){return document.querySelector(s)};
+var esc=function(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})};
+var num=function(n){return n==null||!isFinite(n)?"—":Math.round(n).toLocaleString("en-US")};
+var one=function(n){return n==null||!isFinite(n)?"—":n.toFixed(2)};
+var pct=function(n,d){return n==null||!isFinite(n)?"—":(n*100).toFixed(d==null?0:d)+"%"};
+var clamp=function(n,lo,hi){return Math.max(lo==null?0:lo,Math.min(hi==null?100:hi,n))};
+var state={last:null};
+
+function msg(html,cls){ $("#messages").innerHTML = html?'<div class="msg '+(cls||"err")+'">'+html+'</div>':"" }
+function track(ev,props){ try{ if(window.posthog&&window.posthog.capture) window.posthog.capture(ev,props||{}) }catch(e){} }
+
+var rateRemaining=null;
+function showRate(){
+  $("#rl").textContent = rateRemaining==null ? "GitHub allows 60 unauthenticated requests per hour per IP. Each check uses 3–6."
+    : "GitHub API budget remaining this hour: "+rateRemaining+" of 60. Each check uses 3–6.";
+}
+showRate();
+
+/* ---- fetch helpers ---- */
+function gh(path,opts){
+  opts=opts||{};
+  return fetch(API+path,{headers:{"Accept":"application/vnd.github+json"}}).then(function(r){
+    var rem=r.headers.get("x-ratelimit-remaining");
+    if(rem!=null){rateRemaining=parseInt(rem,10);showRate()}
+    if(r.status===202) return {pending:true};                       // stats still computing
+    if(r.status===404) return {notFound:true};
+    if(r.status===403||r.status===429){
+      var reset=r.headers.get("x-ratelimit-reset");
+      var mins=reset?Math.max(1,Math.ceil((reset*1000-Date.now())/60000)):null;
+      throw new Error("GitHub rate limit reached"+(mins?(" — it resets in about "+mins+" minute"+(mins===1?"":"s")+"."):".")+" The limit is 60 requests per hour per IP address and is enforced by GitHub, not by this page.");
+    }
+    if(!r.ok) throw new Error("GitHub returned HTTP "+r.status+" for "+path);
+    return r.json();
+  });
+}
+function ghStats(path,tries){
+  tries=tries==null?3:tries;
+  return gh(path).then(function(d){
+    if(d&&d.pending){
+      if(tries<=0) return {pending:true};
+      return new Promise(function(res){setTimeout(res,1600)}).then(function(){return ghStats(path,tries-1)});
+    }
+    return d;
+  });
+}
+
+/* ---- published score ---- */
+function tractionOf(stars){ return clamp(100*Math.log10((stars||0)+1)/5) }
+function recencyOf(pushedAt){
+  var d=Math.max(0,(Date.now()-Date.parse(pushedAt))/86400000);
+  if(d<=2)return 100; if(d<=7)return 88; if(d<=30)return 68;
+  if(d<=90)return 40; if(d<=180)return 22; return 8;
+}
+
+/* ---- commit series analysis (no history needed) ---- */
+function analyseCommits(weeks){
+  if(!weeks||!weeks.length) return null;
+  var c=weeks.map(function(w){return w.total||0});
+  var n=c.length;
+  var last4=c.slice(-4), prior12=c.slice(-16,-4);
+  var m4=last4.length?last4.reduce(function(a,b){return a+b},0)/last4.length:0;
+  var m12=prior12.length?prior12.reduce(function(a,b){return a+b},0)/prior12.length:0;
+  var accel = m12>0 ? m4/m12 : (m4>0?null:0);   // null = no baseline to compare against
+  var total52=c.reduce(function(a,b){return a+b},0);
+  var active=c.filter(function(x){return x>0}).length;
+  // linear trend over the last 26 weeks, as % of mean per week
+  var t=c.slice(-26),sx=0,sy=0,sxx=0,sxy=0,k=t.length;
+  for(var i=0;i<k;i++){sx+=i;sy+=t[i];sxx+=i*i;sxy+=i*t[i]}
+  var den=k*sxx-sx*sx, slope=den?(k*sxy-sx*sy)/den:0, mean=k?sy/k:0;
+  return {series:c,mean4:m4,mean12:m12,accel:accel,total52:total52,activeWeeks:active,
+          trendPerWeek: mean>0?slope/mean:null, weeks:n};
+}
+function analyseContributors(list){
+  if(!Array.isArray(list)||!list.length) return null;
+  var nowWeek=Math.floor(Date.now()/1000/604800);
+  var activeRecent=0,newRecent=0,top=0,total=0,totalCommits=0;
+  list.forEach(function(c){
+    var weeks=c.weeks||[];
+    var sum=0,firstWeek=null,recent=0;
+    weeks.forEach(function(w){
+      var cc=w.c||0; sum+=cc;
+      if(cc>0){ if(firstWeek==null||w.w<firstWeek) firstWeek=w.w;
+        if(Math.floor(w.w/604800)>=nowWeek-8) recent+=cc; }
+    });
+    if(sum<=0) return;
+    total++; totalCommits+=sum;
+    if(recent>0) activeRecent++;
+    if(firstWeek!=null && Math.floor(firstWeek/604800)>=nowWeek-12) newRecent++;
+    if(sum>top) top=sum;
+  });
+  return {contributors:total,activeLast8:activeRecent,newLast12:newRecent,
+          busFactor: totalCommits>0? top/totalCommits : null, capped:list.length>=100};
+}
+
+/* ---- rendering ---- */
+function tag(cls,label){ return '<span class="tag '+cls+'">'+label+'</span>' }
+function accelTag(a){
+  if(a==null) return tag("t-flat","no baseline");
+  if(a>=1.6) return tag("t-hot","accelerating hard");
+  if(a>=1.3) return tag("t-hot","accelerating");
+  if(a>=0.9) return tag("t-warm","steady");
+  if(a>=0.7) return tag("t-flat","cooling");
+  return tag("t-cold","decaying");
+}
+function svgSpark(series){
+  if(!series||series.length<4) return "";
+  var n=series.length,w=Math.max(560,n*10+70),h=130,pl=48,pr=12,pt=12,pb=24;
+  var iw=w-pl-pr, ih=h-pt-pb, max=Math.max.apply(null,series)||1;
+  var bw=Math.max(2,iw/n-2), g='<g>';
+  g+='<line x1="'+pl+'" y1="'+(pt+ih)+'" x2="'+(w-pr)+'" y2="'+(pt+ih)+'" stroke="#334155"/>';
+  g+='<text x="'+(pl-8)+'" y="'+(pt+6)+'" text-anchor="end" font-size="10" fill="#94a3b8">'+max+'</text>';
+  g+='<text x="'+(pl-8)+'" y="'+(pt+ih)+'" text-anchor="end" font-size="10" fill="#94a3b8">0</text>';
+  series.forEach(function(v,i){
+    var bh=(v/max)*ih, x=pl+i*(iw/n), recent=i>=n-4;
+    g+='<rect x="'+x.toFixed(1)+'" y="'+(pt+ih-bh).toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+bh.toFixed(1)+'" fill="'+(recent?"#34d399":"#8b5cf6")+'" opacity="'+(recent?1:.75)+'"><title>'+(n-i)+' week(s) ago: '+v+' commits</title></rect>';
+  });
+  g+='<text x="'+pl+'" y="'+(h-6)+'" font-size="10" fill="#94a3b8">52 weeks ago</text>';
+  g+='<text x="'+(w-pr)+'" y="'+(h-6)+'" text-anchor="end" font-size="10" fill="#34d399">last 4 weeks</text>';
+  g+='</g>';
+  return '<svg viewBox="0 0 '+w+' '+h+'" role="img" aria-label="Weekly commit counts over the last 52 weeks">'+g+'</svg>';
+}
+function scoreColour(s){ return s>=75?"#10b981":s>=55?"#8b5cf6":s>=35?"#f59e0b":"#ef4444" }
+function scoreWord(s){ return s>=75?"Strong":s>=55?"Active":s>=35?"Modest":"Quiet" }
+
+function repoBlock(r){
+  var a=r.commits, c=r.contrib;
+  var h='<div class="grid">';
+  h+='<div class="sig"><div class="lbl">Commit acceleration</div><div class="v">'+(a&&a.accel!=null?one(a.accel)+"×":"—")+'</div>'+accelTag(a?a.accel:null)+
+     '<p>'+(a? (one(a.mean4)+" commits/week over the last 4 weeks against "+one(a.mean12)+" in the prior 12."):"Commit statistics were not available for this repository.")+'</p></div>';
+  h+='<div class="sig"><div class="lbl">Commits, last 52 weeks</div><div class="v">'+(a?num(a.total52):"—")+'</div>'+
+     (a?tag(a.activeWeeks>=40?"t-hot":a.activeWeeks>=20?"t-warm":"t-flat",a.activeWeeks+" active weeks"):"")+
+     '<p>'+(a&&a.trendPerWeek!=null?("26-week trend "+(a.trendPerWeek>=0?"+":"−")+pct(Math.abs(a.trendPerWeek),1)+" per week."):"")+'</p></div>';
+  h+='<div class="sig"><div class="lbl">Contributors</div><div class="v">'+(c?num(c.contributors):"—")+'</div>'+
+     (c?tag(c.newLast12>0?"t-hot":"t-flat",(c.activeLast8)+" active in 8 wks"):"")+
+     '<p>'+(c?(c.newLast12+" first committed in the last 12 weeks."+(c.capped?" List capped at GitHub's top 100.":"")):"Contributor statistics were not available.")+'</p></div>';
+  h+='<div class="sig"><div class="lbl">Bus factor</div><div class="v">'+(c&&c.busFactor!=null?pct(c.busFactor):"—")+'</div>'+
+     (c&&c.busFactor!=null?tag(c.busFactor>=0.6?"t-risk":c.busFactor>=0.4?"t-warm":"t-hot",c.busFactor>=0.6?"concentrated":"distributed"):"")+
+     '<p>Share of the last year’s commits from the single most active contributor.</p></div>';
+  h+='<div class="sig"><div class="lbl">Stars</div><div class="v">'+num(r.stars)+'</div><p>Forks '+num(r.forks)+' · open issues '+num(r.issues)+' · '+esc(r.language||"no primary language")+'</p></div>';
+  h+='<div class="sig"><div class="lbl">Last push</div><div class="v">'+r.daysSincePush+'d</div>'+tag(r.recency>=88?"t-hot":r.recency>=68?"t-warm":r.recency>=40?"t-flat":"t-cold","recency "+r.recency)+
+     '<p>Created '+esc(String(r.createdAt).slice(0,10))+'.</p></div>';
+  h+='</div>';
+  if(a) h+='<div class="chart">'+svgSpark(a.series)+'</div><p class="note">Weekly commit counts from GitHub’s 52-week series. The last four weeks are highlighted — those are the ones compared against the prior twelve.</p>';
+  return h;
+}
+
+function findingsFor(r){
+  var F=[],a=r.commits,c=r.contrib;
+  if(a&&a.accel!=null&&a.accel>=1.3)
+    F.push(["hi","Engineering output is accelerating ("+one(a.accel)+"×)",
+      "Commits are running at "+one(a.mean4)+" per week against a prior-12-week baseline of "+one(a.mean12)+". This is the pattern GitDealFlow watches for: teams tend to ship harder before a raise, not after it. Check whether hiring, a public roadmap change or a launch explains it."]);
+  if(a&&a.accel!=null&&a.accel<0.7&&a.mean12>1)
+    F.push(["rk","Engineering output is decaying ("+one(a.accel)+"×)",
+      "Weekly commits have fallen from "+one(a.mean12)+" to "+one(a.mean4)+". On a repository with real traction this is often the more interesting finding — it can mean the team moved to a private monorepo, or that the public project is no longer where the work happens."]);
+  if(c&&c.newLast12>0)
+    F.push(["hi",c.newLast12+" contributor"+(c.newLast12===1?"":"s")+" first committed in the last 12 weeks",
+      "New names appearing in a codebase is one of the earliest visible signs of hiring, and it shows up here before it shows up on a careers page."]);
+  if(c&&c.busFactor!=null&&c.busFactor>=0.6)
+    F.push(["rk","One contributor authored "+pct(c.busFactor)+" of the last year’s commits",
+      "The project is effectively one person. That is a key-person risk regardless of how fast it is moving, and it is worth knowing whether that person is a founder, an employee or an outside maintainer."]);
+  if(r.recency<=22)
+    F.push(["rk","Last push was "+r.daysSincePush+" days ago",
+      "The public repository is dormant. That is not the same as the company being dormant — plenty of teams develop privately — but it does mean this signal has gone quiet."]);
+  if(a&&a.activeWeeks!=null&&a.activeWeeks>=45&&a.accel!=null&&a.accel>=0.9)
+    F.push(["lo","Sustained cadence: commits in "+a.activeWeeks+" of the last 52 weeks",
+      "Consistency over a year is a different signal from a burst. It suggests a funded, staffed team rather than a side project."]);
+  if(!F.length) F.push(["lo","No strong signal either way",
+    "Activity is within an ordinary range on every measure available publicly. For a company that develops mostly in private, that is the expected result and says little."]);
+  return F;
+}
+
+function render(res){
+  var h="";
+  var primary=res.repos[0];
+  var col=scoreColour(res.score);
+  h+='<div class="card"><div class="scorebox">'+
+     '<div class="dial" style="background:'+col+'"><b>'+res.score+'</b><span>momentum</span></div>'+
+     '<div class="smeta"><h2>'+esc(res.title)+' — '+scoreWord(res.score)+'</h2>'+
+     '<p>'+esc(res.subtitle)+'</p></div></div>'+
+     '<p class="note" style="margin:14px 0 0">Momentum Score = 0.40 × traction ('+res.traction+') + 0.35 × recency ('+res.recency+') + 0.25 × velocity ('+res.velocity+', from '+esc(res.velocitySource)+'). Same formula as the <a href="/data/momentum-index">public Momentum Index</a>.</p></div>';
+
+  if(res.org){
+    h+='<h2>Organisation</h2><div class="grid">';
+    h+='<div class="sig"><div class="lbl">Public repositories</div><div class="v">'+num(res.org.publicRepos)+'</div><p>'+num(res.org.pushed30)+' pushed in the last 30 days.</p></div>';
+    h+='<div class="sig"><div class="lbl">Created in last 12 months</div><div class="v">'+num(res.org.created12mo)+'</div>'+
+       (res.org.created12mo>0?tag("t-warm","expanding surface area"):tag("t-flat","stable"))+
+       '<p>New public repos often accompany a commercial push — SDKs, integrations, docs.</p></div>';
+    h+='<div class="sig"><div class="lbl">Scored repositories</div><div class="v">'+res.repos.length+'</div><p>The '+res.repos.length+' most recently pushed public repos, out of '+num(res.org.publicRepos)+'. Capped to stay inside GitHub’s hourly budget.</p></div>';
+    h+='</div>';
+  }
+
+  h+='<h2>'+esc(primary.full)+'</h2>';
+  h+=repoBlock(primary);
+
+  h+='<h2>Findings</h2>';
+  findingsFor(primary).forEach(function(f){
+    h+='<div class="find '+f[0]+'"><b>'+esc(f[1])+'</b><span>'+esc(f[2])+'</span></div>';
+  });
+
+  if(res.repos.length>1){
+    h+='<h2>Other repositories scored</h2><div class="chart"><table><thead><tr><th>Repository</th><th class="num">Stars</th><th class="num">Commits 52w</th><th class="num">Accel</th><th class="num">Last push</th></tr></thead><tbody>';
+    res.repos.slice(1).forEach(function(r){
+      h+='<tr><td>'+esc(r.full)+'</td><td class="num">'+num(r.stars)+'</td><td class="num">'+(r.commits?num(r.commits.total52):"—")+'</td><td class="num">'+(r.commits&&r.commits.accel!=null?one(r.commits.accel)+"×":"—")+'</td><td class="num">'+r.daysSincePush+'d</td></tr>';
+    });
+    h+='</tbody></table></div>';
+  }
+  h+='<p class="note">'+DISCLAIMER+'</p>';
+  return h;
+}
+
+function toMarkdown(res){
+  var p=res.repos[0],a=p.commits,c=p.contrib,L=[];
+  L.push("# GitHub momentum — "+res.title+" (score "+res.score+"/100, "+scoreWord(res.score)+")");
+  L.push("");
+  L.push("| Signal | Value |");L.push("|---|---|");
+  L.push("| Momentum Score | "+res.score+" (traction "+res.traction+", recency "+res.recency+", velocity "+res.velocity+" via "+res.velocitySource+") |");
+  L.push("| Primary repo | "+p.full+" |");
+  L.push("| Stars / forks | "+num(p.stars)+" / "+num(p.forks)+" |");
+  L.push("| Last push | "+p.daysSincePush+" days ago |");
+  if(a){ L.push("| Commits, last 52w | "+num(a.total52)+" across "+a.activeWeeks+" active weeks |");
+         L.push("| Commit acceleration | "+(a.accel!=null?one(a.accel)+"x":"n/a")+" ("+one(a.mean4)+"/wk last 4 vs "+one(a.mean12)+"/wk prior 12) |"); }
+  if(c){ L.push("| Contributors | "+num(c.contributors)+" ("+c.activeLast8+" active in 8 weeks, "+c.newLast12+" new in 12) |");
+         L.push("| Bus factor | "+(c.busFactor!=null?pct(c.busFactor):"n/a")+" from the top contributor |"); }
+  if(res.org) L.push("| Org repos | "+num(res.org.publicRepos)+" public, "+num(res.org.created12mo)+" created in 12 months, "+num(res.org.pushed30)+" pushed in 30 days |");
+  L.push("");
+  L.push("## Findings");
+  findingsFor(p).forEach(function(f){ L.push(""); L.push("**"+f[1]+"**"); L.push(""); L.push(f[2]); });
+  L.push("");L.push("---");
+  L.push(DISCLAIMER);
+  L.push("Computed live from the public GitHub API — https://gitdealflow.com/free/github-momentum-checker");
+  return L.join("\n");
+}
+
+/* ---- orchestration ---- */
+function scoreRepo(d){
+  var pushed=d.pushed_at;
+  return {
+    full:d.full_name, stars:d.stargazers_count||0, forks:d.forks_count||0,
+    issues:d.open_issues_count||0, language:d.language||"", createdAt:d.created_at,
+    pushedAt:pushed, daysSincePush:Math.round(Math.max(0,(Date.now()-Date.parse(pushed))/86400000)),
+    recency:recencyOf(pushed), traction:Math.round(tractionOf(d.stargazers_count||0)),
+    commits:null, contrib:null
+  };
+}
+function enrich(r,deep){
+  var parts=r.full.split("/");
+  var jobs=[ghStats("/repos/"+parts[0]+"/"+parts[1]+"/stats/commit_activity").then(function(d){
+    r.commits = (d&&!d.pending&&!d.notFound&&Array.isArray(d)) ? analyseCommits(d) : null;
+  }).catch(function(){r.commits=null})];
+  if(deep) jobs.push(ghStats("/repos/"+parts[0]+"/"+parts[1]+"/stats/contributors").then(function(d){
+    r.contrib = (d&&!d.pending&&!d.notFound&&Array.isArray(d)) ? analyseContributors(d) : null;
+  }).catch(function(){r.contrib=null}));
+  return Promise.all(jobs).then(function(){return r});
+}
+
+function run(query){
+  query=String(query||"").trim().replace(/^https?:\/\/(www\.)?github\.com\//i,"").replace(/\/+$/,"").replace(/\.git$/,"");
+  if(!query){ msg("Enter a GitHub organisation (<code>vercel</code>) or a repository (<code>vercel/next.js</code>)."); return }
+  if(!/^[A-Za-z0-9._-]+(\/[A-Za-z0-9._-]+)?$/.test(query)){ msg("That does not look like a GitHub org or <code>owner/repo</code> path."); return }
+  msg('Querying the public GitHub API…',"info");
+  $("#go").disabled=true; $("#results").classList.add("hidden"); $("#exportrow").classList.add("hidden");
+  var isRepo=query.indexOf("/")>-1;
+
+  var chain = isRepo
+    ? gh("/repos/"+query).then(function(d){
+        if(d.notFound) throw new Error("No public repository <code>"+esc(query)+"</code>. Check the spelling, or try just the organisation name.");
+        var r=scoreRepo(d);
+        return enrich(r,true).then(function(){return {repos:[r],org:null}});
+      })
+    : gh("/users/"+query).then(function(u){
+        if(u.notFound) throw new Error("No public GitHub user or organisation called <code>"+esc(query)+"</code>.");
+        return gh("/users/"+query+"/repos?per_page=100&sort=pushed&direction=desc&type=owner").then(function(list){
+          if(!Array.isArray(list)||!list.length) throw new Error("<code>"+esc(query)+"</code> has no public repositories, so there is no public engineering signal to read.");
+          var real=list.filter(function(x){return !x.fork&&!x.archived});
+          if(!real.length) real=list;
+          var yearAgo=Date.now()-365*86400000, monthAgo=Date.now()-30*86400000;
+          var org={ publicRepos: u.public_repos||list.length,
+                    created12mo: real.filter(function(x){return Date.parse(x.created_at)>=yearAgo}).length,
+                    pushed30: real.filter(function(x){return Date.parse(x.pushed_at)>=monthAgo}).length };
+          var top=real.slice(0,3).map(scoreRepo);
+          return enrich(top[0],true).then(function(){
+            return Promise.all(top.slice(1).map(function(r){return enrich(r,false)}));
+          }).then(function(){ return {repos:top,org:org} });
+        });
+      });
+
+  chain.then(function(out){
+    var p=out.repos[0], a=p.commits;
+    // velocity: the index uses week-over-week star growth from stored history, which a
+    // one-off check does not have. Substitute commit acceleration and say so.
+    var velocity, source;
+    if(a&&a.accel!=null){ velocity=Math.round(clamp(50+50*(a.accel-1)*2)); source="commit acceleration"; }
+    else { velocity=p.traction; source="traction fallback — no commit baseline"; }
+    var score=Math.round(0.40*p.traction+0.35*p.recency+0.25*velocity);
+    var res={ repos:out.repos, org:out.org, score:score, traction:p.traction, recency:p.recency,
+      velocity:velocity, velocitySource:source,
+      title: out.org? query : p.full,
+      subtitle: out.org
+        ? ("Scored across the "+out.repos.length+" most recently pushed public repositories of "+num(out.org.publicRepos)+".")
+        : ((p.language?p.language+" · ":"")+num(p.stars)+" stars · last push "+p.daysSincePush+" days ago") };
+    state.last=res;
+    $("#results").innerHTML=render(res);
+    $("#results").classList.remove("hidden");
+    $("#exportrow").classList.remove("hidden");
+    msg("");
+    try{ history.replaceState(null,"","?q="+encodeURIComponent(query)) }catch(e){}
+    track("momentum_check",{mode:isRepo?"repo":"org"});
+  }).catch(function(e){
+    msg("<b>Could not complete the check.</b> "+(e&&e.message?e.message:String(e)));
+  }).then(function(){ $("#go").disabled=false });
+}
+
+/* ---- wiring ---- */
+document.addEventListener("DOMContentLoaded",function(){
+  var examples=["vercel","supabase","calcom","huggingface","langchain-ai/langchain","tinygrad/tinygrad"];
+  $("#chips").innerHTML=examples.map(function(e){return '<button type="button" class="chip" data-q="'+esc(e)+'">'+esc(e)+'</button>'}).join("");
+  $("#chips").addEventListener("click",function(ev){
+    var b=ev.target.closest(".chip"); if(!b)return;
+    $("#q").value=b.getAttribute("data-q"); run(b.getAttribute("data-q"));
+  });
+  $("#go").addEventListener("click",function(){ run($("#q").value) });
+  $("#q").addEventListener("keydown",function(e){ if(e.key==="Enter"){e.preventDefault();run(this.value)} });
+  $("#copy-md").addEventListener("click",function(){
+    if(!state.last)return; var btn=this,md=toMarkdown(state.last);
+    var done=function(){btn.textContent="Copied";setTimeout(function(){btn.textContent="Copy Markdown summary"},2000)};
+    if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(md).then(done,done); else done();
+  });
+  $("#copy-link").addEventListener("click",function(){
+    var btn=this,u=location.origin+location.pathname+"?q="+encodeURIComponent($("#q").value.trim());
+    var done=function(){btn.textContent="Link copied";setTimeout(function(){btn.textContent="Copy link to this check"},2000)};
+    if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(u).then(done,done); else done();
+  });
+  var q=new URLSearchParams(location.search).get("q");
+  if(q){ $("#q").value=q; run(q); }
+});
+})();
+</script>
+</body>
+</html>
