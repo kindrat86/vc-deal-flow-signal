@@ -39,7 +39,19 @@ if [ "$file_count" -gt 15000 ]; then
   echo "ℹ File count exceeds 15k — --archive=tgz is required (already passed below)"
 fi
 
-# Step 3 — deploy with archive flag (always; cheap on small artifacts, mandatory on large)
+# Step 3 — gate the artifact's structured data before it is uploaded.
+# A --prebuilt deploy runs no build, so the gate wired into postbuild does not
+# fire here: it ships .vercel/output exactly as it sits on disk. Step 1 above
+# normally refreshes it, but if that is ever skipped, reordered, or the artifact
+# is reused from an earlier run, this is the only thing standing between a stale
+# artifact and production. Not hypothetical — on 2026-07-25 carshake's
+# .vercel/output still held 11 pages of unparsable JSON-LD (unescaped " inside
+# FAQ answer strings) long after the source was fixed.
+# Scans .vercel/output, not .next, because that is what actually gets uploaded.
+echo "▶ Verifying structured data in the artifact..."
+node scripts/verify-jsonld.mjs .vercel/output
+
+# Step 4 — deploy with archive flag (always; cheap on small artifacts, mandatory on large)
 echo "▶ Deploying to production with --archive=tgz..."
 npx vercel deploy --prebuilt --prod --archive=tgz
 
