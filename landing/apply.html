@@ -275,10 +275,10 @@
       <div class="rounded-2xl border border-gray-700 bg-dark-800/70 p-6">
         <h2 class="text-xl font-bold mb-2">Get the free Sunday email first</h2>
         <p class="text-gray-400 text-sm mb-4 max-w-lg mx-auto">Still weighing it up? Watch the signal work for free — five accelerating startups every Sunday, in plain English. Apply when the thesis is ready.</p>
-        <form class="gdf-inline-form mobile-cta-stack flex flex-col sm:flex-row gap-3 max-w-lg mx-auto" data-source="apply-inline">
+        <form class="gdf-inline-form mobile-cta-stack flex flex-col sm:flex-row gap-3 max-w-lg mx-auto" data-source="apply-inline" method="post">
           <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;height:0;width:0;opacity:0">
           <label for="inline-email" class="sr-only">Email address</label>
-          <input type="email" id="inline-email" required inputmode="email" autocomplete="email" placeholder="you@example.com" class="form-input flex-1">
+          <input type="email" name="email" id="inline-email" required inputmode="email" autocomplete="email" placeholder="you@example.com" class="form-input flex-1">
           <button type="submit" class="btn btn-primary btn-md w-full sm:w-auto">Get this Sunday&rsquo;s 5 names &rarr;</button>
         </form>
         <p class="gdf-inline-msg text-gray-400 text-xs mt-3" role="status">One email a week · unsubscribe anytime</p>
@@ -303,10 +303,10 @@
       <p class="text-signal-400 text-xs font-semibold uppercase tracking-wider mb-3">Before you go</p>
       <h2 id="exit-title" class="text-2xl md:text-3xl font-extrabold leading-tight mb-3">Thesis not ready? Keep the signal warm.</h2>
       <p class="text-gray-300 leading-relaxed mb-5">The application will still be here. Meanwhile the free Sunday email gives you five accelerating startups a week, in plain English &mdash; a low-stakes way to watch the methodology work.</p>
-      <form id="exit-form" class="flex flex-col gap-3">
+      <form id="exit-form" method="post" class="flex flex-col gap-3">
         <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;height:0;width:0;opacity:0">
         <label for="exit-email" class="sr-only">Email address</label>
-        <input type="email" id="exit-email" required inputmode="email" autocomplete="email" placeholder="you@example.com" class="form-input w-full">
+        <input type="email" name="email" id="exit-email" required inputmode="email" autocomplete="email" placeholder="you@example.com" class="form-input w-full">
         <button type="submit" id="exit-submit" class="w-full bg-signal-500 hover:bg-signal-400 text-dark-900 font-bold py-3 rounded-lg transition">Get this Sunday&rsquo;s 5 names &rarr;</button>
       </form>
       <p id="exit-msg" class="text-gray-400 text-xs text-center mt-3" role="status">One email a week · unsubscribe anytime</p>

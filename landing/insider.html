@@ -282,10 +282,10 @@
       <div class="rounded-2xl border border-gray-700 bg-dark-800 p-6 md:p-8">
         <h2 class="text-xl font-bold mb-2">Get the free Sunday email first</h2>
         <p class="text-gray-400 text-sm mb-4 max-w-lg mx-auto">Not ready for the room? Five accelerating startups land every Sunday, in plain English. No card, one click to unsubscribe.</p>
-        <form class="gdf-inline-form mobile-form-stack flex flex-col sm:flex-row gap-3 max-w-lg mx-auto" data-source="insider-inline">
+        <form class="gdf-inline-form mobile-form-stack flex flex-col sm:flex-row gap-3 max-w-lg mx-auto" data-source="insider-inline" method="post">
           <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;height:0;width:0;opacity:0">
           <label for="inline-email" class="sr-only">Email address</label>
-          <input type="email" id="inline-email" required inputmode="email" autocomplete="email" placeholder="you@example.com" class="flex-1 px-4 py-3 rounded-lg bg-dark-900 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-signal-500">
+          <input type="email" name="email" id="inline-email" required inputmode="email" autocomplete="email" placeholder="you@example.com" class="flex-1 px-4 py-3 rounded-lg bg-dark-900 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-signal-500">
           <button type="submit" class="btn btn-primary btn-md w-full sm:w-auto">Get this Sunday&rsquo;s 5 names &rarr;</button>
         </form>
         <p class="gdf-inline-msg text-gray-400 text-xs mt-3">One email a week · unsubscribe anytime</p>
@@ -313,10 +313,10 @@
       <p class="text-signal-400 text-xs font-semibold uppercase tracking-wider mb-3">Before you go</p>
       <h2 id="exit-title" class="text-2xl md:text-3xl font-extrabold leading-tight mb-3">The room can wait. The signal shouldn&rsquo;t.</h2>
       <p class="text-gray-300 leading-relaxed mb-5">If Insider feels early, start where everyone starts: the free Sunday email — five accelerating startups, in plain English. Join the circle when the cadence is real.</p>
-      <form id="exit-form" class="flex flex-col gap-3">
+      <form id="exit-form" method="post" class="flex flex-col gap-3">
         <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;height:0;width:0;opacity:0">
         <label for="exit-email" class="sr-only">Email address</label>
-        <input type="email" id="exit-email" required inputmode="email" autocomplete="email" placeholder="you@example.com" class="w-full px-4 py-3 rounded-lg bg-dark-800 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-signal-500">
+        <input type="email" name="email" id="exit-email" required inputmode="email" autocomplete="email" placeholder="you@example.com" class="w-full px-4 py-3 rounded-lg bg-dark-800 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-signal-500">
         <button type="submit" id="exit-submit" class="w-full bg-signal-500 hover:bg-signal-400 text-white font-bold py-3 rounded-lg transition">Get this Sunday&rsquo;s 5 names &rarr;</button>
       </form>
       <p id="exit-msg" class="text-gray-400 text-xs text-center mt-3">One email a week · unsubscribe anytime</p>
@@ -368,6 +368,9 @@
         var msg = document.getElementById('insider-msg');
         if (msg) {
           msg.textContent = 'Something went wrong opening checkout. Try again, or email signal@gitdealflow.com';
+          msg.setAttribute('role', 'alert');
+          var invalidField = msg.id && document.querySelector('[aria-describedby="' + msg.id + '"]');
+          if (invalidField) invalidField.setAttribute('aria-invalid', 'true');
           msg.className = 'text-red-400 text-sm mt-4';
         }
       });
@@ -500,6 +503,9 @@
           window.location.href = '/thanks';
         }).catch(function () {
           msg.textContent = 'Something went wrong. Try again or email signal@gitdealflow.com';
+          msg.setAttribute('role', 'alert');
+          var invalidField = msg.id && document.querySelector('[aria-describedby="' + msg.id + '"]');
+          if (invalidField) invalidField.setAttribute('aria-invalid', 'true');
           msg.className = 'text-red-400 text-xs text-center mt-3';
           btn.disabled = false;
           btn.textContent = 'Get this Sunday’s 5 names →';
