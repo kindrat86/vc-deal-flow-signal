@@ -136,11 +136,17 @@ export default function ToolsIndexPage() {
           "A growing collection of free calculators and references for founders and investors.",
         inLanguage: "en-US",
         isPartOf: { "@id": `${SITE}/#website` },
+        // The free `offers` block is REQUIRED, not decorative: a
+        // SoftwareApplication with none of offers/review/aggregateRating is a
+        // CRITICAL GSC "Product snippets" error. These tools are genuinely
+        // free, so price "0" is an honest offer — the same shape the per-tool
+        // pages and /a2a-demo already emit.
         hasPart: liveTools.map((t) => ({
           "@type": "SoftwareApplication",
           name: t.name,
           url: `${SITE}/tools/${t.slug}`,
           applicationCategory: "FinanceApplication",
+          offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
         })),
       },
       {
