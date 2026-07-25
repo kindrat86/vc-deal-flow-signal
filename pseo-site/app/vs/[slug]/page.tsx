@@ -95,6 +95,19 @@ export default async function VsPage({ params }: PageProps) {
 
   const faqs = [
     {
+      // Reverse-ordering question, deliberately first. Search Console (28d) shows
+      // two demand shapes this family was only half-serving:
+      //   "cb insights vs pitchbook"          182 impr, position 23.2
+      //   "how does harmonic compare to X?"   60-113 impr each, position 1.9-3.1
+      // Pages are generated as {a}-vs-{b} only, so every title, heading and FAQ
+      // put A first -- the B-first phrasing appeared ZERO times on the very page
+      // that should own it. The question form is also what already ranks, and is
+      // what Google lifts into People Also Ask / AI Overviews via the FAQPage
+      // JSON-LD built from this array.
+      question: `How does ${b.name} compare to ${a.name}?`,
+      answer: `${b.name} is ${b.signalType.toLowerCase()} with a ${b.leadTime.toLowerCase()} lead time, priced at ${b.pricing.toLowerCase()}. ${a.name} is ${a.signalType.toLowerCase()} with a ${a.leadTime.toLowerCase()} lead time, priced at ${a.pricing.toLowerCase()}. The practical difference is coverage and timing: ${b.name} covers ${b.coverage.toLowerCase()}, while ${a.name} covers ${a.coverage.toLowerCase()}. Pick ${b.name} if ${b.strengths[0].toLowerCase()} matters more to your process; pick ${a.name} if ${a.strengths[0].toLowerCase()} does.`,
+    },
+    {
       question: `What is the main difference between ${a.name} and ${b.name}?`,
       answer: `${a.name} focuses on ${a.signalType.toLowerCase()} with a ${a.leadTime.toLowerCase()} lead time, while ${b.name} focuses on ${b.signalType.toLowerCase()} with a ${b.leadTime.toLowerCase()} lead time. They serve different points in the deal-flow funnel: ${a.name} is priced at ${a.pricing.toLowerCase()} and covers ${a.coverage.toLowerCase()}; ${b.name} is priced at ${b.pricing.toLowerCase()} and covers ${b.coverage.toLowerCase()}.`,
     },
