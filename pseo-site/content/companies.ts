@@ -92,7 +92,9 @@ function build(c: {
     sector: c.sector,
     stage: c.stage,
     description: `${c.name} (${c.sector}, ${stageLabel}) — GitHub org github.com/${c.githubOrg}. ${c.what}`,
-    title: `${c.name} GitHub Engineering Signals (2026) — VC Deal Flow Signal`,
+    // No brand suffix here — app/layout.tsx applies the title template
+    // "%s | VC Deal Flow Signal". Hardcoding it doubled the brand in <title>.
+    title: `${c.name} GitHub Engineering Signals (2026)`,
     metaDescription: `${c.name} public GitHub engineering profile — sector, stage, repo footprint, and language bias, curated as a ${c.sector} benchmark for investors and operators. Reference profile, reviewed ${REFERENCE_PROFILE_REVIEWED}.`,
     h1: `${c.name} GitHub Engineering Signals`,
     tagline: `A quantitative view of ${c.name}'s public engineering activity — what we track and why investors watch it.`,

@@ -64,7 +64,8 @@ function build(a: {
     name: a.name,
     homepageUrl: a.homepage,
     hq: a.hq,
-    title: `${a.name} Acquisitions & M&A Pattern (2026) — VC Deal Flow Signal`,
+    // No brand suffix — app/layout.tsx applies "%s | VC Deal Flow Signal".
+    title: `${a.name} Acquisitions & M&A Pattern (2026)`,
     metaDescription: `${a.name}'s public acquisition history, M&A focus areas, and the engineering-signal patterns we track in their target sectors. ${acqCount} notable acquisitions documented. Built for Corp Dev, PE operating partners, and competitive analysts.`,
     h1: `${a.name} — Acquisitions & M&A Pattern`,
     tagline: `${a.name}'s public acquisition history (${acqCount} notable deals) mapped against the engineering-signal panel we publish.`,
