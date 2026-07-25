@@ -30,7 +30,7 @@ const STACK = [
   { label: "20 talks, released on a rolling basis — synthetic narration, anonymous-by-design", value: "€0 free for 24h after each talk airs" },
   { label: "Full transcripts of every talk (PDF + markdown)", value: "€97 with All-Access Pass" },
   { label: "Slide decks and chart packs from every talk", value: "€97 with All-Access Pass" },
-  { label: "219-startup backtest CSV (the dataset behind the panel)", value: "€297 standalone, included with All-Access" },
+  { label: "219-startup panel dataset — the same CC BY 4.0 file published free at /api/signals.csv; paying gets you the cleaned import-ready build and the talk walkthroughs", value: "€297 standalone, included with All-Access" },
   { label: "Lifetime replays of every talk after the free window closes", value: "€97 with All-Access Pass" },
   { label: "Methodology vault: SSRN preprint, Zenodo dataset, regression code", value: "Free, always" },
 ] as const;
@@ -71,7 +71,7 @@ export default function SummitPage() {
           },
           {
             "@type": "Offer",
-            name: "All-Access Pass — lifetime replays + transcripts + slides + 219-startup backtest CSV",
+            name: "All-Access Pass — lifetime replays + transcripts + slides + 219-startup panel dataset",
             price: String(SUMMIT.allAccessPrice),
             priceCurrency: SUMMIT.allAccessCurrency,
             availability: "https://schema.org/InStock",
@@ -145,7 +145,7 @@ export default function SummitPage() {
             <strong className="text-gray-300">{totalTalks} talks</strong>, released on a rolling basis ·{" "}
             register to get each one as it drops ·{" "}
             <strong className="text-gray-300">€0 for 24 hours after each talk airs</strong> ·
-            All-Access Pass for lifetime replays + transcripts + 219-startup backtest CSV ·{" "}
+            All-Access Pass for lifetime replays + transcripts + 219-startup panel dataset ·{" "}
             <Link href="/summit/all-access" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">
               €{SUMMIT.allAccessPrice} one-time
             </Link>
@@ -288,7 +288,7 @@ export default function SummitPage() {
             Each talk is free for 24 hours after it airs. After the window
             closes, every talk is locked behind the All-Access Pass — €
             {SUMMIT.allAccessPrice} one-time, lifetime access to all 20 talks,
-            full transcripts, slide decks, and the 219-startup backtest CSV
+            full transcripts, slide decks, and the 219-startup panel dataset
             that the panel was built on. No subscription, no expiration.
           </p>
           <ul className="space-y-3">
@@ -364,7 +364,7 @@ export default function SummitPage() {
               the All-Access Pass funds the production cost of running the
               summit and producing the transcripts. We never gate the
               underlying methodology — that's published openly on /methodology
-              under CC BY 4.0, free forever.
+              under CC BY 4.0, free forever — and neither is the dataset: the panel itself is published free at /api/signals.csv under the same licence.
             </p>
           </details>
           <details className="rounded-lg border border-slate-800 bg-slate-900/40 p-4">

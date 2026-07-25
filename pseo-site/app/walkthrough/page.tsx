@@ -1076,7 +1076,7 @@ export default function PerfectWebinarPage() {
                 {
                   time: "Today, 14:00",
                   scene:
-                    "Stripe charges €9.97. Dashboard URL lands in your inbox inside ten minutes, alongside the SSRN backtest CSV and the one-line MCP install. You paste the install into your terminal — the six tools are inside Claude before you finish your coffee. The methodology vault is bookmarked. The Sunday email subscription is already wired.",
+                    "Stripe charges €9.97. Dashboard URL lands in your inbox inside ten minutes, alongside the SSRN panel dataset and the one-line MCP install. You paste the install into your terminal — the six tools are inside Claude before you finish your coffee. The methodology vault is bookmarked. The Sunday email subscription is already wired.",
                 },
                 {
                   time: "Sunday, 09:00 UTC",

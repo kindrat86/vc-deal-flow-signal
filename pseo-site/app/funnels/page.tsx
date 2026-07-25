@@ -152,7 +152,7 @@ const FUNNELS: Funnel[] = [
     price: "€9.97/mo founding price (locked forever)",
     hook: "The full live dashboard, refreshed every Monday at 06:00 UTC.",
     who: "Active angel investors, GP scouts, syndicate leads.",
-    offer: "8-item stack: live dashboard, 219-startup backtest CSV, monthly sector deep-dive PDF, two free Chrome extensions, free MCP server, async watchlist build, methodology vault, 30-day Signal-or-It's-Free guarantee. €1,728/yr standalone value at €9.97/mo.",
+    offer: "8-item stack: live dashboard, 219-startup panel dataset, monthly sector deep-dive PDF, two free Chrome extensions, free MCP server, async watchlist build, methodology vault, 30-day Signal-or-It's-Free guarantee. €1,728/yr standalone value at €9.97/mo.",
     cta: "Lock the founding price",
     color: "sky",
   },

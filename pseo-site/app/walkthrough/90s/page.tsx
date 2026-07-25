@@ -214,7 +214,7 @@ export default function NinetySecondWalkthroughPage() {
               → Live dashboard, refreshed every Monday at 06:00 UTC.
             </li>
             <li>
-              → 219-startup backtest CSV — replicate the regression yourself.
+              → 219-startup panel dataset — replicate the regression yourself.
             </li>
             <li>
               → Monthly sector deep-dive PDF, your sector.
