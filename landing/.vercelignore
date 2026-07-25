@@ -15,6 +15,14 @@ OWNER_*.md
 *AUDIT*.md
 *SCORECARD*.md
 
+# Editor / conversion leftovers. Untracked today (inline.css.bak-conv,
+# ux.css.bak-conv, ux.css.bak2 are all sitting in this directory right now), so
+# one `git add` away from being served — and a stale copy of the live stylesheet
+# is exactly the kind of file that gets indexed and then contradicts the real one.
+*.bak
+*.bak-conv
+*.bak*
+
 # --- internal tooling: pSEO / i18n generators and ops scripts ---------------
 # These were served publicly too. No credentials were found in them — the
 # IndexNow key in scripts/indexnow-ping.sh is public by design, served at
@@ -22,9 +30,36 @@ OWNER_*.md
 # rather than credential exposure.
 _*.py
 _*.mjs
-scripts/
 data/momentum-index/_build_momentum_index.mjs
 
+# scripts/ CANNOT be excluded wholesale here, unlike churnlens and carshake.
+# vercel.json's buildCommand IS `node scripts/verify-jsonld.mjs .`, so Vercel
+# needs that file present in the build container; a bare `scripts/` entry was
+# committed in 729779f1 and would have failed EVERY deploy of this domain with
+# "Cannot find module" — on the one site in the portfolio with paying customers,
+# which growth-loop auto-deploys with an un-gated `vercel deploy --prod`.
+#
+# So exclude the directory's *contents* and re-include only the gate. This is the
+# one place this file uses `!` negation, and it is load-bearing in both
+# directions: `scripts/*` (not `scripts/`) is required, because gitignore
+# semantics cannot re-include a file whose parent directory is itself excluded.
+# Verify changes to this file empirically, do not read them and assume. Copy it to
+# .gitignore in an empty `git init` directory, recreate the paths, and run
+# `git check-ignore` there — git implements the same rules Vercel does. It must be
+# an empty directory, not this repo: slash-anchored patterns like `scripts/*`
+# resolve against the ignore file's own root, which is landing/ for Vercel but
+# signals-gitdealflow/ for a checkout, so testing in place silently reports the
+# wrong answer for exactly the rule that can break every deploy.
+#
+# Consequence to accept knowingly: /scripts/verify-jsonld.mjs stays a public URL.
+# 37c6ea8a already weighed that and it still holds — it is a generic linter with
+# no secrets, no keys and no site-specific data.
+scripts/*
+!scripts/verify-jsonld.mjs
+
+# NEVER add a bare `scripts/` line. It reads like the right hardening, churnlens
+# and carshake both have one, and here it fails every deploy — see above.
+#
 # DO NOT add these — they are served on purpose:
 #   agents.md, llms.txt, llms-full.txt, ai.txt      -> AI/AEO discovery surfaces
 #   <hex>.txt                                       -> IndexNow key verification
