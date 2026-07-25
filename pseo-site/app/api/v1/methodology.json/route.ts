@@ -77,7 +77,7 @@ export async function GET() {
         "@type": "HowToStep",
         position: 6,
         name: "Validation & track record",
-        text: "When a tracked startup announces a fundraise, log the lead time between the engineering signal and the announcement. Empirical median lead time across 2024–2025 backtests: 4 weeks. Public track record at /track-record.",
+        text: "When a tracked startup announces a fundraise, log the lead time between the engineering signal and the announcement. Empirical median lead time across 2024–2025 backtests: 4 weeks. The underlying panel is published open-access (SSRN abstract 6606558; dataset CC BY 4.0 at /api/signals.csv). Note the public release carries no linked funding-event labels, so lead-time figures are not reproducible from it alone.",
         url: `${SITE}/methodology#validation`,
       },
     ],
