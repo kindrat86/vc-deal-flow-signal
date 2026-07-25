@@ -39,6 +39,37 @@ main code * {
   text-align: left !important;
 }
 
+/* Centring the text is not enough — a box that is itself off-centre keeps its
+   text off-centre. Two structural cases the markup leaves behind:
+     1. a container with a `max-w-*` cap but no `mx-auto`. The /trending hero
+        (`header.mb-8.max-w-3xl`) sat at x 92..860 inside a 1280px column.
+     2. a flex/grid row that never declared its justification, so its items pack
+        to flex-start — the tag chips on every /startup/* page.
+
+   Both live inside `@layer base` ON PURPOSE. Tailwind's utilities sit in
+   `@layer utilities`, which outranks base, so anything that DOES declare
+   `mx-auto` / `ml-*` / `justify-between` keeps exactly what it declared and only
+   the undeclared boxes get centred. `:where()` holds specificity at zero on top
+   of that, and the `:not()` guards repeat the same intent so the rules stay
+   correct even if the layer order is ever disturbed. Do NOT lift these out of
+   the layer or add `!important`: that would shove deliberate layouts around.
+
+   `flex-col` is excluded because on a column `justify-content` is the VERTICAL
+   axis — centring there would collapse vertical stacks. The `:not()` chains must
+   stay touching; whitespace between them is a descendant combinator and quietly
+   changes what they mean. Verified with a before/after position diff of every
+   element in `main` on /trending, /startup/*, /methodology and at 375px: no new
+   horizontal overflow, no change to document scroll width, tables untouched. */
+@layer base {
+  main :where([class*="max-w-"]):not([class*="mx-"]):not([class*="ml-"]):not([class*="mr-"]) {
+    margin-inline: auto;
+  }
+
+  main :where([class*="flex"], [class*="grid"]):not([class*="flex-col"]):not([class*="justify-"]) {
+    justify-content: center;
+  }
+}
+
 /* Honor reduced-motion for any decorative animation. */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
