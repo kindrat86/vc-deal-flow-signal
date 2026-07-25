@@ -1,1 +1,34 @@
 spec.md
+
+# --- internal docs & reports -------------------------------------------------
+# Repo root IS the deploy root here (outputDirectory ".", cleanUrls true), so
+# every tracked file is a live URL. On 2026-07-25 an audit found 18 internal
+# files served 200 and crawlable on this domain, including CLAUDE.md,
+# OWNER_ACTIONS_GITDEALFLOW.md and the HERMES conversion reports — i.e. the
+# unpublished go-to-market plan for the one site in the portfolio with paying
+# customers. Globs, not exact names, so the families this repo keeps generating
+# are caught as they appear.
+CLAUDE.md
+HERMES_*.md
+REPORT_*.md
+OWNER_*.md
+*AUDIT*.md
+*SCORECARD*.md
+
+# --- internal tooling: pSEO / i18n generators and ops scripts ---------------
+# These were served publicly too. No credentials were found in them — the
+# IndexNow key in scripts/indexnow-ping.sh is public by design, served at
+# /<key>.txt as the verification mechanism — so this was information disclosure
+# rather than credential exposure.
+_*.py
+_*.mjs
+scripts/
+data/momentum-index/_build_momentum_index.mjs
+
+# DO NOT add these — they are served on purpose:
+#   agents.md, llms.txt, llms-full.txt, ai.txt      -> AI/AEO discovery surfaces
+#   <hex>.txt                                       -> IndexNow key verification
+#   google*.html, BingSiteAuth.xml                  -> search-engine verification
+#   mcp-demo.gif                                    -> see CLAUDE.md, do not remove
+#   data/startup-ma-statistics/data.csv             -> CC BY datasets, each cited
+#   research/vc-deal-flow-signal-2026/data.csv         from its own landing page
