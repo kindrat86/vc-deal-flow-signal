@@ -3,88 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1, viewport-fit=cover">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="GitDealFlow">
   <title>404 — Page Not Found | GitDealFlow</title>
-  <meta name="robots" content="noindex">
+    <link rel="alternate" hreflang="en" href="https://gitdealflow.com/404">
+    <link rel="alternate" hreflang="es" href="https://gitdealflow.com/es/404">
+    <link rel="alternate" hreflang="de" href="https://gitdealflow.com/de/404">
+    <link rel="alternate" hreflang="x-default" href="https://gitdealflow.com/404"><meta name="robots" content="noindex">
   <meta name="theme-color" content="#ffffff"><meta name="color-scheme" content="light">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { -webkit-text-size-adjust: 100%; }
-    body {
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
-      background: #0f172a;
-      color: #cbd5e1;
-      min-height: 100vh;
-      min-height: 100dvh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 2rem 1.25rem;
-      line-height: 1.6;
-    }
-    .wordmark {
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      color: #f8fafc;
-      font-size: 1.125rem;
-      margin-bottom: 2.5rem;
-    }
-    .code {
-      font-size: clamp(4rem, 18vw, 6.5rem);
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      line-height: 1;
-      background: linear-gradient(135deg, #38bdf8, #ff8c4d);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      margin-bottom: 1rem;
-    }
-    h1 { font-size: clamp(1.25rem, 5vw, 1.75rem); color: #f8fafc; margin-bottom: 0.75rem; }
-    .sub { color: #94a3b8; max-width: 26rem; margin: 0 auto 2rem; }
-    .cta {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      min-height: 48px;
-      padding: 0.75rem 1.75rem;
-      background: #ff6b1a;
-      color: #fff;
-      font-weight: 700;
-      border-radius: 0.75rem;
-      text-decoration: none;
-      box-shadow: 0 8px 24px rgba(255, 107, 26, 0.3);
-      transition: background 0.15s ease, transform 0.15s ease;
-    }
-    .cta:hover { background: #e85a0c; transform: translateY(-1px); }
-    .links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.625rem;
-      margin-top: 1.75rem;
-    }
-    .links a {
-      display: inline-flex;
-      align-items: center;
-      min-height: 44px;
-      padding: 0.5rem 1rem;
-      color: #94a3b8;
-      text-decoration: none;
-      font-size: 0.9rem;
-      border: 1px solid rgba(148, 163, 184, 0.25);
-      border-radius: 9999px;
-      background: rgba(30, 41, 59, 0.6);
-      transition: color 0.15s ease, border-color 0.15s ease;
-    }
-    .links a:hover { color: #e2e8f0; border-color: rgba(148, 163, 184, 0.5); }
-    @media (prefers-reduced-motion: reduce) {
-      .cta, .links a { transition: none; }
-    }
-  </style>
+
 <script>
     !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split('.');2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement('script')).type='text/javascript',p.async=!0,p.src=s.api_host+'/static/array.js',(r=t.getElementsByTagName('script')[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a='posthog',u.people=u.people||[],u.toString=function(t){var e='posthog';return'posthog'!==a&&(e+='.'+a),t||(e+=' (stub)'),e},u.people.toString=function(){return u.toString(1)+'.people (stub)'},o='init capture register register_once register_for_session unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group setPersonProperties resetPersonProperties setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags'.split(' '),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
     (function(){
@@ -94,8 +25,8 @@
   </script>
 <link rel="stylesheet" href="/ux.css">
     <script src="/ux.js" defer></script>
-  </head>
-<body>
+  <link rel="stylesheet" href="/inline.css"></head>
+<body class="page-404">
   <div class="wordmark">GitDealFlow</div>
   <div class="code">404</div>
   <h1>This page doesn't exist.</h1>
@@ -107,20 +38,7 @@
     <a href="https://signals.gitdealflow.com">Live signal board</a>
     <a href="/vs/pitchbook">GitDealFlow vs PitchBook</a>
   </nav>
-<!-- BRUNSON TRUST BAR — idempotency:trust-bar-v1 -->
-<section class="brunson-trust-bar" style="background:linear-gradient(135deg, #0f172a, #1e293b);color:#e8eaed;padding:40px 24px;margin:60px 0 0;border-top:3px solid #00d4aa;text-align:center;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
-  <div style="max-width:900px;margin:0 auto">
-    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:28px;margin-bottom:28px">
-      <div><span style="font-size:1.6rem;font-weight:700;color:#00d4aa">21–47</span><br><span style="font-size:.82rem;color:#94a3b8">Days earlier</span></div>
-      <div><span style="font-size:1.6rem;font-weight:700;color:#00d4aa">47</span><br><span style="font-size:.82rem;color:#94a3b8">Days before deck</span></div>
-      <div><span style="font-size:1.6rem;font-weight:700;color:#00d4aa">3</span><br><span style="font-size:.82rem;color:#94a3b8">Clicks to verify</span></div>
-      <div><span style="font-size:1.6rem;font-weight:700;color:#00d4aa">€5</span><br><span style="font-size:.82rem;color:#94a3b8">First teardown</span></div>
-    </div>
-    <p style="font-size:1.05rem;margin-bottom:24px;color:#cbd5e1">Every deal you hear about late already had a signal 3 weeks ago. Stop being last.</p>
-    <a href="https://gitdealflow.com/#get-teardown" style="display:inline-block;background:linear-gradient(135deg,#00d4aa,#2deec0);color:#04130e;padding:14px 32px;border-radius:12px;font-weight:700;text-decoration:none;font-size:.95rem;box-shadow:0 8px 24px -10px rgba(0,212,170,.5)">Get a Teardown →</a>
-    <p style="margin-top:18px;font-size:.78rem;color:#6b7178">🛡️ Verify the claim in three clicks or you do not pay. Founding price locked.</p>
-  </div>
-</section>
-<!-- /BRUNSON TRUST BAR -->
+
+
 </body>
 </html>

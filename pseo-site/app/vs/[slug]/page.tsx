@@ -12,6 +12,8 @@ import { getDataLastModified } from "@/lib/data";
 import SeoCta from "@/components/SeoCta";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import RelatedLinks from "@/components/RelatedLinks";
+import { getRelatedGroups } from "@/lib/related-links";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -58,6 +60,7 @@ export async function generateMetadata({
 
 export default async function VsPage({ params }: PageProps) {
   const { slug } = await params;
+  const pathname = `/vs/${slug}`;
   const pair = getCompetitorVsPair(slug);
   if (!pair) notFound();
 
@@ -118,9 +121,14 @@ export default async function VsPage({ params }: PageProps) {
         publisher: { "@id": "https://gitdealflow.com/#organization" },
         datePublished: lastModified.toISOString().slice(0, 10),
         dateModified: lastModified.toISOString().slice(0, 10),
+        // `Thing`, not `SoftwareApplication`: a product-eligible @type with no
+        // offers/review/aggregateRating is a CRITICAL GSC "Product snippets"
+        // error ("Either 'offers', 'review' or 'aggregateRating' should be
+        // specified"). These are competitors we compare, so we have no honest
+        // offer and won't invent a rating — name + url carry the entity link.
         about: [
-          { "@type": "SoftwareApplication", name: a.name, url: a.url, applicationCategory: "BusinessApplication" },
-          { "@type": "SoftwareApplication", name: b.name, url: b.url, applicationCategory: "BusinessApplication" },
+          { "@type": "Thing", name: a.name, url: a.url },
+          { "@type": "Thing", name: b.name, url: b.url },
         ],
         speakable: {
           "@type": "SpeakableSpecification",
@@ -302,6 +310,7 @@ export default async function VsPage({ params }: PageProps) {
               })}
           </div>
         </section>
+        <RelatedLinks groups={getRelatedGroups(pathname)} heading="Related views" />
       </div>
     </>
   );

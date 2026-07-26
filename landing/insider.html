@@ -13,7 +13,6 @@
   <meta property="og:url" content="https://gitdealflow.com/insider" />
   <meta property="og:image" content="https://signals.gitdealflow.com/opengraph-image" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@data_nerd" />
   <meta name="twitter:title" content="Insider Circle — GitDealFlow" />
   <meta name="twitter:description" content="The higher-touch tier when you want a more serious operating layer." />
   <meta name="twitter:image" content="https://signals.gitdealflow.com/opengraph-image" />
@@ -47,41 +46,7 @@
   <link rel="preconnect" href="https://signals.gitdealflow.com" crossorigin>
   <link rel="preconnect" href="https://eu.i.posthog.com" crossorigin>
   <link rel="stylesheet" href="/styles.css">
-  <style>
-    .mobile-cta-stack > * { width: 100%; }
-    .mobile-card, .mobile-step-card { transition: border-color 120ms ease, transform 120ms ease; }
-    .mobile-card:hover, .mobile-step-card:hover { border-color: rgba(14, 165, 233, 0.5); }
-    .mobile-sticky-cta { display: none; }
-    @media (min-width: 640px) { .mobile-cta-stack > * { width: auto; } }
-    @media (max-width: 639px) {
-      html { scroll-padding-top: 5rem; }
-      body { padding-bottom: 6rem; }
-      .mobile-compact-header { padding-top: 0.75rem; padding-bottom: 0.75rem; }
-      .mobile-hero-wrap { padding-left: 1rem; padding-right: 1rem; padding-top: 4rem; padding-bottom: 4rem; }
-      .mobile-hero-title { font-size: 2rem; line-height: 1.1; }
-      .mobile-hero-copy { font-size: 1rem; line-height: 1.65; }
-      .mobile-section-pad { padding-left: 1rem; padding-right: 1rem; }
-      .mobile-card-pad { padding: 1.25rem; }
-      .mobile-stat-grid { gap: 1rem; }
-      .mobile-grid-gap { gap: 1rem; }
-      .mobile-cta-stack .btn,
-      .mobile-form-stack .btn {
-        white-space: normal; text-align: center; line-height: 1.35;
-        padding-left: 1rem; padding-right: 1rem;
-      }
-      .mobile-sticky-cta {
-        position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; display: block;
-        padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom));
-        background: rgba(2, 6, 23, 0.94); backdrop-filter: blur(12px);
-        border-top: 1px solid rgba(71, 85, 105, 0.7);
-      }
-      .mobile-sticky-cta .inner { display: flex; align-items: center; gap: 0.75rem; max-width: 28rem; margin: 0 auto; }
-      .mobile-sticky-cta .meta { flex: 1; min-width: 0; }
-      .mobile-sticky-cta .meta strong { display: block; color: #fff; font-size: 0.95rem; line-height: 1.1; }
-      .mobile-sticky-cta .meta span { display: block; color: #94a3b8; font-size: 0.72rem; margin-top: 0.1rem; }
-      .mobile-sticky-cta .btn { white-space: nowrap; padding-left: 1rem; padding-right: 1rem; }
-    }
-  </style>
+
   <meta name="theme-color" content="#0f172a" />
   <meta name="color-scheme" content="dark" />
   <link rel="manifest" href="/manifest.webmanifest" />
@@ -95,7 +60,7 @@
     ]
   }
   </script>
-<!-- Traffic-Readiness JSON-LD org+website schema -->
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -106,7 +71,7 @@
       "name": "GitDealFlow",
       "url": "https://gitdealflow.com",
       "description": "VC Deal Flow Signal — spot breakout startups 3-6 weeks before fundraise via public GitHub activity.",
-      "sameAs": ["https://t.me/gitdealflow", "https://x.com/data_nerd", "https://github.com/kindrat86"]
+      "sameAs": ["https://t.me/gitdealflow", "https://github.com/kindrat86"]
     },
     {
       "@type": "WebSite",
@@ -123,10 +88,10 @@
   ]
 }
 </script>
-<!-- Traffic-Readiness JSON-LD org+website schema -->
+
 <link rel="stylesheet" href="/ux.css">
     <script src="/ux.js" defer></script>
-  </head>
+  <link rel="stylesheet" href="/inline.css"></head>
 <body class="bg-dark-900 text-gray-100 font-sans antialiased">
   <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[60] focus:px-4 focus:py-2 focus:bg-dark-800 focus:text-white focus:rounded-lg">Skip to main content</a>
   <header class="relative sticky top-0 z-50 border-b border-gray-800 bg-dark-900/95 backdrop-blur">
@@ -140,7 +105,8 @@
         <a href="/insider" class="hover:text-white transition-colors">Insider</a>
         <a href="/pricing" class="hover:text-white transition-colors">Pricing</a>
       </nav>
-      <button type="button" data-checkout class="btn btn-cta btn-sm whitespace-nowrap shrink-0"><span class="sm:hidden">Join Insider</span><span class="hidden sm:inline">Join Insider &mdash; €197/mo</span> <span aria-hidden="true" class="btn-arrow">&rarr;</span></button>
+      <a href="https://buy.stripe.com/bJeaEWfRpcRG6gm2fC0x20d" onclick="if(window.posthog)posthog.capture('insider_nav_cta',{placement:'insider_nav'})" class="btn btn-cta btn-sm whitespace-nowrap shrink-0"><span class="lg:hidden">Join Insider</span><span class="hidden lg:inline">Join Insider &mdash; €197/mo</span> <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
+      <a href="https://buy.stripe.com/cNieVc34DbNCcEK2fC0x20e" onclick="if(window.posthog)posthog.capture('insider_nav_cta_annual',{placement:'insider_nav'})" class="btn btn-secondary btn-sm whitespace-nowrap shrink-0 hidden lg:inline-flex">&euro;1,970/yr</a>
       <button type="button" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu" class="md:hidden inline-flex items-center justify-center w-11 h-11 shrink-0 rounded-lg text-gray-300 hover:text-white ring-1 ring-white/10 transition-colors">
         <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
@@ -167,7 +133,8 @@
 
         <p class="mobile-hero-copy text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8">Insider Circle is where GitDealFlow becomes a more serious operating layer: private discussion, monthly briefings, and a steadier rhythm when the decisions start to matter more.</p>
         <div class="mobile-cta-stack flex flex-col sm:flex-row items-center justify-center gap-3">
-          <button type="button" data-checkout class="btn btn-cta btn-lg w-full sm:w-auto">Join Insider &mdash; &euro;197/mo &rarr;</button>
+          <a href="https://buy.stripe.com/bJeaEWfRpcRG6gm2fC0x20d" onclick="if(window.posthog)posthog.capture('insider_cta',{placement:'upsell'})" class="btn btn-cta btn-lg w-full sm:w-auto">Join Insider &mdash; &euro;197/mo &rarr;</a>
+          <a href="https://buy.stripe.com/cNieVc34DbNCcEK2fC0x20e" onclick="if(window.posthog)posthog.capture('insider_cta_annual',{placement:'upsell'})" class="btn btn-secondary btn-md w-full sm:w-auto">&euro;1,970/yr (save &euro;394)</a>
           <div class="inline-flex items-center gap-2 rounded-full border border-signal-500/30 bg-signal-500/10 px-4 py-2 text-sm text-signal-400">
             <span>Price:</span>
             <strong class="text-white">€197/mo</strong>
@@ -180,7 +147,7 @@
       <div class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 text-center">
         <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-2">The honest version of scarcity</p>
         <p class="text-white font-semibold text-lg">€197/mo — and the room is capped at ~50 seats.</p>
-        <p class="text-gray-500 text-sm mt-1">No five-minute timer that resets when you refresh. The founding window closed June 30 — exactly as promised — and members who joined then keep €97/mo for life. Today the price is €197/mo, and the one real limit left is the room itself: ~50 active seats, and when it fills, new buyers move to a waitlist. When I set the next deadline, you'll know I mean it.</p>
+        <p class="text-gray-400 text-sm mt-1">No five-minute timer that resets when you refresh. The founding window closed June 30 — exactly as promised — and members who joined then keep €97/mo for life. Today the price is €197/mo, and the one real limit left is the room itself: ~50 active seats, and when it fills, new buyers move to a waitlist. When I set the next deadline, you'll know I mean it.</p>
       </div>
     </section>
     <section class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 py-12">
@@ -198,24 +165,22 @@
       </div>
     </section>
 
-
-
     <section class="bg-dark-800 py-10 border-y border-gray-800">
       <div class="mobile-section-pad mobile-stat-grid max-w-4xl mx-auto px-4 sm:px-6 grid md:grid-cols-3 gap-6 text-center">
         <div>
           <p class="text-signal-400 text-xs font-semibold uppercase tracking-wider mb-2">Scarcity</p>
           <p class="text-gray-200 font-semibold">Telegram is capped at ~50 active members</p>
-          <p class="text-gray-500 text-sm mt-1">Founding members keep their seat. Once the cap is hit, new buyers move to a waitlist.</p>
+          <p class="text-gray-400 text-sm mt-1">Founding members keep their seat. Once the cap is hit, new buyers move to a waitlist.</p>
         </div>
         <div>
           <p class="text-signal-400 text-xs font-semibold uppercase tracking-wider mb-2">Urgency</p>
           <p class="text-gray-200 font-semibold">Useful only when your cadence is already real</p>
-          <p class="text-gray-500 text-sm mt-1">If your deal cadence is already real, waiting mostly delays the operating rhythm you actually need.</p>
+          <p class="text-gray-400 text-sm mt-1">If your deal cadence is already real, waiting mostly delays the operating rhythm you actually need.</p>
         </div>
         <div>
           <p class="text-signal-400 text-xs font-semibold uppercase tracking-wider mb-2">Pressure release</p>
           <p class="text-gray-200 font-semibold">Do not buy this as your first step</p>
-          <p class="text-gray-500 text-sm mt-1">The free watchlist and Dashboard exist so you do not over-buy too early.</p>
+          <p class="text-gray-400 text-sm mt-1">The free watchlist and Dashboard exist so you do not over-buy too early.</p>
         </div>
       </div>
     </section>
@@ -296,7 +261,6 @@
       </div>
     </section>
 
-    <!-- ============ WHAT HAPPENS IF YOU DO NOTHING (DotCom Secrets Ch 21) ============ -->
     <section class="bg-dark-800 py-12 border-y border-gray-800">
       <div class="max-w-2xl mx-auto px-4 sm:px-6 text-center">
         <div class="rounded-xl border border-gray-700 bg-dark-900 p-6 md:p-7">
@@ -311,10 +275,9 @@
       <h2 class="text-3xl font-bold mb-4">Join Insider Circle</h2>
       <p class="text-gray-300 mb-8">One click to secure Stripe checkout &mdash; enter your email there. Attribution travels with you so the ladder stays clean.</p>
       <button type="button" data-checkout class="btn btn-cta btn-lg w-full sm:w-auto">Join Insider &mdash; €197/mo &rarr;</button>
-      <p id="insider-msg" class="text-gray-500 text-sm mt-4">€197/mo · cancel anytime · 30-day Signal-or-It's-Free guarantee · secure checkout via Stripe</p>
+      <p id="insider-msg" class="text-gray-400 text-sm mt-4">€197/mo · cancel anytime · 30-day Signal-or-It's-Free guarantee · secure checkout via Stripe</p>
     </section>
 
-    <!-- Inline free-email capture (above footer) -->
     <section class="mobile-section-pad max-w-3xl mx-auto px-4 sm:px-6 pb-8 text-center">
       <div class="rounded-2xl border border-gray-700 bg-dark-800 p-6 md:p-8">
         <h2 class="text-xl font-bold mb-2">Get the free Sunday email first</h2>
@@ -325,27 +288,28 @@
           <input type="email" id="inline-email" required inputmode="email" autocomplete="email" placeholder="you@example.com" class="flex-1 px-4 py-3 rounded-lg bg-dark-900 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-signal-500">
           <button type="submit" class="btn btn-primary btn-md w-full sm:w-auto">Get this Sunday&rsquo;s 5 names &rarr;</button>
         </form>
-        <p class="gdf-inline-msg text-gray-500 text-xs mt-3">One email a week · unsubscribe anytime</p>
+        <p class="gdf-inline-msg text-gray-400 text-xs mt-3">One email a week · unsubscribe anytime</p>
       </div>
     </section>
   </main>
 
-  <!-- Mobile sticky CTA -->
   <div class="mobile-sticky-cta" aria-hidden="false">
     <div class="inner">
       <div class="meta">
         <strong>Insider Circle — €197/mo</strong>
         <span>~50 seats · cancel anytime</span>
       </div>
-      <button type="button" data-checkout class="btn btn-cta btn-sm">Join &rarr;</button>
+<div class="flex gap-2">
+        <a href="https://buy.stripe.com/bJeaEWfRpcRG6gm2fC0x20d" onclick="if(window.posthog)posthog.capture('insider_cta_sticky',{placement:'upsell'})" class="btn btn-cta btn-sm">Join &mdash; &euro;197/mo &rarr;</a>
+        <a href="https://buy.stripe.com/cNieVc34DbNCcEK2fC0x20e" onclick="if(window.posthog)posthog.capture('insider_cta_sticky_annual',{placement:'upsell'})" class="btn btn-secondary btn-sm">&euro;1,970/yr</a>
+      </div>
     </div>
   </div>
 
-  <!-- Exit-intent email capture -->
   <div id="exit-modal" class="hidden fixed inset-0 z-[70] items-center justify-center px-4" role="dialog" aria-modal="true" aria-labelledby="exit-title">
     <div id="exit-backdrop" class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
     <div class="relative w-full max-w-lg rounded-2xl border border-signal-500/40 bg-dark-900 p-6 md:p-8 shadow-2xl">
-      <button type="button" id="exit-close" aria-label="Close" class="absolute top-3 right-3 text-gray-500 hover:text-gray-200 text-2xl leading-none w-11 h-11 flex items-center justify-center">&times;</button>
+      <button type="button" id="exit-close" aria-label="Close" class="absolute top-3 right-3 text-gray-400 hover:text-gray-200 text-2xl leading-none w-11 h-11 flex items-center justify-center">&times;</button>
       <p class="text-signal-400 text-xs font-semibold uppercase tracking-wider mb-3">Before you go</p>
       <h2 id="exit-title" class="text-2xl md:text-3xl font-extrabold leading-tight mb-3">The room can wait. The signal shouldn&rsquo;t.</h2>
       <p class="text-gray-300 leading-relaxed mb-5">If Insider feels early, start where everyone starts: the free Sunday email — five accelerating startups, in plain English. Join the circle when the cadence is real.</p>
@@ -355,20 +319,20 @@
         <input type="email" id="exit-email" required inputmode="email" autocomplete="email" placeholder="you@example.com" class="w-full px-4 py-3 rounded-lg bg-dark-800 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-signal-500">
         <button type="submit" id="exit-submit" class="w-full bg-signal-500 hover:bg-signal-400 text-white font-bold py-3 rounded-lg transition">Get this Sunday&rsquo;s 5 names &rarr;</button>
       </form>
-      <p id="exit-msg" class="text-gray-500 text-xs text-center mt-3">One email a week · unsubscribe anytime</p>
+      <p id="exit-msg" class="text-gray-400 text-xs text-center mt-3">One email a week · unsubscribe anytime</p>
     </div>
   </div>
 
   <footer class="border-t border-gray-800 bg-dark-900/80 py-12">
     <div class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 text-center">
-      <div class="flex flex-wrap justify-center gap-6 text-gray-500 text-sm mb-4">
+      <div class="flex flex-wrap justify-center gap-6 text-gray-400 text-sm mb-4">
         <a href="/" class="hover:text-gray-300">Home</a>
         <a href="/dashboard" class="hover:text-gray-300">Dashboard</a>
         <a href="/firstlook" class="hover:text-gray-300">First Look</a>
         <a href="/sector-sweep" class="hover:text-gray-300">Sector Sweep</a>
         <a href="/privacy" class="hover:text-gray-300">Privacy</a>
       </div>
-      <p class="text-gray-400 text-xs">&copy; 2026 GitDealFlow &middot; signals@gitdealflow.com</p>
+      <p class="text-gray-400 text-xs">&copy; 2026 GitDealFlow &middot; signal@gitdealflow.com</p>
     </div>
   </footer>
 
@@ -403,7 +367,7 @@
         if (trigger && original !== null) { trigger.removeAttribute('aria-busy'); trigger.innerHTML = original; }
         var msg = document.getElementById('insider-msg');
         if (msg) {
-          msg.textContent = 'Something went wrong opening checkout. Try again, or email signals@gitdealflow.com';
+          msg.textContent = 'Something went wrong opening checkout. Try again, or email signal@gitdealflow.com';
           msg.className = 'text-red-400 text-sm mt-4';
         }
       });
@@ -461,7 +425,7 @@
             try { sessionStorage.setItem('gdf_email', email); } catch (err) {}
             window.location.href = '/thanks';
           }).catch(function () {
-            if (msg) { msg.textContent = 'Something went wrong. Try again or email signals@gitdealflow.com'; msg.className = 'gdf-inline-msg text-red-400 text-xs mt-3'; }
+            if (msg) { msg.textContent = 'Something went wrong. Try again or email signal@gitdealflow.com'; msg.className = 'gdf-inline-msg text-red-400 text-xs mt-3'; }
             if (btn) { btn.disabled = false; btn.removeAttribute('aria-busy'); btn.innerHTML = orig; }
           });
         });
@@ -535,7 +499,7 @@
           try { sessionStorage.setItem('gdf_email', email); } catch (err) {}
           window.location.href = '/thanks';
         }).catch(function () {
-          msg.textContent = 'Something went wrong. Try again or email signals@gitdealflow.com';
+          msg.textContent = 'Something went wrong. Try again or email signal@gitdealflow.com';
           msg.className = 'text-red-400 text-xs text-center mt-3';
           btn.disabled = false;
           btn.textContent = 'Get this Sunday’s 5 names →';
@@ -559,8 +523,6 @@
     })();
   </script>
 
-  <!-- Honest scarcity only: founding window closed June 30 as promised (kept-deadline trust asset) + ~50-seat circle cap. No fake per-session countdown. -->
-
   <script>
 (function(){var t=document.querySelector('[data-nav-toggle]'),p=document.getElementById('mobile-nav');if(!t||!p)return;function set(o){t.setAttribute('aria-expanded',String(o));t.setAttribute('aria-label',o?'Close menu':'Open menu');p.hidden=!o;}
 t.addEventListener('click',function(){set(t.getAttribute('aria-expanded')!=='true');});
@@ -569,20 +531,6 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'&&t.getAttrib
 
   <script>document.addEventListener('pointerdown',function(e){if(e.target&&e.target.closest&&e.target.closest('[data-checkout]')&&!window.__gdfWarm){window.__gdfWarm=1;try{fetch('https://signals.gitdealflow.com/api/health.json',{mode:'no-cors'});}catch(_){}}},{passive:true,capture:true});</script>
 
-<!-- BRUNSON TRUST BAR — idempotency:trust-bar-v1 -->
-<section class="brunson-trust-bar" style="background:linear-gradient(135deg, #0f172a, #1e293b);color:#e8eaed;padding:40px 24px;margin:60px 0 0;border-top:3px solid #00d4aa;text-align:center;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
-  <div style="max-width:900px;margin:0 auto">
-    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:28px;margin-bottom:28px">
-      <div><span style="font-size:1.6rem;font-weight:700;color:#00d4aa">21–47</span><br><span style="font-size:.82rem;color:#94a3b8">Days earlier</span></div>
-      <div><span style="font-size:1.6rem;font-weight:700;color:#00d4aa">47</span><br><span style="font-size:.82rem;color:#94a3b8">Days before deck</span></div>
-      <div><span style="font-size:1.6rem;font-weight:700;color:#00d4aa">3</span><br><span style="font-size:.82rem;color:#94a3b8">Clicks to verify</span></div>
-      <div><span style="font-size:1.6rem;font-weight:700;color:#00d4aa">€5</span><br><span style="font-size:.82rem;color:#94a3b8">First teardown</span></div>
-    </div>
-    <p style="font-size:1.05rem;margin-bottom:24px;color:#cbd5e1">Every deal you hear about late already had a signal 3 weeks ago. Stop being last.</p>
-    <a href="https://gitdealflow.com/#get-teardown" style="display:inline-block;background:linear-gradient(135deg,#00d4aa,#2deec0);color:#04130e;padding:14px 32px;border-radius:12px;font-weight:700;text-decoration:none;font-size:.95rem;box-shadow:0 8px 24px -10px rgba(0,212,170,.5)">Get a Teardown →</a>
-    <p style="margin-top:18px;font-size:.78rem;color:#6b7178">🛡️ Verify the claim in three clicks or you do not pay. Founding price locked.</p>
-  </div>
-</section>
-<!-- /BRUNSON TRUST BAR -->
+
 </body>
 </html>

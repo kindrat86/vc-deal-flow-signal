@@ -4,7 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Pricing — GitDealFlow</title>
-  <meta name="description" content="Every rung of the VC Deal Flow Signal ladder: free Sunday digest, €1 Tweet Teardown, €7 First Look Pass, Dashboard €49/mo, Insider Circle €197/mo, Custom Sector Sweep €1,997. 30-day Signal-or-It's-Free on every paid rung.">
+    <link rel="alternate" hreflang="en" href="https://gitdealflow.com/pricing">
+    <link rel="alternate" hreflang="es" href="https://gitdealflow.com/es/pricing">
+    <link rel="alternate" hreflang="de" href="https://gitdealflow.com/de/pricing">
+    <link rel="alternate" hreflang="x-default" href="https://gitdealflow.com/pricing"><meta name="description" content="Every rung of the VC Deal Flow Signal ladder: free Sunday digest, €1 Tweet Teardown, €7 First Look Pass, Dashboard €49/mo, Insider Circle €197/mo, Custom Sector Sweep €1,997. 30-day Signal-or-It's-Free on every paid rung.">
   <meta name="author" content="The Data Nerd" />
   <link rel="canonical" href="https://gitdealflow.com/pricing" />
   <meta name="robots" content="index, follow">
@@ -18,7 +21,6 @@
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@data_nerd" />
   <meta name="twitter:title" content="Pricing — GitDealFlow" />
   <meta name="twitter:description" content="Free Sunday digest → €1 Teardown → €7 First Look → €49/mo Dashboard → €197/mo Insider → €1,997 Sector Sweep. 30-day guarantee on every paid rung." />
   <meta name="twitter:image" content="https://signals.gitdealflow.com/opengraph-image" />
@@ -99,76 +101,10 @@
   <link rel="stylesheet" href="/styles.css">
   <link rel="preconnect" href="https://signals.gitdealflow.com" crossorigin>
   <link rel="preconnect" href="https://eu.i.posthog.com" crossorigin>
-  <style>
-    /* Pricing-page-only styles — kept inline because styles.css is prebuilt
-       (no working Tailwind build step) and these classes don't exist there. */
-    html { scroll-padding-top: 5.5rem; }
-    @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
-    body { -webkit-font-smoothing: antialiased; }
 
-    .tier-card {
-      position: relative;
-      border: 1px solid #334155;               /* slate-700 */
-      border-radius: 1rem;
-      background-color: rgba(30, 41, 59, 0.6); /* dark-800/60 */
-      padding: 1.5rem;
-      scroll-margin-top: 5.5rem;
-      transition: border-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
-    }
-    .tier-card:hover { border-color: rgba(14, 165, 233, 0.5); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,.2); }
-    @media (min-width: 768px) { .tier-card { padding: 2rem; } }
-    .tier-card.tier-featured { border-color: rgba(14, 165, 233, 0.55); box-shadow: 0 0 0 1px rgba(14, 165, 233, 0.25); }
-
-    .tier-eyebrow { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #38bdf8; margin-bottom: 0.35rem; }
-    .tier-price { font-size: 2rem; font-weight: 800; color: #f8fafc; line-height: 1.1; }
-    .tier-price small { font-size: 0.95rem; font-weight: 600; color: #94a3b8; }
-    .tier-badge {
-      position: absolute; top: -0.8rem; left: 1.5rem;
-      background: #0ea5e9; color: #0f172a; font-size: 0.68rem; font-weight: 700;
-      letter-spacing: 0.06em; text-transform: uppercase;
-      padding: 0.25rem 0.6rem; border-radius: 9999px;
-    }
-    .tier-list { list-style: none; padding: 0; margin: 1rem 0 1.25rem; }
-    .tier-list li { display: flex; gap: 0.55rem; align-items: flex-start; color: #cbd5e1; font-size: 0.9rem; line-height: 1.55; padding: 0.22rem 0; }
-    .tier-list li::before { content: '✓'; color: #34d399; font-weight: 700; flex: 0 0 auto; }
-    .tier-annual { font-size: 0.85rem; color: #94a3b8; margin-top: 0.75rem; }
-    .tier-annual a { color: #38bdf8; text-decoration: underline; }
-    .tier-annual a:hover { color: #7dd3fc; }
-    .tier-note { font-size: 0.8rem; color: #64748b; margin-top: 0.75rem; }
-    .mobile-sticky-cta { display: none; }
-
-    @media (max-width: 639px) {
-      body { padding-bottom: 6rem; }
-      .mobile-compact-header { padding-top: 0.75rem; padding-bottom: 0.75rem; }
-      .mobile-hero-wrap { padding-left: 1rem; padding-right: 1rem; padding-top: 3rem; padding-bottom: 3rem; }
-      .mobile-hero-title { font-size: 2rem; line-height: 1.1; }
-      .mobile-section-pad { padding-left: 1rem; padding-right: 1rem; }
-      .tier-card { padding: 1.25rem; }
-      .tier-cta-stack .btn { display: flex; width: 100%; white-space: normal; text-align: center; line-height: 1.35; }
-      #dashboard { order: -1; }
-      .mobile-sticky-cta {
-        position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; display: block;
-        padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom));
-        background: rgba(2, 6, 23, 0.94); backdrop-filter: blur(12px);
-        border-top: 1px solid rgba(71, 85, 105, 0.7);
-        transform: translateY(115%);
-        transition: transform 280ms cubic-bezier(0.4,0,0.2,1);
-        pointer-events: none;
-      }
-      .mobile-sticky-cta.is-visible { transform: translateY(0); pointer-events: auto; }
-      .mobile-sticky-cta .inner { display: flex; align-items: center; gap: 0.75rem; max-width: 28rem; margin: 0 auto; }
-      .mobile-sticky-cta .meta { flex: 1; min-width: 0; }
-      .mobile-sticky-cta .meta strong { display: block; color: #fff; font-size: 0.95rem; line-height: 1.1; }
-      .mobile-sticky-cta .meta span { display: block; color: #94a3b8; font-size: 0.72rem; margin-top: 0.1rem; }
-      .mobile-sticky-cta .btn { white-space: nowrap; padding-left: 1rem; padding-right: 1rem; }
-    }
-    @media (max-width: 639px) and (prefers-reduced-motion: reduce) {
-      .mobile-sticky-cta { transition: none; }
-    }
-  </style>
 <link rel="stylesheet" href="/ux.css">
     <script src="/ux.js" defer></script>
-  </head>
+  <link rel="stylesheet" href="/inline.css"></head>
 <body class="bg-dark-900 text-gray-100 font-sans antialiased">
   <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[60] focus:px-4 focus:py-2 focus:bg-dark-800 focus:text-white focus:rounded-lg">Skip to main content</a>
   <header class="relative sticky top-0 z-50 border-b border-gray-800 bg-dark-900/95 backdrop-blur">
@@ -182,7 +118,7 @@
         <a href="/insider" class="hover:text-white transition-colors">Insider</a>
         <a href="/pricing" class="hover:text-white transition-colors">Pricing</a>
       </nav>
-      <a href="#dashboard" onclick="if(window.posthog)posthog.capture('pricing_nav_cta_clicked')" class="btn btn-cta btn-sm whitespace-nowrap shrink-0"><span class="sm:hidden">Dashboard €49</span><span class="hidden sm:inline">Dashboard &mdash; €49/mo</span> <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
+      <a href="#dashboard" onclick="if(window.posthog)posthog.capture('pricing_nav_cta_clicked')" class="btn btn-cta btn-sm whitespace-nowrap shrink-0"><span class="lg:hidden">Dashboard €49</span><span class="hidden lg:inline">Dashboard &mdash; €49/mo</span> <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
       <button type="button" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu" class="md:hidden inline-flex items-center justify-center w-11 h-11 shrink-0 rounded-lg text-gray-300 hover:text-white ring-1 ring-white/10 transition-colors">
         <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
@@ -200,7 +136,7 @@
   </header>
 
   <main id="main-content">
-    <!-- ============ HERO ============ -->
+
     <section class="relative overflow-hidden">
       <div class="absolute inset-0 bg-gradient-to-br from-dark-900 via-dark-800 to-brand-900 opacity-80"></div>
       <div class="mobile-hero-wrap relative max-w-4xl mx-auto px-4 sm:px-6 py-16 md:py-20 text-center">
@@ -211,11 +147,9 @@
       </div>
     </section>
 
-    <!-- ============ LADDER ============ -->
     <section class="mobile-section-pad max-w-5xl mx-auto px-4 sm:px-6 py-12 md:pt-16">
       <div class="grid gap-6 md:grid-cols-2">
 
-        <!-- FREE DIGEST -->
         <article id="digest" class="tier-card">
           <p class="tier-eyebrow">Start here</p>
           <h2 class="text-xl font-bold text-white mb-1">Sunday Signal Digest</h2>
@@ -233,7 +167,6 @@
           </form>
         </article>
 
-        <!-- TWEET TEARDOWN -->
         <article id="teardown" class="tier-card">
           <p class="tier-eyebrow">Test my judgment</p>
           <h2 class="text-xl font-bold text-white mb-1">Tweet Teardown</h2>
@@ -248,7 +181,6 @@
           </div>
         </article>
 
-        <!-- FIRST LOOK -->
         <article id="firstlook" class="tier-card">
           <p class="tier-eyebrow">One sector. One deep dive. One day.</p>
           <h2 class="text-xl font-bold text-white mb-1">First Look Pass</h2>
@@ -260,10 +192,10 @@
           </ul>
           <div class="tier-cta-stack">
             <a href="/firstlook" onclick="if(window.posthog)posthog.capture('pricing_cta_clicked',{tier:'firstlook'})" class="btn btn-secondary btn-md">See the First Look Pass <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
+            <a href="https://buy.stripe.com/28E6oGdJh18YgV04nK0x203" onclick="if(window.posthog)posthog.capture('pricing_cta_clicked',{tier:'firstlook'})" class="btn btn-secondary btn-md mt-2">Buy €7 First Look directly <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
           </div>
         </article>
 
-        <!-- DASHBOARD -->
         <article id="dashboard" class="tier-card tier-featured">
           <span class="tier-badge">Most popular</span>
           <p class="tier-eyebrow">The weekly operating layer</p>
@@ -277,11 +209,11 @@
           </ul>
           <div class="tier-cta-stack">
             <a href="/dashboard" onclick="if(window.posthog)posthog.capture('pricing_cta_clicked',{tier:'dashboard'})" class="btn btn-cta btn-md">Get the Dashboard <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
+            <a href="https://buy.stripe.com/4gMbJ07kTaJy7kqg6s0x20b" onclick="if(window.posthog)posthog.capture('pricing_cta_clicked',{tier:'dashboard'})" class="btn btn-secondary btn-md mt-2">Subscribe €49/mo directly <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
           </div>
           <p class="tier-annual">Prefer annual? <a href="https://buy.stripe.com/aFa5kC34DeZOawC6vS0x20c" onclick="if(window.posthog)posthog.capture('pricing_cta_clicked',{tier:'dashboard_annual'})">€490/yr</a> &mdash; two months free.</p>
         </article>
 
-        <!-- INSIDER -->
         <article id="insider" class="tier-card">
           <p class="tier-eyebrow">Closest to the signal</p>
           <h2 class="text-xl font-bold text-white mb-1">Insider Circle</h2>
@@ -293,11 +225,11 @@
           </ul>
           <div class="tier-cta-stack">
             <a href="/insider" onclick="if(window.posthog)posthog.capture('pricing_cta_clicked',{tier:'insider'})" class="btn btn-secondary btn-md">See the Insider Circle <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
+            <a href="https://buy.stripe.com/bJeaEWfRpcRG6gm2fC0x20d" onclick="if(window.posthog)posthog.capture('pricing_cta_clicked',{tier:'insider'})" class="btn btn-secondary btn-md mt-2">Subscribe €197/mo directly <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
           </div>
           <p class="tier-annual">Prefer annual? <a href="https://buy.stripe.com/cNieVc34DbNCcEK2fC0x20e" onclick="if(window.posthog)posthog.capture('pricing_cta_clicked',{tier:'insider_annual'})">€1,970/yr</a> &mdash; two months free.</p>
         </article>
 
-        <!-- SECTOR SWEEP -->
         <article id="sweep" class="tier-card">
           <p class="tier-eyebrow">Done-for-you research</p>
           <h2 class="text-xl font-bold text-white mb-1">Custom Sector Sweep</h2>
@@ -314,7 +246,6 @@
 
       </div>
 
-      <!-- APPLICATION-GATED -->
       <article id="apply" class="tier-card mt-6">
         <p class="tier-eyebrow">Application only</p>
         <h2 class="text-xl font-bold text-white mb-1">Sharp Tier &amp; above</h2>
@@ -326,7 +257,6 @@
       </article>
     </section>
 
-    <!-- ============ GUARANTEE ============ -->
     <section class="mobile-section-pad max-w-5xl mx-auto px-4 sm:px-6 py-12">
       <div class="rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-8 md:p-10 text-center">
         <p class="text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-2">The guarantee, in full</p>
@@ -336,7 +266,6 @@
       </div>
     </section>
 
-    <!-- ============ TRUST RECEIPT ============ -->
     <section class="mobile-section-pad max-w-5xl mx-auto px-4 sm:px-6 pt-2" style="padding-bottom:4rem">
       <div class="rounded-2xl border border-gray-700 bg-dark-800 p-8 md:p-10 text-center">
         <p class="text-signal-400 text-xs font-semibold uppercase tracking-wider mb-2">A receipt, not a promise</p>
@@ -346,7 +275,6 @@
     </section>
   </main>
 
-  <!-- Mobile sticky CTA -->
   <div class="mobile-sticky-cta" aria-hidden="true" inert>
     <div class="inner">
       <div class="meta">
@@ -369,7 +297,7 @@
         <a href="/privacy" class="hover:text-gray-300">Privacy</a>
         <a href="/terms" class="hover:text-gray-300">Terms</a>
       </div>
-      <p class="text-gray-400 text-xs">&copy; 2026 GitDealFlow. Questions? signals@gitdealflow.com &mdash; a human (the same one) answers.</p>
+      <p class="text-gray-400 text-xs">&copy; 2026 GitDealFlow. Questions? signal@gitdealflow.com &mdash; a human (the same one) answers.</p>
     </div>
   </footer>
 
@@ -436,7 +364,7 @@
           throw new Error(data.error || 'Failed');
         } catch (err) {
           if (msg) {
-            msg.textContent = 'Something went wrong. Try again or email signals@gitdealflow.com';
+            msg.textContent = 'Something went wrong. Try again or email signal@gitdealflow.com';
             msg.className = 'js-signup-msg text-red-400 text-xs';
           }
           if (btn) { btn.disabled = false; btn.removeAttribute('aria-busy'); btn.innerHTML = orig; }
@@ -490,20 +418,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'&&t.getAttrib
       update();
     })();
   </script>
-<!-- BRUNSON TRUST BAR — idempotency:trust-bar-v1 -->
-<section class="brunson-trust-bar" style="background:linear-gradient(135deg, #0f172a, #1e293b);color:#e8eaed;padding:40px 24px;margin:60px 0 0;border-top:3px solid #00d4aa;text-align:center;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
-  <div style="max-width:900px;margin:0 auto">
-    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:28px;margin-bottom:28px">
-      <div><span style="font-size:1.6rem;font-weight:700;color:#00d4aa">21–47</span><br><span style="font-size:.82rem;color:#94a3b8">Days earlier</span></div>
-      <div><span style="font-size:1.6rem;font-weight:700;color:#00d4aa">47</span><br><span style="font-size:.82rem;color:#94a3b8">Days before deck</span></div>
-      <div><span style="font-size:1.6rem;font-weight:700;color:#00d4aa">3</span><br><span style="font-size:.82rem;color:#94a3b8">Clicks to verify</span></div>
-      <div><span style="font-size:1.6rem;font-weight:700;color:#00d4aa">€5</span><br><span style="font-size:.82rem;color:#94a3b8">First teardown</span></div>
-    </div>
-    <p style="font-size:1.05rem;margin-bottom:24px;color:#cbd5e1">Every deal you hear about late already had a signal 3 weeks ago. Stop being last.</p>
-    <a href="https://gitdealflow.com/#get-teardown" style="display:inline-block;background:linear-gradient(135deg,#00d4aa,#2deec0);color:#04130e;padding:14px 32px;border-radius:12px;font-weight:700;text-decoration:none;font-size:.95rem;box-shadow:0 8px 24px -10px rgba(0,212,170,.5)">Get a Teardown →</a>
-    <p style="margin-top:18px;font-size:.78rem;color:#6b7178">🛡️ Verify the claim in three clicks or you do not pay. Founding price locked.</p>
-  </div>
-</section>
-<!-- /BRUNSON TRUST BAR -->
+
+
 </body>
 </html>

@@ -3,18 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>GitDealFlow — Startup Velocity Signals 21-47 Days Before the Round</title>
-  <meta name="description" content="GitDealFlow flags startups accelerating on GitHub weeks before the round. Weekly signals from 4,200+ orgs for investors who want leading indicators, not lagging data.">
+  <title>GitDealFlow — Startup Signals 21-47 Days Before the Round</title>
+    <link rel="alternate" hreflang="en" href="https://gitdealflow.com/">
+    <link rel="alternate" hreflang="es" href="https://gitdealflow.com/es/">
+    <link rel="alternate" hreflang="de" href="https://gitdealflow.com/de/">
+    <link rel="alternate" hreflang="x-default" href="https://gitdealflow.com/"><meta name="description" content="GitDealFlow flags startups accelerating on GitHub before the round. Weekly signals from 4,200+ orgs for investors who want leading indicators, not lagging." />
   <meta name="author" content="The Data Nerd" />
   <link rel="canonical" href="https://gitdealflow.com/" />
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-
-  <link rel="alternate" hreflang="en" href="https://gitdealflow.com/" />
-  <link rel="alternate" hreflang="x-default" href="https://gitdealflow.com/" />
-  <link rel="alternate" type="application/rss+xml" title="Weekly digest" href="https://signals.gitdealflow.com/feed.xml" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" /><link rel="alternate" type="application/rss+xml" title="Weekly digest" href="https://signals.gitdealflow.com/feed.xml" />
   <link rel="alternate" type="text/plain" title="LLMs.txt" href="https://gitdealflow.com/llms.txt" />
   <link rel="alternate" type="text/markdown" title="Agents.md" href="https://gitdealflow.com/agents.md" />
   <link rel="alternate" type="application/json" title="OpenAPI 3.1" href="https://signals.gitdealflow.com/api/openapi.json" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <meta name="theme-color" content="#0f172a" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="GitDealFlow" />
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="GitDealFlow" />
@@ -27,8 +33,6 @@
   <meta property="og:image:alt" content="GitDealFlow — a signal tool that flags startups accelerating on GitHub before they raise" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@data_nerd" />
-  <meta name="twitter:creator" content="@data_nerd" />
   <meta name="twitter:title" content="See Which Startups Are Heating Up 21–47 Days Before the Round — the Velocity Verdict" />
   <meta name="twitter:description" content="The Velocity Verdict: five startups accelerating on GitHub, every Sunday — 21 to 47 days before the round." />
   <meta name="twitter:image" content="https://signals.gitdealflow.com/opengraph-image" />
@@ -45,7 +49,7 @@
         "url": "https://gitdealflow.com",
         "description": "GitHub commit-velocity tracking across venture-backed startups. Code-side momentum signals from public GitHub data — flags startups accelerating 21–47 days before fundraise announcements.",
         "disambiguatingDescription": "GitDealFlow is a pseudonymous, agent-native engineering-velocity signal tool that reads 4,200+ startup GitHub orgs and flags the ones accelerating 21–47 days before fundraise announcements. It is a signal tool for investors — NOT a VC fund, accelerator program, startup database (Crunchbase, PitchBook), investment recommendation platform, or affiliate-marketing service. The product exposes MCP, A2A, and REST endpoints designed for AI agents and programmatic access.",
-        "email": "signals@gitdealflow.com",
+        "email": "signal@gitdealflow.com",
         "founder": {
           "@type": "Person",
           "name": "The Data Nerd",
@@ -54,6 +58,7 @@
         "sameAs": [
           "https://t.me/gitdealflow",
           "https://x.com/sipiteno",
+          "https://github.com/kindrat86",
           "https://www.linkedin.com/company/gitdealflow",
           "https://ssrn.com/abstract=6606558",
           "https://zenodo.org/records/19650920"
@@ -160,289 +165,17 @@
   <link rel="preconnect" href="https://eu.i.posthog.com" crossorigin>
   <link rel="dns-prefetch" href="https://signals.gitdealflow.com">
   <link rel="dns-prefetch" href="https://eu.i.posthog.com">
-  <style>
-    /* ============================================================
-       UiKit v2 — World-class UI/UX for gitdealflow.com
-       Principles: mobile-first, 8px grid, accessible, performant
-       ============================================================ */
 
-    /* Root-level rhythm + safe zones */
-    html { scroll-padding-top: 5rem; }
-    /* Tap-target floor (ported from retired ux.css) */
-    .btn { min-height: 44px; }
-    @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
-    #signup { display: block; height: 0; scroll-margin-top: 4.5rem; }
-    body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
-
-    /* ========================= QUALIFICATION CARDS ========================= */
-    .qual-grid { display: grid; grid-template-columns: 1fr; gap: 0.5rem; }
-    @media (min-width: 640px) { .qual-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.625rem; } }
-    .qual-card {
-      position: relative; display: flex; align-items: center; gap: 0.75rem;
-      padding: 0.75rem 0.875rem; min-height: 52px;
-      border-radius: 0.75rem; border: 1px solid #475569;
-      background-color: #1e293b; color: #e5e7eb; cursor: pointer;
-      transition: border-color 140ms cubic-bezier(0.4,0,0.2,1),
-                  background-color 140ms cubic-bezier(0.4,0,0.2,1),
-                  transform 120ms cubic-bezier(0.34,1.56,0.64,1),
-                  box-shadow 140ms ease;
-      -webkit-tap-highlight-color: transparent;
-      user-select: none;
-    }
-    @media (hover: hover) {
-      .qual-card:hover { border-color: #64748b; background-color: #243144; box-shadow: 0 2px 8px rgba(0,0,0,.2); }
-    }
-    .qual-card:active { transform: scale(0.97); }
-    .qual-card input[type="radio"] {
-      flex: 0 0 auto; appearance: none; -webkit-appearance: none;
-      width: 1.125rem; height: 1.125rem; border-radius: 9999px;
-      border: 2px solid #64748b; background-color: transparent;
-      display: inline-block; cursor: pointer; margin: 0;
-      transition: border-color 120ms ease, background-color 120ms ease, box-shadow 120ms ease;
-    }
-    .qual-card input[type="radio"]:checked {
-      border-color: #0ea5e9; background-color: #0ea5e9;
-      box-shadow: inset 0 0 0 3px #1e293b;
-    }
-    .qual-card:has(input[type="radio"]:checked) {
-      border-color: #0ea5e9;
-      background-color: rgba(14, 165, 233, 0.10);
-      box-shadow: 0 0 0 1px rgba(14, 165, 233, 0.3);
-    }
-    .qual-card input[type="radio"]:focus-visible { outline: 2px solid #0ea5e9; outline-offset: 2px; }
-    .qual-card-text { display: flex; flex-direction: column; line-height: 1.2; }
-    .qual-card-title { font-weight: 600; font-size: 0.9rem; color: #f1f5f9; }
-    .qual-card-sub { font-size: 0.75rem; color: #94a3b8; margin-top: 1px; }
-
-    /* ========================= BENEFIT BLOCK (Hero) ========================= */
-    .benefit-why { margin: 2rem auto 2.5rem; max-width: 54rem; }
-    .benefit-eyebrow {
-      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em;
-      text-transform: uppercase; color: #38bdf8; margin-bottom: 0.4rem;
-    }
-    .benefit-h2 {
-      font-size: 1.35rem; line-height: 1.25; font-weight: 700;
-      color: #f1f5f9; margin-bottom: 1.5rem;
-    }
-    @media (min-width: 768px) { .benefit-h2 { font-size: 1.75rem; } }
-    .benefit-grid { display: grid; grid-template-columns: 1fr; gap: 0.75rem; text-align: left; }
-    @media (min-width: 768px) {
-      .benefit-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
-    }
-    .benefit-card {
-      display: flex; flex-direction: column; align-items: flex-start;
-      padding: 1.25rem; border-radius: 1rem;
-      border: 1px solid #334155; background-color: rgba(30, 41, 59, 0.6);
-      transition: border-color 180ms cubic-bezier(0.4,0,0.2,1),
-                  transform 180ms cubic-bezier(0.34,1.56,0.64,1),
-                  box-shadow 180ms ease;
-    }
-    @media (hover: hover) {
-      .benefit-card:hover {
-        border-color: rgba(14, 165, 233, 0.5);
-        transform: translateY(-3px);
-        box-shadow: 0 8px 24px rgba(0,0,0,.25);
-      }
-      .benefit-card:hover .benefit-ico { transform: scale(1.08); }
-    }
-    .benefit-ico {
-      display: inline-flex; align-items: center; justify-content: center;
-      flex: 0 0 auto; width: 2.5rem; height: 2.5rem;
-      border-radius: 0.75rem; margin-bottom: 0.75rem;
-      background-color: rgba(14, 165, 233, 0.12); color: #38bdf8;
-      transition: transform 180ms ease;
-    }
-    .benefit-text { display: flex; flex-direction: column; min-width: 0; }
-    .benefit-title { font-size: 1rem; font-weight: 600; color: #f8fafc; margin-bottom: 0.25rem; }
-    .benefit-desc { font-size: 0.85rem; line-height: 1.55; color: #a8b3c2; }
-
-    @media (max-width: 639px) {
-      .benefit-grid { gap: 0.625rem; }
-      .benefit-card { flex-direction: row; align-items: flex-start; gap: 0.75rem; padding: 0.875rem 1rem; }
-      .benefit-ico { margin-bottom: 0; width: 2.125rem; height: 2.125rem; border-radius: 0.5rem; }
-      .benefit-ico svg { width: 18px; height: 18px; }
-      .benefit-title { margin-bottom: 0.1rem; font-size: 0.925rem; }
-      .benefit-desc { font-size: 0.8rem; }
-      .benefit-why { margin: 1.5rem auto 1.75rem; }
-    }
-
-    /* ========================= CARD UNIFORMS ========================= */
-    .proof-card, .support-card, .step-card {
-      transition: border-color 160ms cubic-bezier(0.4,0,0.2,1),
-                  transform 160ms cubic-bezier(0.34,1.56,0.64,1),
-                  box-shadow 160ms ease;
-    }
-    @media (hover: hover) {
-      .proof-card:hover, .support-card:hover, .step-card:hover {
-        border-color: rgba(14, 165, 233, 0.5);
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(0,0,0,.2);
-      }
-    }
-
-    /* ========================= MOBILE SYSTEMS ========================= */
-    .mobile-cta-stack > * { width: 100%; }
-    .mobile-sticky-cta { display: none; }
-    @media (min-width: 640px) { .mobile-cta-stack > * { width: auto; } }
-
-    @media (max-width: 639px) {
-      html { scroll-padding-top: 4.5rem; }
-      body { padding-bottom: 6rem; }
-      .mobile-compact-header { padding-top: 0.625rem; padding-bottom: 0.625rem; }
-      .mobile-hero-wrap { padding-left: 1rem; padding-right: 1rem; padding-top: 3rem; padding-bottom: 3rem; }
-      .mobile-hero-title { font-size: 1.875rem; line-height: 1.1; text-wrap: balance; }
-      .mobile-hero-copy { font-size: 0.95rem; line-height: 1.6; }
-      .mobile-section-pad { padding-left: 1rem; padding-right: 1rem; }
-      .mobile-card-pad { padding: 1.125rem; }
-      .mobile-proof-grid { gap: 0.625rem; }
-      .mobile-proof-grid .proof-card { padding: 0.875rem; border-radius: 0.75rem; }
-      .mobile-stat-grid { gap: 0.75rem; }
-      .mobile-steps-grid { gap: 0.75rem; }
-      .qual-card { min-height: 56px; padding: 0.75rem 0.875rem; }
-      .mobile-cta-stack .btn {
-        white-space: normal; text-align: center; line-height: 1.3;
-        padding-left: 0.875rem; padding-right: 0.875rem;
-      }
-      .mobile-sticky-cta {
-        position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; display: block;
-        padding: 0.625rem 0.875rem calc(0.625rem + env(safe-area-inset-bottom));
-        background: rgba(2, 6, 23, 0.94); backdrop-filter: blur(12px);
-        border-top: 1px solid rgba(71, 85, 105, 0.7);
-        transform: translateY(115%);
-        visibility: hidden;
-        transition: transform 280ms cubic-bezier(0.4,0,0.2,1), visibility 0s linear 280ms;
-        pointer-events: none;
-      }
-      .mobile-sticky-cta.is-visible { transform: translateY(0); visibility: visible; transition-delay: 0s; pointer-events: auto; }
-      .mobile-sticky-cta .inner {
-        display: flex; align-items: center; gap: 0.625rem; max-width: 28rem; margin: 0 auto;
-      }
-      .mobile-sticky-cta .meta { flex: 1; min-width: 0; }
-      .mobile-sticky-cta .meta strong { display: block; color: #fff; font-size: 0.875rem; line-height: 1.15; }
-      .mobile-sticky-cta .meta span { display: block; color: #94a3b8; font-size: 0.75rem; margin-top: 0.1rem; }
-      .cost-delay-badge { border-radius: 0.875rem; align-items: flex-start; text-align: left; }
-      .cost-delay-badge > span:first-child { margin-top: 5px; }
-      .mobile-sticky-cta .btn { white-space: nowrap; padding-left: 0.875rem; padding-right: 0.875rem; }
-    }
-    @media (max-width: 639px) and (prefers-reduced-motion: reduce) {
-      .mobile-sticky-cta { transition: none; }
-    }
-
-    /* ========================= HERO FLOW (A/B) ========================= */
-    .hero-flow { display: flex; flex-direction: column; }
-    .hero-flow > .hero-how { order: 1; }
-    .hero-flow > .hero-benefits { order: 2; }
-    .hero-flow.hero-control > .hero-how { order: 2; }
-    .hero-flow.hero-control > .hero-benefits { order: 1; margin-bottom: 2rem; }
-    .hero-flow.hero-control .hero-kicker { font-size: 1.875rem; line-height: 1.1; }
-    @media (min-width: 768px) { .hero-flow.hero-control .hero-kicker { font-size: 3rem; } }
-
-    /* ========================= RECEIPT SPARKLINES ========================= */
-    .receipt-spark { display: flex; align-items: center; gap: 0.5rem; margin: 0.75rem 0 0.1rem; }
-    .receipt-spark svg { display: block; flex: 0 0 auto; }
-    .receipt-spark .lead { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #6ee7b7; }
-
-    /* ========================= SCROLL REVEAL ========================= */
-    @media (prefers-reduced-motion: no-preference) {
-      .js .reveal { opacity: 0; transform: translateY(12px); transition: opacity 260ms cubic-bezier(0.4,0,0.2,1), transform 260ms cubic-bezier(0.4,0,0.2,1); }
-      .js .reveal.in { opacity: 1; transform: none; }
-      .js .reveal:nth-child(2) { transition-delay: 80ms; }
-      .js .reveal:nth-child(3) { transition-delay: 160ms; }
-    }
-
-    /* ========================= FOCUS RINGS ========================= */
-    a:focus-visible, summary:focus-visible, button:focus-visible, [tabindex]:focus-visible {
-      outline: 2px solid #38bdf8; outline-offset: 3px; border-radius: 4px;
-    }
-
-    /* ========================= LOADING / SPINNER ========================= */
-    .btn[aria-busy="true"] { cursor: progress; opacity: 0.85; }
-    .btn-spinner {
-      width: 1rem; height: 1rem; border: 2px solid rgba(15,23,42,0.35);
-      border-top-color: #0f172a; border-radius: 50%; display: inline-block;
-      animation: btn-spin 0.6s linear infinite;
-      flex-shrink: 0;
-    }
-    @keyframes btn-spin { to { transform: rotate(360deg); } }
-    @media (prefers-reduced-motion: reduce) { .btn-spinner { animation: none; } }
-
-    /* ========================= DETAILS/ACCORDION POLISH ========================= */
-    details summary::-webkit-details-marker { display: none; }
-    details[open] .accordion-plus { transform: rotate(45deg); }
-    .accordion-plus { transition: transform 200ms ease; }
-
-    /* ========================= GRADIENT TEXT ========================= */
-    .gradient-text {
-      background: linear-gradient(135deg, #ff6b1a 0%, #ff8c4d 50%, #fbbf24 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    /* ========================= CARD GLOW OUTLINE ========================= */
-    .card-glow {
-      position: relative; isolation: isolate;
-    }
-    .card-glow::before {
-      content: ''; position: absolute; inset: -1px; z-index: -1;
-      border-radius: inherit;
-      background: conic-gradient(from 0deg at 50% 50%, transparent, rgba(14,165,233,0.15), transparent, rgba(255,107,26,0.15), transparent);
-      opacity: 0; transition: opacity 400ms ease;
-    }
-    .card-glow:hover::before { opacity: 1; }
-
-    /* ========================= SKELETON LOADING ========================= */
-    .skeleton {
-      background: linear-gradient(90deg, #1e293b 25%, #243144 50%, #1e293b 75%);
-      background-size: 200% 100%;
-      animation: skeleton-shimmer 1.5s ease-in-out infinite;
-      border-radius: 0.5rem;
-    }
-    @keyframes skeleton-shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
-    @media (prefers-reduced-motion: reduce) { .skeleton { animation: none; background: #1e293b; } }
-
-    /* ========================= CTA HOVER MAGIC ========================= */
-    .btn-cta-glow {
-      position: relative; overflow: hidden;
-    }
-    .btn-cta-glow::after {
-      content: ''; position: absolute; inset: 0;
-      background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.15), transparent 60%);
-      opacity: 0; transition: opacity 300ms ease; pointer-events: none;
-    }
-    .btn-cta-glow:hover::after { opacity: 1; }
-
-    /* ========================= STEP NUMBER BADGE (How it works) ========================= */
-    .step-badge {
-      display: inline-flex; align-items: center; justify-content: center;
-      width: 3rem; height: 3rem; border-radius: 9999px;
-      background: linear-gradient(135deg, #0ea5e9, #0284c7);
-      color: #fff; font-size: 1.125rem; font-weight: 700;
-      margin-bottom: 0.75rem;
-      box-shadow: 0 4px 12px rgba(14,165,233,.3);
-      transition: transform 200ms cubic-bezier(0.34,1.56,0.64,1);
-    }
-    .step-card:hover .step-badge { transform: scale(1.1); }
-  </style>
-<!-- Traffic-Readiness JSON-LD org+website schema -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "Organization",
-      "@id": "https://gitdealflow.com/#org",
-      "name": "GitDealFlow",
-      "url": "https://gitdealflow.com",
-      "description": "VC Deal Flow Signal — spot breakout startups 3-6 weeks before fundraise via public GitHub activity.",
-      "sameAs": ["https://t.me/gitdealflow", "https://x.com/sipiteno", "https://github.com/kindrat86"]
-    },
-    {
       "@type": "WebSite",
       "@id": "https://gitdealflow.com/#website",
       "url": "https://gitdealflow.com",
       "name": "GitDealFlow",
-      "publisher": {"@id": "https://gitdealflow.com/#org"}
+      "publisher": {"@id": "https://gitdealflow.com/#organization"}
     },
     {
       "@type": "SiteNavigationElement",
@@ -452,8 +185,7 @@
   ]
 }
 </script>
-<!-- Traffic-Readiness JSON-LD org+website schema -->
-  <!-- entity-seo-mesh-gitdealflow.com -->
+
   <script type="application/ld+json" data-entity-mesh="gitdealflow.com">
 {
   "@context": "https://schema.org",
@@ -565,10 +297,11 @@
   ]
 }
   </script>
-  <!-- /entity-seo-mesh -->
+
 <link rel="stylesheet" href="/ux.css">
     <script src="/ux.js" defer></script>
-  </head>
+    <script>!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=!0}(document,window.posthog||[]);posthog.init("phc_lyZCgvTpicjLzAO3rY2GhxuX5WUc5jQjP8ZVwwJqauX",{api_host:"https://eu.i.posthog.com",person_profiles:"identified_only"})</script>
+  <link rel="stylesheet" href="/inline.css"></head>
 <body class="bg-dark-900 text-gray-100 font-sans antialiased">
   <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:bg-brand-500 focus:text-white focus:px-4 focus:py-2 focus:rounded focus:shadow-lg">Skip to main content</a>
 
@@ -584,7 +317,7 @@
         <a href="/pricing" class="hover:text-white transition-colors">Pricing</a>
       </nav>
       <div class="flex items-center gap-4 shrink-0">
-        <a href="#signup-hero" onclick="if(window.posthog)posthog.capture('nav_cta_clicked')" class="btn btn-primary btn-no-pulse btn-sm whitespace-nowrap shrink-0"><span class="sm:hidden">Get the 5 names</span><span class="hidden sm:inline">Get this Sunday&apos;s 5 names</span> <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
+        <a href="#signup-hero" onclick="if(window.posthog)posthog.capture('nav_cta_clicked')" class="btn btn-primary btn-no-pulse btn-sm whitespace-nowrap shrink-0"><span class="lg:hidden">Get the 5 names</span><span class="hidden lg:inline">Get this Sunday&apos;s 5 names</span> <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
         <button type="button" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu" class="md:hidden inline-flex items-center justify-center w-11 h-11 shrink-0 rounded-lg text-gray-300 hover:text-white ring-1 ring-white/10 transition-colors">
           <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
         </button>
@@ -608,20 +341,11 @@
       <div class="mobile-hero-wrap relative max-w-4xl mx-auto px-4 sm:px-6 py-16 md:py-20 text-center">
         <p class="text-brand-500 font-semibold text-sm uppercase tracking-wider mb-6">For angels who source outside a fund &mdash; and the scouts &amp; seed funds who serve them</p>
 
-        <!-- COST OF DELAY BADGE (Expert Secrets Ch 16) — opportunity cost of waiting, made explicit -->
-        <div class="cost-delay-badge inline-flex items-center gap-3 rounded-full border border-amber-500/30 bg-amber-500/10 px-4 py-2 mb-6 animate-fade-in-up" style="animation-delay:0.1s">
-          <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse shrink-0"></span>
-          <span class="text-amber-200 text-xs font-medium">Every Sunday you wait is a round you'll hear about a week too late. That gap is your whole edge.</span>
-        </div>
-
         <h1 class="mobile-hero-title text-4xl md:text-6xl font-extrabold leading-tight mb-4 animate-fade-in-up">See which startups are heating up <span class="text-white">21 to 47 days</span> before the round &mdash; I call it the <span class="gradient-text">Velocity Verdict</span>.</h1>
 
-        <!-- THE ONE SENTENCE (DotCom Secrets Ch.5): Hook + Story + Offer distilled into one line.
-             Hook = the specific day-range wedge; Story = reading GitHub activity;
-             Offer = five names, every Sunday, free. This is the "if I could only say one line" test. -->
-        <p class="mobile-hero-copy text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-6 leading-relaxed">
-          GitDealFlow reads the public GitHub activity of <strong class="text-white">4,200+ startups</strong>, spots the ones accelerating, and sends you <strong class="text-white">five names every Sunday</strong> &mdash; so you reach the founder <strong class="text-white">before the round exists</strong>, not after the press announces it.
-        </p>
+        <section id="tldr" class="max-w-2xl mx-auto mb-6 text-left">
+          <p class="text-gray-300 text-base leading-relaxed">GitDealFlow is a deal-flow signal tool that reads public GitHub engineering activity from <strong class="text-white">4,200+ startup orgs</strong> and flags the ones accelerating &mdash; historically 21&ndash;47 days before fundraise announcements. Every Sunday, subscribers get five named startups with sector, stage, and a plain-English note on why each is moving.</p>
+        </section>
 
         <div id="hero-flow" class="hero-flow">
         <div class="hero-how">
@@ -631,10 +355,12 @@
           <button type="submit" class="btn btn-primary btn-xl w-full sm:w-auto"><span>Get this Sunday&apos;s 5 names</span><span aria-hidden="true" class="btn-arrow">&rarr;</span></button>
         </form>
         <p role="status" class="js-signup-msg text-gray-400 text-sm mt-4"><span class="text-emerald-400">✓</span> Free &mdash; I cover the compute &nbsp; <span class="text-emerald-400">✓</span> Unsubscribe in one click &nbsp; <span class="text-emerald-400">✓</span> One email, every Sunday</p>
+        <p class="text-signal-400 text-xs font-semibold mt-2">This Sunday&apos;s five are already locked. Be on the list when it sends.</p>
+
+        <p class="text-gray-400 text-sm mt-2"><a href="https://buy.stripe.com/bJe5kC48H2d2cEKg6s0x209" onclick="if(window.posthog)posthog.capture('hero_teardown_link_clicked')" class="text-signal-400 underline hover:text-signal-300">Not ready for the list? Get a &euro;1 Tweet Teardown &rarr;</a></p>
 
         <p class="hero-kicker text-base md:text-lg font-semibold leading-tight text-signal-400 mt-6 mb-6"><span class="text-gray-400">Three signals that together predict a fundraise:</span> velocity surge &middot; contributor spike &middot; infrastructure buildout</p>
 
-        <!-- Hook ladder (compressed to the 3 strongest rows: What / When / Why) -->
         <div class="max-w-2xl mx-auto mb-6">
           <ul class="text-left text-base md:text-lg space-y-2.5" style="list-style:none;padding:0;">
             <li class="flex items-start gap-3 animate-fade-in-up" style="animation-delay:0.2s"><span class="text-signal-500 font-extrabold mt-0.5 shrink-0 w-16">What</span><span class="text-gray-200">Five startups <strong class="text-white">accelerating on GitHub</strong>, in plain English &mdash; no code.</span></li>
@@ -643,7 +369,6 @@
           </ul>
         </div>
 
-        <!-- 3-STEP ACTION PATH (Expert Secrets Ch 17 — Call to Adventure) -->
         <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-xs text-gray-400 max-w-2xl mx-auto mt-5 mb-2">
           <span class="flex items-center gap-2">
             <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-brand-500/20 text-brand-400 text-[11px] font-bold">1</span>
@@ -659,9 +384,8 @@
           </span>
         </div>
 
-        <p class="text-gray-400 text-sm mt-3">Covering <span class="text-gray-300">the fast-growing software startups everyone&apos;s about to fight over</span> &mdash; and more. <a href="/report" class="underline hover:text-gray-300 transition">See a real issue first &rarr;</a> <span class="text-gray-600 mx-2">&middot;</span> <a href="/perfect-webinar" class="underline hover:text-gray-300 transition">Watch the 12-minute walkthrough &rarr;</a></p>
+        <p class="text-gray-400 text-sm mt-3">Covering <span class="text-gray-300">the fast-growing software startups everyone&apos;s about to fight over</span> &mdash; and more. <a href="/report" class="underline hover:text-gray-300 transition">See a real issue first &rarr;</a> <span class="text-gray-400 mx-2">&middot;</span> <a href="/perfect-webinar" class="underline hover:text-gray-300 transition">Watch the 12-minute walkthrough &rarr;</a></p>
 
-        <!-- Brunson Ch 17 — Qualification quiz (squeeze-page style): segments ICP without blocking the free opt-in -->
         <div id="hero-quiz" class="max-w-2xl mx-auto mt-8 pt-6 border-t border-gray-700/50">
           <p class="text-gray-400 text-xs font-semibold uppercase tracking-wider text-center mb-3">Not sure yet? Tell me your lane &mdash; I&apos;ll tailor your first issue.</p>
           <div class="qual-grid" role="radiogroup" aria-label="Select your investor profile">
@@ -710,9 +434,8 @@
           </div>
           <p class="text-gray-400 text-xs text-center mt-3">Pick one &mdash; I&apos;ll take you to the signup and tune your first issue to it.</p>
         </div>
-        </div><!-- /.hero-how -->
+        </div>
 
-        <!-- WHY — the benefits (order toggled by the flag; below the form in form_first) -->
         <div class="benefit-why benefit-why-demoted hero-benefits">
           <p class="benefit-eyebrow">Why it&apos;s good for you</p>
           <h2 class="benefit-h2">What you get by seeing it first</h2>
@@ -735,11 +458,10 @@
           </div>
         </div>
 
-        </div><!-- /.hero-flow -->
+        </div>
       </div>
     </section>
 
-    <!-- RECEIPTS — one closed-loop, named, venture-scale proof, high on the page -->
     <section class="mobile-section-pad max-w-5xl mx-auto px-4 sm:px-6 pt-12 md:pt-16">
       <div class="mobile-card-pad support-card rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-8 md:p-10">
         <p class="text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-2">Receipts, not testimonials</p>
@@ -777,18 +499,15 @@
         <p class="text-gray-300 text-sm">Plus ~70 more &mdash; Anthropic, Pinecone, Groq, Clerk, Linear &mdash; in the public panel behind the <strong class="text-white">219 documented fundraises</strong>. <a href="https://signals.gitdealflow.com/methodology" target="_blank" rel="noopener" class="text-brand-500 underline">See the method and the full ledger &rarr;<span class="sr-only"> (opens in a new tab)</span></a></p>
       </div>
 
-      <!-- RESULT TIMELINE (DotCom Secrets Ch.4 — "Result"): visualizes the unique outcome.
-           Russell's rule: the result must be specific AND measurable. "21–47 days before"
-           is the USP — this makes it a picture, not a sentence. -->
       <div class="mt-8 rounded-2xl border border-signal-500/20 bg-dark-900/50 p-6 md:p-8">
         <p class="text-signal-400 text-xs font-semibold uppercase tracking-wider text-center mb-5">The head start, visualized</p>
         <div class="relative max-w-3xl mx-auto">
-          <!-- Timeline track -->
+
           <div class="relative hidden sm:block h-2 rounded-full bg-dark-700 mb-6">
             <div class="absolute left-0 top-0 h-2 rounded-full bg-gradient-to-r from-signal-500 to-emerald-400" style="width:38%"></div>
             <div class="absolute left-[38%] top-0 h-2 rounded-full bg-gradient-to-r from-emerald-400 via-amber-400 to-red-400/60" style="width:62%"></div>
           </div>
-          <!-- Markers -->
+
           <div class="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-2 text-center">
             <div class="text-left">
               <div class="inline-flex items-center gap-1.5 mb-1">
@@ -844,7 +563,6 @@
       </div>
     </section>
 
-    <!-- ATTRACTIVE CHARACTER — flaws on purpose, anonymity as polarity, the identity Marcus wears -->
     <section class="mobile-section-pad max-w-3xl mx-auto px-4 sm:px-6 pt-4 pb-8">
       <div class="mobile-card-pad support-card rounded-2xl border border-gray-700 bg-dark-800 p-8">
         <p class="text-signal-400 text-xs font-semibold uppercase tracking-wider mb-3">Before you trust a stranger&apos;s email</p>
@@ -904,9 +622,9 @@
         <div class="rounded-2xl border border-gray-700 bg-dark-900 p-8">
           <p class="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-4">The old way</p>
           <ul class="space-y-3 text-gray-300">
-            <li class="flex items-start gap-3"><span class="text-gray-500 font-bold mt-0.5" aria-hidden="true">&times;</span><span>You wait for the warm intro &mdash; and so does everyone else.</span></li>
-            <li class="flex items-start gap-3"><span class="text-gray-500 font-bold mt-0.5" aria-hidden="true">&times;</span><span>PitchBook and Crunchbase list the round <em>after</em> it&apos;s announced.</span></li>
-            <li class="flex items-start gap-3"><span class="text-gray-500 font-bold mt-0.5" aria-hidden="true">&times;</span><span>By the time it&apos;s &ldquo;obvious,&rdquo; the price has jumped and the allocation is gone.</span></li>
+            <li class="flex items-start gap-3"><span class="text-gray-400 font-bold mt-0.5" aria-hidden="true">&times;</span><span>You wait for the warm intro &mdash; and so does everyone else.</span></li>
+            <li class="flex items-start gap-3"><span class="text-gray-400 font-bold mt-0.5" aria-hidden="true">&times;</span><span>PitchBook and Crunchbase list the round <em>after</em> it&apos;s announced.</span></li>
+            <li class="flex items-start gap-3"><span class="text-gray-400 font-bold mt-0.5" aria-hidden="true">&times;</span><span>By the time it&apos;s &ldquo;obvious,&rdquo; the price has jumped and the allocation is gone.</span></li>
           </ul>
         </div>
         <div class="rounded-2xl border border-emerald-500/40 bg-emerald-500/10 p-8">
@@ -921,7 +639,6 @@
       <p class="text-gray-400 text-center mt-8">It&apos;s not an upgrade to your database. It&apos;s the signal that sits <strong class="text-white">underneath</strong> it.</p>
     </section>
 
-    <!-- BRUNSON EXPERT SECRETS — THE 3 SECRETS: false belief patterns -->
     <section class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 py-12 md:py-16">
       <div class="text-center mb-10">
         <p class="text-signal-400 text-xs font-semibold uppercase tracking-wider mb-3">The 3 false beliefs that keep you late</p>
@@ -929,7 +646,7 @@
         <p class="text-gray-300 text-lg max-w-2xl mx-auto leading-relaxed">Every investor who comes to me believed at least one of these. Here&apos;s the belief &mdash; and the epiphany that changes it.</p>
       </div>
       <div class="space-y-5">
-        <!-- Secret 1: The Vehicle -->
+
         <div class="mobile-card-pad rounded-2xl border border-gray-700 bg-dark-900 overflow-hidden">
           <div class="bg-brand-500/5 px-6 md:px-8 py-4 md:py-5 border-b border-gray-700/50 flex items-center gap-3">
             <span class="inline-flex items-center justify-center w-9 h-9 md:w-10 md:h-10 rounded-xl bg-brand-500/20 text-brand-400 font-bold text-sm shrink-0">1</span>
@@ -949,7 +666,7 @@
             </div>
           </div>
         </div>
-        <!-- Secret 2: Internal Belief -->
+
         <div class="mobile-card-pad rounded-2xl border border-gray-700 bg-dark-900 overflow-hidden">
           <div class="bg-signal-500/5 px-6 md:px-8 py-4 md:py-5 border-b border-gray-700/50 flex items-center gap-3">
             <span class="inline-flex items-center justify-center w-9 h-9 md:w-10 md:h-10 rounded-xl bg-signal-500/20 text-signal-400 font-bold text-sm shrink-0">2</span>
@@ -969,7 +686,7 @@
             </div>
           </div>
         </div>
-        <!-- Secret 3: External Belief -->
+
         <div class="mobile-card-pad rounded-2xl border border-gray-700 bg-dark-900 overflow-hidden">
           <div class="bg-emerald-500/5 px-6 md:px-8 py-4 md:py-5 border-b border-gray-700/50 flex items-center gap-3">
             <span class="inline-flex items-center justify-center w-9 h-9 md:w-10 md:h-10 rounded-xl bg-emerald-500/20 text-emerald-400 font-bold text-sm shrink-0">3</span>
@@ -1036,9 +753,6 @@
       </div>
     </section>
 
-    <div class="mobile-section-pad max-w-3xl mx-auto px-4 sm:px-6 pb-4 text-center">
-      <a href="#signup" onclick="if(window.posthog)posthog.capture('repeat_cta_clicked',{placement:'after_win'})" class="btn btn-primary btn-lg w-full sm:w-auto"><span>Get this Sunday&apos;s 5 names</span><span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
-    </div>
 
     <section class="mobile-section-pad max-w-3xl mx-auto px-4 sm:px-6 py-16 md:py-20">
       <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-3">Who it&apos;s for</p>
@@ -1055,7 +769,6 @@
       </div>
     </section>
 
-    <!-- FUTURE-PACE — the identity, six months out. Honest: the reps, not guaranteed deals. -->
     <section class="mobile-section-pad max-w-5xl mx-auto px-4 sm:px-6 py-16 md:py-20">
       <p class="text-signal-400 text-xs font-semibold uppercase tracking-wider text-center mb-3">Where this takes you</p>
       <h2 class="text-3xl font-bold text-center mb-3">Your next six months as the investor who&apos;s early on purpose.</h2>
@@ -1084,192 +797,6 @@
       </div>
     </section>
 
-    <!-- ==================== BRUNSON VALUE LADDER (Ch 1 + Ch 13) — full 5-rung ladder with tripwire + high-ticket backend ==================== -->
-    <style>
-      /* Scoped 5-rung ladder grid — not in compiled styles.css, so self-contained */
-      .ladder-grid{display:grid;grid-template-columns:1fr;gap:1.25rem}
-      @media(max-width:639px){
-        .ladder-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:1rem;padding-bottom:.5rem}
-        .ladder-grid>.ladder-card{flex:0 0 85%;scroll-snap-align:center}
-      }
-      @media(min-width:640px){.ladder-grid{grid-template-columns:repeat(2,1fr)}}
-      @media(min-width:1024px){.ladder-grid{grid-template-columns:repeat(3,1fr)}}
-      @media(min-width:1280px){.ladder-grid{grid-template-columns:repeat(6,1fr);align-items:stretch}}
-      /* Rung number badge */
-      .rung-num{display:inline-flex;align-items:center;justify-content:center;width:2rem;height:2rem;border-radius:999px;font-size:.8rem;font-weight:800;letter-spacing:-.02em;margin-bottom:.6rem}
-      .rung-1{background:rgba(16,185,129,.12);color:#34d399;box-shadow:inset 0 0 0 1px rgba(16,185,129,.3)}
-      .rung-2{background:rgba(255,107,26,.14);color:#ff8c4d;box-shadow:inset 0 0 0 1px rgba(255,107,26,.38)}
-      .rung-3{background:rgba(14,165,233,.14);color:#38bdf8;box-shadow:inset 0 0 0 1px rgba(14,165,233,.4)}
-      .rung-4{background:rgba(168,85,247,.14);color:#c084fc;box-shadow:inset 0 0 0 1px rgba(168,85,247,.36)}
-      .rung-5{background:rgba(234,179,8,.12);color:#fbbf24;box-shadow:inset 0 0 0 1px rgba(234,179,8,.34)}
-      .rung-td{background:rgba(244,63,94,.12);color:#fb7185;box-shadow:inset 0 0 0 1px rgba(244,63,94,.32)}
-      /* Card hover lift for non-highlighted cards */
-      .ladder-card{transition:border-color 200ms ease,transform 200ms ease,box-shadow 200ms ease}
-      @media(hover:hover){.ladder-card:hover{transform:translateY(-4px);box-shadow:0 24px 60px -36px rgba(0,0,0,.8)}}
-      /* Tripwire card emphasis — orange glow ring */
-      .ladder-tripwire{position:relative;border-color:rgba(255,107,26,.38)!important;background:radial-gradient(30rem 16rem at 50% -2rem,rgba(255,107,26,.09),transparent 70%),rgba(15,23,42,.8)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 28px 64px -44px rgba(255,107,26,.4)}
-      /* Dashboard card emphasis — blue glow ring (kept from original) */
-      .ladder-core{position:relative;border-color:rgba(14,165,233,.4)!important;background:radial-gradient(30rem 16rem at 50% -2rem,rgba(14,165,233,.08),transparent 70%),rgba(15,23,42,.8)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 28px 64px -44px rgba(14,165,233,.42)}
-      /* Sector Sweep — subtle gold tint */
-      .ladder-apex{border-color:rgba(234,179,8,.25)!important;background:linear-gradient(180deg,rgba(30,27,12,.5),rgba(15,23,42,.9))!important}
-      /* Journey connector dots between cards on desktop */
-      .ladder-progress{display:none}
-      @media(min-width:1280px){.ladder-progress{display:flex;align-items:center;justify-content:center;gap:.5rem;margin-bottom:1.75rem}}
-      .ladder-progress span{width:.5rem;height:.5rem;border-radius:999px;background:rgba(71,85,105,.5)}
-      .ladder-progress span.active{background:linear-gradient(90deg,#10b981,#ff8c4d,#38bdf8,#c084fc,#fbbf24)}
-      .ladder-progress span.active{width:1.6rem;border-radius:999px}
-      /* Rung label tagline */
-      .rung-label{font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.35rem}
-    </style>
-    <section id="how" class="bg-dark-800 py-16 md:py-20" style="scroll-margin-top:5rem">
-      <div class="mobile-section-pad max-w-5xl mx-auto px-4 sm:px-6">
-        <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider text-center mb-3">How it works</p>
-        <h2 class="text-3xl font-bold text-center mb-12">Three steps. No code, no quant work.</h2>
-        <div class="mobile-steps-grid grid md:grid-cols-3 gap-8 text-center">
-          <div class="step-card rounded-xl border border-gray-700 bg-dark-900 p-6 md:p-8">
-          <div class="step-badge">1</div>
-          <h3 class="text-xl font-semibold mb-3">I read the signal</h3>
-            <p class="text-gray-400">I watch what 4,200+ startups are building out in the open: how fast they&apos;re shipping, how many engineers are pitching in, and the new projects they start. The whole engine lives on signals.gitdealflow.com.</p>
-          </div>
-          <div class="step-card rounded-xl border border-gray-700 bg-dark-900 p-6 md:p-8">
-          <div class="step-badge">2</div>
-          <h3 class="text-xl font-semibold mb-3">I flag what&apos;s accelerating</h3>
-            <p class="text-gray-400">The tool surfaces the startups breaking out in your sectors, before the round or the press, each with a plain-English note on why.</p>
-          </div>
-          <div class="step-card rounded-xl border border-gray-700 bg-dark-900 p-6 md:p-8">
-          <div class="step-badge">3</div>
-          <h3 class="text-xl font-semibold mb-3">You move first</h3>
-            <p class="text-gray-400">Open the board, pick the names in your lane, and reach the founders while the window is still quiet.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="ladder" class="mobile-section-pad max-w-7xl mx-auto px-4 sm:px-6 py-16 md:py-20" style="scroll-margin-top:5rem">
-      <span id="pricing" aria-hidden="true"></span>
-      <p class="text-signal-400 text-xs font-semibold uppercase tracking-wider text-center mb-3">The value ladder</p>
-      <h2 class="text-3xl font-bold text-center mb-3">Six ways to be early. Start free, climb when you&rsquo;re ready.</h2>
-      <p class="text-gray-400 text-center max-w-2xl mx-auto mb-6">From a 90-second Sunday read to a custom thesis report with a private call &mdash; each rung adds depth without adding noise. No rung is locked &mdash; start wherever your week demands.</p>
-      <div class="ladder-progress" aria-hidden="true">
-        <span class="active"></span><span class="active"></span><span class="active"></span><span class="active"></span><span class="active"></span><span class="active"></span>
-      </div>
-      <p class="sm:hidden text-gray-500 text-xs text-center mb-3">Swipe to compare &rarr;</p>
-      <div class="ladder-grid">
-        <!-- RUNG 1: FREE — the bait (Ch 1 "Free + Shipping" analogue) -->
-        <div class="ladder-card rounded-2xl border border-gray-700 bg-dark-900 p-5 md:p-6 text-center flex flex-col">
-          <span class="rung-num rung-1">1</span>
-          <p class="rung-label text-emerald-400"><span aria-hidden="true">📋</span> Discover</p>
-          <p class="text-xl font-bold text-white mb-1">Sunday Signal</p>
-          <p class="text-2xl font-extrabold text-white mb-1">Free</p>
-          <p class="text-gray-400 text-xs mb-4">5 names &middot; 90-second read &middot; forever</p>
-          <ul class="text-left text-gray-300 text-sm space-y-2 mb-5 flex-1">
-            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>5 startups accelerating on GitHub, every Sunday</span></li>
-            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>Plain-English note on each &mdash; never read code</span></li>
-            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>Unsubscribe in one click, keep every issue</span></li>
-          </ul>
-          <a href="#signup" onclick="if(window.posthog)posthog.capture('ladder_cta_clicked',{rung:1,tier:'free',placement:'value_ladder'})" class="btn btn-primary btn-md w-full">Get it free</a>
-        </div>
-
-        <!-- RUNG 2: €1 TWEET TEARDOWN — the micro-commitment between free and First Look -->
-        <div id="get-teardown" class="ladder-card rounded-2xl border border-gray-700 bg-dark-900 p-5 md:p-6 text-center flex flex-col" style="scroll-margin-top:5rem">
-          <span class="rung-num rung-td">2</span>
-          <p class="rung-label" style="color:#fb7185"><span aria-hidden="true">🔍</span> Name a startup</p>
-          <p class="text-xl font-bold text-white mb-1">Tweet Teardown</p>
-          <p class="text-2xl font-extrabold text-white mb-1">&euro;1<span class="text-gray-400 text-sm font-normal"> once</span></p>
-          <p class="text-gray-400 text-xs mb-4">One named startup &middot; tweet-length &middot; 24h</p>
-          <ul class="text-left text-gray-300 text-sm space-y-2 mb-5 flex-1">
-            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span><strong class="text-white">One named startup</strong> &mdash; you pick it</span></li>
-            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>One tweet-length <strong class="text-white">GitHub-momentum teardown</strong></span></li>
-            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>24h delivery</span></li>
-            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span><strong class="text-white">&euro;1 credits</strong> toward First Look within 7 days</span></li>
-          </ul>
-          <a href="https://buy.stripe.com/bJe5kC48H2d2cEKg6s0x209" onclick="if(window.posthog)posthog.capture('ladder_cta_clicked',{rung:2,tier:'teardown',placement:'value_ladder'})" class="btn btn-secondary btn-md w-full">Get a Teardown &rarr;</a>
-        </div>
-
-        <!-- RUNG 3: TRIPWIRE / SLO (Ch 12) — the buyer-identity shift. €7 credited toward Dashboard. -->
-        <div class="ladder-card ladder-tripwire rounded-2xl border p-5 md:p-6 text-center flex flex-col">
-          <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-signal-500 text-dark-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider whitespace-nowrap"><span aria-hidden="true">⚡</span> First buyer step</span>
-          <span class="rung-num rung-2" style="margin-top:.5rem">3</span>
-          <p class="rung-label text-signal-400"><span aria-hidden="true">⚡</span> Test the signal</p>
-          <p class="text-xl font-bold text-white mb-1">First Look Pass</p>
-          <p class="text-2xl font-extrabold text-white mb-1">&euro;7<span class="text-gray-400 text-sm font-normal"> once</span></p>
-          <p class="text-gray-400 text-xs mb-4">One sector &middot; 24-hour deep dive &middot; one-time</p>
-          <ul class="text-left text-gray-300 text-sm space-y-2 mb-5 flex-1">
-            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>Full deep dive on <strong class="text-white">your sector</strong>, ranked shortlist in 24h</span></li>
-            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>Plain-English &mdash; you never touch code</span></li>
-            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span><strong class="text-white">&euro;7 credited</strong> toward Dashboard if you upgrade in 14 days</span></li>
-            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>Not useful? 30 days, email me, every cent back</span></li>
-          </ul>
-          <a href="/firstlook" onclick="if(window.posthog)posthog.capture('ladder_cta_clicked',{rung:3,tier:'firstlook',placement:'value_ladder'})" class="btn btn-cta btn-md w-full">Get my First Look &rarr;</a>
-        </div>
-
-        <!-- RUNG 4: CORE OFFER (Ch 1 "Core Offer") — Dashboard. The main subscription. -->
-        <div class="ladder-card ladder-core rounded-2xl border p-5 md:p-6 text-center flex flex-col">
-          <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand-500 text-dark-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Most popular</span>
-          <span class="rung-num rung-3" style="margin-top:.5rem">4</span>
-          <p class="rung-label text-brand-400"><span aria-hidden="true">🔭</span> Operate weekly</p>
-          <p class="text-xl font-bold text-white mb-1">Dashboard</p>
-          <p class="text-2xl font-extrabold text-white mb-1">&euro;49<span class="text-gray-400 text-sm font-normal">/mo</span></p>
-          <p class="text-gray-400 text-xs mb-4">Full ranked field &middot; 60+ startups across 20 sectors &middot; weekly re-rank</p>
-          <ul class="text-left text-gray-300 text-sm space-y-2 mb-5 flex-1">
-            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>60+ startups across 20 sectors, ranked by engineering acceleration</span></li>
-            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>Filter by sector, stage, geography</span></li>
-            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>Funding data &amp; team size enrichment</span></li>
-            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>CSV export + full history</span></li>
-          </ul>
-          <a href="/dashboard" onclick="if(window.posthog)posthog.capture('ladder_cta_clicked',{rung:4,tier:'dashboard',placement:'value_ladder'})" class="btn btn-primary btn-md w-full">Start Dashboard &rarr;</a>
-        </div>
-
-        <!-- RUNG 5: PROFIT MAXIMIZER (Ch 1 "Profit Maximizer") — Insider Circle -->
-        <div class="ladder-card rounded-2xl border p-5 md:p-6 text-center flex flex-col" style="border-color:rgba(168,85,247,.28);background:linear-gradient(180deg,rgba(30,16,45,.5),rgba(15,23,42,.9))">
-          <span class="rung-num rung-4">5</span>
-          <p class="rung-label" style="color:#c084fc"><span aria-hidden="true">🤝</span> Stay close</p>
-          <p class="text-xl font-bold text-white mb-1">Insider Circle</p>
-          <p class="text-2xl font-extrabold text-white mb-1">&euro;197<span class="text-gray-400 text-sm font-normal">/mo</span></p>
-          <p class="text-gray-400 text-xs mb-4">Private discussion &middot; monthly briefings &middot; ~50 seat cap</p>
-          <ul class="text-left text-gray-300 text-sm space-y-2 mb-5 flex-1">
-            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>Everything in Dashboard</span></li>
-            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>Private discussion with fellow first movers</span></li>
-            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>Monthly briefings and a steadier deal-flow rhythm</span></li>
-            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>~50 seats, kept deliberately small</span></li>
-          </ul>
-          <a href="/insider" onclick="if(window.posthog)posthog.capture('ladder_cta_clicked',{rung:5,tier:'insider',placement:'value_ladder'})" class="btn btn-secondary btn-md w-full">Join Insider</a>
-        </div>
-
-        <!-- RUNG 6: HIGH-TICKET BACKEND (Ch 1 "Return Path" / Ch 9 "Backend Funnel") — Sector Sweep -->
-        <div class="ladder-card ladder-apex rounded-2xl border p-5 md:p-6 text-center flex flex-col">
-          <span class="rung-num rung-5">6</span>
-          <p class="rung-label" style="color:#fbbf24"><span aria-hidden="true">🎯</span> Go custom</p>
-          <p class="text-xl font-bold text-white mb-1">Sector Sweep</p>
-          <p class="text-2xl font-extrabold text-white mb-1">&euro;1,997<span class="text-gray-400 text-sm font-normal"> once</span></p>
-          <p class="text-gray-400 text-xs mb-4">Custom thesis report &middot; private call &middot; one-time</p>
-          <ul class="text-left text-gray-300 text-sm space-y-2 mb-5 flex-1">
-            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>Full custom report on <strong class="text-white">your thesis</strong></span></li>
-            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>Private call with the Data Nerd</span></li>
-            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>Ranked shortlist + raw signal data</span></li>
-            <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5" aria-hidden="true">&check;</span><span>For funds &amp; scouts running a live process</span></li>
-          </ul>
-          <a href="/sector-sweep" onclick="if(window.posthog)posthog.capture('ladder_cta_clicked',{rung:6,tier:'sector_sweep',placement:'value_ladder'})" class="btn btn-secondary btn-md w-full">Explore Sector Sweep</a>
-        </div>
-      </div>
-
-      <!-- BRUNSON ANCHOR NOTE (Ch 18 Value Stack principle) — the €1,997 rung makes €49/mo feel obvious -->
-      <div class="mt-6 max-w-3xl mx-auto text-center">
-        <p class="text-gray-400 text-sm leading-relaxed"><strong class="text-gray-300">How the ladder works:</strong> Start free &mdash; no card, ever. A &euro;1 Tweet Teardown tests the read on one named startup; First Look tests the signal on one sector for &euro;7 (14-day upgrade credit window toward Dashboard). Dashboard is the weekly operating layer. Insider adds private discussion and monthly briefings. Sector Sweep is the one-time custom report when you need a deeper answer than any feed can give. <strong class="text-white">Every paid rung is covered by the 30-day guarantee below.</strong></p>
-        <p class="text-gray-400 text-sm leading-relaxed mt-3">Founding cohort closed June 30 &mdash; exactly as promised. Members who moved keep &euro;9.97 for life. When I set the next deadline, you&apos;ll know I mean it.</p>
-      </div>
-
-      <!-- BRUNSON RISK REVERSAL (Ch 11) — guarantee on all paid tiers -->
-      <div class="mt-6 max-w-2xl mx-auto rounded-2xl border border-emerald-500/30 bg-emerald-500/5 p-6 md:p-8 text-center">
-        <div class="flex items-center justify-center gap-2 mb-3">
-          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="text-emerald-400" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
-          <p class="text-emerald-300 text-xs font-bold uppercase tracking-wider">The Risk Is Mine, Not Yours</p>
-        </div>
-        <p class="text-gray-200 leading-relaxed text-base">Start on the free Sunday Signal &mdash; no card, ever. Every paid rung (Tweet Teardown, First Look, Dashboard, Insider, or Sector Sweep) carries the 30-day Signal-or-It&apos;s-Free guarantee: <strong class="text-white">any paid rung, 30 days, email me, every cent back. No forms, no survey.</strong> The risk is entirely on my side of the table.</p>
-      </div>
-    </section>
-
-    <!-- Brunson ES6 — The First Movers Manifesto (Future-Based Cause / Movement) -->
     <section class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 py-16 md:py-20">
       <div class="rounded-2xl border border-brand-500/30 bg-brand-500/5 p-8 md:p-12 text-center">
         <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-4">The movement — join the First Movers</p>
@@ -1298,15 +825,11 @@
       </div>
     </section>
 
-    <!-- Brunson DotCom Ch 2/Expert Ch 3: What Happens If You Do Nothing —
-         The cost-of-inaction section. Russell's rule: show the prospect their
-         life 6 months from now on BOTH paths. The contrast creates urgency
-         without a countdown timer. -->
     <section class="mobile-section-pad max-w-4xl mx-auto px-4 sm:px-6 py-16 md:py-20 border-t border-gray-800">
       <p class="text-amber-400 text-xs font-semibold uppercase tracking-wider text-center mb-4">The honest version of what&rsquo;s at stake</p>
       <h2 class="text-3xl font-bold text-center mb-10">Two futures. One Sunday email. Your choice.</h2>
       <div class="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
-        <!-- Timeline A: Do Nothing -->
+
         <div class="rounded-2xl border border-red-500/20 bg-red-500/5 p-6 md:p-8">
           <p class="text-red-400 text-xs font-semibold uppercase tracking-wider mb-3">If you do nothing</p>
           <p class="text-lg font-bold text-white mb-4">The next six months look a lot like the last six.</p>
@@ -1318,7 +841,7 @@
           </ul>
           <p class="text-red-300/80 text-xs mt-5 italic">The only difference between six months from now and today is 24 Sundays you didn&rsquo;t get the names.</p>
         </div>
-        <!-- Timeline B: Subscribe -->
+
         <div class="rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-6 md:p-8">
           <p class="text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-3">If you subscribe today</p>
           <p class="text-lg font-bold text-white mb-4">In six months, being early is just how you source.</p>
@@ -1433,7 +956,7 @@
   <div id="exit-modal" class="hidden fixed inset-0 z-[70] items-center justify-center px-4" role="dialog" aria-modal="true" aria-labelledby="exit-title">
     <div id="exit-backdrop" class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
     <div class="relative w-full max-w-lg rounded-2xl border border-signal-500/40 bg-dark-900 p-6 md:p-8 shadow-2xl">
-      <button type="button" id="exit-close" aria-label="Close" class="absolute top-3 right-3 text-gray-500 hover:text-gray-200 text-2xl leading-none w-11 h-11 flex items-center justify-center">&times;</button>
+      <button type="button" id="exit-close" aria-label="Close" class="absolute top-3 right-3 text-gray-400 hover:text-gray-200 text-2xl leading-none w-11 h-11 flex items-center justify-center">&times;</button>
       <p class="text-signal-400 text-xs font-semibold uppercase tracking-wider mb-3">Before you go</p>
       <h2 id="exit-title" class="text-2xl md:text-3xl font-extrabold leading-tight mb-3">Let me send you this Sunday’s issue first.</h2>
       <p class="text-gray-300 leading-relaxed mb-5">One short Sunday email. Five names worth your attention. Unsubscribe in one click.</p>
@@ -1446,22 +969,19 @@
     </div>
   </div>
 
-  <footer class="border-t border-gray-800 bg-dark-900/80 py-12">
+  <!-- momentum-checker-v1 --><p style="margin-top:14px;font-size:.95rem">Want the score for a specific company right now? Run it live in the <a href="/free/github-momentum-checker">GitHub Momentum Checker</a> — commit acceleration, contributor growth and bus factor straight from the public GitHub API. See all <a href="/free">free tools</a>.</p><!-- /momentum-checker-v1 -->
+<footer class="border-t border-gray-800 bg-dark-900/80 py-12">
     <div class="mobile-section-pad max-w-5xl mx-auto px-4 sm:px-6 text-center">
       <p class="text-gray-300 mb-2 font-semibold">GitDealFlow is a deal-flow signal tool for investors — not a fund. It reads startups&apos; public GitHub engineering activity to flag the ones accelerating early.</p>
       <div class="flex flex-wrap justify-center gap-6 text-gray-400 text-sm mb-3">
-        <a href="/pricing" class="py-2 inline-block hover:text-gray-300">Pricing</a>
-        <a href="/firstlook" class="py-2 inline-block hover:text-gray-300">First Look</a>
-        <a href="/dashboard" class="py-2 inline-block hover:text-gray-300">Dashboard</a>
-        <a href="/insider" class="py-2 inline-block hover:text-gray-300">Insider</a>
-        <a href="/sector-sweep" class="py-2 inline-block hover:text-gray-300">Sector Sweep</a>
         <a href="/cheatsheet" class="py-2 inline-block hover:text-gray-300">Free cheat sheet</a>
         <a href="/perfect-webinar" class="py-2 inline-block hover:text-gray-300">Walkthrough</a>
         <a href="/partners" class="py-2 inline-block hover:text-gray-300">Partners</a>
         <a href="/privacy" class="py-2 inline-block hover:text-gray-300">Privacy</a>
         <a href="/terms" class="py-2 inline-block hover:text-gray-300">Terms</a>
       </div>
-      <div class="flex flex-wrap justify-center gap-4 text-gray-500 text-xs mb-5">
+      <p class="text-gray-400 text-sm mb-3"><a href="https://signals.gitdealflow.com" class="text-signal-400 hover:text-signal-300 underline">Research &amp; startup signals &rarr; signals.gitdealflow.com</a></p>
+      <div class="flex flex-wrap justify-center gap-4 text-gray-400 text-xs mb-5">
         <a href="/best/" class="py-1 inline-block hover:text-gray-300">Best deal flow tools</a>
         <a href="/best/best-crunchbase-alternatives" class="py-1 inline-block hover:text-gray-300">Crunchbase alternatives</a>
         <a href="/best/best-pitchbook-alternatives" class="py-1 inline-block hover:text-gray-300">Pitchbook alternatives</a>
@@ -1471,7 +991,7 @@
         <a href="/alternatives-to/crunchbase" class="py-1 inline-block hover:text-gray-300">vs Crunchbase</a>
         <a href="/alternatives-to/pitchbook" class="py-1 inline-block hover:text-gray-300">vs Pitchbook</a>
       </div>
-      <!-- CONGREGATION BAR (moved from hero) — where the first movers already gather -->
+
       <div class="mb-5">
         <p class="text-gray-400 text-xs font-semibold uppercase tracking-wider text-center mb-3">Where the first movers already gather</p>
         <div class="flex flex-wrap items-center justify-center gap-3">
@@ -1569,13 +1089,13 @@
           if (data.ok) {
             if (window.posthog) posthog.capture('signup_verify_sent', { placement: form.getAttribute('data-source') || 'landing-page', hero_variant: window.__heroVariant || 'unknown' });
             try { sessionStorage.setItem('gdf_email', email); } catch (e) {}
-            window.location.href = '/thanks';
+            window.location.href = '/subscribe-thanks';
             return;
           }
           throw new Error(data.error || 'Failed');
         } catch (err) {
           if (msg) {
-            msg.textContent = 'Something went wrong. Try again or email signals@gitdealflow.com';
+            msg.textContent = 'Something went wrong. Try again or email signal@gitdealflow.com';
             msg.className = 'js-signup-msg text-red-400 text-sm mt-4 text-center';
           }
           if (btn) { btn.disabled = false; btn.removeAttribute('aria-busy'); btn.innerHTML = orig; }
@@ -1687,7 +1207,7 @@
           if (!data.ok) throw new Error(data.error || 'Failed');
           if (window.posthog) posthog.capture('exit_modal_submitted');
           try { sessionStorage.setItem('gdf_email', email); } catch (e) {}
-          window.location.href = '/thanks?route=F';
+          window.location.href = '/subscribe-thanks';
           return;
         } catch (err) {
           msg.textContent = 'Something went wrong. Try the main signup form instead.';
@@ -1752,13 +1272,8 @@
   </script>
 
   <script>
-    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split('.');2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement('script')).type='text/javascript',p.async=!0,p.src=s.api_host+'/static/array.js',(r=t.getElementsByTagName('script')[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a='posthog',u.people=u.people||[],u.toString=function(t){var e='posthog';return'posthog'!==a&&(e+='.'+a),t||(e+=' (stub)'),e},u.people.toString=function(){return u.toString(1)+'.people (stub)'},o='init capture register register_once register_for_session unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group setPersonProperties resetPersonProperties setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags'.split(' '),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
-    (function(){
-      function _init(){ if(/^https?:$/.test(location.protocol)) posthog.init('phc_lyZCgvTpicjLzAO3rY2GhxuX5WUc5jQjP8ZVwwJqauX', {api_host: 'https://eu.i.posthog.com', persistence: 'memory', person_profiles: 'identified_only'}); }
-      if('requestIdleCallback' in window){requestIdleCallback(_init,{timeout:2500});} else {setTimeout(_init,2000);}
-      /* A/B hero layout: read flag landing-hero-layout, toggle order, fire exposure */
-      (function(){var F='landing-hero-layout';function apply(){try{var v=(window.posthog&&posthog.getFeatureFlag)?posthog.getFeatureFlag(F):null;var variant=(v==='control')?'control':'form_first';window.__heroVariant=variant;var flow=document.getElementById('hero-flow');if(flow){flow.classList.toggle('hero-control',variant==='control');flow.setAttribute('data-hero-variant',variant);}if(!window.__heroExposed){window.__heroExposed=true;if(window.posthog&&posthog.capture)posthog.capture('hero_experiment_exposed',{variant:variant});}}catch(e){}}function ready(){if(window.posthog&&posthog.onFeatureFlags){posthog.onFeatureFlags(apply);}else{setTimeout(ready,250);}}ready();})();
-    })();
+    /* A/B hero layout: read flag landing-hero-layout, toggle order, fire exposure */
+    (function(){var F='landing-hero-layout';function apply(){try{var v=(window.posthog&&posthog.getFeatureFlag)?posthog.getFeatureFlag(F):null;var variant=(v==='control')?'control':'form_first';window.__heroVariant=variant;var flow=document.getElementById('hero-flow');if(flow){flow.classList.toggle('hero-control',variant==='control');flow.setAttribute('data-hero-variant',variant);}if(!window.__heroExposed){window.__heroExposed=true;if(window.posthog&&posthog.capture)posthog.capture('hero_experiment_exposed',{variant:variant});}}catch(e){}}function ready(){if(window.posthog&&posthog.onFeatureFlags){posthog.onFeatureFlags(apply);}else{setTimeout(ready,250);}}ready();})();
   </script>
 
   <script>
@@ -1767,7 +1282,6 @@
       if('requestIdleCallback' in window){requestIdleCallback(_load,{timeout:3000});} else {setTimeout(_load,2500);}
     })();
   </script>
-
 
   <script>
     // Real recent-signup social proof. Polls signals.gitdealflow.com for ACTUAL
@@ -1853,149 +1367,7 @@
 t.addEventListener('click',function(){set(t.getAttribute('aria-expanded')!=='true');});
 document.addEventListener('keydown',function(e){if(e.key==='Escape'&&t.getAttribute('aria-expanded')==='true'){set(false);t.focus();}});})();
   </script>
-<!-- CROSS-PORTFOLIO NETWORK FOOTER — generated 2026-07-18 -->
-<style>
-.portfolio-network {
-    max-width: 1200px;
-    margin: 4rem auto 2rem;
-    padding: 2rem 1.5rem;
-    border-top: 1px solid #e5e7eb;
-    font-family: system-ui, -apple-system, sans-serif;
-}
-.portfolio-network h3 {
-    font-size: 0.875rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: #9ca3af;
-    margin: 0 0 1rem;
-    text-align: center;
-}
-.network-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 0.75rem;
-}
-.network-card {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 0.75rem;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: background 0.15s;
-    background: #f9fafb;
-}
-.network-card:hover {
-    background: #f3f4f6;
-}
-.network-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    flex-shrink: 0;
-}
-.network-name {
-    font-size: 0.8125rem;
-    font-weight: 600;
-    color: #111827;
-    white-space: nowrap;
-}
-.network-tagline {
-    font-size: 0.6875rem;
-    color: #9ca3af;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-/* Dark mode */
-@media (prefers-color-scheme: dark) {
-    .portfolio-network { border-top-color: #374151; }
-    .portfolio-network h3 { color: #6b7280; }
-    .network-card { background: #1f2937; }
-    .network-card:hover { background: #374151; }
-    .network-name { color: #f9fafb; }
-    .network-tagline { color: #6b7280; }
-}
-</style>
-<section class="portfolio-network">
-    <h3>🚀 Explore Our Network</h3>
-    <nav class="network-grid" aria-label="Portfolio network">
-            <a href="https://gitdealflow.com" class="network-card" 
-               title="GitDealFlow: Track startup acquisitions & funding rounds">
-                <span class="network-dot" style="background:#10B981"></span>
-                <span class="network-name">GitDealFlow</span>
-                <span class="network-tagline">Data & Analytics</span>
-            </a>
-            <a href="https://signals.gitdealflow.com" class="network-card" 
-               title="Signals by GitDealFlow: AI-powered startup investment signals">
-                <span class="network-dot" style="background:#3B82F6"></span>
-                <span class="network-name">Signals by GitDealFlow</span>
-                <span class="network-tagline">AI & Investing</span>
-            </a>
-            <a href="https://invisibleexit.com" class="network-card" 
-               title="Invisible Exit: Acquisition readiness for bootstrapped SaaS">
-                <span class="network-dot" style="background:#8B5CF6"></span>
-                <span class="network-name">Invisible Exit</span>
-                <span class="network-tagline">SaaS & M&A</span>
-            </a>
-            <a href="https://sipiteno.com" class="network-card" 
-               title="SipiTeno: AI Agents for SaaS Operations">
-                <span class="network-dot" style="background:#F59E0B"></span>
-                <span class="network-name">SipiTeno</span>
-                <span class="network-tagline">AI Agents & Automation</span>
-            </a>
-            <a href="https://unlocksaas.com" class="network-card" 
-               title="UnlockSaaS: Launch your SaaS in 60 days">
-                <span class="network-dot" style="background:#EC4899"></span>
-                <span class="network-name">UnlockSaaS</span>
-                <span class="network-tagline">SaaS Building</span>
-            </a>
-            <a href="https://voicelogpro.com" class="network-card" 
-               title="VoiceLogPro: Voice-to-insight for field teams">
-                <span class="network-dot" style="background:#06B6D4"></span>
-                <span class="network-name">VoiceLogPro</span>
-                <span class="network-tagline">Voice AI & Field Ops</span>
-            </a>
-            <a href="https://carshake.online" class="network-card" 
-               title="CarShake: Valet-damage-proof vehicle handover">
-                <span class="network-dot" style="background:#EF4444"></span>
-                <span class="network-name">CarShake</span>
-                <span class="network-tagline">Automotive & Insurance</span>
-            </a>
-            <a href="https://churnlens.site" class="network-card" 
-               title="ChurnLens: Churn analytics that predict, not just report">
-                <span class="network-dot" style="background:#6366F1"></span>
-                <span class="network-name">ChurnLens</span>
-                <span class="network-tagline">SaaS Analytics</span>
-            </a>
-            <a href="https://sanctionsai.dev" class="network-card" 
-               title="SanctionsAI: AI agent payment compliance">
-                <span class="network-dot" style="background:#DC2626"></span>
-                <span class="network-name">SanctionsAI</span>
-                <span class="network-tagline">Compliance & Fintech</span>
-            </a>
-            <a href="https://sipi.bot" class="network-card" 
-               title="Sipi.bot: AI spend firewall for agent payments">
-                <span class="network-dot" style="background:#14B8A6"></span>
-                <span class="network-name">Sipi.bot</span>
-                <span class="network-tagline">AI Infrastructure</span>
-            </a>
-    </nav>
-</section>
-<!-- BRUNSON TRUST BAR — idempotency:trust-bar-v1 -->
-<section class="brunson-trust-bar" style="background:linear-gradient(135deg, #0f172a, #1e293b);color:#e8eaed;padding:40px 24px;margin:60px 0 0;border-top:3px solid #00d4aa;text-align:center;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
-  <div style="max-width:900px;margin:0 auto">
-    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:28px;margin-bottom:28px">
-      <div><span style="font-size:1.6rem;font-weight:700;color:#00d4aa">21–47</span><br><span style="font-size:.82rem;color:#94a3b8">Days earlier</span></div>
-      <div><span style="font-size:1.6rem;font-weight:700;color:#00d4aa">47</span><br><span style="font-size:.82rem;color:#94a3b8">Days before deck</span></div>
-      <div><span style="font-size:1.6rem;font-weight:700;color:#00d4aa">3</span><br><span style="font-size:.82rem;color:#94a3b8">Clicks to verify</span></div>
-      <div><span style="font-size:1.6rem;font-weight:700;color:#00d4aa">€5</span><br><span style="font-size:.82rem;color:#94a3b8">First teardown</span></div>
-    </div>
-    <p style="font-size:1.05rem;margin-bottom:24px;color:#cbd5e1">Every deal you hear about late already had a signal 3 weeks ago. Stop being last.</p>
-    <a href="https://gitdealflow.com/#get-teardown" style="display:inline-block;background:linear-gradient(135deg,#00d4aa,#2deec0);color:#04130e;padding:14px 32px;border-radius:12px;font-weight:700;text-decoration:none;font-size:.95rem;box-shadow:0 8px 24px -10px rgba(0,212,170,.5)">Get a Teardown →</a>
-    <p style="margin-top:18px;font-size:.78rem;color:#6b7178">🛡️ Verify the claim in three clicks or you do not pay. Founding price locked.</p>
-  </div>
-</section>
-<!-- /BRUNSON TRUST BAR -->
+
+
 </body>
 </html>

@@ -1,0 +1,25 @@
+{
+  "version": "https://jsonfeed.org/version/1.1",
+  "title": "GitDealFlow Research Datasets",
+  "home_page_url": "https://gitdealflow.com/data/",
+  "feed_url": "https://gitdealflow.com/data/feed.json",
+  "description": "Free, downloadable industry datasets from GitDealFlow. CC BY 4.0.",
+  "icon": "https://gitdealflow.com/favicon.ico",
+  "items": [
+    {
+      "id": "https://gitdealflow.com/data/startup-ma-statistics/",
+      "url": "https://gitdealflow.com/data/startup-ma-statistics/",
+      "title": "Startup M&A Deal Flow Statistics 2026",
+      "content_text": "Key statistics on startup acquisitions, median deal sizes, time-to-exit, and acquisition multiples. Compiled from public market reports and industry data.",
+      "date_published": "2026-07-20T00:00:00Z",
+      "date_modified": "2026-07-20T00:00:00Z"
+    },
+    {
+      "id": "https://gitdealflow.com/data/momentum-index/",
+      "url": "https://gitdealflow.com/data/momentum-index/",
+      "title": "GitHub Startup Momentum Index",
+      "content_text": "Weekly momentum ranking of notable startup and developer-tool GitHub repositories, computed from public GitHub engineering-activity signals. Free, CC BY 4.0.",
+      "date_published": "2026-07-21T00:00:00Z"
+    }
+  ]
+}

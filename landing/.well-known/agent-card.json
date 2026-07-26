@@ -1,0 +1,52 @@
+{
+  "protocolVersion": "0.3.0",
+  "name": "GitDealFlow Agent",
+  "description": "Track startup engineering acceleration from public GitHub data. Discover high-momentum startups before they announce funding.",
+  "url": "https://gitdealflow.com/api/a2a",
+  "preferredTransport": "JSONRPC",
+  "version": "1.0.0",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false,
+    "stateTransitionHistory": false
+  },
+  "defaultInputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "defaultOutputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "skills": [
+    {
+      "id": "search_startups",
+      "name": "Search Startups",
+      "description": "Search tracked startups by sector, city, or momentum signal.",
+      "tags": [
+        "startups",
+        "vc",
+        "deal-flow",
+        "github"
+      ],
+      "examples": [
+        "Show me AI startups in London",
+        "What startups have high engineering momentum?"
+      ]
+    },
+    {
+      "id": "get_deal_signal",
+      "name": "Get Deal Signal",
+      "description": "Get engineering momentum data for a specific startup.",
+      "tags": [
+        "vc",
+        "due-diligence",
+        "momentum"
+      ],
+      "examples": [
+        "What's the signal for Stripe?",
+        "Show me startup momentum in fintech"
+      ]
+    }
+  ]
+}

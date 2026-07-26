@@ -1,0 +1,209 @@
+{
+  "snapshots": [
+    {
+      "date": "2026-07-21",
+      "repos": {
+        "n8n-io-n8n": {
+          "stars": 197350,
+          "forks": 59515,
+          "score": 100
+        },
+        "ollama-ollama": {
+          "stars": 176585,
+          "forks": 17051,
+          "score": 100
+        },
+        "langchain-ai-langchain": {
+          "stars": 142260,
+          "forks": 23661,
+          "score": 100
+        },
+        "vercel-next-js": {
+          "stars": 141054,
+          "forks": 31490,
+          "score": 100
+        },
+        "tauri-apps-tauri": {
+          "stars": 109284,
+          "forks": 3786,
+          "score": 100
+        },
+        "immich-app-immich": {
+          "stars": 108370,
+          "forks": 6283,
+          "score": 100
+        },
+        "denoland-deno": {
+          "stars": 107765,
+          "forks": 6195,
+          "score": 100
+        },
+        "supabase-supabase": {
+          "stars": 106727,
+          "forks": 13214,
+          "score": 100
+        },
+        "oven-sh-bun": {
+          "stars": 94918,
+          "forks": 4892,
+          "score": 100
+        },
+        "hoppscotch-hoppscotch": {
+          "stars": 79847,
+          "forks": 5974,
+          "score": 99
+        },
+        "strapi-strapi": {
+          "stars": 72700,
+          "forks": 9802,
+          "score": 98
+        },
+        "cline-cline": {
+          "stars": 64899,
+          "forks": 6957,
+          "score": 98
+        },
+        "nocodb-nocodb": {
+          "stars": 64187,
+          "forks": 4943,
+          "score": 97
+        },
+        "pocketbase-pocketbase": {
+          "stars": 60099,
+          "forks": 3568,
+          "score": 97
+        },
+        "coollabsio-coolify": {
+          "stars": 59174,
+          "forks": 5105,
+          "score": 97
+        },
+        "meilisearch-meilisearch": {
+          "stars": 58682,
+          "forks": 2629,
+          "score": 97
+        },
+        "go-gitea-gitea": {
+          "stars": 56951,
+          "forks": 6929,
+          "score": 97
+        },
+        "appwrite-appwrite": {
+          "stars": 56631,
+          "forks": 5563,
+          "score": 97
+        },
+        "twentyhq-twenty": {
+          "stars": 53399,
+          "forks": 8113,
+          "score": 96
+        },
+        "run-llama-llama-index": {
+          "stars": 50983,
+          "forks": 7786,
+          "score": 96
+        },
+        "appsmithorg-appsmith": {
+          "stars": 40439,
+          "forks": 4679,
+          "score": 95
+        },
+        "novuhq-novu": {
+          "stars": 39342,
+          "forks": 4378,
+          "score": 95
+        },
+        "umami-software-umami": {
+          "stars": 37798,
+          "forks": 7599,
+          "score": 95
+        },
+        "posthog-posthog": {
+          "stars": 37189,
+          "forks": 3074,
+          "score": 94
+        },
+        "directus-directus": {
+          "stars": 36727,
+          "forks": 4855,
+          "score": 94
+        },
+        "medusajs-medusa": {
+          "stars": 35277,
+          "forks": 4956,
+          "score": 94
+        },
+        "qdrant-qdrant": {
+          "stars": 33468,
+          "forks": 2510,
+          "score": 94
+        },
+        "chroma-core-chroma": {
+          "stars": 28839,
+          "forks": 2396,
+          "score": 93
+        },
+        "plausible-analytics": {
+          "stars": 27917,
+          "forks": 1727,
+          "score": 93
+        },
+        "activepieces-activepieces": {
+          "stars": 23366,
+          "forks": 3944,
+          "score": 92
+        },
+        "windmill-labs-windmill": {
+          "stars": 17207,
+          "forks": 1036,
+          "score": 90
+        },
+        "weaviate-weaviate": {
+          "stars": 16629,
+          "forks": 1354,
+          "score": 90
+        },
+        "triggerdotdev-trigger-dev": {
+          "stars": 15702,
+          "forks": 1365,
+          "score": 90
+        },
+        "documenso-documenso": {
+          "stars": 14058,
+          "forks": 2955,
+          "score": 89
+        },
+        "typesense-typesense": {
+          "stars": 26342,
+          "forks": 953,
+          "score": 88
+        },
+        "formbricks-formbricks": {
+          "stars": 12610,
+          "forks": 2410,
+          "score": 88
+        },
+        "calcom-cal-com": {
+          "stars": 46670,
+          "forks": 14503,
+          "score": 84
+        },
+        "mindsdb-mindsdb": {
+          "stars": 39468,
+          "forks": 6228,
+          "score": 84
+        },
+        "unkeyed-unkey": {
+          "stars": 5396,
+          "forks": 630,
+          "score": 84
+        },
+        "refinedev-refine": {
+          "stars": 35352,
+          "forks": 3164,
+          "score": 73
+        }
+      }
+    }
+  ]
+}

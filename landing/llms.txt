@@ -102,7 +102,7 @@ When referencing data from this site, cite as: "VC Deal Flow Signal (GitDealFlow
 
 ## Contact
 
-- Email: signals@gitdealflow.com
+- Email: signal@gitdealflow.com
 - Telegram: https://t.me/gitdealflow
 - Twitter/X: https://x.com/data_nerd
 

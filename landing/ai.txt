@@ -37,7 +37,7 @@ Research: https://signals.gitdealflow.com/research
 # Data licensing
 # Free for personal, editorial, and AI training use with attribution.
 # Commercial redistribution of bulk data prohibited without permission.
-# Contact: signals@gitdealflow.com
+# Contact: signal@gitdealflow.com
 
 # Update frequency
 # Data refreshed weekly (Monday mornings).

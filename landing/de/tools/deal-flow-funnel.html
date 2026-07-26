@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Deal Flow Funnel Calculator — VC Conversion Rates & Benchmarks | GitDealFlow</title>
+    <link rel="alternate" hreflang="en" href="https://gitdealflow.com/tools/deal-flow-funnel">
+    <link rel="alternate" hreflang="es" href="https://gitdealflow.com/es/tools/deal-flow-funnel">
+    <link rel="alternate" hreflang="de" href="https://gitdealflow.com/de/tools/deal-flow-funnel">
+    <link rel="alternate" hreflang="x-default" href="https://gitdealflow.com/tools/deal-flow-funnel"><meta name="description" content="Free VC deal flow funnel calculator. Enter the deals you see at each stage — screened, partner meetings, term sheets, closed — and get conversion rates, drop-off analysis, and benchmarks against typical early-stage fund performance." />
+<meta name="author" content="GitDealFlow" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://gitdealflow.com/de/tools/deal-flow-funnel" />
+<link rel="manifest" href="/site.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="GitDealFlow">
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="GitDealFlow" />
+<meta property="og:title" content="Deal Flow Funnel Calculator — VC Conversion Rates & Benchmarks | GitDealFlow" />
+<meta property="og:description" content="Free VC deal flow funnel calculator. Enter the deals you see at each stage — screened, partner meetings, term sheets, closed — and get conversion rates, drop-off analysis, and benchmarks against typical early-stage fund performance." />
+<meta property="og:url" content="https://gitdealflow.com/de/tools/deal-flow-funnel" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<style>
+  :root { --bg:#0f172a; --bg-card:#1e293b; --bg-input:#0f1d36; --text:#e2e8f0; --text-muted:#94a3b8; --accent:#8b5cf6; --accent-hover:#a78bfa; --accent-dim:rgba(139,92,246,0.15); --success:#10b981; --warning:#f59e0b; --danger:#ef4444; --border:#334155; --radius:12px; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:var(--bg); color:var(--text); line-height:1.6; min-height:100vh; -webkit-font-smoothing:antialiased; }
+  .container { max-width:960px; margin:0 auto; padding:24px 20px 80px; }
+  .header { text-align:center; margin-bottom:32px; }
+  .header h1 { font-size:clamp(1.75rem,4vw,2.5rem); font-weight:700; background:linear-gradient(135deg,#a78bfa,#8b5cf6); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:12px; line-height:1.2; }
+  .header p { color:var(--text-muted); font-size:1.05rem; max-width:660px; margin:0 auto; }
+  .card { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:28px; margin-bottom:24px; }
+  .form-group { margin-bottom:18px; }
+  .form-group label { display:block; font-weight:600; margin-bottom:6px; font-size:0.95rem; }
+  .form-group .hint { color:var(--text-muted); font-size:0.82rem; font-weight:400; margin-top:3px; }
+  input[type="number"] { width:100%; background:var(--bg-input); border:1px solid var(--border); color:var(--text); padding:12px 16px; border-radius:8px; font-size:1rem; font-family:inherit; transition:border-color 0.15s, box-shadow 0.15s; }
+  input[type="number"]:focus { outline:none; border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-dim); }
+  .btn { display:inline-block; background:var(--accent); color:white; border:none; padding:14px 32px; border-radius:8px; font-size:1rem; font-weight:600; cursor:pointer; font-family:inherit; transition:background 0.15s, transform 0.05s; width:100%; }
+  .btn:hover { background:var(--accent-hover); }
+  .btn:active { transform:translateY(1px); }
+  .results { display:none; }
+  .results.show { display:block; animation:fade 0.3s ease; }
+  @keyframes fade { from{opacity:0;transform:translateY(8px);} to{opacity:1;transform:translateY(0);} }
+  /* Funnel visual */
+  .funnel { margin:0 auto 24px; max-width:560px; }
+  .funnel-stage { margin-bottom:8px; }
+  .funnel-bar { background:linear-gradient(90deg,var(--accent),var(--accent-hover)); border-radius:8px; padding:14px 18px; display:flex; justify-content:space-between; align-items:center; color:white; transition:width 0.6s ease; }
+  .funnel-bar .stage-name { font-weight:600; font-size:0.95rem; }
+  .funnel-bar .stage-count { font-size:1.3rem; font-weight:700; }
+  .funnel-dropoff { color:var(--text-muted); font-size:0.8rem; padding:4px 0 4px 14px; }
+  .funnel-dropoff strong { color:var(--warning); }
+  .stat-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; margin-bottom:20px; }
+  .stat { background:var(--bg-input); padding:16px; border-radius:8px; border-left:3px solid var(--accent); }
+  .stat .label { color:var(--text-muted); font-size:0.78rem; text-transform:uppercase; letter-spacing:0.05em; }
+  .stat .value { font-size:1.3rem; font-weight:700; margin-top:4px; }
+  .stat .bench { font-size:0.78rem; color:var(--text-muted); margin-top:4px; }
+  .stat .bench.good { color:var(--success); }
+  .stat .bench.warn { color:var(--warning); }
+  .stat .bench.bad { color:var(--danger); }
+  table { width:100%; border-collapse:collapse; margin-top:8px; }
+  th, td { text-align:left; padding:10px 12px; border-bottom:1px solid var(--border); font-size:0.92rem; }
+  th { color:var(--text-muted); font-weight:600; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.04em; }
+  .bench-section { margin-top:20px; }
+  .bench-section h4 { margin-bottom:8px; }
+  .faq details { border-bottom:1px solid var(--border); padding:14px 0; }
+  .faq summary { cursor:pointer; font-weight:600; font-size:1rem; list-style:none; display:flex; justify-content:space-between; align-items:center; }
+  .faq summary::after { content:"+"; font-size:1.4rem; color:var(--accent); font-weight:300; }
+  .faq details[open] summary::after { content:"−"; }
+  .faq summary::-webkit-details-marker { display:none; }
+  .faq p { color:var(--text-muted); margin-top:10px; font-size:0.95rem; }
+  .footer { text-align:center; padding:32px 0 0; border-top:1px solid var(--border); margin-top:40px; color:var(--text-muted); font-size:0.9rem; }
+  .footer a { color:var(--accent); text-decoration:none; font-weight:600; }
+  .footer a:hover { text-decoration:underline; }
+  .back-link { display:inline-block; margin-bottom:20px; color:var(--text-muted); text-decoration:none; font-size:0.9rem; }
+  .back-link:hover { color:var(--accent); }
+  @media (max-width:600px) { .funnel-bar { padding:10px 12px; } .funnel-bar .stage-name { font-size:0.85rem; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <a href="/tools/" class="back-link">← All Tools</a>
+  <div class="header">
+    <h1>Deal Flow Funnel Calculator</h1>
+    <p>How efficient is your deal flow? Enter how many startups pass through each stage of your pipeline and see conversion rates, drop-off points, and where you sit versus typical early-stage VC fund benchmarks.</p>
+  </div>
+
+  <div class="card">
+    <div class="form-group">
+      <label for="seen">Deals Seen / Sourced</label>
+      <input type="number" id="seen" min="0" step="1" value="500" />
+      <div class="hint">Total deals that crossed your desk in the period (inbound + outbound + referrals).</div>
+    </div>
+    <div class="form-group">
+      <label for="screened">Passed First Screening</label>
+      <input type="number" id="screened" min="0" step="1" value="120" />
+      <div class="hint">Deals that survived the initial filter (sector fit, stage, traction check).</div>
+    </div>
+    <div class="form-group">
+      <label for="meetings">Partner / IC Meetings</label>
+      <input type="number" id="meetings" min="0" step="1" value="35" />
+      <div class="hint">Deals where you took a serious meeting, deep diligence began.</div>
+    </div>
+    <div class="form-group">
+      <label for="termsheets">Term Sheets Issued</label>
+      <input type="number" id="termsheets" min="0" step="1" value="8" />
+      <div class="hint">Deals where you formally offered terms.</div>
+    </div>
+    <div class="form-group">
+      <label for="closed">Deals Closed / Funded</label>
+      <input type="number" id="closed" min="0" step="1" value="4" />
+      <div class="hint">Deals that actually closed and wired.</div>
+    </div>
+    <button class="btn" onclick="calculate()">Calculate Funnel</button>
+  </div>
+
+  <div id="results" class="results">
+    <div class="card">
+      <div class="funnel" id="funnel"></div>
+      <div class="stat-grid">
+        <div class="stat"><div class="label">Seen → Closed</div><div class="value" id="overallConv">—</div><div class="bench" id="overallBench">Bench: ~1.0%</div></div>
+        <div class="stat"><div class="label">Screen → Meeting</div><div class="value" id="screenConv">—</div><div class="bench" id="screenBench">Bench: ~25%</div></div>
+        <div class="stat"><div class="label">Meeting → Term Sheet</div><div class="value" id="tsConv">—</div><div class="bench" id="tsBench">Bench: ~25%</div></div>
+        <div class="stat"><div class="label">Term Sheet → Close</div><div class="value" id="closeConv">—</div><div class="bench" id="closeBench">Bench: ~60%</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:10px;">Stage-by-Stage Conversion</h3>
+      <div style="overflow-x:auto;">
+        <table>
+          <thead><tr><th>Stage Transition</th><th>Input</th><th>Output</th><th>Conv. Rate</th><th>Drop-off</th><th>vs Benchmark</th></tr></thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+      <div class="bench-section">
+        <h4>Benchmark notes (early-stage funds, ~$50M–$250M AUM)</h4>
+        <p style="color:var(--text-muted);font-size:0.9rem;">Benchmarks reflect typical angel/micro-VC through Series A funds. Top-decile funds convert 2–3× better on the seen→closed metric. Your mileage will vary with thesis tightness, sector, and whether you lead or follow.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card faq">
+    <h3 style="margin-bottom:8px;">Frequently Asked Questions</h3>
+    <details>
+      <summary>What's a good deal flow conversion rate from seen to closed?</summary>
+      <p>For early-stage funds, ~0.5–1.5% of deals seen ultimately close. Top-decile funds cluster around 2–3% because they have a sharper thesis and see better deal flow upstream. Below 0.3% usually means you're sourcing too broadly or screening too loosely.</p>
+    </details>
+    <details>
+      <summary>Where do most deal flow funnels leak?</summary>
+      <p>The biggest drop is almost always seen → screened (~70–80% attrition is normal). The most diagnostic stage is meeting → term sheet: if that's below 15%, you're taking too many low-conviction meetings. If term sheet → close is below 40%, your terms or founder relationships need work.</p>
+    </details>
+    <details>
+      <summary>How many deals do I need to see to close one per quarter?</summary>
+      <p>At a typical 1% overall conversion, you need ~100 qualified deals seen per quarter to close one. That's why solo GPs and micro-funds rely heavily on proprietary screening signals — like GitDealFlow's GitHub-velocity data — to compress the funnel without sacrificing quality.</p>
+    </details>
+  </div>
+
+  <div class="footer">
+    <p>Powered by <a href="https://gitdealflow.com/">GitDealFlow</a> — see which startups are accelerating on GitHub 21–47 days before the round.</p>
+  </div>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"WebApplication",
+      "name":"Deal Flow Funnel Calculator",
+      "url":"https://gitdealflow.com/de/tools/deal-flow-funnel.html",
+      "applicationCategory":"BusinessApplication",
+      "operatingSystem":"Any",
+      "browserRequirements":"Requires JavaScript",
+      "description":"Calculate VC deal flow conversion rates at every stage and benchmark against typical early-stage fund performance.",
+      "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
+      "publisher":{"@type":"Organization","name":"GitDealFlow","url":"https://gitdealflow.com"}
+    },
+    {
+      "@type":"FAQPage",
+      "mainEntity":[
+        {"@type":"Question","name":"What is a good deal flow conversion rate from seen to closed?","acceptedAnswer":{"@type":"Answer","text":"For early-stage funds, 0.5-1.5% of deals seen ultimately close. Top-decile funds cluster around 2-3%. Below 0.3% means you're sourcing too broadly."}},
+        {"@type":"Question","name":"Where do most deal flow funnels leak?","acceptedAnswer":{"@type":"Answer","text":"The biggest drop is seen to screened (~70-80% attrition is normal). The most diagnostic stage is meeting to term sheet: below 15% means too many low-conviction meetings."}},
+        {"@type":"Question","name":"How many deals do I need to see to close one per quarter?","acceptedAnswer":{"@type":"Answer","text":"At typical 1% overall conversion, you need ~100 qualified deals seen per quarter to close one. Solo GPs use proprietary signals like GitDealFlow's GitHub velocity data to compress the funnel."}}
+      ]
+    }
+  ]
+}
+</script>
+
+<script>
+// Typical early-stage benchmarks (rough industry medians)
+const BENCH = {
+  seenToScreen: 0.25,   // 25% of seen pass screening
+  screenToMeeting: 0.25, // 25% of screened get meetings
+  meetingToTs: 0.25,    // 25% of meetings get term sheets
+  tsToClose: 0.60,      // 60% of term sheets close
+  overall: 0.01         // ~1% overall
+};
+
+function pct(n) { return (n * 100).toFixed(1) + "%"; }
+
+function benchClass(actual, expected) {
+  if (expected <= 0) return "";
+  if (actual >= expected * 1.2) return "good";
+  if (actual >= expected * 0.8) return "warn";
+  return "bad";
+}
+
+function benchVerdict(actual, expected) {
+  const c = benchClass(actual, expected);
+  if (!c) return "—";
+  if (c === "good") return "↑ above bench";
+  if (c === "warn") return "~ at bench";
+  return "↓ below bench";
+}
+
+function calculate() {
+  const seen = parseInt(document.getElementById("seen").value, 10) || 0;
+  const screened = parseInt(document.getElementById("screened").value, 10) || 0;
+  const meetings = parseInt(document.getElementById("meetings").value, 10) || 0;
+  const termsheets = parseInt(document.getElementById("termsheets").value, 10) || 0;
+  const closed = parseInt(document.getElementById("closed").value, 10) || 0;
+
+  if (seen <= 0) { alert("Enter at least deals seen."); return; }
+
+  const stages = [
+    { name: "Deals Seen", count: seen },
+    { name: "Passed Screening", count: screened },
+    { name: "Partner Meetings", count: meetings },
+    { name: "Term Sheets", count: termsheets },
+    { name: "Deals Closed", count: closed }
+  ];
+
+  // Conversion rates
+  const screenRate = seen > 0 ? screened / seen : 0;
+  const meetingRate = screened > 0 ? meetings / screened : 0;
+  const tsRate = meetings > 0 ? termsheets / meetings : 0;
+  const closeRate = termsheets > 0 ? closed / termsheets : 0;
+  const overall = seen > 0 ? closed / seen : 0;
+
+  document.getElementById("overallConv").textContent = pct(overall);
+  document.getElementById("screenConv").textContent = pct(meetingRate);
+  document.getElementById("tsConv").textContent = pct(tsRate);
+  document.getElementById("closeConv").textContent = pct(closeRate);
+
+  // Bench verdicts
+  const setBench = (id, actual, expected) => {
+    const el = document.getElementById(id);
+    el.className = "bench " + benchClass(actual, expected);
+    el.textContent = "Bench: " + pct(expected) + " (" + benchVerdict(actual, expected) + ")";
+  };
+  document.getElementById("overallBench").textContent = "Bench: ~1% — yours: " + pct(overall);
+  setBench("screenBench", meetingRate, BENCH.screenToMeeting);
+  setBench("tsBench", tsRate, BENCH.meetingToTs);
+  setBench("closeBench", closeRate, BENCH.tsToClose);
+
+  // Funnel visualization (widest = seen, proportional bars)
+  const maxCount = seen;
+  const funnelHtml = stages.map((s, i) => {
+    const widthPct = maxCount > 0 ? Math.max(15, (s.count / maxCount) * 100) : 15;
+    let dropoff = "";
+    if (i > 0) {
+      const prev = stages[i - 1].count;
+      const drop = prev > 0 ? ((prev - s.count) / prev) * 100 : 0;
+      dropoff = '<div class="funnel-dropoff">↓ ' + drop.toFixed(0) + "% drop-off (" + (prev - s.count) + " deals lost)</div>";
+    }
+    return dropoff + '<div class="funnel-stage"><div class="funnel-bar" style="width:' + widthPct + '%; margin-left:auto; margin-right:auto;"><span class="stage-name">' + s.name + '</span><span class="stage-count">' + s.count + '</span></div></div>';
+  }).join("");
+  document.getElementById("funnel").innerHTML = funnelHtml;
+
+  // Table
+  const transitions = [
+    { label: "Seen → Screened", input: seen, output: screened, rate: screenRate, bench: BENCH.seenToScreen },
+    { label: "Screened → Meetings", input: screened, output: meetings, rate: meetingRate, bench: BENCH.screenToMeeting },
+    { label: "Meetings → Term Sheets", input: meetings, output: termsheets, rate: tsRate, bench: BENCH.meetingToTs },
+    { label: "Term Sheets → Closed", input: termsheets, output: closed, rate: closeRate, bench: BENCH.tsToClose },
+    { label: "Overall: Seen → Closed", input: seen, output: closed, rate: overall, bench: BENCH.overall }
+  ];
+  document.getElementById("tableBody").innerHTML = transitions.map(t => {
+    const drop = t.input > 0 ? (((t.input - t.output) / t.input) * 100) : 0;
+    const cls = benchClass(t.rate, t.bench);
+    const color = cls === "good" ? "var(--success)" : cls === "warn" ? "var(--warning)" : "var(--danger)";
+    return '<tr><td>' + t.label + '</td><td>' + t.input + '</td><td>' + t.output + '</td><td>' + pct(t.rate) + '</td><td>' + drop.toFixed(0) + '%</td><td style="color:' + color + ';">' + benchVerdict(t.rate, t.bench) + '</td></tr>';
+  }).join("");
+
+  document.getElementById("results").classList.add("show");
+}
+</script>
+</body>
+</html>

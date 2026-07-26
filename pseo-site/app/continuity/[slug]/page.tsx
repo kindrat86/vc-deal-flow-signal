@@ -12,6 +12,8 @@ import {
   type DropFormat,
 } from "@/content/continuity-drops";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import RelatedLinks from "@/components/RelatedLinks";
+import { getRelatedGroups } from "@/lib/related-links";
 
 export const dynamic = "force-static";
 
@@ -141,6 +143,7 @@ export default async function ContinuityDropPage({
   params: Params;
 }) {
   const { slug } = await params;
+  const pathname = `/continuity/${slug}`;
   const drop = getDropBySlug(slug);
   if (!drop) notFound();
 
@@ -364,6 +367,7 @@ export default async function ContinuityDropPage({
             for the rules of voice.
           </p>
         </footer>
+        <RelatedLinks groups={getRelatedGroups(pathname)} heading="Related views" />
       </div>
     </>
   );
