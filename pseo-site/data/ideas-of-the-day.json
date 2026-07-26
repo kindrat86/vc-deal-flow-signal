@@ -4135,6 +4135,49 @@
         }
       ],
       "publishedAt": "2026-07-25T09:00:00Z"
+    },
+    {
+      "date": "2026-07-26",
+      "slug": "2026-07-26",
+      "headline": "The agtech reset hiding in a -43% framework migration",
+      "hook": "Pre-seed agtech teams cooling to 115 commits over 14 days (-43%) are showing the framework-migration pattern — a recoverable dip, not a flatline, and the natural moment to build the next adjacent tool.",
+      "repo": {
+        "name": "nmi-agro",
+        "githubUrl": "https://github.com/nmi-agro",
+        "stage": "Pre-seed",
+        "geography": "EU",
+        "sector": "AgTech",
+        "sectorSlug": "agtech",
+        "signalType": "Framework migration",
+        "commitVelocity14d": 115,
+        "commitVelocityChange": "-43%",
+        "contributors": 7,
+        "contributorGrowth": "+0%",
+        "newRepos": 0,
+        "description": "Nutriënten Management Instituut (NMI) is a knowledge and consultancy agency. NMI translates technical knowledge about so"
+      },
+      "ideaThesis": "AgTech has a buyer who is also a builder. The category incumbents shipped for an ops/HR/finance lead; the next wave ships for the engineer running that function. Read the repo: framework migration, pre-seed team, 7 contributors. That's the shape of a team that crosses the next funding line on engineering output, not enterprise sales — and the gap they leave is the wedge for an indie or two-founder tool that does one job better than the suite they're inside of.",
+      "buildAngles": [
+        "Hardware-adjacent SaaS — schedule, audit, certify. The incumbents own the device; you own the workflow.",
+        "Open data pipeline for the slow part of the agtech cycle (carbon, supply chain, ag). Sell the cleaning, not the raw feed.",
+        "Procurement-side B2B tool — the buyer is technical, the budget is corporate, the product is one screen."
+      ],
+      "distributionPlay": "Find the agtech subreddit (or the LinkedIn equivalent if Reddit thin); post the dataset, not the product. Lead with the artifact you can show, the link to it sits in the second comment.",
+      "signalReading": [
+        {
+          "metric": "115 commits / 14 days",
+          "reading": "Maintenance-level cadence. The story isn't the volume; it's whatever else moved alongside it."
+        },
+        {
+          "metric": "-43% commit-velocity change",
+          "reading": "Cooling. Often a deliberate slowdown for refactor, rebrand, or hiring — read alongside the next two lines before calling it a decline."
+        },
+        {
+          "metric": "7 contributors (+0%)",
+          "reading": "Small core team — likely seed-funded with focused velocity. The opportunity is adjacent tooling that augments the small team."
+        }
+      ],
+      "publishedAt": "2026-07-26T09:00:00Z"
     }
   ]
 }
