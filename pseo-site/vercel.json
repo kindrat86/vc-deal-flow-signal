@@ -1,6 +1,14 @@
 {
   "rewrites": [
     {
+      "source": "/ticker/embed",
+      "destination": "/ticker/embed/index.html"
+    },
+    {
+      "source": "/ticker/embed/",
+      "destination": "/ticker/embed/index.html"
+    },
+    {
       "source": "/related-tools",
       "destination": "/related-tools.html"
     }
@@ -29,15 +37,38 @@
   ],
   "headers": [
     {
+      "source": "/ticker/embed",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "frame-ancestors *"
+        }
+      ]
+    },
+    {
+      "source": "/ticker/embed/(.*)",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "frame-ancestors *"
+        }
+      ]
+    },
+    {
+      "source": "/ticker.js",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
+      ]
+    },
+    {
       "source": "/(.*)",
       "headers": [
         {
           "key": "X-Content-Type-Options",
           "value": "nosniff"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
         },
         {
           "key": "Referrer-Policy",

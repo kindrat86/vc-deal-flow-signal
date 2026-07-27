@@ -56,7 +56,7 @@ export default function LaunchBanner() {
     <div
       role="region"
       aria-label="Launch promotion"
-      className="relative bg-gradient-to-r from-sky-900 to-sky-800 text-sky-100 border-b border-sky-700 px-10 py-2.5 text-center text-xs sm:text-sm leading-snug"
+      className="relative bg-gradient-to-r from-[#0c1a2e] to-[#0a1628] text-[#bae6fd] border-b border-[rgba(14,165,233,0.2)] px-10 py-2.5 text-center text-xs sm:text-sm leading-snug"
     >
       <a
         href="/pricing"

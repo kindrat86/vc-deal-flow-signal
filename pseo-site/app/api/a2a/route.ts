@@ -10,6 +10,76 @@ import { slugify } from "@/lib/slugify";
 const BASE_URL = "https://signals.gitdealflow.com";
 const PROTOCOL_VERSION = "0.3.0";
 
+// ─── Standard A2A Agent Card ────────────────────────────────────────────
+const AGENT_CARD = {
+  protocolVersion: PROTOCOL_VERSION,
+  name: "VC Deal Flow Signal Agent",
+  description:
+    "Public dataset of startup engineering acceleration from public GitHub activity. Free APIs, MCP server, A2A endpoint. Tracks ~400 startups across 20 sectors.",
+  url: `${BASE_URL}/api/a2a`,
+  preferredTransport: "JSONRPC",
+  version: "1.0.0",
+  capabilities: { streaming: false, pushNotifications: false, stateTransitionHistory: false },
+  defaultInputModes: ["text/plain", "application/json"],
+  defaultOutputModes: ["text/plain", "application/json"],
+  skills: [
+    {
+      id: "get_trending_startups",
+      name: "Trending Startups",
+      description: "Top 20 startups ranked by engineering momentum across all sectors.",
+      tags: ["startups", "vc", "momentum", "trending"],
+      examples: ["What startups are trending this week?", "Show breakout engineering teams"],
+    },
+    {
+      id: "search_startups_by_sector",
+      name: "Search by Sector",
+      description: "Find startups in a specific sector ranked by engineering acceleration.",
+      tags: ["sector", "startups", "search"],
+      examples: ["Fintech startups with highest momentum", "AI startups in London"],
+    },
+    {
+      id: "get_startup_signal",
+      name: "Startup Signal Lookup",
+      description: "Get detailed engineering momentum data for a specific startup by name.",
+      tags: ["startup", "signal", "due-diligence"],
+      examples: ["What's the signal for Supabase?", "Look up Stripe's momentum"],
+    },
+    {
+      id: "get_signals_summary",
+      name: "Dataset Summary",
+      description: "Period, freshness, format URLs, and citation info for the VC Deal Flow Signal dataset.",
+      tags: ["meta", "summary", "formats"],
+      examples: ["How fresh is this data?", "What formats are available?"],
+    },
+    {
+      id: "get_methodology",
+      name: "Methodology",
+      description: "How engineering momentum signals are calculated — commit velocity, contributor growth, trends.",
+      tags: ["methodology", "scoring", "transparency"],
+      examples: ["How is momentum calculated?", "Explain the methodology"],
+    },
+  ],
+};
+
+const FAQS = [
+  {
+    q: "What is VC Deal Flow Signal?",
+    a: "A public dataset of startup engineering acceleration derived from GitHub activity. It tracks ~400 startups across 20 sectors and publishes weekly momentum rankings.",
+  },
+  {
+    q: "How is engineering momentum calculated?",
+    a: "We analyze 14-day commit velocity, contributor growth, and repository expansion relative to prior periods. Breakout signals indicate sudden acceleration.",
+  },
+  {
+    q: "What sectors are covered?",
+    a: "AI/ML, fintech, cybersecurity, developer tools, healthcare, climate tech, enterprise SaaS, data infrastructure, web3, robotics, and 10 more.",
+  },
+  {
+    q: "How do I get the data?",
+    a: "Free JSON API at /api/signals.json, CSV at /api/signals.csv, MCP server via npx @gitdealflow/mcp-signal, or A2A endpoint at /api/a2a.",
+  },
+];
+
 // ─── Launch metadata ───────────────────────────────────────────────────────
 // Date-window is the OUTER gate; live PH GraphQL feature-check is the INNER
 // gate. The launch is only `active: true` if BOTH (a) we're inside the PT
@@ -763,20 +833,18 @@ export async function GET() {
   const launch = await getLaunchPayload();
   return Response.json(
     {
+      ...AGENT_CARD,
       service: "GitDealFlow A2A Agent",
-      protocolVersion: PROTOCOL_VERSION,
       transport: "JSONRPC",
-      methods: ["message/send", "tasks/get", "tasks/cancel"],
+      methods: ["message/send", "tasks/get", "tasks/cancel", "rpc.discover", "agent/card", "faq.search"],
       agentCard: `${BASE_URL}/.well-known/agent-card.json`,
       docs: `${BASE_URL}/developers`,
-      note: "POST JSON-RPC 2.0 requests here. Send GET to fetch this descriptor.",
+      note: "POST JSON-RPC 2.0 requests here. Send GET to fetch this agent card descriptor.",
       launch,
     },
     {
       headers: {
         "Access-Control-Allow-Origin": "*",
-        // Short cache during active launch so the rolling hours_remaining
-        // value stays current. Reverts to 1h when launch.active is false.
         "Cache-Control": launch.active
           ? "public, max-age=300, s-maxage=300"
           : "public, max-age=3600",
@@ -809,6 +877,19 @@ export async function POST(request: NextRequest) {
   }
 
   switch (body.method) {
+    case "rpc.discover":
+    case "agent/card":
+      return jsonRpcResult(body.id, AGENT_CARD);
+
+    case "faq.search": {
+      const p = body.params as { query?: string } | undefined;
+      const query = (p?.query || "").toLowerCase();
+      const matches = FAQS.filter(
+        (f) => f.q.toLowerCase().includes(query) || f.a.toLowerCase().includes(query)
+      );
+      return jsonRpcResult(body.id, { faqs: matches, total: matches.length });
+    }
+
     case "message/send":
       return handleMessageSend(body.id, body.params);
     case "tasks/get":

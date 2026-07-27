@@ -81,7 +81,7 @@ const TIERS: readonly Tier[] = [
 function CheckIcon() {
   return (
     <svg
-      className="h-4 w-4 mt-0.5 shrink-0 text-emerald-400"
+      className="h-4 w-4 mt-0.5 shrink-0 text-[#4ade80]"
       viewBox="0 0 20 20"
       fill="currentColor"
       aria-hidden="true"
@@ -103,15 +103,15 @@ export default function PricingLadder() {
       className="my-12"
     >
       <div className="flex items-baseline justify-between mb-1 flex-wrap gap-2">
-        <h2 className="text-gray-100 font-semibold text-2xl">
-          Simple pricing. Free forever for the curious.
+        <h2 className="text-[#f8fafc] font-bold text-[clamp(22px,3.2vw,30px)] tracking-[-0.02em]">
+          Simple pricing
         </h2>
-        <p className="text-gray-400 text-xs">
+        <p className="text-[#64748b] text-xs">
           The founding window closed June 30 — exactly as promised. Founding
           members keep their price for life.
         </p>
       </div>
-      <p className="text-gray-400 text-sm mb-6 max-w-3xl">
+      <p className="text-[#94a3b8] text-sm mb-6 max-w-3xl">
         Three doors. The free tier is enough for most solo angels and scouts.
         Upgrade only when filtering the full universe pays for itself.
       </p>
@@ -119,11 +119,11 @@ export default function PricingLadder() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {TIERS.map((t) => {
           const cardClasses = t.highlight
-            ? "border-sky-500/70 ring-1 ring-sky-500/30 bg-gradient-to-b from-sky-950/40 to-slate-900 shadow-lg shadow-sky-500/10"
-            : "border-slate-800 bg-slate-900";
+            ? "border-[rgba(14,165,233,0.3)] bg-gradient-to-b from-[rgba(14,165,233,0.1)] to-[rgba(148,163,184,0.03)]"
+            : "border-[rgba(148,163,184,0.15)] bg-[rgba(148,163,184,0.03)]";
           const ctaClasses = t.highlight
-            ? "bg-[#ff6b1a] hover:bg-[#ff8c4d] text-slate-950 shadow-sm shadow-[#ff6b1a]/30"
-            : "bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white";
+            ? "bg-[#0ea5e9] hover:bg-[#38bdf8] text-[#04121f]"
+            : "bg-[rgba(148,163,184,0.1)] hover:bg-[rgba(148,163,184,0.18)] text-[#e2e8f0]";
           const Wrapper = ({ children }: { children: React.ReactNode }) =>
             t.external ? (
               <a href={t.href} className="block">
@@ -138,30 +138,30 @@ export default function PricingLadder() {
           return (
             <div
               key={t.name}
-              className={`relative flex flex-col rounded-xl border ${cardClasses} p-6 transition-all`}
+              className={`relative flex flex-col rounded-[16px] border ${cardClasses} p-7 transition-all`}
             >
               {t.highlight && (
-                <span className="absolute -top-2.5 left-6 inline-flex items-center gap-1 bg-sky-500 text-slate-950 text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded shadow-sm shadow-sky-500/30">
-                  <span aria-hidden="true">★</span> Most popular
+                <span className="absolute -top-3 right-6 inline-flex items-center gap-1 bg-[#0ea5e9] text-[#04121f] text-xs font-bold px-3 py-1.5 rounded-full">
+                  MOST POPULAR
                 </span>
               )}
-              <p className="text-gray-400 text-xs uppercase tracking-wider font-semibold mb-2">
+              <p className="text-[#7dd3fc] text-sm font-semibold mb-1.5">
                 {t.name}
               </p>
-              <div className="mb-3 flex items-baseline">
-                <span className="text-gray-100 font-bold text-3xl tracking-tight">
+              <div className="mb-4 flex items-baseline">
+                <span className="text-[#f8fafc] font-bold text-[34px] tracking-tight">
                   {t.price}
                 </span>
-                <span className="text-gray-400 text-sm ml-1.5">{t.cadence}</span>
+                <span className="text-[#64748b] text-[15px] font-medium ml-1.5">{t.cadence}</span>
               </div>
-              <p className="text-gray-300 text-sm font-medium mb-4 leading-snug">
+              <p className="text-[#cbd5e1] text-[14.5px] font-medium mb-5 leading-snug">
                 {t.pitch}
               </p>
-              <ul className="space-y-2 mb-6 flex-1">
+              <ul className="space-y-3 mb-6 flex-1">
                 {t.bullets.map((b) => (
                   <li
                     key={b}
-                    className="flex items-start gap-2 text-gray-400 text-sm"
+                    className="flex items-start gap-2 text-[#cbd5e1] text-[14.5px]"
                   >
                     <CheckIcon />
                     <span className="leading-snug">{b}</span>
@@ -170,7 +170,7 @@ export default function PricingLadder() {
               </ul>
               <Wrapper>
                 <span
-                  className={`inline-flex w-full items-center justify-center gap-1.5 px-4 py-2.5 rounded-lg text-sm font-semibold transition-colors ${ctaClasses}`}
+                  className={`inline-flex w-full items-center justify-center gap-1.5 px-4 py-[14px] rounded-[10px] text-sm font-semibold transition-colors ${ctaClasses}`}
                 >
                   {t.cta}
                   <span aria-hidden="true">→</span>
@@ -179,7 +179,7 @@ export default function PricingLadder() {
               {t.annualHref && t.annualLabel && (
                 <a
                   href={t.annualHref}
-                  className="mt-2 inline-flex justify-center text-xs text-sky-400 hover:text-sky-300 underline decoration-dotted underline-offset-2"
+                  className="mt-2 inline-flex justify-center text-xs text-[#38bdf8] hover:text-[#7dd3fc] underline decoration-dotted underline-offset-2"
                 >
                   {t.annualLabel}
                 </a>
@@ -189,75 +189,72 @@ export default function PricingLadder() {
         })}
       </div>
 
-      <p className="text-gray-400 text-xs mt-4">
+      <p className="text-[#64748b] text-xs mt-4">
         Or try the{" "}
-        <Link href="https://signals.gitdealflow.com/firstlook/sample" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">
+        <Link href="https://signals.gitdealflow.com/firstlook/sample" className="text-[#38bdf8] hover:text-[#7dd3fc] underline decoration-dotted">
           €7 First Look Pass
         </Link>{" "}
         — one sector deep-dive, one-time payment, ahead of the next weekly
-        digest. <strong className="text-emerald-400">30-day Signal-or-It&rsquo;s-Free
+        digest. <strong className="text-[#4ade80]">30-day Signal-or-It&rsquo;s-Free
         guarantee</strong>: any paid rung, 30 days, email me, every cent back.
         No forms, no survey.
       </p>
 
-      {/* Brunson Audit 2026-05-08 — Value Ladder ding fix. Show the
-          high-ticket continuity above €1,997 so the buyer can see where the
-          ladder actually goes. Async-only, anonymity-preserving. */}
-      <div className="mt-6 rounded-xl border border-violet-700/30 bg-gradient-to-br from-violet-950/20 to-slate-900 p-5">
-        <p className="text-violet-300 text-xs font-semibold uppercase tracking-wider mb-2">
+      <div className="mt-6 rounded-[14px] border border-[rgba(148,163,184,0.12)] bg-gradient-to-br from-[rgba(14,165,233,0.06)] to-[rgba(148,163,184,0.03)] p-5">
+        <p className="text-[#38bdf8] text-xs font-semibold uppercase tracking-wider mb-2">
           For active funds — high-ticket research partnerships
         </p>
-        <h3 className="text-gray-100 font-semibold text-base mb-3 leading-snug">
+        <h3 className="text-[#f8fafc] font-semibold text-base mb-3 leading-snug">
           The ladder doesn&rsquo;t stop at the Dashboard.
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
           <Link
             href="/pricing#sharp-tier"
-            className="rounded-lg border border-slate-800 bg-slate-900/60 p-3 hover:border-indigo-700/50 transition-colors"
+            className="rounded-lg border border-[rgba(148,163,184,0.12)] bg-[rgba(148,163,184,0.04)] p-3 hover:border-[rgba(14,165,233,0.3)] transition-colors"
           >
-            <p className="text-indigo-400 text-xs font-mono">€4,970 / yr</p>
-            <p className="text-gray-100 font-semibold text-sm leading-tight mt-0.5">
+            <p className="text-[#38bdf8] text-xs font-mono">€4,970 / yr</p>
+            <p className="text-[#f8fafc] font-semibold text-sm leading-tight mt-0.5">
               Sharp Tier
             </p>
-            <p className="text-gray-400 text-xs mt-1 leading-snug">
+            <p className="text-[#64748b] text-xs mt-1 leading-snug">
               Application-gated. 8-fund cap.
             </p>
           </Link>
           <Link
             href="/methodology-partnership"
-            className="rounded-lg border border-slate-800 bg-slate-900/60 p-3 hover:border-violet-700/50 transition-colors"
+            className="rounded-lg border border-[rgba(148,163,184,0.12)] bg-[rgba(148,163,184,0.04)] p-3 hover:border-[rgba(14,165,233,0.3)] transition-colors"
           >
-            <p className="text-violet-400 text-xs font-mono">€14,997 / yr</p>
-            <p className="text-gray-100 font-semibold text-sm leading-tight mt-0.5">
+            <p className="text-[#38bdf8] text-xs font-mono">€14,997 / yr</p>
+            <p className="text-[#f8fafc] font-semibold text-sm leading-tight mt-0.5">
               Methodology Partnership
             </p>
-            <p className="text-gray-400 text-xs mt-1 leading-snug">
+            <p className="text-[#64748b] text-xs mt-1 leading-snug">
               Done-with-you. 5-fund cap.
             </p>
           </Link>
           <Link
             href="/vault"
-            className="rounded-lg border border-slate-800 bg-slate-900/60 p-3 hover:border-amber-700/50 transition-colors"
+            className="rounded-lg border border-[rgba(148,163,184,0.12)] bg-[rgba(148,163,184,0.04)] p-3 hover:border-[rgba(14,165,233,0.3)] transition-colors"
           >
-            <p className="text-amber-400 text-xs font-mono">€49,997 / yr</p>
-            <p className="text-gray-100 font-semibold text-sm leading-tight mt-0.5">
+            <p className="text-[#38bdf8] text-xs font-mono">€49,997 / yr</p>
+            <p className="text-[#f8fafc] font-semibold text-sm leading-tight mt-0.5">
               The Vault
             </p>
-            <p className="text-gray-400 text-xs mt-1 leading-snug">
+            <p className="text-[#64748b] text-xs mt-1 leading-snug">
               Methodology source. 2-fund cap.
             </p>
           </Link>
         </div>
-        <p className="text-gray-500 text-xs mt-3 leading-relaxed">
+        <p className="text-[#64748b] text-xs mt-3 leading-relaxed">
           All three are async-only — no live calls, no in-person attendance.
           See the{" "}
           <Link
             href="/pricing"
-            className="text-violet-400 hover:text-violet-300 underline decoration-dotted"
+            className="text-[#38bdf8] hover:text-[#7dd3fc] underline decoration-dotted"
           >
             full ten-rung ladder
           </Link>{" "}
-          for application links and complete value stacks.
+          on /pricing.
         </p>
       </div>
     </section>

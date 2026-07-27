@@ -1,14 +1,29 @@
 @import "tailwindcss";
 
 :root {
-  /* Brand-aligned with gitdealflow.com landing (slate-900 #0f172a). */
-  --background: #0f172a;
-  --foreground: #f1f5f9;
+  --background: #0b1220;
+  --foreground: #e2e8f0;
+  --surface: rgba(148, 163, 184, 0.05);
+  --surface-hover: rgba(148, 163, 184, 0.09);
+  --border: rgba(148, 163, 184, 0.12);
+  --border-strong: rgba(148, 163, 184, 0.2);
+  --accent: #0ea5e9;
+  --accent-glow: rgba(14, 165, 233, 0.25);
+  --accent-text: #38bdf8;
+  --muted: #64748b;
+  --muted-light: #94a3b8;
+  --heading: #f8fafc;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-text: var(--accent-text);
+  --color-muted: var(--muted);
+  --color-heading: var(--heading);
 }
 
 body {
@@ -18,9 +33,54 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  text-align: center;
 }
 
-/* Honor reduced-motion for any decorative animation. */
+/* Center all text on every page (owner request 2026-07-21 — keep this). */
+main,
+main * {
+  text-align: center !important;
+}
+
+/* Keep code/preformatted blocks left-aligned for readability. */
+main pre,
+main pre *,
+main code,
+main code * {
+  text-align: left !important;
+}
+
+/* Centring the text is not enough — a box that is itself off-centre keeps its
+   text off-centre. Two structural cases the markup leaves behind:
+     1. a container with a `max-w-*` cap but no `mx-auto`. The /trending hero
+        (`header.mb-8.max-w-3xl`) sat at x 92..860 inside a 1280px column.
+     2. a flex/grid row that never declared its justification, so its items pack
+        to flex-start — the tag chips on every /startup/* page.
+
+   Both live inside `@layer base` ON PURPOSE. Tailwind's utilities sit in
+   `@layer utilities`, which outranks base, so anything that DOES declare
+   `mx-auto` / `ml-*` / `justify-between` keeps exactly what it declared and only
+   the undeclared boxes get centred. `:where()` holds specificity at zero on top
+   of that, and the `:not()` guards repeat the same intent so the rules stay
+   correct even if the layer order is ever disturbed. Do NOT lift these out of
+   the layer or add `!important`: that would shove deliberate layouts around.
+
+   `flex-col` is excluded because on a column `justify-content` is the VERTICAL
+   axis — centring there would collapse vertical stacks. The `:not()` chains must
+   stay touching; whitespace between them is a descendant combinator and quietly
+   changes what they mean. Verified with a before/after position diff of every
+   element in `main` on /trending, /startup/*, /methodology and at 375px: no new
+   horizontal overflow, no change to document scroll width, tables untouched. */
+@layer base {
+  main :where([class*="max-w-"]):not([class*="mx-"]):not([class*="ml-"]):not([class*="mr-"]) {
+    margin-inline: auto;
+  }
+
+  main :where([class*="flex"], [class*="grid"]):not([class*="flex-col"]):not([class*="justify-"]) {
+    justify-content: center;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -30,23 +90,20 @@ body {
   }
 }
 
-/* Selection palette — sky to match brand accent. */
 ::selection {
   background-color: rgba(14, 165, 233, 0.35);
-  color: #f1f5f9;
+  color: #f8fafc;
 }
 
-/* Focus-visible — readable, brand-coloured ring on every interactive element. */
 :where(a, button, [role="button"], input, textarea, select):focus-visible {
   outline: 2px solid #38bdf8;
   outline-offset: 2px;
   border-radius: 6px;
 }
 
-/* Scrollbar — slim, slate-toned, doesn't fight the dark background. */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #334155 transparent;
+  scrollbar-color: #1e293b transparent;
 }
 *::-webkit-scrollbar {
   width: 10px;
@@ -56,42 +113,44 @@ body {
   background: transparent;
 }
 *::-webkit-scrollbar-thumb {
-  background: #334155;
+  background: #1e293b;
   border-radius: 999px;
-  border: 2px solid #0f172a;
+  border: 2px solid #0b1220;
 }
 *::-webkit-scrollbar-thumb:hover {
-  background: #475569;
+  background: #334155;
 }
 
-/* Card interaction — consistent hover affordance across every card-shaped link. */
-@utility card-interactive {
-  transition: border-color 0.2s ease, background-color 0.2s ease,
-    transform 0.2s ease, box-shadow 0.2s ease;
+/* ── Shared card utilities ── */
+@utility card-base {
+  background: rgba(148, 163, 184, 0.04);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  border-radius: 14px;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
 }
-@utility card-interactive-hover {
-  border-color: #475569;
-  background-color: rgba(30, 41, 59, 0.7);
+@utility card-base-hover {
+  border-color: rgba(148, 163, 184, 0.2);
+  background: rgba(148, 163, 184, 0.08);
   transform: translateY(-1px);
-  box-shadow: 0 10px 25px -10px rgba(14, 165, 233, 0.18);
+}
+@utility card-glow {
+  background: linear-gradient(155deg, rgba(14, 165, 233, 0.08), rgba(148, 163, 184, 0.03));
+  border: 1px solid rgba(14, 165, 233, 0.18);
+}
+@utility card-glow-hover {
+  border-color: rgba(14, 165, 233, 0.35);
+  background: linear-gradient(155deg, rgba(14, 165, 233, 0.12), rgba(148, 163, 184, 0.05));
+  box-shadow: 0 8px 28px rgba(14, 165, 233, 0.12);
 }
 
-/* Subtle row stagger for data-heavy lists. */
-@keyframes fade-in-up {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-@utility fade-in-up {
-  animation: fade-in-up 0.4s ease-out both;
+/* ── Glass surface ── */
+@utility glass {
+  background: rgba(11, 18, 32, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
-/* Soft brand glow — used behind hero stats and CTA badges. */
+/* ── Brand glow background ── */
 @utility brand-glow {
   background: radial-gradient(
     600px circle at 50% 0%,
@@ -100,12 +159,7 @@ body {
   );
 }
 
-/* ===========================================================================
-   Book prose — used by /book/read/[chapter] and /book/print
-   Long-form reading typography against the dark theme. Tuned for ~75ch
-   measure, generous line-height, headings that breathe, and code blocks that
-   stay readable on small screens.
-   =========================================================================== */
+/* ── Book prose (unchanged, long-form reading) ── */
 .book-prose {
   color: #cbd5e1;
   font-size: 17px;
@@ -217,8 +271,6 @@ body {
   font-weight: 600;
 }
 
-/* Print-friendly version of the book — used on /book/print and when any
-   /book/* page is sent to the printer. Reverses to light-on-paper. */
 @media print {
   .book-print {
     color: #0f172a;
@@ -261,7 +313,6 @@ body {
   .book-print .book-prose .book-table td {
     border-color: #cbd5e1;
   }
-  /* Force chapter breaks. */
   .book-print section {
     break-before: page;
   }

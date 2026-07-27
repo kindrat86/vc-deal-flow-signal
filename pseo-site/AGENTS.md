@@ -34,7 +34,21 @@ Organization node, never on the Person.
 - Домен ALIAS-PINNED: `vercel --prod` НЕ оновлює live — треба `vercel alias` на новий деплой
 - CSP `require-trusted-types-for` → React-сайт стає ПОРОЖНІМ без Trusted Types policy (fix у commit 22d6de1c). Це протилежний фікс до gitdealflow/churnlens PostHog-кейсу
 - `/ux.js` у layout.tsx блank-скринив сайт (App Router hydration wipe) — видалено, НЕ повертати; ux.css можна
-- Headings/heroes ЦЕНТРОВАНІ, body-текст ЛІВОРУЧ — свідома система вирівнювання
+- УВЕСЬ текст ЦЕНТРОВАНИЙ (власник підтвердив 2026-07-25). Це скасовує стару
+  систему "headings центровані / body ліворуч" — не повертати без прямої вказівки.
+  Правила: `body { text-align: center }` + `main, main *` з `!important` у
+  `app/globals.css`; `pre`/`code` лишаються ліворуч. ~61 статична сторінка в
+  `public/` не тягне ані globals.css, ані ux.css — для них є
+  `scripts/center-static-pages.sh` (ідемпотентний, за маркером)
+- ⚠️ Центрувати ТЕКСТ мало — треба центрувати ще й КОРОБКИ. `ux.css` підключений
+  БЕЗ каскадного шару, а Tailwind v4 тримає утиліти в `@layer utilities`, і
+  нешарова декларація б'є будь-який шар незалежно від специфічності. Через це
+  `*, *::before, *::after { margin: 0; padding: 0 }` в ux.css перебивало КОЖЕН
+  `mx-auto` / `px-*` / `mt-*` у застосунку: на /methodology при 1280px
+  `div.max-w-3xl.mx-auto` мав `margin-left: 0` і стояв на x 0..768 — усі колонки
+  тулилися ліворуч без полів. Скидання márginʼів має жити в Tailwind preflight
+  (`@layer base`), НЕ в ux.css. Той самий клас багу вже ловили на кольорі кнопок
+  (`58a152a1`). Перевірка: `getComputedStyle($0).marginLeft` на `.mx-auto`
 - Auto-deploy loop ВИМКНЕНО навмисно — не вмикати
 - Верифікація ТІЛЬКИ скріншотом: curl 200 вже приховував порожню сторінку
 - Гейти деплою: чисте дерево, clean-tree gate; перед правками перевір `ps aux | grep hermes` (сворм-гонки)

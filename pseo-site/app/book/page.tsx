@@ -72,21 +72,6 @@ const STAKES = [
   "Your watchlist of thirty companies turns into a Monday-morning workflow that takes ninety minutes and produces three or four high-conviction conversations per quarter.",
 ];
 
-const REVIEWS = [
-  {
-    by: "L.V., partner at a London seed fund",
-    text: "I read it on a Friday evening, ran the appendix on Saturday morning, and emailed two founders by Saturday afternoon. One of those conversations is now an active diligence process.",
-  },
-  {
-    by: "M.K., principal at a US developer-tools fund",
-    text: "The methodology chapter is what I've been trying to get our analysts to write for two years. It's the cleanest articulation of the public-data thesis I've seen.",
-  },
-  {
-    by: "T.S., angel investor and former VP Eng",
-    text: "I've been doing this informally for years. The book gives the workflow a name, a cadence, and a falsifiable threshold for every signal. That last part is the value.",
-  },
-];
-
 const FAQS = [
   {
     q: "Why is the book free? What's the catch?",
@@ -168,12 +153,6 @@ export default function BookPage() {
           alternativeHeadline: c.subtitle,
           position: c.number + 1,
           url: `${PAGE_URL}/read/${c.slug}`,
-        })),
-        review: REVIEWS.map((r) => ({
-          "@type": "Review",
-          author: { "@type": "Person", name: r.by },
-          reviewBody: r.text,
-          reviewRating: { "@type": "Rating", ratingValue: 5, bestRating: 5 },
         })),
       },
       {
@@ -482,29 +461,6 @@ export default function BookPage() {
             Stripe checkout · receipt in your inbox · the bonus emails arrive
             over the following week.
           </p>
-        </section>
-
-        {/* Reviews */}
-        <section className="space-y-5">
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 tracking-tight">
-            Early reads
-          </h2>
-          <p className="text-xs text-gray-400 italic">
-            Quoted with permission, names initialised at request.
-          </p>
-          <div className="grid sm:grid-cols-3 gap-4">
-            {REVIEWS.map((r, i) => (
-              <blockquote
-                key={i}
-                className="bg-slate-900/60 border border-slate-800 rounded-lg p-5 space-y-2.5"
-              >
-                <p className="text-gray-200 text-sm leading-relaxed italic">
-                  &ldquo;{r.text}&rdquo;
-                </p>
-                <p className="text-gray-400 text-xs">— {r.by}</p>
-              </blockquote>
-            ))}
-          </div>
         </section>
 
         {/* FAQ */}

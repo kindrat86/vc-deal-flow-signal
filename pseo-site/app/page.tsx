@@ -40,7 +40,7 @@ import {
 
 export const metadata: Metadata = {
   description:
-    "A deal-flow signal tool for investors, not a fund. See which startups are accelerating before the round feels obvious — public engineering signals, calmer timing, and direct proof.",
+    "VC deal-flow signal tool: find breakout startups via GitHub momentum before the round. Free API, MCP, CSV export.",
   // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
   alternates: {
     canonical: "/",
@@ -538,28 +538,33 @@ export default function Home() {
             name: "Harmonic.ai",
             sameAs: ["https://harmonic.ai"],
           },
+          // These three are third-party tools we merely name. They stay
+          // `Thing` — a product-eligible @type (SoftwareApplication and
+          // friends) carrying none of offers/review/aggregateRating is a
+          // CRITICAL GSC "Product snippets" error: "Either 'offers', 'review'
+          // or 'aggregateRating' should be specified." We can state no honest
+          // offer for Cursor and won't invent a rating, so the entity value
+          // lives in name + sameAs instead. Do NOT restore the app types.
           {
-            "@type": "SoftwareApplication",
+            "@type": "Thing",
             name: "Model Context Protocol (MCP)",
-            applicationCategory: "DeveloperApplication",
-            operatingSystem: "Cross-platform (stdio, Streamable HTTP)",
+            description:
+              "Open protocol for tool-calling LLM clients (stdio, Streamable HTTP).",
             sameAs: [
               "https://modelcontextprotocol.io",
               "https://github.com/modelcontextprotocol",
             ],
           },
           {
-            "@type": "SoftwareApplication",
+            "@type": "Thing",
             name: "Claude Desktop",
-            applicationCategory: "DeveloperApplication",
-            operatingSystem: "macOS, Windows",
+            description: "MCP-capable LLM client for macOS and Windows.",
             sameAs: ["https://www.anthropic.com/claude"],
           },
           {
-            "@type": "SoftwareApplication",
+            "@type": "Thing",
             name: "Cursor",
-            applicationCategory: "DeveloperApplication",
-            operatingSystem: "macOS, Windows, Linux",
+            description: "MCP-capable code editor for macOS, Windows, Linux.",
             sameAs: ["https://cursor.com"],
           },
         ],
@@ -665,18 +670,21 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <AgentMirrorLinks path="/" />
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 space-y-8 sm:space-y-10">
+    <div className="max-w-[1120px] mx-auto px-[clamp(20px,5vw,40px)] py-[clamp(48px,8vw,96px)] space-y-8 sm:space-y-10">
       {/* Hero — specific outcome H1 + one-line subhead. Greg audit 2026-05-02:
           previous H1 ("Startup Engineering Signals by Sector") was a filename,
           not a hook. New copy names the job-to-be-done and surfaces SSRN /
           live data as proof above the fold. */}
-      <header className="max-w-3xl">
-        <p className="text-sky-400 text-xs font-medium mb-3 uppercase tracking-wider">
+      <header className="max-w-[960px] mx-auto text-center">
+        <div className="inline-flex items-center gap-2 px-[14px] py-2 bg-[rgba(14,165,233,0.1)] border border-[rgba(14,165,233,0.25)] rounded-full mb-7" style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: "12.5px", color: "#7dd3fc" }}>
+          SSRN-indexed · Free MCP for Claude/Cursor · Refreshed every Monday
+        </div>
+        <p className="text-[#38bdf8] text-xs font-medium mb-3 uppercase tracking-wider">
           {period.name} Edition · Updated {asOf}
         </p>
-        <h1 className="text-3xl sm:text-5xl font-bold text-gray-100 mb-4 leading-[1.1] tracking-tight">
+        <h1 className="text-[clamp(34px,6.5vw,64px)] font-bold text-[#f8fafc] mb-5 leading-[1.05] tracking-[-0.03em]">
           Crunchbase tells you the day they raised.{" "}
-          <span className="text-sky-400">We tell you 47 days before the deck.</span>
+          <span className="text-[#38bdf8]">We tell you 47 days before the deck.</span>
         </h1>
 
         {/* Brunson Secret Formula §1 — Ch 1 audit fix (2026-05-08):
@@ -710,7 +718,7 @@ export default function Home() {
           aria-label="Headline results from the SSRN panel"
           className="grid grid-cols-3 gap-3 sm:gap-4 mb-5 rounded-xl border border-sky-700/40 bg-gradient-to-br from-sky-950/40 via-slate-900 to-slate-950 p-4 sm:p-5"
         >
-          <div className="text-center sm:text-left">
+          <div className="text-center">
             <dt className="text-[10px] sm:text-xs uppercase tracking-wider text-sky-300/80 font-semibold mb-1">
               Series A within 60d
             </dt>
@@ -721,7 +729,7 @@ export default function Home() {
               more likely vs. velocity alone
             </dd>
           </div>
-          <div className="text-center sm:text-left border-l border-slate-800 pl-3 sm:pl-4">
+          <div className="text-center border-l border-slate-800 pl-3 sm:pl-4">
             <dt className="text-[10px] sm:text-xs uppercase tracking-wider text-sky-300/80 font-semibold mb-1">
               Median lead time
             </dt>
@@ -732,7 +740,7 @@ export default function Home() {
               before the round announces
             </dd>
           </div>
-          <div className="text-center sm:text-left border-l border-slate-800 pl-3 sm:pl-4">
+          <div className="text-center border-l border-slate-800 pl-3 sm:pl-4">
             <dt className="text-[10px] sm:text-xs uppercase tracking-wider text-sky-300/80 font-semibold mb-1">
               Panel size
             </dt>
@@ -745,7 +753,7 @@ export default function Home() {
           </div>
         </dl>
 
-        <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
+        <p className="text-gray-300 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
           {totalTracked} venture-backed GitHub orgs ranked every week by commit
           velocity <strong className="text-gray-100">and contributor diversity</strong> —
           the two signals that, combined, drove the{" "}

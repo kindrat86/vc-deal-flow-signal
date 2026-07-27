@@ -873,11 +873,29 @@ body.nav-open { overflow: hidden; }
    20px horizontal padding leaves only ~4px of content inside a 44px box,
    collapsing the glyph to an invisible sliver. Zero the horizontal
    padding for icon buttons and stop the icon flex-shrinking. Unlayered
-   so it beats Tailwind's layered w-11/p-* utilities. */
-[data-nav-toggle],
-.ux-icon-btn,
-button[aria-label]:has(> svg:only-child),
-a[aria-label]:has(> svg:only-child) {
+   so it beats Tailwind's layered w-11/p-* utilities.
+
+   TAP TARGET GUARD (2026-07-26): beating Tailwind is right only when the
+   padding came from the touch-target rule above. Where the element declares
+   its OWN padding utility the zeroing is pure collateral damage — measured on
+   /trending, 18 `a.inline-flex.p-2.-m-2` links (the standard "pad out the tap
+   target, pull it back with a negative margin" idiom) computed to
+   `padding: 8px 0` and collapsed from 40x40 to 24x40, while the `-m-2` stayed
+   and kept pulling them in. The guard restores all 18 to 40x40 and changes
+   NOTHING about the elements this repair exists for: the hamburger is
+   `w-11 h-11` with no padding utility, and back-to-top has none either, so
+   both still get zeroed and both stay 44x44 (verified before/after on live).
+
+   The `" p-"` / `":p-"` / `^"p-"` forms are deliberate — a bare `[class*="p-"]`
+   also matches the "p-" inside `group-hover:`, which would wrongly exempt
+   half the page. Class attributes are space-separated, so requiring a space,
+   a variant colon, or string start makes the match token-accurate. The
+   `:not()` chain must stay unbroken; whitespace inside it is a descendant
+   combinator and silently changes the meaning. */
+[data-nav-toggle]:not([class^="p-"]):not([class*=" p-"]):not([class*=":p-"]):not([class^="px-"]):not([class*=" px-"]):not([class*=":px-"]),
+.ux-icon-btn:not([class^="p-"]):not([class*=" p-"]):not([class*=":p-"]):not([class^="px-"]):not([class*=" px-"]):not([class*=":px-"]),
+button[aria-label]:has(> svg:only-child):not([class^="p-"]):not([class*=" p-"]):not([class*=":p-"]):not([class^="px-"]):not([class*=" px-"]):not([class*=":px-"]),
+a[aria-label]:has(> svg:only-child):not([class^="p-"]):not([class*=" p-"]):not([class*=":p-"]):not([class^="px-"]):not([class*=" px-"]):not([class*=":px-"]) {
   padding-left: 0;
   padding-right: 0;
 }
