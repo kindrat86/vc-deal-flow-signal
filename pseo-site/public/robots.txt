@@ -585,5 +585,4 @@ Sitemap: https://signals.gitdealflow.com/sitemap.xml
 Sitemap: https://signals.gitdealflow.com/news-sitemap.xml
 Sitemap: https://signals.gitdealflow.com/sitemap-images.xml
 Sitemap: https://signals.gitdealflow.com/sitemap-videos.xml
-Sitemap: https://signals.gitdealflow.com/image-sitemap.xml
 Sitemap: https://signals.gitdealflow.com/sitemap-i18n.xml
