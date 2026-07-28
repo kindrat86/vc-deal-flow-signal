@@ -1,0 +1,340 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "GitDealFlow — Landing Site API Surfaces",
+    "version": "1.0.0",
+    "description": "Public machine-readable endpoints and discovery files exposed by gitdealflow.com (the landing/marketing site). The landing site serves agent-discovery metadata, well-known files, sitemaps, and redirects to the signals subdomain. All actual signal data APIs live at signals.gitdealflow.com.",
+    "contact": {
+      "name": "GitDealFlow",
+      "email": "signals@gitdealflow.com",
+      "url": "https://gitdealflow.com"
+    },
+    "license": {
+      "name": "CC BY 4.0",
+      "url": "https://creativecommons.org/licenses/by/4.0/"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://gitdealflow.com",
+      "description": "Production — landing/marketing site"
+    },
+    {
+      "url": "https://signals.gitdealflow.com",
+      "description": "Production — signals data subdomain"
+    }
+  ],
+  "webhooks": {},
+  "paths": {
+    "/.well-known/entity.jsonld": {
+      "get": {
+        "summary": "Entity Knowledge Graph",
+        "description": "Schema.org @graph describing the GitDealFlow Organization, Brand, WebSite, SoftwareApplication, Dataset, and agent-surface ItemList. Used by search engines, knowledge panels, and AI crawlers for entity disambiguation.",
+        "operationId": "getEntitySchema",
+        "tags": [
+          "Discovery",
+          "Well-Known"
+        ],
+        "responses": {
+          "200": {
+            "description": "JSON-LD entity graph",
+            "content": {
+              "application/ld+json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "@context": {
+                      "type": "string",
+                      "const": "https://schema.org"
+                    },
+                    "@graph": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-cors": {
+          "allowOrigin": "*"
+        }
+      }
+    },
+    "/.well-known/agent-card.json": {
+      "get": {
+        "summary": "A2A AgentCard",
+        "description": "Google A2A AgentCard (protocolVersion 0.3.0) listing all agent skills. Redirects to or mirrors the signals subdomain's agent-card.",
+        "operationId": "getAgentCard",
+        "tags": [
+          "Agent",
+          "A2A"
+        ],
+        "responses": {
+          "200": {
+            "description": "A2A AgentCard JSON",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "x-cors": {
+          "allowOrigin": "*"
+        }
+      }
+    },
+    "/.well-known/mcp.json": {
+      "get": {
+        "summary": "MCP Server Discovery Manifest",
+        "description": "Model Context Protocol discovery manifest pointing to the @gitdealflow/mcp-signal server. Enables auto-discovery by MCP-compatible clients.",
+        "operationId": "getMcpManifest",
+        "tags": [
+          "Agent",
+          "MCP"
+        ],
+        "responses": {
+          "200": {
+            "description": "MCP discovery manifest",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "x-cors": {
+          "allowOrigin": "*"
+        }
+      }
+    },
+    "/.well-known/ai-plugin.json": {
+      "get": {
+        "summary": "OpenAI Plugin Manifest",
+        "description": "ChatGPT plugin manifest for the VC Deal Flow Signal. Describes available API endpoints for GPT actions.",
+        "operationId": "getAiPlugin",
+        "tags": [
+          "Agent",
+          "ChatGPT"
+        ],
+        "responses": {
+          "200": {
+            "description": "OpenAI plugin manifest",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "x-cors": {
+          "allowOrigin": "*"
+        }
+      }
+    },
+    "/llms.txt": {
+      "get": {
+        "summary": "LLM Context File",
+        "description": "Minimal llms.txt file providing a concise product overview for retrieval-augmented generation (RAG) systems and AI crawlers.",
+        "operationId": "getLlmsTxt",
+        "tags": [
+          "Agent",
+          "Discovery"
+        ],
+        "responses": {
+          "200": {
+            "description": "llms.txt in plain text",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/llms-full.txt": {
+      "get": {
+        "summary": "Full LLM Context File",
+        "description": "Comprehensive llms-full.txt file with detailed product reference, all agent surfaces, API endpoints, sector list, methodology summary, and limitations.",
+        "operationId": "getLlmsFullTxt",
+        "tags": [
+          "Agent",
+          "Discovery"
+        ],
+        "responses": {
+          "200": {
+            "description": "Full llms context in plain text",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agents.md": {
+      "get": {
+        "summary": "Agent Reference (Markdown)",
+        "description": "Canonical agent reference in markdown format. Mirrors AGENTS.md from the repository. Designed for coding agents (Codex, Cursor, Claude) that land on the site.",
+        "operationId": "getAgentsMd",
+        "tags": [
+          "Agent",
+          "Discovery"
+        ],
+        "responses": {
+          "200": {
+            "description": "Agent reference in markdown",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sitemap.xml": {
+      "get": {
+        "summary": "XML Sitemap",
+        "description": "Sitemap index for gitdealflow.com. Lists all landing pages for indexing by search engines.",
+        "operationId": "getSitemap",
+        "tags": [
+          "SEO",
+          "Discovery"
+        ],
+        "responses": {
+          "200": {
+            "description": "XML sitemap",
+            "content": {
+              "application/xml": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agent-hq.html": {
+      "get": {
+        "summary": "Agent HQ Page",
+        "description": "Human-readable directory of all AI agent surfaces exposed by GitDealFlow: MCP, A2A, NLWeb, Function-calling, JSON API, CSV, OpenAPI, and Chrome Extension. Contains install guides and schema.org ItemList markup.",
+        "operationId": "getAgentHq",
+        "tags": [
+          "Agent",
+          "Web"
+        ],
+        "responses": {
+          "200": {
+            "description": "Agent HQ HTML page",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/stats/index.html": {
+      "get": {
+        "summary": "Live Statistics",
+        "description": "Live statistics hub for the VC Deal Flow Signal dataset. Shows orgs tracked, startups ranked, signals published, sectors, and weekly refresh status.",
+        "operationId": "getStats",
+        "tags": [
+          "Stats",
+          "Web"
+        ],
+        "responses": {
+          "200": {
+            "description": "Statistics page",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/robots.txt": {
+      "get": {
+        "summary": "Robots Exclusion File",
+        "description": "Robots.txt allowing all crawlers, pointing to sitemaps and agent discovery endpoints.",
+        "operationId": "getRobots",
+        "tags": [
+          "SEO",
+          "Discovery"
+        ],
+        "responses": {
+          "200": {
+            "description": "Robots.txt",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Full agent reference and all API surfaces",
+    "url": "https://gitdealflow.com/agent-hq.html"
+  },
+  "tags": [
+    {
+      "name": "Discovery",
+      "description": "Agent and crawler discovery endpoints (well-known, llms, sitemaps)"
+    },
+    {
+      "name": "Agent",
+      "description": "AI agent interface endpoints (MCP, A2A, NLWeb, function-calling)"
+    },
+    {
+      "name": "Well-Known",
+      "description": "Standard .well-known discovery URIs"
+    },
+    {
+      "name": "SEO",
+      "description": "Search engine optimization resources"
+    },
+    {
+      "name": "Web",
+      "description": "Human-readable web pages"
+    },
+    {
+      "name": "Stats",
+      "description": "Data and statistics pages"
+    }
+  ],
+  "x-readme": {
+    "samples_language": "curl"
+  }
+}

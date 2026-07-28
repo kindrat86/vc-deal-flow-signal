@@ -1,0 +1,225 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Datasets — VC Deal Flow Signal</title>
+    <meta name="description" content="Free, downloadable VC deal flow datasets from VC Deal Flow Signal. Real startup engineering momentum data, 324+ startups tracked, CC BY 4.0 license. CSV + JSON ">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://signals.gitdealflow.com/data/">
+    <meta property="og:title" content="Research Datasets — VC Deal Flow Signal">
+    <meta property="og:description" content="Free, downloadable VC deal flow datasets from VC Deal Flow Signal. Real startup engineering momentum data, 324+ startups tracked, CC BY 4.0 license. CSV + JSON downloads.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://signals.gitdealflow.com/data/">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" defer></script>
+
+    <style>
+    :root{--bg:#fafbfc;--fg:#1a1a2e;--accent:#2563eb;--muted:#6b7280;--border:#e5e7eb;--card:#fff;--green:#059669;--amber:#d97706}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--fg);line-height:1.7}
+    .container{max-width:960px;margin:0 auto;padding:2rem 1.5rem}
+    h1{font-size:2.2rem;font-weight:800;margin-bottom:.5rem;line-height:1.2}
+    h2{font-size:1.5rem;font-weight:700;margin:2rem 0 1rem}
+    h3{font-size:1.15rem;font-weight:600;margin:1.5rem 0 .75rem}
+    .lead{font-size:1.15rem;color:var(--muted);margin-bottom:1.5rem}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin-bottom:1rem}
+    table{width:100%;border-collapse:collapse;margin:1.5rem 0}
+    th,td{padding:.75rem 1rem;text-align:left;border-bottom:1px solid var(--border)}
+    th{background:var(--bg);font-weight:600;color:var(--muted);font-size:.85rem;text-transform:uppercase;letter-spacing:.05em}
+    td.source{font-size:.82rem;color:var(--muted);font-style:italic}
+    .value{font-weight:700;color:var(--accent);white-space:nowrap}
+    .chart-box{margin:2rem 0;padding:1.5rem;background:var(--card);border:1px solid var(--border);border-radius:12px}
+    .chart-box canvas{max-height:380px}
+    .btn{display:inline-block;padding:.7rem 1.5rem;border-radius:8px;font-weight:600;text-decoration:none;font-size:.95rem;margin:.25rem;transition:all .15s}
+    .btn-primary{background:var(--accent);color:#fff;border:none}
+    .btn-primary:hover{background:#1d4ed8}
+    .btn-outline{border:2px solid var(--border);color:var(--fg);background:transparent}
+    .btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+    .cite-box{background:#f0f7ff;border:1px solid #bfdbfe;border-radius:8px;padding:1.25rem;margin:1.5rem 0;font-size:.88rem}
+    .cite-box pre{background:#1e293b;color:#e2e8f0;padding:.75rem;border-radius:6px;overflow-x:auto;font-size:.8rem;margin-top:.5rem}
+    .breadcrumb{font-size:.85rem;color:var(--muted);margin-bottom:1.5rem}
+    .breadcrumb a{color:var(--muted);text-decoration:none}
+    .breadcrumb a:hover{color:var(--accent)}
+    .nav-links{display:flex;gap:.75rem;flex-wrap:wrap;margin:1.5rem 0;justify-content:center}
+    .badge{display:inline-block;padding:.2rem .6rem;border-radius:4px;font-size:.75rem;font-weight:600;background:#dcfce7;color:var(--green)}
+    .badge-amber{background:#fef3c7;color:var(--amber)}
+    .badge-blue{background:#dbeafe;color:var(--accent)}
+    footer{margin-top:3rem;padding:1.5rem 0;border-top:1px solid var(--border);color:var(--muted);font-size:.85rem}
+    footer a{color:var(--accent)}
+    .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin:1.5rem 0}
+    .stat-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.25rem}
+    .stat-card .num{font-size:1.8rem;font-weight:800;color:var(--accent)}
+    .stat-card .label{font-size:.82rem;color:var(--muted);margin-top:.25rem}
+    .dataset-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem;margin:1.5rem 0}
+    @media(max-width:640px){.container{padding:1rem}h1{font-size:1.6rem}}
+    </style>
+    <style>/* CENTERED TEXT 2026-07-25 */body,body *{text-align:center!important}ul,ol{list-style-position:inside;padding-left:0}pre,pre *,code,code *{text-align:left!important}</style>
+    </head>
+    <body>
+    <div class="container">
+        <nav class="breadcrumb"><a href="/">Home</a> › <a href="/data/">Research Data</a></nav>
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "itemListElement": [
+    {
+      "@type": "Dataset",
+      "name": "Startup Engineering Momentum Signals Dataset",
+      "url": "https://signals.gitdealflow.com/data/startup-signals/",
+      "description": "Complete ranked dataset of 324+ venture-backed startups by engineering momentum. Commit velocity, contributor growth, signal classification across 15 sectors."
+    },
+    {
+      "@type": "Dataset",
+      "name": "VC Deal Flow Sector Benchmark Data",
+      "url": "https://signals.gitdealflow.com/data/sector-benchmarks/",
+      "description": "Aggregate engineering momentum benchmarks by sector. Compare commit velocity, contributor counts, and startup density across 15 industry verticals."
+    },
+    {
+      "@type": "Dataset",
+      "name": "Idea of the Day \u2014 Startup Opportunity Corpus",
+      "url": "https://signals.gitdealflow.com/data/ideas-of-the-day/",
+      "description": "Curated corpus of daily startup ideation entries derived from GitHub engineering signals. 87 entries, 16 sectors, 261+ build angles."
+    },
+    {
+      "@type": "Dataset",
+      "name": "Startup Funding & Investment Statistics 2026",
+      "url": "https://signals.gitdealflow.com/data/startup-funding-statistics/",
+      "description": "Key statistics on global startup funding: deal volume, median rounds, sector breakdowns, and geographic distribution."
+    },
+    {
+      "@type": "Dataset",
+      "name": "VC Deal Flow Signal Benchmarks Q2 2026",
+      "url": "https://signals.gitdealflow.com/data/vc-signal-benchmarks/",
+      "description": "Aggregate engineering signal data for venture-backed startups across sectors. Includes commit velocity, contributor growth statistics, and signal type distribution."
+    }
+  ],
+  "itemListOrder": "https://schema.org/ItemListOrderDescending",
+  "numberOfItems": 5
+}</script>
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "DataCatalog",
+  "name": "VC Deal Flow Signal Research Data",
+  "description": "Free, downloadable research datasets from VC Deal Flow Signal. Real startup engineering momentum data, CC BY 4.0 license. CSV + JSON downloads available for every dataset.",
+  "url": "https://signals.gitdealflow.com/data/",
+  "provider": {
+    "@type": "Organization",
+    "name": "VC Deal Flow Signal",
+    "url": "https://signals.gitdealflow.com"
+  },
+  "dataset": [
+    {
+      "@type": "Dataset",
+      "name": "Startup Engineering Momentum Signals Dataset",
+      "url": "https://signals.gitdealflow.com/data/startup-signals/"
+    },
+    {
+      "@type": "Dataset",
+      "name": "VC Deal Flow Sector Benchmark Data",
+      "url": "https://signals.gitdealflow.com/data/sector-benchmarks/"
+    },
+    {
+      "@type": "Dataset",
+      "name": "Idea of the Day \u2014 Startup Opportunity Corpus",
+      "url": "https://signals.gitdealflow.com/data/ideas-of-the-day/"
+    },
+    {
+      "@type": "Dataset",
+      "name": "Startup Funding & Investment Statistics 2026",
+      "url": "https://signals.gitdealflow.com/data/startup-funding-statistics/"
+    },
+    {
+      "@type": "Dataset",
+      "name": "VC Deal Flow Signal Benchmarks Q2 2026",
+      "url": "https://signals.gitdealflow.com/data/vc-signal-benchmarks/"
+    }
+  ]
+}</script>
+    <div id="main-content">
+    <h1>Research Datasets</h1>
+    <p class="lead">Free, downloadable datasets powered by real VC deal flow signal data. All data derived from public GitHub activity across 324+ venture-backed startups. Licensed under <strong>CC BY 4.0</strong> — use freely, just link back.</p>
+
+    <div style="background:#fef3c7;border:1px solid #fcd34d;border-radius:8px;padding:1rem;margin:1.5rem 0">
+    <strong>📊 Why publish research data?</strong> We track startup engineering momentum from public GitHub activity — commit velocity, contributor growth, and signal classification — to surface breakout teams before fundraise announcements. Every dataset below is generated from our weekly scan of 4,200+ candidate startups across 20 sectors. All data is real, sourced from public activity, never fabricated. Use it in your research, investment analysis, or product development. Just include a link back here.
+    </div>
+
+    <div class="stat-grid">
+    <div class="stat-card"><div class="num">324+</div><div class="label">Startups Tracked</div></div>
+    <div class="stat-card"><div class="num">20</div><div class="label">Sectors</div></div>
+    <div class="stat-card"><div class="num">87</div><div class="label">Ideas Published</div></div>
+    <div class="stat-card"><div class="num">5</div><div class="label">Datasets</div></div>
+    </div>
+
+    <div class="card" style="margin-bottom:1.5rem">
+<h3><a href="/data/startup-signals/" style="color:var(--accent);text-decoration:none">Startup Engineering Momentum Signals Dataset</a></h3>
+<p style="color:var(--muted);margin:.5rem 0">Complete ranked dataset of 324+ venture-backed startups by engineering momentum. Commit velocity, contributor growth, signal classification across 15 sectors.</p>
+<div style="display:flex;gap:.75rem;align-items:center;margin-top:.75rem;flex-wrap:wrap;justify-content:center">
+<span class="badge">324+ Startups</span>
+<span style="font-size:.82rem;color:var(--muted)">CC BY 4.0 · CSV + JSON</span>
+<a href="/data/startup-signals/data.csv" class="btn btn-outline" style="font-size:.8rem;padding:.35rem .75rem" download>CSV</a>
+<a href="/data/startup-signals/data.json" class="btn btn-outline" style="font-size:.8rem;padding:.35rem .75rem" download>JSON</a>
+</div>
+</div>
+<div class="card" style="margin-bottom:1.5rem">
+<h3><a href="/data/sector-benchmarks/" style="color:var(--accent);text-decoration:none">VC Deal Flow Sector Benchmark Data</a></h3>
+<p style="color:var(--muted);margin:.5rem 0">Aggregate engineering momentum benchmarks by sector. Compare commit velocity, contributor counts, and startup density across 15 industry verticals.</p>
+<div style="display:flex;gap:.75rem;align-items:center;margin-top:.75rem;flex-wrap:wrap;justify-content:center">
+<span class="badge">15 Sectors</span>
+<span style="font-size:.82rem;color:var(--muted)">CC BY 4.0 · CSV + JSON</span>
+<a href="/data/sector-benchmarks/data.csv" class="btn btn-outline" style="font-size:.8rem;padding:.35rem .75rem" download>CSV</a>
+<a href="/data/sector-benchmarks/data.json" class="btn btn-outline" style="font-size:.8rem;padding:.35rem .75rem" download>JSON</a>
+</div>
+</div>
+<div class="card" style="margin-bottom:1.5rem">
+<h3><a href="/data/ideas-of-the-day/" style="color:var(--accent);text-decoration:none">Idea of the Day — Startup Opportunity Corpus</a></h3>
+<p style="color:var(--muted);margin:.5rem 0">Curated corpus of daily startup ideation entries derived from GitHub engineering signals. 87 entries, 16 sectors, 261+ build angles.</p>
+<div style="display:flex;gap:.75rem;align-items:center;margin-top:.75rem;flex-wrap:wrap;justify-content:center">
+<span class="badge">87 Entries</span>
+<span style="font-size:.82rem;color:var(--muted)">CC BY 4.0 · CSV + JSON</span>
+<a href="/data/ideas-of-the-day/data.csv" class="btn btn-outline" style="font-size:.8rem;padding:.35rem .75rem" download>CSV</a>
+<a href="/data/ideas-of-the-day/data.json" class="btn btn-outline" style="font-size:.8rem;padding:.35rem .75rem" download>JSON</a>
+</div>
+</div>
+<div class="card" style="margin-bottom:1.5rem">
+<h3><a href="/data/startup-funding-statistics/" style="color:var(--accent);text-decoration:none">Startup Funding &amp; Investment Statistics 2026</a></h3>
+<p style="color:var(--muted);margin:.5rem 0">Key statistics on global startup funding: deal volume, median rounds, sector breakdowns, and geographic distribution.</p>
+<div style="display:flex;gap:.75rem;align-items:center;margin-top:.75rem;flex-wrap:wrap;justify-content:center">
+<span class="badge">Funding Data</span>
+<span style="font-size:.82rem;color:var(--muted)">CC BY 4.0 · CSV + JSON</span>
+<a href="/data/startup-funding-statistics/data.csv" class="btn btn-outline" style="font-size:.8rem;padding:.35rem .75rem" download>CSV</a>
+<a href="/data/startup-funding-statistics/data.json" class="btn btn-outline" style="font-size:.8rem;padding:.35rem .75rem" download>JSON</a>
+</div>
+</div>
+<div class="card" style="margin-bottom:1.5rem">
+<h3><a href="/data/vc-signal-benchmarks/" style="color:var(--accent);text-decoration:none">VC Deal Flow Signal Benchmarks Q2 2026</a></h3>
+<p style="color:var(--muted);margin:.5rem 0">Aggregate engineering signal data for venture-backed startups across sectors. Includes commit velocity, contributor growth statistics, and signal type distribution.</p>
+<div style="display:flex;gap:.75rem;align-items:center;margin-top:.75rem;flex-wrap:wrap;justify-content:center">
+<span class="badge">Benchmarks</span>
+<span style="font-size:.82rem;color:var(--muted)">CC BY 4.0 · CSV + JSON</span>
+<a href="/data/vc-signal-benchmarks/data.csv" class="btn btn-outline" style="font-size:.8rem;padding:.35rem .75rem" download>CSV</a>
+<a href="/data/vc-signal-benchmarks/data.json" class="btn btn-outline" style="font-size:.8rem;padding:.35rem .75rem" download>JSON</a>
+</div>
+</div>
+
+
+    <h2>Data Access</h2>
+    <div class="card" style="text-align:left">
+    <p>All datasets are available as downloadable CSV and JSON files. For programmatic access, use our free API endpoints:</p>
+    <ul style="margin-top:.75rem;padding-left:1.5rem">
+    <li><strong>JSON API:</strong> <code>GET https://signals.gitdealflow.com/api/signals.json</code></li>
+    <li><strong>CSV Export:</strong> <code>GET https://signals.gitdealflow.com/api/signals.csv</code></li>
+    <li><strong>MCP Server:</strong> <code>npx -y @gitdealflow/mcp-signal</code></li>
+    <li><strong>A2A Endpoint:</strong> <code>POST https://signals.gitdealflow.com/api/a2a</code></li>
+    </ul>
+    </div>
+
+    <footer>
+    <p><strong>VC Deal Flow Signal</strong> — Startup engineering momentum signals &amp; VC deal flow intelligence</p>
+    <p><a href="https://signals.gitdealflow.com">signals.gitdealflow.com</a> · <a href="https://signals.gitdealflow.com/data/feed.json">JSON Feed</a> · <a href="https://signals.gitdealflow.com/methodology">Methodology</a></p>
+    <p style="margin-top:.5rem">Data licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. When you use this data, please link back to this page. Each backlink helps us keep this research free and updated.</p>
+    </footer>
+    </div>
+
+    </div>
+    </body>
+    </html>

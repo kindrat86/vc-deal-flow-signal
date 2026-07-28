@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent HQ — GitDealFlow | Connect Any AI Agent to Startup Deal Flow</title>
+<meta name="description" content="Connect any AI agent or coding tool to real startup momentum data. MCP server, A2A endpoint, NLWeb, OpenAPI, JSON API, CSV export — all free, no auth required.">
+<link rel="canonical" href="https://gitdealflow.com/agent-hq">
+<meta name="robots" content="index, follow">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "GitDealFlow Agent HQ",
+  "description": "Central hub for connecting AI agents to VC Deal Flow Signal data. Eight agent interfaces, all free.",
+  "url": "https://gitdealflow.com/agent-hq",
+  "about": {"@type": "Thing", "name": "AI Agent API Integration for Startup Data"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "MCP Server (stdio)", "url": "https://gitdealflow.com/agent-hq#mcp"},
+    {"@type": "ListItem", "position": 2, "name": "MCP Server (HTTP)", "url": "https://gitdealflow.com/agent-hq#mcp-http"},
+    {"@type": "ListItem", "position": 3, "name": "A2A Endpoint", "url": "https://gitdealflow.com/agent-hq#a2a"},
+    {"@type": "ListItem", "position": 4, "name": "NLWeb Endpoint", "url": "https://gitdealflow.com/agent-hq#nlweb"},
+    {"@type": "ListItem", "position": 5, "name": "OpenAPI Specification", "url": "https://gitdealflow.com/agent-hq#openapi"},
+    {"@type": "ListItem", "position": 6, "name": "JSON API", "url": "https://gitdealflow.com/agent-hq#json-api"},
+    {"@type": "ListItem", "position": 7, "name": "CSV Export", "url": "https://gitdealflow.com/agent-hq#csv"},
+    {"@type": "ListItem", "position": 8, "name": "Chrome Extension", "url": "https://gitdealflow.com/agent-hq#extension"}
+  ],
+  "numberOfItems": 8
+}
+</script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f8fafc; color: #1e293b; line-height: 1.6; }
+.container { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 0.5rem; color: #0f172a; }
+h1 span { background: linear-gradient(135deg, #0ea5e9, #6366f1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+p.subtitle { font-size: 1.1rem; color: #64748b; margin-bottom: 2rem; }
+h2 { font-size: 1.3rem; font-weight: 700; margin: 2rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; }
+.card { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; transition: box-shadow 0.2s; }
+.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+.card h3 .tag { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.15rem 0.5rem; border-radius: 4px; margin-left: 0.5rem; vertical-align: middle; }
+.tag-mcp { background: #dbeafe; color: #1d4ed8; }
+.tag-http { background: #dcfce7; color: #15803d; }
+.tag-a2a { background: #fef3c7; color: #a16207; }
+.tag-nl { background: #f3e8ff; color: #7c3aed; }
+.tag-rest { background: #fce7f3; color: #be185d; }
+.tag-ext { background: #e0f2fe; color: #0369a1; }
+.card p { color: #64748b; font-size: 0.95rem; margin-bottom: 0.75rem; }
+pre { background: #f1f5f9; border-radius: 8px; padding: 1rem; overflow-x: auto; font-size: 0.85rem; border: 1px solid #e2e8f0; margin: 0.5rem 0; }
+code { font-family: 'SF Mono', 'Fira Code', monospace; background: #f1f5f9; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.9rem; }
+pre code { background: transparent; padding: 0; }
+.cta { background: linear-gradient(135deg, #0ea5e9, #6366f1); border-radius: 12px; padding: 2rem; margin: 2rem 0; text-align: center; color: #fff; }
+.cta h2 { border: none; color: #fff; margin: 0 0 0.5rem; }
+.cta p { color: #cbd5e1; }
+.cta .btn { display: inline-block; background: #fff; color: #0f172a; padding: 0.75rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 700; margin: 0.75rem 0.5rem 0; }
+.cta .btn:hover { background: #e2e8f0; }
+.cta .btn-outline { display: inline-block; border: 2px solid #fff; color: #fff; padding: 0.75rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 700; margin: 0.75rem 0.5rem 0; }
+.cta .btn-outline:hover { background: rgba(255,255,255,0.1); }
+ul { list-style: none; }
+ul li { padding: 0.25rem 0; }
+ul li::before { content: "→ "; color: #0ea5e9; }
+a { color: #0ea5e9; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0; }
+.stat { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem; text-align: center; }
+.stat-num { font-size: 1.5rem; font-weight: 800; color: #0ea5e9; }
+.stat-label { font-size: 0.8rem; color: #64748b; margin-top: 0.25rem; }
+</style>
+</head>
+<body>
+<div class="container">
+<h1>🧠 Agent <span>HQ</span></h1>
+<p class="subtitle">Connect any AI agent or coding tool to real startup engineering momentum data. Eight surfaces, one dataset — all free, zero auth.</p>
+
+<div class="stats">
+<div class="stat"><div class="stat-num">324+</div><div class="stat-label">Startups Tracked</div></div>
+<div class="stat"><div class="stat-num">20</div><div class="stat-label">Sectors</div></div>
+<div class="stat"><div class="stat-num">8</div><div class="stat-label">Agent Surfaces</div></div>
+</div>
+
+<h2 id="mcp">🤖 MCP Server (stdio)</h2>
+<div class="card">
+<h3>Claude Desktop / Cursor / Claude Code <span class="tag tag-mcp">MCP</span></h3>
+<p>Six read-only tools for startup momentum data. Install in one line.</p>
+<pre>{
+  "mcpServers": {
+    "vc-deal-flow-signal": {
+      "command": "npx",
+      "args": ["-y", "@gitdealflow/mcp-signal"]
+    }
+  }
+}</pre>
+<p><strong>Tools:</strong> get_trending_startups, search_startups_by_sector, get_startup_signal, get_signals_summary, get_scout_receipts, get_methodology</p>
+<p><a href="https://www.npmjs.com/package/@gitdealflow/mcp-signal">📦 npm</a> · <a href="https://signals.gitdealflow.com/mcp/">📖 Install Guide</a></p>
+</div>
+
+<h2 id="mcp-http">🌐 MCP Server (Streamable HTTP)</h2>
+<div class="card">
+<h3>ChatGPT / Any HTTP MCP Client <span class="tag tag-http">HTTP</span></h3>
+<p>Same six tools over HTTP. Send JSON-RPC 2.0 requests.</p>
+<pre>POST https://signals.gitdealflow.com/api/mcp/rpc
+Content-Type: application/json
+
+{"jsonrpc": "2.0", "method": "tools/list", "id": 1}</pre>
+</div>
+
+<h2 id="a2a">🔄 A2A Agent-to-Agent</h2>
+<div class="card">
+<h3>Google A2A Protocol <span class="tag tag-a2a">A2A</span></h3>
+<p>AgentCard v0.3.0 with five skills mirroring MCP tools.</p>
+<pre>POST https://signals.gitdealflow.com/api/a2a
+Content-Type: application/json
+
+{"jsonrpc": "2.0", "method": "message/send",
+ "params": {"message": {"contents": []}}}</pre>
+<p><a href="https://signals.gitdealflow.com/.well-known/agent-card.json">📄 AgentCard</a> · <a href="https://signals.gitdealflow.com/.well-known/agents.md">📝 agents.md</a></p>
+</div>
+
+<h2 id="nlweb">🔍 NLWeb Endpoint</h2>
+<div class="card">
+<h3>Microsoft NLWeb / Bing Copilot <span class="tag tag-nl">NLWeb</span></h3>
+<p>Natural-language queries over startup data. Returns schema.org-typed JSON-LD.</p>
+<pre>curl -X POST https://signals.gitdealflow.com/api/nlweb \
+  -H "Content-Type: application/json" \
+  -d '{"query": "trending fintech startups this week"}'</pre>
+</div>
+
+<h2 id="openapi">📋 OpenAPI Specification</h2>
+<div class="card">
+<h3>Any OpenAPI-compatible Client <span class="tag tag-rest">OpenAPI 3.1</span></h3>
+<p>Full API specification for code generation, tool registries, and SDK generation.</p>
+<pre>curl https://signals.gitdealflow.com/api/openapi.json</pre>
+<p><a href="https://signals.gitdealflow.com/api/openapi.json">🔗 View Spec</a></p>
+</div>
+
+<h2 id="json-api">📊 JSON API</h2>
+<div class="card">
+<h3>Direct HTTP Access <span class="tag tag-rest">REST</span></h3>
+<p>Full startup dataset as JSON. No auth, no rate limits.</p>
+<pre>curl https://signals.gitdealflow.com/api/signals.json</pre>
+</div>
+
+<h2 id="csv">📈 CSV Export</h2>
+<div class="card">
+<h3>Spreadsheets & BI Tools <span class="tag tag-rest">CSV</span></h3>
+<p>Same data as CSV for analysis in spreadsheets, dataframes, or BI platforms.</p>
+<pre>curl -O https://signals.gitdealflow.com/api/signals.csv</pre>
+</div>
+
+<h2 id="extension">🧩 Chrome Extension</h2>
+<div class="card">
+<h3>Crunchbase & Wellfound Integration <span class="tag tag-ext">Browser</span></h3>
+<p>Momentum badges appear on Crunchbase and Wellfound startup pages. Manifest V3.</p>
+<p><a href="https://signals.gitdealflow.com/chrome-extension">📦 Install</a></p>
+</div>
+
+<div class="cta">
+<h2>Start Building ⚡</h2>
+<p>All surfaces are free, public, and require no API key</p>
+<a href="https://signals.gitdealflow.com/trending" class="btn">View Trending Startups</a>
+<a href="https://signals.gitdealflow.com/api/signals.json" class="btn-outline">Try the JSON API</a>
+</div>
+
+<p style="font-size: 0.85rem; color: #94a3b8; margin-top: 2rem; text-align: center;">
+GitDealFlow · <a href="https://signals.gitdealflow.com">VC Deal Flow Signal</a> · 
+<a href="https://gitdealflow.com/privacy">Privacy</a> · 
+<a href="https://gitdealflow.com/terms">Terms</a> · 
+Data refreshed weekly · CC BY 4.0</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,212 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Idea of the Day — Startup Opportunity Corpus | VC Deal Flow Signal Research Data</title>
+    <meta name="description" content="Curated corpus of 87 daily startup ideation entries derived from GitHub engineering signals. Each entry reframes a tracked repo as a SaaS opportunity.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://signals.gitdealflow.com/data/ideas-of-the-day/">
+    <meta property="og:title" content="Idea of the Day — Startup Opportunity Corpus | VC Deal Flow Signal Research Data">
+    <meta property="og:description" content="Curated corpus of 87 daily startup ideation entries derived from GitHub engineering signals. Each entry reframes a tracked repo as a SaaS opportunity.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://signals.gitdealflow.com/data/ideas-of-the-day/">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" defer></script>
+    <script type="application/ld+json">[
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "Idea of the Day \u2014 Startup Opportunity Corpus",
+    "description": "Daily ideation corpus generated from VC Deal Flow Signal's tracked startup data. Each entry takes a real startup's engineering signal (commit velocity change, contributor growth, signal type) and reframes it as an actionable SaaS opportunity. Includes headline, idea thesis, build angles (3 per entry), and a distribution play strategy. 87 entries covering 16 sectors across 85+ unique startups. Signal types represented: framework migration (60 entries), engineering hiring burst (11), infrastructure buildout (9), deploy frequency spike (7). Published daily from April 23 to July 19, 2026.",
+    "url": "https://signals.gitdealflow.com/data/ideas-of-the-day/",
+    "identifier": "ideas-of-the-day",
+    "keywords": "startup ideas, SaaS opportunity corpus, ideation dataset, business ideas from data, startup inspiration, engineering signal ideation",
+    "creator": {
+      "@type": "Organization",
+      "name": "VC Deal Flow Signal",
+      "url": "https://signals.gitdealflow.com"
+    },
+    "datePublished": "2026-07-28",
+    "dateModified": "2026-07-28",
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "isAccessibleForFree": true,
+    "temporalCoverage": "2026-04-23/2026-07-19",
+    "distribution": [
+      {
+        "@type": "DataDownload",
+        "encodingFormat": "CSV",
+        "contentUrl": "https://signals.gitdealflow.com/data/ideas-of-the-day/data.csv"
+      },
+      {
+        "@type": "DataDownload",
+        "encodingFormat": "JSON",
+        "contentUrl": "https://signals.gitdealflow.com/data/ideas-of-the-day/data.json"
+      }
+    ],
+    "includedInDataCatalog": {
+      "@type": "DataCatalog",
+      "name": "VC Deal Flow Signal Research Data",
+      "url": "https://signals.gitdealflow.com/data/"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Idea of the Day \u2014 Startup Opportunity Corpus",
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": [
+        "#main-content"
+      ]
+    }
+  }
+]</script>
+    <style>
+    :root{--bg:#fafbfc;--fg:#1a1a2e;--accent:#2563eb;--muted:#6b7280;--border:#e5e7eb;--card:#fff;--green:#059669;--amber:#d97706}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--fg);line-height:1.7}
+    .container{max-width:960px;margin:0 auto;padding:2rem 1.5rem}
+    h1{font-size:2.2rem;font-weight:800;margin-bottom:.5rem;line-height:1.2}
+    h2{font-size:1.5rem;font-weight:700;margin:2rem 0 1rem}
+    h3{font-size:1.15rem;font-weight:600;margin:1.5rem 0 .75rem}
+    .lead{font-size:1.15rem;color:var(--muted);margin-bottom:1.5rem}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin-bottom:1rem}
+    table{width:100%;border-collapse:collapse;margin:1.5rem 0}
+    th,td{padding:.75rem 1rem;text-align:left;border-bottom:1px solid var(--border)}
+    th{background:var(--bg);font-weight:600;color:var(--muted);font-size:.85rem;text-transform:uppercase;letter-spacing:.05em}
+    td.source{font-size:.82rem;color:var(--muted);font-style:italic}
+    .value{font-weight:700;color:var(--accent);white-space:nowrap}
+    .chart-box{margin:2rem 0;padding:1.5rem;background:var(--card);border:1px solid var(--border);border-radius:12px}
+    .chart-box canvas{max-height:380px}
+    .btn{display:inline-block;padding:.7rem 1.5rem;border-radius:8px;font-weight:600;text-decoration:none;font-size:.95rem;margin:.25rem;transition:all .15s}
+    .btn-primary{background:var(--accent);color:#fff;border:none}
+    .btn-primary:hover{background:#1d4ed8}
+    .btn-outline{border:2px solid var(--border);color:var(--fg);background:transparent}
+    .btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+    .cite-box{background:#f0f7ff;border:1px solid #bfdbfe;border-radius:8px;padding:1.25rem;margin:1.5rem 0;font-size:.88rem}
+    .cite-box pre{background:#1e293b;color:#e2e8f0;padding:.75rem;border-radius:6px;overflow-x:auto;font-size:.8rem;margin-top:.5rem}
+    .breadcrumb{font-size:.85rem;color:var(--muted);margin-bottom:1.5rem}
+    .breadcrumb a{color:var(--muted);text-decoration:none}
+    .breadcrumb a:hover{color:var(--accent)}
+    .nav-links{display:flex;gap:.75rem;flex-wrap:wrap;margin:1.5rem 0;justify-content:center}
+    .badge{display:inline-block;padding:.2rem .6rem;border-radius:4px;font-size:.75rem;font-weight:600;background:#dcfce7;color:var(--green)}
+    .badge-amber{background:#fef3c7;color:var(--amber)}
+    .badge-blue{background:#dbeafe;color:var(--accent)}
+    footer{margin-top:3rem;padding:1.5rem 0;border-top:1px solid var(--border);color:var(--muted);font-size:.85rem}
+    footer a{color:var(--accent)}
+    .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin:1.5rem 0}
+    .stat-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.25rem}
+    .stat-card .num{font-size:1.8rem;font-weight:800;color:var(--accent)}
+    .stat-card .label{font-size:.82rem;color:var(--muted);margin-top:.25rem}
+    .dataset-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem;margin:1.5rem 0}
+    @media(max-width:640px){.container{padding:1rem}h1{font-size:1.6rem}}
+    </style>
+    <style>/* CENTERED TEXT 2026-07-25 */body,body *{text-align:center!important}ul,ol{list-style-position:inside;padding-left:0}pre,pre *,code,code *{text-align:left!important}</style>
+    </head>
+    <body>
+    <div class="container">
+        <nav class="breadcrumb"><a href="/">Home</a> › <a href="/data/">Research Data</a> › Idea of the Day — Startup Opportunity Corpus</nav>
+    <div id="main-content">
+    <h1>Idea of the Day — Startup Opportunity Corpus</h1>
+    <p class="lead">Curated corpus of 87 daily startup ideation entries derived from GitHub engineering signals. Each entry reframes a tracked repo as a SaaS opportunity.</p>
+    <p>
+    <span class="badge">CC BY 4.0</span>
+    <span class="badge badge-blue" style="margin-left:.5rem">Updated 2026-07-28</span>
+    <span class="badge badge-amber" style="margin-left:.5rem">Free</span>
+    </p>
+
+    <div class="nav-links">
+<a href="data.csv" class="btn btn-primary" download>📥 Download CSV</a>
+<a href="data.json" class="btn btn-outline" download>📥 Download JSON</a>
+<a href="https://signals.gitdealflow.com/api/signals.json" class="btn btn-outline" target="_blank">🔌 Live API</a>
+<a href="https://signals.gitdealflow.com/api/signals.csv" class="btn btn-outline" target="_blank">🔌 Live CSV</a>
+</div>
+
+    <div class="stat-grid">
+    <div class="stat-card"><div class="num">87</div><div class="label">Total entries</div><div style="font-size:.75rem;color:#9ca3af;margin-top:.25rem">Daily ideation posts</div></div>
+<div class="stat-card"><div class="num">2026-04-23 to 2026-07-19</div><div class="label">Date range</div><div style="font-size:.75rem;color:#9ca3af;margin-top:.25rem"></div></div>
+<div class="stat-card"><div class="num">16</div><div class="label">Sectors covered</div><div style="font-size:.75rem;color:#9ca3af;margin-top:.25rem">Industry verticals</div></div>
+<div class="stat-card"><div class="num">261</div><div class="label">Total build angles</div><div style="font-size:.75rem;color:#9ca3af;margin-top:.25rem">3 per entry</div></div>
+<div class="stat-card"><div class="num">85+</div><div class="label">Unique startups referenced</div><div style="font-size:.75rem;color:#9ca3af;margin-top:.25rem">Distinct GitHub organizations</div></div>
+<div class="stat-card"><div class="num">Framework migration</div><div class="label">Primary signal type</div><div style="font-size:.75rem;color:#9ca3af;margin-top:.25rem">60 entries</div></div>
+<div class="stat-card"><div class="num">Engineering hiring burst</div><div class="label">Secondary signal type</div><div style="font-size:.75rem;color:#9ca3af;margin-top:.25rem">11 entries</div></div>
+<div class="stat-card"><div class="num">4</div><div class="label">Augmented signal types</div><div style="font-size:.75rem;color:#9ca3af;margin-top:.25rem">Framework migration, hiring burst, deploy spike, infrastructure buildout</div></div>
+
+    </div>
+
+    <h2>Dataset Details</h2>
+    <p>Daily ideation corpus generated from VC Deal Flow Signal&#39;s tracked startup data. Each entry takes a real startup&#39;s engineering signal (commit velocity change, contributor growth, signal type) and reframes it as an actionable SaaS opportunity. Includes headline, idea thesis, build angles (3 per entry), and a distribution play strategy. 87 entries covering 16 sectors across 85+ unique startups. Signal types represented: framework migration (60 entries), engineering hiring burst (11), infrastructure buildout (9), deploy frequency spike (7). Published daily from April 23 to July 19, 2026.</p>
+
+    <h2>Key Statistics</h2>
+    <div class="card" style="overflow-x:auto">
+    <table>
+    <thead><tr><th>Property</th><th>Value</th><th>Detail</th></tr></thead>
+    <tbody><tr><td>Total entries</td><td class="value">87</td><td class="source">Daily ideation posts</td></tr>
+<tr><td>Date range</td><td class="value">2026-04-23 to 2026-07-19</td><td class="source"></td></tr>
+<tr><td>Sectors covered</td><td class="value">16</td><td class="source">Industry verticals</td></tr>
+<tr><td>Total build angles</td><td class="value">261</td><td class="source">3 per entry</td></tr>
+<tr><td>Unique startups referenced</td><td class="value">85+</td><td class="source">Distinct GitHub organizations</td></tr>
+<tr><td>Primary signal type</td><td class="value">Framework migration</td><td class="source">60 entries</td></tr>
+<tr><td>Secondary signal type</td><td class="value">Engineering hiring burst</td><td class="source">11 entries</td></tr>
+<tr><td>Augmented signal types</td><td class="value">4</td><td class="source">Framework migration, hiring burst, deploy spike, infrastructure buildout</td></tr>
+</tbody>
+    </table>
+    </div>
+
+        <h2>Signal Type Distribution in Ideas Corpus</h2>
+    <div class="card" style="overflow-x:auto">
+    <table>
+    <thead><tr><th>Signal Type</th><th>Count</th><th>Percentage</th></tr></thead>
+    <tbody>
+    <tr><td>Framework migration</td><td class="value">60</td><td>69.0%</td></tr><tr><td>Engineering hiring burst</td><td class="value">11</td><td>12.6%</td></tr><tr><td>Infrastructure buildout</td><td class="value">9</td><td>10.3%</td></tr><tr><td>Deploy frequency spike</td><td class="value">7</td><td>8.0%</td></tr>
+    </tbody>
+    </table>
+    </div>
+
+    <h2>Sector Coverage</h2>
+    <div class="card" style="overflow-x:auto">
+    <table>
+    <thead><tr><th>Sector</th></tr></thead>
+    <tbody>
+    <tr><td>AI &amp; Machine Learning</td></tr><tr><td>AgTech</td></tr><tr><td>Climate Tech</td></tr><tr><td>Cybersecurity</td></tr><tr><td>Data Infrastructure</td></tr><tr><td>Developer Tools</td></tr><tr><td>E-commerce Infrastructure</td></tr><tr><td>EdTech</td></tr><tr><td>Enterprise SaaS</td></tr><tr><td>Gaming</td></tr><tr><td>HR Tech</td></tr><tr><td>Healthcare</td></tr><tr><td>Legal Tech</td></tr><tr><td>Social &amp; Community</td></tr><tr><td>Supply Chain</td></tr><tr><td>Web3</td></tr>
+    </tbody>
+    </table>
+    </div>
+
+    <h2>Sample Entry</h2>
+    <div class="card" style="text-align:left">
+    <p><strong>Headline:</strong> <em>The edtech reset hiding in a -31% engineering hiring burst</em></p>
+    <p style="margin-top:.75rem"><strong>Thesis:</strong> EdTech has a buyer who is also a builder. The category incumbents shipped for an ops/HR/finance lead; the next wave ships for the engineer running that function. Read the repo: engineering hiring burst, series a/b team, 43 contributors. That&#39;s the shape of a team that crosses the next funding line o...</p>
+    <p style="margin-top:.75rem"><strong>Build Angles:</strong></p>
+    <ul style="margin-top:.25rem;padding-left:1.5rem">
+    <li>Sourcing tool for engineering managers — Slack-native, signal-pulled by sector, no SaaS dashboard.</li><li>Read-only overlay on the incumbent ATS — bring engineering signals (GitHub activity, dependency adoption) onto candidate cards.</li><li>Drip-tool for technical recruiting that writes its own outreach from public commit signals.</li>
+    </ul>
+    <p style="margin-top:.75rem"><strong>Signal:</strong> NDLANO — Engineering hiring burst</p>
+    </div>
+
+
+        <div class="cite-box">
+    <strong>📚 Cite this dataset</strong>
+    <p style="margin-top:.5rem"><strong>APA:</strong> VC Deal Flow Signal. (2026-07-28). <i>Idea of the Day — Startup Opportunity Corpus</i>. Retrieved from https://signals.gitdealflow.com/data/ideas-of-the-day/</p>
+    <p style="margin-top:.5rem"><strong>MLA:</strong> "Idea of the Day — Startup Opportunity Corpus." <em>VC Deal Flow Signal</em>, 2026-07-28, signals.gitdealflow.com/data/ideas-of-the-day/.</p>
+    <p style="margin-top:.5rem"><strong>BibTeX:</strong></p>
+    <pre>@misc{ideas-of-the-day,
+  author       = {VC Deal Flow Signal},
+  title        = {Idea of the Day — Startup Opportunity Corpus},
+  year         = {2026},
+  url          = {https://signals.gitdealflow.com/data/ideas-of-the-day/},
+  note         = {Accessed: 2026-07-28}
+}</pre>
+    <p style="margin-top:.5rem;color:var(--muted);font-size:.8rem">Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" style="color:var(--accent)">CC BY 4.0</a>. Attribution required.</p>
+    </div>
+
+    <footer>
+    <p><strong>VC Deal Flow Signal</strong> — Startup engineering momentum signals &amp; VC deal flow intelligence</p>
+    <p><a href="https://signals.gitdealflow.com">signals.gitdealflow.com</a> · <a href="https://signals.gitdealflow.com/data/">All research datasets</a> · <a href="https://signals.gitdealflow.com/data/feed.json">JSON Feed</a></p>
+    <p style="margin-top:.5rem">Data licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. When you use this data, please link back to this page. Each backlink helps us keep this research free and updated.</p>
+    </footer>
+    </div>
+
+    </div>
+    </body>
+    </html>

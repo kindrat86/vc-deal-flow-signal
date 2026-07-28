@@ -1,0 +1,202 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VC Deal Flow Sector Benchmark Data | VC Deal Flow Signal Research Data</title>
+    <meta name="description" content="Aggregate engineering momentum benchmarks by sector for 324+ startups. Compare commit velocity, contributor counts, and startup density across 15 industry verti">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://signals.gitdealflow.com/data/sector-benchmarks/">
+    <meta property="og:title" content="VC Deal Flow Sector Benchmark Data | VC Deal Flow Signal Research Data">
+    <meta property="og:description" content="Aggregate engineering momentum benchmarks by sector for 324+ startups. Compare commit velocity, contributor counts, and startup density across 15 industry verticals.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://signals.gitdealflow.com/data/sector-benchmarks/">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" defer></script>
+    <script type="application/ld+json">[
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "VC Deal Flow Sector Benchmark Data",
+    "description": "Aggregate engineering momentum benchmarks broken down by industry sector. Each sector entry includes total startups tracked, average commit velocity (14-day rolling window), average contributor count, and overall sector activity ranking. Data derived from the Q3 2026 VC Deal Flow Signal dataset of 324+ venture-backed startups. Sectors ranked by startup count: Web3 (48), EdTech (34), E-commerce Infrastructure (27), Data Infrastructure (25), Healthcare (24), Supply Chain (23), Enterprise SaaS (21), Social & Community (19), Space Tech (18), Robotics (17), Gaming (17), PropTech (16), Legal Tech (13), HR Tech (11), AgriTech (11). Updated weekly.",
+    "url": "https://signals.gitdealflow.com/data/sector-benchmarks/",
+    "identifier": "sector-benchmarks",
+    "keywords": "sector benchmarks, VC sector analysis, startup sector comparison, engineering velocity by sector, industry benchmarks, deal flow sector data",
+    "creator": {
+      "@type": "Organization",
+      "name": "VC Deal Flow Signal",
+      "url": "https://signals.gitdealflow.com"
+    },
+    "datePublished": "2026-07-28",
+    "dateModified": "2026-07-28",
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "isAccessibleForFree": true,
+    "temporalCoverage": "2026-Q3",
+    "distribution": [
+      {
+        "@type": "DataDownload",
+        "encodingFormat": "CSV",
+        "contentUrl": "https://signals.gitdealflow.com/data/sector-benchmarks/data.csv"
+      },
+      {
+        "@type": "DataDownload",
+        "encodingFormat": "JSON",
+        "contentUrl": "https://signals.gitdealflow.com/data/sector-benchmarks/data.json"
+      }
+    ],
+    "includedInDataCatalog": {
+      "@type": "DataCatalog",
+      "name": "VC Deal Flow Signal Research Data",
+      "url": "https://signals.gitdealflow.com/data/"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "VC Deal Flow Sector Benchmark Data",
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": [
+        "#main-content"
+      ]
+    }
+  }
+]</script>
+    <style>
+    :root{--bg:#fafbfc;--fg:#1a1a2e;--accent:#2563eb;--muted:#6b7280;--border:#e5e7eb;--card:#fff;--green:#059669;--amber:#d97706}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--fg);line-height:1.7}
+    .container{max-width:960px;margin:0 auto;padding:2rem 1.5rem}
+    h1{font-size:2.2rem;font-weight:800;margin-bottom:.5rem;line-height:1.2}
+    h2{font-size:1.5rem;font-weight:700;margin:2rem 0 1rem}
+    h3{font-size:1.15rem;font-weight:600;margin:1.5rem 0 .75rem}
+    .lead{font-size:1.15rem;color:var(--muted);margin-bottom:1.5rem}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin-bottom:1rem}
+    table{width:100%;border-collapse:collapse;margin:1.5rem 0}
+    th,td{padding:.75rem 1rem;text-align:left;border-bottom:1px solid var(--border)}
+    th{background:var(--bg);font-weight:600;color:var(--muted);font-size:.85rem;text-transform:uppercase;letter-spacing:.05em}
+    td.source{font-size:.82rem;color:var(--muted);font-style:italic}
+    .value{font-weight:700;color:var(--accent);white-space:nowrap}
+    .chart-box{margin:2rem 0;padding:1.5rem;background:var(--card);border:1px solid var(--border);border-radius:12px}
+    .chart-box canvas{max-height:380px}
+    .btn{display:inline-block;padding:.7rem 1.5rem;border-radius:8px;font-weight:600;text-decoration:none;font-size:.95rem;margin:.25rem;transition:all .15s}
+    .btn-primary{background:var(--accent);color:#fff;border:none}
+    .btn-primary:hover{background:#1d4ed8}
+    .btn-outline{border:2px solid var(--border);color:var(--fg);background:transparent}
+    .btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+    .cite-box{background:#f0f7ff;border:1px solid #bfdbfe;border-radius:8px;padding:1.25rem;margin:1.5rem 0;font-size:.88rem}
+    .cite-box pre{background:#1e293b;color:#e2e8f0;padding:.75rem;border-radius:6px;overflow-x:auto;font-size:.8rem;margin-top:.5rem}
+    .breadcrumb{font-size:.85rem;color:var(--muted);margin-bottom:1.5rem}
+    .breadcrumb a{color:var(--muted);text-decoration:none}
+    .breadcrumb a:hover{color:var(--accent)}
+    .nav-links{display:flex;gap:.75rem;flex-wrap:wrap;margin:1.5rem 0;justify-content:center}
+    .badge{display:inline-block;padding:.2rem .6rem;border-radius:4px;font-size:.75rem;font-weight:600;background:#dcfce7;color:var(--green)}
+    .badge-amber{background:#fef3c7;color:var(--amber)}
+    .badge-blue{background:#dbeafe;color:var(--accent)}
+    footer{margin-top:3rem;padding:1.5rem 0;border-top:1px solid var(--border);color:var(--muted);font-size:.85rem}
+    footer a{color:var(--accent)}
+    .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin:1.5rem 0}
+    .stat-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.25rem}
+    .stat-card .num{font-size:1.8rem;font-weight:800;color:var(--accent)}
+    .stat-card .label{font-size:.82rem;color:var(--muted);margin-top:.25rem}
+    .dataset-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem;margin:1.5rem 0}
+    @media(max-width:640px){.container{padding:1rem}h1{font-size:1.6rem}}
+    </style>
+    <style>/* CENTERED TEXT 2026-07-25 */body,body *{text-align:center!important}ul,ol{list-style-position:inside;padding-left:0}pre,pre *,code,code *{text-align:left!important}</style>
+    </head>
+    <body>
+    <div class="container">
+        <nav class="breadcrumb"><a href="/">Home</a> › <a href="/data/">Research Data</a> › VC Deal Flow Sector Benchmark Data</nav>
+    <div id="main-content">
+    <h1>VC Deal Flow Sector Benchmark Data</h1>
+    <p class="lead">Aggregate engineering momentum benchmarks by sector for 324+ startups. Compare commit velocity, contributor counts, and startup density across 15 industry verticals.</p>
+    <p>
+    <span class="badge">CC BY 4.0</span>
+    <span class="badge badge-blue" style="margin-left:.5rem">Updated 2026-07-28</span>
+    <span class="badge badge-amber" style="margin-left:.5rem">Free</span>
+    </p>
+
+    <div class="nav-links">
+<a href="data.csv" class="btn btn-primary" download>📥 Download CSV</a>
+<a href="data.json" class="btn btn-outline" download>📥 Download JSON</a>
+<a href="https://signals.gitdealflow.com/api/signals.json" class="btn btn-outline" target="_blank">🔌 Live API</a>
+<a href="https://signals.gitdealflow.com/api/signals.csv" class="btn btn-outline" target="_blank">🔌 Live CSV</a>
+</div>
+
+    <div class="stat-grid">
+    <div class="stat-card"><div class="num">15</div><div class="label">Total sectors tracked</div><div style="font-size:.75rem;color:#9ca3af;margin-top:.25rem">Industry verticals</div></div>
+<div class="stat-card"><div class="num">324+</div><div class="label">Total startups</div><div style="font-size:.75rem;color:#9ca3af;margin-top:.25rem">Across all sectors</div></div>
+<div class="stat-card"><div class="num">Web3</div><div class="label">Top sector by count</div><div style="font-size:.75rem;color:#9ca3af;margin-top:.25rem">48 startups tracked</div></div>
+<div class="stat-card"><div class="num">Healthcare</div><div class="label">Highest avg velocity</div><div style="font-size:.75rem;color:#9ca3af;margin-top:.25rem">95 commits/14d</div></div>
+<div class="stat-card"><div class="num">4</div><div class="label">Total signal classifications</div><div style="font-size:.75rem;color:#9ca3af;margin-top:.25rem">Framework migration, hiring burst, deploy spike, infrastructure buildout</div></div>
+<div class="stat-card"><div class="num">Pre-seed</div><div class="label">Earliest stage tracked</div><div style="font-size:.75rem;color:#9ca3af;margin-top:.25rem">83 startups</div></div>
+<div class="stat-card"><div class="num">Growth</div><div class="label">Latest stage tracked</div><div style="font-size:.75rem;color:#9ca3af;margin-top:.25rem">79 startups</div></div>
+<div class="stat-card"><div class="num">Weekly</div><div class="label">Refresh frequency</div><div style="font-size:.75rem;color:#9ca3af;margin-top:.25rem">Every Monday ~09:00 UTC</div></div>
+
+    </div>
+
+    <h2>Dataset Details</h2>
+    <p>Aggregate engineering momentum benchmarks broken down by industry sector. Each sector entry includes total startups tracked, average commit velocity (14-day rolling window), average contributor count, and overall sector activity ranking. Data derived from the Q3 2026 VC Deal Flow Signal dataset of 324+ venture-backed startups. Sectors ranked by startup count: Web3 (48), EdTech (34), E-commerce Infrastructure (27), Data Infrastructure (25), Healthcare (24), Supply Chain (23), Enterprise SaaS (21), Social &amp; Community (19), Space Tech (18), Robotics (17), Gaming (17), PropTech (16), Legal Tech (13), HR Tech (11), AgriTech (11). Updated weekly.</p>
+
+    <h2>Key Statistics</h2>
+    <div class="card" style="overflow-x:auto">
+    <table>
+    <thead><tr><th>Sector</th><th>Startups</th><th>Avg Commit Velocity</th></tr></thead>
+    <tbody><tr><td>Total sectors tracked</td><td class="value">15</td><td class="source">Industry verticals</td></tr>
+<tr><td>Total startups</td><td class="value">324+</td><td class="source">Across all sectors</td></tr>
+<tr><td>Top sector by count</td><td class="value">Web3</td><td class="source">48 startups tracked</td></tr>
+<tr><td>Highest avg velocity</td><td class="value">Healthcare</td><td class="source">95 commits/14d</td></tr>
+<tr><td>Total signal classifications</td><td class="value">4</td><td class="source">Framework migration, hiring burst, deploy spike, infrastructure buildout</td></tr>
+<tr><td>Earliest stage tracked</td><td class="value">Pre-seed</td><td class="source">83 startups</td></tr>
+<tr><td>Latest stage tracked</td><td class="value">Growth</td><td class="source">79 startups</td></tr>
+<tr><td>Refresh frequency</td><td class="value">Weekly</td><td class="source">Every Monday ~09:00 UTC</td></tr>
+</tbody>
+    </table>
+    </div>
+
+        <h2>Per-Sector Breakdown (Q3 2026)</h2>
+    <div class="card" style="overflow-x:auto">
+    <table>
+    <thead><tr><th>Sector</th><th>Startups</th><th>Avg Commit Velocity</th><th>Avg Contributors</th></tr></thead>
+    <tbody>
+    <tr><td>Web3</td><td class="value">48</td><td class="value">37</td><td class="value">37</td></tr><tr><td>EdTech</td><td class="value">34</td><td class="value">60</td><td class="value">33</td></tr><tr><td>E-commerce Infrastructure</td><td class="value">27</td><td class="value">53</td><td class="value">39</td></tr><tr><td>Data Infrastructure</td><td class="value">25</td><td class="value">86</td><td class="value">38</td></tr><tr><td>Healthcare</td><td class="value">24</td><td class="value">94</td><td class="value">36</td></tr><tr><td>Supply Chain</td><td class="value">23</td><td class="value">23</td><td class="value">19</td></tr><tr><td>Enterprise SaaS</td><td class="value">21</td><td class="value">33</td><td class="value">31</td></tr><tr><td>Social &amp; Community</td><td class="value">19</td><td class="value">34</td><td class="value">33</td></tr><tr><td>Space Tech</td><td class="value">18</td><td class="value">32</td><td class="value">42</td></tr><tr><td>Robotics</td><td class="value">17</td><td class="value">62</td><td class="value">45</td></tr><tr><td>Gaming</td><td class="value">17</td><td class="value">73</td><td class="value">27</td></tr><tr><td>PropTech</td><td class="value">16</td><td class="value">23</td><td class="value">16</td></tr><tr><td>Legal Tech</td><td class="value">13</td><td class="value">27</td><td class="value">7</td></tr><tr><td>HR Tech</td><td class="value">11</td><td class="value">9</td><td class="value">28</td></tr><tr><td>AgTech</td><td class="value">11</td><td class="value">39</td><td class="value">28</td></tr>
+    </tbody>
+    </table>
+    </div>
+
+    <h2>Sector Activity Ranking</h2>
+    <p>Sectors ranked by total engineering activity (sum of commit velocities):</p>
+    <div class="card" style="overflow-x:auto">
+    <table>
+    <thead><tr><th>Rank</th><th>Sector</th><th>Total Commit Velocity</th></tr></thead>
+    <tbody>
+    <tr><td>#1</td><td>Healthcare</td><td class="value">2273</td></tr><tr><td>#2</td><td>Data Infrastructure</td><td class="value">2153</td></tr><tr><td>#3</td><td>EdTech</td><td class="value">2072</td></tr><tr><td>#4</td><td>Web3</td><td class="value">1803</td></tr><tr><td>#5</td><td>E-commerce Infrastructure</td><td class="value">1449</td></tr><tr><td>#6</td><td>Gaming</td><td class="value">1245</td></tr><tr><td>#7</td><td>Robotics</td><td class="value">1058</td></tr><tr><td>#8</td><td>Enterprise SaaS</td><td class="value">700</td></tr><tr><td>#9</td><td>Social &amp; Community</td><td class="value">662</td></tr><tr><td>#10</td><td>Space Tech</td><td class="value">593</td></tr><tr><td>#11</td><td>Supply Chain</td><td class="value">534</td></tr><tr><td>#12</td><td>AgTech</td><td class="value">434</td></tr><tr><td>#13</td><td>PropTech</td><td class="value">374</td></tr><tr><td>#14</td><td>Legal Tech</td><td class="value">357</td></tr><tr><td>#15</td><td>HR Tech</td><td class="value">103</td></tr>
+    </tbody>
+    </table>
+    </div>
+
+
+        <div class="cite-box">
+    <strong>📚 Cite this dataset</strong>
+    <p style="margin-top:.5rem"><strong>APA:</strong> VC Deal Flow Signal. (2026-07-28). <i>VC Deal Flow Sector Benchmark Data</i>. Retrieved from https://signals.gitdealflow.com/data/sector-benchmarks/</p>
+    <p style="margin-top:.5rem"><strong>MLA:</strong> "VC Deal Flow Sector Benchmark Data." <em>VC Deal Flow Signal</em>, 2026-07-28, signals.gitdealflow.com/data/sector-benchmarks/.</p>
+    <p style="margin-top:.5rem"><strong>BibTeX:</strong></p>
+    <pre>@misc{sector-benchmarks,
+  author       = {VC Deal Flow Signal},
+  title        = {VC Deal Flow Sector Benchmark Data},
+  year         = {2026},
+  url          = {https://signals.gitdealflow.com/data/sector-benchmarks/},
+  note         = {Accessed: 2026-07-28}
+}</pre>
+    <p style="margin-top:.5rem;color:var(--muted);font-size:.8rem">Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" style="color:var(--accent)">CC BY 4.0</a>. Attribution required.</p>
+    </div>
+
+    <footer>
+    <p><strong>VC Deal Flow Signal</strong> — Startup engineering momentum signals &amp; VC deal flow intelligence</p>
+    <p><a href="https://signals.gitdealflow.com">signals.gitdealflow.com</a> · <a href="https://signals.gitdealflow.com/data/">All research datasets</a> · <a href="https://signals.gitdealflow.com/data/feed.json">JSON Feed</a></p>
+    <p style="margin-top:.5rem">Data licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. When you use this data, please link back to this page. Each backlink helps us keep this research free and updated.</p>
+    </footer>
+    </div>
+
+    </div>
+    </body>
+    </html>

@@ -1,0 +1,107 @@
+[
+  {
+    "sector": "Web3",
+    "startupCount": 48,
+    "avgCommitVelocity14d": 37,
+    "avgContributors": 37,
+    "totalCommitVelocity": 1803
+  },
+  {
+    "sector": "EdTech",
+    "startupCount": 34,
+    "avgCommitVelocity14d": 60,
+    "avgContributors": 33,
+    "totalCommitVelocity": 2072
+  },
+  {
+    "sector": "E-commerce Infrastructure",
+    "startupCount": 27,
+    "avgCommitVelocity14d": 53,
+    "avgContributors": 39,
+    "totalCommitVelocity": 1449
+  },
+  {
+    "sector": "Data Infrastructure",
+    "startupCount": 25,
+    "avgCommitVelocity14d": 86,
+    "avgContributors": 38,
+    "totalCommitVelocity": 2153
+  },
+  {
+    "sector": "Healthcare",
+    "startupCount": 24,
+    "avgCommitVelocity14d": 94,
+    "avgContributors": 36,
+    "totalCommitVelocity": 2273
+  },
+  {
+    "sector": "Supply Chain",
+    "startupCount": 23,
+    "avgCommitVelocity14d": 23,
+    "avgContributors": 19,
+    "totalCommitVelocity": 534
+  },
+  {
+    "sector": "Enterprise SaaS",
+    "startupCount": 21,
+    "avgCommitVelocity14d": 33,
+    "avgContributors": 31,
+    "totalCommitVelocity": 700
+  },
+  {
+    "sector": "Social & Community",
+    "startupCount": 19,
+    "avgCommitVelocity14d": 34,
+    "avgContributors": 33,
+    "totalCommitVelocity": 662
+  },
+  {
+    "sector": "Space Tech",
+    "startupCount": 18,
+    "avgCommitVelocity14d": 32,
+    "avgContributors": 42,
+    "totalCommitVelocity": 593
+  },
+  {
+    "sector": "Robotics",
+    "startupCount": 17,
+    "avgCommitVelocity14d": 62,
+    "avgContributors": 45,
+    "totalCommitVelocity": 1058
+  },
+  {
+    "sector": "Gaming",
+    "startupCount": 17,
+    "avgCommitVelocity14d": 73,
+    "avgContributors": 27,
+    "totalCommitVelocity": 1245
+  },
+  {
+    "sector": "PropTech",
+    "startupCount": 16,
+    "avgCommitVelocity14d": 23,
+    "avgContributors": 16,
+    "totalCommitVelocity": 374
+  },
+  {
+    "sector": "Legal Tech",
+    "startupCount": 13,
+    "avgCommitVelocity14d": 27,
+    "avgContributors": 7,
+    "totalCommitVelocity": 357
+  },
+  {
+    "sector": "HR Tech",
+    "startupCount": 11,
+    "avgCommitVelocity14d": 9,
+    "avgContributors": 28,
+    "totalCommitVelocity": 103
+  },
+  {
+    "sector": "AgTech",
+    "startupCount": 11,
+    "avgCommitVelocity14d": 39,
+    "avgContributors": 28,
+    "totalCommitVelocity": 434
+  }
+]

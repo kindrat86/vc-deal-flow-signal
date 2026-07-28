@@ -1,0 +1,325 @@
+name,sector,stage,geography,commitVelocity14d,commitVelocityChange,contributors,contributorGrowth,newRepos,signalType,githubUrl
+the-momentum,Healthcare,Growth,Unknown,17,-26%,52,+25%,0,Framework migration,https://github.com/the-momentum
+andes,Healthcare,Pre-seed,Unknown,3,-40%,3,+0%,0,Framework migration,https://github.com/andes
+simpledotorg,Healthcare,Seed,Unknown,2,+0%,18,+0%,1,Framework migration,https://github.com/simpledotorg
+aipoch,Healthcare,Seed,APAC,307,+1362%,8,+0%,1,Deploy frequency spike,https://github.com/aipoch
+OHIF,Healthcare,Growth,Unknown,28,-30%,100,+90%,1,Engineering hiring burst,https://github.com/OHIF
+aphp,Healthcare,Seed,EU,6,-25%,14,+0%,3,Infrastructure buildout,https://github.com/aphp
+FreedomIntelligence,Healthcare,Seed,Unknown,55,-40%,16,+67%,4,Engineering hiring burst,https://github.com/FreedomIntelligence
+zapplyjobs,Healthcare,Pre-seed,US,1388,+2%,7,+0%,2,Framework migration,https://github.com/zapplyjobs
+hpi-studyu,Healthcare,Seed,EU,51,-6%,17,+99%,0,Engineering hiring burst,https://github.com/hpi-studyu
+ohcnetwork,Healthcare,Growth,APAC,13,-54%,100,+0%,5,Infrastructure buildout,https://github.com/ohcnetwork
+samply,Healthcare,Series A/B,Unknown,36,-28%,20,+82%,1,Engineering hiring burst,https://github.com/samply
+earthians,Healthcare,Growth,APAC,4,-83%,86,+118%,0,Engineering hiring burst,https://github.com/earthians
+HasteHealth,Healthcare,Pre-seed,Unknown,43,-25%,6,+0%,0,Framework migration,https://github.com/HasteHealth
+hapifhir,Healthcare,Growth,Unknown,11,-58%,100,+0%,0,Framework migration,https://github.com/hapifhir
+HeliosSoftware,Healthcare,Seed,US,134,+21%,14,+25%,1,Framework migration,https://github.com/HeliosSoftware
+masslight,Healthcare,Series A/B,Unknown,53,-83%,28,+0%,0,Framework migration,https://github.com/masslight
+healthchainai,Healthcare,Seed,UK,10,-9%,14,+200%,1,Engineering hiring burst,https://github.com/healthchainai
+third-culture-software,Healthcare,Series A/B,Unknown,28,+33%,28,+40%,0,Framework migration,https://github.com/third-culture-software
+sunlabuiuc,Healthcare,Growth,Unknown,3,+50%,56,+0%,0,Framework migration,https://github.com/sunlabuiuc
+tuva-health,Healthcare,Series A/B,US,1,-67%,48,+0%,2,Framework migration,https://github.com/tuva-health
+fedbiomed,Healthcare,Series A/B,Unknown,5,-67%,23,+8%,0,Framework migration,https://github.com/fedbiomed
+insightsengineering,Healthcare,Seed,EU,2,+999%,9,+0%,2,Deploy frequency spike,https://github.com/insightsengineering
+HCW-home,Healthcare,Pre-seed,EU,2,+100%,6,+25%,0,Framework migration,https://github.com/HCW-home
+medplum,Healthcare,Growth,US,71,-32%,100,+28%,3,Infrastructure buildout,https://github.com/medplum
+ccao-data,EdTech,Seed,Unknown,3,+999%,11,+0%,0,Deploy frequency spike,https://github.com/ccao-data
+hpi-schul-cloud,EdTech,Growth,EU,16,-11%,100,+0%,0,Framework migration,https://github.com/hpi-schul-cloud
+learning-commons-org,EdTech,Seed,US,10,+11%,9,+0%,1,Framework migration,https://github.com/learning-commons-org
+iblai,EdTech,Seed,US,106,-28%,11,+34%,1,Framework migration,https://github.com/iblai
+codeforlife-education,EdTech,Pre-seed,UK,1,-67%,3,+0%,1,Framework migration,https://github.com/codeforlife-education
+buddhist-uni,EdTech,Seed,Unknown,10,-37%,11,+0%,0,Framework migration,https://github.com/buddhist-uni
+Vacademy-io,EdTech,Series A/B,APAC,697,+111%,23,+11%,0,Framework migration,https://github.com/Vacademy-io
+eduhub-org,EdTech,Seed,Unknown,65,+86%,18,+0%,0,Framework migration,https://github.com/eduhub-org
+isaqb-org,EdTech,Pre-seed,EU,7,+999%,5,+75%,0,Engineering hiring burst,https://github.com/isaqb-org
+cpinitiative,EdTech,Growth,Unknown,121,-59%,100,+28%,0,Framework migration,https://github.com/cpinitiative
+INGInious,EdTech,Growth,Unknown,11,+999%,60,+0%,0,Deploy frequency spike,https://github.com/INGInious
+StudyDrift,EdTech,Pre-seed,Unknown,66,-22%,3,+13%,0,Framework migration,https://github.com/StudyDrift
+quizfreely,EdTech,Pre-seed,Unknown,27,-56%,3,+13%,0,Framework migration,https://github.com/quizfreely
+ob-f,EdTech,Series A/B,Unknown,5,+999%,35,+67%,0,Engineering hiring burst,https://github.com/ob-f
+ai-shifu,EdTech,Series A/B,APAC,54,-57%,22,+22%,0,Framework migration,https://github.com/ai-shifu
+hedyorg,EdTech,Growth,EU,28,+87%,100,+76%,0,Engineering hiring burst,https://github.com/hedyorg
+zoonk,EdTech,Pre-seed,Unknown,55,+162%,5,+0%,0,Deploy frequency spike,https://github.com/zoonk
+spectrocloud,EdTech,Growth,US,28,+12%,92,+3%,1,Framework migration,https://github.com/spectrocloud
+otter-sec,EdTech,Seed,Unknown,49,+63%,9,+0%,0,Framework migration,https://github.com/otter-sec
+classroomio,EdTech,Series A/B,Unknown,48,-6%,30,+31%,0,Framework migration,https://github.com/classroomio
+AvaCodeSolutions,EdTech,Seed,Unknown,59,-18%,8,+25%,0,Framework migration,https://github.com/AvaCodeSolutions
+chipmates,EdTech,Pre-seed,EU,68,+66%,6,+0%,1,Framework migration,https://github.com/chipmates
+elimu-ai,EdTech,Seed,Unknown,8,-77%,12,+0%,0,Framework migration,https://github.com/elimu-ai
+OpenOLAT,EdTech,Seed,EU,121,-17%,16,+0%,0,Framework migration,https://github.com/OpenOLAT
+OpenCircuits,EdTech,Growth,US,34,+386%,71,+400%,0,Engineering hiring burst,https://github.com/OpenCircuits
+The-Mu-Foundation,EdTech,Series A/B,Unknown,2,+999%,22,+0%,0,Deploy frequency spike,https://github.com/The-Mu-Foundation
+learningeconomy,EdTech,Seed,Unknown,47,+176%,15,+18%,0,Deploy frequency spike,https://github.com/learningeconomy
+KDE,EdTech,Growth,Unknown,5,+400%,100,+0%,0,Deploy frequency spike,https://github.com/KDE
+foundation50,EdTech,Pre-seed,Unknown,188,-31%,7,+400%,3,Engineering hiring burst,https://github.com/foundation50
+DSACMS,EdTech,Series A/B,US,30,-23%,31,+0%,5,Infrastructure buildout,https://github.com/DSACMS
+sonic-pi-net,EdTech,Growth,Unknown,64,+5%,100,+78%,0,Engineering hiring burst,https://github.com/sonic-pi-net
+towardsai,EdTech,Pre-seed,US,28,-42%,3,+400%,3,Engineering hiring burst,https://github.com/towardsai
+haxtheweb,EdTech,Series A/B,US,5,-90%,42,+0%,1,Framework migration,https://github.com/haxtheweb
+scribe-org,EdTech,Growth,EU,6,+0%,59,+250%,0,Engineering hiring burst,https://github.com/scribe-org
+Adyen,E-commerce Infrastructure,Seed,EU,16,-47%,13,+0%,0,Framework migration,https://github.com/Adyen
+saleor,E-commerce Infrastructure,Growth,Unknown,44,+159%,100,+110%,0,Engineering hiring burst,https://github.com/saleor
+tempoxyz,E-commerce Infrastructure,Series A/B,Unknown,100,+156%,20,+400%,4,Engineering hiring burst,https://github.com/tempoxyz
+ecomplus,E-commerce Infrastructure,Pre-seed,LATAM,1,+999%,6,+33%,0,Deploy frequency spike,https://github.com/ecomplus
+vuestorefront,E-commerce Infrastructure,Growth,Unknown,2,+999%,100,+0%,0,Deploy frequency spike,https://github.com/vuestorefront
+medusajs,E-commerce Infrastructure,Growth,US,178,+38%,100,+50%,0,Engineering hiring burst,https://github.com/medusajs
+BuilderIO,E-commerce Infrastructure,Series A/B,Unknown,496,-8%,43,+86%,1,Engineering hiring burst,https://github.com/BuilderIO
+juspay,E-commerce Infrastructure,Growth,APAC,102,-2%,100,+4%,0,Framework migration,https://github.com/juspay
+checkout,E-commerce Infrastructure,Series A/B,Unknown,8,+167%,26,+0%,0,Deploy frequency spike,https://github.com/checkout
+mercurjs,E-commerce Infrastructure,Pre-seed,Unknown,18,-84%,7,+400%,0,Engineering hiring burst,https://github.com/mercurjs
+swellstores,E-commerce Infrastructure,Series A/B,US,2,+999%,29,+100%,2,Engineering hiring burst,https://github.com/swellstores
+solidusio,E-commerce Infrastructure,Growth,Unknown,1,+999%,95,+0%,0,Deploy frequency spike,https://github.com/solidusio
+MahoCommerce,E-commerce Infrastructure,Seed,Unknown,25,-11%,13,+0%,1,Framework migration,https://github.com/MahoCommerce
+AnthropicBots,E-commerce Infrastructure,Growth,Unknown,137,-53%,68,+373%,2,Engineering hiring burst,https://github.com/AnthropicBots
+innocommerce,E-commerce Infrastructure,Seed,Unknown,34,+999%,16,+0%,0,Deploy frequency spike,https://github.com/innocommerce
+vendurehq,E-commerce Infrastructure,Growth,Unknown,52,-26%,100,+56%,1,Engineering hiring burst,https://github.com/vendurehq
+packdigital,E-commerce Infrastructure,Seed,US,4,+300%,9,+0%,0,Deploy frequency spike,https://github.com/packdigital
+biblys,E-commerce Infrastructure,Pre-seed,EU,54,+0%,5,+363%,0,Engineering hiring burst,https://github.com/biblys
+wcpos,E-commerce Infrastructure,Pre-seed,Unknown,105,+400%,6,+0%,2,Deploy frequency spike,https://github.com/wcpos
+bagisto,E-commerce Infrastructure,Pre-seed,APAC,6,-77%,4,+0%,2,Framework migration,https://github.com/bagisto
+moov-io,E-commerce Infrastructure,Pre-seed,Unknown,22,-21%,3,+0%,0,Framework migration,https://github.com/moov-io
+bic-org,E-commerce Infrastructure,Pre-seed,EU,3,+999%,3,+300%,0,Engineering hiring burst,https://github.com/bic-org
+vanilophp,E-commerce Infrastructure,Series A/B,EU,1,+999%,22,+0%,0,Deploy frequency spike,https://github.com/vanilophp
+rapidez,E-commerce Infrastructure,Seed,EU,4,+100%,15,+0%,1,Framework migration,https://github.com/rapidez
+thirtybees,E-commerce Infrastructure,Growth,EU,1,+0%,100,+0%,1,Framework migration,https://github.com/thirtybees
+evershopcommerce,E-commerce Infrastructure,Series A/B,Unknown,30,+36%,46,+400%,0,Engineering hiring burst,https://github.com/evershopcommerce
+beikeshop,E-commerce Infrastructure,Series A/B,APAC,3,+200%,21,+133%,0,Engineering hiring burst,https://github.com/beikeshop
+OCSInventory-NG,Supply Chain,Seed,EU,6,+100%,8,+0%,0,Framework migration,https://github.com/OCSInventory-NG
+gosqasorg,Supply Chain,Series A/B,Unknown,7,-72%,24,+61%,0,Engineering hiring burst,https://github.com/gosqasorg
+relizaio,Supply Chain,Pre-seed,Canada,35,+9%,5,+0%,2,Framework migration,https://github.com/relizaio
+fleetbase,Supply Chain,Seed,APAC,44,+110%,12,+0%,1,Framework migration,https://github.com/fleetbase
+PyVRP,Supply Chain,Seed,EU,3,+200%,9,+33%,0,Deploy frequency spike,https://github.com/PyVRP
+ever-co,Supply Chain,Growth,US,61,-56%,80,+400%,1,Engineering hiring burst,https://github.com/ever-co
+pyck-ai,Supply Chain,Pre-seed,EU,40,+3%,4,+213%,0,Engineering hiring burst,https://github.com/pyck-ai
+temporalio,Supply Chain,Series A/B,Unknown,11,+38%,29,+150%,0,Engineering hiring burst,https://github.com/temporalio
+pluginsGLPI,Supply Chain,Seed,EU,2,+999%,9,+100%,0,Engineering hiring burst,https://github.com/pluginsGLPI
+aureuserp,Supply Chain,Series A/B,Unknown,75,+27%,20,+0%,0,Framework migration,https://github.com/aureuserp
+rspace-os,Supply Chain,Seed,UK,20,-66%,16,+37%,0,Framework migration,https://github.com/rspace-os
+phoenixctms,Supply Chain,Pre-seed,Unknown,81,+200%,4,+379%,0,Engineering hiring burst,https://github.com/phoenixctms
+Grashjs,Supply Chain,Seed,Unknown,43,-38%,11,+0%,0,Framework migration,https://github.com/Grashjs
+medulla-tech,Supply Chain,Seed,EU,1,-67%,9,+0%,0,Framework migration,https://github.com/medulla-tech
+celerp,Supply Chain,Pre-seed,Unknown,16,-11%,3,+47%,4,Infrastructure buildout,https://github.com/celerp
+Part-DB,Supply Chain,Growth,EU,32,+191%,53,+21%,0,Deploy frequency spike,https://github.com/Part-DB
+Velocidex,Supply Chain,Growth,APAC,9,+999%,100,+0%,0,Deploy frequency spike,https://github.com/Velocidex
+phamos-eu,Supply Chain,Pre-seed,EU,41,+999%,3,+0%,1,Deploy frequency spike,https://github.com/phamos-eu
+Epic-Breakfast-Productions,Supply Chain,Seed,Unknown,2,-92%,16,+0%,0,Framework migration,https://github.com/Epic-Breakfast-Productions
+hightower-systems,Supply Chain,Pre-seed,Unknown,1,+999%,3,+0%,0,Deploy frequency spike,https://github.com/hightower-systems
+aws-samples,Supply Chain,Pre-seed,Unknown,1,-96%,5,+400%,9,Engineering hiring burst,https://github.com/aws-samples
+KyrptonaughtMC,Supply Chain,Series A/B,Unknown,2,-83%,24,+0%,0,Framework migration,https://github.com/KyrptonaughtMC
+eftechcombr,Supply Chain,Pre-seed,LATAM,1,+999%,4,+0%,1,Deploy frequency spike,https://github.com/eftechcombr
+solana-foundation,Web3,Seed,EU,119,+51%,15,+142%,0,Engineering hiring burst,https://github.com/solana-foundation
+OpenZeppelin,Web3,Seed,Unknown,19,+375%,15,+40%,3,Infrastructure buildout,https://github.com/OpenZeppelin
+tradingstrategy-ai,Web3,Seed,Unknown,110,-8%,15,+60%,0,Engineering hiring burst,https://github.com/tradingstrategy-ai
+dfinity,Web3,Seed,EU,20,+233%,8,+21%,0,Deploy frequency spike,https://github.com/dfinity
+kleros,Web3,Series A/B,EU,4,-64%,33,+0%,3,Infrastructure buildout,https://github.com/kleros
+aptos-labs,Web3,Growth,Unknown,39,+8%,100,+0%,0,Framework migration,https://github.com/aptos-labs
+subsquid,Web3,Seed,Unknown,7,+0%,8,+91%,0,Engineering hiring burst,https://github.com/subsquid
+foundry-rs,Web3,Growth,Unknown,137,-41%,100,+34%,0,Framework migration,https://github.com/foundry-rs
+ChainSafe,Web3,Growth,Canada,45,-57%,100,+0%,4,Infrastructure buildout,https://github.com/ChainSafe
+MixinNetwork,Web3,Seed,Unknown,53,+6%,10,+0%,0,Framework migration,https://github.com/MixinNetwork
+IntersectMBO,Web3,Series A/B,US,12,-37%,22,+0%,1,Framework migration,https://github.com/IntersectMBO
+remix-project-org,Web3,Growth,Unknown,21,-50%,100,+0%,0,Framework migration,https://github.com/remix-project-org
+Official-MoonDao,Web3,Series A/B,Unknown,98,-7%,30,+0%,0,Framework migration,https://github.com/Official-MoonDao
+growthepie,Web3,Seed,Unknown,6,+100%,9,+0%,0,Framework migration,https://github.com/growthepie
+axone-protocol,Web3,Series A/B,EU,8,+14%,34,+0%,1,Framework migration,https://github.com/axone-protocol
+Inferara,Web3,Seed,APAC,31,+675%,8,+105%,0,Engineering hiring burst,https://github.com/Inferara
+Hexens,Web3,Pre-seed,UK,1,+0%,5,+0%,1,Framework migration,https://github.com/Hexens
+decentralized-identity,Web3,Series A/B,Unknown,11,+267%,23,+0%,1,Deploy frequency spike,https://github.com/decentralized-identity
+KyberNetwork,Web3,Growth,APAC,44,+13%,78,+61%,2,Engineering hiring burst,https://github.com/KyberNetwork
+DTVMStack,Web3,Seed,Unknown,7,-22%,18,+0%,0,Framework migration,https://github.com/DTVMStack
+wabiverse,Web3,Growth,US,21,+31%,100,+128%,1,Engineering hiring burst,https://github.com/wabiverse
+chainstack,Web3,Seed,Unknown,46,+39%,16,+148%,0,Engineering hiring burst,https://github.com/chainstack
+tributary-so,Web3,Pre-seed,Unknown,191,+5%,5,+377%,1,Engineering hiring burst,https://github.com/tributary-so
+neus,Web3,Pre-seed,US,26,-13%,3,+1%,0,Framework migration,https://github.com/neus
+asksurf-ai,Web3,Pre-seed,US,2,+999%,5,+0%,1,Deploy frequency spike,https://github.com/asksurf-ai
+autonomys,Web3,Series A/B,US,3,+50%,49,+0%,0,Framework migration,https://github.com/autonomys
+wevm,Web3,Series A/B,Unknown,65,+103%,26,+40%,1,Framework migration,https://github.com/wevm
+kairos-io,Web3,Series A/B,Unknown,20,+54%,27,+55%,1,Engineering hiring burst,https://github.com/kairos-io
+0xLazAI,Web3,Series A/B,Unknown,10,+0%,20,+23%,0,Framework migration,https://github.com/0xLazAI
+lifinance,Web3,Pre-seed,Unknown,57,+78%,5,+0%,2,Framework migration,https://github.com/lifinance
+argotorg,Web3,Growth,Unknown,32,+10%,100,+0%,0,Framework migration,https://github.com/argotorg
+MystenLabs,Web3,Pre-seed,Unknown,172,-19%,4,+0%,1,Framework migration,https://github.com/MystenLabs
+besu-eth,Web3,Growth,Unknown,24,-41%,100,+0%,0,Framework migration,https://github.com/besu-eth
+status-im,Web3,Growth,EU,5,-89%,100,+0%,1,Framework migration,https://github.com/status-im
+Consensys,Web3,Growth,Unknown,24,-41%,100,+0%,2,Framework migration,https://github.com/Consensys
+gear-tech,Web3,Pre-seed,Unknown,40,-17%,3,+0%,1,Framework migration,https://github.com/gear-tech
+onflow,Web3,Growth,Unknown,6,-85%,99,+0%,0,Framework migration,https://github.com/onflow
+NethermindEth,Web3,Seed,Unknown,33,+50%,17,+219%,3,Engineering hiring burst,https://github.com/NethermindEth
+DimensionDev,Web3,Growth,Unknown,13,-38%,71,+236%,0,Engineering hiring burst,https://github.com/DimensionDev
+SeismicSystems,Web3,Seed,US,14,-73%,8,+400%,0,Engineering hiring burst,https://github.com/SeismicSystems
+baizhiheizi,Web3,Seed,Unknown,91,-16%,8,+400%,0,Engineering hiring burst,https://github.com/baizhiheizi
+gofractally,Web3,Seed,Unknown,28,-36%,13,+0%,1,Framework migration,https://github.com/gofractally
+ar-io,Web3,Series A/B,Unknown,12,-83%,25,+0%,4,Infrastructure buildout,https://github.com/ar-io
+sarvalabs,Web3,Pre-seed,Unknown,1,+0%,4,+0%,0,Framework migration,https://github.com/sarvalabs
+kuestcom,Web3,Seed,US,60,+30%,9,+1%,3,Infrastructure buildout,https://github.com/kuestcom
+margelo,Web3,Series A/B,Unknown,1,+999%,40,+0%,1,Deploy frequency spike,https://github.com/margelo
+gochain,Web3,Growth,Unknown,7,+999%,100,+0%,0,Deploy frequency spike,https://github.com/gochain
+immutable,Web3,Series A/B,APAC,7,-53%,21,+0%,0,Framework migration,https://github.com/immutable
+temporalio,Enterprise SaaS,Growth,Unknown,53,-12%,100,+0%,0,Framework migration,https://github.com/temporalio
+jmix-framework,Enterprise SaaS,Growth,Unknown,9,-69%,84,+0%,0,Framework migration,https://github.com/jmix-framework
+iflytek,Enterprise SaaS,Pre-seed,APAC,7,-59%,5,+0%,2,Framework migration,https://github.com/iflytek
+atrocore,Enterprise SaaS,Seed,EU,33,+10%,18,+0%,10,Infrastructure buildout,https://github.com/atrocore
+metorial,Enterprise SaaS,Pre-seed,Unknown,98,-34%,4,+0%,0,Framework migration,https://github.com/metorial
+polarsource,Enterprise SaaS,Growth,Unknown,203,-56%,100,+0%,0,Framework migration,https://github.com/polarsource
+archtechx,Enterprise SaaS,Growth,Unknown,2,-67%,71,+13%,0,Framework migration,https://github.com/archtechx
+mugnavo,Enterprise SaaS,Seed,Unknown,8,-11%,10,+0%,0,Framework migration,https://github.com/mugnavo
+pneumaticapp,Enterprise SaaS,Seed,US,4,-89%,8,+21%,0,Framework migration,https://github.com/pneumaticapp
+yzxingtu2026,Enterprise SaaS,Pre-seed,Unknown,11,-45%,4,+171%,1,Engineering hiring burst,https://github.com/yzxingtu2026
+constructorfabric,Enterprise SaaS,Seed,Unknown,113,-38%,16,+14%,8,Infrastructure buildout,https://github.com/constructorfabric
+open-condo-software,Enterprise SaaS,Growth,LATAM,24,-55%,50,+0%,0,Framework migration,https://github.com/open-condo-software
+OpnForm,Enterprise SaaS,Series A/B,EU,6,-33%,30,+40%,0,Framework migration,https://github.com/OpnForm
+goodrain,Enterprise SaaS,Series A/B,APAC,2,-92%,20,+0%,0,Framework migration,https://github.com/goodrain
+Synapsr,Enterprise SaaS,Pre-seed,EU,9,-70%,4,+0%,0,Framework migration,https://github.com/Synapsr
+zenstackhq,Enterprise SaaS,Growth,US,1,-86%,78,+0%,0,Framework migration,https://github.com/zenstackhq
+Open-Cap-Stack,Enterprise SaaS,Seed,US,4,+999%,10,+0%,0,Deploy frequency spike,https://github.com/Open-Cap-Stack
+lomiafrica,Enterprise SaaS,Seed,Unknown,61,-55%,9,+86%,2,Engineering hiring burst,https://github.com/lomiafrica
+XCO-Agency,Enterprise SaaS,Pre-seed,US,30,+200%,6,+0%,0,Deploy frequency spike,https://github.com/XCO-Agency
+saas-js,Enterprise SaaS,Series A/B,Unknown,11,+999%,37,+0%,0,Deploy frequency spike,https://github.com/saas-js
+churnkey,Enterprise SaaS,Pre-seed,Unknown,11,-42%,3,+18%,0,Framework migration,https://github.com/churnkey
+open-telemetry,Data Infrastructure,Growth,Unknown,22,-48%,100,+0%,1,Framework migration,https://github.com/open-telemetry
+subsquid,Data Infrastructure,Pre-seed,Unknown,3,+50%,7,+0%,1,Framework migration,https://github.com/subsquid
+Zipstack,Data Infrastructure,Series A/B,Unknown,12,-20%,29,+7%,0,Framework migration,https://github.com/Zipstack
+PostHog,Data Infrastructure,Growth,US,1621,-45%,100,+60%,6,Engineering hiring burst,https://github.com/PostHog
+redpanda-data,Data Infrastructure,Growth,US,91,-71%,100,+19%,1,Framework migration,https://github.com/redpanda-data
+Point72,Data Infrastructure,Series A/B,US,3,-40%,22,+200%,0,Engineering hiring burst,https://github.com/Point72
+ZemerTeam,Data Infrastructure,Pre-seed,US,61,-20%,5,+400%,2,Engineering hiring burst,https://github.com/ZemerTeam
+tuva-health,Data Infrastructure,Series A/B,US,1,-50%,48,+0%,3,Infrastructure buildout,https://github.com/tuva-health
+cryostatio,Data Infrastructure,Seed,Unknown,7,-46%,10,+11%,0,Framework migration,https://github.com/cryostatio
+scribe-org,Data Infrastructure,Growth,EU,4,+0%,62,+0%,0,Framework migration,https://github.com/scribe-org
+ConduitIO,Data Infrastructure,Series A/B,Unknown,73,+421%,23,+400%,0,Engineering hiring burst,https://github.com/ConduitIO
+DataSQRL,Data Infrastructure,Seed,Unknown,17,-45%,14,+7%,0,Framework migration,https://github.com/DataSQRL
+rocketride-org,Data Infrastructure,Series A/B,US,25,-52%,44,+0%,1,Framework migration,https://github.com/rocketride-org
+estuary,Data Infrastructure,Series A/B,Unknown,39,-22%,42,+0%,1,Framework migration,https://github.com/estuary
+airbytehq,Data Infrastructure,Series A/B,US,1,-75%,31,+0%,0,Framework migration,https://github.com/airbytehq
+ohs-foundation,Data Infrastructure,Series A/B,Unknown,2,+999%,28,+0%,3,Infrastructure buildout,https://github.com/ohs-foundation
+mloda-ai,Data Infrastructure,Pre-seed,EU,18,+500%,7,+0%,0,Deploy frequency spike,https://github.com/mloda-ai
+rudderlabs,Data Infrastructure,Seed,US,14,+17%,19,+3%,0,Framework migration,https://github.com/rudderlabs
+slothflowlabs,Data Infrastructure,Seed,US,43,-76%,8,+13%,0,Framework migration,https://github.com/slothflowlabs
+bruin-data,Data Infrastructure,Seed,UK,19,+19%,13,+106%,0,Engineering hiring burst,https://github.com/bruin-data
+AbsaOSS,Data Infrastructure,Seed,Unknown,8,+33%,9,+0%,0,Framework migration,https://github.com/AbsaOSS
+datajuicer,Data Infrastructure,Growth,Unknown,1,-87%,50,+20%,0,Framework migration,https://github.com/datajuicer
+dagucloud,Data Infrastructure,Growth,Unknown,23,-36%,77,+0%,0,Framework migration,https://github.com/dagucloud
+drt-hub,Data Infrastructure,Series A/B,APAC,43,+59%,30,+0%,1,Framework migration,https://github.com/drt-hub
+superlinked,Data Infrastructure,Growth,Unknown,2,+0%,87,+0%,0,Framework migration,https://github.com/superlinked
+gbionics,Robotics,Growth,Unknown,8,-73%,100,+2%,4,Infrastructure buildout,https://github.com/gbionics
+commaai,Robotics,Growth,Unknown,23,-45%,100,+0%,0,Framework migration,https://github.com/commaai
+livekit,Robotics,Growth,Unknown,18,-14%,73,+0%,2,Framework migration,https://github.com/livekit
+3D-Vision-World,Robotics,Seed,Unknown,6,-45%,15,+64%,0,Engineering hiring burst,https://github.com/3D-Vision-World
+cyberbotics,Robotics,Growth,US,2,-33%,100,+400%,0,Engineering hiring burst,https://github.com/cyberbotics
+robot-descriptions,Robotics,Series A/B,Unknown,10,-17%,25,+13%,0,Framework migration,https://github.com/robot-descriptions
+zapplyjobs,Robotics,Pre-seed,US,810,-40%,7,+0%,2,Framework migration,https://github.com/zapplyjobs
+copper-project,Robotics,Series A/B,US,16,-57%,34,+2%,3,Infrastructure buildout,https://github.com/copper-project
+splintered-reality,Robotics,Seed,Unknown,5,+999%,15,+0%,0,Deploy frequency spike,https://github.com/splintered-reality
+newton-physics,Robotics,Growth,Unknown,72,+11%,82,+0%,0,Framework migration,https://github.com/newton-physics
+Flexxbotics,Robotics,Pre-seed,Unknown,4,+999%,4,+400%,0,Engineering hiring burst,https://github.com/Flexxbotics
+foxglove,Robotics,Seed,Unknown,3,+999%,19,+0%,4,Infrastructure buildout,https://github.com/foxglove
+borglab,Robotics,Growth,Unknown,3,-96%,100,+0%,0,Framework migration,https://github.com/borglab
+selfpatch,Robotics,Pre-seed,Unknown,62,-57%,7,+106%,0,Engineering hiring burst,https://github.com/selfpatch
+ihmcrobotics,Robotics,Growth,Unknown,4,-60%,79,+190%,0,Engineering hiring burst,https://github.com/ihmcrobotics
+OpenSCvx,Robotics,Pre-seed,US,7,+250%,6,+0%,0,Deploy frequency spike,https://github.com/OpenSCvx
+reductstore,Robotics,Pre-seed,EU,5,-17%,7,+31%,1,Framework migration,https://github.com/reductstore
+disclose,Legal Tech,Seed,Unknown,19,+999%,8,+400%,7,Engineering hiring burst,https://github.com/disclose
+iblai,Legal Tech,Seed,US,56,-64%,11,+0%,1,Framework migration,https://github.com/iblai
+logicaldoc,Legal Tech,Pre-seed,Unknown,15,-29%,4,+79%,0,Engineering hiring burst,https://github.com/logicaldoc
+Open-Cap-Table-Coalition,Legal Tech,Series A/B,Unknown,4,-69%,20,+300%,0,Engineering hiring burst,https://github.com/Open-Cap-Table-Coalition
+stella,Legal Tech,Pre-seed,Unknown,219,+237%,3,+0%,1,Deploy frequency spike,https://github.com/stella
+dealfluence,Legal Tech,Pre-seed,Unknown,19,-77%,6,+0%,1,Framework migration,https://github.com/dealfluence
+publicmap,Legal Tech,Pre-seed,Unknown,1,+0%,6,+0%,0,Framework migration,https://github.com/publicmap
+i-dot-ai,Legal Tech,Pre-seed,UK,2,-89%,6,+40%,1,Framework migration,https://github.com/i-dot-ai
+securitybunker,Legal Tech,Pre-seed,Unknown,1,+999%,3,+0%,0,Deploy frequency spike,https://github.com/securitybunker
+jlawyerorg,Legal Tech,Seed,Unknown,1,-97%,8,+105%,0,Engineering hiring burst,https://github.com/jlawyerorg
+licensee,Legal Tech,Seed,Unknown,4,+999%,14,+0%,0,Deploy frequency spike,https://github.com/licensee
+maize-tech,Legal Tech,Pre-seed,Unknown,1,-80%,4,+0%,0,Framework migration,https://github.com/maize-tech
+TrianaLab,Legal Tech,Pre-seed,Unknown,15,+7%,3,+143%,0,Engineering hiring burst,https://github.com/TrianaLab
+microblink,HR Tech,Seed,Unknown,1,+999%,17,+0%,1,Deploy frequency spike,https://github.com/microblink
+speedyapply,HR Tech,Pre-seed,Unknown,9,-40%,5,+0%,0,Framework migration,https://github.com/speedyapply
+horilla,HR Tech,Series A/B,Unknown,4,-33%,47,+11%,0,Framework migration,https://github.com/horilla
+ever-co,HR Tech,Series A/B,US,5,+999%,34,+0%,0,Deploy frequency spike,https://github.com/ever-co
+wp-erp,HR Tech,Growth,Unknown,9,+80%,59,+0%,0,Framework migration,https://github.com/wp-erp
+Cla-Code-Community,HR Tech,Seed,LATAM,22,+57%,16,+242%,1,Engineering hiring burst,https://github.com/Cla-Code-Community
+akaunting,HR Tech,Growth,Unknown,34,+467%,100,+400%,0,Engineering hiring burst,https://github.com/akaunting
+laudspeaker,HR Tech,Seed,US,1,+999%,13,+0%,0,Deploy frequency spike,https://github.com/laudspeaker
+usertour,HR Tech,Pre-seed,APAC,13,-85%,6,+0%,0,Framework migration,https://github.com/usertour
+exyte,HR Tech,Seed,US,3,+999%,15,+0%,0,Deploy frequency spike,https://github.com/exyte
+namiml,HR Tech,Pre-seed,Unknown,2,+100%,5,+100%,2,Engineering hiring burst,https://github.com/namiml
+radcrew,PropTech,Pre-seed,Unknown,28,+999%,6,+18%,0,Deploy frequency spike,https://github.com/radcrew
+open-condo-software,PropTech,Growth,LATAM,44,-17%,50,+0%,0,Framework migration,https://github.com/open-condo-software
+bigprof-software,PropTech,Pre-seed,Unknown,1,+999%,3,+0%,0,Deploy frequency spike,https://github.com/bigprof-software
+WillowInc,PropTech,Seed,APAC,7,-63%,14,+100%,0,Engineering hiring burst,https://github.com/WillowInc
+opengeos,PropTech,Seed,US,176,-4%,12,+375%,0,Engineering hiring burst,https://github.com/opengeos
+SFDigitalServices,PropTech,Series A/B,US,12,+0%,35,+0%,0,Framework migration,https://github.com/SFDigitalServices
+bloom-housing,PropTech,Series A/B,Unknown,19,+58%,40,+51%,0,Engineering hiring burst,https://github.com/bloom-housing
+Synapsr,PropTech,Pre-seed,EU,49,+63%,4,+25%,0,Framework migration,https://github.com/Synapsr
+Qloapps,PropTech,Seed,APAC,4,+33%,17,+0%,0,Framework migration,https://github.com/Qloapps
+rosteleset,PropTech,Pre-seed,Unknown,10,+999%,3,+0%,0,Deploy frequency spike,https://github.com/rosteleset
+etewiah,PropTech,Series A/B,Unknown,5,+999%,22,+233%,0,Engineering hiring burst,https://github.com/etewiah
+ahacker-1,PropTech,Pre-seed,Unknown,1,-99%,3,+0%,0,Framework migration,https://github.com/ahacker-1
+tae0y,PropTech,Pre-seed,Unknown,7,+999%,3,+133%,0,Engineering hiring burst,https://github.com/tae0y
+AleksNeStu,PropTech,Pre-seed,Unknown,6,-85%,6,+0%,0,Framework migration,https://github.com/AleksNeStu
+orangecoding,PropTech,Series A/B,Unknown,4,-56%,43,+0%,0,Framework migration,https://github.com/orangecoding
+aelassas,PropTech,Pre-seed,Unknown,1,+999%,6,+0%,0,Deploy frequency spike,https://github.com/aelassas
+nmi-agro,AgTech,Pre-seed,EU,100,-33%,7,+0%,0,Framework migration,https://github.com/nmi-agro
+ARPA-SIMC,AgTech,Seed,Unknown,14,-42%,12,+0%,0,Framework migration,https://github.com/ARPA-SIMC
+fineprint-global,AgTech,Seed,Unknown,14,+250%,9,+178%,0,Engineering hiring burst,https://github.com/fineprint-global
+LiteFarmOrg,AgTech,Growth,Canada,186,+49%,65,+0%,0,Framework migration,https://github.com/LiteFarmOrg
+FoodOntology,AgTech,Seed,Unknown,26,+18%,12,+17%,0,Framework migration,https://github.com/FoodOntology
+Fields2Cover,AgTech,Series A/B,EU,5,+999%,22,+400%,0,Engineering hiring burst,https://github.com/Fields2Cover
+cran-task-views,AgTech,Seed,Unknown,2,+999%,13,+0%,0,Deploy frequency spike,https://github.com/cran-task-views
+o3de,AgTech,Growth,Unknown,34,+10%,100,+68%,0,Engineering hiring burst,https://github.com/o3de
+rspatial,AgTech,Series A/B,Unknown,32,+52%,49,+0%,0,Framework migration,https://github.com/rspatial
+PhotoFlare,AgTech,Series A/B,Unknown,17,+1600%,21,+0%,0,Deploy frequency spike,https://github.com/PhotoFlare
+sapic,AgTech,Pre-seed,US,4,+999%,7,+0%,0,Deploy frequency spike,https://github.com/sapic
+PCGEx,Gaming,Seed,Canada,70,+6%,12,+29%,0,Framework migration,https://github.com/PCGEx
+Mountea-Framework,Gaming,Pre-seed,Unknown,18,-47%,4,+43%,0,Framework migration,https://github.com/Mountea-Framework
+calagopus,Gaming,Series A/B,EU,38,-52%,24,+0%,1,Framework migration,https://github.com/calagopus
+LacledesLAN,Gaming,Pre-seed,Unknown,1,+0%,3,+50%,2,Engineering hiring burst,https://github.com/LacledesLAN
+MothCocoon,Gaming,Pre-seed,Unknown,8,+999%,3,+33%,0,Deploy frequency spike,https://github.com/MothCocoon
+bevyengine,Gaming,Growth,US,147,+167%,100,+0%,0,Deploy frequency spike,https://github.com/bevyengine
+phase-rs,Gaming,Growth,US,715,+6%,88,+0%,0,Framework migration,https://github.com/phase-rs
+thunder-engine,Gaming,Seed,Unknown,4,-75%,17,+36%,0,Framework migration,https://github.com/thunder-engine
+o2-engine,Gaming,Pre-seed,Unknown,18,+200%,4,+0%,0,Deploy frequency spike,https://github.com/o2-engine
+QuartermindGames,Gaming,Pre-seed,UK,2,+100%,4,+0%,0,Framework migration,https://github.com/QuartermindGames
+RouteVN,Gaming,Pre-seed,Unknown,64,+42%,7,+54%,0,Engineering hiring burst,https://github.com/RouteVN
+castle-engine,Gaming,Series A/B,Unknown,28,+8%,24,+0%,0,Framework migration,https://github.com/castle-engine
+TheXTech,Gaming,Series A/B,Unknown,34,-21%,33,+368%,0,Engineering hiring burst,https://github.com/TheXTech
+TheVessels,Gaming,Pre-seed,Unknown,55,+358%,5,+37%,0,Deploy frequency spike,https://github.com/TheVessels
+boardgameio,Gaming,Growth,Unknown,7,+40%,100,+0%,0,Framework migration,https://github.com/boardgameio
+gurkenlabs,Gaming,Series A/B,EU,5,+67%,31,+0%,0,Framework migration,https://github.com/gurkenlabs
+rpgppengine,Gaming,Pre-seed,Unknown,31,+520%,4,+34%,0,Deploy frequency spike,https://github.com/rpgppengine
+open-space-collective,Space Tech,Pre-seed,Unknown,47,-6%,5,+0%,0,Framework migration,https://github.com/open-space-collective
+OpenCyphal,Space Tech,Series A/B,Unknown,3,+50%,24,+400%,0,Engineering hiring burst,https://github.com/OpenCyphal
+RocketPy-Team,Space Tech,Growth,Unknown,24,-54%,72,+400%,0,Engineering hiring burst,https://github.com/RocketPy-Team
+ut-issl,Space Tech,Pre-seed,APAC,54,-10%,4,+74%,3,Engineering hiring burst,https://github.com/ut-issl
+orbiternassp,Space Tech,Series A/B,Unknown,7,-53%,37,+0%,0,Framework migration,https://github.com/orbiternassp
+DaedalusDock,Space Tech,Growth,Unknown,23,+44%,100,+0%,0,Framework migration,https://github.com/DaedalusDock
+Official-MoonDao,Space Tech,Series A/B,Unknown,104,+96%,30,+0%,0,Framework migration,https://github.com/Official-MoonDao
+OpenC3,Space Tech,Series A/B,US,110,-14%,49,+0%,0,Framework migration,https://github.com/OpenC3
+NASA-AMMOS,Space Tech,Growth,Unknown,19,+27%,76,+0%,0,Framework migration,https://github.com/NASA-AMMOS
+endless-sky,Space Tech,Growth,US,22,-44%,54,+30%,0,Framework migration,https://github.com/endless-sky
+elodin-sys,Space Tech,Seed,US,10,-29%,19,+5%,0,Framework migration,https://github.com/elodin-sys
+CelestiaProject,Space Tech,Series A/B,Unknown,7,+133%,34,+67%,0,Engineering hiring burst,https://github.com/CelestiaProject
+naev,Space Tech,Growth,Unknown,78,-39%,100,+66%,0,Engineering hiring burst,https://github.com/naev
+spedas,Space Tech,Series A/B,Unknown,27,+80%,39,+226%,3,Engineering hiring burst,https://github.com/spedas
+starwards,Space Tech,Pre-seed,Unknown,14,+56%,5,+10%,0,Framework migration,https://github.com/starwards
+mx-space,Space Tech,Series A/B,APAC,36,-22%,26,+0%,0,Framework migration,https://github.com/mx-space
+SatDump,Space Tech,Growth,Unknown,7,+250%,58,+0%,0,Deploy frequency spike,https://github.com/SatDump
+ossimlabs,Space Tech,Series A/B,Unknown,1,+999%,34,+0%,0,Deploy frequency spike,https://github.com/ossimlabs
+nextcloud,Social & Community,Growth,Unknown,5,+150%,74,+0%,1,Deploy frequency spike,https://github.com/nextcloud
+GetStream,Social & Community,Series A/B,Unknown,9,-47%,32,+0%,0,Framework migration,https://github.com/GetStream
+eclipse-zenoh,Social & Community,Series A/B,Unknown,5,+150%,22,+125%,0,Engineering hiring burst,https://github.com/eclipse-zenoh
+Mininglamp-OSS,Social & Community,Seed,APAC,40,-27%,17,+0%,7,Infrastructure buildout,https://github.com/Mininglamp-OSS
+nats-io,Social & Community,Seed,Unknown,2,-67%,15,+400%,1,Engineering hiring burst,https://github.com/nats-io
+coollabsio,Social & Community,Series A/B,Unknown,65,-18%,41,+81%,1,Engineering hiring burst,https://github.com/coollabsio
+opensensorhub,Social & Community,Series A/B,Unknown,3,-70%,22,+0%,0,Framework migration,https://github.com/opensensorhub
+opensource-socialnetwork,Social & Community,Series A/B,US,3,-77%,23,+0%,1,Framework migration,https://github.com/opensource-socialnetwork
+bakaphp,Social & Community,Seed,LATAM,395,-6%,15,+0%,0,Framework migration,https://github.com/bakaphp
+trovu,Social & Community,Pre-seed,Unknown,1,-89%,3,+0%,0,Framework migration,https://github.com/trovu
+unacms,Social & Community,Seed,Unknown,87,+38%,11,+19%,0,Framework migration,https://github.com/unacms
+activist-org,Social & Community,Growth,EU,5,-72%,100,+0%,0,Framework migration,https://github.com/activist-org
+flaskbb,Social & Community,Growth,Unknown,2,-50%,62,+0%,0,Framework migration,https://github.com/flaskbb
+HopHubProject,Social & Community,Pre-seed,Unknown,6,-40%,5,+0%,0,Framework migration,https://github.com/HopHubProject
+EBWiki,Social & Community,Growth,Unknown,2,-60%,81,+0%,0,Framework migration,https://github.com/EBWiki
+pysnippet,Social & Community,Seed,Unknown,14,+999%,8,+0%,0,Deploy frequency spike,https://github.com/pysnippet
+VismaLietuva,Social & Community,Series A/B,Unknown,8,+999%,31,+0%,0,Deploy frequency spike,https://github.com/VismaLietuva
+Yellow-Dog-Man,Social & Community,Growth,Unknown,4,+999%,55,+20%,1,Deploy frequency spike,https://github.com/Yellow-Dog-Man
+PastVu,Social & Community,Seed,Unknown,6,-82%,12,+400%,0,Engineering hiring burst,https://github.com/PastVu

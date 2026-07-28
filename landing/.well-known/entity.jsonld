@@ -1,0 +1,257 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": [
+        "Organization",
+        "Brand"
+      ],
+      "@id": "https://gitdealflow.com/#organization",
+      "name": "GitDealFlow",
+      "alternateName": "VC Deal Flow Signal",
+      "url": "https://gitdealflow.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://signals.gitdealflow.com/og-image.png",
+        "width": 1200,
+        "height": 630
+      },
+      "image": "https://signals.gitdealflow.com/og-image.png",
+      "description": "GitHub commit-velocity tracking across venture-backed startups. Code-side momentum signals from public GitHub data — flags startups accelerating 21–47 days before fundraise announcements.",
+      "disambiguatingDescription": "GitDealFlow is a pseudonymous, agent-native engineering-velocity signal tool that reads 4,200+ startup GitHub orgs and flags the ones accelerating 21–47 days before fundraise announcements. It is a signal tool for investors — NOT a VC fund, accelerator program, startup database, investment recommendation platform, or affiliate-marketing service. The product exposes MCP, A2A, and REST endpoints designed for AI agents and programmatic access.",
+      "email": "signals@gitdealflow.com",
+      "knowsAbout": [
+        "Startup momentum signals",
+        "GitHub commit velocity",
+        "Engineering team growth",
+        "VC deal flow intelligence",
+        "Startup fundraising prediction",
+        "Developer hiring signals",
+        "Repository expansion metrics",
+        "Sector-by-sector startup analysis",
+        "Agent-to-agent communication protocols",
+        "MCP server tools for startup signals"
+      ],
+      "sameAs": [
+        "https://t.me/gitdealflow",
+        "https://x.com/data_nerd",
+        "https://x.com/sipiteno",
+        "https://github.com/kindrat86",
+        "https://www.linkedin.com/company/gitdealflow",
+        "https://www.wikidata.org/wiki/Q139376302",
+        "https://www.crunchbase.com/organization/gitdealflow",
+        "https://ssrn.com/abstract=6606558",
+        "https://zenodo.org/records/19650920",
+        "https://www.npmjs.com/package/@gitdealflow/mcp-signal",
+        "https://signals.gitdealflow.com",
+        "https://sipiteno.com",
+        "https://invisibleexit.com",
+        "https://unlocksaas.com",
+        "https://voicelogpro.com",
+        "https://carshake.online",
+        "https://churnlens.site",
+        "https://sanctionsai.dev",
+        "https://sipi.bot"
+      ],
+      "foundingDate": "2025"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://gitdealflow.com/#website",
+      "name": "GitDealFlow",
+      "url": "https://gitdealflow.com",
+      "description": "GitDealFlow flags startups accelerating on GitHub before the round. Weekly signals from 4,200+ orgs for investors who want leading indicators.",
+      "inLanguage": "en"
+    },
+    {
+      "@type": "SpeakableSpecification",
+      "@id": "https://gitdealflow.com/#speakable",
+      "cssSelector": [
+        "h1",
+        ".hero-title",
+        ".tagline",
+        "main p:first-of-type",
+        "meta[name='description']"
+      ],
+      "xPath": [
+        "/html/head/title",
+        "/html/head/meta[@name='description']"
+      ]
+    },
+    {
+      "@type": "Brand",
+      "@id": "https://gitdealflow.com/#brand",
+      "name": "GitDealFlow",
+      "alternateName": "VC Deal Flow Signal",
+      "url": "https://gitdealflow.com",
+      "logo": "https://signals.gitdealflow.com/og-image.png",
+      "description": "GitHub commit-velocity tracking across venture-backed startups. Code-side momentum signals from public GitHub data.",
+      "sameAs": [
+        "https://t.me/gitdealflow",
+        "https://x.com/data_nerd",
+        "https://x.com/sipiteno",
+        "https://github.com/kindrat86",
+        "https://www.linkedin.com/company/gitdealflow",
+        "https://www.wikidata.org/wiki/Q139376302",
+        "https://www.crunchbase.com/organization/gitdealflow",
+        "https://ssrn.com/abstract=6606558",
+        "https://zenodo.org/records/19650920",
+        "https://www.npmjs.com/package/@gitdealflow/mcp-signal",
+        "https://signals.gitdealflow.com",
+        "https://sipiteno.com",
+        "https://invisibleexit.com",
+        "https://unlocksaas.com",
+        "https://voicelogpro.com",
+        "https://carshake.online",
+        "https://churnlens.site",
+        "https://sanctionsai.dev",
+        "https://sipi.bot"
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://gitdealflow.com/#software",
+      "name": "GitDealFlow",
+      "alternateName": "VC Deal Flow Signal",
+      "url": "https://gitdealflow.com",
+      "sameAs": "https://signals.gitdealflow.com",
+      "applicationCategory": "BusinessApplication",
+      "applicationSubCategory": "Investment Intelligence",
+      "operatingSystem": "Web, MCP, A2A, REST API",
+      "description": "GitDealFlow is a deal-flow signal tool for investors. It reads startups' public GitHub engineering activity and flags the ones accelerating in your sectors, weeks before the round or the press. Accessible via MCP server, A2A protocol, NLWeb endpoint, function-calling API, JSON API, CSV export, and Chrome extension.",
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Free Acceleration Watch",
+          "price": "0",
+          "priceCurrency": "EUR",
+          "availability": "https://schema.org/InStock"
+        },
+        {
+          "@type": "Offer",
+          "name": "Dashboard",
+          "price": "49",
+          "priceCurrency": "EUR",
+          "availability": "https://schema.org/InStock"
+        },
+        {
+          "@type": "Offer",
+          "name": "Insider Circle",
+          "price": "197",
+          "priceCurrency": "EUR",
+          "availability": "https://schema.org/InStock"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://gitdealflow.com/#dataset",
+      "name": "VC Deal Flow Signal — Public Dataset",
+      "description": "Tracks commit velocity, contributor growth, and repository expansion across ~400 startup GitHub orgs in 20 sectors. Updated weekly.",
+      "url": "https://signals.gitdealflow.com",
+      "creator": {
+        "@id": "https://gitdealflow.com/#organization"
+      },
+      "publisher": {
+        "@id": "https://gitdealflow.com/#organization"
+      },
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "isAccessibleForFree": true,
+      "keywords": [
+        "Startup momentum signals",
+        "GitHub commit velocity",
+        "Engineering team growth",
+        "VC deal flow intelligence",
+        "Startup fundraising prediction",
+        "Agent tools",
+        "MCP server",
+        "A2A protocol"
+      ],
+      "dateModified": "2026-07-18",
+      "inLanguage": "en",
+      "distribution": [
+        {
+          "@type": "DataDownload",
+          "contentUrl": "https://signals.gitdealflow.com/api/signals.json",
+          "encodingFormat": "application/json"
+        },
+        {
+          "@type": "DataDownload",
+          "contentUrl": "https://signals.gitdealflow.com/api/signals.csv",
+          "encodingFormat": "text/csv"
+        }
+      ]
+    },
+    {
+      "@type": "ItemList",
+      "@id": "https://gitdealflow.com/#agent-surfaces",
+      "name": "GitDealFlow Agent Surfaces",
+      "description": "All programmatic interfaces exposed by GitDealFlow for AI agent interaction.",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MCP Server (stdio)",
+          "url": "https://signals.gitdealflow.com/.well-known/mcp.json",
+          "description": "Model Context Protocol server for Claude Desktop, Cursor, and any MCP-compatible host."
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "MCP Server (Streamable HTTP)",
+          "url": "https://signals.gitdealflow.com/api/mcp/rpc",
+          "description": "HTTP transport MCP endpoint for ChatGPT Apps and hosted MCP runtimes."
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "A2A Endpoint",
+          "url": "https://signals.gitdealflow.com/api/a2a",
+          "description": "Google A2A protocol agent-to-agent endpoint using JSON-RPC 2.0."
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "NLWeb Endpoint",
+          "url": "https://signals.gitdealflow.com/api/nlweb",
+          "description": "Microsoft NLWeb-compatible conversational endpoint for natural-language queries."
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "Function-Calling API",
+          "url": "https://signals.gitdealflow.com/api/agent/tools",
+          "description": "OpenAI/Anthropic/Gemini SDK-compatible function-calling interface."
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "name": "JSON API",
+          "url": "https://signals.gitdealflow.com/api/signals.json",
+          "description": "Direct REST API returning startup signal data."
+        },
+        {
+          "@type": "ListItem",
+          "position": 7,
+          "name": "CSV Export",
+          "url": "https://signals.gitdealflow.com/api/signals.csv",
+          "description": "Bulk CSV export for spreadsheets, dataframes, and BI tools."
+        },
+        {
+          "@type": "ListItem",
+          "position": 8,
+          "name": "OpenAPI 3.1 Spec",
+          "url": "https://signals.gitdealflow.com/api/openapi.json",
+          "description": "OpenAPI 3.1 specification for code generation and tool registries."
+        },
+        {
+          "@type": "ListItem",
+          "position": 9,
+          "name": "Chrome Extension",
+          "url": "https://signals.gitdealflow.com/chrome-extension",
+          "description": "Manifest V3 extension that injects momentum badges on Crunchbase and Wellfound."
+        }
+      ]
+    }
+  ]
+}

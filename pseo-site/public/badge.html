@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Embeddable Startup Momentum Badges — VC Deal Flow Signal</title>
+<meta name="description" content="Embed live startup momentum badges in your README or website. Dynamic SVG badges showing commit velocity, trending rank, and signal type for 324+ tracked startups.">
+<link rel="canonical" href="https://signals.gitdealflow.com/badge">
+<meta name="robots" content="index, follow">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Embeddable Startup Momentum Badges",
+  "description": "Live SVG badges showing real-time startup engineering momentum data for READMEs and websites. Each embed = a permanent backlink.",
+  "author": {"@type": "Organization", "name": "GitDealFlow", "url": "https://gitdealflow.com"},
+  "datePublished": "2026-05-15",
+  "dateModified": "2026-07-28"
+}
+</script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0b1220; color: #e2e8f0; line-height: 1.6; }
+.container { max-width: 800px; margin: 0 auto; padding: 2rem 1.5rem; }
+h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
+h2 { font-size: 1.3rem; font-weight: 600; margin: 2rem 0 1rem; border-bottom: 1px solid #1e293b; padding-bottom: 0.5rem; }
+p { margin-bottom: 1rem; color: #94a3b8; }
+code, pre { font-family: 'SF Mono', monospace; }
+pre { background: #1e293b; border-radius: 8px; padding: 1rem; overflow-x: auto; margin-bottom: 1rem; font-size: 0.85rem; }
+.badge-demo { background: #1e293b; border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; text-align: center; }
+.badge-demo img { margin: 0.5rem; }
+.step { background: #1e293b; border-radius: 8px; padding: 1rem; margin-bottom: 0.75rem; }
+.step-num { display: inline-block; background: #0ea5e9; color: #fff; width: 24px; height: 24px; border-radius: 50%; text-align: center; line-height: 24px; font-size: 0.8rem; font-weight: 700; margin-right: 0.5rem; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+th, td { padding: 0.5rem 0.75rem; text-align: left; border-bottom: 1px solid #1e293b; font-size: 0.9rem; }
+th { color: #64748b; font-weight: 600; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.05em; }
+td { color: #94a3b8; }
+.cta { background: linear-gradient(135deg, #0ea5e9, #6366f1); border-radius: 12px; padding: 1.5rem; margin: 2rem 0; text-align: center; }
+.cta h2 { border: none; margin: 0 0 0.5rem; color: #fff; }
+.cta p { color: #cbd5e1; }
+</style>
+</head>
+<body>
+<div class="container">
+<h1>🚀 Startup Momentum Badges</h1>
+<p>Embed live SVG badges showing real-time startup engineering momentum data in your README, website, or dashboard. Each badge is a permanent backlink — free, dynamic, zero-config.</p>
+
+<div class="badge-demo">
+<h3 style="margin-bottom: 1rem;">Live Examples</h3>
+<img src="https://signals.gitdealflow.com/api/badge/huggingface" alt="Hugging Face momentum badge" height="28">
+<img src="https://signals.gitdealflow.com/api/badge/langchain" alt="LangChain momentum badge" height="28">
+<img src="https://signals.gitdealflow.com/api/badge/vercel" alt="Vercel momentum badge" height="28">
+<p style="margin-top: 0.75rem; font-size: 0.85rem; color: #64748b;">Badges update automatically every Monday with fresh data</p>
+</div>
+
+<h2>Why advertise a signal?</h2>
+<p>You track 324+ venture-backed startups. Each one has a GitHub org that gets visited by <strong>investors, talent acquirers, and competitive analysts</strong> every day. An embbed badge tells them: <em>this team is accelerating.</em> And it links back to your full dataset — free traffic, free referral loop.</p>
+
+<h2>Quick Start</h2>
+
+<div class="step">
+<span class="step-num">1</span>
+<strong>Find a startup's badge URL</strong>
+<pre>https://signals.gitdealflow.com/api/badge/{startup-name}</pre>
+<p>Startup names are lowercase, hyphenated — e.g. <code>huggingface</code>, <code>langchain</code>, <code>vercel</code>.</p>
+</div>
+
+<div class="step">
+<span class="step-num">2</span>
+<strong>Embed in Markdown (README)</strong>
+<pre>[![VC Deal Flow Signal](https://signals.gitdealflow.com/api/badge/huggingface)](https://signals.gitdealflow.com/startups/huggingface)</pre>
+</div>
+
+<div class="step">
+<span class="step-num">3</span>
+<strong>Embed in HTML</strong>
+<pre>&lt;a href="https://signals.gitdealflow.com/startups/huggingface"&gt;
+  &lt;img src="https://signals.gitdealflow.com/api/badge/huggingface"
+       alt="Hugging Face startup momentum badge" height="28"&gt;
+&lt;/a&gt;</pre>
+</div>
+
+<h2>Badge Types</h2>
+<table>
+<tr><th>Type</th><th>URL Pattern</th><th>Best For</th></tr>
+<tr><td>Momentum Score</td><td><code>/api/badge/{name}</code></td><td>README files, blog posts</td></tr>
+<tr><td>Trending Rank</td><td><code>/api/badge/{name}/rank</code></td><td>Dashboards, sidebars</td></tr>
+</table>
+
+<h2>Why embed badges?</h2>
+<p>Every badge embed is a <strong>permanent contextual backlink</strong> from a startup's GitHub README, documentation site, or community page. This creates a self-reinforcing loop: the badge drives awareness → more visitors → more startups want badges → more backlinks.</p>
+
+<h2>Analytics</h2>
+<p>Badge embeds are trackable via image requests. No personal data collected — only request count + referrer domain.</p>
+
+<div class="cta">
+<h2>Ready to embed?</h2>
+<p>Find any of the 324+ tracked startups and grab your badge</p>
+<a href="https://signals.gitdealflow.com/trending" style="display: inline-block; background: #fff; color: #0b1220; padding: 0.75rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; margin-top: 0.75rem;">View Trending Startups →</a>
+</div>
+
+<p style="margin-top: 2rem; font-size: 0.85rem; color: #64748b;">CC BY 4.0 — Data and badges are free to use with attribution. <a href="https://signals.gitdealflow.com" style="color: #38bdf8;">Back to VC Deal Flow Signal →</a></p>
+</div>
+</body>
+</html>

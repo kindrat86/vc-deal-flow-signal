@@ -1,0 +1,217 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Startup Engineering Momentum Signals Dataset | VC Deal Flow Signal Research Data</title>
+    <meta name="description" content="Complete ranked dataset of 324+ venture-backed startups by engineering momentum. Commit velocity, contributor growth, signal classification across 15 sectors.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://signals.gitdealflow.com/data/startup-signals/">
+    <meta property="og:title" content="Startup Engineering Momentum Signals Dataset | VC Deal Flow Signal Research Data">
+    <meta property="og:description" content="Complete ranked dataset of 324+ venture-backed startups by engineering momentum. Commit velocity, contributor growth, signal classification across 15 sectors.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://signals.gitdealflow.com/data/startup-signals/">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" defer></script>
+    <script type="application/ld+json">[
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "Startup Engineering Momentum Signals Dataset",
+    "description": "Complete ranked dataset of 324+ venture-backed startups tracked by engineering momentum signals in Q3 2026. Each entry includes commit velocity (14-day rolling window), commit velocity change (percent change vs prior window), contributor count and growth rate, new repository count, signal type classification (framework migration, engineering hiring burst, deploy frequency spike, infrastructure buildout), stage, geography, and GitHub profile URL. Sectors covered: Web3, EdTech, E-commerce Infrastructure, Data Infrastructure, Healthcare, Supply Chain, Enterprise SaaS, Social & Community, Space Tech, Robotics, Gaming, PropTech, Legal Tech, HR Tech, AgriTech. Updated weekly from public GitHub activity.",
+    "url": "https://signals.gitdealflow.com/data/startup-signals/",
+    "identifier": "startup-signals",
+    "keywords": "startup engineering signals, commit velocity, VC deal flow, startup momentum indicators, GitHub activity data, startup ranking dataset, engineering hiring signals",
+    "creator": {
+      "@type": "Organization",
+      "name": "VC Deal Flow Signal",
+      "url": "https://signals.gitdealflow.com"
+    },
+    "datePublished": "2026-07-28",
+    "dateModified": "2026-07-28",
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "isAccessibleForFree": true,
+    "temporalCoverage": "2026-Q3",
+    "distribution": [
+      {
+        "@type": "DataDownload",
+        "encodingFormat": "CSV",
+        "contentUrl": "https://signals.gitdealflow.com/data/startup-signals/data.csv"
+      },
+      {
+        "@type": "DataDownload",
+        "encodingFormat": "JSON",
+        "contentUrl": "https://signals.gitdealflow.com/data/startup-signals/data.json"
+      }
+    ],
+    "includedInDataCatalog": {
+      "@type": "DataCatalog",
+      "name": "VC Deal Flow Signal Research Data",
+      "url": "https://signals.gitdealflow.com/data/"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Startup Engineering Momentum Signals Dataset",
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": [
+        "#main-content"
+      ]
+    }
+  }
+]</script>
+    <style>
+    :root{--bg:#fafbfc;--fg:#1a1a2e;--accent:#2563eb;--muted:#6b7280;--border:#e5e7eb;--card:#fff;--green:#059669;--amber:#d97706}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--fg);line-height:1.7}
+    .container{max-width:960px;margin:0 auto;padding:2rem 1.5rem}
+    h1{font-size:2.2rem;font-weight:800;margin-bottom:.5rem;line-height:1.2}
+    h2{font-size:1.5rem;font-weight:700;margin:2rem 0 1rem}
+    h3{font-size:1.15rem;font-weight:600;margin:1.5rem 0 .75rem}
+    .lead{font-size:1.15rem;color:var(--muted);margin-bottom:1.5rem}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin-bottom:1rem}
+    table{width:100%;border-collapse:collapse;margin:1.5rem 0}
+    th,td{padding:.75rem 1rem;text-align:left;border-bottom:1px solid var(--border)}
+    th{background:var(--bg);font-weight:600;color:var(--muted);font-size:.85rem;text-transform:uppercase;letter-spacing:.05em}
+    td.source{font-size:.82rem;color:var(--muted);font-style:italic}
+    .value{font-weight:700;color:var(--accent);white-space:nowrap}
+    .chart-box{margin:2rem 0;padding:1.5rem;background:var(--card);border:1px solid var(--border);border-radius:12px}
+    .chart-box canvas{max-height:380px}
+    .btn{display:inline-block;padding:.7rem 1.5rem;border-radius:8px;font-weight:600;text-decoration:none;font-size:.95rem;margin:.25rem;transition:all .15s}
+    .btn-primary{background:var(--accent);color:#fff;border:none}
+    .btn-primary:hover{background:#1d4ed8}
+    .btn-outline{border:2px solid var(--border);color:var(--fg);background:transparent}
+    .btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+    .cite-box{background:#f0f7ff;border:1px solid #bfdbfe;border-radius:8px;padding:1.25rem;margin:1.5rem 0;font-size:.88rem}
+    .cite-box pre{background:#1e293b;color:#e2e8f0;padding:.75rem;border-radius:6px;overflow-x:auto;font-size:.8rem;margin-top:.5rem}
+    .breadcrumb{font-size:.85rem;color:var(--muted);margin-bottom:1.5rem}
+    .breadcrumb a{color:var(--muted);text-decoration:none}
+    .breadcrumb a:hover{color:var(--accent)}
+    .nav-links{display:flex;gap:.75rem;flex-wrap:wrap;margin:1.5rem 0;justify-content:center}
+    .badge{display:inline-block;padding:.2rem .6rem;border-radius:4px;font-size:.75rem;font-weight:600;background:#dcfce7;color:var(--green)}
+    .badge-amber{background:#fef3c7;color:var(--amber)}
+    .badge-blue{background:#dbeafe;color:var(--accent)}
+    footer{margin-top:3rem;padding:1.5rem 0;border-top:1px solid var(--border);color:var(--muted);font-size:.85rem}
+    footer a{color:var(--accent)}
+    .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin:1.5rem 0}
+    .stat-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.25rem}
+    .stat-card .num{font-size:1.8rem;font-weight:800;color:var(--accent)}
+    .stat-card .label{font-size:.82rem;color:var(--muted);margin-top:.25rem}
+    .dataset-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem;margin:1.5rem 0}
+    @media(max-width:640px){.container{padding:1rem}h1{font-size:1.6rem}}
+    </style>
+    <style>/* CENTERED TEXT 2026-07-25 */body,body *{text-align:center!important}ul,ol{list-style-position:inside;padding-left:0}pre,pre *,code,code *{text-align:left!important}</style>
+    </head>
+    <body>
+    <div class="container">
+        <nav class="breadcrumb"><a href="/">Home</a> › <a href="/data/">Research Data</a> › Startup Engineering Momentum Signals Dataset</nav>
+    <div id="main-content">
+    <h1>Startup Engineering Momentum Signals Dataset</h1>
+    <p class="lead">Complete ranked dataset of 324+ venture-backed startups by engineering momentum. Commit velocity, contributor growth, signal classification across 15 sectors.</p>
+    <p>
+    <span class="badge">CC BY 4.0</span>
+    <span class="badge badge-blue" style="margin-left:.5rem">Updated 2026-07-28</span>
+    <span class="badge badge-amber" style="margin-left:.5rem">Free</span>
+    </p>
+
+    <div class="nav-links">
+<a href="data.csv" class="btn btn-primary" download>📥 Download CSV</a>
+<a href="data.json" class="btn btn-outline" download>📥 Download JSON</a>
+<a href="https://signals.gitdealflow.com/api/signals.json" class="btn btn-outline" target="_blank">🔌 Live API</a>
+<a href="https://signals.gitdealflow.com/api/signals.csv" class="btn btn-outline" target="_blank">🔌 Live CSV</a>
+</div>
+
+    <div class="stat-grid">
+    <div class="stat-card"><div class="num">324+</div><div class="label">Total startups tracked</div><div style="font-size:.75rem;color:#9ca3af;margin-top:.25rem">Q3 2026 cohort</div></div>
+<div class="stat-card"><div class="num">314</div><div class="label">Unique startup orgs</div><div style="font-size:.75rem;color:#9ca3af;margin-top:.25rem">Distinct GitHub organizations</div></div>
+<div class="stat-card"><div class="num">15</div><div class="label">Sectors covered</div><div style="font-size:.75rem;color:#9ca3af;margin-top:.25rem">Industry verticals</div></div>
+<div class="stat-card"><div class="num">4</div><div class="label">Signal types</div><div style="font-size:.75rem;color:#9ca3af;margin-top:.25rem">Framework migration, hiring burst, deploy spike, infrastructure buildout</div></div>
+<div class="stat-card"><div class="num">49</div><div class="label">Commit velocity (mean)</div><div style="font-size:.75rem;color:#9ca3af;margin-top:.25rem">14-day rolling window</div></div>
+<div class="stat-card"><div class="num">14</div><div class="label">Commit velocity (median)</div><div style="font-size:.75rem;color:#9ca3af;margin-top:.25rem">14-day rolling window</div></div>
+<div class="stat-card"><div class="num">1621</div><div class="label">Commit velocity (max)</div><div style="font-size:.75rem;color:#9ca3af;margin-top:.25rem">14-day rolling window</div></div>
+<div class="stat-card"><div class="num">32.7</div><div class="label">Avg contributors</div><div style="font-size:.75rem;color:#9ca3af;margin-top:.25rem">Per startup</div></div>
+<div class="stat-card"><div class="num">100</div><div class="label">Max contributors</div><div style="font-size:.75rem;color:#9ca3af;margin-top:.25rem">Single startup</div></div>
+<div class="stat-card"><div class="num">7</div><div class="label">Geographies tracked</div><div style="font-size:.75rem;color:#9ca3af;margin-top:.25rem">US, EU, APAC, UK, LATAM, Canada, Unknown</div></div>
+<div class="stat-card"><div class="num">Weekly</div><div class="label">Refresh frequency</div><div style="font-size:.75rem;color:#9ca3af;margin-top:.25rem">Every Monday ~09:00 UTC</div></div>
+
+    </div>
+
+    <h2>Dataset Details</h2>
+    <p>Complete ranked dataset of 324+ venture-backed startups tracked by engineering momentum signals in Q3 2026. Each entry includes commit velocity (14-day rolling window), commit velocity change (percent change vs prior window), contributor count and growth rate, new repository count, signal type classification (framework migration, engineering hiring burst, deploy frequency spike, infrastructure buildout), stage, geography, and GitHub profile URL. Sectors covered: Web3, EdTech, E-commerce Infrastructure, Data Infrastructure, Healthcare, Supply Chain, Enterprise SaaS, Social &amp; Community, Space Tech, Robotics, Gaming, PropTech, Legal Tech, HR Tech, AgriTech. Updated weekly from public GitHub activity.</p>
+
+    <h2>Key Statistics</h2>
+    <div class="card" style="overflow-x:auto">
+    <table>
+    <thead><tr><th>Metric</th><th>Value</th><th>Detail</th></tr></thead>
+    <tbody><tr><td>Total startups tracked</td><td class="value">324+</td><td class="source">Q3 2026 cohort</td></tr>
+<tr><td>Unique startup orgs</td><td class="value">314</td><td class="source">Distinct GitHub organizations</td></tr>
+<tr><td>Sectors covered</td><td class="value">15</td><td class="source">Industry verticals</td></tr>
+<tr><td>Signal types</td><td class="value">4</td><td class="source">Framework migration, hiring burst, deploy spike, infrastructure buildout</td></tr>
+<tr><td>Commit velocity (mean)</td><td class="value">49</td><td class="source">14-day rolling window</td></tr>
+<tr><td>Commit velocity (median)</td><td class="value">14</td><td class="source">14-day rolling window</td></tr>
+<tr><td>Commit velocity (max)</td><td class="value">1621</td><td class="source">14-day rolling window</td></tr>
+<tr><td>Avg contributors</td><td class="value">32.7</td><td class="source">Per startup</td></tr>
+<tr><td>Max contributors</td><td class="value">100</td><td class="source">Single startup</td></tr>
+<tr><td>Geographies tracked</td><td class="value">7</td><td class="source">US, EU, APAC, UK, LATAM, Canada, Unknown</td></tr>
+<tr><td>Refresh frequency</td><td class="value">Weekly</td><td class="source">Every Monday ~09:00 UTC</td></tr>
+</tbody>
+    </table>
+    </div>
+
+        <h2>Signal Type Distribution (Q3 2026)</h2>
+    <div class="card" style="overflow-x:auto">
+    <table>
+    <thead><tr><th>Signal Type</th><th>Count</th><th>Percentage</th></tr></thead>
+    <tbody>
+    <tr><td>Framework migration</td><td class="value">161</td><td>49.7%</td></tr><tr><td>Engineering hiring burst</td><td class="value">87</td><td>26.9%</td></tr><tr><td>Deploy frequency spike</td><td class="value">58</td><td>17.9%</td></tr><tr><td>Infrastructure buildout</td><td class="value">18</td><td>5.6%</td></tr>
+    </tbody>
+    </table>
+    </div>
+
+    <h2>Stage Distribution</h2>
+    <div class="card" style="overflow-x:auto">
+    <table>
+    <thead><tr><th>Stage</th><th>Count</th><th>Percentage</th></tr></thead>
+    <tbody>
+    <tr><td>Seed</td><td class="value">85</td><td>26.2%</td></tr><tr><td>Pre-seed</td><td class="value">83</td><td>25.6%</td></tr><tr><td>Growth</td><td class="value">79</td><td>24.4%</td></tr><tr><td>Series A/B</td><td class="value">77</td><td>23.8%</td></tr>
+    </tbody>
+    </table>
+    </div>
+
+    <h2>Geographic Distribution</h2>
+    <div class="card" style="overflow-x:auto">
+    <table>
+    <thead><tr><th>Region</th><th>Count</th></tr></thead>
+    <tbody>
+    <tr><td>Unknown</td><td class="value">193</td></tr><tr><td>US</td><td class="value">52</td></tr><tr><td>EU</td><td class="value">40</td></tr><tr><td>APAC</td><td class="value">22</td></tr><tr><td>UK</td><td class="value">7</td></tr><tr><td>LATAM</td><td class="value">6</td></tr><tr><td>Canada</td><td class="value">4</td></tr>
+    </tbody>
+    </table>
+    </div>
+
+
+        <div class="cite-box">
+    <strong>📚 Cite this dataset</strong>
+    <p style="margin-top:.5rem"><strong>APA:</strong> VC Deal Flow Signal. (2026-07-28). <i>Startup Engineering Momentum Signals Dataset</i>. Retrieved from https://signals.gitdealflow.com/data/startup-signals/</p>
+    <p style="margin-top:.5rem"><strong>MLA:</strong> "Startup Engineering Momentum Signals Dataset." <em>VC Deal Flow Signal</em>, 2026-07-28, signals.gitdealflow.com/data/startup-signals/.</p>
+    <p style="margin-top:.5rem"><strong>BibTeX:</strong></p>
+    <pre>@misc{startup-signals,
+  author       = {VC Deal Flow Signal},
+  title        = {Startup Engineering Momentum Signals Dataset},
+  year         = {2026},
+  url          = {https://signals.gitdealflow.com/data/startup-signals/},
+  note         = {Accessed: 2026-07-28}
+}</pre>
+    <p style="margin-top:.5rem;color:var(--muted);font-size:.8rem">Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" style="color:var(--accent)">CC BY 4.0</a>. Attribution required.</p>
+    </div>
+
+    <footer>
+    <p><strong>VC Deal Flow Signal</strong> — Startup engineering momentum signals &amp; VC deal flow intelligence</p>
+    <p><a href="https://signals.gitdealflow.com">signals.gitdealflow.com</a> · <a href="https://signals.gitdealflow.com/data/">All research datasets</a> · <a href="https://signals.gitdealflow.com/data/feed.json">JSON Feed</a></p>
+    <p style="margin-top:.5rem">Data licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. When you use this data, please link back to this page. Each backlink helps us keep this research free and updated.</p>
+    </footer>
+    </div>
+
+    </div>
+    </body>
+    </html>

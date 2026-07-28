@@ -21,6 +21,10 @@
       "destination": "/de/:path*/index.html"
     },
     {
+      "source": "/agent-hq",
+      "destination": "/agent-hq.html"
+    },
+    {
       "source": "/mcp",
       "destination": "/mcp.html"
     },

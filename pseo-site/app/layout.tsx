@@ -174,6 +174,18 @@ export default function RootLayout({
               "if(window.trustedTypes&&trustedTypes.createPolicy){trustedTypes.createPolicy('default',{createHTML:function(s){return s;},createScript:function(s){return s;},createScriptURL:function(s){return s;}});}",
           }}
         />
+        {/* Google tag (gtag.js) — GA4 */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-GD67YXBDRX" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-GD67YXBDRX');
+            `,
+          }}
+        />
         <link rel="preconnect" href="https://eu.i.posthog.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://eu-assets.i.posthog.com" />
         <link rel="dns-prefetch" href="https://api.github.com" />

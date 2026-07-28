@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MCP Server — VC Deal Flow Signal | GitDealFlow</title>
+<meta name="description" content="Connect any MCP-compatible AI agent to the VC Deal Flow Signal dataset. Real-time startup engineering momentum data via Model Context Protocol.">
+<link rel="canonical" href="https://signals.gitdealflow.com/mcp/">
+<meta name="robots" content="index, follow">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "MCP Server — VC Deal Flow Signal",
+  "description": "Connect any MCP-compatible AI agent (Claude Desktop, Cursor, Claude Code, ChatGPT) to the VC Deal Flow Signal dataset — 324+ startups, 20 sectors, real-time engineering momentum.",
+  "author": {"@type": "Organization", "name": "GitDealFlow", "url": "https://gitdealflow.com"},
+  "datePublished": "2026-05-01",
+  "dateModified": "2026-07-28"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "VC Deal Flow Signal MCP Server",
+  "operatingSystem": "macOS, Linux, Windows",
+  "applicationCategory": "DeveloperApplication",
+  "description": "Model Context Protocol server providing access to startup engineering momentum signals for AI agents. Six tools for trending startups, sector analysis, startup signals, methodology, and Scout Score computation.",
+  "url": "https://signals.gitdealflow.com/mcp/",
+  "downloadUrl": "https://www.npmjs.com/package/@gitdealflow/mcp-signal",
+  "softwareHelp": {"@type": "WebPage", "url": "https://signals.gitdealflow.com/mcp/"}
+}
+</script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: #0b1220; color: #e2e8f0; line-height: 1.6; }
+.container { max-width: 800px; margin: 0 auto; padding: 2rem 1.5rem; }
+h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; color: #f1f5f9; }
+h2 { font-size: 1.3rem; font-weight: 600; margin: 2rem 0 1rem; color: #f1f5f9; border-bottom: 1px solid #1e293b; padding-bottom: 0.5rem; }
+h3 { font-size: 1.05rem; font-weight: 600; margin: 1.5rem 0 0.5rem; color: #94a3b8; }
+p { margin-bottom: 1rem; color: #94a3b8; }
+code, pre { font-family: 'SF Mono', 'Fira Code', monospace; }
+pre { background: #1e293b; border-radius: 8px; padding: 1rem; overflow-x: auto; margin-bottom: 1rem; font-size: 0.85rem; line-height: 1.5; }
+code { background: #1e293b; padding: 0.15em 0.4em; border-radius: 4px; font-size: 0.9em; }
+pre code { background: transparent; padding: 0; }
+.copy-btn { float: right; background: #334155; border: none; color: #94a3b8; padding: 0.25rem 0.75rem; border-radius: 4px; cursor: pointer; font-size: 0.8rem; }
+.copy-btn:hover { background: #475569; color: #f1f5f9; }
+.tag { display: inline-block; background: #1e293b; color: #38bdf8; padding: 0.2rem 0.6rem; border-radius: 999px; font-size: 0.75rem; margin-right: 0.3rem; }
+.tool-list { list-style: none; }
+.tool-list li { background: #1e293b; border-radius: 8px; padding: 1rem; margin-bottom: 0.75rem; }
+.tool-list li strong { color: #38bdf8; }
+.tool-list li p { margin: 0.25rem 0 0; font-size: 0.9rem; }
+.cta { background: linear-gradient(135deg, #0ea5e9, #6366f1); border-radius: 12px; padding: 1.5rem; margin: 2rem 0; text-align: center; }
+.cta h2 { border: none; margin: 0 0 0.5rem; color: #fff; }
+.cta a { display: inline-block; background: #fff; color: #0b1220; padding: 0.75rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; margin-top: 0.75rem; }
+.cta a:hover { background: #e2e8f0; }
+.badge { display: inline-flex; align-items: center; gap: 0.4rem; background: #1e293b; padding: 0.3rem 0.8rem; border-radius: 999px; font-size: 0.8rem; color: #38bdf8; }
+.badge img { vertical-align: middle; }
+</style>
+</head>
+<body>
+<div class="container">
+<h1>MCP Server</h1>
+<p><span class="tag">Model Context Protocol</span> <span class="tag">Startup Signals</span> <span class="tag">Free</span></p>
+<p>Connect any MCP-compatible AI agent to the <strong>VC Deal Flow Signal</strong> dataset — 324+ venture-backed startups tracked across 20 sectors, updated weekly.</p>
+
+<div class="cta">
+<h2>Quick Install</h2>
+<p style="color: #cbd5e1;">Add to your Claude Desktop or Cursor config in one line</p>
+<pre style="background: #0f172a; text-align: left;">{
+  "mcpServers": {
+    "vc-deal-flow-signal": {
+      "command": "npx",
+      "args": ["-y", "@gitdealflow/mcp-signal"]
+    }
+  }
+}</pre>
+<a href="https://www.npmjs.com/package/@gitdealflow/mcp-signal">View on npm →</a>
+</div>
+
+<h2>Available Tools</h2>
+<ul class="tool-list">
+<li><strong>get_trending_startups</strong> — Top 20 startups across all sectors ranked by momentum
+<p>Returns: name, description, stage, commit velocity, contributor growth, sector</p></li>
+<li><strong>search_startups_by_sector</strong> — Sector-specific startup signals
+<p>Parameter: <code>sector</code> ∈ ai-ml, fintech, cybersecurity, developer-tools, healthcare, climate-tech, enterprise-saas, data-infrastructure, web3, robotics, edtech, ecommerce-infrastructure, supply-chain, legal-tech, hr-tech, proptech, agtech, gaming, space-tech, social-community</p></li>
+<li><strong>get_startup_signal</strong> — Signal for a specific startup by name
+<p>Parameter: <code>name</code> — case-insensitive, normalization-tolerant</p></li>
+<li><strong>get_signals_summary</strong> — Current period metadata and format URLs</li>
+<li><strong>get_scout_receipts</strong> — Scout Score (0–100) from GitHub starring history
+<p>Parameter: <code>github_username</code></p></li>
+<li><strong>get_methodology</strong> — Full methodology text + canonical URL</li>
+</ul>
+
+<h2>Installation Guides</h2>
+
+<h3>Claude Desktop</h3>
+<pre>{
+  "mcpServers": {
+    "vc-deal-flow-signal": {
+      "command": "npx",
+      "args": ["-y", "@gitdealflow/mcp-signal"]
+    }
+  }
+}</pre>
+
+<h3>Cursor</h3>
+<p>Add to Cursor's MCP configuration:</p>
+<pre>{
+  "mcpServers": {
+    "vc-deal-flow-signal": {
+      "command": "npx",
+      "args": ["-y", "@gitdealflow/mcp-signal"]
+    }
+  }
+}</pre>
+
+<h3>Claude Code CLI</h3>
+<pre>claude mcp add vc-deal-flow-signal npx -y @gitdealflow/mcp-signal</pre>
+
+<h3>ChatGPT (Streamable HTTP)</h3>
+<pre>POST https://signals.gitdealflow.com/api/mcp/rpc
+Content-Type: application/json
+
+{"jsonrpc": "2.0", "method": "tools/list", "id": 1}</pre>
+
+<h3>Direct HTTP (any agent)</h3>
+<pre># List tools
+curl -X POST https://signals.gitdealflow.com/api/mcp/rpc \
+  -H "Content-Type: application/json" \
+  -d '{"jsonrpc": "2.0", "method": "tools/list", "id": 1}'
+
+# Get trending startups
+curl -X POST https://signals.gitdealflow.com/api/mcp/rpc \
+  -H "Content-Type: application/json" \
+  -d '{"jsonrpc": "2.0", "method": "tools/call", "params": {"name": "get_trending_startups", "arguments": {}}, "id": 2}'</pre>
+
+<h2>Distribution</h2>
+<p>
+📦 npm: <a href="https://www.npmjs.com/package/@gitdealflow/mcp-signal" style="color: #38bdf8;">@gitdealflow/mcp-signal</a><br>
+🏆 Glama A-tier: <a href="https://glama.ai/mcp/servers/@kindrat86/vc-deal-flow-signal" style="color: #38bdf8;">glama.ai/mcp/servers/@kindrat86/vc-deal-flow-signal</a><br>
+🔍 Registry: <code>io.github.kindrat86/vc-deal-flow-signal</code>
+</p>
+
+<h2>Methodology</h2>
+<p>Data refreshes every Monday ~09:00 UTC. Tracks commit velocity (14d rolling window), contributor growth, repository expansion, and signal classification across ~4,200 candidate startup GitHub orgs. See <a href="https://signals.gitdealflow.com/methodology" style="color: #38bdf8;">full methodology</a>.</p>
+
+<p style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #1e293b; font-size: 0.85rem; color: #64748b;">
+All tools are free, read-only, and require no authentication. 
+<a href="https://signals.gitdealflow.com" style="color: #38bdf8;">Back to VC Deal Flow Signal →</a></p>
+</div>
+</body>
+</html>
