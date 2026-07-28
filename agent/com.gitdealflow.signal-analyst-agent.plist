@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  GitDealFlow — Signal Analyst Agent
+  Autonomous agent that monitors startup engineering acceleration,
+  generates investor briefs, and delivers them via email + Telegram.
+
+  Runs as a long-lived daemon with its own cron scheduler:
+    - Weekly: Sunday 06:00 UTC (Sunday Signal Digest)
+    - Midweek: Wednesday 06:00 UTC (breakout pulse check)
+  Also serves the Agent HQ dashboard at http://localhost:3400.
+
+  Install:
+    cp com.gitdealflow.signal-analyst-agent.plist ~/Library/LaunchAgents/
+    launchctl load ~/Library/LaunchAgents/com.gitdealflow.signal-analyst-agent.plist
+
+  Manage:
+    launchctl start com.gitdealflow.signal-analyst-agent
+    launchctl stop  com.gitdealflow.signal-analyst-agent
+    launchctl unload ~/Library/LaunchAgents/com.gitdealflow.signal-analyst-agent.plist
+
+  Logs:
+    tail -f /tmp/gitdealflow-agent.log
+    tail -f /tmp/gitdealflow-agent.err.log
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.gitdealflow.signal-analyst-agent</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>/Users/sipi/signals-gitdealflow/agent/run-agent.sh</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/sipi/signals-gitdealflow/agent</string>
+
+  <key>RunAtLoad</key>
+  <true/>
+
+  <key>KeepAlive</key>
+  <true/>
+
+  <key>StandardOutPath</key>
+  <string>/tmp/gitdealflow-agent.log</string>
+
+  <key>StandardErrorPath</key>
+  <string>/tmp/gitdealflow-agent.err.log</string>
+
+  <key>ThrottleInterval</key>
+  <integer>10</integer>
+
+  <key>ProcessType</key>
+  <string>Background</string>
+
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>HOME</key>
+    <string>/Users/sipi</string>
+    <key>PATH</key>
+    <string>/Users/sipi/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+  </dict>
+</dict>
+</plist>

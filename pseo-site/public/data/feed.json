@@ -1,0 +1,18 @@
+{
+  "version": "https://jsonfeed.org/version/1.1",
+  "title": "Signals by GitDealFlow Research Datasets",
+  "home_page_url": "https://signals.gitdealflow.com/data/",
+  "feed_url": "https://signals.gitdealflow.com/data/feed.json",
+  "description": "Free, downloadable industry datasets from Signals by GitDealFlow. CC BY 4.0.",
+  "icon": "https://signals.gitdealflow.com/favicon.ico",
+  "items": [
+    {
+      "id": "https://signals.gitdealflow.com/data/startup-funding-statistics/",
+      "url": "https://signals.gitdealflow.com/data/startup-funding-statistics/",
+      "title": "Startup Funding & Investment Statistics 2026",
+      "content_text": "Key statistics on global startup funding: deal volume, median rounds, sector breakdowns, and geographic distribution. Compiled from PitchBook, Crunchbase, and NVCA data.",
+      "date_published": "2026-07-20T00:00:00Z",
+      "date_modified": "2026-07-20T00:00:00Z"
+    }
+  ]
+}

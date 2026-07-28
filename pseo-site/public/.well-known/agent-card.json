@@ -1,0 +1,66 @@
+{
+  "protocolVersion": "0.3.0",
+  "name": "VC Deal Flow Signal Agent",
+  "description": "Public dataset of startup engineering acceleration from public GitHub activity. Free APIs, MCP server, A2A endpoint. Tracks ~400 startups across 20 sectors.",
+  "url": "https://signals.gitdealflow.com/api/a2a",
+  "preferredTransport": "JSONRPC",
+  "version": "1.0.0",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false,
+    "stateTransitionHistory": false
+  },
+  "defaultInputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "defaultOutputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "skills": [
+    {
+      "id": "get_trending_startups",
+      "name": "Trending Startups",
+      "description": "Top 20 startups ranked by engineering momentum across all sectors.",
+      "tags": [
+        "startups",
+        "vc",
+        "momentum",
+        "trending"
+      ],
+      "examples": [
+        "What startups are trending this week?",
+        "Show breakout engineering teams"
+      ]
+    },
+    {
+      "id": "search_startups_by_sector",
+      "name": "Search by Sector",
+      "description": "Find startups in a specific sector (ai-ml, fintech, devtools, etc.) ranked by engineering acceleration.",
+      "tags": [
+        "sector",
+        "startups",
+        "search"
+      ],
+      "examples": [
+        "Fintech startups with highest momentum",
+        "AI startups in London"
+      ]
+    },
+    {
+      "id": "get_startup_signal",
+      "name": "Startup Signal Lookup",
+      "description": "Get detailed engineering momentum data for a specific startup by name.",
+      "tags": [
+        "startup",
+        "signal",
+        "due-diligence"
+      ],
+      "examples": [
+        "What's the signal for Supabase?",
+        "Look up Stripe's momentum"
+      ]
+    }
+  ]
+}

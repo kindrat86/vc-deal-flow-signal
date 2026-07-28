@@ -11,7 +11,7 @@
  *   https://developers.google.com/search/docs/crawling-indexing/sitemaps/video-sitemaps
  */
 
-import { videos, watchPageUrl, publicUrl } from "@/content/videos";
+import { videos, watchPageUrl } from "@/content/videos";
 
 export const dynamic = "force-dynamic";
 
@@ -73,38 +73,11 @@ ${tags}
     })
     .join("\n");
 
-  // Each video also surfaces under its YouTube canonical, so AI engines
-  // that index by YouTube watch URL can join on the same loc-key set.
-  const youTubeMirror = videos
-    .filter((v) => v.youtubeId)
-    .map((v) => {
-      return `  <url>
-    <loc>${escapeXml(publicUrl(v))}</loc>
-    <video:video>
-      <video:thumbnail_loc>${escapeXml(v.thumbnailMaxUrl)}</video:thumbnail_loc>
-      <video:title>${escapeXml(v.title.slice(0, 100))}</video:title>
-      <video:description>${escapeXml(v.description.slice(0, 2048))}</video:description>
-      <video:player_loc allow_embed="yes">${escapeXml(`https://www.youtube-nocookie.com/embed/${v.youtubeId}`)}</video:player_loc>
-      <video:duration>${v.durationSeconds}</video:duration>
-      <video:publication_date>${v.uploadDate}</video:publication_date>
-      <video:family_friendly>yes</video:family_friendly>
-      <video:live>no</video:live>
-      <video:category>${escapeXml(v.category)}</video:category>
-      <video:uploader info="https://www.youtube.com/@data_nerd">VC Deal Flow Signal</video:uploader>
-      <video:requires_subscription>no</video:requires_subscription>
-      <video:platform relationship="allow">web mobile tv</video:platform>
-    </video:video>
-  </url>`;
-    })
-    .join("\n");
-
   const body = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
 ${urlBlocks}
-${youTubeMirror}
-</urlset>
-`;
+</urlset>`;
 
   return new Response(body, {
     headers: {

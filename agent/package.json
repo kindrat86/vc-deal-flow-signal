@@ -1,0 +1,30 @@
+{
+  "name": "@gitdealflow/signal-analyst-agent",
+  "version": "1.0.0",
+  "description": "Autonomous Signal Analyst Agent for GitDealFlow — detects startup acceleration, classifies signals, drafts investor briefs, and delivers them without human triggering.",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "server": "tsx src/server.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx src/index.ts --once"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.36.0",
+    "@supabase/supabase-js": "^2.47.0",
+    "express": "^4.21.0",
+    "node-cron": "^3.0.3",
+    "resend": "^4.0.0",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.0.0",
+    "@types/node-cron": "^3.0.11",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0"
+  }
+}

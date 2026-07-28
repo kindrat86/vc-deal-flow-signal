@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <title>Agent HQ — GitDealFlow</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo">
+        <span class="logo-text">Agent</span>
+        <span class="logo-accent">HQ</span>
+      </div>
+      <div class="brand">GitDealFlow</div>
+      <nav class="nav">
+        <a href="#" class="nav-item active" data-view="overview">
+          <span class="nav-icon">◉</span> Overview
+        </a>
+        <a href="#" class="nav-item" data-view="signals">
+          <span class="nav-icon">⚡</span> Signals
+        </a>
+        <a href="#" class="nav-item" data-view="briefs">
+          <span class="nav-icon">📋</span> Briefs
+        </a>
+        <a href="#" class="nav-item" data-view="approvals">
+          <span class="nav-icon">✋</span> Approvals
+          <span class="badge approval-count" id="nav-approval-count" style="display:none">0</span>
+        </a>
+        <a href="#" class="nav-item" data-view="tools">
+          <span class="nav-icon">🔧</span> Tools
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="status-indicator" id="status-indicator">
+          <span class="status-dot"></span>
+          <span class="status-label" id="status-label">idle</span>
+        </div>
+        <div class="version">v1.0.0</div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main">
+      <!-- Overview View -->
+      <section class="view active" id="view-overview">
+        <header class="view-header">
+          <h1>Overview</h1>
+          <div class="actions">
+            <button class="btn btn-outline" id="btn-trigger" title="Run a manual cycle now">▶ Run Now</button>
+            <button class="btn btn-outline" id="btn-pause" title="Pause or resume the agent">⏸️ Pause</button>
+          </div>
+        </header>
+
+        <div class="grid-2">
+          <!-- Agent Status Card -->
+          <div class="card">
+            <div class="card-header">Agent Status</div>
+            <div class="card-body">
+              <div class="stat-row">
+                <span class="stat-label">Status</span>
+                <span class="stat-value" id="agent-status">—</span>
+              </div>
+              <div class="stat-row">
+                <span class="stat-label">Cycle</span>
+                <span class="stat-value" id="agent-cycle">—</span>
+              </div>
+              <div class="stat-row">
+                <span class="stat-label">Last Run</span>
+                <span class="stat-value" id="agent-last-run">—</span>
+              </div>
+              <div class="stat-row">
+                <span class="stat-label">Next Run</span>
+                <span class="stat-value" id="agent-next-run">—</span>
+              </div>
+              <div class="stat-row" id="agent-error-row" style="display:none">
+                <span class="stat-label error">Last Error</span>
+                <span class="stat-value error" id="agent-last-error">—</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Scheduler Card -->
+          <div class="card">
+            <div class="card-header">Scheduler</div>
+            <div class="card-body">
+              <div class="stat-row">
+                <span class="stat-label">Weekly (Sun 06:00 UTC)</span>
+                <span class="stat-value" id="sched-weekly">—</span>
+              </div>
+              <div class="stat-row">
+                <span class="stat-label">Midweek (Wed 06:00 UTC)</span>
+                <span class="stat-value" id="sched-midweek">—</span>
+              </div>
+              <div class="stat-row">
+                <span class="stat-label">Executing</span>
+                <span class="stat-value" id="sched-executing">—</span>
+              </div>
+              <div class="stat-row">
+                <span class="stat-label">LLM Calls This Cycle</span>
+                <span class="stat-value" id="cycle-llm-calls">—</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Top Signals -->
+        <div class="card">
+          <div class="card-header">Top Signals Right Now</div>
+          <div class="card-body">
+            <div id="top-signals-list">
+              <div class="empty-state">Loading signals…</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Briefs -->
+        <div class="card">
+          <div class="card-header">Recent Briefs</div>
+          <div class="card-body">
+            <div id="recent-briefs-list">
+              <div class="empty-state">No briefs yet</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Signals View -->
+      <section class="view" id="view-signals">
+        <header class="view-header">
+          <h1>Signals</h1>
+        </header>
+        <div class="card">
+          <div class="card-header">All Active Signals (from Supabase)</div>
+          <div class="card-body">
+            <div id="all-signals-list">
+              <div class="empty-state">Loading…</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Briefs View -->
+      <section class="view" id="view-briefs">
+        <header class="view-header">
+          <h1>Briefs</h1>
+        </header>
+        <div class="card">
+          <div class="card-header">Latest Brief</div>
+          <div class="card-body">
+            <div id="latest-brief-content">
+              <div class="empty-state">No published briefs yet</div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">Brief History</div>
+          <div class="card-body">
+            <div id="briefs-history-list">
+              <div class="empty-state">No briefs yet</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Approvals View -->
+      <section class="view" id="view-approvals">
+        <header class="view-header">
+          <h1>Pending Approvals</h1>
+          <div class="actions">
+            <button class="btn btn-primary" id="btn-approve-all">✓ Approve All</button>
+          </div>
+        </header>
+        <div id="approvals-list">
+          <div class="empty-state">No pending approvals</div>
+        </div>
+      </section>
+
+      <!-- Tools View -->
+      <section class="view" id="view-tools">
+        <header class="view-header">
+          <h1>Tool Registry</h1>
+        </header>
+        <div class="card">
+          <div class="card-body">
+            <div id="tools-list">
+              <div class="empty-state">Loading tools…</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>

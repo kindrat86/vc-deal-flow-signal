@@ -66,8 +66,7 @@
   <url><loc>https://gitdealflow.com/data/startup-ma-statistics</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://gitdealflow.com/data/startup-valuation-trends</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://gitdealflow.com/data/vc-funding-trends</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://gitdealflow.com/embed/tools/portfolio-network</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://gitdealflow.com/embed/tools/startup-momentum-checker</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+
   <url><loc>https://gitdealflow.com/faq/can-you-predict-startup-funding</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://gitdealflow.com/faq/how-accurate-are-funding-signals</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://gitdealflow.com/faq/how-do-angel-investors-make-money</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
@@ -142,8 +141,6 @@
   <url><loc>https://gitdealflow.com/glossary/product-market-fit</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://gitdealflow.com/glossary/runway</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://gitdealflow.com/glossary/safe-note</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://gitdealflow.com/glossary/safe-note</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://gitdealflow.com/glossary/seed-round</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://gitdealflow.com/glossary/seed-round</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://gitdealflow.com/glossary/series-a-funding</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://gitdealflow.com/glossary/series-a</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
@@ -152,7 +149,6 @@
   <url><loc>https://gitdealflow.com/glossary/tam-sam-som</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://gitdealflow.com/glossary/term-sheet</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://gitdealflow.com/glossary/unicorn</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://gitdealflow.com/glossary/valuation-cap</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://gitdealflow.com/glossary/valuation-cap</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://gitdealflow.com/glossary/vesting</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://gitdealflow.com/how-to</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>

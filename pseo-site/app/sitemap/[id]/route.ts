@@ -154,7 +154,6 @@ export async function GET(_req: Request, ctx: RouteContext) {
         priority: 0.8,
       })),
       { url: `${BASE_URL}/enterprise`, lastmod, changefreq: "monthly", priority: 0.85 },
-      { url: `${BASE_URL}/api/v1/pricing.json`, lastmod, changefreq: "monthly", priority: 0.7 },
       { url: `${BASE_URL}/dataset`, lastmod, changefreq: "weekly", priority: 0.85 },
       { url: `${BASE_URL}/faq`, lastmod, changefreq: "monthly", priority: 0.7 },
       { url: `${BASE_URL}/about`, lastmod, changefreq: "monthly", priority: 0.6 },
@@ -219,7 +218,6 @@ export async function GET(_req: Request, ctx: RouteContext) {
       { url: `${BASE_URL}/for-letta`, lastmod, changefreq: "monthly", priority: 0.8 },
       { url: `${BASE_URL}/for-mastra`, lastmod, changefreq: "monthly", priority: 0.8 },
       { url: `${BASE_URL}/for-vercel-ai-sdk`, lastmod, changefreq: "monthly", priority: 0.8 },
-      { url: `${BASE_URL}/api/actions/openapi.json`, lastmod, changefreq: "weekly", priority: 0.7 },
       { url: `${BASE_URL}/changelog`, lastmod, changefreq: "weekly", priority: 0.7 },
       { url: `${BASE_URL}/developers`, lastmod, changefreq: "monthly", priority: 0.7 },
       { url: `${BASE_URL}/data-sources`, lastmod, changefreq: "monthly", priority: 0.7 },
@@ -275,7 +273,6 @@ export async function GET(_req: Request, ctx: RouteContext) {
       // Wikidata Knowledge Panel claim — Brunson Audit V8 2026-05-09
       // (closes Traffic Secrets §2 Ch 9 +4-pt gap on Google).
       { url: `${BASE_URL}/wikidata`, lastmod, changefreq: "monthly", priority: 0.85 },
-      { url: `${BASE_URL}/.well-known/wikidata.json`, lastmod, changefreq: "monthly", priority: 0.7 },
       { url: `${BASE_URL}/predict`, lastmod, changefreq: "weekly", priority: 0.95 },
       { url: `${BASE_URL}/receipts`, lastmod, changefreq: "weekly", priority: 0.9 },
       { url: `${BASE_URL}/markets`, lastmod, changefreq: "weekly", priority: 0.9 },
@@ -653,11 +650,6 @@ export async function GET(_req: Request, ctx: RouteContext) {
       // tool shipped 2026-05-27: /tools/safe-calculator.
       { url: `${BASE_URL}/tools`, lastmod, changefreq: "weekly", priority: 0.85 },
       // /api/v1/tools.json — machine-readable catalog of all 8 calculators
-      // (slug, name, tagline, category, page URL, OG URL, share params,
-      // bands source). Companion to /api/v1/glossary.json. Enables MCP
-      // servers + AI agents + RAG pipelines to discover the toolset with
-      // one fetch instead of crawling /tools and parsing per-page JSON-LD.
-      { url: `${BASE_URL}/api/v1/tools.json`, lastmod, changefreq: "weekly", priority: 0.7 },
       { url: `${BASE_URL}/tools/safe-calculator`, lastmod, changefreq: "monthly", priority: 0.85 },
       { url: `${BASE_URL}/tools/runway-calculator`, lastmod, changefreq: "monthly", priority: 0.85 },
       { url: `${BASE_URL}/tools/burn-multiple-calculator`, lastmod, changefreq: "monthly", priority: 0.85 },
@@ -673,7 +665,6 @@ export async function GET(_req: Request, ctx: RouteContext) {
       // controlled vocabulary, one term per line. Sibling to the existing
       // /qa.jsonl + /dataset.jsonl apex surfaces. HF-Datasets-ready.
       { url: `${BASE_URL}/glossary.jsonl`, lastmod, changefreq: "weekly", priority: 0.7 },
-      { url: `${BASE_URL}/api/v1/glossary.jsonl`, lastmod, changefreq: "weekly", priority: 0.7 },
       // /define/[term] — one URL per glossary term, shipped 2026-05-26.
       // Sibling to /glossary (the flat index) and /signals/define/[type]
       // (the formal signal primitives). Wikipedia-shaped DefinedTerm pages

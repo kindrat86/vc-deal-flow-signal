@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VC Deal Flow Ticker — GitDealFlow</title>
+<style>
+  :root {
+    --bg: #0f172a;
+    --card-bg: #1e293b;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --accent: #38bdf8;
+    --accent-glow: rgba(56, 189, 248, 0.25);
+    --green: #34d399;
+    --amber: #fbbf24;
+    --border: #334155;
+    --radius: 10px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    font-size: 13px;
+    line-height: 1.4;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  .ticker-wrap {
+    width: 100%;
+    overflow: hidden;
+    padding: 10px 0;
+  }
+  .ticker-track {
+    display: flex;
+    gap: 0;
+    animation: scroll 60s linear infinite;
+    width: max-content;
+  }
+  .ticker-wrap.paused .ticker-track { animation-play-state: paused; }
+  .signal-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 8px 14px;
+    margin-right: 12px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: border-color 0.2s;
+    cursor: pointer;
+  }
+  .signal-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 12px var(--accent-glow);
+  }
+  .signal-icon {
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .signal-body { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+  .signal-name {
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--text);
+    display: flex; align-items: center; gap: 6px;
+  }
+  .signal-sector {
+    font-size: 11px;
+    color: var(--accent);
+    background: rgba(56, 189, 248, 0.12);
+    padding: 1px 7px;
+    border-radius: 10px;
+    font-weight: 500;
+  }
+  .signal-meta {
+    font-size: 11px;
+    color: var(--muted);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .signal-velocity {
+    font-weight: 600;
+    color: var(--green);
+  }
+  .signal-velocity.up { color: var(--green); }
+  .signal-stage {
+    background: rgba(251, 191, 36, 0.15);
+    color: var(--amber);
+    padding: 1px 6px;
+    border-radius: 8px;
+    font-size: 10px;
+    font-weight: 600;
+  }
+  .signal-powered {
+    position: fixed;
+    bottom: 4px;
+    right: 10px;
+    font-size: 10px;
+    color: var(--muted);
+    opacity: 0.5;
+    z-index: 10;
+  }
+  .signal-powered a { color: var(--accent); text-decoration: none; }
+  .signal-powered a:hover { text-decoration: underline; }
+
+  /* Card mode (vertical stack) */
+  .card-mode .ticker-track {
+    animation: none;
+    flex-direction: column;
+    gap: 8px;
+    padding: 8px;
+  }
+  .card-mode .signal-card {
+    margin-right: 0;
+    width: 100%;
+  }
+
+  /* Mini mode (compact inline) */
+  .mini-mode .signal-card {
+    padding: 4px 10px;
+    gap: 6px;
+    border-radius: 6px;
+  }
+  .mini-mode .signal-name { font-size: 12px; }
+  .mini-mode .signal-sector { font-size: 10px; padding: 0 5px; }
+  .mini-mode .signal-meta { font-size: 10px; }
+
+  /* Loading skeleton */
+  .skeleton {
+    background: linear-gradient(90deg, var(--card-bg) 25%, #334155 50%, var(--card-bg) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: var(--radius);
+    height: 44px;
+    width: 100%;
+  }
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  @keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+</style>
+</head>
+<body>
+<div class="ticker-wrap" id="ticker-wrap">
+  <div class="ticker-track" id="ticker-track">
+    <!-- Populated by JS -->
+    <div class="skeleton" style="width:200px;flex-shrink:0;margin-right:12px;"></div>
+    <div class="skeleton" style="width:180px;flex-shrink:0;margin-right:12px;"></div>
+    <div class="skeleton" style="width:220px;flex-shrink:0;margin-right:12px;"></div>
+    <div class="skeleton" style="width:190px;flex-shrink:0;margin-right:12px;"></div>
+    <div class="skeleton" style="width:210px;flex-shrink:0;margin-right:12px;"></div>
+  </div>
+</div>
+<div class="signal-powered">
+  Powered by <a href="https://gitdealflow.com?ref=ticker" target="_top" rel="noopener">GitDealFlow</a>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var BASE = "https://signals.gitdealflow.com";
+  var FEED_URL = BASE + "/api/v1/signals/feed.json";
+  var REFRESH_MS = 120000; // 2 min
+
+  // Read mode from URL hash: #card, #mini, or default (ticker)
+  var mode = "ticker";
+  var hash = window.location.hash.replace("#", "");
+  if (hash === "card") mode = "card";
+  if (hash === "mini") mode = "mini";
+
+  var wrap = document.getElementById("ticker-wrap");
+  var track = document.getElementById("ticker-track");
+
+  if (mode === "card") {
+    wrap.classList.add("card-mode");
+  } else if (mode === "mini") {
+    wrap.classList.add("mini-mode");
+  }
+
+  // Pause on hover
+  wrap.addEventListener("mouseenter", function () { wrap.classList.add("paused"); });
+  wrap.addEventListener("mouseleave", function () { wrap.classList.remove("paused"); });
+
+  function signalIcon(type) {
+    var t = (type || "").toLowerCase();
+    if (t.includes("spike") || t.includes("velocity")) return "📈";
+    if (t.includes("contributor") || t.includes("team")) return "👥";
+    if (t.includes("repo") || t.includes("new repo")) return "📦";
+    if (t.includes("breakout")) return "🚀";
+    return "📊";
+  }
+
+  function buildCard(signal) {
+    var div = document.createElement("div");
+    div.className = "signal-card";
+    div.title = signal.name + " — " + signal.signalType;
+    div.addEventListener("click", function () {
+      window.open(signal.profileUrl, "_top");
+    });
+
+    var stageHtml = signal.stage && signal.stage !== "Unknown"
+      ? '<span class="signal-stage">' + escapeHtml(signal.stage) + '</span>'
+      : "";
+
+    var sectorHtml = signal.sector
+      ? '<span class="signal-sector">' + escapeHtml(signal.sector) + '</span>'
+      : "";
+
+    div.innerHTML =
+      '<span class="signal-icon">' + signalIcon(signal.signalType) + '</span>' +
+      '<div class="signal-body">' +
+        '<div class="signal-name">' +
+          escapeHtml(signal.name) + " " + sectorHtml +
+        '</div>' +
+        '<div class="signal-meta">' +
+          '<span class="signal-velocity">' + (signal.velocity || 0) + ' commits/14d</span>' +
+          (signal.velocityChange ? ' <span>' + escapeHtml(signal.velocityChange) + '</span>' : "") +
+          " " + stageHtml +
+        '</div>' +
+      '</div>';
+    return div;
+  }
+
+  function escapeHtml(s) {
+    var d = document.createElement("div");
+    d.textContent = s;
+    return d.innerHTML;
+  }
+
+  function render(signals) {
+    if (!signals || !signals.length) {
+      track.innerHTML = '<div style="padding:16px;color:#94a3b8;">No deal signals right now. Check back soon.</div>';
+      if (mode === "ticker") wrap.style.animation = "none";
+      return;
+    }
+
+    track.innerHTML = "";
+
+    if (mode === "card") {
+      // Stack mode — show all
+      signals.forEach(function (s) { track.appendChild(buildCard(s)); });
+    } else {
+      // Ticker / mini — duplicate for seamless scroll
+      var frag = document.createDocumentFragment();
+      signals.forEach(function (s) { frag.appendChild(buildCard(s)); });
+      signals.forEach(function (s) { frag.appendChild(buildCard(s.cloneNode ? s : buildCard(s)); }); 
+      track.appendChild(frag);
+    }
+
+    // Send height to parent
+    var h = Math.max(wrap.scrollHeight, track.scrollHeight) + 20;
+    window.parent.postMessage({
+      type: "gitdealflow:ticker:size",
+      height: h,
+      slug: "ticker"
+    }, "*");
+  }
+
+  function fetchSignals() {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", FEED_URL + "?limit=10", true);
+    xhr.timeout = 10000;
+    xhr.onload = function () {
+      if (xhr.status >= 200 && xhr.status < 300) {
+        try {
+          var data = JSON.parse(xhr.responseText);
+          render(data.signals);
+        } catch (e) {
+          track.innerHTML = '<div style="padding:16px;color:#f87171;">⚠ Error loading signals.</div>';
+        }
+      }
+    };
+    xhr.onerror = function () {
+      // Keep skeleton, retry on next interval
+    };
+    xhr.send();
+  }
+
+  // Initial fetch + periodic refresh
+  fetchSignals();
+  setInterval(fetchSignals, REFRESH_MS);
+
+  // Respond to parent resize requests
+  window.addEventListener("message", function (e) {
+    if (e.data && e.data.type === "gitdealflow:ticker:resize") {
+      var h = Math.max(wrap.scrollHeight, track.scrollHeight) + 20;
+      window.parent.postMessage({
+        type: "gitdealflow:ticker:size",
+        height: h,
+        slug: "ticker"
+      }, "*");
+    }
+  });
+})();
+</script>
+</body>
+</html>
