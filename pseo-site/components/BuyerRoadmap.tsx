@@ -89,7 +89,7 @@ const BEATS_BY_TIER: Record<RoadmapTier, readonly RoadmapBeat[]> = {
   insider: [
     {
       when: "Today",
-      what: "Lock €97/mo founding rate (going to €197/mo). Telegram invite + API key sent within the hour.",
+      what: "Join the Insider Circle — €197/mo. Telegram invite + API key sent within the hour.",
       why: "The 24-hour lead starts the next Sunday. Until then you have Dashboard access + the Telegram thread for the most recent briefing.",
     },
     {
