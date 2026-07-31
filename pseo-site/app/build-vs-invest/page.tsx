@@ -16,7 +16,7 @@ export const revalidate = 604800;
 
 export const metadata: Metadata = {
   title:
-    "Build it or fund it? — The 2×2 by sector — VC Deal Flow Signal",
+    "Build it or fund it? — The 2×2 by sector",
   description:
     "For every tracked sector, the honest answer to 'should I build this or fund it?'. Cost-to-build vs deal-velocity, scored on the same engineering-signal data that powers the rest of the site.",
   alternates: { canonical: "/build-vs-invest" },

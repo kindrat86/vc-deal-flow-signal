@@ -4,18 +4,18 @@ import { PERSONAS } from "@/content/personas";
 import { HreflangLinks } from "@/components/HreflangLinks";
 
 export const metadata: Metadata = {
-  title: "For — Persona Navigation Hubs | VC Deal Flow Signal",
+  title: "For — Persona Navigation Hubs",
   description: `${PERSONAS.length} buyer-persona pages mapping the engineering-signal panel to specific roles — Corp Dev, PE Operating Partners, Tech VPs, Emerging Managers, Founders, Researchers, Journalists.`,
   alternates: { canonical: "/for" },
   openGraph: {
-    title: "For — VC Deal Flow Signal",
+    title: "For",
     description: "Persona navigation hubs for the engineering-signal panel.",
     type: "website",
     url: "/for",
   },
   twitter: {
     card: "summary_large_image",
-    title: "For — VC Deal Flow Signal",
+    title: "For",
     description: "Persona navigation hubs.",
   },
 };

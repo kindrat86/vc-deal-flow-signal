@@ -640,7 +640,7 @@ export const PERSONAS: Persona[] = [
     faqs: [
       { question: "Can I export the dataset into my own pipeline?", answer: "Yes. JSON, CSV, and NDJSON exports are free at /dataset. The OpenAPI spec at /api/openapi.json documents all endpoints." },
       { question: "How accurate is the stage classification?", answer: "Stage is estimated from contributor count, team-size enrichment data, and funding history where publicly available. See /methodology for the full classification methodology." },
-      { question: "Is there a paid tier for solo GPs?", answer: "The dataset and API are free. The Custom Sector Sweep (€1,997 once) and Insider Circle (€97/month) are additive paid offerings." },
+      { question: "Is there a paid tier for solo GPs?", answer: "The dataset and API are free. The Custom Sector Sweep (€1,997 once) and Insider Circle (€197/month) are additive paid offerings." },
     ],
     ctaPath: "/dataset",
     ctaLabel: "Export the Dataset",

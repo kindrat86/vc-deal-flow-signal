@@ -46,7 +46,7 @@ export async function generateMetadata({
       "Free dilution-stack calculator. Model up to 3 stacked post-money SAFEs converting at Series A, with option pool refresh, and see the final founder ownership. URL-shareable for board decks and term-sheet discussions.",
     alternates: { canonical: "/tools/dilution-stack" },
     openGraph: {
-      title: "Dilution Stack Calculator — VC Deal Flow Signal",
+      title: "Dilution Stack Calculator",
       description:
         "Multi-SAFE stacking + Series A + option pool refresh. URL-shareable founder-dilution math.",
       type: "website",
@@ -62,7 +62,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: "Dilution Stack Calculator — VC Deal Flow Signal",
+      title: "Dilution Stack Calculator",
       description:
         "Free multi-SAFE + Series A dilution stack with shareable URLs.",
       images: [ogImage],

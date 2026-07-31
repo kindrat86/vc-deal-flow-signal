@@ -5,12 +5,12 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import SeoCta from "@/components/SeoCta";
 
 export const metadata: Metadata = {
-  title: "Founders & Public Engineering Profiles — VC Deal Flow Signal",
+  title: "Founders & Public Engineering Profiles",
   description:
     "Public engineering profiles of well-known founders, OSS maintainers, and technical executives — restricted to people who self-publish their GitHub handle on their own surface.",
   alternates: { canonical: "/founder" },
   openGraph: {
-    title: "Founders & Public Engineering Profiles — VC Deal Flow Signal",
+    title: "Founders & Public Engineering Profiles",
     description:
       "Public engineering profiles restricted to self-published, public-figure-threshold identities.",
     type: "website",
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Founders & Public Engineering Profiles — VC Deal Flow Signal",
+    title: "Founders & Public Engineering Profiles",
     description:
       "Public engineering profiles restricted to self-published, public-figure-threshold identities.",
   },

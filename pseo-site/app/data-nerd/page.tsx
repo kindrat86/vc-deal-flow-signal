@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     "The pseudonymous narrator behind VC Deal Flow Signal: identity archetype (Reluctant Reporter), backstory, six parables, eight polarities, three character flaws, seven voice rules, current weekly status, twelve-month commitments. Character bible — implemented under the anonymity rule.",
   alternates: { canonical: "/data-nerd" },
   openGraph: {
-    title: `${DATA_NERD_NAME} — VC Deal Flow Signal`,
+    title: `${DATA_NERD_NAME}`,
     description:
       "The pseudonymous narrator behind the methodology. Reluctant Reporter archetype, six parables, eight polarities, three flaws, twelve-month public commitments — character without a face.",
     url: "https://signals.gitdealflow.com/data-nerd",

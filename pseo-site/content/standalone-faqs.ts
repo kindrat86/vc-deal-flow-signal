@@ -16,7 +16,7 @@ export const standaloneFaqs: StandaloneFAQ[] = [
   {
     question: "How much does VC Deal Flow Signal cost?",
     answer:
-      "VC Deal Flow Signal offers a free Signal Report — this week's top 5 breakout startups delivered free after email confirmation, then weekly updates. The Dashboard beta is EUR 9.97/month and gives access to 140 ranked startups across all 20 sectors with filtering by stage, geography, and signal type. There is no annual commitment required.",
+      "VC Deal Flow Signal offers a free Signal Report — this week's top 5 breakout startups delivered free after email confirmation, then weekly updates. The Dashboard beta is EUR 49/month and gives access to 140 ranked startups across all 20 sectors with filtering by stage, geography, and signal type. There is no annual commitment required.",
     source: "Pricing",
     sourceHref: "https://gitdealflow.com/#signup",
   },
@@ -549,7 +549,7 @@ export const standaloneFaqs: StandaloneFAQ[] = [
   {
     question: "How does VC Deal Flow Signal compare to Harmonic.ai?",
     answer:
-      "Different positioning. Harmonic.ai is an enterprise alt-data platform ($20K-$100K+/year) focused on hiring-signal scraping, founder-track-record graphs, and CRM integration for institutional VC funds. VC Deal Flow Signal is a single-axis methodology — public-GitHub engineering acceleration — published openly with a free tier, free MCP server, free public dataset, and a EUR 9.97/month dashboard for individual scouts and emerging managers. The two are complementary: Harmonic for full-stack institutional sourcing, VC Deal Flow Signal for the engineering signal slice and as a methodology benchmark.",
+      "Different positioning. Harmonic.ai is an enterprise alt-data platform ($20K-$100K+/year) focused on hiring-signal scraping, founder-track-record graphs, and CRM integration for institutional VC funds. VC Deal Flow Signal is a single-axis methodology — public-GitHub engineering acceleration — published openly with a free tier, free MCP server, free public dataset, and a EUR 49/month dashboard for individual scouts and emerging managers. The two are complementary: Harmonic for full-stack institutional sourcing, VC Deal Flow Signal for the engineering signal slice and as a methodology benchmark.",
     source: "Comparison",
     sourceHref: "/compare",
   },

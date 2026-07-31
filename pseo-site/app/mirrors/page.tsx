@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     "Every external mirror, registry, and index that carries VC Deal Flow Signal artifacts — methodology paper, dataset, MCP server, browser extension, source repository. One canonical directory, machine-readable.",
   alternates: { canonical: "/mirrors" },
   openGraph: {
-    title: "Mirrors &amp; Indexes — VC Deal Flow Signal",
+    title: "Mirrors &amp; Indexes",
     description:
       "Methodology, dataset, MCP, source, extension — every external mirror and registry that carries the artifacts.",
     type: "article",

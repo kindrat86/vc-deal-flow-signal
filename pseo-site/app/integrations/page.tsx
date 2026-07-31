@@ -332,7 +332,7 @@ export default function IntegrationsPage() {
             name: "Is the API free?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "The basic JSON endpoints (signals.json, weekly summary, methodology) are free with reasonable rate limits suitable for individual investors and small funds. Higher-volume API access for commercial pipelines is available with the Insider Circle tier (EUR 97/month) which includes elevated rate limits and webhook delivery. No enterprise contract is required.",
+              text: "The basic JSON endpoints (signals.json, weekly summary, methodology) are free with reasonable rate limits suitable for individual investors and small funds. Higher-volume API access for commercial pipelines is available with the Insider Circle tier (EUR 197/month) which includes elevated rate limits and webhook delivery. No enterprise contract is required.",
             },
           },
           {

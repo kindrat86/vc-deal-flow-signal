@@ -9,7 +9,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Which Tier Fits You? — 90-Second Avatar Quiz",
   description:
-    "Five questions, ninety seconds, and a routed recommendation. Tells you whether you're a Solo Angel, Fund GP, or Family Office Analyst — and whether the Free Acceleration Watch, the €7 First Look Pass, the €9.97/mo Dashboard, the €97/mo Insider Circle, or the €1,997 Sector Sweep is the right starting point.",
+    "Five questions, ninety seconds, and a routed recommendation. Tells you whether you're a Solo Angel, Fund GP, or Family Office Analyst — and whether the Free Acceleration Watch, the €7 First Look Pass, the €49/mo Dashboard, the €197/mo Insider Circle, or the €1,997 Sector Sweep is the right starting point.",
   alternates: { canonical: "/quiz" },
   openGraph: {
     title: "Which VC Deal Flow Signal tier fits you?",

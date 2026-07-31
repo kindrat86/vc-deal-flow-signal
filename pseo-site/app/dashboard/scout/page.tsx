@@ -165,7 +165,7 @@ export default async function ScoutDashboardPage({
             You&rsquo;ve used all 3 predictions this month.
           </p>
           <p className="text-gray-300 text-sm mb-4">
-            Upgrade to the Dashboard plan (EUR 9.97/mo) for 10 predictions per
+            Upgrade to the Dashboard plan (EUR 49/mo) for 10 predictions per
             month and access to Sharp + Elite ranks.
           </p>
           <Link

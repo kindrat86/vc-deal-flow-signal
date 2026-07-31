@@ -10,12 +10,12 @@ const SITE = "https://signals.gitdealflow.com";
 
 export const metadata: Metadata = {
   title:
-    "Podcasts — synthetic-voice guest segments | VC Deal Flow Signal",
+    "Podcasts — synthetic-voice guest segments",
   description:
     "Pre-recorded podcast segments for show hosts: 5, 7, and 10-minute methodology walkthroughs delivered by The Data Nerd via synthetic voice. Seven topics ready, thirteen shows in active outreach.",
   alternates: { canonical: "/podcasts" },
   openGraph: {
-    title: "Podcasts — VC Deal Flow Signal",
+    title: "Podcasts",
     description:
       "Synthetic-voice podcast segments. Seven topics, thirteen shows in active outreach.",
     type: "article",

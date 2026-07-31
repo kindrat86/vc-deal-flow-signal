@@ -36,7 +36,7 @@ export async function generateMetadata({
   const scout = await getScoutByHandle(handle).catch(() => null);
   if (!scout) {
     return {
-      title: `Scout not found — VC Deal Flow Signal`,
+      title: `Scout not found`,
       robots: { index: false, follow: false },
     };
   }

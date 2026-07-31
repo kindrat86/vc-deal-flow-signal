@@ -254,7 +254,7 @@ export default async function PersonaPage({ params }: PageProps) {
                 className="group block rounded-lg border border-sky-800/60 bg-sky-950/30 p-5 hover:border-sky-500 transition-all"
               >
                 <p className="text-[10px] uppercase tracking-wider text-sky-400/80 mb-1">
-                  Most popular · €9.97/mo
+                  Most popular · €49/mo
                 </p>
                 <h3 className="text-gray-100 font-semibold text-sm group-hover:text-sky-300 transition-colors mb-1">
                   The Dashboard
@@ -270,7 +270,7 @@ export default async function PersonaPage({ params }: PageProps) {
                 className="group block rounded-lg border border-amber-700/50 bg-amber-950/20 p-5 hover:border-amber-500 transition-all"
               >
                 <p className="text-[10px] uppercase tracking-wider text-amber-400/80 mb-1">
-                  For the full pipeline · €97/mo
+                  For the full pipeline · €197/mo
                 </p>
                 <h3 className="text-gray-100 font-semibold text-sm group-hover:text-amber-200 transition-colors mb-1">
                   Insider Circle

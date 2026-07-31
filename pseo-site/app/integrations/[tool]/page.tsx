@@ -80,7 +80,7 @@ const INTEGRATIONS: Integration[] = [
       "Join the channel at https://t.me/gitdealflow — no signup, no email.",
       "Every Sunday at 18:00 UTC, receive 5 breakout startups with their commit velocity, signal type, and sector.",
       "Click through to the full startup signal page for detailed metrics and methodology.",
-      "Upgrade to Insider Circle (€97/month) for 47 fundraise-precursor names per month.",
+      "Upgrade to Insider Circle (€197/month) for 47 fundraise-precursor names per month.",
     ],
     embedSnippet: "https://t.me/gitdealflow",
     faqs: [

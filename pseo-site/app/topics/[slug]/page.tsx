@@ -29,7 +29,7 @@ export async function generateMetadata({
   if (!pillar) return {};
 
   return {
-    title: `${pillar.name} — Topical Series | VC Deal Flow Signal`,
+    title: `${pillar.name} — Topical Series`,
     description: pillar.description,
     keywords: pillar.keywords.join(", "),
     openGraph: {

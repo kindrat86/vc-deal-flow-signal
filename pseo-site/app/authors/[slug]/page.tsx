@@ -27,7 +27,7 @@ export async function generateMetadata({
     description: author.bio,
     alternates: { canonical: `/authors/${author.slug}` },
     openGraph: {
-      title: `${author.name} — VC Deal Flow Signal`,
+      title: `${author.name}`,
       description: author.bio,
       url: `${BASE_URL}/authors/${author.slug}`,
       type: "profile",

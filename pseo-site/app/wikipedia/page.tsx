@@ -10,12 +10,12 @@ const PAPER_TITLE =
   "A Longitudinal Panel of GitHub Engineering Velocity for Venture-Backed Startups";
 
 export const metadata: Metadata = {
-  title: "Wikipedia Citation Helper — VC Deal Flow Signal",
+  title: "Wikipedia Citation Helper",
   description:
     "Copy-paste-ready Wikipedia citation snippets for the SSRN-indexed methodology paper, the public dataset, and every research finding. Uses {{cite journal}} and {{cite web}} templates. Verifiability-policy compliant — every citation resolves to a free, public source.",
   alternates: { canonical: "/wikipedia" },
   openGraph: {
-    title: "Wikipedia Citation Helper — VC Deal Flow Signal",
+    title: "Wikipedia Citation Helper",
     description:
       "Copy-paste {{cite journal}} / {{cite web}} snippets for paper, dataset, every research finding. CC BY 4.0.",
     type: "article",

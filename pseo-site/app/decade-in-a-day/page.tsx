@@ -75,7 +75,7 @@ const MODULES: Module[] = [
     title: "Funnel architecture — six rungs, one ladder, one cadence",
     question: "Why six tiers and not three? And why a monthly drop on top?",
     content:
-      "Free → €7 → €9.97 → €97 → €497 → €1,997. Every rung exists because the rung below it doesn't fit one specific check size or one specific cadence. Free is for cadence-builders. €7 is for thesis-testers. €9.97 is for the daily-rhythm buyer. €97 is for the syndicate. €497 is for the small fund. €1,997 is for the deep-dive on a single sector. Never let a buyer leave at zero commitment when there's a free rung below. Above the rungs sits the continuity layer — a net-new monthly drop (sector deep-dive, methodology release, founder essay, or tool) that turns the paid tier from a tool subscription into an anticipation engine.",
+      "Free → €7 → €49 → €197 → €497 → €1,997. Every rung exists because the rung below it doesn't fit one specific check size or one specific cadence. Free is for cadence-builders. €7 is for thesis-testers. €49 is for the daily-rhythm buyer. €197 is for the syndicate. €497 is for the small fund. €1,997 is for the deep-dive on a single sector. Never let a buyer leave at zero commitment when there's a free rung below. Above the rungs sits the continuity layer — a net-new monthly drop (sector deep-dive, methodology release, founder essay, or tool) that turns the paid tier from a tool subscription into an anticipation engine.",
     links: [
       { label: "/funnels — the value ladder visualised", href: "/funnels" },
       { label: "/funnels#building-blocks — the 25 components", href: "/funnels#building-blocks" },
@@ -126,7 +126,7 @@ const MODULES: Module[] = [
     title: "The Stack — turn features into anchored value",
     question: "Why itemise standalone value before the price?",
     content:
-      "Eight objects, each with a standalone value, totalling €1,728/yr. The buyer's brain anchors on the total. The price (€9.97/mo = €119.64/yr) becomes a 14× discount — which is the actual story. Stack order matters: the most desirable thing first, the bonus last. Never bury the dashboard inside the methodology vault. Lead with the thing the buyer wants most.",
+      "Eight objects, each with a standalone value, totalling €1,728/yr. The buyer's brain anchors on the total. The price (€49/mo = €119.64/yr) becomes a 14× discount — which is the actual story. Stack order matters: the most desirable thing first, the bonus last. Never bury the dashboard inside the methodology vault. Lead with the thing the buyer wants most.",
     links: [
       { label: "/walkthrough — the canonical 8-row stack", href: "/walkthrough" },
       { label: "/pricing — stack on the offer page", href: "/pricing" },

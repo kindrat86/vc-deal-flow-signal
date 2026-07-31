@@ -57,7 +57,7 @@ export async function generateMetadata({
     description,
     alternates: { canonical: `/define/${term}` },
     openGraph: {
-      title: `${t.term} — VC Deal Flow Signal`,
+      title: `${t.term}`,
       description: lede,
       type: "article",
       url: `${SITE}/define/${term}`,
@@ -72,7 +72,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: `${t.term} — VC Deal Flow Signal`,
+      title: `${t.term}`,
       description: lede,
       images: [ogImage],
     },

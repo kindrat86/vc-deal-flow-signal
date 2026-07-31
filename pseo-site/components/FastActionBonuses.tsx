@@ -110,7 +110,7 @@ export function FastActionBonuses({ initialWindow, signupUrl = "https://gitdealf
           Last hours · Doors closing tonight
         </p>
         <h2 className="text-xl sm:text-2xl font-bold text-gray-100 leading-snug">
-          Cart closes Thursday 23:59 UTC. The €9.97 link goes to a
+          Cart closes Thursday 23:59 UTC. The €49 link goes to a
           waitlist page until Monday.
         </h2>
         <p className="text-gray-300 text-sm leading-relaxed">

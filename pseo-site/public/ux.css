@@ -100,7 +100,10 @@ main :where(p, blockquote, figure, dl):not([class*="text-left"]) {
 }
 
 /* ── 4. LINKS ───────────────────────────────────────────────────── */
-a {
+/* Guard: never recolor button-styled or explicitly-colored anchors —
+   unlayered CSS beats Tailwind @layer utilities, so declaring color on
+   those anchors breaks money-CTA contrast (portfolio bug 2026-07-31). */
+a:not([class*="bg-"]):not([role="button"]):not([class*="btn"]):not([class*="text-"]) {
   color: var(--ux-accent);
   text-underline-offset: 0.2em;
   text-decoration-thickness: 0.08em;

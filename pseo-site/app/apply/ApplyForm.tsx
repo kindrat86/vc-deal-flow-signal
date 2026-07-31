@@ -218,7 +218,7 @@ export default function ApplyForm() {
         id="quarterly_question"
         value={form.quarterly_question}
         onChange={(v) => update("quarterly_question", v)}
-        placeholder="What's the one thing you'd want from the white-labeled API or quarterly call that makes Sharp worth €497/mo over Insider's €97/mo?"
+        placeholder="What's the one thing you'd want from the white-labeled API or quarterly call that makes Sharp worth €497/mo over Insider's €197/mo?"
         rows={3}
       />
 

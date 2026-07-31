@@ -40,7 +40,7 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title:
-    "Your Journey — the buyer's arc | VC Deal Flow Signal",
+    "Your Journey — the buyer's arc",
   description:
     "The companion to /origin, told from your seat. The deal you'll never tell anyone about, the three false beliefs you've been holding without naming, the first concrete move, and what you actually look like as an investor six months from now. Eight sections, ten-minute read.",
   alternates: { canonical: "/origin/your-journey" },
@@ -411,7 +411,7 @@ export default function YourJourneyPage() {
             That&rsquo;s the entire shape of the new sourcing motion: weekly
             digest in, specific email out, founder reply, meeting, cheque —
             all of it happening before any deck circulates. The rest of the
-            ladder (€7 First Look Pass, €9.97/mo Dashboard, €97/mo Insider
+            ladder (€7 First Look Pass, €49/mo Dashboard, €197/mo Insider
             Circle) just gives you more surface area for the same shape, on
             more sectors, faster. The shape itself is the thing. You can run
             it for free for as long as you want.
@@ -508,7 +508,7 @@ export default function YourJourneyPage() {
               €7 toward Dashboard if you upgrade in 14 days.
             </li>
             <li>
-              <span className="text-sky-400 font-semibold">→ €9.97/mo.</span>{" "}
+              <span className="text-sky-400 font-semibold">→ €49/mo.</span>{" "}
               <Link
                 href="/pricing"
                 className="text-sky-400 hover:text-sky-300 underline decoration-dotted font-medium"

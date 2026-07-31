@@ -103,7 +103,7 @@ const FAQ = [
   },
   {
     q: "Is the server free?",
-    a: "Yes. Six read-only tools, no rate limits beyond the CDN's, no signup, no API key. The paid tier (Insider Circle, EUR 97/mo) adds private Telegram, watchlists, and a direct line — none of which are MCP-gated.",
+    a: "Yes. Six read-only tools, no rate limits beyond the CDN's, no signup, no API key. The paid tier (Insider Circle, EUR 197/mo) adds private Telegram, watchlists, and a direct line — none of which are MCP-gated.",
   },
   {
     q: "Where does it list on cursor.directory?",

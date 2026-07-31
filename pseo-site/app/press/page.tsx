@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     "Press kit for journalists, analysts, podcasters, and citation reuse. Logo pack, fact sheet, copy-paste citation block, screenshot pack, founder bio, and contact. All assets are CC BY 4.0 — attribution required.",
   alternates: { canonical: "/press" },
   openGraph: {
-    title: "Press Kit — VC Deal Flow Signal",
+    title: "Press Kit",
     description:
       "Logos, fact sheet, copy-paste citation block, screenshots, contact. CC BY 4.0.",
     type: "article",
@@ -27,7 +27,7 @@ const FACT_SHEET = [
   { label: "Founded", value: "2025" },
   { label: "Headquartered", value: "Distributed (EU)" },
   { label: "Free product", value: "Weekly Signal Report — top 5 breakout startups, no payment" },
-  { label: "Paid product", value: "Dashboard EUR 9.97/month · Insider Circle EUR 97/month · Sector Sweep EUR 1,997 one-time" },
+  { label: "Paid product", value: "Dashboard EUR 49/month · Insider Circle EUR 197/month · Sector Sweep EUR 1,997 one-time" },
   { label: "Methodology", value: "SSRN-indexed, DOI 10.2139/ssrn.6606558, CC BY 4.0" },
   { label: "Dataset license", value: "CC BY 4.0" },
   { label: "MCP server", value: "Live at api/mcp/rpc, Glama A-Tier (4.9/5.0 across 6 tools)" },

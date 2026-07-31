@@ -183,7 +183,7 @@ export async function POST(req: NextRequest) {
       mode: cfg.mode,
       payment_method_types: ["card"],
       line_items: lineItems,
-      success_url: `${origin}${cfg.successUrl}`,
+      success_url: cfg.successUrl.startsWith("http") ? cfg.successUrl : `${origin}${cfg.successUrl}`,
       cancel_url: `${origin}${cfg.cancelUrl}`,
       metadata,
       allow_promotion_codes: true,
@@ -236,4 +236,44 @@ export async function OPTIONS(req: NextRequest) {
     status: 204,
     headers: corsHeaders(req.headers.get("origin")),
   });
+}
+
+// GET support: lets plain <a href="/api/checkout/session?tier=X"> links open
+// a live checkout (replaces deactivated static Stripe payment links).
+export async function GET(req: NextRequest) {
+  const tier = req.nextUrl.searchParams.get("tier") || "";
+  if (!isEntryTier(tier)) {
+    return NextResponse.redirect(`${SITE_ORIGIN}/pricing`, 302);
+  }
+  const cfg = ENTRY_TIERS[tier];
+  try {
+    const session = await stripe.checkout.sessions.create({
+      mode: cfg.mode,
+      payment_method_types: ["card"],
+      line_items: [
+        {
+          quantity: 1,
+          price_data: {
+            currency: cfg.currency,
+            unit_amount: cfg.unitAmount,
+            ...(cfg.mode === "subscription" ? { recurring: { interval: cfg.interval! } } : {}),
+            product_data: {
+              name: cfg.productName,
+              ...(cfg.description ? { description: cfg.description } : {}),
+            },
+          },
+        },
+      ],
+      success_url: cfg.successUrl.startsWith("http") ? cfg.successUrl : `${SITE_ORIGIN}${cfg.successUrl}`,
+      cancel_url: `${SITE_ORIGIN}${cfg.cancelUrl}`,
+      metadata: { tier, flow: "entry_checkout_get" },
+      allow_promotion_codes: true,
+      ...(cfg.mode === "payment"
+        ? { customer_creation: "always" as const, payment_intent_data: { setup_future_usage: "off_session" as const, metadata: { tier, flow: "entry_checkout_get" } } }
+        : {}),
+    });
+    return NextResponse.redirect(session.url!, 303);
+  } catch {
+    return NextResponse.redirect(`${SITE_ORIGIN}/pricing`, 302);
+  }
 }

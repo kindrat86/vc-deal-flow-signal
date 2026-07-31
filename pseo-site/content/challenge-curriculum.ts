@@ -798,7 +798,7 @@ export const CHALLENGE_DAYS: readonly ChallengeDay[] = [
     slug: "pre-graduation",
     phase: "operationalize",
     title: "Pre-graduation — which rung makes sense?",
-    oneLine: "Free, €9.97/mo, or €1,997 — match the rung to the actual usage pattern from the last 30 days.",
+    oneLine: "Free, €49/mo, or €1,997 — match the rung to the actual usage pattern from the last 30 days.",
     whyItMatters:
       "Tomorrow is graduation. Today is the honest pre-conversation: based on the last 29 days, which rung — if any — actually fits the pattern? If you ran the manual procedure once a week, free Sunday digest is the right level. If you wanted to monitor 30+ orgs, the Dashboard is the right level. If one sector is heating up and you can't sweep it manually, the Sector Sweep is the right level.",
     procedure: [

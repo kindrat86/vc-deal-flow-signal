@@ -5,11 +5,11 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import SeoCta from "@/components/SeoCta";
 
 export const metadata: Metadata = {
-  title: "Trends — Engineering Signal Leaderboards (2026) | VC Deal Flow Signal",
+  title: "Trends — Engineering Signal Leaderboards (2026)",
   description: `Editorial trend leaderboards across ${TRENDS.length} technical categories — agentic AI, LLM inference, frontier labs, AI coding, edge compute, AI-native databases, observability, payments. Each leaf is curated, time-bound, and AEO-optimized for citation.`,
   alternates: { canonical: "/trend" },
   openGraph: {
-    title: "Trends — VC Deal Flow Signal",
+    title: "Trends",
     description:
       "Editorial engineering trend leaderboards across technical categories.",
     type: "website",
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Trends — VC Deal Flow Signal",
+    title: "Trends",
     description: "Editorial trend leaderboards for engineering categories in 2026.",
   },
 };

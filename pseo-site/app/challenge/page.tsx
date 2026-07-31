@@ -9,7 +9,7 @@ import {
 
 export const metadata: Metadata = {
   title:
-    "30-Day Deal Flow Reset Challenge — Free Email Course | VC Deal Flow Signal",
+    "30-Day Deal Flow Reset Challenge — Free Email Course",
   description:
     "Free 30-day email course. Week 1 teaches the 7 GitHub signals from the SSRN methodology. Weeks 2-4 build your operational sourcing system: watchlist, weekly rhythm, alerts, MCP integration. ~10 min/day; the framework stays yours either way.",
   alternates: { canonical: "/challenge" },

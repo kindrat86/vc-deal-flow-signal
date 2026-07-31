@@ -190,7 +190,7 @@ export default function FiveMinPerfectWebinarPage() {
               there for the signal to fire.
             </li>
             <li className="border-l-2 border-rose-700 pl-4">
-              <strong className="text-gray-100">&ldquo;€9.97/mo is too cheap to be real.&rdquo;</strong>{" "}
+              <strong className="text-gray-100">&ldquo;€49/mo is too cheap to be real.&rdquo;</strong>{" "}
               We don&rsquo;t have a sales team. This is priced for someone who wants
               earlier signal without an enterprise contract. Pricing matches the
               job.
@@ -276,7 +276,7 @@ export default function FiveMinPerfectWebinarPage() {
               kind="primary"
               className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-base shadow-lg shadow-amber-500/30 transition-colors"
             >
-              Lock €9.97/mo founder price →
+              Lock €49/mo founder price →
             </WalkthroughCtaLink>
             <WalkthroughCtaLink
               href={SIGNUP_URL}

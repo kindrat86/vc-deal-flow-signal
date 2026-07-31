@@ -6,7 +6,7 @@ import { generateApiKey } from "@/lib/api-key";
 import ApiKeyDisplay from "./ApiKeyDisplay";
 
 export const metadata: Metadata = {
-  title: "API Keys — VC Deal Flow Signal",
+  title: "API Keys",
   robots: { index: false },
 };
 

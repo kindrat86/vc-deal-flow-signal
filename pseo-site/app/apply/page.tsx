@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     "Application-gated tier for active funds and syndicates. €497/mo, white-labeled API, custom watchlists, methodology source, quarterly review call. Capped at 8 funds in 2026 — application reviewed within 48 hours.",
   alternates: { canonical: "/apply" },
   openGraph: {
-    title: "Apply for the Sharp Tier — VC Deal Flow Signal",
+    title: "Apply for the Sharp Tier",
     description:
       "€497/mo. Capped at 8 funds in 2026. Application reviewed within 48 hours.",
     url: "https://signals.gitdealflow.com/apply",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 
 const STACK = [
   {
-    label: "Everything in Insider Circle (€97/mo tier)",
+    label: "Everything in Insider Circle (€197/mo tier)",
     detail:
       "Private investor Telegram, monthly live briefing, JSON/CSV API, Slack/Telegram spike alerts, quarterly trend briefing PDF, portfolio overlap report.",
   },
@@ -72,7 +72,7 @@ const FAQS = [
   },
   {
     q: "Can I start with Insider Circle and upgrade later?",
-    a: "Yes. Most Sharp-tier funds enter via Insider (€97/mo) for one to three months first, then apply once they know the data fits. The Insider monthly fee is credited 1:1 toward the first month of Sharp Tier on upgrade. No formal commitment either direction.",
+    a: "Yes. Most Sharp-tier funds enter via Insider (€197/mo) for one to three months first, then apply once they know the data fits. The Insider monthly fee is credited 1:1 toward the first month of Sharp Tier on upgrade. No formal commitment either direction.",
   },
 ] as const;
 

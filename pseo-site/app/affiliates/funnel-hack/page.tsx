@@ -190,7 +190,7 @@ export default function AffiliateFunnelHackPage() {
                 Your reader clicks through, downloads the book (free, no card),
                 and is automatically enrolled in the BOOK_DRIP follow-up — three
                 emails over 7 days that walk through the methodology and offer
-                the three rungs (Free Sunday digest / €9.97/mo Dashboard /
+                the three rungs (Free Sunday digest / €49/mo Dashboard /
                 €1,997 Sector Sweep).
               </span>
             </li>

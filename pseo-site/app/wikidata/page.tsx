@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     "Bidirectional Knowledge Panel claim binding the Wikidata entity Q139376302 to signals.gitdealflow.com. Includes copy-paste SPARQL verification queries, the full P-code property table, and the machine-readable manifest at /.well-known/wikidata.json. Reciprocal sameAs across 24+ external profiles.",
   alternates: { canonical: "/wikidata" },
   openGraph: {
-    title: "Wikidata Knowledge Panel claim — VC Deal Flow Signal",
+    title: "Wikidata Knowledge Panel claim",
     description:
       "Bidirectional binding between Wikidata Q139376302 and signals.gitdealflow.com. SPARQL-verifiable.",
     type: "article",

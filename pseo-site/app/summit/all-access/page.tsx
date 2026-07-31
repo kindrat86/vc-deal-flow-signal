@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 
 const STACK = [
   { label: "Lifetime replays of all 20 talks", standalone: "€297 if bought separately" },
-  { label: "Full PDF + markdown transcripts of every talk", standalone: "€97 standalone" },
+  { label: "Full PDF + markdown transcripts of every talk", standalone: "€197 standalone" },
   { label: "Slide decks and chart packs from every talk", standalone: "€69 standalone" },
   { label: "219-startup panel dataset — the dataset behind the panel", standalone: "€297 standalone" },
   { label: "Methodology vault — every signal definition + decision rule + pitfall", standalone: "€0, always free" },

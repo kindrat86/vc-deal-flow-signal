@@ -80,7 +80,7 @@ export default function TermsPage() {
         </ul>
 
         <h2 className="text-xl font-semibold text-gray-100">4 · Paid tiers</h2>
-        <p>Insider (€97/mo), Sharp (€497/mo), Sector Sweep (€1,997 one-time) and Agent Credits (€19 / 100 calls) are billed by Stripe. Refund policy: 14-day no-questions-asked for monthly subscriptions; one-time products refundable for 30 days if no significant value has been consumed (we read Stripe usage logs). Cancel any time from <Link href="/account" className="text-sky-400 hover:underline">/account</Link> or by emailing <a className="text-sky-400 hover:underline" href="mailto:signals@gitdealflow.com">signals@gitdealflow.com</a>.</p>
+        <p>Insider (€197/mo), Sharp (€497/mo), Sector Sweep (€1,997 one-time) and Agent Credits (€19 / 100 calls) are billed by Stripe. Refund policy: 14-day no-questions-asked for monthly subscriptions; one-time products refundable for 30 days if no significant value has been consumed (we read Stripe usage logs). Cancel any time from <Link href="/account" className="text-sky-400 hover:underline">/account</Link> or by emailing <a className="text-sky-400 hover:underline" href="mailto:signals@gitdealflow.com">signals@gitdealflow.com</a>.</p>
 
         <h2 className="text-xl font-semibold text-gray-100">5 · No investment advice</h2>
         <p>VC Deal Flow Signal is research-grade alternative-data output, not personalised financial or investment advice. Past commit-velocity and contributor-growth patterns do not guarantee future fundraise outcomes. You are solely responsible for any investment decision.</p>

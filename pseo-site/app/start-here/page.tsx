@@ -176,7 +176,7 @@ export default function StartHerePage() {
             We track 100+ venture-backed orgs across 20 sectors. Every
             Monday at 06:00 UTC we re-rank them by 14-day commit-velocity
             acceleration. The five highest-momentum names go into a free
-            email digest. The full ranked dashboard is €9.97/mo. The
+            email digest. The full ranked dashboard is €49/mo. The
             methodology is on{" "}
             <a
               href="https://ssrn.com/abstract=6606558"
@@ -190,7 +190,7 @@ export default function StartHerePage() {
           </p>
           <p className="text-gray-300 text-base leading-relaxed">
             This is priced for people who want earlier signal without an
-            enterprise contract. That&rsquo;s why the dashboard is €9.97/mo instead
+            enterprise contract. That&rsquo;s why the dashboard is €49/mo instead
             of €1,000/mo, and why you can verify the methodology before anyone
             tries to sell you harder.
           </p>

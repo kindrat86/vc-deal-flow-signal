@@ -6,7 +6,7 @@ import { CHALLENGE_DAYS } from "@/content/challenge-curriculum";
 
 export const metadata: Metadata = {
   title:
-    "You finished the 30-Day Reset — what's next | VC Deal Flow Signal",
+    "You finished the 30-Day Reset — what's next",
   description:
     "Graduation page for the 30-Day Deal Flow Reset Challenge. Three optional ways to keep using the system: free Sunday digest, €9.97/mo Dashboard, €1,997 one-time Sector Sweep. The framework + your watchlist + custom weights stay yours either way.",
   alternates: { canonical: "/challenge/done" },

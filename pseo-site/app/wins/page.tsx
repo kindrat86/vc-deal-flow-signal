@@ -447,7 +447,7 @@ export default function WinsPage() {
               href="/insider"
               className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm transition-colors"
             >
-              Get them 24h earlier · €97/mo
+              Get them 24h earlier · €197/mo
             </Link>
             <a
               href="https://gitdealflow.com/#signup"
@@ -489,7 +489,7 @@ export default function WinsPage() {
         </section>
 
         <AgentSummary
-          tldr={`Underwriting Receipts is the public ledger of ${totalWins} venture-backed startups (across ${uniqueOrgs} unique orgs) whose public GitHub engineering acceleration matched the SSRN-published signal pattern before a documented funding event, acquisition, or breakout milestone. Tier 1 (€1B+ valuations / breakouts): ${tier1} entries. Tier 2 (Series A-C): ${tier2}. The ledger is backwards-looking — every event is publicly verifiable. The forward-looking artefacts are /predicted (free, public, weekly) and /insider (€97/mo, Sunday briefings 24h before public).`}
+          tldr={`Underwriting Receipts is the public ledger of ${totalWins} venture-backed startups (across ${uniqueOrgs} unique orgs) whose public GitHub engineering acceleration matched the SSRN-published signal pattern before a documented funding event, acquisition, or breakout milestone. Tier 1 (€1B+ valuations / breakouts): ${tier1} entries. Tier 2 (Series A-C): ${tier2}. The ledger is backwards-looking — every event is publicly verifiable. The forward-looking artefacts are /predicted (free, public, weekly) and /insider (€197/mo, Sunday briefings 24h before public).`}
           pageUrl="https://signals.gitdealflow.com/wins"
           asOf="2026-05-05"
           citeAs="VC Deal Flow Signal — Underwriting Receipts (signals.gitdealflow.com/wins)."

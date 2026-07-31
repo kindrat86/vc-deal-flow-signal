@@ -36,7 +36,7 @@ export async function generateMetadata({
       "Free CAC payback calculator. CAC / (monthly ARPC × gross margin %) in months, classified into the standard SaaS bands (<6mo exceptional / 6-12 great / 12-18 good / 18-24 OK / >24 bad). URL-shareable.",
     alternates: { canonical: "/tools/cac-payback-calculator" },
     openGraph: {
-      title: "CAC Payback Calculator — VC Deal Flow Signal",
+      title: "CAC Payback Calculator",
       description:
         "Customer-acquisition-cost payback in months, with the standard SaaS bands.",
       type: "website",
@@ -52,7 +52,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: "CAC Payback Calculator — VC Deal Flow Signal",
+      title: "CAC Payback Calculator",
       description:
         "Free SaaS CAC payback calculator with shareable URLs and standard bands.",
       images: [ogImage],

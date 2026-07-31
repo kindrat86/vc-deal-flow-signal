@@ -10,18 +10,18 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import SeoCta from "@/components/SeoCta";
 
 export const metadata: Metadata = {
-  title: `Works with — CRM & Workflow Integrations | VC Deal Flow Signal`,
+  title: `Works with — CRM & Workflow Integrations`,
   description: `${WORKS_WITH.length} CRM and workflow tool integration pages — Affinity, HubSpot, Salesforce, Notion, Airtable, Slack, Linear, and more. For Corp Dev, PE Operating Partners, and emerging-manager funds who want signals inside their existing stack.`,
   alternates: { canonical: "/works-with" },
   openGraph: {
-    title: "Works with — VC Deal Flow Signal",
+    title: "Works with",
     description: "CRM and workflow tool integrations for VC Deal Flow Signal.",
     type: "website",
     url: "/works-with",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Works with — VC Deal Flow Signal",
+    title: "Works with",
     description: "CRM and workflow tool integrations.",
   },
 };

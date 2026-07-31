@@ -5,12 +5,12 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import SeoCta from "@/components/SeoCta";
 
 export const metadata: Metadata = {
-  title: "Company GitHub Signals — VC Deal Flow Signal",
+  title: "Company GitHub Signals",
   description:
     "Per-company GitHub engineering signal reports. Commit velocity, contributor influx, repo creation pulse, and language bias across well-known public tech companies. Built for investors and operators.",
   alternates: { canonical: "/signal" },
   openGraph: {
-    title: "Company GitHub Signals — VC Deal Flow Signal",
+    title: "Company GitHub Signals",
     description:
       "Per-company GitHub engineering signal reports for investors and operators.",
     type: "website",
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Company GitHub Signals — VC Deal Flow Signal",
+    title: "Company GitHub Signals",
     description:
       "Per-company GitHub engineering signal reports for investors and operators.",
   },

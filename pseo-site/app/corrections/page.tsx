@@ -7,12 +7,12 @@ import { TrustConversionBlock } from "@/components/TrustConversionBlock";
 const SITE = "https://signals.gitdealflow.com";
 
 export const metadata: Metadata = {
-  title: "Corrections Policy &amp; Log — VC Deal Flow Signal",
+  title: "Corrections Policy &amp; Log",
   description:
     "Public corrections policy and timestamped corrections log for VC Deal Flow Signal (GitDealFlow). Every substantive correction to the SSRN paper, the public dataset, methodology pages, and research findings is logged here with the date, what changed, and why.",
   alternates: { canonical: "/corrections" },
   openGraph: {
-    title: "Corrections Policy & Log — VC Deal Flow Signal",
+    title: "Corrections Policy & Log",
     description:
       "Public log of substantive corrections to research, dataset, and methodology pages — with date, scope, and reason.",
     type: "article",

@@ -32,7 +32,7 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title:
-    "Who you become — moving earlier with a clearer signal | VC Deal Flow Signal",
+    "Who you become — moving earlier with a clearer signal",
   description:
     "A direct guide to the seven shifts that help you stop hearing the story late and start moving with a clearer signal while the window is still calm.",
   alternates: { canonical: "/identity" },
@@ -125,7 +125,7 @@ const QUOTES = [
   },
   {
     line:
-      "We dropped Tracxn at €4.2k/month. The dashboard at €9.97/mo replaced one analyst-hour per week of manual digging — and nobody on the team had to read code to use it. The math wrote itself.",
+      "We dropped Tracxn at €4.2k/month. The dashboard at €49/mo replaced one analyst-hour per week of manual digging — and nobody on the team had to read code to use it. The math wrote itself.",
     role: "Pre-seed scout fund · 4-partner GP",
   },
   {

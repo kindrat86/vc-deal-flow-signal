@@ -1538,7 +1538,7 @@ export default function Home() {
               the same ten ranked startups changed{" "}
               <em>one</em> cheque you write in the next 12 months — at a €5k–€50k
               angel range with a 3× exit on one in five — would that head-start
-              be worth <strong>€97/month</strong>?
+              be worth <strong>€197/month</strong>?
             </span>
           </li>
           <li className="flex gap-3">
@@ -1550,7 +1550,7 @@ export default function Home() {
               <strong className="text-amber-300">If you never had to</strong>{" "}
               read a line of code, hire a quant, or chase a warm intro — and the
               signal still found the founders before consensus did, would{" "}
-              <strong>€9.97/month</strong> be a fair trade?
+              <strong>€49/month</strong> be a fair trade?
             </span>
           </li>
           <li className="flex gap-3">
@@ -1579,7 +1579,7 @@ export default function Home() {
           is the right rhythm for now — no upgrade pressure, ever.
         </p>
         <TrialClose tone="violet">
-          A free rung, a €7 rung, a €9.97/mo rung, all the way up to a
+          A free rung, a €7 rung, a €49/mo rung, all the way up to a
           €49,997/yr rung. If even one of those fits where you actually
           are — would you let the right rung pick itself?
         </TrialClose>

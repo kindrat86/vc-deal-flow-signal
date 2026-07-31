@@ -36,7 +36,7 @@ export async function generateMetadata({
       "Free burn multiple calculator. Total burn divided by net new ARR, classified into the David Sacks bands (exceptional / great / OK / suspect / bad). URL-shareable results for board decks and investor updates.",
     alternates: { canonical: "/tools/burn-multiple-calculator" },
     openGraph: {
-      title: "Burn Multiple Calculator — VC Deal Flow Signal",
+      title: "Burn Multiple Calculator",
       description:
         "SaaS capital efficiency in one number. URL-shareable, Sacks bands built in.",
       type: "website",
@@ -52,7 +52,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: "Burn Multiple Calculator — VC Deal Flow Signal",
+      title: "Burn Multiple Calculator",
       description:
         "Free SaaS burn multiple calculator with Sacks efficiency bands.",
       images: [ogImage],

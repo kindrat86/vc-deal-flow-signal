@@ -82,7 +82,7 @@ export const alternatives: Alternative[] = [
       },
       {
         heading: "Pricing and access",
-        body: "Harmonic.ai is enterprise-priced — annual contracts, typically five figures. It is built for institutional VCs with dedicated sourcing teams. VC Deal Flow Signal offers a free weekly Signal Report delivered by email, plus a full Dashboard at EUR 9.97/month during beta. Angels, scouts, and smaller funds can get the full product for less than a single Harmonic seat.",
+        body: "Harmonic.ai is enterprise-priced — annual contracts, typically five figures. It is built for institutional VCs with dedicated sourcing teams. VC Deal Flow Signal offers a free weekly Signal Report delivered by email, plus a full Dashboard at EUR 49/month during beta. Angels, scouts, and smaller funds can get the full product for less than a single Harmonic seat.",
       },
       {
         heading: "Data sources",
@@ -99,7 +99,7 @@ export const alternatives: Alternative[] = [
         { feature: "Primary signal", values: { "VC Deal Flow Signal": "GitHub engineering acceleration", "Harmonic.ai": "Team & network pattern matching" } },
         { feature: "Typical lead time", values: { "VC Deal Flow Signal": "6-12 weeks pre-fundraise", "Harmonic.ai": "At incorporation" } },
         { feature: "Free tier", values: { "VC Deal Flow Signal": "Weekly report + sector pages", "Harmonic.ai": "No public free tier" } },
-        { feature: "Paid pricing", values: { "VC Deal Flow Signal": "EUR 9.97/mo (beta)", "Harmonic.ai": "Enterprise (annual)" } },
+        { feature: "Paid pricing", values: { "VC Deal Flow Signal": "EUR 49/mo (beta)", "Harmonic.ai": "Enterprise (annual)" } },
         { feature: "Coverage", values: { "VC Deal Flow Signal": "Technical startups with public code", "Harmonic.ai": "All sectors, including non-technical" } },
         { feature: "Data freshness", values: { "VC Deal Flow Signal": "Weekly", "Harmonic.ai": "Continuous" } },
         { feature: "API / MCP access", values: { "VC Deal Flow Signal": "MCP server + JSON/CSV", "Harmonic.ai": "Enterprise API" } },
@@ -147,7 +147,7 @@ export const alternatives: Alternative[] = [
       },
       {
         heading: "Pricing",
-        body: "Dealroom is tiered: a limited free view, a Professional tier for individual investors, and an Enterprise tier for institutional use. Full access costs hundreds to thousands of euros per month depending on usage. VC Deal Flow Signal is EUR 9.97/month for the full Dashboard, with a free weekly Signal Report and all sector pages publicly accessible.",
+        body: "Dealroom is tiered: a limited free view, a Professional tier for individual investors, and an Enterprise tier for institutional use. Full access costs hundreds to thousands of euros per month depending on usage. VC Deal Flow Signal is EUR 49/month for the full Dashboard, with a free weekly Signal Report and all sector pages publicly accessible.",
       },
       {
         heading: "When each is right",
@@ -161,7 +161,7 @@ export const alternatives: Alternative[] = [
         { feature: "Typical lead time", values: { "VC Deal Flow Signal": "6-12 weeks pre-fundraise", "Dealroom": "Post-announcement" } },
         { feature: "Sector taxonomy", values: { "VC Deal Flow Signal": "20 engineering-domain clusters", "Dealroom": "Hundreds of subsectors, European depth" } },
         { feature: "Free tier", values: { "VC Deal Flow Signal": "Weekly report + public sector pages", "Dealroom": "Limited company views" } },
-        { feature: "Paid pricing", values: { "VC Deal Flow Signal": "EUR 9.97/mo (beta)", "Dealroom": "Tiered (Pro to Enterprise)" } },
+        { feature: "Paid pricing", values: { "VC Deal Flow Signal": "EUR 49/mo (beta)", "Dealroom": "Tiered (Pro to Enterprise)" } },
         { feature: "API / MCP access", values: { "VC Deal Flow Signal": "MCP server + JSON/CSV", "Dealroom": "Enterprise API" } },
         { feature: "Best for", values: { "VC Deal Flow Signal": "Weekly deal flow, early conviction", "Dealroom": "Portfolio mapping, sector research" } },
       ],
@@ -175,7 +175,7 @@ export const alternatives: Alternative[] = [
     faqs: [
       { question: "Is VC Deal Flow Signal a replacement for Dealroom?", answer: "Not a full replacement. Dealroom is a comprehensive database; VC Deal Flow Signal is a leading-signal engine. Most investors who use both keep Dealroom for research and portfolio mapping, and use VC Deal Flow Signal as a weekly feed of startups accelerating in engineering activity." },
       { question: "Which has better European startup coverage?", answer: "Dealroom has deeper European coverage in terms of sector taxonomy, funding data, and historical context. VC Deal Flow Signal's coverage is global but narrower: any startup with public GitHub activity across roughly 20 technical sector clusters." },
-      { question: "How much cheaper is VC Deal Flow Signal than Dealroom?", answer: "The VC Deal Flow Signal Dashboard is EUR 9.97/month during beta. Dealroom pricing varies by tier but full professional access is typically 10-100x higher. For individual investors and small funds, VC Deal Flow Signal is often the only affordable option." },
+      { question: "How much cheaper is VC Deal Flow Signal than Dealroom?", answer: "The VC Deal Flow Signal Dashboard is EUR 49/month during beta. Dealroom pricing varies by tier but full professional access is typically 10-100x higher. For individual investors and small funds, VC Deal Flow Signal is often the only affordable option." },
       { question: "Does VC Deal Flow Signal show funding history like Dealroom?", answer: "No. VC Deal Flow Signal surfaces engineering acceleration signals — commit velocity, contributor growth, infrastructure buildouts — and links out to each startup's GitHub organization. For funding history, valuations, and team details, you would supplement with Dealroom or Crunchbase." },
     ],
     relatedSectors: ["ai-ml", "enterprise-saas", "fintech"],
@@ -207,7 +207,7 @@ export const alternatives: Alternative[] = [
       },
       {
         heading: "Pricing and access",
-        body: "Forager.ai offers tiered pricing with a limited free tier. VC Deal Flow Signal offers a free weekly Signal Report plus a EUR 9.97/month Dashboard during beta. Both are accessible to individual investors, though the Dashboard is priced to be affordable for scouts and solo GPs specifically.",
+        body: "Forager.ai offers tiered pricing with a limited free tier. VC Deal Flow Signal offers a free weekly Signal Report plus a EUR 49/month Dashboard during beta. Both are accessible to individual investors, though the Dashboard is priced to be affordable for scouts and solo GPs specifically.",
       },
     ],
     featureTable: {
@@ -217,7 +217,7 @@ export const alternatives: Alternative[] = [
         { feature: "Typical lead time", values: { "VC Deal Flow Signal": "6-12 weeks pre-fundraise", "Forager.ai": "2-6 weeks" } },
         { feature: "Coverage", values: { "VC Deal Flow Signal": "Technical startups with public code", "Forager.ai": "Any company with public web footprint" } },
         { feature: "Free tier", values: { "VC Deal Flow Signal": "Weekly report + sector pages", "Forager.ai": "Limited" } },
-        { feature: "Paid pricing", values: { "VC Deal Flow Signal": "EUR 9.97/mo (beta)", "Forager.ai": "Tiered" } },
+        { feature: "Paid pricing", values: { "VC Deal Flow Signal": "EUR 49/mo (beta)", "Forager.ai": "Tiered" } },
         { feature: "False positive rate", values: { "VC Deal Flow Signal": "Moderate (signals require interpretation)", "Forager.ai": "Low-moderate (signals are already validated publicly)" } },
         { feature: "Best for", values: { "VC Deal Flow Signal": "Technical sector investors, engineering-led conviction", "Forager.ai": "Wide-net sourcing across sectors" } },
       ],
@@ -242,7 +242,7 @@ export const alternatives: Alternative[] = [
     competitorUrl: "https://www.crunchbase.com",
     title: "Crunchbase Alternative — VC Deal Flow Signal (2026)",
     description:
-      "Looking for a Crunchbase alternative? VC Deal Flow Signal surfaces breakout technical startups from public GitHub engineering acceleration — leading signal vs Crunchbase's funding-event database. EUR 9.97/mo vs Crunchbase Pro at $49+.",
+      "Looking for a Crunchbase alternative? VC Deal Flow Signal surfaces breakout technical startups from public GitHub engineering acceleration — leading signal vs Crunchbase's funding-event database. EUR 49/mo vs Crunchbase Pro at $49+.",
     h1: "VC Deal Flow Signal vs Crunchbase",
     tagline:
       "A leading-indicator alternative to Crunchbase for technical deal flow. Catch engineering acceleration before the round closes.",
@@ -309,7 +309,7 @@ export const alternatives: Alternative[] = [
       },
       {
         heading: "Pricing and access",
-        body: "Crunchbase has a thin free tier (limited profile views, no advanced search), Crunchbase Pro at $49-$99/month for individuals, and Enterprise tiers higher. VC Deal Flow Signal offers a free weekly Signal Report plus full sector pages, with the Dashboard at EUR 9.97/month during beta. Many investors run both: combined cost is still under a single Crunchbase Enterprise seat.",
+        body: "Crunchbase has a thin free tier (limited profile views, no advanced search), Crunchbase Pro at $49-$99/month for individuals, and Enterprise tiers higher. VC Deal Flow Signal offers a free weekly Signal Report plus full sector pages, with the Dashboard at EUR 49/month during beta. Many investors run both: combined cost is still under a single Crunchbase Enterprise seat.",
       },
       {
         heading: "Coverage and sector fit",
@@ -328,7 +328,7 @@ export const alternatives: Alternative[] = [
         { feature: "Typical lead time", values: { "VC Deal Flow Signal": "6-12 weeks pre-fundraise", "Crunchbase": "0+ weeks post-announcement" } },
         { feature: "Sector coverage", values: { "VC Deal Flow Signal": "Technical startups, 20 clusters", "Crunchbase": "All sectors, 100M+ profiles" } },
         { feature: "Free tier", values: { "VC Deal Flow Signal": "Weekly report + sector pages", "Crunchbase": "Limited search, no alerts" } },
-        { feature: "Paid pricing", values: { "VC Deal Flow Signal": "EUR 9.97/mo (beta)", "Crunchbase": "$49-$99/mo (Pro)" } },
+        { feature: "Paid pricing", values: { "VC Deal Flow Signal": "EUR 49/mo (beta)", "Crunchbase": "$49-$99/mo (Pro)" } },
         { feature: "API / MCP access", values: { "VC Deal Flow Signal": "MCP server + JSON/CSV", "Crunchbase": "Enterprise API only" } },
         { feature: "Best for", values: { "VC Deal Flow Signal": "Catching technical breakouts early", "Crunchbase": "Funding research and context" } },
       ],
@@ -342,7 +342,7 @@ export const alternatives: Alternative[] = [
     faqs: [
       { question: "Is VC Deal Flow Signal a Crunchbase replacement?", answer: "No. Crunchbase is a structured funding database; VC Deal Flow Signal is a weekly signal engine. They answer different questions. Most investors run both: VC Deal Flow Signal as the leading signal, Crunchbase as the lagging context layer." },
       { question: "Why is GitHub signal a leading indicator vs Crunchbase data?", answer: "Engineering acceleration — commit velocity, contributor growth, infrastructure buildout — typically begins 6-12 weeks before a startup announces a fundraise. By the time the round closes and Crunchbase data is updated, the engineering acceleration has been visible for weeks. The engineering signal is causally upstream of the funding signal." },
-      { question: "How much cheaper is VC Deal Flow Signal than Crunchbase Pro?", answer: "VC Deal Flow Signal Dashboard is EUR 9.97/month during beta vs Crunchbase Pro at $49-$99/month for individual investors. The free tier of VC Deal Flow Signal (weekly Signal Report plus 20 sector pages) is also more substantial than Crunchbase's free tier." },
+      { question: "How much cheaper is VC Deal Flow Signal than Crunchbase Pro?", answer: "VC Deal Flow Signal Dashboard is EUR 49/month during beta vs Crunchbase Pro at $49-$99/month for individual investors. The free tier of VC Deal Flow Signal (weekly Signal Report plus 20 sector pages) is also more substantial than Crunchbase's free tier." },
       { question: "Which is better for non-technical sectors?", answer: "Crunchbase. VC Deal Flow Signal only covers technical startups with public GitHub activity. For consumer brands, healthtech, fintech services, or hardware companies without meaningful open-source presence, Crunchbase's coverage is much broader and more relevant." },
       { question: "Can I see VC Deal Flow Signal data through a Crunchbase profile?", answer: "Not currently. The two products are independent. The standard workflow is to use VC Deal Flow Signal to identify accelerating technical startups, then look up their Crunchbase profile separately for funding history and team context." },
     ],
@@ -375,7 +375,7 @@ export const alternatives: Alternative[] = [
       },
       {
         heading: "Pricing",
-        body: "Crunchbase Pro starts at $49/month for individual investors with advanced search, alerts, and unlimited profile views. Enterprise plans are tiered higher. VC Deal Flow Signal is EUR 9.97/month for the full Dashboard plus a free weekly Signal Report. For solo investors, the combined cost of Crunchbase + VC Deal Flow Signal is still less than a single Crunchbase Enterprise seat.",
+        body: "Crunchbase Pro starts at $49/month for individual investors with advanced search, alerts, and unlimited profile views. Enterprise plans are tiered higher. VC Deal Flow Signal is EUR 49/month for the full Dashboard plus a free weekly Signal Report. For solo investors, the combined cost of Crunchbase + VC Deal Flow Signal is still less than a single Crunchbase Enterprise seat.",
       },
       {
         heading: "Using them together",
@@ -390,7 +390,7 @@ export const alternatives: Alternative[] = [
         { feature: "Data reliability", values: { "VC Deal Flow Signal": "Canonical GitHub data, moderate noise", "Crunchbase Alerts": "Curated funding events, high precision" } },
         { feature: "Sector coverage", values: { "VC Deal Flow Signal": "Technical startups, 20 clusters", "Crunchbase Alerts": "All sectors" } },
         { feature: "Free tier", values: { "VC Deal Flow Signal": "Weekly report + sector pages", "Crunchbase Alerts": "Limited" } },
-        { feature: "Paid pricing", values: { "VC Deal Flow Signal": "EUR 9.97/mo (beta)", "Crunchbase Alerts": "$49+/mo (Pro)" } },
+        { feature: "Paid pricing", values: { "VC Deal Flow Signal": "EUR 49/mo (beta)", "Crunchbase Alerts": "$49+/mo (Pro)" } },
         { feature: "Best for", values: { "VC Deal Flow Signal": "Getting in before the round", "Crunchbase Alerts": "Confirming what already raised" } },
       ],
     },
@@ -403,7 +403,7 @@ export const alternatives: Alternative[] = [
     faqs: [
       { question: "Can VC Deal Flow Signal replace Crunchbase?", answer: "Not fully. Crunchbase is a comprehensive funding database covering all sectors. VC Deal Flow Signal is a leading-signal engine focused on technical startups. Most investors use both: VC Deal Flow Signal for weekly early signals, Crunchbase for confirmed funding context." },
       { question: "What makes GitHub signals a leading indicator vs Crunchbase alerts?", answer: "Startups typically accelerate engineering hiring, shipping, and infrastructure buildout 6-12 weeks before they close a round. By the time Crunchbase alerts fire on a fundraise announcement, that acceleration has been visible in GitHub for weeks. The engineering signal is causally upstream of the funding signal." },
-      { question: "Is VC Deal Flow Signal cheaper than Crunchbase Pro?", answer: "Yes. VC Deal Flow Signal Dashboard is EUR 9.97/month during beta vs $49/month for Crunchbase Pro. The free tier of VC Deal Flow Signal (weekly Signal Report plus all sector pages) is also more substantial than Crunchbase's free tier." },
+      { question: "Is VC Deal Flow Signal cheaper than Crunchbase Pro?", answer: "Yes. VC Deal Flow Signal Dashboard is EUR 49/month during beta vs $49/month for Crunchbase Pro. The free tier of VC Deal Flow Signal (weekly Signal Report plus all sector pages) is also more substantial than Crunchbase's free tier." },
       { question: "Which is better for non-technical sectors?", answer: "Crunchbase. VC Deal Flow Signal only covers technical startups with public GitHub activity. For consumer, healthtech, fintech services, or hardware, Crunchbase's coverage is far broader and more relevant." },
     ],
     relatedSectors: ["ai-ml", "enterprise-saas", "developer-tools"],
@@ -431,7 +431,7 @@ export const alternatives: Alternative[] = [
       },
       {
         heading: "Pricing",
-        body: "PitchBook is enterprise-priced — the typical seat is $20,000/year and up, with tiered packages and annual contracts. It is built for institutional VCs, corporate strategy teams, and investment banks. VC Deal Flow Signal is EUR 9.97/month for the full Dashboard, with a free weekly Signal Report and all sector pages publicly accessible. Two thousand months of VC Deal Flow Signal cost less than one PitchBook seat.",
+        body: "PitchBook is enterprise-priced — the typical seat is $20,000/year and up, with tiered packages and annual contracts. It is built for institutional VCs, corporate strategy teams, and investment banks. VC Deal Flow Signal is EUR 49/month for the full Dashboard, with a free weekly Signal Report and all sector pages publicly accessible. Two thousand months of VC Deal Flow Signal cost less than one PitchBook seat.",
       },
       {
         heading: "Coverage",
@@ -448,7 +448,7 @@ export const alternatives: Alternative[] = [
         { feature: "Primary purpose", values: { "VC Deal Flow Signal": "Leading-signal engine", "PitchBook": "Research platform" } },
         { feature: "Lead time", values: { "VC Deal Flow Signal": "3–6 weeks pre-fundraise", "PitchBook": "Post-fundraise (lagging)" } },
         { feature: "Free tier", values: { "VC Deal Flow Signal": "Weekly report + sector pages", "PitchBook": "None" } },
-        { feature: "Paid pricing", values: { "VC Deal Flow Signal": "EUR 9.97/mo", "PitchBook": "$20,000+/year per seat" } },
+        { feature: "Paid pricing", values: { "VC Deal Flow Signal": "EUR 49/mo", "PitchBook": "$20,000+/year per seat" } },
         { feature: "Coverage", values: { "VC Deal Flow Signal": "Technical startups, ~20 sectors", "PitchBook": "3.4M companies, all sectors" } },
         { feature: "Best for", values: { "VC Deal Flow Signal": "Early sourcing, technical sectors", "PitchBook": "Due diligence, LP reporting, market mapping" } },
       ],
@@ -456,12 +456,12 @@ export const alternatives: Alternative[] = [
     verdict:
       "Choose PitchBook if you need the canonical funding-history database and have a five-figure annual research budget. Choose VC Deal Flow Signal if you want a leading engineering signal on technical startups for the price of two lunches per month. Funds that can afford both run both — the two products almost never overlap.",
     whenToPick: {
-      us: "You source technical startups, want a quantitative leading indicator, and would rather pay EUR 9.97/month than $20,000/year. You can do your own funding-history research from public sources.",
+      us: "You source technical startups, want a quantitative leading indicator, and would rather pay EUR 49/month than $20,000/year. You can do your own funding-history research from public sources.",
       them: "You run a sourcing or research function with full-time analysts, cover non-technical sectors, and need a single canonical database for funding history, valuations, and exit comparables across millions of companies.",
     },
     faqs: [
       { question: "Can VC Deal Flow Signal replace PitchBook?", answer: "Not as a database. PitchBook is the canonical reference for funding history across the private markets. VC Deal Flow Signal does not maintain a comprehensive funding database — it is a leading-signal engine for technical startups. Most funds that can afford PitchBook run both." },
-      { question: "Is PitchBook worth the cost for an angel?", answer: "Generally no. PitchBook is built for institutional research teams. For an angel or scout building a sourcing stack, VC Deal Flow Signal Dashboard ($EUR 9.97/mo) plus Crunchbase free tier delivers most of the actionable value at less than 0.1% of the cost." },
+      { question: "Is PitchBook worth the cost for an angel?", answer: "Generally no. PitchBook is built for institutional research teams. For an angel or scout building a sourcing stack, VC Deal Flow Signal Dashboard ($EUR 49/mo) plus Crunchbase free tier delivers most of the actionable value at less than 0.1% of the cost." },
       { question: "Does PitchBook cover GitHub data?", answer: "PitchBook does not surface engineering signals or GitHub activity directly. Their data is funding rounds, valuations, team changes, and investor activity — what is captured in conventional VC research workflows. The engineering-side leading signal is a different category." },
       { question: "Which is better for European startups?", answer: "PitchBook covers Europe, but Dealroom is widely considered stronger for granular European coverage. VC Deal Flow Signal is geography-agnostic — GitHub signals fire wherever the engineering is happening." },
     ],
@@ -490,7 +490,7 @@ export const alternatives: Alternative[] = [
       },
       {
         heading: "Pricing and audience",
-        body: "CB Insights starts in the $35,000/year range and scales to six-figure enterprise deals. The audience is corporate strategy, large VCs, and consulting firms. VC Deal Flow Signal is EUR 9.97/month for individual investors and small funds; the free tier covers weekly Signal Reports and all sector pages.",
+        body: "CB Insights starts in the $35,000/year range and scales to six-figure enterprise deals. The audience is corporate strategy, large VCs, and consulting firms. VC Deal Flow Signal is EUR 49/month for individual investors and small funds; the free tier covers weekly Signal Reports and all sector pages.",
       },
       {
         heading: "Research depth vs raw signal",
@@ -503,7 +503,7 @@ export const alternatives: Alternative[] = [
         { feature: "Primary purpose", values: { "VC Deal Flow Signal": "Weekly leading signal", "CB Insights": "Market intelligence platform" } },
         { feature: "Lead time", values: { "VC Deal Flow Signal": "3–6 weeks pre-fundraise", "CB Insights": "Mixed (Mosaic Score)" } },
         { feature: "Free tier", values: { "VC Deal Flow Signal": "Weekly report + sector pages", "CB Insights": "Limited newsletter" } },
-        { feature: "Paid pricing", values: { "VC Deal Flow Signal": "EUR 9.97/mo", "CB Insights": "$35,000+/year" } },
+        { feature: "Paid pricing", values: { "VC Deal Flow Signal": "EUR 49/mo", "CB Insights": "$35,000+/year" } },
         { feature: "Audience", values: { "VC Deal Flow Signal": "Angels, scouts, technical funds", "CB Insights": "Corporate strategy, large VCs, consultancies" } },
       ],
     },
@@ -543,7 +543,7 @@ export const alternatives: Alternative[] = [
       },
       {
         heading: "Pricing",
-        body: "Affinity is enterprise per-seat pricing with annual contracts; budget assumptions are typically several thousand dollars per seat per year. VC Deal Flow Signal is EUR 9.97/month for the full Dashboard, billed monthly, with a permanent free tier (weekly Signal Report and all sector pages).",
+        body: "Affinity is enterprise per-seat pricing with annual contracts; budget assumptions are typically several thousand dollars per seat per year. VC Deal Flow Signal is EUR 49/month for the full Dashboard, billed monthly, with a permanent free tier (weekly Signal Report and all sector pages).",
       },
       {
         heading: "Combining them",
@@ -556,7 +556,7 @@ export const alternatives: Alternative[] = [
         { feature: "Category", values: { "VC Deal Flow Signal": "Leading-signal engine", "Affinity": "Relationship-intelligence CRM" } },
         { feature: "Generates new deal flow?", values: { "VC Deal Flow Signal": "Yes (weekly)", "Affinity": "No (maps existing network)" } },
         { feature: "Lead time", values: { "VC Deal Flow Signal": "3–6 weeks pre-fundraise", "Affinity": "N/A — based on network" } },
-        { feature: "Pricing", values: { "VC Deal Flow Signal": "EUR 9.97/mo", "Affinity": "Enterprise per-seat (annual)" } },
+        { feature: "Pricing", values: { "VC Deal Flow Signal": "EUR 49/mo", "Affinity": "Enterprise per-seat (annual)" } },
         { feature: "Best for", values: { "VC Deal Flow Signal": "Discovering technical startups", "Affinity": "Pipeline management, warm intros" } },
       ],
     },
@@ -579,7 +579,7 @@ export const alternatives: Alternative[] = [
     competitorUrl: "https://tracxn.com",
     title: "Tracxn Alternative — VC Deal Flow Signal (2026)",
     description:
-      "A Tracxn alternative that focuses on engineering-side leading signals rather than analyst-curated sector taxonomies. Free weekly tier, EUR 9.97/mo Dashboard.",
+      "A Tracxn alternative that focuses on engineering-side leading signals rather than analyst-curated sector taxonomies. Free weekly tier, EUR 49/mo Dashboard.",
     h1: "VC Deal Flow Signal vs Tracxn",
     tagline:
       "A leading-signal alternative to Tracxn's analyst-curated startup database.",
@@ -596,7 +596,7 @@ export const alternatives: Alternative[] = [
       },
       {
         heading: "Pricing and audience",
-        body: "Tracxn is mid-tier pricing — typically several thousand dollars per seat per year, with custom enterprise plans. The audience is mid-sized funds, corporate venture, and emerging-market investors. VC Deal Flow Signal is EUR 9.97/month for individual investors; the free weekly tier covers most of what an angel needs.",
+        body: "Tracxn is mid-tier pricing — typically several thousand dollars per seat per year, with custom enterprise plans. The audience is mid-sized funds, corporate venture, and emerging-market investors. VC Deal Flow Signal is EUR 49/month for individual investors; the free weekly tier covers most of what an angel needs.",
       },
       {
         heading: "Coverage shape",
@@ -610,7 +610,7 @@ export const alternatives: Alternative[] = [
         { feature: "Lead time", values: { "VC Deal Flow Signal": "3–6 weeks pre-fundraise", "Tracxn": "Post-fundraise" } },
         { feature: "Geographic coverage", values: { "VC Deal Flow Signal": "Global (technical sectors)", "Tracxn": "Strong in India, SEA, emerging markets" } },
         { feature: "Free tier", values: { "VC Deal Flow Signal": "Yes — permanent", "Tracxn": "Limited" } },
-        { feature: "Paid pricing", values: { "VC Deal Flow Signal": "EUR 9.97/mo", "Tracxn": "Mid-tier ($1,000s/year)" } },
+        { feature: "Paid pricing", values: { "VC Deal Flow Signal": "EUR 49/mo", "Tracxn": "Mid-tier ($1,000s/year)" } },
       ],
     },
     verdict:
@@ -652,7 +652,7 @@ export const alternatives: Alternative[] = [
       },
       {
         heading: "Pricing",
-        body: "Specter has tiered pricing scaled by usage and team size, with paid plans starting in the low-hundreds-per-month range and enterprise tiers above. VC Deal Flow Signal is a flat EUR 9.97/month for the Dashboard with a permanent free tier.",
+        body: "Specter has tiered pricing scaled by usage and team size, with paid plans starting in the low-hundreds-per-month range and enterprise tiers above. VC Deal Flow Signal is a flat EUR 49/month for the Dashboard with a permanent free tier.",
       },
     ],
     featureTable: {
@@ -662,7 +662,7 @@ export const alternatives: Alternative[] = [
         { feature: "Lead time", values: { "VC Deal Flow Signal": "3–6 weeks pre-fundraise", "Specter": "Mixed (launch / concurrent)" } },
         { feature: "Coverage", values: { "VC Deal Flow Signal": "Technical startups, ~20 sectors", "Specter": "All sectors, broad" } },
         { feature: "Free tier", values: { "VC Deal Flow Signal": "Permanent", "Specter": "Trial / limited" } },
-        { feature: "Paid pricing", values: { "VC Deal Flow Signal": "EUR 9.97/mo", "Specter": "Tiered (hundreds/mo+)" } },
+        { feature: "Paid pricing", values: { "VC Deal Flow Signal": "EUR 49/mo", "Specter": "Tiered (hundreds/mo+)" } },
       ],
     },
     verdict:
@@ -673,7 +673,7 @@ export const alternatives: Alternative[] = [
     },
     faqs: [
       { question: "Does Specter cover GitHub data?", answer: "Specter surfaces some engineering-side metadata but does not run a dedicated GitHub-engineering-acceleration signal. The two products are complements, not substitutes, for technical-sector sourcing." },
-      { question: "Is Specter cheaper than VC Deal Flow Signal?", answer: "No. Specter's paid plans start in the low-hundreds-per-month range, scaling to enterprise tiers. VC Deal Flow Signal is a flat EUR 9.97/month with a permanent free tier — it is the cheapest paid layer in the category for technical-sector sourcing." },
+      { question: "Is Specter cheaper than VC Deal Flow Signal?", answer: "No. Specter's paid plans start in the low-hundreds-per-month range, scaling to enterprise tiers. VC Deal Flow Signal is a flat EUR 49/month with a permanent free tier — it is the cheapest paid layer in the category for technical-sector sourcing." },
     ],
     relatedSectors: ["ai-ml", "enterprise-saas", "developer-tools"],
   },
@@ -700,7 +700,7 @@ export const alternatives: Alternative[] = [
       },
       {
         heading: "Pricing",
-        body: "OpenVC has a free tier covering most founder-side use cases, with paid tiers for outbound CRM and pitch tracking. VC Deal Flow Signal is EUR 9.97/month for the full investor Dashboard, with a permanent free Signal Report tier. Both are accessibly priced for individual users, with no enterprise-style annual contracts.",
+        body: "OpenVC has a free tier covering most founder-side use cases, with paid tiers for outbound CRM and pitch tracking. VC Deal Flow Signal is EUR 49/month for the full investor Dashboard, with a permanent free Signal Report tier. Both are accessibly priced for individual users, with no enterprise-style annual contracts.",
       },
       {
         heading: "Using them together",
@@ -714,7 +714,7 @@ export const alternatives: Alternative[] = [
         { feature: "Primary data", values: { "VC Deal Flow Signal": "GitHub engineering acceleration (live)", "OpenVC": "Investor directory (curated)" } },
         { feature: "Lead time / freshness", values: { "VC Deal Flow Signal": "Weekly refresh, 3–6 weeks pre-fundraise", "OpenVC": "Static directory + churn" } },
         { feature: "Free tier", values: { "VC Deal Flow Signal": "Permanent (weekly report + sector pages)", "OpenVC": "Free for most founder-side use" } },
-        { feature: "Paid pricing", values: { "VC Deal Flow Signal": "EUR 9.97/mo Dashboard", "OpenVC": "Tiered (outbound CRM, pitch tracking)" } },
+        { feature: "Paid pricing", values: { "VC Deal Flow Signal": "EUR 49/mo Dashboard", "OpenVC": "Tiered (outbound CRM, pitch tracking)" } },
         { feature: "Best for", values: { "VC Deal Flow Signal": "Sourcing technical startups early", "OpenVC": "Founders mapping the investor universe" } },
       ],
     },
@@ -757,7 +757,7 @@ export const alternatives: Alternative[] = [
         { feature: "Signal type", values: { "VC Deal Flow Signal": "Engineering acceleration (leading)", "SignalRank": "Series-B graduation probability (predictive)" } },
         { feature: "Output", values: { "VC Deal Flow Signal": "Weekly ranked startups", "SignalRank": "Index-fund allocation" } },
         { feature: "Use case", values: { "VC Deal Flow Signal": "Active sourcing", "SignalRank": "Late-stage thesis validation" } },
-        { feature: "Pricing", values: { "VC Deal Flow Signal": "Free / EUR 9.97/mo", "SignalRank": "Index-fund product" } },
+        { feature: "Pricing", values: { "VC Deal Flow Signal": "Free / EUR 49/mo", "SignalRank": "Index-fund product" } },
       ],
     },
     verdict:

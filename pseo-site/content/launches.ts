@@ -142,7 +142,7 @@ export const LAUNCHES: Launch[] = [
         body: [
           "Spend two minutes inside Claude or Cursor with an MCP server attached and the future is obvious. Agents don’t scroll dashboards. They issue tool calls. They scrape, score, decide, and ship a memo before you finish your coffee.",
           "Every signal-data product on the market still bills humans by the seat — €99/month, $299/month, €497/month — assuming a partner clicks through pages. None of them have a credit-meter that an agent can spend against.",
-          "The result is the absurd status quo: an AI scout running on a small-cheque investor’s laptop pays €97 for a full Insider Circle subscription it consumes in 11 minutes of Sunday-morning research, then idles for six days. The data product has no way to charge proportionally, so it overcharges or undercharges depending on the day.",
+          "The result is the absurd status quo: an AI scout running on a small-cheque investor’s laptop pays €197 for a full Insider Circle subscription it consumes in 11 minutes of Sunday-morning research, then idles for six days. The data product has no way to charge proportionally, so it overcharges or undercharges depending on the day.",
         ],
         videoCue: {
           kind: "youtube",
@@ -180,7 +180,7 @@ export const LAUNCHES: Launch[] = [
         headline:
           "‘Just sell us a higher seat tier’ doesn’t work. Agents have a different consumption shape than humans.",
         body: [
-          "I tried two fixes before I built this one. First, I tried higher Insider tiers (€97 → €197 → €497). The math broke immediately: a single agent scaling across 4,200 orgs ends up running ~30,000 deep-signal calls in a weekend. €497/month doesn’t cover the GitHub-API cost layer underneath, let alone the regression compute.",
+          "I tried two fixes before I built this one. First, I tried higher Insider tiers (€197 → €197 → €497). The math broke immediately: a single agent scaling across 4,200 orgs ends up running ~30,000 deep-signal calls in a weekend. €497/month doesn’t cover the GitHub-API cost layer underneath, let alone the regression compute.",
           "Second, I tried a flat ‘fair-use ceiling.’ That’s the SaaS-pricing equivalent of duct tape. The honest agents stay polite at 200 calls/month. The dishonest ones blow through 30,000 the first week and the ceiling becomes the entire ceiling — at which point the only honest move is to cut their API access, which is a worse experience than just charging them per call up front.",
           "What this product needed was the simplest economic model in software: a credit. Pay for the call, get the result, walk away. No subscription, no overage drama, no per-seat fiction. The fix had to be priced by what an agent actually does, not by what a human looks like to a billing system.",
         ],
@@ -287,7 +287,7 @@ export const LAUNCHES: Launch[] = [
         videoCue: {
           kind: "youtube",
           youtubeId: "sXFZHCKkROA",
-          title: "The €9.97 tier nobody else priced for",
+          title: "The €49 tier nobody else priced for",
           durationSeconds: 90,
           caption:
             "Why every other tool skipped the small-cheque investor segment.",
@@ -356,7 +356,7 @@ export const LAUNCHES: Launch[] = [
       },
       {
         q: "Can I upgrade later to a higher tier?",
-        a: "Yes. Insider Circle (€77/mo, 6 free MCP tools + private Telegram + spike alerts) and Sector Sweep (€1,797 weekend deep-dive) are both available to founding members at no special discount — same price as everyone else. The €9.97/mo lock applies only to the founding-member tier itself.",
+        a: "Yes. Insider Circle (€177/mo, 6 free MCP tools + private Telegram + spike alerts) and Sector Sweep (€1,797 weekend deep-dive) are both available to founding members at no special discount — same price as everyone else. The €9.97/mo lock applies only to the founding-member tier itself.",
       },
       {
         q: "What happens if I cancel and resubscribe?",
@@ -492,7 +492,7 @@ export const LAUNCHES: Launch[] = [
         ],
       },
     ],
-    buyUrl: "https://buy.stripe.com/bJe14m34DbNC6gm1by0x204",
+    buyUrl: "/api/checkout/session?tier=sector_sweep",
     ctaLabel: "Claim a Q2 cohort spot — €1,797 →",
     cohort: "launch-sector-sweep-q2-2026",
     faq: [

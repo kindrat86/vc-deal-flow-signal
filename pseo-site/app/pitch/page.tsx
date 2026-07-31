@@ -9,12 +9,12 @@ import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "The 90-Second Pitch — VC Deal Flow Signal",
+  title: "The 90-Second Pitch",
   description:
     "Five sections, 90 seconds. The case for using GitHub commit-velocity acceleration as your highest-leverage deal-flow source. Read it, then either subscribe or close the tab.",
   alternates: { canonical: "/pitch" },
   openGraph: {
-    title: "The 90-Second Pitch — VC Deal Flow Signal",
+    title: "The 90-Second Pitch",
     description:
       "Five sections, 90 seconds. The case for GitHub commit-velocity as your highest-leverage deal-flow source.",
     url: "https://signals.gitdealflow.com/pitch",
@@ -206,7 +206,7 @@ export default function PitchPage() {
               href={STRIPE_DASHBOARD}
               className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-semibold text-sm shadow-lg shadow-sky-500/30 transition-colors"
             >
-              Lock €9.97/mo founder price <span aria-hidden="true">→</span>
+              Lock €49/mo founder price <span aria-hidden="true">→</span>
             </a>
             <a
               href={SIGNUP_URL}

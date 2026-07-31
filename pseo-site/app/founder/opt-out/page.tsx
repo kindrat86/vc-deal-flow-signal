@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Founder Profile Opt-Out — VC Deal Flow Signal",
+  title: "Founder Profile Opt-Out",
   description:
     "Request removal of a /founder/[handle] page. Verified removal requests are honored within 7 business days; the page then returns HTTP 410 Gone and the handle is added to a permanent blocklist.",
   alternates: { canonical: "/founder/opt-out" },

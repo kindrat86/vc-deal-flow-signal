@@ -460,12 +460,12 @@ export function RootIdentitySchema() {
           {
             "@type": "Offer",
             name: "Dashboard",
-            price: "9.97",
+            price: "49",
             priceCurrency: "EUR",
             url: `${SITE}/dashboard`,
             priceSpecification: {
               "@type": "UnitPriceSpecification",
-              price: "9.97",
+              price: "49",
               priceCurrency: "EUR",
               unitText: "MONTH",
               billingDuration: "P1M",
@@ -475,12 +475,12 @@ export function RootIdentitySchema() {
           {
             "@type": "Offer",
             name: "Insider",
-            price: "97",
+            price: "197",
             priceCurrency: "EUR",
             url: `${APEX}/insider`,
             priceSpecification: {
               "@type": "UnitPriceSpecification",
-              price: "97",
+              price: "197",
               priceCurrency: "EUR",
               unitText: "MONTH",
               billingDuration: "P1M",

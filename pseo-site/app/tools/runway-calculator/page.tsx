@@ -41,7 +41,7 @@ export async function generateMetadata({
       "Free startup runway calculator. Cash divided by net burn equals months of runway. Model headcount scenarios — see how many months each engineer costs you. URL-shareable results.",
     alternates: { canonical: "/tools/runway-calculator" },
     openGraph: {
-      title: "Runway Calculator — VC Deal Flow Signal",
+      title: "Runway Calculator",
       description:
         "Cash, burn, headcount scenarios. URL-shareable startup runway math.",
       type: "website",
@@ -57,7 +57,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: "Runway Calculator — VC Deal Flow Signal",
+      title: "Runway Calculator",
       description:
         "Free startup runway calculator with headcount scenarios and shareable URLs.",
       images: [ogImage],

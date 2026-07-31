@@ -196,7 +196,7 @@ export default function NinetySecondWalkthroughPage() {
               Private repos aren&rsquo;t needed for the signal to fire.
             </li>
             <li className="border-l-2 border-rose-700 pl-4">
-              <strong className="text-gray-100">&ldquo;€9.97/mo is too cheap to be real.&rdquo;</strong>{" "}
+              <strong className="text-gray-100">&ldquo;€49/mo is too cheap to be real.&rdquo;</strong>{" "}
               We don&rsquo;t have a sales team. This is priced for someone who wants
               earlier signal without an enterprise contract. Pricing matches the
               job.
@@ -207,7 +207,7 @@ export default function NinetySecondWalkthroughPage() {
         {/* THE STACK — four lines, not eight. */}
         <section className="rounded-xl border border-emerald-700/40 bg-gradient-to-br from-emerald-950/15 via-slate-900 to-slate-950 p-5 sm:p-6 space-y-3">
           <h2 className="text-lg font-bold text-gray-100">
-            What €9.97/mo unlocks:
+            What €49/mo unlocks:
           </h2>
           <ul className="space-y-1.5 text-gray-200 text-sm leading-relaxed">
             <li>
@@ -253,7 +253,7 @@ export default function NinetySecondWalkthroughPage() {
               kind="primary"
               className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-base shadow-lg shadow-emerald-500/30 transition-colors"
             >
-              Lock €9.97/mo founder price →
+              Lock €49/mo founder price →
             </WalkthroughCtaLink>
             <WalkthroughCtaLink
               href={SIGNUP_URL}

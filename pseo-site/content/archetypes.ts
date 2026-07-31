@@ -82,7 +82,7 @@ export const ARCHETYPES: readonly Archetype[] = [
     },
     rampTier: {
       name: "Dashboard",
-      price: "€9.97/mo",
+      price: "€49/mo",
       href: "/pricing",
     },
     entryCta: {
@@ -91,7 +91,7 @@ export const ARCHETYPES: readonly Archetype[] = [
       external: true,
     },
     rampCta: {
-      label: "Or jump to the €9.97/mo Dashboard",
+      label: "Or jump to the €49/mo Dashboard",
       href: "/pricing",
     },
     whatBuys: [
@@ -121,7 +121,7 @@ export const ARCHETYPES: readonly Archetype[] = [
     ],
     entryTier: {
       name: "Insider Circle",
-      price: "€97/mo",
+      price: "€197/mo",
       href: "/insider",
     },
     rampTier: {
@@ -186,7 +186,7 @@ export const ARCHETYPES: readonly Archetype[] = [
       "Anonymous-by-design matches a compliance preference for source over personality. The voice is the methodology.",
     ],
     notForYouIf:
-      "You need a self-serve €9.97 SaaS. The Dashboard is honest, but it isn’t the contract shape your compliance team will sign. Start at Sector Sweep or above.",
+      "You need a self-serve €49 SaaS. The Dashboard is honest, but it isn’t the contract shape your compliance team will sign. Start at Sector Sweep or above.",
     accent: "emerald",
   },
 ] as const;

@@ -4,7 +4,7 @@ import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 
 export const metadata: Metadata = {
   title:
-    "Confirmed — your 30-Day Deal Flow Reset starts now | VC Deal Flow Signal",
+    "Confirmed — your 30-Day Deal Flow Reset starts now",
   description:
     "Email confirmed. Day 1 of the 30-Day Deal Flow Reset is queued for the next 15 minutes. Here's the four-week curriculum and what to expect.",
   alternates: { canonical: "/challenge/started" },

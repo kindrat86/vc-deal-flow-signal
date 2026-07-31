@@ -36,7 +36,7 @@ export async function generateMetadata({
       "Free SaaS LTV calculator. (ARPC/12) × gross margin × customer lifetime in months. Optional CAC input gives the LTV:CAC ratio with industry-standard bands (>5× exceptional, 3-5× healthy, 2-3× OK, 1-2× suspect, <1× bad). URL-shareable.",
     alternates: { canonical: "/tools/ltv-calculator" },
     openGraph: {
-      title: "LTV Calculator — VC Deal Flow Signal",
+      title: "LTV Calculator",
       description:
         "Customer lifetime value with optional LTV:CAC ratio and standard bands. URL-shareable.",
       type: "website",
@@ -52,7 +52,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: "LTV Calculator — VC Deal Flow Signal",
+      title: "LTV Calculator",
       description:
         "Free SaaS LTV calculator with LTV:CAC ratio and shareable URLs.",
       images: [ogImage],

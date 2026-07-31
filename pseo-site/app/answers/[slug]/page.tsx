@@ -118,39 +118,6 @@ function buildJsonLd(q: AgentQuery): object {
         },
       },
       {
-        // QAPage describes the page itself (one primary question and its
-        // answer). Distinct from FAQPage below which lists supplementary
-        // FAQs. Google treats QAPage as a separate rich-result type with
-        // its own Q&A snippet treatment in AI Overviews.
-        "@type": "QAPage",
-        "@id": `${url}#qapage`,
-        url,
-        datePublished: lastModifiedIso,
-        dateModified: lastModifiedIso,
-        mainEntity: {
-          "@type": "Question",
-          "@id": `${url}#question`,
-          name: q.h1,
-          text: q.h1,
-          answerCount: 1,
-          dateCreated: lastModifiedIso,
-          acceptedAnswer: {
-            "@type": "Answer",
-            "@id": `${url}#answer`,
-            text: q.tldr,
-            url,
-            datePublished: lastModifiedIso,
-            dateModified: lastModifiedIso,
-            inLanguage: "en-US",
-            author: {
-              "@type": "Organization",
-              name: "VC Deal Flow Signal",
-              url: SITE,
-            },
-          },
-        },
-      },
-      {
         // AskAction: machine-actionable hint that this question can be
         // re-asked programmatically against /api/answer (single best) or
         // /api/ask (top-N). Voice assistants and AI Overviews use AskAction

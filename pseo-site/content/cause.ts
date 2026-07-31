@@ -52,7 +52,7 @@ export const WE_REFUSE_HEADLINE = "Four lines we won't cross to grow.";
 export const WE_REFUSE_LINES = [
   "To put a face on the brand to break through algorithmically. The methodology is the protagonist; the founder is the storyteller.",
   "To let proximity beat methodology. Three time zones from a partner's lunch table cannot continue to be the price of admission.",
-  "To charge €60,000 a year because a fund-tier procurement team will pay it. The ladder has rungs at €0, €0.99, €7, and €9.97 because the buyer we built this for writes €5k–€50k cheques.",
+  "To charge €60,000 a year because a fund-tier procurement team will pay it. The ladder has rungs at €0, €0.99, €7, and €49 because the buyer we built this for writes €5k–€50k cheques.",
   "To tell a builder in Lagos she needs a San Francisco co-founder to get in the room. The signal is the introduction.",
 ] as const;
 

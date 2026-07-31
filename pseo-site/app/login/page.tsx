@@ -6,7 +6,7 @@ import { getSession } from "@/lib/auth";
 import LoginForm from "./LoginForm";
 
 export const metadata: Metadata = {
-  title: "Log In — VC Deal Flow Signal",
+  title: "Log In",
   robots: { index: false },
 };
 

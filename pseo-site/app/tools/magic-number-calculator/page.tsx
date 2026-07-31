@@ -36,7 +36,7 @@ export async function generateMetadata({
       "Free SaaS magic number calculator. (Current ARR − prior ARR) × 4 / quarterly S&M spend, classified into the Bessemer / OpenView efficiency bands. URL-shareable for board decks and investor updates.",
     alternates: { canonical: "/tools/magic-number-calculator" },
     openGraph: {
-      title: "Magic Number Calculator — VC Deal Flow Signal",
+      title: "Magic Number Calculator",
       description:
         "Sales-efficiency ratio in one number. Bessemer bands, URL-shareable.",
       type: "website",
@@ -52,7 +52,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: "Magic Number Calculator — VC Deal Flow Signal",
+      title: "Magic Number Calculator",
       description:
         "Free SaaS magic number calculator with sales-efficiency bands.",
       images: [ogImage],

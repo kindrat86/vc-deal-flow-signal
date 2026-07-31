@@ -11,7 +11,7 @@
  * Funnel mechanics (Brunson Summit playbook):
  *   1. Free Pass — each talk is free for 24 hours after its air time.
  *      After that, the talk locks behind the All-Access Pass.
- *   2. All-Access Pass — €97 one-time. Lifetime access to all 20 talks,
+ *   2. All-Access Pass — €197 one-time. Lifetime access to all 20 talks,
  *      full transcripts, slide decks, and a 219-startup panel dataset bonus.
  *   3. Order bump on the All-Access checkout: Sector Sweep €1,797 (the
  *      same OTO lattice already wired into /firstlook → /firstlook/thanks).
@@ -685,7 +685,7 @@ export const TALKS: SummitTalk[] = [
       "The founder talk is the talk you'd give if you had one shot to make the case. Ours, adapted, is a quarterly falsifiable prediction. We name three organizations that we believe will close a Series A within 90 days. We publish the prediction on /state-of-github with a timestamp, a methodology hash, and a public scorecard. Ninety days later we publish the post-mortem. The buyer can verify whether we were right.",
       "The reason we do this is straightforward. A measurement product is only credible if it makes predictions a buyer can check. Most data vendors avoid named predictions because the downside (being wrong publicly) feels heavier than the upside (being right publicly). We argue the math is the opposite. A vendor who is right 70 percent of the time on named predictions is more credible than a vendor who hedges everything in qualified-language reports. The 30 percent miss-rate is information; it's not a brand risk.",
       "The Q3 2026 prediction names three AI-infrastructure organizations. We won't burn the names in this talk because the talk itself is part of the public record and we want the named candidates to have the same observation lead-time as everyone else. The names are published on /state-of-github at the start of the quarter with the methodology hash. The 90-day window opens at publication and closes at the end of Q3. At the end of the window we publish the scorecard.",
-      "The public scorecard creates a feedback loop on signal quality. Every quarter that we make a public prediction and publish the post-mortem, we get clearer empirical feedback on which signals are strengthening and which are weakening. The scorecard is also how we earn the right to charge €9.97/month — a measurement product that won't make falsifiable predictions doesn't deserve a recurring price.",
+      "The public scorecard creates a feedback loop on signal quality. Every quarter that we make a public prediction and publish the post-mortem, we get clearer empirical feedback on which signals are strengthening and which are weakening. The scorecard is also how we earn the right to charge €49/month — a measurement product that won't make falsifiable predictions doesn't deserve a recurring price.",
     ],
     relatedRoutes: [
       { label: "State of GitHub — Founder talk", href: "/state-of-github" },

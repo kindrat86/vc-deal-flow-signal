@@ -4,7 +4,7 @@ import { competitors, getAllCompetitorVsSlugs } from "@/content/competitor-vs";
 import SeoCta from "@/components/SeoCta";
 
 export const metadata: Metadata = {
-  title: "Deal Flow Tool Comparisons (VS) — VC Deal Flow Signal",
+  title: "Deal Flow Tool Comparisons (VS)",
   description:
     "Head-to-head comparisons of every major deal flow platform: Harmonic.ai, PitchBook, Crunchbase, Dealroom, Tracxn, Forager.ai. Signal type, lead time, pricing, coverage, and when to pick each one.",
   alternates: {

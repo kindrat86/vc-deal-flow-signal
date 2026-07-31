@@ -209,7 +209,7 @@ export default function VslPage() {
               href="/pricing"
               className="inline-flex items-center gap-2 rounded-lg bg-emerald-600 px-5 py-3 text-base font-bold text-white hover:bg-emerald-500 transition"
             >
-              Dashboard €9.97/mo →
+              Dashboard €49/mo →
             </Link>
             <a
               href="https://gitdealflow.com/#signup"
@@ -375,7 +375,7 @@ export default function VslPage() {
                 The stack
               </p>
               <h2 className="text-2xl font-bold tracking-tight text-slate-900">
-                What €9.97/mo gets you.
+                What €49/mo gets you.
               </h2>
             </div>
             <div className="space-y-2">
@@ -529,7 +529,7 @@ export default function VslPage() {
                   <p className="text-base text-slate-900">
                     <span className="font-bold text-emerald-700 mr-2">If</span>
                     {b.label.replace(/^If\s+/i, "")} —{" "}
-                    <span className="italic text-slate-600">would the €9.97/mo be worth it?</span>
+                    <span className="italic text-slate-600">would the €49/mo be worth it?</span>
                   </p>
                 </div>
               ))}

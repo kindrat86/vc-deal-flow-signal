@@ -120,7 +120,7 @@ export default async function LeaderboardPage() {
             name: "Is the Scout Game free?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Free tier: 3 predictions per month, all rank tiers eligible up to Scout. Paid tier (€9.97/mo): 10 predictions per month plus eligibility for Sharp, Elite, and Oracle ranks. Scout Receipts (backwards-looking proof of taste) are free for everyone at /receipts.",
+              text: "Free tier: 3 predictions per month, all rank tiers eligible up to Scout. Paid tier (€49/mo): 10 predictions per month plus eligibility for Sharp, Elite, and Oracle ranks. Scout Receipts (backwards-looking proof of taste) are free for everyone at /receipts.",
               url: "https://signals.gitdealflow.com/predict",
             },
           },

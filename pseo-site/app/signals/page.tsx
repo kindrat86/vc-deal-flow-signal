@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
   alternates: { canonical: "/signals" },
   openGraph: {
-    title: "Signal Vocabulary — VC Deal Flow Signal",
+    title: "Signal Vocabulary",
     description:
       "Six atomic signal primitives. Formula + decision rule + pitfall + linked findings for each.",
     type: "article",

@@ -186,7 +186,7 @@ export const CONTINUITY_DROPS: ContinuityDrop[] = [
         heading: "What members get",
         body: [
           "The full 25-page PDF, the raw CSV, the contributor-influx maps for the top 5, and the three breakout briefs are gated to paid members behind /api/v1/insider/drops/2026-05-verifiable-compute. Use your Insider API key. Endpoint returns a signed download URL valid for 24 hours.",
-          "If you're on the Free Acceleration Watch, you can read this abstract and the public essay above (which goes deeper than what made it into the public Sunday digest). The artefact bundle requires Insider Circle (€97/mo) or higher.",
+          "If you're on the Free Acceleration Watch, you can read this abstract and the public essay above (which goes deeper than what made it into the public Sunday digest). The artefact bundle requires Insider Circle (€197/mo) or higher.",
           "If you upgrade today, you get retroactive access to every prior drop — though as the inaugural drop, that's just this one. Upgrade compounds from here.",
         ],
       },

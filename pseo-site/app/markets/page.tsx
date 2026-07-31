@@ -13,7 +13,7 @@ const PAGE_URL = `${SITE}/markets`;
 
 export const metadata: Metadata = {
   title:
-    "Open Prediction Markets on Startup Funding | VC Deal Flow Signal",
+    "Open Prediction Markets on Startup Funding",
   description:
     "Seeded prediction markets on startup funding events, sourced from GitHub commit-velocity signals. Free, citation-encouraged, machine-readable. Currently live: Series A Race 2026.",
   alternates: { canonical: "/markets" },

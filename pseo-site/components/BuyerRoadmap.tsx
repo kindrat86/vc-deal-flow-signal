@@ -27,8 +27,8 @@ import Link from "next/link";
 
 export type RoadmapTier =
   | "firstlook" // €7 tripwire
-  | "dashboard" // €9.97/mo
-  | "insider" // €97/mo
+  | "dashboard" // €49/mo
+  | "insider" // €197/mo
   | "sharp" // €497/mo, application
   | "sector-sweep"; // €1,997 one-time
 
@@ -156,8 +156,8 @@ const BEATS_BY_TIER: Record<RoadmapTier, readonly RoadmapBeat[]> = {
 
 const TIER_LABELS: Record<RoadmapTier, string> = {
   firstlook: "First Look Pass · €7",
-  dashboard: "Dashboard · €9.97/mo",
-  insider: "Insider Circle · €97/mo",
+  dashboard: "Dashboard · €49/mo",
+  insider: "Insider Circle · €197/mo",
   sharp: "Sharp Tier · €497/mo",
   "sector-sweep": "Sector Sweep · €1,997",
 };

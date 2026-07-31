@@ -269,7 +269,7 @@ export default function EnterprisePage() {
             </span>
           </div>
           <p className="text-gray-300 text-sm leading-relaxed mb-5">
-            Everything in the Insider Circle (€97/mo tier) plus the parts of
+            Everything in the Insider Circle (€197/mo tier) plus the parts of
             the work that don&rsquo;t scale &mdash; quarterly portfolio
             review calls, custom thesis-aligned watchlist co-built with your
             fund, white-labeled API endpoint at{" "}
@@ -381,7 +381,7 @@ export default function EnterprisePage() {
           </h2>
           <p className="text-gray-400 text-sm mb-4">
             See all six pricing tiers side by side &mdash; Free Signal Digest,
-            &euro;7 First Look Pass, &euro;9.97/mo Dashboard Beta, &euro;97/mo
+            &euro;7 First Look Pass, &euro;49/mo Dashboard Beta, &euro;197/mo
             Insider Circle, Sharp Tier, and &euro;1,997 Sector Sweep.
           </p>
           <Link

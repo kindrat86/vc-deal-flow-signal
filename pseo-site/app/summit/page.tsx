@@ -28,10 +28,10 @@ export const metadata: Metadata = {
 
 const STACK = [
   { label: "20 talks, released on a rolling basis — synthetic narration, anonymous-by-design", value: "€0 free for 24h after each talk airs" },
-  { label: "Full transcripts of every talk (PDF + markdown)", value: "€97 with All-Access Pass" },
-  { label: "Slide decks and chart packs from every talk", value: "€97 with All-Access Pass" },
+  { label: "Full transcripts of every talk (PDF + markdown)", value: "€197 with All-Access Pass" },
+  { label: "Slide decks and chart packs from every talk", value: "€197 with All-Access Pass" },
   { label: "219-startup panel dataset — the same CC BY 4.0 file published free at /api/signals.csv; paying gets you the cleaned import-ready build and the talk walkthroughs", value: "€297 standalone, included with All-Access" },
-  { label: "Lifetime replays of every talk after the free window closes", value: "€97 with All-Access Pass" },
+  { label: "Lifetime replays of every talk after the free window closes", value: "€197 with All-Access Pass" },
   { label: "Methodology vault: SSRN preprint, Zenodo dataset, regression code", value: "Free, always" },
 ] as const;
 

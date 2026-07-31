@@ -117,7 +117,7 @@ const FAQS = [
     a: "The SSRN/Zenodo panel (219 GitHub engineering-velocity observations, 19 sectors, five quarterly periods) is descriptive — it deliberately carries no funding-event labels, so it does not by itself prove a lead band. Our working hypothesis is that a 2× contributor spike inside a 14-day window precedes fundraise announcements by a few weeks; we validate that openly on /scorecard (currently un-graded). The full panel + regression code is at signals.gitdealflow.com/research and the preprint is at ssrn.com/abstract=6606558.",
   },
   {
-    q: "Why €9.97/mo when comparable tools cost €1,000/mo?",
+    q: "Why €49/mo when comparable tools cost €1,000/mo?",
     a: "Two reasons. One — we do not have a sales team. The whole price difference between us and Harmonic or Tracxn is the cost of an enterprise sales motion. Two — this is priced for someone writing small checks who wants earlier signal without an enterprise contract. Pricing matches the actual job, not procurement theatre.",
   },
   {
@@ -614,7 +614,7 @@ export default function PerfectWebinarPage() {
                 of venture-stage outcomes. Every great startup leaves a
                 footprint in its code 21–47 days before the deck circulates.
                 That footprint is public, the methodology is reproducible
-                (SSRN n=219), and the cost of reading it is €9.97/mo. The new
+                (SSRN n=219), and the cost of reading it is €49/mo. The new
                 vehicle isn&rsquo;t bigger network — it&rsquo;s a different
                 sensor, with a category name you can repeat to a partner.
               </p>
@@ -635,7 +635,7 @@ export default function PerfectWebinarPage() {
                 serve fund-grade procurement. Smaller check-writers were priced
                 out of the category not by methodology, but by sales motion.
                 Pull the sales motion out and the same data ladder runs at
-                €9.97/mo.
+                €49/mo.
               </p>
             </li>
             <li className="rounded-xl border border-slate-800 bg-slate-900/40 p-5 sm:p-6 space-y-2">
@@ -857,12 +857,12 @@ export default function PerfectWebinarPage() {
             </div>
             <p className="text-gray-400 text-xs">
               That is €119.64/year, or roughly the cost of one missed seed
-              deal. The price stays €9.97 for as long as you stay subscribed,
+              deal. The price stays €49 for as long as you stay subscribed,
               even after the public launch hike to €49/mo.
             </p>
           </div>
           <TrialClose tone="amber">
-            €9.97 vs. one missed seed deal. Which side of that math do you
+            €49 vs. one missed seed deal. Which side of that math do you
             want to be on for the next twelve months?
           </TrialClose>
         </section>
@@ -977,7 +977,7 @@ export default function PerfectWebinarPage() {
                 The price isn&rsquo;t the cost. The deal you miss is.
               </h3>
               <p className="text-gray-300 text-sm leading-relaxed">
-                €9.97/mo is €119.64 a year. The expected cost of missing one
+                €49/mo is €119.64 a year. The expected cost of missing one
                 name that 8x&rsquo;s in five years — at a €5k angel check —
                 is €40,000. The math doesn&rsquo;t work the other way. You
                 are not buying a dashboard. You are insuring against a single
@@ -1031,7 +1031,7 @@ export default function PerfectWebinarPage() {
               <p className="text-gray-300 text-sm leading-relaxed">
                 Our hypothesis is that the signal precedes fundraises by 21–47 days (validated openly on /scorecard). Every Monday
                 you skip is a 21-to-47-day window that closes on five
-                specific names. The discount lock is real — €9.97 vs €49 —
+                specific names. The discount lock is real — €49 vs €49 —
                 but the harder scarcity is the deal flow, not the price.
                 Either it works for you in 30 days or you reply REFUND.
               </p>
@@ -1076,7 +1076,7 @@ export default function PerfectWebinarPage() {
                 {
                   time: "Today, 14:00",
                   scene:
-                    "Stripe charges €9.97. Dashboard URL lands in your inbox inside ten minutes, alongside the SSRN panel dataset and the one-line MCP install. You paste the install into your terminal — the six tools are inside Claude before you finish your coffee. The methodology vault is bookmarked. The Sunday email subscription is already wired.",
+                    "Stripe charges €49. Dashboard URL lands in your inbox inside ten minutes, alongside the SSRN panel dataset and the one-line MCP install. You paste the install into your terminal — the six tools are inside Claude before you finish your coffee. The methodology vault is bookmarked. The Sunday email subscription is already wired.",
                 },
                 {
                   time: "Sunday, 09:00 UTC",
@@ -1125,7 +1125,7 @@ export default function PerfectWebinarPage() {
 
             <TrialClose tone="sky">
               If by next Wednesday you have sent that one email and gotten
-              that one reply, is &euro;9.97 the right number to have paid
+              that one reply, is &euro;49 the right number to have paid
               for the rhythm that produced it?
             </TrialClose>
           </div>
@@ -1152,7 +1152,7 @@ export default function PerfectWebinarPage() {
             Close
           </p>
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-100">
-            Lock €9.97/mo. Forever. Before the launch hike to €49.
+            Lock €49/mo. Forever. Before the launch hike to €49.
           </h2>
           <p className="text-gray-300 text-base leading-relaxed max-w-2xl mx-auto">
             One click. Stripe checkout. The next Monday digest, the full
@@ -1164,7 +1164,7 @@ export default function PerfectWebinarPage() {
               href={STRIPE_DASHBOARD}
               className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-semibold text-base shadow-lg shadow-sky-500/30 transition-colors"
             >
-              Lock €9.97/mo founder price <span aria-hidden="true">→</span>
+              Lock €49/mo founder price <span aria-hidden="true">→</span>
             </a>
             <a
               href={SIGNUP_URL}
@@ -1263,7 +1263,7 @@ export default function PerfectWebinarPage() {
               href={STRIPE_DASHBOARD}
               className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-semibold text-base shadow-lg shadow-sky-500/30 transition-colors"
             >
-              Lock €9.97/mo · Founder price <span aria-hidden="true">→</span>
+              Lock €49/mo · Founder price <span aria-hidden="true">→</span>
             </a>
             <a
               href={SIGNUP_URL}

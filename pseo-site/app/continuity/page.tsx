@@ -179,7 +179,7 @@ export default function ContinuityHubPage() {
               href={STRIPE_INSIDER}
               className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-semibold text-sm transition-colors"
             >
-              Lock the €97/mo Insider rate <span aria-hidden="true">→</span>
+              Lock the €197/mo Insider rate <span aria-hidden="true">→</span>
             </a>
             <span className="text-gray-500 text-xs leading-relaxed">
               Already in? The artefact lands the day it ships, plus every prior drop.
@@ -353,7 +353,7 @@ export default function ContinuityHubPage() {
           </div>
           <div className="rounded-xl border border-amber-700/50 bg-gradient-to-br from-amber-950/20 via-slate-900 to-slate-950 p-5 sm:p-6 space-y-3">
             <p className="text-amber-300 text-[10px] font-semibold uppercase tracking-wider">
-              Members — Insider Circle (€97/mo) and above
+              Members — Insider Circle (€197/mo) and above
             </p>
             <h3 className="text-gray-100 font-semibold text-base">
               The artefact, the day it ships.
@@ -386,7 +386,7 @@ export default function ContinuityHubPage() {
               href={STRIPE_INSIDER}
               className="mt-2 inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-semibold text-sm transition-colors"
             >
-              Lock €97/mo Insider rate <span aria-hidden="true">→</span>
+              Lock €197/mo Insider rate <span aria-hidden="true">→</span>
             </a>
           </div>
         </section>

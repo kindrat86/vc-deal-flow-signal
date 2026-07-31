@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     "Free shields.io-style SVG badge showing your startup's engineering momentum score. Auto-updates weekly. Embed on your website, README, or pitch deck. No signup required.",
   alternates: { canonical: "/badge-builder" },
   openGraph: {
-    title: "Free Engineering Momentum Badge — VC Deal Flow Signal",
+    title: "Free Engineering Momentum Badge",
     description:
       "Free SVG badge showing your startup's GitHub velocity. Auto-updates. Embed anywhere.",
     type: "website",

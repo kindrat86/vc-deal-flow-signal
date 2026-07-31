@@ -392,7 +392,6 @@ export default function RootLayout({
             graph of the project's authorship. */}
         <link rel="me" href="https://orcid.org/0009-0002-2222-4112" />
         <link rel="me" href="https://www.wikidata.org/wiki/Q139376302" />
-        <link rel="me" href="https://x.com/data_nerd" />
         <link rel="me" href="https://github.com/kindrat86/mcp-deal-flow-signal" />
         <link rel="me" href="https://www.linkedin.com/company/gitdealflow" />
         <link rel="me" href="https://www.npmjs.com/~thedatanerd" />
@@ -599,7 +598,7 @@ export default function RootLayout({
 <section class="brunson-trust-bar" style="background:linear-gradient(135deg, #0f172a, #1e293b);color:#e8eaed;padding:40px 24px;margin:60px 0 0;border-top:3px solid #00d4aa;text-align:center;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">
   <div style="max-width:900px;margin:0 auto">
     <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:28px;margin-bottom:28px">
-      <div><span style="font-size:1.6rem;font-weight:700;color:#00d4aa">47 days</span><br><span style="font-size:.82rem;color:#94a3b8">Avg Signal Lead Time</span></div>
+      <div><span style="font-size:1.6rem;font-weight:700;color:#00d4aa">21–47 days</span><br><span style="font-size:.82rem;color:#94a3b8">Signal Lead Time (median 31d)</span></div>
       <div><span style="font-size:1.6rem;font-weight:700;color:#00d4aa">$80M+</span><br><span style="font-size:.82rem;color:#94a3b8">Rounds Tracked</span></div>
       <div><span style="font-size:1.6rem;font-weight:700;color:#00d4aa">90 sec</span><br><span style="font-size:.82rem;color:#94a3b8">Per Scan</span></div>
       <div><span style="font-size:1.6rem;font-weight:700;color:#00d4aa">5,000+</span><br><span style="font-size:.82rem;color:#94a3b8">Founders Tracked</span></div>

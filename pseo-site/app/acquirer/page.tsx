@@ -5,12 +5,12 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import SeoCta from "@/components/SeoCta";
 
 export const metadata: Metadata = {
-  title: "Acquirers — Public M&A Patterns | VC Deal Flow Signal",
+  title: "Acquirers — Public M&A Patterns",
   description:
     "Independent M&A pattern pages for 20 well-known public-company tech acquirers — Microsoft, Google, Salesforce, Adobe, Apple, Amazon/AWS, Cisco, IBM, Oracle, Nvidia, Atlassian, ServiceNow, Stripe, Cloudflare, Shopify, Snowflake, Databricks, GitHub, HubSpot, Intel. For Corp Dev, PE operating partners, and competitive analysts.",
   alternates: { canonical: "/acquirer" },
   openGraph: {
-    title: "Acquirers — VC Deal Flow Signal",
+    title: "Acquirers",
     description:
       "Public-company M&A pattern pages for 20 well-known tech acquirers.",
     type: "website",
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Acquirers — VC Deal Flow Signal",
+    title: "Acquirers",
     description:
       "Independent M&A pattern pages for 20 public-company tech acquirers.",
   },

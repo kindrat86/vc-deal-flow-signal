@@ -32,11 +32,8 @@ export function DoorsClosingBanner(_props: Props) {
       />
       <p className="text-emerald-100 text-sm leading-snug flex-1 min-w-0">
         <strong className="text-white">
-          Founding-member rate: €9.97/mo, locked for life.
-        </strong>{" "}
-        It rises to €49/mo once the founding cohort closes — everyone who
-        joins before then keeps €9.97 forever. No countdown, no fake
-        deadline: just the rate, while it&rsquo;s still open.
+          Dashboard is €49/mo. Founding members who joined before 2026-06-30 keep €9.97 for life — that window is closed and is not coming back.
+        </strong>
       </p>
     </div>
   );

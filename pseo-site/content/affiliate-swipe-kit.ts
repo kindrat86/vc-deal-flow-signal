@@ -291,7 +291,7 @@ export const SWIPE_KIT_META = {
   baitProduct: "free 31k-word book at /book",
   baitProductPrice: "€0",
   trackingMechanism: "60-day last-click cookie via Refgrow + ?via= URL parameter",
-  primaryConversionGoal: "downstream Sector Sweep (€1,997) or Dashboard (€9.97/mo)",
+  primaryConversionGoal: "downstream Sector Sweep (€1,997) or Dashboard (€49/mo)",
   averageDownstreamConversionRate: "5-8% across all swipe templates combined",
   attributionWindow: "60 days",
   prohibitedChannels: [

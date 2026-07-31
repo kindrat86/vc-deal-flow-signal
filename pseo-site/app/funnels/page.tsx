@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     "Every GitDealFlow funnel on one page — free watch, quiz, walkthrough, first-look pass, dashboard, insider tiers, and sector-sweep offers.",
   alternates: { canonical: "/funnels" },
   openGraph: {
-    title: "Funnel Hub — VC Deal Flow Signal",
+    title: "Funnel Hub",
     description:
       "Every entry point to the GitHub-momentum deal-flow product, mapped on one page.",
     url: "https://signals.gitdealflow.com/funnels",
@@ -68,7 +68,7 @@ const FUNNELS: Funnel[] = [
     price: "Free, 90 seconds",
     hook: "Four questions, then a routed recommendation — most people overpay or skip the tier that would have paid for itself.",
     who: "Visitors unsure which tier fits their check size and cadence.",
-    offer: "Routed to Free / €7 / €9.97 / €97 with a one-line reason for the match.",
+    offer: "Routed to Free / €7 / €49 / €197 with a one-line reason for the match.",
     cta: "Take the quiz",
     color: "indigo",
   },
@@ -306,7 +306,7 @@ export default function FunnelHubPage() {
           </p>
           <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
             Free if you&rsquo;re browsing. €7 if you want the data on your thesis.
-            €9.97/mo if you want the full live dashboard. €97 if you want it earlier
+            €49/mo if you want the full live dashboard. €197 if you want it earlier
             than Monday. €497 if your fund needs custom integration. €1,997 if you
             want one written sector report and you&rsquo;re done. There&rsquo;s no
             wrong door — only doors that fit different check sizes.
@@ -545,7 +545,7 @@ export default function FunnelHubPage() {
               { n: 14, name: "Urgency / Scarcity Close", where: "/walkthrough — founding-rate lock" },
               { n: 15, name: "Encore Close", where: "/walkthrough — 8-line summary at the end" },
               { n: 16, name: "Order Form Bump", where: "/firstlook — interactive cart preview, toggleable bump (€7 → €1,797), running total" },
-              { n: 17, name: "One-Time Offer (OTO)", where: "/firstlook delivery email — Insider €77/mo first month + full OTO ladder shown on page" },
+              { n: 17, name: "One-Time Offer (OTO)", where: "/firstlook delivery email — Insider €177/mo first month + full OTO ladder shown on page" },
               { n: 18, name: "Cart Funnel + Downsell", where: "/firstlook — offer stack (€1,547 retail → €7), Risk Reversal at cart, free Acceleration Watch fallback" },
               { n: 19, name: "Risk Reversal / Guarantee", where: "30-day Signal-or-It's-Free, every tier" },
               { n: 20, name: "Social Proof", where: "Home SignalLeader + SSRN paper + 1,060 indexed pages" },
@@ -662,7 +662,7 @@ export default function FunnelHubPage() {
               partner at a fund. We don&rsquo;t reverse-engineer their pricing
               — we reverse-engineer their <em>blind spot</em>. The
               smaller check-writer wanting earlier signal isn&rsquo;t their
-              ICP. We built the funnel for that buyer instead — €9.97/mo,
+              ICP. We built the funnel for that buyer instead — €49/mo,
               self-serve, agent-readable, methodology-published. Same data
               economy, different ladder.
             </p>

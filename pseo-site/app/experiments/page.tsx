@@ -120,7 +120,7 @@ const EXPERIMENTS: Experiment[] = [
     traffic: {
       source: "Resend reply panel · 21d",
       window: "2026-04-15 → 2026-05-06",
-      note: "Wrong-fit reply count (replies that asked for fund-tier features at €9.97/mo): pre 7 over 21d, post 1 over 21d. Reply was self-correcting: 'oh, this isn't for funds my size.' Right-fit reply rate (questions about /firstlook upgrade) held flat.",
+      note: "Wrong-fit reply count (replies that asked for fund-tier features at €49/mo): pre 7 over 21d, post 1 over 21d. Reply was self-correcting: 'oh, this isn't for funds my size.' Right-fit reply rate (questions about /firstlook upgrade) held flat.",
     },
     takeaway:
       "Polarisation is the point. Don't soften the NOT-FOR column to 'be welcoming.' Confirmed.",
@@ -219,7 +219,7 @@ const EXPERIMENTS: Experiment[] = [
     surface: "Distribution",
     date: "2026-05",
     hypothesis:
-      "An on-platform community accelerates the customer-success motion at the €97/mo Insider Circle tier.",
+      "An on-platform community accelerates the customer-success motion at the €197/mo Insider Circle tier.",
     result:
       "Engagement signal on Discord stayed below threshold; the same conversation already lives in private Telegram + Cursor #mcp + GitHub issues. Reactive-only on Cursor #mcp; embedding plan parked.",
     status: "cut",
@@ -334,7 +334,7 @@ const EXPERIMENTS: Experiment[] = [
     surface: "/walkthrough",
     date: "2026-05",
     hypothesis:
-      "A specific-day mental-movie headline (\"A Tuesday in August. The cadence is installed.\") outperforms a feature-anchored headline (\"What you get for €9.97/mo\") at the bridge between Conversion Story and Stack.",
+      "A specific-day mental-movie headline (\"A Tuesday in August. The cadence is installed.\") outperforms a feature-anchored headline (\"What you get for €49/mo\") at the bridge between Conversion Story and Stack.",
     result:
       "Live with the V7 future-pacing ship. Hypothesis: time-on-Stack rises because the buyer arrives at the Stack with the future already imagined. Confirmed in copy.",
     status: "running",

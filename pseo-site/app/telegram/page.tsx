@@ -56,7 +56,7 @@ const REASONS_WHY = [
   },
   {
     h: "Free, forever, with no upsell pressure inline.",
-    p: "Pricing pages are at /pricing. The channel does not advertise tiers. If a fund-tier investor (€97/mo Insider) wants to upgrade, the door is mentioned exactly once a quarter — at the bottom of a methodology post, never on a signal post.",
+    p: "Pricing pages are at /pricing. The channel does not advertise tiers. If a fund-tier investor (€197/mo Insider) wants to upgrade, the door is mentioned exactly once a quarter — at the bottom of a methodology post, never on a signal post.",
   },
   {
     h: "Mute it. Pin it. Forward it.",
@@ -67,7 +67,7 @@ const REASONS_WHY = [
 const FAQS = [
   {
     q: "Why a public Telegram and not a private Slack or Discord?",
-    a: "Slack and Discord both require account creation, identity exposure, and channel-based moderation. The audience is global investors and operators, many of whom guard their identity in venture conversations. Public Telegram lets a reader subscribe with one click, stay pseudonymous, and never compromise their primary chat platform. Private Telegram (Insider Circle, €97/mo) exists separately for paying members.",
+    a: "Slack and Discord both require account creation, identity exposure, and channel-based moderation. The audience is global investors and operators, many of whom guard their identity in venture conversations. Public Telegram lets a reader subscribe with one click, stay pseudonymous, and never compromise their primary chat platform. Private Telegram (Insider Circle, €197/mo) exists separately for paying members.",
   },
   {
     q: "How often does the channel post?",
@@ -87,7 +87,7 @@ const FAQS = [
   },
   {
     q: "What does the private (paid) Telegram get that the public doesn't?",
-    a: "The Insider Circle private group (€97/mo) gets next Monday's five names 24 hours early, custom watchlists, the JSON/CSV API for portfolio cross-checks, direct line to the founder, and ~30 fund-tier subscribers comparing notes. The public channel posts the same five names — but 24 hours later. See /pricing for the full ladder.",
+    a: "The Insider Circle private group (€197/mo) gets next Monday's five names 24 hours early, custom watchlists, the JSON/CSV API for portfolio cross-checks, direct line to the founder, and ~30 fund-tier subscribers comparing notes. The public channel posts the same five names — but 24 hours later. See /pricing for the full ladder.",
   },
 ] as const;
 
@@ -442,7 +442,7 @@ export default function TelegramPage() {
             </li>
             <li>
               <Link href="/insider" className="text-cyan-300 hover:text-cyan-200 underline decoration-dotted">
-                /insider — private Telegram + 24h lead (€97/mo) →
+                /insider — private Telegram + 24h lead (€197/mo) →
               </Link>
             </li>
             <li>

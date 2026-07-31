@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     "Internationalization policy for VC Deal Flow Signal. We do not ship machine-translated marketing pages. Hand-curated landing pages exist in 6 languages; structured data carries multilingual labels; canonical content stays in English. hreflang map for crawlers.",
   alternates: { canonical: "/translations" },
   openGraph: {
-    title: "Translations — VC Deal Flow Signal",
+    title: "Translations",
     description:
       "i18n policy: hand-curated locale landings, multilingual structured data, English-canonical content. hreflang map.",
     type: "article",

@@ -36,7 +36,7 @@ export async function generateMetadata({
       "Free SaaS quick ratio calculator. (New ARR + expansion) divided by (churned + contracted), classified into the Kleiner Perkins / Mamoon Hamid bands (≥4 exceptional, 2-4 healthy, 1.5-2 OK, 1-1.5 concerning, <1 bad). URL-shareable.",
     alternates: { canonical: "/tools/quick-ratio-calculator" },
     openGraph: {
-      title: "Quick Ratio Calculator — VC Deal Flow Signal",
+      title: "Quick Ratio Calculator",
       description:
         "Growth-efficiency ratio in one number. Kleiner Perkins bands, URL-shareable.",
       type: "website",
@@ -52,7 +52,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: "Quick Ratio Calculator — VC Deal Flow Signal",
+      title: "Quick Ratio Calculator",
       description:
         "Free SaaS quick ratio calculator with Kleiner Perkins efficiency bands.",
       images: [ogImage],

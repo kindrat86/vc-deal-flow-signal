@@ -5,7 +5,7 @@ import { getSession } from "@/lib/auth";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 
 export const metadata: Metadata = {
-  title: "Welcome — VC Deal Flow Signal",
+  title: "Welcome",
   robots: { index: false },
 };
 
@@ -121,7 +121,7 @@ export default async function WelcomePage() {
           <p className="text-gray-300 text-sm leading-relaxed mb-4">
             The Insider Circle gets the weekly list a day ahead of the Dashboard,
             plus the private investor room. No code required — same list, more
-            lead time. €97/mo.
+            lead time. €197/mo.
           </p>
           <Link
             href="/insider"

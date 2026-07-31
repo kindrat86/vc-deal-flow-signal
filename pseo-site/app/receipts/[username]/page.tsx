@@ -345,7 +345,7 @@ export default async function ReceiptsResultPage({
           at checkout. Credit applies to Dashboard if you upgrade.
         </p>
         <a
-          href="https://buy.stripe.com/28E6oGdJh18YgV04nK0x203"
+          href="/api/checkout/session?tier=firstlook"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-orange-600 hover:bg-orange-500 text-white font-medium text-sm transition-colors"
