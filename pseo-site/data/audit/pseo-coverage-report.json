@@ -1,21 +1,15 @@
 {
-  "generatedAt": "2026-07-20T09:29:50.970Z",
+  "generatedAt": "2026-07-30T19:57:59.231Z",
   "minCellSize": 3,
   "surfaces": [
     {
       "surface": "/stage/[stage]/[sector]",
-      "total": 59,
-      "included": 48,
-      "suppressed": 11,
+      "total": 60,
+      "included": 52,
+      "suppressed": 8,
       "cells": [
         {
           "cellKey": "seed/space-tech",
-          "cellSize": 1,
-          "status": "suppressed",
-          "reason": "below MIN_PSEO_CELL_SIZE"
-        },
-        {
-          "cellKey": "series-a-b/legal-tech",
           "cellSize": 1,
           "status": "suppressed",
           "reason": "below MIN_PSEO_CELL_SIZE"
@@ -45,7 +39,7 @@
           "reason": "below MIN_PSEO_CELL_SIZE"
         },
         {
-          "cellKey": "series-a-b/robotics",
+          "cellKey": "series-a-b/legal-tech",
           "cellSize": 2,
           "status": "suppressed",
           "reason": "below MIN_PSEO_CELL_SIZE"
@@ -57,45 +51,13 @@
           "reason": "below MIN_PSEO_CELL_SIZE"
         },
         {
-          "cellKey": "growth/supply-chain",
-          "cellSize": 2,
-          "status": "suppressed",
-          "reason": "below MIN_PSEO_CELL_SIZE"
-        },
-        {
-          "cellKey": "growth/hr-tech",
-          "cellSize": 2,
-          "status": "suppressed",
-          "reason": "below MIN_PSEO_CELL_SIZE"
-        },
-        {
           "cellKey": "growth/agtech",
           "cellSize": 2,
           "status": "suppressed",
           "reason": "below MIN_PSEO_CELL_SIZE"
         },
         {
-          "cellKey": "pre-seed/healthcare",
-          "cellSize": 3,
-          "status": "included"
-        },
-        {
-          "cellKey": "pre-seed/data-infrastructure",
-          "cellSize": 3,
-          "status": "included"
-        },
-        {
-          "cellKey": "pre-seed/hr-tech",
-          "cellSize": 3,
-          "status": "included"
-        },
-        {
           "cellKey": "pre-seed/space-tech",
-          "cellSize": 3,
-          "status": "included"
-        },
-        {
-          "cellKey": "seed/robotics",
           "cellSize": 3,
           "status": "included"
         },
@@ -105,7 +67,7 @@
           "status": "included"
         },
         {
-          "cellKey": "series-a-b/enterprise-saas",
+          "cellKey": "series-a-b/robotics",
           "cellSize": 3,
           "status": "included"
         },
@@ -115,27 +77,22 @@
           "status": "included"
         },
         {
+          "cellKey": "growth/legal-tech",
+          "cellSize": 3,
+          "status": "included"
+        },
+        {
+          "cellKey": "growth/hr-tech",
+          "cellSize": 3,
+          "status": "included"
+        },
+        {
           "cellKey": "growth/gaming",
           "cellSize": 3,
           "status": "included"
         },
         {
-          "cellKey": "pre-seed/edtech",
-          "cellSize": 4,
-          "status": "included"
-        },
-        {
-          "cellKey": "pre-seed/ecommerce-infrastructure",
-          "cellSize": 4,
-          "status": "included"
-        },
-        {
-          "cellKey": "seed/ecommerce-infrastructure",
-          "cellSize": 4,
-          "status": "included"
-        },
-        {
-          "cellKey": "seed/supply-chain",
+          "cellKey": "pre-seed/data-infrastructure",
           "cellSize": 4,
           "status": "included"
         },
@@ -145,22 +102,7 @@
           "status": "included"
         },
         {
-          "cellKey": "seed/hr-tech",
-          "cellSize": 4,
-          "status": "included"
-        },
-        {
           "cellKey": "seed/agtech",
-          "cellSize": 4,
-          "status": "included"
-        },
-        {
-          "cellKey": "series-a-b/ecommerce-infrastructure",
-          "cellSize": 4,
-          "status": "included"
-        },
-        {
-          "cellKey": "series-a-b/supply-chain",
           "cellSize": 4,
           "status": "included"
         },
@@ -175,12 +117,17 @@
           "status": "included"
         },
         {
-          "cellKey": "pre-seed/supply-chain",
+          "cellKey": "growth/supply-chain",
+          "cellSize": 4,
+          "status": "included"
+        },
+        {
+          "cellKey": "pre-seed/healthcare",
           "cellSize": 5,
           "status": "included"
         },
         {
-          "cellKey": "pre-seed/robotics",
+          "cellKey": "pre-seed/ecommerce-infrastructure",
           "cellSize": 5,
           "status": "included"
         },
@@ -190,17 +137,22 @@
           "status": "included"
         },
         {
-          "cellKey": "series-a-b/web3",
+          "cellKey": "seed/robotics",
           "cellSize": 5,
           "status": "included"
         },
         {
-          "cellKey": "growth/healthcare",
+          "cellKey": "series-a-b/ecommerce-infrastructure",
           "cellSize": 5,
           "status": "included"
         },
         {
-          "cellKey": "growth/ecommerce-infrastructure",
+          "cellKey": "series-a-b/supply-chain",
+          "cellSize": 5,
+          "status": "included"
+        },
+        {
+          "cellKey": "series-a-b/enterprise-saas",
           "cellSize": 5,
           "status": "included"
         },
@@ -210,22 +162,12 @@
           "status": "included"
         },
         {
-          "cellKey": "pre-seed/web3",
+          "cellKey": "pre-seed/hr-tech",
           "cellSize": 6,
           "status": "included"
         },
         {
-          "cellKey": "pre-seed/enterprise-saas",
-          "cellSize": 6,
-          "status": "included"
-        },
-        {
-          "cellKey": "seed/healthcare",
-          "cellSize": 6,
-          "status": "included"
-        },
-        {
-          "cellKey": "seed/enterprise-saas",
+          "cellKey": "seed/supply-chain",
           "cellSize": 6,
           "status": "included"
         },
@@ -235,17 +177,12 @@
           "status": "included"
         },
         {
+          "cellKey": "seed/hr-tech",
+          "cellSize": 6,
+          "status": "included"
+        },
+        {
           "cellKey": "seed/social-community",
-          "cellSize": 6,
-          "status": "included"
-        },
-        {
-          "cellKey": "series-a-b/healthcare",
-          "cellSize": 6,
-          "status": "included"
-        },
-        {
-          "cellKey": "series-a-b/edtech",
           "cellSize": 6,
           "status": "included"
         },
@@ -255,12 +192,7 @@
           "status": "included"
         },
         {
-          "cellKey": "growth/edtech",
-          "cellSize": 6,
-          "status": "included"
-        },
-        {
-          "cellKey": "growth/enterprise-saas",
+          "cellKey": "growth/healthcare",
           "cellSize": 6,
           "status": "included"
         },
@@ -270,22 +202,22 @@
           "status": "included"
         },
         {
-          "cellKey": "seed/web3",
+          "cellKey": "pre-seed/web3",
           "cellSize": 7,
           "status": "included"
         },
         {
-          "cellKey": "growth/data-infrastructure",
+          "cellKey": "seed/healthcare",
           "cellSize": 7,
           "status": "included"
         },
         {
-          "cellKey": "growth/robotics",
+          "cellKey": "seed/ecommerce-infrastructure",
           "cellSize": 7,
           "status": "included"
         },
         {
-          "cellKey": "pre-seed/legal-tech",
+          "cellKey": "pre-seed/enterprise-saas",
           "cellSize": 8,
           "status": "included"
         },
@@ -300,28 +232,110 @@
           "status": "included"
         },
         {
+          "cellKey": "series-a-b/healthcare",
+          "cellSize": 8,
+          "status": "included"
+        },
+        {
           "cellKey": "series-a-b/space-tech",
           "cellSize": 8,
           "status": "included"
         },
         {
-          "cellKey": "series-a-b/data-infrastructure",
+          "cellKey": "growth/enterprise-saas",
+          "cellSize": 8,
+          "status": "included"
+        },
+        {
+          "cellKey": "pre-seed/supply-chain",
           "cellSize": 9,
           "status": "included"
         },
         {
-          "cellKey": "growth/web3",
+          "cellKey": "series-a-b/web3",
+          "cellSize": 9,
+          "status": "included"
+        },
+        {
+          "cellKey": "growth/ecommerce-infrastructure",
+          "cellSize": 9,
+          "status": "included"
+        },
+        {
+          "cellKey": "growth/robotics",
+          "cellSize": 9,
+          "status": "included"
+        },
+        {
+          "cellKey": "seed/enterprise-saas",
           "cellSize": 10,
+          "status": "included"
+        },
+        {
+          "cellKey": "series-a-b/data-infrastructure",
+          "cellSize": 10,
+          "status": "included"
+        },
+        {
+          "cellKey": "growth/edtech",
+          "cellSize": 10,
+          "status": "included"
+        },
+        {
+          "cellKey": "pre-seed/edtech",
+          "cellSize": 11,
+          "status": "included"
+        },
+        {
+          "cellKey": "pre-seed/robotics",
+          "cellSize": 11,
+          "status": "included"
+        },
+        {
+          "cellKey": "seed/web3",
+          "cellSize": 11,
+          "status": "included"
+        },
+        {
+          "cellKey": "series-a-b/edtech",
+          "cellSize": 11,
+          "status": "included"
+        },
+        {
+          "cellKey": "pre-seed/legal-tech",
+          "cellSize": 13,
+          "status": "included"
+        },
+        {
+          "cellKey": "growth/web3",
+          "cellSize": 15,
+          "status": "included"
+        },
+        {
+          "cellKey": "growth/data-infrastructure",
+          "cellSize": 15,
           "status": "included"
         }
       ]
     },
     {
       "surface": "/signals/[signal]/[sector]",
-      "total": 53,
-      "included": 41,
-      "suppressed": 12,
+      "total": 55,
+      "included": 45,
+      "suppressed": 10,
       "cells": [
+        {
+          "cellKey": "infrastructure-buildout/ecommerce-infrastructure",
+          "cellSize": 1,
+          "status": "suppressed",
+          "reason": "below MIN_PSEO_CELL_SIZE"
+        },
+        {
+          "cellKey": "infrastructure-buildout/legal-tech",
+          "cellSize": 1,
+          "status": "suppressed",
+          "reason": "below MIN_PSEO_CELL_SIZE"
+        },
         {
           "cellKey": "infrastructure-buildout/social-community",
           "cellSize": 1,
@@ -329,19 +343,7 @@
           "reason": "below MIN_PSEO_CELL_SIZE"
         },
         {
-          "cellKey": "deploy-frequency-spike/supply-chain",
-          "cellSize": 1,
-          "status": "suppressed",
-          "reason": "below MIN_PSEO_CELL_SIZE"
-        },
-        {
-          "cellKey": "deploy-frequency-spike/data-infrastructure",
-          "cellSize": 1,
-          "status": "suppressed",
-          "reason": "below MIN_PSEO_CELL_SIZE"
-        },
-        {
-          "cellKey": "hiring-burst/enterprise-saas",
+          "cellKey": "hiring-burst/hr-tech",
           "cellSize": 2,
           "status": "suppressed",
           "reason": "below MIN_PSEO_CELL_SIZE"
@@ -353,13 +355,7 @@
           "reason": "below MIN_PSEO_CELL_SIZE"
         },
         {
-          "cellKey": "infrastructure-buildout/ecommerce-infrastructure",
-          "cellSize": 2,
-          "status": "suppressed",
-          "reason": "below MIN_PSEO_CELL_SIZE"
-        },
-        {
-          "cellKey": "infrastructure-buildout/enterprise-saas",
+          "cellKey": "infrastructure-buildout/supply-chain",
           "cellSize": 2,
           "status": "suppressed",
           "reason": "below MIN_PSEO_CELL_SIZE"
@@ -371,19 +367,13 @@
           "reason": "below MIN_PSEO_CELL_SIZE"
         },
         {
-          "cellKey": "deploy-frequency-spike/healthcare",
-          "cellSize": 2,
-          "status": "suppressed",
-          "reason": "below MIN_PSEO_CELL_SIZE"
-        },
-        {
           "cellKey": "deploy-frequency-spike/ecommerce-infrastructure",
           "cellSize": 2,
           "status": "suppressed",
           "reason": "below MIN_PSEO_CELL_SIZE"
         },
         {
-          "cellKey": "deploy-frequency-spike/robotics",
+          "cellKey": "deploy-frequency-spike/legal-tech",
           "cellSize": 2,
           "status": "suppressed",
           "reason": "below MIN_PSEO_CELL_SIZE"
@@ -393,16 +383,6 @@
           "cellSize": 2,
           "status": "suppressed",
           "reason": "below MIN_PSEO_CELL_SIZE"
-        },
-        {
-          "cellKey": "hiring-burst/supply-chain",
-          "cellSize": 3,
-          "status": "included"
-        },
-        {
-          "cellKey": "hiring-burst/hr-tech",
-          "cellSize": 3,
-          "status": "included"
         },
         {
           "cellKey": "hiring-burst/agtech",
@@ -425,22 +405,17 @@
           "status": "included"
         },
         {
-          "cellKey": "infrastructure-buildout/robotics",
+          "cellKey": "infrastructure-buildout/enterprise-saas",
           "cellSize": 3,
           "status": "included"
         },
         {
-          "cellKey": "deploy-frequency-spike/web3",
+          "cellKey": "deploy-frequency-spike/data-infrastructure",
           "cellSize": 3,
           "status": "included"
         },
         {
-          "cellKey": "deploy-frequency-spike/enterprise-saas",
-          "cellSize": 3,
-          "status": "included"
-        },
-        {
-          "cellKey": "deploy-frequency-spike/legal-tech",
+          "cellKey": "deploy-frequency-spike/robotics",
           "cellSize": 3,
           "status": "included"
         },
@@ -450,12 +425,7 @@
           "status": "included"
         },
         {
-          "cellKey": "hiring-burst/healthcare",
-          "cellSize": 4,
-          "status": "included"
-        },
-        {
-          "cellKey": "hiring-burst/ecommerce-infrastructure",
+          "cellKey": "hiring-burst/enterprise-saas",
           "cellSize": 4,
           "status": "included"
         },
@@ -465,12 +435,12 @@
           "status": "included"
         },
         {
-          "cellKey": "deploy-frequency-spike/edtech",
+          "cellKey": "infrastructure-buildout/robotics",
           "cellSize": 4,
           "status": "included"
         },
         {
-          "cellKey": "deploy-frequency-spike/hr-tech",
+          "cellKey": "deploy-frequency-spike/healthcare",
           "cellSize": 4,
           "status": "included"
         },
@@ -485,26 +455,6 @@
           "status": "included"
         },
         {
-          "cellKey": "framework-migration/hr-tech",
-          "cellSize": 4,
-          "status": "included"
-        },
-        {
-          "cellKey": "hiring-burst/web3",
-          "cellSize": 5,
-          "status": "included"
-        },
-        {
-          "cellKey": "hiring-burst/data-infrastructure",
-          "cellSize": 5,
-          "status": "included"
-        },
-        {
-          "cellKey": "hiring-burst/robotics",
-          "cellSize": 5,
-          "status": "included"
-        },
-        {
           "cellKey": "hiring-burst/legal-tech",
           "cellSize": 5,
           "status": "included"
@@ -515,12 +465,17 @@
           "status": "included"
         },
         {
-          "cellKey": "deploy-frequency-spike/gaming",
+          "cellKey": "deploy-frequency-spike/edtech",
           "cellSize": 5,
           "status": "included"
         },
         {
-          "cellKey": "framework-migration/legal-tech",
+          "cellKey": "deploy-frequency-spike/supply-chain",
+          "cellSize": 5,
+          "status": "included"
+        },
+        {
+          "cellKey": "deploy-frequency-spike/gaming",
           "cellSize": 5,
           "status": "included"
         },
@@ -530,17 +485,37 @@
           "status": "included"
         },
         {
-          "cellKey": "hiring-burst/edtech",
-          "cellSize": 6,
-          "status": "included"
-        },
-        {
           "cellKey": "hiring-burst/space-tech",
           "cellSize": 6,
           "status": "included"
         },
         {
-          "cellKey": "framework-migration/robotics",
+          "cellKey": "deploy-frequency-spike/web3",
+          "cellSize": 6,
+          "status": "included"
+        },
+        {
+          "cellKey": "deploy-frequency-spike/hr-tech",
+          "cellSize": 6,
+          "status": "included"
+        },
+        {
+          "cellKey": "hiring-burst/healthcare",
+          "cellSize": 7,
+          "status": "included"
+        },
+        {
+          "cellKey": "hiring-burst/supply-chain",
+          "cellSize": 7,
+          "status": "included"
+        },
+        {
+          "cellKey": "hiring-burst/robotics",
+          "cellSize": 7,
+          "status": "included"
+        },
+        {
+          "cellKey": "deploy-frequency-spike/enterprise-saas",
           "cellSize": 7,
           "status": "included"
         },
@@ -550,18 +525,33 @@
           "status": "included"
         },
         {
-          "cellKey": "framework-migration/edtech",
+          "cellKey": "hiring-burst/edtech",
+          "cellSize": 8,
+          "status": "included"
+        },
+        {
+          "cellKey": "hiring-burst/ecommerce-infrastructure",
+          "cellSize": 8,
+          "status": "included"
+        },
+        {
+          "cellKey": "hiring-burst/web3",
           "cellSize": 9,
           "status": "included"
         },
         {
-          "cellKey": "framework-migration/ecommerce-infrastructure",
+          "cellKey": "framework-migration/hr-tech",
           "cellSize": 9,
           "status": "included"
         },
         {
           "cellKey": "framework-migration/gaming",
           "cellSize": 9,
+          "status": "included"
+        },
+        {
+          "cellKey": "framework-migration/supply-chain",
+          "cellSize": 10,
           "status": "included"
         },
         {
@@ -575,46 +565,66 @@
           "status": "included"
         },
         {
+          "cellKey": "hiring-burst/data-infrastructure",
+          "cellSize": 11,
+          "status": "included"
+        },
+        {
           "cellKey": "framework-migration/healthcare",
-          "cellSize": 11,
+          "cellSize": 12,
           "status": "included"
         },
         {
-          "cellKey": "framework-migration/supply-chain",
-          "cellSize": 11,
-          "status": "included"
-        },
-        {
-          "cellKey": "framework-migration/enterprise-saas",
+          "cellKey": "framework-migration/robotics",
           "cellSize": 14,
           "status": "included"
         },
         {
-          "cellKey": "framework-migration/web3",
+          "cellKey": "framework-migration/legal-tech",
+          "cellSize": 14,
+          "status": "included"
+        },
+        {
+          "cellKey": "framework-migration/ecommerce-infrastructure",
+          "cellSize": 15,
+          "status": "included"
+        },
+        {
+          "cellKey": "framework-migration/enterprise-saas",
           "cellSize": 17,
           "status": "included"
         },
         {
           "cellKey": "framework-migration/data-infrastructure",
-          "cellSize": 17,
+          "cellSize": 19,
+          "status": "included"
+        },
+        {
+          "cellKey": "framework-migration/edtech",
+          "cellSize": 22,
+          "status": "included"
+        },
+        {
+          "cellKey": "framework-migration/web3",
+          "cellSize": 24,
           "status": "included"
         }
       ]
     },
     {
       "surface": "/stage/[stage]/signal/[signal]",
-      "total": 15,
-      "included": 15,
+      "total": 16,
+      "included": 16,
       "suppressed": 0,
       "cells": [
         {
           "cellKey": "seed/signal/infrastructure-buildout",
-          "cellSize": 6,
+          "cellSize": 4,
           "status": "included"
         },
         {
-          "cellKey": "series-a-b/signal/infrastructure-buildout",
-          "cellSize": 6,
+          "cellKey": "pre-seed/signal/infrastructure-buildout",
+          "cellSize": 5,
           "status": "included"
         },
         {
@@ -623,63 +633,68 @@
           "status": "included"
         },
         {
-          "cellKey": "growth/signal/deploy-frequency-spike",
+          "cellKey": "series-a-b/signal/infrastructure-buildout",
           "cellSize": 7,
           "status": "included"
         },
         {
-          "cellKey": "series-a-b/signal/deploy-frequency-spike",
+          "cellKey": "growth/signal/deploy-frequency-spike",
           "cellSize": 9,
           "status": "included"
         },
         {
-          "cellKey": "seed/signal/deploy-frequency-spike",
-          "cellSize": 10,
-          "status": "included"
-        },
-        {
-          "cellKey": "growth/signal/hiring-burst",
+          "cellKey": "series-a-b/signal/deploy-frequency-spike",
           "cellSize": 13,
           "status": "included"
         },
         {
-          "cellKey": "series-a-b/signal/hiring-burst",
-          "cellSize": 15,
-          "status": "included"
-        },
-        {
-          "cellKey": "pre-seed/signal/hiring-burst",
-          "cellSize": 16,
-          "status": "included"
-        },
-        {
-          "cellKey": "pre-seed/signal/deploy-frequency-spike",
+          "cellKey": "seed/signal/deploy-frequency-spike",
           "cellSize": 17,
           "status": "included"
         },
         {
           "cellKey": "seed/signal/hiring-burst",
-          "cellSize": 19,
+          "cellSize": 21,
+          "status": "included"
+        },
+        {
+          "cellKey": "pre-seed/signal/deploy-frequency-spike",
+          "cellSize": 22,
+          "status": "included"
+        },
+        {
+          "cellKey": "growth/signal/hiring-burst",
+          "cellSize": 22,
+          "status": "included"
+        },
+        {
+          "cellKey": "pre-seed/signal/hiring-burst",
+          "cellSize": 23,
+          "status": "included"
+        },
+        {
+          "cellKey": "series-a-b/signal/hiring-burst",
+          "cellSize": 23,
           "status": "included"
         },
         {
           "cellKey": "seed/signal/framework-migration",
-          "cellSize": 30,
-          "status": "included"
-        },
-        {
-          "cellKey": "pre-seed/signal/framework-migration",
-          "cellSize": 37,
+          "cellSize": 41,
           "status": "included"
         },
         {
           "cellKey": "series-a-b/signal/framework-migration",
-          "cellSize": 37,
+          "cellSize": 42,
+          "status": "included"
+        },
+        {
+          "cellKey": "pre-seed/signal/framework-migration",
+          "cellSize": 52,
           "status": "included"
         },
         {
           "cellKey": "growth/signal/framework-migration",
-          "cellSize": 41,
+          "cellSize": 62,
           "status": "included"
         }
       ]
@@ -746,10 +761,10 @@
     }
   },
   "summary": {
-    "totalCells": 127,
-    "totalIncluded": 104,
-    "totalSuppressed": 23,
-    "suppressionRatePct": 18.1,
+    "totalCells": 131,
+    "totalIncluded": 113,
+    "totalSuppressed": 18,
+    "suppressionRatePct": 13.7,
     "minCellSizeEnforced": 3
   }
 }

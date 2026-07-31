@@ -1206,3 +1206,98 @@ export function getAllStagePageSlugs(): string[] {
   }
   return slugs;
 }
+
+// ---------------------------------------------------------------------------
+// Related startups (same sector, current period)
+// ---------------------------------------------------------------------------
+
+export interface RelatedStartup {
+  name: string;
+  slug: string;
+  stage: string;
+  signalType: string;
+  commitVelocity14d: number;
+  commitVelocityChange: string;
+  contributorGrowth: string;
+  githubUrl: string;
+  description: string;
+}
+
+/**
+ * Returns related startups from the same sector in the current period,
+ * excluding the given startup. Sorted by commit velocity change descending.
+ */
+export function getRelatedStartups(
+  startupSlug: string,
+  sectorSlug: string,
+  limit = 6
+): RelatedStartup[] {
+  const period = getCurrentPeriod();
+  const sector = data.sectors.find((s) => s.slug === sectorSlug);
+  if (!sector) return [];
+
+  const snapshot = sector.periods[period.slug];
+  if (!snapshot) return [];
+
+  const toSlug = (name: string) =>
+    name
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-|-$/g, "");
+
+  const sorted = getSortedStartups(snapshot.startups);
+  return sorted
+    .filter((s) => toSlug(s.name) !== startupSlug)
+    .slice(0, limit)
+    .map((s) => ({
+      name: s.name,
+      slug: toSlug(s.name),
+      stage: s.stage,
+      signalType: s.signalType,
+      commitVelocity14d: s.commitVelocity14d,
+      commitVelocityChange: s.commitVelocityChange,
+      contributorGrowth: s.contributorGrowth,
+      githubUrl: s.githubUrl,
+      description: s.description,
+    }));
+}
+
+// ---------------------------------------------------------------------------
+// Velocity score (0-100)
+// ---------------------------------------------------------------------------
+
+/**
+ * Compute a 0-100 velocity score from raw metrics.
+ * Weighted combination of:
+ *  - Commit velocity change magnitude (0-40 points)
+ *  - Absolute commit velocity 14d (0-30 points)
+ *  - Contributor growth (0-20 points)
+ *  - New repos (0-10 points)
+ */
+export function computeVelocityScore(profile: StartupProfile): number {
+  const latest = profile.history[0];
+  if (!latest) return 0;
+
+  const changePct =
+    parseInt(latest.commitVelocityChange.replace(/[^0-9-]/g, ""), 10) || 0;
+  const contribGrowthPct =
+    parseInt(latest.contributorGrowth.replace(/[^0-9-]/g, ""), 10) || 0;
+
+  const changeScore = Math.min(Math.abs(changePct) / 2.5, 40);
+  const absScore = Math.min(latest.commitVelocity14d / 0.5, 30);
+  const contribScore = Math.min(contribGrowthPct / 5, 20);
+  const repoScore = Math.min(latest.newRepos * 10, 10);
+
+  return Math.min(Math.round(changeScore + absScore + contribScore + repoScore), 100);
+}
+
+/**
+ * Returns a quality label for a velocity score.
+ */
+export function getVelocityLabel(score: number): string {
+  if (score >= 80) return "Exceptional";
+  if (score >= 60) return "Strong";
+  if (score >= 40) return "Moderate";
+  if (score >= 20) return "Mild";
+  return "Quiet";
+}

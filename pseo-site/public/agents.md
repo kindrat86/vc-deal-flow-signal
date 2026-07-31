@@ -122,3 +122,16 @@ SSRN preprint: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558
 - Email: signals@gitdealflow.com
 - Telegram: https://t.me/gitdealflow
 - Twitter/X: https://x.com/data_nerd
+
+## Interactive web tools (gitdealflow.com)
+
+Quick browser-based tools and embeddable widgets available at the main GitDealFlow site:
+
+| Tool | URL | Purpose |
+|---|---|---|
+| **Velocity Checker** | `https://gitdealflow.com/check-velocity` | Lookup a startup's engineering velocity by GitHub org/repo slug. |
+| **Scout Score** | `https://gitdealflow.com/scout` | Compute a Scout Score (0–100) for any GitHub user. |
+| **Tools Hub** | `https://gitdealflow.com/tools` | Index of all interactive tools, APIs, and embeddable widgets. |
+| **Embed Showcase** | `https://gitdealflow.com/embed` | Live demos and integration docs for momentum badges and velocity widgets. |
+| **Badge API** | `https://gitdealflow.com/stats-badge` | SVG badge generation API for embedding real-time metrics. |
+| **Stats** | `https://gitdealflow.com/stats` | Dataset statistics, coverage metrics, and sector breakdowns. |

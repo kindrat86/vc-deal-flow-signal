@@ -36,6 +36,11 @@ export const metadata: Metadata = {
     "VC sourcing",
   ],
   metadataBase: new URL("https://signals.gitdealflow.com"),
+  robots: {
+    index: true,
+    follow: true,
+    "max-image-preview": "large",
+  },
   openGraph: {
     type: "website",
     siteName: "VC Deal Flow Signal",

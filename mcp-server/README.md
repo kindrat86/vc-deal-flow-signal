@@ -1,18 +1,28 @@
-# VC Deal Flow Signal — MCP Server
+# @gitdealflow/mcp-signal — Startup Engineering Velocity Signals for AI Agents
 
-Search startup engineering acceleration signals directly from your AI assistant.
+[![npm version](https://img.shields.io/npm/v/@gitdealflow/mcp-signal.svg)](https://www.npmjs.com/package/@gitdealflow/mcp-signal)
+[![npm downloads](https://img.shields.io/npm/dm/@gitdealflow/mcp-signal.svg)](https://www.npmjs.com/package/@gitdealflow/mcp-signal)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Smithery](https://smithery.ai/badge/kindrat86/vc-deal-flow-signal)](https://smithery.ai/server/kindrat86/vc-deal-flow-signal)
 
-[![smithery badge](https://smithery.ai/badge/kindrat86/vc-deal-flow-signal)](https://smithery.ai/server/kindrat86/vc-deal-flow-signal)
+**MCP server for searching, shortlisting, comparing, and predicting startup engineering acceleration across 20 sectors.** Tracks commit velocity, contributor growth, and repository expansion for ~400 GitHub orgs. Built for VCs, angels, scouts, and technical operators who need transparent, citable deal-flow signals before they show up in traditional channels.
 
 > One-click install for Claude Desktop / Cursor / Cline / Continue via Smithery — verified, 98/100 quality score.
+>
+> [![Smithery install](https://smithery.ai/badge/kindrat86/vc-deal-flow-signal)](https://smithery.ai/server/kindrat86/vc-deal-flow-signal)
 
 ![Claude querying VC Deal Flow Signal MCP server](https://gitdealflow.com/mcp-demo.gif)
 
-Tracks commit velocity, contributor growth, and repository expansion across 20 sectors. Built for angels, scouts, and technical operators looking for traction signals before they show up in traditional deal flow.
+---
 
-## Install
+## Quick Start
 
-Add to your Claude Desktop config (`claude_desktop_config.json`):
+```bash
+# Run instantly — no install required
+npx -y @gitdealflow/mcp-signal
+```
+
+Add to Claude Desktop (`claude_desktop_config.json`):
 
 ```json
 {
@@ -25,7 +35,47 @@ Add to your Claude Desktop config (`claude_desktop_config.json`):
 }
 ```
 
-Or for Claude Code (`.mcp.json` in project root):
+Or streamable HTTP for ChatGPT, Mistral Le Chat, and HTTP MCP clients:
+
+```
+POST https://signals.gitdealflow.com/api/mcp/rpc
+```
+
+**No API key required. All tools are free and read-only.**
+
+---
+
+## Use Cases
+
+| Who | How they use it |
+|---|---|
+| **VCs & Angel Investors** | Screen Crunchbase profiles against live engineering velocity data. Use `predict_funding` for transparent, citable funding-likelihood scores with full evidence chains. |
+| **Startup Founders** | Benchmark your own engineering velocity against 400+ tracked startups across your sector. Identify acquisition targets or partnership opportunities. |
+| **Recruiters & Hiring Teams** | Find startups with accelerating engineering teams — the teams that are building fast and hiring. |
+| **Scouts & Syndicate Leads** | Run `shortlist_signals` with sector/geography filters to surface the strongest deals in your thesis area. Use `get_scout_receipts` to validate your pattern recognition against 75+ unicorns. |
+| **Corp Dev & M&A Teams** | Monitor competitor velocity trends and identify breakout acquisition targets 3–6 weeks before fundraise announcements. |
+| **AI Agents & Copilots** | Integrate startup signals into agentic workflows — deal sourcing, company research, portfolio monitoring, and investment thesis generation. |
+
+---
+
+## Install
+
+### Claude Desktop (stdio)
+
+Add to `claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "vc-deal-flow-signal": {
+      "command": "npx",
+      "args": ["-y", "@gitdealflow/mcp-signal"]
+    }
+  }
+}
+```
+
+### Claude Code (`.mcp.json` in project root)
 
 ```json
 {
@@ -43,7 +93,7 @@ Or for Claude Code (`.mcp.json` in project root):
 In Le Chat, open Settings → Connectors → **+ Add Connector** → **Custom MCP Connector**, then paste:
 
 | Field | Value |
-| --- | --- |
+|---|---|
 | Connector name | `vc-deal-flow-signal` |
 | Connection server | `https://signals.gitdealflow.com/api/mcp/rpc` |
 | Authentication | No Authentication |
@@ -55,7 +105,7 @@ Workspace-admin only. Full step-by-step at [signals.gitdealflow.com/integrations
 Same `npx -y @gitdealflow/mcp-signal` runs in every stdio runtime below. Per-runtime snippets and marketplace status: [signals.gitdealflow.com/integrations/agent-runtimes](https://signals.gitdealflow.com/integrations/agent-runtimes).
 
 | Client | Transport | Install path |
-| --- | --- | --- |
+|---|---|---|
 | Claude Desktop | stdio | `claude_desktop_config.json` (above) |
 | Claude Code | stdio | `.mcp.json` (above) |
 | Cursor | stdio | Settings → MCP → +Add new MCP server → paste the JSON above; [cursor.directory listing](https://cursor.directory/plugins/vc-deal-flow-signal-mcp-1) (under review) |
@@ -70,6 +120,8 @@ Same `npx -y @gitdealflow/mcp-signal` runs in every stdio runtime below. Per-run
 | ChatGPT GPT | OpenAPI Action | [GitHub VC Signal GPT](https://chatgpt.com/g/g-69f76b9b3b308191b6948bff20c0fbf8-github-vc-signal) — no install, paid ChatGPT plan required |
 | Any other Streamable HTTP client | Streamable HTTP | `https://signals.gitdealflow.com/api/mcp/rpc` |
 | Any other stdio client | stdio | `npx -y @gitdealflow/mcp-signal` |
+
+---
 
 ## Tools
 
@@ -94,13 +146,24 @@ All tools are read-only, idempotent, and fetch live data from the public API (no
 
 **Supported sectors:** `ai-ml`, `fintech`, `cybersecurity`, `developer-tools`, `healthcare`, `climate-tech`, `enterprise-saas`, `data-infrastructure`, `web3`, `robotics`, `edtech`, `ecommerce-infrastructure`, `supply-chain`, `legal-tech`, `hr-tech`, `proptech`, `agtech`, `gaming`, `space-tech`, `social-community`.
 
+---
+
 ## Data
 
 All data is sourced live from [signals.gitdealflow.com](https://signals.gitdealflow.com?utm_source=github&utm_medium=readme&utm_campaign=mcp_server) public API. No API key required. Updated weekly on Mondays.
 
+- **JSON API:** `GET https://signals.gitdealflow.com/api/signals.json`
+- **CSV export:** `GET https://signals.gitdealflow.com/api/signals.csv`
+- **OpenAPI 3.1:** `GET https://signals.gitdealflow.com/api/openapi.json`
+- **SSRN preprint:** https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558
+
+---
+
 ## Complementary: the Scout Game
 
 If you want to put your own eye on the line, there's a prediction game on top of the same dataset at [signals.gitdealflow.com/predict](https://signals.gitdealflow.com/predict?utm_source=github&utm_medium=readme&utm_campaign=mcp_server). Call which tracked startups raise a round in the next 6 months, earn points when your calls resolve, climb a public rank ladder from Curious to Oracle. Free tier: 3 predictions per month. Paid: 10 per month. Leaderboard: [signals.gitdealflow.com/leaderboard](https://signals.gitdealflow.com/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=mcp_server).
+
+---
 
 ## Links
 
@@ -108,8 +171,24 @@ If you want to put your own eye on the line, there's a prediction game on top of
 - Dashboard: https://signals.gitdealflow.com?utm_source=github&utm_medium=readme&utm_campaign=mcp_server
 - Scout Game: https://signals.gitdealflow.com/predict?utm_source=github&utm_medium=readme&utm_campaign=mcp_server
 - Leaderboard: https://signals.gitdealflow.com/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=mcp_server
-- JSON API: https://signals.gitdealflow.com/api/signals.json
+- Chrome Extension (Momentum Badge): https://chrome.google.com/webstore/detail/...
 - Twitter/X: https://x.com/data_nerd
+- Email: signals@gitdealflow.com
+- Telegram: https://t.me/gitdealflow
+- SSRN: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558
+
+---
+
+## Related
+
+- [GitDealFlow](https://gitdealflow.com) — startup engineering velocity dataset and tools
+- [signals.gitdealflow.com](https://signals.gitdealflow.com) — full dashboard with interactive rankings, charting, and sector breakdowns
+- [Momentum Badge (Chrome Extension)](https://chrome.google.com/webstore/detail/...) — see startup velocity on Crunchbase and Wellfound
+- [Smithery registry](https://smithery.ai/server/kindrat86/vc-deal-flow-signal) — one-click MCP install
+- [Glama A-tier listing](https://glama.ai/mcp/servers/@kindrat86/vc-deal-flow-signal)
+- [MCP Registry](https://registry.modelcontextprotocol.io) — `io.github.kindrat86/vc-deal-flow-signal`
+
+---
 
 ## Show what you built
 
@@ -120,6 +199,8 @@ If you ship something that calls this MCP server, the dataset, or the public sig
 ```
 
 Three variants (default, compact, long) and copy-paste snippets for HTML / BBCode at [signals.gitdealflow.com/built-with](https://signals.gitdealflow.com/built-with?utm_source=github&utm_medium=readme&utm_campaign=mcp_server). Ping `signals@gitdealflow.com` once you embed and we'll feature you on [/mirrors](https://signals.gitdealflow.com/mirrors?utm_source=github&utm_medium=readme&utm_campaign=mcp_server).
+
+---
 
 ## License
 

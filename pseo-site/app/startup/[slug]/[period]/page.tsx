@@ -74,7 +74,7 @@ export default async function StartupPeriodPage({ params }: PageProps) {
         },
         image: {
           "@type": "ImageObject",
-          url: "https://signals.gitdealflow.com/opengraph-image",
+          url: `https://signals.gitdealflow.com/api/og/startup/${slug}.png`,
           width: 1200,
           height: 630,
         },

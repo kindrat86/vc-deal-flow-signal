@@ -5,6 +5,9 @@ import {
   getAllStartupSlugs,
   getStartupProfile,
   getCurrentPeriod,
+  getRelatedStartups,
+  computeVelocityScore,
+  getVelocityLabel,
 } from "@/lib/data";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import CuriosityGate from "@/components/CuriosityGate";
@@ -31,16 +34,51 @@ export async function generateMetadata({
 
   const latest = profile.history[0];
   const title = `${profile.name} Engineering Signal — GitHub Activity & Acceleration`;
-  const description = `${profile.name} engineering acceleration tracked by VC Deal Flow Signal. ${latest.commitVelocityChange} commit velocity change, ${latest.contributors} contributors, signal type: ${latest.signalType}. ${profile.description}`;
+  const description = `${profile.name} engineering acceleration tracked by VC Deal Flow Signal. ${latest.commitVelocityChange} commit velocity change, ${latest.contributors} contributors, signal type: ${latest.signalType}.${profile.description ? ' ' + profile.description.replace(/<[^>]+>/g, '').trim().substring(0, 160 - 120 - 5) : ''}`.substring(0, 152).trim() + '...';
+
+  // Signal type description for OG
+  const signalDescriptions: Record<string, string> = {
+    "Engineering hiring burst": "Rapid team expansion indicating recent funding and engineering scale-up",
+    "Infrastructure buildout": "New repository creation indicating platform investment and product expansion",
+    "Deploy frequency spike": "Accelerated shipping cadence indicating product launch or competitive response",
+    "Framework migration": "Technology stack transition indicating shift from exploration to production",
+  };
+  const signalDesc = signalDescriptions[latest.signalType] || `Engineering acceleration signal detected in ${profile.sectors[0] || latest.sectorName} sector`;
+
+  // Google Discover: article:tag meta tags
+  const discoverTags = [
+    profile.name,
+    ...profile.sectors,
+    latest.signalType,
+    profile.latestStage,
+  ].filter(Boolean);
+
+  // Google Discover: news_keywords as comma-separated string
+  const sectorForKeywords = profile.sectors[0] || "";
+  const newsKeywords = [
+    profile.name,
+    sectorForKeywords,
+    latest.signalType,
+    profile.latestStage,
+    profile.latestGeography,
+  ]
+    .filter(Boolean)
+    .join(", ");
 
   return {
     title,
     description,
+    robots: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+    },
     openGraph: {
       title,
-      description,
+      description: `${profile.name} — ${signalDesc}. ${latest.commitVelocityChange} commit velocity, ${latest.signalType} signal.`,
       type: "article",
       url: `/startup/${slug}`,
+      tags: discoverTags,
     },
     twitter: {
       card: "summary_large_image",
@@ -49,6 +87,9 @@ export async function generateMetadata({
     },
     alternates: {
       canonical: `/startup/${slug}`,
+    },
+    other: {
+      "news_keywords": newsKeywords,
     },
   };
 }
@@ -95,6 +136,9 @@ export default async function StartupPage({ params }: PageProps) {
 
   const geoLabel = geoNames[profile.latestGeography] || profile.latestGeography;
 
+  // Related startups from the same sector
+  const relatedStartups = getRelatedStartups(slug, latest.sectorSlug, 6);
+
   // Generate FAQs
   const faqs = [
     {
@@ -119,10 +163,36 @@ export default async function StartupPage({ params }: PageProps) {
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@type": "WebPage",
+        "@id": `https://signals.gitdealflow.com/startup/${slug}#webpage`,
+        url: `https://signals.gitdealflow.com/startup/${slug}`,
+        name: `${profile.name} Engineering Signal — GitHub Activity & Acceleration`,
+        description: profile.description || `${profile.name} engineering acceleration data from VC Deal Flow Signal.`,
+        isPartOf: {
+          "@id": "https://signals.gitdealflow.com/#website",
+        },
+        breadcrumb: {
+          "@id": `https://signals.gitdealflow.com/startup/${slug}#breadcrumb`,
+        },
+        about: {
+          "@id": `https://signals.gitdealflow.com/startup/${slug}#org`,
+        },
+        primaryImageOfPage: {
+          "@type": "ImageObject",
+          url: `https://signals.gitdealflow.com/api/og/startup/${slug}.png`,
+        },
+      },
+      {
         "@type": "Article",
         "@id": `https://signals.gitdealflow.com/startup/${slug}#article`,
         headline: `${profile.name} Engineering Signal — GitHub Activity & Acceleration`,
         description: profile.description,
+        image: {
+          "@type": "ImageObject",
+          url: `https://signals.gitdealflow.com/api/og/startup/${slug}.png`,
+          width: 1200,
+          height: 630,
+        },
         author: DATA_NERD_AUTHOR_REF,
         publisher: {
           "@type": "Organization",
@@ -209,6 +279,20 @@ export default async function StartupPage({ params }: PageProps) {
           },
         })),
       },
+      ...(relatedStartups.length > 0
+        ? [
+            {
+              "@type": "ItemList",
+              name: `Related startups in ${latest.sectorName}`,
+              itemListElement: relatedStartups.map((r, i) => ({
+                "@type": "ListItem",
+                position: i + 1,
+                name: r.name,
+                url: `https://signals.gitdealflow.com/startup/${r.slug}`,
+              })),
+            },
+          ]
+        : []),
     ],
   };
 
@@ -396,6 +480,92 @@ export default async function StartupPage({ params }: PageProps) {
           />
         </section>
 
+        {/* Velocity Score Report Card */}
+        {(() => {
+          const score = computeVelocityScore(profile);
+          const label = getVelocityLabel(score);
+          const scoreColor =
+            score >= 80
+              ? "text-emerald-400"
+              : score >= 60
+                ? "text-sky-400"
+                : score >= 40
+                  ? "text-amber-400"
+                  : "text-gray-400";
+          const barColor =
+            score >= 80
+              ? "bg-emerald-500"
+              : score >= 60
+                ? "bg-sky-500"
+                : score >= 40
+                  ? "bg-amber-500"
+                  : "bg-gray-500";
+          // Score breakdown
+          const changePct =
+            parseInt(latest.commitVelocityChange.replace(/[^0-9-]/g, ""), 10) || 0;
+          const contribGrowthPct =
+            parseInt(latest.contributorGrowth.replace(/[^0-9-]/g, ""), 10) || 0;
+          return (
+            <section className="mb-10" aria-label="Velocity report card">
+              <h2 className="text-lg font-semibold text-gray-100 mb-4">
+                Engineering Velocity Report Card
+              </h2>
+              <div className="rounded-lg border border-slate-800 bg-slate-900 p-6">
+                <div className="flex items-center justify-between mb-4">
+                  <div>
+                    <p className="text-gray-400 text-xs mb-1">Velocity Score</p>
+                    <p className={`text-4xl font-bold ${scoreColor}`}>
+                      {score}
+                      <span className="text-lg text-gray-500 font-normal">/100</span>
+                    </p>
+                    <p className="text-gray-400 text-sm mt-1">
+                      <span className={`font-medium ${scoreColor}`}>{label}</span>
+                      {score >= 60
+                        ? " — Significant engineering activity detected"
+                        : score >= 40
+                          ? " — Moderate activity above baseline"
+                          : " — Baseline activity level"}
+                    </p>
+                  </div>
+                  <div className="w-24 h-24 rounded-full border-4 border-slate-700 flex items-center justify-center">
+                    <div className="w-20 h-20 rounded-full border-4 border-slate-600 flex items-center justify-center overflow-hidden relative">
+                      <div
+                        className={`absolute bottom-0 left-0 right-0 ${barColor} transition-all duration-500`}
+                        style={{ height: `${score}%` }}
+                      />
+                      <span className={`relative z-10 text-lg font-bold ${scoreColor}`}>
+                        {score}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div className="grid grid-cols-2 gap-3 text-sm">
+                  <div className="rounded-md bg-slate-950/50 p-3">
+                    <p className="text-gray-500 text-xs mb-1">Commit Velocity Change</p>
+                    <p className={`font-semibold ${changePct >= 0 ? "text-emerald-400" : "text-red-400"}`}>
+                      {latest.commitVelocityChange}
+                    </p>
+                  </div>
+                  <div className="rounded-md bg-slate-950/50 p-3">
+                    <p className="text-gray-500 text-xs mb-1">Contributor Growth</p>
+                    <p className={`font-semibold ${contribGrowthPct >= 0 ? "text-emerald-400" : "text-red-400"}`}>
+                      {latest.contributorGrowth}
+                    </p>
+                  </div>
+                  <div className="rounded-md bg-slate-950/50 p-3">
+                    <p className="text-gray-500 text-xs mb-1">New Repositories</p>
+                    <p className="text-gray-200 font-semibold">{latest.newRepos}</p>
+                  </div>
+                  <div className="rounded-md bg-slate-950/50 p-3">
+                    <p className="text-gray-500 text-xs mb-1">Signal Type</p>
+                    <p className="text-gray-200 font-semibold">{latest.signalType}</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+          );
+        })()}
+
         {/* Historical timeline */}
         {profile.history.length > 1 && (
           <section className="mb-10" aria-label="Signal history">
@@ -550,6 +720,56 @@ export default async function StartupPage({ params }: PageProps) {
           </div>
         </section>
 
+        {/* Related startups in the same sector */}
+        {relatedStartups.length > 0 && (
+          <section className="mb-10" aria-label="Related startups">
+            <h2 className="text-lg font-semibold text-gray-100 mb-4">
+              Related Startups in {latest.sectorName}
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {relatedStartups.map((r) => {
+                const rChangePct = parseInt(r.commitVelocityChange.replace(/[^0-9-]/g, ""), 10) || 0;
+                return (
+                  <Link
+                    key={r.slug}
+                    href={`/startup/${r.slug}`}
+                    className="group block rounded-lg border border-slate-800 bg-slate-900 p-4 hover:border-sky-700/50 hover:bg-slate-800/80 transition-all"
+                  >
+                    <h3 className="text-gray-200 font-medium text-sm group-hover:text-sky-400 transition-colors mb-1.5">
+                      {r.name}
+                    </h3>
+                    <div className="flex flex-wrap gap-1.5 mb-2">
+                      <span className="inline-block rounded-full bg-slate-800 px-2 py-0.5 text-[10px] text-gray-400">
+                        {r.stage}
+                      </span>
+                      <span className="inline-block rounded-full bg-slate-800 px-2 py-0.5 text-[10px] text-gray-400">
+                        {r.signalType}
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-3 text-xs text-gray-500">
+                      <span>
+                        Velocity:{" "}
+                        <span className={rChangePct >= 0 ? "text-emerald-400" : "text-red-400"}>
+                          {r.commitVelocityChange}
+                        </span>
+                      </span>
+                      <span>
+                        Commits: <span className="text-gray-300">{r.commitVelocity14d}</span>
+                      </span>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+            <Link
+              href={`/startups-to-watch/${latest.sectorSlug}-${latest.periodSlug}`}
+              className="inline-block mt-4 text-sky-400 hover:text-sky-300 text-sm font-medium"
+            >
+              View all {latest.sectorName} startups &rarr;
+            </Link>
+          </section>
+        )}
+
         {/* FAQ */}
         <section
           className="mb-10 max-w-3xl"
@@ -601,6 +821,67 @@ export default async function StartupPage({ params }: PageProps) {
                 </Link>
               );
             })}
+          </div>
+        </section>
+
+        {/* Related Resources — cross-links to gitdealflow.com landing pages */}
+        <section className="mb-10" aria-label="Related resources">
+          <h2 className="text-lg font-semibold text-gray-100 mb-4">
+            Related Resources
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <a
+              href={`https://gitdealflow.com/sector/${latest.sectorSlug}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group block rounded-lg border border-slate-800 bg-slate-900 p-4 hover:border-sky-700/50 hover:bg-slate-800/80 transition-all"
+            >
+              <p className="text-gray-200 font-medium text-sm group-hover:text-sky-400 transition-colors">
+                View {profile.name} in {latest.sectorName} sector &rarr;
+              </p>
+              <p className="text-gray-400 text-xs mt-1">
+                See how {profile.name} ranks among {latest.sectorName} startups on gitdealflow.com
+              </p>
+            </a>
+            <a
+              href="https://gitdealflow.com/benchmark"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group block rounded-lg border border-slate-800 bg-slate-900 p-4 hover:border-sky-700/50 hover:bg-slate-800/80 transition-all"
+            >
+              <p className="text-gray-200 font-medium text-sm group-hover:text-sky-400 transition-colors">
+                Benchmark {profile.name} vs 356 startups &rarr;
+              </p>
+              <p className="text-gray-400 text-xs mt-1">
+                Compare engineering velocity across the entire VC Deal Flow Signal dataset
+              </p>
+            </a>
+            <a
+              href={`https://gitdealflow.com/a/startups-like-${slug}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group block rounded-lg border border-slate-800 bg-slate-900 p-4 hover:border-sky-700/50 hover:bg-slate-800/80 transition-all"
+            >
+              <p className="text-gray-200 font-medium text-sm group-hover:text-sky-400 transition-colors">
+                Find startups like {profile.name} &rarr;
+              </p>
+              <p className="text-gray-400 text-xs mt-1">
+                Discover similar startups with comparable engineering signals and momentum
+              </p>
+            </a>
+            <a
+              href="https://gitdealflow.com/check-velocity"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group block rounded-lg border border-slate-800 bg-slate-900 p-4 hover:border-sky-700/50 hover:bg-slate-800/80 transition-all"
+            >
+              <p className="text-gray-200 font-medium text-sm group-hover:text-sky-400 transition-colors">
+                Check {profile.name}&apos;s velocity &rarr;
+              </p>
+              <p className="text-gray-400 text-xs mt-1">
+                Get a detailed velocity analysis and engineering report card
+              </p>
+            </a>
           </div>
         </section>
 

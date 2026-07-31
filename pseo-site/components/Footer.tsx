@@ -44,7 +44,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-5 gap-6 sm:gap-8 mb-8">
+        <div className="grid grid-cols-2 sm:grid-cols-6 gap-6 sm:gap-8 mb-8">
           <div>
             <p className="text-xs font-semibold text-gray-300 uppercase tracking-wider mb-3">Start Here</p>
             <nav aria-label="Footer — Start Here" className="flex flex-col gap-2 text-sm text-gray-400">
@@ -96,6 +96,20 @@ export default function Footer() {
               <Link href="/book" className="hover:text-gray-200 transition-colors">Book — 7 Signals</Link>
               <Link href="/glossary" className="hover:text-gray-200 transition-colors">Glossary</Link>
               <Link href="/faq" className="hover:text-gray-200 transition-colors">FAQ</Link>
+            </nav>
+          </div>
+          <div>
+            <p className="text-xs font-semibold text-gray-300 uppercase tracking-wider mb-3">Network</p>
+            <nav aria-label="Footer — Network" className="flex flex-col gap-2 text-sm text-gray-400">
+              <a href="https://sipi.bot" className="hover:text-gray-200 transition-colors" rel="noopener noreferrer" target="_blank">Sipi.bot</a>
+              <a href="https://churnlens.site" className="hover:text-gray-200 transition-colors" rel="noopener noreferrer" target="_blank">ChurnLens</a>
+              <a href="https://carshake.online" className="hover:text-gray-200 transition-colors" rel="noopener noreferrer" target="_blank">CarShake</a>
+              <a href="https://unlocksaas.com" className="hover:text-gray-200 transition-colors" rel="noopener noreferrer" target="_blank">UnlockSaaS</a>
+              <a href="https://sanctionsai.dev" className="hover:text-gray-200 transition-colors" rel="noopener noreferrer" target="_blank">SanctionsAI</a>
+              <a href="https://voicelogpro.com" className="hover:text-gray-200 transition-colors" rel="noopener noreferrer" target="_blank">VoiceLogPro</a>
+              <a href="https://invisibleexit.com" className="hover:text-gray-200 transition-colors" rel="noopener noreferrer" target="_blank">InvisibleExit</a>
+              <a href="https://sipiteno.com" className="hover:text-gray-200 transition-colors" rel="noopener noreferrer" target="_blank">Sipiteno</a>
+              <a href="https://gitdealflow.com" className="hover:text-gray-200 transition-colors" rel="noopener noreferrer" target="_blank">GitDealFlow</a>
             </nav>
           </div>
           <div>
