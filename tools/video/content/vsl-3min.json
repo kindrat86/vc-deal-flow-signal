@@ -1,9 +1,9 @@
 {
   "id": "vsl-3min",
   "cadence": "monthly-stadium-pitch",
-  "monthIso": "2026-07",
-  "title": "State of GitHub Engineering Velocity — Stadium Pitch — July 2026",
-  "description": "Monthly Stadium Pitch from VC Deal Flow Signal — July 2026.\n\nOne belief: across the panel of 219+ confirmed Series A and Series B fundraises, GitHub commit-velocity acceleration showed up 21–47 days before the deck did. This month's cut: AI-native devtools sustained the highest median acceleration of any tracked sector.\n\nFull written address: https://signals.gitdealflow.com/state-of-github\nFree Sunday digest:    https://gitdealflow.com/#signup\nLive ranking:          https://signals.gitdealflow.com/predicted\nSSRN methodology:      https://ssrn.com/abstract=6606558\n\n#vc #dealflow #github #startups #seriesA",
+  "monthIso": "2026-08",
+  "title": "State of GitHub Engineering Velocity — Stadium Pitch — August 2026",
+  "description": "Monthly Stadium Pitch from VC Deal Flow Signal — August 2026.\n\nOne belief: across the panel of 219+ confirmed Series A and Series B fundraises, GitHub commit-velocity acceleration showed up 21–47 days before the deck did. This month's cut: AI-native devtools sustained the highest median acceleration of any tracked sector.\n\nFull written address: https://signals.gitdealflow.com/state-of-github\nFree Sunday digest:    https://gitdealflow.com/#signup\nLive ranking:          https://signals.gitdealflow.com/predicted\nSSRN methodology:      https://ssrn.com/abstract=6606558\n\n#vc #dealflow #github #startups #seriesA",
   "fps": 30,
   "width": 1920,
   "height": 1080,
@@ -14,7 +14,7 @@
       "vo": "",
       "durationHint": 2.5,
       "data": {
-        "title": "State of GitHub — July 2026.",
+        "title": "State of GitHub — August 2026.",
         "subtitle": "The monthly Stadium Pitch."
       }
     },
@@ -29,7 +29,7 @@
           "to source deal flow,",
           "three minutes resets the next thirty days."
         ],
-        "stamp": "July 2026"
+        "stamp": "August 2026"
       }
     },
     {
@@ -52,7 +52,7 @@
       "vo": "Top three sectors by median commit-velocity acceleration this month. AI-native devtools. Verifiable compute. On-device inference. The first one is the loudest. The middle one is the most consequential.",
       "durationHint": 22,
       "data": {
-        "title": "Top sectors — July 2026",
+        "title": "Top sectors — August 2026",
         "beats": [
           {
             "day": "#1",
