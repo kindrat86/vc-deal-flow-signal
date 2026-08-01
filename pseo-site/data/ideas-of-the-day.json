@@ -4393,6 +4393,49 @@
         }
       ],
       "publishedAt": "2026-07-31T09:00:00Z"
+    },
+    {
+      "date": "2026-08-01",
+      "slug": "2026-08-01",
+      "headline": "The e-commerce infrastructure reset hiding in a -27% engineering hiring burst",
+      "hook": "Pre-seed e-commerce infrastructure teams cooling to 16 commits over 14 days (-27%) are showing the hiring-burst pattern — a recoverable dip, not a flatline, and the natural moment to build the next adjacent tool.",
+      "repo": {
+        "name": "mercurjs",
+        "githubUrl": "https://github.com/mercurjs",
+        "stage": "Pre-seed",
+        "geography": "Unknown",
+        "sector": "E-commerce Infrastructure",
+        "sectorSlug": "ecommerce-infrastructure",
+        "signalType": "Engineering hiring burst",
+        "commitVelocity14d": 16,
+        "commitVelocityChange": "-27%",
+        "contributors": 7,
+        "contributorGrowth": "+400%",
+        "newRepos": 0,
+        "description": "Open Source Marketplace Platform"
+      },
+      "ideaThesis": "E-commerce Infrastructure has a buyer who is also a builder. The category incumbents shipped for an ops/HR/finance lead; the next wave ships for the engineer running that function. Read the repo: engineering hiring burst, pre-seed team, 7 contributors. That's the shape of a team that crosses the next funding line on engineering output, not enterprise sales — and the gap they leave is the wedge for an indie or two-founder tool that does one job better than the suite they're inside of.",
+      "buildAngles": [
+        "Single-screen replacement for one feature the incumbent buried three menus deep.",
+        "Browser extension that pulls the signal onto the dashboard the buyer already uses.",
+        "Pay-per-call hosted endpoint that does one narrow job other tools can chain into."
+      ],
+      "distributionPlay": "Pick the one subreddit or category page where the engineer-buyer already reads. Post the artifact (dataset, demo, methodology) not the product page; reply with the product link only when asked.",
+      "signalReading": [
+        {
+          "metric": "16 commits / 14 days",
+          "reading": "Low absolute volume. The signal is the change-in-change, not the raw count — see the next metric."
+        },
+        {
+          "metric": "-27% commit-velocity change",
+          "reading": "Cooling. Often a deliberate slowdown for refactor, rebrand, or hiring — read alongside the next two lines before calling it a decline."
+        },
+        {
+          "metric": "7 contributors (+400%)",
+          "reading": "Small core team — likely seed-funded with focused velocity. The opportunity is adjacent tooling that augments the small team."
+        }
+      ],
+      "publishedAt": "2026-08-01T09:00:00Z"
     }
   ]
 }
