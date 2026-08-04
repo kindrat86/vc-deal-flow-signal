@@ -11,6 +11,7 @@
 import "server-only";
 import { isExcluded } from "@/lib/excluded-emails";
 import { listUnsubscribeHeaders, injectUnsubscribeLink } from "@/lib/list-unsubscribe";
+import { gateAllows } from "@/lib/send-gate";
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY!;
 const FROM_EMAIL = process.env.FROM_EMAIL || "signals@gitdealflow.com";
@@ -139,6 +140,15 @@ async function sendScheduled(opts: {
 }): Promise<void> {
   if (!RESEND_API_KEY) {
     console.warn("No RESEND_API_KEY; skipping soap-opera scheduled email");
+    return;
+  }
+  // These are submitted now but DELIVERED on a future day, so claim the shared
+  // daily slot for the delivery date rather than today — otherwise this would
+  // book today's slot and still land on a day another system has already used.
+  // Day 1 (the confirmation) is transactional, sent inline by /api/scout/predict,
+  // and deliberately does not pass through the gate.
+  const deliveryDay = opts.scheduledAtIso.slice(0, 10);
+  if (!(await gateAllows(opts.to, "pseo:soap-opera-scout", deliveryDay))) {
     return;
   }
   await fetch("https://api.resend.com/emails", {
