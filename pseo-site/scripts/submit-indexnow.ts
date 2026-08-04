@@ -78,6 +78,27 @@ async function main() {
     return;
   }
 
+  // Preflight the key file. IndexNow validates it by CONTENT, and this host has
+  // previously served a soft-404 (HTTP 200 with a "not found" body) for a
+  // missing key — so a status-only check passes while every submission is
+  // rejected. Compare the body to the key, never just the status.
+  const keyUrl = `${BASE_URL}/${INDEXNOW_KEY}.txt`;
+  try {
+    const keyRes = await fetch(keyUrl);
+    const keyBody = (await keyRes.text()).trim();
+    if (!keyRes.ok || keyBody !== INDEXNOW_KEY) {
+      console.warn(
+        `IndexNow SKIPPED: key file at ${keyUrl} is invalid ` +
+          `(HTTP ${keyRes.status}, body ${JSON.stringify(keyBody.slice(0, 40))} != key). ` +
+          `Every submission would be rejected; fix the key file first.`,
+      );
+      return;
+    }
+  } catch (e) {
+    console.warn(`IndexNow SKIPPED: could not verify key file at ${keyUrl} — ${e}`);
+    return;
+  }
+
   console.log(`Submitting ${urls.length} URLs to IndexNow...`);
   const payload = {
     host: "signals.gitdealflow.com",
@@ -92,9 +113,30 @@ async function main() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
     });
-    console.log(`IndexNow response: HTTP ${res.status} (${urls.length} URLs submitted)`);
+
+    if (res.ok) {
+      console.log(`IndexNow response: HTTP ${res.status} (${urls.length} URLs submitted)`);
+      return;
+    }
+
+    // Logging only res.status is how this stayed silently broken: a 2026-08-04
+    // build returned 422 and the log gave nothing to act on. IndexNow puts the
+    // real reason in the BODY, so always print it, and decode the status.
+    const body = await res.text().catch(() => "(unreadable body)");
+    const meaning: Record<number, string> = {
+      400: "bad request — malformed JSON or missing field",
+      403: "key rejected — keyLocation not reachable, or its content != the key",
+      422: "URLs do not belong to this host, or the key does not match the schema",
+      429: "rate limited — too many submissions",
+    };
+    console.warn(
+      `IndexNow REJECTED: HTTP ${res.status} (${urls.length} URLs) — ${meaning[res.status] ?? "see body"}`,
+    );
+    console.warn(`IndexNow body: ${body.slice(0, 500) || "(empty)"}`);
+    // Deliberately non-fatal: this is a crawl hint, not a correctness gate, and
+    // failing here would block an otherwise good deploy.
   } catch (e) {
-    console.log(`IndexNow submission failed: ${e}`);
+    console.warn(`IndexNow submission failed: ${e}`);
   }
 }
 
