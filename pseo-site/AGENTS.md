@@ -38,3 +38,33 @@ Organization node, never on the Person.
 - Auto-deploy loop ВИМКНЕНО навмисно — не вмикати
 - Верифікація ТІЛЬКИ скріншотом: curl 200 вже приховував порожню сторінку
 - Гейти деплою: чисте дерево, clean-tree gate; перед правками перевір `ps aux | grep hermes` (сворм-гонки)
+  which case keep HEAD's version and discard your stale stashed copy.
+
+# signals.gitdealflow.com is deployed from MORE THAN ONE lineage — read this before fixing anything
+
+The domain is an alias-pinned Vercel project (`pseo-site`) that is deployed
+from at least three checkouts, on three different branches:
+
+| checkout | branch |
+|---|---|
+| `~/Downloads/vc-deal-flow-signal/pseo-site` | `main` |
+| `~/signals-worldclass/pseo-site` | `worldclass-signals` |
+| `~/signals-gitdealflow/pseo-site` | `internal-link-engine` |
+
+**Whichever deploys last wins.** A fix landed on one lineage is silently
+reverted the moment another lineage deploys. This is not theoretical — on
+2026-08-03/04 it put deactivated Stripe payment links and post-payment 404s
+back into production, days after they were fixed and verified live.
+
+**Therefore: a fix is not done when it is deployed. It is done when a tree
+that lacks it cannot build.**
+
+`scripts/verify-no-regressions.ts` runs in `prebuild`, so every deploy path
+(scheduled task, agent, temp-worktree deploy via
+`~/growth-loop/lib/deploy_from_commit.sh`, `scripts/deploy-prod.sh`, manual
+`vercel build`) fails on a regressed tree. When you fix a defect that would
+be expensive to re-discover, add a content assertion there in the same
+commit. Run it standalone with `npm run verify:no-regressions`.
+
+Do not "fix" a guard failure by editing the guard. It is telling you the
+tree you are about to deploy is older than production.
