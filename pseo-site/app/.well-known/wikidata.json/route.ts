@@ -148,11 +148,6 @@ export async function GET() {
         label: "short name",
         value: "GitDealFlow",
       },
-      P2002: {
-        label: "Twitter username",
-        value: "data_nerd",
-        url: "https://x.com/data_nerd",
-      },
       P3789: {
         label: "Telegram channel",
         value: "gitdealflow",
@@ -239,7 +234,6 @@ export async function GET() {
       "https://www.wikidata.org/wiki/Special:EntityData/Q139376302.json",
       "https://www.crunchbase.com/organization/gitdealflow",
       "https://www.linkedin.com/company/gitdealflow",
-      "https://x.com/data_nerd",
       "https://t.me/gitdealflow",
       "https://github.com/kindrat86/mcp-deal-flow-signal",
       "https://www.npmjs.com/package/@gitdealflow/mcp-signal",

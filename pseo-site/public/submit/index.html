@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Submit Your Startup — Get Tracked | VC Deal Flow Signal</title>
+<meta name="description" content="Submit your venture-backed startup to be tracked in the VC Deal Flow Signal dataset. Get a live engineering momentum badge for your GitHub README.">
+<link rel="canonical" href="https://signals.gitdealflow.com/submit">
+<meta name="robots" content="index, follow">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0b1220;color:#e2e8f0;line-height:1.6;text-align:center}
+.container{max-width:560px;margin:0 auto;padding:2rem 1.5rem}
+h1{font-size:1.6rem;font-weight:800;color:#f1f5f9;margin-bottom:0.5rem}
+h1 span{background:linear-gradient(135deg,#0ea5e9,#22c55e);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.subtitle{color:#64748b;margin-bottom:2rem;font-size:0.9rem}
+form{text-align:left;display:inline-block;width:100%}
+.form-group{margin-bottom:1rem}
+label{display:block;color:#94a3b8;font-size:0.85rem;margin-bottom:0.3rem}
+input,select{width:100%;padding:0.7rem;border:1px solid #334155;border-radius:8px;background:#1e293b;color:#f1f5f9;font-size:0.9rem}
+input:focus,select:focus{outline:none;border-color:#0ea5e9}
+.note{color:#64748b;font-size:0.8rem;margin-top:0.3rem}
+button{width:100%;padding:0.8rem;background:linear-gradient(135deg,#0ea5e9,#22c55e);color:#fff;border:none;border-radius:8px;font-size:1rem;font-weight:700;cursor:pointer;margin-top:0.5rem}
+button:hover{opacity:0.92}
+.benefits{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin:2rem 0;text-align:left}
+.benefit{background:#1e293b;border-radius:10px;padding:1rem;border:1px solid #334155}
+.benefit h3{color:#f1f5f9;font-size:0.9rem;margin-bottom:0.3rem}
+.benefit p{color:#64748b;font-size:0.8rem}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>🚀 <span>Submit Your Startup</span></h1>
+<p class="subtitle">Get tracked in the VC Deal Flow Signal dataset — featured alongside 1,695 startups across 20 sectors</p>
+
+<form id="submitForm">
+  <div class="form-group">
+    <label>Startup Name *</label>
+    <input type="text" name="name" placeholder="e.g. Vercel, Notion, Stripe" required>
+  </div>
+  <div class="form-group">
+    <label>GitHub Organization URL *</label>
+    <input type="url" name="github" placeholder="https://github.com/your-org" required>
+    <div class="note">We track your org's public commit activity weekly</div>
+  </div>
+  <div class="form-group">
+    <label>Website</label>
+    <input type="url" name="website" placeholder="https://yourstartup.com">
+  </div>
+  <div class="form-group">
+    <label>Sector *</label>
+    <select name="sector" required>
+      <option value="">Select sector...</option>
+      <option>AI & Machine Learning</option><option>Fintech</option><option>Climate Tech</option>
+      <option>Developer Tools</option><option>Cybersecurity</option><option>Healthcare</option>
+      <option>EdTech</option><option>Web3</option><option>Enterprise SaaS</option>
+      <option>Data Infrastructure</option><option>Robotics</option><option>Supply Chain</option>
+      <option>E-commerce Infrastructure</option><option>Legal Tech</option><option>HR Tech</option>
+      <option>PropTech</option><option>AgTech</option><option>Gaming</option>
+      <option>Space Tech</option><option>Social & Community</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Funding Stage</label>
+    <select name="stage">
+      <option value="">Prefer not to say</option>
+      <option>Pre-seed</option><option>Seed</option><option>Series A</option>
+      <option>Series B</option><option>Series C+</option><option>Public</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Your Email</label>
+    <input type="email" name="email" placeholder="founder@yourstartup.com">
+    <div class="note">We'll let you know when your startup appears — no spam</div>
+  </div>
+  <button type="submit">Submit for Review →</button>
+</form>
+
+<div class="benefits">
+  <div class="benefit"><h3>🏆 Free Badge</h3><p>Auto-updating SVG badge for your GitHub README showing momentum</p></div>
+  <div class="benefit"><h3>📊 Weekly Data</h3><p>Your engineering velocity tracked & ranked against peers</p></div>
+  <div class="benefit"><h3>🔍 VC Visibility</h3><p>Investors using our dataset discover high-momentum startups</p></div>
+  <div class="benefit"><h3>🎯 No Cost</h3><p>Free forever. All public GitHub data, CC BY 4.0</p></div>
+</div>
+
+<p style="color:#64748b;font-size:0.85rem"><a href="/scout" style="color:#38bdf8">Check your current Scout Score →</a></p>
+</div>
+
+<script>
+document.getElementById('submitForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = this.querySelector('button');
+  const form = new FormData(this);
+  const data = Object.fromEntries(form.entries());
+  
+  btn.textContent = 'Submitting...';
+  btn.disabled = true;
+  
+  try {
+    await fetch('/api/submit-startup', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(data)
+    });
+    btn.textContent = '✓ Submitted! We will review your startup';
+    btn.style.background = 'linear-gradient(135deg,#22c55e,#16a34a)';
+  } catch(err) {
+    btn.textContent = 'Error — try emailing signals@gitdealflow.com';
+    btn.style.background = 'linear-gradient(135deg,#ef4444,#dc2626)';
+  }
+});
+</script>
+</body>
+</html>

@@ -129,12 +129,30 @@ check(
 //    renders "Account suspended"; a dead profile in sameAs/rel=me is a
 //    negative trust signal to Google and to AI engines reconciling the author.
 // ---------------------------------------------------------------------------
-check(
-  "lib/data-nerd.ts",
-  "Suspended x.com/data_nerd is back in the canonical author sameAs.",
-  (s) => !s.includes("x.com/data_nerd"),
-  "remove it from DATA_NERD_AUTHOR_SAMEAS; only re-add X once a live handle exists",
-);
+// Tree-wide, not just lib/data-nerd.ts: the handle was reintroduced from 16
+// other files (llms.txt, entities.json, knowledge-graph.json, citations,
+// wikidata mirrors, RootIdentitySchema, agents.md ...), all of which feed the
+// entity graph. Browser-verified 2026-08-04: the profile renders
+// "Account suspended". Checking one file is not enough.
+{
+  const { execSync } = require("node:child_process") as typeof import("node:child_process");
+  let hits = "";
+  try {
+    hits = execSync(
+      `grep -rl "x\\.com/data_nerd" app lib components content public 2>/dev/null || true`,
+      { cwd: ROOT, encoding: "utf8" },
+    ).trim();
+  } catch {
+    /* nothing found */
+  }
+  if (hits) {
+    failures.push(
+      `Suspended x.com/data_nerd is back in the entity graph (dead profile = negative trust signal).\n    ${hits
+        .split("\n")
+        .join("\n    ")}\n    fix:  remove the sameAs/rel=me/profile reference; only re-add X once a LIVE handle exists`,
+    );
+  }
+}
 
 // ---------------------------------------------------------------------------
 // 5. /compare hub must list the programmatic comparisons (2026-07-31).

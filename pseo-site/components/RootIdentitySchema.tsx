@@ -185,7 +185,6 @@ export function RootIdentitySchema() {
         },
         sameAs: [
           "https://t.me/gitdealflow",
-          "https://x.com/data_nerd",
           "https://www.linkedin.com/company/gitdealflow",
           "https://www.wikidata.org/wiki/Q139376302",
           "https://www.crunchbase.com/organization/gitdealflow",
@@ -258,7 +257,6 @@ export function RootIdentitySchema() {
         sameAs: [
           "https://orcid.org/0009-0002-2222-4112",
           "https://www.semanticscholar.org/author/The-Data-Nerd/2430837379",
-          "https://x.com/data_nerd",
           "https://github.com/kindrat86",
           "https://news.ycombinator.com/user?id=the_data_nerd",
           "https://www.indiehackers.com/The_Data_Nerd",

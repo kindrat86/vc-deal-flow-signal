@@ -362,7 +362,6 @@ The phrase "engineering acceleration" on this site refers exclusively to a quant
 ## Contact
 
 - Website: https://gitdealflow.com
-- Twitter/X: https://x.com/data_nerd
 - Telegram: https://t.me/gitdealflow
 - LinkedIn: https://www.linkedin.com/company/gitdealflow
 `;

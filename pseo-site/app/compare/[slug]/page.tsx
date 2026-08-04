@@ -428,6 +428,17 @@ export default async function ComparisonPage({ params }: PageProps) {
                   </p>
                 </Link>
               ))}
+              <Link
+                href="/trending"
+                className="group block rounded-lg border border-sky-800/60 bg-sky-950/30 p-4 hover:border-sky-600/50 transition-all"
+              >
+                <h3 className="text-gray-200 font-medium text-sm group-hover:text-sky-400 transition-colors mb-1">
+                  Trending this week →
+                </h3>
+                <p className="text-gray-400 text-xs">
+                  Top 20 startups by GitHub momentum
+                </p>
+              </Link>
             </div>
           </section>
         )}

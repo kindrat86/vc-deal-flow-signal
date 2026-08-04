@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>API Documentation — VC Deal Flow Signal | GitDealFlow</title>
+<meta name="description" content="Complete API documentation for the VC Deal Flow Signal dataset. MCP server, A2A endpoint, JSON API, NLWeb, OpenAPI spec — all free, no signup, no auth.">
+<link rel="canonical" href="https://signals.gitdealflow.com/docs">
+<meta name="robots" content="index, follow">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"TechArticle","name":"VC Deal Flow Signal API Documentation","description":"Complete API docs for the VC Deal Flow Signal — MCP server, JSON API, A2A, NLWeb, OpenAPI. All surfaces are free and public.","proficiencyLevel":"Beginner","timeRequired":"PT5M","dateModified":"2026-07-28"}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0b1220;color:#e2e8f0;line-height:1.6}
+.container{max-width:800px;margin:0 auto;padding:2rem 1.5rem}
+h1{font-size:1.8rem;font-weight:700;margin-bottom:0.25rem;color:#f1f5f9}
+h1 span{background:linear-gradient(135deg,#0ea5e9,#6366f1);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.subtitle{color:#64748b;margin-bottom:2rem;font-size:0.95rem}
+h2{font-size:1.2rem;font-weight:700;margin:1.5rem 0 0.75rem;color:#f1f5f9;padding-bottom:0.25rem;border-bottom:1px solid #1e293b}
+h3{font-size:1rem;font-weight:600;margin:1rem 0 0.5rem;color:#e2e8f0}
+.surface{background:#1e293b;border-radius:12px;padding:1.25rem;margin-bottom:1rem;border:1px solid #334155}
+.surface .tag{display:inline-block;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;padding:0.15rem 0.5rem;border-radius:4px;margin-bottom:0.5rem}
+.tag-json{background:#166534;color:#86efac}
+.tag-mcp{background:#1e3a5f;color:#93c5fd}
+.tag-a2a{background:#4c1d95;color:#c4b5fd}
+.tag-nlweb{background:#9a3412;color:#fdba74}
+.tag-og{background:#4a044e;color:#f0abfc}
+pre{background:#0f172a;border-radius:8px;padding:1rem;overflow-x:auto;font-size:0.825rem;border:1px solid #334155;margin:0.5rem 0;color:#e2e8f0}
+code{font-family:'SF Mono','Fira Code',monospace;font-size:0.85rem}
+pre .comment{color:#475569}
+pre .url{color:#38bdf8}
+pre .cmd{color:#f472b6}
+pre .out{color:#64748b}
+.surface p{color:#94a3b8;font-size:0.85rem;margin-bottom:0.5rem}
+.surface a{color:#38bdf8}
+.surface ul{color:#94a3b8;font-size:0.85rem;margin:0.5rem 0;padding-left:1.2rem}
+.surface li{margin-bottom:0.25rem}
+.surface .field{margin:0.4rem 0}
+.field .key{color:#f472b6;font-weight:600;font-size:0.8rem}
+.field .val{color:#94a3b8;font-size:0.8rem}
+.badge-display{display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;margin:0.5rem 0}
+.badge-display img{border-radius:6px}
+.copy-btn{display:inline-block;padding:0.25rem 0.6rem;background:#334155;color:#94a3b8;border:none;border-radius:4px;font-size:0.75rem;cursor:pointer;margin-left:0.5rem}
+.copy-btn:hover{background:#475569;color:#f1f5f9}
+</style>
+</head>
+<body>
+<div class="container">
+<h1><span>VC Deal Flow Signal</span> API Docs</h1>
+<p class="subtitle">All surfaces are free, public, require no authentication, and never will. Data refreshed weekly (Mondays ~09:00 UTC).</p>
+
+<div class="surface">
+  <span class="tag tag-json">JSON API</span>
+  <h3>Get trending startups</h3>
+  <pre>GET https://signals.gitdealflow.com/api/signals.json</pre>
+  <p>Returns the full dataset: 324+ startups across 20 sectors, ranked by commit velocity. Each entry includes velocity, contributors, signal type, stage, geography.</p>
+  <pre><span class="cmd">curl</span> https://signals.gitdealflow.com/api/signals.json | jq '.sectors[0].periods[0].startups[:3]'</pre>
+</div>
+
+<div class="surface">
+  <span class="tag tag-mcp">MCP Server</span>
+  <h3>Model Context Protocol — 6 tools</h3>
+  <p>Use with Claude Desktop, Claude Code, Cursor, or any MCP host:</p>
+  <pre>npx -y @gitdealflow/mcp-signal</pre>
+  <p>Or via HTTP (Streamable HTTP):</p>
+  <pre>POST https://signals.gitdealflow.com/api/mcp/rpc</pre>
+  <h3>Available tools</h3>
+  <ul>
+    <li><code>get_trending_startups</code> — top 20 across all sectors</li>
+    <li><code>search_startups_by_sector(sector)</code> — sector slug from 20 values</li>
+    <li><code>get_startup_signal(name)</code> — case-insensitive, normalization-tolerant</li>
+    <li><code>get_signals_summary</code> — period, freshness, format URLs</li>
+    <li><code>get_scout_receipts(github_username)</code> — Scout Score (0–100) from starring history</li>
+    <li><code>get_methodology</code> — full methodology text + canonical URL</li>
+  </ul>
+  <p><a href="https://www.npmjs.com/package/@gitdealflow/mcp-signal" target="_blank">npm: @gitdealflow/mcp-signal</a> · <a href="https://signals.gitdealflow.com/.well-known/mcp.json" target="_blank">MCP discovery manifest</a></p>
+</div>
+
+<div class="surface">
+  <span class="tag tag-json">CSV Export</span>
+  <h3>Bulk data for spreadsheets &amp; dataframes</h3>
+  <pre>GET https://signals.gitdealflow.com/api/signals.csv</pre>
+  <p>Each row: name, sector, commit_velocity_14d, commit_velocity_change, contributors, signal_type, stage, geography, description.</p>
+</div>
+
+<div class="surface">
+  <span class="tag tag-json">OpenAPI 3.1 Spec</span>
+  <h3>Standard API specification</h3>
+  <pre>GET https://signals.gitdealflow.com/api/openapi.json</pre>
+  <p>Full OpenAPI 3.1 specification compatible with Swagger, Postman, and code generators.</p>
+</div>
+
+<div class="surface">
+  <span class="tag tag-a2a">A2A Protocol</span>
+  <h3>Agent-to-Agent JSON-RPC 2.0</h3>
+  <pre>POST https://signals.gitdealflow.com/api/a2a
+Content-Type: application/json
+
+{"jsonrpc":"2.0","method":"skills/get_trending_startups","id":"1"}</pre>
+  <p>Supports all 6 tools via A2A skills. AgentCard at <a href="https://signals.gitdealflow.com/.well-known/agent-card.json">/.well-known/agent-card.json</a></p>
+</div>
+
+<div class="surface">
+  <span class="tag tag-nlweb">NLWeb</span>
+  <h3>Natural-language query endpoint (for Bing Copilot)</h3>
+  <pre>POST https://signals.gitdealflow.com/api/nlweb
+Content-Type: application/json
+
+{"query": "trending fintech startups this week"}</pre>
+  <p>Returns schema.org-typed JSON-LD. Supports: trending, sector startups, startup info, methodology, dataset queries.</p>
+</div>
+
+<div class="surface">
+  <span class="tag tag-mcp">Scout Score</span>
+  <h3>Compute a VC Scout Score for any GitHub user</h3>
+  <pre>GET https://signals.gitdealflow.com/api/receipts/{username}</pre>
+  <p>Returns score (0–100), rank (curious/scout/sharp/elite/oracle), star count, matched unicorns, early calls, personality, share URL.</p>
+  <pre><span class="cmd">curl</span> https://signals.gitdealflow.com/api/receipts/sindresorhus | jq '.score, .rank, .personality'</pre>
+  <p><strong>GitHub README badge:</strong></p>
+  <pre>[![VC Scout Score](https://signals.gitdealflow.com/api/badge/scout/{username}.svg)](https://signals.gitdealflow.com/scout?ref=gh-readme)</pre>
+  <div class="badge-display">
+    <img src="https://signals.gitdealflow.com/api/badge/scout/sindresorhus" alt="Scout Score badge">
+    <img src="https://signals.gitdealflow.com/api/badge/scout/kindrat86" alt="Scout Score badge">
+  </div>
+</div>
+
+<div class="surface">
+  <span class="tag tag-mcp">Startup Badge</span>
+  <h3>Embed a startup's engineering momentum badge</h3>
+  <pre>GET https://signals.gitdealflow.com/api/badge/{startup-name}</pre>
+  <p>Returns an SVG badge showing signal type + commit velocity for any tracked startup.</p>
+  <pre><span class="cmd">curl</span> https://signals.gitdealflow.com/api/badge/posthog</pre>
+</div>
+
+<div class="surface">
+  <span class="tag tag-og">OG Images</span>
+  <h3>Dynamic Open Graph images for social sharing</h3>
+  <pre>GET https://signals.gitdealflow.com/api/og/receipts/{username}</pre>
+  <p>Returns a 1200×630 PNG image with the user's Scout Score, rank, and top wins — perfect for X/Twitter card previews.</p>
+  <pre>GET https://signals.gitdealflow.com/api/og/signal-card?org=PostHog&metric=Velocity&delta=%2B142%25</pre>
+</div>
+
+<div class="surface">
+  <span class="tag tag-json">Dataset</span>
+  <h3>Bulk download formats</h3>
+  <p>All formats are CC BY 4.0 — free to use with attribution:</p>
+  <ul>
+    <li><a href="https://signals.gitdealflow.com/api/dataset.jsonl">Full JSONL dataset</a></li>
+    <li><a href="https://signals.gitdealflow.com/api/signals.csv">CSV export</a></li>
+    <li><a href="https://signals.gitdealflow.com/qa.jsonl">Q&amp;A dataset (newline-delimited JSON)</a></li>
+    <li><a href="https://signals.gitdealflow.com/qa.json">Q&amp;A dataset (single JSON with anchors)</a></li>
+    <li><a href="https://signals.gitdealflow.com/api/signals.json">Full JSON API response</a></li>
+  </ul>
+</div>
+
+<div class="surface">
+  <h3>More resources</h3>
+  <ul>
+    <li><a href="https://signals.gitdealflow.com/methodology">Methodology</a> — how the signals are computed</li>
+    <li><a href="https://signals.gitdealflow.com/llms.txt">LLMs.txt</a> — AI-optimized site index</li>
+    <li><a href="https://signals.gitdealflow.com/llms-full.txt">LLMs-full.txt</a> — full content for retrieval</li>
+    <li><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558">SSRN Preprint</a> — academic paper</li>
+    <li><a href="https://kaggle.com/datasets/thedatanerd2026/vc-deal-flow-signal">Kaggle Dataset</a></li>
+    <li><a href="https://data.world/thedatanerd2026/vc-deal-flow-signal-startup-engineering-acceleration">data.world Dataset</a></li>
+  </ul>
+</div>
+</div>
+</body>
+</html>

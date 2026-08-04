@@ -86,7 +86,6 @@ export default function AboutPage() {
         email: "signals@gitdealflow.com",
         sameAs: [
           "https://www.wikidata.org/wiki/Q139376302",
-          "https://x.com/data_nerd",
           "https://github.com/kindrat86",
         ],
         contactPoint: {

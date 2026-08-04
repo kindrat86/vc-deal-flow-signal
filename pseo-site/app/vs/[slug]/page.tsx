@@ -275,6 +275,46 @@ export default async function VsPage({ params }: PageProps) {
           </div>
         </section>
 
+        {/* Product cross-links — route comparison traffic to the core product */}
+        <section aria-label="See the signal" className="mb-10 rounded-xl border border-sky-900/40 bg-sky-950/20 p-6">
+          <h2 className="text-lg font-semibold text-gray-100 mb-3">
+            See who&rsquo;s actually shipping
+          </h2>
+          <p className="text-gray-400 text-sm leading-relaxed mb-4">
+            Comparisons tell you who competes. The signal tells you who wins.
+            These are the live product surfaces — no login, no paywall.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <Link
+              href="/trending"
+              className="group block rounded-lg border border-slate-800 bg-slate-900 p-4 hover:border-sky-600/50 hover:bg-slate-800/60 transition-all"
+            >
+              <h3 className="text-gray-200 font-medium text-sm group-hover:text-sky-400 transition-colors mb-1">
+                Trending startups →
+              </h3>
+              <p className="text-gray-400 text-xs">Top 20 by GitHub momentum this week</p>
+            </Link>
+            <Link
+              href="/signals"
+              className="group block rounded-lg border border-slate-800 bg-slate-900 p-4 hover:border-sky-600/50 hover:bg-slate-800/60 transition-all"
+            >
+              <h3 className="text-gray-200 font-medium text-sm group-hover:text-sky-400 transition-colors mb-1">
+                All signal types →
+              </h3>
+              <p className="text-gray-400 text-xs">Commit velocity, hiring bursts, repo growth</p>
+            </Link>
+            <Link
+              href="/methodology"
+              className="group block rounded-lg border border-slate-800 bg-slate-900 p-4 hover:border-sky-600/50 hover:bg-slate-800/60 transition-all"
+            >
+              <h3 className="text-gray-200 font-medium text-sm group-hover:text-sky-400 transition-colors mb-1">
+                How we measure →
+              </h3>
+              <p className="text-gray-400 text-xs">Methodology, SSRN paper, raw data</p>
+            </Link>
+          </div>
+        </section>
+
         <section aria-label="Other comparisons">
           <h2 className="text-lg font-semibold text-gray-100 mb-4">
             Other head-to-head comparisons

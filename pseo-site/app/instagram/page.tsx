@@ -92,7 +92,6 @@ export default function InstagramPillarPage() {
       name: "The Data Nerd",
       sameAs: [
         "https://www.instagram.com/thedatanerd",
-        "https://x.com/data_nerd",
         "https://github.com/kindrat86",
       ],
     },

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trending Startups — VC Deal Flow Signal | GitDealFlow</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0b1220;color:#e2e8f0;font-size:12px;line-height:1.4;overflow:hidden}
+.widget{max-width:380px;padding:12px}
+h2{font-size:13px;font-weight:700;margin-bottom:8px;color:#f1f5f9;display:flex;align-items:center;gap:6px}
+h2 span{font-size:10px;font-weight:400;color:#64748b}
+ol{margin:0;padding:0;list-style:none}
+li{padding:6px 0;border-bottom:1px solid #1e293b;display:flex;justify-content:space-between;align-items:center}
+li:last-child{border:none}
+.name{font-weight:600;color:#e2e8f0;font-size:12px}
+.name a{color:#38bdf8;text-decoration:none}
+.name a:hover{text-decoration:underline}
+.stats{font-size:10px;color:#64748b}
+.signal{font-size:10px;padding:1px 5px;border-radius:3px;font-weight:600}
+.signal.breakout{background:#78350f;color:#fbbf24}
+.signal.acceleration{background:#064e3b;color:#34d399}
+.signal.steady{background:#1e3a5f;color:#60a5fa}
+.signal.cooling{background:#7f1d1d;color:#f87171}
+.powered{text-align:right;margin-top:8px;padding-top:6px;border-top:1px solid #1e293b;font-size:9px}
+.powered a{color:#475569;text-decoration:none}
+.powered a:hover{color:#64748b}
+.loading{color:#64748b;padding:12px;text-align:center}
+</style>
+</head>
+<body>
+<div class="widget" id="widget">
+  <div class="loading" id="loading">Loading trending startups...</div>
+  <div id="content" style="display:none">
+    <h2>🔥 Trending Startups <span>This Week</span></h2>
+    <ol id="list"></ol>
+    <div class="powered">
+      <a href="https://signals.gitdealflow.com" target="_blank">Powered by VC Deal Flow Signal</a>
+    </div>
+  </div>
+</div>
+<script>
+async function load(){
+  try{
+    // Use window.parent to respect host embedding
+    const res = await fetch('https://signals.gitdealflow.com/api/signals.json');
+    const data = await res.json();
+    
+    const all = [];
+    for(const sector of data.sectors || []){
+      for(const [, snap] of Object.entries(sector.periods || {})){
+        for(const st of snap.startups || []){
+          all.push({...st, sector: sector.name});
+        }
+      }
+    }
+    
+    all.sort((a,b) => (b.commitVelocity14d||0) - (a.commitVelocity14d||0));
+    const top10 = all.slice(0,10);
+    
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('content').style.display = 'block';
+    
+    document.getElementById('list').innerHTML = top10.map((st,i) => {
+      const slug = (st.name||'').toLowerCase().replace(/[^a-z0-9]+/g,'-');
+      const signal = (st.signalType||'steady').toLowerCase();
+      const change = st.commitVelocityChange || 0;
+      const changeStr = change >= 0 ? '+' + change + '%' : change + '%';
+      return `<li>
+        <div>
+          <span class="name"><a href="https://signals.gitdealflow.com/startup/${slug}" target="_blank">${i+1}. ${st.name}</a></span>
+          <span class="signal ${signal}">${st.signalType}</span>
+        </div>
+        <div class="stats">${st.commitVelocity14d} commits · ${changeStr} · ${st.contributors} contrib</div>
+      </li>`;
+    }).join('');
+    
+    // Auto-resize the iframe
+    const height = document.getElementById('widget').scrollHeight;
+    window.parent?.postMessage?.({type:'resize', height}, '*');
+  } catch(e){
+    document.getElementById('loading').textContent = 'Could not load data';
+  }
+}
+load();
+</script>
+</body>
+</html>

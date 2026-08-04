@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Compare Startup Engineering Velocity — PostHog vs Vercel & More | VC Deal Flow Signal</title>
+<meta name="description" content="Side-by-side comparison of startup engineering momentum. See commit velocity, signal type, contributors, and growth trends for any two venture-backed startups.">
+<link rel="canonical" href="https://signals.gitdealflow.com/compare-tool">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Compare Startup Engineering Velocity — Side by Side">
+<meta property="og:description" content="Pick two startups and compare their GitHub commit velocity, signal type, contributors, and growth trends side by side.">
+<meta property="og:image" content="https://signals.gitdealflow.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Startup Engineering Velocity Comparison Tool","description":"Side-by-side comparison of GitHub engineering momentum for any two venture-backed startups from the VC Deal Flow Signal dataset.","applicationCategory":"BusinessApplication","browserRequirements":"Requires JavaScript","url":"https://signals.gitdealflow.com/compare-tool"}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0b1220;color:#e2e8f0;line-height:1.6;min-height:100vh}
+.container{max-width:960px;margin:0 auto;padding:2rem 1.5rem}
+h1{font-size:1.6rem;font-weight:700;margin-bottom:0.25rem;color:#f1f5f9;text-align:center}
+h1 span{background:linear-gradient(135deg,#0ea5e9,#6366f1);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.subtitle{color:#64748b;text-align:center;margin-bottom:1.5rem;font-size:0.9rem}
+.pickers{display:flex;gap:1rem;margin-bottom:1.5rem;align-items:center}
+.pick-group{flex:1}
+.pick-group label{display:block;font-size:0.75rem;color:#64748b;font-weight:600;margin-bottom:0.3rem;text-transform:uppercase;letter-spacing:0.05em}
+.pick-group select{width:100%;background:#1e293b;border:1px solid #334155;border-radius:8px;padding:0.7rem;color:#f1f5f9;font-size:0.9rem;cursor:pointer}
+.pick-group select:focus{border-color:#0ea5e9;outline:none}
+.vs-badge{font-size:1.2rem;font-weight:800;color:#64748b;padding-top:1.2rem;text-align:center}
+.comparison{display:none;gap:1rem;margin-bottom:1.5rem}
+.cell{flex:1;background:#1e293b;border-radius:12px;padding:1.25rem;border:1px solid #334155}
+.cell h2{font-size:1.1rem;font-weight:700;color:#f1f5f9;margin-bottom:0.75rem;padding-bottom:0.5rem;border-bottom:1px solid #334155}
+.cell .name-link{color:#38bdf8;text-decoration:none;font-size:0.85rem}
+.cell .name-link:hover{text-decoration:underline}
+.stat{display:flex;justify-content:space-between;padding:0.4rem 0;border-bottom:1px solid rgba(51,65,85,0.5)}
+.stat:last-child{border:none}
+.stat .label{color:#64748b;font-size:0.8rem}
+.stat .value{font-weight:600;font-size:0.9rem}
+.winner{background:linear-gradient(135deg,rgba(52,211,153,0.08),rgba(34,197,94,0.04))}
+.result-header{display:none;background:linear-gradient(135deg,#1e293b,#0f172a);border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;border:1px solid #334155;text-align:center}
+.result-header h3{color:#fbbf24;font-size:0.95rem;margin-bottom:0.25rem}
+.result-header p{color:#94a3b8;font-size:0.85rem}
+.share-btn{display:inline-block;margin-top:1rem;padding:0.5rem 1.25rem;background:#1d9bf0;color:#fff;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.85rem;transition:opacity 0.2s}
+.share-btn:hover{opacity:0.85}
+.loading{text-align:center;color:#64748b;padding:2rem;display:none}
+.error{background:#1e293b;border:1px solid #ef4444;border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;color:#fca5a5;text-align:center;display:none}
+.missing{color:#64748b;text-align:center;padding:1rem;font-size:0.85rem}
+.embed-snippet{margin-top:2rem;padding-top:1.5rem;border-top:1px solid #1e293b}
+.embed-snippet h3{font-size:0.95rem;color:#f1f5f9;margin-bottom:0.5rem;text-align:center}
+.embed-snippet code{display:block;background:#0f172a;color:#e2e8f0;padding:0.75rem 1rem;border-radius:8px;font-size:0.8rem;word-break:break-all;border:1px solid #334155;text-align:center;cursor:pointer}
+.embed-snippet code:hover{background:#1a2332}
+@media(max-width:640px){.pickers{flex-direction:column;gap:0.5rem}.comparison{flex-direction:column}.vs-badge{padding-top:0}}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>🔬 <span>Startup Velocity</span> Comparator</h1>
+<p style="color:#64748b;font-size:0.85rem;margin-top:0.5rem">🚀 Want your startup tracked? <a href="/submit" style="color:#38bdf8">Submit it here →</a></p>
+<p class="subtitle">Compare any two startups' engineering momentum — commit velocity, contributors, signal type, and more.</p>
+
+<div class="pickers">
+  <div class="pick-group">
+    <label>Startup A</label>
+    <select id="startupA" onchange="compare()"></select>
+  </div>
+  <div class="vs-badge">VS</div>
+  <div class="pick-group">
+    <label>Startup B</label>
+    <select id="startupB" onchange="compare()"></select>
+  </div>
+</div>
+
+<div class="loading" id="loading">
+  <div>Loading startup data...</div>
+</div>
+
+<div class="error" id="error"></div>
+
+<div class="result-header" id="resultHeader">
+  <h3 id="verdict"></h3>
+  <p id="verdictDetail"></p>
+  <a class="share-btn" id="shareBtn" href="#" target="_blank" rel="noopener">𝕏 Share This Comparison</a>
+</div>
+
+<div class="comparison" id="comparison">
+  <div class="cell" id="cellA">
+    <h2 id="nameA">—</h2>
+    <div id="statsA"></div>
+  </div>
+  <div class="cell" id="cellB">
+    <h2 id="nameB">—</h2>
+    <div id="statsB"></div>
+  </div>
+</div>
+
+<div class="embed-snippet">
+  <h3>📊 <a href="/report/state-of-startup-engineering-2026" style="color:#fbbf24;text-decoration:none">2026 Report</a> · 📋 Embed this comparison on your blog</h3>
+  <code id="embedCode" onclick="copyEmbed()">&lt;iframe src=&quot;https://signals.gitdealflow.com/compare-tool&quot; width=&quot;100%&quot; height=&quot;600&quot; style=&quot;border:none;background:#0b1220&quot;&gt;&lt;/iframe&gt;</code>
+  <p style="color:#64748b;font-size:0.75rem;text-align:center;margin-top:0.5rem">Click to copy embed code</p>
+</div>
+</div>
+
+<script>
+let startups = [];
+
+async function loadData(){
+  try{
+    const res = await fetch('/api/signals.json');
+    const data = await res.json();
+    
+    if(data.sectors){
+      data.sectors.forEach(s => {
+        Object.entries(s.periods || {}).forEach(([, snap]) => {
+          (snap.startups || []).forEach(st => {
+            if(!startups.find(x => x.name === st.name)){
+              startups.push({
+                name: st.name,
+                sector: s.name,
+                velocity: st.commitVelocity14d || 0,
+                change: st.commitVelocityChange || 0,
+                contributors: st.contributors || 0,
+                signalType: st.signalType || 'steady',
+                geography: st.geography || '—',
+                stage: st.stage || '—',
+                founderCount: st.founderCount || '—',
+                description: st.description || '',
+                slug: (st.name||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'')
+              });
+            }
+          });
+        });
+      });
+    }
+    
+    startups.sort((a,b) => b.velocity - a.velocity);
+    populateSelects();
+  } catch(e){
+    document.getElementById('error').textContent = 'Failed to load startup data: ' + e.message;
+    document.getElementById('error').style.display = 'block';
+  }
+}
+
+function populateSelects(){
+  const sa = document.getElementById('startupA');
+  const sb = document.getElementById('startupB');
+  sa.innerHTML = '<option value="">Select startup...</option>';
+  sb.innerHTML = '<option value="">Select startup...</option>';
+  
+  startups.forEach((st,i) => {
+    const opt = `<option value="${i}">${st.name} (${st.sector})</option>`;
+    sa.innerHTML += opt;
+    sb.innerHTML += opt;
+  });
+  
+  // Default selected: PostHog and Vercel if available
+  startups.forEach((st,i) => {
+    if(st.name === 'PostHog') sa.value = i;
+    if(st.name === 'Vercel') sb.value = i;
+  });
+  
+  compare();
+}
+
+function compare(){
+  const ia = parseInt(document.getElementById('startupA').value);
+  const ib = parseInt(document.getElementById('startupB').value);
+  const resultH = document.getElementById('resultHeader');
+  const comp = document.getElementById('comparison');
+  
+  if(isNaN(ia) || isNaN(ib)){
+    resultH.style.display = 'none';
+    comp.style.display = 'none';
+    return;
+  }
+  
+  const a = startups[ia];
+  const b = startups[ib];
+  if(!a || !b) return;
+  
+  resultH.style.display = 'block';
+  comp.style.display = 'flex';
+  
+  // Determine winner
+  let verdict = '';
+  if(a.velocity > b.velocity * 1.2){
+    verdict = `${a.name} is pulling ahead with ${Math.round((a.velocity/(b.velocity||1)-1)*100)}% more commits.`;
+  } else if(b.velocity > a.velocity * 1.2){
+    verdict = `${b.name} is pulling ahead with ${Math.round((b.velocity/(a.velocity||1)-1)*100)}% more commits.`;
+  } else {
+    verdict = `Both startups are in a tight race — ${a.name} at ${a.velocity}/14d vs ${b.name} at ${b.velocity}/14d.`;
+  }
+  document.getElementById('verdict').textContent = '🏆 ' + verdict;
+  document.getElementById('verdictDetail').textContent = `Comparison powered by VC Deal Flow Signal — refreshed weekly from public GitHub data.`;
+  
+  // Share URL
+  const shareText = `${a.name} (${a.velocity} commits) vs ${b.name} (${b.velocity} commits) — compare startup engineering velocity →`;
+  document.getElementById('shareBtn').href = `https://x.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent('https://signals.gitdealflow.com/compare-tool')}`;
+  
+  renderCell('cellA', 'nameA', 'statsA', a);
+  renderCell('cellB', 'nameB', 'statsB', b);
+}
+
+function renderCell(cellId, nameId, statsId, st){
+  document.getElementById(nameId).innerHTML = `${st.name} <a href="/startup/${st.slug}" class="name-link" target="_blank">→ profile</a>`;
+  
+  const signalEmojis = {breakout:'🔥',acceleration:'⬆️',steady:'➡️',cooling:'⬇️'};
+  const signalEmoji = signalEmojis[(st.signalType||'').toLowerCase()] || '➡️';
+  
+  document.getElementById(statsId).innerHTML = `
+    <div class="stat"><span class="label">Commit Velocity (14d)</span><span class="value">${st.velocity}</span></div>
+    <div class="stat"><span class="label">Velocity Change</span><span class="value ${st.change >= 0 ? 'winner' : ''}">${st.change >= 0 ? '+' : ''}${st.change}%</span></div>
+    <div class="stat"><span class="label">Signal Type</span><span class="value">${signalEmoji} ${st.signalType}</span></div>
+    <div class="stat"><span class="label">Contributors</span><span class="value">${st.contributors}</span></div>
+    <div class="stat"><span class="label">Sector</span><span class="value">${st.sector}</span></div>
+    <div class="stat"><span class="label">Stage</span><span class="value">${st.stage}</span></div>
+    <div class="stat"><span class="label">Geography</span><span class="value">${st.geography}</span></div>
+  `;
+}
+
+function copyEmbed(){
+  const code = document.getElementById('embedCode');
+  navigator.clipboard.writeText(code.textContent).catch(()=>{});
+  code.textContent = '✅ Copied!';
+  setTimeout(() => {
+    code.innerHTML = '&lt;iframe src=&quot;https://signals.gitdealflow.com/compare-tool&quot; width=&quot;100%&quot; height=&quot;600&quot; style=&quot;border:none;background:#0b1220&quot;&gt;&lt;/iframe&gt;';
+  }, 2000);
+}
+
+loadData();
+</script>
+</body>
+</html>

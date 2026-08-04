@@ -103,4 +103,3 @@ CC-BY 4.0 — commercial reuse with attribution is allowed.
 
 - Email: signals@gitdealflow.com
 - Telegram: <https://t.me/gitdealflow>
-- Twitter/X: <https://x.com/data_nerd>

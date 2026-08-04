@@ -112,7 +112,6 @@ Data is refreshed weekly (Monday mornings). The current dataset covers ${allPeri
 
 Website: ${BASE_URL}
 Main site: https://gitdealflow.com
-Twitter/X: https://x.com/data_nerd
 Telegram: https://t.me/gitdealflow
 LinkedIn: https://www.linkedin.com/company/gitdealflow
 Chrome Extension #1 — VC Deal Flow Signal: https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn (injects GitHub engineering-acceleration badges on Crunchbase and Wellfound startup profiles)

@@ -151,6 +151,9 @@ export default async function StartupPage({ params }: PageProps) {
         url: profile.websiteUrl || profile.githubUrl,
         description: profile.description,
         ...(orgSameAs.length > 0 ? { sameAs: orgSameAs } : {}),
+        ...(profile.sectors.length > 0
+          ? { keywords: profile.sectors }
+          : {}),
         ...(profile.latestGeography
           ? {
               location: {
@@ -174,6 +177,22 @@ export default async function StartupPage({ params }: PageProps) {
             userInteractionCount: latest.contributors,
           },
         ],
+      },
+      {
+        // The startup's product/service offering — what they build.
+        // category draws from profile.sectors so AI engines surface sector
+        // data alongside the entity.
+        "@type": "Product",
+        "@id": `https://signals.gitdealflow.com/startup/${slug}#product`,
+        name: profile.name,
+        description: profile.description,
+        url: profile.websiteUrl || profile.githubUrl,
+        ...(profile.sectors.length > 0
+          ? { category: profile.sectors.join(", ") }
+          : {}),
+        brand: {
+          "@id": `https://signals.gitdealflow.com/startup/${slug}#org`,
+        },
       },
       {
         "@type": "BreadcrumbList",

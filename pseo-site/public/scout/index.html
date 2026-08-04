@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VC Scout Score &amp; Startup Momentum Checker | VC Deal Flow Signal</title>
+<meta name="description" content="Check your VC Scout Score (how good is your GitHub taste?) or see your startup's engineering momentum with a live badge. Free, no signup, 5 seconds.">
+<link rel="canonical" href="https://signals.gitdealflow.com/scout">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="VC Scout Score — What's Your GitHub Investor Taste?">
+<meta property="og:description" content="Enter your GitHub username and get your Scout Score — a 0-100 rating of how early you spotted unicorns before they validated.">
+<meta property="og:image" content="https://signals.gitdealflow.com/og-image.png">
+<meta property="og:url" content="https://signals.gitdealflow.com/scout">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="VC Scout Score — What's Your GitHub Investor Taste?">
+<meta name="twitter:description" content="How good is your starring history at spotting unicorns? Enter your GitHub username and find out.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"VC Scout Score Calculator","description":"Check your GitHub starring history against 75+ validated unicorns and get a Scout Score (0-100).","applicationCategory":"BusinessApplication","operatingSystem":"All","browserRequirements":"Requires JavaScript","url":"https://signals.gitdealflow.com/scout","dateModified":"2026-07-28"}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0b1220;color:#e2e8f0;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;align-items:center}
+.container{max-width:720px;margin:0 auto;padding:2rem 1.5rem;width:100%}
+h1{font-size:1.8rem;font-weight:700;margin-bottom:0.25rem;color:#f1f5f9;text-align:center}
+h1 span{background:linear-gradient(135deg,#0ea5e9,#6366f1);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.subtitle{color:#64748b;text-align:center;margin-bottom:2rem;font-size:0.95rem}
+.search-box{display:flex;gap:0.75rem;max-width:500px;margin:0 auto 2rem}
+.search-box input{flex:1;background:#1e293b;border:1px solid #334155;border-radius:8px;padding:0.85rem 1rem;color:#f1f5f9;font-size:1rem;outline:none;transition:border-color 0.2s}
+.search-box input:focus{border-color:#0ea5e9}
+.search-box input::placeholder{color:#475569}
+.search-box button{background:linear-gradient(135deg,#0ea5e9,#6366f1);color:#fff;border:none;border-radius:8px;padding:0.85rem 1.5rem;font-size:1rem;font-weight:600;cursor:pointer;white-space:nowrap;transition:opacity 0.2s}
+.search-box button:hover{opacity:0.9}
+.search-box button:disabled{opacity:0.5;cursor:wait}
+.loading{text-align:center;color:#64748b;padding:2rem;display:none}
+.loading .spinner{display:inline-block;width:32px;height:32px;border:3px solid #1e293b;border-top-color:#0ea5e9;border-radius:50%;animation:spin 0.8s linear infinite;margin-bottom:0.75rem}
+@keyframes spin{to{transform:rotate(360deg)}}
+.error{background:#1e293b;border:1px solid #ef4444;border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;color:#fca5a5;text-align:center;display:none}
+.result{display:none}
+.score-card{background:linear-gradient(135deg,#1e293b,#0f172a);border-radius:16px;padding:2rem;text-align:center;margin-bottom:1.5rem;border:1px solid #334155}
+.score-number{font-size:4rem;font-weight:800;line-height:1;margin-bottom:0.25rem}
+.score-label{font-size:0.85rem;color:#64748b;margin-bottom:1rem}
+.rank-badge{display:inline-block;padding:0.25rem 1rem;border-radius:999px;font-size:0.9rem;font-weight:600;margin-bottom:1rem}
+.rank-curious{background:#1e293b;color:#94a3b8}
+.rank-scout{background:#1e293b;color:#22c55e}
+.rank-sharp{background:#1e293b;color:#38bdf8}
+.rank-elite{background:#1e293b;color:#a855f7}
+.rank-oracle{background:#1e293b;color:#f59e0b}
+.score-meta{display:flex;justify-content:center;gap:2rem;margin-top:1rem}
+.score-meta div{text-align:center}
+.score-meta .num{font-size:1.25rem;font-weight:700;color:#f1f5f9}
+.score-meta .lbl{font-size:0.75rem;color:#64748b}
+.personality{background:#1e293b;border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;border:1px solid #334155}
+.personality h3{color:#f1f5f9;font-size:0.9rem;font-weight:600;margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:0.05em}
+.personality p{color:#94a3b8;font-size:0.9rem;line-height:1.7}
+.wins{background:#1e293b;border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;border:1px solid #334155}
+.wins h3{color:#f1f5f9;font-size:0.9rem;font-weight:600;margin-bottom:0.75rem;text-transform:uppercase;letter-spacing:0.05em}
+.wins table{width:100%;border-collapse:collapse;font-size:0.85rem}
+.wins th{padding:0.5rem 0.75rem;text-align:left;color:#64748b;font-weight:600;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid #334155}
+.wins td{padding:0.5rem 0.75rem;border-bottom:1px solid #1e293b;color:#94a3b8}
+.wins tr:last-child td{border:none}
+.wins .org{color:#38bdf8;font-weight:500}
+.wins .early{color:#22c55e;font-weight:500}
+.wins .score-col{color:#f1f5f9;font-weight:600}
+.no-wins{color:#64748b;font-size:0.9rem;text-align:center;padding:0.5rem}
+.share-buttons{display:flex;justify-content:center;gap:0.75rem;margin-top:1.5rem}
+.share-buttons a{display:inline-flex;align-items:center;gap:0.5rem;padding:0.6rem 1.25rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.85rem;transition:opacity 0.2s}
+.share-buttons a:hover{opacity:0.85}
+.share-x{background:#1d9bf0;color:#fff}
+.share-copy{background:#1e293b;color:#94a3b8;border:1px solid #334155;cursor:pointer}
+.share-copy.copied{background:#166534;color:#86efac}
+.previous{display:flex;flex-wrap:wrap;justify-content:center;gap:0.5rem;margin-bottom:2rem}
+.previous button{background:#1e293b;border:1px solid #334155;border-radius:999px;padding:0.3rem 0.75rem;color:#64748b;font-size:0.8rem;cursor:pointer;transition:all 0.2s}
+.previous button:hover{background:#334155;color:#f1f5f9;border-color:#0ea5e9}
+.how-it-works{margin-top:2rem;padding-top:1.5rem;border-top:1px solid #1e293b}
+.how-it-works h2{font-size:1rem;color:#f1f5f9;margin-bottom:0.75rem;text-align:center}
+.how-it-works p{font-size:0.85rem;color:#64748b;text-align:center;margin-bottom:0.5rem}
+.how-it-works a{color:#38bdf8}
+.newsletter{margin-top:2rem;padding:1.5rem;background:linear-gradient(135deg,#1e293b,#0f172a);border-radius:12px;border:1px solid #334155;text-align:center}
+.newsletter h3{color:#f1f5f9;font-size:1rem;margin-bottom:0.5rem}
+.newsletter p{color:#64748b;font-size:0.85rem;margin-bottom:1rem}
+.newsletter .form{display:flex;gap:0.5rem;justify-content:center;flex-wrap:wrap}
+.newsletter input{background:#0f172a;border:1px solid #334155;border-radius:8px;padding:0.6rem 0.8rem;color:#f1f5f9;font-size:0.9rem;width:240px;outline:none}
+.newsletter input:focus{border-color:#0ea5e9}
+.newsletter button{background:linear-gradient(135deg,#0ea5e9,#6366f1);color:#fff;border:none;border-radius:8px;padding:0.6rem 1rem;font-weight:600;cursor:pointer}
+.newsletter .success{color:#86efac;font-size:0.8rem;display:none;margin-top:0.5rem}
+.badge-embed{background:#1e293b;border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;border:1px solid #334155;display:none}
+.badge-embed h3{color:#f1f5f9;font-size:0.9rem;font-weight:600;margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:0.05em}
+.badge-embed p{color:#94a3b8;font-size:0.85rem;margin-bottom:0.75rem}
+.badge-embed code{display:block;background:#0f172a;color:#e2e8f0;padding:0.75rem 1rem;border-radius:8px;font-size:0.8rem;word-break:break-all;border:1px solid #334155;cursor:pointer;margin-bottom:0.5rem}
+.badge-embed code:hover{background:#1a2332}
+.badge-embed .preview{margin-top:0.5rem}
+.badge-embed .copied{color:#86efac;font-size:0.8rem;display:none}
+.mode-switcher{display:flex;justify-content:center;gap:0.5rem;margin-bottom:1.25rem}
+.mode-btn{padding:0.5rem 1.25rem;border-radius:999px;border:1px solid #334155;background:transparent;color:#64748b;font-size:0.85rem;font-weight:600;cursor:pointer;transition:all 0.2s}
+.mode-btn:hover{border-color:#0ea5e9;color:#94a3b8}
+.mode-btn.active{background:linear-gradient(135deg,#0ea5e9,#6366f1);color:#fff;border-color:transparent}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>🧐 <span>VC Scout</span> Score</h1>
+<p style="color:#64748b;font-size:0.85rem;margin-top:0.5rem">🚀 Want your startup tracked? <a href="/submit" style="color:#38bdf8">Submit it here →</a></p>
+<p class="subtitle" id="subtitle">How good is your GitHub taste at spotting unicorns before they blow up? Type your username and find out.</p>
+
+<div class="mode-switcher">
+  <button class="mode-btn active" id="modeUser" onclick="setMode('user')">🧐 GitHub User</button>
+  <button class="mode-btn" id="modeStartup" onclick="setMode('startup')">🏢 Your Startup</button>
+</div>
+
+<div class="previous" id="recent"></div>
+
+<div class="search-box">
+  <input type="text" id="username" placeholder="e.g. sindresorhus, torvalds" autocomplete="off" autocapitalize="none" spellcheck="false" onkeydown="if(event.key==='Enter')check()">
+  <button id="checkBtn" onclick="check()">Check →</button>
+</div>
+
+<div class="loading" id="loading">
+  <div class="spinner"></div>
+  <div>Scanning your GitHub stars...</div>
+</div>
+
+<div class="error" id="error"></div>
+
+<div class="result" id="result">
+  <div class="score-card" id="scoreCard">
+    <div class="score-number" id="scoreNum">0</div>
+    <div class="score-label">Scout Score</div>
+    <div class="rank-badge" id="rankBadge">—</div>
+    <div class="score-meta">
+      <div><div class="num" id="starsCount">0</div><div class="lbl">Stars</div></div>
+      <div><div class="num" id="matchedCount">0</div><div class="lbl">Matched</div></div>
+      <div><div class="num" id="earlyCount">0</div><div class="lbl">Early Calls</div></div>
+    </div>
+  </div>
+
+  <div class="personality" id="personalityBox">
+    <h3>🎯 Scout Personality</h3>
+    <p id="personalityText"></p>
+  </div>
+
+  <div class="wins" id="winsBox">
+    <h3>🏆 Top Early Calls</h3>
+    <div id="winsContent"></div>
+  </div>
+
+  <div class="badge-embed" id="badgeEmbed">
+    <h3>📜 Add to Your GitHub README</h3>
+    <p>Show your Scout Score on your GitHub profile. Click to copy the markdown:</p>
+    <code id="badgeCode" onclick="copyBadgeCode()">Loading...</code>
+    <span class="copied" id="badgeCopied">✅ Copied!</span>
+    <div class="preview" id="badgePreview"></div>
+  </div>
+
+  <div class="share-buttons" id="shareBtns" style="display:none">
+    <a class="share-x" id="shareX" href="#" target="_blank" rel="noopener">𝕏 Share on X</a>
+    <button class="share-copy" id="copyLink" onclick="copyShareLink()">🔗 Copy Share Link</button>
+  </div>
+</div>
+
+<div class="how-it-works">
+  <h2>How It Works</h2>
+  <p><strong>🧐 GitHub User mode:</strong> We scan your public GitHub starring history and cross-reference against <strong>75+ validated unicorns</strong> — startups that reached $1B+ valuation, Series A+ rounds, or 25K+ stars on GitHub. Score is 0-100 based on <em>how early</em> you starred them before they validated.</p>
+  <p><strong>🏢 Startup mode:</strong> Enter your startup name to see its engineering momentum (commit velocity, contributors, signal type). Get a free, auto-updating SVG badge for your README. Data refreshed weekly from public GitHub activity.</p>
+  <p>Free, no signup, no data stored. Powered by the <a href="https://signals.gitdealflow.com">VC Deal Flow Signal</a> dataset. Read the <a href="https://signals.gitdealflow.com/methodology">methodology</a>. 📊 <a href="/report/state-of-startup-engineering-2026">State of Startup Engineering 2026 report →</a></p>
+</div>
+
+<div class="newsletter">
+  <h3>📬 Get Startup Signals in Your Inbox</h3>
+  <p>Weekly top 5 trending startups, free. No spam, unsubscribe anytime.</p>
+  <div class="form">
+    <input type="email" id="emailInput" placeholder="your@email.com" onkeydown="if(event.key==='Enter')subscribe()">
+    <button onclick="subscribe()">Subscribe →</button>
+  </div>
+  <div class="success" id="subscribeSuccess">✅ You're in! Check your inbox.</div>
+</div>
+</div>
+
+<script>
+const RECENT_KEY = 'scout_recent';
+function getRecent(){ try{ return JSON.parse(localStorage.getItem(RECENT_KEY)||'[]').slice(0,5) }catch{ return [] }}
+function addRecent(u){ 
+  let r = getRecent().filter(x=>x!==u);
+  r.unshift(u);
+  localStorage.setItem(RECENT_KEY, JSON.stringify(r.slice(0,5)));
+}
+function renderRecent(){
+  const r = getRecent();
+  const el = document.getElementById('recent');
+  if(!r.length){ el.style.display='none'; return }
+  el.style.display='flex';
+  el.innerHTML = r.map(u=>`<button onclick="document.getElementById('username').value='${u}';check()">${u}</button>`).join('');
+}
+
+let currentMode = 'user';
+let startupCache = null;
+
+function setMode(mode){
+  currentMode = mode;
+  document.getElementById('modeUser').className = mode === 'user' ? 'mode-btn active' : 'mode-btn';
+  document.getElementById('modeStartup').className = mode === 'startup' ? 'mode-btn active' : 'mode-btn';
+  document.getElementById('result').style.display = 'none';
+  document.getElementById('error').style.display = 'none';
+  
+  const input = document.getElementById('username');
+  const subtitle = document.getElementById('subtitle');
+  
+  if(mode === 'user'){
+    input.placeholder = 'e.g. sindresorhus, torvalds';
+    subtitle.textContent = 'How good is your GitHub taste at spotting unicorns before they blow up? Type your username and find out.';
+    document.getElementById('recent').style.display = 'flex';
+    renderRecent();
+  } else {
+    input.placeholder = 'e.g. PostHog, Vercel, Anthropic';
+    subtitle.textContent = 'See your startup\u2019s engineering momentum and add a live badge to your README.';
+    document.getElementById('recent').style.display = 'none';
+  }
+  input.value = '';
+  input.focus();
+}
+
+async function check(){
+  const input = document.getElementById('username');
+  const btn = document.getElementById('checkBtn');
+  const query = input.value.trim();
+  if(!query){ input.focus(); return }
+  
+  input.disabled = true;
+  btn.disabled = true;
+  document.getElementById('loading').style.display = 'block';
+  document.getElementById('error').style.display = 'none';
+  document.getElementById('result').style.display = 'none';
+  
+  try{
+    if(currentMode === 'startup'){
+      await checkStartup(query);
+    } else {
+      await checkUser(query);
+    }
+  } catch(e){
+    showError('Network error — check your connection and try again.');
+  } finally {
+    input.disabled = false;
+    btn.disabled = false;
+    document.getElementById('loading').style.display = 'none';
+  }
+}
+
+async function checkUser(username){
+  const res = await fetch('/api/receipts/' + encodeURIComponent(username));
+  const data = await res.json();
+  
+  if(!res.ok || data.isError){
+    showError(data.message || `Could not find user "${username}"`);
+    return;
+  }
+  
+  addRecent(username);
+  renderRecent();
+  showResult(data);
+}
+
+async function checkStartup(name){
+  // Load startup data
+  if(!startupCache){
+    const res = await fetch('/api/signals.json');
+    startupCache = await res.json();
+  }
+  
+  const query = name.toLowerCase().replace(/[^a-z0-9]/g, '');
+  
+  // Search across all sectors
+  let found = null;
+  for(const sector of startupCache.sectors || []){
+    for(const [, snap] of Object.entries(sector.periods || {})){
+      for(const st of snap.startups || []){
+        const stSlug = (st.name || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+        const stName = (st.name || '').toLowerCase();
+        if(stSlug === query || stName === query || stName.includes(query)){
+          if(!found || st.name.length < found.name.length){
+            found = { ...st, sectorName: sector.name };
+          }
+        }
+      }
+    }
+  }
+  
+  if(!found){
+    showError(`Startup "${name}" not found in our dataset. We track ~400 venture-backed startups across 20 sectors.`);
+    return;
+  }
+  
+  showStartupResult(found);
+}
+
+function showStartupResult(st){
+  document.getElementById('result').style.display = 'block';
+  
+  const slug = (st.name || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+  const signalEmojis = {breakout:'🔥',acceleration:'⬆️',steady:'➡️',cooling:'⬇️'};
+  const emoji = signalEmojis[(st.signalType||'').toLowerCase()] || '➡️';
+  const change = st.commitVelocityChange || 0;
+  const changeStr = change >= 0 ? `+${change}%` : `${change}%`;
+  
+  // Update score card for startup
+  document.getElementById('scoreNum').textContent = st.commitVelocity14d || '—';
+  document.querySelector('.score-label').textContent = 'Commit Velocity (14d)';
+  
+  const rankBadge = document.getElementById('rankBadge');
+  rankBadge.textContent = `${emoji} ${st.signalType || 'Steady'}`;
+  rankBadge.className = 'rank-badge rank-sharp';
+  
+  document.getElementById('starsCount').textContent = st.contributors || '—';
+  document.getElementById('matchedCount').textContent = st.sectorName || '—';
+  document.getElementById('earlyCount').textContent = changeStr;
+  document.querySelectorAll('.lbl')[0].textContent = 'Contributors';
+  document.querySelectorAll('.lbl')[1].textContent = 'Sector';
+  document.querySelectorAll('.lbl')[2].textContent = 'Change';
+  
+  // Update personality/wins for startup
+  document.getElementById('personalityBox').style.display = 'block';
+  document.getElementById('personalityText').textContent = `${st.name} shows ${st.signalType || 'steady'} engineering momentum with ${st.commitVelocity14d} commits in the last 14 days. ${st.contributors} contributors, ${changeStr} velocity change. Sector: ${st.sectorName}. ${st.geography && st.geography !== 'Unknown' ? 'Geography: ' + st.geography + '.' : ''} Data refreshed weekly from public GitHub activity.`;
+  
+  document.getElementById('winsBox').style.display = 'none';
+  
+  // Badge embed for startup
+  const badgeEl = document.getElementById('badgeEmbed');
+  badgeEl.style.display = 'block';
+  const code = document.getElementById('badgeCode');
+  const preview = document.getElementById('badgePreview');
+  const md = `[![${st.name} engineering momentum](https://signals.gitdealflow.com/api/badge/${slug})](https://signals.gitdealflow.com/badge-builder)`;
+  code.textContent = md;
+  preview.innerHTML = `<img src="https://signals.gitdealflow.com/api/badge/${slug}" alt="${st.name} momentum badge" style="height:28px" />`;
+  
+  // Share button for startup
+  document.getElementById('shareBtns').style.display = 'flex';
+  const shareText = `${st.name} is showing ${st.signalType} engineering momentum — ${st.commitVelocity14d} commits/14d (${changeStr})! See the full signal:`;
+  document.getElementById('shareX').href = `https://x.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent('https://signals.gitdealflow.com/startup/' + slug)}`;
+}
+
+function showError(msg){
+  const el = document.getElementById('error');
+  el.textContent = msg;
+  el.style.display = 'block';
+}
+
+function showResult(data){
+  document.getElementById('result').style.display = 'block';
+  document.getElementById('scoreNum').textContent = data.score;
+  document.querySelector('.score-label').textContent = 'Scout Score';
+  document.getElementById('winsBox').style.display = 'block';
+  document.getElementById('personalityBox').style.display = 'block';
+  
+  // Reset labels in case they were changed by startup mode
+  document.querySelectorAll('.lbl')[0].textContent = 'Stars';
+  document.querySelectorAll('.lbl')[1].textContent = 'Matched';
+  document.querySelectorAll('.lbl')[2].textContent = 'Early Calls';
+  
+  const rank = data.rank || 'curious';
+  const badge = document.getElementById('rankBadge');
+  const labels = {curious:'🧐 Curious',scout:'🔭 Scout',sharp:'⚡ Sharp',elite:'💎 Elite',oracle:'🔮 Oracle'};
+  badge.textContent = labels[rank] || rank;
+  badge.className = 'rank-badge rank-' + rank;
+  
+  document.getElementById('starsCount').textContent = data.total_stars || 0;
+  document.getElementById('matchedCount').textContent = data.matched_count || 0;
+  document.getElementById('earlyCount').textContent = data.early_count || 0;
+  
+  document.getElementById('personalityText').textContent = data.personality || 'Personality analysis unavailable.';
+  
+  const winsEl = document.getElementById('winsContent');
+  const wins = data.top_wins || [];
+  if(wins.length){
+    winsEl.innerHTML = '<table><tr><th>Startup</th><th>Event</th><th>Months Early</th><th>Score</th></tr>' +
+      wins.map(w => `<tr><td class="org">${w.org||w.name||'?'}</td><td>${w.event||'?'}</td><td class="early">${w.months_early||0}m</td><td class="score-col">+${w.points||0}</td></tr>`).join('') +
+      '</table>';
+  } else {
+    winsEl.innerHTML = '<div class="no-wins">No validated early calls yet in our database. Make one below!</div>';
+  }
+  
+  const shareUrl = data.share_url || `https://signals.gitdealflow.com/share/${data.username}`;
+  const shareText = `My VC Scout Score is ${data.score}/100 — ranked "${labels[rank]||rank}"! How's your GitHub taste?`;
+  document.getElementById('shareX').href = `https://x.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
+  document.getElementById('shareBtns').style.display = 'flex';
+
+  // Show GitHub README badge embed
+  updateBadgeEmbed(data.username, data.score, rank);
+}
+
+async function copyShareLink(){
+  const btn = document.getElementById('copyLink');
+  try{
+    const username = document.getElementById('username').value.trim().toLowerCase();
+    const shareUrl = `https://signals.gitdealflow.com/share/${username}`;
+    await navigator.clipboard.writeText(shareUrl);
+    btn.textContent = '✅ Copied!';
+    btn.classList.add('copied');
+    setTimeout(()=>{ btn.textContent = '🔗 Copy Share Link'; btn.classList.remove('copied'); }, 2000);
+  } catch(e){
+    btn.textContent = '❌ Failed';
+  }
+}
+
+async function copyBadgeCode(){
+  const code = document.getElementById('badgeCode');
+  const copied = document.getElementById('badgeCopied');
+  try{
+    await navigator.clipboard.writeText(code.textContent);
+    copied.style.display = 'inline';
+    setTimeout(()=>{ copied.style.display = 'none'; }, 2000);
+  } catch(e){}
+}
+
+async function subscribe(){
+  const email = document.getElementById('emailInput').value.trim();
+  if(!email) return;
+  try{
+    const r = await fetch('/api/subscribe', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({email})
+    });
+    if(r.ok){
+      document.getElementById('subscribeSuccess').style.display = 'block';
+      document.getElementById('emailInput').value = '';
+    }
+  } catch(e){}
+}
+
+function updateBadgeEmbed(username, score, rank){
+  const el = document.getElementById('badgeEmbed');
+  const code = document.getElementById('badgeCode');
+  const preview = document.getElementById('badgePreview');
+  const md = `[![VC Scout Score](https://signals.gitdealflow.com/api/badge/scout/${username}.svg)](https://signals.gitdealflow.com/scout?ref=gh-readme)`;
+  code.textContent = md;
+  preview.innerHTML = `<img src="https://signals.gitdealflow.com/api/badge/scout/${username}.svg" alt="VC Scout Score" />`;
+  el.style.display = 'block';
+}
+
+renderRecent();
+// Auto-focus
+document.getElementById('username').focus();
+</script>
+</body>
+</html>

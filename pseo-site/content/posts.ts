@@ -2805,6 +2805,13 @@ try {
 } catch {
   // Cursor collab post optional
 }
+try {
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const { dataArticles } = require("./data-articles-2026-07");
+  if (dataArticles) dataArticles.forEach((p: BlogPost) => allPosts.push(p));
+} catch {
+  // Data articles optional
+}
 allPosts.sort(
   (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
 );
