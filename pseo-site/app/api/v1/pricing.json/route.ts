@@ -222,7 +222,7 @@ const tiers: PricingTier[] = [
       "One 30-minute clarifications call after delivery",
     ],
     ctaLabel: "Commission a Sector Sweep",
-    ctaHref: "https://buy.stripe.com/bJe14m34DbNC6gm1by0x204",
+    ctaHref: "/api/checkout/session?tier=sector_sweep",
     guarantee: "30-day Signal-or-It's-Free — full refund within 30 days",
     promoCode: null,
   },

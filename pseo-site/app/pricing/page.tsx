@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 
 const STRIPE_DASHBOARD = "https://buy.stripe.com/4gMbJ07kTaJy7kqg6s0x20b";
 const STRIPE_INSIDER = "https://buy.stripe.com/bJeaEWfRpcRG6gm2fC0x20d";
-const STRIPE_SWEEP = "https://buy.stripe.com/bJe14m34DbNC6gm1by0x204";
+const STRIPE_SWEEP = "/api/checkout/session?tier=sector_sweep";
 // `||` not `??` — Vercel env entries can be empty strings, which `??`
 // would NOT replace. We want the hardcoded canonical URL whenever the
 // env var is missing OR empty.

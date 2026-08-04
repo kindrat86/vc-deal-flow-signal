@@ -70,7 +70,7 @@ export const ENTRY_TIERS: Record<EntryTierKey, EntryTierConfig> = {
     productName: "First Look Pass",
     unitAmount: 700,
     currency: "eur",
-    successUrl: "/firstlook-thanks?session_id={CHECKOUT_SESSION_ID}",
+    successUrl: "https://signals.gitdealflow.com/firstlook/thanks?session_id={CHECKOUT_SESSION_ID}",
     cancelUrl: "/firstlook?cancelled=1",
     description:
       "One-sector engineering-acceleration deep dive. PDF + raw CSV + JSON dump within 24h.",
@@ -81,7 +81,7 @@ export const ENTRY_TIERS: Record<EntryTierKey, EntryTierConfig> = {
     unitAmount: 4900,
     currency: "eur",
     interval: "month",
-    successUrl: "/dashboard-thanks?session_id={CHECKOUT_SESSION_ID}",
+    successUrl: "https://gitdealflow.com/dashboard-thanks?session_id={CHECKOUT_SESSION_ID}",
     cancelUrl: "/dashboard?cancelled=1",
     description:
       "Weekly ranked field for active angel sourcing. Cancel anytime.",
@@ -92,7 +92,7 @@ export const ENTRY_TIERS: Record<EntryTierKey, EntryTierConfig> = {
     unitAmount: 19700,
     currency: "eur",
     interval: "month",
-    successUrl: "/insider-thanks?session_id={CHECKOUT_SESSION_ID}",
+    successUrl: "https://gitdealflow.com/insider-thanks?session_id={CHECKOUT_SESSION_ID}",
     cancelUrl: "/insider?cancelled=1",
     description:
       "Closer room around the signal: steadier context, conviction, and access.",
@@ -102,7 +102,7 @@ export const ENTRY_TIERS: Record<EntryTierKey, EntryTierConfig> = {
     productName: "Sector Sweep",
     unitAmount: 199700,
     currency: "eur",
-    successUrl: "/sector-sweep-thanks?session_id={CHECKOUT_SESSION_ID}",
+    successUrl: "https://gitdealflow.com/sector-sweep-thanks?session_id={CHECKOUT_SESSION_ID}",
     cancelUrl: "/sector-sweep?cancelled=1",
     description:
       "One sector. One thesis. One serious custom pass you can act on.",

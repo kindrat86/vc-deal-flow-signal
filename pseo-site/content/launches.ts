@@ -492,7 +492,7 @@ export const LAUNCHES: Launch[] = [
         ],
       },
     ],
-    buyUrl: "https://buy.stripe.com/bJe14m34DbNC6gm1by0x204",
+    buyUrl: "/api/checkout/session?tier=sector_sweep",
     ctaLabel: "Claim a Q2 cohort spot — €1,797 →",
     cohort: "launch-sector-sweep-q2-2026",
     faq: [

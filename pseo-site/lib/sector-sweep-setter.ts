@@ -431,7 +431,7 @@ Of the three pre-Crunchbase breakouts we'd surface in <strong>${escapeHtml(secto
 
 <p>The reply lands at <strong>${escapeHtml(i.deadline.display)}</strong> as promised. If I can shave that, you'll see the email earlier. If anything material slips, you'll hear from me first.</p>
 
-<p style="margin-top:20px;">If you'd rather skip the assessment and go direct to checkout — same Sweep, same delivery, same 14-day async Q&amp;A window — the link is <a href="https://buy.stripe.com/bJe14m34DbNC6gm1by0x204" style="color:#0ea5e9;">here</a>. You don't lose anything by waiting; the assessment is the friction-reducer, not a gate.</p>
+<p style="margin-top:20px;">If you'd rather skip the assessment and go direct to checkout — same Sweep, same delivery, same 14-day async Q&amp;A window — the link is <a href="/api/checkout/session?tier=sector_sweep" style="color:#0ea5e9;">here</a>. You don't lose anything by waiting; the assessment is the friction-reducer, not a gate.</p>
 
 <p style="margin-top:24px;">— ${escapeHtml(SETTER_NAME)}</p>
 `;

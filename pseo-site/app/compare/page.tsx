@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { comparisons } from "@/content/comparisons";
+import { comparisons, programmaticComparisons } from "@/content/comparisons";
 import PSEOFooterNav from "@/components/PSEOFooterNav";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
@@ -96,7 +96,7 @@ export default function CompareIndex() {
           At a glance
         </h2>
         <p className="text-sky-100 text-sm leading-relaxed">
-          TL;DR — {comparisons.length} side-by-side comparisons, each pitting a
+          TL;DR — {(comparisons.length + programmaticComparisons.length)} side-by-side comparisons, each pitting a
           tool investors already use (PitchBook, CB Insights, Dealroom,
           Harmonic.ai, Crunchbase alerts and more) against VC Deal Flow
           Signal&rsquo;s code-side timing signal, across signal philosophy,
@@ -131,7 +131,7 @@ export default function CompareIndex() {
       </section>
 
       <div className="space-y-6">
-        {comparisons.map((comp) => (
+        {[...comparisons, ...programmaticComparisons].map((comp) => (
           <Link
             key={comp.slug}
             href={`/compare/${comp.slug}`}
