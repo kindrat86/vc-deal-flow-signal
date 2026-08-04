@@ -1,6 +1,5 @@
 import "server-only";
 import { listUnsubscribeHeaders, injectUnsubscribeLink } from "@/lib/list-unsubscribe";
-import { gateAllows } from "@/lib/send-gate";
 
 /**
  * Sector Sweep — heat-building Setter sequence.
@@ -508,20 +507,13 @@ export async function scheduleSetterSequence(
     try {
       const isInstant = item.at.getTime() <= now + 5_000;
 
-      // The T+0 acknowledgement answers a form the prospect just submitted, so
-      // it is transactional and never gated. The later heat-building touches
-      // are nurture and claim the shared one-per-day slot for the day they
-      // actually land on (they carry scheduled_at, so "today" is the wrong key).
-      // NOTE: T+2h and T+12h usually fall on the SAME day as the ack, so at most
-      // one of them will win the slot — the Setter cadence is intentionally
-      // compressed and the daily cap takes precedence over it.
-      if (!isInstant) {
-        const deliveryDay = item.at.toISOString().slice(0, 10);
-        if (!(await gateAllows(inputs.email, "pseo:sector-sweep-setter", deliveryDay))) {
-          continue;
-        }
-      }
-
+      // EXEMPT from the shared one-marketing-email-per-day gate, by decision
+      // 2026-08-04. This whole sequence is a conversational reply to a Sweep
+      // request the prospect just submitted — closer to an order thread than a
+      // broadcast. Its heat-building cadence is deliberately compressed (T+0,
+      // T+2h, T+12h, T+48h), and T+2h/T+12h share a calendar day with the ack,
+      // so a daily cap would silently drop all but one of them. Do not add a
+      // gateAllows() call here without revisiting that trade-off.
       const payload: Record<string, unknown> = {
         from: fromHeader,
         bcc: "sales@sipiteno.com",
