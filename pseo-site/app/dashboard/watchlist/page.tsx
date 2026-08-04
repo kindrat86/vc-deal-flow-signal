@@ -5,7 +5,7 @@ import { getSession } from "@/lib/auth";
 import WatchlistManager from "./WatchlistManager";
 
 export const metadata: Metadata = {
-  title: "Watchlist — VC Deal Flow Signal",
+  title: "Watchlist",
   robots: { index: false },
 };
 

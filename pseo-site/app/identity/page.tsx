@@ -32,7 +32,7 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title:
-    "Who you become — moving earlier with a clearer signal | VC Deal Flow Signal",
+    "Who you become — moving earlier with a clearer signal",
   description:
     "A direct guide to the seven shifts that help you stop hearing the story late and start moving with a clearer signal while the window is still calm.",
   alternates: { canonical: "/identity" },

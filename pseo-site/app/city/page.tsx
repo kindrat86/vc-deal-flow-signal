@@ -5,12 +5,12 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import SeoCta from "@/components/SeoCta";
 
 export const metadata: Metadata = {
-  title: "Cities — Engineering & VC Signals | VC Deal Flow Signal",
+  title: "Cities — Engineering & VC Signals",
   description:
     "Editorial city pages mapping engineering acceleration to local VC ecosystems across 41 hubs in Europe, North America, Asia-Pacific, Latin America, and MEA. Built for Corp Dev, PE operating partners, and emerging managers.",
   alternates: { canonical: "/city" },
   openGraph: {
-    title: "Cities — VC Deal Flow Signal",
+    title: "Cities",
     description:
       "Editorial city pages for 41 venture hubs — engineering signals through a local lens.",
     type: "website",
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cities — VC Deal Flow Signal",
+    title: "Cities",
     description:
       "41 venture hubs mapped to engineering acceleration signals through a local lens.",
   },

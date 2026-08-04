@@ -11,7 +11,7 @@ import { RiskReversalPromise } from "@/components/RiskReversalPromise";
 
 export const dynamic = "force-static";
 
-const STRIPE_DIRECT_BUY = "https://buy.stripe.com/bJe14m34DbNC6gm1by0x204";
+const STRIPE_DIRECT_BUY = "/api/checkout/session?tier=sector_sweep";
 
 export const metadata: Metadata = {
   title:

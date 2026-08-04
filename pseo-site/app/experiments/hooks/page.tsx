@@ -159,7 +159,7 @@ const HOOKS: HookTest[] = [
     ctr: "8.6%",
     status: "running",
     takeaway:
-      "Comparison hook. The Spotify reference is doing the heavy lift — readers translate €9.97 instantly. Edge case: works on the comparison page, doesn't transplant to home (too specific without setup).",
+      "Comparison hook. The Spotify reference is doing the heavy lift — readers translate €49 instantly. Edge case: works on the comparison page, doesn't transplant to home (too specific without setup).",
   },
   {
     id: "stop-bloomberg",
@@ -441,7 +441,7 @@ export default function HookTestsPage() {
             </li>
             <li>
               <strong className="text-gray-100">A hook that compresses time-saved beats a hook that compresses dollars-saved.</strong>{" "}
-              &quot;5 min vs 3 weeks&quot; outperformed &quot;€9.97 vs €1k/mo&quot;. Time
+              &quot;5 min vs 3 weeks&quot; outperformed &quot;€49 vs €1k/mo&quot;. Time
               is the irreversible scarcity; dollars are negotiable.
             </li>
             <li>

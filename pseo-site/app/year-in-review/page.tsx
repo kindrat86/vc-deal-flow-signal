@@ -4,18 +4,18 @@ import { YEARS_IN_REVIEW } from "@/content/year-in-review";
 import { HreflangLinks } from "@/components/HreflangLinks";
 
 export const metadata: Metadata = {
-  title: "Year in Review — Engineering Signals & Venture Patterns | VC Deal Flow Signal",
+  title: "Year in Review — Engineering Signals & Venture Patterns",
   description: `${YEARS_IN_REVIEW.length} annual editorial roundups covering the engineering-acceleration shifts, M&A patterns, and venture trends defining recent years (${YEARS_IN_REVIEW.map((y) => y.year).join(", ")}).`,
   alternates: { canonical: "/year-in-review" },
   openGraph: {
-    title: "Year in Review — VC Deal Flow Signal",
+    title: "Year in Review",
     description: "Annual editorial roundups of engineering signals and venture patterns.",
     type: "website",
     url: "/year-in-review",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Year in Review — VC Deal Flow Signal",
+    title: "Year in Review",
     description: "Annual editorial roundups of engineering signals.",
   },
 };

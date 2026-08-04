@@ -5,18 +5,18 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { TrustConversionBlock } from "@/components/TrustConversionBlock";
 
 export const metadata: Metadata = {
-  title: "Research Papers — External Academic References | VC Deal Flow Signal",
+  title: "Research Papers — External Academic References",
   description: `${RESEARCH_PAPERS.length} external academic papers we cite — foundational ML/AI references (Transformer, GPT-3, RLHF, RAG, LoRA, Constitutional AI, CoT), the DORA research on engineering velocity, and more. Citation-ready summaries with canonical sameAs links.`,
   alternates: { canonical: "/research-paper" },
   openGraph: {
-    title: "Research Papers — VC Deal Flow Signal",
+    title: "Research Papers",
     description: "External academic papers we cite — ML/AI and engineering-velocity foundations.",
     type: "website",
     url: "/research-paper",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Research Papers — VC Deal Flow Signal",
+    title: "Research Papers",
     description: "External academic papers we cite.",
   },
 };

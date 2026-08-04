@@ -12,12 +12,12 @@ export const runtime = "nodejs";
 const SITE = "https://signals.gitdealflow.com";
 
 export const metadata: Metadata = {
-  title: "Status — VC Deal Flow Signal",
+  title: "Status",
   description:
     "Live status of every public surface — the marketing site, programmatic SEO, JSON APIs, MCP server, OAuth token issuer, RSS/Atom feeds, and agent-facing well-known files.",
   alternates: { canonical: "/uptime" },
   openGraph: {
-    title: "Status — VC Deal Flow Signal",
+    title: "Status",
     description:
       "Live status across site, APIs, MCP, and agent surfaces. Honest uptime, not a dashboard art project.",
     url: `${SITE}/uptime`,
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary",
     site: "@data_nerd",
-    title: "Status — VC Deal Flow Signal",
+    title: "Status",
     description:
       "Live status across site, APIs, MCP, and agent surfaces. Honest uptime, not a dashboard art project.",
   },

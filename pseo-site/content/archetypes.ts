@@ -186,7 +186,7 @@ export const ARCHETYPES: readonly Archetype[] = [
       "Anonymous-by-design matches a compliance preference for source over personality. The voice is the methodology.",
     ],
     notForYouIf:
-      "You need a self-serve €9.97 SaaS. The Dashboard is honest, but it isn’t the contract shape your compliance team will sign. Start at Sector Sweep or above.",
+      "You need a self-serve €49 SaaS. The Dashboard is honest, but it isn’t the contract shape your compliance team will sign. Start at Sector Sweep or above.",
     accent: "emerald",
   },
 ] as const;

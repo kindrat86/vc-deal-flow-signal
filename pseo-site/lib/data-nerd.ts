@@ -474,7 +474,6 @@ export const DATA_NERD_AUTHOR_SAMEAS = [
   "https://huggingface.co/the-data-nerd",
   "https://www.kaggle.com/thedatanerd2026",
   "https://github.com/kindrat86",
-  "https://x.com/data_nerd",
   "https://news.ycombinator.com/user?id=the_data_nerd",
   "https://www.indiehackers.com/The_Data_Nerd",
   "https://signals.gitdealflow.com/citations",

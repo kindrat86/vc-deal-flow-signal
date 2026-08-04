@@ -15,7 +15,7 @@ import { getAllTop100MoverSlugs, formatIsoWeekLabel } from "@/lib/top-100";
 const SITE = "https://signals.gitdealflow.com";
 
 export const metadata: Metadata = {
-  title: "Explore the Signal Network — VC Deal Flow Signal",
+  title: "Explore the Signal Network",
   description:
     "Interactive link graph of all startup sectors, signal types, blog posts, comparisons, and research findings. Navigate the full pSEO content network.",
   alternates: { canonical: "/explore" },

@@ -2248,7 +2248,7 @@ const crossComparisons = crossPairs
 
 // Merge: editorial comparisons first, then programmatic (skip duplicates)
 const editorialSlugs = new Set(comparisons.map((c) => c.slug));
-const programmaticComparisons = [...vsDealFlow, ...crossComparisons].filter(
+export const programmaticComparisons = [...vsDealFlow, ...crossComparisons].filter(
   (c) => !editorialSlugs.has(c.slug)
 );
 

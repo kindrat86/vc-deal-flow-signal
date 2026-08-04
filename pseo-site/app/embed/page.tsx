@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     "Free embeddable widgets and badges from VC Deal Flow Signal. Scout Score badges, repo momentum badges, signal-of-the-week OG cards. Drop a single URL into a README, blog post, or social card. CC BY 4.0 — attribution baked into the asset.",
   alternates: { canonical: "/embed" },
   openGraph: {
-    title: "Embed — VC Deal Flow Signal",
+    title: "Embed",
     description:
       "Free embeddable badges, widgets, and OG cards. One URL each. CC BY 4.0.",
     type: "article",

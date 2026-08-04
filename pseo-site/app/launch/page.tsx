@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     "Active and archived launches. Each entry is a 4-stage Product Launch Funnel: Sideways Story, Ownership Experience, Internal Struggle, Big Idea (Open Cart).",
   alternates: { canonical: "/launch" },
   openGraph: {
-    title: "Launches — VC Deal Flow Signal",
+    title: "Launches",
     description:
       "Active and archived launches. Each entry is a 4-stage Product Launch Funnel — Sideways Story, Ownership Experience, Internal Struggle, Big Idea.",
     type: "article",

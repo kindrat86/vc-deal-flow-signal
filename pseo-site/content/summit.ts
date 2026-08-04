@@ -11,7 +11,7 @@
  * Funnel mechanics (Brunson Summit playbook):
  *   1. Free Pass — each talk is free for 24 hours after its air time.
  *      After that, the talk locks behind the All-Access Pass.
- *   2. All-Access Pass — €97 one-time. Lifetime access to all 20 talks,
+ *   2. All-Access Pass — €197 one-time. Lifetime access to all 20 talks,
  *      full transcripts, slide decks, and a 219-startup backtest CSV bonus.
  *   3. Order bump on the All-Access checkout: Sector Sweep €1,797 (the
  *      same OTO lattice already wired into /firstlook → /firstlook/thanks).

@@ -31,7 +31,7 @@ export async function generateMetadata({
   const launch = getLaunchBySlug(slug);
   if (!launch) return {};
   return {
-    title: `${launch.headline} — VC Deal Flow Signal`,
+    title: `${launch.headline}`,
     description: launch.hook,
     alternates: { canonical: `/launch/${slug}` },
     openGraph: {

@@ -56,7 +56,7 @@ export async function generateMetadata({
 
   // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
   return {
-    title: `${f.title} — VC Deal Flow Signal`,
+    title: `${f.title}`,
     description: f.claim,
     alternates: { canonical: `/${locale}/research/${slug}` },
     openGraph: {

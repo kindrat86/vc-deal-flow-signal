@@ -40,7 +40,7 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title:
-    "Your Journey — the buyer's arc | VC Deal Flow Signal",
+    "Your Journey — the buyer's arc",
   description:
     "The companion to /origin, told from your seat. The deal you'll never tell anyone about, the three false beliefs you've been holding without naming, the first concrete move, and what you actually look like as an investor six months from now. Eight sections, ten-minute read.",
   alternates: { canonical: "/origin/your-journey" },

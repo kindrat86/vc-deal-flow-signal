@@ -42,7 +42,7 @@ export async function generateMetadata({
       "Free SAFE calculator. Model YC 2018+ post-money SAFE conversion under both the valuation cap and the discount, see your effective ownership at the next priced round, and share the calculation via URL.",
     alternates: { canonical: "/tools/safe-calculator" },
     openGraph: {
-      title: "SAFE Calculator — VC Deal Flow Signal",
+      title: "SAFE Calculator",
       description:
         "Post-money SAFE conversion math, cap-vs-discount comparison, URL-shareable results.",
       type: "website",
@@ -58,7 +58,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: "SAFE Calculator — VC Deal Flow Signal",
+      title: "SAFE Calculator",
       description: "Free post-money SAFE calculator with shareable URLs.",
       images: [ogImage],
     },

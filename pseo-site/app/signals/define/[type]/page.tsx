@@ -40,7 +40,7 @@ export async function generateMetadata({
     description,
     alternates: { canonical: `/signals/define/${type}` },
     openGraph: {
-      title: `${p.name} — VC Deal Flow Signal`,
+      title: `${p.name}`,
       description,
       type: "article",
       url: `${SITE}/signals/define/${type}`,

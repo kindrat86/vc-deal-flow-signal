@@ -14,7 +14,7 @@ import DashboardFilters from "@/components/DashboardFilters";
 import LogoutButton from "./LogoutButton";
 
 export const metadata: Metadata = {
-  title: "Dashboard — Full Startup Rankings | VC Deal Flow Signal",
+  title: "Dashboard — Full Startup Rankings",
   description:
     "Browse and filter 60+ startups ranked by GitHub engineering acceleration. Filter by sector, stage, geography, and signal type. Updated weekly.",
   alternates: {

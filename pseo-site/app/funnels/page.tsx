@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     "Every GitDealFlow funnel on one page — free watch, quiz, walkthrough, first-look pass, dashboard, insider tiers, and sector-sweep offers.",
   alternates: { canonical: "/funnels" },
   openGraph: {
-    title: "Funnel Hub — VC Deal Flow Signal",
+    title: "Funnel Hub",
     description:
       "Every entry point to the GitHub-momentum deal-flow product, mapped on one page.",
     url: "https://signals.gitdealflow.com/funnels",
@@ -545,7 +545,7 @@ export default function FunnelHubPage() {
               { n: 14, name: "Urgency / Scarcity Close", where: "/walkthrough — founding-rate lock" },
               { n: 15, name: "Encore Close", where: "/walkthrough — 8-line summary at the end" },
               { n: 16, name: "Order Form Bump", where: "/firstlook — interactive cart preview, toggleable bump (€7 → €1,797), running total" },
-              { n: 17, name: "One-Time Offer (OTO)", where: "/firstlook delivery email — Insider €77/mo first month + full OTO ladder shown on page" },
+              { n: 17, name: "One-Time Offer (OTO)", where: "/firstlook delivery email — Insider €177/mo first month + full OTO ladder shown on page" },
               { n: 18, name: "Cart Funnel + Downsell", where: "/firstlook — offer stack (€1,547 retail → €7), Risk Reversal at cart, free Acceleration Watch fallback" },
               { n: 19, name: "Risk Reversal / Guarantee", where: "30-day Signal-or-It's-Free, every tier" },
               { n: 20, name: "Social Proof", where: "Home SignalLeader + SSRN paper + 1,060 indexed pages" },

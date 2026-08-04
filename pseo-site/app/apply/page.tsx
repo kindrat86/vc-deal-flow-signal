@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     "Application-gated tier for active funds and syndicates. €497/mo, white-labeled API, custom watchlists, methodology source, quarterly review call. Capped at 8 funds in 2026 — application reviewed within 48 hours.",
   alternates: { canonical: "/apply" },
   openGraph: {
-    title: "Apply for the Sharp Tier — VC Deal Flow Signal",
+    title: "Apply for the Sharp Tier",
     description:
       "€497/mo. Capped at 8 funds in 2026. Application reviewed within 48 hours.",
     url: "https://signals.gitdealflow.com/apply",

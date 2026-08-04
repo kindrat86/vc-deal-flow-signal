@@ -7,7 +7,7 @@ import SeoCta from "@/components/SeoCta";
 const BASE_URL = "https://signals.gitdealflow.com";
 
 export const metadata: Metadata = {
-  title: "Authors — VC Deal Flow Signal",
+  title: "Authors",
   description:
     "Editorial bylines behind VC Deal Flow Signal: founder, engineering research desk, and guest founder perspective. Each author maintains the methodology and dataset behind every signal published.",
   alternates: { canonical: "/authors" },

@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Citations & Cross-Graph Identity Map — VC Deal Flow Signal",
+    title: "Citations & Cross-Graph Identity Map",
     description:
       "Wikidata, ORCID, SSRN, OpenAlex, Crossref, Semantic Scholar, Zenodo — full attribution chain.",
   },

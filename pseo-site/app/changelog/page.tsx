@@ -26,7 +26,7 @@ const productUpdates: ProductEntry[] = [
     date: "2026-05-04",
     title: "Pricing surface redesign: /pricing + /buyers-guide + Sharp Tier",
     tag: "seo",
-    body: "Net-new /pricing pillar with all six tiers exposed (Free Signal Digest, €7 First Look Pass, €9.97/mo Dashboard Beta, €97/mo Insider Circle, €497/mo Sharp Tier for active funds, €1,997 one-time Sector Sweep). Sharp Tier surfaces the application-gated active-fund landing previously buried on apex. New /buyers-guide pillar with an opinionated 11-criterion evaluation framework for VC deal-flow tools, paired with 8 Q&As on small-fund decision weighting. Both pages wired into Header NAV, Footer, sitemap, hreflang, llms.txt, and llms-full.txt. /alternatives, /integrations, /faq, and /methodology gain in-page CTAs pointing at /pricing and /buyers-guide. Apex landing trust-strip gains Substack publication anchor; pricing-section gains 'See the full six-tier pricing comparison' deep link.",
+    body: "Net-new /pricing pillar with all six tiers exposed (Free Signal Digest, €7 First Look Pass, €49/mo Dashboard Beta, €197/mo Insider Circle, €497/mo Sharp Tier for active funds, €1,997 one-time Sector Sweep). Sharp Tier surfaces the application-gated active-fund landing previously buried on apex. New /buyers-guide pillar with an opinionated 11-criterion evaluation framework for VC deal-flow tools, paired with 8 Q&As on small-fund decision weighting. Both pages wired into Header NAV, Footer, sitemap, hreflang, llms.txt, and llms-full.txt. /alternatives, /integrations, /faq, and /methodology gain in-page CTAs pointing at /pricing and /buyers-guide. Apex landing trust-strip gains Substack publication anchor; pricing-section gains 'See the full six-tier pricing comparison' deep link.",
   },
   {
     date: "2026-05-04",
@@ -102,7 +102,7 @@ const productUpdates: ProductEntry[] = [
   },
   {
     date: "2026-03-15",
-    title: "Dashboard beta launched at EUR 9.97/month",
+    title: "Dashboard beta launched at EUR 49/month",
     tag: "product",
     body: "Full 85+ startup weekly ranking with sector, stage, and geography filters. Stripe checkout, email auth, and webhook-driven provisioning.",
   },

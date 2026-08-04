@@ -6,7 +6,7 @@ import { getHreflangLanguages } from "@/lib/hreflang";
 import SeoCta from "@/components/SeoCta";
 
 export const metadata: Metadata = {
-  title: "Topics — VC Deal Flow Signal",
+  title: "Topics",
   description:
     "Browse VC Deal Flow Signal articles by topical series — GitHub signals methodology, deal sourcing workflows, alternative data for VC, sector deep dives, and operator notes.",
   // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).

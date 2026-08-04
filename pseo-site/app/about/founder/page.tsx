@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     "Anonymous engineer-investor. Reluctant Reporter. Wrote the methodology paper on SSRN. Refuses podcasts. Three parables, eight polarities, three character flaws this product has on purpose, and a 12-month commitment graded May 2027.",
   alternates: { canonical: "/about/founder" },
   openGraph: {
-    title: "About The Data Nerd — VC Deal Flow Signal",
+    title: "About The Data Nerd",
     description:
       "Identity archetype, backstory, parables, polarity, character flaws, current week's work, and the 12-month future commitment.",
     url: "https://signals.gitdealflow.com/about/founder",

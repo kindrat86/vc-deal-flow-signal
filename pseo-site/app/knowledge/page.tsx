@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     "Single canonical taxonomy of every topic, signal primitive, pillar, and research finding on VC Deal Flow Signal (GitDealFlow). Hub-and-spoke entity map for retrieval pipelines and AI assistants. Mirrored as JSON-LD at /knowledge-graph.json.",
   alternates: { canonical: "/knowledge" },
   openGraph: {
-    title: "Knowledge Graph — VC Deal Flow Signal",
+    title: "Knowledge Graph",
     description:
       "Hub-and-spoke entity map: pillars → signal primitives → research findings → cross-graph identity.",
     type: "article",

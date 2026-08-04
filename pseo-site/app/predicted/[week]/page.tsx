@@ -33,7 +33,7 @@ export async function generateMetadata({
   const week = getPredictionWeek(slug);
   if (!week) return { title: "Week not found" };
   return {
-    title: `Acceleration Watch — Week of ${fmtLongDate(week.weekStart)} | VC Deal Flow Signal`,
+    title: `Acceleration Watch — Week of ${fmtLongDate(week.weekStart)}`,
     description: `10 startups whose GitHub engineering acceleration crossed the signal threshold the week of ${fmtLongDate(week.weekStart)}. Public bet, graded post-hoc against fundraise / acquisition news at ${week.windowDays} days.`,
     alternates: { canonical: `/predicted/${week.slug}` },
     openGraph: {

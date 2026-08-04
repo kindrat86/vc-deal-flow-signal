@@ -357,7 +357,7 @@ function firstLookWelcomeEmail(email: string): { subject: string; html: string }
 <li>Top 3 names that haven't shown up on Crunchbase yet</li>
 <li>Raw CSV + ranked PDF</li>
 </ul>
-<p>If you upgrade to the Dashboard (€9.97/mo) within 14 days, the €7 is credited.</p>
+<p>If you upgrade to the Dashboard (€49/mo) within 14 days, the €7 is credited.</p>
 <p style="margin-top:24px;padding:14px 16px;background:#fff7ed;border-left:3px solid #FF6B1A;border-radius:4px;font-size:14px;line-height:1.6;color:#7c2d12;">
 <strong>Allocating into a sector at fund scale?</strong> The <a href="https://gitdealflow.com/sector-sweep?utm_source=email&amp;utm_medium=firstlook-welcome&amp;utm_campaign=sector-sweep" style="color:#FF6B1A;font-weight:600;">Custom Sector Sweep</a> is the same engineering-acceleration lens across every venture-backed startup in one sector — written report in 7 business days, plus a clarifications call. €1,997 one-time. Mention it in your reply if you want to skip ahead.
 </p>

@@ -286,7 +286,7 @@ export const TEARDOWNS: CompetitorTeardown[] = [
         brunsonNote:
           "Hybrid model — they want both self-serve and enterprise. That's hard to do; the self-serve tier risks cannibalising the enterprise close, the enterprise tier risks looking like an upcharge.",
         ourMove:
-          "We pick a single primary motion (self-serve, monthly) and ladder above it (Insider €197/mo, Sector Sweep €1,797 one-time). The €1,797 rung is the upcharge that doesn't cannibalise the €9.97 floor.",
+          "We pick a single primary motion (self-serve, monthly) and ladder above it (Insider €197/mo, Sector Sweep €1,797 one-time). The €1,797 rung is the upcharge that doesn't cannibalise the €49 floor.",
       },
       {
         step: "2 — Free signup",

@@ -32,7 +32,7 @@ export const useCases: UseCase[] = [
     persona: "Angel investor",
     title: "Deal Flow Signals for Angel Investors (2026)",
     description:
-      "How angel investors use VC Deal Flow Signal to find technical startups 6-12 weeks before the round is competitive. Free weekly signals, EUR 9.97/mo Dashboard, no enterprise contracts.",
+      "How angel investors use VC Deal Flow Signal to find technical startups 6-12 weeks before the round is competitive. Free weekly signals, EUR 49/mo Dashboard, no enterprise contracts.",
     h1: "VC Deal Flow Signal for Angel Investors",
     tagline:
       "Catch technical startups 6-12 weeks before the round is competitive — without an enterprise sourcing budget.",
@@ -51,7 +51,7 @@ export const useCases: UseCase[] = [
       {
         step: 2,
         name: "Filter by your sector focus",
-        body: "Open the Dashboard (EUR 9.97/mo beta) and filter 140 ranked startups by AI/ML, enterprise SaaS, dev tools, fintech, or any of 20 sectors. Layer on stage and geography if you focus geographically.",
+        body: "Open the Dashboard (EUR 49/mo beta) and filter 140 ranked startups by AI/ML, enterprise SaaS, dev tools, fintech, or any of 20 sectors. Layer on stage and geography if you focus geographically.",
       },
       {
         step: 3,
@@ -72,14 +72,14 @@ export const useCases: UseCase[] = [
     metrics: [
       { label: "Typical lead time", value: "6-12 weeks pre-fundraise" },
       { label: "Weekly startups surfaced", value: "5 (free) / 50+ (paid)" },
-      { label: "Cost for full access", value: "EUR 9.97/month" },
+      { label: "Cost for full access", value: "EUR 49/month" },
       { label: "Sectors covered", value: "20 technical clusters" },
     ],
     faqs: [
       { question: "Is VC Deal Flow Signal suitable for first-time angels?", answer: "Yes. The free weekly Signal Report requires no technical interpretation — each startup comes with the signal type explained in plain English. For deeper inspection, you can verify the engineering signal by just looking at the GitHub org's commit graph. No coding or quantitative background required." },
       { question: "How does this compare to an angel group's shared deal flow?", answer: "Complementary. Angel groups surface deals that other angels have already sourced and qualified — useful but often warm/competitive. VC Deal Flow Signal gives you your own early signal, which you can take to your group or play solo." },
       { question: "Can I use it to source deals outside of AI and SaaS?", answer: "Partially. The platform covers 20 sector clusters including fintech, dev tools, infrastructure, enterprise SaaS, AI/ML, and data tools. It does not cover consumer brands, healthtech services, or companies with minimal public GitHub footprint." },
-      { question: "What's the smallest angel check size this is worth for?", answer: "The EUR 9.97/month cost is trivial compared to a single $10k angel check. If the signal helps you get into one additional round per year that outperforms, the ROI is absurd. The free tier alone is enough for angels writing one or two checks per quarter." },
+      { question: "What's the smallest angel check size this is worth for?", answer: "The EUR 49/month cost is trivial compared to a single $10k angel check. If the signal helps you get into one additional round per year that outperforms, the ROI is absurd. The free tier alone is enough for angels writing one or two checks per quarter." },
     ],
     relatedSectors: ["ai-ml", "enterprise-saas", "developer-tools"],
     relatedAlternatives: ["harmonic-ai", "crunchbase-alerts"],
@@ -130,7 +130,7 @@ export const useCases: UseCase[] = [
       { label: "Weekly ranked startups", value: "140 on Dashboard" },
       { label: "Sectors in single feed", value: "20 technical clusters" },
       { label: "Typical lead time", value: "6-12 weeks pre-fundraise" },
-      { label: "Per-seat cost", value: "EUR 9.97/mo (beta)" },
+      { label: "Per-seat cost", value: "EUR 49/mo (beta)" },
     ],
     faqs: [
       { question: "Can multiple analysts share one account?", answer: "For the beta Dashboard, yes — the login is per-seat but the underlying data is the same for every analyst. For larger teams, get in touch and a multi-seat plan can be set up." },
@@ -187,7 +187,7 @@ export const useCases: UseCase[] = [
       { label: "Historical archive depth", value: "Growing weekly since Q1 2026" },
       { label: "Sectors covered", value: "20 technical clusters" },
       { label: "Data accessibility", value: "JSON / CSV / MCP / RSS" },
-      { label: "Benchmark cost", value: "EUR 9.97/mo (beta)" },
+      { label: "Benchmark cost", value: "EUR 49/mo (beta)" },
     ],
     faqs: [
       { question: "Can I get a custom historical signal export?", answer: "Yes — email signals@gitdealflow.com with the date range and sector focus. The beta tier access includes custom exports for LP use cases on request." },
@@ -242,12 +242,12 @@ export const useCases: UseCase[] = [
     metrics: [
       { label: "Lead time", value: "3-6 weeks pre-fundraise" },
       { label: "Forwarded signals per quarter", value: "10-15 typical" },
-      { label: "Cost", value: "EUR 9.97/month" },
+      { label: "Cost", value: "EUR 49/month" },
     ],
     faqs: [
       { question: "Do scout programs allow third-party data tools?", answer: "Almost universally yes — the data is public GitHub activity, not non-public information. Scout programs care about the strength of conviction, not the source of the signal. Document your data sources in any scout report and you are within bounds." },
       { question: "How do I avoid duplicating signals the fund analysts already see?", answer: "Filter to sectors and stages your fund's analysts under-cover, focus on early stages where fund analysts have less bandwidth, and lead with the engineering signal as evidence rather than as the deal itself. Scouts add value at the discovery layer; engineering acceleration is one of the strongest discovery layers available." },
-      { question: "Is the EUR 9.97/month worth it as a scout?", answer: "If even one signal per year converts to a deal the fund invests in, the ROI is hundreds of times the cost. Most scouts forward five to fifteen signals per quarter. Even at a modest conversion rate, the math is trivial." },
+      { question: "Is the EUR 49/month worth it as a scout?", answer: "If even one signal per year converts to a deal the fund invests in, the ROI is hundreds of times the cost. Most scouts forward five to fifteen signals per quarter. Even at a modest conversion rate, the math is trivial." },
     ],
     relatedSectors: ["ai-ml", "developer-tools", "enterprise-saas"],
     relatedAlternatives: ["harmonic-ai", "specter"],
@@ -301,7 +301,7 @@ export const useCases: UseCase[] = [
     faqs: [
       { question: "Does this work if I am pre-fund?", answer: "Yes — many syndicate leads and angel-roll-up operators use the signal at the syndicate stage. The data and methodology are identical; the only difference is the structure of how the deals get done downstream." },
       { question: "Can I report this signal source to LPs?", answer: "Yes. Engineering acceleration as a sourcing input is a methodologically defensible answer to LP sourcing questions. The methodology is published openly on SSRN, and the data is public GitHub activity." },
-      { question: "How does this compare to building it in-house?", answer: "Building a comparable pipeline takes four to six weeks of engineering time plus ongoing maintenance. The labor cost dwarfs the EUR 9.97/month subscription unless you are running a fund large enough to justify a dedicated data engineer." },
+      { question: "How does this compare to building it in-house?", answer: "Building a comparable pipeline takes four to six weeks of engineering time plus ongoing maintenance. The labor cost dwarfs the EUR 49/month subscription unless you are running a fund large enough to justify a dedicated data engineer." },
     ],
     relatedSectors: ["ai-ml", "enterprise-saas", "developer-tools"],
     relatedAlternatives: ["harmonic-ai", "affinity"],
@@ -511,7 +511,7 @@ export const useCases: UseCase[] = [
     ],
     metrics: [
       { label: "Diligence time", value: "30 min vs week+ manual" },
-      { label: "Cost vs technical consultant", value: "EUR 9.97/mo vs $5-15K" },
+      { label: "Cost vs technical consultant", value: "EUR 49/mo vs $5-15K" },
       { label: "Verification depth", value: "Full historical metrics" },
     ],
     faqs: [

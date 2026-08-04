@@ -11,7 +11,7 @@ import TrialClose from "@/components/TrialClose";
 
 export const metadata: Metadata = {
   title:
-    "Pricing — Start free, go deeper only when you need it | VC Deal Flow Signal",
+    "Pricing — Start free, go deeper only when you need it",
   description:
     "VC Deal Flow Signal pricing — start free, test one sector, move to the full field, or go deeper only when the question justifies it. 30-day Signal-or-It's-Free guarantee on every paid plan above €1.",
   alternates: {
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     // sets its own openGraph object, so no inheritance for url here.)
     url: "https://signals.gitdealflow.com/pricing",
     title:
-      "Pricing — Start free, go deeper only when you need it | VC Deal Flow Signal",
+      "Pricing — Start free, go deeper only when you need it",
     description:
       "VC Deal Flow Signal pricing — start free, test one sector, work the full field, or go deeper only when the question gets expensive. Research partnership layers sit above the weekly workflow, not in front of it.",
     type: "website",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 
 const STRIPE_DASHBOARD = "https://buy.stripe.com/4gMbJ07kTaJy7kqg6s0x20b";
 const STRIPE_INSIDER = "https://buy.stripe.com/bJeaEWfRpcRG6gm2fC0x20d";
-const STRIPE_SWEEP = "https://buy.stripe.com/bJe14m34DbNC6gm1by0x204";
+const STRIPE_SWEEP = "/api/checkout/session?tier=sector_sweep";
 // `||` not `??` — Vercel env entries can be empty strings, which `??`
 // would NOT replace. We want the hardcoded canonical URL whenever the
 // env var is missing OR empty.

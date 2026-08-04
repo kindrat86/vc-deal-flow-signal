@@ -11,7 +11,7 @@ const PAGE_URL = `${SITE}/markets/methodology`;
 
 export const metadata: Metadata = {
   title:
-    "Markets Methodology — How Implied Odds Are Computed | VC Deal Flow Signal",
+    "Markets Methodology — How Implied Odds Are Computed",
   description:
     "Public methodology for the Series A Race 2026 prediction market and any future seeded market. Composite signal score, resolver criteria, candidate selection, refresh cadence, conflict-of-interest disclosures.",
   alternates: { canonical: "/markets/methodology" },

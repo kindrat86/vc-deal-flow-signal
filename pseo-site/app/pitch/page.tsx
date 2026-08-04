@@ -9,12 +9,12 @@ import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "The 90-Second Pitch — VC Deal Flow Signal",
+  title: "The 90-Second Pitch",
   description:
     "Five sections, 90 seconds. The case for using GitHub commit-velocity acceleration as your highest-leverage deal-flow source. Read it, then either subscribe or close the tab.",
   alternates: { canonical: "/pitch" },
   openGraph: {
-    title: "The 90-Second Pitch — VC Deal Flow Signal",
+    title: "The 90-Second Pitch",
     description:
       "Five sections, 90 seconds. The case for GitHub commit-velocity as your highest-leverage deal-flow source.",
     url: "https://signals.gitdealflow.com/pitch",

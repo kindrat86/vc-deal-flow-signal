@@ -105,7 +105,7 @@ const RESULTS = {
     title: "Dashboard Beta — €49/mo, founder price locked forever.",
     eyebrow: "Dashboard Beta · €49/mo",
     body: "You write enough checks and have a sharp enough thesis that the full ranked dashboard pays for itself the first time it surfaces a name you didn't already see. €49/mo is the founding-member rate — it stays €49 even after the public hike to €49/mo. Read the 12-minute walkthrough before you click if you want the full case.",
-    cta: { label: "Lock €49/mo founder price", href: "https://buy.stripe.com/4gMbJ07kTaJy7kqg6s0x20b", external: true },
+    cta: { label: "Start the Dashboard — €49/mo", href: "https://buy.stripe.com/4gMbJ07kTaJy7kqg6s0x20b", external: true },
     secondary: { label: "Read the 12-minute case first", href: "/walkthrough" },
   },
   I: {

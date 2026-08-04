@@ -16,7 +16,7 @@ import "server-only";
 
 const SIGNALS_CSV_URL = "https://signals.gitdealflow.com/api/signals.csv";
 const FIRSTLOOK_STRIPE_URL =
-  "https://buy.stripe.com/28E6oGdJh18YgV04nK0x203";
+  "/api/checkout/session?tier=firstlook";
 
 // Canonical sector → alias list. Buyer's free-text custom-field answer is
 // fuzzy-matched against this. Mirrors tools/firstlook/generate.mjs.
@@ -177,7 +177,7 @@ ${top10
 ## What's next
 
 If you're allocating real capital into one sector and need this depth across the whole field:
-- **Custom Sector Sweep** (€1,997 one-time) — every venture-backed startup in one sector you pick, engineering acceleration ranked over four quarters, diligence prompts on each top-10 name, three early-stage targets not yet on Crunchbase or PitchBook. Written report in 7 business days, 30-minute clarifications call after delivery. Detail: https://gitdealflow.com/sector-sweep?utm_source=email&utm_medium=firstlook-delivery&utm_campaign=sector-sweep · Commission: https://buy.stripe.com/bJe14m34DbNC6gm1by0x204
+- **Custom Sector Sweep** (€1,997 one-time) — every venture-backed startup in one sector you pick, engineering acceleration ranked over four quarters, diligence prompts on each top-10 name, three early-stage targets not yet on Crunchbase or PitchBook. Written report in 7 business days, 30-minute clarifications call after delivery. Detail: https://gitdealflow.com/sector-sweep?utm_source=email&utm_medium=firstlook-delivery&utm_campaign=sector-sweep · Commission: /api/checkout/session?tier=sector_sweep
 
 If you want this every week, across all 20 sectors, with filters and the live dashboard:
 - **Dashboard** (€49/mo founding-member, locked forever) — https://gitdealflow.com/dashboard?utm_source=email&utm_medium=firstlook-delivery&utm_campaign=dashboard
@@ -285,7 +285,7 @@ export function buildAutoFulfillmentEmailHtml(opts: {
 <div style="margin-top:32px;padding:20px 22px;background:#fff7ed;border-left:4px solid #FF6B1A;border-radius:6px;font-size:15px;line-height:1.65;">
 <strong style="color:#9a3412;font-size:16px;display:block;margin-bottom:8px;">Allocating real capital into a sector — not just researching one?</strong>
 The <a href="https://gitdealflow.com/sector-sweep?utm_source=email&amp;utm_medium=firstlook-delivery&amp;utm_campaign=sector-sweep" style="color:#FF6B1A;font-weight:600;">Custom Sector Sweep</a> takes the same lens you just got for ${displaySector} and runs it across <em>every</em> venture-backed startup in one sector you pick &mdash; engineering acceleration ranked over four quarters, diligence prompts on each top-10 name, three early-stage targets not yet on Crunchbase or PitchBook. Written report in 7 business days, plus a 30-minute clarifications call after delivery. <strong>€1,997 one-time.</strong>
-<div style="margin-top:14px;"><a href="https://buy.stripe.com/bJe14m34DbNC6gm1by0x204" style="display:block;width:100%;box-sizing:border-box;background:#FF6B1A;color:#ffffff;font-weight:700;font-size:19px;line-height:1.2;padding:18px 28px;border-radius:10px;text-decoration:none;text-align:center;box-shadow:0 4px 14px rgba(255,107,26,0.35);">Commission a Sector Sweep &rarr;</a></div>
+<div style="margin-top:14px;"><a href="/api/checkout/session?tier=sector_sweep" style="display:block;width:100%;box-sizing:border-box;background:#FF6B1A;color:#ffffff;font-weight:700;font-size:19px;line-height:1.2;padding:18px 28px;border-radius:10px;text-decoration:none;text-align:center;box-shadow:0 4px 14px rgba(255,107,26,0.35);">Commission a Sector Sweep &rarr;</a></div>
 </div>
 <p style="margin-top:28px;"><strong>Want this every week, across all 20 sectors?</strong> Reply with <code>credit me</code> to apply your €7 toward the full Dashboard (€49/mo founding price, locked forever).</p>
 <p>Questions about any specific name? Reply &mdash; same email thread.</p>

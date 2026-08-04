@@ -5,7 +5,7 @@ import { getSession } from "@/lib/auth";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 
 export const metadata: Metadata = {
-  title: "Welcome — VC Deal Flow Signal",
+  title: "Welcome",
   robots: { index: false },
 };
 

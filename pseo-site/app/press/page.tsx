@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     "Press kit for journalists, analysts, podcasters, and citation reuse. Logo pack, fact sheet, copy-paste citation block, screenshot pack, founder bio, and contact. All assets are CC BY 4.0 — attribution required.",
   alternates: { canonical: "/press" },
   openGraph: {
-    title: "Press Kit — VC Deal Flow Signal",
+    title: "Press Kit",
     description:
       "Logos, fact sheet, copy-paste citation block, screenshots, contact. CC BY 4.0.",
     type: "article",

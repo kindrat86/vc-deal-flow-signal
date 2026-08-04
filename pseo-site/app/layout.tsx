@@ -387,11 +387,10 @@ export default function RootLayout({
         />
         {/* IndieWeb / IndieAuth verification. Each rel=me must be reciprocated
             on the destination profile to count as a verified identity link.
-            ORCID + Wikidata + X + GitHub + LinkedIn + npm cover the canonical
+            ORCID + Wikidata + GitHub + LinkedIn + npm cover the canonical
             graph of the project's authorship. */}
         <link rel="me" href="https://orcid.org/0009-0002-2222-4112" />
         <link rel="me" href="https://www.wikidata.org/wiki/Q139376302" />
-        <link rel="me" href="https://x.com/data_nerd" />
         <link rel="me" href="https://github.com/kindrat86/mcp-deal-flow-signal" />
         <link rel="me" href="https://www.linkedin.com/company/gitdealflow" />
         <link rel="me" href="https://www.npmjs.com/~thedatanerd" />

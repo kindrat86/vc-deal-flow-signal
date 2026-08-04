@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     "Eight free calculators for founders and investors: SAFE conversion, dilution stack, runway, and the full SaaS efficiency suite (burn multiple, magic number, CAC payback, LTV, quick ratio). URL-shareable results, per-share OG cards, CC BY 4.0, no signup. Machine-readable catalog at /api/v1/tools.json.",
   alternates: { canonical: "/tools" },
   openGraph: {
-    title: "Free VC & Founder Tools — VC Deal Flow Signal",
+    title: "Free VC & Founder Tools",
     description:
       "8 calculators: SAFE, dilution, runway, burn multiple, magic number, CAC payback, LTV, quick ratio. URL-shareable.",
     type: "website",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free VC & Founder Tools — VC Deal Flow Signal",
+    title: "Free VC & Founder Tools",
     description:
       "8 free calculators with URL-shareable results and per-share OG cards.",
     images: [OG_IMAGE],
