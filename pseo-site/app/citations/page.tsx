@@ -213,12 +213,6 @@ const DIRECTORY_ANCHORS: Anchor[] = [
 
 const SOCIAL_ANCHORS: Anchor[] = [
   {
-    label: "X / Twitter @data_nerd",
-    url: "https://x.com/data_nerd",
-    type: "social",
-    description: "Founder X / Twitter account.",
-  },
-  {
     label: "LinkedIn (company page)",
     url: "https://www.linkedin.com/company/gitdealflow",
     type: "social",
@@ -370,7 +364,6 @@ export default function CitationsPage() {
           name: "The Data Nerd",
           sameAs: [
             "https://orcid.org/0009-0002-2222-4112",
-            "https://x.com/data_nerd",
             "https://github.com/kindrat86",
           ],
         },

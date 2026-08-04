@@ -121,7 +121,6 @@ SSRN preprint: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558
 
 - Email: signals@gitdealflow.com
 - Telegram: https://t.me/gitdealflow
-- Twitter/X: https://x.com/data_nerd
 
 ## Interactive web tools (gitdealflow.com)
 

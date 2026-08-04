@@ -70,12 +70,6 @@ const PROPERTIES: { p: string; label: string; value: string; href?: string }[] =
     { p: "P571", label: "inception", value: "2025" },
     { p: "P1813", label: "short name", value: "GitDealFlow" },
     {
-      p: "P2002",
-      label: "Twitter username",
-      value: "@data_nerd",
-      href: "https://x.com/data_nerd",
-    },
-    {
       p: "P3789",
       label: "Telegram channel",
       value: "@gitdealflow",

@@ -31,7 +31,6 @@ export const authors: Record<string, Author> = {
       "Maintains the 55-startup, 5-quarter longitudinal dataset",
     ],
     sameAs: [
-      "https://x.com/data_nerd",
       "https://www.linkedin.com/company/gitdealflow",
       "https://huggingface.co/the-data-nerd",
       "https://orcid.org/0009-0002-2222-4112",
