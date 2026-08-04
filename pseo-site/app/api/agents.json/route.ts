@@ -30,7 +30,6 @@ export async function GET() {
     contact: {
       email: "signals@gitdealflow.com",
       telegram: "https://t.me/gitdealflow",
-      twitter: "https://x.com/data_nerd",
     },
     lastModified: lastModified.toISOString(),
     documentation: {
