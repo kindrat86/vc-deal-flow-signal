@@ -30,6 +30,7 @@
 import { NextResponse } from "next/server";
 import { pickAudienceId } from "@/lib/resend-audience";
 import { listUnsubscribeHeaders, injectUnsubscribeLink } from "@/lib/list-unsubscribe";
+import { gateAllows } from "@/lib/send-gate";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -78,6 +79,10 @@ async function sendEmail(
   subject: string,
   html: string,
 ): Promise<boolean> {
+  // Every send from this cron is marketing nurture, so claim the shared daily
+  // slot first. If another system already mailed this person today we skip —
+  // the day stays unmarked, so it retries on a later run.
+  if (!(await gateAllows(to, "pseo:drip-sender"))) return false;
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
