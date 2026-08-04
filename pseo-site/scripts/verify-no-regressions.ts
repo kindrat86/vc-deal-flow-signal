@@ -166,6 +166,56 @@ check(
 );
 
 // ---------------------------------------------------------------------------
+// N. Shared send-gate wiring (2026-08-04). A 14-day audit found real
+//    subscribers receiving 3-4 emails in one day: ~6 independent systems mail
+//    the same people and each only tracked its own state. Every MARKETING
+//    sender must claim a slot in the shared one-per-day gate before sending.
+//    A lineage that lacks this wiring silently reintroduces the pile-on.
+//
+//    Deliberately NOT asserted: lib/sector-sweep-setter.ts is EXEMPT by owner
+//    decision — it is a conversational reply to a form the prospect just
+//    submitted, and its T+0/T+2h/T+12h cadence shares a calendar day, so a
+//    daily cap would drop all but one. Do not "helpfully" gate it here.
+// ---------------------------------------------------------------------------
+check(
+  "lib/send-gate.ts",
+  "Shared send-gate helper is missing — marketing senders cannot enforce the one-email-per-recipient-per-day cap.",
+  (s) => /export\s+async\s+function\s+gateAllows/.test(s),
+  "restore lib/send-gate.ts exporting gateAllows(email, sender, day?) — it must FAIL CLOSED when the gate is unreachable",
+);
+
+for (const [file, label] of [
+  ["app/api/cron/drip-sender/route.ts", "drip-sender"],
+  ["app/api/cron/daily-seinfeld/route.ts", "daily-seinfeld"],
+  ["lib/soap-opera-scout.ts", "scout soap-opera (days 2-5)"],
+] as const) {
+  check(
+    file,
+    `${label} sends without claiming the shared daily send-gate slot — recipients can be mailed multiple times a day.`,
+    (s) => s.includes("gateAllows("),
+    "call `await gateAllows(<recipient>, '<sender-label>'[, deliveryDay])` before sending and skip when it returns false",
+  );
+}
+
+// daily-seinfeld must stay a per-recipient fan-out: a Resend BROADCAST targets a
+// whole audience and cannot exclude individuals, so reverting to it silently
+// defeats the cap no matter what the gate says.
+check(
+  "app/api/cron/daily-seinfeld/route.ts",
+  "daily-seinfeld is back on Resend broadcasts — a broadcast cannot exclude individuals, so the daily cap cannot apply.",
+  (s) => !s.includes("api.resend.com/broadcasts"),
+  "send per recipient via /emails (gated), using injectUnsubscribeLink + listUnsubscribeHeaders — {{{RESEND_UNSUBSCRIBE_URL}}} only expands on broadcasts",
+);
+
+// IndexNow: a status-only log is why a 422 sat unexplained in the build output.
+check(
+  "scripts/submit-indexnow.ts",
+  "IndexNow submitter no longer reports WHY a submission was rejected — a failure will be silent again.",
+  (s) => s.includes("IndexNow body") && s.includes("IndexNow SKIPPED"),
+  "log the response body on non-2xx, and preflight the key file by CONTENT (this host serves soft-404s that a status check reads as valid)",
+);
+
+// ---------------------------------------------------------------------------
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +
